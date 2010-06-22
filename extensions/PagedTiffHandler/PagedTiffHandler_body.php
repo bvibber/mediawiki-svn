@@ -122,13 +122,11 @@ class PagedTiffHandler extends ImageHandler {
 
 	/**
 	 * Maps MagicWord-IDs to parameters.
-	 * Parameter 'lossy' was added.
+	 * In this case, width, page, and lossy.
 	 */
 	function getParamMap() {
-		// FIXME: This function is unused and should probably be a static member anyway
 		return array(
 			'img_width' => 'width',
-			// @todo check height ## MediaWiki doesn't have a MagicWord-ID for height, appears to be a bug. ^SU
 			'img_page' => 'page',
 			'img_lossy' => 'lossy',
 		);
@@ -158,18 +156,11 @@ class PagedTiffHandler extends ImageHandler {
 	 * Page number was added.
 	 */
 	function makeParamString( $params ) {
-		$page = isset( $params['page'] ) ? $params['page'] : 1;
-		if ( !isset( $params['width'] ) ) {
+		if ( !isset( $params['width'] ) || !isset( $params['lossy'] ) || !isset( $params['page'] )) {
 			return false;
 		}
 
-		if ( !isset( $params['lossy'] ) || in_array( $params['lossy'], array( 1, '1', 'true', 'lossy' ) ) ) {
-			$lossy = 'lossy';
-		} else {
-			$lossy = 'lossless';
-		}
-
-		return "{$lossy}-page{$page}-{$params['width']}px";
+		return "{$params['lossy']}-page{$params['page']}-{$params['width']}px";
 	}
 
 	/**
@@ -185,12 +176,12 @@ class PagedTiffHandler extends ImageHandler {
 	}
 
 	/**
-	 * Lossy parameter added
-	 * TODO: The purpose of this function is not yet fully clear.
-	 */
-	function getScriptParams( $params ) { # # wtf?? ^DK
-		// FIXME: This function is unused, seems to be useless,
-		// and could be replaced with an array_intersect() call
+	* The function is used to specify which parameters to File::transform() should be
+	* passed through to thumb.php, in the case where the configuration specifies
+	* thumb.php is to be used (e.g. $wgThumbnailScriptPath !== false). You should
+	* pass through the same parameters as in makeParamString().
+	*/
+	function getScriptParams( $params ) { 
 		return array(
 			'width' => $params['width'],
 			'page' => $params['page'],
@@ -203,38 +194,37 @@ class PagedTiffHandler extends ImageHandler {
 	 * Standard values for page and lossy are added.
 	 */
 	function normaliseParams( $image, &$params ) {
-		$mimeType = $image->getMimeType();
-
-		if ( !isset( $params['width'] ) ) {
+		$data = $this->getMetaArray( $image );
+		if ( !$data ) {
 			return false;
 		}
-		if ( !isset( $params['page'] ) || $params['page'] < 1 ) {
-			$params['page'] = 1;
-		}
-		if ( $params['page'] > $this->pageCount( $image ) ) {
-			$params['page'] = $this->pageCount( $image );
-		}
-		if ( !isset( $params['lossy'] ) || $params['lossy'] == null ) {
-			$data = $this->getMetaArray( $image );
-			if ( ( strtolower( $data['page_data'][$params['page']]['alpha'] ) == 'true' ) ) $params['lossy'] = '0';
-			else $params['lossy'] = 1;
-			}
-		$size = PagedTiffImage::getPageSize( $this->getMetaArray( $image ), $params['page'] );
-		$srcWidth = $size['width'];
-		$srcHeight = $size['height'];
 
-		if ( isset( $params['height'] ) && $params['height'] != - 1 ) {
-			// If the image is in letter format and the height parameter is set, the width
-			// parameter is adjusted so the original ratio doesn't get messed up. This is
-			// so the thumbnails on an ImagePage don't mess up the layout. ^SU
-			if ( $params['width'] * $srcHeight > $params['height'] * $srcWidth ) {
-				$params['width'] = wfFitBoxWidth( $srcWidth, $srcHeight, $params['height'] );
+		if ( isset( $params['page'] ) ) {
+			$pages = $data['page_amount'];
+			
+			if ( $params['page'] > $pages ) {
+				$params['page'] = intval( $pages );
 			}
 		}
-		$params['height'] = File::scaleHeight( $srcWidth, $srcHeight, $params['width'] );
-		if ( !$this->validateThumbParams( $params['width'], $params['height'], $srcWidth, $srcHeight, $mimeType ) ) {
+
+		if ( !parent::normaliseParams( $image, $params ) ) {
 			return false;
 		}
+
+		if ( isset( $params['lossy'] ) ) {
+			if ( in_array( $params['lossy'], array( 1, '1', 'true', 'lossy' ) ) ) {
+				$params['lossy'] = 'lossy';
+			} else {
+				$params['lossy'] = 'lossless';
+			}
+		} else {
+			if ( ( strtolower( $data['page_data'][$params['page']]['alpha'] ) == 'true' ) ) {
+				$params['lossy'] = 'lossless';
+			} else {
+				$params['lossy'] = 'lossy';
+			}        
+		}
+
 		return true;
 	}
 
@@ -245,15 +235,14 @@ class PagedTiffHandler extends ImageHandler {
 	 */
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgImageMagickConvertCommand, $wgTiffMaxEmbedFileResolution, $wgTiffUseVips, $wgTiffVipsCommand;
-
 		$metadata = $image->getMetadata();
 
 		if ( !$metadata ) {
 			if ( $metadata == - 1 ) {
-				return $this->doThumbError( @$params['width'], @$params['height'], 'tiff_error_cached' ); # #test this ^DK
+				return $this->doThumbError( $params['width'], $params['height'], 'tiff_error_cached' ); # #test this ^DK
 				// $wgCacheType = CACHE_DB
 			}
-			return $this->doThumbError( @$params['width'], @$params['height'], 'tiff_no_metadata' );
+			return $this->doThumbError( $params['width'], $params['height'], 'tiff_no_metadata' );
 		}
 		if ( !$this->normaliseParams( $image, $params ) )
 			return new TransformParameterError( $params );
@@ -264,10 +253,6 @@ class PagedTiffHandler extends ImageHandler {
 		$srcPath = $image->getPath();
 		$page = intval( $params['page'] );
 
-		$extension = $this->getThumbExtension( $image, $page, $params['lossy'] );
-		$dstPath .= $extension;
-		$dstUrl .= $extension;
-
 		if ( $flags & self::TRANSFORM_LATER ) { //pretend the thumbnail exists, let it be created by a 404-handler
 			return new ThumbnailImage( $image, $dstUrl, $width, $height, $dstPath, $page );
 		}
@@ -275,7 +260,7 @@ class PagedTiffHandler extends ImageHandler {
 		$meta = unserialize( $metadata );
 
 		if ( !$this->extCheck( $meta, $error, $dstPath ) ) {
-			return $this->doThumbError( @$params['width'], @$params['height'], $error );
+			return $this->doThumbError( $params['width'], $params['height'], $error );
 		}
 
 		if ( is_file( $dstPath ) )
@@ -323,25 +308,14 @@ class PagedTiffHandler extends ImageHandler {
 	}
 
 	/**
-	 * Decides (taking lossy parameter into account) the filetype of the thumbnail.
-	 * If there is no lossy parameter (null = not set), the decision is made
-	 * according to the presence of an alpha value.
-	 * (alpha == true = png, alpha == false = jpg)
+	 * Get the thumbnail extension and MIME type for a given source MIME type
+	 * @return array thumbnail extension and MIME type
 	 */
-	function getThumbExtension( $image, $page, $lossy ) {
-		if ( $lossy === null ) {
-			$data = $this->getMetaArray( $image );
-			if ( ( strtolower( $data['page_data'][$page]['alpha'] ) == 'true' ) ) {
-				return '.png';
-			} else {
-				return '.jpg';
-			}
+	function getThumbType( $ext, $mime, $params ) {
+		if ( $params[ 'lossy' ] == 'lossy' ) {
+			return array( 'jpg', 'image/jpeg' );
 		} else {
-			if ( in_array( $lossy, array( 1, '1', 'true', 'lossy' ) ) ) {
-				return '.jpg';
-			} else {
-				return '.png';
-			}
+			return array( 'png', 'image/png' );
 		}
 	}
 

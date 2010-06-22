@@ -120,10 +120,10 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		// lossy and lossless
 		$params = array('width'=>'100', 'height'=>'100', 'page'=>'1');
 		$this->handler->normaliseParams($this->image, $params );
-		$this->assertEquals($params['lossy'], '1');
+		$this->assertEquals($params['lossy'], 'lossy');
 		$params = array('width'=>'100', 'height'=>'100', 'page'=>'2');
 		$this->handler->normaliseParams($this->image, $params );
-		$this->assertEquals($params['lossy'], '0');
+		$this->assertEquals($params['lossy'], 'lossless');
 		// makeParamString
 		$this->assertEquals(
 			$this->handler->makeParamString(
@@ -146,10 +146,15 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$error = $this->handler->doTransform( wfFindFile( Title::newFromText( 'Image:Caspian.tif' ) ), dirname( __FILE__ ) . '/testImages/caspian.tif', 'Caspian.tif', array( 'width' => 100, 'height' => 100 ) );
 		$this->assertEquals( $error->textMsg, wfMsg( 'thumbnail_error', wfMsg( 'tiff_bad_file' ) ) );
 		// ---- Image information
-		// getThumbExtension
-		$this->assertEquals( $this->handler->getThumbExtension( $this->image, 2, 1 ), '.jpg' );
-		// TODO: 0 is obviously the same as NULL
-		$this->assertEquals( $this->handler->getThumbExtension( $this->image, 2, '0' ), '.png' );
+		// getThumbType
+		$type = $this->handler->getThumbType( '.tiff', 'image/tiff', array( 'lossy' => 'lossy' ) );
+		$this->assertEquals( $type[0], 'jpg' );
+		$this->assertEquals( $type[1], 'image/jpeg' );
+
+		$type = $this->handler->getThumbType( '.tiff', 'image/tiff', array( 'lossy' => 'lossless' ) );
+		$this->assertEquals( $type[0], 'png' );
+		$this->assertEquals( $type[1], 'image/png' );
+
 		// getLongDesc
 		if ( $wgLanguageCode == 'de' ) {
 			$this->assertEquals( $this->handler->getLongDesc( $this->image ), wfMsg( 'tiff-file-info-size', '1.024', '768', '2,64 MB', 'image/tiff', '1' ) );
