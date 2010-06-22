@@ -6,25 +6,29 @@
  
 $messages = array();
  
-/** English
+/* English
  * @author Tisane
  */
 $messages['en'] = array(
-	'interwikiintegration' => 'Interwiki integration',
-	'interwikiintegration-desc' => 'Comprehensive interwiki integration',
-	'populateinterwikiintegrationtable' => 'Populate interwiki integration table',
-	'interwikiintegration-setuptext' => "The tables for $1 have been configured.
-Be sure to configure the tables on your other wikis as well.",
-	'right-integration' => 'Populate the interwiki integration table',
+	'integration' => 'InterwikiIntegration',
+	'integration-desc' => 'Comprehensive interwiki integration',
+        'populateinterwikiintegrationtable' => 'Populate interwiki integration table',
+        'populateinterwikiwatchlisttable' => 'Populate interwiki watchlist table',
+        'populateinterwikirecentchangestable' => 'Populate interwiki recent changes table',
+        'populateinterwikipagetable' => 'Populate interwiki page table',
+        'integration-setuptext' => '$1\'s tables have been configured. Be sure '
+            .'to configure the tables on your other wikis as well.',
+        'interwikiwatchlist-setuptext' => 'Interwiki watchlist tables have been '
+            .'populated.',
+        'interwikirecentchanges-setuptext' => 'Interwiki recentchanges tables have been '
+            .'populated.',
+        'interwikipage-setuptext' => 'Interwiki page tables have been '
+            .'populated.',
+        'interwikiwatchlist' => 'Interwiki watchlist',
+        'interwikirecentchanges' => 'Interwiki recent changes'
 );
 
-/** Message documentation (Message documentation)
- * @author Siebrand
- */
-$messages['qqq'] = array(
-	'interwikiintegration-setuptext' => 'Parameters:
-* $1 is the site name',
-);
+$aliases = array(); 
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko

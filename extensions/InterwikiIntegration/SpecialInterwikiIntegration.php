@@ -96,7 +96,7 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 		);
 		$dbw->insert ( 'integration_namespace', $newNamespaceRow);
 		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
-		$wgOut->addWikiMsg( 'interwikiintegration-setuptext', $wgSitename );
+		$wgOut->addWikiMsg( 'integration-setuptext', $wgSitename );
 		return;
 	}
 }
@@ -173,6 +173,44 @@ class PopulateInterwikiRecentChangesTable extends SpecialPage {
 		}
 		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 		$wgOut->addWikiMsg( 'interwikirecentchanges-setuptext' );
+		return;
+	}
+}
+
+/**
+ * A special page that populates the interwiki recent changes table.
+ */
+class PopulateInterwikiPageTable extends SpecialPage {
+	function __construct() {
+		parent::__construct( 'PopulateInterwikiPageTable', 'integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
+	}
+	
+	function execute( $par ) {
+		global $wgInterwikiIntegrationPrefix, $wgOut;
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete ( 'integration_page', '*' );
+		$dbList = array_unique ( $wgInterwikiIntegrationPrefix );
+		foreach ( $dbList as $thisDb ) {
+			$thisDbr = wfGetDB( DB_SLAVE, array(), $thisDb );
+			$pageRes = $thisDbr->select(
+				'page',
+				'*'
+			);
+			if( $pageRes->numRows() > 0 ) {
+				while( $row = $pageRes->fetchObject() ) {
+					foreach ( $row as $key => $value ) {
+						$newKey = "integration_" . $key;
+						$iPage[$newKey] = $value;
+					}
+					$iPage['integration_page_db'] = $thisDb;
+					$dbw->insert( 'integration_page', $iPage );
+				}
+			}
+		}
+		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+		$wgOut->addWikiMsg( 'interwikipage-setuptext' );
 		return;
 	}
 }

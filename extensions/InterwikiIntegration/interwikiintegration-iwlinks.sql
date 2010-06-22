@@ -3,7 +3,7 @@ BEGIN;
 -- Track all interwiki links on all wikis in this farm
 CREATE TABLE integration_iwlinks (
     -- integration_dbname of the referring wiki
-    integration_iwl_from_db varchar(256) binary NOT NULL,
+    integration_iwl_from_db varchar(255) binary NOT NULL,
 
     -- page_id of the referring page
     integration_iwl_from int unsigned NOT NULL default 0,
