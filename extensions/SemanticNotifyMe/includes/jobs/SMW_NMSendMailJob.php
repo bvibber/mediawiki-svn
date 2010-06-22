@@ -4,7 +4,7 @@
  *
  * This job is triggered whenever a notify-me page was saved or removed.
  *
- * @author dch
+ * @author ning
  *
  */
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -13,6 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 global $IP;
 require_once( "$IP/includes/JobQueue.php" );
 
+
 class SMW_NMSendMailJob extends Job {
 
 	/**
@@ -20,10 +21,10 @@ class SMW_NMSendMailJob extends Job {
 	 *
 	 * @param Title $title
 	 */
-	function __construct( $title, $params ) {
-		wfDebug( __METHOD__ . " " . get_class( $this ) . " \r\n" );
+	function __construct($title, $params) {
+		wfDebug(__METHOD__." ".get_class($this)." \r\n");
 		wfProfileIn( __METHOD__ );
-		parent::__construct( get_class( $this ), Title::newMainPage(), $params );
+		parent::__construct( get_class($this), Title::newMainPage(), $params);
 
 		wfProfileOut( __METHOD__ );
 	}
@@ -33,10 +34,10 @@ class SMW_NMSendMailJob extends Job {
 	 * @return boolean success
 	 */
 	function run() {
-		wfDebug( __METHOD__ );
+		wfDebug(__METHOD__);
 		wfProfileIn( __METHOD__ );
 
-		UserMailer::send( // userMailer(
+		UserMailer::send( //userMailer(
 			$this->params['to'],
 			$this->params['from'],
 			$this->params['subj'],
@@ -48,3 +49,4 @@ class SMW_NMSendMailJob extends Job {
 		return true;
 	}
 }
+?>
