@@ -115,7 +115,7 @@ $j(document).ready( function() {
 		positionFromLeft: $j( 'body' ).is( '.rtl' ),
 		highlightInput: true
 	} )
-		.bind( 'paste cut click', function() {
+		.bind( 'paste cut', function() {
 			$j( this ).trigger( 'keypress' );
 		} );
 	$j( '#searchInput' ).suggestions( {
@@ -153,7 +153,7 @@ $j(document).ready( function() {
 		},
 		$region: $j( '#simpleSearch' )
 	} )
-		.bind( 'paste cut click', function() {
+		.bind( 'paste cut', function() {
 			$j( this ).trigger( 'keypress' );
 		} );
 });
