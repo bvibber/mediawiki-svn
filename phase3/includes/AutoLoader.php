@@ -156,6 +156,7 @@ $wgAutoloadLocalClasses = array(
 	'Message' => 'includes/Message.php',
 	'MessageCache' => 'includes/MessageCache.php',
 	'MimeMagic' => 'includes/MimeMagic.php',
+	'Minify_CSS' => 'includes/Minify_CSS.php',
 	'MWException' => 'includes/Exception.php',
 	'MWMemcached' => 'includes/memcached-client.php',
 	'MWNamespace' => 'includes/Namespace.php',

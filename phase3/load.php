@@ -57,6 +57,7 @@ foreach ( $modules as $module ) {
 }
 
 // TODO: Cache-Control header
+// TODO: gziphandler
 header( 'Content-Type', 'text/javascript' );
 echo $loader->getOutput();
 

@@ -150,9 +150,12 @@ class ResourceLoader {
 				$script = file_get_contents( $mod['script'] );
 			}
 			if ( isset( $mod['style'] ) && file_exists( $mod['style'] ) ) {
-				$style = file_get_contents( $mod['style'] );
+				$css = file_get_contents( $mod['style'] );
 				if ( $this->useCSSJanus ) {
-					$css = $this->cssJanus( $style );
+					$css = $this->cssJanus( $css );
+				}
+				if ( $this->useCSSMin ) {
+					$css = $this->cssMin( $css, $mod['style'] );
 				}
 				$style = Xml::escapeJsString( $css );
 			}
@@ -186,17 +189,40 @@ class ResourceLoader {
 	}
 	
 	public function jsMin( $js ) {
-		return JSMin::minify( $js );
+		global $wgMemc;
+		$key = wfMemcKey( 'resourceloader', 'jsmin', md5( $js ) );
+		$cached = $wgMemc->get( $key );
+		if ( $cached !== false ) {
+			return $cached;
+		}
+		$retval = JSMin::minify( $js );
+		$wgMemc->set( $key, $retval );
+		return $retval;
 	}
 	
-	public function cssMin( $css ) {
-		// TODO: Implement
-		return $css;
+	public function cssMin( $css, $file ) {
+		global $wgMemc;
+		$key = wfMemcKey( 'resourceloader', 'cssmin', md5( $css ) );
+		$cached = $wgMemc->get( $key );
+		if( $cached !== false ) {
+			return $cached;
+		}
+		// TODO: Test how well this path rewriting stuff works with various setups
+		$retval = Minify_CSS::minify( $css, array( 'currentDir' => dirname( $file ), 'docRoot' => '.' ) ); 
+		$wgMemc->set( $key, $retval );
+		return $retval;
 	}
 	
 	public function cssJanus( $css ) {
-		// TODO: Implement
-		return $css;
+		global $wgMemc;
+		$key = wfMemcKey( 'resourceloader', 'cssjanus', md5( $css ) );
+		$cached = $wgMemc->get( $key );
+		if ( $cached !== false ) {
+			return $cached;
+		}
+		$retval = $css; // TODO: Actually flip
+		$wgMemc->set( $key, $retval );
+		return $retval;
 	}
 }
 
@@ -208,6 +234,7 @@ class MessageBlobStore {
 	 * @return array An array of incomplete JSON objects (i.e. without the {} ) containing messages keys and their values. Array keys are module names.
 	 */
 	public static function get( $lang, $modules ) {
+		// TODO: Invalidate blob when module touched
 		if ( !count( $modules ) ) {
 			return array();
 		}
@@ -226,9 +253,14 @@ class MessageBlobStore {
 		return $blobs;
 	}
 	
+	/**
+	 * Set the message blob for a given module in a given language
+	 * @param $lang string Language code
+	 * @param $module string Module name
+	 * @param $blob string Incomplete JSON object, see get()
+	 */
 	public static function set( $lang, $module, $blob ) {
 		$dbw = wfGetDb( DB_MASTER );
-		// TODO: Timestamp stuff to handle concurrency
 		$dbw->replace( 'msg_resource', array( array( 'mr_lang', 'mr_resource' ) ),
 			array( array(
 				'mr_lang' => $lang,
