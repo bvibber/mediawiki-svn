@@ -51,7 +51,7 @@ class ResourceLoaderOutputPage extends OutputPage {
 	 * @param $file String: filename in skins/common or complete on-server path
 	 *              (/foo/bar.js)
 	 */
-	public function addScriptFile( $file , $scriptRequestBucket = 'page' ) {
+	public function addScriptFile( $file , $resourceBucket = 'page' ) {
 		global $wgStylePath, $wgStyleVersion, $wgScript;
 		if( substr( $file, 0, 1 ) == '/' || preg_match( '#^[a-z]*://#i', $file ) ) {
 			$path = $file;
@@ -63,7 +63,7 @@ class ResourceLoaderOutputPage extends OutputPage {
 		if( $this->isResourceGroupingEnabled() ) {
 			$jsClass = $this->getResourceNameFromPath( $path );
 			if( $jsClass ) {
-				$this->addScriptClass( $jsClass, $scriptRequestBucket );
+				$this->addNamedResource( $jsClass, $resourceBucket );
 				return true;
 			}
 		}
@@ -141,7 +141,7 @@ class ResourceLoaderOutputPage extends OutputPage {
 
 		// Add site JS if enabled:
 		if( $wgUseSiteJs ) {
-			$this->addScriptClass( 'WT:-|useskin=' .
+			$this->addNamedResource( 'WT:-|useskin=' .
 			urlencode( $sk->getSkinName() ) .'|gen=js' );
 		}
 
@@ -183,11 +183,11 @@ class ResourceLoaderOutputPage extends OutputPage {
 	/**
 	 * Add a className to an output Bucket
 	 */
-	protected function addResourceToBucket( $resourceName, $bucket, $type = 'js' ){
-		if( ! isset( $this->mResourceList[ $type ][ $bucket ] ) ){
-			$this->mResourceList[ $type ][ $bucket ] = array();
+	protected function addNamedResourceToBucket( $resourceName, $bucket, $resourceType = 'js' ){
+		if( ! isset( $this->mResourceList[ $resourceType ][ $bucket ] ) ){
+			$this->mResourceList[ $resourceType ][ $bucket ] = array();
 		}
-		$this->mResourceList[ $type ][ $bucket ][] = $resourceName;
+		$this->mResourceList[ $resourceType ][ $bucket ][] = $resourceName;
 	}
 
 	/**
@@ -264,7 +264,7 @@ class ResourceLoaderOutputPage extends OutputPage {
 
 			$cssClass = $this->getResourceNameFromPath( $style );
 			if( $cssClass ) {
-				$this->addScriptClass( $cssClass, $bucketKey, 'css');
+				$this->addNamedResource( $cssClass, $bucketKey, 'css');
 				// Update the options for this script bucket. ( css has per-bucket options )
 				$this->setResourceBucketOptions( $bucketKey, $options );
 				return true;
@@ -306,7 +306,7 @@ class ResourceLoaderOutputPage extends OutputPage {
 		$this->setResourceBucketOptions( $bucketKey, $options );
 
 		if( $this->isResourceGroupingEnabled() ) {
-			$this->addScriptClass( $cssClass, $bucketKey, 'css');
+			$this->addNamedResource( $cssClass, $bucketKey, 'css');
 		} else {
 			$stylePath = $wgScriptPath . '/' .  ResourceLoader::getPathFromClass( $cssClass );
 
@@ -374,13 +374,8 @@ class ResourceLoaderOutputPage extends OutputPage {
 		global $wgExtensionJavascriptModules,
 		$wgResourceLoaderNamedPaths, $wgScriptPath;
 
-		// Set core Classes and styles:
-		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed'  );
-
-		// Include the core css
-		$this->addStyleClass( 'mw.style.mwCommon' );
-
-
+		// Set core Classes and styles and core css for javascript
+		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed', 'mw.style.mwCommon' );
 
 		// Merge in any scripts that have been set as "allpage"
 		// Since the all page are on every page view they should just be part of the core
@@ -403,13 +398,15 @@ class ResourceLoaderOutputPage extends OutputPage {
 			// No ResourceLoader manually add classes that are normally part of mwEmbed core request.
 			$so = '';
 			foreach( $coreClasses as $resourceName ){
-				$this->addScriptClass( $resourceName );
+				// When not using the script loader mw.style resource names should be included as css:
+				$resourceType = ( strpos( $resourceName, 'mw.style' ) === false )? 'js' : 'css';
+				$this->addNamedResource( $resourceName, 'allpage',  $resourceType);
 			}
 
 			// Add the mwEmbed "core-components" ( language, parsing etc. )
 			$coreComponets = NamedResourceLoader::getComponentsList();
 			foreach( $coreComponets as $resourceName ) {
-				$this->addScriptClass( $resourceName );
+				$this->addNamedResource( $resourceName );
 			}
 
 			// Also add the "loader" classes
@@ -420,9 +417,9 @@ class ResourceLoaderOutputPage extends OutputPage {
 				$this->addScript(  Html::inlineScript(
 					"mw.setConfig( 'loaderContext',  '" . xml::escapeJsString( $wgScriptPath .'/'. $loaderDir  ) . "');"
 					) );
-					$this->addScriptFile(
-					"$wgScriptPath/$modulePath/loader.js"
-					);
+				$this->addScriptFile(
+				"$wgScriptPath/$modulePath/loader.js"
+				);
 			}
 		}
 		//Now re-append any scripts that got added prior to the includeJQuery call
@@ -511,14 +508,14 @@ class ResourceLoaderOutputPage extends OutputPage {
 	}
 
 	/**
-	 * Add a named script class to the output page
+	 * Add a named resource to the output page
 	 *
 	 * @param $resourceName String Name of the resource
-	 * @param $scriptRequestBucket Name of bucket for the class
-	 * @param $type 'js' or 'css' for type of head item being included
+	 * @param $resourceBucket Name of bucket for the class
+	 * @param $resourceType 'js' or 'css' for type of head item being included
 	 * @return boolean False if the class wasn't found, True on success
 	 */
-	function addScriptClass( $resourceName, $scriptRequestBucket = 'page' , $type='js') {
+	function addNamedResource( $resourceName, $resourceBucket = 'page' , $resourceType='js') {
 		global $wgDebugJavaScript, $wgResourceLoaderNamedPaths, $IP, $wgStyleVersion, $wgScriptPath, $wgStylePath,
 		$wgUser;
 
@@ -530,7 +527,7 @@ class ResourceLoaderOutputPage extends OutputPage {
 		if ( substr( $resourceName, 0, 3 ) == 'WT:' ) {
 			if( $this->isResourceGroupingEnabled() ) {
 				// Add to the mResourceList list
-				$this->addResourceToBucket( $resourceName, $scriptRequestBucket, $type);
+				$this->addNamedResourceToBucket( $resourceName, $resourceBucket, $resourceType);
 				return true;
 			} else {
 
@@ -562,10 +559,11 @@ class ResourceLoaderOutputPage extends OutputPage {
 				throw new MWException( ' scriptLoader could not find class: ' . $resourceName . "\n");
 				return false; // could not find the class
 			}
+
 			// Valid path add it to resource loader or "link" directly
 			if( $this->isResourceGroupingEnabled() ) {
 				// Register it with the script loader
-				$this->addResourceToBucket( $resourceName, $scriptRequestBucket, $type );
+				$this->addNamedResourceToBucket( $resourceName, $resourceBucket, $resourceType );
 				return true;
 			} else {
 				// Source the script directly
@@ -578,11 +576,14 @@ class ResourceLoaderOutputPage extends OutputPage {
 				} else {
 					$path = $wgScriptPath . '/' . $path;
 				}
-				$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $resourceName ) ) );
+				if( $resourceType == 'js' ){
+					$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $resourceName ) ) );
+				} else {
+
+				}
 			}
 		}
 
-		// Included script without resource loader
 		// Generate the localized msgs inline since we can't rely on ResourceLoader to localize
 		$inlineMsg = $this->mResourceLoader->getResourceMessageJS( $resourceName );
 		if( $inlineMsg != '' ) {

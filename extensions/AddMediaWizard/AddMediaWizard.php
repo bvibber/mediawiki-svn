@@ -54,7 +54,7 @@ class AddMediaWizard {
 	public static function addJS( $toolbar) {
 		global $wgOut;
 		// Add the AMWEditPage activator to the edit page in the "page" script bucket
-		$wgOut->addScriptClass( 'AMWEditPage', 'page' );
+		$wgOut->addNamedResource( 'AMWEditPage', 'page' );
 		return true;
 	}
 }

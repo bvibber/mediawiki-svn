@@ -1,0 +1,315 @@
+<html>
+<head>
+<title>Test parallel module loading </title>
+<style>
+td{
+	border:solid thin black;
+}
+</style>
+<script type="text/javascript" >
+// Parse the url parts
+var urlParts = document.URL.split('?');
+var urlParams ={};
+if( urlParts[1] ){
+	
+	var urlArgs = urlParts[1].split( '&');	
+	for( var i in urlArgs ){
+		var tmp = urlArgs[i].split('=');
+		urlParams [ tmp[0] ] = tmp[1];
+	}
+}
+// Add the core script include: 
+var resourceLoaderPath = '../mwResourceLoader.php';
+
+// add core class list: 
+coreParam = '?class=window.jQuery,mwEmbed,mw.style.mwCommon';
+if( !urlParams['enableMin'] ){
+	coreParam+='&debug=true';
+}
+// Write out the resource ( blocking ) 
+document.write('<script type="text/javascript" src="' + resourceLoaderPath + coreParam + '"><\/script>');
+
+</script>
+<script type="text/javascript" >
+	var loaderTestCheckBoxes = ['useResourceLoader', 'enableMin' ];
+	// Set some dependent globals 
+	wgScriptPath = '';
+	
+	// These should be part of default config in the loader.js
+	var wgWikiEditorEnabledModules = {
+		"highlight": true,
+		"preview": true,
+		"toc": true,
+		"toolbar": true,
+		"global": true
+	}
+	var wgWikiEditorPreferences = {
+		"highlight": {
+			"enable": "1"
+		},
+		"preview": {
+			"enable": "1"
+		},
+		"toc": {
+			"enable": "1"
+		},
+		"toolbar": {
+			"enable": "1",
+			"dialogs": "1"
+		}
+	};
+	var stylepath = '';
+	var wgUserLanguage ='en';
+	var wgWikiEditorIconVersion=0;
+	
+	
+
+	// Start timmer
+	var loaderStartTime = new Date().getTime()
+		 
+	// Output any inline resource list 	
+	
+	// Helper function: 
+	function getFlatModuleResourceList( moduleName ){
+		var resourceList = mw.loader.getModuleResourceSet( moduleName );
+		if( resourceList ) {
+			if( typeof  resourceList[0]  != 'object' ){
+				return resourceList;
+			} else {
+				var flatResourceList = [];				
+				for( var i in resourceList ) {
+					resourceSet = resourceList[i];
+					flatResourceList = $j.merge( flatResourceList, resourceSet ); 
+				}
+				return flatResourceList;
+			}
+		} else {
+			return false;
+		}
+	}
+		
+	// Output all inline modules: 
+	if( urlParams[ 'inlineModules' ] ){
+		var inlineModules = urlParams[ 'inlineModules' ].split(',');
+		
+		var resourceList  = [];
+		var globalIncludedResourceList = [];
+				
+		if( urlParams['groupStrategy'] ==  'single' ){
+			for( i in inlineModules  ){ 
+				resourceList = $j.merge( resourceList, getFlatModuleResourceList( inlineModules[i] ) );
+			}
+			document.write('<script type="text/javascript" src="' + 
+				resourceLoaderPath + '?class=' + resourceList.join(',')  + '"><\/script>');
+			
+		} else if ( urlParams[ 'groupStrategy' ] == 'module' ){
+			var globalResourceList = [];
+			for( i in inlineModules  ) {
+				var resourceList = getFlatModuleResourceList( inlineModules[i] );
+				var requestResourceList = [];
+				for( var i in resourceList ){
+					resourceName = resourceList[i];
+					if( !globalResourceList[ resourceName ] ) {
+						requestResourceList.push( resourceName );
+					}
+					globalResourceList[ resourceName ] = true;
+				}
+				if( resourceList ){
+					document.write('<script type="text/javascript" src="' + 
+					resourceLoaderPath + '?class=' + requestResourceList.join(',')  + '"><\/script>');
+				}			
+			}
+		}
+	}
+	
+	// Get dynamic module list:	
+	mw.ready( function(){		
+		if( inlineModules ) {
+			// Set time for inline modules
+			$j( '#resultsOutput').append( 
+				$j( '<br/>' ),
+				$j('<div />')
+				.css( {
+					'width' : '600px',
+					'background': '#9F9'
+				})
+				.text( 
+					'Inline Output and loading of ' + inlineModules.length + ' modules in ' + 
+						Math.round( ( new Date().getTime() - loaderStartTime  ) * 1000 ) / 1000 + 'ms'
+				),
+				$j( '<br/>' )
+			)
+		}
+		
+		if( urlParams[ 'dynamicModules' ] ){
+			
+			var dynamicLoadStartTime = new Date().getTime();		
+			var dynamicModules = urlParams[ 'dynamicModules' ].split( ',' );
+			if( urlParams['groupStrategy'] ==  'single' ){
+				mw.setConfig( 'loader.groupStrategy', 'single' );
+			} else {
+				mw.setConfig( 'loader.groupStrategy', 'module' );
+			}	
+			mw.load( dynamicModules, function(){
+				// Done loading all dynamic modules 
+				$j( '#resultsOutput').append( 
+					$j('<div />')
+					.css( {
+						'width' : '600px',
+						'background': '#FF9'
+					})
+					.text( 
+						'Dynamic loading of ' + dynamicModules.length + ' modules in ' + 
+							Math.round( ( new Date().getTime() - dynamicLoadStartTime ) * 1000 ) / 1000 + 'ms'
+					),
+					$j( '<br/>' )
+				)
+			} );			
+		}
+	});	
+	
+	// Read document.url for 'resourceNames' to be loaded at page time
+
+	// Setup runTest binding 
+	mw.ready( function(){
+	
+		// Update select
+		if( urlParams['percentDynamic'] ){
+			// Unselect current	
+			$j( '#percentDynamic option:selected' ).attr( 'selected', false );
+				
+			$j( "#percentDynamic option[value='" + parseInt( urlParams['percentDynamic'] ) + "']" )
+				.attr('selected', 'selected' );
+		}
+		// Update check boxes
+		for( var i in loaderTestCheckBoxes ){
+			var boxId = loaderTestCheckBoxes[i];
+			if( urlParams[ boxId ] ){
+				$j('#' + boxId ).attr('checked', 'checked');
+			} else {
+				$j('#' + boxId ).attr( 'checked', null );
+			}
+		}
+		// update num modules: 
+		if(	urlParams['numModules'] ){
+			$j('#numModules').val( urlParams['numModules'] );
+		}
+		
+		
+	
+		$j('#runTest').click(function(){
+			$j( this )
+				.val( 'building request ...')
+				.attr('disabled', 'true')
+				
+			// Setup the request arguments var: 
+			var urlArgs = '?runLoaderTest=1';
+			// Build the url for the current set of tests:	
+			if( $j('#useResourceLoader').attr('checked') ){
+				urlArgs +='useResourceLoader=1';
+			}
+			
+			if( $j('#randomModuleOrder').attr('checked') ){
+				urlArgs += '&randomModuleOrder=1';
+			}
+			if( $j('#enableMin').attr('checked' ) ){
+				urlArgs+= '&enableMin=1';
+			}
+			
+			if( $j('#numModules').val() == 'all' ){
+				urlArgs += '&numModules=all'
+			}
+			if( !isNaN ( parseInt( $j('#numModules').val() ) ) ) {
+				urlArgs += '&numModules=' + parseInt( $j('#numModules').val() );
+			}					
+			// add percentage dynamic to the request
+			urlArgs +='&percentDynamic=' + parseInt( $j( '#percentDynamic option:selected' ).val() );
+			
+			// Add groupStrategy
+			urlArgs += '&groupStrategy=' + $j( '#groupStrategy option:selected ' ).val();
+						
+			
+			
+			// local randomOrder function
+			function randOrd(){
+				return (Math.round(Math.random())-0.5); 
+			} 
+			
+			// Build the set of module names: 
+			var moduleSet = [];
+			for( var modKey in mw.loader.moduleLoaders ){
+				moduleSet.push( modKey );
+			}
+			
+			// Randomize the order if requested
+			if(  $j('#useResourceLoader').attr('checked')  ){
+				var moduleSet =  moduleSet.sort( randOrd );
+			} 
+			
+			var percentInline = $j( '#percentDynamic option:selected ' ).val();
+			
+			var inlineBucket = [];
+			var dynamicBucket = [];			
+			// Check if a module should be inline or dynamic  
+			for( var i in  moduleSet ) {
+				if( moduleSet[i]){
+					if( ( i / moduleSet.length )  * 100 < percentInline ){
+						dynamicBucket.push( moduleSet[i] );
+					}else{
+						inlineBucket.push(  moduleSet[i] );
+					}				
+				}
+			}			
+			urlArgs += '&dynamicModules=' + dynamicBucket.join(',');
+			urlArgs += '&inlineModules=' + inlineBucket.join(',');
+			
+			// Refresh the page: 
+			document.location.href =  urlParts[0] + urlArgs;
+		});
+	});
+</script>
+</head>
+<body>
+<h3>Test parallel module loading </h3>
+<table id="loaderConfig" style="font-size:small">
+<tr>
+
+	<td style="width:30px"> <input id="enableMin" type="checkBox" checked></td>
+	<td style="width:250px"> Enable Minification / cache </td>	
+	
+	<td style="width:150px">  
+		<select id="percentDynamic" >
+			<option value="0">All inline</option>
+			<option value="25" selected>75% inline</option>
+			<option value="50">50% inline</option>
+			<option value="75">25% inline</option>
+			<option value="100">All dynamic loading</option>
+		</select>
+	</td>
+	<td style="width:150px"> Percentage Inline vs Dynamic </td>		
+	
+</tr>
+<tr>
+	<td style="width:30px"> <input id="numModules" type="text" size="4" value="all"></td>
+	<td style="width:250px"> Number of Random Modules or 'all'  </td>
+	
+	<td style="width:150px">  
+		<select id="groupStrategy" >
+			<option value="single">Least requests possible</option>
+			<option value="module" selected>Group per module</option>			
+		</select>
+	</td>
+	<td style="width:150px"> Grouping strategy</td>
+</tr>
+<tr>
+<td style="width:30px"> <input id="randomModuleOrder" type="checkBox" checked></td>
+	<td style="width:250px"> Random Module order </td>
+</tr>
+</table> 
+<input type="button" id="runTest" value="Run Test">
+
+<div id="resultsOutput">
+</div>
+
+</body>
+</html>

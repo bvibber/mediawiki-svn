@@ -63,11 +63,11 @@
 		
 	/**
 	* Load messages for a given named javascript class.
-	* This worked in concunktion with the scriptLoader  
+	* This worked in with the resourceLoader  
 	* @param {string} className Name of class file to be loaded
 	* @param {function} callback Function to be called once class messages are loaded. 
 	*/ 
-	mw.loadClassMessages = function( className, callback ) {		
+	mw.loadResourceMessages = function( className, callback ) {		
 		// Check if wgScriptLoaderPath is set ( else guess the path relative to mwEmbed)
 		if ( typeof wgScriptLoaderLocation == 'undefined' || ! wgScriptLoaderLocation ){
 			wgScriptLoaderLocation = mw.getMwEmbedPath() + 'ResourceLoader.php';
