@@ -1,6 +1,8 @@
 <?php
 require_once 'PHPUnit/Framework.php';
-require_once 'PHPUnit/TextUI/TestRunner.php';
+require_once 'PHPUnit/Framework/TestSuite.php';
+
+require_once 'WikiListener.php';
 
 require_once 'WikSearch_TC.php';
 require_once 'WikiWatchUnWatch_TC.php';
@@ -15,18 +17,16 @@ require_once 'WikiDialogs_NewPage.php';
 require_once 'WikiToolBarOther_NewPage.php';
 require_once 'WikiTextFormat_NewPage.php';
 
+$suite = new PHPUnit_Framework_TestSuite('ArrayTest');
 
-$suite = new PHPUnit_Framework_TestSuite('Wiki Tests');
+$result = new PHPUnit_Framework_TestResult;
+$result->addListener(new WikiListener);
 
-require_once('WikiListener.php');
-$wLis = new WikiListener();
-$result = new PHPUnit_Framework_TestResult();
-//Add test case to the test suite
-$suite->addTestSuite("WikSearch_TC");
-$suite->addTestSuite("WikiWatchUnWatch_TC");
+$suite->addTestSuite('WikiSearch_TC'); // Working in Chrome
+$suite->addTestSuite('WikiWatchUnWatch_TC');  // Working in Chrome
 
-$suite->addTestSuite("WikiNTOC_ ExistingPage");
-$suite->addTestSuite("WikiDialogs_ExsistingPage");
+$suite->addTestSuite("WikiNTOC_ExistingPage"); // Working in Chrome
+$suite->addTestSuite("WikiDialogs_ExsistingPage"); 
 $suite->addTestSuite("WikiToolBarOther_ExistingPage");
 $suite->addTestSuite("WikiTextFormat_ExistingPage");
 
@@ -35,7 +35,5 @@ $suite->addTestSuite("WikiDialogs_NewPage");
 $suite->addTestSuite("WikiToolBarOther_NewPage");
 $suite->addTestSuite("WikiTextFormat_NewPage");
 
-//$result->addListener($wLis); //Define your listener which the test result will use to give output
-$suite->run($result); //And of course run this tests
-
+$suite->run($result);
 ?>

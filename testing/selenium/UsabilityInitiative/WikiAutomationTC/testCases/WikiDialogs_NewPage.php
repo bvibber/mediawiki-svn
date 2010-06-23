@@ -60,7 +60,7 @@ class WikiDialogs_NewPage extends WikiDialogs_TC {
        parent::doLogout();
     }
 
-    // Add a table and verify
+   // Add a table and verify
     function testCreateTable(){
        $this->createNewPage();
        parent::verifyCreateTable();
@@ -95,6 +95,13 @@ class WikiDialogs_NewPage extends WikiDialogs_TC {
        parent::doLogout();
     }
 
+     // Add a table with headers,borders and sort rows
+    function testCreateTableWithAllSpecialEffects(){
+        $this->createNewPage();
+       parent::verifyCreateTableWithAllSpecialEffects();
+       parent::doLogout();
+    }
+
      // Verify the replace all function on Search and Replace
      function testTextSearchReplaceAll(){
        $this->createNewPage();
@@ -107,13 +114,28 @@ class WikiDialogs_NewPage extends WikiDialogs_TC {
        $this->createNewPage();
        parent::verifyTextSearchReplaceNext();
        parent::doLogout();
-    }
+    } 
 
-    // When user click on find, text highlight on back which is not captured in Selenium directly. */
+    /*// When user click on find, text highlight on back which is not captured in Selenium directly.
     function testTextSearchFindNext(){
        $this->createNewPage();
        parent::verifyTextSearchFindNext();
        parent::doLogout();
+    }*/
+
+    // Verify the Match Case option with Replace All on Search and Replace
+    function testTextMatchCase(){
+       $this->createNewPage();
+       parent::verifyTextMatchCase();
+       parent::doLogout();
     }
+
+     //Verify Regular expression option with Replace All on Search and Replace
+    function testRegEx(){
+       $this->createNewPage();
+       parent::verifyRegEx();
+       parent::doLogout();
+    }
+
 }
 ?>

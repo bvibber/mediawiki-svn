@@ -12,7 +12,6 @@ class WikiToolBarOther_NewPage extends WikiToolBarOther_TC {
         parent::setUp();
     }
 
-
      //Create a new page temporary
     function createNewPage(){
        parent::doOpenLink();
@@ -22,8 +21,15 @@ class WikiToolBarOther_NewPage extends WikiToolBarOther_TC {
 
      // Click on Embedded file function and verify the output
     function testEmbeddedFile(){
-        $this->createNewPage();
+       $this->createNewPage();
        parent::verifyEmbeddedFile();
+       parent::doLogout();
+    }
+
+    //Create a reference and verify the output
+    function testReferenceLink(){
+       $this->createNewPage();
+       parent::verifyReference();
        parent::doLogout();
     }
 

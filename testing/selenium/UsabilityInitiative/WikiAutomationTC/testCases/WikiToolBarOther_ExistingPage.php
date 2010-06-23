@@ -28,6 +28,14 @@ class WikiToolBarOther_ExistingPage  extends WikiToolBarOther_TC {
        parent::doLogout();
     }
 
+    //Create a reference and verify the output
+    function testReferenceLink(){
+       $this->openRandomPage();
+       parent::verifyReference();
+       parent::doLogout();
+    }
+
+
     // Click on Picture Gallery function and verify the output
     function testPictureGallery(){
        $this->openRandomPage();

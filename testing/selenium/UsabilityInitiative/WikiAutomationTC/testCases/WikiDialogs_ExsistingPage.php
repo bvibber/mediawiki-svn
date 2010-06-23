@@ -25,7 +25,8 @@ class WikiDialogs_ExsistingPage  extends WikiDialogs_TC  {
        parent::doLogout();
     }
 
-     // Add a internal link with different display text and verify
+    
+    // Add a internal link with different display text and verify
     function testInternalLinkWithDisplayText(){
        $this->openRandomPage();
        parent::verifyInternalLinkWithDisplayText();
@@ -95,6 +96,12 @@ class WikiDialogs_ExsistingPage  extends WikiDialogs_TC  {
        parent::doLogout();
     }
 
+    // Add a table with headers,borders and sort rows
+    function testCreateTableWithAllSpecialEffects(){
+       $this->openRandomPage();
+       parent::verifyCreateTableWithAllSpecialEffects();
+       parent::doLogout();
+    }
      // Verify the replace all function on Search and Replace
      function testTextSearchReplaceAll(){
        $this->openRandomPage();
@@ -109,8 +116,8 @@ class WikiDialogs_ExsistingPage  extends WikiDialogs_TC  {
        parent::doLogout();
     }
 
-    // When user click on find, text highlight on back which is not captured in Selenium directly. */
-   /* function testTextSearchFindNext(){
+    // When user click on find, text highlight on back which is not captured in Selenium directly. 
+    function testTextSearchFindNext(){
        parent::doOpenLink();
        parent::doLogin();
        $this->open("/deployment-en/Main_Page");
@@ -118,6 +125,20 @@ class WikiDialogs_ExsistingPage  extends WikiDialogs_TC  {
        parent::doAccessRandomPage();
        parent::verifyTextSearchFindNext();
        parent::doLogout();
-    }*/
+    }
+
+     // Verify the Match Case option with Replace All on Search and Replace
+    function testTextMatchCase(){
+       $this->openRandomPage();
+       parent::verifyTextMatchCase();
+       parent::doLogout();
+    }
+
+     //Verify Regular expression option with Replace All on Search and Replace
+    function testRegEx(){
+       $this->openRandomPage();
+       parent::verifyRegEx();
+       parent::doLogout();
+    } 
 }
 ?>

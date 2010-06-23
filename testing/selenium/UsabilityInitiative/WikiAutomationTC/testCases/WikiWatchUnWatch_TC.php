@@ -1,7 +1,6 @@
 <?php
-session_start();
 require_once 'WikiCommonFunction_TC.php';
-require_once 'Config.php';
+include 'Config.php';
 /**
  * This test case will be handling the page watch functions.
  * Date : Apr - 2010
@@ -17,14 +16,13 @@ class WikiWatchUnWatch_TC  extends WikiCommonFunction_TC {
     function testWatch(){
         parent::doOpenLink();
         parent::doLogin();
-        $this->click("link=Random article");      
-        $this->waitForPageToLoad("30000");
-        $randompage = $this->getText("firstHeading");
-        $this->click("link=Watch");
-        $this->click("link=My watchlist");
-        $this->waitForPageToLoad("30000");
-        $this->click("link=View and edit watchlist");
-        $this->waitForPageToLoad("30000");
+        parent::doAccessRandomPage();
+        $randompage = $this->getText(TEXT_PAGE_HEADING);
+        $this->click(LINK_WATCH_PAGE);
+        $this->click(LINK_WATCH_LIST);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
+        $this->click(LINK_WATCH_EDIT);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
         try {
             $this->assertTrue($this->isTextPresent($randompage));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -38,25 +36,23 @@ class WikiWatchUnWatch_TC  extends WikiCommonFunction_TC {
 
     // Mark a page as watch and mark the same page as unwatch and verify the My Watch list
     function testUnWatch(){
-
-       parent::doOpenLink();
+        parent::doOpenLink();
         parent::doLogin();
-        $this->click("link=Random article");
-        $this->waitForPageToLoad("30000");
-        $randompage = $this->getText("firstHeading");
-        $this->click("link=Watch");
-        $this->click("link=My watchlist");
-        $this->waitForPageToLoad("30000");
-        $this->click("link=View and edit watchlist");
-        $this->waitForPageToLoad("30000");
+        parent::doAccessRandomPage();
+        $randompage = $this->getText(TEXT_PAGE_HEADING);
+        $this->click(LINK_WATCH_PAGE);
+        $this->click(LINK_WATCH_LIST);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
+        $this->click(LINK_WATCH_EDIT);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
         $this->assertTrue($this->isTextPresent($randompage));
-        $this->click("link=" . $randompage);
-        $this->waitForPageToLoad("30000");
-        $this->click("link=Unwatch");
-        $this->click("link=My watchlist");
-        $this->waitForPageToLoad("30000");
-        $this->click("link=View and edit watchlist");
-        $this->waitForPageToLoad("30000");
+        $this->click(LINK_START . $randompage);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
+        $this->click(LINK_UNWATCH);
+        $this->click(LINK_WATCH_LIST);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
+        $this->click(LINK_WATCH_EDIT);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
         try {
             $this->assertFalse($this->isTextPresent($randompage));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -72,26 +68,27 @@ class WikiWatchUnWatch_TC  extends WikiCommonFunction_TC {
         parent::doOpenLink();
         parent::doLogin();
         parent::doAccessRandomPage();
-        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
-        $randompage = $this->getText("firstHeading");
+        $randompage = $this->getText(TEXT_PAGE_HEADING);
         parent::doEditPage();
         try {
-        $this->assertEquals("Watch", $this->getText("link=Watch"));
+        $this->assertEquals(TEXT_WATCH, $this->getText(LINK_WATCH_PAGE));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
-        $this->click("wpWatchthis");
-        $this->click("wpSave");
-        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
+        $this->click(BUTTON_WATCH);
+        $this->click(BUTTON_SAVE_WATCH);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
         try {
-            $this->assertEquals("Unwatch", $this->getText("link=Unwatch"));
+            $this->assertEquals(TEXT_UNWATCH, $this->getText(LINK_UNWATCH));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
-        $this->click("link=My watchlist");
-        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
-        $this->click("link=View and edit watchlist");
-        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
+        $this->click(LINK_WATCH_LIST);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
+        $this->click(LINK_WATCH_EDIT);
+        $this->waitForPageToLoad(WIKI_TEST_WAIT_TIME);
         $this->assertTrue($this->isTextPresent($randompage));
 
         parent::doLogout();
