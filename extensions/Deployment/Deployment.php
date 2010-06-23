@@ -36,13 +36,11 @@ function efDeploymentSetup() {
 	
 	$wgExtensionCredits['other'][] = array(
 		'path' => __FILE__,
-		'name' => wfMsg( 'deployment-name' ),
+		'name' => 'Deployment',
 		'version' => Deployment_VERSION,
-		'author' => array(
-			'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
-		),
+		'author' => '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Deployment',
-		'description' => wfMsg( 'deployment-desc' ),
+		'descriptionmsg' => 'deployment-desc',
 	);	
 	
 }

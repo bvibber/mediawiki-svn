@@ -16,6 +16,5 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'deployment-name' => 'Deployment',
-	'deployment-desc' => 'Provides a way to install extensions via GUI and update them and your wiki itself via another GUI.',
+	'deployment-desc' => 'Provides a way to install extensions via GUI and update them and the wiki itself via another GUI',
 );
