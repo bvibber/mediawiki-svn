@@ -192,7 +192,7 @@ class ResourceLoader {
 		global $wgMemc;
 		$key = wfMemcKey( 'resourceloader', 'jsmin', md5( $js ) );
 		$cached = $wgMemc->get( $key );
-		if ( $cached !== false ) {
+		if ( $cached !== false && $cached !== null ) {
 			return $cached;
 		}
 		$retval = JSMin::minify( $js );
