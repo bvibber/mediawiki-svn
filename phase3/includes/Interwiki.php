@@ -17,10 +17,11 @@ class Interwiki {
 
 	protected $mPrefix, $mURL, $mAPI, $mLocal, $mTrans;
 
-	public function __construct( $prefix = null, $url = '', $api = '', $local = 0, $trans = 0 ) {
+	public function __construct( $prefix = null, $url = '', $api = '', $dbname = '', $local = 0, $trans = 0 ) {
 		$this->mPrefix = $prefix;
 		$this->mURL = $url;
 		$this->mAPI = $api;
+		$this->mDBname = $dbname;
 		$this->mLocal = $local;
 		$this->mTrans = $trans;
 	}
@@ -169,10 +170,12 @@ class Interwiki {
 	 * @return Boolean: whether everything was there
 	 */
 	protected static function loadFromArray( $mc ) {
-		if( isset( $mc['iw_url'] ) && isset( $mc['iw_api'] ) && isset( $mc['iw_local'] ) && isset( $mc['iw_trans'] ) ) {
+		if( isset( $mc['iw_url'] ) && isset( $mc['iw_api'] ) && isset( $mc['iw_dbname'] )
+				 && isset( $mc['iw_local'] ) && isset( $mc['iw_trans'] ) ) {
 			$iw = new Interwiki();
 			$iw->mURL = $mc['iw_url'];
 			$iw->mAPI = $mc['iw_api'];
+			$iw->mDBname = $mc['iw_dbname'];
 			$iw->mLocal = $mc['iw_local'];
 			$iw->mTrans = $mc['iw_trans'];
 			return $iw;
@@ -200,9 +203,16 @@ class Interwiki {
 	 * @return String: the URL
 	 */
 	public function getAPI( ) {
-		$url = $this->mAPI;
+		return $this->mAPI;
+	}
 
-		return $url;
+	/**
+	 * Get the DB name for this wiki
+	 * 
+	 * @return String: the DB name
+	 */
+	public function getDBname( ) {
+		return $this->mDBname;
 	}
 
 	/**

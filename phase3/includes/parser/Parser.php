@@ -3055,7 +3055,7 @@ class Parser {
 				//	$text = $this->interwikiTransclude( $title, 'render' );
 				//	$isHTML = true;
 				//} else {
-					$text = $this->interwikiTransclude( $title, 'raw' );
+					$text = $this->interwikiTransclude( $title );
 					# Preprocess it like a template
 					$text = $this->preprocessToDom( $text, self::PTD_FOR_INCLUSION );
 					$isChildObj = true;
@@ -3273,15 +3273,17 @@ class Parser {
 	 * Transclude an interwiki link.
 	 * TODO: separate in interwikiTranscludeFromDB & interwikiTranscludeFromAPI according to the iw type 
 	 */
-	function interwikiTransclude( $title, $action ) {
+	function interwikiTransclude( $title ) {
 		
 		global $wgEnableScaryTranscluding;
 
 		if ( !$wgEnableScaryTranscluding ) {
 			return wfMsg('scarytranscludedisabled');
 		}
+		
+		$fullTitle = $title->getNsText().':'.$title->getText();
 
-		$url1 = $title->getTransAPI( )."?action=query&prop=revisions&titles=$titles&rvprop=content&format=json";
+		$url1 = $title->getTransAPI( )."?action=query&prop=revisions&titles=$fullTitle&rvprop=content&format=json";
 
 		if ( strlen( $url1 ) > 255 ) {
 			return wfMsg( 'scarytranscludetoolong' );
@@ -3289,8 +3291,7 @@ class Parser {
 		
 		$text = $this->fetchTemplateMaybeFromCache( $url1 );
 
-		$titles = $title->getNsText().':'.$title->getText();		
-		$url2 = $title->getTransAPI( )."?action=parse&text={{".$titles."}}&prop=templates&format=json";
+		$url2 = $title->getTransAPI( )."?action=parse&text={{".$fullTitle."}}&prop=templates&format=json";
 		
 		$get = Http::get( $url2 );
 		$myArray = FormatJson::decode($get, true);
@@ -3313,7 +3314,7 @@ class Parser {
 
 		}
 
-		return "<h2>$titles</h2><pre>$text</pre> List of templates: <pre>".$listSubTemplates.'</pre>' . $list2;
+		return "<h2>$fullTitle</h2><pre>$text</pre> List of templates: <pre>".$listSubTemplates.'</pre>' . $list2;
 	}
 	
 	
