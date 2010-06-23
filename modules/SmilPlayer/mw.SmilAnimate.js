@@ -94,9 +94,9 @@ mw.SmilAnimate.prototype = {
 			mw.log( "b:" + begin +" < " + animateTime + " && b+d: " + ( begin + duration ) + " > " + animateTime );
 			
 			// Check if the animate element is in range
-			var cssTransform = {};
-			if( begin < animateTime && ( begin + duration ) > animateTime ) {
-				// Get the tranform type: 
+			var cssTransform = {};			
+			if( begin <= animateTime && ( begin + duration ) >= animateTime ) {
+				// Get the transform type: 
 				switch( $j( animateElement ).attr('attributeName') ){
 					case 'panZoom':						
 						// Get the pan zoom css for "this" time 
@@ -129,12 +129,12 @@ mw.SmilAnimate.prototype = {
 		// Get target panZoom for given animateTime 
 		var animatePoints = $j( animateElement ).attr('values').split( ';' );
 		
-		// Get the target intepreted value
-		var targetValue = this.getInterpetedPointsValue( animatePoints, relativeAnimationTime, duration );
+		// Get the target interpreted value
+		var targetValue = this.getInterpolatePointsValue( animatePoints, relativeAnimationTime, duration );
 								
 		// Let Top Width Height
 		// translate values into % values
-		// NOTE this is depenent on the media being "loaded" and having natural width and height
+		// NOTE this is dependent on the media being "loaded" and having natural width and height
 		var namedValueOrder = ['left', 'top', 'width', 'height' ];
 		var htmlAsset = $j( '#' + this.smil.getAssetId( smilImgElement ) ).get(0);
 		
@@ -157,8 +157,7 @@ mw.SmilAnimate.prototype = {
 		}		
 		
 		// Now we have "hard" layout info try and render it. 
-		this.updateElementLayout( smilImgElement, percentValues );
-		debugger;
+		this.updateElementLayout( smilImgElement, percentValues );		
 		
 		// Now set the target value
 		
@@ -171,9 +170,9 @@ mw.SmilAnimate.prototype = {
 		"scale mode"?
 		
 		fit: 
-		"width or height dominiate"? 
+		"width or height dominate"? 
 		
-		width X percetnage "virtualPixles" 
+		width X percentage "virtualPixles" 
 		height relative to width
 		
 		layout: 
@@ -181,25 +180,35 @@ mw.SmilAnimate.prototype = {
 		*/
 	},
 	
-	// xxx need to refactor
-	updateElementLayout: function( smilEmelent, percentValues ){
-		// get a pointer to the hmtl target:
-		var $target = $j( '#' + this.smil.getAssetId( smilEmelent ));
+	// xxx need to refactor move to "smilLayout"
+	updateElementLayout: function( smilElement, percentValues ){
 		
-		// get the scale via width ( need to think about this might need to support either )
-		// width is 20% of orginal means we have to scale up 1/ .2 
-
-	
+		mw.log("updateElementLayout::" + percentValues.top + ' ' + percentValues.left + ' ' + percentValues.width + ' ' + percentValues.height );
+		// get a pointer to the html target:
+		var $target = $j( '#' + this.smil.getAssetId( smilElement ));
+		
+		var htmlAsset = $j( '#' + this.smil.getAssetId( smilElement ) ).get(0);
+		
+		// find if we are height or width bound
+		
+		// Setup target height width based target region size	
+		var fullWidth = $target.parents('.smilRegion').width() ;
+		var fullHeight =  $target.parents('.smilRegion').height() ;
+		var targetWidth = fullWidth;
+		var targetHeight = targetWidth * ( 
+			( percentValues['height'] * htmlAsset.naturalHeight )				
+			/ 
+			( percentValues['width'] * htmlAsset.naturalWidth ) 
+		)		
+		// Check if it exceeds the height constraint: 	
+		var sourceScale = ( targetHeight <  fullHeight ) 
+			? (1 / percentValues['width'] )
+			: (1 / percentValues['height'] )
+		
+		
 		// Wrap the target and absolute the image layout ( if not already ) 
 		if( $target.parent('.refTransformWrap').length === 0 ){
-			$target
-			.css({ 
-				'position' : 'abolute', 
-				'width' : (1 / percentValues['width'])*100 + '%',
-				'height' : (1 / percentValues['height'])*100 + '%',
-				'top' : (-1 * percentValues['top'])*100 + '%',
-				'left' : (-1 * percentValues['left'])*100 + '%',
-			})
+			$target		
 			.wrap( 
 				$j( '<div />' )
 				.css( {
@@ -210,29 +219,45 @@ mw.SmilAnimate.prototype = {
 				} )
 				.addClass('refTransformWrap') 
 			)
-		}
-		debugger;
+		}	
+		// run the css transform
+		$target.css({ 
+			'position' : 'absolute', 
+			'width' : sourceScale *100 + '%',
+			'height': sourceScale *100 + '%',
+			'top' : (-1 * percentValues['top'])*100 + '%',
+			'left' : (-1 * percentValues['left'])*100 + '%',
+		})		
+			
 		// set up the offsets for the percentage wrap. 
 		
 		// scale the 
 	},
 	
 	/**
-	* getInterpetedPointsValue
+	* getInterpolatePointsValue
+	* @param animatePoints Set of points to be interpolated 
 	*/ 
-	getInterpetedPointsValue: function( animatePoints, relativeAnimationTime,  duration){
+	getInterpolatePointsValue: function( animatePoints, relativeAnimationTime,  duration ){
 		// For now only support "linear" transforms 
 		// What two points are we animating between: 
 		var timeInx = ( relativeAnimationTime / duration ) * animatePoints.length ;
-		var startPointSet =  animatePoints[ Math.floor( timeInx ) -1 ].split( ',' );
-		var endPointSet = animatePoints[ Math.ceil( timeInx) - 1 ].split( ',' );
+		// if timeInx is zero just return the first point: 
+		if( timeInx == 0 ){
+			return animatePoints[0].split(',');
+		}
+		// make sure we are in bounds: 
+		var startInx = ( Math.floor( timeInx ) -1 ); 
+		startInx = ( startInx < 0 ) ? 0 : startInx; 		
+		var startPointSet = animatePoints[ startInx ].split( ',' );					
+		var endPointSet = animatePoints[ Math.ceil( timeInx) -1 ].split( ',' );
 		
 		var interptPercent = ( relativeAnimationTime / duration ) / ( animatePoints.length -1 );
 		// Interpolate between start and end points to get target "value"
 		var targetValue = []; 
 		for( var i = 0 ; i < startPointSet.length ; i++ ){			
 			targetValue[ i ] = parseFloat( startPointSet[i] ) + ( parseFloat( endPointSet[i] ) - parseFloat( startPointSet[i] ) ) *  interptPercent;
-			// Retain percent messurment			
+			// Retain percent measurement			
 			targetValue[ i ] += ( startPointSet[i].indexOf('%') != -1 ) ? '%' : ''; 
 		}
 		return targetValue;

@@ -46,14 +46,15 @@ mw.EmbedPlayerSmil = {
 		mw.log('EmbedPlayerSmil::setCurrentTime: ' + time );
 		// Set "loading" spinner here)
 		$j( this ).append(
-			$j( '<div />')
+			$j( '<div />')			
 			.attr('id', 'loadingSpinner_' + this.id )
 			.loadingSpinner()
 		);
 		var _this = this;
 		this.getSmil( function( smil ){	
 			smil.renderTime( time, function(){
-				$j('#loadingSpinner_' + _this.id ).hide();
+				mw.log("renderTime callback");
+				$j('#loadingSpinner_' + _this.id ).remove();
 				callback();
 			} );
 		});
@@ -82,8 +83,50 @@ mw.EmbedPlayerSmil = {
 	},
 	
 	play: function(){
-		mw.log("EmbedPlayerSmil::play (not yet supported)" );
+		mw.log(" EmbedPlayerSmil::play " );		
+		// call the parent
+		this.parent_play();
+				
+		this.clockStartTime = new Date().getTime();
+
+		
+		this.getSmil( function( smil ){
+			this.smil = smil;
+		})
+		// Start up monitor:
+		this.monitor();
 	},
+	
+	/**
+	* Preserves the pause time across for timed playback 
+	*/
+	pause:function() {
+		mw.log( 'EmbedPlayerSmil::pause at time' +  this.currentTime);
+		var ct = new Date();
+		this.pauseTime = this.currentTime;
+		mw.log( 'pause time: ' + this.pauseTime );				
+	},
+	
+	/**
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function() {
+		mw.log('html:monitor: '+ this.currentTime + ' ct:' + new Date().getTime() + ' - ' + this.clockStartTime);				
+		this.currentTime = ( ( new Date().getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;		
+		return this.currentTime;
+	},
+	
+	/**
+	 * Monitor function render a given time
+	 */
+	monitor: function(){
+		mw.log("time::" + this.getPlayerElementTime());
+		/*this.smil.renderTime( , function(){
+			
+		});*/
+		this.parent_monitor();
+	},
+	
 	/**
 	* Get the smil object. If the smil object does not exist create one with the source url:
 	* @param callback 
