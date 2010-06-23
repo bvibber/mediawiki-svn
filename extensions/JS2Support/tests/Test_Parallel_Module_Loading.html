@@ -181,6 +181,14 @@ document.write('<script type="text/javascript" src="' + resourceLoaderPath + cor
 			$j( "#percentDynamic option[value='" + parseInt( urlParams['percentDynamic'] ) + "']" )
 				.attr('selected', 'selected' );
 		}
+		if( urlParam['groupStrategy'] ){
+			// Unselect current	
+			$j( '#groupStrategy option:selected' ).attr( 'selected', false );
+			
+			$j( "#groupStrategy option[value='" + parseInt( urlParams['groupStrategy'] ) + "']" )
+				.attr('selected', 'selected' );
+		}
+		
 		// Update check boxes
 		for( var i in loaderTestCheckBoxes ){
 			var boxId = loaderTestCheckBoxes[i];
@@ -299,7 +307,7 @@ document.write('<script type="text/javascript" src="' + resourceLoaderPath + cor
 			<option value="module" selected>Group per module</option>			
 		</select>
 	</td>
-	<td style="width:150px"> Grouping strategy</td>
+	<td style="width:150px">Grouping strategy</td>
 </tr>
 <tr>
 <td style="width:30px"> <input id="randomModuleOrder" type="checkBox" checked></td>
