@@ -10,8 +10,8 @@ $messages = array();
  * @author Tisane
  */
 $messages['en'] = array(
-	'integration' => 'InterwikiIntegration',
-	'integration-desc' => 'Comprehensive interwiki integration',
+	'interwikiintegration' => 'InterwikiIntegration',
+	'interwikiintegration-desc' => 'Comprehensive interwiki integration',
         'populateinterwikiintegrationtable' => 'Populate interwiki integration table',
         'populateinterwikiwatchlisttable' => 'Populate interwiki watchlist table',
         'populateinterwikirecentchangestable' => 'Populate interwiki recent changes table',
@@ -25,10 +25,17 @@ $messages['en'] = array(
         'interwikipage-setuptext' => 'Interwiki page tables have been '
             .'populated.',
         'interwikiwatchlist' => 'Interwiki watchlist',
-        'interwikirecentchanges' => 'Interwiki recent changes'
+        'interwikirecentchanges' => 'Interwiki recent changes',
+        'right-integration' => 'Populate the interwiki integration table',
 );
 
-$aliases = array(); 
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
+$messages['qqq'] = array(
+	'interwikiintegration-setuptext' => 'Parameters:
+* $1 is the site name',
+);
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
