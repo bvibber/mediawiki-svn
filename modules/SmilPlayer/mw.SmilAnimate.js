@@ -91,12 +91,12 @@ mw.SmilAnimate.prototype = {
 		$j( smilImgElement ).find( 'animate' ).each( function( inx, animateElement ){
 			var begin = _this.smil.parseTime(  $j( animateElement ).attr( 'begin') );
 			var duration = _this.smil.parseTime(  $j( animateElement ).attr( 'dur') );
-			mw.log( "b:" + begin +" < " + animateTime + " && b+d: " + ( begin + duration ) + " > " + animateTime );
+			//mw.log( "b:" + begin +" < " + animateTime + " && b+d: " + ( begin + duration ) + " > " + animateTime );
 			
 			// Check if the animate element is in range
 			var cssTransform = {};			
 			if( begin <= animateTime && ( begin + duration ) >= animateTime ) {
-				// Get the transform type: 
+				// Get the transform type:
 				switch( $j( animateElement ).attr('attributeName') ){
 					case 'panZoom':						
 						// Get the pan zoom css for "this" time 
@@ -107,7 +107,7 @@ mw.SmilAnimate.prototype = {
 							 $j( animateElement ).attr('attributeName') ); 
 					
 				}
-				mw.log("b:transformImageForTime: " +  $j( animateElement ).attr( 'values' ) );
+				//mw.log("b:transformImageForTime: " +  $j( animateElement ).attr( 'values' ) );
 				//$j( smilImgElement ).css( cssTransform );
 			}
 			

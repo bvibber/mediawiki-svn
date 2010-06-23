@@ -169,7 +169,7 @@ mw.Smil.prototype = {
 	
 	
 	/**
-	 * Get the duration form the 
+	 * Get the duration form the smil body
 	 */
 	getDuration: function(){		
 		// return 0 while we don't have the $dom loaded
@@ -182,9 +182,10 @@ mw.Smil.prototype = {
 		}
 		return this.duration;		
 	},
+	
 	/**
 	* maps a smil element id to a html safe id 
-	* as a decendent subname of the embedPlayer parent
+	* as a decedent subname of the embedPlayer parent
 	*
 	* @param {Object} smilElement Element to get id for
 	*/  
@@ -195,6 +196,7 @@ mw.Smil.prototype = {
 		}
 		return this.embedPlayer.id + '_' + $j( smilElement ).attr('id');
 	},
+	
 	/**
 	* Get an absolute path to asset based on the smil URL
 	* @param {string} assetPath Path to asset to be transformed into url

@@ -14,14 +14,19 @@ mw.EmbedPlayerSmil = {
 	// The jQuery target location to render smil html
 	$renderTarget: null, 
 	
+	// Store the actual play time
+	smilPlayTime: 0,
+	
+	// Store the pause time 
+	smilPauseTime: 0,
+	
 	// Player supported feature set
 	supports: {
 		'playHead' : true,
 		'pause' : true,
 		'fullscreen' : true,
 		'timeDisplay' : true,
-		'volumeControl' : true,
-		
+		'volumeControl' : true,		
 		'overlays' : true
 	},	
 	 	
@@ -84,11 +89,12 @@ mw.EmbedPlayerSmil = {
 	
 	play: function(){
 		mw.log(" EmbedPlayerSmil::play " );		
-		// call the parent
+		// update the interface
 		this.parent_play();
-				
-		this.clockStartTime = new Date().getTime();
-
+		
+		// Set start clock time: 		
+		this.clockStartTime = new Date().getTime();				
+		
 		
 		this.getSmil( function( smil ){
 			this.smil = smil;
@@ -97,33 +103,37 @@ mw.EmbedPlayerSmil = {
 		this.monitor();
 	},
 	
+	stop: function(){
+		this.smilPlayTime = 0;
+		this.smilPauseTime = 0;
+		this.parent_stop();
+	},
+	
 	/**
 	* Preserves the pause time across for timed playback 
 	*/
-	pause:function() {
-		mw.log( 'EmbedPlayerSmil::pause at time' +  this.currentTime);
-		var ct = new Date();
-		this.pauseTime = this.currentTime;
-		mw.log( 'pause time: ' + this.pauseTime );				
+	pause: function() {
+		mw.log( 'EmbedPlayerSmil::pause at time' +  this.smilPlayTime );
+		this.smilPauseTime = this.smilPlayTime;	
+		// Update the interface
+		this.parent_pause();							
 	},
 	
 	/**
 	* Get the embed player time
 	*/
 	getPlayerElementTime: function() {
-		mw.log('html:monitor: '+ this.currentTime + ' ct:' + new Date().getTime() + ' - ' + this.clockStartTime);				
-		this.currentTime = ( ( new Date().getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;		
-		return this.currentTime;
+		return this.smilPlayTime;		
 	},
 	
 	/**
 	 * Monitor function render a given time
 	 */
 	monitor: function(){
-		mw.log("time::" + this.getPlayerElementTime());
-		/*this.smil.renderTime( , function(){
-			
-		});*/
+		// Update the smilPlayTime
+		if( !this.isPaused() ){
+			this.smilPlayTime = this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
+		}				
 		this.parent_monitor();
 	},
 	
@@ -148,12 +158,15 @@ mw.EmbedPlayerSmil = {
 	/**
 	* Get the duration of smil document. 
 	*/
-	getDuration: function(){		
-		if( this.smil ){
-			return this.smil.getDuration();
-		} else {
-			return this.parent_getDuration();
+	getDuration: function(){
+		if( !this.duration ){		
+			if( this.smil ){
+				this.duration = this.smil.getDuration();
+			} else {
+				this.duration = this.parent_getDuration();
+			}
 		}
+		return this.duration;
 	},
 	
 	/**

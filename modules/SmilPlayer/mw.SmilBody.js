@@ -126,11 +126,11 @@ mw.SmilBody.prototype = {
 		if( nodeType == 'par'|| nodeType == 'seq' ) {
 			if( $node.children().length ) {	
 				$node.children().each( function( inx, childNode ){
-					mw.log(" recurse:: startOffset:" + nodeType  + ' start offset:' + startOffset );
+					//mw.log(" recurse:: startOffset:" + nodeType  + ' start offset:' + startOffset );
 					var childDur = _this.getElementsForTimeRecurse( $j( childNode ), time, startOffset);
 					// If element parent is a 'seq' increment startOffset: 
 					if( nodeType == 'seq' ) {
-						mw.log(" Parent Seq:: add child dur: " + childDur );
+						//mw.log(" Parent Seq:: add child dur: " + childDur );
 						startOffset += childDur;
 					}
 				});

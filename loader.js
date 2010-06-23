@@ -52,7 +52,7 @@ var mwEnabledModuleList = [
 	'Sequencer',
 	'TimedText',
 	'SmilPlayer',
-	'MediaRss',
+	'MediaRss',	
 	'SwarmTransport'
 ];
 
