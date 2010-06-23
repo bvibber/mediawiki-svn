@@ -259,11 +259,13 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Sarrus
  */
 $messages['da'] = array(
 	'wikieditor-publish-dialog-minor' => 'Mindre ændring',
 	'wikieditor-publish-dialog-watch' => 'Overvåg denne side',
+	'wikieditor-publish-dialog-goback' => 'Gå tilbage',
 );
 
 /** German (Deutsch)
@@ -943,17 +945,18 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  */
 $messages['ro'] = array(
 	'wikieditor-publish-preference' => 'Activează publicarea pas cu pas',
-	'wikieditor-publish-button-publish' => 'Salvează pagina',
-	'wikieditor-publish-button-cancel' => 'Anulează',
+	'wikieditor-publish-button-publish' => 'Publică',
+	'wikieditor-publish-button-cancel' => 'Renunţă',
 	'wikieditor-publish-dialog-title' => 'Publică pe {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieți pe scurt modificările făcute):',
 	'wikieditor-publish-dialog-minor' => 'Modificare minoră',
-	'wikieditor-publish-dialog-watch' => 'Urmărește pagina',
-	'wikieditor-publish-dialog-publish' => 'Salvează pagina',
+	'wikieditor-publish-dialog-watch' => 'Urmărește această pagină',
+	'wikieditor-publish-dialog-publish' => 'Publică',
 	'wikieditor-publish-dialog-goback' => 'Înapoi',
 );
 

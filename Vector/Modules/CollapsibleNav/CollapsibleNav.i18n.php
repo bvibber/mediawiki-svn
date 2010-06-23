@@ -35,7 +35,8 @@ $messages['aln'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'vector-collapsiblenav-preference' => 'مكّن قائمة التصفح القابلة للطي التي على اليسار',
+	'vector-collapsiblenav-preference' => 'مكّن طي العناصر في قائمة التصفح في واجهة فكتور',
+	'vector-collapsiblenav-more' => 'لغات أخرى',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -64,9 +65,10 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
-	'vector-collapsiblenav-preference' => 'ভাঁজযোগ্য বাম নেভিগেশন মেনু সক্রিয় করো',
+	'vector-collapsiblenav-preference' => 'ভেক্টর স্কিনে ভাঁজযোগ্য নেভিগেশন মেনু সক্রিয় করো',
 	'vector-collapsiblenav-more' => 'আরও ভাষা',
 );
 
@@ -95,6 +97,13 @@ $messages['ca'] = array(
 $messages['cs'] = array(
 	'vector-collapsiblenav-preference' => 'Povolit sbalování položek v navigačním menu ve vzhledu Vektor',
 	'vector-collapsiblenav-more' => 'Další jazyky',
+);
+
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'vector-collapsiblenav-more' => 'Flere sprog',
 );
 
 /** German (Deutsch)
@@ -154,7 +163,7 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
-	'vector-collapsiblenav-preference' => 'Tee navigeerimismenüü vasakul peidetavaks',
+	'vector-collapsiblenav-preference' => 'Luba Vektori-kujundusega navigeerimismenuüü üksusi peita',
 );
 
 /** Basque (Euskara)

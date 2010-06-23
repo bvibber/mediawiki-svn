@@ -243,11 +243,16 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'prefstats' => 'পছন্দনীয় পরিসংখ্যান',
 	'prefstats-desc' => 'পরিসংখ্যান দেখুন, কতজন ব্যবহারকারী এই পছন্দসমূহ সক্রিয় করেছেন',
 	'prefstats-title' => 'পছন্দনীয় পরিসংখ্যান',
+	'prefstats-list-intro' => 'বর্তমানে নিচের পছন্দগুলো অনুসরণ করা হচ্ছে।
+নির্দিষ্ট কোনোটির পরিসংখ্যান জানতে যে-কোনো একটি ওপর ক্লিক করুন।',
+	'prefstats-noprefs' => 'বর্তমানে কোনো পছন্দ অনুসরণ করা হচ্ছে না।
+পছন্দ অনুসরণ করতে $wgPrefStatsTrackPrefs কনফিগার করুন।',
 	'prefstats-xaxis' => 'সময় (ঘন্টা)',
 	'prefstats-factor-hour' => 'ঘন্টা',
 	'prefstats-factor-sixhours' => 'ছয় ঘন্টা',
@@ -1895,6 +1900,7 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Firilacroco
  * @author Stelistcristi
  * @author Strainu
@@ -1907,6 +1913,13 @@ $messages['ro'] = array(
 Apăsați pe ele pentru a vizualiza statistici despre ele.',
 	'prefstats-noprefs' => 'Nicio preferință nu este în prezent urmărită.
 Configurați $wgPrefStatsTrackPrefs pentru a urmări preferințe.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utilizator și-a|utilizatori și-au}} activat această preferință de cînd a început colectarea datelor statistice
+** $2 {{PLURAL:$2|utilizator încă o are|utilizatori încă o au}} activată
+** $3 {{PLURAL:$3|utilizator și-a|utilizatori și-au}} dezactivat-o între timp',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utilizator și-a|utilizatori și-au}} activat această preferință de cînd a început colectarea datelor statistice
+** $2 {{PLURAL:$2|utilizator încă o are|utilizatori încă o au}} activată
+** $3 {{PLURAL:$3|utilizator și-a|utilizatori și-au}} dezactivat-o între timp
+În total $4 {{PLURAL:$4|utilizator folosește|utilizatori folosesc}} această preferință',
 	'prefstats-xaxis' => 'Durată (ore)',
 	'prefstats-factors' => 'Vizualizări pe: $1',
 	'prefstats-factor-hour' => 'oră',

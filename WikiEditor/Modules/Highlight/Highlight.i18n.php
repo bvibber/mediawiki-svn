@@ -370,11 +370,12 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'wikieditor-highlight-preference' => 'Activează evidențierea sintaxei la modificare',
+	'wikieditor-highlight-preference' => 'Activează evidențierea sintaxei la editare',
 );
 
 /** Tarandíne (Tarandíne)

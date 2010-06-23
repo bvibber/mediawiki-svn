@@ -142,6 +142,13 @@ $messages['cu'] = array(
 	'vector-simplesearch-search' => 'иска́ниѥ',
 );
 
+/** Chuvash (Чӑвашла)
+ * @author FLAGELLVM DEI
+ */
+$messages['cv'] = array(
+	'vector-simplesearch-search' => 'Шырав',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -608,11 +615,12 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'vector-simplesearch-search' => 'Căutare',
+	'vector-simplesearch-search' => 'Caută',
 	'vector-simplesearch-containing' => 'conținând...',
 );
 

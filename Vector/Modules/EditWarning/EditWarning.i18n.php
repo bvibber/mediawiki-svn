@@ -252,7 +252,7 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "Aldatzen"
  */
 $messages['fa'] = array(
 	'vector-editwarning-warning' => 'خروج از این صفحه ممکن است باعث از دست رفتن هرچه نوشته‌اید شود.
-اگر شما با نام کاربری وارد شده‌اند. می‌توانید این هشدار را در بخش «در حال ویرایش» ترجیحاتتان بیابید.',
+اگر شما با نام کاربری وارد شده‌اید می‌توانید این هشدار را در بخش «در حال ویرایش» ترجیحاتتان بیابید.',
 	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 );
 
@@ -575,11 +575,12 @@ Yaykusqa kaspaykiqa, kay yuyampayta hark'ayta atinki allinkachinaykikunapi \"Lla
 
 /** Romanian (Română)
  * @author AdiJapan
+ * @author Cin
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeți orice schimbare ați făcut dvs.
-Dacă sunteți logat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dvs.',
+	'vector-editwarning-warning' => 'Părăsind această pagină poate duce la pierderea oricăror modificări pe care le-aţi făcut.
+Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Editare” a preferințelor dvs.',
 	'vector-editwarning-preference' => 'Avertizează-mă când părăsesc o pagină fără a salva modificările',
 );
 

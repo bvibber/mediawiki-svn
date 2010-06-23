@@ -29,6 +29,13 @@ $messages['aln'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktivo "Shto mediat magjistar" vegël',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'wikieditor-addMediaWizard-preference' => 'مكّن "معالج إضافة وسائط"',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Dudi
  */
