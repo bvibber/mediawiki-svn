@@ -18,7 +18,7 @@ function inlineSectionJsCheck( &$out, &$sk ){
 	global $wgRequest;
 	if( $wgRequest->getText( 'action', 'view' ) == 'view'
 	|| $wgRequest->getText( 'action', 'purge' ) == 'purge' ) {
-		$out->addScriptClass( 'inlineSectionEdit' );
+		$out->addNamedResource( 'inlineSectionEdit' );
 	}
 	return true;
 }

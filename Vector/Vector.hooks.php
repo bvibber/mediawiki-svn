@@ -134,7 +134,7 @@ class VectorHooks {
 		// Add all scripts
 		foreach ( self::$scripts[$wgUsabilityInitiativeResourceMode] as $script ) {
 			if( isset( $script['class'] ) ) {
-				$wgOut->addScriptClass( $script['class'] );
+				$wgOut->addNamedResource( $script['class'] );
 			} else {
 				UsabilityInitiativeHooks::addScript(
 					basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']

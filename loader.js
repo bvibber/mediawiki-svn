@@ -45,10 +45,8 @@ mw.addResourcePaths( {
 	"wikiEditor.config.templates" :  "WikiEditor/Modules/Templates/Templates.js"
 } );
 
-mw.addModuleLoader( 'WikiEditor', function( callback ){
-
-	//@@todo we should check config and skip stuff we don't want need
-	var libReq = [
+mw.addModuleLoader( 'WikiEditor', function(){
+	return [
 		//Get the core library dependencies
 		"$j.ui",
 		"$j.fn.datePicker",
@@ -69,7 +67,7 @@ mw.addModuleLoader( 'WikiEditor', function( callback ){
 		"$j.fn.suggestions" ,
 		"$j.wikiEditor",
 		
-		//@@NOTE we should only include the modules we need
+		//@@NOTE we should only include the modules we need use function build out
 		"$j.wikiEditor.modules.highlight" ,	
 		"$j.wikiEditor.modules.toolbar",
 		"$j.wikiEditor.modules.dialogs",
@@ -85,11 +83,7 @@ mw.addModuleLoader( 'WikiEditor', function( callback ){
 		"wikiEditor.config.toc",
 		"wikiEditor.config.toolbar" ,
 		"wikiEditor.config.templateEditor" 		
-	];		
-	mw.load( libReq, function(){
-		mw.log('wikiEditor done ' );
-		callback( 'WikiEditor' );
-	});	
+	];
 });
 
 // Hack to support usability.js remaping of mw functions

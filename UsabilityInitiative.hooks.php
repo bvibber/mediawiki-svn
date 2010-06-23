@@ -151,7 +151,7 @@ class UsabilityInitiativeHooks {
 			}
 			$version = isset( $script['version'] ) ? $script['version'] : $wgStyleVersion;
 			if( isset( $script['class'] ) ){
-				$out->addScriptClass( $script['class'] );
+				$out->addNamedResource( $script['class'] );
 			} else {
 				$out->addScriptFile( $src, $version );
 			}
