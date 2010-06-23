@@ -47,6 +47,22 @@ class ResourceLoader {
 			'script' => 'resources/test/test.js',
 			'loader' => 'resources/test/loader.js',
 		),
+		'foo' => array(
+			'script' => 'resources/test/foo.js',
+			'loader' => 'resources/test/loader.js',
+		),
+		'bar' => array(
+			'script' => 'resources/test/bar.js',
+			'loader' => 'resources/test/loader.js',
+		),
+		'buz' => array(
+			'script' => 'resources/test/baz.js',
+			'loader' => 'resources/test/loader.js',
+		),
+		'baz' => array(
+			'script' => 'resources/test/buz.js',
+			'loader' => 'resources/test/loader.js',
+		),
 		'wikibits' => array(
 			'script' => 'skins/common/wikibits.js',
 			'loader' => 'skins/common/loader.js',
@@ -58,7 +74,7 @@ class ResourceLoader {
 	private $loadedModules = array();
 	private $includeCore = false;
 	
-	private $useJSMin = true;
+	private $useJSMin = false;
 	private $useCSSMin = true;
 	private $useCSSJanus = true;
 	
@@ -75,7 +91,7 @@ class ResourceLoader {
 	 */
 	public function addModule( $module ) {
 		if ( $module == 'core' ) {
-			$includeCore = true;
+			$this->includeCore = true;
 		} else if ( isset( self::$modules[$module] ) ) {
 			$this->loadedModules[] = $module;
 			$this->scripts[$module] = self::$modules[$module]['script'];
@@ -144,10 +160,15 @@ class ResourceLoader {
 		$this->loadedModules = array_unique( $this->loadedModules );
 		$retval = '';
 		
-		// TODO: file_get_contents() errors?
-		// TODO: CACHING!
-		foreach ( self::$coreScripts as $script ) {
-			$retval .= file_get_contents( $script );
+		if ( $this->includeCore ) {
+			// TODO: file_get_contents() errors?
+			// TODO: CACHING!
+			foreach ( self::$coreScripts as $script ) {
+				if ( file_exists( $script ) ) {
+					$retval .= file_get_contents( $script );
+				}
+			}
+			$retval .= $this->getLoaderJS();
 		}
 		
 		/*
@@ -163,7 +184,9 @@ class ResourceLoader {
 		// TODO: file_get_contents() errors?
 		// TODO: CACHING!
 		foreach ( $this->scripts as $module => $script ) {
-			$retval .= "mw.loader.implement( '{$module}', function() { " . file_get_contents( $script ) . " } );\n";
+			if ( file_exists( $script ) ) {
+				$retval .= "mw.loader.implement( '{$module}', function() { " . file_get_contents( $script ) . " } );\n";
+			}
 		}
 		$retval .= $this->getStyleJS( $this->styles );
 		$retval .= $this->getMessagesJS( $this->loadedModules );
@@ -176,10 +199,15 @@ class ResourceLoader {
 	
 	public function getLoaderJS() {
 		$retval = '';
+		// Only add each file once (just in case there are multiple modules in a single loader, which is common)
+		$loaders = array();
 		foreach ( self::$modules as $name => $module ) {
 			// TODO: file_get_contents() errors?
 			// TODO: CACHING!
-			$retval .= file_get_contents( $module['loader'] );
+			if ( !in_array( $module['loader'], $loaders ) && file_exists( $module['loader'] ) ) {
+				$retval .= file_get_contents( $module['loader'] );
+				$loaders[] = $module['loader'];
+			}
 		}
 		// FIXME: Duplicated; centralize in doJSTransforms() or something?
 		if ( $this->useJSMin ) {

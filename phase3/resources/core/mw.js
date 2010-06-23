@@ -38,9 +38,9 @@ window.mw = {
 				url += components['path'];
 			}
 			if ( typeof components['query'] === 'string' ) {
-				url += '?' + components['path'];
+				url += '?' + components['query'];
 			} else if ( typeof components['query'] === 'object' ) {
-				url += '?' + that.buildQueryString( components['path'] );
+				url += '?' + that.buildQueryString( components['query'] );
 			}
 			if ( typeof components['fragment'] === 'string' ) {
 				url += '#' + components['fragment'];
@@ -60,11 +60,14 @@ window.mw = {
 					.replace(/\)/g, '%29')
 					.replace(/\*/g, '%2A');  
 			}
-			var parts = [];
-			for ( p in parameters ) {
-				parts[parts.length] = encode( key ) + '=' + encode( parameters[p] );
+			if ( typeof parameters === 'object' ) {
+				var parts = [];
+				for ( p in parameters ) {
+					parts[parts.length] = encode( p ) + '=' + encode( parameters[p] );
+				}
+				return parts.join( '&' );
 			}
-			return parts.join( '&' );
+			return '';
 		};
 	} )(),
 	/**
@@ -98,8 +101,10 @@ window.mw = {
 		this.get = function( keys, fallback ) {
 			if ( typeof keys === 'object' ) {
 				var result = {};
-				for ( key in keys ) {
-					result[key] = typeof values[keys] === 'undefined' ? null : values[keys];
+				for ( k in keys ) {
+					if ( typeof values[keys[k]] !== 'undefined' ) {
+						result[keys[k]] = values[keys[k]];
+					}
 				}
 				return result;
 			} else if ( typeof values[keys] === 'undefined' ) {
@@ -249,16 +254,16 @@ window.mw = {
 								break;
 							case 'ready':
 								// This doesn't belong in the queue item's pending list
-								delete queue[q].requirements[r];
+								queue[q].pending.splice( p );
 								break;
 						}
-						// If all pending requirements have been satisfied, we're ready to execute the callback
-						if ( queue[q].requirements.length == 0 ) {
-							queue[q].callback();
-							// Clean up the queue
-							delete queue[q];
-						}
 					}
+				}
+				// If all pending requirements have been satisfied, we're ready to execute the callback
+				if ( typeof queue[q].pending.length == 0 ) {
+					queue[q].callback();
+					// Clean up the queue
+					queue.splice( q, 1 );
 				}
 			}
 			// Handle the batch only when ready
@@ -273,12 +278,12 @@ window.mw = {
 					$(this).append(
 						$( '<script type="text/javascript"></script>' )
 							.attr( 'src', mw.util.buildUrlString( {
-								'path': 'load.php',
+								'path': mw.config.get( 'wgScriptPath' ) + '/load.php',
 								'query': $.extend(
-										// Pass configuration values through the URL
-										mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] ),
 										// Modules are in the format foo|bar|baz|buz
-										{ 'modules': batch.join( '|' ) }
+										{ 'modules': batch.join( '|' ) },
+										// Pass configuration values through the URL
+										mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] )
 									)
 							} ) )
 							.load( function() {

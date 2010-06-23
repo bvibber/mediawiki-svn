@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Test succeeded!' );
+console.log( 'Test' );
