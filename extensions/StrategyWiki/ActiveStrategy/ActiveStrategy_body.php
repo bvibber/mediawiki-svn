@@ -39,8 +39,39 @@ class ActiveStrategy {
 		
 		return $res;
 	}
+	
+	static function getProposals() {
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$res = $dbr->select(
+			array( "page",
+				'categorylinks as finishedcategory' ),
+			array(
+				'page_id',
+				'page_namespace',
+				'page_title',
+				"page_title AS tf_name"
+			),
+			array(
+				'page_namespace' => 106 /* Proposal: */,
+				'finishedcategory.cl_from IS NULL',
+			),
+			__METHOD__,
+			array(),
+			array(
+				'categorylinks as finishedcategory' =>
+					array( 'left join',
+						array(
+							'finishedcategory.cl_from=page.page_id',
+							'finishedcategory.cl_to' => 'Archived Done'
+						),
+					),
+			) );
+		
+		return $res;
+	}
 
-	static function formatResult( $skin, $taskForce, $number, $type ) {
+	static function formatResult( $skin, $taskForce, $number, $sort, $type ) {
 		global $wgContLang, $wgLang, $wgActiveStrategyColors;
 
 		if ( ! $taskForce ) {
@@ -50,14 +81,19 @@ class ActiveStrategy {
 
 		$title = Title::newFromText( $taskForce );
 		$text = $wgContLang->convert( $title->getPrefixedText() );
-		$text = self::getTaskForceName( $text );
+		if ( $type == 'taskforce' ) {
+			$text = self::getTaskForceName( $text );
+		} else {
+			$title = Title::newFromText( $text );
+			$text = $title->getText();
+		}
 		$pageLink = $skin->linkKnown( $title, $text );
 		$colors = null;
 		$color = null;
 		$style = '';
 		
-		if ( isset( $wgActiveStrategyColors[$type] ) ) {
-			$colors = $wgActiveStrategyColors[$type];
+		if ( isset( $wgActiveStrategyColors[$sort] ) ) {
+			$colors = $wgActiveStrategyColors[$sort];
 		} else {
 			$colors = $wgActiveStrategyColors['default'];
 		}
@@ -76,7 +112,7 @@ class ActiveStrategy {
 			$style = 'padding-left: 3px; border-left: 1em solid #'.$color;
 		}
 		
-		if ( $type == 'members' ) {
+		if ( $sort == 'members' ) {
 			$pageLink .= ' ('.wfMsg( 'nmembers', $number ).')';
 		}
 		
@@ -103,27 +139,9 @@ class ActiveStrategy {
 		return $text;
 	}
 	
-	static function getOutput( $args ) {
-		global $wgUser, $wgActiveStrategyPeriod;
-		
-		$html = '';
-		$db = wfGetDB( DB_MASTER );
-		$sk = $wgUser->getSkin();
-		
-		$sortField = 'members';
-		
-		if ( isset($args['sort']) ) {
-			$sortField = $args['sort'];
-		}
-		
-		$taskForces = self::getTaskForces();
+	static function getTaskForcePageConditions( $taskForces, &$tables, &$fields, &$conds,
+							&$join_conds, &$lookup ) {
 		$categories = array();
-		
-		// Sorting by number of members doesn't require any 
-		if ($sortField == 'members' ) {
-			return self::handleSortByMembers( $taskForces );
-		}
-		
 		foreach( $taskForces as $row ) {
 			$text = self::getTaskForceName( $row->tf_name );
 			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $text );
@@ -132,12 +150,73 @@ class ActiveStrategy {
 			$categories[$tempTitle->getDBkey()."_Task_Force"] = $row->tf_name;
 		}
 		
-		$tables = array( 'page', 'categorylinks' );
-		$fields = array( 'categorylinks.cl_to' );
-		$conds = array( 'categorylinks.cl_to' => array_keys($categories) );
-		$options = array( 'GROUP BY' => 'categorylinks.cl_to', 'ORDER BY' => 'value DESC' );
+		$tables[] = 'categorylinks';
+		$fields[] = 'categorylinks.cl_to AS keyfield';
+		$conds['categorylinks.cl_to'] = array_keys($categories);
 		$joinConds = array( 'categorylinks' =>
 				array( 'left join', 'categorylinks.cl_from=page.page_id' ) );
+				
+		$lookup = $categories;
+	}
+	
+	static function getProposalPageConditions( $proposals, &$tables, &$fields, &$conds,
+							&$join_conds, &$lookup ) {
+		$fields[] = 'page.page_title AS keyfield';
+		$conds['page_namespace'] = 106;
+		$titles = array();
+		foreach( $proposals as $row ) {
+			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$titles[$row->page_title] = $title->getPrefixedText();
+		}
+		
+		$conds['page_title'] = array_keys($titles);
+		
+		$lookup = $titles;
+	}
+	
+	static function getOutput( $args ) {
+		global $wgUser, $wgActiveStrategyPeriod;
+		
+		$html = '';
+		$db = wfGetDB( DB_MASTER );
+		$sk = $wgUser->getSkin();
+		
+		if ( empty( $args['type'] ) ) {
+			$args['type'] = 'taskforces';
+		}
+		
+		$sortField = 'members';
+		
+		if ( isset($args['sort']) ) {
+			$sortField = $args['sort'];
+		}
+		
+		if ( $args['type'] == 'taskforces' ) {
+			$masterPages = self::getTaskForces();
+		} elseif ( $args['type'] == 'proposal' ) {
+			$masterPages = self::getProposals();
+		}
+		
+		// Sorting by number of members doesn't require any 
+		if ($sortField == 'members' ) {
+			return self::handleSortByMembers( $masterPages );
+		}
+		
+		$tables = array( );
+		$fields = array( );
+		$conds = array();
+		$options = array( 'GROUP BY' => 'keyfield', 'ORDER BY' => 'value DESC' );
+		$lookup = array();
+		
+		if ( $args['type'] == 'taskforces' ) {
+			self::getTaskForcePageConditions( $masterPages, $tables, $fields,
+								$conds, $join_conds, $lookup );
+		} elseif( $args['type'] == 'proposal' ) {
+			self::getProposalPageConditions( $masterPages, $tables, $fields,
+								$conds, $join_conds, $lookup );
+		}
+		
+		$tables[] = 'page';
 		
 		if ( $sortField == 'edits' ) {
 			$cutoff = $db->timestamp( time() - $wgActiveStrategyPeriod );
@@ -145,7 +224,7 @@ class ActiveStrategy {
 			$tables[] = 'revision';
 			$joinConds['revision'] =
 				array( 'left join',
-					array( 'rev_page=page_id',
+					array( 'revision.rev_page=page.page_id',
 						"rev_timestamp > $cutoff",
 						"rev_page IS NOT NULL" ) );
 			$fields[] = 'count(distinct rev_id) + count(distinct thread_id) as value';
@@ -171,7 +250,7 @@ class ActiveStrategy {
 		
 		foreach( $result as $row ) {
 			$number = $row->value;
-			$taskForce = $categories[$row->cl_to];
+			$taskForce = $lookup[$row->keyfield];
 			
 			if ( isset( $count[$taskForce] ) ) {
 				$count[$taskForce] += $number;
@@ -182,7 +261,7 @@ class ActiveStrategy {
 		
 		foreach( $count as $taskForce => $number ) {
 			if ( $number > 0 ) {
-				$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
+				$html .= self::formatResult( $sk, $taskForce, $number, $sortField, $args['type'] );
 			}
 		}
 		
