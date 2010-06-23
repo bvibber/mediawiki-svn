@@ -613,14 +613,15 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author Minisarm
  */
 $messages['ro'] = array(
 	'wikieditor-template-editor-preference' => 'Activează modificarea formatelor wiki prin formulare',
-	'wikieditor-template-editor-dialog-title' => 'Modificare format',
+	'wikieditor-template-editor-dialog-title' => 'Editează formatul',
 	'wikieditor-template-editor-dialog-submit' => 'Actualizare',
-	'wikieditor-template-editor-dialog-cancel' => 'Revocare',
+	'wikieditor-template-editor-dialog-cancel' => 'Renunţă',
 );
 
 /** Tarandíne (Tarandíne)

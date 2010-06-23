@@ -1463,6 +1463,7 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Stelistcristi
  * @author לערי ריינהארט
@@ -1472,11 +1473,11 @@ $messages['ro'] = array(
 	'sitematrix-summary' => 'Această pagină specială afișează toate proiectele wiki ale Wikimedia.',
 	'sitematrix-desc' => 'Afișați o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
 	'sitematrix-language' => 'Limbă',
-	'sitematrix-others' => 'Alte proiecte Wikimedia',
+	'sitematrix-others' => 'Alte proiecte ale Wikimedia',
 	'sitematrix-total' => "'''Număr total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',
-	'sitematrix-fishbowl' => 'modificare restricționată',
+	'sitematrix-fishbowl' => 'editare restricţionată',
 );
 
 /** Tarandíne (Tarandíne)

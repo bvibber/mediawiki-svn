@@ -389,3 +389,26 @@ Kailangan ang pangatlo o argumentong "suleras".',
 	'datatransclusion-unknown-template' => 'Hindi umiiral ang <nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>.',
 );
 
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'datatransclusion-desc' => 'Dış veri kaynaklarından veri kayıtlarının aktarılması ve işlenmesi',
+	'datatransclusion-missing-source' => 'Hiç veri kaynağı belirtilmedi.
+İkinci bir kaynak ya da "kaynak" ispatı gerekmektedir.',
+	'datatransclusion-unknown-source' => 'Belirtilen veri kaynağı kötüdür.
+"$1" bilinmemektedir.',
+	'datatransclusion-missing-key' => 'Hiç anahtar belirtilmedi.
+$2, $1 veri kaynağındaki geçerli anahtarlardır.',
+	'datatransclusion-bad-argument-by' => 'Kötü anahtar alanı belirtildi.
+"$2", "$1" veri kaynağı içinde bir anahtar alanı değildir.
+{{PLURAL:$4|Geçerli anahtar|Geçerli anahtarlar}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Hiç anahtar değeri belirtilmedi.
+İkinci bir anahtar ya da "anahtar" ispatı gerekmektedir.',
+	'datatransclusion-missing-argument-template' => 'Hiç şablon belirtilmedi.
+Birincisi ya da "şablon" ispatı gerekmektedir.',
+	'datatransclusion-record-not-found' => '$1 veri kaynağında, $2 = $3 şekline uyan hiç bir kayıt bulunamadı.',
+	'datatransclusion-bad-template-name' => 'Kötü şablon adı: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> varolmamaktadır.',
+);
+

@@ -1639,16 +1639,17 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
  */
 $messages['ro'] = array(
-	'expandtemplates' => 'Expandarea formatelor',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandează formatele, funcțiile parser și variabilele]] pentru a vedea expandat textul wiki și pentru a previzualiza modul de redare a paginii',
+	'expandtemplates' => 'Extinde formatele',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Extinde formatele, funcțiile parser și variabilele]] pentru a vedea extins textul wiki și pentru a previzualiza modul de redare a paginii',
 	'expand_templates_output' => 'Rezultat',
 	'expand_templates_xml_output' => 'Ieșire XML',
 	'expand_templates_ok' => 'OK',
-	'expand_templates_remove_comments' => 'Elimină comentarii',
+	'expand_templates_remove_comments' => 'Elimină comentariile',
 	'expand_templates_generate_xml' => 'Arată arborele analiză XML',
 	'expand_templates_preview' => 'Previzualizare',
 );

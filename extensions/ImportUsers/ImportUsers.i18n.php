@@ -1930,12 +1930,24 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'importusers' => 'Kullanıcıları içe aktar',
+	'importusers-desc' => 'CSV dosyasından toplu olarak [[Special:ImportUsers|Kullanıcı aktarma]]; encoding: UTF-8',
 	'importusers-uploadfile' => 'Dosya yükle',
+	'importusers-form-caption' => 'CSV-dosyası (UTF-8) aktar',
+	'importusers-form-file' => 'Kullanıcı dosya biçimi (CSV):',
+	'importusers-form-replace-present' => 'Varolan kullanıcıları değiştir',
 	'importusers-form-button' => 'İçe aktar',
+	'importusers-user-added' => "Kullanıcı '''$1''' eklendi.",
+	'importusers-user-present-update' => "Kullanıcı '''$1''' zaten var.
+Güncellendi",
+	'importusers-user-present-not-update' => "Kullanıcı '''$1''' zaten var.
+Güncellenmedi.",
+	'importusers-user-invalid-format' => '#$1 satırındaki kullanıcı verisi geçersiz ya da boş.
+Atlandı.',
 	'importusers-log' => 'Kullanıcı kaydını içe aktar',
 	'importusers-log-summary' => 'Özet',
 	'importusers-log-summary-all' => 'Hepsi',

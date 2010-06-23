@@ -29,6 +29,13 @@ $messages['aln'] = array(
 	'wikieditor-templates-preference' => 'Aktivizo template kolaps',
 );
 
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'wikieditor-templates-preference' => 'مكّن طي القوالب',
+);
+
 /** Egyptian Spoken Arabic (مصرى)
  * @author Dudi
  */

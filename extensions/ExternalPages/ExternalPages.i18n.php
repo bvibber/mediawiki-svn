@@ -473,11 +473,12 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'externalpages' => 'Pagini externe',
-	'externalpages-bad-page' => 'Pagină greșită specificată',
+	'externalpages-bad-page' => 'Pagină greșit specificată',
 	'externalpages-no-page' => 'Nicio pagină specificată',
 );
 

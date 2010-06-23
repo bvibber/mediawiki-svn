@@ -1296,6 +1296,7 @@ Ne vo gwelet an evezhiadenn nemet ur wech ma vo bet gwiriet gant ur merour.",
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Palapa
  */
 $messages['bs'] = array(
 	'wikilog-help' => '{{ns:Help}}:Wikizapisnik',
@@ -1317,21 +1318,39 @@ $messages['bs'] = array(
 	'wikilog-actions' => 'Akcije',
 	'wikilog-comments' => 'Komentari',
 	'wikilog-replies' => 'Odgovori',
+	'wikilog-view-archives' => 'Arhive',
 	'wikilog-view-summary' => 'Sažetak',
 	'wikilog-draft-title-mark' => '(radna verzija)',
 	'wikilog-anonymous-mark' => '(anonimni)',
 	'wikilog-pager-newest' => 'najnovije',
 	'wikilog-pager-oldest' => 'najstarije',
+	'wikilog-pager-prev' => 'prethodni/o',
 	'wikilog-pager-next' => 'slijedeći',
+	'wikilog-pager-first' => 'prvi/o',
 	'wikilog-pager-last' => 'posljednji',
 	'wikilog-pager-empty' => '(nema stavki)',
+	'wikilog-no-comments' => 'nema komentara',
+	'wikilog-has-comments' => '{{PLURAL:$1|jedan komentar|$1 komentari}}',
+	'wikilog-summary-footer' => 'Postavio $7 u [[$1|$2]] na $8 pod $9, $10.',
 	'wikilog-summary-uncategorized' => 'Nekategorisano',
 	'wikilog-edit-fieldset-legend' => 'Opcije wikizapisnika:',
+	'wikilog-comment-edit' => 'Uredi ovaj komentar',
+	'wikilog-comment-delete' => 'Izbriši ovaj komentar',
+	'wikilog-comment-history' => 'Vidi historiju komentara',
+	'wikilog-comment-approve' => 'Odobri ovaj komentar (neodgodna radnja)',
+	'wikilog-comment-reject' => 'Odbaci ovaj komentar (neodgodna radnja)',
 	'wikilog-form-status' => 'Stanje:',
 	'wikilog-form-comment' => 'Komentar:',
+	'wikilog-submit' => 'Pošalji',
+	'wikilog-preview' => 'Pregled',
+	'wikilog-edit-lc' => 'uredi',
+	'wikilog-reply-lc' => 'odgovor',
 	'wikilog-delete-lc' => 'brisati',
+	'wikilog-approve-lc' => 'odobri',
 	'wikilog-reject-lc' => 'odbaciti',
+	'wikilog-page-lc' => 'stranica',
 	'wikilog-history-lc' => 'historija',
+	'wikilog-doc-import-comment' => 'Uvezena Wikilog dokumentacija',
 );
 
 /** Catalan (Català)

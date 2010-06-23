@@ -370,6 +370,16 @@ $messages['ig'] = array(
 	'unicodeconverter-ok' => 'Ngwanu',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'unicodeconverter' => 'Unicode-konverto',
+	'unicodeconverter-ok' => 'O.K.',
+	'unicodeconverter-oldtext' => 'Texto originala:',
+	'unicodeconverter-newtext' => 'Texto konvertita:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

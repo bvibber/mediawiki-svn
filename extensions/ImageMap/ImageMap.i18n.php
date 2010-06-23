@@ -1325,12 +1325,13 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
  */
 $messages['ro'] = array(
 	'imagemap_desc' => 'Permite realizarea unei imagini hartă, cu ajutorul etichetei <code>&lt;imagemap&gt;</code>',
-	'imagemap_no_image' => 'Eroare: trebuie specificată o imagine pe prima linie',
+	'imagemap_no_image' => 'Eroare: trebuie specificată o imagine în prima linie',
 	'imagemap_invalid_image' => 'Eroare: imaginea este incorectă sau nu există',
 	'imagemap_bad_image' => 'Eroare: imaginea este pe o listă neagră pentru această pagină',
 	'imagemap_no_link' => 'Eroare: nu a fost găsită nici o legătură validă la sfârșitul liniei $1',

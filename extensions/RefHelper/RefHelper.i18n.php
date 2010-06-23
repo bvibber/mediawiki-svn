@@ -187,6 +187,39 @@ $messages['br'] = array(
 Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].",
 );
 
+/** Bosnian (Bosanski)
+ * @author Palapa
+ */
+$messages['bs'] = array(
+	'refhelper' => 'Pomoć za reference',
+	'refsearch' => 'Traženje referenci',
+	'refhelper-desc' => 'Pomaže da se naprave stranice za reference',
+	'refhelper-refsearch' => 'Traženje referenci',
+	'refhelper-refcreate_legend' => 'Napravi novu referencu',
+	'refhelper-refsearch_legend' => 'Potraži referencu u PubMed',
+	'refhelper-refcreate_another' => 'Napravi slijedeću referencu',
+	'refhelper-refcreate_autocomment' => 'Automatsko pravljenje stranice',
+	'refhelper-refcreate_success' => 'Stranica [[$1]] nije postojala i napravljena je.',
+	'refhelper-refcreate_failure' => 'Stranica [[$1]] već postoji!',
+	'refhelper-label_workspace' => 'Radni prostor (mjesto za kopiranje i lijepljenje):',
+	'refhelper-label_authorforename' => "Ime autora $1's:",
+	'refhelper-label_authorsurname' => 'Prezime:',
+	'refhelper-title' => 'Titula:',
+	'refhelper-journal' => 'Hronika:',
+	'refhelper-volume' => 'Svezak:',
+	'refhelper-pages' => 'Stranice:',
+	'refhelper-year' => 'Godina:',
+	'refhelper-refname' => 'Ime za ref:',
+	'refhelper-category' => 'Kategorija $1:',
+	'refhelper-create' => 'Napravi',
+	'refhelper-search' => 'Traži',
+	'refhelper-toolbox_link_create' => 'Napravi referencu',
+	'refhelper-toolbox_link_search' => 'Napravi referencu od rezultata traženja',
+	'refhelper-newarticle_nocitation' => 'Trenutno nema citata sa tim imenom.',
+	'refhelper-newarticle_nosuggestions' => 'Nažalost, nisam u mogućnosti da sugerišem bilo koju referencu.
+Možete [[Special:RefHelper|dodati referencu ručno]] ili [[Special:RefSearch|tražiti citat za dodavanje]].',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -894,11 +927,19 @@ Pode [[Special:RefHelper|adicionar a referência manualmente]] ou [[Special:RefS
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'refhelper-refcreate_legend' => 'Criar nova referência',
+	'refhelper-refcreate_another' => 'Criar outra referência',
+	'refhelper-refcreate_success' => 'A página [[$1]] não existia e foi criada.',
 	'refhelper-refcreate_failure' => 'A página [[$1]] já existe!',
 	'refhelper-label_authorsurname' => 'Sobrenome:',
+	'refhelper-title' => 'Título:',
+	'refhelper-volume' => 'Volume:',
 	'refhelper-pages' => 'Páginas:',
 	'refhelper-year' => 'Ano:',
+	'refhelper-category' => 'Categoria $1:',
 	'refhelper-create' => 'Criar',
+	'refhelper-search' => 'Pesquisar',
+	'refhelper-toolbox_link_create' => 'Criar referência',
 );
 
 /** Russian (Русский)

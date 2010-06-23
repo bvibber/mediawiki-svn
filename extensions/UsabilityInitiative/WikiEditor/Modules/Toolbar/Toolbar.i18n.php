@@ -506,6 +506,7 @@ $messages['af'] = array(
 	'wikieditor-toolbar-characters-page-cyrillic' => 'Cyrillies',
 	'wikieditor-toolbar-characters-page-arabic' => 'Arabies',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Hebreeus',
+	'wikieditor-toolbar-characters-page-bangla' => 'Bengaals',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
@@ -902,7 +903,7 @@ $messages['ar'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'جِد التالي',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'استبدل التالي',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'استبدل الكل',
-	'wikieditor-toolbar-tool-replace-close' => 'ألغِ',
+	'wikieditor-toolbar-tool-replace-close' => 'أغلق',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'بحثك لم يطابق أي شيء.',
 	'wikieditor-toolbar-tool-replace-success' => 'أجري $1 استبدال(ات).',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'لم تكتب شيئًا لتبحث عنه.',
@@ -3066,6 +3067,7 @@ $messages['cy'] = array(
 /** Danish (Dansk)
  * @author Byrial
  * @author F. Cosoleto
+ * @author Froztbyte
  * @author Leolaursen
  * @author Sarrus
  */
@@ -3100,10 +3102,14 @@ $messages['da'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Ekstern henvisning',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Kontrollerer om siden findes ...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Titlen du gav, er ugyldig.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Intern henvisning',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Ekstern henvisning',
 	'wikieditor-toolbar-tool-file' => 'Indlejret fil',
 	'wikieditor-toolbar-tool-file-example' => 'Eksempel.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Fodnote',
 	'wikieditor-toolbar-tool-reference-example' => 'Indsæt fodnotetekst her',
+	'wikieditor-toolbar-tool-reference-title' => 'Indsæt reference',
+	'wikieditor-toolbar-tool-reference-insert' => 'Indsæt',
 	'wikieditor-toolbar-tool-signature' => 'Signatur og tidsstempel',
 	'wikieditor-toolbar-section-advanced' => 'Avanceret',
 	'wikieditor-toolbar-tool-heading' => 'Overskrift',
@@ -3118,6 +3124,9 @@ $messages['da'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => 'Element i punktliste',
 	'wikieditor-toolbar-tool-olist' => 'Nummereret liste',
 	'wikieditor-toolbar-tool-olist-example' => 'Element i nummereret liste',
+	'wikieditor-toolbar-tool-indent-example' => 'Indrykket linje',
+	'wikieditor-toolbar-tool-nowiki' => 'Ingen wikiformatering',
+	'wikieditor-toolbar-tool-redirect' => 'Omdirigering',
 	'wikieditor-toolbar-tool-big' => 'Stor',
 	'wikieditor-toolbar-tool-big-example' => 'Stor tekst',
 	'wikieditor-toolbar-tool-small' => 'Lille',
@@ -3150,6 +3159,7 @@ $messages['da'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rækker',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Kolonner',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Tilføj række til kolonneoverskrifter',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Stil med kanter',
 	'wikieditor-toolbar-tool-table-sortable' => 'Gør tabel sorterbar',
 	'wikieditor-toolbar-tool-table-example' => 'Række $1, celle $2',
 	'wikieditor-toolbar-tool-table-preview' => 'Forhåndsvisning',
@@ -3167,7 +3177,7 @@ $messages['da'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Find næste',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Erstat alle',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Erstat alle',
-	'wikieditor-toolbar-tool-replace-close' => 'Annullér',
+	'wikieditor-toolbar-tool-replace-close' => 'Luk',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Din søgning gav ingen resultater',
 	'wikieditor-toolbar-tool-replace-success' => '$1 udskiftning(er) foretaget.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Du skrev ikke noget at søge efter',
@@ -7590,6 +7600,7 @@ $messages['id'] = array(
 	'wikieditor-toolbar-tool-nowiki' => 'Tidak ada pemformatan wiki',
 	'wikieditor-toolbar-tool-nowiki-example' => 'Masukkan teks yang tidak akan diformat di sini',
 	'wikieditor-toolbar-tool-redirect' => 'Pengalihan',
+	'wikieditor-toolbar-tool-redirect-example' => 'Nama halaman tujuan',
 	'wikieditor-toolbar-tool-big' => 'Besar',
 	'wikieditor-toolbar-tool-big-example' => 'Teks besar',
 	'wikieditor-toolbar-tool-small' => 'Kecil',
@@ -8187,6 +8198,8 @@ $messages['ja'] = array(
 $messages['jbo'] = array(
 	'wikieditor-toolbar' => 'stika samtcikajna',
 	'wikieditor-toolbar-desc' => "samtcikajna pe lo stika mutpapri zi'e poi filmau selpli",
+	'wikieditor-toolbar-loading' => 'ca puvbre',
+	'wikieditor-toolbar-tool-bold' => 'plana',
 );
 
 /** Georgian (ქართული)
@@ -12564,6 +12577,7 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Minisarm
@@ -12594,7 +12608,7 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-tool-link-ext-target' => 'Legătură URL:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Textul legăturii:',
 	'wikieditor-toolbar-tool-link-insert' => 'Introdu legătura',
-	'wikieditor-toolbar-tool-link-cancel' => 'Revocare',
+	'wikieditor-toolbar-tool-link-cancel' => 'Renunţă',
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Pagina există',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Pagina nu există',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Titlu incorect',
@@ -12609,11 +12623,11 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Exemplu.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referință',
 	'wikieditor-toolbar-tool-reference-example' => 'Introduceți textul notei de subsol aici.',
-	'wikieditor-toolbar-tool-reference-cancel' => 'Revocare',
-	'wikieditor-toolbar-tool-reference-title' => 'Inserare referință',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Renunţă',
+	'wikieditor-toolbar-tool-reference-title' => 'Introdu referința',
 	'wikieditor-toolbar-tool-reference-insert' => 'Inserează',
-	'wikieditor-toolbar-tool-reference-text' => 'Conținutul referinței',
-	'wikieditor-toolbar-tool-signature' => 'Semnătură datată',
+	'wikieditor-toolbar-tool-reference-text' => 'Textul referinței',
+	'wikieditor-toolbar-tool-signature' => 'Semnătura şi timpul',
 	'wikieditor-toolbar-section-advanced' => 'Avansat',
 	'wikieditor-toolbar-tool-heading' => 'Titlu',
 	'wikieditor-toolbar-tool-heading-1' => 'Nivelul 1',
@@ -12621,12 +12635,12 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-tool-heading-3' => 'Nivelul 3',
 	'wikieditor-toolbar-tool-heading-4' => 'Nivelul 4',
 	'wikieditor-toolbar-tool-heading-5' => 'Nivelul 5',
-	'wikieditor-toolbar-tool-heading-example' => 'Textul din titlu',
+	'wikieditor-toolbar-tool-heading-example' => 'Text de antet',
 	'wikieditor-toolbar-group-format' => 'Format',
 	'wikieditor-toolbar-tool-ulist' => 'Listă cu puncte',
 	'wikieditor-toolbar-tool-ulist-example' => 'Item în listă neordonată',
-	'wikieditor-toolbar-tool-olist' => 'Listă ordonată',
-	'wikieditor-toolbar-tool-olist-example' => 'Item în listă ordonată',
+	'wikieditor-toolbar-tool-olist' => 'Listă numerotată',
+	'wikieditor-toolbar-tool-olist-example' => 'Element de listă numerotat',
 	'wikieditor-toolbar-tool-indent' => 'Alineat',
 	'wikieditor-toolbar-tool-indent-example' => 'Linie cu alineat',
 	'wikieditor-toolbar-tool-nowiki' => 'Fără formatare wiki',
@@ -12648,9 +12662,9 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-tool-newline' => 'Linie nouă',
 	'wikieditor-toolbar-tool-table' => 'Tabel',
 	'wikieditor-toolbar-tool-table-example-old' => '-
-! titlu coloană 1
-! titlu coloană 2
-! titlu coloană 3
+! antet 1
+! antet 2
+! antet 3
 |-
 | rând 1, celula 1
 | rând 1, celula 2
@@ -12660,23 +12674,23 @@ $messages['ro'] = array(
 | rând 2, celula 2
 | rând 2, celula 3',
 	'wikieditor-toolbar-tool-table-example-cell-text' => 'Textul celulei',
-	'wikieditor-toolbar-tool-table-example-header' => 'Textul titlului coloanei',
+	'wikieditor-toolbar-tool-table-example-header' => 'Textul antetului',
 	'wikieditor-toolbar-tool-table-title' => 'Inserare tabel',
-	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linii',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rânduri',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Coloane',
-	'wikieditor-toolbar-tool-table-dimensions-header' => 'Adăugare rând pentru titlu de coloană',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Adaugă rând de antet',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Stil cu contur',
-	'wikieditor-toolbar-tool-table-sortable' => 'Transformă în tabel sortabil',
+	'wikieditor-toolbar-tool-table-sortable' => 'Fă tabelul sortabil',
 	'wikieditor-toolbar-tool-table-example' => 'Exemplu',
 	'wikieditor-toolbar-tool-table-preview' => 'Previzualizare',
 	'wikieditor-toolbar-tool-table-insert' => 'Inserează',
-	'wikieditor-toolbar-tool-table-cancel' => 'Revocare',
+	'wikieditor-toolbar-tool-table-cancel' => 'Renunţă',
 	'wikieditor-toolbar-tool-table-toomany' => 'Inserarea unui tabel cu mai mult de $1 celule nu este posibilă cu această unealtă.',
 	'wikieditor-toolbar-tool-table-invalidnumber' => 'Nu ați introdus un număr valabil de rânduri sau coloane.',
 	'wikieditor-toolbar-tool-table-zero' => 'Nu puteți introduce un tabel cu zero rânduri sau coloane.',
 	'wikieditor-toolbar-tool-replace' => 'Căutare și înlocuire',
 	'wikieditor-toolbar-tool-replace-title' => 'Căutare și înlocuire',
-	'wikieditor-toolbar-tool-replace-search' => 'De căutat:',
+	'wikieditor-toolbar-tool-replace-search' => 'Caută după:',
 	'wikieditor-toolbar-tool-replace-replace' => 'Înlocuire cu:',
 	'wikieditor-toolbar-tool-replace-case' => 'Înlocuiește doar dacă este identic',
 	'wikieditor-toolbar-tool-replace-regex' => 'Tratează sintagma ca o expresie regulată',
@@ -12686,7 +12700,7 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-tool-replace-close' => 'Închide',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Căutarea dumneavoastră nu a generat niciun rezultat.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 înlocuire(i) efectuată(e).',
-	'wikieditor-toolbar-tool-replace-emptysearch' => 'Nu ați introdus niciun cuvânt după care să căutați',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'Nu ați introdus niciun cuvânt pe care îl căutaţi.',
 	'wikieditor-toolbar-tool-replace-invalidregex' => 'Expresia regulată introdusă nu este corectă: $1',
 	'wikieditor-toolbar-section-characters' => 'Caractere speciale',
 	'wikieditor-toolbar-characters-page-latin' => 'Latină',
@@ -12707,7 +12721,7 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-help-heading-result' => 'Ceea ce obțineți',
 	'wikieditor-toolbar-help-page-format' => 'Formatare',
 	'wikieditor-toolbar-help-page-link' => 'Legături',
-	'wikieditor-toolbar-help-page-heading' => 'Titluri',
+	'wikieditor-toolbar-help-page-heading' => 'Antete',
 	'wikieditor-toolbar-help-page-list' => 'Liste',
 	'wikieditor-toolbar-help-page-file' => 'Fișiere',
 	'wikieditor-toolbar-help-page-reference' => 'Referințe',
@@ -12728,24 +12742,24 @@ $messages['ro'] = array(
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.exemplu.org Titlul legăturii]<br />[http://www.exemplu.org]<br />http://www.exemplu.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Titlul legăturii</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.exemplu.org</a>",
 	'wikieditor-toolbar-help-content-heading1-description' => 'Titlu de nivelul 1',
-	'wikieditor-toolbar-help-content-heading1-syntax' => '= Titlu =',
-	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Titlu</h1>',
+	'wikieditor-toolbar-help-content-heading1-syntax' => '= Text antet =',
+	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Text antet</h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => 'Titlu de nivelul 2',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== Titlu ==',
-	'wikieditor-toolbar-help-content-heading2-result' => '<h2>Titlu</h2>',
-	'wikieditor-toolbar-help-content-heading3-description' => 'Titlu de nivelul 3',
-	'wikieditor-toolbar-help-content-heading3-syntax' => '=== Titlu ===',
-	'wikieditor-toolbar-help-content-heading3-result' => '<h3>Titlu</h3>',
-	'wikieditor-toolbar-help-content-heading4-description' => 'Titlu de nivelul 4',
-	'wikieditor-toolbar-help-content-heading4-syntax' => '==== Titlu ====',
-	'wikieditor-toolbar-help-content-heading4-result' => '<h4>Titlu</h4>',
-	'wikieditor-toolbar-help-content-heading5-description' => 'Titlu de nivelul 5',
-	'wikieditor-toolbar-help-content-heading5-syntax' => '===== Titlu =====',
-	'wikieditor-toolbar-help-content-heading5-result' => '<h5>Titlu</h5>',
-	'wikieditor-toolbar-help-content-ulist-description' => 'Listă neordonată',
+	'wikieditor-toolbar-help-content-heading2-result' => '<h2>Text antet</h2>',
+	'wikieditor-toolbar-help-content-heading3-description' => 'Antet de nivelul 3',
+	'wikieditor-toolbar-help-content-heading3-syntax' => '=== Text antet ===',
+	'wikieditor-toolbar-help-content-heading3-result' => '<h3>Text antet</h3>',
+	'wikieditor-toolbar-help-content-heading4-description' => 'Antet de nivelul 4',
+	'wikieditor-toolbar-help-content-heading4-syntax' => '==== Text antet ====',
+	'wikieditor-toolbar-help-content-heading4-result' => '<h4>Text antet</h4>',
+	'wikieditor-toolbar-help-content-heading5-description' => 'Antet de nivelul 5',
+	'wikieditor-toolbar-help-content-heading5-syntax' => '===== Text antet =====',
+	'wikieditor-toolbar-help-content-heading5-result' => '<h5>Text antet</h5>',
+	'wikieditor-toolbar-help-content-ulist-description' => 'Listă ţintată',
 	'wikieditor-toolbar-help-content-ulist-syntax' => '* Item<br />* Item',
 	'wikieditor-toolbar-help-content-ulist-result' => '<ul><li>Item</li><li>Item</li></ul>',
-	'wikieditor-toolbar-help-content-olist-description' => 'Listă ordonată',
+	'wikieditor-toolbar-help-content-olist-description' => 'Listă numerotată',
 	'wikieditor-toolbar-help-content-olist-syntax' => '# Item<br /># Item',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>Item</li><li>Item</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'Fișier inserat',

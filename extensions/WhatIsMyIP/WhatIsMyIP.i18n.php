@@ -397,6 +397,14 @@ $messages['id'] = array(
 	'right-whatismyip' => 'Tunjukkan [[Special:WhatIsMyIP|IP saya sendiri]]',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'whatismyip' => 'Qua es mea IP-adreso',
+	'whatismyip-out' => 'Vua IP-adreso:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

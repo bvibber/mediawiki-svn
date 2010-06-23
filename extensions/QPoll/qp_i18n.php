@@ -1910,7 +1910,17 @@ $messages['pt-br'] = array(
 	'qp_source_link' => 'Fonte',
 	'qp_stats_link' => 'Estatísticas',
 	'qp_users_link' => 'Usuários',
+	'qp_voice_link' => 'Voz do usuário',
+	'qp_voice_link_inv' => 'Voz do usuário?',
 	'qp_order_by_username' => 'Ordenar por nome de usuário',
+	'qp_export_to_xls' => 'Exportar estatísticas para o formato XLS',
+	'qp_users_answered_questions' => '{{PLURAL:$1|Um usuário respondeu|$1 usuários responderam}} às questões',
+	'qp_error_invalid_question_type' => 'Tipo de pergunta inválido: $1',
+	'qp_error_unanswered_span' => 'Subcategoria sem resposta',
+	'qp_error_category_name_empty' => 'O nome da categoria está vazio',
+	'qp_error_proposal_text_empty' => 'O texto da proposta está vazio',
+	'qp_error_too_few_categories' => 'Pelo menos duas categorias devem ser definidas',
+	'qp_error_no_answer' => 'Proposta sem resposta',
 );
 
 /** Romanian (Română)

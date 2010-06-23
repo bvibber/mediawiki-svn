@@ -60,6 +60,11 @@ $messages['aln'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'prefswitch-link-anon' => 'المزايا الجديدة',
+	'tooltip-pt-prefswitch-link-anon' => 'اعرف المزايا الجديدة',
+	'prefswitch-link-on' => 'أرجعني',
+	'tooltip-pt-prefswitch-link-on' => 'عطّل المزايا الجديدة',
+	'prefswitch-link-off' => 'المزايا الجديدة',
 	'tooltip-pt-prefswitch-link-off' => 'جرّب المزايا الجديدة',
 );
 
@@ -138,6 +143,14 @@ $messages['cy'] = array(
 	'tooltip-pt-prefswitch-link-on' => "Analluogi'r nodweddion newydd",
 	'prefswitch-link-off' => 'Nodweddion newydd',
 	'tooltip-pt-prefswitch-link-off' => 'Rhoi cynnig ar y nodweddion newydd',
+);
+
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'prefswitch-link-on' => 'Tag mig tilbage',
+	'prefswitch-link-off' => 'Nye funktioner',
 );
 
 /** German (Deutsch)

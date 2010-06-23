@@ -32,6 +32,13 @@ $messages['br'] = array(
 	'cassandra-desc' => 'Boniañ a ra testenn pep adweladenn en diaz roadennoù [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Bosnian (Bosanski)
+ * @author Palapa
+ */
+$messages['bs'] = array(
+	'cassandra-desc' => 'Čuva ispravljeni tekst u [http://cassandra.apache.org/ Apache Cassandra] bazi podataka',
+);
+
 /** German (Deutsch)
  * @author The Evil IP address
  */

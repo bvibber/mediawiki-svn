@@ -213,6 +213,10 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
 	'categorymultisort-sortkey-name-stroke' => 'Strich',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Strich: Vereinfacht',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Strich: Traditionell',

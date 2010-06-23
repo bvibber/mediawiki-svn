@@ -647,6 +647,7 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'optin-desc' => 'ব্যবহারকারীদের বেটা ব্যবহারের সুযোগ দিন, ইউজাবিলিটি ইনিসিয়াটিভ হল সাম্প্রতিকতম ব্যবহারযোগ্যতা বৃদ্ধি।',
@@ -671,6 +672,8 @@ $messages['bn'] = array(
 	'optin-submit-feedback' => 'ফিডব্যাক দিন',
 	'optin-survey-yes' => 'হ্যাঁ',
 	'optin-survey-no' => 'না',
+	'optin-survey-intro' => 'বেটা চেষ্টা করার জন্য আপনাকে ধন্যবাদ।
+আমাদের নতুন ইন্টারফেস সম্পর্কে আপনার অনুভূতি আমরা জানতে চাই। তাই আমরা আপনাকে উৎসাহ দিচ্ছি যে, "[[#leave|{{int:optin-submit-out}}]]" লিংকে ক্লিক করার পূর্বে নিচের ঐচ্ছিক জরিপ ফর্মটি আপনি পূরণ করবেন।',
 	'optin-survey-question-likedislike' => 'বেটায় আপনার কি পছন্দ হয়েছে? বেটায় আপনার কি পছন্দ হয় নাই?',
 	'optin-survey-question-whyoptout' => 'আপনি বেটা কেন ছেড়ে যাচ্ছেন? (অনুগ্রহ করে যেগুলো প্রযোজ্য প্রয়োগ করুন)',
 	'optin-survey-answer-whyoptout-hard' => 'এতে কাজ করা কঠিন।',
@@ -701,6 +704,20 @@ $messages['bn'] = array(
 	'optin-survey-answer-changes-predictability' => 'আন্দাজ করার ক্ষমতা উন্নয়ন করুন।',
 	'optin-survey-answer-changes-custom' => 'আরও বেশি স্বনির্ধারণের সুযোগ',
 	'optin-survey-answer-changes-other' => 'অন্য:',
+	'optin-improvements2' => '== কি কি উন্নয়ন করা হয়েছে? ==
+[[File:UsabilityToolbar.png|left|link=|বর্তমানের সমৃদ্ধ সম্পাদনা টুলবারের একটি স্ক্রিনশট]]
+[[File:UsabilityDialogs.png|left|link=|নতুনভাবে ডায়ালগ বক্সের মাধ্যমে লেখা যোগ করার একটি স্ক্রিনশট]]
+;সমৃদ্ধ টুলবার
+নতুন ও সমৃদ্ধ সম্পাদনা টুলবার নিবন্ধ সম্পাদনাকে আরও সহজ করে তুলেছে।
+নতুন এবং উন্নত আইকনসমূহ টুলটি কি কাজ করবে তা আরও সুন্দর ও পরিষ্কারভাবে সংজ্ঞায়িত করেছে।
+উচ্চপর্যায়ের সম্পাদনার জন্য নির্ধারিত অংশগুলো ভাঁজ করে রাখা হয়েছে। এর ফলে প্রয়োজনীয় সরঞ্জামগুলো যেমন সহজেই কাছে পাওয়া যাচ্ছে তেমনি উচ্চপর্যায়ের সরঞ্জামগুলোও এক ক্লিকেই বের করে নেওয়া যাচ্ছে।
+;ডায়ালগ
+যখন কোনো নিবন্ধে কোনো পাতার লিংক সংযোগ বা টেবিল যোগ করছেন, তখন নির্ধারিত আইকনে ক্লিক করলে একটি ডায়ালগ বক্স খুলবে, যা সহজ একটি ফর্ম পূরণের মাধ্যমে নিবন্ধে সংযোগ ও সাধারণ টেবিল যোগ করতে সাহায্য করবে।
+;এবং আরও
+এছাড়া আমরা আরও কিছু উন্নয়নের সাথে আপনাদের পরিচয় করিয়েছি। তার মধ্যে আছে, সমৃদ্ধ নেভিগেশন, পৃথক ট্যাব, উন্নত অনুসন্ধান ব্যবস্থা, এবং আরও অনেক কিছু।
+== যেভাবে যুক্ত হবেন ==
+ইউজাবিলিটি ইনিশিয়েটিভ সম্মন্ধে আরও জানতে আমাদের [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative হোমপেজ] পরিদর্শন করুন।
+<div style="clear:both"></div>',
 );
 
 /** Breton (Brezhoneg)
@@ -2912,11 +2929,18 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 $messages['io'] = array(
 	'optin-title-optedout' => 'Probez Beta',
 	'optin-title-optedin' => 'Livez Beta',
+	'optin-title-justoptedin' => 'Bonveno a Beta',
+	'optin-title-justoptedout' => 'Danko pro probar nia Beta',
+	'optin-needlogin' => 'Vu mustas [$1 enirar] por probar Beta.',
+	'optin-accept-short' => 'Yes, komencez!',
 	'optin-accept-long' => 'Probez Beta',
+	'optin-accept-long-anon' => 'Enirez e probez Beta',
 	'optin-deny-short' => 'No, danko',
+	'optin-deny-long' => "Retrovenar a l'antea pagino",
 	'optin-submit-out' => 'Livez Beta',
 	'optin-survey-yes' => 'Yes',
 	'optin-survey-no' => 'No',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Me ne prizis olua aspekto.',
 	'optin-survey-answer-whyoptout-other' => 'Altra motivo:',
 	'optin-survey-answer-changes-other' => 'Altra:',
 );
@@ -3707,8 +3731,8 @@ $messages['mk'] = array(
 	'optin-survey-answer-changes-custom' => 'Овозможете повеќе кориснички прилагодувања.',
 	'optin-survey-answer-changes-other' => 'Друго:',
 	'optin-improvements2' => '== Што е подобрено? ==
-[[File:UsabilityToolbar.png|left|link=|Подобрен алатник]]
-[[File:UsabilityDialogs.png|left|link=|Нови дијалози за создавање содржини]]
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
 ;Подобрен алатник
 Подобрениот алатник го олеснува уредувањето. Новите и подобрени икони даваат појасна претстава за намената на секоја алатка. Проширените делови го средуваат неуредниот изглед, но сепак овозможуваат моментен пристап дури и до алатките што ретко се употребуваат.
 ;Дијалог
@@ -4811,6 +4835,7 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author AdiJapan
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Stelistcristi
@@ -4820,7 +4845,7 @@ $messages['ro'] = array(
 	'optin-desc' => 'Permiteți utilizatorilor să încerce versiunea Beta, ultimele îmbunătățiri de utilizabilitate ale Usability Initiative',
 	'optin-title-optedout' => 'Încercați Beta',
 	'optin-title-optedin' => 'Părăsiți Beta',
-	'optin-title-justoptedin' => 'Bine ati venit la Beta',
+	'optin-title-justoptedin' => 'Bine aţi venit la Beta',
 	'optin-title-justoptedout' => 'Vă mulțumim că ați încercat Beta',
 	'optin-title-feedback' => 'Păreri în legătură cu Beta',
 	'optin-needlogin' => 'Trebuie să vă [$1 autentificați] pentru a încerca Beta.',
@@ -4863,11 +4888,11 @@ Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar
 	'optin-survey-question-usedtoolbar-ifno' => 'Dacă nu, de ce nu ? Veți dori în viitor ? Vă rugăm explicați.',
 	'optin-survey-question-different' => 'Ce am fi putut face diferit pentru a nu părăsi versiunea Beta ?',
 	'optin-survey-question-feedback' => 'Vă rugăm înștiințați-ne prin orice alte comentarii, preocupări sau gânduri ai pentru noi - toate mesajele sunt utile:',
-	'optin-survey-question-browser' => 'Ce navigator web folosiți ?',
+	'optin-survey-question-browser' => 'Ce navigator folosiți?',
 	'optin-survey-answer-browser-other' => 'Alt browser:',
 	'optin-survey-question-os' => 'Ce sistem de operare folosiți?',
 	'optin-survey-answer-os-other' => 'Alt sistem de operare:',
-	'optin-survey-question-res' => 'Care rezoluție are monitorul dumneavoastră?',
+	'optin-survey-question-res' => 'Care este rezoluția ecranului dumneavoastră?',
 	'optin-survey-question-changes' => 'Ce modificări v-ar plăcea să vedeți în versiunea Beta în viitor (vă rugăm selectați tot ce se aplică) ?',
 	'optin-survey-answer-changes-nav' => 'Să facă navigarea generală a saitului mai ușoară de folosit.',
 	'optin-survey-answer-changes-edittools' => 'Să crească și să îmbunătățească uneltele de editare.',
@@ -4876,7 +4901,21 @@ Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar
 	'optin-survey-answer-changes-lookfeel' => 'Să actualizeze „aspectul și simțul” saitului.',
 	'optin-survey-answer-changes-predictability' => 'Să se îmbunătățească predictibilitatea de performanță.',
 	'optin-survey-answer-changes-custom' => 'Să se permită personalizarea utilizatorului mai mare',
-	'optin-survey-answer-changes-other' => 'Altul:',
+	'optin-survey-answer-changes-other' => 'Altele:',
+	'optin-improvements2' => '== Ce s-a îmbunătățit? ==
+[[File:UsabilityToolbar.png|left|link=|Captură de ecran cu noua trusă de unelte de editare]]
+[[File:UsabilityDialogs.png|left|link=|Captură de ecran cu noile casete de dialog pentru generare de conținut]]
+;Trusă de unelte îmbunătățită
+Noua trusă de unelte facilitează editarea articolelor.
+Miniaturile noi și îmbunătățite arată mai clar ce face fiecare unealtă.
+Secțiunile expandabile aerisesc pagina, dar țin uneltele folosite rar la distanță de un clic.
+;Casete de dialog
+Cînd creați legături sau tabele, casetele de dialog se deschid printr-un clic pe miniatură și vă ajută să îndepliniți sarcina prin simpla completare a unui formular.
+;Și altele
+Am operat o mulțime de alte îmbunătățiri, precum navigarea optimizată, file în cascadă, căutare eficientă și multe altele.
+==Cum vă puteți implica==
+Pentru a afla detalii despre Inițiativa de Utilizabilitate vă rugăm să vizitați [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative această pagină].
+<div style="clear:both"></div>',
 );
 
 /** Tarandíne (Tarandíne)
@@ -6258,6 +6297,7 @@ Chúng tôi đã giới thiệu một số các cải tiến khác như cải ti
  * @author Malafaya
  */
 $messages['vo'] = array(
+	'optin-deny-long' => 'Geikön lü pad büik',
 	'optin-survey-yes' => 'Si!',
 	'optin-survey-no' => 'Nö!',
 	'optin-survey-answer-whyoptout-other' => 'Kod votik:',

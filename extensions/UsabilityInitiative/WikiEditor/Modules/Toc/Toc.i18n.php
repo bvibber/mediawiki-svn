@@ -539,12 +539,13 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  */
 $messages['ro'] = array(
 	'wikieditor-toc-preference' => 'Activează cuprins navigabil',
-	'wikieditor-toc-show' => 'Arată',
-	'wikieditor-toc-hide' => 'Ascunde',
+	'wikieditor-toc-show' => 'Arată conţinutul',
+	'wikieditor-toc-hide' => 'Ascunde conţinutul',
 );
 
 /** Tarandíne (Tarandíne)

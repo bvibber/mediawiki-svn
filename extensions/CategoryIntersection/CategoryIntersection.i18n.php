@@ -102,12 +102,14 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Palapa
  */
 $messages['bs'] = array(
 	'categoryintersection' => 'Preklapanje kategorija',
 	'categoryintersection-desc' => 'Održava tabelu sa haš vrijednostima za [[Special:CategoryIntersection|preklapanja kategorija]] unutar stranice',
 	'categoryintersection-doit' => 'Spisak stranica u svim ovim kategorijama',
 	'categoryintersection-maxcategories' => 'Najveći dopušteni broj preklapajućih kategorija je $1.',
+	'categoryintersection-mincategories' => 'Trebate uključiti najmanje dvije kategorije',
 	'categoryintersection-results' => 'Pretraga je dala $1 {{PLURAL:$1|rezultat|rezultata}}.',
 );
 

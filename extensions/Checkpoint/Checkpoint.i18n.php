@@ -326,3 +326,13 @@ $messages['tl'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Sagipin ang pagsisiyasat]])',
 );
 
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'checkpoint' => 'Kaydet ve yazmaya devam et',
+	'checkpoint-desc' => 'Bir yazımı kaydetmeyi ve yazıma devam etmeyi sağlar.',
+	'checkpoint-tooltip' => 'Şu ana kadarkini kaydedip sayfayı yazmaya devam edin',
+	'checkpoint-notice' => '([[{{ns:project}}:Kontrol noktası|kontrol noktası kayıt]])',
+);
+

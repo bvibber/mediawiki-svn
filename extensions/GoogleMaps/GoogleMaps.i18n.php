@@ -4452,17 +4452,24 @@ $wgGoogleMapsMessages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $wgGoogleMapsMessages['ro'] = array(
+	'gm-incompatible-browser-link' => 'schimbă culoarea de umplere',
 	'gm-balloon-title' => 'Titlu:',
+	'gm-balloon-link-article' => 'Legătură la această pagină (opţional):',
 	'gm-remove' => 'elimină',
+	'gm-caption' => 'Titlu',
 	'gm-tab-title' => 'Titlu etichetă',
 	'gm-tab' => 'Etichetă',
+	'gm-start-path' => 'începe o rută',
+	'gm-trace-area' => 'trasează o zonă',
 	'gm-save-point' => 'salvează &amp; închide',
 	'gm-load-map-from-article' => 'Încarcă o hartă de la pagina:',
 	'gm-no-maps' => 'Nu s-a găsit nici o hartă de încărcat în această pagină.',
+	'gm-refresh-list' => 'Reîmprospătare listă',
 	'gm-load-map' => 'Încarcă hartă',
 	'gm-clip-result' => 'Adaugă la hartă',
 	'gm-no-results' => 'Ne pare rău, nici un rezultat',

@@ -353,6 +353,7 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Sarrus
  */
 $messages['da'] = array(
@@ -364,6 +365,7 @@ $messages['da'] = array(
 	'ct-anon-users' => 'Anonyme brugere',
 	'ct-user-contribs' => 'Totalt antal brugerbidrag',
 	'ct-and' => 'og',
+	'ct-update-table' => 'Opdater tabel',
 );
 
 /** German (Deutsch)
@@ -1522,30 +1524,35 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
+ * @author Cin
  * @author Firilacroco
  * @author Lionbeat
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'clicktracking' => 'Monitorizarea clicurilor de către Inițiativa de Utilizabilitate',
+	'clicktracking-desc' => 'Monitorizarea clicurilor în scopul monitorizării evenimentelor care nu produc reîncărcarea paginii',
 	'ct-title' => 'Clicuri utilizator cumulate',
 	'ct-event-name' => 'Numele evenimentului',
-	'ct-expert-header' => 'Clickuri de către "experți"',
-	'ct-intermediate-header' => 'Clicuri „intermediare”',
-	'ct-beginner-header' => 'Clicuri „începătoare”',
-	'ct-total-header' => 'Clickuri totale',
+	'ct-expert-header' => 'Clicuri "expert"',
+	'ct-intermediate-header' => 'Clicuri „intermediar”',
+	'ct-beginner-header' => 'Clicuri „începător”',
+	'ct-total-header' => 'Total clicuri',
 	'ct-start-date' => 'Data de start (AAAALLZZ)',
 	'ct-end-date' => 'Data de sfârșit (AAAALLZZ)',
+	'ct-increment-by' => 'Număr de zile reprezentate de fiecare punct din grafic',
 	'ct-change-graph' => 'Grafic de schimbări',
-	'ct-beginner' => 'Începători',
+	'ct-beginner' => 'Începător',
 	'ct-intermediate' => 'Intermediar',
 	'ct-expert' => 'Expert',
-	'ct-date-range' => 'Interval în timp',
+	'ct-date-range' => 'Interval de timp',
 	'ct-editing' => 'Editare curentă:',
 	'ct-anon-users' => 'Utilizatori anonimi',
-	'ct-user-contribs' => 'Contribuțiile totale ale utilizatorului',
+	'ct-user-contribs' => 'Total contribuţii utilizator',
 	'ct-user-span' => 'Contribuțiile utilizatorului în intervalul de timp',
 	'ct-and' => 'și',
-	'ct-update-table' => 'Actualizează tabel',
+	'ct-update-table' => 'Actualizează tabelul',
 );
 
 /** Tarandíne (Tarandíne)

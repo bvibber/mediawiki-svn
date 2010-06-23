@@ -258,6 +258,18 @@ $messages['sr-el'] = array(
 	'categorymultisort-go' => 'Idi',
 );
 
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'categorymultisort-desc' => 'Kategorilerin değişik sıralama türleriyle görüntülenmesini sağlar',
+	'categorymultisort-defaultsortkey-name' => 'Varsayılan',
+	'categorymultisort-sortkey' => 'Sıralama türü:',
+	'categorymultisort-go' => 'Git',
+	'categorymultisort-default-sortkey' => 'Varsayılan sıralama türü:',
+	'prefs-category' => 'Kategori',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'categorymultisort-desc' => '允许按照不同的排序字查看分类',

@@ -356,12 +356,14 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author IvanLanin
  */
 $messages['id'] = array(
 	'wikieditor' => 'Antarmuka penyuntingan teks wiki canggih',
 	'wikieditor-desc' => 'Menyediakan antarmuka penyuntingan teks wiki yang lebih berkembang dan banyak modul penyedia fitur',
 	'wikieditor-wikitext-tab' => 'TeksWiki',
+	'wikieditor-loading' => 'Pembebanan',
 );
 
 /** Italian (Italiano)

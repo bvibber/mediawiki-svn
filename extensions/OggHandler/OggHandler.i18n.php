@@ -2633,6 +2633,7 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
  * @author Stelistcristi
@@ -2654,14 +2655,14 @@ $messages['ro'] = array(
 	'ogg-no-player' => 'Îmi pare rău, sistemul tău nu pare să aibă vreun program de redare suportat.
 Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarcă un program de redare</a>.',
 	'ogg-player-videoElement' => 'Navigator cu suport nativ',
-	'ogg-player-oggPlugin' => 'Insert navigator',
-	'ogg-player-thumbnail' => 'Încă imaginea doar',
+	'ogg-player-oggPlugin' => 'Modul navigator',
+	'ogg-player-thumbnail' => 'Doar capturi',
 	'ogg-player-soundthumb' => 'Niciun program de redare',
 	'ogg-player-selected' => '(selectat)',
 	'ogg-use-player' => 'Folosește programul de redare:',
 	'ogg-more' => 'Mai mult…',
 	'ogg-dismiss' => 'Închide',
-	'ogg-download' => 'Descarcă fișier',
+	'ogg-download' => 'Descarcă fișierul',
 	'ogg-desc-link' => 'Despre acest fișier',
 );
 
