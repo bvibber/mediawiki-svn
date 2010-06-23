@@ -87,6 +87,33 @@ abstract class MediaHandler {
 	function getMetadata( $image, $path ) { return ''; }
 
 	/**
+	* Get metadata version.
+	* @return integer version
+	* @todo Originally this was going to be used by ForeignAPIFile, but currently does nothing.
+	*/
+	function getMetadataVersion () { return 1; }
+
+	/**
+	* Convert metadata version.
+	*
+	* By default just returns $metadata, but can be used to allow
+	* media handlers to convert between metadata versions.
+	*
+	* @param $metadata Mixed String or Array metadata array (serialized if string)
+	* @param $version Integer target version
+	* @return Array serialized metadata in specified version, or $metadata on fail.
+	*/
+	function convertMetadataVersion( $metadata, $version = 1 ) {
+		if ( !is_array( $metadata ) ) {
+			//unserialize to keep return parameter consistent.
+			wfSuppressWarnings();
+			return unserialize( $metadata );
+			wfRestoreWarnings();
+		}
+		return $metadata;
+	}
+
+	/**
 	 * Get a string describing the type of metadata, for display purposes.
 	 */
 	function getMetadataType( $image ) { return false; }

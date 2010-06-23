@@ -122,7 +122,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				{
 					$gotOne = true;
 					$fit = $this->addPageSubItem( $pageId,
-						self::getInfo( $img, $prop, $result, $scale ) );
+						self::getInfo( $img, $prop, $result, $scale, $params['metadataversion'] ) );
 					if ( !$fit ) {
 						if ( count( $pageIds[NS_IMAGE] ) == 1 ) {
 							// See the 'the user is screwed' comment above
@@ -151,7 +151,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 						break;
 					}
 					$fit = $this->addPageSubItem( $pageId,
-						self::getInfo( $oldie, $prop, $result ) );
+						self::getInfo( $oldie, $prop, $result, null, $params['metadataversion'] ) );
 					if ( !$fit ) {
 						if ( count( $pageIds[NS_IMAGE] ) == 1 ) {
 							$this->setContinueEnumParameter( 'start',
@@ -191,7 +191,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	 * @param $scale Array containing 'width' and 'height' items, or null
 	 * @return Array: result array
 	 */
-	static function getInfo( $file, $prop, $result, $scale = null ) {
+	static function getInfo( $file, $prop, $result, $scale = null, $version = 0 ) {
 		$vals = array();
 		if ( isset( $prop['timestamp'] ) ) {
 			$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $file->getTimestamp() );
@@ -239,8 +239,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			$vals['sha1'] = wfBaseConvert( $file->getSha1(), 36, 16, 40 );
 		}
 		if ( isset( $prop['metadata'] ) ) {
-			$metadata = $file->getMetadata();
-			$vals['metadata'] = $metadata ? self::processMetaData( unserialize( $metadata ), $result ) : null;
+			$metadata = unserialize( $file->getMetadata() );
+			if ( $version !== 0 ) {
+				$metadata = $file->convertMetadataVersion( $metadata, $version );
+			}
+			$vals['metadata'] = $metadata ? self::processMetaData( $metadata, $result ) : null;
 		}
 		if ( isset( $prop['mime'] ) ) {
 			$vals['mime'] = $file->getMimeType();
@@ -307,6 +310,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => - 1
 			),
+			'metadataversion' => array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_DFLT => 1,
+				ApiBase::PARAM_MIN => 0,
+			),
 			'continue' => null,
 		);
 	}
@@ -341,6 +349,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'urlwidth' => array( "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
 					    'Only the current version of the image can be scaled' ),
 			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
+			'metadataversion' => array( "Version of metadata to use. if 0 is specified, use latest version.", 
+						"Defaults to '1' for bacwards compatability" ),
 			'continue' => 'When more results are available, use this to continue',
 		);
 	}

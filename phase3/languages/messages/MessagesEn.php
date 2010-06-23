@@ -3757,6 +3757,7 @@ Others will be hidden by default.
 'exif-gpsareainformation'          => 'Name of GPS area',
 'exif-gpsdatestamp'                => 'GPS date',
 'exif-gpsdifferential'             => 'GPS differential correction',
+'exif-coordinate-format'           => '$1° $2′ $3″ $4',
 'exif-jpegfilecomment'             => 'JPEG file comment',
 
 # Make & model, can be wikified in order to link to the camera and model name

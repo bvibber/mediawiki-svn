@@ -63,8 +63,6 @@ class IPTC {
 				$val = self::convIPTCHelper( $val, $charset );
 			}
 
-			// for now. Probably should keep it as an array perhaps
-			$data = $wgLang->commaList( $data );
 		} else {
 			$data = self::convIPTCHelper ( $data, $charset );
 		}
