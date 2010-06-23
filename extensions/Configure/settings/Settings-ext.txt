@@ -828,7 +828,7 @@ Translate
 settings[] = wgEnablePageTranslation: bool, wgPageTranslationNamespace: int
 settings[] = wgTranslateStaticTags: array
 settings[] = wgTranslateExtensionDirectory: text, wgTranslateLanguageFallbacks: array
-settings[] = wgTranslateFuzzyBotName: text, wgTranslateCssLocation: text
+settings[] = wgTranslateFuzzyBotName: text
 settings[] = wgTranslateCssLocation: text, wgTranslateDocumentationLanguageCode: text
 settings[] = wgTranslateBlacklist: array, wgTranslateAuthorBlacklist: array
 settings[] = wgTranslateMessageNamespaces: array, wgTranslateAC: array
