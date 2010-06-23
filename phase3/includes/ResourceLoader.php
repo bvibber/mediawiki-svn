@@ -27,7 +27,7 @@ class ResourceLoader {
 	 * List of core scripts to include if the "core" module is specified - it's like a bucket
 	 */
 	private static $coreScripts = array(
-		'jquery' => 'resources/core/jquery-1.4.2.min.js',
+		'jquery' => 'resources/core/jquery-1.4.2.js',
 		'mw' => 'resources/core/mw.js',
 	);
 	/**
@@ -275,7 +275,7 @@ class MessageBlobStore {
 		$retval = array();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'msg_resource', array( 'mr_blob', 'mr_resource' ),
-			array( 'mr_resource' => $modules, 'mr_lang' => $this->lang ),
+			array( 'mr_resource' => $modules, 'mr_lang' => $lang ),
 			__METHOD__
 		);
 		foreach ( $res as $row ) {
