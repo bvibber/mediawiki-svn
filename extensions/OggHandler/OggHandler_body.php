@@ -176,7 +176,7 @@ class OggHandler extends MediaHandler {
 		return $this->unpackMetadata( $metadata ) !== false;
 	}
 
-	function getThumbType( $ext, $mime ) {
+	function getThumbType( $ext, $mime, $params = null ) {
 		return array( 'jpg', 'image/jpeg' );
 	}
 
