@@ -47,6 +47,9 @@ if ( $wgRequest->isPathInfoBad() ) {
 }
 
 $loader = new ResourceLoader( $wgRequest->getVal( 'lang', 'en' ) );
+$loader->setUseJSMin( $wgRequest->getBool( 'jsmin', true ) );
+$loader->setUseCSSMin( $wgRequest->getBool( 'cssmin', true ) );
+$loader->setUseCSSJanus( $wgRequest->getVal( 'dir', 'ltr' ) == 'rtl' );
 $moduleParam = $wgRequest->getVal( 'modules' );
 $modules = $moduleParam ? explode( '|', $moduleParam ) : array();
 foreach ( $modules as $module ) {
