@@ -21,49 +21,54 @@ window.mw = {
 		 * scheme		"http"
 		 * server		"www.domain.com"
 		 * path			"path/to/my/file.html"
-		 * query		"this=thåt?" or { 'this': 'thåt?' }
+		 * query		"this=th√•t" or { 'this': 'th√•t' }
 		 * fragment		"place_on_the_page"
 		 * 
-		 * Results in: "http://www.domain.com/path/to/my/file.html?this=th%E5t#place_on_the_page"
+		 * Results in: "http://www.domain.com/path/to/my/file.html?this=th%C3%A5t#place_on_the_page"
+		 * 
+		 * All arguments to this function are assumed to be URL-encoded already, except for the
+		 * query parameter if provided in object form.
 		 */
 		this.buildUrlString = function( components ) {
 			var url = '';
-			if ( typeof components['scheme'] === 'string' ) {
-				url += components['scheme'] + '://';
+			if ( typeof components.scheme === 'string' ) {
+				url += components.scheme + '://';
 			}
-			if ( typeof components['server'] === 'string' ) {
-				url += components['server'] + '/';
+			if ( typeof components.server === 'string' ) {
+				url += components.server + '/';
 			}
-			if ( typeof components['path'] === 'string' ) {
-				url += components['path'];
+			if ( typeof components.path === 'string' ) {
+				url += components.path;
 			}
-			if ( typeof components['query'] === 'string' ) {
-				url += '?' + components['query'];
-			} else if ( typeof components['query'] === 'object' ) {
-				url += '?' + that.buildQueryString( components['query'] );
+			if ( typeof components.query === 'string' ) {
+				url += '?' + components.query;
+			} else if ( typeof components.query === 'object' ) {
+				url += '?' + that.buildQueryString( components.query );
 			}
-			if ( typeof components['fragment'] === 'string' ) {
-				url += '#' + components['fragment'];
+			if ( typeof components.fragment === 'string' ) {
+				url += '#' + components.fragment;
 			}
 			return url;
 		};
 		/**
+		 * RFC 3986 compliant URI component encoder
+		 */
+		this.urlencode = function( string ) {  
+			return encodeURIComponent( string )
+				.replace(/!/g, '%21')
+				.replace(/'/g, '%27')
+				.replace(/\(/g, '%28')
+				.replace(/\)/g, '%29')
+				.replace(/\*/g, '%2A');  
+		}
+		/**
 		 * Builds a query string from an object with key and values
 		 */
 		this.buildQueryString = function( parameters ) {
-			// RFC 3986 compliant URI component encoder
-			function encode( string ) {  
-				return encodeURIComponent( string )
-					.replace(/!/g, '%21')
-					.replace(/'/g, '%27')
-					.replace(/\(/g, '%28')
-					.replace(/\)/g, '%29')
-					.replace(/\*/g, '%2A');  
-			}
 			if ( typeof parameters === 'object' ) {
 				var parts = [];
 				for ( p in parameters ) {
-					parts[parts.length] = encode( p ) + '=' + encode( parameters[p] );
+					parts[parts.length] = that.urlencode( p ) + '=' + that.urlencode( parameters[p] );
 				}
 				return parts.join( '&' );
 			}

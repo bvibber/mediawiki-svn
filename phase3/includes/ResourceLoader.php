@@ -69,8 +69,6 @@ class ResourceLoader {
 		),
 	);
 	
-	private $scripts = array();
-	private $styles = array();
 	private $loadedModules = array();
 	private $includeCore = false;
 	
@@ -94,10 +92,6 @@ class ResourceLoader {
 			$this->includeCore = true;
 		} else if ( isset( self::$modules[$module] ) ) {
 			$this->loadedModules[] = $module;
-			$this->scripts[$module] = self::$modules[$module]['script'];
-			if ( isset( self::$modules[$module]['style'] ) ) {
-				$this->styles[$module] = self::$modules[$module]['script'];
-			}
 		} else {
 			// We have a problem, they've asked for something we don't have!
 		}
@@ -114,43 +108,7 @@ class ResourceLoader {
 	public function setUseCSSJanus( $use ) {
 		$this->useCSSJanus = $use;
 	}
-		
-	private function getStyleJS( $styles ) {
-		$retval = '';
-		foreach ( $styles as $style ) {
-			// TODO: file_get_contents() errors?
-			// TODO: CACHING!
-			$css = file_get_contents( $style );
-			if ( $this->useCSSJanus ) {
-				$css = $this->cssJanus( $css );
-			}
-			if ( $this->useCSSMin ) {
-				$css = $this->cssMin( $css );
-			}
-			$escCss = Xml::escapeJsString( $css );
-			$retval .= "\$j( 'head' ).append( '<style>$escCSS</style>' );\n";
-		}
-		return $retval;
-	}
 	
-	private function getMessagesJS( $modules ) {
-		/*
-		$blobs = array();
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'msg_resource', 'msg_blob',
-			array( 'msg_resource' => $modules, 'msg_lang' => $this->lang ),
-			__METHOD__
-		);
-		foreach ( $res as $row ) {
-			$blobs[] = $row->msg_blob;
-		}
-		return "mw.addMessages( {\n" . implode( ",\n", $blobs ) . "\n} );";
-		*/
-	}
-	
-	/*
-	 * TODO: Might think about using an output buffer here, these string concatenations are dealing with many KB of data
-	 */ 
 	public function getOutput() {
 		// Because these are keyed by module, in the case that more than one module asked for the same script only the
 		// first will end up being registered - the client loader can't handle multiple modules per implementation yet,
@@ -181,15 +139,28 @@ class ResourceLoader {
 		 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
 		 */
 		
+		// Get messages in one go
+		$blobs = MessageBlobStore::get( $this->lang, $this->loadedModules );
+		
 		// TODO: file_get_contents() errors?
 		// TODO: CACHING!
-		foreach ( $this->scripts as $module => $script ) {
-			if ( file_exists( $script ) ) {
-				$retval .= "mw.loader.implement( '{$module}', function() { " . file_get_contents( $script ) . " } );\n";
+		foreach ( $this->loadedModules as $module ) {
+			$mod = self::$modules[$module];
+			$script = $style = '';
+			$messages = isset( $blobs[$module] ) ? $blobs[$module] : '';
+			if ( file_exists( $mod['script'] ) ) {
+				$script = file_get_contents( $mod['script'] );
 			}
+			if ( isset( $mod['style'] ) && file_exists( $mod['style'] ) ) {
+				$style = file_get_contents( $mod['style'] );
+				if ( $this->useCSSJanus ) {
+					$css = $this->cssJanus( $style );
+				}
+				$style = Xml::escapeJsString( $css );
+			}
+			
+			$retval .= "mw.loader.implement( '$module', function() { $script }, '$style', { $messages } );\n";
 		}
-		$retval .= $this->getStyleJS( $this->styles );
-		$retval .= $this->getMessagesJS( $this->loadedModules );
 		
 		if ( $this->useJSMin ) {
 			$retval = $this->jsMin( $retval );
@@ -217,7 +188,6 @@ class ResourceLoader {
 	}
 	
 	public function jsMin( $js ) {
-		// TODO: Implement
 		return JSMin::minify( $js );
 	}
 	
@@ -237,9 +207,12 @@ class MessageBlobStore {
 	 * Get the message blobs for a set of modules
 	 * @param $lang string Language code
 	 * @param $modules array Array of module names
-	 * @return array An array of incomplete JSON objects (i.e. without the {} ) with messages keys and their values.
+	 * @return array An array of incomplete JSON objects (i.e. without the {} ) containing messages keys and their values. Array keys are module names.
 	 */
 	public static function get( $lang, $modules ) {
+		if ( !count( $modules ) ) {
+			return array();
+		}
 		// Try getting from the DB first
 		$blobs = self::getFromDB( $lang, $modules );
 		
@@ -252,7 +225,7 @@ class MessageBlobStore {
 				$blobs[$module] = $blob;
 			}
 		}
-		return implode( ",\n", $blobs );
+		return $blobs;
 	}
 	
 	public static function set( $lang, $module, $blob ) {
