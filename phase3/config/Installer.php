@@ -333,7 +333,7 @@ error_reporting( 0 );
 $phpdatabases = array();
 foreach (array_keys($ourdb) as $db) {
 	$compname = $ourdb[$db]['compile'];
-	if( extension_loaded( $compname ) || ( mw_have_dl() && dl( "{$compname}." . PHP_SHLIB_SUFFIX ) ) ) {
+	if( wfDl( $compname ) ) {
 		array_push($phpdatabases, $db);
 		$ourdb[$db]['havedriver'] = 1;
 	}
@@ -1330,7 +1330,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		$localSettings = str_replace( "\r\n", "\n", $localSettings );
 		$f = fopen( "LocalSettings.php", 'xt' );
 
-		if( $f == false ) {
+		if( !$f ) {
 			print( "</li>\n" );
 			dieout( "<p>Couldn't write out LocalSettings.php. Check that the directory permissions are correct and that there isn't already a file of that name here...</p>\n" .
 			"<p>Here's the file that would have been written, try to paste it into place manually:</p>\n" .
@@ -1866,7 +1866,7 @@ function writeLocalSettings( $conf ) {
 	} elseif( $conf->DBtype == 'oracle' ) {
 		$dbsettings =
 "# Oracle specific settings
-\$wgDBprefix         = \"{$slconf['DBprefix']}\";";
+\$wgDBprefix         = \"{$slconf['DBprefix_ora']}\";";
 	} else {
 		// ummm... :D
 		$dbsettings = '';

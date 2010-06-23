@@ -13,6 +13,7 @@
  * @author Jaan513
  * @author KalmerE.
  * @author Ker
+ * @author Kyng
  * @author Pikne
  * @author Silvar
  * @author Võrok
@@ -287,7 +288,7 @@ $messages = array(
 'tog-editsection'             => '[redigeeri] lingid peatükkide muutmiseks',
 'tog-editsectiononrightclick' => 'Peatükkide redigeerimine paremklõpsuga alampealkirjadel (JavaScript)',
 'tog-showtoc'                 => 'Näita sisukorda (lehtedel, millel on rohkem kui 3 pealkirja)',
-'tog-rememberpassword'        => 'Parooli meeldejätmine tulevasteks seanssideks',
+'tog-rememberpassword'        => 'Parooli meeldejätmine tulevasteks seanssideks (kuni $1 {{PLURAL:$1|päevaks|päevaks}})',
 'tog-watchcreations'          => 'Lisa minu loodud lehed jälgimisloendisse',
 'tog-watchdefault'            => 'Jälgi uusi ja muudetud artikleid',
 'tog-watchmoves'              => 'Lisa minu teisaldatud leheküljed jälgimisloendisse',
@@ -678,7 +679,7 @@ Sinu konto on loodud.
 'yourname'                   => 'Kasutajanimi:',
 'yourpassword'               => 'Parool:',
 'yourpasswordagain'          => 'Sisesta parool uuesti:',
-'remembermypassword'         => 'Jäta parool meelde',
+'remembermypassword'         => 'Jäta parool meelde (kuni $1 {{PLURAL:$1|päevaks|päevaks}})',
 'yourdomainname'             => 'Teie domeen:',
 'login'                      => 'Logi sisse',
 'nav-login-createaccount'    => 'Logi sisse või registreeru kasutajaks',
@@ -807,8 +808,8 @@ Selle lehe redigeerimislogisse salvestatakse su IP-aadress.",
 'missingsummary'                   => "'''Meeldetuletus:''' Sa ei ole lisanud muudatuse resümeed.
 Kui vajutad uuesti salvestamise nupule, salvestatakse muudatus ilma resümeeta.",
 'missingcommenttext'               => 'Palun sisesta siit allapoole kommentaar.',
-'missingcommentheader'             => "'''Meeldetuletus:''' Sa ei ole kirjutanud kommentaarile teemat/pealkirja.
-Kui vajutad uuesti <em>Salvesta</em>, siis salvestatakse kommentaar ilma teema/pealkirjata.",
+'missingcommentheader'             => "'''Meeldetuletus:''' Sa pole kirjutanud kommentaarile teemat ega pealkirja.
+Kui klõpsad uuesti \"{{int:savearticle}}\", salvestatakse su kommentaar kummatagi.",
 'summary-preview'                  => 'Resümee eelvaade:',
 'subject-preview'                  => 'Alaosa pealkirja eelvaade:',
 'blockedtitle'                     => 'Kasutaja on blokeeritud',
@@ -874,8 +875,8 @@ Palun mõtle järele, kas soovid seda lehte luua või muuta.',
 'blocked-notice-logextract'        => 'See kasutaja on praegu blokeeritud.
 Allpool on toodud viimane blokeerimislogi sissekanne:',
 'clearyourcache'                   => "'''Märkus:''' Pärast salvestamist pead sa muudatuste nägemiseks oma brauseri puhvri tühjendama: '''Mozilla:''' ''ctrl-shift-r'', '''IE:''' ''ctrl-f5'', '''Safari:''' ''cmd-shift-r'', '''Konqueror''' ''f5''.",
-'usercssyoucanpreview'             => "'''Vihje:''' Kasuta nuppu 'Näita eelvaadet' oma uue css/js testimiseks enne salvestamist.",
-'userjsyoucanpreview'              => "'''Vihje:''' Kasuta nuppu 'Näita eelvaadet' oma uue css/js testimiseks enne salvestamist.",
+'usercssyoucanpreview'             => "'''Vihje:''' Enne salvestamist kasuta oma uue CSSi proovimiseks nuppu \"{{int:showpreview}}\".",
+'userjsyoucanpreview'              => "'''Vihje:''' Enne salvestamist kasuta oma uue JavaScripti proovimiseks nuppu \"{{int:showpreview}}\".",
 'usercsspreview'                   => "'''Ärge unustage, et seda versiooni teie isiklikust stiililehest pole veel salvestatud!'''",
 'userjspreview'                    => "'''Ärge unustage, et see versioon teie isiklikust javascriptist on alles salvestamata!'''",
 'userinvalidcssjstitle'            => "'''Hoiatus:''' Kujundust nimega \"\$1\" ei ole.
@@ -1115,6 +1116,9 @@ Palun vaata logisid.',
 'suppressionlog'     => 'Varjamislogi',
 'suppressionlogtext' => 'Allpool on nimekiri kustutamistest ja blokeeringutest, millega kaasneb administraatorite eest sisu varjamine.
 Jõus olevad keelud ja blokeeringud leiad [[Special:IPBlockList|blokeeritud IP-aadresside loendist]].',
+
+# Revision move
+'revmove-reasonfield' => 'Põhjus:',
 
 # History merging
 'mergehistory'                     => 'Ühenda lehtede ajalood',
@@ -3194,8 +3198,8 @@ Proovi tavalist eelvaadet.',
 'watchlistedit-noitems'        => 'Teie jälgimisloend ei sisalda ühtegi lehekülge.',
 'watchlistedit-normal-title'   => 'Jälgimisloendi redigeerimine',
 'watchlistedit-normal-legend'  => 'Jälgimisloendist lehtede eemaldamine',
-'watchlistedit-normal-explain' => "Need lehed on teie jälgimisloendis.
-Et lehti jälgimisloendist eemaldada, tehke vastava lehe ees olevasse kastikesse linnuke ja vajutage siis nuppu '''Eemalda valitud lehed'''. Kuid teil on võimalus muuta siit ka [[Special:Watchlist/raw|jälgimisloendi algandmeid]].",
+'watchlistedit-normal-explain' => 'Need lehed on sinu jälgimisloendis.
+Jälgimisloendist lehtekülgede eemaldamiseks tee vastava lehekülje ees olevasse kastikesse linnuke ja klõpsa nuppu "{{int:Watchlistedit-normal-submit}}". Saad ka jälgimisloendi [[Special:Watchlist/raw|algandmeid muuta]].',
 'watchlistedit-normal-submit'  => 'Eemalda valitud lehed',
 'watchlistedit-normal-done'    => 'Teie jälgimisloendist eemaldati {{PLURAL:$1|1 leht|$1 lehte}}:',
 'watchlistedit-raw-title'      => 'Jälgimisloendi algandmed',
@@ -3324,20 +3328,5 @@ Sisesta faili nimi eesliiteta "{{ns:file}}:".',
 'htmlform-submit'              => 'Saada',
 'htmlform-reset'               => 'Tühista muudatused',
 'htmlform-selectorother-other' => 'Muu',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Lisa kategooria',
-'ajax-add-category-submit'     => 'Lisa',
-'ajax-confirm-title'           => 'Toimingu kinnitamine',
-'ajax-confirm-prompt'          => 'Saad allpool muudatuse resümeega varustada.
-Muudatuse salvestamiseks klõpsa nuppu "Salvesta".',
-'ajax-confirm-save'            => 'Salvesta',
-'ajax-add-category-summary'    => 'Kategooria "$1" lisamine',
-'ajax-remove-category-summary' => 'Kategooria "$1" eemaldamine',
-'ajax-confirm-actionsummary'   => 'Sooritatav toiming:',
-'ajax-error-title'             => 'Tõrge',
-'ajax-error-dismiss'           => 'Sobib',
-'ajax-remove-category-error'   => 'Seda kategooriat pole võimalik eemaldada.
-Tõrge ilmneb harilikult siis, kui kategooria on lisatud malliga.',
 
 );

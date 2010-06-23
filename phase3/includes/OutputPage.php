@@ -768,7 +768,7 @@ class OutputPage {
 		$pageTable = $dbr->tableName( 'page' );
 		$where = $lb->constructSet( 'page', $dbr );
 		$propsTable = $dbr->tableName( 'page_props' );
-		$sql = "SELECT page_id, page_namespace, page_title, page_len, page_is_redirect, pp_value
+		$sql = "SELECT page_id, page_namespace, page_title, page_len, page_is_redirect, page_latest, pp_value
 			FROM $pageTable LEFT JOIN $propsTable ON pp_propname='hiddencat' AND pp_page=page_id WHERE $where";
 		$res = $dbr->query( $sql, __METHOD__ );
 
@@ -2233,9 +2233,9 @@ class OutputPage {
 						NS_USER,
 						$userpage->getDBkey() . '/' . $name . '.js'
 					);
-					if ( $scriptpage && $scriptpage->exists() ) {
+					if ( $scriptpage && $scriptpage->exists() && ( $scriptpage->getLength() > 0 ) ) {
 						$userjs = $scriptpage->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
-						$this->addScriptFile( $userjs );
+						$this->addScriptFile( $userjs, $scriptpage->getLatestRevID() );
 					}
 				}
 			}

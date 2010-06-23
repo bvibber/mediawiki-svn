@@ -1056,6 +1056,10 @@ $3-এর দেয়া কারণ হল ''$2''",
 'userrights-editusergroup'    => 'ব্যবহারকারীর দল সম্পাদনা করো',
 'saveusergroups'              => 'ব্যবহারকারীর দল সংরক্ষণ করো',
 'userrights-groupsmember'     => 'সদস্য:',
+'userrights-groups-help'      => 'আপনি এই ব্যবহারকারীর বর্তমান দল পরিবর্তন করতে পারবেন:
+* টিক চিহ্ন দেওয়া ঘরের অর্থ ব্যবহারকারী এখন ঐ দলের অন্তর্ভুক্ত।
+* টিক চিহ্ন বিহীন ঘরের অর্থ ব্যবহারকারী ঐ দলের অন্তর্ভুক্ত নন।
+* একটি তারকা চিহ্ন (*) দ্বারা বোঝানো হচ্ছে এই দলের অন্তর্ভুক্তির পর আপনি আর তা বাতিল করতে পারবেন না।',
 'userrights-reason'           => 'কারণ:',
 'userrights-no-interwiki'     => 'আপনার অন্য উইকিতে ব্যবহারকারী অধিকার সম্পাদনা করার অনুমতি নেই।',
 'userrights-nodatabase'       => '$1 ডাটাবেজটির হয় কোন অস্তিত্ব নেই অথবা এটি স্থানীয় ডাটাবেজ নয়।',
@@ -2758,14 +2762,5 @@ $1',
 # HTML forms
 'htmlform-submit'              => 'জমা দাও',
 'htmlform-selectorother-other' => 'অন্য',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'বিষয়শ্রেণী যোগ',
-'ajax-add-category-submit'     => 'যোগ',
-'ajax-confirm-save'            => 'সংরক্ষণ',
-'ajax-add-category-summary'    => '"$1" বিষয়শ্রেণী যোগ',
-'ajax-remove-category-summary' => '"$1" বিষয়শ্রেণী অপসারণ',
-'ajax-error-title'             => 'ত্রুটি',
-'ajax-error-dismiss'           => 'ঠিক আছে',
 
 );

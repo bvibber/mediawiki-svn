@@ -458,7 +458,7 @@ class Article {
 		$lc = LinkCache::singleton();
 
 		if ( $data ) {
-			$lc->addGoodLinkObj( $data->page_id, $this->mTitle, $data->page_len, $data->page_is_redirect );
+			$lc->addGoodLinkObj( $data->page_id, $this->mTitle, $data->page_len, $data->page_is_redirect, $data->page_latest );
 
 			$this->mTitle->mArticleID = intval( $data->page_id );
 
@@ -1977,6 +1977,7 @@ class Article {
 	 * @deprecated use Article::doEdit()
 	 */
 	function updateArticle( $text, $summary, $minor, $watchthis, $forceBot = false, $sectionanchor = '' ) {
+		wfDeprecated( __METHOD__ );
 		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $minor ? EDIT_MINOR : 0 ) |
 			( $forceBot ? EDIT_FORCE_BOT : 0 );
@@ -2042,6 +2043,7 @@ class Article {
 	 * @param $baseRevId the revision ID this edit was based off, if any
 	 * @param $user Optional user object, $wgUser will be used if not passed
 	 * @param $watchthis Watch the page if true, unwatch the page if false, do nothing if null
+	 * @param $comment Boolean: whether the edit is a new section
 	 * @param $sectionanchor The section anchor for the page; used for redirecting the user back to the page
 	 *              after the edit is successfully committed
 	 * @param $redirect If true, redirect the user back to the page after the edit is successfully committed
@@ -4046,8 +4048,9 @@ class Article {
 		$pageTable = $dbw->tableName( 'page' );
 		$hitcounterTable = $dbw->tableName( 'hitcounter' );
 		$acchitsTable = $dbw->tableName( 'acchits' );
+		$dbType = $dbw->getType();
 
-		if ( $wgHitcounterUpdateFreq <= 1 ) {
+		if ( $wgHitcounterUpdateFreq <= 1 || $dbType == 'sqlite' ) {
 			$dbw->query( "UPDATE $pageTable SET page_counter = page_counter + 1 WHERE page_id = $id" );
 
 			return;
@@ -4074,7 +4077,6 @@ class Article {
 			wfProfileIn( 'Article::incViewCount-collect' );
 			$old_user_abort = ignore_user_abort( true );
 
-			$dbType = $dbw->getType();
 			$dbw->lockTables( array(), array( 'hitcounter' ), __METHOD__, false );
 			$tabletype = $dbType == 'mysql' ? "ENGINE=HEAP " : '';
 			$dbw->query( "CREATE TEMPORARY TABLE $acchitsTable $tabletype AS " .
@@ -4457,7 +4459,7 @@ class Article {
 				$this->mTitle->getPrefixedDBkey() ) );
 		}
 
-		if ( $wgEnableParserCache && $cache && $this && !$this->mParserOutput->isCacheable() ) {
+		if ( $wgEnableParserCache && $cache && $this->mParserOutput->isCacheable() ) {
 			$parserCache = ParserCache::singleton();
 			$parserCache->save( $this->mParserOutput, $this, $parserOptions );
 		}

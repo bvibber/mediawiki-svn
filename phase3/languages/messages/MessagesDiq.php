@@ -861,6 +861,10 @@ rocaneyan kontrol bıkere.',
 'suppressionlog'     => 'qeydê pinani kerdışi',
 'suppressionlogtext' => 'qey listeya qedexan bıewne: [[Special:IPBlockList|IP listeya vergırewteyan]]',
 
+# Revision move
+'revmove-reasonfield'    => 'Sebeb:',
+'revmove-nullmove-title' => 'Sernameo xırabın',
+
 # History merging
 'mergehistory'                     => 'vere cûye pelan bıhewelın',
 'mergehistory-header'              => 'No pel, reviyonê yew peli eşkeno yewna pelo newe de piyawano.
@@ -3056,20 +3060,5 @@ satır ê ke pê ney # # destpêkenê zey mışore/mıjore muamele vineno.
 'htmlform-submit'              => 'Bişirav',
 'htmlform-reset'               => 'Vurnayişî reyna biyar',
 'htmlform-selectorother-other' => 'Bin',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Kategorî de bike',
-'ajax-add-category-submit'     => 'De bike',
-'ajax-confirm-title'           => 'Hereketî konfirme bike',
-'ajax-confirm-prompt'          => 'Ti eşkenî cêr de yew qisseyê vurnayîş ê xo bide.
-Tuşê "Qeyd ke"yî klik bike ke nuşteyanê tu qeyd biy.',
-'ajax-confirm-save'            => 'Qeyt bik',
-'ajax-add-category-summary'    => 'Kategorî de bike "$1"',
-'ajax-remove-category-summary' => 'kategoriyê "$1"i biwedarne',
-'ajax-confirm-actionsummary'   => 'çita bik:',
-'ajax-error-title'             => 'Xeta',
-'ajax-error-dismiss'           => 'Temam',
-'ajax-remove-category-error'   => 'Ma nieşkenî ena kategorî wedarne.
-Çi wext yew kategorî yew template de ca geno, ena probelem bena.',
 
 );

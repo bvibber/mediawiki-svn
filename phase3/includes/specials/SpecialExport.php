@@ -1,21 +1,23 @@
 <?php
-# Copyright (C) 2003-2008 Brion Vibber <brion@pobox.com>
-# http://www.mediawiki.org/
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-# http://www.gnu.org/copyleft/gpl.html
+/**
+ * Copyright (C) 2003-2008 Brion Vibber <brion@pobox.com>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
 /**
  * @file
  * @ingroup SpecialPage
@@ -33,7 +35,7 @@ class SpecialExport extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgRequest, $wgSitename, $wgExportAllowListContributors;
 		global $wgExportAllowHistory, $wgExportMaxHistory, $wgExportMaxLinkDepth;
-		global $wgExportFromNamespaces;
+		global $wgExportFromNamespaces, $wgUser;
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -172,7 +174,7 @@ class SpecialExport extends SpecialPage {
 		//$form .= Xml::checkLabel( wfMsg( 'export-images' ), 'images', 'wpExportImages', false ) . '<br />';
 		$form .= Xml::checkLabel( wfMsg( 'export-download' ), 'wpDownload', 'wpDownload', true ) . '<br />';
 
-		$form .= Xml::submitButton( wfMsg( 'export-submit' ), array( 'accesskey' => 's' ) );
+		$form .= Xml::submitButton( wfMsg( 'export-submit' ), $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'export' ) );
 		$form .= Xml::closeElement( 'form' );
 		$wgOut->addHTML( $form );
 	}

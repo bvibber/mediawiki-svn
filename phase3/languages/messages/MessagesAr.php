@@ -41,6 +41,7 @@
  * @author Uwe a
  * @author ترجمان05
  * @author عصام بايزيدي
+ * @author عمرو
  * @author نصوح
  */
 
@@ -1279,6 +1280,8 @@ $1",
 'logdelete-failure'           => "'''تعذر ضبط رؤية السجل:'''
 $1",
 'revdel-restore'              => 'تغيير الرؤية',
+'revdel-restore-deleted'      => 'مراجعات محذوفة',
+'revdel-restore-visible'      => 'مراجعات مرئية',
 'pagehist'                    => 'تاريخ الصفحة',
 'deletedhist'                 => 'التاريخ المحذوف',
 'revdelete-content'           => 'محتوى',
@@ -3748,6 +3751,15 @@ $1',
 'tags-edit'               => 'عدل',
 'tags-hitcount'           => '$1 {{PLURAL:$1|تغيير|تغيير}}',
 
+# Special:ComparePages
+'comparepages'     => 'قارن صفحات',
+'compare-selector' => 'قارن مراجعات الصفحة',
+'compare-page1'    => 'صفحة 1',
+'compare-page2'    => 'صفحة 2',
+'compare-rev1'     => 'مراجعة 1',
+'compare-rev2'     => 'مراجعة 2',
+'compare-submit'   => 'قارن',
+
 # Database error messages
 'dberr-header'      => 'هذا الويكي به مشكلة',
 'dberr-problems'    => 'عذرا! هذا الموقع يعاني من صعوبات تقنية.',
@@ -3768,20 +3780,5 @@ $1',
 'htmlform-submit'              => 'أرسل',
 'htmlform-reset'               => 'الرجوع عن التغييرات',
 'htmlform-selectorother-other' => 'أخرى',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'أضف تصنيفا',
-'ajax-add-category-submit'     => 'أضف',
-'ajax-confirm-title'           => 'أكد الإجراء',
-'ajax-confirm-prompt'          => 'بإمكانك تقديم ملخص تعديل أدناه.
-انقر "احفظ" لحفظ تعديلك.',
-'ajax-confirm-save'            => 'احفظ',
-'ajax-add-category-summary'    => 'إضافة التصنيف "$1"',
-'ajax-remove-category-summary' => 'إزالة التصنيف "$1"',
-'ajax-confirm-actionsummary'   => 'الإجراء المتخذ:',
-'ajax-error-title'             => 'خطأ',
-'ajax-error-dismiss'           => 'موافق',
-'ajax-remove-category-error'   => 'لا يمكن إزالة هذا التصنيف.
-يحدث هذا عادة عندما يضاف التصنيف إلى الصفحة عبر قالب.',
 
 );

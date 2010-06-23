@@ -14,10 +14,12 @@
  * @author Alexander Sigachov (alexander.sigachov@gmail.com)
  * @author Amikeco
  * @author Chilin
+ * @author Claymore
  * @author Don Alessandro
  * @author EugeneZelenko
  * @author Ferrer
  * @author Flrn
+ * @author G0rn
  * @author Gazeb
  * @author Grigol
  * @author HalanTul
@@ -277,7 +279,7 @@ $messages = array(
 'tog-editsection'             => 'Показывать ссылку «править» для каждой секции',
 'tog-editsectiononrightclick' => 'Править секции при правом щелчке мышью на заголовке (JavaScript)',
 'tog-showtoc'                 => 'Показывать оглавление (для страниц более чем с 3 заголовками)',
-'tog-rememberpassword'        => 'Помнить мою учётную запись на этом компьютере',
+'tog-rememberpassword'        => 'Помнить мою учётную запись на этом компьютере (не более $1 {{PLURAL:$1|дня|дней|дней}})',
 'tog-watchcreations'          => 'Добавлять созданные мной страницы в список наблюдения',
 'tog-watchdefault'            => 'Добавлять изменённые мной страницы в список наблюдения',
 'tog-watchmoves'              => 'Добавлять переименованные мной страницы в список наблюдения',
@@ -422,31 +424,32 @@ $messages = array(
 'faqpage'        => 'Project:ЧаВО',
 
 # Vector skin
-'vector-action-addsection'   => 'Добавить тему',
-'vector-action-delete'       => 'Удалить',
-'vector-action-move'         => 'Переименовать',
-'vector-action-protect'      => 'Защитить',
-'vector-action-undelete'     => 'Восстановить',
-'vector-action-unprotect'    => 'Снять защиту',
-'vector-namespace-category'  => 'Категория',
-'vector-namespace-help'      => 'Справочная страница',
-'vector-namespace-image'     => 'Файл',
-'vector-namespace-main'      => 'Страница',
-'vector-namespace-media'     => 'Медиа-страница',
-'vector-namespace-mediawiki' => 'Сообщение',
-'vector-namespace-project'   => 'О проекте',
-'vector-namespace-special'   => 'Служебная страница',
-'vector-namespace-talk'      => 'Обсуждение',
-'vector-namespace-template'  => 'Шаблон',
-'vector-namespace-user'      => 'Страница участника',
-'vector-view-create'         => 'Создание',
-'vector-view-edit'           => 'Правка',
-'vector-view-history'        => 'Просмотр истории',
-'vector-view-view'           => 'Чтение',
-'vector-view-viewsource'     => 'Просмотр разметки',
-'actions'                    => 'Действия',
-'namespaces'                 => 'Пространства имён',
-'variants'                   => 'Варианты',
+'vector-action-addsection'       => 'Добавить тему',
+'vector-action-delete'           => 'Удалить',
+'vector-action-move'             => 'Переименовать',
+'vector-action-protect'          => 'Защитить',
+'vector-action-undelete'         => 'Восстановить',
+'vector-action-unprotect'        => 'Снять защиту',
+'vector-namespace-category'      => 'Категория',
+'vector-namespace-help'          => 'Справочная страница',
+'vector-namespace-image'         => 'Файл',
+'vector-namespace-main'          => 'Страница',
+'vector-namespace-media'         => 'Медиа-страница',
+'vector-namespace-mediawiki'     => 'Сообщение',
+'vector-namespace-project'       => 'О проекте',
+'vector-namespace-special'       => 'Служебная страница',
+'vector-namespace-talk'          => 'Обсуждение',
+'vector-namespace-template'      => 'Шаблон',
+'vector-namespace-user'          => 'Страница участника',
+'vector-simplesearch-preference' => 'Включить расширенные поисковые подсказки (только для оформления «Векторное»)',
+'vector-view-create'             => 'Создание',
+'vector-view-edit'               => 'Правка',
+'vector-view-history'            => 'Просмотр истории',
+'vector-view-view'               => 'Чтение',
+'vector-view-viewsource'         => 'Просмотр разметки',
+'actions'                        => 'Действия',
+'namespaces'                     => 'Пространства имён',
+'variants'                       => 'Варианты',
 
 'errorpagetitle'    => 'Ошибка',
 'returnto'          => 'Возврат к странице $1.',
@@ -673,7 +676,7 @@ $2',
 'yourname'                   => 'Имя участника:',
 'yourpassword'               => 'Пароль:',
 'yourpasswordagain'          => 'Повторный набор пароля:',
-'remembermypassword'         => 'Помнить мою учётную запись на этом компьютере',
+'remembermypassword'         => 'Помнить мою учётную запись на этом компьютере (не более $1 {{PLURAL:$1|дня|дней|дней}})',
 'yourdomainname'             => 'Ваш домен:',
 'externaldberror'            => 'Произошла ошибка при аутентификации с помощью внешней базы данных, или у вас недостаточно прав для внесения изменений в свою внешнюю учётную запись.',
 'login'                      => 'Представиться системе',
@@ -803,8 +806,8 @@ $2',
 'anonpreviewwarning'               => "''Вы не представились системе. Сохранение приведёт к записи вашего IP-адреса в историю изменений страницы.''",
 'missingsummary'                   => "'''Напоминание.''' Вы не дали краткого описания изменений. При повторном нажатии на кнопку «Записать страницу», ваши изменения будут сохранены без комментария.",
 'missingcommenttext'               => 'Пожалуйста, введите ниже ваше сообщение.',
-'missingcommentheader'             => "'''Напоминание:''' Вы не указали заголовок комментария.
-При повторном нажатии на кнопку сохранения, ваша правка будет записана без заголовка.",
+'missingcommentheader'             => "'''Напоминание.''' Вы не указали тему/заголовок для этого комментария.
+При повторном нажатии на кнопку «{{int:savearticle}}», ваша правка будет записана без заголовка.",
 'summary-preview'                  => 'Описание будет:',
 'subject-preview'                  => 'Заголовок будет:',
 'blockedtitle'                     => 'Участник заблокирован',
@@ -965,7 +968,7 @@ $2',
 
 Ограничение на количество вызовов установлено на уровне $2 {{PLURAL:$2|вызова|вызовов|вызовов}}, в данном случае требуется сделать {{PLURAL:$1|$1 вызов|$1 вызова|$1 вызовов}}.',
 'expensive-parserfunction-category'       => 'Страницы со слишком большим количеством вызовов ресурсоёмких функций',
-'post-expand-template-inclusion-warning'  => 'Внимание. Размер включаемых шаблонов слишком велик.
+'post-expand-template-inclusion-warning'  => 'Предупреждение: суммарный размер включаемых шаблонов слишком велик.
 Некоторые шаблоны не будут включены.',
 'post-expand-template-inclusion-category' => 'Страницы, для которых превышен допустимый размер включаемых шаблонов',
 'post-expand-template-argument-warning'   => 'Внимание. Эта страница содержит по крайней мере один аргумент шаблона, имеющий слишком большой размер для развёртывания.
@@ -1264,15 +1267,15 @@ $1",
 'prefsnologin'                  => 'Вы не представились системе',
 'prefsnologintext'              => 'Вы должны <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} представиться системе]</span>, чтобы изменять настройки участника.',
 'changepassword'                => 'Изменение пароля',
-'prefs-skin'                    => 'Оформление',
+'prefs-skin'                    => 'Тема оформления',
 'skin-preview'                  => 'Предпросмотр',
 'prefs-math'                    => 'Отображение формул',
 'datedefault'                   => 'По умолчанию',
 'prefs-datetime'                => 'Дата и время',
 'prefs-personal'                => 'Личные данные',
-'prefs-rc'                      => 'Страница свежих правок',
+'prefs-rc'                      => 'Свежие правки',
 'prefs-watchlist'               => 'Список наблюдения',
-'prefs-watchlist-days'          => 'Максимальное число дней, отображаемых в списке наблюдения:',
+'prefs-watchlist-days'          => 'Количество дней:',
 'prefs-watchlist-days-max'      => '(не более 7 дней)',
 'prefs-watchlist-edits'         => 'Максимальное количество правок, отображаемых в расширенном списке наблюдения:',
 'prefs-watchlist-edits-max'     => '(не более 1000)',
@@ -2368,6 +2371,7 @@ $1',
 Ниже приведена последняя запись из журнала блокировок:',
 'sp-contributions-search'              => 'Поиск вклада',
 'sp-contributions-username'            => 'IP-адрес или имя участника:',
+'sp-contributions-toponly'             => 'Показывать только последние версии',
 'sp-contributions-submit'              => 'Найти',
 
 # What links here
@@ -2613,7 +2617,7 @@ $1',
 Пожалуйста, выберите другое имя.',
 
 # Export
-'export'            => 'Экспортирование статей',
+'export'            => 'Экспорт страниц',
 'exporttext'        => 'Вы можете экспортировать текст и журнал изменений конкретной страницы или набора страниц в XML, который потом может быть [[Special:Import|импортирован]] в другой вики-проект, работающий на программном обеспечении MediaWiki.
 
 Чтобы экспортировать статьи, введите их наименования в поле редактирования, одно название на строку, и выберите хотите ли вы экспортировать всю историю изменений статей или только последние версии статей.
@@ -2765,7 +2769,7 @@ $1',
 'tooltip-preview'                 => 'Предварительный просмотр страницы, пожалуйста, используйте перед сохранением!',
 'tooltip-diff'                    => 'Показать изменения, сделанные по отношению к исходному тексту.',
 'tooltip-compareselectedversions' => 'Посмотреть разницу между двумя выбранными версиями этой страницы.',
-'tooltip-watch'                   => 'Добавить текущую страницу в список наблюдения',
+'tooltip-watch'                   => 'Добавить эту страницу в свой список наблюдения',
 'tooltip-recreate'                => 'Восстановить страницу несмотря на то, что она была удалена',
 'tooltip-upload'                  => 'Начать загрузку',
 'tooltip-rollback'                => 'Одним нажатием убрать изменения, сделанные последним редактором',
@@ -3312,6 +3316,7 @@ $1',
 'table_pager_first'        => 'Первая страница',
 'table_pager_last'         => 'Последняя страница',
 'table_pager_limit'        => 'Показать $1 элементов на странице',
+'table_pager_limit_label'  => 'Записей на страницу:',
 'table_pager_limit_submit' => 'Выполнить',
 'table_pager_empty'        => 'Не найдено',
 
@@ -3496,6 +3501,15 @@ $1',
 'tags-edit'               => 'править',
 'tags-hitcount'           => '$1 {{PLURAL:$1|изменение|изменения|изменений}}',
 
+# Special:ComparePages
+'comparepages'     => 'Сравнение страниц',
+'compare-selector' => 'Сравнение версий страниц',
+'compare-page1'    => 'Первая страница',
+'compare-page2'    => 'Вторая страница',
+'compare-rev1'     => 'Первая версия',
+'compare-rev2'     => 'Вторая версия',
+'compare-submit'   => 'Сравнить',
+
 # Database error messages
 'dberr-header'      => 'Эта вики испытывает затруднения',
 'dberr-problems'    => 'Извините! На данном сайте возникли технические трудности.',
@@ -3516,20 +3530,5 @@ $1',
 'htmlform-submit'              => 'Отправить',
 'htmlform-reset'               => 'Отменить изменения',
 'htmlform-selectorother-other' => 'Иное',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Добавить категорию',
-'ajax-add-category-submit'     => 'Добавить',
-'ajax-confirm-title'           => 'Подтвердить действие',
-'ajax-confirm-prompt'          => 'Ниже вы можете указать описание изменений.
-Нажмите «Сохранить», чтобы сохранить ваши изменения.',
-'ajax-confirm-save'            => 'Сохранить',
-'ajax-add-category-summary'    => 'Добавлена категория «$1»',
-'ajax-remove-category-summary' => 'Удалена категория «$1»',
-'ajax-confirm-actionsummary'   => 'Предпринимаемые действия:',
-'ajax-error-title'             => 'Ошибка',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Не удалось убрать эту категорию.
-Обычно это происходит в случае, когда категория была добавлена через шаблон.',
 
 );

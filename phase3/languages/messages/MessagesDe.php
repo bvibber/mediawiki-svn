@@ -357,7 +357,7 @@ $messages = array(
 'tog-editsection'             => 'Links zum Bearbeiten einzelner Abschnitte anzeigen',
 'tog-editsectiononrightclick' => 'Einzelne Abschnitte per Rechtsklick bearbeiten (benötigt JavaScript)',
 'tog-showtoc'                 => 'Anzeigen eines Inhaltsverzeichnisses bei Seiten mit mehr als drei Überschriften',
-'tog-rememberpassword'        => 'Auf diesem Computer dauerhaft angemeldet bleiben',
+'tog-rememberpassword'        => 'Auf diesem Computer dauerhaft angemeldet bleiben (Maximal für $1 {{PLURAL:$1|Tag|Tage}})',
 'tog-watchcreations'          => 'Selbst erstellte Seiten automatisch beobachten',
 'tog-watchdefault'            => 'Selbst geänderte Seiten automatisch beobachten',
 'tog-watchmoves'              => 'Selbst verschobene Seiten automatisch beobachten',
@@ -504,31 +504,32 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-action-addsection'   => 'Abschnitt hinzufügen',
-'vector-action-delete'       => 'Löschen',
-'vector-action-move'         => 'Verschieben',
-'vector-action-protect'      => 'Schützen',
-'vector-action-undelete'     => 'Wiederherstellen',
-'vector-action-unprotect'    => 'Freigeben',
-'vector-namespace-category'  => 'Kategorie',
-'vector-namespace-help'      => 'Hilfeseite',
-'vector-namespace-image'     => 'Datei',
-'vector-namespace-main'      => 'Seite',
-'vector-namespace-media'     => 'Medienseite',
-'vector-namespace-mediawiki' => 'MediaWiki-Systemnachricht',
-'vector-namespace-project'   => 'Projektseite',
-'vector-namespace-special'   => 'Spezialseite',
-'vector-namespace-talk'      => 'Diskussion',
-'vector-namespace-template'  => 'Vorlage',
-'vector-namespace-user'      => 'Benutzerseite',
-'vector-view-create'         => 'Erstellen',
-'vector-view-edit'           => 'Bearbeiten',
-'vector-view-history'        => 'Versionsgeschichte',
-'vector-view-view'           => 'Lesen',
-'vector-view-viewsource'     => 'Quelltext anzeigen',
-'actions'                    => 'Aktionen',
-'namespaces'                 => 'Namensräume',
-'variants'                   => 'Varianten',
+'vector-action-addsection'       => 'Abschnitt hinzufügen',
+'vector-action-delete'           => 'Löschen',
+'vector-action-move'             => 'Verschieben',
+'vector-action-protect'          => 'Schützen',
+'vector-action-undelete'         => 'Wiederherstellen',
+'vector-action-unprotect'        => 'Freigeben',
+'vector-namespace-category'      => 'Kategorie',
+'vector-namespace-help'          => 'Hilfeseite',
+'vector-namespace-image'         => 'Datei',
+'vector-namespace-main'          => 'Seite',
+'vector-namespace-media'         => 'Medienseite',
+'vector-namespace-mediawiki'     => 'MediaWiki-Systemnachricht',
+'vector-namespace-project'       => 'Projektseite',
+'vector-namespace-special'       => 'Spezialseite',
+'vector-namespace-talk'          => 'Diskussion',
+'vector-namespace-template'      => 'Vorlage',
+'vector-namespace-user'          => 'Benutzerseite',
+'vector-simplesearch-preference' => 'Erweiterte Suchvorschläge aktivieren (nur Vector)',
+'vector-view-create'             => 'Erstellen',
+'vector-view-edit'               => 'Bearbeiten',
+'vector-view-history'            => 'Versionsgeschichte',
+'vector-view-view'               => 'Lesen',
+'vector-view-viewsource'         => 'Quelltext anzeigen',
+'actions'                        => 'Aktionen',
+'namespaces'                     => 'Namensräume',
+'variants'                       => 'Varianten',
 
 'errorpagetitle'    => 'Fehler',
 'returnto'          => 'Zurück zur Seite $1.',
@@ -754,7 +755,7 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 'yourname'                   => 'Benutzername:',
 'yourpassword'               => 'Passwort:',
 'yourpasswordagain'          => 'Passwort wiederholen:',
-'remembermypassword'         => 'dauerhaft anmelden',
+'remembermypassword'         => 'Auf diesem Computer dauerhaft angemeldet bleiben (Maximal für $1 {{PLURAL:$1|Tag|Tage}})',
 'yourdomainname'             => 'Deine Domain:',
 'externaldberror'            => 'Entweder es liegt ein Fehler bei der externen Authentifizierung vor oder du darfst dein externes Benutzerkonto nicht aktualisieren.',
 'login'                      => 'Anmelden',
@@ -883,7 +884,7 @@ Möglicherweise hast du dein Passwort bereits erfolgreich geändert oder ein neu
 'anonpreviewwarning'               => "''Du bist nicht angemeldet. Beim Speichern wird deine IP-Adresse in der Versionsgeschichte aufgezeichnet.''",
 'missingsummary'                   => "'''Hinweis:''' Du hast keine Zusammenfassung angegeben. Wenn du erneut auf „Seite speichern“ klickst, wird deine Änderung ohne Zusammenfassung übernommen.",
 'missingcommenttext'               => 'Dein Abschnitt enthält keinen Text.',
-'missingcommentheader'             => "'''ACHTUNG:''' Du hast keine Überschrift im Feld „Betreff:“ eingegeben. Wenn du erneut auf „Seite speichern“ klickst, wird deine Bearbeitung ohne Überschrift gespeichert.",
+'missingcommentheader'             => "'''ACHTUNG:''' Du hast kein Betreff/Überschrift eingegeben. Wenn du erneut auf „{{int:savearticle}}“ klickst, wird deine Bearbeitung ohne Überschrift gespeichert.",
 'summary-preview'                  => 'Vorschau der Zusammenfassungszeile:',
 'subject-preview'                  => 'Vorschau des Betreffs:',
 'blockedtitle'                     => 'Benutzer ist gesperrt',
@@ -1049,7 +1050,7 @@ Es {{PLURAL:$2|darf nicht mehr als 1 Aufruf|dürfen nicht mehr als $1 Aufrufe}} 
 Bitte prüfe den Vergleich unten um sicherzustellen, dass du dies tun möchtest, und speichere dann unten deine Änderungen, um die Bearbeitung rückgängig zu machen.',
 'undo-failure' => 'Die Änderung konnte nicht rückgängig gemacht werden, da der betroffene Abschnitt zwischenzeitlich verändert wurde.',
 'undo-norev'   => 'Die Bearbeitung konnte nicht rückgängig gemacht werden, da sie nicht vorhanden ist oder gelöscht wurde.',
-'undo-summary' => 'Änderung $1 von [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussion]]) wurde rückgängig gemacht.',
+'undo-summary' => 'Änderung $1 von [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskussion]]) rückgängig gemacht.',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Benutzerkonto kann nicht erstellt werden',
@@ -1259,7 +1260,7 @@ Stelle sicher, dass die Versionsgeschichte einer Seite historisch korrekt ist.',
 'searchresults'                    => 'Suchergebnisse',
 'searchresults-title'              => 'Suchergebnisse für „$1“',
 'searchresulttext'                 => 'Für mehr Informationen zur Suche siehe die [[{{MediaWiki:Helppage}}|Hilfeseite]].',
-'searchsubtitle'                   => 'Deine Suchanfrage: „[[:$1|$1]]“ ([[Special:Prefixindex/$1|alle mit „$1“ beginnenden Seiten]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|alle Seiten, die nach „$1“ verlinken]])',
+'searchsubtitle'                   => 'Deine Suchanfrage: „[[:$1]]“ ([[Special:Prefixindex/$1|alle mit „$1“ beginnenden Seiten]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|alle Seiten, die nach „$1“ verlinken]])',
 'searchsubtitleinvalid'            => 'Deine Suchanfrage: „$1“.',
 'toomanymatches'                   => 'Die Anzahl der Suchergebnisse ist zu groß, bitte versuche eine andere Abfrage.',
 'titlematches'                     => 'Übereinstimmungen mit Seitentiteln',
@@ -1641,7 +1642,7 @@ Stand: $4, $5 Uhr.",
 'recentchangeslinked-to'       => 'Zeige Änderungen auf Seiten, die hierher verlinken',
 
 # Upload
-'upload'                      => 'Hochladen',
+'upload'                      => 'Datei hochladen',
 'uploadbtn'                   => 'Datei hochladen',
 'reuploaddesc'                => 'Abbrechen und zurück zur Hochladen-Seite',
 'upload-tryagain'             => 'Geänderte Dateibeschreibung abschicken',
@@ -2164,7 +2165,7 @@ Als Absender wird die E-Mail-Adresse aus deinen [[Special:Preferences|Einstellun
 # User Messenger
 'usermessage-summary'  => 'Systemnachricht gespeichert.',
 'usermessage-editor'   => 'System-Messenger',
-'usermessage-template' => 'Vorlage:Benutzernachricht',
+'usermessage-template' => 'MediaWiki:Benutzernachricht',
 
 # Watchlist
 'watchlist'            => 'Beobachtungsliste',
@@ -2178,9 +2179,7 @@ Als Absender wird die E-Mail-Adresse aus deinen [[Special:Preferences|Einstellun
 'addedwatchtext'       => 'Die Seite „[[:$1]]“ wurde zu deiner [[Special:Watchlist|Beobachtungsliste]] hinzugefügt.
 
 Spätere Änderungen an dieser Seite und der dazugehörigen Diskussionsseite werden dort gelistet und
-in der Übersicht der [[Special:RecentChanges|letzten Änderungen]] in Fettschrift dargestellt.
-
-Wenn du die Seite wieder von deiner Beobachtungsliste entfernen möchtest, klicke auf der jeweiligen Seite auf „{{int:Unwatch}}“.',
+in der Übersicht der [[Special:RecentChanges|letzten Änderungen]] in Fettschrift dargestellt.',
 'removedwatch'         => 'Von der Beobachtungsliste entfernt',
 'removedwatchtext'     => 'Die Seite „[[:$1]]“ wurde von deiner [[Special:Watchlist|Beobachtungsliste]] entfernt.',
 'watch'                => 'Beobachten',
@@ -2429,6 +2428,7 @@ $1',
 Zur Information folgt der aktuelle Auszug aus dem Sperr-Logbuch:',
 'sp-contributions-search'              => 'Suche nach Benutzerbeiträgen',
 'sp-contributions-username'            => 'IP-Adresse oder Benutzername:',
+'sp-contributions-toponly'             => 'Nur aktuelle Versionen zeigen',
 'sp-contributions-submit'              => 'Suchen',
 
 # What links here
@@ -2465,10 +2465,10 @@ Bitte gib den Grund für die Sperre an.',
 'ipbreason-dropdown'              => '* Allgemeine Sperrgründe
 ** Einfügen falscher Informationen
 ** Leeren von Seiten
-** Fügt massenweise externe Links ein
-** Einstellen unsinniger Sachen in Seiten
-** bedrohliches Verhalten/Belästigung
-** Missbrauch durch mehrere Benutzerkonten
+** Massenweises Einfügen externer Links
+** Einstellen unsinniger Inhalte in Seiten
+** Ungebührliches Verhalten
+** Missbrauch mit mehreren Benutzerkonten
 ** Ungeeigneter Benutzername',
 'ipbanononly'                     => 'Nur anonyme Benutzer sperren',
 'ipbcreateaccount'                => 'Erstellung von Benutzerkonten verhindern',
@@ -2785,12 +2785,12 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'tooltip-p-logo'                  => 'Hauptseite',
 'tooltip-n-mainpage'              => 'Hauptseite anzeigen',
 'tooltip-n-mainpage-description'  => 'Hauptseite besuchen',
-'tooltip-n-portal'                => 'Über das Portal, was du tun kannst, wo was zu finden ist',
+'tooltip-n-portal'                => 'Über das Projekt, was du tun kannst, wo was zu finden ist',
 'tooltip-n-currentevents'         => 'Hintergrundinformationen zu aktuellen Ereignissen',
 'tooltip-n-recentchanges'         => 'Liste der letzten Änderungen in {{SITENAME}}',
 'tooltip-n-randompage'            => 'Zufällige Seite',
 'tooltip-n-help'                  => 'Hilfeseite anzeigen',
-'tooltip-t-whatlinkshere'         => 'Liste aller Seiten, die hierher zeigen',
+'tooltip-t-whatlinkshere'         => 'Liste aller Seiten, die hierher verlinken',
 'tooltip-t-recentchangeslinked'   => 'Letzte Änderungen an Seiten, die von hier verlinkt sind',
 'tooltip-feed-rss'                => 'RSS-Feed für diese Seite',
 'tooltip-feed-atom'               => 'Atom-Feed für diese Seite',
@@ -2814,9 +2814,9 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'tooltip-save'                    => 'Änderungen speichern',
 'tooltip-preview'                 => 'Vorschau der Änderungen an dieser Seite. Bitte vor dem Speichern benutzen!',
 'tooltip-diff'                    => 'Änderungen am Text zeigen',
-'tooltip-compareselectedversions' => 'Unterschied zwischen zwei ausgewählten Versionen dieser Seite anzeigen.',
+'tooltip-compareselectedversions' => 'Unterschied zwischen zwei ausgewählten Versionen dieser Seite anzeigen',
 'tooltip-watch'                   => 'Füge diese Seite deiner Beobachtungsliste hinzu',
-'tooltip-recreate'                => 'Seite neu erstellen, obwohl sie gelöscht wurde.',
+'tooltip-recreate'                => 'Seite neu erstellen, obwohl sie gelöscht wurde',
 'tooltip-upload'                  => 'Hochladen starten',
 'tooltip-rollback'                => 'Macht alle letzten Änderungen der Seite, die vom gleichen Benutzer vorgenommen worden sind, durch nur einen Klick rückgängig.',
 'tooltip-undo'                    => 'Macht lediglich diese eine Änderung rückgängig und zeigt das Resultat in der Vorschau an, damit in der Zusammenfassungszeile eine Begründung angegeben werden kann.',
@@ -2900,7 +2900,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'skinname-chick'       => 'Küken',
 'skinname-simple'      => 'Einfach',
 'skinname-modern'      => 'Modern',
-'skinname-vector'      => 'Vektor',
+'skinname-vector'      => 'Vector',
 
 # Math options
 'mw_math_png'    => 'Immer als PNG darstellen',
@@ -3372,6 +3372,7 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'table_pager_first'        => 'Erste Seite',
 'table_pager_last'         => 'Letzte Seite',
 'table_pager_limit'        => 'Zeige $1 Einträge pro Seite',
+'table_pager_limit_label'  => 'Positionen pro Seite:',
 'table_pager_limit_submit' => 'Los',
 'table_pager_empty'        => 'Keine Ergebnisse',
 
@@ -3510,6 +3511,15 @@ Die Eingabe muss ohne den Zusatz „{{ns:file}}:“ erfolgen.',
 'tags-edit'               => 'bearbeiten',
 'tags-hitcount'           => '$1 {{PLURAL:$1|Änderung|Änderungen}}',
 
+# Special:ComparePages
+'comparepages'     => 'Seiten vergleichen',
+'compare-selector' => 'Seitenversionen vergleichen',
+'compare-page1'    => 'Seite 1',
+'compare-page2'    => 'Seite 2',
+'compare-rev1'     => 'Version 1',
+'compare-rev2'     => 'Version 2',
+'compare-submit'   => 'Vergleichen',
+
 # Database error messages
 'dberr-header'      => 'Dieses Wiki hat ein Problem',
 'dberr-problems'    => 'Entschuldigung. Diese Seite hat momentan technische Schwierigkeiten.',
@@ -3530,20 +3540,5 @@ Die Eingabe muss ohne den Zusatz „{{ns:file}}:“ erfolgen.',
 'htmlform-submit'              => 'Übertragen',
 'htmlform-reset'               => 'Änderungen rückgängig machen',
 'htmlform-selectorother-other' => 'Andere',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Kategorie hinzufügen',
-'ajax-add-category-submit'     => 'Hinzufügen',
-'ajax-confirm-title'           => 'Aktion bestätigen',
-'ajax-confirm-prompt'          => 'Du kannst unten eine Zusammenfassung eingeben.
-Klicke „Speichern“ um die Bearbeitung zu speichern.',
-'ajax-confirm-save'            => 'Speichern',
-'ajax-add-category-summary'    => 'Kategorie „$1“ hinzufügen',
-'ajax-remove-category-summary' => 'Kategorie „$1“ entfernen',
-'ajax-confirm-actionsummary'   => 'Auszuführende Aktion:',
-'ajax-error-title'             => 'Fehler',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Es war nicht möglich, die Kategorie zu entfernen.
-Dies passiert normalerweise, wenn die Kategorie über eine Vorlage eingebunden ist.',
 
 );

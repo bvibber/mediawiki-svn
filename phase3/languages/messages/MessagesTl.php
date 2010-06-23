@@ -146,7 +146,7 @@ $messages = array(
 'tog-editsection'             => 'Payagan ang mga pagbabagong panseksyon sa mga [baguhin] na kawing',
 'tog-editsectiononrightclick' => 'Payagan ang mga pagbabagong panseksyon sa pakanang pagpindot ng mga panseksyong pamagat (JavaScript)',
 'tog-showtoc'                 => 'Ipakita ang talaan ng mga nilalaman (sa mga pahinang may higit sa 3 punong pamagat)',
-'tog-rememberpassword'        => 'Tandaan ang paglagda ko sa kompyuter na ito',
+'tog-rememberpassword'        => 'Tandaan ang paglagda ko sa kompyuter na ito (pinakamarami na ang $1 {{PLURAL:$1|araw|mga araw}})',
 'tog-watchcreations'          => 'Idagdag ang mga pahinang nilikha ko sa aking tala ng mga binabantayan',
 'tog-watchdefault'            => 'Idagdag ang mga pahinang binago ko sa aking tala ng mga binabantayan',
 'tog-watchmoves'              => 'Idagdag ang mga pahinang inilipat ko sa aking tala ng mga binabantayan',
@@ -546,7 +546,7 @@ Huwag kalimutang baguhin ang iyong [[Special:Preferences|mga kagustuhan sa {{SIT
 'yourname'                   => 'Bansag:',
 'yourpassword'               => 'Hudyat:',
 'yourpasswordagain'          => 'Hudyat mo uli:',
-'remembermypassword'         => 'Tandaan ang hudyat sa kompyuter na ito',
+'remembermypassword'         => 'Tandaan ang paglagda ko sa kompyuter na ito (pinakamarami na ang $1 {{PLURAL:$1|araw|mga araw}})',
 'yourdomainname'             => 'Dominyo mo:',
 'externaldberror'            => 'Maaaring may kamalian sa pagpapatotoo ng kalipunan ng mga dato o kaya hindi ka pinahintulutang isapanahon ng iyong panlabas na kuwenta o patnugutan.',
 'login'                      => 'Lumagda',
@@ -3403,20 +3403,5 @@ Ipasok ang pangalan ng talaksan na wala ang unlaping \"{{ns:image}}:\".",
 'htmlform-submit'              => 'Ipasa',
 'htmlform-reset'               => 'Bawiin ang mga pagbabago',
 'htmlform-selectorother-other' => 'Iba pa',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Magdagdag ng kategorya',
-'ajax-add-category-submit'     => 'Idagdag',
-'ajax-confirm-title'           => 'Tiyakin ang galaw',
-'ajax-confirm-prompt'          => 'Maaari kang magbigay ng buod ng pagbabago sa ibaba.
-Pindutin ang "Itala"upang maitala ang iyong pagbabago.',
-'ajax-confirm-save'            => 'Sagipin',
-'ajax-add-category-summary'    => 'Idagdag ang kategoryang "$1"',
-'ajax-remove-category-summary' => 'Tanggalin ang kategoryang "$1"',
-'ajax-confirm-actionsummary'   => 'Ang gagawing galaw:',
-'ajax-error-title'             => 'Kamalian',
-'ajax-error-dismiss'           => 'Okey',
-'ajax-remove-category-error'   => 'Hindi naging maaari ang pagtanggal ng ganitong kategorya.
-Karaniwang nagaganap ito kapag nadaragdag ang kategorya sa pahinang nasa loob ng isang suleras.',
 
 );

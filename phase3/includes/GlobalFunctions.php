@@ -1500,7 +1500,7 @@ function wfMerge( $old, $mine, $yours, &$result ){
 	pclose( $handle );
 	unlink( $mytextName ); unlink( $oldtextName ); unlink( $yourtextName );
 
-	if ( $result === '' && $old !== '' && $conflict == false ) {
+	if ( $result === '' && $old !== '' && !$conflict ) {
 		wfDebug( "Unexpected null result from diff3. Command: $cmd\n" );
 		$conflict = true;
 	}
@@ -2034,7 +2034,7 @@ function wfGetCachedNotice( $name ) {
 			$notice = '';
 		}
 	}
-
+	$notice = '<div id="localNotice">'.$notice.'</div>';
 	wfProfileOut( $fname );
 	return $notice;
 }
@@ -2144,7 +2144,11 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 	if ( is_null( $mode ) )
 		$mode = $wgDirectoryMode;
 
+	// Turn off the normal warning, we're doing our own below
+	wfSuppressWarnings();
 	$ok = mkdir( $dir, $mode, true );  // PHP5 <3
+	wfRestoreWarnings();
+
 	if( !$ok ) {
 		// PHP doesn't report the path in its warning message, so add our own to aid in diagnosis.
 		trigger_error( __FUNCTION__ . ": failed to mkdir \"$dir\" mode $mode", E_USER_WARNING );
@@ -2302,6 +2306,30 @@ function wfIniGetBool( $setting ) {
 		|| strtolower( $val ) == 'true'
 		|| strtolower( $val ) == 'yes'
 		|| preg_match( "/^\s*[+-]?0*[1-9]/", $val ); // approx C atoi() function
+}
+
+/**
+ * Wrapper function for PHP's dl(). This doesn't work in most situations from
+ * PHP 5.3 onward, and is usually disabled in shared environments anyway.
+ *
+ * @param $extension String A PHP extension. The file suffix (.so or .dll)
+ *                          should be omitted
+ * @return Bool - Whether or not the extension is loaded
+ */
+function wfDl( $extension ) {
+	if( extension_loaded( $extension ) ) {
+		return true;
+	}
+
+	$canDl = ( function_exists( 'dl' ) && is_callable( 'dl' )
+		&& wfIniGetBool( 'enable_dl' ) && !wfIniGetBool( 'safe_mode' ) );
+
+	if( $canDl ) {
+		wfSuppressWarnings();
+		dl( $extension . '.' . PHP_SHLIB_SUFFIX );
+		wfRestoreWarnings();
+	}
+	return extension_loaded( $extension );
 }
 
 /**
@@ -2854,11 +2882,19 @@ function wfGetCaller( $level = 2 ) {
 }
 
 /**
- * Return a string consisting all callers in stack, somewhat useful sometimes
- * for profiling specific points
+ * Return a string consisting of callers in the stack. Useful sometimes
+ * for profiling specific points.
+ *
+ * @param $limit The maximum depth of the stack frame to return, or false for
+ *               the entire stack.
  */
-function wfGetAllCallers() {
-	return implode('/', array_map('wfFormatStackFrame',array_reverse(wfDebugBacktrace())));
+function wfGetAllCallers( $limit = 3 ) {
+	$trace = array_reverse( wfDebugBacktrace() );
+	if ( !$limit || $limit > count( $trace ) - 1 ) {
+		$limit = count( $trace ) - 1;
+	}
+	$trace = array_slice( $trace, -$limit - 1, $limit );
+	return implode( '/', array_map( 'wfFormatStackFrame', $trace ) );
 }
 
 /**

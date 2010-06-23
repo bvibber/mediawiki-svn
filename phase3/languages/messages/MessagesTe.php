@@ -13,6 +13,7 @@
  * @author Mpradeep
  * @author Ravichandra
  * @author Sunil Mohan
+ * @author The Evil IP address
  * @author Urhixidur
  * @author Veeven
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
@@ -149,7 +150,7 @@ $messages = array(
 'tog-editsection'             => '[మార్చు] లింకు ద్వారా విభాగం మార్పు కావాలి',
 'tog-editsectiononrightclick' => 'విభాగం పేరు మీద కుడి క్లిక్కుతో విభాగం మార్పు కావాలి (జావాస్క్రిప్టు)',
 'tog-showtoc'                 => 'విషయసూచిక చూపించు (3 కంటే ఎక్కువ శీర్షికలున్న పేజీలకు)',
-'tog-rememberpassword'        => 'ఈ కంప్యూటరులో నేను అన్ని సెషన్లలోనూ నా లాగిన్ను గుర్తుపెట్టుకో',
+'tog-rememberpassword'        => 'ఈ కంప్యూటరులో నా ప్రవేశాన్ని గుర్తుంచుకో (గరిష్ఠంగా $1 {{PLURAL:$1|రోజు|రోజుల}}కి)',
 'tog-watchcreations'          => 'నేను సృష్టించిన పేజీలను నా వీక్షణ జాబితాకు కలుపు',
 'tog-watchdefault'            => 'నేను దిద్దుబాట్లు చేసిన పేజీలను నా వీక్షణ జాబితాకు కలుపు',
 'tog-watchmoves'              => 'నేను తరలించిన పేజీలను నా వీక్షణ జాబితాకు కలుపు',
@@ -544,7 +545,7 @@ $2',
 'yourname'                   => 'వాడుకరిపేరు:',
 'yourpassword'               => 'మీ సంకేతపదం',
 'yourpasswordagain'          => 'మళ్లీ సంకేతపదం ఇవ్వండి',
-'remembermypassword'         => 'ఈ కంప్యూటరులో నన్ను గుర్తుపెట్టుకో',
+'remembermypassword'         => 'ఈ కంప్యూటరులో నా ప్రవేశాన్ని గుర్తుంచుకో (గరిష్ఠంగా $1 {{PLURAL:$1|రోజు|రోజుల}}కి)',
 'yourdomainname'             => 'మీ డోమైను',
 'externaldberror'            => 'డేటాబేసు అధీకరణలో పొరపాటు జరిగింది లేదా మీ బయటి ఖాతాని తాజాకరించడానికి మీకు అనుమతి లేదు.',
 'login'                      => 'ప్రవేశించండి',
@@ -1944,9 +1945,8 @@ http://www.mediawiki.org/wiki/Manual:Image_Authorization చూడండి.',
 'watchnologin'         => 'లాగిన్‌ అయిలేరు',
 'watchnologintext'     => 'మీ వీక్షణ జాబితాను మార్చడానికి మీరు [[Special:UserLogin|లాగిన్‌]] అయి ఉండాలి.',
 'addedwatch'           => 'వీక్షణ జాబితాలో చేరింది',
-'addedwatchtext'       => "\"<nowiki>\$1</nowiki>\" పేజీ మీ [[Special:Watchlist|వీక్షణ జాబితా]]కు చేరింది. ఇకముందు ఈ పేజీలోను, దీని చర్చా పేజీలోను జరిగే మార్పుచేర్పులన్నీ అక్కడ చేరతాయి. సులభంగా గుర్తించడానికై [[Special:RecentChanges|ఇటీవలి మార్పుల జాబితా]]లో ఈ పేజీ పేరు '''బొద్దుగా''' కనపడుతుంది.
-
-వీక్షణ జాబితా నుండి ఈ పేజీ తొలగించాలంటే, \"వీక్షించ వద్దు\"ను నొక్కండి.",
+'addedwatchtext'       => "\"[[:\$1]]\" అనే పుట మీ [[Special:Watchlist|వీక్షణ జాబితా]]లో చేరింది.
+భవిష్యత్తులో ఈ పుటకి మరియు సంబంధిత చర్చాపుటకి జరిగే మార్పులు అక్కడ కనిపిస్తాయి, మరియు  [[Special:RecentChanges|ఇటీవలి మార్పుల జాబితా]]లో సులభంగా గుర్తించడానికి ఈ పుట '''బొద్దుగా''' కనిపిస్తుంది.",
 'removedwatch'         => 'వీక్షణ జాబితా నుండి తొలగించబడినది',
 'removedwatchtext'     => '"[[:$1]]" అనే పేజీ [[Special:Watchlist|మీ వీక్షణ జాబితా]] నుండి తొలగించబడినది.',
 'watch'                => 'వీక్షించు',
@@ -3105,6 +3105,7 @@ $1',
 'table_pager_first'        => 'మొదటి పేజీ',
 'table_pager_last'         => 'చివరి పేజీ',
 'table_pager_limit'        => 'పేజీకి $1 అంశాలను చూపించు',
+'table_pager_limit_label'  => 'పుటకి ఎన్ని అంశాలు:',
 'table_pager_limit_submit' => 'వెళ్ళు',
 'table_pager_empty'        => 'ఫలితాలు లేవు',
 
@@ -3239,6 +3240,15 @@ $1',
 'tags-edit'               => 'మార్చు',
 'tags-hitcount'           => '$1 {{PLURAL:$1|మార్పు|మార్పులు}}',
 
+# Special:ComparePages
+'comparepages'     => 'పుటల పోలిక',
+'compare-selector' => 'పుట కూర్పుల పోలిక',
+'compare-page1'    => 'పుట 1',
+'compare-page2'    => 'పుట 2',
+'compare-rev1'     => 'కూర్పు 1',
+'compare-rev2'     => 'కూర్పు 2',
+'compare-submit'   => 'పోల్చిచూడు',
+
 # Database error messages
 'dberr-header'      => 'ఈ వికీ సమస్యాత్మకంగా ఉంది',
 'dberr-problems'    => 'క్షమించండి! ఈ సైటు సాంకేతిక సమస్యలని ఎదుర్కొంటుంది.',
@@ -3259,20 +3269,5 @@ $1',
 'htmlform-submit'              => 'సమర్పించు',
 'htmlform-reset'               => 'మార్పులను రద్దుచెయ్యి',
 'htmlform-selectorother-other' => 'ఇతర',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'వర్గాన్ని చేర్చండి',
-'ajax-add-category-submit'     => 'చేర్చు',
-'ajax-confirm-title'           => 'చర్యని నిర్ధారించండి',
-'ajax-confirm-prompt'          => 'ఈ క్రింద మీరు మార్పు సారాంశాన్ని ఇవ్వవచ్చు.
-మీ మార్పుని భద్రపరచడానికి "భద్రపరచు"ని నొక్కండి.',
-'ajax-confirm-save'            => 'భద్రపరచు',
-'ajax-add-category-summary'    => '"$1" వర్గాన్ని చేర్చండి',
-'ajax-remove-category-summary' => '"$1" వర్గాన్ని తొలగించండి',
-'ajax-confirm-actionsummary'   => 'తీసుకోవాల్సిన చర్య:',
-'ajax-error-title'             => 'పొరపాటు',
-'ajax-error-dismiss'           => 'సరే',
-'ajax-remove-category-error'   => 'ఈ వర్గాన్ని తొలగించడం సాధ్యం కాలేదు.
-పేజీకి ఆ వర్గం ఒక మూస ద్వారా చేరినప్పుడు సాధారణంగా ఇలా జరుగుతుంది.',
 
 );

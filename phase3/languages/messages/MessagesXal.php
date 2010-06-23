@@ -311,7 +311,7 @@ $1',
 'edithelppage'         => 'Help:Чикллһн',
 'helppage'             => 'Help:Һарг',
 'mainpage'             => 'Нүр халх',
-'mainpage-description' => 'Нүүр халх',
+'mainpage-description' => 'Нүр халх',
 'policy-url'           => 'Project:Бодлһн',
 'portal'               => 'Бүрдәцин хург',
 'portal-url'           => 'Project:Бүрдәцин хург',
@@ -1302,12 +1302,5 @@ $2 шидрә һарһлһна төлә хәләтн.',
 # HTML forms
 'htmlform-reset'               => 'Сольлһиг уга кех',
 'htmlform-selectorother-other' => 'Талдан',
-
-# Add categories per AJAX
-'ajax-add-category'        => 'Әәшлиг немх',
-'ajax-add-category-submit' => 'Немх',
-'ajax-confirm-save'        => 'Хадһлх',
-'ajax-error-title'         => 'Эндү',
-'ajax-error-dismiss'       => 'Тиим',
 
 );

@@ -1,5 +1,23 @@
 <?php
 /**
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+/**
  * Special page to allow managing user group membership
  *
  * @file
@@ -32,10 +50,10 @@ class UserrightsPage extends SpecialPage {
 	public function userCanChangeRights( $user, $checkIfSelf = true ) {
 		$available = $this->changeableGroups();
 		return !empty( $available['add'] )
-			or !empty( $available['remove'] )
-			or ( ( $this->isself || !$checkIfSelf ) and
+			|| !empty( $available['remove'] )
+			|| ( ( $this->isself || !$checkIfSelf ) &&
 				( !empty( $available['add-self'] )
-				 or !empty( $available['remove-self'] ) ) );
+				 || !empty( $available['remove-self'] ) ) );
 	}
 
 	/**
@@ -77,8 +95,9 @@ class UserrightsPage extends SpecialPage {
 				$this->mTarget = $wgUser->getName();
 		}
 
-		if ( User::getCanonicalName( $this->mTarget ) == $wgUser->getName() )
+		if ( User::getCanonicalName( $this->mTarget ) == $wgUser->getName() ) {
 			$this->isself = true;
+		}
 
 		if( !$this->userCanChangeRights( $wgUser, true ) ) {
 			// fixme... there may be intermediate groups we can mention.
@@ -99,8 +118,9 @@ class UserrightsPage extends SpecialPage {
 		$this->setHeaders();
 
 		// show the general form
-		if ( count( $available['add'] ) || count( $available['remove'] ) )
+		if ( count( $available['add'] ) || count( $available['remove'] ) ) {
 			$this->switchForm();
+		}
 
 		if( $wgRequest->wasPosted() ) {
 			// save settings
@@ -400,8 +420,9 @@ class UserrightsPage extends SpecialPage {
 		global $wgOut, $wgUser, $wgLang;
 
 		$list = array();
-		foreach( $groups as $group )
+		foreach( $groups as $group ) {
 			$list[] = self::buildGroupLink( $group );
+		}
 
 		$autolist = array();
 		if ( $user instanceof User ) {
@@ -441,7 +462,8 @@ class UserrightsPage extends SpecialPage {
 				<tr>
 					<td></td>
 					<td class='mw-submit'>" .
-						Xml::submitButton( wfMsg( 'saveusergroups' ), array( 'name' => 'saveusergroups', 'accesskey' => 's' ) ) .
+						Xml::submitButton( wfMsg( 'saveusergroups' ),
+							array( 'name' => 'saveusergroups' ) + $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'userrights-set' ) ) .
 					"</td>
 				</tr>" .
 			Xml::closeElement( 'table' ) . "\n" .

@@ -388,7 +388,7 @@ class Skin extends Linker {
 			implode( "\t", $digitTransTable ),
 		);
 
-		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
+		$mainPage = Title::newMainPage();
 		$vars = array(
 			'skin' => $skinName,
 			'stylepath' => $wgStylePath,
@@ -1894,12 +1894,13 @@ CSS;
 			$nt = Title::newFromText( $l );
 			$url = $nt->escapeFullURL();
 			$text = $wgContLang->getLanguageName( $nt->getInterwiki() );
+			$title = htmlspecialchars( $nt->getText() );
 
 			if ( $text == '' ) {
 				$text = $l;
 			}
 			$style = $this->getExternalLinkAttributes();
-			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
+			$s .= "<a href=\"{$url}\" title=\"{$title}\"{$style}>{$text}</a>";
 		}
 		if( $wgContLang->isRTL() ) {
 			$s .= '</span>';
@@ -1988,7 +1989,7 @@ CSS;
 		);
 	}
 
-	function uploadLink() {
+	function getUploadLink() {
 		global $wgUploadNavigationUrl;
 
 		if( $wgUploadNavigationUrl ) {

@@ -145,7 +145,7 @@ $messages = array(
 'tog-editsection'             => 'Activar le modification de sectiones con ligamines "[modificar]"',
 'tog-editsectiononrightclick' => 'Activar modification de sectiones con clic-a-dextra super lor titulos (require JavaScript)',
 'tog-showtoc'                 => 'Monstrar tabula de contento (in paginas con plus de 3 sectiones)',
-'tog-rememberpassword'        => 'Memorar mi contrasigno in iste computator',
+'tog-rememberpassword'        => 'Memorar mi contrasigno in iste computator (pro un maximo de $1 {{PLURAL:$1|die|dies}})',
 'tog-watchcreations'          => 'Adder le paginas que io crea a mi observatorio',
 'tog-watchdefault'            => 'Adder le paginas que io modifica a mi observatorio',
 'tog-watchmoves'              => 'Adder le paginas que io renomina a mi observatorio',
@@ -291,31 +291,32 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-action-addsection'   => 'Adder topico',
-'vector-action-delete'       => 'Deler',
-'vector-action-move'         => 'Renominar',
-'vector-action-protect'      => 'Proteger',
-'vector-action-undelete'     => 'Restaurar',
-'vector-action-unprotect'    => 'Disproteger',
-'vector-namespace-category'  => 'Categoria',
-'vector-namespace-help'      => 'Pagina de adjuta',
-'vector-namespace-image'     => 'File',
-'vector-namespace-main'      => 'Pagina',
-'vector-namespace-media'     => 'Pagina de multimedia',
-'vector-namespace-mediawiki' => 'Message',
-'vector-namespace-project'   => 'Pagina de projecto',
-'vector-namespace-special'   => 'Pagina special',
-'vector-namespace-talk'      => 'Discussion',
-'vector-namespace-template'  => 'Patrono',
-'vector-namespace-user'      => 'Pagina de usator',
-'vector-view-create'         => 'Crear',
-'vector-view-edit'           => 'Modificar',
-'vector-view-history'        => 'Vider historia',
-'vector-view-view'           => 'Leger',
-'vector-view-viewsource'     => 'Vider texto fonte',
-'actions'                    => 'Actiones',
-'namespaces'                 => 'Spatios de nomines',
-'variants'                   => 'Variantes',
+'vector-action-addsection'       => 'Adder topico',
+'vector-action-delete'           => 'Deler',
+'vector-action-move'             => 'Renominar',
+'vector-action-protect'          => 'Proteger',
+'vector-action-undelete'         => 'Restaurar',
+'vector-action-unprotect'        => 'Disproteger',
+'vector-namespace-category'      => 'Categoria',
+'vector-namespace-help'          => 'Pagina de adjuta',
+'vector-namespace-image'         => 'File',
+'vector-namespace-main'          => 'Pagina',
+'vector-namespace-media'         => 'Pagina de multimedia',
+'vector-namespace-mediawiki'     => 'Message',
+'vector-namespace-project'       => 'Pagina de projecto',
+'vector-namespace-special'       => 'Pagina special',
+'vector-namespace-talk'          => 'Discussion',
+'vector-namespace-template'      => 'Patrono',
+'vector-namespace-user'          => 'Pagina de usator',
+'vector-simplesearch-preference' => 'Activar le suggestiones de recerca meliorate (solmente in apparentia Vector)',
+'vector-view-create'             => 'Crear',
+'vector-view-edit'               => 'Modificar',
+'vector-view-history'            => 'Vider historia',
+'vector-view-view'               => 'Leger',
+'vector-view-viewsource'         => 'Vider texto fonte',
+'actions'                        => 'Actiones',
+'namespaces'                     => 'Spatios de nomines',
+'variants'                       => 'Variantes',
 
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Retornar a $1.',
@@ -543,7 +544,7 @@ Non oblida personalisar tu [[Special:Preferences|preferentias in {{SITENAME}}]].
 'yourname'                   => 'Nomine de usator:',
 'yourpassword'               => 'Contrasigno:',
 'yourpasswordagain'          => 'Repete contrasigno:',
-'remembermypassword'         => 'Memorar mi contrasigno in iste computator',
+'remembermypassword'         => 'Memorar mi contrasigno in iste computator (pro un maximo de $1 {{PLURAL:$1|die|dies}})',
 'yourdomainname'             => 'Tu dominio:',
 'externaldberror'            => 'O il occurreva un error in le base de datos de authentication, o tu non ha le autorisation de actualisar tu conto externe.',
 'login'                      => 'Aperir session',
@@ -605,8 +606,8 @@ Per favor initia un session post reciper lo.',
 'blocked-mailpassword'       => 'Tu adresse IP es blocate de facer modificationes, e pro impedir le abuso, le uso del function pro recuperar contrasignos es equalmente blocate.',
 'eauthentsent'               => 'Un e-mail de confirmation ha essite inviate al adresse de e-mail nominate.
 Ante que alcun altere e-mail se invia al conto, tu debera sequer le instructiones in le e-mail, pro confirmar que le conto es de facto tue.',
-'throttled-mailpassword'     => 'Un memento del contrasigno jam esseva inviate durante le ultime {{PLURAL:$1|hora|$1 horas}}.
-Pro impedir le abuso, nos invia solmente un memento de contrasigno per {{PLURAL:$1|hora|$1 horas}}.',
+'throttled-mailpassword'     => 'Un rememoration del contrasigno ha jam essite inviate intra le ultime {{PLURAL:$1|hora|$1 horas}}.
+Pro prevenir le abuso, solmente un rememoration de contrasigno essera inviate per {{PLURAL:$1|hora|$1 horas}}.',
 'mailerror'                  => 'Error de inviar e-mail: $1',
 'acct_creation_throttle_hit' => 'Le visitatores de iste wiki usante tu adresse IP ha create {{PLURAL:$1|1 conto|$1 contos}} durante le ultime die, e isto es le maximo permittite in iste periodo de tempore.
 A causa de isto, le visitatores usante iste adresse IP non pote crear nove contos al momento.',
@@ -684,11 +685,11 @@ Es possibile que tu ha ja cambiate tu contrasigno o requestate un nove contrasig
 'anoneditwarning'                  => "'''Attention:''' Tu non te ha identificate.
 Tu adresse IP essera registrate in le historia de modificationes de iste pagina.",
 'anonpreviewwarning'               => "''Tu non te ha identificate. Si tu publica iste pagina, tu adresse IP essera registrate in le historia de modificationes.''",
-'missingsummary'                   => "'''Memento:''' Tu non entrava alcun summario del modification.
-Si tu clicca super Publicar de novo, le modification essera publicate sin summario.",
+'missingsummary'                   => "'''Rememoration:''' Tu non ha specificate un summario del modification.
+Si tu clicca super \"{{int:savearticle}}\" de novo, le modification essera publicate sin summario.",
 'missingcommenttext'               => 'Per favor entra un commento infra.',
-'missingcommentheader'             => "'''Memento:''' Tu non entrava un subjecto/titulo pro iste commento.
-Si tu clicca super Publicar de novo, tu commento essera publicate sin subjecto/titulo.",
+'missingcommentheader'             => "'''Rememoration:''' Tu non ha specificate un subjecto/titulo pro iste commento.
+Si tu clicca super \"{{int:savearticle}}\" de novo, le modification essera publicate sin titulo.",
 'summary-preview'                  => 'Previsualisation del summario:',
 'subject-preview'                  => 'Previsualisation del subjecto/titulo:',
 'blockedtitle'                     => 'Le usator es blocate',
@@ -2225,7 +2226,7 @@ Le archivo pote esser vacuate periodicamente.',
 'undelete-fieldset-title'      => 'Restaurar versiones',
 'undeleteextrahelp'            => "Pro restaurar le historia integre del pagina, lassa tote le quadratos dismarcate e clicca '''''Restaurar'''''.
 Pro executar un restauration selective, marca le quadratos correspondente al versiones pro restaurar, e clicca '''''Restaurar'''''.
-Le button '''''Reinitiar''''' face rader le campo de commento e tote le quadratos.",
+Le button '''''Reinitialisar''''' face rader le campo de commento e tote le quadratos.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|version|versiones}} archivate',
 'undeletehistory'              => 'Si tu restaura un pagina, tote le versiones essera restaurate al historia.
 Si un nove pagina con le mesme nomine ha essite create post le deletion, le versiones
@@ -2299,6 +2300,7 @@ $1',
 Le ultime entrata del registro de blocadas es reproducite hic infra pro information:',
 'sp-contributions-search'              => 'Cercar contributiones',
 'sp-contributions-username'            => 'Adresse IP o nomine de usator:',
+'sp-contributions-toponly'             => 'Monstrar solmente le prime versiones',
 'sp-contributions-submit'              => 'Cercar',
 
 # What links here
@@ -3259,6 +3261,7 @@ Per favor confirma que tu realmente vole recrear iste pagina.",
 'table_pager_first'        => 'Prime pagina',
 'table_pager_last'         => 'Ultime pagina',
 'table_pager_limit'        => 'Monstrar $1 entratas per pagina',
+'table_pager_limit_label'  => 'Elementos per pagina:',
 'table_pager_limit_submit' => 'Ir',
 'table_pager_empty'        => 'Nulle resultato',
 
@@ -3396,6 +3399,15 @@ Entra le nomine del file sin le prefixo \"{{ns:file}}:\".",
 'tags-edit'               => 'modificar',
 'tags-hitcount'           => '$1 {{PLURAL:$1|modification|modificationes}}',
 
+# Special:ComparePages
+'comparepages'     => 'Comparar paginas',
+'compare-selector' => 'Comparar versiones de pagina',
+'compare-page1'    => 'Pagina 1',
+'compare-page2'    => 'Pagina 2',
+'compare-rev1'     => 'Version 1',
+'compare-rev2'     => 'Version 2',
+'compare-submit'   => 'Comparar',
+
 # Database error messages
 'dberr-header'      => 'Iste wiki ha un problema',
 'dberr-problems'    => 'Pardono! Iste sito ha incontrate difficultates technic.',
@@ -3416,20 +3428,5 @@ Entra le nomine del file sin le prefixo \"{{ns:file}}:\".",
 'htmlform-submit'              => 'Submitter',
 'htmlform-reset'               => 'Disfacer modificationes',
 'htmlform-selectorother-other' => 'Altere',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Adder categoria',
-'ajax-add-category-submit'     => 'Adder',
-'ajax-confirm-title'           => 'Confirmar action',
-'ajax-confirm-prompt'          => 'Tu pote fornir un summario del modification ci infra.
-Clicca super "Publicar" pro confirmar le modification.',
-'ajax-confirm-save'            => 'Publicar',
-'ajax-add-category-summary'    => 'Adder categoria "$1"',
-'ajax-remove-category-summary' => 'Remover categoria "$1"',
-'ajax-confirm-actionsummary'   => 'Action a prender:',
-'ajax-error-title'             => 'Error',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Il non esseva possibile remover iste categoria.
-Isto occurre generalmente quando le categoria ha essite addite al pagina per un patrono.',
 
 );

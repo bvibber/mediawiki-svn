@@ -131,7 +131,7 @@ class CoreParserFunctions {
 	 * Or to encode a value for the HTTP "path", spaces are encoded as '%20'.
 	 * For links to "wiki"s, or similar software, spaces are encoded as '_',
 	 *
-	 * @param $parser.
+	 * @param $parser Parser object
 	 * @param $s String: The text to encode.
 	 * @param $arg String (optional): The type of encoding.
 	 */
@@ -582,11 +582,7 @@ class CoreParserFunctions {
 	}
 
 	static function anchorencode( $parser, $text ) {
-		$a = urlencode( $text );
-		$a = strtr( $a, array( '%' => '.', '+' => '_' ) );
-		# leave colons alone, however
-		$a = str_replace( '.3A', ':', $a );
-		return $a;
+		return substr( $parser->guessSectionNameFromWikiText( $text ), 1);
 	}
 
 	static function special( $parser, $text ) {

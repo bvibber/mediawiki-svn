@@ -129,7 +129,7 @@ $messages = array(
 'tog-editsection'             => 'Kemmañ ur rann dre al liammoù [kemmañ]',
 'tog-editsectiononrightclick' => 'Kemmañ ur rann dre glikañ a-zehou<br /> war titl ar rann',
 'tog-showtoc'                 => 'Diskouez an daolenn<br /> (evit ar pennadoù zo ouzhpenn 3 rann enno)',
-'tog-rememberpassword'        => "Derc'hel soñj eus ma ger-tremen (toupin)",
+'tog-rememberpassword'        => "Derc'hel soñj eus ma ger-tremen war an urzhiataer-mañ (evit $1 devezh{{PLURAL:$1||}} d'ar muiañ)",
 'tog-watchcreations'          => 'Evezhiañ ar pajennoù krouet ganin',
 'tog-watchdefault'            => 'Evezhiañ ar pennadoù savet pe kemmet ganin',
 'tog-watchmoves'              => "Ouzhpennañ da'm roll evezhiañ ar pajennoù adanvet ganin",
@@ -523,7 +523,7 @@ Na zisoñjit ket resisaat ho [[Special:Preferences|penndibaboù evit {{SITENAME}
 'yourname'                   => "Hoc'h anv implijer",
 'yourpassword'               => 'Ho ker-tremen',
 'yourpasswordagain'          => 'Skrivit ho ker-tremen en-dro',
-'remembermypassword'         => "Derc'hel soñj eus ma ger-tremen (toupin)",
+'remembermypassword'         => "Derc'hel soñj eus ma ger-tremen war an urzhiataer-mañ (evit $1 devezh{{PLURAL:$1||}} d'ar muiañ)",
 'yourdomainname'             => 'Ho tomani',
 'externaldberror'            => "Pe ez eus bet ur fazi gwiriekaat diavaez er bank titouroù pe n'oc'h ket aotreet da nevesaat ho kont diavaez.",
 'login'                      => 'Kevreañ',
@@ -975,9 +975,11 @@ N\'oc\'h ket aotreet da vont outi.',
 # Revision move
 'moverevlogentry'              => "en deus dilec'hiet {{PLURAL:$3|un adweladenn|$3 adweladenn}} eus $1 da $2",
 'revisionmove'                 => 'Dilec\'hiañ adweladennoù eus "$1"',
+'revmove-legend'               => 'Lakait ar pajenn voned hag an abeg',
 'revmove-submit'               => "Dilec'hiañ an adweladennoù davet ar bajenn diuzet",
 'revisionmoveselectedversions' => "Dilec'hiañ an adweladennoù diuzet",
 'revmove-reasonfield'          => 'Abeg :',
+'revmove-titlefield'           => 'Pajenn voned :',
 'revmove-badparam-title'       => 'Arventennoù fall',
 'revmove-norevisions-title'    => "N'eus stumm pal ebet evit an degasadennoù",
 'revmove-nullmove-title'       => 'Titl fall',
@@ -3139,6 +3141,7 @@ Kadarnait mar plij e fell deoc'h krouiñ ar pennad-mañ da vat.",
 'table_pager_first'        => 'Pajenn gentañ',
 'table_pager_last'         => 'Pajenn ziwezhañ',
 'table_pager_limit'        => 'Diskouez $1 elfenn dre bajenn',
+'table_pager_limit_label'  => "Disoc'hoù dre bajenn :",
 'table_pager_limit_submit' => 'Mont',
 'table_pager_empty'        => "Disoc'h ebet",
 
@@ -3295,6 +3298,12 @@ Merkañ anv ar restr hep ar rakger "{{ns:file}}:"',
 'tags-edit'               => 'aozañ',
 'tags-hitcount'           => '$1 {{PLURAL:$1|kemm|kemm}}',
 
+# Special:ComparePages
+'comparepages'   => 'Keñveriañ pajennoù',
+'compare-page1'  => 'Pajenn 1',
+'compare-page2'  => 'Pajenn 2',
+'compare-submit' => 'Keñveriañ',
+
 # Database error messages
 'dberr-header'      => 'ur gudenn zo gant ar viki-mañ',
 'dberr-problems'    => "Ho tigarez ! Kudennoù teknikel zo gant al lec'hienn-mañ.",
@@ -3315,20 +3324,5 @@ Merkañ anv ar restr hep ar rakger "{{ns:file}}:"',
 'htmlform-submit'              => 'Kas',
 'htmlform-reset'               => "Dizober ar c'hemmoù",
 'htmlform-selectorother-other' => 'Unan all',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Ouzhpennañ ur rummad',
-'ajax-add-category-submit'     => 'Ouzhpennañ',
-'ajax-confirm-title'           => 'Kadarnaat an oberiadenn',
-'ajax-confirm-prompt'          => 'Gallout a rit merkañ a-is un diverrañ eus ar c\'hemmoù degaset.
-Klikit war "Enrollañ da enrollañ ho degasadenn.',
-'ajax-confirm-save'            => 'Enrollañ',
-'ajax-add-category-summary'    => 'Ouzhpennañ ar rummad "$1"',
-'ajax-remove-category-summary' => 'Diverkañ ar rummad "$1"',
-'ajax-confirm-actionsummary'   => 'Tra da ober :',
-'ajax-error-title'             => 'Fazi',
-'ajax-error-dismiss'           => 'Mat eo',
-'ajax-remove-category-error'   => "N'eus ket bet gallet diverkañ ar rummad-mañ. 
-C'hoarvezout a ra p'eo bet ouzhpennet ar rummad er bajenn dre ur patrom",
 
 );

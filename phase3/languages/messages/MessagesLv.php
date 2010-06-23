@@ -368,8 +368,9 @@ palaists funkcijā "$2".
 Izdotā MySQL kļūda: "$3: $4"',
 'laggedslavemode'      => 'Uzmanību: Iespējams, šajā lapā nav redzami nesen izdarītie papildinājumi.',
 'readonly'             => 'Datubāze bloķēta',
-'readonlytext'         => 'Datubāze šobrīd ir bloķēta pret jauniem ierakstiem un citām izmaiņām. Visdrīzāk iemesls ir parasts datubāzes uzturēšanas pasākums, pēc kura tā tiks atjaunota normālā stāvoklī. Administrators, kurš nobloķēja datubāzi, norādīja šādu iemeslu:
-<p>$1',
+'readonlytext'         => 'Datubāze šobrīd ir bloķēta pret jaunu ierakstu izveidošanu un citām izmaiņām, visticamāk, dēļ kārtējā datubāzes uzturēšanas pasākuma, pēc kura tā tiks atjaunota normālā stāvoklī.
+
+Administrators, kurš nobloķēja datubāzi, norādīja šādu iemeslu: $1',
 'missing-article'      => 'Teksts lapai ar nosaukumu "$1" $2 datubāzē nav atrodams.
 
 Tas parasti notiek novecojušu saišu gadījumā: pieprasot izmaiņas vai hronoloģiju lapai, kas ir izdzēsta.
@@ -505,7 +506,7 @@ Tu jau esi veiksmīgi nomainījis savu galveno paroli, vai arī esi pieprasījis
 
 # Edit page toolbar
 'bold_sample'     => 'Teksts boldā',
-'bold_tip'        => 'Teksts boldā',
+'bold_tip'        => 'Teksts treknrakstā',
 'italic_sample'   => 'Teksts kursīvā',
 'italic_tip'      => 'Teksts kursīvā',
 'link_sample'     => 'Lapas nosaukums',
@@ -681,8 +682,8 @@ Izskatās, ka lapa ir dzēsta.',
 Tā jau eksistē.',
 
 # "Undo" feature
-'undo-success' => 'Šo izmaiņu var atcellt.
-Lūdzu, pārbaudi zemāk redzamajā salīdzinājumā vai tu to tiešām vēlies darīt un pēc tam saglabā izmaiņas, lai to atceltu.',
+'undo-success' => 'Šo izmaiņu ir iespējams atcelt.
+Lūdzu, pārbaudi zemāk redzamajā salīdzinājumā, vai tu to tiešām vēlies darīt, un pēc tam saglabā lapu, lai pabeigtu izmaiņas atcelšanu.',
 'undo-failure' => 'Šo labojumu nevar atcelt, jo ir veikti nozīmīgi labojumi vēl pēc šī labojuma izdarīšanas.',
 'undo-norev'   => 'Šo izmaiņu nevar atcelt, jo tādas nav vai tā ir izdzēsta.',
 'undo-summary' => 'Atcēlu [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskusija]]) izdarīto izmaiņu $1',
@@ -2173,15 +2174,5 @@ Var arī lietot [[Special:Watchlist/edit|standarta izmainīšanas lapu]].',
 
 # HTML forms
 'htmlform-reset' => 'Atcelt izmaiņas',
-
-# Add categories per AJAX
-'ajax-add-category'         => 'Pievienot kategoriju',
-'ajax-add-category-submit'  => 'Pievienot',
-'ajax-confirm-prompt'       => 'Te apakšā var norādīt izmaiņu kopsavilkumu.
-Uzspied uz "Saglabāt" lai saglabātu izmaiņas.',
-'ajax-confirm-save'         => 'Saglabāt',
-'ajax-add-category-summary' => 'Pievienot kategoriju "$1"',
-'ajax-error-title'          => 'Kļūda (Error)',
-'ajax-error-dismiss'        => 'OK',
 
 );

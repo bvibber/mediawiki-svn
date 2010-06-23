@@ -457,6 +457,7 @@ $specialPageAliases = array(
 	'Tags'                      => array( 'Tags' ),
 	'Activeusers'               => array( 'ActiveUsers' ),
 	'RevisionMove'              => array( 'RevisionMove' ),
+	'ComparePages'              => array( 'ComparePages' ),
 );
 
 /**
@@ -629,7 +630,7 @@ XHTML id names.
 'tog-editsection'             => 'Enable section editing via [edit] links',
 'tog-editsectiononrightclick' => 'Enable section editing by right clicking on section titles (requires JavaScript)',
 'tog-showtoc'                 => 'Show table of contents (for pages with more than 3 headings)',
-'tog-rememberpassword'        => 'Remember my login on this computer',
+'tog-rememberpassword'        => 'Remember my login on this computer (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Add pages I create to my watchlist',
 'tog-watchdefault'            => 'Add pages I edit to my watchlist',
 'tog-watchmoves'              => 'Add pages I move to my watchlist',
@@ -779,31 +780,32 @@ XHTML id names.
 'sitesubtitle'   => '', # do not translate or duplicate this message to other languages
 
 # Vector skin
-'vector-action-addsection'   => 'Add topic',
-'vector-action-delete'       => 'Delete',
-'vector-action-move'         => 'Move',
-'vector-action-protect'      => 'Protect',
-'vector-action-undelete'     => 'Undelete',
-'vector-action-unprotect'    => 'Unprotect',
-'vector-namespace-category'  => 'Category',
-'vector-namespace-help'      => 'Help page',
-'vector-namespace-image'     => 'File',
-'vector-namespace-main'      => 'Page',
-'vector-namespace-media'     => 'Media page',
-'vector-namespace-mediawiki' => 'Message',
-'vector-namespace-project'   => 'Project page',
-'vector-namespace-special'   => 'Special page',
-'vector-namespace-talk'      => 'Discussion',
-'vector-namespace-template'  => 'Template',
-'vector-namespace-user'      => 'User page',
-'vector-view-create'         => 'Create',
-'vector-view-edit'           => 'Edit',
-'vector-view-history'        => 'View history',
-'vector-view-view'           => 'Read',
-'vector-view-viewsource'     => 'View source',
-'actions'                    => 'Actions',
-'namespaces'                 => 'Namespaces',
-'variants'                   => 'Variants',
+'vector-action-addsection'       => 'Add topic',
+'vector-action-delete'           => 'Delete',
+'vector-action-move'             => 'Move',
+'vector-action-protect'          => 'Protect',
+'vector-action-undelete'         => 'Undelete',
+'vector-action-unprotect'        => 'Unprotect',
+'vector-namespace-category'      => 'Category',
+'vector-namespace-help'          => 'Help page',
+'vector-namespace-image'         => 'File',
+'vector-namespace-main'          => 'Page',
+'vector-namespace-media'         => 'Media page',
+'vector-namespace-mediawiki'     => 'Message',
+'vector-namespace-project'       => 'Project page',
+'vector-namespace-special'       => 'Special page',
+'vector-namespace-talk'          => 'Discussion',
+'vector-namespace-template'      => 'Template',
+'vector-namespace-user'          => 'User page',
+'vector-simplesearch-preference' => 'Enable enhanced search suggestions (Vector skin only)',
+'vector-view-create'             => 'Create',
+'vector-view-edit'               => 'Edit',
+'vector-view-history'            => 'View history',
+'vector-view-view'               => 'Read',
+'vector-view-viewsource'         => 'View source',
+'actions'                        => 'Actions',
+'namespaces'                     => 'Namespaces',
+'variants'                       => 'Variants',
 
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Return to $1.',
@@ -1043,7 +1045,7 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'yourname'                   => 'Username:',
 'yourpassword'               => 'Password:',
 'yourpasswordagain'          => 'Retype password:',
-'remembermypassword'         => 'Remember my login on this computer',
+'remembermypassword'         => 'Remember my login on this computer (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Your domain:',
 'externaldberror'            => 'There was either an authentication database error or you are not allowed to update your external account.',
 'login'                      => 'Log in',
@@ -1200,7 +1202,7 @@ Your IP address will be recorded in this page's edit history.",
 If you click Save again, your edit will be saved without one.",
 'missingcommenttext'               => 'Please enter a comment below.',
 'missingcommentheader'             => "'''Reminder:''' You have not provided a subject/headline for this comment.
-If you click Save again, your edit will be saved without one.",
+If you click \"{{int:savearticle}}\" again, your edit will be saved without one.",
 'summary-preview'                  => 'Summary preview:',
 'subject-preview'                  => 'Subject/headline preview:',
 'blockedtitle'                     => 'User is blocked',
@@ -2633,7 +2635,7 @@ The e-mail address you entered in [[Special:Preferences|your user preferences]] 
 # User Messenger
 'usermessage-summary'  => 'Leaving system message.',
 'usermessage-editor'   => 'System messenger',
-'usermessage-template' => 'Template:UserMessage', # only translate this message to other languages if you have to change it
+'usermessage-template' => 'MediaWiki:UserMessage', # only translate this message to other languages if you have to change it
 
 # Watchlist
 'watchlist'            => 'My watchlist',
@@ -2916,6 +2918,7 @@ The latest block log entry is provided below for reference:',
 The latest block log entry is provided below for reference:',
 'sp-contributions-search'              => 'Search for contributions',
 'sp-contributions-username'            => 'IP address or username:',
+'sp-contributions-toponly'             => 'Show only top revisions',
 'sp-contributions-submit'              => 'Search',
 'sp-contributions-explain'             => '', # only translate this message to other languages if you have to change it
 'sp-contributions-footer'              => '-', # do not translate or duplicate this message to other languages
@@ -3335,6 +3338,10 @@ Please try again.',
 'accesskey-upload'                  => 's', # do not translate or duplicate this message to other languages
 'accesskey-preferences-save'        => 's', # do not translate or duplicate this message to other languages
 'accesskey-summary'                 => 'b', # do not translate or duplicate this message to other languages
+'accesskey-userrights-set'          => 's', # do not translate or duplicate this message to other languages
+'accesskey-blockip-block'           => 's', # do not translate or duplicate this message to other languages
+'accesskey-export'                  => 's', # do not translate or duplicate this message to other languages
+'accesskey-import'                  => 's', # do not translate or duplicate this message to other languages
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Your user page',
@@ -3545,6 +3552,9 @@ By executing it, your system may be compromised.<hr />",
 'show-big-image-thumb' => '<small>Size of this preview: $1 × $2 pixels</small>',
 'file-info-gif-looped' => 'looped',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|frame|frames}}',
+'file-info-png-looped' => 'looped',
+'file-info-png-repeat' => 'played $1 {{PLURAL:$1|time|times}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|frame|frames}}',
 
 # Special:NewFiles
 'newimages'             => 'Gallery of new files',
@@ -4046,6 +4056,7 @@ Please confirm that you really want to recreate this page.",
 'table_pager_first'        => 'First page',
 'table_pager_last'         => 'Last page',
 'table_pager_limit'        => 'Show $1 items per page',
+'table_pager_limit_label'  => 'Items per page:',
 'table_pager_limit_submit' => 'Go',
 'table_pager_empty'        => 'No results',
 
@@ -4280,6 +4291,15 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'tags-edit'               => 'edit',
 'tags-hitcount'           => '$1 {{PLURAL:$1|change|changes}}',
 
+# Special:ComparePages
+'comparepages'     => 'Compare pages',
+'compare-selector' => 'Compare page revisions',
+'compare-page1'    => 'Page 1',
+'compare-page2'    => 'Page 2',
+'compare-rev1'     => 'Revision 1',
+'compare-rev2'     => 'Revision 2',
+'compare-submit'   => 'Compare',
+
 # Database error messages
 'dberr-header'      => 'This wiki has a problem',
 'dberr-problems'    => 'Sorry!
@@ -4301,20 +4321,5 @@ This site is experiencing technical difficulties.',
 'htmlform-submit'              => 'Submit',
 'htmlform-reset'               => 'Undo changes',
 'htmlform-selectorother-other' => 'Other',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Add category',
-'ajax-add-category-submit'     => 'Add',
-'ajax-confirm-title'           => 'Confirm action',
-'ajax-confirm-prompt'          => 'You can provide an edit summary below.
-Click "Save" to save your edit.',
-'ajax-confirm-save'            => 'Save',
-'ajax-add-category-summary'    => 'Add category "$1"',
-'ajax-remove-category-summary' => 'Remove category "$1"',
-'ajax-confirm-actionsummary'   => 'Action to take:',
-'ajax-error-title'             => 'Error',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'It was not possible to remove this category.
-This usually occurs when the category has been added to the page in a template.',
 
 );

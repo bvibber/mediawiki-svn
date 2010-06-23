@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -102,7 +102,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		global $wgContLang, $wgLang;
 
 		$data = array();
-		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
+		$mainPage = Title::newMainPage();
 		$data['mainpage'] = $mainPage->getPrefixedText();
 		$data['base'] = $mainPage->getFullUrl();
 		$data['sitename'] = $GLOBALS['wgSitename'];
@@ -257,7 +257,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 		$data = array();
 		$langNames = Language::getLanguageNames();
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$val = array();
 			$val['prefix'] = $row->iw_prefix;
 			if ( $row->iw_local == '1' ) {
@@ -271,7 +271,6 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 			$data[] = $val;
 		}
-		$db->freeResult( $res );
 
 		$this->getResult()->setIndexedTagName( $data, 'iw' );
 		return $this->getResult()->addValue( 'query', $property, $data );

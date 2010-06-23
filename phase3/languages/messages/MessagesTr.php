@@ -300,7 +300,7 @@ $messages = array(
 'tog-editsection'             => 'Bölümleri [değiştir] bağlantıları ile değiştirebilme olanağı ver',
 'tog-editsectiononrightclick' => 'Bölümleri bölüm başlığına sağ tıklayarak değiştirebilme olanağı ver (JavaScript)',
 'tog-showtoc'                 => 'İçindekiler tablosunu göster (3 taneden fazla başlığı olan sayfalar için)',
-'tog-rememberpassword'        => 'Parolayı hatırla',
+'tog-rememberpassword'        => 'Girişimi bu bilgisayarda hatırla (en fazla $1 {{PLURAL:$1|gün|gün}} için)',
 'tog-watchcreations'          => 'Yaratmış olduğum sayfaları izleme listeme ekle',
 'tog-watchdefault'            => 'Değişiklik yapılan sayfayı izleme listesine ekle',
 'tog-watchmoves'              => 'Taşıdığım sayfaları izleme listeme ekle',
@@ -691,7 +691,7 @@ Hesabınız açıldı.
 'yourname'                   => 'Kullanıcı adınız:',
 'yourpassword'               => 'Parolanız',
 'yourpasswordagain'          => 'Parolayı yeniden yaz',
-'remembermypassword'         => 'Parolayı hatırla.',
+'remembermypassword'         => 'Girişimi bu bilgisayarda hatırla (en fazla $1 {{PLURAL:$1|gün|gün}} için)',
 'yourdomainname'             => 'Alan adınız',
 'externaldberror'            => 'Ya doğrulama vertiabanı hatası var ya da kullanıcı hesabınızı güncellemeye yetkiniz yok.',
 'login'                      => 'Oturum aç',
@@ -885,8 +885,8 @@ ya da <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}
 'blocked-notice-logextract'        => 'Bu kullancı şuanda engellenmiş.
 Son engelleme günlüğü girdisi referans için aşağıda sağlanmıştır:',
 'clearyourcache'                   => "'''Not:''' Ayarlarınızı kaydettikten sonra, tarayıcınızın belleğini de temizlemeniz gerekmektedir: '''Mozilla / Firefox / Safari:''' ''Shift'' e basılıyken safyayı yeniden yükleyerek veya ''Ctrl-Shift-R'' yaparak (Apple Mac için ''Cmd-Shift-R'');, '''IE:''' ''Ctrl-F5'', '''Konqueror:''' Sadece sayfayı yeniden yükle tuşuna basarak.",
-'usercssyoucanpreview'             => "'''İpucu:''' Sayfayı kaydetmeden önce '''önizlemeyi göster''''e tıklayarak yaptığınız yeni sayfayı gözden geçirin.",
-'userjsyoucanpreview'              => "'''İpucu:''' Sayfayı kaydetmeden önce '''önizlemeyi göster''''e tıklayarak yaptığınız yeni sayfayı gözden geçirin.",
+'usercssyoucanpreview'             => "'''İpucu:''' Kaydetmeden önce \"{{int:showpreview}}\"e tıklayarak yeni CSSinizi test edin.",
+'userjsyoucanpreview'              => "'''İpucu:''' Kaydetmeden önce \"{{int:showpreview}}\"e tıklayarak yeni JavaScript'inizi test edin.",
 'usercsspreview'                   => "'''Sadece kullanıcı CSS dosyanızın önizlemesini görüyorsun.''' '''Kullanıcı CSS dosyası henüz kaydolmadı!'''",
 'userjspreview'                    => "'''Sadece test ediyorsun ya da önizleme görüyorsun - kullanıcı JavaScript'i henüz kaydolmadı.'''",
 'userinvalidcssjstitle'            => "''Uyarı:''' \"\$1\" adıyla bir tema yoktur. tema-adı.css ve .js dosyalarının adları küçük harf ile yazması gerek, yani {{ns:user}}:Temel/'''M'''onobook.css değil, {{ns:user}}:Temel/'''m'''onobook.css.",
@@ -1137,6 +1137,16 @@ Lütfen günlükleri kontrol edin.',
 'suppressionlog'     => 'Gizleme kayıtları',
 'suppressionlogtext' => 'Aşağıdaki, hizmetlilerden gizlenen içerik içeren silinmelerin ve engellemelerin listesidir. 
 Şu anda işlevsel olan yasak ve engellemelerin listesi için [[Special:IPBlockList|IP engelleme listesine]] bakın.',
+
+# Revision move
+'revmove-legend'               => 'Hedef sayfa ve özet ayarla',
+'revmove-submit'               => 'Revizyonları seçilen sayfaya taşı',
+'revisionmoveselectedversions' => 'Seçili revizyonları taşı',
+'revmove-reasonfield'          => 'Sebep:',
+'revmove-titlefield'           => 'Hedef sayfa:',
+'revmove-badparam-title'       => 'Kötü parametreler',
+'revmove-norevisions-title'    => 'Geçersiz hedef revizyonu',
+'revmove-nullmove-title'       => 'Kötü başlık',
 
 # History merging
 'mergehistory'                     => 'Sayfa geçmişlerini takas et.',
@@ -1467,6 +1477,7 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'right-reset-passwords'       => 'Diğer kullanıcıların parolalarını sıfırla',
 'right-override-export-depth' => "Sayfaları, derinlik 5'e kadar bağlantılı sayfalarla beraber, dışa aktar",
 'right-sendemail'             => 'Diğer kullanıcılara e-posta gönder',
+'right-revisionmove'          => 'Revizyonları taşı',
 
 # User rights log
 'rightslog'      => 'Kullanıcı hakları kayıtları',
@@ -1509,6 +1520,7 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'action-userrights'           => 'tüm kullanıcıların haklarını değiştirmeye',
 'action-userrights-interwiki' => 'diğer vikilerde kullanıcıların, kullanıcı haklarını değiştirmeye',
 'action-siteadmin'            => 'veritabanını kilitleyip açmaya',
+'action-revisionmove'         => 'revizyonları taşıma',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
@@ -3473,20 +3485,5 @@ Dosya adını "{{ns:file}}:" öneki olmadan gir.',
 'htmlform-submit'              => 'Gönder',
 'htmlform-reset'               => 'Değişiklikleri geri al',
 'htmlform-selectorother-other' => 'Diğer',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Kategori ekle',
-'ajax-add-category-submit'     => 'Ekle',
-'ajax-confirm-title'           => 'İşlemi onayla',
-'ajax-confirm-prompt'          => 'Aşağıya bir değişiklik özeti yazabilirsiniz. 
-Değişikliğinizi kaydetmek için "Kaydet"e basın.',
-'ajax-confirm-save'            => 'Kaydet',
-'ajax-add-category-summary'    => '"$1" kategorisini ekle',
-'ajax-remove-category-summary' => '"$1" kategorisini kaldır',
-'ajax-confirm-actionsummary'   => 'Yapılacak işlem:',
-'ajax-error-title'             => 'Hata',
-'ajax-error-dismiss'           => 'Tamam',
-'ajax-remove-category-error'   => 'Kategori silinemiyor. 
-Bu genelde kategori sayfaya bir şablon aracılığıyla eklendiğinde meydana gelir.',
 
 );

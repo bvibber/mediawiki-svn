@@ -329,6 +329,7 @@ $1',
 'badarticleerror'     => 'Þēos dǣd ne cann bēon gefremed on þissum tramete.',
 'badtitle'            => 'Unandfenge títul',
 'viewsource'          => 'Fruman sēon',
+'cascadeprotected'    => 'Þis trament hafaþ geworden gebeorgod wiþ ādihtunge, for þǣm þe hē is geinnod in þissum trament {{PLURAL:$1|tramente, þe is| tramentum, þe sind}} geborgod mid þǣre "cascading" cyre gesett wyrcende: $2',
 
 # Login and logout pages
 'logouttext'                 => "'''Þū eart nū ūtmeldod.'''
@@ -365,9 +366,11 @@ Bidde ōðer brūcendnama ċēosan.',
 Bidde þē, lǣt hīe tō twyrcenne, and þǣræfter inmelda þurh þīnne nīwan brūcendnaman and gelēafnessword.',
 'loginsuccesstitle'          => 'Inmeldung gesǣlde',
 'loginsuccess'               => "'''Þu eart nū inmeldod tō {{SITENAME}} swā \"\$1\".'''",
-'nosuchuser'                 => 'Þǣr is nān brūcere be þǣm naman "$1".
-Edscēawa þīne wrītunge, oþþe brūc þone form under tō [[Special:UserLogin/signup|settene nīwne brūcendhordcleofan]].',
+'nosuchuser'                 => 'Þǣr nis nān brūcere þe hæfþ þone naman "$1".
+Stafena micelnesse sind hefige and ānlica on brūcendnamum. 
+Scēawa þīne wrītunge eft, oþþe brūc þā cartan þe is hērunder tō [[Special:UserLogin/signup|settene nīwne brūcendreccend]].',
 'nosuchusershort'            => 'Þǣr is nān brūcend mid þǣm naman "<nowiki>$1</nowiki>".  Edscēawa on þīne wrītunge.',
+'passwordtooshort'           => 'Gelēafword sculon habban læst {{PLURAL:$1|1 stafan|$1 stafan}}.',
 'mailmypassword'             => 'Nīƿe þafungƿord bȳ e-mail sendan',
 'acct_creation_throttle_hit' => 'Hwæt, þu hæfst gēo geseted {{PLURAL:$1|1 hordcleofan|$1 -}}. Þu ne canst settan ǣnige māran.',
 'accountcreated'             => 'Hordcleofan ȝescapen',
@@ -1273,14 +1276,5 @@ $5
 'htmlform-submit'              => 'Forþsendan',
 'htmlform-reset'               => 'Hƿearfas undōn',
 'htmlform-selectorother-other' => 'Ōðer',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Flocc ēacian',
-'ajax-add-category-submit'     => 'Ēacian',
-'ajax-confirm-save'            => 'Sparian',
-'ajax-add-category-summary'    => 'Flocc "$1" ēacian',
-'ajax-remove-category-summary' => 'Flocc "$1" forniman',
-'ajax-confirm-actionsummary'   => 'Dǣd to dōnne:',
-'ajax-error-title'             => 'Ƿōh',
 
 );

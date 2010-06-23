@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -327,12 +327,13 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_END:
 				// This usually means some kind of race condition
-				// or DB weirdness occurred. Fall through to throw an unknown
-				// error.
-
-				// This needs fixing higher up, as Article::doEdit should be
-				// used rather than Article::updateArticle, so that specific
-				// error conditions can be returned
+				// or DB weirdness occurred. 
+				if ( is_array( $result ) && count( $result ) > 0 ) {
+					$this->dieUsageMsg( array( 'unknownerror', $result[0][0] ) );					
+				}
+				
+				// Unknown error, but no specific error message
+				// Fall through
 			default:
 				$this->dieUsageMsg( array( 'unknownerror', $retval ) );
 		}

@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -212,8 +212,21 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				$mto = $file->transform( array( 'width' => $scale['width'], 'height' => $scale['height'] ) );
 				if ( $mto && !$mto->isError() ) {
 					$vals['thumburl'] = wfExpandUrl( $mto->getUrl() );
-					$vals['thumbwidth'] = intval( $mto->getWidth() );
-					$vals['thumbheight'] = intval( $mto->getHeight() );
+
+					//bug 23834 - If the URL's are the same, we haven't resized it, so shouldn't give the wanted
+					//thumbnail sizes for the thumbnail actual size
+					if ( $mto->getUrl() !== $file->getUrl() ) {
+						$vals['thumbwidth'] = intval( $mto->getWidth() );					
+						$vals['thumbheight'] = intval( $mto->getHeight() );
+					} else {
+						$vals['thumbwidth'] = intval( $file->getWidth() );					
+						$vals['thumbheight'] = intval( $file->getHeight() );
+					}
+					
+					if ( isset( $prop['thumbmime'] ) ) {
+						$thumbFile = UnregisteredLocalFile::newFromPath( $mto->getPath(), false );
+						$vals['thumbmime'] = $thumbFile->getMimeType();
+					}
 				}
 			}
 			$vals['url'] = $file->getFullURL();
@@ -311,6 +324,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'dimensions', // For backwards compatibility with Allimages
 			'sha1',
 			'mime',
+			'thumbmime',
 			'metadata',
 			'archivename',
 			'bitdepth',

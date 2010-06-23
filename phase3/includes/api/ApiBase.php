@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -292,6 +292,12 @@ abstract class ApiBase {
 				$desc = isset( $paramsDescription[$paramName] ) ? $paramsDescription[$paramName] : '';
 				if ( is_array( $desc ) ) {
 					$desc = implode( $paramPrefix, $desc );
+				}
+
+				if ( !is_array( $paramSettings ) ) {
+					$paramSettings = array(
+						self::PARAM_DFLT => $paramSettings,
+					);
 				}
 
 				$deprecated = isset( $paramSettings[self::PARAM_DEPRECATED] ) ?
@@ -1074,6 +1080,30 @@ abstract class ApiBase {
 	 */
 	public function getTokenSalt() {
 		return false;
+	}
+
+	/**
+	* Gets the user for whom to get the watchlist
+	*  
+	* @returns User
+	*/
+	public function getWatchlistUser( $params ) {
+		global $wgUser;
+		if ( !is_null( $params['owner'] ) && !is_null( $params['token'] ) ) {
+			$user = User::newFromName( $params['owner'], false );
+			if ( !$user->getId() ) {
+				$this->dieUsage( 'Specified user does not exist', 'bad_wlowner' );
+			}
+			$token = $user->getOption( 'watchlisttoken' );
+			if ( $token == '' || $token != $params['token'] ) {
+				$this->dieUsage( 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences', 'bad_wltoken' );
+			}
+		} elseif ( !$wgUser->isLoggedIn() ) {
+			$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
+		} else {
+			$user = $wgUser;
+		}
+		return $user;
 	}
 
 	/**

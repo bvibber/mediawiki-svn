@@ -284,7 +284,7 @@ $messages = array(
 'tog-editsection'             => 'Endre avsnitt ved hjelp av [endre]-lenkje',
 'tog-editsectiononrightclick' => 'Endre avsnitt ved å høgreklikke på avsnittsoverskrift (JavaScript)',
 'tog-showtoc'                 => 'Vis innhaldsliste (for sider med meir enn tre bolkar)',
-'tog-rememberpassword'        => 'Hugs passordet til neste gong',
+'tog-rememberpassword'        => 'Hugs innlogginga mi på denne datamaskinen (for høgst {{PLURAL:$1|éin dag|$1 dagar}})',
 'tog-watchcreations'          => 'Legg til sidene eg opprettar på overvakingslista mi',
 'tog-watchdefault'            => 'Legg til sidene eg endrar på overvakingslista mi',
 'tog-watchmoves'              => 'Legg til sidene eg flyttar på overvakingslista mi',
@@ -666,7 +666,7 @@ Ikkje gløym å endre på [[Special:Preferences|innstillingane]] dine.',
 'yourname'                   => 'Brukarnamn:',
 'yourpassword'               => 'Passord:',
 'yourpasswordagain'          => 'Skriv opp att passordet',
-'remembermypassword'         => 'Hugs passordet.',
+'remembermypassword'         => 'Hugs innlogginga mi på denne datamaskinen (for høgst {{PLURAL:$1|éin dag|$1 dagar}})',
 'yourdomainname'             => 'Domenet ditt',
 'externaldberror'            => 'Det var anten ein ekstern databasefeil i tilgjengekontrollen, eller du har ikkje løyve til å oppdatere den eksterne kontoen din.',
 'login'                      => 'Logg inn',
@@ -2446,7 +2446,7 @@ I desse falla lyt du flytte eller flette saman sida manuelt.",
 'movesubpagetext'              => 'Denne sida har {{PLURAL:$1|éi underside som vert synt|$1 undersider som vert synte}} nedanfor.',
 'movenosubpage'                => 'Denne sida har ingen undersider.',
 'movereason'                   => 'Årsak:',
-'revertmove'                   => 'attende',
+'revertmove'                   => 'flytt attende',
 'delete_and_move'              => 'Slett og flytt',
 'delete_and_move_text'         => '== Sletting påkrevd ==
 
@@ -3283,6 +3283,15 @@ Skriv inn filnamn utan «{{ns:file}}:»-prefikset.',
 'tags-edit'               => 'endra',
 'tags-hitcount'           => '{{PLURAL:$1|éi endring|$1 endringar}}',
 
+# Special:ComparePages
+'comparepages'     => 'Samanlikna sider',
+'compare-selector' => 'Samanlikn sideversjonar',
+'compare-page1'    => 'Side 1',
+'compare-page2'    => 'Side 2',
+'compare-rev1'     => 'Versjon 1',
+'compare-rev2'     => 'Versjon 2',
+'compare-submit'   => 'Samanlikna',
+
 # Database error messages
 'dberr-header'      => 'Denne wikien har eit problem',
 'dberr-problems'    => 'Denne nettstaden har tekniske problem.',
@@ -3299,23 +3308,9 @@ Skriv inn filnamn utan «{{ns:file}}:»-prefikset.',
 'htmlform-float-invalid'       => 'Verdien du valde er ikkje eit tal.',
 'htmlform-int-toolow'          => 'Verdien du valde er under minstetalet på $1',
 'htmlform-int-toohigh'         => 'Verdien du valde er over høgste moglege tal $1',
+'htmlform-required'            => 'Denne verdien vert kravd',
 'htmlform-submit'              => 'Lagre',
 'htmlform-reset'               => 'Gjer om endringar',
 'htmlform-selectorother-other' => 'Andre',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Legg til kategori',
-'ajax-add-category-submit'     => 'Legg til',
-'ajax-confirm-title'           => 'Stadfest handling',
-'ajax-confirm-prompt'          => 'Du kan laga ei redigeringsskildring nedanfor.
-Klikk på "Lagre" for å lagra redigeringa.',
-'ajax-confirm-save'            => 'Lagre',
-'ajax-add-category-summary'    => 'Legg til kategorien "$1"',
-'ajax-remove-category-summary' => 'Fjern kategorien "$1"',
-'ajax-confirm-actionsummary'   => 'Handling:',
-'ajax-error-title'             => 'Feil',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Det var ikkje mogleg å fjerna kategorien.
-Det skuldast som oftast at kategorien er vorte lagd til i sida innan ein mal.',
 
 );

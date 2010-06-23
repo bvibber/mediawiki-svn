@@ -230,7 +230,7 @@ $magicWords = array(
 
 $messages = array(
 # User preference toggles
-'tog-underline'               => 'Podkreślenie linków:',
+'tog-underline'               => 'Podkreślenie linków',
 'tog-highlightbroken'         => 'Oznacz <a href="" class="new">tak</a> linki do brakujących stron (alternatywa – dołączany znak zapytania<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Wyrównuj tekst w akapitach do obu stron',
 'tog-hideminor'               => 'Ukryj drobne zmiany w ostatnich zmianach',
@@ -244,7 +244,7 @@ $messages = array(
 'tog-editsection'             => 'Możliwość edycji poszczególnych sekcji strony (link [edytuj])',
 'tog-editsectiononrightclick' => 'Kliknięcie prawym klawiszem myszy na tytule sekcji rozpoczyna jej edycję (JavaScript)',
 'tog-showtoc'                 => 'Pokazuj spis treści (na stronach z więcej niż 3 nagłówkami)',
-'tog-rememberpassword'        => 'Zapamiętaj hasło na tym komputerze',
+'tog-rememberpassword'        => 'Zapamiętaj moje hasło na tym komputerze (maksymalnie przez $1 {{PLURAL:$1|dzień|dni}})',
 'tog-watchcreations'          => 'Dodaj do obserwowanych strony tworzone przeze mnie',
 'tog-watchdefault'            => 'Dodaj do obserwowanych strony, które edytuję',
 'tog-watchmoves'              => 'Dodaj do obserwowanych strony, które przenoszę',
@@ -283,11 +283,11 @@ $messages = array(
 'underline-default' => 'według ustawień przeglądarki',
 
 # Font style option in Special:Preferences
-'editfont-style'     => 'Styl czcionki w polu edycyjnym:',
-'editfont-default'   => 'Domyślna przeglądarki',
-'editfont-monospace' => 'Czcionka o stałej szerokości',
-'editfont-sansserif' => 'Czcionka bezszeryfowa',
-'editfont-serif'     => 'Czcionka szeryfowa',
+'editfont-style'     => 'Styl czcionki w polu edycyjnym',
+'editfont-default'   => 'domyślny przeglądarki',
+'editfont-monospace' => 'czcionka o stałej szerokości',
+'editfont-sansserif' => 'czcionka bezszeryfowa',
+'editfont-serif'     => 'czcionka szeryfowa',
 
 # Dates
 'sunday'        => 'niedziela',
@@ -390,31 +390,32 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-action-addsection'   => 'Dodaj temat',
-'vector-action-delete'       => 'Usuń',
-'vector-action-move'         => 'Przenieś',
-'vector-action-protect'      => 'Zabezpiecz',
-'vector-action-undelete'     => 'Odtwórz',
-'vector-action-unprotect'    => 'Odbezpiecz',
-'vector-namespace-category'  => 'Kategoria',
-'vector-namespace-help'      => 'Strona pomocy',
-'vector-namespace-image'     => 'Plik',
-'vector-namespace-main'      => 'Strona',
-'vector-namespace-media'     => 'Strona pliku',
-'vector-namespace-mediawiki' => 'Komunikat',
-'vector-namespace-project'   => 'Strona projektu',
-'vector-namespace-special'   => 'Strona specjalna',
-'vector-namespace-talk'      => 'Dyskusja',
-'vector-namespace-template'  => 'Szablon',
-'vector-namespace-user'      => 'Strona użytkownika',
-'vector-view-create'         => 'Utwórz',
-'vector-view-edit'           => 'Edytuj',
-'vector-view-history'        => 'Wyświetl historię',
-'vector-view-view'           => 'Czytaj',
-'vector-view-viewsource'     => 'Tekst źródłowy',
-'actions'                    => 'Działania',
-'namespaces'                 => 'Przestrzenie nazw',
-'variants'                   => 'Warianty',
+'vector-action-addsection'       => 'Dodaj temat',
+'vector-action-delete'           => 'Usuń',
+'vector-action-move'             => 'Przenieś',
+'vector-action-protect'          => 'Zabezpiecz',
+'vector-action-undelete'         => 'Odtwórz',
+'vector-action-unprotect'        => 'Odbezpiecz',
+'vector-namespace-category'      => 'Kategoria',
+'vector-namespace-help'          => 'Strona pomocy',
+'vector-namespace-image'         => 'Plik',
+'vector-namespace-main'          => 'Strona',
+'vector-namespace-media'         => 'Strona pliku',
+'vector-namespace-mediawiki'     => 'Komunikat',
+'vector-namespace-project'       => 'Strona projektu',
+'vector-namespace-special'       => 'Strona specjalna',
+'vector-namespace-talk'          => 'Dyskusja',
+'vector-namespace-template'      => 'Szablon',
+'vector-namespace-user'          => 'Strona użytkownika',
+'vector-simplesearch-preference' => 'Włącz zaawansowane podpowiedzi wyszukiwania (tylko dla skórki Wektor)',
+'vector-view-create'             => 'Utwórz',
+'vector-view-edit'               => 'Edytuj',
+'vector-view-history'            => 'Wyświetl historię',
+'vector-view-view'               => 'Czytaj',
+'vector-view-viewsource'         => 'Tekst źródłowy',
+'actions'                        => 'Działania',
+'namespaces'                     => 'Przestrzenie nazw',
+'variants'                       => 'Warianty',
 
 'errorpagetitle'    => 'Błąd',
 'returnto'          => 'Wróć do strony $1.',
@@ -639,7 +640,7 @@ Nie zapomnij dostosować [[Special:Preferences|preferencji dla {{GRAMMAR:D.lp|{{
 'yourname'                   => 'Nazwa {{GENDER:|użytkownika|użytkowniczki}}',
 'yourpassword'               => 'Hasło',
 'yourpasswordagain'          => 'Powtórz hasło',
-'remembermypassword'         => 'Zapamiętaj moje hasło na tym komputerze',
+'remembermypassword'         => 'Zapamiętaj moje hasło na tym komputerze (maksymalnie przez $1 {{PLURAL:$1|dzień|dni}})',
 'yourdomainname'             => 'Twoja domena',
 'externaldberror'            => 'Wystąpił błąd zewnętrznej bazy autentyfikacyjnej lub nie posiadasz uprawnień koniecznych do aktualizacji zewnętrznego konta.',
 'login'                      => 'Zaloguj się',
@@ -739,7 +740,7 @@ Aby zakończyć proces logowania, musisz ustawić nowe hasło:',
 'resetpass-submit-loggedin' => 'Zmień hasło',
 'resetpass-submit-cancel'   => 'Anuluj',
 'resetpass-wrong-oldpass'   => 'Nieprawidłowe tymczasowe lub aktualne hasło. 
-Być może właśnie zmienił{{GENDER:|eś|aś|eś (~aś)}} swoje hasło lub poprosił{{GENDER:|eś|aś|eś (~aś)}} o nowe tymczasowe hasło.',
+Być może właśnie zmienił{{GENDER:|eś|aś|eś(‐aś)}} swoje hasło lub poprosił{{GENDER:|eś|aś|eś(‐aś)}} o nowe tymczasowe hasło.',
 'resetpass-temp-password'   => 'Tymczasowe hasło:',
 
 # Edit page toolbar
@@ -777,11 +778,11 @@ Być może właśnie zmienił{{GENDER:|eś|aś|eś (~aś)}} swoje hasło lub pop
 'anoneditwarning'                  => "'''Uwaga:''' Nie jesteś {{GENDER:|zalogowany|zalogowana}}.
 Twój adres IP zostanie zapisany w historii edycji strony.",
 'anonpreviewwarning'               => "''Nie jesteś zalogowany. Jeśli zapiszesz zmiany w historii edycji strony zostanie umieszczony Twój adres IP.''",
-'missingsummary'                   => "'''Uwaga:''' Nie {{GENDER:|wprowadziłeś|wprowadziłaś|wprowadzono}} opisu zmian.
+'missingsummary'                   => "'''Uwaga:''' Nie wprowadz{{GENDER:|iłeś|iłaś|ono}} opisu zmian.
 Jeżeli nie chcesz go wprowadzać, naciśnij przycisk „Zapisz” jeszcze raz.",
 'missingcommenttext'               => 'Wprowadź komentarz poniżej.',
-'missingcommentheader'             => "'''Uwaga:''' Treść nagłówka jest pusta – uzupełnij go!
-Jeśli tego nie zrobisz, Twój komentarz zostanie zapisany bez nagłówka.",
+'missingcommentheader'             => "'''Uwaga''' – treść tytułu lub nagłówka komentarza jest pusta.
+Jeśli ponownie klikniesz „{{int:savearticle}}“, zmiany zostaną zapisane bez niego.",
 'summary-preview'                  => 'Podgląd opisu:',
 'subject-preview'                  => 'Podgląd nagłówka:',
 'blockedtitle'                     => 'Użytkownik jest zablokowany',
@@ -845,7 +846,7 @@ Możesz [[Special:Search/{{PAGENAME}}|poszukać „{{PAGENAME}}” na innych str
 Możesz [[Special:Search/{{PAGENAME}}|wyszukać ten tytuł]] w treści innych stron
 lub <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} przeszukać powiązane logi].</span>',
 'userpage-userdoesnotexist'        => 'Użytkownik „$1” nie jest zarejestrowany.
-Upewnij się, czy na pewno zamierzał{{GENDER:|eś|aś|eś (~aś)}} utworzyć lub zmodyfikować właśnie tę stronę.',
+Upewnij się, czy na pewno zamierza{{GENDER:|łeś|łaś|sz}} utworzyć lub zmodyfikować właśnie tę stronę.',
 'userpage-userdoesnotexist-view'   => 'Konto użytkownika „$1” nie jest zarejestrowane.',
 'blocked-notice-logextract'        => '{{GENDER:$1|Ten użytkownik|Ta użytkowniczka}} jest obecnie {{GENDER:$1|zablokowany|zablokowana}}.
 Ostatni wpis rejestru blokad jest pokazany poniżej.',
@@ -939,7 +940,7 @@ Wystąpił z nieokreślonej przyczyny.',
 'edit-gone-missing'                => 'Nie udało się zaktualizować strony.
 Zdaje się, że została skasowana.',
 'edit-conflict'                    => 'Konflikt edycji.',
-'edit-no-change'                   => 'Twoja edycja została zignorowana, ponieważ nie {{GENDER:|zmieniłeś|zmieniłaś}} niczego w tekście.',
+'edit-no-change'                   => 'Twoja edycja została zignorowana, ponieważ nie zmienił{{GENDER:|eś|aś|eś(‐aś)}} niczego w tekście.',
 'edit-already-exists'              => 'Nie udało się stworzyć nowej strony.
 Strona już istnieje.',
 
@@ -1040,9 +1041,9 @@ Jako administrator możesz zobaczyć porównanie. Szczegóły mogą znajdować s
 'revdelete-nooldid-text'      => 'Nie wybrano wersji, na których ma zostać wykonana ta operacja,
 wybrana wersja nie istnieje lub próbowano ukryć wersję bieżącą.',
 'revdelete-nologtype-title'   => 'Brak typu rejestru',
-'revdelete-nologtype-text'    => 'Nie określił{{GENDER:|eś|aś|eś (~aś)}} rodzaju rejestru do przeprowadzenia tej operacji.',
+'revdelete-nologtype-text'    => 'Nie określ{{GENDER:|iłeś|iłaś|ono}} rodzaju rejestru do przeprowadzenia tej operacji.',
 'revdelete-nologid-title'     => 'Nieprawidłowy wpis w rejestrze',
-'revdelete-nologid-text'      => 'Nie określił{{GENDER:|eś|aś|eś (~aś)}} wpisu w rejestrze do przeprowadzenia operacji albo wybrany wpis nie istnieje.',
+'revdelete-nologid-text'      => 'Nie określ{{GENDER:|iłeś|iłaś|ono}} wpisu w rejestrze do przeprowadzenia operacji albo wybrany wpis nie istnieje.',
 'revdelete-no-file'           => 'Wybrany plik nie istnieje.',
 'revdelete-show-file-confirm' => 'Czy jesteś pewien, że chcesz zobaczyć usuniętą wersję pliku „<nowiki>$1</nowiki>” z $2 o $3?',
 'revdelete-show-file-submit'  => 'Tak',
@@ -1304,7 +1305,7 @@ Wygenerowany losowo klucz, którego możesz użyć to $1',
 'timezoneregion-europe'         => 'Europa',
 'timezoneregion-indian'         => 'Ocean Indyjski',
 'timezoneregion-pacific'        => 'Ocean Spokojny',
-'allowemail'                    => 'Zgadzam się, by inni użytkownicy mogli przesyłać mi e‐maile',
+'allowemail'                    => 'Zgadzam się, by inni użytkownicy mogli przesyłać do mnie e‐maile',
 'prefs-searchoptions'           => 'Opcje wyszukiwania',
 'prefs-namespaces'              => 'Przestrzenie nazw',
 'defaultns'                     => 'Albo przeszukuj przestrzenie nazw:',
@@ -1645,7 +1646,7 @@ Cofnij się i załaduj plik pod inną nazwą. [[File:$1|thumb|center|$1]]',
 'uploadwarning-text'          => 'Zmień poniższy opis pliku i spróbuj ponownie.',
 'savefile'                    => 'Zapisz plik',
 'uploadedimage'               => 'przesłał [[$1]]',
-'overwroteimage'              => 'przesłał nową wersję [[$1]]',
+'overwroteimage'              => 'przesłano nową wersję pliku „[[$1]]“',
 'uploaddisabled'              => 'Przesyłanie plików wyłączone',
 'copyuploaddisabled'          => 'Przesyłanie poprzez podanie adres URL jest wyłączone.',
 'uploadfromurl-queued'        => 'Żądanie przesłania pliku zostało dołączone do kolejki.',
@@ -1684,8 +1685,8 @@ MGP # Pentax
 PICT # wiele różnych
   #</pre> <!-- nie modyfikuj tej linii -->',
 'upload-successful-msg'       => 'Przesłany plik jest dostępny tutaj – $1',
-'upload-failure-subj'         => 'Problem z przesyłaniem pliku',
-'upload-failure-msg'          => 'Wystąpił problem przy przesyłaniu twojego pliku:
+'upload-failure-subj'         => 'Problem z przesłaniem pliku',
+'upload-failure-msg'          => 'Wystąpił problem przy przesyłaniu Twojego pliku:
 
 $1',
 
@@ -2358,11 +2359,12 @@ $1',
 'sp-contributions-logs'                => 'rejestry',
 'sp-contributions-talk'                => 'dyskusja',
 'sp-contributions-userrights'          => 'zarządzanie uprawnieniami użytkownika',
-'sp-contributions-blocked-notice'      => '{{GENDER:$1|Ten użytkownik|Ta użytkowniczka}} jest obecnie {{GENDER:$1|zablokowany|zablokowana}}. Ostatni wpis rejestru blokad jest pokazany poniżej.',
+'sp-contributions-blocked-notice'      => 'To konto użytkownika jest obecnie zablokowane. Ostatni wpis rejestru blokad jest pokazany poniżej.',
 'sp-contributions-blocked-notice-anon' => 'Ten adres IP jest obecnie zablokowany.
 Poniżej znajduje się ostatni wpis w rejestrze blokowania.',
 'sp-contributions-search'              => 'Szukaj wkładu',
 'sp-contributions-username'            => 'Adres IP lub nazwa użytkownika',
+'sp-contributions-toponly'             => 'Pokaż wyłącznie ostatnie wersje',
 'sp-contributions-submit'              => 'Szukaj',
 
 # What links here
@@ -2512,7 +2514,7 @@ Potwierdź, że to jest zgodne z Twoimi zamiarami, i że odblokujesz bazę danyc
 'unlockconfirm'       => 'Tak, naprawdę chcę odblokować bazę danych.',
 'lockbtn'             => 'Zablokuj bazę danych',
 'unlockbtn'           => 'Odblokuj bazę danych',
-'locknoconfirm'       => 'Nie zaznaczył{{GENDER:|eś|aś|eś (~aś)}} potwierdzenia.',
+'locknoconfirm'       => 'Nie zaznacz{{GENDER:|yłeś|yłaś|ono}} potwierdzenia.',
 'lockdbsuccesssub'    => 'Baza danych została pomyślnie zablokowana',
 'unlockdbsuccesssub'  => 'Blokada bazy danych została zdjęta',
 'lockdbsuccesstext'   => 'Baza danych została zablokowana.<br />
@@ -2569,8 +2571,8 @@ Wybierz inną nazwę.',
 'movepage-page-moved'          => 'Strona $1 została przeniesiona do $2.',
 'movepage-page-unmoved'        => 'Nazwa strony $1 nie może zostać zmieniona na $2.',
 'movepage-max-pages'           => 'Przeniesionych zostało $1 {{PLURAL:$1|strona|strony|stron}}. Większa liczba nie może być przeniesiona automatycznie.',
-'1movedto2'                    => 'stronę [[$1]] przeniósł do [[$2]]',
-'1movedto2_redir'              => 'stronę [[$1]] przeniósł do [[$2]] nad przekierowaniem',
+'1movedto2'                    => '[[$1]] przeniesiono do [[$2]]',
+'1movedto2_redir'              => '[[$1]] przeniesiono do [[$2]] nad przekierowaniem',
 'move-redirect-suppressed'     => 'nie utworzono przekierowania pod starym tytułem',
 'movelogpage'                  => 'Przeniesione',
 'movelogpagetext'              => 'Lista stron, które ostatnio zostały przeniesione.',
@@ -2908,8 +2910,11 @@ Jeśli go otworzysz, możesz zarazić swój system.<hr />",
 'svg-long-desc'        => '(Plik SVG, nominalnie $1 × $2 pikseli, rozmiar pliku: $3)',
 'show-big-image'       => 'Pełna rozdzielczość',
 'show-big-image-thumb' => '<small>Rozmiar podglądu: $1 × $2 pikseli</small>',
-'file-info-gif-looped' => 'zapętlona',
+'file-info-gif-looped' => 'zapętlony',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|klatka|klatki|klatek}}',
+'file-info-png-looped' => 'zapętlony',
+'file-info-png-repeat' => 'powtarzany $1 {{PLURAL:$1|raz|razy}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|klatka|klatki|klatek}}',
 
 # Special:NewFiles
 'newimages'             => 'Najnowsze pliki',
@@ -3238,7 +3243,7 @@ Pozostałe pola zostaną domyślnie ukryte.
 Wciśnij przycisk poniżej aby wysłać na swój adres list z linkiem do strony WWW.
 List będzie zawierał link do strony, w którym zakodowany będzie identyfikator.
 Otwórz ten link w przeglądarce, czym potwierdzisz, że jesteś użytkownikiem tego adresu e‐mail.',
-'confirmemail_pending'      => 'Kod potwierdzenia został właśnie do Ciebie wysłany. Jeśli zarejestrował{{GENDER:|eś|aś|eś (~aś)}} się niedawno, poczekaj kilka minut na dostarczenie wiadomości przed kolejną prośbą o wysłanie kodu.',
+'confirmemail_pending'      => 'Kod potwierdzenia został właśnie do Ciebie wysłany. Jeśli zarejestrował{{GENDER:|eś|aś|eś(‐aś)}} się niedawno, poczekaj kilka minut na dostarczenie wiadomości przed kolejną prośbą o wysłanie kodu.',
 'confirmemail_send'         => 'Wyślij kod potwierdzenia',
 'confirmemail_sent'         => 'Wiadomość e‐mail z kodem uwierzytelniającym została wysłana.',
 'confirmemail_oncreate'     => 'Link z kodem potwierdzenia został wysłany na Twój adres e‐mail.
@@ -3300,8 +3305,8 @@ $1',
 'trackbackdeleteok' => 'TrackBack został usunięty.',
 
 # Delete conflict
-'deletedwhileediting' => "'''Uwaga!''' Ta strona została usunięta po tym, jak {{GENDER:|rozpocząłeś|rozpoczęłaś}} jej edycję!",
-'confirmrecreate'     => "{{GENDER:$1|Użytkownik|Użytkowniczka}} [[User:$1|$1]] ([[User talk:$1|dyskusja]]) {{GENDER:$1|usunął|usunęła}} tę stronę po tym, jak {{GENDER:|rozpocząłeś|rozpoczęłaś}} jego edycję, podając jako powód usunięcia:
+'deletedwhileediting' => "'''Uwaga!''' Ta strona została usunięta po tym, jak rozpoczął{{GENDER:|eś|aś|eś(‐aś)}} jej edycję!",
+'confirmrecreate'     => "[[User:$1|$1]] ([[User talk:$1|dyskusja]]) usun{{GENDER:$1|ął|ęła|ął(‐ęła)}} tę stronę po tym, jak rozpoczął{{GENDER:|eś|aś|eś(‐aś)}} jego edycję, podając jako powód usunięcia:
 : ''$2''
 Czy na pewno chcesz ją ponownie utworzyć?",
 'recreate'            => 'Utwórz ponownie',
@@ -3329,6 +3334,7 @@ Czy na pewno chcesz ją ponownie utworzyć?",
 'table_pager_first'        => 'Pierwsza strona',
 'table_pager_last'         => 'Ostatnia strona',
 'table_pager_limit'        => 'Pokaż $1 pozycji na stronie',
+'table_pager_limit_label'  => 'Pozycji na stronie',
 'table_pager_limit_submit' => 'Pokaż',
 'table_pager_empty'        => 'Brak wyników',
 
@@ -3340,7 +3346,7 @@ Czy na pewno chcesz ją ponownie utworzyć?",
 
 # Size units
 'size-bytes'     => '$1&nbsp;B',
-'size-kilobytes' => '$1&nbsp;kB',
+'size-kilobytes' => '$1&nbsp;KB',
 'size-megabytes' => '$1&nbsp;MB',
 'size-gigabytes' => '$1&nbsp;GB',
 
@@ -3366,9 +3372,9 @@ Możesz także skorzystać z [[Special:Watchlist/raw|tekstowego edytora listy ob
 'watchlistedit-normal-done'    => 'Z Twojej listy obserwowanych {{PLURAL:$1|została usunięta 1 strona|zostały usunięte $1 strony|zostało usuniętych $1 stron}}:',
 'watchlistedit-raw-title'      => 'Tekstowy edytor listy obserwowanych',
 'watchlistedit-raw-legend'     => 'Tekstowy edytor listy obserwowanych',
-'watchlistedit-raw-explain'    => 'Poniżej wypisane zostały tytuły stron znajdujących się na twojej liście obserwowanych. Możesz dodać lub usunąć dowolny tytuł z tej listy – jeden wiersz to jeden tytuł.
+'watchlistedit-raw-explain'    => 'Poniżej wypisane zostały tytuły stron znajdujących się na Twojej liście obserwowanych. Możesz dodać lub usunąć dowolny tytuł z tej listy – jeden wiersz to jeden tytuł.
 Aby zatwierdzić zmiany kliknij „{{int:Watchlistedit-raw-submit}}”.
-Możesz także użyć [[Special:Watchlist/edit|standardowego edytora obserwowanych]].',
+Możesz także użyć [[Special:Watchlist/edit|standardowego edytora obserwowanych stron]].',
 'watchlistedit-raw-titles'     => 'Obserwowane strony:',
 'watchlistedit-raw-submit'     => 'Uaktualnij listę',
 'watchlistedit-raw-done'       => 'Lista obserwowanych stron została uaktualniona.',
@@ -3510,6 +3516,15 @@ Wpisz nazwę pliku z pominięciem prefiksu „{{ns:file}}:”.',
 'tags-edit'               => 'edytuj',
 'tags-hitcount'           => '$1 {{PLURAL:$1|zmiana|zmiany|zmian}}',
 
+# Special:ComparePages
+'comparepages'     => 'Porównanie stron',
+'compare-selector' => 'Porównanie wersji stron',
+'compare-page1'    => 'Strona 1',
+'compare-page2'    => 'Strona 2',
+'compare-rev1'     => 'Wersja 1',
+'compare-rev2'     => 'Wersja 2',
+'compare-submit'   => 'Porównaj',
+
 # Database error messages
 'dberr-header'      => 'Ta wiki nie działa poprawnie',
 'dberr-problems'    => 'Przepraszamy! Witryna ma problemy techniczne.',
@@ -3530,20 +3545,5 @@ Wpisz nazwę pliku z pominięciem prefiksu „{{ns:file}}:”.',
 'htmlform-submit'              => 'Zapisz',
 'htmlform-reset'               => 'Cofnij zmiany',
 'htmlform-selectorother-other' => 'Inne',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Dodaj kategorię',
-'ajax-add-category-submit'     => 'Dodaj',
-'ajax-confirm-title'           => 'Potwierdź',
-'ajax-confirm-prompt'          => 'Możesz podać poniżej opis edycji.
-Kliknij „Zapisz”, aby zapisać zmiany.',
-'ajax-confirm-save'            => 'Zapisz',
-'ajax-add-category-summary'    => 'Dodaj kategorię „$1”',
-'ajax-remove-category-summary' => 'Usuń kategorię „$1”',
-'ajax-confirm-actionsummary'   => 'Cel działania',
-'ajax-error-title'             => 'Błąd',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Usunięcie strony z tej kategorii nie jest możliwe.
-Problem zazwyczaj występuje, jeśli kategoria została dodana do strony przez szablon.',
 
 );

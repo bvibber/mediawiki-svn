@@ -146,7 +146,7 @@ function showTocToggle() {
 		toggleLink.id = 'togglelink';
 		toggleLink.className = 'internal';
 		toggleLink.href = '#';
-		toggleLink.onclick = toggleToc;
+		addClickHandler( toggleLink, function( evt ) { toggleToc(); return killEvt( evt ); } );
 		
 		toggleLink.appendChild( document.createTextNode( tocHideText ) );
 
@@ -171,6 +171,17 @@ function changeText( el, newText ) {
 	} else if ( el.firstChild && el.firstChild.nodeValue ) {
 		el.firstChild.nodeValue = newText;
 	}
+}
+
+function killEvt( evt ) {
+	evt = evt || window.event || window.Event; // W3C, IE, Netscape
+	if ( typeof ( evt.preventDefault ) != 'undefined' ) {
+		evt.preventDefault(); // Don't follow the link
+		evt.stopPropagation();
+	} else {
+		evt.cancelBubble = true; // IE
+	}
+	return false; // Don't follow the link (IE)
 }
 
 function toggleToc() {
@@ -247,7 +258,7 @@ function updateTooltipAccessKeys( nodeList ) {
 		// optimization technique.
 		var linkContainers = [
 			'column-one', // Monobook and Modern
-			'head', 'panel', 'p-logo' // Vector
+			'mw-head', 'mw-panel', 'p-logo' // Vector
 		];
 		for ( var i in linkContainers ) {
 			var linkContainer = document.getElementById( linkContainers[i] );

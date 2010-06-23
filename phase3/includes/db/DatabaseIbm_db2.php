@@ -484,9 +484,8 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		wfProfileIn( __METHOD__ );
 		
 		// Load IBM DB2 driver if missing
-		if (!@extension_loaded('ibm_db2')) {
-			@dl('ibm_db2.so');
-		}
+		wfDl( 'ibm_db2' );
+
 		// Test for IBM DB2 support, to avoid suppressed fatal error
 		if ( !function_exists( 'db2_connect' ) ) {
 			$error = "DB2 functions missing, have you enabled the ibm_db2 extension for PHP?\n";
@@ -520,7 +519,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 		// Rather, turn autocommit off in the begin function and turn on after a commit
 		db2_autocommit($this->mConn, DB2_AUTOCOMMIT_ON);
 
-		if ( $this->mConn == false ) {
+		if ( !$this->mConn ) {
 			$this->installPrint( "DB connection error\n" );
 			$this->installPrint( "Server: $server, Database: $dbName, User: $user, Password: " . substr( $password, 0, 3 ) . "...\n" );
 			$this->installPrint( $this->lastError()."\n" );

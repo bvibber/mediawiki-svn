@@ -144,6 +144,8 @@ class LinkHolderArray {
 		# Sort by namespace
 		ksort( $this->internals );
 
+		$linkcolour_ids = array();
+
 		# Generate query
 		$query = false;
 		$current = null;
@@ -165,13 +167,14 @@ class LinkHolderArray {
 				} elseif ( ( $id = $linkCache->getGoodLinkID( $pdbk ) ) != 0 ) {
 					$colours[$pdbk] = $sk->getLinkColour( $title, $threshold );
 					$output->addLink( $title, $id );
+					$linkcolour_ids[$id] = $pdbk;
 				} elseif ( $linkCache->isBadLink( $pdbk ) ) {
 					$colours[$pdbk] = 'new';
 				} else {
 					# Not in the link cache, add it to the query
 					if ( !isset( $current ) ) {
 						$current = $ns;
-						$query =  "SELECT page_id, page_namespace, page_title, page_is_redirect, page_len";
+						$query =  "SELECT page_id, page_namespace, page_title, page_is_redirect, page_len, page_latest";
 						$query .= " FROM $page WHERE (page_namespace=$ns AND page_title IN(";
 					} elseif ( $current != $ns ) {
 						$current = $ns;
@@ -191,11 +194,10 @@ class LinkHolderArray {
 
 			# Fetch data and form into an associative array
 			# non-existent = broken
-			$linkcolour_ids = array();
 			while ( $s = $dbr->fetchObject($res) ) {
 				$title = Title::makeTitle( $s->page_namespace, $s->page_title );
 				$pdbk = $title->getPrefixedDBkey();
-				$linkCache->addGoodLinkObj( $s->page_id, $title, $s->page_len, $s->page_is_redirect );
+				$linkCache->addGoodLinkObj( $s->page_id, $title, $s->page_len, $s->page_is_redirect, $s->page_latest );
 				$output->addLink( $title, $s->page_id );
 				# FIXME: convoluted data flow
 				# The redirect status and length is passed to getLinkColour via the LinkCache
@@ -205,6 +207,8 @@ class LinkHolderArray {
 				$linkcolour_ids[$s->page_id] = $pdbk;
 			}
 			unset( $res );
+		}
+		if ( count($linkcolour_ids) ) {
 			//pass an array of page_ids to an extension
 			wfRunHooks( 'GetLinkColours', array( $linkcolour_ids, &$colours ) );
 		}
@@ -405,8 +409,9 @@ class LinkHolderArray {
 	/**
 	 * Replace <!--LINK--> link placeholders with plain text of links
 	 * (not HTML-formatted).
-	 * @param string $text
-	 * @return string
+	 *
+	 * @param $text String
+	 * @return String
 	 */
 	function replaceText( $text ) {
 		wfProfileIn( __METHOD__ );
@@ -421,7 +426,9 @@ class LinkHolderArray {
 	}
 
 	/**
-	 * @param array $matches
+	 * Callback for replaceText()
+	 *
+	 * @param $matches Array
 	 * @return string
 	 * @private
 	 */

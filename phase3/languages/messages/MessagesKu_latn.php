@@ -11,6 +11,7 @@
  * @author Bangin
  * @author Erdal Ronahi
  * @author Liangent
+ * @author The Evil IP address
  */
 
 $namespaceNames = array(
@@ -1380,8 +1381,8 @@ da bikarî navê wê rûpelê biguherînî.',
 'movepage-page-exists'      => 'Rûpela $1 berê heye û ew nikane otomatîk were jêbirin.',
 'movepage-page-moved'       => 'Rûpela $1 çû cihê $2.',
 'movepage-page-unmoved'     => 'Rûpela $1 nikanî çûba ciha $2.',
-'1movedto2'                 => '$1 çû cihê $2',
-'1movedto2_redir'           => '$1 çû cihê $2 ser redirect',
+'1movedto2'                 => '[[$1]] çû cihê [[$2]]',
+'1movedto2_redir'           => '[[$1]] çû cihê [[$2]] ser redirect',
 'movelogpage'               => 'Reşahîya nav guherandin',
 'movelogpagetext'           => 'Li jêr lîsteyek ji rûpelan ku navê wan hatiye guherandin heye.',
 'movereason'                => 'Sedem',

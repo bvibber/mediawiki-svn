@@ -209,7 +209,7 @@ $messages = array(
 'tog-editsection'             => 'Wys [wysig]-skakels vir elke afdeling',
 'tog-editsectiononrightclick' => 'Wysig afdeling met regskliek op afdeling se titel (JavaScript)',
 'tog-showtoc'                 => 'Wys inhoudsopgawe (by bladsye met meer as drie opskrifte)',
-'tog-rememberpassword'        => 'Onthou wagwoord oor sessies.',
+'tog-rememberpassword'        => "Onthou dat ek ingeteken het op hierdie rekenaar (vir 'n maksimum van $1 {{PLURAL:$|dag|dae}})",
 'tog-watchcreations'          => 'Voeg bladsye wat ek skep by my dophoulys',
 'tog-watchdefault'            => 'Lys nuwe en gewysigde bladsye.',
 'tog-watchmoves'              => 'Voeg die bladsye wat ek skuif by my dophoulys',
@@ -604,7 +604,7 @@ moenie vergeet om u [[Special:Preferences|persoonlike voorkeure vir {{SITENAME}}
 'yourname'                   => 'Gebruikersnaam:',
 'yourpassword'               => 'Wagwoord:',
 'yourpasswordagain'          => 'Herhaal wagwoord',
-'remembermypassword'         => 'Onthou my wagwoord oor sessies.',
+'remembermypassword'         => "Onthou dat ek ingeteken het op hierdie rekenaar (vir 'n maksimum van $1 {{PLURAL:$|dag|dae}})",
 'yourdomainname'             => 'U domein:',
 'externaldberror'            => "'n Databasis fout het voorgekom tydens aanmelding of u het nie toestemming om u eksterne rekening op te dateer nie.",
 'login'                      => 'Teken in',
@@ -3225,6 +3225,7 @@ Bevestig asseblief dat u regtig hierdie blad oor wil skep.",
 'table_pager_first'        => 'Eerste bladsy',
 'table_pager_last'         => 'Laaste bladsy',
 'table_pager_limit'        => 'Wys $1 resultate per bladsy',
+'table_pager_limit_label'  => 'Items per bladsy:',
 'table_pager_limit_submit' => 'Laat waai',
 'table_pager_empty'        => 'Geen resultate',
 
@@ -3390,20 +3391,5 @@ Verskaf die lêernaam sonder die "{{ns:file}}:" voorvoegsel.',
 'htmlform-submit'              => 'Dien in',
 'htmlform-reset'               => 'Maak wysigings ongedaan',
 'htmlform-selectorother-other' => 'Ander',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Voeg kategorie by',
-'ajax-add-category-submit'     => 'Byvoeg',
-'ajax-confirm-title'           => 'Bevestig aksie',
-'ajax-confirm-prompt'          => 'U kan \'n wysigingsopsomming hier onder verskaf.
-Kliek "Stoor" om u wysiging te bêre.',
-'ajax-confirm-save'            => 'Stoor',
-'ajax-add-category-summary'    => 'Voeg kategorie "$1" by',
-'ajax-remove-category-summary' => 'Verwyder kategorie "$1"',
-'ajax-confirm-actionsummary'   => 'Aksie om uit te voer:',
-'ajax-error-title'             => 'Fout',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => "Ongelukkig was nie moontlik om die kategorie te verwyder nie.
-Dit gebeur gewoonlik as die kategorie via 'n sjabloon by die bladsy bygevoeg is.",
 
 );

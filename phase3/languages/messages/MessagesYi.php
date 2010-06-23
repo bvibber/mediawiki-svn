@@ -780,8 +780,8 @@ $2',
 '''אינטערנעט עקספלארער''': האלט ''Ctrl'' בשעתן קליקן ''Refresh'', אדער  דרוקט ''Ctrl-F5'';
 
 '''אפערע:''' מען ליידיגט אויס דעם קאש אין ''Tools → Preferences'' (''העדפות'' > ''כלים'')",
-'usercssyoucanpreview'             => "'''טיפ:''' נוצט דעם 'ווייז פאראויסדיגע ווייזונג' באטאן צו אויספרובירן אייער  CSS בעפאר אפהיטן.",
-'userjsyoucanpreview'              => "'''טיפ:''' נוצט דעם 'ווייז פאראויסדיגע ווייזונג' באטאן צו אויספרובירן אייער  JS בעפאר אפהיטן.",
+'usercssyoucanpreview'             => "'''טיפ:''' נוצט דאס {{int:showpreview}} קנעפל אויספרובירן אייער  CSS בעפאר אפהיטן.",
+'userjsyoucanpreview'              => "'''טיפ:''' נוצט דאס {{int:showpreview}} קנעפל אויספרובירן אייער  JavaScript בעפאר אפהיטן.",
 'usercsspreview'                   => "'''געדענקט אז איר טוט בלויז פאראויס זען אייער באניצער CSS.'''
 '''ער איז דערווייל נאכנישט אויפֿגעהיטן!'''",
 'userjspreview'                    => "'''געדענקט אז איר טוט בלויז טעסטן\\פאראויסזעהן אייער באנוצער JavaScript, עס איז דערווייל נאכנישט אפגעהיטן!'''",
@@ -1476,6 +1476,7 @@ $1",
 
 # HTTP errors
 'http-invalid-url'      => 'אומגילטיג URL: $1',
+'http-curl-error'       => 'גרײַז בײַם ברענגען URL: $1',
 'http-host-unreachable' => "מ'קען נישט דערגרייכן דעם URL",
 'http-bad-status'       => "ס'איז געווען א פראבלעם ביים HTTP פֿאַרלאַנג: $1 $2",
 
@@ -1541,7 +1542,7 @@ $1",
 'filerevert'                => 'צוריקדרייען $1',
 'filerevert-legend'         => 'צוריקדרייען טעקע',
 'filerevert-intro'          => "איר האַלט בײַ צוריקשטעלן די טעקע '''[[Media:$1|$1]]''' צו דער [$4 ווערסיע פֿון $3, $2].",
-'filerevert-comment'        => 'הערה:',
+'filerevert-comment'        => 'אורזאַך:',
 'filerevert-defaultcomment' => 'צוריקגעשטעלט צו דער ווערסיע פֿון $2, $1',
 'filerevert-submit'         => 'צוריקדרייען',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' צוריקגשטעלט צו דער [$4 ווערסיע פֿון $3, $2].",
@@ -1871,6 +1872,9 @@ $NEWPAGE
 צו ענדערן אייער אויפֿפאסונג ליסטע, באזוכט
 {{fullurl:{{#special:Watchlist}}/edit}}
 
+כדי אויסמעקן דעם בלאט פון אײַער אויפֿפאַסונג ליסטע, באַזוכט
+$UNWATCHURL
+
 פאר מער הילף:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -1941,6 +1945,7 @@ $NEWPAGE
 'protectexpiry'               => 'גייט אויס:',
 'protect_expiry_invalid'      => 'אויסגיין צײַט אומגילטיג.',
 'protect_expiry_old'          => 'שוין דערנאך דער אויסגיין צײַט.',
+'protect-unchain-permissions' => 'אויפֿשליסן נאך שיץ אפציעס',
 'protect-text'                => "איר מעגט זען און ענדערן דעם שוץ ניווא דא פֿארן בלאט '''<nowiki>$1</nowiki>'''.",
 'protect-locked-blocked'      => "איר קען נישט ענדערן דעם שוץ ניווא בעת ווען איר זענט בלאקירט.
 פֿאלגנד זענען די לויפֿיגע שטעלונגען פֿארן בלאט '''$1''':",
@@ -2007,7 +2012,7 @@ $NEWPAGE
 'undeleteviewlink'          => 'באַקוקן',
 'undeletereset'             => 'צוריקשטעלן',
 'undeleteinvert'            => 'איבערקערן דעם אויסקלויב',
-'undeletecomment'           => 'הערה:',
+'undeletecomment'           => 'אורזאַך:',
 'undeletedarticle'          => 'צוריק געשטעלט "[[$1]]"',
 'undeletedrevisions'        => '{{PLURAL:$1|1 רעוויזיע|$1 רעוויזיעס}} צוריקגעשטעלט',
 'undeletedrevisions-files'  => '{{PLURAL:$1|1 רעוויזיע|$1 רעוויזיעס}} און  {{PLURAL:$2|1 טעקע|$2 טעקעס}} צוריקגעשטעלט',
@@ -2037,18 +2042,20 @@ $NEWPAGE
 'month'               => 'ביז חודש:',
 'year'                => 'ביז יאר:',
 
-'sp-contributions-newbies'        => 'ווײַזן בײַשטײַערונגען נאר פֿון נײַע באַניצערס',
-'sp-contributions-newbies-sub'    => 'פאר נייע קאנטעס',
-'sp-contributions-newbies-title'  => 'בײַשטײַערונגען פֿון נײַע באַניצערס',
-'sp-contributions-blocklog'       => 'בלאקירן לאג',
-'sp-contributions-deleted'        => 'אויסגעמעקטע באַניצער בײַשטײַערונגען',
-'sp-contributions-logs'           => 'לאגביכער',
-'sp-contributions-talk'           => 'שמועס',
-'sp-contributions-userrights'     => 'באַניצער רעכטן פֿאַרוואַלטונג',
-'sp-contributions-blocked-notice' => 'דער באַניצער איז אַצינד בלאקירט. פֿאלגנד איז די לעצטע אַקציע אינעם פֿאַרשפאַרונג לאגבוך:',
-'sp-contributions-search'         => 'זוכן בײַשטײַערונגען',
-'sp-contributions-username'       => 'באניצער נאמען אדער IP אדרעס:',
-'sp-contributions-submit'         => 'זוכן',
+'sp-contributions-newbies'             => 'ווײַזן בײַשטײַערונגען נאר פֿון נײַע באַניצערס',
+'sp-contributions-newbies-sub'         => 'פאר נייע קאנטעס',
+'sp-contributions-newbies-title'       => 'בײַשטײַערונגען פֿון נײַע באַניצערס',
+'sp-contributions-blocklog'            => 'בלאקירן לאג',
+'sp-contributions-deleted'             => 'אויסגעמעקטע באַניצער בײַשטײַערונגען',
+'sp-contributions-logs'                => 'לאגביכער',
+'sp-contributions-talk'                => 'שמועס',
+'sp-contributions-userrights'          => 'באַניצער רעכטן פֿאַרוואַלטונג',
+'sp-contributions-blocked-notice'      => 'דער באַניצער איז אַצינד בלאקירט. פֿאלגנד איז די לעצטע אַקציע אינעם פֿאַרשפאַרונג לאגבוך:',
+'sp-contributions-blocked-notice-anon' => 'דער IP אַדרעס איז דערווייַל פֿאַרשפאַרט.
+די לעצטע בלאָקירן לאג אַקציע איז צוגעשטעלט אונטן:',
+'sp-contributions-search'              => 'זוכן בײַשטײַערונגען',
+'sp-contributions-username'            => 'באניצער נאמען אדער IP אדרעס:',
+'sp-contributions-submit'              => 'זוכן',
 
 # What links here
 'whatlinkshere'            => 'װאָס פֿאַרבינדט אַהער',
@@ -2117,6 +2124,7 @@ $NEWPAGE
 'ipb-edit-dropdown'               => 'רעדאקטיר בלאקירונג סיבות',
 'ipb-unblock-addr'                => 'אויפֿבלאקירן $1',
 'ipb-unblock'                     => 'אויפֿבלאקירן א באַניצער נאמען אדער IP אדרעס',
+'ipb-blocklist-addr'              => 'אַקטועלע בלאקירונגען פֿאַר $1',
 'ipb-blocklist'                   => 'זעט עקזיסטירנדע בלאקירונגען',
 'ipb-blocklist-contribs'          => 'בײַשטײַערונגען פֿון $1',
 'unblockip'                       => 'אויפֿבלאקירן באניצער',
@@ -2127,6 +2135,7 @@ $NEWPAGE
 'ipblocklist-username'            => 'באניצער נאמען אדער IP אדרעס:',
 'ipblocklist-submit'              => 'זוכן',
 'ipblocklist-localblock'          => 'לאקאַלע בלאקירונג',
+'ipblocklist-otherblocks'         => '{{PLURAL:$1|אַנדער בלאקירונג|אַנדערע בלאקירונגען}}',
 'blocklistline'                   => '$1 $2 האט פֿאַרשפאַרט $3 ($4)',
 'infiniteblock'                   => 'אויף אייביק',
 'expiringblock'                   => 'גייט אויס אום $1 $2',
@@ -2136,12 +2145,17 @@ $NEWPAGE
 'emailblock'                      => 'בליצפאסט בלאקירט',
 'blocklist-nousertalk'            => 'קען נישט רעדאַקטירן דעם אייגענעם רעדן בלאַט',
 'ipblocklist-empty'               => 'בלאקירן ליסטע איז  ליידיג.',
+'ipblocklist-no-results'          => 'דער געזוכטער IP אַדרעס אָדער באַניצער נאמען איז ניט פֿאַרשפאַרט.',
 'blocklink'                       => 'ארויסטרייבן',
 'unblocklink'                     => 'באַפֿרײַען',
 'change-blocklink'                => 'ענדערן בלאק',
 'contribslink'                    => 'באַניצערס בײַשטײַערונגען',
 'autoblocker'                     => 'דו ביסט געבלאקט אטאמאטיק ווייל דו טיילסט זיך די IP אדרעס מיט [[User:$1|$1]]. דער סיבה וואס איז אנגעבען געווארן  [[User:$1|$1]] איז: "$2".',
 'blocklogpage'                    => 'בלאקירן לאג',
+'blocklog-showlog'                => '{{GENDER:$1|דער באַניצער|די באַניצערין}} איז שוין געווארן פֿאַרשפאַרט אַמאָל. 
+דער בלאקירונג לאג איז צוגעשטעלט אונטן:',
+'blocklog-showsuppresslog'        => '{{GENDER:$1|דער באַניצער|די באַניצערין}} איז שוין געווארן פֿאַרשפאַרט און פֿאַרבארגט אַמאָל. 
+דער פֿאַרשטיקונג לאג איז צוגעשטעלט אונטן:',
 'blocklogentry'                   => 'בלאקירט "[[$1]]" אויף אַ תקופה פון $2 $3',
 'reblock-logentry'                => 'גענדערט די בלאקירונג דעפיניציעס פון [[$1]] מיטן צייט אפלויף פון $2 $3',
 'blocklogtext'                    => 'דאס איז א לאג בוך פון אלע בלאקירונגען און באפרייונגען פֿון באניצערס. איי פי אדרעסן וואס זענען בלאקירט אויטאמאטיש ווערן נישט אויסגערעכענט דא.
@@ -2876,14 +2890,5 @@ $5
 'htmlform-submit'              => 'איינגעבן',
 'htmlform-reset'               => 'צוריקשטעלן ענדערונגען',
 'htmlform-selectorother-other' => 'אנדער',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'צולייגן קאַטעגאריע',
-'ajax-add-category-submit'     => 'צולייגן',
-'ajax-confirm-save'            => 'אויפֿהיטן',
-'ajax-add-category-summary'    => 'צולייגן קאַטעגאריע "$1"',
-'ajax-remove-category-summary' => 'אַוועקנעמען קאַטעגאריע "$1"',
-'ajax-error-title'             => 'גרײַז',
-'ajax-error-dismiss'           => 'אויספֿירן',
 
 );

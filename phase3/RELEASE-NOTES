@@ -80,6 +80,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 21312) RevisionMove allows moving individual revisions of a page to 
   another page. Introducing 'revisionmove' user right; disabled by default;
   experimental feature.
+* Show validity period of the login cookie in Special:UserLogin and
+  Special:Preferences
+* Interlanguage links display the page title in their tooltip.
+* (bug 23621) New Special:ComparePages to compare (diff) two articles.
+* (bug 4597) Provide support in Special:Contributions to show only "current"
+  contributions
+* (bug 17857) {{anchorencode}} acts more like how the parser creates section ids.
+* (bug 21477) \& can now be used in <math>
+* (bug 11641) \dotsc \dotsm \dotsi \dotso can now be used in <math>
+* (bug 21475) \mathtt and \textsf can now be used in <math>
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -190,6 +200,18 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 23688) Correct mime types for Office 2007 OpenXML documents.
 * (bug 23787) Corrected $wgDefaultSkin's comment in DefaultSettings.php
 * (bug 23797) Xml::input() now allows '0' for the value parameter
+* (bug 23747) Make sure that on History pages, the RevDel button is not
+  accidently activated when hitting enter.
+* (bug 23845) Special:ListFiles now uses correct file names without underscores
+* Ask for permanent login in Special:Preferences only if $wgCookieExpiration > 0
+* (bug 16356) Repair dumpInterwiki.inc to use proper normalization.
+* (bug 24006) deleteArchivedRevisions.php maintenance script now longer throws
+  a fatal error
+* (bug 23465) Don't ignore the predefined destination filename on 
+  Special:Upload after following a red link
+* Correct the escaping of the autosummary URI fragments.
+* (bug 23642) Recognize mime types of MS OpenXML documents.
+* (bug 22784) Normalise underscores and spaces in autocomments.
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
@@ -208,6 +230,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   using token and username.
 * (bug 23524) Api Modules as followup to bug 14473 (Add iwlinks table to 
   track inline interwiki link usage.
+* Add pltitles and tltemplates to prop=links and prop=templates respectively,
+  similar to prop=categories's clcategorie
+* (bug 23834) Invalid "thumbwidth" and "thumbheight" in "imageinfo" query when
+  thumbnailing larger than original image
+* (bug 23835) Need "thumbmime" result in "imageinfo" query
+* (bug 23851) Repair diff for file redirect pages
+* (bug 24009) Include implicit groups in action=query&list=users&usprop=groups
+* (bug 24016) API: Handle parameters specified in simple string syntax 
+  ( 'paramname' => 'defaultval' ) correctly when outputting help
+* (bug 19910) Headings of the form ===+\s+ are now displayed as valid headings
 
 === Languages updated in 1.17 ===
 

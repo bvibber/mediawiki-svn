@@ -23,6 +23,7 @@
  * @author Felis
  * @author FollowTheMedia
  * @author Gianfranco
+ * @author HalphaZ
  * @author Klutzy
  * @author Marco 27
  * @author Martorell
@@ -249,7 +250,7 @@ $messages = array(
 'tog-editsection'             => 'Modifica delle sezioni tramite il collegamento [modifica]',
 'tog-editsectiononrightclick' => 'Modifica delle sezioni tramite clic destro sul titolo (richiede JavaScript)',
 'tog-showtoc'                 => "Mostra l'indice per le pagine con più di 3 sezioni",
-'tog-rememberpassword'        => 'Ricorda la password su questo computer (richiede di accettare i cookie)',
+'tog-rememberpassword'        => 'Ricorda la password su questo computer (per un massimo di $1 {{PLURAL:$1|giorno|giorni}})',
 'tog-watchcreations'          => 'Aggiungi le pagine create agli osservati speciali',
 'tog-watchdefault'            => 'Aggiungi le pagine modificate agli osservati speciali',
 'tog-watchmoves'              => 'Aggiungi le pagine spostate agli osservati speciali',
@@ -645,7 +646,7 @@ L'account è stato creato correttamente. Non dimenticare di personalizzare le [[
 'yourname'                   => 'Nome utente:',
 'yourpassword'               => 'Password:',
 'yourpasswordagain'          => 'Ripeti la password:',
-'remembermypassword'         => 'Ricorda la password su questo computer',
+'remembermypassword'         => 'Ricorda la password su questo computer (per un massimo di $1 {{PLURAL:$1|giorno|giorni}})',
 'yourdomainname'             => 'Specificare il dominio',
 'externaldberror'            => 'Si è verificato un errore con il server di autenticazione esterno, oppure non si dispone delle autorizzazioni necessarie per aggiornare il proprio accesso esterno.',
 'login'                      => 'Entra',
@@ -1074,6 +1075,24 @@ $1",
 'suppressionlog'     => 'Log delle soppressioni',
 'suppressionlogtext' => "Di seguito sono elencate le cancellazioni e i blocchi più recenti riguardanti contenuti nascosti agli amministratori. Vedi l'[[Special:IPBlockList|elenco degli IP bloccati]] per l'elenco dei blocchi attivi al momento.",
 
+# Revision move
+'moverevlogentry'              => '{{PLURAL:$3|spostata una revisione|spostate $3 revisioni}} da $1 a $2',
+'revisionmove'                 => 'Sposta revisione da "$1"',
+'revmove-explain'              => 'Le seguenti revisioni saranno spostate da $1 alla pagina di destinazione specificata. Se la destinazione non esiste, sarà creata. Altrimenti, queste revisioni saranno unite nella cronologia della pagina.',
+'revmove-legend'               => "Imposta la pagina di destinazione e l'oggetto",
+'revmove-submit'               => 'Sposta le revisioni alla pagina selezionata',
+'revisionmoveselectedversions' => 'Sposta le versioni selezionate',
+'revmove-reasonfield'          => 'Motivo:',
+'revmove-titlefield'           => 'Pagina di destinazione:',
+'revmove-badparam-title'       => 'Parametri invalidi',
+'revmove-badparam'             => '<span class="error">La tua richiesta contiene parametri errati o insufficienti. Premere "indietro" e provare ancora.</span>',
+'revmove-norevisions-title'    => 'Versione non specificata',
+'revmove-norevisions'          => '<span class="error">Non hai specificato una o più revisioni per eseguire questa funzione o la revisione specificata non esiste.</span>',
+'revmove-nullmove-title'       => 'Titolo invalido',
+'revmove-nullmove'             => '<span class="error">La pagina sorgente e di destinazione sono identiche. Premere "indietro" ed inserire il nome di una pagina diverso da "$1".</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Una revisione di [[$2]] è stata spostata|$1 revisioni di [[$2]] sono state spostate}} nella pagina esistente [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Una revisione di [[$2]] è stata spostata|$1 revisioni di [[$2]] sono state spostate}} nella nuova pagina creata [[$3]].',
+
 # History merging
 'mergehistory'                     => 'Unione cronologie',
 'mergehistory-header'              => 'Questa pagina consente di unire le revisioni appartenenti alla cronologia di una pagina (detta pagina di origine) alla cronologia di una pagina più recente.
@@ -1397,6 +1416,7 @@ L'operazione non può essere annullata.",
 'right-reset-passwords'       => 'Reimposta le password di altri utenti',
 'right-override-export-depth' => 'Esporta le pagine includendo le pagine collegate fino ad una profondità di 5',
 'right-sendemail'             => 'Invia e-mail ad altri utenti',
+'right-revisionmove'          => 'Sposta le revisioni',
 
 # User rights log
 'rightslog'      => 'Diritti degli utenti',
@@ -1439,6 +1459,7 @@ L'operazione non può essere annullata.",
 'action-userrights'           => 'modificare tutti i diritti degli utenti',
 'action-userrights-interwiki' => 'modificare i diritti degli utenti su altre wiki',
 'action-siteadmin'            => 'bloccare e sbloccare il database',
+'action-revisionmove'         => 'sposta le revisioni',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|modifica|modifiche}}',
@@ -1606,6 +1627,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- lascia questa riga esattamente com\'è -->',
+'upload-successful-msg'       => 'Il tuo upload è disponibile qui: $1',
+'upload-failure-subj'         => "Problema nell'upload",
+'upload-failure-msg'          => 'Si è verificato un problema con il caricamento:
+
+$1',
 
 'upload-proto-error'        => 'Protocollo errato',
 'upload-proto-error-text'   => "Per l'upload remoto è necessario specificare URL che iniziano con <code>http://</code> oppure <code>ftp://</code>.",
@@ -1997,6 +2023,7 @@ Potrebbero esserci [[{{MediaWiki:Listgrouprights-helppage}}|ulteriori informazio
 
 # User Messenger
 'usermessage-summary' => 'Messaggio di sistema',
+'usermessage-editor'  => 'Messaggero di sistema',
 
 # Watchlist
 'watchlist'            => 'Osservati speciali',
@@ -3337,20 +3364,5 @@ Inserire il nome del file senza il prefisso \"{{ns:file}}:\"",
 'htmlform-submit'              => 'Invia',
 'htmlform-reset'               => 'Annulla modifiche',
 'htmlform-selectorother-other' => 'Altro',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Aggiungi categoria',
-'ajax-add-category-submit'     => 'Aggiungi',
-'ajax-confirm-title'           => "Conferma l'azione",
-'ajax-confirm-prompt'          => 'È possibile fornire di seguito un oggetto per la modifica. 
-Fare clic su "Salva" per salvare la modifica.',
-'ajax-confirm-save'            => 'Salva',
-'ajax-add-category-summary'    => 'Aggiungere categoria "$1"',
-'ajax-remove-category-summary' => 'Rimuovere categoria "$1"',
-'ajax-confirm-actionsummary'   => 'Azione da intraprendere:',
-'ajax-error-title'             => 'Errore',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Non è stato possibile rimuovere questa categoria.
-Ciò si verifica in genere quando la categoria è stata aggiunta alla pagina in un template.',
 
 );

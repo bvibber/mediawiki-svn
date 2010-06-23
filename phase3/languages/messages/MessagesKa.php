@@ -975,6 +975,9 @@ $1",
 'suppressionlog'     => 'დამალვათა ჟურნალი',
 'suppressionlogtext' => 'ეს არის მომხმარებლების დაბლოკვის და განბლოკვის ჟურნალი. ავტომატურად დაბლოკილი IP მისამართები არაა ჩამოთვლილი. იხილეთ [[Special:IPBlockList|IP ბლოკირების სია]] მიმდინარე დაბლოკვებისთვის.',
 
+# Revision move
+'revmove-reasonfield' => 'მიზეზი:',
+
 # History merging
 'mergehistory'                     => 'გვერდების ისტორიის შერწყმა',
 'mergehistory-header'              => 'ეს გვერდი გაძლევთ ნებართვას გააერთიანოთ ორი სხვადასხვა გვერდის ისტორია, რაც შეინარჩუნებს მათ ერთიანობას.',
@@ -1622,7 +1625,7 @@ $1',
 'filerevert'                => 'დააბრუნე $1',
 'filerevert-legend'         => 'დააბრუნე ფაილი',
 'filerevert-intro'          => '<span class="plainlinks">თქვენ აბრუნებთ \'\'\'[[Media:$1|$1]]\'\'\'  [$4 ვერსიას $3, $2]-თან.</span>',
-'filerevert-comment'        => 'კომენტარი:',
+'filerevert-comment'        => 'მიზეზი:',
 'filerevert-defaultcomment' => 'დაბრუნება ვერსიასთან $2, $1-დან.',
 'filerevert-submit'         => 'გაუქმება',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' დაუბრუნდა ვერსიას [$4  $3, $2]-დან.",
@@ -2051,7 +2054,7 @@ $UNWATCHURL
 'protect-title'               => 'დაცვის დონის შეცვლა გვერდისთვის "$1"',
 'prot_1movedto2'              => '[[$1]] გადატანილია გვერდზე [[$2]]',
 'protect-legend'              => 'დაცვის დადასტურება',
-'protectcomment'              => 'მიზეზი',
+'protectcomment'              => 'მიზეზი:',
 'protectexpiry'               => 'ვადა',
 'protect_expiry_invalid'      => 'ვადის გასვლის დრო არასწორია.',
 'protect_expiry_old'          => 'ვადის გასვლის დრო წარსულშია.',
@@ -2125,7 +2128,7 @@ $UNWATCHURL
 'undeleteviewlink'             => 'იხილე',
 'undeletereset'                => 'გადატვირთეთ',
 'undeleteinvert'               => 'გააუქმეთ გამოყოფა',
-'undeletecomment'              => 'კომენტარი:',
+'undeletecomment'              => 'მიზეზი:',
 'undeletedarticle'             => 'აღდგენილია "[[$1]]"',
 'undeletedrevisions'           => '$1 ვერსია აღდგენილია',
 'undeletedrevisions-files'     => '$1 ვერსია და $2 ფაილი აღდგენილია',
@@ -2181,7 +2184,7 @@ $1',
 'sp-contributions-submit'              => 'ძიება',
 
 # What links here
-'whatlinkshere'            => 'სადაა მითითებული ეს გვერდი',
+'whatlinkshere'            => 'ბმული გვერდზე',
 'whatlinkshere-title'      => 'გვერდები, რომლებიც შეიცავენ ბმულებს "$1"-ზე',
 'whatlinkshere-page'       => 'გვერდი:',
 'linkshere'                => "მომდევნო გვერდები შეიცავენ ბმულებს '''[[:$1]]'''-ზე:",
@@ -3243,20 +3246,5 @@ $1',
 'htmlform-submit'              => 'შენახვა',
 'htmlform-reset'               => 'ცვლილებების გაუქმება',
 'htmlform-selectorother-other' => 'სხვა',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'კატეგორიის ჩამატება',
-'ajax-add-category-submit'     => 'ჩამატება',
-'ajax-confirm-title'           => 'მოქმედების დადასტურება',
-'ajax-confirm-prompt'          => 'ქვემოთ თქვენ შეგიძიათ ცვლილებბეის აღწერის ჩამატება.
-დააჭირეთ "შენახვას" ცვლილების შესანახად.',
-'ajax-confirm-save'            => 'შენახვა',
-'ajax-add-category-summary'    => 'ჩაემატა კატეგორია "$1".',
-'ajax-remove-category-summary' => 'წაიშალა კატეგორია "$1".',
-'ajax-confirm-actionsummary'   => 'მისაღები ზომები:',
-'ajax-error-title'             => 'შეცდომა',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'ამ კატეგორიის შეკრება შეუძლებელია.
-ხშირედ ეს ხდება მაშინ, როდესაც კატეგორია ჩამატებულია თარგიდან.',
 
 );

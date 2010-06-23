@@ -54,21 +54,26 @@ class GIFHandler extends BitmapHandler {
 	}
 	
 	function isMetadataValid( $image, $metadata ) {
-		$data = @unserialize( $metadata );
+		wfSuppressWarnings();
+		$data = unserialize( $metadata );
+		wfRestoreWarnings();
 		return (boolean) $data;
 	}
 
 	function getLongDesc( $image ) {
 		global $wgUser, $wgLang;
 		$sk = $wgUser->getSkin();
+		$original = parent::getLongDesc( $image );
+
+		wfSuppressWarnings();
+		$metadata = unserialize($image->getMetadata());
+		wfRestoreWarnings();
 		
-		$metadata = @unserialize($image->getMetadata());
-		
-		if (!$metadata) return parent::getLongDesc( $image );
+		if (!$metadata || $metadata['frameCount'] <=  1)
+			return $original;
 		
 		$info = array();
-		$info[] = $image->getMimeType();
-		$info[] = $sk->formatSize( $image->getSize() );
+		$info[] = substr( $original, 1, strlen( $original )-2 );
 		
 		if ($metadata['looped'])
 			$info[] = wfMsgExt( 'file-info-gif-looped', 'parseinline' );

@@ -315,7 +315,7 @@ $messages = array(
 'tog-editsection'             => 'Activar los lims « [changiér] » por changiér una sèccion',
 'tog-editsectiononrightclick' => 'Fâre un clic drêt sur un titro de sèccion pèrmèt de changiér ceta (at fôta de JavaScript)',
 'tog-showtoc'                 => 'Fâre vêre la trâbla de les matiéres (por les pâges qu’ont més de 3 sèccions)',
-'tog-rememberpassword'        => "Sè rapelar de mon mot de pâssa sur ceti ordenator (tèmouen (''cookie''))",
+'tog-rememberpassword'        => 'Sè rapelar de mon branchement sur ceti ordenator (tot u ples $1 jorn{{PLURAL:$1||s}})',
 'tog-watchcreations'          => 'Apondre les pâges que fé a ma lista de survelyence',
 'tog-watchdefault'            => 'Apondre les pâges que chanjo a ma lista de survelyence',
 'tog-watchmoves'              => 'Apondre les pâges que renomo a ma lista de survelyence',
@@ -714,7 +714,7 @@ Oubliâd pas de pèrsonalisar voutres [[Special:Preferences|prèferences dessus 
 'yourname'                   => 'Voutron nom d’utilisator :',
 'yourpassword'               => 'Voutron mot de pâssa :',
 'yourpasswordagain'          => 'Tornâd buchiér voutron mot de pâssa :',
-'remembermypassword'         => "Sè rapelar de mon mot de pâssa sur ceti ordenator (tèmouen (''cookie''))",
+'remembermypassword'         => 'Sè rapelar de mon branchement sur ceti ordenator (tot u ples $1 jorn{{PLURAL:$1||s}})',
 'yourdomainname'             => 'Voutron domêno :',
 'externaldberror'            => 'Ou ben una èrror est arrevâ avouéc la bâsa de balyês d’ôtentificacion de defôr, ou ben vos éte pas ôtorisâ a betar a jorn voutron compto de defôr.',
 'login'                      => 'Branchement',
@@ -3632,20 +3632,5 @@ Buchiéd lo nom du fichiér sen lo prèfixo « {{ns:file}}: ».',
 'htmlform-submit'              => 'Sometre',
 'htmlform-reset'               => 'Dèfâre los changements',
 'htmlform-selectorother-other' => 'Ôtro',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Apondre una catègorie',
-'ajax-add-category-submit'     => 'Apondre',
-'ajax-confirm-title'           => 'Confirmar l’accion',
-'ajax-confirm-prompt'          => 'Vos pouede balyér un rèsumâ du changement ce-desot.
-Clicâd dessus « Sôvar » por encartar voutron changement.',
-'ajax-confirm-save'            => 'Sôvar',
-'ajax-add-category-summary'    => 'Apondre la catègorie « $1 »',
-'ajax-remove-category-summary' => 'Enlevar la catègorie « $1 »',
-'ajax-confirm-actionsummary'   => 'Accion a menar :',
-'ajax-error-title'             => 'Èrror',
-'ajax-error-dismiss'           => 'D’acôrd',
-'ajax-remove-category-error'   => 'O at pas étâ possiblo d’enlevar ceta catègorie.
-En g·ènèral, cen arreve quand la catègorie at étâ apondua a la pâge avouéc un modèlo.',
 
 );

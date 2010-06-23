@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -128,9 +128,9 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		// Otherwise, the group of the new row is appended to the last entry.
 		// The setContinue... is more complex because of this, and takes into account the higher sql limit
 		// to make sure all rows that belong to the same user are received.
-		//
-		while ( true ) {
-			$row = $db->fetchObject( $res );
+
+		$row = $db->fetchObject( $res );
+		foreach ( $res as $row ) {
 			$count++;
 
 			if ( !$row || $lastUser !== $row->user_name ) {
@@ -143,11 +143,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 								$this->keyToTitle( $lastUserData['name'] ) );
 						break;
 					}
-				}
-
-				// No more rows left
-				if ( !$row ) {
-					break;
 				}
 
 				if ( $count > $limit ) {
@@ -186,8 +181,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 				$result->setIndexedTagName( $lastUserData['groups'], 'g' );
 			}
 		}
-
-		$db->freeResult( $res );
 
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'u' );
 	}

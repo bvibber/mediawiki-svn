@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -457,7 +457,7 @@ class ApiPageSet extends ApiQueryBase {
 			ApiBase::dieDebug( __METHOD__, 'Missing $processTitles parameter when $remaining is provided' );
 		}
 
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$pageId = intval( $row->page_id );
 
 			// Remove found page from the list of remaining items
@@ -472,7 +472,6 @@ class ApiPageSet extends ApiQueryBase {
 			// Store any extra fields requested by modules
 			$this->processDbRow( $row );
 		}
-		$db->freeResult( $res );
 
 		if ( isset( $remaining ) ) {
 			// Any items left in the $remaining list are added as missing
@@ -520,14 +519,13 @@ class ApiPageSet extends ApiQueryBase {
 		// Get pageIDs data from the `page` table
 		$this->profileDBIn();
 		$res = $db->select( $tables, $fields, $where,  __METHOD__ );
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$revid = intval( $row->rev_id );
 			$pageid = intval( $row->rev_page );
 			$this->mGoodRevIDs[$revid] = $pageid;
 			$pageids[$pageid] = '';
 			unset( $remaining[$revid] );
 		}
-		$db->freeResult( $res );
 		$this->profileDBOut();
 
 		$this->mMissingRevIDs = array_keys( $remaining );
@@ -596,7 +594,7 @@ class ApiPageSet extends ApiQueryBase {
 		);
 		$this->profileDBOut();
 
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$rdfrom = intval( $row->rd_from );
 			$from = $this->mPendingRedirectIDs[$rdfrom]->getPrefixedText();
 			$to = Title::makeTitle( $row->rd_namespace, $row->rd_title )->getPrefixedText();
@@ -606,7 +604,7 @@ class ApiPageSet extends ApiQueryBase {
 			}
 			$this->mRedirectTitles[$from] = $to;
 		}
-		$db->freeResult( $res );
+
 		if ( $this->mPendingRedirectIDs ) {
 			// We found pages that aren't in the redirect table
 			// Add them

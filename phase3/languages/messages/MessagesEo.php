@@ -277,7 +277,7 @@ $messages = array(
 'tog-editsection'             => 'Montri [redakti]-ligilojn por sekcioj',
 'tog-editsectiononrightclick' => 'Ŝalti sekcian redaktadon per dekstra musklako de sekciaj titoloj (kun JavaScript)',
 'tog-showtoc'                 => 'Montri liston de enhavoj (por paĝojn kun pli ol 3 sekciojn)',
-'tog-rememberpassword'        => 'Memori mian pasvorton por ĉi tiu komputilo',
+'tog-rememberpassword'        => 'Memori mian ensalutadon ĉe ĉi tiu komputilo (daŭrante maksimume $1 {{PLURAL:$1|tagon|tagojn}})',
 'tog-watchcreations'          => 'Aldoni de mi kreitajn paĝojn al mia atentaro',
 'tog-watchdefault'            => 'Priatenti redaktintajn paĝojn de vi',
 'tog-watchmoves'              => 'Aldoni paĝojn, kiujn mi movas, al mia atentaro',
@@ -309,7 +309,7 @@ $messages = array(
 'tog-ccmeonemails'            => 'Sendi al mi kopiojn de retpoŝtaĵoj, kiujn mi sendis al aliaj uzuloj.',
 'tog-diffonly'                => 'Ne montri paĝan enhavon sub la ŝanĝoj',
 'tog-showhiddencats'          => 'Montri kaŝitajn kategoriojn',
-'tog-norollbackdiff'          => 'Mankigi ŝanĝojn post farante malfaron',
+'tog-norollbackdiff'          => 'Preterlasi ŝanĝoelmontron post malfaro',
 
 'underline-always'  => 'Ĉiam',
 'underline-never'   => 'Neniam',
@@ -498,7 +498,7 @@ $messages = array(
 'otherlanguages'    => 'Aliaj lingvoj',
 'redirectedfrom'    => '(Alidirektita el $1)',
 'redirectpagesub'   => 'Alidirektilo',
-'lastmodifiedat'    => 'Laste redaktita je $2, $1.',
+'lastmodifiedat'    => 'Ĉi tiu paĝo estis lastafoje redaktita je $2, $1.',
 'viewcount'         => 'Montrita {{PLURAL:$1|unufoje|$1 fojojn}}.',
 'protectedpage'     => 'Protektita paĝo',
 'jumpto'            => 'Iri al:',
@@ -513,7 +513,7 @@ $1',
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Pri {{SITENAME}}',
 'aboutpage'            => 'Project:Enkonduko',
-'copyright'            => 'La enhavo estas havebla sub $1.',
+'copyright'            => 'La enhavo estas disponebla laŭ $1.',
 'copyrightpage'        => '{{ns:project}}:Kopirajto',
 'currentevents'        => 'Aktualaĵoj',
 'currentevents-url'    => 'Project:Aktualaĵoj',
@@ -677,7 +677,7 @@ Ne forgesu fari viajn [[Special:Preferences|{{SITENAME}}-preferojn]].',
 'yourname'                   => 'Salutnomo:',
 'yourpassword'               => 'Pasvorto:',
 'yourpasswordagain'          => 'Retajpu pasvorton',
-'remembermypassword'         => 'Rememori mian pasvorton',
+'remembermypassword'         => 'Memori mian ensalutadon ĉe ĉi tiu komputilo (daŭrante maksimume $1 {{PLURAL:$1|tagon|tagojn}})',
 'yourdomainname'             => 'Via domajno',
 'externaldberror'            => 'Aŭ estis datenbaza eraro rilate al ekstera aŭtentikigado, aŭ vi ne rajtas ĝisdatigi vian eksteran konton.',
 'login'                      => 'Ensaluti',
@@ -1138,15 +1138,19 @@ Bonvolu kontroli la protokolojn.',
 Rigardu la [[Special:IPBlockList|IP-forbarliston]] por la listo de nune operaciaj forbaroj kaj forigoj.',
 
 # Revision move
-'revmove-legend'            => 'Aldoni celan paĝon kaj resumon',
-'revmove-reasonfield'       => 'Kialo:',
-'revmove-titlefield'        => 'Cela paĝo:',
-'revmove-badparam-title'    => 'Malbonaj parametroj',
-'revmove-badparam'          => '<span class="error">Via peto enhavas kontraŭleĝajn aŭ nesufiĉajn parametrojn. Bonvolu premi "malantaŭen" kaj provi denove.</span>',
-'revmove-norevisions-title' => 'Nevalida cela revizio',
-'revmove-norevisions'       => '<span class="error">Vi ne specifis unu aŭ pliajn reviziojn por apliki ĉi tiun funkcion aŭ la specifita revizio ne ekzistas.</span>',
-'revmove-nullmove-title'    => 'Fuŝa titolo',
-'revmove-nullmove'          => '<span class="error">Origina kaj cela paĝoj samas. Bonvolu malantaŭeniri kaj tajpi paĝon malsaman de "$1".</span>',
+'moverevlogentry'              => 'movis {{PLURAL:$3|unu revizion|$3 reviziojn}} de $1 al $2',
+'revisionmove'                 => 'Movi reviziojn de "$1"',
+'revmove-explain'              => 'La jenaj revizioj estos movita de $1 al la donita cela paĝo. Se la celo ne ekzistas, ĝi estos kreita. Alie, ĉi tiuj revizioj estos kunigita en la paĝa historio.',
+'revmove-legend'               => 'Aldoni celan paĝon kaj resumon',
+'revisionmoveselectedversions' => 'Movi elektitajn reviziojn',
+'revmove-reasonfield'          => 'Kialo:',
+'revmove-titlefield'           => 'Cela paĝo:',
+'revmove-badparam-title'       => 'Malbonaj parametroj',
+'revmove-badparam'             => '<span class="error">Via peto enhavas kontraŭleĝajn aŭ nesufiĉajn parametrojn. Bonvolu premi "malantaŭen" kaj provi denove.</span>',
+'revmove-norevisions-title'    => 'Nevalida cela revizio',
+'revmove-norevisions'          => '<span class="error">Vi ne specifis unu aŭ pliajn reviziojn por apliki ĉi tiun funkcion aŭ la specifita revizio ne ekzistas.</span>',
+'revmove-nullmove-title'       => 'Fuŝa titolo',
+'revmove-nullmove'             => '<span class="error">Origina kaj cela paĝoj samas. Bonvolu malantaŭeniri kaj tajpi paĝon malsaman de "$1".</span>',
 
 # History merging
 'mergehistory'                     => 'Kunfandigi historiojn de paĝoj',
@@ -1322,7 +1326,7 @@ Jen hazarde generita valoro por via uzo: $1',
 'timezoneregion-indian'         => 'Hinda Oceano',
 'timezoneregion-pacific'        => 'Pacifiko',
 'allowemail'                    => 'Rajtigi retmesaĝojn de aliaj uzantoj',
-'prefs-searchoptions'           => 'Serĉi opciojn',
+'prefs-searchoptions'           => 'Serĉaj opcioj',
 'prefs-namespaces'              => 'Nomspacoj',
 'defaultns'                     => 'Alimaniere, traserĉi la jenajn nomspacojn:',
 'default'                       => 'defaŭlte',
@@ -1624,7 +1628,7 @@ Por inkluzivi la dosieron en paĝon, skribu ligilon laŭ la formoj
 'overwrite'                   => 'Anstataŭigo de ekzistanta dosiero ne permesitas.',
 'unknown-error'               => 'Malkonata eraro okazis.',
 'tmp-create-error'            => 'Ne povis krei intertempan dosieron.',
-'tmp-write-error'             => 'Eraro skribanta intertempan dosieron.',
+'tmp-write-error'             => 'Eraro dum skribado de portempa dosiero.',
 'large-file'                  => 'Estas rekomendite, ke dosieroj ne superas grandon de $1 bitokoj; 
 tiu ĉi tiu dosiero pezas $2 bitokojn.',
 'largefileserver'             => 'Ĉi tiu dosiero estas pli granda ol permesas la servilaj preferoj.',
@@ -1681,6 +1685,9 @@ jen la protokolo pri forigado por ĉi tiu dosiero por via oportuneco:",
 'filename-bad-prefix'         => "La nomo de la dosiero kiun vi alŝutas komencas kun '''\"\$1\"''', kiu estas nepriskriba nomo ofte aŭtomate donata de ciferecaj fotiloj. Bonvolu elekti pli priskriban nomon por via bildo.",
 'upload-successful-msg'       => 'Via alŝutdosiero estas disponebla ĉi tie: $1',
 'upload-failure-subj'         => 'Alŝuta problemo',
+'upload-failure-msg'          => 'Estis problemo kun via alŝuto:
+
+$1',
 
 'upload-proto-error'        => 'Malvalida protokolo',
 'upload-proto-error-text'   => 'Fora alŝuto devas URL-on komence de <code>http://</code> aŭ <code>ftp://</code>.',
@@ -2199,7 +2206,8 @@ La lasta redaktinto estis [[User:$3|$3]] ([[User talk:$3|diskuto]]{{int:pipe-sep
 'rollback-success'  => 'Restaris redaktojn de $1; ŝanĝis al lasta versio de $2.',
 
 # Edit tokens
-'sessionfailure' => 'Ŝajnas ke estas problemo kun via ensalutado;
+'sessionfailure-title' => 'Seanco malsukcesis',
+'sessionfailure'       => 'Ŝajnas ke estas problemo kun via ensalutado;
 Ĉi ago estis nuligita por malhelpi fiensalutadon.
 Bonvolu alklalki la reirbutonon kaj reŝarĝi la paĝon el kiu vi venas, kaj provu denove.',
 
@@ -3328,7 +3336,10 @@ Vi povas ankaŭ [[Special:Watchlist/edit|redakti norme]].',
 'filepath'         => 'Vojo al dosiero',
 'filepath-page'    => 'Dosiero:',
 'filepath-submit'  => 'Vojo',
-'filepath-summary' => 'Ĉi tiu speciala paĝo redonas la kompletan padon por dosiero. Bildoj estas montrataj en alta distingivo, aliaj dosieraj tipoj estas rekte startataj per ties asociita programo.',
+'filepath-summary' => 'Ĉi tiu speciala paĝo liveras kompletan vojon al dosiero.
+Bildoj montriĝas en plena distingivo, aliaj dosiertipoj estas malfermataj rekte per ties asociita programo.
+
+Entajpu la dosiernomon sen la prefikso "{{ns:file}}:"',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Serĉu duplikatajn dosierojn',
@@ -3407,20 +3418,5 @@ Enigu la dosiernomon sen la "{{ns:file}}:" prefikso.',
 'htmlform-submit'              => 'Ek!',
 'htmlform-reset'               => 'Malfari ŝanĝojn',
 'htmlform-selectorother-other' => 'Alia',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Aldoni kategorion',
-'ajax-add-category-submit'     => 'Aldoni',
-'ajax-confirm-title'           => 'Konfirmi agon',
-'ajax-confirm-prompt'          => 'Vi povas provizi redaktan resumon suben.
-Klaku butonon "Konservi" por konservi vian redakton.',
-'ajax-confirm-save'            => 'Konservi',
-'ajax-add-category-summary'    => 'Aldoni kategorion "$1"',
-'ajax-remove-category-summary' => 'Forigi kategorion "$1"',
-'ajax-confirm-actionsummary'   => 'Ago por fari:',
-'ajax-error-title'             => 'Eraro',
-'ajax-error-dismiss'           => 'Ek!',
-'ajax-remove-category-error'   => 'Ne eblas forigi ĉi tiun kategorion.
-Ĉi tiel okazas kiam la kategorio estis aldonita al la paĝo per ŝablono.',
 
 );

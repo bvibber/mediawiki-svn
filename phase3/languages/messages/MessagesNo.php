@@ -242,7 +242,7 @@ $messages = array(
 'tog-editsection'             => 'Rediger avsnitt ved hjelp av [rediger]-lenke',
 'tog-editsectiononrightclick' => 'Rediger avsnitt ved å høyreklikke på avsnittsoverskrift (JavaScript)',
 'tog-showtoc'                 => 'Vis innholdsfortegnelse (for sider med mer enn tre seksjoner)',
-'tog-rememberpassword'        => 'Husk passordet',
+'tog-rememberpassword'        => 'Husk meg på denne datamaskinen (i maks $1 {{PLURAL:$1|dag|dager}})',
 'tog-watchcreations'          => 'Overvåk sider jeg oppretter',
 'tog-watchdefault'            => 'Overvåk alle sider jeg redigerer',
 'tog-watchmoves'              => 'Overvåk sider jeg flytter',
@@ -632,7 +632,7 @@ Ikke glem å endre [[Special:Preferences|innstillingene]] dine.',
 'yourname'                   => 'Brukernavn:',
 'yourpassword'               => 'Passord:',
 'yourpasswordagain'          => 'Gjenta passord',
-'remembermypassword'         => 'Husk meg på denne datamaskinen',
+'remembermypassword'         => 'Husk meg på denne datamaskinen (i maks $1 {{PLURAL:$1|dag|dager}})',
 'yourdomainname'             => 'Ditt domene',
 'externaldberror'            => 'Det var en ekstern autentifiseringsfeil, eller du kan ikke oppdatere din eksterne konto.',
 'login'                      => 'Logg inn',
@@ -3415,20 +3415,5 @@ Skriv inn filnavn uten «{{ns:file}}:»-prefikset.',
 'htmlform-submit'              => 'Lagre',
 'htmlform-reset'               => 'Omgjør endringer',
 'htmlform-selectorother-other' => 'Andre',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Legg til kategori',
-'ajax-add-category-submit'     => 'Legg til',
-'ajax-confirm-title'           => 'Bekreft handling',
-'ajax-confirm-prompt'          => 'Du kan oppgi redigeringsforklaring nedenfir.
-Klikk på «Lagre» for å lagre endringen.',
-'ajax-confirm-save'            => 'Lagre',
-'ajax-add-category-summary'    => 'Legg til kategorien «$1»',
-'ajax-remove-category-summary' => 'Fjern kategorien «$1»',
-'ajax-confirm-actionsummary'   => 'Handling:',
-'ajax-error-title'             => 'Feil',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Det var umulig å fjerne kategorien.
-Dette skjer som regel fordi kategorien har blitt lagt til via en mal.',
 
 );

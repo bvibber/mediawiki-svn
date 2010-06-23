@@ -15,6 +15,7 @@
  * @author Nayvik
  * @author Omshivaprakash
  * @author Shushruth
+ * @author The Evil IP address
  * @author לערי ריינהארט
  */
 
@@ -2019,8 +2020,5 @@ $5
 
 # HTML forms
 'htmlform-selectorother-other' => 'ಇತರ',
-
-# Add categories per AJAX
-'ajax-confirm-save' => 'ಉಳಿಸಿ',
 
 );

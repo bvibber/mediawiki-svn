@@ -460,7 +460,7 @@ class WebRequest {
 	 * @return String
 	 */
 	public function getRequestURL() {
-		if( isset( $_SERVER['REQUEST_URI'] ) ) {
+		if( isset( $_SERVER['REQUEST_URI']) && strlen($_SERVER['REQUEST_URI']) ) {
 			$base = $_SERVER['REQUEST_URI'];
 		} elseif( isset( $_SERVER['SCRIPT_NAME'] ) ) {
 			// Probably IIS; doesn't set REQUEST_URI
@@ -735,6 +735,37 @@ class WebRequest {
 		}
 		$ext = substr( $pi, $dotPos );
 		return !in_array( $ext, array( $wgScriptExtension, '.php', '.php5' ) );
+	}
+	
+	/**
+	 * Parse the Accept-Language header sent by the client into an array
+	 * @return array( languageCode => q-value ) sorted by q-value in descending order
+	 */
+	public function getAcceptLang() {
+		// Modified version of code found at http://www.thefutureoftheweb.com/blog/use-accept-language-header
+		if ( !isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
+			return array();
+		}
+		
+		// Break up string into pieces (languages and q factors)
+		$lang_parse = null;
+		preg_match_all( '/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0(\.[0-9]+))?)?/i',
+			$_SERVER['HTTP_ACCEPT_LANGUAGE'], $lang_parse );
+		
+		if ( !count( $lang_parse[1] ) ) {
+			return array();
+		}
+		// Create a list like "en" => 0.8
+		$langs = array_combine( $lang_parse[1], $lang_parse[4] );
+		// Set default q factor to 1
+		foreach ( $langs as $lang => $val ) {
+			if ( $val === '' ) {
+				$langs[$lang] = 1;
+			}
+		}
+		// Sort list
+		arsort( $langs, SORT_NUMERIC );
+		return $langs;
 	}
 }
 

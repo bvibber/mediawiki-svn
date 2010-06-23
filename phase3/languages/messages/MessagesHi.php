@@ -2286,7 +2286,7 @@ $1 पहले ही अवरोधित है।
 'movepage-page-moved'          => '$1 यह पृष्ठ $2 इस नामपर स्थानांतरित कर दिया गया।',
 'movepage-page-unmoved'        => '$1 यह पृष्ठ $2 इस नामपर स्थानांतरित नहीं कर पायें।',
 'movepage-max-pages'           => 'ज्यादासे ज्यादा $1 पृष्ठ स्थानांतरित कर {{PLURAL:$1|दिया गया है|दिये गये हैं}}, अब और पृष्ठ अपनेआप स्थानांतरित नहीं होंगे।',
-'1movedto2'                    => '$1 का नाम बदलकर $2 कर दिया गया है',
+'1movedto2'                    => '[[$1]] का नाम बदलकर [[$2]] कर दिया गया है',
 '1movedto2_redir'              => '[[$1]] यह लेख का नाम बदल कर [[$2]] कर दिया गया हैं (अनुप्रेषित)',
 'move-redirect-suppressed'     => 'पुनर्निर्देशन नहीं किया गया',
 'movelogpage'                  => 'स्थानांतरण सूची',
@@ -3189,20 +3189,5 @@ $1',
 'htmlform-submit'              => 'जमा करें',
 'htmlform-reset'               => 'बदलाव पुरानी स्थिति पर लाएँ',
 'htmlform-selectorother-other' => 'अन्य',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'श्रेणी जोड़ें',
-'ajax-add-category-submit'     => 'जोड़ें',
-'ajax-confirm-title'           => 'क्रिया की पुष्टि करें',
-'ajax-confirm-prompt'          => 'आप नीचे संपादन सारांश दे सकते हैं।
-अपने संपादन को सँजोने के लिए "सँजोएँ" पर चटका लगाएँ।',
-'ajax-confirm-save'            => 'सँजोएँ',
-'ajax-add-category-summary'    => 'श्रेणी "$1" जोड़ें',
-'ajax-remove-category-summary' => 'श्रेणी "$1" हटाएँ',
-'ajax-confirm-actionsummary'   => 'क्या करना है:',
-'ajax-error-title'             => 'त्रुटि',
-'ajax-error-dismiss'           => 'ठीक',
-'ajax-remove-category-error'   => 'यह श्रेणी हटाई नहीं जा सकी।
-यह आमतौर पर तब होता है जब श्रेणी किसी साँचे के जरिए जोड़ी गई हो।',
 
 );

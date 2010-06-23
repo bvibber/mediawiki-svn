@@ -12,6 +12,7 @@
  * @author Dragonòt
  * @author SabineCretella
  * @author Teak
+ * @author The Evil IP address
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>, Jens Frank
  * @author לערי ריינהארט
  */
@@ -54,7 +55,7 @@ dj'artìcoj ancó pa scrit",
 'tog-editsection'             => "Abìlita la modìfica dle session con j'anliure [modìfica]",
 'tog-editsectiononrightclick' => 'Abilité la modìfica dle session ën sgnacand-je ansima<br />  al tìtol col tast drit dël rat (a-i va Javascript)',
 'tog-showtoc'                 => "Buta le tàole dij contnù<br />(për j'artìcoj che l'han pì che 3 session)",
-'tog-rememberpassword'        => "Vis-te la ciav<br />(nen mach për na session<br />- a l'ha da manca dij cookies)",
+'tog-rememberpassword'        => "↓ Vis-te mia ciav ansima a st'ordinator (për al pi $1 {{PLURAL:$1|di|di}})",
 'tog-watchcreations'          => 'Gionta le pàgine che i creo mi a la lista ëd lòn che im ten-o sot euj',
 'tog-watchdefault'            => "Gionta le pàgine che i modìfico mi a la lista dle ròbe ch'i ten-o sot-euj",
 'tog-watchmoves'              => 'Gionta le pàgine che i tramudo a lòn che im ten-o sot euj',
@@ -446,7 +447,7 @@ Che as dësmentia pa ëd cambié ij [[Special:Preferences|"sò gust" an {{SITENA
 'yourname'                   => 'Sò stranòm',
 'yourpassword'               => 'Soa ciav',
 'yourpasswordagain'          => 'Che a bata torna soa ciav',
-'remembermypassword'         => "Vis-te mia ciav për vàire session (për podèj felo a fa da manca che un a l'abia ij ''cookies'' abilità).",
+'remembermypassword'         => "↓ Vis-te mia ciav ansima a st'ordinator-sì (për al pi $1 {{PLURAL:$1|di|di}})",
 'yourdomainname'             => 'Sò domini',
 'externaldberror'            => "Ò che a l'é rivaje n'eror d'autenticassion esterna, ò pura a l'é chiel (chila) che a l'é nen autorisà a agiornesse sò cont estern.",
 'login'                      => 'Rintré ant ël sistema',
@@ -579,7 +580,8 @@ Miraco it l'has già cambià la ciav o it l'has ciamà na neuva ciav a temp.",
 'anonpreviewwarning'               => "''It ses pa intrà. An salvand a sarà memorisà toa adrëssa IP ant la stòria dle modìfiche dë sta pàgina-sì.''",
 'missingsummary'                   => "'''Nòta:''' a l'ha pa butà gnun somari dla modìfica. Se a sgnaca Salva n'àutra vira, soa modìfica a resterà salvà sensa pa ëd somari.",
 'missingcommenttext'               => 'Për piasì che a buta un coment ambelessì sota.',
-'missingcommentheader'             => "'''A l'euj!:''' ës coment-sì a l'é sensa intestassion. Se a sgnaca torna \"Salva sta pàgina\" soa modìfica a sarà salvà sensa gnun-a intestassion.",
+'missingcommentheader'             => "'''Arcòrda:''' A l'ha pa dàit soget/intestassion për sto coment-sì.
+Se a sgnaca torna \"{{int:savearticle}}\", soa modìfica a sarà salvà sensa gnun-a intestassion.",
 'summary-preview'                  => "Preuva dl'oget:",
 'subject-preview'                  => "Preuva d'oget/intestassion:",
 'blockedtitle'                     => "Belavans cost ëstranòm-sì a resta col ëd n'utent che a l'é stàit disabilità a fé 'd modìfiche a j'artìcoj.",
@@ -907,9 +909,12 @@ It peule pa vëddlo.',
 Beiché la [[Special:IPBlockList|lista dj'IP blocà]] për la lista dij blocagi ativ.",
 
 # Revision move
-'moverevlogentry' => "a l'ha tramudà {{PLURAL:$3|narevision|$3 revision}} da $1 a $2",
-'revisionmove'    => 'Tramudé dle revision da «$1»',
-'revmove-explain' => 'Le revision sì-dapress a saran tramudà da $1 a la pàgina final spessificà. Se la pàgina final a esist nen, a sarà creà. Dësnò, coste revision a saran butà ansema a la stòria dla pàgina.',
+'moverevlogentry'              => "a l'ha tramudà {{PLURAL:$3|narevision|$3 revision}} da $1 a $2",
+'revisionmove'                 => 'Tramudé dle revision da «$1»',
+'revmove-explain'              => 'Le revision sì-dapress a saran tramudà da $1 a la pàgina final spessificà. Se la pàgina final a esist nen, a sarà creà. Dësnò, coste revision a saran butà ansema a la stòria dla pàgina.',
+'revmove-legend'               => 'Anserì la pàgina oget e ël resumé',
+'revmove-submit'               => 'Tramudé le revision vers la pàgina selessionà',
+'revisionmoveselectedversions' => 'Tramudé le revision selessionà',
 
 # History merging
 'mergehistory'                     => 'Buté ansema je stòrie',
@@ -1223,21 +1228,21 @@ A peul ëdcò serne ëd lassé che j'àutri a lo contato an soa pàgina d'utent 
 'right-protect'               => 'Cambié ij livej ëd protession e modifiché le pàgine protegiùe',
 'right-editprotected'         => 'Modifiché le pàgine protegiùe (sensa protession a cascada)',
 'right-editinterface'         => "Modifiché l'antërfacia utent",
-'right-editusercssjs'         => "Modifiché ij file CSS e JS d'àutri utent",
-'right-editusercss'           => "Modifiché ij file CSS d'àutri utent",
-'right-edituserjs'            => "Modifiché ij file JS d'àutri utent",
-'right-rollback'              => "Fé rollback an pressa ëd le modìfiche ëd l'ùltim utent che a l'ha modificà na pàgina particolar",
-'right-markbotedits'          => "Marché le modìfiche (dont a l'é fasse rollback) com modìfiche d'un bot",
+'right-editusercssjs'         => "Modifiché j'archivi CSS e JavaScript d'àutri utent",
+'right-editusercss'           => "Modifiché j'archivi CSS d'àutri utent",
+'right-edituserjs'            => "Modifiché j'archivi JavaScript d'àutri utent",
+'right-rollback'              => "Gavé an pressa le modìfiche ëd l'ùltim utent che a l'ha modificà na pàgina particolar",
+'right-markbotedits'          => "Marché le modìfiche tirà andré com modìfiche d'un trigomiro",
 'right-noratelimit'           => "Nen esse tocà dal lìmit d'assion",
-'right-import'                => 'Amporté pàgine da àutre wiki',
-'right-importupload'          => 'Amporté pàgine da un file carià',
+'right-import'                => "Amporté dle pàgine da d'àutre wiki",
+'right-importupload'          => "Amporté dle pàgine da n'archivi carià",
 'right-patrol'                => "Marché le modìfiche dj'àutri com verificà",
 'right-autopatrol'            => 'Avèj na pròpria modìfica automaticament marcà com verificà',
-'right-patrolmarks'           => 'Vardé le marche ëd modìfica dle ùltime verìfiche',
-'right-unwatchedpages'        => 'Vardé na lista dle pàgine pa vardà',
-'right-trackback'             => 'Spedì un trackback',
+'right-patrolmarks'           => "Vëdde le marche ëd verìfica ant j'ùltime modìfiche",
+'right-unwatchedpages'        => 'Vëdde na lista dle pàgine nen cudìe',
+'right-trackback'             => "Gionté dj'anliure anverse",
 'right-mergehistory'          => 'Fonde la stòria dle pàgine',
-'right-userrights'            => 'Modifiché tùit ij drit utent',
+'right-userrights'            => "Modifiché tùit ij drit ëd n'utent",
 'right-userrights-interwiki'  => "Modifiché ij drit utent dj'utent ans àutre wiki",
 'right-siteadmin'             => 'Bloché e dësbloché ël database',
 'right-reset-passwords'       => "Reamposté le ciav d'àutri utent",
@@ -1880,10 +1885,8 @@ L'adrëssa e-mail ch'it l'has butà an [[Special:Preferences|Ij sò gust]] a sar
 'watchnologintext'     => "A l'ha da manca prima ëd tut dë [[Special:UserLogin|rintré ant ël sistema]]
 për podej modifiché soa lista dla ròba dë tnì sot euj.",
 'addedwatch'           => "Sòn a l'é stait giontà a le pàgine che it ten-e sot euj",
-'addedwatchtext'       => " La pàgina  \"<nowiki>\$1</nowiki>\" a l'é staita giontà a tua [[Special:Watchlist|lista dla ròba da tnì sot euj]].
-Le modìfiche che a-i vniran ant costa pàgina-sì e ant soa pàgina ëd discussion a saran listà ambelessì, e la pàgina a së s-ciairerà ën <b>grassèt</b> ant la pàgina ëd j'[[Special:RecentChanges|ùltime modìfiche]] përchè che a resta belfé a ten-la d'euj.
-
-Se a vorèissa mai gavé st'articol-sì da 'nt la lista dij ''Sot Euj'', che a sgnaca \" Chita da tnì sot euj \" ant sla bara dij menù.",
+'addedwatchtext'       => 'La pàgina  "[[:$1]]" a l\'é staita giontà a soa [[Special:Watchlist|lista dla ròba da tnì sot-euj]].
+Le modìfiche che a-i vniran ant costa pàgina-sì e ant soa pàgina ëd discussion a saran listà ambelessì, e la pàgina a së s-ciairërà ën <b>grassèt</b> ant la pàgina ëd j\'[[Special:RecentChanges|ùltime modìfiche]] përchè che a resta belfé a ten-la d\'euj.',
 'removedwatch'         => "Gavà via da 'nt la lista dla ròba da tnì sot euj",
 'removedwatchtext'     => 'La pàgina "[[:$1]]" a l\'è staita gavà via da [[Special:Watchlist|soa lista dla ròba da tnì sot euj]].',
 'watch'                => 'ten sot euj',
@@ -3246,20 +3249,5 @@ Ch'a bata 'l nòm dl'archivi sensa pa bute-ie 'l prefiss \"{{ns:file}}:\".",
 'htmlform-submit'              => 'Spediss',
 'htmlform-reset'               => 'Scansela ij cambiament',
 'htmlform-selectorother-other' => 'Àutr',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Gionta categorìa',
-'ajax-add-category-submit'     => 'Gionta',
-'ajax-confirm-title'           => 'Conferma assion',
-'ajax-confirm-prompt'          => 'It peule dé sì sota un resumé dla modìfica.
-Sgnaca "Salva" për salvé la modìfica.',
-'ajax-confirm-save'            => 'Salva',
-'ajax-add-category-summary'    => 'Gionta la categorìa "$1"',
-'ajax-remove-category-summary' => 'Gava la categorìa "$1"',
-'ajax-confirm-actionsummary'   => 'Assion da fé:',
-'ajax-error-title'             => 'Eror',
-'ajax-error-dismiss'           => 'Va bin',
-'ajax-remove-category-error'   => "A l'era pa possìbil gavé sta categorìa-sì.
-Sòn-sì a càpita normalment quand la categorìa a l'é stàita giontà a la pàgina ant në stamp.",
 
 );

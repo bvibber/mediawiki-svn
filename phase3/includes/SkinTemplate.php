@@ -433,6 +433,7 @@ class SkinTemplate extends Skin {
 						'href' => $nt->getFullURL(),
 						'text' => ( $wgContLang->getLanguageName( $nt->getInterwiki() ) != '' ?
 									$wgContLang->getLanguageName( $nt->getInterwiki() ) : $l ),
+						'title' => $nt->getText(),
 						'class' => $class
 					);
 				}
@@ -703,7 +704,7 @@ class SkinTemplate extends Skin {
 				$istalkclass = $istalk?' istalk':'';
 				$content_actions['edit'] = array(
 					'class' => ( ( ( $action == 'edit' or $action == 'submit' ) and $section != 'new' ) ? 'selected' : '' ) . $istalkclass,
-					'text' => ( $this->mTitle->exists() || ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) )
+					'text' => ( $this->mTitle->exists() || ( $this->mTitle->getNamespace() == NS_MEDIAWIKI && !wfEmptyMsg( $this->mTitle->getText() ) ) )
 						? wfMsg( 'edit' )
 						: wfMsg( 'create' ),
 					'href' => $this->mTitle->getLocalUrl( $this->editUrlOptions() )

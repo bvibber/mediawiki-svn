@@ -79,6 +79,7 @@
  * @author Slomox
  * @author Sp5uhe
  * @author Srhat
+ * @author Tedjuh10
  * @author Tgr
  * @author The Evil IP address
  * @author UV
@@ -1085,6 +1086,7 @@ Parameters:
 'suppressionlogtext' => 'Description text of the suppression log. Shown at top of [[Special:log/suppress]].',
 
 # Revision move
+'revisionmove'        => 'Title for a special page. $1 is the title of a page.',
 'revmove-reasonfield' => '{{Identical|Reason}}',
 
 # History merging
@@ -1163,7 +1165,7 @@ Possible alternatives to the word 'content' are 'subject matter' or 'wiki subjec
 'searchprofile-project'          => 'An option in the [[Special:Search]] page.',
 'searchprofile-images'           => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
 'searchprofile-everything'       => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
-'searchprofile-advanced'         => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.
+'searchprofile-advanced'         => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:Search] page.
 
 {{Identical|Advanced}}',
 'searchprofile-articles-tooltip' => '{{Identical|Search in $1}}',
@@ -1355,7 +1357,8 @@ Used in [[Special:Preferences]], tab "Recent changes".',
 
 {{Identical|Reason}}',
 'userrights-no-interwiki'        => 'Error message when editing user groups',
-'userrights-nodatabase'          => 'Error message when editing user groups',
+'userrights-nodatabase'          => 'Error message when editing user groups. "Local" means databases/wikis of the same farm/cluster; that is, meta, enwiki, dewiki, commons, etc are all local databases of the Wikimedia Foundation.
+See http://meta.wikimedia.org/w/index.php?title=Special%3ALog&type=rights for a usage of local databases: username@barwiki',
 'userrights-nologin'             => "Error displayed on [[Special:UserRights]] when you aren't logged in. If you are logged in, but don't have the correct permission, you see {{msg|userrights-notallowed|pl=yes}}.",
 'userrights-notallowed'          => "Error displayed on [[Special:UserRights]] when you don't have the permission.",
 'userrights-changeable-col'      => 'Used in [[Special:UserRights]].',
@@ -2140,7 +2143,9 @@ $1 is a list of internet protocols.',
 'newuserlogpage'              => 'Part of the "Newuserlog" extension. It is both the title of [[Special:Log/newusers]] and the link you can see in the recent changes.',
 'newuserlogpagetext'          => 'Part of the "Newuserlog" extension. It is the description you can see on [[Special:Log/newusers]].',
 'newuserlog-create-entry'     => 'Part of the "Newuserlog" extension. It is the summary in the [[Special:RecentChanges|recent changes]] and on [[Special:Log/newusers]].',
-'newuserlog-create2-entry'    => 'Part of the "Newuserlog" extension. It is the summary in the [[Special:RecentChanges|recent changes]] and on [[Special:Log/newusers]] when creating an account for someone else ("$1"). The name of the user doing this task appears before this message.',
+'newuserlog-create2-entry'    => 'Part of the "Newuserlog" extension. It is the summary in the [[Special:RecentChanges|recent changes]] and on [[Special:Log/newusers]] when creating an account for someone else ("$1" - a link). The name of the user doing this task appears before this message.
+
+* $2 - the user id of the user $1',
 'newuserlog-autocreate-entry' => 'This message is used in the [[:mw:Extension:Newuserlog|new user log]] to mark an account that was created by MediaWiki as part of a [[:mw:Extension:CentralAuth|CentralAuth]] global account.',
 
 # Special:ListGroupRights
@@ -2447,6 +2452,7 @@ The link appears in a list of similar ones separated by {{msg-mw|pipe-separator}
 'sp-contributions-username'            => 'This message appears whenever someone requests [[Special:Contributions]].
 
 {{Identical/IP address or username}}',
+'sp-contributions-toponly'             => '"top revision" means the "latest revision"',
 'sp-contributions-submit'              => '{{Identical|Search}}',
 
 # What links here
@@ -2927,7 +2933,10 @@ The message appears after the name of the patroller.',
 'show-big-image'       => 'Displayed under an image at the image description page, when it is displayed smaller there than it was uploaded.',
 'show-big-image-thumb' => 'File info displayed on file description page.',
 'file-info-gif-looped' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/Gif .gif file] on its file description page. Looped means repeating in the context of an animated gif. It is a sequence of images, each displayed after the other, and the first one displayed after the last, in a never ending loop. For example of message in use see [[:File:Mouse10.gif]].',
-'file-info-gif-frames' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/Gif .gif file] on its file description page.
+'file-info-gif-frames' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/Gif .gif file] on its file description page.',
+'file-info-png-looped' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/APNG .apng file] on its file description page. Looped means repeating indefinetly in the context of an animated png. It is a sequence of images, each displayed after the other, and the first one displayed after the last, in a never ending loop.',
+'file-info-png-repeat' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/APNG .apng file] on its file description page. The sequence of images is repeating a limited amount of time. It is a sequence of images, each displayed after the other, and the first one displayed after the last, for $1 times.',
+'file-info-png-frames' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/APNG .apng file] on its file description page.
 
 The variable $1 is the number of individual frames in an animated gif file.
 
@@ -3608,6 +3617,15 @@ Used on [[Special:Tags]]. Verb. Used as display text on a link to create/edit a 
 
 * <code>$1</code> is the number of changes marked with the tag',
 
+# Special:ComparePages
+'comparepages'     => 'The title of [[Special:ComparePages]]',
+'compare-selector' => 'Header of the form on [[Special:ComparePages]]',
+'compare-page1'    => 'Label for the field of the 1st page in the comparison for [[Special:ComparePages]]',
+'compare-page2'    => 'Label for the field of the 2nd page in the comparison for [[Special:ComparePages]]',
+'compare-rev1'     => 'Label for the field of the 1st revision in the comparison for [[Special:ComparePages]]',
+'compare-rev2'     => 'Label for the field of the 2nd revision in the comparison for [[Special:ComparePages]]',
+'compare-submit'   => 'Submit button on [[Special:ComparePages]]',
+
 # Database error messages
 'dberr-header'    => 'This message does not allow any wiki nor html markup.',
 'dberr-problems'  => 'This message does not allow any wiki nor html markup.',
@@ -3624,12 +3642,5 @@ Used on [[Special:Tags]]. Verb. Used as display text on a link to create/edit a 
 * stub threshold (appearance tab)
 
 {{Identical|Other}}',
-
-# Add categories per AJAX
-'ajax-add-category-submit'   => '{{Identical|Add}}',
-'ajax-confirm-save'          => '{{Identical|Save}}',
-'ajax-confirm-actionsummary' => 'This message is followed by one of the following messages; {{msg-mw|ajax-add-category-summary}}, {{msg-mw|ajax-remove-category-summary}}.',
-'ajax-error-title'           => '{{Identical|Error}}',
-'ajax-error-dismiss'         => '{{Identical|OK}}',
 
 );

@@ -127,7 +127,7 @@ $messages = array(
 'tog-editsection'             => 'Galluogi golygu adran drwy gyswllt [golygu] wrth ymyl pennawd yr adran',
 'tog-editsectiononrightclick' => 'Galluogi golygu adran drwy dde-glicio ar bennawd yr adran (JavaScript)',
 'tog-showtoc'                 => 'Dangos y daflen gynnwys (ar gyfer tudalennau sydd â mwy na 3 pennawd)',
-'tog-rememberpassword'        => "Y cyfrifiadur hwn i gofio'r cyfrinair",
+'tog-rememberpassword'        => "Y cyfrifiadur hwn i gofio'r cyfrinair (am hyd at $1 {{PLURAL:$1||diwrnod|ddiwrnod|diwrnod|diwrnod|diwrnod}})",
 'tog-watchcreations'          => 'Ychwanegu tudalennau at fy rhestr gwylio wrth i mi eu creu',
 'tog-watchdefault'            => 'Ychwanegu tudalen at fy rhestr gwylio wrth i mi ei golygu',
 'tog-watchmoves'              => 'Ychwanegu tudalen at fy rhestr gwylio wrth i mi ei symud.',
@@ -520,7 +520,7 @@ Cofiwch osod y [[Special:Preferences|dewisiadau]] sydd fwyaf hwylus i chi ar {{S
 'yourname'                   => 'Eich enw defnyddiwr:',
 'yourpassword'               => 'Eich cyfrinair:',
 'yourpasswordagain'          => 'Ail-deipiwch y cyfrinair:',
-'remembermypassword'         => "Y cyfrifiadur hwn i gofio'r cyfrinair",
+'remembermypassword'         => "Y cyfrifiadur hwn i gofio'r cyfrinair (am hyd at $1 {{PLURAL:$1||diwrnod|ddiwrnod|diwrnod|diwrnod|diwrnod}})",
 'yourdomainname'             => 'Eich parth',
 'externaldberror'            => "Naill ai: cafwyd gwall dilysu allanol ar databas neu: ar y llaw arall efallai nad oes hawl gennych chi i ddiwygio'ch cyfrif allanol.",
 'login'                      => 'Mewngofnodi',
@@ -645,7 +645,7 @@ Gall fod eich bod wedi llwyddo newid eich cyfrinair eisoes neu eich bod wedi gof
 'missingsummary'                   => "'''Sylwer:''' Nid ydych wedi gosod nodyn yn y blwch 'Crynodeb'.
 Os y pwyswch eto ar 'Cadw'r dudalen' caiff y golygiad ei gadw heb nodyn.",
 'missingcommenttext'               => 'Rhowch eich sylwadau isod.',
-'missingcommentheader'             => "'''Nodyn:''' Nid ydych wedi cynnig unrhywbeth yn y blwch 'Pwnc/Pennawd:'. Os y cliciwch 'Cadw'r dudalen' eto fe gedwir y golygiad heb bennawd.",
+'missingcommentheader'             => "'''Nodyn:''' Nid ydych wedi cynnig unrhywbeth yn y blwch 'Pwnc/Pennawd:'. Os y cliciwch \"{{int:savearticle}}\" eto fe gedwir y golygiad heb bennawd.",
 'summary-preview'                  => "Rhagolwg o'r crynodeb:",
 'subject-preview'                  => 'Rhagolwg pwnc/pennawd:',
 'blockedtitle'                     => "Mae'r defnyddiwr hwn wedi cael ei flocio",
@@ -929,6 +929,7 @@ $1",
 'logdelete-failure'           => "'''Ni ellid gosod cyfyngiadau ar y gallu i weld y cofnod lòg:'''
 $1",
 'revdel-restore'              => 'Newid gwelededd',
+'revdel-restore-deleted'      => 'diwygiadau dilëedig',
 'revdel-restore-visible'      => 'diwygiadau gweladwy',
 'pagehist'                    => 'Hanes y dudalen',
 'deletedhist'                 => 'Hanes dilëedig',
@@ -966,8 +967,11 @@ Edrychwch ar y logiau er mwyn cael rhagor o wybodaeth.",
 Gallwch weld rhestr y gwaharddiadau a'r blociau gweithredol ar y [[Special:IPBlockList|rhestr blociau IP]].",
 
 # Revision move
+'moverevlogentry'        => 'wedi symud {{PLURAL:$3||un diwygiad|$3 ddiwygiad|$3 diwygiad|$3 diwygiad|$3 diwygiad}} o $1 i $2',
+'revisionmove'           => 'Symud diwygiadau oddi wrth "$1"',
 'revmove-reasonfield'    => 'Rheswm:',
 'revmove-badparam-title' => 'Paramedrau gwallus',
+'revmove-nullmove-title' => 'Teitl gwallus',
 
 # History merging
 'mergehistory'                     => 'Cyfuno hanesion y tudalennau',
@@ -2182,6 +2186,7 @@ $1',
 Mae'r cofnod diweddaraf yn y lòg blocio i'w weld isod:",
 'sp-contributions-search'              => 'Chwilio am gyfraniadau',
 'sp-contributions-username'            => 'Cyfeiriad IP neu enw defnyddiwr:',
+'sp-contributions-toponly'             => 'Dangos y diwygiadau diweddaraf yn unig',
 'sp-contributions-submit'              => 'Chwilier',
 
 # What links here
@@ -2691,6 +2696,8 @@ Mae'n bosib y bydd eich cyfrifiadur yn cael ei danseilio wrth ddefnyddio'r ffeil
 'show-big-image-thumb' => '<small>Maint y rhagolwg: $1 × $2 picsel</small>',
 'file-info-gif-looped' => 'dolennog',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|ffrâm}}',
+'file-info-png-repeat' => 'yn cael eu dangos {{PLURAL:$1||unwaith|ddwywaith|deirgwaith|$1 gwaith|$1 gwaith}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|ffrâm}}',
 
 # Special:NewFiles
 'newimages'             => 'Oriel y ffeiliau newydd',
@@ -3088,6 +3095,7 @@ Cadarnhewch eich bod chi wir am ail-greu'r erthygl.",
 'table_pager_first'        => 'Tudalen gyntaf',
 'table_pager_last'         => 'Tudalen olaf',
 'table_pager_limit'        => 'Dangos $1 eitem y dudalen',
+'table_pager_limit_label'  => 'Eitemau ar bob tudalen:',
 'table_pager_limit_submit' => 'Eler',
 'table_pager_empty'        => 'Dim canlyniadau',
 
@@ -3224,6 +3232,15 @@ Rhowch enw\'r ffeil heb y rhagddodiad "{{ns:file}}:".',
 'tags-edit'               => 'golygu',
 'tags-hitcount'           => '$1 {{PLURAL:$1|newid}}',
 
+# Special:ComparePages
+'comparepages'     => 'Cymharu tudalennau',
+'compare-selector' => "Cymharu diwygiadau gwahanol o'r dudalen",
+'compare-page1'    => 'Tudalen 1',
+'compare-page2'    => 'Tudalen 2',
+'compare-rev1'     => 'Diwygiad 1',
+'compare-rev2'     => 'Diwygiad 2',
+'compare-submit'   => 'Cymharer',
+
 # Database error messages
 'dberr-header'      => 'Mae problem gan y wici hwn',
 'dberr-problems'    => "Mae'n ddrwg gennym! Mae'r wefan hon yn dioddef anawsterau technegol.",
@@ -3244,20 +3261,5 @@ Rhowch enw\'r ffeil heb y rhagddodiad "{{ns:file}}:".',
 'htmlform-submit'              => 'Gosoder',
 'htmlform-reset'               => 'Datod y newidiadau',
 'htmlform-selectorother-other' => 'Arall',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Ychwanegu categori',
-'ajax-add-category-submit'     => 'Ychwanegu',
-'ajax-confirm-title'           => "Cadarnhau'r weithred",
-'ajax-confirm-prompt'          => 'Gallwch ysgrifennu crynodeb o\'r golygiad isod.
-Pwyswch ar "Cadw" i roi\'ch golygiad ar gadw.',
-'ajax-confirm-save'            => 'Cadw',
-'ajax-add-category-summary'    => 'Ychwanegu\'r categori "$1"',
-'ajax-remove-category-summary' => 'Tynnu\'r categori "$1"',
-'ajax-confirm-actionsummary'   => 'Dewiswch weithred:',
-'ajax-error-title'             => 'Gwall',
-'ajax-error-dismiss'           => 'Iawn',
-'ajax-remove-category-error'   => "Nid oedd yn bosibl tynnu'r categori hwn i ffwrdd.
-Mae hyn fel arfer yn golygu bod y categori wedi ei gynnwys yn y dudalen oddi mewn i nodyn.",
 
 );
