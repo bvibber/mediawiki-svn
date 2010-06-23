@@ -2,7 +2,21 @@
  * Core MediaWiki JavaScript Library
  */
 
-window.mw = {
+// Make calling .indexOf() on an array work on older browsers
+if ( typeof Array.prototype.indexOf === 'undefined' ) { 
+	Array.prototype.indexOf = function( needle ) {
+		for ( var i = 0; i < this.length; i++ ) {
+			if ( this[i] === needle ) {
+				return i;
+			}
+		}
+		return -1;
+	};
+}
+
+// Extend window.mw rather than overriding it. This is a temporary fix designed to prevent
+// stuff from blowing up when usability.js (setting mw.usability) is run before this file.
+window.mw = $.extend( typeof window.mw === 'undefined' ? {} : window.mw, {
 	
 	/* Public Members */
 	
@@ -67,7 +81,7 @@ window.mw = {
 		this.buildQueryString = function( parameters ) {
 			if ( typeof parameters === 'object' ) {
 				var parts = [];
-				for ( p in parameters ) {
+				for ( var p in parameters ) {
 					parts[parts.length] = that.urlencode( p ) + '=' + that.urlencode( parameters[p] );
 				}
 				return parts.join( '&' );
@@ -93,7 +107,7 @@ window.mw = {
 		 */
 		this.set = function( keys, value ) {
 			if ( typeof keys === 'object' ) {
-				for ( key in keys ) {
+				for ( var key in keys ) {
 					values[key] = keys[key];
 				}
 			} else if ( typeof keys === 'string' && typeof value !== 'undefined' ) {
@@ -106,7 +120,7 @@ window.mw = {
 		this.get = function( keys, fallback ) {
 			if ( typeof keys === 'object' ) {
 				var result = {};
-				for ( k in keys ) {
+				for ( var k = 0; k < keys.length; k++ ) {
 					if ( typeof values[keys[k]] !== 'undefined' ) {
 						result[keys[k]] = values[keys[k]];
 					}
@@ -134,7 +148,7 @@ window.mw = {
 		
 		this.set = function( keys, value ) {
 			if ( typeof keys === 'object' ) {
-				for ( key in keys ) {
+				for ( var key in keys ) {
 					messages[key] = keys[key];
 				}
 			} else if ( typeof keys === 'string' && typeof value !== 'undefined' ) {
@@ -181,13 +195,6 @@ window.mw = {
 		// True after document ready occurs
 		var ready = false;
 		
-		/* Event Bindings */
-		
-		$( document ).ready( function() {
-			ready = true;
-			that.work();
-		} );
-		
 		/* Private Functions */
 		
 		/**
@@ -196,7 +203,7 @@ window.mw = {
 		function pending( requirements ) {
 			// Collect the names of pending modules
 			var list = [];
-			for ( r in requirements ) {
+			for ( var r = 0; r < requirements.length; r++ ) {
 				if (
 					typeof registry[requirements[r]] === 'undefined' ||
 					typeof registry[requirements[r]].state === 'undefined' ||
@@ -235,8 +242,8 @@ window.mw = {
 		 * Processes the queue, loading and executing when things when ready.
 		 */
 		this.work = function() {
-			for ( q in queue ) {
-				for ( p in queue[q].pending ) {
+			for ( var q = 0; q < queue.length; q++ ) {
+				for ( var p = 0; p < queue[q].pending.length; p++ ) {
 					var requirement = queue[q].pending[p];
 					// If it's not in the registry yet, we're certainly not ready to execute
 					if (
@@ -259,13 +266,15 @@ window.mw = {
 								break;
 							case 'ready':
 								// This doesn't belong in the queue item's pending list
-								queue[q].pending.splice( p );
+								queue[q].pending.splice( p, 1 );
+								// Correct the array index
+								p--;
 								break;
 						}
 					}
 				}
 				// If all pending requirements have been satisfied, we're ready to execute the callback
-				if ( typeof queue[q].pending.length == 0 ) {
+				if ( queue[q].pending.length == 0 ) {
 					queue[q].callback();
 					// Clean up the queue
 					queue.splice( q, 1 );
@@ -381,5 +390,12 @@ window.mw = {
 				that.work();
 			}
 		};
+		
+		/* Event Bindings */
+		
+		$( document ).ready( function() {
+			ready = true;
+			that.work();
+		} );
 	} )()
-};
+} );

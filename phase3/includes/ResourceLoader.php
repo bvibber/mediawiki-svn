@@ -113,8 +113,6 @@ class ResourceLoader {
 		// Because these are keyed by module, in the case that more than one module asked for the same script only the
 		// first will end up being registered - the client loader can't handle multiple modules per implementation yet,
 		// so this is fine, but causes silent failure it strange abusive cases
-		$this->scripts = array_unique( $this->scripts );
-		$this->styles = array_unique( $this->styles );
 		$this->loadedModules = array_unique( $this->loadedModules );
 		$retval = '';
 		
