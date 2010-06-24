@@ -328,8 +328,10 @@ class WikilogCommentsPage
 			);
 		} else {
 			$loginTitle = SpecialPage::getTitleFor( 'Userlogin' );
-			$loginLink = $this->mSkin->makeKnownLinkObj( $loginTitle,
-				wfMsgHtml( 'loginreqlink' ), 'returnto=' . $wgTitle->getPrefixedUrl() );
+			$loginLink = $this->mSkin->link( $loginTitle,
+				wfMsgHtml( 'loginreqlink' ), array(),
+				array( 'returnto' => $wgTitle->getPrefixedUrl() )
+			);
 			$message = wfMsg( 'wikilog-posting-anonymously', $loginLink );
 			$fields[] = array(
 				Xml::label( wfMsg( 'wikilog-form-name' ), 'wl-name' ),

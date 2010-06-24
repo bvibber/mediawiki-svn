@@ -490,12 +490,14 @@ class WikilogArchivesPager
 			case 'wlw_title':
 				$page = $this->mCurrentItem->mParentTitle;
 				$text = $this->mCurrentItem->mParentName;
-				return $this->getSkin()->makeKnownLinkObj( $page, $text );
+				return $this->getSkin()->link( $page, $text, array(), array(),
+					array( 'known', 'noclasses' ) );
 
 			case 'wlp_title':
 				$page = $this->mCurrentItem->mTitle;
 				$text = $this->mCurrentItem->mName;
-				$s = $this->getSkin()->makeKnownLinkObj( $page, $text );
+				$s = $this->getSkin()->link( $page, $text, array(), array(),
+					array( 'known', 'noclasses' ) );
 				if ( !$this->mCurrentRow->wlp_publish ) {
 					$draft = wfMsg( 'wikilog-draft-title-mark' );
 					$s = Xml::wrapClass( "$s $draft", 'wl-draft-inline' );
@@ -505,7 +507,8 @@ class WikilogArchivesPager
 			case 'wlp_num_comments':
 				$page = $this->mCurrentItem->mTitle->getTalkPage();
 				$text = $this->mCurrentItem->getNumComments();
-				return $this->getSkin()->makeKnownLinkObj( $page, $text );
+				return $this->getSkin()->link( $page, $text, array(), array(),
+					array( 'known', 'noclasses' ) );
 
 			case '_wl_actions':
 				if ( $this->mCurrentItem->mTitle->quickUserCan( 'edit' ) ) {
@@ -570,7 +573,7 @@ class WikilogArchivesPager
 	private function authorLink( $name ) {
 		$skin = $this->getSkin();
 		$title = Title::makeTitle( NS_USER, $name );
-		return $skin->makeLinkObj( $title, $name );
+		return $skin->link( $title, $name );
 	}
 
 	/**

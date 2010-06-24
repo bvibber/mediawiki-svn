@@ -46,6 +46,7 @@ class WikilogMainPage
 	public    $mWikilogIcon       = false;
 	public    $mWikilogLogo       = false;
 	public    $mWikilogAuthors    = false;
+	public    $mWikilogUpdated    = false;
 	public    $mWikilogPubdate    = false;
 
 	/**
@@ -172,7 +173,7 @@ class WikilogMainPage
 			);
 		}
 		$s .= Xml::tags( 'div', array( 'class' => 'wl-title' ),
-			$skin->makeKnownLinkObj( $this->mTitle ) );
+			$skin->link( $this->mTitle, null, array(), array(), array( 'known', 'noclasses' ) ) );
 
 		$st =& $this->mWikilogSubtitle;
 		if ( is_array( $st ) ) {
@@ -221,14 +222,11 @@ class WikilogMainPage
 		global $wgWikilogFeedClasses;
 
 		// Uses messages 'wikilog-post-count-published', 'wikilog-post-count-drafts', 'wikilog-post-count-all'
-		$s = $skin->makeKnownLinkObj(
-			$this->mTitle,
-			wfMsgExt(
-				"wikilog-post-count-{$type}",
-				array( 'parsemag' ),
-				$num
-			),
-			"view=archives&show={$type}"
+		$s = $skin->link( $this->mTitle,
+			wfMsgExt( "wikilog-post-count-{$type}", array( 'parsemag' ), $num ),
+			array(),
+			array( 'view' => "archives", 'show' => $type ),
+			array( 'knwon', 'noclasses' )
 		);
 		if ( !empty( $wgWikilogFeedClasses ) ) {
 			$f = array();
@@ -237,7 +235,7 @@ class WikilogMainPage
 					wfMsg( "feed-{$format}" ),
 					array( 'class' => "feedlink", 'type' => "application/{$format}+xml" ),
 					array( 'view' => "archives", 'show' => $type, 'feed' => $format ),
-					'known'
+					array( 'known', 'noclasses' )
 				);
 			}
 			$s .= ' (' . implode( ', ', $f ) . ')';
