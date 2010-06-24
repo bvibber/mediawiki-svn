@@ -576,11 +576,12 @@ Yaykusqa kaspaykiqa, kay yuyampayta hark'ayta atinki allinkachinaykikunapi \"Lla
 /** Romanian (Română)
  * @author AdiJapan
  * @author Cin
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector-editwarning-warning' => 'Părăsind această pagină poate duce la pierderea oricăror modificări pe care le-aţi făcut.
-Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Editare” a preferințelor dvs.',
+	'vector-editwarning-warning' => 'Părăsind această pagină, există riscul pierderii modificărilor efectuate.
+Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dv.',
 	'vector-editwarning-preference' => 'Avertizează-mă când părăsesc o pagină fără a salva modificările',
 );
 

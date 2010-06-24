@@ -345,6 +345,29 @@ O primeiro argumento, ou argumento "predefinição", é obrigatório.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> não existe.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'datatransclusion-desc' => 'Importação e apresentação de registros de dados vindos de fontes externas',
+	'datatransclusion-missing-source' => 'Não foi especificada a fonte dos dados.
+O segundo argumento, ou argumento "fonte", é obrigatório.',
+	'datatransclusion-unknown-source' => 'A fonte de dados especificada é incorreta.
+$1 não é conhecido.',
+	'datatransclusion-missing-key' => 'Não foi especificada uma chave.
+$2 são chaves válidas na fonte de dados $1.',
+	'datatransclusion-bad-argument-by' => 'Foi especificado um campo chave incorreto.
+"$2" não é um campo chave na fonte de dados "$1".
+{{PLURAL:$4|O único campo chave válido é|Os campos chave válidos são}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Não foi especificado um campo chave.
+O segundo argumento, ou argumento "chave", é obrigatório.',
+	'datatransclusion-missing-argument-template' => 'Não foi especificada uma predefinição.
+O primeiro argumento, ou argumento "predefinição", é obrigatório.',
+	'datatransclusion-record-not-found' => 'Não foi encontrado nenhum registro $2 = $3 na fonte de dados $1.',
+	'datatransclusion-bad-template-name' => 'Nome da predefinição incorreto: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  não existe.',
+);
+
 /** Russian (Русский)
  * @author G0rn
  * @author Александр Сигачёв

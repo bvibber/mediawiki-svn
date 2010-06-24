@@ -535,12 +535,13 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'commentspammer-save-blocked' => 'O seu endereço IP é um suspeito "spammer" de comentários, consequentemente a página não foi guardada.
 [[Special:UserLogin|Autentique-se ou crie uma conta]] para evitar isto.',
-	'commentspammer-desc' => 'Rejeita edições de suspeitos "spammers" de comentários numa lista negra de DNS',
+	'commentspammer-desc' => 'Rejeita edições dos suspeitos de spamming que constem de uma lista negra de DNS',
 	'commentspammer-log-msg' => 'edição de [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => 'Último "spam" $1 {{PLURAL:$1|dia|dias}} atrás, nível de ameaça é $2, e código de ofensa é $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Ver detalhes], ou [[Special:Blockip/$4|bloquear]].',
 	'cspammerlogpagetext' => 'Registo de edições que foram permitidas ou negadas baseado no facto de a fonte ser um "spammer" de comentários conhecido.',

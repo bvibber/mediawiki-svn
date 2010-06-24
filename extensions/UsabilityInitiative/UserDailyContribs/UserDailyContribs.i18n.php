@@ -136,6 +136,13 @@ $messages['es'] = array(
 	'userdailycontribs-desc' => 'Contribuciones diarias de los usuarios para la extensión de seguimiento mediante clics',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'userdailycontribs-desc' => 'Lankidearen eguneko ekarpenak klikatze jarraipen luzapenerako',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  */

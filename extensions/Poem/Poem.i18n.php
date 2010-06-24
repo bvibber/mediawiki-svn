@@ -435,10 +435,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'poem-desc' => 'Adiciona a marca <code>&lt;poem&gt;</code> para formatação de poemas',
+	'poem-desc' => 'Adiciona o elemento <code>&lt;poem&gt;</code> para formatação de poemas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

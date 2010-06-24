@@ -889,13 +889,14 @@ $messages['pt-br'] = array(
  * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'fundraiserportal-plain-button' => 'Sprijiniți Wikipedia!',
-	'fundraiserportal-ruby-button' => 'Donează Acum',
-	'fundraiserportal-rubytext-button' => 'Donează Acum',
-	'fundraiserportal-sapphire-button' => 'Donează Acum',
-	'fundraiserportal-tourmaline-button' => 'Donează Acum',
+	'fundraiserportal-ruby-button' => 'Donați acum',
+	'fundraiserportal-rubytext-button' => 'Donați acum',
+	'fundraiserportal-sapphire-button' => 'Donați acum',
+	'fundraiserportal-tourmaline-button' => 'Donați acum',
 );
 
 /** Tarandíne (Tarandíne)

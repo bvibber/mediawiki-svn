@@ -492,6 +492,13 @@ $messages['mn'] = array(
 	'vector-simplesearch-search' => 'Хайх',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'vector-simplesearch-containing' => '.......हे असलेले',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Diagramma Della Verita
@@ -620,7 +627,7 @@ $messages['qu'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'vector-simplesearch-search' => 'Caută',
+	'vector-simplesearch-search' => 'Căutare',
 	'vector-simplesearch-containing' => 'conținând...',
 );
 

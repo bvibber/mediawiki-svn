@@ -929,6 +929,14 @@ $messages['ru'] = array(
 	'security-restricttogroup' => 'Доступ к содержимому ограничен членами «$1»',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'security-type-category' => 'катеґорія',
+	'security-type-namespace' => 'простор назв',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

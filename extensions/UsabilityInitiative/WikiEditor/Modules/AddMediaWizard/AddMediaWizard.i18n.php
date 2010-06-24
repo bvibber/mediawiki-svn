@@ -113,6 +113,13 @@ $messages['es'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Habilitar gadget "Agregar asistente de medios"',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Multimedia magoa gehitu" tresna gaitu',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */

@@ -1214,7 +1214,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'imstatus-desc' => 'Adiciona marcas (tags) para mostrar vários estados de ligação de IM (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus-desc' => 'Adiciona elementos (tags) para mostrar vários estados de ligação de IM (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
 	'imstatus_syntax' => 'Sintaxe',
 	'imstatus_default' => 'Padrão',
 	'imstatus_example' => 'Exemplo',

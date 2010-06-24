@@ -1916,7 +1916,9 @@ Gure itxura berriari buruz pentsatzen duzuna nahi genuke jakin.  Eskertuko genuk
 	'optin-survey-answer-changes-nav' => 'Erraztu Wikipedian nabigatzea.',
 	'optin-survey-answer-changes-edittools' => 'Handitu eta indartu editatzeko tresnak.',
 	'optin-survey-answer-changes-upload' => 'Hobetu edukiak eta multimedia fitxategiak inportatzeko bideak.',
+	'optin-survey-answer-changes-richtext' => 'Testu editore aberastuen antzeko edizio-tresnak garatu.',
 	'optin-survey-answer-changes-lookfeel' => 'Gunearen "itxura eta forma" eguneratu.',
+	'optin-survey-answer-changes-predictability' => 'Jardueraren iragarpentasuna hobetu.',
 	'optin-survey-answer-changes-custom' => 'Lankide pertsonalizazio handiagoa ahalbidetu',
 	'optin-survey-answer-changes-other' => 'Bestelakoak:',
 	'optin-improvements2' => '== Zer da hobetu dena? ==
@@ -2671,6 +2673,7 @@ Zo by wjace wo iniciatiwje wužiwajomnosce zhonił, wopytaj prošu našu
  * @author Dani
  * @author Glanthor Reviol
  * @author Hunyadym
+ * @author Tgr
  */
 $messages['hu'] = array(
 	'optin' => 'Kipróbálom az új felületet',
@@ -2750,9 +2753,25 @@ Hivatkozások vagy táblázatok készítésénél a megfelelő gombra kattintva 
 ;És sok más újdonság
 Számos egyéb javítást eszközöltünk, mint például a fejlettebb navigáció, legördülő lapfülek, okosabb kereső…
 
+== Mi fejlődött? ==
+
+[[File:UsabilityToolbar.png|left|link=|Képernyőkép a fejlettebb szerkesztő-eszköztárról]]
+[[File:UsabilityDialogs.png|left|link=|Képernyőkép az új tartalomgeneráló párbeszédablakokról]]
+
+;Fejlettebb szerkesztő-eszköztár
+Az új szerkesztő-eszköztár könnyebbé teszi a szócikkek szerkesztését.
+Új és továbbfejlesztett ikonok teszik egyértelműbbé az egyes eszközök funkcióját.
+A kinyitható eszköztárak csökkentik a zsúfoltságot, de a kevésbé gyakran használt eszközök is csak egy kattintásnyira maradnak.
+
+;Párbeszédablakok
+Hivatkozások vagy táblázatok készítésénél a megfelelő gombra kattintva ezentúl egy párbeszédablak nyílik meg, ami segít a létrehozásukban egy űrlap kitöltése után.
+
+;És sok más újdonság
+Számos egyéb javítást eszközöltünk, mint például a fejlettebb navigáció, legördülő lapfülek, okosabb kereső…
+
 == Hogyan vehetek részt benne? ==
 
-Ha szeretnél többet megmegtudni a Usability Initiative-ről, látogasd meg a [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative honlapunkat].
+Ha szeretnél többet megtudni a Usability Initiative-ről, látogasd meg a [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative honlapunkat].
 <div style="clear:both"></div>',
 );
 
@@ -5551,6 +5570,7 @@ $messages['su'] = array(
 	'optin-title-justoptedout' => 'Ngahaturkeun nuhun tos nyobian Béta',
 	'optin-needlogin' => 'Anjeun kudu [$1 asup log] pikeun nyobaan Béta.',
 	'optin-deny-long' => 'Balik ka kaca saméméhna',
+	'optin-submit-out' => 'Tinggalkeun Béta',
 );
 
 /** Swedish (Svenska)
@@ -6334,6 +6354,7 @@ $messages['yi'] = array(
 	'optin-survey-yes' => 'יא',
 	'optin-survey-no' => 'ניין',
 	'optin-survey-answer-whyoptout-hard' => "ס'איז געווען צו שווער צו ניצן.",
+	'optin-survey-answer-whyoptout-didntwork' => 'עס האט נישט פֿונקציאָנירן געהעריג..',
 	'optin-survey-answer-whyoptout-other' => 'אַנדער טעם:',
 	'optin-survey-question-browser' => 'וועלכער בלעטערער ניצט איר?',
 	'optin-survey-answer-browser-other' => 'אנדער בלעטערער:',

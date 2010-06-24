@@ -589,6 +589,7 @@ $messages['eu'] = array(
 	'ct-total-header' => 'Klikak guztira',
 	'ct-start-date' => 'Hasiera Data (UUUUHHEE)',
 	'ct-end-date' => 'Amaiera Data (UUUUHHEE)',
+	'ct-increment-by' => 'Data-puntu bakoitzak irudikatzen duen egun kopurua',
 	'ct-change-graph' => 'Grafikoa aldatu',
 	'ct-beginner' => 'Hasiberria',
 	'ct-intermediate' => 'Maila ertainekoa',
@@ -1528,6 +1529,7 @@ $messages['pt-br'] = array(
  * @author Cin
  * @author Firilacroco
  * @author Lionbeat
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -1535,7 +1537,7 @@ $messages['ro'] = array(
 	'clicktracking-desc' => 'Monitorizarea clicurilor în scopul monitorizării evenimentelor care nu produc reîncărcarea paginii',
 	'ct-title' => 'Clicuri utilizator cumulate',
 	'ct-event-name' => 'Numele evenimentului',
-	'ct-expert-header' => 'Clicuri "expert"',
+	'ct-expert-header' => 'Clicuri „expert”',
 	'ct-intermediate-header' => 'Clicuri „intermediar”',
 	'ct-beginner-header' => 'Clicuri „începător”',
 	'ct-total-header' => 'Total clicuri',
@@ -1549,10 +1551,10 @@ $messages['ro'] = array(
 	'ct-date-range' => 'Interval de timp',
 	'ct-editing' => 'Editare curentă:',
 	'ct-anon-users' => 'Utilizatori anonimi',
-	'ct-user-contribs' => 'Total contribuţii utilizator',
+	'ct-user-contribs' => 'Totalul contribuțiilor utilizatorului',
 	'ct-user-span' => 'Contribuțiile utilizatorului în intervalul de timp',
 	'ct-and' => 'și',
-	'ct-update-table' => 'Actualizează tabelul',
+	'ct-update-table' => 'Actualizare tabel',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1761,6 +1763,18 @@ $messages['sr-el'] = array(
 	'ct-user-contribs' => 'Ukupno korisničkih doprinosa',
 	'ct-and' => 'i',
 	'ct-update-table' => 'Ažuriraj tabelu',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'ct-total-header' => 'Jumlah klik',
+	'ct-start-date' => 'Titimangsa Ngamimitian (YYYYMMDD)',
+	'ct-end-date' => 'Titimangsa Anggeusan (YYYYMMDD)',
+	'ct-change-graph' => 'Robah grafik',
+	'ct-expert' => 'Mahér',
+	'ct-anon-users' => 'Pamaké anonim',
 );
 
 /** Swedish (Svenska)

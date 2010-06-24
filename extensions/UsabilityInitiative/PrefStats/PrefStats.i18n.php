@@ -734,6 +734,15 @@ $messages['eu'] = array(
 	'prefstats-title' => 'Hobespen estatistikak',
 	'prefstats-list-intro' => 'Une honetan, ondorengo hobespenak jarraitzen ari dira.
 Klikatu batean bere estatistikak ikusteko.',
+	'prefstats-noprefs' => 'Ez dago hobespenik jarraipen zerrendan.
+Konfiguratu $wgPrefStatsTrackPrefs hobespenak jarraitzeko.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|lankide batek gaitu du|lankideek gaitu dute}} hobespen hau hobespen-estatistikak martxan jarri zirenetik
+** $2 {{PLURAL:$2|lankide batek gaituta du|lankideek gaituta dute}} oraindik
+** $3 {{PLURAL:$3|lankide batek ezgaitu du|lankideek ezgaitu dute}} ordutik',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|lankide batek gaitu du|lankideek gaitu dute}} hobespen hau hobespen-estatistikak martxan jarri zirenetik
+** $2 {{PLURAL:$2|lankide batek gaituta du|lankideek gaituta dute}} oraindik
+** $3 {{PLURAL:$3|lankide batek ezgaitu du|lankideek ezgaitu dute}} ordutik
+* Guztira, $4 {{PLURAL:$4|lankide batek du martxan|lankideek dute martxan}} hobespen hau',
 	'prefstats-xaxis' => 'Iraupena (ordutan)',
 	'prefstats-factors' => 'Ikusi: $1',
 	'prefstats-factor-hour' => 'ordu',

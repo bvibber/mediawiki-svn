@@ -974,7 +974,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'chemicalsources' => 'Fontes de química',
-	'chemicalsource-desc' => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
+	'chemicalsource-desc' => 'Adiciona o elemento <nowiki><chemform></nowiki> para fórmulas químicas',
 	'chemicalsources-desc' => '[[Special:ChemicalSources|Página especial]] para fontes químicas',
 	'chemFunctions_ListPage' => 'Fontes de química',
 	'chemFunctions_DataList' => 'Abaixo está uma lista de links para sites que oferecem informação sobre a substância química que procura.<br /><br />

@@ -244,7 +244,7 @@ $messages['pms'] = array(
  * @author Indech
  */
 $messages['pt'] = array(
-	'conditionalshowsection-desc' => 'A adicionar a marcação cshow para mostrar ou ocultar condicionalmente uma secção de texto wiki',
+	'conditionalshowsection-desc' => 'Adiciona o elemento cshow para mostrar ou ocultar condicionalmente uma secção de texto wiki',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

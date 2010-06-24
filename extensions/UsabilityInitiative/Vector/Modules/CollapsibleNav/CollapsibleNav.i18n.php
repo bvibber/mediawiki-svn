@@ -457,6 +457,13 @@ $messages['sl'] = array(
 	'vector-collapsiblenav-more' => 'Več jezikov',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'vector-collapsiblenav-more' => 'Basa lianna',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Boivie
@@ -510,7 +517,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
-	'vector-collapsiblenav-preference' => 'אַקטיווירן צונויפֿלייגבאַרן מעניו לינקס',
+	'vector-collapsiblenav-preference' => 'אַקטיווירן צונויפֿלייגן איינהייטן אינעם נאַוויגאַציע מעניו אין דעם וועקטאר געשטעל',
 	'vector-collapsiblenav-more' => 'נאך שפראַכן',
 );
 

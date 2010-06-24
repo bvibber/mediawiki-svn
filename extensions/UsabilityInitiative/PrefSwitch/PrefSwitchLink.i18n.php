@@ -151,6 +151,7 @@ $messages['cy'] = array(
 $messages['da'] = array(
 	'prefswitch-link-on' => 'Tag mig tilbage',
 	'prefswitch-link-off' => 'Nye funktioner',
+	'tooltip-pt-prefswitch-link-off' => 'Prøv nye funktioner',
 );
 
 /** German (Deutsch)
@@ -643,6 +644,14 @@ $messages['sl'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Onemogoči nove funkcije',
 	'prefswitch-link-off' => 'Nove funkcije',
 	'tooltip-pt-prefswitch-link-off' => 'Preizkusite nove funkcije',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'prefswitch-link-anon' => 'Fitur anyar',
+	'tooltip-pt-prefswitch-link-on' => 'Tumpurkeun fitur anyar',
 );
 
 /** Swedish (Svenska)

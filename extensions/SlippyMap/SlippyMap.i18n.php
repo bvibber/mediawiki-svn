@@ -979,7 +979,7 @@ $messages['pl'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'slippymap_desc' => 'Adiciona uma marca <tt>&lt;slippymap&gt;</tt> que permite a incorporação de mapas estáticos & dinâmicos. Suporta vários serviços de cartografia incluindo [http://openstreetmap.org OpenStreetMap] e NASA Worldwind',
+	'slippymap_desc' => 'Adiciona um elemento <tt>&lt;slippymap&gt;</tt> que permite a incorporação de mapas estáticos & dinâmicos. Suporta vários serviços de cartografia incluindo o [http://openstreetmap.org OpenStreetMap] e o NASA Worldwind',
 	'slippymap_error' => '$1 erro: $2',
 	'slippymap_errors' => '$1 erros:',
 	'slippymap_error_tag_content_given' => 'O elemento <tt>&lt;$1&gt;</tt> só aceita atributos (&lt;$1 [...]/&gt;); não aceita texto de conteúdo (&lt;$1&gt; ... &lt;/$1&gt;)',
@@ -1079,6 +1079,14 @@ $messages['ru'] = array(
 	'slippymap_button_code' => 'Получить викикод',
 	'slippymap_resetview' => 'Сбросить просмотр',
 	'slippymap_clicktoactivate' => 'Нажмите, чтобы активировать карту',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'slippymap_error' => '$1 хыба: $2',
+	'slippymap_errors' => '$1 хыбы:',
 );
 
 /** Slovak (Slovenčina)

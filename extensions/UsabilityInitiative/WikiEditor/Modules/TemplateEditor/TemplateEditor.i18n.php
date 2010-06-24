@@ -271,6 +271,7 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'wikieditor-template-editor-preference' => 'Forman oinarritutako wiki txantiloien edizioa gaitu',
 	'wikieditor-template-editor-dialog-title' => 'Txantiloia aldatu',
 	'wikieditor-template-editor-dialog-submit' => 'Eguneratu',
 	'wikieditor-template-editor-dialog-cancel' => 'Utzi',
@@ -488,6 +489,14 @@ $messages['ml'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'റദ്ദാക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor-template-editor-dialog-title' => 'साच्याचे संपादन करा',
+	'wikieditor-template-editor-dialog-submit' => 'अद्ययावत करा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
@@ -619,9 +628,9 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'wikieditor-template-editor-preference' => 'Activează modificarea formatelor wiki prin formulare',
-	'wikieditor-template-editor-dialog-title' => 'Editează formatul',
+	'wikieditor-template-editor-dialog-title' => 'Modificare format',
 	'wikieditor-template-editor-dialog-submit' => 'Actualizare',
-	'wikieditor-template-editor-dialog-cancel' => 'Renunţă',
+	'wikieditor-template-editor-dialog-cancel' => 'Revocare',
 );
 
 /** Tarandíne (Tarandíne)
@@ -696,6 +705,14 @@ $messages['sr-el'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Izmeni šablon',
 	'wikieditor-template-editor-dialog-submit' => 'Ažuriraj',
 	'wikieditor-template-editor-dialog-cancel' => 'Poništi',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Édit citakan',
+	'wikieditor-template-editor-dialog-cancel' => 'Bolay',
 );
 
 /** Swedish (Svenska)

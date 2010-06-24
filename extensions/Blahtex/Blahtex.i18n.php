@@ -2622,7 +2622,7 @@ Preuva a dovré ël comand "$3{...}".',
  */
 $messages['pt'] = array(
 	'math_noblahtex' => 'Não é possível executar blahtex, que deveria estar em $1',
-	'blahtext-desc' => 'Resultado MathML para marcas &lt;math&gt;',
+	'blahtext-desc' => 'Resultado MathML para elementos &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Posicionamento ambígua de "$1" (experimente usar chavetas adicionais "{ ... }" para desfazer a ambiguidade)',
 	'math_CannotChangeDirectory' => 'Não foi possível mudar o directório de trabalho',
 	'math_CannotCreateTexFile' => 'Não foi possível criar ficheiro tex',

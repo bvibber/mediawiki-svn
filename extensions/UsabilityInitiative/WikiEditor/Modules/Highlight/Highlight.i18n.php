@@ -152,6 +152,13 @@ $messages['et'] = array(
 	'wikieditor-highlight-preference' => 'Tõsta süntaks redigeerimise ajal esile',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-highlight-preference' => 'Editatzen ari zarenean sintaxia azpimarratzea gaitu',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -375,7 +382,7 @@ $messages['qu'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'wikieditor-highlight-preference' => 'Activează evidențierea sintaxei la editare',
+	'wikieditor-highlight-preference' => 'Activează evidențierea sintaxei la modificare',
 );
 
 /** Tarandíne (Tarandíne)

@@ -171,6 +171,14 @@ $messages['cs'] = array(
 	'abcdownload' => 'Stáhnout:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'abc-desc' => "Yn ychwanegu'r tag <code>&lt;abc&gt;</code> er mwyn fformatio cerddoriaeth ABC",
+	'abcdownload' => 'Lawrlwytho:',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */

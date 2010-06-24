@@ -1465,6 +1465,7 @@ $messages['rm'] = array(
 /** Romanian (Română)
  * @author Cin
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  * @author לערי ריינהארט
  */
@@ -1477,7 +1478,7 @@ $messages['ro'] = array(
 	'sitematrix-total' => "'''Număr total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',
-	'sitematrix-fishbowl' => 'editare restricţionată',
+	'sitematrix-fishbowl' => 'modificare restricționată',
 );
 
 /** Tarandíne (Tarandíne)

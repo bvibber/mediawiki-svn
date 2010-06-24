@@ -247,6 +247,7 @@ $messages['et'] = array(
  */
 $messages['eu'] = array(
 	'wikieditor' => 'Wikitestu edizio-interfaze aurreratua',
+	'wikieditor-desc' => 'Wikitestua editatzeko interfazea eta ezaugarri berriak ematen ditu',
 	'wikieditor-wikitext-tab' => 'Wikitestua',
 	'wikieditor-loading' => 'Kargatzen',
 );
@@ -458,6 +459,14 @@ $messages['ml'] = array(
 	'wikieditor-loading' => 'ശേഖരിക്കുന്നു',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor' => 'विकिमजकूर संपादनाची विकसित सुविधा',
+	'wikieditor-wikitext-tab' => 'विकिमजकूर',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
@@ -655,6 +664,13 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'wikieditor-wikitext-tab' => 'Vikitekst',
 	'wikieditor-loading' => 'Učitavanje',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-loading' => 'Ngamuat',
 );
 
 /** Swedish (Svenska)

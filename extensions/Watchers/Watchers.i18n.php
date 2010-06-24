@@ -1107,11 +1107,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'watchers' => '監視者',
+	'watchers-desc' => '顯示[[Special:Watchers|邊個用戶係監視列表裡面有頁面]]',
 	'watchers_link_title' => '誰在監視此頁？',
 	'watchers_error_article' => "'''錯誤：'''頁面不存在。",
 	'watchers_header' => '監視"[[:$1]]"的{{PLURAL:$2|用戶|用戶}}',

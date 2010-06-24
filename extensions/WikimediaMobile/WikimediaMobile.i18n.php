@@ -28,6 +28,20 @@ $messages['be-tarask'] = array(
 	'wikimediamobile-desc' => 'Сэрвісныя функцыі MediaWiki для праекту Wikimedia-mobile ( http://github.com/hcatlin/wikimedia-mobile )',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'wikimediamobile-desc' => "MediaWiki en deus arc'hweladurioù evit ar raktres Wikimedia-mobile herberc'hiet war http://github.com/hcatlin/wikimedia-mobile",
+);
+
+/** Bosnian (Bosanski)
+ * @author Palapa
+ */
+$messages['bs'] = array(
+	'wikimediamobile-desc' => 'MediaWiki podržava funkcije za projekat Wikimedia-mobile koji se nalazi na http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Chechen (Нохчийн)
  * @author Sasan700
  */

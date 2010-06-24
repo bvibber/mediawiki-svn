@@ -45,6 +45,7 @@ $messages['qqq'] = array(
 	'pf-admin-menu-default' => '{{Identical|Default}}',
 	'pf-header-documentation' => '{{Identical|Documentation}}',
 	'pf-header-page_title' => '{{Identical|Title}}',
+	'pf-header-approve' => '{{Identical|Approve}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -52,6 +53,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'pf-admin-menu-default' => 'Standaard',
+	'pf-header-approve' => 'Keur goed',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

@@ -181,10 +181,12 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Sarrus
  */
 $messages['da'] = array(
 	'wikieditor-preview-tab' => 'Forhåndsvisning',
+	'wikieditor-preview-changes-tab' => 'Ændringer',
 );
 
 /** German (Deutsch)
@@ -522,6 +524,13 @@ $messages['ml'] = array(
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor-preview-preference' => 'सोबतच बाजूस दिसणारी झलक शक्य करा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
@@ -737,6 +746,14 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
 	'wikieditor-preview-loading' => 'Učitavanje...',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-preview-tab' => 'Pramidang',
+	'wikieditor-preview-loading' => 'Ngamuat…',
 );
 
 /** Swedish (Svenska)

@@ -398,10 +398,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'fixedimage-desc' => 'Adiciona a marca <code>&lt;fundraising&gt;</code> como uma imagem',
+	'fixedimage-desc' => 'Adiciona o elemento <code>&lt;fundraising&gt;</code> como uma imagem',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -596,6 +596,8 @@ $messages['ca'] = array(
 	'ogg-dismiss' => 'Tanca',
 	'ogg-download' => 'Descarrega el fitxer',
 	'ogg-desc-link' => 'Informació del fitxer',
+	'ogg-oggThumb-version' => "L'OggHandler necessita l'oggThumb versió $1 o posterior.",
+	'ogg-oggThumb-failed' => "L'oggThumb no ha pogut crear una miniatura.",
 );
 
 /** Czech (Česky)
@@ -2636,6 +2638,7 @@ $messages['qu'] = array(
  * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -2655,14 +2658,14 @@ $messages['ro'] = array(
 	'ogg-no-player' => 'Îmi pare rău, sistemul tău nu pare să aibă vreun program de redare suportat.
 Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarcă un program de redare</a>.',
 	'ogg-player-videoElement' => 'Navigator cu suport nativ',
-	'ogg-player-oggPlugin' => 'Modul navigator',
-	'ogg-player-thumbnail' => 'Doar capturi',
+	'ogg-player-oggPlugin' => 'Plugin-ul navigatorului',
+	'ogg-player-thumbnail' => 'Doar imagine statică',
 	'ogg-player-soundthumb' => 'Niciun program de redare',
 	'ogg-player-selected' => '(selectat)',
 	'ogg-use-player' => 'Folosește programul de redare:',
 	'ogg-more' => 'Mai mult…',
 	'ogg-dismiss' => 'Închide',
-	'ogg-download' => 'Descarcă fișierul',
+	'ogg-download' => 'Descărcare fișier',
 	'ogg-desc-link' => 'Despre acest fișier',
 );
 

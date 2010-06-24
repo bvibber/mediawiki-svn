@@ -362,7 +362,8 @@ Part of a list of actions, use lowercase if applicable.
 Part of a list of actions, use lowercase if applicable.
 {{Identical|Delete}}',
 	'wikilog-approve-lc' => 'As in "to approve a comment".
-Part of a list of actions, use lowercase if applicable.',
+Part of a list of actions, use lowercase if applicable.
+{{Identical|Approve}}',
 	'wikilog-reject-lc' => 'As in "to reject a comment".
 Part of a list of actions, use lowercase if applicable.',
 	'wikilog-page-lc' => 'The word "page" used as noun, as in "the comment page".
@@ -465,7 +466,7 @@ $messages['af'] = array(
 	'wikilog-edit-lc' => 'wysig',
 	'wikilog-reply-lc' => 'antwoord',
 	'wikilog-delete-lc' => 'skrap',
-	'wikilog-approve-lc' => 'goedkeur',
+	'wikilog-approve-lc' => 'keur goed',
 	'wikilog-reject-lc' => 'verwerp',
 	'wikilog-page-lc' => 'bladsy',
 	'wikilog-history-lc' => 'geskiedenis',
@@ -1300,11 +1301,16 @@ Ne vo gwelet an evezhiadenn nemet ur wech ma vo bet gwiriet gant ur merour.",
  * @author Palapa
  */
 $messages['bs'] = array(
+	'wikilog-auto' => 'Automatski Wikilog',
 	'wikilog-help' => '{{ns:Help}}:Wikizapisnik',
 	'right-wl-postcomment' => 'Slanje komentara na članke wikizapisnika',
 	'wikilog-specialwikilog-title' => 'Wikizapisnici',
+	'wikilog-specialwikilog' => 'Wikizapisnik',
+	'wikilog-log-pagename' => 'Zapisnik Wikilog akcija',
 	'wikilog-log-pagetext' => 'Ispod je spisak akcija wikizapisnika.',
 	'wikilog-log-cmt-approve' => 'odobreni komentar "[[$1]]"',
+	'wikilog-log-cmt-reject' => 'odbačen komentar "[[$1]]"',
+	'wikilog-log-cmt-rejdel' => 'Odbačen komentar wiki zapisnika od [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikizapisnik',
 	'wikilog-tab-title' => 'Akcije wikizapisnika',
 	'wikilog-information' => 'Informacije o wikizapisniku',
@@ -1340,8 +1346,21 @@ $messages['bs'] = array(
 	'wikilog-comment-history' => 'Vidi historiju komentara',
 	'wikilog-comment-approve' => 'Odobri ovaj komentar (neodgodna radnja)',
 	'wikilog-comment-reject' => 'Odbaci ovaj komentar (neodgodna radnja)',
+	'wikilog-post-comment' => 'Postavi novi komentar',
+	'wikilog-post-reply' => 'Postavi novi odgovor',
+	'wikilog-form-legend' => 'Traži wikilog oglase',
+	'wikilog-form-wikilog' => 'Wikizapisnik:',
+	'wikilog-form-category' => 'Kategorija:',
+	'wikilog-form-name' => 'Ime:',
+	'wikilog-form-author' => 'Autor:',
+	'wikilog-form-tag' => 'Oznaka indeksiranja:',
+	'wikilog-form-date' => 'Datum:',
 	'wikilog-form-status' => 'Stanje:',
+	'wikilog-form-preview' => 'Pregled:',
 	'wikilog-form-comment' => 'Komentar:',
+	'wikilog-show-all' => 'Svi oglasi',
+	'wikilog-show-published' => 'Objavljeno',
+	'wikilog-show-drafts' => 'Koncepti',
 	'wikilog-submit' => 'Pošalji',
 	'wikilog-preview' => 'Pregled',
 	'wikilog-edit-lc' => 'uredi',
@@ -4283,6 +4302,7 @@ Om artikelen te publiceren en andere wikilogmogelijkheden in te schakelen, moet 
 	'wikilog-summary-categories' => 'Gecategoriseerd onder $2',
 	'wikilog-summary-more' => '[[$3|→ meer lezen...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|overleg]])',
+	'wikilog-edit-hint' => 'Wikilogpagina $1 bewerken',
 	'wikilog-edit-fieldset-legend' => 'Wikilog-instellingen:',
 	'wikilog-edit-signpub' => 'Dit artikel ondertekenen en publiceren',
 	'wikilog-edit-signpub-tooltip' => 'Zorgt ervoor dat dit artikel wordt ondertekend en gepubliceerd in de wikilog.

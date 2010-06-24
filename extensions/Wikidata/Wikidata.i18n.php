@@ -6540,6 +6540,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Annayram
  * @author Aushulz
  * @author Darth Kule
  * @author HalphaZ
@@ -6547,9 +6548,15 @@ $messages['is'] = array(
  * @author Nemo bis
  */
 $messages['it'] = array(
+	'wikidata-desc' => 'Aggiunge database wiki-like per diversi tipi di contenuto',
+	'wikidata-handler-namespace-move-error' => "Le pagine negli spazi dei nomi gestiti dall'estensione Wikidata non possono essere spostate.",
+	'languages' => 'Wikidata: manager della lingua',
+	'langman-desc' => 'Aggiungere e modificare le impostazioni della lingua con [[Special: Lingue]]',
+	'langman_title' => 'Manager della lingua',
 	'langman_not_allowed' => 'Non si dispone dei permessi necessari per modificare le impostazioni della lingua.',
 	'langman_header' => 'Inserisci il codice della lingua e il nome della lingua (in inglese) qui di seguito:',
 	'langman_req_fields' => 'Sono richiesti il nome della lingua e il codice ISO 639-3!',
+	'langman_adding' => 'Aggiungere la lingua $1 con la chiave $2',
 	'langman_langname' => 'Nome della lingua:',
 	'langman_iso639-3' => 'Codice ISO 639-3:',
 	'langman_iso639-2' => 'Codice ISO 639-2:',
@@ -6559,11 +6566,15 @@ $messages['it'] = array(
 	'importlangnames' => 'Wikidata: Importa i nomi delle lingue',
 	'importlangnames_title' => 'Importa i nomi delle lingue',
 	'importlangnames_not_allowed' => 'Non hai i permessi per importare i nomi delle lingue.',
+	'importlangnames_added' => 'nomi delle lingue $1 aggiunti',
 	'importlangnames_not_found' => '<strong>Nessuna lingua trovata corrispondente a "$1"!</strong>',
+	'datasearch' => 'WIKIDATA: ricerca dati',
 	'datasearch_language' => 'Lingua:',
 	'datasearch_found_word' => 'Parola trovata',
 	'datasearch_meaning' => 'Significato',
+	'datasearch_ext_identifier' => 'Identificatore esterno',
 	'datasearch_search_text' => 'Cerca testo:',
+	'datasearch_match_ext_ids' => 'Identificatori esterni di corrispondenza <i>$1</i>',
 	'importtsv' => 'Wikidata: Importa TSV',
 	'ow_importtsv_title1' => 'Importa TSV',
 	'ow_importtsv_title2' => 'Importa definizioni e traduzioni',

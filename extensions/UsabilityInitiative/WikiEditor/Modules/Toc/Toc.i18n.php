@@ -436,6 +436,15 @@ $messages['ml'] = array(
 	'wikieditor-toc-hide' => 'ഉള്ളടക്കം മറയ്ക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor-toc-show' => 'अनुक्रमणिका दाखवा
+यात काय आहे ते दाखवा',
+	'wikieditor-toc-hide' => 'अनुक्रमणिका लपवा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
@@ -541,11 +550,12 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Cin
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'wikieditor-toc-preference' => 'Activează cuprins navigabil',
-	'wikieditor-toc-show' => 'Arată conţinutul',
-	'wikieditor-toc-hide' => 'Ascunde conţinutul',
+	'wikieditor-toc-show' => 'Arată',
+	'wikieditor-toc-hide' => 'Ascunde',
 );
 
 /** Tarandíne (Tarandíne)

@@ -320,10 +320,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'gnuplot-desc' => 'Adiciona a marca <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
+	'gnuplot-desc' => 'Adiciona o elemento <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

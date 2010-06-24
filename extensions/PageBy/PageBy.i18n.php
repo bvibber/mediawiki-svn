@@ -530,10 +530,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'pageby-desc' => 'Mostra contribuidores dentro de uma página wiki usando a marca <code><nowiki><pageby></nowiki></code>',
+	'pageby-desc' => 'Mostra os contribuidores de uma página wiki usando o elemento <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Página criada por $1, $2',
 	'pageby-last' => '<a href="$3">Modificado</a> pela última vez por $1, $2',
 	'pageby-contributors' => 'Contribuidores:',

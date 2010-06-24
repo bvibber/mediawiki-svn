@@ -57,6 +57,13 @@ $messages['cs'] = array(
 	'addmediawizard-desc' => 'Průvodce vložením médií, vyvinutý ve spolupráci nadace Wikimedia se společností Kaltura',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'addmediawizard-desc' => 'Ychwanegu dewin cyfryngau, a ddatblygwyd mewn partneriaeth gan Kaltura a Wikimedia Foundation',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
