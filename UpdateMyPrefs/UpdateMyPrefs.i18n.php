@@ -119,6 +119,13 @@ $messages['cy'] = array(
 	'updatemyprefs-label-message' => "Newid fy newisiadau'n syth bin i gyfateb â gosodiadau ac offer rhagosodedig newydd",
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'prefs-updates' => 'Opdateringer',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefs-updates' => 'Aktualisierungen',
@@ -177,6 +184,7 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'prefs-updates' => 'Eguneratzeak',
+	'updatemyprefs-desc' => 'Eskuragarri dauden lankide interfazearen eguneraketa periodikoak jaso nahi dituzten lankideentzako hobespena',
 	'updatemyprefs-label-message' => 'Automatikoki eguneratu nire hobespenak lehenetsitako ezaugarri eta tresnekin, behin martxan daudenean',
 );
 
@@ -515,6 +523,13 @@ $messages['vi'] = array(
 	'prefs-updates' => 'Các cập nhật',
 	'updatemyprefs-desc' => 'Tùy chỉnh cho phép các thành viên lựa chọn họ có muốn nhận cập nhật giao diện định kỳ nếu có hay không',
 	'updatemyprefs-label-message' => 'Tự động cập nhật các tùy chọn của tôi với những thiết lập và công cụ mặc định mới khi chúng ra mắt',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'prefs-updates' => 'אַקטואַליזירונגען',
 );
 
 /** Cantonese (粵語)

@@ -220,6 +220,15 @@ $messages['ce'] = array(
 	'wikieditor-publish-button-cancel' => 'Цаоьшу',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-publish-dialog-minor' => 'دەستکاریی بچووک',
+	'wikieditor-publish-dialog-watch' => 'چاودێڕیی ئەم پەڕە بکە',
+	'wikieditor-publish-dialog-publish' => 'بڵاوی بکەوە',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -755,6 +764,19 @@ $messages['ml'] = array(
 	'wikieditor-publish-dialog-goback' => 'പഴയ താളിലേയ്ക്ക് മടങ്ങുക',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor-publish-preference' => 'पायरी-पायरीने प्रकाशन शक्य करा
+टप्प्या-टप्प्याने प्रकाशन शक्य करा',
+	'wikieditor-publish-button-publish' => 'प्रकाशित करा
+दाखवा',
+	'wikieditor-publish-dialog-summary' => 'संपादनाचा सारांश:(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
+	'wikieditor-publish-dialog-goback' => '↓ परत फिरा
+↓ मागे जा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
@@ -947,16 +969,17 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Cin
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'wikieditor-publish-preference' => 'Activează publicarea pas cu pas',
-	'wikieditor-publish-button-publish' => 'Publică',
+	'wikieditor-publish-button-publish' => 'Salvează pagina',
 	'wikieditor-publish-button-cancel' => 'Renunţă',
 	'wikieditor-publish-dialog-title' => 'Publică pe {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieți pe scurt modificările făcute):',
 	'wikieditor-publish-dialog-minor' => 'Modificare minoră',
 	'wikieditor-publish-dialog-watch' => 'Urmărește această pagină',
-	'wikieditor-publish-dialog-publish' => 'Publică',
+	'wikieditor-publish-dialog-publish' => 'Salvează pagina',
 	'wikieditor-publish-dialog-goback' => 'Înapoi',
 );
 
@@ -1076,6 +1099,15 @@ $messages['sr-el'] = array(
 	'wikieditor-publish-dialog-minor' => 'Mala izmena',
 	'wikieditor-publish-dialog-publish' => 'Objavi',
 	'wikieditor-publish-dialog-goback' => 'Vrati se',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-publish-button-cancel' => 'Bolay',
+	'wikieditor-publish-dialog-watch' => 'Awaskeun ieu kaca',
+	'wikieditor-publish-dialog-goback' => 'Balik deui',
 );
 
 /** Swedish (Svenska)

@@ -674,6 +674,13 @@ $messages['sl'] = array(
 	'prefs-labs' => 'Funkcije laboratorija',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'prefs-beta' => 'Fitur béta',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Fluff
@@ -776,6 +783,8 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'usabilityinitiative' => 'ניצלעכקייט איניציאַטיוו',
+	'prefs-beta' => 'בעטאַ אייגנשאַפֿטן',
+	'prefs-labs' => 'לאַבאראַטאריע מעגלעכקייטן',
 );
 
 /** Cantonese (粵語)

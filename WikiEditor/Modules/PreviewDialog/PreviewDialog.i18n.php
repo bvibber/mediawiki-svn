@@ -455,6 +455,7 @@ $messages['mt'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'wikieditor-previewDialog-preference' => 'Voorvertoningsdialoogvenster inschakelen',
 	'wikieditor-previewDialog-tab' => 'Voorvertoning',
 	'wikieditor-previewDialog-loading' => 'Bezig met laden...',
 );
@@ -523,6 +524,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'wikieditor-previewDialog-preference' => 'Activar o diálogo de antevisão',
 	'wikieditor-previewDialog-tab' => 'Antevisão',
 	'wikieditor-previewDialog-loading' => 'A carregar...',
 );

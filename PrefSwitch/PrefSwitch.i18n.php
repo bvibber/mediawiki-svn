@@ -312,6 +312,7 @@ $messages['ar'] = array(
 	'prefswitch' => 'مُبدّل تفضيلات مبادرة الاستخدامية',
 	'prefswitch-desc' => 'اسمح للمستخدمين بتبديل أجزاء من تفضيلاتهم',
 	'prefswitch-jswarning' => 'تذكر أنه بعد التغير للشكل الجديد، سيتعين عليك نقل [[User:$1/$2.js|$2 الجافا سكريبت]] الخاصة بك إلى [[{{ns:user}}:$1/vector.js]] <!-- أو [[{{ns:user}}:$1/common.js]]--> لاستمرار عملها.',
+	'prefswitch-csswarning' => 'لن تطبق [[User:$1/$2.css|أساليبك ل$2]]. يمكنك إضافة CSS مخصصة لفكتور في [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'نعم',
 	'prefswitch-survey-false' => 'لا',
 	'prefswitch-survey-submit-off' => 'عطّل المزايا الجديدة',
@@ -744,6 +745,21 @@ Per ajudar-nos a millorar-les, si us plau ompliu el formulari opcional d'aquí s
 	'prefswitch-feedbackpage' => "Project:Comentaris sobre l'experiència d'usuari",
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'prefswitch-survey-true' => 'بەڵێ',
+	'prefswitch-survey-false' => 'نا',
+	'prefswitch-survey-question-browser' => 'کام گەڕۆک بەکار دەهێنی؟',
+	'prefswitch-survey-answer-browser-other' => 'گەڕۆکی دیکە:',
+	'prefswitch-survey-question-os' => 'کام سیستەمی کارپێکردن بەکاردێنی؟',
+	'prefswitch-survey-answer-os-other' => 'سیستەمنی بەکارھێنانی دیکە:',
+	'prefswitch-survey-question-res' => 'رەزۆلوشنی شاشەکەت چەندە؟',
+	'prefswitch-title-on' => 'تایبەتمەندییە نوێکان',
+	'prefswitch-title-switched-off' => 'سوپاس',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil
@@ -932,6 +948,8 @@ $messages['da'] = array(
 	'prefswitch-success-feedback' => 'Din feedback er blevet sendt.',
 	'prefswitch-return' => '↓ <hr style="clear:both">
 Tilbage til <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-off' => '===Prøv dem!===
+[$1 Klik her for at aktivere de nye funktioner].',
 );
 
 /** German (Deutsch)
@@ -943,8 +961,8 @@ Tilbage til <span class="plainlinks">[$1 $2]</span>.',
 $messages['de'] = array(
 	'prefswitch' => 'Usability-Einstellungen',
 	'prefswitch-desc' => 'Erlaube Benutzern die Umschaltung zwischen verschiedenen Einstellungs-Sets',
-	'prefswitch-jswarning' => 'Bedenke, das mit der Skin-Änderung dein [[User:$1/$2.js|$2-JavaScript]] nach [[{{ns:user}}:$1/vector.js]] <!-- oder [[{{ns:user}}/common.js]] --> kopiert werden muss, um weiter zu funktionieren.',
-	'prefswitch-csswarning' => 'Deine [[User:$1/$2.css|angepassten $2-Styles]] werden nicht mehr ausgeführt. Du kannst angepasstes CSS für Vector auf [[{{ns:User}}:$1/vector.css]] einfügen.',
+	'prefswitch-jswarning' => 'Bedenke, dass mit der Skin-Änderung dein [[User:$1/$2.js|$2-JavaScript]] nach [[{{ns:user}}:$1/vector.js]] <!-- oder [[{{ns:user}}:$1/common.js]] --> kopiert werden muss, um weiter funktionieren zu können.',
+	'prefswitch-csswarning' => 'Deine [[User:$1/$2.css|angepassten $2-Styles]] werden nicht mehr ausgeführt. Du kannst angepasstes CSS für Vector auf [[{{ns:user}}:$1/vector.css]] einfügen.',
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nein',
 	'prefswitch-survey-submit-off' => 'Neue Features abschalten',
@@ -1093,6 +1111,8 @@ Damit wir besser werden können, füllen Sie bitte die freiwillige Umfrage aus, 
 $messages['diq'] = array(
 	'prefswitch' => 'Terchinê insiyative kar kerdisi a bike',
 	'prefswitch-desc' => 'Destur bide karberan ke tercihi a bike',
+	'prefswitch-jswarning' => 'Xo biyer viri, eka ti deri xo vurneno [[User:$1/$2.js|$2 JavaScript]] tu gani kopye bi [[{{ns:user}}:$1/vector.js]] <!-- ya zi [[{{ns:user}}:$1/common.js]]--> gurê xo dewam bike.',
+	'prefswitch-csswarning' => '[[User:$1/$2.css|Stilê $2 yê şexsi]] tu hind nişixulyena. Ti eşkana CSS şexsi semed vector de bike [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Heya',
 	'prefswitch-survey-false' => 'Nê',
 	'prefswitch-survey-submit-off' => 'Xacetano newe bikefilne',
@@ -1120,7 +1140,11 @@ Ma rica kene hemi biwecine.',
 	'prefswitch-title-off' => 'Xacetane newe a bike',
 	'prefswitch-title-switched-off' => 'Berxudar bu',
 	'prefswitch-title-feedback' => 'Fiqir bide',
+	'prefswitch-success-on' => 'Eka hacetê new a biya. Ma umid keni ti xacetanê newe hes keni. Ti her zeman eşkena eyaranê verini ser ena "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" link de reyna a bike.',
+	'prefswitch-success-off' => 'Eka hacetê new a kefiliyeya. Ma umid keni ti xacetanê newe hes keni. Ti her zeman eşkena eyaranê verini ser ena "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" link de reyna a bike.',
 	'prefswitch-success-feedback' => 'Fiqire tu şiya.',
+	'prefswitch-return' => '<hr style="clear:both">
+Reyna peyser şo <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-logged-changes' => "* Tabê '''{{int:watch}} tab''' eka yew estareye wa..
 * Tabê'''{{int:move}} tab''' eka zerrê dropdown ke kiste kutiyê cigeyrayiş de wa.",
 	'prefswitch-main-feedback' => '===Fiqir bide?===
@@ -1133,6 +1157,8 @@ Ma wazeni şima fiqirê xo ma rê vace. Ma rica kena [[$1|pele fiqir dayişi]] z
 [$1 Eka ti wazeni xacetanê newe a bike, itiya ra klik bike].',
 	'prefswitch-survey-intro-feedback' => 'Ma wazeni şima fiqirê xo ma rê vace. 
 Ma rica kena anket ma biweni bine ena pele de "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Seba şuxulnayişê hacetanê newe, ma tu ra zaf teşekur keni.
+Seba yardim kerdişi, ma rica keni ena anket ma a biki "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Feedback bidisê karberan',
 );
 
@@ -2371,6 +2397,8 @@ Légyszíves segíts a továbbfejlesztésükben az alábbi önkéntes kérdőív
 $messages['ia'] = array(
 	'prefswitch' => 'Activation e disactivation del Initiativa de Usabilitate',
 	'prefswitch-desc' => 'Permitter le usatores de cambiar inter gruppos de preferentias',
+	'prefswitch-jswarning' => 'Memora que, con le cambiamento del apparentia, tu [[User:$1/$2.js|$2 JavaScript]] debera esser copiate in [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> pro continuar a functionar.',
+	'prefswitch-csswarning' => 'Tu [[User:$1/$2.css|stilos personalisate de $2]] non essera plus applicate. Tu pote adder CSS personalisate pro Vector in [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Si',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disactivar le nove functiones',
@@ -2434,6 +2462,8 @@ Le Equipa del Experientia de Usator del Fundation Wikimedia ha collaborate con v
 * '''Meliorationes de recerca:''' Nos ha meliorate le suggestiones de recerca pro portar te plus rapidemente al pagina que tu cerca.
 * '''Altere nove functiones:''' Nos ha etiam introducite un assistente pro facilitar le creation de tabellas, e un function de cercar e reimplaciar pro simplificar le modification de paginas.
 * '''Le logotypo de Wikipedia''': Nos ha actualisate le logotypo. Lege plus in le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia] (in anglese).",
+	'prefswitch-main-logged-changes' => "* Le '''scheda {{int:watch}}''' es ora un stella.
+* Le '''scheda {{int:move}}''' es ora in le menu disrolante juxta le barra de recerca.",
 	'prefswitch-main-feedback' => '===Commentarios?===
 Nos amarea audir de te. Per favor visita nostre [[$1|pagina pro dar tu opinion]] o, si tu ha interesse in nostre continue effortios pro meliorar le software, visita nostre [http://usability.wikimedia.org wiki de usabilitate] pro plus information.',
 	'prefswitch-main-anon' => '===Porta me retro===
@@ -3792,7 +3822,7 @@ $messages['ro'] = array(
 	'prefswitch-survey-false' => 'Nu',
 	'prefswitch-survey-submit-off' => 'Dezactivează noile funcționalități',
 	'prefswitch-survey-cancel-off' => 'Dacă doriți să continuați folosirea noilor funcționalități, puteți să reveniți la $1.',
-	'prefswitch-survey-submit-feedback' => 'Trimite un răspuns',
+	'prefswitch-survey-submit-feedback' => 'Trimite feedback',
 	'prefswitch-survey-cancel-feedback' => 'Dacă nu doriți să comentați vă puteți întoarce la $1.',
 	'prefswitch-survey-question-like' => 'Ce v-a plăcut la noile funcționalități?',
 	'prefswitch-survey-question-dislike' => 'Ce v-a displăcut la funcționalități?',
@@ -4154,6 +4184,21 @@ $messages['sr-el'] = array(
 	'prefswitch-title-switched-on' => 'Uživajte!',
 	'prefswitch-title-off' => 'Isključi nove mogućnosti',
 	'prefswitch-title-switched-off' => 'Hvala',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Teu resep tab jeung pidangan anyarna.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
+	'prefswitch-survey-answer-whyoff-other' => 'Alesan séjén:',
+	'prefswitch-survey-question-os' => 'Anjeun maké sistem operasi naon?',
+	'prefswitch-survey-answer-os-other' => 'Sistem operasi lianna:',
+	'prefswitch-survey-question-res' => 'Résolusi layar nu dipaké?',
+	'prefswitch-title-on' => 'Fitur anyar',
+	'prefswitch-title-off' => 'Tumpurkeun fitur anyar',
+	'prefswitch-title-switched-off' => 'Nuhun',
 );
 
 /** Swedish (Svenska)
@@ -4674,7 +4719,7 @@ Nhóm Trải nghiệm Người dùng của Wikimedia Foundation đã làm việc
 * '''Hướng dẫn tạo liên kết:''' Một công cụ rất dễ sử dụng giúp bạn thêm liên kết đến các trang wiki khác cũng như liên kết ra các trang bên ngoài.
 * '''Cải tiến tìm kiếm:''' Chúng tôi đã cải tiến những gợi ý tìm kiếm để giúp bạn tìm được trang mình muốn nhanh chóng hơn.
 * '''Các tính năng mới khác:''' Chúng tôi cũng đã giới thiệu hướng dẫn tạo bảng để giúp tạo bảng dễ dàng hơn, rồi tính năng tìm kiếm và thay thế để đơn giản hóa việc sửa trang.
-* '''Biểu trưng Wikipedia:''' Chúng tôi đã cập nhập biểu trưng của chúng ta. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  blog của Wikimedia Foundation].",
+* '''Biểu trưng Wikipedia:''' Chúng tôi đã cập nhật biểu trưng của chúng ta. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  blog của Wikimedia Foundation].",
 	'prefswitch-main-logged-changes' => "* '''Thẻ {{int:watch}}''' trở thành hình sao.
 * '''Thẻ {{int:move}}''' nằm trong trình đơn bên cạnh hộp tìm kiếm.",
 	'prefswitch-main-feedback' => '===Phản hồi?===
@@ -4709,6 +4754,20 @@ $messages['vo'] = array(
 $messages['yi'] = array(
 	'prefswitch-survey-true' => 'יא',
 	'prefswitch-survey-false' => 'ניין',
+	'prefswitch-survey-submit-off' => 'אַנולירן נ ײַע אייגנקייטן',
+	'prefswitch-survey-cancel-off' => 'ווען איר ווילט ווײַטער ניצן די נײַע אייגנקייטן, קענט איר צוריקקערן צו $1.',
+	'prefswitch-survey-submit-feedback' => 'שיקן פֿידבעק',
+	'prefswitch-survey-cancel-feedback' => 'ווען איר ווילט נישט געבן קיין פֿידבעק, קענט איר צוריקקערן צו $1.',
+	'prefswitch-survey-question-like' => 'וואָס האט אײַך געפֿאלן בײַ די נײַע אייגנקייטן?',
+	'prefswitch-survey-question-dislike' => 'וואָס האט אײַך נישט געפֿאלן בײַ די נײַע אייגנקייטן?',
+	'prefswitch-survey-question-whyoff' => 'פֿאַרוואָס לאזט איר איבער די נײַע אייגנקייטן?
+ביטע וויילט אויס אַלע פאַסיגע פונקטן.',
+	'prefswitch-survey-answer-whyoff-hard' => 'די אייגנקייטן זענען געווען צו שווער צו ניצן.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'די אייגנקייטן האבן נישט פֿונקציאָנירט געהעריג..',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'עס פֿונקציאנירט אויף א נישט פֿאראויסגעזענעם אופן.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "ס'האט מיר נישט געפֿאלן ווי די אייגנקייטן זען אויס.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'די נײַע טאַבן און צעשטעל האבן מיר נישט געפֿאלן.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'דער נײַער ווערקצייגפאַס האט מיר נישט געפֿאלן.',
 	'prefswitch-survey-answer-whyoff-other' => 'אַנדער טעם:',
 	'prefswitch-survey-question-browser' => 'וועלכן בלעטערער ניצט איר?',
 	'prefswitch-survey-answer-browser-other' => 'אנדער בלעטערער:',
@@ -4717,13 +4776,45 @@ $messages['yi'] = array(
 	'prefswitch-survey-question-res' => 'וואָס איז די רעזאלוציע פֿון אײַער עקראַן?',
 	'prefswitch-title-on' => 'נײַע אייגנשאַפֿטן',
 	'prefswitch-title-switched-on' => 'האט הנאה!',
-	'prefswitch-title-off' => 'אַנולירן נ ײַע אייגנקייטן',
+	'prefswitch-title-off' => 'אַנולירן נײַע אייגנקייטן',
 	'prefswitch-title-switched-off' => 'א דאַנק',
 	'prefswitch-title-feedback' => 'פֿידבעק',
 	'prefswitch-success-on' => 'די נײַע אייגנקייטן זענען איצט אַקטיוו. מיר האָפן איר וועט האָבן הנאה פֿון ניצן די נײַע אייגנקייטן. איר קענט שטענדיק צוריקווענדן דורך געבן אַ קליק אויף דעם "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" לינק אין דער הייך פונעם בלאַט.',
+	'prefswitch-success-off' => 'די נײַע אייגנקייטן זענען מער נישט אַקטיוו. א דאַנק פֿארן אויספרובירן די נײַע אייגנקייטן. איר קענט זיי שטענדיק צוריקאַקטיוויזירן דורך געבן אַ קליק אויף דעם "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" לינק אין דער הייך פונעם בלאַט.',
 	'prefswitch-success-feedback' => "מ'האט געשיקט אײַער פֿידבעק.",
 	'prefswitch-return' => '<hr style="clear:both">
 צוריק צו <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| עקראַנבילד פֿון וויקיפעדיע'ס נײַעם נאַוויגאַציע איבערפֿלאַך <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| עקראַנבילד פֿונעם איינפֿאַכן באַאַרבעטן איבערפֿלאַך <small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| עקראַנבילד פֿונעם נײַעם דיאַלאג קעסטל פֿאר ארײַנגעבן לינקען
+|}
+|}
+די באַניצער דערפֿאַרונגס גרופע פון דער וויקימעדיע פֿונדאַציע האט געאַרבעט צו מאַכן דעם ניץ גרינגער. מיר פֿרייען זיך צו טיילן זיך מיט עטלעכע פֿאַרבעסערונגן, כולל א נײַע אויסקוק און און מער איינפֿאַכער רעדאַקטירן אייגנקייטן. מיט די ענדערונגען זאל זײַן גרינגער פֿאר נײַע באַניצער אנצוהייבן; זיי זענען באַזירט אויף אונזער [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ניצלעכקייט פרואוואונגען דאס פֿאריגע יאָר]. פֿאַרבעסערן די ניצלעכקייט פֿון אונזערע פראיעקטן איז א פריאריטעט פֿון דער וויקימעדיע פֿונדאַציע און מיר וועלן טיילן מיט נאך דערהײַנטיקונגען אין דער צוקונפֿט. פֿאַר נאך פרטים, באַזוכט דעם [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia וויקימעדיע בלאג].
+
+=== וואָס מיר האבן געענדערט ===
+* '''נאַוויגאַציע:''' מיר האבן פֿאַרבעסערט די נאַוויגאַציע פ,ֿאַר ליינען און רעדאַקטירן בלעטער. אַצינד, די טאַבן אין דער הייך פֿון יעדן בלאַט  ווײַזן קלאָרער צי איר באקוקט דעם בלאַט אדער דעם שמועס בלאַט, און צי איר ליינט אדער רעדאַקטירט א בלאַט.
+* '''געצייג פֿאַרבעסערונגען:''' מיר האבן ארגאָניזירט דעם רעדאַקטירונג געצייג־פאַס צו ווערן גרינגער צו ניצן. פֿארמאַטירן בלעטער איז געווארן גרינגער און מער אינטואיטיוו.
+* '''לינק קונצן־מאַכער:''' א גרינג צו ניצן געצייג העלפֿט אייך צולייגן לינקען סײַ צו אַנדערע וויקי בלעטער סײַ צו דרויסנדע זײַטלעך.
+* '''זוך פֿאַרבעסערונגען:''' מיר האבן פֿאַרבעסערט די זוך פֿארשלאָגן אָז איר זאלט צוקומען צום געזוכטן בלאַט גיכערre quickly.
+* '''אַנדערע נײַע אייגנקייטן:''' מיר האבן אויך דערמעגלעכט א טאַבעלע קונצן־מאַכער צו מאַכן גרינגער שאַפֿן טאַבעלעס, און א זוך און פֿאַרבײַט אייגנקייט צו מאַכן מער איינפֿאַך רעדאַקטירן בלעטער.
+* '''וויקיפעדיע לאגא:''' מיר האבן דערהײַנטיגט אונזער לאגא. ליינט ווײַטער אין דעם [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d וויקימעדיע בלאג].",
 	'prefswitch-survey-intro-off' => 'א דאַנק פֿאַרן אויספרובירן אונזערע נײַע אייגנקייטן.
 בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
@@ -4734,6 +4825,8 @@ $messages['yi'] = array(
 $messages['yue'] = array(
 	'prefswitch' => '可用性倡議喜好轉用',
 	'prefswitch-desc' => '容許用戶去設定喜好',
+	'prefswitch-jswarning' => '請記得改左面板，你嘅[[User:$1/$2.js|$2 JavaScript]]需要複製到[[{{ns:user}}:$1/vector.js]] <!--或者[[{{ns:user}}:$1/common.js]]-->去繼續工作。',
+	'prefswitch-csswarning' => '你的[[User:$1/$2.css|自訂$2款式]]不再通用。你可以係[[{{ns:user}}:$1/vector.css]]加對Vector的自訂款式。',
 	'prefswitch-survey-true' => '係',
 	'prefswitch-survey-false' => '唔係',
 	'prefswitch-survey-submit-off' => '閂新特色',
@@ -4799,6 +4892,8 @@ Wikimedia Foundation嘅可用性小組同社群嘅志願者一齊係列努力令
 * '''搵嘢嘅改進'''：我哋改進咗搜索建議令到你可以更加快噉搵到你要用到嘅版。
 * '''其它嘅新功能'''：我哋亦都推出了表格精靈去更加容易噉開表，同時搵換嘅功能來簡化嗰版嘅編輯。
 * '''維基百科logo'''：我哋已經更新咗我哋個logo。詳情睇[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}}標籤'''而家係一粒星星。
+* '''{{int:move}}標籤'''而家係一個係搜索框左邊嘅下拉式選單。",
 	'prefswitch-main-feedback' => '===意見？===
 
 我哋希望收到你的意見，請睇吓我哋嘅[[$1|意見反饋版]]，或者如果你對我哋嘅軟件改進有興趣嘅話，可以到[http://usability.wikimedia.org usability wiki]了解更多嘅詳情。',
@@ -4911,6 +5006,8 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'prefswitch' => '可用性倡議偏好設定',
 	'prefswitch-desc' => '允許用戶設定參數設定',
+	'prefswitch-jswarning' => '請記住此對皮膚的變化，你[[User:$1/$2.js|$2的JavaScript]]將需要複製到[[{{ns:user}}:$1/vector.js]] <!--或 [[{{ns:user}}:$1/common.js]]-->才能繼續有效。',
+	'prefswitch-csswarning' => '你的[[User:$1/$2.css|自訂$2款式]]將不再適用，你可以在[[{{ns:user}}:$1/vector.css]]新增Vector的自訂CSS。',
 	'prefswitch-survey-true' => '是',
 	'prefswitch-survey-false' => '否',
 	'prefswitch-survey-submit-off' => '關閉新特色',
@@ -4975,6 +5072,8 @@ $messages['zh-hant'] = array(
 * '''搜索的改進'''：我們改進了搜索建議，讓你尋找網頁更迅速。
 * '''其他的新功能'''：我們也推出了表格嚮導，使創建表格更容易，同時尋找和替換功能來簡化頁面的編輯。
 * '''維基百科logo'''：我們已經更新了我們的logo。詳情見[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}}標籤'''現在是一顆星。
+* '''{{int:move}}標籤'''現在是在搜索框旁邊的下拉選單中。",
 	'prefswitch-main-feedback' => '===意見?===
 
 我們希望收到你們的意見，請造訪我們的[[$1|意見反饋頁面]]，或者如果你對我們的軟件改善有興趣，可到[http://usability.wikimedia.org usability wiki]了解詳情。',

@@ -192,6 +192,14 @@ $messages['ca'] = array(
 	'tooltip-pt-optin-feedback' => 'Comenteu les vostres experiències amb les noves característiques',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'optin-try' => 'تاقی‌کردنەوەی بیتا',
+	'optin-leave' => 'دەرچوون لە بیتا',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -1020,6 +1028,7 @@ $messages['stq'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'optin-try' => 'Cobaan Béta',
 	'tooltip-pt-optin-try' => 'Cobaan fitur anyar',
 	'optin-leave' => 'Tinggalkeun Béta',
 	'tooltip-pt-optin-leave' => 'Pareuman fitur anyar',
