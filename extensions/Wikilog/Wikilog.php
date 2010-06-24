@@ -42,6 +42,15 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 /*
+ * Constant definitions.
+ */
+// For source-code readability. This ought to be defined by MediaWiki (and
+// there is actually such a definition in DifferenceEngine.php, but it is
+// not global). So, it is easier to have our own until MediaWiki provides
+// one globally. It also allows us to keep compatibility.
+define( 'WL_NBSP', '&#160;' );
+
+/*
  * Dependencies.
  */
 require_once( dirname( __FILE__ ) . '/WlFeed.php' );

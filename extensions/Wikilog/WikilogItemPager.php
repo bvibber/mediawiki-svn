@@ -441,7 +441,7 @@ class WikilogArchivesPager
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatValue( $field, $value ) );
 			if ( $formatted == '' ) {
-				$formatted = '&#160;';
+				$formatted = WL_NBSP;
 			}
 			$class = 'TablePager_col_' . htmlspecialchars( $field );
 			$columns[] = "<td class=\"$class\">$formatted</td>";
