@@ -390,19 +390,19 @@ class NMStorageSQL {
 		if ( $db->numRows( $res ) > 0 ) {
 			while ( $row = $db->fetchObject( $res ) ) {
 				$ds = explode( ',', $row->delegate );
-				$delegated = false;
+				$uids = array();
 				foreach ( $ds as $delegate ) {
 					$u = User::newFromName( trim( $delegate ) );
 					if ( $u == null ) continue;
 					$id = $u->getId();
 					if ( $id > 0 ) {
-						$result[$row->subquery > 0 ? 1:0][$row->notify_id] = array( 'user_id' => $id, 'name' => $row->name, 'sql' => $row->nm_sql, 'hierarchy' => $row->nm_hierarchy );
-						$delegated = true;
+						$uids[] = $id;
 					}
 				}
-				if ( !$delegated ) {
-					$result[$row->subquery > 0 ? 1:0][$row->notify_id] = array( 'user_id' => $row->user_id, 'name' => $row->name, 'sql' => $row->nm_sql, 'hierarchy' => $row->nm_hierarchy );
+				if ( count( $uids ) == 0 ) {
+					$uids[] = $row->user_id;
 				}
+				$result[$row->subquery > 0 ? 1:0][$row->notify_id] = array( 'user_ids' => $uids, 'name' => $row->name, 'sql' => $row->nm_sql, 'hierarchy' => $row->nm_hierarchy );
 			}
 		}
 		$db->freeResult( $res );
@@ -421,19 +421,19 @@ class NMStorageSQL {
 		if ( $db->numRows( $res ) > 0 ) {
 			while ( $row = $db->fetchObject( $res ) ) {
 				$ds = explode( ',', $row->delegate );
-				$delegated = false;
+				$uids = array();
 				foreach ( $ds as $delegate ) {
 					$u = User::newFromName( trim( $delegate ) );
 					if ( $u == null ) continue;
 					$id = $u->getId();
 					if ( $id > 0 ) {
-						$result[$row->notify_id] = array( 'user_id' => $id, 'name' => $row->name, 'sql' => $row->nm_sql, 'hierarchy' => $row->nm_hierarchy );
-						$delegated = true;
+						$uids[] = $id;
 					}
 				}
-				if ( !$delegated ) {
-					$result[$row->notify_id] = array( 'user_id' => $row->user_id, 'name' => $row->name, 'sql' => $row->nm_sql, 'hierarchy' => $row->nm_hierarchy );
+				if ( count( $uids ) == 0 ) {
+					$uids[] = $row->user_id;
 				}
+				$result[$row->notify_id] = array( 'user_ids' => $uids, 'name' => $row->name, 'sql' => $row->nm_sql, 'hierarchy' => $row->nm_hierarchy );
 			}
 		}
 		$db->freeResult( $res );

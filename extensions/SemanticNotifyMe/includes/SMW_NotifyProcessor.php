@@ -43,15 +43,9 @@ class SMWNotifyProcessor {
 		SMWQueryProcessor::processFunctionParams( SMWNotifyProcessor::getQueryRawParams( $querystring ), $querystring, $params, $printouts );
 		$relatedArticles = array();
 		foreach ( $printouts as $po ) {
-			if ( $po == $params['sort'] ) $sorted = true;
 			$printoutArticles[] = array(
 				'namespace' => SMW_NS_PROPERTY,
-				'title' => Title::makeTitle( SMW_NS_PROPERTY, $po->getText() )->getDBkey() );
-		}
-		if ( !$sorted && isset( $params['sort'] ) ) {
-			$printoutArticles[] = array(
-				'namespace' => SMW_NS_PROPERTY,
-				'title' => Title::makeTitle( SMW_NS_PROPERTY, $params['sort'] )->getDBkey() );
+				'title' => Title::makeTitle( SMW_NS_PROPERTY, $po->getText( SMW_OUTPUT_WIKI ) )->getDBkey() );
 		}
 
 		$qp = new SMWNotifyParser( $notify_id, $printoutArticles );
@@ -1129,16 +1123,16 @@ class SMWNotifyParser {
 
 class SMWNotifyUpdate {
 	protected $m_info;
-	protected $m_title;
-	protected $m_userMsgs;
-	protected $m_userHtmlPropMsgs;
-	protected $m_userHtmlNMMsgs;
-	protected $m_userNMs;
-	protected $m_notifyHtmlPropMsgs;
-	protected $m_notifyHtmlMsgs;
-	protected $m_newMonitor;
-	protected $m_removeMonitored;
-	protected $m_subQueryNotify;
+	protected $m_title; // current title of the update
+	protected $m_userMsgs; // user_id => plain text message
+	protected $m_userHtmlPropMsgs; // user_id => html message, prop change detail
+	protected $m_userHtmlNMMsgs; // user_id => html message, all notify hint
+	protected $m_userNMs; // user_id => notify_id
+	protected $m_notifyHtmlPropMsgs; // notify_id => html message, prop change detail
+	protected $m_notifyHtmlMsgs; // notify_id => html message, all notify hint
+	protected $m_newMonitor; // notify newly matches the page, array( notify id, page id )
+	protected $m_removeMonitored; // notify no longer matches the page, array( notify id, page id )
+	protected $m_subQueryNotify; // subquery, will go through all pages, attention!!!
 
 	protected $m_linker;
 
@@ -1202,6 +1196,7 @@ class SMWNotifyUpdate {
 		$sStore = NMStorage::getDatabase();
 		$notifications = $sStore->getMonitoredNotifications( $page_id );
 
+		$notifyMsgAdded = array();
 		foreach ( $notifications as $user_id => $notifies ) {
 			$this->m_userMsgs[$user_id] .= $msg . '\r\n( NM: ';
 			$hint = wfMsg( 'smw_nm_hint_delete_html', $page_html_name, htmlspecialchars( $reason ) );
@@ -1215,7 +1210,10 @@ class SMWNotifyUpdate {
 				} else {
 					$first = false;
 				}
-				$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
+				if ( !isset( $notifyMsgAdded[$notify_id] ) ) {
+					$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
+					$notifyMsgAdded[$notify_id] = true;
+				}
 
 				$this->m_userMsgs[$user_id] .= $notify_detail['name'];
 				$htmlMsg .= '<b>' . htmlspecialchars( $notify_detail['name'] ) . '</b>';
@@ -1273,13 +1271,13 @@ class SMWNotifyUpdate {
 		$i = SMWNotifyProcessor::getInfoFromId( $key );
 		if ( $i[type] == 0 ) {
 			return "<td>Category</td>
-			<td>" . $info[name]->getShortHTMLText( $this->m_linker ) . "</td>
+			<td>" . $this->getFullLink( $info[name] ) . "</td>
 			<td>" . ( $info[sem_act] == 0 ? "<font color='green'>remove</font>":"<font color='red'>cite</font>" ) . "</td>
 			<td colspan='2'>N/A</td>";
 		} else {
 			$rows = max( count( $info[del_vals] ), count( $info[new_vals] ) );
 			$tmp = "<tr><td rowspan='$rows'>Property</td>
-			<td rowspan='$rows'>" . $info[name]->getShortHTMLText( $this->m_linker ) . "</td>
+			<td rowspan='$rows'>" . $this->getFullLink( $info[name] ) . "</td>
 			<td rowspan='$rows'>" . ( $info[sem_act] == 0 ? "<font color='green'>remove</font>":( $info[sem_act] == 1 ? "<font color='blue'>modify</font>":"<font color='red'>cite</font>" ) ) . "</td>";
 			for ( $idx = 0; $idx < $rows; ++$idx ) {
 				if ( $idx > 0 ) {
@@ -1311,7 +1309,7 @@ class SMWNotifyUpdate {
 				} else {
 					$tmp_info[$key] = array( 'sem_act' => 0, 'name' => $value[0][name], 'del_vals' => array(), 'new_vals' => array() );
 					foreach ( $value as $v ) {
-						$tmp_info[$key][del_vals][] = array( 'plain' => $v[value]->getWikiValue(), 'html' => $v[value]->getShortHTMLText( $this->m_linker ) );
+						$tmp_info[$key][del_vals][] = array( 'plain' => $v[value]->getWikiValue(), 'html' => $this->getFullLink( $v[value] ) );
 					}
 				}
 			} else if ( $i[type] == 2 ) {
@@ -1329,7 +1327,7 @@ class SMWNotifyUpdate {
 							$updated = true;
 							$tmp_info[$key] = array( 'sem_act' => 1, 'name' => $value[0][name], 'del_vals' => array(), 'new_vals' => array() );
 						}
-						$tmp_info[$key][del_vals][] = array( 'plain' => $v1[value]->getWikiValue(), 'html' => $v1[value]->getShortHTMLText( $this->m_linker ) );
+						$tmp_info[$key][del_vals][] = array( 'plain' => $v1[value]->getWikiValue(), 'html' => $this->getFullLink( $v1[value] ) );
 					}
 				}
 				foreach ( $mvalue as $v1 ) {
@@ -1345,7 +1343,7 @@ class SMWNotifyUpdate {
 							$updated = true;
 							$tmp_info[$key] = array( 'sem_act' => 1, 'name' => $value[0][name], 'del_vals' => array(), 'new_vals' => array() );
 						}
-						$tmp_info[$key][new_vals][] = array( 'plain' => $v1[value]->getWikiValue(), 'html' => $v1[value]->getShortHTMLText( $this->m_linker ) );
+						$tmp_info[$key][new_vals][] = array( 'plain' => $v1[value]->getWikiValue(), 'html' => $this->getFullLink( $v1[value] ) );
 					}
 				}
 			}
@@ -1358,7 +1356,7 @@ class SMWNotifyUpdate {
 				} else {
 					$tmp_info[$key] = array( 'sem_act' => 2, 'name' => $value[0][name], 'del_vals' => array(), 'new_vals' => array() );
 					foreach ( $value as $v ) {
-						$tmp_info[$key][new_vals][] = array( 'plain' => $v[value]->getWikiValue(), 'html' => $v[value]->getShortHTMLText( $this->m_linker ) );
+						$tmp_info[$key][new_vals][] = array( 'plain' => $v[value]->getWikiValue(), 'html' => $this->getFullLink( $v[value] ) );
 					}
 				}
 			}
@@ -1375,7 +1373,9 @@ class SMWNotifyUpdate {
 		}
 		$page_name = $this->m_title->getText() . ' (' . $this->m_title->getFullUrl() . ')';
 
+		$notifyMsgAdded = array();
 		foreach ( $notifications as $user_id => $notifies ) {
+			if ( !isset( $notifies['semantic'] ) ) continue;
 			foreach ( $notifies['semantic'] as $key => $notify ) {
 				if ( isset( $tmp_info[$key] ) ) {
 					$hint = "";
@@ -1388,17 +1388,24 @@ class SMWNotifyUpdate {
 					$this->m_userMsgs[$user_id] .= $this->getNotifyPlain( $tmp_info[$key], $key ) . ' ( NM: ';
 					$propHint = $this->getNotifyHtml( $tmp_info[$key], $key );
 					$this->m_userHtmlPropMsgs[$user_id] .= $propHint . "<tr><td colspan='5'>" . wfMsg( 'smw_notifyme' ) . ": ";
-					$idx = 0;
+					$first = true;
 					foreach ( $notify as $notify_id => $notify_name ) {
-						if ( $idx > 0 ) {
+						if ( !$first ) {
 							$this->m_userMsgs[$user_id] .= ', ';
 							$this->m_userHtmlPropMsgs[$user_id] .= ', ';
+						} else {
+							$first = false;
 						}
 						$this->m_userMsgs[$user_id] .= $notify_name;
 						$this->m_userHtmlPropMsgs[$user_id] .= '<b>' . htmlspecialchars( $notify_name ) . '</b>';
-						$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
-						$this->m_notifyHtmlPropMsgs[$notify_id] .= $propHint;
-						$idx++;
+
+						if ( !isset( $notifyMsgAdded[$notify_id] ) ) {
+							$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
+						}
+						if ( !isset( $notifyMsgAdded[$notify_id][$key] ) ) {
+							$this->m_notifyHtmlPropMsgs[$notify_id] .= $propHint;
+							$notifyMsgAdded[$notify_id][$key] = true;
+						}
 
 						$this->m_userNMs[$user_id][] = $notify_id;
 					}
@@ -1443,19 +1450,25 @@ class SMWNotifyUpdate {
 		foreach ( $main_queries as $notify_id => $notify ) {
 			$sStore->getNotifyInMainQuery( $page_id, $notify_id, $notify['sql'], $notify['hierarchy'], $match, $monitoring );
 			if ( ( !$monitoring ) && $match ) {
-				$this->m_userMsgs[$notify['user_id']] .= wfMsg( 'smw_nm_hint_match', $page_name, $notify[name] );
 				$hint = wfMsg( 'smw_nm_hint_match_html', $page_html_name, htmlspecialchars( $notify[name] ) );
-				$this->m_userHtmlNMMsgs[$notify['user_id']] .= $hint;
+				foreach ( $notify['user_ids'] as $uid ) {
+					$this->m_userMsgs[$uid] .= wfMsg( 'smw_nm_hint_match', $page_name, $notify[name] );
+					$this->m_userHtmlNMMsgs[$uid] .= $hint;
+				}
 				$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
 				$this->m_newMonitor[] = array( 'notify_id' => $notify_id, 'page_id' => $page_id );
 			} else if ( ( !$match ) && $monitoring ) {
-				$this->m_userMsgs[$notify['user_id']] .= wfMsg( 'smw_nm_hint_nomatch', $page_name, $notify[name] );
 				$hint = wfMsg( 'smw_nm_hint_nomatch_html', $page_html_name, htmlspecialchars( $notify[name] ) );
-				$this->m_userHtmlNMMsgs[$notify['user_id']] .= $hint;
+				foreach ( $notify['user_ids'] as $uid ) {
+					$this->m_userMsgs[$uid] .= wfMsg( 'smw_nm_hint_nomatch', $page_name, $notify[name] );
+					$this->m_userHtmlNMMsgs[$uid] .= $hint;
+				}
 				$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
 				$this->m_removeMonitored[] = array( 'notify_id' => $notify_id, 'page_id' => $page_id );
 			}
-			$this->m_userNMs[$notify['user_id']][] = $notify_id;
+			foreach ( $notify['user_ids'] as $uid ) {
+				$this->m_userNMs[$uid][] = $notify_id;
+			}
 		}
 		// begin notify query on sub query, should go through all pages
 		foreach ( $queries[1] as $notify_id => $notify ) {
@@ -1475,13 +1488,17 @@ class SMWNotifyUpdate {
 				$p_name = $t->getText() . ' (' . $t->getFullUrl() . ')';
 				$p_html_name = '<a href="' . $t->getFullUrl() . '">' . htmlspecialchars( $t->getText() ) . '</a>';
 
-				$this->m_userMsgs[$notify['user_id']] .= wfMsg( 'smw_nm_hint_submatch', $page_name, $p_name, $notify[name] );
 				$hint = wfMsg( 'smw_nm_hint_submatch_html', $page_html_name, $p_html_name, htmlspecialchars( $notify[name] ) );
-				$this->m_userHtmlNMMsgs[$notify['user_id']] .= $hint;
+				foreach ( $notify['user_ids'] as $uid ) {
+					$this->m_userMsgs[$uid] .= wfMsg( 'smw_nm_hint_submatch', $page_name, $p_name, $notify[name] );
+					$this->m_userHtmlNMMsgs[$uid] .= $hint;
+				}
 				$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
 				$this->m_newMonitor[] = array( 'notify_id' => $notify_id, 'page_id' => $pid );
 
-				$this->m_userNMs[$notify['user_id']][] = $notify_id;
+				foreach ( $notify['user_ids'] as $uid ) {
+					$this->m_userNMs[$uid][] = $notify_id;
+				}
 			}
 			foreach ( $no_matches as $pid ) {
 				$pt = $sStore->getPageTitle( $pid );
@@ -1492,18 +1509,32 @@ class SMWNotifyUpdate {
 				$p_name = $t->getText() . ' (' . $t->getFullUrl() . ')';
 				$p_html_name = '<a href="' . $t->getFullUrl() . '">' . htmlspecialchars( $t->getText() ) . '</a>';
 
-				$this->m_userMsgs[$notify['user_id']] .= wfMsg( 'smw_nm_hint_subnomatch', $page_name, $p_name, $notify[name] );
 				$hint = wfMsg( 'smw_nm_hint_subnomatch_html', $page_html_name, $p_html_name, htmlspecialchars( $notify[name] ) );
-				$this->m_userHtmlNMMsgs[$notify['user_id']] .= $hint;
+				foreach ( $notify['user_ids'] as $uid ) {
+					$this->m_userMsgs[$uid] .= wfMsg( 'smw_nm_hint_subnomatch', $page_name, $p_name, $notify[name] );
+					$this->m_userHtmlNMMsgs[$uid] .= $hint;
+				}
 				$this->m_notifyHtmlMsgs[$notify_id] .= $hint;
 				$this->m_removeMonitored[] = array( 'notify_id' => $notify_id, 'page_id' => $pid );
 
-				$this->m_userNMs[$notify['user_id']][] = $notify_id;
+				foreach ( $notify['user_ids'] as $uid ) {
+					$this->m_userNMs[$uid][] = $notify_id;
+				}
 			}
 		}
 
 		$sStore->removeNotifyMonitor( $this->m_removeMonitored );
 		$sStore->addNotifyMonitor( $this->m_newMonitor );
+	}
+	private function getFullLink( $val ) {
+		if ( $val instanceof SMWWikiPageValue ) {
+			return '<a href="' . $val->getTitle()->getFullUrl() . '">' . htmlspecialchars( $val->getTitle()->getText() ) . '</a>';
+		} else if ( $val instanceof SMWPropertyValue ) {
+			$val = $val->getWikiPageValue();
+			return '<a href="' . $val->getTitle()->getFullUrl() . '">' . htmlspecialchars( $val->getTitle()->getText() ) . '</a>';
+		} else {
+			return $val->getShortHTMLText( $this->m_linker );
+		}
 	}
 	private function applyStyle( $html ) {
 		$html = str_replace( "class=\"smwtable\"", "style=\"background-color: #EEEEFF;\"", $html );
@@ -1533,7 +1564,7 @@ class SMWNotifyUpdate {
 			$html_msg = $html_style;
 			$showing_all = false;
 			if ( isset( $notifications[$notify_id] ) && $notifications[$notify_id]['show_all'] ) {
-				SMWQueryProcessor::processFunctionParams( explode( "\n", $notifications[$notify_id]['query'] ), $querystring, $params, $printouts );
+				SMWQueryProcessor::processFunctionParams( SMWNotifyProcessor::getQueryRawParams( $notifications[$notify_id]['query'] ), $querystring, $params, $printouts );
 
 				$format = 'auto';
 				if ( array_key_exists( 'format', $params ) ) {
