@@ -1,5 +1,5 @@
 /**
- * JavaScript Backawrds Compatibility
+ * JavaScript Backwards Compatibility
  */
 
 // Make calling .indexOf() on an array work on older browsers
