@@ -2,7 +2,7 @@
 /**
  * LogoFunctions
  *
- * Add Paser hooks about wiki's logo
+ * Add parser function to set wiki's logo
  *
  * @link http://www.mediawiki.org/wiki/Extension:LogoFunctions
  *
@@ -17,12 +17,14 @@ $messages = array();
 /** English
  */
 $messages['en'] = array(
-    'logofunctions-desc' => 'Add Paser hooks about wiki\'s logo.',
+	'logofunctions-desc' => "Add parser function to set wiki's logo",
+	'logofunctions-filenotexist' => 'Error: [[File:$1]] does not exist',
 );
  
 /** Korean (한국어)
  * @author Devunt
  */
 $messages['ko'] = array(
-    'logofunctions-desc' => '위키의 로고에 관한 파서 훅들을 추가합니다.',
+	'logofunctions-desc' => '위키의 로고에 관한 파서 훅들을 추가합니다.',
 );
+
