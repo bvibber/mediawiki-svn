@@ -340,7 +340,7 @@ class SMWNotifyMe extends SpecialPage {
 			$showall = $dbr->selectField( 'smw_nm_query', 'show_all', array( 'notify_id' => $id ), 'NotifyMeRSS' );
 			if ( $showall ) {
 				$query = $dbr->selectField( 'smw_nm_query', 'query', array( 'notify_id' => $id ), 'NotifyMeRSS' );
-				SMWQueryProcessor::processFunctionParams( explode( "\n", $query ), $querystring, $params, $printouts );
+				SMWQueryProcessor::processFunctionParams( SMWNotifyProcessor::getQueryRawParams( $query ), $querystring, $params, $printouts );
 				$query  = SMWQueryProcessor::createQuery( $querystring, $params, SMWQueryProcessor::INLINE_QUERY, 'auto', $printouts );
 				$res = smwfGetStore()->getQueryResult( $query );
 

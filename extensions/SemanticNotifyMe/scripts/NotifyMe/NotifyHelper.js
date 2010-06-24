@@ -117,7 +117,7 @@ addNotifyToTable:function(nid, enabled){
 	ntr.appendChild(td);
 	item = document.createElement("a");
 	td.appendChild(item);
-	item.href = "index.php?title=Special:NotifyMe&feed=rss&nid=" + nid;
+	item.href = wgScript + "?title=Special:NotifyMe&feed=rss&nid=" + nid;
 	item.target = "_blank";
 	item.innerHTML = $('nmqname').value;
 
@@ -170,7 +170,7 @@ addNotifyToTable:function(nid, enabled){
 	}
 
 	$('nmtoolbar').parentNode.insertBefore(ntr, $('nmtoolbar'));
-	attachAutocompleteToField("nmd_" + nid);
+	nmAttachAutocompleteToField("nmd_" + nid);
 },
 
 doUpdateMail:function() {
