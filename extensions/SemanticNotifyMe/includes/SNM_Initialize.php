@@ -146,7 +146,7 @@ function smwgNMSetupExtension() {
 	} else { // otherwise register special pages
 		$wgAutoloadClasses['SMWNotifyMe'] = $smwgNMIP . '/specials/SMWNotifyMe/SMWNotifyMe.php';
 		$wgSpecialPages['NotifyMe'] = array( 'SMWNotifyMe' );
-		$wgSpecialPageGroups['NotifyMe'] = 'smwplus_group';
+		$wgSpecialPageGroups['NotifyMe'] = 'smw_group';
 	}
 
 	// Register Credits
