@@ -90,6 +90,7 @@ In order to publish articles and enable other wikilog features, it has to be cre
 	'wikilog-simple-signature' => '$1 ($2)',
 
 	# Edit page
+	'wikilog-edit-hint' => 'Edit wikilog article: $1',
 	'wikilog-edit-fieldset-legend' => 'Wikilog options:',
 	'wikilog-edit-signpub' => 'Sign and publish this article',
 	'wikilog-edit-signpub-tooltip' => 'Causes this article to be signed and published in its wikilog when saved. 

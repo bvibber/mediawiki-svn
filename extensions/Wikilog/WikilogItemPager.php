@@ -60,6 +60,7 @@ class WikilogSummaryPager
 	# Local variables.
 	protected $mQuery = null;			///< Wikilog item query data
 	protected $mIncluding = false;		///< If pager is being included
+	protected $mShowEditLink = false;	///< If edit links are shown.
 
 	/**
 	 * Constructor.
@@ -91,11 +92,17 @@ class WikilogSummaryPager
 		if ( $this->mLimit > $wgWikilogExpensiveLimit )
 			$this->mLimit = $wgWikilogExpensiveLimit;
 
-		# We will need a clean parser if not including.
-		global $wgParser;
-		if ( !$this->mIncluding ) {
+		# Check parser state, setup edit links.
+		global $wgOut, $wgParser;
+		if ( $this->mIncluding ) {
+			$popt = $wgParser->getOptions();
+		} else {
+			$popt = $wgOut->parserOptions();
+
+			# We will need a clean parser if not including.
 			$wgParser->clearState();
 		}
+		$this->mShowEditLink = $popt->getEditSection();
 	}
 
 	/**
@@ -161,10 +168,10 @@ class WikilogSummaryPager
 		$heading = $skin->link( $item->mTitle, $titleText, array(), array(),
 			array( 'known', 'noclasses' )
 		);
-		$heading = Xml::tags( 'h2', null, $heading );
-		if ( $item->mTitle->quickUserCan( 'edit' ) ) {
-			$heading = $this->editLink( $item->mTitle ) . $heading;
+		if ( $this->mShowEditLink && $item->mTitle->quickUserCan( 'edit' ) ) {
+			$heading = $this->doEditLink( $item->mTitle, $item->mName ) . $heading;
 		}
+		$heading = Xml::tags( 'h2', null, $heading );
 
 		# Sumary entry header.
 		$key = $this->mQuery->isSingleWikilog()
@@ -226,14 +233,28 @@ class WikilogSummaryPager
 	/**
 	 * Returns a wikilog article edit link, much similar to a section edit
 	 * link in normal articles.
-	 * @param $title Wikilog article title object.
-	 * @return HTML fragment.
+	 * @param $title Title  The title of the target article.
+	 * @param $tooltip string  The tooltip to be included in the link, wrapped
+	 *   in the 'wikilog-edit-hint' message.
+	 * @return string  HTML fragment.
 	 */
-	private function editLink( $title ) {
+	private function doEditLink( $title, $tooltip = null ) {
 		$skin = $this->getSkin();
-		$url = $skin->makeKnownLinkObj( $title, wfMsg( 'wikilog-edit-lc' ), 'action=edit' );
-		$result = wfMsg( 'editsection-brackets', $url );
-		return "<span class=\"editsection\">$result</span>";
+		$attribs = array();
+		if ( !is_null( $tooltip ) ) {
+			$attribs['title'] = wfMsg( 'wikilog-edit-hint', $tooltip );
+		}
+		$link = $skin->link( $title, wfMsg( 'wikilog-edit-lc' ),
+			$attribs,
+			array( 'action' => 'edit' ),
+			array( 'noclasses', 'known' )
+		);
+
+		$result = wfMsgHtml ( 'editsection-brackets', $link );
+		$result = "<span class=\"editsection\">$result</span>";
+
+		wfRunHooks( 'DoEditSectionLink', array( $skin, $title, "", $tooltip, &$result ) );
+		return $result;
 	}
 }
 
@@ -488,7 +509,7 @@ class WikilogArchivesPager
 
 			case '_wl_actions':
 				if ( $this->mCurrentItem->mTitle->quickUserCan( 'edit' ) ) {
-					return $this->editLink( $this->mCurrentItem->mTitle );
+					return $this->doEditLink( $this->mCurrentItem->mTitle, $this->mCurrentItem->mName );
 				} else {
 					return '';
 				}
@@ -553,13 +574,26 @@ class WikilogArchivesPager
 	}
 
 	/**
-	 * Returns a wikilog article edit link for the actions column of the table.
-	 * @param $title Wikilog article title object.
-	 * @return HTML fragment.
+	 * Returns a wikilog article edit link, much similar to a section edit
+	 * link in normal articles.
+	 * @param $title Title  The title of the target article.
+	 * @param $tooltip string  The tooltip to be included in the link, wrapped
+	 *   in the 'wikilog-edit-hint' message.
+	 * @return string  HTML fragment.
 	 */
-	private function editLink( $title ) {
+	private function doEditLink( $title, $tooltip = null ) {
 		$skin = $this->getSkin();
-		$url = $skin->makeKnownLinkObj( $title, wfMsg( 'wikilog-edit-lc' ), 'action=edit' );
-		return wfMsg( 'wikilog-brackets', $url );
+		$attribs = array();
+		if ( !is_null( $tooltip ) ) {
+			$attribs['title'] = wfMsg( 'wikilog-edit-hint', $tooltip );
+		}
+		$link = $skin->link( $title, wfMsg( 'wikilog-edit-lc' ),
+			$attribs,
+			array( 'action' => 'edit' ),
+			array( 'noclasses', 'known' )
+		);
+
+		$result = wfMsgHtml ( 'editsection-brackets', $link );
+		return $result;
 	}
 }
