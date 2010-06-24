@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Bar' );
+console.log( 'Bar (fourth)' );

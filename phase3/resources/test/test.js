@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Test' );
+console.log( 'Test (second)' );

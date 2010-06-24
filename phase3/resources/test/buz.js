@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Buz' );
+console.log( 'Buz (third)' );
