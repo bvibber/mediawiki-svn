@@ -20,7 +20,8 @@
 */
 var mwCoreComponentList = [
 	'mw.Parser',
-	'mw.Language'	
+	'mw.Language',
+	'mw.Api'	
 ];
 
 
@@ -116,8 +117,9 @@ mw.addResourcePaths( {
 	"mwEmbed"				: "mwEmbed.js",
 	"window.jQuery"			: "libraries/jquery/jquery-1.4.2.js",		
 	
-	"mw.Language"			: "languages/mw.Language.js",
-	"mw.Parser"				: "languages/mw.Parser.js",
+	"mw.Language"			: "components/mw.Language.js",
+	"mw.Parser"				: "components/mw.Parser.js",
+	"mw.Api"				: "components/mw.Api.js",
 
 	"JSON" 					: "libraries/json/json2.js",
 
