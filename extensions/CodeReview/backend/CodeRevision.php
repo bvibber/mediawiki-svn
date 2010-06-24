@@ -76,7 +76,6 @@ class CodeRevision {
 	/**
 	 * Like getId(), but returns the result as a string, including prefix,
 	 * i.e. "r123" instead of 123.
-	 * May be called statically if you pass the $id in.
 	 */
 	public function getIdString( $id = null ) {
 		if ( $id === null ) {
