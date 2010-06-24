@@ -24,17 +24,18 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 2 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 14 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 29 ),
-				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 1 ),
+				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 2 ),
+				array( 'src' => 'css/wikiEditor.previewDialog.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 31 ),
 				array( 'src' => 'css/wikiEditor.toolbar.css', 'version' => 18 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 108 ),
+				array( 'src' => 'css/combined.css', 'version' => 109 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 108 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 109 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -69,9 +70,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 195 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 70 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 26 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 27 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 98 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 12 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.previewDialog.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 77 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templates.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 5 ),
@@ -80,10 +82,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 443 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 444 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 449 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 450 ),
 			),
 		),
 	);
