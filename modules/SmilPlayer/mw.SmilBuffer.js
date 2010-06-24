@@ -7,7 +7,9 @@ mw.SmilBuffer = function( smilObject ){
 }
 
 mw.SmilBuffer.prototype = {
-	// Constructor: 
+	/**
+	* Constructor:
+	*/ 
 	init: function( smilObject ) {
 		this.smil = smilObject;
 	},
@@ -23,7 +25,7 @@ mw.SmilBuffer.prototype = {
 		
 		// setTimeout to call self until buffer is ready
 		
-		// temp ( assume ready ): 
+		// Temp ( assume ready ): 
 		callback();
 	}
 }

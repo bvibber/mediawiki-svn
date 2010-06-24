@@ -123,7 +123,7 @@ mw.EmbedPlayerSmil = {
 	* Get the embed player time
 	*/
 	getPlayerElementTime: function() {
-		return this.smilPlayTime;		
+		return this.smilPlayTime;
 	},
 	
 	/**
@@ -133,7 +133,14 @@ mw.EmbedPlayerSmil = {
 		// Update the smilPlayTime
 		if( !this.isPaused() ){
 			this.smilPlayTime = this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
-		}				
+		}
+		
+		// Render time
+		smil.renderTime( this.smilPlayTime, function(){
+			// callback for render
+			
+			// xxx if too much time has gone by potentaill flag
+		});
 		this.parent_monitor();
 	},
 	

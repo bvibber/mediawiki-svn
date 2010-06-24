@@ -73,7 +73,6 @@ mw.SmilBody.prototype = {
 	
 	/**
 	 * Gets all the elements for a given time. 
-	 * 
 	 */ 
 	getElementsForTime: function ( time ) {
 		var startOffset = 0;
@@ -84,7 +83,7 @@ mw.SmilBody.prototype = {
 		this.elementsInRange = [];
 		this.getElementsForTimeRecurse( this.$dom, time, startOffset);
 		return this.elementsInRange;
-	},	
+	},
 	
 	/**
 	 * getElementsForTimeRecurse
