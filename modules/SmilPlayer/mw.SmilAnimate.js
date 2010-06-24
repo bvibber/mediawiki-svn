@@ -140,7 +140,7 @@ mw.SmilAnimate.prototype = {
 		
 		var percentValues = {};
 		for( var i =0 ;i < targetValue.length ; i++ ){
-			if( targetValue[i].indexOf('%') == -1 ){
+			if( targetValue[i].indexOf('%') == -1 ) {
 				switch( namedValueOrder[i] ){
 					case 'left':
 					case 'width':
@@ -158,26 +158,7 @@ mw.SmilAnimate.prototype = {
 		
 		// Now we have "hard" layout info try and render it. 
 		this.updateElementLayout( smilImgElement, percentValues );		
-		
-		// Now set the target value
-		
-		//~first get image scale~
-		
-		// check for a "viewWindow" ( if not wrap the image in a view window ) 
-		
-		/*
-		
-		"scale mode"?
-		
-		fit: 
-		"width or height dominate"? 
-		
-		width X percentage "virtualPixles" 
-		height relative to width
-		
-		layout: 
-			viewWindow ( defined in "real" pixles. 
-		*/
+				
 	},
 	
 	// xxx need to refactor move to "smilLayout"
@@ -189,7 +170,7 @@ mw.SmilAnimate.prototype = {
 		
 		var htmlAsset = $j( '#' + this.smil.getAssetId( smilElement ) ).get(0);
 		
-		// find if we are height or width bound
+		// xxx best way may be to use canvaus and fitting system. 
 		
 		// Setup target height width based target region size	
 		var fullWidth = $target.parents('.smilRegion').width() ;
@@ -220,23 +201,22 @@ mw.SmilAnimate.prototype = {
 				.addClass('refTransformWrap') 
 			)
 		}	
-		// run the css transform
-		$target.css({ 
+		// Run the css transform
+		$target.css( { 
 			'position' : 'absolute', 
 			'width' : sourceScale *100 + '%',
-			'height': sourceScale *100 + '%',
+			'height' : sourceScale *100 + '%',
 			'top' : (-1 * percentValues['top'])*100 + '%',
 			'left' : (-1 * percentValues['left'])*100 + '%',
-		})		
-			
-		// set up the offsets for the percentage wrap. 
-		
-		// scale the 
+		} );
+
 	},
 	
 	/**
 	* getInterpolatePointsValue
 	* @param animatePoints Set of points to be interpolated 
+	* @param relativeAnimationTime Time to be animated
+	* @param duration 
 	*/ 
 	getInterpolatePointsValue: function( animatePoints, relativeAnimationTime,  duration ){
 		// For now only support "linear" transforms 
@@ -246,13 +226,15 @@ mw.SmilAnimate.prototype = {
 		if( timeInx == 0 ){
 			return animatePoints[0].split(',');
 		}
-		// make sure we are in bounds: 
+		
+		// Make sure we are in bounds: 
 		var startInx = ( Math.floor( timeInx ) -1 ); 
 		startInx = ( startInx < 0 ) ? 0 : startInx; 		
 		var startPointSet = animatePoints[ startInx ].split( ',' );					
 		var endPointSet = animatePoints[ Math.ceil( timeInx) -1 ].split( ',' );
 		
 		var interptPercent = ( relativeAnimationTime / duration ) / ( animatePoints.length -1 );
+
 		// Interpolate between start and end points to get target "value"
 		var targetValue = []; 
 		for( var i = 0 ; i < startPointSet.length ; i++ ){			

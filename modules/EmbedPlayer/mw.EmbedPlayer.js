@@ -159,8 +159,8 @@ mw.setConfig( 'embedPlayerAttributes', {
 	"apiProvider" : null,
 	
 	// If the player controls should be overlayed 
-	//( Global default via config overlayControls in module loader.js)  
-	"overlayControls" : true,
+	//( Global default via config EmbedPlayer.OverlayControls in module loader.js)  
+	"EmbedPlayer.OverlayControls" : true,
 	
 	// ROE url ( for xml based metadata )
 	// also see: http://wiki.xiph.org/ROE
@@ -246,7 +246,7 @@ mw.setConfig( 'embedPlayerSourceAttributes', [
 	* @param {Function} callback Function to call once embedding is done
 	*/
 	$.embedPlayers = function( attributes, callback) {
-		$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer( attributes, callback );
+		$j( mw.getConfig( 'EmbedPlayer.RewriteTags' ) ).embedPlayer( attributes, callback );
 	};
 	
 	/**		
@@ -1368,7 +1368,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set the default skin if unset: 
 		if ( !this.skinName ) {
-			this.skinName = mw.getConfig( 'playerSkinName' );
+			this.skinName = mw.getConfig( 'EmbedPlayer.SkinName' );
 		}
 			
 		
@@ -1467,7 +1467,7 @@ mw.EmbedPlayer.prototype = {
 				// Note: ideally firefox would not do random guesses at css values 	
 				( (this.height == 150 || this.height == 64 ) && this.width == 300 )
 			) {			
-			var defaultSize = mw.getConfig( 'videoSize' ).split( 'x' );
+			var defaultSize = mw.getConfig( 'EmbedPlayer.DefaultSize' ).split( 'x' );
 			this['width'] = defaultSize[0];
 			
 			// Special height default for audio tag ( if not set )  
@@ -1541,7 +1541,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set local apiProvider via config if not defined
 		if( !_this.apiProvider ) {
-			_this.apiProvider = mw.getConfig( 'apiProvider' );
+			_this.apiProvider = mw.getConfig( 'EmbedPlayer.ApiProvider' );
 		}	
 		
 		// Setup the request
@@ -1755,7 +1755,7 @@ mw.EmbedPlayer.prototype = {
 				// Hide / remove track container
 				_this.$interface.find( '.track' ).remove();  
 				// We have to re-bind hoverIntent ( has to happen in this scope )
-				if( _this.controls && _this.controlBuilder.checkOverlayControls() ){
+				if( _this.controls && _this.controlBuilder.checkEmbedPlayer.OverlayControls() ){
 					_this.controlBuilder.showControlBar();				
 					_this.$interface.hoverIntent({
 						'sensitivity': 4,
@@ -2298,10 +2298,10 @@ mw.EmbedPlayer.prototype = {
 	 * 					false if the mwEmbed player interface should not be used
 	 */
 	useNativeControls: function() {
-		if( mw.getConfig('nativePlayerControls') == true ) {
+		if( mw.getConfig('EmbedPlayer.NativeControls') === true ) {
 			return true;
 		}
-		if( mw.getConfig('nativePlayerControlsMobileSafari' ) &&
+		if( mw.getConfig('EmbedPlayer.NativeControlsMobileSafari' ) &&
 		 	mw.isMobileSafari()
 		){
 			return true;
@@ -2388,7 +2388,7 @@ mw.EmbedPlayer.prototype = {
 	* Gets code to embed the player remotely for "share" this player links
 	*/	
 	getEmbeddingHTML: function() {
-		switch( mw.getConfig( 'shareEmbedMode' ) ){
+		switch( mw.getConfig( 'EmbedPlayer.ShareEmbedMode' ) ){
 			case 'object':
 				return this.getShareEmbedObject()
 			break;

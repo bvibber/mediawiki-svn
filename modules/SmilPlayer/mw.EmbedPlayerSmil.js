@@ -135,7 +135,7 @@ mw.EmbedPlayerSmil = {
 			this.smilPlayTime = this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
 		}
 		
-		// Render time
+		// Animate to time
 		smil.renderTime( this.smilPlayTime, function(){
 			// callback for render
 			

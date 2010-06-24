@@ -38,6 +38,9 @@ mw.SmilLayout.prototype = {
 		return this.getRootLayout();
 	},
 	
+	/*
+	* Get layout
+	*/
 	getRootLayout: function(){
 		var _this = this;
 		mw.log( "SmilLayout::getRootLayout:" );  
@@ -103,9 +106,6 @@ mw.SmilLayout.prototype = {
 		return $j('<span />')
 					.text( 'Error: unknown type:' + nodeName );
 	},
-	
-	
-	
 	
 	/**
 	* Updates all the active elements for a given time

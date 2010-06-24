@@ -172,10 +172,11 @@ mw.SmilBody.prototype = {
 		}
 		var _this = this;		
 		var duration = 0;		
+		
 		// Set the block type to 
 		var blockType = this.getNodeSmilType( $node );
 				
-		// recurse on children
+		// Recurse on children
 		if( $node.children().length ){
 			$node.children().each( function( inx, childNode ){				
 				// If in a sequence add to duration 		
@@ -190,7 +191,8 @@ mw.SmilBody.prototype = {
 					}
 				}
 			});		
-		}				
+		}
+						
 		// Check the explicit duration attribute: 
 		if( $node.attr('dur') ) {			
 			//mw.log(" return dur: " + mw.smil.parseTime( $node.attr('dur') ) );			
@@ -230,6 +232,5 @@ mw.SmilBody.prototype = {
 			blockType = blockMap[ blockType ];
 		}
 		return blockType;
-	}
-	
+	}	
 }

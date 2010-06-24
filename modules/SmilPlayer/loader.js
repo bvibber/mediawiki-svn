@@ -26,7 +26,7 @@
 			"mw.SmilBuffer",
 			"mw.SmilAnimate",
 			"mw.EmbedPlayerSmil"
-		]; 
+		];
 			
 		// Add smil library set if needed
 		if( mw.CheckElementForSMIL( playerElement )  ) {				
