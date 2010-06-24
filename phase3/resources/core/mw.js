@@ -24,6 +24,9 @@ window.mw = $.extend( typeof window.mw === 'undefined' ? {} : window.mw, {
 	
 	/* Public Members */
 	
+	/**
+	 * General purpose utilities
+	 */
 	'util': new ( function() {
 		
 		/* Private Members */
