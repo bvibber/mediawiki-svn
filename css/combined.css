@@ -913,6 +913,7 @@ body.rtl .wikiEditor-ui-toolbar .group-insert {
 	width: 22px;
 	padding: 2px;
 	cursor: pointer;
+	overflow: hidden;
 }
 /* Tabs */
 .wikiEditor-ui-toolbar .tabs {

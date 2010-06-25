@@ -860,6 +860,7 @@ text-indent:-9999px;
 width:22px;
 padding:2px;
 cursor:pointer;
+overflow:hidden;
 }
 .wikiEditor-ui-toolbar .tabs{
 list-style:none;
