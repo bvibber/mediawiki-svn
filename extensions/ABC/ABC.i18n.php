@@ -37,6 +37,13 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'abc-desc' => 'Tambahakan<code>&lt;abc&gt;</code> gasan format musik ABC',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

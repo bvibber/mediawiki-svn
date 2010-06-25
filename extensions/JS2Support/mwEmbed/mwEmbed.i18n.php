@@ -524,11 +524,20 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'mwe-loading_txt' => 'Carregando ...',
+	'mwe-error_load_lib' => 'Erro: O JavaScript $1 não pode ser importado ou não define $2',
+	'mwe-apiproxy-setup' => 'Configurando proxy da API',
+	'mwe-load-drag-item' => 'Carregando o objeto arrastado',
+	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancelar',
+	'mwe-enable-gadget' => 'Ativar multimídia beta beta (mwEmbed) para todas as páginas',
+	'mwe-enable-gadget-done' => 'Gadget de multimídia beta foi ativado',
+	'mwe-must-login-gadget' => 'Para ativar o gadget você deve estar <a target="_new" href="$1">autenticado</a>',
+	'mwe-test-plural' => 'Eu fiz $1 {{PLURAL:$1|teste|testes}}',
 );
 
 /** Russian (Русский)

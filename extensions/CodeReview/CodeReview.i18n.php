@@ -7474,6 +7474,7 @@ $3',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -7490,6 +7491,7 @@ $messages['pt-br'] = array(
 	'code-prop-changes' => "''Status'' e registro de etiquetagem",
 	'codereview-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte à subversão]]',
 	'code-no-repo' => 'Nenhum repositório configurado!',
+	'code-repo-not-found' => 'O repositório <b>$1</b> não existe!',
 	'code-load-diff' => 'Carregando diferenças…',
 	'code-notes' => 'comentários recentes',
 	'code-statuschanges' => 'mudanças de estado',
@@ -7508,6 +7510,8 @@ $messages['pt-br'] = array(
 	'code-author-link' => 'ligar?',
 	'code-author-unlink' => 'desligar?',
 	'code-author-unlinksuccess' => 'O autor $1 foi desligado',
+	'code-author-badtoken' => 'Erro na sessão ao tentar executar a operação.',
+	'code-browsing-path' => "Navegando pelas revisões em '''$1'''",
 	'code-field-id' => 'Revisão',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentário de',
@@ -7538,9 +7542,12 @@ $messages['pt-br'] = array(
 	'code-rev-tag-remove' => 'Remover etiquetas:',
 	'code-rev-comment-by' => 'Comentário de $1',
 	'code-rev-comment-preview' => 'Previsão',
+	'code-rev-inline-preview' => 'Previsão:',
 	'code-rev-diff' => 'Diferenças',
 	'code-rev-diff-link' => 'dif',
+	'code-rev-diff-too-large' => 'O diff é demasiadamente grande para ser apresentado.',
 	'code-rev-purge-link' => 'purgar',
+	'code-rev-total' => 'Número total de resultados: $1',
 	'code-status-new' => 'novo',
 	'code-status-fixme' => 'corrigir',
 	'code-status-reverted' => 'revertido',
@@ -7550,6 +7557,10 @@ $messages['pt-br'] = array(
 	'code-status-deferred' => 'deferido',
 	'code-pathsearch-legend' => 'Pesquisar revisões neste repositório por caminho',
 	'code-pathsearch-path' => 'Caminho:',
+	'code-pathsearch-filter' => 'Filtro aplicado:',
+	'code-revfilter-cr_status' => 'Estado = $1',
+	'code-revfilter-cr_author' => 'Autor = $1',
+	'code-revfilter-clear' => 'Remover filtro',
 	'code-rev-submit' => 'Gravar alterações',
 	'code-rev-submit-next' => 'Gravar & próximo por resolver',
 	'code-batch-status' => 'Estado da modificação:',
@@ -7560,8 +7571,14 @@ $messages['pt-br'] = array(
 	'code-release-legend' => 'Gerar notas de lançamento',
 	'code-release-startrev' => 'Primeira rev:',
 	'code-release-endrev' => 'Última rev:',
+	'code-release-badrange' => 'Intervalo demasiado grande!',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso, $3 {{PLURAL:$4|teste falhado|testes falhados}}:',
+	'codereview-tests-running' => 'Casos de teste em execução...',
+	'codereview-tests-aborted' => 'Execução de testes abortada.',
+	'codereview-tests-failed' => 'Falhou',
 	'codereview-email-subj' => '[$1] [$2]: Novo comentário adicionado',
 	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em $3.
 

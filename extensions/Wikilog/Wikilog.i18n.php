@@ -925,6 +925,7 @@ $messages['be-tarask'] = array(
 	'wikilog-summary-categories' => 'Унесены ў $2',
 	'wikilog-summary-more' => '[[$3|→ працягваць чытаньне…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|гутаркі]])',
+	'wikilog-edit-hint' => 'Рэдагаваць артыкул вікіблёгу: $1',
 	'wikilog-edit-fieldset-legend' => 'Устаноўкі вікіблёгу:',
 	'wikilog-edit-signpub' => 'Падпісаць і апублікаваць гэты артыкул',
 	'wikilog-edit-signpub-tooltip' => 'Вядзе да таго, што гэты артыкул падпісваецца і апублікоўваецца ў гэтым вікіблёгу пад час захаваньня.
@@ -2441,6 +2442,7 @@ Kommentti näkyy vasta kun moderaattori on tarkistanut sen.',
 
 /** French (Français)
  * @author IAlex
+ * @author Peter17
  * @author PieRRoMaN
  * @author Urhixidur
  * @author Yekrats
@@ -2501,6 +2503,7 @@ Il doit d’abord être créé afin de pouvoir publier des articles et utiliser 
 	'wikilog-summary-categories' => 'Classé dans $2',
 	'wikilog-summary-more' => '[[$3|→ lire la suite...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discuter]])',
+	'wikilog-edit-hint' => 'Modifier l’article $1 du wikilog',
 	'wikilog-edit-fieldset-legend' => 'Options de wikilog :',
 	'wikilog-edit-signpub' => 'Signer et publier cet article',
 	'wikilog-edit-signpub-tooltip' => 'Fait que l’article soit signé et publié dans son wikilog lors de la sauvegarde.
@@ -2522,6 +2525,7 @@ Décochez cette case pour que l’article reste à l’état de brouillon.',
 	'wikilog-comment-reject' => 'Rejeter ce commentaire (effet immédiat)',
 	'wikilog-newtalk-text' => '<!-- page vierge créée par Wikilog -->',
 	'wikilog-newtalk-summary' => 'créé automatiquement par Wikilog',
+	'wikilog-feed-ns-title' => '$1 articles wikilog',
 	'wikilog-feed-description' => 'Lire les articles les plus récents dans ce fil de nouvelles.',
 	'wikilog-comment-feed-title1' => 'Commentaire de $2 (# $1)',
 	'wikilog-comment-feed-title2' => 'Commentaire de $2 à $3 (# $1)',
@@ -4109,6 +4113,7 @@ $messages['mk'] = array(
 	'wikilog-summary-categories' => 'Заведено под $2',
 	'wikilog-summary-more' => '[[$3|→ продолжете со читање...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|разговор]])',
+	'wikilog-edit-hint' => 'Уредување на статија од викидневникот: $1',
 	'wikilog-edit-fieldset-legend' => 'Нагодувања на викидневникот:',
 	'wikilog-edit-signpub' => 'Потпиши и објави ја статијава.',
 	'wikilog-edit-signpub-tooltip' => 'Предизвикува потпишување и објавување на овој викидневник при негово зачувување.
@@ -5062,7 +5067,7 @@ $messages['ps'] = array(
  * @author Juliano F. Ravasi
  */
 $messages['pt'] = array(
-	'wikilog-desc' => "Adiciona funcionalidades de ''blog'', criando um híbrido ''wiki-blog''",
+	'wikilog-desc' => 'Adiciona funcionalidades de blogue, criando um híbrido wiki-blogue',
 	'wikilog-auto' => 'Wikilog Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Criar comentários em artigos wikilog',
@@ -5117,6 +5122,7 @@ Para publicar artigos e activar outras funcionalidade do wikilog, tem que criá-
 	'wikilog-summary-categories' => 'Categorizado em $2',
 	'wikilog-summary-more' => '[[$3|→ continuar a ler...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussão]])',
+	'wikilog-edit-hint' => 'Editar o artigo wikilog: $1',
 	'wikilog-edit-fieldset-legend' => 'Opções wikilog:',
 	'wikilog-edit-signpub' => 'Assinar e publicar este artigo',
 	'wikilog-edit-signpub-tooltip' => 'Causa que este artigo seja assinado e publicado no respectivo wikilog quando for gravado.
@@ -5546,6 +5552,7 @@ Tu putisse mettere 'nu pseudonime sus a 'u messagge pe idendificà 'u commende t
 /** Russian (Русский)
  * @author Aleksandrit
  * @author EugeneZelenko
+ * @author G0rn
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -5604,6 +5611,7 @@ $messages['ru'] = array(
 	'wikilog-summary-categories' => 'Отнесено к $2',
 	'wikilog-summary-more' => '[[$3|→ продолжить чтение…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|обсуждение]])',
+	'wikilog-edit-hint' => 'Редактировать статью викилога: $1',
 	'wikilog-edit-fieldset-legend' => 'Настройки викилога:',
 	'wikilog-edit-signpub' => 'Подписать и опубликовать эту статью',
 	'wikilog-edit-signpub-tooltip' => 'Вызывает подписывание и опубликование статьи в викилоге при сохранении.

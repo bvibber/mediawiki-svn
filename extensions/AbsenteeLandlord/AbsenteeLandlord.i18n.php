@@ -122,11 +122,12 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'absenteelandlord-reason' => 'Clowyd y gronfa ddata hon yn awtomatig oherwydd disymudrwydd y gweinyddwyr.',
-	'absenteelandlord-desc' => "Yn awto-gloi'r gronfa ddata wici os yw'r gweithredyddion system yn anactif am amser penodol",
+	'absenteelandlord-desc' => "Yn awto-gloi cronfa ddata'r wici pan nad yw neb o'r gweinyddwyr wedi gweithredu ers meityn",
 );
 
 /** Danish (Dansk)

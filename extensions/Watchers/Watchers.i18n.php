@@ -857,16 +857,20 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'watchers' => 'Vigiadores',
 	'watchers-desc' => 'Mostra [[Special:Watchers|quais utilizadores têm uma dada página na sua lista de vigiados]]',
 	'watchers_link_title' => 'Quem está vigiando esta página?',
 	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',
+	'watchers-error-invalid-page' => "'''Erro:''' \"\$1\" é um título de página inválido.",
 	'watchers_header' => '{{PLURAL:$2|Utilizador que está|Utilizadores que estão}} vigiando "[[:$1]]"',
 	'watchers_noone_watches' => 'Ninguém está vigiando esta página.',
 	'watchers_x_or_more' => '$1 ou mais {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
 	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
+	'watchers-num' => '$1 {{PLURAL:$1|usuário tem|usuário têm}} a página [[:$2]] nas suas páginas vigiadas.',
+	'right-watchers-list' => '[[Special:Watchers|Listar usuários que vigiam uma página específica]]',
 );
 
 /** Romanian (Română)

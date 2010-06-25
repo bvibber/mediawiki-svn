@@ -270,6 +270,17 @@ $messages['oc'] = array(
 	'poolcounter-remote-error' => 'Error del servidor de comptador de gropament : $1',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'poolcounter-desc' => 'Klient MediaWiki dla demona nadzorującego klaster poolcounter.py',
+	'poolcounter-connection-error' => 'Błąd podczas łączenia z serwerem nadzorującym klaster – $1',
+	'poolcounter-read-error' => 'Błąd odczytu z serwera nadzorującego klaster',
+	'poolcounter-write-error' => 'Błąd podczas zapisywania do serwera nadzorującego klaster',
+	'poolcounter-remote-error' => 'Błąd serwera nadzorującego klaster – $1',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

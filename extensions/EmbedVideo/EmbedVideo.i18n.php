@@ -179,6 +179,19 @@ $messages['nl'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo heeft een ongeldige breedteparameter "$1" ontvangen.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'embedvideo-desc' => 'Dodaje funkcję parsera do osadzania wideo z popularnych źródeł',
+	'embedvideo-missing-params' => 'Brak wymaganego parametru dla EmbdedVideo',
+	'embedvideo-bad-params' => 'EmbedVideo odebrał zły parametr.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo otrzymał niezrozumiały tekstowy parametr „<code>$1</code>“.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo nie rozpoznaje usługi wideo „<code>$1</code>“.',
+	'embedvideo-bad-id' => 'EmbedVideo otrzymał zły identyfikator „$1“ dla usługi „$2“.',
+	'embedvideo-illegal-width' => 'EmbedVideo otrzymał niedopuszczalną wartość parametru szerokości „$1“.',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

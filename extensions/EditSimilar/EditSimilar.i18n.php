@@ -557,13 +557,14 @@ Veja {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Firilacroco
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
 	'editsimilar-desc' => 'Încurajează utilizatorii să modifice o pagină similară după salvearea unei pagini',
 	'editsimilar-thanks' => 'Mulțumim pentru contribuție.
-Vizitează și {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.',
+Vedeți și {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Mulțumim pentru contribuție.
 Şi {{PLURAL:$2|această pagină|aceste pagini}} ar avea nevoie de ajutor: $1.',
 	'editsimilar-thankyou' => 'Mulțumim pentru contribuția dumneaovastră, $1!',

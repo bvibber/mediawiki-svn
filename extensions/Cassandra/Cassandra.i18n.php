@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'cassandra-desc' => '{{desc}}',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -37,6 +44,13 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'cassandra-desc' => 'Čuva ispravljeni tekst u [http://cassandra.apache.org/ Apache Cassandra] bazi podataka',
+);
+
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'cassandra-desc' => 'Cadw testun diwygiad yng nghronfa ddata [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
 /** German (Deutsch)

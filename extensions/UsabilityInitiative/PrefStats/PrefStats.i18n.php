@@ -261,6 +261,8 @@ $messages['bn'] = array(
 	'prefstats-factor-twoweeks' => 'দুই সপ্তাহ',
 	'prefstats-factor-fourweeks' => 'চার সপ্তাহ',
 	'prefstats-factor-default' => 'পূর্ব নির্ধারিত মাপে ফিরে যাও',
+	'prefstats-legend-out' => 'ত্যাগ করুন',
+	'prefstats-legend-in' => 'চেষ্টা করুন',
 );
 
 /** Breton (Brezhoneg)

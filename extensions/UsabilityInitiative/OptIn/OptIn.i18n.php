@@ -650,6 +650,7 @@ $messages['bg'] = array(
  * @author Wikitanvir
  */
 $messages['bn'] = array(
+	'optin' => 'ইউজাবিলিটি ইনিশিয়েটিভ চালু করুন',
 	'optin-desc' => 'ব্যবহারকারীদের বেটা ব্যবহারের সুযোগ দিন, ইউজাবিলিটি ইনিসিয়াটিভ হল সাম্প্রতিকতম ব্যবহারযোগ্যতা বৃদ্ধি।',
 	'optin-title-optedout' => 'বেটা চেষ্টা করুন',
 	'optin-title-optedin' => 'বেটা ছেড়ে যান',
@@ -662,6 +663,10 @@ $messages['bn'] = array(
 	'optin-feedback-intro' => 'বেটা ব্যবহার করার জন্য ধন্যবাদ।
 নতুন ইন্টারফেস সম্পর্কে আপনি কি ভাবছেন তা আমরা জানতে চাই, যদি আপনি নিচের ঐচ্ছিক জরিপ ফরমটি পূরণ করেন তাহলে আমরা খুবই খুশি হবো।',
 	'optin-feedback-back' => 'যদি জরিপ ফরমটি পূরণ করতে না চান, তাহলে আপনি $1 এ ফিরে যেতে পারেন।',
+	'optin-success-in' => 'আপনি এখন বেটা ব্যবহার করছেন।
+আপনি যে-কোনো সময় পাতার ওপরের "{{int:optin-leave}}" লিংকে ক্লিক করে পূর্বের অবস্থায় ফিরে যেতে পারবেন।',
+	'optin-success-out' => 'আপনি সফলভাবে বেটা ত্যাগ করেছেন।
+আপনি যে-কোনো সময় পাতার ওপরের "{{int:optin-try}}" লিংকে ক্লিক করে আবার বেটাতে ফিরে যেতে পারবেন।',
 	'optin-success-feedback' => 'আপনার ফিডব্যাকের জন্য ধন্যবাদ!',
 	'optin-accept-short' => 'চলুন শুরু করি!',
 	'optin-accept-long' => 'বেটা চেষ্টা করুন',
@@ -4868,24 +4873,24 @@ $messages['ro'] = array(
 	'optin-title-justoptedout' => 'Vă mulțumim că ați încercat Beta',
 	'optin-title-feedback' => 'Păreri în legătură cu Beta',
 	'optin-needlogin' => 'Trebuie să vă [$1 autentificați] pentru a încerca Beta.',
-	'optin-intro' => 'Wikipedia Usability Inititiative a fost lucrat din greu pentru a îmbunătăți gradul de utilizare al Wikipedia.
-Doriți să încercați versiunea noastră Beta ?',
-	'optin-feedback-intro' => 'Mulțumesc că folosiți versiunea Beta.
-Ne-am dori să știm ce părere aveți de noua noastră interfață, așadar am aprecia dacă ați completat sondajul opțional de mai jos.',
-	'optin-feedback-back' => 'Dacă nu doriți să completați sondajul puteți să reveniți la $1.',
+	'optin-intro' => 'Inițiativa de Utilizabilitate a Wikipediei a făcut eforturi pentru a ridica nivelul de utilizabilitate al proiectului.
+Doriți să încercați versiunea noastră Beta?',
+	'optin-feedback-intro' => 'Vă mulțumim că testați versiunea Beta.
+Dorim să aflăm ce părere aveți despre noua noastră interfață. Vă rugăm așadar să completați chestionarul opțional de mai jos.',
+	'optin-feedback-back' => 'Dacă nu doriți să participați la sondaj vă puteți întoarce la pagina $1.',
 	'optin-success-in' => 'Încercați acum versiunea Beta.
-Puteți opta înapoi în orice moment, făcând clic pe legătura „{{int:optin-leave}}” pe partea de sus a paginii.',
+Puteți renunța în orice moment, făcând clic pe legătura „{{int:optin-leave}}” din partea de sus a paginii.',
 	'optin-leave-cancel' => 'Dacă doriți să continuați folosirea versiunii Beta, puteți să reveniți la $1.',
 	'optin-success-out' => 'Ați părăsit cu succes versiunea Beta.
 Puteți să încercați iar în orice moment apăsând clic pe legătura „{{int:optin-try}}” pe partea de sus a paginii.',
 	'optin-success-feedback' => 'Vă mulțumim pentru părere!',
-	'optin-accept-short' => 'S-o facem!',
+	'optin-accept-short' => 'Să vedem!',
 	'optin-accept-long' => 'Încercați Beta',
 	'optin-accept-long-anon' => 'Autentificați-vă și încercați Beta',
 	'optin-deny-short' => 'Nu, mulțumesc',
 	'optin-deny-long' => 'Reveniți la pagina anterioară',
 	'optin-submit-out' => 'Părăsiți Beta',
-	'optin-submit-feedback' => 'Trimiteți-vă părerea',
+	'optin-submit-feedback' => 'Trimiteți răspunsurile',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Nu',
 	'optin-survey-intro' => 'Mulțumim că folosiți versiunea Beta.
@@ -4900,9 +4905,9 @@ Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Nu mi-a plăcut noua bară de unelte.',
 	'optin-survey-answer-whyoptout-other' => 'Alt motiv:',
 	'optin-survey-question-explain' => 'Vă rugăm explicați sau elaborați răspunsul dumneavoastră mai jos:',
-	'optin-survey-question-techfail' => 'Ați trecut prin vreo defecțiune tehnică în timp ce ați utilizat versiunea Beta ?',
+	'optin-survey-question-techfail' => 'Ați găsit vreo defecțiune tehnică în timp ce ați utilizat versiunea Beta ?',
 	'optin-survey-question-techfail-ifyes' => 'Dacă da, vă rugăm elaborați sau explicați:',
-	'optin-survey-question-usedtoolbar' => 'Ați folosit noua bara de unelte expansibilă pentru a modifica o pagină ?',
+	'optin-survey-question-usedtoolbar' => 'Ați folosit noua bară de unelte expansibilă pentru a modifica o pagină?',
 	'optin-survey-question-usedtoolbar-ifyes' => 'Dacă da, ce ți-a plăcut la ea ? Ce nu ți-a plăcut la ea ?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Dacă nu, de ce nu ? Veți dori în viitor ? Vă rugăm explicați.',
 	'optin-survey-question-different' => 'Ce am fi putut face diferit pentru a nu părăsi versiunea Beta ?',
@@ -4912,14 +4917,14 @@ Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar
 	'optin-survey-question-os' => 'Ce sistem de operare folosiți?',
 	'optin-survey-answer-os-other' => 'Alt sistem de operare:',
 	'optin-survey-question-res' => 'Care este rezoluția ecranului dumneavoastră?',
-	'optin-survey-question-changes' => 'Ce modificări v-ar plăcea să vedeți în versiunea Beta în viitor (vă rugăm selectați tot ce se aplică) ?',
-	'optin-survey-answer-changes-nav' => 'Să facă navigarea generală a saitului mai ușoară de folosit.',
-	'optin-survey-answer-changes-edittools' => 'Să crească și să îmbunătățească uneltele de editare.',
-	'optin-survey-answer-changes-upload' => 'Să îmbunătățească conținutul și încărcările media.',
-	'optin-survey-answer-changes-richtext' => 'Să dezvolte unelte de editare similare ca editoarele „rich-text”.',
-	'optin-survey-answer-changes-lookfeel' => 'Să actualizeze „aspectul și simțul” saitului.',
-	'optin-survey-answer-changes-predictability' => 'Să se îmbunătățească predictibilitatea de performanță.',
-	'optin-survey-answer-changes-custom' => 'Să se permită personalizarea utilizatorului mai mare',
+	'optin-survey-question-changes' => 'Ce modificări v-ar plăcea să vedeți în versiunea Beta în viitor? Alegeți toate răspunsurile potrivite.',
+	'optin-survey-answer-changes-nav' => 'Navigarea sitului să fie mai ușoară.',
+	'optin-survey-answer-changes-edittools' => 'Uneltele de editare să fie mai bune și mai numeroase.',
+	'optin-survey-answer-changes-upload' => 'Trimiterea de conținut și de fișiere să fie îmbunătățită.',
+	'optin-survey-answer-changes-richtext' => "Unelte de editare ca în editoarele ''rich-text''.",
+	'optin-survey-answer-changes-lookfeel' => 'Aspectul și funcționalitatea sitului să fie actualizate.',
+	'optin-survey-answer-changes-predictability' => 'Uneltele să aibă un comportament mai previzibil.',
+	'optin-survey-answer-changes-custom' => 'Un grad mai mare de personalizare.',
 	'optin-survey-answer-changes-other' => 'Altele:',
 	'optin-improvements2' => '== Ce s-a îmbunătățit? ==
 [[File:UsabilityToolbar.png|left|link=|Captură de ecran cu noua trusă de unelte de editare]]

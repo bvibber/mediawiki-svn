@@ -197,6 +197,18 @@ $messages['nl'] = array(
 	'prefs-category' => 'Categorie',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'categorymultisort-desc' => 'Umożliwia sortowanie kategorii z użyciem różnych kluczy',
+	'categorymultisort-defaultsortkey-name' => 'Domyślnie',
+	'categorymultisort-sortkey' => 'Sposób sortowania',
+	'categorymultisort-go' => 'Dalej',
+	'categorymultisort-default-sortkey' => 'Domyślne sortowanie',
+	'prefs-category' => 'Kategoria',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

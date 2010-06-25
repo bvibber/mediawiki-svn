@@ -4455,13 +4455,14 @@ $wgGoogleMapsMessages['rif'] = array(
  * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $wgGoogleMapsMessages['ro'] = array(
-	'gm-incompatible-browser-link' => 'schimbă culoarea de umplere',
+	'gm-incompatible-browser-link' => 'Click aici pentru a vedea o listă de navigatoare compatibile.',
 	'gm-balloon-title' => 'Titlu:',
-	'gm-balloon-link-article' => 'Legătură la această pagină (opţional):',
+	'gm-balloon-link-article' => 'Legătură către această pagină (opțional):',
 	'gm-remove' => 'elimină',
-	'gm-caption' => 'Titlu',
+	'gm-caption' => 'Descriere',
 	'gm-tab-title' => 'Titlu etichetă',
 	'gm-tab' => 'Etichetă',
 	'gm-start-path' => 'începe o rută',

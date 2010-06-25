@@ -263,6 +263,25 @@ $messages['nl'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Traditioneel',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'categorymultisortchinese-desc' => 'Umożliwia zmianę sposobu sortowania kategorii zgodnie z różnymi Chińskimi transkrypcjami',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandaryński – Hanyu pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandaryński – Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandaryński – Wade‐Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandaryński – MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandaryński – Tongyong pinyin',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantoński – Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Kreski',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Kreski – Uproszczony',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Kreski – Tradycyjny',
+	'categorymultisort-sortkey-name-radical' => 'Klucz',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Klucz – Uproszczony',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Klucz – Tradycyjny',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu

@@ -1463,6 +1463,7 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Cin
  * @author KlaudiuMihaila
  * @author Minisarm
@@ -1474,7 +1475,7 @@ $messages['ro'] = array(
 	'sitematrix-summary' => 'Această pagină specială afișează toate proiectele wiki ale Wikimedia.',
 	'sitematrix-desc' => 'Afișați o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
 	'sitematrix-language' => 'Limbă',
-	'sitematrix-others' => 'Alte proiecte ale Wikimedia',
+	'sitematrix-others' => 'Alte proiecte ale Fundației Wikimedia',
 	'sitematrix-total' => "'''Număr total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',

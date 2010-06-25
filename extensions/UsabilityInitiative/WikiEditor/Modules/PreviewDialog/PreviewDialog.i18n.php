@@ -54,6 +54,7 @@ $messages['aln'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
+	'wikieditor-previewDialog-preference' => 'مكّن حوار المعاينة',
 	'wikieditor-previewDialog-tab' => 'عاين',
 	'wikieditor-previewDialog-loading' => 'يُحمّل...',
 );
@@ -72,6 +73,7 @@ $messages['arz'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
+	'wikieditor-previewDialog-preference' => 'Уключыць дыялёг папярэдняга прагляду',
 	'wikieditor-previewDialog-tab' => 'Папярэдні прагляд',
 	'wikieditor-previewDialog-loading' => 'Загрузка…',
 );
@@ -161,10 +163,12 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author DaSch
+ * @author Kghbln
  * @author Lyzzy
  * @author MF-Warburg
  */
 $messages['de'] = array(
+	'wikieditor-previewDialog-preference' => 'Aktiviere die Abfrage zur Vorschau',
 	'wikieditor-previewDialog-tab' => 'Vorschau',
 	'wikieditor-previewDialog-loading' => 'lädt …',
 );
@@ -256,6 +260,7 @@ $messages['fi'] = array(
  * @author Jean-Frédéric
  */
 $messages['fr'] = array(
+	'wikieditor-previewDialog-preference' => 'Activer la boîte de dialogue d’aperçu',
 	'wikieditor-previewDialog-tab' => 'Prévisualisation',
 	'wikieditor-previewDialog-loading' => 'Chargement...',
 );
@@ -310,10 +315,12 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author Bdamokos
  * @author Dani
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'wikieditor-previewDialog-preference' => 'Előnézet párbeszédablak bekapcsolása',
 	'wikieditor-previewDialog-tab' => 'Előnézet',
 	'wikieditor-previewDialog-loading' => 'Betöltés…',
 );
@@ -406,6 +413,7 @@ $messages['la'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'wikieditor-previewDialog-preference' => 'Preview-Dialog aschalten',
 	'wikieditor-previewDialog-tab' => 'Kucken ouni ze späicheren',
 	'wikieditor-previewDialog-loading' => 'Lueden...',
 );
@@ -423,6 +431,7 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'wikieditor-previewDialog-preference' => 'Овозможи дијалог за преглед',
 	'wikieditor-previewDialog-tab' => 'Преглед',
 	'wikieditor-previewDialog-loading' => 'Вчитувам...',
 );
@@ -499,6 +508,7 @@ $messages['pdc'] = array(
  * @author Wpedzich
  */
 $messages['pl'] = array(
+	'wikieditor-previewDialog-preference' => 'Włącz okno podglądu',
 	'wikieditor-previewDialog-tab' => 'Podgląd',
 	'wikieditor-previewDialog-loading' => 'Wczytywanie...',
 );
@@ -531,11 +541,13 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'wikieditor-previewDialog-preference' => 'Ativar o diálogo de previsão',
 	'wikieditor-previewDialog-tab' => 'Previsão',
 	'wikieditor-previewDialog-loading' => 'Carregando...',
 );
@@ -566,9 +578,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author G0rn
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
+	'wikieditor-previewDialog-preference' => 'Включить диалог предпросмотра',
 	'wikieditor-previewDialog-tab' => 'Предпросмотр',
 	'wikieditor-previewDialog-loading' => 'Загрузка…',
 );
@@ -601,6 +615,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'wikieditor-previewDialog-preference' => 'Omogoči predogledno pogovorno okno',
 	'wikieditor-previewDialog-tab' => 'Predogled',
 	'wikieditor-previewDialog-loading' => 'Nalaganje ...',
 );

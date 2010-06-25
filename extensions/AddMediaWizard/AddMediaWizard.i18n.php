@@ -58,10 +58,11 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'addmediawizard-desc' => 'Ychwanegu dewin cyfryngau, a ddatblygwyd mewn partneriaeth gan Kaltura a Wikimedia Foundation',
+	'addmediawizard-desc' => 'Ychwanegu dewin cyfryngau, a ddatblygwyd gan Kaltura a Sefydliad Wikimedia ar y cyd',
 );
 
 /** German (Deutsch)

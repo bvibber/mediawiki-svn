@@ -967,8 +967,22 @@ $messages['pt-br'] = array(
 	'mwe-clipedit-cancel_image_insert' => 'Cancelar a inserção',
 	'mwe-clipedit-sc_attributes' => 'Edição dos detalhes do clipe',
 	'mwe-clipedit-sc_inoutpoints' => 'Estabelecer pontos de entrada e saída',
+	'mwe-clipedit-sc_overlays' => 'Sobreposições',
+	'mwe-clipedit-sc_audio' => 'Controle de som',
 	'mwe-clipedit-sc_duration' => 'Duração',
+	'mwe-clipedit-template_properties' => 'Propriedades do modelo',
+	'mwe-clipedit-custom_title' => 'Título personalizado',
+	'mwe-clipedit-edit_properties' => 'Editar propriedades',
 	'mwe-clipedit-other_properties' => 'Outras propriedades',
+	'mwe-clipedit-resource_page' => 'Página de recursos:',
+	'mwe-clipedit-set_in_out_points' => 'Estabelecer pontos de entrada e saída',
+	'mwe-clipedit-start_time' => 'Hora de início',
+	'mwe-clipedit-end_time' => 'Hora de fim',
+	'mwe-clipedit-preview_inout' => 'Prever pontos de entrada e saída',
+	'mwe-clipedit-edit-tools' => 'Instrumentos de edição',
+	'mwe-clipedit-inline-description' => 'Título',
+	'mwe-clipedit-edit-video-tools' => 'Ferramentas de edição de vídeo:',
+	'mwe-clipedit-duration' => 'Duração:',
 );
 
 /** Russian (Русский)
