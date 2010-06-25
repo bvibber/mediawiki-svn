@@ -140,7 +140,7 @@ class ActiveStrategy {
 	}
 	
 	static function getTaskForcePageConditions( $taskForces, &$tables, &$fields, &$conds,
-							&$join_conds, &$lookup ) {
+							&$joinConds, &$lookup ) {
 		$categories = array();
 		foreach( $taskForces as $row ) {
 			$text = self::getTaskForceName( $row->tf_name );
@@ -159,19 +159,16 @@ class ActiveStrategy {
 		$lookup = $categories;
 	}
 	
-	static function getProposalPageConditions( $proposals, &$tables, &$fields, &$conds,
+	static function getProposalPageConditions( &$tables, &$fields, &$conds,
 							&$join_conds, &$lookup ) {
 		$fields[] = 'page.page_title AS keyfield';
 		$conds['page_namespace'] = 106;
-		$titles = array();
-		foreach( $proposals as $row ) {
-			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$titles[$row->page_title] = $title->getPrefixedText();
-		}
 		
-		$conds['page_title'] = array_keys($titles);
-		
-		$lookup = $titles;
+		$tables[] = 'categorylinks as finishedcategory';
+		$conds[] = 'finishedcategory.cl_from IS NULL';
+		$join_conds['categorylinks as finishedcategory'] =
+			array( 'left join', array( 'cl_from=page_id',
+				'cl_to' => 'Archived_Done' ) );
 	}
 	
 	static function getOutput( $args ) {
@@ -194,7 +191,7 @@ class ActiveStrategy {
 		if ( $args['type'] == 'taskforces' ) {
 			$masterPages = self::getTaskForces();
 		} elseif ( $args['type'] == 'proposal' ) {
-			$masterPages = self::getProposals();
+//			$masterPages = self::getProposals();
 		}
 		
 		// Sorting by number of members doesn't require any 
@@ -205,15 +202,16 @@ class ActiveStrategy {
 		$tables = array( );
 		$fields = array( );
 		$conds = array();
+		$joinConds = array();
 		$options = array( 'GROUP BY' => 'keyfield', 'ORDER BY' => 'value DESC' );
-		$lookup = array();
+		$lookup = NULL;
 		
 		if ( $args['type'] == 'taskforces' ) {
 			self::getTaskForcePageConditions( $masterPages, $tables, $fields,
-								$conds, $join_conds, $lookup );
+								$conds, $joinConds, $lookup );
 		} elseif( $args['type'] == 'proposal' ) {
-			self::getProposalPageConditions( $masterPages, $tables, $fields,
-								$conds, $join_conds, $lookup );
+			self::getProposalPageConditions( $tables, $fields,
+							$conds, $joinConds, $lookup );
 		}
 		
 		$tables[] = 'page';
@@ -228,6 +226,11 @@ class ActiveStrategy {
 						"rev_timestamp > $cutoff",
 						"rev_page IS NOT NULL" ) );
 			$fields[] = 'count(distinct rev_id) + count(distinct thread_id) as value';
+			$tables[] = 'user_groups';
+			$joinConds['user_groups'] = array( 'left join',
+							array( 'ug_user != 0', 'ug_user=rev_user',
+								'ug_group' => 'bot' ) );
+			$conds[] = 'ug_user IS NULL';
 			
 			// Include LQT posts
 			$tables[] = 'thread';
@@ -243,6 +246,8 @@ class ActiveStrategy {
 			$fields[] = 'count(distinct pl_from) as value';
 		}
 		
+//		die( $db->selectSQLText( $tables, $fields, $conds, __METHOD__, $options, $joinConds ) );
+		
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
 		
@@ -250,7 +255,12 @@ class ActiveStrategy {
 		
 		foreach( $result as $row ) {
 			$number = $row->value;
-			$taskForce = $lookup[$row->keyfield];
+			$taskForce = $lookup ? $lookup[$row->keyfield] : $row->keyfield;
+			
+			if (!$lookup && $args['type'] == 'proposal') {
+				$title = Title::makeTitleSafe( 106, $taskForce );
+				$taskForce = $title->getPrefixedText();
+			}
 			
 			if ( isset( $count[$taskForce] ) ) {
 				$count[$taskForce] += $number;
