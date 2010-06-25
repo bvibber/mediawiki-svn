@@ -222,12 +222,13 @@ mw.Smil.prototype = {
 		var contextUrl = mw.absoluteUrl( this.smilUrl );		
 		return mw.absoluteUrl( assetPath, contextUrl );
 	},
+	
 	/**
 	 * Get the smil resource type based on nodeName and type attribute
 	 */
-	getRefType: function( 
+	getRefType: function( smilElement ) {		
 		// Get the smil type
-		var smilType = nodeName.toLowerCase();
+		var smilType = $j( smilElement ).get(0).nodeName.toLowerCase();
 		if( smilType == 'ref' ){
 			// If the smilType is ref, check for a content type
 			switch( $j( smilElement ).attr( 'type' ) ) {
@@ -241,6 +242,7 @@ mw.Smil.prototype = {
 				break;
 			}
 		}
+		return smilType;
 	},
 	
 	/** 

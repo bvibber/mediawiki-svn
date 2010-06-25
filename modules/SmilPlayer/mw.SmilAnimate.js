@@ -46,28 +46,28 @@ mw.SmilAnimate.prototype = {
 		var animateTimeDelta =  0;
 		
 		this.animateInterval[ this.smil.getAssetId( smilElement ) ] = 
-		setInterval(
-			function(){
-				var timeElapsed =  new Date().getTime() - animationStartTime;
-				// Set the animate Time delta 
-				animateTimeDelta += _this.callbackRate;
-				
-				if( animateTimeDelta > deltaTime || timeElapsed > deltaTime ){
-					// Stop animating:
-					clearInterval( _this.animateInterval[ _this.smil.getAssetId( smilElement ) ]  );
-					return ;
-				}
-				
-				if( Math.abs( timeElapsed - animateTimeDelta ) > 100 ){
-					mw.log( "Error more than 100ms lag within animateTransform loop: te:" + timeElapsed + 
-						' td:'  + animateTimeDelta + ' diff: ' + Math.abs( timeElapsed - animateTimeDelta ) );
-				}
-				
-				// Do the transform request: 				
-				_this.transformElement( smilElement, animateTime + ( animateTimeDelta/1000 ) );
-			}, 
-			this.callbackRate 
-		);	
+			setInterval(
+				function(){
+					var timeElapsed =  new Date().getTime() - animationStartTime;
+					// Set the animate Time delta 
+					animateTimeDelta += _this.callbackRate;
+					
+					if( animateTimeDelta > deltaTime || timeElapsed > deltaTime ){
+						// Stop animating:
+						clearInterval( _this.animateInterval[ _this.smil.getAssetId( smilElement ) ]  );
+						return ;
+					}
+					
+					if( Math.abs( timeElapsed - animateTimeDelta ) > 100 ){
+						mw.log( "Error more than 100ms lag within animateTransform loop: te:" + timeElapsed + 
+							' td:'  + animateTimeDelta + ' diff: ' + Math.abs( timeElapsed - animateTimeDelta ) );
+					}
+					
+					// Do the transform request: 				
+					_this.transformElement( smilElement, animateTime + ( animateTimeDelta/1000 ) );
+				}, 
+				this.callbackRate 
+			);	
 	},
 	
 	/**

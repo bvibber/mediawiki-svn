@@ -20,7 +20,7 @@ mw.SmilBuffer.prototype = {
 	timeIsBuffered: function( time, callback ) {
 		
 		// Get active body elements
-		var activeElements = this.smil.getBody().getElementsForTime( time );
+		//this.smil.getBody().getElementsForTime( time );
 		// Check load status per temporal offset 
 		
 		// setTimeout to call self until buffer is ready
