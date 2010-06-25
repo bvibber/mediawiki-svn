@@ -33,8 +33,10 @@
                     
                 <animate attributeName="panZoom" begin="13.0"
                     dur="1.5s" fill="freeze" values="9,1115,41%,20%;573,2073,64%,17%"/>
+                    
                 <animate attributeName="panZoom" begin="16.0"
                     dur="1.5s" fill="freeze" values="573,2073,64%,17%;1118,1365,14%,8%"/>
+                    
                 <animate attributeName="panZoom" begin="18.0"
                     dur="1.5s" fill="freeze" values="1118,1365,14%,8%;0,0,100%,100%"/>
             </img>
@@ -52,9 +54,7 @@
                <tev begin="16s"/>
                  as well as squeeze-ready organges.
                <clear begin="19s"/>
-<!-- The screen does not clear if there is no additional character text.... -->
-                .
-
+				 Cabbage!!! 
             </smilText>
 
         </par>
