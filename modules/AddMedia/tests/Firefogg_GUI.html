@@ -2,8 +2,35 @@
 <html><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Firefogg - Make Ogg/Webm Video in your Browser</title>
-	  <!--<script type="text/javascript" src="../../../ResourceLoader.php?class=window.jQuery,mwEmbed"></script>   -->  
-	 <script type="text/javascript" src="../../../mwEmbed.js?debug=true"></script> 
+     <script type="text/javascript">
+     	// list of language with high percentage of messages translated: 
+		var langSupported = ['en','mk','dsb','gsw','ru','be-tarask','hsb','es','gl','fr','ia','de','nl','pt','ja','hu','tr'];
+    	function getUrlParam( name ){
+		  name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		  var regexS = "[\\?&]"+name+"=([^&#]*)";
+		  var regex = new RegExp( regexS );
+		  var results = regex.exec( window.location.href );
+		  if( results == null )
+		    return "";
+		  else
+		    return results[1];
+		}
+     	var langKey = ( getUrlParam( 'uselang' ) == '' ) ? 'en' : getUrlParam( 'uselang' );
+     	
+     	var keyOky = false; 
+     	for(var i in langSupported){
+     		if( langKey == langSupported[i]){
+     			keyOky = true;
+     			break;
+     		}
+     	}
+     	if( !keyOky ){     	
+     		langKey = 'en';
+     	}
+     	
+     	document.write( '<script type="text/javascript" src="../../../ResourceLoader.php?class=window.jQuery,mwEmbed,mw.style.mwCommon&uselang=' + langKey + '"><\/script>' );  
+     </script>	  
+	 <!-- <script type="text/javascript" src="../../../mwEmbed.js?debug=true"></script> -->  
 <style type="text/css" media="all">
 body {
   margin: 0;
@@ -73,7 +100,26 @@ mw.ready(function(){
 			'encoder_interface'	: true,
 			'encode_local' 		: true
 		});
-	});
+		$j( '#fogg-status' ).append( 
+			gM('fogg-wont-upload-to-server' ),
+			$j('<br />' )
+		 );
+
+		for( var i = 0; i < langSupported.length; i++ ){
+			var urlParts = mw.parseUri( document.URL );
+			$j( '#fogg-status' ).append( 
+				$j('<a />').text( 
+					mw.Language.names[	langSupported[i] ]
+				)
+				.attr( {
+					'href':  urlParts.protocol + '://' + urlParts.host + 
+						urlParts.path + '?uselang=' + langSupported[i]
+				} ),
+				$j('<span />').text( ' | ' )
+			)
+		}
+	});		
+	
 });
 </script>
 </head><body>
@@ -84,8 +130,8 @@ mw.ready(function(){
 </a><br>
 Make Ogg/Webm Video</h1>
 <br>	
-<div style="margin-right:auto;margin-left:auto;width:500px;">
-Note: Your video file will be locally encoded and not upload to any server
+<div id="fogg-status" style="margin-right:auto;margin-left:auto;width:500px;">
+
 </div> 
 	<br>
 		

@@ -3,6 +3,7 @@
  */
 
 mw.addMessages({
+	"fogg-wont-upload-to-server" : "Note: Your video file will be locally encoded and not upload to any server",
 	"fogg-save_local_file" : "Encode to File",	
 	"fogg-help-sticky" : "Help (click to stick)",
 	"fogg-cg-preset" : "Preset: <strong>$1<\/strong>",
