@@ -635,7 +635,7 @@ mw.PlayerControlBuilder.prototype = {
 			return false;
 		}
 		// If the config is false
-		if( mw.getConfig( 'EmbedPlayer.OverlayControls' ) === false){
+		if( mw.getConfig( 'EmbedPlayer.OverlayControls' ) == false){
 			return false;
 		} 
 		

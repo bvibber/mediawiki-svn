@@ -48,19 +48,26 @@ mw.EmbedPlayerSmil = {
 	 * @param {function} callback Function to be called once currentTime is loaded and displayed 
 	 */
 	setCurrentTime: function( time, callback ) {
-		mw.log('EmbedPlayerSmil::setCurrentTime: ' + time );
+		mw.log('EmbedPlayerSmil::setCurrentTime: ' + time );		
 		// Set "loading" spinner here)
 		$j( this ).append(
 			$j( '<div />')			
 			.attr('id', 'loadingSpinner_' + this.id )
 			.loadingSpinner()
 		);
+		// Start seek
+		this.controlBuilder.onSeek();
+		this.smilPlayTime = time;
 		var _this = this;
 		this.getSmil( function( smil ){	
 			smil.renderTime( time, function(){
-				mw.log("renderTime callback");
+				mw.log( "setCurrentTime:: renderTime callback" );
 				$j('#loadingSpinner_' + _this.id ).remove();
-				callback();
+				
+				_this.monitor();
+				if( callback ){
+					callback();
+				}
 			} );
 		});
 	},
@@ -71,7 +78,7 @@ mw.EmbedPlayerSmil = {
 	getRenderTarget: function(){
 		if( !this.$renderTarget ){
 			if( $j('#smilCanvas_' + this.id ).length === 0  ) {
-				// if no render target exist create one: 
+				// If no render target exist create one: 
 				$j( this ).html( 	
 					$j( '<div />')
 					.attr('id', 'smilCanvas_' + this.id )
@@ -93,8 +100,7 @@ mw.EmbedPlayerSmil = {
 		this.parent_play();
 		
 		// Set start clock time: 		
-		this.clockStartTime = new Date().getTime();				
-		
+		this.clockStartTime = new Date().getTime();		
 		
 		this.getSmil( function( smil ){
 			this.smil = smil;
@@ -106,6 +112,7 @@ mw.EmbedPlayerSmil = {
 	stop: function(){
 		this.smilPlayTime = 0;
 		this.smilPauseTime = 0;
+		this.setCurrentTime( 0 );		
 		this.parent_stop();
 	},
 	
@@ -125,6 +132,7 @@ mw.EmbedPlayerSmil = {
 	getPlayerElementTime: function() {
 		return this.smilPlayTime;
 	},
+		
 	
 	/**
 	 * Monitor function render a given time
@@ -133,14 +141,13 @@ mw.EmbedPlayerSmil = {
 		// Update the smilPlayTime
 		if( !this.isPaused() ){
 			this.smilPlayTime = this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
+
+			// xxx check buffer to see if we need to pause playback
+				
+			// Issue an animate time request with monitorDelta 
+			this.smil.animateTime( this.smilPlayTime, this.monitorRate ); 
 		}
-		
-		// Animate to time
-		smil.renderTime( this.smilPlayTime, function(){
-			// callback for render
-			
-			// xxx if too much time has gone by potentaill flag
-		});
+
 		this.parent_monitor();
 	},
 	

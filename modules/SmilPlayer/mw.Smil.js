@@ -119,6 +119,17 @@ mw.Smil.prototype = {
 	},
 	
 	/**
+	* We use animateTime instead of a tight framerate loop
+	* so that we can optimize with css transformations
+	* 
+	* ( Very similar to renderTime but no callback and we pass a timeDelta
+	*/
+	animateTime: function( time, timeDelta ){		
+		//mw.log("Smil::animateTime: " + time + ' delta: ' + timeDelta ); 	
+		this.getBody().renderTime( time, timeDelta );
+	},
+	
+	/**
 	* Get the smil buffer object
 	*/
 	getBuffer: function(){

@@ -64,7 +64,10 @@
 		"EmbedPlayer.ShareEmbedMode" : 'object',
 		
 		// Default player skin name
-		"EmbedPlayer.SkinName" : "mvpcf"	
+		"EmbedPlayer.SkinName" : "mvpcf",	
+		
+		// Number of milliseconds between interface updates 		
+		'EmbedPlayer.MonitorRate' : 250
 	} );
 
 	// Add class file paths 

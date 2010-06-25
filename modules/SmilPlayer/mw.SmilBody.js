@@ -35,7 +35,7 @@ mw.SmilBody.prototype = {
 				_this.getNodeSmilType( $node ) == 'ref'
 				|| _this.getNodeSmilType( $node ) == 'smilText'
 			)
-		){			
+		){
 			$node.attr('id', _this.smil.embedPlayer.id + '_ref_' + _this.idIndex );
 			mw.log('SmilBody:: gave: ' + $node.get(0).nodeName + ' id: ' + $node.attr('id') );
 			_this.idIndex++;
@@ -52,23 +52,23 @@ mw.SmilBody.prototype = {
 	/**
 	* Render the body elements for a given time, use layout engine to draw elements 
 	*/
-	renderTime: function( time ){
+	renderTime: function( time, deltaTime ){
 		var _this = this;
 		// Get all the draw elements from the body this time: 
 		var elementList = this.getElementsForTime( time );		
-		mw.log("SmilBody::renderTime: draw " + elementList.length + " elementList" );
+		//mw.log("SmilBody::renderTime: draw " + elementList.length + " elementList" );
 								
 		$j.each( elementList , function( inx, smilElement ) {
 			// xxx need to 
 			// var relativeTime = time - smilElement.parentTimeOffset;
-			var relativeTime = time - $j( smilElement ) .data ( 'parentStartOffset' );
+			var relativeTime = time - $j( smilElement ).data ( 'parentStartOffset' );
 			
 			// Render the active elements using the layout engine
 			_this.smil.getLayout().drawElement( smilElement, relativeTime );
 			
-			// Transform the elements per animate engine
-			_this.smil.getAnimate().transformElement( smilElement, relativeTime );
-		} )		
+			// Transform the elements per animate engine				
+			_this.smil.getAnimate().animateTransform( smilElement, relativeTime, deltaTime );
+		} );
 	},
 	
 	/**
@@ -139,7 +139,7 @@ mw.SmilBody.prototype = {
 		// If the nodeType is "ref" add to this.elementsInRange array
 		if( nodeType == 'ref' || nodeType == 'smilText' ) {		
 			// Add the parent startOffset 
-			$node.data('parentStartOffset', startOffset );
+			$node.data( 'parentStartOffset', startOffset );
 			// Ref type get the 
 			this.elementsInRange.push( $node );
 			//mw.log("Add ref to elementsInRange:: " + nodeType + " length:"  + this.elementsInRange.length);

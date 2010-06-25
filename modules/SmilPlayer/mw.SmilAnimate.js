@@ -10,17 +10,115 @@ mw.SmilAnimate.prototype = {
 	// Constructor: 
 	init: function( smilObject ){		
 		this.smil = smilObject;
+		
+		// xxx possible option? 
+		this.framerate = mw.getConfig( 'SmilPlayer.framerate' );
+		
+		this.callbackRate = 1000 / this.framerate;
+		this.animateInterval = [];
 	},
+	
+	/**
+	* Animate a smil transform per supplied time.
+	*/
+	animateTransform: function( smilElement, animateTime, deltaTime ){
+		var _this = this;							
+		
+		// If deltaTime is zero, then we should just transformElement directly: 
+		if( !deltaTime || deltaTime === 0 ){
+			_this.transformElement( smilElement, animateTime );
+			return ;
+		}
+		
+		// Check if the current smilElement has any transforms to be done
+		if( ! this.checkForTransformUpdate( smilElement, animateTime, deltaTime ) ){
+			// xxx no animate loop needed for element: smilElement
+			return ;
+		}		
+		
+		// We have a delta spawn an short animateInterval 
+		
+		// Clear any old animation loop	( can be caused by overlapping play requests or slow animation )	
+		clearInterval( this.animateInterval[ this.smil.getAssetId( smilElement ) ]  );
+		
+		// Start a new animation interval  		 
+		var animationStartTime = new Date().getTime();
+		var animateTimeDelta =  0;
+		
+		this.animateInterval[ this.smil.getAssetId( smilElement ) ] = 
+		setInterval(
+			function(){
+				var timeElapsed =  new Date().getTime() - animationStartTime;
+				// Set the animate Time delta 
+				animateTimeDelta += _this.callbackRate;
+				
+				if( animateTimeDelta > deltaTime || timeElapsed > deltaTime ){
+					// Stop animating:
+					clearInterval( _this.animateInterval[ _this.smil.getAssetId( smilElement ) ]  );
+					return ;
+				}
+				
+				if( Math.abs( timeElapsed - animateTimeDelta ) > 100 ){
+					mw.log( "Error more than 100ms lag within animateTransform loop: te:" + timeElapsed + 
+						' td:'  + animateTimeDelta + ' diff: ' + Math.abs( timeElapsed - animateTimeDelta ) );
+				}
+				
+				// Do the transform request: 				
+				_this.transformElement( smilElement, animateTime + ( animateTimeDelta/1000 ) );
+			}, 
+			this.callbackRate 
+		);	
+	},
+	
+	/**
+	* Quickly check if a given smil element needs to be updated for a given time delta
+	*/
+	checkForTransformUpdate: function( smilElement, animateTime, deltaTime ){
+		// Get the node type: 
+		var nodeName = $j( smilElement ).get(0).nodeName;
+		
+		// NOTE: our img node check sort of avoids deltaTime check but its assumed to not matter much
+		// since any our supported keyframe granularity will be equal to deltaTime ie 1/4 a second. 		
+		if( nodeName.toLowerCase() == 'img' ){
+			// Confirm a child animate is in-range
+			if( $j( smilElement ).find( 'animate' ).length ) {
+				// Check if there are animate elements in range: 				
+				if( this.getSmilAnimateInRange(  smilElement, animateTime) ){
+					return true;
+				}
+			}		
+		}
+		
+		// Check if we need to do a smilText clear: 
+		if( nodeName.toLowerCase() == 'smiltext' ){		
+			var el = $j( smilElement ).get(0);
+			for ( var i=0; i < el.childNodes.length; i++ ) {
+				var node = el.childNodes[i];
+				// Check for text Node type: 
+				if( node.nodeName == 'clear' ) {
+					var clearTime = this.smil.parseTime(  $j( node ).attr( 'begin') );
+					//mw.log( ' ct: ' + clearTime + ' >= ' + animateTime  + ' , ' + deltaTime );
+					if( clearTime >= animateTime && clearTime <= ( animateTime +  deltaTime ) ) {
+						return true;
+					}
+				}
+			}
+		}
+		//mw.log( 'checkForTransformUpdate::' + nodeName +' ' +  animateTime );
+		
+		return false;
+	},
+	
 	
 	/** 
 	* Transform a smil element for a requested time.
 	*
 	* @param {Element} smilElement Element to be transformed
-	* @param {float} animateTime The relative time to be transfored. 
+	* @param {float} animateTime The relative time to be transformed. 
 	*/
 	transformElement: function( smilElement, animateTime ) {
 		var nodeName = $j( smilElement ).get(0).nodeName ;
-		mw.log("transformForTime: " + nodeName );
+		//mw.log("transformForTime: " + nodeName  + ' t:' + animateTime );
 		switch( nodeName.toLowerCase() ){
 			case 'smiltext':
 				return this.transformTextForTime( smilElement, animateTime);
@@ -32,92 +130,113 @@ mw.SmilAnimate.prototype = {
 	},
 	
 	transformTextForTime: function( textElement, animateTime ) {
+		//mw.log("transformTextForTime:: " + animateTime );
+		
 		if( $j( textElement ).children().length == 0 ){
 			// no text transform children
 			return ;
-		}
-		
+		}		
 		// xxx Note: we could have text transforms in the future: 
 		var textCss = this.smil.getLayout().transformSmilCss( textElement );
+				
+		// Set initial textValue: 
+		var textValue ='';
 		
-		var bucketText = '';
-		var textBuckets = [];
-		var clearInx = 0;
-		var el = $j( textElement ).get(0);
+		var el = $j( textElement ).get(0);	
 		for ( var i=0; i < el.childNodes.length; i++ ) {	
 			var node = el.childNodes[i];
 			// Check for text Node type: 
 			if( node.nodeType == 3 ) {					
-				bucketText += node.nodeValue;
-			} else if( node.nodeName == 'clear'){
-				var clearTime = this.smil.parseTime(  $j( node ).attr( 'begin') );
-				// append bucket
-				textBuckets.push( {
-					'text' : bucketText,
-					'clearTime' : clearTime 
-				} );
+				textValue += node.nodeValue;
+			} else if( node.nodeName == 'clear' ){
+				var clearTime = this.smil.parseTime(  $j( node ).attr( 'begin') );					
+				if( clearTime > animateTime ){
+					break;
+				}
 				// Clear the bucket text collection
-				bucketText ='';
+				textValue = '';
 			}
-		}			
-		
-		var textValue ='';
-		// Get the text node in range given time:
-		for( var i =0; i < textBuckets.length ; i++){
-			var bucket = textBuckets[i];
-			if( animateTime < bucket.clearTime ){
-				textValue = bucket.text;
-				break;
-			}
-		}
+		}		
+				
 		// Update the text value target
 		// xxx need to profile update vs check value
 		$j( '#' + this.smil.getAssetId( textElement )  )
-			.html( 
-				$j('<span />')
-				// Add the text value
-				.text( textValue )
-				.css( textCss	)
-			)
+		.html( 
+			$j('<span />')
+			// Add the text value
+			.text( textValue )
+			.css( textCss	)
+		)
 	},
 	
 	transformImageForTime: function( smilImgElement, animateTime ) {
 		var _this = this;
+		//mw.log( "transformImageForTime:: animateTime:" +  animateTime );
+		
 		if( $j( smilImgElement ).children().length == 0 ){
-			// no image transform children
+			// No image transform children
 			return ;
 		}
+				
+		var animateInRange = _this.getSmilAnimateInRange(  smilImgElement, animateTime, function( animateElement ){			
+			//mw.log('animateInRange callback::' + $j( animateElement ).attr( 'attributeName' ) );			
+			switch( $j( animateElement ).attr( 'attributeName' ) ) {
+				case 'panZoom':						
+					// Get the pan zoom css for "this" time 
+					_this.transformPanZoom ( smilImgElement, animateElement, animateTime );
+				break;
+				default:
+					mw.log("Error unrecognized Animation attributName: " +
+						 $j( animateElement ).attr( 'attributeName' ) );
+			}
+		});		
+		// No animate elements in range, make sure we transform to previus or to initial state if time is zero 
+		if( !animateInRange  ) {
+			if( animateTime == 0 ) {
+				// just a hack for now ( should read from previus animation or from source attribute
+				//this.updateElementLayout( smilImgElement, { 'top':1,'left':1,'width':1, 'height':1 } );
+				var $target = $j( '#' + this.smil.getAssetId( smilImgElement ));
+				$target.css({ 'top':'0px','left':'0px','width':'100%', 'height':'100%' } );
+			}
+			// xxx should check for transform to previus 		
+		}
+	},
+	
+	/**
+	* Calls a callback with Smil Animate In Range for a requested time
+	*
+	* @param {Element} smilImgElement The smil element to search for child animate 
+	* @param {float} animateTime The target animation time 
+	* @param {function=} callback Optional function to call with elements in range. 
+	* return @bollean true if animate elements are in range false if none found
+	*/
+	getSmilAnimateInRange: function( smilImgElement, animateTime, callback ){
+		var _this = this;
+		var animateInRange = false;
 		// Get transform elements in range
 		$j( smilImgElement ).find( 'animate' ).each( function( inx, animateElement ){
 			var begin = _this.smil.parseTime(  $j( animateElement ).attr( 'begin') );
 			var duration = _this.smil.parseTime(  $j( animateElement ).attr( 'dur') );
-			//mw.log( "b:" + begin +" < " + animateTime + " && b+d: " + ( begin + duration ) + " > " + animateTime );
+			//mw.log( "getSmilAnimateInRange:: b:" + begin +" < " + animateTime + " && b+d: " + ( begin + duration ) + " > " + animateTime );
 			
 			// Check if the animate element is in range
 			var cssTransform = {};			
 			if( begin <= animateTime && ( begin + duration ) >= animateTime ) {
-				// Get the transform type:
-				switch( $j( animateElement ).attr('attributeName') ){
-					case 'panZoom':						
-						// Get the pan zoom css for "this" time 
-						_this.transformPanZoom ( smilImgElement, animateElement, animateTime );
-					break;
-					default: 
-						mw.log("Error unrecognized Annimation attributName: " +
-							 $j( animateElement ).attr('attributeName') ); 
-					
-				}
-				//mw.log("b:transformImageForTime: " +  $j( animateElement ).attr( 'values' ) );
-				//$j( smilImgElement ).css( cssTransform );
-			}
-			
+				animateInRange = true;
+				if( callback ) {
+					callback( animateElement );
+				}			
+			}			
 		});
+		return animateInRange;
 	},
+	
 	/**
-	* get the css layout transforms for a panzoom transform type
+	* Get the css layout transforms for a panzoom transform type
 	* 
 	* http://www.w3.org/TR/SMIL/smil-extended-media-object.html#q32
-	* 
+	*
+	*
 	*/
 	transformPanZoom: function( smilImgElement, animateElement, animateTime ){
 		var begin = this.smil.parseTime(  $j( animateElement ).attr( 'begin') );
@@ -131,6 +250,8 @@ mw.SmilAnimate.prototype = {
 		
 		// Get the target interpreted value
 		var targetValue = this.getInterpolatePointsValue( animatePoints, relativeAnimationTime, duration );
+		
+		//mw.log( "SmilAnimate::transformPanZoom: source points: " + $j( animateElement ).attr('values') + " target:" + targetValue.join(',') );  
 								
 		// Let Top Width Height
 		// translate values into % values
@@ -164,7 +285,8 @@ mw.SmilAnimate.prototype = {
 	// xxx need to refactor move to "smilLayout"
 	updateElementLayout: function( smilElement, percentValues ){
 		
-		mw.log("updateElementLayout::" + percentValues.top + ' ' + percentValues.left + ' ' + percentValues.width + ' ' + percentValues.height );
+		//mw.log("updateElementLayout::" + percentValues.top + ' ' + percentValues.left + ' ' + percentValues.width + ' ' + percentValues.height );
+		
 		// get a pointer to the html target:
 		var $target = $j( '#' + this.smil.getAssetId( smilElement ));
 		
@@ -209,7 +331,6 @@ mw.SmilAnimate.prototype = {
 			'top' : (-1 * percentValues['top'])*100 + '%',
 			'left' : (-1 * percentValues['left'])*100 + '%',
 		} );
-
 	},
 	
 	/**

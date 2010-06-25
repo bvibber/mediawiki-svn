@@ -24,10 +24,13 @@
 
                 <animate attributeName="panZoom" begin="2.0"
                     dur="1.5s" fill="freeze" values="-1,4,99%,99%;511,509,47%,14%"/>
+                    
                 <animate attributeName="panZoom" begin="5.0"
                     dur="1.5s" fill="freeze" values="511,509,47%,14%;418,-3,34%,13%"/>
+               
                 <animate attributeName="panZoom" begin="9.0"
                     dur="1.5s" fill="freeze" values="418,-3,34%,13%;9,1115,41%,20%"/>
+                    
                 <animate attributeName="panZoom" begin="13.0"
                     dur="1.5s" fill="freeze" values="9,1115,41%,20%;573,2073,64%,17%"/>
                 <animate attributeName="panZoom" begin="16.0"

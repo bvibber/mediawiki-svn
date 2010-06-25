@@ -71,7 +71,7 @@ mw.SmilLayout.prototype = {
 		var regionId =  $j( smilElement ).attr( 'region');
 		var nodeName = $j( smilElement ).get(0).nodeName ;	
 			
-		mw.log( "SmilLayout::drawElement: " + nodeName + '.' + $j( smilElement ).attr('id' ) + ' into ' + regionId );
+		//mw.log( "SmilLayout::drawElement: " + nodeName + '.' + $j( smilElement ).attr('id' ) + ' into ' + regionId );
 		var $regionTarget =  this.$rootLayout.find( '#' + regionId );
 		
 		// Check for region target in $rootLayout

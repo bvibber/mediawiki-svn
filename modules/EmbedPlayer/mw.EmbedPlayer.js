@@ -1370,7 +1370,10 @@ mw.EmbedPlayer.prototype = {
 		if ( !this.skinName ) {
 			this.skinName = mw.getConfig( 'EmbedPlayer.SkinName' );
 		}
-			
+		
+		if( !this.monitorRate ){
+			this.monitorRate = mw.getConfig( 'EmbedPlayer.MonitorRate' );
+		}
 		
 		// Make sure startOffset is cast as an float:		   
 		if ( this.startOffset && this.startOffset.split( ':' ).length >= 2 ) {
@@ -2895,7 +2898,7 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		//mw.log( 'Monitor:: ' + this.currentTime + ' duration: ' + ( parseInt( this.getDuration() ) + 1 )  + ' is seek: ' + this.seeking );		
-		if ( this.currentTime && this.currentTime > 0  && this.duration ) {
+		if ( this.currentTime >= 0  && this.duration ) {			
 			if ( !this.userSlide && !this.seeking ) {
 				if ( parseInt( this.startOffset ) != 0 ) {				
 					// If start offset include that calculation 
@@ -2945,7 +2948,7 @@ mw.EmbedPlayer.prototype = {
 			if( !this.monitorInterval ){
 				this.monitorInterval = setInterval( function(){
 					_this.monitor();
-				}, 250 )
+				}, this.monitorRate )
 			}
 		} else {
 			// If stoped "stop" monitor: 
