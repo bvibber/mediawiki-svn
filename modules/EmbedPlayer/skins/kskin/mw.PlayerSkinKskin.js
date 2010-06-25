@@ -339,7 +339,7 @@ mw.PlayerSkinKskin = {
 			.loadingSpinner()
 		);
 
-		if( mw.getConfig( 'kalturaAttribution' ) == true ){
+		if( mw.getConfig( 'EmbedPlayer.kalturaAttribution' ) == true ){
 			$target.append( 
 				$j( '<div />' )
 				.addClass( 'k-attribution' )

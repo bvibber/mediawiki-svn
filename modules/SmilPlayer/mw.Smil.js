@@ -122,7 +122,6 @@ mw.Smil.prototype = {
 	* We use animateTime instead of a tight framerate loop
 	* so that we can optimize with css transformations
 	* 
-	* ( Very similar to renderTime but no callback and we pass a timeDelta
 	*/
 	animateTime: function( time, timeDelta ){		
 		//mw.log("Smil::animateTime: " + time + ' delta: ' + timeDelta ); 	
@@ -194,6 +193,12 @@ mw.Smil.prototype = {
 		return this.duration;		
 	},
 	
+	
+	
+	/**
+	 * Some Smil Utility functions
+	 */
+	
 	/**
 	* maps a smil element id to a html safe id 
 	* as a decedent subname of the embedPlayer parent
@@ -218,8 +223,25 @@ mw.Smil.prototype = {
 		return mw.absoluteUrl( assetPath, contextUrl );
 	},
 	/**
-	 * Some Smil Utility functions
+	 * Get the smil resource type based on nodeName and type attribute
 	 */
+	getRefType: function( 
+		// Get the smil type
+		var smilType = nodeName.toLowerCase();
+		if( smilType == 'ref' ){
+			// If the smilType is ref, check for a content type
+			switch( $j( smilElement ).attr( 'type' ) ) {
+				case 'text/html':
+					smilType = 'cdata_html';
+				break;
+				case 'video/ogg':
+				case 'video/h.264':
+				case 'video/webm':
+					smilType = 'video';
+				break;
+			}
+		}
+	},
 	
 	/** 
 	 * Parse smil time function

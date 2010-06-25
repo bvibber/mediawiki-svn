@@ -222,6 +222,7 @@ mw.SmilBody.prototype = {
 		var blockType = $j( $node ).get(0).nodeName;
 		var blockMap = {
 			'body':'seq',
+			'ref' : 'ref',
 			'animation':'ref',
 			'audio' : 'ref',
 			'img' : 'ref',

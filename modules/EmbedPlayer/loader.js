@@ -174,8 +174,8 @@
 	*/
 	mw.addModuleLoader( 'EmbedPlayer', function() {
 		var _this = this;		
-		// Set module specific class videonojs to loading:
-		$j( '.videonojs' ).html( gM( 'mwe-embedplayer-loading_txt' ) );
+		// Hide videonojs class
+		$j( '.videonojs' ).hide();
 		
 		// Set up the embed video player class request: (include the skin js as well)
 		var dependencyRequest = [

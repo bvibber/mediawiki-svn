@@ -118,6 +118,9 @@ mw.SmilAnimate.prototype = {
 	*/
 	transformElement: function( smilElement, animateTime ) {
 		var nodeName = $j( smilElement ).get(0).nodeName ;
+		
+		
+		
 		//mw.log("transformForTime: " + nodeName  + ' t:' + animateTime );
 		switch( nodeName.toLowerCase() ){
 			case 'smiltext':
