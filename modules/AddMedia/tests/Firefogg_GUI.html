@@ -102,7 +102,7 @@ mw.ready(function(){
 		});
 		$j( '#fogg-status' ).append( 
 			gM('fogg-wont-upload-to-server' ),
-			$j('<br />' )
+			$j('<br />' ), $j('<br />' )
 		 );
 
 		for( var i = 0; i < langSupported.length; i++ ){
@@ -115,9 +115,18 @@ mw.ready(function(){
 					'href':  urlParts.protocol + '://' + urlParts.host + 
 						urlParts.path + '?uselang=' + langSupported[i]
 				} ),
-				$j('<span />').text( ' | ' )
+				$j('<span />').text( ' | ' )				
 			)
 		}
+		$j( '#fogg-status' ).append( 
+			$j( '<br />'),	$j( '<br />'),
+			$j( '<a />' )
+			.attr( {
+				'href': "http://translatewiki.net/w/i.php?title=Special%3ATranslate&task=untranslated&group=ext-addmediawizard-addmedia&language=en&limit=100",
+				'target' : '_new' 
+			} )
+			.text( 'Help Translate' )
+		)
 	});		
 	
 });
@@ -130,7 +139,8 @@ mw.ready(function(){
 </a><br>
 Make Ogg/Webm Video</h1>
 <br>	
-<div id="fogg-status" style="margin-right:auto;margin-left:auto;width:500px;">
+<div id="fogg-status" style="margin-right:auto;margin-left:auto;width:800px;">
+
 
 </div> 
 	<br>
