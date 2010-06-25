@@ -119,7 +119,7 @@ class SpecialWikilog
 		global $wgRequest, $wgFeedLimit;
 
 		$opts = $this->getDefaultOptions();
-		$opts->fetchValuesFromRequest( $wgRequest, array( 'show', 'limit' ) );
+		$opts->fetchValuesFromRequest( $wgRequest, array( 'wikilog', 'show', 'limit' ) );
 		$opts->validateIntBounds( 'limit', 0, $wgFeedLimit );
 		return $opts;
 	}
@@ -191,8 +191,8 @@ class SpecialWikilog
 
 		# Add feed links.
 		$wgOut->setSyndicated();
-		if ( isset( $qarr['show'] ) ) {
-			$altquery = wfArrayToCGI( array_intersect_key( $qarr, WikilogItemFeed::$paramWhitelist ) );
+		$altquery = wfArrayToCGI( array_intersect_key( $qarr, WikilogItemFeed::$paramWhitelist ) );
+		if ( $altquery ) {
 			$wgOut->setFeedAppendQuery( $altquery );
 		}
 
@@ -400,13 +400,20 @@ class SpecialWikilog
 	 * @return Wikilog query object.
 	 */
 	public static function getQuery( $opts ) {
+		global $wgWikilogNamespaces;
+
 		$query = new WikilogItemQuery();
 		$query->setPubStatus( $opts['show'] );
-		if ( $opts['wikilog'] && ( $t = Title::newFromText( $opts['wikilog'] ) ) ) {
-			if ( $t->getText() == '*' ) {
-				$query->setNamespace( $t->getNamespace() );
+		if ( $opts['wikilog'] ) {
+			$t = Title::newFromText( $opts['wikilog'] );
+			if ( $t && in_array( $t->getNamespace(), $wgWikilogNamespaces ) ) {
+				if ( $t->getText() == '*' ) {
+					$query->setNamespace( $t->getNamespace() );
+				} else {
+					$query->setWikilogTitle( $t );
+				}
 			} else {
-				$query->setWikilogTitle( $t );
+				$query->setEmpty();
 			}
 		}
 		if ( ( $t = $opts['category'] ) ) {

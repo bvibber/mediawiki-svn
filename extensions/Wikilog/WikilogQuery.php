@@ -46,6 +46,12 @@ abstract class WikilogQuery
 	protected $mDefaultOptions = array();
 
 	/**
+	 * Whether the query should always return nothing (when invalid options
+	 * are provided, for example).
+	 */
+	protected $mEmpty = false;
+
+	/**
 	 * Constructor.
 	 */
 	public function __construct() {
@@ -84,6 +90,12 @@ abstract class WikilogQuery
 			throw new MWException( __METHOD__ . ': Invalid $opts parameter.' );
 		}
 	}
+
+	/**
+	 * Filter is always returns empty.
+	 */
+	public function setEmpty( $empty = true ) { $this->mEmpty = $empty; }
+	public function getEmpty() { return $this->mEmpty; }
 
 	/**
 	 * Generate and return query information.
@@ -312,10 +324,15 @@ class WikilogItemQuery
 		$q_options = array();
 		$q_joins = $wlp_tables['join_conds'];
 
+		# Invalid filter.
+		if ( $this->mEmpty ) {
+			$q_conds[] = '0=1';
+		}
+
 		# Filter by wikilog name.
 		if ( $this->mWikilogTitle !== null ) {
 			$q_conds['wlp_parent'] = $this->mWikilogTitle->getArticleId();
-		} elseif ( $this->mNamespace ) {
+		} elseif ( $this->mNamespace !== false ) {
 			$q_conds['p.page_namespace'] = $this->mNamespace;
 		}
 
@@ -380,7 +397,7 @@ class WikilogItemQuery
 
 		if ( $this->mNeedWikilogParam && $this->mWikilogTitle ) {
 			$query['wikilog'] = $this->mWikilogTitle->getPrefixedDBKey();
-		} elseif ( $this->mNamespace ) {
+		} elseif ( $this->mNamespace !== false ) {
 			$query['wikilog'] = Title::makeTitle( $this->mNamespace, "*" )->getPrefixedDBKey();
 		}
 
@@ -525,7 +542,7 @@ class WikilogCommentQuery
 	 * precedence over this filter.
 	 * @param $ns Namespace to query for.
 	 */
-	public function setNamespace ( $ns ) {
+	public function setNamespace( $ns ) {
 		$this->mNamespace = $ns;
 	}
 
@@ -637,6 +654,11 @@ class WikilogCommentQuery
 		$q_options = array();
 		$q_joins = $wlc_tables['join_conds'];
 
+		# Invalid filter.
+		if ( $this->mEmpty ) {
+			$q_conds[] = '0=1';
+		}
+
 		# Filter by moderation status.
 		if ( $this->mModStatus == self::MS_ACCEPTED ) {
 			$q_conds['wlc_status'] = 'OK';
@@ -658,7 +680,7 @@ class WikilogCommentQuery
 		} elseif ( $this->mWikilog !== null ) {
 			$join_wlp = true;
 			$q_conds['wlp_parent'] = $this->mWikilog->getArticleId();
-		} elseif ( $this->mNamespace ) {
+		} elseif ( $this->mNamespace !== false ) {
 			$q_conds['c.page_namespace'] = $this->mNamespace;
 		}
 
@@ -706,7 +728,7 @@ class WikilogCommentQuery
 			$query['item'] = $this->mItem->mTitle->getPrefixedDBKey();
 		} elseif ( $this->mWikilog ) {
 			$query['wikilog'] = $this->mWikilog->getPrefixedDBKey();
-		} elseif ( $this->mNamespace ) {
+		} elseif ( $this->mNamespace !== false ) {
 			$query['wikilog'] = Title::makeTitle( $this->mNamespace, "*" )->getPrefixedDBKey();
 		}
 

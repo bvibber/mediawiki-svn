@@ -119,6 +119,7 @@ Uncheck this box to keep the article as a draft.',
 
 	# Atom and RSS feeds
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]', # $1 = title, $2 = content language
+	'wikilog-feed-ns-title' => '$1 wikilog articles', # $1 = namespace name
 	'wikilog-feed-description' => 'Read the most recent posts in this feed.',
 	'wikilog-comment-feed-title1' => 'Comment by $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comment by $2 to $3 (#$1)',

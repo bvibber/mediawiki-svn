@@ -65,7 +65,7 @@ abstract class WikilogFeed
 	 * to this list means that feed caching should be revisited. Parameters
 	 * must be listed as keys.
 	 */
-	public static $paramWhitelist = array( 'show' => true );
+	public static $paramWhitelist = array( 'wikilog' => true, 'show' => true );
 
 	/**
 	 * WikilogFeed constructor.
@@ -362,7 +362,6 @@ class WikilogItemFeed
 		if ( !$limit ) $limit = $wgWikilogNumArticles;
 		parent::__construct( $title, $format, $query, $limit );
 		$this->mSiteFeed = $this->mQuery->getWikilogTitle() === null;
-		
 	}
 
 	public function getIndexField() {
@@ -375,10 +374,12 @@ class WikilogItemFeed
 	}
 
 	public function getFeedObject() {
-		if ( $this->mSiteFeed ) {
-			return $this->getSiteFeedObject();
-		} else {
+		if ( $this->mQuery->getWikilogTitle() ) {
 			return $this->getWikilogFeedObject( $this->mQuery->getWikilogTitle() );
+		} elseif ( $this->mQuery->getNamespace() !== false ) {
+			return $this->getNamespaceFeedObject( $this->mQuery->getNamespace() );
+		} else {
+			return $this->getSiteFeedObject();
 		}
 	}
 
@@ -394,6 +395,47 @@ class WikilogItemFeed
 
 		$updated = $this->mDb->selectField( 'wikilog_wikilogs',
 			'MAX(wlw_updated)', false, __METHOD__ );
+		if ( !$updated ) $updated = wfTimestampNow();
+
+		$feed = new $wgWikilogFeedClasses[$this->mFormat](
+			$this->mTitle->getFullUrl(),
+			wfMsgForContent( 'wikilog-feed-title', $title, $wgContLanguageCode ),
+			$updated,
+			$this->mTitle->getFullUrl()
+		);
+		$feed->setSubtitle( new WlTextConstruct( 'html', $subtitle ) );
+		$feed->setLogo( wfExpandUrl( $wgLogo ) );
+		if ( $wgFavicon !== false ) {
+			$feed->setIcon( wfExpandUrl( $wgFavicon ) );
+		}
+		if ( $this->mCopyright ) {
+			$feed->setRights( new WlTextConstruct( 'html', $this->mCopyright ) );
+		}
+		return $feed;
+	}
+
+	/**
+	 * Generates and populates a WlSyndicationFeed object for a given namespace.
+	 *
+	 * @param $ns Namespace.
+	 * @return Feed object.
+	 */
+	protected function getNamespaceFeedObject( $ns ) {
+		global $wgWikilogFeedClasses, $wgFavicon, $wgLogo;
+		global $wgContLang, $wgContLanguageCode;
+
+		$title = wfMsgForContent( 'wikilog-feed-ns-title', $wgContLang->getFormattedNsText( $ns ) );
+		$subtitle = wfMsgExt( 'wikilog-feed-description', array( 'parse', 'content' ) );
+
+		$updated = $this->mDb->selectField(
+			array( 'wikilog_wikilogs', 'page' ),
+			'MAX(wlw_updated)',
+			array(
+				'wlw_page = page_id',
+				'page_namespace' => $ns
+			),
+			__METHOD__
+		);
 		if ( !$updated ) $updated = wfTimestampNow();
 
 		$feed = new $wgWikilogFeedClasses[$this->mFormat](
@@ -574,8 +616,13 @@ class WikilogItemFeed
 	 * Returns the keys for the timestamp and feed output in the object cache.
 	 */
 	public function getCacheKeys() {
-		$title = $this->mQuery->getWikilogTitle();
-		$id = $title ? 'id:' . $title->getArticleId() : 'site';
+		if ( ( $title = $this->mQuery->getWikilogTitle() ) ) {
+			$id = 'id:' . $title->getArticleId();
+		} elseif ( ( $ns = $this->mQuery->getNamespace() ) ) {
+			$id = 'ns:' . $ns;
+		} else {
+			$id = 'site';
+		}
 		$ft = 'show:' . $this->mQuery->getPubStatus() .
 			':limit:' . $this->mLimit;
 		return array(
