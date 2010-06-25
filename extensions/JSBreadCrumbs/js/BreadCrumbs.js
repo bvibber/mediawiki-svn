@@ -7,6 +7,9 @@ $j(document).ready( function() {
     if ( typeof wgJSBreadCrumbsSeparator == "undefined" ) {
         wgJSBreadCrumbsSeparator = "»";
     }
+    if ( typeof wgJSBreadCrumbsCookiePath == "undefined" ) {
+        wgJSBreadCrumbsCookiePath = "/";
+    }
 
     var titleState = ( $j.cookie( 'mwext-bc-title' ) || "" ).split( wgJSBreadCrumbsSeparator );
     var urlState = ( $j.cookie( 'mwext-bc-url' ) || "" ).split( wgJSBreadCrumbsSeparator );

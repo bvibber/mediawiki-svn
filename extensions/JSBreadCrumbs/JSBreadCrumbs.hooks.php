@@ -20,6 +20,7 @@ class JSBreadCrumbsHooks {
 
 		$variables['wgJSBreadCrumbsMaxCrumbs'] = $wgJSBreadCrumbsMaxCrumbs;
 		$variables['wgJSBreadCrumbsSeparator'] = $wgJSBreadCrumbsSeparator;
+		$variables['wgJSBreadCrumbsCookiePath'] = $wgJSBreadCrumbsCookiePath;
 
 		$vars = array_merge( $vars, $variables );
 		return true;

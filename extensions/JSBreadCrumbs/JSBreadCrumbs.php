@@ -18,6 +18,7 @@
 
 $wgJSBreadCrumbsMaxCrumbs = 5;
 $wgJSBreadCrumbsSeparator = "»";
+$wgJSBreadCrumbsCookiePath = "/";
 
 // Sets Credits
 $wgExtensionCredits['other'][] = array(
