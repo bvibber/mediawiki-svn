@@ -402,8 +402,7 @@ class SpecialWikilog
 	public static function getQuery( $opts ) {
 		$query = new WikilogItemQuery();
 		$query->setPubStatus( $opts['show'] );
-		if ( ( $t = $opts['wikilog'] ) ) {
-			$t = Title::newFromText( $t );
+		if ( $opts['wikilog'] && ( $t = Title::newFromText( $opts['wikilog'] ) ) ) {
 			if ( $t->getText() == '*' ) {
 				$query->setNamespace( $t->getNamespace() );
 			} else {
