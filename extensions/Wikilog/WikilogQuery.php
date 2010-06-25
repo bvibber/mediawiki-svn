@@ -158,6 +158,7 @@ class WikilogItemQuery
 
 	# Local variables.
 	private $mWikilogTitle = null;			///< Filter by wikilog.
+	private $mNamespace = false;			///< Filter by namespace.
 	private $mPubStatus = self::PS_ALL;		///< Filter by published status.
 	private $mCategory = false;				///< Filter by category.
 	private $mAuthor = false;				///< Filter by author.
@@ -192,6 +193,14 @@ class WikilogItemQuery
 	 */
 	public function setWikilogTitle( $wikilogTitle ) {
 		$this->mWikilogTitle = $wikilogTitle;
+	}
+
+	/**
+	 * Sets the wikilog namespace to query for.
+	 * @param $ns Namespace to query for.
+	 */
+	public function setNamespace( $ns ) {
+		$this->mNamespace = $ns;
 	}
 
 	/**
@@ -273,12 +282,13 @@ class WikilogItemQuery
 	/**
 	 * Accessor functions.
 	 */
-	public function getWikilogTitle()	{ return $this->mWikilogTitle; }
-	public function getPubStatus()		{ return $this->mPubStatus; }
-	public function getCategory()		{ return $this->mCategory; }
-	public function getAuthor()		{ return $this->mAuthor; }
-	public function getTag()			{ return $this->mTag; }
-	public function getDate()			{ return $this->mDate; }
+	public function getWikilogTitle() { return $this->mWikilogTitle; }
+	public function getNamespace() { return $this->mNamespace; }
+	public function getPubStatus() { return $this->mPubStatus; }
+	public function getCategory() { return $this->mCategory; }
+	public function getAuthor() { return $this->mAuthor; }
+	public function getTag() { return $this->mTag; }
+	public function getDate() { return $this->mDate; }
 
 	/**
 	 * Organizes all the query information and constructs the table and
@@ -305,6 +315,8 @@ class WikilogItemQuery
 		# Filter by wikilog name.
 		if ( $this->mWikilogTitle !== null ) {
 			$q_conds['wlp_parent'] = $this->mWikilogTitle->getArticleId();
+		} elseif ( $this->mNamespace ) {
+			$q_conds['p.page_namespace'] = $this->mNamespace;
 		}
 
 		# Filter by published status.
@@ -368,6 +380,8 @@ class WikilogItemQuery
 
 		if ( $this->mNeedWikilogParam && $this->mWikilogTitle ) {
 			$query['wikilog'] = $this->mWikilogTitle->getPrefixedDBKey();
+		} elseif ( $this->mNamespace ) {
+			$query['wikilog'] = Title::makeTitle( $this->mNamespace, "*" )->getPrefixedDBKey();
 		}
 
 		if ( $this->mPubStatus == self::PS_ALL ) {
@@ -442,6 +456,7 @@ class WikilogCommentQuery
 
 	# Local variables.
 	private $mModStatus = self::MS_ALL;	///< Filter by moderation status.
+	private $mNamespace = false;		///< Filter by namespace.
 	private $mWikilog = null;			///< Filter by wikilog.
 	private $mItem = null;				///< Filter by wikilog item (article).
 	private $mThread = false;			///< Filter by thread.
@@ -505,8 +520,18 @@ class WikilogCommentQuery
 	}
 
 	/**
+	 * Set the namespace to query for. Only comments for articles published
+	 * in the given namespace are returned. The wikilog and item filters have
+	 * precedence over this filter.
+	 * @param $ns Namespace to query for.
+	 */
+	public function setNamespace ( $ns ) {
+		$this->mNamespace = $ns;
+	}
+
+	/**
 	 * Set the wikilog to query for. Only comments for articles published in
-	 * the given wikilog is returned. The item filter has precedence over this
+	 * the given wikilog are returned. The item filter has precedence over this
 	 * filter.
 	 * @param $wikilogTitle Wikilog title object to query for (Title).
 	 */
@@ -583,6 +608,7 @@ class WikilogCommentQuery
 	 * Accessor functions.
 	 */
 	public function getModStatus() { return $this->mModStatus; }
+	public function getNamespace() { return $this->mNamespace; }
 	public function getWikilog() { return $this->mWikilog; }
 	public function getItem() { return $this->mItem; }
 	public function getThread() { return $this->mThread; }
@@ -632,6 +658,8 @@ class WikilogCommentQuery
 		} elseif ( $this->mWikilog !== null ) {
 			$join_wlp = true;
 			$q_conds['wlp_parent'] = $this->mWikilog->getArticleId();
+		} elseif ( $this->mNamespace ) {
+			$q_conds['c.page_namespace'] = $this->mNamespace;
 		}
 
 		# Filter by author.
@@ -678,6 +706,8 @@ class WikilogCommentQuery
 			$query['item'] = $this->mItem->mTitle->getPrefixedDBKey();
 		} elseif ( $this->mWikilog ) {
 			$query['wikilog'] = $this->mWikilog->getPrefixedDBKey();
+		} elseif ( $this->mNamespace ) {
+			$query['wikilog'] = Title::makeTitle( $this->mNamespace, "*" )->getPrefixedDBKey();
 		}
 
 		if ( $this->mModStatus != self::MS_ALL ) {

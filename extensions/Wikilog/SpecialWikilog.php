@@ -403,7 +403,12 @@ class SpecialWikilog
 		$query = new WikilogItemQuery();
 		$query->setPubStatus( $opts['show'] );
 		if ( ( $t = $opts['wikilog'] ) ) {
-			$query->setWikilogTitle( Title::newFromText( $t ) );
+			$t = Title::newFromText( $t );
+			if ( $t->getText() == '*' ) {
+				$query->setNamespace( $t->getNamespace() );
+			} else {
+				$query->setWikilogTitle( $t );
+			}
 		}
 		if ( ( $t = $opts['category'] ) ) {
 			$query->setCategory( $t );
