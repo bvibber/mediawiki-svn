@@ -14,7 +14,7 @@ class JSBreadCrumbsHooks {
 	 * MakeGlobalVariablesScript hook
 	 */
 	public static function addJSVars( $vars ) {
-		global $wgJSBreadCrumbsMaxCrumbs, $wgJSBreadCrumbsSeparator;
+		global $wgJSBreadCrumbsMaxCrumbs, $wgJSBreadCrumbsSeparator, $wgJSBreadCrumbsCookiePath;
 
 		$variables = array();
 
