@@ -4,7 +4,7 @@ class JSBreadCrumbsHooks {
 	function addResources( $out ) {
 		global $wgExtensionAssetsPath;
 
-		$out->addScriptFile( "$wgExtensionAssetsPath/JSBreadCrumbs/js/BreadCrumbs.js", 2 );
+		$out->addScriptFile( "$wgExtensionAssetsPath/JSBreadCrumbs/js/BreadCrumbs.js", 3 );
 		$out->addExtensionStyle( "$wgExtensionAssetsPath/JSBreadCrumbs/css/BreadCrumbs.css?1" );
 
 		return true;
