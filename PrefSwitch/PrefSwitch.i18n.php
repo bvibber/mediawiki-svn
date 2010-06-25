@@ -233,6 +233,8 @@ Die Wikimedia Foundation se Gebruikerervarings Span (User Experience Team) in sa
 * '''Soektog verbeteringe:''' Ons het soektogvoorstelle verbeter, sodat jy vinniger by die bladsy kan uitkom waarvoor jy soek.
 * '''Ander nuwe funksies:''' Ons het 'n assistent bygevoeg wat die maak van tabelle makliker maak en 'n vind-en-vervang funksie om die redigering van bladsye te vereenvoudig.
 * '''Wikipedia logo:''' Ons het ons logo opdateer. Lees meer daaroor in die [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia webjoernaal].",
+	'prefswitch-main-logged-changes' => "* Die '''{{int:watch}}'''-oortjie is nou in die vorm van 'n stêr.
+* Die '''{{int:move}}'''-oortjie kan nou gevind in die opsielys langs die soekveld.",
 	'prefswitch-main-feedback' => '===Terugvoer?===
 Ons sal dit waardeer om van jou af te hoor. Besoek asseblief ons [[$1|terugvoer bladsy]] of, as u belangstel in ons aanhoudende pogings om die sagteware te verbeter, besoek gerus ons [http://usability.wikimedia.org bruikbaarheids-wiki] vir meer inligting.',
 	'prefswitch-main-anon' => "===Neem my terug===
@@ -243,6 +245,8 @@ Ons sal dit waardeer om van jou af te hoor. Besoek asseblief ons [[$1|terugvoer 
 [$1 Klik hier om die nuwe funksies aan te skakel].',
 	'prefswitch-survey-intro-feedback' => 'Ons sal regtig waardeer om van u te hoor.
 Vul asseblief die opsionele vraelys in voordat u "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" klik.',
+	'prefswitch-survey-intro-off' => 'Dankie dat u die nuwe funksies uitprobeer het.
+Om ons te help met die verbetering daarvan kan u gerus die opsionele vraelys invul, voor u "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" klik.',
 );
 
 /** Gheg Albanian (Gegë)
@@ -512,6 +516,7 @@ $messages['bn'] = array(
 	'prefswitch-survey-true' => 'হ্যাঁ',
 	'prefswitch-survey-false' => 'না',
 	'prefswitch-survey-submit-off' => 'নতুন বৈশিষ্ট্য বন্ধ করো',
+	'prefswitch-survey-cancel-off' => 'আপনি যদি নতুন বৈশিষ্ট্যাবলী ব্যবহার চালিয়ে যেতে চান তবে আপনি $1-এ ফিরে যেতে পারেন।',
 	'prefswitch-survey-submit-feedback' => 'প্রতিক্রিয়া পাঠান',
 	'prefswitch-survey-cancel-feedback' => 'আপনি যদি প্রতিক্রিয়া দিতে না চান, তাহলে আপনি $1 -এ ফিরে যেতে পারেন।',
 	'prefswitch-survey-question-like' => 'নতুন বৈশিষ্ট্যগুলোর মধ্যে আপনার কি পছন্দ হয়েছিলো?',
@@ -571,6 +576,10 @@ $messages['bn'] = array(
 * '''অনুসন্ধানের উন্নয়ন:''' আপনার অনুসন্ধানকৃত পাতাটি দ্রুত খুঁজে পেতে আমরা আমাদের অনুসন্ধান পরামর্শেরও উন্নয়ন সাধন করেছি।
 * '''অন্যান্য নতুন সুবিধাদি:''' আমরা টেবিল উইজার্ড নামক একটি সুবিধা সংযোজন করেছি। এর ফলে আপনি সহজেই কোনো পাতায় টেবিল যোগ করতে পারবেন। এছাড়া আমরা লেখা অনুসন্ধান ও পরিবর্তনের সুবিধা যুক্ত করেছি, যা পাতা সম্পাদনাকে আরও সহজ করে তুলবে।
 * '''উইকিপিডিয়া লোগো:''' আমরা আমাদের লোগো হালনাগাদ করেছি। [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d উইকিমিডিয়া ব্লগে] এ বিষয়ে আরও বিস্তারিত পড়ুন।",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} ট্যাবটি''' বর্তমানে তারকাখচিত।
+* '''{{int:move}} ট্যাবটি''' এখন অনুসন্ধান বক্সের পাশের ড্রপডাউন অংশে রয়েছে।",
+	'prefswitch-main-feedback' => '===ফিডব্যাক?===
+আমরা আপনার থেকে শুনতে আগ্রহী। অনুগ্রহপূর্বক আমাদের [[$1|ফিডব্যাক পাতা]] দেখুন, এবং আপনি যদি সফটওয়্যারের উন্নয়নের জন্য আমাদের চলমান প্রচেষ্টা সম্মন্ধে আগ্রহী হয়ে থাকেন, তবে বিস্তারিত তথ্যের জন্য আমাদের [http://usability.wikimedia.org ইউজাবিলিটি উইকি] পরিদর্শন করুন।',
 	'prefswitch-main-anon' => '===আমাকে ফিরিয়ে নাও===
 আপনি যদি নতুন বৈশিষ্ট্যাবলী বন্ধ করতে চান তাহলে, [$1 এখানে ক্লিক করুন]। এ কাজের প্রথমেই আপনাকে লগ-ইন বা নতুন অ্যাকাউন্ট তৈরি করতে বলা হবে।',
 	'prefswitch-main-on' => '===আমাকে ফেরত নাও!===
@@ -579,6 +588,8 @@ $messages['bn'] = array(
 আপনি যদি নতুন বৈশিষ্ট্যাবলী চালু করতে চান, অনুগ্রহ করে [$1 এখানে ক্লিক করুন]।',
 	'prefswitch-survey-intro-feedback' => 'আমরা আপনার কাছ থেকে জানতে চাই।
 "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" ক্লিক করার আগে অনুগ্রহ করে নিচের ঐচ্ছিক জরিপ ফরমটি পূরণ করুন।',
+	'prefswitch-survey-intro-off' => 'আমাদের নতুন বৈশিষ্ট্যগুলো চেষ্টা করে দেখার জন্য ধন্যবাদ।
+এটির উন্নয়ের ক্ষেত্রে আমাদের সাহায্য করার জন্য "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" লিংকে ক্লিক করার পূর্বে আপনি নিচের এই ঐচ্ছিক জরিপ ফর্মটি পূরণ করতে পারেন।',
 	'prefswitch-feedbackpage' => 'Project:ব্যবহারকারীর অভিজ্ঞতালব্ধ মতামত',
 );
 
@@ -3716,7 +3727,7 @@ $messages['pt-br'] = array(
 	'prefswitch' => 'Preferências da Iniciativa de Usabilidade',
 	'prefswitch-desc' => 'Permitir que os usuários mudem os conjuntos de preferências',
 	'prefswitch-jswarning' => 'Lembre-se que com a mudança de tema o seu [[User:$1/$2.js|javascript $2]] terá de ser copiado para [[User:$1/vector.js]] ou [[User:$1/common.js]] para continuar',
-	'prefswitch-csswarning' => 'Os seus [[User:$1/$2.css|estilos personalizados $2]] deixarão de ser aplicados. Pode adicionar CSS personalizado ao tema vector em [[User:$1/vector.css]].',
+	'prefswitch-csswarning' => 'Os seus [[User:$1/$2.css|estilos personalizados $2]] deixarão de ser aplicados. Você pode adicionar CSS personalizado ao tema vector em [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Sim',
 	'prefswitch-survey-false' => 'Não',
 	'prefswitch-survey-submit-off' => 'Desligar as funcionalidades novas',
