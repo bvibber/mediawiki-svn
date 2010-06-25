@@ -39,6 +39,6 @@ $j(document).ready( function() {
     titleState.push( wgPageName );
     urlState.push( location.pathname + location.search );
  
-    $j.cookie( 'mwext-bc-title', titleState.join( wgJSBreadCrumbsSeparator ), { path: '/' } );
-    $j.cookie( 'mwext-bc-url', urlState.join( wgJSBreadCrumbsSeparator ), { path: '/' } );
+    $j.cookie( 'mwext-bc-title', titleState.join( wgJSBreadCrumbsSeparator ), { path: wgJSBreadCrumbsCookiePath } );
+    $j.cookie( 'mwext-bc-url', urlState.join( wgJSBreadCrumbsSeparator ), { path: wgJSBreadCrumbsCookiePath } );
 } );
