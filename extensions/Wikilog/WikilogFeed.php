@@ -228,26 +228,30 @@ abstract class WikilogFeed
 	 * @param $timekey Object cache key for the cached feed timestamp.
 	 * @param $feedkey Object cache key for the cached feed output.
 	 * @return The cached feed output if cache is good, false otherwise.
+	 * @todo Remove Mw1.15- guard for OutputPage::setLastModified().
 	 */
 	public function loadFromCache( $tsData, $timekey, $feedkey ) {
-		global $messageMemc, $wgFeedCacheTimeout;
+		global $wgFeedCacheTimeout, $wgOut, $messageMemc;
 		$tsCache = $messageMemc->get( $timekey );
 
 		if ( ( $wgFeedCacheTimeout > 0 ) && $tsCache ) {
 			$age = time() - wfTimestamp( TS_UNIX, $tsCache );
 
-			# XXX: Minimum feed cache age check disabled. This code is
-			# shadowed from ChangesFeed::loadFromCache(), but Vitaliy Filippov
-			# noticed that this causes the old cached feed to output with the
-			# updated last-modified timestamp, breaking cache behavior.
-			# For now, it is disabled, since this is just a performance
-			# optimization.
-			/* if ( $age < $wgFeedCacheTimeout ) {
+			if ( $age < $wgFeedCacheTimeout ) {
 				wfDebug( "Wikilog: loading feed from cache -- " .
 					"too young: age ($age) < timeout ($wgFeedCacheTimeout) " .
 					"($feedkey; $tsCache; $tsData)\n" );
+
+				# NOTE (Mw1.15- COMPAT): OutputPage::setLastModified()
+				# introduced in Mw1.16. Remove this guard after Wl1.1.
+				if ( method_exists( $wgOut, 'setLastModified' ) ) {
+					$wgOut->setLastModified( $tsCache );
+				} else {
+					$wgOut->mLastModified = wfTimestamp( TS_RFC2822, $tsCache );
+				}
+
 				return $messageMemc->get( $feedkey );
-			} else */ if ( $tsCache >= $tsData ) {
+			} else if ( $tsCache >= $tsData ) {
 				wfDebug( __METHOD__ . ": loading feed from cache -- " .
 					"not modified: cache ($tsCache) >= data ($tsData)" .
 					"($feedkey)\n" );

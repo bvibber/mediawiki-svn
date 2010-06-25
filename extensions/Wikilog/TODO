@@ -16,6 +16,7 @@
   - WikilogHooks::LanguageGetMagic().
   - WikilogHooks::EditPageAttemptSave().
   - WikilogTemplatePager::formatRow() (workaround bug 20431).
+  - WikilogFeed::loadFromCache() (bug 21916).
   - Wikilog.i18n.php: 'wikilog-specialwikilog' message.
 * WikilogTemplatePager::formatRow(): Remove {{{pubdate}}} and {{{updated}}}.
 * Remove wfLoadExtensionMessages() calls.
