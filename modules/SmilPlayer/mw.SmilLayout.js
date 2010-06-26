@@ -56,7 +56,8 @@ mw.SmilLayout.prototype = {
 				});
 				
 			// Update the root layout css 
-			this.$rootLayout.css( _this.getRootLayoutCss() )
+			this.$rootLayout.css( _this.getRootLayoutCss() );
+			
 			// Update the root layout html
 			this.$rootLayout.html( _this.getRootLayoutHtml() );
 		}
@@ -124,7 +125,7 @@ mw.SmilLayout.prototype = {
 	 * Get the transformed smil element in html format
 	 * @param 
 	 */
-	getSmilElementHtml: function ( smilElement ) {	
+	getSmilElementHtml: function( smilElement ) {	
 		var smilType = this.smil.getRefType( smilElement )				
 		switch( smilType ){
 			// Not part of strict smil, but saves time being able have an "html" display mode
@@ -159,14 +160,14 @@ mw.SmilLayout.prototype = {
 	*/
 	getSmilVideoHtml: function( videoElement ){
 		return $j('<video />')
-				.attr( {
-					'id' : this.smil.getAssetId( videoElement ), 
-					'src' : this.smil.getAssetUrl( $j( videoElement ).attr( 'src' ) )
-				} )
-				.css( {
-					'width': '100%',
-					'height' : '100%'
-				})
+			.attr( {
+				'id' : this.smil.getAssetId( videoElement ), 
+				'src' : this.smil.getAssetUrl( $j( videoElement ).attr( 'src' ) )
+			} )
+			.css( {
+				'width': '100%',
+				'height' : '100%'
+			} )
 	},
 	
 	/**
@@ -174,7 +175,7 @@ mw.SmilLayout.prototype = {
 	 * XXX Security XXX 
 	 * Here we are parsing in SMIL -> HTML should be careful about XSS or script elevation 
 	 *
-	 * @@TODO check if this is "local" only smil and enforce domain on all asset sources
+	 * @@TODO check all sources are "local" only smil and enforce domain on all asset sources
 	 */
 	getSmilCDATAHtml: function( smilElement ){
 		// Get "clean" smil data
@@ -195,7 +196,7 @@ mw.SmilLayout.prototype = {
 			.attr( 'id' , this.smil.getAssetId( smilElement ) )
 			// Wrap in font-size percentage relative to virtual size
 			.css( 'font-size',  ( ( this.targetWidth / this.virtualWidth )*100 ) + '%' )
-			.append(  
+			.append(
 				// We pass the xmlCdata via jQuery fragment creation, this runs jquery.clean()  
 				// and filters the result html. 				
 				$j( xmlCdata )

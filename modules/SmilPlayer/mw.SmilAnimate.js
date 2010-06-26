@@ -1,4 +1,3 @@
-
 /**
 * Handles the smil animate class
 */
@@ -88,6 +87,8 @@ mw.SmilAnimate.prototype = {
 				}
 			}		
 		}
+		if( 
+		
 		
 		// Check if we need to do a smilText clear: 
 		if( nodeName.toLowerCase() == 'smiltext' ){		
@@ -104,8 +105,7 @@ mw.SmilAnimate.prototype = {
 				}
 			}
 		}
-		//mw.log( 'checkForTransformUpdate::' + nodeName +' ' +  animateTime );
-		
+		//mw.log( 'checkForTransformUpdate::' + nodeName +' ' +  animateTime );	
 		return false;
 	},
 	
@@ -119,8 +119,6 @@ mw.SmilAnimate.prototype = {
 	transformElement: function( smilElement, animateTime ) {
 		var nodeName = $j( smilElement ).get(0).nodeName ;
 		
-		
-		
 		//mw.log("transformForTime: " + nodeName  + ' t:' + animateTime );
 		switch( nodeName.toLowerCase() ){
 			case 'smiltext':
@@ -128,10 +126,13 @@ mw.SmilAnimate.prototype = {
 			break;
 			case 'img': 
 				return this.transformImageForTime( smilElement, animateTime);
-			break;			
+			break;
 		}
 	},
 	
+	/**
+	* transformTextForTime 
+	*/
 	transformTextForTime: function( textElement, animateTime ) {
 		//mw.log("transformTextForTime:: " + animateTime );
 		
@@ -193,15 +194,20 @@ mw.SmilAnimate.prototype = {
 						 $j( animateElement ).attr( 'attributeName' ) );
 			}
 		});		
-		// No animate elements in range, make sure we transform to previus or to initial state if time is zero 
+		// No animate elements in range, make sure we transform to previous or to initial state if time is zero 
 		if( !animateInRange  ) {
 			if( animateTime == 0 ) {
-				// just a hack for now ( should read from previus animation or from source attribute
+				// just a hack for now ( should read from previous animation or from source attribute
 				//this.updateElementLayout( smilImgElement, { 'top':1,'left':1,'width':1, 'height':1 } );
 				var $target = $j( '#' + this.smil.getAssetId( smilImgElement ));
-				$target.css({ 'top':'0px','left':'0px','width':'100%', 'height':'100%' } );
+				$target.css( { 
+					'top' : '0px',
+					'left'  :'0px',
+					'width' : '100%', 
+					'height' : '100%' 
+				} );
 			}
-			// xxx should check for transform to previus 		
+			// xxx should check for transform to previous 		
 		}
 	},
 	
@@ -238,8 +244,6 @@ mw.SmilAnimate.prototype = {
 	* Get the css layout transforms for a panzoom transform type
 	* 
 	* http://www.w3.org/TR/SMIL/smil-extended-media-object.html#q32
-	*
-	*
 	*/
 	transformPanZoom: function( smilImgElement, animateElement, animateTime ){
 		var begin = this.smil.parseTime(  $j( animateElement ).attr( 'begin') );
@@ -295,7 +299,7 @@ mw.SmilAnimate.prototype = {
 		
 		var htmlAsset = $j( '#' + this.smil.getAssetId( smilElement ) ).get(0);
 		
-		// xxx best way may be to use canvaus and fitting system. 
+		// xxx best way may be to use canvaus and a fitting system. 
 		
 		// Setup target height width based target region size	
 		var fullWidth = $target.parents('.smilRegion').width() ;
@@ -367,6 +371,5 @@ mw.SmilAnimate.prototype = {
 			targetValue[ i ] += ( startPointSet[i].indexOf('%') != -1 ) ? '%' : ''; 
 		}
 		return targetValue;
-	}
-	
+	}	
 }

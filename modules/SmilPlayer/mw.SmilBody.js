@@ -74,7 +74,7 @@ mw.SmilBody.prototype = {
 				
 				// Transform the elements per animate engine				
 				_this.smil.getAnimate().animateTransform( smilElement, relativeTime, deltaTime );
-			}, 
+			},
 			/* SMIL Element out of range */
 			function( smilElement ){
 				// Hide the element in the layout 

@@ -21,6 +21,7 @@ mw.SmilBuffer.prototype = {
 		
 		// Get active body elements
 		//this.smil.getBody().getElementsForTime( time );
+		
 		// Check load status per temporal offset 
 		
 		// setTimeout to call self until buffer is ready
