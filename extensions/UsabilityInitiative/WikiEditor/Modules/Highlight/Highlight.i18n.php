@@ -101,6 +101,13 @@ $messages['cy'] = array(
 	'wikieditor-highlight-preference' => 'Galluogi amlygu cystrawen wrth olygu',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'wikieditor-highlight-preference' => 'Aktiver markering af syntaks under redigering',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Umherirrender

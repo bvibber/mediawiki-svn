@@ -78,6 +78,13 @@ $messages['cs'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Používat průvodce pro vkládání médií',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktiver gadget\'en "medie-wizard"',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

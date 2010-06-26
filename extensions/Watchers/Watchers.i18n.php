@@ -1101,6 +1101,7 @@ $messages['zh-cn'] = array(
  */
 $messages['zh-hans'] = array(
 	'watchers' => '监视列表',
+	'watchers-desc' => '显示[[Special:Watchers|边个用户系监视列表里面有页面]]',
 	'watchers_link_title' => '谁在监视本页？',
 	'watchers_error_article' => "'''错误:''' 页面不存在。",
 	'watchers_header' => '监视"[[:$1]]"的{{PLURAL:$2|用户|用户}}',

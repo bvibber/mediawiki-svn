@@ -43,7 +43,7 @@ $messages['bjn'] = array(
 	'call' => 'Kiauan',
 	'call-save' => "Kaluaran gasan kiauan ini akan disimpan di sabuah tungkaran bangaran ''$1''.",
 	'call-save-success' => 'Teks berikut ini sudah disimpan ka tungkaran <big>[[$1]]</big>.',
-	'call-save-failed' => 'Teks berikut ini BALUM disimpan ka tungkaran <big>[[$1]]</big>  karana tungkaran tersebut sudah ada.',
+	'call-save-failed' => 'Teks berikut ini BALUM disimpan ka tungkaran <big>[[$1]]</big>  karana tungkaran itu sudah ada.',
 );
 
 /** Afrikaans (Afrikaans)

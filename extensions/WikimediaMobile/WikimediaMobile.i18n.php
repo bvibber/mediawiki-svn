@@ -120,6 +120,13 @@ $messages['id'] = array(
 	'wikimediamobile-desc' => 'MediaWiki mendukung  fungsi untuk proyek host Wikimedia-mobile di http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Italian (Italiano)
+ * @author Annayram
+ */
+$messages['it'] = array(
+	'wikimediamobile-desc' => 'Le funzioni MediaWiki di supporto per il progetto Wikimedia-mobile ospitate presso http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

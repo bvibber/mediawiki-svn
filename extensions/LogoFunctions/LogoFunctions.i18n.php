@@ -21,6 +21,14 @@ $messages['en'] = array(
 	'logofunctions-filenotexist' => 'Error: [[File:$1]] does not exist',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'logofunctions-desc' => "Maak 'n ontleder-funksie beskikbaar om die logo van die wiki te stel",
+	'logofunctions-filenotexist' => 'Fout: [[File:$1]] bestaan nie',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -75,6 +83,13 @@ $messages['gsw'] = array(
 $messages['ia'] = array(
 	'logofunctions-desc' => 'Adde un function analysator pro definir le logotypo del wiki',
 	'logofunctions-filenotexist' => 'Error: [[File:$1]] non existe',
+);
+
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'logofunctions-filenotexist' => 'შეცდომა: [[File:$1]] არ არსებობს',
 );
 
 /** Korean (한국어)

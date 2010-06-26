@@ -270,10 +270,17 @@ $messages['cy'] = array(
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Sarrus
+ * @author Sir48
  */
 $messages['da'] = array(
+	'wikieditor-publish-preference' => 'Aktiver skridt-for-skridt udgivelse',
+	'wikieditor-publish-button-publish' => 'Udgiv',
+	'wikieditor-publish-button-cancel' => 'Afbryd',
+	'wikieditor-publish-dialog-title' => 'Udgiv som {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Redigeringsbeskrivelse (beskriv kort de ændringer, du har gjort)',
 	'wikieditor-publish-dialog-minor' => 'Mindre ændring',
 	'wikieditor-publish-dialog-watch' => 'Overvåg denne side',
+	'wikieditor-publish-dialog-publish' => 'Udgiv',
 	'wikieditor-publish-dialog-goback' => 'Gå tilbage',
 );
 
@@ -1273,6 +1280,20 @@ $messages['yi'] = array(
 	'wikieditor-publish-dialog-watch' => 'אויפֿפאַסן אויף דעם בלאַט',
 	'wikieditor-publish-dialog-publish' => 'פֿאַרעפֿנטלעכן',
 	'wikieditor-publish-dialog-goback' => 'צוריקגיין',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-publish-button-publish' => 'Ìtẹ̀jáde',
+	'wikieditor-publish-button-cancel' => 'Fagilé',
+	'wikieditor-publish-dialog-title' => 'Ìtẹ̀jáde sí {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Àkótán àtúnṣe (àlàyé ní sókí àtúnṣe tí ẹ ṣe):',
+	'wikieditor-publish-dialog-minor' => 'Àtúnṣe kékeré',
+	'wikieditor-publish-dialog-watch' => "M'ójútó ojúewé yìí",
+	'wikieditor-publish-dialog-publish' => 'Ìtẹ̀jáde',
+	'wikieditor-publish-dialog-goback' => 'Padà sẹ́yìn',
 );
 
 /** Cantonese (粵語)

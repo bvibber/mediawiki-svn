@@ -281,6 +281,8 @@ Parameters:
 	'wikilog-simple-signature' => 'Parameters:
 * $1 is a link to the commenting user page
 * $2 is a link to the commenting user talk page, with {{msg-mw|talkpagelinktext}} as link text',
+	'wikilog-edit-hint' => 'Parameters:
+* $1 is an article title.',
 	'wikilog-comment-footer' => 'Parameters:
 * $1 is the name of the author of the comment (optional)
 * $2 is the name of the author or the comment formatted with {{msg-mw|wikilog-simple-signature|notext=1}}
@@ -310,6 +312,8 @@ Parameters:
 	'wikilog-feed-title' => 'Parameters:
 * $1 is a title
 * $2 is the content language of the wiki',
+	'wikilog-feed-ns-title' => 'Parameters:
+* $1 is the name of a namespace in the content language.',
 	'wikilog-comment-feed-title1' => 'Parameters:
 * $1 is a comment number (to make unique titles for different comments)
 * $2 is the commenter name',
@@ -1343,6 +1347,7 @@ $messages['bs'] = array(
 	'wikilog-summary-footer' => 'Postavio $7 u [[$1|$2]] na $8 pod $9, $10.',
 	'wikilog-summary-uncategorized' => 'Nekategorisano',
 	'wikilog-edit-fieldset-legend' => 'Opcije wikizapisnika:',
+	'wikilog-comment-pending' => 'Ovaj komentar čeka na potvrdu.',
 	'wikilog-comment-edit' => 'Uredi ovaj komentar',
 	'wikilog-comment-delete' => 'Izbriši ovaj komentar',
 	'wikilog-comment-history' => 'Vidi historiju komentara',
@@ -1647,6 +1652,7 @@ Um Artikel zu veröffentlichen und andere Wikilog-Funktionen freizuschalten muss
 	'wikilog-summary-categories' => 'Abgelegt unter $2',
 	'wikilog-summary-more' => '[[$3|→ weiterlesen …]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussion]])',
+	'wikilog-edit-hint' => '„Wikilog“-Artikel bearbeiten: $1',
 	'wikilog-edit-fieldset-legend' => 'Wikilog-Optionen:',
 	'wikilog-edit-signpub' => 'Diesen Artikel unterschreiben und veröffentlichen',
 	'wikilog-edit-signpub-tooltip' => 'Signiert und veröffentlicht den Artikel in seinem Wikilog beim Speichern.
@@ -1669,6 +1675,7 @@ Haken entfernen, um den Artikel als Entwurf zu speichern.',
 	'wikilog-newtalk-text' => '<!-- leere Seite erzeugt durch Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisch erzeugt durch Wikilog',
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]',
+	'wikilog-feed-ns-title' => '$1 „Wikilog“-Artikel',
 	'wikilog-feed-description' => 'Lese die neuesten Beiträge in diesem Feed.',
 	'wikilog-comment-feed-title1' => 'Kommentar von $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Kommentar von $2 zu $3 (#$1)',
@@ -3268,6 +3275,7 @@ A fin de publicar articulos e activar altere functiones wikilog, illo debe primo
 	'wikilog-summary-categories' => 'In {{PLURAL:$1|categoria|categorias}} $2',
 	'wikilog-summary-more' => '[[$3|→ continuar a leger...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussion]])',
+	'wikilog-edit-hint' => 'Modificar le articulo wikilog: $1',
 	'wikilog-edit-fieldset-legend' => 'Optiones de wikilog:',
 	'wikilog-edit-signpub' => 'Signar e publicar iste articulo',
 	'wikilog-edit-signpub-tooltip' => 'Face que iste articulo es signate e publicate in iste wikilog al momento que illo es salveguardate.
@@ -3289,6 +3297,7 @@ Dismarca iste quadrato pro retener le articulo como version provisori.',
 	'wikilog-comment-reject' => 'Rejectar iste commento (action immediate)',
 	'wikilog-newtalk-text' => '<!-- pagina vacue create per Wikilog -->',
 	'wikilog-newtalk-summary' => 'create automaticamente per Wikilog',
+	'wikilog-feed-ns-title' => 'Articulos wikilog in $1',
 	'wikilog-feed-description' => 'Leger le articulos le plus recente in iste syndication.',
 	'wikilog-comment-feed-title1' => 'Commento per $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Commento per $2 a $3 (#$1)',
@@ -4135,6 +4144,7 @@ $messages['mk'] = array(
 	'wikilog-comment-reject' => 'Одбиј го коментарот (делува веднаш)',
 	'wikilog-newtalk-text' => '<!-- празна страница создадена од Викидневникот -->',
 	'wikilog-newtalk-summary' => 'автоматски создадено од Викидневникот',
+	'wikilog-feed-ns-title' => '$1 статии во викидневникот',
 	'wikilog-feed-description' => 'Прочитајте ги најскорешните пораки во ова емитување.',
 	'wikilog-comment-feed-title1' => 'Коментар од $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Коментар од $2 за $3 (#$1)',
@@ -4330,6 +4340,7 @@ Schakel dit vaktje uit om het artikel de status concept te laten houden.',
 	'wikilog-comment-reject' => 'Deze reactie afkeuren (directe handeling)',
 	'wikilog-newtalk-text' => '<!-- lege pagina; aangemaakt door Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisch aangemaakt door Wikilog',
+	'wikilog-feed-ns-title' => "Wikilogpagina's in de naamruimte $1",
 	'wikilog-feed-description' => 'De meest recente bijdragen in deze feed bekijken.',
 	'wikilog-comment-feed-title1' => 'Reactie van $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Reactie van $2 bij $3 (#$1)',
@@ -5145,6 +5156,7 @@ Desmarque a caixa para manter o artigo em rascunho.',
 	'wikilog-newtalk-text' => '<!-- página em branco criada pelo Wikilog -->',
 	'wikilog-newtalk-summary' => 'criado automaticamente pelo wikilog',
 	'wikilog-feed-title' => '{{SITENAME}} - $1 [$2]',
+	'wikilog-feed-ns-title' => '$1 artigo(s) wikilog',
 	'wikilog-feed-description' => "Leia as publicações mais recentes neste ''feed''.",
 	'wikilog-comment-feed-title1' => 'Comentário de $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentário de $2 para $3 (#$1)',
@@ -5633,6 +5645,7 @@ $messages['ru'] = array(
 	'wikilog-comment-reject' => 'Отклонить этот комментарий (незамедлительное действие)',
 	'wikilog-newtalk-text' => '<!-- пустая страница создана викилогом -->',
 	'wikilog-newtalk-summary' => 'создана автоматически викилогом',
+	'wikilog-feed-ns-title' => '$1 статей викилога',
 	'wikilog-feed-description' => 'Читать последние сообщения на этом канале.',
 	'wikilog-comment-feed-title1' => 'Комментарии от $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Комментарий от $2 к $3 (#$1)',

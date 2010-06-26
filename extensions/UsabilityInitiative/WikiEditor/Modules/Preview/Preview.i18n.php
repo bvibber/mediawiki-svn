@@ -181,12 +181,16 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Christian List
  * @author Froztbyte
  * @author Sarrus
+ * @author Sir48
  */
 $messages['da'] = array(
+	'wikieditor-preview-preference' => 'Aktiver forhåndsvisning side-om-side',
 	'wikieditor-preview-tab' => 'Forhåndsvisning',
 	'wikieditor-preview-changes-tab' => 'Ændringer',
+	'wikieditor-preview-loading' => 'Indlæser...',
 );
 
 /** German (Deutsch)
@@ -867,6 +871,15 @@ $messages['yi'] = array(
 	'wikieditor-preview-tab' => 'פֿאראויסשטעלונג',
 	'wikieditor-preview-changes-tab' => 'ענדערונגען',
 	'wikieditor-preview-loading' => 'לאָדט…',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-preview-tab' => 'Àyẹ̀wò',
+	'wikieditor-preview-changes-tab' => 'Àwọn àtúnṣe',
+	'wikieditor-preview-loading' => 'Únrùjáde...',
 );
 
 /** Cantonese (粵語)

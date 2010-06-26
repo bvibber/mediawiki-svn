@@ -118,6 +118,13 @@ $messages['cy'] = array(
 	'mwsearch-desc' => 'Ategyn MWSearch',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'mwsearch-desc' => 'MWSearch-plugin',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

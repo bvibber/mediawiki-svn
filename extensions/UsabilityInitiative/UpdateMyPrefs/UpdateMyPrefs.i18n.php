@@ -121,9 +121,12 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Froztbyte
+ * @author Sir48
  */
 $messages['da'] = array(
 	'prefs-updates' => 'Opdateringer',
+	'updatemyprefs-desc' => 'Brugerpræference til angivelse af ønske om periodisk opdatering af brugerinterface, når sådanne frigives',
+	'updatemyprefs-label-message' => 'Opdater automatisk mine præferencer med nye standardindstillinger og værktøjer, når de bliver tilgængelige',
 );
 
 /** German (Deutsch) */
@@ -530,6 +533,13 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'prefs-updates' => 'אַקטואַליזירונגען',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'prefs-updates' => 'Àwọn ìtúnṣe',
 );
 
 /** Cantonese (粵語)
