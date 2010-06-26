@@ -194,9 +194,11 @@ function wfSpecialPostcomment( $par )
 
 	if ($update) {
 		//echo "trying to update article";
-		$article->updateArticle($text, "", true, $watch);
+		$article->doEdit( $text, '', EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY
+			| EDIT_MINOR, false, null, $watch, false, '', true );
 	} else {
 		//echo "inserting new article";
-		$article->insertNewArticle($text, "", true, $watch, false, false, true);
+		$article->doEdit( $text, $summary, EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY
+			| EDIT_MINOR | EDIT_FORCE_BOT, false, null, $watch, false, '', true );
 	}
 }

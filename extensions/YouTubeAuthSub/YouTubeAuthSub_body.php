@@ -56,10 +56,8 @@ class SpecialYouTubeAuthSub extends SpecialPage {
 						}
 					}
 					$content = "{{YoutubeVideo|{$wgRequest->getVal('id')}|{$title}|{$keywords}|{$description}|{$category}}}";
-					$a->insertNewArticle($content,
-					wfMsg('youtubeauthsub_summary'),
-					false,
-					false);
+					$a->doEdit( $content, wfMsg('youtubeauthsub_summary'), EDIT_NEW
+						| EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY, false, null, false, false, '', true );
 					$wgOut->redirect('');
 				}
 				$wgOut->addWikiText(wfMsg('youtubeauthsub_viewpage', $descTitle->getFullText()) );
