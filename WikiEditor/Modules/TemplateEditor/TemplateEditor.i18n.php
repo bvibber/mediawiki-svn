@@ -186,10 +186,13 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Sarrus
+ * @author Sir48
  */
 $messages['da'] = array(
+	'wikieditor-template-editor-preference' => 'Aktiver formbaseret redigering af wikiskabeloner',
 	'wikieditor-template-editor-dialog-title' => 'Rediger skabelon',
 	'wikieditor-template-editor-dialog-submit' => 'Opdater',
+	'wikieditor-template-editor-dialog-cancel' => 'Afbryd',
 );
 
 /** German (Deutsch)
@@ -730,6 +733,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Kuhariri kigezo',
 	'wikieditor-template-editor-dialog-submit' => 'Sasisha',
 	'wikieditor-template-editor-dialog-cancel' => 'Batilisha',
 );
@@ -811,6 +815,15 @@ $messages['yi'] = array(
 	'wikieditor-template-editor-dialog-title' => 'רעדאַקטירן מוסטער',
 	'wikieditor-template-editor-dialog-submit' => 'דערהײַנטיקן',
 	'wikieditor-template-editor-dialog-cancel' => 'אַנולירן',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Àtúnṣe àdàkọ',
+	'wikieditor-template-editor-dialog-submit' => 'Ìtúnṣe',
+	'wikieditor-template-editor-dialog-cancel' => 'Fagilé',
 );
 
 /** Cantonese (粵語)

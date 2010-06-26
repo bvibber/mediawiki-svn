@@ -929,16 +929,23 @@ I\'n helpu ni i\'w gwella, cwblhewch yr arolwg dewisol isod, yna pwyswch ar "[[#
 
 /** Danish (Dansk)
  * @author Froztbyte
+ * @author Sir48
  */
 $messages['da'] = array(
+	'prefswitch' => 'Præferencevælger for brugervenlighedsinitiativet',
 	'prefswitch-desc' => 'Tillad brugere at udskifte sæt af præferencer',
+	'prefswitch-jswarning' => 'Husk, at ved ændring af skin skal dit [[User:$1/$2.js|$2 JavaScript]] kopieres til [[((ns: user)):$1/vector.js]] <!-- eller [[{{ns:user}}:$1/common.js]]--> for at blive ved med at fungere.',
+	'prefswitch-csswarning' => 'Dine [[User:$1/$2.css|brugertilpassede $2-styles]] bliver ikke længere anvendt. Du kan tilføje brugertilpasset CSS til Vector i [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nej',
 	'prefswitch-survey-submit-off' => 'Slå nye funktioner fra',
+	'prefswitch-survey-cancel-off' => 'Hvis du vil fortsætte med at bruge de nye funktioner, kan du gå tilbage til $1.',
 	'prefswitch-survey-submit-feedback' => 'Send feedback',
 	'prefswitch-survey-cancel-feedback' => 'Såfremt du ikke ønsker at give feedback, kan du gå tilbage til $1.',
 	'prefswitch-survey-question-like' => 'Hvad kunne du lide om de nye funktioner?',
 	'prefswitch-survey-question-dislike' => '↓ Hvad kunne du ikke lide om de nye funktioner?',
+	'prefswitch-survey-question-whyoff' => 'Hvorfor afbryder du de nye funktioner?
+Vælg alle, som passer.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Funktionerne var for vanskelige at bruge.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Funktionerne fungerede ikke korrekt.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Funktionerne opførte sig ikke som man ville forvente.',
@@ -956,11 +963,21 @@ $messages['da'] = array(
 	'prefswitch-title-off' => 'Slå nye funktioner fra',
 	'prefswitch-title-switched-off' => 'Tak',
 	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-on' => 'De nye funktioner er nu sat til. Vi håber, du vil synes om at bruge dem, men ellers kan du altid fjerne dem igen ved at klikke på linket "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" øverst på siden.',
+	'prefswitch-success-off' => 'De nye funktioner er nu fjernet. Tak fordi du prøvede dem. Du kan altid slå dem til igen ved at klikke på linket "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" øverst på siden.',
 	'prefswitch-success-feedback' => 'Din feedback er blevet sendt.',
 	'prefswitch-return' => '↓ <hr style="clear:both">
 Tilbage til <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-logged-changes' => "* '''{{ int: overvåg))-fanen'''er nu en stjerne. 
+* '''{{ int: flyt))- fanen'''er nu i dropdown-menuen ved siden af søgefeltet.",
+	'prefswitch-main-feedback' => 'Vi vil meget gerne høre fra dig. Besøg gerne vores [[$1|feedback-side]]. Hvis du især er interesseret i vores fortsatte bestræbelser på at forbedre brugervenligheden, så besøg vores [http://usability.wikimedia.org brugervenligheds-wiki].',
+	'prefswitch-main-anon' => '[$1 Klik her for at fjerne de nye funktioner]. Du vil blive bedt om at logge ind eller oprette en konto først,',
+	'prefswitch-main-on' => '[$2 Klik her for at afbryde de nye funktioner].',
 	'prefswitch-main-off' => '===Prøv dem!===
 [$1 Klik her for at aktivere de nye funktioner].',
+	'prefswitch-survey-intro-feedback' => 'Vi vil meget gerne høre fra dig.
+Udfyld venligst den frivillige undersøgelse forneden før du klikker på "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-feedbackpage' => 'Project:Feedback fra brugererfaring',
 );
 
 /** German (Deutsch)
@@ -2918,6 +2935,7 @@ $messages['krc'] = array(
 $messages['lb'] = array(
 	'prefswitch' => "Benotzerfrëndlechkeet's-Initiative: Ëmschalte vun den Astellungen",
 	'prefswitch-desc' => 'De Benotzer erlaben tësche Gruppe vun Astellungen ëmzeschalten',
+	'prefswitch-jswarning' => 'Denkt datt mat der Ännerung vum Ausgesinn, Är [[User:$1/$2.js|$2 JavaScript]] muss op [[{{ns:user}}:$1/vector.js]] <!-- oder [[{{ns:user}}:$1/common.js]]--> kopéiert gi fir weider ze fonctionéieren.',
 	'prefswitch-csswarning' => 'Är [[User:$1/$2.css|perséinlech $2 Stiler]] ginn net méi benotzt. Dir kënnt personaliséiert CSS fir Vector an  [[{{ns:user}}:$1/vector.css]] derbäisetzen.',
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Neen',
@@ -3392,6 +3410,18 @@ Vel alle som passar.',
 	'prefswitch-success-on' => 'Dei nye funksjonane er no slegne på. Vi håpar du likar å bruke dei, men du kan når som helst slå dei av att, ved å klikke på lenkja «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» på toppen av sida.',
 	'prefswitch-success-off' => 'Dei nye funksjonane er no slegne av. Takk for at du prøvde dei, og hugs at du når som helst kan slå dei på att, ved å klikke på lenkja «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]» på toppen av sida.',
 	'prefswitch-success-feedback' => 'Tilbakemeldinga di er send.',
+	'prefswitch-main-feedback' => '=== Tilbakemeldingar? ===
+Me vil gjerne høyra frå deg. Vitja gjerne [[$1|tilbakemeldingssida]] vår; eller, om du er interessert i det pågåande arbeidet vårt med å betra mjukvara, vitja [http://usability.wikimedia.org brukarvenlegheitswikien] for meir informasjon.',
+	'prefswitch-main-anon' => '=== Før meg attende ===
+[$1 Trykk her for å slå av dei nye funksjonane]. Du vil få verta beden om å logga inn eller å oppretta ein konto fyrst.',
+	'prefswitch-main-on' => '=== Før meg attende ===
+[$2 Trykk her for å slå av dei nye funksjonane].',
+	'prefswitch-main-off' => '=== Prøv dei ===
+[$1 Trykk her for å slå på dei nye funksjonane].',
+	'prefswitch-survey-intro-feedback' => 'Me vil gjerne høyra frå deg.
+Fyll gjerne ut den valfrie undersøkinga under før du trykkjer på «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]».',
+	'prefswitch-survey-intro-off' => 'Takk for at du prøvde ut dei nye funksjonane.
+For å hjelpa oss med å betra dei, fyll gjerne ut den valfrie undersøkinga under før du trykkjer på «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -4830,6 +4860,50 @@ $messages['yi'] = array(
 בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'prefswitch' => 'Ìyípadà ìfẹ́ràn Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni',
+	'prefswitch-desc' => 'Gbàyè àwọn oníṣe láti ṣèyípadà àwọn ìṣètò àwọn ìfẹ́ràn',
+	'prefswitch-jswarning' => 'Ẹrántí pé pẹ̀lú ìyípadà áwọ̀ ìwojú, [[User:$1/$2.js|JavaScript $2]] yín gbódọ̀ jẹ́ wíwòkọ sí [[{{ns:user}}:$1/vector.js]] <!-- tàbí [[{{ns:user}}:$1/common.js]]--> kó lè baà tẹ̀síwájú ní ṣiṣẹ́.',
+	'prefswitch-csswarning' => '[[User:$1/$2.css|Àwọn ọ̀nà atòbáramu $2]] yín kò ní ṣiṣé mọ́. Ẹ le ṣàfikún CSS atòbáramu fún vector nínú [[{{ns:user}}:$1/vector.css]].
+
+Your [[User:$1/$2.css|custom $2 styles]] will no longer be applied. You can add custom CSS for vector in [[{{ns:user}}:$1/vector.css]].',
+	'prefswitch-survey-true' => 'Bẹ́ẹ̀ni',
+	'prefswitch-survey-false' => 'Bẹ́ẹ̀kọ́',
+	'prefswitch-survey-submit-off' => 'Ẹ dẹ́kun àwọn ìní tuntun',
+	'prefswitch-survey-cancel-off' => 'Tí ẹ bá fẹ́ tẹ̀síwájú ní lílo àwọn ìní tuntun, ẹ lè padà sí $1.',
+	'prefswitch-survey-submit-feedback' => 'Ẹ fi ìdáhun ránṣẹ́',
+	'prefswitch-survey-cancel-feedback' => 'Tí ẹ kò bá fẹ́ pèsè ìdáhùn, ẹ lè padà sí $1.',
+	'prefswitch-survey-question-like' => 'Kíni ẹ fẹ́ràn nípa àwọn ìní tuntun?',
+	'prefswitch-survey-question-dislike' => 'Kíni ẹ kò fẹ́ràn nípa àwọn ìní tuntun náà?',
+	'prefswitch-survey-question-whyoff' => 'Kílódé tí ẹ úndẹ́kun àwọn ìní tuntun?
+Ẹ jọ̀wọ́ ẹ mú èyí tó yẹ.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Àwọn ìní náà ṣòro láti lò.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Àwọn ìní náà kò ṣiṣẹ́ dáadáa.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Àwọn ìní náà kò ṣiṣẹ́ bó ṣe yẹ.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Un kò fẹ́ràn bí àwọn ìní náà ṣe rí.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Un kò fẹ́ràn àwọn ìpele àti ìlàkalẹ̀ tuntun náà.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Un kò fẹ́ràn pẹpẹ irinṣẹ́ tuntun náà.',
+	'prefswitch-survey-answer-whyoff-other' => 'Ìdíẹ̀ míràn:',
+	'prefswitch-survey-question-browser' => 'Agbétakùn wo ni ẹ únlò?',
+	'prefswitch-survey-answer-browser-other' => 'Agbétakùn míràn:',
+	'prefswitch-survey-question-os' => 'Sístẹ̀mù ìṣiṣẹ́ kọ̀mpútà wo ni ẹ únlò?',
+	'prefswitch-survey-answer-os-other' => 'Sístẹ̀mù ìṣiṣẹ́ kọ̀mpútà mìràn:',
+	'prefswitch-survey-question-res' => 'Kíni iye ìgbéhàn ẹ̀rọ ojúìran yín?',
+	'prefswitch-title-on' => 'Àwọn ìní tuntun',
+	'prefswitch-title-switched-on' => 'Ẹ kúùgbádùn!',
+	'prefswitch-title-off' => 'Ẹ dẹ́kun àwọn ìní tuntun',
+	'prefswitch-title-switched-off' => 'A dúpẹ́',
+	'prefswitch-title-feedback' => 'Ìdáhùn',
+	'prefswitch-success-feedback' => 'Ìdáhùn yín ti jẹ́ fífiránṣẹ́.',
+	'prefswitch-return' => '<hr style="clear:both">
+Ẹ padà sí <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-logged-changes' => "* '''Ìpele {{int:watch}}''' nísìnyí jẹ́ ìràwọ̀.
+* '''Ìpele {{int:move}}''' nísìnyí wà nínú ìsílọlẹ̀ lẹ́gbẹ pẹpẹ àwárí.",
+);
+
 /** Cantonese (粵語)
  * @author Horacewai2
  */
@@ -4929,6 +5003,7 @@ Wikimedia Foundation嘅可用性小組同社群嘅志願者一齊係列努力令
 $messages['zh-hans'] = array(
 	'prefswitch' => '可用性倡议偏好设定',
 	'prefswitch-desc' => '允许用户设定参数设定',
+	'prefswitch-jswarning' => '请记住此对皮肤的变化，你[[User:$1/$2.js|$2的JavaScript]]将需要复制到[[{{ns:user}}:$1/vector.js]] <!--或 [[{{ns:user}}:$1/common.js]]-->才能继续有效。',
 	'prefswitch-csswarning' => '您的 [[User:$1/$2.css|custom $2 styles]] 将不再适用。在此版本中您可以在 [[{{ns:user}}:$1/vector.css]] 添加自定义CSS。',
 	'prefswitch-survey-true' => '是',
 	'prefswitch-survey-false' => '否',

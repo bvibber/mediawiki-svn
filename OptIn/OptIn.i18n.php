@@ -4862,6 +4862,7 @@ $messages['qu'] = array(
  * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -4927,11 +4928,11 @@ Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar
 	'optin-survey-answer-changes-custom' => 'Un grad mai mare de personalizare.',
 	'optin-survey-answer-changes-other' => 'Altele:',
 	'optin-improvements2' => '== Ce s-a îmbunătățit? ==
-[[File:UsabilityToolbar.png|left|link=|Captură de ecran cu noua trusă de unelte de editare]]
+[[File:UsabilityToolbar.png|left|link=|Captură de ecran cu noua bară de unelte de editare]]
 [[File:UsabilityDialogs.png|left|link=|Captură de ecran cu noile casete de dialog pentru generare de conținut]]
-;Trusă de unelte îmbunătățită
-Noua trusă de unelte facilitează editarea articolelor.
-Miniaturile noi și îmbunătățite arată mai clar ce face fiecare unealtă.
+;Bară de unelte îmbunătățită
+Noua bară de unelte facilitează editarea articolelor.
+Miniaturile noi și îmbunătățite înfățișează mai clar rolul fiecărei unealte.
 Secțiunile expandabile aerisesc pagina, dar țin uneltele folosite rar la distanță de un clic.
 ;Casete de dialog
 Cînd creați legături sau tabele, casetele de dialog se deschid printr-un clic pe miniatură și vă ajută să îndepliniți sarcina prin simpla completare a unui formular.
@@ -6383,6 +6384,47 @@ $messages['yi'] = array(
 == מער אינפֿארמאַציע ==
 צו דערגיין מער וועגן דעם ניצלעכקייט איניציאַאטיוו, באַזוכט אונזער [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative היימבלאַט].
 <div style="clear:both"></div>',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'optin' => 'Ìkópa Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni',
+	'optin-desc' => 'Ẹ gba àwọn oníṣe láyè láti ṣèdánwò Beta, àwọn ìmúdára tuntun Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni.',
+	'optin-title-optedout' => 'Ẹ ṣèdánwò Beta',
+	'optin-title-optedin' => 'Ẹ kúrò ní Beta',
+	'optin-title-justoptedin' => 'Ẹ káábọ̀ sí Beta',
+	'optin-title-justoptedout' => 'A dúpẹ́ lọ́wọ́ yín pé ẹ ṣèdánwò Beta wa',
+	'optin-title-feedback' => 'Ìdáhùn sí Beta',
+	'optin-needlogin' => 'Ẹ ní láti [$1 wọlé] láti dán Beta wò.',
+	'optin-intro' => 'Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni Wikipedia tí únṣiṣé kíkankíkan láti ṣèdára ìṣeémúlò ti Wikipedia.
+Ṣé ẹ fẹ́ ṣèdánwò Beta wa?',
+	'optin-feedback-intro' => 'A dúpẹ́ lọ́wọ́ yín pé ẹ ṣèdánwò Beta.
+A ó fẹ́ mọ èrò yín nípa ìwojú wa tuntun, bíi bẹ́ẹ̀ yíò wù wá tí ẹ bá le dáhùn àwọn ìbérè àipọndandan ìsàlẹ̀ yí.',
+	'optin-feedback-back' => 'Tí ẹ bá fẹ́ dáhùn àwọn ìbérè náà, ẹ le padà sí $1.',
+	'optin-success-in' => 'Ẹ úndán Beta wò lọ́wọ́lọ́wọ́.
+Ẹ le kúrò níbẹ̀ nígbàkúgbà nípa títẹ ìjápọ̀ "{{int:optin-leave}}" lórí ojúewé ọ̀hún.',
+	'optin-leave-cancel' => 'Tí ẹ bá fẹ́ tẹ̀síwájú sí ní lo Beta, ẹ lè padà sí $1.',
+	'optin-success-out' => 'Ẹ ti fi Beta sílẹ̀ níyọrísírere.
+Ẹ lè tún dánwò nígbàkúgbà nípa títẹ ìjápọ̀ "{{int:optin-try}}" lórí ojúewé náà.',
+	'optin-success-feedback' => 'A dúpẹ́ lọ́wọ́ yín fún ìdáhùn yín!',
+	'optin-accept-long' => 'Ẹ dán Beta wò',
+	'optin-accept-long-anon' => 'Ẹ wọlé láti ṣèdánwò Beta',
+	'optin-deny-long' => 'Ẹ padà sí ojúewé tókọjá',
+	'optin-submit-out' => 'Ẹ kúrò ní Beta',
+	'optin-submit-feedback' => 'Ẹ ṣèdáhùn',
+	'optin-survey-yes' => 'Bẹ́ẹ̀ni',
+	'optin-survey-no' => 'Bẹ́ẹ̀kọ́',
+	'optin-survey-question-likedislike' => 'Kíni ẹ fẹ́ràn nípa Beta? Kíni ẹ kò fẹ́ràn nípa Beta?',
+	'optin-survey-question-whyoptout' => 'Kílódé tí ẹ fi únfi Beta sílẹ̀? (Ẹ jọ̀wọ́ ẹ mú ìdáhùn tó yẹ.)',
+	'optin-survey-answer-whyoptout-hard' => 'Ó ṣòro gan láti lòó.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Kó ṣiṣẹ́ dáadáa.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Kò ṣiṣẹ́ bóṣe yẹ.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Un kò fẹ́ràn bó ṣe rí.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Un kò fẹ́ràn pẹpẹ irinṣẹ́ tuntun náà.',
+	'optin-survey-answer-whyoptout-other' => 'Ìdíẹ̀ míràn:',
+	'optin-survey-answer-changes-other' => 'Òmíràn:',
 );
 
 /** Cantonese (粵語)

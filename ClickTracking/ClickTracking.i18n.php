@@ -358,12 +358,21 @@ $messages['cu'] = array(
  */
 $messages['da'] = array(
 	'ct-event-name' => 'Navn på hændelse',
+	'ct-expert-header' => '"Ekspertklik"',
+	'ct-beginner-header' => '"Nybegynderklik"',
+	'ct-total-header' => 'Totalt antal klik',
 	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',
 	'ct-end-date' => 'Slutdato (ÅÅÅÅMMDD)',
+	'ct-increment-by' => 'Antal dage hvert datapunkt repræsenterer',
+	'ct-change-graph' => 'Ændre graf',
 	'ct-beginner' => 'Begynder',
+	'ct-intermediate' => 'Mellemniveau',
 	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Datointerval',
+	'ct-editing' => 'Redigerer lige nu:',
 	'ct-anon-users' => 'Anonyme brugere',
 	'ct-user-contribs' => 'Totalt antal brugerbidrag',
+	'ct-user-span' => 'Brugerbidrag i periode',
 	'ct-and' => 'og',
 	'ct-update-table' => 'Opdater tabel',
 );
@@ -2031,6 +2040,34 @@ $messages['yi'] = array(
 	'ct-beginner' => 'אָנהייבער',
 	'ct-anon-users' => 'אַנאנימע באַניצער',
 	'ct-and' => 'און',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'clicktracking' => 'Ìtẹ̀lé títẹ̀ Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni',
+	'clicktracking-desc' => 'Ìtẹ̀lé títẹ̀ fún títẹ̀lé àwọn ìṣẹ̀lẹ̀ tí wọn kò jẹ́ kí ojúewé kó túnraṣe',
+	'ct-title' => 'Àròpapọ̀ àwọn títẹ̀ oníṣe',
+	'ct-event-name' => 'Orúkọ ìṣèlẹ̀',
+	'ct-expert-header' => 'Àwọn títẹ̀ "Awo"',
+	'ct-intermediate-header' => 'Àwọn títẹ̀ "àrin"',
+	'ct-beginner-header' => 'Àwọn títẹ̀ "olùkọ́bẹ̀rẹ̀"',
+	'ct-total-header' => 'Àpapọ̀ iye títẹ̀',
+	'ct-start-date' => 'Ọjọ́ ìbẹ̀rẹ̀ (YYYYMMDD)',
+	'ct-end-date' => 'Ọjọ́ ìparí (YYYYMMDD)',
+	'ct-increment-by' => 'Iye ọjọ́ tí ojúàmì ìpèsè kọ̀ọ̀kan dúró fún',
+	'ct-change-graph' => 'Ìyípadà ìṣàwòrán',
+	'ct-beginner' => 'Olùkọ́bẹ̀rẹ̀',
+	'ct-intermediate' => 'Àrin',
+	'ct-expert' => 'Awo',
+	'ct-date-range' => 'Ìgbà ọjọ́',
+	'ct-editing' => 'Àtúnṣe lọ́wọ́lọ́wọ́ sí:',
+	'ct-anon-users' => 'Àwọn oníṣe aláìlórúkọ',
+	'ct-user-contribs' => 'Àpapọ̀ iye àwọn àfikún oníṣe',
+	'ct-user-span' => 'Àwọn àfikún oníṣe nígbà àsíkò',
+	'ct-and' => 'àti',
+	'ct-update-table' => 'Pátákó ìtúnṣe',
 );
 
 /** Cantonese (粵語)

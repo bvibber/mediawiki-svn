@@ -37,6 +37,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'wikieditor-previewDialog-preference' => 'Aktiveer voorskou-dialoog',
 	'wikieditor-previewDialog-tab' => 'Voorskou',
 	'wikieditor-previewDialog-loading' => 'Besig om te laai...',
 );
@@ -337,6 +338,7 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'wikieditor-previewDialog-preference' => 'Activar le dialogo de previsualisation',
 	'wikieditor-previewDialog-tab' => 'Previsualisation',
 	'wikieditor-previewDialog-loading' => 'Cargamento...',
 );
@@ -370,9 +372,11 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author David1010
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'wikieditor-previewDialog-preference' => 'წინასწარი გადახედვის დიალოგის ჩართვა',
 	'wikieditor-previewDialog-tab' => 'წინასწარ',
 	'wikieditor-previewDialog-loading' => 'იტვირთება...',
 );
@@ -593,6 +597,14 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'wikieditor-previewDialog-tab' => 'Инники көрүү',
 	'wikieditor-previewDialog-loading' => 'Хачайдана турар...',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'wikieditor-previewDialog-tab' => 'Antiprima',
+	'wikieditor-previewDialog-loading' => 'Carrigamentu...',
 );
 
 /** Sinhala (සිංහල)

@@ -1058,8 +1058,8 @@ $messages['sw'] = array(
 	'tooltip-pt-optin-try' => 'Jaribu kutumia mtindo na zana mpya',
 	'optin-leave' => 'Ondoka Beta',
 	'tooltip-pt-optin-leave' => 'Uache kutumia mtindo na zana mpya',
-	'optin-feedback' => 'Mrejeresho wa Beta',
-	'tooltip-pt-optin-feedback' => 'Toa maoni yako juu ya zana mpya',
+	'optin-feedback' => 'Mwitiko wa Beta',
+	'tooltip-pt-optin-feedback' => 'Toa maoni ya uzoefu wako kuhusu zana mpya',
 );
 
 /** Telugu (తెలుగు)
@@ -1218,6 +1218,18 @@ $messages['yi'] = array(
 	'tooltip-pt-optin-leave' => 'פֿאַרלעשן נײַע אייגנקייטן',
 	'optin-feedback' => 'בעטאַ פֿידבעק',
 	'tooltip-pt-optin-feedback' => 'געבן פֿידבעק וועגן אײַער דערפֿאַרונג מיט די נײַע אייגנקייטן',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'optin-try' => 'Ẹ ṣèdánwò Beta',
+	'tooltip-pt-optin-try' => 'Ẹ ṣèdánwò àwọn ìní tuntun',
+	'optin-leave' => 'Ẹ kúrò ní Beta',
+	'tooltip-pt-optin-leave' => 'Ìdálẹ́kun àwọn ìní tuntun',
+	'optin-feedback' => 'Ìdáhùn sí Beta',
+	'tooltip-pt-optin-feedback' => 'Ẹ pèsè ìdáhùn lórí ìrírí yín sí àwọn ìní tuntun',
 );
 
 /** Cantonese (粵語)

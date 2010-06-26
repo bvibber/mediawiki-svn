@@ -94,6 +94,13 @@ $messages['cs'] = array(
 	'userdailycontribs-desc' => 'Denní příspěvky uživatelů pro rozšíření sledující kliknutí',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'userdailycontribs-desc' => 'Brugeres daglige bidrag til brug for kliksporingsudvidelsen',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */

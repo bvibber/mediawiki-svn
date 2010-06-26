@@ -122,6 +122,14 @@ $messages['cy'] = array(
 	'vector-desc' => 'Yn gwella ar y rhyngwyneb yn y wedd Vector.',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'vector' => 'Forbedringer af brugerinterfacet til Vector',
+	'vector-desc' => 'Forbedrer dele af brugerinterfacet til Vector-skinnet',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  * @author Tischbeinahe

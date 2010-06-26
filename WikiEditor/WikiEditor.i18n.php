@@ -166,6 +166,16 @@ $messages['cy'] = array(
 	'wikieditor-loading' => "Wrthi'n llwytho",
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'wikieditor' => 'Avanceret interface til redigering af wikitekst',
+	'wikieditor-desc' => 'Giver et udvidet interface til redigering af wikitekst og mange moduler med hjælpefunktioner',
+	'wikieditor-wikitext-tab' => 'wikitekst',
+	'wikieditor-loading' => 'Indlæser',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Imre
@@ -504,6 +514,7 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'wikieditor' => 'Avansert grensesnitt for endring av wikitekst',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Lastar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -778,6 +789,14 @@ $messages['yi'] = array(
 	'wikieditor-desc' => 'פֿאַרברייטבאַרער וויקיטעקס רעדאַקטירונג אויבערפֿלאך מיט א סך מאדולן וואָס פֿאַרזארגן נײַע פֿונקציאנען',
 	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
 	'wikieditor-loading' => 'לאָדנדיק',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-wikitext-tab' => 'Ìkọ wiki',
+	'wikieditor-loading' => 'Ìrùjáde',
 );
 
 /** Cantonese (粵語)

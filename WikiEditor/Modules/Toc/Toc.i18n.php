@@ -144,8 +144,10 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Sarrus
+ * @author Sir48
  */
 $messages['da'] = array(
+	'wikieditor-toc-preference' => 'Aktiver navigerbar indholdsfortegnelse',
 	'wikieditor-toc-show' => 'Vis indhold',
 	'wikieditor-toc-hide' => 'Skjul indhold',
 );
@@ -725,6 +727,14 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'wikieditor-toc-show' => 'ווײַזן אינהאַלט',
 	'wikieditor-toc-hide' => 'באַהאַלטן אינהאַלט',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-toc-show' => 'Ìfihàn àwọn àkóónú',
+	'wikieditor-toc-hide' => 'Ìbòmọ́lẹ̀ àkóónú',
 );
 
 /** Cantonese (粵語)

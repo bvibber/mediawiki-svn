@@ -157,10 +157,13 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Sir48
  */
 $messages['da'] = array(
 	'usabilityinitiative' => 'Initiativet til brugervenlighed',
 	'usabilityinitiative-desc' => 'Funktioner udviklet af Wikipedia-initiativet til at forbedre MediaWikis brugervenlighed',
+	'prefs-beta' => 'Betafunktioner',
+	'prefs-labs' => 'Testfunktioner',
 );
 
 /** German (Deutsch)
@@ -785,6 +788,14 @@ $messages['yi'] = array(
 	'usabilityinitiative' => 'ניצלעכקייט איניציאַטיוו',
 	'prefs-beta' => 'בעטאַ אייגנשאַפֿטן',
 	'prefs-labs' => 'לאַבאראַטאריע מעגלעכקייטן',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'usabilityinitiative' => 'Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni',
+	'prefs-beta' => 'Àwọn ìní Beta',
 );
 
 /** Cantonese (粵語)

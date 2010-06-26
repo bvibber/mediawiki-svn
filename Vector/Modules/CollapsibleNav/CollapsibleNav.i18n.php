@@ -101,8 +101,10 @@ $messages['cs'] = array(
 
 /** Danish (Dansk)
  * @author Froztbyte
+ * @author Sir48
  */
 $messages['da'] = array(
+	'vector-collapsiblenav-preference' => 'Aktiver sammenklapning i navigationsmenuen i Vector-skinnet',
 	'vector-collapsiblenav-more' => 'Flere sprog',
 );
 
@@ -519,6 +521,13 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'vector-collapsiblenav-preference' => 'אַקטיווירן צונויפֿלייגן איינהייטן אינעם נאַוויגאַציע מעניו אין דעם וועקטאר געשטעל',
 	'vector-collapsiblenav-more' => 'נאך שפראַכן',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'vector-collapsiblenav-more' => 'Àwọn èdè pípọ̀si',
 );
 
 /** Cantonese (粵語)

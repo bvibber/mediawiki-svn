@@ -2518,6 +2518,37 @@ $messages['yi'] = array(
 	'prefstats-legend-in' => 'פרעפֿערענץ אקטיוויזירט',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'prefstats' => 'Àwọn statístíkì ìfẹ́ràn',
+	'prefstats-desc' => 'Ìtẹ̀lé statístíkì iye àwọn oníṣe tí wọ́n ní ìgbàláyé àwọn ìfẹ́ràn pàtó',
+	'prefstats-title' => 'Àwọn statístíkì ìfẹ́ràn',
+	'prefstats-list-intro' => 'Lọ́wọ́lọ́wọ́, àwọn ìfẹ́ràn wọ̀nyí únjẹ́ títẹ̀lé.
+Ẹ tẹ ìkan láti wo statístíkì nípa rẹ̀.',
+	'prefstats-noprefs' => 'Àwọn ìfẹ́ràn kankan kó jẹ́ títẹ̀lé lọ́wọ́lọ́wọ́.
+Ẹ ṣètò $wgPrefStatsTrackPrefs láti tẹ̀lé àwọn ìfẹ́ràn.',
+	'prefstats-counters' => '* {{PLURAL:$1|Oníṣe|Àwọn oníṣe}} $1 ti ṣe ìgbàláyè ìfẹ́ràn yìí látìgbà ti àwọn statístíkì ìfẹ́ràn ti jẹ́ gbígbàláyé
+** {{PLURAL:$2|Oníṣe|Àwọn oníṣe}} $2 sì úngbàláyé 
+** {{PLURAL:$3|Oníṣe|Àwọn oníṣe}} $3 ti dẹ́kun rẹ̀ látìgbà náà',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Oníṣe|Àwọn oníṣe}} $1 ti ṣe ìgbàláyè ìfẹ́ràn yìí látìgbà ti àwọn statístíkì ìfẹ́ràn ti jẹ́ gbígbàláyé
+** {{PLURAL:$2|Oníṣe|Àwọn oníṣe}} $2 sì úngbàláyé 
+** {{PLURAL:$3|Oníṣe|Àwọn oníṣe}} $3 ti dẹ́kun rẹ̀ látìgbà náà
+* Nì iye àpapọ̀, {{PLURAL:$4|oníṣe|àwọn oníṣe}} $4 ti ṣètò ìfẹ́ràn yìí',
+	'prefstats-xaxis' => 'Àsìkò (wákàtí)',
+	'prefstats-factors' => 'Ìwò ti: $1',
+	'prefstats-factor-hour' => 'wákàtí',
+	'prefstats-factor-sixhours' => 'wákàtí mẹ́fà',
+	'prefstats-factor-day' => 'ọjọ́',
+	'prefstats-factor-week' => 'ọ̀sẹ̀',
+	'prefstats-factor-twoweeks' => 'ọ̀sẹ̀ méjì',
+	'prefstats-factor-fourweeks' => 'ọ̀sẹ̀ mẹ́rin',
+	'prefstats-factor-default' => 'Ẹ padà sí ìwọ̀n ìbẹ̀rẹ̀',
+	'prefstats-legend-out' => 'Ẹ mọ́ kòópa',
+	'prefstats-legend-in' => 'Ẹ kópa',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

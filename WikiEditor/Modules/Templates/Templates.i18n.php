@@ -79,6 +79,13 @@ $messages['cs'] = array(
 	'wikieditor-templates-preference' => 'Zapnout sbalování šablon',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'wikieditor-templates-preference' => 'Aktiver sammenklappelige skabeloner',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

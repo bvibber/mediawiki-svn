@@ -147,9 +147,13 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Froztbyte
+ * @author Sir48
  */
 $messages['da'] = array(
+	'prefswitch-link-anon' => 'Nye funktioner',
+	'tooltip-pt-prefswitch-link-anon' => 'Læs mere om nye funktioner',
 	'prefswitch-link-on' => 'Tag mig tilbage',
+	'tooltip-pt-prefswitch-link-on' => 'Deaktiver nye funktioner',
 	'prefswitch-link-off' => 'Nye funktioner',
 	'tooltip-pt-prefswitch-link-off' => 'Prøv nye funktioner',
 );
@@ -755,6 +759,15 @@ $messages['yi'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'אַנולירן נײַע אייגנקייטן',
 	'prefswitch-link-off' => 'נײַע אייגנשאַפֿטן',
 	'tooltip-pt-prefswitch-link-off' => 'פרובירן נײַע אייגנקייטן',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'prefswitch-link-anon' => 'Àwọn ìní tuntun',
+	'prefswitch-link-on' => 'Dá mi padà',
+	'prefswitch-link-off' => 'Àwọn ìní tuntun',
 );
 
 /** Cantonese (粵語)
