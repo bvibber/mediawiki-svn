@@ -26,8 +26,7 @@ $messages['en'] = array(
 //German
 $messages['de'] = array(
 	"editcount" => "Anzahl der Bearbeitungen",
-	"editcount-des" => "Geben Sie einen Benutzernamen oder eine IP ein, um sich die Anzahl der
-Bearbeitungen eines Benutzers anzeigen zu lassen.",
+	"editcount-des" => "Geben Sie einen Benutzernamen oder eine IP ein, um sich die Anzahl der Bearbeitungen eines Benutzers anzeigen zu lassen.",
 	"editcount-edits" => "Bearbeitungen",
 	"editcount-namespace" => "Namensraum",
 	"editcount-noedits" => "Es wurden keine Bearbeitungen von $1 gefunden.",
@@ -72,50 +71,50 @@ $messages['pl'] = array(
 ); 
 
 //French
-$messages['fr'] = array(
-    "editcount" => "Compteur d'éditions",
-    "editcount-des" => "Saisir un nom d'utilisateur ou une IP pour voir le nombre d'édition de l'utilisateur.",
-    "editcount-edits" => "Editions",
-    "editcount-namespace" => "Espaces de noms",
-    "editcount-noedits" => "Aucune edition trouvée pour $1.",
-    "editcount-notuser" => "$1 n'est pas un utilisateur valide.",
-    "editcount-percent" => "Poucentage d'éditions",
-    "editcount-percentsym" => "%",
-    "editcount-show" => "Montrer le nombre d'éditions",
-    "editcount-toolbox" => "Compteur d'éditions de l'utilisateur",
-    "editcount-total" => "Total",
-    "editcount-username" => "Utilisateur:"
+$weECMessages['fr'] = array(
+	"editcount" => "Compteur d'éditions",
+	"editcount-des" => "Saisir un nom d'utilisateur ou une IP pour voir le nombre d'édition de l'utilisateur.",
+	"editcount-edits" => "Editions",
+	"editcount-namespace" => "Espaces de noms",
+	"editcount-noedits" => "Aucune edition trouvée pour $1.",
+	"editcount-notuser" => "$1 n'est pas un utilisateur valide.",
+	"editcount-percent" => "Poucentage d'éditions",
+	"editcount-percentsym" => "%",
+	"editcount-show" => "Montrer le nombre d'éditions",
+	"editcount-toolbox" => "Compteur d'éditions de l'utilisateur",
+	"editcount-total" => "Total",
+	"editcount-username" => "Utilisateur:"
 );
 
 //brazilian portuguese
-$messages['pt-br'] = array(
-    "editcount" => "Contador de EdiÃ§Ãµes",
-    "editcount-des" => "Incira um nome de usuÃ¡rio ou IP para ver a contagem de ediÃ§Ãµes do usuÃ¡rio.",
-    "editcount-edits" => "EdiÃ§Ãµes",
-    "editcount-namespace" => "EspaÃ§o do nome",
-    "editcount-noedits" => "NÃ£o foram encontradas ediÃ§Ãµes para $1.",
-    "editcount-notuser" => "$1 nÃ£o é um usuÃ¡rio vÃ¡lido.",
-    "editcount-percent" => "Porcentagem do total de ediÃ§Ãµes",
-    "editcount-percentsym" => "%",
-    "editcount-show" => "Mostrar Contagem",
-    "editcount-toolbox" => "Contagem de EdiÃ§Ãµes do UsuÃ¡rio",
-    "editcount-total" => "Total",
-    "editcount-username" => "Nome de UsuÃ¡rio:"
+$weECMessages['pt-br'] = array(
+	"editcount" => "Contador de Edições",
+	"editcount-des" => "Incira um nome de usuário ou IP para ver a contagem de edições do usuário.",
+	"editcount-edits" => "Edições",
+	"editcount-namespace" => "Espaço do nome",
+	"editcount-noedits" => "Não foram encontradas edições para $1.",
+	"editcount-notuser" => "$1 não é um usuário válido.",
+	"editcount-percent" => "Porcentagem do total de edições",
+	"editcount-percentsym" => "%",
+	"editcount-show" => "Mostrar Contagem",
+	"editcount-toolbox" => "Contagem de Edições do Usuário",
+	"editcount-total" => "Total",
+	"editcount-username" => "Nome de Usuário:"
 );
 
 //Dutch
-$messages['nl'] = array(
-   "editcount" => "Bewerkingsteller",
-   "editcount-des" => "Geef een gebruikersnaam of een IP-adres om .",
-   "editcount-edits" => "Bewerkingen",
-   "editcount-namespace" => "Naamruimte",
-   "editcount-noedits" => "Er zijn geen bewerkingen gevonden voor $1.",
-   "editcount-notuser" => "$1 is geen bestaande gebruiker.",
-   "editcount-percent" => "Percentage van het de totale bewerkingen",
-   "editcount-percentsym" => "%",
-   "editcount-show" => "Toon teller",
-   "editcount-toolbox" => "Gebruiker bewerkingsteller",
-   "editcount-total" => "Totaal",
-   "editcount-username" => "Gebruikersnaam:"
+$weECMessages['nl'] = array(
+	"editcount" => "Bewerkingsteller",
+	"editcount-des" => "Geef een gebruikersnaam of een IP-adres om .",
+	"editcount-edits" => "Bewerkingen",
+	"editcount-namespace" => "Naamruimte",
+	"editcount-noedits" => "Er zijn geen bewerkingen gevonden voor $1.",
+	"editcount-notuser" => "$1 is geen bestaande gebruiker.",
+	"editcount-percent" => "Percentage van het de totale bewerkingen",
+	"editcount-percentsym" => "%",
+	"editcount-show" => "Toon teller",
+	"editcount-toolbox" => "Gebruiker bewerkingsteller",
+	"editcount-total" => "Totaal",
+	"editcount-username" => "Gebruikersnaam:"
 );
 
