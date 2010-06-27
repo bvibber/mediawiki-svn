@@ -118,7 +118,6 @@ class SpecialStory extends IncludableSpecialPage {
 					$wgOut->addWikiMsg( 'storyboard-storyunpublished' );
 					
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
-						global $wgTitle;
 						$wgOut->addWikiMsg(
 							'storyboard-canedit',
 							$this->getTitle( $story->story_title )->getFullURL( array( 'action' => 'edit' ) )
