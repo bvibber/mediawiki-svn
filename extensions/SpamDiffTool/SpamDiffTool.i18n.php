@@ -504,6 +504,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Str4nd
@@ -513,6 +514,7 @@ $messages['fi'] = array(
 	'spamdifftool' => 'Hallitse mainosestolistaa',
 	'spamdifftool-desc' => 'Mahdollistaa yksinkertaisen tavan lisätä uusia kohteita mainosestolistaan erovaisuussivuilta.',
 	'spamdifftool_cantedit' => 'Sinulla ei ole oikeuksia muokata mainosestolistaa.',
+	'spamdifftool-no-title' => "'''Virhe:''' sivuotsikkoa ei oltu määritelty",
 	'spamdifftool_notext' => "Ei ole tekstiä lisättäväksi mainosestolistalle.
 <a href='$1'>Napsauta jatkaaksesi</a>.",
 	'spamdifftool_confirm' => "Vahvista, että haluat lisätä nämä mainosestolistalle. (Napsauta <a href='$1' target='new'>tästä</a> ilmoittaaksesi ongelmasta.)",

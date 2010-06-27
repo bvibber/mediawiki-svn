@@ -89,12 +89,14 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'checkpoint' => 'Tallenna ja jatka muokkaamista',
 	'checkpoint-desc' => 'Mahdollistaa tallennuksen ja muokkauksen jatkamisen.',
 	'checkpoint-tooltip' => 'Tallenna työsi ja jatka sivun muokkaamista',
+	'checkpoint-notice' => '([[{{ns:project}}:Tarkistuspiste|tarkistuspistetallennus]])',
 );
 
 /** French (Français)

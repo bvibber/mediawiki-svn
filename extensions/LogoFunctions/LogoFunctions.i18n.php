@@ -77,6 +77,14 @@ $messages['gsw'] = array(
 	'logofunctions-filenotexist' => 'Fähler: [[File:$1]] git s nit',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'logofunctions-desc' => 'Parserowu funkciju za nastajenje wikiloga přidać',
+	'logofunctions-filenotexist' => 'Zmylk: [[File:$1]] njeeksistuje',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

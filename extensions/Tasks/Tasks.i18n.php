@@ -2916,18 +2916,22 @@ $messages['ps'] = array(
 	'tasks' => 'دندې',
 	'tasks_tab' => 'دندې',
 	'tasks_form_new' => 'يوه نوې دنده پيلول',
+	'tasks_form_comment' => 'تبصره',
 	'tasks_noone' => 'هېڅوک',
 	'tasks_delete' => 'ړنګول',
 	'tasks_here' => 'دلته',
 	'tasks_help_page' => 'دندې',
+	'tasks_more_like_it' => 'نور',
 	'tasks_table_header_page' => 'مخ',
 	'tasks_search_form_title' => 'پلټل',
+	'tasks_search_tasks' => 'دندې',
 	'tasks_search_status' => 'دريځ',
 	'tasks_search_results' => 'د پلټنې پايلې',
 	'tasks_previous' => 'پخوانی',
 	'tasks_next' => 'راتلونکی',
 	'tasks_sort' => 'اوډل',
 	'tasks_status_open' => 'پرانيستل',
+	'tasks_status_closed' => 'تړل شوی',
 );
 
 /** Portuguese (Português)

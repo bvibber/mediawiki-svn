@@ -1567,6 +1567,7 @@ $4",
 $messages['ps'] = array(
 	'todo-new-queue' => 'نوی',
 	'todo-list-change' => 'بدلول',
+	'todo-list-cancel' => 'ناګارل',
 );
 
 /** Portuguese (Português)

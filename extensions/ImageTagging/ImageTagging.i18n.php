@@ -1610,6 +1610,7 @@ $messages['ps'] = array(
 	'imagetagging-article' => 'مخ:',
 	'imagetagging-imghistory' => 'پېښليک',
 	'imagetagging-images' => 'انځورونه',
+	'imagetagging-tagcancel-button' => 'ناګارل',
 );
 
 /** Portuguese (Português)

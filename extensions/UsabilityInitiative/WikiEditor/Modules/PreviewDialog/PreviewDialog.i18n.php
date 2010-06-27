@@ -311,6 +311,7 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'wikieditor-previewDialog-preference' => 'Dialog za přehlad zmóžnić',
 	'wikieditor-previewDialog-tab' => 'Přehlad',
 	'wikieditor-previewDialog-loading' => 'Začituje so...',
 );
@@ -366,6 +367,7 @@ $messages['it'] = array(
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
+	'wikieditor-previewDialog-preference' => 'プレビュー・ダイアログを有効化する',
 	'wikieditor-previewDialog-tab' => 'プレビュー',
 	'wikieditor-previewDialog-loading' => '読み込み中…',
 );
@@ -723,6 +725,7 @@ $messages['vec'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'wikieditor-previewDialog-preference' => 'Mở hộp thoại để xem trước',
 	'wikieditor-previewDialog-tab' => 'Xem trước',
 	'wikieditor-previewDialog-loading' => 'Đang tải…',
 );
@@ -733,6 +736,15 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'wikieditor-previewDialog-tab' => 'פֿאראויסשטעלונג',
 	'wikieditor-previewDialog-loading' => 'לאָדט…',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-previewDialog-preference' => 'Ìgbàláyè pátákó àkíyèsí fún àyẹ̀wò',
+	'wikieditor-previewDialog-tab' => 'Àyẹ̀wò',
+	'wikieditor-previewDialog-loading' => 'Únrùjáde...',
 );
 
 /** Cantonese (粵語)

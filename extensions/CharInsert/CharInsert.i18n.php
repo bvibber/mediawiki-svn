@@ -504,6 +504,13 @@ $messages['sk'] = array(
 	'charinsert-desc' => 'Umožňuje vytvoriť JavaScriptové pole na [[MediaWiki:Edittools|vkladanie neštandardných znakov]]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'charinsert-desc' => 'Omogoča ustvarjanje polja JavaScript za [[MediaWiki:Edittools|vstavljanje redkeje uporabljanih znakov]]',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

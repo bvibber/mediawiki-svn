@@ -547,9 +547,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'seealso' => 'Vedeți, de asemenea,',
+	'seealso' => 'Vedeți și',
 );
 
 /** Tarandíne (Tarandíne)

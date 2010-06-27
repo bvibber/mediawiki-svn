@@ -214,6 +214,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
@@ -225,6 +226,7 @@ $messages['fi'] = array(
 	'categoryintersection-desc' => 'Ylläpitää hajautusalgoritmin arvojen taulukkoa sivunsisäisäisesti näytettynä olevia [[Special:CategoryIntersection|luokkien leikkauksia]] varten',
 	'categoryintersection-doit' => 'Listaa kaikissa näissä luokissa olevat sivut',
 	'categoryintersection-maxcategories' => 'Suurin sallittu määrä luokkia, joista tehdään leikkaus, on $1.',
+	'categoryintersection-mincategories' => 'Sinun on sisällytettävä vähintään kaksi luokkaa.',
 	'categoryintersection-results' => 'Haku palautti $1 {{PLURAL:$1|tuloksen|tulosta}}.',
 );
 

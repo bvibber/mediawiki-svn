@@ -1238,6 +1238,14 @@ $messages['ru'] = array(
 	'countedits-nocontribs' => 'Нет правок в этой вики.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'countedits-username' => 'Мено хоснователя:',
+	'countedits-ok' => 'ОК',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

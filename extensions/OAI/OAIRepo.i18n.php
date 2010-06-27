@@ -280,6 +280,13 @@ $messages['jv'] = array(
 	'oairepository' => 'Panyimpenan OAI',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'oai-desc' => 'წარმოგიდგენთ ინტერფეის [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] საცავს',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  * @author ToePeu

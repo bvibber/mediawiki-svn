@@ -351,6 +351,13 @@ $messages['sk'] = array(
 	'clientside-desc' => 'Poskytuje funkcie na tvorbu kódu v klientských formátoch ako HTML, CSS a JavaScript',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'clientside-desc' => 'Zagotavlja funkcije za ustvarjanje kode v oblikah odjemalske strani, kot so HTML, CSS in JavaScript',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Обрадовић Горан
  */

@@ -2337,6 +2337,7 @@ $messages['rue'] = array(
 	'crosswikiblock-expiry' => 'Кінчіть:',
 	'crosswikiblock-reason' => 'Причіна:',
 	'crosswikiblock-submit' => 'Заблоковати того хоснователя',
+	'crosswikiunblock-reason' => 'Причіна:',
 );
 
 /** Sicilian (Sicilianu)

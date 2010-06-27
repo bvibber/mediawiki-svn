@@ -270,6 +270,14 @@ $messages['id'] = array(
 	'categoryonupload-label' => 'Kategori:',
 );
 
+/** Icelandic (Íslenska)
+ * @author Ævar Arnfjörð Bjarmason
+ */
+$messages['is'] = array(
+	'categoryonupload-desc' => 'Gefur notandanum kleift að velja flokk þegar hann hleður upp skrá',
+	'categoryonupload-label' => 'Flokkur:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

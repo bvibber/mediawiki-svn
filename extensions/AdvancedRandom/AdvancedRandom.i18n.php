@@ -524,6 +524,8 @@ It peule dovré com [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:
  */
 $messages['ps'] = array(
 	'advancedrandom' => 'پرمختللې ناټاکنه',
+	'advancedrandom-desc' => 'يو ناټاکلی مخ د هر يوه نوم تشيال، د خبرواترو مخ يا موضوعي مخ نه چې ورکړ شوي مخ ورسره تړنې لري، راغوښتل.
+په دې توګه کارېدلای شي لکه [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] چې د يوې ناټاکلې ليکنې د خبرواترو مخ، او يا هم لکه [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] چې د يوه ناټاکلي GFDL دوتنه رابرسېره کړي',
 );
 
 /** Portuguese (Português)

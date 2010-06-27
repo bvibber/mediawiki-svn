@@ -323,6 +323,13 @@ $messages['jv'] = array(
 	'mwsearch-desc' => 'plugin MWSearch',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'mwsearch-desc' => 'MWSearch მოდული',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

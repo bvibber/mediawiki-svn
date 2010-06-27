@@ -1869,6 +1869,7 @@ $messages['ps'] = array(
 	'readerfeedback-submit' => 'سپارل',
 	'readerfeedback-submitting' => 'د سپارلو په حال کې ...',
 	'readerfeedback-finished' => 'مننه!',
+	'readerfeedback-tierfilter' => 'ارزونه:',
 );
 
 /** Portuguese (Português)

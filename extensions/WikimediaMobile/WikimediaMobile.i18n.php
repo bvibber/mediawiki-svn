@@ -29,10 +29,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
-	'wikimediamobile-desc' => "MediaWiki en deus arc'hweladurioù evit ar raktres Wikimedia-mobile herberc'hiet war http://github.com/hcatlin/wikimedia-mobile",
+	'wikimediamobile-desc' => "Skorañ a ra MediaWiki arc'hweladurioù evit raktres Wikimedia-mobile herberc'hiet war http://github.com/hcatlin/wikimedia-mobile",
 );
 
 /** Bosnian (Bosanski)

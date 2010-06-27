@@ -351,6 +351,14 @@ $messages['pms'] = array(
 A crea vërsion anpaginà, utij dzortut për Wikinews',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'categoryfeed-desc' => 'د وروستني بدلونونو د کتنو توکي کاروي.
+د مخ دننه بڼه جوړوي، په ځانګړې توګه د ويکي خبرونو لپاره ګټور دی',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

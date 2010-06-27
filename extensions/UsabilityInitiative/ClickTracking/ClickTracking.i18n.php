@@ -357,8 +357,12 @@ $messages['cu'] = array(
  * @author Sarrus
  */
 $messages['da'] = array(
+	'clicktracking' => 'Klik-logning til brugervenlighedsinitiativet.',
+	'clicktracking-desc' => 'Klik-logning til sporing af hændelser, som ikke forårsager en sideopdatering',
+	'ct-title' => 'Opsamlede brugerklik',
 	'ct-event-name' => 'Navn på hændelse',
 	'ct-expert-header' => '"Ekspertklik"',
+	'ct-intermediate-header' => 'Klik på "mellemniveau"',
 	'ct-beginner-header' => '"Nybegynderklik"',
 	'ct-total-header' => 'Totalt antal klik',
 	'ct-start-date' => 'Startdato (ÅÅÅÅMMDD)',

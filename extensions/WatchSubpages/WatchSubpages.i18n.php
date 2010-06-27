@@ -859,6 +859,7 @@ Keur milih loba kaca, tahan konci shift keur anjeun bisa milih kotak lainna',
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'watchsubpages' => 'Bevaka undersidor',
@@ -867,7 +868,7 @@ $messages['sv'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Lägg till sidor till bevakningslista',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Lägg till alla undersidor]] för en sida till bevakningslistan',
 	'watchsubpages-form' => 'Välj sidorna du önskar lägga till i din bevakningslista.
-För att lägga till en sida, markera rutan intill den, och klicka på "Lägg till sidor".
+För att lägga till en sida, markera rutan intill den och klicka på "{{int:watchsubpages-addtitles}}".
 
 När du markerar eller avmarkerar flera sidor, så kan du markera intilliggande rutor genom att hålla ner shift-tangenten och klicka på den första och sista rutan du vill markera.',
 );

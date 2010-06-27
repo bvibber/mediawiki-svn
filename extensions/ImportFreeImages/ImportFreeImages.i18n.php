@@ -392,6 +392,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  * @author Jack Phoenix
  * @author Silvonen
@@ -404,6 +405,7 @@ $messages['fi'] = array(
 	'importfreeimages_owner' => 'Tekijä',
 	'importfreeimages_importthis' => 'tuo tämä',
 	'importfreeimages_next' => 'Seuraavat $1',
+	'importfreeimages_size_square' => 'Neliö',
 	'importfreeimages_size_thumbnail' => 'Pienoiskuva',
 	'importfreeimages_size_small' => 'Pieni',
 	'importfreeimages_size_medium' => 'Keskikokoinen',

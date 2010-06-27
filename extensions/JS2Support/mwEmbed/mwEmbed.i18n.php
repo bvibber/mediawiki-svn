@@ -504,6 +504,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'mwe-ok' => 'ښه',
+	'mwe-cancel' => 'ناګارل',
 );
 
 /** Portuguese (Português)

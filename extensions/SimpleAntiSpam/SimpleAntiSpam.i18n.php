@@ -672,6 +672,16 @@ $messages['sk'] = array(
 	'simpleantispam-desc' => 'Pridáva k formulárom jednoduchú ochranu prosti botom/spamu.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'simpleantispam' => 'Vaše urejanje je sprožilo mehanizem proti smetju',
+	'simpleantispam-label' => "Preverjanje proti smetju.
+'''NE''' izpolnite tega!",
+	'simpleantispam-desc' => 'Doda preprosto preverjanje smetja/botov v obrazce',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */

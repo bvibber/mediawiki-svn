@@ -1636,6 +1636,40 @@ $messages['sk'] = array(
 	'right-closewikis' => 'Zatvárať wiki',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'closewikis-desc' => 'Omogoča zapiranje wikimest v wikiposestvih',
+	'closewikis-page' => 'Zapri wiki',
+	'closewikis-page-close' => 'Zapri wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Razlog (prikazan):',
+	'closewikis-page-close-reason' => 'Razlog (zabeležen):',
+	'closewikis-page-close-submit' => 'Zapri',
+	'closewikis-page-close-success' => 'Wiki je bil uspešno zaprt',
+	'closewikis-page-reopen' => 'Ponovno odpri wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Razlog:',
+	'closewikis-page-reopen-submit' => 'Ponovno odpri',
+	'closewikis-page-reopen-success' => 'Wiki je bil uspešno ponovno odprt',
+	'closewikis-page-err-nowiki' => 'Določen je neveljaven wiki',
+	'closewikis-page-err-closed' => 'Wiki je že zaprt',
+	'closewikis-page-err-opened' => 'Wiki ni zaprt',
+	'closewikis-list' => 'Seznam zaprtih wikijev',
+	'closewikis-list-intro' => 'Ta seznam vsebuje wikije, ki so jih zaprli upravniki.',
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Zaprl',
+	'closewikis-list-header-timestamp' => 'Zaprto',
+	'closewikis-list-header-dispreason' => 'Prikazan razlog',
+	'closewikis-log' => 'Dnevnik zapiranja wikijev',
+	'closewikis-log-header' => 'Tukaj je dnevnik vseh zapiranj in ponovnih odpiranj wikijev, ki so jih naredili upravniki',
+	'closewikis-log-close' => 'zaprl(-a) $2',
+	'closewikis-log-reopen' => 'ponovno odprl(-a) $2',
+	'right-editclosedwikis' => 'Urejanje zaprtih wikijev',
+	'right-closewikis' => 'Zapiranje wikijev',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

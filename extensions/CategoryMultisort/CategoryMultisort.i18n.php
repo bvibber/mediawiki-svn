@@ -93,6 +93,18 @@ $messages['es'] = array(
 	'prefs-category' => 'Categoría',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'categorymultisort-desc' => 'Sallii luokkien katselemisen eri lajitteluavaimilla',
+	'categorymultisort-defaultsortkey-name' => 'Oletus',
+	'categorymultisort-sortkey' => 'Lajitteluavain:',
+	'categorymultisort-go' => 'Siirry',
+	'categorymultisort-default-sortkey' => 'Oletuslajitteluavain:',
+	'prefs-category' => 'Luokka',
+);
+
 /** French (Français)
  * @author Peter17
  */

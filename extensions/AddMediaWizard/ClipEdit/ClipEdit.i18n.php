@@ -882,7 +882,9 @@ $messages['oc'] = array(
 	'mwe-clipedit-duration' => 'Durada :',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
 	'mwe-clipedit-crop' => 'Kadruj',
 	'mwe-clipedit-apply_crop' => 'Skadruj obrazek',
@@ -891,6 +893,7 @@ $messages['pl'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Wstaw do sekwencji',
 	'mwe-clipedit-preview_insert' => 'Podgląd wstawienia',
 	'mwe-clipedit-cancel_image_insert' => 'Anuluj wstawienie',
+	'mwe-clipedit-sc_attributes' => 'Edycja szczegółów klipu',
 	'mwe-clipedit-sc_inoutpoints' => 'Ustaw czasy początku i końca',
 	'mwe-clipedit-sc_overlays' => 'Nakładki',
 	'mwe-clipedit-sc_audio' => 'Kontrola dźwięku',
@@ -908,6 +911,9 @@ $messages['pl'] = array(
 	'mwe-clipedit-inline-description' => 'Nagłówek',
 	'mwe-clipedit-edit-video-tools' => 'Narzędzia edycji wideo:',
 	'mwe-clipedit-duration' => 'Czas trwania',
+	'mwe-clipedit-layout' => 'Układ',
+	'mwe-clipedit-layout_right' => 'Układ z ilustracjami sformatowanymi do prawej',
+	'mwe-clipedit-layout_left' => 'Układ z ilustracjami sformatowanymi do lewej',
 );
 
 /** Pashto (پښتو)

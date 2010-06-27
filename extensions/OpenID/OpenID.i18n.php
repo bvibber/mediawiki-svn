@@ -1572,6 +1572,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Mobe
@@ -1618,6 +1619,7 @@ Ota yhteyttä [[Special:ListUsers/sysop|ylläpitäjään]].',
 	'openidchooselegend' => 'Käyttäjätunnuksen valinta',
 	'openidchooseinstructions' => 'Kaikki käyttäjät tarvitsevat nimimerkin.
 Voit valita omasi alla olevista vaihtoehdoista.',
+	'openidchoosenick' => 'Nimimerkkisi ($1)',
 	'openidchoosefull' => 'Koko nimesi ($1)',
 	'openidchooseurl' => 'OpenID:stäsi poimittu nimi ($1)',
 	'openidchooseauto' => 'Automaattisesti luotu nimi ($1)',
@@ -1653,6 +1655,10 @@ Tarjolla on monia eri [http://openid.net/get/ OpenID-tarjoajia], ja sinulla saat
 	'openiddelete-text' => 'Napsauttamalla {{int:openiddelete-button}}-paniketta, voit poistaa OpenID:n $1 tunnuksestasi.
 Et voi enää kirjautua sisään tällä OpenID:llä.',
 	'openiddelete-button' => 'Vahvista',
+	'openiddeleteerrornopassword' => 'Et voi poistaa kaikkia OpenID-tunnuksiasi, koska tililläsi ei ole salasanaa.
+Et kykenisi kirjautumaan sisään ilman OpenID-tunnusta.',
+	'openiddeleteerroropenidonly' => 'Et voi poistaa kaikkia OpenID-tunnuksiasi, koska sinun sallitaan kirjautua sisään vain OpenID-tunnuksella.
+Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
 	'openiddelete-sucess' => 'OpenID on onnistuneesti poistettu tilistäsi.',
 	'openiddelete-error' => 'Virhe poistettaessa OpenID:tä tilistäsi.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-asetukset',

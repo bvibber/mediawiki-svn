@@ -834,6 +834,14 @@ $messages['yi'] = array(
 	'vector-simplesearch-containing' => 'כולל…',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'vector-simplesearch-search' => 'Ṣàwárí',
+	'vector-simplesearch-containing' => 'tó ní...',
+);
+
 /** Cantonese (粵語)
  * @author Horacewai2
  * @author Shinjiman

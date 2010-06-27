@@ -42,6 +42,7 @@ $messages['qqq'] = array(
  */
 $messages['bjn'] = array(
 	'abc-desc' => 'Tambahakan<code>&lt;abc&gt;</code> gasan format musik ABC',
+	'abcdownload' => 'Unduh:',
 );
 
 /** Afrikaans (Afrikaans)
@@ -599,6 +600,13 @@ $messages['ms'] = array(
 $messages['myv'] = array(
 	'abc-desc' => 'Полады <code>&lt;abc&gt;</code> тег ABC музыканть форматировамонь туртов',
 	'abcdownload' => 'Таргамс:',
+);
+
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'abcdownload' => 'بار ره بیتن:',
 );
 
 /** Nahuatl (Nāhuatl)

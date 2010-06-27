@@ -733,6 +733,7 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'wikieditor-toc-preference' => 'Ìgbàláyè pátákó àwọn àkóónú atọ́ka',
 	'wikieditor-toc-show' => 'Ìfihàn àwọn àkóónú',
 	'wikieditor-toc-hide' => 'Ìbòmọ́lẹ̀ àkóónú',
 );

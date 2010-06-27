@@ -3979,6 +3979,17 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'contrib-hist-name' => 'Мено',
+	'contrib-hist-date' => 'Час і датум',
+	'contribstats-day' => 'День',
+	'contribstats-month' => 'Місяць',
+	'fundraiserstats-date' => 'Датум',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

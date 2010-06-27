@@ -914,10 +914,11 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Gapo
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'multipleupload' => '다중 파일 올리기',
+	'multipleupload' => '여러 파일을 올리기',
 	'multipleupload-saveallfiles' => '모든 파일 저장',
 	'multipleupload-page' => '{{ns:project}}:파일 삭제 정책',
 	'multiupload-fileuploaded' => '파일이 올려졌습니다.',

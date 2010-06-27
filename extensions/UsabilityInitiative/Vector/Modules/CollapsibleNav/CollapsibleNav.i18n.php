@@ -264,10 +264,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
-	'vector-collapsiblenav-preference' => 'Aktifkan fungsi menu navigasi kiri yang dapat ditutup',
+	'vector-collapsiblenav-preference' => 'Aktifkan fungsi menu navigasi kiri yang dapat ditampilkan pada kulit Vektor',
 	'vector-collapsiblenav-more' => 'Lebih banyak bahasa',
 );
 
@@ -479,6 +480,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'vector-collapsiblenav-preference' => 'Kuwezesha vitu vikunjike katika orodha wa urambazaji, katika umbo wa Vector',
 	'vector-collapsiblenav-more' => 'Lugha zingine',
 );
 

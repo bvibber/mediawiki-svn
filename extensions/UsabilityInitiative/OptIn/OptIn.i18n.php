@@ -665,6 +665,7 @@ $messages['bn'] = array(
 	'optin-feedback-back' => 'যদি জরিপ ফরমটি পূরণ করতে না চান, তাহলে আপনি $1 এ ফিরে যেতে পারেন।',
 	'optin-success-in' => 'আপনি এখন বেটা ব্যবহার করছেন।
 আপনি যে-কোনো সময় পাতার ওপরের "{{int:optin-leave}}" লিংকে ক্লিক করে পূর্বের অবস্থায় ফিরে যেতে পারবেন।',
+	'optin-leave-cancel' => 'আপনি যদি নতুন বৈশিষ্ট্যাবলী ব্যবহার চালিয়ে যেতে চান তবে আপনি $1-এ ফিরে যেতে পারেন।',
 	'optin-success-out' => 'আপনি সফলভাবে বেটা ত্যাগ করেছেন।
 আপনি যে-কোনো সময় পাতার ওপরের "{{int:optin-try}}" লিংকে ক্লিক করে আবার বেটাতে ফিরে যেতে পারবেন।',
 	'optin-success-feedback' => 'আপনার ফিডব্যাকের জন্য ধন্যবাদ!',
@@ -705,6 +706,7 @@ $messages['bn'] = array(
 	'optin-survey-answer-changes-nav' => 'সাইটের সার্বিক নেভিগেশন ব্যবহার সহজ করো।',
 	'optin-survey-answer-changes-edittools' => 'সম্পাদনা টুল বৃদ্ধি এবং সমৃদ্ধ করা।',
 	'optin-survey-answer-changes-upload' => 'কন্টেন্ট এবং মিডিয়া আপলোড ব্যবস্থার উন্নয়ন।',
+	'optin-survey-answer-changes-richtext' => 'সমৃদ্ধ-টেক্সট সম্পাদকের মত একই রকমের সম্পাদনা টুল উন্নয়ন করো।',
 	'optin-survey-answer-changes-lookfeel' => 'সাইটের "লুক এন্ড ফিল" হালনাগাদ করুন।',
 	'optin-survey-answer-changes-predictability' => 'আন্দাজ করার ক্ষমতা উন্নয়ন করুন।',
 	'optin-survey-answer-changes-custom' => 'আরও বেশি স্বনির্ধারণের সুযোগ',
@@ -1150,6 +1152,7 @@ I gael rhagor o wybodaeth am y Cynllun Defnyddioldeb, dewch draw i'n [http://usa
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Masz
  */
 $messages['da'] = array(
 	'optin' => 'Deltag i initiativet til brugervenlighed',
@@ -1213,6 +1216,20 @@ Vi vil gerne vide hvad du synes om vores nye grænseflade, så vi vil sætte pri
 	'optin-survey-answer-changes-predictability' => 'Forbedr forudsigeligheden af virkemåden.',
 	'optin-survey-answer-changes-custom' => 'Giv mulighed for flere individuelle tilpasninger.',
 	'optin-survey-answer-changes-other' => 'Andet:',
+	'optin-improvements2' => '== Hvad er blevet forbedret? ==
+[[File:UsabilityToolbar.png|left|link=|Skærmbillede af den forbedrede redigeringsværktøjslinje]]
+[[File:UsabilityDialogs.png|left|link=|Skærmbillede af den nye indholdsgenereringsdialog]]
+;Forbedret værktøjslinje
+Den nye, forbedrede værktøjslinje gør det nemmere for dig at redigere artikler.
+Nye og forbedrede ikoner gør det mere klart for dig, hvilke ting du udfører.
+Udvidede sektioner reducerer rod ved at holde sjældent brugte værktøjer bare ét klik væk.
+;Dialoger
+Når du tilføjer henvisninger eller tabeller ved at klikke på værktøjsikonen, åbnes der en dialogboks der hjælper dig med at tilføje dem ved bare at udfylde en simpel formular.
+;Og mere
+Vi har også introduceret en del andre forbedringer som f.eks. forbedret navigation, skjulbare faner, forbedret søgning og mere.
+== Hvordan bliver jeg inddraget? ==
+For at finde mere om Brugeroplevelsen, besøg [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative vores hjemmeside].
+<div style="clear:both"></div>',
 );
 
 /** German (Deutsch)
@@ -6409,8 +6426,10 @@ A ó fẹ́ mọ èrò yín nípa ìwojú wa tuntun, bíi bẹ́ẹ̀ yíò wù 
 	'optin-success-out' => 'Ẹ ti fi Beta sílẹ̀ níyọrísírere.
 Ẹ lè tún dánwò nígbàkúgbà nípa títẹ ìjápọ̀ "{{int:optin-try}}" lórí ojúewé náà.',
 	'optin-success-feedback' => 'A dúpẹ́ lọ́wọ́ yín fún ìdáhùn yín!',
+	'optin-accept-short' => 'Ẹ jẹ́ ká ṣe é!',
 	'optin-accept-long' => 'Ẹ dán Beta wò',
 	'optin-accept-long-anon' => 'Ẹ wọlé láti ṣèdánwò Beta',
+	'optin-deny-short' => 'Módúpẹ́ sùgbọ́n rárá',
 	'optin-deny-long' => 'Ẹ padà sí ojúewé tókọjá',
 	'optin-submit-out' => 'Ẹ kúrò ní Beta',
 	'optin-submit-feedback' => 'Ẹ ṣèdáhùn',
@@ -6424,6 +6443,11 @@ A ó fẹ́ mọ èrò yín nípa ìwojú wa tuntun, bíi bẹ́ẹ̀ yíò wù 
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Un kò fẹ́ràn bó ṣe rí.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Un kò fẹ́ràn pẹpẹ irinṣẹ́ tuntun náà.',
 	'optin-survey-answer-whyoptout-other' => 'Ìdíẹ̀ míràn:',
+	'optin-survey-question-browser' => 'Agbétakùn wo ni ẹ únlò?',
+	'optin-survey-answer-browser-other' => 'Agbétakùn míràn:',
+	'optin-survey-question-os' => 'Sístẹ̀mù ìṣiṣẹ́ kọ̀mpútà wo ni ẹ únlò?',
+	'optin-survey-answer-os-other' => 'Sístẹ̀mù ìṣiṣẹ́ kọ̀mpútà mìràn:',
+	'optin-survey-question-res' => 'Kíni iye ìgbéhàn ẹ̀rọ ojúìran yín?',
 	'optin-survey-answer-changes-other' => 'Òmíràn:',
 );
 

@@ -311,6 +311,9 @@ $messages['ru'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'activestrategy' => 'Dejavna strategija',
+	'active-strategy-desc' => 'Prikaže število urejanj strateško načrtovanih strani',
+	'active-strategy-intro' => 'Število urejanj strani delovne skupine v {{PLURAL:$1|zadnjem $1 dnevu|zadnjih $1 dnevih|zadnjih $1 dneh}}.',
 	'nedits' => '$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}',
 );
 

@@ -929,12 +929,13 @@ I\'n helpu ni i\'w gwella, cwblhewch yr arolwg dewisol isod, yna pwyswch ar "[[#
 
 /** Danish (Dansk)
  * @author Froztbyte
+ * @author Masz
  * @author Sir48
  */
 $messages['da'] = array(
 	'prefswitch' => 'Præferencevælger for brugervenlighedsinitiativet',
 	'prefswitch-desc' => 'Tillad brugere at udskifte sæt af præferencer',
-	'prefswitch-jswarning' => 'Husk, at ved ændring af skin skal dit [[User:$1/$2.js|$2 JavaScript]] kopieres til [[((ns: user)):$1/vector.js]] <!-- eller [[{{ns:user}}:$1/common.js]]--> for at blive ved med at fungere.',
+	'prefswitch-jswarning' => 'Husk, at ved ændring af skin skal dit [[User:$1/$2.js|$2 JavaScript]] kopieres til [[{{ns:user}}:$1/vector.js]] <!-- eller [[{{ns:user}}:$1/common.js]]--> for at blive ved med at fungere.',
 	'prefswitch-csswarning' => 'Dine [[User:$1/$2.css|brugertilpassede $2-styles]] bliver ikke længere anvendt. Du kan tilføje brugertilpasset CSS til Vector i [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nej',
@@ -968,8 +969,39 @@ Vælg alle, som passer.',
 	'prefswitch-success-feedback' => 'Din feedback er blevet sendt.',
 	'prefswitch-return' => '↓ <hr style="clear:both">
 Tilbage til <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main-logged-changes' => "* '''{{ int: overvåg))-fanen'''er nu en stjerne. 
-* '''{{ int: flyt))- fanen'''er nu i dropdown-menuen ved siden af søgefeltet.",
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Et skærmbillede af Wikipedias nye navigationsgrænseflade <small>[[Media:VectorNavigation-en.png|(forstør)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Et skærmbillede af sideredigeringsgrænsefladen <small>[[Media:VectorEditorBasic-en.png|(forstør)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Et skærmbillede af den nye dialogboks til indsættelse af henvisninger
+|}
+|}
+Wikimedia Foundations brugeroplevelsesteam har arbejdet sammen med frivillige brugere for at gøre tingene nemmere for dig. Vi glæder os til at dele nogle forbedringer med dig, heriblandt et nyt udseende og nye simplificerede redigeringsfunktioner. Disse ændringer har som formål at gøre det nemmere for nye bidragydere med at komme i gang, og er baseret på vores [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study brugeroplevelsesundersøgelser foretaget sidste år]. Forbedring af brugeroplevelsen har høj prioritet hos Wikimedia Foundation, og vi vil dele flere forbedringer med dig i fremtiden. For flere detaljer, se det relaterede [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia Wikimedia-blogindlæg].
+
+=== Her er hvad vi har ændret ===
+* '''Navigation:''' Vi har forbedret navigationen for læsning og redigering af sider. Nu definerer fanerne i toppen af vinduet mere klart om du redigerer, eller læser en side eller diskussion.
+* '''Redigeringsværktøjslinje:''' Vi har reorganiseret redigeringsværktøjslinjen for at gøre den nemmere at bruge. Nu er formateringsfunktioner mere simple og mere intuitive.
+* '''Trin-for-trin-linktilføjelsesdialog:''' En simpel linktilføjelsesdialog, der gør det muligt for dig at tilføje links til andre wikisider, såvel som eksterne websteder.
+* '''Søgeforbedringer:''' Vi har forbedret søgeforslagene for at gøre det hurtigere for dig at finde den side du søger.
+* '''Andre nye funktioner:''' Vi introducerer også en tabeltilføjelsesdialog for at gøre det nemmere at tilføje tabeller, samt en søg-og-erstat-funktion for at simplificere sideredigeringen.
+* '''Wikipedia-logo:''' Vi har opdateret vores logo. Læs mere på [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedias blog].",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}}-fanen''' er nu en stjerne.
+* '''{{int:move}}-fanen''' findes nu i dropdown-menuen ved siden af søgefeltet.",
 	'prefswitch-main-feedback' => 'Vi vil meget gerne høre fra dig. Besøg gerne vores [[$1|feedback-side]]. Hvis du især er interesseret i vores fortsatte bestræbelser på at forbedre brugervenligheden, så besøg vores [http://usability.wikimedia.org brugervenligheds-wiki].',
 	'prefswitch-main-anon' => '[$1 Klik her for at fjerne de nye funktioner]. Du vil blive bedt om at logge ind eller oprette en konto først,',
 	'prefswitch-main-on' => '[$2 Klik her for at afbryde de nye funktioner].',
@@ -977,6 +1009,8 @@ Tilbage til <span class="plainlinks">[$1 $2]</span>.',
 [$1 Klik her for at aktivere de nye funktioner].',
 	'prefswitch-survey-intro-feedback' => 'Vi vil meget gerne høre fra dig.
 Udfyld venligst den frivillige undersøgelse forneden før du klikker på "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Tak for at du afprøvede vores nye funktioner.
+For at hjælpe os med at forbedre dem, udfyld venligst det valgfrie undersøgelsesskema nedenfor før du klikker på "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Feedback fra brugererfaring',
 );
 
@@ -2508,9 +2542,11 @@ Pro adjutar nos a meliorar los, per favor completa le questionario facultative h
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'prefswitch-desc' => 'Izinkan pengguna mengubah aturan preferensi',
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Tidak',
 	'prefswitch-survey-submit-off' => 'Matikan fitur baru',
@@ -2523,6 +2559,9 @@ $messages['id'] = array(
 Harap pilih semua yang benar.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Terlalu sulit untuk digunakan.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Tidak berfungsi dengan baik.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Fitur tidak berjalan seperti yang diharapkan.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Saya tidak suka tampilan fiturnya.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Saya tidak suka dengan tab baru dan tampilannya.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Saya tidak menyukai kotak peralatan yang baru.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnya:',
 	'prefswitch-survey-question-browser' => 'Penjelajah web apa yang Anda gunakan?',
@@ -2535,15 +2574,24 @@ Harap pilih semua yang benar.',
 	'prefswitch-title-off' => 'Matikan fitur baru',
 	'prefswitch-title-switched-off' => 'Terima kasih',
 	'prefswitch-title-feedback' => 'Umpan balik',
-	'prefswitch-success-on' => 'Fitur baru sekarang telah dihidupkan.',
-	'prefswitch-success-off' => 'Fitur baru sekarang telah dimatikan.',
+	'prefswitch-success-on' => 'Fitur baru sekarang telah dihidupkan. Kami harap Anda menikmati fitur baru ini. Anda dapat mematikannya dengan menekan pranala "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" di atas halaman.',
+	'prefswitch-success-off' => 'Fitur baru sekarang telah dimatikan. Terima kasih telah mencoba fitur baru. Anda dapat menggunakannya kembali dengan menekan pranala "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" di atas halaman.',
 	'prefswitch-success-feedback' => 'Umpan balik Anda telah terkirim.',
 	'prefswitch-return' => '<hr style="clear:both">
 Kembali ke <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-feedback' => '===Umpan balik?===
+Kami ingin mendengar pendapat Anda. Silakan kunjungi [[$1|halaman umpan balik]] kami atau, bila Anda tertarik pada usaha kami dalam memperbaiki perangkat lunak ini, kunjungi [http://usability.wikimedia.org wiki kebergunaan] kami untuk informasi lebih lanjut.',
 	'prefswitch-main-anon' => '=== Bawa saya kembali === 
 [$1 Klik disini untuk menonaktifkan fitur baru]. Anda akan diminta untuk masuk log atau membuat akun terlebih dahulu.',
 	'prefswitch-main-on' => '=== Bawa saya kembali! === 
 [$2 Klik di sini untuk menonaktifkan fitur baru].',
+	'prefswitch-main-off' => '===Cobalah!===
+[$1 Klik di sini untuk mengaktifkan fitur baru].',
+	'prefswitch-survey-intro-feedback' => 'Kami ingin mendengar pendapat Anda.
+Silakan isi survei oposional di bawah ini sebelum menekan "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Terima kasih telah mencoba fitur baru kami.
+Untuk membantu kami memperbaikinya, silakan isi survei opsional di bawah ini sebelum menekan "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Proyek:Umpan balik pengalaman pengguna',
 );
 
 /** Ido (Ido)
@@ -4131,6 +4179,7 @@ $messages['si'] = array(
 	'prefswitch-survey-answer-whyoff-other' => 'වෙනත් හේතුවක්:',
 	'prefswitch-survey-question-browser' => 'ඔබ භාවිතා කරන්නේ කුමන බ්‍රවුසරයද?',
 	'prefswitch-survey-answer-browser-other' => 'අනෙක් බ්‍රවුසරය:',
+	'prefswitch-title-switched-on' => 'ප්‍රීති වන්න!',
 	'prefswitch-title-switched-off' => 'ස්තුතියි',
 );
 
@@ -4148,6 +4197,8 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'prefswitch' => 'Stikalo nastavitev pobude za uporabnost',
 	'prefswitch-desc' => 'Dovoli uporabnikom preklapljanje med nabori nastavitev',
+	'prefswitch-jswarning' => 'Ne pozabite, da je s spremembo kože potrebno skopirati vaš [[User:$1/$2.js|JavaScript $2]] na [[{{ns:user}}:$1/vector.js]]<!-- ali [[{{ns:user}}:$1/common.js]]-->, da bo deloval še naprej.',
+	'prefswitch-csswarning' => 'Vaši [[User:$1/$2.css|slogi $2 po meri]] ne bodo več v uporabi. CSS po meri za kožo vector lahko dodate v [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Izklopi nove funkcije',
@@ -4180,6 +4231,8 @@ Prosimo, izberite vse kar ustreza.',
 	'prefswitch-success-feedback' => 'Vaše povratne informacije so bile poslane.',
 	'prefswitch-return' => '<hr style="clear:both">
 Vrnitev na <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-logged-changes' => "* '''Zavihek {{int:watch}}''' je sedaj zvezdica.
+* '''Zavihek {{int:move}}''' je sedaj v spustnem seznamu poleg iskalne vrstice.",
 	'prefswitch-main-anon' => '===Vodi me nazaj===
 [$1 Za izklop novih funkcij kliknite tukaj]. Najprej se boste morali prijaviti ali ustvariti račun.',
 	'prefswitch-main-on' => '===Vodi me nazaj!===
@@ -4793,6 +4846,9 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'prefswitch' => 'ניצלעכקייט איניציאַטיוו פרעפֿערענץ איבערבײַט',
+	'prefswitch-desc' => 'לאָזן באַניצער  איבערבײַטן גרופעס פון פרעפֿערענצן',
+	'prefswitch-jswarning' => 'געדענקט אז, מיט דער געשטעל ענדערונג, אײַער [[User:$1/$2.js|$2 JavaScript]] דאַרף מען קאפירן צו [[{{ns:user}}:$1/vector.js]] <!-- אדער [[{{ns:user}}:$1/common.js]]--> צו פֿונקציאנירן ווײַטער.',
 	'prefswitch-survey-true' => 'יא',
 	'prefswitch-survey-false' => 'ניין',
 	'prefswitch-survey-submit-off' => 'אַנולירן נ ײַע אייגנקייטן',
@@ -4856,6 +4912,8 @@ $messages['yi'] = array(
 * '''זוך פֿאַרבעסערונגען:''' מיר האבן פֿאַרבעסערט די זוך פֿארשלאָגן אָז איר זאלט צוקומען צום געזוכטן בלאַט גיכערre quickly.
 * '''אַנדערע נײַע אייגנקייטן:''' מיר האבן אויך דערמעגלעכט א טאַבעלע קונצן־מאַכער צו מאַכן גרינגער שאַפֿן טאַבעלעס, און א זוך און פֿאַרבײַט אייגנקייט צו מאַכן מער איינפֿאַך רעדאַקטירן בלעטער.
 * '''וויקיפעדיע לאגא:''' מיר האבן דערהײַנטיגט אונזער לאגא. ליינט ווײַטער אין דעם [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d וויקימעדיע בלאג].",
+	'prefswitch-main-logged-changes' => "* דער '''{{int:watch}} טאַב''' איז אַצינד א שטערן.
+* דער '''{{int:move}} טאַב''' איז אַצינד אין דעם אַראָפלאז־צינגל לעבן דעם זוכפאַס.",
 	'prefswitch-survey-intro-off' => 'א דאַנק פֿאַרן אויספרובירן אונזערע נײַע אייגנקייטן.
 בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );

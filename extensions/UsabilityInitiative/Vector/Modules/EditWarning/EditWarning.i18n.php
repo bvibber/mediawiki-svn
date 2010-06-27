@@ -736,6 +736,15 @@ $messages['yi'] = array(
 	'vector-editwarning-preference' => 'שטעלן א ווארענונג ווען איך לאז איבער א רעדאקטירונג בלאט מיט נישט אויפגעהיטענע ענדערונגען',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'vector-editwarning-warning' => 'Kíkúrò ní ojúewé yìí yíò jẹ́ kí ẹ pòfo àwọn àtúnṣe tí ẹ ti ṣe.
+Tó bá jẹ́ pé ẹ ti wọlé, ẹ lè dẹ́kun ìkìlọ̀ yìí nínù abala "Àtúnṣe ṣíṣe" ti àwọn ìfẹ́ràn yín.',
+	'vector-editwarning-preference' => 'Kìlọ̀ fún mi tí mo bá únkúrò ní ojúewé àtúnṣe láì tíì mupamọ́',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

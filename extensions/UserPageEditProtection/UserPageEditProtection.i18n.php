@@ -270,6 +270,13 @@ $messages['ru'] = array(
 	'right-editalluserpages' => 'изменение страниц участников',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'right-editalluserpages' => 'පරිශීලක පිටු සංස්කරණය කිරීම',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

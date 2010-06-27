@@ -1223,6 +1223,7 @@ Për piasì, {{PLURAL:$2|ch'a lo|ch'a-j}} compila.",
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'formtitlepattern' => 'نوی $1 ورګډول',
 	'formsave' => 'خوندي کول',
 );
 

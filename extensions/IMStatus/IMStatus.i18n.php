@@ -1205,6 +1205,7 @@ L\'identificativ ch\'it deve dé a son ij nùmer e le litre an tra "$2" e "$3".'
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'imstatus_default' => 'تلواليز',
 	'imstatus_example' => 'بېلګه',
 	'imstatus_or' => 'يا',
 );

@@ -282,6 +282,13 @@ $messages['sk'] = array(
 	'conditionalshowsection-desc' => 'Pridáva značku cshow na podmienečné zobrazenie/skrytie sekcie wikitextu',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'conditionalshowsection-desc' => 'Dodajanje etikete cshow za pogojno prikazovanje/skrivanje razdelka wikibesedila',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

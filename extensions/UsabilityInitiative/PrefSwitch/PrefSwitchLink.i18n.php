@@ -766,8 +766,11 @@ $messages['yi'] = array(
  */
 $messages['yo'] = array(
 	'prefswitch-link-anon' => 'Àwọn ìní tuntun',
+	'tooltip-pt-prefswitch-link-anon' => 'Mọ̀ nípa àwọn ìní tuntun',
 	'prefswitch-link-on' => 'Dá mi padà',
+	'tooltip-pt-prefswitch-link-on' => 'Ìdẹ́kun àwọn ìní tuntun',
 	'prefswitch-link-off' => 'Àwọn ìní tuntun',
+	'tooltip-pt-prefswitch-link-off' => 'Ẹ ṣèdánwò àwọn ìní tuntun',
 );
 
 /** Cantonese (粵語)

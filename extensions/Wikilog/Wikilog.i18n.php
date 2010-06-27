@@ -2589,6 +2589,7 @@ Le commentaire n’apparaîtra qu’après avoir été vérifié par un modérat
 );
 
 /** Galician (Galego)
+ * @author Gallaecio
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -2648,6 +2649,7 @@ Tense que crear primeiro para publicar artigos e activar outras características
 	'wikilog-summary-categories' => 'Arquivado en $2',
 	'wikilog-summary-more' => '[[$3|→ seguir lendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|conversa]])',
+	'wikilog-edit-hint' => 'Editar o artigo do wikiblogue: $1',
 	'wikilog-edit-fieldset-legend' => 'Opcións do wikilog',
 	'wikilog-edit-signpub' => 'Asinar e publicar este artigo',
 	'wikilog-edit-signpub-tooltip' => 'Fai que o artigo sexa asinado e publicado no seu wikilog ao gardalo.
@@ -2669,6 +2671,7 @@ Desmarque esta caixa para considerar o artigo un borrador.',
 	'wikilog-comment-reject' => 'Rexeitar este comentario (acción inmediata)',
 	'wikilog-newtalk-text' => '<!-- páxina baleira creada polo wikilog -->',
 	'wikilog-newtalk-summary' => 'creada automaticamente polo wikilog',
+	'wikilog-feed-ns-title' => '$1 artigos do wikiblogue',
 	'wikilog-feed-description' => 'Lea as mensaxes máis recentes nesta fonte de novas.',
 	'wikilog-comment-feed-title1' => 'Comentario de $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentario de $2 a "$3" (#$1)',
@@ -3017,6 +3020,7 @@ Zo bychu so nastawki wozjewili a druhe wikilogowe funkcije zmóžnili, dyrbi so 
 	'wikilog-summary-categories' => 'Wotpołoženy pod $2',
 	'wikilog-summary-more' => '[[$3|→ dale čitać...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusija]])',
+	'wikilog-edit-hint' => 'Nastawk wikiprotokola wobdźěłać: $1',
 	'wikilog-edit-fieldset-legend' => 'Wikilogowe opcije:',
 	'wikilog-edit-signpub' => 'Tutón přinošk podpisać a wozjewić',
 	'wikilog-edit-signpub-tooltip' => 'Zawinuje, zo so tutón přinošk w swojim wikilogu podpisuje a wozjewja, hdyž so składuje.
@@ -3038,6 +3042,7 @@ Wotstroń markěrowanje z kašćika, zo by so přinošk jako naćisk wobchował.
 	'wikilog-comment-reject' => 'Tutón komentar wotpokazać (hnydomniša akcija)',
 	'wikilog-newtalk-text' => '<!-- prózdna strona wutworjena wot Wikiloga -->',
 	'wikilog-newtalk-summary' => 'awtomatisce přez Wikilog wutworjeny',
+	'wikilog-feed-ns-title' => 'Nastawki wikiprotokola z $1',
 	'wikilog-feed-description' => 'Čitaj najnowše přinoški w tutym kanalu.',
 	'wikilog-comment-feed-title1' => 'Komentar wot $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Komentar wot $2 na $3 (#$1)',
@@ -5033,7 +5038,7 @@ $messages['ps'] = array(
 	'wikilog-new-item-go' => 'جوړول',
 	'wikilog-item-name' => 'د ليکنې نوم:',
 	'wikilog-published' => 'خپاره شوي',
-	'wikilog-updated' => 'هم مهاله شوي',
+	'wikilog-updated' => 'اوسمهاله شو',
 	'wikilog-draft' => 'مسوده',
 	'wikilog-authors' => 'ليکوالان',
 	'wikilog-wikilog' => 'ويکي يادښت',
@@ -5045,6 +5050,9 @@ $messages['ps'] = array(
 	'wikilog-view-summary' => 'لنډيز',
 	'wikilog-draft-title-mark' => '(مسوده)',
 	'wikilog-anonymous-mark' => '(ورکنومی)',
+	'wikilog-pager-newest' => 'تر ټولو نوی',
+	'wikilog-pager-oldest' => 'تر ټولو زوړ',
+	'wikilog-pager-prev' => 'پخوانی',
 	'wikilog-pager-next' => 'راتلونکي',
 	'wikilog-pager-first' => 'لومړني',
 	'wikilog-pager-last' => 'وروستني',
@@ -5816,6 +5824,7 @@ $messages['si'] = array(
 	'wikilog-edit-signpub' => 'අත්සන් කර මෙම ලිපිය ප්‍රකාශනය කරන්න',
 	'wikilog-edit-signpub-tooltip' => 'සුරකින විට මෙම ලිපිය එහි විකි ලඝූ සටහනෙහි අත්සන් කරනු ලැබීමට හා ප්‍රකාශනය කරනු ලැබීමට හේතුවේ.
 ලිපිය කෙටුම්පතක් ලෙස තැබීමට මෙම කොටුව නිලකුණු කරන්න.',
+	'wikilog-comment-permalink' => '$1 විසින්  $2 හිදී',
 	'wikilog-comment-note-edited' => 'අවසාන සංස්කර්ණය $1 දින $2 දීය',
 	'wikilog-comment-anonsig' => '$3 (නිර්නාමික)',
 	'wikilog-comment-pending' => 'මෙම විචාරය අනුමැතිය බලාපොරොත්තුවෙන් පසුවේ.',

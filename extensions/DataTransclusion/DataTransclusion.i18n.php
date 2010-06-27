@@ -262,6 +262,14 @@ Un prime parametro "template" es obligatori.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non existe.',
 );
 
+/** Italian (Italiano)
+ * @author EdoDodo
+ */
+$messages['it'] = array(
+	'datatransclusion-unknown-source' => "Origine dati incorreta specificata.
+''$1'' non è noto.",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

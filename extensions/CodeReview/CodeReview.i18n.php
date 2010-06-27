@@ -7297,6 +7297,7 @@ $messages['ps'] = array(
 	'code-field-select' => 'ټاکل',
 	'code-rev-author' => 'ليکوال:',
 	'code-rev-date' => 'نېټه:',
+	'code-rev-message' => 'تبصره:',
 	'code-rev-modified-a' => 'ورګډ شو',
 	'code-rev-modified-d' => 'ړنګ شو',
 	'code-rev-status' => 'دريځ:',
