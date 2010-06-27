@@ -37,6 +37,7 @@ class EditCountPage extends SpecialPage {
 	function EditCountPage()
 	{
 		parent::SpecialPage("EditCount", "", true);
+		wfLoadExtensionMessages( 'mw-editcount' );
 	}
 	
 	/**

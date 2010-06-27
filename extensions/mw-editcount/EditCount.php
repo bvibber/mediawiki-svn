@@ -49,14 +49,8 @@ $wgExtensionCredits["parserhook"][] = $egEditCountCredits;
 $wgExtensionCredits["specialpage"][] = $egEditCountCredits;
 
 $wgExtensionFunctions[] = "efEditCount";
-if ($egECParserFunction) {
-	$wgHooks["LanguageGetMagic"][] = "efEditCountMagic";
-}
 
-if ($egECEnableSpecialPage) {
-	$wgHooks["SkinTemplateBuildNavUrlsNav_urlsAfterPermalink"][] = "efEditCountNavUrls";
-	$wgHooks["MonoBookTemplateToolboxEnd"][] = "efEditCountToolbox";
-}
+$wgExtensionMessagesFiles['mw-editcount'] = dirname(__FILE__) . '/EditCount.i18n.php';
 
 /**
  * The extension function that's called to set up EditCount.
@@ -68,20 +62,18 @@ function efEditCount() {
 	//Autoload
 	$wgAutoloadClasses["EditCountPage"] = dirname(__FILE__) . "/EditCountPage.php";
 	$wgAutoloadClasses["EditCount"] = dirname(__FILE__) . "/EditCountPage.php";
-	if ($before17) {
-		//autoloading not supported
-		require_once "EditCountPage.php";
-	}
 	
 	if ($egECEnableSpecialPage) {
 		$wgSpecialPages["EditCount"] = "EditCountPage";
+		$wgHooks["SkinTemplateBuildNavUrlsNav_urlsAfterPermalink"][] = "efEditCountNavUrls";
+		$wgHooks["MonoBookTemplateToolboxEnd"][] = "efEditCountToolbox";
 	}
 	
 	if ($egECParserFunction) {
-		$wgParser->setFunctionHook("editcount", "efEditCountParserFunction");
+		$wgHooks["LanguageGetMagic"][] = "efEditCountMagic";
+		$wgHooks['ParserFirstCallInit'][] = "efEditCountRegisterParser";
 	}
 	
-	efEditCountMsgs();
 }
 
 /**
@@ -102,30 +94,6 @@ function efEditCountMagic(&$magicWords) {
 }
 
 /**
- * Injects EditCount's messages into the message system
- */
-function efEditCountMsgs() {
-	global $wgMessageCache, $wgContLang, $wgVersion;
-	static $msgsLoaded = false;
-	
-	wfProfileIn(__FUNCTION__);
-	
-	$before17 = version_compare($wgVersion, "1.7", "<");
-	
-	if (!$msgsLoaded) {
-		$weECMessages = array();
-		require_once "EditCount.i18n.php";
-		//add all the message to fill in language gaps
-		foreach ($weECMessages as $code => $msgs) {
-			$wgMessageCache->addMessages($weECMessages[$code], $code);
-		}
-		$msgsLoaded = true;
-	}
-	
-	wfProfileOut(__FUNCTION__);
-}
-
-/**
  * Adds the path of the EditCount special page to toolboxes on user pages
  * 
  * @param SkinTemplate $skinTemplate
@@ -140,13 +108,22 @@ function efEditCountNavUrls(&$skinTemplate, &$navUrls, $oldid, $revisionid) {
 	if (!$egECEnableSpecialPage) {
 		return;
 	}
-	
+	wfLoadExtensionMessages( 'mw-editcount' );
 	$title = $skinTemplate->mTitle;
 	if ($title->getNamespace() == NS_USER && $revisionid !== 0) {
 		$navUrls["editcount"] = array(
 			"text" => wfMsg("editcount-toolbox"), 
 			"href" => $skinTemplate->makeSpecialUrl("EditCount", "target=" . wfUrlencode($title->getText())));
 	}
+	return true;
+}
+
+/**
+ * Registers the parser function with parsers
+ */
+function efEditCountRegisterParser(&$parser) {
+	$wgParser->setFunctionHook("editcount", "efEditCountParserFunction");
+	
 	return true;
 }
 
@@ -202,6 +179,7 @@ function efEditCountParserFunction($parser, $param1 = "", $param2 = "") {
  * @return bool always true
  */
 function efEditcountToolbox(&$monobook) {
+	wfLoadExtensionMessages( 'mw-editcount' );
 	if (array_key_exists("editcount", $monobook->data["nav_urls"])) {
 		?><li id="t-editcount">
 			<a href="<?php echo htmlspecialchars($monobook->data["nav_urls"]["editcount"]["href"]) ?>"><?php

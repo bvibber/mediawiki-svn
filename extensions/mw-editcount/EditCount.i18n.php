@@ -1,13 +1,14 @@
 <?php
 /**
- * Messages for the EditCount extension
- * 
- * Feel free to translate these
- * @package MediaWiki
- * @subpackage EditCount
+ * Internationalisation file for extension mw-editcount/EditCount.
+ *
+ * @file
+ * @ingroup Extensions
  */
 
-$weECMessages['en'] = array(
+$messages = array();
+
+$messages['en'] = array(
 	"editcount" => "Edit Count",
 	"editcount-des" => "Enter an username or IP to view that user's edit count.",
 	"editcount-edits" => "Edits",
@@ -23,7 +24,7 @@ $weECMessages['en'] = array(
 );
 
 //German
-$weECMessages['de'] = array(
+$messages['de'] = array(
 	"editcount" => "Anzahl der Bearbeitungen",
 	"editcount-des" => "Geben Sie einen Benutzernamen oder eine IP ein, um sich die Anzahl der
 Bearbeitungen eines Benutzers anzeigen zu lassen.",
@@ -40,7 +41,7 @@ Bearbeitungen eines Benutzers anzeigen zu lassen.",
 );
 
 //Finish
-$weECMessages['fi'] = array(
+$messages['fi'] = array(
 	"editcount" => "K�ytt�jien muokkausm��r�t",
 	"editcount-des" => "Voit tarkastella k�ytt�j�n tekemien tai IP-osoitteesta tehtyjen muokkausten lukum��r�� sy�tt�m�ll� tunnuksen tai IP:n alla olevaan kentt��n.",
 	"editcount-edits" => "muokkauksia",
@@ -55,7 +56,7 @@ $weECMessages['fi'] = array(
 	"editcount-username" => "K�ytt�j�:" ); 
  
 //Polish
-$weECMessages['pl'] = array(
+$messages['pl'] = array(
     "editcount" => "Liczba edycji",
 	"editcount-des" => "Wpisz nazwe uzytkownika lub adres IP, aby zobaczyc liczbe jego edycji.",
 	"editcount-edits" => "Edycji",
@@ -71,7 +72,7 @@ $weECMessages['pl'] = array(
 ); 
 
 //French
-$weECMessages['fr'] = array(
+$messages['fr'] = array(
     "editcount" => "Compteur d'éditions",
     "editcount-des" => "Saisir un nom d'utilisateur ou une IP pour voir le nombre d'édition de l'utilisateur.",
     "editcount-edits" => "Editions",
@@ -87,7 +88,7 @@ $weECMessages['fr'] = array(
 );
 
 //brazilian portuguese
-$weECMessages['pt-br'] = array(
+$messages['pt-br'] = array(
     "editcount" => "Contador de EdiÃ§Ãµes",
     "editcount-des" => "Incira um nome de usuÃ¡rio ou IP para ver a contagem de ediÃ§Ãµes do usuÃ¡rio.",
     "editcount-edits" => "EdiÃ§Ãµes",
@@ -103,7 +104,7 @@ $weECMessages['pt-br'] = array(
 );
 
 //Dutch
-$weECMessages['nl'] = array(
+$messages['nl'] = array(
    "editcount" => "Bewerkingsteller",
    "editcount-des" => "Geef een gebruikersnaam of een IP-adres om .",
    "editcount-edits" => "Bewerkingen",
