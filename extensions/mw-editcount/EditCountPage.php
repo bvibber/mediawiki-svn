@@ -62,7 +62,7 @@ class EditCountPage extends SpecialPage {
 		
 		$nt = Title::newFromURL($this->target);
 		if (!$nt) {
-			$wgOut->addHTML(wfMsg("editcount-notuser", htmlspecialchars($this->target)));
+			$wgOut->addWikiMsg("editcount-notuser", $this->target));
 			wfProfileOut(__METHOD__);
 			return;
 		}
@@ -86,7 +86,7 @@ class EditCountPage extends SpecialPage {
 		wfProfileIn(__METHOD__);
 		
 		if ($ec->getTotal() == 0) {
-			$wgOut->addHTML(wfMsg("editcount-noedits", $ec->getName()));
+			$wgOut->addWikiMsg("editcount-noedits", $ec->getName()));
 			wfProfileOut(__METHOD__);
 			return;
 		}
@@ -160,8 +160,9 @@ class EditCountPage extends SpecialPage {
 		
 		wfProfileIn(__METHOD__);
 		
-		$ct = Title::makeTitle(NS_SPECIAL, $this->getName());
+		$ct = $this->getTitle();
 		$form = "";
+		// FIXME: use Xml::inputLabel etc
 		$form .= wfElement("p", null, wfMsg("editcount-des"));
 		$form .= wfElement("form", array("name" => "editcountform", "method" => "get", "action" => $wgScriptPath . "/index.php"), null); 
 		$form .= wfElement("input", array("type" => "hidden", "name" => "title", "value" => "Special:EditCount"), "") . " ";
@@ -219,6 +220,7 @@ class EditCount {
 		$this->db = wfGetDB(DB_SLAVE);
 		$this->user = User::newFromName($username);
 		if ($this->user == null) {
+			//FIXME: HUH?
 			$this->user = new User;
 		}
 		$this->id = $this->user->getID();
@@ -235,6 +237,7 @@ class EditCount {
 	{
 		wfProfileIn(__METHOD__);
 		global $wgDBprefix;
+		//FIXME: don't construct SQL by hand, use selectField
 		$cond = ($this->user->isAnon()) ? "r.rev_user_text = '" . $this->user->getName() . "'"
 			: "r.rev_user = " . $this->id;
 		$result = $this->db->query("SELECT COUNT(*) AS count
@@ -263,6 +266,8 @@ class EditCount {
 			FROM {$wgDBprefix}revision JOIN {$wgDBprefix}page p ON rev_page = p.page_id
 			WHERE $cond GROUP BY ns", __METHOD__);
 		$nsResults = array();
+
+		// Use foreach
 		while (($row = $this->db->fetchRow($result)) !== false) {
 			$nsResults[$row["ns"]] = $row["count"];
 		}
@@ -291,6 +296,7 @@ class EditCount {
 		global $wgDBprefix;
 		if ($this->id == 0) {
 			wfProfileOut(__METHOD__);
+			// This actually works?
 			return $this->db->selectField("{$wgDBprefix}revision", "COUNT(*)", array("rev_user_text" => $this->user->getName()), __METHOD__);
 		}
 		

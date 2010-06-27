@@ -23,14 +23,13 @@ $messages['en'] = array(
 	"editcount-username" => "Username:"
 );
 
-//German
 $messages['de'] = array(
 	"editcount" => "Anzahl der Bearbeitungen",
 	"editcount-des" => "Geben Sie einen Benutzernamen oder eine IP ein, um sich die Anzahl der Bearbeitungen eines Benutzers anzeigen zu lassen.",
 	"editcount-edits" => "Bearbeitungen",
 	"editcount-namespace" => "Namensraum",
 	"editcount-noedits" => "Es wurden keine Bearbeitungen von $1 gefunden.",
-	"editcount-notuser" => "$1 ist kein g�ltiger Benutzer.",
+	"editcount-notuser" => "$1 ist kein gültiger Benutzer.",
 	"editcount-percent" => "Prozent der Bearbeitungen insgesamt",
 	"editcount-percentsym" => "%",
 	"editcount-show" => "Anzahl anzeigen",
@@ -39,24 +38,23 @@ $messages['de'] = array(
 	"editcount-username" => "Benutzername:"
 );
 
-//Finish
 $messages['fi'] = array(
-	"editcount" => "K�ytt�jien muokkausm��r�t",
-	"editcount-des" => "Voit tarkastella k�ytt�j�n tekemien tai IP-osoitteesta tehtyjen muokkausten lukum��r�� sy�tt�m�ll� tunnuksen tai IP:n alla olevaan kentt��n.",
+	"editcount" => "Käyttäjien muokkausmäärät",
+	"editcount-des" => "Voit tarkastella käyttäjän tekemien tai IP-osoitteesta tehtyjen muokkausten lukumäärää syättämällä tunnuksen tai IP:n alla olevaan kenttään.",
 	"editcount-edits" => "muokkauksia",
 	"editcount-namespace" => "nimiavaruus",
-	"editcount-noedits" => "$1 ei ole tehnyt yht��n muokkausta.",
-	"editcount-notuser" => "K�ytt�j�tunnusta $1 ei ole olemassa.",
-	"editcount-percent" => "osuus k�ytt�j�n muokkauksista",
+	"editcount-noedits" => "$1 ei ole tehnyt yhtään muokkausta.",
+	"editcount-notuser" => "Käyttäjätunnusta $1 ei ole olemassa.",
+	"editcount-percent" => "osuus käyttäjän muokkauksista",
 	"editcount-percentsym" => " %",
-	"editcount-show" => "N�yt�",
-	"editcount-toolbox" => "K�ytt�j�n muokkausten m��r�",
-	"editcount-total" => "yhteens�",
-	"editcount-username" => "K�ytt�j�:" ); 
+	"editcount-show" => "Näytä",
+	"editcount-toolbox" => "Käyttäjän muokkausten määrä",
+	"editcount-total" => "yhteensä",
+	"editcount-username" => "Käyttäjä:"
+); 
  
-//Polish
 $messages['pl'] = array(
-    "editcount" => "Liczba edycji",
+	"editcount" => "Liczba edycji",
 	"editcount-des" => "Wpisz nazwe uzytkownika lub adres IP, aby zobaczyc liczbe jego edycji.",
 	"editcount-edits" => "Edycji",
 	"editcount-namespace" => "Zakres nazw",
@@ -70,7 +68,6 @@ $messages['pl'] = array(
 	"editcount-username" => "Uzytkownik:"
 ); 
 
-//French
 $messages['fr'] = array(
 	"editcount" => "Compteur d'éditions",
 	"editcount-des" => "Saisir un nom d'utilisateur ou une IP pour voir le nombre d'édition de l'utilisateur.",
@@ -86,7 +83,6 @@ $messages['fr'] = array(
 	"editcount-username" => "Utilisateur:"
 );
 
-//brazilian portuguese
 $messages['pt-br'] = array(
 	"editcount" => "Contador de Edições",
 	"editcount-des" => "Incira um nome de usuário ou IP para ver a contagem de edições do usuário.",
@@ -102,7 +98,6 @@ $messages['pt-br'] = array(
 	"editcount-username" => "Nome de Usuário:"
 );
 
-//Dutch
 $messages['nl'] = array(
 	"editcount" => "Bewerkingsteller",
 	"editcount-des" => "Geef een gebruikersnaam of een IP-adres om .",
@@ -117,4 +112,3 @@ $messages['nl'] = array(
 	"editcount-total" => "Totaal",
 	"editcount-username" => "Gebruikersnaam:"
 );
-

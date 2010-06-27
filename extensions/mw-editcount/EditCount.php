@@ -14,7 +14,7 @@ if (!defined("MEDIAWIKI")) {
 }
 
 /*************************************
- Configuartion
+ Configuration
  ***************************************/
 
 /**
@@ -56,9 +56,8 @@ $wgExtensionMessagesFiles['mw-editcount'] = dirname(__FILE__) . '/EditCount.i18n
  * The extension function that's called to set up EditCount.
  */
 function efEditCount() {
-	global $wgAutoloadClasses, $wgSpecialPages, $wgParser,
-		$egECParserFunction, $egECEnableSpecialPage, $egECParserFunctionNames, $wgVersion;
-	
+	global $wgAutoloadClasses, $wgSpecialPages, $wgHooks,
+		$egECParserFunction, $egECEnableSpecialPage;
 	//Autoload
 	$wgAutoloadClasses["EditCountPage"] = dirname(__FILE__) . "/EditCountPage.php";
 	$wgAutoloadClasses["EditCount"] = dirname(__FILE__) . "/EditCountPage.php";
@@ -103,7 +102,7 @@ function efEditCountMagic(&$magicWords) {
  * @return bool always true
  */
 function efEditCountNavUrls(&$skinTemplate, &$navUrls, $oldid, $revisionid) {
-	global $wgAutoloadClasses, $egECEnableSpecialPage;
+	global $egECEnableSpecialPage;
 	
 	if (!$egECEnableSpecialPage) {
 		return;
@@ -122,8 +121,7 @@ function efEditCountNavUrls(&$skinTemplate, &$navUrls, $oldid, $revisionid) {
  * Registers the parser function with parsers
  */
 function efEditCountRegisterParser(&$parser) {
-	$wgParser->setFunctionHook("editcount", "efEditCountParserFunction");
-	
+	$parser->setFunctionHook("editcount", "efEditCountParserFunction");
 	return true;
 }
 
@@ -152,6 +150,7 @@ function efEditCountParserFunction($parser, $param1 = "", $param2 = "") {
 		return $ec->getTotal();
 	}
 	
+	//FIXME: don't use is_numeric
 	if (!is_numeric($param2)) {
 		$index = Namespace::getCanonicalIndex(strtolower($param2));
 		if ($index === null) {
