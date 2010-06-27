@@ -71,7 +71,7 @@ $messages['pl'] = array(
 ); 
 
 //French
-$weECMessages['fr'] = array(
+$messages['fr'] = array(
 	"editcount" => "Compteur d'éditions",
 	"editcount-des" => "Saisir un nom d'utilisateur ou une IP pour voir le nombre d'édition de l'utilisateur.",
 	"editcount-edits" => "Editions",
@@ -87,7 +87,7 @@ $weECMessages['fr'] = array(
 );
 
 //brazilian portuguese
-$weECMessages['pt-br'] = array(
+$messages['pt-br'] = array(
 	"editcount" => "Contador de Edições",
 	"editcount-des" => "Incira um nome de usuário ou IP para ver a contagem de edições do usuário.",
 	"editcount-edits" => "Edições",
@@ -103,7 +103,7 @@ $weECMessages['pt-br'] = array(
 );
 
 //Dutch
-$weECMessages['nl'] = array(
+$messages['nl'] = array(
 	"editcount" => "Bewerkingsteller",
 	"editcount-des" => "Geef een gebruikersnaam of een IP-adres om .",
 	"editcount-edits" => "Bewerkingen",
