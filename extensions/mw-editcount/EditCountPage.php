@@ -53,7 +53,7 @@ class EditCountPage extends SpecialPage {
 		
 		if ($this->target === null || !strlen($this->target)) {
 			$this->showInputForm();
-            wfProfileOut(__METHOD__);
+			wfProfileOut(__METHOD__);
 			return;
 		}
 		
@@ -62,13 +62,13 @@ class EditCountPage extends SpecialPage {
 		$nt = Title::newFromURL($this->target);
 		if (!$nt) {
 			$wgOut->addHTML(wfMsg("editcount-notuser", htmlspecialchars($this->target)));
-            wfProfileOut(__METHOD__);
+			wfProfileOut(__METHOD__);
 			return;
 		}
 		
 		$ec = new EditCount($nt->getText());
 		$this->showEditCount($ec);
-        
+		
 		wfProfileOut(__METHOD__);
 	}
 	
@@ -81,12 +81,12 @@ class EditCountPage extends SpecialPage {
 	function showEditCount($ec)
 	{
 		global $wgOut, $wgContLang;
-        
-        wfProfileIn(__METHOD__);
+		
+		wfProfileIn(__METHOD__);
 		
 		if ($ec->getTotal() == 0) {
 			$wgOut->addHTML(wfMsg("editcount-noedits", $ec->getName()));
-            wfProfileOut(__METHOD__);
+			wfProfileOut(__METHOD__);
 			return;
 		}
 		
@@ -118,8 +118,8 @@ class EditCountPage extends SpecialPage {
 		
 		$table .= wfCloseElement("table");
 		$wgOut->addHtml($table);
-        
-        wfProfileOut(__METHOD__);
+		
+		wfProfileOut(__METHOD__);
 	}
 	
 	/**
@@ -131,7 +131,7 @@ class EditCountPage extends SpecialPage {
 	 */
 	function doRow($cells)
 	{
-        wfProfileIn(__METHOD__);
+		wfProfileIn(__METHOD__);
 		$ret = wfElement("tr", null, null);
 		if (count($cells) == 2) {
 			$ret .= wfElement("td", array("style" => $this->border), $cells[0]);
@@ -143,8 +143,8 @@ class EditCountPage extends SpecialPage {
 			}
 		}
 		$ret .= wfCloseElement("tr");
-        
-        wfProfileOut(__METHOD__);
+		
+		wfProfileOut(__METHOD__);
 		return $ret;
 	}
 	
@@ -156,14 +156,14 @@ class EditCountPage extends SpecialPage {
 	 */
 	function showInputForm($user = "") {
 		global $wgOut, $wgScriptPath;
-        
-        wfProfileIn(__METHOD__);
-        
+		
+		wfProfileIn(__METHOD__);
+		
 		$ct = Title::makeTitle(NS_SPECIAL, $this->getName());
 		$form = "";
 		$form .= wfElement("p", null, wfMsg("editcount-des"));
 		$form .= wfElement("form", array("name" => "editcountform", "method" => "get", "action" => $wgScriptPath . "/index.php"), null); 
-        $form .= wfElement("input", array("type" => "hidden", "name" => "title", "value" => "Special:EditCount"), "") . " ";
+		$form .= wfElement("input", array("type" => "hidden", "name" => "title", "value" => "Special:EditCount"), "") . " ";
 		$form .= wfElement("label", array("for" => "target"), wfMsg("editcount-username")). " ";
 		$form .= wfElement("input", array("type" => "textbox", "name" => "target", "size" => "24", "value" => $user), "") . " ";
 		$form .= wfElement("input", array("type" => "submit", "name" => "doeditcount", "value" => wfMsg("editcount-show")));
@@ -171,8 +171,8 @@ class EditCountPage extends SpecialPage {
 		
 		$this->setHeaders();
 		$wgOut->addHtml($form);
-        
-        wfProfileOut(__METHOD__);
+		
+		wfProfileOut(__METHOD__);
 	}
 }
 
@@ -241,7 +241,7 @@ class EditCount {
 			WHERE $cond AND p.page_namespace = $ns
 			GROUP BY p.page_namespace");
 		$row = $this->db->fetchRow($result);
-        
+		
 		wfProfileOut(__METHOD__);
 		return ($row["count"]) ? $row["count"] : 0;
 	}
@@ -273,7 +273,7 @@ class EditCount {
 			}
 		}
 		ksort($nsResults, SORT_NUMERIC);
-        
+		
 		wfProfileOut(__METHOD__);
 		return $nsResults;
 	}
@@ -289,11 +289,11 @@ class EditCount {
 		wfProfileIn(__METHOD__);
 		global $wgDBprefix;
 		if ($this->id == 0) {
-            wfProfileOut(__METHOD__);
+			wfProfileOut(__METHOD__);
 			return $this->db->selectField("{$wgDBprefix}revision", "COUNT(*)", array("rev_user_text" => $this->user->getName()), __METHOD__);
 		}
-        
-        wfProfileOut(__METHOD__);
+		
+		wfProfileOut(__METHOD__);
 		return $this->user->edits($this->id);
 	}
 	
@@ -308,4 +308,4 @@ class EditCount {
 		return $this->user->getName();
 	}
 }
-?>
+

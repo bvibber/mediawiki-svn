@@ -117,4 +117,4 @@ $weECMessages['nl'] = array(
    "editcount-total" => "Totaal",
    "editcount-username" => "Gebruikersnaam:"
 );
-?>
+

@@ -64,38 +64,21 @@ if ($egECEnableSpecialPage) {
 function efEditCount() {
 	global $wgAutoloadClasses, $wgSpecialPages, $wgParser,
 		$egECParserFunction, $egECEnableSpecialPage, $egECParserFunctionNames, $wgVersion;
-    
-    //for cross version compatibility
-    $before17 = version_compare($wgVersion, "1.7", "<");
-    
-    //Autoload
+	
+	//Autoload
 	$wgAutoloadClasses["EditCountPage"] = dirname(__FILE__) . "/EditCountPage.php";
 	$wgAutoloadClasses["EditCount"] = dirname(__FILE__) . "/EditCountPage.php";
 	if ($before17) {
 		//autoloading not supported
 		require_once "EditCountPage.php";
 	}
-    
+	
 	if ($egECEnableSpecialPage) {
-    	//add to special page (object if less than 1.7)
-    	if ($before17) {
-        	$wgSpecialPages["EditCount"] = new EditCountPage;
-    	}
-    	else {
-        	$wgSpecialPages["EditCount"] = "EditCountPage";
-    	}
+		$wgSpecialPages["EditCount"] = "EditCountPage";
 	}
 	
 	if ($egECParserFunction) {
-        if ($before17) {
-        	//have to do this without magic words
-        	foreach ($egECParserFunctionNames as $funcName) {
-        		$wgParser->setFunctionHook("#" . $funcName, "efEditCountParserFunction");
-        	}
-        }
-        else {
-        	$wgParser->setFunctionHook("editcount", "efEditCountParserFunction");
-        }
+		$wgParser->setFunctionHook("editcount", "efEditCountParserFunction");
 	}
 	
 	efEditCountMsgs();
@@ -124,32 +107,22 @@ function efEditCountMagic(&$magicWords) {
 function efEditCountMsgs() {
 	global $wgMessageCache, $wgContLang, $wgVersion;
 	static $msgsLoaded = false;
-    
-    wfProfileIn(__FUNCTION__);
+	
+	wfProfileIn(__FUNCTION__);
 	
 	$before17 = version_compare($wgVersion, "1.7", "<");
 	
 	if (!$msgsLoaded) {
 		$weECMessages = array();
 		require_once "EditCount.i18n.php";
-		if ($before17) {
-			//1.6 doesn't support multiple languages
-        	$code = $wgContLang->getCode();
-        	if (!array_key_exists($code, $weECMessages)) {
-            	$code = "en";
-        	}
+		//add all the message to fill in language gaps
+		foreach ($weECMessages as $code => $msgs) {
 			$wgMessageCache->addMessages($weECMessages[$code], $code);
-		}
-		else {
-			//add all the message to fill in language gaps
-			foreach ($weECMessages as $code => $msgs) {
-				$wgMessageCache->addMessages($weECMessages[$code], $code);
-			}
 		}
 		$msgsLoaded = true;
 	}
-    
-    wfProfileOut(__FUNCTION__);
+	
+	wfProfileOut(__FUNCTION__);
 }
 
 /**
@@ -187,38 +160,38 @@ function efEditCountNavUrls(&$skinTemplate, &$navUrls, $oldid, $revisionid) {
  */
 function efEditCountParserFunction($parser, $param1 = "", $param2 = "") {
 	global $wgContLang;
-    
-    wfProfileIn(__FUNCTION__);
+	
+	wfProfileIn(__FUNCTION__);
 	
 	if ($param1 == "" || !Title::newFromText($param1)) {
-        wfProfileOut(__FUNCTION__);
+		wfProfileOut(__FUNCTION__);
 		return array("found" => false);
 	}
 		
 	$ec = new EditCount($param1);
 	
 	if ($param2 === "") {
-        wfProfileOut(__FUNCTION__);
+		wfProfileOut(__FUNCTION__);
 		return $ec->getTotal();
 	}
 	
 	if (!is_numeric($param2)) {
 		$index = Namespace::getCanonicalIndex(strtolower($param2));
 		if ($index === null) {
-            wfProfileOut(__FUNCTION__);
+			wfProfileOut(__FUNCTION__);
 			return array("found" => false);
 		}
 	}
 	else {
 		$namespaces = $wgContLang->getNamespaces();
 		if (!array_key_exists($param2, $namespaces)) {
-            wfProfileOut(__FUNCTION__);
+			wfProfileOut(__FUNCTION__);
 			return array("found" => false);
 		}
 		$index = $param2;
 	}
-    
-    wfProfileOut(__FUNCTION__);
+	
+	wfProfileOut(__FUNCTION__);
 	return $ec->getByNamespace($index);
 }
 
@@ -239,4 +212,3 @@ function efEditcountToolbox(&$monobook) {
 	return true;
 }
 
-?>
