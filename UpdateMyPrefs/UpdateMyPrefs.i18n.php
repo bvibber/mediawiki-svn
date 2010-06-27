@@ -272,10 +272,12 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
 	'prefs-updates' => 'Pembaharuan',
+	'updatemyprefs-desc' => 'Preferensi bagi pengguna untuk menyebutkan apakah mereka menginginkan pemutakhiran antarmuka pengguna secara berkala bila sudah tersedia',
 	'updatemyprefs-label-message' => 'Perbarui preferensi saya secara otomatis dengan setelan baku yang baru dan alat-alatnya jika telah tersedia',
 );
 
@@ -540,6 +542,8 @@ $messages['yi'] = array(
  */
 $messages['yo'] = array(
 	'prefs-updates' => 'Àwọn ìtúnṣe',
+	'updatemyprefs-desc' => 'Ìfẹ́ràn fún àwọn oníṣe láti nawọ́ bóyá wọ́n fẹ́ àwọn ìtúnṣe ìgbàgbà ìwojú oníṣe bí wọ́n bá ṣe ún wá',
+	'updatemyprefs-label-message' => 'Ní fúnrararẹ̀ ṣe títúnṣe ìfẹ́ràn mi pẹ̀lú àwọn ìtòjọ ìbẹ̀rẹ̀ àti àwọn irinṣẹ́ tuntun bí wọ́n bá ṣe ún wá',
 );
 
 /** Cantonese (粵語)

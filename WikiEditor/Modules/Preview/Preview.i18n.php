@@ -877,6 +877,7 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'wikieditor-preview-preference' => 'Ìgbàláyè àyẹ̀wò lẹ́gbẹ̀ẹ́ ara wọn',
 	'wikieditor-preview-tab' => 'Àyẹ̀wò',
 	'wikieditor-preview-changes-tab' => 'Àwọn àtúnṣe',
 	'wikieditor-preview-loading' => 'Únrùjáde...',

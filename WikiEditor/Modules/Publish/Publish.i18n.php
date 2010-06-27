@@ -1286,6 +1286,7 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'wikieditor-publish-preference' => 'Ìgbàláyè ìtẹ̀jáde lẹ́sẹ-sẹ',
 	'wikieditor-publish-button-publish' => 'Ìtẹ̀jáde',
 	'wikieditor-publish-button-cancel' => 'Fagilé',
 	'wikieditor-publish-dialog-title' => 'Ìtẹ̀jáde sí {{SITENAME}}',

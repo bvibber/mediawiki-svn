@@ -406,6 +406,13 @@ $messages['vi'] = array(
 	'wikieditor-templates-preference' => 'Cho phép làm xẹp các bản mẫu',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-templates-preference' => 'Ìgbàláyè ìbòmọ́lẹ̀ àdàkọ',
+);
+
 /** Cantonese (粵語)
  * @author Horacewai2
  */

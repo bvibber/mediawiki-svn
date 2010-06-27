@@ -821,6 +821,7 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'wikieditor-template-editor-preference' => 'Ìgbàláyè àtúnṣe onífọ́ọ́mù àwọn àdàkọ wiki',
 	'wikieditor-template-editor-dialog-title' => 'Àtúnṣe àdàkọ',
 	'wikieditor-template-editor-dialog-submit' => 'Ìtúnṣe',
 	'wikieditor-template-editor-dialog-cancel' => 'Fagilé',
