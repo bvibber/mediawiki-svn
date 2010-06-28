@@ -1,8 +1,14 @@
 <?php
 
 class ActiveStrategy {
-	static function getTaskForces() {
+	static function getTaskForces( $limit ) {
 		$dbr = wfGetDB( DB_SLAVE );
+		
+		$options = array();
+		
+		if ($limit) {
+			$options['LIMIT'] = $limit;
+		}
 		
 		$res = $dbr->select(
 			array( "page", 'categorylinks',
@@ -20,7 +26,7 @@ class ActiveStrategy {
 				'finishedcategory.cl_from IS NULL',
 			),
 			__METHOD__,
-			array(),
+			$options,
 			array(
 				'categorylinks' => array( 'RIGHT JOIN',
 					array(
@@ -177,9 +183,10 @@ class ActiveStrategy {
 		$html = '';
 		$db = wfGetDB( DB_MASTER );
 		$sk = $wgUser->getSkin();
+		$limit = null;
 		
 		if ( empty( $args['type'] ) ) {
-			$args['type'] = 'taskforces';
+			$args['type'] = 'taskforce';
 		}
 		
 		$sortField = 'members';
@@ -188,15 +195,12 @@ class ActiveStrategy {
 			$sortField = $args['sort'];
 		}
 		
-		if ( $args['type'] == 'taskforces' ) {
-			$masterPages = self::getTaskForces();
-		} elseif ( $args['type'] == 'proposal' ) {
-//			$masterPages = self::getProposals();
+		if ( isset( $args['max'] ) ) {
+			$limit = intval($args['max']);
 		}
 		
-		// Sorting by number of members doesn't require any 
-		if ($sortField == 'members' ) {
-			return self::handleSortByMembers( $masterPages );
+		if ( $args['type'] == 'taskforce' ) {
+			$masterPages = self::getTaskForces( $limit );
 		}
 		
 		$tables = array( );
@@ -206,7 +210,11 @@ class ActiveStrategy {
 		$options = array( 'GROUP BY' => 'keyfield', 'ORDER BY' => 'value DESC' );
 		$lookup = NULL;
 		
-		if ( $args['type'] == 'taskforces' ) {
+		if ( $limit ) {
+			$options['LIMIT'] = intval($limit);
+		}
+		
+		if ( $args['type'] == 'taskforce' ) {
 			self::getTaskForcePageConditions( $masterPages, $tables, $fields,
 								$conds, $joinConds, $lookup );
 		} elseif( $args['type'] == 'proposal' ) {
@@ -244,9 +252,12 @@ class ActiveStrategy {
 			$joinConds['pagelinks'] = array( 'left join',
 				array( 'pl_namespace=page_namespace', 'pl_title=page_title' ) );
 			$fields[] = 'count(distinct pl_from) as value';
+		} elseif ( $sortField == 'members' ) {
+			$tables[] = 'pagelinks';
+			$joinConds['pagelinks'] = array( 'left join',
+				array( 'pl_from=page_id', 'pl_namespace' => NS_USER ) );
+			$fields[] = 'count(distinct pl_title) AS value';
 		}
-		
-//		die( $db->selectSQLText( $tables, $fields, $conds, __METHOD__, $options, $joinConds ) );
 		
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
