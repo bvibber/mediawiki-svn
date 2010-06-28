@@ -140,6 +140,7 @@ $messages['csb'] = array(
  */
 $messages['cu'] = array(
 	'vector-simplesearch-search' => 'иска́ниѥ',
+	'vector-simplesearch-containing' => 'сѥ дрьжащи···',
 );
 
 /** Chuvash (Чӑвашла)
@@ -852,6 +853,7 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author PhiLiP
  * @author Shizhao
  */

@@ -2547,6 +2547,8 @@ Pro adjutar nos a meliorar los, per favor completa le questionario facultative h
  */
 $messages['id'] = array(
 	'prefswitch-desc' => 'Izinkan pengguna mengubah aturan preferensi',
+	'prefswitch-jswarning' => 'Ingatlah bahwa dengan adanya perubahan kulit ini, [[User:$1/$2.js|JavaScript $2]] Anda perlu disalin ke [[{{ns:user}}:$1/vector.js]] <!-- atau [[{{ns:user}}:$1/common.js]]--> agar dapat terus digunakan.',
+	'prefswitch-csswarning' => '[[User:$1/$2.css|Kulit $2 kustom]] Anda tak dapat lagi digunakan. Anda dapat menambahkan CSS untuk kulit vektor di [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Tidak',
 	'prefswitch-survey-submit-off' => 'Matikan fitur baru',
@@ -2579,6 +2581,37 @@ Harap pilih semua yang benar.',
 	'prefswitch-success-feedback' => 'Umpan balik Anda telah terkirim.',
 	'prefswitch-return' => '<hr style="clear:both">
 Kembali ke <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Berkas:VectorNavigation-en.png|401px|]]
+|-
+| Cuplikan antarmuka navigasi baru Wikipedia <small>[[Berkas:VectorNavigation-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Berkas:VectorEditorBasic-en.png|401px|]]
+|-
+| Cuplikan antarmuka penyuntingan halaman dasar <small>[[Berkas:VectorEditorBasic-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Berkas:VectorLinkDialog-en.png|401px|]]
+|-
+| Cuplikan kotak dialog baru untuk memasukkan pranala
+|}
+|}
+Tim Pengalaman Pengguna Yayasan Wikimedia telah bekerja bersama sukarelawan dari komunitas untuk membuat segalanya lebih mudah untuk Anda. Kami senang berbagi sejumlah perbaikan, termasuk tampilan dan gaya baru dan fitur penyuntingan yang lebih sederhana. Perubahan ini ditujukan untuk membuat segalanya lebih mudah bagi penyumbang baru untuk memulai pengalaman mereka, dan didasarkan kepada [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study pengujian kebergunaan yang dilakukan tahun lalu]. Memerbaiki kebergunaan proyek-proyek kami adalah sebuah keutamaan Yayasan Wikimedia dan kami akan terus berbagi pemutakhiran terkini selanjutnya. Untuk lebih lanjut, baca [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia kiriman blog] Wikimedia.
+
+=== Inilah yang telah kami ubah ===
+* '''Navigasi:''' Kami telah memerbaiki navigasi untuk membaca dan menyunting halaman. Sekarang, tab di atas masing-masing halaman lebih jelas memberitahukan apakah Anda ketika sedang menampilkan halaman atau halaman diskusi, dan ketika Anda sedang membaca atau menyunting halaman.
+* '''Perbaikan kotak peralatan penyuntingan:''' Kami telah mengatur ulang kotak peralatan penyuntingan untuk membuatnya lebih mudah digunakan. Sekarang, halaman penyuntingan lebih sederhana dan lebih intuitif.
+* '''Kotak pranala:''' Alat yang mudah digunakan yang membolehkan Anda menambahkan pranala ke halaman wiki lain serta situs luar.
+* '''Perbaikan pencarian:''' Kami telah memerbaiki saran pencarian untuk membawa Anda ke halaman yang sedang Anda cari lebih cepat.
+* '''Fitur baru lainnya:''' Kami juga memerkenalkan kotak tabel agar membuat tabel lebih mudah serta fitur cari dan gantikan untuk menyederhanakan penyuntingan halaman.
+* '''Logo Wikipedia:''' Kami telah memutakhirkan logo kami. Baca lebih lanjut di [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blog Wikimedia].",
 	'prefswitch-main-feedback' => '===Umpan balik?===
 Kami ingin mendengar pendapat Anda. Silakan kunjungi [[$1|halaman umpan balik]] kami atau, bila Anda tertarik pada usaha kami dalam memperbaiki perangkat lunak ini, kunjungi [http://usability.wikimedia.org wiki kebergunaan] kami untuk informasi lebih lanjut.',
 	'prefswitch-main-anon' => '=== Bawa saya kembali === 
@@ -3240,7 +3273,7 @@ $messages['ml'] = array(
 	'prefswitch-main-feedback' => '===അഭിപ്രായങ്ങൾ?===
 താങ്കളിൽ നിന്നവ കേൾക്കാൻ ഞങ്ങൾക്കതിയായ ആഗ്രഹമുണ്ട്. ദയവായി ഞങ്ങളുടെ [[$1|അഭിപ്രായങ്ങൾക്കുള്ള താൾ]] കാണുക അല്ലെങ്കിൽ,  സോഫ്റ്റ്‌‌വേറിലുള്ള പുതിയ മെച്ചപ്പെടുത്തലുകളെ കുറിച്ചറിയാൻ [http://usability.wikimedia.org ഉപയോഗ്യത വിക്കി] സന്ദർശിക്കുക.',
 	'prefswitch-main-anon' => '===എനിക്കിതു്‌ വേണ്ട===
-പുതിയ സവിശേഷതകൾ ഒഴിവാക്കാൻ താങ്കൾ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, [$1 ഇവിടെ ഞെക്കി] ആദ്യം ലോഗിൻ ചെയ്യുകയോ അംഗത്വമെടുക്കുകയോ ചെയ്യേണ്ടതാണ്.',
+പുതിയ സവിശേഷതകൾ ഒഴിവാക്കാൻ താങ്കൾ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, ആദ്യം [$1 ഇവിടെ ഞെക്കി] ലോഗിൻ ചെയ്യുകയോ അംഗത്വമെടുക്കുകയോ ചെയ്യേണ്ടതാണ്.',
 	'prefswitch-main-on' => '===എനിക്കിതു്‌ വേണ്ട!===
 [$2 ഇവിടെ ഞെക്കി പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക].',
 	'prefswitch-main-off' => '===അവ പരീക്ഷിച്ചു നോക്കൂ!===
@@ -4599,6 +4632,7 @@ Upang makatulong sa pagpapainam ng mga ito, mangyaring sulatan ang maaaring wala
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Srhat
  */
 $messages['tr'] = array(
 	'prefswitch' => 'Kullanılabilirlik Girişimi tercih anahtarı',
@@ -4647,10 +4681,12 @@ Lütfen uygun olanları seçin.',
 * '''Arama geliştirmeleri''': Aradığınız sayfaya daha çabuk ulaşmanız için arama önerilerini iyileştirdik.
 * '''Diğer yeni özellikler''':  Kolay tablo oluşturmak için bir tablo sihirbazı ve sayfa değiştirmeyi kolaylaştıran bul ve değiştir özelliği sunuyoruz.
 * '''Vikipedi bulmaca küresi''': Bulmaca küresini güncelleştirdik. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Vikimedya bloğunda] daha fazlasını okuyun.",
+	'prefswitch-main-feedback' => '===Geribildirim===
+Düşüncelerinizi duymak isteriz. Lütfen [[$1|geribildirim]] sayfamızı veya eğer yazılımı geliştirmek için sürdürülmekte olan çabalarımızla ilgileniyorsanız daha fazla bilgi için [http://usability.wikimedia.org kullanılabilirlik vikimizi] ziyaret edin.',
 	'prefswitch-main-anon' => '===Beni geri götür===
 Eğer yeni özellikleri kapatmak isterseniz, [$1 buraya tıklayın]. Öncelikle giriş yapmanız veya bir hesap oluşturmanız istenecektir.',
 	'prefswitch-main-on' => '===Beni geri götür!===
-Eğer yeni özellikleri kapatmak isterseniz, lütfen [$2 buraya tıklayın].',
+[$2 Yeni özellikleri kapatmak için buraya tıklayın]',
 	'prefswitch-main-off' => '===Deneyin!===
 Yeni özellikleri açmak için lütfen [$1 buraya tıklayın].',
 	'prefswitch-survey-intro-feedback' => 'Sizi dinlemek isteriz.

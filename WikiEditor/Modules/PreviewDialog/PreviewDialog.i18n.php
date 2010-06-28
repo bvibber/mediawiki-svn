@@ -286,6 +286,7 @@ $messages['fur'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'wikieditor-previewDialog-preference' => 'Activar o diálogo de vista previa',
 	'wikieditor-previewDialog-tab' => 'Vista previa',
 	'wikieditor-previewDialog-loading' => 'Cargando...',
 );

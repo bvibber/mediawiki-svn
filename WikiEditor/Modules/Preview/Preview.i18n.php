@@ -170,6 +170,13 @@ $messages['csb'] = array(
 	'wikieditor-preview-loading' => 'Ladowanié...',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'wikieditor-preview-changes-tab' => 'мѣ́нꙑ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

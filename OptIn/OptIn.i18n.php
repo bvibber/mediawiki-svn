@@ -1073,6 +1073,7 @@ Pokud se chcete o Iniciativě použitelnosti dozvědět více, navštivte [http:
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'optin-title-optedout' => '⁖ β ⁖ искоушє́ниѥ',
 	'optin-survey-yes' => 'да',
 	'optin-survey-no' => 'нѣ́тъ',
 );

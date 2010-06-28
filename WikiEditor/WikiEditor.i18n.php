@@ -119,11 +119,13 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Palapa
  */
 $messages['bs'] = array(
 	'wikieditor' => 'Napredni interfejs za uređivanje wikiteksta',
 	'wikieditor-desc' => 'Omogućava proširivi interfejs za uređivanje wikiteksta i mnoge module sa brojnim mogućnostima',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Učitavanje',
 );
 
 /** Catalan (Català)

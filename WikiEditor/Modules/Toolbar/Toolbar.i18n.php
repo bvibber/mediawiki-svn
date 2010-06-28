@@ -226,6 +226,7 @@ $messages['en'] = array(
  * @author Fryed-peach
  * @author Hamilton Abreu
  * @author Harald Khan
+ * @author Liangent
  * @author Lloffiwr
  * @author McDutchie
  * @author Minh Nguyen
@@ -306,7 +307,7 @@ This message does not support PLURAL on $1.',
 	'wikieditor-toolbar-tool-replace-regex' => 'A "regular expression" is a syntax to find strings based on patterns, for more see [[wikipedia:Regular expression|the Wikipedia article]].
 
 More notes:
-*It\'s mostly a programmer tool, which is sometimes exposed to normal users too. It\'s almost as an programming language, but it is used to describe different kinds of strings (sometimes also called patterns and pattern matching), and is often used to change (parts of) the strings too.',
+* "Regular expression" is mostly a programmer tool, which is sometimes exposed to normal users too. It\'s almost as an programming language, but it is used to describe different kinds of strings (sometimes also called patterns and pattern matching), and is often used to change (parts of) the strings too.',
 	'wikieditor-toolbar-tool-replace-close' => '{{Identical|Close}}',
 	'wikieditor-toolbar-tool-replace-success' => '[[file:Bulbgraph.png|left|22px]]
 This message does not support PLURAL on $1.',
@@ -2896,6 +2897,7 @@ $messages['cu'] = array(
 	'wikieditor-toolbar-tool-signature' => 'аѵто́графъ и нꙑ́нѣшьна врѣ́мѧ и дьнь',
 	'wikieditor-toolbar-tool-redirect' => 'прѣнаправлѥ́ниѥ',
 	'wikieditor-toolbar-tool-table' => 'та́влїѥ',
+	'wikieditor-toolbar-section-characters' => 'допльнител҄ьнꙑ сѷмволи',
 	'wikieditor-toolbar-characters-page-latin' => 'лати́ньска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-characters-page-latinextended' => 'лати́ньскꙑ а́ꙁъбоукьвє доложє́ниѥ',
 	'wikieditor-toolbar-characters-page-ipa' => 'М҃ФА',
@@ -2906,10 +2908,13 @@ $messages['cu'] = array(
 	'wikieditor-toolbar-characters-page-hebrew' => 'єврє́иска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-characters-page-bangla' => 'бангальска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-characters-page-telugu' => 'тєлоужьска а́ꙁъбоукꙑ',
+	'wikieditor-toolbar-characters-page-sinhala' => 'синхальска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-section-help' => 'по́мощь',
 	'wikieditor-toolbar-help-page-link' => 'съвѧ́ꙁи',
 	'wikieditor-toolbar-help-page-file' => 'дѣла́',
 	'wikieditor-toolbar-help-page-discussion' => 'бєсѣ́да',
+	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'аѵто́графъ и нꙑ́нѣшьна врѣ́мѧ и дьнь',
+	'wikieditor-toolbar-help-content-signature-description' => 'аѵто́графъ',
 );
 
 /** Welsh (Cymraeg)
@@ -16016,6 +16021,7 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -16132,7 +16138,7 @@ $messages['tr'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Sonrakini bul',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Sonrakini değiştir',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Tümünü değiştir',
-	'wikieditor-toolbar-tool-replace-close' => 'İptal',
+	'wikieditor-toolbar-tool-replace-close' => 'Kapat',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Aramanız hiçbir şeyle uyuşmuyor.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 değiştirme yapıldı.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Aramak için herhangi birşey girmediniz.',
