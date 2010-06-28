@@ -391,8 +391,8 @@ class RevisionReviewForm
 				'fi_rev_id'			=> $rev->getId(),
 				'fi_name'			=> $img_title->getDBkey(),
 				'fi_img_sha1'		=> $key,
-				// b/c: NULL becomes '' for old fi_img_timestamp def (non-strict)
-				'fi_img_timestamp' 	=> $timestamp ? $dbw->timestamp( $timestamp ) : null
+				// b/c: fi_img_timestamp DEFAULT either NULL (new) or '' (old)
+				'fi_img_timestamp' 	=> $timestamp ? $dbw->timestamp( $timestamp ) : 'DEFAULT'
 			);
 			$imgset[] = $fileIncludeData;
 
