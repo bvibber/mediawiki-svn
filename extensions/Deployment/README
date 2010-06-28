@@ -1,0 +1,17 @@
+== About ==
+
+...
+
+== Credits to other projects ==
+
+* WordPress:
+	http://www.wordpress.com/
+	A lot of the code in this extension is dirived from or inspired on WordPress code.
+
+* Deployment Framework 
+	http://smwforum.ontoprise.com/smwforum/index.php/Help:Deployment_Framework
+	Various aspects of this extension are based on Ontoprises Deployment Framework.
+	
+* PclZip
+	http://www.phpconcept.net
+	This extension includes a copy of PclZip.
