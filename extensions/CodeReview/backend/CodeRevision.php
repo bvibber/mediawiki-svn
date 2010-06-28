@@ -202,7 +202,8 @@ class CodeRevision {
 				'cr_timestamp' => $dbw->timestamp( $this->mTimestamp ),
 				'cr_message' => $this->mMessage,
 				'cr_status' => $this->mStatus,
-				'cr_path' => $this->mCommonPath ),
+				'cr_path' => $this->mCommonPath,
+				'cr_flags' => '' ),
 			__METHOD__,
 			array( 'IGNORE' )
 		);
