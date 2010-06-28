@@ -191,10 +191,10 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		//this is also strtolower in PagedTiffHandler::getThumbExtension
 		$this->assertEquals( strtolower( $metaArray['page_data'][1]['alpha'] ), 'false' );
 		$this->assertEquals( strtolower( $metaArray['page_data'][2]['alpha'] ), 'true' );
-		$this->assertEquals( $metaArray['exif']['Endianess'], 'MSB' );
+		$this->assertEquals( $metaArray['exif']['PhotometricInterpretation'], 2 ); //RGB
 		// formatMetadata
 		$formattedMetadata = $this->handler->formatMetadata( $this->image );
-		$this->assertEquals( $formattedMetadata['collapsed'][0]['value'], 'TIFF (Tagged Image File Format)' );
+		$this->assertEquals( $formattedMetadata['collapsed'][3]['value'], 'RGB' ); //XXX: brittle, index might change.
 	}
 
 }

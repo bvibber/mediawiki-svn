@@ -133,22 +133,13 @@ class PagedTiffImage {
 						$this->_meta['exif'][$data[1]] = $data[2];
 					}
 				} else {
-					$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
-						' -verbose ' .
-						wfEscapeShellArg( $this->mFilename ) . "[0]";
-
-					wfProfileIn( 'identify -verbose' );
-					wfDebug( __METHOD__ . ": $cmd\n" );
-					$dump = wfShellExec( $cmd, $retval );
-					wfProfileOut( 'identify -verbose' );
-
-					if ( $retval ) {
-						$data['errors'][] = "identify command failed: $cmd";
-						wfDebug( __METHOD__ . ": identify command failed: $cmd\n" );
-						//don't fail - we are missing info, but that's no reason to abort yet.
-					}
-
-					$this->_meta['exif'] = $this->parseVerbose( $dump );
+					wfDebug( __METHOD__ . ": using internal Exif( {$this->mFilename} )\n" );
+					$exif = new Exif( $this->mFilename );
+					$data = $exif->getFilteredData();
+					if ( $data ) {
+						$data['MEDIAWIKI_EXIF_VERSION'] = Exif::version();
+						$this->_meta['exif'] = $data;
+					} 
 				}
 				wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
 			}
@@ -205,10 +196,15 @@ class PagedTiffImage {
 			$data['page_data'][$entry['page']] = $entry;
 		}
 
+		
 		$dump = preg_replace( '/\[BEGIN\](.+?)\[END\]/si', '', $dump );
 		if ( strlen( $dump ) ) {
 			$errors = explode( "\n", $dump );
 			foreach ( $errors as $error ) {
+				$error = trim( $error );
+				if ( $error === '' )
+					continue;
+
 				$knownError = false;
 				foreach ( $wgTiffIdentifyRejectMessages as $msg ) {
 					if ( preg_match( $msg, trim( $error ) ) ) {
@@ -229,33 +225,6 @@ class PagedTiffImage {
 				}
 				if ( !$knownError ) {
 					$data['warnings'][] = $error;
-				}
-			}
-		}
-		return $data;
-	}
-
-	/**
-	 * helper function of retrieveMetaData().
-	 * parses shell return from identify-verbose-command into an array.
-	 */
-	protected function parseVerbose( $dump ) {
-		$data = array();
-		$dump = explode( "\n", $dump );
-		$lastwhite = 0;
-		$lastkey = false;
-		foreach ( $dump as $line ) {
-			if ( preg_match( '/^(\s*?)(\w([\w\s]+?)?):(.*?)$/sim', $line, $res ) ) {
-				if ( $lastwhite == 0 || strlen( $res[1] ) == $lastwhite ) {
-					if ( strlen( trim( $res[4] ) ) ) {
-						$data[trim( $res[2] )] = trim( $res[4] );
-					} else {
-						$data[trim( $res[2] )] = "  Data:\n";
-					}
-					$lastkey = trim( $res[2] );
-					$lastwhite = strlen( $res[1] );
-				} else {
-					$data[$lastkey] .= $line . "\n";
 				}
 			}
 		}

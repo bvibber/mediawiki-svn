@@ -250,15 +250,26 @@ class PagedTiffHandler extends ImageHandler {
 				return false;
 			}
 
-			if ( $to_html ) {
-				$errors = array();
-				foreach ( $errors_raw as $error ) {
-					$errors[] = htmlspecialchars( $error );
-				}
+			$errors = array();
+			foreach ( $errors_raw as $error ) {
+				if ( $error === false || $error === null || $error === 0 || $error === '' ) 
+					continue;
 
-				return join( '<br />', $errors );
+				$error = trim( $error );
+
+				if ( $error === '' ) 
+					continue;
+
+				if ( $to_html )
+					$error = htmlspecialchars( $error );
+
+				$errors[] = $error;
+			}
+
+			if ( $to_html ) {
+				return trim( join( '<br />', $errors ) );
 			} else {
-				return join( ";\n", $errors_raw );
+				return trim( join( ";\n", $errors ) );
 			}
 		}
 
@@ -533,19 +544,21 @@ class PagedTiffHandler extends ImageHandler {
 			$errors = PagedTiffHandler::joinMessages( $errors_raw );
 			self::addMeta( $result,
 				'collapsed',
-				'identify',
+				'metadata',
 				'error',
 				$errors
 			);
+			//XXX: need translation for <metadata-error>
 		}
-		if ( isset( $meta['warnings'] ) ) {
+		if ( !empty( $meta['warnings'] ) ) {
 			$warnings = PagedTiffHandler::joinMessages( $meta['warnings'] );
 			self::addMeta( $result,
 				'collapsed',
-				'identify',
+				'metadata',
 				'warning',
 				$warnings
 			);
+			//XXX: need translation for <metadata-warning>
 		}
 		return $result;
 	}
