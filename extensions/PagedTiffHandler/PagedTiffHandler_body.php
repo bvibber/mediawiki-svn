@@ -97,14 +97,16 @@ class PagedTiffHandler extends ImageHandler {
 
 	static function extCheck( $meta, &$error, $saveName = '' ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize;
-		if ( isset( $meta['errors'] ) ) {
+
+		$errors = pagedTiffHandler::getMetadataErrors( $meta );
+		if ( $errors ) {
 			$error = 'tiff_bad_file';
 
 			// NOTE: in future, it will become possible to pass parameters
-			// $error = array( 'tiff_bad_file' , join('<br />', $meta['errors']) );
+			// $error = array( 'tiff_bad_file' , pagedTiffHandler::joinMessages( $errors ) );
 			// does that work now? ^DK
 
-			wfDebug( __METHOD__ . ": $error ($saveName) " . join( '; ', $meta['errors'] ) . "\n" );
+			wfDebug( __METHOD__ . ": $error ($saveName) " . pagedTiffHandler::joinMessages( $errors, false ) . "\n" );
 			return false;
 		}
 		if ( ( strlen( serialize( $meta ) ) + 1 ) > $wgTiffMaxMetaSize ) {
@@ -228,6 +230,41 @@ class PagedTiffHandler extends ImageHandler {
 		return true;
 	}
 
+	static function getMetadataErrors( $metadata ) {
+		if ( is_string( $metadata ) ) {
+			$metadata = unserialize( $metadata );
+		}
+
+		if ( !$metadata ) {
+			return true;
+		} else if ( isset( $metadata[ 'errors' ] ) ) {
+			return $metadata[ 'errors' ];
+		} else {
+			return false;
+		}
+	}
+
+	static function joinMessages( $errors_raw, $to_html = true ) {
+		if ( is_array( $errors_raw ) ) {
+			if ( !$errors_raw ) {
+				return false;
+			}
+
+			if ( $to_html ) {
+				$errors = array();
+				foreach ( $errors_raw as $error ) {
+					$errors[] = htmlspecialchars( $error );
+				}
+
+				return join( '<br />', $errors );
+			} else {
+				return join( ";\n", $errors_raw );
+			}
+		}
+
+		return $errors_raw;
+	}
+
 	/**
 	 * Checks whether a thumbnail with the requested file type and resolution exists,
 	 * creates it if necessary, unless self::TRANSFORM_LATER is set in $flags.
@@ -235,15 +272,19 @@ class PagedTiffHandler extends ImageHandler {
 	 */
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgImageMagickConvertCommand, $wgTiffMaxEmbedFileResolution, $wgTiffUseVips, $wgTiffVipsCommand;
-		$metadata = $image->getMetadata();
 
-		if ( !$metadata ) {
-			if ( $metadata == - 1 ) {
-				return $this->doThumbError( $params['width'], $params['height'], 'tiff_error_cached' ); # #test this ^DK
-				// $wgCacheType = CACHE_DB
+		$meta = $this->getMetaArray( $image );
+		$errors = PagedTiffHandler::getMetadataErrors( $meta );
+
+		if ( $errors ) {
+			$errors = PagedTiffHandler::joinMessages( $errors );
+			if ( is_string( $errors ) ) {
+				return $this->doThumbError( $params, 'tiff_bad_file' ); #TODO: original error as param # #test this ^DK 
+			} else {
+				return $this->doThumbError( $params, 'tiff_no_metadata' );
 			}
-			return $this->doThumbError( $params['width'], $params['height'], 'tiff_no_metadata' );
 		}
+
 		if ( !$this->normaliseParams( $image, $params ) )
 			return new TransformParameterError( $params );
 
@@ -257,24 +298,23 @@ class PagedTiffHandler extends ImageHandler {
 			return new ThumbnailImage( $image, $dstUrl, $width, $height, $dstPath, $page );
 		}
 
-		$meta = unserialize( $metadata );
-
 		if ( !$this->extCheck( $meta, $error, $dstPath ) ) {
-			return $this->doThumbError( $params['width'], $params['height'], $error );
+			return $this->doThumbError( $params, $error );
 		}
 
-		if ( is_file( $dstPath ) )
+		if ( is_file( $dstPath ) ) {
 			return new ThumbnailImage( $image, $dstUrl, $width,
 				$height, $dstPath, $page );
+		}
 
 		if ( isset( $meta['page_data'][$page]['pixels'] ) && $meta['page_data'][$page]['pixels'] > $wgTiffMaxEmbedFileResolution )
-			return $this->doThumbError( $width, $height, 'tiff_sourcefile_too_large' );
+			return $this->doThumbError( $params, 'tiff_sourcefile_too_large' );
 
 		if ( ( $width * $height ) > $wgTiffMaxEmbedFileResolution )
-			return $this->doThumbError( $width, $height, 'tiff_targetfile_too_large' );
+			return $this->doThumbError( $params, 'tiff_targetfile_too_large' );
 
 		if ( !wfMkdirParents( dirname( $dstPath ) ) )
-			return $this->doThumbError( $width, $height, 'thumbnail_dest_directory' );
+			return $this->doThumbError( $params, 'thumbnail_dest_directory' );
 
 		if ( $wgTiffUseVips ) {
 			// tested in Linux
@@ -333,7 +373,28 @@ class PagedTiffHandler extends ImageHandler {
 	/**
 	 * Returns a new error message.
 	 */
-	protected function doThumbError( $width, $height, $msg ) {
+	protected function doThumbError( $params, $msg ) {
+		global $wgUser, $wgThumbLimits;
+
+		if ( empty( $params['width'] ) ) {
+			// no width/height in the parameter array
+			// only happens if we don't have image meta-data, and no
+			// size was specified by the user.
+			// we need to pick *some* size, and the preferred 
+			// thumbnail size seems sane.
+			$sz = $wgUser->getOption( 'thumbsize' );
+			$width = $wgThumbLimits[ $sz ];
+			$height = $width; // we don't have a hight, and no aspect ratio. make it square.
+		} else {
+			$width = intval( $params['width'] );
+
+			if ( !empty( $params['height'] ) ) {
+				$height = intval( $params['height'] );
+			} else {
+				$height = $width; // we don't have a hight, and no aspect ratio. make it square.
+			}
+		}
+
 		wfLoadExtensionMessages( 'PagedTiffHandler' );
 		return new MediaTransformError( 'thumbnail_error',
 			$width, $height, wfMsg( $msg ) );
@@ -383,8 +444,14 @@ class PagedTiffHandler extends ImageHandler {
 	 * If it returns false, Image will reload the metadata from the file and update the database
 	 */
 	function isMetadataValid( $image, $metadata ) {
+		
 		if ( !empty( $metadata ) && $metadata != serialize( array() ) ) {
 			$meta = unserialize( $metadata );
+			if ( isset( $meta['errors'] ) ) {
+				//metadata contains an error message, but it's valid. 
+				//don't try to re-render until the error is resolved!
+				return true; 
+			}
 			if ( isset( $meta['page_amount'] ) && isset( $meta['page_data'] ) ) {
 				return true;
 			}
@@ -461,28 +528,23 @@ class PagedTiffHandler extends ImageHandler {
 			);
 		}
 		$meta = unserialize( $metadata );
-		if ( isset( $meta['errors'] ) ) {
-			$errors = array();
-			foreach ( $meta['errors'] as $error ) {
-				$errors[] = htmlspecialchars( $error );
-			}
+		$errors_raw = PagedTiffHandler::getMetadataErrors( $meta );
+		if ( $errors_raw ) {
+			$errors = PagedTiffHandler::joinMessages( $errors_raw );
 			self::addMeta( $result,
 				'collapsed',
 				'identify',
 				'error',
-				join( '<br />', $errors )
+				$errors
 			);
 		}
 		if ( isset( $meta['warnings'] ) ) {
-			$warnings = array();
-			foreach ( $meta['warnings'] as $warning ) {
-				$warnings[] = htmlspecialchars( $warning );
-			}
+			$warnings = PagedTiffHandler::joinMessages( $meta['warnings'] );
 			self::addMeta( $result,
 				'collapsed',
 				'identify',
 				'warning',
-				join( '<br />', $warnings )
+				$warnings
 			);
 		}
 		return $result;

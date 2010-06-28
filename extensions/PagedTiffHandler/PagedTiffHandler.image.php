@@ -80,14 +80,7 @@ class PagedTiffImage {
 	 * meta['warnings'] = identify-warnings
 	 */
 	public function retrieveMetaData() {
-		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv, $wgMemc, $wgTiffErrorCacheTTL;
-
-		$imgKey = wfMemcKey( 'PagedTiffHandler-ThumbnailGeneration', $this->mFilename );
-		$isCached = $wgMemc->get( $imgKey );
-		if ( $isCached ) {
-			return - 1;
-		}
-		$wgMemc->add( $imgKey, 1, $wgTiffErrorCacheTTL );
+		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv;
 
 		if ( $this->_meta === null ) {
 			if ( $wgImageMagickIdentifyCommand ) {
@@ -106,7 +99,9 @@ class PagedTiffImage {
 				$dump = wfShellExec( $cmd, $retval );
 				wfProfileOut( 'identify' );
 				if ( $retval ) {
-					return false;
+					$data['errors'][] = "identify command failed: $cmd";
+					wfDebug( __METHOD__ . ": identify command failed: $cmd\n" );
+					return $data; //fail. we *need* that info
 				}
 				$this->_meta = $this->convertDumpToArray( $dump );
 				$this->_meta['exif'] = array();
@@ -124,6 +119,13 @@ class PagedTiffImage {
 					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
 					wfProfileOut( 'exiv2' );
+
+					if ( $retval ) {
+						$data['errors'][] = "exiv command failed: $cmd";
+						wfDebug( __METHOD__ . ": exiv command failed: $cmd\n" );
+						//don't fail - we are missing info, but that's no reason to abort yet.
+					}
+
 					$result = array();
 					preg_match_all( '/(\w+)\s+(.+)/', $dump, $result, PREG_SET_ORDER );
 
@@ -139,6 +141,13 @@ class PagedTiffImage {
 					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
 					wfProfileOut( 'identify -verbose' );
+
+					if ( $retval ) {
+						$data['errors'][] = "identify command failed: $cmd";
+						wfDebug( __METHOD__ . ": identify command failed: $cmd\n" );
+						//don't fail - we are missing info, but that's no reason to abort yet.
+					}
+
 					$this->_meta['exif'] = $this->parseVerbose( $dump );
 				}
 				wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
@@ -156,12 +165,15 @@ class PagedTiffImage {
 	 */
 	protected function convertDumpToArray( $dump ) {
 		global $wgTiffIdentifyRejectMessages, $wgTiffIdentifyBypassMessages;
+
+		$data = array();
 		if ( strval( $dump ) == '' ) {
-			return false;
+			$data['errors'][] = "no metadata";
+			return $data;
 		}
+
 		$infos = null;
 		preg_match_all( '/\[BEGIN\](.+?)\[END\]/si', $dump, $infos, PREG_SET_ORDER );
-		$data = array();
 		$data['page_amount'] = count( $infos );
 		$data['page_data'] = array();
 		foreach ( $infos as $info ) {
@@ -216,7 +228,7 @@ class PagedTiffImage {
 					}
 				}
 				if ( !$knownError ) {
-					$data['warning'][] = $error;
+					$data['warnings'][] = $error;
 				}
 			}
 		}
