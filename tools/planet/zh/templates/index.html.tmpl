@@ -25,10 +25,12 @@ function acceptlang(o) {
     var al = o.query.userinfo.acceptlang;
     for (var i = 0; i < al.length; i++) {
         var l = al[i].*.replace('_', '-').toLowerCase();
-        if ('zh-hans|zh-cn|zh-my|zh-sg'.indexOf(l)) {
+        if ('zh-hans|zh-cn|zh-my|zh-sg'.indexOf(l) != -1) {
             window.location.href = 'index.zh-hans.html';
-        } else if ('zh-hant|zh-hk|zh-mo|zh-tw'.indexOf(l)) {
+            break;
+        } else if ('zh-hant|zh-hk|zh-mo|zh-tw'.indexOf(l) != -1) {
             window.location.href = 'index.zh-hant.html';
+            break;
         }
     }
 }
