@@ -26,13 +26,21 @@ function efCategoryMultisortChineseInit() {
 	wfLoadExtensionMessages( 'CategoryMultisortChinese' );
 	
 	if ( in_array( 'zh-hans', $wgContLang->getVariants() ) ) {
-		$wgCategoryMultisortSortkeySettings['stroke-simplified'] = $wgCategoryMultisortSortkeySettings['stroke'];
-		$wgCategoryMultisortSortkeySettings['radical-simplified'] = $wgCategoryMultisortSortkeySettings['radical'];
+		if ( array_key_exists( 'stroke', $wgCategoryMultisortSortkeySettings ) ) {
+			$wgCategoryMultisortSortkeySettings['stroke-simplified'] = $wgCategoryMultisortSortkeySettings['stroke'];
+		}
+		if ( array_key_exists( 'radical', $wgCategoryMultisortSortkeySettings ) ) {
+			$wgCategoryMultisortSortkeySettings['radical-simplified'] = $wgCategoryMultisortSortkeySettings['radical'];
+		}
 	}
 	
 	if ( in_array( 'zh-hant', $wgContLang->getVariants() ) ) {
-		$wgCategoryMultisortSortkeySettings['stroke-traditional'] = $wgCategoryMultisortSortkeySettings['stroke'];
-		$wgCategoryMultisortSortkeySettings['radical-traditional'] = $wgCategoryMultisortSortkeySettings['radical'];
+		if ( array_key_exists( 'stroke', $wgCategoryMultisortSortkeySettings ) ) {
+			$wgCategoryMultisortSortkeySettings['stroke-traditional'] = $wgCategoryMultisortSortkeySettings['stroke'];
+		}
+		if ( array_key_exists( 'radical', $wgCategoryMultisortSortkeySettings ) ) {
+			$wgCategoryMultisortSortkeySettings['radical-traditional'] = $wgCategoryMultisortSortkeySettings['radical'];
+		}
 	}
 }
 
