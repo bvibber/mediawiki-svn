@@ -45,6 +45,7 @@ $wgAutoloadLocalClasses = array(
 	'ConstantDependency' => 'includes/CacheDependency.php',
 	'CreativeCommonsRdf' => 'includes/Metadata.php',
 	'Credits' => 'includes/Credits.php',
+	'CSSJanus' => 'includes/CSSJanus.php',
 	'DBABagOStuff' => 'includes/BagOStuff.php',
 	'DependencyWrapper' => 'includes/CacheDependency.php',
 	'DiffHistoryBlob' => 'includes/HistoryBlob.php',
