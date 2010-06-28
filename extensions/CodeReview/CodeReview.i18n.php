@@ -7496,6 +7496,7 @@ $messages['pt-br'] = array(
 	'code-load-diff' => 'Carregando diferenças…',
 	'code-notes' => 'comentários recentes',
 	'code-statuschanges' => 'mudanças de estado',
+	'code-mycommits' => 'minhas efetivações',
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',

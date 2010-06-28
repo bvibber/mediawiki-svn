@@ -213,7 +213,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'scanset-desc' => 'Diskouez a ra skeudennoù niverelaet adalek arventennoù CD/DVD Andreas Grosz',
+	'scanset-desc' => 'Diskouez skeudennoù niverelaet adalek arventennoù CD/DVD Andreas Grosz',
 	'scanset_no_name' => 'Fazi : Rankout a rit reiñ un anv d\'an hollad restroù niverelaet, da skouer &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Fazi : Mankout a ra ar strobad restroù niverelaet pe direizh eo.',
 	'scanset_unrecognised_index_format' => 'Fazi : dianav eo furmad ar meneger',

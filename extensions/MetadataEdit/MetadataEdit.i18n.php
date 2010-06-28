@@ -510,8 +510,10 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Borgx
+ * @author Farras
  */
 $messages['id'] = array(
+	'metadataedit-desc' => 'Letakkan kategori, pranala bahasa dan templat yang diizinkan di dalam kotak teks terpisah ketika menyunting halaman',
 	'metadata_help' => 'Metadata:',
 );
 

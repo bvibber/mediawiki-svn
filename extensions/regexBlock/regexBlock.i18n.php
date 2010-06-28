@@ -2694,6 +2694,17 @@ $messages['ru'] = array(
 	'right-regexblock' => 'Запретить участникам редактировать во всех вики этой вики-фермы',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'regexblock-form-reason' => 'Причіна:',
+	'regexblock-form-expiry' => 'Кінчіть:',
+	'regexblock-form-submit' => 'Заблоковати того хоснователя',
+	'regexblock-view-all' => 'Вшыткы',
+	'regexblock-view-go' => 'Іти на',
+);
+
 /** Sassaresu (Sassaresu)
  * @author Felis
  */

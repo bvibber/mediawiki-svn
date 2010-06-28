@@ -1515,6 +1515,13 @@ $messages['ru'] = array(
 	'right-spamregex' => 'блокирование спам-фраз с помощью [[Special:SpamRegex]]',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'spamregex-text' => '(Текст)',
+);
+
 /** Sassaresu (Sassaresu)
  * @author Felis
  */

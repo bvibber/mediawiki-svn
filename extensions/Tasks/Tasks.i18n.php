@@ -3252,7 +3252,16 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'tasks' => 'Задачі',
 	'tasks_here' => 'гев',
+	'tasks_table_header_page' => 'Сторінка',
+	'tasks_search_form_title' => 'Глядати',
+	'tasks_search_status' => 'Статус',
+	'tasks_next' => 'Далшы',
+	'tasks_sort' => 'Сортованя',
+	'tasks_ascending' => 'Найстаршый на початок',
+	'tasks_status_open' => 'Одкрыто',
+	'tasks_status_closed' => 'Заперто',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

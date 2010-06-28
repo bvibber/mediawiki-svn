@@ -4048,7 +4048,18 @@ $1',
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'sign-realname' => 'Мено:',
+	'sign-address' => 'Поштова адреса:',
+	'sign-city' => 'Місто:',
+	'sign-state' => 'Штат:',
+	'sign-zip' => 'Поштовый код',
+	'sign-country' => 'Країна:',
+	'sign-phone' => 'Телефонне чісло:',
+	'sign-bday' => 'Век:',
+	'sign-email' => 'Адреса електронічной пошты:',
 	'sign-viewfield-realname' => 'Мено',
+	'sign-viewfield-address' => 'Адреса',
+	'sign-viewfield-city' => 'Місто',
 	'sign-viewfield-state' => 'Штат',
 	'sign-viewfield-country' => 'Країна',
 	'sign-viewfield-zip' => 'Поштовый код',

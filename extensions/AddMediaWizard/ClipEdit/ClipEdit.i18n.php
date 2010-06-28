@@ -597,7 +597,9 @@ $messages['ia'] = array(
 	'mwe-clipedit-layout_left' => 'Disposition del imagine a sinistra',
 );
 
-/** Indonesian (Bahasa Indonesia) */
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
 $messages['id'] = array(
 	'mwe-clipedit-crop' => 'Potong gambar',
 	'mwe-clipedit-apply_crop' => 'Terapkan pemotongan gambar',
@@ -623,6 +625,9 @@ $messages['id'] = array(
 	'mwe-clipedit-inline-description' => 'Judul',
 	'mwe-clipedit-edit-video-tools' => 'Alat Penyuntingan Video:',
 	'mwe-clipedit-duration' => 'Durasi:',
+	'mwe-clipedit-layout' => 'Tampilan',
+	'mwe-clipedit-layout_right' => 'Tampilan gambar sisi kanan',
+	'mwe-clipedit-layout_left' => 'Tampilan gambar sisi kiri',
 );
 
 /** Igbo (Igbo)

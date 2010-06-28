@@ -99,6 +99,13 @@ $messages['cs'] = array(
 	'vector-collapsiblenav-more' => 'Další jazyky',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'vector-collapsiblenav-more' => 'дроу́ꙃи ѩꙁꙑци́',
+);
+
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Sir48

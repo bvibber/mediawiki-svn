@@ -187,6 +187,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'chemicalsources' => 'Hemijski izvori',
 	'chemicalsource-desc' => 'Dodaje oznaku <nowiki><chemform></nowiki> za hemijske formule',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Posebna stranica]] za hemijske izvore',
 	'chemFunctions_ListPage' => 'Hemijski izvori',
 	'chemFunctions_DataList' => 'Ispod je prikazan spisak linkova ka stranicama koje Vam mogu dati informacije o hemijskim supstancama koje ste tražili.
 <br /><br />

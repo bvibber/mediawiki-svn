@@ -273,7 +273,7 @@ $messages['br'] = array(
 	'todo-desc' => "Astenn arnod evit ur [[Special:Todo|roll hiniennel eus an traoù d'ober]]",
 	'todo-tab' => "d'ober",
 	'todo-new-queue' => 'nevez',
-	'todo-mail-subject' => "Graet eo bet an elfenn e roll an traoù d'ober eus $1",
+	'todo-mail-subject' => "Kraf kaset da benn e-touez roll traoù d'ober $1",
 	'todo-mail-body' => "Goulennet hoc'h eus resevout ur postel kemenn pa 'vo echuet gant un elfenn hoc'h eus lakaet e roll an traoù d'ober a zo da $1.
 
 Elfenn : $2
@@ -282,12 +282,12 @@ Kaset : $3
 Merket eo bet an elfenn-mañ evel echuet, gant an evezhiadenn-mañ :
 $4",
 	'todo-invalid-item' => 'Elfenn diank pe direizh',
-	'todo-update-else-item' => 'Ho klask hizivaat elfennoù unan all',
+	'todo-update-else-item' => 'O klask hizivaat elfennoù unan all',
 	'todo-unrecognize-type' => "Seurt n'eo ket bet anavezet",
 	'todo-user-invalide' => "N'eo ket mat an dra d'ober hoc'h eus lakaet pe ez eus un diouer outi pe n'en deus ket an implijer e roll eus an traoù d'ober.",
 	'todo-item-list' => "Hoc'h elfennoù",
 	'todo-no-item' => "N'eus netra da ober.",
-	'todo-invalid-owner' => "Perc'henn fall eus an elfenn-mañ",
+	'todo-invalid-owner' => "Direizh eo perc'henn an elfenn-mañ",
 	'todo-add-queue' => "Ouzhpennañ d'ar roll gortoz...",
 	'todo-move-queue' => "Kas d'ar roll gortoz...",
 	'todo-list-for' => "Roll traoù d'ober gant $1",
@@ -299,7 +299,7 @@ $4",
 	'todo-form-email' => "Evit resevout ur postel kemenn pa 'vo serret an elfenn, roit ho postel er framm da heul :",
 	'todo-form-submit' => 'Kas ar reked',
 	'right-todo' => 'Kaout ur roll "traoù d\'ober".',
-	'right-todosubmit' => "Bevenniñ gwirioù rolloù an traoù d'ober eus an implijerien",
+	'right-todosubmit' => "Strishaat gwirioù rolloù traoù d'ober an implijerien",
 );
 
 /** Bosnian (Bosanski)
@@ -1721,6 +1721,18 @@ $4',
 	'todo-form-submit' => 'Отправить запрос',
 	'right-todo' => 'возможность вести перечень задач',
 	'right-todosubmit' => 'ограничивать права участников на ведение перечня задач',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'todo-tab' => 'список задач',
+	'todo-new-queue' => 'нова',
+	'todo-list-change' => 'Змінити',
+	'todo-list-cancel' => 'Зрушыти',
+	'todo-new-item' => 'Нова задача',
+	'todo-form-details' => 'Детайлы:',
 );
 
 /** Sinhala (සිංහල)

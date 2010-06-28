@@ -216,7 +216,7 @@ Evit kaout ur roll eus ar raktresoù zo anezho, sellit ouzh [[MediaWiki:TodoTask
 	'tasklistprojdisp' => 'Diskwel',
 	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',
 	'tasklistnowguseprojects' => 'Termenet hoc\'h eus $wgUseProjects da "false", dre-se n\'hallit ket implijout ar bajenn-mañ.',
-	'tasklistnoprojects' => "Fazi : Seblantout a ra ho pefe gweredekaet '''\$wgUseProjects''', met n'eo ket bet krouet [[MediaWiki:TodoTasksValidProjects]]. Kit da welet  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 c'hemennadennoù staliñ] evit muic'h a ditouroù.",
+	'tasklistnoprojects' => "Fazi : Evit doare eo bet gweredekaet '''\$wgUseProjects''' ganeoc'h, met n'eo ket bet krouet [[MediaWiki:TodoTasksValidProjects]]. Kit da welet  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 ar C'hemennadennoù staliañ] evit kaout muioc'h a ditouroù.",
 	'tasklistemailbody' => ",
 
 Unan bennak en deus deverket deoc'h un trevell nevez war %s.

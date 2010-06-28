@@ -2013,6 +2013,14 @@ $messages['ru'] = array(
 	'qp_error_unique' => 'Опрос, имеющий тип unique(), не должен иметь больше ответов чем вопросов',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'qp_stats_link' => 'Штатістікы',
+	'qp_users_link' => 'Хоснователї',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

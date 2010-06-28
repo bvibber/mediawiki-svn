@@ -95,9 +95,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Centerlink
+ * @author Nike
  */
 $messages['fi'] = array(
-	'categorymultisort-desc' => 'Sallii luokkien katselemisen eri lajitteluavaimilla',
+	'categorymultisort-desc' => 'Mahdollistaa luokkien katselemisen eri lajitteluavaimilla',
 	'categorymultisort-defaultsortkey-name' => 'Oletus',
 	'categorymultisort-sortkey' => 'Lajitteluavain:',
 	'categorymultisort-go' => 'Siirry',
@@ -163,6 +164,15 @@ $messages['ia'] = array(
 	'categorymultisort-go' => 'Ir',
 	'categorymultisort-default-sortkey' => 'Clave de ordination predefinite:',
 	'prefs-category' => 'Categoria',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Baku',
+	'categorymultisort-go' => 'Tuju ke',
+	'prefs-category' => 'Kategori',
 );
 
 /** Japanese (日本語)

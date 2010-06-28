@@ -113,6 +113,13 @@ $messages['es'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Tradicional',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'categorymultisortchinese-desc' => 'Mahdollistaen luokkien katselemisen erilaisilla kiiinankielisille merkeille luonteenomaisilla lajitteluavaimilla',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Peter17

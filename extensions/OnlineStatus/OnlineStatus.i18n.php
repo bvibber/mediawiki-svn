@@ -155,15 +155,15 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'onlinestatus-desc' => "Ouzhpennañ a ran un arvenntenn evit diskouez ma 'z eo amañ an implijer pe get",
-	'onlinestatus-js-anon' => "Fazi : rankout a reoc'h bezañ luget evit implijout an arc'hweladur-mañ",
+	'onlinestatus-desc' => 'Ouzhpennañ a ra un arventenn da ziskouez hag-eñ emañ kevreet an implijer pe get',
+	'onlinestatus-js-anon' => "Fazi : ret eo deoc'h bezañ kevreet evit gellout implijout an arc'hweladur-mañ",
 	'onlinestatus-js-changed' => 'Cheñchet eo bet ho statud da « $1 »',
-	'onlinestatus-js-error' => 'Diposubl eo cheñch ar statud, n\'eo ket mat an dalvoudenn "$1"',
+	'onlinestatus-js-error' => 'Diposupl eo cheñch ar statud, n\'eo ket mat an dalvoudenn "$1"',
 	'onlinestatus-subtitle-offline' => 'Ezlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-subtitle-online' => 'Enlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-tab' => 'Statud',
 	'onlinestatus-toggles-desc' => 'Ho statud :',
-	'onlinestatus-toggles-explain' => "Aotreañ a ra an implijerien all da c'houzout ma 'z oc'h enlinenn pe get en ur sellet ouzh ho pajenn implijer.",
+	'onlinestatus-toggles-explain' => "Talvezout a ra deoc'h da ziskouez d'an implijerien all hag-eñ emaoc'h enlinenn pe get en ur sellet ouzh ho pajenn implijer.",
 	'onlinestatus-toggles-show' => 'Diskouez ma statud war ma fajenn implijer',
 	'onlinestatus-toggle-offline' => 'Ezlinenn',
 	'onlinestatus-toggle-online' => 'Enlinenn',

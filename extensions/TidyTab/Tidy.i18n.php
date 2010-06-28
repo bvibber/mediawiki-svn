@@ -392,6 +392,13 @@ $messages['ru'] = array(
 	'untidy' => 'Разупорядочить',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'tidy' => 'Прятати',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

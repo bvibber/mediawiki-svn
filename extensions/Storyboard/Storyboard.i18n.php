@@ -1572,6 +1572,18 @@ $messages['ru'] = array(
 	'storyboard-storydeletionconfirm' => 'Вы уверены, что хотите удалить эту историю?',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'storyboard-authorname' => 'Мено автора',
+	'storyboard-authorlocation' => 'Місце де жыє автор',
+	'storyboard-authoremail' => 'Авторова адреса електронічной пошты',
+	'storyboard-language' => 'Язык',
+	'storyboard-done' => 'Готово',
+	'storyboard-working' => 'Робить ся...',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

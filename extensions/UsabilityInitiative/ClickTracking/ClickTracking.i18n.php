@@ -1628,6 +1628,13 @@ $messages['ru'] = array(
 	'ct-update-table' => 'Обновить таблицу',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'ct-and' => 'і',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
