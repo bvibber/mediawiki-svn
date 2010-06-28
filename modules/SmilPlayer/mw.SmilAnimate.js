@@ -86,9 +86,7 @@ mw.SmilAnimate.prototype = {
 					return true;
 				}
 			}		
-		}
-		if( 
-		
+		}		
 		
 		// Check if we need to do a smilText clear: 
 		if( nodeName.toLowerCase() == 'smiltext' ){		
@@ -116,18 +114,31 @@ mw.SmilAnimate.prototype = {
 	* @param {Element} smilElement Element to be transformed
 	* @param {float} animateTime The relative time to be transformed. 
 	*/
-	transformElement: function( smilElement, animateTime ) {
-		var nodeName = $j( smilElement ).get(0).nodeName ;
-		
+	transformElement: function( smilElement, animateTime ) {		
 		//mw.log("transformForTime: " + nodeName  + ' t:' + animateTime );
-		switch( nodeName.toLowerCase() ){
+		switch( this.smil.getRefType( smilElement ) ){
 			case 'smiltext':
-				return this.transformTextForTime( smilElement, animateTime);
+				return this.transformTextForTime( smilElement, animateTime );
 			break;
 			case 'img': 
-				return this.transformImageForTime( smilElement, animateTime);
+				return this.transformImageForTime( smilElement, animateTime );
+			break;
+			case 'video':
+				return this.transformVideoForTime( smilElement, animateTime );
 			break;
 		}
+	},
+	/**
+	 * Transform video for time
+	 */
+	transformVideoForTime: function( smilElement, animateTime ){
+		// get the video element 
+		var vid = $j ( '#' + this.smil.getAssetId( smilElement ) ).get(0);
+		// Check for "start offset" 
+		
+		// Run a seek and ( buffer automatically registers ready points )
+		mw.log( "transformVideoForTime:: ct:" +vid.currentTime + ' should be: ' + animateTime );
+		vid.currentTime =  animateTime;
 	},
 	
 	/**

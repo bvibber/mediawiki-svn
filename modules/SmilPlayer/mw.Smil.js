@@ -192,9 +192,7 @@ mw.Smil.prototype = {
 		}
 		return this.duration;		
 	},
-	
-	
-	
+		
 	/**
 	 * Some Smil Utility functions
 	 */
@@ -209,6 +207,10 @@ mw.Smil.prototype = {
 		if(! $j( smilElement ).attr('id') ) {
 			mw.log("Error: getAssetId smilElement missing id " ) ;
 			return false; 
+		}
+		if( ! this.embedPlayer ||  ! this.embedPlayer.id ) {
+			mw.log("Error: getAssetId missing parent embedPlayer");
+			return false;
 		}
 		return this.embedPlayer.id + '_' + $j( smilElement ).attr('id');
 	},
@@ -227,8 +229,12 @@ mw.Smil.prototype = {
 	 * Get the smil resource type based on nodeName and type attribute
 	 */
 	getRefType: function( smilElement ) {		
+		if( $j( smilElement ).length == 0 ){
+			mw.log('Error: Smil::getRefType on empty smilElement');
+			return;
+		}
 		// Get the smil type
-		var smilType = $j( smilElement ).get(0).nodeName.toLowerCase();
+		var smilType = $j( smilElement ).get(0).nodeName.toLowerCase();	
 		if( smilType == 'ref' ){
 			// If the smilType is ref, check for a content type
 			switch( $j( smilElement ).attr( 'type' ) ) {
