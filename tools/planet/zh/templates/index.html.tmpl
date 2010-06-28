@@ -19,6 +19,22 @@
 <TMPL_IF feedtype>
 <link rel="alternate" href="<TMPL_VAR feed ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">" type="application/<TMPL_VAR feedtype>+xml">
 </TMPL_IF>
+<script type="text/javascript">
+<!--
+function acceptlang(o) {
+    var al = o.query.userinfo.acceptlang;
+    for (var i = 0; i < al.length; i++) {
+        var l = al[i].*.replace('_', '-').toLowerCase();
+        if ('zh-hans|zh-cn|zh-my|zh-sg'.indexOf(l)) {
+            window.location.href = 'index.zh-hans.html';
+        } else if ('zh-hant|zh-hk|zh-mo|zh-tw'.indexOf(l)) {
+            window.location.href = 'index.zh-hant.html';
+        }
+    }
+}
+//-->
+</script>
+<script src="http://prototype.wikimedia.org/en-wp/api.php?action=query&meta=userinfo&uiprop=acceptlang&format=json&callback=acceptlang"></script>
 </head>
 
 <body>
