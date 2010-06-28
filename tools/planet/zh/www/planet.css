@@ -5,6 +5,11 @@ body {
 	font-size: smaller;
 }
 
+div.zh-langlinks {
+	float:right;
+	margin-right:1em;
+}
+
 a img {
 	border: 0;
 }
