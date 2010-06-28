@@ -2123,12 +2123,12 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			*/
 			$.fn.loadingSpinner = function( ) {
 				if ( this ) {
-          var csstransforms = false;
-          if ( csstransforms ) {
+          //var csstransforms = false;
+          if ( Modernizr.csstransforms ) {
             var barNumber = 7;
             var barContent = '';
             var barSpacingDegrees = 360 / barNumber;
-            var barOpacityDelta = 1 / (barNumber)
+            var barOpacityDelta = 1 / (barNumber);
             for (i = 1; i < barNumber+1; i++) {
               barContent += '<div class="bar' + i + '" style="-moz-transform:rotate(' + (i-1) * barSpacingDegrees + 'deg) translate(0, -40px);-webkit-transform:rotate(' + (i-1) * barSpacingDegrees + 'deg) translate(0, -40px);opacity:' + (i) * barOpacityDelta + '; background:#000"/>';
             }
