@@ -15,6 +15,6 @@
  * 
  * @author Jeroen De Dauw
  */
-class CoreInstaller extends Installer {
+class CoreInstaller extends DeployInstaller {
 	
 }

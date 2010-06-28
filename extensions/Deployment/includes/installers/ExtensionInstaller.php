@@ -15,6 +15,6 @@
  * 
  * @author Jeroen De Dauw
  */
-class ExtensionInstaller extends Installer {
+class ExtensionInstaller extends DeployInstaller {
 	
 }

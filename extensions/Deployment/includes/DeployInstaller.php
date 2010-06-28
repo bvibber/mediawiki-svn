@@ -1,7 +1,7 @@
 <?php
 
 /**
- * File holding the Installer class.
+ * File holding the DeployInstaller class.
  * Based on the WordPress 3.0 class WP_Upgrader.
  *
  * @file Installer.php
@@ -22,24 +22,39 @@
  * 
  * @author Jeroen De Dauw
  */
-abstract class Installer {
+abstract class DeployInstaller {
 	
+	/**
+	 * Constructor
+	 */
 	public function __construct() {
-		
-	}
+		// TODO
+	}	
 	
+	/**
+	 * Initiates the installation procedure.
+	 */
 	public function doInstallation() {
 		
 	}
 	
+	/**
+	 * Downloads a package needed for the installation.
+	 */
 	protected function downloadPackage() {
 		
 	}
 	
+	/**
+	 * Unpacks a package needed for the installation.
+	 */
 	protected function unpackPackage() {
 		
 	}
 	
+	/**
+	 * Installs a package.
+	 */
 	protected function installPackage() {
 		
 	}
