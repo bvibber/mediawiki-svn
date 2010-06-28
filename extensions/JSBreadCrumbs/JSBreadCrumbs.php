@@ -17,8 +17,9 @@
 # http://www.gnu.org/copyleft/gpl.html
 
 $wgJSBreadCrumbsMaxCrumbs = 5;
-$wgJSBreadCrumbsSeparator = "»";
-$wgJSBreadCrumbsCookiePath = "/";
+//BreadCrumbsSeparator default set via localization
+$wgJSBreadCrumbsSeparator = '';
+$wgJSBreadCrumbsCookiePath = '/';
 
 // Sets Credits
 $wgExtensionCredits['other'][] = array(

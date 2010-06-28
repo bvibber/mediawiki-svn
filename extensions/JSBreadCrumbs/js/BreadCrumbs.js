@@ -10,6 +10,9 @@ $j(document).ready( function() {
     if ( typeof wgJSBreadCrumbsCookiePath == "undefined" ) {
         wgJSBreadCrumbsCookiePath = "/";
     }
+    if ( typeof wgJSBreadCrumbsLeadingDescription == "undefined" ) {
+        wgJSBreadCrumbsLeadingDescription = "Navigation trail";
+    }
 
     var titleState = ( $j.cookie( 'mwext-bc-title' ) || "" ).split( wgJSBreadCrumbsSeparator );
     var urlState = ( $j.cookie( 'mwext-bc-url' ) || "" ).split( wgJSBreadCrumbsSeparator );
@@ -30,6 +33,8 @@ $j(document).ready( function() {
         urlState.splice( matchTitleIndex, 1 );
     }
  
+    mwextbc.append( wgJSBreadCrumbsLeadingDescription );
+
     for ( var i = 0; i < titleState.length; i++ ) {
         mwextbc.append( '<a href="' + urlState[i] + '">' + titleState[i] + '</a> ' + wgJSBreadCrumbsSeparator + ' ' );
     }

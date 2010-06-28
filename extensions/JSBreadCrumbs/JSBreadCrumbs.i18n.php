@@ -13,4 +13,6 @@ $messages = array();
  */
 $messages['en'] = array(
 	'jsbreadcrumbs-desc' => 'Adds a trail of breadcrumbs below the tab bar.',
+	'jsbreadcrumbs-separator' => '»',
+	'jsbreadcrumbs-leading-description' => 'Navigation trail',
 );
