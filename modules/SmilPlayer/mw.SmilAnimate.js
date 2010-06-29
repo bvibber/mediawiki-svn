@@ -231,7 +231,7 @@ mw.SmilAnimate.prototype = {
 	* @param {Element} smilImgElement The smil element to search for child animate 
 	* @param {float} animateTime The target animation time 
 	* @param {function=} callback Optional function to call with elements in range. 
-	* return @bollean true if animate elements are in range false if none found
+	* return boolean true if animate elements are in range false if none found
 	*/
 	getSmilAnimateInRange: function( smilImgElement, animateTime, callback ){
 		var _this = this;
