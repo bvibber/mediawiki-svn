@@ -164,7 +164,7 @@ $j(document).ready( function() {
 			var id = $j(this).attr( 'id' );
 			var state = $j.cookie( 'vector-nav-' + id );
 			// In the case that we are not showing the new version, let's show the languages by default
-			if ( state == 'true' || ( state == null && i < 1 ) || ( version == 1 && id == 'p-lang' ) ) {
+			if ( state == 'true' || ( state == null && i < 1 ) || ( state == null && version == 1 && id == 'p-lang' ) ) {
 				$j(this)
 					.addClass( 'expanded' )
 					.find( 'div.body' )
