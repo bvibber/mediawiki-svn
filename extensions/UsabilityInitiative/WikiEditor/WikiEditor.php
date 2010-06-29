@@ -24,7 +24,7 @@ $wgWikiEditorModules = array(
 	'toolbar' => array( 'global' => false, 'user' => true ), // Order is significant: makes beta prefs appear before labs prefs
 	'highlight' => array( 'global' => false, 'user' => true ),
 	'preview' => array( 'global' => false, 'user' => true ),
-	'previewDialog' => array( 'global' => true, 'user' => true ),
+	'previewDialog' => array( 'global' => false, 'user' => false ),
 	'publish' => array( 'global' => false, 'user' => true ),
 	'toc' => array( 'global' => false, 'user' => true ),
 	'templateEditor' => array( 'global' => false, 'user' => true ),
