@@ -101,7 +101,7 @@ var default_firefogg_options = {
 * NOTE: we should have the firefogg binding work the same way as 
 * the upload form binding. 
 */
-( function( $ ) { 
+( function( $ ) {
 	$.fn.firefogg = function( options ) {
 		if ( !options ){
 			options = { };
@@ -124,7 +124,7 @@ var default_firefogg_options = {
 } )( jQuery );
 
 
-mw.Firefogg = function( options ) {	
+mw.Firefogg = function( options ) {
 	return this.init( options );
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
@@ -140,13 +140,13 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
         'noUpscaling'    : true
 	},
 	
-	// Lazy initialised, use getFirefogg()
+	// Lazy initialized, use getFirefogg()
 	have_firefogg: null, 
 	
-	// Lazy initialised, use getEncoderSettings()
+	// Lazy initialized, use getEncoderSettings()
 	current_encoder_settings: null, 
 	
-	// Lazy initialised, use getSourceFileInfo()
+	// Lazy initialized, use getSourceFileInfo()
 	sourceFileInfo: null, 
 	
 	// Valid ogg extensions
