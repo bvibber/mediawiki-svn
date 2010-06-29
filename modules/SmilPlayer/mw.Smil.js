@@ -114,8 +114,8 @@ mw.Smil.prototype = {
 		// Update the render target with bodyElements for the requested time
 		this.getBody().renderTime( time );
 				
-		// Wait until buffer is ready
-	    this.getBuffer().timeIsBuffered( time, callback );
+		// Wait until buffer is ready and run the callback
+	    this.getBuffer().addAssetsReadyCallback( callback );
 	},
 	
 	/**

@@ -453,7 +453,7 @@ mw.SmilLayout.prototype = {
 			'xx-large' : '1.72em'
 		}				
 		if( sizeMap[ cssAttributes['font-size'] ] ){
-			cssAttributes['font-size'] = cssAttributes[ textCss['font-size'] ];
+			cssAttributes['font-size'] = sizeMap[ cssAttributes['font-size'] ];
 		}
 		
 		// If the font size is pixel based parent span will have no effect, 

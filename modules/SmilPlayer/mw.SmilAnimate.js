@@ -128,6 +128,7 @@ mw.SmilAnimate.prototype = {
 			break;
 		}
 	},
+	
 	/**
 	 * Transform video for time
 	 */
@@ -135,14 +136,16 @@ mw.SmilAnimate.prototype = {
 		// get the video element 
 		var vid = $j ( '#' + this.smil.getAssetId( smilElement ) ).get(0);
 		// Check for "start offset" 
-		
-		// Run a seek and ( buffer automatically registers ready points )
+				
 		mw.log( "transformVideoForTime:: ct:" +vid.currentTime + ' should be: ' + animateTime );
-		vid.currentTime =  animateTime;
+		// Register a buffer ready callback
+		this.smil.getBuffer().videoBufferSeek( smilElement, animateTime, function(){			
+			mw.log( "transformVideoForTime:: seek complete ");
+		} );
 	},
 	
 	/**
-	* transformTextForTime 
+	* Transform Text For Time 
 	*/
 	transformTextForTime: function( textElement, animateTime ) {
 		//mw.log("transformTextForTime:: " + animateTime );
