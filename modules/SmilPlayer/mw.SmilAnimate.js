@@ -73,12 +73,12 @@ mw.SmilAnimate.prototype = {
 	* Quickly check if a given smil element needs to be updated for a given time delta
 	*/
 	checkForTransformUpdate: function( smilElement, animateTime, deltaTime ){
-		// Get the node type: 
-		var nodeName = $j( smilElement ).get(0).nodeName;
+		// Get the node type: 		
+		var refType = this.smil.getRefType( smilElement )
 		
 		// NOTE: our img node check sort of avoids deltaTime check but its assumed to not matter much
 		// since any our supported keyframe granularity will be equal to deltaTime ie 1/4 a second. 		
-		if( nodeName.toLowerCase() == 'img' ){
+		if( refType == 'img' ){
 			// Confirm a child animate is in-range
 			if( $j( smilElement ).find( 'animate' ).length ) {
 				// Check if there are animate elements in range: 				
@@ -89,7 +89,7 @@ mw.SmilAnimate.prototype = {
 		}		
 		
 		// Check if we need to do a smilText clear: 
-		if( nodeName.toLowerCase() == 'smiltext' ){		
+		if( refType == 'smiltext' ){		
 			var el = $j( smilElement ).get(0);
 			for ( var i=0; i < el.childNodes.length; i++ ) {
 				var node = el.childNodes[i];
@@ -133,16 +133,28 @@ mw.SmilAnimate.prototype = {
 	 * Transform video for time
 	 */
 	transformVideoForTime: function( smilElement, animateTime ){
-		// get the video element 
-		var vid = $j ( '#' + this.smil.getAssetId( smilElement ) ).get(0);
-		// Check for "start offset" 
+		// Get the video element 
+		var vid = $j ( '#' + this.smil.getAssetId( smilElement ) ).get( 0 );		
+				
+		// Check for "start offset"					
 				
 		mw.log( "transformVideoForTime:: ct:" +vid.currentTime + ' should be: ' + animateTime );
 		// Register a buffer ready callback
-		this.smil.getBuffer().videoBufferSeek( smilElement, animateTime, function(){			
+		this.smil.getBuffer().videoBufferSeek( smilElement, animateTime, function() {			
 			mw.log( "transformVideoForTime:: seek complete ");
-		} );
+		});
 	},
+	
+	// Transitions should probably be moved to seperate class
+	updateTransitions: function( smilElement, animateTime ){
+		if( $j(smilElement).attr( 'transIn' ) ){	
+			// check if in range
+			if(  $j(smilElement).attr( 'transIn' )
+		}
+		if( $j(smilElement).attr( 'transOut' ) ){
+		
+		}	
+	}, 
 	
 	/**
 	* Transform Text For Time 
@@ -214,14 +226,14 @@ mw.SmilAnimate.prototype = {
 				// just a hack for now ( should read from previous animation or from source attribute
 				//this.updateElementLayout( smilImgElement, { 'top':1,'left':1,'width':1, 'height':1 } );
 				var $target = $j( '#' + this.smil.getAssetId( smilImgElement ));
-				$target.css( { 
+				$target.css( {
 					'top' : '0px',
 					'left'  :'0px',
 					'width' : '100%', 
 					'height' : '100%' 
 				} );
 			}
-			// xxx should check for transform to previous 		
+			// xxx should check for transform to previous 
 		}
 	},
 	
@@ -313,7 +325,7 @@ mw.SmilAnimate.prototype = {
 		
 		var htmlAsset = $j( '#' + this.smil.getAssetId( smilElement ) ).get(0);
 		
-		// xxx best way may be to use canvaus and a fitting system. 
+		// xxx best way may be to use canvas and a fitting system. 
 		
 		// Setup target height width based target region size	
 		var fullWidth = $target.parents('.smilRegion').width() ;
@@ -356,6 +368,7 @@ mw.SmilAnimate.prototype = {
 	
 	/**
 	* getInterpolatePointsValue
+	*
 	* @param animatePoints Set of points to be interpolated 
 	* @param relativeAnimationTime Time to be animated
 	* @param duration 
@@ -386,4 +399,5 @@ mw.SmilAnimate.prototype = {
 		}
 		return targetValue;
 	}	
+		
 }
