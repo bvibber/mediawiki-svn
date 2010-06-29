@@ -20,7 +20,7 @@ class UsabilityInitiativeHooks {
 			'raw' => array(
 				array( 'src' => 'css/suggestions.css', 'version' => 15 ),
 				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 12 ),
-				array( 'src' => 'css/vector.expandableSearch.css', 'version' => 7 ),
+				array( 'src' => 'css/vector.expandableSearch.css', 'version' => 8 ),
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 2 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 14 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 29 ),
@@ -31,11 +31,11 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 111 ),
+				array( 'src' => 'css/combined.css', 'version' => 112 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 111 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 112 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -85,7 +85,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins.combined.js', 'version' => 445 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 452 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 453 ),
 			),
 		),
 	);
