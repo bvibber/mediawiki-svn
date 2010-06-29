@@ -128,10 +128,10 @@ mw.Firefogg = function( options ) {
 	return this.init( options );
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
-	// Minnium version of firefogg allowed
+	// Minimum version of firefogg allowed
 	min_firefogg_version: '1.1.0',
 	
-	// The default encoder seetings 
+	// The default encoder settings 
 	// NOTE: should be mw.getConfig based 
 	default_encoder_settings: { 
 		'maxSize'        : '400',

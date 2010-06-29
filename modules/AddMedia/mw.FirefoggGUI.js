@@ -68,7 +68,8 @@ mw.addMessages({
 	"fogg-license-title" : "License",
 	"fogg-license-help" : "The license of the clip (preferably a Creative Commons URL).",
 	"fogg-contact-title" : "Contact",
-	"fogg-contact-help" : "Contact link"
+	"fogg-contact-help" : "Contact link",
+	"fogg-gui-title" : "Make web video"
 });
 
 /**
