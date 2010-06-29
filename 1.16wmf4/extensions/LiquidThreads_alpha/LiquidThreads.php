@@ -66,6 +66,10 @@ $wgHooks['ModifyExportQuery'][] = 'LqtHooks::modifyExportQuery';
 $wgHooks['OAIFetchRowsQuery'][] = 'LqtHooks::modifyOAIQuery';
 $wgHooks['OAIFetchRecordQuery'][] = 'LqtHooks::modifyOAIQuery';
 
+// Import-related
+$wgHooks['ImportHandlePageXMLTag'][] = 'LqtHooks::handlePageXMLTag';
+$wgHooks['AfterImportPage'][] = 'LqtHooks::afterImportPage';
+
 // Deletion
 $wgHooks['ArticleDeleteComplete'][] = 'LqtDeletionController::onArticleDeleteComplete';
 $wgHooks['ArticleRevisionUndeleted'][] = 'LqtDeletionController::onArticleRevisionUndeleted';
@@ -96,6 +100,18 @@ $wgHooks['UserIsBlockedFrom'][] = 'LqtHooks::userIsBlockedFrom';
 
 // Protection
 $wgHooks['TitleGetRestrictionTypes'][] = 'LqtHooks::getProtectionTypes';
+
+// New User Messages
+$wgHooks['SetupNewUserMessageSubject'][] = 'LqtHooks::setupNewUserMessageSubject';
+$wgHooks['SetupNewUserMessageBody'][] = 'LqtHooks::setupNewUserMessageBody';
+$wgHooks['FormatUserMessage'][] = 'LqtHooks::formatUserMessage';
+
+// User Message
+$wgHooks['SetupUserMessageArticle'][] = 'LqtHooks::setupUserMessageArticle';
+$wgHooks['AfterUserMessage'][] = 'LqtHooks::afterUserMessage';
+
+// JS variables
+$wgHooks['MakeGlobalVariablesScript'][] = 'LqtHooks::onMakeGlobalVariablesScript';
 
 // Special pages
 $wgSpecialPages['MoveThread'] = 'SpecialMoveThread';

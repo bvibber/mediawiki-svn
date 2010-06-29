@@ -41,7 +41,7 @@ class Thread {
 	protected $rootRevision;
 
 	/* Flag about who has edited or replied to this thread. */
-	protected $editedness;
+	public $editedness;
 	protected $editors = null;
 
 	protected $replies;
@@ -122,6 +122,10 @@ class Thread {
 
 	function insert() {
 		$this->dieIfHistorical();
+		
+		if ( $this->id() ) {
+			throw new MWException( "Attempt to insert a thread that already exists." );
+		}
 
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -137,7 +141,7 @@ class Thread {
 		}
 
 		// Touch the talk page, too.
-		$this->article()->getTitle()->invalidateCache();
+		$this->getTitle()->invalidateCache();
 
 		$this->dbVersion = clone $this;
 		unset( $this->dbVersion->dbVersion );
@@ -195,8 +199,8 @@ class Thread {
 		switch( $change_type ) {
 			case Threads::CHANGE_MOVED_TALKPAGE:
 				$log->addEntry( 'move', $this->title(), $reason,
-					array( $original->article()->getTitle(),
-						$this->article()->getTitle() ) );
+					array( $original->getTitle(),
+						$this->getTitle() ) );
 				break;
 			case Threads::CHANGE_SPLIT:
 				$log->addEntry( 'split', $this->title(), $reason,
@@ -264,7 +268,7 @@ class Thread {
 		}
 
 		// Touch the talk page, too.
-		$this->article()->getTitle()->invalidateCache();
+		$this->getTitle()->invalidateCache();
 
 		$this->dbVersion = clone $this;
 		unset( $this->dbVersion->dbVersion );
@@ -277,6 +281,11 @@ class Thread {
 
 		if ( !$id ) {
 			$id = $dbw->nextSequenceValue( 'thread_thread_id' );
+		}
+		
+		// If there's no root, bail out with an error message
+		if ( ! $this->rootId && ! ($this->type & Threads::TYPE_DELETED) ) {
+			throw new MWException( "Non-deleted thread saved with empty root ID" );
 		}
 
 		// Reflect schema changes here.
@@ -353,7 +362,7 @@ class Thread {
 
 		$dbr = wfGetDB( DB_MASTER );
 
-		$oldTitle = $this->article()->getTitle();
+		$oldTitle = $this->getTitle();
 		$newTitle = $title;
 
 		$new_articleNamespace = $title->getNamespace();
@@ -652,17 +661,17 @@ class Thread {
 		}
 		
 		// Pull list of users who have edited
-		if ( count($loadEditorsFor) ) {
+		if ( count( $loadEditorsFor ) ) {
 			$res = $dbr->select( 'revision', array( 'rev_user_text', 'rev_page' ),
-				array( 'rev_page' => array_keys($loadEditorsFor),
-					'rev_parent_id != '.$dbr->addQuotes(0) ),
+				array( 'rev_page' => array_keys( $loadEditorsFor ),
+					'rev_parent_id != ' . $dbr->addQuotes( 0 ) ),
 					__METHOD__ );
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				$pageid = $row->rev_page;
 				$editor = $row->rev_user_text;
 				$t = $loadEditorsFor[$pageid];
 				
-				$t->addEditor($editor);
+				$t->addEditor( $editor );
 			}
 		}
 
@@ -784,7 +793,7 @@ class Thread {
 		// Old versions also sometimes store the thread page for trace threads as the
 		//  article, not as the root.
 		//  Trying not to exacerbate this by moving it to be the 'Thread talk' page.
-		$articleTitle = $this->article()->getTitle();
+		$articleTitle = $this->getTitle();
 		global $wgLiquidThreadsMigrate;
 		if ( !LqtDispatch::isLqtPage( $articleTitle ) && !$articleTitle->isTalkPage() &&
 				LqtDispatch::isLqtPage( $articleTitle->getTalkPage() ) &&
@@ -805,8 +814,8 @@ class Thread {
 
 		// Check for article corruption from incomplete thread moves.
 		// (thread moves only updated this on immediate replies, not replies to replies etc)
-		if ( ! $ancestor->article()->getTitle()->equals( $this->article()->getTitle() ) ) {
-			$title = $ancestor->article()->getTitle();
+		if ( ! $ancestor->getTitle()->equals( $this->getTitle() ) ) {
+			$title = $ancestor->getTitle();
 			$set['thread_article_namespace'] = $title->getNamespace();
 			$set['thread_article_title'] = $title->getDbKey();
 
@@ -1236,7 +1245,7 @@ class Thread {
 		if ( $this->hasSuperthread() ) {
 			$parent_restrictions = $this->superthread()->root()->getTitle()->getRestrictions( $action );
 		} else {
-			$parent_restrictions = $this->article()->getTitle()->getRestrictions( $action );
+			$parent_restrictions = $this->getTitle()->getRestrictions( $action );
 		}
 
 		// TODO this may not be the same as asking "are the parent restrictions more restrictive than
@@ -1459,7 +1468,7 @@ class Thread {
 	   protected */
 	public function canUserReply( $user ) {
 		$threadRestrictions = $this->topmostThread()->title()->getRestrictions( 'reply' );
-		$talkpageRestrictions = $this->article()->getTitle()->getRestrictions( 'reply' );
+		$talkpageRestrictions = $this->getTitle()->getRestrictions( 'reply' );
 
 		$threadRestrictions = array_fill_keys( $threadRestrictions, 'thread' );
 		$talkpageRestrictions = array_fill_keys( $talkpageRestrictions, 'talkpage' );
@@ -1498,7 +1507,7 @@ class Thread {
 	}
 	
 	public function editors() {
-		if ( is_null($this->editors) ) {
+		if ( is_null( $this->editors ) ) {
 			if ( $this->editedness() < Threads::EDITED_BY_AUTHOR ) {
 				return array();
 			} elseif ( $this->editedness == Threads::EDITED_BY_AUTHOR ) {
@@ -1511,9 +1520,9 @@ class Thread {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->select( 'revision', 'rev_user_text',
 				array( 'rev_page' => $this->root()->getId(),
-				'rev_parent_id != '.$dbr->addQuotes(0) ), __METHOD__ );
+				'rev_parent_id != ' . $dbr->addQuotes( 0 ) ), __METHOD__ );
 			
-			foreach( $res as $row ) {
+			foreach ( $res as $row ) {
 				$this->editors[$row->rev_user_text] = 1;
 			}
 			
@@ -1523,12 +1532,19 @@ class Thread {
 		return $this->editors;
 	}
 	
-	public function setEditors($e) {
+	public function setEditors( $e ) {
 		$this->editors = $e;
 	}
 	
-	public function addEditor($e) {
+	public function addEditor( $e ) {
 		$this->editors[] = $e;
-		$this->editors = array_unique($this->editors);
+		$this->editors = array_unique( $this->editors );
+	}
+
+	/**
+	 * Return the Title object for the article this thread is attached to.
+	 */
+	public function getTitle() {
+		return $this->article()->getTitle();
 	}
 }

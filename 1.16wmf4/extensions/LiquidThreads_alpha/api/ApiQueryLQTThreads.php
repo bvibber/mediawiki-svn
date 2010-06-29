@@ -136,6 +136,11 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 		// Setup
 		$thread = Thread::newFromRow( $row );
 		$article = $thread->root();
+		
+		if ( ! $article ) {
+			return;
+		}
+		
 		$title = $article->getTitle();
 		$view = new LqtView( $wgOut, $article, $title, $wgUser, $wgRequest );
 

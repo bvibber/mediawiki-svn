@@ -94,15 +94,12 @@
 	padding: 0.5em !important;
 	background-color: #eeeeee;
 	border:           solid 1pt #66aaff;
-	display:          table;
 }
 
 .lqt_post_new_message {
 	padding: 0.5em !important;
 	background-color: #eeeeee !important;
 	border:           solid 1pt #66aaff;
-	display:          table;
-	width:            auto;
 }
 
 .lqt_history_info {
