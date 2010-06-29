@@ -55,6 +55,10 @@ mw.SmilBuffer.prototype = {
 	* @param assetId The asset to add to loading set
 	*/
 	addAssetLoading: function( assetId ) {
+		if( $j.inArray( assetId, this.assetLoadingSet ) !== -1 ){
+			mw.log("Possible Error: assetId already in loading set: " + assetId ) ;
+			return ;
+		}
 		this.assetLoadingSet.push( assetId );
 	},
 	
@@ -84,6 +88,7 @@ mw.SmilBuffer.prototype = {
 		_this.addAssetLoading( $vid.attr('id' ) );
 			
 		var runSeekCallback = function(){
+			// Add a seek binding
 			$vid.unbind( 'seeked' ).bind( 'seeked', function(){
 				_this.assetReady( $vid.attr('id' ) );
 				if( callback ) {

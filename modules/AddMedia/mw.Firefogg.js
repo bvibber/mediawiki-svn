@@ -24,7 +24,8 @@ mw.addMessages({
 	"fogg-badtoken" : "Token is not valid",
 	"fogg-preview" : "Preview video",
 	"fogg-hidepreview" : "Hide preview",
-	"fogg-warning-firebug" : "<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page." 
+	"fogg-warning-firebug" : "<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page.",
+	"fogg-missing-webm-support" : "Please use a [$1 webm compatible] browsers to preview results of webm videos" 
 });
 
 var firefogg_install_links = {
@@ -822,42 +823,60 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * This is called when a local encode operation has completed. It updates the UI.
 	 */
 	onLocalEncodeDone: function() {
-		var _this = this;
+		var _this = this;		
+		var videoEmbedCode = '<video controls="true" style="margin:auto" id="fogg_final_vid" '+ 
+			'src="' +_this.fogg.previewUrl + '"></video>';
+			
+		if( this.current_encoder_settings['videoCodec'] == 'vp8' ) {
+			var dummyvid = document.createElement( "video" );
+			if( !dummyvid.canPlayType('video/webm; codecs="vp8, vorbis"') ) {
+				videoEmbedCode = gM('fogg-missing-webm-support', 
+					$j('<a />')
+					.attr({
+						'href' : 'http://www.webmproject.org/users/',
+						'target' : '_new'
+					})
+				)
+			}
+		}			
 		_this.ui.setPrompt( gM( 'fogg-encoding-done' ),
-			gM( 'fogg-encoding-done' ) + '<br>' +
-			// Show the video at full resolution upto 720px wide
-			'<video controls="true" style="margin:auto" id="fogg_final_vid" '+ 
-			'src="' +_this.fogg.previewUrl + '"></video>'
+			$j( '<div />' ).append( 
+				gM( 'fogg-encoding-done' ),
+				$j('<br>' ),
+				videoEmbedCode
+			)			
 		);
 		//Load the video and set a callback:
 		var v = $j( '#fogg_final_vid' ).get( 0 );
-		function resizeVid() {
-			var v = $j( '#fogg_final_vid' ).get(0);
-			if ( v.videoWidth > 720 ) {
-				var vW = 720;
-				var vH = 720 * v.videoHeight / v.videoWidth;
-			} else {
-				var vW = v.videoWidth;
-				var vH = v.videoHeight;
+		if( v ) {
+			function resizeVid() {
+				var v = $j( '#fogg_final_vid' ).get(0);
+				if ( v.videoWidth > 720 ) {
+					var vW = 720;
+					var vH = 720 * v.videoHeight / v.videoWidth;
+				} else {
+					var vW = v.videoWidth;
+					var vH = v.videoHeight;
+				}
+				//reize the video:
+				$j( v ).css({
+					'width': vW,
+					'height': vH
+				});
+				//if large video resize the dialog box:
+				if( vW + 5 > 400 ) {
+					//also resize the dialog box
+					$j( '#upProgressDialog' ).dialog( 'option', 'width', vW + 20 );
+					$j( '#upProgressDialog' ).dialog( 'option', 'height', vH + 120 );
+	
+					//also position the dialog container
+					$j( '#upProgressDialog') .dialog( 'option', 'position', 'center' );
+				}
 			}
-			//reize the video:
-			$j( v ).css({
-				'width': vW,
-				'height': vH
-			});
-			//if large video resize the dialog box:
-			if( vW + 5 > 400 ) {
-				//also resize the dialog box
-				$j( '#upProgressDialog' ).dialog( 'option', 'width', vW + 20 );
-				$j( '#upProgressDialog' ).dialog( 'option', 'height', vH + 120 );
-
-				//also position the dialog container
-				$j( '#upProgressDialog') .dialog( 'option', 'position', 'center' );
-			}
+			v.removeEventListener( "loadedmetadata", resizeVid, true );
+			v.addEventListener( "loadedmetadata", resizeVid, true );
+			v.load();
 		}
-		v.removeEventListener( "loadedmetadata", resizeVid, true );
-		v.addEventListener( "loadedmetadata", resizeVid, true );
-		v.load();
 	},
 
 	/**

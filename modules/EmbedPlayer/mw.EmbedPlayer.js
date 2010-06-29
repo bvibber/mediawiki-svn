@@ -839,6 +839,9 @@ mediaSource.prototype = {
 			case '.mp4':
 				return 'video/h264';
 			break;
+			case 'webm':
+				return 'video/webm';
+			break;
 			case '.srt':
 				return 'text/x-srt';
 			break;
@@ -3132,10 +3135,10 @@ var kplayer = new mediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'Kplayer
 // Java based player
 var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'Java' );
 
-// Native html5 player  
+// Native html5 players
 var oggNativePlayer = new mediaPlayer( 'oggNative', ['video/ogg', 'audio/ogg', 'application/ogg' ], 'Native' );
-
 var h264NativePlayer = new mediaPlayer( 'h264Native', ['video/h264'], 'Native' );
+var webmNativePlayer = new mediaPlayer( 'webmNative', ['video/webm'], 'Native' );
 
 // VLC player
 var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
@@ -3409,14 +3412,18 @@ mw.EmbedTypes = {
 			try {
 				var dummyvid = document.createElement( "video" );
 				if( dummyvid.canPlayType ) {
-					var canPlayH264 = dummyvid.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"' );
-					var canPlayOgg = dummyvid.canPlayType && dummyvid.canPlayType( "video/ogg;codecs=\"theora,vorbis\"" );
+					// Add the webm player
+					if( dummyvid.canPlayType('video/webm; codecs="vp8, vorbis"') ){
+						this.players.addPlayer( webmNativePlayer ); 
+					}
+										
 					// Test for h264:				
-					if ( canPlayH264 == "probably" || canPlayH264 == "maybe" ) {
+					if ( dummyvid.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"' ) ) {
 						this.players.addPlayer( h264NativePlayer );
 					}
-					//	 Test for ogg 
-					if (  canPlayOgg == "probably" || canPlayOgg == "maybe" ) {
+					
+					//	 Test for ogg
+					if (  dummyvid.canPlayType( "video/ogg;codecs=\"theora,vorbis\"" ) ) {
 						this.players.addPlayer( oggNativePlayer );						
 					// older versions of safari do not support canPlayType,
 				   	// but xiph qt registers mimetype via quicktime plugin
