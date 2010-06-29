@@ -71,7 +71,7 @@ div#mw-head h5 {
 	#p-personal {
 		position: absolute;
 		top: 0;
-		margin-right: 10em;
+		padding-right: 10em;
 		left: 0.75em;
 	}
 	#p-personal h5 {
@@ -87,10 +87,12 @@ div#mw-head h5 {
 		line-height: 1.125em;
 		float: left;
 	}
+	/* This one flips! */
 	#p-personal li {
 		margin-right: 0.75em;
 		margin-top: 0.5em;
 		font-size: 0.75em;
+		white-space: nowrap;
 	}
 	/* Navigation Containers */
 	#left-navigation {
@@ -363,7 +365,7 @@ div#mw-head h5 {
 		margin: 0;
 		border-width: 0;
 		padding: 3px;
-		line-height: 1em;
+		vertical-align: top;
 		font-size: 13px;
 		width: 14em;
 		background-color: transparent;
@@ -901,16 +903,18 @@ div.magnify a, div.magnify img {
 	border: none !important;
 	background: none !important;
 }
+/* @noflip */
 div.tright {
-	clear: left;
-	float: left;
-	border-width: .5em 1.4em .8em 0;
-}
-div.tleft {
-	float: right;
 	clear: right;
-	margin-left: .5em;
+	float: right;
 	border-width: .5em 0 .8em 1.4em;
+}
+/* @noflip */
+div.tleft {
+	float: left;
+	clear: left;
+	margin-right: .5em;
+	border-width: .5em 1.4em .8em 0;
 }
 img.thumbborder {
 	border: 1px solid #dddddd;
