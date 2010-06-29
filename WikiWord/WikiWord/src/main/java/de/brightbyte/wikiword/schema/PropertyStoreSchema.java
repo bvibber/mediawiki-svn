@@ -19,6 +19,7 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 	
 	protected RelationTable propertyTable;
 	protected DatasetIdentifier dataset;
+	private boolean global;
 
 	public PropertyStoreSchema(DatasetIdentifier dataset, Connection connection, boolean global, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
 		super(dataset, connection, tweaks, useFlushQueue );
@@ -32,6 +33,7 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 	
 	private void init(DatasetIdentifier dataset, boolean global, TweakSet tweaks) {
 		this.dataset = dataset;
+		this.global = global;
 		
 		propertyTable = new RelationTable(this, "property", getDefaultTableAttributes());
 		propertyTable.addField( new ReferenceField(this, "concept", "INT", null, false, null, "concept", "id", null ) );
@@ -46,6 +48,10 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 		if (!global) propertyTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_name_property", new String[] {"concept_name", "property"}) );
 
 		addTable(propertyTable);
+	}
+	
+	public boolean isGlobal()  {
+		return global;
 	}
 	
 	@Override

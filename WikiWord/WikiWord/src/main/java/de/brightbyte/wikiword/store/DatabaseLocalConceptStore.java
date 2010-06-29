@@ -134,7 +134,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 				sql += " AND C.type IN "+getTypeCodeSet(spec.getRequireTypes())+" ";
 			}
 			
-			sql += " ORDER BY freq DESC";
+			sql += " ORDER BY qFreq DESC";
 			
 			if (spec!=null && spec.getLimit()>0) sql += " LIMIT "+spec.getLimit();
 			return sql;
@@ -282,7 +282,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		}
 	
 		@Override
-		protected String conceptSelect(ConceptQuerySpec spec, String card, String relev) {
+		protected String conceptSelect(ConceptQuerySpec spec, String card, String relev, boolean aggregate) {
 			boolean useDistrib = (relev!=null || (spec!=null && spec.getIncludeStatistics())) && areStatsComplete();
 			
 			String fields = "C.id as cId, C.name as cName, C.type as cType";
@@ -298,7 +298,8 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			if (relev==null) relev = "-1";
 			if (card==null) card = "-1";
 			
-			fields += ", "+card+" as qFreq, "+relev+" as qConf ";
+			if (aggregate) fields += ", SUM("+card+") as qFreq, MAX("+relev+") as qConf ";
+			else fields += ", "+card+" as qFreq, "+relev+" as qConf ";
 			
 			if (spec!=null && spec.getIncludeResources()) { //FIXME: multiple matches!
 				fields += ", R.id as rcId, R.name as rcName, R.type as rcType ";
@@ -330,6 +331,11 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			
 			String sql =  "SELECT " + fields + " FROM " + tables;
 			return sql;
+		}
+
+		@Override
+		protected boolean needsValueAggregation(de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec spec) {
+			return false; //FIXME: use grouping with ressources??
 		}
 			
 		@Override

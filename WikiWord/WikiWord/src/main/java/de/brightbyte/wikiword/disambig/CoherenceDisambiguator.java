@@ -74,7 +74,11 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 	
 	private Functor.Double popularityNormalizer = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
 		public double apply(double pop) {
-			return 1 - 1/(Math.sqrt(Math.log(pop))+1);  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
+			if (pop<0.5) return 0;
+			if (pop<1) pop=1;
+			
+			double n = 1 - 1/(Math.sqrt(Math.log(pop))+1); //XXX: black voodoo magic ad hoc formula with no deeper meaing.
+			return n;  
 		}
 	};
 	
@@ -474,7 +478,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 								d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						}
 						
-						trace( String.format("      + sim(%s, %s) = %07.5f", a, b, d) );
+						//trace( String.format("      + sim(%s, %s) = %07.5f", a, b, d) );
 						similarities.set(a, b, d);
 					}
 				}

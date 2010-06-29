@@ -59,10 +59,13 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 			}
 		
 		};
-			
+		
+		protected boolean isGlobal;
+		
 		protected DatabasePropertyStore(DatabaseWikiWordConceptStore<T> conceptStore, PropertyStoreSchema database, TweakSet tweaks) throws SQLException {
 			super(database, tweaks);
-			
+
+			this.isGlobal = database.isGlobal();
 			this.conceptFactory = conceptStore.getConceptFactory();
 
 		    this.conceptTable = (EntityTable)conceptStore.getDatabaseAccess().getTable("concept"); 
@@ -79,11 +82,13 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 		
 		public ConceptProperties<T> getConceptProperties(int concept, Collection<String> properties) throws PersistenceException {
 			try {
-				String sql = "SELECT concept, concept_name, property, value FROM " +propertyTable.getSQLName()+" as F ";
+				String fields = isGlobal ? "concept, property, value" : "concept, concept_name, property, value";
+				
+				String sql = "SELECT "+fields+" FROM " +propertyTable.getSQLName()+" as F ";
 				sql += " WHERE concept = "+concept;
 				if ( properties != null ) sql += " AND property IN " + database.encodeSet(properties) + " ";
 
-				return readConceptProperties("getConceptProperties", sql, "concept", null, null, null, "property", "value"); //FIXME: name, card, relevance
+				return readConceptProperties("getConceptProperties", sql, "concept", isGlobal ? null : "concept_name", null, null, "property", "value"); 
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -95,13 +100,15 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 		
 		public Map<Integer, ConceptProperties<T>> getConceptsProperties(int[] concepts, Collection<String> properties) throws PersistenceException {
 			if (concepts.length==0) return Collections.emptyMap();
+
+			String fields = isGlobal ? "concept, property, value" : "concept, concept_name, property, value";
 			
 			try {
-				String sql = "SELECT concept, concept_name, property, value FROM " +propertyTable.getSQLName()+" as F ";
+				String sql = "SELECT "+fields+" FROM " +propertyTable.getSQLName()+" as F ";
 				sql += " WHERE concept IN "+database.encodeSet(concepts);
 				if ( properties != null ) sql += " AND property IN " + database.encodeSet(properties) + " ";
 
-				return readConceptsProperties("getConceptsProperties", sql, "concept", null, null, null, "property", "value"); //FIXME: name, card, relevance
+				return readConceptsProperties("getConceptsProperties", sql, "concept", isGlobal ? null : "concept_name", null, null, "property", "value"); 
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}

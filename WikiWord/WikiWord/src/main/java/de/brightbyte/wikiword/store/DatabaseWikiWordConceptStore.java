@@ -24,7 +24,6 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
-import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
@@ -437,11 +436,11 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		}	
 		
 		protected String conceptSelect(ConceptQuerySpec spec, String card) {
-			if (areStatsComplete()) return conceptSelect(spec, card, "DT.idf");
-			else return conceptSelect(spec, card, "-1");
+			if (areStatsComplete()) return conceptSelect(spec, card, "DT.idf", needsValueAggregation(spec));
+			else return conceptSelect(spec, card, "-1", needsValueAggregation(spec));
 		}
 
-		protected abstract String conceptSelect(ConceptQuerySpec spec, String card, String relev);	
+		protected abstract String conceptSelect(ConceptQuerySpec spec, String card, String relev, boolean aggregate);	
 		
 		public C getConcept(int id, ConceptQuerySpec spec)
 			throws PersistenceException {
@@ -460,6 +459,8 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 				throw new PersistenceException(e);
 			}
 		}
+
+		protected abstract boolean needsValueAggregation(ConceptQuerySpec spec);
 
 		public DataSet<C> getAllConcepts(ConceptQuerySpec spec)
 			throws PersistenceException {

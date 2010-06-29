@@ -142,17 +142,24 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				sql += " AND C.type IN "+getTypeCodeSet(spec.getRequireTypes())+" ";
 			}
 
+			boolean uniq = false;
+			
 			if ( lang != null ) {
 				if ( spec!=null && spec.getLanguageIndependantTypes()!=null 
 									&& !spec.getLanguageIndependantTypes().isEmpty() ) {
 					//some types of concepts (proper nouns) may be language independant
 					sql += " AND ( M.lang = "+database.quoteString(lang)+" OR C.type IN "+getTypeCodeSet(spec.getLanguageIndependantTypes())+" )";
 				} else {
+					uniq = true;
 					sql += " AND M.lang = "+database.quoteString(lang)+" ";
 				}
 			}
+
+			if ( !uniq ) {
+				sql +=	" GROUP BY M.concept ";
+			}
 			
-			sql +=	" ORDER BY freq DESC";
+			sql +=	" ORDER BY qFreq DESC ";
 			
 			if (spec!=null && spec.getLimit()>0) sql += " LIMIT "+spec.getLimit();
 			return sql;
@@ -314,7 +321,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		}
 		
 		@Override
-		protected String conceptSelect(ConceptQuerySpec spec, String card, String relev) {
+		protected String conceptSelect(ConceptQuerySpec spec, String card, String relev, boolean aggregate) {
 			boolean useDistrib = (relev!=null || (spec!=null && spec.getIncludeStatistics())) && areStatsComplete();
 			
 			String fields = "C.id as cId, C.name as cName, C.type as cType, " +
@@ -332,7 +339,8 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 			if (relev==null) relev = "-1";
 			if (card==null) card = "-1";
 			
-			fields += ", "+card+" as qFreq, "+relev+" as qConf ";
+			if (aggregate) fields += ", SUM("+card+") as qFreq, MAX("+relev+") as qConf ";
+			else fields += ", "+card+" as qFreq, "+relev+" as qConf ";
 			
 			if (spec!=null && spec.getIncludeRelations()) {
 				fields += ", I.inlinks as rInlinks, I.outlinks as rOutlinks, " +
@@ -342,6 +350,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				tables += " LEFT JOIN "+conceptInfoTable.getSQLName()+" as I ON I.concept = C.id ";
 			}
 			
+			//TODO: include resources, etc
 			//TODO: include features!
 		
 			String sql =  "SELECT " + fields + " FROM " + tables;
@@ -439,6 +448,14 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		
 			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(null, term, spec);
 			return new QueryDataSet<GlobalConcept>(database, new ConceptFactory(spec), "getMeanings", sql, false);
+		}
+
+		@Override
+		protected boolean needsValueAggregation(de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec spec) {
+			if (spec.getLanguage() == null) return true;
+			else if (spec.getLanguageIndependantTypes() != null && !spec.getLanguageIndependantTypes().isEmpty()) return true;
+			
+			return false;
 		}
 	}
 
