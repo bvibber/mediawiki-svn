@@ -137,11 +137,6 @@ display:block;
 #simpleSearch{
 overflow:auto;
 }
-div#simpleSearch button#searchButton{
-margin:5px 5px 0 5px;
-height:13px;
-width:12px;
-}
 form#editform{
 margin:0;
 padding:0;

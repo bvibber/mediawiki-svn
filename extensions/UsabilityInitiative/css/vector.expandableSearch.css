@@ -4,8 +4,3 @@
 #simpleSearch { 
 	overflow: auto;
 }
-div#simpleSearch button#searchButton {
-	margin: 5px 5px 0 5px;
-	height: 13px;
-	width: 12px;
-}
