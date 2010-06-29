@@ -284,7 +284,11 @@ class SIOHandler {
 			$db->delete( 'smw_rels2', array( "(s_id IN $idsString) OR (o_id IN $idsString)" ), 'SIO::deleteRels2Data' );
 			$db->delete( 'smw_atts2', array( "s_id IN $idsString" ), 'SIO::deleteAtts2Data' );
 			$db->delete( 'smw_text2', array( "s_id IN $idsString" ), 'SIO::deleteText2Data' );
-			$db->delete( 'sm_coords', array( "s_id IN $idsString" ), 'SIO::deleteCoordsData' );
+			// handle the sm_coords table only if the Semantic
+			// Maps extension is installed
+			if ( defined( 'SM_VERSION' ) ) {
+				$db->delete( 'sm_coords', array( "s_id IN $idsString" ), 'SIO::deleteCoordsData' );
+			}
 		}
 
 		if ( count( $allRels2Inserts ) > 0 ) {
