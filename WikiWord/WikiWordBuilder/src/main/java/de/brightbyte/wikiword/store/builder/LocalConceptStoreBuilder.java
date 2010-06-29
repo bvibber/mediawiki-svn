@@ -101,6 +101,6 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 	public int processUnknownConcepts(CursorProcessor<LocalConcept> processor) throws PersistenceException;
 
 	public TextStoreBuilder getTextStoreBuilder() throws PersistenceException;
-	public PropertyStoreBuilder getPropertyStoreBuilder() throws PersistenceException;
+	public LocalPropertyStoreBuilder getPropertyStoreBuilder() throws PersistenceException;
 	
 }

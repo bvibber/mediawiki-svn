@@ -28,7 +28,6 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 				implements PropertyStore<T> {
 	
 		protected WikiWordConcept.Factory<T> conceptFactory;
-		protected DatabaseWikiWordConceptStore<T> conceptStore;
 		protected RelationTable propertyTable;
 		protected EntityTable conceptTable;
 		
@@ -64,7 +63,6 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 		protected DatabasePropertyStore(DatabaseWikiWordConceptStore<T> conceptStore, PropertyStoreSchema database, TweakSet tweaks) throws SQLException {
 			super(database, tweaks);
 			
-		    this.conceptStore = conceptStore;
 			this.conceptFactory = conceptStore.getConceptFactory();
 
 		    this.conceptTable = (EntityTable)conceptStore.getDatabaseAccess().getTable("concept"); 

@@ -8,11 +8,11 @@ import de.brightbyte.wikiword.builder.ConceptImporter;
 import de.brightbyte.wikiword.builder.ImportDump;
 import de.brightbyte.wikiword.builder.PropertyImporter;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
-import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
+import de.brightbyte.wikiword.store.builder.LocalPropertyStoreBuilder;
 
 public class ImportProperties extends ImportDump<LocalConceptStoreBuilder> {
 
-	private PropertyStoreBuilder propertyStore;
+	private LocalPropertyStoreBuilder propertyStore;
 
 	public ImportProperties() {
 		super("ImportProperties");

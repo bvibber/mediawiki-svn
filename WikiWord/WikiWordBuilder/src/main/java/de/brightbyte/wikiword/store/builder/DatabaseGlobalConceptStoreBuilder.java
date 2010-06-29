@@ -21,6 +21,7 @@ import de.brightbyte.data.ChunkyBitSet;
 import de.brightbyte.db.DatabaseAccess;
 import de.brightbyte.db.DatabaseField;
 import de.brightbyte.db.DatabaseTable;
+import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.util.PersistenceException;
@@ -55,6 +56,7 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	protected RelationTable originTable;
 	protected RelationTable meaningTable;
 	protected RelationTable aboutTable;
+	protected EntityTable definitionTable;
 	
 	protected RelationTable mergeTable;
 	//protected RelationTable langprepTable;
@@ -118,28 +120,36 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		mergeInserter = configureTable("merge", 16, 4*1024);
 		mergeTable = (RelationTable)mergeInserter.getTable();
 		
+		Inserter definitionInserter = configureTable("definition", 16, 16*1024);
+		definitionTable = (EntityTable)definitionInserter.getTable();
 		//Inserter langprepInserter = configureTable("langprep", 16, 4*1024);
 		//langprepTable = (RelationTable)langprepInserter.getTable();
 	}
 	
-
-	protected Map<String, LocalConceptStoreSchema> localDatabases = new HashMap<String, LocalConceptStoreSchema>();
-	
-	protected LocalConceptStoreSchema getLocalConceptDatabase(Corpus c) throws PersistenceException {
-		LocalConceptStoreSchema db =  localDatabases.get(c.getLanguage());
-		
-		if (db==null) {
-			try {
-				db = new LocalConceptStoreSchema(c, database.getConnection(), tweaks, false);
-				localDatabases.put(c.getLanguage(), db);
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-		
-		return db;
+	public LocalConceptStoreSchema getLocalConceptDatabase(Corpus c) throws PersistenceException {
+		return ((GlobalConceptStoreSchema)database).getLocalConceptDatabase(c);
 	}
 	
+
+	/**
+	 * @see de.brightbyte.db.DatabaseSchema#createTables(boolean)
+	 */
+	public void createTables(boolean opt) throws PersistenceException {
+		super.createTables(opt);
+		
+		DatabaseGlobalPropertyStoreBuilder propertyStoreBuilder = getPropertyStoreBuilder();
+		propertyStoreBuilder.createTables(opt);		
+	}
+	
+	/**
+	 * @see de.brightbyte.db.DatabaseSchema#dropTables(boolean)
+	 */
+	public void dropTables(boolean opt, boolean all) throws PersistenceException {
+		super.dropTables(opt, all);
+		
+		DatabaseGlobalPropertyStoreBuilder propertyStoreBuilder = getPropertyStoreBuilder();
+		propertyStoreBuilder.dropTables(opt, all);		
+	}
 	
 	//-------------------------------
 	public Corpus[] detectLanguages() throws PersistenceException {
@@ -688,6 +698,11 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 			endTask("buildGlobalIndexes", "importAbout");
 		}
 
+		if (beginTask("buildGlobalIndexes", "importProperties")) {
+			importProperties();
+			endTask("buildGlobalIndexes", "importProperties");
+		}
+
 		if (beginTask("buildGlobalIndexes", "buildMeaningIndex")) {
 			buildMeaningIndex();
 			endTask("buildGlobalIndexes", "buildMeaningIndex");
@@ -729,6 +744,31 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 				endTask("importAbout", "importAbout#"+c.getLanguage());
 			}
 		}		
+	}
+
+	public void importProperties() throws PersistenceException {
+		Corpus[] cc = getLanguages();
+		DatabaseGlobalPropertyStoreBuilder properties = getPropertyStoreBuilder();
+		
+		for (Corpus c: cc) {
+			if (beginTask("importProperties", "importProperties#"+c.getLanguage())) {
+				properties.importProperties(c);
+				endTask("importProperties", "importProperties#"+c.getLanguage());
+			}
+		}		
+	}
+
+	protected DatabaseGlobalPropertyStoreBuilder propertyStoreBuilder = null;
+	
+	protected DatabaseGlobalPropertyStoreBuilder getPropertyStoreBuilder() throws PersistenceException {
+		try {
+			if ( propertyStoreBuilder == null ) propertyStoreBuilder = 
+				new DatabaseGlobalPropertyStoreBuilder((GlobalConceptStoreSchema)database, tweaks, getAgenda());
+			
+			return propertyStoreBuilder;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 
 	private int importAbout(Corpus c) throws PersistenceException {

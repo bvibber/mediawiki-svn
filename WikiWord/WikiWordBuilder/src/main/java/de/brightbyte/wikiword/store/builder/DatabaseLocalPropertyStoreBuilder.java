@@ -15,14 +15,14 @@ import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 
-public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilder implements PropertyStoreBuilder {
+public class DatabaseLocalPropertyStoreBuilder extends DatabaseIncrementalStoreBuilder implements LocalPropertyStoreBuilder {
 
 	protected RelationTable propertyTable;
 	protected Inserter propertyInserter;
 	protected LocalConceptStoreSchema conceptStoreSchema;
 	protected PersistentIdManager idManager;
 
-	public DatabasePropertyStoreBuilder(Corpus corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
+	public DatabaseLocalPropertyStoreBuilder(Corpus corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
 		this(new LocalConceptStoreSchema(corpus, connection, tweaks, true), 
 				new PropertyStoreSchema(corpus, connection, false, tweaks, true), 
 				null, tweaks, null);
@@ -35,7 +35,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 			return conceptStoreSchema.getTable(name);
 	}
 	
-	public DatabasePropertyStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {
+	public DatabaseLocalPropertyStoreBuilder(DatabaseLocalConceptStoreBuilder conceptStore, TweakSet tweaks) throws SQLException, PersistenceException {
 		this((LocalConceptStoreSchema)conceptStore.getDatabaseAccess(), 
 				new PropertyStoreSchema(conceptStore.getCorpus(), 
 						conceptStore.getDatabaseAccess().getConnection(), 
@@ -47,13 +47,14 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		database.setBackgroundErrorHandler(conceptStore.getDatabaseAccess().getBackgroundErrorHandler());
 	}
 	
-	protected DatabasePropertyStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, PropertyStoreSchema database, PersistentIdManager idManager, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
+	protected DatabaseLocalPropertyStoreBuilder(LocalConceptStoreSchema conceptStoreSchema, PropertyStoreSchema database, PersistentIdManager idManager, TweakSet tweaks, Agenda agenda) throws SQLException, PersistenceException {
 		super(database, tweaks, agenda);
 
 		//this.conceptStore = conceptStore;
 		
 		this.propertyInserter = configureTable("property", 128, 3*32);
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
+		propertyInserter.setLenient(true); //skip dupes
 		
 		this.conceptStoreSchema = conceptStoreSchema;
 		this.idManager = idManager;

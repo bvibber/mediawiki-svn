@@ -21,7 +21,7 @@ import de.brightbyte.wikiword.processor.ChunkedProgressRateTracker;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
-import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
+import de.brightbyte.wikiword.store.builder.LocalPropertyStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
 public class ConceptImporter extends AbstractImporter {
@@ -35,7 +35,7 @@ public class ConceptImporter extends AbstractImporter {
 	protected ChunkedProgressRateTracker propertyTracker;
 	
 	protected LocalConceptStoreBuilder store;
-	protected PropertyStoreBuilder propertyStore;
+	protected LocalPropertyStoreBuilder propertyStore;
 	protected TextStoreBuilder textStore;
 	
 	public ConceptImporter(WikiTextAnalyzer analyzer, LocalConceptStoreBuilder store, TweakSet tweaks) throws PersistenceException {

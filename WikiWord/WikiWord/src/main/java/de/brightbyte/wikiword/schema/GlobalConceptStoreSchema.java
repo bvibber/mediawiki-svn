@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -13,6 +14,7 @@ import de.brightbyte.db.DatabaseKey;
 import de.brightbyte.db.KeyType;
 import de.brightbyte.db.ReferenceField;
 import de.brightbyte.db.RelationTable;
+import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ConceptTypeSet;
 import de.brightbyte.wikiword.Corpus;
@@ -270,6 +272,23 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	public ConceptType getConceptType(int type) throws SQLException {
 		if (conceptTypes==null) getLanguages(); //init on demand
 		return conceptTypes.getType(type);
+	}
+	
+	protected Map<String, LocalConceptStoreSchema> localDatabases = new HashMap<String, LocalConceptStoreSchema>();
+	
+	public LocalConceptStoreSchema getLocalConceptDatabase(Corpus c) throws PersistenceException {
+		LocalConceptStoreSchema db =  localDatabases.get(c.getLanguage());
+		
+		if (db==null) {
+			try {
+				db = new LocalConceptStoreSchema(c, getConnection(), tweaks, false);
+				localDatabases.put(c.getLanguage(), db);
+			} catch (SQLException e) {
+				throw new PersistenceException(e);
+			}
+		}
+		
+		return db;
 	}
 	
 }

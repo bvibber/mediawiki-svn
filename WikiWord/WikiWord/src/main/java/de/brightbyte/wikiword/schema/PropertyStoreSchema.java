@@ -34,13 +34,17 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 		this.dataset = dataset;
 		
 		propertyTable = new RelationTable(this, "property", getDefaultTableAttributes());
-		if (!global) propertyTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) );
-		propertyTable.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
-		if (!global) propertyTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
-		propertyTable.addField( new DatabaseField(this, "property", getTextType(255), null, true, KeyType.INDEX) );
+		propertyTable.addField( new ReferenceField(this, "concept", "INT", null, false, null, "concept", "id", null ) );
+		propertyTable.addField( new DatabaseField(this, "property", getTextType(255), null, true, null) );
 		propertyTable.addField( new DatabaseField(this, "value", getTextType(255), null, true, null) );
-		propertyTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_property", new String[] {"concept_name", "property"}) );
+		
+		propertyTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept_name_property", new String[] {"concept", "property", "value"}) );
 		propertyTable.addKey( new DatabaseKey(this, KeyType.INDEX, "property_value", new String[] {"property", "value"}) );
+		
+		if (!global) propertyTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) );
+		if (!global) propertyTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, null, "concept", "name", null ) );
+		if (!global) propertyTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_name_property", new String[] {"concept_name", "property"}) );
+
 		addTable(propertyTable);
 	}
 	

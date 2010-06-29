@@ -5,7 +5,7 @@ import java.io.IOException;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
-import de.brightbyte.wikiword.store.builder.PropertyStoreBuilder;
+import de.brightbyte.wikiword.store.builder.LocalPropertyStoreBuilder;
 import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
 
 /**
@@ -15,7 +15,7 @@ import de.brightbyte.wikiword.store.builder.TextStoreBuilder;
  */
 public class ImportConcepts extends ImportDump<LocalConceptStoreBuilder> {
 
-	private PropertyStoreBuilder propertyStore;
+	private LocalPropertyStoreBuilder propertyStore;
 	private TextStoreBuilder textStore;
 
 	public ImportConcepts() {

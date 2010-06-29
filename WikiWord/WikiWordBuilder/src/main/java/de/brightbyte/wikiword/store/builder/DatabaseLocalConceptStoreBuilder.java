@@ -1403,14 +1403,14 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	//////////////////////////////////////////////////////////////////////////////
 	
 	private DatabaseTextStoreBuilder textStore;
-	private DatabasePropertyStoreBuilder propertyStore;
+	private DatabaseLocalPropertyStoreBuilder propertyStore;
 
 	protected DatabaseTextStoreBuilder newTextStoreBuilder() throws SQLException, PersistenceException {
 		return new DatabaseTextStoreBuilder(this, tweaks);
 	}
 	
-	protected DatabasePropertyStoreBuilder newPropertyStoreBuilder() throws SQLException, PersistenceException {
-		return new DatabasePropertyStoreBuilder(this, tweaks);
+	protected DatabaseLocalPropertyStoreBuilder newPropertyStoreBuilder() throws SQLException, PersistenceException {
+		return new DatabaseLocalPropertyStoreBuilder(this, tweaks);
 	}
 
 	public TextStoreBuilder getTextStoreBuilder() throws PersistenceException {
@@ -1422,7 +1422,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		} 
 	}	
 
-	public PropertyStoreBuilder getPropertyStoreBuilder() throws PersistenceException {
+	public LocalPropertyStoreBuilder getPropertyStoreBuilder() throws PersistenceException {
 		try { 
 			if (propertyStore==null) propertyStore = newPropertyStoreBuilder();
 			return propertyStore;

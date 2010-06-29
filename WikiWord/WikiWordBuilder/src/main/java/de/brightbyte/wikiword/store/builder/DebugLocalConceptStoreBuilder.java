@@ -137,7 +137,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		
 	}
 
-	public class DebugPropertyStoreBuilder implements PropertyStoreBuilder {
+	public class DebugPropertyStoreBuilder implements LocalPropertyStoreBuilder {
 
 		public void finishAliases() throws PersistenceException {
 			log("* finishAliases *");
@@ -828,7 +828,7 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		return new DebugTextStoreBuilder();
 	}
 
-	public PropertyStoreBuilder getPropertyStoreBuilder() {
+	public LocalPropertyStoreBuilder getPropertyStoreBuilder() {
 		return new DebugPropertyStoreBuilder();
 	}
 
