@@ -194,23 +194,15 @@ class PagedTiffHandler extends ImageHandler {
 
 	/**
 	 * Prepares param array and sets standard values.
-	 * Standard values for page and lossy are added.
+	 * Adds normalisation for parameter "lossy".
 	 */
 	function normaliseParams( $image, &$params ) {
-		$data = $this->getMetaArray( $image );
-		if ( !$data ) {
+		if ( !parent::normaliseParams( $image, $params ) ) {
 			return false;
 		}
 
-		if ( isset( $params['page'] ) ) {
-			$pages = $data['page_amount'];
-			
-			if ( $params['page'] > $pages ) {
-				$params['page'] = intval( $pages );
-			}
-		}
-
-		if ( !parent::normaliseParams( $image, $params ) ) {
+		$data = $this->getMetaArray( $image );
+		if ( !$data ) {
 			return false;
 		}
 
