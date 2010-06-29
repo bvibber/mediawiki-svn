@@ -1,10 +1,13 @@
 <?php
 class JSBreadCrumbsHooks {
 
-	function addResources( $out ) {
+	/**
+	 * BeforePageDisplay hook
+	 */
+	public static function addResources( $out ) {
 		global $wgExtensionAssetsPath;
 
-		$out->addScriptFile( "$wgExtensionAssetsPath/JSBreadCrumbs/js/BreadCrumbs.js", 4 );
+		$out->addScriptFile( "$wgExtensionAssetsPath/JSBreadCrumbs/js/BreadCrumbs.js", 5 );
 		$out->addExtensionStyle( "$wgExtensionAssetsPath/JSBreadCrumbs/css/BreadCrumbs.css?1" );
 
 		return true;

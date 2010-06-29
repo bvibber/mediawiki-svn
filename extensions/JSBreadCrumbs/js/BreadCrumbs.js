@@ -14,36 +14,58 @@ $j(document).ready( function() {
         wgJSBreadCrumbsLeadingDescription = "Navigation trail";
     }
 
-    var titleState = ( $j.cookie( 'mwext-bc-title' ) || "" ).split( wgJSBreadCrumbsSeparator );
-    var urlState = ( $j.cookie( 'mwext-bc-url' ) || "" ).split( wgJSBreadCrumbsSeparator );
- 
-    if ( titleState.length >= wgJSBreadCrumbsMaxCrumbs ) {
-        titleState = titleState.slice( titleState.length - wgJSBreadCrumbsMaxCrumbs );
-        urlState = urlState.slice( urlState.length - wgJSBreadCrumbsMaxCrumbs );
+    // Get the breadcrumbs from the cookies
+    var titleState = ( $j.cookie( 'mwext-bc-title' ) || "" ).split( '|' );
+    var urlState = ( $j.cookie( 'mwext-bc-url' ) || "" ).split( '|' );
+
+    // Strip the first title/url if it is empty
+    if ( titleState[0].length == 0 ) {
+        titleState.splice( 0, 1 );
+        urlState.splice( 0, 1 );
     }
- 
-    $j( "#top" ).before( '<span id="mwext-bc" class="noprint plainlinks breadcrumbs"></span>' );
-    var mwextbc = $j( "#mwext-bc" );
- 
+
+    var title = wgTitle;
+    if ( wgCanonicalNamespace.length ) {
+        title = wgCanonicalNamespace + ":" + wgTitle;
+    }
+
     // Remove duplicates
-    var matchTitleIndex = $j.inArray( wgPageName, titleState );
+    var matchTitleIndex = $j.inArray( title, titleState );
     var matchUrlIndex = $j.inArray( location.pathname + location.search, urlState );
     if ( matchTitleIndex != -1 && ( matchUrlIndex == matchTitleIndex ) ) {
         titleState.splice( matchTitleIndex, 1 );
         urlState.splice( matchTitleIndex, 1 );
     }
  
-    mwextbc.append( wgJSBreadCrumbsLeadingDescription );
-
-    for ( var i = 0; i < titleState.length; i++ ) {
-        mwextbc.append( '<a href="' + urlState[i] + '">' + titleState[i] + '</a> ' + wgJSBreadCrumbsSeparator + ' ' );
-    }
- 
-    mwextbc.append( '<a href="' + location.pathname + location.search + '">' + wgPageName + '</a>' );
- 
-    titleState.push( wgPageName );
+    // Add the current page
+    titleState.push( title );
     urlState.push( location.pathname + location.search );
- 
-    $j.cookie( 'mwext-bc-title', titleState.join( wgJSBreadCrumbsSeparator ), { path: wgJSBreadCrumbsCookiePath } );
-    $j.cookie( 'mwext-bc-url', urlState.join( wgJSBreadCrumbsSeparator ), { path: wgJSBreadCrumbsCookiePath } );
+
+    // Ensure we only display the maximum breadcrumbs set 
+    if ( titleState.length > wgJSBreadCrumbsMaxCrumbs ) {
+        titleState = titleState.slice( titleState.length - wgJSBreadCrumbsMaxCrumbs );
+        urlState = urlState.slice( urlState.length - wgJSBreadCrumbsMaxCrumbs );
+    }
+
+    // Insert the span we are going to populate 
+    $j( "#top" ).before( '<span id="mwext-bc" class="noprint plainlinks breadcrumbs"></span>' );
+
+    var mwextbc = $j( "#mwext-bc" );
+
+    // Add the bread crumb description 
+    mwextbc.append( wgJSBreadCrumbsLeadingDescription + ': ' );
+
+    // Add the bread crumbs
+    for ( var i = 0; i < titleState.length; i++ ) {
+        urltoappend = '<a href="' + urlState[i] + '">' + titleState[i] + '</a> ';
+        if ( i < titleState.length - 1 ) {
+		// Only add the separator if this isn't the last title
+		urltoappend = urltoappend + wgJSBreadCrumbsSeparator + ' ';
+	}
+        mwextbc.append( urltoappend );
+    }
+
+    // Save the bread crumb states to the cookies
+    $j.cookie( 'mwext-bc-title', titleState.join( '|' ), { path: wgJSBreadCrumbsCookiePath } );
+    $j.cookie( 'mwext-bc-url', urlState.join( '|' ), { path: wgJSBreadCrumbsCookiePath } );
 } );

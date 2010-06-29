@@ -80,4 +80,3 @@ $messages['ru'] = array(
 	'jsbreadcrumbs-desc' => 'Добавляет навигационный путь по сайту («хлебные крошки») под панель вкладок',
 	'jsbreadcrumbs-leading-description' => 'Навигационный путь',
 );
-
