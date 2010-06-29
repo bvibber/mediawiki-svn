@@ -98,15 +98,15 @@ class PagedTiffHandler extends ImageHandler {
 	static function extCheck( $meta, &$error, $saveName = '' ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize;
 
-		$errors = pagedTiffHandler::getMetadataErrors( $meta );
+		$errors = PagedTiffHandler::getMetadataErrors( $meta );
 		if ( $errors ) {
 			$error = 'tiff_bad_file';
 
 			// NOTE: in future, it will become possible to pass parameters
-			// $error = array( 'tiff_bad_file' , pagedTiffHandler::joinMessages( $errors ) );
+			// $error = array( 'tiff_bad_file' , PagedTiffHandler::joinMessages( $errors ) );
 			// does that work now? ^DK
 
-			wfDebug( __METHOD__ . ": $error ($saveName) " . pagedTiffHandler::joinMessages( $errors, false ) . "\n" );
+			wfDebug( __METHOD__ . ": $error ($saveName) " . PagedTiffHandler::joinMessages( $errors, false ) . "\n" );
 			return false;
 		}
 		if ( ( strlen( serialize( $meta ) ) + 1 ) > $wgTiffMaxMetaSize ) {
