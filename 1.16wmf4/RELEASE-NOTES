@@ -14,6 +14,8 @@ Selected changes since MediaWiki 1.15 that may be of interest:
   since Atom is a better protocol and is supported by virtually all clients.
 
 * It's now possible to block users from sending email via Special:Emailuser.
+* Added $wgSQLMode for setting database SQL modes - either performance (null)
+  or other reasons (such as enabling stricter checks)
 
 * The maintenance script system was overhauled. Most maintenance scripts now 
   have a useful help page when you run them with --help.
