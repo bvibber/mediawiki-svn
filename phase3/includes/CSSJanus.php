@@ -32,8 +32,6 @@
 class CSSJanus {
 	// Patterns defined as null are built dynamically by buildPatterns()
 	private static $patterns = array(
-		'newline' => '/\r?\n/',
-		'newlineToken' => '`NL`',
 		'tmpToken' => '`TMP`',
 		'nonAscii' => '[\200-\377]',
 		'unicode' => '(?:(?:\\[0-9a-f]{1,6})(?:\r\n|\s)?)',
@@ -57,6 +55,7 @@ class CSSJanus {
 		'lookbehind_not_letter' => '(?<![a-zA-Z])',
 		'chars_within_selector' => '[^\}]*?',
 		'noflip_annotation' => '\/\*\s*@noflip\s*\*\/',
+	
 		'noflip_single' => null,
 		'noflip_class' => null,
 		'comment' => '/\/\*[^*]*\*+([^\/*][^*]*\*+)*\//',
@@ -76,6 +75,9 @@ class CSSJanus {
 		'bg_horizontal_percentage_x' => null,
 	);
 	
+	/**
+	 * Build patterns we can't define above because they depend on other patterns.
+	 */
 	private static function buildPatterns() {
 		if ( !is_null( self::$patterns['escape'] ) ) {
 			// Patterns have already been built
@@ -90,7 +92,7 @@ class CSSJanus {
 		$patterns['possibly_negative_quantity'] = "((?:-?{$patterns['quantity']})|(?:inherit|auto))";
 		$patterns['color'] = "(#?{$patterns['nmchar']}+)";
 		$patterns['url_chars'] = "(?:{$patterns['url_special_chars']}|{$patterns['nonAscii']}|{$patterns['escape']})*";
-		$patterns['lookahead_not_open_brace'] = "(?!({$patterns['nmchar']}|{$patterns['newlineToken']}|\s|#|\:|\.|\,|\+|>)*?{)";
+		$patterns['lookahead_not_open_brace'] = "(?!({$patterns['nmchar']}|\r?\n|\s|#|\:|\.|\,|\+|>)*?{)";
 		$patterns['lookahead_not_closing_paren'] = "(?!{$patterns['url_chars']}?{$patterns['valid_after_uri_chars']}\))";
 		$patterns['lookahead_for_closing_paren'] = "(?={$patterns['url_chars']}?{$patterns['valid_after_uri_chars']}\))";
 		
@@ -106,8 +108,8 @@ class CSSJanus {
 		$patterns['rtl_in_url'] = "/{$patterns['lookbehind_not_letter']}(rtl){$patterns['lookahead_for_closing_paren']}/i";
 		$patterns['cursor_east'] = "/{$patterns['lookbehind_not_letter']}([ns]?)e-resize/";
 		$patterns['cursor_west'] = "/{$patterns['lookbehind_not_letter']}([ns]?)w-resize/";
-		$patterns['four_notation_quantity'] = "/{$patterns['possibly_negative_quantity']}\s+{$patterns['possibly_negative_quantity']}\s+{$patterns['possibly_negative_quantity']}\s+{$patterns['possibly_negative_quantity']}/i";
-		$patterns['four_notation_color'] = "/(-color\s*:\s*){$patterns['color']}\s+{$patterns['color']}\s+{$patterns['color']}\s+{$patterns['color']}/i";
+		$patterns['four_notation_quantity'] = "/{$patterns['possibly_negative_quantity']}(\s+){$patterns['possibly_negative_quantity']}(\s+){$patterns['possibly_negative_quantity']}(\s+){$patterns['possibly_negative_quantity']}/i";
+		$patterns['four_notation_color'] = "/(-color\s*:\s*){$patterns['color']}(\s+){$patterns['color']}(\s+){$patterns['color']}(\s+){$patterns['color']}/i";
 		// The two regexes below are parenthesized differently then in the original implementation to make the
 		// callback's job more straightforward
 		$patterns['bg_horizontal_percentage'] = "/(background(?:-position)?\s*:\s*[^%]*?)({$patterns['num']})(%\s*(?:{$patterns['quantity']}|{$patterns['ident']}))/";
@@ -128,10 +130,6 @@ class CSSJanus {
 		$css = str_replace( '`', '%60', $css );
 		
 		self::buildPatterns();
-		
-		// Tokenize newlines so all CSS is on one line
-		$newlines = new CSSJanus_Tokenizer( self::$patterns['newline'], self::$patterns['newlineToken'] );
-		$css = $newlines->tokenize( $css );
 		
 		// Tokenize single line rules with /* @noflip */
 		$noFlipSingle = new CSSJanus_Tokenizer( self::$patterns['noflip_single'], '`NOFLIP_SINGLE`' );
@@ -162,7 +160,6 @@ class CSSJanus {
 		$css = $comments->detokenize( $css );
 		$css = $noFlipClass->detokenize( $css );
 		$css = $noFlipSingle->detokenize( $css );
-		$css = $newlines->detokenize( $css );
 		return $css;
 	}
 	
@@ -170,9 +167,9 @@ class CSSJanus {
 	 * Replace direction: ltr; with direction: rtl; and vice versa, but *only*
 	 * those inside a body { .. } selector.
 	 * 
-	 * This function suffers from a bug also present in the original
-	 * implementation where it misses body selectors with a newline between
-	 * 'body' and the opening brace.
+	 * Unlike the original implementation, this function doesn't suffer from
+	 * the bug causing "body\n{\ndirection: ltr;\n}" to be missed.
+	 * See http://code.google.com/p/cssjanus/issues/detail?id=15
 	 */
 	private static function fixBodyDirection( $css ) {
 		$css = preg_replace( self::$patterns['body_direction_ltr'],
@@ -227,13 +224,15 @@ class CSSJanus {
 	 * Swap the second and fourth parts in four-part notation rules like
 	 * padding: 1px 2px 3px 4px;
 	 * 
-	 * This function suffers from a bug also present in the original
-	 * implementation where all whitespace between the parts is collapsed to
-	 * a single space.
+	 * Unlike the original implementation, this function doesn't suffer from
+	 * the bug where whitespace is not preserved when flipping four-part rules
+	 * and four-part color rules with multiple whitespace characters between
+	 * colors are not recognized.
+	 * See http://code.google.com/p/cssjanus/issues/detail?id=16
 	 */
 	private static function fixFourPartNotation( $css ) {
-		$css = preg_replace( self::$patterns['four_notation_quantity'], '$1 $4 $3 $2', $css );
-		$css = preg_replace( self::$patterns['four_notation_color'], '$1$2 $5 $4 $3', $css );
+		$css = preg_replace( self::$patterns['four_notation_quantity'], '$1$2$7$4$5$6$3', $css );
+		$css = preg_replace( self::$patterns['four_notation_color'], '$1$2$3$8$5$6$7$4', $css );
 		return $css;
 	}
 	
@@ -310,4 +309,5 @@ class CSSJanus_Tokenizer {
 		next( $this->originals );
 		return $retval;
 	}
+	
 }
