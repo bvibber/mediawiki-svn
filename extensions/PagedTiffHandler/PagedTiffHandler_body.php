@@ -60,8 +60,9 @@ class PagedTiffHandler extends ImageHandler {
 	 * - check for running-identify-service
 	 */
 	static function check( $saveName, $tempName, &$error ) {
-		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, $wgTiffRejectOnError, $wgTiffRejectOnWarning,
-			   $wgTiffUseTiffReader, $wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
+		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, 
+			$wgTiffRejectOnError, $wgTiffRejectOnWarning, $wgTiffUseTiffReader, 
+			$wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
 		wfLoadExtensionMessages( 'PagedTiffHandler' );
 		if ( $wgTiffUseTiffReader ) {
 			$tr = new TiffReader( $tempName );
@@ -143,7 +144,7 @@ class PagedTiffHandler extends ImageHandler {
 		if ( in_array( $name, array( 'width', 'height', 'page', 'lossy' ) ) ) {
 			if ( $name == 'lossy' ) {
 				return in_array( $value, array( 1, 0, '1', '0', 'true', 'false', 'lossy', 'lossless' ) );
-			} elseif ( $value <= 0 || $value > 65535 ) { // ImageMagick hits an overflow for values over 65536
+			} elseif ( $value <= 0 || $value > 65535 ) { // ImageMagick overflows for values > 65536
 				return false;
 			} else {
 				return true;
@@ -282,7 +283,8 @@ class PagedTiffHandler extends ImageHandler {
 	 * Supports extra parameters for multipage files and thumbnail type (lossless vs. lossy)
 	 */
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
-		global $wgImageMagickConvertCommand, $wgTiffMaxEmbedFileResolution, $wgTiffUseVips, $wgTiffVipsCommand;
+		global $wgImageMagickConvertCommand, $wgTiffMaxEmbedFileResolution, 
+			$wgTiffUseVips, $wgTiffVipsCommand;
 
 		$meta = $this->getMetaArray( $image );
 		$errors = PagedTiffHandler::getMetadataErrors( $meta );
@@ -290,7 +292,8 @@ class PagedTiffHandler extends ImageHandler {
 		if ( $errors ) {
 			$errors = PagedTiffHandler::joinMessages( $errors );
 			if ( is_string( $errors ) ) {
-				return $this->doThumbError( $params, 'tiff_bad_file' ); #TODO: original error as param # #test this ^DK 
+				// TODO: original error as param // TESTME
+				return $this->doThumbError( $params, 'tiff_bad_file' ); 
 			} else {
 				return $this->doThumbError( $params, 'tiff_no_metadata' );
 			}
@@ -305,7 +308,8 @@ class PagedTiffHandler extends ImageHandler {
 		$srcPath = $image->getPath();
 		$page = intval( $params['page'] );
 
-		if ( $flags & self::TRANSFORM_LATER ) { //pretend the thumbnail exists, let it be created by a 404-handler
+		if ( $flags & self::TRANSFORM_LATER ) { 
+			// pretend the thumbnail exists, let it be created by a 404-handler
 			return new ThumbnailImage( $image, $dstUrl, $width, $height, $dstPath, $page );
 		}
 
@@ -318,7 +322,8 @@ class PagedTiffHandler extends ImageHandler {
 				$height, $dstPath, $page );
 		}
 
-		if ( isset( $meta['page_data'][$page]['pixels'] ) && $meta['page_data'][$page]['pixels'] > $wgTiffMaxEmbedFileResolution )
+		if ( isset( $meta['page_data'][$page]['pixels'] ) 
+				&& $meta['page_data'][$page]['pixels'] > $wgTiffMaxEmbedFileResolution )
 			return $this->doThumbError( $params, 'tiff_sourcefile_too_large' );
 
 		if ( ( $width * $height ) > $wgTiffMaxEmbedFileResolution )
@@ -388,21 +393,21 @@ class PagedTiffHandler extends ImageHandler {
 		global $wgUser, $wgThumbLimits;
 
 		if ( empty( $params['width'] ) ) {
-			// no width/height in the parameter array
+			// no usable width/height in the parameter array
 			// only happens if we don't have image meta-data, and no
 			// size was specified by the user.
 			// we need to pick *some* size, and the preferred 
 			// thumbnail size seems sane.
 			$sz = $wgUser->getOption( 'thumbsize' );
 			$width = $wgThumbLimits[ $sz ];
-			$height = $width; // we don't have a hight, and no aspect ratio. make it square.
+			$height = $width; // we don't have a hight or aspect ratio. make it square.
 		} else {
 			$width = intval( $params['width'] );
 
 			if ( !empty( $params['height'] ) ) {
 				$height = intval( $params['height'] );
 			} else {
-				$height = $width; // we don't have a hight, and no aspect ratio. make it square.
+				$height = $width; // we don't have a hight or aspect ratio. make it square.
 			}
 		}
 
@@ -459,8 +464,8 @@ class PagedTiffHandler extends ImageHandler {
 		if ( !empty( $metadata ) && $metadata != serialize( array() ) ) {
 			$meta = unserialize( $metadata );
 			if ( isset( $meta['errors'] ) ) {
-				//metadata contains an error message, but it's valid. 
-				//don't try to re-render until the error is resolved!
+				// metadata contains an error message, but it's valid. 
+				// don't try to re-render until the error is resolved!
 				return true; 
 			}
 			if ( isset( $meta['page_amount'] ) && isset( $meta['page_data'] ) ) {
@@ -548,7 +553,7 @@ class PagedTiffHandler extends ImageHandler {
 				'error',
 				$errors
 			);
-			//XXX: need translation for <metadata-error>
+			// XXX: need translation for <metadata-error>
 		}
 		if ( !empty( $meta['warnings'] ) ) {
 			$warnings = PagedTiffHandler::joinMessages( $meta['warnings'] );
@@ -558,7 +563,7 @@ class PagedTiffHandler extends ImageHandler {
 				'warning',
 				$warnings
 			);
-			//XXX: need translation for <metadata-warning>
+			// XXX: need translation for <metadata-warning>
 		}
 		return $result;
 	}
@@ -570,8 +575,8 @@ class PagedTiffHandler extends ImageHandler {
 	 */
 	static function getTiffImage( $image, $path ) {
 		// If no Image object is passed, a TiffImage is created based on $path .
-		// If there is an Image object, we check whether there's already a TiffImage instance in there;
-		// if not, a new instance is created and stored in the Image object
+		// If there is an Image object, we check whether there's already a TiffImage 
+		// instance in there; if not, a new instance is created and stored in the Image object
 		if ( !$image ) {
 			$tiffimg = new PagedTiffImage( $path );
 		} elseif ( !isset( $image->tiffImage ) ) {
@@ -614,7 +619,8 @@ class PagedTiffHandler extends ImageHandler {
 	 * Returns false if unknown or if the document is not multi-page.
 	 */
 	function getPageDimensions( $image, $page ) {
-		// makeImageLink2 (Linker.php) sets $page to false if no page parameter in wiki code is set
+		// makeImageLink2 (Linker.php) sets $page to false if no page parameter  
+		// is set in wiki code 
 		if ( !$page ) {
 			$page = 1;
 		}

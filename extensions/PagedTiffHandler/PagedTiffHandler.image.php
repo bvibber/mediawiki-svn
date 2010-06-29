@@ -86,10 +86,8 @@ class PagedTiffImage {
 			if ( $wgImageMagickIdentifyCommand ) {
 
 				wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
-				/**
-				 * ImageMagick is used in order to get the basic metadata of embedded files.
-				 * This is not reliable in exiv2m since it is not possible to name a set of required fields.
-				 */
+				
+				// ImageMagick is used to get the basic metadata of individual pages
 				$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 					' -format "[BEGIN]page=%p\nalpha=%A\nalpha2=%r\nheight=%h\nwidth=%w\ndepth=%z[END]" ' .
 					wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
@@ -101,17 +99,19 @@ class PagedTiffImage {
 				if ( $retval ) {
 					$data['errors'][] = "identify command failed: $cmd";
 					wfDebug( __METHOD__ . ": identify command failed: $cmd\n" );
-					return $data; //fail. we *need* that info
+					return $data; // fail. we *need* that info
 				}
 				$this->_meta = $this->convertDumpToArray( $dump );
 				$this->_meta['exif'] = array();
 
 				if ( $wgTiffUseExiv ) {
+					// read EXIF, XMP, IPTC as name-tag => interpreted data 
+					// -ignore unknown fields
+					// see exiv2-doc @link http://www.exiv2.org/sample.html
+					// NOTE: the linux version of exiv2 has a bug: it can only 
+					// read one type of meta-data at a time, not all at once.
 					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
-						' -u -psix -Pnt ' . // read EXIF, XMP, IPTC as name-tag => interpreted data -ignore unknown fields
-						// exiv2-doc @link http://www.exiv2.org/sample.html
-						# # the linux version of exiv2 has a bug an this command doesn't work on it. ^SU
-						wfEscapeShellArg( $this->mFilename );
+						' -u -psix -Pnt ' . wfEscapeShellArg( $this->mFilename );
 
 					wfRunHooks( 'PagedTiffHandlerExivCommand', array( &$cmd, $this->mFilename ) );
 
@@ -123,7 +123,7 @@ class PagedTiffImage {
 					if ( $retval ) {
 						$data['errors'][] = "exiv command failed: $cmd";
 						wfDebug( __METHOD__ . ": exiv command failed: $cmd\n" );
-						//don't fail - we are missing info, but that's no reason to abort yet.
+						// don't fail - we are missing info, just report
 					}
 
 					$result = array();
@@ -214,7 +214,7 @@ class PagedTiffImage {
 					}
 				}
 				if ( !$knownError ) {
-					# # drop BypassMessages ^SU
+					// ignore messages that match $wgTiffIdentifyBypassMessages
 					foreach ( $wgTiffIdentifyBypassMessages as $msg ) {
 						if ( preg_match( $msg, trim( $error ) ) ) {
 							// $data['warnings'][] = $error;
