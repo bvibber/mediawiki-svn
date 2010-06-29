@@ -96,33 +96,8 @@ $.wikiEditor = {
 			// Cache hit
 			return mod.supported;
 		}
-		// Check if we have any compatiblity information on-hand for the current browser
-		if ( !( $.browser.name in mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
-			// Assume good faith :) 
-			return mod.supported = true;
-		}
-		// Check over each browser condition to determine if we are running in a compatible client
-		var browser = mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
-		if ( typeof browser != 'object' ) {
-			return mod.supported = false;
-		}
-		for ( var condition in browser ) {
-			var op = browser[condition][0];
-			var val = browser[condition][1];
-			if ( val === false ) {
-				return mod.supported = false;
-			} else if ( typeof val == 'string' ) {
-				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-					return mod.supported = false;
-				}
-			} else if ( typeof val == 'number' ) {
-				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-					return mod.supported = false;
-				}
-			}
-		}
-		// Return and also cache the return value - this will be checked somewhat often
-		return mod.supported = true;
+		// Run a browser support test and then cache and return the result
+		return mod.supported = mw.usability.testBrowser( mod.browsers );
 	},
 	/**
 	 * Checks if a module has a specific requirement

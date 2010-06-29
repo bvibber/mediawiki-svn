@@ -17,10 +17,20 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 	'vector-editwarning-preference' => 'Warn me when I leave an edit page with unsaved changes',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'vector-editwarning-warning' => "Do '''not''' use <nowiki>{{int:prefs-editing}}</nowiki> for \"Editing\". It is forbidden in this message, see [[mwr:68405]].",
+);
+
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
+	'vector-editwarning-warning' => 'As u hierdie bladsy verlaat, verloor u moontlik die wysigings wat u aangebring het.
+Indien u aangemeld is, kan u hierdie waarskuwing in die {{int:prefs-editing}}"-afdeling van u voorkeure afskakel.',
 	'vector-editwarning-preference' => "Waarsku my as ek 'n gewysigde bladsy verlaat alvorens dit gestoor is",
 );
 
@@ -144,6 +154,7 @@ Denne advarsel kan slås fra under Redigering i dine indstillinger.',
 );
 
 /** German (Deutsch)
+ * @author Church of emacs
  * @author MF-Warburg
  * @author Metalhead64
  * @author Sebastian Wallroth
@@ -237,10 +248,11 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "Aldatzen"
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Ladsgroup
  */
 $messages['fa'] = array(
 	'vector-editwarning-warning' => 'خروج از این صفحه ممکن است باعث از دست رفتن هرچه نوشته‌اید شود.
-اگر شما با نام کاربری وارد شده‌اند. می‌توانید این هشدار را در بخش «در حال ویرایش» ترجیحاتتان بیابید.',
+اگر شما با نام کاربری وارد شده‌اید می‌توانید این هشدار را در بخش «در حال ویرایش» ترجیحاتتان بیابید.',
 	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 );
 
@@ -250,7 +262,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'vector-editwarning-warning' => 'Tältä sivulta poistuminen saattaa aiheuttaa kaikkien tekemiesi muutosten katoamisen.
-Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä asetuksissa osiossa ”Muokkaus”.',
+Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä asetuksissa ”Muokkaus”-osiossa.',
 	'vector-editwarning-preference' => 'Varoita minua, kun poistun muokkaussivulta tallentamatta muutoksia',
 );
 
@@ -543,30 +555,34 @@ Se estiver autenticado, pode desactivar este aviso na secção "Edição" das pr
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que você perca todas as alterações que fez.
 Se você estiver autenticado, você pode desabilitar este aviso na seção "Opções de edição" de suas preferências.',
-	'vector-editwarning-preference' => 'Me avisar quando eu deixar uma janela de edição sem ter salvo as alterações',
+	'vector-editwarning-preference' => 'Avisar-me quando eu deixar uma janela de edição sem ter salvo as alterações',
 );
 
 /** Quechua (Runa Simi)
  * @author AlimanRuna
  */
 $messages['qu'] = array(
-	'vector-editwarning-warning' => 'Kay p\'anqata saqispaykiqa lliw rurarqusqayki hukchasqakunatachá chinkachiykiman.
-Yaykusqa kaspaykiqa, kay yuyampayta hark\'ayta atinki allinkachinaykikunapi "Llamk\'apusqa" rakipi.',
+	'vector-editwarning-warning' => "Kay p'anqata saqispaykiqa lliw rurarqusqayki hukchasqakunatachá chinkachiykiman.
+Yaykusqa kaspaykiqa, kay yuyampayta hark'ayta atinki allinkachinaykikunapi \"Llamk'apusqa\" rakipi.",
 	'vector-editwarning-preference' => "Yuyampaway p'anqata saqiptiy manaraq rurarqusqay hukchasqakunata waqaychaspay.",
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
+ * @author Cin
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeți orice schimbare ați făcut dvs.
-Dacă sunteți logat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dvs.',
-	'vector-editwarning-preference' => 'Avertizează-mă când voi părăsi o pagină de editare cu schimbări nesalvate',
+	'vector-editwarning-warning' => 'Părăsind această pagină, există riscul pierderii modificărilor efectuate.
+Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dv.',
+	'vector-editwarning-preference' => 'Avertizează-mă când părăsesc o pagină fără a salva modificările',
 );
 
 /** Tarandíne (Tarandíne)
@@ -657,11 +673,12 @@ $messages['te'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Octahedron80
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
-	'vector-editwarning-warning' => 'การออาจากหน้านี้อาจจะทำให้ความเปลี่ยนแปลงที่คุณกระทำสูญหาย
-ถ้าคุณลงชื่อเข้าใช้แล้ว คุณสามารถยกเลิกคำเตือนนี้ได้ที่หน้าตั้งค่าของคุณในส่วนของ "การแกไข"',
+	'vector-editwarning-warning' => 'การออกจากหน้านี้อาจทำให้ความเปลี่ยนแปลงที่คุณกระทำสูญหาย
+ถ้าคุณล็อกอินแล้ว คุณสามารถปิดคำเตือนนี้ได้ที่ส่วน "การแก้ไข" ในการตั้งค่าของคุณ',
 	'vector-editwarning-preference' => 'เตือนฉัน เมื่อฉันกำลังจะออกจากหน้าแก้ไขโดยมีข้อมูลที่ยังไม่ได้บันทึก',
 );
 
@@ -720,6 +737,15 @@ $messages['yi'] = array(
 	'vector-editwarning-preference' => 'שטעלן א ווארענונג ווען איך לאז איבער א רעדאקטירונג בלאט מיט נישט אויפגעהיטענע ענדערונגען',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'vector-editwarning-warning' => 'Kíkúrò ní ojúewé yìí yíò jẹ́ kí ẹ pòfo àwọn àtúnṣe tí ẹ ti ṣe.
+Tó bá jẹ́ pé ẹ ti wọlé, ẹ lè dẹ́kun ìkìlọ̀ yìí nínù abala "Àtúnṣe ṣíṣe" ti àwọn ìfẹ́ràn yín.',
+	'vector-editwarning-preference' => 'Kìlọ̀ fún mi tí mo bá únkúrò ní ojúewé àtúnṣe láì tíì mupamọ́',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */
@@ -732,12 +758,14 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author Jimmy xu wrk
+ * @author Liangent
+ * @author Onecountry
  * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'vector-editwarning-warning' => '离开这个页面可能会令您失去之前的所有更改。
-若您已经登入，您可在您参数设置的“编辑”节中关闭此警告。',
+若您已经登入，您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
 	'vector-editwarning-preference' => '如在更改未保存时离开页面，则发出警告',
 );
 

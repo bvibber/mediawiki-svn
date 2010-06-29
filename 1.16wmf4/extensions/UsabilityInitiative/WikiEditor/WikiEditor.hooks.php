@@ -13,7 +13,8 @@ class WikiEditorHooks {
 	static $scripts = array(
 		'raw' => array(
 			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 5 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 8 ),
+			array( 'src' => 'Modules/PreviewDialog/PreviewDialog.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 96 ),
@@ -22,10 +23,10 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 103 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 108 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 103 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 108 ),
 		),
 	);
 	static $messages = array(
@@ -111,6 +112,24 @@ class WikiEditorHooks {
 				'wikieditor-preview-tab',
 				'wikieditor-preview-changes-tab',
 				'wikieditor-preview-loading',
+			),
+		),
+		'previewDialog' => array(
+			'i18n' => 'WikiEditorPreviewDialog',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'wikieditor-previewDialog',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-previewDialog-preference',
+						'section' => 'editing/labs',
+					),
+				),
+			),
+			'messages' => array(
+				'wikieditor-previewDialog-preference',
+				'wikieditor-previewDialog-tab',
+				'wikieditor-previewDialog-loading',
 			),
 		),
 		'publish' => array(
@@ -387,8 +406,7 @@ class WikiEditorHooks {
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules( &$toolbar ) {
-		global $wgOut, $wgUser, $wgJsMimeType;
-		global $wgWikiEditorModules, $wgUsabilityInitiativeResourceMode;
+		global $wgUser, $wgWikiEditorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
 		$preferences = array();

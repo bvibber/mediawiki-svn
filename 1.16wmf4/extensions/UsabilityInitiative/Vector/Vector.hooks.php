@@ -14,16 +14,16 @@ class VectorHooks {
 		'raw' => array(
 			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 25 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
-			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 3 ),
-			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
+			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 5 ),
+			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 9 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 15 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 21 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 52 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 60 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 52 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 61 ),
 		),
 	);
 	static $modules = array(
@@ -71,7 +71,15 @@ class VectorHooks {
 		'footercleanup' => array(
 		),
 		'simplesearch' => array(
-			'i18n' => 'WikiEditorToc',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'vector-simplesearch',
+				),
+				'disablesuggest' => array(
+					'key' => 'disablesuggest',
+				),
+			),
+			'i18n' => 'VectorSimpleSearch',
 			'messages' => array(
 				'vector-simplesearch-search',
 				'vector-simplesearch-containing',
@@ -91,8 +99,7 @@ class VectorHooks {
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules() {
-		global $wgUser, $wgJsMimeType, $wgOut;
-		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
+		global $wgUser, $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Don't load Vector modules for non-Vector skins
 		// They won't work but will throw unused JS in the client's face
@@ -168,7 +175,7 @@ class VectorHooks {
 					isset( self::$modules[$module]['preferences'] ) ) {
 				wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 				foreach ( self::$modules[$module]['preferences'] as $key => $preference ) {
-					if ( $key == 'enable' && !$enable['user'] ) {
+					if ( ( $key == 'enable' && !$enable['user'] ) || !isset( $preference['ui'] ) ) {
 						continue;
 					}
 					

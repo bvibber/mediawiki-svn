@@ -2,37 +2,41 @@
 /* First draft and will be changing greatly */
 
 $j(document).ready( function() {
-	if( !wgVectorEnabledModules.collapsiblenav ) {
+	if ( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
-	var mod = {
-		'browsers': {
-			// Left-to-right languages
-			'ltr': {
-				// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
-				'msie': [['>=', 7]],
-				'opera': [['>=', 9.6]],
-				'konqueror': [['>=', 4.0]],
-				'blackberry': false,
-				'ipod': false,
-				'iphone': false,
-				'ps3': false
-			},
-			// Right-to-left languages
-			'rtl': {
-				'msie': [['>=', 7]],
-				'opera': [['>=', 9.6]],
-				'konqueror': [['>=', 4.0]],
-				'blackberry': false,
-				'ipod': false,
-				'iphone': false,
-				'ps3': false
-			}
+
+	/* Browser Support */
+
+	var map = {
+		// Left-to-right languages
+		'ltr': {
+			// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
+			'msie': [['>=', 7]],
+			'opera': [['>=', 9.6]],
+			'konqueror': [['>=', 4.0]],
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false,
+			'ps3': false
+		},
+		// Right-to-left languages
+		'rtl': {
+			'msie': [['>=', 7]],
+			'opera': [['>=', 9.6]],
+			'konqueror': [['>=', 4.0]],
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false,
+			'ps3': false
 		}
 	};
-	if ( !$j.wikiEditor.isSupported( mod ) ) {
+	if ( !mw.usability.testBrowser( map ) ) {
 		return true;
 	}
+
+	/* Bucket Testing */
+
 	// Fallback to old version
 	var version = 1;
 	// Allow new version override
@@ -51,6 +55,9 @@ $j(document).ready( function() {
 			}
 		}
 	}
+
+	/* Special Language Portal Handling */
+
 	// Language portal splitting feature (if it's turned on)
 	if ( version == 2 ) {
 		// How many links to show in the primary languages portal
@@ -144,9 +151,9 @@ $j(document).ready( function() {
 		// Always show the primary interwiki language portal
 		$j( '#p-lang' ).addClass( 'persistent' );
 	}
-	
+
 	/* General Portal Modification */
-	
+
 	// Always show the first portal
 	$j( '#mw-panel > div.portal:first' ).addClass( 'first persistent' );
 	// Apply a class to the entire panel to activate styles
@@ -184,23 +191,18 @@ $j(document).ready( function() {
 			.find( 'div.body' )
 			.slideToggle( 'fast' );
 	}
+
+	/* Tab Indexing */
+
 	var $headings = $j( '#mw-panel > div.portal:not(.persistent) > h5' );
-	/** Copy-pasted from jquery.wikiEditor.dialogs - :( */
-	// Find the highest tabindex in use
-	var maxTI = 0;
-	$j( '[tabindex]' ).each( function() {
-		var ti = parseInt( $j(this).attr( 'tabindex' ) );
-		if ( ti > maxTI )
-			maxTI = ti;
-	});
-	var tabIndex = maxTI + 1;
+	// Get the highest tab index
+	var tabIndex = mw.usability.getMaxTabIndex() + 1;
 	// Fix the search not having a tabindex
 	$j( '#searchInput' ).attr( 'tabindex', tabIndex++ );
 	// Make it keyboard accessible
 	$headings.each( function() {
 		$j(this).attr( 'tabindex', tabIndex++ );
 	} );
-	/** End of copy-pasted section */
 	// Toggle the selected menu's class and expand or collapse the menu
 	$headings
 		// Make the space and enter keys act as a click
@@ -306,9 +308,10 @@ $j(document).ready( function() {
 		$j(this).data( 'origtext', $j(this).val() );
 	});
 	// Attach our own handler for onbeforeunload which respects the current one
-	fallbackWindowOnBeforeUnload = window.onbeforeunload;
-	window.onbeforeunload = function() {
+	var fallbackWindowOnBeforeUnload = window.onbeforeunload;
+	var ourWindowOnBeforeUnload = function() {
 		var fallbackResult = undefined;
+		var retval = undefined;
 		// Check if someone already set on onbeforeunload hook
 		if ( fallbackWindowOnBeforeUnload ) {
 			// Get the result of their onbeforeunload hook
@@ -317,19 +320,37 @@ $j(document).ready( function() {
 		// Check if their onbeforeunload hook returned something
 		if ( fallbackResult !== undefined ) {
 			// Exit here, returning their message
-			return fallbackResult;
+			retval = fallbackResult;
+		} else {
+			// Check if the current values of some form elements are the same as
+			// the original values
+			if (
+				wgAction == 'submit' ||
+				$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
+				$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
+			) {
+				// Return our message
+				retval = mw.usability.getMsg( 'vector-editwarning-warning' );
+			}
 		}
-		// Check if the current values of some form elements are the same as
-		// the original values
-		if(
-			wgAction == 'submit' ||
-			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
-			$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
-		) {
-			// Return our message
-			return mw.usability.getMsg( 'vector-editwarning-warning' );
+		
+		// Unset the onbeforeunload handler so we don't break page caching in Firefox
+		window.onbeforeunload = null;
+		if ( retval !== undefined ) {
+			return retval;
 		}
+	};
+	var pageShowHandler = function() {
+		// Re-add onbeforeunload handler
+		window.onbeforeunload = ourWindowOnBeforeUnload;
+	};
+	pageShowHandler();
+	if ( window.addEventListener ) {
+		window.addEventListener('pageshow', pageShowHandler, false);
+	} else if ( window.attachEvent ) {
+		window.attachEvent( 'pageshow', pageShowHandler );
 	}
+	
 	// Add form submission handler
 	$j( 'form' ).submit( function() {
 		// Restore whatever previous onbeforeload hook existed
@@ -349,7 +370,7 @@ if ( wgVectorEnabledModules.simplesearch && skin == 'vector' && typeof os_autolo
 
 $j(document).ready( function() {
 	// Only use this function in conjuction with the Vector skin
-	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
+	if( !wgVectorEnabledModules.simplesearch || wgVectorPreferences.simplesearch.disablesuggest || skin != 'vector' ) {
 		return true;
 	}
 	var mod = {
@@ -383,14 +404,16 @@ $j(document).ready( function() {
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
-					'bottom': 0,
-					'padding': '0.25em',
 					'color': '#999999',
-					'cursor': 'text'
+					'cursor': 'text',
+					'margin': '0 4px',
+					'top': '6px',
+					'line-height': '13px'
 				})
 				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
-				.click( function() {
+				.mousedown( function() {
 					$j(this).parent().find( 'input#searchInput' ).focus();
+					return false;
 				})
 				.appendTo( $j(this).parent() );
 			if ( $j(this).val() == '' ) {
@@ -450,9 +473,11 @@ $j(document).ready( function() {
 			}
 		},
 		delay: 120,
-		positionFromLeft: $j( 'body' ).is( '.rtl' )
+		positionFromLeft: $j( 'body' ).is( '.rtl' ),
+		highlightInput: true
 	} )
-		.bind( 'paste cut click', function() {
+		.bind( 'paste cut', function( e ) {
+			// make sure paste and cut events from the mouse trigger the keypress handler and cause the suggestions to update
 			$j( this ).trigger( 'keypress' );
 		} );
 	$j( '#searchInput' ).suggestions( {
@@ -489,8 +514,5 @@ $j(document).ready( function() {
 			}
 		},
 		$region: $j( '#simpleSearch' )
-	} )
-		.bind( 'paste cut click', function() {
-			$j( this ).trigger( 'keypress' );
-		} );
+	} );
 });

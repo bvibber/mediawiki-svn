@@ -62,6 +62,9 @@ function optInGetPOSTData() {
 		case 'ipod':
 			osIndex = 'iphoneos';
 		break;
+		case 'ipad':
+			osIndex = 'iphoneos';
+		break;
 	}
 	return { 'survey-browser': browserIndex, 'survey-os': osIndex,
 		'survey-res-x': screen.width, 'survey-res-y': screen.height,

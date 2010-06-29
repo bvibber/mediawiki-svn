@@ -5,11 +5,12 @@
 if ( typeof mw == 'undefined' ) {
 	mw = {};
 }
-
+/**
+ * Base object for Usability Initiative functionality - naming is temporary
+ */
 mw.usability = {
-	messages: {}
+	'messages': {}
 }
-
 /**
  * Load jQuery UI if requested, otherwise just execute the callback immediately.
  * This is a dirty hack used to work around a bug in older versions of Netscape,
@@ -29,7 +30,6 @@ mw.usability.load = function( deps, callback ) {
 		callback();
 	}
 };
-
 /**
  * Add messages to a local message table
  */
@@ -38,7 +38,6 @@ mw.usability.addMessages = function( messages ) {
 		this.messages[key] = messages[key];
 	}
 };
-
 /**
  * Get a message
  */
@@ -55,6 +54,79 @@ mw.usability.getMsg = function( key, args ) {
 		msg = msg.replace( '$1', args );
 	}
 	return msg;
+};
+/**
+ * Checks the current browser against a support map object to determine if the browser has been black-listed or not.
+ * Because these rules are often very complex, the object contains configurable operators and can check against
+ * either the browser version number or string. This process also involves checking if the current browser is amung
+ * those which we have configured as compatible or not. If the browser was not configured as comptible we just go on
+ * assuming things will work - the argument here is to prevent the need to update the code when a new browser comes
+ * to market. The assumption here is that any new browser will be built on an existing engine or be otherwise so
+ * similar to another existing browser that things actually do work as expected. The merrits of this argument, which
+ * is essentially to blacklist rather than whitelist are debateable, but at this point we've decided it's the more
+ * "open-web" way to go.
+ * 
+ * This function depends on the jquery browser plugin.
+ * 
+ * A browser map is in the following format:
+ * {
+ * 		'ltr': {
+ * 			// Multiple rules with configurable operators
+ * 			'msie': [['>=', 7], ['!=', 9]],
+ *			// Blocked entirely
+ * 			'iphone': false
+ * 		},
+ * 		'rtl': {
+ * 			// Test against a string
+ * 			'msie': [['!==', '8.1.2.3']],
+ * 			// RTL rules do not fall through to LTR rules, you must explicity set each of them
+ * 			'iphone': false
+ * 		}
+ * 	}
+ * 
+ * The user agent string is interpreted. Common browser names are as follows:
+ * 		'msie', 'firefox', 'opera', 'safari', 'chrome', 'blackberry', 'ipod', 'iphone', 'ps3', 'konqueror'
+ * 
+ * @param Object of browser support map
+ */
+mw.usability.testBrowser = function( map ) {
+	// Check over each browser condition to determine if we are running in a compatible client
+	var browser = map[$j( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$j.browser.name];
+	if ( typeof browser !== 'object' ) {
+		// Unknown, so we assume it's working
+		return true;
+	}
+	for ( var condition in browser ) {
+		var op = browser[condition][0];
+		var val = browser[condition][1];
+		if ( val === false ) {
+			return false;
+		} else if ( typeof val == 'string' ) {
+			if ( !( eval( '$j.browser.version' + op + '"' + val + '"' ) ) ) {
+				return false;
+			}
+		} else if ( typeof val == 'number' ) {
+			if ( !( eval( '$j.browser.versionNumber' + op + val ) ) ) {
+				return false;
+			}
+		}
+	}
+	return true;
+};
+/**
+ * Finds the highest tabindex in use.
+ * 
+ * @return Integer of highest tabindex on the page
+ */
+mw.usability.getMaxTabIndex = function() {
+	var maxTI = 0;
+	$j( '[tabindex]' ).each( function() {
+		var ti = parseInt( $j(this).attr( 'tabindex' ) );
+		if ( ti > maxTI ) {
+			maxTI = ti;
+		}
+	} );
+	return maxTI;
 };
 /*
  * jQuery Asynchronous Plugin 1.0
@@ -141,13 +213,16 @@ $.fn.eachAsync = function(opts)
 
 // Cache ellipsed substrings for every string-width combination
 var cache = { };
+// Use a seperate cache when match highlighting is enabled
+var matchTextCache = { };
 
 $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
 		'position': 'center',
 		'tooltip': false,
 		'restoreText': false,
-		'hasSpan': false
+		'hasSpan': false,
+		'matchText': null
 	}, options );
 	$(this).each( function() {
 		var $this = $(this);
@@ -158,51 +233,91 @@ $.fn.autoEllipsis = function( options ) {
 				$this.text( $this.data( 'autoEllipsis.originalText' ) );
 			}
 		}
-		var text = $this.text();
-		var w = $this.width();
-		var $text;
-		if ( options.hasSpan ) {
-			$text = $this.children( 'span' );
+		
+		// container element - used for measuring against
+		var $container = $this;
+		// trimmable text element - only the text within this element will be trimmed
+		var $trimmableText = null;
+		// protected text element - the width of this element is counted, but next is never trimmed from it
+		var $protectedText = null;
+
+		if ( options.matchText ) {
+			var text = $this.text();
+			var matchedText = options.matchText;
+			$trimmableText =  $( '<span />' )
+				.css( 'whiteSpace', 'nowrap' )
+				.addClass( 'autoellipsis-trimmed' )
+				.text( $this.text().substr( matchedText.length, $this.text().length ) );
+			$protectedText = $( '<span />' )
+				.addClass( 'autoellipsis-matched' )
+				.css( 'whiteSpace', 'nowrap' )
+				.text( options.matchText );
+			$container
+				.empty()
+				.append( $protectedText )
+				.append( $trimmableText );
 		} else {
-			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
-			$this.empty().append( $text );
+			if ( options.hasSpan ) {
+				$trimmableText = $this.children( options.selector );
+			} else {
+				$trimmableText = $( '<span />' )
+					.css( 'whiteSpace', 'nowrap' )
+					.text( $this.text() );
+				$this
+					.empty()
+					.append( $trimmableText );
+			}
 		}
 		
+		var text = $container.text();
+		var trimmableText = $trimmableText.text();
+		var w = $container.width();
+		var pw = $protectedText ? $protectedText.width() : 0;
 		// Try cache
 		if ( !( text in cache ) ) {
 			cache[text] = {};
 		}
-		if ( w in cache[text] ) {
-			$text.text( cache[text][w] );
+		if ( options.matchText && !( text in matchTextCache ) ) {
+			matchTextCache[text] = {};
+		}
+		if ( options.matchText && !( options.matchText in matchTextCache[text] ) ) {
+			matchTextCache[text][options.matchText] = {};
+		}
+		if ( !options.matchText && w in cache[text] ) {
+			$container.html( cache[text][w] );
 			if ( options.tooltip )
-				$text.attr( 'title', text );
+				$container.attr( 'title', text );
 			return;
 		}
-		
-		$text.text( text );
-		if ( $text.width() > w ) {
+		if( options.matchText && options.matchText in matchTextCache[text] && w in matchTextCache[text][options.matchText] ) {
+			$container.html( matchTextCache[text][options.matchText][w] );
+			if ( options.tooltip )
+				$container.attr( 'title', text );
+			return;
+		}
+		if ( $trimmableText.width() + pw > w ) {
 			switch ( options.position ) {
 				case 'right':
 					// Use binary search-like technique for efficiency
-					var l = 0, r = text.length;
+					var l = 0, r = trimmableText.length;
 					do {
 						var m = Math.ceil( ( l + r ) / 2 );
-						$text.text( text.substr( 0, m ) + '...' );
-						if ( $text.width() > w ) {
+						$trimmableText.text( trimmableText.substr( 0, m ) + '...' );
+						if ( $trimmableText.width() + pw > w ) {
 							// Text is too long
 							r = m - 1;
 						} else {
 							l = m;
 						}
 					} while ( l < r );
-					$text.text( text.substr( 0, l ) + '...' );
+					$trimmableText.text( trimmableText.substr( 0, l ) + '...' );
 					break;
 				case 'center':
 					// TODO: Use binary search like for 'right'
-					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
+					var i = [Math.round( trimmableText.length / 2 ), Math.round( trimmableText.length / 2 )];
 					var side = 1; // Begin with making the end shorter
-					while ( $text.outerWidth() > w  && i[0] > 0 ) {
-						$text.text( text.substr( 0, i[0] ) + '...' + text.substr( i[1] ) );
+					while ( $trimmableText.outerWidth() + pw > w  && i[0] > 0 ) {
+						$trimmableText.text( trimmableText.substr( 0, i[0] ) + '...' + trimmableText.substr( i[1] ) );
 						// Alternate between trimming the end and begining
 						if ( side == 0 ) {
 							// Make the begining shorter
@@ -218,16 +333,22 @@ $.fn.autoEllipsis = function( options ) {
 				case 'left':
 					// TODO: Use binary search like for 'right'
 					var r = 0;
-					while ( $text.outerWidth() > w && r < text.length ) {
-						$text.text( '...' + text.substr( r ) );
+					while ( $trimmableText.outerWidth() + pw > w && r < trimmableText.length ) {
+						$trimmableText.text( '...' + trimmableText.substr( r ) );
 						r++;
 					}
 					break;
 			}
 		}
-		if ( options.tooltip )
-			$text.attr( 'title', text );
-		cache[text][w] = $text.text();
+		if ( options.tooltip ) {
+			$container.attr( 'title', text );
+		}
+		if ( options.matchText ) {
+			matchTextCache[text][options.matchText][w] = $container.html();
+		} else {
+			cache[text][w] = $container.html();
+		}
+		
 	} );
 };
 
@@ -762,6 +883,8 @@ $.fn.extend( {
  *		Type: Number, Range: 1 - infinity, Default: 3
  * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
  *		Type: Boolean, Default: true
+ * highlightInput: Whether to hightlight matched portions of the input or not
+ *		Type: Boolean, Default: false
  */
 ( function( $ ) {
 
@@ -869,27 +992,32 @@ $.suggestions = {
 						$results.empty();
 						var expWidth = -1;
 						var $autoEllipseMe = $( [] );
+						var matchedText = null;
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
+							var text = context.config.suggestions[i];
 							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
-								.mouseover( function( e ) {
+								.mousemove( function( e ) {
+									context.data.selectedWithMouse = true;
 									$.suggestions.highlight(
 										context, $(this).closest( '.suggestions-results div' ), false
 									);
 								} )
 								.appendTo( $results );
-							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
 								// Add <span> with text
+								if( context.config.highlightInput ) {
+									matchedText = text.substr( 0, context.data.prevText.length );
+								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )
-										.text( context.config.suggestions[i] )
-								);
+										.text( text )
+									);
 								
 								// Widen results box if needed
 								// New width is only calculated here, applied later
@@ -906,7 +1034,7 @@ $.suggestions = {
 							context.data.$container.width( Math.min( expWidth, maxWidth ) );
 						}
 						// autoEllipse the results. Has to be done after changing the width
-						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true, matchText: matchedText } );
 					}
 				}
 				break;
@@ -921,6 +1049,7 @@ $.suggestions = {
 				break;
 			case 'submitOnClick':
 			case 'positionFromLeft':
+			case 'highlightInput':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -935,7 +1064,7 @@ $.suggestions = {
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
 				if( selected.is( '.suggestions-special' ) ) {
-					result = context.data.$container.find( '.suggestions-results div:last' )
+					result = context.data.$container.find( '.suggestions-result:last' )
 				} else {
 					result = selected.prev();
 					if ( selected.length == 0 ) {
@@ -972,7 +1101,7 @@ $.suggestions = {
 			result.addClass( 'suggestions-result-current' );
 		}
 		if ( updateTextbox ) {
-			if ( result.length == 0 ) {
+			if ( result.length == 0 || result.is( '.suggestions-special' ) ) {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
@@ -982,7 +1111,6 @@ $.suggestions = {
 			}
 			context.data.$textbox.trigger( 'change' );
 		}
-		$.suggestions.special( context );
 	},
 	/**
 	 * Respond to keypress event
@@ -995,7 +1123,8 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', false );
+					$.suggestions.highlight( context, 'next', true );
+					context.data.selectedWithMouse = false;
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -1004,7 +1133,8 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', false );
+					$.suggestions.highlight( context, 'prev', true );
+					context.data.selectedWithMouse = false;
 				}
 				preventDefault = wasVisible;
 				break;
@@ -1021,8 +1151,9 @@ $.suggestions = {
 				context.data.$container.hide();
 				preventDefault = wasVisible;
 				selected = context.data.$container.find( '.suggestions-result-current' );
-				if ( selected.size() == 0 ) {
-					// if nothing is selected, cancel any current requests and submit the form
+				if ( selected.size() == 0 || context.data.selectedWithMouse ) {
+					// if nothing is selected OR if something was selected with the mouse, 
+					// cancel any current requests and submit the form
 					$.suggestions.cancel( context );
 					context.config.$region.closest( 'form' ).submit();
 				} else if ( selected.is( '.suggestions-special' ) ) {
@@ -1072,7 +1203,8 @@ $.fn.suggestions = function() {
 					'delay': 120,
 					'submitOnClick': false,
 					'maxExpandFactor': 3,
-					'positionFromLeft': true
+					'positionFromLeft': true,
+					'highlightInput': false
 				}
 			};
 		}
@@ -1109,7 +1241,8 @@ $.fn.suggestions = function() {
 				'visibleResults': 0,
 				// Suggestion the last mousedown event occured on
 				'mouseDownOn': $( [] ),
-				'$textbox': $(this)
+				'$textbox': $(this),
+				'selectedWithMouse': false
 			};
 			// Setup the css for positioning the results box
 			var newCSS = {
@@ -1170,7 +1303,8 @@ $.fn.suggestions = function() {
 							}
 							context.data.$textbox.focus();
 						} )
-						.mouseover( function( e ) {
+						.mousemove( function( e ) {
+							context.data.selectedWithMouse = true;
 							$.suggestions.highlight(
 								context, $( e.target ).closest( '.suggestions-special' ), false
 							);
@@ -1731,33 +1865,8 @@ $.wikiEditor = {
 			// Cache hit
 			return mod.supported;
 		}
-		// Check if we have any compatiblity information on-hand for the current browser
-		if ( !( $.browser.name in mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
-			// Assume good faith :) 
-			return mod.supported = true;
-		}
-		// Check over each browser condition to determine if we are running in a compatible client
-		var browser = mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
-		if ( typeof browser != 'object' ) {
-			return mod.supported = false;
-		}
-		for ( var condition in browser ) {
-			var op = browser[condition][0];
-			var val = browser[condition][1];
-			if ( val === false ) {
-				return mod.supported = false;
-			} else if ( typeof val == 'string' ) {
-				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-					return mod.supported = false;
-				}
-			} else if ( typeof val == 'number' ) {
-				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-					return mod.supported = false;
-				}
-			}
-		}
-		// Return and also cache the return value - this will be checked somewhat often
-		return mod.supported = true;
+		// Run a browser support test and then cache and return the result
+		return mod.supported = mw.usability.testBrowser( mod.browsers );
 	},
 	/**
 	 * Checks if a module has a specific requirement
@@ -3725,14 +3834,8 @@ fn: {
 	 * @param $elements Elements to set tabindexes on. If they already have tabindexes, this function can behave a bit weird
 	 */
 	setTabindexes: function( $elements ) {
-		// Find the highest tabindex in use
-		var maxTI = 0;
-		$j( '[tabindex]' ).each( function() {
-			var ti = parseInt( $j(this).attr( 'tabindex' ) );
-			if ( ti > maxTI )
-				maxTI = ti;
-		});
-		var tabIndex = maxTI + 1;
+		// Get the highest tab index
+		var tabIndex = mw.usability.getMaxTabIndex() + 1;
 		$elements.each( function() {
 			$j(this).attr( 'tabindex', tabIndex++ );
 		} );
@@ -4228,7 +4331,7 @@ fn: {
 			case 'table':
 				$page.addClass( 'page-table' );
 				var html =
-					'<table cellpadding=0 cellspacing=0 ' + 'border=0 width="100%" class="table table-"' + id + '">';
+					'<table cellpadding=0 cellspacing=0 ' + 'border=0 width="100%" class="table table-' + id + '">';
 				if ( 'headings' in page ) {
 					html += $.wikiEditor.modules.toolbar.fn.buildHeading( context, page.headings )
 				}

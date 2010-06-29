@@ -2,37 +2,41 @@
 /* First draft and will be changing greatly */
 
 $j(document).ready( function() {
-	if( !wgVectorEnabledModules.collapsiblenav ) {
+	if ( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
-	var mod = {
-		'browsers': {
-			// Left-to-right languages
-			'ltr': {
-				// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
-				'msie': [['>=', 7]],
-				'opera': [['>=', 9.6]],
-				'konqueror': [['>=', 4.0]],
-				'blackberry': false,
-				'ipod': false,
-				'iphone': false,
-				'ps3': false
-			},
-			// Right-to-left languages
-			'rtl': {
-				'msie': [['>=', 7]],
-				'opera': [['>=', 9.6]],
-				'konqueror': [['>=', 4.0]],
-				'blackberry': false,
-				'ipod': false,
-				'iphone': false,
-				'ps3': false
-			}
+
+	/* Browser Support */
+
+	var map = {
+		// Left-to-right languages
+		'ltr': {
+			// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
+			'msie': [['>=', 7]],
+			'opera': [['>=', 9.6]],
+			'konqueror': [['>=', 4.0]],
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false,
+			'ps3': false
+		},
+		// Right-to-left languages
+		'rtl': {
+			'msie': [['>=', 7]],
+			'opera': [['>=', 9.6]],
+			'konqueror': [['>=', 4.0]],
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false,
+			'ps3': false
 		}
 	};
-	if ( !$j.wikiEditor.isSupported( mod ) ) {
+	if ( !mw.usability.testBrowser( map ) ) {
 		return true;
 	}
+
+	/* Bucket Testing */
+
 	// Fallback to old version
 	var version = 1;
 	// Allow new version override
@@ -51,6 +55,9 @@ $j(document).ready( function() {
 			}
 		}
 	}
+
+	/* Special Language Portal Handling */
+
 	// Language portal splitting feature (if it's turned on)
 	if ( version == 2 ) {
 		// How many links to show in the primary languages portal
@@ -144,9 +151,9 @@ $j(document).ready( function() {
 		// Always show the primary interwiki language portal
 		$j( '#p-lang' ).addClass( 'persistent' );
 	}
-	
+
 	/* General Portal Modification */
-	
+
 	// Always show the first portal
 	$j( '#mw-panel > div.portal:first' ).addClass( 'first persistent' );
 	// Apply a class to the entire panel to activate styles
@@ -184,23 +191,18 @@ $j(document).ready( function() {
 			.find( 'div.body' )
 			.slideToggle( 'fast' );
 	}
+
+	/* Tab Indexing */
+
 	var $headings = $j( '#mw-panel > div.portal:not(.persistent) > h5' );
-	/** Copy-pasted from jquery.wikiEditor.dialogs - :( */
-	// Find the highest tabindex in use
-	var maxTI = 0;
-	$j( '[tabindex]' ).each( function() {
-		var ti = parseInt( $j(this).attr( 'tabindex' ) );
-		if ( ti > maxTI )
-			maxTI = ti;
-	});
-	var tabIndex = maxTI + 1;
+	// Get the highest tab index
+	var tabIndex = mw.usability.getMaxTabIndex() + 1;
 	// Fix the search not having a tabindex
 	$j( '#searchInput' ).attr( 'tabindex', tabIndex++ );
 	// Make it keyboard accessible
 	$headings.each( function() {
 		$j(this).attr( 'tabindex', tabIndex++ );
 	} );
-	/** End of copy-pasted section */
 	// Toggle the selected menu's class and expand or collapse the menu
 	$headings
 		// Make the space and enter keys act as a click

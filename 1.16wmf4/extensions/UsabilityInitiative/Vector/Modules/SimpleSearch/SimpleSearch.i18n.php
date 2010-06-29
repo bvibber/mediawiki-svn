@@ -135,6 +135,21 @@ $messages['csb'] = array(
 	'vector-simplesearch-search' => 'Szëkba',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'vector-simplesearch-search' => 'иска́ниѥ',
+	'vector-simplesearch-containing' => 'сѥ дрьжащи···',
+);
+
+/** Chuvash (Чӑвашла)
+ * @author FLAGELLVM DEI
+ */
+$messages['cv'] = array(
+	'vector-simplesearch-search' => 'Шырав',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -351,6 +366,14 @@ $messages['id'] = array(
 	'vector-simplesearch-containing' => 'isian ...',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'vector-simplesearch-search' => 'Serchez',
+	'vector-simplesearch-containing' => 'quan kontenas...',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco
@@ -468,6 +491,13 @@ $messages['ml'] = array(
  */
 $messages['mn'] = array(
 	'vector-simplesearch-search' => 'Хайх',
+);
+
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'vector-simplesearch-containing' => '.......हे असलेले',
 );
 
 /** Malay (Bahasa Melayu)
@@ -589,13 +619,16 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'vector-simplesearch-search' => 'Maskay',
+	'vector-simplesearch-containing' => 'kaykunayuq: ...',
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'vector-simplesearch-search' => 'Căutați',
+	'vector-simplesearch-search' => 'Căutare',
 	'vector-simplesearch-containing' => 'conținând...',
 );
 
@@ -616,12 +649,19 @@ $messages['ru'] = array(
 	'vector-simplesearch-containing' => 'содержащие…',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'vector-simplesearch-search' => 'Глядати',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
 	'vector-simplesearch-search' => 'Көрдөөһүн',
-	'vector-simplesearch-containing' => 'иһинээҕи...',
+	'vector-simplesearch-containing' => 'тыл баар ыстатыйалара...',
 );
 
 /** Sardinian (Sardu)
@@ -802,14 +842,25 @@ $messages['yi'] = array(
 	'vector-simplesearch-containing' => 'כולל…',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'vector-simplesearch-search' => 'Ṣàwárí',
+	'vector-simplesearch-containing' => 'tó ní...',
+);
+
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'vector-simplesearch-search' => '搵嘢',
+	'vector-simplesearch-containing' => '名單傳送緊...',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author PhiLiP
  * @author Shizhao
  */

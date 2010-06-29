@@ -74,7 +74,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-preview-preference' => 'مكّن المعاينه جنبًا لجنب',
+	'wikieditor-preview-preference' => 'شغّل الپروڤه بتاعة الجنب مع جنب',
 	'wikieditor-preview-tab' => 'پروڤه',
 	'wikieditor-preview-changes-tab' => 'تغييرات',
 	'wikieditor-preview-loading' => 'بيلوّد...',
@@ -170,6 +170,13 @@ $messages['csb'] = array(
 	'wikieditor-preview-loading' => 'Ladowanié...',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'wikieditor-preview-changes-tab' => 'мѣ́нꙑ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -181,10 +188,16 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Christian List
+ * @author Froztbyte
  * @author Sarrus
+ * @author Sir48
  */
 $messages['da'] = array(
+	'wikieditor-preview-preference' => 'Aktiver forhåndsvisning side-om-side',
 	'wikieditor-preview-tab' => 'Forhåndsvisning',
+	'wikieditor-preview-changes-tab' => 'Ændringer',
+	'wikieditor-preview-loading' => 'Indlæser...',
 );
 
 /** German (Deutsch)
@@ -522,6 +535,23 @@ $messages['ml'] = array(
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor-preview-preference' => 'सोबतच बाजूस दिसणारी झलक शक्य करा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-preview-preference' => 'Aktifkan pratonton sisi',
+	'wikieditor-preview-tab' => 'Pratonton',
+	'wikieditor-preview-changes-tab' => 'Perubahan',
+	'wikieditor-preview-loading' => 'Sedang dimuat turun...',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -543,10 +573,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
  * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'wikieditor-preview-preference' => 'Ta i bruk førehandsvising side-om-side',
 	'wikieditor-preview-tab' => 'Førehandsvising',
 	'wikieditor-preview-changes-tab' => 'Endringar',
 	'wikieditor-preview-loading' => 'Lastar…',
@@ -634,11 +666,22 @@ $messages['pt-br'] = array(
 	'wikieditor-preview-loading' => 'Carregando...',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-preview-preference' => 'Chiqa-chiqallan ñawpaq qhawayta atichiy',
+	'wikieditor-preview-tab' => 'Ñawpaqta qhawallay',
+	'wikieditor-preview-changes-tab' => 'Hukchasqakuna',
+	'wikieditor-preview-loading' => 'Chaqnamuspa…',
+);
+
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'wikieditor-preview-preference' => 'Activează previzualizarea parte cu parte',
+	'wikieditor-preview-preference' => 'Activează previzualizarea unul-lângă-altul',
 	'wikieditor-preview-tab' => 'Previzualizare',
 	'wikieditor-preview-changes-tab' => 'Modificări',
 	'wikieditor-preview-loading' => 'Încărcare...',
@@ -662,6 +705,14 @@ $messages['ru'] = array(
 	'wikieditor-preview-tab' => 'Предпросмотр',
 	'wikieditor-preview-changes-tab' => 'Изменения',
 	'wikieditor-preview-loading' => 'Загрузка…',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-preview-changes-tab' => 'Зміны',
+	'wikieditor-preview-loading' => 'Награваня...',
 );
 
 /** Yakut (Саха тыла)
@@ -711,6 +762,19 @@ $messages['sr-ec'] = array(
 	'wikieditor-preview-loading' => 'Учитавање...',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-preview-loading' => 'Učitavanje...',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-preview-tab' => 'Pramidang',
+	'wikieditor-preview-loading' => 'Ngamuat…',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -726,7 +790,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'wikieditor-preview-preference' => 'Kuona hakikisho ya mabadiliko na ukurasa ulivyo sasa kwa pamoja.',
-	'wikieditor-preview-tab' => 'Hakikisho',
+	'wikieditor-preview-tab' => 'Hakiki',
 	'wikieditor-preview-changes-tab' => 'Mabadiliko',
 	'wikieditor-preview-loading' => 'Inapakiwa...',
 );
@@ -742,10 +806,12 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
-	'wikieditor-preview-preference' => 'เปิดคุณสมบัติดูหน้าแบบสองฝั่ง',
+	'wikieditor-preview-preference' => 'เปิดใช้งานการแสดงตัวอย่างแบบเคียงข้าง',
+	'wikieditor-preview-tab' => 'แสดงตัวอย่าง',
 	'wikieditor-preview-changes-tab' => 'ความเปลี่ยนแปลง',
 	'wikieditor-preview-loading' => 'กำลังโหลด...',
 );
@@ -820,6 +886,26 @@ $messages['yi'] = array(
 	'wikieditor-preview-tab' => 'פֿאראויסשטעלונג',
 	'wikieditor-preview-changes-tab' => 'ענדערונגען',
 	'wikieditor-preview-loading' => 'לאָדט…',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-preview-preference' => 'Ìgbàláyè àyẹ̀wò lẹ́gbẹ̀ẹ́ ara wọn',
+	'wikieditor-preview-tab' => 'Àyẹ̀wò',
+	'wikieditor-preview-changes-tab' => 'Àwọn àtúnṣe',
+	'wikieditor-preview-loading' => 'Únrùjáde...',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-preview-preference' => '用side-by-side預覽功能',
+	'wikieditor-preview-tab' => '預覽',
+	'wikieditor-preview-changes-tab' => '改動',
+	'wikieditor-preview-loading' => '載入緊…',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -60,7 +60,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-toc-preference' => 'مكّن جدول المحتويات القابل للتصفح',
+	'wikieditor-toc-preference' => 'Enable navigable table of contents',
 	'wikieditor-toc-show' => 'بيّن المحتويات',
 	'wikieditor-toc-hide' => 'خبّى المحتويات',
 );
@@ -68,9 +68,10 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'wikieditor-toc-preference' => 'Дазволіць навігацыйныя табліцы зьместу',
+	'wikieditor-toc-preference' => 'Уключыць зьмест з магчымасьцю навігацыі',
 	'wikieditor-toc-show' => 'Паказаць зьмест',
 	'wikieditor-toc-hide' => 'Схаваць зьмест',
 );
@@ -143,8 +144,10 @@ $messages['cy'] = array(
 
 /** Danish (Dansk)
  * @author Sarrus
+ * @author Sir48
  */
 $messages['da'] = array(
+	'wikieditor-toc-preference' => 'Aktiver navigerbar indholdsfortegnelse',
 	'wikieditor-toc-show' => 'Vis indhold',
 	'wikieditor-toc-hide' => 'Skjul indhold',
 );
@@ -435,6 +438,24 @@ $messages['ml'] = array(
 	'wikieditor-toc-hide' => 'ഉള്ളടക്കം മറയ്ക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor-toc-show' => 'अनुक्रमणिका दाखवा
+यात काय आहे ते दाखवा',
+	'wikieditor-toc-hide' => 'अनुक्रमणिका लपवा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-toc-preference' => 'Aktifkan navigasi senarai kandungan',
+	'wikieditor-toc-show' => 'Tampilkan kandungan',
+	'wikieditor-toc-hide' => 'Sembunyikan kandungan',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -451,6 +472,15 @@ $messages['nl'] = array(
 	'wikieditor-toc-preference' => 'Navigeerbare inhoudsopgave inschakelen',
 	'wikieditor-toc-show' => 'Inhoud weergeven',
 	'wikieditor-toc-hide' => 'Inhoud verbergen',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'wikieditor-toc-preference' => 'Ta i bruk navigerbar innhaldsliste',
+	'wikieditor-toc-show' => 'Vis innhald',
+	'wikieditor-toc-hide' => 'Gøym innhald',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -514,12 +544,15 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'wikieditor-toc-preference' => "Wamp'unalla samiq wachuchasqata atichiy",
 	'wikieditor-toc-show' => 'Samiqninta rikuchiy',
 	'wikieditor-toc-hide' => 'Samiqninta pakay',
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'wikieditor-toc-preference' => 'Activează cuprins navigabil',
@@ -588,6 +621,12 @@ $messages['sl'] = array(
 $messages['sr-ec'] = array(
 	'wikieditor-toc-show' => 'Покажи садржај',
 	'wikieditor-toc-hide' => 'Сакриј садржај',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-toc-show' => 'Pokaži sadržaj',
+	'wikieditor-toc-hide' => 'Sakrij sadržaj',
 );
 
 /** Swedish (Svenska)
@@ -690,12 +729,31 @@ $messages['yi'] = array(
 	'wikieditor-toc-hide' => 'באַהאַלטן אינהאַלט',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-toc-preference' => 'Ìgbàláyè pátákó àwọn àkóónú atọ́ka',
+	'wikieditor-toc-show' => 'Ìfihàn àwọn àkóónú',
+	'wikieditor-toc-hide' => 'Ìbòmọ́lẹ̀ àkóónú',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-toc-preference' => '啟用內客嘅導航表格',
+	'wikieditor-toc-show' => '顯示內容',
+	'wikieditor-toc-hide' => '收埋內容',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Onecountry
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
-	'wikieditor-toc-preference' => '启用可导航目录',
+	'wikieditor-toc-preference' => '启用导航目录',
 	'wikieditor-toc-show' => '显示内容',
 	'wikieditor-toc-hide' => '隐藏内容',
 );

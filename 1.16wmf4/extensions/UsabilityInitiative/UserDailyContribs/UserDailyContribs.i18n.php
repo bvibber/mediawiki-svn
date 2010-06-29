@@ -94,6 +94,13 @@ $messages['cs'] = array(
 	'userdailycontribs-desc' => 'Denní příspěvky uživatelů pro rozšíření sledující kliknutí',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'userdailycontribs-desc' => 'Brugeres daglige bidrag til brug for kliksporingsudvidelsen',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -134,6 +141,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'userdailycontribs-desc' => 'Contribuciones diarias de los usuarios para la extensión de seguimiento mediante clics',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'userdailycontribs-desc' => 'Lankidearen eguneko ekarpenak klikatze jarraipen luzapenerako',
 );
 
 /** Finnish (Suomi)
@@ -270,6 +284,20 @@ $messages['ml'] = array(
 	'userdailycontribs-desc' => 'ക്ലിക്കുകളിൽ ഉപയോക്താവിന്റെ ദൈനിക സംഭാവനകൾ അനുഗമിക്കാനുള്ള അനുബന്ധം',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'userdailycontribs-desc' => 'Sumbangan pengguna harian untuk pengesanan',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'userdailycontribs-desc' => "Kontribuzzjonijiet ta' kuljum tal-utenti għall-estensjoni tal-itraċċar tal-klikks",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -318,6 +346,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'userdailycontribs-desc' => 'Contribuições diárias dos usuários para a extensão de monitoração de cliques',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'userdailycontribs-desc' => "Ruraqkunap p'unchawnintin llamk'apusqankuna ñit'iy watiqay mast'arinapaq",
 );
 
 /** Romanian (Română)
@@ -416,6 +451,13 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'userdailycontribs-desc' => 'Đóng góp hàng ngày của thành viên dành cho bộ mở rộng theo dõi nhấn chuột',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'userdailycontribs-desc' => '用響撳追蹤擴展嘅每日用戶貢獻',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
