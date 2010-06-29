@@ -129,7 +129,7 @@ mw.Firefogg = function( options ) {
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	// Minimum version of firefogg allowed
-	min_firefogg_version: '1.1.0',
+	min_firefogg_version: '1.2.06',
 	
 	// The default encoder settings 
 	// NOTE: should be mw.getConfig based 
