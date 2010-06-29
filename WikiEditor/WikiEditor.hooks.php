@@ -13,7 +13,7 @@ class WikiEditorHooks {
 	static $scripts = array(
 		'raw' => array(
 			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 5 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 8 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 9 ),
 			array( 'src' => 'Modules/PreviewDialog/PreviewDialog.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
@@ -23,10 +23,10 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 108 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 109 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 108 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 109 ),
 		),
 	);
 	static $messages = array(
