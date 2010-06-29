@@ -171,3 +171,10 @@ $messages['sl'] = array(
 	'logofunctions-filenotexist' => 'Napaka: [[File:$1]] ne obstaja',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'logofunctions-filenotexist' => 'పొరపాటు: [[File:$1]] ఉనికిలో లేదు',
+);
+

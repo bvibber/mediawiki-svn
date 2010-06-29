@@ -352,6 +352,14 @@ $messages['cu'] = array(
 	'ct-and' => 'и',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'ct-anon-users' => 'Defnyddwyr anhysbys',
+	'ct-update-table' => 'Diweddarer y tabl',
+);
+
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Sarrus

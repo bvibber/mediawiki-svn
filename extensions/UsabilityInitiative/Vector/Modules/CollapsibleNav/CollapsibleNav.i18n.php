@@ -485,10 +485,18 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
-	'vector-collapsiblenav-preference' => 'Kuwezesha vitu vikunjike katika orodha wa urambazaji, katika umbo wa Vector',
+	'vector-collapsiblenav-preference' => 'Kuwezesha vitu vikunjike katika orodha ya urambazaji, katika umbo la Vector',
 	'vector-collapsiblenav-more' => 'Lugha zingine',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'vector-collapsiblenav-more' => 'మరిన్ని భాషలు',
 );
 
 /** Thai (ไทย)

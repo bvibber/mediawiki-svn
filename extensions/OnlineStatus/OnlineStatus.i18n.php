@@ -251,6 +251,26 @@ $messages['cy'] = array(
 	'onlinestatus-pref-offlineonlogout' => 'Newid nodyn fy nghyflwr i all-lein wrth allgofnodi',
 );
 
+/** Danish (Dansk)
+ * @author Amjaabc
+ */
+$messages['da'] = array(
+	'onlinestatus-desc' => "Angiver ønsker til visning, hvis brugeren for øjeblikket er til stede eller ikke på wiki'en",
+	'onlinestatus-js-anon' => 'Fejl: Du skal være logget ind for at bruge denne facilitet',
+	'onlinestatus-js-changed' => 'Din status er skiftet til "$1"',
+	'onlinestatus-js-error' => 'Ikke muligt at skifte tilstand, værdien "$1" er ikke gyldig',
+	'onlinestatus-subtitle-offline' => 'Brugeren er ikke logget ind i øjeblikket',
+	'onlinestatus-subtitle-online' => 'Brugeren er logget ind',
+	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Din status:',
+	'onlinestatus-toggles-explain' => 'Dette gør det muligt for dig at tillade andre brugere at se, om du er logget ind eller ikke, ved at se på din brugerside.',
+	'onlinestatus-toggles-show' => 'Vis på min brugerside, om jeg er logget ind eller ikke',
+	'onlinestatus-toggle-offline' => 'Ikke logget ind',
+	'onlinestatus-toggle-online' => 'Logget ind',
+	'onlinestatus-pref-onlineonlogin' => 'Skift min status til logget ind, når jeg logger ind',
+	'onlinestatus-pref-offlineonlogout' => 'Skift min status til ikke logget ind, når jeg logger ud',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

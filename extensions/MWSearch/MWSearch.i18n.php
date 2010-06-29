@@ -506,6 +506,13 @@ $messages['sk'] = array(
 	'mwsearch-desc' => 'Zásuvný modul MWSearch',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'mwsearch-desc' => 'Vtičnik MWSearch',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */

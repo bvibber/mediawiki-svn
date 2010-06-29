@@ -951,6 +951,7 @@ $messages['be-tarask'] = array(
 	'wikilog-comment-reject' => 'Адхіліць гэты камэнтар (неадкладнае дзеяньне)',
 	'wikilog-newtalk-text' => '<!-- пустая старонка створаная Вікіблёгам -->',
 	'wikilog-newtalk-summary' => 'аўтаматычна створана вікіблёгам',
+	'wikilog-feed-ns-title' => '$1 артыкулаў вікі-блёгу',
 	'wikilog-feed-description' => 'Чытаць апошнія паведамленьні на гэтым канале.',
 	'wikilog-comment-feed-title1' => 'Камэнтар $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Камэнтар $2 да $3 (#$1)',
@@ -1188,7 +1189,7 @@ $messages['br'] = array(
 	'wikilog-missing-wikilog' => 'Ar bajenn [[{{int:wikilog-help}}|wikilog]] evit [[{{FULLPAGENAME}}]] eo.
 
 N\'eus ket eus ar wikilog-mañ evit poent.
-Ret eo e vefe krouet da gentañ evit ma vefe posubl embann pennadoù hag implijout arc\'hweladurioù all ar wikilog.
+Ret eo e vefe krouet da gentañ evit ma vefe posupl embann pennadoù hag implijout arc\'hweladurioù all ar wikilog.
 
 * <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Krouiñ ar wikilog-mañ].</span>',
 	'wikilog-information' => 'Titouroù war wikilog',
@@ -1275,7 +1276,7 @@ Rankout a rafent bezañ implijet e pennadoù an esaouenn anv Wikilog hepken.",
 	'wikilog-posting-anonymously' => "N'oc'h ket luget evit poent ;
 embannet e vo hoc'h evezhiadenn en un doare dianv, anavezet gant ho chomlec'h lugañ da Internet.
 Rankout a rafec'h lakaat ul lesanv a-us a-benn anavezout hoc'h evezhiadenn, pe $1 evit ma vefe deroet en un doare reizh.",
-	'wikilog-anonymous-moderated' => "Ur wech ma vo postet hoc'h evezhiadenn ganeoc'h, ne vo ket posubl e lenn kerkent.
+	'wikilog-anonymous-moderated' => "Ur wech ma vo postet hoc'h evezhiadenn ganeoc'h, ne vo ket posupl e lenn kerkent.
 Ne vo gwelet an evezhiadenn nemet ur wech ma vo bet gwiriet gant ur merour.",
 	'wikilog-post-comment' => 'Postañ un addispleg nevez',
 	'wikilog-post-reply' => 'Embann ur respont nevez',
@@ -2808,6 +2809,7 @@ Go Artikel vereffentlige oder andri Wikilog-Funktione meglig mache, muess es zer
 	'wikilog-summary-categories' => 'Kategorisiert unter $2',
 	'wikilog-summary-more' => '[[$3|→ wyterläse …]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|Diskussion]])',
+	'wikilog-edit-hint' => '„Wikilog“-Artikel bearbeite: $1',
 	'wikilog-edit-fieldset-legend' => 'Wikilog-Optione:',
 	'wikilog-edit-signpub' => 'Die Artikel unterzeichne un publiziere',
 	'wikilog-edit-signpub-tooltip' => 'Sorgt derfir, ass dää Artikel bim Spychere unterzeichnet un publiziert wird im Wikilog.
@@ -2829,6 +2831,7 @@ Schalt des Chäschtli uus, wänn Du dr Artikel as Entwurf witt bhalte.',
 	'wikilog-comment-reject' => 'Dää Kommentar abwyse (Diräktaktion)',
 	'wikilog-newtalk-text' => '<!-- lääri Syte aagleit dur Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisch aagleit dur Wikilog',
+	'wikilog-feed-ns-title' => '$1 „Wikilog“-Artikel',
 	'wikilog-feed-description' => 'Di nejschte Byytreg in däm Feed läse.',
 	'wikilog-comment-feed-title1' => 'Aamerkig vu $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Aamerkig vu $2 zue $3 (#$1)',

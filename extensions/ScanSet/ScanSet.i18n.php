@@ -1242,6 +1242,14 @@ $messages['sk'] = array(
 	'scanset_prev' => '&lt; Späť',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'scanset_next' => 'Naslednji &gt;',
+	'scanset_prev' => '&lt; Prejšnji',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic

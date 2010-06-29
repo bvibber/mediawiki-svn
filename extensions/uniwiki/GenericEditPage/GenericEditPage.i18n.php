@@ -1617,6 +1617,7 @@ $messages['vep'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'gep-emailsubject' => '[$1] Gợi ý thể loại: $2',
 	'gep-categories' => 'Thể loại',
 	'gep-addcategory' => 'Thêm thể loại',
 	'gep-addcategorybutton' => 'Thêm',

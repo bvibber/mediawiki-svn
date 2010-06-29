@@ -118,6 +118,19 @@ $messages['gl'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo recibiu o parámetro de largo incorrecto "$1".',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'embedvideo-desc' => 'Fiegt e Parser-Funktion yy fir d Yybettig vu Videos us populäre Quälle',
+	'embedvideo-missing-params' => 'EmbedVideo manglet e Pflicht-Parameter.',
+	'embedvideo-bad-params' => 'EmbedVideo het e falsche Parameter empfange.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo het d Zeichechette „<code>$1</code>“ empfange, wu nit parst cha wäre.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo unterstitzt dr Videodienscht „<code>$1</code>“ nit.',
+	'embedvideo-bad-id' => 'EmbedVideo het e falschi Identifikation „$1“ fir s Repositorium „$2“ empfange.',
+	'embedvideo-illegal-width' => 'EmbedVideo het dr uugiltig Breiti-Parameter „$1“ empfange.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -52,9 +52,10 @@ $messages['ce'] = array(
 
 /** German (Deutsch)
  * @author Kebap
+ * @author Kghbln
  */
 $messages['de'] = array(
-	'wikimediamobile-desc' => 'MediaWiki unterstützt Funktionen für das Wikimedia-mobile Projekt, das sich hier befindet: http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'MediaWiki unterstützt Funktionen für das „Wikimedia-mobile“-Projekt, das hier zu finden ist: http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -1964,6 +1964,7 @@ Voit [{{fullurl:{{FULLPAGENAME}}|action=delvote}} merkitä oman tukesi tai vastu
  * @author IAlex
  * @author McDutchie
  * @author Meno25
+ * @author Peter17
  * @author PieRRoMaN
  * @author Urhixidur
  * @author Verdy p
@@ -2112,7 +2113,7 @@ Vous pouvez [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} enregistrer ici] votre 
 	'deletequeue-case-title' => 'Détails du cas de suppression',
 	'deletequeue-case-details' => 'Informations de base',
 	'deletequeue-case-page' => 'Page :',
-	'deletequeue-case-reason' => 'Raison :',
+	'deletequeue-case-reason' => 'Motif :',
 	'deletequeue-case-expiry' => 'Expiration :',
 	'deletequeue-case-needs-review' => 'Ce cas requiert une [[$1|revue]].',
 );

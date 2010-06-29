@@ -3409,6 +3409,7 @@ $messages['vi'] = array(
 	'ogg-download' => 'Tải tập tin xuống',
 	'ogg-desc-link' => 'Chi tiết của tập tin này',
 	'ogg-oggThumb-version' => 'OggHandler cần oggThumb, phiên bản $1 trở lên.',
+	'ogg-oggThumb-failed' => 'oggThumb bị thất bại trong việc tạo hình thu nhỏ.',
 );
 
 /** Volapük (Volapük)

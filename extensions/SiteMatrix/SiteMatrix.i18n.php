@@ -1514,6 +1514,13 @@ $messages['ru'] = array(
 	'sitematrix-fishbowl' => 'редактирование ограничено',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'sitematrix-language' => 'Язык',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -295,6 +295,7 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
+	'wikieditor-previewDialog-preference' => 'D Abfrog zue dr Vorschau aaschalte',
 	'wikieditor-previewDialog-tab' => 'Vorschau',
 	'wikieditor-previewDialog-loading' => 'Am Lade ...',
 );

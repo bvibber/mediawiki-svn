@@ -248,3 +248,11 @@ $messages['tl'] = array(
 	'prefs-script-debug' => 'Pagtanggal ng depekto mula sa panitik',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'js2support-desc' => 'Phần mở rộng hỗ trợ JS2',
+	'prefs-script-debug' => 'Gỡ lỗi tài nguyên',
+);
+

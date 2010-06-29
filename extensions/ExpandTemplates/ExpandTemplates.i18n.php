@@ -1699,6 +1699,13 @@ $messages['ru'] = array(
 	'expand_templates_preview' => 'Предпросмотр',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'expand_templates_ok' => 'ОК',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

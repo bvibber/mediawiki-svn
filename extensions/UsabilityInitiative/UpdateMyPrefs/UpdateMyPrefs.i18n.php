@@ -495,6 +495,13 @@ $messages['sv'] = array(
 	'updatemyprefs-label-message' => 'Uppdatera mina inställningar automatiskt med nya standardinställningarna och verktyg när de blir tillgängliga',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'prefs-updates' => 'తాజాకరణలు',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

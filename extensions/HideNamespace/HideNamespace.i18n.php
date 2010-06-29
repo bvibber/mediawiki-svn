@@ -227,3 +227,10 @@ $messages['tl'] = array(
 	'hidens-desc' => 'Itinatago ang mga puwang na pampangalan sa loob ng pang-ulo at pamagat kapag ang pahina ay nasa loob ng tiyak na puwang na pampangalan o kapag tinawag ang tungkulin ng parser na <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'hidens-desc' => 'Ẩn không gian tên trong tiêu đề và tựa trang khi nào cho các trang thuộc không gian tên được chọn hoặc sử dụng hàm cú pháp <code><nowiki>{{#hidens:}}</nowiki></code>.',
+);
+

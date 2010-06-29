@@ -345,6 +345,13 @@ $messages['tl'] = array(
 	'nedits' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'nedits' => '$1 sửa đổi',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'activestrategy' => '积极工作队',

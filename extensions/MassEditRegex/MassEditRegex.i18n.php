@@ -1374,7 +1374,7 @@ $messages['te'] = array(
 	'masseditregex-before' => 'ముందు',
 	'masseditregex-after' => 'తర్వాత',
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|మార్పు|మార్పులు}}',
-	'masseditregex-page-not-exists' => '$౧ లేనే లేదు',
+	'masseditregex-page-not-exists' => '$1 లేనే లేదు',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|పేజీని|పేజీలను}} మార్చారు',
 );
 

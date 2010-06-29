@@ -95,6 +95,16 @@ $messages['gl'] = array(
 	'frontbackforced-forced' => '_(ligazóns internas forzadas)',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'frontbackforced-desc' => 'Macht s Yybinde vu Syte vor un/oder noch ere Syte un s Setze vu zwungene Wikilink zuen ene megli',
+	'frontbackforced-front' => '_(vorne_draa)',
+	'frontbackforced-back' => '_(hinte_draa)',
+	'frontbackforced-forced' => '_(zwungeni_Wikilink)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -216,6 +216,29 @@ Necesítase o primeiro argumento ou "modelo".',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non existe.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'datatransclusion-desc' => 'Importiere un Darstelle vu Datesätz us extärne Datequälle',
+	'datatransclusion-missing-source' => 'S isch kei kei Datequälle aagee.
+S brucht e zweit oder e „Quäll“-Argument.',
+	'datatransclusion-unknown-source' => 'S isch e mangelhafti Datequälle aagee wore.
+„$1“ isch nit bekannt.',
+	'datatransclusion-missing-key' => 'S isch kei Schlissel aagee wore.
+„$2“ sin giltigi Schlissel in dr Datequälle „$1“.',
+	'datatransclusion-bad-argument-by' => 'S isch e mangelhaft Schlisselfäld aagee wore.
+„$2“ isch kei Schlisselfäld in dr Datequälle „$1“.
+{{PLURAL:$4|E giltige Schlissel isch|Giltigi Schlissel sin}}: $3.',
+	'datatransclusion-missing-argument-key' => 'S isch kei Schlisselwärt aagee wore.
+S brucht e zweit oder e „Schlissel“-Argumänt.',
+	'datatransclusion-missing-argument-template' => 'S isch kei Vorlag aagee wore.
+S brucht s erscht oder e „Vorlage“-Argumänt.',
+	'datatransclusion-record-not-found' => 'S isch kei passende Datesatz $2 = $3 in dr Datequälle „$1“ gfunde wore.',
+	'datatransclusion-bad-template-name' => 'Mangelhafte Vorlagename: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> git s nit',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

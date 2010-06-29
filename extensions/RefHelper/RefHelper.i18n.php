@@ -1072,3 +1072,20 @@ $messages['tl'] = array(
 Maaari mong [[Special:RefHelper|kinakamay na idagdag ang sanggunian]] o [[Special:RefSearch|maghanap ng pagbanggit na idaragdag]].',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'refhelper-refcreate_failure' => 'Trang [[$1]] đã tồn tại!',
+	'refhelper-label_authorforename' => 'Tên của tác giả $1:',
+	'refhelper-label_authorsurname' => 'Họ:',
+	'refhelper-title' => 'Tên bài:',
+	'refhelper-journal' => 'Tạp chí:',
+	'refhelper-volume' => 'Quyển:',
+	'refhelper-pages' => 'Các trang:',
+	'refhelper-year' => 'Năm:',
+	'refhelper-category' => 'Thể loại $1:',
+	'refhelper-create' => 'Tạo',
+	'refhelper-search' => 'Tìm kiếm',
+);
+

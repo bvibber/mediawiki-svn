@@ -1020,6 +1020,15 @@ $messages['ru'] = array(
 	'wikieditor-publish-dialog-goback' => 'Назад',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-publish-button-publish' => 'Публіковати',
+	'wikieditor-publish-button-cancel' => 'Сторно',
+	'wikieditor-publish-dialog-publish' => 'Публіковати',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

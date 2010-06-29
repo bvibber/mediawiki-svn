@@ -492,6 +492,13 @@ $messages['sk'] = array(
 	'doublewiki-desc' => 'Zobrazí stránku a jej preklad z inej wiki v dvoch stĺpcoch na jednej stránke',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'doublewiki-desc' => 'Prikaže stran in njen prevod iz drugega wikija v dveh stolpcih na isti strani',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

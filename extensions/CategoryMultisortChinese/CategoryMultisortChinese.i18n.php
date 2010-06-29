@@ -50,9 +50,19 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'categorymultisortchinese-desc' => "Aotreañ a ra ar rummadoù da vezañ diskouezet gant alc'hwezioù rummañ disheñvel arbennik d'ar skriturioù sinaek",
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarineg : Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarineg : Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarineg : Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarineg : MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarineg : Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantoneg : Jyutping',
 	'categorymultisort-sortkey-name-stroke' => 'Neuz',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Neuz : eeunaet',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Neuz : hengounel',
+	'categorymultisort-sortkey-name-radical' => 'Gwrizienn',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Gwrizienn : Eeunaet',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Gwrizienn : Hengounel',
 );
 
 /** German (Deutsch)

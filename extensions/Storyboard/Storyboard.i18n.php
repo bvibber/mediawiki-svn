@@ -242,6 +242,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'storyboard-name' => 'Storyboard',
+	'storyboard-desc' => 'Reiñ a ra [[Special:Story|ur bajenn voned evit ar roerien]], ur bajenn evit [[Special:StorySubmission|kinnig]] istorioù hag un [[Special:StoryReview|etrefas evit merañ an istorioù]]',
 	'right-storyreview' => 'Adlenn, kemmañ, embann, ha kuzhat an istorioù',
 	'storyboard-anerroroccured' => 'Ur fazi a zo bet : $1',
 	'storyboard-unpublished' => 'Diembannet',
@@ -293,6 +294,9 @@ Perak chom hep rannañ anezhi ?",
 	'storyboard-charstomany' => '$1 arouezenn e re !',
 	'storyboard-morecharsneeded' => "Ezhomm 'zo $1 arouezenn c'hoazh",
 	'storyboard-charactersleft' => 'Chom a ra $1 arouezenn',
+	'storyboard-createdsuccessfully' => 'Trugarez evit bezañ rannet ho istor ganeomp !
+Studiet e vo a-benn nebeut.
+Gellout a rit [$1 lenn istorioù embannet].',
 	'storyboard-emailtitle' => 'Kinnig an istor graet mat',
 	'storyreview' => 'Barnadenn an istor',
 	'storyboard-deleteimage' => 'Dilemel ar skeudenn',

@@ -649,12 +649,19 @@ $messages['ru'] = array(
 	'vector-simplesearch-containing' => 'содержащие…',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'vector-simplesearch-search' => 'Глядати',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
 $messages['sah'] = array(
 	'vector-simplesearch-search' => 'Көрдөөһүн',
-	'vector-simplesearch-containing' => 'иһинээҕи...',
+	'vector-simplesearch-containing' => 'тыл баар ыстатыйалара...',
 );
 
 /** Sardinian (Sardu)

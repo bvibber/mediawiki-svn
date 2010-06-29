@@ -42,6 +42,13 @@ $messages['br'] = array(
 	'peoplecategories-desc' => 'Cheñch a ra mod kinnig anvioù ar pajennoù diskouezet eus "Anv-bihan Anv" da "Anv Anv-bihan" er rummadoù spisaet.',
 );
 
+/** Danish (Dansk)
+ * @author Amjaabc
+ */
+$messages['da'] = array(
+	'peoplecategories-desc' => 'Ændrer de viste sidenavne fra "Fornavn Efternavn" til "Efternavn, Fornavn" på de angivne kategorisider',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'peoplecategories-desc' => 'Ermöglicht es, die Anzeige von Seitennamen in angegebenen Kategorien von „Vorname Familienname“ in „Familienname, Vorname“ zu ändern',

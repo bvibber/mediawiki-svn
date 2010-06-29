@@ -1018,6 +1018,7 @@ $messages['cs'] = array(
  * @author Kghbln
  * @author Lukas9950
  * @author MF-Warburg
+ * @author Mdale
  * @author Metalhead64
  * @author Pill
  * @author Tbleher
@@ -1046,7 +1047,7 @@ $messages['de'] = array(
 	'mwe-filesource' => 'Quelle:',
 	'mwe-filestatus' => 'Urheberrechtsstatus:',
 	'mwe-loading-add-media-wiz' => 'Laden des Assistenten zum Hinzufügen von Mediendateien',
-	'fogg-wont-upload-to-server' => 'Hinweis: Deine Video-Datei wird lokal verschlüsselt werden und auf keinen Server hochgeladen',
+	'fogg-wont-upload-to-server' => 'Hinweis: Deine Video-Datei wird lokal enkodiert und auf keinen Server hochgeladen',
 	'fogg-save_local_file' => 'Ogg speichern',
 	'fogg-help-sticky' => 'Hilfe (klicken für das Feststellen)',
 	'fogg-cg-preset' => 'Voreinstellung: <strong>$1</strong>',
@@ -2507,6 +2508,7 @@ $messages['gsw'] = array(
 	'mwe-filesource' => 'Quälle:',
 	'mwe-filestatus' => 'Urheberrächts-Status:',
 	'mwe-loading-add-media-wiz' => 'Am Lade vum Medie-Wizard zuefiege',
+	'fogg-wont-upload-to-server' => 'Hiiwyys: Dyy Video-Datei wird lokal verschlisslet un uf kei Sever uffeglade.',
 	'fogg-save_local_file' => 'Ogg spychere',
 	'fogg-help-sticky' => 'Hilf (drucke zum Feschthebe)',
 	'fogg-cg-preset' => 'Voryystellige: <strong>$1</strong>',
@@ -2519,6 +2521,8 @@ $messages['gsw'] = array(
 	'fogg-webvideo-desc' => 'Webvideo Theora, Vorbis 400 kbit/s un 400px maximali Greßi',
 	'fogg-savebandwidth-desc' => 'Nideri Bandbreiti Theora, Vorbis 164 kbit/s un 200px maximali Greßi',
 	'fogg-highquality-desc' => 'Hochi Qualitet Theora, Vorbis 1080px maximali Greßi',
+	'fogg-webvideo-webm-desc' => 'WebM Web-Video mit VP8 (600 kbit/s bin ere maximale Breiti vu 480px)',
+	'fogg-highquality-webm-desc' => 'WebM Video (hochwärtig) mit VP8 (1080px maximali Breiti)',
 	'fogg-videoQuality-title' => 'Videoqualitet',
 	'fogg-videoQuality-help' => 'Wird brucht go d <i>visuälli Qualitet</i> vum verschlisslete Video yystele (wird nit brucht, wänn d Bit-Rot in dr fortgschrittene Yystellige unten yygstellt wird).',
 	'fogg-starttime-title' => 'Startsekund',
@@ -5388,7 +5392,7 @@ $messages['ru'] = array(
 	'fogg-webvideo-desc' => 'Веб-видео Theora, Vorbis 400 кбит/с, максимальная ширина 400 пикс.',
 	'fogg-savebandwidth-desc' => 'Theora для низкоскоростных каналов, Vorbis 164 кбит/с, максимальная ширина 200 пикс.',
 	'fogg-highquality-desc' => 'Theora высокого качества, Vorbis, максимальная ширина 1080 пикс.',
-	'fogg-webvideo-webm-desc' => 'Webm Web video VP8600 кбит\\/с, макс. ширина 480 пикс.)',
+	'fogg-webvideo-webm-desc' => 'Webm Web video VP8 (600 кбит\\/с, макс. ширина 480 пикс.)',
 	'fogg-highquality-webm-desc' => 'Webm High quality VP8 (максимальная ширина 1080 пикс.)',
 	'fogg-videoQuality-title' => 'Качество видео',
 	'fogg-videoQuality-help' => 'Используется для установки <i>видимого качества</i> закодированного видео (не используется, если вы установите битрейт в расширенных настройках).',

@@ -3987,6 +3987,7 @@ $messages['rue'] = array(
 	'contrib-hist-date' => 'Час і датум',
 	'contribstats-day' => 'День',
 	'contribstats-month' => 'Місяць',
+	'contribstats-week' => 'Тыждень',
 	'fundraiserstats-date' => 'Датум',
 );
 

@@ -7975,6 +7975,8 @@ $messages['rue'] = array(
 	'code-batch-status' => 'Змінити став:',
 	'code-batch-tags' => 'Змінити значкы:',
 	'codereview-batch-submit' => 'Одослати',
+	'repoadmin-new-button' => 'Створити',
+	'repoadmin-edit-button' => 'ОК',
 );
 
 /** Yakut (Саха тыла)
@@ -9877,6 +9879,7 @@ $messages['vi'] = array(
 	'code-prop-changes' => 'Nhật trình trạng thái và thẻ',
 	'codereview-desc' => '[[Special:Code|Công cụ duyệt mã]] [[Special:RepoAdmin|hỗ trợ Subversion]]',
 	'code-no-repo' => 'Chưa thiết lập kho dữ liệu!',
+	'code-repo-not-found' => 'Kho <b>$1</b> không tồn tại!',
 	'code-load-diff' => 'Đang tải khác biệt...',
 	'code-notes' => 'ghi chú gần đây',
 	'code-statuschanges' => 'thay đổi trạng thái',
@@ -9929,6 +9932,7 @@ $messages['vi'] = array(
 	'code-rev-inline-preview' => 'Xem trước:',
 	'code-rev-diff' => 'So sánh',
 	'code-rev-diff-link' => 'so sánh',
+	'code-rev-diff-too-large' => 'Bản so sánh quá lớn để hiển thị.',
 	'code-rev-purge-link' => 'làm mới',
 	'code-rev-total' => 'Tổng số kết quả: $1',
 	'code-status-new' => 'mới',
@@ -9957,6 +9961,8 @@ $messages['vi'] = array(
 	'code-release-badrange' => 'Dãy lớn quá!',
 	'codereview-subtitle' => 'Dành cho $1',
 	'codereview-reply-link' => 'trả lời',
+	'codereview-tests-running' => 'Đang chạy các trường hợp thử nghiệm…',
+	'codereview-tests-failed' => 'Thất bại',
 	'codereview-email-subj' => '[$1] [r$2]: Tin nhắn mới',
 	'codereview-email-body' => 'Người dùng “$1” đã bình luận về r$3.
 

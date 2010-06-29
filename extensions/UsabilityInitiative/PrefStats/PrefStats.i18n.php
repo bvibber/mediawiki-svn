@@ -2008,6 +2008,17 @@ $messages['ru'] = array(
 	'prefstats-legend-in' => 'Подключились',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'prefstats-factor-hour' => 'годину',
+	'prefstats-factor-sixhours' => 'шість годин',
+	'prefstats-factor-day' => 'день',
+	'prefstats-factor-week' => 'тыждень',
+	'prefstats-factor-twoweeks' => 'два тыжднї',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -2109,6 +2120,7 @@ Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
@@ -2119,6 +2131,13 @@ $messages['sl'] = array(
 Kliknite na eno, če si želite ogledati njeno statistiko.',
 	'prefstats-noprefs' => 'Trenutno nastavitve niso spremljane.
 Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|uporabnik je omogočil|uporabnika sta omogočila|uporabiki so omogočili|uporabnikov je omogočilo}} to nastavitev odkar je bila začeta statistika nastavitev
+** $2 {{PLURAL:$2|uporabnik jo ima še vedno|uporabnika jo imata še vedno|uporabniki jo imajo še vedno|uporabnikov jo ima še vedno}} omogočeno
+** $3 {{PLURAL:$3|uporabnik jo je|uporabnika sta jo|uporabniki so jo|uporabnikov jo je}} od takrat {{PLURAL:$3|onemogočil|onemogočila|onemogočili|onemogočilo}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|uporabnik je omogočil|uporabnika sta omogočila|uporabiki so omogočili|uporabnikov je omogočilo}} to nastavitev odkar je bila začeta statistika nastavitev
+** $2 {{PLURAL:$2|uporabnik jo ima še vedno|uporabnika jo imata še vedno|uporabniki jo imajo še vedno|uporabnikov jo ima še vedno}} omogočeno
+** $3 {{PLURAL:$3|uporabnik jo je|uporabnika sta jo|uporabniki so jo|uporabnikov jo je}} od takrat {{PLURAL:$3|onemogočil|onemogočila|onemogočili|onemogočilo}}
+* Skupno, $4 {{PLURAL:$4|uporabnik ima|uporabnika imata|uporabniki ima|uporabnikov ima}} izbrano to nastavitev',
 	'prefstats-xaxis' => 'Trajanje (ur)',
 	'prefstats-factors' => 'Poglejte na: $1',
 	'prefstats-factor-hour' => 'ura',

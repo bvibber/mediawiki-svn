@@ -195,15 +195,16 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Geraki
  * @author Απεργός
  */
 $messages['el'] = array(
-	'prefswitch-link-anon' => 'Καινούριες λειτουργίες',
-	'tooltip-pt-prefswitch-link-anon' => 'Ενημέρωση για καινούριες λειτουργίες',
+	'prefswitch-link-anon' => 'Νέα χαρακτηριστικά',
+	'tooltip-pt-prefswitch-link-anon' => 'Μάθετε για τα νέα χαρακτηριστικά',
 	'prefswitch-link-on' => 'Επιστροφή στις παλιές ρυθμίσεις',
 	'tooltip-pt-prefswitch-link-on' => 'Απενεργοποίηση καινούριων λειτουργιών',
-	'prefswitch-link-off' => 'Καινούριες λειτουργίες',
-	'tooltip-pt-prefswitch-link-off' => 'Δοκιμάστε καινούριες λειτουργίες',
+	'prefswitch-link-off' => 'Νέα χαρακτηριστικά',
+	'tooltip-pt-prefswitch-link-off' => 'Δοκιμάστε νέα χαρακτηριστικά',
 );
 
 /** Esperanto (Esperanto)
@@ -673,10 +674,11 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
 	'prefswitch-link-anon' => 'Zana mpya',
-	'prefswitch-link-on' => 'Unirudishe',
+	'prefswitch-link-on' => 'Nirudishe',
 	'prefswitch-link-off' => 'Zana mpya',
 );
 
@@ -686,6 +688,8 @@ $messages['sw'] = array(
 $messages['te'] = array(
 	'prefswitch-link-anon' => 'కొత్త సౌలభ్యాలు',
 	'tooltip-pt-prefswitch-link-anon' => 'కొత్త విశేషాల గురించి తెలుసుకోండి',
+	'prefswitch-link-on' => 'నన్ను వెనక్కి తీసుకెళ్ళు',
+	'tooltip-pt-prefswitch-link-on' => 'కొత్త సౌలభ్యాలని నిలిపివేసుకోండి',
 	'prefswitch-link-off' => 'కొత్త సౌలభ్యాలు',
 	'tooltip-pt-prefswitch-link-off' => 'కొత్త సౌలభ్యాలను ప్రయత్నించండి',
 );

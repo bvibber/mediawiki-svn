@@ -1036,7 +1036,7 @@ $messages['mk'] = array(
 	'imagemap_no_areas' => 'Грешка: мора да се зададе напатствие за барем едно подрачје',
 	'imagemap_invalid_coord' => 'Грешка: погрешни координати на ред $1, мора да биде со бројки',
 	'imagemap_invalid_desc' => 'Грешка: неважечко напатствие за опис, мора да биде едно од: <code>$1</code>',
-	'imagemap_description' => 'За оваа слика',
+	'imagemap_description' => 'За сликава',
 	'imagemap_poly_odd' => 'Грешка: пронајдено е poly со непарен број на координати на ред $1',
 );
 

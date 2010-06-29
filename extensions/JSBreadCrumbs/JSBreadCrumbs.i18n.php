@@ -41,6 +41,22 @@ $messages['dsb'] = array(
 	'jsbreadcrumbs-leading-description' => 'Nawigaciski slěd',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'jsbreadcrumbs-desc' => "Ajoute une suite de liens de navigation sous la barre d'onglets",
+	'jsbreadcrumbs-leading-description' => 'Parcours de navigation',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'jsbreadcrumbs-desc' => 'Fiegt e Spur vu Brogmoseme yy unter dr Menüleischte',
+	'jsbreadcrumbs-leading-description' => 'Navigationspfad',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -49,12 +65,35 @@ $messages['hsb'] = array(
 	'jsbreadcrumbs-leading-description' => 'Nawigaciski slěd',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'jsbreadcrumbs-desc' => 'Adde un tracia de "micas de pan" sub le barra de schedas',
+	'jsbreadcrumbs-leading-description' => 'Percurso de navigation',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'jsbreadcrumbs-leading-description' => 'Navigatiounspad',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
 	'jsbreadcrumbs-desc' => 'Додава траги од трошки под лентата со јазичиња',
 	'jsbreadcrumbs-leading-description' => 'Траги од навигацијата',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'jsbreadcrumbs-desc' => 'Voegt een spoor van broodkruimels toe onder de menubalk',
+	'jsbreadcrumbs-leading-description' => 'Navigatiepad',
 );
 
 /** Portuguese (Português)
@@ -80,3 +119,4 @@ $messages['ru'] = array(
 	'jsbreadcrumbs-desc' => 'Добавляет навигационный путь по сайту («хлебные крошки») под панель вкладок',
 	'jsbreadcrumbs-leading-description' => 'Навигационный путь',
 );
+
