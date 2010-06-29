@@ -2000,7 +2000,7 @@ $messages['br'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Kavout an hini da-heul',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => "Erlec'hiañ an hini da-heul",
 	'wikieditor-toolbar-tool-replace-button-replaceall' => "Erlec'hiañ pep tra",
-	'wikieditor-toolbar-tool-replace-close' => 'Nullañ',
+	'wikieditor-toolbar-tool-replace-close' => 'Serriñ',
 	'wikieditor-toolbar-tool-replace-nomatch' => "N'eus bet kavet netra o klotañ gant ar pezh a glaskit.",
 	'wikieditor-toolbar-tool-replace-success' => "$1 erlec'hiadenn graet",
 	'wikieditor-toolbar-tool-replace-emptysearch' => "N'hoc'h eus ebarzhet netra da glask.",
@@ -3034,7 +3034,7 @@ $messages['cy'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Chwilio am y nesaf',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => "Disodli'r nesaf",
 	'wikieditor-toolbar-tool-replace-button-replaceall' => "Disodli'r cwbwl",
-	'wikieditor-toolbar-tool-replace-close' => 'Diddymu',
+	'wikieditor-toolbar-tool-replace-close' => 'Cau',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Ni chanfyddwyd yr hyn a chwiliwyd amdano.',
 	'wikieditor-toolbar-tool-replace-success' => 'Gwnaethpwyd $1 amnewidiad.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Ni osodwyd unrhywbeth yn y blwch chwilio.',
@@ -10261,6 +10261,7 @@ $messages['mn'] = array(
 /** Marathi (मराठी)
  * @author Mahitgar
  * @author V.narsikar
+ * @author अभय नातू
  */
 $messages['mr'] = array(
 	'wikieditor-toolbar' => 'संपादन साधनपट्टी',
@@ -10375,7 +10376,7 @@ $messages['mr'] = array(
 आपला शोध कशाशीच जुळत नाही.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 बदलविलेत.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'आपण शोधण्यासाठी काहीही भरले नाही.',
-	'wikieditor-toolbar-tool-replace-invalidregex' => 'आपण टाकलेल्या प्रगटीकरणास आधार नाही.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => '$1 या तुम्ही टाकलेल्या प्रकटीकरणास आधार नाही.',
 	'wikieditor-toolbar-section-characters' => 'विशेष वर्ण',
 	'wikieditor-toolbar-characters-page-latin' => 'लॅटीन',
 	'wikieditor-toolbar-characters-page-latinextended' => 'विस्तारीत लॅटीन भाषा',
@@ -10398,8 +10399,10 @@ $messages['mr'] = array(
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= मथळ्याचा मजकूर =',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1>मथळ्याचा मजकूर</h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => 'द्वितीय स्तराचा मथळा',
+	'wikieditor-toolbar-help-content-heading2-syntax' => '==शीर्षक==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>मथळ्याचा मजकूर</h2>',
 	'wikieditor-toolbar-help-content-heading3-description' => 'तृतीय स्तराचा मथळा',
+	'wikieditor-toolbar-help-content-heading3-syntax' => '===दुय्यम शीर्षक===',
 	'wikieditor-toolbar-help-content-rereference-description' => 'याच संदर्भाचा अतिरीक्त वापर',
 	'wikieditor-toolbar-help-content-showreferences-description' => 'संदर्भ दर्शवा',
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'वेळेसह तुमची सही 
@@ -13488,6 +13491,23 @@ $messages['ru'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'Обычный текст<dl><dd>Текст с отступом<dl><dd>Текст с отступом</dd></dl></dd></dl>',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-toolbar-tool-link' => 'Одказ',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Сторно',
+	'wikieditor-toolbar-tool-big' => 'Великый',
+	'wikieditor-toolbar-tool-big-example' => 'Великый текст',
+	'wikieditor-toolbar-tool-small' => 'Маленькый',
+	'wikieditor-toolbar-tool-small-example' => 'Малый текст',
+	'wikieditor-toolbar-tool-table-cancel' => 'Сторно',
+	'wikieditor-toolbar-tool-replace-close' => 'Заперти',
+	'wikieditor-toolbar-help-page-file' => 'Файлы',
+	'wikieditor-toolbar-help-page-discussion' => 'Діскузія',
+	'wikieditor-toolbar-help-content-signature-description' => 'Підпис',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -14740,6 +14760,7 @@ $messages['su'] = array(
 	'wikieditor-toolbar-tool-link-int-target' => 'Tujul kaca atawa URL:',
 	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Judul kaca atawa URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'Téks témbongkeuneun:',
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Téks témbongkeuneun:',
 	'wikieditor-toolbar-tool-link-ext' => 'Ka kaca ramat éksternal',
 	'wikieditor-toolbar-tool-link-ext-target' => 'URL tutumbu:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Téks tutumbu:',
@@ -15103,7 +15124,7 @@ $messages['sw'] = array(
 	'wikieditor-toolbar-tool-nowiki' => 'Bila fomati ya wiki',
 	'wikieditor-toolbar-tool-nowiki-example' => 'Weka maandishi bila fomati hapa',
 	'wikieditor-toolbar-tool-redirect' => 'Elekezo',
-	'wikieditor-toolbar-tool-redirect-example' => 'Ukurasa utakaoelekezwa',
+	'wikieditor-toolbar-tool-redirect-example' => 'Lenga jina la ukurasa',
 	'wikieditor-toolbar-tool-big' => 'Kubwa',
 	'wikieditor-toolbar-tool-big-example' => 'Maandishi makubwa',
 	'wikieditor-toolbar-tool-small' => 'Ndogo',
@@ -15151,20 +15172,22 @@ Idadi ya mistari au ya safu si halali.',
 	'wikieditor-toolbar-tool-replace-search' => 'Tafuta:',
 	'wikieditor-toolbar-tool-replace-replace' => 'Maandishi mapya:',
 	'wikieditor-toolbar-tool-replace-case' => 'Oanisha herufi kwa ukubwa wake',
+	'wikieditor-toolbar-tool-replace-regex' => 'Fanya mtindo wa tafuta kama kielezo cha kawaida',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Tafuta maandishi yajayo',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Badilisha maandishi yajayo',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Badilisha yote',
-	'wikieditor-toolbar-tool-replace-close' => 'Batilisha',
+	'wikieditor-toolbar-tool-replace-close' => 'Funga',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Maandishi ulioyatafuta hayakupatikana.',
 	'wikieditor-toolbar-tool-replace-success' => 'Yalifanyiwa (ma)badiliko $1.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Hukuweka maandishi ya kutafutwa.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => 'Kielezo cha kawaida ulichoingiza ni batili: $1',
 	'wikieditor-toolbar-section-characters' => 'Herufi maalum',
 	'wikieditor-toolbar-characters-page-latin' => 'Kilatini',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Kilatini kilichoongezwa',
-	'wikieditor-toolbar-characters-page-ipa' => 'Herufi zilizokubalika za jinsi ya kutamka (IPA)',
+	'wikieditor-toolbar-characters-page-ipa' => 'Herufi za Fonetiki za Kimataifa (IPA)',
 	'wikieditor-toolbar-characters-page-symbols' => 'Alama',
 	'wikieditor-toolbar-characters-page-greek' => 'Kigiriki',
-	'wikieditor-toolbar-characters-page-cyrillic' => 'Kikiriliki (Cyrillic)',
+	'wikieditor-toolbar-characters-page-cyrillic' => 'Kikyrili',
 	'wikieditor-toolbar-characters-page-arabic' => 'Kiarabu',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Kiyahudi',
 	'wikieditor-toolbar-characters-page-bangla' => 'Kibangla',
@@ -15334,7 +15357,7 @@ $messages['te'] = array(
 	'wikieditor-toolbar-tool-table-invalidnumber' => 'మీరు సరైన అడ్డు లేదా నిలువు వరుసల సంఖ్యని ఇవ్వలేదు.',
 	'wikieditor-toolbar-tool-table-zero' => 'సున్నా అడ్డు లేదా నిలువు వరుసలతో మీరు పట్టికని చేర్చలేరు.',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'అన్నింటినీ మార్చు',
-	'wikieditor-toolbar-tool-replace-close' => 'రద్దుచేయి',
+	'wikieditor-toolbar-tool-replace-close' => 'మూసివేయి',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'మీ అన్వేషణ దేనికీ సరిపోలలేదు.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 మార్పిడి(లు) చేసాం.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'వెతకడానికి ఏమీ ఇవ్వలేదు.',
@@ -15616,6 +15639,9 @@ $messages['th'] = array(
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='คำอธิบาย' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='ขยายใหญ่' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>คำอธิบาย</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'อ้างอิง',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'ชื่อหน้า.&lt;ref name="test"&gt;[http://www.example.org ชื่อลิงก์], คำอธิบายเพิ่มเติม.&lt;/ref&gt;',
+	'wikieditor-toolbar-help-content-reference-result' => "ข้อความในหน้า<sup><a href='#'>[1]</a></sup>",
+	'wikieditor-toolbar-help-content-rereference-description' => 'การใช้การอ้างอิงเดียวกันเพิ่มเติม',
+	'wikieditor-toolbar-help-content-rereference-result' => "ข้อความในหน้า<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'แสดงแหล่งอ้างอิง',
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'ลายเซ็นต์พร้องลงเวลา',
 	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>ชื่อผู้ใช้</a> (<a href='#' title='{{#special:mytalk}}'>พูดคุย</a>) 15:54, 10 June 2009 (UTC)",

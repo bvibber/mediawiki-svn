@@ -707,6 +707,14 @@ $messages['ru'] = array(
 	'wikieditor-preview-loading' => 'Загрузка…',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-preview-changes-tab' => 'Зміны',
+	'wikieditor-preview-loading' => 'Награваня...',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

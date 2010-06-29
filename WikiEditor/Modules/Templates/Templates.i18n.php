@@ -378,6 +378,13 @@ $messages['sv'] = array(
 	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
 );
 
+/** Swahili (Kiswahili)
+ * @author Muddyb Blast Producer
+ */
+$messages['sw'] = array(
+	'wikieditor-templates-preference' => 'Wezesha kigezo kijikunje',
+);
+
 /** Thai (ไทย)
  * @author Octahedron80
  */

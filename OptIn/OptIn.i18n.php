@@ -5142,6 +5142,13 @@ $messages['ru'] = array(
 <div style="clear:both"></div>',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'optin-survey-answer-changes-other' => 'Інше:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -5591,10 +5598,20 @@ Voleli bismo da znamo šta mislite o našem novom interfejsu, tako da bi nam zna
  * @author Kandar
  */
 $messages['su'] = array(
+	'optin-title-optedout' => 'Cobaan Béta',
+	'optin-title-optedin' => 'Tinggalkeun Béta',
+	'optin-title-justoptedin' => 'Wilujeng sumping di Béta',
 	'optin-title-justoptedout' => 'Ngahaturkeun nuhun tos nyobian Béta',
 	'optin-needlogin' => 'Anjeun kudu [$1 asup log] pikeun nyobaan Béta.',
+	'optin-accept-long' => 'Cobaan Béta',
+	'optin-accept-long-anon' => 'Asup log jeung cobaan Béta',
 	'optin-deny-long' => 'Balik ka kaca saméméhna',
 	'optin-submit-out' => 'Tinggalkeun Béta',
+	'optin-survey-question-whyoptout' => 'Naha bet ninggalkeun Béta? (mangga pilih sadaya nu cocog.)',
+	'optin-survey-answer-whyoptout-hard' => 'Hésé makéna.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
+	'optin-survey-answer-whyoptout-other' => 'Alesan séjén:',
+	'optin-survey-answer-os-other' => 'Sistem operasi lianna:',
 );
 
 /** Swedish (Svenska)
@@ -5695,8 +5712,39 @@ $messages['sw'] = array(
 	'optin-title-optedin' => 'Ondoka Beta',
 	'optin-title-justoptedin' => 'Karibu Beta',
 	'optin-title-justoptedout' => 'Asante kwa kujaribu kutumia bidhaa pepe ya Beta',
+	'optin-intro' => 'Mpango wa Matumizi ya Wikipedia umekuwa ukifanya kazi kwa juhudi kuboresha matumizi ya Wikipedia.
+Ungependa kujaribu Beta yetu?',
+	'optin-feedback-intro' => 'Ahsante kwa kujaribu Beta.
+Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru zaidi iwapo utajaza utafiti wa hiari hapo chini.',
+	'optin-feedback-back' => 'Ikiwa hutaki kujaza maoni yako, unaweza kurudi kwa $1.',
+	'optin-success-in' => 'Sasa unaijaribu Beta.
+Unaweza kuamua kurudi wakati wowote kwa kubonyeza kiungo cha "{{int:optin-leave|ondoka}}" juu ya ukurasa.',
+	'optin-leave-cancel' => 'Ikiwa utapenda kuendelea kutumia Beta, basi unaweza kurudi kwa $1.',
+	'optin-success-out' => 'Umefaulu kuondoka Beta.
+Unaweza kujaribu tena wakati wowote kwa kubonyeza kiungo cha "{{int:optin-try|jaribu}}" juu kabisa ya ukurasa.',
+	'optin-success-feedback' => 'Ahsante kwa maoni yako!',
+	'optin-accept-short' => 'Hebu tufanye',
 	'optin-accept-long' => 'Ujaribu kutumia Beta',
+	'optin-accept-long-anon' => 'Ingia na ujaribu Beta',
+	'optin-deny-short' => 'Hapana, ahsante',
+	'optin-deny-long' => 'Rudi kwenye ukurasa wa awali',
 	'optin-submit-out' => 'Ondoka Beta',
+	'optin-submit-feedback' => 'Toa maoni',
+	'optin-survey-yes' => 'Ndiyo',
+	'optin-survey-no' => 'Siyo',
+	'optin-survey-intro' => 'Ahsante kwa kujaribu Beta.
+Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru iwapo utajaza utafiti wa hiari hapo chini kabla hujabonyeza "[[#leave|{{int:optin-submit-out|ondoka}}]]".',
+	'optin-survey-question-likedislike' => 'Kipi umekipenda katika Beta? Kipi hujakipenda katika Beta?',
+	'optin-survey-question-whyoptout' => 'Kwanini unaondoka Beta? (Tafadhali jaza vifungu hivyo vyote.)',
+	'optin-survey-answer-whyoptout-hard' => 'Ilikuwa vigumu sana kutumia.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Haikufanya kazi vizuri.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Sikuipenda jinsi inavyoonekana.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Sikupenda tabo mpya na mpangilio wake.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Sijapenda mwambaa zana mpya.',
+	'optin-survey-answer-whyoptout-other' => 'Sababu nyingine:',
+	'optin-survey-question-explain' => 'Tafadhali elezea au fafanua juu ya majibu yako hapo juu:',
+	'optin-survey-question-techfail' => 'Umepata tatizo lolote la kiufundi wakati unatumia Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Ikiwa ndiyo, tafadhali fafanua au elezea:',
 );
 
 /** Telugu (తెలుగు)

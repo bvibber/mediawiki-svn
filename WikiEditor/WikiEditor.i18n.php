@@ -719,6 +719,7 @@ $messages['te'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'wikieditor-wikitext-tab' => 'ข้อความวิกิ',
 	'wikieditor-loading' => 'กำลังโหลด',
 );
 

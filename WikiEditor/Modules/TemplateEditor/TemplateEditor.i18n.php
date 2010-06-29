@@ -656,6 +656,13 @@ $messages['ru'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Отмена',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Сторно',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -731,8 +738,10 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'wikieditor-template-editor-preference' => 'Wezesha fomu inayo-hariri vigezo vya wiki',
 	'wikieditor-template-editor-dialog-title' => 'Kuhariri kigezo',
 	'wikieditor-template-editor-dialog-submit' => 'Sasisha',
 	'wikieditor-template-editor-dialog-cancel' => 'Batilisha',
