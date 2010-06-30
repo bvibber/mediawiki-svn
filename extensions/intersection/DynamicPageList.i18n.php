@@ -729,6 +729,16 @@ $messages['sk'] = array(
 	'intersection_noincludecats' => 'Error: Musíte uviesť aspoň jednu kategóriu alebo menný priestor!',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'intersection-desc' => 'Izpiše seznam zadnjih predmetov v kategoriji ali presek več kategorij',
+	'intersection_toomanycats' => 'Napaka: Preveč kategorij!',
+	'intersection_noresults' => 'Napaka: Ni zadetkov!',
+	'intersection_noincludecats' => 'Napaka: Vključiti morate vsaj eno kategorijo ali določiti imenski prostor!',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */

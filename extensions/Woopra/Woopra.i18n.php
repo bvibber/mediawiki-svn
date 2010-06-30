@@ -397,6 +397,13 @@ $messages['sk'] = array(
 	'woopra-desc' => 'Umožňuje fungovanie [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vašej MediaWiki',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'woopra-desc' => 'Omogoča [http://www.woopra.com/ programju za sledenje Woopra Live] delovanje z vašo namestitvijo MediaWiki',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Jonny84
  */

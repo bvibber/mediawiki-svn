@@ -192,6 +192,13 @@ $messages['ca'] = array(
 	'tooltip-pt-optin-feedback' => 'Comenteu les vostres experiències amb les noves característiques',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'optin-try' => 'Хьажа жим гlоле-тайпанара муха ю',
+);
+
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */

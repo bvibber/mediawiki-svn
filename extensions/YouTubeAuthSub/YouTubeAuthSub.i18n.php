@@ -2857,6 +2857,44 @@ Buďte prosím trpezliví.',
 	'youtubeauthsub_jserror_nodesc' => 'Prosím, zadajte popis videa.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'youtubeauthsub' => 'Naložite video YouTube',
+	'youtubeauthsub-desc' => 'Omogoča uporabnikom [[Special:YouTubeAuthSub|nalaganje videev]] neposredno na YouTube',
+	'youtubeauthsub_info' => 'Za nalaganje videa na YouTube za uporabo na strani vnesite naslednje podatke:',
+	'youtubeauthsub_title' => 'Naslov',
+	'youtubeauthsub_description' => 'Opis',
+	'youtubeauthsub_password' => 'Geslo YouTube',
+	'youtubeauthsub_username' => 'Uporabniško ime YouTube',
+	'youtubeauthsub_keywords' => 'Ključne besede',
+	'youtubeauthsub_category' => 'Kategorija',
+	'youtubeauthsub_submit' => 'Potrdi',
+	'youtubeauthsub_clickhere' => 'Kliknite tukaj za prijavo v YouTube',
+	'youtubeauthsub_tokenerror' => 'Napaka pri ustvarjanju overitvenega žetona, poskusite z osvežitvijo.',
+	'youtubeauthsub_success' => "Čestitamo!
+Vaš video je naložen.
+<a href='http://www.youtube.com/watch?v=$1'>Oglejte si svoj video</a>.
+YouTube lahko potrebuje nekaj časa, da obdela vaš video, zato morda še ni pripravljen.
+
+Če želite vključiti vaš video na stran v wikiju, vstavite na stran naslednjo kodo:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Če želite naložiti video, se boste morali naprej prijaviti v YouTube',
+	'youtubeauthsub_uploadhere' => 'Naložite vaš video od tukaj:',
+	'youtubeauthsub_uploadbutton' => 'Naloži',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Oglej si ta video]',
+	'youtubeauthsub_summary' => 'Nalaganje videa YouTube',
+	'youtubeauthsub_uploading' => 'Vaš video se nalaga.
+Prosimo, bodite potrpežljivi.',
+	'youtubeauthsub_viewpage' => 'Lahko pa si [[$1|ogledate svoj video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Prosimo, vnesite eno ali več ključnih besed.',
+	'youtubeauthsub_jserror_notitle' => 'Prosimo, vnesite naslov videa.',
+	'youtubeauthsub_jserror_nodesc' => 'Prosimo, vnesite opis videa.',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Schläsinger
  * @author Äberlausitzer

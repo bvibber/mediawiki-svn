@@ -200,6 +200,20 @@ $messages['ru'] = array(
 	'wikimediamobile-desc' => 'Вспомогательные функции MediaWiki для мобильного проекта Викимедии, расположенного на http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikimediamobile-desc' => 'Podpora funkcijam MediaWiki za projekt Wikimedia-mobile, gostovan na http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikimediamobile-desc' => 'MediaWiki ngadukung fungsi proyék Wikimédia-balawiri nyayang di http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

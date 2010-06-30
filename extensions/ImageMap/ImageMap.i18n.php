@@ -1464,6 +1464,16 @@ $messages['sk'] = array(
 	'imagemap_poly_odd' => 'Chyba: nájdený mnohouholník s nepárnym počtom súradníc na riadku $1',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'imagemap_no_image' => 'Napaka: v prvi vrstici morate navesti sliko',
+	'imagemap_invalid_image' => 'Napaka: slika je neveljavna ali ne obstaja',
+	'imagemap_bad_image' => 'Napaka: slika je na tej strani na črnem seznamu',
+	'imagemap_description' => 'O tej sliki',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic

@@ -221,6 +221,13 @@ $messages['oc'] = array(
 	'right-editalluserpages' => "Modificar las paginas d'utilizaire",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'right-editalluserpages' => 'Bledder vun Yuuser ennere',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

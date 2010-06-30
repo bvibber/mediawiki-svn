@@ -425,7 +425,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'pageby-desc' => 'Прикажува уредувачи на самата вики страница со користење на ознаката <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Страницата е создадена од $1, $2',
-	'pageby-last' => 'Последно <a href="$3">модифицирано</a> од $1, $2',
+	'pageby-last' => 'Последната <a href="$3">измена</a> ја извршил $1, $2',
 	'pageby-contributors' => 'Уредувачи:',
 	'pageby-anon' => '<i>анонимни</i>',
 );

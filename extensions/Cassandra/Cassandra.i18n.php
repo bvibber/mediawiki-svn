@@ -233,6 +233,13 @@ $messages['sr-el'] = array(
 	'cassandra-desc' => 'Smešta reviziju teksta u [http://cassandra.apache.org Apaš Kasandra] bazu podataka',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'cassandra-desc' => 'Simpen téks révisi dina gudang data [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */

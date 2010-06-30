@@ -295,6 +295,13 @@ $messages['sr-el'] = array(
 	'addmediawizard-desc' => 'Dodaj medija vodič, razvijen u partnerstvu s Kalturom i Vikimedija Zadužbinom',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'addmediawizard-desc' => 'Sulap nambahkeun média, dikembangkeun réréongan ku Kaltura jeung Yayasan Wikimédia',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

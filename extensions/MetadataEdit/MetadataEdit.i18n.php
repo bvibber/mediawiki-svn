@@ -875,6 +875,13 @@ $messages['pcd'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'metadata_help' => 'Metadaade:',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author Sp5uhe

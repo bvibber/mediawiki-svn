@@ -1174,6 +1174,7 @@ $messages['stq'] = array(
 $messages['su'] = array(
 	'chemicalsources' => 'Rujukan kimia',
 	'chemicalsource-desc' => 'Nambahkeun tag <nowiki><chemform></nowiki>, pikeun rumus kimia',
+	'chemicalsources-desc' => '[[Husus:SumberKimia|Kaca husus]] ngeunaan sumber-sumber bahan kimia',
 	'chemFunctions_ListPage' => 'Rujukan kimia',
 	'chemFunctions_DataList' => 'Di handap ieu dibéréndélkeun tumbu ka loka-loka nu sugan nyadiakeun émbaran ngeunaan jat kimia anu keur ditéang.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />

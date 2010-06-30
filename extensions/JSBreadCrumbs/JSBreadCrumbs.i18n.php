@@ -25,6 +25,14 @@ $messages['af'] = array(
 	'jsbreadcrumbs-leading-description' => 'Navigasie roete',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'jsbreadcrumbs-desc' => 'Дадае навігацыйны шлях («хлебныя крошкі») пад панэль закладак',
+	'jsbreadcrumbs-leading-description' => 'Навігацыйны шлях',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

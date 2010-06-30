@@ -326,6 +326,13 @@ $messages['oc'] = array(
 	'othersites-desc' => "Deplaça los ligams interwiki autres que los ligams ligats a la lenga de lors compausants d'interfàcia pròpris.",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'othersites' => 'annere Bledder',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

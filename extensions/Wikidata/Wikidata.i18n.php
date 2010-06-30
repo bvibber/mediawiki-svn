@@ -11906,6 +11906,24 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'ow_shown_datasets' => 'Zobrazené množiny dát',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'langman_title' => 'Upravljavec jezikov',
+	'langman_adding' => 'Dodajanje jezika $1 s ključem $2.',
+	'langman_langname' => 'Ime jezika:',
+	'langman_iso639-3' => 'Koda ISO 639-3:',
+	'langman_iso639-2' => 'Koda ISO 639-2:',
+	'langman_wikimedia' => 'Koda Wikimedie:',
+	'langman_field_optional' => '(neobvezno)',
+	'langman_addlang' => 'Dodaj jezik',
+	'datasearch_language' => 'Jezik:',
+	'datasearch_found_word' => 'Najdena beseda:',
+	'datasearch_meaning' => 'Pomen',
+	'ow_dm_OK' => 'V redu',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Schläsinger
  */

@@ -1554,6 +1554,8 @@ $messages['su'] = array(
 	'bookinfo-result-year' => 'Taun:',
 	'bookinfo-error-invalidisbn' => 'ISBN nu diasupkeun salah.',
 	'bookinfo-error-nosuchitem' => 'Euweuh atawa teu kapanggih.',
+	'bookinfo-error-nodriver' => 'Gagal mitembeyan Book Information Driver.',
+	'bookinfo-error-noresponse' => 'Teu némbal atawa rekésna gagal.',
 	'bookinfo-purchase' => 'Beuli ti $1',
 	'bookinfo-provider' => 'Panyadia data: $1',
 );

@@ -843,6 +843,7 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
 	'watchsubpages' => 'Awaskeun sub artikel',
@@ -850,10 +851,9 @@ $messages['su'] = array(
 	'watchsubpages-addtitles' => 'Asupkeun kaca',
 	'watchsubpages-addtitlestowatchlist' => 'Asupkeun kaca ka awaskeuneun',
 	'watchsubpages-desc' => 'Gancang [[Special:WatchSubpages|asupkeun kabeh sub kaca ]] ieu ka awaskeunen',
-	'watchsubpages-form' => 'Pilih kaca keur di asupkeun ka awaskeuneun 
-Keur ngasupkeun kaca, contreng kotak di gigireuna, tuluy klik "Asupkeun kaca".
+	'watchsubpages-form' => 'Pilih kaca anu rék diawaskeun ku cara nyontréng kotak gigireunana, tuluy klik "{{int:watchsubpages-addtitles}}".
 
-Keur milih loba kaca, tahan konci shift keur anjeun bisa milih kotak lainna',
+Pikeun milih sakaligus sababaraha kaca anu noron, klik dina kaca panungtung anu noron bari nahan tombol shift.',
 );
 
 /** Swedish (Svenska)

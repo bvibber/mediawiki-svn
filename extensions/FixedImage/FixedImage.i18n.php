@@ -376,6 +376,13 @@ $messages['oc'] = array(
 	'fixedimage-desc' => 'Apond la balisa <code>&lt;fundraising&gt;</code> coma un imatge',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'fixedimage-desc' => '<code>&lt;fundraising&gt;</code>-Tag ass Pikter dezu duh',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

@@ -255,6 +255,13 @@ $messages['oc'] = array(
 	'flv-long-desc' => '(Vidèo flash, $1 × $2 pixèls, talha del fichièr : $3)',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'flv-long-desc' => '(Flash-Video, $1 × $2 Pixel, Grees vum Feil: $3)',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

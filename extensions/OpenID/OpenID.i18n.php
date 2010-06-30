@@ -3917,6 +3917,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'openidlanguage' => 'Schprooch',
+	'openidchooseusername' => 'Yuuser-Naame:',
 	'openidchoosepassword' => 'Paesswatt:',
 );
 

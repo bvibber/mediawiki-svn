@@ -756,9 +756,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor-preview-tab' => 'Претпреглед',
 	'wikieditor-preview-loading' => 'Учитавање...',
 );
 

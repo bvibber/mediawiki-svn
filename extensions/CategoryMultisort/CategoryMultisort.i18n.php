@@ -219,6 +219,13 @@ $messages['nl'] = array(
 	'prefs-category' => 'Categorie',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'prefs-category' => 'Abdeeling',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

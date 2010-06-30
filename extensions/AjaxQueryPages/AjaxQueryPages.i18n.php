@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'ajaxquerypages-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'ajaxquerypages-desc' => 'Manambahi babarapa AJAX ka tungkaran kueri nangkaya [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

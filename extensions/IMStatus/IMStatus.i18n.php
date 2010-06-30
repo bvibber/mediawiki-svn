@@ -1128,6 +1128,7 @@ L’identificant de provesir aicí es compausat de chifras e letras entre « $2 
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'imstatus_example' => 'Beischpiel',
 	'imstatus_or' => 'odder',
 	'imstatus_icq_id' => 'dei ICQ-ID',
 	'imstatus_icq_style' => 'en Zehl vun 0 bis 26 (ya, es gitt 27 verschiddeni Aarde …).',

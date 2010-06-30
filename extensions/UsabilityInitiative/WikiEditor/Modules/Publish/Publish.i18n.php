@@ -1098,11 +1098,13 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'wikieditor-publish-button-publish' => 'Објави',
 	'wikieditor-publish-button-cancel' => 'Поништи',
+	'wikieditor-publish-dialog-summary' => 'Опис измене (укратко опишите шта сте изменили):',
 	'wikieditor-publish-dialog-minor' => 'Мала измена',
 	'wikieditor-publish-dialog-publish' => 'Објави',
 	'wikieditor-publish-dialog-goback' => 'Врати се',

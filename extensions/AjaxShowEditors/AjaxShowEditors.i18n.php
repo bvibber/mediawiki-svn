@@ -893,6 +893,13 @@ $messages['oc'] = array(
 	'ajax-se-usernotfound' => 'ERROR : Utilizaire introbable',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ajax-se-idling' => '(vor $1 s)',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author McMonster
