@@ -1,6 +1,6 @@
 <?php
 #
-# This will enable POM editing throught MediaWiki API
+# This will enable POM editing through MediaWiki API
 #
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
@@ -13,6 +13,17 @@ require_once ( "$IP/includes/api/ApiBase.php" );
 global $wgAPIModules;
 $wgAPIModules['pomsettplparam'] = 'ApiPOMSetTemplateParameter';
 $wgAPIModules['pomgettplparam'] = 'ApiPOMGetTemplateParameter';
+
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'Page Object Model',
+	'author' => 'Sergey Chernyshev',
+	'descriptionmsg' => 'pageobjectmodel-desc',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Page_Object_Model',
+);
+
+$dir = dirname( __FILE__ );
+$wgExtensionMessagesFiles['PageObjectModel'] =  "$dir/PageObjectModel.i18n.php";
 
 /**
  * @ingroup API
