@@ -428,10 +428,8 @@ window.mw = $.extend( typeof window.mw === 'undefined' ? {} : window.mw, {
 		function execute( requirement ) {
 			if ( registry[requirement].state === 'loaded' ) {
 				// Add style, if any
-				if ( typeof registry[requirement].style === 'string' ) {
-					var style = document.createElement( 'style' );
-					style.type = 'text/css';
-					style.innerHTML = registry[requirement].style;
+				if ( typeof registry[requirement].style === 'string' && registry[requirement].style.length ) {
+					$( 'head' ).append( '<style type="text/css">' + registry[requirement].style + '</style>' );
 				}
 				// Add localizations
 				if ( typeof registry[requirement].localization === 'object' ) {
@@ -571,7 +569,8 @@ window.mw = $.extend( typeof window.mw === 'undefined' ? {} : window.mw, {
 					// Execute right away
 					execute( name );
 				} else {
-					// Queue it up and work the queue
+					// Queue it up (including the base module!) and work the queue
+					requirements[requirements.length] = name;
 					queue[queue.length] = { 'pending': requirements, 'callback': function() { execute( name ); } };
 					that.work();
 				}
