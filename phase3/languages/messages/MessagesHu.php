@@ -10,6 +10,7 @@
  * @author Balasyum
  * @author Bdamokos
  * @author Bennó
+ * @author BáthoryPéter
  * @author CERminator
  * @author Cerasus
  * @author Dani
@@ -308,7 +309,7 @@ $messages = array(
 'tog-editsection'             => '[szerkesztés] linkek az egyes szakaszok szerkesztéséhez',
 'tog-editsectiononrightclick' => 'Szakaszok szerkesztése a szakaszcímre való jobb kattintással (JavaScript-alapú)',
 'tog-showtoc'                 => 'Tartalomjegyzék megjelenítése a három fejezetnél többel rendelkező cikkeknél',
-'tog-rememberpassword'        => 'Emlékezzen rám ezen a számítógépen',
+'tog-rememberpassword'        => 'Emlékezzen rám ezen a számítógépen (legfeljebb $1 napig)',
 'tog-watchcreations'          => 'Az általam létrehozott lapok felvétele a figyelőlistára',
 'tog-watchdefault'            => 'Az általam szerkesztett lapok felvétele a figyelőlistára',
 'tog-watchmoves'              => 'Az általam átnevezett lapok felvétele a figyelőlistára',
@@ -453,31 +454,32 @@ $messages = array(
 'faqpage'        => 'Project:GyIK',
 
 # Vector skin
-'vector-action-addsection'   => 'Új szakasz nyitása',
-'vector-action-delete'       => 'Törlés',
-'vector-action-move'         => 'Átnevezés',
-'vector-action-protect'      => 'Lapvédelem',
-'vector-action-undelete'     => 'Visszaállítás',
-'vector-action-unprotect'    => 'Védelem feloldása',
-'vector-namespace-category'  => 'Kategória',
-'vector-namespace-help'      => 'Segítséglap',
-'vector-namespace-image'     => 'Fájl',
-'vector-namespace-main'      => 'Szócikk',
-'vector-namespace-media'     => 'Médialap',
-'vector-namespace-mediawiki' => 'Rendszerüzenet',
-'vector-namespace-project'   => 'Projektlap',
-'vector-namespace-special'   => 'Speciális lap',
-'vector-namespace-talk'      => 'Megbeszélés',
-'vector-namespace-template'  => 'Sablon',
-'vector-namespace-user'      => 'Szerkesztői lap',
-'vector-view-create'         => 'Létrehozás',
-'vector-view-edit'           => 'Szerkesztés',
-'vector-view-history'        => 'Laptörténet',
-'vector-view-view'           => 'Olvasás',
-'vector-view-viewsource'     => 'A lap forrása',
-'actions'                    => 'Műveletek',
-'namespaces'                 => 'Névterek',
-'variants'                   => 'Változók',
+'vector-action-addsection'       => 'Új szakasz nyitása',
+'vector-action-delete'           => 'Törlés',
+'vector-action-move'             => 'Átnevezés',
+'vector-action-protect'          => 'Lapvédelem',
+'vector-action-undelete'         => 'Visszaállítás',
+'vector-action-unprotect'        => 'Védelem feloldása',
+'vector-namespace-category'      => 'Kategória',
+'vector-namespace-help'          => 'Segítséglap',
+'vector-namespace-image'         => 'Fájl',
+'vector-namespace-main'          => 'Szócikk',
+'vector-namespace-media'         => 'Médialap',
+'vector-namespace-mediawiki'     => 'Rendszerüzenet',
+'vector-namespace-project'       => 'Projektlap',
+'vector-namespace-special'       => 'Speciális lap',
+'vector-namespace-talk'          => 'Megbeszélés',
+'vector-namespace-template'      => 'Sablon',
+'vector-namespace-user'          => 'Szerkesztői lap',
+'vector-simplesearch-preference' => 'Továbbfejlesztett keresési javaslatok engedélyezése (csak Vector felületen)',
+'vector-view-create'             => 'Létrehozás',
+'vector-view-edit'               => 'Szerkesztés',
+'vector-view-history'            => 'Laptörténet',
+'vector-view-view'               => 'Olvasás',
+'vector-view-viewsource'         => 'A lap forrása',
+'actions'                        => 'Műveletek',
+'namespaces'                     => 'Névterek',
+'variants'                       => 'Változók',
 
 'errorpagetitle'    => 'Hiba',
 'returnto'          => 'Vissza a(z) $1 laphoz.',
@@ -698,7 +700,7 @@ Ne felejtsd el átnézni a [[Special:Preferences|személyes beállításaidat]].
 'yourname'                   => 'Szerkesztőneved:',
 'yourpassword'               => 'Jelszavad:',
 'yourpasswordagain'          => 'Jelszavad ismét:',
-'remembermypassword'         => 'Ne léptessen ki a böngésző bezárásakor.',
+'remembermypassword'         => 'Emlékezzen rám ezen a számítógépen (legfeljebb $1 napig)',
 'yourdomainname'             => 'A domainneved:',
 'externaldberror'            => 'Hiba történt a külső adatbázis hitelesítése közben, vagy nem vagy jogosult a külső fiókod frissítésére.',
 'login'                      => 'Bejelentkezés',
@@ -832,7 +834,7 @@ Lehet, hogy már sikeresen megváltoztattad a jelszavad, vagy pedig időközben 
 'missingsummary'                   => "'''Emlékeztető:''' Nem adtál meg szerkesztési összefoglalót. Ha összefoglaló nélkül akarod elküldeni a szöveget, kattints újra a mentésre.",
 'missingcommenttext'               => 'Kérjük, hogy írj összefoglalót szerkesztésedhez.',
 'missingcommentheader'             => "'''Emlékeztető:''' Nem adtad meg a megjegyzés tárgyát vagy címét.
-Ha ismét a Mentés gombra kattintasz, akkor a szerkesztésed nélküle kerül mentésre.",
+Ha ismét a „{{int:savearticle}}” gombra kattintasz, akkor a szerkesztésed nélküle kerül mentésre.",
 'summary-preview'                  => 'A szerkesztési összefoglaló előnézete:',
 'subject-preview'                  => 'A téma/főcím előnézete:',
 'blockedtitle'                     => 'A szerkesztő blokkolva van',
@@ -954,7 +956,7 @@ A lap szöveget kimásolhatod egy szövegfájlba, amit elmenthetsz későbbre.''
 Az adatbázist lezáró adminisztrátor az alábbi magyarázatot adta: $1",
 'protectedpagewarning'             => "'''Figyelem: Ez a lap le van védve, így csak adminisztrátori jogosultságokkal rendelkező szerkesztők módosíthatják.'''
 A legutolsó ide vonatkozó naplóbejegyzés alább látható:",
-'semiprotectedpagewarning'         => "'''Megjegyzés:''' ez a lap védett, nem vagy újonnan regisztrált szerkesztők nem módosíthatják.",
+'semiprotectedpagewarning'         => "'''Megjegyzés:''' ez a lap védett, így regisztrálatlan, vagy újonnan regisztrált szerkesztők nem módosíthatják.",
 'cascadeprotectedwarning'          => "'''Figyelem:''' ez a lap le van zárva, csak adminisztrátorok szerkeszthetik, mert a következő kaszkádvédelemmel ellátott {{PLURAL:$1|lapon|lapokon}} szerepel beillesztve:",
 'titleprotectedwarning'            => "'''Figyelem: Ez a lap le van védve, így csak a [[Special:ListGroupRights|megfelelő jogosultságokkal]] rendelkező szerkesztők hozhatják létre.'''
 A legutolsó ide vonatkozó naplóbejegyzés alább látható:",
@@ -1167,11 +1169,11 @@ Ellenőrizd a naplókat.',
 'revmove-reasonfield'          => 'Ok:',
 'revmove-titlefield'           => 'Céllap:',
 'revmove-badparam-title'       => 'Hibás paraméterek',
-'revmove-badparam'             => '<span class="error">A kérésed érvénytelen vagy nem elegendő paramétert tartalmaz. Kattints a „Vissza” gombra, majd próbáld újra.</span>',
+'revmove-badparam'             => 'A kérésed érvénytelen vagy nem elegendő paramétert tartalmaz. Kattints a „Vissza” gombra, majd próbáld újra.',
 'revmove-norevisions-title'    => 'Érvénytelen célváltozat',
-'revmove-norevisions'          => '<span class="error">Nem adtad meg az(oka)t a lapváltozato(ka)t, mely(ek)en végre akarod hajtani ezt a műveletet, vagy a kiválasztott lapváltozat nem létezik.</span>',
+'revmove-norevisions'          => 'Nem adtad meg az(oka)t a lapváltozato(ka)t, mely(ek)en végre akarod hajtani ezt a műveletet, vagy a kiválasztott lapváltozat nem létezik.',
 'revmove-nullmove-title'       => 'Hibás cím',
-'revmove-nullmove'             => '<span class="error">A forrás és a céllap megegyezik. Kattints a „Vissza” gombra, majd adj meg a jelenlegi, „$1” címtől különbözőt.</span>',
+'revmove-nullmove'             => 'A forrás és a céllap megegyezik. Kattints a „Vissza” gombra, majd adj meg a jelenlegi, „$1” címtől különbözőt.',
 'revmove-success-existing'     => '{{PLURAL:$1|Egy|$1}} lapváltozat át lett helyezve a(z) [[$2]] lapról a már létező [[$3]] lapra.',
 'revmove-success-created'      => '{{PLURAL:$1|Egy|$1}} lapváltozat át lett helyezve a(z) [[$2]] lapról az újonnan létrehozott [[$3]] lapra.',
 
@@ -1502,6 +1504,7 @@ Ezen kívül más szerkesztők is kapcsolatba lépjenek veled a szerkesztői vag
 'right-override-export-depth' => 'Lapok exportálása a hivatkozott lapokkal együtt, legfeljebb 5-ös mélységig',
 'right-sendemail'             => 'e-mail küldése más felhasználóknak',
 'right-revisionmove'          => 'lapváltozatok áthelyezése',
+'right-selenium'              => 'Selenium-tesztek futtatása',
 
 # User rights log
 'rightslog'      => 'Szerkesztői jogosultságok naplója',
@@ -2392,6 +2395,7 @@ $1',
 A blokknapló legutóbbi ide vonatkozó bejegyzése a következő:',
 'sp-contributions-search'              => 'Közreműködések szűrése',
 'sp-contributions-username'            => 'IP-cím vagy felhasználónév:',
+'sp-contributions-toponly'             => 'Csak a jelenleg utolsónak számító változtatásokat mutassa',
 'sp-contributions-submit'              => 'Keresés',
 
 # What links here
@@ -2924,6 +2928,9 @@ A futtatása során kárt tehet a számítógépedben.<hr />",
 'show-big-image-thumb' => '<small>Az előnézet mérete: $1 × $2 képpont</small>',
 'file-info-gif-looped' => 'ismétlődik',
 'file-info-gif-frames' => '{{PLURAL:$1|egy|$1}} képkocka',
+'file-info-png-looped' => 'ismétlődik',
+'file-info-png-repeat' => 'lejátszva {{PLURAL:$1|egy|$1}} alkalommal',
+'file-info-png-frames' => '{{PLURAL:$1|egy|$1}} képkocka',
 
 # Special:NewFiles
 'newimages'             => 'Új fájlok galériája',
@@ -3325,6 +3332,7 @@ Kérlek erősítsd meg, hogy tényleg újra akarod-e írni a lapot.",
 'table_pager_first'        => 'Első oldal',
 'table_pager_last'         => 'Utolsó oldal',
 'table_pager_limit'        => 'Laponként $1 tétel megjelenítése',
+'table_pager_limit_label'  => 'Elemek száma oldalanként:',
 'table_pager_limit_submit' => 'Ugrás',
 'table_pager_empty'        => 'Nincs találat',
 
@@ -3460,6 +3468,15 @@ Add meg a fájl nevét „{{ns:file}}:” előtag nélkül.',
 'tags-edit'               => 'szerkesztés',
 'tags-hitcount'           => '{{PLURAL:$1|Egy|$1}} változtatás',
 
+# Special:ComparePages
+'comparepages'     => 'Lapok összehasonlítása',
+'compare-selector' => 'Lapváltozatok összehasonlítása',
+'compare-page1'    => '1. lap',
+'compare-page2'    => '2. lap',
+'compare-rev1'     => '1. változat',
+'compare-rev2'     => '2. változat',
+'compare-submit'   => 'Összehasonlítás',
+
 # Database error messages
 'dberr-header'      => 'A wikivel problémák vannak',
 'dberr-problems'    => 'Sajnáljuk, de az oldallal technikai problémák vannak.',
@@ -3480,20 +3497,5 @@ Add meg a fájl nevét „{{ns:file}}:” előtag nélkül.',
 'htmlform-submit'              => 'Elküldés',
 'htmlform-reset'               => 'Változtatások visszavonása',
 'htmlform-selectorother-other' => 'egyéb',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Kategória hozzáadása',
-'ajax-add-category-submit'     => 'Hozzáadás',
-'ajax-confirm-title'           => 'Művelet megerősítése',
-'ajax-confirm-prompt'          => 'Alább megadhatsz egy szerkesztési összefoglalót.
-Kattints a „Mentés” gombra a szerkesztés elmentéséhez.',
-'ajax-confirm-save'            => 'Mentés',
-'ajax-add-category-summary'    => '„$1” kategória hozzáadása',
-'ajax-remove-category-summary' => '„$1” kategória eltávolítása',
-'ajax-confirm-actionsummary'   => 'Elvégzendő művelet:',
-'ajax-error-title'             => 'Hiba',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Nem sikerült eltávolítani a kategóriát.
-Ez általában akkor fordul elő, ha a kategóriát egy sablon adja hozzá a laphoz.',
 
 );

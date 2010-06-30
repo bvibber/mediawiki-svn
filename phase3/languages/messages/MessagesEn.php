@@ -457,6 +457,8 @@ $specialPageAliases = array(
 	'Tags'                      => array( 'Tags' ),
 	'Activeusers'               => array( 'ActiveUsers' ),
 	'RevisionMove'              => array( 'RevisionMove' ),
+	'ComparePages'              => array( 'ComparePages' ),
+	'Selenium'                  => array( 'Selenium' ),
 );
 
 /**
@@ -779,31 +781,32 @@ XHTML id names.
 'sitesubtitle'   => '', # do not translate or duplicate this message to other languages
 
 # Vector skin
-'vector-action-addsection'   => 'Add topic',
-'vector-action-delete'       => 'Delete',
-'vector-action-move'         => 'Move',
-'vector-action-protect'      => 'Protect',
-'vector-action-undelete'     => 'Undelete',
-'vector-action-unprotect'    => 'Unprotect',
-'vector-namespace-category'  => 'Category',
-'vector-namespace-help'      => 'Help page',
-'vector-namespace-image'     => 'File',
-'vector-namespace-main'      => 'Page',
-'vector-namespace-media'     => 'Media page',
-'vector-namespace-mediawiki' => 'Message',
-'vector-namespace-project'   => 'Project page',
-'vector-namespace-special'   => 'Special page',
-'vector-namespace-talk'      => 'Discussion',
-'vector-namespace-template'  => 'Template',
-'vector-namespace-user'      => 'User page',
-'vector-view-create'         => 'Create',
-'vector-view-edit'           => 'Edit',
-'vector-view-history'        => 'View history',
-'vector-view-view'           => 'Read',
-'vector-view-viewsource'     => 'View source',
-'actions'                    => 'Actions',
-'namespaces'                 => 'Namespaces',
-'variants'                   => 'Variants',
+'vector-action-addsection'       => 'Add topic',
+'vector-action-delete'           => 'Delete',
+'vector-action-move'             => 'Move',
+'vector-action-protect'          => 'Protect',
+'vector-action-undelete'         => 'Undelete',
+'vector-action-unprotect'        => 'Unprotect',
+'vector-namespace-category'      => 'Category',
+'vector-namespace-help'          => 'Help page',
+'vector-namespace-image'         => 'File',
+'vector-namespace-main'          => 'Page',
+'vector-namespace-media'         => 'Media page',
+'vector-namespace-mediawiki'     => 'Message',
+'vector-namespace-project'       => 'Project page',
+'vector-namespace-special'       => 'Special page',
+'vector-namespace-talk'          => 'Discussion',
+'vector-namespace-template'      => 'Template',
+'vector-namespace-user'          => 'User page',
+'vector-simplesearch-preference' => 'Enable enhanced search suggestions (Vector skin only)',
+'vector-view-create'             => 'Create',
+'vector-view-edit'               => 'Edit',
+'vector-view-history'            => 'View history',
+'vector-view-view'               => 'Read',
+'vector-view-viewsource'         => 'View source',
+'actions'                        => 'Actions',
+'namespaces'                     => 'Namespaces',
+'variants'                       => 'Variants',
 
 'errorpagetitle'    => 'Error',
 'returnto'          => 'Return to $1.',
@@ -1200,7 +1203,7 @@ Your IP address will be recorded in this page's edit history.",
 If you click Save again, your edit will be saved without one.",
 'missingcommenttext'               => 'Please enter a comment below.',
 'missingcommentheader'             => "'''Reminder:''' You have not provided a subject/headline for this comment.
-If you click Save again, your edit will be saved without one.",
+If you click \"{{int:savearticle}}\" again, your edit will be saved without one.",
 'summary-preview'                  => 'Summary preview:',
 'subject-preview'                  => 'Subject/headline preview:',
 'blockedtitle'                     => 'User is blocked',
@@ -1565,11 +1568,13 @@ See the [[Special:IPBlockList|IP block list]] for the list of currently operatio
 'revmove-reasonfield'          => 'Reason:',
 'revmove-titlefield'           => 'Target page:',
 'revmove-badparam-title'       => 'Bad parameters',
-'revmove-badparam'             => '<span class="error">Your request contains illegal or insufficient parameters. Please hit "back" and try again.</span>',
+'revmove-badparam'             => 'Your request contains illegal or insufficient parameters.
+Go back to the previous page and try again.',
 'revmove-norevisions-title'    => 'Invalid target revision',
-'revmove-norevisions'          => '<span class="error">You have not specified one or more target revisions to perform this function or the specified revision does not exist.</span>',
+'revmove-norevisions'          => 'You have not specified one or more target revisions to perform this function or the specified revision does not exist.',
 'revmove-nullmove-title'       => 'Bad title',
-'revmove-nullmove'             => '<span class="error">Source and target page are identical. Please hit "back" and enter a page name different to "$1".</span>',
+'revmove-nullmove'             => 'The target page cannot be the same as the source page.
+Go back to the previous page and choose a different name from "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|One revision from [[$2]] has|$1 revisions from [[$2]] have}} been moved to the existing page [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|One revision from [[$2]] has|$1 revisions from [[$2]] have}} been moved to the newly created page [[$3]].',
 
@@ -1934,6 +1939,7 @@ You can also choose to let others contact you through your user or talk page wit
 'right-override-export-depth' => 'Export pages including linked pages up to a depth of 5',
 'right-sendemail'             => 'Send e-mail to other users',
 'right-revisionmove'          => 'Move revisions',
+'right-selenium'              => 'Run Selenium tests',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -2766,7 +2772,7 @@ changed back to last revision by $2.',
 'sessionfailure-title' => 'Session failure',
 'sessionfailure'       => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
-Please hit "back" and reload the page you came from, then try again.',
+Go back to the previous page, reload that page and then try again.',
 
 # Protect
 'protectlogpage'              => 'Protection log',
@@ -2916,6 +2922,7 @@ The latest block log entry is provided below for reference:',
 The latest block log entry is provided below for reference:',
 'sp-contributions-search'              => 'Search for contributions',
 'sp-contributions-username'            => 'IP address or username:',
+'sp-contributions-toponly'             => 'Only show edits that are latest revisions',
 'sp-contributions-submit'              => 'Search',
 'sp-contributions-explain'             => '', # only translate this message to other languages if you have to change it
 'sp-contributions-footer'              => '-', # do not translate or duplicate this message to other languages
@@ -3549,6 +3556,9 @@ By executing it, your system may be compromised.<hr />",
 'show-big-image-thumb' => '<small>Size of this preview: $1 × $2 pixels</small>',
 'file-info-gif-looped' => 'looped',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|frame|frames}}',
+'file-info-png-looped' => 'looped',
+'file-info-png-repeat' => 'played $1 {{PLURAL:$1|time|times}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|frame|frames}}',
 
 # Special:NewFiles
 'newimages'             => 'Gallery of new files',
@@ -4285,6 +4295,15 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'tags-edit'               => 'edit',
 'tags-hitcount'           => '$1 {{PLURAL:$1|change|changes}}',
 
+# Special:ComparePages
+'comparepages'     => 'Compare pages',
+'compare-selector' => 'Compare page revisions',
+'compare-page1'    => 'Page 1',
+'compare-page2'    => 'Page 2',
+'compare-rev1'     => 'Revision 1',
+'compare-rev2'     => 'Revision 2',
+'compare-submit'   => 'Compare',
+
 # Database error messages
 'dberr-header'      => 'This wiki has a problem',
 'dberr-problems'    => 'Sorry!
@@ -4306,20 +4325,5 @@ This site is experiencing technical difficulties.',
 'htmlform-submit'              => 'Submit',
 'htmlform-reset'               => 'Undo changes',
 'htmlform-selectorother-other' => 'Other',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Add category',
-'ajax-add-category-submit'     => 'Add',
-'ajax-confirm-title'           => 'Confirm action',
-'ajax-confirm-prompt'          => 'You can provide an edit summary below.
-Click "Save" to save your edit.',
-'ajax-confirm-save'            => 'Save',
-'ajax-add-category-summary'    => 'Add category "$1"',
-'ajax-remove-category-summary' => 'Remove category "$1"',
-'ajax-confirm-actionsummary'   => 'Action to take:',
-'ajax-error-title'             => 'Error',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'It was not possible to remove this category.
-This usually occurs when the category has been added to the page in a template.',
 
 );

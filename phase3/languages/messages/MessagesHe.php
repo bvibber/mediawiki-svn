@@ -13,6 +13,7 @@
  * @author Rotem Liss (March 2006 on)
  * @author Rotemliss
  * @author YaronSh
+ * @author ערן
  */
 
 $rtl = true;
@@ -304,6 +305,8 @@ $specialPageAliases = array(
 	'Tags'                      => array( 'תגיות' ),
 	'Activeusers'               => array( 'משתמשים_פעילים' ),
 	'RevisionMove'              => array( 'העברת_גרסאות' ),
+	'ComparePages'              => array( 'השוואת_דפים' ),
+	'Selenium'                  => array( 'סלניום' ),
 );
 
 $namespaceNames = array(
@@ -492,31 +495,32 @@ $messages = array(
 'faqpage'        => 'Project:שאלות ותשובות',
 
 # Vector skin
-'vector-action-addsection'   => 'הוספת נושא',
-'vector-action-delete'       => 'מחיקה',
-'vector-action-move'         => 'העברה',
-'vector-action-protect'      => 'הגנה',
-'vector-action-undelete'     => 'ביטול מחיקה',
-'vector-action-unprotect'    => 'הסרת הגנה',
-'vector-namespace-category'  => 'קטגוריה',
-'vector-namespace-help'      => 'דף עזרה',
-'vector-namespace-image'     => 'קובץ',
-'vector-namespace-main'      => 'דף',
-'vector-namespace-media'     => 'דף מדיה',
-'vector-namespace-mediawiki' => 'הודעה',
-'vector-namespace-project'   => 'דף מיזם',
-'vector-namespace-special'   => 'דף מיוחד',
-'vector-namespace-talk'      => 'שיחה',
-'vector-namespace-template'  => 'תבנית',
-'vector-namespace-user'      => 'דף משתמש',
-'vector-view-create'         => 'יצירה',
-'vector-view-edit'           => 'עריכה',
-'vector-view-history'        => 'הצגת היסטוריה',
-'vector-view-view'           => 'קריאה',
-'vector-view-viewsource'     => 'הצגת מקור',
-'actions'                    => 'פעולות',
-'namespaces'                 => 'מרחבי שם',
-'variants'                   => 'גרסאות שפה',
+'vector-action-addsection'       => 'הוספת נושא',
+'vector-action-delete'           => 'מחיקה',
+'vector-action-move'             => 'העברה',
+'vector-action-protect'          => 'הגנה',
+'vector-action-undelete'         => 'ביטול מחיקה',
+'vector-action-unprotect'        => 'הסרת הגנה',
+'vector-namespace-category'      => 'קטגוריה',
+'vector-namespace-help'          => 'דף עזרה',
+'vector-namespace-image'         => 'קובץ',
+'vector-namespace-main'          => 'דף',
+'vector-namespace-media'         => 'דף מדיה',
+'vector-namespace-mediawiki'     => 'הודעה',
+'vector-namespace-project'       => 'דף מיזם',
+'vector-namespace-special'       => 'דף מיוחד',
+'vector-namespace-talk'          => 'שיחה',
+'vector-namespace-template'      => 'תבנית',
+'vector-namespace-user'          => 'דף משתמש',
+'vector-simplesearch-preference' => 'הפעלת הצעות החיפוש המשופרות (בעיצוב וקטור בלבד)',
+'vector-view-create'             => 'יצירה',
+'vector-view-edit'               => 'עריכה',
+'vector-view-history'            => 'הצגת היסטוריה',
+'vector-view-view'               => 'קריאה',
+'vector-view-viewsource'         => 'הצגת מקור',
+'actions'                        => 'פעולות',
+'namespaces'                     => 'מרחבי שם',
+'variants'                       => 'גרסאות שפה',
 
 'errorpagetitle'    => 'שגיאה',
 'returnto'          => 'חזרה לדף $1.',
@@ -860,9 +864,11 @@ $2',
 'showdiff'                         => 'הצגת שינויים',
 'anoneditwarning'                  => "'''אזהרה:''' אינכם מחוברים לחשבון. כתובת ה־IP שלכם תירשם בהיסטוריית העריכות של הדף.",
 'anonpreviewwarning'               => "''אינכם מחוברים לחשבון. שמירה תגרום לכתובת ה־IP שלכם להירשם בהיסטוריית העריכות של הדף.''",
-'missingsummary'                   => "'''תזכורת:''' לא הזנתם תקציר עריכה. אם תלחצו שוב על כפתור השמירה, עריכתכם תישמר בלעדיו.",
+'missingsummary'                   => "'''תזכורת:''' לא הזנתם תקציר עריכה.
+אם תלחצו שוב על כפתור השמירה, עריכתכם תישמר בלעדיו.",
 'missingcommenttext'               => 'אנא הקלידו את ההודעה למטה.',
-'missingcommentheader'             => "'''תזכורת:''' לא הזנתם נושא/כותרת להודעה זו. אם תלחצו שוב על כפתור השמירה, עריכתכם תישמר בלעדיו.",
+'missingcommentheader'             => "'''תזכורת:''' לא הזנתם נושא/כותרת להודעה זו.
+אם תלחצו שוב על הכפתור \"{{int:savearticle}}\", עריכתכם תישמר בלעדיו.",
 'summary-preview'                  => 'תצוגה מקדימה של התקציר:',
 'subject-preview'                  => 'תצוגה מקדימה של הנושא/הכותרת:',
 'blockedtitle'                     => 'המשתמש חסום',
@@ -1192,11 +1198,11 @@ $1",
 'revmove-reasonfield'          => 'סיבה:',
 'revmove-titlefield'           => 'דף היעד:',
 'revmove-badparam-title'       => 'פרמטרים שגויים',
-'revmove-badparam'             => '<span class="error">בקשתכם כוללת פרמטרים בלתי חוקיים או בלתי מספיקים. אנא לחצו על "Back" ונסו שוב.</span>',
+'revmove-badparam'             => 'בקשתכם כוללת פרמטרים בלתי חוקיים או בלתי מספיקים. אנא לחצו על "Back" ונסו שוב.',
 'revmove-norevisions-title'    => 'גרסת יעד בלתי תקינה',
-'revmove-norevisions'          => '<span class="error">לא ציינתם גרסת יעד אחת או יותר שיש לבצע עליה פעולה זו, או שהגרסאות שציינתם אינן קיימות.</span>',
+'revmove-norevisions'          => 'לא ציינתם גרסת יעד אחת או יותר שיש לבצע עליה פעולה זו, או שהגרסאות שציינתם אינן קיימות.',
 'revmove-nullmove-title'       => 'כותרת שגויה',
-'revmove-nullmove'             => '<span class="error">דפי המקור והיעד הם זהים. אנא לחצו "Back" והקלידו שם דף שונה מ"$1".</span>',
+'revmove-nullmove'             => 'דפי המקור והיעד הם זהים. אנא לחצו "Back" והקלידו שם דף שונה מ"$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|גרסה אחת מ[[$2]] הועברה|$1 גרסאות מ[[$2]] הועברו}} לדף הקיים [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|גרסה אחת מ[[$2]] הועברה|$1 גרסאות מ[[$2]] הועברו}} לדף החדש [[$3]].',
 
@@ -1532,6 +1538,7 @@ $1",
 'right-override-export-depth' => 'ייצוא דפים כולל דפים מקושרים עד עומק של חמישה',
 'right-sendemail'             => 'שליחת דואר אלקטרוני למשתמשים אחרים',
 'right-revisionmove'          => 'העברת גרסאות',
+'right-selenium'              => 'הרצת מבחני סלניום',
 
 # User rights log
 'rightslog'      => 'יומן תפקידים',
@@ -2419,6 +2426,7 @@ $1',
 הפעולה האחרונה ביומן החסימות מוצגת להלן:',
 'sp-contributions-search'              => 'חיפוש תרומות',
 'sp-contributions-username'            => 'שם משתמש או כתובת IP:',
+'sp-contributions-toponly'             => 'הצגת עריכות שהן הגרסאות האחרונות בלבד',
 'sp-contributions-submit'              => 'חיפוש',
 
 # What links here
@@ -2959,7 +2967,10 @@ $1',
 'show-big-image'       => 'תמונה ברזולוציה גבוהה יותר',
 'show-big-image-thumb' => '<small>גודל התצוגה הזו: $1 × $2 פיקסלים</small>',
 'file-info-gif-looped' => 'בלולאה',
-'file-info-gif-frames' => '{{PLURAL:$1|מסגרת אחת|$1 מסגרות}}',
+'file-info-gif-frames' => '{{PLURAL:$1|תמונה אחת|$1 תמונות}}',
+'file-info-png-looped' => 'בלולאה',
+'file-info-png-repeat' => 'הוצג {{PLURAL:$1|פעם אחת|$1 פעמים|פעמיים}}',
+'file-info-png-frames' => '{{PLURAL:$1|תמונה אחת|$1 תמונות}}',
 
 # Special:NewFiles
 'newimages'             => 'גלריית קבצים חדשים',
@@ -3352,6 +3363,7 @@ $1',
 'table_pager_first'        => 'הדף הראשון',
 'table_pager_last'         => 'הדף האחרון',
 'table_pager_limit'        => 'הצגת $1 פריטים בדף',
+'table_pager_limit_label'  => 'מספר פריטים בדף:',
 'table_pager_limit_submit' => 'הצגה',
 'table_pager_empty'        => 'ללא תוצאות',
 
@@ -3553,6 +3565,15 @@ $1',
 'tags-edit'               => 'עריכה',
 'tags-hitcount'           => '{{PLURAL:$1|שינוי אחד|$1 שינויים}}',
 
+# Special:ComparePages
+'comparepages'     => 'השוואת דפים',
+'compare-selector' => 'השוואת גרסאות של דפים',
+'compare-page1'    => 'דף 1',
+'compare-page2'    => 'דף 2',
+'compare-rev1'     => 'גרסה 1',
+'compare-rev2'     => 'גרסה 2',
+'compare-submit'   => 'השוואה',
+
 # Database error messages
 'dberr-header'      => 'בעיה בוויקי',
 'dberr-problems'    => 'מצטערים! קיימת בעיה טכנית באתר זה.',
@@ -3573,20 +3594,5 @@ $1',
 'htmlform-submit'              => 'שליחה',
 'htmlform-reset'               => 'ביטול השינויים',
 'htmlform-selectorother-other' => 'אחר',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'הוספת קטגוריה',
-'ajax-add-category-submit'     => 'הוספה',
-'ajax-confirm-title'           => 'אישור הפעולה',
-'ajax-confirm-prompt'          => 'באפשרותכם לכתוב תקציר עריכה למטה.
-לחצו על "{{int:ajax-confirm-save}}" כדי לשמור את העריכה.',
-'ajax-confirm-save'            => 'שמירה',
-'ajax-add-category-summary'    => 'הוספת הקטגוריה "$1"',
-'ajax-remove-category-summary' => 'הסרת הקטגוריה "$1"',
-'ajax-confirm-actionsummary'   => 'הפעולה לביצוע:',
-'ajax-error-title'             => 'שגיאה',
-'ajax-error-dismiss'           => 'אישור',
-'ajax-remove-category-error'   => 'לא ניתן היה להסיר קטגוריה זו.
-הסיבה לכך היא בדרך כלל שהקטגוריה נוספה לדף בתוך תבנית.',
 
 );

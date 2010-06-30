@@ -693,11 +693,9 @@ class Linker {
 				list( $inside, $trail ) = self::splitTrail( $trail );
 
 				wfProfileOut( __METHOD__ );
-				return Html::element( 'a', array(
-					'href' => $href,
-					'class' => 'new',
-					'title' => $title->getPrefixedText()
-				), $prefix . $text . $inside ) . $trail;
+				return '<a href="' . htmlspecialchars( $href ) . '" class="new" title="' . 
+								htmlspecialchars( $title->getPrefixedText(), ENT_QUOTES ) . '">' .
+								htmlspecialchars( $prefix . $text . $inside, ENT_NOQUOTES ) . '</a>' . $trail;
 			} else {
 				wfProfileOut( __METHOD__ );
 				return $this->makeKnownLinkObj( $title, $text, $query, $trail, $prefix );
@@ -751,7 +749,7 @@ class Linker {
 				$url = $this->getUploadUrl( $title );
 				$class = 'new';
 			}
-			$alt = htmlspecialchars( $title->getText() );
+			$alt = htmlspecialchars( $title->getText(),  ENT_QUOTES );
 			if( $text == '' ) {
 				$text = $alt;
 			}
@@ -1018,14 +1016,13 @@ class Linker {
 		if ( $title ) {
 			$section = $auto;
 
-			# Generate a valid anchor name from the section title.
-			# Hackish, but should generally work - we strip wiki
-			# syntax, including the magic [[: that is used to
-			# "link rather than show" in case of images and
-			# interlanguage links.
+			# Remove links that a user may have manually put in the autosummary
+			# This could be improved by copying as much of Parser::stripSectionName as desired.
 			$section = str_replace( '[[:', '', $section );
 			$section = str_replace( '[[', '', $section );
 			$section = str_replace( ']]', '', $section );
+
+			$section = Sanitizer::normalizeSectionNameWhitespace( $section ); # bug 22784
 			if ( $local ) {
 				$sectionTitle = Title::newFromText( '#' . $section );
 			} else {

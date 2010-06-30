@@ -1014,6 +1014,15 @@ External link containing double-single-quotes in text embedded in italics (bug 4
 !! end
 
 !! test
+External link containing double-single-quotes with no space separating the url from text in italics
+!! input
+[http://www.musee-picasso.fr/pages/page_id18528_u1l2.htm''La muerte de Casagemas'' (1901) en el sitio de [[Museo Picasso (París)|Museo Picasso]].]
+!! result
+<p><a href="http://www.musee-picasso.fr/pages/page_id18528_u1l2.htm" class="external text" rel="nofollow"><i>La muerte de Casagemas</i> (1901) en el sitio de <a href="/index.php?title=Museo_Picasso_(Par%C3%ADs)&amp;action=edit&amp;redlink=1" class="new" title="Museo Picasso (París) (page does not exist)">Museo Picasso</a>.</a>
+</p>
+!! end
+
+!! test
 URL-encoding in URL functions (single parameter)
 !! input
 {{localurl:Some page|amp=&}}
@@ -1462,12 +1471,10 @@ Link containing "<#" and ">#" as a hex sequences
 
 !! test
 Link containing double-single-quotes '' (bug 4598)
-!! options
-disabled
 !! input
 [[Lista d''e paise d''o munno]]
 !! result
-<p><a href="/index.php?title=Lista_d%27%27e_paise_d%27%27o_munno&amp;action=edit" class="new" title="Lista d''e paise d''o munno">Lista d''e paise d''o munno</a>
+<p><a href="/index.php?title=Lista_d%27%27e_paise_d%27%27o_munno&amp;action=edit&amp;redlink=1" class="new" title="Lista d''e paise d''o munno (page does not exist)">Lista d''e paise d''o munno</a>
 </p>
 !! end
 
@@ -1485,7 +1492,25 @@ Link containing double-single-quotes '' in text embedded in italics (bug 4598 sa
 !! input
 ''Some [[Link|pretty ''italics'' and stuff]]!
 !! result
-<p><i>Some </i><a href="/index.php?title=Link&amp;action=edit&amp;redlink=1" class="new" title="Link (page does not exist)"><i>pretty </i>italics<i> and stuff</i></a><i>!</i>
+<p><i>Some <a href="/index.php?title=Link&amp;action=edit&amp;redlink=1" class="new" title="Link (page does not exist)">pretty <i>italics</i> and stuff</a>!</i>
+</p>
+!! end
+
+!! test
+Link with double quotes in title part (literal) and alternate part (interpreted)
+!! input
+[[File:Denys Savchenko ''Pentecoste''.jpg]]
+
+[[''Pentecoste'']]
+
+[[''Pentecoste''|Pentecoste]]
+
+[[''Pentecoste''|''Pentecoste'']]
+!! result
+<p><a href="/index.php?title=Special:Upload&amp;wpDestFile=Denys_Savchenko_%27%27Pentecoste%27%27.jpg" class="new" title="File:Denys Savchenko &#39;&#39;Pentecoste&#39;&#39;.jpg">File:Denys Savchenko <i>Pentecoste</i>.jpg</a>
+</p><p><a href="/index.php?title=%27%27Pentecoste%27%27&amp;action=edit&amp;redlink=1" class="new" title="''Pentecoste'' (page does not exist)">''Pentecoste''</a>
+</p><p><a href="/index.php?title=%27%27Pentecoste%27%27&amp;action=edit&amp;redlink=1" class="new" title="''Pentecoste'' (page does not exist)">Pentecoste</a>
+</p><p><a href="/index.php?title=%27%27Pentecoste%27%27&amp;action=edit&amp;redlink=1" class="new" title="''Pentecoste'' (page does not exist)"><i>Pentecoste</i></a>
 </p>
 !! end
 
@@ -1966,15 +1991,6 @@ title=[[User:Ævar Arnfjörð Bjarmason]]
 {{NAMESPACEE}}
 !! result
 <p>User
-</p>
-!! end
-
-!! test
-Magic Word: {{NUMBEROFARTICLES}}
-!! input
-{{NUMBEROFARTICLES}}
-!! result
-<p>2
 </p>
 !! end
 
@@ -3901,6 +3917,23 @@ http://example.com [[Image:foobar.jpg]]
 <p><a href="http://example.com" class="external free" rel="nofollow">http://example.com</a> <a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="1941" height="220" /></a>
 </p>
 !!end
+
+!! test
+Short headings with trailing space should match behaviour of Parser::doHeadings (bug 19910)
+!! input
+=== 
+The line above must have a trailing space!
+=== <!--
+--> <!-- -->
+But just in case it doesn't...
+!! result
+<h1><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=1" title="Edit section: =">edit</a>]</span> <span class="mw-headline" id=".3D">=</span></h1>
+<p>The line above must have a trailing space!
+</p>
+<h1><span class="editsection">[<a href="/index.php?title=Parser_test&amp;action=edit&amp;section=2" title="Edit section: =">edit</a>]</span> <span class="mw-headline" id=".3D_2">=</span></h1>
+<p>But just in case it doesn't...
+</p>
+!! end
 
 !! test
 BUG 1219 URL next to image (broken)
@@ -5849,6 +5882,22 @@ section=1
 ==marked==
 !!end
 
+# Test behaviour of bug 19910
+!! test
+Sectiion with all-equals
+!! options
+section=2
+!! input
+=== 
+The line above must have a trailing space
+=== <!--
+--> <!-- -->
+But just in case it doesn't...
+!! result
+=== <!--
+--> <!-- -->
+But just in case it doesn't...
+!! end
 
 !! test
 Section replacement test (section 0)
@@ -6920,6 +6969,44 @@ anchorencode
 </p>
 !! end
 
+!! test
+anchorencode trims spaces
+!! input
+{{anchorencode: __pretty__please__}}
+!! result
+<p>pretty_please
+</p>
+!! end
+
+!! test
+anchorencode deals with links
+!! input
+{{anchorencode: [[hello|world]] [[hi]]}}
+!! result
+<p>world_hi
+</p>
+!! end
+
+!! test
+anchorencode deals with templates
+!! input
+{{anchorencode: {{Foo}} }}
+!! result
+<p>FOO
+</p>
+!! end
+
+!! test
+anchorencode encodes like the TOC generator: (bug 18431)
+!! input
+=== _ +:.3A%3A&&amp;]] ===
+{{anchorencode: _ +:.3A%3A&&amp;]] }}
+__NOEDITSECTION__
+!! result
+<h3> <span class="mw-headline" id=".2B:.3A.253A.26.26.5D.5D"> _ +:.3A%3A&amp;&amp;]] </span></h3>
+<p>.2B:.3A.253A.26.26.5D.5D
+</p>
+!! end
 
 !! test
 Bug 8293: Use of center tag ruins paragraph formatting
@@ -7776,6 +7863,17 @@ title=[[Main Page]]
 [[#section]]
 !! result
 <a href="/wiki/Main_Page#section" title="Main Page">#section</a>
+!! end
+
+!! test
+Space normalisation on autocomment (bug 22784)
+!! options
+comment
+title=[[Main Page]]
+!!input
+/* __hello__world__ */
+!! result
+<span class="autocomment"><a href="/wiki/Main_Page#hello_world" title="Main Page">→</a>__hello__world__</span>
 !! end
 
 !!article

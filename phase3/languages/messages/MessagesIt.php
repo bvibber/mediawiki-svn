@@ -1085,11 +1085,11 @@ $1",
 'revmove-reasonfield'          => 'Motivo:',
 'revmove-titlefield'           => 'Pagina di destinazione:',
 'revmove-badparam-title'       => 'Parametri invalidi',
-'revmove-badparam'             => '<span class="error">La tua richiesta contiene parametri errati o insufficienti. Premere "indietro" e provare ancora.</span>',
+'revmove-badparam'             => 'La tua richiesta contiene parametri errati o insufficienti. Premere "indietro" e provare ancora.',
 'revmove-norevisions-title'    => 'Versione non specificata',
-'revmove-norevisions'          => '<span class="error">Non hai specificato una o più revisioni per eseguire questa funzione o la revisione specificata non esiste.</span>',
+'revmove-norevisions'          => 'Non hai specificato una o più revisioni per eseguire questa funzione o la revisione specificata non esiste.',
 'revmove-nullmove-title'       => 'Titolo invalido',
-'revmove-nullmove'             => '<span class="error">La pagina sorgente e di destinazione sono identiche. Premere "indietro" ed inserire il nome di una pagina diverso da "$1".</span>',
+'revmove-nullmove'             => 'La pagina sorgente e di destinazione sono identiche. Premere "indietro" ed inserire il nome di una pagina diverso da "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|Una revisione di [[$2]] è stata spostata|$1 revisioni di [[$2]] sono state spostate}} nella pagina esistente [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Una revisione di [[$2]] è stata spostata|$1 revisioni di [[$2]] sono state spostate}} nella nuova pagina creata [[$3]].',
 
@@ -3364,20 +3364,5 @@ Inserire il nome del file senza il prefisso \"{{ns:file}}:\"",
 'htmlform-submit'              => 'Invia',
 'htmlform-reset'               => 'Annulla modifiche',
 'htmlform-selectorother-other' => 'Altro',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Aggiungi categoria',
-'ajax-add-category-submit'     => 'Aggiungi',
-'ajax-confirm-title'           => "Conferma l'azione",
-'ajax-confirm-prompt'          => 'È possibile fornire di seguito un oggetto per la modifica. 
-Fare clic su "Salva" per salvare la modifica.',
-'ajax-confirm-save'            => 'Salva',
-'ajax-add-category-summary'    => 'Aggiungere categoria "$1"',
-'ajax-remove-category-summary' => 'Rimuovere categoria "$1"',
-'ajax-confirm-actionsummary'   => 'Azione da intraprendere:',
-'ajax-error-title'             => 'Errore',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Non è stato possibile rimuovere questa categoria.
-Ciò si verifica in genere quando la categoria è stata aggiunta alla pagina in un template.',
 
 );

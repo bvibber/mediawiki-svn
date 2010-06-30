@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -369,7 +369,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			$this->addWhereFld( 'pr_page', array_keys( $this->titles ) );
 
 			$res = $this->select( __METHOD__ );
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				$a = array(
 					'type' => $row->pr_type,
 					'level' => $row->pr_level,
@@ -416,7 +416,6 @@ class ApiQueryInfo extends ApiQueryBase {
 					}
 				}
 			}
-			$db->freeResult( $res );
 		}
 
 		// Get protections for missing titles
@@ -427,14 +426,13 @@ class ApiQueryInfo extends ApiQueryBase {
 			$this->addFields( array( 'pt_title', 'pt_namespace', 'pt_create_perm', 'pt_expiry' ) );
 			$this->addWhere( $lb->constructSet( 'pt', $db ) );
 			$res = $this->select( __METHOD__ );
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				$this->protections[$row->pt_namespace][$row->pt_title][] = array(
 					'type' => 'create',
 					'level' => $row->pt_create_perm,
 					'expiry' => Block::decodeExpiry( $row->pt_expiry, TS_ISO_8601 )
 				);
 			}
-			$db->freeResult( $res );
 		}
 
 		// Cascading protections
@@ -461,7 +459,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			$this->addWhereFld( 'pr_cascade', 1 );
 
 			$res = $this->select( __METHOD__ );
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				$source = Title::makeTitle( $row->page_namespace, $row->page_title );
 				$this->protections[$row->tl_namespace][$row->tl_title][] = array(
 					'type' => $row->pr_type,
@@ -470,7 +468,6 @@ class ApiQueryInfo extends ApiQueryBase {
 					'source' => $source->getPrefixedText()
 				);
 			}
-			$db->freeResult( $res );
 		}
 
 		if ( count( $images ) ) {
@@ -485,7 +482,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			$this->addWhereFld( 'il_to', $images );
 
 			$res = $this->select( __METHOD__ );
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				$source = Title::makeTitle( $row->page_namespace, $row->page_title );
 				$this->protections[NS_FILE][$row->il_to][] = array(
 					'type' => $row->pr_type,
@@ -494,7 +491,6 @@ class ApiQueryInfo extends ApiQueryBase {
 					'source' => $source->getPrefixedText()
 				);
 			}
-			$db->freeResult( $res );
 		}
 	}
 
@@ -526,7 +522,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		$this->addFields( array( 'page_title', 'page_namespace', 'page_id' ) );
 		$this->addWhere( $lb->constructSet( 'page', $db ) );
 		$res = $this->select( __METHOD__ );
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( MWNamespace::isTalk( $row->page_namespace ) ) {
 				$this->talkids[MWNamespace::getSubject( $row->page_namespace )][$row->page_title] =
 						intval( $row->page_id );
@@ -564,7 +560,7 @@ class ApiQueryInfo extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$this->watched[$row->page_namespace][$row->page_title] = true;
 		}
 	}

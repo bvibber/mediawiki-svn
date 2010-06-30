@@ -13,6 +13,7 @@
  * @author Jaan513
  * @author KalmerE.
  * @author Ker
+ * @author Kyng
  * @author Pikne
  * @author Silvar
  * @author Võrok
@@ -287,7 +288,7 @@ $messages = array(
 'tog-editsection'             => '[redigeeri] lingid peatükkide muutmiseks',
 'tog-editsectiononrightclick' => 'Peatükkide redigeerimine paremklõpsuga alampealkirjadel (JavaScript)',
 'tog-showtoc'                 => 'Näita sisukorda (lehtedel, millel on rohkem kui 3 pealkirja)',
-'tog-rememberpassword'        => 'Parooli meeldejätmine tulevasteks seanssideks',
+'tog-rememberpassword'        => 'Parooli meeldejätmine tulevasteks seanssideks (kuni $1 {{PLURAL:$1|päevaks|päevaks}})',
 'tog-watchcreations'          => 'Lisa minu loodud lehed jälgimisloendisse',
 'tog-watchdefault'            => 'Jälgi uusi ja muudetud artikleid',
 'tog-watchmoves'              => 'Lisa minu teisaldatud leheküljed jälgimisloendisse',
@@ -678,7 +679,7 @@ Sinu konto on loodud.
 'yourname'                   => 'Kasutajanimi:',
 'yourpassword'               => 'Parool:',
 'yourpasswordagain'          => 'Sisesta parool uuesti:',
-'remembermypassword'         => 'Jäta parool meelde',
+'remembermypassword'         => 'Jäta parool meelde (kuni $1 {{PLURAL:$1|päevaks|päevaks}})',
 'yourdomainname'             => 'Teie domeen:',
 'login'                      => 'Logi sisse',
 'nav-login-createaccount'    => 'Logi sisse või registreeru kasutajaks',
@@ -807,8 +808,8 @@ Selle lehe redigeerimislogisse salvestatakse su IP-aadress.",
 'missingsummary'                   => "'''Meeldetuletus:''' Sa ei ole lisanud muudatuse resümeed.
 Kui vajutad uuesti salvestamise nupule, salvestatakse muudatus ilma resümeeta.",
 'missingcommenttext'               => 'Palun sisesta siit allapoole kommentaar.',
-'missingcommentheader'             => "'''Meeldetuletus:''' Sa ei ole kirjutanud kommentaarile teemat/pealkirja.
-Kui vajutad uuesti <em>Salvesta</em>, siis salvestatakse kommentaar ilma teema/pealkirjata.",
+'missingcommentheader'             => "'''Meeldetuletus:''' Sa pole kirjutanud kommentaarile teemat ega pealkirja.
+Kui klõpsad uuesti \"{{int:savearticle}}\", salvestatakse su kommentaar kummatagi.",
 'summary-preview'                  => 'Resümee eelvaade:',
 'subject-preview'                  => 'Alaosa pealkirja eelvaade:',
 'blockedtitle'                     => 'Kasutaja on blokeeritud',
@@ -874,8 +875,8 @@ Palun mõtle järele, kas soovid seda lehte luua või muuta.',
 'blocked-notice-logextract'        => 'See kasutaja on praegu blokeeritud.
 Allpool on toodud viimane blokeerimislogi sissekanne:',
 'clearyourcache'                   => "'''Märkus:''' Pärast salvestamist pead sa muudatuste nägemiseks oma brauseri puhvri tühjendama: '''Mozilla:''' ''ctrl-shift-r'', '''IE:''' ''ctrl-f5'', '''Safari:''' ''cmd-shift-r'', '''Konqueror''' ''f5''.",
-'usercssyoucanpreview'             => "'''Vihje:''' Kasuta nuppu 'Näita eelvaadet' oma uue css/js testimiseks enne salvestamist.",
-'userjsyoucanpreview'              => "'''Vihje:''' Kasuta nuppu 'Näita eelvaadet' oma uue css/js testimiseks enne salvestamist.",
+'usercssyoucanpreview'             => "'''Vihje:''' Enne salvestamist kasuta oma uue CSSi proovimiseks nuppu \"{{int:showpreview}}\".",
+'userjsyoucanpreview'              => "'''Vihje:''' Enne salvestamist kasuta oma uue JavaScripti proovimiseks nuppu \"{{int:showpreview}}\".",
 'usercsspreview'                   => "'''Ärge unustage, et seda versiooni teie isiklikust stiililehest pole veel salvestatud!'''",
 'userjspreview'                    => "'''Ärge unustage, et see versioon teie isiklikust javascriptist on alles salvestamata!'''",
 'userinvalidcssjstitle'            => "'''Hoiatus:''' Kujundust nimega \"\$1\" ei ole.
@@ -941,7 +942,7 @@ Võid pöörduda tagasi ja toimetada olemasolevat lehekülge või [[Special:User
 'sectioneditnotsupported-title'    => 'Alaosa redigeerimine pole lubatud.',
 'sectioneditnotsupported-text'     => 'Sellel leheküljel pole alaosa redigeerimine lubatud.',
 'permissionserrors'                => 'Viga õigustes',
-'permissionserrorstext'            => 'Teil ei ole õigust seda teha {{PLURAL:$1|järgmisel põhjusel|järgmistel põhjustel}}:',
+'permissionserrorstext'            => 'Sul pole õigust seda teha {{PLURAL:$1|järgmisel põhjusel|järgmistel põhjustel}}:',
 'permissionserrorstext-withaction' => 'Sul pole lubatud {{lcfirst:$2}} {{PLURAL:$1|järgneval põhjusel|järgnevatel põhjustel}}:',
 'recreate-moveddeleted-warn'       => "'''Hoiatus: Te loote uuesti lehte, mis on varem kustutatud.'''
 
@@ -980,12 +981,12 @@ Kasutaja $3 märkis põhjuseks ''$2''",
 'viewpagelogs'           => 'Vaata selle lehe logisid',
 'nohistory'              => 'Sellel leheküljel ei ole eelmisi redaktsioone.',
 'currentrev'             => 'Viimane redaktsioon',
-'currentrev-asof'        => 'Viimane redaktsioon ($1)',
+'currentrev-asof'        => 'Viimane redaktsioon: $1',
 'revisionasof'           => 'Redaktsioon: $1',
 'revision-info'          => 'Redaktsioon seisuga $1 kasutajalt $2',
 'previousrevision'       => '←Vanem redaktsioon',
 'nextrevision'           => 'Uuem redaktsioon→',
-'currentrevisionlink'    => 'vaata viimast redaktsiooni',
+'currentrevisionlink'    => 'Viimane redaktsiooni',
 'cur'                    => 'viim',
 'next'                   => 'järg',
 'last'                   => 'eel',
@@ -1041,7 +1042,7 @@ Administraatorina saad seda muudatust vaadata. [{{fullurl:{{#Special:Log}}/delet
 Administraatorina saad seda muudatust vaadata. [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Varjamislogis] võib üksikasju olla.",
 'rev-delundel'                => 'näita/peida',
 'rev-showdeleted'             => 'näita',
-'revisiondelete'              => 'Kustuta/taasta redaktsioone',
+'revisiondelete'              => 'Redaktsioonide kustutamine või taastamine',
 'revdelete-nooldid-title'     => 'Sellist redaktsiooni pole.',
 'revdelete-nooldid-text'      => 'Sa pole valinud redaktsiooni, valitud redaktsioon puudub või Sa püüad peita viimast redaktsiooni.',
 'revdelete-nologtype-title'   => 'Logi tüüpi ei antud',
@@ -1058,12 +1059,12 @@ Administraatorina saad seda muudatust vaadata. [{{fullurl:{{#Special:Log}}/suppr
 'revdelete-suppress-text'     => "Andmed tuleks varjata '''ainult''' järgnevatel juhtudel:
 * Sobimatu isiklik teave
 *: ''kodune aadress ja telefoninumber, sotsiaalhoolekandenumber jne''",
-'revdelete-legend'            => 'Sea nähtavusele piirangud',
+'revdelete-legend'            => 'Nähtavuse piirangute seadmine',
 'revdelete-hide-text'         => 'Peida redigeerimise tekst',
 'revdelete-hide-image'        => 'Peida faili sisu',
 'revdelete-hide-name'         => 'Peida toiming ja sihtmärk',
 'revdelete-hide-comment'      => 'Peida muudatuse kommentaar',
-'revdelete-hide-user'         => 'Peida toimetaja kasutajanimi/IP',
+'revdelete-hide-user'         => 'Peida toimetaja kasutajanimi või IP-aadress',
 'revdelete-hide-restricted'   => 'Varja andmeid nii administraatorite kui ka teiste eest.',
 'revdelete-radio-same'        => '(ära muuda)',
 'revdelete-radio-set'         => 'Jah',
@@ -1115,6 +1116,9 @@ Palun vaata logisid.',
 'suppressionlog'     => 'Varjamislogi',
 'suppressionlogtext' => 'Allpool on nimekiri kustutamistest ja blokeeringutest, millega kaasneb administraatorite eest sisu varjamine.
 Jõus olevad keelud ja blokeeringud leiad [[Special:IPBlockList|blokeeritud IP-aadresside loendist]].',
+
+# Revision move
+'revmove-reasonfield' => 'Põhjus:',
 
 # History merging
 'mergehistory'                     => 'Ühenda lehtede ajalood',
@@ -1514,8 +1518,8 @@ See ei tohi olla pikem kui $1 {{PLURAL:$1|sümbol|sümbolit}}.',
 'rclinks'                           => 'Näita viimast $1 muudatust viimase $2 päeva jooksul<br />$3',
 'diff'                              => 'erin',
 'hist'                              => 'ajal',
-'hide'                              => 'peida',
-'show'                              => 'näita',
+'hide'                              => 'Peida',
+'show'                              => 'Näita',
 'minoreditletter'                   => 'P',
 'newpageletter'                     => 'U',
 'boteditletter'                     => 'R',
@@ -1915,7 +1919,7 @@ Igal real on ära toodud esimene ja teine ümbersuunamisleht ning samuti teise �
 Pane tähele, et teised võrgukohad võivad viidata failile otselingiga ja seega võivad siin toodud failid olla ikkagi aktiivses kasutuses.',
 'unusedcategoriestext'    => 'Need kategooriad pole ühelgi leheküljel ega teises kategoorias kasutuses.',
 'notargettitle'           => 'Puudub sihtlehekülg',
-'notargettext'            => 'Sa ei ole esitanud sihtlehekülge ega kasutajat, kelle kallal seda operatsiooni toime panna.',
+'notargettext'            => 'Sa pole määranud selle tegevuse sooritamiseks sihtlehekülge ega kasutajat.',
 'nopagetitle'             => 'Sihtpunktiks määratud lehekülge ei ole',
 'nopagetext'              => 'Lehekülg, mille sa sihtpunktiks määrasid, ei eksisteeri.',
 'pager-newer-n'           => '{{PLURAL:$1|uuem 1|uuemad $1}}',
@@ -2183,13 +2187,14 @@ Mine tagasi eelmisele leheküljele ja taaslaadi see, seejärel proovi uuesti.',
 'modifiedarticleprotection'   => 'muutis lehekülje "[[$1]]" kaitsemäära',
 'unprotectedarticle'          => 'eemaldas lehekülje "[[$1]]" kaitse',
 'movedarticleprotection'      => 'teisaldas kaitsesätted läheküljelt "[[$2]]" leheküljele "[[$1]]"',
-'protect-title'               => 'Muuda lehekülje "$1" kaitsemäära',
+'protect-title'               => 'Lehekülje "$1" kaitsemäära muutmine',
 'prot_1movedto2'              => 'Lehekülg "[[$1]]" teisaldatud pealkirja "[[$2]]" alla',
-'protect-legend'              => 'Kinnita kaitsmine',
+'protect-legend'              => 'Kaitse kinnitamine',
 'protectcomment'              => 'Põhjus',
 'protectexpiry'               => 'Aegub:',
 'protect_expiry_invalid'      => 'Sobimatu aegumise tähtaeg.',
 'protect_expiry_old'          => 'Aegumise tähtaeg on minevikus.',
+'protect-unchain-permissions' => 'Ava edasised kaitsmissuvandid',
 'protect-text'                => "Siin võite vaadata ja muuta lehekülje '''<nowiki>$1</nowiki>''' kaitsesätteid.",
 'protect-locked-blocked'      => "Blokeerituna ei saa muuta kaitstuse taset.
 Allpool on toodud lehekülje '''$1''' hetkel kehtivad seaded:",
@@ -2314,7 +2319,7 @@ $1',
 'sp-contributions-talk'           => 'arutelu',
 'sp-contributions-userrights'     => 'kasutaja õiguste muutmine',
 'sp-contributions-blocked-notice' => 'See kasutaja on parajasti blokeeritud. Allpool on toodud kõige hilisem blokeerimislogi sissekanne:',
-'sp-contributions-search'         => 'Otsi kaastöid',
+'sp-contributions-search'         => 'Kaastöö otsimine',
 'sp-contributions-username'       => 'IP-aadress või kasutajanimi:',
 'sp-contributions-submit'         => 'Otsi',
 
@@ -2340,7 +2345,7 @@ $1',
 # Block/unblock
 'blockip'                      => 'Kasutaja blokeerimine',
 'blockip-title'                => 'Kasutaja blokeerimine',
-'blockip-legend'               => 'Blokeeri kasutaja',
+'blockip-legend'               => 'Kasutaja blokeerimine',
 'blockiptext'                  => 'See vorm on kindla IP-aadressi või kasutajanime kirjutamisõiguste blokeerimiseks.
 Seda tohib teha ainult vandalismi vältimiseks ja kooskõlas [[{{MediaWiki:Policy-url}}|{{GRAMMAR:genitive|{{SITENAME}}}} sisekorraga]].
 Täida ka põhjuse väli, näiteks viidates lehekülgedele, mis rikuti.',
@@ -2375,11 +2380,11 @@ Täida ka põhjuse väli, näiteks viidates lehekülgedele, mis rikuti.',
 Kehtivaid blokeeringuid vaata [[Special:IPBlockList|blokeeringute loendist]].',
 'ipb-edit-dropdown'            => 'Muuda blokeeringu põhjuseid',
 'ipb-unblock-addr'             => 'Kustuta $1 blokeering',
-'ipb-unblock'                  => 'Vabasta kasutaja või IP-aadress blokeeringust',
+'ipb-unblock'                  => 'Kasutaja või IP-aadressi vabastamine blokeerimisest',
 'ipb-blocklist-addr'           => 'Kasutaja $1 blokeeringud',
 'ipb-blocklist'                => 'Vaata kehtivaid keelde',
 'ipb-blocklist-contribs'       => 'Kasutaja $1 kaastöö',
-'unblockip'                    => 'Lõpeta IP-aadressi blokeerimine',
+'unblockip'                    => 'Blokeerimise eemaldamine',
 'unblockiptext'                => 'Kasutage allpool olevat vormi redigeerimisõiguste taastamiseks varem blokeeritud IP aadressile.',
 'ipusubmit'                    => 'Eemalda see blokeering',
 'unblocked'                    => 'Kasutaja [[User:$1|$1]] blokeering on eemaldatud',
@@ -3194,8 +3199,8 @@ Proovi tavalist eelvaadet.',
 'watchlistedit-noitems'        => 'Teie jälgimisloend ei sisalda ühtegi lehekülge.',
 'watchlistedit-normal-title'   => 'Jälgimisloendi redigeerimine',
 'watchlistedit-normal-legend'  => 'Jälgimisloendist lehtede eemaldamine',
-'watchlistedit-normal-explain' => "Need lehed on teie jälgimisloendis.
-Et lehti jälgimisloendist eemaldada, tehke vastava lehe ees olevasse kastikesse linnuke ja vajutage siis nuppu '''Eemalda valitud lehed'''. Kuid teil on võimalus muuta siit ka [[Special:Watchlist/raw|jälgimisloendi algandmeid]].",
+'watchlistedit-normal-explain' => 'Need lehed on sinu jälgimisloendis.
+Jälgimisloendist lehtekülgede eemaldamiseks tee vastava lehekülje ees olevasse kastikesse linnuke ja klõpsa nuppu "{{int:Watchlistedit-normal-submit}}". Saad ka jälgimisloendi [[Special:Watchlist/raw|algandmeid muuta]].',
 'watchlistedit-normal-submit'  => 'Eemalda valitud lehed',
 'watchlistedit-normal-done'    => 'Teie jälgimisloendist eemaldati {{PLURAL:$1|1 leht|$1 lehte}}:',
 'watchlistedit-raw-title'      => 'Jälgimisloendi algandmed',
@@ -3324,20 +3329,5 @@ Sisesta faili nimi eesliiteta "{{ns:file}}:".',
 'htmlform-submit'              => 'Saada',
 'htmlform-reset'               => 'Tühista muudatused',
 'htmlform-selectorother-other' => 'Muu',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Lisa kategooria',
-'ajax-add-category-submit'     => 'Lisa',
-'ajax-confirm-title'           => 'Toimingu kinnitamine',
-'ajax-confirm-prompt'          => 'Saad allpool muudatuse resümeega varustada.
-Muudatuse salvestamiseks klõpsa nuppu "Salvesta".',
-'ajax-confirm-save'            => 'Salvesta',
-'ajax-add-category-summary'    => 'Kategooria "$1" lisamine',
-'ajax-remove-category-summary' => 'Kategooria "$1" eemaldamine',
-'ajax-confirm-actionsummary'   => 'Sooritatav toiming:',
-'ajax-error-title'             => 'Tõrge',
-'ajax-error-dismiss'           => 'Sobib',
-'ajax-remove-category-error'   => 'Seda kategooriat pole võimalik eemaldada.
-Tõrge ilmneb harilikult siis, kui kategooria on lisatud malliga.',
 
 );

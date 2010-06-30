@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -91,7 +91,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		$limit = $this->params['limit'];
 
 		// Fetch each row
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++ $count > $limit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				if ( $this->multiUserMode ) {
@@ -113,9 +113,6 @@ class ApiQueryContributions extends ApiQueryBase {
 				break;
 			}
 		}
-
-		// Free the database record so the connection can get on with other stuff
-		$db->freeResult( $res );
 
 		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'item' );
 	}
@@ -421,7 +418,18 @@ class ApiQueryContributions extends ApiQueryBase {
 			'userprefix' => "Retrieve contibutions for all users whose names begin with this value. Overrides {$p}user",
 			'dir' => 'The direction to search (older or newer)',
 			'namespace' => 'Only list contributions in these namespaces',
-			'prop' => 'Include additional pieces of information',
+			'prop' => array(
+				'Include additional pieces of information',
+				' ids            - Adds the page id and revision id',
+				' title          - Adds the title and namespace id of the page',
+				' timestamp      - Adds the timestamp of the edit',
+				' comment        - Adds the comment of the edit',
+				' parsedcomment  - Adds the parsed comment of the edit',
+				' size           - Adds the size of the page',
+				' flags          - Adds flags of the edit',
+				' patrolled      - Tags patrolled edits',
+				' tags           - Lists tags for the edit',
+			),
 			'show' => array( "Show only items that meet this criteria, e.g. non minor edits only: {$p}show=!minor",
 					"NOTE: if {$p}show=patrolled or {$p}show=!patrolled is set, revisions older than $wgRCMaxAge won\'t be shown", ),
 			'tag' => 'Only list revisions tagged with this tag',

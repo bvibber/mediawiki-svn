@@ -3399,6 +3399,15 @@ Unesite ime datoteke bez prefiksa "{{ns:file}}:"',
 'tags-edit'               => 'uredi',
 'tags-hitcount'           => '$1 {{PLURAL:$1|promjena|promjene|promjena}}',
 
+# Special:ComparePages
+'comparepages'     => 'Usporedite stranice',
+'compare-selector' => 'Usporedite inačice stranice',
+'compare-page1'    => 'Stranica 1',
+'compare-page2'    => 'Stranica 2',
+'compare-rev1'     => 'Izmjena 1',
+'compare-rev2'     => 'Izmjena 2',
+'compare-submit'   => 'Usporedite',
+
 # Database error messages
 'dberr-header'      => 'Ovaj wiki ima problem',
 'dberr-problems'    => 'Ispričavamo se! Ova stranica ima tehničkih poteškoća.',
@@ -3419,19 +3428,5 @@ Unesite ime datoteke bez prefiksa "{{ns:file}}:"',
 'htmlform-submit'              => 'Pošalji',
 'htmlform-reset'               => 'Poništi izmjene',
 'htmlform-selectorother-other' => 'Drugi',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Dodaj kategoriju',
-'ajax-add-category-submit'     => 'Dodaj',
-'ajax-confirm-title'           => 'Potvrdi radnju',
-'ajax-confirm-prompt'          => 'Kliknite na "Spremi" da biste sačuvali Vašu izmjenu.',
-'ajax-confirm-save'            => 'Spremi',
-'ajax-add-category-summary'    => 'Dodaj kategoriju "$1"',
-'ajax-remove-category-summary' => 'Ukloni kategoriju "$1"',
-'ajax-confirm-actionsummary'   => 'Radnja koja se izvodi:',
-'ajax-error-title'             => 'Greška',
-'ajax-error-dismiss'           => 'U redu',
-'ajax-remove-category-error'   => 'Nije bilo moguće ukloniti ovu kategoriju.
-Ovo se obično događa kada je kategorija dodana na stranicu u predlošku.',
 
 );

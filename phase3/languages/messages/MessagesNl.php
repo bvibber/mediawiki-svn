@@ -27,6 +27,7 @@
  * @author Servien
  * @author Siebrand
  * @author Slomox
+ * @author Tedjuh10
  * @author Troefkaart
  * @author Tvdm
  * @author לערי ריינהארט
@@ -474,31 +475,32 @@ $messages = array(
 'faqpage'        => 'Project:Veelgestelde vragen',
 
 # Vector skin
-'vector-action-addsection'   => 'Kopje toevoegen',
-'vector-action-delete'       => 'Verwijderen',
-'vector-action-move'         => 'Hernoemen',
-'vector-action-protect'      => 'Beveiligen',
-'vector-action-undelete'     => 'Terugplaatsen',
-'vector-action-unprotect'    => 'Beveiliging opheffen',
-'vector-namespace-category'  => 'Categorie',
-'vector-namespace-help'      => 'Hulppagina',
-'vector-namespace-image'     => 'Bestand',
-'vector-namespace-main'      => 'Pagina',
-'vector-namespace-media'     => 'Mediapagina',
-'vector-namespace-mediawiki' => 'Bericht',
-'vector-namespace-project'   => 'Projectpagina',
-'vector-namespace-special'   => 'Speciale pagina',
-'vector-namespace-talk'      => 'Overleg',
-'vector-namespace-template'  => 'Sjabloon',
-'vector-namespace-user'      => 'Gebruikerspagina',
-'vector-view-create'         => 'Aanmaken',
-'vector-view-edit'           => 'Bewerken',
-'vector-view-history'        => 'Geschiedenis bekijken',
-'vector-view-view'           => 'Lezen',
-'vector-view-viewsource'     => 'Brontekst bekijken',
-'actions'                    => 'Handelingen',
-'namespaces'                 => 'Naamruimten',
-'variants'                   => 'Varianten',
+'vector-action-addsection'       => 'Kopje toevoegen',
+'vector-action-delete'           => 'Verwijderen',
+'vector-action-move'             => 'Hernoemen',
+'vector-action-protect'          => 'Beveiligen',
+'vector-action-undelete'         => 'Terugplaatsen',
+'vector-action-unprotect'        => 'Beveiliging opheffen',
+'vector-namespace-category'      => 'Categorie',
+'vector-namespace-help'          => 'Hulppagina',
+'vector-namespace-image'         => 'Bestand',
+'vector-namespace-main'          => 'Pagina',
+'vector-namespace-media'         => 'Mediapagina',
+'vector-namespace-mediawiki'     => 'Bericht',
+'vector-namespace-project'       => 'Projectpagina',
+'vector-namespace-special'       => 'Speciale pagina',
+'vector-namespace-talk'          => 'Overleg',
+'vector-namespace-template'      => 'Sjabloon',
+'vector-namespace-user'          => 'Gebruikerspagina',
+'vector-simplesearch-preference' => 'Verbeterde zoeksuggesties inschakelen (alleen voor het uiterlijk Vector)',
+'vector-view-create'             => 'Aanmaken',
+'vector-view-edit'               => 'Bewerken',
+'vector-view-history'            => 'Geschiedenis bekijken',
+'vector-view-view'               => 'Lezen',
+'vector-view-viewsource'         => 'Brontekst bekijken',
+'actions'                        => 'Handelingen',
+'namespaces'                     => 'Naamruimten',
+'variants'                       => 'Varianten',
 
 'errorpagetitle'    => 'Fout',
 'returnto'          => 'Ga naar $1.',
@@ -882,7 +884,7 @@ Uw IP-adres wordt opgeslagen als u wijzigingen op deze pagina maakt.",
 Als u nogmaals op ''Pagina opslaan'' klikt wordt de bewerking zonder samenvatting opgeslagen.",
 'missingcommenttext'               => 'Plaats uw opmerking hieronder.',
 'missingcommentheader'             => "'''Let op:''' U hebt geen onderwerp/kop voor deze opmerking opgegeven.
-Als u opnieuw op \"opslaan\" klikt, wordt uw wijziging zonder een onderwerp/kop opgeslagen.",
+Als u opnieuw op \"{{int:savearticle}}\" klikt, wordt uw wijziging zonder een onderwerp/kop opgeslagen.",
 'summary-preview'                  => 'Samenvatting nakijken:',
 'subject-preview'                  => 'Nakijken onderwerp/kop:',
 'blockedtitle'                     => 'Gebruiker is geblokkeerd',
@@ -1210,7 +1212,8 @@ Controleer de logboeken.',
 'revdelete-only-restricted'   => 'Er is een fout opgetreden bij het verbergen van het item van $1, $2: u kunt geen items onderdrukken uit het zicht van beheerders zonder ook een van de andere zichtbaarheidsopties te selecteren.',
 'revdelete-reason-dropdown'   => '* Veel voorkomende redenen voor verwijderen
 ** Auteursrechtenschending
-* Onbetamelijke persoonlijke informatie',
+** Onbetamelijke persoonlijke informatie
+** Potentieel lasterlijke informatie',
 'revdelete-otherreason'       => 'Andere reden:',
 'revdelete-reasonotherlist'   => 'Andere reden',
 'revdelete-edit-reasonlist'   => 'Redenen voor verwijderen bewerken',
@@ -1233,13 +1236,13 @@ Als deze wel bestaat, worden de versies ingevoegd in de paginageschiedenis.',
 'revmove-reasonfield'          => 'Reden:',
 'revmove-titlefield'           => 'Doelpagina:',
 'revmove-badparam-title'       => 'Onjuiste parameters',
-'revmove-badparam'             => '<span class="error">Uw verzoek bevat ongeldige of onvoldoende parameters.
-Klik "Terug" en probeer het opnieuw.</span>',
-'revmove-norevisions-title'    => 'Ongeldige doelversie',
-'revmove-norevisions'          => '<span class="error">U hebt geen versies aangegeven om deze handeling op uit te voeren of de aangegeven versie bestaat niet.</span>',
+'revmove-badparam'             => 'Uw verzoek bevat ongeldige of onvoldoende parameters.
+Klik "Terug" en probeer het opnieuw.',
+'revmove-norevisions-title'    => 'De te verplaatsen versie is ongeldig',
+'revmove-norevisions'          => 'U hebt geen versies aangegeven om deze handeling op uit te voeren of de aangegeven versie bestaat niet.',
 'revmove-nullmove-title'       => 'Ongeldige paginanaam',
-'revmove-nullmove'             => '<span class="error">De bronpagina en doelpagina zijn hetzelfde.
-Klik "Terug" en geef een andere pagina dan "$1" op.</span>',
+'revmove-nullmove'             => 'De bronpagina en doelpagina zijn hetzelfde.
+Klik "Terug" en geef een andere pagina dan "$1" op.',
 'revmove-success-existing'     => '{{PLURAL:$1|Een versie van[[$2]] is|$1 versies van [[$2]] zijn}} verplaatst naar de bestaande pagina [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Een versie van[[$2]] is|$1 versies van [[$2]] zijn}} verplaatst naar de nieuwe pagina [[$3]].',
 
@@ -1580,6 +1583,7 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'right-override-export-depth' => "Pagina's exporteren inclusief pagina's waarnaar verwezen wordt tot een diepte van vijf",
 'right-sendemail'             => 'E-mail versturen aan andere gebruikers',
 'right-revisionmove'          => 'Versies verplaatsen',
+'right-selenium'              => 'Selenium-tests uitvoeren',
 
 # User rights log
 'rightslog'      => 'Gebruikersrechtenlogboek',
@@ -2374,11 +2378,11 @@ Zie de [[Special:ProtectedPages|lijst met beveiligde pagina's]] voor alle beveil
 'protect-unchain-permissions' => 'Overige beveiligingsinstellingen beschikbaar maken',
 'protect-text'                => "Hier kunt u het beveiligingsniveau voor de pagina '''<nowiki>$1</nowiki>''' bekijken en wijzigen.",
 'protect-locked-blocked'      => "U kunt het beveiligingsniveau niet wijzigen terwijl u geblokkeerd bent.
-Hier zijn de huidige instellingen voor de pagina '''[[$1]]''':",
+Hier zijn de huidige instellingen voor de pagina '''$1''':",
 'protect-locked-dblock'       => "Het beveiligingsniveau kan niet worden gewijzigd, omdat de database gesloten is.
 Hier zijn de huidige instellingen voor de pagina '''$1''':",
 'protect-locked-access'       => "'''U hebt geen rechten om het beveiligingsniveau te wijzigen.'''
-Dit zijn de huidige instellingen voor de pagina '''[[$1]]''':",
+Dit zijn de huidige instellingen voor de pagina '''$1''':",
 'protect-cascadeon'           => "Deze pagina is beveiligd, omdat die in de volgende {{PLURAL:$1|pagina|pagina's}} is opgenomen, die beveiligd {{PLURAL:$1|is|zijn}} met de cascade-optie.
 Het beveiligingsniveau wijzigen heeft geen enkel effect.",
 'protect-default'             => 'Toestaan voor alle gebruikers',
@@ -2502,6 +2506,7 @@ De laatste regel uit het blokkeerlogboek wordt hieronder ter referentie weergege
 De laatste regel uit het blokkeerlogboek wordt hieronder ter referentie weergegeven:',
 'sp-contributions-search'              => 'Zoeken naar bijdragen',
 'sp-contributions-username'            => 'IP-adres of gebruikersnaam:',
+'sp-contributions-toponly'             => 'Alleen nieuwste versies weergeven',
 'sp-contributions-submit'              => 'Bekijken',
 
 # What links here
@@ -2685,13 +2690,13 @@ Zorg ervoor dat u die gevolgen overziet voordat u deze handeling uitvoert.",
 * De overlegpagina onder de nieuwe naam al bestaat;
 * U het onderstaande vinkje deselecteert.",
 'movearticle'                  => 'Te hernoemen pagina:',
-'moveuserpage-warning'         => "'' 'Waarschuwing:''' U gaat een gebruikerspagina hernoemen.
+'moveuserpage-warning'         => "'''Waarschuwing:''' U gaat een gebruikerspagina hernoemen.
 Houd er rekening mee dat alleen de pagina wordt hernoemd, ''niet'' de gebruiker.",
 'movenologin'                  => 'Niet aangemeld',
 'movenologintext'              => 'U moet [[Special:UserLogin|aangemeld]] zijn om een pagina te hernoemen.',
 'movenotallowed'               => "U hebt geen rechten om pagina's te hernoemen.",
 'movenotallowedfile'           => 'U hebt geen rechten om bestanden te hernoemen.',
-'cant-move-user-page'          => "U hebt geen rechten om gebruikerspagina's te hernoemen.",
+'cant-move-user-page'          => "U hebt geen rechten om gebruikerspagina's te hernoemen (met uitzondering van subpagina's).",
 'cant-move-to-user-page'       => 'U hebt geen rechten om een pagina naar een gebruikerspagina te hernoemen. Hernoemen naar een subpagina is wel mogelijk.',
 'newtitle'                     => 'Naar de nieuwe paginanaam:',
 'move-watch'                   => 'Deze pagina volgen',
@@ -2702,7 +2707,7 @@ Houd er rekening mee dat alleen de pagina wordt hernoemd, ''niet'' de gebruiker.
 'movepage-moved-noredirect'    => 'Er is geen doorverwijzing aangemaakt.',
 'articleexists'                => 'De pagina bestaat al of de paginanaam is ongeldig.
 Kies een andere paginanaam.',
-'cantmove-titleprotected'      => 'U kunt geen pagina naar deze paginaam hernoemen, omdat deze paginaam beveiligd is tegen het aanmaken ervan.',
+'cantmove-titleprotected'      => 'U kunt geen pagina naar deze paginanaam hernoemen, omdat deze paginaam beveiligd is tegen het aanmaken ervan.',
 'talkexists'                   => "'''De pagina is hernoemd, maar de overlegpagina kon niet hernoemd worden omdat er al een pagina met de nieuwe naam bestaat.
 Combineer de overlegpagina's handmatig.'''",
 'movedto'                      => 'hernoemd naar',
@@ -2758,7 +2763,7 @@ Dit exportbestand is daarna te importeren in een andere MediaWiki via de [[Speci
 
 Geef in het onderstaande veld de namen van de te exporteren pagina\'s op, één pagina per regel, en geef aan of u alle versies met de bewerkingssamenvatting of alleen de huidige versies met de bewerkingssamenvatting wilt exporteren.
 
-In het laatste geval kunt u ook een verwijzing gebruiken, bijvoorbeeld [[{{#Special:Export}}/{{MediaWiki:Mainpage}}]] voor de pagina "{{MediaWiki:Mainpage}}".',
+In het laatste geval kunt u ook een verwijzing gebruiken, bijvoorbeeld [[{{#Special:Export}}/{{MediaWiki:Mainpage}}]] voor de pagina "[[{{MediaWiki:Mainpage}}]]".',
 'exportcuronly'     => 'Alleen de laatste versie, niet de volledige geschiedenis',
 'exportnohistory'   => "----
 '''Let op:''' het exporteren van de gehele geschiedenis is uitgeschakeld wegens prestatieredenen.",
@@ -3057,6 +3062,9 @@ $1',
 'show-big-image-thumb' => '<small>Afmetingen van deze weergave: $1 × $2 pixels</small>',
 'file-info-gif-looped' => 'herhalend',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|frame|frames}}',
+'file-info-png-looped' => 'herhalend',
+'file-info-png-repeat' => '$1 {{PLURAL:$1|keer|keer}} afgespeeld',
+'file-info-png-frames' => '$1 {{PLURAL:$1|frame|frames}}',
 
 # Special:NewFiles
 'newimages'             => 'Nieuwe bestanden',
@@ -3394,7 +3402,7 @@ Het e-mailprogramma meldde: $1',
 Mogelijk is de code verlopen.',
 'confirmemail_needlogin'    => 'U moet $1 om uw e-mailadres te bevestigen.',
 'confirmemail_success'      => 'Uw e-mailadres is bevestigd.
-U kunt zich nu aanmelden en {{SITENAME}} gebruiken.',
+U kunt zich nu [[Special:UserLogin|aanmelden]] en {{SITENAME}} gebruiken.',
 'confirmemail_loggedin'     => 'Uw e-mailadres is nu bevestigd.',
 'confirmemail_error'        => 'Er is iets verkeerd gegaan tijdens het opslaan van uw bevestiging.',
 'confirmemail_subject'      => 'Bevestiging e-mailadres voor {{SITENAME}}',
@@ -3622,6 +3630,15 @@ Voer de bestandsnaam in zonder het voorvoegsel "{{ns:file}}:".',
 'tags-edit'               => 'bewerken',
 'tags-hitcount'           => '$1 {{PLURAL:$1|wijziging|wijzigingen}}',
 
+# Special:ComparePages
+'comparepages'     => "Pagina's vergelijken",
+'compare-selector' => 'Paginaversies vergelijken',
+'compare-page1'    => 'Pagina 1',
+'compare-page2'    => 'Pagina 2',
+'compare-rev1'     => 'Versie 1',
+'compare-rev2'     => 'Versie 2',
+'compare-submit'   => 'Vergelijken',
+
 # Database error messages
 'dberr-header'      => 'Deze wiki heeft een probleem',
 'dberr-problems'    => 'Onze excuses. Deze site ondervindt op het moment technische problemen.',
@@ -3642,20 +3659,5 @@ Voer de bestandsnaam in zonder het voorvoegsel "{{ns:file}}:".',
 'htmlform-submit'              => 'Opslaan',
 'htmlform-reset'               => 'Wijzigingen ongedaan maken',
 'htmlform-selectorother-other' => 'Anders',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Categorie toevoegen',
-'ajax-add-category-submit'     => 'Toevoegen',
-'ajax-confirm-title'           => 'Handeling bevestigen',
-'ajax-confirm-prompt'          => 'U kunt hieronder een bewerkingssamenvatting opgeven.
-Klik "Opslaan" om uw bewerking op te slaan.',
-'ajax-confirm-save'            => 'Opslaan',
-'ajax-add-category-summary'    => 'Categorie "$1" toevoegen',
-'ajax-remove-category-summary' => 'Categorie "$1" verwijderen',
-'ajax-confirm-actionsummary'   => 'Uit te voeren handeling:',
-'ajax-error-title'             => 'Fout',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Het was niet mogelijk deze categorie te verwijderen.
-Dit gebeurt meestal als de categorie via een sjabloon aan de pagina is toegevoegd.',
 
 );

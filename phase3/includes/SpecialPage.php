@@ -169,6 +169,7 @@ class SpecialPage {
 		'Mostrevisions'             => array( 'MostrevisionsPage' ),
 
 		# Page tools
+		'ComparePages'              => 'SpecialComparePages',
 		'Export'                    => 'SpecialExport',
 		'Import'                    => 'SpecialImport',
 		'Undelete'                  => 'UndeleteForm',
@@ -206,6 +207,7 @@ class SpecialPage {
 	static function initList() {
 		global $wgSpecialPages;
 		global $wgDisableCounters, $wgDisableInternalSearch, $wgEmailAuthentication;
+		global $wgEnableSelenium;
 
 		if ( self::$mListInitialised ) {
 			return;
@@ -226,6 +228,10 @@ class SpecialPage {
 		if( $wgEmailAuthentication ) {
 			self::$mList['Confirmemail'] = 'EmailConfirmation';
 			self::$mList['Invalidateemail'] = 'EmailInvalidation';
+		}
+
+		if ( $wgEnableSelenium ) {
+			self::$mList['Selenium'] = 'SpecialSelenium';
 		}
 
 		# Add extension special pages

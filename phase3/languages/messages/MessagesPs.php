@@ -165,7 +165,7 @@ $messages = array(
 'tog-hidepatrolled'          => 'په وروستيو بدلونونو کې څارل شوې سمونونه پټول',
 'tog-newpageshidepatrolled'  => 'د نوؤ مخونو په لړليک کې کتل شوي مخونه پټول',
 'tog-showtoolbar'            => 'د سمولو توکپټه ښکاره کول (جاواسکرېپټ)',
-'tog-rememberpassword'       => 'زما پټنوم پدې کمپيوټر په ياد ولره!',
+'tog-rememberpassword'       => 'زما پټنوم په دې کمپيوټر (تر $1 {{PLURAL:$1|ورځې|ورځو}}) په ياد وساته!',
 'tog-watchcreations'         => 'هغه مخونه چې زه يې جوړوم، زما کتنلړ کې ورګډ کړه',
 'tog-watchdefault'           => 'هغه مخونه چې زه يې سموم، زما کتنلړ کې ورګډ کړه',
 'tog-watchmoves'             => 'هغه مخونه چې زه يې لېږدوم، زما کتنلړ کې ورګډ کړه',
@@ -176,7 +176,7 @@ $messages = array(
 'tog-enotifusertalkpages'    => 'کله چې زما د خبرو اترو په مخ کې بدلون پېښېږي نو ما ته دې يو برېښليک ولېږلی شي.',
 'tog-enotifminoredits'       => 'کله چې په مخونو کې وړې سمونې کېږي نو ماته دې برېښليک ولېږل شي',
 'tog-watchlisthideown'       => 'په کتنلړ کې زما سمونې پټول',
-'tog-watchlisthidebots'      => 'په کتنلړ کې د باټ سمونې پټول',
+'tog-watchlisthidebots'      => 'په کتنلړ کې د روباټ سمونې پټول',
 'tog-watchlisthideminor'     => 'په کتنلړ کې وړې سمونې پټول',
 'tog-watchlisthideliu'       => 'په کتنلړ کې د ثبت شويو کارنانو سمونې پټول',
 'tog-watchlisthideanons'     => 'په کتنلړ کې د ورکنومو کارنانو سمونې پټول',
@@ -290,6 +290,7 @@ $messages = array(
 'qbmyoptions'    => 'زما پاڼې',
 'qbspecialpages' => 'ځانګړي مخونه',
 'faq'            => 'ډ-ځ-پ',
+'faqpage'        => 'Project:ډ-ځ-پ',
 
 # Vector skin
 'vector-action-addsection'   => 'سرليکونه ورګډول',
@@ -429,7 +430,7 @@ $1',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'ليکنه',
-'nstab-user'      => 'د کارن پاڼه',
+'nstab-user'      => 'کارن مخ',
 'nstab-media'     => 'د رسنۍ مخ',
 'nstab-special'   => 'ځانګړی مخ',
 'nstab-project'   => 'د پروژې مخ',
@@ -494,7 +495,7 @@ $1',
 'yourname'                   => 'کارن-نوم:',
 'yourpassword'               => 'پټنوم:',
 'yourpasswordagain'          => 'پټنوم بيا وليکه',
-'remembermypassword'         => 'زما پټنوم پدې کمپيوټر په ياد ولره!',
+'remembermypassword'         => 'زما پټنوم په دې کمپيوټر (تر $1 {{PLURAL:$1|ورځې|ورځو}}) په ياد وساته!',
 'yourdomainname'             => 'ستاسې شپول:',
 'login'                      => 'ننوتل',
 'nav-login-createaccount'    => 'ننوتل / کارن-حساب جوړول',
@@ -612,17 +613,17 @@ $1',
 'summary-preview'                  => 'د لنډيز مخليدنه:',
 'subject-preview'                  => 'موضوع/سرليک مخکتنه:',
 'blockedtitle'                     => 'پر کارن بنديز لګېدلی',
-'blockedtext'                      => "'''ستاسو د کارن-نوم يا آی پي پتې مخنيوی شوی.'''
+'blockedtext'                      => "'''ستاسې د کارن-نوم يا آی پي پتې مخنيوی شوی.'''
 
-همدا بنديز د $1 له خوا پر تاسو لږېدلی. او د همدې کړنې سبب دی ''$2''.
+همدا بنديز د $1 له خوا پر تاسې لږېدلی. او د همدې کړنې سبب ''$2'' دی.
 
-* د مخنيوي د پېل نېټه: $8
-* د مخنيوي د پای نېټه: $6
+* د بنديز د پېل نېټه: $8
+* د بنديز د پای نېټه: $6
 * بنديزونه دي پر: $7
 
-تاسو کولای شی چې د $1 او يا هم د يو بل [[{{MediaWiki:Grouppage-sysop}}|پازوال]] سره اړيکې ټينګې کړی او د بنديز ستونزې مو هوارې کړی.
-تاسو نه شی کولای چې د 'همدې کارونکي ته برېښلک لېږل ' کړنې نه ګټه پورته کړی تر څو چې تاسو د خپل کارن-حساب په [[Special:Preferences|غوره توبونو]] کې يوه کره برېښليک پته نه وي ځانګړې کړې او تر دې بريده چې پر تاسو د هغې د کارولو بنديز نه وي لګېدلی.
-ستاسو د دم مهال آی پي پته ده $3، او ستاسو د مخنيوي پېژند #$5 دی. مهرباني وکړۍ د خپلې يادونې پر مهال د دغو دوو څخه د يوه او يا هم د دواړو ورکول مه هېروۍ.",
+تاسې کولای شی چې د $1 او يا هم د يو بل [[{{MediaWiki:Grouppage-sysop}}|پازوال]] سره اړيکې ټينګې کړی او د بنديز ستونزې مو هوارې کړی.
+تاسې نه شی کولای چې د 'کارن ته برېښلک لېږل' کړنې نه ګټه پورته کړی تر څو چې تاسې د خپل کارن-حساب په [[Special:Preferences|غوره توبونو]] کې يوه کره برېښليک پته نه وي ځانګړې کړې او تر دې بريده چې پر تاسې د هغې د کارولو بنديز نه وي لګېدلی.
+ستاسې د دم مهال آی پي پته $3 ده، او ستاسې د بنديز پېژند #$5 دی. مهرباني وکړۍ د خپلې يادونې پر مهال د دغو دوو څخه د يوه او يا هم د دواړو ورکول مه هېروۍ.",
 'blockednoreason'                  => 'هېڅ سبب نه دی ورکړ شوی',
 'blockedoriginalsource'            => "د '''$1''' سرچينې لاندې ښودل شوي:",
 'whitelistedittitle'               => 'که د سمادولو تکل لری نو بايد غونډال ته ورننوځۍ.',
@@ -740,6 +741,7 @@ $1',
 ** Potentially libelous information',
 'revdelete-otherreason'      => 'بل/اضافي سبب:',
 'revdelete-reasonotherlist'  => 'بل سبب',
+'revdelete-edit-reasonlist'  => 'د ړنګولو سببونه سمول',
 'revdelete-offender'         => 'د مخکتنې ليکوال:',
 
 # Revision move
@@ -798,7 +800,7 @@ $1',
 د ''ټول:'' مختاړي په کارولو سره به ستاسې د پلټنې لپاره، په ټوله مېنځپانګه کې پلټنه وشي (د خبرواترو، کينډۍ او نورو مخونو په ګډون), او يا هم د خپلې خوښې نوم-تشيال د مختاړي په توګه وکاروۍ.",
 'powersearch'                    => 'ژوره پلټنه',
 'powersearch-legend'             => 'ژوره پلټنه',
-'powersearch-ns'                 => 'په نوم-تشيالونو کې پلټل:',
+'powersearch-ns'                 => 'په نوم-تشيالونو کې پلټنه:',
 'powersearch-redir'              => 'مخ ګرځونې په لړليک کې اوډل',
 'powersearch-field'              => 'پلټنه د',
 'powersearch-togglelabel'        => 'کره کتل:',
@@ -832,7 +834,7 @@ $1',
 'saveprefs'                   => 'خوندي کول',
 'resetprefs'                  => 'بيا سمول',
 'restoreprefs'                => 'ټولې تلواليزې امستنې پرځای کول',
-'prefs-editing'               => 'سمادېدنه',
+'prefs-editing'               => 'د سمولو په حال کې',
 'prefs-edit-boxsize'          => 'د سمون کړکۍ کچه.',
 'rows'                        => 'ليکې:',
 'columns'                     => 'ستنې:',
@@ -901,12 +903,13 @@ $1',
 # Groups
 'group'            => 'ډله:',
 'group-user'       => 'کارنان',
+'group-bot'        => 'روباټونه',
 'group-sysop'      => 'پازوالان',
 'group-bureaucrat' => 'بيوروکراټان',
 'group-all'        => '(ټول)',
 
 'group-user-member'       => 'کارن',
-'group-bot-member'        => 'باټ',
+'group-bot-member'        => 'روباټ',
 'group-sysop-member'      => 'پازوال',
 'group-bureaucrat-member' => 'بيوروکراټ',
 
@@ -948,7 +951,7 @@ $1',
 'recentchanges-legend-newpage'   => '$1 - نوی مخ',
 'recentchanges-legend-minor'     => '$1 - وړوکی سمون',
 'recentchanges-label-minor'      => 'دا يوه وړه سمونه ده',
-'recentchanges-legend-bot'       => '$1 - د باټ سمون',
+'recentchanges-legend-bot'       => '$1 - د روباټ سمون',
 'rcnote'                         => "دلته لاندې {{PLURAL:$1|وروستی '''1''' بدلون دی|وروستي '''$1''' بدلونونه دي}} چې په  {{PLURAL:$2| يوې ورځ|'''$2''' ورځو}} کې تر $4 نېټې او $5 بجو پېښ شوي.",
 'rcnotefrom'                     => "په همدې ځای کې لاندې هغه بدلونونه دي چې د '''$2''' نه راپدېخوا پېښ شوي (تر '''$1''' پورې ښکاره شوي).",
 'rclistfrom'                     => 'هغه بدلونونه ښکاره کړی چې له $1 نه پيلېږي',
@@ -965,7 +968,7 @@ $1',
 'show'                           => 'ښکاره کول',
 'minoreditletter'                => 'و',
 'newpageletter'                  => 'نوی',
-'boteditletter'                  => 'باټ',
+'boteditletter'                  => 'روباټ',
 'rc_categories_any'              => 'هر يو',
 'newsectionsummary'              => '/* $1 */ نوې برخه',
 'rc-enhanced-expand'             => 'تفصيل ښکاره کول (د دې لپاره د JavaScript اړتيا ده)',
@@ -1008,6 +1011,8 @@ $1',
 'minlength1'            => 'پکار ده چې د دوتنو نومونه لږ تر لږه يو حرف ولري.',
 'badfilename'           => 'ددغې دوتنې نوم "$1" ته واوړېده.',
 'filetype-badmime'      => 'د MIME بڼې "$1" د دوتنو د پورته کولو اجازه نشته.',
+'filename-tooshort'     => 'د دوتنې نوم ډېر لنډ دی',
+'filetype-banned'       => 'د دې بڼې په دوتنې بنديز دی',
 'fileexists'            => "د پخوا نه پدې نوم يوه دوتنه شته، که تاسو ډاډه نه ياست او يا هم که تاسو غواړۍ چې بدلون پکې راولۍ، لطفاً '''<tt>[[:$1]]</tt>''' وګورۍ.
 [[$1|thumb]]",
 'fileexists-extension'  => "په همدې نوم يوه بله دوتنه د پخوا نه شته: [[$2|thumb]]
@@ -1018,6 +1023,7 @@ $1',
 که تاسې بيا هم د خپلې دوتنې پورته کول غواړۍ، نو لطفاً بېرته وګرځۍ او همدغه دوتنه بيا په يوه نوي نوم پورته کړی. 
 [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate' => 'همدا دوتنه د {{PLURAL:$1|لاندينۍ دوتنې|لاندينيو دوتنو}} غبرګه لمېسه ده:',
+'successfulupload'      => 'دوتنه پورته کېدل په برياليتوب سره ترسره شو',
 'savefile'              => 'دوتنه خوندي کړه',
 'uploadedimage'         => '"[[$1]]" پورته شوه',
 'uploaddisabled'        => 'پورته کول ناچارن شوي',
@@ -1097,7 +1103,7 @@ $1',
 'listredirects' => 'د ورګرځېدنو لړليک',
 
 # Unused templates
-'unusedtemplates'    => 'نه کارېدلي کينډۍ',
+'unusedtemplates'    => 'ناکارېدلې کينډۍ',
 'unusedtemplateswlh' => 'نور تړنونه',
 
 # Random page
@@ -1256,21 +1262,22 @@ $1',
 'listgrouprights-addgroup-all' => 'ټولې ډلې ورګډول',
 
 # E-mail user
-'mailnologin'     => 'هېڅ کومه لېږل شوې پته نشته',
-'emailuser'       => 'دې کارن ته برېښليک لېږل',
-'emailpage'       => 'کارونکي ته برېښليک ولېږه',
-'defemailsubject' => 'د {{SITENAME}} برېښليک',
-'noemailtitle'    => 'هېڅ کومه برېښليک پته نشته.',
-'emailfrom'       => 'لېږونکی',
-'emailto'         => 'اخيستونکی',
-'emailsubject'    => 'سکالو:',
-'emailmessage'    => 'پيغام:',
-'emailsend'       => 'لېږل',
-'emailccme'       => 'زما د پيغام يوه بېلګه دې ماته هم برېښليک شي.',
-'emailccsubject'  => '$1 ته ستاسو د پيغام لمېسه: $2',
-'emailsent'       => 'برېښليک مو ولېږل شو',
-'emailsenttext'   => 'ستاسو برېښليکي پيغام ولېږل شو.',
-'emailuserfooter' => 'همدا برېښليک د $1 لخوا $2 ته د {{SITENAME}} په وېبځي کې د "همدې کارونکي ته برېښليک لېږل" د کړنې په مرسته لېږل شوی دی.',
+'mailnologin'      => 'هېڅ کومه لېږل شوې پته نشته',
+'emailuser'        => 'کارن ته برېښليک لېږل',
+'emailpage'        => 'کارونکي ته برېښليک ولېږه',
+'defemailsubject'  => 'د {{SITENAME}} برېښليک',
+'noemailtitle'     => 'هېڅ کومه برېښليک پته نشته.',
+'nowikiemailtitle' => 'د برېښليک لېږلو اجازه نشته',
+'emailfrom'        => 'لېږونکی',
+'emailto'          => 'اخيستونکی',
+'emailsubject'     => 'سکالو:',
+'emailmessage'     => 'پيغام:',
+'emailsend'        => 'لېږل',
+'emailccme'        => 'زما د پيغام يوه بېلګه دې ماته هم برېښليک شي.',
+'emailccsubject'   => '$1 ته ستاسو د پيغام لمېسه: $2',
+'emailsent'        => 'برېښليک مو ولېږل شو',
+'emailsenttext'    => 'ستاسو برېښليکي پيغام ولېږل شو.',
+'emailuserfooter'  => 'همدا برېښليک د $1 لخوا $2 ته د {{SITENAME}} په وېبځي کې د "همدې کارونکي ته برېښليک لېږل" د کړنې په مرسته لېږل شوی دی.',
 
 # User Messenger
 'usermessage-editor' => 'د غونډال پيغام رسونکی',
@@ -1429,7 +1436,7 @@ $1',
 'sp-contributions-submit'      => 'پلټل',
 
 # What links here
-'whatlinkshere'            => 'د دې پاڼې تړنې',
+'whatlinkshere'            => 'د دې مخ تړنې',
 'whatlinkshere-title'      => 'هغه مخونه چې د "$1" سره تړنې لري',
 'whatlinkshere-page'       => 'مخ:',
 'linkshere'                => "دغه لانديني مخونه د '''[[:$1]]''' سره تړنې لري:",
@@ -1440,9 +1447,9 @@ $1',
 'whatlinkshere-prev'       => '{{PLURAL:$1|پخوانی|پخواني $1}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|راتلونکی|راتلونکي $1}}',
 'whatlinkshere-links'      => '← تړنې',
-'whatlinkshere-hideredirs' => '$1 مخ ګرځونې',
-'whatlinkshere-hidetrans'  => '$1 پايلې',
-'whatlinkshere-hidelinks'  => '$1 تړنې',
+'whatlinkshere-hideredirs' => 'مخ ګرځونې $1',
+'whatlinkshere-hidetrans'  => 'پايلې $1',
+'whatlinkshere-hidelinks'  => 'تړنې $1',
 'whatlinkshere-hideimages' => '$1 د انځور تړنې',
 'whatlinkshere-filters'    => 'چاڼګرونه',
 
@@ -1790,10 +1797,16 @@ $1',
 'exif-sharpness-1' => 'پوست',
 
 'exif-subjectdistancerange-0' => 'ناجوت',
+'exif-subjectdistancerange-1' => 'ماکرو',
 
 # Pseudotags used for GPSSpeedRef
 'exif-gpsspeed-k' => 'کيلومتره په يوه ساعت کې',
+'exif-gpsspeed-m' => 'مايل په ساعت کې',
 'exif-gpsspeed-n' => 'غوټې',
+
+# Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
+'exif-gpsdirection-t' => 'سم لوری',
+'exif-gpsdirection-m' => 'مقناطيسي لوری',
 
 # External editor support
 'edit-externally'      => 'د باندنيو پروګرامونو په کارولو سره دا دوتنه سمول',
@@ -1936,6 +1949,12 @@ $5
 'tags-edit'         => 'سمول',
 'tags-hitcount'     => '$1 {{PLURAL:$1|بدلون|بدلونونه}}',
 
+# Special:ComparePages
+'comparepages'   => 'مخونه پرتلل',
+'compare-page1'  => '۱ مخ',
+'compare-page2'  => '۲ مخ',
+'compare-submit' => 'پرتلل',
+
 # Database error messages
 'dberr-header'   => 'دا ويکي يوه ستونزه لري',
 'dberr-problems' => 'اوبخښۍ!
@@ -1948,14 +1967,5 @@ $5
 'htmlform-submit'              => 'سپارل',
 'htmlform-reset'               => 'بدلونونه ناکړل',
 'htmlform-selectorother-other' => 'بل',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'وېشنيزه ورګډول',
-'ajax-add-category-submit'     => 'ورګډول',
-'ajax-confirm-save'            => 'خوندي کول',
-'ajax-add-category-summary'    => 'د "$1" وېشنيزه ورګډول',
-'ajax-remove-category-summary' => 'د "$1" وېشنيزه ليرې کول',
-'ajax-error-title'             => 'ستونزه',
-'ajax-error-dismiss'           => 'ښه',
 
 );

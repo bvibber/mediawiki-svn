@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -213,7 +213,13 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 			'namespace' => 'The namespace(s) to enumerate',
 			'what' => 'Search inside the text or titles',
 			'info' => 'What metadata to return',
-			'prop' => 'What properties to return',
+			'prop' => array(
+				'What properties to return',
+				' size    - Adds the size of the page in bytes',
+				' wordcount  - Adds the word count of the page',
+				' timestamp  - Adds the timestamp of when the page was last edited',
+				' snippet    - Adds a parsed snippet of the page',
+			),
 			'redirects' => 'Include redirect pages in the search',
 			'offset' => 'Use this value to continue paging (return by query)',
 			'limit' => 'How many total pages to return'

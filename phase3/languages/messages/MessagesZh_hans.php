@@ -9,6 +9,7 @@
  *
  * @author Bencmq
  * @author Biŋhai
+ * @author Chinalace
  * @author Fantasticfears
  * @author Franklsf95
  * @author Gaoxuewei
@@ -27,6 +28,7 @@
  * @author Shizhao
  * @author Wmr89502270
  * @author Wong128hk
+ * @author Yfdyh000
  */
 
 $fallback8bitEncoding = 'windows-936';
@@ -365,31 +367,32 @@ $messages = array(
 'faqpage'        => 'Project:常见问题解答',
 
 # Vector skin
-'vector-action-addsection'   => '加入主题',
-'vector-action-delete'       => '删除',
-'vector-action-move'         => '移动',
-'vector-action-protect'      => '保护',
-'vector-action-undelete'     => '恢复被删页面',
-'vector-action-unprotect'    => '解除保护',
-'vector-namespace-category'  => '分类',
-'vector-namespace-help'      => '帮助页面',
-'vector-namespace-image'     => '文件',
-'vector-namespace-main'      => '页面',
-'vector-namespace-media'     => '媒体页面',
-'vector-namespace-mediawiki' => '信息',
-'vector-namespace-project'   => '计划页面',
-'vector-namespace-special'   => '特殊页面',
-'vector-namespace-talk'      => '讨论',
-'vector-namespace-template'  => '模板',
-'vector-namespace-user'      => '用户页面',
-'vector-view-create'         => '创建',
-'vector-view-edit'           => '编辑',
-'vector-view-history'        => '查看历史',
-'vector-view-view'           => '阅读',
-'vector-view-viewsource'     => '查看源代码',
-'actions'                    => '动作',
-'namespaces'                 => '名字空间',
-'variants'                   => '变换',
+'vector-action-addsection'       => '加入主题',
+'vector-action-delete'           => '删除',
+'vector-action-move'             => '移动',
+'vector-action-protect'          => '保护',
+'vector-action-undelete'         => '恢复被删页面',
+'vector-action-unprotect'        => '解除保护',
+'vector-namespace-category'      => '分类',
+'vector-namespace-help'          => '帮助页面',
+'vector-namespace-image'         => '文件',
+'vector-namespace-main'          => '页面',
+'vector-namespace-media'         => '媒体页面',
+'vector-namespace-mediawiki'     => '信息',
+'vector-namespace-project'       => '计划页面',
+'vector-namespace-special'       => '特殊页面',
+'vector-namespace-talk'          => '讨论',
+'vector-namespace-template'      => '模板',
+'vector-namespace-user'          => '用户页面',
+'vector-simplesearch-preference' => '打开增强搜索建议（仅限Vector皮肤）',
+'vector-view-create'             => '创建',
+'vector-view-edit'               => '编辑',
+'vector-view-history'            => '查看历史',
+'vector-view-view'               => '阅读',
+'vector-view-viewsource'         => '查看源代码',
+'actions'                        => '动作',
+'namespaces'                     => '名字空间',
+'variants'                       => '变换',
 
 'errorpagetitle'    => '错误',
 'returnto'          => '返回到$1。',
@@ -656,7 +659,7 @@ $2',
 'acct_creation_throttle_hit' => '抱歉！您已经创建了$1个账号。你不能再创建了。',
 'emailauthenticated'         => '您的电子邮箱地址已经于$2 $3确认有效。',
 'emailnotauthenticated'      => '您的邮箱地址<strong>还没被认证</strong>。以下功能将不会发送任何邮件。',
-'noemailprefs'               => '指定一个电子邮箱地址以使用此功能',
+'noemailprefs'               => '指定一个电子邮箱地址以使用此功能。',
 'emailconfirmlink'           => '确认您的邮箱地址',
 'invalidemailaddress'        => '邮箱地址格式不正确，请输入正确的邮箱地址或清空该输入框。',
 'accountcreated'             => '已建立账户',
@@ -724,7 +727,7 @@ $2',
 'anonpreviewwarning'               => "''您没有登录。您的IP位址将记录在此页的编辑历史中。''",
 'missingsummary'                   => "'''提示：''' 您没有提供一个编辑摘要。如果您再次单击保存，您的编辑将不带编辑摘要保存。",
 'missingcommenttext'               => '请在下面输入评论。',
-'missingcommentheader'             => "'''提示：''' 您没有为此评论提供一个标题。如果您再次单击保存，您的编辑将不带标题保存。",
+'missingcommentheader'             => "'''提示：''' 您没有为此评论提供一个标题。如果您再次单击“{{int:savearticle}}”，您的编辑将不带标题保存。",
 'summary-preview'                  => '摘要预览：',
 'subject-preview'                  => '标题预览：',
 'blockedtitle'                     => '用户被查封',
@@ -1047,11 +1050,11 @@ $1",
 'revmove-reasonfield'          => '理由：',
 'revmove-titlefield'           => '目标页面：',
 'revmove-badparam-title'       => '坏的参数',
-'revmove-badparam'             => '<span class="error">您的请求含有不合法的者不足的参数。请点击「返回」再试。</span>',
+'revmove-badparam'             => '您的请求含有不合法的者不足的参数。请点击「返回」再试。',
 'revmove-norevisions-title'    => '无效的目标修订版本',
-'revmove-norevisions'          => '<span class="error">您尚未指定一个或者多个目标修订版本去做这项功能或者所指定的修订版本不存在。</span>',
+'revmove-norevisions'          => '您尚未指定一个或者多个目标修订版本去做这项功能或者所指定的修订版本不存在。',
 'revmove-nullmove-title'       => '坏的标题',
-'revmove-nullmove'             => '<span class="error">来源和目标页面相同。请点击「返回」再输入跟 "$1" 不相同的名字。</span>',
+'revmove-nullmove'             => '来源和目标页面相同。请点击「返回」再输入跟 "$1" 不相同的名字。',
 'revmove-success-existing'     => '由[[$2]]中的{{PLURAL:$1|一次修订版本|$1次修订版本}}已经移动至现有的页面[[$3]]。',
 'revmove-success-created'      => '由[[$2]]中的{{PLURAL:$1|一次修订版本|$1次修订版本}}已经移动至新建的页面[[$3]]。',
 
@@ -1380,6 +1383,7 @@ $1",
 'right-override-export-depth' => '导出含有五层深度链接页面之页面',
 'right-sendemail'             => '发电子邮件给其他用户',
 'right-revisionmove'          => '移动修订版本',
+'right-selenium'              => '运行Selenium测试',
 
 # User rights log
 'rightslog'      => '用户权限日志',
@@ -2075,7 +2079,7 @@ $UNWATCHURL
 'deletedarticle'         => '已删除“[[$1]]”',
 'suppressedarticle'      => '已废止"[[$1]]"',
 'dellogpage'             => '删除日志',
-'dellogpagetext'         => '以下是最近删除的纪录列表：',
+'dellogpagetext'         => '以下是最近的删除的列表。',
 'deletionlog'            => '删除日志',
 'reverted'               => '恢复到早期版本',
 'deletecomment'          => '删除原因：',
@@ -2105,7 +2109,9 @@ $UNWATCHURL
 
 # Edit tokens
 'sessionfailure-title' => '登录信息失败',
-'sessionfailure'       => '似乎在您登录时发生问题，作为一项防范性措施，该动作已经被取消。请单击"后退"再次尝试！',
+'sessionfailure'       => '似乎您的登录会话有问题；
+为了防止会话劫持，这个操作已经被取消。
+请点击“后退”并重新载入页面，然后重试。',
 
 # Protect
 'protectlogpage'              => '保护日志',
@@ -2244,6 +2250,7 @@ $1',
 最近的封锁日志项目在下面提供以便参考：',
 'sp-contributions-search'              => '搜索贡献记录',
 'sp-contributions-username'            => 'IP地址或用户名称：',
+'sp-contributions-toponly'             => '只显示最新的修订版本',
 'sp-contributions-submit'              => '搜索',
 
 # What links here
@@ -2780,6 +2787,9 @@ $1',
 'show-big-image-thumb' => '<small>这幅缩略图的分辨率：$1×$2像素</small>',
 'file-info-gif-looped' => '循环',
 'file-info-gif-frames' => '$1帧',
+'file-info-png-looped' => '循环',
+'file-info-png-repeat' => '播放$1遍{{PLURAL:$1|time|times}}',
+'file-info-png-frames' => '$1帧 {{PLURAL:$1|frame|frames}}',
 
 # Special:NewFiles
 'newimages'             => '新建图像画廊',
@@ -3197,6 +3207,7 @@ $1',
 'table_pager_first'        => '第一页',
 'table_pager_last'         => '末一页',
 'table_pager_limit'        => '每页显示$1项',
+'table_pager_limit_label'  => '每页项目数：',
 'table_pager_limit_submit' => '到',
 'table_pager_empty'        => '没有结果',
 
@@ -3335,6 +3346,15 @@ $1',
 'tags-edit'               => '编辑',
 'tags-hitcount'           => '$1次更改',
 
+# Special:ComparePages
+'comparepages'     => '比较页面',
+'compare-selector' => '比较页面的修订',
+'compare-page1'    => '第1页',
+'compare-page2'    => '第2页',
+'compare-rev1'     => '修订版本1',
+'compare-rev2'     => '修订版本2',
+'compare-submit'   => '比较',
+
 # Database error messages
 'dberr-header'      => '此wiki出现了问题',
 'dberr-problems'    => '抱歉！
@@ -3356,20 +3376,5 @@ $1',
 'htmlform-submit'              => '提交',
 'htmlform-reset'               => '撤销更改',
 'htmlform-selectorother-other' => '其他',
-
-# Add categories per AJAX
-'ajax-add-category'            => '加入分类',
-'ajax-add-category-submit'     => '加入',
-'ajax-confirm-title'           => '确认动作',
-'ajax-confirm-prompt'          => '您可以在下面提供一个编辑摘要。
-点击“保存”去保存您的编辑。',
-'ajax-confirm-save'            => '保存',
-'ajax-add-category-summary'    => '加入分类“$1”',
-'ajax-remove-category-summary' => '移除分类“$1”',
-'ajax-confirm-actionsummary'   => '已进行的动作：',
-'ajax-error-title'             => '错误',
-'ajax-error-dismiss'           => '好',
-'ajax-remove-category-error'   => '不能移除这个分类。
-通常是发生在一个模板中加入该分类。',
 
 );

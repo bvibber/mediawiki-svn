@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -78,7 +78,7 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 
 		$catids = array_flip( $cattitles );
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$vals = array();
 			$vals['size'] = intval( $row->cat_pages );
 			$vals['pages'] = $row->cat_pages - $row->cat_subcats - $row->cat_files;
@@ -93,7 +93,6 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 				break;
 			}
 		}
-		$db->freeResult( $res );
 	}
 
 	public function getAllowedParams() {

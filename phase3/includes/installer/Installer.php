@@ -215,6 +215,19 @@ abstract class Installer {
 	 * Constructor, always call this from child classes
 	 */
 	function __construct() {
+		// Disable the i18n cache and LoadBalancer
+		Language::getLocalisationCache()->disableBackend();
+		LBFactory::disableBackend();
+
+		// Load the installer's i18n file
+		global $wgExtensionMessagesFiles;
+		$wgExtensionMessagesFiles['MediawikiInstaller'] =
+			'./includes/installer/Installer.i18n.php';
+
+		// Set our custom <doclink> hook
+		global $wgHooks;
+		$wgHooks['ParserFirstCallInit'][] = array( $this, 'registerDocLink' );
+
 		$this->settings = $this->internalDefaults;
 		foreach ( $this->defaultVarNames as $var ) {
 			$this->settings[$var] = $GLOBALS[$var];
@@ -787,6 +800,14 @@ abstract class Installer {
 	}
 
 	/**
+	 * Register tag hook below
+	 */
+	function registerDocLink( &$parser ) {
+		$parser->setHook( 'doclink', array( $this, 'docLink' ) );
+		return true;
+	}
+
+	/**
 	 * Extension tag hook for a documentation link
 	 */
 	function docLink( $linkText, $attribs, $parser ) {
@@ -860,7 +881,13 @@ abstract class Installer {
 	}
 
 	public function installSecretKey() {
-		$file = wfIsWindows() ? null : @fopen( "/dev/urandom", "r" );
+		if ( wfIsWindows() ) {
+			$file = null;
+		} else {
+			wfSuppressWarnings();
+			$file = fopen( "/dev/urandom", "r" );
+			wfRestoreWarnings();
+		}
 		if ( $file ) {
 			$secretKey = bin2hex( fread( $file, 32 ) );
 			fclose( $file );
@@ -898,18 +925,10 @@ abstract class Installer {
 
 	public function installLocalsettings() {
 		$localSettings = new LocalSettingsGenerator( $this );
-		$ok = $localSettings->writeLocalSettings();
-
-		# TODO: Make writeLocalSettings() itself not warn, but instead return
-		# a Status object to us to pass along.
-		if ( $ok ) {
-			return Status::newGood();
-		} else {
-			return Status::newFatal();
-		}
+		return $localSettings->writeLocalSettings();
 	}
 
-	/*
+	/**
 	 * On POSIX systems return the primary group of the webserver we're running under.
 	 * On other systems just returns null.
 	 *
@@ -933,5 +952,23 @@ abstract class Installer {
 		$group = $getpwuid["name"];
 
 		return $group;
+	}
+
+	/**
+	 * Override the necessary bits of the config to run an installation
+	 */
+	public static function overrideConfig() {
+		define( 'MW_NO_SESSION', 1 );
+
+		// Don't access the database
+		$GLOBALS['wgUseDatabaseMessages'] = false;
+		// Debug-friendly
+		$GLOBALS['wgShowExceptionDetails'] = true;
+		// Don't break forms
+		$GLOBALS['wgExternalLinkTarget'] = '_blank';
+
+		// Extended debugging. Maybe disable before release?
+		$GLOBALS['wgShowSQLErrors'] = true;
+		$GLOBALS['wgShowDBErrorBacktrace'] = true;
 	}
 }

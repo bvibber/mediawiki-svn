@@ -14,6 +14,7 @@
  * @author Alexander Sigachov (alexander.sigachov@gmail.com)
  * @author Amikeco
  * @author Chilin
+ * @author Claymore
  * @author Don Alessandro
  * @author EugeneZelenko
  * @author Ferrer
@@ -423,31 +424,32 @@ $messages = array(
 'faqpage'        => 'Project:ЧаВО',
 
 # Vector skin
-'vector-action-addsection'   => 'Добавить тему',
-'vector-action-delete'       => 'Удалить',
-'vector-action-move'         => 'Переименовать',
-'vector-action-protect'      => 'Защитить',
-'vector-action-undelete'     => 'Восстановить',
-'vector-action-unprotect'    => 'Снять защиту',
-'vector-namespace-category'  => 'Категория',
-'vector-namespace-help'      => 'Справочная страница',
-'vector-namespace-image'     => 'Файл',
-'vector-namespace-main'      => 'Страница',
-'vector-namespace-media'     => 'Медиа-страница',
-'vector-namespace-mediawiki' => 'Сообщение',
-'vector-namespace-project'   => 'О проекте',
-'vector-namespace-special'   => 'Служебная страница',
-'vector-namespace-talk'      => 'Обсуждение',
-'vector-namespace-template'  => 'Шаблон',
-'vector-namespace-user'      => 'Страница участника',
-'vector-view-create'         => 'Создание',
-'vector-view-edit'           => 'Правка',
-'vector-view-history'        => 'Просмотр истории',
-'vector-view-view'           => 'Чтение',
-'vector-view-viewsource'     => 'Просмотр разметки',
-'actions'                    => 'Действия',
-'namespaces'                 => 'Пространства имён',
-'variants'                   => 'Варианты',
+'vector-action-addsection'       => 'Добавить тему',
+'vector-action-delete'           => 'Удалить',
+'vector-action-move'             => 'Переименовать',
+'vector-action-protect'          => 'Защитить',
+'vector-action-undelete'         => 'Восстановить',
+'vector-action-unprotect'        => 'Снять защиту',
+'vector-namespace-category'      => 'Категория',
+'vector-namespace-help'          => 'Справочная страница',
+'vector-namespace-image'         => 'Файл',
+'vector-namespace-main'          => 'Страница',
+'vector-namespace-media'         => 'Медиа-страница',
+'vector-namespace-mediawiki'     => 'Сообщение',
+'vector-namespace-project'       => 'О проекте',
+'vector-namespace-special'       => 'Служебная страница',
+'vector-namespace-talk'          => 'Обсуждение',
+'vector-namespace-template'      => 'Шаблон',
+'vector-namespace-user'          => 'Страница участника',
+'vector-simplesearch-preference' => 'Включить расширенные поисковые подсказки (только для оформления «Векторное»)',
+'vector-view-create'             => 'Создание',
+'vector-view-edit'               => 'Правка',
+'vector-view-history'            => 'Просмотр истории',
+'vector-view-view'               => 'Чтение',
+'vector-view-viewsource'         => 'Просмотр разметки',
+'actions'                        => 'Действия',
+'namespaces'                     => 'Пространства имён',
+'variants'                       => 'Варианты',
 
 'errorpagetitle'    => 'Ошибка',
 'returnto'          => 'Возврат к странице $1.',
@@ -804,8 +806,8 @@ $2',
 'anonpreviewwarning'               => "''Вы не представились системе. Сохранение приведёт к записи вашего IP-адреса в историю изменений страницы.''",
 'missingsummary'                   => "'''Напоминание.''' Вы не дали краткого описания изменений. При повторном нажатии на кнопку «Записать страницу», ваши изменения будут сохранены без комментария.",
 'missingcommenttext'               => 'Пожалуйста, введите ниже ваше сообщение.',
-'missingcommentheader'             => "'''Напоминание:''' Вы не указали заголовок комментария.
-При повторном нажатии на кнопку сохранения, ваша правка будет записана без заголовка.",
+'missingcommentheader'             => "'''Напоминание.''' Вы не указали тему/заголовок для этого комментария.
+При повторном нажатии на кнопку «{{int:savearticle}}», ваша правка будет записана без заголовка.",
 'summary-preview'                  => 'Описание будет:',
 'subject-preview'                  => 'Заголовок будет:',
 'blockedtitle'                     => 'Участник заблокирован',
@@ -966,7 +968,7 @@ $2',
 
 Ограничение на количество вызовов установлено на уровне $2 {{PLURAL:$2|вызова|вызовов|вызовов}}, в данном случае требуется сделать {{PLURAL:$1|$1 вызов|$1 вызова|$1 вызовов}}.',
 'expensive-parserfunction-category'       => 'Страницы со слишком большим количеством вызовов ресурсоёмких функций',
-'post-expand-template-inclusion-warning'  => 'Внимание. Размер включаемых шаблонов слишком велик.
+'post-expand-template-inclusion-warning'  => 'Предупреждение: суммарный размер включаемых шаблонов слишком велик.
 Некоторые шаблоны не будут включены.',
 'post-expand-template-inclusion-category' => 'Страницы, для которых превышен допустимый размер включаемых шаблонов',
 'post-expand-template-argument-warning'   => 'Внимание. Эта страница содержит по крайней мере один аргумент шаблона, имеющий слишком большой размер для развёртывания.
@@ -1092,7 +1094,7 @@ $1",
 'logdelete-success'           => 'Видимость события изменена.',
 'logdelete-failure'           => "'''Видимость журнала не установлена:'''
 $1",
-'revdel-restore'              => 'Изменить видимость',
+'revdel-restore'              => 'изменить видимость',
 'revdel-restore-deleted'      => 'удалённые версии',
 'revdel-restore-visible'      => 'видимые версии',
 'pagehist'                    => 'История страницы',
@@ -1140,11 +1142,11 @@ $1",
 'revmove-reasonfield'          => 'Причина:',
 'revmove-titlefield'           => 'Целевая страница:',
 'revmove-badparam-title'       => 'Плохие параметры',
-'revmove-badparam'             => '<span class="error">Ваш запрос содержит недопустимые значения параметров, или значения параметров не заданы. Пожалуйста, нажмите кнопку «Назад» и попробуйте ещё раз.</span>',
+'revmove-badparam'             => 'Ваш запрос содержит недопустимые значения параметров, или значения параметров не заданы. Пожалуйста, нажмите кнопку «Назад» и попробуйте ещё раз.',
 'revmove-norevisions-title'    => 'Недопустимая целевая версия',
-'revmove-norevisions'          => '<span class="error">Для выполнения этой функции вы не указали одну или несколько целевых версий, или указанные версии не существуют.</span>',
+'revmove-norevisions'          => 'Для выполнения этой функции вы не указали одну или несколько целевых версий, или указанные версии не существуют.',
 'revmove-nullmove-title'       => 'Плохое название',
-'revmove-nullmove'             => '<span class="error">Исходная и целевая страницы совпадают. Пожалуйста, нажмите кнопку «Назад» и введите название страницы, отличное от «$1».</span>',
+'revmove-nullmove'             => 'Исходная и целевая страницы совпадают. Пожалуйста, нажмите кнопку «Назад» и введите название страницы, отличное от «$1».',
 'revmove-success-existing'     => '{{PLURAL:$1|$1 версия страницы [[$2]] была перенесена|$1 версии страницы [[$2]] были перенесены|$1 версий страниц [[$2]] были перенесены}} на существующую страницу [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|$1 версия страницы [[$2]] была перенесена|$1 версии страницы [[$2]] были перенесены|$1 версий страниц [[$2]] были перенесены}} на новую страницу [[$3]].',
 
@@ -1478,6 +1480,7 @@ $1",
 'right-override-export-depth' => 'экспортирование страниц, включая связанные страницы с глубиной до 5',
 'right-sendemail'             => 'отправлять электронную почту другим участникам',
 'right-revisionmove'          => 'перенос версий страниц',
+'right-selenium'              => 'запуск проверок Selenium',
 
 # User rights log
 'rightslog'      => 'Журнал прав участника',
@@ -2369,6 +2372,7 @@ $1',
 Ниже приведена последняя запись из журнала блокировок:',
 'sp-contributions-search'              => 'Поиск вклада',
 'sp-contributions-username'            => 'IP-адрес или имя участника:',
+'sp-contributions-toponly'             => 'Показывать только последние версии',
 'sp-contributions-submit'              => 'Найти',
 
 # What links here
@@ -2614,7 +2618,7 @@ $1',
 Пожалуйста, выберите другое имя.',
 
 # Export
-'export'            => 'Экспортирование статей',
+'export'            => 'Экспорт страниц',
 'exporttext'        => 'Вы можете экспортировать текст и журнал изменений конкретной страницы или набора страниц в XML, который потом может быть [[Special:Import|импортирован]] в другой вики-проект, работающий на программном обеспечении MediaWiki.
 
 Чтобы экспортировать статьи, введите их наименования в поле редактирования, одно название на строку, и выберите хотите ли вы экспортировать всю историю изменений статей или только последние версии статей.
@@ -2896,6 +2900,9 @@ $1',
 'show-big-image-thumb' => '<small>Размер при предпросмотре: $1 × $2 пикселов</small>',
 'file-info-gif-looped' => 'закольцованный',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|фрейм|фрейма|фреймов}}',
+'file-info-png-looped' => 'закольцованный',
+'file-info-png-repeat' => 'проигрывается $1 {{PLURAL:$1|раз|раза|раз}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|кадр|кадра|кадров}}',
 
 # Special:NewFiles
 'newimages'             => 'Галерея новых файлов',
@@ -3498,6 +3505,15 @@ $1',
 'tags-edit'               => 'править',
 'tags-hitcount'           => '$1 {{PLURAL:$1|изменение|изменения|изменений}}',
 
+# Special:ComparePages
+'comparepages'     => 'Сравнение страниц',
+'compare-selector' => 'Сравнение версий страниц',
+'compare-page1'    => 'Первая страница',
+'compare-page2'    => 'Вторая страница',
+'compare-rev1'     => 'Первая версия',
+'compare-rev2'     => 'Вторая версия',
+'compare-submit'   => 'Сравнить',
+
 # Database error messages
 'dberr-header'      => 'Эта вики испытывает затруднения',
 'dberr-problems'    => 'Извините! На данном сайте возникли технические трудности.',
@@ -3518,20 +3534,5 @@ $1',
 'htmlform-submit'              => 'Отправить',
 'htmlform-reset'               => 'Отменить изменения',
 'htmlform-selectorother-other' => 'Иное',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Добавить категорию',
-'ajax-add-category-submit'     => 'Добавить',
-'ajax-confirm-title'           => 'Подтвердить действие',
-'ajax-confirm-prompt'          => 'Ниже вы можете указать описание изменений.
-Нажмите «Сохранить», чтобы сохранить ваши изменения.',
-'ajax-confirm-save'            => 'Сохранить',
-'ajax-add-category-summary'    => 'Добавлена категория «$1»',
-'ajax-remove-category-summary' => 'Удалена категория «$1»',
-'ajax-confirm-actionsummary'   => 'Предпринимаемые действия:',
-'ajax-error-title'             => 'Ошибка',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Не удалось убрать эту категорию.
-Обычно это происходит в случае, когда категория была добавлена через шаблон.',
 
 );

@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -143,7 +143,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 
 		if ( is_null( $resultPageSet ) ) {
 			$count = 0;
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				if ( ++$count > $params['limit'] ) {
 					// We've reached the one extra which shows that
 					// there are additional pages to be had. Stop here...
@@ -165,7 +165,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		} else {
 			$titles = array();
 			$count = 0;
-			while ( $row = $db->fetchObject( $res ) ) {
+			foreach ( $res as $row ) {
 				if ( ++$count > $params['limit'] ) {
 					// We've reached the one extra which shows that
 					// there are additional pages to be had. Stop here...
@@ -178,8 +178,6 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 			}
 			$resultPageSet->populateFromTitles( $titles );
 		}
-
-		$db->freeResult( $res );
 	}
 
 	public function getAllowedParams() {

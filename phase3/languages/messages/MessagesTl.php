@@ -1039,11 +1039,11 @@ Tingnan ang [[Special:IPBlockList|talaan ng hinarang na/hinadlangang IP]] para s
 'revmove-reasonfield'          => 'Dahilan:',
 'revmove-titlefield'           => 'Puntiryang pahina:',
 'revmove-badparam-title'       => 'Masamang mga parametro',
-'revmove-badparam'             => '<span class="error">Naglalaman ang kahilingan mo ng ilegal o hindi sapat na mga parametro.  Pakipindot ang "bumalik" at subukan uli.</span>',
+'revmove-badparam'             => 'Naglalaman ang kahilingan mo ng ilegal o hindi sapat na mga parametro.  Pakipindot ang "bumalik" at subukan uli.',
 'revmove-norevisions-title'    => 'Hindi tanggap na puntiryang pagbabago',
-'revmove-norevisions'          => '<span class="error">Hindi ka tumukoy ng isa o higit pang puntiryang mga pagbabago upang magampanan ang tungkuling ito o hindi umiiral ang tinukoy na pagbabago.</span>',
+'revmove-norevisions'          => 'Hindi ka tumukoy ng isa o higit pang puntiryang mga pagbabago upang magampanan ang tungkuling ito o hindi umiiral ang tinukoy na pagbabago.',
 'revmove-nullmove-title'       => 'Masamang pamagat',
-'revmove-nullmove'             => '<span class="error">Magakawangis ang pahinang pinagmulan at puntirya.  Pakipindot ang "bumalik" at maglagay ng isang pahinang naiiba sa "$1".</span>',
+'revmove-nullmove'             => 'Magakawangis ang pahinang pinagmulan at puntirya.  Pakipindot ang "bumalik" at maglagay ng isang pahinang naiiba sa "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|Isang pagbabago mula sa [[$2]] ang|$1 mga pagbabago mula sa [[$2]] ang}} inilipat papunta sa umiiral na pahinang [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Isang pagbabago mula sa [[$2]] ang|$1 mga pagbabago mula sa [[$2]] ang}} nailipat papunta sa bagong-likhang pahinang [[$3]].',
 
@@ -3403,20 +3403,5 @@ Ipasok ang pangalan ng talaksan na wala ang unlaping \"{{ns:image}}:\".",
 'htmlform-submit'              => 'Ipasa',
 'htmlform-reset'               => 'Bawiin ang mga pagbabago',
 'htmlform-selectorother-other' => 'Iba pa',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Magdagdag ng kategorya',
-'ajax-add-category-submit'     => 'Idagdag',
-'ajax-confirm-title'           => 'Tiyakin ang galaw',
-'ajax-confirm-prompt'          => 'Maaari kang magbigay ng buod ng pagbabago sa ibaba.
-Pindutin ang "Itala"upang maitala ang iyong pagbabago.',
-'ajax-confirm-save'            => 'Sagipin',
-'ajax-add-category-summary'    => 'Idagdag ang kategoryang "$1"',
-'ajax-remove-category-summary' => 'Tanggalin ang kategoryang "$1"',
-'ajax-confirm-actionsummary'   => 'Ang gagawing galaw:',
-'ajax-error-title'             => 'Kamalian',
-'ajax-error-dismiss'           => 'Okey',
-'ajax-remove-category-error'   => 'Hindi naging maaari ang pagtanggal ng ganitong kategorya.
-Karaniwang nagaganap ito kapag nadaragdag ang kategorya sa pahinang nasa loob ng isang suleras.',
 
 );

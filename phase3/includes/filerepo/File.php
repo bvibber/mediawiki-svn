@@ -460,7 +460,7 @@ abstract class File {
 			return null;
 		}
 		$extension = $this->getExtension();
-		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType() );
+		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType(), $params );
 		$thumbName = $this->handler->makeParamString( $params ) . '-' . $this->getName();
 		if ( $thumbExt != $extension ) {
 			$thumbName .= ".$thumbExt";
@@ -911,7 +911,8 @@ abstract class File {
 	 * @return bool
 	 */
 	function isLocal() {
-		return $this->getRepoName() == 'local';
+		$repo = $this->getRepo();
+		return $repo && $repo->isLocal();
 	}
 
 	/**

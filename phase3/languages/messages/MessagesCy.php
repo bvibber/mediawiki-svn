@@ -10,6 +10,7 @@
  * @author Lloffiwr
  * @author Thaf
  * @author Urhixidur
+ * @author Xxglennxx
  * @author לערי ריינהארט
  */
 
@@ -272,31 +273,32 @@ $messages = array(
 'faqpage'        => 'Project:Cwestiynau cyffredin',
 
 # Vector skin
-'vector-action-addsection'   => 'Ychwanegu adran',
-'vector-action-delete'       => 'Dileu',
-'vector-action-move'         => 'Symud',
-'vector-action-protect'      => 'Diogelu',
-'vector-action-undelete'     => 'Adfer',
-'vector-action-unprotect'    => 'Dad-ddiogelu',
-'vector-namespace-category'  => 'Categori',
-'vector-namespace-help'      => 'Tudalen gymorth',
-'vector-namespace-image'     => 'Ffeil',
-'vector-namespace-main'      => 'Tudalen',
-'vector-namespace-media'     => 'Tudalen cyfrwng',
-'vector-namespace-mediawiki' => 'Neges',
-'vector-namespace-project'   => 'Tudalen brosiect',
-'vector-namespace-special'   => 'Tudalen arbennig',
-'vector-namespace-talk'      => 'Sgwrs',
-'vector-namespace-template'  => 'Nodyn',
-'vector-namespace-user'      => 'Tudalen defnyddiwr',
-'vector-view-create'         => 'Dechrau',
-'vector-view-edit'           => 'Golygu',
-'vector-view-history'        => 'Gweld yr hanes',
-'vector-view-view'           => 'Darllen',
-'vector-view-viewsource'     => 'Dagos côd y dudalen',
-'actions'                    => 'Gweithrediadau',
-'namespaces'                 => 'Parthau',
-'variants'                   => 'Amrywiolion',
+'vector-action-addsection'       => 'Ychwanegu adran',
+'vector-action-delete'           => 'Dileu',
+'vector-action-move'             => 'Symud',
+'vector-action-protect'          => 'Diogelu',
+'vector-action-undelete'         => 'Adfer',
+'vector-action-unprotect'        => 'Dad-ddiogelu',
+'vector-namespace-category'      => 'Categori',
+'vector-namespace-help'          => 'Tudalen gymorth',
+'vector-namespace-image'         => 'Ffeil',
+'vector-namespace-main'          => 'Tudalen',
+'vector-namespace-media'         => 'Tudalen cyfrwng',
+'vector-namespace-mediawiki'     => 'Neges',
+'vector-namespace-project'       => 'Tudalen brosiect',
+'vector-namespace-special'       => 'Tudalen arbennig',
+'vector-namespace-talk'          => 'Sgwrs',
+'vector-namespace-template'      => 'Nodyn',
+'vector-namespace-user'          => 'Tudalen defnyddiwr',
+'vector-simplesearch-preference' => 'Galluogi awgrymiadau chwilio uwch (gwedd Vector yn unig)',
+'vector-view-create'             => 'Dechrau',
+'vector-view-edit'               => 'Golygu',
+'vector-view-history'            => 'Gweld yr hanes',
+'vector-view-view'               => 'Darllen',
+'vector-view-viewsource'         => 'Dagos côd y dudalen',
+'actions'                        => 'Gweithrediadau',
+'namespaces'                     => 'Parthau',
+'variants'                       => 'Amrywiolion',
 
 'errorpagetitle'    => 'Gwall',
 'returnto'          => 'Dychwelyd at $1.',
@@ -645,7 +647,7 @@ Gall fod eich bod wedi llwyddo newid eich cyfrinair eisoes neu eich bod wedi gof
 'missingsummary'                   => "'''Sylwer:''' Nid ydych wedi gosod nodyn yn y blwch 'Crynodeb'.
 Os y pwyswch eto ar 'Cadw'r dudalen' caiff y golygiad ei gadw heb nodyn.",
 'missingcommenttext'               => 'Rhowch eich sylwadau isod.',
-'missingcommentheader'             => "'''Nodyn:''' Nid ydych wedi cynnig unrhywbeth yn y blwch 'Pwnc/Pennawd:'. Os y cliciwch 'Cadw'r dudalen' eto fe gedwir y golygiad heb bennawd.",
+'missingcommentheader'             => "'''Nodyn:''' Nid ydych wedi cynnig unrhywbeth yn y blwch 'Pwnc/Pennawd:'. Os y cliciwch \"{{int:savearticle}}\" eto fe gedwir y golygiad heb bennawd.",
 'summary-preview'                  => "Rhagolwg o'r crynodeb:",
 'subject-preview'                  => 'Rhagolwg pwnc/pennawd:',
 'blockedtitle'                     => "Mae'r defnyddiwr hwn wedi cael ei flocio",
@@ -967,11 +969,20 @@ Edrychwch ar y logiau er mwyn cael rhagor o wybodaeth.",
 Gallwch weld rhestr y gwaharddiadau a'r blociau gweithredol ar y [[Special:IPBlockList|rhestr blociau IP]].",
 
 # Revision move
-'moverevlogentry'        => 'wedi symud {{PLURAL:$3||un diwygiad|$3 ddiwygiad|$3 diwygiad|$3 diwygiad|$3 diwygiad}} o $1 i $2',
-'revisionmove'           => 'Symud diwygiadau oddi wrth "$1"',
-'revmove-reasonfield'    => 'Rheswm:',
-'revmove-badparam-title' => 'Paramedrau gwallus',
-'revmove-nullmove-title' => 'Teitl gwallus',
+'moverevlogentry'              => 'wedi symud {{PLURAL:$3||un diwygiad|$3 ddiwygiad|$3 diwygiad|$3 diwygiad|$3 diwygiad}} o $1 i $2',
+'revisionmove'                 => 'Symud diwygiadau oddi wrth "$1"',
+'revmove-explain'              => "Caiff y diwygiadau hyn eu symud o $1 i dudalen y cyrchfan a benwyd. Os nad yw'r cyrchfan yn bodoli, fe gaiff ei greu. Fel arall, caiff y diwygiadau eu cyfuno gyda hanes y dudalen.",
+'revmove-legend'               => 'Gosod crynodeb a thudalen y cyrchfan',
+'revmove-submit'               => "Symud y diwygiadau i'r dudalen dewisedig",
+'revisionmoveselectedversions' => 'Symud y diwygiadau dewisedig',
+'revmove-reasonfield'          => 'Rheswm:',
+'revmove-titlefield'           => 'Tudalen y cyrchfan:',
+'revmove-badparam-title'       => 'Paramedrau gwallus',
+'revmove-badparam'             => 'Mae eich cais yn cynnwys paramedrau annigonol neu anghyfreithlon. Pwyswch y botwm "Nôl" a rhowch gynnig arall arni.',
+'revmove-norevisions-title'    => 'Penwyd diwygiad annilys',
+'revmove-norevisions'          => "Rydych chi heb enwi un neu ragor o ddiwygiadau'r cyrchfan i wneud y swyddogaeth hon neu nad yw'r diwygiad dan sylw'n bodoli.",
+'revmove-nullmove-title'       => 'Teitl gwallus',
+'revmove-nullmove'             => 'Mae\'r un enw ar dudalennau\'r ffynhonnell a\'r cyrchfan. Pwyswch y botwm "Nôl" a phennwch enw tudalen heblaw "$1".',
 
 # History merging
 'mergehistory'                     => 'Cyfuno hanesion y tudalennau',
@@ -2186,6 +2197,7 @@ $1',
 Mae'r cofnod diweddaraf yn y lòg blocio i'w weld isod:",
 'sp-contributions-search'              => 'Chwilio am gyfraniadau',
 'sp-contributions-username'            => 'Cyfeiriad IP neu enw defnyddiwr:',
+'sp-contributions-toponly'             => 'Dangos y diwygiadau diweddaraf yn unig',
 'sp-contributions-submit'              => 'Chwilier',
 
 # What links here
@@ -2695,6 +2707,9 @@ Mae'n bosib y bydd eich cyfrifiadur yn cael ei danseilio wrth ddefnyddio'r ffeil
 'show-big-image-thumb' => '<small>Maint y rhagolwg: $1 × $2 picsel</small>',
 'file-info-gif-looped' => 'dolennog',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|ffrâm}}',
+'file-info-png-looped' => 'dolennog',
+'file-info-png-repeat' => "wedi'i chwarae {{PLURAL:$1||unwaith|ddwywaith|deirgwaith|$1 gwaith|$1 gwaith}}",
+'file-info-png-frames' => '$1 {{PLURAL:$1|ffrâm}}',
 
 # Special:NewFiles
 'newimages'             => 'Oriel y ffeiliau newydd',
@@ -3229,6 +3244,15 @@ Rhowch enw\'r ffeil heb y rhagddodiad "{{ns:file}}:".',
 'tags-edit'               => 'golygu',
 'tags-hitcount'           => '$1 {{PLURAL:$1|newid}}',
 
+# Special:ComparePages
+'comparepages'     => 'Cymharu tudalennau',
+'compare-selector' => "Cymharu diwygiadau gwahanol o'r dudalen",
+'compare-page1'    => 'Tudalen 1',
+'compare-page2'    => 'Tudalen 2',
+'compare-rev1'     => 'Diwygiad 1',
+'compare-rev2'     => 'Diwygiad 2',
+'compare-submit'   => 'Cymharer',
+
 # Database error messages
 'dberr-header'      => 'Mae problem gan y wici hwn',
 'dberr-problems'    => "Mae'n ddrwg gennym! Mae'r wefan hon yn dioddef anawsterau technegol.",
@@ -3249,20 +3273,5 @@ Rhowch enw\'r ffeil heb y rhagddodiad "{{ns:file}}:".',
 'htmlform-submit'              => 'Gosoder',
 'htmlform-reset'               => 'Datod y newidiadau',
 'htmlform-selectorother-other' => 'Arall',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Ychwanegu categori',
-'ajax-add-category-submit'     => 'Ychwanegu',
-'ajax-confirm-title'           => "Cadarnhau'r weithred",
-'ajax-confirm-prompt'          => 'Gallwch ysgrifennu crynodeb o\'r golygiad isod.
-Pwyswch ar "Cadw" i roi\'ch golygiad ar gadw.',
-'ajax-confirm-save'            => 'Cadw',
-'ajax-add-category-summary'    => 'Ychwanegu\'r categori "$1"',
-'ajax-remove-category-summary' => 'Tynnu\'r categori "$1"',
-'ajax-confirm-actionsummary'   => 'Dewiswch weithred:',
-'ajax-error-title'             => 'Gwall',
-'ajax-error-dismiss'           => 'Iawn',
-'ajax-remove-category-error'   => "Nid oedd yn bosibl tynnu'r categori hwn i ffwrdd.
-Mae hyn fel arfer yn golygu bod y categori wedi ei gynnwys yn y dudalen oddi mewn i nodyn.",
 
 );

@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -53,7 +53,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 		
 		$params = $this->extractRequestParams();
 
-		$user = ApiQueryWatchlist::getWatchlistUser( $params );
+		$user = $this->getWatchlistUser( $params );
 
 		$prop = array_flip( (array)$params['prop'] );
 		$show = array_flip( (array)$params['show'] );
@@ -96,7 +96,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 		$db = $this->getDB();
 		$titles = array();
 		$count = 0;
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				$this->setContinueEnumParameter( 'continue', $row->wl_namespace . '|' .
@@ -170,7 +170,10 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 			'continue' => 'When more results are available, use this to continue',
 			'namespace' => 'Only list pages in the given namespace(s)',
 			'limit' => 'How many total results to return per request',
-			'prop' => 'Which additional properties to get (non-generator mode only)',
+			'prop' => array(
+				'Which additional properties to get (non-generator mode only)',
+				' changed  - Adds timestamp of when the user was last notified about the edit',
+			),
 			'show' => 'Only list items that meet these criteria',
 			'owner' => 'The name of the user whose watchlist you\'d like to access',
 			'token' => 'Give a security token (settable in preferences) to allow access to another user\'s watchlist',

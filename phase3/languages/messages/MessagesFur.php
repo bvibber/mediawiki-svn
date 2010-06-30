@@ -416,7 +416,7 @@ La tô identitât e je stade creade. No stâ dismenteâti di gambiâ lis prefere
 'yourname'                => 'Non utent',
 'yourpassword'            => 'Peraule clâf',
 'yourpasswordagain'       => 'Torne a scrivile',
-'remembermypassword'      => 'Visiti di me',
+'remembermypassword'      => 'Visiti di me di une session a chê altre (fin a $1 {{PLURAL:$1|zornade|zornadis}})',
 'yourdomainname'          => 'Il to domini',
 'login'                   => 'Jentre',
 'nav-login-createaccount' => 'Regjistriti o jentre',
@@ -1675,16 +1675,5 @@ Se il file al è stât cambiât rispiet al so stât origjinâl, cualchi informaz
 # HTML forms
 'htmlform-submit'              => 'Invie',
 'htmlform-selectorother-other' => 'Altris',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Zonte categorie',
-'ajax-add-category-submit'     => 'Zonte',
-'ajax-confirm-title'           => "Conferme l'azion",
-'ajax-confirm-save'            => 'Salve',
-'ajax-add-category-summary'    => "Zonte la categorie ''$1''",
-'ajax-remove-category-summary' => "Gjave la categorie ''$1''",
-'ajax-confirm-actionsummary'   => 'Azion di cjapâ:',
-'ajax-error-title'             => 'Erôr',
-'ajax-error-dismiss'           => 'Va ben',
 
 );

@@ -135,7 +135,7 @@ $messages = array(
 'tog-editsection'             => 'Wezesha sehemu ya kuandikia kwa kutumia viungo vya [hariri]',
 'tog-editsectiononrightclick' => 'Wezesha sehemu ya kuandikia kwa kubonyeza kitufe cha kulia cha puku yako juu ya sehemu ya majina husika (JavaScript)',
 'tog-showtoc'                 => 'Onyesha mistari ya yaliyomo (kwa kila kurasa iliyo na zaidi ya vichwa vya habari 3)',
-'tog-rememberpassword'        => 'Kumbuka kuingia kwangu katika kompyuta hii',
+'tog-rememberpassword'        => 'Kumbuka jina langu la kuingia pamoja na neno la siri katika tarakalishi hii (kwa muda usiozidi {{PLURAL:$1|siku}} $1)',
 'tog-watchcreations'          => 'Weka kurasa nilizoumba katika maangalizi yangu',
 'tog-watchdefault'            => 'Weka kurasa zote nilizohariri katika maangalizi yangu',
 'tog-watchmoves'              => 'Weka kurasa zote nilizohamisha katika maangalizi yangu',
@@ -241,7 +241,7 @@ $messages = array(
 'hidden-categories'              => '{{PLURAL:$1|Jamii iliofichwa|Jamii zilizofichwa}}',
 'hidden-category-category'       => 'Jamii zilizofichwa',
 'category-subcat-count'          => '{{PLURAL:$2|Jamii hii ina kijamii hiki tu.|Jamii hii ina {{PLURAL:$1|kijamii kifuatacho|vijamii $1 vifuatavyo}}, kati ya jumla ya $2.}}',
-'category-subcat-count-limited'  => 'Jamii hii ina {{PLURAL:$1|kijamii hiki tu|vijamii $2 vifuatavyo}}.',
+'category-subcat-count-limited'  => 'Jamii hii ina {{PLURAL:$1|kijamii hiki tu|vijamii $1 vifuatavyo}}.',
 'category-article-count'         => '{{PLURAL:$2|Jamii hii ina ukurasa ufuatao tu.|Jamii hii ina {{PLURAL:$1|ukurasa ufuatao|kurasa $1 zifuatazo}}, kati ya jumla ya $2.}}',
 'category-article-count-limited' => '{{PLURAL:$1|Ukurasa ufuatao upo|Kurasa $1 zifuatazo zipo}} kati ya kurasa za jamii hii.',
 'category-file-count'            => '{{PLURAL:$2|Jamii hii ina faili hili tu.|{{PLURAL:$1|Faili linalofuata limo|Mafaili $1 yanayofuata yamo}} katika jamii hii, kati ya jumla ya $2.}}',
@@ -282,11 +282,11 @@ $messages = array(
 
 # Vector skin
 'vector-action-addsection'   => 'Weka mada',
-'vector-action-delete'       => 'Kufuta',
-'vector-action-move'         => 'Kusogeza',
-'vector-action-protect'      => 'Kulinda',
-'vector-action-undelete'     => 'Kurudisha',
-'vector-action-unprotect'    => 'Kuondoa tunzo',
+'vector-action-delete'       => 'Futa',
+'vector-action-move'         => 'Hamisha',
+'vector-action-protect'      => 'Linda',
+'vector-action-undelete'     => 'Rudisha',
+'vector-action-unprotect'    => 'Ondoa tunzo',
 'vector-namespace-category'  => 'Jamii',
 'vector-namespace-help'      => 'Ukurasa wa msaada',
 'vector-namespace-image'     => 'Faili',
@@ -298,10 +298,10 @@ $messages = array(
 'vector-namespace-talk'      => 'Majadiliano',
 'vector-namespace-template'  => 'Kigezo',
 'vector-namespace-user'      => 'Ukurasa wa mtumiaji',
-'vector-view-create'         => 'Kuanzisha',
-'vector-view-edit'           => 'Kuhariri',
-'vector-view-history'        => 'Kufungua historia',
-'vector-view-view'           => 'Kusoma',
+'vector-view-create'         => 'Anzisha',
+'vector-view-edit'           => 'Hariri',
+'vector-view-history'        => 'Fungua historia',
+'vector-view-view'           => 'Soma',
 'vector-view-viewsource'     => 'Kuonyesha kodi',
 'actions'                    => 'Vitendo',
 'namespaces'                 => 'Maeneo ya wiki',
@@ -531,7 +531,7 @@ Usisahau kubadilisha mapendekezo yako ya [[Special:Preferences|{{SITENAME}}]].',
 'yourname'                   => 'Jina la mtumiaji:',
 'yourpassword'               => 'Neno la siri:',
 'yourpasswordagain'          => 'Andika tena neno la siri',
-'remembermypassword'         => 'Nikumbuke katika tarakilishi hii',
+'remembermypassword'         => 'Nikumbuke katika tarakilishi hii (kwa muda usiozidi {{PLURAL:$1|siku}} $1)',
 'yourdomainname'             => 'Tovuti yako:',
 'externaldberror'            => 'Huenda kulikuwa na hitilafu ya database au labda hauruhusiwi kubadilisha akaunti yako ya nje.',
 'login'                      => 'Ingia',
@@ -1045,7 +1045,7 @@ Yalipatikana majibu mengi mno, kwa hiyo tafadhali jaribu ulizo mwingine',
 'searchrelated'                    => 'zingine zinazofanana',
 'searchall'                        => 'zote',
 'showingresults'                   => "{{PLURAL:$1|Tokeo '''1''' linaonyeshwa|matokeo '''$1''' yanaonyeshwa}} chini, kuanzia na namba '''$2'''.",
-'showingresultsnum'                => "{{PLURAL:$1|Tokeo '''1''' linaonyeshwa|Matokeo '''$1''' yanaonyeshwa}} chini, kuanzia na namba '''$2'''.",
+'showingresultsnum'                => "{{PLURAL:$3|Tokeo '''1''' linaonyeshwa|Matokeo '''$3''' yanaonyeshwa}} chini, kuanzia na namba '''$2'''.",
 'showingresultsheader'             => "{{PLURAL:$5|Tokeo '''$1''' kati ya jumla ya '''$3'''|Matokeo '''$1 - $2''' kati ya jumla ya '''$3'''}} kutokana na kuitafuta '''$4'''",
 'nonefound'                        => "'''Zingatia''': Utafutaji wa msingi unatafuta kwenye maeneo machache ya wiki tu.
 Ukitaka kutafuta kwenye maeneo yote (pamoja na kurasa za majadiliano, vigezo, nk) andika ''all:'' mwanzoni mwa kisanduku. Ukitaka kutafuta kwenye eneo linaloitwa ''fulani'' andika ''fulani:'' mwanzoni mwa kisanduku.",
@@ -1114,7 +1114,7 @@ Ujue lakini kwamba kumbukumbu za {{SITENAME}} kule Google labda zilipitwa na wak
 Kwenye kurasa za mabadiliko ya karibuni, za historia ya ukurasa, na za kumbukumbu.',
 'prefs-help-watchlist-token'    => 'Ukiandika ufunguo wa siri kwenye kisanduku hiki, programu itaanzisha tawanyiko la RSS kwa ajili ya maangalizi yako.
 Mtu wowote anayejua ufunguo wa siri huu ataweza kusoma orodha yako ya maangalizi, kwa hiyo chagua ufunguo salama. 
-Hapo kuna ufunguo uliotolewa na programu kwa kubahatisha, ambao unaweza kuutumia: %1',
+Hapo kuna ufunguo uliotolewa na programu kwa kubahatisha, ambao unaweza kuutumia: $1',
 'savedprefs'                    => 'Mapendekezo yako yamehifadhiwa.',
 'timezonelegend'                => 'Ukanda saa:',
 'localtime'                     => 'Saa ya kwetu:',
@@ -1224,9 +1224,9 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'right-createtalk'           => 'Kuanzisha kurasa za majadiliano',
 'right-createaccount'        => 'Kufungua akaunti mpya za watumiaji',
 'right-minoredit'            => 'Kutia alama kwamba badiliko ni dogo',
-'right-move'                 => 'Kusogeza kurasa',
-'right-move-subpages'        => 'Kusogeza kurasa pamoja na kurasa zake ndogo',
-'right-movefile'             => 'Kusogeza mafaili',
+'right-move'                 => 'Kuhamisha kurasa',
+'right-move-subpages'        => 'Kuhamisha kurasa pamoja na kurasa zake ndogo',
+'right-movefile'             => 'Kuhamisha mafaili',
 'right-upload'               => 'Kupakia mafaili',
 'right-reupload'             => 'Kuandikiza mafaili yaliyopo tayari',
 'right-reupload-own'         => 'Kuandikiza mafaili yaliyopakizwa na mimi mwenyewe',
@@ -1248,7 +1248,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'right-userrights-interwiki' => 'Kuhariri wezo za watumiaji kwenye wiki zingine',
 'right-siteadmin'            => 'Kufunga na kufungua hifadhidata',
 'right-sendemail'            => 'Kutuma barua-pepe kwa watumiaji wengine',
-'right-revisionmove'         => 'Kusogeza mapitio',
+'right-revisionmove'         => 'Kuhamisha mapitio',
 
 # User rights log
 'rightslog'      => 'Kumbukumbu za vyeo vya watumiaji',
@@ -1263,9 +1263,9 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'action-createtalk'           => 'kuanzisha kurasa za majadiliano',
 'action-createaccount'        => 'kusajili akaunti hii ya mtumiaji',
 'action-minoredit'            => 'kutia alama ya badiliko dogo',
-'action-move'                 => 'kusogeza ukurasa huu',
-'action-move-subpages'        => 'kusogeza ukurasa huu, pamoja na kurasa zake ndogo',
-'action-movefile'             => 'kusogeza faili hili',
+'action-move'                 => 'kuhamisha ukurasa huu',
+'action-move-subpages'        => 'kuhamisha ukurasa huu, pamoja na kurasa zake ndogo',
+'action-movefile'             => 'kuhamisha faili hili',
 'action-upload'               => 'kupakia faili hili',
 'action-reupload'             => 'kuandikiza faili lililopo tayari',
 'action-upload_by_url'        => 'kupakia faili hili kutoka kwa gombo wavu',
@@ -1282,7 +1282,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'action-userrights'           => 'kubadilisha wezo zote za watumiaji',
 'action-userrights-interwiki' => 'kuhariri wezo za watumiaji kwenye wiki zingine',
 'action-siteadmin'            => 'kufunga na kufungua hifadhidata',
-'action-revisionmove'         => 'kusogeza mapitio',
+'action-revisionmove'         => 'kuhamisha mapitio',
 
 # Recent changes
 'nchanges'                          => '{{PLURAL:$1|badiliko|mabadiliko}} $1',
@@ -1301,7 +1301,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'rcnotefrom'                        => "Hapo chini yaonekana mabadiliko tangu '''$2''' (tunaonyesha hadi '''$1''').",
 'rclistfrom'                        => 'Onyesha mabadiliko mapya kuanzia $1',
 'rcshowhideminor'                   => '$1 mabadiliko madogo',
-'rcshowhidebots'                    => '$1 roboti',
+'rcshowhidebots'                    => 'roboti $1',
 'rcshowhideliu'                     => '$1 watumiaji sasa',
 'rcshowhideanons'                   => '$1 watumiaji bila majina',
 'rcshowhidepatr'                    => '$1 masahihisho yanayofanywa doria',
@@ -1341,7 +1341,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'uploaderror'             => 'Hitilafu ya kupia',
 'upload-recreate-warning' => "'''Ilani: Faili lenye jina hilo limeshafutwa au limeshasogezwa.'''
 
-Rejea kumbukumbu za kufuta au kusogeza ukurasa huu zinazotolewa chini:",
+Rejea kumbukumbu za kufuta au kuhamisha ukurasa huu zinazotolewa chini:",
 'uploadtext'              => "Tumia fomu hapo chini kwa kupakizia mafaili.
 Kwa kutazama au kutafuta faili zilizopakiwa awali, tafadhali nenda kwenye [[Special:FileList|orodha ya mafaili yaliyopakiwa]]. Kwa zile faili ambazo zishapitiwa, basi angalia [[Special:Log/upload|kumbukumbu ya mafaili]]. Kwa mafaili yaliyofutwa, tafadhali [[Special:Log/delete|tazama hapa]].
 
@@ -1838,7 +1838,7 @@ Hivi ni vipimo kwa ukurasa '''$1''':",
 
 # Restrictions (nouns)
 'restriction-edit'   => 'Kuhariri',
-'restriction-move'   => 'Kusogeza',
+'restriction-move'   => 'Kuhamisha',
 'restriction-create' => 'Kuanzisha',
 'restriction-upload' => 'Kupakia',
 
@@ -1980,7 +1980,7 @@ Kama tayari kuna ukurasa au ukifuta tiki, itabidi usogeze au uunganishe ukurasa 
 'newtitle'                => 'Kuelekeza jina jipya:',
 'move-watch'              => 'Fuatilia ukurasa huu',
 'movepagebtn'             => 'Sogeza ukurasa',
-'pagemovedsub'            => 'Umefaulu kusogeza ukurasa',
+'pagemovedsub'            => 'Umefaulu kuhamisha ukurasa',
 'movepage-moved'          => '\'\'\'"$1" imesogezwa kwenye "$2"\'\'\'',
 'articleexists'           => 'Tayari kuna ukurasa wenye jina hilo, au
 jina ulilochagua ni batilifu.
@@ -1993,7 +1993,7 @@ Chagua jina lengine.',
 'movelogpage'             => 'Kumbukumbu ya uhamiaji',
 'movereason'              => 'Sababu:',
 'revertmove'              => 'rejesha',
-'delete_and_move'         => 'Kufuta na kusogeza',
+'delete_and_move'         => 'Kufuta na kuhamisha',
 'delete_and_move_confirm' => 'Ndiyo, ukurasa ufutwe',
 
 # Export
@@ -2155,7 +2155,7 @@ Ukilitekeleza faili, mashine yako huenda ikawa matatani.<hr />',
 'newimages-summary'     => 'Ukurasa maalum huu unaonyesha mafaili yaliyopakiwa hivi karibuni.',
 'newimages-legend'      => 'Chuja',
 'newimages-label'       => 'Jina la faili (au sehemu yake):',
-'showhidebots'          => '($ 1 roboti)',
+'showhidebots'          => '(roboti $1)',
 'noimages'              => 'Hakuna picha.',
 'ilsubmit'              => 'Tafuta',
 'bydate'                => 'kwa tarehe',
@@ -2436,20 +2436,5 @@ Tovuti hii inapata matatatizo wakati huu.',
 # HTML forms
 'htmlform-reset'               => 'Tengua mabadiliko',
 'htmlform-selectorother-other' => 'Nyingine',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Ongeza jamii',
-'ajax-add-category-submit'     => 'Ongeza',
-'ajax-confirm-title'           => 'Uthibitishe kitendo',
-'ajax-confirm-prompt'          => 'Unaweza kuandika muhtasari wa sahihisho chini. 
-Bonyeza "Hifadhi" ili kuhifadhi sahihisho yako.',
-'ajax-confirm-save'            => 'Hifadhi',
-'ajax-add-category-summary'    => 'Ongeza jamii ya "$1"',
-'ajax-remove-category-summary' => 'Ondoa jamii ya "$1"',
-'ajax-confirm-actionsummary'   => 'Chagua kitendo:',
-'ajax-error-title'             => 'Hitilafu',
-'ajax-error-dismiss'           => 'Sawa',
-'ajax-remove-category-error'   => ' Jamii hii haikuweza kuondolewa.
-Huwa jamii haiwezi kuondolewa kwenye ukurasa wakati jamii imeingizwa ndani ya kigezo fulani.',
 
 );

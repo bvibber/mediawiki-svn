@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -57,7 +57,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		$params = $this->extractRequestParams();
 		
-		$user = ApiQueryWatchlist::getWatchlistUser( $params );
+		$user = $this->getWatchlistUser( $params );
 
 		if ( !is_null( $params['prop'] ) && is_null( $resultPageSet ) ) {
 			$prop = array_flip( $params['prop'] );
@@ -178,7 +178,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		$count = 0;
 		$res = $this->select( __METHOD__ );
 
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++ $count > $params['limit'] ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->rc_timestamp ) );
@@ -201,8 +201,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				}
 			}
 		}
-
-		$db->freeResult( $res );
 
 		if ( is_null( $resultPageSet ) ) {
 			$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'item' );
@@ -260,7 +258,9 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		}
 
 		if ( $this->fld_notificationtimestamp ) {
-			$vals['notificationtimestamp'] = ( $row->wl_notificationtimestamp == null ) ? '' : wfTimestamp( TS_ISO_8601, $row->wl_notificationtimestamp );
+			$vals['notificationtimestamp'] = ( $row->wl_notificationtimestamp == null ) 
+				? '' 
+				: wfTimestamp( TS_ISO_8601, $row->wl_notificationtimestamp );
 		}
 
 		if ( $this->fld_comment && isset( $row->rc_comment ) ) {
@@ -273,30 +273,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		}
 
 		return $vals;
-	}
-
-	/**
-	* Gets the user for whom to get the watchlist
-	*  
-	* @returns User
-	*/
-	public static function getWatchlistUser( $params ) {
-		global $wgUser;
-		if ( !is_null( $params['owner'] ) && !is_null( $params['token'] ) ) {
-			$user = User::newFromName( $params['owner'], false );
-			if ( !$user->getId() ) {
-				$this->dieUsage( 'Specified user does not exist', 'bad_wlowner' );
-			}
-			$token = $user->getOption( 'watchlisttoken' );
-			if ( $token == '' || $token != $params['token'] ) {
-				$this->dieUsage( 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences', 'bad_wltoken' );
-			}
-		} elseif ( !$wgUser->isLoggedIn() ) {
-			$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
-		} else {
-			$user = $wgUser;
-		}
-		return $user;
 	}
 
 	public function getAllowedParams() {
@@ -380,7 +356,19 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'excludeuser' => 'Don\'t list changes by this user',
 			'dir' => 'In which direction to enumerate pages',
 			'limit' => 'How many total results to return per request',
-			'prop' => 'Which additional items to get (non-generator mode only).',
+			'prop' => array(
+				'Which additional items to get (non-generator mode only).',
+				' ids                    - Adds revision ids and page ids',
+				' title                  - Adds title of the page',
+				' flags                  - Adds flags for the edit',
+				' user                   - Adds user who made the edit',
+				' comment                - Adds comment of the edit',
+				' parsedcomment          - Adds parsed comment of the edit',
+				' timestamp              - Adds timestamp of the edit',
+				' patrol                 - Tags edits that are patrolled',
+				' size                   - Adds the old and new lengths of the page',
+				' notificationtimestamp  - Adds timestamp of when the user was last notified about the edit',
+			),
 			'show' => array(
 				'Show only items that meet this criteria.',
 				"For example, to see only minor edits done by logged-in users, set {$this->getModulePrefix()}show=minor|!anon"

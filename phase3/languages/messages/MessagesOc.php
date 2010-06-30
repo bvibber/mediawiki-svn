@@ -303,7 +303,7 @@ $messages = array(
 'tog-editsection'             => 'Modificar una seccion via los ligams [modificar]',
 'tog-editsectiononrightclick' => 'Modificar una seccion en fasent un clic drech sus son títol (JavaScript)',
 'tog-showtoc'                 => "Afichar l'ensenhador (per las paginas de mai de 3 seccions)",
-'tog-rememberpassword'        => 'Se remembrar de mon senhal sus aqueste ordenador (cookie)',
+'tog-rememberpassword'        => 'Se remembrar de mon senhal sus aqueste ordenador (al maximum $1 {{PLURAL:$1|jorn|jorns}})',
 'tog-watchcreations'          => 'Apondre las paginas que creï a ma lista de seguiment',
 'tog-watchdefault'            => 'Apondre las paginas que modifiqui a ma lista de seguiment',
 'tog-watchmoves'              => 'Apondre las paginas que tòrni nomenar a ma lista de seguiment',
@@ -697,7 +697,7 @@ Doblidetz pas de personalizar vòstras [[Special:Preferences|{{SITENAME}} prefer
 'yourname'                   => "Vòstre nom d'utilizaire :",
 'yourpassword'               => 'Vòstre senhal :',
 'yourpasswordagain'          => 'Picatz vòstre senhal tornarmai :',
-'remembermypassword'         => 'Se remembrar de mon senhal (cookie)',
+'remembermypassword'         => 'Me reconnectar automaticament a las visitas venentas (al maximum $1 {{PLURAL:$1|jorn|jorns}})',
 'yourdomainname'             => 'Vòstre domeni',
 'externaldberror'            => 'Siá una error s’es producha amb la banca de donadas d’autentificacion extèrna, siá sètz pas autorizat a metre a jorn vòstre compte extèrne.',
 'login'                      => 'Identificacion',
@@ -3455,20 +3455,5 @@ Picatz lo nom del fichièr sens lo prefix « {{ns:file}}: ».',
 'htmlform-submit'              => 'Sometre',
 'htmlform-reset'               => 'Desfar las modificacions',
 'htmlform-selectorother-other' => 'Autre',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Apondre una categoria',
-'ajax-add-category-submit'     => 'Apondre',
-'ajax-confirm-title'           => "Confirmar l'accion",
-'ajax-confirm-prompt'          => 'Podètz provesir un resumit de la modificacion çaijós.
-Clicatz sus « Publicar » per enregistrar vòstra modificacion.',
-'ajax-confirm-save'            => 'Publicar',
-'ajax-add-category-summary'    => 'Apondre la categoria « $1 »',
-'ajax-remove-category-summary' => 'Levar la categoria « $1 »',
-'ajax-confirm-actionsummary'   => 'Accion de menar :',
-'ajax-error-title'             => 'Error',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Es pas estat possible de levar aquesta categoria.
-Aquò se produsís generalament quand la categoria es estada aponduda a la pagina via un modèl.',
 
 );

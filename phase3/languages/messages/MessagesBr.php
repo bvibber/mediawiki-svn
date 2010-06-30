@@ -652,7 +652,8 @@ Gortozit a-raok klask en-dro.",
 'anonpreviewwarning'               => "''N'oc'h ket kevreet. Enrollañ a lakao war-wel ho chomlec'h IP e istor kemmoù ar bajenn.''",
 'missingsummary'                   => "'''Taolit evezh:''' N'hoc'h eus ket lakaet tamm testenn diverrañ ebet evit ho kemmoù. Mar klikit war enrollañ en-dro, e vo enrollet ho testenn evel m'emañ hepmuiken.",
 'missingcommenttext'               => "Skrivit hoc'h evezhiadenn a-is.",
-'missingcommentheader'             => "'''Taolit evezh:''' N'hoc'h eus ket lakaet tamm danvez/titl ebet evit hoc'h evezhiadenn. Mar klikit war enrollañ en-dro, e vo enrollet ho testenn evel m'emañ hepmuiken.",
+'missingcommentheader'             => "'''Taolit evezh :''' N'hoc'h eus lakaet tamm danvez/titl ebet d'hoc'h evezhiadenn. 
+Mar klikit war \"{{int:savearticle}}\" en-dro, e vo enrollet ho testenn evel m'emañ hepmuiken.",
 'summary-preview'                  => 'Rakwelet an diverrañ :',
 'subject-preview'                  => 'Rakwelet danvez/titl :',
 'blockedtitle'                     => 'Implijer stanket',
@@ -743,9 +744,9 @@ Ma ne'z a ket en-dro c'hoazh, klaskit [[Special:UserLogout|digevreañ]] hag adke
 Mar ned a ket en-dro, klaskit [[Special:UserLogout|digevreañ]] ha kevreañ en-dro.",
 'token_suffix_mismatch'            => "'''Distaolet eo bet ar c'hemmoù degaset ganeoc'h abalamour ma oa bet kemmesket an arouezennoù poentadur gant ho merdeer en daveer kemmañ. Distaolet eo bet ar c'hemmoù kuit na vije breinet ar bajennad skrid.
 C'hoarvezout a ra a-wechoù pa implijit ur servijer proksi dreinek dizanav.'''",
-'editing'                          => "oc'h aozañ $1",
-'editingsection'                   => "oc'h aozañ $1 (rann)",
-'editingcomment'                   => "Oc'h kemmañ $1 (rann nevez)",
+'editing'                          => "Oc'h aozañ $1",
+'editingsection'                   => "Oc'h aozañ $1 (rann)",
+'editingcomment'                   => "Oc'h aozañ $1 (rann nevez)",
 'editconflict'                     => 'tabut kemmañ : $1',
 'explainconflict'                  => "<b>Enrollet eo bet ar bajenn-mañ war-lerc'h m'ho pefe kroget d'he c'hemmañ.
 E-krec'h an takad aozañ emañ an destenn evel m'emañ enrollet bremañ er bank roadennoù. Ho kemmoù deoc'h a zeu war wel en takad aozañ traoñ. Ret e vo deoc'h degas ho kemmoù d'an destenn zo evit poent. N'eus nemet an destenn zo en takad krec'h a vo saveteet.</b><br />",
@@ -1180,7 +1181,7 @@ Setu aze un dalvoudenn ganet dre zegouezh hag a c'hallfec'h implijout : $1",
 'yournick'                      => 'Sinadur :',
 'prefs-help-signature'          => 'Dleout a rafe an evezhiadennoù war ar pajennoù kaozeal bezañ sinet gant "<nowiki>~~~~</nowiki>" a vo treuzfurmet en ho sinadur hag euriet.',
 'badsig'                        => 'Direizh eo ho sinadur kriz; gwiriit ho palizennoù HTML.',
-'badsiglength'                  => "Sinadur re hir.
+'badsiglength'                  => "Re hir eo ho sinadur.
 Dre ret e rank bezañ nebeutoc'h eget {{PLURAL:$1|arouezenn|arouezenn}} ennañ.",
 'yourgender'                    => 'Jener :',
 'gender-unknown'                => 'Anresisaet',
@@ -1315,6 +1316,7 @@ Gallout a rit lezel tud all da vont e darempred ganeoc'h dre ho pajennoù implij
 'right-override-export-depth' => 'Ezporzhiañ ar pajennoù en ur lakaat e-barzh ar pajennoù liammet betek un donder a 5 live',
 'right-sendemail'             => "Kas ur postel d'an implijerien all",
 'right-revisionmove'          => "Dilec'hiañ an adweladennoù",
+'right-selenium'              => 'Seveniñ an testoù seleniom',
 
 # User rights log
 'rightslog'      => 'Marilh statud an implijerien',
@@ -2209,6 +2211,7 @@ $1',
 Dindan emañ merket enmont diwezhañ marilh ar stankadennoù, d'ho kelaouiñ :",
 'sp-contributions-search'              => 'Klask degasadennoù',
 'sp-contributions-username'            => "Anv implijer pe chomlec'h IP :",
+'sp-contributions-toponly'             => 'Na ziskouez nemet an adweladennoù diwezhañ',
 'sp-contributions-submit'              => 'Klask',
 
 # What links here
@@ -2744,6 +2747,9 @@ Ma vez erounezet ganeoc'h e c'hallje tagañ ho reizhiad.<hr />",
 'show-big-image-thumb' => '<small>Ment ar rakweled-mañ : $1 × $2 piksel</small>',
 'file-info-gif-looped' => "e kelc'h",
 'file-info-gif-frames' => '$1 {{PLURAL:$1|skeudenn|skeudenn}}',
+'file-info-png-looped' => "e kelc'h",
+'file-info-png-repeat' => 'lennet $1 {{PLURAL:$1|wezh|gwezh}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|skeudenn|skeudenn}}',
 
 # Special:NewFiles
 'newimages'             => 'Roll ar restroù nevez',
@@ -3141,6 +3147,7 @@ Kadarnait mar plij e fell deoc'h krouiñ ar pennad-mañ da vat.",
 'table_pager_first'        => 'Pajenn gentañ',
 'table_pager_last'         => 'Pajenn ziwezhañ',
 'table_pager_limit'        => 'Diskouez $1 elfenn dre bajenn',
+'table_pager_limit_label'  => "Disoc'hoù dre bajenn :",
 'table_pager_limit_submit' => 'Mont',
 'table_pager_empty'        => "Disoc'h ebet",
 
@@ -3297,6 +3304,15 @@ Merkañ anv ar restr hep ar rakger "{{ns:file}}:"',
 'tags-edit'               => 'aozañ',
 'tags-hitcount'           => '$1 {{PLURAL:$1|kemm|kemm}}',
 
+# Special:ComparePages
+'comparepages'     => 'Keñveriañ pajennoù',
+'compare-selector' => 'Keñveriañ stummoù ar pajennoù',
+'compare-page1'    => 'Pajenn 1',
+'compare-page2'    => 'Pajenn 2',
+'compare-rev1'     => 'Adweladenn 1',
+'compare-rev2'     => 'Adweladenn 2',
+'compare-submit'   => 'Keñveriañ',
+
 # Database error messages
 'dberr-header'      => 'ur gudenn zo gant ar viki-mañ',
 'dberr-problems'    => "Ho tigarez ! Kudennoù teknikel zo gant al lec'hienn-mañ.",
@@ -3317,20 +3333,5 @@ Merkañ anv ar restr hep ar rakger "{{ns:file}}:"',
 'htmlform-submit'              => 'Kas',
 'htmlform-reset'               => "Dizober ar c'hemmoù",
 'htmlform-selectorother-other' => 'Unan all',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Ouzhpennañ ur rummad',
-'ajax-add-category-submit'     => 'Ouzhpennañ',
-'ajax-confirm-title'           => 'Kadarnaat an oberiadenn',
-'ajax-confirm-prompt'          => 'Gallout a rit merkañ a-is un diverrañ eus ar c\'hemmoù degaset.
-Klikit war "Enrollañ da enrollañ ho degasadenn.',
-'ajax-confirm-save'            => 'Enrollañ',
-'ajax-add-category-summary'    => 'Ouzhpennañ ar rummad "$1"',
-'ajax-remove-category-summary' => 'Diverkañ ar rummad "$1"',
-'ajax-confirm-actionsummary'   => 'Tra da ober :',
-'ajax-error-title'             => 'Fazi',
-'ajax-error-dismiss'           => 'Mat eo',
-'ajax-remove-category-error'   => "N'eus ket bet gallet diverkañ ar rummad-mañ. 
-C'hoarvezout a ra p'eo bet ouzhpennet ar rummad er bajenn dre ur patrom",
 
 );

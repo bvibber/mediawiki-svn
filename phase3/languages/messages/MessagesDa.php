@@ -14,6 +14,7 @@
  * @author Christian List
  * @author EPO
  * @author Emilkris33
+ * @author Froztbyte
  * @author H92
  * @author Hylle
  * @author Jan Friberg
@@ -185,7 +186,7 @@ $messages = array(
 'tog-editsection'             => 'Redigér afsnit ved hjælp af [redigér]-henvisninger',
 'tog-editsectiononrightclick' => 'Redigér afsnit ved at højreklikke på deres titler (JavaScript)',
 'tog-showtoc'                 => 'Vis indholdsfortegnelse (på sider med mere end tre afsnit)',
-'tog-rememberpassword'        => 'Husk adgangskode til næste besøg fra denne computer',
+'tog-rememberpassword'        => 'Husk min adgangskode på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
 'tog-watchcreations'          => 'Tilføj sider jeg opretter til min overvågningsliste',
 'tog-watchdefault'            => 'Tilføj sider jeg redigerer til min overvågningsliste',
 'tog-watchmoves'              => 'Tilføj sider jeg flytter til min overvågningsliste',
@@ -325,31 +326,32 @@ $messages = array(
 'faqpage'        => 'Project:OSS',
 
 # Vector skin
-'vector-action-addsection'   => 'Nyt emne',
-'vector-action-delete'       => 'Slet',
-'vector-action-move'         => 'Flyt',
-'vector-action-protect'      => 'Beskyt',
-'vector-action-undelete'     => 'Gendan',
-'vector-action-unprotect'    => 'Fjern beskyttelse',
-'vector-namespace-category'  => 'Kategori',
-'vector-namespace-help'      => 'Hjælpeside',
-'vector-namespace-image'     => 'Fil',
-'vector-namespace-main'      => 'Side',
-'vector-namespace-media'     => 'Medieside',
-'vector-namespace-mediawiki' => 'Besked',
-'vector-namespace-project'   => 'Projektside',
-'vector-namespace-special'   => 'Specialside',
-'vector-namespace-talk'      => 'Diskussion',
-'vector-namespace-template'  => 'Skabelon',
-'vector-namespace-user'      => 'Brugerside',
-'vector-view-create'         => 'Opret',
-'vector-view-edit'           => 'Redigér',
-'vector-view-history'        => 'Se historik',
-'vector-view-view'           => 'Vis',
-'vector-view-viewsource'     => 'Se kilden',
-'actions'                    => 'Handlinger',
-'namespaces'                 => 'Navnerum',
-'variants'                   => 'Varianter',
+'vector-action-addsection'       => 'Nyt emne',
+'vector-action-delete'           => 'Slet',
+'vector-action-move'             => 'Flyt',
+'vector-action-protect'          => 'Beskyt',
+'vector-action-undelete'         => 'Gendan',
+'vector-action-unprotect'        => 'Fjern beskyttelse',
+'vector-namespace-category'      => 'Kategori',
+'vector-namespace-help'          => 'Hjælpeside',
+'vector-namespace-image'         => 'Fil',
+'vector-namespace-main'          => 'Side',
+'vector-namespace-media'         => 'Medieside',
+'vector-namespace-mediawiki'     => 'Besked',
+'vector-namespace-project'       => 'Projektside',
+'vector-namespace-special'       => 'Specialside',
+'vector-namespace-talk'          => 'Diskussion',
+'vector-namespace-template'      => 'Skabelon',
+'vector-namespace-user'          => 'Brugerside',
+'vector-simplesearch-preference' => 'Aktivér forbedrede søgeforslag (kun Vector-udseendet)',
+'vector-view-create'             => 'Opret',
+'vector-view-edit'               => 'Redigér',
+'vector-view-history'            => 'Se historik',
+'vector-view-view'               => 'Vis',
+'vector-view-viewsource'         => 'Se kilden',
+'actions'                        => 'Handlinger',
+'namespaces'                     => 'Navnerum',
+'variants'                       => 'Varianter',
 
 'errorpagetitle'    => 'Fejl',
 'returnto'          => 'Tilbage til $1.',
@@ -571,7 +573,7 @@ Din konto er blevet oprettet. Glem ikke at personliggøre dine [[Special:Prefere
 'yourname'                   => 'Dit brugernavn:',
 'yourpassword'               => 'Din adgangskode:',
 'yourpasswordagain'          => 'Gentag adgangskode',
-'remembermypassword'         => 'Husk min adgangskode til næste gang.',
+'remembermypassword'         => 'Husk mit brugernavn på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
 'yourdomainname'             => 'Dit domænenavn',
 'externaldberror'            => 'Der er opstået en fejl i en ekstern adgangsdatabase, eller du har ikke rettigheder til at opdatere denne.',
 'login'                      => 'Log på',
@@ -702,7 +704,7 @@ Du har muligvis allerede skiftet din adgangskode eller anmodet om en ny midlerti
 'anonpreviewwarning'               => "''Du er ikke logget ind. Hvis du gemmer, registreres din IP-adresse i versionshistorikken.''",
 'missingsummary'                   => "'''Påmindelse:''' Du har ikke angivet en redigeringsbeskrivelse. Hvis du igen trykker på \"Gem\", gemmes ændringerne uden en beskrivelse.",
 'missingcommenttext'               => 'Indtast venligst et resume.',
-'missingcommentheader'             => "'''BEMÆRK:''' du har ikke angivet en overskrift i feltet „Emne:“. Hvis du igen trykker på „Gem side“, gemmes bearbejdningen uden overskrift.",
+'missingcommentheader'             => "'''Bemærk:''' Du har ikke angivet en overskrift i feltet „Emne:“ for denne kommentar. Hvis du trykker „Gem side“ én gang til, gemmes dine ændringer uden overskrift.",
 'summary-preview'                  => 'Forhåndsvisning af beskrivelsen:',
 'subject-preview'                  => 'Forhåndsvisning af emnet:',
 'blockedtitle'                     => 'Brugeren er blokeret',
@@ -1027,13 +1029,19 @@ Se [[Special:IPBlockList|IP blokeringslisten]] for alle blokeringer.',
 
 # Revision move
 'moverevlogentry'              => 'flyttede ((plural: $ 3 | én revision | $ 3 revisioner)) fra $ 1 til $ 2',
-'revisionmove'                 => 'Flyt ændringer fra "$ 1"',
+'revisionmove'                 => 'Flyt ændringer fra "$1"',
 'revmove-explain'              => 'Følgende ændringer vil blive flyttet fra $ 1 til den angivne målside. Hvis målsiden ikke findes, vil den blive oprettet. Ellers vil disse revisioner blive flettet ind i sidens historik.',
+'revmove-legend'               => 'Sæt målside og opsummering',
+'revmove-submit'               => 'Flyt revisioner til den valgte side',
 'revisionmoveselectedversions' => 'Flyt valgte revisioner',
 'revmove-reasonfield'          => 'Begrundelse:',
 'revmove-titlefield'           => 'Målside:',
 'revmove-badparam-title'       => 'Forkerte parametre',
+'revmove-badparam'             => 'Din forespørgsel indeholder ugyldige eller utilstrækkelige parametre.
+Vend tilbage til forrige side og prøv igen.',
 'revmove-nullmove-title'       => 'Forkert titel',
+'revmove-nullmove'             => 'Slutsiden kan ikke være identisk med startsiden.
+Vend tilbage til forrige side og vælg et andet navn fra "$1".',
 
 # History merging
 'mergehistory'                     => 'Sammenflet sidehistorikker',
@@ -3124,6 +3132,7 @@ Bekræft venligst, at du virkelig vil oprette denne side igen.",
 'table_pager_first'        => 'Første side',
 'table_pager_last'         => 'Sidste side',
 'table_pager_limit'        => 'Vis $1 indførsler pr. side',
+'table_pager_limit_label'  => 'Elementer pr. side:',
 'table_pager_limit_submit' => 'Start',
 'table_pager_empty'        => 'Ingen resultater',
 
@@ -3260,6 +3269,12 @@ Denne side oplister de tags som programmet kan mærke en redigering med, og dere
 'tags-edit'               => 'Redigér',
 'tags-hitcount'           => '{{PLURAL:$1|en ændring|$1 ændringer}}',
 
+# Special:ComparePages
+'comparepages'   => 'Sammenlign sider',
+'compare-page1'  => 'Side 1',
+'compare-page2'  => 'Side 2',
+'compare-submit' => 'Sammenlign',
+
 # Database error messages
 'dberr-header'      => 'Wikien har et problem',
 'dberr-problems'    => 'Undskyld! Siden har tekniske problemer.',
@@ -3280,20 +3295,5 @@ Denne side oplister de tags som programmet kan mærke en redigering med, og dere
 'htmlform-submit'              => 'Gem',
 'htmlform-reset'               => 'Annuller ændringer',
 'htmlform-selectorother-other' => 'Anden',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Tilføj kategori',
-'ajax-add-category-submit'     => 'Tilføj',
-'ajax-confirm-title'           => 'Bekræft handling',
-'ajax-confirm-prompt'          => 'Du kan lave en redigeringsbeskrivelse nedenfor.
-Klik på "Gem" for at gemme redigeringen.',
-'ajax-confirm-save'            => 'Gem',
-'ajax-add-category-summary'    => 'Tilføj kategorien "$1"',
-'ajax-remove-category-summary' => 'Fjern kategorien "$1"',
-'ajax-confirm-actionsummary'   => 'Handling:',
-'ajax-error-title'             => 'Fejl',
-'ajax-error-dismiss'           => 'O.k.',
-'ajax-remove-category-error'   => 'Det var ikke muligt af fjerne kategorien.
-Det skyldes oftest at kategorien er blevet tilføjet til siden i en skabelon.',
 
 );

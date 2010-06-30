@@ -308,7 +308,7 @@ $messages = array(
 'tog-editsection'             => 'اسمح بـ تعديل الاجزاء عن طريق لينكات [تعديل]',
 'tog-editsectiononrightclick' => 'اسمح بـ تعديل الاجزاء لما تعمل right-click بـ الماوس على عناوين الاجزاء (بيحتاج JavaScript)',
 'tog-showtoc'                 => 'بين جدول المحتويات (بتاع الصفح اللى فيها اكتر من 3 عناوين)',
-'tog-rememberpassword'        => 'خليك فاكر دخولى على الكمبيوتر دا',
+'tog-rememberpassword'        => ' (لمدة   $1 {{PLURAL:$1|يوم|يوم}})خليك فاكر دخولى على الكمبيوتر دا',
 'tog-watchcreations'          => 'زوّد الصفح اللى ابتديتها على ليستة الصفح اللى باراقبها',
 'tog-watchdefault'            => 'زوّد الصفح اللى باعدلها على ليستة الصفح اللى باراقبها',
 'tog-watchmoves'              => 'زوّد الصفح اللى بانقلها على ليستة الصفح اللى باراقبها',
@@ -704,7 +704,7 @@ $2',
 'yourname'                   => 'اليوزرنيم:',
 'yourpassword'               => 'الباسوورد:',
 'yourpasswordagain'          => 'اكتب الباسورد تاني:',
-'remembermypassword'         => 'افتكر بيانات دخولى على  الكمبيوتر ده',
+'remembermypassword'         => ' (لمدة   $1 {{PLURAL:$1|يوم|يوم}})خليك فاكر دخولى على الكمبيوتر دا',
 'yourdomainname'             => 'النطاق بتاعك:',
 'externaldberror'            => 'يا إما فى حاجة غلط فى الدخول على قاعدة البيانات الخارجية أو انت مش مسموح لك تعمل تحديث لحسابك الخارجي.',
 'login'                      => 'دخول',
@@ -840,8 +840,8 @@ $2',
 'missingsummary'                   => "'''خد بالك:''' انت ما كتبتش ملخص للتعديل.
 لو دوست على سييڤ الصفحه مرة تانية التعديل بتاعك ح يتحفظ من غير ملخص.",
 'missingcommenttext'               => 'لو سمحت اكتب تعليق تحت.',
-'missingcommentheader'             => "'''خد بالك:''' انت ما كتبتش عنوان\\موضوع للتعليق دا
-لو دوست على سييڤ الصفحه مرة تانيه، تعليقك ح يتحفظ من غير عنوان.",
+'missingcommentheader'             => "'''.خد بالك:''' انت ما كتبتش عنوان\\موضوع للتعليق دا
+لو دوست على {{int:savearticle}} مرة تانيه، تعليقك ح يتحفظ من غير عنوان.",
 'summary-preview'                  => 'بروفه للملخص:',
 'subject-preview'                  => 'بروفة للعنوان/للموضوع',
 'blockedtitle'                     => 'اليوزر ممنوع',
@@ -1292,10 +1292,10 @@ $1",
 'prefs-math'                    => 'رياضة',
 'datedefault'                   => 'مافبش تفضيل',
 'prefs-datetime'                => 'وقت وتاريخ',
-'prefs-personal'                => 'البروفيل بتاع اليوزر',
+'prefs-personal'                => 'الپروفيل بتاع اليوزر',
 'prefs-rc'                      => 'اخر التغييرات',
-'prefs-watchlist'               => 'لستة المراقبة',
-'prefs-watchlist-days'          => 'عدد الأيام للعرض فى لستة المراقبة:',
+'prefs-watchlist'               => 'ليستة المراقبه',
+'prefs-watchlist-days'          => 'الايام اللى تتعرض فى ليستة المراقبه:',
 'prefs-watchlist-days-max'      => '(الحد الاقصى 7 ايام)',
 'prefs-watchlist-edits'         => 'عدد التعديلات اللى بتتعرض فى لستةالمراقبة المتوسعة:',
 'prefs-watchlist-edits-max'     => '(الرقم الاقصى: 1000)',
@@ -1374,9 +1374,9 @@ $1",
 'prefs-help-gender'             => 'اختياري: بيستعملوه فى  المخاطبة المعتمدة على النوع بالسوفتوير. المعلومه دى ح تكون علنيه.',
 'email'                         => 'الإيميل',
 'prefs-help-realname'           => 'الاسم الحقيقى اختيارى.
-ولو اخترت تعرض اسمك هنا هايستخدم فى الإشارة لتعديلاتك.',
-'prefs-help-email'              => 'عنوان البريد الإلكترونى اختيارى، لكن يسمح بأن يتم إرسال كلمة السر الخاصة بك إليك لو نسيتها.
-ممكن كمان تخلى اليوزرز التانيين يقدروا يتصلوا بيك  فى صفحتك او صفة المناقشة بتاعتك من غير ما يعرفو  انت مين.',
+لو إخترت تكتبه, حيستعمل بس علشان شغلك يتنسب لإسمك.',
+'prefs-help-email'              => 'الإيميل اختيارى, بس لازم علشان لو نسيت الپاسوورد.
+ممكن بردو تختار انك تخلّى اليوزرات تبعتلك إيميل من صفحة اليوزر او المناقشه بتاعتك من غير ما تبقى شخصيتك معروفه.',
 'prefs-help-email-required'     => 'عنوان الإيميل مطلوب.',
 'prefs-info'                    => 'معلومات اساسيه',
 'prefs-i18n'                    => 'التدويل',
@@ -1819,7 +1819,7 @@ PICT # misc.
 'filerevert'                => 'استرجع $1',
 'filerevert-legend'         => 'استرجع الملف',
 'filerevert-intro'          => "أنت بترجع '''[[Media:$1|$1]]''' [$4 للنسخةاللى بتاريخ $2، $3].",
-'filerevert-comment'        => 'تعليق:',
+'filerevert-comment'        => 'السبب:',
 'filerevert-defaultcomment' => 'رجع النسخة اللى بتاريخ $2، $1',
 'filerevert-submit'         => 'استرجع',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' اترجعت [$4 للنسخةاللى بتاريخ $2، $3].",
@@ -2329,7 +2329,7 @@ $UNWATCHURL
 'undeleteviewlink'             => 'عرض',
 'undeletereset'                => 'ابتدى من الأول',
 'undeleteinvert'               => 'اعكس الاختيار',
-'undeletecomment'              => 'تعليق:',
+'undeletecomment'              => 'السبب:',
 'undeletedarticle'             => 'رجع  "[[$1]]" تاني',
 'undeletedrevisions'           => 'رجع تانى {{PLURAL:$1|تعديل واحد|تعديلين|$1 تعديلات|$1 تعديل|$1 تعديل}}',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 نسخة|$1 نسخة}} و {{PLURAL:$2|1 ملف|$2 ملف}} رجعو تاني',
@@ -3374,15 +3374,15 @@ $1',
 'watchlistedit-normal-title'   => 'تعديل لستة المراقبة',
 'watchlistedit-normal-legend'  => 'شيل العناوين من لستة المراقبة',
 'watchlistedit-normal-explain' => 'العناوين فى لستة المراقبة بتاعتك معروضة تحت.
-علشان تشيل عنوان، دوس على الصندوق اللى جنبه، ودوس على شيل العناوين.
+علشان تشيل عنوان، دوس على الصندوق اللى جنبه، ودوس على شيل العناوين"{{int:Watchlistedit-normal-submit}}".
 ممكن كمان [[Special:Watchlist/raw|تعديل اللستة الخام]].',
 'watchlistedit-normal-submit'  => 'شيل العناوين',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|عنوان واحد|$1 عنوان}} اتشال من لستة المراقبة بتاعتك:',
 'watchlistedit-raw-title'      => 'تعديل لستة المراقبة الخام',
 'watchlistedit-raw-legend'     => 'تعديل لستة المراقبة الخام',
-'watchlistedit-raw-explain'    => 'العناوين فى لستة مراقبتك معروضة تحت، وممكن تعدلها لما تزود او تشيل من اللستة؛
+'watchlistedit-raw-explain'    => 'العناوين فى لستة مراقبتك معروضه تحت، وممكن تعدلها لما تزود او تشيل من اللستة؛
 عنوان واحد فى السطر.
-لما تخلص، دوس تحديث لستة المراقبة.
+لما تخلص، دوس تحديث لستة المراقبه "{{int:Watchlistedit-raw-submit}}".
 ممكن كمان [[Special:Watchlist/edit|تستعمل المحرر القياسي]].',
 'watchlistedit-raw-titles'     => 'العناوين:',
 'watchlistedit-raw-submit'     => 'تحديث لستة المراقبة',
@@ -3565,20 +3565,5 @@ $1',
 'htmlform-submit'              => 'تقديم',
 'htmlform-reset'               => 'الرجوع فى التغييرات',
 'htmlform-selectorother-other' => 'تانيين',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'ضيف تصنيف',
-'ajax-add-category-submit'     => 'ضيف',
-'ajax-confirm-title'           => 'تأكيد العمليه',
-'ajax-confirm-prompt'          => 'ممكن تضيف ملخص للتعديل تحت.
-دوس على "تسييف" علشان تسيف التعديل بتاعك.',
-'ajax-confirm-save'            => 'سييف',
-'ajax-add-category-summary'    => 'حط التصنيف "$1"',
-'ajax-remove-category-summary' => 'شيل التصنيف "$1"',
-'ajax-confirm-actionsummary'   => 'العمل المطلوب:',
-'ajax-error-title'             => 'غلط',
-'ajax-error-dismiss'           => 'طيب',
-'ajax-remove-category-error'   => 'مانفعش نشيل التصنيف دا.
-دا بيحصل عادة لما التصنيف بيتحط فى الصفحه عن طريق القالب',
 
 );

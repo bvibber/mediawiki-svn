@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -161,7 +161,13 @@ class ApiQueryTags extends ApiQueryBase {
 		return array(
 			'continue' => 'When more results are available, use this to continue',
 			'limit' => 'The maximum number of tags to list',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' name         - Adds name of tag',
+				' displayname  - Adds system messsage for the tag',
+				' description  - Adds description of the tag',
+				' hitcount     - Adds the amount of revisions that have this tag',
+			),
 		);
 	}
 

@@ -24,10 +24,14 @@ class DatabaseSqlite extends DatabaseBase {
 	 * Parameters $server, $user and $password are not used.
 	 */
 	function __construct( $server = false, $user = false, $password = false, $dbName = false, $failFunction = false, $flags = 0 ) {
+		global $wgSharedDB;
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
 		$this->mName = $dbName;
-		$this->open( $server, $user, $password, $dbName );
+
+		if ( $this->open( $server, $user, $password, $dbName ) && $wgSharedDB ) {
+			$this->attachDatabase( $wgSharedDB );
+		}
 	}
 
 	function getType() {
@@ -142,6 +146,28 @@ class DatabaseSqlite extends DatabaseBase {
 			return 'FTS3';
 		}
 		return false;
+	}
+
+	/**
+	 * Attaches external database to our connection, see http://sqlite.org/lang_attach.html
+	 * for details.
+	 * @param $name: Database name to be used in queries like SELECT foo FROM dbname.table
+	 * @param $file: Database file name. If omitted, will be generated using $name and $wgSQLiteDataDir
+	 */
+	function attachDatabase( $name, $file = false, $fname = 'DatabaseSqlite::attachDatabase' ) {
+		global $wgSQLiteDataDir;
+		if ( !$file ) {
+			$file = self::generateFileName( $wgSQLiteDataDir, $name );
+		}
+		$file = $this->addQuotes( $file );
+		return $this->query( "ATTACH DATABASE $file AS $name", $fname );
+	}
+
+	/**
+	 * @see DatabaseBase::isWriteQuery()
+	 */
+	function isWriteQuery( $sql ) {
+		return parent::isWriteQuery( $sql ) && !preg_match( '/^ATTACH\b/i', $sql );
 	}
 
 	/**
@@ -562,7 +588,7 @@ class DatabaseSqlite extends DatabaseBase {
 			// DATETIME -> TEXT
 			$s = preg_replace( '/\b(datetime|timestamp)\b/i', 'TEXT', $s );
 			// No ENUM type
-			$s = preg_replace( '/enum\([^)]*\)/i', 'BLOB', $s );
+			$s = preg_replace( '/\benum\s*\([^)]*\)/i', 'TEXT', $s );
 			// binary collation type -> nothing
 			$s = preg_replace( '/\bbinary\b/i', '', $s );
 			// auto_increment -> autoincrement

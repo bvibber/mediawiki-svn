@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -182,7 +182,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 		$pageMap = array(); // Maps ns&title to (fake) pageid
 		$count = 0;
 		$newPageID = 0;
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++$count > $limit ) {
 				// We've had enough
 				if ( $mode == 'all' || $mode == 'revs' ) {
@@ -248,7 +248,6 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 				break;
 			}
 		}
-		$db->freeResult( $res );
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'page' );
 	}
 
@@ -310,7 +309,17 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			'end' => 'The timestamp to stop enumerating at (1,2)',
 			'dir' => 'The direction in which to enumerate (1,2)',
 			'limit' => 'The maximum amount of revisions to list',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' revid          - Adds the revision id of the deleted revision',
+				' user           - Adds user who made the revision',
+				' comment        - Adds the comment of the revision',
+				' parsedcomment  - Adds the parsed comment of the revision',
+				' minor          - Tags if the revision is minor',
+				' len            - Adds the length of the revision',
+				' content        - Adds the content of the revision',
+				' token          - Gives the edit token',
+			),
 			'namespace' => 'Only list pages in this namespace (3)',
 			'user' => 'Only list revisions by this user',
 			'excludeuser' => 'Don\'t list revisions by this user',

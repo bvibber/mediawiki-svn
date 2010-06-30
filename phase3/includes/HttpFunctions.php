@@ -32,7 +32,7 @@ class Http {
 	 */
 	public static function request( $method, $url, $options = array() ) {
 		$url = wfExpandUrl( $url );
-		wfDebug( "HTTP: $method: $url" );
+		wfDebug( "HTTP: $method: $url\n" );
 		$options['method'] = strtoupper( $method );
 		if ( !isset( $options['timeout'] ) ) {
 			$options['timeout'] = 'default';
@@ -560,9 +560,6 @@ class Cookie {
 
 		$dc = explode(".", $domain);
 
-		// Don't allow cookies for "localhost", "ls" or other dot-less hosts
-		if( count($dc) < 2 ) return false;
-
 		// Only allow full, valid IP addresses
 		if( preg_match( '/^[0-9.]+$/', $domain ) ) {
 			if( count( $dc ) != 4 ) return false;
@@ -707,7 +704,6 @@ class CookieJar {
 			} elseif ( !Cookie::validateCookieDomain( $attr['domain'], $domain ) ) {
 				return null;
 			}
-
 			$this->setCookie( $name, $value, $attr );
 		}
 	}
@@ -785,7 +781,7 @@ class CurlHttpRequest extends HttpRequest {
 		if ( $this->followRedirects && $this->canFollowRedirects() ) {
 			if ( ! @curl_setopt( $curlHandle, CURLOPT_FOLLOWLOCATION, true ) ) {
 				wfDebug( __METHOD__.": Couldn't set CURLOPT_FOLLOWLOCATION. " .
-					"Probably safe_mode or open_basedir is set. ");
+					"Probably safe_mode or open_basedir is set.\n");
 				// Continue the processing. If it were in curl_setopt_array, 
 				// processing would have halted on its entry
 			}

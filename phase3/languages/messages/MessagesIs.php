@@ -231,7 +231,7 @@ $messages = array(
 'tog-editsection'             => 'Virkja hlutabreytingu með [breyta] tenglum',
 'tog-editsectiononrightclick' => 'Virkja hlutabreytingu með því að hægrismella á hlutafyrirsagnir (JavaScript)',
 'tog-showtoc'                 => 'Sýna efnisyfirlit (fyrir síður með meira en 3 fyrirsagnir)',
-'tog-rememberpassword'        => 'Munda innskráninguna mína á þessari tölvu',
+'tog-rememberpassword'        => 'Muna innskráninguna mína í þessum vafra (í allt að $1 {{PLURAL:$1|dag|daga}})',
 'tog-watchcreations'          => 'Bæta síðum sem ég bý til á vaktlistann minn',
 'tog-watchdefault'            => 'Bæta síðum sem ég breyti á vaktlistann minn',
 'tog-watchmoves'              => 'Bæta síðum sem ég færi á vaktlistann minn',
@@ -378,6 +378,7 @@ $messages = array(
 'vector-namespace-main'      => 'Síða',
 'vector-namespace-mediawiki' => 'Melding',
 'vector-namespace-project'   => 'Verkefnissíða',
+'vector-namespace-special'   => 'Kerfissíða',
 'vector-namespace-talk'      => 'Umræða',
 'vector-namespace-template'  => 'Snið',
 'vector-namespace-user'      => 'Notandasíða',
@@ -436,7 +437,7 @@ $messages = array(
 'otherlanguages'    => 'Á öðrum tungumálum',
 'redirectedfrom'    => '(Tilvísað frá $1)',
 'redirectpagesub'   => 'Tilvísunarsíða',
-'lastmodifiedat'    => 'Þessari síðu var síðast breytt $2, klukkan $1.',
+'lastmodifiedat'    => 'Þessari síðu var síðast breytt $1 klukkan $2.',
 'viewcount'         => 'Þessi síða hefur verið skoðuð {{PLURAL:$1|einu sinni|$1 sinnum}}.',
 'protectedpage'     => 'Vernduð síða',
 'jumpto'            => 'Stökkva á:',
@@ -602,7 +603,7 @@ Ekki gleyma að breyta [[Special:Preferences|{{SITENAME}}-stillingunum]] þínum
 'yourname'                   => 'Notandanafn:',
 'yourpassword'               => 'Lykilorð:',
 'yourpasswordagain'          => 'Endurrita lykilorð:',
-'remembermypassword'         => 'Muna innskráningu mína á þessari tölvu',
+'remembermypassword'         => 'Muna innskráninguna mína í þessum vafra (í allt að $1 {{PLURAL:$1|dag|daga}})',
 'yourdomainname'             => 'Þitt lén:',
 'login'                      => 'Innskrá',
 'nav-login-createaccount'    => 'Innskrá / Búa til aðgang',
@@ -2116,7 +2117,7 @@ Allir innflutningar eru skráð í [[Special:Log/import|innflutningsskránna]].'
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Óþekktur notandi|Óþekktir notendur}} á {{SITENAME}}',
 'siteuser'         => '{{SITENAME}} notandi $1',
-'lastmodifiedatby' => 'Þessari síðu var síðast breytt $2, $1 af $3.',
+'lastmodifiedatby' => 'Þessari síðu var síðast breytt $1 klukkan $2 af $3.',
 'othercontribs'    => 'Byggt á verkum $1.',
 'others'           => 'aðrir',
 'siteusers'        => '{{SITENAME}} {{PLURAL:$2|notandi|notendur}} $1',
@@ -2443,10 +2444,5 @@ Vinsamlegast staðfestu að þú viljir endurvekja hana.",
 
 # Database error messages
 'dberr-usegoogle' => 'Þú getur notað Google til að leita á meðan.',
-
-# Add categories per AJAX
-'ajax-confirm-save'  => 'Vista',
-'ajax-error-title'   => 'Villa',
-'ajax-error-dismiss' => 'Í lagi',
 
 );
