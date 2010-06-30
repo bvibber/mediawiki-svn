@@ -117,8 +117,20 @@ public class ConceptType {
 		//this.uri = WikiWord.conceptTypeURI(this.getName()); 
 	}
 	
-	public static boolean isWeak(int t) {
-		return (t==UNKNOWN.code || t==OTHER.code || t==ALIAS.code);
+	public boolean weakerThan(ConceptType t) {
+		return weakerThan(code, t.code);
+	}
+
+	public static boolean weakerThan(int a, int b) {
+		if (a==UNKNOWN.code) {
+			return b != UNKNOWN.code; 
+		} else if (a==ALIAS.code) {
+			return b != UNKNOWN.code && b != ALIAS.code; 
+		} else if (a==OTHER.code) {
+			return b != UNKNOWN.code && b != ALIAS.code && b != OTHER.code; 
+		}
+		
+		return false;
 	}
 	
 	public String getName() {

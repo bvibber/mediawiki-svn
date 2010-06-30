@@ -592,8 +592,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 					
 					int type;
 					if (leftType==rightType) type = rightType;
-					else if (ConceptType.isWeak(leftType)) type = rightType;
-					else if (ConceptType.isWeak(rightType)) type = leftType;
+					else if (ConceptType.weakerThan(leftType, rightType)) type = rightType;
+					else if (ConceptType.weakerThan(rightType, leftType)) type = leftType;
 					else {
 						storeWarning(-1, "conflicting concept types during merge", 
 								"concept "+leftName+" has type "+getConceptType(leftType)+", "
