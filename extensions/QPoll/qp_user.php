@@ -68,6 +68,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'qp_desc-sp',
 );
 
+/**
+ * Extension's global settings and initializiers
+ * should be purely static and preferrably have no constructor
+ */
 class qp_Setup {
 
 	static $ExtDir; // filesys path with windows path fix
@@ -148,13 +152,15 @@ class qp_Setup {
 		// TODO: Use the new technique for i18n of special page aliases
 		$wgSpecialPages['PollResults'] = array('PollResults');
 		// TODO: Use the new technique for i18n of magic words
-		$wgHooks['LanguageGetMagic'][]       = 'qp_Setup::languageGetMagic';
-		$wgHooks['MediaWikiPerformAction'][] = 'qp_Setup::mediaWikiPerformAction';
-		$wgHooks['ParserFirstCallInit'][] = 'qp_Setup::parserFirstCallInit';
-		$wgHooks['LoadAllMessages'][] = 'qp_Setup::loadMessages';
+		// instantiating fake instance for PHP < 5.2.3, which does not support 'Class::method' type of callbacks
+		$qp_Setup = new qp_Setup;
+		$wgHooks['LanguageGetMagic'][]       = $qp_Setup;
+		$wgHooks['MediaWikiPerformAction'][] = $qp_Setup;
+		$wgHooks['ParserFirstCallInit'][] = $qp_Setup;
+		$wgHooks['LoadAllMessages'][] = $qp_Setup;
 	}
 
-	static function loadMessages() {
+	static function onLoadAllMessages() {
 		if ( !self::$messagesLoaded ) {
 			self::$messagesLoaded = true;
 			wfLoadExtensionMessages('QPoll');
@@ -172,7 +178,7 @@ class qp_Setup {
 			: array_merge( $words[ 'en' ], $words[ $lang ] );
 	}
 
-	static function languageGetMagic( &$magicWords, $langCode ) {
+	static function onLanguageGetMagic( &$magicWords, $langCode ) {
 		foreach( self::ParserFunctionsWords( $langCode ) as $word => $trans )
 			$magicWords [$word ] = $trans;
 		return true;
@@ -187,7 +193,7 @@ class qp_Setup {
 		}
 	}
 	
-	static function mediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
+	static function onMediaWikiPerformAction( $output, $article, $title, $user, $request, $wiki ) {
 		global $wgCookiePrefix;
 		global $qp_enable_showresults; // deprecated since v0.6.5
 		global $qp_AnonForwardedFor; // deprecated since v0.6.5
@@ -229,7 +235,7 @@ class qp_Setup {
 	/**
 	 * Register the extension with the WikiText parser.
 	 */
-	static function parserFirstCallInit() {
+	static function onParserFirstCallInit() {
 		global $wgParser;
 		global $wgExtensionCredits;
 		global $wgQPollFunctionsHook;
@@ -246,7 +252,7 @@ class qp_Setup {
 			$wgOut->addExtensionStyle( self::$ScriptPath . '/qp_user_rtl.css' );
 		}
 		# setup tag hook
-		$wgParser->setHook("qpoll", "qp_Setup::renderPoll");
+		$wgParser->setHook( 'qpoll', array( 'qp_Setup', 'renderPoll' ) );
 		$wgQPollFunctionsHook = new qp_FunctionsHook();
 		# setup function hook
 		$wgParser->setFunctionHook( 'qpuserchoice', array( &$wgQPollFunctionsHook, 'qpuserchoice' ), SFH_OBJECT_ARGS );
@@ -1227,7 +1233,7 @@ class qp_FunctionsHook {
 	var $error_message = 'no_such_poll';
 
 	function qpuserchoice( &$parser, $frame, $args ) {
-		qp_Setup::loadMessages();
+		qp_Setup::onLoadAllMessages();
 		$this->frame = &$frame;
 		$this->args = &$args;
 		if ( isset( $args[ 0 ] ) ) {
