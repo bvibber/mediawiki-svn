@@ -79,8 +79,6 @@ public class SlidingCoherenceDisambiguator<T extends TermReference, C extends Wi
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
-		pruneMeanings(meanings);
-		
 		sz = meanings.size();
 		if (context!=null) sz += context.size();
 

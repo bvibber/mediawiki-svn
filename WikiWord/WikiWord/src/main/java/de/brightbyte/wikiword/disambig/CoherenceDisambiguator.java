@@ -238,8 +238,6 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
-		pruneMeanings(meanings);
-		
 		sz = meanings.size();
 		if (context!=null) sz += context.size();
 		if (sz <2) {
@@ -267,26 +265,34 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return getBestInterpretation(root, meanings, context, interpretations, similarities, features);
 	}
 	
+	protected <X extends T>Map<X, List<? extends C>> getMeanings(Collection<X> terms) throws PersistenceException {
+		Map<X, List<? extends C>> meanings = super.getMeanings(terms);
+		pruneMeanings(meanings);
+		return meanings;
+	}
+	
 	protected void pruneMeanings(Map<? extends T, List<? extends C>> meanings) {
-		if (minPopularity<=1) return; //nothing to do
-		
 		Iterator<?> eit = meanings.entrySet().iterator();
 		while (eit.hasNext()) {
 			Entry<T, List<? extends C>> e = (Entry<T, List<? extends C>>) eit.next(); //XXX: ugly cast. got confused about generics. ugh.
 			List<? extends C> m = e.getValue();
 			if (m==null) continue;
 			
-			Iterator<? extends C> cit = m.iterator();
-			while (cit.hasNext()) {
-				C c = cit.next();
-				double p = popularityMeasure.measure(c);
-				
-				if (p<minPopularity) {
-					if (m.size()==1) {
-						eit.remove();
-						break;
-					} else {
-						cit.remove();
+			if (minPopularity>0) {
+				Iterator<? extends C> cit = m.iterator();
+				while (cit.hasNext()) {
+					C c = cit.next();
+					double p = popularityMeasure.measure(c);
+					
+					if (p<minPopularity) {
+						trace("pruning unpopular meaning of "+e.getKey()+" (pop: "+p+" < "+minPopularity+"): "+c.getName());
+						
+						if (m.size()==1) {
+							eit.remove();
+							break;
+						} else {
+							cit.remove();
+						}
 					}
 				}
 			}
@@ -294,6 +300,9 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			if (m.size()==0) eit.remove();
 			else if (m.size()>maxMeanings) {
 				Collections.sort(m, popularityComparator);
+				
+				trace("pruning least popular meanings of "+e.getKey()+" (keeping top "+maxMeanings+"): "+m.subList(maxMeanings, m.size()));
+				
 				m = m.subList(0, maxMeanings);
 				e.setValue(m);
 			}
@@ -321,6 +330,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		for (Disambiguator.Interpretation<X, C> interp: interpretations) {
 			CoherenceDisambiguation<X, C> r = getScore(interp, context, similarities, features);
 			double score = r.getScore();
+			//trace("       ~ score "+score+": "+r.getMeanings());
 			
 				if ( ( best == null &&  score> 0 && !Double.isNaN(score)) 
 						|| (score > bestScore && !Double.isNaN(score)) ) {
@@ -398,16 +408,16 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			
 			for (TermReference t: interp.getSequence()) {
 				C m = interp.getMeanings().get(t);
-				((HashMap<TermReference, C>)concepts).put(t, m);
+				((Map<TermReference, C>)concepts).put(t, m);
 			}
 
 			if (context != null) {
 				for (C con: context) {
-					if (con!=null)((HashMap<TermReference, C>)concepts).put(new Term(con.getName(), 1), con);
+					if (con!=null)((Map<TermReference, C>)concepts).put(new Term(con.getName(), 1), con);
 				}
 			}
 		} else {
-			concepts = (HashMap<TermReference, C>)interp.getMeanings();
+			concepts = (Map<TermReference, C>)interp.getMeanings();
 		}
 		
 		int c = concepts.size();
