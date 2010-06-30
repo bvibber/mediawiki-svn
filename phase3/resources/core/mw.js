@@ -165,7 +165,7 @@ window.mw = $.extend( typeof window.mw === 'undefined' ? {} : window.mw, {
 				// Translations for conforming operating system names
 				var osTranslations = [['sunos', 'solaris']];
 				
-				/* Fucntions */
+				/* Functions */
 				
 				// Performs multiple replacements on a string
 				function translate( source, translations ) {
@@ -245,7 +245,7 @@ window.mw = $.extend( typeof window.mw === 'undefined' ? {} : window.mw, {
 		 * 		}
 		 *	}
 		 * 
-		 * @param Object of browser support map
+		 * @param map Object of browser support map
 		 * 
 		 * @return Boolean true if browser known or assumed to be supported, false if blacklisted
 		 */
