@@ -49,7 +49,7 @@ $wgSeleniumTestsBrowsers['win-ie8']   = 'IE 8 on Windows';
 $wgSeleniumTestsBrowsers['win-ie']   = 'IE on Windows';
 
 // Actually, use this browser
-$wgSeleniumTestsUseBrowser = 'firefox';
+$wgSeleniumTestsUseBrowser = 'osx-firefox';
 
 // Set command line mode
 $wgSeleniumTestsRunMode = 'cli';
