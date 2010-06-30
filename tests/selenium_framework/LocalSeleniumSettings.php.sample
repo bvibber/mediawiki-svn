@@ -34,9 +34,19 @@ $wgSeleniumTestsWikiPassword  = 'password';
 // Use the *chrome handler in order to be able to test file uploads
 // further solution suggestions: http://www.brokenbuild.com/blog/2007/06/07/testing-file-uploads-with-selenium-rc-and-firefoxor-reducing-javascript-security-in-firefox-for-fun-and-profit/
 // $wgSeleniumTestsBrowsers['firefox']   = '*firefox c:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe';
-$wgSeleniumTestsBrowsers['firefox']   = 'Firefox on OS X Snow Leopard';
-$wgSeleniumTestsBrowsers['iexplorer'] = '*iexploreproxy';
-$wgSeleniumTestsBrowsers['opera']   = '*chrome /usr/bin/opera';
+$wgSeleniumTestsBrowsers['osx-firefox']   = 'Firefox on OS X Snow Leopard';
+$wgSeleniumTestsBrowsers['win-opera']   = 'Opera on Windows';
+$wgSeleniumTestsBrowsers['win-chrome']   = 'Google Chrome on Windows';
+$wgSeleniumTestsBrowsers['osx-safari']   = 'Safari on OS X Snow Leopard';
+$wgSeleniumTestsBrowsers['win-ff35']   = 'Firefox 3.5 on Windows';
+$wgSeleniumTestsBrowsers['osx-opera']   = 'Opera on OS X Snow Leopard';
+$wgSeleniumTestsBrowsers['osx-chrome']   = 'Google Chrome on OS X Snow Leopard';
+$wgSeleniumTestsBrowsers['lin-ff35']   = 'Firefox 3.5 on Linux';
+$wgSeleniumTestsBrowsers['lin-ff36']   = 'Firefox 3.6 on Linux';
+$wgSeleniumTestsBrowsers['win-safari']   = 'Safari on Windows';
+$wgSeleniumTestsBrowsers['lin-ff3']   = 'Firefox 3 on Linux';
+$wgSeleniumTestsBrowsers['win-ie8']   = 'IE 8 on Windows';
+$wgSeleniumTestsBrowsers['win-ie']   = 'IE on Windows';
 
 // Actually, use this browser
 $wgSeleniumTestsUseBrowser = 'firefox';
