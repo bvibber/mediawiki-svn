@@ -641,6 +641,13 @@ To opozorilo lahko onemogočite v razdelku »Urejanje« svojih nastavitev.',
 	'vector-editwarning-preference' => 'Opozori me, ko skušam zapreti urejevalno polje z neshranjenimi spremembami',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
+ */
+$messages['sr-ec'] = array(
+	'vector-editwarning-preference' => 'Упозори ме када напустим страницу са несачуваним променама',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Najami

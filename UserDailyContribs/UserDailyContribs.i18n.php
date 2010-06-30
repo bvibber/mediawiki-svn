@@ -404,6 +404,13 @@ $messages['sl'] = array(
 	'userdailycontribs-desc' => 'Uporabnikovi dnevni prispevki za razširitev sledenja klikom',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'userdailycontribs-desc' => 'Kontribusi sapopoé pamaké pikeun éksténsi panyusud klik',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
