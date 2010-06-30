@@ -91,7 +91,19 @@ CREATE TABLE /*_*/thread_history (
 CREATE TABLE /*_*/thread_pending_relationship (
 	tpr_thread int unsigned NOT NULL,
 	tpr_relationship varbinary(64) NOT NULL,
-	tpr_title varbinary(1024) NOT NULL,
+	tpr_title varbinary(255) NOT NULL,
 	tpr_type varbinary(32) NOT NULL,
 	PRIMARY KEY (tpr_thread,tpr_relationship)
+) /*$wgDBTableOptions*/;
+
+-- Storage for reactions
+CREATE TABLE /*_*/thread_reaction (
+	tr_thread int unsigned NOT NULL,
+	tr_user int unsigned NOT NULL,
+	tr_user_text varbinary(255) NOT NULL,
+	tr_type varbinary(64) NOT NULL,
+	tr_value int NOT NULL,
+	
+	PRIMARY KEY (tr_thread,tr_user,tr_user_text,tr_type,tr_value),
+	KEY (tr_user,tr_user_text,tr_type,tr_value)
 ) /*$wgDBTableOptions*/;

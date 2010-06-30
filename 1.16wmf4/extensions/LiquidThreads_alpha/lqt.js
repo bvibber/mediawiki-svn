@@ -1,7 +1,7 @@
 // Prototype in string.trim on browsers that haven't yet implemented
 if ( typeof String.prototype.trim !== "function" )
 	String.prototype.trim = function() { return this.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); };
-
+var wgWikiEditorIconVersion = 0;
 var liquidThreads = {
 	currentReplyThread : null,
 	currentToolbar : null,
@@ -19,7 +19,8 @@ var liquidThreads = {
 		var container = $j(target).closest('.lqt_thread')[0];
 		var thread_id = $j(this).data('thread-id');
 		
-		if (thread_id == liquidThreads.currentReplyThread) {
+		// hide the form for this thread if it's currently being shown
+		if ( thread_id == liquidThreads.currentReplyThread && $j( '#wpTextbox1' ).is( ':visible' ) ) {
 			liquidThreads.cancelEdit({});
 			return;
 		}
@@ -117,7 +118,7 @@ var liquidThreads = {
 		
 		var isIE7 = $j.browser.msie && $j.browser.version.substr(0,1) == '7';
 		
-		var loadSpinner = $j('<div class="mw-ajax-loader"/>');
+		var loadSpinner = $j('<div class="mw-ajax-loader lqt-loader"/>');
 		$j(container).before( loadSpinner );
 		
 		var finishShow = function() {
@@ -170,9 +171,16 @@ var liquidThreads = {
 			$j(container).find('#wpTextbox1').attr( 'rows', 12 );
 			$j(container).find('#wpDiff').hide();
 			
-			// Add toolbar
-			mwSetupToolbar();
-			
+			if ( $j.fn.wikiEditor && $j.wikiEditor.isSupported( $j.wikiEditor.modules.toolbar ) ) {
+				if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( $j.wikiEditor.modules.dialogs ) ) {
+					$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
+				}
+				// Add wikiEditor toolbar 
+				$j( '#wpTextbox1' ).wikiEditor( 'addModule', { 'toolbar': liquidThreads.toolbar.config, 'dialogs': liquidThreads.toolbar.dialogs } );
+			} else {
+				// Add old toolbar
+				mwSetupToolbar()
+			}
 			currentFocused = $j(container).find('#wpTextbox1');
 			$j(container).find('#wpTextbox1,#wpSummary').focus(
 				function() {
@@ -1590,6 +1598,7 @@ $j(document).ready( function() {
 	
 	// Update the new thread link
 	var newThreadLink = $j('.lqt_start_discussion a');
+	newThreadLink = newThreadLink.add( $j('li#ca-addsection a') );
 	
 	if (newThreadLink) {
 		newThreadLink.click( liquidThreads.handleNewLink );
