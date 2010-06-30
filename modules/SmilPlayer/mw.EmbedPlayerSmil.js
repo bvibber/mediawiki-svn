@@ -121,7 +121,8 @@ mw.EmbedPlayerSmil = {
 	*/
 	pause: function() {
 		mw.log( 'EmbedPlayerSmil::pause at time' +  this.smilPlayTime );
-		this.smilPauseTime = this.smilPlayTime;	
+		this.smilPauseTime = this.smilPlayTime;
+		
 		// Update the interface
 		this.parent_pause();							
 	},

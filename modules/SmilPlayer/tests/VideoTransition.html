@@ -10,7 +10,7 @@
 			$j( "#seekInputTime" ).blur( function(){ 
 				var smilVid = $j('#videoTransition').get(0);
 				$j('#seekInProgress').show();
-				smilVid.setCurrentTime( parseFloat( $j(this).val() ), function(){
+				smilVid.setCurrentTime( parseFloat( $j(this).val() ), function() {
 					$j('#seekInProgress').hide();
 				});
 			});

@@ -80,6 +80,9 @@ mw.SmilBody.prototype = {
 			function( smilElement ){
 				// Hide the element in the layout 
 				_this.smil.getLayout().hideElement( smilElement );
+				
+				// Expire transitions if needed
+				_this.smil.getTransitions().elementOutOfRange( smilElement, time );				
 			}
 		);
 	},

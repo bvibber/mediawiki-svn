@@ -10,7 +10,6 @@ mw.SmilAnimate.prototype = {
 	init: function( smilObject ){		
 		this.smil = smilObject;
 		
-		// xxx possible option? 
 		this.framerate = mw.getConfig( 'SmilPlayer.framerate' );
 		
 		this.callbackRate = 1000 / this.framerate;
@@ -18,16 +17,31 @@ mw.SmilAnimate.prototype = {
 	},
 	
 	/**
+	 * Pause any active animation or video playback
+	 */
+	pauseAnimation: function(){
+		
+	},
+	
+	/**
 	* Animate a smil transform per supplied time.
+	* @param {Element} smilElement Smil element to be animated
+	* @param {float} animateTime Float time target for element transform
+	* @param {float} deltaTime Extra time interval to be animated between animateTransform calls
 	*/
 	animateTransform: function( smilElement, animateTime, deltaTime ){
 		var _this = this;							
 		
-		// If deltaTime is zero, then we should just transformElement directly: 
+		// check for deltaTime to animate over, if zero, then we should just transformElement directly: 
 		if( !deltaTime || deltaTime === 0 ){
 			_this.transformElement( smilElement, animateTime );
 			return ;
+		} else if( this.smil.getRefType( smilElement ) == 'video' ){
+			// If we have a animation delta time, for some types such as video we should not transform
+			this.transformVideoForPlayback( smilElement, animateTime );
+			return;
 		}
+		
 		
 		// Check if the current smilElement has any transforms to be done
 		if( ! this.checkForTransformUpdate( smilElement, animateTime, deltaTime ) ){
@@ -57,6 +71,7 @@ mw.SmilAnimate.prototype = {
 						return ;
 					}
 					
+					// Check if there is lag in animations 
 					if( Math.abs( timeElapsed - animateTimeDelta ) > 100 ){
 						mw.log( "Error more than 100ms lag within animateTransform loop: te:" + timeElapsed + 
 							' td:'  + animateTimeDelta + ' diff: ' + Math.abs( timeElapsed - animateTimeDelta ) );
@@ -76,7 +91,15 @@ mw.SmilAnimate.prototype = {
 		// Get the node type: 		
 		var refType = this.smil.getRefType( smilElement )
 		
-		// NOTE: our img node check sort of avoids deltaTime check but its assumed to not matter much
+		// Let transition check for updates
+		if( refType == 'img' || refType=='video' ){
+			 if( $j( smilElement ).attr('transIn') || $j( smilElement ).attr('transOut') ){
+				return true;
+			 }
+		}
+		
+		
+		// NOTE: our img node check avoids deltaTime check but its assumed to not matter much
 		// since any our supported keyframe granularity will be equal to deltaTime ie 1/4 a second. 		
 		if( refType == 'img' ){
 			// Confirm a child animate is in-range
@@ -86,7 +109,7 @@ mw.SmilAnimate.prototype = {
 					return true;
 				}
 			}		
-		}		
+		}
 		
 		// Check if we need to do a smilText clear: 
 		if( refType == 'smiltext' ){		
@@ -115,22 +138,26 @@ mw.SmilAnimate.prototype = {
 	* @param {float} animateTime The relative time to be transformed. 
 	*/
 	transformElement: function( smilElement, animateTime ) {		
-		//mw.log("transformForTime: " + nodeName  + ' t:' + animateTime );
+		mw.log("SmilAnimate::transformForTime:" + animateTime );
 		switch( this.smil.getRefType( smilElement ) ){
 			case 'smiltext':
-				return this.transformTextForTime( smilElement, animateTime );
+				this.transformTextForTime( smilElement, animateTime );
 			break;
 			case 'img': 
-				return this.transformImageForTime( smilElement, animateTime );
+				this.transformImageForTime( smilElement, animateTime );
 			break;
 			case 'video':
-				return this.transformVideoForTime( smilElement, animateTime );
+				this.transformVideoForTime( smilElement, animateTime );
 			break;
-		}
+		}			
+		// Update the smil Element transition:
+		this.smil.getTransitions().transformTransitionOverlay( smilElement, animateTime );		
 	},
 	
 	/**
 	 * Transform video for time
+	 * @param {Element} smilElement Smil video element to be transformed
+	 * @param {time} animateTime Relative time to be transformed
 	 */
 	transformVideoForTime: function( smilElement, animateTime ){
 		// Get the video element 
@@ -144,17 +171,13 @@ mw.SmilAnimate.prototype = {
 			mw.log( "transformVideoForTime:: seek complete ");
 		});
 	},
-	
-	// Transitions should probably be moved to seperate class
-	updateTransitions: function( smilElement, animateTime ){
-		if( $j(smilElement).attr( 'transIn' ) ){	
-			// check if in range
-			if(  $j(smilElement).attr( 'transIn' )
-		}
-		if( $j(smilElement).attr( 'transOut' ) ){
-		
-		}	
-	}, 
+	/** 
+	 * Used to support video playback
+	 */
+	transformVideoForPlayback: function( smilElement, animateTime ){
+		// xxx should fire buffer delay for now just play: 
+		$j ( '#' + this.smil.getAssetId( smilElement ) ).get( 0 ).play();
+	},
 	
 	/**
 	* Transform Text For Time 
@@ -209,7 +232,7 @@ mw.SmilAnimate.prototype = {
 		}
 				
 		var animateInRange = _this.getSmilAnimateInRange(  smilImgElement, animateTime, function( animateElement ){			
-			//mw.log('animateInRange callback::' + $j( animateElement ).attr( 'attributeName' ) );			
+			// mw.log('animateInRange callback::' + $j( animateElement ).attr( 'attributeName' ) );			
 			switch( $j( animateElement ).attr( 'attributeName' ) ) {
 				case 'panZoom':						
 					// Get the pan zoom css for "this" time 
@@ -260,7 +283,7 @@ mw.SmilAnimate.prototype = {
 				animateInRange = true;
 				if( callback ) {
 					callback( animateElement );
-				}			
+				}
 			}			
 		});
 		return animateInRange;
