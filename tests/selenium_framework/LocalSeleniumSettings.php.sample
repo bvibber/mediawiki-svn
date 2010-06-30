@@ -34,7 +34,7 @@ $wgSeleniumTestsWikiPassword  = 'password';
 // Use the *chrome handler in order to be able to test file uploads
 // further solution suggestions: http://www.brokenbuild.com/blog/2007/06/07/testing-file-uploads-with-selenium-rc-and-firefoxor-reducing-javascript-security-in-firefox-for-fun-and-profit/
 // $wgSeleniumTestsBrowsers['firefox']   = '*firefox c:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe';
-$wgSeleniumTestsBrowsers['firefox']   = '*firefox /usr/bin/firefox';
+$wgSeleniumTestsBrowsers['firefox']   = 'Firefox on OS X Snow Leopard';
 $wgSeleniumTestsBrowsers['iexplorer'] = '*iexploreproxy';
 $wgSeleniumTestsBrowsers['opera']   = '*chrome /usr/bin/opera';
 
@@ -46,6 +46,6 @@ $wgSeleniumTestsRunMode = 'cli';
 
 // List of tests to be included by default
 $wgSeleniumTestIncludes = array(
-	'selenium/SimpleSeleniumTest.php'
+	'selenium_tests/EmbedPlayerLoadsTest.php'
 );
 ?>
