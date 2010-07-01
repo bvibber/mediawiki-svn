@@ -6,25 +6,23 @@ if (!defined('MEDIAWIKI') || !defined('SELENIUMTEST')) {
 }
 
 // create test suite
-$wgSeleniumTestSuites['SimpleSeleniumTest'] = new SeleniumTestSuite('Simple Selenium Test');
-$wgSeleniumTestSuites['SimpleSeleniumTest']->addTest(new SimpleSeleniumTest());
+$wgSeleniumTestSuites['EmbedPlayerLoadingTests'] = new SeleniumTestSuite('Embed Player Loading Test Suite');
+$wgSeleniumTestSuites['EmbedPlayerLoadingTests']->addTest(new EmbedPlayerLoads());
 
-class SimpleSeleniumTest extends SeleniumTestCase
+class EmbedPlayerLoads extends SeleniumTestCase
 {
-	public $name = "Basic selenium test";
+	public $name = "Embed Player Loading Test";
 
 	public function runTest()
 	{
     global $wgSeleniumTestsWikiUrl;
-    $this->open($wgSeleniumTestsWikiUrl.'/tests/mwEmbed_Demo.html');
-    // $this->type("wpTextbox1", "This is a basic test");
-    // $this->click("wpPreview");
+    $this->open($wgSeleniumTestsWikiUrl.'/modules/EmbedPlayer/tests/Player_Themeable.html');
+    
     $this->waitForPageToLoad(10000);
-
-		// check result
-		//$source = $this->getText("//div[@id='wikiPreview']/p");
-		//$correct = strstr($source, "This is a basic test");
-		//$this->assertEquals($correct, true);
+    
+    $this->isElementPresent("//div[@class='interface_wrap k-player']", 10000);
+    $this->isElementPresent("//div[@class='interface_wrap mv-player']", 10000);
+    $this->isElementPresent("//div[@class='ui-state-default play-btn-large']", 10000);
 
 	}
 
