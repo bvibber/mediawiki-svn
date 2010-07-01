@@ -772,7 +772,7 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'vector-editwarning-warning' => '离开这个页面可能会令您失去之前的所有更改。
-若您已经登入，您可在您参数设置的“编辑”节中关闭此警告。',
+若您已经登入，您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
 	'vector-editwarning-preference' => '如在更改未保存时离开页面，则发出警告',
 );
 
