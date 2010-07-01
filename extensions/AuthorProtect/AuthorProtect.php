@@ -99,7 +99,6 @@ function efMakeContentAction( &$cactions ) {
 function efAuthorProtectForm( $action, $article ) {
 	global $wgTitle, $wgAuthorProtectDoProtect;
 	if ( $action == 'authorprotect' ) {
-		wfLoadExtensionMessages( 'AuthorProtect' );
 		global $wgOut, $wgUser, $wgRequest, $wgRestrictionTypes;
 		if ( $wgUser->isAllowed( 'authorprotect' ) ) {
 			if ( userIsAuthor() ) {
@@ -109,7 +108,7 @@ function efAuthorProtectForm( $action, $article ) {
 				} else {
 					if ( !$wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
 						$wgOut->setPageTitle( wfMsg( 'errorpagetitle' ) );
-						$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
+						$wgOut->addWikiMsg( 'sessionfailure' );
 						return false;
 					}
 					$restrictions = array();
@@ -148,14 +147,14 @@ function efAuthorProtectForm( $action, $article ) {
 					);
 					efAuthorProtectUnassignProtect();
 					if ( $success ) {
-						$wgOut->addWikiText( wfMsg( 'authorprotect-success' ) );
+						$wgOut->addWikiMsg( 'authorprotect-success' );
 					} else {
-						$wgOut->addWikiText( wfMsg( 'authorprotect-failure' ) );
+						$wgOut->addWikiMsg( 'authorprotect-failure' );
 					}
 				}
 			} else {
 				$wgOut->setPageTitle( wfMsg( 'errorpagetitle' ) );
-				$wgOut->addWikiText( wfMsg( 'authorprotect-notauthor' ) );
+				$wgOut->addWikiMsg( 'authorprotect-notauthor' );
 			}
 		} else {
 			$wgOut->permissionRequired( 'authorprotect' );
@@ -168,27 +167,30 @@ function efAuthorProtectForm( $action, $article ) {
 function efAuthorProtectMakeProtectForm() {
 	global $wgRestrictionTypes, $wgTitle, $wgUser;
 	$token = $wgUser->editToken();
+	// FIXME: raw html messages
 	$form = Xml::openElement( 'p' ) . wfMsg( 'authorprotect-intro' ) . Xml::closeElement( 'p' );
 	$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $wgTitle->getLocalUrl( 'action=authorprotect' ) ) );
+
+	$br = Html::element( 'br' );
+
 	foreach ( $wgRestrictionTypes as $type ) {
 		$rest = $wgTitle->getRestrictions( $type );
 		if ( $rest !== array() ) {
 			if ( !$wgUser->isAllowed( $rest[0] ) && !in_array( 'author', $rest ) )
 				continue; // it's protected at a level higher than them, so don't let them change it so they can now mess with stuff
 		}
-		$checked = in_array( 'author', $rest );
-		$array = array( 'type' => 'checkbox', 'name' => 'check-' . $type, 'value' => $type );
-		if ( $checked )
-			$array = array_merge( $array, array( 'checked' => 'checked' ) );
-		$form .= Xml::element( 'input', $array );
-		$form .= ' ' . wfMsg( 'authorprotect-' . $type ) . Xml::element( 'br' );
+
+		$checked =  in_array( 'author', $rest );
+		$form .= Xml::checkLabel( wfMsg( "authorprotect-$type" ), "check-$type", "check-$type", $checked ) . $br;
 	}
-	$form .= Xml::element( 'br' ) . Xml::element( 'label', array( 'for' => 'wpExpiryTime' ), wfMsg( 'authorprotect-expiry' ) ) . ' ';
-	$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpExpiryTime' ) ) . Xml::element( 'br' );
-	$form .= Xml::element( 'br' ) . Xml::element( 'label', array( 'for' => 'wpReason' ), wfMsg( 'authorprotect-reason' ) ) . ' ';
+
+	// FIXME: use Xml::inputLabel
+	$form .= $br . Xml::element( 'label', array( 'for' => 'wpExpiryTime' ), wfMsg( 'authorprotect-expiry' ) ) . ' ';
+	$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpExpiryTime' ) ) . $br;
+	$form .= $br . Xml::element( 'label', array( 'for' => 'wpReason' ), wfMsg( 'authorprotect-reason' ) ) . ' ';
 	$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpReason' ) );
-	$form .= Xml::element( 'br' ) . Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpToken', 'value' => $token ) );
-	$form .= Xml::element( 'br' ) . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpConfirm', 'value' => wfMsg( 'authorprotect-confirm' ) ) );
+	$form .= $br . Html::hidden( 'wpToken', $token );
+	$form .= $br . Xml::element( 'input', array( 'type' => 'submit', 'name' => 'wpConfirm', 'value' => wfMsg( 'authorprotect-confirm' ) ) );
 	$form .= Xml::closeElement( 'form' );
 	return $form;
 }
@@ -200,6 +202,7 @@ function userIsAuthor() {
 	$id = $wgTitle->getArticleId();
 	$dbr = wfGetDB( DB_SLAVE ); // grab the slave for reading
 	$aid = $dbr->selectField( 'revision', 'rev_user',  array( 'rev_page' => $id ), __METHOD__ );
+	// FIXME: weak comparison
 	return $wgUser->getID() == $aid;
 }
 
