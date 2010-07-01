@@ -96,7 +96,7 @@ function efMakeContentAction( &$cactions ) {
 	return true;
 }
 
-function efAuthorProtectForm( $action, &$article ) {
+function efAuthorProtectForm( $action, $article ) {
 	global $wgTitle, $wgAuthorProtectDoProtect;
 	if ( $action == 'authorprotect' ) {
 		wfLoadExtensionMessages( 'AuthorProtect' );
@@ -110,7 +110,7 @@ function efAuthorProtectForm( $action, &$article ) {
 					if ( !$wgUser->matchEditToken( $wgRequest->getText( 'wpToken' ) ) ) {
 						$wgOut->setPageTitle( wfMsg( 'errorpagetitle' ) );
 						$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
-						return;
+						return false;
 					}
 					$restrictions = array();
 					$expiration = array();
