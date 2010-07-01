@@ -53,7 +53,7 @@ function efAuthorProtectDelay( $title, &$user, $action, $result ) {
 	return true;
 }
 
-function efAssignAuthor( &$user, &$aRights ) {
+function efAssignAuthor( $user, &$aRights ) {
 	// don't assign author to anons... messes up logging stuff.
 	// plus it's all user_id based so it is impossible to differentiate one anon from another
 	if ( userIsAuthor() && $user->isLoggedIn() ) {
