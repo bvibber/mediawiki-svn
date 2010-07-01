@@ -14,6 +14,7 @@ $j(document).ready( function() {
 	var ourWindowOnBeforeUnload = function() {
 		var fallbackResult = undefined;
 		var retval = undefined;
+		var thisFunc = arguments.callee;
 		// Check if someone already set on onbeforeunload hook
 		if ( fallbackWindowOnBeforeUnload ) {
 			// Get the result of their onbeforeunload hook
@@ -39,6 +40,10 @@ $j(document).ready( function() {
 		// Unset the onbeforeunload handler so we don't break page caching in Firefox
 		window.onbeforeunload = null;
 		if ( retval !== undefined ) {
+			// ...but if the user chooses not to leave the page, we need to rebind it
+			setTimeout( function() {
+				window.onbeforeunload = thisFunc;
+			} );
 			return retval;
 		}
 	};
