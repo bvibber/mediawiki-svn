@@ -523,6 +523,7 @@ $messages['mt'] = array(
  */
 $messages['nds-nl'] = array(
 	'vector-simplesearch-search' => 'Zeuken',
+	'vector-simplesearch-containing' => 'bevat...',
 );
 
 /** Dutch (Nederlands)

@@ -2056,8 +2056,10 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'clicktracking' => 'ניצלעכקייט איניציאַטיוו קליקן אויפֿפאַסן',
 	'ct-beginner' => 'אָנהייבער',
 	'ct-anon-users' => 'אַנאנימע באַניצער',
+	'ct-user-contribs' => 'סח"כ באַניצער בײַשטײַערונגען',
 	'ct-and' => 'און',
 );
 

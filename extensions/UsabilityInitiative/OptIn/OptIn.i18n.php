@@ -706,7 +706,7 @@ $messages['bn'] = array(
 	'optin-survey-answer-changes-nav' => 'সাইটের সার্বিক নেভিগেশন ব্যবহার সহজ করো।',
 	'optin-survey-answer-changes-edittools' => 'সম্পাদনা টুল বৃদ্ধি এবং সমৃদ্ধ করা।',
 	'optin-survey-answer-changes-upload' => 'কন্টেন্ট এবং মিডিয়া আপলোড ব্যবস্থার উন্নয়ন।',
-	'optin-survey-answer-changes-richtext' => 'সমৃদ্ধ-টেক্সট সম্পাদকের মত একই রকমের সম্পাদনা টুল উন্নয়ন করো।',
+	'optin-survey-answer-changes-richtext' => 'সমৃদ্ধ-টেক্সট সম্পাদকের মত একই রকম ভাবে সম্পাদনা টুলের উন্নয়ন করো।',
 	'optin-survey-answer-changes-lookfeel' => 'সাইটের "লুক এন্ড ফিল" হালনাগাদ করুন।',
 	'optin-survey-answer-changes-predictability' => 'আন্দাজ করার ক্ষমতা উন্নয়ন করুন।',
 	'optin-survey-answer-changes-custom' => 'আরও বেশি স্বনির্ধারণের সুযোগ',
@@ -6415,6 +6415,9 @@ $messages['yi'] = array(
 	'optin-feedback-back' => 'אַז איר ווילט נישט אויספֿילן דעם פֿרעגבויגן, קענט איר צוריקקערן צו $1.',
 	'optin-success-in' => 'אַצינד פרובירט איר אויס בעטא.
 איר קענט עס פֿאַרלאזן ווען איר ווילט, מען דאַרף נאר אָנקליקן דעם לינק "{{int:optin-leave}}" אויבן.',
+	'optin-leave-cancel' => 'ווען איר ווילט ווײַטער ניצן בעטא, קענט איר צוריקקערן צו $1.',
+	'optin-success-out' => 'איר האט דערפֿאלגרייך פֿאַרלאזט בעטא.
+איר קענט עס אויספרובירן נאכאַמאָל ווען איר ווילט, דורך קליקן דעם "{{int:optin-try}}" לינק אין דער הייך פונעם בלאַט.',
 	'optin-success-feedback' => 'א דאַנק פֿאַרן פֿידבעק!',
 	'optin-accept-short' => 'לאמיר טון!',
 	'optin-accept-long' => 'פרובירן בעטא',
@@ -6433,12 +6436,13 @@ $messages['yi'] = array(
 	'optin-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
 	'optin-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
 	'optin-survey-question-res' => 'וואס איז די רעזאלוציע פון אייער עקראן?',
+	'optin-survey-answer-changes-edittools' => 'פֿאַרברייטערן און פאַרבעסערן די רעדאַקטירן געצייג.',
 	'optin-survey-answer-changes-upload' => 'פֿאַרבעסערן אינהאַלט און מעדיע אַרויפֿלאָדן.',
 	'optin-survey-answer-changes-custom' => 'דערלויבן גרעסערע באַניצער צופאַסונגען.',
 	'optin-survey-answer-changes-other' => 'אנדער:',
 	'optin-improvements2' => '== וואָס האט מען פֿאַרבעסערט? ==
-[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
-[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+[[File:UsabilityToolbar.png|left|link=|עקראַנבליד פון דעם פֿאַרברייטערטן רעדאַקטירן געצייגפאַס]]
+[[File:UsabilityDialogs.png|left|link=|עקראַנבליד פון דעם נײַעם דיאַלאג קעסטל פֿאַר שאַפֿן אינהאָלט]]
 ; פֿאַרבייטערטער געצייגפאַס
 מיטן פֿאַרבייטערטן געצייגפאַס איז גרינגער צו רעדאַקטירן אַרטיקלען.
 נײַע און פֿאַרבעסערטע סימבאלן ווײַזן דײַטלעך די אַקציע פֿון יעדן סימבאל.

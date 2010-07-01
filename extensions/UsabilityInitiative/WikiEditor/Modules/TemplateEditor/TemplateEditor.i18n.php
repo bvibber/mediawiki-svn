@@ -520,6 +520,16 @@ $messages['mt'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Annulla',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-template-editor-preference' => 'Formelier-ebaseerd bewarken van wikimallen inschakelen',
+	'wikieditor-template-editor-dialog-title' => 'Mallen bewarken',
+	'wikieditor-template-editor-dialog-submit' => 'Biewarken',
+	'wikieditor-template-editor-dialog-cancel' => 'Ofbreken',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand

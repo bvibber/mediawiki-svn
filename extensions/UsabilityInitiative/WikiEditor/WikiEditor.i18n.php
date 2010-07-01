@@ -499,6 +499,14 @@ $messages['mt'] = array(
 	'wikieditor-loading' => "Tiela'",
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitekse',
+	'wikieditor-loading' => "An 't laojen",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

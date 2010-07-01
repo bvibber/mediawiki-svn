@@ -206,6 +206,13 @@ $messages['lb'] = array(
 	'addmediawizard-desc' => 'En Assistent fir Medien derbäisetzen, deen an engem Partenariat tëschent Kaltura a n der Wikimedia Foundatioun entwéckelt gouf',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'addmediawizard-desc' => "Hanampy mpanampy ho an'ny media, noforonina ary niara-nitarin'ny Kaltura sy ny Wikimedia Foundation",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

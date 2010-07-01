@@ -169,6 +169,13 @@ $messages['lb'] = array(
 	'apisvgproxy-desc' => 'Liwwert SVG-Fichiere vun engem (méiglecherweis net lokalem) Depot vum Fichieren an de lokalen Domain',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'apisvgproxy-desc' => "Manome rakitra SVG avy ao amin'ny petra-drakitra mankao amin'ny vala an-toerana",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

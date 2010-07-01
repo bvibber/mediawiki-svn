@@ -158,6 +158,13 @@ $messages['lb'] = array(
 	'cassandra-desc' => 'Den Text vun der Versioun an enger [http://cassandra.apache.org/Apache Cassandra] Datebank späicheren',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'cassandra-desc' => "Mitahiry ny lahatsoratry ny santiôna ao amin'ny banky angona [http://cassandra.apache.org/ Apache Cassandra]",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

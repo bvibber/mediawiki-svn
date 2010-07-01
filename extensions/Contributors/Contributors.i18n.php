@@ -933,6 +933,13 @@ $messages['lg'] = array(
 	'contributors-nosuchpage' => 'Tewali lupapula $1.',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'contributors-toolbox' => 'Mpandray anjara matetika',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Jose77
  */

@@ -504,6 +504,7 @@ $messages['mt'] = array(
 $messages['nds-nl'] = array(
 	'usabilityinitiative' => 'Bruukbaorheidsinitiatief',
 	'usabilityinitiative-desc' => "Functionaliteit dee deur 't Bruukbaorheidsinitiatief van Wikipedie is ontwikkeld um de gebruuksvriendelijkheid van MediaWiki te verbeteren",
+	'prefs-beta' => 'Bètafuncties',
 );
 
 /** Dutch (Nederlands)
@@ -612,7 +613,7 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'usabilityinitiative' => 'Inițiativa de utilizabilitate',
+	'usabilityinitiative' => 'Inițiativa de Utilizabilitate',
 	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de inițiativa de utilizabilitate a Wikipedia pentru a facilita folosirea softului MediaWiki',
 	'prefs-beta' => 'Opțiuni beta',
 	'prefs-labs' => 'Opțiuni „labs”',
@@ -682,6 +683,11 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'prefs-beta' => 'Бета функције',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'prefs-beta' => 'Beta funkcije',
 );
 
 /** Sundanese (Basa Sunda)

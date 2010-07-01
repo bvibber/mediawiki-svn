@@ -84,11 +84,12 @@ $messages['be-tarask'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'prefswitch-link-anon' => 'নতুন বৈশিষ্ট্যাবলী',
 	'tooltip-pt-prefswitch-link-anon' => 'নতুন বৈশিষ্ট্যাবলী সম্পর্কে জানুন',
-	'prefswitch-link-on' => 'আমাকে আগের অবস্থায় ফিরিয়ে নাও',
+	'prefswitch-link-on' => 'পূর্বের অবস্থায় ফিরে যাও',
 	'tooltip-pt-prefswitch-link-on' => 'নতুন বৈশিষ্ট্যাবলী নিস্ক্রিয়',
 	'prefswitch-link-off' => 'নতুন বৈশিষ্ট্যাবলী',
 	'tooltip-pt-prefswitch-link-off' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
@@ -324,7 +325,7 @@ $messages['gsw'] = array(
 $messages['he'] = array(
 	'prefswitch-link-anon' => 'תכונות חדשות',
 	'tooltip-pt-prefswitch-link-anon' => 'מידע נוסף על התכונות החדשות',
-	'prefswitch-link-on' => 'תחזירו אותי',
+	'prefswitch-link-on' => 'החזירו אותי',
 	'tooltip-pt-prefswitch-link-on' => 'ביטול התכונות החדשות',
 	'prefswitch-link-off' => 'תכונות חדשות',
 	'tooltip-pt-prefswitch-link-off' => 'לנסות תכונות חדשות',
@@ -481,8 +482,8 @@ $messages['ml'] = array(
  * @author Chrisportelli
  */
 $messages['mt'] = array(
-	'prefswitch-link-anon' => 'Karatteristiċi ġodda',
-	'tooltip-pt-prefswitch-link-anon' => 'Tgħallem aktar dwar elementi ġodda',
+	'prefswitch-link-anon' => 'Funzjonijiet ġodda',
+	'tooltip-pt-prefswitch-link-anon' => 'Tgħallem aktar dwar il-funzjonijiet il-ġodda',
 	'prefswitch-link-on' => 'Ħudni lura',
 	'tooltip-pt-prefswitch-link-on' => 'Itfi l-funzjonijiet il-ġodda',
 	'prefswitch-link-off' => 'Funzjonijiet ġodda',
@@ -660,6 +661,13 @@ $messages['sr-ec'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Пробај нове функције',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'prefswitch-link-anon' => 'Nove funkcije',
+	'tooltip-pt-prefswitch-link-on' => 'Onemogući nove funkcije',
+	'tooltip-pt-prefswitch-link-off' => 'Probaj nove funkcije',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
@@ -671,11 +679,12 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Ainali
  * @author Dafer45
+ * @author Grillo
  */
 $messages['sv'] = array(
 	'prefswitch-link-anon' => 'Nya funktioner',
 	'tooltip-pt-prefswitch-link-anon' => 'Lär dig mer om nya funktioner',
-	'prefswitch-link-on' => 'Ta mig tillbaka',
+	'prefswitch-link-on' => 'Byt tillbaka till det gamla utseendet',
 	'tooltip-pt-prefswitch-link-on' => 'Inaktivera nya funktioner',
 	'prefswitch-link-off' => 'Nya funktioner',
 	'tooltip-pt-prefswitch-link-off' => 'Testa nya funktioner',
@@ -768,7 +777,7 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'prefswitch-link-anon' => 'נײַע אייגנשאַפֿטן',
 	'tooltip-pt-prefswitch-link-anon' => 'לערנען וועגן נײַע אייגנקייטן',
-	'prefswitch-link-on' => 'פֿירן מיך צוריק',
+	'prefswitch-link-on' => 'פֿירט מיך צוריק',
 	'tooltip-pt-prefswitch-link-on' => 'אַנולירן נײַע אייגנקייטן',
 	'prefswitch-link-off' => 'נײַע אייגנשאַפֿטן',
 	'tooltip-pt-prefswitch-link-off' => 'פרובירן נײַע אייגנקייטן',

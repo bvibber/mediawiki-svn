@@ -262,6 +262,13 @@ $messages['lb'] = array(
 	'contributorsaddon-desc' => 'Setzt de Popup JavaScript onMouseOver op d\'Linke vun den "Haaptkontributeuren"',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'contributorsaddon-desc' => "Manampy ny popup JS onMouseOver eo amin'ny rohy « Fandraisan'anjara manokana »",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

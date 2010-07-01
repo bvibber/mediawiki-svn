@@ -67,6 +67,15 @@ $messages['ady-cyrl'] = array(
 	'youtubeauthsub_title' => 'Тхылъышъхьэ',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'youtubeauthsub_submit' => 'Kirim',
+	'youtubeauthsub_clickhere' => 'Klik di sia gasan masuk log ka YouTube',
+	'youtubeauthsub_uploadbutton' => 'Unggah',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard

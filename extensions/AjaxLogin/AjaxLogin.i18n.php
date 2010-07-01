@@ -32,11 +32,12 @@ $messages['qqq'] = array(
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
  * @author J Subhi
  */
 $messages['bjn'] = array(
 	'ajaxLogin2' => 'Piyan yakin kah?
-Piyan kawa kahilangan ubahan piyan pada tungkaran ini munnya piyan tulak keluar tungkaran ini daminian.',
+Piyan kawa kahilangan ubahan nang tuntung piyan ulah di tungkaran ini munnya piyan tulak kaluar tungkaran ini daminian.',
 	'ajaxlogin-create' => 'Ulah sabuah akun',
 	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
 Ngaran pamakay sifatnya sansitip.

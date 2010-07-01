@@ -190,6 +190,13 @@ $messages['lb'] = array(
 	'conditionalshowsection-desc' => 'Den Tag cshow derbäisetzen fir en Abschnitt vum Wikitext ënner gewësse Konditionen ze weisen oder ze verstoppen',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'conditionalshowsection-desc' => 'Manampy ny balizy cshow mba haneho na hanitrika fizarana wikisoratra raha ilaina',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

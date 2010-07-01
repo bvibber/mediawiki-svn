@@ -362,6 +362,13 @@ $messages['mt'] = array(
 	'vector-collapsiblenav-more' => 'Aktar lingwi',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'vector-collapsiblenav-more' => 'Meer talen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -481,6 +488,11 @@ $messages['sr-ec'] = array(
 	'vector-collapsiblenav-more' => 'Још језика:',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'vector-collapsiblenav-more' => 'Još jezika:',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
@@ -531,9 +543,10 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Srhat
  */
 $messages['tr'] = array(
-	'vector-collapsiblenav-preference' => 'Daraltılabilir sol dolaşım menüsünü etkinleştir',
+	'vector-collapsiblenav-preference' => 'Vector temasında dolaşım menüsündeki ögelerin daraltılmasını etkinleştir',
 	'vector-collapsiblenav-more' => 'Daha fazla dil',
 );
 

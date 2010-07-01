@@ -562,6 +562,16 @@ $messages['mt'] = array(
 	'wikieditor-preview-loading' => "Tiela'...",
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-preview-preference' => 'Bewarken en naokieken naos mekaar',
+	'wikieditor-preview-tab' => 'Naokieken',
+	'wikieditor-preview-changes-tab' => 'Wiezigingen',
+	'wikieditor-preview-loading' => "An 't laojen...",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -766,6 +776,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'wikieditor-preview-tab' => 'Pretpregled',
 	'wikieditor-preview-loading' => 'Učitavanje...',
 );
 

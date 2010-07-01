@@ -100,7 +100,7 @@ Gib einen Kommentar ein und drücke auf den Knopf zum Leeren der Seiten.',
 Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Seiten zu erhalten.',
 	'massblank-submit-user' => 'Hole die Liste',
 	'massblank-submit-blank' => 'Ausgewählte Seiten leeren',
-	'massblank-blankcomment' => 'Grund für die Massenleerung:',
+	'massblank-blankcomment' => 'Grund:',
 	'right-massblank' => 'Massenleerung von Seiten',
 );
 
