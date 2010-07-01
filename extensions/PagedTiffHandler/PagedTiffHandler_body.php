@@ -359,7 +359,7 @@ class PagedTiffHandler extends ImageHandler {
 	 * Get the thumbnail extension and MIME type for a given source MIME type
 	 * @return array thumbnail extension and MIME type
 	 */
-	function getThumbType( $ext, $mime, $params ) {
+	function getThumbType( $ext, $mime, $params=null ) {
 		if ( $params[ 'lossy' ] == 'lossy' ) {
 			return array( 'jpg', 'image/jpeg' );
 		} else {
