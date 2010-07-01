@@ -253,7 +253,7 @@ class WikilogItemQuery
 		} elseif ( is_string( $author ) ) {
 			$t = Title::makeTitleSafe( NS_USER, $author );
 			if ( $t !== null ) {
-				$this->mAuthor = $t;
+				$this->mAuthor = User::getCanonicalName( $t->getText() );
 			}
 		}
 	}
@@ -354,7 +354,7 @@ class WikilogItemQuery
 		if ( $this->mAuthor ) {
 			$q_tables[] = 'wikilog_authors';
 			$q_joins['wikilog_authors'] = array( 'JOIN', 'wlp_page = wla_page' );
-			$q_conds['wla_author_text'] = $this->mAuthor->getDBkey();
+			$q_conds['wla_author_text'] = $this->mAuthor;
 		}
 
 		# Filter by tag.
@@ -412,7 +412,7 @@ class WikilogItemQuery
 		}
 
 		if ( $this->mAuthor ) {
-			$query['author'] = $this->mAuthor->getDBKey();
+			$query['author'] = $this->mAuthor;
 		}
 
 		if ( $this->mTag ) {
@@ -594,7 +594,7 @@ class WikilogCommentQuery
 		} elseif ( is_string( $author ) ) {
 			$t = Title::makeTitleSafe( NS_USER, $author );
 			if ( $t !== null ) {
-				$this->mAuthor = $t;
+				$this->mAuthor = User::getCanonicalName( $t->getText() );
 			}
 		}
 	}
@@ -686,7 +686,7 @@ class WikilogCommentQuery
 
 		# Filter by author.
 		if ( $this->mAuthor ) {
-			$q_conds['wlc_user_text'] = $this->mAuthor->getDBkey();
+			$q_conds['wlc_user_text'] = $this->mAuthor;
 		}
 
 		# Filter by date.
@@ -737,7 +737,7 @@ class WikilogCommentQuery
 		}
 
 		if ( $this->mAuthor ) {
-			$query['author'] = $this->mAuthor->getDBKey();
+			$query['author'] = $this->mAuthor;
 		}
 
 		if ( $this->mDate ) {
