@@ -31,9 +31,12 @@ class ResourceLoader {
 		'mw' => 'resources/core/mw.js',
 		'mw.config' => 'resources/core/mw/mw.config.js',
 		'mw.loader' => 'resources/core/mw/mw.loader.js',
-		'mw.log' => 'resources/core/mw/mw.log.js',
 		'mw.msg' => 'resources/core/mw/mw.msg.js',
 		'mw.util' => 'resources/core/mw/mw.util.js',
+	);
+	private static $debugScripts = array(
+		'mw.debug' => 'resources/core/mw/mw.debug.js',
+		'mw.log' => 'resources/core/mw/mw.log.js',
 	);
 	/**
 	 * List of modules.
@@ -131,6 +134,16 @@ class ResourceLoader {
 			// TODO: file_get_contents() errors?
 			// TODO: CACHING!
 			foreach ( self::$coreScripts as $script ) {
+				if ( file_exists( $script ) ) {
+					$retval .= file_get_contents( $script );
+				}
+			}
+			$retval .= $this->getLoaderJS();
+		}
+		if ( $this->useDebugMode ) {
+			// TODO: file_get_contents() errors?
+			// TODO: CACHING!
+			foreach ( self::$debugScripts as $script ) {
 				if ( file_exists( $script ) ) {
 					$retval .= file_get_contents( $script );
 				}

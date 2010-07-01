@@ -135,7 +135,9 @@ window.mw.loader = new ( function() {
 									// Modules are in the format foo|bar|baz|buz
 									{ 'modules': batch.join( '|' ) },
 									// Pass configuration values through the URL
-									mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] )
+									mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] ),
+									// Ensure request comes back in the proper mode (debug or not)
+									{ 'debug': typeof mw.debug !== 'undefined' ? '1' : '0' }
 								)
 						} ) )
 						.load( function() {
