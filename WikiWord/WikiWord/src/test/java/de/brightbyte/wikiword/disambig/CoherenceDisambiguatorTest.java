@@ -6,10 +6,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import de.brightbyte.data.LabeledMatrix;
+import de.brightbyte.data.MapLabeledMatrix;
 import de.brightbyte.data.Pair;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.disambig.CoherenceDisambiguator.CoherenceDisambiguation;
 import de.brightbyte.wikiword.disambig.Disambiguator.Interpretation;
 import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.LocalConcept;
@@ -24,6 +27,33 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		super();
 	}
 
+	public void testGetScore() throws PersistenceException {
+		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
+		
+		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
+		
+		LocalConcept city_of_London = getConcept("City_of_London");
+		LocalConcept united_Kingdom = getConcept("United_Kingdom");
+		
+		//united_Kingdom.setCardinality(100000);
+		
+		Pair<Term, LocalConcept> uk_as_United_Kingdom = new Pair<Term, LocalConcept>(new Term("UK"), united_Kingdom);
+		Pair<Term, LocalConcept> london_as_City_of_London = new Pair<Term, LocalConcept>(new Term("London"), city_of_London);
+
+		CoherenceDisambiguator.Interpretation interp = new CoherenceDisambiguator.Interpretation(uk_as_United_Kingdom, london_as_City_of_London);
+		CoherenceDisambiguation r1 = disambiguator.getScore(interp, null, similarities, featureFetcher);
+		
+		int oldPop = city_of_London.getCardinality();
+		city_of_London.setCardinality(oldPop*2);
+
+		CoherenceDisambiguation r2 = disambiguator.getScore(interp, null, similarities, featureFetcher);
+		city_of_London.setCardinality(oldPop);
+		
+		double score1 = r1.getScore();
+		double score2 = r2.getScore();
+		assertTrue("More popularity implies better score", score1 < score2 );
+	}
+	
 	public void testGetSequenceInterpretations() throws PersistenceException {
 		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		

@@ -77,7 +77,10 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			if (pop<0.5) return 0;
 			if (pop<1) pop=1;
 			
-			double n = 1 - 1/(Math.sqrt(Math.log(pop))+1); //XXX: black voodoo magic ad hoc formula with no deeper meaing.
+			//XXX: black voodoo magic ad hoc formula with no deeper meaing.
+			//double n = 1 - 1/(Math.log(pop)+1); //normalized log scale 
+			//double n = 1 - 1/(Math.sqrt(Math.log(pop))+1); //dampened normalized log scale
+			double n =1 - (0.5/Math.sqrt((pop+200)/200)); //nice and smooth, but has magic params that may depend on the wiki
 			return n;  
 		}
 	};
@@ -436,7 +439,8 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		
 		LabeledVector<Integer> sum = ConceptFeatures.newIntFeaturVector( concepts.size() * 200 ); //XXX: magic number
 		Map<Integer, ConceptFeatures<C, Integer>> disambigFeatures = new HashMap<Integer, ConceptFeatures<C, Integer>>();
-		double sim = 0, pop = 0, weight = 0;
+		double sim = 0, pop = 0, weight = 0, popf = 0, simf = 0;
+
 		int i=0, j=0;
 		for (Map.Entry<TermReference, C> ea: concepts.entrySet()) {
 			C a = ea.getValue();
@@ -496,6 +500,8 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 				d = doubleSanity(d, "normal similarity score for "+a+" / "+b, "check similarityMeasure!", 0, 0.1, 1, 0.1);
 				
 				sim += d;
+				simf += similarityNormalizer.apply(d); 		
+
 				simCount ++;
 			}
 			
@@ -508,7 +514,9 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 			
 			p = weightCombiner.apply(p, w);
 			
-			pop += p; //XXX: keep raw and processed pop 
+			pop += p;  
+			popf += popularityNormalizer.apply(p);
+			
 			weight += w; 
 		}
 		
@@ -523,14 +531,15 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		
 		sim = n == 0 ? 0 : sim / n; //scale
 		pop = c == 0 ? 0 : pop / c; //scale
+
+		simf = n == 0 ? 0 : simf / n; //scale
+		popf = c == 0 ? 0 : popf / c; //scale
+
 		weight = c == 0 ? 0 : weight / c; //scale
 		
 		pop = doubleSanity(pop, "normal popularity", "check popularityMeasure!", 0, 0.1, Double.MAX_VALUE, 0);
 		sim = doubleSanity(sim, "normal average simility", "ooops!", 0, 0.1, 1, 0.1);
 		
-		double popf = popularityNormalizer.apply(pop);
-		double simf = similarityNormalizer.apply(sim);
-
 		popf = doubleSanity(popf, "normal popularity", "check popularityNormalizer!", 0, 0.1, 1, 0.1);
 		simf = doubleSanity(simf, "normal similarity", "check similarityNormalizer!", 0, 0.1, 1, 0.1);
 		
