@@ -346,7 +346,7 @@ header("Content-Type: text/html; charset=UTF-8");
 </head>
 <body>
     <div class="header">
-      <div style="float:left">WikiPics 0.1&alpha; (experimental)</div>
+      <div style="float:left"><?php print WIKIPICS_VERSION; ?></div>
       <div style="float:right"><a href="http://wikimedia.de">Wikimedia Deutschland e.V.</a></div>
     <!--   <h1>WikiWord Navigator</h1>
       <p>Experimental semantic navigator and thesaurus interface for Wikipedia.</p>

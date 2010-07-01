@@ -3,6 +3,8 @@ define("WIKIPICS", 1);
 define("WIKIWORD", 1);
 $IP = dirname( dirname(__FILE__) );
 
+define('WIKIPICS_VERSION', '<span style="color:red">WikiPics 0.2&alpha; (experimental)</span>');
+
 require_once("$IP/config.php");
 require_once("$IP/common/wwimages.php");
 
@@ -154,6 +156,7 @@ $format = @$_REQUEST['format'];
 
 if ( $term===null ) {
 	$term = @$_SERVER['PATH_INFO'];
+	$term = preg_replace('!^/!', '', $term);
 }
 
 if ($lang===null && $term!==null && preg_match('/^\s*(.+)[:](.+)\s*$/', $term, $m)) {
@@ -166,7 +169,14 @@ if ($conceptId===null && $term!==null && preg_match('/^\s*[#$](\d+)\s*$/', $term
     $term = NULL;
 }
 
-if (!isset($wwSelf)) $wwSelf = @$_SERVER["PHP_SELF"];
+if (!isset($wwSelf)) {
+    if ( isset( $_SERVER["SCRIPT_NAME"] ) ) $wwSelf = $_SERVER["SCRIPT_NAME"];
+    else if ( isset( $_SERVER["PHP_SELF"] ) ) $wwSelf = $_SERVER["PHP_SELF"];
+    else './search.php';
+}
+
+if (!isset($scriptPath)) $scriptPath = dirname($wwSelf);
+if (!isset($skinPath)) $skinPath = "$scriptPath/../skin/";
 
 $error = NULL;
 
@@ -203,7 +213,7 @@ $result = NULL;
 $fallback_languages = array( "en" ); #TODO: make the user define this list
 
 if ( $lang ) {
-    $languages = explode( '|', $lang );
+    $languages = preg_split('![,;/|+]!', $lang);
     $languages = array_merge( $languages, $fallback_languages ); 
     $languages = array_unique( $languages );
 } else {
@@ -233,9 +243,6 @@ if (!$error) {
   }
   $profiling['thesaurus'] += (microtime(true) - $t);
 }
-
-if (!isset($scriptPath)) $scriptPath = "./";
-if (!isset($skinPath)) $skinPath = "$scriptPath/../skin/";
 
 /*if ( $format == "atom" || $format == "xml" || $format == "opensearch" ) include("response.atom.php"); 
 else*/ 

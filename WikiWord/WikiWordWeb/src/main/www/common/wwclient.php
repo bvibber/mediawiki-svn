@@ -99,7 +99,7 @@ class WWClient {
 		'query' => 'info',
 		'gcid' => $id,
 		'lang' => $lang,
-		'fields' => fields,
+		'fields' => $fields,
 		'rclang' => $rclang
 	);
 

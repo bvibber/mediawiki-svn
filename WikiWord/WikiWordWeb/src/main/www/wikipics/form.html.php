@@ -22,7 +22,12 @@ if (!defined("WIKIPICS")) die("not a valid entry point");
 	  <td>
 	    <input type="submit" name="go" value="go"/>
 	  </td>
-	  <td class="note">
+	  <td width="100%">
+	    &nbsp;
+	  </td>
+	</tr>
+	<tr>
+	  <td class="note" colspan="5">
 	    <small>Note: this is a thesaurus lookup, not a full text search. Multiple words are handeled as a single phrase. Only exact matches of complete phrases will be found. </small>
 	  </td>
 	</tr>
