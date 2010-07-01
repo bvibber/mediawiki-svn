@@ -200,7 +200,7 @@ $norm = 1;
 $mode = NULL;
 $result = NULL;
 
-$fallback_languages = array( "en", "commons" ); #TODO: make the user define this list
+$fallback_languages = array( "en" ); #TODO: make the user define this list
 
 if ( $lang ) {
     $languages = explode( '|', $lang );
@@ -222,11 +222,11 @@ if (!$error) {
   try {
       if ($lang && $conceptId) {
 	  $mode = "concept";
-	  $result = $thesaurus->getConceptInfo($conceptId, $allLanguages);
+	  $result = $thesaurus->getConceptInfo($conceptId, $lang, null, $allLanguages);
 	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
 		  $mode = "term";
-		  $result = $thesaurus->getConceptsForTerm($lang, $term, $allLanguages, $norm, $limit);
+		  $result = $thesaurus->getConceptsForTerm($lang, $term, $languages, $norm, $allLanguages, $limit);
       } 
   } catch (Exception $e) {
       $error = $e->getMessage();
@@ -237,7 +237,8 @@ if (!$error) {
 if (!isset($scriptPath)) $scriptPath = "./";
 if (!isset($skinPath)) $skinPath = "$scriptPath/../skin/";
 
-if ( $format == "atom" || $format == "xml" || $format == "opensearch" ) include("response.atom.php"); 
-else include("response.html.php"); 
+/*if ( $format == "atom" || $format == "xml" || $format == "opensearch" ) include("response.atom.php"); 
+else*/ 
+include("response.html.php"); 
 
 $utils->close();

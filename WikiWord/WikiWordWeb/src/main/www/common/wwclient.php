@@ -94,11 +94,13 @@ class WWClient {
 	return $p['scores'];
     }*/
 
-    function getConceptInfo( $id, $lang = null ) {
+    function getConceptInfo( $id, $lang = null, $fields = null, $rclang = null ) {
 	$param = array(
 		'query' => 'info',
 		'gcid' => $id,
-		'lang' => $lang
+		'lang' => $lang,
+		'fields' => fields,
+		'rclang' => $rclang
 	);
 
 	$rs = $this->query( $param );
@@ -132,12 +134,13 @@ class WWClient {
 	return $rs;
     }*/
 
-    function getConceptsForTerm( $qlang, $term, $languages, $norm = 1, $limit = 100 ) {
+    function getConceptsForTerm( $qlang, $term, $languages, $norm = 1, $rclang = null, $limit = 100 ) {
 	if ( is_array( $languages ) ) $languages = implode('|', $languages);
 
 	$param = array(
 		'query' => 'concepts',
 		'qlang' => $qlang,
+		'rclang' => $rclang,
 		'lang' => $languages,
 		'norm' => $norm,
 		'term' => $term,

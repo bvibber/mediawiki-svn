@@ -72,20 +72,26 @@ class WWThesaurus extends WWUTils {
 	return $s;
     }
 
-    function queryConceptsForTerm($qlang, $term, $languages, $norm = 1, $limit = 100) {
+    function queryConceptsForTerm($qlang, $term, $languages, $norm = 1, $rclang = null, $limit = 100) {
 	global $wwTablePrefix, $wwThesaurusDataset, $wwLanguages;
 
 	if ( !$languages ) $languages = array_keys( $wwLanguages );
 
 	$term = $this->normalizeSearchString($term, $norm);
 
-	$sql = "SELECT I.*, S.score FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I"
-	      . " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_search_index as S ON I.concept = S.concept "
-	      . " WHERE term = " . $this->quote($term) 
+	$sql = "SELECT I.*, S.score ";
+	if ( $rclang ) $sql .= ", R.resources "
+
+	$sql .= " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I ";
+	$sql .= " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_search_index as S ON I.concept = S.concept ";
+	if ( $rclang ) $sql .= " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_resource_index as R ON R.concept = I.concept "
+
+	$sql .= " WHERE term = " . $this->quote($term) 
 	      . " AND I.lang IN " . $this->quoteSet($languages) 
 	      . " AND S.lang = " . $this->quote($qlang) 
-	      . " AND S.norm <= " . (int)$norm
-	      . " ORDER BY S.score DESC, S.concept "
+	      . " AND S.norm <= " . (int)$norm;
+
+	$sql .= " ORDER BY S.score DESC, S.concept "
 	      . " LIMIT " . (int)$limit;
 
 	#FIXME: query-lang vs. output-languages!
@@ -93,8 +99,8 @@ class WWThesaurus extends WWUTils {
 	return $this->query($sql);
     }
 
-    function getConceptsForTerm($qlang, $term, $languages, $norm = 1, $limit = 100) {
-	$rs = $this->queryConceptsForTerm($qlang, $term, $languages);
+    function getConceptsForTerm($qlang, $term, $languages, $norm = 1, $rclang = null, $limit = 100) {
+	$rs = $this->queryConceptsForTerm($qlang, $term, $languages, $norm, $rclang, $limit);
 	$list = WWUtils::slurpRows($rs);
 	mysql_free_result($rs);
 	return $this->buildConcepts($list);
@@ -243,6 +249,23 @@ class WWThesaurus extends WWUTils {
     }
     */
 
+    function spliceResources( $rc, &$into ) {
+	if (!$rc) return;
+
+	if (is_string($rc)) {
+		$rr = explode("|", $rc);
+
+		$rc = array();
+		foreach ($rr as $r) {
+		    list($t, $lang, $n) = explode(":", $p, 3);
+		    $rc[$lang][$n] = (int)$t;
+		}
+	}
+
+	if (!$into) $into = $rc;
+	else $into = array_merge( $into, $rc );
+    }
+
     function splitPages( $s ) {
 	$pp = explode("|", $s);
 
@@ -269,7 +292,7 @@ class WWThesaurus extends WWUTils {
     }
 
     /////////////////////////////////////////////////////////
-    function getConceptInfo( $id, $lang = null, $fields = null ) {
+    function getConceptInfo( $id, $lang = null, $fields = null, $rclang = null ) {
 	global $wwTablePrefix, $wwThesaurusDataset;
 
 	#TODO: concept cache!
@@ -279,8 +302,13 @@ class WWThesaurus extends WWUTils {
 
 	#TODO: scores, concept-type, ...
 
-	$sql = "SELECT $fields FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info "
-	    . " WHERE concept = ".(int)$id;
+	$sql = "SELECT $fields ";
+	if ( $rclang ) $sql .= ", R.resources ";
+	  
+	$sql .= " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I ";
+	if ( $rclang ) $sql .= " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_resource_index as R ON R.concept = I.concept ";
+
+	$sql .= " WHERE concept = ".(int)$id;
 
 	if ($lang) {
 	    if ( is_array($lang) ) $sql .= " AND lang IN " . $this->quoteSet($lang);
@@ -352,7 +380,9 @@ class WWThesaurus extends WWUTils {
 
 	    if (@$row["name"] !== null) $concept["name"][$lang] = $row["name"];
 	    if (@$row["definition"] !== null) $concept["definition"][$lang] = $row["definition"];
-	    if (@$row["pages"] !== null) $concept["pages"][$lang] = $this->splitPages($row["pages"]);
+
+	    if (@$row["resources"])  $this->spliceResources($row["resources"], &$concept["pages"]) );
+	    else if (@$row["pages"]) $concept["pages"][$lang] = $this->splitPages($row["pages"]);
 
 	    if (@$row["broader"] !== null)  $broader[$lang] =  $this->splitConcepts($row["broader"]);
 	    if (@$row["narrower"] !== null) $narrower[$lang] = $this->splitConcepts($row["narrower"]);
