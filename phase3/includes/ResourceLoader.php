@@ -138,14 +138,13 @@ class ResourceLoader {
 					$retval .= file_get_contents( $script );
 				}
 			}
-			$retval .= $this->getLoaderJS();
-		}
-		if ( $this->useDebugMode ) {
-			// TODO: file_get_contents() errors?
-			// TODO: CACHING!
-			foreach ( self::$debugScripts as $script ) {
-				if ( file_exists( $script ) ) {
-					$retval .= file_get_contents( $script );
+			if ( $this->useDebugMode ) {
+				// TODO: file_get_contents() errors?
+				// TODO: CACHING!
+				foreach ( self::$debugScripts as $script ) {
+					if ( file_exists( $script ) ) {
+						$retval .= file_get_contents( $script );
+					}
 				}
 			}
 			$retval .= $this->getLoaderJS();
@@ -190,7 +189,7 @@ class ResourceLoader {
 			$retval .= "mw.loader.implement( '$module', function() { $script }, '$style', { $messages } );\n";
 		}
 		
-		if ( $this->useJSMin ) {
+		if ( !$this->useDebugMode && $this->useJSMin ) {
 			$retval = $this->jsMin( $retval );
 		}
 		return $retval;
