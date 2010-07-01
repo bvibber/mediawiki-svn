@@ -54,6 +54,7 @@ class ResourceLoader {
 		'bar' => array(
 			'script' => 'resources/test/bar.js',
 			'loader' => 'resources/test/loader.js',
+			'style' => 'resources/test/bar.css',
 		),
 		'buz' => array(
 			'script' => 'resources/test/baz.js',
@@ -204,7 +205,7 @@ class ResourceLoader {
 		global $wgMemc;
 		$key = wfMemcKey( 'resourceloader', 'cssmin', md5( $css ) );
 		$cached = $wgMemc->get( $key );
-		if( $cached !== false ) {
+		if( $cached !== false && $cached !== null ) {
 			return $cached;
 		}
 		// TODO: Test how well this path rewriting stuff works with various setups
@@ -217,7 +218,7 @@ class ResourceLoader {
 		global $wgMemc;
 		$key = wfMemcKey( 'resourceloader', 'cssjanus', md5( $css ) );
 		$cached = $wgMemc->get( $key );
-		if ( $cached !== false ) {
+		if ( $cached !== false && $cached !== null ) {
 			return $cached;
 		}
 		$retval = $css; // TODO: Actually flip
