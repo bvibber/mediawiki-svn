@@ -742,6 +742,15 @@ $messages['ru'] = array(
 	'filelist-image-desc' => 'по убыванию',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'filelist' => 'Список файлів',
+	'filelist-show-list' => 'Вказати список',
+	'filelist-image-desc' => 'опис',
+);
+
 /** Yakut (Саха тыла) */
 $messages['sah'] = array(
 	'filelist-image-desc' => 'быһаарыы',

@@ -59,7 +59,7 @@ class SpecialPageTranslation extends SpecialPage {
 		if ( $revision === -1 ) {
 			$page = TranslatablePage::newFromTitle( $title );
 			$page->removeTags();
-			$page->getTitle()-invalidateCache();
+			$page->getTitle()->invalidateCache();
 			global $wgUser;
 			$logger = new LogPage( 'pagetranslation' );
 			$params = array( 'user' => $wgUser->getName() );
@@ -487,7 +487,8 @@ class SpecialPageTranslation extends SpecialPage {
 		$dbw->delete( 'translate_sections', array( 'trs_page' => $page->getTitle()->getArticleId() ), __METHOD__ );
 		$ok = $dbw->insert( 'translate_sections', $inserts, __METHOD__ );
 
-		// Stores the names of changed sections in the database. Not currently used for anything.
+		/* Stores the names of changed sections in the database.
+		 * Used for calculating completion percentages for outdated messages */
 		$page->addMarkedTag( $newrevision, $changed );
 		$this->addFuzzyTags( $page, $changed );
 
@@ -500,7 +501,7 @@ class SpecialPageTranslation extends SpecialPage {
 		);
 		$logger->addEntry( 'mark', $page->getTitle(), null, array( serialize( $params ) ) );
 
-		$page->getTitle()-invalidateCache();
+		$page->getTitle()->invalidateCache();
 		$this->setupRenderJobs( $page );
 
 		// Re-generate caches

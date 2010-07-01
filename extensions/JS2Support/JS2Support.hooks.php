@@ -6,12 +6,12 @@
 class JS2SupportHooks {
 
 	public static function setup(){
-		global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths,
+		global $wgOut, $js2Dir, $wgAutoloadClasses, $wgResourceLoaderNamedPaths,
 		$wgExtensionJavascriptModules, $wgEnableTestJavascriptModules;
 
 		// Remap output page as part of the extension setup
-		$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
-		$wgAutoloadClasses[ 'ScriptLoaderOutputPage' ] = $js2Dir . 'ScriptLoaderOutputPage.php';
+		$wgOut = new StubObject( 'wgOut', 'ResourceLoaderOutputPage' );
+		$wgAutoloadClasses[ 'ResourceLoaderOutputPage' ] = $js2Dir . 'ResourceLoaderOutputPage.php';
 
 		// Include all the mediaWiki autoload classes:
 		require( $js2Dir . 'JS2AutoLoader.php');
@@ -22,19 +22,18 @@ class JS2SupportHooks {
 		}
 
 		// Update all the javascript modules classNames and localization by reading respective loader.js files
-		// @dependent on all extensions defining $wgExtensionJavascriptModules paths in config file ( not in setup )
+		// @dependent on all extensions defining $wgExtensionJavascriptModules paths in config file ( not after setup )
 		//
-		// @NOTE runtime for loadClassPaths with 8 or so loaders with 100 or so named paths is
-		// is around .002 seconds on my laptop. Could probably be further optimized and of course it only runs
-		// on non-cached pages.
-		jsClassLoader::loadClassPaths();
+		// @NOTE runtime for loadResourcePaths with 8 or so loaders with 100 or so named paths is
+		// is around .002 seconds on my laptop. If this is a concern we can switch resource defines to php
+		NamedResourceLoader::loadResourcePaths();
 	}
 
 	public static function addJSVars( &$vars ) {
 		global $wgExtensionAssetsPath;
 		$vars = array_merge( $vars,
 			array(
-				'wgScriptLoaderLocation' => $wgExtensionAssetsPath . '/JS2Support/mwScriptLoader.php'
+				'wgScriptLoaderLocation' => $wgExtensionAssetsPath . '/JS2Support/mwResourceLoader.php'
 			)
 		);
 		return true;

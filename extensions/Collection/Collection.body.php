@@ -17,7 +17,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -627,7 +627,7 @@ EOS
 		$revision = Revision::newFromTitle( $title, $oldid );
 		$collection['items'][] = array(
 			'type' => 'article',
-			'content-type' => 'text/x-wiki',
+			'content_type' => 'text/x-wiki',
 			'title' => $title->getPrefixedText(),
 			'revision' => strval( $oldid ),
 			'latest' => strval( $latest ),
@@ -804,7 +804,7 @@ EOS
 			}
 			$d = array(
 				'type' => 'article',
-				'content-type' => 'text/x-wiki',
+				'content_type' => 'text/x-wiki',
 				'title' => $articleTitle->getPrefixedText(),
 				'latest' => $latest,
 				'revision' => $oldid,
@@ -1195,7 +1195,7 @@ EOS
 		}
 		$article = array(
 			'type' => 'article',
-			'content-type' => 'text/x-wiki',
+			'content_type' => 'text/x-wiki',
 			'title' => $title->getPrefixedText()
 		);
 		if ( $oldid ) {

@@ -244,7 +244,7 @@ $messages['pms'] = array(
  * @author Indech
  */
 $messages['pt'] = array(
-	'conditionalshowsection-desc' => 'A adicionar a marcação cshow para mostrar ou ocultar condicionalmente uma secção de texto wiki',
+	'conditionalshowsection-desc' => 'Adiciona o elemento cshow para mostrar ou ocultar condicionalmente uma secção de texto wiki',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -280,6 +280,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'conditionalshowsection-desc' => 'Pridáva značku cshow na podmienečné zobrazenie/skrytie sekcie wikitextu',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'conditionalshowsection-desc' => 'Dodajanje etikete cshow za pogojno prikazovanje/skrivanje razdelka wikibesedila',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

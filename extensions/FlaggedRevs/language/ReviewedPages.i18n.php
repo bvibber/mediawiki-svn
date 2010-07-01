@@ -332,8 +332,12 @@ Se da un enlace a la última revisión de este nivel.",
  */
 $messages['et'] = array(
 	'reviewedpages' => 'Ülevaadatud leheküljed',
+	'reviewedpages-leg' => 'Ülevaadatud lehekülgede loetlemine',
+	'reviewedpages-list' => "See loend sisaldab [[{{MediaWiki:Validationpage}}|ülevaadatud]] lehekülgi, mille ''kõrgeimaks saavutatud'' (redaktsiooni) ülevaatamistasemeks on kindlaks määratud tase.
+	Toodud on link viimasele sellel tasemel redaktsioonile.",
 	'reviewedpages-none' => 'Siin loendis ei ole lehekülgi',
 	'reviewedpages-all' => 'ülevaadatud versioonid',
+	'reviewedpages-best' => 'parim redaktsioon',
 );
 
 /** Basque (Euskara)
@@ -462,8 +466,9 @@ E Gleich isch aagee zue dr letschte Version uf däm Nivo.",
  */
 $messages['he'] = array(
 	'reviewedpages' => 'דפים שנבדקו',
-	'reviewedpages-leg' => 'רשימת הדפים שאושרו לפי הרמה הגבוהה ביותר',
-	'reviewedpages-list' => 'דף זה מציג את כל הדפים שאושרו (לכל היותר) עד לרמה שצוינה.',
+	'reviewedpages-leg' => 'רשימת הדפים שאושרו',
+	'reviewedpages-list' => "דף זה מציג את כל הדפים [[{{MediaWiki:Validationpage}}|המאושרים]] ש'''רמתם הגבוהה ביותר''' (לגירסה) היא הרמה שצוינה.
+יוצג קישור לגירסה האחרונה ברמה זו.",
 	'reviewedpages-none' => 'אין דפים ברשימה זו',
 	'reviewedpages-lev-0' => 'נצפה',
 	'reviewedpages-lev-1' => 'איכותי',
@@ -1288,8 +1293,9 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'reviewedpages' => 'Các trang đã duyệt',
-	'reviewedpages-leg' => 'Liệt kê các trang theo cấp độ cao nhất',
-	'reviewedpages-list' => '{{PLURAL:$1|Trang|Các trang}} sau đã được duyệt thành cấp độ chỉ định.',
+	'reviewedpages-leg' => 'Liệt kê các trang đã duyệt',
+	'reviewedpages-list' => "Đây là danh sách các trang [[{{MediaWiki:Validationpage}}|duyệt]] có phiên bản được duyệt thành cấp độ ''tối cao'' chỉ định.
+Cấp độ có liên kết đến phiên bản gần đây nhất.",
 	'reviewedpages-none' => 'Danh sách này không có trang nào',
 	'reviewedpages-lev-0' => 'Đã xem qua',
 	'reviewedpages-lev-1' => 'Chất lượng',

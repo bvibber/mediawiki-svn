@@ -108,11 +108,14 @@ Arventennoù zo a c'hall lakaat da cheñch ar stumm diskwelet d'al lennerien pe 
 	'configuredpages-def-stable' => 'stumm embannet',
 );
 
-/** Bosnian (Bosanski) */
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
 $messages['bs'] = array(
 	'configuredpages-prec-none' => 'bez prednosti',
 	'configuredpages-prec-quality' => 'poredak po kvalitetu',
 	'configuredpages-prec-pristine' => 'prvobitni poredak',
+	'configuredpages-def-draft' => 'posljednja verzija',
 );
 
 /** Catalan (Català)
@@ -151,11 +154,22 @@ Einige Einstellungen können eine Abweichung hinsichtlich der Version bewirken, 
 	'configuredpages-def-stable' => 'stabile Version',
 );
 
-/** Zazaki (Zazaki) */
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
 $messages['diq'] = array(
+	'configuredpages' => 'Pelanê ke eyaranşê kontrol est ê',
+	'configuredpages-text' => 'Cor de listeyê pelan este ke eyaranê inan pelanê binan ra zaf feqliye.
+
+Tey eyran belki vuriyena feqet versiyan inan bini de mocneyena  ya zi wedekaran eskena pelan kilit bike u nuşteyan kontrol bike.',
+	'configuredpages-none' => 'Ena liste de pelan çini yo',
+	'configuredpages-config' => 'Vıraştış',
+	'configuredpages-precedence' => 'Numune:',
 	'configuredpages-prec-none' => 'pêşani çina',
 	'configuredpages-prec-quality' => 'pêşaneyê qaliteyi',
 	'configuredpages-prec-pristine' => 'pêşaneyê ewwil',
+	'configuredpages-def-draft' => 'versiyonê peniyan',
+	'configuredpages-def-stable' => 'versiyonê sebiti',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -224,6 +238,24 @@ Algunos ajustes puede que cambien qué versión es mostrada a los lectores o pue
 	'configuredpages-prec-pristine' => 'precedencia prístina',
 	'configuredpages-def-draft' => 'última versión',
 	'configuredpages-def-stable' => 'versión publicada',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'configuredpages' => 'Ülevaatamissätetega leheküljed',
+	'configuredpages-text' => 'Allpool on loetletud leheküljed, millele on seatud võrgukoha vaikesätetest erinevad  heakskiitmissätted.
+
+Mõnest sättest võib oleneda, milline versioon lugejale kuvatakse või kes saab teha muudatusi, mis ei vaja ülevaatamist.',
+	'configuredpages-none' => 'Selles loendis pole lehekülgi.',
+	'configuredpages-config' => 'Sätted',
+	'configuredpages-precedence' => 'Järk:',
+	'configuredpages-prec-none' => 'uusim kord vaadatud',
+	'configuredpages-prec-quality' => 'uusim hea',
+	'configuredpages-prec-pristine' => 'uusim laitmatu',
+	'configuredpages-def-draft' => 'uusim versioon',
+	'configuredpages-def-stable' => 'püsiv versioon',
 );
 
 /** Basque (Euskara)
@@ -309,12 +341,16 @@ E Deil Yystellige chenne sich villicht unterscheide, je nochdäm weli Version em
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author DoviJ
  */
 $messages['he'] = array(
 	'configuredpages-none' => 'אין דפים ברשימה זו.',
+	'configuredpages-precedence' => 'סדר קדימה',
 	'configuredpages-prec-none' => 'ללא עדיפות',
 	'configuredpages-prec-quality' => 'עדיפות לגרסאות איכותיות',
 	'configuredpages-prec-pristine' => 'עדיפות לגרסאות מושלמות',
+	'configuredpages-def-draft' => 'הגירסה האחרונה',
+	'configuredpages-def-stable' => 'גירסה יציבה',
 );
 
 /** Croatian (Hrvatski)
@@ -382,14 +418,18 @@ Alcun configurationes pote cambiar le version que es monstrate al lectores o lim
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author ArdWar
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'configuredpages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'configuredpages-config' => 'Pengaturan',
+	'configuredpages-precedence' => 'Diutamakan:',
 	'configuredpages-prec-none' => 'tidak ada preseden',
 	'configuredpages-prec-quality' => 'preseden berkualitas',
 	'configuredpages-prec-pristine' => 'preseden murni',
 	'configuredpages-def-draft' => 'versi terbaru',
+	'configuredpages-def-stable' => 'versi stabil',
 );
 
 /** Italian (Italiano) */
@@ -423,9 +463,12 @@ $messages['ja'] = array(
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'configuredpages' => 'გვერდები შემოწმების კონფიგურაციით',
+	'configuredpages-none' => 'ამ სიაში გვერდები არ არის.',
 	'configuredpages-config' => 'კონფიგურაცია',
 	'configuredpages-precedence' => 'პრიორიტეტი:',
 	'configuredpages-prec-none' => 'უკანასკნელად შემოწმებული',
+	'configuredpages-prec-pristine' => 'უკანასკნელი სუფთა ვერსია',
 	'configuredpages-def-draft' => 'უკანასკნელი ვერსია',
 	'configuredpages-def-stable' => 'გამოქვეყნებული ვერსია',
 );
@@ -478,7 +521,7 @@ Verschidden Astellungen kënne beaflosse wat fir eng Versioun de Lieser gewise g
  */
 $messages['mk'] = array(
 	'configuredpages' => 'Страници со прилагодувања за преглед',
-	'configuredpages-text' => 'Подолу е наведен списокот на страници што се прилагодени со поинакви поставки за одобрување од основните на веб-страницата.
+	'configuredpages-text' => 'Подолу е наведен списокот на страници што се прилагодени со поинакви поставки за одобрување од основните на мрежното место.
 
 Некои поставки може да ја променат верзијата што ќе им се прикажува на корисниците, или уште повеќе да ограничи кој сè може да врши уредувања без да треба тие да се прегледуваат.',
 	'configuredpages-none' => 'Нема страници на овој список.',
@@ -644,10 +687,12 @@ Alguns parâmetros podem alterar a versão que é apresentada aos usuários, ou 
 	'configuredpages-def-stable' => 'versão publicada',
 );
 
-/** Romanian (Română) */
+/** Romanian (Română)
+ * @author Cin
+ */
 $messages['ro'] = array(
-	'configuredpages-prec-none' => 'nicio prioritate',
-	'configuredpages-prec-quality' => 'preferință pentru calitate',
+	'configuredpages-prec-none' => 'ultimele verificate',
+	'configuredpages-prec-quality' => 'ultima calitate',
 );
 
 /** Tarandíne (Tarandíne) */
@@ -673,6 +718,13 @@ $messages['ru'] = array(
 	'configuredpages-prec-pristine' => 'последняя чистая версия',
 	'configuredpages-def-draft' => 'последняя версия',
 	'configuredpages-def-stable' => 'опубликованная версия',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'configuredpages-config' => 'Конфіґурація',
 );
 
 /** Yakut (Саха тыла) */
@@ -830,6 +882,10 @@ $messages['vep'] = array(
  * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
+	'configuredpages' => 'Các trang có cấu hình duyệt tùy biến',
+	'configuredpages-text' => 'Đây là danh sách các trang được cấu hình duyệt khác với mặc định của website.
+
+Một số tùy chọn có thể có ảnh hưởng đến phiên bản được trình bày cho độc giả hoặc hạn chế những người có thể sửa đổi không cần duyệt sau.',
 	'configuredpages-none' => 'Danh sách không có trang nào.',
 	'configuredpages-config' => 'Thiết lập',
 	'configuredpages-precedence' => 'Bản trước:',

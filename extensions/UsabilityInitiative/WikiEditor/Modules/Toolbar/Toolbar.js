@@ -47,6 +47,7 @@ $j(document).ready( function() {
 							'es': 'format-bold-N.png',
 							'he': 'format-bold-B.png',
 							'it': 'format-bold-G.png',
+							'ka': 'format-bold-ka.png',
 							'nl': 'format-bold-V.png',
 							'pt': 'format-bold-N.png',
 							'pt-br': 'format-bold-N.png',
@@ -92,6 +93,7 @@ $j(document).ready( function() {
 							'es': 'format-italic-C.png',
 							'he': 'format-italic-I.png',
 							'it': 'format-italic-C.png',
+							'ka': 'format-italic-ka.png',
 							'nl': 'format-italic-C.png',
 							'pt': 'format-italic-I.png',
 							'pt-br': 'format-italic-I.png',
@@ -995,15 +997,13 @@ $j(document).ready( function() {
 				// The following things are considered to be external links:
 				// * Starts a URL protocol
 				// * Starts with www.
-				// * Ends with a . followed by two or more letters
-				// * Contains a . followed by two or more letters followed by /
-				// All of these are potentially valid titles, and the latter three
+				// All of these are potentially valid titles, and the latter two
 				// categories match about 6300 titles in enwiki's ns0. Out of 6.9M
 				// titles, that's 0.09%
 				if ( typeof arguments.callee.regex == 'undefined' ) {
 					// Cache the regex
 					arguments.callee.regex =
-						new RegExp( "(^(" + wgUrlProtocols + "))|(^www\\.)|([^.]\\.[a-z]{2,}($|\\/))", 'i');
+						new RegExp( "^(" + wgUrlProtocols + "|www\\.)", 'i');
 				}
 				return s.match( arguments.callee.regex );
 			}

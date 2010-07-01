@@ -1,6 +1,6 @@
 <?php
 /**
- * @author dch
+ * @author ning
  */
 
 /**
@@ -53,7 +53,7 @@ abstract class SMW_NMLanguage {
 	/**
 	 * Returns the label of the special property with the ID $propID.
 	 * @param int propID
-	 *			 ID of the special property
+	 * 			ID of the special property
 	 * @return String Label of the special property
 	 */
 	function getSpecialPropertyLabel( $propID ) {
@@ -100,9 +100,9 @@ abstract class SMW_NMLanguage {
 	 * Returns the name of the namespace with the ID <$namespaceID>.
 	 *
 	 * @param int $namespaceID
-	 *		 ID of the namespace whose name is requested
+	 * 		ID of the namespace whose name is requested
 	 * @return string
-	 *		 Name of the namespace or <null>.
+	 * 		Name of the namespace or <null>.
 	 *
 	 */
 	public function getNamespace( $namespaceID ) {
@@ -113,7 +113,7 @@ abstract class SMW_NMLanguage {
 	 * Returns the array with all namespaces of the NM extension.
 	 *
 	 * @return string
-	 *		 Array of additional namespaces.
+	 * 		Array of additional namespaces.
 	 *
 	 */
 	public function getNamespaces() {
@@ -124,10 +124,15 @@ abstract class SMW_NMLanguage {
 	 * Returns the array with all namespace aliases of the NM extension.
 	 *
 	 * @return string
-	 *		 Array of additional namespace aliases.
+	 * 		Array of additional namespace aliases.
 	 *
 	 */
 	public function getNamespaceAliases() {
 		return $this->smwNMNamespaceAliases;
 	}
+
+
+
 }
+
+

@@ -176,7 +176,9 @@ function efCodeReviewSchemaUpdates() {
 		// $wgExtNewFields[] = array( 'code_rev', "$base/archives/codereview-cr_status.sql" ); // FIXME FIXME this is a change to options... don't know how
 		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
 		$wgExtNewTables[] = array( 'code_test_suite', "$base/archives/codereview-code_tests.sql" );
-	} elseif ( $wgDBtype == 'postgres' ) {
+	} elseif ( $wgDBtype == 'sqlite' ) {
+		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" );
+	} elseif( $wgDBtype == 'postgres' ) {
 		// TODO
 	}
 	return true;

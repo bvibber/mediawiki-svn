@@ -315,6 +315,13 @@ $messages['sk'] = array(
 	'geolite-desc' => 'Odľahčené presmerovanie GeoIP',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'geolite-desc' => 'Lahkotna preusmeritev GeoIp',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

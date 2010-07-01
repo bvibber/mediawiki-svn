@@ -42,7 +42,7 @@ function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions )
 
 		if (!$comments->exists()) {
 			$class = 'new';
-			$query = array( 'action' => 'edit' );
+			$query = array( 'action' => 'edit', 'redlink' => 1 );
 
 			if (wfMsg('commenttab-preload') != '') {
 				$query['preload'] = wfMsg('commenttab-preload');
@@ -54,20 +54,20 @@ function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions )
 		} else {
 			$class = '';
 		}
-
-		foreach ($content_actions as $key => $value) {
-			// Insert the comment tab before the edit link
-			if ($key == 'edit') {
-				$newcontent_actions['comments'] = array(
-					'class' => $class,
-					'text'  => wfMsg('nstab-comments'),
-					'href'  => $comments->getFullURL($query),
-				);
-			}
-			$newcontent_actions[$key] = $value;
+		
+		$newcontent_actions['comments'] = array(
+			'class' => $class,
+			'text'  => wfMsg('nstab-comments'),
+			'href'  => $comments->getFullURL($query),
+		);
+		
+		$insertAfter = $skin->mTitle->getNamespaceKey();
+		if ( isset($content_actions['talk']) ) {
+			$insertAfter = 'talk';
 		}
-
-		$content_actions = $newcontent_actions;
+		
+		$content_actions = efCommentPagesArrayInsertAfter( $content_actions,
+							$newcontent_actions, $insertAfter );
 	} elseif ($skin->mTitle->getNamespace() == $wgCommentPagesNS) {
 		$main = Title::makeTitleSafe( $wgCommentPagesContentNamespace, $pagename);
 		$talk = $main->getTalkPage();
@@ -75,15 +75,21 @@ function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions )
 
 		if (!$main->exists()) {
 			$class = 'new';
-			$query = 'action=edit';
+			$query = 'action=edit&redlink=1';
 		} else {
 			$class = '';
 			$query = '';
 		}
+		
+		$articleMessage = $main->getNamespaceKey();
+		$articleText = wfMsg( $articleMessage );
+		if ( wfEmptyMsg( $articleMessage, $articleText ) ) {
+			$articleText = $wgContLang->getFormattedNsText( $main->getNamespace() );
+		}
 
 		$newcontent_actions['article'] = array(
 			'class' => $class,
-			'text'  => wfMsg( $main->getNamespaceKey() ),
+			'text'  => $articleText,
 			'href'  => $main->getFullURL($query),
 		);
 
@@ -112,4 +118,27 @@ function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions )
 	}
 
 	return true;
+}
+
+/**
+ * Insert array into another array after the specified *KEY*
+ * Stolen from GlobalFunctions.php in MW 1.16
+ * @param $array Array: The array.
+ * @param $insert Array: The array to insert.
+ * @param $after Mixed: The key to insert after
+ */
+function efCommentPagesArrayInsertAfter( $array, $insert, $after ) {
+	// Find the offset of the element to insert after.
+	$keys = array_keys($array);
+	$offsetByKey = array_flip( $keys );
+	
+	$offset = $offsetByKey[$after];
+	
+	// Insert at the specified offset
+	$before = array_slice( $array, 0, $offset + 1, true );
+	$after = array_slice( $array, $offset + 1, count($array)-$offset, true );
+	
+	$output = $before + $insert + $after;
+	
+	return $output;
 }

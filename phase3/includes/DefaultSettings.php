@@ -1419,7 +1419,7 @@ $wgCacheDirectory = false;
  *   - CACHE_NONE:       Do not cache
  *   - CACHE_DB:         Store cache objects in the DB
  *   - CACHE_MEMCACHED:  MemCached, must specify servers in $wgMemCacheServers
- *   - CACHE_ACCEL:      eAccelerator
+ *   - CACHE_ACCEL:      eAccelerator, APC, XCache or WinCache
  *   - CACHE_DBA:        Use PHP's DBA extension to store in a DBM-style 
  *                       database. This is slow, and is not recommended for 
  *                       anything other than debugging.
@@ -2117,7 +2117,7 @@ $wgValidateAllHtml = false;
 /**
  * Default skin, for new users and anonymous visitors. Registered users may
  * change this to any one of the other available skins in their preferences.
- * This have to be completely lowercase; see the "skins" directory for the list
+ * This has to be completely lowercase; see the "skins" directory for the list
  * of available skins.
  */
 $wgDefaultSkin = 'vector';

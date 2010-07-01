@@ -50,6 +50,7 @@ $wgAutoloadClasses['SpecialLanguageStats'] = $dir . 'SpecialLanguageStats.php';
 $wgAutoloadClasses['SpecialImportTranslations'] = $dir . 'SpecialImportTranslations.php';
 $wgAutoloadClasses['SpecialFirstSteps'] = $dir . 'SpecialFirstSteps.php';
 $wgAutoloadClasses['SpecialSupportedLanguages'] = $dir . 'SpecialSupportedLanguages.php';
+$wgAutoloadClasses['SpecialMyLanguage'] = $dir . 'SpecialMyLanguage.php';
 
 $wgAutoloadClasses['SimpleFormatReader'] = $dir . 'ffs/Simple.php';
 $wgAutoloadClasses['SimpleFormatWriter'] = $dir . 'ffs/Simple.php';
@@ -114,7 +115,9 @@ $wgAutoloadClasses['TPException'] = $dir . 'tag/TranslatablePage.php';
 $wgAutoloadClasses['TPParse'] = $dir . 'tag/TPParse.php';
 $wgAutoloadClasses['TPSection'] = $dir . 'tag/TPSection.php';
 $wgAutoloadClasses['SpecialPageTranslation'] = $dir . 'tag/SpecialPageTranslation.php';
+$wgAutoloadClasses['SpecialPageTranslationMovePage'] = $dir . 'tag/SpecialPageTranslationMovePage.php';
 $wgAutoloadClasses['RenderJob'] = $dir . 'tag/RenderJob.php';
+$wgAutoloadClasses['MoveJob'] = $dir . 'tag/MoveJob.php';
 
 $wgAutoloadClasses['TranslateYaml'] = $dir . 'utils/TranslateYaml.php';
 $wgAutoloadClasses['SpecialManageGroups'] = $dir . 'SpecialManageGroups.php';

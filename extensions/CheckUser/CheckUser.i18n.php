@@ -3342,10 +3342,10 @@ Di seguito sono indicati gli indirizzi IP utilizzati (fino a un massimo di 5000,
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'checkuser-summary' => 'このツールは最近の更新から行った調査を元に、ある利用者が使用したIPアドレスの検索、または、あるIPアドレスからなされた編集および利用者名の表示を行います。
+	'checkuser-summary' => 'このツールは最近の更新を元に、ある利用者が使用したIPアドレスの検索、または、あるIPアドレスからなされた編集および利用者名の表示を行います。
 IPアドレスと共に「/xff」オプションを指定すると、XFF (X-Forwarded-For) ヘッダを通じてクライアントIPアドレスを取得し、そこからなされた編集および利用者名の検索をすることが可能です。
 IPv4 (16から32ビットのCIDR表記) と IPv6 (96から128ビットのCIDR表記) をサポートしています。
-パフォーマンス上の理由により、5000件の編集しか返答出来ません。
+パフォーマンス上の理由により、最大5000件の編集しか表示出来ません。
 方針に従って使用してください。',
 	'checkuser-desc' => '特定の権限を付与された利用者に対して、利用者のIPアドレスなどの情報のチェックを可能にする',
 	'checkuser-logcase' => 'ログの検索では大文字と小文字を区別します。',
@@ -3406,12 +3406,12 @@ IPv4 (16から32ビットのCIDR表記) と IPv6 (96から128ビットのCIDR表
 	'checkuser-log-subpage' => 'ログ',
 	'checkuser-log-return' => '利用者調査のメインフォームへ戻る',
 	'checkuser-limited' => "'''パフォーマンスの都合から結果は省略されています。'''",
-	'checkuser-log-userips' => '$1 は $2 が使用したIPアドレスを取得した',
-	'checkuser-log-ipedits' => '$1 は $2 からなされた編集を取得した',
-	'checkuser-log-ipusers' => '$1 は $2 からアクセスされた利用者名を取得した',
-	'checkuser-log-ipedits-xff' => '$1 は XFF $2 からなされた編集を取得した',
-	'checkuser-log-ipusers-xff' => '$1 は XFF $2 からアクセスされた利用者名を取得した',
-	'checkuser-log-useredits' => '$1 は $2 による編集を取得した',
+	'checkuser-log-userips' => '$1 は $2 が使用したIPアドレスを取得',
+	'checkuser-log-ipedits' => '$1 は $2 からなされた編集を取得',
+	'checkuser-log-ipusers' => '$1 は $2 からアクセスされた利用者名を取得',
+	'checkuser-log-ipedits-xff' => '$1 は XFF $2 からなされた編集を取得',
+	'checkuser-log-ipusers-xff' => '$1 は XFF $2 からアクセスされた利用者名を取得',
+	'checkuser-log-useredits' => '$1 は $2 による編集を取得',
 	'checkuser-autocreate-action' => '自動的に作成',
 	'checkuser-email-action' => '利用者"$1"へメールを送る',
 	'checkuser-reset-action' => '利用者"$1"のパスワードをリセット',
@@ -5522,9 +5522,11 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Emily
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Memo18
  * @author Mihai
  */
 $messages['ro'] = array(
@@ -5545,7 +5547,7 @@ Folosește unealta în concordanță cu politica sitului.',
 	'checkuser-showlog' => 'Arată jurnal',
 	'checkuser-log' => 'Jurnal verificare utilizator',
 	'checkuser-query' => 'Interoghează schimbările recente',
-	'checkuser-target' => 'Utilizator sau IP',
+	'checkuser-target' => 'Adresă IP sau nume de utilizator:',
 	'checkuser-users' => 'Arată utilizatorii',
 	'checkuser-edits' => 'Arată editările IP-ului',
 	'checkuser-ips' => 'Arată IP-urile',
@@ -5582,8 +5584,8 @@ Adresele IP vor fi blocate timp de o săptămână și crearea de conturi va fi 
 	'checkuser-block-noreason' => 'Trebuie să specificați un motiv pentru blocări.',
 	'checkuser-noreason' => 'Trebuie să specifici un motiv pentru această interogare.',
 	'checkuser-accounts' => '$1 {{PLURAL:$1|cont nou|conturi noi}}',
-	'checkuser-too-many' => 'Prea multe rezultate, te rog îngustează CIDR.
-Iată IP-urile folosite (maxim 5000, sortate dup adresă):',
+	'checkuser-too-many' => 'Prea multe rezultate (după estimarea interogării), vă rugăm să limitați CIDR.
+Iată IP-urile folosite (maxim 5000, sortate după adresă):',
 	'checkuser-user-nonexistent' => 'Utilizatorul specificat nu există.',
 	'checkuser-search-form' => 'Găsește intrările în jurnal unde $1 este $2',
 	'checkuser-search-submit' => 'Caută',
@@ -5757,6 +5759,16 @@ IP-адреса будут заблокированы на 1 неделю для
 	'checkuser-autocreate-action' => 'был создан автоматически',
 	'checkuser-email-action' => 'отправил письмо участнику «$1»',
 	'checkuser-reset-action' => 'сбросил пароль для участника $1',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'checkuser-reason' => 'Причіна:',
+	'checkuser-search' => 'Найти',
+	'checkuser-all' => 'вшыткы',
+	'checkuser-search-submit' => 'Глядати',
 );
 
 /** Yakut (Саха тыла)

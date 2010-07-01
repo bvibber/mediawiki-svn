@@ -397,6 +397,14 @@ $messages['id'] = array(
 	'right-whatismyip' => 'Tunjukkan [[Special:WhatIsMyIP|IP saya sendiri]]',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'whatismyip' => 'Qua es mea IP-adreso',
+	'whatismyip-out' => 'Vua IP-adreso:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -704,6 +712,16 @@ $messages['sk'] = array(
 	'whatismyip-desc' => 'Zobrazí aktuálnu [[Special:WhatIsMyIP|IP adresu používateľa]]',
 	'whatismyip-out' => 'Vaša IP adresa:',
 	'right-whatismyip' => 'Zobraziť [[Special:WhatIsMyIP|vlastnú IP adresu]]',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'whatismyip' => 'Kaj je moj IP',
+	'whatismyip-desc' => 'Prikaže uporabnikov trenutni [[Special:WhatIsMyIP|IP-naslov]]',
+	'whatismyip-out' => 'Vaš IP-naslov:',
+	'right-whatismyip' => 'Ogled [[Special:WhatIsMyIP|svojega IP-naslova]]',
 );
 
 /** Lower Silesian (Schläsch)

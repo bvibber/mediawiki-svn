@@ -517,6 +517,8 @@ $messages['lb'] = array(
 	'sphinxSearchStats' => '* "$1" gouf {{PLURAL:$2|eemol| $2 mol}} an {{PLURAL:$3|engem Dokument| $3 Dokumenter}} fonnt',
 	'sphinxSearchButton' => 'Sichen',
 	'sphinxSearchDidYouMean' => 'Mengt Dir:',
+	'sphinxMatchAny' => 'eent vun de Wierder fannen',
+	'sphinxMatchAll' => 'all Wierder fannen',
 	'sphinxMatchTitles' => 'nëmmen an den Titele sichen',
 	'sphinxLoading' => 'Lueden...',
 	'sphinxPowered' => 'Notzt $1',
@@ -660,6 +662,20 @@ $messages['pms'] = array(
 	'sphinxPspellError' => "As peul pa ciamesse l'estension pspell.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'sphinxSearchInNamespaces' => 'په نوم-تشيالونو کې پلټنه:',
+	'sphinxSearchInCategories' => 'په وېشنيزو کې پلټنه:',
+	'sphinxResultPage' => 'د پايلې مخ:',
+	'sphinxPreviousPage' => 'پخواني',
+	'sphinxNextPage' => 'راتلونکی',
+	'sphinxSearchButton' => 'پلټل',
+	'sphinxSearchDidYouMean' => 'آيا همدا مو موخه وه:',
+	'sphinxLoading' => 'د برسېرېدلو په حال کې...',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -725,6 +741,15 @@ $messages['ru'] = array(
 	'sphinxSearchFailed' => 'Ошибка при выполнении запроса $1',
 	'sphinxSearchWarning' => 'Предупреждение $1',
 	'sphinxPspellError' => 'Невозможно вызвать расширение pspell.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'sphinxPreviousPage' => 'Попереднї',
+	'sphinxNextPage' => 'Далшы',
+	'sphinxSearchButton' => 'Глядати',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

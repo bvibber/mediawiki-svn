@@ -8,6 +8,8 @@ TEMPLATE:
     class: YamlFFS
     codeAsRoot: 1
     codeMap:
+      be-tarask: be-TARASK
+      no:    nb
       pt:    pt-PT
       pt-br: pt-BR
       sr-ec: sr-EC
@@ -19,6 +21,45 @@ TEMPLATE:
     class: StringMatcher
     patterns:
       - "*"
+
+---
+BASIC:
+  id: out-shapado-0-all
+  label: All Shapado messages
+  display: out/shapado
+  meta: yes
+  class: AggregateMessageGroup
+GROUPS:
+  - out-shapado-ads
+  - out-shapado-announcements
+  - out-shapado-answers
+  - out-shapado-badges
+  - out-shapado-closerequests
+  - out-shapado-comments
+  - out-shapado-doc
+  - out-shapado-errors
+  - out-shapado-favorites
+  - out-shapado-flags
+  - out-shapado-global
+  - out-shapado-groups
+  - out-shapado-imports
+  - out-shapado-layouts
+  - out-shapado-mailers
+  - out-shapado-manage
+  - out-shapado-members
+  - out-shapado-moderate
+  - out-shapado-notifier
+  - out-shapado-pages
+  - out-shapado-questions
+  - out-shapado-searches
+  - out-shapado-sessions
+  - out-shapado-shared
+  - out-shapado-unfavorites
+  - out-shapado-users
+  - out-shapado-votes
+  - out-shapado-welcome
+  - out-shapado-widgets
+  - out-shapado-wiki
 
 ---
 BASIC:
@@ -225,6 +266,18 @@ MANGLER:
 
 ---
 BASIC:
+  id: out-shapado-notifier
+  label: Shapado - Notifier
+  display: out/shapado/notifier
+  class: FileBasedMessageGroup
+FILES:
+  sourcePattern: %GROUPROOT%/shapado/config/locales/notifier/%CODE%.yml
+  targetPattern: shapado/config/locales/notifier/%CODE%.yml
+MANGLER:
+  prefix: notifier-
+
+---
+BASIC:
   id: out-shapado-pages
   label: Shapado - Pages
   display: out/shapado/pages
@@ -263,7 +316,7 @@ BASIC:
   display: out/shapado/sessions
 FILES:
   sourcePattern: %GROUPROOT%/shapado/config/locales/sessions/%CODE%.yml
-  targetPattern: shapado/config/locales/sesions/%CODE%.yml
+  targetPattern: shapado/config/locales/sessions/%CODE%.yml
 MANGLER:
   prefix: sessions-
 

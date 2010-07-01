@@ -433,11 +433,22 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'regexblock' => 'Eztaoladennoù poellel evit stankañ',
 	'regexblock-already-blocked' => '$1 zo stanket dija.',
 	'regexblock-block-log' => "Sanket eo bet an implijer pe ar chomlec'h IP '''$1'''.",
 	'regexblock-block-success' => 'Stanket eo bet an implijer',
 	'regexblock-currently-blocked' => "Chomlec'hioù stanket er mare-mañ :",
+	'regexblock-desc' => "Astenn implijet evit stankañ implijerien pe chomlec'hioù IP gant eztaoladennoù poellel. Bez ez eus war un dro ur gwikefre stankañ hag [[Special:Regexblock|ur bajenn]] hag a c'hell ouzhpennañ ha merañ ar stankadennoù",
 	'regexblock-expire-duration' => '1 eurvezh, 2 eurvezh, 4 eurvezh, 6 eurvezh, 1 devezh, 3 devezh, 1 sizhunvezh, 2 sizhunvezh, miz, 3 miz, 6 miz, bloaz, da viken',
+	'regexblock-page-title' => 'Stankadenn un anv gant un eztaoladenn poellel',
+	'regexblockstats' => 'Stadegoù war ar stankadennoù gant eztaoladennoù poellel',
+	'regexblock-page-title-1' => "Stankadenn ur chomlec'h hag a implij eztaoladennoù poellel",
+	'regexblock-reason-ip' => "Ne c'hell ket ar c'homec'h IP-mañ degas an disterañ kemm en abeg d'ar vandalerezh pe obererezhioù damheñvel bet graet ganeoc'h pe gant unan all hag a implij ar memes chomlec'h IP.
+Ma 'z oc'h sur ez eo ur fazi, [[$1|deuit e darempred ganeomp]].",
+	'regexblock-reason-name' => "Ne c'hell ket an implijer-mañ degas an disterañ kemm en abeg da vandalerezh pe obererezhioù damheñvel.
+Ma 'z oc'h sur ez eo ur fazi, [[$1|deuit e darempred ganeomp]].",
+	'regexblock-reason-regex' => "Ne c'hell ket an implijer-mañ degas an disterañ kemm en abeg da vandalerezh pe obererezhioù damheñvel bet graet gant un implijer gant un anv karr.
+krouit ur gont all pe [[$1|deuit e darempred ganeomp]] evit menegiñ ar gudenn.",
 	'regexblock-form-username' => "Chomlec'h IP pe anv implijer :",
 	'regexblock-form-reason' => 'Abeg :',
 	'regexblock-form-expiry' => 'Termen :',
@@ -445,17 +456,22 @@ $messages['br'] = array(
 	'regexblock-form-account-block' => 'Berzañ krouidigezh kontoù nevez',
 	'regexblock-form-submit' => 'Stankañ an implijer-mañ',
 	'regexblock-form-submit-empty' => "Roit un anv implijer pe ur chomlec'h IP da stankañ.",
+	'regexblock-form-submit-regex' => 'Eztaoladenn poellel direizh.',
 	'regexblock-form-submit-expiry' => 'Diferit un termen, mar plij.',
+	'regexblock-link' => 'stankañ gant un eztaoladenn poellel',
 	'regexblock-match-stats-record' => "$1 en deus stanket « $2 » d'an « $3 » da « $4 », liammet adalek ar chomlec'h « $5 »",
 	'regexblock-nodata-found' => "N'eus ket bet kavet roadennoù",
+	'regexblock-stats-title' => 'Stadegoù war ar stankadennoù gant eztaoladennoù poellel',
 	'regexblock-unblock-success' => 'Distanket eo bet an implijer',
 	'regexblock-unblock-log' => "Disanket eo bet an implijer pe ar chomlec'h IP '''$1'''.",
 	'regexblock-unblock-error' => "Fazi distankañ $1.
 Sur a-walc'h n'eus ket eus an implijer-mañ.",
+	'regexblock-regex-filter' => 'pe talvoudenn un eztaoladenn poellel :',
 	'regexblock-view-blocked' => 'Gwelet ar stankadurioù gant :',
 	'regexblock-view-all' => 'Pep tra',
 	'regexblock-view-go' => 'Mont',
 	'regexblock-view-match' => '(klotadur rik)',
+	'regexblock-view-regex' => '(klotadenn eztaoladenn poellel)',
 	'regexblock-view-account' => "(krouidigezh ar c'hontoù stanket)",
 	'regexblock-view-reason' => 'abeg : $1',
 	'regexblock-view-reason-default' => 'abeg dre-vras',
@@ -2692,6 +2708,17 @@ $messages['ru'] = array(
 	'regexblock-view-empty' => 'Список заблокированных имён и адресов пуст.',
 	'regexblock-view-time' => '$1',
 	'right-regexblock' => 'Запретить участникам редактировать во всех вики этой вики-фермы',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'regexblock-form-reason' => 'Причіна:',
+	'regexblock-form-expiry' => 'Кінчіть:',
+	'regexblock-form-submit' => 'Заблоковати того хоснователя',
+	'regexblock-view-all' => 'Вшыткы',
+	'regexblock-view-go' => 'Іти на',
 );
 
 /** Sassaresu (Sassaresu)

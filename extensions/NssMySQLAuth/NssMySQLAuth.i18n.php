@@ -823,6 +823,8 @@ $messages['ps'] = array(
 	'am-username' => 'کارن-نوم',
 	'am-email' => 'برېښليک',
 	'nss-save-changes' => 'بدلونونه خوندي کول',
+	'nss-create-account' => 'کارن-حساب جوړول',
+	'nss-no-mail' => 'برېښليک مه رالېږۍ',
 );
 
 /** Portuguese (Português)

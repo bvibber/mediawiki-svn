@@ -830,12 +830,32 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'commentbox-desc' => 'Додаје кутијице за коментаре на извесне стране',
+	'commentbox-intro' => '== Додавање коментара... ==
+Да ли желите да коментаришете ову страну? Додајте Ваш коментар или <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} измените страну директно]</span>.',
+	'commentbox-savebutton' => 'Сними коментар',
 	'commentbox-name' => 'Име:',
+	'commentbox-log' => 'Нови коментари',
+	'commentbox-first-comment-heading' => '== Коментари ==',
+	'commentbox-errorpage-title' => 'Грешка током прављења коментара',
+	'commentbox-error-page-nonexistent' => 'Ова страна не постоји!',
+	'commentbox-error-namespace' => 'Коментари нису дозвољени у овом именском простору!',
+	'commentbox-error-empty-comment' => 'Празни коментари нису могући!',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'commentbox-desc' => 'Dodaje kutijice za komentare na izvesne strane',
+	'commentbox-intro' => '== Dodavanje komentara... ==
+Da li želite da komentarišete ovu stranu? Dodajte Vaš komentar ili <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} izmenite stranu direktno]</span>.',
+	'commentbox-savebutton' => 'Snimi komentar',
 	'commentbox-name' => 'Ime:',
+	'commentbox-log' => 'Novi komentari',
+	'commentbox-first-comment-heading' => '== Komentari ==',
+	'commentbox-errorpage-title' => 'Greška tokom pravljenja komentara',
+	'commentbox-error-page-nonexistent' => 'Ova strana ne postoji!',
+	'commentbox-error-namespace' => 'Komentari nisu dozvoljeni u ovom imenskom prostoru!',
+	'commentbox-error-empty-comment' => 'Prazni komentari nisu mogući!',
 );
 
 /** Swedish (Svenska)

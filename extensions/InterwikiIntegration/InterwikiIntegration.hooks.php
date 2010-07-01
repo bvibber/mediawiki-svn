@@ -26,6 +26,10 @@ class InterwikiIntegrationHooks {
 			'integration_recentchanges',
 			dirname( __FILE__ ) . '/interwikiintegration-recentchanges.sql'
 		);
+		$wgExtNewTables[] = array(
+			'integration_page',
+			dirname( __FILE__ ) . '/interwikiintegration-page.sql'
+		);
 		return true;
 	}
 	
@@ -123,6 +127,19 @@ class InterwikiIntegrationHooks {
 	 */
 	public static function InterwikiIntegrationArticleInsertComplete ( &$article, &$user, $text, $summary, $minoredit, 
 		&$watchthis, $sectionanchor, &$flags, $revision ) {
+		global $wgDBname;
+		$mDb = wfGetDB( DB_MASTER );
+		$result = $mDb->selectrow(
+			'page',
+			'*',
+			array ('page_id' => $article->getID() )
+		);
+		foreach ( $result as $key => $value ) {
+			$newKey = "integration_" . $key;
+			$iPage[$newKey] = $value;
+		}
+		$iPage['integration_page_db'] = $wgDBname;
+		$mDb->insert( 'integration_page', $iPage );
 		InterwikiIntegrationHooks::PurgeReferringPages ( $article->getTitle() );
 		return true;
 	}
@@ -131,11 +148,20 @@ class InterwikiIntegrationHooks {
 	 * When a page is deleted, purge caches of pages that link to it interwiki
 	 */
 	public static function InterwikiIntegrationArticleDeleteComplete( &$article, &$user, $reason, $id ) {
+		global $wgDBname;
 		InterwikiIntegrationHooks::PurgeReferringPages ( $article->getTitle() );
 		$mDb = wfGetDB( DB_MASTER );
 		$mDb->delete(
 			'integration_iwlinks',
 			array ('integration_iwl_from'  => $id )
+		);
+		$mDb->delete(
+			'integration_page',
+			array (
+				'integration_page_title' => str_replace ( ' ', '_', $article->getTitle()->getDBkey() ),
+				'integration_page_namespace' => $article->getTitle()->getNamespace(),
+				'integration_page_db' => $wgDBname
+			)
 		);
 		return true;
 	}
@@ -145,7 +171,48 @@ class InterwikiIntegrationHooks {
 	 */
 	public static function InterwikiIntegrationArticleUndelete ( $title, $create ) {
 		if ( $create ) {
+			global $wgDBname;
+			$mDb = wfGetDB( DB_MASTER );
+			$result = $mDb->selectrow(
+				'page',
+				'*',
+				array ('page_id' => $title->getArticleID() )
+			);
+			foreach ( $result as $key => $value ) {
+				$newKey = "integration_" . $key;
+				$iPage[$newKey] = $value;
+			}
+			$iPage['integration_page_db'] = $wgDBname;
+			$mDb->insert( 'integration_page', $iPage );
 			InterwikiIntegrationHooks::PurgeReferringPages ( $title );
+		}
+		return true;
+	}
+	
+	public static function InterwikiIntegrationArticleSaveComplete( &$article, &$user, $text, $summary,
+		$minoredit, &$watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId, &$redirect ) {
+		global $wgDBname;
+		if ( !is_null ( $revision ) ) {
+			$mDb = wfGetDB( DB_MASTER );
+			$result = $mDb->selectrow(
+				'page',
+				'*',
+				array ('page_id' => $article->getID() )
+			);
+			if ( $result ) {
+				foreach ( $result as $key => $value ) {
+					$newKey = "integration_" . $key;
+					$iPage[$newKey] = $value;
+				}
+				$mDb->update(
+					'integration_page',
+					$iPage,
+					array (
+					       'integration_page_id' => $article->getID(),
+					       'integration_page_db' => $wgDBname
+					)
+				);
+			}
 		}
 		return true;
 	}
@@ -350,6 +417,7 @@ class InterwikiIntegrationHooks {
 	 * Add newly watched articles to integration_watchlist
 	 */
 	public static function InterwikiIntegrationWatchArticleComplete( &$user, &$article ) {
+		global $wgDBname;
 		$title = $article->getTitle();
 		if ( $title->isTalkPage () ) {
 			$subjectNamespace = $title->getSubjectPage()->getNamespace();
@@ -362,17 +430,17 @@ class InterwikiIntegrationHooks {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $user->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $subjectNamespace,
-			'integration_wl_title' => $DBkey,
-			'integration_wl_notificationtimestamp' => null
+			'integration_wl_title' => $DBkey
 		  ) );
 		$dbw->insert( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $this->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $talkNamespace,
-			'integration_wl_title' => $DBkey,
-			'integration_wl_notificationtimestamp' => null
+			'integration_wl_title' => $DBkey
 		  ) );
 		return true;
 	}
@@ -381,6 +449,7 @@ class InterwikiIntegrationHooks {
 	 * Remove newly unwatched articles from integration_watchlist
 	 */
 	public static function InterwikiIntegrationUnwatchArticleComplete ( &$user, &$article ) {
+		global $wgDBname;
 		$title = $article->getTitle();
 		if ( $title->isTalkPage () ) {
 			$subjectNamespace = $title->getSubjectPage()->getNamespace();
@@ -393,13 +462,15 @@ class InterwikiIntegrationHooks {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $user->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $subjectNamespace,
 			'integration_wl_title' => $DBkey
 		  ) );
-		$dbw->insert( 'integration_watchlist',
+		$dbw->delete( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $this->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $talkNamespace,
 			'integration_wl_title' => $DBkey
 		  ) );

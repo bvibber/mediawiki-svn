@@ -2,7 +2,7 @@
 * mediaWiki search implementation
 */
 var mediaWikiSearch = function( options ) {
-	return this.init( options );
+	this.init( options );
 };
 mediaWikiSearch.prototype = {
 
@@ -10,7 +10,7 @@ mediaWikiSearch.prototype = {
 	* Inherits the base search object and passes along options
 	* @constructor
 	*/
-	init:function( options ) {
+	init: function( options ) {
 		// init base class and inherit: 
 		var baseSearch = new baseRemoteSearch( options );
 		for ( var i in baseSearch ) {
@@ -26,7 +26,7 @@ mediaWikiSearch.prototype = {
 	* Adds a resource by its Title
 	*
 	* @param {String} title Title of the resource to be added
-	* @param {Function} callback Function called once title resource aquired   
+	* @param {Function} callback Function called once title resource acquired   
 	*/ 
 	addByTitle:function( title , callback, redirect_count ) {
 	

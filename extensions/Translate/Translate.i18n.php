@@ -243,6 +243,7 @@ See the menu bar for a link to the portal for the language of your preference.',
 	'supportedlanguages-noportal' => 'The wiki administrator has not defined NS_PORTAL, so this page does not work.
 On this page a list of language portals will appear for all portals corresponding with a defined language code and a subpage called "translators".
 The subpage "translators" must contain the template [[:{{ns:template}}:User|User]], taking a user name as parameter.',
+	'supportedlanguages-recenttranslations' => 'recent translations',
 
 	'translate-save' => 'Save ($1)',
 
@@ -356,6 +357,7 @@ Details: $1',
 /** Message documentation (Message documentation)
  * @author Ans
  * @author Darth Kule
+ * @author Dbc334
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
@@ -433,6 +435,8 @@ This warning indicates that the namespace in the translation does not match the 
 	'translate-rc-translation-filter-site' => 'Selects changes to MediaWiki-messages without a language code in the [[Special:RecentChanges|recentchanges]].
 For example MediaWiki:Common.css, but not MediaWiki:Common.css/fr or other messages for specific languages.
 These messages will not be submitted to svn, but will only affect the interface on translatewiki.net.',
+	'translate-statsf-scale' => 'Used on [[Special:TranslationStats]].',
+	'translate-statsf-count' => 'Used on [[Special:TranslationStats]].',
 	'translate-statsf-submit' => '{{Identical|Preview}}',
 	'translations' => 'Title of [[Special:Translations]].',
 	'translations-summary' => 'Used in [[Special:Translations]].',
@@ -467,6 +471,7 @@ These messages will not be submitted to svn, but will only affect the interface 
 	'translate-percentage-fuzzy' => 'Used in [[Special:LanguageStats]].',
 	'translate-languagestats-groups' => "You can translate the text, including 'Leave this line exactly as it is'. The lines of this messages have one (1) leading space.",
 	'supportedlanguages-noportal' => '{{doc-important|Do not translate "translators" and "<nowiki>[[:{{ns:template}}:User|User]]</nowiki>"!}}',
+	'supportedlanguages-recenttranslations' => 'Link on [[Special:SupportedLanguages]] to the Recent Changes special page.',
 	'translate-save' => '{{Identical|Save}}',
 	'translate-jssti-add' => 'Name of button in [[Special:Preferences]], tab Editing.',
 	'translate-manage-groups' => 'Special page title. See screenshot. [[File:Manage-1.png|right|thumb|Group management interface]]',
@@ -480,7 +485,7 @@ These messages will not be submitted to svn, but will only affect the interface 
 Variables:
 *$1 - Message name
 *$2 - radio buttons 
-**{{msg-mw|MediaWiki:Translate-manage-action-import}}
+**{{msg-mw|Translate-manage-action-import}}
 **{{msg-mw|Translate-manage-action-conflict}}
 **{{msg-mw|Translate-manage-action-ignore}}',
 	'translate-manage-action-import' => '{{Identical|Import}}
@@ -1216,6 +1221,7 @@ $messages['ar'] = array(
  # تعرض في Special:LanguageStats.أرقام مجموعات الرسائل غير الموجودة سوف 
  # يتم تجاهلها.',
 	'supportedlanguages' => 'اللغات المدعومة',
+	'supportedlanguages-recenttranslations' => 'الترجمات الأخيرة',
 	'translate-save' => 'احفظ ($1)',
 	'translate-jssti-add' => 'أضف إلى القائمة',
 	'translate-group-desc-mediawikicore' => 'تحتوي مجموعة الرسائل هذه على الرسائل المستخدمة في النسخة ألفا الحالية من ميدياويكي ({{CURRENTVERSION}})',
@@ -1298,6 +1304,7 @@ $1',
 	'translate-js-nonext' => 'كانت هذه آخر رسالة على هذه الصفحة.',
 	'translate-js-skip' => 'تخطَ إلى التالية',
 	'translate-js-save-failed' => 'فشل الحفظ. من فضلك بلّغ عن هذا الخطأ.',
+	'translate-js-history' => 'تاريخ النرجمة',
 	'translate-gs-pos' => 'الترتيب',
 	'translate-gs-code' => 'الرمز',
 	'translate-gs-continent' => 'القارة',
@@ -2071,6 +2078,7 @@ $messages['be-tarask'] = array(
 	'supportedlanguages-noportal' => 'Адміністратар {{SITENAME}} ня вызначыў NS_PORTAL, таму гэтая старонка не працуе.
 На гэтай старонцы зьявіцца сьпіс моўных парталаў, адпаведна вызначаным моўным кодам і падстаронка з назваў «translators».
 Падстаронка «translators» павінна ўтрымліваць шаблён [[:{{ns:template}}:User|User]], з іменем удзельніка ў якасьці парамэтра.',
+	'supportedlanguages-recenttranslations' => 'апошнія пераклады',
 	'translate-save' => 'Захаваць ($1)',
 	'translate-jssti-add' => 'Дадаць у сьпіс',
 	'translate-group-desc-mediawikicore' => 'Гэта група паведамленьняў утрымлівае паведамленьні, якія выкарыстоўваюцца ў цяперашняй альфа-вэрсіі MediaWiki ({{CURRENTVERSION}})',
@@ -2432,6 +2440,7 @@ Ma ya d'ober ar strollad istrolladoù pe usstrolladoù kemennadennoù tennet eus
 	'translate-edit-warnings' => 'Kemennoù diwall diwar-benn an troidigezhioù diglok',
 	'translate-edit-tmsugs' => 'Kinnig a-berzh ar memor treiñ',
 	'translate-edit-tmmatch' => '$1% kenglotañ',
+	'translate-use-suggestion' => "Ensoc'hañ ar c'hinnig-mañ er prenestr treiñ. Erlec'hiañ a ra hollad an danvez a-vremañ.",
 	'translate-edit-goto-no-prev' => 'Kemennadenn ebet a-raok',
 	'translate-edit-goto-no-next' => "Kemennadenn ebet war-lerc'h",
 	'translate-edit-goto-prev' => "Mont d'ar gemennadenn a-raok",
@@ -2565,6 +2574,7 @@ Sellit ouzh al lañser evit al liamm a gas d'ar yezh spisaet ganeoc'h en ho penn
 	'supportedlanguages-noportal' => 'N\'eus bet termenet NS_PORTAL ebet gant merour ar wiki. Gant se n\'hall ket ar bajenn-mañ mont en-dro.
 War ar bajenn-mañ e vo gwelet ur roll yezhoù evit an holl borchedoù a glot gant ur yezh resis hag un ispajenn anvet "translators".
 Dre ret emañ en ispajenn "translators" ar patrom [[:{{ns:template}}:User|User]], a gemer un anv implijer da arventenn.',
+	'supportedlanguages-recenttranslations' => 'troidigezhioù ziwezhañ',
 	'translate-save' => 'Enrollañ ($1)',
 	'translate-jssti-add' => "Ouzhpennañ d'ar roll",
 	'translate-group-desc-mediawikicore' => "Er strollad kemennadennoù-mañ emañ ar c'hemennadennoù implijet e stumm red MediaWiki ({{CURRENTVERSION}})",
@@ -3428,8 +3438,10 @@ $messages['cy'] = array(
 	'translate-edit' => 'golygu',
 	'translate-page-edit' => 'golygu',
 	'translate-pref-nonewsletter' => 'Peidier ag anfon cylchlythyron e-bost ataf',
+	'translate-translations-history-short' => 'h',
 	'languagestats' => 'Ystadegau ieithyddol',
 	'languagestats-summary' => "Mae'r dudalen hon yn dangos ystadegau cyfieithu yr holl grwpiau negeseuon ar gyfer rhyw iaith.",
+	'languagestats-recenttranslations' => 'cyfieithiadau diweddar',
 	'translate-language-code' => 'Côd iaith',
 	'translate-language-code-field-name' => 'Côd iaith:',
 	'translate-suppress-complete' => 'Hepgor dangos y grwpiau o negeseuon sydd wedi eu llwyr gyfieithu',
@@ -3438,6 +3450,7 @@ $messages['cy'] = array(
 	'translate-untranslated' => 'Heb eu cyfieithu',
 	'translate-percentage-complete' => 'Parod',
 	'translate-percentage-fuzzy' => 'Ag angen diweddaru',
+	'supportedlanguages-recenttranslations' => 'chyfieithiadau diweddar',
 );
 
 /** Danish (Dansk)
@@ -3822,6 +3835,7 @@ Im Menü befindet sich ein Link zum Portal der eingestellten Sprache.',
 	'supportedlanguages-noportal' => 'Der Wiki-Administrator hat die Variable <code>NS_PORTAL</code> nicht definiert, daher funktioniert diese Seite nicht.
 Auf dieser Seite wird eine Liste der Sprachportale erscheinen, die nach einem entsprechenden Sprachcode benannt sind und eine Unterseite mit dem Namen „translators“ haben.
 Die Unterseite „translators“ muss die Vorlage [[:{{ns:template}}:User|User]] beinhalten, mit einem Benutzernamen als Parameter.',
+	'supportedlanguages-recenttranslations' => 'Aktuelle Übersetzungen',
 	'translate-save' => 'Speichern ($1)',
 	'translate-jssti-add' => 'Zur Liste hinzufügen',
 	'translate-group-desc-mediawikicore' => 'Diese Gruppe beinhaltet alle Nachrichten der aktuellen alpha-Version von MediaWiki ({{CURRENTVERSION}})',
@@ -4151,6 +4165,7 @@ Glědaj menijowu lejstwu za wótkaz k portaloju twójeje preferowaneje rěcy.',
 	'supportedlanguages-noportal' => 'Wikiadministrator njejo NS_PORTAL definěrował, togodla bok njefunkcioněrujo.
 Na toś tom boku buźo se lisćina rěcnych portalow pokazowaś, za wšykne portale, kótarež wótpowěduju definěrowanemu rěcnemu kodoju pódbokoju z mjenim "pśełožowarje".
 Pódbok "pśełožowarje" musy pśedłogu [[:{{ns:template}}:User|Wužywaŕ]] wopśimjeś, z wužywarskim mjenim ako parameter.',
+	'supportedlanguages-recenttranslations' => 'nejnowše pśełožki',
 	'translate-save' => 'Składowaś ($1)',
 	'translate-jssti-add' => 'Lisćinje pśidaś',
 	'translate-group-desc-mediawikicore' => 'Toś ta kupka powěźeńkow wopśimujo powěźeńki, kótarež wužywaju se w aktualnej alfa-wersiji MediaWiki ({{CURRENTVERSION}})',
@@ -4250,7 +4265,37 @@ Drobnostki: $1',
  * @author Natsubee
  */
 $messages['ee'] = array(
+	'translate' => 'Ɖe egɔme',
+	'translate-edit' => 'trɔ asi le eŋu',
+	'translate-history' => 'xoxoawo',
+	'translate-task-view' => 'Kpɔ duwo katã tso',
+	'translate-task-untranslated' => 'Kpɔ duwo katã siwo gɔme wome ɖe haɖe o',
+	'translate-task-review' => 'Kpɔ tɔtrɔwo si kuɖe',
+	'translate-task-reviewall' => 'Kpɔ tɔtrɔwo katã siwo wowɔ le',
+	'translate-page-task' => 'Mele didim bena ma',
+	'translate-page-language' => 'Gbe',
+	'translate-page-navigation-legend' => 'Mɔtabiala',
+	'translate-page-showing' => 'Wole duwo tso $1 vaseɖe $2 le $3 dome fiam.',
+	'translate-page-edit' => ' trɔ asi le eŋu',
+	'translate-edit-title' => 'Trɔ asi le "$1" ŋu',
+	'translate-edit-in-other-languages' => 'Du "$1" le gbe bubuwo me',
+	'translate-edit-tmmatch' => '$1% sɔsɔme',
+	'translate-edit-goto-no-prev' => 'Du aɖeke mele esia ŋgɔ o',
+	'translate-edit-goto-no-next' => 'Du aɖeke mele esia yome o',
+	'translate-edit-goto-prev' => 'Trɔ asi le du si do ŋgɔ ŋu',
+	'translate-edit-goto-next' => 'Trɔ asi le du si dze esia yome ŋu',
+	'translate-magic-cm-save' => 'Dzrae ɖo',
+	'translate-magic-cm-savefailed' => 'Wometeŋu dzrae ɖo o',
+	'translate-magic-notsaved' => 'Wometeŋu le nusiwo wòtrɔ la ɖe anyi o',
+	'translate-rc-translation-filter-no' => 'Megawɔ trɔtrɔ aɖeke o',
+	'translate-rc-translation-filter-only' => 'Fia gɔmeɖeɖewo ko',
+	'translate-rc-translation-filter-filter' => 'Ɖe gɔmeɖeɖewo le eme',
+	'translationstats' => 'Gɔmeɖeɖewo ƒe xexlẽme',
+	'translate-stats-edits' => 'Tɔtrɔwo',
+	'translate-statsf-scale-days' => 'Ŋkekewo',
+	'translate-statsf-scale-hours' => 'Gaƒoƒowo',
 	'translate-statsf-submit' => 'Kpɔe do ŋgɔ',
+	'translate-translations-messagename' => 'Ŋkɔ:',
 );
 
 /** Greek (Ελληνικά)
@@ -4862,6 +4907,7 @@ Vea la barra del menú para un enlace al portal para el idioma de su preferencia
 	'supportedlanguages-translators' => '{{PLURAL:$2|Traductor|Traductores}}: $1',
 	'supportedlanguages-noportal-title' => 'No hay definido ningún espacio de nombres para los portales',
 	'supportedlanguages-noportal' => 'El administrador del wiki no ha definido NS_PORTAL, por lo que esta página no funciona. En esta página aparecerá un listado con cada portal de idioma, cada uno con un código de idioma definido y una subpágina llamada "traductores". La subpágina "traductores" debe contener la plantilla [[:{{ns:template}}:User|User]], con un nombre de usuario como parámetro.',
+	'supportedlanguages-recenttranslations' => 'traducciones recientes',
 	'translate-save' => 'Grabar($1)',
 	'translate-jssti-add' => 'Añadir a la lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo de mensajes contiene los mensajes usados en la actual versión alpha de MediaWiki ({{CURRENTVERSION}})',
@@ -5716,6 +5762,7 @@ Voyez la barre de menu pour un lien vers le portail de la langue de vos préfér
 	'supportedlanguages-noportal' => "L'administrateur du wiki n'a pas défini NS_PORTAL, donc cette page ne peut pas fonctionner.
 Sur cette page apparaitront une liste de language pour tous les portails correspondant à une langue définie et une sous-page appelée « translators ».
 La sous-page « translators » doit contenir le modèle [[:{{ns:template}}:User|User]] qui prend un nom d'utilisateur comme paramètre.",
+	'supportedlanguages-recenttranslations' => 'traductions récentes',
 	'translate-save' => 'Publier ($1)',
 	'translate-jssti-add' => 'Ajouter à la liste',
 	'translate-group-desc-mediawikicore' => 'Ce groupe de messages contient les messages utilisés dans la version alpha actuelle de MediaWiki ({{CURRENTVERSION}}).',
@@ -6276,6 +6323,7 @@ Na barra do menú terá unha ligazón ao portal da súa lingua.',
 	'supportedlanguages-noportal' => 'O administrador do wiki non definiu NS_PORTAL, polo tanto esta páxina non funciona.
 Nesta páxina aparecerá unha lista con todos os portais nas diferentes linguas que teñan un código de lingua definido e unha subpáxina chamada "translators".
 Esta subpáxina "translators" debe conter o modelo [[:{{ns:template}}:User|User]], sendo o nome dun usuario o parámetro.',
+	'supportedlanguages-recenttranslations' => 'traducións recentes',
 	'translate-save' => 'Gardar ($1)',
 	'translate-jssti-add' => 'Engadir á lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo de mensaxes contén as mensaxes empregadas na versión alfa actual de MediaWiki ({{CURRENTVERSION}})',
@@ -6623,6 +6671,7 @@ Im Menü git s e Link zum Portal vu dr yygstellte Sproch.',
 	'supportedlanguages-noportal' => 'Dr Wiki-Administrator het d Variable <code>NS_PORTAL</code> nit definiert, wäge däm funktioniert die Syte nit.
 Uf däre Syte erschyynt e Lischt vu dr Sprochportal mit allene Portal, wu e definierte Sprochcode hän un e Untersyte hän mit eme Name „translators“.
 In dr Untersyte „translators“ mueß es d Vorlag [[:{{ns:template}}:User|User]] din haa, mit eme Benutzername as Parameter.',
+	'supportedlanguages-recenttranslations' => 'Aktuälli Ibersetzige',
 	'translate-save' => 'Spychere ($1)',
 	'translate-jssti-add' => 'Zue dr Lischt zuefiege',
 	'translate-group-desc-mediawikicore' => 'In däre Gruppe het s alli Nochrichte vu dr aktuälle alpha-Version vu MediaWiki ({{CURRENTVERSION}})',
@@ -7472,6 +7521,7 @@ Hlej menijowu lajstu za wotkaz k portalej swojeje preferowaneje rěče.',
 	'supportedlanguages-noportal' => 'Wikiadministrator njeje NS_PORTAL definował, tohodla tuta strona njefunguje.
 Na tutej stronje budźe so lisćina rěčnych portalow jewić, za wšě portale, kotrež definowemu rěčnemu kodej a podstronje z mjenom "translators" wotpowěduja.
 Podstrona "translators" dyrbi předłohu  [[:{{ns:template}}:User|User]] wobsahować a wužiwa wužiwarske mjeno jako parameter.',
+	'supportedlanguages-recenttranslations' => 'najnowše přełožki',
 	'translate-save' => 'Składować ($1)',
 	'translate-jssti-add' => 'Lisćinje přidać',
 	'translate-group-desc-mediawikicore' => 'Tuta skupina zdźělenkow wobsahuje zdźělenki, kotrež so w aktualnej alfa-wersiji MediaWiki ({{CURRENTVERSION}}) wužiwaja',
@@ -7487,7 +7537,7 @@ Podstrona "translators" dyrbi předłohu  [[:{{ns:template}}:User|User]] wobsaho
 	'translate-group-desc-wikimediaextensions' => 'Hłowna skupina, kotraž wšě zdźělenki za podpěrowane rozšěrjenja MediaWiki wobsahuje, kotrež so přez [http://wikimedia.org/ Wikimedia Foundation] wužiwaja',
 	'translate-group-desc-wikitravelextensions' => 'Hłowna skupina, kotraž wšě zdźělenki za podpěrowane rozšěrjenja MediaWiki, kotrež so přez [http://wikitravel.org Wikitravel] wužiwaja',
 	'translate-group-desc-uniwiki' => 'Hłowna skupina, kotraž wšě zdźělenki za rozšěrjenja wobsahuje, kotrež su z [http://unicefinnovation.org/wiki.php Uniwiki] přiwuzne',
-	'translate-group-desc-ui' => 'Metaskupina zdźělenkow, kotraž wšě zdźělenki za rozšěrjenja wobsahuje, kotrež so na [http://meta.wikimedia.org/wiki/Wikipedia_Usability_Initiative iniciatiwu wužiwajomnosć Wikipedije] poćahuja.',
+	'translate-group-desc-ui' => 'Metaskupina zdźělenkow, kotraž wšě zdźělenki za rozšěrjenja wobsahuje, kotrež so na [http://meta.wikimedia.org/wiki/Wikipedia_Usability_Initiative iniciatiwu wužiwajomnosće Wikipedije] poćahuja.',
 	'translate-group-desc-nodesc' => 'Za tutu skupinu zdźělenkow wopisanje k dispoziciji njesteji.',
 	'translate-manage-groups' => 'Zrjadowanje skupinow',
 	'translate-manage-listgroups' => 'Konfigurowane skupiny',
@@ -8119,6 +8169,7 @@ Vide le barra de menu pro un ligamine al portal pro le lingua de tu preferentia.
 	'supportedlanguages-noportal' => 'Le administrator del wiki non ha definite NS_PORTAL, dunque iste pagina non functiona.
 In iste pagina apparera un lista de portales linguistic pro tote le portales correspondente con un codice de lingua definite e un subpagina appellate "translators".
 Le subpagina "translators" debe continer le patrono [[:{{ns:template}}:User|User]] que prende un nomine de usator como parametro.',
+	'supportedlanguages-recenttranslations' => 'traductiones recente',
 	'translate-save' => 'Publicar ($1)',
 	'translate-jssti-add' => 'Adder al lista',
 	'translate-group-desc-mediawikicore' => 'Iste gruppo contine le messages usate in le version alpha actual de MediaWiki ({{CURRENTVERSION}})',
@@ -8371,6 +8422,7 @@ Daftar bahasa baku tergantung pada bahasa Anda.',
 	'translate-translations-messagename' => 'Nama:',
 	'translate-translations-project' => 'Proyek:',
 	'translate-translations-including-no-param' => 'Harap gunakan sebuah kunci pesan yang valid dalam parameter subhalaman',
+	'translate-translations-history-short' => 's',
 	'languagestats' => 'Statistik bahasa',
 	'languagestats-summary' => 'Halaman ini menampilkan statistik penerjemahan untuk semua kelompok pesan dalam suatu bahasa tertentu.',
 	'translate-language-code' => 'Kode bahasa',
@@ -8652,6 +8704,7 @@ Ef þú veist hvar eða hvernig meldingin er notuð getur þú hjálpað öðrum
  * @author McDutchie
  * @author Melos
  * @author Pietrodn
+ * @author VittGam
  */
 $messages['it'] = array(
 	'translate' => 'Traduzione',
@@ -8659,15 +8712,15 @@ $messages['it'] = array(
 	'translate-edit' => 'modifica',
 	'translate-talk' => 'discussione',
 	'translate-history' => 'cronologia',
-	'translate-task-view' => 'Visualizzare tutti i messaggi dal',
-	'translate-task-untranslated' => 'Visualizzare tutti i messaggi non tradotti dal',
-	'translate-task-optional' => 'Visualizzare i messaggi opzionali dal',
-	'translate-task-untranslatedoptional' => 'Visualizza i messaggi opzionali non tradotti dal',
+	'translate-task-view' => 'Visualizzare tutti i messaggi',
+	'translate-task-untranslated' => 'Visualizzare tutti i messaggi non tradotti',
+	'translate-task-optional' => 'Visualizzare i messaggi opzionali',
+	'translate-task-untranslatedoptional' => 'Visualizzare i messaggi opzionali non tradotti',
 	'translate-task-problematic' => 'Visualizzare messaggi che hanno problemi',
-	'translate-task-review' => 'Revisionare i cambiamenti al',
-	'translate-task-reviewall' => 'Revisionare tutti i messaggi tradotti nel',
-	'translate-task-export' => 'Esportare le traduzioni dal',
-	'translate-task-export-to-file' => 'Esportare la traduzione in un file dal',
+	'translate-task-review' => 'Revisionare i cambiamenti',
+	'translate-task-reviewall' => 'Revisionare tutti i messaggi tradotti',
+	'translate-task-export' => 'Esportare le traduzioni',
+	'translate-task-export-to-file' => 'Esportare la traduzione in un file',
 	'translate-task-export-as-po' => 'Esportare la traduzione nel formato Gettext',
 	'translate-task-export-to-xliff' => 'Esportare la traduzione nel formato Xliff',
 	'translate-page-no-such-language' => 'Il linguaggio specificato non è valido.',
@@ -9026,6 +9079,7 @@ $messages['ja'] = array(
 	'supportedlanguages-noportal' => 'ウィキの管理者が NS_PORTAL を定義していないため、このページは機能しません。
 このページには定義された言語コードに対応するポータルと "translators" と名付けられたサブページを持つ、言語ポータルの一覧が表示されます。
 "translators" サブページには、利用者名を引数とするテンプレート [[:{{ns:template}}:User|User]] が含まれている必要があります。',
+	'supportedlanguages-recenttranslations' => '最近の翻訳',
 	'translate-save' => '保存 ($1)',
 	'translate-jssti-add' => '下で選択した言語をリストに追加',
 	'translate-group-desc-mediawikicore' => 'このメッセージグループには MediaWiki の現アルファ版 ({{CURRENTVERSION}}) で使われているメッセージが含まれています',
@@ -10475,6 +10529,7 @@ Kuckt de Menu fir e Link op de Portal fir déi Sprooch déi dir an Äre Preferen
 	'supportedlanguages-noportal-title' => 'Kee Portal-Nummraum definéiert',
 	'supportedlanguages-noportal' => 'De Wiki Administrateur huet NS_PORTAL net definéiert, dofir fonctionnéiert dës Säit net.
 Op dëser Säit ass eng Lëscht vu Sproocheportal fir all Portaler déi mat engem bestëmmte Sproochecode an enger Ënnersäit mam Numm "translators" wou d\'Schabloun [[:{{ns:template}}:User|Benotzer]] dran ass an déi de Benotzernumm als Parameter huet.',
+	'supportedlanguages-recenttranslations' => 'rezent Iwwersetzungen',
 	'translate-save' => 'Späicher ($1)',
 	'translate-jssti-add' => "Op d'Lëscht derbäisetzen",
 	'translate-group-desc-mediawikicore' => "An dëser Grupp mat Message sinn d'Messagen aus der aktueller alpha-Versioun vu MediaWiki ({{CURRENTVERSION}}) dran",
@@ -10862,7 +10917,7 @@ $messages['mk'] = array(
 	'translate-prev' => 'Претходна страница',
 	'translate-page-description-legend' => 'Информации за групата',
 	'translate-page-edit' => 'уреди',
-	'translate-ext-url' => '<hr />Веб-страница: $1',
+	'translate-ext-url' => '<hr />Мреж. место: $1',
 	'translate-optional' => '(изборно)',
 	'translate-ignored' => '(игнорирано)',
 	'translate-edit-title' => 'Уреди „$1“',
@@ -10947,7 +11002,7 @@ $messages['mk'] = array(
 	'translate-rc-translation-filter-no' => 'Не прави ништо',
 	'translate-rc-translation-filter-only' => 'Прикажи само преводи',
 	'translate-rc-translation-filter-filter' => 'Филтрирај преводи',
-	'translate-rc-translation-filter-site' => 'Промени само на пораките на мрж. место',
+	'translate-rc-translation-filter-site' => 'Промени само во пораките на мреж. место',
 	'translationstats' => 'Статистики на преведување',
 	'translate-stats-edits' => 'Уредувања',
 	'translate-stats-users' => 'Преведувачи',
@@ -11012,6 +11067,7 @@ $messages['mk'] = array(
 	'supportedlanguages-noportal-title' => 'Нема определено именски простор за портал',
 	'supportedlanguages-noportal' => 'Администраторот на викито нема определено NS_PORTAL, па затоа страницата не работи.
 На страницава се јавува список на сите портали што одговараат на определен јазичен код и потстраница наречена „преведувачи“ која го содржи шаблонот [[:{{ns:template}}:User|User]] земајќи корисничко име како параметар.',
+	'supportedlanguages-recenttranslations' => 'скорешни преводи',
 	'translate-save' => 'Зачувај ($1)',
 	'translate-jssti-add' => 'Додај во список',
 	'translate-group-desc-mediawikicore' => 'Оваа група содржи пораки кои се користат на моменталната алфа верзија на МедијаВики ({{CURRENTVERSION}})',
@@ -11796,6 +11852,7 @@ Zie de menubalk voor een verwijzing naar het portaal voor uw voorkeurstaal.',
 	'supportedlanguages-noportal' => 'De wikibeheerder heeft NS_PORTAL niet ingesteld, zodat deze pagina niet werkt.
 Op deze pagina wordt een lijst van taalportalen weergegevens voor alle portalen die overeenkomen met een ingestelde taalcode en een subpagina "translators".
 De subpagina "translators" moet het sjabloon [[:{{ns:template}}:User|User]] bevatten, waarbij een gebruikersnaam als parameter wordt geaccepteerd.',
+	'supportedlanguages-recenttranslations' => 'recente vertalingen',
 	'translate-save' => 'Opslaan ($1)',
 	'translate-jssti-add' => 'Aan lijst toevoegen',
 	'translate-group-desc-mediawikicore' => 'Deze berichtengroep bevat de berichten die in de huidige alpha-versie van MediaWiki gebruikt worden - {{CURRENTVERSION}}',
@@ -11922,6 +11979,8 @@ $messages['nn'] = array(
 	'translate-page-settings-legend' => 'Innstillingar',
 	'translate-page-task' => 'Eg vil',
 	'translate-page-group' => 'Gruppe',
+	'translate-page-group-tooltip' => 'Namnet til ei meldingsgruppa.
+Om gruppa er sett saman av eit delsett eller eit overordna sett av meldingar frå andre grupper, er ho synt i feit skrift.',
 	'translate-page-language' => 'Språk',
 	'translate-page-limit' => 'Grense',
 	'translate-page-limit-option' => '$1 {{PLURAL:$1|melding|meldingar}} per side',
@@ -11938,6 +11997,7 @@ $messages['nn'] = array(
 	'translate-ext-url' => '<hr />Nettstad: $1',
 	'translate-optional' => '(valfri)',
 	'translate-ignored' => '(ignorert)',
+	'translate-edit-title' => 'Endra «$1»',
 	'translate-edit-definition' => 'Melding som skal setjast om',
 	'translate-edit-contribute' => 'bidra',
 	'translate-edit-no-information' => "''Denne meldinga har ikkje dokumentasjon. Om du veit kvar eller korleis denne meldinga vert nytta, kan du hjelpe andre omsetjarar ved å legge inn dokumentasjon til denne meldinga.''",
@@ -11998,6 +12058,7 @@ Endringar vert ikkje lagra før du klikkar på lagreknappen nedanfor.',
 	'translate-checks-escape' => 'Dei fylgjande hendingane kan vera tilfeldige: <strong>$1</strong>',
 	'translate-pref-nonewsletter' => 'Ikkje send meg nyhendebrev',
 	'translate-pref-editassistlang' => 'Hjelpespråk:',
+	'prefs-translate' => 'Omsetjingsval',
 	'translate-pref-editassistlang-bad' => 'Ugyldig språkkode i lista:
 <nowiki>$1</nowiki>.',
 	'translate-pref-jsedit' => 'Udvida redigeringsvindu for omsetjingar (JavaScript)',
@@ -12040,15 +12101,23 @@ Endringar vert ikkje lagra før du klikkar på lagreknappen nedanfor.',
 	'translate-translations-project' => 'Prosjekt:',
 	'translate-translations-including-no-param' => 'Spesifiser ein gyldig meldingsnøkkel i undersideparameteren.',
 	'languagestats' => 'Språkstatistikk',
-	'languagestats-summary' => 'Denne sida viser omsetjingsstatistikk for alle meldingsgrupper for eit språk.',
+	'languagestats-summary' => 'Denne sida viser omsetjingsstatistikk for alle meldingsgruppene for eit språk.',
+	'languagestats-stats-for' => 'Omsetjingsstatistikk for $1 ($2).',
+	'languagestats-recenttranslations' => 'siste omsetjingar',
 	'translate-language-code' => 'Språkkode',
 	'translate-language-code-field-name' => 'Språkkode:',
 	'translate-suppress-complete' => 'Skjul meldingsgrupper som er ferdig omsette',
 	'translate-language' => 'Språk',
 	'translate-total' => 'Meldingar',
+	'translate-total-tooltip' => 'Det totale talet på meldingar i denne meldingsgruppa.',
 	'translate-untranslated' => 'Uomsett',
+	'translate-untranslated-tooltip' => 'Det totale talet på meldingar i denne meldingsgruppa som ikkje er sette om.
+Dette talet inkluderer meldingane som er merkte som utdaterte.',
 	'translate-percentage-complete' => 'Ferdiggjort',
+	'translate-percentage-complete-tooltip' => 'Prosenttalet på meldingar i gruppa som er sette om og som ikkje er merkte som utdaterte.',
 	'translate-percentage-fuzzy' => 'Utdatert',
+	'translate-percentage-fuzzy-tooltip' => 'Prosenttalet på meldingar i gruppa som er sette om og som seinare vart merkte som utdaterte.
+Meldingane er merkte som utdaterte anten av di den engelske kjeldemeldinga er vorten endra, ein automatisk kontroll av meldinga ikkje gjekk gjennom eller av di nokon merkte ho som utdatert.',
 	'translate-nothing-to-do' => 'Det ser ut til at alle moglege omsetjingar er vortne gjorde.
 Sjå gjerne over meldingar gjennom [[Special:Translate|{{int:translate}}]].',
 	'translate-save' => 'Lagra ($1)',
@@ -12072,6 +12141,11 @@ $1',
 	'translate-import-err-ul-failed' => 'Filopplastinga var ikkje vellukka',
 	'translate-import-err-invalid-title' => 'Det oppgjevne filnamnnet <nowiki>$1</nowiki> var ugyldig.',
 	'translate-import-err-no-such-file' => 'Fila <nowiki>$1</nowiki> finst ikkje eller er ikkje vorten lasta opp lokalt.',
+	'translate-js-next' => 'Lagra og opna neste',
+	'translate-js-nonext' => 'Dette var den siste meldinga på sida.',
+	'translate-js-skip' => 'Hopp over til neste',
+	'translate-js-save-failed' => 'Lagringa gjekk ikkje gjennom. Rapporter denne feilen.',
+	'translate-js-history' => 'Omsetjingsstatistikk',
 	'translate-gs-continent' => 'Kontinent',
 );
 
@@ -12703,6 +12777,7 @@ $messages['pdc'] = array(
 	'translate-translations-none' => 'Keene Iwwersetzingen fer „$1“ vorhande',
 	'translate-translations-messagename' => 'Naame:',
 	'translate-translations-project' => 'Projekt:',
+	'translate-translations-history-short' => 'G',
 	'languagestats' => 'Nummere vun Schprooche',
 	'translate-language-code' => 'Schprooche-Code',
 	'translate-language-code-field-name' => 'Schprooche-Code:',
@@ -12711,6 +12786,7 @@ $messages['pdc'] = array(
 	'supportedlanguages-translators' => '{{PLURAL:$2|Iwwersetzer|Iwwersetzer}}: $1',
 	'translate-jssti-add' => 'Zu de Lischt dezu duh',
 	'translate-manage-modlang-new' => '$1 (nei)',
+	'translate-manage-import-done' => 'Alles geduh!',
 );
 
 /** Polish (Polski)
@@ -12915,6 +12991,7 @@ See the menu bar for a link to the portal for the language of your preference.',
 	'supportedlanguages-noportal' => 'Ta strona nie działa ponieważ administrator wiki nie określił NS_PORTAL,
 Na tej stronie znajduje się lista portali językowych dla każdego z portali odpowiadającemu kodowi języka oraz podstronie „translators“.
 Podstrona „translators“ musi zawierać szablon [[:{{ns:template}}:User|User]] z nazwą użytkownika jako parametrem.',
+	'supportedlanguages-recenttranslations' => 'ostatnie tłumaczenia',
 	'translate-save' => 'Zapisz ($1)',
 	'translate-jssti-add' => 'Dodaj do listy',
 	'translate-group-desc-mediawikicore' => 'Grupa zawiera komunikaty wykorzystywane w bieżącej wersji alfa MediaWiki ({{CURRENTVERSION}})',
@@ -13341,9 +13418,12 @@ $messages['ps'] = array(
 	'translate-page-description-legend' => 'د ډلې په اړه مالومات',
 	'translate-page-edit' => 'سمول',
 	'translate-ext-url' => '<hr />وېبځی: $1',
+	'translate-ignored' => '(بابېزه ګڼل شوی)',
 	'translate-edit-contribute' => 'ونډه اخيستل',
 	'translate-edit-information' => 'د "$2" پيغام په اړه مالومات ($1)',
 	'translate-edit-in-other-languages' => 'د "$1" پيغام په نورو ژبو کې',
+	'translate-edit-goto-next' => 'بل پيغام سمول',
+	'translate-edit-goto-list' => 'بېرته لړليک ته ورګرځېدل',
 	'translate-magic-help' => 'دلته تاسې د ځانګړو مخونو مستعار نومونه، کوډګريز وييونه او د نوم-تشيالونو نومونه ژباړلی شی.
 
 د ځانګړو مخونو مستعار نومونه او کوډګريز وييونه په ګڼ شمېر نومونو ژباړلی شی.
@@ -13366,6 +13446,7 @@ Changes are not saved until you click save button below.',
 	'translationchanges' => 'د ژباړې بدلونونه',
 	'translate-pref-editassistlang' => 'مرستيالې ژبې:',
 	'prefs-translate' => 'د ژباړې خوښنې',
+	'translate-rc-translation-filter' => 'ژباړې چاڼول:',
 	'translate-rc-translation-filter-no' => 'هېڅ مه کړه',
 	'translationstats' => 'د ژباړو شمار',
 	'translate-stats-edits' => 'سمونونه',
@@ -13379,13 +13460,20 @@ Changes are not saved until you click save button below.',
 	'translate-translations-none' => 'د "$1" لپاره کومه ژباړه نه شته',
 	'translate-translations-fieldset-title' => 'پيغام',
 	'translate-translations-messagename' => 'نوم:',
+	'translate-translations-project' => 'پروژه:',
+	'languagestats-recenttranslations' => 'تازه ژباړې',
+	'translate-language-code' => 'د ژبې کوډ',
+	'translate-language-code-field-name' => 'د ژبې کوډ:',
 	'translate-language' => 'ژبه',
 	'translate-total' => 'پيغامونه',
 	'translate-untranslated' => 'ناژباړلي',
+	'supportedlanguages-recenttranslations' => 'تازه ژباړې',
+	'translate-save' => 'خوندي کول ($1)',
 	'translate-jssti-add' => 'لړليک کې ګډول',
 	'translate-manage-modlang-new' => '$1 (نوی)',
 	'translate-manage-import-new' => 'نوی پيغام $1',
 	'translate-manage-import-deleted' => 'ړنګ شوی پيغام $1',
+	'translate-manage-action-ignore' => 'بابېزل',
 	'translate-manage-import-done' => 'ټول ترسره شوي!',
 	'translate-gs-code' => 'کوډ',
 	'translate-gs-continent' => 'لويه وچه',
@@ -13418,7 +13506,7 @@ $messages['pt'] = array(
 	'translate-task-reviewall' => 'Rever todas as traduções de',
 	'translate-task-export' => 'Exportar traduções de',
 	'translate-task-export-to-file' => 'Exportar para ficheiro as traduções de',
-	'translate-task-export-as-po' => 'Exportar tradução em formato Gettext',
+	'translate-task-export-as-po' => 'Exportar tradução no formato Gettext',
 	'translate-task-export-to-xliff' => 'Exportar tradução em formato Xliff',
 	'translate-page-no-such-language' => 'A língua especificada é inválida.',
 	'translate-page-no-such-task' => 'A tarefa especificada é inválida.',
@@ -13563,7 +13651,7 @@ Todos os valores têm limites máximos e mínimos.',
 	'languagestats-recenttranslations' => 'traduções recentes',
 	'translate-language-code' => 'Código de língua',
 	'translate-language-code-field-name' => 'Código de língua:',
-	'translate-suppress-complete' => 'Suprimir grupos de mensagens completamente traduzidos',
+	'translate-suppress-complete' => 'Suprimir os grupos de mensagens completamente traduzidos',
 	'translate-language' => 'Língua',
 	'translate-total' => 'Mensagens (total)',
 	'translate-total-tooltip' => 'O número total de mensagens neste grupo de mensagens.',
@@ -13590,6 +13678,7 @@ Na barra lateral à esquerda existe um link para o portal da língua da sua pref
 	'supportedlanguages-noportal-title' => 'Não foi definido um espaço nominal para portais',
 	'supportedlanguages-noportal' => 'O administrador da wiki não definiu NS_PORTAL, por isso esta página não funciona.
 Nesta página aparece uma lista de todos os portais de línguas que correspondem a um código de língua existente e uma subpágina chamada "translators". Para cada tradutor, a subpágina deve chamar a predefinição [[:{{ns:template}}:User|User]], passando como parâmetro um nome de utilizador.',
+	'supportedlanguages-recenttranslations' => 'traduções recentes',
 	'translate-save' => 'Gravar ($1)',
 	'translate-jssti-add' => 'Adicionar à lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo contém as mensagens utilizadas na actual versão alfa do MediaWiki ({{CURRENTVERSION}})',
@@ -13716,6 +13805,8 @@ $messages['pt-br'] = array(
 	'translate-page-settings-legend' => 'Configurações',
 	'translate-page-task' => 'Eu desejo',
 	'translate-page-group' => 'Grupo',
+	'translate-page-group-tooltip' => 'O nome de um grupo de mensagens.
+Se o grupo é composto por um subconjunto ou superconjunto de mensagens de outros grupos, o mesmo é apresentado em negrito.',
 	'translate-page-language' => 'Língua',
 	'translate-page-limit' => 'Limite',
 	'translate-page-limit-option' => '$1 {{PLURAL:$1|mensagem|mensagens}} por página',
@@ -13731,6 +13822,7 @@ $messages['pt-br'] = array(
 	'translate-ext-url' => "<hr />Página ''web'': $1",
 	'translate-optional' => '(opcional)',
 	'translate-ignored' => '(ignorada)',
+	'translate-edit-title' => 'Editar "$1"',
 	'translate-edit-definition' => 'Definição da mensagem',
 	'translate-edit-contribute' => 'contribua',
 	'translate-edit-no-information' => "''Esta mensagem ainda não foi documentada. Caso você saiba onde ou como ela é utilizada, poderá ajudar outros tradutores adicionando dados sobre esta mensagem.''",
@@ -13739,6 +13831,8 @@ $messages['pt-br'] = array(
 	'translate-edit-committed' => 'Tradução atualmente disponível no software',
 	'translate-edit-warnings' => 'Avisos sobre traduções incompletas',
 	'translate-edit-tmsugs' => 'Sugestões da memória de traduções',
+	'translate-edit-tmmatch' => '$1% coincidente',
+	'translate-use-suggestion' => 'Inserir esta sugestão na área de tradução. Isto substitui todo o conteúdo existente.',
 	'translate-edit-goto-no-prev' => 'Não há mensagens anteriores',
 	'translate-edit-goto-no-next' => 'Não há mensagens posteriores',
 	'translate-edit-goto-prev' => 'Editar mensagem anterior',
@@ -13789,6 +13883,7 @@ As alterações não serão gravadas até que você clique abaixo no botão de g
 	'translate-checks-pagename' => 'Espaço nominal modificado relativamente à definição',
 	'translate-checks-format' => 'Esta tradução não segue a definição ou tem uma sintaxe inválida: $1',
 	'translate-checks-escape' => 'As seguintes sequências de escape podem ter sido acidentais: <strong>$1</strong>',
+	'translate-checks-fudforum-syntax' => 'Use <nowiki>$1</nowiki> em vez de <nowiki>$2</nowiki> neste projeto.',
 	'translate-pref-nonewsletter' => 'Não me enviar newsletters por e-mail',
 	'translate-pref-editassistlang' => 'Idiomas de ajuda:',
 	'prefs-translate' => 'Opções de tradução',
@@ -13797,7 +13892,10 @@ São exibidas as traduções de uma mensagem nestes idiomas quando você está t
 A lista padrão de idiomas depende do seu idioma.',
 	'translate-pref-editassistlang-bad' => 'Código de idioma inválido na lista:
 <nowiki>$1</nowiki>.',
+	'translate-pref-jsedit' => 'Usar o editor de traduções melhorado (JavaScript)',
 	'right-translate' => 'Editar usando a interface de tradução',
+	'right-translate-manage' => 'Gerenciar grupos de tradução',
+	'right-translate-import' => 'Importar traduções offline',
 	'translate-rc-translation-filter' => 'Filtrar traduções:',
 	'translate-rc-translation-filter-no' => 'Não fazer nada',
 	'translate-rc-translation-filter-only' => 'Mostrar apenas traduções',
@@ -13833,18 +13931,40 @@ A lista padrão de idiomas depende do seu idioma.',
 	'translate-translations-messagename' => 'Nome:',
 	'translate-translations-project' => 'Projeto:',
 	'translate-translations-including-no-param' => 'Por favor, especifique uma chave de mensagem válida no parâmetro subpágina',
+	'translate-translations-history-short' => 'h',
 	'languagestats' => 'Estatísticas da língua',
 	'languagestats-summary' => 'Esta página mostra estatísticas de tradução para todos os grupos de mensagens para uma língua.',
+	'languagestats-stats-for' => 'Estatísticas de tradução para $1 ($2).',
+	'languagestats-recenttranslations' => 'traduções recentes',
 	'translate-language-code' => 'Código de língua',
 	'translate-language-code-field-name' => 'Código de língua:',
 	'translate-suppress-complete' => 'Suprimir grupos de mensagens completamente traduzidos',
 	'translate-language' => 'Língua',
 	'translate-total' => 'Mensagens (total)',
+	'translate-total-tooltip' => 'O número total de mensagens neste grupo de mensagens.',
 	'translate-untranslated' => 'Não traduzidas',
+	'translate-untranslated-tooltip' => 'O número total de mensagens não traduzidas neste grupo de mensagens.
+Isto inclui as mensagens que foram marcadas como desatualizadas.',
 	'translate-percentage-complete' => 'Progresso',
+	'translate-percentage-complete-tooltip' => 'A percentagem de mensagens no grupo que foram traduzidas e não estão marcadas como desatualizadas',
 	'translate-percentage-fuzzy' => 'Obsoletas',
+	'translate-percentage-fuzzy-tooltip' => 'A percentagem de mensagens do grupo que foram traduzidas e estão marcadas como desatualizadas.
+As mensagens estão marcadas como desatualizadas porque a mensagem original em inglês mudou ou porque uma verificação automática da mensagem detectou um problema.',
 	'translate-nothing-to-do' => 'Aparentemente todas as traduções possíveis foram feitas.
 Você é encorajado a revisar mensagens através de [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Línguas suportadas',
+	'supportedlanguages-summary' => 'Esta página apresenta uma lista de todas as línguas suportadas pela {{SITENAME}}, com os nomes dos tradutores de cada língua.
+Para obter mais informação sobre uma língua em particular, pode clicar o link para o portal dessa língua.
+Clicar o nome de um tradutor conduz à página de utilizador desse tradutor.
+
+Se uma língua não aparecer na lista, pode descobrir como iniciar um projeto de localização para uma língua em "[[Translating:Process/pt|Língua nova]]".
+
+Se faz traduções para uma língua e o seu nome não aparece na lista, adicione-o à lista de tradutores no [[:Category:Languages|portal]] dessa língua, por favor.
+Na barra lateral à esquerda existe um link para o portal da língua da sua preferência.',
+	'supportedlanguages-translators' => '{{PLURAL:$2|Tradutor|Tradutores}}: $1',
+	'supportedlanguages-noportal-title' => 'Não foi definido um espaço nominal para portais',
+	'supportedlanguages-noportal' => 'O administrador da wiki não definiu NS_PORTAL, por isso esta página não funciona.
+Nesta página aparece uma lista de todos os portais de línguas que correspondem a um código de língua existente e uma subpágina chamada "translators". Para cada tradutor, a subpágina deve chamar a predefinição [[:{{ns:template}}:User|User]], passando como parâmetro um nome de utilizador.',
 	'translate-save' => 'Gravar ($1)',
 	'translate-jssti-add' => 'Adicionar à lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo de mensagens contém as mensagens utilizadas na atual versão alfa do MediaWiki ({{CURRENTVERSION}})',
@@ -13853,6 +13973,15 @@ Você é encorajado a revisar mensagens através de [[Special:Translate|{{int:tr
 	'translate-group-desc-collection' => 'Meta-grupo de mensagens contendo todas as mensagens para a extensão MediaWiki [http://www.mediawiki.org/wiki/Extension:Collection Colecção]',
 	'translate-group-desc-flaggedrevs' => 'Meta-grupo de mensagens contendo todas as mensagens para a extensão MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs Edições Analisadas]',
 	'translate-group-desc-readerfeedback' => 'Meta-grupo de mensagens contendo todas as mensagens para a extensão MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs ReaderFeedback]',
+	'translate-group-desc-socialprofile' => 'Este meta-grupo contém todas as mensagens para as extensões relacionadas com a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:SocialProfile Perfil Social]',
+	'translate-group-desc-translate' => 'Este meta-grupo contém todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:Translate Traduzir]',
+	'translate-group-desc-wikiaextensions' => 'Este meta-grupo contém todas as mensagens para as extensões suportadas do MediaWiki que são usadas pela [http://www.wikia.com Wikia]',
+	'translate-group-desc-wikihowextensions' => 'Este meta-grupo contém todas as mensagens para as extensões MediaWiki suportadas, usadas pelo [http://www.wikihow.com wikiHow]',
+	'translate-group-desc-wikimediaextensions' => 'Este meta-grupo contém todas as mensagens para as extensões MediaWiki suportadas, usadas pela [http://wikimedia.org/ Wikimedia Foundation]',
+	'translate-group-desc-wikitravelextensions' => 'Este meta-grupo contém todas as mensagens para as extensões MediaWiki suportadas, usadas pelo [http://wikitravel.org Wikitravel]',
+	'translate-group-desc-uniwiki' => 'Este meta-grupo contém todas as mensagens para as extensões relacionadas com o [http://unicefinnovation.org/wiki.php Uniwiki]',
+	'translate-group-desc-ui' => 'Este meta-grupo contém todas as mensagens para as extensões relacionadas com a [http://meta.wikimedia.org/wiki/Wikipedia_Usability_Initiative Iniciativa de Usabilidade da Wikipédia]',
+	'translate-group-desc-nodesc' => 'Não existe descrição para este grupo de mensagens',
 	'translate-manage-groups' => 'Gestão de grupos',
 	'translate-manage-listgroups' => 'Grupos configurados',
 	'translate-manage-listgroups-old' => 'Antigo estilo dos grupos',
@@ -13884,8 +14013,17 @@ Por favor reenvie o formulário para continuar processando.',
 	'translate-manage-import-summary' => 'Importando uma nova versão de um fonte externa',
 	'translate-manage-conflict-summary' => 'Importando uma nova versão de uma fonte externa.
 Por favor, confira.',
+	'translate-manage-fuzzy-summary' => 'A definição sofreu alterações',
 	'translate-manage-import-fuzzy' => 'Importando e marcando traduções para revisão: $1',
 	'translate-manage-import-done' => 'Tudo feito!',
+	'translate-manage-import-rebuild' => 'Reconstrução de cache.',
+	'translate-manage-intro-en' => 'Encontra abaixo uma lista de alterações às mensagens deste grupo.
+Por favor, reveja as alterações e escolha a ação que pretende para cada mensagem. 
+Quando tiver atualizado as definições das mensagens, verifique se ocorreram alterações externas noutras línguas existentes.
+Note também que a ação <code>ignore</code> é só temporária.',
+	'translate-manage-intro-other' => 'Encontra-se abaixo uma lista de alterações de traduções na língua $1.
+Por favor, reveja as alterações e escolha a ação que pretende para cada tradução. 
+Se escolher ignorar as alterações, elas serão sobrepostas na próxima exportação.',
 	'translate-manage-subtitle' => 'Gerenciar',
 	'translate-manage-import-rebuild-all' => 'Refazer todos os idiomas e ignorar quaisquer alterações',
 	'importtranslations' => 'Importar traduções',
@@ -13895,9 +14033,24 @@ Por favor, confira.',
 	'translate-import-load' => 'Carregar arquivo',
 	'translate-import-err-type-not-supported' => 'Impossível carregar o arquivo:
 O método <code>$1</code> não é suportado.',
+	'translate-import-err-dl-failed' => 'Não foi possível obter o arquivo:
+$1',
 	'translate-import-err-ul-failed' => 'Carregamento de arquivo sem sucesso',
 	'translate-import-err-invalid-title' => 'O nome <nowiki>$1</nowiki> fornecido para o arquivo era inválido.',
 	'translate-import-err-no-such-file' => 'O arquivo <nowiki>$1</nowiki> não existe ou não foi carregado localmente.',
+	'translate-import-err-no-headers' => 'O arquivo não é um arquivo Gettext válido, com o formato da extensão Translate:
+Não foi possível determinar o grupo e a língua a partir dos cabeçalhos.',
+	'translate-import-err-warnings' => 'Este arquivo não é válido.
+Certifique-se de que o seu editor não remove os campos msgctxt.
+Detalhes: $1',
+	'translate-js-next' => 'Gravar e abrir a seguinte',
+	'translate-js-nonext' => 'Esta foi a última mensagem nesta página.',
+	'translate-js-skip' => 'Saltar para a seguinte',
+	'translate-js-save-failed' => 'A gravação falhou. Por favor, informe-nos deste erro.',
+	'translate-js-history' => 'Histórico de traduções',
+	'translate-gs-pos' => 'Pos.',
+	'translate-gs-code' => 'Código',
+	'translate-gs-continent' => 'Continente',
 	'translate-gs-speakers' => 'Falantes',
 	'translate-gs-score' => 'Pont.',
 	'translate-gs-multiple' => 'Múltiplos',
@@ -14380,6 +14533,7 @@ $messages['ru'] = array(
 	'supportedlanguages-noportal' => 'Администратор вики не определил NS_PORTAL, поэтому данная страница не работает.
 На этой странице появится список языковых порталов, соответствующих определённым кодам языков, и подстраница «Переводчики».
 Подстраница «Переводчики» должна содержать шаблон [[:{{ns:template}}:User|User]], с именем участника в качестве параметра.',
+	'supportedlanguages-recenttranslations' => 'недавние переводы',
 	'translate-save' => 'Сохранить ($1)',
 	'translate-jssti-add' => 'Добавить в список',
 	'translate-group-desc-mediawikicore' => 'Эта группа сообщений содержит сообщения, используемые в текущей альфа-версии MediaWiki ({{CURRENTVERSION}})',
@@ -14475,14 +14629,15 @@ $1',
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'translate' => 'Перекладаня',
 	'translate-edit' => 'едітовати',
 	'translate-talk' => 'діскузія',
 	'translate-history' => 'історія',
-	'translate-task-view' => 'Зобразити вшыткы увідомлїня  з',
-	'translate-task-untranslated' => 'Зобразити вшыткы непереложены увідомлїня з',
-	'translate-task-optional' => 'Зобразити волительны увідомлїня з',
-	'translate-task-untranslatedoptional' => 'Зобразити непереложены волительны увідомлїня з',
-	'translate-task-problematic' => 'Зобразити увідомлїня з проблематічным перекладом',
+	'translate-task-view' => 'Зобразити вшыткы повідомлїня  з',
+	'translate-task-untranslated' => 'Зобразити вшыткы непереложены повідомлїня з',
+	'translate-task-optional' => 'Зобразити волительны повідомлїня з',
+	'translate-task-untranslatedoptional' => 'Зобразити непереложены волительны повідомлїня з',
+	'translate-task-problematic' => 'Зобразити повідомлїня з проблематічным перекладом',
 	'translate-task-review' => 'Порівнати зміны в',
 	'translate-task-reviewall' => 'Порівнати вшыткы переклады в',
 	'translate-task-export' => 'Експортовати переклады',
@@ -14499,8 +14654,28 @@ $messages['rue'] = array(
 	'translate-page-limit' => 'Ліміт',
 	'translate-submit' => 'Вказати',
 	'translate-page-navigation-legend' => 'Навіґація',
+	'translate-next' => 'Далша сторінка',
+	'translate-prev' => 'Попередня сторінка',
 	'translate-page-description-legend' => 'Інформація о ґрупі',
+	'translate-magic-cm-save' => 'Уложыти',
+	'translationchanges-export' => 'експортовати',
+	'translate-stats-users' => 'Перекладателї',
+	'translate-statsf-scale-days' => 'Днї',
+	'translate-statsf-scale-hours' => 'Годины',
+	'translate-statsf-count' => 'Міра:',
+	'translate-statsf-count-edits' => 'Почет едітовань:',
+	'translate-statsf-count-users' => 'Актівны перекладателї',
+	'translate-translations-fieldset-title' => 'Повідомлїня',
+	'translate-translations-messagename' => 'Назва:',
+	'translate-translations-project' => 'Проєкт:',
 	'languagestats' => 'Штатістіка языків',
+	'languagestats-stats-for' => 'Штатістіка перекладів про $1 ($2).',
+	'languagestats-recenttranslations' => 'найновшы переклады',
+	'supportedlanguages' => 'Підпорованы языкы',
+	'translate-manage-import-new' => 'Нове повідомлїня $1',
+	'translate-manage-action-import' => 'Імпортовати',
+	'translate-manage-action-ignore' => 'Іґноровати',
+	'translate-manage-import-done' => 'Вшытко зроблено!',
 	'translate-js-next' => 'Уложыти і отворити далше',
 	'translate-js-skip' => 'Перескоч на далше',
 	'translate-js-history' => 'Історія перекладу',
@@ -15046,12 +15221,14 @@ Razlog:
 	'translate-page-settings-legend' => 'Nastavitve',
 	'translate-page-task' => 'Želim',
 	'translate-page-group' => 'Skupina',
+	'translate-page-group-tooltip' => 'Ime skupine sporočil.
+Če je skupina sestavljena iz podmnožic ali nadmnožic sporočil iz ostalih skupin, je prikazana v krepkem tisku.',
 	'translate-page-language' => 'Jezik',
 	'translate-page-limit' => 'Omejitev',
 	'translate-page-limit-option' => '$1 {{PLURAL:$1|sporočilo|sporočili|sporočila|sporočil}} na stran',
 	'translate-submit' => 'Dobi',
 	'translate-page-navigation-legend' => 'Navigacija',
-	'translate-page-showing' => 'Prikaz sporočil od $1 do $2 od skupno $3.',
+	'translate-page-showing' => 'Prikazujem sporočila od $1 do $2 od skupno $3.',
 	'translate-page-showing-all' => 'Prikazujem $1 {{PLURAL:$1|sporočilo|sporočili|sporočila|sporočil}}.',
 	'translate-page-showing-none' => 'Ni sporočil za prikaz.',
 	'translate-next' => 'Naslednja stran',
@@ -15061,6 +15238,7 @@ Razlog:
 	'translate-ext-url' => '<hr /> Spletna stran: $1',
 	'translate-optional' => '(neobvezno)',
 	'translate-ignored' => '(prezri)',
+	'translate-edit-title' => 'Uredi »$1«',
 	'translate-edit-definition' => 'Opredelitev sporočila v izvirnem jeziku',
 	'translate-edit-contribute' => 'prispevaj',
 	'translate-edit-no-information' => "''To sporočilo nima dokumentacije.
@@ -15071,19 +15249,31 @@ Razlog:
 	'translate-edit-warnings' => 'Opozorila o nepopolnosti prevoda',
 	'translate-edit-tmsugs' => 'Predlogi iz spomina prevodov',
 	'translate-edit-tmmatch' => '$1 % ujemanje',
+	'translate-use-suggestion' => 'Vstavi ta predlog v prevajalno območje. To zamenja vso trenutno vsebino.',
 	'translate-edit-goto-no-prev' => 'To je prvo sporočilo (ni predhodnega sporočila)',
 	'translate-edit-goto-no-next' => 'To je zadnje sporočilo (ni naslednjega sporočila)',
 	'translate-edit-goto-prev' => 'Uredi prejšnje sporočilo',
 	'translate-edit-goto-next' => 'Uredi naslednje sporočilo',
 	'translate-edit-goto-list' => 'Vrni se na seznam',
-	'translate-magic-pagename' => 'Razširjeno MediaWiki prevajanje',
+	'translate-magic-pagename' => 'Razširjeno prevajanje MediaWiki',
+	'translate-magic-help' => 'Prevedete lahko vzdevke posebnih strani, čarobne besede in imena imenskih prostorov.
+
+Vzdevki posebnih strani in čarobne besede imajo lahko več prevodov.
+Prevodi so ločeni z vejico (,).
+Imenski prostori imajo lahko samo en prevod.
+
+V prevodih imenskih prostorov je <code>$1 talk</code> posebnost. <code>$1</code> je zamenjano z imenom strani (na primer <code>{{ns:project_talk}}</code>).
+Če v vašem jeziku ni mogoče tvoriti veljavnega izraza brez spreminjanja imena strani, prosimo, stopite v stik z razvijalcem.
+
+Za shranjevanje sprememb morate biti v skupini prevajalcev.
+Spremembe niso shranjene dokler ne kliknete spodnjega gumba za shranjevanje.',
 	'translate-magic-module' => 'Modul:',
 	'translate-magic-submit' => 'Dobi',
 	'translate-magic-cm-export' => 'Izvoz',
 	'translate-magic-nothing-to-export' => 'Ni sporočil za izvoz.',
 	'translate-magic-cm-to-be' => 'Naj bo',
 	'translate-magic-cm-current' => 'Trenutno',
-	'translate-magic-cm-original' => 'Original',
+	'translate-magic-cm-original' => 'Izvirnik',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Shrani',
 	'translate-magic-cm-updatedusing' => 'Posodobitev z uporabo [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
@@ -15097,21 +15287,62 @@ Razlog:
 	'translationchanges' => 'Spremembe prevoda',
 	'translationchanges-export' => 'izvoz',
 	'translationchanges-change' => '$1: $2 od $3',
+	'translate-checks-parameters' => '{{PLURAL:$2|Naslednji parameter ni uporabljen|Naslednja parametra nista uporabljena|Naslednji parametri niso uporabljeni}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-parameters-unknown' => '{{PLURAL:$2|Naslednji parameter je neznan|Naslednja parametra sta neznana|Naslednji parametri so neznani}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-balance' => 'V sporočilu je neparno število {{PLURAL:$2|narekovajev}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-links' => '{{PLURAL:$2|Naslednja povezava je sporna|Naslednji povezavi sta sporni|Naslednje povezave so sporne}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-links-missing' => '{{PLURAL:$2|Naslednja povezava manjka|Naslednji povezavi manjkata|Naslednje povezave manjkajo}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-xhtml' => 'Prosimo, zamenjajte {{PLURAL:$2|sledečo oznako z ustrezno|sledeči oznaki z ustreznima|sledeče oznake z ustreznimi}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-plural' => 'Opredelitev uporablja <nowiki>{{PLURAL:}}</nowiki>, vendar je prevod ne.',
+	'translate-checks-pagename' => 'Imenski prostor je drugačen kot v opredelitvi',
+	'translate-checks-format' => 'Ta prevod ne sledi opredelitvi ali ima neveljavno skladnjo: $1',
+	'translate-checks-escape' => 'Naslednji ubegi so morda naključni: <strong>$1</strong>',
 	'translate-checks-fudforum-syntax' => 'V tem projektu uporabite <nowiki>$1</nowiki> namesto <nowiki>$2</nowiki>.',
 	'translate-pref-nonewsletter' => 'Ne pošiljaj mi e-poštnih glasil',
 	'translate-pref-editassistlang' => 'Pomožni jeziki:',
 	'prefs-translate' => 'Možnosti prevajanja',
+	'translate-pref-editassistlang-help' => 'Z vejicami ločen seznam kod jezikov.
+Ko prevajate, so prikazani prevodi sporočila v teh jezikih.
+Privzeti seznam jezikov je odvisen od vašega jezika.',
+	'translate-pref-editassistlang-bad' => 'Neveljavna koda jezika na seznamu:
+<nowiki>$1</nowiki>.',
 	'translate-pref-jsedit' => 'Izboljšan urejevalnik prevodov (JavaScript)',
+	'right-translate' => 'Urejanje z uporabo prevajalnega vmesnika',
+	'right-translate-manage' => 'Urejanje skupin prevodov',
+	'right-translate-import' => 'Uvažanje nepovezanih prevodov',
 	'translate-rc-translation-filter' => 'Filtriraj prevode:',
+	'translate-rc-translation-filter-no' => 'Ne stori ničesar',
+	'translate-rc-translation-filter-only' => 'Prikaži samo prevode',
+	'translate-rc-translation-filter-filter' => 'Izloči prevode',
+	'translate-rc-translation-filter-site' => 'Samo spremembe sporočil strani',
 	'translationstats' => 'Statistika prevodov',
 	'translate-stats-edits' => 'Urejanja',
 	'translate-stats-users' => 'Prevajalci',
+	'translate-statsf-intro' => 'S tem obrazcem lahko ustvarite preprosto statistiko.
+Vse vrednosti imajo zgornje in spodnje omejitve.',
 	'translate-statsf-options' => 'Možnosti grafa',
 	'translate-statsf-width' => 'Širina v slikovnih pikah:',
 	'translate-statsf-height' => 'Višina v slikovnih pikah:',
+	'translate-statsf-days' => 'Časovno obdobje v dneh:',
+	'translate-statsf-scale' => 'Zrnavost:',
 	'translate-statsf-scale-days' => 'Dni',
 	'translate-statsf-scale-hours' => 'Ur',
+	'translate-statsf-count' => 'Merilo:',
+	'translate-statsf-count-edits' => 'Število urejanj',
+	'translate-statsf-count-users' => 'Aktivni prevajalci',
+	'translate-statsf-language' => 'Z vejico ločen seznam kod jezikov:',
+	'translate-statsf-group' => 'Z vejico ločen seznam kod skupin:',
 	'translate-statsf-submit' => 'Predogled',
+	'translate-tag-category' => 'Prevedljive strani',
+	'translate-tag-page-desc' => 'Prevod wikistrani [[:$1]].',
+	'translate-tag-fuzzy-comment' => 'Definicijo je spremenil(-a) [[User:$1|$1]] v redakciji $2.',
+	'translate-tag-fuzzy-reason' => 'Definicijo je spremenil(-a) »$1« s pripombo »$3« v $2.',
 	'translate-sidebar-alltrans' => 'V drugih jezikih',
 	'translations' => 'Vsi prevodi',
 	'translations-summary' => 'Spodaj vnesite ime sporočila, da prikažete vse njegove razpoložljive prevode.',
@@ -15120,6 +15351,8 @@ Razlog:
 	'translate-translations-fieldset-title' => 'Sporočilo',
 	'translate-translations-messagename' => 'Ime:',
 	'translate-translations-project' => 'Projekt:',
+	'translate-translations-including-no-param' => 'Prosimo, navedite veljavni ključ sporočila v parametru podstrani',
+	'translate-translations-history-short' => 'z',
 	'languagestats' => 'Statistika jezika',
 	'languagestats-summary' => 'Ta stran prikazuje statistiko prevodov za vse skupine sporočil jezika.',
 	'languagestats-stats-for' => 'Statistika prevodov za jezik $1 ($2).',
@@ -15129,17 +15362,110 @@ Razlog:
 	'translate-suppress-complete' => 'Preskoči v celoti prevedene skupine sporočil',
 	'translate-language' => 'Jezik',
 	'translate-total' => 'Sporočil',
+	'translate-total-tooltip' => 'Skupno število sporočil v tej skupini sporočil.',
 	'translate-untranslated' => 'Neprevedeno',
+	'translate-untranslated-tooltip' => 'Skupno število neprevedenih sporočil v tej skupini sporočil.
+Vključuje sporočila, ki so bila označena kot zastarela.',
 	'translate-percentage-complete' => 'Končano',
+	'translate-percentage-complete-tooltip' => 'Odstotek sporočil v skupini, ki so bila prevedena in ne označena kot zastarela.',
 	'translate-percentage-fuzzy' => 'Zastarelo',
+	'translate-percentage-fuzzy-tooltip' => 'Odstotek sporočil v skupini, ki so bila prevedena in označena kot zastarela.
+Sporočila so označena kot zastarela, ker se je izvorno sporočilo v angleškem jeziku spremenilo, ker je samodejno preverjanje sporočila spodletelo ali ker ga je nekdo označil kot zastarelega.',
+	'translate-nothing-to-do' => 'Kaže, da so vsi mogoči prevodi dokončani.
+Predlagamo vam, da pregledate sporočila preko [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Podprti jeziki',
+	'supportedlanguages-summary' => 'Ta stran prikazuje seznam vseh jezikov, ki jih podpira {{SITENAME}}, skupaj z imeni prevajalcev, ki delujejo na tem jeziku.
+Če želite več informacij o določenem jeziku, lahko kliknete na povezavo do portala tega jezika.
+S klikom na ime prevajalca boste prišli na njegovo uporabniško stran.
+
+Če jezik ni naveden, lahko poizveste kako začeti z lokalizacijo projekta za jezik na »[[Translating:Process|Nov jezik]]«.
+
+Če prevajate v jezik in vaše ime ni vključeno, ga, prosimo, dodajte na seznam prevajalcev na [[:Category:Languages|portalu]] tega jezika.
+Oglejte si stransko vrstico za povezavo do portala jezika, določenega v vaših nastavitvah.',
 	'supportedlanguages-translators' => '{{PLURAL:$2|Prevajalec|Prevajalca|Prevajalci}}: $1',
+	'supportedlanguages-noportal-title' => 'Določen ni noben imenski prostor portala',
+	'supportedlanguages-noportal' => 'Administrator wikija ni opredelil NS_PORTAL, zato ta stran ne deluje.
+Na tej stran bo prikazan seznam jezikovnih portalov za vse portale z določeno kodo jezika in podstranjo imenovano »translators«.
+Podstran »translators« mora vsebovati predlogo [[:{{ns:template}}:User|User]], ki kot parameter sprejme uporabniško ime.',
+	'supportedlanguages-recenttranslations' => 'nedavni prevodi',
 	'translate-save' => 'Shrani ($1)',
 	'translate-jssti-add' => 'Dodaj na seznam',
 	'translate-group-desc-mediawikicore' => 'Ta skupina sporočil zajema sporočila, uporabljena v trenutni alfarazličici MediaWiki ({{CURRENTVERSION}})',
+	'translate-group-desc-mediawikimostused' => 'Ta skupina sporočil vsebuje [http://translatewiki.net/wiki/Most_often_used_messages_in_MediaWiki 500 najbolj uporabljanih sporočil] v MediaWiki',
+	'translate-group-desc-mediawikiextensions' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila podprtih razširitev MediaWiki',
+	'translate-group-desc-collection' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila razširitve MediaWiki [http://www.mediawiki.org/wiki/Extension:Collection Collection]',
+	'translate-group-desc-flaggedrevs' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila razširitve MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs FlaggedRevs]',
+	'translate-group-desc-readerfeedback' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila razširitve MediaWiki [http://www.mediawiki.org/wiki/Extension:ReaderFeedback ReaderFeedback]',
+	'translate-group-desc-socialprofile' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila razširitev, povezana z razširitvijo MediaWiki [http://www.mediawiki.org/wiki/Extension:SocialProfile Social Profile]',
+	'translate-group-desc-translate' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila razširitve MediaWiki [http://www.mediawiki.org/wiki/Extension:Translate Translate]',
+	'translate-group-desc-wikiaextensions' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila podprtih razširitev MediaWiki, ki jih uporablja [http://www.wikia.com Wikia]',
+	'translate-group-desc-wikihowextensions' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila podprtih razširitev MediaWiki, ki jih uporablja [http://www.wikihow.com wikiHow]',
+	'translate-group-desc-wikimediaextensions' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila podprtih razširitev MediaWiki, ki jih uporablja [http://wikimedia.org/ Fundacija Wikimedia]',
+	'translate-group-desc-wikitravelextensions' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila podprtih razširitev MediaWiki, ki jih uporablja [http://wikitravel.org Wikitravel]',
+	'translate-group-desc-uniwiki' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila razširitev, povezanih z [http://unicefinnovation.org/wiki.php Uniwiki]',
+	'translate-group-desc-ui' => 'Krovna skupina sporočil, ki vsebuje vsa sporočila razširitev, povezanih z [http://meta.wikimedia.org/wiki/Wikipedia_Usability_Initiative Wikipedijino Pobudo za uporabnost]',
 	'translate-group-desc-nodesc' => 'Za to skupino sporočil opis ni na voljo',
+	'translate-manage-groups' => 'Upravljanje skupin',
+	'translate-manage-listgroups' => 'Konfigurirane skupine',
+	'translate-manage-listgroups-old' => 'Skupine starega sloga',
+	'translate-managegroups' => 'Upravljanje skupin',
+	'translate-manage-newgroup' => 'Ta skupina sporočil predhodno še ni bila uvožena.',
 	'translate-manage-cacheat' => 'Uvoženo $1 ob $2',
+	'translate-manage-return-to-group' => 'Vrnitev na stran s podrobnostmi skupine',
+	'translate-manage-modlangs' => 'Prosimo, preverite morebitne spremembe v {{PLURAL:$1|sledečem jeziku|sledečima jezikoma|sledečih jezikih}}:',
+	'translate-manage-modlang-new' => '$1 (novo)',
+	'translate-manage-import-diff' => 'Sporočilo $1 | Dejanja: $2',
 	'translate-manage-import-new' => 'Novo sporočilo $1',
 	'translate-manage-import-deleted' => 'Izbriši sporočilo $1',
+	'translate-manage-action-import' => 'Uvozi',
+	'translate-manage-action-conflict' => 'Uvozi in označi kot ohlapno',
+	'translate-manage-action-ignore' => 'Prezri',
+	'translate-manage-action-fuzzy' => 'Uvozi in prevode označi kot ohlapne',
+	'translate-manage-submit' => 'Izvedi',
+	'translate-manage-nochanges' => 'Ni sprememb v opredelitvi sporočil za to skupino.',
+	'translate-manage-nochanges-other' => 'Za ta jezik ni bilo sprememb.
+Uporabite spodnjo povezavo za vrnitev na pogled podrobnosti skupine.',
+	'translate-manage-inconsistent' => 'V zahtevi je bila odkrita nedoslednost.
+Prosimo, preverite spremembe in poskusite znova.
+Podrobnosti: $1',
+	'translate-manage-toolong' => 'Najdaljši čas obdelave $1 {{PLURAL:$1|sekunde|sekund}} je presežen.
+Prosimo, ponovno potrdite obrazec, da nadaljujete z obdelavo.',
+	'translate-manage-import-ok' => 'Uvožena nova različica strani $1.',
+	'translate-manage-import-noks' => 'Uvoz nove različice strani $1 je spodletel: $2',
+	'translate-manage-import-ignore' => 'Preskakovanje sporočila $1.',
+	'translate-manage-import-summary' => 'Uvažanje nove različice iz zunanjega vira',
+	'translate-manage-conflict-summary' => 'Uvažanje nove različice iz zunanjega vira.
+Prosimo, preverite.',
+	'translate-manage-fuzzy-summary' => 'Opredelitev se je spremenila',
+	'translate-manage-import-fuzzy' => 'Uvažam in označujem kot ohlapno: $1',
+	'translate-manage-import-done' => 'Vse opravljeno!',
+	'translate-manage-import-rebuild' => 'Ponovna gradnja predpomnilnika.',
+	'translate-manage-intro-en' => 'Spodaj se nahaja seznam sprememb sporočil v tej skupini.
+Prosimo, preglejte spremembe in izberite dejanje, ki ga želite storiti za vsak prevod.
+Ko posodobite opredelitve sporočil, preverite zunanje spremembe v drugih jezikih, če obstajajo.
+Pomnite tudi, da je dejanje <code>prezri</code> samo začasno.',
+	'translate-manage-intro-other' => 'Spodaj se nahaja seznam sprememb prevodov v jeziku $1.
+Prosimo, preglejte spremembe in izberite dejanje, ki ga želite storiti za vsak prevod.
+Če se odločite prezreti spremembe, bodo od naslednjem izvozu povožene.',
+	'translate-manage-subtitle' => 'Upravljaj',
+	'translate-manage-import-rebuild-all' => 'Ponovno zgradi vse jezike in prezri katere koli spremembe',
+	'importtranslations' => 'Uvažanje prevodov',
+	'translate-import-from-url' => 'URL datoteke:',
+	'translate-import-from-wiki' => 'Datoteka v tem wikiju:',
+	'translate-import-from-local' => 'Nalaganje lokalne datoteke:',
+	'translate-import-load' => 'Naloži datoteko',
+	'translate-import-err-type-not-supported' => 'Ne morem naložiti datoteke:
+Način <code>$1</code> ni podprt.',
+	'translate-import-err-dl-failed' => 'Ne morem pridobiti datoteke:
+$1',
+	'translate-import-err-ul-failed' => 'Nalaganje datoteke ni bilo uspešno',
+	'translate-import-err-invalid-title' => 'Določeno ime datoteke <nowiki>$1</nowiki> je bilo neveljavno.',
+	'translate-import-err-no-such-file' => 'Datoteka <nowiki>$1</nowiki> ne obstaja ali pa ni bila naložena lokalno.',
+	'translate-import-err-no-headers' => 'Datoteka ni dobro oblikovana datoteka Gettext v obliki razširitve Translate:
+Ne morem določiti skupine in jezika iz glav datoteke.',
+	'translate-import-err-warnings' => 'Datoteka ni dobro oblikovana.
+Prepričajte se, da vaš urejevalnik ne odstrani polj msgctxt.
+Podrobnosti: $1',
 	'translate-js-next' => 'Shrani in odpri naslednje',
 	'translate-js-nonext' => 'To je bilo zadnje sporočilo na tej strani.',
 	'translate-js-skip' => 'Preskoči na naslednje',
@@ -17876,8 +18202,20 @@ Bạn được khuyến khích xem lại các thông điệp tại [[Special:Tra
  # được hiển thị ở Special:LanguageStats. Các mã nhóm thông điệp không tồn tại
  # sẽ bị bỏ qua.',
 	'supportedlanguages' => 'Ngôn ngữ có sẵn',
+	'supportedlanguages-summary' => "Trang này liệt kê tất cả các ngôn ngữ được {{SITENAME}} hỗ trợ, cùng với tên các biên dịch viên đang làm việc trên ngôn ngữ đó.
+Nếu bạn muốn biết thêm thông tin về một ngôn ngữ cụ thể, bạn có nhấn vào cổng chào của ngôn ngữ đó.
+Nhấn vào tên biên dịch viên sẽ đưa bạn đến trang thành viên của họ.
+
+Nếu trong danh sách không có ngôn ngữ nào đó, bạn có thể đọc cách khởi động một dự án bản địa hóa cho ngôn ngữ tại ''[[Translating:Process|Ngôn ngữ mới]]\".
+
+Nếu bạn dịch sang một ngôn ngữ mà không thấy tên bạn được ghi, xin ghi tên bạn vào danh sách các biên dịch viên tại [[:Category:Languages|cổng chào]] của ngôn ngữ đó.
+Xem thanh trình đơn để biết liên kết đến cổng ngôn ngữ của ngôn ngữ mà bạn chọn.",
 	'supportedlanguages-translators' => '{{PLURAL:$2|Biên dịch viên|Các biên dịch viên}}: $1',
 	'supportedlanguages-noportal-title' => 'Chưa định rõ không gian tên chủ đề',
+	'supportedlanguages-noportal' => 'Bảo quản viên wiki chưa định nghĩa NS_PORTAL, do đó trang này không hoạt động.
+Tại trang này danh sách các cổng chào ngôn ngữ sẽ xuất hiện cho tất cả các cổng chào tương ứng với một mã ngôn ngữ đã định nghĩa cùng một trang con có tên "translators" (biên dịch viên).
+Trang con "translators" phải chứa bản mẫu [[:{{ns:template}}:User|User]], đưa tên người dùng vào thông số.',
+	'supportedlanguages-recenttranslations' => 'các bản dịch gần đây',
 	'translate-save' => 'Lưu ($1)',
 	'translate-jssti-add' => 'Thêm vào danh sách',
 	'translate-group-desc-mediawikicore' => 'Nhóm thông báo này chứa các thông báo dùng trong phiên bản alpha hiện hành của MediaWiki ({{CURRENTVERSION}})',

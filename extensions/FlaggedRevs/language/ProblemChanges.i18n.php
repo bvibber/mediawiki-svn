@@ -129,7 +129,7 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'problemchanges' => 'Gekennzeichnete unmarkierte Änderungen',
-	'problemchanges-legend' => 'Liste der Seiten deren letzte Version noch nicht markiert wurde',
+	'problemchanges-legend' => 'Liste der Seiten, deren letzte Version noch nicht markiert wurde',
 	'problemchanges-none' => 'Es gibt zurzeit keine Seiten, die diese Kriterien erfüllen.',
 	'problemchanges-category' => 'Kategorie:',
 );
@@ -189,8 +189,12 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
+	'problemchanges' => 'Märgistatud ootel muudatused',
+	'problemchanges-legend' => 'Ülevaatamist ootavate märgistatud muudatustega lehekülgede loetlemine',
+	'problemchanges-none' => 'Sellistele kriteeriumitele vastavad leheküljed puuduvad praegu.',
 	'problemchanges-category' => 'Kategooria:',
 );
 
@@ -261,10 +265,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author DoviJ
  * @author Rotem Liss
  */
 $messages['he'] = array(
-	'problemchanges' => 'בדיקת שינויים עם תגיות',
+	'problemchanges' => 'בדיקת השינויים הבאים עם תגיות',
 	'problemchanges-legend' => 'רשימת הדפים הבדוקים עם עריכות עם תגיות הממתינות לבדיקה',
 	'problemchanges-none' => 'אין כרגע דפים המתאימים לקריטריונים אלה',
 	'problemchanges-category' => 'קטגוריה:',
@@ -706,7 +711,7 @@ $messages['vep'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'problemchanges' => 'Duyệt các thay đổi được đánh dấu',
+	'problemchanges' => 'Các thay đổi chưa duyệt được đánh dấu',
 	'problemchanges-legend' => 'Liệt kê các trang có sửa đổi được đánh dấu mà cần được duyệt',
 	'problemchanges-none' => 'Hiện không có trang nào hợp tiêu chuẩn này.',
 	'problemchanges-category' => 'Thể loại:',

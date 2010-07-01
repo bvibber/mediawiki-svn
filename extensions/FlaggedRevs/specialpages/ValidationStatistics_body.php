@@ -29,8 +29,8 @@ class ValidationStatistics extends IncludableSpecialPage
 			$time = $wgLang->time( $timestamp, true );
 		}
 
-		$wgOut->addWikiText( wfMsgExt( 'validationstatistics-users', array( 'parsemag' ),
-			$wgLang->formatnum( $ec ), $wgLang->formatnum( $rc ) )
+		$wgOut->addWikiMsg( 'validationstatistics-users',
+			$wgLang->formatnum( $ec ), $wgLang->formatnum( $rc )
 		);
 		# Most of the output depends on background queries
 		if ( !$this->readyForQuery() ) {
@@ -56,15 +56,24 @@ class ValidationStatistics extends IncludableSpecialPage
 			$reviewChart = '';
 		}
 
-		# Show review/pending time stats
-		$wgOut->addWikiText( '<hr/>' . wfMsgExt( 'validationstatistics-time', array( 'parsemag' ),
-			$wgLang->formatTimePeriod( $mt ), $wgLang->formatTimePeriod( $pt ),
-			$wgLang->formatTimePeriod( $mdt ), $reviewChart, $date, $time )
+		# Show "last updated"...
+		$wgOut->addWikiMsg( 'validationstatistics-lastupdate', $date, $time );
+		$wgOut->addHtml( '<hr/>' );
+		# Show pending time stats...
+		$wgOut->addWikiMsg( 'validationstatistics-pndtime', $wgLang->formatTimePeriod( $pt ) );
+		# Show review time stats...
+		if ( !FlaggedRevs::useOnlyIfProtected() ) {
+			$wgOut->addWikiMsg( 'validationstatistics-revtime',
+				$wgLang->formatTimePeriod( $mt ),
+				$wgLang->formatTimePeriod( $mdt ),
+				$reviewChart
+			);
+		}
+		# Show per-namespace stats table...
+		$wgOut->addWikiMsg( 'validationstatistics-table' );
+		$wgOut->addHTML(
+			Xml::openElement( 'table', array( 'class' => 'wikitable flaggedrevs_stats_table' ) )
 		);
-
-		$wgOut->addWikiText( wfMsg( 'validationstatistics-table' ) );
-		$wgOut->addHTML( Xml::openElement( 'table',
-			array( 'class' => 'wikitable flaggedrevs_stats_table' ) ) );
 		$wgOut->addHTML( "<tr>\n" );
 		// Headings (for a positive grep result):
 		// validationstatistics-ns, validationstatistics-total, validationstatistics-stable,
@@ -75,7 +84,6 @@ class ValidationStatistics extends IncludableSpecialPage
 				wfMsgExt( "validationstatistics-$msg", array( 'parseinline' ) ) . '</th>' );
 		}
 		$wgOut->addHTML( "</tr>\n" );
-
 		$namespaces = FlaggedRevs::getReviewNamespaces();
 		foreach ( $namespaces as $namespace ) {
 			$row = $this->db->selectRow( 'flaggedrevs_stats', '*',
@@ -130,9 +138,8 @@ class ValidationStatistics extends IncludableSpecialPage
 			);
 		}
 		$wgOut->addHTML( Xml::closeElement( 'table' ) );
-		
+		# Is there a top 5 user list? If so, then show it...
 		$data = $this->getTopFiveReviewers();
-		# Is there a top 5 user list?
 		if ( is_array( $data ) && count( $data ) ) {
 			$wgOut->addWikiMsg( 'validationstatistics-utable' );
 		

@@ -213,6 +213,8 @@ $.fn.eachAsync = function(opts)
 
 // Cache ellipsed substrings for every string-width combination
 var cache = { };
+// Use a seperate cache when match highlighting is enabled
+var matchTextCache = { };
 
 $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
@@ -275,8 +277,11 @@ $.fn.autoEllipsis = function( options ) {
 		if ( !( text in cache ) ) {
 			cache[text] = {};
 		}
-		if ( options.matchText && !( options.matchText in cache[text] ) ) {
-			cache[text][options.matchText] = {};
+		if ( options.matchText && !( text in matchTextCache ) ) {
+			matchTextCache[text] = {};
+		}
+		if ( options.matchText && !( options.matchText in matchTextCache[text] ) ) {
+			matchTextCache[text][options.matchText] = {};
 		}
 		if ( !options.matchText && w in cache[text] ) {
 			$container.html( cache[text][w] );
@@ -284,8 +289,8 @@ $.fn.autoEllipsis = function( options ) {
 				$container.attr( 'title', text );
 			return;
 		}
-		if( options.matchText && options.matchText in cache[text] && w in cache[text][options.matchText] ) {
-			$container.html( cache[text][options.matchText][w] );
+		if( options.matchText && options.matchText in matchTextCache[text] && w in matchTextCache[text][options.matchText] ) {
+			$container.html( matchTextCache[text][options.matchText][w] );
 			if ( options.tooltip )
 				$container.attr( 'title', text );
 			return;
@@ -339,7 +344,7 @@ $.fn.autoEllipsis = function( options ) {
 			$container.attr( 'title', text );
 		}
 		if ( options.matchText ) {
-			cache[text][options.matchText][w] = $container.html();
+			matchTextCache[text][options.matchText][w] = $container.html();
 		} else {
 			cache[text][w] = $container.html();
 		}
@@ -1124,6 +1129,7 @@ $.suggestions = {
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
 								.mousemove( function( e ) {
+									context.data.selectedWithMouse = true;
 									$.suggestions.highlight(
 										context, $(this).closest( '.suggestions-results div' ), false
 									);
@@ -1224,7 +1230,7 @@ $.suggestions = {
 			result.addClass( 'suggestions-result-current' );
 		}
 		if ( updateTextbox ) {
-			if ( result.length == 0 ) {
+			if ( result.length == 0 || result.is( '.suggestions-special' ) ) {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
@@ -1234,7 +1240,6 @@ $.suggestions = {
 			}
 			context.data.$textbox.trigger( 'change' );
 		}
-		$.suggestions.special( context );
 	},
 	/**
 	 * Respond to keypress event
@@ -1247,7 +1252,8 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', false );
+					$.suggestions.highlight( context, 'next', true );
+					context.data.selectedWithMouse = false;
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -1256,7 +1262,8 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', false );
+					$.suggestions.highlight( context, 'prev', true );
+					context.data.selectedWithMouse = false;
 				}
 				preventDefault = wasVisible;
 				break;
@@ -1273,8 +1280,9 @@ $.suggestions = {
 				context.data.$container.hide();
 				preventDefault = wasVisible;
 				selected = context.data.$container.find( '.suggestions-result-current' );
-				if ( selected.size() == 0 ) {
-					// if nothing is selected, cancel any current requests and submit the form
+				if ( selected.size() == 0 || context.data.selectedWithMouse ) {
+					// if nothing is selected OR if something was selected with the mouse, 
+					// cancel any current requests and submit the form
 					$.suggestions.cancel( context );
 					context.config.$region.closest( 'form' ).submit();
 				} else if ( selected.is( '.suggestions-special' ) ) {
@@ -1362,7 +1370,8 @@ $.fn.suggestions = function() {
 				'visibleResults': 0,
 				// Suggestion the last mousedown event occured on
 				'mouseDownOn': $( [] ),
-				'$textbox': $(this)
+				'$textbox': $(this),
+				'selectedWithMouse': false
 			};
 			// Setup the css for positioning the results box
 			var newCSS = {
@@ -1424,6 +1433,7 @@ $.fn.suggestions = function() {
 							context.data.$textbox.focus();
 						} )
 						.mousemove( function( e ) {
+							context.data.selectedWithMouse = true;
 							$.suggestions.highlight(
 								context, $( e.target ).closest( '.suggestions-special' ), false
 							);
@@ -6638,7 +6648,7 @@ fn: {
 			case 'table':
 				$page.addClass( 'page-table' );
 				var html =
-					'<table cellpadding=0 cellspacing=0 ' + 'border=0 width="100%" class="table table-"' + id + '">';
+					'<table cellpadding=0 cellspacing=0 ' + 'border=0 width="100%" class="table table-' + id + '">';
 				if ( 'headings' in page ) {
 					html += $.wikiEditor.modules.toolbar.fn.buildHeading( context, page.headings )
 				}
@@ -7350,3 +7360,5 @@ function makeContentCollector( browser, domInterface ) {
 
 	return cc;
 }
+
+

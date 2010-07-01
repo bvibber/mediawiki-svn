@@ -36,6 +36,7 @@ $j(document).ready( function() {
 			case 'iemobile': os = 'windowsmobile'; break;
 			case 'iphone': os = 'iphoneos'; break;
 			case 'ipod': os = 'iphoneos'; break;
+			case 'ipad': os = 'iphoneos'; break;
 		}
 		return {
 			'survey-browser': browser, 'survey-os': os, 'survey-res-x': screen.width, 'survey-res-y': screen.height

@@ -15,7 +15,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -53,6 +53,8 @@ function req(func, args, callback) {
 
 var script_url = wgServer +
 	((wgScript == null) ? (wgScriptPath + "/index.php") : wgScript);
+
+var chapter_max_len = 200;
 
 /******************************************************************************/
 
@@ -101,6 +103,7 @@ function clear_collection() {
 function create_chapter() {
 	var name = prompt(gettext('#newChapterText'));
 	if (name) {
+		name = name.substring(0, chapter_max_len);
 		req('AddChapter', [name], refresh_list);
 	}
 	return false;
@@ -109,6 +112,7 @@ function create_chapter() {
 function rename_chapter(index, old_name) {
 	var new_name = prompt(gettext('#renameChapterText'), old_name);
 	if (new_name) {
+		new_name = new_name.substring(0, chapter_max_len);
 		req('RenameChapter', [index, new_name], refresh_list);
 	}
 	return false;

@@ -25,6 +25,11 @@ class DPLMain {
 		// note that this does not affect the article wiki source - a <html> tag in the wiki source
 		// will only be accepted if $rawHtml was set to true in the LocalSettings.php
 		$wgRawHtml = true;
+		//newer mediawiki needs the following:
+		if (method_exists('CoreTagHooks', 'html')) {
+			$parser->setHook( 'html', array( 'CoreTagHooks', 'html' ) );
+		}
+		//note, the above is hacky and insecure....
 
 		// logger (display of debug messages)
 		$logger = new DPLLogger();
@@ -767,11 +772,11 @@ class DPLMain {
 					break;
 
 				case 'rowcolformat':
-					$sRowColFormat = $sArg;
+					$sRowColFormat = self::killHtmlTags( $sArg );
 					break;
 
 				case 'userdateformat':
-					$sUserDateFormat = $sArg;
+					$sUserDateFormat = self::killHtmlTags( $sArg );
 					break;
 
 				case 'escapelinks':
@@ -783,13 +788,14 @@ class DPLMain {
 					break;
 
 				case 'inlinetext':
-					$sInlTxt = $sArg;
+					$sInlTxt = self::killHtmlTags( $sArg );
 					break;
 
 				case 'format':
 				case 'listseparators':
 					// parsing of wikitext will happen at the end of the output phase
 					// we replace '\n' in the input by linefeed because wiki syntax depends on linefeeds
+					$sArg = self::killHtmlTags( $sArg );
 					$sArg = str_replace( '\n', "\n", $sArg );
 					$sArg = str_replace( "¶", "\n", $sArg ); // the paragraph delimiter is utf8-escaped
 					$aListSeparators = explode( ',', $sArg, 4 );
@@ -873,25 +879,28 @@ class DPLMain {
 				case 'replaceintitle':
 					// we offer a possibility to replace some part of the title
 					$aReplaceInTitle = explode( ',', $sArg, 2 );
+					if (isset($aReplaceInTitle[1])) {
+						$aReplaceInTitle[1] = self::killHtmlTags( $aReplaceInTitle[1] );
+					}
 					break;
 
 				case 'resultsheader':
-					$sResultsHeader = $sArg;
+					$sResultsHeader = self::killHtmlTags( $sArg );
 					break;
 				case 'resultsfooter':
-					$sResultsFooter = $sArg;
+					$sResultsFooter = self::killHtmlTags( $sArg );
 					break;
 				case 'noresultsheader':
-					$sNoResultsHeader = $sArg;
+					$sNoResultsHeader = self::killHtmlTags( $sArg );
 					break;
 				case 'noresultsfooter':
-					$sNoResultsFooter = $sArg;
+					$sNoResultsFooter = self::killHtmlTags( $sArg );
 					break;
 				case 'oneresultheader':
-					$sOneResultHeader = $sArg;
+					$sOneResultHeader = self::killHtmlTags( $sArg );
 					break;
 				case 'oneresultfooter':
-					$sOneResultFooter = $sArg;
+					$sOneResultFooter = self::killHtmlTags( $sArg );
 					break;
 
 				/**
@@ -2467,10 +2476,6 @@ class DPLMain {
 		}
 
 		if ( $sLastRevisionBefore . $sAllRevisionsBefore . $sFirstRevisionSince . $sAllRevisionsSince != '' ) {
-			// later during output we are going to create html links to the revisions, so we must enable RawHtml
-			// wiki syntax does not support links to revisions as far as I know -- gs
-			global $wgRawHtml;
-			$wgRawHtml = true;
 
 			$sSqlRevisionTable = $sRevisionTable . ' AS rev, ';
 			$sSqlRev_timestamp = ', rev_timestamp';
@@ -3538,5 +3543,27 @@ class DPLMain {
 		$wgExtVariables->vardefine( $dummy, 'DPL_count', $dplCount );
 		$wgExtVariables->vardefine( $dummy, 'DPL_totalPages', $totalPages );
 		$wgExtVariables->vardefine( $dummy, 'DPL_pages', $pages );
+	}
+	/**
+	* turn <html> -> &lt;html&gt;
+	* needed because this extension uses weird hacks with $wgRawHtml
+	* Even with this, I still would not have too much confidence in this extension.
+	*
+	* this will break things in a limited way if someone enabled $wgRawHtml for the site
+	* but I think its worth it.
+	*
+	* note, $text should be from user. it should never contain <html> in it unless someone is
+	* being naughty.
+	*/
+	private static function killHtmlTags( $text ) {
+		//escape <html>
+		$text = preg_replace('/<([^>]*[hH][tT][mM][lL][^>]*)>/', '&lt;$1&gt;', $text);
+		//if we still have <html>, someone is doing something weird, like double nesting to get
+		//around the escaping - just escape it all. <html> should never be here unless someone
+		// is being naughty, so it shouldn't cause problems.
+		if (preg_match('/<[^>]*[hH][tT][mM][lL][^>]*>/', $text)) {
+			$text = htmlspecialchars($text);
+		}
+		return $text;
 	}
 }

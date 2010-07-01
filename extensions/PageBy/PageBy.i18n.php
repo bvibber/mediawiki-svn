@@ -425,7 +425,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'pageby-desc' => 'Прикажува уредувачи на самата вики страница со користење на ознаката <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Страницата е создадена од $1, $2',
-	'pageby-last' => 'Последно <a href="$3">модифицирано</a> од $1, $2',
+	'pageby-last' => 'Последната <a href="$3">измена</a> ја извршил $1, $2',
 	'pageby-contributors' => 'Уредувачи:',
 	'pageby-anon' => '<i>анонимни</i>',
 );
@@ -530,10 +530,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'pageby-desc' => 'Mostra contribuidores dentro de uma página wiki usando a marca <code><nowiki><pageby></nowiki></code>',
+	'pageby-desc' => 'Mostra os contribuidores de uma página wiki usando o elemento <code><nowiki><pageby></nowiki></code>',
 	'pageby-first' => 'Página criada por $1, $2',
 	'pageby-last' => '<a href="$3">Modificado</a> pela última vez por $1, $2',
 	'pageby-contributors' => 'Contribuidores:',

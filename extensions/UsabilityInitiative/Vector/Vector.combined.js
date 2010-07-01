@@ -164,7 +164,7 @@ $j(document).ready( function() {
 			var id = $j(this).attr( 'id' );
 			var state = $j.cookie( 'vector-nav-' + id );
 			// In the case that we are not showing the new version, let's show the languages by default
-			if ( state == 'true' || ( state == null && i < 1 ) || version == 1 && id == 'p-lang' ) {
+			if ( state == 'true' || ( state == null && i < 1 ) || ( state == null && version == 1 && id == 'p-lang' ) ) {
 				$j(this)
 					.addClass( 'expanded' )
 					.find( 'div.body' )
@@ -308,9 +308,10 @@ $j(document).ready( function() {
 		$j(this).data( 'origtext', $j(this).val() );
 	});
 	// Attach our own handler for onbeforeunload which respects the current one
-	fallbackWindowOnBeforeUnload = window.onbeforeunload;
-	window.onbeforeunload = function() {
+	var fallbackWindowOnBeforeUnload = window.onbeforeunload;
+	var ourWindowOnBeforeUnload = function() {
 		var fallbackResult = undefined;
+		var retval = undefined;
 		// Check if someone already set on onbeforeunload hook
 		if ( fallbackWindowOnBeforeUnload ) {
 			// Get the result of their onbeforeunload hook
@@ -319,19 +320,37 @@ $j(document).ready( function() {
 		// Check if their onbeforeunload hook returned something
 		if ( fallbackResult !== undefined ) {
 			// Exit here, returning their message
-			return fallbackResult;
+			retval = fallbackResult;
+		} else {
+			// Check if the current values of some form elements are the same as
+			// the original values
+			if (
+				wgAction == 'submit' ||
+				$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
+				$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
+			) {
+				// Return our message
+				retval = mw.usability.getMsg( 'vector-editwarning-warning' );
+			}
 		}
-		// Check if the current values of some form elements are the same as
-		// the original values
-		if(
-			wgAction == 'submit' ||
-			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
-			$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
-		) {
-			// Return our message
-			return mw.usability.getMsg( 'vector-editwarning-warning' );
+		
+		// Unset the onbeforeunload handler so we don't break page caching in Firefox
+		window.onbeforeunload = null;
+		if ( retval !== undefined ) {
+			return retval;
 		}
+	};
+	var pageShowHandler = function() {
+		// Re-add onbeforeunload handler
+		window.onbeforeunload = ourWindowOnBeforeUnload;
+	};
+	pageShowHandler();
+	if ( window.addEventListener ) {
+		window.addEventListener('pageshow', pageShowHandler, false);
+	} else if ( window.attachEvent ) {
+		window.attachEvent( 'pageshow', pageShowHandler );
 	}
+	
 	// Add form submission handler
 	$j( 'form' ).submit( function() {
 		// Restore whatever previous onbeforeload hook existed
@@ -495,7 +514,7 @@ if ( wgVectorEnabledModules.simplesearch && skin == 'vector' && typeof os_autolo
 
 $j(document).ready( function() {
 	// Only use this function in conjuction with the Vector skin
-	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
+	if( !wgVectorEnabledModules.simplesearch || wgVectorPreferences.simplesearch.disablesuggest || skin != 'vector' ) {
 		return true;
 	}
 	var mod = {
@@ -536,8 +555,9 @@ $j(document).ready( function() {
 					'line-height': '13px'
 				})
 				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
-				.click( function() {
+				.mousedown( function() {
 					$j(this).parent().find( 'input#searchInput' ).focus();
+					return false;
 				})
 				.appendTo( $j(this).parent() );
 			if ( $j(this).val() == '' ) {
@@ -600,7 +620,8 @@ $j(document).ready( function() {
 		positionFromLeft: $j( 'body' ).is( '.rtl' ),
 		highlightInput: true
 	} )
-		.bind( 'paste cut click', function() {
+		.bind( 'paste cut', function( e ) {
+			// make sure paste and cut events from the mouse trigger the keypress handler and cause the suggestions to update
 			$j( this ).trigger( 'keypress' );
 		} );
 	$j( '#searchInput' ).suggestions( {
@@ -637,8 +658,5 @@ $j(document).ready( function() {
 			}
 		},
 		$region: $j( '#simpleSearch' )
-	} )
-		.bind( 'paste cut click', function() {
-			$j( this ).trigger( 'keypress' );
-		} );
+	} );
 });

@@ -264,10 +264,11 @@ Dòvra: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'stockcharts-desc' => 'Adiciona a marca <nowiki><stockchart ticker="AAPL"/></nowiki> para um gráfico de títulos financeiros interativo',
+	'stockcharts-desc' => 'Adiciona o elemento <nowiki><stockchart ticker="AAPL"/></nowiki> para criar um gráfico interactivo de títulos financeiros',
 	'stockcharts-missingticker' => 'Para imbutir um gráfico de títulos, precisa pelo menos de especificar a sigla ("ticker").
 Use: &lt;stockchart ticker="AAPL"/&gt;',
 );

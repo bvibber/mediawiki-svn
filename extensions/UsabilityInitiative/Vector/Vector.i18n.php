@@ -59,9 +59,10 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'vector' => 'Паляпшэньні інтэрфэйсу карыстальніка для афармленьня «Вэктар»',
+	'vector' => 'Паляпшэньні інтэрфэйсу для афармленьня «Вэктар»',
 	'vector-desc' => 'Паляпшае элемэнты інтэрфэйсу карыстальніка для афармленьня «Вэктар».',
 );
 
@@ -121,6 +122,14 @@ $messages['cy'] = array(
 	'vector-desc' => 'Yn gwella ar y rhyngwyneb yn y wedd Vector.',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'vector' => 'Forbedringer af brugerinterfacet til Vector',
+	'vector-desc' => 'Forbedrer dele af brugerinterfacet til Vector-skinnet',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  * @author Tischbeinahe
@@ -172,12 +181,22 @@ $messages['es'] = array(
 	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'vector' => 'EI hobekuntzak Vector-entzat',
+	'vector-desc' => 'Vector skin-eko lankidearen interfazeko elementuak hobetzen ditu.',
+);
+
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Ladsgroup
  */
 $messages['fa'] = array(
 	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ برداری',
+	'vector-desc' => 'بهبود در عناصر رابط کاربری از طریق پوسته وکتور',
 );
 
 /** Finnish (Suomi)
@@ -325,6 +344,14 @@ $messages['ml'] = array(
 	'vector-desc' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിൽ ഉപയോക്തൃ സമ്പർക്കമുഖ ഘടകങ്ങളിലെ മെച്ചപ്പെടുത്തലുകൾ.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'vector' => 'pembaikian untuk Vector',
+	'vector-desc' => '↓ Meningkatkan tetapan pengguna  pada halaman Vector',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -389,6 +416,14 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'vector' => 'Melhorias da IU do Vector',
 	'vector-desc' => 'Melhora a interface do usuário do tema Vector',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'vector' => 'Ruraqpaq uyapurapi Vector nisqapaq allinchasqakuna',
+	'vector-desc' => 'Ruraqpaq uyapurapi Vector qarap qallawankunata allinchan.',
 );
 
 /** Romanian (Română)
@@ -514,8 +549,8 @@ $messages['yi'] = array(
  * @author Horacewai2
  */
 $messages['yue'] = array(
-	'vector' => 'UI改進 (Vector)',
-	'vector-desc' => '改進vector面板嘅介面。',
+	'vector' => '對於Vector嘅界面改進',
+	'vector-desc' => '改進Vector畫面嘅界面元素。',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

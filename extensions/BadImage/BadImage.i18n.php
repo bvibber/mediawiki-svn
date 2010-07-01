@@ -461,13 +461,32 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Jon Harald Søby
  * @author Sarrus
  */
 $messages['da'] = array(
+	'badimages' => 'Liste over blokerede billeder',
+	'badimage-desc' => 'Udvid funktionaliteten af listen over blokerede billeder i MediaWiki',
+	'badimages-add-btn' => 'Tilføj',
 	'badimages-added' => '$1 blev tilføjet til listen',
+	'badimages-count' => "Der er '''$1''' {{PLURAL:$1|billede|billeder}} på listen over blokerede billeder.",
 	'badimages-name' => 'Navn:',
+	'badimages-not-added' => 'Billedet kunne ikke tilføjes.',
+	'badimages-not-removed' => 'Billedet kunne ikke fjernes',
 	'badimages-reason' => 'Begrundelse:',
+	'badimages-remove' => '(fjern)',
+	'badimages-remove-btn' => 'Fjern',
+	'badimages-remove-confirm' => 'Bekræft at du ønsker at fjerne $1 fra listen:',
+	'badimages-removed' => '$1 blev fjernet fra listen.',
+	'badimages-subheading' => 'Nuværende poster',
+	'badimages-unprivileged' => '(Du har ikke tilstrækkelige rettigheder til at ændre i listen)',
+	'badimages-log-name' => 'Liste over blokerede billeder',
+	'badimages-log-header' => 'Dette er en log over ændringer i [[{{MediaWiki:Badimages-page}}|listen over blokerede billeder]].',
+	'badimages-log-add' => 'tilføjede [[$1]] til listen over blokerede billeder',
+	'badimages-log-remove' => 'fjernede [[$1]] fra listen over blokerede billeder',
+	'badimages-page' => '{{ns:help}}:Liste over blokerede billeder',
+	'right-badimages' => 'Opdatér listen over blokerede billeder',
 );
 
 /** German (Deutsch)
@@ -1556,6 +1575,7 @@ $messages['ml'] = array(
 /** Marathi (मराठी)
  * @author Kaustubh
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'badimages' => 'चुकीच्या चित्रांची यादी',
@@ -1578,6 +1598,7 @@ $messages['mr'] = array(
 	'badimages-log-add' => '[[$1]] चा चुकीच्या चित्रांच्या यादीत समावेश केलेला आहे',
 	'badimages-log-remove' => '[[$1]] ला चुकीच्या चित्रांच्या यादीतून वगळले आहे',
 	'badimages-page' => '{{ns:help}}:चुकीच्या चित्रांची यादी',
+	'right-badimages' => 'खराब संचिकांची यादी अद्ययावत करा',
 );
 
 /** Malay (Bahasa Melayu)

@@ -4,7 +4,7 @@
  *
  * This job is triggered whenever a notify-me page was saved or removed.
  *
- * @author dch
+ * @author ning
  *
  */
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -12,6 +12,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 global $IP;
 require_once( "$IP/includes/JobQueue.php" );
+
 
 class SMW_NMSendMailJob extends Job {
 

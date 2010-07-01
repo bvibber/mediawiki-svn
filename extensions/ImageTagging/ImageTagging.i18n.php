@@ -1610,6 +1610,7 @@ $messages['ps'] = array(
 	'imagetagging-article' => 'مخ:',
 	'imagetagging-imghistory' => 'پېښليک',
 	'imagetagging-images' => 'انځورونه',
+	'imagetagging-tagcancel-button' => 'ناګارل',
 );
 
 /** Portuguese (Português)
@@ -1771,6 +1772,15 @@ $messages['ru'] = array(
 	'imagetagging-taggedimages-displaying' => 'Отображать $1 — $2 из $3 изображений из «$4»',
 	'tag-logpagename' => 'Журнал меток',
 	'tag-logpagetext' => 'Это журнал добавления и удаления всех меток изображений.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'imagetagging-article' => 'Сторінка:',
+	'imagetagging-imghistory' => 'Історія',
+	'imagetagging-images' => 'образкы',
 );
 
 /** Slovak (Slovenčina)

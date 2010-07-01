@@ -857,16 +857,20 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'watchers' => 'Vigiadores',
 	'watchers-desc' => 'Mostra [[Special:Watchers|quais utilizadores têm uma dada página na sua lista de vigiados]]',
 	'watchers_link_title' => 'Quem está vigiando esta página?',
 	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',
+	'watchers-error-invalid-page' => "'''Erro:''' \"\$1\" é um título de página inválido.",
 	'watchers_header' => '{{PLURAL:$2|Utilizador que está|Utilizadores que estão}} vigiando "[[:$1]]"',
 	'watchers_noone_watches' => 'Ninguém está vigiando esta página.',
 	'watchers_x_or_more' => '$1 ou mais {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
 	'watchers_less_than_x' => 'Menos de $1 {{PLURAL:$1|pessoa está|pessoas estão}} vigiando esta página.',
+	'watchers-num' => '$1 {{PLURAL:$1|usuário tem|usuário têm}} a página [[:$2]] nas suas páginas vigiadas.',
+	'right-watchers-list' => '[[Special:Watchers|Listar usuários que vigiam uma página específica]]',
 );
 
 /** Romanian (Română)
@@ -1097,6 +1101,7 @@ $messages['zh-cn'] = array(
  */
 $messages['zh-hans'] = array(
 	'watchers' => '监视列表',
+	'watchers-desc' => '显示[[Special:Watchers|边个用户系监视列表里面有页面]]',
 	'watchers_link_title' => '谁在监视本页？',
 	'watchers_error_article' => "'''错误:''' 页面不存在。",
 	'watchers_header' => '监视"[[:$1]]"的{{PLURAL:$2|用户|用户}}',
@@ -1107,11 +1112,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'watchers' => '監視者',
+	'watchers-desc' => '顯示[[Special:Watchers|邊個用戶係監視列表裡面有頁面]]',
 	'watchers_link_title' => '誰在監視此頁？',
 	'watchers_error_article' => "'''錯誤：'''頁面不存在。",
 	'watchers_header' => '監視"[[:$1]]"的{{PLURAL:$2|用戶|用戶}}',

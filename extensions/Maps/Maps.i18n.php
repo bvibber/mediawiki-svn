@@ -261,6 +261,7 @@ $1",
 	'maps_unrecognized_coords_for' => "N'eo ket bet anavezet an {{PLURAL:$2|daveenn|daveennoù}} da-heul ha {{PLURAL:$2|n'eo|n'int}} ket bet lakaet war ar gartenn :
 $1",
 	'maps_map_cannot_be_displayed' => "Ar gartenn ne c'hall ket bezañ diskwelet.",
+	'maps_invalid_distance' => "An talvoud $1 n'eo ket un hed reizh anezhañ.",
 	'maps-geocoder-not-available' => "N'haller ket ober gant arc'hwel geokodiñ ar c'hartennoù. N'haller ket geokodiñ ho lec'hiadur.",
 	'maps_click_to_activate' => 'Klikañ evit gweredekaat  ar gartenn',
 	'maps_centred_on' => 'Kartenn kreizet war $1, $2.',
@@ -728,24 +729,29 @@ $1',
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
+ * @author Yonidebest
  */
 $messages['he'] = array(
 	'maps_desc' => 'הוספת האפשרות להצגת נתוני קואורדינטות במפות וכתובות geocode ([http://wiki.bn2vs.com/wiki/Maps demo]).
 שירותי המיפוי הזמינים: $1',
 	'maps_map' => 'מפה',
+	'maps-loading-map' => 'המפה נטענת...',
 	'maps-abb-north' => "צפ'",
 	'maps-abb-east' => "מז'",
 	'maps-abb-south' => "דר'",
 	'maps-abb-west' => "מע'",
 	'maps-latitude' => 'קו רוחב:',
 	'maps-longitude' => 'קו אורך:',
+	'maps-invalid-coordinates' => 'הערך $1 לא זוהה כסדרת קואורדינטות תקינה.',
 	'maps_coordinates_missing' => 'לא סופקו קואורדינטות למפה.',
 	'maps_geocoding_failed' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}: $1.
 לא ניתן להציג את המפה.',
 	'maps_geocoding_failed_for' => 'לא ניתן לייצר geocode עבור {{PLURAL:$2|הכתובת הבאה|הכתובות הבאות}}, ולכן {{PLURAL:$2|היא הושמטה|הן הושמטו}} מהמפה:
 $1',
-	'maps_unrecognized_coords' => 'הקואורדינטות הבאות אינן מזוהות: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|הקואורדינטה הבאה אינה מזוהה|הקואורדינטות הבאות אינן מזוהות}}: $1.',
 	'maps_map_cannot_be_displayed' => 'לא ניתן להציג את המפה.',
+	'maps_invalid_distance' => 'הערך $1 הוא לא מרחק חוקי.',
+	'maps-geocoder-not-available' => 'הקידוד הגיאוקרטוגרפי של מפות אינו זמין. לא ניתן לקודד את המיקום שנבחר.',
 	'maps_click_to_activate' => 'יש ללחוץ כדי להפעיל את המפה',
 	'maps_centred_on' => 'המפה ממורכזת סביב $1,$2',
 	'maps_overlays' => 'שכבות',
@@ -983,6 +989,7 @@ $messages['ja'] = array(
 	'maps_unrecognized_coords_for' => '以下の{{PLURAL:$2|座標}}は認識されなかったため、地図から省かれています:
 $1',
 	'maps_map_cannot_be_displayed' => 'この地図は表示できません。',
+	'maps_invalid_distance' => '値 $1 は距離として有効ではありません。',
 	'maps-geocoder-not-available' => '地図のジオコーディング機能は利用できません。指定した位置をジオコーディングできません。',
 	'maps_click_to_activate' => 'クリックして地図をアクティブに',
 	'maps_centred_on' => '地図の中心は $1、$2。',
@@ -1075,6 +1082,7 @@ $messages['lb'] = array(
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'Breedegrad:',
 	'maps-longitude' => 'Längtegrad:',
+	'maps-invalid-coordinates' => 'De Wäert $1 gouf net als valabel Set vu Koordinaten erkannt.',
 	'maps_coordinates_missing' => "Et goufe keng Koordinate fir d'Kaart uginn.",
 	'maps_geocoding_failed' => 'Dës {{PLURAL:$2|Adress konnt|Adresse konnten}} net geocodéiert ginn: $1',
 	'maps_geocoding_failed_for' => 'Dës {{PLURAL:$2|Adress|Adresse}} konnten net geocodéiert ginn an {{PLURAL:$2|huet|hu}} missen op der Kaart ewechgelooss ginn:
@@ -1083,6 +1091,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Dës {{PLURAL:$2|Koordinate|Koordinate}} goufen net erkannt a vun der Kaart ignoréiert:
 $1',
 	'maps_map_cannot_be_displayed' => "D'Kaart kann net gewise ginn.",
+	'maps_invalid_distance' => 'De Wäert $1 ass keng valabel Distanz.',
 	'maps_click_to_activate' => "Klickt fir d'kaart z'aktivéieren",
 	'maps_centred_on' => "D'Kaart ass zentréiert op $1, $2",
 	'maps_overlays' => 'Ablendungen',
@@ -1152,7 +1161,7 @@ $1',
 	'maps_photos' => 'Фотографии',
 	'maps_videos' => 'Видеа',
 	'maps_wikipedia' => 'Википедија',
-	'maps_webcams' => 'Веб-камери',
+	'maps_webcams' => 'Мреж. камери',
 );
 
 /** Malayalam (മലയാളം) */
@@ -1331,21 +1340,26 @@ $messages['pdc'] = array(
 $messages['pl'] = array(
 	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostępne serwisy mapowe: $1',
 	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Wczytywanie mapy…',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'W',
 	'maps-latitude' => 'Szerokość geograficzna',
 	'maps-longitude' => 'Długość geograficzna',
+	'maps-invalid-coordinates' => 'Wartość $1 nie została rozpoznana jako prawidłowe współrzędne.',
 	'maps_coordinates_missing' => 'Brak współrzędnych dla mapy.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Następującego adresu nie można odnaleźć na mapie|Następujących adresów nie można odnaleźć na mapie:}} $1.
 Mapa nie może zostać wyświetlona.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Następujący adres został pominięty, ponieważ nie można go odnaleźć na mapie|Następujące adresy zostały pominięte, ponieważ nie można ich odnaleźć na mapie:}} $1.',
-	'maps_unrecognized_coords' => 'Następujące współrzędne nie zostały rozpoznane: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Następująca współrzędna nie została rozpoznana –|Następujące współrzędne nie zostały rozpoznane:}} $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Następującą współrzędną|Następujące współrzędne}} pominięto, ponieważ nie {{PLURAL:$2|została rozpoznana|zostały rozpoznane}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Mapa nie może zostać wyświetlona.',
+	'maps_invalid_distance' => 'Wartość $1 nie jest poprawną odległością.',
+	'maps-geocoder-not-available' => 'Funkcjonalność geokodowania map nie jest dostępna. Lokalizacja nie może zostać zakodowana.',
 	'maps_click_to_activate' => 'Kliknij, aby aktywować mapę',
+	'maps_centred_on' => 'Środek mapy – $1, $2.',
 	'maps_overlays' => 'Nakładki',
 	'maps_photos' => 'Zdjęcia',
 	'maps_videos' => 'Filmy',
@@ -1443,7 +1457,9 @@ $messages['pt-br'] = array(
 	'maps_desc' => 'Provê a possibilidade de exibir dados de coordenadas em mapas e endereços em geocódigo. ([http://wiki.bn2vs.com/wiki/Maps demonstração]).
 Serviços de mapeamento disponíveis: $1',
 	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Carregando mapa...',
 	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Latitude:',
@@ -1453,8 +1469,12 @@ Serviços de mapeamento disponíveis: $1',
 O mapa não pode ser exibido.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado e foi omitido|geocodificados e foram omitidos}} do mapa:
 $1',
-	'maps_unrecognized_coords' => 'As seguintes coordenadas não foram reconhecidas: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida|As seguintes coordenadas não foram reconhecidas}}: $1.',
+	'maps_map_cannot_be_displayed' => 'O mapa não pode ser mostrado.',
+	'maps_invalid_distance' => 'O valor $1 não é uma distância válida.',
 	'maps_click_to_activate' => 'Clique para ativar o mapa',
+	'maps_photos' => 'Fotos',
+	'maps_videos' => 'Vídeos',
 );
 
 /** Romanian (Română)
@@ -1725,6 +1745,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Không thể nhận ra {{PLURAL:$2|tọa độ|các tọa độ}} sau nên bản đồ bỏ qua nó:
 $1',
 	'maps_map_cannot_be_displayed' => 'Không thể hiển thị bản đồ.',
+	'maps_invalid_distance' => 'Giá trị $1 không phải là khoảng cách hợp lệ.',
 	'maps-geocoder-not-available' => 'Không thể mã hóa vị trí của bạn vì tính năng mã hóa địa lý của Bản đồ không có sẵn.',
 	'maps_osm' => 'OpenStreetMap',
 	'maps_click_to_activate' => 'Nhấn chuột vào bản đồ để kích hoạt',

@@ -1426,6 +1426,7 @@ Esta visão geral proporciona um acesso fácil para as mensagens de sistema que 
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
  */
@@ -1434,7 +1435,7 @@ $messages['ro'] = array(
 	'prefs-gadgets' => 'Gadgeturi',
 	'gadgets' => 'Gadgeturi',
 	'gadgets-title' => 'Gadgeturi',
-	'gadgets-uses' => 'Utilizează',
+	'gadgets-uses' => 'Utilizări',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1476,6 +1477,13 @@ $messages['ru'] = array(
 	'gadgets-pagetext' => 'Ниже приведён список гаджетов, которые участники могут включить на своей странице настроек, в соответствии со списком на странице [[MediaWiki:Gadgets-definition|определений]].
 Этот список позволяет легко получить доступ к страницам системных сообщений, определяющих описания и исходные коды гаджетов.',
 	'gadgets-uses' => 'Использует',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'gadgets-uses' => 'Хоснує',
 );
 
 /** Yakut (Саха тыла)

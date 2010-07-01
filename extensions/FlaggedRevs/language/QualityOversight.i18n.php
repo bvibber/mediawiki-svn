@@ -171,6 +171,15 @@ $messages['es'] = array(
 	'qualityoversight-legend' => 'Buscar lista de revisiones recientes',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'qualityoversight' => 'Täpne ülevaatuslogi',
+	'qualityoversight-list' => 'See lehekülg loetleb uusimad redaktsioonide heakskiitmised ja iganenuks märkimised.',
+	'qualityoversight-legend' => 'Viimastest ülevaatuslogidest otsimine',
+);
+
 /** Persian (فارسی)
  * @author Huji
  */
@@ -235,10 +244,11 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author DoviJ
  * @author Rotemliss
  */
 $messages['he'] = array(
-	'qualityoversight' => 'בקרת איכות',
+	'qualityoversight' => 'יומן לבקרת איכות מתקדמת',
 	'qualityoversight-list' => 'בדף זה רשומים האישורים החדשים ביותר של גרסאות וכן הסימונים האחרונים של גרסאות כבעייתיות.',
 	'qualityoversight-legend' => 'חיפוש ביומני הבדיקה האחרונים',
 );
@@ -606,7 +616,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'qualityoversight' => 'Giám sát chất lượng',
+	'qualityoversight' => 'Nhật trình duyệt nâng cao',
 	'qualityoversight-list' => 'Trang này liệt kê những lần phê chuẩn các phiên bản chất lượng gần nhất cũng như sự giảm giá trị của những phiên bản chất lượng.',
 	'qualityoversight-legend' => 'Tìm kiếm trong các nhật trình duyệt gần đây',
 );

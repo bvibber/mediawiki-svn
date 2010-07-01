@@ -45,6 +45,7 @@ $messages['qqq'] = array(
 	'pf-admin-menu-default' => '{{Identical|Default}}',
 	'pf-header-documentation' => '{{Identical|Documentation}}',
 	'pf-header-page_title' => '{{Identical|Title}}',
+	'pf-header-approve' => '{{Identical|Approve}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -52,6 +53,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'pf-admin-menu-default' => 'Standaard',
+	'pf-header-approve' => 'Keur goed',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -374,7 +376,10 @@ $messages['kn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Administratioun vu PackageForce',
 	'pf-desc' => '[[Special:PackageForce|Erofluede vu Fichieren]] mat nëtzleche Schablounen asw.',
+	'pf-only-admins-allowed' => "Dës Säit ass nëmme fir Benotzer mat 'PackageForce-Admin'-Rechter.",
 	'pf-admin-menu-default' => 'Standard',
 	'pf-admin-menu-unsortedtemplates' => 'Schablounen nach net zortéiert',
 	'pf-admin-link-view-documentation' => "D'Dokumentatioun déi mat dëser Säit verbonn ass weisen.",

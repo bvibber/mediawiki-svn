@@ -199,27 +199,43 @@ class SIOSQLStore extends SMWSQLStore2 {
  */
 class SIOHandler {
 
-	static $mCurPageName = '';
-	static $mCurPageNamespace = 0;
+	static $mCurPageFullName = '';
 	static $mInternalObjectIndex = 1;
 	static $mInternalObjects = array();
+	static $mHandledPages = array();
 
 	public static function clearState( &$parser ) {
-		self::$mCurPageName = '';
-		self::$mCurPageNamespace = 0;
+		// For some reason, the #set_internal calls on a page are
+		// sometimes called twice (or more?). Ideally, there would
+		// be a way to prevent that, but until then, we use the
+		// $mHandledPages array to store pages whose internal objects
+		// have already been created - if doSetInternal() is called
+		// on a page whose name is already is in this array, the
+		// page is ignored.
+		if ( ! empty( self::$mCurPageFullName ) ) {
+			self::$mHandledPages[] = self::$mCurPageFullName;
+		}
+		self::$mCurPageFullName = '';
 		self::$mInternalObjectIndex = 1;
 		return true;
 	}
 
 	public static function doSetInternal( &$parser ) {
-		$mainPageName = $parser->getTitle()->getDBKey();
-		$mainPageNamespace = $parser->getTitle()->getNamespace();
-		if ( $mainPageName == self::$mCurPageName &&
-			$mainPageNamespace == self::$mCurPageNamespace ) {
+		$mainPageFullName = $parser->getTitle()->getText();
+		if ( ( $nsText = $parser->getTitle()->getNsText() ) != '' ) {
+			$mainPageFullName = $nsText . ':' . $mainPageFullName;
+		}
+
+		if ( in_array( $mainPageFullName, self::$mHandledPages ) ) {
+			// The #set_internal calls for this page have already
+			// been processed! Skip it.
+			return;
+		}
+
+		if ( $mainPageFullName == self::$mCurPageFullName ) {
 			self::$mInternalObjectIndex++;
 		} else {
-			self::$mCurPageName = $mainPageName;
-			self::$mCurPageNamespace = $mainPageNamespace;
+			self::$mCurPageFullName = $mainPageFullName;
 			self::$mInternalObjectIndex = 1;
 		}
 		$curObjectNum = self::$mInternalObjectIndex;
@@ -227,11 +243,7 @@ class SIOHandler {
 		array_shift( $params ); // we already know the $parser...
 		$internalObject = new SIOInternalObject( $parser->getTitle(), $curObjectNum );
 		$objToPagePropName = array_shift( $params );
-		$mainPageName = $parser->getTitle()->getText();
-		if ( ( $nsText = $parser->getTitle()->getNsText() ) != '' ) {
-			$mainPageName = $nsText . ':' . $mainPageName;
-		}
-		$internalObject->addPropertyAndValue( $objToPagePropName, $mainPageName );
+		$internalObject->addPropertyAndValue( $objToPagePropName, self::$mCurPageFullName );
 		foreach ( $params as $param ) {
 			$parts = explode( "=", trim( $param ), 2 );
 			if ( count( $parts ) == 2 ) {
@@ -284,7 +296,11 @@ class SIOHandler {
 			$db->delete( 'smw_rels2', array( "(s_id IN $idsString) OR (o_id IN $idsString)" ), 'SIO::deleteRels2Data' );
 			$db->delete( 'smw_atts2', array( "s_id IN $idsString" ), 'SIO::deleteAtts2Data' );
 			$db->delete( 'smw_text2', array( "s_id IN $idsString" ), 'SIO::deleteText2Data' );
-			$db->delete( 'sm_coords', array( "s_id IN $idsString" ), 'SIO::deleteCoordsData' );
+			// handle the sm_coords table only if the Semantic
+			// Maps extension is installed and uses sm_coords
+			if ( defined( 'SM_VERSION' ) && version_compare( SM_VERSION, '0.6' ) >= 0 ) {
+				$db->delete( 'sm_coords', array( "s_id IN $idsString" ), 'SIO::deleteCoordsData' );
+			}
 		}
 
 		if ( count( $allRels2Inserts ) > 0 ) {

@@ -15,11 +15,32 @@ $messages['en'] = array(
     'wikieditor-addMediaWizard-preference' => 'Enable "Add media wizard" gadget',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Adriaan
+ */
+$messages['af'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktiveer "Media wizard toevoeg"-uitbreiding.',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
 $messages['aln'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktivo "Shto mediat magjistar" vegël',
+);
+
+/** Arabic (العربية)
+ * @author OsamaK
+ */
+$messages['ar'] = array(
+	'wikieditor-addMediaWizard-preference' => 'مكّن "معالج إضافة وسائط"',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
+ */
+$messages['arz'] = array(
+	'wikieditor-addMediaWizard-preference' => 'شغّل عدّة "زوّد media wizard"',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -57,11 +78,25 @@ $messages['cs'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Používat průvodce pro vkládání médií',
 );
 
+/** Danish (Dansk)
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktiver gadget\'en "medie-wizard"',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
 $messages['de'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktiviere den „Medienassistenten“, als Hilfsprogramm zum Einfügen von Mediendateien',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Xacetê mediya de kerdiêi" a bike',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -83,6 +118,13 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Habilitar gadget "Agregar asistente de medios"',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Multimedia magoa gehitu" tresna gaitu',
 );
 
 /** Persian (فارسی)
@@ -205,6 +247,13 @@ $messages['ml'] = array(
 	'wikieditor-addMediaWizard-preference' => '"മീഡിയ ഉൾപ്പെടുത്തൽ സഹായി" ഗാഡ്ജറ്റ് സജ്ജമാക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktifkan peralatan "Tambah wizard media"',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -262,6 +311,20 @@ $messages['pt-br'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Ativar o gadget "Assistente de Adição de Multimídia"',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Midya layqa yapay" gadget nisqata atichiy',
+);
+
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Activează gadgetul „Asistent pentru adăugarea fișierelor media”',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -288,6 +351,13 @@ $messages['sl'] = array(
  */
 $messages['sv'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktivera "Lägg till media guiden" finessen',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'wikieditor-addMediaWizard-preference' => 'เปิดใช้งานเครื่องมือ "ตัววิเศษเพิ่มสื่อ"',
 );
 
 /** Tagalog (Tagalog)

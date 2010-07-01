@@ -1223,6 +1223,7 @@ Për piasì, {{PLURAL:$2|ch'a lo|ch'a-j}} compila.",
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'formtitlepattern' => 'نوی $1 ورګډول',
 	'formsave' => 'خوندي کول',
 );
 
@@ -1391,6 +1392,7 @@ $messages['sr-ec'] = array(
 	'formsave' => 'Сачувај',
 	'formarticleexists' => 'Страна постоји',
 	'formarticleexiststext' => 'Страна [[$1]] већ постоји.',
+	'formbadpagename' => 'Лоше име стране',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1404,6 +1406,7 @@ $messages['sr-el'] = array(
 	'formsave' => 'Sačuvaj',
 	'formarticleexists' => 'Strana postoji',
 	'formarticleexiststext' => 'Strana [[$1]] već postoji.',
+	'formbadpagename' => 'Loše ime strane',
 );
 
 /** Seeltersk (Seeltersk)

@@ -1192,7 +1192,7 @@ $messages['mk'] = array(
 
   #</pre> <!-- leave this line exactly as it is -->',
 	'spam-invalid-lines' => '{{PLURAL:$1|Следниов ред во црниот список на спам е|Следниве редови во црниот список на спам се}} {{PLURAL:$1|погрешен регуларен израз|погрешни регуларни изрази}} и {{PLURAL:$1|треба да се поправи|треба да се поправат}} пред да се зачува страницата:',
-	'spam-blacklist-desc' => 'Анти-спам алатка на база на регуларни изрази: [[MediaWiki:Spam-blacklist]] и [[MediaWiki:Spam-whitelist]]',
+	'spam-blacklist-desc' => 'Антиспам алатка на основа на регуларни изрази: [[MediaWiki:Spam-blacklist]] и [[MediaWiki:Spam-whitelist]]',
 );
 
 /** Malayalam (മലയാളം)
@@ -1640,6 +1640,13 @@ $messages['sk'] = array(
  #</pre> <!-- leave this line exactly as it is -->',
 	'spam-invalid-lines' => '{{PLURAL:$1|Nasledovný riadok|Nasledovné riadky}} čiernej listiny spamu {{PLURAL:$1|je neplatný regulárny výraz|sú neplatné regulárne výrazy}} a je potrebné {{PLURAL:$1|ho|ich}} opraviť pred uložením stránky:',
 	'spam-blacklist-desc' => 'Antispamový nástroj na základe regulárnych výrazov: [[MediaWiki:Spam-blacklist|Čierna listina]] a [[MediaWiki:Spam-whitelist|Biela listina]]',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'spam-blacklist-desc' => 'Orodje proti smetju, temelječe na regularnih izrazih: [[MediaWiki:Spam-blacklist]] in [[MediaWiki:Spam-whitelist]]',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

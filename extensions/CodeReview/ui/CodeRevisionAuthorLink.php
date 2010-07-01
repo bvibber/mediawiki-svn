@@ -62,7 +62,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 		global $wgOut, $wgRequest, $wgUser;
 		// Link an author to a wiki user
 		
-		if ( $wgUser->matchEditToken( $wgRequest->getVal( 'linktoken'), 'link' ) ) {
+		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'linktoken'), 'link' ) ) {
 			$wgOut->addWikiMsg( 'code-author-badtoken' );
 			return;
 		}

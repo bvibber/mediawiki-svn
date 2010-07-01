@@ -104,7 +104,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-publish-preference' => 'فعل النشر خطوه بخطوة',
+	'wikieditor-publish-preference' => 'شغل النشر واحده بواحده',
 	'wikieditor-publish-button-publish' => 'انشر',
 	'wikieditor-publish-button-cancel' => 'كانسل',
 	'wikieditor-publish-dialog-title' => 'انشر فى {{SITENAME}}',
@@ -118,11 +118,13 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'wikieditor-publish-preference' => 'Уключыць паступовую публікацыю',
+	'wikieditor-publish-preference' => 'Уключыць пакрокавую публікацыю',
 	'wikieditor-publish-button-publish' => 'Апублікаваць',
-	'wikieditor-publish-button-cancel' => 'Адмяніць',
+	'wikieditor-publish-button-cancel' => 'Скасаваць',
 	'wikieditor-publish-dialog-title' => 'Апублікаваць у {{GRAMMAR:месны|{{SITENAME}}}}',
 	'wikieditor-publish-dialog-summary' => 'Апісаньне рэдагаваньняў (коратка апішыце зробленыя Вамі зьмены):',
 	'wikieditor-publish-dialog-minor' => 'Дробная праўка',
@@ -218,6 +220,15 @@ $messages['ce'] = array(
 	'wikieditor-publish-button-cancel' => 'Цаоьшу',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-publish-dialog-minor' => 'دەستکاریی بچووک',
+	'wikieditor-publish-dialog-watch' => 'چاودێڕیی ئەم پەڕە بکە',
+	'wikieditor-publish-dialog-publish' => 'بڵاوی بکەوە',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -257,11 +268,20 @@ $messages['cy'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Sarrus
+ * @author Sir48
  */
 $messages['da'] = array(
+	'wikieditor-publish-preference' => 'Aktiver skridt-for-skridt udgivelse',
+	'wikieditor-publish-button-publish' => 'Udgiv',
+	'wikieditor-publish-button-cancel' => 'Afbryd',
+	'wikieditor-publish-dialog-title' => 'Udgiv som {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Redigeringsbeskrivelse (beskriv kort de ændringer, du har gjort)',
 	'wikieditor-publish-dialog-minor' => 'Mindre ændring',
 	'wikieditor-publish-dialog-watch' => 'Overvåg denne side',
+	'wikieditor-publish-dialog-publish' => 'Udgiv',
+	'wikieditor-publish-dialog-goback' => 'Gå tilbage',
 );
 
 /** German (Deutsch)
@@ -392,6 +412,7 @@ $messages['eu'] = array(
 	'wikieditor-publish-button-publish' => 'Argitaratu',
 	'wikieditor-publish-button-cancel' => 'Ezeztatu',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}}era argitaratu',
+	'wikieditor-publish-dialog-summary' => 'Laburpena (Egindako aldaketak laburki azaldu):',
 	'wikieditor-publish-dialog-minor' => 'Aldaketa txikia',
 	'wikieditor-publish-dialog-watch' => 'Orrialde hau jarraitu',
 	'wikieditor-publish-dialog-publish' => 'Argitaratu',
@@ -750,6 +771,34 @@ $messages['ml'] = array(
 	'wikieditor-publish-dialog-goback' => 'പഴയ താളിലേയ്ക്ക് മടങ്ങുക',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'wikieditor-publish-preference' => 'पायरी-पायरीने प्रकाशन शक्य करा
+टप्प्या-टप्प्याने प्रकाशन शक्य करा',
+	'wikieditor-publish-button-publish' => 'प्रकाशित करा
+दाखवा',
+	'wikieditor-publish-dialog-summary' => 'संपादनाचा सारांश:(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
+	'wikieditor-publish-dialog-goback' => '↓ परत फिरा
+↓ मागे जा',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-publish-preference' => 'Aktifkan tutorial penerbitan',
+	'wikieditor-publish-button-publish' => 'Terbit',
+	'wikieditor-publish-button-cancel' => 'Batalkan',
+	'wikieditor-publish-dialog-title' => 'Paparkan pada laman ((sitename))',
+	'wikieditor-publish-dialog-summary' => 'Sunting ringkasan (jelaskan perubahan yang disertakan secara ringkas)',
+	'wikieditor-publish-dialog-minor' => 'Suntingan kecil',
+	'wikieditor-publish-dialog-watch' => 'Pantau laman ini',
+	'wikieditor-publish-dialog-publish' => 'Terbitkan',
+	'wikieditor-publish-dialog-goback' => 'Kembali',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -781,10 +830,19 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'wikieditor-publish-preference' => 'Ta i bruk steg for steg-publisering',
+	'wikieditor-publish-button-publish' => 'Publiser',
+	'wikieditor-publish-button-cancel' => 'Avbryt',
+	'wikieditor-publish-dialog-title' => 'Publiser på {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Endringssamandrag (oppsummering av kva for endringar du har gjort):',
+	'wikieditor-publish-dialog-minor' => 'Småplukk',
 	'wikieditor-publish-dialog-watch' => 'Overvak denne sida',
+	'wikieditor-publish-dialog-publish' => 'Publiser',
+	'wikieditor-publish-dialog-goback' => 'Gå tilbake',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -900,17 +958,34 @@ $messages['pt-br'] = array(
 	'wikieditor-publish-dialog-goback' => 'Voltar',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-publish-preference' => 'Thatki-thatkilla uyaychayta atichiy',
+	'wikieditor-publish-button-publish' => 'Uyaychay',
+	'wikieditor-publish-button-cancel' => 'Ama niy',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} nisqapi uyaychay',
+	'wikieditor-publish-dialog-summary' => "Llamk'apuypa pisichaynin (rurasqayki hukchasqakunata pisilla rimakunawan ch'uyanchay):",
+	'wikieditor-publish-dialog-minor' => 'Aslla hukchay',
+	'wikieditor-publish-dialog-watch' => "Kay p'anqata watiqay",
+	'wikieditor-publish-dialog-publish' => 'Uyaychay',
+	'wikieditor-publish-dialog-goback' => 'Kutimuy',
+);
+
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'wikieditor-publish-preference' => 'Activează publicarea pas cu pas',
 	'wikieditor-publish-button-publish' => 'Salvează pagina',
-	'wikieditor-publish-button-cancel' => 'Anulează',
+	'wikieditor-publish-button-cancel' => 'Renunţă',
 	'wikieditor-publish-dialog-title' => 'Publică pe {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieți pe scurt modificările făcute):',
 	'wikieditor-publish-dialog-minor' => 'Modificare minoră',
-	'wikieditor-publish-dialog-watch' => 'Urmărește pagina',
+	'wikieditor-publish-dialog-watch' => 'Urmărește această pagină',
 	'wikieditor-publish-dialog-publish' => 'Salvează pagina',
 	'wikieditor-publish-dialog-goback' => 'Înapoi',
 );
@@ -943,6 +1018,15 @@ $messages['ru'] = array(
 	'wikieditor-publish-dialog-watch' => 'Наблюдать за этой страницей',
 	'wikieditor-publish-dialog-publish' => 'Опубликовать',
 	'wikieditor-publish-dialog-goback' => 'Назад',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-publish-button-publish' => 'Публіковати',
+	'wikieditor-publish-button-cancel' => 'Сторно',
+	'wikieditor-publish-dialog-publish' => 'Публіковати',
 );
 
 /** Yakut (Саха тыла)
@@ -1014,11 +1098,13 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'wikieditor-publish-button-publish' => 'Објави',
 	'wikieditor-publish-button-cancel' => 'Поништи',
+	'wikieditor-publish-dialog-summary' => 'Опис измене (укратко опишите шта сте изменили):',
 	'wikieditor-publish-dialog-minor' => 'Мала измена',
 	'wikieditor-publish-dialog-publish' => 'Објави',
 	'wikieditor-publish-dialog-goback' => 'Врати се',
@@ -1031,6 +1117,15 @@ $messages['sr-el'] = array(
 	'wikieditor-publish-dialog-minor' => 'Mala izmena',
 	'wikieditor-publish-dialog-publish' => 'Objavi',
 	'wikieditor-publish-dialog-goback' => 'Vrati se',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-publish-button-cancel' => 'Bolay',
+	'wikieditor-publish-dialog-watch' => 'Awaskeun ieu kaca',
+	'wikieditor-publish-dialog-goback' => 'Balik deui',
 );
 
 /** Swedish (Svenska)
@@ -1079,16 +1174,19 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
-	'wikieditor-publish-button-publish' => 'แผยแพร่',
+	'wikieditor-publish-preference' => 'เปิดใช้งานการเผยแพร่ทีละขั้นตอน',
+	'wikieditor-publish-button-publish' => 'เผยแพร่',
 	'wikieditor-publish-button-cancel' => 'ยกเลิก',
 	'wikieditor-publish-dialog-title' => 'เผยแพร่ไปยัง {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'สรุปการแก้ไข (อธิบายย่อๆ ถึงการเปลี่ยนแปลงที่คุณกระทำ):',
 	'wikieditor-publish-dialog-minor' => 'เป็นการแก้ไขเล็กน้อย',
 	'wikieditor-publish-dialog-watch' => 'เฝ้าดูหน้านี้',
-	'wikieditor-publish-dialog-publish' => 'แผยแพร่',
+	'wikieditor-publish-dialog-publish' => 'เผยแพร่',
+	'wikieditor-publish-dialog-goback' => 'กลับไป',
 );
 
 /** Turkmen (Türkmençe)
@@ -1193,6 +1291,21 @@ $messages['yi'] = array(
 	'wikieditor-publish-dialog-watch' => 'אויפֿפאַסן אויף דעם בלאַט',
 	'wikieditor-publish-dialog-publish' => 'פֿאַרעפֿנטלעכן',
 	'wikieditor-publish-dialog-goback' => 'צוריקגיין',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'wikieditor-publish-preference' => 'Ìgbàláyè ìtẹ̀jáde lẹ́sẹ-sẹ',
+	'wikieditor-publish-button-publish' => 'Ìtẹ̀jáde',
+	'wikieditor-publish-button-cancel' => 'Fagilé',
+	'wikieditor-publish-dialog-title' => 'Ìtẹ̀jáde sí {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Àkótán àtúnṣe (àlàyé ní sókí àtúnṣe tí ẹ ṣe):',
+	'wikieditor-publish-dialog-minor' => 'Àtúnṣe kékeré',
+	'wikieditor-publish-dialog-watch' => "M'ójútó ojúewé yìí",
+	'wikieditor-publish-dialog-publish' => 'Ìtẹ̀jáde',
+	'wikieditor-publish-dialog-goback' => 'Padà sẹ́yìn',
 );
 
 /** Cantonese (粵語)

@@ -1,6 +1,6 @@
 <?php
 /**
- * @author dch
+ * @author ning
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {

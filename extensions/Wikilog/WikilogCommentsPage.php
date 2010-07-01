@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -328,8 +328,10 @@ class WikilogCommentsPage
 			);
 		} else {
 			$loginTitle = SpecialPage::getTitleFor( 'Userlogin' );
-			$loginLink = $this->mSkin->makeKnownLinkObj( $loginTitle,
-				wfMsgHtml( 'loginreqlink' ), 'returnto=' . $wgTitle->getPrefixedUrl() );
+			$loginLink = $this->mSkin->link( $loginTitle,
+				wfMsgHtml( 'loginreqlink' ), array(),
+				array( 'returnto' => $wgTitle->getPrefixedUrl() )
+			);
 			$message = wfMsg( 'wikilog-posting-anonymously', $loginLink );
 			$fields[] = array(
 				Xml::label( wfMsg( 'wikilog-form-name' ), 'wl-name' ),
@@ -355,7 +357,7 @@ class WikilogCommentsPage
 		}
 
 		$fields[] = array( '',
-			Xml::submitbutton( wfMsg( 'wikilog-submit' ), array( 'name' => 'wlActionCommentSubmit' ) ) . '&#160;' .
+			Xml::submitbutton( wfMsg( 'wikilog-submit' ), array( 'name' => 'wlActionCommentSubmit' ) ) . WL_NBSP .
 			Xml::submitbutton( wfMsg( 'wikilog-preview' ), array( 'name' => 'wlActionCommentPreview' ) )
 		);
 

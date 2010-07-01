@@ -139,11 +139,6 @@ body.rtl #mw-panel.collapsible-nav div.persistent div.body {
 #simpleSearch { 
 	overflow: auto;
 }
-div#simpleSearch button#searchButton {
-	margin: 5px 5px 0 0;
-	height: 13px;
-	width: 12px;
-}
 /* wikiEditor plugin */
 
 /* This ID (#editform) could change in MediaWiki */
@@ -913,6 +908,7 @@ body.rtl .wikiEditor-ui-toolbar .group-insert {
 	width: 22px;
 	padding: 2px;
 	cursor: pointer;
+	overflow: hidden;
 }
 /* Tabs */
 .wikiEditor-ui-toolbar .tabs {
@@ -1220,4 +1216,27 @@ body.rtl .wikiEditor-ui-toolbar .page-characters > div > span,
 .wikiEditor-preview-contents {
 	padding: 1em;
 	background-color: white;
+}
+
+#wikiEditor-0-preview-dialog .wikiEditor-ui-loading {
+	background: #f3f3f3;
+	z-index: 10;
+	position: absolute;
+	left: 0;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	border: none;
+}
+#wikiEditor-0-preview-dialog .wikiEditor-ui-loading span {
+	display: block;
+	height: 24px;
+	width: 24px;
+	background: url( ../images/wikiEditor/toolbar/loading.gif ) 0 0 no-repeat;
+	text-indent: -9999px;
+	margin: 0 auto;
+}
+.ui-dialog .ui-dialog-buttonpane {
+	margin: 0 !important;
 }

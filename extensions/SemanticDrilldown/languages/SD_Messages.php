@@ -1401,7 +1401,7 @@ $messages['ia'] = array(
 	'sd_browsedata_or' => 'o',
 	'sd_browsedata_removefilter' => 'Remover iste filtro',
 	'sd_browsedata_removesubcategoryfilter' => 'Remover iste filtro de subcategoria',
-	'sd_browsedata_resetfilters' => 'Reinitiar filtros',
+	'sd_browsedata_resetfilters' => 'Reinitialisar filtros',
 	'sd_browsedata_addanothervalue' => 'Clicca super le sagitta pro adder ancora un valor',
 	'sd_browsedata_daterangestart' => 'Initio:',
 	'sd_browsedata_daterangeend' => 'Fin:',
@@ -2590,6 +2590,15 @@ $messages['ru'] = array(
 	'sd_filter_daterange' => 'диапазон дат',
 	'sd_filter_requiresfilter' => 'Требует наличия фильтра $1.',
 	'sd_filter_haslabel' => 'Имеет пометку $1.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'sd_filter_year' => 'Рік',
+	'sd_filter_month' => 'Місяць',
+	'sd_filter_freetext' => 'текст',
 );
 
 /** Slovak (Slovenčina)

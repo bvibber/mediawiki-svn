@@ -1412,7 +1412,7 @@ Ne c'hallit ket ober goulennoù all.",
 	'confirmaccount-all' => '(Gwelet an holl rolloù gortoz)',
 	'confirmaccount-type' => 'Roll gortoz :',
 	'confirmaccount-type-0' => 'oberourien posupl',
-	'confirmaccount-type-1' => 'kenoberien posubl',
+	'confirmaccount-type-1' => 'kenoberien posupl',
 	'confirmaccount-q-open' => 'rekedoù digor',
 	'confirmaccount-q-held' => "goulennoù dalc'het",
 	'confirmaccount-q-rej' => 'goulennoù distaolet nevez zo',
@@ -1752,10 +1752,19 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Aka-miki
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
+	'requestaccount-leg-user' => 'Brugerkonto',
+	'requestaccount-leg-person' => 'Personlige oplysninger',
 	'requestaccount-real' => 'Virkeligt navn:',
+	'requestaccount-same' => '(Samme som rigtige navn)',
+	'requestaccount-email' => 'E-mail adresse',
+	'requestaccount-reqtype' => 'Placering',
+	'requestaccount-level-0' => 'Forfatter',
+	'requestaccount-level-1' => 'redigerer',
+	'requestaccount-bio' => 'Personlig biografi:',
 	'confirmaccount-real-q' => 'Navn',
 	'confirmaccount-email-q' => 'E-mail',
 	'confirmaccount-name' => 'Brugernavn',
@@ -5161,6 +5170,7 @@ $messages['io'] = array(
 
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
+ * @author Ævar Arnfjörð Bjarmason
  */
 $messages['is'] = array(
 	'requestaccount' => 'Sækja um aðgang',
@@ -5169,7 +5179,7 @@ $messages['is'] = array(
 	'requestaccount-leg-person' => 'Persónulegar upplýsingar',
 	'requestaccount-leg-other' => 'Aðrar upplýsingar',
 	'requestaccount-real' => 'Raunverulegt nafn:',
-	'requestaccount-same' => '(eins og raunverulega nafnið)',
+	'requestaccount-same' => '(fyllt út hér fyrir neðan)',
 	'requestaccount-email' => 'Netfang:',
 	'requestaccount-reqtype' => 'Staða:',
 	'requestaccount-level-0' => 'höfundur',
@@ -5178,7 +5188,28 @@ $messages['is'] = array(
 	'requestaccount-attach' => 'Ferilskrá (valfrjálst):',
 	'requestaccount-notes' => 'Viðbótarskýring:',
 	'requestaccount-urls' => 'Listi yfir vefsíður, ef einhverjar (aðskildu með línum):',
-	'requestaccount-tooshort' => 'Sjálfsævisagan þín þarf að vera að minnsta kosti $1 orð á lengd.',
+	'requestaccount-tooshort' => 'Notendaupplýsingarnar þínar þurfa að vera að minnsta kosti $1 orð á lengd.',
+	'requestaccount-submit' => 'Sækja um aðgang',
+	'requestaccount-sent' => 'Beðni þín um aðgang var móttekin og bíður nú yfirferðar hjá stjórnendum. Staðfestingarpóstur var sendur á netfangið þitt.',
+	'request-account-econf' => 'Netfangið þitt hefur verið staðfest og mun vera listað sem slíkt meðal aðgangsbeðna.',
+	'requestaccount-email-subj' => '{{SITENAME}} netfangs-staðfesting',
+	'requestaccount-email-body' => 'Einhver með vistfangið „$1“ hefur beðið um að búa til aðganginn „$2“ með þessu netfangi á {{SITENAME}} vefnum.
+
+Til að steðfesta að þú viljir búa til þennan aðgang á {{SITENAME}} þarftu að opna þennan tengil í vafranum þínum:
+
+$3
+
+Þér verður sent lykilorð í pósti verði aðgangurinn búinn til. Þessi staðfestingarpóstur rennur út $4.',
+	'requestaccount-email-subj-admin' => 'Beðni um notanda a {{SITENAME}}',
+	'requestaccount-email-body-admin' => '„$1“ hefur beðið um aðgang að sem bíður staðfestingar, notandinn hefur þegar staðfest netfangið sitt.
+
+Þú getur staðfest beðnina hér:
+
+$2',
+	'acct_request_throttle_hit' => 'Þú hefur þegar sótt um {{PLURAL:$1|1 aðgang|$1 aðganga}}. Þú getur ekki sent inn fleiri beðnir.',
+	'requestaccount-loginnotice' => "Ef þú ert ekki þegar með aðgang verður þú að '''[[Special:RequestAccount|sækja um einn slíkan]]'''.",
+	'confirmaccount-newrequests' => "'''$1''' [[Special:ConfirmAccounts|{{PLURAL:$1|notandabeðni|notandabeðnir}}]] {{PLURAL:$1|með staðfest netfang bíður samþykkis|með staðfest netföng bíða samþykkis}}",
+	'confirmaccounts' => 'Staðfesta notandabeðnir',
 	'confirmaccount-real-q' => 'Nafn',
 	'confirmaccount-email-q' => 'Netfang',
 	'confirmaccount-bio-q' => 'Sjálfsævisaga',
@@ -5204,7 +5235,13 @@ $messages['is'] = array(
 	'confirmaccount-hold' => 'Bíða',
 	'confirmaccount-ip' => 'Vistfang:',
 	'confirmaccount-submit' => 'Staðfesta',
+	'confirmaccount-rej' => 'Notandabeðninni var hafnað.',
 	'confirmaccount-wsum' => 'Velkomin!',
+	'confirmaccount-email-body4' => 'Beðni þín um aðgang að {{SITENAME}} undir nafninu „$1“ á „$2“ hefur verið hafnað.
+
+$2
+
+Það kann að vera netfang á síðunni sem þú getur haft samband við til að fá frekari upplýsingar.',
 	'usercredentials-user' => 'Notandanafn:',
 	'usercredentials-leg-user' => 'Aðgangur notanda',
 	'usercredentials-leg-areas' => 'Aðal áhugamál',
@@ -6557,7 +6594,7 @@ $messages['mk'] = array(
 	'requestaccount-bio' => 'Лична биографија:',
 	'requestaccount-attach' => 'Резиме или CV (не е задолжително):',
 	'requestaccount-notes' => 'Други забелешки:',
-	'requestaccount-urls' => 'Список на веб-страници, ако ги има (се пишуваат во посебен ред):',
+	'requestaccount-urls' => 'Список на мрежни места, ако ги има (се пишуваат во посебен ред):',
 	'requestaccount-agree' => 'Морате да потврдите дека вашето вистинско име е точно и дека се согласувате со нашите Услови на употреба.',
 	'requestaccount-inuse' => 'Тоа корисничко име е веќе искористено во друга пријава и чека одобрение.',
 	'requestaccount-tooshort' => 'Вашата биографија мора да содржи најмалку $1 {{PLURAL:$1|збор|зборови}}.',
@@ -6649,7 +6686,7 @@ $3
 	'confirmaccount-bio' => 'Биографија:',
 	'confirmaccount-attach' => 'Резиме/CV:',
 	'confirmaccount-notes' => 'Дополнителни белешки:',
-	'confirmaccount-urls' => 'Список на веб места:',
+	'confirmaccount-urls' => 'Список на мрежни места:',
 	'confirmaccount-none-p' => '(не е наведено)',
 	'confirmaccount-confirm' => 'Користете ги нагодувањата подолу за да го прифатите, одбиете или задржите ова барање:',
 	'confirmaccount-econf' => '(потврдено)',
@@ -6725,7 +6762,7 @@ $2
 	'usercredentials-bio' => 'Биографија:',
 	'usercredentials-attach' => 'Резиме/CV:',
 	'usercredentials-notes' => 'Дополнителни забелешки:',
-	'usercredentials-urls' => 'Список на веб-страници:',
+	'usercredentials-urls' => 'Список на мрежни места:',
 	'usercredentials-ip' => 'Изворна IP-адреса',
 	'usercredentials-member' => 'Права:',
 	'usercredentials-badid' => 'Нема пронајдено препораки за овој корисник.
@@ -9110,6 +9147,25 @@ $2
 	'right-confirmaccount' => 'просмотр [[Special:ConfirmAccounts|запросов на создание учётных записей]]',
 	'right-requestips' => 'Просмотр IP-адресов авторов запросов на создание учётных записей',
 	'right-lookupcredentials' => 'просмотр [[Special:UserCredentials|удостоверяющей информации об участниках]]',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'requestaccount-reqtype' => 'Позіція:',
+	'requestaccount-level-0' => 'автор',
+	'requestaccount-level-1' => 'едітор',
+	'confirmaccount-real-q' => 'Мено',
+	'confirmaccount-email-q' => 'Електронічна пошта',
+	'confirmaccount-bio-q' => 'Біоґрафія',
+	'confirmaccount-name' => 'Мено хоснователя',
+	'confirmaccount-real' => 'Мено:',
+	'confirmaccount-email' => 'Електронічна пошта:',
+	'confirmaccount-reqtype' => 'Позіція:',
+	'confirmaccount-pos-0' => 'автор',
+	'confirmaccount-pos-1' => 'едітор',
+	'confirmaccount-bio' => 'Біоґрафія:',
 );
 
 /** Slovak (Slovenčina)

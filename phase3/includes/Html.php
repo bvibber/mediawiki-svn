@@ -155,31 +155,36 @@ class Html {
 			return '';
 		}
 
-		# Remove HTML5-only attributes if we aren't doing HTML5
-		if ( !$wgHtml5 ) {
-			if ( $element == 'input' ) {
-				# Whitelist of valid XHTML1 types
-				$validTypes = array(
-					'hidden',
-					'text',
-					'password',
-					'checkbox',
-					'radio',
-					'file',
-					'submit',
-					'image',
-					'reset',
-					'button',
-				);
-				if ( isset( $attribs['type'] )
-				&& !in_array( $attribs['type'], $validTypes ) ) {
-					# Fall back to type=text, the default
-					unset( $attribs['type'] );
-				}
+		# Remove HTML5-only attributes if we aren't doing HTML5, and disable
+		# form validation regardless (see bug 23769 and the more detailed
+		# comment in expandAttributes())
+		if ( $element == 'input' ) {
+			# Whitelist of types that don't cause validation.  All except
+			# 'search' are valid in XHTML1.
+			$validTypes = array(
+				'hidden',
+				'text',
+				'password',
+				'checkbox',
+				'radio',
+				'file',
+				'submit',
+				'image',
+				'reset',
+				'button',
+				'search',
+			);
+			if ( isset( $attribs['type'] )
+			&& !in_array( $attribs['type'], $validTypes ) ) {
+				unset( $attribs['type'] );
 			}
-			if ( $element == 'textarea' && isset( $attribs['maxlength'] ) ) {
-				unset( $attribs['maxlength'] );
+			if ( isset( $attribs['type'] ) && $attribs['type'] == 'search'
+			&& !$wgHtml5 ) {
+				unset( $attribs['type'] );
 			}
+		}
+		if ( !$wgHtml5 && $element == 'textarea' && isset( $attribs['maxlength'] ) ) {
+			unset( $attribs['maxlength'] );
 		}
 
 		return "<$element" . self::expandAttributes(
@@ -593,19 +598,7 @@ class Html {
 		global $wgHtml5, $wgHtml5Version, $wgWellFormedXml, $wgDocType, $wgDTD;
 		global $wgXhtmlNamespaces, $wgXhtmlDefaultNamespace;
 		if ( $wgHtml5 ) {
-			if ( $wgWellFormedXml ) {
-				# Unknown elements and attributes are okay in XML, but unknown
-				# named entities are well-formedness errors and will break XML
-				# parsers.  Thus we need a doctype that gives us appropriate
-				# entity definitions.  The HTML5 spec permits four legacy
-				# doctypes as obsolete but conforming, so let's pick one of
-				# those, although it makes our pages look like XHTML1 Strict.
-				# Isn't compatibility great?
-				$ret .= "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n";
-			} else {
-				# Much saner.
-				$ret .= "<!doctype html>\n";
-			}
+			$ret .= "<!DOCTYPE html>\n";
 			if ( $wgHtml5Version ) {
 				$attribs['version'] = $wgHtml5Version;
 			}

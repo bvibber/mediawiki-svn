@@ -274,7 +274,7 @@ War wel e teuio hoc'h anv war roll istor pep pajenn evit ma vo gouezet gant piv 
 	'replacetext_categorysearch' => "Erlec'hiañ er rummad hepken :",
 	'replacetext_prefixsearch' => "Erlec'hiañ hepken er bajennoù gant ar rakger :",
 	'replacetext_editpages' => "Erlec'hiañ an destenn en danvez er bajenn",
-	'replacetext_movepages' => "Erlec'hiañ an destenn e titl ar pajennoù, ma 'z eo posubl",
+	'replacetext_movepages' => "Erlec'hiañ an destenn e titl ar pajennoù, ma 'z eo posupl",
 	'replacetext_givetarget' => "Rankout a reoc'h reiñ ar chadenn a rank bezañ erlec'hiet.",
 	'replacetext_nonamespace' => "Rankout a reoc'h dibab un esaouenn anv d'an nebeutañ.",
 	'replacetext_editormove' => "Rankout a reoc'h dibab d'an nebeutañ un dibarzh erlec'hiañ.",
@@ -954,6 +954,7 @@ Si tu face iste reimplaciamento, tu non potera distinguer inter tu reimplaciamen
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author IvanLanin
  * @author Rex
  */
@@ -984,9 +985,7 @@ $messages['id'] = array(
 	'replacetext_nomove' => 'Tidak ada halaman yang ditemukan yang judulnya mengandung "$1".',
 	'replacetext_nosuchcategory' => 'Tidak ditemukan kategori bernama "$1".',
 	'replacetext_return' => 'Kembali ke isian.',
-	'replacetext_warning' => 'Ada {{PLURAL:$1|$1 halaman|$1 halaman}} yang telah berisi untaian pengganti, "$2".
-Jika Anda melakukan penggantian ini Anda tidak akan dapat memisahkan pengganti Anda dari untaian ini.
-Lanjutkan penggantian?',
+	'replacetext_warning' => 'Ada {{PLURAL:$1|$1 halaman|$1 halaman}} yang telah berisi untaian pengganti, "$2". Jika Anda melakukan penggantian ini Anda tidak akan dapat memisahkan pengganti Anda dari untaian ini.',
 	'replacetext_blankwarning' => 'Karena untaian pengganti kosong, operasi ini tidak dapat dikembalikan.
 Apakah ingin dilanjutkan?',
 	'replacetext_continue' => 'Lanjutkan',

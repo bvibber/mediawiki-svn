@@ -45,6 +45,8 @@ aliasfile = APC/APC.alias.php
 
 Api SVG Proxy
 
+Approved Revs
+
 Asksql
 aliasfile = Asksql/Asksql.alias.php
 
@@ -571,8 +573,9 @@ aliasfile = Interwiki/Interwiki.alias.php
 optional = interwiki_defaulturl, interwiki_url, interwiki-url-label
 ignored = interwiki_logentry, interwiki_defaulturl
 
-Interwiki Integration
-aliasfile = InterwikiIntegration/InterwikiIntegration.alias.php
+# 2010-06-22: Disabled for the moment. Under heavy construction 
+#Interwiki Integration
+#aliasfile = InterwikiIntegration/InterwikiIntegration.alias.php
 
 Interwiki List
 aliasfile = InterwikiList/InterwikiList.alias.php
@@ -582,6 +585,9 @@ aliasfile = Invitations/Invitations.alias.php
 ignored = invitations-uninvitedlist-item
 
 IP Auth
+
+JS Bread Crumbs
+optional = jsbreadcrumbs-separator
 
 JS Kit
 
@@ -622,6 +628,8 @@ Lockdown
 Log Entry
 aliasfile = LogEntry/LogEntry.alias.php
 descmsg = logentry-parserhook-desc
+
+Logo Functions
 
 Lookup User
 aliasfile = LookupUser/LookupUser.alias.php
@@ -773,6 +781,8 @@ Package Force
 descmsg = pf-desc
 
 Page By
+
+Page Object Model
 
 Paged Tiff Handler
 descmsg = tiff-desc
@@ -1194,6 +1204,7 @@ Upload Blacklist
 
 Upload Wizard
 aliasfile = UploadWizard/UploadWizard.alias.php
+ignored = mwe-upwiz-license-pd-us
 
 Unicode Converter
 
@@ -1284,6 +1295,7 @@ optional = optin-survey-answer-browser-c1, optin-survey-answer-browser-c2, optin
 optional = optin-survey-answer-browser-s3, optin-survey-answer-browser-s4
 optional = optin-survey-answer-browser-o9, optin-survey-answer-browser-o9.5, optin-survey-answer-browser-o10, optin-survey-answer-os-windows
 optional = optin-survey-answer-os-macos, optin-survey-answer-os-linux, optin-survey-answer-os-windowsmobile, optin-survey-answer-os-iphoneos
+optional = optin-survey-answer-browser-ie9, optin-survey-answer-browser-c5, optin-survey-answer-browser-s5, optin-survey-answer-os-ios
 
 Usability Initiative - Opt In Link
 id = ext-ui-optinlink
@@ -1307,6 +1319,7 @@ optional = prefswitch-survey-answer-browser-c1, prefswitch-survey-answer-browser
 optional = prefswitch-survey-answer-browser-s3, prefswitch-survey-answer-browser-s4
 optional = prefswitch-survey-answer-browser-o9, prefswitch-survey-answer-browser-o9.5, prefswitch-survey-answer-browser-o10, prefswitch-survey-answer-os-windows
 optional = prefswitch-survey-answer-os-macos, prefswitch-survey-answer-os-linux, prefswitch-survey-answer-os-windowsmobile, prefswitch-survey-answer-os-iphoneos
+optional = prefswitch-survey-answer-browser-ie9, prefswitch-survey-answer-browser-c5, prefswitch-survey-answer-browser-s5, prefswitch-survey-answer-os-ios
 
 Usability Initiative - Pref Switch Link
 id = ext-ui-prefswitchlink
@@ -1359,6 +1372,11 @@ Usability Initiative - Wikieditor Preview
 id = ext-ui-wikieditor-preview
 file = UsabilityInitiative/WikiEditor/Modules/Preview/Preview.i18n.php
 descmsg = wikieditor-preview-desc
+
+Usability Initiative - Wikieditor Preview Dialog
+id = ext-ui-wikieditor-previewdialog
+file = UsabilityInitiative/WikiEditor/Modules/PreviewDialog/PreviewDialog.i18n.php
+descmsg = wikieditor-previewDialog-preference
 
 Usability Initiative - Wikieditor Publish
 id = ext-ui-wikieditor-publish

@@ -501,6 +501,9 @@ $messages['bs'] = array(
 	'captcha-createaccount-fail' => 'Netačan unos ili nedostatak šifre za potvrđivanje.',
 	'captcha-create' => 'Da bi ste napravili stranicu; kao zaštita od automatizovanog vandalizma, moraćete da ukucate rezultat prikazane sume u okvir ispod:
 ([[Special:Captcha/help|Šta je ovo?]])',
+	'captcha-sendemail' => 'Da bi ste pomogli protiv automatskog stavljanja linkova, molimo riješite jednostavan zadatak sabiranja ispod i unesite rezultat u kutiju ([[Special:Captcha/help|više informacija]]):',
+	'captcha-sendemail-fail' => 'Netačan unos ili nedostatak šifre za potvrđivanje.',
+	'captcha-disabledinapi' => 'Ova akcija zahtjeva captchu, tako da se ne može izvršiti preko API.',
 	'captchahelp-title' => 'Pomoć pri captcha',
 	'captchahelp-cookies-needed' => 'Da bi ste ovo mogli raditi potrebno je da omogućite kolačiće (cookies) u Vašem pregledniku.',
 	'captchahelp-text' => "Websajtovi koji podržavaju slanje sadržaja iz javnosti, kao što je ovaj viki, često zloupotrebljavaju vandali koji koriste automatizovane alate da šalju svoje linkove ka mnogim sajtovima.
@@ -864,6 +867,7 @@ Hit the 'back' button in your browser to return to the page editor.",
 
 /** Esperanto (Esperanto)
  * @author Castelobranco
+ * @author Petrus Adamus
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -874,13 +878,13 @@ Por malhelpi aŭtomatan spamadon, bonvolu solvi la simplan problemon sube kaj en
 	'captcha-badlogin' => 'Helpi protekti kontraŭ aŭtomata divenado de pasvortoj, bonvolu solvi la simplan sumon kaj enigi la respondon en la skatolo ([[Special:Captcha/help|plua informo]]):',
 	'captcha-createaccount' => 'Helpi protekti kontraŭ aŭtomata konto-kreado, bonvolu solvi la simplan sumon suben
 kaj enigi la respondon en la skatolo ([[Special:Captcha/help|plua informo]]):',
-	'captcha-createaccount-fail' => 'Nekorekta aŭ mankanta konfirmkodo.',
+	'captcha-createaccount-fail' => 'Malĝusta aŭ mankanta konfirma kodo.',
 	'captcha-create' => 'Por krei la paĝon, bonvolu solvi la simplan sumon jenan kaj enigi la respondon en la skatolo ([[Special:Captcha/help|plua informo]]):',
 	'captcha-sendemail' => 'Por helpi protekti kontraŭ aŭtomata spamado, bonvolu solvi la simplan sumon kaj enigi la respondon en la skatolo ([[Special:Captcha/help|plua informo]]):',
-	'captcha-sendemail-fail' => 'Malkorekta aŭ mankanta konfirmkodo.',
-	'captcha-disabledinapi' => 'Ĉi tiu ago bezonas captcha, do ĝi ne estas farebla per la API.',
-	'captchahelp-title' => 'Helpo pri Captcha',
-	'captchahelp-cookies-needed' => 'Vi devas ebligi kuketojn en via retumilo por ĉi tiu funkcii.',
+	'captcha-sendemail-fail' => 'Malĝusta aŭ mankanta konfirma kodo.',
+	'captcha-disabledinapi' => 'Ĉi tiu ago bezonas captcha, tial ĝi ne estas farebla per API.',
+	'captchahelp-title' => 'Helpo pri captcha',
+	'captchahelp-cookies-needed' => 'Vi devas permesi kuketojn en via retumilo por funkciigi ĉi tion.',
 	'captchahelp-text' => "Retejoj kiuj akcepti informon de publiko, kiel ĉi tiu vikio, estas ofte misuzitaj de spamistoj kiu uzas aŭtomatajn ilojn por afiŝi ligilojn al multaj retejoj.
 Kvankam ĉi tiu spam-ligiloj estas forigeblaj, ili estas granda ĝeno.
 
@@ -1032,6 +1036,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Agony
+ * @author Centerlink
  * @author Crt
  * @author Nike
  * @author Varusmies
@@ -1044,6 +1049,9 @@ $messages['fi'] = array(
 	'captcha-createaccount' => 'Ratkaise alla oleva summa jatkaaksesi ([[Special:Captcha/help|lisätietoja]]):',
 	'captcha-createaccount-fail' => 'Väärä tai puuttuva varmistuskoodi.',
 	'captcha-create' => 'Ratkaise alla oleva summa jatkaaksesi ([[Special:Captcha/help|lisätietoja]]):',
+	'captcha-sendemail' => 'Jotta auttaisit suojautumaan automaattiselta roskapostitukselta, ratkaise alla oleva yksinkertainen yhteenlasku ja kirjoita vastaus laatikkoon ([[Special:Captcha/help|lisätietoja]]):',
+	'captcha-sendemail-fail' => 'Virheellinen tai puuttuva vahvistuskoodi',
+	'captcha-disabledinapi' => 'Tämä toiminto vaatii kuvavarmennusta, joten et voi suorittaa sitä APIn kautta.',
 	'captchahelp-title' => 'Captcha-ohje',
 	'captchahelp-cookies-needed' => 'Tämä toiminto vaatii evästeiden hyväksymistä.',
 	'captchahelp-text' => 'Verkkosivut, jotka sallivat ulkopuolisten lisätä sisältöä, joutuvat usein spam-hyökkäysten kohteeksi. Spam-hyökkäyksessä spammerit käyttävät työkaluja, jotka automaattisesti lisäävät linkkejä monille sivuille. Vaikka nämä linkit voidaan poistaa, aiheutuu niistä silti merkittävä haitta.

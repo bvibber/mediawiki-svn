@@ -66,6 +66,10 @@ $wgHooks['ModifyExportQuery'][] = 'LqtHooks::modifyExportQuery';
 $wgHooks['OAIFetchRowsQuery'][] = 'LqtHooks::modifyOAIQuery';
 $wgHooks['OAIFetchRecordQuery'][] = 'LqtHooks::modifyOAIQuery';
 
+// Import-related
+$wgHooks['ImportHandlePageXMLTag'][] = 'LqtHooks::handlePageXMLTag';
+$wgHooks['AfterImportPage'][] = 'LqtHooks::afterImportPage';
+
 // Deletion
 $wgHooks['ArticleDeleteComplete'][] = 'LqtDeletionController::onArticleDeleteComplete';
 $wgHooks['ArticleRevisionUndeleted'][] = 'LqtDeletionController::onArticleRevisionUndeleted';
@@ -197,9 +201,11 @@ $wgDefaultUserOptions['lqt-watch-threads'] = true;
 
 $wgGroupPermissions['user']['lqt-split'] = true;
 $wgGroupPermissions['user']['lqt-merge'] = true;
+$wgGroupPermissions['user']['lqt-react'] = true;
 
 $wgAvailableRights[] = 'lqt-split';
 $wgAvailableRights[] = 'lqt-merge';
+$wgAvailableRights[] = 'lqt-react';
 
 /* Allows activation of LiquidThreads on individual pages */
 $wgLqtPages = array();

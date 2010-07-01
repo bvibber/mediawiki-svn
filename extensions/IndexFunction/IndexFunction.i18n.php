@@ -42,6 +42,7 @@ Click the arrow to show all pages indexed under that title.',
 
 /** Message documentation (Message documentation)
  * @author Bennylin
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
  * @author Raymond
@@ -49,8 +50,7 @@ Click the arrow to show all pages indexed under that title.',
 $messages['qqq'] = array(
 	'indexfunc-desc' => '{{desc}}',
 	'indexfunc-badtitle' => '{{Identical|Invalid title}}',
-	'index' => 'This is either the name of the parser function, to be used inside the wiki code, or not used, if I got it right. --[[User:Purodha|Purodha Blissenbach]] 00:13, 15 July 2009 (UTC)
-{{Identical|Index}}',
+	'index' => 'This is either the name of the parser function, to be used inside the wiki code, or not used, if I got it right. --[[User:Purodha|Purodha Blissenbach]] 00:13, 15 July 2009 (UTC)',
 	'index-legend' => 'Used in [[Special:Index]].',
 	'index-search' => '{{Identical|Search}}',
 	'index-submit' => '{{Identical|Submit}}',

@@ -82,7 +82,7 @@ class FlaggedArticleView {
 		$config = $this->article->getVisibilitySettings();
 		# Does the stable version override the current one?
 		if ( $config['override'] ) {
-			if ( FlaggedRevs::ignoreDefaultVersion() ) {
+			if ( $this->showDraftByDefault() ) {
 				return ( $wgRequest->getIntOrNull( 'stable' ) === 1 );
 			}
 			# Viewer sees stable by default
@@ -90,6 +90,36 @@ class FlaggedArticleView {
 		# We are explicity requesting the stable version?
 		} elseif ( $wgRequest->getIntOrNull( 'stable' ) === 1 ) {
 			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Should this be using a simple icon-based UI?
+	 * Check the user's preferences first, using the site settings as the default.
+	 * @returns bool
+	 */
+	public function useSimpleUI() {
+		global $wgUser, $wgSimpleFlaggedRevsUI;
+		return $wgUser->getOption( 'flaggedrevssimpleui', intval( $wgSimpleFlaggedRevsUI ) );
+	}
+
+	/**
+	 * Should this user see the current revision by default?
+	 * Note: intended for users that probably edit
+	 * @returns bool
+	 */
+	public function showDraftByDefault() {
+		global $wgFlaggedRevsExceptions, $wgUser;
+		# Viewer sees current by default (editors, insiders, ect...) ?
+		foreach ( $wgFlaggedRevsExceptions as $group ) {
+			if ( $group == 'user' ) {
+				if ( $wgUser->getId() ) {
+					return true;
+				}
+			} elseif ( in_array( $group, $wgUser->getGroups() ) ) {
+				return true;
+			}
 		}
 		return false;
 	}
@@ -102,7 +132,7 @@ class FlaggedArticleView {
 		$this->load();
 		if ( $this->article->isReviewable() ) {
 			$config = $this->article->getVisibilitySettings(); // page configuration
-			return ( $config['override'] && !FlaggedRevs::ignoreDefaultVersion() );
+			return ( $config['override'] && !$this->showDraftByDefault() );
 		}
 		return false; // no stable
 	}
@@ -161,7 +191,7 @@ class FlaggedArticleView {
 			$msg = $quality ? 'revreview-quality-source' : 'revreview-basic-source';
 			$tag = wfMsgExt( $msg, array( 'parseinline' ), $frev->getRevId(), $time );
 			# Hide clutter
-			if ( !FlaggedRevs::useSimpleUI() && !empty( $flags ) ) {
+			if ( !$this->useSimpleUI() && !empty( $flags ) ) {
 				$tag .= FlaggedRevsXML::ratingToggle() .
 					"<div id='mw-fr-revisiondetails' style='display:block;'>" .
 					wfMsgHtml( 'revreview-oldrating' ) .
@@ -274,7 +304,7 @@ class FlaggedArticleView {
 		}
 		$encJS = ''; // JS events to use
 		# Some checks for which tag CSS to use
-		if ( FlaggedRevs::useSimpleUI() ) {
+		if ( $this->useSimpleUI() ) {
 			$tagClass = 'flaggedrevs_short';
 			# Collapse the box details on mouseOut
 			$encJS .= ' onMouseOut="FlaggedRevs.onBoxMouseOut(event)"';
@@ -322,7 +352,7 @@ class FlaggedArticleView {
 		}
 		$icon = FlaggedRevsXML::draftStatusIcon();
 		// Simple icon-based UI
-		if ( FlaggedRevs::useSimpleUI() ) {
+		if ( $this->useSimpleUI() ) {
 			// RTL langauges
 			$rtl = $wgContLang->isRTL() ? " rtl" : "";
 			$tag .= $prot . $icon . wfMsgExt( 'revreview-quick-none', array( 'parseinline' ) );
@@ -390,7 +420,7 @@ class FlaggedArticleView {
 		} else if ( !$wgOut->isPrintable() && !( $this->article->lowProfileUI() && $synced ) ) {
 			$revsSince = $this->article->getPendingRevCount();
 			// Simple icon-based UI
-			if ( FlaggedRevs::useSimpleUI() ) {
+			if ( $this->useSimpleUI() ) {
 				if ( !$wgUser->getId() ) {
 					$msgHTML = ''; // Anons just see simple icons
 				} else if ( $synced ) {
@@ -472,7 +502,7 @@ class FlaggedArticleView {
 		# notice has all this info already, so don't do this if we added that already.
 		if ( !$wgOut->isPrintable() ) {
 			// Simple icon-based UI
-			if ( FlaggedRevs::useSimpleUI() ) {
+			if ( $this->useSimpleUI() ) {
 				$icon = '';
 				# For protection based configs, show lock only if it's not redundant.
 				if ( $this->showRatingIcon() ) {
@@ -554,7 +584,7 @@ class FlaggedArticleView {
 		if ( !$wgOut->isPrintable() && !( $this->article->lowProfileUI() && $synced ) ) {
 			$revsSince = $this->article->getPendingRevCount();
 			// Simple icon-based UI
-			if ( FlaggedRevs::useSimpleUI() ) {
+			if ( $this->useSimpleUI() ) {
 				$icon = '';
 				# For protection based configs, show lock only if it's not redundant.
 				if ( $this->showRatingIcon() ) {
@@ -624,11 +654,11 @@ class FlaggedArticleView {
 		}
 		return '';
 	}
-	
+
 	// Show icons for draft/stable/old reviewed versions
 	protected function showRatingIcon() {
-		if ( FlaggedRevs::forDefaultVersionOnly() ) {
-			// If there is only on quality level and we have tabs to know
+		if ( FlaggedRevs::useOnlyIfProtected() ) {
+			// If there is only one quality level and we have tabs to know
 			// which version we are looking at, then just use the lock icon...
 			return FlaggedRevs::qualityVersions();
 		}
@@ -655,16 +685,21 @@ class FlaggedArticleView {
 		if ( $oldid && $oldid != $latest ) {
 			return false; // not viewing the draft
 		}
+		$revsSince = $this->article->getPendingRevCount();
+		if ( !$revsSince ) {
+			return false; // no pending changes
+		}
 		# Conditions are met to show diff...
+		# Left side of diff...
 		$leftNote = $quality
 			? 'revreview-hist-quality'
 			: 'revreview-hist-basic';
-		$rClass = FlaggedRevsXML::getQualityColor( false );
 		$lClass = FlaggedRevsXML::getQualityColor( (int)$quality );
-		$rightNote = "<span id='mw-fr-diff-rtier' class='$rClass'>[" .
-			wfMsgHtml( 'revreview-hist-draft' ) . "]</span>";
-		$leftNote = "<span id='mw-fr-diff-ltier' class='$lClass'>[" .
-			wfMsgHtml( $leftNote ) . "]</span>";
+		$leftNote = "<span class='$lClass'>[" . wfMsgHtml( $leftNote ) . "]</span>";
+		# Right side of diff...
+		$rClass = FlaggedRevsXML::getQualityColor( false );
+		$rightNote = "<span class='$rClass'>[" .
+			wfMsgHtml( 'revreview-hist-pending' ) . "]</span>";
 		# Fetch the stable and draft revision text
 		$oText = $srev->getRevText();
 		if ( $oText === false ) {
@@ -678,35 +713,51 @@ class FlaggedArticleView {
 		if ( strcmp( $oText, $nText ) !== 0 ) {
 			$diffEngine = new DifferenceEngine( $this->article->getTitle() );
 			$diffEngine->showDiffStyle();
-			$n = $this->article->getTitle()->countRevisionsBetween( $srev->getRevId(), $latest );
-			if ( $n ) {
-				$multiNotice = "<tr><td colspan='4' align='center' class='diff-multi'>" .
-					wfMsgExt( 'diff-multi', array( 'parse' ), $n ) . "</td></tr>";
-			} else {
-				$multiNotice = '';
+			$diffBody = $diffEngine->generateDiffBody( $oText, $nText );
+			$n = $revsSince - 1; // this is the full diff-to-stable
+			$items = array();
+			$diffHtml =
+				FlaggedRevsXML::pendingEditNotice( $this->article, $srev, $revsSince ) .
+				' ' . FlaggedRevsXML::diffToggle() .
+				"<div id='mw-fr-stablediff'>" .
+				self::getFormattedDiff( $diffBody, $n, $leftNote, $rightNote ) .
+				"</div>\n";
+			$items[] = $diffHtml;
+			$html = "<table class='flaggedrevs_viewnotice plainlinks'>";
+			foreach ( $items as $item ) {
+				$html .= '<tr><td>' . $item . '</td></tr>';
 			}
-			$wgOut->addHTML(
-				"<div>" .
-				"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
+			$html .= '</table>';
+			$wgOut->addHtml( $html );
+			$this->isDiffFromStable = true; // alter default review form tags
+			return true;
+		}
+		return false;
+	}
+
+	// $n number of in-between revs
+	protected static function getFormattedDiff( $diffBody, $n, $leftStatus, $rightStatus ) {
+		if ( $n ) {
+			$multiNotice = "<tr><td colspan='4' align='center' class='diff-multi'>" .
+				wfMsgExt( 'diff-multi', array( 'parse' ), $n ) . "</td></tr>";
+		} else {
+			$multiNotice = '';
+		}
+		return
+			"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
 				"<col class='diff-marker' />" .
 				"<col class='diff-content' />" .
 				"<col class='diff-marker' />" .
 				"<col class='diff-content' />" .
 				"<tr>" .
 					"<td colspan='2' width='50%' align='center' class='diff-otitle'><b>" .
-						$leftNote . "</b></td>" .
+						$leftStatus . "</b></td>" .
 					"<td colspan='2' width='50%' align='center' class='diff-ntitle'><b>" .
-						$rightNote . "</b></td>" .
+						$rightStatus . "</b></td>" .
 				"</tr>" .
 				$multiNotice .
-				$diffEngine->generateDiffBody( $oText, $nText ) .
-				"</table>" .
-				"</div>\n"
-			);
-			$this->isDiffFromStable = true;
-			return true;
-		}
-		return false;
+				$diffBody .
+			"</table>";
 	}
 
 	/**
@@ -732,6 +783,7 @@ class FlaggedArticleView {
 		if ( $frev ) {
 			$time = $frev->getFileTimestamp();
 			// B/C, may be stored in associated image version metadata table
+			// @TODO: remove, updateTracking.php does this
 			if ( !$time ) {
 				$dbr = wfGetDB( DB_SLAVE );
 				$time = $dbr->selectField( 'flaggedimages',
@@ -740,6 +792,8 @@ class FlaggedArticleView {
 						'fi_name' => $this->article->getTitle()->getDBkey() ),
 					__METHOD__
 				);
+				$time = trim( $time ); // remove garbage
+				$time = $time ? wfTimestamp( TS_MW, $time ) : false;
 			}
 			# NOTE: if not found, this will use the current
 			$wgArticle = new ImagePage( $this->article->getTitle(), $time );
@@ -826,25 +880,27 @@ class FlaggedArticleView {
 				$revsSince = $this->article->getPendingRevCount();
 				$items[] = FlaggedRevsXML::pendingEditNotice( $this->article, $frev, $revsSince );
 			}
-			# Show diff to stable, to make things less confusing...
-			# This can be disabled via user preferences
+			# Show diff to stable, to make things less confusing.
+			# This can be disabled via user preferences and other conditions...
 			if ( $frev->getRevId() < $latestId // changes were made
 				&& $this->isDiffShownOnEdit() // stable default and user cannot review
 				&& $wgUser->getBoolOption( 'flaggedrevseditdiffs' ) // not disable via prefs
 				&& $revId == $latestId // only for current rev
-				&& $editPage->section != "new" // not for new sections
-				&& !in_array( $editPage->formtype, array( 'diff', 'preview' ) ) // not preview/"show changes"
+				&& $editPage->section != 'new' // not for new sections
+				&& $editPage->formtype != 'diff' // not "show changes"
 			) {
-				# Conditions are met to show diff...
+				# Left diff side...
 				$leftNote = $quality
 					? 'revreview-hist-quality'
 					: 'revreview-hist-basic';
-				$rClass = FlaggedRevsXML::getQualityColor( false );
 				$lClass = FlaggedRevsXML::getQualityColor( (int)$quality );
-				$rightNote = "<span id='mw-fr-diff-rtier' class='$rClass'>[" .
-					wfMsgHtml( 'revreview-hist-draft' ) . "]</span>";
-				$leftNote = "<span id='mw-fr-diff-ltier' class='$lClass'>[" .
+				$leftNote = "<span class='$lClass'>[" .
 					wfMsgHtml( $leftNote ) . "]</span>";
+				# Right diff side...
+				$rClass = FlaggedRevsXML::getQualityColor( false );
+				$rightNote = "<span class='$rClass'>[" .
+					wfMsgHtml( 'revreview-hist-pending' ) . "]</span>";
+				# Get the stable version source
 				$text = $frev->getRevText();
 				# Are we editing a section?
 				$section = ( $editPage->section == "" ) ?
@@ -855,23 +911,12 @@ class FlaggedArticleView {
 				if ( $text !== false && strcmp( $text, $editPage->textbox1 ) !== 0 ) {
 					$diffEngine = new DifferenceEngine( $this->article->getTitle() );
 					$diffEngine->showDiffStyle();
+					$diffBody = $diffEngine->generateDiffBody( $text, $editPage->textbox1 );
 					$diffHtml =
 						wfMsgExt( 'review-edit-diff', 'parseinline' ) . ' ' .
 						FlaggedRevsXML::diffToggle() .
 						"<div id='mw-fr-stablediff'>" .
-						"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
-						"<col class='diff-marker' />" .
-						"<col class='diff-content' />" .
-						"<col class='diff-marker' />" .
-						"<col class='diff-content' />" .
-						"<tr>" .
-							"<td colspan='2' width='50%' align='center' class='diff-otitle'><b>" .
-								$leftNote . "</b></td>" .
-							"<td colspan='2' width='50%' align='center' class='diff-ntitle'><b>" .
-								$rightNote . "</b></td>" .
-						"</tr>" .
-						$diffEngine->generateDiffBody( $text, $editPage->textbox1 ) .
-						"</table>" .
+						self::getFormattedDiff( $diffBody, false, $leftNote, $rightNote ) .
 						"</div>\n";
 					$items[] = $diffHtml;
 				}
@@ -932,7 +977,7 @@ class FlaggedArticleView {
 		if ( !$wgUser->isAllowed( 'review' ) ) {
 			return true;
 		}
-		if ( !FlaggedRevs::stableOnlyIfConfigured() ) {
+		if ( !FlaggedRevs::useOnlyIfProtected() ) {
 			$links = array();
 			$category = $this->article->getTitle()->getText();
 			# Add link to list of unreviewed pages in this category
@@ -997,7 +1042,7 @@ class FlaggedArticleView {
 				$templateIDs = $wgOut->mTemplateIds;
 				$fileSHA1Keys = $wgOut->fr_ImageSHA1Keys;
 			}
-			$form = RevisionReviewForm::buildQuickReview( $this->article,
+			$form = RevisionReviewForm::buildQuickReview( $wgUser, $this->article,
 				$rev, $templateIDs, $fileSHA1Keys, $this->isDiffFromStable );
 			# Diff action: place the form at the top of the page
 			if ( $wgRequest->getVal( 'diff' ) ) {
@@ -1081,31 +1126,30 @@ class FlaggedArticleView {
 		}
 		return true;
 	}
-	
+
 	/**
-	 * Modify an array of view links, as used by SkinTemplateNavigation and
-	 * SkinTemplateTabs, to inlude flagged revs UI elements
+	 * Modify an array of tab links to include flagged revs UI elements
+	 * @param string $type ('flat' for SkinTemplateTabs, 'nav' for SkinTemplateNavigation)
 	 */
-	public function setViewTabs( $skin, array &$views ) {
+	public function setViewTabs( Skin $skin, array &$views, $type ) {
 		global $wgRequest;
 		$this->load();
 		if ( $skin->mTitle->isTalkPage() ) {
 			return true; // leave talk pages alone
 		}
-		$fa = FlaggedArticle::getTitleInstance( $skin->mTitle );
 		// Get the type of action requested
 		$action = $wgRequest->getVal( 'action', 'view' );
-		if ( !$fa->isReviewable() ) {
+		if ( !$this->article->isReviewable() ) {
 			return true; // Not a reviewable page or the UI is hidden
 		}
 		// XXX: shouldn't the session slave position check handle this?
 		$flags = ( $action == 'rollback' ) ? FR_MASTER : 0;
-		$srev = $fa->getStableRev( $flags );
+		$srev = $this->article->getStableRev( $flags );
 	   	if ( !$srev ) {
 			return true; // No stable revision exists
 		}
 		$synced = $this->article->stableVersionIsSynced();
-		$pendingEdits = !$synced && $fa->isStableShownByDefault();
+		$pendingEdits = !$synced && $this->article->isStableShownByDefault();
 		// Set the edit tab names as needed...
 	   	if ( $pendingEdits ) {
 	   		if ( isset( $views['edit'] ) ) {
@@ -1117,26 +1161,27 @@ class FlaggedArticleView {
 	   	}
 		# Add "pending changes" tab if the page is not synced
 		if ( !$synced ) {
-			$this->addDraftTab( $fa, $views, $srev, $action );
+			$this->addDraftTab( $views, $srev, $action, $type );
 		}
 		return true;
 	}
 
 	// Add "pending changes" tab and set tab selection CSS
 	protected function addDraftTab(
-		FlaggedArticle $fa, array &$views, FlaggedRevision $srev, $action
+		array &$views, FlaggedRevision $srev, $action, $type
 	) {
 		global $wgRequest, $wgOut;
+		$title = $this->article->getTitle(); // convenience
 	 	$tabs = array(
 	 		'read' => array( // view stable
 				'text'  => '', // unused
-				'href'  => $fa->getTitle()->getLocalUrl( 'stable=1' ),
+				'href'  => $title->getLocalUrl( 'stable=1' ),
 	 			'class' => ''
 	 		),
 	 		'draft' => array( // view draft
 				'text'  => wfMsg( 'revreview-current' ),
-				'href'  => $fa->getTitle()->getLocalUrl( 'stable=0&redirect=no' ),
-	 			'class' => ''
+				'href'  => $title->getLocalUrl( 'stable=0&redirect=no' ),
+	 			'class' => 'collapsible'
 	 		),
 	 	);
 		// Set tab selection CSS
@@ -1147,45 +1192,54 @@ class FlaggedArticleView {
 			// Are we looking at a draft/current revision?
 			// Note: there may *just* be template/file changes.
 			if ( $wgOut->getRevisionId() >= $srev->getRevId() ) {
-				$tabs['draft']['class'] = 'selected';
+				$tabs['draft']['class'] .= ' selected';
 			// Otherwise, fallback to regular tab behavior
 			} else {
 				$tabs['read']['class'] = 'selected';
 			}
 		}
-		$first = true;
 		$newViews = array();
 		// Rebuild tabs array. Deals with Monobook vs Vector differences.
-		foreach ( $views as $tabAction => $data ) {
-			// The first tab ('page' or 'view')...
-			if ( $first ) {
-				$first = false;
-				// 'view' tab? In this case, the "page"/"discussion" tabs are not
-				// part of $views. Also, both the page/talk page have a 'view' tab.
+		if ( $type == 'nav' ) { // Vector et al
+			foreach ( $views as $tabAction => $data ) {
+				// The 'view' tab. Make it go to the stable version...
 				if ( $tabAction == 'view' ) {
 					// 'view' for content page; make it go to the stable version
 					$newViews[$tabAction]['text'] = $data['text']; // keep tab name
 					$newViews[$tabAction]['href'] = $tabs['read']['href'];
 					$newViews[$tabAction]['class'] = $tabs['read']['class'];
-				// 'page' tab? Make it go to the stable version...
+				// All other tabs...
 				} else {
+					// Add 'draft' tab to content page to the left of 'edit'...
+					if ( $tabAction == 'edit' || $tabAction == 'viewsource' ) {
+						$newViews['current'] = $tabs['draft'];
+					}
+					$newViews[$tabAction] = $data;
+				}
+			}
+		} elseif ( $type == 'flat' ) { // MonoBook et al
+			$first = true;
+			foreach ( $views as $tabAction => $data ) {
+				// The first tab ('page'). Make it go to the stable version...
+				if ( $first ) {
+					$first = false;
 					$newViews[$tabAction]['text'] = $data['text']; // keep tab name
 					$newViews[$tabAction]['href'] = $tabs['read']['href'];
 					$newViews[$tabAction]['class'] = $data['class']; // keep tab class
+				// All other tabs...
+				} else {
+					// Add 'draft' tab to content page to the left of 'edit'...
+					if ( $tabAction == 'edit' || $tabAction == 'viewsource' ) {
+						$newViews['current'] = $tabs['draft'];
+					}
+					$newViews[$tabAction] = $data;
 				}
-			// All other tabs...
-			} else {
-				// Add 'draft' tab to content page to the left of 'edit'...
-				if ( $tabAction == 'edit' || $tabAction == 'viewsource' ) {
-					$newViews['current'] = $tabs['draft'];
-				}
-				$newViews[$tabAction] = $data;
 			}
-	   	}
+		}
 	   	// Replaces old tabs with new tabs
 	   	$views = $newViews;
 	}
-	
+
 	/**
 	 * @param FlaggedRevision $frev
 	 * @return string, revision review notes
@@ -1206,7 +1260,7 @@ class FlaggedArticleView {
 	* When viewing a diff:
 	* (a) Add the review form to the top of the page
 	* (b) Mark off which versions are checked or not
-	* (c) When comparing the stable revision to the current after editing a page:
+	* (c) When comparing the stable revision to the current:
 	* 	(i)  Show a tag with some explanation for the diff
 	*	(ii) List any template/file changes pending review
 	*/
@@ -1216,108 +1270,150 @@ class FlaggedArticleView {
 		# Exempt printer-friendly output
 		if ( $wgOut->isPrintable() ) {
 			return true;
-		}
-		# Avoid multi-page diffs that are useless and misbehave (bug 19327).
-		# Also sanity check $newRev just in case.
-		if ( $this->isMultiPageDiff || !$newRev ) {
+		# Multi-page diffs are useless and misbehave (bug 19327). Sanity check $newRev.
+		} elseif ( $this->isMultiPageDiff || !$newRev ) {
+			return true;
+		# Page must be reviewable.
+		} elseif ( !$this->article->isReviewable() ) {
 			return true;
 		}
-		# Page must be reviewable. Sanity check $oldRev.
-		if ( !$this->article->isReviewable() ) {
-			return true;
-		}
-		$form = '';
-		$frev = $this->article->getStableRev();
-		# Check if this might be a diff to stable (old rev is the stable rev).
-		# For reviewers, add a notice and list inclusion changes for this case.
-		if ( $this->isDiffFromStable && $wgUser->isAllowed( 'review' ) ) {
+		$srev = $this->article->getStableRev();
+		# Check if this is a diff-to-stable. If so:
+		# (a) prompt reviewers to review the changes
+		# (b) list template/file changes if only includes are pending
+		if ( $srev
+			&& $this->isDiffFromStable
+			&& !$this->article->stableVersionIsSynced() ) // pending changes
+		{
+			$form = '';
 			$this->reviewFormRev = $newRev;
-			# Check the page sync value cache...
-			$key = wfMemcKey( 'flaggedrevs', 'includesSynced', $this->article->getId() );
-			$value = FlaggedRevs::getMemcValue( $wgMemc->get( $key ), $this->article );
-
 			$changeList = array();
-			# Trigger queries if sync cache value is not 'true'
-			if ( $value !== "true" ) {
+			# Page not synced only due to includes?
+			if ( !$this->article->revsArePending() ) {
 				# Add a list of links to each changed template...
-				$changeList = array_merge( $changeList, $this->fetchTemplateChanges( $frev ) );
+				$changeList = self::fetchTemplateChanges( $srev );
 				# Add a list of links to each changed file...
-				$changeList = array_merge( $changeList, $this->fetchFileChanges( $frev ) );
-			}
-
-			# Some important information about include version selection...
-			$notice = '';
-			if ( count( $changeList ) ) {
-				$notice = wfMsgExt( 'revreview-update-use', 'parse' );
-			} elseif ( $value === "false" ) {
-				global $wgParserCacheExpireTime;
-				# Correct bad cache which said they were not synced
-				$data = FlaggedRevs::makeMemcObj( "true" );
-				$wgMemc->set( $key, $data, $wgParserCacheExpireTime );
-			}
-			# If there are pending revs or templates/files changes,
-			# notify the user and prompt them to review them...
-			if ( $this->article->revsArePending() || count( $changeList ) ) {
-				// Reviewer just edited...
-				if ( $wgRequest->getInt( 'shownotice' )
-					&& $newRev->isCurrent()
-					&& $newRev->getRawUserText() == $wgUser->getName() )
-				{
-					$title = $this->article->getTitle(); // convenience
-					// @TODO: make diff class cache this
-					$n = $title->countRevisionsBetween( $oldRev->getId(), $newRev->getId() );
-					if ( $n ) {
-						$msg = 'revreview-update-edited-prev'; // previous pending edits
-					} else {
-						$msg = 'revreview-update-edited'; // just couldn't autoreview
-					}
-				// All other cases...
-				} else {
-					$msg = 'revreview-update'; // generic "Please review" notice...
+				$changeList = array_merge( $changeList, self::fetchFileChanges( $srev ) );
+				# Correct bad cache which said they were not synced...
+				if ( !count( $changeList ) ) {
+					global $wgParserCacheExpireTime;
+					$key = wfMemcKey( 'flaggedrevs', 'includesSynced', $this->article->getId() );
+					$data = FlaggedRevs::makeMemcObj( "true" );
+					$wgMemc->set( $key, $data, $wgParserCacheExpireTime );
 				}
-				$changeDiv = wfMsgExt( $msg, 'parse' );
+			}
+			# If there are pending revs or templates/files changes, notify the user...
+			if ( $this->article->revsArePending() || count( $changeList ) ) {
+				$changeDiv = '';
+				# If the user can review then prompt them to review them...
+				if ( $wgUser->isAllowed( 'review' ) ) {
+					# Set a key to note that someone is viewing this
+					$this->markDiffUnderReview( $oldRev, $newRev );
+					// Reviewer just edited...
+					if ( $wgRequest->getInt( 'shownotice' )
+						&& $newRev->isCurrent()
+						&& $newRev->getRawUserText() == $wgUser->getName() )
+					{
+						$title = $this->article->getTitle(); // convenience
+						// @TODO: make diff class cache this
+						$n = $title->countRevisionsBetween( $oldRev->getId(), $newRev->getId() );
+						if ( $n ) {
+							$msg = 'revreview-update-edited-prev'; // previous pending edits
+						} else {
+							$msg = 'revreview-update-edited'; // just couldn't autoreview
+						}
+					// All other cases...
+					} else {
+						$msg = 'revreview-update'; // generic "please review" notice...
+					}
+					$changeDiv .= wfMsgExt( $msg, 'parse' );
+				}
+				# Add include change list...
 				if ( count( $changeList ) ) {
-					# Add include change list...
 					$changeDiv .= '<p>' .
 						wfMsgExt( 'revreview-update-includes', 'parseinline' ) .
 						'&#160;' . implode( ', ', $changeList ) . '</p>';
 					# Add include usage notice...
-					$changeDiv .= $notice;
+					if ( FlaggedRevs::inclusionSetting() == FR_INCLUDES_STABLE ) {
+						$changeDiv .= wfMsgExt( 'revreview-update-use', 'parse' );
+					}
 				}
-				$css = 'flaggedrevs_diffnotice plainlinks';
-				$form .= "<div id='mw-fr-difftostable' class='$css'>$changeDiv</div>\n";
-	
-				# Set a key to note that someone is viewing this
-				$this->markDiffUnderReview( $oldRev, $newRev );
+				if ( $changeDiv != '' ) {
+					$css = 'flaggedrevs_diffnotice plainlinks';
+					$form .= "<div id='mw-fr-difftostable' class='$css'>$changeDiv</div>\n";
+				}
+			}
+			if ( $wgUser->isAllowed( 'review' ) ) {
+				$this->diffNoticeBox = $form; // add as part of form
+			} else {
+				$wgOut->addHTML( $form );
 			}
 		}
-		# Add a link to diff from stable to current as needed
-		if ( $frev ) {
-			$wgOut->addHTML( $this->diffToStableLink( $frev, $newRev ) );
-		}
+		# Add a link to diff from stable to current as needed.
 		# Show review status of the diff revision(s). Uses a <table>.
-		$wgOut->addHTML( $this->diffReviewMarkers( $oldRev, $newRev ) );
-
-		$this->diffNoticeBox = $form;
+		$wgOut->addHTML(
+			'<div id="mw-fr-diff-headeritems">' .
+			self::diffLinkAndMarkers( $this->article, $oldRev, $newRev ) .
+			'</div>'
+		);
 		return true;
+	}
+
+	// get new diff header items for in-place AJAX page review
+	public static function AjaxBuildDiffHeaderItems() {
+		$args = func_get_args(); // <oldid, newid>
+		if ( count( $args ) >= 2 ) {
+			$oldid = (int)$args[0];
+			$newid = (int)$args[1];
+			$oldRev = Revision::newFromId( $oldid );
+			$newRev = Revision::newFromId( $newid );
+			if ( $newRev && $newRev->getTitle() ) {
+				$fa = FlaggedArticle::getTitleInstance( $newRev->getTitle() );
+				return self::diffLinkAndMarkers( $fa, $oldRev, $newRev );
+			}
+		}
+		return '';
+	}
+
+	/**
+	* (a) Add a link to diff from stable to current as needed
+	* (b) Show review status of the diff revision(s). Uses a <table>.
+	* Note: used by ajax function to rebuild diff page
+	*/
+	public static function diffLinkAndMarkers( FlaggedArticle $article, $oldRev, $newRev ) {
+		$s = '<form id="mw-fr-diff-dataform">';
+		$s .= Html::hidden( 'oldid', $oldRev ? $oldRev->getId() : 0 );
+		$s .= Html::hidden( 'newid', $newRev ? $newRev->getId() : 0 );
+		$s .= "</form>\n";
+		if ( $newRev ) { // sanity check
+			$s .= self::diffToStableLink( $article, $oldRev, $newRev );
+			$s .= self::diffReviewMarkers( $article, $oldRev, $newRev );
+		}
+		return $s;
 	}
 
 	/**
 	* Add a link to diff-to-stable for reviewable pages
 	*/
-	protected function diffToStableLink( FlaggedRevision $frev, Revision $newRev ) {
+	protected static function diffToStableLink(
+		FlaggedArticle $article, $oldRev, Revision $newRev
+	) {
 		global $wgUser;
-		$this->load();
+		$srev = $article->getStableRev();
+		if ( !$srev ) {
+			return ''; // nothing to do
+		}
 		$review = '';
+		# Is this already the full diff-to-stable?
+		$fullStableDiff = $newRev->isCurrent()
+			&& self::isDiffToStable( $srev, $oldRev, $newRev );
 		# Make a link to the full diff-to-stable if:
-		# (a) Actual revs are pending and (b) We are not viewing the stable diff
-		if ( $this->article->revsArePending() &&
-			!( $this->isDiffFromStable && $newRev->isCurrent() ) )
-		{
+		# (a) Actual revs are pending and (b) We are not viewing the full diff-to-stable
+		if ( $article->revsArePending() && !$fullStableDiff ) {
 			$review = $wgUser->getSkin()->makeKnownLinkObj(
-				$this->article->getTitle(),
+				$article->getTitle(),
 				wfMsgHtml( 'review-diff2stable' ),
-				'oldid=' . $frev->getRevId() . '&diff=cur&diffonly=0'
+				'oldid=' . $srev->getRevId() . '&diff=cur&diffonly=0'
 			);
 			$review = wfMsgHtml( 'parentheses', $review );
 			$review = "<div class='fr-diff-to-stable' align='center'>$review</div>";
@@ -1328,7 +1424,7 @@ class FlaggedArticleView {
 	/**
 	* Add [checked version] and such to left and right side of diff
 	*/
-	protected function diffReviewMarkers( $oldRev, $newRev ) {
+	protected static function diffReviewMarkers( FlaggedArticle $article, $oldRev, $newRev ) {
 		$form = '';
 		$oldRevQ = $newRevQ = false;
 		if ( $oldRev ) {
@@ -1337,57 +1433,52 @@ class FlaggedArticleView {
 		if ( $newRev ) {
 			$newRevQ = FlaggedRevs::getRevQuality( $newRev->getPage(), $newRev->getId() );
 		}
+		$srev = $article->getStableRev();
+		$stableId = $srev ? $srev->getRevId() : 0;
 		# Diff between two revisions
 		if ( $oldRev && $newRev ) {
+			list( $msg, $class ) = self::getDiffRevMsgAndClass( $oldRev, $stableId );
 			$form .= "<table class='fr-diff-ratings'><tr>";
-
-			$class = FlaggedRevsXML::getQualityColor( $oldRevQ );
-			if ( $oldRevQ !== false ) {
-				$msg = $oldRevQ
-					? 'revreview-hist-quality'
-					: 'revreview-hist-basic';
-			} else {
-				$msg = 'revreview-hist-draft';
-			}
 			$form .= "<td width='50%' align='center'>";
-			$form .= "<span id='mw-fr-diff-ltier' class='$class'>[" .
+			$form .= "<span class='$class'>[" .
 				wfMsgHtml( $msg ) . "]</span>";
 
-			$class = FlaggedRevsXML::getQualityColor( $newRevQ );
-			if ( $newRevQ !== false ) {
-				$msg = $newRevQ
-					? 'revreview-hist-quality'
-					: 'revreview-hist-basic';
-			} else {
-				$msg = 'revreview-hist-draft';
-			}
+			list( $msg, $class ) = self::getDiffRevMsgAndClass( $newRev, $stableId );
 			$form .= "</td><td width='50%' align='center'>";
-			$form .= "<span id='mw-fr-diff-rtier' class='$class'>[" .
+			$form .= "<span class='$class'>[" .
 				wfMsgHtml( $msg ) . "]</span>";
 
-			$form .= '</td></tr></table>';
+			$form .= "</td></tr></table>\n";
 		# New page "diffs" - just one rev
 		} elseif ( $newRev ) {
-			if ( $newRevQ !== false ) {
-				$msg = $newRevQ
-					? 'revreview-hist-quality'
-					: 'revreview-hist-basic';
-			} else {
-				$msg = 'revreview-hist-draft';
-			}
-			$class = FlaggedRevsXML::getQualityColor( $newRevQ );
-			$form .=
-				"<table class='fr-diff-ratings'>" .
-				"<tr><td align='center'><span id='mw-fr-diff-rtier' class='$class'>" .
-				'[' . wfMsgHtml( $msg ) . ']' .
-				'</span></td></tr></table>';
+			list( $msg, $class ) = self::getDiffRevMsgAndClass( $newRev, $stableId );
+			$form .= "<table class='fr-diff-ratings'>";
+			$form .= "<tr><td align='center'><span class='$class'>";
+			$form .= '[' . wfMsgHtml( $msg ) . ']';
+			$form .= "</span></td></tr></table>\n";
 		}
 		return $form;
 	}
 
+	protected static function getDiffRevMsgAndClass( Revision $rev, $stableId ) {
+		$msg = '';
+		$tier = FlaggedRevs::getRevQuality( $rev->getPage(), $rev->getId() );
+		if ( $tier !== false ) {
+			$msg = $tier
+				? 'revreview-hist-quality'
+				: 'revreview-hist-basic';
+		} else {
+			$msg = ( $stableId && $rev->getId() > $stableId )
+				? 'revreview-hist-pending'
+				: 'revreview-hist-draft';
+		}
+		$css = FlaggedRevsXML::getQualityColor( $tier );
+		return array( $msg, $css );
+	}
+
 	// Fetch template changes for a reviewed revision since review
 	// @returns array
-	protected function fetchTemplateChanges( FlaggedRevision $frev ) {
+	protected static function fetchTemplateChanges( FlaggedRevision $frev ) {
 		global $wgUser;
 		$skin = $wgUser->getSkin();
 		$diffLinks = array();
@@ -1403,7 +1494,7 @@ class FlaggedArticleView {
 
 	// Fetch file changes for a reviewed revision since review
 	// @returns array
-	protected function fetchFileChanges( FlaggedRevision $frev ) {
+	protected static function fetchFileChanges( FlaggedRevision $frev ) {
 		global $wgUser;
 		$skin = $wgUser->getSkin();
 		$diffLinks = array();
@@ -1435,17 +1526,23 @@ class FlaggedArticleView {
 				$this->isMultiPageDiff = true;
 			// Is there a stable version?
 			} elseif ( $this->article->isReviewable() ) {
-				$srevId = $this->article->getStable();
+				$srev = $this->article->getStableRev();
 				// Is this a diff of a draft rev against the stable rev?
-				if ( $srevId
-					&& $oldRev->getId() == $srevId
-					&& $newRev->getTimestamp() >= $oldRev->getTimestamp() )
-				{
+				if ( self::isDiffToStable( $srev, $oldRev, $newRev ) ) {
 					$this->isDiffFromStable = true;
 				}
 			}
 		}
 		return true;
+	}
+
+	// Is a diff from $oldRev to $newRev a diff-to-stable?
+	protected static function isDiffToStable( $srev, $oldRev, $newRev ) {
+		return ( $srev && $oldRev && $newRev
+			&& $oldRev->getPage() == $newRev->getPage() // no multipage diffs
+			&& $oldRev->getId() == $srev->getRevId()
+			&& $newRev->getTimestamp() >= $oldRev->getTimestamp()
+ 		);
 	}
 
 	/**
@@ -1471,7 +1568,7 @@ class FlaggedArticleView {
 		}
 		// If the edit was not autoreviewed, and the user can actually make a
 		// new stable version, then go to the diff...
-		if ( $frev->userCanSetFlags() ) {
+		if ( $frev->userCanSetFlags( $wgUser ) ) {
 			$extraQuery .= $extraQuery ? '&' : '';
 			// Override diffonly setting to make sure the content is shown
 			$extraQuery .= 'oldid=' . $frev->getRevId() . '&diff=cur&diffonly=0&shownotice=1';
@@ -1504,17 +1601,8 @@ class FlaggedArticleView {
 	* @TODO: would be nice if hook passed in button attribs, not XML
 	*/
 	public function changeSaveButton( EditPage $editPage, array &$buttons ) {
-		$title = $this->article->getTitle(); // convenience
-		if ( !$this->article->editsRequireReview() ) {
-			return true; // edit will go live immediatly
-		} elseif ( $title->userCan( 'autoreview' ) ) {
-			if ( FlaggedRevs::autoReviewNewPages() && !$this->article->exists() ) {
-				return true; // edit will be autoreviewed anyway
-			}
-			$frev = FlaggedRevision::newFromTitle( $title, self::getBaseRevId( $editPage ) );
-			if ( $frev ) {
-				return true; // edit will be autoreviewed anyway
-			}
+		if ( !$this->editWillRequireReview( $editPage ) ) {
+			return true; // edit will go live or be reviewed on save
 		}
 		if ( extension_loaded( 'domxml' ) ) {
 			wfDebug( "Warning: you have the obsolete domxml extension for PHP. Please remove it!\n" );
@@ -1534,20 +1622,76 @@ class FlaggedArticleView {
 	}
 
 	/**
-	* Add a "review pending changes" checkbox to the edit form if:
+	* If this edit will not go live on submit (accounting for wpReviewEdit)
+	* @param EditPage $editPage
+	* @return bool
+	*/
+	protected function editWillRequireReview( EditPage $editPage ) {
+		global $wgRequest;
+		$title = $this->article->getTitle(); // convenience
+		if ( !$this->editRequiresReview( $editPage ) ) {
+			return false; // edit will go live immediatly
+		} elseif ( $wgRequest->getCheck( 'wpReviewEdit' ) && $title->userCan( 'review' ) ) {
+			return false; // edit checked off to be reviewed on save
+		}
+		return true; // edit needs review
+	}
+
+	/**
+	* If this edit will not go live on submit unless wpReviewEdit is checked
+	* @param EditPage $editPage
+	* @return bool
+	*/
+	protected function editRequiresReview( EditPage $editPage ) {
+		$title = $this->article->getTitle(); // convenience
+		if ( !$this->article->editsRequireReview() ) {
+			return false; // edits go live immediatly
+		} elseif ( $this->editWillBeAutoreviewed( $editPage ) ) {
+			return false; // edit will be autoreviewed anyway
+		}
+		return true; // edit needs review
+	}
+
+	/**
+	* If this edit will be auto-reviewed on submit
+	* Note: checking wpReviewEdit does not count as auto-reviewed
+	* @param EditPage $editPage
+	* @return bool
+	*/
+	protected function editWillBeAutoreviewed( EditPage $editPage ) {
+		$title = $this->article->getTitle(); // convenience
+		if ( !$this->article->isReviewable() ) {
+			return false;
+		}
+		if ( $title->userCan( 'autoreview' ) ) {
+			if ( FlaggedRevs::autoReviewNewPages() && !$this->article->exists() ) {
+				return true; // edit will be autoreviewed
+			}
+			if ( !isset( $editPage->fr_baseFRev ) ) {
+				$baseRevId = self::getBaseRevId( $editPage );
+				$editPage->fr_baseFRev = FlaggedRevision::newFromTitle( $title, $baseRevId );
+			}
+			if ( $editPage->fr_baseFRev ) {
+				return true; // edit will be autoreviewed
+			}
+		}
+		return false; // edit won't be autoreviewed
+	}
+
+	/**
+	* Add a "review pending changes" checkbox to the edit form iff:
 	* (a) there are currently any revisions pending (bug 16713)
 	* (b) this is an unreviewed page (bug 23970)
 	*/
 	public function addReviewCheck( EditPage $editPage, array &$checkboxes, &$tabindex ) {
-		global $wgUser, $wgRequest;
-		if ( !$this->article->isReviewable()
-			|| !$this->article->getTitle()->userCan( 'review' )
-			|| ( $this->article->getStable() && !$this->article->revsArePending() )
-		) {
+		global $wgRequest;
+		$title = $this->article->getTitle(); // convenience
+		if ( !$this->article->isReviewable() || !$title->userCan( 'review' ) ) {
 			return true; // not needed
+		} elseif ( $this->editWillBeAutoreviewed( $editPage ) ) {
+			return true; // edit will be auto-reviewed
 		}
-		$oldid = $wgRequest->getInt( 'baseRevId', $this->article->getLatest() );
-		if ( $oldid == $this->article->getLatest() ) {
+		if ( self::getBaseRevId( $editPage ) == $this->article->getLatest() ) {
 			# For pages with either no stable version, or an outdated one, let
 			# the user decide if he/she wants it reviewed on the spot. One might
 			# do this if he/she just saw the diff-to-stable and *then* decided to edit.
@@ -1558,10 +1702,17 @@ class FlaggedArticleView {
 				array( 'tabindex' => ++$tabindex, 'id' => 'wpReviewEdit' )
 			);
 			$attribs = array( 'for' => 'wpReviewEdit' );
-			// For pending changes...
+			// For reviewed pages...
 			if ( $this->article->getStable() ) {
-				$attribs['title'] = wfMsg( 'revreview-check-flag-p-title' );
-				$labelMsg = wfMsgExt( 'revreview-check-flag-p', 'parseinline' );
+				// For pending changes...
+				if ( $this->article->revsArePending() ) {
+					$attribs['title'] = wfMsg( 'revreview-check-flag-p-title' );
+					$labelMsg = wfMsgExt( 'revreview-check-flag-p', 'parseinline' );
+				// For just the user's changes...
+				} else {
+					$attribs['title'] = wfMsg( 'revreview-check-flag-y-title' );
+					$labelMsg = wfMsgExt( 'revreview-check-flag-y', 'parseinline' );
+				}
 			// For unreviewed pages...
 			} else {
 				$attribs['title'] = wfMsg( 'revreview-check-flag-u-title' );
@@ -1572,7 +1723,7 @@ class FlaggedArticleView {
 		}
 		return true;
 	}
-	
+
 	/**
 	* (a) Add a hidden field that has the rev ID the text is based off.
 	* (b) If an edit was undone, add a hidden field that has the rev ID of that edit.
@@ -1591,7 +1742,7 @@ class FlaggedArticleView {
 
 	/**
 	* Guess the rev ID the text of this form is based off
-	* Note: baseRevId trusted for Reviewers - text checked for others.
+	* Note: baseRevId trusted for Reviewers - check text for others.
 	* @return int
 	*/
 	protected static function getBaseRevId( EditPage $editPage ) {
@@ -1645,23 +1796,24 @@ class FlaggedArticleView {
 	public function maybeUpdateMainCache( &$outputDone, &$pcache ) {
 		global $wgUser, $wgRequest;
 		$this->load();
-
 		$action = $wgRequest->getVal( 'action', 'view' );
-		if ( $action == 'purge' )
+		if ( $action == 'purge' ) {
 			return true; // already purging!
+		}
 		# Only trigger on article view for content pages, not for protect/delete/hist
-		if ( !self::isViewAction( $action ) || !$wgUser->isAllowed( 'review' ) )
+		if ( !self::isViewAction( $action ) || !$wgUser->isAllowed( 'review' ) ) {
 			return true;
-		if ( !$this->article->exists() || !$this->article->isReviewable() )
+		}
+		if ( !$this->article->exists() || !$this->article->isReviewable() ) {
 			return true;
-
+		}
 		$parserCache = ParserCache::singleton();
 		$parserOut = $parserCache->get( $this->article, $wgUser );
 		if ( $parserOut ) {
 			# Clear older, incomplete, cached versions
 			# We need the IDs of templates and timestamps of images used
-			if ( !isset( $parserOut->fr_newestTemplateID )
-				|| !isset( $parserOut->fr_newestImageTime ) )
+			if ( !isset( $parserOut->fr_ImageSHA1Keys )
+				|| !isset( $parserOut->mTemplateIds ) )
 			{
 				$this->article->getTitle()->invalidateCache();
 			}

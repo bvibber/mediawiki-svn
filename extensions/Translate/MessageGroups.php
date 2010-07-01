@@ -672,6 +672,7 @@ class WikiMessageGroup extends MessageGroupOld {
 		$definitions = array();
 		/* In theory could have templates that are substitued */
 		$contents = wfMsg( $this->source );
+		$contents = preg_replace( '~^\s*#.*$~m', '', $contents );
 		$messages = preg_split( '/\s+/', $contents );
 
 		foreach ( $messages as $message ) {
@@ -883,6 +884,12 @@ class MessageGroups {
 				}
 			} elseif ( strpos( $id, 'page|' ) === 0 ) {
 				list( , $title ) = explode( '|', $id, 2 );
+
+				// Check first if it valid page title at all
+				if ( !Title::newFromText( $title ) ) {
+					return null;
+				}
+
 				return new WikiPageMessageGroup( $id, $title );
 			} else {
 				return null;

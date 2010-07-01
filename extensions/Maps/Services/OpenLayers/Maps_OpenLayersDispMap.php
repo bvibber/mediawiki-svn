@@ -26,7 +26,6 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		$this->mService->addDependencies( $this->parser );
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
@@ -38,7 +37,7 @@ class MapsOpenLayersDispMap extends MapsBaseMap {
 	public function addSpecificMapHTML() {
 		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
 		
-		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
+		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
 
 		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
 		

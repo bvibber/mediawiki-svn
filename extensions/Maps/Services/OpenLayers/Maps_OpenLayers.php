@@ -69,7 +69,6 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @return array
 	 */
 	protected function getDependencies() {
-		global $wgJsMimeType;
 		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
 		return array(
@@ -115,31 +114,31 @@ class MapsOpenLayers extends MapsMappingService {
 	/**
 	 * Build up a csv string with the layers, to be outputted as a JS array
 	 *
-	 * @param string $output
 	 * @param array $layers
 	 * 
 	 * @return csv string
 	 */
-	public static function createLayersStringAndLoadDependencies( &$output, array $layers ) {
+	public function createLayersStringAndLoadDependencies( array $layers ) {
 		global $egMapsOLAvailableLayers;
+		
 		$layerStr = array();
 		
 		foreach ( $layers as $layer ) {
-			self::loadDependencyWhenNeeded( $output, $layer );
+			$this->loadDependencyWhenNeeded( $layer );
 			$layerStr[] = is_array( $egMapsOLAvailableLayers[$layer] ) ? $egMapsOLAvailableLayers[$layer][0] : $egMapsOLAvailableLayers[$layer];
 		}
 		
-		return 'new ' . implode( ',new ', $layerStr );
+		return count( $layerStr ) == 0 ? '' : 'new ' . implode( ',new ', $layerStr );
 	}
 	
 	/**
 	 * Load the dependencies of a layer if they are not loaded yet.
+	 * 
+	 * Note: The check if the layer has been added is redudant with the new (>=0.6.3) dependency management.
 	 *
-	 * @param string $output The output to which the html to load the dependencies needs to be added
 	 * @param string $layer The layer to check (and load the dependencies for
 	 */
-	public static function loadDependencyWhenNeeded( &$output, $layer ) {
-		global $wgJsMimeType;
+	public function loadDependencyWhenNeeded( $layer ) {
 		global $egMapsOLAvailableLayers, $egMapsOLLayerDependencies, $egMapsOLLoadedLayers;
 		
 		// Check if there is a dependency refered by the layer definition.
@@ -148,7 +147,7 @@ class MapsOpenLayers extends MapsMappingService {
 			&& array_key_exists( $egMapsOLAvailableLayers[$layer][1], $egMapsOLLayerDependencies )
 			&& !in_array( $egMapsOLAvailableLayers[$layer][1], $egMapsOLLoadedLayers ) ) {
 			// Add the dependency to the output.
-			$output .= $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layer][1]];
+			$this->addDependency( $egMapsOLLayerDependencies[$egMapsOLAvailableLayers[$layer][1]] );
 			// Register that it's added so it does not get done multiple times.
 			$egMapsOLLoadedLayers[] = $egMapsOLAvailableLayers[$layer][1];
 		}

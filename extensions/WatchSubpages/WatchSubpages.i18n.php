@@ -534,6 +534,7 @@ $messages['ko'] = array(
 
 /** Colognian (Ripoarisch)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['ksh'] = array(
 	'watchsubpages' => 'Op Ungersigge oppasse',
@@ -842,6 +843,7 @@ $messages['stq'] = array(
 
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
+ * @author Kandar
  */
 $messages['su'] = array(
 	'watchsubpages' => 'Awaskeun sub artikel',
@@ -849,15 +851,15 @@ $messages['su'] = array(
 	'watchsubpages-addtitles' => 'Asupkeun kaca',
 	'watchsubpages-addtitlestowatchlist' => 'Asupkeun kaca ka awaskeuneun',
 	'watchsubpages-desc' => 'Gancang [[Special:WatchSubpages|asupkeun kabeh sub kaca ]] ieu ka awaskeunen',
-	'watchsubpages-form' => 'Pilih kaca keur di asupkeun ka awaskeuneun 
-Keur ngasupkeun kaca, contreng kotak di gigireuna, tuluy klik "Asupkeun kaca".
+	'watchsubpages-form' => 'Pilih kaca anu rék diawaskeun ku cara nyontréng kotak gigireunana, tuluy klik "{{int:watchsubpages-addtitles}}".
 
-Keur milih loba kaca, tahan konci shift keur anjeun bisa milih kotak lainna',
+Pikeun milih sakaligus sababaraha kaca anu noron, klik dina kaca panungtung anu noron bari nahan tombol shift.',
 );
 
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'watchsubpages' => 'Bevaka undersidor',
@@ -866,7 +868,7 @@ $messages['sv'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Lägg till sidor till bevakningslista',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Lägg till alla undersidor]] för en sida till bevakningslistan',
 	'watchsubpages-form' => 'Välj sidorna du önskar lägga till i din bevakningslista.
-För att lägga till en sida, markera rutan intill den, och klicka på "Lägg till sidor".
+För att lägga till en sida, markera rutan intill den och klicka på "{{int:watchsubpages-addtitles}}".
 
 När du markerar eller avmarkerar flera sidor, så kan du markera intilliggande rutor genom att hålla ner shift-tangenten och klicka på den första och sista rutan du vill markera.',
 );

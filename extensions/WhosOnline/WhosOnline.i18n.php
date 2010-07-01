@@ -515,6 +515,14 @@ $messages['sk'] = array(
 	'whosonline-desc' => 'Zobrazuje [[Special:WhosOnline|zoznam]] prihlásených a anonymných používateľov, ktorí sú momentálne online',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'whosonline' => 'Kdo je na strani',
+	'whosonline-desc' => 'Prikaže [[Special:WhosOnline|seznam]] prijavljenih in brezimnih uporabnikov, ki so trenutno na strani',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

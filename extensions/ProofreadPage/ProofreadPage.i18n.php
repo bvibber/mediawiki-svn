@@ -2052,7 +2052,7 @@ $messages['ia'] = array(
 	'proofreadpage_nextpage' => 'Pagina sequente',
 	'proofreadpage_prevpage' => 'Pagina precedente',
 	'proofreadpage_header' => 'Capite (noinclude):',
-	'proofreadpage_body' => 'Corpore del pagina (pro esser transcludite):',
+	'proofreadpage_body' => 'Texto del pagina (pro esser transcludite):',
 	'proofreadpage_footer' => 'Pede (noinclude):',
 	'proofreadpage_toggleheaders' => 'cambiar le visibilitate del sectiones noinclude',
 	'proofreadpage_quality0_category' => 'Sin texto',
@@ -3493,9 +3493,9 @@ Notas||10',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'indexpages' => 'Lista de páginas de índice',
@@ -3576,9 +3576,12 @@ Willapusqakuna||10",
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -3598,7 +3601,7 @@ $messages['ro'] = array(
 	'proofreadpage_nologin' => 'Nu sunteți autentificat',
 	'proofreadpage_nologintext' => 'Trebuie să fii [[Special:UserLogin|logat]] pentru a modifica statutul de verificare a paginilor.',
 	'proofreadpage_notallowed' => 'Schimbare nepermisă',
-	'proofreadpage_notallowedtext' => 'Nu vi se permite să schimbați statutul de vericare al acestei pagini.',
+	'proofreadpage_notallowedtext' => 'Nu vi se permite să schimbați statutul de verificare al acestei pagini.',
 	'proofreadpage_number_expected' => 'Eroare: valoare numerică așteptată',
 	'proofreadpage_interval_too_large' => 'Eroare: interval prea mare',
 	'proofreadpage_invalid_interval' => 'Eroare: interval incorect',
@@ -3606,7 +3609,7 @@ $messages['ro'] = array(
 	'proofreadpage_prevpage' => 'Pagina anterioară',
 	'proofreadpage_header' => 'Antet (nu include):',
 	'proofreadpage_body' => 'Corp-mesaj (pentru a fi introdus):',
-	'proofreadpage_footer' => 'Coloncifru (nu include):',
+	'proofreadpage_footer' => "Notă de subsol (''noinclude''):",
 	'proofreadpage_quality0_category' => 'Fără text',
 	'proofreadpage_quality1_category' => 'Neverificat',
 	'proofreadpage_quality2_category' => 'Problematic',
@@ -3614,12 +3617,12 @@ $messages['ro'] = array(
 	'proofreadpage_quality4_category' => 'Validat',
 	'proofreadpage_quality0_message' => 'Această pagină nu necesită să fie verificată',
 	'proofreadpage_quality1_message' => 'Această pagină n-a fost verificată',
-	'proofreadpage_quality2_message' => 'Aici a fost o problemă când verifica această pagină',
+	'proofreadpage_quality2_message' => 'Am întâmpinat o problemă la verificarea acestei pagini',
 	'proofreadpage_quality3_message' => 'Această pagină a fost verificată',
 	'proofreadpage_quality4_message' => 'Această pagină a fost validată',
 	'proofreadpage_index_listofpages' => 'Lista paginilor',
 	'proofreadpage_image_message' => 'Legătură către pagina index',
-	'proofreadpage_page_status' => 'Pagina status',
+	'proofreadpage_page_status' => 'Starea paginii',
 	'proofreadpage_js_attributes' => 'Autor Titlu An Editor',
 	'proofreadpage_index_attributes' => 'Autor
 Titlu
@@ -3750,6 +3753,13 @@ $messages['ru'] = array(
 	'proofreadpage_specialpage_legend' => 'Поиск индексных страниц',
 	'proofreadpage_source' => 'Источник',
 	'proofreadpage_source_message' => 'Для создания электронной версии текста использовались отсканированные материалы',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'proofreadpage_namespace' => 'Сторінка',
 );
 
 /** Yakut (Саха тыла)
@@ -3923,6 +3933,7 @@ $messages['sr-ec'] = array(
 слика|насловна страна
 страна||20
 примедбе||10',
+	'proofreadpage_pages' => '{{PLURAL:$1|страна|стране|стране|стране|страна}}',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -3959,6 +3970,7 @@ izvor
 slika|naslovna strana
 strana||20
 primedbe||10',
+	'proofreadpage_pages' => '{{PLURAL:$1|strana|strane|strane|strane|strana}}',
 );
 
 /** Seeltersk (Seeltersk)

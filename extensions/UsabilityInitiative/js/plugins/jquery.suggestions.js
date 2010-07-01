@@ -155,6 +155,7 @@ $.suggestions = {
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
 								.mousemove( function( e ) {
+									context.data.selectedWithMouse = true;
 									$.suggestions.highlight(
 										context, $(this).closest( '.suggestions-results div' ), false
 									);
@@ -255,7 +256,7 @@ $.suggestions = {
 			result.addClass( 'suggestions-result-current' );
 		}
 		if ( updateTextbox ) {
-			if ( result.length == 0 ) {
+			if ( result.length == 0 || result.is( '.suggestions-special' ) ) {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
@@ -265,7 +266,6 @@ $.suggestions = {
 			}
 			context.data.$textbox.trigger( 'change' );
 		}
-		$.suggestions.special( context );
 	},
 	/**
 	 * Respond to keypress event
@@ -278,7 +278,8 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', false );
+					$.suggestions.highlight( context, 'next', true );
+					context.data.selectedWithMouse = false;
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -287,7 +288,8 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', false );
+					$.suggestions.highlight( context, 'prev', true );
+					context.data.selectedWithMouse = false;
 				}
 				preventDefault = wasVisible;
 				break;
@@ -304,8 +306,9 @@ $.suggestions = {
 				context.data.$container.hide();
 				preventDefault = wasVisible;
 				selected = context.data.$container.find( '.suggestions-result-current' );
-				if ( selected.size() == 0 ) {
-					// if nothing is selected, cancel any current requests and submit the form
+				if ( selected.size() == 0 || context.data.selectedWithMouse ) {
+					// if nothing is selected OR if something was selected with the mouse, 
+					// cancel any current requests and submit the form
 					$.suggestions.cancel( context );
 					context.config.$region.closest( 'form' ).submit();
 				} else if ( selected.is( '.suggestions-special' ) ) {
@@ -393,7 +396,8 @@ $.fn.suggestions = function() {
 				'visibleResults': 0,
 				// Suggestion the last mousedown event occured on
 				'mouseDownOn': $( [] ),
-				'$textbox': $(this)
+				'$textbox': $(this),
+				'selectedWithMouse': false
 			};
 			// Setup the css for positioning the results box
 			var newCSS = {
@@ -455,6 +459,7 @@ $.fn.suggestions = function() {
 							context.data.$textbox.focus();
 						} )
 						.mousemove( function( e ) {
+							context.data.selectedWithMouse = true;
 							$.suggestions.highlight(
 								context, $( e.target ).closest( '.suggestions-special' ), false
 							);

@@ -3827,17 +3827,21 @@ $messages['pt-br'] = array(
 	'contribstats-imperfect-data' => 'Estes dados não são perfeitos, já seguimento de doadores sem o uso de seguimento de sessão tem suas limitações.',
 	'contribstats-paypal-donations' => 'Doações por PayPal',
 	'contribstats-credit-card' => 'Cartão de crédito',
+	'contribstats-fraud-note' => 'Existem alguns donativos fraudulentos.',
+	'contribstats-unaudited' => 'Estes totais não foram auditados.',
 	'fundraiserstatistics' => 'Estatísticas da angariação de fundos',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Dia $1 de $2',
 	'fundraiserstats-contributions' => 'Contribuições',
 	'fundraiserstats-total' => 'Total (USD)',
 	'fundraiserstats-avg' => 'Média (USD)',
+	'fundraiserstats-ytd' => 'Total acumulado (USD)',
 	'fundraiserstats-max' => 'Máximo (USD)',
 	'fundraiserstats-tab-totals' => 'Totais (USD)',
 	'fundraiserstats-tab-contributions' => 'Número de contribuições',
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
+	'fundraiserstats-tab-ytd' => 'Desde o início do ano (USD)',
 );
 
 /** Romanian (Română)
@@ -3973,6 +3977,18 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-averages' => 'Средние (USD)',
 	'fundraiserstats-tab-maximums' => 'Максимумы (USD)',
 	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'contrib-hist-name' => 'Мено',
+	'contrib-hist-date' => 'Час і датум',
+	'contribstats-day' => 'День',
+	'contribstats-month' => 'Місяць',
+	'contribstats-week' => 'Тыждень',
+	'fundraiserstats-date' => 'Датум',
 );
 
 /** Yakut (Саха тыла)

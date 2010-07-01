@@ -1036,7 +1036,7 @@ $messages['mk'] = array(
 	'imagemap_no_areas' => 'Грешка: мора да се зададе напатствие за барем едно подрачје',
 	'imagemap_invalid_coord' => 'Грешка: погрешни координати на ред $1, мора да биде со бројки',
 	'imagemap_invalid_desc' => 'Грешка: неважечко напатствие за опис, мора да биде едно од: <code>$1</code>',
-	'imagemap_description' => 'За оваа слика',
+	'imagemap_description' => 'За сликава',
 	'imagemap_poly_odd' => 'Грешка: пронајдено е poly со непарен број на координати на ред $1',
 );
 
@@ -1325,8 +1325,10 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'imagemap_desc' => 'Permite realizarea unei imagini hartă, cu ajutorul etichetei <code>&lt;imagemap&gt;</code>',
@@ -1460,6 +1462,16 @@ $messages['sk'] = array(
 	'imagemap_invalid_desc' => '&lt;imagemap&gt;: neplatný popis, musí byť jedno z nasledovných: $1',
 	'imagemap_description' => 'O tomto obrázku',
 	'imagemap_poly_odd' => 'Chyba: nájdený mnohouholník s nepárnym počtom súradníc na riadku $1',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'imagemap_no_image' => 'Napaka: v prvi vrstici morate navesti sliko',
+	'imagemap_invalid_image' => 'Napaka: slika je neveljavna ali ne obstaja',
+	'imagemap_bad_image' => 'Napaka: slika je na tej strani na črnem seznamu',
+	'imagemap_description' => 'O tej sliki',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

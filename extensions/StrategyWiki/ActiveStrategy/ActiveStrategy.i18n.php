@@ -56,6 +56,16 @@ $messages['de'] = array(
 	'nedits' => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}}',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'activestrategy' => 'Stratejiyê Aktifi',
+	'active-strategy-desc' => 'Mi ra amaranê vurnayisan ser planê strateji bimocne',
+	'active-strategy-intro' => 'Amaranê vurnayisan ke ser pelan {{PLURAL:$1|$1 day|$1 days}} peniyi de.',
+	'nedits' => '$1 {{PLURAL:$1|vurnayîş|vurnayîşî}}',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -169,11 +179,13 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author ITshnik
  */
 $messages['ka'] = array(
 	'activestrategy' => 'აქტიური სტრატეგია',
 	'active-strategy-desc' => 'აჩვენებს რედაქტირების რაოდენობას სტრატეგიული დაგეგმვის გვერდებზე',
+	'nedits' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
 );
 
 /** Korean (한국어)
@@ -275,6 +287,16 @@ $messages['pt'] = array(
 	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'activestrategy' => 'Grupos de trabalho ativos',
+	'active-strategy-desc' => 'Mostra o número de edições das páginas da equipe de trabalho',
+	'active-strategy-intro' => 'Número de edições às páginas dos grupos de trabalho {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
+	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -283,6 +305,16 @@ $messages['ru'] = array(
 	'active-strategy-desc' => 'Показывает число правок на страницах целевых групп',
 	'active-strategy-intro' => 'Количество правок страниц комиссий за {{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}}.',
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'activestrategy' => 'Dejavna strategija',
+	'active-strategy-desc' => 'Prikaže število urejanj strateško načrtovanih strani',
+	'active-strategy-intro' => 'Število urejanj strani delovne skupine v {{PLURAL:$1|zadnjem $1 dnevu|zadnjih $1 dnevih|zadnjih $1 dneh}}.',
+	'nedits' => '$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}',
 );
 
 /** Swedish (Svenska)
@@ -311,6 +343,13 @@ $messages['tl'] = array(
 	'active-strategy-desc' => 'Nagpapaikta ng bilang ng mga pagbabago sa mga pahina ng madiskarteng pagpaplano',
 	'active-strategy-intro' => 'Bilang ng mga pagbabago sa mga pahina ng puwersang panggawain sa loob ng huling {{PLURAL:$1|$1 araw|$1 mga araw}}.',
 	'nedits' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'nedits' => '$1 sửa đổi',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

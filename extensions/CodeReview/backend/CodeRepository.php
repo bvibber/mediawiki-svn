@@ -175,7 +175,6 @@ class CodeRepository {
 	/**
 	 * Returns the supplied revision ID as a string ready for output, including the
 	 * appropriate (localisable) prefix (e.g. "r123" instead of 123).
-	 * May be called statically.
 	 */
 	public function getRevIdString( $id ) {
 		return wfMsg( 'code-rev-id', $id );
@@ -189,7 +188,6 @@ class CodeRepository {
 	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
 	 * defined then this returns the same as getRevIdString() as there 
 	 * is no ambiguity.
-	 * May NOT be called statically.
 	 */
 	public function getRevIdStringUnique( $id ) {
 		$id = wfMsg( 'code-rev-id', $id );

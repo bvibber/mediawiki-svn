@@ -2311,6 +2311,7 @@ $messages['lb'] = array(
 	'tasks_status_wontfix' => 'Gëtt net verbessert',
 	'tasks_action_open' => 'Aufgab "$1" opgemaach.',
 	'tasks_action_closed' => 'Aufgab "$1" ass fäerdeg.',
+	'tasks_action_wontfix' => 'D\'Aufgab "$1" gëtt net gemaach.',
 	'tasks_sign_delete' => '<b>Et gouf gefrot fir dëse Säit ze läschen</b>',
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',
@@ -2915,18 +2916,22 @@ $messages['ps'] = array(
 	'tasks' => 'دندې',
 	'tasks_tab' => 'دندې',
 	'tasks_form_new' => 'يوه نوې دنده پيلول',
+	'tasks_form_comment' => 'تبصره',
 	'tasks_noone' => 'هېڅوک',
 	'tasks_delete' => 'ړنګول',
 	'tasks_here' => 'دلته',
 	'tasks_help_page' => 'دندې',
+	'tasks_more_like_it' => 'نور',
 	'tasks_table_header_page' => 'مخ',
 	'tasks_search_form_title' => 'پلټل',
+	'tasks_search_tasks' => 'دندې',
 	'tasks_search_status' => 'دريځ',
 	'tasks_search_results' => 'د پلټنې پايلې',
 	'tasks_previous' => 'پخوانی',
 	'tasks_next' => 'راتلونکی',
 	'tasks_sort' => 'اوډل',
 	'tasks_status_open' => 'پرانيستل',
+	'tasks_status_closed' => 'تړل شوی',
 );
 
 /** Portuguese (Português)
@@ -3247,7 +3252,16 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'tasks' => 'Задачі',
 	'tasks_here' => 'гев',
+	'tasks_table_header_page' => 'Сторінка',
+	'tasks_search_form_title' => 'Глядати',
+	'tasks_search_status' => 'Статус',
+	'tasks_next' => 'Далшы',
+	'tasks_sort' => 'Сортованя',
+	'tasks_ascending' => 'Найстаршый на початок',
+	'tasks_status_open' => 'Одкрыто',
+	'tasks_status_closed' => 'Заперто',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

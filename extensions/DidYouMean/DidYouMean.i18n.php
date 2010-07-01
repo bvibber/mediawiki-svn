@@ -431,6 +431,13 @@ $messages['pms'] = array(
 	'didyoumean-desc' => "A gionta anliure a pàgine con tìtoj ch'a jë smijo",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'didyoumean-desc' => 'هغو مخونو ته تړنې ورګډوي چې "ورته" سرليکونه لري',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

@@ -376,6 +376,13 @@ $messages['oc'] = array(
 	'fixedimage-desc' => 'Apond la balisa <code>&lt;fundraising&gt;</code> coma un imatge',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'fixedimage-desc' => '<code>&lt;fundraising&gt;</code>-Tag ass Pikter dezu duh',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -398,10 +405,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'fixedimage-desc' => 'Adiciona a marca <code>&lt;fundraising&gt;</code> como uma imagem',
+	'fixedimage-desc' => 'Adiciona o elemento <code>&lt;fundraising&gt;</code> como uma imagem',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -444,6 +452,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'fixedimage-desc' => 'Pridáva značku <code>&lt;fundraising&gt;</code> ako obrázok',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'fixedimage-desc' => 'Doda etiketo <code>&lt;fundraising&gt;</code> kot sliko',
 );
 
 /** Albanian (Shqip)

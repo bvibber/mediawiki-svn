@@ -3363,7 +3363,7 @@ $wgGoogleMapsMessages['mhr'] = array(
  */
 $wgGoogleMapsMessages['mk'] = array(
 	'gm-desc' => 'Правете карти лесно со викифицирани одбележувачи',
-	'gm-incompatible-browser' => 'За да ја видите картата која ќе биде на овој простор треба да користите компатибилен прелистувач.',
+	'gm-incompatible-browser' => 'За да ја видите картата која ќе биде на овој простор треба да користите соодветен прелистувач.',
 	'gm-incompatible-browser-link' => 'Клинете тука за список на соодветни прелистувачи.',
 	'gm-no-editor' => 'Нажалост, вашиот прелистувач не поддржува интерактивни алатки за правење карти.  Преземете ја најновата верзија на <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac и Linux).',
 	'gm-balloon-title' => 'Наслов:',
@@ -4452,17 +4452,25 @@ $wgGoogleMapsMessages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $wgGoogleMapsMessages['ro'] = array(
+	'gm-incompatible-browser-link' => 'Click aici pentru a vedea o listă de navigatoare compatibile.',
 	'gm-balloon-title' => 'Titlu:',
+	'gm-balloon-link-article' => 'Legătură către această pagină (opțional):',
 	'gm-remove' => 'elimină',
+	'gm-caption' => 'Descriere',
 	'gm-tab-title' => 'Titlu etichetă',
 	'gm-tab' => 'Etichetă',
+	'gm-start-path' => 'începe o rută',
+	'gm-trace-area' => 'trasează o zonă',
 	'gm-save-point' => 'salvează &amp; închide',
 	'gm-load-map-from-article' => 'Încarcă o hartă de la pagina:',
 	'gm-no-maps' => 'Nu s-a găsit nici o hartă de încărcat în această pagină.',
+	'gm-refresh-list' => 'Reîmprospătare listă',
 	'gm-load-map' => 'Încarcă hartă',
 	'gm-clip-result' => 'Adaugă la hartă',
 	'gm-no-results' => 'Ne pare rău, nici un rezultat',

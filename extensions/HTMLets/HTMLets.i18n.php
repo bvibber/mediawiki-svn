@@ -268,10 +268,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'htmlets-desc' => 'Permite-lhe incluir em linha fragmentos de HTML a partir de ficheiros usando a marca <code>&lt;htmlet&gt;</code>',
+	'htmlets-desc' => 'Permite-lhe incluir fragmentos de HTML em linha a partir de ficheiros, usando o elemento <code>&lt;htmlet&gt;</code>',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

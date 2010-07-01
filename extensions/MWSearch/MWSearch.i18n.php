@@ -118,6 +118,13 @@ $messages['cy'] = array(
 	'mwsearch-desc' => 'Ategyn MWSearch',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'mwsearch-desc' => 'MWSearch-plugin',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */
@@ -316,6 +323,13 @@ $messages['jv'] = array(
 	'mwsearch-desc' => 'plugin MWSearch',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'mwsearch-desc' => 'MWSearch მოდული',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -490,6 +504,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'mwsearch-desc' => 'Zásuvný modul MWSearch',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'mwsearch-desc' => 'Vtičnik MWSearch',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

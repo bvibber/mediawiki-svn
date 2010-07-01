@@ -106,6 +106,13 @@ $messages['cs'] = array(
 	'antibot-desc' => 'Jednoduchá kostra systému pro detekci spamujících botů a ochranu před nimi',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'antibot-desc' => 'Fframwaith syml am wiriadau spambot a thâl-lwyth sbardun',
+);
+
 /** Danish (Dansk)
  * @author Jan Friberg
  */

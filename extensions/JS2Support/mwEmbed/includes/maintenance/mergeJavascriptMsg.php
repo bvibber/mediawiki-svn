@@ -14,7 +14,7 @@ if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 exit( 'This script has been depreciated' );
 define( 'MEDIAWIKI', true );
 // Get the scriptLoader globals:
-require_once( '../../jsScriptLoader.php' );
+require_once( '../../ResourceLoader.php' );
 
 $mwSTART_MSG_KEY = '$messages[\'en\'] = array(';
 $mwEND_MSG_KEY = ',

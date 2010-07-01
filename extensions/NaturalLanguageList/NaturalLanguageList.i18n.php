@@ -249,6 +249,13 @@ $messages['ru'] = array(
 	'nll-lastseparator' => '&#32;и&#32;',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'nll-lastseparator' => '&#32;and&#32;',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

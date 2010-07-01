@@ -1572,6 +1572,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Mobe
@@ -1618,6 +1619,7 @@ Ota yhteyttä [[Special:ListUsers/sysop|ylläpitäjään]].',
 	'openidchooselegend' => 'Käyttäjätunnuksen valinta',
 	'openidchooseinstructions' => 'Kaikki käyttäjät tarvitsevat nimimerkin.
 Voit valita omasi alla olevista vaihtoehdoista.',
+	'openidchoosenick' => 'Nimimerkkisi ($1)',
 	'openidchoosefull' => 'Koko nimesi ($1)',
 	'openidchooseurl' => 'OpenID:stäsi poimittu nimi ($1)',
 	'openidchooseauto' => 'Automaattisesti luotu nimi ($1)',
@@ -1653,6 +1655,10 @@ Tarjolla on monia eri [http://openid.net/get/ OpenID-tarjoajia], ja sinulla saat
 	'openiddelete-text' => 'Napsauttamalla {{int:openiddelete-button}}-paniketta, voit poistaa OpenID:n $1 tunnuksestasi.
 Et voi enää kirjautua sisään tällä OpenID:llä.',
 	'openiddelete-button' => 'Vahvista',
+	'openiddeleteerrornopassword' => 'Et voi poistaa kaikkia OpenID-tunnuksiasi, koska tililläsi ei ole salasanaa.
+Et kykenisi kirjautumaan sisään ilman OpenID-tunnusta.',
+	'openiddeleteerroropenidonly' => 'Et voi poistaa kaikkia OpenID-tunnuksiasi, koska sinun sallitaan kirjautua sisään vain OpenID-tunnuksella.
+Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
 	'openiddelete-sucess' => 'OpenID on onnistuneesti poistettu tilistäsi.',
 	'openiddelete-error' => 'Virhe poistettaessa OpenID:tä tilistäsi.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-asetukset',
@@ -3307,8 +3313,8 @@ $messages['mk'] = array(
 Ако ова не се случи, притиснете на копчето "Continue" (Продолжи).',
 	'openidclientonlytext' => 'Не можете да користите сметки од ова вики како OpenID за друга стрнаица.',
 	'openidloginlabel' => 'OpenID URL адреса',
-	'openidlogininstructions' => '{{SITENAME}} го поддржува [http://openid.net/ OpenID] стандардот за една сметка помеѓу веб-страници.
-OpenID ви овозможува да се најавувате на многу различни веб-страници без да ви треба различна лозинка за секоја поединечно.
+	'openidlogininstructions' => '{{SITENAME}} го поддржува [http://openid.net/ OpenID] стандардот за една сметка помеѓу мрежни места.
+OpenID ви овозможува да се најавувате на многу различни мрежни места без да ви треба различна лозинка за секоја поединечно.
 (Погледаје ја [http://mk.wikipedia.org/wiki/OpenID статијата за OpenID на Википедија] за повеќе информации.)
 
 Доколку веќе имате сметка на  {{SITENAME}}, можете да [[Special:UserLogin|се најавите]] со корисничкото име и лозинката по нормална постапка.
@@ -3911,6 +3917,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'openidlanguage' => 'Schprooch',
+	'openidchooseusername' => 'Yuuser-Naame:',
 	'openidchoosepassword' => 'Paesswatt:',
 );
 
@@ -4140,6 +4147,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -4229,7 +4237,7 @@ Sem um OpenID não se poderia autenticar.',
 	'openid-urls-action' => 'Acção',
 	'openid-urls-delete' => 'Apagar',
 	'openid-add-url' => 'Adicionar novo OpenID',
-	'openidsigninorcreateaccount' => 'Entrar ou Criar Nova Conta',
+	'openidsigninorcreateaccount' => 'Entrar ou criar uma conta nova',
 	'openid-provider-label-openid' => 'Introduza a sua URL OpenID',
 	'openid-provider-label-google' => 'Entrar usando a sua conta do Google',
 	'openid-provider-label-yahoo' => 'Entrar usando a sua conta do Yahoo',
@@ -4338,6 +4346,7 @@ Você não poderia entrar sem um OpenID.',
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Memo18
  * @author Misterr
  */
 $messages['ro'] = array(
@@ -4364,6 +4373,7 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidtrustinstructions' => 'Verificați dacă doriți să partajați datele cu $1.',
 	'openidallowtrust' => '$1 permite să aibă încredere în acest cont de utilizator',
 	'openidnopolicy' => 'Site-ul nu a specificat politica de confidențialitate.',
+	'openidpolicy' => 'Verificaţi <a target="_new" href="$1">politica de confidenţialitate</a> pentru mai multe informaţii',
 	'openidoptional' => 'Opțional',
 	'openidrequired' => 'Necesar',
 	'openidnickname' => 'Poreclă',
@@ -4371,10 +4381,12 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
 	'openidtimezone' => 'Fus orar',
+	'openidchooselegend' => 'Alegeţi numele de utilizator',
 	'openidchooseinstructions' => 'Toți utilizatorii necesită o poreclă;
 se poate alege una din opțiunile de mai jos.',
 	'openidchoosenick' => 'Porecla dvs. ($1)',
 	'openidchoosefull' => 'Numele întreg ($1)',
+	'openidchooseurl' => 'Un nume ales din OpenID-ul dvs. ($1)',
 	'openidchooseauto' => 'Un nume generat automat ($1)',
 	'openidchoosemanual' => 'Un nume la alegere:',
 	'openidchooseexisting' => 'Există un cont pe aces wiki',
@@ -4701,6 +4713,29 @@ Bez OpenID by ste sa nemohli prihlásiť.',
 	'openid-provider-label-yahoo' => 'Prihlásiť sa pomocou účtu Yahoo',
 	'openid-provider-label-aol' => 'Prihlásiť sa pomocou účtu AOL',
 	'openid-provider-label-other-username' => 'Zadajte svoje prihlasovacie meno na $1',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'openidlogin' => 'Prijavite se z OpenID',
+	'openidserver' => 'Strežnik OpenID',
+	'openidxrds' => 'Datoteka Yadis',
+	'openidusernameprefix' => 'UporabnikOpenID',
+	'openidoptional' => 'Izbirno',
+	'openidrequired' => 'Zahtevano',
+	'openidnickname' => 'Vzdevek',
+	'openidfullname' => 'Polno ime',
+	'openidemail' => 'E-poštni naslov',
+	'openidlanguage' => 'Jezik',
+	'openidchoosenick' => 'Vaš vzdevek ($1)',
+	'openidchoosefull' => 'Vaše polno ime ($1)',
+	'openidchooseusername' => 'Uporabniško ime:',
+	'openidchoosepassword' => 'Geslo:',
+	'openidloginlabel' => 'URL OpenID',
+	'openiddelete' => 'Izbriši OpenID',
+	'openiddelete-button' => 'Potrdi',
 );
 
 /** Lower Silesian (Schläsch)

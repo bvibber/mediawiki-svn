@@ -94,7 +94,7 @@ class POMTemplateNamedParameter extends POMTemplateParameter
 
 	function toString()
 	{
-		return $this->name_triple->toString() . ' = ' . $this->value_triple->toString() . '\n';
+		return $this->name_triple->toString() . '=' . $this->value_triple->toString();
 	}
 }
 

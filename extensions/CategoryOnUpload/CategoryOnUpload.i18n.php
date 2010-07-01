@@ -270,6 +270,14 @@ $messages['id'] = array(
 	'categoryonupload-label' => 'Kategori:',
 );
 
+/** Icelandic (Íslenska)
+ * @author Ævar Arnfjörð Bjarmason
+ */
+$messages['is'] = array(
+	'categoryonupload-desc' => 'Gefur notandanum kleift að velja flokk þegar hann hleður upp skrá',
+	'categoryonupload-label' => 'Flokkur:',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -464,7 +472,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'categoryonupload-desc' => 'د دوتنې د پورته کولو پر مهال، يو کارونکی په دې توانوي چې د دوتنې وېشنيزه وټاکي',
+	'categoryonupload-desc' => 'د دوتنې د پورته کولو پر مهال، يو کارن په دې توانوي چې د دوتنې وېشنيزه وټاکي',
 	'categoryonupload-label' => 'وېشنيزه:',
 );
 

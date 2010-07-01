@@ -94,6 +94,11 @@ class FlaggedRevs {
 		self::$reviewNamespaces = $wgFlaggedRevsNamespaces;
 		# Note: reviewable *pages* override patrollable ones
 		self::$patrolNamespaces = $wgFlaggedRevsPatrolNamespaces;
+		# !$wgFlaggedRevsAutoReview => !$wgFlaggedRevsAutoReviewNew
+		global $wgFlaggedRevsAutoReview, $wgFlaggedRevsAutoReviewNew;
+		if ( !$wgFlaggedRevsAutoReview ) {
+			$wgFlaggedRevsAutoReviewNew = false;
+		}
 	}
 	
 	# ################ Basic config accessors #################
@@ -138,24 +143,22 @@ class FlaggedRevs {
 	}
 
 	/**
-	 * Should this be using a simple icon-based UI?
-	 * Check the user's preferences first, using the site settings as the default.
-	 * @TODO: dependency inject the User?
-	 * @returns bool
-	 */
-	public static function useSimpleUI() {
-		global $wgUser, $wgSimpleFlaggedRevsUI;
-		return $wgUser->getOption( 'flaggedrevssimpleui', intval( $wgSimpleFlaggedRevsUI ) );
-	}
-
-	/**
 	 * Allow auto-review edits directly to the stable version by reviewers?
-	 * (1 to allow auto-sighting; 2 for auto-quality; 3 for auto-pristine)
 	 * @returns bool
 	 */
 	public static function autoReviewEdits() {
 		global $wgFlaggedRevsAutoReview;
 		return (bool)$wgFlaggedRevsAutoReview;
+	}
+
+	/**
+	 * Auto-review new pages with the minimal level?
+	 * @returns bool
+	 */
+	public static function autoReviewNewPages() {
+		global $wgFlaggedRevsAutoReviewNew;
+		self::load();
+		return (bool)$wgFlaggedRevsAutoReviewNew;
 	}
 
 	/**
@@ -177,58 +180,28 @@ class FlaggedRevs {
 	}
 
 	/**
-	 * Auto-review new pages with the minimal level?
-	 * @returns bool
-	 */
-	public static function autoReviewNewPages() {
-		global $wgFlaggedRevsAutoReviewNew;
-		return (bool)$wgFlaggedRevsAutoReviewNew;
-	}
-	
-	/**
-	 * Should this user see stable versions by default?
+	 * Is a "stable version" used as the default display
+	 * version for all pages in reviewable namespaces?
 	 * @returns bool
 	 */
 	public static function isStableShownByDefault() {
 		global $wgFlaggedRevsOverride;
+		if ( self::useOnlyIfProtected() ) {
+			return false; // must be configured per-page
+		}
 		return (bool)$wgFlaggedRevsOverride;
 	}
 
 	/**
-	 * Does FlaggedRevs only show for pages were the stable version is the default?
+	 * Are pages reviewable only if they have been manually
+	 * configured by an admin to use a "stable version" as the default?
 	 * @returns bool
 	 */
-	public static function forDefaultVersionOnly() {
-		global $wgFlaggedRevsReviewForDefault;
-		return (bool)$wgFlaggedRevsReviewForDefault;
+	public static function useOnlyIfProtected() {
+		global $wgFlaggedRevsProtection;
+		return (bool)$wgFlaggedRevsProtection;
 	}
 
-	/**
-	 * Does FlaggedRevs only show for pages that have been set to do so?
-	 * @returns bool
-	 */
-	public static function stableOnlyIfConfigured() {
-		return self::forDefaultVersionOnly() && !self::isStableShownByDefault();
-	}
-	
-	/**
-	 * Should this user ignore the site and page default version settings?
-	 * @TODO: dependency inject the User?
-	 * @returns bool
-	 */
-	public static function ignoreDefaultVersion() {
-		global $wgFlaggedRevsExceptions, $wgUser;
-		# Viewer sees current by default (editors, insiders, ect...) ?
-		foreach ( $wgFlaggedRevsExceptions as $group ) {
-			if ( $group == 'user' ) {
-				return ( !$wgUser->isAnon() );
-			} elseif ( in_array( $group, $wgUser->getGroups() ) ) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
 	/**
 	 * Return the include handling configuration
 	 * @returns int
@@ -254,17 +227,6 @@ class FlaggedRevs {
 	public static function useProtectionLevels() {
 		global $wgFlaggedRevsProtection;
 		return $wgFlaggedRevsProtection && self::getRestrictionLevels();
-	}
-
-	/**
-	 * Get the appropriate PageStabilityForm depending on whether protection
-	 * levels are being used
-	 * @return PageStabilityForm
-	 */
-	public static function getPageStabilityForm() {
-		return FlaggedRevs::useProtectionLevels() ?
-			new PageStabilityProtectForm() :
-			new PageStabilityGeneralForm();
 	}
 
 	/**
@@ -410,17 +372,16 @@ class FlaggedRevs {
 	
 	/**
 	 * Returns true if a user can set $tag to $value.
+	 * @param User $user
 	 * @param string $tag
 	 * @param int $value
 	 * @returns bool
-	 * @TODO: dependency inject the User?
 	 */
-	public static function userCanSetTag( $tag, $value ) {
-		global $wgUser;
+	public static function userCanSetTag( $user, $tag, $value ) {
 		# Sanity check tag and value
 		$levels = self::getTagLevels( $tag );
 		$highest = count( $levels ) - 1;
-		if( !$levels || $value < 0 || $value > $highest ) {
+		if ( !$levels || $value < 0 || $value > $highest ) {
 			return false; // flag range is invalid
 		}
 		$restrictions = self::getTagRestrictions();
@@ -429,13 +390,13 @@ class FlaggedRevs {
 			return true;
 		}
 		# Validators always have full access
-		if ( $wgUser->isAllowed( 'validate' ) ) {
+		if ( $user->isAllowed( 'validate' ) ) {
 			return true;
 		}
 		# Check if this user has any right that lets him/her set
 		# up to this particular value
 		foreach ( $restrictions[$tag] as $right => $level ) {
-			if ( $value <= $level && $level > 0 && $wgUser->isAllowed( $right ) ) {
+			if ( $value <= $level && $level > 0 && $user->isAllowed( $right ) ) {
 				return true;
 			}
 		}
@@ -443,28 +404,26 @@ class FlaggedRevs {
 	}
 
 	/**
-	 * Returns true if a user can set $flags.
-	 * This checks if the user has the right to review
-	 * to the given levels for each tag.
+	 * Returns true if a user can set $flags for a revision via review.
+	 * Requires the same for $oldflags if given.
+	 * @param User $user
 	 * @param array $flags, suggested flags
 	 * @param array $oldflags, pre-existing flags
 	 * @returns bool
-	 * @TODO: dependency inject the User?
 	 */
-	public static function userCanSetFlags( $flags, $oldflags = array() ) {
-		global $wgUser;
-		if ( !$wgUser->isAllowed( 'review' ) ) {
+	public static function userCanSetFlags( $user, array $flags, $oldflags = array() ) {
+		if ( !$user->isAllowed( 'review' ) ) {
 			return false; // User is not able to review pages
 		}
 		# Check if all of the required site flags have a valid value
-		# that the user is allowed to set.
+		# that the user is allowed to set...
 		foreach ( self::getDimensions() as $qal => $levels ) {
 			$level = isset( $flags[$qal] ) ? $flags[$qal] : 0;
 			$highest = count( $levels ) - 1; // highest valid level
-			if ( !self::userCanSetTag( $qal, $level ) ) {
+			if ( !self::userCanSetTag( $user, $qal, $level ) ) {
 				return false; // user cannot set proposed flag
 			} elseif ( isset( $oldflags[$qal] )
-				&& !self::userCanSetTag( $qal, $oldflags[$qal] ) )
+				&& !self::userCanSetTag( $user, $qal, $oldflags[$qal] ) )
 			{
 				return false; // user cannot change old flag
 			}
@@ -474,12 +433,11 @@ class FlaggedRevs {
 
 	/**
 	* Check if a user can set the autoreview restiction level to $right
+	* @param User $user
 	* @param string $right the level
 	* @returns bool
-	* @TODO: dependency inject the User?
 	*/
-	public static function userCanSetAutoreviewLevel( $right ) {
-		global $wgUser;
+	public static function userCanSetAutoreviewLevel( $user, $right ) {
 		if ( $right == '' ) {
 			return true; // no restrictions (none)
 		}
@@ -489,10 +447,10 @@ class FlaggedRevs {
 		# Don't let them choose levels above their own rights
 		if ( $right == 'sysop' ) {
 			// special case, rewrite sysop to protect and editprotected
-			if ( !$wgUser->isAllowed( 'protect' ) && !$wgUser->isAllowed( 'editprotected' ) ) {
+			if ( !$user->isAllowed( 'protect' ) && !$user->isAllowed( 'editprotected' ) ) {
 				return false;
 			}
-		} else if ( !$wgUser->isAllowed( $right ) ) {
+		} elseif ( !$user->isAllowed( $right ) ) {
 			return false;
 		}
 		return true;
@@ -504,24 +462,23 @@ class FlaggedRevs {
 	 * @param string $text
 	 * @param Title $title
 	 * @param integer $id, revision id
-	 * @return array( string, array, array, array, int )
+	 * @return array( string, array, array )
 	 * All included pages/arguments are expanded out
 	 */
 	public static function expandText( $text = '', Title $title, $id ) {
 		global $wgParser;
 		# Make our hooks trigger (force unstub so setting doesn't get lost)
 		$wgParser->firstCallInit();
+		# Begin stable parse
 		$wgParser->fr_isStable = ( self::inclusionSetting() != FR_INCLUDES_CURRENT );
 		# Parse with default options
 		$options = self::makeParserOptions();
 		$outputText = $wgParser->preprocess( $text, $title, $options, $id );
 		$out =& $wgParser->mOutput;
-		$data = array( $outputText, $out->mTemplates, $out->mTemplateIds,
-			$out->fr_includeErrors, $out->fr_newestTemplateID );
-		# Done!
+		# Stable parse done!
 		$wgParser->fr_isStable = false;
 		# Return data array
-		return $data;
+		return array( $outputText, $out->mTemplateIds, $out->fr_includeErrors );
 	}
 
 	/**
@@ -561,14 +518,15 @@ class FlaggedRevs {
 		$options->setTidy( true );
 		return $options;
 	}
-	
+
 	/**
+	* Get the page cache for the stable version of an article
 	* @param Article $article
 	* @param User $user
-	* @return ParserOutput
-	* Get the page cache for the top stable revision of an article
+	* @param string $okStale set to 'okStale' to ignore expiration date
+	* @return mixed (ParserOutput/false)
 	*/
-	public static function getPageCache( Article $article, $user ) {
+	public static function getPageCache( Article $article, $user, $okStale = false ) {
 		global $parserMemc, $wgCacheEpoch;
 		wfProfileIn( __METHOD__ );
 		# Make sure it is valid
@@ -587,7 +545,7 @@ class FlaggedRevs {
 			$canCache = $article->checkTouched();
 			$cacheTime = $value->getCacheTime();
 			$touched = $article->mTouched;
-			if ( !$canCache || $value->expired( $touched ) ) {
+			if ( !$canCache || ( $value->expired( $touched ) && $okStale !== 'okStale' ) ) {
 				if ( !$canCache ) {
 					wfIncrStats( "pcache_miss_invalid" );
 					wfDebug( "Invalid cached redirect, touched $touched, epoch $wgCacheEpoch, cached $cacheTime\n" );
@@ -598,9 +556,6 @@ class FlaggedRevs {
 				$parserMemc->delete( $key );
 				$value = false;
 			} else {
-				if ( isset( $value->mTimestamp ) ) {
-					$article->mTimestamp = $value->mTimestamp;
-				}
 				wfIncrStats( "pcache_hit" );
 			}
 		} else {
@@ -608,7 +563,6 @@ class FlaggedRevs {
 			wfIncrStats( "pcache_miss_absent" );
 			$value = false;
 		}
-
 		wfProfileOut( __METHOD__ );
 		return $value;
 	}
@@ -731,11 +685,12 @@ class FlaggedRevs {
 		}
 		return null; // cache not found
 	}
-	
+
 	# ################ Synchronization and link update functions #################
 
 	/**
-	 * Check if all includes in $stableOutput are the same as those in $currentOutput
+	 * Check if all includes in $stableOutput are the same as those in $currentOutput.
+	 * Only use this if both outputs are from the same source text.
 	 * @param ParserOutput $stableOutput
 	 * @param ParserOutput $currentOutput
 	 * @return bool
@@ -743,19 +698,27 @@ class FlaggedRevs {
 	public static function includesAreSynced(
 		ParserOutput $stableOutput, ParserOutput $currentOutput
 	) {
-		$sTmpls = $stableOutput->mTemplateIds;
-		$cTmpls = $currentOutput->mTemplateIds;
-		foreach ( $sTmpls as $name => $revId ) {
-			if ( isset( $cTmpls[$name] ) && $cTmpls[$name] != $revId ) {
-				return false; // updated/created
+		if ( isset( $stableOutput->mTemplateIds ) // sanity check
+			&& isset( $currentOutput->mTemplateIds ) )
+		{
+			$sTmpls = $stableOutput->mTemplateIds;
+			$cTmpls = $currentOutput->mTemplateIds;
+			foreach ( $sTmpls as $name => $revId ) {
+				if ( isset( $cTmpls[$name] ) && $cTmpls[$name] != $revId ) {
+					return false; // updated/created
+				}
 			}
 		}
-		$sFiles = $stableOutput->fr_ImageSHA1Keys;
-		$cFiles = $currentOutput->fr_ImageSHA1Keys;
-		foreach ( $sFiles as $name => $timeKey ) {
-			foreach ( $timeKey as $sTs => $sSha1 ) {
-				if ( isset( $cFiles[$name] ) && !isset( $cFiles[$name][$sTs] ) ) {
-					return false; // updated/created
+		if ( isset( $stableOutput->fr_ImageSHA1Keys ) // sanity check
+			&& isset( $currentOutput->fr_ImageSHA1Keys ) )
+		{
+			$sFiles = $stableOutput->fr_ImageSHA1Keys;
+			$cFiles = $currentOutput->fr_ImageSHA1Keys;
+			foreach ( $sFiles as $name => $timeKey ) {
+				foreach ( $timeKey as $sTs => $sSha1 ) {
+					if ( isset( $cFiles[$name] ) && !isset( $cFiles[$name][$sTs] ) ) {
+						return false; // updated/created
+					}
 				}
 			}
 		}
@@ -793,7 +756,9 @@ class FlaggedRevs {
 	* @param mixed $latest, the latest rev ID (optional)
 	* Updates the tracking tables and pending edit count cache. Called on edit.
 	*/
-	public static function updateStableVersion( Article $article, Revision $rev, $latest = null ) {
+	public static function updateStableVersion(
+		Article $article, Revision $rev, $latest = null
+	) {
 		if ( !$article->getId() ) {
 			return true; // no bogus entries
 		}
@@ -813,20 +778,21 @@ class FlaggedRevs {
 			__METHOD__,
 			array( 'ORDER BY' => 'fr_quality DESC', 'LIMIT' => 1 )
 		);
-		# Get the timestamp of the edit after the stable version (if any)
+		# Get the timestamp of the first edit after the stable version (if any)...
+		$nextTimestamp = null;
 		$revId = $rev->getId();
 		if ( $latest != $revId ) {
-			# Get the latest revision ID
 			$timestamp = $rev->getTimestamp();
-			$nextTimestamp = $dbw->selectField( 'revision',
+			$nextEditTS = $dbw->selectField( 'revision',
 				'rev_timestamp',
 				array( 'rev_page' => $article->getId(),
 					"rev_timestamp > " . $dbw->addQuotes( $dbw->timestamp( $timestamp ) ) ),
 				__METHOD__,
 				array( 'ORDER BY' => 'rev_timestamp ASC', 'LIMIT' => 1 )
 			);
-		} else {
-			$nextTimestamp = null;
+			if ( $nextEditTS ) { // sanity check
+				$nextTimestamp = $nextEditTS;
+			}
 		}
 		# Alter table metadata
 		$dbw->replace( 'flaggedpages',
@@ -836,7 +802,7 @@ class FlaggedRevs {
 				'fp_reviewed'      => ( $latest == $revId ) ? 1 : 0,
 				'fp_quality'       => ( $maxQuality === false ) ? null : $maxQuality,
 				'fp_page_id'       => $article->getId(),
-				'fp_pending_since' => $nextTimestamp ? $dbw->timestamp( $nextTimestamp ) : null
+				'fp_pending_since' => $dbw->timestampOrNull( $nextTimestamp )
 			),
 			__METHOD__
 		);
@@ -1172,13 +1138,13 @@ class FlaggedRevs {
 			array( 'fpc_page_id', 'fpc_select' ),
 			array( 'fpc_expiry < ' . $encCutoff ),
 			__METHOD__
-			// array( 'LOCK IN SHARE MODE' )
+			// array( 'FOR UPDATE' )
 		);
 		while ( $row = $dbw->fetchObject( $ret ) ) {
 			// If FlaggedRevs got "turned off" for this page (due to not
 			// having the stable version as the default), then clear it
 			// from the tracking tables...
-			if ( !$config['override'] && self::forDefaultVersionOnly() ) {
+			if ( !$config['override'] && self::useOnlyIfProtected() ) {
 				$pagesClearTracking[] = $row->fpc_page_id; // no stable version
 			// Check if the new (default) config has a different way
 			// of selecting the stable version of this page...
@@ -1319,11 +1285,11 @@ class FlaggedRevs {
 	/**
 	 * Get minimum tags that are closest to $oldFlags
 	 * given the site, page, and user rights limitations.
+	 * @param User $user
 	 * @param array $oldFlags previous stable rev flags
-	 * @TODO: dependency inject the User?
 	 * @return mixed array or null
 	 */
-	public static function getAutoReviewTags( array $oldFlags ) {
+	public static function getAutoReviewTags( $user, array $oldFlags ) {
 		if ( !self::autoReviewEdits() ) {
 			return null; // shouldn't happen
 		}
@@ -1333,7 +1299,7 @@ class FlaggedRevs {
 			$val = isset( $oldFlags[$tag] ) ? $oldFlags[$tag] : 1;
 			$val = min( $val, self::maxAutoReviewLevel( $tag ) );
 			# Dial down the level to one the user has permission to set
-			while ( !self::userCanSetTag( $tag, $val ) ) {
+			while ( !self::userCanSetTag( $user, $tag, $val ) ) {
 				$val--;
 				if ( $val <= 0 ) {
 					return null; // all tags vals must be > 0
@@ -1392,7 +1358,28 @@ class FlaggedRevs {
 			NS_FILE : $title->getNamespace(); // Treat NS_MEDIA as NS_FILE
 		return ( in_array( $ns, $namespaces ) );
 	}
-	
+
+   	/**
+	* Get a list of stable categories which go in categorylinks
+	* iff they're in the stable version of of the page (if there is one).
+	* Note: used for bug 20813
+	* @return array
+	*/
+	public static function getStableCategories() {
+		$reviewedCats = array();
+		$msg = wfMsgForContent( 'flaggedrevs-stable-categories' );
+		if ( !wfEmptyMsg( 'flaggedrevs-stable-categories', $msg ) ) {
+			$list = explode( "\n*", "\n$msg" );
+			foreach ( $list as $category ) {
+				$category = trim( $category );
+				if ( $category != '' ) {
+					$reviewedCats[] = $category;
+				}
+			}
+		}
+		return $reviewedCats;
+	}
+
    	/**
 	* Clear FlaggedRevs tracking tables for this page
 	* @param mixed $pageId (int or array)
@@ -1402,64 +1389,6 @@ class FlaggedRevs {
 		$dbw->delete( 'flaggedpages', array( 'fp_page_id' => $pageId ), __METHOD__ );
 		$dbw->delete( 'flaggedrevs_tracking', array( 'ftr_from' => $pageId ), __METHOD__ );
 		$dbw->delete( 'flaggedpage_pending', array( 'fpp_page_id' => $pageId ), __METHOD__ );
-	}
-
-   	/**
-	* Get params for a user
-	* @param int $uid
-	* @param string $DBName, optional wiki name
-	* @returns array $params
-	*/
-	public static function getUserParams( $uid, $DBName = false ) {
-		$dbw = wfGetDB( DB_MASTER, array(), $DBName );
-		$row = $dbw->selectRow( 'flaggedrevs_promote',
-			'frp_user_params',
-			array( 'frp_user_id' => $uid ),
-			__METHOD__
-		);
-		# Parse params
-		$p = array(); // init
-		if ( $row ) {
-			$flatPars = explode( "\n", trim( $row->frp_user_params ) );
-			foreach ( $flatPars as $pair ) {
-				$m = explode( '=', trim( $pair ), 2 );
-				$key = $m[0];
-				$value = isset( $m[1] ) ? $m[1] : null;
-				$p[$key] = $value;
-			}
-		}
-		# Initialize fields as needed...
-		if ( !isset( $p['uniqueContentPages'] ) )
-			$p['uniqueContentPages'] = '';
-		if ( !isset( $p['totalContentEdits'] ) )
-			$p['totalContentEdits'] = 0;
-		if ( !isset( $p['editComments'] ) )
-			$p['editComments'] = 0;
-		if ( !isset( $p['revertedEdits'] ) )
-			$p['revertedEdits'] = 0;
-
-		return $p;
-	}
-	
-   	/**
-	* Save params for a user
-	* @param int $uid
-	* @param array $params
-	* @param string $DBName, optional wiki name
-	* @returns bool success
-	*/
-	public static function saveUserParams( $uid, array $params, $DBName = false ) {
-		$flatParams = '';
-		foreach ( $params as $key => $value ) {
-			$flatParams .= "{$key}={$value}\n";
-		}
-		$dbw = wfGetDB( DB_MASTER, array(), $DBName );
-		$row = $dbw->replace( 'flaggedrevs_promote',
-			array( 'frp_user_id' ),
-			array( 'frp_user_id' => $uid, 'frp_user_params' => trim( $flatParams ) ),
-			__METHOD__
-		);
-		return ( $dbw->affectedRows() > 0 );
 	}
 
 	# ################ Auto-review function #################
@@ -1494,7 +1423,7 @@ class FlaggedRevs {
 				if ( $user->isAllowed( 'bot' ) ) {
 					$flags = $oldSv->getTags(); // no change for bot edits
 				} else {
-					$flags = self::getAutoReviewTags( $oldSv->getTags() ); // account for perms
+					$flags = self::getAutoReviewTags( $user, $oldSv->getTags() ); // account for perms
 				}
 			} else { // new page?
 				$flags = self::quickTags( FR_SIGHTED ); // use minimal level
@@ -1537,8 +1466,8 @@ class FlaggedRevs {
 					'fi_rev_id' 		=> $rev->getId(),
 					'fi_name' 			=> $dbkey,
 					'fi_img_sha1' 		=> $sha1,
-					// b/c: NULL becomes '' for old fi_img_timestamp def (non-strict)
-					'fi_img_timestamp'  => $time ? $dbw->timestamp( $time ) : null
+					// b/c: fi_img_timestamp DEFAULT either NULL (new) or '' (old)
+					'fi_img_timestamp'  => $time ? $dbw->timestamp( $time ) : ''
 				);
 				$imgset[] = $fileIncludeData;
 			}

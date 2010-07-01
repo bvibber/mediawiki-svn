@@ -67,7 +67,7 @@ $messages['an'] = array(
 	'reviewedversions-leg1' => "Amostrar a lista de versions revisatas d'una pachina",
 	'reviewedversions-page' => "Nombre d'a pachina:",
 	'reviewedversions-none' => '"[[:$1]]" no tiene versions revisatas.',
-	'reviewedversions-list' => "A siguient ye una lista de versions de [[:$1]] que s'han revisato:",
+	'reviewedversions-list' => "A siguient ye una lista con {{PLURAL:%2|a sola versión|as versions}} de [[:$1]] que s'han revisato:",
 	'reviewedversions-review' => 'Revisata por $2 o <i>$1</i>',
 );
 
@@ -313,8 +313,11 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'reviewedversions' => 'Ülevaadatud versioonid',
+	'reviewedversions-leg1' => 'Lehekülje ülevaadatud redaktsioonide loetlemine',
 	'reviewedversions-page' => 'Lehekülje nimi:',
 	'reviewedversions-none' => 'Leheküljel "[[:$1]]" pole ülevaadatud redaktsioone.',
+	'reviewedversions-list' => 'Järgnev on {{PLURAL:$2|ainus lehekülje [[:$1]] redaktsioon|loend lehekülje [[:$1]] redaktsioonidest}}, mis on ülevaadatud:',
 	'reviewedversions-review' => '$2 vaatas lehekülje üle kuupäeval <i>$1</i>',
 );
 
@@ -434,6 +437,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author DoviJ
  * @author Rotemliss
  * @author דניאל ב.
  */
@@ -865,7 +869,7 @@ $messages['pt'] = array(
 	'reviewedversions-page' => 'Nome da página:',
 	'reviewedversions-none' => '[[:$1]] não tem edições revistas.',
 	'reviewedversions-list' => 'Encontra abaixo {{PLURAL:$2|a única edição|uma lista das edições}} da página [[:$1]], que {{PLURAL:$2|foi revista|foram revistas}}:',
-	'reviewedversions-review' => 'Revista em <i>$1</i> por $2',
+	'reviewedversions-review' => 'Revista às <i>$1</i> por $2',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1166,7 +1170,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'reviewedversions' => 'Xem các phiên bản ổn định',
+	'reviewedversions' => 'Phiên bản đã duyệt',
 	'reviewedversions-leg1' => 'Liệt kê những bản đã được duyệt của một trang',
 	'reviewedversions-page' => 'Tên trang:',
 	'reviewedversions-none' => '"[[:$1]]" không có bản nào được duyệt.',

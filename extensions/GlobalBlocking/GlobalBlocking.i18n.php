@@ -920,7 +920,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'globalblocking-desc' => "[[Special:GlobalBlock|Posubl]] eo stankañ ar chomlec'hioù IP [[Special:GlobalBlockList|dre wikioù disheñvel]]",
+	'globalblocking-desc' => "[[Special:GlobalBlock|Posupl]] eo stankañ ar chomlec'hioù IP [[Special:GlobalBlockList|dre wikioù disheñvel]]",
 	'globalblocking-block' => "Stankañ en un doare hollek ur chomlec'h IP",
 	'globalblocking-modify-intro' => "Gellout a reoc'h implijout ar furmskrid evit kefluniañ ur stankadenn hollek.",
 	'globalblocking-block-intro' => "Tu zo deoc'h implijout ar bajenn-mañ evit stankañ ur chomlec'h IP war an holl wikioù.",
@@ -1548,6 +1548,13 @@ $messages['diq'] = array(
 	'globalblocking-modify-intro' => 'qey vurnayişê eyarê blokeya globali şıma eşkêni no form bışuxulni.',
 	'globalblocking-block-intro' => 'şıma pê no peleşkêni yew IPadres heme wikiyan de bloke bıker.',
 	'globalblocking-block-reason' => 'Sebeb:',
+	'globalblocking-block-otherreason' => 'Sebebo bin:',
+	'globalblocking-block-reasonotherlist' => 'Sebebo bin',
+	'globalblocking-block-reason-dropdown' => '* Sebebanê blok kerdışi
+** Crosswiki spam kerdış
+** Crosswiki xeripnayış
+** Vandalizm kerdış',
+	'globalblocking-block-edit-dropdown' => 'Sebebê blokî bivurne',
 	'globalblocking-block-expiry' => 'Çi wext de qediyeno:',
 	'globalblocking-block-expiry-other' => 'wexê qediyayişi yo bin',
 	'globalblocking-block-expiry-otherfield' => 'wexto bin:',
@@ -2174,7 +2181,7 @@ Pane tähele, et kasutajanime ei saa sisestada!',
 	'globalblocking-whitelist' => 'Globaalsete blokeeringute kohalik olek',
 	'globalblocking-whitelist-notapplied' => 'Globaalseid blokeeringuid ei ole selles vikis rakendatud,
 seega ei saa globaalsete blokeeringute kohalikku olekut muuta.',
-	'globalblocking-whitelist-legend' => 'Muuda kohalikku olekut',
+	'globalblocking-whitelist-legend' => 'Kohaliku oleku muutmine',
 	'globalblocking-whitelist-reason' => 'Põhjus:',
 	'globalblocking-whitelist-status' => 'Kohalik olek:',
 	'globalblocking-whitelist-statuslabel' => 'Tühista see globaalne blokeering {{GRAMMAR:inessive|{{SITENAME}}}}',
@@ -2530,7 +2537,7 @@ $1',
 	'globalblocking-whitelist-notapplied' => 'Les blocages globaux ne sont pas appliqués à ce wiki,
 de ce fait le statut local du blocage global ne peut être modifié.',
 	'globalblocking-whitelist-legend' => 'Modifier le statut local',
-	'globalblocking-whitelist-reason' => 'Raison :',
+	'globalblocking-whitelist-reason' => 'Motif :',
 	'globalblocking-whitelist-status' => 'État local :',
 	'globalblocking-whitelist-statuslabel' => 'Désactiver ce blocage global sur {{SITENAME}}',
 	'globalblocking-whitelist-submit' => 'Changer le statut local',
@@ -2957,17 +2964,25 @@ $messages['haw'] = array(
  * @author Agbad
  * @author Rotemliss
  * @author YaronSh
+ * @author Yonidebest
  */
 $messages['he'] = array(
 	'globalblocking-desc' => '[[Special:GlobalBlock|אפשרות]] ל[[Special:GlobalBlockList|חסימה גלובלית בין אתרי הוויקי]] של כתובות IP',
 	'globalblocking-block' => 'חסימה גלובלית של כתובת IP',
 	'globalblocking-modify-intro' => 'באפשרותכם להשתמש בטופס זה כדי לשנות את ההגדרות של חסימה גלובלית.',
 	'globalblocking-block-intro' => 'באפשרותכם להשתמש בדף זה כדי לחסום כתובת IP בכל אתרי הוויקי.',
-	'globalblocking-block-reason' => 'סיבה לחסימה:',
-	'globalblocking-block-expiry' => 'פקיעת החסימה:',
+	'globalblocking-block-reason' => 'סיבה:',
+	'globalblocking-block-otherreason' => 'סיבה נוספת/אחרת:',
+	'globalblocking-block-reasonotherlist' => 'סיבה אחרת',
+	'globalblocking-block-reason-dropdown' => '* סיבות חסימה נפוצות
+** ספאם בין-מיזמי
+** שימוש לרעה בין-מיזמי
+** השחתה',
+	'globalblocking-block-edit-dropdown' => 'עריכת סיבות החסימה',
+	'globalblocking-block-expiry' => 'זמן פקיעה:',
 	'globalblocking-block-expiry-other' => 'זמן פקיעה אחר',
 	'globalblocking-block-expiry-otherfield' => 'זמן אחר:',
-	'globalblocking-block-legend' => 'חסימה גלובלית של משתמש',
+	'globalblocking-block-legend' => 'חסימה גלובלית של כתובת IP',
 	'globalblocking-block-options' => 'אפשרויות:',
 	'globalblocking-block-errors' => 'החסימה נכשלה בגלל {{PLURAL:$1|הסיבה הבאה|הסיבות הבאות}}:',
 	'globalblocking-block-ipinvalid' => 'כתובת ה־IP שהקלדתם ($1) אינה תקינה.
@@ -2998,6 +3013,7 @@ $messages['he'] = array(
 	'globalblocking-list-whitelisted' => 'בוטל באופן מקומי על ידי $1: $2',
 	'globalblocking-list-whitelist' => 'מצב מקומי',
 	'globalblocking-list-modify' => 'שינוי',
+	'globalblocking-list-noresults' => 'כתובת ה־IP המבוקשת אינה חסומה.',
 	'globalblocking-goto-block' => 'חסימה גלובלית של כתובת IP',
 	'globalblocking-goto-unblock' => 'הסרת חסימה גלובלית',
 	'globalblocking-goto-status' => 'שינוי המצב המקומי של חסימה גלובלית',
@@ -3013,7 +3029,7 @@ $messages['he'] = array(
 	'globalblocking-unblock-errors' => 'הסרת החסימה הגלובלית נכשלה בגלל {{PLURAL:$1|הסיבה הבאה|הסיבות הבאות}}:',
 	'globalblocking-unblock-successsub' => 'החסימה הגלובלית הוסרה בהצלחה',
 	'globalblocking-unblock-subtitle' => 'הסרת חסימה גלובלית',
-	'globalblocking-unblock-intro' => 'באפשרותכם להשתמש בטופס זה כדי להסיר חסימה גלובלית. [[Special:GlobalBlockList|חזרה לרשימת החסימות הגלובליות]].',
+	'globalblocking-unblock-intro' => 'ניתן להיעזר בטופס זה כדי להסיר חסימה גלובלית.',
 	'globalblocking-whitelist' => 'המצב המקומי של החסימות הגלובליות',
 	'globalblocking-whitelist-notapplied' => 'חסימות גלובליות אינן פעילות באתר זה,
 לכן לא ניתן לשנות את המצב המקומי שלהן.',
@@ -3044,6 +3060,9 @@ $messages['he'] = array(
 	'globalblocking-modify-logentry' => 'שינה את החסימה הגלובלית של [[$1]] ($2)',
 	'globalblocking-logentry-expiry' => 'עם זמן פקיעה של $1',
 	'globalblocking-logentry-noexpiry' => 'ללא זמן פקיעה',
+	'globalblocking-loglink' => 'כתובת ה־IP שמספרה $1 חסומה באופן גלובלי ([[{{#Special:GlobalBlockList}}/$1|פרטים נוספים]]).',
+	'globalblocking-showlog' => 'כתובת IP זו נחסמה בעבר.
+יומן החסימות מוצג להלן:',
 	'globalblocklist' => 'רשימת כתובות IP החסומות באופן גלובלי',
 	'globalblock' => 'חסימת כתובת IP באופן גלובלי',
 	'globalblockstatus' => 'המצב המקומי של החסימות הגלובליות',
@@ -6328,18 +6347,21 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'globalblocking-block' => 'Blochează global o adresă IP',
 	'globalblocking-block-intro' => 'Această pagină permite blocarea unei adrese IP pe toate proiectele wiki.',
-	'globalblocking-block-reason' => 'Motiv pentru această blocare:',
-	'globalblocking-block-expiry' => 'Expirarea blocării:',
+	'globalblocking-block-reason' => 'Motiv:',
+	'globalblocking-block-reasonotherlist' => 'Alt motiv',
+	'globalblocking-block-expiry' => 'Expirare:',
 	'globalblocking-block-expiry-other' => 'Alte termene de expirare',
 	'globalblocking-block-expiry-otherfield' => 'Alt termen:',
-	'globalblocking-block-legend' => 'Blochează global un utilizator',
+	'globalblocking-block-legend' => 'Blochează global o adresă IP',
 	'globalblocking-block-options' => 'Opțiuni:',
 	'globalblocking-block-errors' => 'Blocarea nu a avut succes, din {{PLURAL:$1|următorul motiv|următoarele motive}}:',
 	'globalblocking-block-ipinvalid' => 'Adresa IP introdusă ($1) este invalidă.
@@ -6382,7 +6404,7 @@ Atenție, nu poate fi introdus un nume de utilizator!',
 	'globalblocking-whitelist-notapplied' => 'Blocările globale nu se aplică în acest wiki,
 deci statutul local al blocărilor globale nu poate fi modificat.',
 	'globalblocking-whitelist-legend' => 'Schimbă statut local',
-	'globalblocking-whitelist-reason' => 'Motiv pentru schimbare:',
+	'globalblocking-whitelist-reason' => 'Motiv:',
 	'globalblocking-whitelist-status' => 'Statut local:',
 	'globalblocking-whitelist-statuslabel' => 'Dezactivează această blocare gloablă pe {{SITENAME}}',
 	'globalblocking-whitelist-submit' => 'Schimbă statut local',
@@ -6640,6 +6662,7 @@ $1',
 $messages['rue'] = array(
 	'globalblocking-block-reason' => 'Причіна:',
 	'globalblocking-search-ip' => 'IP-адреса:',
+	'globalblocking-whitelist-reason' => 'Причіна:',
 );
 
 /** Yakut (Саха тыла)
@@ -6963,10 +6986,13 @@ $messages['sr-ec'] = array(
 	'globalblocking-modify-intro' => 'Овом формом мењате подешавања глобалног блока.',
 	'globalblocking-block-intro' => 'Можете користити ову страницу да блокирате ИП адресу на свим викијима.',
 	'globalblocking-block-reason' => 'Разлог:',
+	'globalblocking-block-otherreason' => 'Други/додатни разлог:',
+	'globalblocking-block-reasonotherlist' => 'Други разлог',
 	'globalblocking-block-reason-dropdown' => '* Уобичајени разлози за блок
 ** Међувики спам
 ** Међувики малтретирање
 ** Вандализам',
+	'globalblocking-block-edit-dropdown' => 'Измени разлоге за блок',
 	'globalblocking-block-expiry' => 'Истек:',
 	'globalblocking-block-expiry-other' => 'Друго време истека',
 	'globalblocking-block-expiry-otherfield' => 'Друго време:',
@@ -7036,10 +7062,13 @@ $messages['sr-el'] = array(
 	'globalblocking-modify-intro' => 'Ovom formom menjate podešavanja globalnog bloka.',
 	'globalblocking-block-intro' => 'Možete koristiti ovu stranicu da blokirate IP adresu na svim vikijima.',
 	'globalblocking-block-reason' => 'Razlog:',
+	'globalblocking-block-otherreason' => 'Drugi/dodatni razlog:',
+	'globalblocking-block-reasonotherlist' => 'Drugi razlog',
 	'globalblocking-block-reason-dropdown' => '* Uobičajeni razlozi za blok
 ** Međuviki spam
 ** Međuviki maltretiranje
 ** Vandalizam',
+	'globalblocking-block-edit-dropdown' => 'Izmeni razloge za blok',
 	'globalblocking-block-expiry' => 'Istek:',
 	'globalblocking-block-expiry-other' => 'Drugo vreme isteka',
 	'globalblocking-block-expiry-otherfield' => 'Drugo vreme:',
@@ -8247,7 +8276,7 @@ $messages['vo'] = array(
 	'globalblocking-desc' => '[[Special:GlobalBlock|Dälon]] ladetis-IP ad [[Special:GlobalBlockList|pablokön in vüks mödik]]',
 	'globalblocking-block' => 'Blokön ladeti-IP valöpo',
 	'globalblocking-block-intro' => 'Kanol gebön padi at ad blokön ladeti-IP in vüks valik.',
-	'globalblocking-block-reason' => 'Kod blokama at:',
+	'globalblocking-block-reason' => 'Kod:',
 	'globalblocking-block-expiry' => 'Blokamadul:',
 	'globalblocking-block-expiry-otherfield' => 'Tim votik:',
 	'globalblocking-block-legend' => 'Blokön gebani valöpo',

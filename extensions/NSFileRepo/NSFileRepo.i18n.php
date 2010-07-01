@@ -181,7 +181,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'nsfilerepo-desc' => 'Дава елементи базирани на именскиот простор на подигнати податотеки',
+	'nsfilerepo-desc' => 'Дава својства за работа со подигнати податотеки звисно од именскиот простор',
 );
 
 /** Dutch (Nederlands)

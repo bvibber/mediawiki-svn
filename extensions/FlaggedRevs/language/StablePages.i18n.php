@@ -14,6 +14,7 @@ $messages['en'] = array(
 Edits made by other users are not displayed to readers by default until an authorized user reviews them.',
 	'stablepages-none'          => 'There are no pages in this list.',
 	'stablepages-config'        => 'Configuration',
+	'stablepages-indef'         => 'Indefinite expiry only',
 );
 
 /** Message documentation (Message documentation)
@@ -58,17 +59,19 @@ $messages['aln'] = array(
  */
 $messages['an'] = array(
 	'stablepages' => "Pachinas que emplegan l'aprobación d'as modificacions",
-	'stablepages-text' => "En o cobaixo s'amuestra una lista de pachinas que s'han restrichito ta que nomás bells usuarios puedan fer-ie edicions que no requieran revisions. Ditas edicions no s'acceptan dica que un usuario autorizado las revisa.",
+	'stablepages-text' => "Contino s'amuestra una lista de pachinas que nomás bells usuarios pueden fer-ie edicions que no requieran revisions. As edicions feitas por atros usuarios no s'amuestras ta os lectors por defecto, dica un usuario autorizado las revise.",
 	'stablepages-none' => 'No bi ha garra pachina en ista lista',
 	'stablepages-config' => 'Confeguración',
 );
 
 /** Arabic (العربية)
+ * @author Ciphers
  * @author Meno25
  */
 $messages['ar'] = array(
-	'stablepages' => 'صفحات مستقرة',
-	'stablepages-text' => 'بالأسفل قائمة الصفحات المضبوطة يدويا لتعرض النسخة المنشورة كمحتوى الصفحة الافتراضي للقراء.',
+	'stablepages' => 'صفحات تستخدم الموافقة على التعديل',
+	'stablepages-text' => 'فيما يلي قائمة من الصفحات التي يمكن لبعض المستخدمين فقط إجراء التعديلات التي لا تتطلب المراجعة عليها. 
+ لا يتم عرض التعديلات التي أجريت من قبل مستخدمين آخرين للقراء بشكل افتراضي حتى يأذن مستخدم مفوض بذلك باستعراضها.',
 	'stablepages-none' => 'لا توجد صفحات في هذه القائمة',
 	'stablepages-config' => 'ضبط',
 );
@@ -134,7 +137,8 @@ Ne vo degemeret ar c'hemmoù-se nemet pa vint bet adlennet gant un aozer aotreet
  */
 $messages['bs'] = array(
 	'stablepages' => 'Stranice koristeći odobravanje izmjena',
-	'stablepages-text' => 'Ispod je spisak stranica koje su zaštićene tako da samo određeni korisnici mogu ih mijenjati a te izmjene ne zahtjevaju provjeru. Takve izmjene nisu objavljene dok ih ne provjeri autorizovani korisnik.',
+	'stablepages-text' => 'Ispod je spisak stranica koje samo određeni korisnici mogu ih mijenjati a te izmjene ne zahtjevaju provjeru.
+Izmjene drugih korisnika nisu prikazane čitaocima po postavkama dok ih ne provjeri autorizovani korisnik.',
 	'stablepages-none' => 'Nema stranica na ovom spisku',
 	'stablepages-config' => 'Podešavanje',
 );
@@ -174,6 +178,7 @@ $messages['de'] = array(
 Bearbeitungen von anderen Bentzern werden standardmäßig solange nicht angezeigt, bis ein entsprechend berechtigter Benutzer sie markiert hat.',
 	'stablepages-none' => 'Diese Liste enthält keine Seiten.',
 	'stablepages-config' => 'Konfiguration',
+	'stablepages-indef' => 'Nur mit unbefristetem Ablauf',
 );
 
 /** Zazaki (Zazaki)
@@ -182,7 +187,8 @@ Bearbeitungen von anderen Bentzern werden standardmäßig solange nicht angezeig
  */
 $messages['diq'] = array(
 	'stablepages' => 'Pelanê ke vurnayise testiqi ser hewitiyeno',
-	'stablepages-text' => 'Aşağıdaki liste, ziyaretçilere geçerli sayfa içeriği olarak kararlı sürümü gösterecek şekilde elle yapılandırılmış sayfaların listesidir.',
+	'stablepages-text' => 'Cor de yew liste este ke ey de teyna pelan ke teyna belli karberan eşkeni maqalayen bivurne u kontrol gani niya.
+Vurnayişan otomatik qeyd nibena eka yew karberanê binan meqale vurne heta yew gorevli kontral bike.',
 	'stablepages-none' => 'na liste de pel çino',
 	'stablepages-config' => 'vıraştış',
 );
@@ -232,6 +238,17 @@ $messages['es'] = array(
 Las ediciones hechas por otros usuarios no son mostradas a los lectores por defecto hasta que un usuario autorizado los revise.',
 	'stablepages-none' => 'No hay páginas en esta lista',
 	'stablepages-config' => 'Configuración',
+	'stablepages-indef' => 'Sólo caducidad infinita',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'stablepages' => 'Leheküljed, mille muutmine vajab heakskiitu',
+	'stablepages-text' => 'Järgnevatel lehekülgedel saavad ainult kindlad kasutajad teha muudatusi, mis ei vaja ülevaatamist. Ülejäänud kasutajate tehtud muudatusi ei kuvata vaikimisi, enne kui volitatud kasutaja on need üle vaadanud.',
+	'stablepages-none' => 'Selles loendis pole lehekülgi.',
+	'stablepages-config' => 'Sätted',
 );
 
 /** Basque (Euskara)
@@ -277,6 +294,7 @@ $messages['fr'] = array(
 Aussi, les modifications faites par les autres utilisateurs ne sont pas affichées par défaut aux lecteurs tant qu'un utilisateur habilité les aient relues.",
 	'stablepages-none' => 'Il n’y a aucune page dans cette liste.',
 	'stablepages-config' => 'Configuration',
+	'stablepages-indef' => 'Délai d’expiration infini seulement',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -298,6 +316,7 @@ $messages['gl'] = array(
 As edicións feitas por outros usuarios non se mostran aos lectores por defecto ata que un usuario autorizado as revise.',
 	'stablepages-none' => 'Non hai páxinas nesta lista',
 	'stablepages-config' => 'Configuración',
+	'stablepages-indef' => 'Caducidade indefinida só',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -317,17 +336,20 @@ $messages['gsw'] = array(
 	'stablepages-text' => 'Do isch e Lischt vu däne Syte, wu nume sicheri Benutzer chenne Bearbeitige dra mache, wu kei Priefig bruche. Sonigi Bearbeitige wäre erscht vereffetligt, wänn si vun eme autorisierte Benutzer freigee wore sin.',
 	'stablepages-none' => 'Die Lischt isch läär.',
 	'stablepages-config' => 'Konfiguration',
+	'stablepages-indef' => 'Nume mit uubfrischtetem Ablauf',
 );
 
 /** Hebrew (עברית)
+ * @author DoviJ
  * @author Ori229
  * @author Rotemliss
  * @author StuB
  * @author דניאל ב.
  */
 $messages['he'] = array(
-	'stablepages' => 'דפים יציבים',
-	'stablepages-text' => 'זוהי רשימת הדפים שהוגדרו ידנית להציג את הגרסה היציבה כגרסת ברירת המחדל שתוצג לקוראים.',
+	'stablepages' => 'דפים המשתמשים באישור עריכות',
+	'stablepages-text' => 'זוהי רשימת הדפים שבהם רק משתמשים מסוימים יכולים לבצע עריכות שאינן דורשות בדיקה.
+עריכות שבוצעו על ידי משתמשים אחרים אינן מוצגות לקוראים כברירת מחדל עד שהמשתמשים המורשים בודקים אותן.',
 	'stablepages-none' => 'אין דפים ברשימה זו',
 	'stablepages-config' => 'תצורה',
 );
@@ -361,6 +383,7 @@ $messages['hsb'] = array(
 	'stablepages-text' => 'Deleka je lisćina stronow, kotrež jenož wěsći wužiwarjo móža změny přewjesć, kotrež sej přepruwowanje njewužaduja. Změny druhich wužiwarjow so po standardźe druhim čitarjam njepokazaja, doniž awtorizowany wužiwar je njepřepruwuje.',
 	'stablepages-none' => 'W tutej lisćinje strony njejsu.',
 	'stablepages-config' => 'Konfiguracija',
+	'stablepages-indef' => 'Jenož z njepostajenym spadnjenjom',
 );
 
 /** Hungarian (Magyar)
@@ -383,16 +406,18 @@ $messages['ia'] = array(
 	'stablepages-text' => 'Hic infra es un lista de paginas al quales solmente certe usatores pote facer modificationes que non require revision. Modificationes facite per altere usatores non es initialmente monstrate al lectores usque un usator autorisate los habera revidite.',
 	'stablepages-none' => 'Il non ha paginas in iste lista',
 	'stablepages-config' => 'Configuration',
+	'stablepages-indef' => 'Expiration indefinite solmente',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
 	'stablepages' => 'Halaman menggunakan suntingan persetujuan',
-	'stablepages-text' => 'Di bawah ini adalah daftar halaman yang dibatasi sehingga hanya pengguna tertentu dapat melakukan penyuntingan yang tidak membutuhkan peninjauan. Suntingan tersebut tidak akan dipublikasikan sampai seorang pengguna yang diberi kuasa meninjaunya.',
+	'stablepages-text' => 'Di bawah ini adalah daftar halaman yang dibatasi sehingga hanya pengguna tertentu dapat melakukan penyuntingan yang tidak membutuhkan peninjauan. Suntingan yang dilakukan pengguna lain tidak akan ditampilkan ke pembaca secara langsung sampai seorang pengguna yang diberi kuasa meninjaunya.',
 	'stablepages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'stablepages-config' => 'Konfigurasi',
 );
@@ -421,13 +446,18 @@ $messages['ja'] = array(
 その他の利用者による編集は、承認された利用者が査読するまで、閲覧者には表示されません。',
 	'stablepages-none' => '表示すべきページはありません',
 	'stablepages-config' => '設定',
+	'stablepages-indef' => '無期限のみ',
 );
 
 /** Georgian (ქართული)
  * @author BRUTE
  * @author ITshnik
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'stablepages' => 'რედაქტირებების დამადასტურებელო გვერდები',
+	'stablepages-text' => 'ქვემოთ წარმოდგებილია გვერდების სია, რომლებზეც მხოლოდ რამდენიმე მომხმარებელს შეუძლია შეუმოწმებელი რედაქტირებების განხორციელება. 
+სხვა მომხმარებლების მიერ განხორციელებული ცვლილებები არ იქნება ნაჩვენები მომხმარებლებისადმი სანამ ვინმე მათ არ შეამოწმებს.',
 	'stablepages-none' => 'ამ სიაში გვერდები არ არის',
 	'stablepages-config' => 'კონფიგურაცია',
 );
@@ -443,13 +473,15 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Gapo
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'stablepages' => '편집 승인을 거치는 문서 목록',
-	'stablepages-text' => '다음은 문서에 제한이 걸려 있어 특정 사용자만 검토를 거치지 않고 편집을 할 수 있는 문서의 목록입니다. 이러한 편집은 권한이 있는 사용자가 검토하기 전까지는 허용되지 않습니다.',
+	'stablepages-text' => '다음은 문서에 제한이 걸려 있어 특정한 사용자만 검토를 거치지 않고 편집을 할 수 있는 문서의 목록입니다. 다른 사용자의 편집은 권한이 있는 사용자가 검토하기 전까지는 기본적으로 보여지지 않습니다.',
 	'stablepages-none' => '이 목록에 문서가 없습니다.',
 	'stablepages-config' => '설정',
+	'stablepages-indef' => '무기한 유효만 가능',
 );
 
 /** Colognian (Ripoarisch)
@@ -483,6 +515,7 @@ $messages['mk'] = array(
 Уредувањата на други корисници по основно нема да бидат видливи за читателите сè додека не ги провери овластен корисник.',
 	'stablepages-none' => 'Нема страници на овој список.',
 	'stablepages-config' => 'Конфигурација',
+	'stablepages-indef' => 'Само со бесконечен рок на истекување',
 );
 
 /** Malayalam (മലയാളം)
@@ -494,6 +527,7 @@ $messages['ml'] = array(
 	'stablepages-text' => 'സംശോധനം ആവശ്യമില്ലാത്ത വിധം ചില പ്രത്യേക ഉപയോക്താക്കൾക്ക് മാത്രം തിരുത്തുവാൻ കഴിയുന്ന താളുകളുടെ പട്ടികയാണ് താഴെ നൽകിയിരിക്കുന്നത്. മറ്റ് ഉപയോക്താക്കൾ ചെയ്യുന്ന തിരുത്തലുകൾ അംഗീകരിക്കപ്പെട്ട ഒരു ഉപയോക്താവ് സംശോധനം ചെയ്യുന്നതു വരെ എല്ലാവർക്കും കാണാനാവുന്നതല്ല.',
 	'stablepages-none' => 'ഈ പട്ടികയിൽ താളുകൾ ഒന്നും ഇല്ല',
 	'stablepages-config' => 'ക്രമീകരണം',
+	'stablepages-indef' => 'തീർച്ചപ്പെടുത്താത്ത കാലാവധി മാത്രം',
 );
 
 /** Marathi (मराठी)
@@ -537,6 +571,7 @@ $messages['nl'] = array(
 Bewerkingen door andere gebruikers worden niet weergegeven totdat daartoe gerechtigde gebruikers ze gecontroleerd hebben.",
 	'stablepages-none' => "Er zijn geen pagina's die aan de criteria voldoen",
 	'stablepages-config' => 'Instellingen',
+	'stablepages-indef' => 'Alleen zonder vervaldatum',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -606,6 +641,7 @@ $messages['pt'] = array(
 Edições de outros utilizadores não são apresentadas aos leitores até que um utilizador autorizado as tenha revisto.',
 	'stablepages-none' => 'Não há páginas nesta lista.',
 	'stablepages-config' => 'Configuração',
+	'stablepages-indef' => 'Somente de expiração infinita',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -618,6 +654,7 @@ $messages['pt-br'] = array(
 Edições de outros utilizadores não são apresentadas aos leitores até que um usuário autorizado as tenha revisadas.',
 	'stablepages-none' => 'Não há páginas nesta lista',
 	'stablepages-config' => 'Configuração',
+	'stablepages-indef' => 'Somente de expiração infinita',
 );
 
 /** Romanian (Română)
@@ -652,6 +689,7 @@ $messages['ru'] = array(
 Сделанные другими участниками правки этих статей по умолчанию не будут показаны читателям, пока не будут проверены уполномоченными участниками.',
 	'stablepages-none' => 'В данном списке отсутствуют страницы',
 	'stablepages-config' => 'настройка',
+	'stablepages-indef' => 'Только с неопределённым сроком',
 );
 
 /** Rusyn (русиньскый язык)
@@ -720,6 +758,7 @@ $messages['sv'] = array(
 Ändringar gjorda av andra användare visas inte för läsarna förrän en behörig användare granskar dem.',
 	'stablepages-none' => 'Det finns inga sidor i denna lista',
 	'stablepages-config' => 'Konfigurering',
+	'stablepages-indef' => 'Endast obegränsad giltighetstid',
 );
 
 /** Tamil (தமிழ்)
@@ -763,10 +802,11 @@ Ang ganitong mga pagbabago ay hindi tinatanggap hangga't hindi pa sila nasusuri 
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Manco Capac
  */
 $messages['tr'] = array(
 	'stablepages' => 'Değişiklik onayı kullanan sayfalar',
-	'stablepages-text' => 'Aşağıdaki liste, sadece belirli kullanıcıların gözden geçirme gerektirmeyen değişiklikler yapabileceği kısıtlı sayfaların bir listesidir. Böyle değişiklikler yetkili bir kullanıcı gözden geçirmeden yayınlanmaz.',
+	'stablepages-text' => 'Aşağıdaki liste, sadece belirli kullanıcıların gözden geçirme gerektirmeden değişiklik yapabilecekleri sayfaların bir listesidir. Diğer kullanıcılar tarafından yapılmış değişiklikler yetkilendirilmiş bir kullanıcı tarafından gözden geçirilip onaylanmadan gösterilmemektedir.',
 	'stablepages-none' => 'Bu listede hiç sayfa yok',
 	'stablepages-config' => 'Yapılandırma',
 );
@@ -808,10 +848,12 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'stablepages' => 'Trang ổn định',
-	'stablepages-text' => 'Dưới đây là danh sách các trang được cấu hình bằng tay để hiển thị bản phát hành làm nội dung trang mặc định đối với người xem.',
+	'stablepages' => 'Trang có quá trình chấp nhận sửa đổi',
+	'stablepages-text' => 'Đây là danh sách các trang có quá trình duyệt sửa đổi, chỉ cho phép một số người dùng bỏ qua quá trình này.
+Độc giả sẽ không thấy được sửa đổi của người khác cho đến khi người duyệt bài chấp nhận nó.',
 	'stablepages-none' => 'Không có trang nào trong danh sách',
 	'stablepages-config' => 'Cấu hình',
+	'stablepages-indef' => 'Chỉ hiện trang vô hạn',
 );
 
 /** Cantonese (粵語)

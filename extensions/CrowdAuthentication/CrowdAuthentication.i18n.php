@@ -356,6 +356,13 @@ $messages['stq'] = array(
 	'crowdauthentication-desc' => 'Authentisiereng-Ärwiederenge foar Atlassian Crowd',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'crowdauthentication-desc' => 'Plugin oténtikasi pikeun Atlassian Crowd',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

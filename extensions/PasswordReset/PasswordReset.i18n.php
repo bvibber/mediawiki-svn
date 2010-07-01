@@ -765,8 +765,8 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'passwordreset' => 'Reinitiar contrasigno',
-	'passwordreset-desc' => "[[Special:PasswordReset|Reinitia le contrasigno de un usator del wiki]] - require le privilegio 'passwordreset'",
+	'passwordreset' => 'Reinitialisar contrasigno',
+	'passwordreset-desc' => "[[Special:PasswordReset|Reinitialisa le contrasigno de un usator del wiki]] - require le privilegio 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nomine de usator invalide',
 	'passwordreset-emptyusername' => 'Nomine de usator vacue',
 	'passwordreset-nopassmatch' => 'Le contrasignos non es identic',
@@ -774,15 +774,15 @@ $messages['ia'] = array(
 	'passwordreset-username' => 'Nomine de usator:',
 	'passwordreset-newpass' => 'Nove contrasigno:',
 	'passwordreset-confirmpass' => 'Confirma contrasigno:',
-	'passwordreset-submit' => 'Reinitiar contrasigno',
-	'passwordreset-success' => 'Le contrasigno ha essite reinitiate pro le usator con ID: $1',
+	'passwordreset-submit' => 'Reinitialisar contrasigno',
+	'passwordreset-success' => 'Le contrasigno ha essite reinitialisate pro le usator con ID: $1',
 	'passwordreset-disableuser' => 'Disactivar conto de usator?',
 	'passwordreset-disableuserexplain' => '(impone un hash de contrasigno invalide - le usator non potera aperir un session)',
 	'passwordreset-disablesuccess' => 'Le conto del usator ha essite disactivate (ID del usator: $1)',
 	'passwordreset-accountdisabled' => 'Le conto ha essite disactivate',
 	'disabledusers' => 'Usatores disactivate',
 	'disabledusers-summary' => 'Isto es un lista de usatores que ha essite disactivate per medio de PasswordReset.',
-	'right-passwordreset' => 'Reinitiar le contrasigno de un usator ([[Special:PasswordReset|pagina special]])',
+	'right-passwordreset' => 'Reinitialisar le contrasigno de un usator ([[Special:PasswordReset|pagina special]])',
 );
 
 /** Indonesian (Bahasa Indonesia)

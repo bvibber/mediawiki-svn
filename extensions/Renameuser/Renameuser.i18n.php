@@ -152,6 +152,8 @@ $messages['ang'] = array(
  */
 $messages['ar'] = array(
 	'renameuser' => 'إعادة تسمية مستخدم',
+	'renameuser-linkoncontribs' => 'أعد تسمية المستخدم',
+	'renameuser-linkoncontribs-text' => 'أعد تسمية هذا المستخدم',
 	'renameuser-desc' => "يضيف [[Special:Renameuser|صفحة خاصة]] لإعادة تسمية مستخدم (يحتاج إلى صلاحية ''renameuser'')",
 	'renameuserold' => 'اسم المستخدم الحالي:',
 	'renameusernew' => 'الاسم الجديد:',
@@ -600,7 +602,7 @@ Pro přehled je níže zobrazen výpis z knihy přejmenování uživatelů.',
  * @author ОйЛ
  */
 $messages['cu'] = array(
-	'renameuser' => 'Прѣименѹи польѕевател҄ь',
+	'renameuser' => 'прѣимєноуи по́льꙃєватєл҄ь',
 	'renameuserold' => 'Нынѣщьнѥѥ имѧ:',
 	'renameusernew' => 'Ново имѧ:',
 	'renameuserreason' => 'Какъ съмыслъ:',
@@ -619,6 +621,8 @@ $messages['cu'] = array(
  */
 $messages['cy'] = array(
 	'renameuser' => 'Ail-enwi defnyddiwr',
+	'renameuser-linkoncontribs' => "ail-enwi'r defnyddiwr",
+	'renameuser-linkoncontribs-text' => "Ail-enwi'r defnyddiwr hwn",
 	'renameuser-desc' => "Yn ychwanegu [[Special:Renameuser|tudalen arbennig]] er mwyn gallu ail-enwi cyfrif defnyddiwr (sydd angen y gallu ''renameuser'')",
 	'renameuserold' => 'Enw presennol y defnyddiwr:',
 	'renameusernew' => "Enw newydd i'r defnyddiwr:",
@@ -726,9 +730,12 @@ Zur Information folgt das Benutzernamenänderungs-Logbuch.',
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'renameuser' => 'nameyê karberi bıvurn',
+	'renameuser-linkoncontribs' => 'name bivurne',
+	'renameuser-linkoncontribs-text' => 'Nameyê ena karber bivurne',
 	'renameuser-desc' => "qey newe ra namedayişê karberi re yew [[Special:Renameuser|pelo xas]] têare keno (gani heqqê ''karberi re newe ra name bıde'' bıbo )",
 	'renameuserold' => 'nameyê karberi yo nıkayi',
 	'renameusernew' => 'nameyê karberi yo newe',
@@ -1024,12 +1031,15 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Agony
+ * @author Centerlink
  * @author Crt
  * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'renameuser' => 'Käyttäjätunnuksen vaihto',
+	'renameuser-linkoncontribs' => 'nimeä käyttäjä uudelleen',
+	'renameuser-linkoncontribs-text' => 'Nimeä tämä käyttäjä uudelleen',
 	'renameuser-desc' => "Mahdollistaa käyttäjän uudelleennimeämisen (vaatii ''renameuser''-oikeudet).",
 	'renameuserold' => 'Nykyinen tunnus',
 	'renameusernew' => 'Uusi tunnus',
@@ -1795,6 +1805,8 @@ $messages['ka'] = array(
 	'renameuser-log' => '$1 რედაქცია. მიზეზი: $2',
 	'renameuser-move-log' => 'ავტომატურად იქნა გადატანილი გვერდი მომხმარებლის "[[User:$1|$1]]" სახელის შეცვლისას "[[User:$2|$2]]-ით"',
 	'right-renameuser' => 'მომხმარებლების სახელის გადარქმევა',
+	'renameuser-renamed-notice' => 'ამ მომხმარებელს სახელი გადაერქვა.
+ქვემოთ მოყვანილია სახელის გადარქმევის ჟურნალი.',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -2762,7 +2774,7 @@ $messages['pt-br'] = array(
 	'renameuser-desc' => "Adiciona uma [[Special:Renameuser|página especial]] para renomear um usuário (requer privilégio ''renameuser'')",
 	'renameuserold' => 'Nome de usuário atual:',
 	'renameusernew' => 'Novo nome de usuário:',
-	'renameuserreason' => 'Motivo de renomear:',
+	'renameuserreason' => 'Motivo da alteração de nome:',
 	'renameusermove' => 'Mover as páginas de usuário, páginas de discussão de usuário e sub-páginas para o novo nome',
 	'renameuserreserve' => 'Impedir novos usos do antigo nome de usuário',
 	'renameuserwarnings' => 'Alertas:',
@@ -2825,28 +2837,33 @@ $messages['rmy'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Emily
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Memo18
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'renameuser' => 'Redenumește utilizator',
+	'renameuser' => 'Redenumire utilizator',
+	'renameuser-linkoncontribs' => 'redenumirea utilizatorului',
+	'renameuser-linkoncontribs-text' => 'Redenumeşte acest utilizator',
 	'renameuser-desc' => "Adaugă o [[Special:Renameuser|pagină specială]] pentru a redenumi un utilizator (necesită drept de ''renameuser'')",
 	'renameuserold' => 'Numele de utilizator existent:',
-	'renameusernew' => 'Numele de utilizator nou:',
+	'renameusernew' => 'Noul nume de utilizator:',
 	'renameuserreason' => 'Motivul schimbării numelui:',
 	'renameusermove' => 'Mută pagina de utilizator și pagina de discuții (și subpaginile lor) la noul nume',
-	'renameuserreserve' => 'Utilizarea ulterioară a vechiului nume de utilizator',
+	'renameuserreserve' => 'Blochează vechiul nume de utilizator pentru utilizări viitoare',
 	'renameuserwarnings' => 'Avertizări:',
 	'renameuserconfirm' => 'Da, redenumește utilizatorul',
 	'renameusersubmit' => 'Trimite',
-	'renameusererrordoesnotexist' => 'Utilizatorul "$1" nu există',
-	'renameusererrorexists' => 'Utilizatorul "$1" există deja',
-	'renameusererrorinvalid' => 'Numele de utilizator "<nowiki>$1</nowiki>" este invalid',
+	'renameusererrordoesnotexist' => 'Utilizatorul „<nowiki>$1</nowiki>” nu există.',
+	'renameusererrorexists' => 'Utilizatorul „<nowiki>$1</nowiki>” există deja.',
+	'renameusererrorinvalid' => 'Numele de utilizator „<nowiki>$1</nowiki>” este invalid.',
 	'renameusererrortoomany' => 'Utilizatorul "<nowiki>$1</nowiki>" are $2 {{PLURAL:$2|contribuție|contribuții}}, redenumirea unui utilizator cu mai mult de $3 {{PLURAL:$3|contribuție|contribuții}} contribuții ar putea afecta performanța sitului',
-	'renameuser-error-request' => 'A fost o problemă la procesarea cererii.
-Întoarceți-vă și încercați din nou.',
+	'renameuser-error-request' => 'Am întâmpinat o problemă în procesul de recepționare a cererii.
+Vă rugăm să vă întoarceți și să reîncercați.',
 	'renameuser-error-same-user' => 'Nu puteți redenumi un utilizator la același nume ca și înainte.',
 	'renameusersuccess' => 'Utilizatorul "$1" a fost redenumit în "$2"',
 	'renameuser-page-exists' => 'Pagina $1 există deja și nu poate fi suprascrisă automat.',
@@ -2858,8 +2875,8 @@ $messages['ro'] = array(
 	'renameuser-log' => '{{PLURAL:$1|o contribuție|$1 contribuții}}. Motiv: $2',
 	'renameuser-move-log' => 'Pagină mutată automat la redenumirea utilizatorului de la "[[User:$1|$1]]" la "[[User:$2|$2]]"',
 	'right-renameuser' => 'Redenumește utilizatori',
-	'renameuser-renamed-notice' => 'Acest utilizator i s-a schimbat numele.
-Jurnalul de redenumiri este furnizat mai jos pentru referință.',
+	'renameuser-renamed-notice' => 'Acestui utilizator i-a fost schimbat numele.
+Jurnalul redenumirilor este furnizat mai jos pentru referință.',
 );
 
 /** Tarandíne (Tarandíne)

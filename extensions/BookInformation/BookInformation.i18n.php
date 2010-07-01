@@ -1105,7 +1105,7 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'bookinfo-header' => 'Информации за книга',
-	'bookinformation-desc' => 'Додаток на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
+	'bookinformation-desc' => 'Додаток на [[Special:Booksources|специјалната страница за книги]] со информации од мрежна служба',
 	'bookinfo-result-title' => 'Наслов:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издавач:',
@@ -1554,6 +1554,8 @@ $messages['su'] = array(
 	'bookinfo-result-year' => 'Taun:',
 	'bookinfo-error-invalidisbn' => 'ISBN nu diasupkeun salah.',
 	'bookinfo-error-nosuchitem' => 'Euweuh atawa teu kapanggih.',
+	'bookinfo-error-nodriver' => 'Gagal mitembeyan Book Information Driver.',
+	'bookinfo-error-noresponse' => 'Teu némbal atawa rekésna gagal.',
 	'bookinfo-purchase' => 'Beuli ti $1',
 	'bookinfo-provider' => 'Panyadia data: $1',
 );

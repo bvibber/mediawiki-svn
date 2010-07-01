@@ -302,12 +302,13 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'random-users-avatars-title' => 'Conheça a comunidade',
-	'random-users-avatars-desc' => 'Adiciona a marca <code>&lt;randomuserswithavatars&gt;</code> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
+	'random-users-avatars-desc' => 'Adiciona o elemento <code>&lt;randomuserswithavatars&gt;</code> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

@@ -325,6 +325,13 @@ $messages['sk'] = array(
 	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'mwreleases-desc' => 'Doda [[Mediawiki:Mwreleases-list|seznam]] podprtih izdaj, dostopnih preko programskega vmesnika',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

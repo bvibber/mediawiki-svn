@@ -77,7 +77,10 @@ class PageTranslationHooks {
 
 		// Update the target translation page
 		list( , $code ) = TranslateUtils::figureMessage( $title->getDBkey() );
-		self::updateTranslationPage( $page, $code, $user, $flags, $summary );
+		global $wgTranslateDocumentationLanguageCode;
+		if ( $code !== $wgTranslateDocumentationLanguageCode ) {
+			self::updateTranslationPage( $page, $code, $user, $flags, $summary );
+		}
 
 		return true;
 	}
@@ -343,10 +346,10 @@ FOO;
 
 				return false;
 			}
-		} elseif ( $action === 'move' || $action === 'delete' ) {
+		} elseif ( $action === 'delete' ) {
 			$page = TranslatablePage::newFromTitle( $title );
 			if ( $page->getMarkedTag() ) {
-				$result = array( 'tpt-move-impossible' );
+				$result = array( 'tpt-delete-impossible' );
 				return false;
 			}
 		}
@@ -525,20 +528,42 @@ FOO;
 		return true;
 	}
 
-	public static function formatLogEntry( $type, $action, $title, $forContent, $params ) {
+	public static function formatLogEntry( $type, $action, $title, $forUI, $params ) {
 		global $wgLang, $wgContLang;
 
-		$language = $forContent ? $wgContLang : $wgLang;
+		$language = $forUI === null ? $wgContLang : $wgLang;
 		$opts = array( 'parseinline', 'language' => $language );
+
 		$_ = unserialize( $params[0] );
 		$user =  $_['user'];
 
 		if ( $action === 'mark' ) {
-			$revision =  $_['revision'];
-			return wfMsgExt( 'pt-log-mark', $opts, $title->getPrefixedText(), $user, $revision );
+			return wfMsgExt( 'pt-log-mark', $opts, $title->getPrefixedText(), $user, $_['revision'] );
 		} elseif( $action === 'unmark' ) {
 			return wfMsgExt( 'pt-log-unmark', $opts, $title->getPrefixedText(), $user );
+		} elseif( $action === 'moveok' ) {
+			return wfMsgExt( 'pt-log-moveok', $opts, $title->getPrefixedText(), $user );
+		} elseif( $action === 'movenok' ) {
+			return wfMsgExt( 'pt-log-movenok', $opts, $title->getPrefixedText(), $user, $_['target'] );
 		}
 	}
+
+	public static function replaceMovePage( &$list ) {
+		$list['Movepage'] = 'SpecialPageTranslationMovePage';
+		return true;
+	}
+
+	public static function lockedPagesCheck( $title, $user, $action, &$result ) {
+		global $wgMemc;
+		$key = wfMemcKey( 'pt-lock', $title->getPrefixedText() );
+		if ( $wgMemc->get( $key ) === true ) {
+			$result = array( 'pt-locked-page' );
+			return false;
+		}
+
+		return true;
+	}
+
+
 
 }

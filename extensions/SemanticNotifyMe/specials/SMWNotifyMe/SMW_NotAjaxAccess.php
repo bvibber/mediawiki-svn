@@ -1,4 +1,7 @@
 <?php
+/*
+ * Author: ning
+ */
 if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
@@ -19,7 +22,7 @@ function smwf_nm_NotifyAccess( $method, $params ) {
 		global $wgUser;
 		$wgUser->setOption( 'enotifyme', $params );
 		$wgUser->saveSettings();
-		return 'Update NotifyMe mail setting successfully!';
+		return wfMsg( 'smw_nm_ajax_mailupdate' );
 	}
 	else if ( $method == "addNotify" ) {
 		if ( $smwgQEnabled ) {
@@ -59,7 +62,7 @@ function smwf_nm_NotifyAccess( $method, $params ) {
 			}
 			global $wgParser;
 
-			   if ( ( $wgParser->getTitle() instanceof Title ) && ( $wgParser->getOptions() instanceof ParserOptions ) ) {
+		   	if ( ( $wgParser->getTitle() instanceof Title ) && ( $wgParser->getOptions() instanceof ParserOptions ) ) {
 				$result = $wgParser->recursiveTagParse( $result );
 			} else {
 				global $wgTitle;
@@ -108,6 +111,6 @@ function smwf_nm_NotifyAccess( $method, $params ) {
 		return $result;
 	}
 	else {
-		return "Operation failed, please retry later.";
+		return wfMsg( 'smw_nm_ajax_fail' );
 	}
 }

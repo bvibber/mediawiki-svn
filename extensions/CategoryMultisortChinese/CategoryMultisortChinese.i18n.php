@@ -32,21 +32,37 @@ $messages['en'] = array(
  */
 $messages['be-tarask'] = array(
 	'categorymultisortchinese-desc' => 'Дазваляе праглядаць катэгорыі з рознымі ключамі сартаваньня для розных варыянтаў кітайскай мовы',
-	'categorymultisort-sortkey-name-stroke' => 'Рыса',
-	'categorymultisort-sortkey-name-stroke-simplified' => 'Рыса: Спрошчаная',
-	'categorymultisort-sortkey-name-stroke-traditional' => 'Рыса: Традыцыйная',
-	'categorymultisort-sortkey-name-radical' => 'Радыкальны',
-	'categorymultisort-sortkey-name-radical-simplified' => 'Радыкальны: Спрошчаны',
-	'categorymultisort-sortkey-name-radical-traditional' => 'Радыкальны: Традыцыйны',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Паўночнакітайская: піньінь',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Паўночнакітайская: чжуінь',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Паўночнакітайская: Ўэйда—Джайлза',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Паўночнакітайская: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Паўночнакітайская: тун’юн-піньінь',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Кантонская: ютпхін',
+	'categorymultisort-sortkey-name-stroke' => 'па рысах',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'па рысах: спрошчаная',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'па рысах: традыцыйная',
+	'categorymultisort-sortkey-name-radical' => 'па радыкалах',
+	'categorymultisort-sortkey-name-radical-simplified' => 'па радыкалах: спрошчаная',
+	'categorymultisort-sortkey-name-radical-traditional' => 'па радыкалах: традыцыйная',
 );
 
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
 $messages['br'] = array(
+	'categorymultisortchinese-desc' => "Aotreañ a ra ar rummadoù da vezañ diskouezet gant alc'hwezioù rummañ disheñvel arbennik d'ar skriturioù sinaek",
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarineg : Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarineg : Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarineg : Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarineg : MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarineg : Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantoneg : Jyutping',
 	'categorymultisort-sortkey-name-stroke' => 'Neuz',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Neuz : eeunaet',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Neuz : hengounel',
+	'categorymultisort-sortkey-name-radical' => 'Gwrizienn',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Gwrizienn : Eeunaet',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Gwrizienn : Hengounel',
 );
 
 /** German (Deutsch)
@@ -107,6 +123,13 @@ $messages['es'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Tradicional',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ */
+$messages['fi'] = array(
+	'categorymultisortchinese-desc' => 'Mahdollistaen luokkien katselemisen erilaisilla kiiinankielisille merkeille luonteenomaisilla lajitteluavaimilla',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Peter17
@@ -144,6 +167,25 @@ $messages['gl'] = array(
 	'categorymultisort-sortkey-name-radical' => 'Radical',
 	'categorymultisort-sortkey-name-radical-simplified' => 'Radical: simplificado',
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: tradicional',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'categorymultisortchinese-desc' => 'Macht s megli, Kategorie no unterschidlige Sortierkriterie aazzeige, wu speziäll uf di chinesisch Sproch zueträffe',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Zhuyin',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong Pinyin',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonesisch: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Strich',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Strich: Churzzeiche',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Strich: Langzeiche',
+	'categorymultisort-sortkey-name-radical' => 'Radikal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikal: Churzzeiche',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Langzeiche',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -188,6 +230,10 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
 	'categorymultisort-sortkey-name-stroke' => 'Strich',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Strich: Vereinfacht',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Strich: Traditionell',
@@ -234,6 +280,25 @@ $messages['nl'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Traditioneel',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'categorymultisortchinese-desc' => 'Umożliwia zmianę sposobu sortowania kategorii zgodnie z różnymi Chińskimi transkrypcjami',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandaryński – Hanyu pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandaryński – Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandaryński – Wade‐Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandaryński – MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandaryński – Tongyong pinyin',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantoński – Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Kreski',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Kreski – Uproszczony',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Kreski – Tradycyjny',
+	'categorymultisort-sortkey-name-radical' => 'Klucz',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Klucz – Uproszczony',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Klucz – Tradycyjny',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -259,6 +324,12 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'categorymultisortchinese-desc' => 'Permitir que as categorias sejam visualizadas com diferentes chaves de ordenação específicas para caligrafias chinesas',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarim: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarim: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarim: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarim: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarim: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Cantonês: Jyutping',
 	'categorymultisort-sortkey-name-stroke' => 'Traço',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Traço: Simplificado',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Traço: Tradicional',

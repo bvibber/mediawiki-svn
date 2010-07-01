@@ -225,6 +225,13 @@ $messages['ja'] = array(
 	'categorytests-desc' => 'カテゴリに関する試験のための関数群',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'categorytests-desc' => 'ფუნქციები კატეგორიის შესამოწმებლად',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

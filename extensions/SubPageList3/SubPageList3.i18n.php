@@ -376,10 +376,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'spl3-desc' => 'Cria automaticamente uma lista das subpáginas de uma página usando a marca <code><nowiki><splist /></nowiki></code>',
+	'spl3-desc' => 'Cria automaticamente uma lista das subpáginas de uma página usando o elemento <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Valor desconhecido para a opção $1.',
 	'spl3_nosubpages' => '$1 não tem subpáginas para listar.',
 );

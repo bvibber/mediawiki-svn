@@ -121,6 +121,15 @@ $messages['cs'] = array(
 	'absenteelandlord-desc' => 'Automaticky zamyká wiki databázi, pokud jsou všichni správci po určitou dobu neaktivní',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'absenteelandlord-reason' => 'Clowyd y gronfa ddata hon yn awtomatig oherwydd disymudrwydd y gweinyddwyr.',
+	'absenteelandlord-desc' => "Yn awto-gloi cronfa ddata'r wici pan nad yw neb o'r gweinyddwyr wedi gweithredu ers meityn",
+);
+
 /** Danish (Dansk)
  * @author Jan Friberg
  */

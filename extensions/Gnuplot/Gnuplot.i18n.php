@@ -320,10 +320,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'gnuplot-desc' => 'Adiciona a marca <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
+	'gnuplot-desc' => 'Adiciona o elemento <code><nowiki><gnuplot></nowiki></code> para utilizar o Gnuplot',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -366,6 +367,13 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'gnuplot-desc' => 'Pridáva značku <code><nowiki><gnuplot></nowiki></code> pre použitie Gnuplot',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'gnuplot-desc' => 'Doda etiketo <code><nowiki><gnuplot></nowiki></code> za uporabo Gnuplot',
 );
 
 /** Lower Silesian (Schläsch)

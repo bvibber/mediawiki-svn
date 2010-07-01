@@ -28,6 +28,21 @@ $messages['be-tarask'] = array(
 	'wikimediamobile-desc' => 'Сэрвісныя функцыі MediaWiki для праекту Wikimedia-mobile ( http://github.com/hcatlin/wikimedia-mobile )',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'wikimediamobile-desc' => "Skorañ a ra MediaWiki arc'hweladurioù evit raktres Wikimedia-mobile herberc'hiet war http://github.com/hcatlin/wikimedia-mobile",
+);
+
+/** Bosnian (Bosanski)
+ * @author Palapa
+ */
+$messages['bs'] = array(
+	'wikimediamobile-desc' => 'MediaWiki podržava funkcije za projekat Wikimedia-mobile koji se nalazi na http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Chechen (Нохчийн)
  * @author Sasan700
  */
@@ -37,9 +52,10 @@ $messages['ce'] = array(
 
 /** German (Deutsch)
  * @author Kebap
+ * @author Kghbln
  */
 $messages['de'] = array(
-	'wikimediamobile-desc' => 'MediaWiki unterstützt Funktionen für das Wikimedia-mobile Projekt, das sich hier befindet: http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'MediaWiki unterstützt Funktionen für das „Wikimedia-mobile“-Projekt, das hier zu finden ist: http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -106,6 +122,20 @@ $messages['id'] = array(
 	'wikimediamobile-desc' => 'MediaWiki mendukung  fungsi untuk proyek host Wikimedia-mobile di http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Italian (Italiano)
+ * @author Annayram
+ */
+$messages['it'] = array(
+	'wikimediamobile-desc' => 'Le funzioni MediaWiki di supporto per il progetto Wikimedia-mobile ospitate presso http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'wikimediamobile-desc' => 'ウィキメディア・モバイルプロジェクト用の MediaWiki サポート機能。http://github.com/hcatlin/wikimedia-mobile でホストされています。',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -168,6 +198,20 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'wikimediamobile-desc' => 'Вспомогательные функции MediaWiki для мобильного проекта Викимедии, расположенного на http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikimediamobile-desc' => 'Podpora funkcijam MediaWiki za projekt Wikimedia-mobile, gostovan na http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikimediamobile-desc' => 'MediaWiki ngadukung fungsi proyék Wikimédia-balawiri nyayang di http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Tagalog (Tagalog)

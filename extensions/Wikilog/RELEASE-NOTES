@@ -43,6 +43,9 @@ your case.
 * Comment syndication feeds are now available. Currently, there is one feed
   per wikilog article, that lists comments made to that article. In the
   future, feeds per thread, per wikilog and global may be provided.
+* Added support for MediaWiki 1.16 Vector skin.
+* Special:Wikilog now allows quering by namespace, with the "Namespace:*"
+  syntax.
 
 === Bug fixes ===
 
@@ -56,6 +59,7 @@ your case.
   Noted by Vitaliy Filippov.
 * Don't croak in Wikilog::getWikilogInfo() if $title is NULL. Patch by
   Vitaliy Filippov.
+* Improved consistency of edit links with the rest of MediaWiki.
 
 
 == Wikilog 1.0.1 ==

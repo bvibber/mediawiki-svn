@@ -93,6 +93,19 @@ $messages['es'] = array(
 	'prefs-category' => 'Categoría',
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ * @author Nike
+ */
+$messages['fi'] = array(
+	'categorymultisort-desc' => 'Mahdollistaa luokkien katselemisen eri lajitteluavaimilla',
+	'categorymultisort-defaultsortkey-name' => 'Oletus',
+	'categorymultisort-sortkey' => 'Lajitteluavain:',
+	'categorymultisort-go' => 'Siirry',
+	'categorymultisort-default-sortkey' => 'Oletuslajitteluavain:',
+	'prefs-category' => 'Luokka',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -153,6 +166,15 @@ $messages['ia'] = array(
 	'prefs-category' => 'Categoria',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Baku',
+	'categorymultisort-go' => 'Tuju ke',
+	'prefs-category' => 'Kategori',
+);
+
 /** Japanese (日本語)
  * @author Iwai.masaharu
  */
@@ -197,6 +219,33 @@ $messages['nl'] = array(
 	'prefs-category' => 'Categorie',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'prefs-category' => 'Abdeeling',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'categorymultisort-desc' => 'Umożliwia sortowanie kategorii z użyciem różnych kluczy',
+	'categorymultisort-defaultsortkey-name' => 'Domyślnie',
+	'categorymultisort-sortkey' => 'Sposób sortowania',
+	'categorymultisort-go' => 'Dalej',
+	'categorymultisort-default-sortkey' => 'Domyślne sortowanie',
+	'prefs-category' => 'Kategoria',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'categorymultisort-go' => 'ورځه',
+	'prefs-category' => 'وېشنيزه',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -232,6 +281,34 @@ $messages['ru'] = array(
 	'categorymultisort-go' => 'Перейти',
 	'categorymultisort-default-sortkey' => 'Ключ сортировки по умолчанию:',
 	'prefs-category' => 'Категория',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Подразумевано',
+	'categorymultisort-sortkey' => 'Кључ сортирања:',
+	'categorymultisort-go' => 'Иди',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Podrazumevano',
+	'categorymultisort-sortkey' => 'Ključ sortiranja:',
+	'categorymultisort-go' => 'Idi',
+);
+
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'categorymultisort-desc' => 'Kategorilerin değişik sıralama türleriyle görüntülenmesini sağlar',
+	'categorymultisort-defaultsortkey-name' => 'Varsayılan',
+	'categorymultisort-sortkey' => 'Sıralama türü:',
+	'categorymultisort-go' => 'Git',
+	'categorymultisort-default-sortkey' => 'Varsayılan sıralama türü:',
+	'prefs-category' => 'Kategori',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

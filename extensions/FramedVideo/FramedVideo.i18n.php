@@ -603,7 +603,7 @@ $messages['mk'] = array(
 	'framedvideo_helppage' => 'Help:Видео',
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Повеќе за синтаксата]].',
 	'framedvideo_error_height_and_width_required' => 'Типот на видео „$1“ бара параметри „height“ и „width2“ или „width“.',
-	'framedvideo-desc' => 'Овозможува вметнување на видеоклипови од разни веб-страници со помош на ознаката <code>&lt;video&gt;</code>',
+	'framedvideo-desc' => 'Овозможува вметнување на видеоклипови од разни мрежни места со помош на ознаката <code>&lt;video&gt;</code>',
 );
 
 /** Dutch (Nederlands)

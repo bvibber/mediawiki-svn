@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'cassandra-desc' => '{{desc}}',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -30,6 +37,20 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'cassandra-desc' => 'Boniañ a ra testenn pep adweladenn en diaz roadennoù [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Bosnian (Bosanski)
+ * @author Palapa
+ */
+$messages['bs'] = array(
+	'cassandra-desc' => 'Čuva ispravljeni tekst u [http://cassandra.apache.org/ Apache Cassandra] bazi podataka',
+);
+
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'cassandra-desc' => 'Cadw testun diwygiad yng nghronfa ddata [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
 /** German (Deutsch)
@@ -212,6 +233,13 @@ $messages['sr-el'] = array(
 	'cassandra-desc' => 'Smešta reviziju teksta u [http://cassandra.apache.org Apaš Kasandra] bazu podataka',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'cassandra-desc' => 'Simpen téks révisi dina gudang data [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
@@ -238,5 +266,12 @@ $messages['tr'] = array(
  */
 $messages['uk'] = array(
 	'cassandra-desc' => 'Зберігати текст версії в базі даних [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'cassandra-desc' => 'Lưu trữ văn bản phiên bản trong cơ sở dữ liệu [http://cassandra.apache.org/ Apache Cassandra]',
 );
 

@@ -634,6 +634,7 @@ $messages['cdo'] = array(
 $messages['ce'] = array(
 	'categorytree-portlet' => 'Кадегарш',
 	'categorytree-category' => 'Кадегар',
+	'categorytree-collapse' => 'къайла яккха',
 );
 
 /** Cebuano (Cebuano)
@@ -2331,11 +2332,12 @@ $messages['ltg'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author Marozols
  * @author Xil
  * @author Yyy
  */
 $messages['lv'] = array(
-	'categorytree' => 'KategorijuKoks',
+	'categorytree' => 'Kategoriju koks',
 	'categorytree-portlet' => 'Kategorijas',
 	'categorytree-legend' => 'Rādīt kategoriju koku',
 	'categorytree-desc' => "AJAX bāzēts ''gadget'', kuru lieto lai attēlotu wiki [[Special:CategoryTree|kategoriju struktūru]]",
@@ -2405,7 +2407,7 @@ $messages['ml'] = array(
 	'categorytree-legend' => 'വർഗ്ഗവൃക്ഷം പ്രദർശിപ്പിക്കുക',
 	'categorytree-desc' => 'വിക്കിയിലെ [[Special:CategoryTree|വർഗ്ഗങ്ങളുടെ ഘടന]] പ്രദർശിപ്പിക്കുവാനുള്ള  AJAX സാങ്കേതികവിദ്യ ഉപയോഗിക്കുന്ന ഗാഡ്ജറ്റ്.',
 	'categorytree-header' => 'വർഗ്ഗങ്ങളുടെ ഘടന വ്യക്ഷരൂപത്തിൽ കാണുവാൻ ഒരു വർഗ്ഗത്തിന്റെ പേരു ചേർക്കുക.
-ഇതു പ്രവർത്തിക്കണമെങ്കിൽ AJAX എന്ന ചുരുക്കനാമത്തിലറിയപ്പെടുന്ന അഡ്‌വാൻസ്‌ഡ് ജാവാസ്ക്രിപ്റ്റ് സാങ്കേതികവിദ്യ ആവശ്യമാണ്‌.
+ഇതു പ്രവർത്തിക്കണമെങ്കിൽ അജാക്സ് എന്ന ചുരുക്കനാമത്തിലറിയപ്പെടുന്ന നൂതന ജാവാസ്ക്രിപ്റ്റ് സാങ്കേതികവിദ്യ ആവശ്യമാണ്‌.
 താങ്കളുടെ ബ്രൗസറിൽ ജാവാസ്ക്രിപ്റ്റ് പ്രവർത്തനരഹിതമാക്കിയതാണെങ്കിലോ അല്ലെങ്കിൽ ബ്രൗസർ കാലഹരണപ്പെട്ടതാണെങ്കിലോ ഇതു പ്രവർത്തിക്കില്ല.',
 	'categorytree-category' => 'വർഗ്ഗം:',
 	'categorytree-go' => 'വൃക്ഷം പ്രദർശിപ്പിക്കുക',
@@ -3026,8 +3028,10 @@ Musyariy, kaytaqa AJAX nisqa sapaq JavaScript ruranallawanmi llamk'achiyta atink
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'categorytree' => 'Arborele categoriilor',
@@ -3046,7 +3050,7 @@ $messages['ro'] = array(
 	'categorytree-member-counts' => 'conține {{PLURAL:$1|1 subcategorie|$1 subcategorii}}, {{PLURAL:$2|1 pagină|$2 pagini}} și {{PLURAL:$3|1 fișier|$3 fișiere}}',
 	'categorytree-load' => 'încarcă',
 	'categorytree-loading' => 'încărcare…',
-	'categorytree-nothing-found' => 'fără subcategorii',
+	'categorytree-nothing-found' => 'fără rezultat',
 	'categorytree-no-subcategories' => 'nici o subcategorie',
 	'categorytree-no-parent-categories' => 'nici o categorie părinte',
 	'categorytree-no-pages' => 'nici o pagină sau subcategorie',

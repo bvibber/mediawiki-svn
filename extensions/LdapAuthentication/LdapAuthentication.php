@@ -13,7 +13,7 @@
 #
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
-# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
 /**
@@ -36,11 +36,57 @@
 # LdapAuthentication.php
 #
 # Info available at http://www.mediawiki.org/wiki/Extension:LDAP_Authentication
-# and at http://www.mediawiki.org/wiki/Extension:LDAP_Authentication/Configuration_Examples
-# and at http://www.mediawiki.org/wiki/Extension:LDAP_Authentication/Smartcard_Configuration_Examples
-#
 # Support is available at http://www.mediawiki.org/wiki/Extension_talk:LDAP_Authentication 
 #
+
+if ( !defined( 'MEDIAWIKI' ) ) exit;
+
+$wgLDAPDomainNames = array();
+$wgLDAPServerNames = array();
+$wgLDAPUseLocal = false;
+$wgLDAPEncryptionType = array();
+$wgLDAPOptions = array();
+$wgLDAPPort = array();
+$wgLDAPSearchStrings = array();
+$wgLDAPProxyAgent = array();
+$wgLDAPProxyAgentPassword = array();
+$wgLDAPSearchAttributes = array();
+$wgLDAPBaseDNs = array();
+$wgLDAPGroupBaseDNs = array();
+$wgLDAPUserBaseDNs = array();
+$wgLDAPWriterDN = array();
+$wgLDAPWriterPassword = array();
+$wgLDAPWriteLocation = array();
+$wgLDAPAddLDAPUsers = array();
+$wgLDAPUpdateLDAP = array();
+$wgLDAPPasswordHash = array();
+$wgLDAPMailPassword = array();
+$wgLDAPRetrievePrefs = array();
+$wgLDAPPreferences = array();
+$wgLDAPDisableAutoCreate = array();
+$wgLDAPDebug = 0;
+$wgLDAPGroupDN = ""; //Deprecated
+$wgLDAPGroupUseFullDN = array();
+$wgLDAPLowerCaseUsername = array();
+$wgLDAPGroupUseRetrievedUsername = array();
+$wgLDAPGroupObjectclass = array();
+$wgLDAPGroupAttribute = array();
+$wgLDAPGroupNameAttribute = array();
+$wgLDAPGroupsUseMemberOf = array();
+$wgLDAPUseLDAPGroups = array();
+$wgLDAPLocallyManagedGroups = array();
+$wgLDAPGroupsPrevail = array();
+$wgLDAPRequiredGroups = array();
+$wgLDAPExcludedGroups = array();
+$wgLDAPGroupSearchNestedGroups = array();
+$wgLDAPSmartcardDomain = ""; //Deprecated
+$wgLDAPSSLUsername = ""; //Deprecated
+$wgLDAPAuthAttribute = array();
+$wgLDAPAutoAuthUsername = "";
+$wgLDAPAutoAuthDomain = "";
+$wgLDAPUniqueAttribute = array(); //Currently unused
+$wgLDAPUniqueBlockLogin = array(); //Currently unused
+$wgLDAPUniqueRenameUser = array(); //Currently unused
 
 /**
  * Add extension information to Special:Version
@@ -48,7 +94,7 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'LDAP Authentication Plugin',
-	'version' => '1.2b (alpha)',
+	'version' => '1.2c',
 	'author' => 'Ryan Lane',
 	'descriptionmsg' => 'ldapauthentication-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:LDAP_Authentication',
@@ -161,6 +207,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 	 */
 	function connect() {
 		global $wgLDAPServerNames;
+		global $wgLDAPPort;
 		global $wgLDAPEncryptionType;
 		global $wgLDAPOptions;
 
@@ -201,7 +248,12 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		$tmpservers = $wgLDAPServerNames[$_SESSION['wsDomain']];
 		$tok = strtok( $tmpservers, " " );
 		while ( $tok ) {
-			$servers = $servers . " " . $serverpre . $tok;
+			if ( isset( $wgLDAPPort[$_SESSION['wsDomain']] ) ) {
+				$this->printDebug( "Using non-standard port: " . $wgLDAPPort[$_SESSION['wsDomain']], SENSITIVE );
+				$servers = $servers . " " . $serverpre . $tok . ":" . $wgLDAPPort[$_SESSION['wsDomain']];
+			} else {
+				$servers = $servers . " " . $serverpre . $tok;
+			}
 			$tok = strtok( " " );
 		}
 		$servers = rtrim( $servers );
@@ -387,6 +439,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		global $wgLDAPDomainNames, $wgLDAPUseLocal;
 		global $wgLDAPAddLDAPUsers;
 		global $wgLDAPAutoAuthDomain;
+		global $wgLDAPMailPassword;
 
 		$this->printDebug( "Entering modifyUITemplate", NONSENSITIVE );
 
@@ -395,7 +448,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		}
 
 		$template->set( 'usedomain', true );
-		$template->set( 'useemail', false );
+		$template->set( 'useemail', isset( $wgLDAPMailPassword[$_SESSION['wsDomain']] ) && $wgLDAPMailPassword[$_SESSION['wsDomain']] );	
 
 		$tempDomArr = $wgLDAPDomainNames;
 		if ( $wgLDAPUseLocal ) {
@@ -403,7 +456,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 			array_push( $tempDomArr, 'local' );
 		}
 
-		if ( isset( $wgLDAPAutoAuthDomain ) ) {
+		if ( isset( $wgLDAPAutoAuthDomain ) && $wgLDAPAutoAuthDomain != "" ) {
 			$this->printDebug( "Allowing auto-authentication login, removing the domain from the list.", NONSENSITIVE );
 
 			// There is no reason for people to log in directly to the wiki if the are using an
@@ -866,7 +919,7 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 
 		$this->printDebug( "Entering strict.", NONSENSITIVE );
 
-		if ( $wgLDAPUseLocal || $wgLDAPMailPassword ) {
+		if ( $wgLDAPUseLocal || ( isset( $wgLDAPMailPassword[$_SESSION['wsDomain']] ) && $wgLDAPMailPassword[$_SESSION['wsDomain']] ) ) {
 			$this->printDebug( "Returning false in strict().", NONSENSITIVE );
 			return false;
 		} else {
@@ -1304,10 +1357,21 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 					# The first entry is always a count
 					$memberOfMembers = $this->userInfo[0]["memberof"];
 					array_shift( $memberOfMembers );
-					$groups = array( "dn" => array(), "short" => array() );
-					foreach ( $memberOfMembers as $mem ) {
+					$groups = array( "dn"=> array(), "short"=>array() );
+
+					foreach( $memberOfMembers as $mem ) {
 						array_push( $groups["dn"], strtolower( $mem ) );
+
+						// Get short name of group
+						$memAttrs = explode( ',', strtolower( $mem ) );
+						if ( isset( $memAttrs[0] ) ) {
+							$memAttrs = explode( '=', $memAttrs[0] );
+							if ( isset( $memAttrs[0] ) ) {
+								array_push( $groups["short"], strtolower( $memAttrs[1] ) );
+							}
+						}
 					}
+
 					$this->userLDAPGroups = $groups;
 				}
 			} else {
@@ -1393,7 +1457,8 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		global $wgLDAPGroupObjectclass, $wgLDAPGroupAttribute, $wgLDAPGroupNameAttribute;
 		global $wgLDAPProxyAgent, $wgLDAPProxyAgentPassword;
 		global $wgUser;
-
+		global $wgLDAPGroupsUseMemberOf;
+		
 		$this->printDebug( "Entering searchGroups", NONSENSITIVE );
 
 		$base = $this->getBaseDN( GROUPDN );
@@ -1402,14 +1467,10 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 		$attribute = $wgLDAPGroupAttribute[$_SESSION['wsDomain']];
 		$nameattribute = $wgLDAPGroupNameAttribute[$_SESSION['wsDomain']];
 
-                // We actually want to search for * not \2a
-                $value = $dn;
-                if ( $value != "*" )
-                        $value = $this->getLdapEscapedString( $value );
-
-		$filter = "(&($attribute=$value)(objectclass=$objectclass))";
-
-		$this->printDebug( "Search string: $filter", SENSITIVE );
+		// We actually want to search for * not \2a, ensure we don't escape *
+		$value = $dn;
+		if ( $value != "*" )
+			$value = $this->getLdapEscapedString( $value );
 
 		if ( isset( $wgLDAPProxyAgent[$_SESSION['wsDomain']] ) ) {
 			// We'll try to bind as the proxyagent as the proxyagent should normally have more
@@ -1419,8 +1480,58 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 			$bind = $this->bindAs( $wgLDAPProxyAgent[$_SESSION['wsDomain']], $wgLDAPProxyAgentPassword[$_SESSION['wsDomain']] );
 		}
 
+		$groups = array( "short" => array(), "dn" => array() );
+		
+		// AD does not include the primary group in the list of groups, we have to find it ourselves.
+		// TODO: find a way to only do this search for AD domains.
+		if ( $dn != "*" ) {
+			$PGfilter = "(&(distinguishedName=$value)(objectclass=user))";
+			$this->printDebug( "User Filter: $PGfilter", SENSITIVE );
+			$PGinfo = @ldap_search( $ldapconn, $base, $PGfilter );
+			$PGentries = @ldap_get_entries( $ldapconn, $PGinfo );
+			if ( $PGentries ) {
+				$Usid = $PGentries[0]['objectsid'][0];
+				$PGrid = $PGentries[0]['primarygroupid'][0];
+				$PGsid = bin2hex( $Usid );
+				for ( $i=0; $i < 56; $i += 2 ) {
+					$PGSID[] = substr( $PGsid, $i, 2 );
+				}
+				$dPGrid = dechex( $PGrid );
+				$dPGrid = str_pad( $dPGrid, 8, '0', STR_PAD_LEFT );
+				$PGRID = array();
+				for ( $i = 0; $i < 8; $i += 2 ) {
+					array_push( $PGRID, substr( $dPGrid, $i, 2 ) );
+				}
+				for ( $i = 24; $i < 28; $i++ ) {
+					$PGSID[$i] = array_pop( $PGRID );
+				}
+				foreach ( $PGSID as $PGsid_bit ) {
+					$PGsid_string .= "\\" . $PGsid_bit;
+				}
+				$PGfilter = "(&(objectSid=$PGsid_string)(objectclass=$objectclass))";
+				$this->printDebug( "Primary Group Filter: $PGfilter", SENSITIVE );
+				$info = @ldap_search( $ldapconn, $base, $PGfilter );
+				$PGentries = @ldap_get_entries( $ldapconn, $info );
+				array_shift( $PGentries );
+				$dnMember = strtolower( $PGentry[0]['dn'] );
+				$groups["dn"][] = $dnMember;
+				// Get short name of group
+				$memAttrs = explode( ',', strtolower( $dnMember ) );
+				if ( isset( $memAttrs[0] ) ) {
+					$memAttrs = explode( '=', $memAttrs[0] );
+					if ( isset( $memAttrs[0] ) ) {
+						$groups["short"][] = strtolower( $memAttrs[1] );
+					}
+				}
+				
+			}
+		}
+
+		$filter = "(&($attribute=$value)(objectclass=$objectclass))";
+
+		$this->printDebug( "Search string: $filter", SENSITIVE );
+
 		$info = @ldap_search( $this->ldapconn, $base, $filter );
-		# if ( $info["count"] < 1 ) {
 		if ( !$info ) {
 			$this->printDebug( "No entries returned from search.", SENSITIVE );
 
@@ -1431,16 +1542,17 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 
 		$entries = @ldap_get_entries( $this->ldapconn, $info );
 
-		// We need to shift because the first entry will be a count
-		array_shift( $entries );
+		if ( $entries ){
+			// We need to shift because the first entry will be a count
+			array_shift( $entries );
 
-		// Let's get a list of both full dn groups and shortname groups
-		$groups = array( "short" => array(), "dn" => array() );
-		foreach ( $entries as $entry ) {
-			$shortMember = strtolower( $entry[$nameattribute][0] );
-			$dnMember = strtolower( $entry['dn'] );
-			$groups["short"][] = $shortMember;
-			$groups["dn"][] = $dnMember;
+			// Let's get a list of both full dn groups and shortname groups
+			foreach ( $entries as $entry ) {
+				$shortMember = strtolower( $entry[$nameattribute][0] );
+				$dnMember = strtolower( $entry['dn'] );
+				$groups["short"][] = $shortMember;
+				$groups["dn"][] = $dnMember;
+			}
 		}
 
 		$this->printDebug( "Returned groups:", SENSITIVE, $groups["dn"] );
@@ -1489,6 +1601,16 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 
 		$this->printDebug( "Entering setGroups.", NONSENSITIVE );
 
+		# Add ldap groups as local groups
+		if ( isset( $wgLDAPGroupsPrevail[$_SESSION['wsDomain']] ) && $wgLDAPGroupsPrevail[$_SESSION['wsDomain']] ) {
+			$this->printDebug( "Adding all groups to wgGroupPermissions: ", SENSITIVE, $this->allLDAPGroups );
+			
+			foreach ( $this->allLDAPGroups["short"] as $ldapgroup ) {
+				if ( !array_key_exists( $ldapgroup, $wgGroupPermissions ) )
+						$wgGroupPermissions[$ldapgroup] = array();
+			}
+		}
+
 		# add groups permissions
 		$localAvailGrps = $user->getAllGroups();
 		$localUserGrps = $user->getEffectiveGroups();
@@ -1504,17 +1626,6 @@ class LdapAuthenticationPlugin extends AuthPlugin {
 			$this->printDebug( "Locally managed groups is unset, using defaults: ", SENSITIVE, $locallyManagedGrps );
 		}
 			
-
-		# Add ldap groups as local groups
-		if ( isset( $wgLDAPGroupsPrevail[$_SESSION['wsDomain']] ) && $wgLDAPGroupsPrevail[$_SESSION['wsDomain']] ) {
-			$this->printDebug( "Adding all groups to wgGroupPermissions: ", SENSITIVE, $this->allLDAPGroups );
-			
-			foreach ( $this->allLDAPGroups["short"] as $ldapgroup ) {
-				if ( !array_key_exists( $ldapgroup, $wgGroupPermissions ) )
-						$wgGroupPermissions[$ldapgroup] = array();
-			}
-		}
-
 		$this->printDebug( "Available groups are: ", NONSENSITIVE, $localAvailGrps );
 		$this->printDebug( "Effective groups are: ", NONSENSITIVE, $localUserGrps );
 
@@ -1725,16 +1836,16 @@ function AutoAuthSetup() {
 	$wgAuth->printDebug( "Entering AutoAuthSetup.", NONSENSITIVE );
 
 	// Set configuration options for backwards compatibility
-	if ( isset( $wgLDAPSSLUsername ) ) {
+	if ( isset( $wgLDAPSSLUsername ) && $wgLDAPSSLUsername != "" ) {
 		$wgAuth->printDebug( 'Setting $wgLDAPAutoAuthUsername to $wgLDAPSSLUsername; please change your configuration to fix this deprecated configuration variable.', NONSENSITIVE );
 		$wgLDAPAutoAuthUsername = $wgLDAPSSLUsername;
 	}
-	if ( isset( $wgLDAPSmartcardDomain ) ) {
+	if ( isset( $wgLDAPSmartcardDomain ) && $wgLDAPSmartcardDomain != "" ) {
 		$wgAuth->printDebug( 'Setting $wgLDAPAutoAuthDomain to $wgLDAPSmartcardDomain; please change your configuration to fix this deprecated configuration variable.', NONSENSITIVE );
 		$wgLDAPAutoAuthDomain = $wgLDAPSmartcardDomain;
 	}
 
-	if ( $wgLDAPAutoAuthUsername != null ) {
+	if ( $wgLDAPAutoAuthUsername !== "" ) {
 		$wgAuth->printDebug( "wgLDAPAutoAuthUsername is not null, adding hooks.", NONSENSITIVE );
 		if ( version_compare( $wgVersion, '1.14.0', '<' ) ) {
 			if ( version_compare( $wgVersion, '1.13.0', '<' ) ) {

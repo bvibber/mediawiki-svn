@@ -799,6 +799,15 @@ $messages['sk'] = array(
 	'communityvoice-ratings-error-no-title' => 'V značke hodnotenia chýba atribút názvu.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'Pošiljanje ...',
+	'communityvoice-ratings-scale-status-error' => 'Napaka pri pošiljanju!',
+	'communityvoice-ratings-scale-status-thanks' => 'Hvala za glasovanje!',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

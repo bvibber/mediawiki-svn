@@ -252,17 +252,22 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'spamregex' => 'Strob regex (Spam regex)',
+	'spamregex-desc' => "[[Special:SpamRegex|Sil]] ar frazennoù dic'hoantaus er pajennoù, diazezet war eztaoladennoù poellel",
 	'spamregex-error-unblocking' => 'Fazi distankañ "$1". Sur a-walc\'h n\'eus ket a batrom.',
 	'spamregex-summary' => 'Kavet eo bet an destenn e diverradur ar bajenn.',
+	'spamregex-page-title' => 'Stankadenn eztaoladennoù poellel ar stroboù',
 	'spamregex-currently-blocked' => "'''Frazennoù stanket evit bremañ :'''",
 	'spamregex-move' => "An abeg hoc'h eus ebarzhet a oa ennañ ur frazenn stanket.",
 	'spamregex-no-currently-blocked' => "'''N'eus frazenn stanket ebet.'''",
 	'spamregex-log' => "* '''$1''' $2  ([{{SERVER}}$3&text=$4 dilemel]) ouzhpennet gant $5 d'ar $6 da $7",
+	'spamregex-page-title-1' => 'Stankadenn ur frazenn hag a implij eztaoladennoù poellel',
 	'spamregex-unblock-success' => 'Distanket eo bet an implijer.',
 	'spamregex-unblock-message' => "Distanket eo bet ar bajenn '''$1''' evit an embann.",
+	'spamregex-page-title-2' => 'Stankadenn frazennoù en ur implijout eztaoladennoù poellel',
 	'spamregex-block-success' => 'Graet eo ar stankadur',
 	'spamregex-block-message' => "Stanket eo bet ar frazenn '''$1'''",
 	'spamregex-warning-1' => 'Reiñ ur frazenn da stankañ.',
+	'spamregex-error-1' => 'Eztaoladenn poellel direizh.',
 	'spamregex-warning-2' => "Mar plij dibabit d'an nebeutañ un doare stankañ.",
 	'spamregex-already-blocked' => '« $1 » zo stanket dija',
 	'spamregex-phrase-block' => 'Frazenn da stankañ :',
@@ -1513,6 +1518,13 @@ $messages['ru'] = array(
 	'spamregex-text' => '(Текст)',
 	'spamregex-summary-log' => '(описание)',
 	'right-spamregex' => 'блокирование спам-фраз с помощью [[Special:SpamRegex]]',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'spamregex-text' => '(Текст)',
 );
 
 /** Sassaresu (Sassaresu)

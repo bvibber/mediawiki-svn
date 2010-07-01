@@ -10,8 +10,8 @@ $messages = array();
 
 $messages['en'] = array(
 	'js2support-desc' => 'JS2 support as an extension',
-	'js2support-debug-preference' => 'Disable script grouping and minification',
-	'prefs-script-debug' => 'Script debugging'
+	'js2support-debug-preference' => 'Disable resource grouping and minification',
+	'prefs-script-debug' => 'Resource debugging'
 );
 
 /** Message documentation (Message documentation)
@@ -157,6 +157,8 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'js2support-desc' => 'J2S Ënnerstëtzung als Erweiderung',
+	'js2support-debug-preference' => 'Gruppéieren a Verklengerung vu Skripten auschalten',
+	'prefs-script-debug' => 'Debugging vu Skripten',
 );
 
 /** Macedonian (Македонски)
@@ -206,8 +208,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'js2support-desc' => "Manten ëd JS2 com n'estension",
-	'js2support-debug-preference' => '↓ Disabìlita ragrupament e minimisassion dë script',
-	'prefs-script-debug' => 'Debug djë script',
+	'js2support-debug-preference' => "↓ Disabilité j'argropament e la miniadurisassion dj'arsorse",
+	'prefs-script-debug' => "Gavé ij bigat da j'arsorse",
 );
 
 /** Portuguese (Português)
@@ -244,5 +246,13 @@ $messages['tl'] = array(
 	'js2support-desc' => 'Suportang JS2 bilang isang karugtong',
 	'js2support-debug-preference' => 'Huwag paganahin ang panitik na pampangkat at pampaliit',
 	'prefs-script-debug' => 'Pagtanggal ng depekto mula sa panitik',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'js2support-desc' => 'Phần mở rộng hỗ trợ JS2',
+	'prefs-script-debug' => 'Gỡ lỗi tài nguyên',
 );
 

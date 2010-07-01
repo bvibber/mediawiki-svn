@@ -221,6 +221,13 @@ $messages['oc'] = array(
 	'right-editalluserpages' => "Modificar las paginas d'utilizaire",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'right-editalluserpages' => 'Bledder vun Yuuser ennere',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -246,6 +253,14 @@ $messages['pt'] = array(
 	'right-editalluserpages' => 'Editar páginas de utilizador',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'userpageeditprotection-desc' => 'Restringe a edição das páginas de usuário ao próprio usuário e aos editores permitidos',
+	'right-editalluserpages' => 'Editar páginas de usuário',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -260,6 +275,13 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'userpageeditprotection-desc' => 'Ограничивает редактирование страниц участников самим участником и определёнными редакторами',
 	'right-editalluserpages' => 'изменение страниц участников',
+);
+
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'right-editalluserpages' => 'පරිශීලක පිටු සංස්කරණය කිරීම',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

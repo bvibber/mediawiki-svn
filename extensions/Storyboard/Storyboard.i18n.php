@@ -242,6 +242,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'storyboard-name' => 'Storyboard',
+	'storyboard-desc' => 'Reiñ a ra [[Special:Story|ur bajenn voned evit ar roerien]], ur bajenn evit [[Special:StorySubmission|kinnig]] istorioù hag un [[Special:StoryReview|etrefas evit merañ an istorioù]]',
 	'right-storyreview' => 'Adlenn, kemmañ, embann, ha kuzhat an istorioù',
 	'storyboard-anerroroccured' => 'Ur fazi a zo bet : $1',
 	'storyboard-unpublished' => 'Diembannet',
@@ -293,6 +294,9 @@ Perak chom hep rannañ anezhi ?",
 	'storyboard-charstomany' => '$1 arouezenn e re !',
 	'storyboard-morecharsneeded' => "Ezhomm 'zo $1 arouezenn c'hoazh",
 	'storyboard-charactersleft' => 'Chom a ra $1 arouezenn',
+	'storyboard-createdsuccessfully' => 'Trugarez evit bezañ rannet ho istor ganeomp !
+Studiet e vo a-benn nebeut.
+Gellout a rit [$1 lenn istorioù embannet].',
 	'storyboard-emailtitle' => 'Kinnig an istor graet mat',
 	'storyreview' => 'Barnadenn an istor',
 	'storyboard-deleteimage' => 'Dilemel ar skeudenn',
@@ -1095,6 +1099,8 @@ Et ka sinn datt se ewechgeholl gouf.",
 	'storyboard-thestory' => "D'Anekdot",
 	'storyboard-storystate' => 'Staat',
 	'storyboard-language' => 'Sprooch',
+	'storyboard-storymetadata' => 'Vum $1 den $2, $3 geschéckt',
+	'storyboard-storymetadatafrom' => 'Vum $1 vun $2 den $3 ëm $4 geschéckt.',
 	'storyboard-yourname' => 'Ären Numm (obligatoresch)',
 	'storyboard-location' => 'Plaz wou Dir sidd',
 	'storyboard-occupation' => 'Äre Beruff',
@@ -1113,6 +1119,7 @@ Firwat se net hei weisen?',
 	'storyboard-changetitle' => 'Den Titel änneren.',
 	'storyboard-notsubmitted' => "D'Authentifickatioun huet net fonctionnéiert, D'Anekdot gouf net gespäichert.",
 	'storyboard-charstomany' => '$1 Buschtawen ze vill!',
+	'storyboard-morecharsneeded' => '$1 Buchstawe méi, gi gebraucht',
 	'storyboard-charactersleft' => '$1 Buschtawen iwwreg',
 	'storyboard-createdsuccessfully' => 'Merci datt dir Är Anekdot mat eis deelt!
 Mir kucken se demnächst no.
@@ -1205,6 +1212,13 @@ $messages['mk'] = array(
 	'storyboard-hideimage' => 'Сокриј слика',
 	'storyboard-deletestory' => 'Отстрани',
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'storyboard-hide' => 'Aħbi',
 );
 
 /** Erzya (Эрзянь)
@@ -1394,9 +1408,20 @@ $messages['ps'] = array(
 	'storyboard-publish' => 'خپرول',
 	'storyboard-hide' => 'پټول',
 	'storyboard-option-hidden' => 'پټ',
+	'storyboard-authorname' => 'د ليکوال نوم',
+	'storyboard-authorlocation' => 'د ليکوال ځای',
+	'storyboard-authoroccupation' => 'د ليکوال دنده',
+	'storyboard-authoremail' => 'د ليکوال برېښليک پته',
+	'storyboard-thestory' => 'کيسه',
 	'storyboard-storystate' => 'ايالت',
 	'storyboard-language' => 'ژبه',
+	'storyboard-location' => 'ستاسې ځای',
+	'storyboard-occupation' => 'ستاسې دنده',
+	'storyboard-story' => 'ستاسې کيسه',
+	'storyboard-deleteimage' => 'انځور ړنګول',
 	'storyboard-done' => 'ترسره شو',
+	'storyboard-showimage' => 'انځور ښکاره کول',
+	'storyboard-hideimage' => 'انځور پټول',
 );
 
 /** Portuguese (Português)
@@ -1549,6 +1574,18 @@ $messages['ru'] = array(
 	'storyboard-hideimage' => 'Скрыть изображение',
 	'storyboard-deletestory' => 'Удалить',
 	'storyboard-storydeletionconfirm' => 'Вы уверены, что хотите удалить эту историю?',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'storyboard-authorname' => 'Мено автора',
+	'storyboard-authorlocation' => 'Місце де жыє автор',
+	'storyboard-authoremail' => 'Авторова адреса електронічной пошты',
+	'storyboard-language' => 'Язык',
+	'storyboard-done' => 'Готово',
+	'storyboard-working' => 'Робить ся...',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

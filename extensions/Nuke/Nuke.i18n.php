@@ -812,6 +812,9 @@ $messages['ka'] = array(
 	'nuke-nopages' => 'ბოლო ცვლილებებში არ არის ახალი გვერდები [[Special:Contributions/$1|$1]]-ის მიერ.',
 	'nuke-list' => 'ეს გვერდები შეიქმნა [[Special:Contributions/$1|$1]]-ის მიერ;
 შეიყვანეთ კომენტარი და დააჭირეთ ღილაკს მათ წასაშლელად.',
+	'nuke-defaultreason' => '$1-ის მიერ დამატებული გვერდების მასობრივი წაშლა',
+	'nuke-tools' => 'ეს გვერდი გაძლევთ ნებისმიერი მომხმარებლის ან IP მისამართის მიერ დამატებული გვერდების მასობრივად წაშლის საშუალებას.
+შეიყვანეთ მომხმარებლის სახელი ან IP მისამართი მის მიერ დამატებული გვერდების სიის მისაღებად.',
 	'nuke-submit-user' => 'გადასვლა',
 	'nuke-submit-delete' => 'არჩეულის წაშლა',
 	'right-nuke' => 'გვერდების მასობრივად წაშლა',
@@ -1270,19 +1273,21 @@ $messages['rif'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'nuke' => 'Ştergere în masă',
 	'nuke-desc' => 'Oferă administratorilor abilitatea de [[Special:Nuke|a șterge în masă]] pagini',
-	'nuke-nopages' => 'Nicio nouă pagină de către [[Special:Contributions/$1|$1]] în schimbările recente.',
+	'nuke-nopages' => 'Nicio pagină nouă de către [[Special:Contributions/$1|$1]] în schimbările recente.',
 	'nuke-defaultreason' => 'Eliminatorul în masă al paginilor adăugat de $1',
 	'nuke-tools' => 'Această unealtă permite ștergeri în masă a paginilor recent adăugate de către un utilizator dat sau IP.
 Introduceți numele de utilizator sau IP-ul pentru a primi o listă de paginii de șters.',
 	'nuke-submit-user' => 'Du-te',
-	'nuke-submit-delete' => 'Şterge ce e marcat',
+	'nuke-submit-delete' => 'Șterge ce e marcat',
 	'right-nuke' => 'șterge pagini în masă',
 );
 

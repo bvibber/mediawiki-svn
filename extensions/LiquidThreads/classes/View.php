@@ -436,7 +436,7 @@ class LqtView {
 		
 		if ( $this->output->getRedirect() != '' ) {
 		       $redirectTitle = clone $talkpage->getTitle();
-		       if ( $thread ) {
+		       if ( !empty($thread) ) {
 			       $redirectTitle->setFragment( '#' . $this->anchorName( $thread ) );
 		       }
 		       $this->output->redirect( $this->title->getFullURL() );
@@ -543,7 +543,7 @@ class LqtView {
 		
 		if ( $this->output->getRedirect() != '' ) {
 		       $redirectTitle = clone $talkpage->getTitle();
-		       if ( !is_null( $newThread ) ) {
+		       if ( !empty( $newThread ) ) {
 			       $redirectTitle->setFragment( '#' .
 			       	$this->anchorName( $newThread ) );
 		       }
@@ -1211,7 +1211,13 @@ class LqtView {
 		$wgOut->addScriptFile( "$basePath/jquery/jquery.autogrow.js" );
 
 		$wgOut->addScriptFile( "$basePath/lqt.js" );
+		$wgOut->addScriptFile( "$basePath/js/lqt.toolbar.js" );
 		$wgOut->addExtensionStyle( "$basePath/lqt.css?{$wgStyleVersion}" );
+		
+		if ( class_exists( 'WikiEditorHooks' ) ) {
+			$temp = null;
+			WikiEditorHooks::addModules( $temp );
+		}
 
 		self::$stylesAndScriptsDone = true;
 	}
@@ -1271,7 +1277,8 @@ class LqtView {
 
 		// Load compatibility layer for older versions
 		if ( !( $post instanceof Article_LQT_Compat ) ) {
-			wfWarn( "No article compatibility layer loaded, inefficiently duplicating information." );
+			// Removed because it's annoying
+//			wfWarn( "No article compatibility layer loaded, inefficiently duplicating information." );
 			$post = new Article_LQT_Compat( $post->getTitle() );
 		}
 
@@ -1555,7 +1562,11 @@ class LqtView {
 						array( 'class' => 'lqt_header', 'id' => $id ),
 						$html ) . $commands_html;
 			}
-
+			
+			// wrap it all in a container
+			$html = Xml::tags( 'div',
+					array( 'class' => 'lqt_thread_heading' ),
+					$html );
 			return $html;
 		}
 
@@ -1590,7 +1601,7 @@ class LqtView {
 
 		if ( !$target ) {
 			throw new MWException( "Thread " . $thread->id() . ' purports to be moved, ' .
-				'but no redirect found in text of ' .
+				'but no redirect found in text (' . $article->getContent() . ') of ' .
 				$thread->root()->getTitle()->getPrefixedText() . '. Dying.' );
 		}
 

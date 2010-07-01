@@ -1305,10 +1305,12 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Emily
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'inputbox-desc' => 'Permite includerea formelor HTML predefinite',
@@ -1317,7 +1319,7 @@ $messages['ro'] = array(
 Te rog să specifici parametrii "create", "comment", "search", "search2" sau "fulltext".',
 	'tryexact' => 'Încearcă varianta exactă',
 	'searchfulltext' => 'Caută textul întreg',
-	'createarticle' => 'Crează articol',
+	'createarticle' => 'Creează pagină',
 );
 
 /** Aromanian (Armãneashce) */
@@ -1349,6 +1351,13 @@ $messages['ru'] = array(
 	'tryexact' => 'Строгий поиск',
 	'searchfulltext' => 'Полнотекстовый поиск',
 	'createarticle' => 'Создать статью',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'createarticle' => 'Створити статю',
 );
 
 /** Yakut (Саха тыла)

@@ -370,15 +370,17 @@ $messages['ca'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'timedmedia-desc' => 'Obsluha souborů Ogg Theora a Vorbis s JavaScriptovým přehrávačem',
+	'timedmedia-desc' => 'Obsluha časovaných souborů (video, audio, titulky) s převodem do Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Zvukový soubor ogg $1, $2',
 	'timedmedia-short-video' => 'Videosoubor ogg $1, $2',
-	'timedmedia-short-general' => 'Soubor média ogg $1, $2',
+	'timedmedia-short-general' => 'Multimediální soubor ogg $1, $2',
 	'timedmedia-long-audio' => '(Zvukový soubor ogg $1, délka $2, $3)',
 	'timedmedia-long-video' => '(Videosoubor $1, délka $2, $4×$5 pixelů, $3)',
 	'timedmedia-long-multiplexed' => '(Audio/video soubor ogg, $1, délka $2, $4×$5 pixelů, $3)',
 	'timedmedia-long-general' => '(Soubor média ogg, délka $2, $3)',
 	'timedmedia-long-error' => '(Chybný soubor ogg: $1)',
+	'timedmedia-no-player-js' => 'Je mi líto, ale váš prohlížeč má buď vypnutý JavaScript, nebo nemáte žádný podporovaný přehrávač.<br />
+Můžete si <a href="$1">stáhnout klip</a> nebo si <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/cs">stáhnout přehrávač</a>, kterým si klip přehrajete v prohlížeči.',
 	'timedmedia-more' => 'Více...',
 	'timedmedia-dismiss' => 'Zavřít',
 	'timedmedia-download' => 'Stáhnout soubor',
@@ -756,10 +758,14 @@ $messages['gsw'] = array(
 	'timedmedia-long-multiplexed' => '(Ogg-Audio-/Video-Datei, $1, Längi: $2, $4×$5 Pixel, $3)',
 	'timedmedia-long-general' => '(Ogg-Mediadatei, Längi: $2, $3)',
 	'timedmedia-long-error' => '(Uugiltigi Ogg-Datei: $1)',
+	'timedmedia-no-player-js' => 'Excusez, aber Dyy Browser het entwäder JavaScript deaktiviert oder kei unterstitzti Abspilsoftware.<br />
+Du chasch <a href="$1">dr Clip abelade</a> oder <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">e Abspielsoftware abelade</a> go dr Clip im Browser abspile.',
 	'timedmedia-more' => 'Meh …',
 	'timedmedia-dismiss' => 'Zuemache',
 	'timedmedia-download' => 'Datei spychere',
 	'timedmedia-desc-link' => 'Iber die Datei',
+	'timedmedia-oggThumb-version' => 'OggHandler brucht oggThumb in dr Version $1 oder hecher.',
+	'timedmedia-oggThumb-failed' => 'oggThumb het kei Miniaturbild chenne aalege.',
 );
 
 /** Manx (Gaelg)
@@ -1261,11 +1267,11 @@ $messages['mk'] = array(
 	'timedmedia-desc' => 'Обработувач на синхронизирани снимки (видео, аудио, timedText) со транскодирање во Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Ogg $1 звучна податотека, $2',
 	'timedmedia-short-video' => 'Ogg $1 видео податотека, $2',
-	'timedmedia-short-general' => 'Ogg $1 медија податотека, $2',
+	'timedmedia-short-general' => 'Мултимедијална податотека Ogg $1, $2',
 	'timedmedia-long-audio' => '(Ogg $1 звучна податотека, должина $2, $3)',
 	'timedmedia-long-video' => '(Ogg $1 видео податотека, должина $2, $4×$5 пиксели, $3)',
 	'timedmedia-long-multiplexed' => '(Ogg мултиплексирана аудио/видео податотека, $1, должина $2, $4×$5 пиксели, $3 вкупно)',
-	'timedmedia-long-general' => '(Ogg медија податотека, должина $2, $3)',
+	'timedmedia-long-general' => '(мултимедијална податотека Ogg, должина $2, $3)',
 	'timedmedia-long-error' => '(Оштетена ogg податотека: $1)',
 	'timedmedia-no-player-js' => 'Нажалост, вашиот прелистувач или има оневозможено JavaScript, или нема ниту еден поддржан изведувач.<br />
 Можете да го <a href="$1">преземете клипот</a> или <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да преземете изведувач</a> за да ја пуштите снимката во вашиот прелистувач.',
@@ -1613,6 +1619,7 @@ Você pode <a href="$1">descarregar o clipe</a> ou <a href="http://www.mediawiki
 	'timedmedia-download' => 'Descarregar arquivo',
 	'timedmedia-desc-link' => 'Sobre este arquivo',
 	'timedmedia-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
+	'timedmedia-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
 );
 
 /** Quechua (Runa Simi)
@@ -1687,6 +1694,14 @@ $messages['ru'] = array(
 	'timedmedia-desc-link' => 'Информация об этом файле',
 	'timedmedia-oggThumb-version' => 'OggHandler требует oggThumb версии $1 или более поздней.',
 	'timedmedia-oggThumb-failed' => 'oggThumb не удалось создать миниатюру.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'timedmedia-more' => 'Веце...',
+	'timedmedia-dismiss' => 'Заперти',
 );
 
 /** Yakut (Саха тыла)

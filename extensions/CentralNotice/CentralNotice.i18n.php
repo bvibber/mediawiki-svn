@@ -2017,6 +2017,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  * @author Nike
  * @author Tarmo
@@ -2096,6 +2097,7 @@ Lisää alapuolella sellainen',
 	'centralnotice-no-templates-translate' => 'Ei mallineita, joiden käännöksiä voisi muokata',
 	'centralnotice-number-uses' => 'Käyttää',
 	'centralnotice-edit-template' => 'Muokkaa mallinetta',
+	'centralnotice-edit-template-summary' => 'Käännettävän viestin luomiseksi sisällytä tavutettu merkkijono kolmen aaltosulkeen sisään, esim. {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Viesti',
 	'centralnotice-message-not-set' => 'Viestiä ei ole asetettu',
 	'centralnotice-clone' => 'Kahdenna',
@@ -2919,7 +2921,7 @@ Non es addite',
 Nihil a remover',
 	'centralnotice-template-still-bound' => 'Patrono es ancora ligate a un aviso.
 Non es removite.',
-	'centralnotice-template-body' => 'Corpore del patrono:',
+	'centralnotice-template-body' => 'Texto del bandiera:',
 	'centralnotice-day' => 'Die',
 	'centralnotice-year' => 'Anno',
 	'centralnotice-month' => 'Mense',
@@ -2971,6 +2973,7 @@ Adde un infra',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  * @author IvanLanin
  * @author Rex
  */
@@ -3049,6 +3052,7 @@ Tambahkan di bawah ini.',
 	'centralnotice-no-templates-translate' => 'Tidak ada templat yang dapat diterjemahkan',
 	'centralnotice-number-uses' => 'Menggunakan',
 	'centralnotice-edit-template' => 'Sunting templat',
+	'centralnotice-edit-template-summary' => 'Untuk membuat dilokalisasi pesan, sertakan string ditulis dengan tanda penghubung di tiga kurung, misalnya {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Pesan',
 	'centralnotice-message-not-set' => 'Pengaturan pesan tidak dilakukan',
 	'centralnotice-clone' => 'Duplikat',
@@ -3241,6 +3245,7 @@ $messages['ja'] = array(
 	'centralnotice-no-templates-translate' => '翻訳すべきテンプレートはありません。',
 	'centralnotice-number-uses' => '使用目的',
 	'centralnotice-edit-template' => 'テンプレートを編集する',
+	'centralnotice-edit-template-summary' => 'ローカライズ可能なメッセージを作成するには、ハイフンで結合した文字列を3つの波括弧で囲います。例: {{{jimbo-quote}}}。',
 	'centralnotice-message' => 'メッセージ',
 	'centralnotice-message-not-set' => 'メッセージ未指定',
 	'centralnotice-clone' => '複製',
@@ -3403,6 +3408,7 @@ $messages['ka'] = array(
 	'centralnotice-message-not-set' => 'შეტყობინება არ არის',
 	'centralnotice-clone' => 'კლონირება',
 	'centralnotice-clone-notice' => 'თარგის ასლის შექმნა',
+	'right-centralnotice-translate' => 'ცენტრალური შეტყობინებების თარგმანი',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -3458,6 +3464,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Gapo
  * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
@@ -3526,6 +3533,7 @@ $messages['ko'] = array(
 	'centralnotice-no-templates-translate' => '번역해야 할 템플릿이 없습니다.',
 	'centralnotice-number-uses' => '사용 횟수',
 	'centralnotice-edit-template' => '틀 편집하기',
+	'centralnotice-edit-template-summary' => '번역이 가능한 메세지를 만드려면, {{{jimbo-quote}}}와 같이 중괄호로 세 번 감싸주면 됩니다.',
 	'centralnotice-message' => '메시지',
 	'centralnotice-message-not-set' => '메시지가 정의되지 않았습니다.',
 	'centralnotice-clone' => '사본',
@@ -3717,6 +3725,7 @@ Setzt eng hei ënnendrënner bäi.',
 	'centralnotice-no-templates-translate' => "Et gëtt keng Schablounen fir déi Iwwersetzungen z'ännere sinn",
 	'centralnotice-number-uses' => 'gëtt benotzt',
 	'centralnotice-edit-template' => 'Schabloun änneren',
+	'centralnotice-edit-template-summary' => 'Fir e lokaliséierbare Message unzeleeën, setzt eng Zeecheketten tëschent dräi geschweefte Klameren  dran, z. Bsp. {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Message',
 	'centralnotice-message-not-set' => 'Message net gepäichert',
 	'centralnotice-clone' => 'Eng Kopie maachen',
@@ -4105,9 +4114,49 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'centralnotice-desc' => 'संकेतस्थळाचा मध्यवर्ती सूचना फलक',
+	'centralnotice-end-date' => 'अंतिम तारीख',
+	'centralnotice-add-new' => 'नव्या मोहीमेची सुरूवात करा',
+	'centralnotice-translate-heading' => '$1 चे भाषांतर',
+	'centralnotice-manage' => 'मोहीम हाताळा',
+	'centralnotice-add-notice' => 'नव्या मोहीमेची भर घाला',
+	'centralnotice-add-template' => 'नविन मथळा लावा',
+	'centralnotice-translations' => 'भाषांतरे',
+	'centralnotice-translate-to' => '(Language name) या भाषेत भाषांतर करा',
+	'centralnotice-template-name' => 'मथळ्याचे नाव',
+	'centralnotice-day' => 'दिनांक',
+	'centralnotice-hours' => 'तास',
+	'centralnotice-project-lang' => 'प्रकल्प भाषा',
+	'centralnotice-project-name' => 'प्रकल्पाचे नाव',
+	'centralnotice-start-date' => 'सुरू केल्याचा दिनांक',
+	'centralnotice-start-time' => 'सुरू केल्याची वेळ (युटीसी)',
+	'centralnotice-no-templates' => 'मथळे सापडले नाहीत.काहींची भर घाला',
+	'centralnotice-available-templates' => 'उपलब्ध मथळे',
+	'centralnotice-template-already-exists' => 'मोहीमेस मथळा पूर्वीच दिलेला आहे. आता जोडू नका.',
+	'centralnotice-preview-template' => 'मथळ्याची झलक पाहा.',
+	'centralnotice-change-lang' => 'भाषांतरासाठी भाषेत बदल करा',
+	'centralnotice-notice-is-locked' => 'मथळ्यास ताळा लावला आहे. काढु नका.',
+	'centralnotice-confirm-delete' => 'आपणास हा मजकुर नक्की गाळावयाचा आहे काय? 
+ही कृती परतविता येणार नाही.',
+	'centralnotice-no-notices-exist' => 'मथळा अस्तित्वात नाही.
+एक मथळा खाली जोडा.',
+	'centralnotice-no-templates-translate' => '↓ भाषांतरे संपादीत करण्याकरिता कोणतेही मुखशीर्षक (बॅनर) उपलब्ध नाही',
+	'centralnotice-number-uses' => '↓ उपयोग',
+	'centralnotice-edit-template' => '↓ मुखशीर्षक (बॅनर) संपादीत करा',
+	'centralnotice-edit-template-summary' => '↓ स्थानिकीकरण संदेश तयार करण्याकरिता, तीहेरी महिरपीकंस  संयोगचिन्ह(-) असलेले सूत्राने (स्ट्रींग)भरा, उदाहरणार्थ. {{{jimbo-quote}}}.',
+	'centralnotice-message' => '↓ संदेश',
+	'centralnotice-message-not-set' => '↓ संदेश स्थापित केलेला नाही',
+	'centralnotice-clone' => '↓ कृत्तक (क्लोन)',
+	'centralnotice-clone-notice' => '↓ मुखशीर्षकाची(बॅनरची प्रत बनवा)',
+	'centralnotice-preview-all-template-translations' => '↓ मुखशीर्षकांच्या सर्व उपलब्ध भाषांतराची झलक पहा',
+	'right-centralnotice-admin' => '↓ मध्यवर्ती सूचनांचे प्रबंधन करा',
+	'right-centralnotice-translate' => '↓ मध्यवर्ती सूचनांचे भाषांतरकरा',
+	'action-centralnotice-admin' => 'मध्यवर्ती सूचनांचे प्रबंधन करा',
+	'action-centralnotice-translate' => 'मध्यवर्ती सूचनांचे भाषांतरकरा',
+	'centralnotice-preferred' => 'प्राधान्य',
 );
 
 /** Malay (Bahasa Melayu)
@@ -4913,6 +4962,7 @@ $messages['ps'] = array(
 	'centralnotice-available-templates' => 'شته کينډۍ',
 	'centralnotice-start-hour' => 'د پيل وخت',
 	'centralnotice-change-lang' => 'د ژباړې ژبه بدلول',
+	'centralnotice-number-uses' => 'کاروي',
 	'centralnotice-message' => 'پيغام',
 );
 
@@ -5193,9 +5243,11 @@ Kay qatiqpi hukta yapay',
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -5234,14 +5286,14 @@ $messages['ro'] = array(
 	'centralnotice-start-date' => 'Data de începere',
 	'centralnotice-start-time' => 'Data de începere (UTC)',
 	'centralnotice-available-templates' => 'Formate disponibile',
-	'centralnotice-preview-template' => 'Previzualizare formate',
+	'centralnotice-preview-template' => 'Previzualizare format',
 	'centralnotice-start-hour' => 'Ora de început',
 	'centralnotice-change-lang' => 'Schimbă limba de traducere',
 	'centralnotice-weights' => 'Greutăți',
 	'centralnotice-edit-template' => 'Modifică format',
 	'centralnotice-message' => 'Mesaj',
-	'centralnotice-clone' => 'Clonați',
-	'centralnotice-clone-notice' => 'Creează o copie a formatului',
+	'centralnotice-clone' => 'Clonează',
+	'centralnotice-clone-notice' => 'Creează o copie a bannerului',
 	'right-centralnotice-translate' => 'Traduce anunțurile centrale',
 	'action-centralnotice-admin' => 'administrați anunțurile centrale',
 	'action-centralnotice-translate' => 'traduceți anunțurile centrale',
@@ -5349,6 +5401,35 @@ $messages['ru'] = array(
 	'action-centralnotice-admin' => 'управление централизованными уведомлениями',
 	'action-centralnotice-translate' => 'перевод централизованных уведомлений',
 	'centralnotice-preferred' => 'Желательно',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'centralnotice-translations' => 'Переклады',
+	'centralnotice-translate-to' => 'Переклад до',
+	'centralnotice-translate' => 'Переложыти',
+	'centralnotice-english' => 'анґліцькы',
+	'centralnotice-template-name' => 'Назва шаблоны',
+	'centralnotice-templates' => 'Шаблоны',
+	'centralnotice-weight' => 'Вага',
+	'centralnotice-locked' => 'Замкнуто',
+	'centralnotice-day' => 'День',
+	'centralnotice-year' => 'Рік',
+	'centralnotice-month' => 'Місяць',
+	'centralnotice-hours' => 'Годины',
+	'centralnotice-min' => 'Мінуты',
+	'centralnotice-project-lang' => 'Язык проєкту',
+	'centralnotice-project-name' => 'Назва проєкту',
+	'centralnotice-start-date' => 'Датум початку',
+	'centralnotice-start-time' => 'Час початку (UTC)',
+	'centralnotice-available-templates' => 'Доступны шаблоны',
+	'centralnotice-start-hour' => 'Час початку',
+	'centralnotice-change-lang' => 'Змінити язык перекладу',
+	'centralnotice-weights' => 'Вагы',
+	'centralnotice-number-uses' => 'Хоснує',
+	'centralnotice-message' => 'Ознам',
 );
 
 /** Yakut (Саха тыла)
@@ -5608,6 +5689,16 @@ Túto operáciu nebude možné vrátiť.',
 	'action-centralnotice-admin' => 'spravovať centrálne oznamy',
 	'action-centralnotice-translate' => 'prekladať centrálne oznamy',
 	'centralnotice-preferred' => 'Uprednostňované',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'centralnotice-message' => 'Sporočilo',
+	'centralnotice-message-not-set' => 'Sporočilo ni določeno',
+	'centralnotice-clone' => 'Kloniraj',
+	'centralnotice-clone-notice' => 'Ustvarite kopijo pasice',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -6818,6 +6909,7 @@ Hãy thêm vào!',
 	'centralnotice-no-templates-translate' => 'Không có bản mẫu để dịch',
 	'centralnotice-number-uses' => 'Số thông báo dùng',
 	'centralnotice-edit-template' => 'Sửa đổi bản mẫu',
+	'centralnotice-edit-template-summary' => 'Để tạo thông điệp có thể bản địa hóa, đóng chuỗi ngắt trong ba dấu ngoặc kép, ví dụ {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Thông báo',
 	'centralnotice-message-not-set' => 'Thông báo chưa được thiết lập',
 	'centralnotice-clone' => 'Sao',
@@ -7008,6 +7100,7 @@ $messages['zh-hans'] = array(
 	'centralnotice-no-templates-translate' => '没有任何可以编辑翻译的模板',
 	'centralnotice-number-uses' => '使用',
 	'centralnotice-edit-template' => '编辑模板',
+	'centralnotice-edit-template-summary' => '要创建一个可本地化的消息，使用三个{，例如{{{jimbo-quote}}}。',
 	'centralnotice-message' => '消息',
 	'centralnotice-message-not-set' => '没有设置消息',
 	'centralnotice-clone' => '建立副本',
@@ -7101,6 +7194,7 @@ $messages['zh-hant'] = array(
 	'centralnotice-no-templates-translate' => '沒有任何可以編輯翻譯的模板',
 	'centralnotice-number-uses' => '使用',
 	'centralnotice-edit-template' => '編輯模板',
+	'centralnotice-edit-template-summary' => '要創建一個可本地化的消息，使用三個{，例如{{{jimbo-quote}}}。',
 	'centralnotice-message' => '消息',
 	'centralnotice-message-not-set' => '沒有設置消息',
 	'centralnotice-clone' => '建立副本',

@@ -19,6 +19,8 @@ class SpecialNoticeText extends NoticePage {
 	}
 
 	function getJsOutput( $par ) {
+	
+		// Break $par into separate parameters and assign to $this->project and $this->language
 		$this->setLanguage( $par );
 
 		// Quick short circuit to be able to show preferred notices
@@ -41,16 +43,13 @@ class SpecialNoticeText extends NoticePage {
 		}
 
 		if ( !$templates && $this->project == 'wikipedia' ) {
-				$notices = CentralNoticeDB::getNotices( 'wikipedia', '', '', '', 1 );
-				if ( $notices && is_array( $notices ) ) {
-					foreach ( $notices as $notice => $val ) {
-						if ( $val['language'] == '' ||
-						     $val['language'] == $this->language ) {
-							$templates = CentralNoticeDB::selectTemplatesAssigned( $notice );
-							break;
-						}
-					}
+			$notices = CentralNoticeDB::getNotices( 'wikipedia', $this->language, '', '', 1 );
+			if ( $notices && is_array( $notices ) ) {
+				foreach ( $notices as $notice => $val ) {
+					$templates = CentralNoticeDB::selectTemplatesAssigned( $notice );
+					break;
 				}
+			}
 		}
 
 		// Didn't find any preferred matches so do an old style lookup
@@ -97,7 +96,6 @@ class SpecialNoticeText extends NoticePage {
 	function getToggleScripts() {
 		$showStyle = <<<END
 <style type="text/css">
-#centralNotice {margin-bottom: 1em;}
 #centralNotice .siteNoticeSmall {display:none;}
 #centralNotice .siteNoticeSmallAnon {display:none;}
 #centralNotice .siteNoticeSmallUser {display:none;}

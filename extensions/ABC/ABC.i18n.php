@@ -37,6 +37,14 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'abc-desc' => 'Tambahakan<code>&lt;abc&gt;</code> gasan format musik ABC',
+	'abcdownload' => 'Unduh:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -171,6 +179,14 @@ $messages['cs'] = array(
 	'abcdownload' => 'Stáhnout:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'abc-desc' => "Yn ychwanegu'r tag <code>&lt;abc&gt;</code> er mwyn fformatio cerddoriaeth ABC",
+	'abcdownload' => 'Lawrlwytho:',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */
@@ -242,6 +258,13 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'abc-desc' => '<code>&lt;abc&gt;</code> etiketa gehitzen du ABC musika formatura',
 	'abcdownload' => 'Jaitsi:',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'abcdownload' => 'بارگیری:',
 );
 
 /** Finnish (Suomi)
@@ -577,6 +600,13 @@ $messages['ms'] = array(
 $messages['myv'] = array(
 	'abc-desc' => 'Полады <code>&lt;abc&gt;</code> тег ABC музыканть форматировамонь туртов',
 	'abcdownload' => 'Таргамс:',
+);
+
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'abcdownload' => 'بار ره بیتن:',
 );
 
 /** Nahuatl (Nāhuatl)

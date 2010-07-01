@@ -14,7 +14,7 @@
 
  You should have received a copy of the GNU General Public License along
  with this program; if not, write to the Free Software Foundation, Inc.,
- 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  http://www.gnu.org/copyleft/gpl.html
 */
 
@@ -48,7 +48,7 @@ if ( !defined( 'FR_TEXT' ) )
 
 # Level constants...
 if ( !defined( 'FR_SIGHTED' ) )
-	define( 'FR_SIGHTED', 0 );
+	define( 'FR_SIGHTED', 0 ); // "basic"/"checked"
 if ( !defined( 'FR_QUALITY' ) )
 	define( 'FR_QUALITY', 1 );
 if ( !defined( 'FR_PRISTINE' ) )
@@ -82,33 +82,31 @@ $wgFlaggedRevsLowProfile = true;
 
 # Allowed namespaces of reviewable pages
 $wgFlaggedRevsNamespaces = array( NS_MAIN, NS_FILE, NS_TEMPLATE );
-
-# Pages exempt from reviewing
+# Pages exempt from reviewing. No flagging UI will be shown for them.
 $wgFlaggedRevsWhitelist = array();
 # $wgFlaggedRevsWhitelist = array( 'Main_Page' );
 
-# Do flagged revs override the default view?
+# Is a "stable version" used as the default display
+# version for all pages in reviewable namespaces?
 $wgFlaggedRevsOverride = true;
-# Are pages only reviewable if the stable shows by default?
-$wgFlaggedRevsReviewForDefault = false;
 # Precedence order for stable version selection.
 # The stable version will be the highest ranked version in the page.
 # FR_PRISTINE : "pristine" > "quality" > "sighted"
 # FR_QUALITY : "pristine" = "quality" > "sighted"
 # FR_SIGHTED : "pristine" = "quality" = "sighted"
 $wgFlaggedRevsPrecedence = FR_QUALITY;
-# Revision tagging can slow development...
-# For example, the main user base may become complacent, perhaps treat flagged
-# pages as "done", or just be too lazy to click "current". We may just want non-user
-# visitors to see reviewed pages by default.
 # Below are groups that see the current revision by default.
+# This makes editing easier since the users always start off
+# viewing the latest version of pages.
 $wgFlaggedRevsExceptions = array( 'user' );
 
 # Can users make comments that will show up below flagged revisions?
 $wgFlaggedRevsComments = false;
-# Allow auto-review edits directly to the stable version by reviewers?
+# Auto-review edits that are:
+# (a) directly to the stable version by users with 'autoreview'/'bot'
+# (b) self-reversions back to the stable version by any user
 $wgFlaggedRevsAutoReview = true;
-# Auto-review new pages with the minimal level?
+# If $wgFlaggedRevsAutoReview, auto-review new pages as minimally "sighted"?
 $wgFlaggedRevsAutoReviewNew = true;
 
 # Define the tags we can use to rate an article, number of levels,
@@ -120,13 +118,11 @@ $wgFlaggedRevTags = array(
 	'depth'    => array( 'levels' => 3, 'quality' => 1, 'pristine' => 4 ),
 	'style'    => array( 'levels' => 3, 'quality' => 1, 'pristine' => 4 ),
 );
-
 # For each tag, define the highest tag level that is unlocked by
 # having certain rights. For example, having 'review' rights may
 # allow for "depth" to be rated up to second level.
-# NOTE: Users cannot lower tags from a level they can't set.
-# NOTE: Users with 'validate' can do anything regardless.
-# This is mainly for custom, less experienced, groups
+# NOTE: Users cannot lower revision tags from a level they can't set.
+# NOTE: Users with 'validate' (Reviewers) can set all tags to all levels.
 $wgFlagRestrictions = array(
 	'accuracy' => array( 'review' => 1, 'autoreview' => 1 ),
 	'depth'	   => array( 'review' => 2, 'autoreview' => 2 ),
@@ -140,46 +136,23 @@ $wgFlaggedRevsTagsAuto = array(
 
 # Restriction levels for 'autoreview'/'review' rights.
 # When a level is selected for a page, an edit made by a user
-# requires approval unless that user has the specified permission.
+# will not be auto-reviewed if the user lacks the specified permission.
 # Levels are set at the Stabilization special page.
 $wgFlaggedRevsRestrictionLevels = array( '', 'sysop' );
-# Set this to disable Stabilization and show the above restriction levels
+# Set this to use FlaggedRevs *only* as a protection-like mechanism.
+# This will disable Stabilization and show the above restriction levels
 # on the protection form of pages. Each level has the stable version shown by default.
-# A "none" level will appear in the forms as well, to restore the default settings.
+# A "none" level will appear in the form as well, to disable the review process.
+# Pages will only be reviewable if manually restricted to a level above "none".
 # NOTE: The stable version precedence cannot be configured per page with this.
 $wgFlaggedRevsProtection = false;
 
-# Please set these as something different. Any text will do, though it probably
-# shouldn't be very short (less secure) or very long (waste of resources).
-# There must be two codes, and only the first two are checked.
-$wgReviewCodes = array();
-
-# URL location for flaggedrevs.css and flaggedrevs.js
-# Use a literal $wgScriptPath as a placeholder for the runtime value of $wgScriptPath
-$wgFlaggedRevsStylePath = '$wgScriptPath/extensions/FlaggedRevs/client';
-
-# Define our basic reviewer class
+# Define our basic reviewer class of established editors (Editors)
 $wgGroupPermissions['editor']['review']          = true;
 $wgGroupPermissions['editor']['autoreview']      = true;
 $wgGroupPermissions['editor']['autoconfirmed']   = true;
 $wgGroupPermissions['editor']['unreviewedpages'] = true;
 $wgGroupPermissions['editor']['patrolmarks']     = true;
-
-# Defines extra rights for advanced reviewer class
-$wgGroupPermissions['reviewer']['validate']        = true;
-# Let this stand alone just in case...
-$wgGroupPermissions['reviewer']['review']          = true;
-$wgGroupPermissions['reviewer']['autoreview']      = true;
-$wgGroupPermissions['reviewer']['autoconfirmed']   = true;
-$wgGroupPermissions['reviewer']['unreviewedpages'] = true;
-$wgGroupPermissions['reviewer']['patrolmarks']     = true;
-
-# Sysops have their edits autoreviewed
-$wgGroupPermissions['sysop']['autoreview'] = true;
-# Stable version selection and default page revision selection can be set per page.
-$wgGroupPermissions['sysop']['stablesettings'] = true;
-# Sysops can always move stable pages
-$wgGroupPermissions['sysop']['movestable'] = true;
 
 # Define when users get automatically promoted to Editors. Set as false to disable.
 # 'spacing' and 'benchmarks' require edits to be spread out. Users must have X (benchmark)
@@ -200,7 +173,7 @@ $wgFlaggedRevsAutopromote = array(
 	'userpageBytes'       => 0, # userpage is needed? with what min size?
 	'uniqueIPAddress'     => false, # If $wgPutIPinRC is true, users sharing IPs won't be promoted
 	'neverBlocked'        => true, # Can users that were blocked be promoted?
-	'maxRevertedEdits'    => 5, # Max edits the user could have had rolled back?
+	'maxRevertedEdits'    => 5, # Max times the user could have edits undone/"rolled back"?
 );
 
 # Define when users get to have their own edits auto-reviewed. Set to false to disable.
@@ -223,6 +196,22 @@ $wgFlaggedRevsAutoconfirm = array(
 );
 */
 
+# Defines extra rights for advanced reviewer class (Reviewers)
+$wgGroupPermissions['reviewer']['validate']        = true;
+# Let this stand alone just in case...
+$wgGroupPermissions['reviewer']['review']          = true;
+$wgGroupPermissions['reviewer']['autoreview']      = true;
+$wgGroupPermissions['reviewer']['autoconfirmed']   = true;
+$wgGroupPermissions['reviewer']['unreviewedpages'] = true;
+$wgGroupPermissions['reviewer']['patrolmarks']     = true;
+
+# Sysops have their edits autoreviewed
+$wgGroupPermissions['sysop']['autoreview'] = true;
+# Stable version selection and default page revision selection can be set per page.
+$wgGroupPermissions['sysop']['stablesettings'] = true;
+# Sysops can always move stable pages
+$wgGroupPermissions['sysop']['movestable'] = true;
+
 # Special:Userrights settings
 # # Basic rights for Sysops
 $wgAddGroups['sysop'][] = 'editor';
@@ -230,6 +219,10 @@ $wgRemoveGroups['sysop'][] = 'editor';
 # # Extra ones for Bureaucrats
 $wgAddGroups['bureaucrat'][] = 'reviewer';
 $wgRemoveGroups['bureaucrat'][] = 'reviewer';
+
+# URL location for flaggedrevs.css and flaggedrevs.js
+# Use a literal $wgScriptPath as a placeholder for the runtime value of $wgScriptPath
+$wgFlaggedRevsStylePath = '$wgScriptPath/extensions/FlaggedRevs/client';
 
 # Show reviews in recentchanges? Disabled by default, often spammy...
 $wgFlaggedRevsLogInRC = false;
@@ -240,12 +233,13 @@ $wgFlaggedRevsAutopromoteInRC = false;
 $wgFlaggedRevsOversightAge = 30 * 24 * 3600;
 
 # Flagged revisions are always visible to users with rights below.
-# Use '*' for non-user accounts.
+# Use '*' for non-user accounts. This is for read-restricted wikis.
 $wgFlaggedRevsVisible = array();
 # If $wgFlaggedRevsVisible is populated, it is applied to talk pages too
 $wgFlaggedRevsTalkVisible = true;
 
-# How long before Special:ValidationStatistics is updated
+# How long before Special:ValidationStatistics is updated.
+# Set to false to disable (perhaps using a cron job instead).
 $wgFlaggedRevsStatsAge = 2 * 3600; // 2 hours
 
 # How to handle templates and files used in stable versions:
@@ -266,7 +260,7 @@ $wgFlaggedRevsHandleIncludes = FR_INCLUDES_STABLE;
 # pointed to by the metadata of how the article was when it was reviewed.
 # An example would be an article that selects a template based on time.
 # The template to be selected will change, and the metadata only points
-# to the reviewed revision ID of the old template. In such cases, we can s
+# to the reviewed revision ID of the old template. In such cases, we can
 # select the current (unreviewed) revision.
 $wgUseCurrentTemplates = true;
 
@@ -296,7 +290,7 @@ $wgAvailableRights[] = 'movestable';
 $wgAvailableRights[] = 'stablesettings';
 
 # Bump this number every time you change flaggedrevs.css/flaggedrevs.js
-$wgFlaggedRevStyleVersion = 75;
+$wgFlaggedRevStyleVersion = 77;
 
 $wgExtensionFunctions[] = 'efLoadFlaggedRevs';
 
@@ -307,10 +301,12 @@ $wgSvgGraphDir = $dir . 'svggraph';
 $wgPHPlotDir = $dir . 'phplot-5.0.5';
 
 $wgAutoloadClasses['FlaggedRevs'] = $dir . 'FlaggedRevs.class.php';
+$wgAutoloadClasses['FRUserCounters'] = $dir . 'FRUserCounters.php';
 $wgAutoloadClasses['FlaggedRevsHooks'] = $dir . 'FlaggedRevs.hooks.php';
 $wgAutoloadClasses['FlaggedRevsLogs'] = $dir . 'FlaggedRevsLogs.php';
 $wgAutoloadClasses['FRCacheUpdate'] = $dir . 'FRCacheUpdate.php';
 $wgAutoloadClasses['FRCacheUpdateJob'] = $dir . 'FRCacheUpdate.php';
+$wgAutoloadClasses['FRLinksUpdate'] = $dir . 'FRLinksUpdate.php';
 
 # Special case cache invalidations
 $wgJobClasses['flaggedrevs_CacheUpdate'] = 'FRCacheUpdateJob';
@@ -414,8 +410,8 @@ $wgHooks['ImagePageFindFile'][] = 'FlaggedRevsHooks::onImagePageFindFile';
 # Override redirect behavior...
 $wgHooks['InitializeArticleMaybeRedirect'][] = 'FlaggedRevsHooks::overrideRedirect';
 # Set page view tabs
-$wgHooks['SkinTemplateTabs'][] = 'FlaggedRevsHooks::setActionTabs'; // Most skins
-$wgHooks['SkinTemplateNavigation'][] = 'FlaggedRevsHooks::setNavigation'; // Vector
+$wgHooks['SkinTemplateTabs'][] = 'FlaggedRevsHooks::onSkinTemplateTabs'; // All skins
+$wgHooks['SkinTemplateNavigation'][] = 'FlaggedRevsHooks::onSkinTemplateNavigation'; // Vector
 # Add notice tags to edit view
 $wgHooks['EditPage::showEditForm:initial'][] = 'FlaggedRevsHooks::addToEditView';
 # Tweak submit button name/title
@@ -490,7 +486,7 @@ $wgHooks['NewRevisionFromEditComplete'][] = 'FlaggedRevsHooks::incrementReverts'
 # Extra cache updates for stable versions
 $wgHooks['HTMLCacheUpdate::doUpdate'][] = 'FlaggedRevsHooks::doCacheUpdate';
 # Updates stable version tracking data
-$wgHooks['LinksUpdate'][] = 'FlaggedRevsHooks::extraLinksUpdate';
+$wgHooks['LinksUpdate'][] = 'FlaggedRevsHooks::onLinksUpdate';
 # Clear dead config rows
 $wgHooks['ArticleDeleteComplete'][] = 'FlaggedRevsHooks::onArticleDelete';
 $wgHooks['ArticleRevisionVisibilitySet'][] = 'FlaggedRevsHooks::onRevisionDelete';
@@ -526,7 +522,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'FlaggedRevsHooks::addSchemaUpdates';
 function efSetFlaggedRevsConditionalHooks() {
 	global $wgHooks, $wgFlaggedRevsVisible;
 	# Mark items in user contribs
-	if ( !FlaggedRevs::stableOnlyIfConfigured() ) {
+	if ( !FlaggedRevs::useOnlyIfProtected() ) {
 		$wgHooks['ContribsPager::getQueryInfo'][] = 'FlaggedRevsHooks::addToContribsQuery';
 		$wgHooks['ContributionsLineEnding'][] = 'FlaggedRevsHooks::addToContribsLine';
 	}
@@ -540,6 +536,9 @@ function efSetFlaggedRevsConditionalHooks() {
 		$wgHooks['ProtectionForm::showLogExtract'][] = 'FlaggedRevsHooks::insertStabilityLog';
 		# Save stability settings
 		$wgHooks['ProtectionForm::save'][] = 'FlaggedRevsHooks::onProtectionSave';
+		# Parser stuff
+		$wgHooks['ParserFirstCallInit'][] = 'FlaggedRevsHooks::onParserFirstCallInit';
+		$wgHooks['LanguageGetMagic'][] = 'FlaggedRevsHooks::onLanguageGetMagic';
 	}
 	# Give bots the 'autoreview' right (here so it triggers after CentralAuth)
 	# @TODO: better way to ensure hook order
@@ -558,7 +557,7 @@ function efLoadFlaggedRevs() {
 	}
 	/* TODO: decouple from rc patrol */
 	# Check if FlaggedRevs is enabled by default for pages...
-	if ( $wgFlaggedRevsNamespaces && !FlaggedRevs::stableOnlyIfConfigured() ) {
+	if ( $wgFlaggedRevsNamespaces && !FlaggedRevs::useOnlyIfProtected() ) {
 		# Use RC Patrolling to check for vandalism.
 		# Edits to reviewable pages must be flagged to be patrolled.
 		$wgUseRCPatrol = true;
@@ -575,7 +574,7 @@ function efLoadFlaggedRevs() {
 
 function efSetFlaggedRevsConditionalAPIModules() {
 	global $wgAPIModules, $wgAPIListModules;
-	if ( FlaggedRevs::stableOnlyIfConfigured() ) {
+	if ( FlaggedRevs::useOnlyIfProtected() ) {
 		$wgAPIModules['stabilize'] = 'ApiStabilizeProtect';
 	} else {
 		$wgAPIModules['stabilize'] = 'ApiStabilizeGeneral';
@@ -586,7 +585,7 @@ function efSetFlaggedRevsConditionalAPIModules() {
 
 function efSetFlaggedRevsConditionalRights() {
 	global $wgGroupPermissions, $wgImplicitGroups, $wgFlaggedRevsAutoconfirm;
-	if ( FlaggedRevs::stableOnlyIfConfigured() ) {
+	if ( FlaggedRevs::useOnlyIfProtected() ) {
 		// Removes sp:ListGroupRights cruft
 		if ( isset( $wgGroupPermissions['editor'] ) ) {
 			unset( $wgGroupPermissions['editor']['unreviewedpages'] );
@@ -635,6 +634,7 @@ $wgLogActionsHandlers['stable/reset'] = 'FlaggedRevsLogs::stabilityLogText'; // 
 
 # AJAX functions
 $wgAjaxExportList[] = 'RevisionReview::AjaxReview';
+$wgAjaxExportList[] = 'FlaggedArticleView::AjaxBuildDiffHeaderItems';
 
 # Cache update
 $wgSpecialPageCacheUpdates[] = 'efFlaggedRevsUnreviewedPagesUpdate';

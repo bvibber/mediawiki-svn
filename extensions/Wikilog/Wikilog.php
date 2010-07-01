@@ -16,7 +16,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -40,6 +40,15 @@ $wgExtensionCredits['specialpage'][] = array(
 	'descriptionmsg' => 'wikilog-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikilog',
 );
+
+/*
+ * Constant definitions.
+ */
+// For source-code readability. This ought to be defined by MediaWiki (and
+// there is actually such a definition in DifferenceEngine.php, but it is
+// not global). So, it is easier to have our own until MediaWiki provides
+// one globally. It also allows us to keep compatibility.
+define( 'WL_NBSP', '&#160;' );
 
 /*
  * Dependencies.

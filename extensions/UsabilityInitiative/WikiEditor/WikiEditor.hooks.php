@@ -13,19 +13,20 @@ class WikiEditorHooks {
 	static $scripts = array(
 		'raw' => array(
 			array( 'src' => 'Modules/Highlight/Highlight.js', 'version' => 5 ),
-			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
+			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 9 ),
+			array( 'src' => 'Modules/PreviewDialog/PreviewDialog.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 94 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 96 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Templates/Templates.js', 'version' => 1 ),
 			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 101 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 109 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 101 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 109 ),
 		),
 	);
 	static $messages = array(
@@ -111,6 +112,24 @@ class WikiEditorHooks {
 				'wikieditor-preview-tab',
 				'wikieditor-preview-changes-tab',
 				'wikieditor-preview-loading',
+			),
+		),
+		'previewDialog' => array(
+			'i18n' => 'WikiEditorPreviewDialog',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'wikieditor-previewDialog',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-previewDialog-preference',
+						'section' => 'editing/labs',
+					),
+				),
+			),
+			'messages' => array(
+				'wikieditor-previewDialog-preference',
+				'wikieditor-previewDialog-tab',
+				'wikieditor-previewDialog-loading',
 			),
 		),
 		'publish' => array(

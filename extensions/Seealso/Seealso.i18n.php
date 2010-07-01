@@ -547,9 +547,10 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'seealso' => 'Vedeți, de asemenea,',
+	'seealso' => 'Vedeți și',
 );
 
 /** Tarandíne (Tarandíne)
@@ -574,6 +575,14 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'seealso' => 'Pozri aj',
 	'seealso-desc' => 'Lokalizované nadpisy „Pozri aj“ pomocou značky <code><nowiki><seealso></nowiki></code>',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'seealso' => 'Glej tudi',
+	'seealso-desc' => 'Lokalizirani naslovi »See also« z uporabo etikete <code><nowiki><seealso></nowiki></code>',
 );
 
 /** Seeltersk (Seeltersk)

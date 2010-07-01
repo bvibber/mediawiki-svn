@@ -6083,16 +6083,25 @@ $messages['ps'] = array(
 	'ur-main-page' => 'لومړی مخ',
 	'ur-your-profile' => 'ستاسې پېژنليک',
 	'ur-add-friend' => 'خپل په ملګرو کې ورګډول',
+	'ur-add-foe' => 'د سيال په توګه ورګډول',
+	'ur-add-personal-message' => 'يو شخصي پيغام ورليکل',
+	'ur-remove-relationship-friend' => 'د ملګرتوب نه ليري کول',
+	'ur-remove-relationship-foe' => 'د سيالۍ نه ليري کول',
 	'ur-give-gift' => 'يوه ډالۍ ورکول',
 	'ur-previous' => 'پخوانی',
 	'ur-next' => 'راتلونکي',
+	'ur-remove-error-message-remove-yourself' => 'تاسې خپل ځان نه شی ليري کولای.',
 	'ur-remove' => 'غورځول',
+	'ur-cancel' => 'ناګارل',
 	'ur-login' => 'ننوتل',
 	'ur-add-button-foe' => 'د سيال په توګه ورګډول',
 	'ur-add-button-friend' => 'د ملګري په توګه ورګډول',
+	'ur-add-error-message-existing-relationship-friend' => 'تاسې د پخوا نه د $1 سره ملګری ياست.',
+	'ur-add-error-message-pending-request-title' => 'صبر وکړۍ!',
 	'ur-requests-title' => 'د اړيکو غوښتنې',
 	'ur-accept' => 'منل',
 	'ur-reject' => 'ردول',
+	'ur-requests-added-message-foe' => '$1 مو د يوه سيال په توګه د ځان سره ګډ کړ.',
 	'ur-title-foe' => 'د $1 د سيالانو لړليک',
 	'ur-title-friend' => 'د $1 ملګرو لړليک',
 );
@@ -6695,6 +6704,19 @@ $2 удалил вас из списка недругов на {{SITENAME}}!
 и измените ваши настройки, отключив отправку уведомлений по электронной почте.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'ur-main-page' => 'Головна сторінка',
+	'ur-add-friend' => 'Придати як камарата',
+	'ur-previous' => 'попереднїй',
+	'ur-next' => 'далшый',
+	'ur-cancel' => 'Зрушыти',
+	'ur-add-button-friend' => 'Придати як камарата',
+	'ur-accept' => 'Підтвердити',
+);
+
 /** Tachelhit (Tašlḥiyt)
  * @author Zanatos
  */
@@ -6912,10 +6934,13 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'ur-already-submitted' => 'Ваш захтев је послат',
+	'ur-error-page-title' => 'Упс!',
 	'ur-main-page' => 'Главна страна',
 	'ur-your-profile' => 'Ваш профил',
 	'ur-add-friend' => 'Додај као пријатеља',
 	'ur-add-foe' => 'Додај као непријатеља',
+	'ur-add-personal-message' => 'Додај личну поруку',
 	'ur-remove-relationship-friend' => 'Обриши као пријатеља',
 	'ur-remove-relationship-foe' => 'Обриши као непријатеља',
 	'ur-give-gift' => 'Пошаљи поклон',
@@ -6931,6 +6956,8 @@ $messages['sr-ec'] = array(
 	'ur-remove-relationship-message-confirm-friend' => 'Успешно сте обрисали $1 са Вашег списка пријатеља.',
 	'ur-remove-error-message-no-relationship' => 'Нисте ни у каквом односу са $1.',
 	'ur-remove-error-message-remove-yourself' => 'Не можете да обришете себе.',
+	'ur-remove-error-message-pending-foe-request' => 'На чекању имате захтев за непријатељство са $1.',
+	'ur-remove-error-message-pending-friend-request' => 'На чекању имате захтев за пријтељство са $1.',
 	'ur-remove-error-not-loggedin-foe' => 'Морате бити улоговани да бисте уклонили некога са Вашег списка непријатеља.',
 	'ur-remove-error-not-loggedin-friend' => 'Морате бити улоговани да бисте некога обрисали са списка пријатеља.',
 	'ur-remove' => 'Уклони',
@@ -6964,10 +6991,13 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'ur-already-submitted' => 'Vaš zahtev je poslat',
+	'ur-error-page-title' => 'Ups!',
 	'ur-main-page' => 'Glavna strana',
 	'ur-your-profile' => 'Vaš profil',
 	'ur-add-friend' => 'Dodaj kao prijatelja',
 	'ur-add-foe' => 'Dodaj kao neprijatelja',
+	'ur-add-personal-message' => 'Dodaj ličnu poruku',
 	'ur-remove-relationship-friend' => 'Obriši kao prijatelja',
 	'ur-remove-relationship-foe' => 'Obriši kao neprijatelja',
 	'ur-give-gift' => 'Pošalji poklon',
@@ -6983,6 +7013,8 @@ $messages['sr-el'] = array(
 	'ur-remove-relationship-message-confirm-friend' => 'Uspešno ste obrisali $1 sa Vašeg spiska prijatelja.',
 	'ur-remove-error-message-no-relationship' => 'Niste ni u kakvom odnosu sa $1.',
 	'ur-remove-error-message-remove-yourself' => 'Ne možete da obrišete sebe.',
+	'ur-remove-error-message-pending-foe-request' => 'Na čekanju imate zahtev za neprijateljstvo sa $1.',
+	'ur-remove-error-message-pending-friend-request' => 'Na čekanju imate zahtev za prijteljstvo sa $1.',
 	'ur-remove-error-not-loggedin-foe' => 'Morate biti ulogovani da biste uklonili nekoga sa Vašeg spiska neprijatelja.',
 	'ur-remove-error-not-loggedin-friend' => 'Morate biti ulogovani da biste nekoga obrisali sa spiska prijatelja.',
 	'ur-remove' => 'Ukloni',

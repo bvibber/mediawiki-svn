@@ -10,13 +10,13 @@ $wgAutoloadClasses = array_merge( $wgAutoloadClasses,  array(
 	'Minify_CSS_Compressor' => $js2Dir . 'mwEmbed/includes/library/CSS/Compressor.php',
 	'Minify_CSS_UriRewriter' => $js2Dir . 'mwEmbed/includes/library/CSS/UriRewriter.php',
 	'JSMinException' => $js2Dir . 'mwEmbed/includes/minify/JSMin.php',
-	'jsScriptLoader' => $js2Dir . 'mwEmbed/jsScriptLoader.php',
-	'jsClassLoader' => $js2Dir . 'mwEmbed/includes/jsClassLoader.php',
-	'simpleFileCache' => $js2Dir . 'mwEmbed/jsScriptLoader.php',
+	'ResourceLoader' => $js2Dir . 'mwEmbed/ResourceLoader.php',
+	'NamedResourceLoader' => $js2Dir . 'mwEmbed/includes/NamedResourceLoader.php',
+	'simpleFileCache' => $js2Dir . 'mwEmbed/ResourceLoader.php',
 ));
 
 // Autoloader for core mediaWiki JavaScript files (path is from the MediaWiki folder)
-$wgScriptLoaderNamedPaths = array_merge(  $wgScriptLoaderNamedPaths, array(
+$wgResourceLoaderNamedPaths = array_merge(  $wgResourceLoaderNamedPaths, array(
 	'ajax' => 'skins/common/ajax.js',
 	'ajaxwatch' => 'skins/common/ajaxwatch.js',
 	'allmessages' => 'skins/common/allmessages.js',

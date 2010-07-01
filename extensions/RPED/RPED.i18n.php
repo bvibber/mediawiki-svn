@@ -192,6 +192,15 @@ $messages['oc'] = array(
 	'rped-desc' => 'Liga los wikiligams cap a Wikipèdia se la pagina existís pas sul wiki local mas existís sus Wikipèdia',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'rped' => 'Wykrywa obecność zewnętrznej strony',
+	'rped-desc' => 'Linkuje linki wiki do Wikipedii jeśli strona nie istnieje w lokalnej wiki, ale jest w Wikipedii',
+	'rped-wikipedia-url' => 'http://pl.wikipedia.org/wiki/$1',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */
@@ -216,6 +225,7 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'rped' => 'Detecção da existência de páginas remotas',
 	'rped-desc' => 'Liga um link à Wikipédia, se a página de destino não existir na wiki local mas existir na Wikipédia',
+	'rped-wikipedia-url' => 'http://pt.wikipedia.org/wiki/$1',
 );
 
 /** Russian (Русский)

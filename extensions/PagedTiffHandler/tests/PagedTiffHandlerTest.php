@@ -45,6 +45,35 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 			echo "testImages/Multipage.tif cannot be found.\n";
 			$this->preCheckError = true;
 		}
+
+		$caspianTitle = Title::newFromText('Image:Caspian.tif');
+		$this->image = wfFindFile($caspianTitle);
+		if (!$this->image)
+		{
+			if ($autoUpload)
+			{
+				echo "testImages/caspian.tif seems not to be present in the wiki. Trying to upload.\n";
+				$this->image = wfLocalFile( $caspianTitle );
+				$archive = $this->image->publish( dirname(__FILE__) . '/testImages/caspian.tif' );
+				$this->image->recordUpload( $archive->value, "Test file used for PagedTiffHandler unit test", "No license" );
+				if( WikiError::isError( $archive ) || !$archive->isGood() )
+				{
+					echo "Something went wrong. Please manually upload testImages/caspian.tif\n";
+					$this->preCheckError = true;
+				}
+				else
+				{
+					echo "Upload was successful.\n";
+				}
+			}
+			else
+			{
+				echo "Please upload the image testImages/caspian.tif into the wiki\n";
+				$this->preCheckError = true;
+			}
+			
+		}
+
 		$multipageTitle = Title::newFromText( 'Image:Multipage.tiff' );
 		$this->image = wfFindFile( $multipageTitle );
 		if ( !$this->image ) {
@@ -70,6 +99,7 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	function runTest() {
+		global $wgLanguageCode;
 		// do not execute test if preconditions check returned false;
 		if ( $this->preCheckError ) {
 			return false;
@@ -87,6 +117,13 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$params = array( 'width' => '100', 'height' => '100', 'page' => '4' );
 		$this->handler->normaliseParams( $this->image, $params );
 		$this->assertEquals( $params['height'], 75 );
+		// lossy and lossless
+		$params = array('width'=>'100', 'height'=>'100', 'page'=>'1');
+		$this->handler->normaliseParams($this->image, $params );
+		$this->assertEquals($params['lossy'], 'lossy');
+		$params = array('width'=>'100', 'height'=>'100', 'page'=>'2');
+		$this->handler->normaliseParams($this->image, $params );
+		$this->assertEquals($params['lossy'], 'lossless');
 		// makeParamString
 		$this->assertEquals(
 			$this->handler->makeParamString(
@@ -98,12 +135,10 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 			),
 			'lossless-page4-100px'
 		);
-	
 		// ---- File upload checks and Thumbnail transformation
 		// check
 		// TODO: check other images
 		$this->assertTrue( $this->handler->check( 'multipage.tiff', $this->path, $error ) );
-	
 		$this->handler->check( 'Caspian.tif', dirname( __FILE__ ) . '/testImages/caspian.tif', $error );
 		$this->assertEquals( $error, 'tiff_bad_file' );
 		// doTransform
@@ -111,12 +146,22 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$error = $this->handler->doTransform( wfFindFile( Title::newFromText( 'Image:Caspian.tif' ) ), dirname( __FILE__ ) . '/testImages/caspian.tif', 'Caspian.tif', array( 'width' => 100, 'height' => 100 ) );
 		$this->assertEquals( $error->textMsg, wfMsg( 'thumbnail_error', wfMsg( 'tiff_bad_file' ) ) );
 		// ---- Image information
-		// getThumbExtension
-		$this->assertEquals( $this->handler->getThumbExtension( $this->image, 2, 1 ), '.jpg' );
-		// TODO: 0 is obviously the same as NULL
-		$this->assertEquals( $this->handler->getThumbExtension( $this->image, 2, '0' ), '.png' );
+		// getThumbType
+		$type = $this->handler->getThumbType( '.tiff', 'image/tiff', array( 'lossy' => 'lossy' ) );
+		$this->assertEquals( $type[0], 'jpg' );
+		$this->assertEquals( $type[1], 'image/jpeg' );
+
+		$type = $this->handler->getThumbType( '.tiff', 'image/tiff', array( 'lossy' => 'lossless' ) );
+		$this->assertEquals( $type[0], 'png' );
+		$this->assertEquals( $type[1], 'image/png' );
+
 		// getLongDesc
-		$this->assertEquals( $this->handler->getLongDesc( $this->image ), wfMsg( 'tiff-file-info-size', '1.024', '768', '2,64 MB', 'image/tiff', '1' ) );
+		if ( $wgLanguageCode == 'de' ) {
+			$this->assertEquals( $this->handler->getLongDesc( $this->image ), wfMsg( 'tiff-file-info-size', '1.024', '768', '2,64 MB', 'image/tiff', '1' ) );
+		} else {
+			// English
+			$this->assertEquals( $this->handler->getLongDesc( $this->image ), wfMsg( 'tiff-file-info-size', '1,024', '768', '2.64 MB', 'image/tiff', '1' ) );
+		}
 		// pageCount
 		$this->assertEquals( $this->handler->pageCount( $this->image ), 7 );
 		// getPageDimensions
@@ -132,7 +177,7 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals( $this->handler->getPageDimensions( $this->image, 8 ), array( 'width' => 768, 'height' => 1024 ) );
 		// isMultiPage
 		$this->assertTrue( $this->handler->isMultiPage( $this->image ) );
-	
+
 		// ---- Metadata handling
 		// getMetadata
 		$metadata =  $this->handler->getMetadata( false, $this->path );
@@ -146,10 +191,10 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		//this is also strtolower in PagedTiffHandler::getThumbExtension
 		$this->assertEquals( strtolower( $metaArray['page_data'][1]['alpha'] ), 'false' );
 		$this->assertEquals( strtolower( $metaArray['page_data'][2]['alpha'] ), 'true' );
-		$this->assertEquals( $metaArray['exif']['Endianess'], 'MSB' );
+		$this->assertEquals( $metaArray['exif']['PhotometricInterpretation'], 2 ); //RGB
 		// formatMetadata
 		$formattedMetadata = $this->handler->formatMetadata( $this->image );
-		$this->assertEquals( $formattedMetadata['collapsed'][0]['value'], 'TIFF (Tagged Image File Format)' );
+		$this->assertEquals( $formattedMetadata['collapsed'][3]['value'], 'RGB' ); //XXX: brittle, index might change.
 	}
 
 }

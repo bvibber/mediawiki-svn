@@ -27,6 +27,15 @@ $messages['qqq'] = array(
 	'updatemyprefs-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Adriaan
+ */
+$messages['af'] = array(
+	'prefs-updates' => 'Bywerkings',
+	'updatemyprefs-desc' => 'Voorkeurinstelling vir gebruikers om aan te dui of hulle onmiddellik koppelvlakbywerkings in gebruik wil neem',
+	'updatemyprefs-label-message' => 'Werk my voorkeure outomaties by soos wat nuwe instellings en nutsgoed beskikbaar word',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
@@ -45,13 +54,21 @@ $messages['ar'] = array(
 	'updatemyprefs-label-message' => 'حدّث تفضيلاتي تلقائيًا بالإعدادات الجديدة الافتراضيةوالأدوات التي تتوفّر',
 );
 
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
+ */
+$messages['arz'] = array(
+	'prefs-updates' => 'تحديثات (updates)',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'prefs-updates' => 'Абнаўленьні',
-	'updatemyprefs-desc' => 'Устаноўкі для ўдзельнікаў, якія дазваляюць вызначыць ці жадаюць яны абнаўляць інтэрфэйс удзельніка, калі зьяўляюцца новыя магчымасьці',
+	'updatemyprefs-desc' => 'Устаноўкі для ўдзельнікаў, якія дазваляюць вызначыць, ці жадаюць яны абнаўляць інтэрфэйс удзельніка, калі зьяўляюцца новыя магчымасьці',
 	'updatemyprefs-label-message' => 'Аўтаматычна абнаўляць мае устаноўкі новымі устаноўкамі па змоўчваньні і інструмэнтамі, калі яны зьяўляюцца',
 );
 
@@ -102,6 +119,16 @@ $messages['cy'] = array(
 	'updatemyprefs-label-message' => "Newid fy newisiadau'n syth bin i gyfateb â gosodiadau ac offer rhagosodedig newydd",
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ * @author Sir48
+ */
+$messages['da'] = array(
+	'prefs-updates' => 'Opdateringer',
+	'updatemyprefs-desc' => 'Brugerpræference til angivelse af ønske om periodisk opdatering af brugerinterface, når sådanne frigives',
+	'updatemyprefs-label-message' => 'Opdater automatisk mine præferencer med nye standardindstillinger og værktøjer, når de bliver tilgængelige',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefs-updates' => 'Aktualisierungen',
@@ -114,6 +141,8 @@ $messages['de'] = array(
  */
 $messages['diq'] = array(
 	'prefs-updates' => 'Rocaniyani',
+	'updatemyprefs-desc' => 'Tercihan ke semed karberan wecinayise rocaniya interfaceyi periyodic ke ci wext est ê',
+	'updatemyprefs-label-message' => 'Tercihane mi pe xacetane u eyarane rocaniye bike ci wext ke est ê',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -158,6 +187,15 @@ $messages['es'] = array(
  */
 $messages['eu'] = array(
 	'prefs-updates' => 'Eguneratzeak',
+	'updatemyprefs-desc' => 'Eskuragarri dauden lankide interfazearen eguneraketa periodikoak jaso nahi dituzten lankideentzako hobespena',
+	'updatemyprefs-label-message' => 'Automatikoki eguneratu nire hobespenak lehenetsitako ezaugarri eta tresnekin, behin martxan daudenean',
+);
+
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'prefs-updates' => 'به‌روزرسانی‌ها',
 );
 
 /** Finnish (Suomi)
@@ -234,10 +272,12 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
 	'prefs-updates' => 'Pembaharuan',
+	'updatemyprefs-desc' => 'Preferensi bagi pengguna untuk menyebutkan apakah mereka menginginkan pemutakhiran antarmuka pengguna secara berkala bila sudah tersedia',
 	'updatemyprefs-label-message' => 'Perbarui preferensi saya secara otomatis dengan setelan baku yang baru dan alat-alatnya jika telah tersedia',
 );
 
@@ -306,6 +346,13 @@ $messages['ml'] = array(
 	'updatemyprefs-label-message' => 'എന്റെ ക്രമീകരണങ്ങൾ സ്വതവേ തരുന്ന പുതിയ ഉപകരണങ്ങളും സജ്ജീകരണങ്ങളും ലഭ്യമാകുന്ന മുറയ്ക്ക് സ്വയം പുതുക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'prefs-updates' => 'Pembaharuan',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -322,6 +369,15 @@ $messages['nl'] = array(
 	'prefs-updates' => 'Instellingen bijwerken',
 	'updatemyprefs-desc' => 'Voorkeursinstelling voor gebruikers om aan te geven of ze bij het beschikbaar komen direct gebruik willen maken van nieuwe functionaliteit',
 	'updatemyprefs-label-message' => 'Mijn voorkeuren automatisch bijwerken met nieuwe standaardinstellingen en hulpmiddelen bij het beschikbaar komen',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'prefs-updates' => 'Oppdateringar',
+	'updatemyprefs-desc' => 'Val for brukarar om i kva grad dei ønskjer periodiske brukargrensesnittoppdateringar etter kvart som dei vert gjort tilgjengelege',
+	'updatemyprefs-label-message' => 'Oppdater innstillingane mine automatisk med nye standardinnstillingar og verktøy etter kvart som dei vert tilgjengelege',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -377,6 +433,24 @@ $messages['pt-br'] = array(
 	'updatemyprefs-label-message' => 'Atualizar automaticamente as minhas preferências com novas configurações predefinidas e ferramentas, à medida que estas estejam disponíveis',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'prefs-updates' => 'Musuqchasqakuna',
+	'updatemyprefs-desc' => "Ruraqpa akllanan, ruraqpaq uyapura mit'awa musuqchaykuna kachunchu, aypalla kaspanku",
+	'updatemyprefs-label-message' => "Kikinmanta akllanaykunata musuqchay musuq kikinmanta churanakunawan llamk'anachakunawanpas, aypalla kaptinku",
+);
+
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'prefs-updates' => 'Actualizări',
+	'updatemyprefs-desc' => 'Opțiune prin care utilizatorii pot specifica dacă doresc actualizări periodice ale interfeței imediat ce acestea sunt disponibile',
+	'updatemyprefs-label-message' => 'Actualizează-mi automat preferințele cu noile setări și unelte de îndată ce acestea sunt disponibile',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -421,6 +495,20 @@ $messages['sv'] = array(
 	'updatemyprefs-label-message' => 'Uppdatera mina inställningar automatiskt med nya standardinställningarna och verktyg när de blir tillgängliga',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'prefs-updates' => 'తాజాకరణలు',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'prefs-updates' => 'อัปเดต',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -449,13 +537,29 @@ $messages['vi'] = array(
 	'updatemyprefs-label-message' => 'Tự động cập nhật các tùy chọn của tôi với những thiết lập và công cụ mặc định mới khi chúng ra mắt',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'prefs-updates' => 'אַקטואַליזירונגען',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'prefs-updates' => 'Àwọn ìtúnṣe',
+	'updatemyprefs-desc' => 'Ìfẹ́ràn fún àwọn oníṣe láti nawọ́ bóyá wọ́n fẹ́ àwọn ìtúnṣe ìgbàgbà ìwojú oníṣe bí wọ́n bá ṣe ún wá',
+	'updatemyprefs-label-message' => 'Ní fúnrararẹ̀ ṣe títúnṣe ìfẹ́ràn mi pẹ̀lú àwọn ìtòjọ ìbẹ̀rẹ̀ àti àwọn irinṣẹ́ tuntun bí wọ́n bá ṣe ún wá',
+);
+
 /** Cantonese (粵語)
  * @author Horacewai2
  */
 $messages['yue'] = array(
 	'prefs-updates' => '更新',
-	'updatemyprefs-desc' => '給用戶一個選項，決定是否更新用戶介面 (如有)',
-	'updatemyprefs-label-message' => '自動更新我嘅參數如果新嘅預設設定同工具提供左',
+	'updatemyprefs-desc' => '用戶嘅選項去決定有更新嗰陣去唔去更新用戶界面',
+	'updatemyprefs-label-message' => '當佢哋可以用嗰陣自動噉更新我嘅設定到預設設定',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

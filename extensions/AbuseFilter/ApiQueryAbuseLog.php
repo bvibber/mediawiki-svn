@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -51,6 +51,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$fld_details = isset( $prop['details'] );
 		$fld_result = isset( $prop['result'] );
 		$fld_timestamp = isset( $prop['timestamp'] );
+		$fld_hidden = isset( $prop['hidden'] );
 
 		if ( $fld_ip && !$wgUser->isAllowed( 'abusefilter-private' ) )
 			$this->dieUsage( 'You don\'t have permission to view IP addresses', 'permissiondenied' );
@@ -68,6 +69,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf( 'afl_action', $fld_action );
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
 		$this->addFieldsIf( 'afl_actions', $fld_result );
+		$this->addFieldsIf( 'afl_deleted', $fld_hidden );
+		
 		if ( $fld_filter ) {
 			$this->addTables( 'abuse_filter' );
 			$this->addFields( 'af_public_comments' );
@@ -81,6 +84,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereIf( array( 'afl_user_text' => $params['user'] ), isset( $params['user'] ) );
 		$this->addWhereIf( array( 'afl_filter' => $params['filter'] ), isset( $params['filter'] ) );
+		$this->addWhereIf( array( 'afl_deleted' => 0 ), ! SpecialAbuseLog::canSeeHidden() );
 
 		$title = $params['title'];
 		if ( !is_null( $title ) ) {
@@ -128,6 +132,11 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					$entry['details'] = array_change_key_case( $vars, CASE_LOWER );
 				}
 			}
+			
+			if ( $fld_hidden ) {
+				$entry['hidden'] = $row->afl_deleted;
+			}
+			
 			if ( $entry ) {
 				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
 				if ( !$fit ) {
@@ -165,7 +174,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'prop' => array(
-				ApiBase::PARAM_DFLT => 'ids|user|title|action|result|timestamp',
+				ApiBase::PARAM_DFLT => 'ids|user|title|action|result|timestamp|hidden',
 				ApiBase::PARAM_TYPE => array(
 					'ids',
 					'filter',
@@ -176,6 +185,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 					'details',
 					'result',
 					'timestamp',
+					'hidden',
 				),
 				ApiBase::PARAM_ISMULTI => true
 			)

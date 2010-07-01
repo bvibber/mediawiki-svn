@@ -2313,12 +2313,13 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
 	'interwiki' => 'ഇന്റർ വിക്കി ഡാറ്റ കാണുകയും തിരുത്തുകയും ചെയ്യുക',
 	'interwiki-title-norights' => 'ഇന്റർ‌വിക്കി ഡാറ്റ കാണുക',
-	'interwiki_reasonfield' => 'കാരണം',
+	'interwiki_reasonfield' => 'കാരണം:',
 	'interwiki_delquestion' => '"$1" മായ്ച്ചുകൊണ്ടിരിക്കുന്നു',
 	'interwiki_addbutton' => 'ചേർക്കുക',
 );
@@ -2870,7 +2871,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'interwiki' => 'Ver e manipular dados de interwikis',
-	'interwiki-title-norights' => 'Ver dados de interwikis',
+	'interwiki-title-norights' => 'Dados de interwikis',
 	'interwiki-desc' => '[[Special:Interwiki|Página especial]] para ver e editar a tabela de interwikis',
 	'interwiki_intro' => 'Isto é um resumo da tabela de interwikis. Significado dos dados nas colunas:',
 	'interwiki_prefix' => 'Prefixo',
@@ -3699,6 +3700,7 @@ $messages['vo'] = array(
 Dabinon [[Special:Log/interwiki|jenotalised votükamas]] taiba vüvükik.',
 	'interwiki_prefix' => 'Foyümot',
 	'interwiki-prefix-label' => 'Foyümot:',
+	'interwiki_0' => 'nö',
 	'interwiki_error' => 'Pöl: Taib vüvükik vagon, u ba pöl votik ejenon.',
 	'interwiki_reasonfield' => 'Kod',
 	'interwiki_delquestion' => 'El „$1“ pamoükon',

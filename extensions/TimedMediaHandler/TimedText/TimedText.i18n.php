@@ -194,6 +194,34 @@ $messages['br'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'mwe-timedtext-editor' => 'Editor titulků',
+	'mwe-timedtext-stage-transcribe' => 'Přepis',
+	'mwe-timedtext-stage-sync' => 'Synchronizace',
+	'mwe-timedtext-stage-translate' => 'Překlad',
+	'mwe-timedtext-stage-upload' => 'Načtení místního souboru',
+	'mwe-timedtext-select-language' => 'Vyberte jazyk',
+	'mwe-timedtext-file-language' => 'Jazyk titulků',
+	'mwe-timedtext-upload-text' => 'Načíst textový soubor',
+	'mwe-timedtext-uploading-text' => 'Načítá se textový soubor',
+	'mwe-timedtext-upload-text-desc-title' => 'Načíst textový soubor',
+	'mwe-timedtext-upload-text-preview' => 'Kontrola textu',
+	'mwe-timedtext-back-btn' => 'Zpět',
+	'mwe-timedtext-choose-text' => 'Zvolit text',
+	'mwe-timedtext-add-timed-text' => 'Přidat titulky',
+	'mwe-timedtext-loading-text-edit' => 'Načítá se editor titulků',
+	'mwe-timedtext-layout' => 'Vzhled',
+	'mwe-timedtext-layout-ontop' => 'Přes obraz',
+	'mwe-timedtext-layout-below' => 'Pod obrazem',
+	'mwe-timedtext-layout-off' => 'Skrýt titulky',
+	'mwe-timedtext-loading-text' => 'Načítá se text…',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Titulky ke klipu $2 v jazyce $1',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ke klipu $2 nebyly nalezeny titulky v jazyce $1',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -468,6 +496,47 @@ $messages['gsw'] = array(
 	'mwe-timedtext-stage-transcribe' => 'Abschrift mache',
 	'mwe-timedtext-stage-sync' => 'Synchronisiere',
 	'mwe-timedtext-stage-translate' => 'Ibersetze',
+	'mwe-timedtext-stage-upload' => 'Vun ere lokale Datei uffelade',
+	'mwe-timedtext-select-language' => 'Sproch wehle',
+	'mwe-timedtext-file-language' => 'Sproch vu dr Untertitel',
+	'mwe-timedtext-upload-text' => 'Textdatei uffelade',
+	'mwe-timedtext-uploading-text' => 'Am Uffelade vun ere Textdatei',
+	'mwe-timedtext-upload-text-desc-title' => 'E Textdatei uffelade',
+	'mwe-timedtext-upload-text-desc-help' => 'S Interface zum Ufffelade vu Textdateie akzeptiert SRT-Dateie',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Dursuech Dyy lokale Computer no dr SRT-Datei, wu du wettsch uffelade',
+	'mwe-timedtext-upload-text-desc-help-select' => 'D Sproch vu dr Datei wehle',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Tue dr Textinhalt iberpriefe / bearbeite un derno druck uf Uffelade go ne zuefiege',
+	'mwe-timedtext-upload-text-preview' => 'Text iberpriefe',
+	'mwe-timedtext-upload-text-success' => 'S Uffelade vum Text isch erfolgryych gsi',
+	'mwe-timedtext-upload-text-done' => 'Fertig mit Uffelade',
+	'mwe-timedtext-upload-text-fail-desc' => 'S Uffelade isch nit erfolgryych gsi',
+	'mwe-timedtext-upload-text-fail-title' => 'Uffelade fählgschlaa',
+	'mwe-timedtext-upload-text-another' => 'Uffelade vun ere wytere Textdatei',
+	'mwe-timedtext-upload-text-done-uploading' => 'Fertig mit Uffelade',
+	'mwe-timedtext-back-btn' => 'Zruck',
+	'mwe-timedtext-choose-text' => 'Text uuswehle',
+	'mwe-timedtext-add-timed-text' => 'Ächtzyt-Untertitel zuefiege',
+	'mwe-timedtext-loading-text-edit' => 'Am Lade vum Ächtzyt-Text-Editor',
+	'mwe-timedtext-search' => 'Videoclip sueche',
+	'mwe-timedtext-layout' => 'Uusrichtig',
+	'mwe-timedtext-layout-ontop' => 'Iber em Videoclip',
+	'mwe-timedtext-layout-below' => 'Unter em Videoclip',
+	'mwe-timedtext-layout-off' => 'Untertitel uusblände',
+	'mwe-timedtext-loading-text' => 'Am Lade vum Text ...',
+	'mwe-timedtext-textcat-cc' => 'Bschryybige',
+	'mwe-timedtext-textcat-sub' => 'Untertitel',
+	'mwe-timedtext-textcat-tad' => 'Audio-Bschryybig',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Text-Ticker',
+	'mwe-timedtext-textcat-ar' => 'Aktivi Regione',
+	'mwe-timedtext-textcat-nb' => 'Aamerkig',
+	'mwe-timedtext-textcat-meta' => 'Ächtzyt-Metadate',
+	'mwe-timedtext-textcat-trx' => 'Abschrift',
+	'mwe-timedtext-textcat-lrc' => 'Liedtext',
+	'mwe-timedtext-textcat-lin' => 'Sprochwisseschaftligi Bschryybig',
+	'mwe-timedtext-textcat-cue' => 'Cue-Pinkt',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 Untertitel gfunde fir dr Videoclip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kei $1 Untertitel gfunde fir dr Videoclip: $2',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -620,6 +689,7 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text-done' => 'アップロード完了',
 	'mwe-timedtext-upload-text-fail-desc' => 'アップロードが失敗しました',
 	'mwe-timedtext-upload-text-fail-title' => 'アップロードに失敗',
+	'mwe-timedtext-upload-text-another' => '他にアップロード',
 	'mwe-timedtext-upload-text-done-uploading' => 'アップロード完了',
 	'mwe-timedtext-back-btn' => '戻る',
 	'mwe-timedtext-choose-text' => 'テキストを選択',
@@ -640,6 +710,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'mwe-timedtext-stage-translate' => 'Iwwersetzen',
+	'mwe-timedtext-stage-upload' => 'E lokale Fichier eroplueden',
 	'mwe-timedtext-select-language' => 'Sprooch eraussichen',
 	'mwe-timedtext-file-language' => 'Sprooch vum Fichier mat den Ënnertitelen',
 	'mwe-timedtext-upload-text' => 'Text-Fichier eroplueden',
@@ -654,15 +725,19 @@ $messages['lb'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => "D'Eroplueden ass fäerdeg",
 	'mwe-timedtext-back-btn' => 'Zréck',
 	'mwe-timedtext-choose-text' => 'Text eraussichen',
+	'mwe-timedtext-add-timed-text' => 'Sychroniséierten Text derbäisetzen',
+	'mwe-timedtext-search' => 'Clip sichen',
 	'mwe-timedtext-layout' => 'Layout',
 	'mwe-timedtext-layout-ontop' => 'Iwwert dem Video',
 	'mwe-timedtext-layout-below' => 'Ënnert dem Video',
 	'mwe-timedtext-layout-off' => 'Ënnertitele verstoppen',
+	'mwe-timedtext-loading-text' => 'Text gëtt gelueden ...',
 	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
 	'mwe-timedtext-textcat-ar' => 'Aktiv Regiounen',
 	'mwe-timedtext-textcat-nb' => 'Notiz',
 	'mwe-timedtext-textcat-lrc' => 'Liddertext',
+	'mwe-timedtext-textcat-cue' => 'Referenz-Punkten',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Ënnertitele fir de Clip: $2',
 );
 
@@ -858,6 +933,20 @@ $messages['pt'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Não foram encontradas legendas em $1 para o clipe: $2',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'mwe-timedtext-stage-translate' => 'Traduzir',
+	'mwe-timedtext-select-language' => 'Selecionar língua',
+	'mwe-timedtext-uploading-text' => 'Carregando um arquivo de texto',
+	'mwe-timedtext-upload-text-desc-title' => 'Carregar um arquivo de texto',
+	'mwe-timedtext-back-btn' => 'Voltar',
+	'mwe-timedtext-layout-off' => 'Esconder legendas',
+	'mwe-timedtext-loading-text' => 'Carregando o texto ...',
+	'mwe-timedtext-textcat-sub' => 'Legendas',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -907,6 +996,13 @@ $messages['ru'] = array(
 	'mwe-timedtext-textcat-cue' => 'Знаковые точки',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 — субтитры для клипа: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Не найдено субтитров на $1 для клипа: $2',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mwe-timedtext-back-btn' => 'Назад',
 );
 
 /** Swedish (Svenska)

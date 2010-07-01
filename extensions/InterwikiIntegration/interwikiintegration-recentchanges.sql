@@ -12,7 +12,7 @@ CREATE TABLE /*_*/integration_recentchanges (
   integration_rc_id int NOT NULL,
   
   -- Database name of the wiki
-  integration_rc_db varchar(256) binary NOT NULL,
+  integration_rc_db varchar(255) binary NOT NULL,
   
   integration_rc_timestamp varbinary(14) NOT NULL default '',
   integration_rc_cur_time varbinary(14) NOT NULL default '',

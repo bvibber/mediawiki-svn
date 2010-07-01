@@ -1168,7 +1168,7 @@ $messages['mk'] = array(
 	'wah-menu-stats' => 'Статистики',
 	'wah-menu-pref' => 'Прилагодувања',
 	'wah-lookingforjob' => 'Барам задача ...',
-	'wah-start-on-visit' => 'Пушти го Wiki@Home секој пат кога ќе ја посетам оваа веб-страница.',
+	'wah-start-on-visit' => 'Пушти го Wiki@Home секој пат кога ќе го посетам ова мрежно место.',
 	'wah-jobs-while-away' => 'Пуштај задачи само кога не го користам прелистувачот веќе 20 минути.',
 	'wah-nojobfound' => 'Нема пронајдено задача. Ќе се обидам повторно за  $1.',
 	'wah-notoken-login' => 'Дали сте најавени? Ако не сте, прво ќе треба да се најавите.',
@@ -1404,6 +1404,13 @@ $messages['pms'] = array(
 	'wah-doneuploading' => 'Caria finìa. Mersì për toa contribussion.',
 	'wah-needs-firefogg' => 'Për partessipé a Wiki@Home it deve anstalé <a href="http://firefogg.org">Firefogg</a>.',
 	'wah-api-error' => "A-i é staje n'eror con l'API. Për piasì preuva torna pì tard.",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wah-short-audio' => '$1 غږيزه دوتنه، $2',
 );
 
 /** Portuguese (Português)

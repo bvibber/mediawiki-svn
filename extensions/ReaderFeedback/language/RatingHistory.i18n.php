@@ -1194,6 +1194,7 @@ $messages['jv'] = array(
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'ratinghistory' => 'გვერდის შეფასების ისტორია',
 	'ratinghistory-tab' => 'შეფასება',
 	'ratinghistory-link' => 'გვერდის შეფასება',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">გმადლობთ, რომ გამონახეთ დრო ამ გვერდის შესაფასებლად!</font>''",

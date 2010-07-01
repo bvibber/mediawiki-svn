@@ -459,6 +459,14 @@ $messages['pms'] = array(
 	'stalkerlog-log-text' => "Sto sì a l'é un registr dij login e dij logout ëd j'utent.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'stalkerlog-log-login' => 'ننوتلۍ',
+	'stalkerlog-log-logout' => 'ووتلۍ',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

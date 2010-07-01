@@ -402,6 +402,7 @@ $messages['mk'] = array(
  * @author Chrisportelli
  */
 $messages['mt'] = array(
+	'globaluserrights' => 'Ġestjoni tad-Drittijiet Globali tal-Utenti',
 	'gur-desc' => 'Amministrazzjoni ħafifa tad-[[Special:GlobalUserRights|drittijiet globali tal-utent]]',
 	'gur-rightslog-name' => 'Reġistru tad-drittijiet globali',
 	'gur-rightslog-header' => "Dan huwa reġistru ta' tibdil tad-drittijiet globali.",

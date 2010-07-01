@@ -31,6 +31,18 @@ $messages['qqq'] = array(
 	'ajaxlogin-desc' => '{{desc}}',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'ajaxLogin2' => 'Piyan yakin kah?
+Piyan kawa kahilangan ubahan piyan pada tungkaran ini munnya piyan tulak keluar tungkaran ini daminian.',
+	'ajaxlogin-create' => 'Ulah sabuah akun',
+	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
+Ngaran pamakay sifatnya sansitip.
+Pariksa hijaan piyan.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

@@ -686,6 +686,7 @@ ha cheñchit hoc'h arventennoù evit diweredekaat ar c'hemenn dre bostel.",
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Palapa
  */
 $messages['bs'] = array(
 	'giftmanager' => 'Upravljanje poklonima',
@@ -736,6 +737,7 @@ $messages['bs'] = array(
 	'g-send-gift' => 'Pošalji poklon',
 	'g-select-a-friend' => 'odaberite prijatelja',
 	'g-small' => 'Malo',
+	'g-to-another' => 'Daj nekome drugom',
 	'g-uploadsuccess' => 'Postavljanje uspješno',
 	'g-viewgiftlist' => 'Pogledaj spisak poklona',
 	'g-your-profile' => 'Vaš profil',
@@ -2781,7 +2783,7 @@ $messages['mk'] = array(
 	'g-give-to-user-title' => 'Испрати го подарокот „$1“ на $2',
 	'g-give-to-user-message' => 'Сакате на $1 да му подарите <a href="$2">поинаков подарок</a>?',
 	'g-go-back' => 'Назад',
-	'g-imagesbelow' => 'Подолу се наведени вашите слики кои ќе се користат на оваа веб-страница',
+	'g-imagesbelow' => 'Подолу се наведени вашите слики кои ќе се користат на ова мрежно место',
 	'g-large' => 'Голем',
 	'g-list-title' => 'Список на подароци на $1',
 	'g-main-page' => 'Главна страница',
@@ -3494,10 +3496,12 @@ $messages['ps'] = array(
 	'g-give-gift' => 'ډالۍ ورکول',
 	'g-give-all-message-title' => 'يو پيغام ورګډول',
 	'g-give-list-select' => 'يو ملګری ټاکل',
+	'g-large' => 'لوی',
 	'g-new' => 'نوی',
 	'g-next' => 'راتلونکی',
 	'g-previous' => 'پخوانی',
 	'g-send-gift' => 'ډالۍ لېږل',
+	'g-small' => 'وړوکی',
 	'g-viewgiftlist' => 'د ډاليو لړليک کتل',
 	'g-your-profile' => 'ستاسې پېژنليک',
 );
@@ -3892,6 +3896,21 @@ $4
 	'right-giftadmin' => 'создание новых и правка существующих подарков',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'g-give-separator' => 'або',
+	'g-large' => 'Великый',
+	'g-main-page' => 'Головна сторінка',
+	'g-medium' => 'Середнїй',
+	'g-new' => 'нове',
+	'g-next' => 'Далшый',
+	'g-previous' => 'Попереднїй',
+	'g-remove' => 'Одстранити',
+	'g-small' => 'Маленькый',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -4034,6 +4053,9 @@ To ga bo odstranilo tudi od uporabnikov, ki so ga morda prejeli.',
 	'g-gift' => 'darilo',
 	'g-gift-name' => 'ime darila',
 	'g-give-gift' => 'Podari darilo',
+	'g-give-all' => 'Želite $1 podariti darilo?
+Samo izberite eno od spodnjih daril in kliknite »Pošlji darilo«.
+Tako preprosto je.',
 	'g-give-all-message-title' => 'Dodaj sporočilo',
 	'g-give-all-title' => 'Podari darilo $1',
 	'g-give-enter-friend-title' => 'Če veste ime uporabnika, ga vnesite spodaj',

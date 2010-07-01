@@ -1567,7 +1567,7 @@ tu debe <a href="index.php?title=Special:UserLogin">aperir un session</a>.',
 	'userboard_backprofile' => 'Retornar al profilo de $1',
 	'userboard_backyourprofile' => 'Retornar a tu profilo',
 	'userboard_boardtoboard' => 'Tabuliero a tabuliero',
-	'userboard_confirmdelete' => 'Es tu secur que tu vole deler iste message?',
+	'userboard_confirmdelete' => 'Es tu secur de voler deler iste message?',
 	'userboard_sendmessage' => 'Inviar un message a $1',
 	'userboard_myboard' => 'Mi tabuliero',
 	'userboard_posted_ago' => 'inviate $1 retro',
@@ -2840,6 +2840,25 @@ $3
 
 Нажмите $4
 и измените ваши настройки, отключив отправку уведомлений.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'boardlinkselectall' => 'Выбрати вшыткы',
+	'boardlinkunselectall' => 'Зрушыти выбер',
+	'boardlinkselectfriends' => 'Выбрати камаратів',
+	'boardlinkunselectfriends' => 'Зрушыти выбер камаратів',
+	'userboard_delete' => 'Вымазати',
+	'userboard_private' => 'пріватне',
+	'userboard_nextpage' => 'далша',
+	'userboard_prevpage' => 'попередня',
+	'userboard_sendbutton' => 'послати',
+	'userboard-time-days' => '$1 {{PLURAL:$1|день|днї|днїв}}',
+	'userboard-time-hours' => '$1 {{PLURAL:$1|година|годины|годин}}',
+	'userboard-time-minutes' => '$1 {{PLURAL:$1|минута|минуты|минут}}',
+	'userboard-time-seconds' => '$1 {{PLURAL:$1|секунда|секунды|секунд}}',
 );
 
 /** Slovak (Slovenčina)

@@ -1305,6 +1305,14 @@ $messages['ru'] = array(
 	'contributors-nosuchpage' => 'Страница «$1» не существует.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'contributors-target' => 'Назва:',
+	'contributors-submit' => 'Вказати',
+);
+
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
  * @author OC Ripper
  */

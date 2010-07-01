@@ -6540,6 +6540,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Annayram
  * @author Aushulz
  * @author Darth Kule
  * @author HalphaZ
@@ -6547,9 +6548,15 @@ $messages['is'] = array(
  * @author Nemo bis
  */
 $messages['it'] = array(
+	'wikidata-desc' => 'Aggiunge database wiki-like per diversi tipi di contenuto',
+	'wikidata-handler-namespace-move-error' => "Le pagine negli spazi dei nomi gestiti dall'estensione Wikidata non possono essere spostate.",
+	'languages' => 'Wikidata: manager della lingua',
+	'langman-desc' => 'Aggiungere e modificare le impostazioni della lingua con [[Special: Lingue]]',
+	'langman_title' => 'Manager della lingua',
 	'langman_not_allowed' => 'Non si dispone dei permessi necessari per modificare le impostazioni della lingua.',
 	'langman_header' => 'Inserisci il codice della lingua e il nome della lingua (in inglese) qui di seguito:',
 	'langman_req_fields' => 'Sono richiesti il nome della lingua e il codice ISO 639-3!',
+	'langman_adding' => 'Aggiungere la lingua $1 con la chiave $2',
 	'langman_langname' => 'Nome della lingua:',
 	'langman_iso639-3' => 'Codice ISO 639-3:',
 	'langman_iso639-2' => 'Codice ISO 639-2:',
@@ -6559,11 +6566,15 @@ $messages['it'] = array(
 	'importlangnames' => 'Wikidata: Importa i nomi delle lingue',
 	'importlangnames_title' => 'Importa i nomi delle lingue',
 	'importlangnames_not_allowed' => 'Non hai i permessi per importare i nomi delle lingue.',
+	'importlangnames_added' => 'nomi delle lingue $1 aggiunti',
 	'importlangnames_not_found' => '<strong>Nessuna lingua trovata corrispondente a "$1"!</strong>',
+	'datasearch' => 'WIKIDATA: ricerca dati',
 	'datasearch_language' => 'Lingua:',
 	'datasearch_found_word' => 'Parola trovata',
 	'datasearch_meaning' => 'Significato',
+	'datasearch_ext_identifier' => 'Identificatore esterno',
 	'datasearch_search_text' => 'Cerca testo:',
+	'datasearch_match_ext_ids' => 'Identificatori esterni di corrispondenza <i>$1</i>',
 	'importtsv' => 'Wikidata: Importa TSV',
 	'ow_importtsv_title1' => 'Importa TSV',
 	'ow_importtsv_title2' => 'Importa definizioni e traduzioni',
@@ -8248,9 +8259,9 @@ $messages['mk'] = array(
 	'ow_add_concept_link' => 'Додај врска на другите концепти',
 	'ow_concept_panel' => 'Концептна табла',
 	'ow_dm_badtitle' => 'Страницата не укажува на ниедно ОпределеноЗначење (концепт).
-Проверете ја веб-адресата.',
+Проверете ја мреж. адреса.',
 	'ow_dm_missing' => 'Страницата укажува на непостоечко ОпределеноЗначење (концепт).
-Проверете ја веб-адресата.',
+Проверете ја мреж. адреса.',
 	'ow_AddHint' => 'Внесете нови редови за додавање',
 	'ow_AlternativeDefinition' => 'Алтернативна дефиниција',
 	'ow_AlternativeDefinitions' => 'Алтернативни дефиниции',
@@ -10145,6 +10156,7 @@ $messages['ps'] = array(
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
 	'ow_transaction_user' => 'د کارن نوم:',
+	'ow_transaction_restore' => 'بېرته پرځای کول',
 	'ow_transaction_summary' => 'لنډيز',
 	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
@@ -10185,6 +10197,7 @@ $messages['ps'] = array(
 	'ow_User' => 'کارن',
 	'ow_Property' => 'ځانتيا',
 	'ow_Value' => 'ارزښت',
+	'ow_added' => 'ورګډ شو',
 	'ow_meaningsoftitle' => 'د "$1" ماناګانې',
 	'ow_Permission_denied' => '<h2>د اجازې غوښتنه مو رد شوه</h2>',
 	'ow_copy_no_action_specified' => 'لطفاً يوه کړنه ځانګړې کړی',
@@ -11286,6 +11299,44 @@ $messages['rue'] = array(
 	'langman_wikimedia' => 'Код Вікімедіа:',
 	'langman_addlang' => 'Придати язык',
 	'importlangnames' => 'Вікідата: імпорт назв языків',
+	'datasearch_language' => 'Язык:',
+	'datasearch_search_text' => 'Глядати текст:',
+	'datasearch_within_words' => 'Серед слов:',
+	'ow_exporttsv_languages' => 'Языкы:',
+	'ow_save' => 'Уложыти',
+	'ow_history' => 'Історія',
+	'ow_dm_OK' => 'ОК',
+	'ow_Class' => 'Клас',
+	'ow_ClassAttributeAttribute' => 'Атрібут',
+	'ow_ClassAttributes' => 'Атрібуты класу',
+	'ow_ClassAttributeLevel' => 'Рівень',
+	'ow_ClassAttributeType' => 'Тіп',
+	'ow_ClassMembership' => 'Членство у класах',
+	'ow_Collection' => 'Колекція',
+	'ow_Collection_colon' => 'Колекція',
+	'ow_CollectionMember' => 'Член колекції',
+	'ow_CollectionMembership' => 'Членство в колекції',
+	'ow_Definition' => 'Дефініція',
+	'ow_DefinedMeaningAttributes' => 'Анотація',
+	'ow_DefinedMeaning' => 'Дефіноване значіня',
+	'ow_DefinedMeaningReference' => 'Дефіноване значіня',
+	'ow_ExactMeanings' => 'Точне значіня',
+	'ow_Expression' => 'Выраз',
+	'ow_ExpressionMeanings' => 'Значіня выразів',
+	'ow_Expressions' => 'Выразы',
+	'ow_IdenticalMeaning' => 'Тотожне значіня',
+	'ow_GotoSource' => 'Перейти на здрой',
+	'ow_Language' => 'Язык',
+	'ow_LevelAnnotation' => 'Анотація',
+	'ow_LinkAttributeHeader' => 'Атрібут одказу',
+	'ow_Multiple_meanings' => 'Дефініції "$1"',
+	'ow_NewExactMeaning' => 'Нове точне значіня',
+	'ow_OptionAttribute' => 'Властность',
+	'ow_OptionAttributeHeader' => 'Атрібут можности',
+	'ow_OptionAttributeOption' => 'Можность',
+	'ow_OptionAttributeOptions' => 'Можности',
+	'ow_OtherDefinedMeaning' => 'Інше дефіноване значіня',
+	'ow_PopupAnnotation' => 'Анотація',
 	'ow_statistics' => 'Вікідата: Штатістікы',
 	'ow_show' => 'Вказати',
 	'ow_upload' => 'Награти',
@@ -11853,6 +11904,24 @@ Prosím, pozrite si [[{{MediaWiki:Ow editing policy url}}|našu politiku ohľadn
 	'ow_nstab_edit_copy' => 'upraviť kópiu',
 	'right-addlanguage' => 'Pridať a zmeniť jazykové nastavenia pomocou',
 	'ow_shown_datasets' => 'Zobrazené množiny dát',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'langman_title' => 'Upravljavec jezikov',
+	'langman_adding' => 'Dodajanje jezika $1 s ključem $2.',
+	'langman_langname' => 'Ime jezika:',
+	'langman_iso639-3' => 'Koda ISO 639-3:',
+	'langman_iso639-2' => 'Koda ISO 639-2:',
+	'langman_wikimedia' => 'Koda Wikimedie:',
+	'langman_field_optional' => '(neobvezno)',
+	'langman_addlang' => 'Dodaj jezik',
+	'datasearch_language' => 'Jezik:',
+	'datasearch_found_word' => 'Najdena beseda:',
+	'datasearch_meaning' => 'Pomen',
+	'ow_dm_OK' => 'V redu',
 );
 
 /** Lower Silesian (Schläsch)

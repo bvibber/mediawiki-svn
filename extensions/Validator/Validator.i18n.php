@@ -508,7 +508,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'validator-desc' => 'Validator memberikan cara mudah untuk ekstensi lain untuk memvalidasi parameter ParserFunction dan ekstensi tag, mengatur nilai biasa dan membuat pesan kesalahan',
-	'validator_error_parameters' => '{{PLURAL:$1|Kesalahan|Kesalahan}} berikut telah terdeteksi pada sintaksis Anda',
+	'validator_error_parameters' => '{{PLURAL:$1|Kesalahan|Kesalahan}} berikut telah terdeteksi pada sintaksis Anda:',
+	'validator_warning_parameters' => '{{PLURAL:$1|kesalahan|kesalahan}} ini  pada sintaks anda.',
 	'validator_error_unknown_argument' => '$1 bukan parameter yang benar.',
 	'validator_error_required_missing' => 'Parameter $1 yang diperlukan tidak diberikan.',
 	'validator_error_empty_argument' => 'Parameter $1 tidak dapat bernilai kosong.',
@@ -746,12 +747,14 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'validator_error_unknown_argument' => '$1 não é um parâmetro válido.',
 	'validator_error_invalid_range' => 'O parâmetro $1 tem de ser entre $2 e $3.',
 	'validator_error_invalid_argument' => 'O valor $1 não é válido para o parâmetro $2.',
+	'validator_list_omitted' => '{{PLURAL:$2|O valor $1 foi omitido|Os valores $1 foram omitidos}}.',
 	'validator_error_accepts_only' => 'O parâmetro $1 só aceita {{PLURAL:$3|este valor|estes valores}}: $2.',
 );
 

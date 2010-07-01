@@ -19,7 +19,7 @@ $wgSeleniumTiffTestCheckPrerequistes = true;
 
 class SeleniumCheckPrerequisites extends SeleniumTestCase {
 	public $name = 'Check prerequisites';
-	private $allChecksOk = true;
+	private $prerequisiteError = null;
 
 	public function runTest() {
 		global $wgSeleniumTestsWikiUrl;
@@ -28,22 +28,22 @@ class SeleniumCheckPrerequisites extends SeleniumTestCase {
 
 		$source = $this->getAttribute( "//div[@id='bodyContent']//ul@id" );
 		if ( $source != 'filetoc' ) {
-			$this->allChecksOk = false;
+			$this->prerequisiteError = 'Image:Multipage.tiff must exist.';
 		}
 
 		// Check for language
 		$this->open($wgSeleniumTestsWikiUrl . '/api.php?action=query&meta=userinfo&uiprop=options&format=xml');
 
-		$source = $this->getAttribute( "//options/@language" );
-		if ( $source != 'en' ) {
-			$this->allChecksOk = false;
+		$lang = $this->getAttribute( "//options/@language" );
+		if ( $lang != 'en' ) {
+			$this->prerequisiteError = 'interface language must be set to English (en), but was '.$lang.'.';
 		}
 	}
 
 	public function tearDown() {
-		if ( !$this->allChecksOk ) {
+		if ( $this->prerequisiteError ) {
 			$this->selenium->stop();
-			die( 'failed' );
+			die( 'failed: ' . $this->prerequisiteError . "\n" );
 		}
 	}
 }

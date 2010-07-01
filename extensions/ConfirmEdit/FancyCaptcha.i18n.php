@@ -947,6 +947,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
+	'fancycaptcha-desc' => 'Gerador sofisticado de captcha para o Confirm Edit',
 	'fancycaptcha-addurl' => "A sua edição introduziu links externos novos.
 Para ajudar a prevenir o ''spam'' automatizado, por favor, introduza na caixa abaixo as palavras apresentadas ([[Special:Captcha/help|mais informações]]):",
 	'fancycaptcha-badlogin' => 'Para ajudar a prevenir mecanismos automatizados de descoberta de palavras-chave, por favor, introduza na caixa abaixo as palavras apresentadas ([[Special:Captcha/help|mais informações]]):',
@@ -1210,6 +1211,7 @@ Par jutarne a conbàtar el spam, par piaser inserissi ne la casela le parole che
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -1218,6 +1220,7 @@ $messages['vi'] = array(
 	'fancycaptcha-createaccount' => 'Để giúp tránh tạo tài khoản tự động, xin hãy nhập những chữ xuất hiện ở dưới vào ô ([[Special:Captcha/help|thông tin thêm]]):',
 	'fancycaptcha-create' => 'Để tạo trang, xin hãy nhập những chữ xuất hiện ở dưới vào ô ([[Special:Captcha/help|thông tin thêm]]):',
 	'fancycaptcha-edit' => 'Để sửa trang này, xin hãy nhập những từ xuất hiện ở dưới vào ô ([[Special:Captcha/help|thông tin thêm]]):',
+	'fancycaptcha-sendemail' => 'Để giúp chúng tôi chống lại spam tự động, xin hãy nhập những từ xuất hiện ở dưới vào ô ([[Special:Captcha/help|thông tin thêm]]):',
 );
 
 /** Volapük (Volapük)

@@ -118,6 +118,24 @@ $messages['arz'] = array(
 	'adminlinks_createuser' => 'ابتدى يوزر',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'adminlinks' => 'Хәкимдәр өсөн һылтанмалар',
+	'adminlinks-desc' => 'Хәкимдәр өсөн һылтанмалар индергән [[Special:AdminLinks|ярҙамсы бит]] булдыра',
+	'adminlinks_documentation' => '$1 өсөн документация',
+	'adminlinks_general' => 'Дөйөм',
+	'adminlinks_editsidebar' => 'Ҡабырғалағы меню (Sidebar)-ҙы үҙгәртергә',
+	'adminlinks_editcss' => 'CSS-файлды үҙгәртергә',
+	'adminlinks_editmainpagename' => 'Баш бит исемен үҙгәртергә',
+	'adminlinks_users' => 'Ҡулланыусылар',
+	'adminlinks_createuser' => 'Яңы иҫәп яҙыуын булдырырға',
+	'adminlinks_browsesearch' => 'Ҡарау һәм әҙләү',
+	'adminlinks_importexport' => 'Импорт һәм экспорт',
+	'right-adminlinks' => '[[Special:AdminLinks|Хәкимдәр өсөн һылтанмаларҙы]] ҡарарға',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

@@ -669,6 +669,22 @@ $messages['sr-el'] = array(
  #</pre><!-- leave this line alone -->',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'editsubpages-desc' => 'Ngawenangkeun opsis pikeun muka konci hiji kaca sarta sakabéh subkacana pikeun diédit sacara anonim maké [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- baris ieu ulah dirobah --><pre>
+# Asupkeun kaca-kaca anu rék dibuka di handap ieu migunakeun
+# * Ngaran kaca
+# Ngarah kaitung, kaca nu dibuka kudu dimimitian ku pélor,
+# mun teu kitu bakal dianggap kamandang
+# NGaran kaca bisa jadi [[tutumbu]] sarta aksarana sénsitif
+# Kaca obrolanana ogé bakal ngilu kabuka
+# Baca http://www.mediawiki.org/wiki/Extension:EditSubpages pikeun leuwih lengkepna
+ #</pre><!-- baris ieu ulah dirobah -->',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Micke

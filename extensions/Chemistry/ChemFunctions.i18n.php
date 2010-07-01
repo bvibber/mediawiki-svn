@@ -187,6 +187,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'chemicalsources' => 'Hemijski izvori',
 	'chemicalsource-desc' => 'Dodaje oznaku <nowiki><chemform></nowiki> za hemijske formule',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Posebna stranica]] za hemijske izvore',
 	'chemFunctions_ListPage' => 'Hemijski izvori',
 	'chemFunctions_DataList' => 'Ispod je prikazan spisak linkova ka stranicama koje Vam mogu dati informacije o hemijskim supstancama koje ste tražili.
 <br /><br />
@@ -974,7 +975,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'chemicalsources' => 'Fontes de química',
-	'chemicalsource-desc' => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
+	'chemicalsource-desc' => 'Adiciona o elemento <nowiki><chemform></nowiki> para fórmulas químicas',
 	'chemicalsources-desc' => '[[Special:ChemicalSources|Página especial]] para fontes químicas',
 	'chemFunctions_ListPage' => 'Fontes de química',
 	'chemFunctions_DataList' => 'Abaixo está uma lista de links para sites que oferecem informação sobre a substância química que procura.<br /><br />
@@ -1173,6 +1174,7 @@ $messages['stq'] = array(
 $messages['su'] = array(
 	'chemicalsources' => 'Rujukan kimia',
 	'chemicalsource-desc' => 'Nambahkeun tag <nowiki><chemform></nowiki>, pikeun rumus kimia',
+	'chemicalsources-desc' => '[[Husus:SumberKimia|Kaca husus]] ngeunaan sumber-sumber bahan kimia',
 	'chemFunctions_ListPage' => 'Rujukan kimia',
 	'chemFunctions_DataList' => 'Di handap ieu dibéréndélkeun tumbu ka loka-loka nu sugan nyadiakeun émbaran ngeunaan jat kimia anu keur ditéang.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
@@ -1344,6 +1346,7 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'chemicalsources' => 'Nguồn hóa học',
 	'chemicalsource-desc' => 'Thêm thẻ <nowiki><chemform></nowiki> để viết biểu thức hóa học',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Trang đặc biệt]] cho các nguồn hóa học',
 	'chemFunctions_ListPage' => 'Nguồn hóa học',
 	'chemFunctions_DataList' => 'Đây là danh sách những website có thể cung cấp thông tin về chất hóa học này:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Chất $MIXCASNameFormula tại NIST</a><br />

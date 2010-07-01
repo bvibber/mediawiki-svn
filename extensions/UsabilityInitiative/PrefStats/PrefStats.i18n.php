@@ -58,6 +58,7 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
@@ -72,6 +73,7 @@ $messages['af'] = array(
 	'prefstats-factor-twoweeks' => 'twee weke',
 	'prefstats-factor-fourweeks' => 'vier weke',
 	'prefstats-factor-default' => 'terug na die verstek-skaal',
+	'prefstats-legend-in' => 'Aangemeld',
 );
 
 /** Gheg Albanian (Gegë)
@@ -180,10 +182,11 @@ $messages['be'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'prefstats' => 'Статыстыка ўстановак удзельнікаў',
-	'prefstats-desc' => 'Стварае статыстыку пра тое, як многа ўдзельнікаў выкарыстоўваюць ўстаноўкі',
+	'prefstats-desc' => 'Зьбірае статыстыку пра тое, колькі ўдзельнікаў выкарыстоўваюць пэўныя ўстаноўкі',
 	'prefstats-title' => 'Статыстыка ўстановак',
 	'prefstats-list-intro' => 'Зараз адсочваюцца наступныя ўстаноўкі.
 Націсьніце на адну зь іх для прагляду яе статыстыкі.',
@@ -240,11 +243,16 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'prefstats' => 'পছন্দনীয় পরিসংখ্যান',
 	'prefstats-desc' => 'পরিসংখ্যান দেখুন, কতজন ব্যবহারকারী এই পছন্দসমূহ সক্রিয় করেছেন',
 	'prefstats-title' => 'পছন্দনীয় পরিসংখ্যান',
+	'prefstats-list-intro' => 'বর্তমানে নিচের পছন্দগুলো অনুসরণ করা হচ্ছে।
+নির্দিষ্ট কোনোটির পরিসংখ্যান জানতে যে-কোনো একটি ওপর ক্লিক করুন।',
+	'prefstats-noprefs' => 'বর্তমানে কোনো পছন্দ অনুসরণ করা হচ্ছে না।
+পছন্দ অনুসরণ করতে $wgPrefStatsTrackPrefs কনফিগার করুন।',
 	'prefstats-xaxis' => 'সময় (ঘন্টা)',
 	'prefstats-factor-hour' => 'ঘন্টা',
 	'prefstats-factor-sixhours' => 'ছয় ঘন্টা',
@@ -253,6 +261,8 @@ $messages['bn'] = array(
 	'prefstats-factor-twoweeks' => 'দুই সপ্তাহ',
 	'prefstats-factor-fourweeks' => 'চার সপ্তাহ',
 	'prefstats-factor-default' => 'পূর্ব নির্ধারিত মাপে ফিরে যাও',
+	'prefstats-legend-out' => 'ত্যাগ করুন',
+	'prefstats-legend-in' => 'চেষ্টা করুন',
 );
 
 /** Breton (Brezhoneg)
@@ -726,6 +736,15 @@ $messages['eu'] = array(
 	'prefstats-title' => 'Hobespen estatistikak',
 	'prefstats-list-intro' => 'Une honetan, ondorengo hobespenak jarraitzen ari dira.
 Klikatu batean bere estatistikak ikusteko.',
+	'prefstats-noprefs' => 'Ez dago hobespenik jarraipen zerrendan.
+Konfiguratu $wgPrefStatsTrackPrefs hobespenak jarraitzeko.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|lankide batek gaitu du|lankideek gaitu dute}} hobespen hau hobespen-estatistikak martxan jarri zirenetik
+** $2 {{PLURAL:$2|lankide batek gaituta du|lankideek gaituta dute}} oraindik
+** $3 {{PLURAL:$3|lankide batek ezgaitu du|lankideek ezgaitu dute}} ordutik',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|lankide batek gaitu du|lankideek gaitu dute}} hobespen hau hobespen-estatistikak martxan jarri zirenetik
+** $2 {{PLURAL:$2|lankide batek gaituta du|lankideek gaituta dute}} oraindik
+** $3 {{PLURAL:$3|lankide batek ezgaitu du|lankideek ezgaitu dute}} ordutik
+* Guztira, $4 {{PLURAL:$4|lankide batek du martxan|lankideek dute martxan}} hobespen hau',
 	'prefstats-xaxis' => 'Iraupena (ordutan)',
 	'prefstats-factors' => 'Ikusi: $1',
 	'prefstats-factor-hour' => 'ordu',
@@ -741,10 +760,13 @@ Klikatu batean bere estatistikak ikusteko.',
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Ladsgroup
  * @author Mardetanha
  */
 $messages['fa'] = array(
 	'prefstats' => 'آمار ترجیحات',
+	'prefstats-title' => 'آمار ترجیحات',
+	'prefstats-xaxis' => 'مدت زمان (ساعت)',
 	'prefstats-factor-hour' => 'ساعت',
 	'prefstats-factor-sixhours' => 'شش ساعت',
 	'prefstats-factor-day' => 'روز',
@@ -1246,13 +1268,22 @@ $messages['ka'] = array(
 	'prefstats-list-intro' => 'ეხლა მიმდინარეობს შემდეგ კონფიგურაციათა კონტროლი
 აირჩიეთ რომელიმე მათგანი სტატისტიკის სანახავად',
 	'prefstats-noprefs' => 'რაიმე უპირატესობა ამჟამად კონტროლი არ ეწევა. კონფიგურაციის კონტროლისთვის შეიტანეთ ცვლილებები $wgPrefStatsTrackPrefs გვერდზე.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|მომხმარებელმა ჩართო|მომხმარებლებმა ჩართეს}} ეს პარამეტრი სტატისტიკის შეგროვების მომენტიდან
+** $2 {{PLURAL:$2|მომხმარებელმა დატოვა|მომხმარებლებმა დატოვეს}} პარამეტრი ჩართულად
+** $3 {{PLURAL:$3|მომხმარებელმა ჩართო|მომხმარებლებმა გათიშეს}} პარამეტრი',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|მომხმარებელმა ჩართო|მომხმარებლებმა ჩართეს}} ეს პარამეტრი სტატისტიკის შეგროვების მომენტიდან
+** $2 {{PLURAL:$2|მომხმარებელმა დატოვა|მომხმარებლებმა დატოვეს}} პარამეტრი ჩართულად
+** $3 {{PLURAL:$3|მომხმარებელმა ჩართო|მომხმარებლებმა გათიშეს}} პარამეტრი
+*სულ ეს პარამეტრი {{PLURAL:$4|აქვს|აქვთ}} $4 მომხმარებელს',
 	'prefstats-xaxis' => 'ხანგძლივობა (საათი)',
+	'prefstats-factors' => 'ნახვები $1',
 	'prefstats-factor-hour' => 'საათი',
 	'prefstats-factor-sixhours' => 'ექვსი საათი',
 	'prefstats-factor-day' => 'დღე',
 	'prefstats-factor-week' => 'კვირა',
 	'prefstats-factor-twoweeks' => 'ორი კვირა',
 	'prefstats-factor-fourweeks' => 'ოთხი კვირა',
+	'prefstats-factor-default' => 'ძველ მასშტაბზე დაბრუნება',
 	'prefstats-legend-out' => 'გამორიცხვის პრინციპით',
 	'prefstats-legend-in' => 'დაშვების პრინციპით',
 );
@@ -1880,6 +1911,7 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Firilacroco
  * @author Stelistcristi
  * @author Strainu
@@ -1892,6 +1924,13 @@ $messages['ro'] = array(
 Apăsați pe ele pentru a vizualiza statistici despre ele.',
 	'prefstats-noprefs' => 'Nicio preferință nu este în prezent urmărită.
 Configurați $wgPrefStatsTrackPrefs pentru a urmări preferințe.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utilizator și-a|utilizatori și-au}} activat această preferință de cînd a început colectarea datelor statistice
+** $2 {{PLURAL:$2|utilizator încă o are|utilizatori încă o au}} activată
+** $3 {{PLURAL:$3|utilizator și-a|utilizatori și-au}} dezactivat-o între timp',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|utilizator și-a|utilizatori și-au}} activat această preferință de cînd a început colectarea datelor statistice
+** $2 {{PLURAL:$2|utilizator încă o are|utilizatori încă o au}} activată
+** $3 {{PLURAL:$3|utilizator și-a|utilizatori și-au}} dezactivat-o între timp
+În total $4 {{PLURAL:$4|utilizator folosește|utilizatori folosesc}} această preferință',
 	'prefstats-xaxis' => 'Durată (ore)',
 	'prefstats-factors' => 'Vizualizări pe: $1',
 	'prefstats-factor-hour' => 'oră',
@@ -1967,6 +2006,17 @@ $messages['ru'] = array(
 	'prefstats-factor-default' => 'назад к масштабу по умолчанию',
 	'prefstats-legend-out' => 'Отключились',
 	'prefstats-legend-in' => 'Подключились',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'prefstats-factor-hour' => 'годину',
+	'prefstats-factor-sixhours' => 'шість годин',
+	'prefstats-factor-day' => 'день',
+	'prefstats-factor-week' => 'тыждень',
+	'prefstats-factor-twoweeks' => 'два тыжднї',
 );
 
 /** Yakut (Саха тыла)
@@ -2070,6 +2120,7 @@ Po kliknutí na niektoré z nich zobrazíte štatistiku o ňom.',
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
@@ -2080,6 +2131,13 @@ $messages['sl'] = array(
 Kliknite na eno, če si želite ogledati njeno statistiko.',
 	'prefstats-noprefs' => 'Trenutno nastavitve niso spremljane.
 Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|uporabnik je omogočil|uporabnika sta omogočila|uporabiki so omogočili|uporabnikov je omogočilo}} to nastavitev odkar je bila začeta statistika nastavitev
+** $2 {{PLURAL:$2|uporabnik jo ima še vedno|uporabnika jo imata še vedno|uporabniki jo imajo še vedno|uporabnikov jo ima še vedno}} omogočeno
+** $3 {{PLURAL:$3|uporabnik jo je|uporabnika sta jo|uporabniki so jo|uporabnikov jo je}} od takrat {{PLURAL:$3|onemogočil|onemogočila|onemogočili|onemogočilo}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|uporabnik je omogočil|uporabnika sta omogočila|uporabiki so omogočili|uporabnikov je omogočilo}} to nastavitev odkar je bila začeta statistika nastavitev
+** $2 {{PLURAL:$2|uporabnik jo ima še vedno|uporabnika jo imata še vedno|uporabniki jo imajo še vedno|uporabnikov jo ima še vedno}} omogočeno
+** $3 {{PLURAL:$3|uporabnik jo je|uporabnika sta jo|uporabniki so jo|uporabnikov jo je}} od takrat {{PLURAL:$3|onemogočil|onemogočila|onemogočili|onemogočilo}}
+* Skupno, $4 {{PLURAL:$4|uporabnik ima|uporabnika imata|uporabniki ima|uporabnikov ima}} izbrano to nastavitev',
 	'prefstats-xaxis' => 'Trajanje (ur)',
 	'prefstats-factors' => 'Poglejte na: $1',
 	'prefstats-factor-hour' => 'ura',
@@ -2213,6 +2271,7 @@ $messages['tg-latn'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Octahedron80
  */
 $messages['th'] = array(
 	'prefstats-xaxis' => 'ช่วงเวลา (ชั่วโมง)',
@@ -2223,6 +2282,9 @@ $messages['th'] = array(
 	'prefstats-factor-week' => 'สัปดาห์',
 	'prefstats-factor-twoweeks' => 'สองสัปดาห์',
 	'prefstats-factor-fourweeks' => 'สี่สัปดาห์',
+	'prefstats-factor-default' => 'กลับไปมาตราเริ่มต้น',
+	'prefstats-legend-out' => 'เลิกติดตาม',
+	'prefstats-legend-in' => 'ร่วมติดตาม',
 );
 
 /** Turkmen (Türkmençe)
@@ -2473,6 +2535,37 @@ $messages['yi'] = array(
 	'prefstats-factor-default' => 'צוריק צום גרונטמאָס',
 	'prefstats-legend-out' => 'פרעפֿערענץ אַנולירט',
 	'prefstats-legend-in' => 'פרעפֿערענץ אקטיוויזירט',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'prefstats' => 'Àwọn statístíkì ìfẹ́ràn',
+	'prefstats-desc' => 'Ìtẹ̀lé statístíkì iye àwọn oníṣe tí wọ́n ní ìgbàláyé àwọn ìfẹ́ràn pàtó',
+	'prefstats-title' => 'Àwọn statístíkì ìfẹ́ràn',
+	'prefstats-list-intro' => 'Lọ́wọ́lọ́wọ́, àwọn ìfẹ́ràn wọ̀nyí únjẹ́ títẹ̀lé.
+Ẹ tẹ ìkan láti wo statístíkì nípa rẹ̀.',
+	'prefstats-noprefs' => 'Àwọn ìfẹ́ràn kankan kó jẹ́ títẹ̀lé lọ́wọ́lọ́wọ́.
+Ẹ ṣètò $wgPrefStatsTrackPrefs láti tẹ̀lé àwọn ìfẹ́ràn.',
+	'prefstats-counters' => '* {{PLURAL:$1|Oníṣe|Àwọn oníṣe}} $1 ti ṣe ìgbàláyè ìfẹ́ràn yìí látìgbà ti àwọn statístíkì ìfẹ́ràn ti jẹ́ gbígbàláyé
+** {{PLURAL:$2|Oníṣe|Àwọn oníṣe}} $2 sì úngbàláyé 
+** {{PLURAL:$3|Oníṣe|Àwọn oníṣe}} $3 ti dẹ́kun rẹ̀ látìgbà náà',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Oníṣe|Àwọn oníṣe}} $1 ti ṣe ìgbàláyè ìfẹ́ràn yìí látìgbà ti àwọn statístíkì ìfẹ́ràn ti jẹ́ gbígbàláyé
+** {{PLURAL:$2|Oníṣe|Àwọn oníṣe}} $2 sì úngbàláyé 
+** {{PLURAL:$3|Oníṣe|Àwọn oníṣe}} $3 ti dẹ́kun rẹ̀ látìgbà náà
+* Nì iye àpapọ̀, {{PLURAL:$4|oníṣe|àwọn oníṣe}} $4 ti ṣètò ìfẹ́ràn yìí',
+	'prefstats-xaxis' => 'Àsìkò (wákàtí)',
+	'prefstats-factors' => 'Ìwò ti: $1',
+	'prefstats-factor-hour' => 'wákàtí',
+	'prefstats-factor-sixhours' => 'wákàtí mẹ́fà',
+	'prefstats-factor-day' => 'ọjọ́',
+	'prefstats-factor-week' => 'ọ̀sẹ̀',
+	'prefstats-factor-twoweeks' => 'ọ̀sẹ̀ méjì',
+	'prefstats-factor-fourweeks' => 'ọ̀sẹ̀ mẹ́rin',
+	'prefstats-factor-default' => 'Ẹ padà sí ìwọ̀n ìbẹ̀rẹ̀',
+	'prefstats-legend-out' => 'Ẹ mọ́ kòópa',
+	'prefstats-legend-in' => 'Ẹ kópa',
 );
 
 /** Cantonese (粵語)

@@ -155,15 +155,15 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'onlinestatus-desc' => "Ouzhpennañ a ran un arvenntenn evit diskouez ma 'z eo amañ an implijer pe get",
-	'onlinestatus-js-anon' => "Fazi : rankout a reoc'h bezañ luget evit implijout an arc'hweladur-mañ",
+	'onlinestatus-desc' => 'Ouzhpennañ a ra un arventenn da ziskouez hag-eñ emañ kevreet an implijer pe get',
+	'onlinestatus-js-anon' => "Fazi : ret eo deoc'h bezañ kevreet evit gellout implijout an arc'hweladur-mañ",
 	'onlinestatus-js-changed' => 'Cheñchet eo bet ho statud da « $1 »',
-	'onlinestatus-js-error' => 'Diposubl eo cheñch ar statud, n\'eo ket mat an dalvoudenn "$1"',
+	'onlinestatus-js-error' => 'Diposupl eo cheñch ar statud, n\'eo ket mat an dalvoudenn "$1"',
 	'onlinestatus-subtitle-offline' => 'Ezlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-subtitle-online' => 'Enlinenn eo an implijer-mañ evit bremañ',
 	'onlinestatus-tab' => 'Statud',
 	'onlinestatus-toggles-desc' => 'Ho statud :',
-	'onlinestatus-toggles-explain' => "Aotreañ a ra an implijerien all da c'houzout ma 'z oc'h enlinenn pe get en ur sellet ouzh ho pajenn implijer.",
+	'onlinestatus-toggles-explain' => "Talvezout a ra deoc'h da ziskouez d'an implijerien all hag-eñ emaoc'h enlinenn pe get en ur sellet ouzh ho pajenn implijer.",
 	'onlinestatus-toggles-show' => 'Diskouez ma statud war ma fajenn implijer',
 	'onlinestatus-toggle-offline' => 'Ezlinenn',
 	'onlinestatus-toggle-online' => 'Enlinenn',
@@ -249,6 +249,26 @@ $messages['cy'] = array(
 	'onlinestatus-toggle-online' => 'Ar-lein',
 	'onlinestatus-pref-onlineonlogin' => 'Newid nodyn fy nghyflwr i ar-lein wrth fewngofnodi',
 	'onlinestatus-pref-offlineonlogout' => 'Newid nodyn fy nghyflwr i all-lein wrth allgofnodi',
+);
+
+/** Danish (Dansk)
+ * @author Amjaabc
+ */
+$messages['da'] = array(
+	'onlinestatus-desc' => "Angiver ønsker til visning, hvis brugeren for øjeblikket er til stede eller ikke på wiki'en",
+	'onlinestatus-js-anon' => 'Fejl: Du skal være logget ind for at bruge denne facilitet',
+	'onlinestatus-js-changed' => 'Din status er skiftet til "$1"',
+	'onlinestatus-js-error' => 'Ikke muligt at skifte tilstand, værdien "$1" er ikke gyldig',
+	'onlinestatus-subtitle-offline' => 'Brugeren er ikke logget ind i øjeblikket',
+	'onlinestatus-subtitle-online' => 'Brugeren er logget ind',
+	'onlinestatus-tab' => 'Status',
+	'onlinestatus-toggles-desc' => 'Din status:',
+	'onlinestatus-toggles-explain' => 'Dette gør det muligt for dig at tillade andre brugere at se, om du er logget ind eller ikke, ved at se på din brugerside.',
+	'onlinestatus-toggles-show' => 'Vis på min brugerside, om jeg er logget ind eller ikke',
+	'onlinestatus-toggle-offline' => 'Ikke logget ind',
+	'onlinestatus-toggle-online' => 'Logget ind',
+	'onlinestatus-pref-onlineonlogin' => 'Skift min status til logget ind, når jeg logger ind',
+	'onlinestatus-pref-offlineonlogout' => 'Skift min status til ikke logget ind, når jeg logger ud',
 );
 
 /** German (Deutsch)
@@ -909,8 +929,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'onlinestatus-subtitle-offline' => 'دم مهال همدا کارونکی بې ليکه دی',
-	'onlinestatus-subtitle-online' => 'دم مهال همدا کارونکی پر ليکه دی',
+	'onlinestatus-subtitle-offline' => 'دم مهال دا کارن بې ليکه دی',
+	'onlinestatus-subtitle-online' => 'دم مهال دا کارن پر ليکه دی',
 	'onlinestatus-tab' => 'دريځ',
 	'onlinestatus-toggles-desc' => 'ستاسې دريځ:',
 	'onlinestatus-toggles-show' => 'زما په کارن-مخ زما دريځ پرليکه ښکاره کول',

@@ -1412,12 +1412,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Malafaya
  * @author לערי ריינהארט
  */
 $messages['pt'] = array(
-	'sitematrix' => 'Lista de sites Wikimedia',
+	'sitematrix' => 'Lista de wikis da Wikimedia',
 	'sitematrix-summary' => 'Esta página especial lista todas as wikis Wikimedia.',
 	'sitematrix-desc' => 'Apresenta uma [[Special:SiteMatrix|lista de wikis Wikimedia]]',
 	'sitematrix-language' => 'Língua',
@@ -1462,7 +1463,10 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
+ * @author Cin
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  * @author לערי ריינהארט
  */
@@ -1471,7 +1475,7 @@ $messages['ro'] = array(
 	'sitematrix-summary' => 'Această pagină specială afișează toate proiectele wiki ale Wikimedia.',
 	'sitematrix-desc' => 'Afișați o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
 	'sitematrix-language' => 'Limbă',
-	'sitematrix-others' => 'Alte proiecte Wikimedia',
+	'sitematrix-others' => 'Alte proiecte ale Fundației Wikimedia',
 	'sitematrix-total' => "'''Număr total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',
@@ -1508,6 +1512,13 @@ $messages['ru'] = array(
 	'sitematrix-sitetotal' => 'Всего',
 	'sitematrix-private' => 'частный',
 	'sitematrix-fishbowl' => 'редактирование ограничено',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'sitematrix-language' => 'Язык',
 );
 
 /** Yakut (Саха тыла)

@@ -73,7 +73,8 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'widgets-desc' => "Talvezout a ra d'ar verourien da ouzhpennañ widgetoù d'ar wiki en ur gemmañ pajennoù en esaouenn anv {{ns:widget}}. Diorroet e penn-kentañ evit [http://www.ardorado.com Ardorado.com]",
+	'widgets-desc' => "Talvezout a ra d'ar verourien da ouzhpennañ widgetoù d'ar wiki en ur gemmañ pajennoù en esaouenn anv {{ns:widget}}.
+Ar widgetoù kinniget gant ar gumuniezh a gaver war [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
 	'widgets-error' => 'Fazi e [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Aozerien widget',
 	'group-widgeteditor-member' => 'Aozer widget',
@@ -119,14 +120,15 @@ Původně vyvinuto pro [http://www.ardorado.com Ardorado.com]',
 
 /** German (Deutsch)
  * @author Jan Luca
+ * @author Kghbln
  * @author Pill
  * @author Sebastian Wallroth
  * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'widgets-desc' => 'Ermöglicht Wiki-Administratoren das Hinzufügen von Freiformat-Widgets durch das Bearbeiten von Seiten im {{ns:widget}}-Namensraum.
-Von der Gemeinschaft erstellte Widgets können unter [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] gefunden werden.',
+	'widgets-desc' => 'Ermöglicht Administratoren das Hinzufügen von Freiformat-Widgets durch das Bearbeiten von Seiten im {{ns:widget}}-Namensraum.
+Von der Gemeinschaft erstellte Widgets können unter [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] gefunden werden',
 	'widgets-error' => 'Fehler im [[{{ns:widget}}:$1|Widget $1]]',
 	'group-widgeteditor' => 'Widget-Bearbeiter',
 	'group-widgeteditor-member' => 'Widget-Bearbeiter',
@@ -224,7 +226,7 @@ Pódense atopar os widgets desenvolvidos para a comunidade en [http://www.mediaw
  */
 $messages['gsw'] = array(
 	'widgets-desc' => 'Erlaubt Wikiadministratore Frej-Form-Widgets zum Wiki zuezfiege dur d Bearbeitig vu Syte im {{ns:widget}}-Namensruum.
-Urspringlig entwicklet fir [http://www.ardorado.com Ardorado.com]',
+Vu dr Gmeinschaft aagleiti Widgets chenne unter [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] gfunde wäre.',
 	'widgets-error' => 'Fähler im [[{{ns:widget}}:$1|Widget $1]]',
 	'group-widgeteditor' => 'Widget-Editore',
 	'group-widgeteditor-member' => 'Widget-Editor',
@@ -289,9 +291,8 @@ Le widgets contribuite per le communitate se trova a [http://www.mediawikiwidget
  * @author Irwangatot
  */
 $messages['id'] = array(
-	'widgets-desc' => 'Mengijinkan admin wiki untuk menambahkan widget ke wiki dengan menyunting halaman di ruang nama {{ns:widget}}.
-
-Mulanya dibuat untuk [http://www.ardorado.com Ardorado.com]',
+	'widgets-desc' => 'Mengijinkan pengurus wiki untuk menambahkan formulir bebas widget ke wiki dengan menyunting halaman di ruang nama {{ns:widget}}.
+komunitas kontribusi widgets dapat di temuai pada [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Kesalahan pada [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Penyunting widget',
 	'group-widgeteditor-member' => 'Penyunting widget',

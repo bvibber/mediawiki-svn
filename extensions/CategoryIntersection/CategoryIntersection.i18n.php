@@ -102,12 +102,14 @@ $messages['br'] = array(
 
 /** Bosnian (Bosanski)
  * @author CERminator
+ * @author Palapa
  */
 $messages['bs'] = array(
 	'categoryintersection' => 'Preklapanje kategorija',
 	'categoryintersection-desc' => 'Održava tabelu sa haš vrijednostima za [[Special:CategoryIntersection|preklapanja kategorija]] unutar stranice',
 	'categoryintersection-doit' => 'Spisak stranica u svim ovim kategorijama',
 	'categoryintersection-maxcategories' => 'Najveći dopušteni broj preklapajućih kategorija je $1.',
+	'categoryintersection-mincategories' => 'Trebate uključiti najmanje dvije kategorije',
 	'categoryintersection-results' => 'Pretraga je dala $1 {{PLURAL:$1|rezultat|rezultata}}.',
 );
 
@@ -212,6 +214,7 @@ $messages['eu'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Nike
@@ -223,6 +226,7 @@ $messages['fi'] = array(
 	'categoryintersection-desc' => 'Ylläpitää hajautusalgoritmin arvojen taulukkoa sivunsisäisäisesti näytettynä olevia [[Special:CategoryIntersection|luokkien leikkauksia]] varten',
 	'categoryintersection-doit' => 'Listaa kaikissa näissä luokissa olevat sivut',
 	'categoryintersection-maxcategories' => 'Suurin sallittu määrä luokkia, joista tehdään leikkaus, on $1.',
+	'categoryintersection-mincategories' => 'Sinun on sisällytettävä vähintään kaksi luokkaa.',
 	'categoryintersection-results' => 'Haku palautti $1 {{PLURAL:$1|tuloksen|tulosta}}.',
 );
 
@@ -798,6 +802,7 @@ $messages['vi'] = array(
 	'categoryintersection-desc' => 'Sử dụng một bản chứa các giá trị băm dùng cho [[Special:CategoryIntersection|các thể loại giao nhau]] trong một trang',
 	'categoryintersection-doit' => 'Liệt kê các trang trong tất cả các thể loại này',
 	'categoryintersection-maxcategories' => 'Số thể loại giao nhau tối đa cho phép là $1.',
+	'categoryintersection-mincategories' => 'Bạn cần ghi ít nhất là hai thể loại.',
 	'categoryintersection-results' => 'Tìm được $1 {{PLURAL:$1|kết quả|kết quả}}.',
 );
 

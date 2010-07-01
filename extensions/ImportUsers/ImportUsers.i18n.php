@@ -1496,7 +1496,7 @@ $messages['ps'] = array(
 	'importusers-log-summary' => 'لنډيز',
 	'importusers-log-summary-all' => 'ټول',
 	'importusers-log-summary-added' => 'ورګډ شو',
-	'importusers-log-summary-updated' => 'تازه',
+	'importusers-log-summary-updated' => 'اوسمهاله شو',
 	'importusers-login-name' => 'د ننوتلو کارن-نوم',
 	'importusers-password' => 'پټنوم',
 	'importusers-email' => 'برېښليک',
@@ -1640,6 +1640,19 @@ $messages['ru'] = array(
 	'importusers-email' => 'эл. почта',
 	'importusers-realname' => 'настоящее имя',
 	'right-import_users' => 'импортировать сразу несколько участников',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'importusers-log-summary-all' => 'Вшыткы',
+	'importusers-log-summary-added' => 'Придане',
+	'importusers-log-summary-updated' => 'Актуалізоване',
+	'importusers-login-name' => 'Мено приголошіня',
+	'importusers-password' => 'гесло',
+	'importusers-email' => 'електронічна пошта',
+	'importusers-realname' => 'скуточне мено',
 );
 
 /** Tachelhit (Tašlḥiyt)
@@ -1917,12 +1930,24 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'importusers' => 'Kullanıcıları içe aktar',
+	'importusers-desc' => 'CSV dosyasından toplu olarak [[Special:ImportUsers|Kullanıcı aktarma]]; encoding: UTF-8',
 	'importusers-uploadfile' => 'Dosya yükle',
+	'importusers-form-caption' => 'CSV-dosyası (UTF-8) aktar',
+	'importusers-form-file' => 'Kullanıcı dosya biçimi (CSV):',
+	'importusers-form-replace-present' => 'Varolan kullanıcıları değiştir',
 	'importusers-form-button' => 'İçe aktar',
+	'importusers-user-added' => "Kullanıcı '''$1''' eklendi.",
+	'importusers-user-present-update' => "Kullanıcı '''$1''' zaten var.
+Güncellendi",
+	'importusers-user-present-not-update' => "Kullanıcı '''$1''' zaten var.
+Güncellenmedi.",
+	'importusers-user-invalid-format' => '#$1 satırındaki kullanıcı verisi geçersiz ya da boş.
+Atlandı.',
 	'importusers-log' => 'Kullanıcı kaydını içe aktar',
 	'importusers-log-summary' => 'Özet',
 	'importusers-log-summary-all' => 'Hepsi',

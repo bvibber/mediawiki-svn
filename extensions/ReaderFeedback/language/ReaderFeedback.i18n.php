@@ -1869,6 +1869,7 @@ $messages['ps'] = array(
 	'readerfeedback-submit' => 'سپارل',
 	'readerfeedback-submitting' => 'د سپارلو په حال کې ...',
 	'readerfeedback-finished' => 'مننه!',
+	'readerfeedback-tierfilter' => 'ارزونه:',
 );
 
 /** Portuguese (Português)
@@ -1948,15 +1949,17 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Emily
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'readerfeedback' => 'Ce părere aveți despre această pagină ?',
-	'readerfeedback-text' => "''Vă rugăm luați-vă un moment pentru a evalua această pagină de mai jos. Feedback-ul este valoros și ne ajută să îmbunătățim saitul.''",
+	'readerfeedback-text' => "''Vă rugăm să acordați câteva momente evaluării paginii de mai jos. Părerea dumneavoastră contează și ne ajută în procesul de îmbunătățire a site-ului nostru.''",
 	'readerfeedback-reliability' => 'Fiabilitate',
 	'readerfeedback-completeness' => 'Complet',
 	'readerfeedback-npov' => 'Neutralitate',
@@ -1973,10 +1976,10 @@ $messages['ro'] = array(
 	'readerfeedback-success' => "'''Mulțumim pentru că ați revizuit această pagină!''' ([$3 Comentarii sau întrebări?]).",
 	'readerfeedback-voted' => "'''Ați evaluat deja această pagină''' ([$3 Comentarii sau întrebări?]).",
 	'readerfeedback-error' => "'''A apărut o eroare în timp ce era evaluată această pagină''' ([$2 vedeți rezultatele]) ([$3 comentarii sau întrebări ?]).",
-	'readerfeedback-submitting' => 'Trimit ...',
+	'readerfeedback-submitting' => 'Se trimite...',
 	'readerfeedback-finished' => 'Mulțumim!',
 	'readerfeedback-tagfilter' => 'Etichetă:',
-	'readerfeedback-tierfilter' => 'Evalutare:',
+	'readerfeedback-tierfilter' => 'Evaluare:',
 	'readerfeedback-tier-high' => 'Ridicat',
 	'readerfeedback-tier-medium' => 'Moderat',
 	'readerfeedback-tier-poor' => 'Slab',

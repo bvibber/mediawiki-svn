@@ -17,7 +17,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -70,9 +70,10 @@ abstract class ApiStabilize extends ApiBase {
 // Assumes $wgFlaggedRevsProtection is off
 class ApiStabilizeGeneral extends ApiStabilize {
 	public function doExecute() {
+		global $wgUser;
 		$params = $this->extractRequestParams();
 
-		$form = new PageStabilityGeneralForm();
+		$form = new PageStabilityGeneralForm( $wgUser );
 		$form->setPage( $title ); # Our target page
 		$form->setWatchThis( $params['watch'] ); # Watch this page
 		$form->setReason( $params['reason'] ); # Reason
@@ -206,9 +207,10 @@ class ApiStabilizeGeneral extends ApiStabilize {
 // Assumes $wgFlaggedRevsProtection is on
 class ApiStabilizeProtect extends ApiStabilize {
 	public function doExecute() {
+		global $wgUser;
 		$params = $this->extractRequestParams();
 		
-		$form = new PageStabilityProtectForm();
+		$form = new PageStabilityProtectForm( $wgUser );
 		$form->setPage( $title ); # Our target page
 		$form->setWatchThis( $params['watch'] ); # Watch this page
 		$form->setReason( $params['reason'] ); # Reason

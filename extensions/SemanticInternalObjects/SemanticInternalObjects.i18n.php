@@ -62,6 +62,13 @@ $messages['bs'] = array(
 	'semanticinternalobjects-desc' => 'Postavljanje unutrašnjih objekata u Semantic MediaWiki',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'semanticinternalobjects-desc' => "Definició d'objectes interns en el Semantic MediaWiki",
+);
+
 /** German (Deutsch)
  * @author Imre
  */

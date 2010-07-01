@@ -1,5 +1,5 @@
 // Setup the test classes
 
-mw.addClassFilePaths( {
+mw.addResourcePaths( {
 	"mw.testLang"			:  "testLang.js"
 });

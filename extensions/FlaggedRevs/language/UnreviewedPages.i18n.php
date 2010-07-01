@@ -429,11 +429,13 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'unreviewedpages' => 'Ülevaatamata leheküljed',
-	'unreviewed-legend' => 'Ülevaatamata sisulehekülgede loend',
+	'unreviewed-legend' => 'Ülevaatamata sisulehekülgede loetlemine',
 	'unreviewed-category' => 'Kategooria:',
-	'unreviewed-diff' => 'arvusta',
+	'unreviewed-diff' => 'vaata üle',
 	'unreviewed-unwatched' => '(jälgimata)',
 	'unreviewed-watched' => '($1 aktiivse {{PLURAL:$1|kasutaja}} jälgitav)',
+	'unreviewed-list' => 'See lehekülg loetleb sisuleheküljed, mis pole kindlaks määratud tasemeni ülevaadatud.',
+	'unreviewed-none' => 'Sellistele kriteeriumitele vastavad leheküljed puuduvad praegu.',
 	'unreviewed-viewing' => '(ülevaatusel)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|tund|tundi}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|päev|päeva}})',
@@ -728,13 +730,14 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author IvanLanin
  * @author Rex
  */
 $messages['id'] = array(
 	'unreviewedpages' => 'Halaman yang belum ditinjau',
 	'unreviewed-legend' => 'Daftar halaman isi yang belum ditinjau',
 	'unreviewed-category' => 'Kategori:',
-	'unreviewed-diff' => 'meninjau',
+	'unreviewed-diff' => 'tinjau',
 	'unreviewed-unwatched' => '(tidak dipantau)',
 	'unreviewed-watched' => '(dipantau $1 {{PLURAL:$1|pengguna|pengguna}} aktif)',
 	'unreviewed-list' => 'Halaman berikut berisi daftar halaman yang belum ditinjau hingga tingkat tertentu.',
@@ -825,11 +828,18 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'unreviewedpages' => 'შეუმოწმებელი გვერდები',
+	'unreviewed-legend' => 'შეუმოწმებელი სტატიების სია',
 	'unreviewed-category' => 'კატეგორია:',
 	'unreviewed-diff' => 'შემოწმება',
-	'unreviewed-none' => 'ჯერჯერობით არ არის გვერდი, რომელიც შეესაბამება ამ კრიტერიუმებს',
+	'unreviewed-unwatched' => '(არავის კონტროლის სიაში არ არის)',
+	'unreviewed-watched' => '({{PLURAL:$1|აკონტროლებს $1 აქტიური მომხმარებელი|აკონტროლებენ $1 აქტიური მომხმარებლები}})',
+	'unreviewed-list' => 'ამ გვერდებზე მოყვანილია შეუფასებელი სტატიევბი.',
+	'unreviewed-none' => 'ამჟამად არ არის გვერდი, რომელიც შეესაბამება ამ კრიტერიუმებს',
+	'unreviewed-viewing' => '(მიმდინარეობს შემოწმება)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|საათი|საათი}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|დღე|დღე}})',
 	'unreviewed-recent' => '(1 საათზე ნაკლები)',
@@ -1242,7 +1252,7 @@ $messages['pt'] = array(
 	'unreviewed-category' => 'Categoria:',
 	'unreviewed-diff' => 'rever',
 	'unreviewed-unwatched' => '(não vigiada)',
-	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizador activo|utilizadores activos}} a vigiar)',
+	'unreviewed-watched' => '(vigiada por $1 {{PLURAL:$1|utilizador activo|utilizadores activos}})',
 	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que não foram revistas até ao nível escolhido.',
 	'unreviewed-none' => 'De momento, não há páginas que se enquadrem nestes critérios',
 	'unreviewed-viewing' => '(em revisão)',
@@ -1261,8 +1271,8 @@ $messages['pt-br'] = array(
 	'unreviewed-category' => 'Categoria:',
 	'unreviewed-diff' => 'analisar',
 	'unreviewed-unwatched' => '(não-vigiada)',
-	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizador ativo|utilizadores ativos}} a vigiar)',
-	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que não foram revistas até ao nível escolhido.',
+	'unreviewed-watched' => '(vigiada por $1 {{PLURAL:$1|usuários ativo|usuários ativos}})',
+	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que não foram revisadas até ao nível escolhido.',
 	'unreviewed-none' => 'No momento não há páginas que se enquadrem nestes critérios',
 	'unreviewed-viewing' => '(sob análise)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|hora|horas}})',
@@ -1326,6 +1336,18 @@ $messages['ru'] = array(
 	'unreviewed-hours' => '($1 {{PLURAL:$1|час|часа|часов}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|день|дня|дней}})',
 	'unreviewed-recent' => '(менее, чем 1 час)',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'unreviewedpages' => 'Неперевірены сторінкы',
+	'unreviewed-legend' => 'Список неперевіреных статей',
+	'unreviewed-category' => 'Катеґорія:',
+	'unreviewed-diff' => 'перевірити',
+	'unreviewed-unwatched' => '(неслїдованы)',
+	'unreviewed-viewing' => '(контролює ся)',
 );
 
 /** Yakut (Саха тыла)

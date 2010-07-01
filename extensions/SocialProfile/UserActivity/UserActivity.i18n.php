@@ -431,7 +431,7 @@ $messages['mk'] = array(
 	'useractivity-group-comment' => '{{PLURAL:$1|еден коментар|$1 коментари}}',
 	'useractivity-group-user_message' => '{{PLURAL:$1|една порака|$1 пораки}}',
 	'useractivity-group-friend' => '{{PLURAL:$1|еден пријател|$1 пријатели}}',
-	'useractivity-siteactivity' => 'Активност на веб-страницата',
+	'useractivity-siteactivity' => 'Активност на мрежното место',
 	'useractivity-title' => 'Активности на пријателите',
 	'useractivity-user_message' => '$1 {{PLURAL:$4|испрати порака на|испрати пораки на}} $3',
 );
@@ -587,6 +587,13 @@ $messages['ru'] = array(
 	'useractivity-siteactivity' => 'Активность сайта',
 	'useractivity-title' => 'Действия друзей',
 	'useractivity-user_message' => '$1 отправил {{PLURAL:$4|сообщение|сообщения}} $3',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'useractivity-all' => 'Видїти вшытко',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

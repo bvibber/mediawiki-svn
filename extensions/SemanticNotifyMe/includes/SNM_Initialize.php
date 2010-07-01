@@ -2,11 +2,11 @@
 /*
  * Created on 24.6.2009
  *
- * Author: dch
+ * Author: ning
  */
 if ( !defined( 'MEDIAWIKI' ) ) die;
 
-define( 'SMW_NM_VERSION', '0.5' );
+define( 'SMW_NM_VERSION', '0.5.2' );
 
 $smwgNMIP = $IP . '/extensions/SemanticNotifyMe';
 $smwgNMScriptPath = $wgScriptPath . '/extensions/SemanticNotifyMe';
@@ -141,12 +141,12 @@ function smwgNMSetupExtension() {
 		switch( $method_prefix ) {
 			case '_nm_' :
 				require_once( $smwgNMIP . '/specials/SMWNotifyMe/SMW_NotAjaxAccess.php' );
-			break;
+				break;
 		}
 	} else { // otherwise register special pages
 		$wgAutoloadClasses['SMWNotifyMe'] = $smwgNMIP . '/specials/SMWNotifyMe/SMWNotifyMe.php';
 		$wgSpecialPages['NotifyMe'] = array( 'SMWNotifyMe' );
-		$wgSpecialPageGroups['NotifyMe'] = 'smwplus_group';
+		$wgSpecialPageGroups['NotifyMe'] = 'smw_group';
 	}
 
 	// Register Credits
@@ -203,41 +203,41 @@ function smwNMAddHTMLHeader( &$out ) {
 
 		$jsm = SMWResourceManager::SINGLETON();
 
-		$jsm->addScriptIf( $smwgHaloScriptPath .  '/scripts/prototype.js', "all", - 1, NS_SPECIAL . ":NotifyMe" );
-		$jsm->addScriptIf( $smwgHaloScriptPath .  '/scripts/Logger/smw_logger.js', "all", - 1, NS_SPECIAL . ":NotifyMe" );
-		$jsm->addScriptIf( $smwgScriptPath .  '/skins/SMW_tooltip.js', "all", - 1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addScriptIf( $smwgHaloScriptPath .  '/scripts/prototype.js', "all", -1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addScriptIf( $smwgHaloScriptPath .  '/scripts/Logger/smw_logger.js', "all", -1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addScriptIf( $smwgScriptPath .  '/skins/SMW_tooltip.js', "all", -1, NS_SPECIAL . ":NotifyMe" );
 
-		$jsm->addScriptIf( $smwgNMScriptPath . '/scripts/Language/SMW_NMLanguage.js', "all", - 1, NS_SPECIAL . ":NotifyMe" );
-		$jsm->addScriptIf( $pathlng, "all", - 1, NS_SPECIAL . ":NotifyMe" );
-		$jsm->addScriptIf( $userpathlng, "all", - 1, NS_SPECIAL . ":NotifyMe" );
-		$jsm->addScriptIf( $smwgNMScriptPath .  '/scripts/NotifyMe/NotifyHelper.js', "all", - 1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addScriptIf( $smwgNMScriptPath . '/scripts/Language/SMW_NMLanguage.js', "all", -1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addScriptIf( $pathlng, "all", -1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addScriptIf( $userpathlng, "all", -1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addScriptIf( $smwgNMScriptPath .  '/scripts/NotifyMe/NotifyHelper.js', "all", -1, NS_SPECIAL . ":NotifyMe" );
 
-		$jsm->addScriptIf( $smwgNMScriptPath . '/scripts/Language/SMW_NMLanguage.js', "all", - 1, NS_SPECIAL . ":QueryInterface" );
-		$jsm->addScriptIf( $pathlng, "all", - 1, NS_SPECIAL . ":QueryInterface" );
-		$jsm->addScriptIf( $userpathlng, "all", - 1, NS_SPECIAL . ":QueryInterface" );
-		$jsm->addScriptIf( $smwgNMScriptPath .  '/scripts/NotifyMe/NotifyHelper.js', "all", - 1, NS_SPECIAL . ":QueryInterface" );
+		$jsm->addScriptIf( $smwgNMScriptPath . '/scripts/Language/SMW_NMLanguage.js', "all", -1, NS_SPECIAL . ":QueryInterface" );
+		$jsm->addScriptIf( $pathlng, "all", -1, NS_SPECIAL . ":QueryInterface" );
+		$jsm->addScriptIf( $userpathlng, "all", -1, NS_SPECIAL . ":QueryInterface" );
+		$jsm->addScriptIf( $smwgNMScriptPath .  '/scripts/NotifyMe/NotifyHelper.js', "all", -1, NS_SPECIAL . ":QueryInterface" );
 
-		$jsm->addCSSIf( $smwgScriptPath .  '/skins/SMW_custom.css', "all", - 1, NS_SPECIAL . ":NotifyMe" );
-		$jsm->addCSSIf( $smwgNMScriptPath . '/skins/nm.css', "all", - 1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addCSSIf( $smwgScriptPath .  '/skins/SMW_custom.css', "all", -1, NS_SPECIAL . ":NotifyMe" );
+		$jsm->addCSSIf( $smwgNMScriptPath . '/skins/nm.css', "all", -1, NS_SPECIAL . ":NotifyMe" );
 	} else {
 		global $wgRequest;
-		 $scripts = array();
-		 $$css = array();
+		$scripts = array();
+		$$css = array();
 
-		 // read state
-		 if ( $wgRequest != NULL && $wgTitle != NULL ) {
-			 $action = $wgRequest->getVal( "action" );
-			 // $action of NULL or '' means view mode
-			 $action = $action == NULL || $action == '' ? "view" : $action;
-			 $namespace = $wgTitle->getNamespace();
-			 $page = $wgTitle->getNamespace() . ":" . $wgTitle->getText();
+		// read state
+		if ( $wgRequest != NULL && $wgTitle != NULL ) {
+			$action = $wgRequest->getVal( "action" );
+			// $action of NULL or '' means view mode
+			$action = $action == NULL || $action == '' ? "view" : $action;
+			$namespace = $wgTitle->getNamespace();
+			$page = $wgTitle->getNamespace() . ":" . $wgTitle->getText();
 
-		 } else { // if no state could be read, set default -> load all!
-			 $action = "all";
-			 $namespace = - 1;
-			 $page = array();
-		 }
-		if ( ( $namespace == NS_SPECIAL || $namespace == - 1 ) && ( $page == NS_SPECIAL . ":NotifyMe" ) ) {
+		} else { // if no state could be read, set default -> load all!
+			$action = "all";
+			$namespace = -1;
+			$page = array();
+		}
+		if ( ( $namespace == NS_SPECIAL || $namespace == -1 ) && ( $page == NS_SPECIAL . ":NotifyMe" ) ) {
 			$out->addScript( '<script type="text/javascript" src="' . $smwgNMScriptPath . '/scripts/prototype.js"></script>' );
 			$out->addScript( '<script type="text/javascript" src="' . $smwgScriptPath . '/skins/SMW_tooltip.js"></script>' );
 			$out->addScript( '<script type="text/javascript" src="' . $smwgNMScriptPath . '/scripts/Language/SMW_NMLanguage.js"></script>' );
@@ -250,13 +250,13 @@ function smwNMAddHTMLHeader( &$out ) {
 					'type'  => 'text/css',
 					'media' => 'screen, projection',
 					'href'  => $smwgScriptPath . '/skins/SMW_custom.css'
-				) );
-			$out->addLink( array(
+					) );
+					$out->addLink( array(
 					'rel'   => 'stylesheet',
 					'type'  => 'text/css',
 					'media' => 'screen, projection',
 					'href'  => $smwgNMScriptPath . '/skins/nm.css'
-				) );
+					) );
 		}
 	}
 	return true; // do not load other scripts or CSS

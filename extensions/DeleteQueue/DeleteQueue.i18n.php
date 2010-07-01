@@ -1964,6 +1964,7 @@ Voit [{{fullurl:{{FULLPAGENAME}}|action=delvote}} merkitä oman tukesi tai vastu
  * @author IAlex
  * @author McDutchie
  * @author Meno25
+ * @author Peter17
  * @author PieRRoMaN
  * @author Urhixidur
  * @author Verdy p
@@ -2112,7 +2113,7 @@ Vous pouvez [{{FULLURL:{{FULLPAGENAME}}|action=delvote}} enregistrer ici] votre 
 	'deletequeue-case-title' => 'Détails du cas de suppression',
 	'deletequeue-case-details' => 'Informations de base',
 	'deletequeue-case-page' => 'Page :',
-	'deletequeue-case-reason' => 'Raison :',
+	'deletequeue-case-reason' => 'Motif :',
 	'deletequeue-case-expiry' => 'Expiration :',
 	'deletequeue-case-needs-review' => 'Ce cas requiert une [[$1|revue]].',
 );
@@ -3787,6 +3788,7 @@ $messages['lb'] = array(
 	'deletequeue-list-header-page' => 'Säit',
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
 	'deletequeue-list-header-reason' => "Grond fir d'Läschen",
+	'deletequeue-case-details' => 'Basisinformatiounen',
 	'deletequeue-case-page' => 'Säit:',
 	'deletequeue-case-reason' => 'Grond:',
 );
@@ -4858,8 +4860,10 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
 $messages['ps'] = array(
 	'deletequeue-delnom-otherreason' => 'بل سبب',
 	'deletequeue-review-newreason' => 'نوی سبب:',
+	'deletequeue-vote-reason' => 'تبصرې:',
 	'deletequeue-vote-submit' => 'سپارل',
 	'deletequeue-list-status' => 'دريځ:',
+	'deletequeue-list-header-page' => 'مخ',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
 	'deletequeue-list-header-reason' => 'د ړنګولو سبب',
 	'deletequeue-case-page' => 'مخ:',

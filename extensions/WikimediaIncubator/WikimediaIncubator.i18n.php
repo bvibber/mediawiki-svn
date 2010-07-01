@@ -818,6 +818,7 @@ $messages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Annayram
  * @author Darth Kule
  * @author HalphaZ
  * @author Melos
@@ -826,7 +827,12 @@ $messages['it'] = array(
 	'wminc-viewuserlang-user' => 'Nome utente:',
 	'wminc-viewuserlang-go' => 'Vai',
 	'wminc-prefinfo-project' => "Seleziona il progetto Wikimedia (l'opzione Incubator è per gli utentu che fanno del lavoro generale)",
+	'wminc-prefinfo-error' => 'Hai selezionato un progetto che ha bisogno di un codice di linguaggio',
+	'wminc-warning-unprefixed' => '"Attenzione: la pagina che si sta modificando non corrisponde a quella prefissata"',
+	'wminc-warning-suggest' => 'Si può creare una pagina su [[$1]]',
+	'wminc-warning-suggest-move' => 'è possibile [((fullurl: Special: MovePage / $ 3 | wpNewTitle = $ 2)) spostare questa pagina a $ 1]',
 	'right-viewuserlang' => 'Visualizza [[Special:ViewUserLang|il linguaggio utente e prova il wiki]]',
+	'randombytest' => 'Una pagina a caso da Test Wiki',
 );
 
 /** Japanese (日本語)
@@ -1384,11 +1390,13 @@ $messages['rue'] = array(
 	'wminc-testwiki-none' => 'Ніч/Вшытко',
 	'wminc-prefinfo-language' => 'Ваш язык інтерфейсу не залежыть од языка тестовой вікі',
 	'wminc-prefinfo-code' => 'Языковый код ISO 639',
+	'wminc-prefinfo-project' => 'Выбрати проєкт Вікімедія (варіант Інкубатор про тых, што ся занимають общов роботов)',
 	'wminc-prefinfo-error' => 'Выбрали сьте проєкт, котрый потребує код языка.',
 	'wminc-warning-unprefixed' => "'''Увага.''' Назва сторінкы, яку едітуєте, не має префікс!",
 	'wminc-warning-suggest' => 'Можете створити сторінку на [[$1]].',
 	'wminc-warning-suggest-move' => 'Можете [{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} переменовати тоту сторінку на $1].',
 	'right-viewuserlang' => 'Відїти [[Special:ViewUserLang|языковы наставлиня хоснователя і його тестову вікі]]',
+	'randombytest' => 'Нагодна сторінка з тестовой вікі',
 	'randombytest-nopages' => 'Во вашій тестовій вікі немає сторінок у просторі мен $1.',
 );
 
@@ -1479,6 +1487,17 @@ $messages['sk'] = array(
 	'right-viewuserlang' => 'Zobraziť [[Special:ViewUserLang|jazyk používateľa a testovaciu wiki]]',
 	'randombytest' => 'Náhodná stránka z testovacej wiki',
 	'randombytest-nopages' => 'Vo vašej testovacej wiki neexistujú stránky v mennom priestore $1.',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wminc-viewuserlang-user' => 'Uporabniško ime:',
+	'wminc-viewuserlang-go' => 'Pojdi',
+	'wminc-testwiki' => 'Preizkusni wiki:',
+	'wminc-testwiki-none' => 'Nič/Vse',
+	'wminc-prefinfo-code' => 'Koda jezika ISO 639',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

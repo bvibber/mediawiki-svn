@@ -893,6 +893,13 @@ $messages['oc'] = array(
 	'ajax-se-usernotfound' => 'ERROR : Utilizaire introbable',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'ajax-se-idling' => '(vor $1 s)',
+);
+
 /** Polish (Polski)
  * @author Derbeth
  * @author McMonster
@@ -928,8 +935,8 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'ajax-se-idling' => '($1 پخوا)',
 	'ajax-se-pagedoesnotexist' => 'دا مخ لا تر اوسه پورې نشته',
-	'ajax-se-userinvalid' => 'ERR: ناسم کارونکی',
-	'ajax-se-usernotfound' => 'ERR: کارونکی و نه موندل شو',
+	'ajax-se-userinvalid' => 'ERR: ناسم کارن',
+	'ajax-se-usernotfound' => 'ERR: کارن و نه موندل شو',
 );
 
 /** Portuguese (Português)

@@ -3874,7 +3874,7 @@ $messages['mk'] = array(
 	'farmer' => 'Фармер',
 	'farmer-desc' => 'Раководење со МедијаВики фарма',
 	'farmercantcreatewikis' => 'Не можете да создавате викија бидејќи немате таква привилегија',
-	'farmercreatesitename' => 'Име на веб-страницата',
+	'farmercreatesitename' => 'Име на мрежното место',
 	'farmercreatenextstep' => 'Следен чекор',
 	'farmernewwikimainpage' => '== Добредојдовте на вашето вики ==
 Ако го гледате ова, значи дека вашето вики е правилно инсталирано.
@@ -5586,6 +5586,21 @@ $messages['ru'] = array(
 	'farmer-log-delete' => 'удалена вики «$2»',
 	'right-farmeradmin' => 'управление вики-фермой',
 	'right-createwiki' => 'создание вики на вики-ферме',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'farmer-confirmsetting-name' => 'Мено',
+	'farmer-confirmsetting-title' => 'Назва',
+	'farmer-confirmsetting-description' => 'Попис',
+	'farmer-confirmsetting-reason' => 'Причіна',
+	'farmer-description' => 'Попис',
+	'farmer-createwiki-user' => 'Мено хоснователя:',
+	'farmer-createwiki-name' => 'Вікі мено',
+	'farmer-createwiki-description' => 'Попис',
+	'farmer-createwiki-reason' => 'Причіна',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)

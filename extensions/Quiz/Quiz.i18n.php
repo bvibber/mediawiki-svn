@@ -101,7 +101,7 @@ $messages['af'] = array(
 $messages['an'] = array(
 	'quiz_desc' => 'Premite a creyación de quizzes',
 	'quiz_addedPoints' => '{{PLURAL:$1|Punto|Puntos}} por cada respuesta encertata',
-	'quiz_cutoffPoints' => 'Puntos sacatos por cada respuesta entivocata:',
+	'quiz_cutoffPoints' => '{{PLURAL:$1|Punto sacato|Puntos sacatos}} por cada respuesta entivocata:',
 	'quiz_ignoreCoef' => "Ignorar os puntos d'as preguntas",
 	'quiz_shuffle' => 'Desordenar as preguntas',
 	'quiz_colorRight' => 'Encertatas',
@@ -1424,8 +1424,10 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'quiz_desc' => 'Permite crearea de chestionare',
@@ -1437,7 +1439,7 @@ $messages['ro'] = array(
 	'quiz_colorWrong' => 'Greșit',
 	'quiz_colorNA' => 'Fără răspuns',
 	'quiz_colorError' => 'Eroare de sintaxă',
-	'quiz_correction' => 'Aplică',
+	'quiz_correction' => 'Trimitere',
 	'quiz_score' => 'Scorul tău este $1 / $2',
 	'quiz_points' => '$1 | {{PLURAL:$2|1 punct|$2 puncte}}',
 	'quiz_reset' => 'Reinițializare',

@@ -1856,6 +1856,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -1867,6 +1868,8 @@ $messages['pt-br'] = array(
 	'usagestatisticsinterval' => 'Intervalo:',
 	'usagestatisticsnamespace' => 'Domínio:',
 	'usagestatisticsexcluderedirects' => 'Excluir redirecionamentos',
+	'usagestatistics-namespace' => 'Estas são as estatísticas do espaço nominal [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Redirecionamentos]] não são levados em consideração.',
 	'usagestatisticstype' => 'Tipo',
 	'usagestatisticsstart' => 'Data de início:',
 	'usagestatisticsend' => 'Data de fim:',

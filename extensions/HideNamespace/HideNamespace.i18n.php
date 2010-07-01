@@ -194,6 +194,13 @@ $messages['ru'] = array(
 	'hidens-desc' => 'Скрывает пространство имён в заголовке и названии, если страница относится к определённому пространству имён, или содержит вызов функции парсера <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'hidens-desc' => 'Skrije imenski prostor v glavi in naslovu, ko je stran v določenem imenskem prostoru ali kot je klicana funkcija razčlenjevalnika <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
@@ -206,10 +213,24 @@ $messages['sr-el'] = array(
 	'hidens-desc' => 'Sakriva imensi prostor i naslov kada je strana u zadatom imenskom prostoru ili kada je parserova funkcija <code><nowiki>{{#hidens:}}</nowiki></code> pozvana',
 );
 
+/** Swedish (Svenska)
+ * @author Sertion
+ */
+$messages['sv'] = array(
+	'hidens-desc' => 'Döljer namnrymden från sidrubriken och sidtiteln när en sida är i en specificerad namnrymd eller när <code><nowiki>{{#hidens:}}</nowiki></code>-funktionen används',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
 $messages['tl'] = array(
 	'hidens-desc' => 'Itinatago ang mga puwang na pampangalan sa loob ng pang-ulo at pamagat kapag ang pahina ay nasa loob ng tiyak na puwang na pampangalan o kapag tinawag ang tungkulin ng parser na <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'hidens-desc' => 'Ẩn không gian tên trong tiêu đề và tựa trang khi nào cho các trang thuộc không gian tên được chọn hoặc sử dụng hàm cú pháp <code><nowiki>{{#hidens:}}</nowiki></code>.',
 );
 

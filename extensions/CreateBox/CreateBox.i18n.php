@@ -685,6 +685,13 @@ $messages['ru'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'createbox-create' => 'Створити',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

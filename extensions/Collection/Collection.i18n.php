@@ -17,7 +17,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -289,6 +289,13 @@ $messages['niu'] = array(
  */
 $messages['gom-latn'] = array(
 	'coll-return_to' => '[[:$1]] ak patim vos',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'coll-show' => 'Tampilakan',
 );
 
 /** Afrikaans (Afrikaans)
@@ -2009,6 +2016,7 @@ Kontakt venligst din MediaWiki-administrator.',
  * @author Pill
  * @author Raimond Spekking
  * @author Revolus
+ * @author The Evil IP address
  * @author Umherirrender
  * @author VolkerHaas
  */
@@ -2113,7 +2121,7 @@ Hinweise:
 	'coll-download_failed_title' => 'Fehler beim Herunterladen',
 	'coll-download_failed_text' => 'Es gab einen Fehler beim Herunterladen der Datei: $1',
 	'coll-is_cached' => '<ul><li>Es ist eine zwischengespeicherte Version des Dokumentes vorhanden, so dass kein Rendern notwendig war. <a href="$1">Neurendern erzwingen.</a></li></ul>',
-	'coll-excluded-templates' => '* Vorlagen aus der Kategorie [[:Category:$1|$1]] wurden ausgeschlossen.',
+	'coll-excluded-templates' => '* Vorlagen aus der Kategorie „[[:Category:$1|$1]]“ wurden ausgeschlossen.',
 	'coll-blacklisted-templates' => '* Vorlagen von der Schwarzen Liste [[:$1]] wurden ausgeschlossen.',
 	'coll-return_to_collection' => 'Zurück zu <a href="$1">$2</a>',
 	'coll-book_title' => 'Als gedrucktes Buch bestellen',
@@ -7934,7 +7942,7 @@ $messages['ps'] = array(
 	'coll-yes' => 'هو',
 	'coll-no' => 'نه',
 	'coll-cancel' => 'ناګارل',
-	'coll-update' => 'اوسمهاله کول',
+	'coll-update' => 'اوسمهالول',
 	'coll-limit_exceeded_title' => 'کتاب ډېر لوی دی',
 	'coll-rendering_article' => '(د ويکي مخ: $1)',
 	'coll-rendering_page' => '(مخ: $1)',
@@ -8125,7 +8133,7 @@ $messages['pt-br'] = array(
 	'coll-exclusion_category_title' => 'Excluir ao imprimir',
 	'coll-print_template_prefix' => 'Imprimir',
 	'coll-print_template_pattern' => '$1/Imprimir',
-	'coll-unknown_subpage_title' => 'Sub-página desconhecida',
+	'coll-unknown_subpage_title' => 'Subpágina desconhecida',
 	'coll-unknown_subpage_text' => 'Esta subpágina do [[Special:Book|Livro]] não existe',
 	'coll-couldnotaddarticle_title' => 'Não foi possível adicionar a página wiki',
 	'coll-couldnotaddarticle_msg' => 'A página wiki não pôde ser adicionada.',
@@ -8261,8 +8269,10 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -8291,7 +8301,7 @@ Această pagină nu va lucra corect, doar dacă JavaScript este pornit.</strong>
 	'coll-format_label' => 'Format:',
 	'coll-remove' => 'Elimină',
 	'coll-show' => 'Arată',
-	'coll-move_to_top' => 'Mergi în vârf',
+	'coll-move_to_top' => 'Mută la început',
 	'coll-move_up' => 'Mergi sus',
 	'coll-move_down' => 'Mergi jos',
 	'coll-move_to_bottom' => 'Mergi la bază',
@@ -8321,7 +8331,7 @@ Această pagină nu va lucra corect, doar dacă JavaScript este pornit.</strong>
 	'coll-save_collection' => 'Salvează cartea',
 	'coll-save_category' => 'Toate cărțile sunt salvate în categoria [[:Category:{{MediaWiki:Coll-bookscategory}}|{{MediaWiki:Coll-bookscategory}}]].',
 	'coll-overwrite_title' => 'Pagina există.
-Suprascrie?',
+Suprascriu?',
 	'coll-overwrite_text' => 'O pagină cu numele [[:$1]] există deja.
 Doriți ca aceasta să fie înlocuită cu cartea dumneavoastră?',
 	'coll-yes' => 'Da',
@@ -8330,7 +8340,7 @@ Doriți ca aceasta să fie înlocuită cu cartea dumneavoastră?',
 Doriți să rescrieți cartea actuală, să adăugați noul conținut, sau să revocați încărcarea acestei cărți?',
 	'coll-overwrite' => 'Suprascrie',
 	'coll-append' => 'Adaugă',
-	'coll-cancel' => 'Anulează',
+	'coll-cancel' => 'Renunţă',
 	'coll-update' => 'Actualizează',
 	'coll-limit_exceeded_title' => 'Carte prea mare',
 	'coll-limit_exceeded_text' => 'Cartea dumneavoastră este prea mare.
@@ -8574,6 +8584,18 @@ $messages['ru'] = array(
 	'coll-load_local_book' => 'Нажмите «ОК», чтобы продолжить работу с вашей книгой %TITLE%, содержащей %NUMPAGES% вики-страниц. Нажмите «Отмена», чтобы удалить её и начать с пустой книги.',
 	'right-collectionsaveasuserpage' => 'сохранение книг, как страницу участника',
 	'right-collectionsaveascommunitypage' => 'сохранение книг, как страницу сообщества',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'coll-collection' => 'Книга',
+	'coll-collections' => 'Книгы',
+	'coll-show' => 'Вказати',
+	'coll-overwrite' => 'Переписати',
+	'coll-cancel' => 'Сторно',
+	'coll-suggest_show' => 'вказати',
 );
 
 /** Yakut (Саха тыла)
@@ -9155,9 +9177,12 @@ $messages['sr-ec'] = array(
 	'coll-suggest_title' => 'Стране предложене за вашу књигу',
 	'coll-suggested_articles' => 'Предлози',
 	'coll-suggest_reset_bans' => 'ресетуј',
+	'coll-suggest_reset_bans_tooltip' => 'Прикажи скоро уклоњене предлоге',
+	'coll-suggest_add_selected' => 'Додај означене стране',
 	'coll-suggest_ban_selected' => 'Уклони одабране стране',
 	'coll-suggest_your_book' => 'Твоја књига',
 	'coll-suggest_show' => 'покажи',
+	'coll-suggest_ban_tooltip' => 'Уклони ову страну са списка предлога',
 	'coll-suggest_undo_tooltip' => 'Поништи ову акцију',
 	'coll-suggest_undo' => 'врати',
 );
@@ -9281,9 +9306,12 @@ Molim kontaktirajte svog MedijaViki administratora.',
 	'coll-suggest_title' => 'Strane predložene za vašu knjigu',
 	'coll-suggested_articles' => 'Predlozi',
 	'coll-suggest_reset_bans' => 'resetuj',
+	'coll-suggest_reset_bans_tooltip' => 'Prikaži skoro uklonjene predloge',
+	'coll-suggest_add_selected' => 'Dodaj označene strane',
 	'coll-suggest_ban_selected' => 'Ukloni odabrane strane',
 	'coll-suggest_your_book' => 'Tvoja knjiga',
 	'coll-suggest_show' => 'pokaži',
+	'coll-suggest_ban_tooltip' => 'Ukloni ovu stranu sa spiska predloga',
 	'coll-suggest_undo_tooltip' => 'Poništi ovu akciju',
 	'coll-suggest_undo' => 'vrati',
 );

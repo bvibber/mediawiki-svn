@@ -6,7 +6,11 @@ class SimpleSecurity {
 
 	var $guid  = '';
 	var $cache = array();
-	var $info  = array( 'LS' => array(), 'PR' => array(), 'CR' => array() );
+	var $info  = array(
+		'LS' => array(), # security info for rules from LocalSettings ($wgPageRestrictions)
+		'PR' => array(), # security info for rules from protect tab
+		'CR' => array()  # security info for rules which are currently in effect
+	);
 
 	function __construct() {
 		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions, $wgMessageCache,
@@ -165,7 +169,7 @@ class SimpleSecurity {
 	 * - Allows sysop access
 	 * - clears and populates the info array
 	 */
-	public function onUserGetRights( &$user, &$rights ) {
+	public function onUserGetRights( $user, &$rights ) {
 		global $wgGroupPermissions, $wgOut, $wgTitle, $wgRequest, $wgPageRestrictions;
 
 		# Hack to prevent specialpage operations on unreadable pages
@@ -180,9 +184,6 @@ class SimpleSecurity {
 		}
 		if ( !is_object( $title ) ) return true;   # If still no usable title bail
 
-		$this->info['LS'] = array();           # security info for rules from LocalSettings ($wgPageRestrictions)
-		$this->info['PR'] = array();           # security info for rules from protect tab
-		$this->info['CR'] = array();           # security info for rules which are currently in effect
 		$groups = $user->getEffectiveGroups();
 
 		# Put the anon read right back in $wgGroupPermissions if it was there initially

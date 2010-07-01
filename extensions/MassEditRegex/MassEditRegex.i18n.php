@@ -1176,6 +1176,9 @@ Ij valor ëd rimpiassadura a dovrìo nen esse trucà.",
  */
 $messages['ps'] = array(
 	'masseditregex-matchtxt' => 'پلټنه د:',
+	'masseditregex-before' => 'دمخه',
+	'masseditregex-after' => 'وروسته',
+	'masseditregex-listtype-intro' => 'دا يو لړليک دی د:',
 );
 
 /** Portuguese (Português)
@@ -1363,6 +1366,7 @@ $messages['sv'] = array(
 );
 
 /** Telugu (తెలుగు)
+ * @author RanjithSutari
  * @author Veeven
  */
 $messages['te'] = array(

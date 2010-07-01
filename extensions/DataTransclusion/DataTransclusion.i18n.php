@@ -216,6 +216,29 @@ Necesítase o primeiro argumento ou "modelo".',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non existe.',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'datatransclusion-desc' => 'Importiere un Darstelle vu Datesätz us extärne Datequälle',
+	'datatransclusion-missing-source' => 'S isch kei kei Datequälle aagee.
+S brucht e zweit oder e „Quäll“-Argument.',
+	'datatransclusion-unknown-source' => 'S isch e mangelhafti Datequälle aagee wore.
+„$1“ isch nit bekannt.',
+	'datatransclusion-missing-key' => 'S isch kei Schlissel aagee wore.
+„$2“ sin giltigi Schlissel in dr Datequälle „$1“.',
+	'datatransclusion-bad-argument-by' => 'S isch e mangelhaft Schlisselfäld aagee wore.
+„$2“ isch kei Schlisselfäld in dr Datequälle „$1“.
+{{PLURAL:$4|E giltige Schlissel isch|Giltigi Schlissel sin}}: $3.',
+	'datatransclusion-missing-argument-key' => 'S isch kei Schlisselwärt aagee wore.
+S brucht e zweit oder e „Schlissel“-Argumänt.',
+	'datatransclusion-missing-argument-template' => 'S isch kei Vorlag aagee wore.
+S brucht s erscht oder e „Vorlage“-Argumänt.',
+	'datatransclusion-record-not-found' => 'S isch kei passende Datesatz $2 = $3 in dr Datequälle „$1“ gfunde wore.',
+	'datatransclusion-bad-template-name' => 'Mangelhafte Vorlagename: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> git s nit',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -262,10 +285,19 @@ Un prime parametro "template" es obligatori.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non existe.',
 );
 
+/** Italian (Italiano)
+ * @author EdoDodo
+ */
+$messages['it'] = array(
+	'datatransclusion-unknown-source' => "Origine dati incorreta specificata.
+''$1'' non è noto.",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
+	'datatransclusion-desc' => 'Import and Duerstellung vun Daten aus externe Quellen',
 	'datatransclusion-bad-template-name' => 'Schlechten Numm fir eng Schabloun: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> gëtt et net.',
 );
@@ -289,6 +321,13 @@ $2 се важечки клучеви во податотечниот извор
 	'datatransclusion-record-not-found' => 'во податочниот извор $1 нема пронајдено запис што одговара на $2 = $3',
 	'datatransclusion-bad-template-name' => 'лошо име на шаблон: $1',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[Template:$1|$1]]<nowiki>}}</nowiki> не постои.',
+);
+
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'datatransclusion-bad-template-name' => 'चुकीचे साचानाव:$1',
 );
 
 /** Dutch (Nederlands)
@@ -337,6 +376,29 @@ O primeiro argumento, ou argumento "predefinição", é obrigatório.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> não existe.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'datatransclusion-desc' => 'Importação e apresentação de registros de dados vindos de fontes externas',
+	'datatransclusion-missing-source' => 'Não foi especificada a fonte dos dados.
+O segundo argumento, ou argumento "fonte", é obrigatório.',
+	'datatransclusion-unknown-source' => 'A fonte de dados especificada é incorreta.
+$1 não é conhecido.',
+	'datatransclusion-missing-key' => 'Não foi especificada uma chave.
+$2 são chaves válidas na fonte de dados $1.',
+	'datatransclusion-bad-argument-by' => 'Foi especificado um campo chave incorreto.
+"$2" não é um campo chave na fonte de dados "$1".
+{{PLURAL:$4|O único campo chave válido é|Os campos chave válidos são}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Não foi especificado um campo chave.
+O segundo argumento, ou argumento "chave", é obrigatório.',
+	'datatransclusion-missing-argument-template' => 'Não foi especificada uma predefinição.
+O primeiro argumento, ou argumento "predefinição", é obrigatório.',
+	'datatransclusion-record-not-found' => 'Não foi encontrado nenhum registro $2 = $3 na fonte de dados $1.',
+	'datatransclusion-bad-template-name' => 'Nome da predefinição incorreto: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  não existe.',
+);
+
 /** Russian (Русский)
  * @author G0rn
  * @author Александр Сигачёв
@@ -379,5 +441,28 @@ Kailangan ang pangatlo o argumentong "suleras".',
 	'datatransclusion-record-not-found' => 'Walang natagpuang rekord na tumutugma sa $2 = $3 na nasa loob ng pinagmulan ng dato na $1.',
 	'datatransclusion-bad-template-name' => 'Masamang pangalan ng suleras: $1.',
 	'datatransclusion-unknown-template' => 'Hindi umiiral ang <nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>.',
+);
+
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'datatransclusion-desc' => 'Dış veri kaynaklarından veri kayıtlarının aktarılması ve işlenmesi',
+	'datatransclusion-missing-source' => 'Hiç veri kaynağı belirtilmedi.
+İkinci bir kaynak ya da "kaynak" ispatı gerekmektedir.',
+	'datatransclusion-unknown-source' => 'Belirtilen veri kaynağı kötüdür.
+"$1" bilinmemektedir.',
+	'datatransclusion-missing-key' => 'Hiç anahtar belirtilmedi.
+$2, $1 veri kaynağındaki geçerli anahtarlardır.',
+	'datatransclusion-bad-argument-by' => 'Kötü anahtar alanı belirtildi.
+"$2", "$1" veri kaynağı içinde bir anahtar alanı değildir.
+{{PLURAL:$4|Geçerli anahtar|Geçerli anahtarlar}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Hiç anahtar değeri belirtilmedi.
+İkinci bir anahtar ya da "anahtar" ispatı gerekmektedir.',
+	'datatransclusion-missing-argument-template' => 'Hiç şablon belirtilmedi.
+Birincisi ya da "şablon" ispatı gerekmektedir.',
+	'datatransclusion-record-not-found' => '$1 veri kaynağında, $2 = $3 şekline uyan hiç bir kayıt bulunamadı.',
+	'datatransclusion-bad-template-name' => 'Kötü şablon adı: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> varolmamaktadır.',
 );
 

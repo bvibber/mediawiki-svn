@@ -1261,6 +1261,7 @@ $messages['mn'] = array(
 
 /** Marathi (मराठी)
  * @author Kaustubh
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'datatransfer-desc' => 'साचा कॉल मध्ये असणार्‍या डाटाची आयात निर्यात करण्याची परवानगी देतो',
@@ -1276,6 +1277,7 @@ $messages['mr'] = array(
 	'dt_xml_title' => 'शीर्षक',
 	'dt_xml_id' => 'क्रमांक (आयडी)',
 	'dt_xml_freetext' => 'मुक्त मजकूर',
+	'importxml' => 'एक्सएमएल आयात करा',
 );
 
 /** Mirandese (Mirandés)
@@ -1667,6 +1669,25 @@ $messages['ru'] = array(
 	'importcsv' => 'Импорт CSV',
 	'dt_importcsv_badheader' => 'Ошибка. Заголовок колонки №$1 «$2» должен быть или «$3», или «$4», или в форме «template_name[field_name]»',
 	'right-datatransferimport' => 'импорт информации',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'dt_viewxml_categories' => 'Катеґорії',
+	'dt_viewxml_namespaces' => 'Просторы назв',
+	'dt_viewxml_simplifiedformat' => 'Простый формат',
+	'dt_xml_namespace' => 'Простор назв',
+	'dt_xml_pages' => 'Сторінкы',
+	'dt_xml_page' => 'Сторінка',
+	'dt_xml_template' => 'Шаблона',
+	'dt_xml_field' => 'Поле',
+	'dt_xml_name' => 'Назва',
+	'dt_xml_title' => 'Надпис',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Вольный текст',
+	'importxml' => 'Імпортовати XML',
 );
 
 /** Slovak (Slovenčina)

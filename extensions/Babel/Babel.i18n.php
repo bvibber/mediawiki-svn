@@ -133,7 +133,7 @@ $messages['kea'] = array(
  */
 $messages['ary'] = array(
 	'babel' => 'Meĝlomaṫ Babil ĝla l-mosṫeĥdim',
-	'babel-desc' => "Zid l-fonksyon <code>#babel</code> baċ ṫeĥṫareĝ ṫilqa'iyyan sendoq Babil o ṫeĝmel fih modélaṫ maḫelliyin.",
+	'babel-desc' => 'Zid l-fonksyon <code>#babel</code> baċ ṫṣayeb otomaṫikiyan sendoq Babil o ṫeĝmel fih modélaṫ maḫelliyin.',
 	'babel-url' => 'Project:Babel',
 	'babel-autocreate-abort' => "Smiyṫ l-mosṫeĥdim li deĥĥelṫi mosṫeĥdama le l-ĥṫiraĝ l-'otomaṫiki dyal l-katégoryaṫ [[$1|Babil]] o ma imkenlikċ ṫċejlo.",
 	'babel-autocreate-reason' => 'Ĥṫiraĝ otomaṫiki dyal l-katégori [[$1|Babel]].',
@@ -154,6 +154,13 @@ $messages['ary'] = array(
 	'babel-4-n' => "Had l-mosṫeĥdim ĝendo mosṫawa [[$1|qrib le loġaṫ l-'om]] fe [[$2|l-Meġribiya]].",
 	'babel-5-n' => 'Had l-mosṫeĥdim ĝendo meĝrifa [[$1|ḫṫirafiya]] fe [[$2|l-Meġribiya]].',
 	'babel-N-n' => "Had l-mosṫeĥdim kayfhem l-loġa [[$2|l-Meġribiya]] bḫal [[$1|loġto l-'om]].",
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'babel-0' => 'Pamakay ini [[$1|kada]] mangarti [[$2|$3]] (atawa hanya lawan sangat ngalih).',
 );
 
 /** Achinese (Acèh)
@@ -3340,10 +3347,11 @@ $messages['rm'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'babel' => 'Informații despre utilizatorul Babel',
+	'babel' => 'Informații Babel despre utilizator',
 	'babel-desc' => 'Adaugă funcția de parsare <code>#babel</code> pentru generarea automată a coloanei de cutii de utilizator babel, cu posibilitatea de a include formate personalizate',
 	'babel-url' => 'Project:Babel',
 	'babel-0' => 'Acest utilizator [[$1|nu]] are cunoștințe de [[$2|$3]] (sau înțelege cu mare dificultate).',
@@ -3873,12 +3881,14 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author SivaneshR
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'babel' => 'பாபேல் பயனர் தகவல்கள்',
 	'babel-desc' => 'தனிப்பட்ட வார்ப்புருக்கள் உள்ளடங்களாக தானியக்கமாக பாபேல் பயனர் பெட்டிகளை ஆக்குவதை முடுக்கும் வகையில் <code>#babel</code>இலக்கணப் பாகுபடுத்தி சார்பை இணைக்கிறது.',
 	'babel-url' => 'Project:பாபேல்',
+	'babel-autocreate-reason' => 'தானியக்கமாக [[$1|Babel]] பகுப்பு பக்கம் உருவாக்கபடுகிறது.',
 	'babel-0' => 'இந்தப் பயனர் [[$2|$3]] மொழியில் [[$1|பயிற்சி இல்லாதவர்]] (அல்லது கடினப்பாடுகளுடன் விளங்கிக் கொள்ளகிறார்).',
 	'babel-1' => 'இந்தப் பயனர் [[$2|$3]] மொழியில் [[$1|அடிப்படை அறிவைக்]] கொண்டவர்.',
 	'babel-2' => 'இந்தப் பயனர் [[$2|$3]] மொழியில் [[$1|இடைநிலை அறிவைக்]] கொண்டவர்.',

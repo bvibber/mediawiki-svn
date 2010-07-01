@@ -24,7 +24,8 @@ $wgWikimediaMobileVersion = '2';
 /**
  * The base URL of the mobile gateway
  */
-$wgWikimediaMobileUrl = '.m.wikipedia.org';
+$wgWikimediaMobileUrl = 'http://en.m.wikipedia.org/wiki';
+
 
 $wgHooks['BeforePageDisplay'][] = 'wfWikimediaMobileAddJs';
 $wgHooks['MakeGlobalVariablesScript'][] = 'wfWikimediaMobileVars';

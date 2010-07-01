@@ -392,6 +392,7 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Crt
  * @author Jack Phoenix
  * @author Silvonen
@@ -404,6 +405,7 @@ $messages['fi'] = array(
 	'importfreeimages_owner' => 'Tekijä',
 	'importfreeimages_importthis' => 'tuo tämä',
 	'importfreeimages_next' => 'Seuraavat $1',
+	'importfreeimages_size_square' => 'Neliö',
 	'importfreeimages_size_thumbnail' => 'Pienoiskuva',
 	'importfreeimages_size_small' => 'Pieni',
 	'importfreeimages_size_medium' => 'Keskikokoinen',
@@ -1075,6 +1077,21 @@ $messages['ru'] = array(
 	'importfreeimages_size_original' => 'Исходный',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'importfreeimages_owner' => 'Автор',
+	'importfreeimages_importthis' => 'імпортовати тото',
+	'importfreeimages_next' => 'Далшых $1',
+	'importfreeimages_size_square' => 'Квадрат',
+	'importfreeimages_size_thumbnail' => 'Мініатура',
+	'importfreeimages_size_small' => 'Маленькый',
+	'importfreeimages_size_medium' => 'Середнїй',
+	'importfreeimages_size_large' => 'Великый',
+	'importfreeimages_size_original' => 'Оріґіналный',
+);
+
 /** Sardinian (Sardu)
  * @author Marzedu
  */
@@ -1114,6 +1131,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'importfreeimages' => 'Увези слободне слике',
 	'importfreeimages_owner' => 'Аутор',
 	'importfreeimages_importthis' => 'увези ово',
 	'importfreeimages_next' => 'Следеће $1',
@@ -1125,6 +1143,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'importfreeimages' => 'Uvezi slobodne slike',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'uvezi ovo',
 	'importfreeimages_next' => 'Sledeće $1',

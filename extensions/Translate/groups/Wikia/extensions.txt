@@ -15,7 +15,7 @@ Ajax Poll
 
 Auto Create Wiki
 optional = autocreatewiki-reminder-subject, autocreatewiki-language-top-list
-ignored = requestwiki-filter-language
+ignored = requestwiki-filter-language, autocreatewiki-tagline
 
 Badges
 file = Badges/UserBadges.i18n.php
@@ -158,6 +158,9 @@ Send To A Friend
 aliasfile = SendToAFriend/SendToAFriend.alias.php
 
 Share Feature
+
+Sitemap
+aliasfile = Sitemap/Sitemap.alias.php
 
 Site Wide Messages
 file = SiteWideMessages/SpecialSiteWideMessages.i18n.php

@@ -1508,6 +1508,7 @@ $messages['lb'] = array(
 	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
 	'qp_error_too_few_categories' => 'Et musse mindestens zwou Kategorien definéiert sinn',
+	'qp_error_too_few_spans' => 'All Kategoriegrupp muss mindestens aus zwou Ënnerkategorie bestoen',
 	'qp_error_no_answer' => 'Propos ouni Äntwert',
 );
 
@@ -1523,7 +1524,7 @@ $messages['mg'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'pollresults' => 'Резултати од анкетите на оваа веб-страница',
+	'pollresults' => 'Резултати од анкетите на ова мрежно место',
 	'qp_desc' => 'Овозможува создавање на анкети',
 	'qp_desc-sp' => '[[Special:PollResults|Специјална страница]] за преглед на резултати од анкетите',
 	'qp_result_NA' => 'Без одговор',
@@ -1909,7 +1910,17 @@ $messages['pt-br'] = array(
 	'qp_source_link' => 'Fonte',
 	'qp_stats_link' => 'Estatísticas',
 	'qp_users_link' => 'Usuários',
+	'qp_voice_link' => 'Voz do usuário',
+	'qp_voice_link_inv' => 'Voz do usuário?',
 	'qp_order_by_username' => 'Ordenar por nome de usuário',
+	'qp_export_to_xls' => 'Exportar estatísticas para o formato XLS',
+	'qp_users_answered_questions' => '{{PLURAL:$1|Um usuário respondeu|$1 usuários responderam}} às questões',
+	'qp_error_invalid_question_type' => 'Tipo de pergunta inválido: $1',
+	'qp_error_unanswered_span' => 'Subcategoria sem resposta',
+	'qp_error_category_name_empty' => 'O nome da categoria está vazio',
+	'qp_error_proposal_text_empty' => 'O texto da proposta está vazio',
+	'qp_error_too_few_categories' => 'Pelo menos duas categorias devem ser definidas',
+	'qp_error_no_answer' => 'Proposta sem resposta',
 );
 
 /** Romanian (Română)
@@ -2000,6 +2011,14 @@ $messages['ru'] = array(
 	'qp_error_too_few_spans' => 'Каждая подкатегория вопроса требует по меньшей мере два варианта ответа',
 	'qp_error_no_answer' => 'Нет ответа на вопрос',
 	'qp_error_unique' => 'Опрос, имеющий тип unique(), не должен иметь больше ответов чем вопросов',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'qp_stats_link' => 'Штатістікы',
+	'qp_users_link' => 'Хоснователї',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

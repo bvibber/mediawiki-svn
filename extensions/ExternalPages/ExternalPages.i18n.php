@@ -376,7 +376,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'externalpages' => 'Надворешни страници',
-	'externalpages-desc' => 'Извлекува и прикажува страници од други WMF веб-страници',
+	'externalpages-desc' => 'Извлекува и прикажува страници од други WMF мрежни места',
 	'externalpages-bad-page' => 'Назначена е неправилна страница',
 	'externalpages-no-page' => 'Нема назначено страница',
 );
@@ -473,11 +473,12 @@ $messages['pt-br'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'externalpages' => 'Pagini externe',
-	'externalpages-bad-page' => 'Pagină greșită specificată',
+	'externalpages-bad-page' => 'Pagină greșit specificată',
 	'externalpages-no-page' => 'Nicio pagină specificată',
 );
 

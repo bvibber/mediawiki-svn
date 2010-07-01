@@ -99,7 +99,10 @@ mw.setDefaultConfig ( {
 	'userLanguage' : 'en',
 	
 	// Set the default providers ( you can add more provider via {provider_id}_apiurl = apiUrl	  
-	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php'
+	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php',
+	
+	// Set the default loader group strategy
+	'loader.groupStrategy' : 'module'
 			
 } );
 
@@ -118,7 +121,7 @@ mw.setConfig( 'loaderContext', '' );
 /**
  * Core set of mwEmbed classes:
  */
-mw.addClassFilePaths( {
+mw.addResourcePaths( {
 	"mwEmbed"				: "mwEmbed.js",
 	"window.jQuery"			: "libraries/jquery/jquery-1.4.2.js",		
 	
@@ -179,7 +182,7 @@ mw.addClassFilePaths( {
 } );
 
 // Add a special css dependency for $j.ui 
-mw.addClassStyleDependency( {
+mw.addStyleResourceDependency( {
 	'$j.ui' : ( 'mw.style.' + mw.getConfig( 'jQueryUISkin' ) )	
 } );
 

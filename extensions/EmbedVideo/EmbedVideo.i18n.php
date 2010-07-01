@@ -32,6 +32,19 @@ $messages['be-tarask'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo атрымаў няслушны парамэтар для шырыні «$1».',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'embedvideo-desc' => "Ouzhpennañ a ra un arc'hwel parser evit ensoc'hañ videoioù eus mammennoù pobl",
+	'embedvideo-missing-params' => 'Mankout a ra un arventenn ret evit EmbedVideo.',
+	'embedvideo-bad-params' => 'EmbedVideo en deus resevet un arventenn fall.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo en deus resevet un arventenn dilennus "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'N\'eo ket anavezet ar servij video "<code>$1</code>" gant EmbedVideo.',
+	'embedvideo-bad-id' => 'EmbedVideo en deus resevet un id direizh "$1" evit ar servij "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo en deus resevet an arventenn ledander direizh "$1".',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -56,6 +69,13 @@ $messages['dsb'] = array(
 	'embedvideo-unrecognized-service' => 'EmbedVideo njespóznawa videowu słužbu  "<code>$1</code>".',
 	'embedvideo-bad-id' => 'EmbedVideo jo wopacny ID "$1" za słužbu "$2" pśiwzeł.',
 	'embedvideo-illegal-width' => 'EmbedVideo jo njedowólony parameter width "$1" pśiwzeł.',
+);
+
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'embedvideo-desc' => 'Προσθέτει μια συνάρτηση parser για την ενσωμάτωση βίντεο από δημοφιλείς πηγές',
 );
 
 /** Spanish (Español)
@@ -98,6 +118,19 @@ $messages['gl'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo recibiu o parámetro de largo incorrecto "$1".',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'embedvideo-desc' => 'Fiegt e Parser-Funktion yy fir d Yybettig vu Videos us populäre Quälle',
+	'embedvideo-missing-params' => 'EmbedVideo manglet e Pflicht-Parameter.',
+	'embedvideo-bad-params' => 'EmbedVideo het e falsche Parameter empfange.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo het d Zeichechette „<code>$1</code>“ empfange, wu nit parst cha wäre.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo unterstitzt dr Videodienscht „<code>$1</code>“ nit.',
+	'embedvideo-bad-id' => 'EmbedVideo het e falschi Identifikation „$1“ fir s Repositorium „$2“ empfange.',
+	'embedvideo-illegal-width' => 'EmbedVideo het dr uugiltig Breiti-Parameter „$1“ empfange.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -129,6 +162,8 @@ $messages['ia'] = array(
  */
 $messages['lb'] = array(
 	'embedvideo-desc' => "Setzt eng Parser-Fonctioun fir d'Abanne vu Videoe vu populäre Quellen derbäi",
+	'embedvideo-missing-params' => 'Et feelt een obligatoresche Parameter fir EmbedVideo',
+	'embedvideo-bad-params' => 'EmbedVideo huet e falsche Parameter kritt.',
 );
 
 /** Macedonian (Македонски)
@@ -155,6 +190,19 @@ $messages['nl'] = array(
 	'embedvideo-unrecognized-service' => 'EmbedVideo herkent de videodienst "<code>$1</code>" niet.',
 	'embedvideo-bad-id' => 'EmbedVideo heeft een ongeldig id "$1" voor de dienst "$2" ontvangen.',
 	'embedvideo-illegal-width' => 'EmbedVideo heeft een ongeldige breedteparameter "$1" ontvangen.',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'embedvideo-desc' => 'Dodaje funkcję parsera do osadzania wideo z popularnych źródeł',
+	'embedvideo-missing-params' => 'Brak wymaganego parametru dla EmbdedVideo',
+	'embedvideo-bad-params' => 'EmbedVideo odebrał zły parametr.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo otrzymał niezrozumiały tekstowy parametr „<code>$1</code>“.',
+	'embedvideo-unrecognized-service' => 'EmbedVideo nie rozpoznaje usługi wideo „<code>$1</code>“.',
+	'embedvideo-bad-id' => 'EmbedVideo otrzymał zły identyfikator „$1“ dla usługi „$2“.',
+	'embedvideo-illegal-width' => 'EmbedVideo otrzymał niedopuszczalną wartość parametru szerokości „$1“.',
 );
 
 /** Portuguese (Português)

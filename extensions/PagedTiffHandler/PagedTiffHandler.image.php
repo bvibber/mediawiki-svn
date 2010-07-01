@@ -80,23 +80,14 @@ class PagedTiffImage {
 	 * meta['warnings'] = identify-warnings
 	 */
 	public function retrieveMetaData() {
-		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv, $wgMemc, $wgTiffErrorCacheTTL;
-
-		$imgKey = wfMemcKey( 'PagedTiffHandler-ThumbnailGeneration', $this->mFilename );
-		$isCached = $wgMemc->get( $imgKey );
-		if ( $isCached ) {
-			return - 1;
-		}
-		$wgMemc->add( $imgKey, 1, $wgTiffErrorCacheTTL );
+		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv;
 
 		if ( $this->_meta === null ) {
 			if ( $wgImageMagickIdentifyCommand ) {
 
 				wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
-				/**
-				 * ImageMagick is used in order to get the basic metadata of embedded files.
-				 * This is not reliable in exiv2m since it is not possible to name a set of required fields.
-				 */
+				
+				// ImageMagick is used to get the basic metadata of individual pages
 				$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 					' -format "[BEGIN]page=%p\nalpha=%A\nalpha2=%r\nheight=%h\nwidth=%w\ndepth=%z[END]" ' .
 					wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
@@ -106,17 +97,21 @@ class PagedTiffImage {
 				$dump = wfShellExec( $cmd, $retval );
 				wfProfileOut( 'identify' );
 				if ( $retval ) {
-					return false;
+					$data['errors'][] = "identify command failed: $cmd";
+					wfDebug( __METHOD__ . ": identify command failed: $cmd\n" );
+					return $data; // fail. we *need* that info
 				}
 				$this->_meta = $this->convertDumpToArray( $dump );
 				$this->_meta['exif'] = array();
 
 				if ( $wgTiffUseExiv ) {
+					// read EXIF, XMP, IPTC as name-tag => interpreted data 
+					// -ignore unknown fields
+					// see exiv2-doc @link http://www.exiv2.org/sample.html
+					// NOTE: the linux version of exiv2 has a bug: it can only 
+					// read one type of meta-data at a time, not all at once.
 					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
-						' -u -psix -Pnt ' . // read EXIF, XMP, IPTC as name-tag => interpreted data -ignore unknown fields
-						// exiv2-doc @link http://www.exiv2.org/sample.html
-						# # the linux version of exiv2 has a bug an this command doesn't work on it. ^SU
-						wfEscapeShellArg( $this->mFilename );
+						' -u -psix -Pnt ' . wfEscapeShellArg( $this->mFilename );
 
 					wfRunHooks( 'PagedTiffHandlerExivCommand', array( &$cmd, $this->mFilename ) );
 
@@ -124,6 +119,13 @@ class PagedTiffImage {
 					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
 					wfProfileOut( 'exiv2' );
+
+					if ( $retval ) {
+						$data['errors'][] = "exiv command failed: $cmd";
+						wfDebug( __METHOD__ . ": exiv command failed: $cmd\n" );
+						// don't fail - we are missing info, just report
+					}
+
 					$result = array();
 					preg_match_all( '/(\w+)\s+(.+)/', $dump, $result, PREG_SET_ORDER );
 
@@ -131,15 +133,13 @@ class PagedTiffImage {
 						$this->_meta['exif'][$data[1]] = $data[2];
 					}
 				} else {
-					$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
-						' -verbose ' .
-						wfEscapeShellArg( $this->mFilename ) . "[0]";
-
-					wfProfileIn( 'identify -verbose' );
-					wfDebug( __METHOD__ . ": $cmd\n" );
-					$dump = wfShellExec( $cmd, $retval );
-					wfProfileOut( 'identify -verbose' );
-					$this->_meta['exif'] = $this->parseVerbose( $dump );
+					wfDebug( __METHOD__ . ": using internal Exif( {$this->mFilename} )\n" );
+					$exif = new Exif( $this->mFilename );
+					$data = $exif->getFilteredData();
+					if ( $data ) {
+						$data['MEDIAWIKI_EXIF_VERSION'] = Exif::version();
+						$this->_meta['exif'] = $data;
+					} 
 				}
 				wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
 			}
@@ -156,12 +156,15 @@ class PagedTiffImage {
 	 */
 	protected function convertDumpToArray( $dump ) {
 		global $wgTiffIdentifyRejectMessages, $wgTiffIdentifyBypassMessages;
+
+		$data = array();
 		if ( strval( $dump ) == '' ) {
-			return false;
+			$data['errors'][] = "no metadata";
+			return $data;
 		}
+
 		$infos = null;
 		preg_match_all( '/\[BEGIN\](.+?)\[END\]/si', $dump, $infos, PREG_SET_ORDER );
-		$data = array();
 		$data['page_amount'] = count( $infos );
 		$data['page_data'] = array();
 		foreach ( $infos as $info ) {
@@ -193,10 +196,15 @@ class PagedTiffImage {
 			$data['page_data'][$entry['page']] = $entry;
 		}
 
+		
 		$dump = preg_replace( '/\[BEGIN\](.+?)\[END\]/si', '', $dump );
 		if ( strlen( $dump ) ) {
 			$errors = explode( "\n", $dump );
 			foreach ( $errors as $error ) {
+				$error = trim( $error );
+				if ( $error === '' )
+					continue;
+
 				$knownError = false;
 				foreach ( $wgTiffIdentifyRejectMessages as $msg ) {
 					if ( preg_match( $msg, trim( $error ) ) ) {
@@ -206,7 +214,7 @@ class PagedTiffImage {
 					}
 				}
 				if ( !$knownError ) {
-					# # drop BypassMessages ^SU
+					// ignore messages that match $wgTiffIdentifyBypassMessages
 					foreach ( $wgTiffIdentifyBypassMessages as $msg ) {
 						if ( preg_match( $msg, trim( $error ) ) ) {
 							// $data['warnings'][] = $error;
@@ -216,34 +224,7 @@ class PagedTiffImage {
 					}
 				}
 				if ( !$knownError ) {
-					$data['warning'][] = $error;
-				}
-			}
-		}
-		return $data;
-	}
-
-	/**
-	 * helper function of retrieveMetaData().
-	 * parses shell return from identify-verbose-command into an array.
-	 */
-	protected function parseVerbose( $dump ) {
-		$data = array();
-		$dump = explode( "\n", $dump );
-		$lastwhite = 0;
-		$lastkey = false;
-		foreach ( $dump as $line ) {
-			if ( preg_match( '/^(\s*?)(\w([\w\s]+?)?):(.*?)$/sim', $line, $res ) ) {
-				if ( $lastwhite == 0 || strlen( $res[1] ) == $lastwhite ) {
-					if ( strlen( trim( $res[4] ) ) ) {
-						$data[trim( $res[2] )] = trim( $res[4] );
-					} else {
-						$data[trim( $res[2] )] = "  Data:\n";
-					}
-					$lastkey = trim( $res[2] );
-					$lastwhite = strlen( $res[1] );
-				} else {
-					$data[$lastkey] .= $line . "\n";
+					$data['warnings'][] = $error;
 				}
 			}
 		}

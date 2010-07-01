@@ -2058,6 +2058,14 @@ Sgnaca $3
 e cambia toe ampostassion për disabilité le notìfiche an pòsta eletrònica.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'topusers' => 'د سر کارنان',
+	'top-fans-by-points-nav-header' => 'د سر مينه وال',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -2304,6 +2312,16 @@ $messages['ru'] = array(
 
 Нажмите $3
 и измените настройки отправки уведомлений по эл. почте.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'topusers' => 'Най хоснователї',
+	'top-fans-by-points-nav-header' => 'Най фанушікы',
+	'top-fans-by-category-nav-header' => 'Най подля катеґорії',
+	'top-fans-bad-field-title' => 'Уупс!',
 );
 
 /** Slovak (Slovenčina)

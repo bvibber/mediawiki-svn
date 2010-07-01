@@ -12,18 +12,18 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 25 ),
+			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 28 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
 			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 5 ),
-			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
+			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 9 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 17 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 21 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 54 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 63 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 55 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 64 ),
 		),
 	);
 	static $modules = array(
@@ -71,7 +71,15 @@ class VectorHooks {
 		'footercleanup' => array(
 		),
 		'simplesearch' => array(
-			'i18n' => 'WikiEditorToc',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'vector-simplesearch',
+				),
+				'disablesuggest' => array(
+					'key' => 'disablesuggest',
+				),
+			),
+			'i18n' => 'VectorSimpleSearch',
 			'messages' => array(
 				'vector-simplesearch-search',
 				'vector-simplesearch-containing',
@@ -167,7 +175,7 @@ class VectorHooks {
 					isset( self::$modules[$module]['preferences'] ) ) {
 				wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 				foreach ( self::$modules[$module]['preferences'] as $key => $preference ) {
-					if ( $key == 'enable' && !$enable['user'] ) {
+					if ( ( $key == 'enable' && !$enable['user'] ) || !isset( $preference['ui'] ) ) {
 						continue;
 					}
 					

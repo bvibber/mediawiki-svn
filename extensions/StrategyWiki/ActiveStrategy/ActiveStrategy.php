@@ -34,4 +34,5 @@ $wgActiveStrategyColors = array(
 		5 => 'AEA',
 	),
 	'members' => array(),
+	'ranking' => array(),
 );

@@ -549,6 +549,7 @@ $messages['haw'] = array(
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
+ * @author Yonidebest
  */
 $messages['he'] = array(
 	'globalusage' => 'שימוש גלובלי בקבצים',
@@ -557,8 +558,9 @@ $messages['he'] = array(
 	'globalusage-ok' => 'חיפוש',
 	'globalusage-text' => 'חיפוש בשימוש הגלובלי בקבצים.',
 	'globalusage-no-results' => '[[:$1]] אינו בשימוש באתרי ויקי אחרים.',
-	'globalusage-on-wiki' => '[[:File:$1|$1]] בשימוש באתר $2',
+	'globalusage-on-wiki' => 'שימוש באתר $2',
 	'globalusage-of-file' => 'אתרי הוויקי השונים הבאים משתמשים בקובץ זה:',
+	'globalusage-more' => 'ראו [[{{#Special:GlobalUsage}}/$1|שימושים גלובליים נוספים]] של קובץ זה.',
 	'globalusage-filterlocal' => 'אין להציג שימוש מקומי',
 );
 
@@ -1099,12 +1101,19 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'globalusage' => 'Utilização global de arquivos',
+	'globalusage-for' => 'Uso global de "$1"',
 	'globalusage-desc' => '[[Special:GlobalUsage|Página especial]] para consultar a utilização global de arquivos',
 	'globalusage-ok' => 'Busca',
 	'globalusage-text' => 'Pesquisar utilização global de arquivos.',
+	'globalusage-no-results' => '[[:$1]] não é usado em outras wikis.',
+	'globalusage-on-wiki' => 'Uso na $2',
+	'globalusage-of-file' => 'As outras wikis a seguir usam este arquivo:',
+	'globalusage-more' => 'Ver [[{{#Special:GlobalUsage}}/$1|mais usos globais]] deste arquivo.',
+	'globalusage-filterlocal' => 'Ocultar usos locais',
 );
 
 /** Tarifit (Tarifit)
@@ -1161,6 +1170,13 @@ $messages['ru'] = array(
 	'globalusage-of-file' => 'Данный файл используется в следующих вики:',
 	'globalusage-more' => 'Просмотреть [[{{#Special:GlobalUsage}}/$1|подробнее глобальное использование]] этого файла.',
 	'globalusage-filterlocal' => 'Не показывать локальное использование',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'globalusage-ok' => 'Глядати',
 );
 
 /** Yakut (Саха тыла)

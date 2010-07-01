@@ -458,8 +458,8 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
- * @author Luckas Blade
  * @author 555
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'tiff-desc' => 'Permite visualizar arquivos TIFF como imagens',
@@ -549,6 +549,19 @@ $messages['tl'] = array(
 	'tiff_script_detected' => 'Naglalaman ng mga baybayin ang ikinargang talaksan.',
 	'tiff_bad_file' => 'Naglalaman ng mga kamalian ang ikinargang talaksan.',
 	'tiff-file-info-size' => '(pahina $5, $1 × $2 piksel, sukat ng talaksan: $3, uri ng MIME: $4)',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'tiff_no_metadata' => 'Không thể lấy siêu dữ liệu từ TIFF',
+	'tiff_page_error' => 'Số trang không nằm trong giới hạn',
+	'tiff_out_of_service' => 'Không thể xử lý tập tin được tải lên vì ImageMagick không có sẵn.',
+	'tiff_too_much_meta' => 'Siêu dữ liệu tốn nhiều không gian quá.',
+	'tiff_script_detected' => 'Tập tin được tải lên chứa script.',
+	'tiff_bad_file' => 'Tập tin được tải lên có lỗi.',
+	'tiff-file-info-size' => '(trang $5, $1×$2 điểm ảnh, kích thước: $3, định dạng MIME: $4)',
 );
 
 /** Yiddish (ייִדיש)

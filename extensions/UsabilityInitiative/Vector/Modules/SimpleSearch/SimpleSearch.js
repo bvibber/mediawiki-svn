@@ -9,7 +9,7 @@ if ( wgVectorEnabledModules.simplesearch && skin == 'vector' && typeof os_autolo
 
 $j(document).ready( function() {
 	// Only use this function in conjuction with the Vector skin
-	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
+	if( !wgVectorEnabledModules.simplesearch || wgVectorPreferences.simplesearch.disablesuggest || skin != 'vector' ) {
 		return true;
 	}
 	var mod = {
@@ -50,8 +50,9 @@ $j(document).ready( function() {
 					'line-height': '13px'
 				})
 				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
-				.click( function() {
+				.mousedown( function() {
 					$j(this).parent().find( 'input#searchInput' ).focus();
+					return false;
 				})
 				.appendTo( $j(this).parent() );
 			if ( $j(this).val() == '' ) {
@@ -114,7 +115,8 @@ $j(document).ready( function() {
 		positionFromLeft: $j( 'body' ).is( '.rtl' ),
 		highlightInput: true
 	} )
-		.bind( 'paste cut click', function() {
+		.bind( 'paste cut', function( e ) {
+			// make sure paste and cut events from the mouse trigger the keypress handler and cause the suggestions to update
 			$j( this ).trigger( 'keypress' );
 		} );
 	$j( '#searchInput' ).suggestions( {
@@ -151,8 +153,5 @@ $j(document).ready( function() {
 			}
 		},
 		$region: $j( '#simpleSearch' )
-	} )
-		.bind( 'paste cut click', function() {
-			$j( this ).trigger( 'keypress' );
-		} );
+	} );
 });

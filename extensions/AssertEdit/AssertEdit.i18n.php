@@ -847,11 +847,12 @@ $messages['zea'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
 	'assert_edit_title' => '维护失败',
-	'assertedit-desc' => '为机器人的编辑添加声明',
+	'assertedit-desc' => '为机器人的编辑添加断言',
 	'assert_edit_message' => '所指定的断言 （$1） 失败。',
 );
 

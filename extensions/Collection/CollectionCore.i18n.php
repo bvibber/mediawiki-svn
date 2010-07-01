@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -169,43 +169,46 @@ $messages['arc'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Ghaly
  * @author Meno25
  * @author Ramsis II
  */
 $messages['arz'] = array(
 	'coll-print_export' => 'اطبع/صدّر',
-	'coll-create_a_book' => 'إنشاء كتاب',
-	'coll-create_a_book_tooltip' => 'أنشئ كتابًا أو صفحه مجموعة',
-	'coll-book_creator' => 'منشئ الكتب',
-	'coll-download_as' => 'تحميل ك$1',
-	'coll-download_as_tooltip' => 'نزّل نسخه $1 من صفحه الويكى هذه.',
-	'coll-disable' => 'عطّل',
-	'coll-book_creator_disable' => 'عطّل منشئ الكتب',
-	'coll-book_creator_disable_tooltip' => 'أوقف استخدام منشئ الكتب',
-	'coll-add_category' => 'إضافه هذا التصنيف إلى كتابك',
-	'coll-add_category_tooltip' => 'أضف كل صفحات الويكى فى هذا التصنيف لكتابك',
-	'coll-add_this_page' => 'أضف هذه الصفحه إلى كتابك',
-	'coll-add_page_tooltip' => 'أضف صفحه الويكى الحاليه إلى كتابك',
+	'coll-create_a_book' => 'إعمل كتاب',
+	'coll-create_a_book_tooltip' => 'إعمل كتاب او مجموعة صفح',
+	'coll-book_creator' => 'صاحب الكتاب',
+	'coll-download_as' => 'Download as $1',
+	'coll-download_as_tooltip' => 'Download a $1 version of this wiki page',
+	'coll-disable' => 'disable',
+	'coll-book_creator_disable' => 'Disable الاوپشن بتاع خلق الكتب',
+	'coll-book_creator_disable_tooltip' => 'وقّف استعمال الاوپشن بتاع خلق الكتب',
+	'coll-add_linked_article' => 'زوّد لينك صفحة الwiki فى الكتاب بتاعك',
+	'coll-remove_linked_article' => 'إمسح لينك صفحة الwiki من الكتاب بتاعك',
+	'coll-add_category' => 'زودّ التصنيف ده على الكتاب بتاعك',
+	'coll-add_category_tooltip' => 'زوّد كل صفح الwiki فى التصنيف ده فى كتابك',
+	'coll-add_this_page' => 'زوّد الصفحه دى فى الكتاب بتاعك',
+	'coll-add_page_tooltip' => 'زوّد صفحة الwiki بتاعة دلوقتى فى الكتاب بتاعك',
 	'coll-bookscategory' => 'كتب',
-	'coll-clear_collection' => 'إفراغ الكتاب',
-	'coll-clear_collection_confirm' => 'هل تريد حقا إفراغ كتابك بالكامل؟',
-	'coll-clear_collection_tooltip' => 'أزل كل صفحات الويكى من كتابك الحالي',
-	'coll-help' => 'مساعدة',
-	'coll-help_tooltip' => 'أظهر مساعده عن كيفيه إنشاء الكتب',
+	'coll-clear_collection' => 'فضّى الكتاب',
+	'coll-clear_collection_confirm' => 'هو انت فعلا عاوز تفضّى الكتاب بتاعك خالص؟',
+	'coll-clear_collection_tooltip' => 'شيل كل صفح الwiki من الكتاب بتاعك بتاع دلوقتى',
+	'coll-help' => 'مساعده',
+	'coll-help_tooltip' => 'بيّن المساعده بتاعة خلق الكتب',
 	'coll-helppage' => 'Help:كتب',
-	'coll-load_collection' => 'تحميل الكتاب',
-	'coll-load_collection_tooltip' => 'حمل هذا الكتاب ككتابك الحالي',
-	'coll-n_pages' => '{{PLURAL:$1||صفحة|صفحتان|$1 صفحات|$1 صفحة}}',
+	'coll-load_collection' => 'Load book',
+	'coll-load_collection_tooltip' => 'إعمل load للكتاب ده علشان يبقى الكتاب بتاعك بتاع دلوقتى',
+	'coll-n_pages' => '$1 {{PLURAL:$1|صفحه|صفحه}}',
 	'coll-printable_version_pdf' => 'نسخه PDF',
-	'coll-remove_this_page' => 'أزل هذه الصفحه من كتابك',
-	'coll-remove_page_tooltip' => 'أزل صفحه الويكى الحاليه من كتابك',
-	'coll-show_collection' => 'عرض الكتاب',
-	'coll-show_collection_tooltip' => 'اضغط لتعديل/تنزيل/طلب كتابك',
-	'coll-not_addable' => 'لا يمكن إضافه هذه الصفحة',
-	'coll-make_suggestions' => 'اقترح صفحات',
-	'coll-make_suggestions_tooltip' => 'أظهر التعديلات بناءً على صفحات كتابك',
-	'coll-suggest_empty' => 'فارغ',
+	'coll-remove_this_page' => 'إمسح الصفحه دى من الكتاب بتاعك',
+	'coll-remove_page_tooltip' => 'إمسح صفحة الwiki بتاعة دلوقتى من الكتاب بتاعك',
+	'coll-show_collection' => 'إعرض الكتاب',
+	'coll-show_collection_tooltip' => 'دوس على تعديل/download/‏order الكتاب بتاعك',
+	'coll-not_addable' => 'الصفحه دى مش نافعه تتزوّد',
+	'coll-make_suggestions' => 'إقترح صفح',
+	'coll-make_suggestions_tooltip' => 'إعرض الإقتراحات على اساس صفح الكتاب بتاعك',
+	'coll-suggest_empty' => 'فاضى',
 );
 
 /** Asturian (Asturianu)
@@ -2460,6 +2463,13 @@ $messages['ru'] = array(
 	'coll-suggest_empty' => 'пуста',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'coll-bookscategory' => 'Книгы',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -2599,13 +2609,15 @@ $messages['sr-ec'] = array(
 	'coll-disable' => 'онемогући',
 	'coll-add_category' => 'Додај ову категорију у своју књигу',
 	'coll-add_category_tooltip' => 'Додаје све вики странице у овој категорији у вашу књигу',
+	'coll-add_this_page' => 'Додај ову страну у своју књигу',
 	'coll-add_page_tooltip' => 'Додаје тренутну вики страницу вашој књизи',
 	'coll-bookscategory' => 'Књиге',
 	'coll-clear_collection' => 'Очисти књигу',
 	'coll-clear_collection_confirm' => 'Да ли заиста желите да потпуно очистите своју књигу?',
 	'coll-clear_collection_tooltip' => 'Уклања све вики странице из ваше тренутне књиге',
 	'coll-help' => 'Помоћ',
-	'coll-helppage' => 'Помоћ:Књиге',
+	'coll-help_tooltip' => 'Прикажи помоћ око прављења књига',
+	'coll-helppage' => 'Help:Књиге',
 	'coll-load_collection' => 'Учитај књигу',
 	'coll-load_collection_tooltip' => 'Учитава ову књигу као вашу тренутну књигу',
 	'coll-n_pages' => '{{PLURAL:$1|једна страна|$1 стране|$1 страна}}',
@@ -2627,12 +2639,14 @@ $messages['sr-el'] = array(
 	'coll-disable' => 'onemogući',
 	'coll-add_category' => 'Dodaj ovu kategoriju u svoju knjigu',
 	'coll-add_category_tooltip' => 'Dodaje sve viki stranice u ovoj kategoriji u vašu knjigu',
+	'coll-add_this_page' => 'Dodaj ovu stranu u svoju knjigu',
 	'coll-add_page_tooltip' => 'Dodaje trenutnu viki stranicu vašoj knjizi',
 	'coll-bookscategory' => 'Knjige',
 	'coll-clear_collection' => 'Očisti knjigu',
 	'coll-clear_collection_confirm' => 'Da li zaista želite da potpuno očistite svoju knjigu?',
 	'coll-clear_collection_tooltip' => 'Uklanja sve viki stranice iz vaše trenutne knjige',
 	'coll-help' => 'Pomoć',
+	'coll-help_tooltip' => 'Prikaži pomoć oko pravljenja knjiga',
 	'coll-helppage' => 'Pomoć:Knjige',
 	'coll-load_collection' => 'Učitaj knjigu',
 	'coll-load_collection_tooltip' => 'Učitava ovu knjigu kao vašu trenutnu knjigu',

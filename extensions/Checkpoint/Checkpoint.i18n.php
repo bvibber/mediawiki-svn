@@ -89,12 +89,14 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Str4nd
  */
 $messages['fi'] = array(
 	'checkpoint' => 'Tallenna ja jatka muokkaamista',
 	'checkpoint-desc' => 'Mahdollistaa tallennuksen ja muokkauksen jatkamisen.',
 	'checkpoint-tooltip' => 'Tallenna työsi ja jatka sivun muokkaamista',
+	'checkpoint-notice' => '([[{{ns:project}}:Tarkistuspiste|tarkistuspistetallennus]])',
 );
 
 /** French (Français)
@@ -324,5 +326,15 @@ $messages['tl'] = array(
 	'checkpoint-desc' => 'Nagpapahintulot sa isang tao na masagip ang pagbabago at magpatuloy sa pagpatnugot',
 	'checkpoint-tooltip' => 'Sagipin ang iyong ginagawa at magpatuloy sa pagbago ng pahina',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Sagipin ang pagsisiyasat]])',
+);
+
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'checkpoint' => 'Kaydet ve yazmaya devam et',
+	'checkpoint-desc' => 'Bir yazımı kaydetmeyi ve yazıma devam etmeyi sağlar.',
+	'checkpoint-tooltip' => 'Şu ana kadarkini kaydedip sayfayı yazmaya devam edin',
+	'checkpoint-notice' => '([[{{ns:project}}:Kontrol noktası|kontrol noktası kayıt]])',
 );
 

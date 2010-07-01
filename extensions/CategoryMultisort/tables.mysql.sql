@@ -13,10 +13,7 @@ CREATE TABLE /*_*/categorylinks_multisort (
   
   -- clms_sortkey_name is A and clms_sortkey is B when [[Category:C|A=B]] is used
   clms_sortkey_name varchar(70) binary NOT NULL default '',
-  
-  -- Truncate so that the clms_sortkey key fits in 1000 bytes 
-  -- (MyISAM 5 with server_character_set=utf8)
-  clms_sortkey varchar(70) binary NOT NULL default ''
+  clms_sortkey varchar(255) binary NOT NULL default ''
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/clms_from ON /*_*/categorylinks_multisort (clms_from,clms_to,clms_sortkey_name);

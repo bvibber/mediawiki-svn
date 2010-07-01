@@ -596,6 +596,8 @@ $messages['ca'] = array(
 	'ogg-dismiss' => 'Tanca',
 	'ogg-download' => 'Descarrega el fitxer',
 	'ogg-desc-link' => 'Informació del fitxer',
+	'ogg-oggThumb-version' => "L'OggHandler necessita l'oggThumb versió $1 o posterior.",
+	'ogg-oggThumb-failed' => "L'oggThumb no ha pogut crear una miniatura.",
 );
 
 /** Czech (Česky)
@@ -752,6 +754,8 @@ kerem kerê<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_do
 	'ogg-dismiss' => 'bıqefeln',
 	'ogg-download' => 'dosya biyar war',
 	'ogg-desc-link' => 'derheqê dosyayi de',
+	'ogg-oggThumb-version' => 'OggHandler rê oggThumb versiyon $1 ya zi newiyer lazim o.',
+	'ogg-oggThumb-failed' => 'oggThumb nieskene thumbnail biviraze.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -2051,11 +2055,11 @@ $messages['mk'] = array(
 	'ogg-desc' => 'Ракувач со Ogg Theora и Vorbis податотеки, со JavaScript изведувач',
 	'ogg-short-audio' => 'Ogg $1 звучна податотека, $2',
 	'ogg-short-video' => 'Ogg $1 видео податотека, $2',
-	'ogg-short-general' => 'Ogg $1 медија податотека, $2',
+	'ogg-short-general' => 'Мултимедијална податотека Ogg $1, $2',
 	'ogg-long-audio' => '(Ogg $1 звучна податотека, должина $2, $3)',
 	'ogg-long-video' => '(Ogg $1 видео податотека, должина $2, $4×$5 пиксели, $3)',
 	'ogg-long-multiplexed' => '(Ogg мултиплексирана аудио/видео податотека, $1, должина $2, $4×$5 пиксели, $3 вкупно)',
-	'ogg-long-general' => '(Ogg медија податотека, должина $2, $3)',
+	'ogg-long-general' => '(мултимедијална податотека Ogg, должина $2, $3)',
 	'ogg-long-error' => '(Оштетена ogg податотека: $1)',
 	'ogg-play' => 'Почни',
 	'ogg-pause' => 'Паузирај',
@@ -2631,8 +2635,10 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Cin
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -2652,14 +2658,14 @@ $messages['ro'] = array(
 	'ogg-no-player' => 'Îmi pare rău, sistemul tău nu pare să aibă vreun program de redare suportat.
 Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarcă un program de redare</a>.',
 	'ogg-player-videoElement' => 'Navigator cu suport nativ',
-	'ogg-player-oggPlugin' => 'Insert navigator',
-	'ogg-player-thumbnail' => 'Încă imaginea doar',
+	'ogg-player-oggPlugin' => 'Plugin-ul navigatorului',
+	'ogg-player-thumbnail' => 'Doar imagine statică',
 	'ogg-player-soundthumb' => 'Niciun program de redare',
 	'ogg-player-selected' => '(selectat)',
 	'ogg-use-player' => 'Folosește programul de redare:',
 	'ogg-more' => 'Mai mult…',
 	'ogg-dismiss' => 'Închide',
-	'ogg-download' => 'Descarcă fișier',
+	'ogg-download' => 'Descărcare fișier',
 	'ogg-desc-link' => 'Despre acest fișier',
 );
 
@@ -3403,6 +3409,7 @@ $messages['vi'] = array(
 	'ogg-download' => 'Tải tập tin xuống',
 	'ogg-desc-link' => 'Chi tiết của tập tin này',
 	'ogg-oggThumb-version' => 'OggHandler cần oggThumb, phiên bản $1 trở lên.',
+	'ogg-oggThumb-failed' => 'oggThumb bị thất bại trong việc tạo hình thu nhỏ.',
 );
 
 /** Volapük (Volapük)

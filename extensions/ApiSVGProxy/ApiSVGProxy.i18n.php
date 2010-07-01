@@ -287,6 +287,13 @@ $messages['tr'] = array(
 	'apisvgproxy-desc' => 'Bir dosya deposundan (muhtemelen uzaktaki) yerel alana SVG dosyaları vekil eder',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'apisvgproxy-desc' => 'Ủy nhiệm tập tin SVG từ kho tập tin (có thể từ xa) đến tên miền cục bộ',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'apisvgproxy-desc' => '代理从 SVG文件（可能是远程）文件存放到本地域名',

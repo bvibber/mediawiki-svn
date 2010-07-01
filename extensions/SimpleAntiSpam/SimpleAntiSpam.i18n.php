@@ -432,6 +432,8 @@ $messages['jv'] = array(
  */
 $messages['ka'] = array(
 	'simpleantispam' => 'თქვენმა რედაქტირებამ ჩართო ანტი-სპამის მექანიზმი',
+	'simpleantispam-label' => "ანტი-სპამის შემოწმება.
+'''არ''' შეავსოთ ის!",
 );
 
 /** Korean (한국어)
@@ -668,6 +670,16 @@ $messages['sk'] = array(
 	'simpleantispam-label' => "Antispamová kontrola.
 '''NEVYPĹŇAJTE''' nasledovné!",
 	'simpleantispam-desc' => 'Pridáva k formulárom jednoduchú ochranu prosti botom/spamu.',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'simpleantispam' => 'Vaše urejanje je sprožilo mehanizem proti smetju',
+	'simpleantispam-label' => "Preverjanje proti smetju.
+'''NE''' izpolnite tega!",
+	'simpleantispam-desc' => 'Doda preprosto preverjanje smetja/botov v obrazce',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

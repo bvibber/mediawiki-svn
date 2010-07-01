@@ -10,7 +10,7 @@
 	});
 	
 	// Add class file paths ( From ROOT )
-	mw.addClassFilePaths( {
+	mw.addResourcePaths( {
 		"mw.LanguageUpWiz"		: "js/mw.LanguageUpWiz.js",
 		"mw.UploadWizard"		: "js/mw.UploadWizard.js",
 		"mw.style.uploadWizard" 	: "styles/uploadWizard.css",
@@ -90,29 +90,8 @@
 	* phase 2: We should separate out sheet sets per sub-module:
 	*/ 
 	
-	mw.addModuleLoader( 'UploadWizard.UploadWizard', function( callback ) {
-		//Clone the array: 
-		//var request = mwBaseFirefoggReq.slice( 0 ) ;
-		
-		//Add uploadwizard classes to a new "request" var: 
-		//request.push( libraries );
-		mw.load( libraries, function() {
-			callback( 'UploadWizard.UploadWizard' );
-		} );
-
-	} );
+	mw.addModuleLoader( 'UploadWizard.UploadWizard', libraries );
 	
-	mw.addModuleLoader( 'UploadWizard.UploadWizardTest', function( callback ) {
-		//Clone the array: 
-		//var request = mwBaseFirefoggReq.slice( 0 ) ;
-	 	
-		//Add uploadwizard classes to a new "request" var: 
-		//request.push( testLibraries );
-		//debugger;
-		mw.load( testLibraries, function() {
-			callback( 'UploadWizard.UploadWizardTest' );
-		} );
-
-	} );
+	mw.addModuleLoader( 'UploadWizard.UploadWizardTest', testLibraries );
 
 } )( window.mw );

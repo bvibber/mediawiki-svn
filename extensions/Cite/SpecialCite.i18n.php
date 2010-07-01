@@ -1323,7 +1323,7 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'cite_article_link' => 'د همدې ليکنې درک',
+	'cite_article_link' => 'د دې مخ درک',
 	'tooltip-cite-article' => 'د دې مخ د درک لګولو مالومات',
 	'cite' => 'درک',
 	'cite_page' => 'مخ:',
@@ -1364,6 +1364,7 @@ $messages['pt-br'] = array(
 $messages['qu'] = array(
 	'cite_article_desc' => "[[Special:Cite|Pukyumanta willanapaq]] sapaq p'anqatam llamk'ana t'asrapi t'inkitapas yapan",
 	'cite_article_link' => 'Kay qillqamanta willay',
+	'tooltip-cite-article' => "Ima hinam kay p'anqamanta willay",
 	'cite' => 'Qillqamanta willay',
 	'cite_page' => "P'anqa:",
 	'cite_submit' => 'Qillqamanta willay',
@@ -1427,6 +1428,14 @@ $messages['ru'] = array(
 	'cite' => 'Цитирование',
 	'cite_page' => 'Страница:',
 	'cite_submit' => 'Процитировать',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'cite' => 'Цітованя',
+	'cite_page' => 'Сторінка:',
 );
 
 /** Yakut (Саха тыла)
@@ -1557,6 +1566,7 @@ $messages['stq'] = array(
 $messages['su'] = array(
 	'cite_article_desc' => 'Nambahkeun kaca husus [[Special:Cite|cutatan]] & tumbu toolbox',
 	'cite_article_link' => 'Cutat kaca ieu',
+	'tooltip-cite-article' => 'Émbaran ngeunaan cara ngarujuk ieu kaca',
 	'cite' => 'Cutat',
 	'cite_page' => 'Kaca:',
 	'cite_submit' => 'Cutat',
