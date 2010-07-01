@@ -391,6 +391,13 @@ $messages['oc'] = array(
 	'vector-collapsiblenav-preference' => "Activar lo menut de navigacion d'esquèrra replegable",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'vector-collapsiblenav-more' => 'Weidere Schprooche',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -465,6 +472,13 @@ $messages['sah'] = array(
 $messages['sl'] = array(
 	'vector-collapsiblenav-preference' => 'Omogoči zlaganje vnosov v navigacijskem meniju v koži Vector',
 	'vector-collapsiblenav-more' => 'Več jezikov',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
+ */
+$messages['sr-ec'] = array(
+	'vector-collapsiblenav-more' => 'Још језика:',
 );
 
 /** Sundanese (Basa Sunda)

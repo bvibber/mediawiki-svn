@@ -12,7 +12,7 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 25 ),
+			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 28 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
 			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 5 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 9 ),
@@ -20,10 +20,10 @@ class VectorHooks {
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 21 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 60 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 63 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 61 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 64 ),
 		),
 	);
 	static $modules = array(

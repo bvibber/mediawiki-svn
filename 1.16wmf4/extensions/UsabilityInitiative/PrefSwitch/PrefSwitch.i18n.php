@@ -396,6 +396,7 @@ $messages['ar'] = array(
 من فضلك عبّئ الاستبيان الاختياري أدناه قبل نقر [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]].',
 	'prefswitch-survey-intro-off' => 'شكرا لك على تجربة المزايا الجديدة.
 لتساعدنا في تحسين هذه المزايا، من فضلك عبّئ الاستبيان الاختياري أدناه قبل نقر [[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]',
+	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -1627,6 +1628,7 @@ Para ayudarnos a mejorarlas, por favor llene la encuesta de abajo presionando "[
 $messages['et'] = array(
 	'prefswitch' => 'Kasutushõlpsuse algatuse eelistuse valimine',
 	'prefswitch-desc' => 'Lubab kasutajal eelistuste komplekte vahetada.',
+	'prefswitch-csswarning' => "Sinu [[User:$1/$2.css|kohandatud ''$2''-stiilileht]] ei rakendu enam. Kujunduse Vektor jaoks saad kohandatud CCS-i lisada lehele [[{{ns:user}}:$1/vector.css]].",
 	'prefswitch-survey-true' => 'Jah',
 	'prefswitch-survey-false' => 'Ei',
 	'prefswitch-survey-submit-off' => 'Lülita uued funktsioonid välja',
@@ -1864,6 +1866,7 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'prefswitch' => 'Käytettävyyshankkeen asetusvalinta',
 	'prefswitch-desc' => 'Mahdollistaa käyttäjille asetussarjan vaihtamisen.',
+	'prefswitch-jswarning' => 'Muista, että ulkoasuvaihdoksen takia JavaScript-tiedostosi [[User:$1/$2.js|$2]] täytyy kopioida nimelle [[{{ns:user}}:$1/vector.js]]<!-- tai [[{{ns:user}}:$1/common.js]]-->, jotta se toimisi jatkossa.',
 	'prefswitch-survey-true' => 'Kyllä',
 	'prefswitch-survey-false' => 'Ei',
 	'prefswitch-survey-submit-off' => 'Poista käytöstä uudet omaisuudet',
@@ -2239,8 +2242,8 @@ Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus, voreb Du uf
 $messages['he'] = array(
 	'prefswitch' => 'שינוי העדפות במיזם השמישות',
 	'prefswitch-desc' => 'הוספת אפשרות למשתמשים לשנות קבוצות של העדפות',
-	'prefswitch-jswarning' => 'יש לזכור כי עם שינוי העיצוב, יש להעתיק (או להעביר) את ה[[User:$1/$2.js|סקריפטים האישיים]] לדף [[User:$1/vector.js|משתמש:$1/vector.js]] או [[User:$1/common.js|משתמש:$1/common.js]] על מנת להמשיך להשתמש בהם.',
-	'prefswitch-csswarning' => 'לא ייעשה שימוש ב[[User:$1/$2.css|עיצובים האישיים]]. ניתן להוסיף CSS מותאם אישית עבור עיצוב הווקטור בדף [[User:$1/vector.css|משתמש:$1/vector.css]].',
+	'prefswitch-jswarning' => 'יש לזכור כי עם שינוי העיצוב, יש להעתיק (או להעביר) את ה[[User:$1/$2.js|סקריפטים האישיים מהעיצוב $2]] לדף [[{{ns:user}}:$1/vector.js]] <!-- או [[{{ns:user}}:$1/common.js]] --> על מנת להמשיך להשתמש בהם.',
+	'prefswitch-csswarning' => 'לא ייעשה שימוש ב[[User:$1/$2.css|סגנונות האישיים של העיצוב $2]]. ניתן להוסיף CSS מותאם אישית עבור העיצוב "וקטור" בדף [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'כן',
 	'prefswitch-survey-false' => 'לא',
 	'prefswitch-survey-submit-off' => 'ביטול המראה החדש',
@@ -2273,26 +2276,46 @@ $messages['he'] = array(
 	'prefswitch-success-feedback' => 'המשוב שלכם נשלח.',
 	'prefswitch-return' => '<hr style="clear:both">
 חזרה אל <span class="plainlinks">[$1 $2].</span>',
-	'prefswitch-main' => "[[File:UsabilityNavigation.png|left|צילום מסך של דף הניווט החדש]]
-[[File:UsabilityToolbar.png|left|צילום מסך של סרגל העריכה המורחב]]
-[[File:UsabilityDialogs.png|left|צילום מסך של תיבות דו שיח חדשות ליצירת תוכן]]
-עבדנו קשה כדי שלמשתמשי האתר יהיה קל יותר. אנו נרגשים לשתף אתכם במספר שיפורים, בהם מראה חדש ויכולות עריכה פשוטות יותר. שיפור השימושיות במיזמי ויקימדיה הוא משימה בעלת עדיפות גבוהה עבור קרן ויקימדיה ואנחנו נשתף אתכם בעדכונים נוספים בעתיד. לפרטים נוספים, בקרו בהודעה בנושא ב[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ בלוג של ויקימדיה].
+	'prefswitch-main' => "{| border=\"0\" align=\"left\" style=\"margin-right:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| צילום מסך של ממשק הניווט החדש של ויקיפדיה <small>[[Media:VectorNavigation-en.png|(הגדלה)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| צילום מסך של ממשק עריכת הדף הבסיסי <small>[[Media:VectorEditorBasic-en.png|(הגדלה)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| צילום מסך של תיבו הדו שיח החדשה להוספת קישורים
+|}
+|}
+
+צוות חוויית המשתמש של קרן ויקימדיה עבד עם מתנדבים מהקהילה כדי שיהיה לכם קל יותר. אנו נרגשים לשתף אתכם במספר שיפורים, בהם מראה חדש ויכולות עריכה פשוטות יותר. שינויים אלה מיועדים להקל על תורמים חדשים להתחיל, ומבוססים על [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study בדיקת השמישות שבוצעה לאורך השנה שעברה]. שיפור השימושיות במיזמי ויקימדיה הוא משימה בעלת עדיפות גבוהה עבור קרן ויקימדיה ואנחנו נשתף אתכם בעדכונים נוספים בעתיד. לפרטים נוספים, בקרו בהודעה בנושא ב[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ בלוג של ויקימדיה] (באנגלית).
 
 ===להלן השינויים שבוצעו===
-* '''ניווט''': שיפרנו את הניווט לצורך קריאה ועריכה של דפים. הלשוניות בראש כל דף מבהירות האם אתם צופים בדף או בדף שיחה, והאם אתם קוראים או עורכים אותו.
-* '''שיפורים בסרגל העריכה''': סידרנו מחדש את סרגל העריכה כדי שיהיה קל יותר להשתמש בו. עיצוב הדפים אינטואיטיבי יותר כעת.
+* '''ניווט''': שיפרנו את הניווט לצורך קריאה ועריכה של דפים. כעת, הלשוניות בראש כל דף מבהירות האם אתם צופים בדף או בדף שיחה, והאם אתם קוראים או עורכים אותו.
+* '''שיפורים בסרגל העריכה''': סידרנו מחדש את סרגל העריכה כדי שיהיה קל יותר להשתמש בו. עיצוב הדפים הוא פשוט ואינטואיטיבי יותר כעת.
 * '''אשף קישורים''': כלי קל לשימוש שמאפשר לכם להוסיף קישורים לדפים אחרים בוויקיפדיה וגם קישורים לאתרים חיצוניים.
 * '''שיפורים בחיפוש''': שיפרנו את ההשלמות בתיבת החיפוש כדי שתמצאו את הדף שאותו אתם מחפשים מהר יותר.
-* '''סמל פאזל הגלובוס של ויקיפדיה''': עדכנּו את הסמל של ויקיפדיה עם פאזל הגלובוס. למידע נוסף ראו את [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  הבלוג של ויקימדיה] (אנגלית).
-* '''תכונות חדשות אחרות''': הוספנו יכולת חיפוש והחלפה כדי להקל על עריכת דפים.",
-	'prefswitch-main-logged-changes' => "* '''לשונית מעקב''' הוחלפה בלשונית עם כוכב.
-* '''לשונית העברה''' הועברה לרשימה הנפתחת על ידי תיבת החיפוש.",
+* '''תכונות חדשות אחרות''': הוספנו גם אשף טבלאות כדי שיהיה קל יותר ליצור טבלאות, ויכולת חיפוש והחלפה כדי להקל על עריכת דפים.
+* '''סמל ויקיפדיה''': עדכנּו את הסמל שלנו. למידע נוסף ראו את [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ הבלוג של ויקימדיה] (באנגלית).",
+	'prefswitch-main-logged-changes' => "* '''לשונית {{int:watch}}''' הוחלפה בלשונית עם כוכב.
+* '''לשונית {{int:move}}''' הועברה לרשימה הנפתחת ליד תיבת החיפוש.",
 	'prefswitch-main-feedback' => '===משוב?===
-נשמח לשמוע מכם. אנא בקרו ב[[$1|דף המשוב]] או בקרו ב-[http://usability.wikimedia.org usability wiki] אם אתם מתעניינים במאמצנו לשיפור התוכנה.',
+נשמח לשמוע מכם. אנא בקרו ב[[$1|דף המשוב]] או בקרו ב־[http://usability.wikimedia.org Usability wiki] אם אתם מתעניינים במאמצנו הנמשכים לשיפור התוכנה.',
 	'prefswitch-main-anon' => '==תחזירו אותי==
 אם תרצו לבטל את התכונות החדשות, [$1 לחצו כאן]. לפני כן תתבקשו להיכנס לחשבונכם או ליצור חשבון.',
-	'prefswitch-main-on' => '===ביטול התכונות החדשות===
-[$2 לחצו כאן] כדי לבטל את התכונות החדשות.',
+	'prefswitch-main-on' => '===תחזירו אותי!===
+[$2 לחצו כאן כדי לבטל את התכונות החדשות].',
 	'prefswitch-main-off' => '===נסו אותן!===
 אם תרצו להפעיל את התכונות החדשות, אנא [$1 לחצו כאן].',
 	'prefswitch-survey-intro-feedback' => 'נשמח לשמוע מכם.
@@ -2456,15 +2479,17 @@ Vissza a(z) <span class="plainlinks">[$1 $2]</span> lapra.',
 |}
 A Wikimédia Alapítány felhasználói élményért felelős csapata és az őket segítő önkéntesek azon dolgoztak, hogy könnyebbé tegyék számodra a wiki használatát. Örömünkre szolgál, hogy bemutathatjuk e munka néhány eredményt, köztük egy új kinézetet és egyszerűsített szerkesztőfelületet. A változások célja az új szerkesztők bekapcsolódásának megkönnyítése, [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study a tavalyi használhatósági tesztelés] tanulságai alapján. Weboldalaink könnyű használhatósága fontos cél a Wikimédia Alapítványnak, ezért a jövőben további változatásokra számíthatsz. Részletesebben [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia a kapcsolódó blogposztban] olvashatsz.
 
-=== Here's what we have changed ===
-* '''Navigation:''' We have improved the navigation for reading and editing pages. Now, the tabs at the top of each page more clearly define whether you are viewing the page or discussion page, and whether you are reading or editing a page.
-* '''Editing toolbar improvements:''' We have reorganized the editing toolbar to make it easier to use. Now, formatting pages is simpler and more intuitive.
-* '''Link wizard:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
-* '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
-* '''Other new features:''' We have also introduced a table wizard to make creating tables easier and a find and replace feature to simplify page editing.
-* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
+=== Mi változott? ===
+* '''Navigáció:''' Jobb lett a navigáció a lapok olvasásánál és szerkesztésénél. A lap tetején elhelyezett fülek világosabban jelzik, hogy a szócikket vagy a vitalapot nézed, és hogy olvasod-e vagy szerkeszted a lapot.
+* '''Szerkesztőgombok:'''  A szerkesztőablak feletti eszközsávban kevesebb, de könnyebben beazonosítható és ésszerűbben csoportosított gomb maradt.
+* '''Hivatkozáskészítő varázsló:''' A más szócikkekre vagy külső weboldalakra mutató hivatkozás beszúrását egy párbeszédablak teszi egyszerűbbé.
+* '''Fejlettebb keresés:''' Fejlesztettünk a keresési javaslatokon, hogy könnyebben megtaláld a kívánt oldalt.
+* '''Más újdonságok:'''  A szerkesztőgombok közé bekerült egy táblázatkészítő varázsló és egy keresés és csere funkció.
+* '''Wikipédia-logó:''' Újrarajzoltuk a logót. A változásokról a [http://huwiki.blogspot.com/2010/06/wikipedia-3d-ben.html?utm_source=wikipedia&utm_campaign=vector_logo Wikipédia-blogban] olvashatsz.",
 	'prefswitch-main-logged-changes' => "* A '''{{int:watch}} fület''' ezentúl egy csillag jelöli.
 * Az '''{{int:move}} fül''' egy lenyíló menüben található a keresősáv mellett.",
+	'prefswitch-main-feedback' => '=== Megírnád a véleményedet? ===
+Ha kipróbáltad, szívesen olvasnánk a tapasztalataidról. Írhatsz nekünk [[$1|az erre a célra fenntartott üzenőlapon]], vagy ha érdekel, milyen erőfeszítések történnek a szoftver felhasználóbarátabbá tételére, meglátogathatod a [http://usability.wikimedia.org használhatósági wikit].',
 	'prefswitch-main-anon' => '===Vissza a régit===
 [$1 Kattints ide az új funkciók kikapcsolásához]. Ehhez be kell jelentkezned, vagy regisztrálnod kell.',
 	'prefswitch-main-on' => '===Vissza a régit===
@@ -2675,7 +2700,7 @@ $messages['io'] = array(
 $messages['it'] = array(
 	'prefswitch' => "Cambiamento delle preferenze dell'iniziativa per l'usabilità",
 	'prefswitch-desc' => 'Permetti agli utenti di cambiare set di preferenze',
-	'prefswitch-jswarning' => 'Ricorda che con il cambiamento della skin, il [[Utente:$1/$2.js|javascript del tuo $2]] dovrà essere copiato in [[Utente:$1/vector.js]] o [[Utente:$1/common.js]] per continuare a funzionare.',
+	'prefswitch-jswarning' => 'Ricorda che con il cambiamento della skin, il codice [[Utente:$1/$2.js|JavaScript del tuo $2]] dovrà essere copiato in [[Utente:$1/vector.js]] <!-- o [[Utente:$1/common.js]]--> per continuare a funzionare.',
 	'prefswitch-csswarning' => 'I tuoi [[Utente:$1/$2.css|stili personalizzati per $2]] non saranno più applicati. Puoi aggiungere CSS personalizzato per vector in [[Utente:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Sì',
 	'prefswitch-survey-false' => 'No',
@@ -3621,6 +3646,7 @@ For å hjelpe oss med å forbedre dem kan du fylle ut det valgfrie skjemaet unde
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-answer-whyoff-other' => 'Annerer Grund:',
 );
 

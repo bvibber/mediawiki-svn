@@ -177,11 +177,12 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Mirzali
  * @author Xoser
  */
 $messages['diq'] = array(
-	'vector-simplesearch-search' => 'Çekuye binuse',
-	'vector-simplesearch-containing' => 'înan tede estê...',
+	'vector-simplesearch-search' => 'Cıgeyre',
+	'vector-simplesearch-containing' => 'tedeestey...',
 );
 
 /** Lower Sorbian (Dolnoserbski)

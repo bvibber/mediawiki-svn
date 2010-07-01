@@ -677,6 +677,13 @@ $messages['sl'] = array(
 	'prefs-labs' => 'Funkcije laboratorija',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
+ */
+$messages['sr-ec'] = array(
+	'prefs-beta' => 'Бета функције',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

@@ -4354,8 +4354,8 @@ fn: {
 				}
 				if ( 'characters' in page ) {
 					var html = '';
-					for ( character in page.characters ) {
-						html += $.wikiEditor.modules.toolbar.fn.buildCharacter( page.characters[character], actions );
+					for ( var i = 0; i < page.characters.length; i++ ) {
+						html += $.wikiEditor.modules.toolbar.fn.buildCharacter( page.characters[i], actions );
 					}
 					$characters
 						.html( html )

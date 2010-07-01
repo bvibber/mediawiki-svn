@@ -651,6 +651,15 @@ $messages['sl'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Preizkusite nove funkcije',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
+ */
+$messages['sr-ec'] = array(
+	'prefswitch-link-anon' => 'Нове функције',
+	'tooltip-pt-prefswitch-link-on' => 'Онемогући нове функције',
+	'tooltip-pt-prefswitch-link-off' => 'Пробај нове функције',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
