@@ -648,6 +648,11 @@ $messages['sr-ec'] = array(
 	'vector-editwarning-preference' => 'Упозори ме када напустим страницу са несачуваним променама',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'vector-editwarning-preference' => 'Upozori me kada napustim stranicu sa nesačuvanim promenama',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Najami

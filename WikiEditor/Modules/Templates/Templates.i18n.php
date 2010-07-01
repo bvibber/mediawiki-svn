@@ -268,6 +268,13 @@ $messages['mt'] = array(
 	'wikieditor-templates-preference' => 'Ippermetti l-funzjoni li taħbi l-mudelli',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-templates-preference' => 'Inklapbaore mallen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -397,6 +404,13 @@ $messages['th'] = array(
  */
 $messages['tl'] = array(
 	'wikieditor-templates-preference' => 'Paganahin ang bumabagsak na suleras',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'wikieditor-templates-preference' => 'Şablon daraltmayı etkinleştir',
 );
 
 /** Ukrainian (Українська)

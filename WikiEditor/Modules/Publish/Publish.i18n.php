@@ -152,6 +152,7 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'wikieditor-publish-preference' => 'ধাপে ধাপে প্রকাশ করা সক্রিয় করো',
@@ -160,7 +161,7 @@ $messages['bn'] = array(
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} এ প্রকাশ করো',
 	'wikieditor-publish-dialog-summary' => 'সম্পাদনা সারাংশ (আপনি কি পরিবর্তন করেছেন তা অল্প কথায় লিখুন):',
 	'wikieditor-publish-dialog-minor' => 'অনুল্লেখ্য সম্পাদনা',
-	'wikieditor-publish-dialog-watch' => 'এই পাতাটি নজরে রাখো',
+	'wikieditor-publish-dialog-watch' => 'এই পাতাটি নজরে রাখুন',
 	'wikieditor-publish-dialog-publish' => 'প্রকাশ করো',
 	'wikieditor-publish-dialog-goback' => 'ফিরে যাও',
 );
@@ -814,6 +815,21 @@ $messages['mt'] = array(
 	'wikieditor-publish-dialog-goback' => 'Mur lura',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-publish-preference' => 'Stap veur stap publiceren inschakelen',
+	'wikieditor-publish-button-publish' => 'Publiceren',
+	'wikieditor-publish-button-cancel' => 'Ofbreken',
+	'wikieditor-publish-dialog-title' => 'Publiceren naor {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => "Bewarkingssamenvatting (beschrief de wijzingen in 't kort):",
+	'wikieditor-publish-dialog-minor' => 'Kleine bewarking',
+	'wikieditor-publish-dialog-watch' => 'Volg disse pagina',
+	'wikieditor-publish-dialog-publish' => 'Publiceren',
+	'wikieditor-publish-dialog-goback' => 'Weerumme',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1114,6 +1130,7 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'wikieditor-publish-button-publish' => 'Objavi',
 	'wikieditor-publish-button-cancel' => 'Poništi',
+	'wikieditor-publish-dialog-summary' => 'Opis izmene (ukratko opišite šta ste izmenili):',
 	'wikieditor-publish-dialog-minor' => 'Mala izmena',
 	'wikieditor-publish-dialog-publish' => 'Objavi',
 	'wikieditor-publish-dialog-goback' => 'Vrati se',

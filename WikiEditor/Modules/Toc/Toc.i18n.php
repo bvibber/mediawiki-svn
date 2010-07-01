@@ -465,6 +465,15 @@ $messages['mt'] = array(
 	'wikieditor-toc-hide' => 'Aħbi l-kontenut',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-toc-preference' => 'Navigeerbaore onderwarplieste inschakelen',
+	'wikieditor-toc-show' => 'Onderwarpen laoten zien',
+	'wikieditor-toc-hide' => 'Onderwarpen verbargen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
