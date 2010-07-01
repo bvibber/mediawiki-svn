@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Foo (first)' );
+mw.log( 'Foo (first)' );

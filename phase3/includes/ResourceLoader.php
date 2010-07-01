@@ -29,6 +29,11 @@ class ResourceLoader {
 	private static $coreScripts = array(
 		'jquery' => 'resources/core/jquery-1.4.2.js',
 		'mw' => 'resources/core/mw.js',
+		'mw.config' => 'resources/core/mw/mw.config.js',
+		'mw.loader' => 'resources/core/mw/mw.loader.js',
+		'mw.log' => 'resources/core/mw/mw.log.js',
+		'mw.msg' => 'resources/core/mw/mw.msg.js',
+		'mw.util' => 'resources/core/mw/mw.util.js',
 	);
 	/**
 	 * List of modules.
@@ -76,6 +81,7 @@ class ResourceLoader {
 	private $useJSMin = false;
 	private $useCSSMin = true;
 	private $useCSSJanus = true;
+	private $useDebugMode = false;
 	
 	private $lang;
 	
@@ -108,6 +114,10 @@ class ResourceLoader {
 	
 	public function setUseCSSJanus( $use ) {
 		$this->useCSSJanus = $use;
+	}
+	
+	public function setUseDebugMode( $use ) {
+		$this->useDebugMode = $use;
 	}
 	
 	public function getOutput() {
@@ -149,6 +159,9 @@ class ResourceLoader {
 			$messages = isset( $blobs[$module] ) ? $blobs[$module] : '';
 			if ( file_exists( $mod['script'] ) ) {
 				$script = file_get_contents( $mod['script'] );
+			}
+			if ( !$this->useDebugMode ) {
+				$script = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $script );
 			}
 			if ( isset( $mod['style'] ) && file_exists( $mod['style'] ) ) {
 				$css = file_get_contents( $mod['style'] );

@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Bar (fourth)' );
+mw.log( 'Bar (fourth)' );

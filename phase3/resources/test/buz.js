@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Buz (third)' );
+mw.log( 'Buz (third)' );

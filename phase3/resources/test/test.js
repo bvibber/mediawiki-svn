@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Test (second)' );
+mw.log( 'Test (second)' );

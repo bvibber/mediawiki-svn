@@ -1,2 +1,2 @@
 // Test output
-console.log( 'Baz (third)' );
+mw.log( 'Baz (third)' );
