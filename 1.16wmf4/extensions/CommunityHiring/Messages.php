@@ -11,7 +11,7 @@ $messages['en'] = array(
 	'communityhiring-address-postal' => 'Postal Code:',
 	'communityhiring-address-country' => 'Country:',
 	'communityhiring-phone' => 'Phone:',
-	'communityhiring-email' => 'Email:',
+	'communityhiring-email' => 'E-mail:',
 	'communityhiring-paragraphs' => 'Wikimedia',
 	'communityhiring-paragraphs-intro' => 'Please answer the next six questions with a single, well thought out paragraph.',
 	'communityhiring-significance' => 'Tell us how you see the significance of Wikimedia communities in the world.',
@@ -21,7 +21,7 @@ $messages['en'] = array(
 	'communityhiring-demonstrative' => '',
 	'communityhiring-involvement' => 'Community Involvement',
 	'communityhiring-contributor' => 'Are you a contributor to any Wikimedia Projects?',
-	'communityhiring-usernames' => 'Feel free to tell us your usenames on the projects you work on:',
+	'communityhiring-usernames' => 'Feel free to tell us your usernames on the projects you work on:',
 	'communityhiring-links' => "Give us up to three links to work in the Wikimedia communities that you're proud of:",
 	'communityhiring-languages' => 'Language proficiency',
 	'communityhiring-languages-label' => 'What languages can you speak and write proficiently?',
@@ -33,6 +33,4 @@ $messages['en'] = array(
 	'communityhiring-research' => "In one or two sentences, describe the process in which users are approved to become administrators on English Wikipedia. 
 
 	(You are not expected to know the answer to this question already. You can find the answer [[Wikipedia:RFA|here]] but feel free to consult other resources. We're not looking for a detailed description of the process, but a sentence that captures the essence of the process and why it works.)",
-
-	'communityhiring-intro' => "",
 );
