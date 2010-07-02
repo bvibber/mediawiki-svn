@@ -24,11 +24,13 @@ class SpecialCommunityHiring extends SpecialPage {
 				'type' => 'text',
 				'label-message' => 'communityhiring-given',
 				'section' => 'aboutyou',
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'family-name' => array(
 				'type' => 'text',
 				'label-message' => 'communityhiring-family',
 				'section' => 'aboutyou',
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'address-line1' => array(
 				'type' => 'textarea',
@@ -41,6 +43,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'type' => 'text',
 				'label-message' => 'communityhiring-address-city',
 				'section' => 'aboutyou',
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'address-postal' => array(
 				'type' => 'text',
@@ -51,11 +54,13 @@ class SpecialCommunityHiring extends SpecialPage {
 				'type' => 'text',
 				'label-message' => 'communityhiring-address-country',
 				'section' => 'aboutyou',
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'phone' => array(
 				'type' => 'text',
 				'label-message' => 'communityhiring-phone',
 				'section' => 'aboutyou',
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'email' => array(
 				'type' => 'text',
@@ -70,6 +75,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'raw' => 1,
 				'section' => 'paragraphs',
 				'vertical-label' => 1,
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'significance' => array(
 				'type' => 'textarea',
@@ -77,6 +83,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'section' => 'paragraphs',
 				'rows' => 10,
 				'vertical-label' => 1,
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'excitement' => array(
 				'type' => 'textarea',
@@ -84,6 +91,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'section' => 'paragraphs',
 				'rows' => 10,
 				'vertical-label' => 1,
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'experiences' => array(
 				'type' => 'textarea',
@@ -91,6 +99,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'section' => 'paragraphs',
 				'rows' => 10,
 				'vertical-label' => 1,
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'other' => array(
 				'type' => 'textarea',
@@ -108,6 +117,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'rows' => '3',
 				'label-message' => 'communityhiring-languages-label',
 				'vertical-label' => 1,
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			
 			'contributor' => array(
@@ -115,8 +125,8 @@ class SpecialCommunityHiring extends SpecialPage {
 				'label-message' => 'communityhiring-contributor',
 				'section' => 'demonstrative/involvement',
 				'options' => array(
-					'Yes' => 1,
-					'No' => 0,
+					'Yes' => 'yes',
+					'No' => 'no',
 				),
 			),
 			'usernames' => array(
@@ -150,6 +160,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'label-message' => 'communityhiring-availability-intro',
 				'section' => 'availability',
 				'vertical-label' => 1,
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'availability-info' => array(
 				'type' => 'textarea',
@@ -176,6 +187,7 @@ class SpecialCommunityHiring extends SpecialPage {
 				'type' => 'textarea',
 				'label-message' => 'communityhiring-research',
 				'vertical-label' => 1,
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 		);
 		
@@ -197,6 +209,14 @@ class SpecialCommunityHiring extends SpecialPage {
 				__METHOD__ );
 				
 		$wgOut->addWikiMsg( 'communityhiring-done' );
+		
+		return true;
+	}
+	
+	function validateRequired( $input ) {
+		if (!$input) {
+			return wfMsgExt( 'communityhiring-field-required', 'parseinline' );
+		}
 		
 		return true;
 	}
