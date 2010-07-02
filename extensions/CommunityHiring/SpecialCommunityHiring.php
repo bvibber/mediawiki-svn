@@ -38,7 +38,6 @@ class SpecialCommunityHiring extends SpecialPage {
 				'section' => 'aboutyou',
 				'rows' => '3',
 				'cols' => '20',
-				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'address-city' => array(
 				'type' => 'text',
@@ -67,7 +66,6 @@ class SpecialCommunityHiring extends SpecialPage {
 				'type' => 'text',
 				'label-message' => 'communityhiring-email',
 				'section' => 'aboutyou',
-				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			
 			// Pararaph answers
@@ -138,7 +136,6 @@ class SpecialCommunityHiring extends SpecialPage {
 				'label-message' => 'communityhiring-usernames',
 				'section' => 'demonstrative/involvement',
 				'vertical-label' => 1,
-				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'wikimedia-links' => array(
 				'type' => 'textarea',
@@ -147,7 +144,6 @@ class SpecialCommunityHiring extends SpecialPage {
 				'rows' => '3',
 				'cols' => '20',
 				'vertical-label' => 1,
-				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'other-links' => array(
 				'type' => 'textarea',
@@ -156,7 +152,6 @@ class SpecialCommunityHiring extends SpecialPage {
 				'rows' => '3',
 				'cols' => '20',
 				'vertical-label' => 1,
-				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			
 			// Availability
