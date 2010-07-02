@@ -769,20 +769,41 @@ abstract class HTMLFormField {
 		global $wgRequest;
 
 		$errors = $this->validate( $value, $this->mParent->mFieldData );
+		
+		$cellAttributes = array();
+		$verticalLabel = false;
+		
+		if ( !empty($this->mParams['vertical-label']) ) {
+			$cellAttributes['colspan'] = 2;
+			$verticalLabel = true;
+		}
+
 		if ( $errors === true || !$wgRequest->wasPosted() ) {
 			$errors = '';
 		} else {
 			$errors = Html::rawElement( 'span', array( 'class' => 'error' ), $errors );
 		}
-
-		$html = $this->getLabelHtml();
-		$html .= Html::rawElement( 'td', array( 'class' => 'mw-input' ),
-							$this->getInputHTML( $value ) ."\n$errors" );
-
+		
+		$label = $this->getLabelHtml( $cellAttributes );
+		$field = Html::rawElement(
+			'td',
+			array( 'class' => 'mw-input' ) + $cellAttributes,
+			$this->getInputHTML( $value ) . "\n$errors"
+		);
+		
 		$fieldType = get_class( $this );
-
-		$html = Html::rawElement( 'tr', array( 'class' => "mw-htmlform-field-$fieldType" ),
-							$html ) . "\n";
+		
+		if ($verticalLabel) {
+			$html = Html::rawElement( 'tr',
+				array( 'class' => 'mw-htmlform-vertical-label' ), $label );
+			$html .= Html::rawElement( 'tr',
+				array( 'class' => "mw-htmlform-field-$fieldType {$this->mClass}" ),
+				$field );
+		} else {
+			$html = Html::rawElement( 'tr',
+				array( 'class' => "mw-htmlform-field-$fieldType {$this->mClass}" ),
+				$label . $field );
+		}
 
 		$helptext = null;
 		if ( isset( $this->mParams['help-message'] ) ) {
@@ -809,14 +830,14 @@ abstract class HTMLFormField {
 	function getLabel() {
 		return $this->mLabel;
 	}
-	function getLabelHtml() {
+	function getLabelHtml( $cellAttributes = array() ) {
 		# Don't output a for= attribute for labels with no associated input.
 		# Kind of hacky here, possibly we don't want these to be <label>s at all.
 		$for = array();
 		if ( $this->needsLabel() ) {
 			$for['for'] = $this->mID;
 		}
-		return Html::rawElement( 'td', array( 'class' => 'mw-label' ),
+		return Html::rawElement( 'td', array( 'class' => 'mw-label' ) + $cellAttributes,
 					Html::rawElement( 'label', $for, $this->getLabel() )
 				);		
 	}
