@@ -358,10 +358,12 @@ debug("starting HTML output");
 
     <?php include("form.html.php"); ?>
 <?php
+debug("-1-");
 if ($error) {
   print "<p class=\"error\">".htmlspecialchars($error)."</p>";
 }
 
+debug("-2-");
 if (!$result && $mode) {
   if ($mode=="concept") print "<p class=\"notice\">Concept not found: <em>".htmlspecialchars($lang).":$".htmlspecialchars($concept)."</em></p>";
   else if ($mode=="term") print "<p class=\"notice\">No meanings found for term <em>".htmlspecialchars($lang).":".htmlspecialchars($term)."</em>.</p>";
@@ -369,12 +371,16 @@ if (!$result && $mode) {
 ?>    
 
 <?php
+debug("-3-");
 if ($result && $mode) {
+    debug("-4-");
     if ( $mode == 'concept' ) $terse = false;
     else if ( $mode == 'term' ) $terse = true;
+    debug("-5-");
 ?>
     <table  border="0" class="results" cellspacing="0" summary="search results">
 <?php
+    debug("-6-");
     debug("processing results");
 
     $count = 0;
@@ -391,6 +397,7 @@ if ($result && $mode) {
 
 	  mangleConcept($row);
 	  $continue= printConcept($row, $languages, $terse);
+	  flush();
 
 	  if (!$continue) break;
 	  if ($limit && $count >= $limit) break;

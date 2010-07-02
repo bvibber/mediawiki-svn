@@ -40,6 +40,7 @@ $wwCommonsServerName = null;
 $wwCommonsFastServerName = null;
 
 $wwTagsTable = null;
+$wwUsageTable = null;
 
 #$wwGilNoiceTable = null;
 #$wwGilNoiceThreshold = 10;

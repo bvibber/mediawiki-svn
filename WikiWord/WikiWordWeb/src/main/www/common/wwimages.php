@@ -336,28 +336,42 @@ class WWImages extends WWWikis {
     }
 
     function queryGlobalUsageCounts( $images, $wikis = null ) {
+	global $wwUsageTable;
+
 	if (!$images) return false;
 
-	//FIXME: use pre-calculated usage counts if $wwImageUsageTable is set!!!
+	if ( $wwUsageTable ) {
+		$sql = " /* queryGlobalUsageCounts(" . str_replace('*', '_', implode(', ', $images) ) . ") */ ";
+		$sql .= " SELECT image, wiki, linkcount FROM $wwUsageTable ";
+		$sql .= " WHERE image IN " . $this->quoteSet( $images );
 
-	$globalimagelinks_table = $this->getWikiTableName("commons", "globalimagelinks");
+		if ( $wikis ) {
+		    if ( is_array( $wikis ) ) $sql .= " AND wiki IN " . $this->quoteSet( $wikis );
+		    else if ( $wikis ) $sql .= " AND wiki RLIKE " . $this->quote( '^' . $wikis . '$' );
 
-	$sql = " /* queryGlobalUsageCounts(" . str_replace('*', '_', implode(', ', $images) ) . ") */ ";
-	$sql .= " SELECT gil_to as image, gil_wiki as wiki, count(*) as linkcount FROM $globalimagelinks_table ";
-	$sql .= " WHERE gil_page_namespace_id = 0 ";
-	$sql .= " AND gil_to IN " . $this->quoteSet( $images );
+		    #TODO: could also limit to to x or min size n using toolserver.wiki !
+		}
 
-	if ( $wikis ) {
-	    if ( is_array( $wikis ) ) $sql .= " AND gil_wiki IN " . $this->quoteSet( $wikis );
-	    else if ( $wikis ) $sql .= " AND gil_wiki RLIKE " . $this->quote( '^' . $wikis . '$' );
+		return $this->queryWiki("commons", $sql);
+	} else {
+		$globalimagelinks_table = $this->getWikiTableName("commons", "globalimagelinks");
 
-	    #TODO: could also limit to to x or min size n using toolserver.wiki !
-	}
+		$sql = " /* queryGlobalUsageCounts(" . str_replace('*', '_', implode(', ', $images) ) . ") */ ";
+		$sql .= " SELECT gil_to as image, gil_wiki as wiki, count(*) as linkcount FROM $globalimagelinks_table ";
+		$sql .= " WHERE gil_page_namespace_id = 0 ";
+		$sql .= " AND gil_to IN " . $this->quoteSet( $images );
 
-	$sql .= " GROUP BY gil_to, gil_wiki ";
-	$sql .= " ORDER BY gil_to, gil_wiki ";
+		if ( $wikis ) {
+		    if ( is_array( $wikis ) ) $sql .= " AND gil_wiki IN " . $this->quoteSet( $wikis );
+		    else if ( $wikis ) $sql .= " AND gil_wiki RLIKE " . $this->quote( '^' . $wikis . '$' );
+
+		    #TODO: could also limit to to x or min size n using toolserver.wiki !
+		}
+
+		$sql .= " GROUP BY gil_to, gil_wiki ";
 	
-	return $this->queryWikiFast("commons", $sql);
+		return $this->queryWikiFast("commons", $sql);
+	}
     }
 
     function getGlobalUsageCounts( $images, $wikis = null ) {
@@ -369,30 +383,17 @@ class WWImages extends WWWikis {
 	if (is_string($rs)) $rs = $this->query($rs);
 
 	$imageUsage = array();
-	$current = NULL;
-	$max = 0;
-	$stats = array();
 	while ($row = mysql_fetch_assoc($rs)) {
 	    $image = $row["image"];
 	    $wiki = $row["wiki"];
 	    $linkcount = $row["linkcount"];
 
-	    if ( is_null($current) ) $current = $image;
-	    else if ($current != $image) {
-		$stats['*max*'] = $max;
-		$imageUsage[$current] = $stats;
-		$stats = array();
-		$current = $image;
-		$max = 0;
-	    }
-
-	    if ( $max < $linkcount) $max = $linkcount;
-	    $stats[$wiki] = $linkcount;
+	    $imageUsage[$image][$wiki] = $linkcount;
 	}
 
-	if ($current) {
-	    $stats['*max*'] = $max;
-	    $imageUsage[$current] = $stats;
+	$images = array_keys( $imageUsage );
+	foreach ($images as $image) {
+	    $imageUsage[$image]['*max*'] = array_reduce( $imageUsage[$image], 'max', 0 );
 	}
 
 	return $imageUsage;
