@@ -225,9 +225,15 @@ $messages['ce'] = array(
  * @author Asoxor
  */
 $messages['ckb-arab'] = array(
+	'wikieditor-publish-preference' => 'ڕێگە بدە بە بڵاوکردنەوەی ھەنگاوبەھەنگاو',
+	'wikieditor-publish-button-publish' => 'بڵاوی بکەوە',
+	'wikieditor-publish-button-cancel' => 'ھەڵوەشاندنەوە',
+	'wikieditor-publish-dialog-title' => 'لە {{SITENAME}} بڵاوی بکەوە',
+	'wikieditor-publish-dialog-summary' => 'پوختەی دەستکاری (بە کورتی ئەی گۆڕانکارییانەی کردووتە ئاشکرا دەکاتەوە):',
 	'wikieditor-publish-dialog-minor' => 'دەستکاریی بچووک',
 	'wikieditor-publish-dialog-watch' => 'چاودێڕیی ئەم پەڕە بکە',
 	'wikieditor-publish-dialog-publish' => 'بڵاوی بکەوە',
+	'wikieditor-publish-dialog-goback' => 'بگەڕێوە',
 );
 
 /** Czech (Česky)
@@ -1141,6 +1147,7 @@ $messages['sr-el'] = array(
  */
 $messages['su'] = array(
 	'wikieditor-publish-button-cancel' => 'Bolay',
+	'wikieditor-publish-dialog-minor' => 'Éditan minor',
 	'wikieditor-publish-dialog-watch' => 'Awaskeun ieu kaca',
 	'wikieditor-publish-dialog-goback' => 'Balik deui',
 );

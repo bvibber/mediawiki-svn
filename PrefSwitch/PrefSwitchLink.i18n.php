@@ -136,11 +136,12 @@ $messages['cs'] = array(
 
 /** Welsh (Cymraeg)
  * @author Lloffiwr
+ * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'prefswitch-link-anon' => 'Nodweddion newydd',
 	'tooltip-pt-prefswitch-link-anon' => 'Darllen am y nodweddion newydd',
-	'prefswitch-link-on' => 'Ewch â fi am nôl',
+	'prefswitch-link-on' => 'Ewch â fi yn ôl',
 	'tooltip-pt-prefswitch-link-on' => "Analluogi'r nodweddion newydd",
 	'prefswitch-link-off' => 'Nodweddion newydd',
 	'tooltip-pt-prefswitch-link-off' => 'Rhoi cynnig ar y nodweddion newydd',
@@ -673,7 +674,10 @@ $messages['sr-el'] = array(
  */
 $messages['su'] = array(
 	'prefswitch-link-anon' => 'Fitur anyar',
+	'prefswitch-link-on' => 'Balik deui',
 	'tooltip-pt-prefswitch-link-on' => 'Tumpurkeun fitur anyar',
+	'prefswitch-link-off' => 'Fitur anyar',
+	'tooltip-pt-prefswitch-link-off' => 'Cobaan fitur anyar',
 );
 
 /** Swedish (Svenska)

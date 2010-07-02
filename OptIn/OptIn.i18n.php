@@ -967,6 +967,7 @@ $messages['ce'] = array(
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
@@ -986,6 +987,10 @@ $messages['ckb-arab'] = array(
 	'optin-survey-answer-whyoptout-other' => 'هۆکاری دیکە:',
 	'optin-survey-question-browser' => 'کام گەڕۆک بەکار دەهێنی؟',
 	'optin-survey-answer-browser-other' => 'گەڕۆکی دیکە:',
+	'optin-survey-question-os' => 'کام سیستەمی کارپێکردن بەکاردێنی؟',
+	'optin-survey-answer-os-other' => 'سیستەمی بەکارھێنانی دیکە:',
+	'optin-survey-question-res' => 'رەزۆلوشنی شاشەکەت چەندە؟',
+	'optin-survey-question-changes' => 'حەز دەکەی کام گۆڕانکاریانە لە داھاتوودا لە بیتادا ببینی؟ (تکایە گشت ئەو شتانەی پێت باشن ھەڵبژێرە)',
 );
 
 /** Czech (Česky)
@@ -5603,15 +5608,22 @@ $messages['su'] = array(
 	'optin-title-justoptedin' => 'Wilujeng sumping di Béta',
 	'optin-title-justoptedout' => 'Ngahaturkeun nuhun tos nyobian Béta',
 	'optin-needlogin' => 'Anjeun kudu [$1 asup log] pikeun nyobaan Béta.',
+	'optin-accept-short' => 'Hayu!',
 	'optin-accept-long' => 'Cobaan Béta',
 	'optin-accept-long-anon' => 'Asup log jeung cobaan Béta',
+	'optin-deny-short' => 'Moal, nuhun',
 	'optin-deny-long' => 'Balik ka kaca saméméhna',
 	'optin-submit-out' => 'Tinggalkeun Béta',
+	'optin-survey-yes' => 'Enya',
+	'optin-survey-no' => 'Teu',
 	'optin-survey-question-whyoptout' => 'Naha bet ninggalkeun Béta? (mangga pilih sadaya nu cocog.)',
 	'optin-survey-answer-whyoptout-hard' => 'Hésé makéna.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'optin-survey-answer-whyoptout-other' => 'Alesan séjén:',
+	'optin-survey-question-os' => 'Sistem operasi naon nu dipaké ku anjeun?',
 	'optin-survey-answer-os-other' => 'Sistem operasi lianna:',
+	'optin-survey-question-res' => 'Résolusi layar nu dipaké?',
+	'optin-survey-answer-changes-other' => 'Lianna:',
 );
 
 /** Swedish (Svenska)
@@ -6430,12 +6442,18 @@ $messages['yi'] = array(
 	'optin-survey-no' => 'ניין',
 	'optin-survey-answer-whyoptout-hard' => "ס'איז געווען צו שווער צו ניצן.",
 	'optin-survey-answer-whyoptout-didntwork' => 'עס האט נישט פֿונקציאָנירן געהעריג..',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'די אויסזע האט מיר נישט געפֿאלן',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'די נײַע טאַבן און צעשטעל האבן מיר נישט געפֿאלן.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'דער נײַער ווערקצייגפאַס האט מיר נישט געפֿאלן.',
 	'optin-survey-answer-whyoptout-other' => 'אַנדער טעם:',
-	'optin-survey-question-browser' => 'וועלכער בלעטערער ניצט איר?',
+	'optin-survey-question-techfail-ifyes' => 'ווען יא, ביטע ערקלערן',
+	'optin-survey-question-usedtoolbar-ifyes' => 'ווען יאָ, וואָס האט אייך געפֿאלן וועגן עס? וואס האט אייך נישט געפֿאלן וועגן עס?',
+	'optin-survey-question-different' => 'וואָס וואלטן אונז געקענט טון אנדערש בכדי איר זאלט ווײַטער ניצן די בעטא?',
+	'optin-survey-question-browser' => 'וועלכן בלעטערער ניצט איר?',
 	'optin-survey-answer-browser-other' => 'אנדער בלעטערער:',
 	'optin-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
 	'optin-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
-	'optin-survey-question-res' => 'וואס איז די רעזאלוציע פון אייער עקראן?',
+	'optin-survey-question-res' => 'וואָס איז די רעזאלוציע פון אייער עקראַן?',
 	'optin-survey-answer-changes-edittools' => 'פֿאַרברייטערן און פאַרבעסערן די רעדאַקטירן געצייג.',
 	'optin-survey-answer-changes-upload' => 'פֿאַרבעסערן אינהאַלט און מעדיע אַרויפֿלאָדן.',
 	'optin-survey-answer-changes-custom' => 'דערלויבן גרעסערע באַניצער צופאַסונגען.',
@@ -6446,11 +6464,11 @@ $messages['yi'] = array(
 ; פֿאַרבייטערטער געצייגפאַס
 מיטן פֿאַרבייטערטן געצייגפאַס איז גרינגער צו רעדאַקטירן אַרטיקלען.
 נײַע און פֿאַרבעסערטע סימבאלן ווײַזן דײַטלעך די אַקציע פֿון יעדן סימבאל.
-פֿאַרברייטבאַרע טיילן  רעדוצירן אָנגעלאַף און האַלטן דאס ווייניג געצוצטע געצייג ווײַט איין קליק.
+פֿאַרברייטבאַרע טיילן  רעדוצירן אָנגעלאַף און האַלטן די ווייניג געצוצטע געצייג ווײַט איין קליק.
 ;דיאַלאג
 ווען איר שאַפֿט לינקען אדער טאַבעלעס, טוט קליקן אויף א סימבאל עפֿענען א דיאַלאג קעסטל וואָס העלפֿט שאַפֿן לינקען און טאַבעלעס מיט אָנפֿילן אן איינפֿאכער פֿארעם.
 ;און נאך
-מיר האבן ארײַנגעלייגט נאך פֿאַבעסערונגען למשל פֿאַרברייטערטע נאַוויגאַציע, גראַדירטע טאַבן, פֿאַרבעסערטן זוך, און נאך.
+מיר האבן ארײַנגעלייגט נאך פֿאַרבעסערונגען למשל פֿאַרברייטערטע נאַוויגאַציע, גראַדירטע טאַבן, פֿאַרבעסערטן זוך, און נאך.
 == מער אינפֿארמאַציע ==
 צו דערגיין מער וועגן דעם ניצלעכקייט איניציאַאטיוו, באַזוכט אונזער [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative היימבלאַט].
 <div style="clear:both"></div>',

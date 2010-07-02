@@ -100,6 +100,13 @@ $messages['ca'] = array(
 	'updatemyprefs-label-message' => 'Actualitzar automàticament les meves preferències amb els nous valors i eines per defecte quan estiguin disponibles',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'prefs-updates' => 'نوێ کردنەوەکان',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil
