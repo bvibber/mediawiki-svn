@@ -188,7 +188,8 @@ class UsabilityInitiativeHooks {
 	 * @param object $version Version number of the file
 	 */
 	public static function addScript( $src, $version = '' ) {
-		self::$scripts[] = array( 'src' => $src, 'version' => $version );
+		// The key is Andrew's snarky 20-character way of stopping multiple inclusion of the same file.
+		self::$scripts["$src?$version"] = array( 'src' => $src, 'version' => $version );
 	}
 
 	/**
