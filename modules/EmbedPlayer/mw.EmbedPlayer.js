@@ -11,7 +11,65 @@
  * Add the messages text: 
  */
  
-mw.includeAllModuleMessages();
+mw.addMessages( {
+	"mwe-embedplayer-loading_plugin" : "Loading plugin ...",
+	"mwe-embedplayer-select_playback" : "Set playback preference",
+	"mwe-embedplayer-link_back" : "Link back",
+	"mwe-embedplayer-error_swap_vid" : "Error: mwEmbed was unable to swap the video tag for the mwEmbed interface",
+	"mwe-embedplayer-add_to_end_of_sequence" : "Add to end of sequence",
+	"mwe-embedplayer-missing_video_stream" : "The video file for this stream is missing",
+	"mwe-embedplayer-play_clip" : "Play clip",
+	"mwe-embedplayer-pause_clip" : "Pause clip",
+	"mwe-embedplayer-volume_control" : "Volume control",
+	"mwe-embedplayer-player_options" : "Player options",
+	"mwe-embedplayer-timed_text" : "Timed text",
+	"mwe-embedplayer-player_fullscreen" : "Fullscreen",
+	"mwe-embedplayer-next_clip_msg" : "Play next clip",
+	"mwe-embedplayer-prev_clip_msg" : "Play previous clip",
+	"mwe-embedplayer-current_clip_msg" : "Continue playing this clip",
+	"mwe-embedplayer-seek_to" : "Seek $1",
+	"mwe-embedplayer-paused" : "paused",
+	"mwe-embedplayer-download_segment" : "Download selection:",
+	"mwe-embedplayer-download_full" : "Download full video file:",
+	"mwe-embedplayer-download_right_click" : "To download, right click and select <i>Save link as...<\/i>",
+	"mwe-embedplayer-download_clip" : "Download video",
+	"mwe-embedplayer-download_text" : "Download text",
+	"mwe-embedplayer-download" : "Download",
+	"mwe-embedplayer-share" : "Share",
+	"mwe-embedplayer-credits" : "Credits",
+	"mwe-embedplayer-clip_linkback" : "Clip source page",
+	"mwe-embedplayer-choose_player" : "Choose video player",
+	"mwe-embedplayer-no-player" : "No player available for $1", 
+	"mwe-embedplayer-share_this_video" : "Share this video",
+	"mwe-embedplayer-video_credits" : "Video credits",
+	"mwe-embedplayer-kaltura-platform-title" : "Kaltura open source video platform",
+	"mwe-embedplayer-menu_btn" : "Menu",
+	"mwe-embedplayer-close_btn" : "Close",
+	"mwe-embedplayer-ogg-player-vlc-player" : "VLC player",
+	"mwe-embedplayer-ogg-player-oggNative" : "HTML5 Ogg player",
+	"mwe-embedplayer-ogg-player-h264Native" : "HTML5 H.264 player",
+	"mwe-embedplayer-ogg-player-oggPlugin" : "Generic Ogg plugin",
+	"mwe-embedplayer-ogg-player-quicktime-mozilla" : "QuickTime plugin",
+	"mwe-embedplayer-ogg-player-quicktime-activex" : "QuickTime ActiveX",
+	"mwe-embedplayer-ogg-player-cortado" : "Java Cortado",
+	"mwe-embedplayer-ogg-player-flowplayer" : "Flowplayer",
+	"mwe-embedplayer-ogg-player-kplayer" : "Kaltura player",
+	"mwe-embedplayer-ogg-player-selected" : "(selected)",
+	"mwe-embedplayer-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback methods<\/a> page to download a player.<br \/>",
+	"mwe-embedplayer-missing-source" : "No source video was found. Check that your embed code includes a valid source or API key",
+	"mwe-embedplayer-for_best_experience" : "For a better video playback experience we recommend the <b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">latest Firefox<\/a>.<\/b>",
+	"mwe-embedplayer-do_not_warn_again" : "Dismiss for now.",
+	"mwe-embedplayer-playerSelect" : "Players",
+	"mwe-embedplayer-read_before_embed" : "<a href=\"http:\/\/mediawiki.org\/wiki\/Security_Notes_on_Remote_Embedding\" target=\"_new\">Read this<\/a> before embedding.",
+	"mwe-embedplayer-embed_site_or_blog" : "Embed on a page",
+	"mwe-embedplayer-related_videos" : "Related videos",
+	"mwe-embedplayer-seeking" : "seeking",
+	"mwe-embedplayer-copy-code" : "Copy code",	
+	"mwe-embedplayer-video-h264" : "H.264 video",
+	"mwe-embedplayer-video-flv" : "Flash video",
+	"mwe-embedplayer-video-ogg" : "Ogg video",
+	"mwe-embedplayer-video-audio" : "Ogg audio"
+} );
 
 /*
 * The default video attributes supported by embedPlayer
@@ -35,7 +93,7 @@ mw.setConfig( 'embedPlayerAttributes', {
 	* also see:  http://www.whatwg.org/specs/web-apps/current-work/multipage/video.html
 	*/
 
-	// Media src URI, can be relative or absolute URI	
+	// Media src URI, can be relative or absolute URI
 	"src" : null,
 	
 	// Poster attribute for displaying a place holder image before loading or playing the video
@@ -104,7 +162,7 @@ mw.setConfig( 'embedPlayerAttributes', {
 	// The apiProvider where to lookup the title key
 	"apiProvider" : null,
 	
-	// If the player controls should be overlayed 
+	// If the player controls should be overlaid 
 	//( Global default via config EmbedPlayer.OverlayControls in module loader.js)  
 	"EmbedPlayer.OverlayControls" : true,
 	
@@ -126,7 +184,7 @@ mw.setConfig( 'embedPlayerAttributes', {
 	"download_link" : true,
 	
 	// Content type of the media
-	"type" : null	  
+	"type" : null
 });
 
 /**
@@ -328,69 +386,61 @@ EmbedPlayerManager.prototype = {
 		mw.embedPlayerUpdateLibraryRequest( playerElement, playerDependencyRequest );
 		
 		// Load any skins we need then swap in the interface
-		mw.load( playerDependencyRequest, function() {							
-			// We should move all playlist handling to add-in 
-			switch( playerElement.tagName.toLowerCase() ) {					
-				case 'video':
-				case 'audio':
-				// By default treat the rewrite request as "video"
-				default:			
-					var waitForMeta = true;					
-					
-					// Let extensions determine if its worthwhile to wait for metadata:
-					// We pass an object to the trigger to preserve reference values		
-					var eventObject = { 
-						'playerElement':playerElement, 
-						'waitForMeta' : waitForMeta
-					}
-					
-					$j( mw ).trigger( 'addElementWaitForMetaEvent', eventObject );
-					// update the waitForMeta 
-					waitForMeta = eventObject['waitForMeta'];
-					
-					
-					// Set the wait for meta flag if unset by extension
-					if( waitForMeta ){
-						waitForMeta = _this.waitForMetaCheck( playerElement );
-					}
+		mw.load( playerDependencyRequest, function() {								
+			var waitForMeta = true;					
 			
-					var ranPlayerSwapFlag = false;					
-									
-					// Local callback to runPlayer swap once playerElement has metadata
-					function runPlayerSwap() {			
-						if( ranPlayerSwapFlag ){
-							return ;	
-						}
-						mw.log("runPlayerSwap::" + $j( playerElement ).attr('id') );
-						ranPlayerSwapFlag = true;	
-						var playerInterface = new mw.EmbedPlayer( playerElement , attributes);
-						
-						_this.swapEmbedPlayerElement( playerElement, playerInterface );								
-												
-						
-						// Pass the id to any hook that needs to interface prior to checkPlayerSources
-						mw.log("addElement :: trigger :: newEmbedPlayerEvent");
-						$j( mw ).trigger ( 'newEmbedPlayerEvent',  playerInterface.id );
-						
-						// Issue the checkPlayerSources call to the new player interface:
-						// make sure to use the element that is in the DOM:						
-						$j( '#' + playerInterface.id ).get(0).checkPlayerSources();	
-					}
-									
-					if( waitForMeta ) {						
-						mw.log('DO WaitForMeta ( video missing height (' + $j( playerElement ).attr('height') + '), width (' + $j( playerElement ).attr('width') + ') or duration' );
-						playerElement.removeEventListener( "loadedmetadata", runPlayerSwap, true );
-						playerElement.addEventListener( "loadedmetadata", runPlayerSwap, true );
-					
-						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
-						setTimeout( runPlayerSwap, 5000 );
-						return ;
-					} else { 
-						runPlayerSwap();
-						return ;
-					}				
-				break;
-		   }		   
+			// Let extensions determine if its worthwhile to wait for metadata:
+			// We pass an object to the trigger to preserve reference values		
+			var eventObject = { 
+				'playerElement':playerElement, 
+				'waitForMeta' : waitForMeta
+			}
+			
+			$j( mw ).trigger( 'addElementWaitForMetaEvent', eventObject );
+			// update the waitForMeta 
+			waitForMeta = eventObject[ 'waitForMeta' ];
+			
+			
+			// Set the wait for meta flag if unset by extension
+			if( waitForMeta ){
+				waitForMeta = _this.waitForMetaCheck( playerElement );
+			}
+	
+			var ranPlayerSwapFlag = false;					
+							
+			// Local callback to runPlayer swap once playerElement has metadata
+			function runPlayerSwap() {			
+				if( ranPlayerSwapFlag ){
+					return ;	
+				}
+				mw.log("runPlayerSwap::" + $j( playerElement ).attr('id') );
+				ranPlayerSwapFlag = true;	
+				var playerInterface = new mw.EmbedPlayer( playerElement , attributes);
+				
+				_this.swapEmbedPlayerElement( playerElement, playerInterface );								
+										
+				
+				// Pass the id to any hook that needs to interface prior to checkPlayerSources
+				mw.log("addElement :: trigger :: newEmbedPlayerEvent");
+				$j( mw ).trigger ( 'newEmbedPlayerEvent',  playerInterface.id );
+				
+				// Issue the checkPlayerSources call to the new player interface:
+				// make sure to use the element that is in the DOM:						
+				$j( '#' + playerInterface.id ).get(0).checkPlayerSources();	
+			}
+							
+			if( waitForMeta ) {						
+				mw.log('DO WaitForMeta ( video missing height (' + $j( playerElement ).attr('height') + '), width (' + $j( playerElement ).attr('width') + ') or duration' );
+				playerElement.removeEventListener( "loadedmetadata", runPlayerSwap, true );
+				playerElement.addEventListener( "loadedmetadata", runPlayerSwap, true );
+			
+				// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
+				setTimeout( runPlayerSwap, 5000 );
+				return ;
+			} else { 
+				runPlayerSwap();
+				return ;
+			}		   
 	   });
 	},
 	
@@ -904,18 +954,18 @@ mediaElement.prototype = {
 	* @param {Element} videoElement Element that has src attribute or has children source elements 
 	*/
 	init: function( videoElement ) {
-		var _this = this;
-		mw.log( videoElement.id + ' Initializing mediaElement...' );
+		var _this = this;		
+		mw.log( "mediaElement::init:" + videoElement.id  );
 		this.sources = new Array();			
 										
 		// Process the videoElement as a source element:
 		if ( $j( videoElement ).attr( "src" ) ) {
 			_this.tryAddSource( videoElement );
 		}
-			
+		// Process elements source children
 		$j( videoElement ).find( 'source,track' ).each( function( ) {			
 			_this.tryAddSource( this );
-		} );		
+		} );			
 	},
 	
 	/** 
@@ -1265,7 +1315,7 @@ mw.EmbedPlayer.prototype = {
 	* @param {Object} customAttributes Attributes supplied via argument (rather than applied to the element) 
 	*/
 	init: function( element, customAttributes ) {	
-		var _this = this;	
+		var _this = this;		
 		// Set customAttributes if unset: 
 		if ( !customAttributes ) {
 			customAttributes = { };
@@ -1362,7 +1412,22 @@ mw.EmbedPlayer.prototype = {
 		
 		// Add the mediaElement object with the elements sources:  
 		this.mediaElement = new mediaElement( element );
-
+		  
+		// Process attribute "sources" for dynamic embedding
+		if( customAttributes.sources && customAttributes.sources.length ){
+			for( var i =0; i < customAttributes.sources.length ; i ++ ){
+				var customSource =  customAttributes.sources[i];
+				if( customSource.src ){
+					var $source = $j('<source />')
+						.attr( 'src', customSource.src );	
+					
+					if( customSource.type ){
+						$source.attr('type', customSource.type )
+					}
+					this.mediaElement.tryAddSource( $source.get(0) );
+				}
+			}
+		}
 	},
 	
 	/**
