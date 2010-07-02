@@ -143,6 +143,7 @@ $messages['en'] = array(
 	'wikieditor-toolbar-characters-page-greek' => 'Greek',
 	'wikieditor-toolbar-characters-page-cyrillic' => 'Cyrillic',
 	'wikieditor-toolbar-characters-page-arabic' => 'Arabic',
+	'wikieditor-toolbar-characters-page-persian' => 'Persian',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Hebrew',
 	'wikieditor-toolbar-characters-page-bangla' => 'Bangla',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
