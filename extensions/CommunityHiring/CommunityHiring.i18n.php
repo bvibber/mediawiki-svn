@@ -2,6 +2,7 @@
 $messages = array();
 
 $messages['en'] = array(
+	'communityhiring-header' => 'Job Openings/Community Department',
 	'communityhiring-aboutyou' => 'Tell us about yourself',
 	'communityhiring-about-intro' => 'Please tell us about yourself and your interest in a position at Wikimedia Foundation.',
 	'communityhiring-given' => 'Given Name:',

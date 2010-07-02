@@ -9,9 +9,7 @@ class SpecialCommunityHiring extends SpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut;
 		
-		wfLoadExtensionMessages( 'CommunityHiring' );
-		
-		$wgOut->setPageTitle( 'Job Openings/Community Department' );
+		$wgOut->setPageTitle( wfMsg( 'communityhiring-header' ) );
 		
 		$formDescriptor = array(
 			'about-intro' => array(
