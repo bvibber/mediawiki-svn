@@ -29,6 +29,8 @@ window.mw.loader = new ( function() {
 	var batch = [];
 	// True after document ready occurs
 	var ready = false;
+	// Unique identification for generic queue item names
+	var unique = 0;
 	
 	/* Private Functions */
 	
@@ -80,20 +82,18 @@ window.mw.loader = new ( function() {
 	 * Processes the queue, loading and executing when things when ready.
 	 */
 	this.work = function() {
-		for ( var q = 0; q < queue.length; q++ ) {
-			for ( var p = 0; p < queue[q].pending.length; p++ ) {
+		for ( var q in queue ) {
+			for ( var p in queue[q].pending ) {
 				var requirement = queue[q].pending[p];
 				// If it's not in the registry yet, we're certainly not ready to execute
-				if (
-					typeof registry[requirement] !== 'undefined' &&
-					typeof registry[requirement].state !== 'undefined'
-				) {
+				if ( requirement in registry && 'state' in registry[requirement] ) {
 					// Take action, or not
 					switch ( registry[requirement].state ) {
 						case 'registered':
 							// Load (add to batch)
 							if ( batch.indexOf( requirement ) == -1 ) {
 								batch[batch.length] = requirement;
+								registry[requirement].state = 'loading';
 							}
 							break;
 						case 'loading':
@@ -104,28 +104,34 @@ window.mw.loader = new ( function() {
 							break;
 						case 'ready':
 							// This doesn't belong in the queue item's pending list
-							queue[q].pending.splice( p, 1 );
-							// Correct the array index
-							p--;
+							delete queue[q].pending[p];
 							break;
 					}
 				}
+				/*
+				 	if ( requirement in queue ) {
+						// Wait (do nothing...)
+						console.log( queue );
+						continue;
+					}
+				 */
 			}
 			// If all pending requirements have been satisfied, we're ready to execute the callback
 			if ( queue[q].pending.length == 0 ) {
 				queue[q].callback();
 				// Clean up the queue
-				queue.splice( q, 1 );
+				delete queue[q];
 			}
 		}
 		// Handle the batch only when ready
 		if ( batch.length && ready ) {
+			// Always order module alphabetically to help reduce cache misses for otherwise identical content
+			batch.sort();
+			console.log( batch );
 			// It may be more performant to do this with an Ajax call, but that's limited to same-domain, so we can
 			// either auto-detect (if there really is any benefit) or just use this method, which is safe either
 			// way. Also note, we're using "each" here so we only clear the batch if there was a head to add to
 			$( 'head' ).each( function() {
-				// Always order module alphabetically to help reduce cache misses for otherwise identical content
-				batch.sort();
 				// Append script to head
 				$(this).append(
 					$( '<script type="text/javascript"></script>' )
@@ -144,9 +150,9 @@ window.mw.loader = new ( function() {
 							that.work();
 						} )
 				);
-				// Clear the batch
-				batch = [];
 			} );
+			// Clear the batch
+			batch = [];
 		}
 	};
 	/**
@@ -201,11 +207,10 @@ window.mw.loader = new ( function() {
 			}
 			if ( requirements.length == 0 ) {
 				// Execute right away
+				console.log( 'IRA' );
 				execute( name );
 			} else {
-				// Queue it up (including the base module!) and work the queue
-				requirements[requirements.length] = name;
-				queue[queue.length] = { 'pending': requirements, 'callback': function() { execute( name ); } };
+				queue[name] = { 'pending': requirements, 'callback': function() { execute( name ); console.log( 'ICB' ); } };
 				that.work();
 			}
 			return true;
@@ -224,10 +229,11 @@ window.mw.loader = new ( function() {
 		var requirements = pending( requirements );
 		if ( requirements.length == 0 ) {
 			// Execute right away
+			console.log( 'URA' );
 			callback();
 		} else {
 			// Queue it up and work the queue
-			queue[queue.length] = { 'pending': requirements, 'callback': callback };
+			queue['use:' + unique++] = { 'pending': requirements, 'callback': function() { console.log( 'UCB' ); callback(); } };
 			that.work();
 		}
 	};

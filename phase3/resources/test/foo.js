@@ -1,2 +1,2 @@
 // Test output
-mw.log( 'Foo (first)' );
+mw.log( 'Foo (third)' );
