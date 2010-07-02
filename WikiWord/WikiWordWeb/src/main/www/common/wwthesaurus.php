@@ -381,7 +381,7 @@ class WWThesaurus extends WWUTils {
 	    if (@$row["name"] !== null) $concept["name"][$lang] = $row["name"];
 	    if (@$row["definition"] !== null) $concept["definition"][$lang] = $row["definition"];
 
-	    if (@$row["resources"])  $this->spliceResources($row["resources"], &$concept["pages"]);
+	    if (@$row["resources"])  $this->spliceResources($row["resources"], $concept["pages"]);
 	    else if (@$row["pages"]) $concept["pages"][$lang] = $this->splitPages($row["pages"]);
 
 	    if (@$row["broader"] !== null)  $broader[$lang] =  $this->splitConcepts($row["broader"]);
