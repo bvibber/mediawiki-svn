@@ -6,7 +6,7 @@ class ApiCodeUpdate extends ApiBase {
 		global $wgUser;
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'codereview-use' ) ) {
-			$this->dieUsage( 'You don\'t have permission update code', 'permissiondenied' );
+			$this->dieUsage( 'You don\'t have permission to update code', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
 
@@ -96,7 +96,7 @@ class ApiCodeUpdate extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission update code' ),
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to update code' ),
 			array( 'code' => 'invalidrepo', 'info' => "Invalid repo ``repo''" ),
 			array( 'missingparam', 'repo' ),
 			array( 'missingparam', 'rev' ),
