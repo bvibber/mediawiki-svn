@@ -79,7 +79,9 @@ if ($mode == 'term') {
 }
 
 header("Content-Type: $ctype; charset=$ctype");
-?><?xml version="1.0" encoding="UTF-8"?>
+
+print '<?xml version="1.0" encoding="UTF-8"?>';
+?>
  <feed xmlns="http://www.w3.org/2005/Atom" 
        xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
        

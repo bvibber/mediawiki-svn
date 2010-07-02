@@ -80,11 +80,11 @@ class WWThesaurus extends WWUTils {
 	$term = $this->normalizeSearchString($term, $norm);
 
 	$sql = "SELECT I.*, S.score ";
-	if ( $rclang ) $sql .= ", R.resources "
+	if ( $rclang ) $sql .= ", R.resources ";
 
 	$sql .= " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I ";
 	$sql .= " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_search_index as S ON I.concept = S.concept ";
-	if ( $rclang ) $sql .= " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_resource_index as R ON R.concept = I.concept "
+	if ( $rclang ) $sql .= " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_resource_index as R ON R.concept = I.concept ";
 
 	$sql .= " WHERE term = " . $this->quote($term) 
 	      . " AND I.lang IN " . $this->quoteSet($languages) 
@@ -381,7 +381,7 @@ class WWThesaurus extends WWUTils {
 	    if (@$row["name"] !== null) $concept["name"][$lang] = $row["name"];
 	    if (@$row["definition"] !== null) $concept["definition"][$lang] = $row["definition"];
 
-	    if (@$row["resources"])  $this->spliceResources($row["resources"], &$concept["pages"]) );
+	    if (@$row["resources"])  $this->spliceResources($row["resources"], &$concept["pages"]);
 	    else if (@$row["pages"]) $concept["pages"][$lang] = $this->splitPages($row["pages"]);
 
 	    if (@$row["broader"] !== null)  $broader[$lang] =  $this->splitConcepts($row["broader"]);

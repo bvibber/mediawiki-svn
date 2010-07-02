@@ -1,9 +1,8 @@
 <?php
-
-$IP = dirname(__FILE__);
+$IP = dirname( dirname(__FILE__) );
 
 require_once("$IP/config.php");
-require_once("$IP/wwthesaurus.php");
+require_once("$IP/common/wwthesaurus.php");
 
 $query = @$_REQUEST['query'];
 
