@@ -60,12 +60,12 @@ class SpecialCommunityHiring extends SpecialPage {
 				'type' => 'text',
 				'label-message' => 'communityhiring-phone',
 				'section' => 'aboutyou',
-				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			'email' => array(
 				'type' => 'text',
 				'label-message' => 'communityhiring-email',
 				'section' => 'aboutyou',
+				'validation-callback' => array( $this, 'validateRequired' ),
 			),
 			
 			// Pararaph answers
@@ -205,7 +205,10 @@ class SpecialCommunityHiring extends SpecialPage {
 		
 		$dbw = wfGetDB( DB_MASTER );
 		
-		$dbw->insert( 'community_hiring_application', array( 'ch_data' => json_encode($info) ),
+		$dbw->insert( 'community_hiring_application',
+				array( 'ch_data' => json_encode($info),
+					'ch_ip' => wfGetIP(),
+					'ch_timestamp' => wfTimestampNow(TS_DB) ),
 				__METHOD__ );
 				
 		$wgOut->addWikiMsg( 'communityhiring-done' );
