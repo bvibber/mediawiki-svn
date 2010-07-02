@@ -89,6 +89,7 @@ $messages['en'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'verified',
 	'code-status-deferred' => 'deferred',
+	'code-status-old' => 'old',
 	'code-pathsearch-legend' => 'Search revisions in this repo by path',
 	'code-pathsearch-path' => 'Path:',
 	'code-pathsearch-filter' => 'Filter applied:',
