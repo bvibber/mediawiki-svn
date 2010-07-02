@@ -125,12 +125,13 @@ function getConceptDetailsLink($langs, $concept, $text = NULL) {
     global $utils;
 
     $name = $utils->pickLocal($concept['name'], $langs);
-    if ( $name === false || $name === null) return false;
+    if ( $name === false || $name === null || $name === "") return false;
 
     $name = str_replace("_", " ", $name);
     $score = @$concept['score'];
 
     if ($text === null) $text = $name;
+    if ($text === null || $text === false || $text === "") return false;
   
     $u = getConceptDetailsURL($langs, $concept);
     return '<a href="' . htmlspecialchars($u) . '" title="' . htmlspecialchars($name) . ' (score: ' . (int)$score . ')'. '">' . htmlspecialchars($text) . '</a>';
@@ -333,6 +334,7 @@ if (!isset($scriptPath)) $scriptPath = "./";
 if (!isset($skinPath)) $skinPath = "$scriptPath/../skin/";
 
 header("Content-Type: text/html; charset=UTF-8");
+debug("starting HTML output");
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"> 
 <head>
@@ -373,6 +375,8 @@ if ($result && $mode) {
 ?>
     <table  border="0" class="results" cellspacing="0" summary="search results">
 <?php
+    debug("processing results");
+
     $count = 0;
     foreach ( $result as $row ) {
 	$count = $count + 1;
@@ -380,10 +384,16 @@ if ($result && $mode) {
 
 ?>    
     <?php 
+	  if ( @$debug ) {
+		  print "<p class='debug'>procesing concept #".htmlspecialchars($row['id'])."</p>";
+		  flush();                           
+	  }
+
 	  mangleConcept($row);
 	  $continue= printConcept($row, $languages, $terse);
 
 	  if (!$continue) break;
+	  if ($limit && $count >= $limit) break;
     ?>
 
 <?php

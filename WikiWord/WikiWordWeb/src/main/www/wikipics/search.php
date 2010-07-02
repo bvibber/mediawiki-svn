@@ -14,6 +14,11 @@ else require_once("$IP/common/wwthesaurus.php");
 function getImagesAbout($concept, $max) {
     global $utils, $profiling;
 
+    if ( @$debug ) {
+	    print "<p class='debug'>fetching images about #".htmlspecialchars($concept['id'])."</p>";
+	    flush();                           
+    }
+
     $t = microtime(true);
     $pics = $utils->getImagesAbout($concept, $max);
     $profiling['pics'] += (microtime(true) - $t);
@@ -149,10 +154,22 @@ function mangleConcept(&$concept) {
     sortConceptList($concept['broader']);
 }
 
+function debug( $msg ) {
+	global $debug;
+
+	if ( @$debug ) {
+		print "<p class='debug'>".htmlspecialchars($msg)."</p>";
+		flush();                           
+	}
+}
+
 $conceptId = @$_REQUEST['id'];
 $term = @$_REQUEST['term'];
 $lang = @$_REQUEST['lang'];
 $format = @$_REQUEST['format'];
+$limit = @$_REQUEST['limit'];
+
+if ( $limit === null ) $limit = $wwMaxSearchResults;
 
 if ( $term===null ) {
 	$term = @$_SERVER['PATH_INFO'];
@@ -178,6 +195,7 @@ if (!isset($wwSelf)) {
 if (!isset($scriptPath)) $scriptPath = dirname($wwSelf);
 if (!isset($skinPath)) $skinPath = "$scriptPath/../skin/";
 
+$debug = false;
 $error = NULL;
 
 if ($lang) {
@@ -202,15 +220,18 @@ else $utils = new WWImages( $thesaurus );
 
 if ( !$utils->db ) $utils->connect($wwDBServer, $wwDBUser, $wwDBPassword, $wwDBDatabase);
 
-if (@$_REQUEST['debug']) $utils->debug = true;
+if (@$_REQUEST['debug']) {
+	$debug = true;
+	$utils->debug = true;
+	$thesaurus->debug = true;
+}
 
-$limit = 20;
 $norm = 1;
 
 $mode = NULL;
 $result = NULL;
 
-$fallback_languages = array( "en" ); #TODO: make the user define this list
+$fallback_languages = array( "en", "commons" ); #TODO: make the user define this list
 
 if ( $lang ) {
     $languages = preg_split('![,;/|+]!', $lang);
@@ -232,7 +253,7 @@ if (!$error) {
   try {
       if ($lang && $conceptId) {
 	  $mode = "concept";
-	  $result = $thesaurus->getConceptInfo($conceptId, $lang, null, $allLanguages);
+	  $result = $thesaurus->getConceptInfo($conceptId, $lang, null, $allLanguages, $wwMax);
 	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
 		  $mode = "term";
@@ -243,6 +264,8 @@ if (!$error) {
   }
   $profiling['thesaurus'] += (microtime(true) - $t);
 }
+
+debug("generating response");
 
 /*if ( $format == "atom" || $format == "xml" || $format == "opensearch" ) include("response.atom.php"); 
 else*/ 

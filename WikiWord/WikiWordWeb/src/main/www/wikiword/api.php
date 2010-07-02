@@ -36,13 +36,15 @@ if ( $query ) {
 	} else if ($query == 'concepts') {
 	    $term = @$_REQUEST['term'];
 	    $norm = @$_REQUEST['norm'];
+	    $limit = @$_REQUEST['limit'];
 
 	    if ( $norm === null ) $norm = 1;
+	    if ( $limit === null ) $limit = $wwMaxSearchResults;
 	    #$page = @$_REQUEST['page'];
 
 	    if ( $qlang === null ) $result['error'] = array('code' => 150, 'message' => "missing parameter qlang");
 	    else if ( $term !== null ) {
-			$result['concepts'] = $thesaurus->getConceptsForTerm($qlang, $term, $lang, $norm, $rclang); #TODO: limit!
+			$result['concepts'] = $thesaurus->getConceptsForTerm($qlang, $term, $lang, $norm, $rclang, $limit); 
 			if ( $result['concepts'] === false || $result['concepts'] === null ) {
 			    $result['error'] = array('code' => 210, 'message' => "failed to retrieve concepts for term $langt:$term");
 			}
@@ -107,7 +109,12 @@ if ( $query ) {
 	    $result['error'] = array('code' => 10, 'message' => "bad query: $query");
 	}
     } catch (Exception $e) {
-	$result['error'] = array('code' => 1000, 'message' => "unexpected exception: " . $e->getMessage());
+	$result['error']['code'] = 1000 + $e->getCode();
+	$result['error']['message'] = "unexpected exception: " . $e->getMessage();
+
+	if ( @$wwExceptionDetails ) {
+		$result['error']['trace'] = $e->getTrace();
+	};
     }
 
     $result['time'] = (microtime(true) - $start) . " sec";

@@ -21,6 +21,8 @@ $wwMaxPreviewLinks = 20;
 $wwGalleryColumns = 5;
 $wwMaxGalleryImages = 200;
 $wwMaxDetailLinks = 1000;
+$wwMaxSearchResults = 8;
+
 $wwThumbSize = 120;
 $wwThumbnailURL = "http://toolserver.org/tsthumb/tsthumb?f={name}&domain=commons.wikimedia.org&w={width}&h={height}";
 $wwImagePageURL = "http://commons.wikimedia.org/wiki/File:{name}";
@@ -32,8 +34,10 @@ $wwCommonsTablePrefix = "commonswiki_p.";
 $wwWikiInfoTable = "toolserver.wiki";
 $wwWikiDbName = "{lang}wiki_p";
 $wwWikiServerName = "sql-s{num}";
+$wwWikiFastServerName = "sql-s{num}-fast";
 
 $wwCommonsServerName = null;
+$wwCommonsFastServerName = null;
 
 $wwTagsTable = null;
 

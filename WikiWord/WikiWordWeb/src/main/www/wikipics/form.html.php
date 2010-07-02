@@ -34,9 +34,9 @@ if (!defined("WIKIPICS")) die("not a valid entry point");
       </table>
       
       <?php
-      if ($utils->debug) {
+      if ( @$debug ) {
 	      print '<input type="hidden" name="debug" value="true"/>';
-	      print "<p>debug mode enabled!</p>";
+	      print "<p class='debug'>debug mode enabled!</p>";
 	      flush();                           
       }
       ?>

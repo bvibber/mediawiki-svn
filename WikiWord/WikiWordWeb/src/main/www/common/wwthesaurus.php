@@ -92,7 +92,7 @@ class WWThesaurus extends WWUTils {
 	      . " AND S.norm <= " . (int)$norm;
 
 	$sql .= " ORDER BY S.score DESC, S.concept "
-	      . " LIMIT " . (int)$limit;
+	      . " LIMIT " . (int)$limit * count( $languages );
 
 	#FIXME: query-lang vs. output-languages!
 
@@ -103,7 +103,7 @@ class WWThesaurus extends WWUTils {
 	$rs = $this->queryConceptsForTerm($qlang, $term, $languages, $norm, $rclang, $limit);
 	$list = WWUtils::slurpRows($rs);
 	mysql_free_result($rs);
-	return $this->buildConcepts($list);
+	return $this->buildConcepts($list, $limit);
     }
  
    function getPagesForConcept( $id, $lang = null ) {
@@ -257,7 +257,7 @@ class WWThesaurus extends WWUTils {
 
 		$rc = array();
 		foreach ($rr as $r) {
-		    list($t, $lang, $n) = explode(":", $p, 3);
+		    list($t, $lang, $n) = explode(":", $r, 3);
 		    $rc[$lang][$n] = (int)$t;
 		}
 	}
@@ -308,11 +308,11 @@ class WWThesaurus extends WWUTils {
 	$sql .= " FROM {$wwTablePrefix}_{$wwThesaurusDataset}_concept_info as I ";
 	if ( $rclang ) $sql .= " JOIN {$wwTablePrefix}_{$wwThesaurusDataset}_resource_index as R ON R.concept = I.concept ";
 
-	$sql .= " WHERE concept = ".(int)$id;
+	$sql .= " WHERE I.concept = ".(int)$id;
 
 	if ($lang) {
-	    if ( is_array($lang) ) $sql .= " AND lang IN " . $this->quoteSet($lang);
-	    else $sql .= " AND lang = " . $this->quote($lang);
+	    if ( is_array($lang) ) $sql .= " AND I.lang IN " . $this->quoteSet($lang);
+	    else $sql .= " AND I.lang = " . $this->quote($lang);
 	}
 
 	$r = $this->getRows($sql);
@@ -321,7 +321,7 @@ class WWThesaurus extends WWUTils {
 	return $this->buildConcept($r);
     }
 
-    function buildConcepts($rows) {
+    function buildConcepts($rows, $limit = false) {
 	$concepts = array();
 	$buff = array();
 	$id = null;
@@ -334,6 +334,8 @@ class WWThesaurus extends WWUTils {
 
 		$id = null;
 		$score = null;
+
+		if ( $limit && count($concepts) >= $limit ) break;
 	    }
 
 	    if ($id === null) {
@@ -343,7 +345,7 @@ class WWThesaurus extends WWUTils {
 	    $buff[] = $row;
 	}
 
-	if ($buff) {
+	if ($buff && $id && ( !$limit || count($concepts) < $limit ) ) {
 		$concepts[$id] = $this->buildConcept($buff);
 		$buff = array();
 	}

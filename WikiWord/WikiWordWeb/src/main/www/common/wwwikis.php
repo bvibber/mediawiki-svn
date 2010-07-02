@@ -24,7 +24,9 @@ class WWWikis extends WWUtils {
     }
 
     function getWikiInfo($lang) {
-	global $wwWikiInfoTable, $wwWikiDbName, $wwWikiServerName, $wwCommonsServerName;
+	global $wwWikiInfoTable, $wwWikiDbName;
+	global $wwWikiServerName, $wwWikiFastServerName;
+	global $wwCommonsServerName, $wwCommonsFastServerName;
 
 	$db = str_replace('{lang}', $lang, $wwWikiDbName);
 
@@ -37,33 +39,53 @@ class WWWikis extends WWUtils {
 	mysql_free_result($rs);
 
 	if (!$info) $info = false;
-	else $info['server'] = str_replace('{num}', $info['server'], $wwWikiServerName);
+	else {
+		$info['server'] = str_replace('{num}', $info['server'], $wwWikiServerName);
 
-	if ($lang == "commons" && $wwCommonsServerName) $info['server'] = $wwCommonsServerName;
+		if ( $wwWikiFastServerName ) $info['fast-server'] = str_replace('{num}', $info['server'], $wwWikiServerName);
+		else $info['fast-server'] = $info['server'];
+
+		if ($lang == "commons" && $wwCommonsServerName) $info['server'] = $wwCommonsServerName;
+		if ($lang == "commons" && $wwCommonsFastServerName) $info['fast-server'] = $wwCommonsFastServerName;
+		else $info['fast-server'] = $info['server'];
+	}
 
 	return $info;
     }
 
-    function getWikiConnection($lang) {
-	if (isset($this->wikidbs[$lang])) return $this->wikidbs[$lang];
+    function getWikiConnection($lang, $fast = false) {
+	if ( $fast ) $key = "$lang+fast"; 
+	else $key = $lang;
+
+	if (isset($this->wikidbs[$key])) return $this->wikidbs[$key];
 
 	$info = $this->getWikiInfo($lang);
 
 	if (!$info) {
 		$db = false;
 	} else {
-	    $db = mysql_connect($info['server'], $this->dbuser, $this->dbpassword);
+	    if ($fast && isset($info['fast-server'])) $server = $info['fast-server'];
+	    else $server = $info['server'];
+
+	    $db = mysql_connect($server, $this->dbuser, $this->dbpassword);
 	    if (!$db) throw new Exception("Connection Failure to Database: " . mysql_error());
 	    if (!mysql_select_db($info['dbname'], $db)) throw new Exception ("Database not found: " . mysql_error());
 	    if (!mysql_query("SET NAMES Latin1;", $db)) throw new Exception ("Database not found: " . mysql_error());
 	}
 
-	$this->wikidbs[$lang] = $db;
+	$this->wikidbs[$key] = $db;
 	return $db;
     }
 
     function queryWiki($lang, $sql) {
-	$db = $this->getWikiConnection($lang);
+	$db = $this->getWikiConnection($lang, false);
+	if (!$db) throw new Exception ("Wiki not found: $lang");
+
+	return $this->query($sql, $db);
+    }
+
+    function queryWikiFast($lang, $sql) {
+	$db = $this->getWikiConnection($lang, true);
 	if (!$db) throw new Exception ("Wiki not found: $lang");
 
 	return $this->query($sql, $db);

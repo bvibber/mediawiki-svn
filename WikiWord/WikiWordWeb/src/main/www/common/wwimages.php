@@ -109,7 +109,7 @@ class WWImages extends WWWikis {
 	$sql .= " AND P.page_title = " . $this->quote($title);
 	if ($commonsOnly) $sql .= " AND R.img_name IS NULL";
 
-	return $this->queryWiki($lang, $sql);
+	return $this->queryWikiFast($lang, $sql);
     }
 
     function getImagesOnPage($lang, $ns, $title, $commonsOnly = false) {
@@ -143,7 +143,7 @@ class WWImages extends WWWikis {
 	$sql .= " AND P.page_title = " . $this->quote($title);
 	if ($commonsOnly) $sql .= " AND R.img_name IS NULL";
 
-	return $this->queryWiki($lang, $sql);
+	return $this->queryWikiFast($lang, $sql);
     }
 
     function getImagesOnPageTemplates($lang, $ns, $title, $commonsOnly = false) {
@@ -165,7 +165,7 @@ class WWImages extends WWWikis {
 	$sql .= " WHERE C.cl_to = " . $this->quote($title);
 	$sql .= " AND P.page_namespace = " . NS_IMAGE;
 
-	return $this->queryWiki($lang, $sql);
+	return $this->queryWikiFast($lang, $sql);
     }
 
     function getImagesInCategory($lang, $title) {
@@ -208,7 +208,7 @@ class WWImages extends WWWikis {
  	$sql .= " FROM $image_table as T ";
 	$sql .= " WHERE T.img_name IN " . $this->quoteSet($images);
 
-	return $this->queryWiki($lang, $sql);
+	return $this->queryWikiFast($lang, $sql);
     }
 
     function getMetaForImages($lang, $images) {
@@ -232,7 +232,7 @@ class WWImages extends WWWikis {
 	$sql .= " WHERE P.page_title = " . $this->quote($image);
 	$sql .= " AND P.page_namespace = " . NS_IMAGE;
 
-	return $this->queryWiki($lang, $sql);
+	return $this->queryWikiFast($lang, $sql);
     }
 
     function getTemplatesOnImagePage($lang, $image) {
@@ -254,7 +254,7 @@ class WWImages extends WWWikis {
 	$sql .= " WHERE P.page_title = " . $this->quote($image);
 	$sql .= " AND P.page_namespace = " . NS_IMAGE;
 
-	return $this->queryWiki($lang, $sql);
+	return $this->queryWikiFast($lang, $sql);
     }
 
     function getCategoriesOfImagePage($lang, $image) {
@@ -295,6 +295,7 @@ class WWImages extends WWWikis {
 
 	$wikis = array();
 	$pages = array();
+	$pagesText = "";
 
 	foreach ($concepts as $lang => $rc) {
 	    if (!isset($wwLanguages[$lang])) continue;
@@ -306,12 +307,15 @@ class WWImages extends WWWikis {
 		if ( $t != 10) continue; //use only articles
 		$p = "gil_wiki = " . $this->quote($wiki) . " AND gil_page_namespace_id = 0 AND gil_page_title = " . $this->quote($r);
 		$pages[] = $p;
+
+		if ($pagesText) $pagesText .= ", ";
+		$pagesText .= $wiki . ':' . str_replace('*', '_', $r);
 	    }
 	}
 
 	if (!$pages || !$wikis) return false;
 
-	$sql = " /* queryImagesOnPagesGlobally() */ ";
+	$sql = " /* queryImagesOnPagesGlobally($pagesText) */ ";
 	$sql .= " SELECT distinct gil_to as image FROM $globalimagelinks_table ";
 	$sql .= " WHERE gil_wiki in " . $this->quoteSet( $wikis );
 	$sql .= " AND gil_page_namespace_id = 0 ";
@@ -331,19 +335,21 @@ class WWImages extends WWWikis {
 	return $list;
     }
 
-    function queryGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+    function queryGlobalUsageCounts( $images, $wikis = null ) {
 	if (!$images) return false;
+
+	//FIXME: use pre-calculated usage counts if $wwImageUsageTable is set!!!
 
 	$globalimagelinks_table = $this->getWikiTableName("commons", "globalimagelinks");
 
-	$sql = " /* queryGlobalUsageCounts() */ ";
+	$sql = " /* queryGlobalUsageCounts(" . str_replace('*', '_', implode(', ', $images) ) . ") */ ";
 	$sql .= " SELECT gil_to as image, gil_wiki as wiki, count(*) as linkcount FROM $globalimagelinks_table ";
 	$sql .= " WHERE gil_page_namespace_id = 0 ";
 	$sql .= " AND gil_to IN " . $this->quoteSet( $images );
 
 	if ( $wikis ) {
 	    if ( is_array( $wikis ) ) $sql .= " AND gil_wiki IN " . $this->quoteSet( $wikis );
-	    else if ( is_array( $wikis ) ) $sql .= " AND gil_wiki REGEX " . $this->quote( '^' . $wikis . '$' );
+	    else if ( $wikis ) $sql .= " AND gil_wiki RLIKE " . $this->quote( '^' . $wikis . '$' );
 
 	    #TODO: could also limit to to x or min size n using toolserver.wiki !
 	}
@@ -351,10 +357,10 @@ class WWImages extends WWWikis {
 	$sql .= " GROUP BY gil_to, gil_wiki ";
 	$sql .= " ORDER BY gil_to, gil_wiki ";
 	
-	return $this->queryWiki("commons", $sql);
+	return $this->queryWikiFast("commons", $sql);
     }
 
-    function getGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+    function getGlobalUsageCounts( $images, $wikis = null ) {
 	if (!$images) return array();
 
 	$rs = $this->queryGlobalUsageCounts($images, $wikis);
@@ -412,7 +418,9 @@ class WWImages extends WWWikis {
 	$globalImageList = $this->getImagesOnPagesGlobally($pages); //use wikis for $wwLanguages only
 
 	//TODO: sanity limit on number of images. $max * 5 ?
-	$globalImageUsage = $this->getGlobalUsageCounts($globalImageList, ".*wiki"); //use all wikipedias
+	//$globalImageUsage = $this->getGlobalUsageCounts($globalImageList, ".*wiki"); //use all wikipedias
+	$globalImageUsage = $this->getGlobalUsageCounts($globalImageList, null); //use all wikis
+	//FIXME:  getGlobalUsageCounts is SLOW!!!
 
 	foreach ($globalImageUsage as $image => $usage) {
 	    $m = @$usage['*max*'];
@@ -667,11 +675,11 @@ class WWFakeImages extends WWImages {
 	return $this->allPics;
     }
 
-    function queryGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+    function queryGlobalUsageCounts( $images, $wikis = null ) {
 	throw new Exception( __METHOD__ . " not implemented" );
     }
 
-    function getGlobalUsageCounts( $images, $wikis = ".*wiki" ) {
+    function getGlobalUsageCounts( $images, $wikis = null ) {
 	if (!$images) return array();
 
 	foreach ($images as $current) {

@@ -10,4 +10,5 @@ truncate {collection}_{thesaurus}_resource_index;
 insert into {collection}_{thesaurus}_resource_index ( concept, resources )
 select concept, group_concat(distinct concat(type, ":", lang, ":", local_resource_name) separator "|" ) as resources 
 from {collection}_{thesaurus}_about as A
-where type > 0;
+where type > 0
+group by concept;

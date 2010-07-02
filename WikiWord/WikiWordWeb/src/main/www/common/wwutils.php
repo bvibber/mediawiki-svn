@@ -23,8 +23,9 @@ class WWUtils {
 	if ($db == NULL && isset($this)) $db = $this->db;
 
 	if ($this->debug) {
-	    print "\n<pre>" .  htmlspecialchars($sql) . "</pre>\n";
+	    print "\n<div class='debug'>SQL: <pre>" .  htmlspecialchars($sql) . "</pre></div>\n";
 	    flush();
+	    $t = microtime(true);
 	}
 
 	if (!$db) {
@@ -37,6 +38,12 @@ class WWUtils {
 		$error = mysql_error($db);
 		$errno = mysql_errno($db);
 		throw new Exception("$error (#$errno);\nlast query: $sql");
+	}
+
+	if ($this->debug) {
+	    $t = microtime(true) - $t;
+	    print "\n<div class='debug'>SQL time: $t</div>\n";
+	    flush();
 	}
 
 	return $result;
@@ -155,6 +162,8 @@ class WWUtils {
     }
 
     function pickLocal($items, $languages) {
+	 if ( !is_array($items) ) return $items;
+
          $lang = $this->pickLanguage($items, $languages);
          if (!$lang) return false;
 		 return $items[$lang];

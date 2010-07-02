@@ -3,6 +3,7 @@ require_once( dirname( __FILE__ ) . "/wwutils.php" );
 
 class WWClient {
     var $api;
+    var $debug = false;
 
     function __construct( $api ) {
 	$this->api = $api;
@@ -29,13 +30,27 @@ class WWClient {
 	    $url .= urlencode( $v );
 	}
 
+	if ($this->debug) {
+	    $t = microtime(true);
+	    print "\n<span class='debug'>[fetching " .  htmlspecialchars($url) . "]</span>\n";
+	    flush();
+	}
+
 	$data = file_get_contents( $url ); //TODO: CURL
+
 	if ( !$data ) throw new Exception("failed to fetch data from $url");
 
 	$data = unserialize($data);
 	if ( !$data ) throw new Exception("failed to unserialize data from $url");
 
 	if ( @$data['error'] ) throw new Exception("API returned error ".$data['error']['code'].": ".$data['error']['message']."; url: $url");
+
+	if ($this->debug) {
+	    $t = microtime(true) - $t;
+	    print "\n<span class='debug'>[took " .  $t . " sec]</span>\n";
+	    flush();
+	}
+
 	return $data;
     }
 
@@ -144,6 +159,7 @@ class WWClient {
 		'lang' => $languages,
 		'norm' => $norm,
 		'term' => $term,
+		'limit' => $limit,
 	);
 
 	$rs = $this->query( $param );
