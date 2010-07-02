@@ -178,7 +178,8 @@ $.suggestions = {
 								// New width is only calculated here, applied later
 								var $span = $result.children( 'span' );
 								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
-									expWidth = $span.outerWidth();
+									// factor in any padding, margin, or border space on the parent
+									expWidth = $span.outerWidth() + ( context.data.$container.width() - $span.parent().width());
 								}
 								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
