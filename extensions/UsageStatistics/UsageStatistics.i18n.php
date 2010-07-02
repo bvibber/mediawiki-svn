@@ -2345,13 +2345,14 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'specialuserstats' => 'Kullanım istatistikleri',
 	'usagestatistics' => 'Kullanım istatistikleri',
 	'usagestatisticsinterval' => 'Aralık:',
-	'usagestatisticsnamespace' => 'İsim alanı:',
+	'usagestatisticsnamespace' => 'Ad boşluğu:',
 	'usagestatisticsexcluderedirects' => 'Yönlendirmeleri kapsam dışında bırak',
 	'usagestatisticstype' => 'Tür:',
 	'usagestatisticsstart' => 'Başlangıç tarihi:',

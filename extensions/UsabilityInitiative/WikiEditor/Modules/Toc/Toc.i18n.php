@@ -123,6 +123,14 @@ $messages['ca'] = array(
 	'wikieditor-toc-hide' => 'Amaga el contingut',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-toc-show' => 'نیشاندانی ناوەڕۆک',
+	'wikieditor-toc-hide' => 'شاردنەوەی ناوەڕۆک',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -636,6 +644,14 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'wikieditor-toc-show' => 'Pokaži sadržaj',
 	'wikieditor-toc-hide' => 'Sakrij sadržaj',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-toc-show' => 'Témbongkeun eusi',
+	'wikieditor-toc-hide' => 'Sumputkeun eusi',
 );
 
 /** Swedish (Svenska)

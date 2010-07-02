@@ -19,6 +19,13 @@ $messages['de'] = array(
 	'pageobjectmodel-desc' => 'Fügt eine Reihe von Klassen zur Abstraktion der MediaWiki-Syntax hinzu, um einen einfachen Datenexport sowie die Bearbeitung von Seiten mit anderen Programmen zu ermöglichen',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'pageobjectmodel-desc' => 'Pśidawa sajźbu klasow za abstrakcijow syntakse MediaWiki, aby zmóžniło jadnoru ekstrakciju a manipolěrowanje bokow w drugich programach',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -31,6 +38,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'pageobjectmodel-desc' => 'Engade un conxunto de clases para a captación de sintaxe MediaWiki de modo que permita a fácil extracción e manipulación de páxinas dentro doutros programas',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'pageobjectmodel-desc' => 'Přidawa sadźbu klasow za abstrakciju syntaksy MediaWiki, zo by jednoru ekstrakciju a manipulowanje stronow znutřka druhich programow zmóžniło',
 );
 
 /** Interlingua (Interlingua)
@@ -59,6 +73,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'pageobjectmodel-desc' => "Voegt klassen toe voor de abstractie van de MediaWiki-syntaxis om eenvoudige extractie en manipulatie van pagina's binnen andere programma's mogelijk te maken",
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'pageobjectmodel-desc' => "A gionta n'ansema ëd class për l'astrassion dla sintass Mediawiki për përmëtte strassion e manipolassion bel fé ëd pàgine sensa àutr program",
 );
 
 /** Portuguese (Português)

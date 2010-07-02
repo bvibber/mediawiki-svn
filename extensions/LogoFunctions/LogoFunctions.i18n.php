@@ -52,6 +52,14 @@ $messages['de'] = array(
 	'logofunctions-filenotexist' => 'Fehler: [[File:$1]] existiert nicht',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'logofunctions-desc' => 'Funtzio analizatua gehitzen dio wikiko logoari',
+	'logofunctions-filenotexist' => 'Errorea: [[File:$1]] ez da existitzen',
+);
+
 /** French (Français)
  * @author Jean-Frédéric
  * @author Peter17
@@ -137,6 +145,14 @@ $messages['nl'] = array(
 $messages['pl'] = array(
 	'logofunctions-desc' => 'Dodaje funkcję parsera umożliwiającą ustawienie logo dla wiki',
 	'logofunctions-filenotexist' => 'Błąd – [[File:$1]] nie istnieje',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'logofunctions-desc' => 'Gionta funsion dël parser për amposté ël sìmbol dla wiki',
+	'logofunctions-filenotexist' => 'Eror: [[File:$1]] a esist pa',
 );
 
 /** Portuguese (Português)

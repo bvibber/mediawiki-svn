@@ -153,6 +153,16 @@ $messages['ce'] = array(
 	'wikieditor-preview-loading' => 'Чуйолуш…',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-preview-preference' => 'ڕێگەپێدان بە پێشبینینی شانبەشان',
+	'wikieditor-preview-tab' => 'پێشبینین',
+	'wikieditor-preview-changes-tab' => 'گۆڕانکارییەکان',
+	'wikieditor-preview-loading' => 'باركردن‌ ...',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -785,6 +795,7 @@ $messages['sr-el'] = array(
  */
 $messages['su'] = array(
 	'wikieditor-preview-tab' => 'Pramidang',
+	'wikieditor-preview-changes-tab' => 'Parobahan',
 	'wikieditor-preview-loading' => 'Ngamuat…',
 );
 

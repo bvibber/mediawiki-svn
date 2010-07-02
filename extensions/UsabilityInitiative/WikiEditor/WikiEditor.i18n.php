@@ -148,6 +148,14 @@ $messages['ce'] = array(
 	'wikieditor-loading' => 'Чуйолуш',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-wikitext-tab' => 'ویکیدەق',
+	'wikieditor-loading' => 'بارکردن',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

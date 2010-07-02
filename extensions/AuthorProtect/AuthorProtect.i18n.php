@@ -159,6 +159,7 @@ $messages['az'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'authorprotect' => 'Абарона старонак ад не-аўтараў',
@@ -167,8 +168,8 @@ $messages['be-tarask'] = array(
 	'authorprotect-confirm' => 'Зьмяніць узроўні абароны',
 	'authorprotect-edit' => 'Дазволіць рэдагаваньне толькі аўтарам',
 	'authorprotect-move' => 'Дазволіць перанос толькі аўтарам',
-	'authorprotect-expiry' => 'Тэрмін',
-	'authorprotect-reason' => 'Прычына',
+	'authorprotect-expiry' => 'Тэрмін:',
+	'authorprotect-reason' => 'Прычына:',
 	'authorprotect-intro' => 'Выкарыстоўвайце гэтую формы для абароны гэтай старонкі ад не-аўтараў',
 	'authorprotect-success' => 'Старонка абароненая!',
 	'authorprotect-failure' => 'Старонка не абароненая',
@@ -676,8 +677,8 @@ $messages['hsb'] = array(
 	'authorprotect-confirm' => 'Škitowe schodźenki změnić',
 	'authorprotect-edit' => 'Wobdźěłanje na awtorow wobmjezować',
 	'authorprotect-move' => 'Přesunjenje na awtorow wobmjezować',
-	'authorprotect-expiry' => 'Čas spadnjenja',
-	'authorprotect-reason' => 'Přičina',
+	'authorprotect-expiry' => 'Spadnje:',
+	'authorprotect-reason' => 'Přičina:',
 	'authorprotect-intro' => 'Wužij tutón formular, zo by tutu stronu přećiwo wužiwarjam škitał, kotřiz awtorojo njejsu',
 	'authorprotect-success' => 'Škitanje je so poradźiło!',
 	'authorprotect-failure' => 'Škitanje njeje so poradźiło!',
@@ -929,8 +930,8 @@ $messages['lb'] = array(
 	'authorprotect-confirm' => "D'Niveaue vun der Protectioun änneren",
 	'authorprotect-edit' => 'Ännerungen nëmmen fir Auteure méiglech maachen',
 	'authorprotect-move' => 'Récklen nëmme fir Auteure méiglech maachen',
-	'authorprotect-expiry' => 'Dauer vun der Spär',
-	'authorprotect-reason' => 'Grond',
+	'authorprotect-expiry' => 'Dauer vun der Spär:',
+	'authorprotect-reason' => 'Grond:',
 	'authorprotect-intro' => "Benotzt dëse Formulaire fir d'änner vun dëser Säit op d'Auteuren ze limitéieren",
 	'authorprotect-success' => "D'Säit gouf protegéiert!",
 	'authorprotect-failure' => "D'Säit konnt net protegéiert ginn",
@@ -1196,8 +1197,8 @@ $messages['pms'] = array(
 	'authorprotect-confirm' => 'Cambia ël livel ëd protession',
 	'authorprotect-edit' => "Strenz le modìfiche a j'autor",
 	'authorprotect-move' => "Strenz jë spostament a j'autor",
-	'authorprotect-expiry' => 'Scadensa',
-	'authorprotect-reason' => 'Rason',
+	'authorprotect-expiry' => 'Scadensa:',
+	'authorprotect-reason' => 'Rason:',
 	'authorprotect-intro' => 'Dòvra sta forma-sì për bloché sta pàgina-sì dai nen-autor',
 	'authorprotect-success' => 'Protession a pòst!',
 	'authorprotect-failure' => 'Protession pa a pòst',
@@ -1248,6 +1249,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'authorprotect' => 'Proteger página contra não-autores',
@@ -1256,8 +1258,8 @@ $messages['pt-br'] = array(
 	'authorprotect-confirm' => 'Alterar níveis de proteção',
 	'authorprotect-edit' => 'Restringir edição a autores',
 	'authorprotect-move' => 'Restringir a movimentação da página a autores',
-	'authorprotect-expiry' => 'Tempo de expiração',
-	'authorprotect-reason' => 'Motivo',
+	'authorprotect-expiry' => 'Expira em:',
+	'authorprotect-reason' => 'Motivo:',
 	'authorprotect-intro' => 'Use este formulário para bloquear a página contra não-autores',
 	'authorprotect-success' => 'Proteção com sucesso!',
 	'authorprotect-failure' => 'Proteção sem sucesso',
@@ -1365,8 +1367,8 @@ $messages['sr-ec'] = array(
 	'authorprotect-confirm' => 'Промени нивое заштите',
 	'authorprotect-edit' => 'Ограничи право измене на ауторе',
 	'authorprotect-move' => 'Ограничи право премештања само на ауторе',
-	'authorprotect-expiry' => 'Време истека',
-	'authorprotect-reason' => 'Разлог',
+	'authorprotect-expiry' => 'Истиче:',
+	'authorprotect-reason' => 'Разлог:',
 	'authorprotect-intro' => 'Користите ову форму да бисте закључали овај чланак за не-ауторе',
 	'authorprotect-success' => 'Заштита успешна!',
 	'authorprotect-failure' => 'Заштита неуспешна',
@@ -1519,6 +1521,7 @@ $messages['tr'] = array(
  * @author AS
  * @author Ahonc
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'authorprotect' => 'Захист сторінок від не-авторів',
@@ -1527,8 +1530,8 @@ $messages['uk'] = array(
 	'authorprotect-confirm' => 'Змінити рівні захисту',
 	'authorprotect-edit' => 'Редагувати можуть тільки автори',
 	'authorprotect-move' => 'Перейменовувати можуть тільки автори',
-	'authorprotect-expiry' => 'Термін захисту',
-	'authorprotect-reason' => 'Причина',
+	'authorprotect-expiry' => 'Закінчується:',
+	'authorprotect-reason' => 'Причина:',
 	'authorprotect-intro' => 'Використовуйте цю форму для захисту сторінки від не-авторів',
 	'authorprotect-success' => 'Захист успішно встановлений!',
 	'authorprotect-failure' => 'Встановити захист не вдалося',

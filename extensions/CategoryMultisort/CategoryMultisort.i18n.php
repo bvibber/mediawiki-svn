@@ -238,6 +238,18 @@ $messages['pl'] = array(
 	'prefs-category' => 'Kategoria',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorymultisort-desc' => 'Përmëtte che le categorìe a sio vëddùe con ordinament diferent',
+	'categorymultisort-defaultsortkey-name' => 'Për sòlit',
+	'categorymultisort-sortkey' => 'Ordinament:',
+	'categorymultisort-go' => 'Và',
+	'categorymultisort-default-sortkey' => 'Ordinament për sòlit:',
+	'prefs-category' => 'Categorìa',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -290,6 +302,7 @@ $messages['sr-ec'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Подразумевано',
 	'categorymultisort-sortkey' => 'Кључ сортирања:',
 	'categorymultisort-go' => 'Иди',
+	'prefs-category' => 'Категорија',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */

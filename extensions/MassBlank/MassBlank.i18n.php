@@ -377,3 +377,10 @@ Ipasok ang pangalan ng tagagamit o adres ng IP upang makakuha ng isang talaan ng
 	'right-massblank' => 'Malawakang tanggalan ng laman ang mga pahina',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'massblank-blankcomment' => 'Причина:',
+);
+

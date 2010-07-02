@@ -9794,6 +9794,7 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
  * @author Joseph
  * @author Karduelis
  * @author Mach
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -9801,7 +9802,7 @@ $messages['tr'] = array(
 	'configure-desc' => 'Yetkili kullanıcıların vikiyi web-tabanlı bir arayüz ile [[Special:Configure|yapılandırmasına]] izin verir',
 	'configure-desc-group' => 'Grup',
 	'configure-desc-key' => 'Anahtar',
-	'configure-desc-ns' => 'Ad alanı',
+	'configure-desc-ns' => 'Ad boşluğu',
 	'configure-desc-val' => 'Değer',
 	'configure-edit-core' => 'MedyaViki',
 	'configure-edit-ext' => 'Eklentiler',

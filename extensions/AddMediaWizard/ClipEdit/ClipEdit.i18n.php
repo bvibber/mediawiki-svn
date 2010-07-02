@@ -994,6 +994,9 @@ $messages['pt-br'] = array(
 	'mwe-clipedit-inline-description' => 'Título',
 	'mwe-clipedit-edit-video-tools' => 'Ferramentas de edição de vídeo:',
 	'mwe-clipedit-duration' => 'Duração:',
+	'mwe-clipedit-layout' => 'Posicionamento',
+	'mwe-clipedit-layout_right' => 'Imagem posicionada à direita',
+	'mwe-clipedit-layout_left' => 'Imagem posicionada à esquerda',
 );
 
 /** Russian (Русский)

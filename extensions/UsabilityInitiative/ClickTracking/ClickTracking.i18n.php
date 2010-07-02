@@ -316,6 +316,16 @@ $messages['ca'] = array(
 	'ct-update-table' => 'Actualitza taula',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'ct-start-date' => 'ڕێکەوتی دەستپێکردن (YYYYMMDD)',
+	'ct-end-date' => 'ڕێکەوتی دوایی‌ھاتن (YYYYMMDD)',
+	'ct-and' => 'و',
+	'ct-update-table' => 'نوێکردنەوەی خشتە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -2061,6 +2071,7 @@ $messages['yi'] = array(
 	'ct-anon-users' => 'אַנאנימע באַניצער',
 	'ct-user-contribs' => 'סח"כ באַניצער בײַשטײַערונגען',
 	'ct-and' => 'און',
+	'ct-update-table' => 'דערהײַנטיקן טאַבעלע',
 );
 
 /** Yoruba (Yorùbá)

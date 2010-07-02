@@ -234,6 +234,7 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'wikieditor-previewDialog-preference' => 'Aurrikuspen kutxa gaitu',
 	'wikieditor-previewDialog-tab' => 'Aurreikuspena',
 	'wikieditor-previewDialog-loading' => 'Kargatzen...',
 );
@@ -526,6 +527,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'wikieditor-previewDialog-preference' => 'Abìlita convërsassion ëd preuva',
 	'wikieditor-previewDialog-tab' => 'Previsualisassion',
 	'wikieditor-previewDialog-loading' => 'A caria ...',
 );

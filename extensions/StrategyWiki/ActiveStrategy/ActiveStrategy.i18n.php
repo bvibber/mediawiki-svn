@@ -166,6 +166,13 @@ $messages['io'] = array(
 	'nedits' => '$1 {{PLURAL:$1|redakto|redakti}}',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'nedits' => '$1 {{PLURAL:$1|contributo|contributi}}',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

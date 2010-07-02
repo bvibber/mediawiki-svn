@@ -1950,6 +1950,7 @@ $messages['tl'] = array(
  * @author Joseph
  * @author Karduelis
  * @author Mach
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -1959,7 +1960,7 @@ $messages['tr'] = array(
 	'dt_viewxml_categories' => 'Kategoriler',
 	'dt_viewxml_namespaces' => 'Alan adları',
 	'dt_viewxml_simplifiedformat' => 'Basitleştirilmiş format',
-	'dt_xml_namespace' => 'Alan adı',
+	'dt_xml_namespace' => 'Ad boşluğu',
 	'dt_xml_pages' => 'Sayfalar',
 	'dt_xml_page' => 'Sayfa',
 	'dt_xml_template' => 'Şablon',

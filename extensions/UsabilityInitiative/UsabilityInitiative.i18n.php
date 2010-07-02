@@ -135,6 +135,14 @@ $messages['ca'] = array(
 	'prefs-labs' => 'Característiques de laboratori',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'prefs-beta' => 'کەرەسەکانی بیتا',
+	'prefs-labs' => 'کەرەسەکانی تاقیگەکان',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -799,6 +807,7 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'usabilityinitiative' => 'ניצלעכקייט איניציאַטיוו',
+	'usabilityinitiative-desc' => 'אייגנקייטן אָנטוויקלט דורכן וויקיפעדיע ניצלעכקייט איניציאַטיוו צו פֿאַרבעסערן די נוצבאַרקייט פֿון מעדיעוויקי.',
 	'prefs-beta' => 'בעטאַ אייגנשאַפֿטן',
 	'prefs-labs' => 'לאַבאראַטאריע מעגלעכקייטן',
 );

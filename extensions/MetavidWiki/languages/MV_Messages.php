@@ -8876,6 +8876,7 @@ $messages['sr-ec'] = array(
 	'mv_sequence_edit_text' => 'Пређи у текст едитор',
 	'mv_sequence_edit_visual_editor' => 'Пређи у визуелни едитор',
 	'mv_other_options' => 'Друге опције',
+	'mv_days' => '$1 {{PLURAL:$1|дан|дана}}',
 	'mv_hours' => '$1 {{PLURAL:$1|сат|сати}}',
 	'mv_hours_singular' => '1 сат',
 	'mv_minutes' => '$1 {{PLURAL:$1|минута|минута}}',

@@ -18572,6 +18572,7 @@ $messages['tl'] = array(
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -18817,7 +18818,7 @@ $messages['tr'] = array(
 	'configure-setting-wgMimeType' => 'Viki sayfalarının MIME türü',
 	'configure-setting-wgXhtmlDefaultNamespace' => 'Varsayılan XHTML isim alanı',
 	'configure-setting-wgXhtmlNamespaces' => 'Diğer XHTML isim alanları',
-	'configure-setting-wgXhtmlNamespaces-key' => 'Alan adı',
+	'configure-setting-wgXhtmlNamespaces-key' => 'Ad boşluğu',
 	'configure-setting-wgZhdaemonHost' => 'ZhDaemon hostu',
 	'configure-setting-wgZhdaemonPort' => 'ZhDaemon portu',
 	'configure-setting-wgLocaltimezone' => 'Yerel saat',

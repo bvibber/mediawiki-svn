@@ -205,6 +205,19 @@ $messages['pl'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo otrzymał niedopuszczalną wartość parametru szerokości „$1“.',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'embedvideo-desc' => 'A gionta na funsion dël parser për anserì video da sorziss popolar',
+	'embedvideo-missing-params' => 'A EmbedVideo ai manco dij paràmetr obligatori.',
+	'embedvideo-bad-params' => "EmbedVideo a l'ha arseivù un parametr pa bon.",
+	'embedvideo-unparsable-param-string' => 'EmbedVideo a l\'ha arseivù la stringa ëd paràmetr pa bon-a "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'EmbedVideo a l\'ha pa arconossù ël servissi video "<code>$1</code>".',
+	'embedvideo-bad-id' => 'EmbedVideo a l\'ha arseivù n\'id pa bon "$1" për ël servissi "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo a l\'ha arseivù ël paràmetr ëd dimension pa bon-a "$1".',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

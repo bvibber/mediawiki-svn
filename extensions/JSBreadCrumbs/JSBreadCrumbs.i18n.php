@@ -104,6 +104,14 @@ $messages['nl'] = array(
 	'jsbreadcrumbs-leading-description' => 'Navigatiepad',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'jsbreadcrumbs-desc' => 'A gionta com na trassa ëd fërvaje sota a la tichëtta dla bara',
+	'jsbreadcrumbs-leading-description' => 'Trassa ëd navigassion',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

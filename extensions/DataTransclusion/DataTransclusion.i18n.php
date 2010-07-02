@@ -353,6 +353,29 @@ Een eerste argument of "template"-argument is verplicht.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  bestaat niet.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'datatransclusion-desc' => 'Import i renderowanie rekordów danych z zewnętrznych źródeł',
+	'datatransclusion-missing-source' => 'Nie określono źródła danych.
+Argumenty drugi lub „źródło“są wymagane.',
+	'datatransclusion-unknown-source' => 'Określono złe źródło danych.
+Nie znam „$1“.',
+	'datatransclusion-missing-key' => 'Nie określono klucza.
+$2 są prawidłowymi kluczami dla źródła danych $1.',
+	'datatransclusion-bad-argument-by' => 'Określono złe pole klucza.
+„$2“ nie jest kluczem w źródłe danych „$1“.
+{{PLURAL:$4|Prawidłowy klucz to|Prawidłowe klucze:}} $3.',
+	'datatransclusion-missing-argument-key' => 'Nie określono wartości klucza.
+Argumenty drugi lub „klucz“ są wymagane.',
+	'datatransclusion-missing-argument-template' => 'Nie określono szablonu.
+Argumenty pierwszy lub „szablon“ są wymagane.',
+	'datatransclusion-record-not-found' => 'Brak rekordów pasujących $2 = $3 w danych ze źródła $1.',
+	'datatransclusion-bad-template-name' => 'Zła nazwa szablonu – $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> nie istnieje.',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

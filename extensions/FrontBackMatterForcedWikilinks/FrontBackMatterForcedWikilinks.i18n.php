@@ -153,6 +153,16 @@ $messages['nl'] = array(
 	'frontbackforced-forced' => '_(forced_wikilinks)',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'frontbackforced-desc' => 'A taca argoment ëd testa e argomend ëd coa a le pàgine e a amplementa ij wikilink forsà',
+	'frontbackforced-front' => '_(argoment_ëd_testa)',
+	'frontbackforced-back' => '_(argoment_ëd_coa)',
+	'frontbackforced-forced' => '_(wikilink_forsà)',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

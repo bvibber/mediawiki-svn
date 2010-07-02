@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'didyoumean-desc' => 'Extension description displayed on [[Special:Version]].',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'didyoumean-desc' => 'Tambahi tautan ka tungkaran-tungkaran nang bajudul "mahirip"',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

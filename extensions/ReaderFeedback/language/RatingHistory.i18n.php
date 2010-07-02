@@ -656,6 +656,7 @@ $messages['et'] = array(
 	'ratinghistory-year' => 'viimane aasta',
 	'ratinghistory-3years' => 'viimased 3 aastat',
 	'ratinghistory-ave' => 'Keskmine: $1',
+	'ratinghistory-chart' => 'Lugejate antud hinnangud',
 	'ratinghistory-purge' => 'tühjenda vahemälu',
 	'ratinghistory-table' => 'Lugejahinnangute ülevaade',
 	'ratinghistory-users' => 'Hinnanud kasutajad',

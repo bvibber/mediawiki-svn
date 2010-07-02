@@ -515,7 +515,7 @@ $messages['bg'] = array(
 $messages['bn'] = array(
 	'prefswitch' => 'ইউজাবিলিটি ইনিশিয়েটিভ পছন্দের সুইচ',
 	'prefswitch-desc' => 'ব্যবহারকারীদের পছন্দগুলোকে বেছে নেওয়ার সুযোগ দিন',
-	'prefswitch-jswarning' => 'মনে রাখবেন স্কিনের পরিবর্তনের সাথে সাথে, কাজ যাবার জন্য আপনার [[User:$1/$2.js|$2 জাভাস্ক্রিপ্টকে]] কপি করে [[{{ns:user}}:$1/vector.js]]-এ <!-- or [[{{ns:user}}:$1/common.js]]--> নিয়ে যাওয়া প্রয়োজন।',
+	'prefswitch-jswarning' => 'মনে রাখবেন স্কিনের পরিবর্তনের সাথে সাথে, কাজ যাবার জন্য আপনার [[User:$1/$2.js|মনোবুক জাভাস্ক্রিপ্টকে]] কপি করে [[{{ns:user}}:$1/vector.js]]-এ <!-- or [[{{ns:user}}:$1/common.js]]--> নিয়ে যাওয়া প্রয়োজন।',
 	'prefswitch-csswarning' => 'আপনার [[User:$1/$2.css|পরিবর্তিত $2 স্টাইল]] আর প্রযোজ্য হবে না। আপনি ভেক্টর স্কিনে পরিবর্তিত সিএসএস-এর জন্য [[{{ns:user}}:$1/vector.css]] তৈরি করতে পারেন।',
 	'prefswitch-survey-true' => 'হ্যাঁ',
 	'prefswitch-survey-false' => 'না',
@@ -768,6 +768,7 @@ Per ajudar-nos a millorar-les, si us plau ompliu el formulari opcional d'aquí s
 $messages['ckb-arab'] = array(
 	'prefswitch-survey-true' => 'بەڵێ',
 	'prefswitch-survey-false' => 'نا',
+	'prefswitch-survey-answer-whyoff-other' => 'ھۆکاری دیکە:',
 	'prefswitch-survey-question-browser' => 'کام گەڕۆک بەکار دەهێنی؟',
 	'prefswitch-survey-answer-browser-other' => 'گەڕۆکی دیکە:',
 	'prefswitch-survey-question-os' => 'کام سیستەمی کارپێکردن بەکاردێنی؟',
@@ -878,6 +879,7 @@ $messages['cu'] = array(
 
 /** Welsh (Cymraeg)
  * @author Lloffiwr
+ * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'prefswitch' => 'Switsh y Dewisiadau ar y Cynllun Defnyddioldeb',
@@ -946,7 +948,7 @@ Mae Tîm Sefydliad Wikimedia ar gyfer Profiadau Defnyddwyr wedi bod yn cydweithi
 Byddem wrth ein bodd yn cael clywed gennych. Ewch i'n [[$1|tudalen adborth]] neu, os oes gennych ddiddordeb yn ein hymdrechion parhaus i wella'r meddalwedd, ewch i'n [http://usability.wikimedia.org wici ar ddefnyddioldeb] am ragor o wybodaeth.",
 	'prefswitch-main-anon' => '===Ewch Nôl a Fi===
 Os ydych am ddiffodd y nodweddion newydd, [$1 cliciwch fan hyn]. Fe gewch gynnig mewngofnodi neu greu cyfrif yn gyntaf.',
-	'prefswitch-main-on' => '===Ewch â fi am nôl!===
+	'prefswitch-main-on' => '===Ewch â fi yn ôl!===
 [$2 Os hoffech ddiffodd y nodweddion newydd, cliciwch fan hyn].',
 	'prefswitch-main-off' => '==Rhowch gynnig arni!==
 Os yr hoffech roi cynnig ar y nodweddion newydd, pwyswch [$1 fan hyn].',
@@ -1927,7 +1929,7 @@ Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
 | Kuvakaappaus uudesta linkkien lisäys -valintaikkunasta.
 |}
 |}
-Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia sinulle. Olemme jakaneet joitain parannuksia, kuten uuden ilmeen ja yksinkertaistetut muokkaustoiminnot. Näiden muutoksien tarkoituksena on helpottaa uusien muokkaajien alkuun pääsemistä. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study käytettävyystestaukseen, joka toteutettiin viime vuoden aikana]. Käytettävyyden parantaminen hankkeissamme on etusijalla Wikimedia Foundationissa ja tulemme jakamaan lisää päivityksiä tulevaisuudessa. Lisätietoja löytyy aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
+Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia sinulle. Haluamme kertoa eräistä uudistuksista, kuten uudesta ilmeestä ja yksinkertaistetuista muokkaustoiminnoista. Näiden muutoksien tarkoituksena on helpottaa uusien muokkaajien alkuun pääsemistä. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study käytettävyystestaukseen, joka toteutettiin viime vuoden aikana]. Käytettävyyden parantaminen hankkeissamme on etusijalla Wikimedia Foundationissa ja lisää päivityksiä on tulossa. Lisätietoja löytyy aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
 
 === Mitä olemme muuttaneet ===
 * '''Navigaatio:''' Paransimme navigaatiota sivujen lukemiseksi ja muokkaamiseksi. Nyt jokaisen sivun yläreunassa olevat välilehdet ovat selvempiä.
@@ -2301,7 +2303,7 @@ $messages['he'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-en.png|401px|]]
 |-
-| צילום מסך של תיבו הדו שיח החדשה להוספת קישורים
+| צילום מסך של תיבת הדו שיח החדשה להוספת קישורים
 |}
 |}
 
@@ -2708,8 +2710,8 @@ $messages['io'] = array(
 $messages['it'] = array(
 	'prefswitch' => "Cambiamento delle preferenze dell'iniziativa per l'usabilità",
 	'prefswitch-desc' => 'Permetti agli utenti di cambiare set di preferenze',
-	'prefswitch-jswarning' => 'Ricorda che con il cambiamento della skin, il codice [[Utente:$1/$2.js|JavaScript del tuo $2]] dovrà essere copiato in [[Utente:$1/vector.js]] <!-- o [[Utente:$1/common.js]]--> per continuare a funzionare.',
-	'prefswitch-csswarning' => 'I tuoi [[Utente:$1/$2.css|stili personalizzati per $2]] non saranno più applicati. Puoi aggiungere CSS personalizzato per vector in [[Utente:$1/vector.css]].',
+	'prefswitch-jswarning' => 'Ricorda che con il cambiamento della skin, il codice [[User:$1/$2.js|JavaScript del tuo $2]] dovrà essere copiato in [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> per continuare a funzionare.',
+	'prefswitch-csswarning' => 'I tuoi [[User:$1/$2.css|stili personalizzati per $2]] non saranno più applicati. Puoi aggiungere CSS personalizzato per vector in [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Sì',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disattiva le nuove funzioni',
@@ -2990,6 +2992,7 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Devunt
  * @author Gapo
  * @author IRTC1015
@@ -3003,9 +3006,9 @@ $messages['ko'] = array(
 	'prefswitch-survey-true' => '예',
 	'prefswitch-survey-false' => '아니오',
 	'prefswitch-survey-submit-off' => '새로운 기능 끄기',
-	'prefswitch-survey-cancel-off' => '새 기능을 계속 사용하시려면, $1로 돌아가실 수 있습니다.',
+	'prefswitch-survey-cancel-off' => '새 기능을 계속 사용하시려면, $1(으)로 돌아가실 수 있습니다.',
 	'prefswitch-survey-submit-feedback' => '피드백 남기기',
-	'prefswitch-survey-cancel-feedback' => '피드백을 제공하고 싶지 않다면 $1로 돌아가시면 됩니다.',
+	'prefswitch-survey-cancel-feedback' => '피드백을 제공하고 싶지 않다면 $1(으)로 돌아가시면 됩니다.',
 	'prefswitch-survey-question-like' => '새 기능에 대해서 어떤 점이 좋았습니까?',
 	'prefswitch-survey-question-dislike' => '새 기능에 대해 어떤 점이 마음에 들지 않으셨습니까?',
 	'prefswitch-survey-question-whyoff' => '새로운 기능을 끄는 이유가 무엇인가요?
@@ -3031,7 +3034,7 @@ $messages['ko'] = array(
 	'prefswitch-success-off' => '새 기능이 꺼졌습니다. 새 기능을 사용해 주셔서 감사합니다. 페이지의 맨 위에 있는 "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]"를 눌러 언제든지 새 기능을 켤 수 있습니다.',
 	'prefswitch-success-feedback' => '당신의 피드백을 보냈습니다.',
 	'prefswitch-return' => '<hr style="clear:both">
-<span class="plainlinks">[$1 $2]</span>로 돌아갑니다.',
+<span class="plainlinks">[$1 $2]</span>(으)로 돌아갑니다.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
@@ -3232,21 +3235,21 @@ $messages['mk'] = array(
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
-| [[Image:VectorNavigation-en.png|401px|]]
+| [[Image:ВекторНавигација.PNG|401px|]]
 |-
 | Изглед на новиот навигациски посредник на Википедија <small>[[Media:VectorNavigation.png|(зголеми)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-en.png|401px|]]
+| [[Image:ВекторУредување.PNG|401px|]]
 |-
 | Изглед на основниот посредник за уредување на страници <small>[[Media:VectorEditorBasic.png|(зголеми)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorLinkDialog-en.png|401px|]]
+| [[Image:ВекторВрски.PNG|401px|]]
 |-
 | Изглед на новата кутија за внесување врски
 |}
@@ -3259,7 +3262,7 @@ $messages['mk'] = array(
 * '''Помошник за врски:'''  Едноставна алатка која овозможува додавање врски до други вики-страници како и до надворешни мрежни места.
 * '''Подобрено пребарување:''' Ги подобривме предлозите при пребарување за што побрзо да ви ја најдеме страницата што ја барате.
 * '''Други нови функции:''' Воведовме и помошник за табели со чија помош табелите се прават полесно, а има и можност за пронаоѓање и заменување, со што се упростува уредувањето на страницата.
-* '''Лого на Википедија:''' Го подновивме и логото. Прочитахте повеќе на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блогот на Викимедија].",
+* '''Лого на Википедија:''' Го подновивме и логото. Прочитајте повеќе на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блогот на Викимедија].",
 	'prefswitch-main-logged-changes' => "* Јазичето '''{{int:watch}}''' сега изгледа како ѕвезда.
 * Јазичето '''{{int:move}}''' сега е сместено во паѓачкото мени веднаш со лентата за пребарување.",
 	'prefswitch-main-feedback' => '===Мислења?===
@@ -3789,6 +3792,8 @@ Jeśli chcesz nam pomóc je udoskonalić, przed kliknięciem „[[#prefswitch-su
 $messages['pms'] = array(
 	'prefswitch' => "Cangiament dij gust ëd l'inissiativa d'utilisassion còmoda",
 	'prefswitch-desc' => "Përmëtte a j'utent ëd cangé j'ansema dij gust",
+	'prefswitch-jswarning' => 'Arcòrda che con ëd cambi dë skin, tò [[User:$1/$2.js|$2 JavaScript]] a dovrà esse copià su [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> për continué a travajé.',
+	'prefswitch-csswarning' => 'Ij tò [[User:$1/$2.css|stij utent për $2]]  a saran pa pi aplicà. It peule gionté CSS përsonalisà për vector an [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'É',
 	'prefswitch-survey-false' => 'Nò',
 	'prefswitch-survey-submit-off' => 'Disativa le funsionalità neuve',
@@ -3821,11 +3826,30 @@ Për piasì, ch'a selession-a tute le motivassion.",
 	'prefswitch-success-feedback' => 'Ij sò coment a son ëstàit mandà.',
 	'prefswitch-return' => '<hr style="clear:both">
 Artorna a <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "I l'oma travajà sech për fé le ròbe belfé për ij nòstri utent. I l'oma gòj ëd condivide chèich ameliorament, comprèis na presentassion neuva e dle possibilità ëd modìfica neuve. Amelioré la comodità d'utilisassion dij nòstri proget a l'é na priorità dla Fondassion Wikimedia e noi i condivideroma d'àutre modìfiche ant l'avnì. Për savèjne ëd pi, ch'a vìsita ël sit colegà [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ scartari ëd Wikimedia]
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Në screenshot ëd la neuva antërfacia ëd navigassion ëd Wikipedia <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Në screenshot ëd l'antërfacia ëd modìfica dla pàgina base <small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Në screenshot dël neuv dialog box për anserì colegament
+|}
+|}
+L'User Experience team ëd la Wikimedia Foundation a l'ha travajà con ij volontari dla comunità për fé le ròbe pi belfé për voiàutri. I l'oma gòj ëd condivide chèich ameliorament, comprèis na presentassion neuva e dle possibilità ëd modìfica semplificà. Sti cambi-sì a veulo ch'a sia pi belfé ancaminé për ij neuv contribudor, e a son basà an sle nòste [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study prove d'usabilità fàite ant l'ùltim ann]. Amelioré la comodità d'utilisassion dij nòstri proget a l'é na priorità dla Fondassion Wikimedia e noi i condivideroma d'àutre modìfiche ant l'avnì. Për savèjne ëd pi, ch'a vìsita ël sit colegà [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ scartari ëd Wikimedia]
 
-[[File:UsabilityNavigation.png|right|link=|Scren ëd la neuva navigassion]]
-[[File:UsabilityToolbar.png|right|link=|Scren ëd la bara dj'utiss ëd modìfica ameliorà]]
-[[File:UsabilityDialogs.png|right|link=|Scren dij diàlogh neuv ëd generassion ëd contnù]]
 ===Ambelessì a-i é lòn ch'i l'oma cangià===
 * '''Navigassion:''' I l'oma ameliorà la navigassion për lese e modifiché le pàgine. Adess, ij test an cò ëd minca pàgina a definisso ëd fasson pì ciàira s'a l'é an camin ch'a vëd na pàgina o na pàgina ëd discussion, e s'a l'é an camin a lese o a modifiché na pàgina.
 * '''Ameliorament ëd la bara dj'utiss ëd modìfica:''' I l'oma riorganisà la bara dj'utiss ëd modìfica për ch'a fussa pi belfé dovrela. Adess, l'ampaginassion a l'é pi sempia e pi intuitiva.
@@ -3833,6 +3857,10 @@ Artorna a <span class="plainlinks">[$1 $2]</span>.',
 * '''Ameliorament ëd l'arserca:''' I l'oma ameliorà ij sugeriment d'arserca për portelo pi an pressa a la pàgina ch'a sërca.
 * '''Àutre possibilità neuve:''' I l'oma ëdcò giontà n'assistent për le tàule për rende pì bel fé creé e trové le tàule e na possibilità ëd rimpiass për semplifiché la modìfica ëd le pàgine.
 * '''Wikipedia puzzle globe''': I l'oma modificà ël puzzle globe. Les ëd pi an sël [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog ëd Wikimedia].",
+	'prefswitch-main-logged-changes' => "* La '''tichëtta {{int:watch}}''' adess a l'é na stèila.
+* La '''tichëtta {{int:move}}''' adess a l'é ant ël menu a tendin-a d'apress ëd la bara d'arserca.",
+	'prefswitch-main-feedback' => "===Coment?===
+An piaserìa sentije da ti. Për piasì vìsita nòsta [[$1|pàgina ëd coment]] o, s'it ses antëressà ant ij nòst sfòrs corent për amelioré ël software, vìsita nòsta [http://usability.wikimedia.org usability wiki] për savèjne ëd pi.",
 	'prefswitch-main-anon' => "===Pòrtme andré===
 S'it veule disabilité le neuve funsionalità, [$1 sgnaca sì]. At sarà ciamà d'intré o ëd creé prima un cont.",
 	'prefswitch-main-on' => "===Porteme andré===
@@ -3843,6 +3871,7 @@ S'it veule ativé le possibilità neuve, për piasì [$1 sgnaca ambelessì].",
 Për piasì, ch\'a ampinissa ël sondagi opsional sì-sota an sgnacand "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Mersì ëd prové nòstre neuve funsionalità.
 Për giutene a amelioreje, për piasì ch\'a ampinissa ël sondagi opsional sì-sota an sgnacand "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
 /** Pashto (پښتو)
@@ -4444,6 +4473,9 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'prefswitch-survey-true' => 'Enya',
+	'prefswitch-survey-false' => 'Teu',
+	'prefswitch-survey-submit-off' => 'Tumpurkeun fitur anyar',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Teu resep tab jeung pidangan anyarna.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alesan séjén:',
@@ -4453,6 +4485,8 @@ $messages['su'] = array(
 	'prefswitch-title-on' => 'Fitur anyar',
 	'prefswitch-title-off' => 'Tumpurkeun fitur anyar',
 	'prefswitch-title-switched-off' => 'Nuhun',
+	'prefswitch-return' => '<hr style="clear:both">
+Balik deui ka <span class="plainlinks">[$1 $2]</span>.',
 );
 
 /** Swedish (Svenska)
@@ -4461,6 +4495,7 @@ $messages['su'] = array(
  * @author Dafer45
  * @author Fluff
  * @author Knuckles
+ * @author MagnusA
  */
 $messages['sv'] = array(
 	'prefswitch' => 'Preferensväljare för Användbarhetsiniativet.',
@@ -4494,7 +4529,7 @@ Välj alla som stämmer.',
 	'prefswitch-title-off' => 'Stäng av de nya funktionerna',
 	'prefswitch-title-switched-off' => 'Tack',
 	'prefswitch-title-feedback' => 'Feedback',
-	'prefswitch-success-on' => 'Nya funktioner är nu på. Vi hoppas att du gillar att använda de nya funktionerna. Du kan alltid stänga av dem genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" längst upp på sidan.',
+	'prefswitch-success-on' => 'De nya funktionerna är nu påslagna. Vi hoppas att du gillar att använda de nya funktionerna. Du kan alltid stänga av dem genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" längst upp på sidan.',
 	'prefswitch-success-off' => 'De nya funktionerna är nu avstängda. Tack för att du provade dessa. Du kan alltid sätta på dem igen genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" längst upp på sidan.',
 	'prefswitch-success-feedback' => 'Dina kommentarer har skickats.',
 	'prefswitch-return' => '<hr style="clear:both"> Återgå till <span class="plainlinks">[$1 $2].</span>',
@@ -4533,9 +4568,9 @@ Wikimedia Foundations användarupplevelseteam har arbetat med frivilliga ur geme
 * '''{{int:move}}-fliken''' finns nu i den nedfällbara menyn intill sökfältet.",
 	'prefswitch-main-feedback' => '===Feedback?=== 
 Vi vill gärna höra dina synpunkter. Besök vår [[$1|feedbacksida]] eller, om du är intresserad av våra pågående försök att förbättra mjukvaran, besök vår [http://usability.wikimedia.org användbarhetswiki] för mer information.',
-	'prefswitch-main-anon' => '=== Ta mig tillbaka ===
-Om du vill stänga av de nya funktionerna, [$1 klicka här]. Du blir ombedd att logga in eller skapa ett konto först.',
-	'prefswitch-main-on' => '===Ta mig tillbaka!===
+	'prefswitch-main-anon' => '=== Byt tillbaka till det gamla utseendet ===
+Om du vill stänga av de nya funktionerna, [$1 klicka här]. Du kommer att bli ombedd att logga in eller skapa ett konto först.',
+	'prefswitch-main-on' => '===Byt tillbaka till det gamla utseendet===
 [$2 Klicka här för att stänga av de nya funktionerna].',
 	'prefswitch-main-off' => '===Testa dem!===
 Om du vill slå på de nya funktionerna, vänligen [$1 klicka här].',
@@ -5039,7 +5074,7 @@ $messages['yi'] = array(
 	'prefswitch' => 'ניצלעכקייט איניציאַטיוו פרעפֿערענץ איבערבײַט',
 	'prefswitch-desc' => 'לאָזן באַניצער  איבערבײַטן גרופעס פון פרעפֿערענצן',
 	'prefswitch-jswarning' => 'געדענקט אז, מיט דער געשטעל ענדערונג, אײַער [[User:$1/$2.js|$2 JavaScript]] דאַרף מען קאפירן צו [[{{ns:user}}:$1/vector.js]] <!-- אדער [[{{ns:user}}:$1/common.js]]--> צו פֿונקציאנירן ווײַטער.',
-	'prefswitch-csswarning' => 'אײַערע [[User:$1/$2.css|פערזענלעכע $2 סטילן]] ווערן מער נישט אויסגעפֿריט. איר קענט צושטעלן פערזענלעכן CSS פֿאַר "וועקטאר" אין [[{{ns:user}}:$1/vector.css]].',
+	'prefswitch-csswarning' => 'אײַערע [[User:$1/$2.css|פערזענלעכע $2 סטילן]] ווערן מער נישט אויסגעפֿירט. איר קענט צושטעלן פערזענלעכן CSS פֿאַר "וועקטאר" אין [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'יא',
 	'prefswitch-survey-false' => 'ניין',
 	'prefswitch-survey-submit-off' => 'אַנולירן נײַע אייגנקייטן',
@@ -5094,21 +5129,23 @@ $messages['yi'] = array(
 | עקראַנבילד פֿונעם נײַעם דיאַלאג קעסטל פֿאר ארײַנגעבן לינקען
 |}
 |}
-די באַניצער דערפֿאַרונגס גרופע פון דער וויקימעדיע פֿונדאַציע האט געאַרבעט צו מאַכן דעם ניץ גרינגער. מיר פֿרייען זיך צו טיילן זיך מיט עטלעכע פֿאַרבעסערונגן, כולל א נײַע אויסקוק און און מער איינפֿאַכער רעדאַקטירן אייגנקייטן. מיט די ענדערונגען זאל זײַן גרינגער פֿאר נײַע באַניצער אנצוהייבן; זיי זענען באַזירט אויף אונזער [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ניצלעכקייט פרואוואונגען דאס פֿאריגע יאָר]. פֿאַרבעסערן די ניצלעכקייט פֿון אונזערע פראיעקטן איז א פריאריטעט פֿון דער וויקימעדיע פֿונדאַציע און מיר וועלן טיילן מיט נאך דערהײַנטיקונגען אין דער צוקונפֿט. פֿאַר נאך פרטים, באַזוכט דעם [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia וויקימעדיע בלאג].
+די באַניצער דערפֿאַרונגס גרופע פון דער וויקימעדיע פֿונדאַציע האט געאַרבעט צו מאַכן דעם ניץ גרינגער. מיר פֿרייען זיך צו טיילן זיך מיט עטלעכע פֿאַרבעסערונגען, כולל א נײַע אויסקוק און און מער איינפֿאַכער רעדאַקטירן אייגנקייטן. מיט די ענדערונגען זאל זײַן גרינגער פֿאר נײַע באַניצער אנצוהייבן; זיי זענען באַזירט אויף אונזער [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ניצלעכקייט פרואוואונגען דאס פֿאריגע יאָר]. פֿאַרבעסערן די ניצלעכקייט פֿון אונזערע פראיעקטן איז א פריאריטעט פֿון דער וויקימעדיע פֿונדאַציע און מיר וועלן טיילן מיט נאך דערהײַנטיקונגען אין דער צוקונפֿט. פֿאַר נאך פרטים, באַזוכט דעם [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia וויקימעדיע בלאג].
 
 === וואָס מיר האבן געענדערט ===
-* '''נאַוויגאַציע:''' מיר האבן פֿאַרבעסערט די נאַוויגאַציע פ,ֿאַר ליינען און רעדאַקטירן בלעטער. אַצינד, די טאַבן אין דער הייך פֿון יעדן בלאַט  ווײַזן קלאָרער צי איר באקוקט דעם בלאַט אדער דעם שמועס בלאַט, און צי איר ליינט אדער רעדאַקטירט א בלאַט.
+* '''נאַוויגאַציע:''' מיר האבן פֿאַרבעסערט די נאַוויגאַציע פֿאַר ליינען און רעדאַקטירן בלעטער. אַצינד, די טאַבן אין דער הייך פֿון יעדן בלאַט  ווײַזן קלאָרער צי איר באקוקט דעם בלאַט אדער דעם שמועס בלאַט, און צי איר ליינט אדער רעדאַקטירט א בלאַט.
 * '''געצייג פֿאַרבעסערונגען:''' מיר האבן ארגאָניזירט דעם רעדאַקטירונג געצייג־פאַס צו ווערן גרינגער צו ניצן. פֿארמאַטירן בלעטער איז געווארן גרינגער און מער אינטואיטיוו.
 * '''לינק קונצן־מאַכער:''' א גרינג צו ניצן געצייג העלפֿט אייך צולייגן לינקען סײַ צו אַנדערע וויקי בלעטער סײַ צו דרויסנדע זײַטלעך.
-* '''זוך פֿאַרבעסערונגען:''' מיר האבן פֿאַרבעסערט די זוך פֿארשלאָגן אָז איר זאלט צוקומען צום געזוכטן בלאַט גיכערre quickly.
+* '''זוך פֿאַרבעסערונגען:''' מיר האבן פֿאַרבעסערט די זוך פֿארשלאָגן אָז איר זאלט צוקומען צום געזוכטן בלאַט גיכער.
 * '''אַנדערע נײַע אייגנקייטן:''' מיר האבן אויך דערמעגלעכט א טאַבעלע קונצן־מאַכער צו מאַכן גרינגער שאַפֿן טאַבעלעס, און א זוך און פֿאַרבײַט אייגנקייט צו מאַכן מער איינפֿאַך רעדאַקטירן בלעטער.
 * '''וויקיפעדיע לאגא:''' מיר האבן דערהײַנטיגט אונזער לאגא. ליינט ווײַטער אין דעם [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d וויקימעדיע בלאג].",
 	'prefswitch-main-logged-changes' => "* דער '''{{int:watch}} טאַב''' איז אַצינד א שטערן.
 * דער '''{{int:move}} טאַב''' איז אַצינד אין דעם אַראָפלאז־צינגל לעבן דעם זוכפאַס.",
+	'prefswitch-main-feedback' => '===פֿידבעק?===
+מיר ווילן גערן הערן פֿון אײַך. זײַט אזוי גוט באַזוכט אונזער [[$1|פֿידבעק בלאַט]] אדער, ווען עס אינטרעסירט  אײַך אונזערע אָנגייענדיקע אָנשטרענגונגען צו פֿאַרבעסערן דאָס ווייכוואַרג, באַזוכט אונזער [http://usability.wikimedia.org נוצבאַרקייט וויקי] פֿאַר נאך אינפֿארמאַציע.',
 	'prefswitch-main-anon' => '=== פֿירט מיך צוריק === 
  כדי אָפווענדן די נייע אייגנקייטן [$1 קליקט דאָ]. מען וועט אײַך ערשט בעטן אַרײַנלאָגירן אָדער שאַפֿן אַ נײַע קאנטע.',
 	'prefswitch-main-on' => '=== ברענגט מיך צוריק! === 
- [$2 קליקט דאָ אויסצולעשן די נײַע אייגנקייטן].',
+[$2 קליקט דאָ אויסצולעשן די נײַע אייגנקייטן].',
 	'prefswitch-survey-intro-off' => 'א דאַנק פֿאַרן אויספרובירן אונזערע נײַע אייגנקייטן.
 בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );

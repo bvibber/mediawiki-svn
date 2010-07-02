@@ -852,10 +852,11 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'mostrevisors-namespace' => 'İsim alanı:',
+	'mostrevisors-namespace' => 'Ad boşluğu:',
 	'mostrevisors-none' => 'Girdi bulunamadı.',
 	'mostrevisors-submit' => 'Git',
 	'mostrevisors-showredir' => 'Yönlendirme sayfalarını göster',

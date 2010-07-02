@@ -148,6 +148,14 @@ $messages['ce'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Цаоьшу',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'نوێ کردنەوە',
+	'wikieditor-template-editor-dialog-cancel' => 'ھەڵوەشاندنەوە',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil

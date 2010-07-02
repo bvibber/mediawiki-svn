@@ -214,8 +214,10 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'ratedpages' => 'Lugejahinnanguga leheküljed',
+	'ratedpages-leg' => 'Küllalt palju kordi hinnatud lehekülgede otsimine',
 	'ratedpages-list' => 'Allpool on lugejate tagasisidehinnangu alusel järjestatud lehekülgede loend.',
 	'ratedpages-none' => 'Loendis puuduvad leheküljed',
+	'ratedpages-graphs' => 'hindamisandmed',
 	'ratedpages-count' => '$1 {{PLURAL:$1|arvustus|arvustust}}',
 );
 

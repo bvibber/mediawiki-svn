@@ -262,6 +262,13 @@ $messages['sk'] = array(
 	'svgzoom-desc' => 'Pridáva možnosti posúvania a približovania do prehliadača SVG súborov MediaWiki',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'svgzoom-desc' => 'Додаје МедијаВикију могућност скроловања по и увећавања SVG слика',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

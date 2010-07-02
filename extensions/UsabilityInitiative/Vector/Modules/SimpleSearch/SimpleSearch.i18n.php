@@ -113,10 +113,12 @@ $messages['ca'] = array(
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
 	'vector-simplesearch-search' => 'گەڕان',
+	'vector-simplesearch-containing' => 'بە لەبەرگرتنەوەی ...',
 );
 
 /** Czech (Česky)
