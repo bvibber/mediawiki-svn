@@ -145,7 +145,7 @@ class DirectFilesystem extends Filesystem {
 		$success = true;
 		
 		foreach ( $files as $fileName ) {
-			if ( !$this->delete( $path . $fileName, $owner, $recursive ) ) {
+			if ( !$this->delete( $path . $fileName, $recursive ) ) {
 				$success = false;
 			}
 		}

@@ -169,7 +169,35 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::delete
 	 */
 	public function delete( $path, $recursive = false ) {
+		if ( empty( $path ) ) {
+			return false;
+		}
+			
+		if ( $this->isFile( $path ) ) {
+			return (bool)@ftp_delete( $this->connection, $path );
+		}
+			
+		if ( !$recursive ) {
+			return (bool)@ftp_rmdir( $this->connection, $path );
+		}
+			
+		// Recursive approach required.
+		$path = rtrim( $path, '/' ) . '/';
+		$files = $this->listDir( $path );
 		
+		$success = true;
+		
+		foreach ( $files as $fileName ) {
+			if ( !$this->delete( $path . $fileName, $recursive ) ) {
+				$success = false;
+			}
+		}
+
+		if ( $success && $this->exists( $path ) && !@ftp_rmdir( $this->link, $path ) ) {
+			$success = false;
+		}
+		
+		return $success;	
 	}
 
 	/**
