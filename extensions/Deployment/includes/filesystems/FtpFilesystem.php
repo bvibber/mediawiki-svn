@@ -224,14 +224,16 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::exists
 	 */
 	public function exists( $file ) {
-		
+		$list = @ftp_nlist( $this->connection, $file );
+		return !empty( $list );		
 	}
 
 	/**
 	 * @see Filesystem::getChmod
 	 */
 	public function getChmod( $file ) {
-		
+		$dir = $this->listDir( $file );
+		return $dir[$file]['permsn'];		
 	}
 
 	/**

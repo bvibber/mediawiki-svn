@@ -185,14 +185,16 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::exists
 	 */
 	public function exists( $file ) {
-		
+		return @file_exists( $file );
 	}
 
 	/**
+	 * FIXME does not handle errors in fileperms()
+	 * 
 	 * @see Filesystem::getChmod
 	 */
 	public function getChmod( $file ) {
-		
+		return substr( decoct( @fileperms( $file ) ), 3 );
 	}
 
 	/**

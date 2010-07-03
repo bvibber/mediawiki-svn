@@ -117,7 +117,7 @@ abstract class Filesystem {
 	public abstract function getOwner( $file );
 	
 	/**
-	 * Returns file permissions. 
+	 * Returns file permissions.
 	 * 
 	 * @param string $file Path to the file.
 	 * 
