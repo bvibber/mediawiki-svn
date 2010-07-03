@@ -40,7 +40,7 @@ mw.Smil.prototype = {
 	// Stores the smil document for this object ( for relative image paths ) 
 	smilUrl: null,
 	
-	// The abstract embeed player parent 
+	// The abstract embed player parent 
 	embedPlayer: null,
 	
 	/** 

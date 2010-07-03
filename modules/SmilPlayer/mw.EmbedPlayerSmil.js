@@ -108,8 +108,12 @@ mw.EmbedPlayerSmil = {
 		// Update the interface
 		this.parent_play();
 		
-		var doPlay = function(){
-			// Start bufering the movie if not already doing so: 
+		// Make sure this.smil is ready : 
+		this.getSmil( function( smil ){
+			// update the smil element
+			_this.smil = smil;
+			
+			// Start buffering the movie if not already doing so: 
 			_this.smil.startBuffer();
 			
 			// Set start clock time: 		
@@ -117,18 +121,14 @@ mw.EmbedPlayerSmil = {
 			
 			// Start up monitor:
 			_this.monitor();
-		}
-		
-		// Make sure this.smil is ready : 
-		if( this.smil ){
+		})
+	},
+	load: function(){
+		this.getSmil( function( smil ){
+			// update the smil element
+			_this.smil = smil;
 			doPlay();
-		} else {
-			this.getSmil( function( smil ){
-				// update the smil element
-				_this.smil = smil;
-				doPlay();
-			})
-		}
+		})
 	},
 	
 	stop: function(){
