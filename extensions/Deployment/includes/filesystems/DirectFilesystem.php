@@ -34,63 +34,63 @@ class DirectFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::changeDir
 	 */
-	public function changeDir($dir) {
-		
+	public function changeDir( $dir ) {
+		return @chdir( $dir );
 	}
 
 	/**
 	 * @see Filesystem::changeFileGroup
 	 */
-	public function changeFileGroup($file, $group, $recursive = false) {
+	public function changeFileGroup( $file, $group, $recursive = false ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::chmod
 	 */
-	public function chmod($file, $mode = false, $recursive = false) {
+	public function chmod( $file, $mode = false, $recursive = false ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::chown
 	 */
-	public function chown($file, $owner, $recursive = false) {
+	public function chown( $file, $owner, $recursive = false ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::delete
 	 */
-	public function delete($path, $recursive = false) {
+	public function delete( $path, $recursive = false ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::doCopy
 	 */
-	protected function doCopy($from, $to) {
+	protected function doCopy( $from, $to ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::doMove
 	 */
-	protected function doMove($from, $to) {
+	protected function doMove( $from, $to ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::exists
 	 */
-	public function exists($file) {
+	public function exists( $file ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::getChmod
 	 */
-	public function getChmod($file) {
+	public function getChmod( $file ) {
 		
 	}
 
@@ -104,7 +104,7 @@ class DirectFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::getCreationTime
 	 */
-	public function getCreationTime($file) {
+	public function getCreationTime( $file ) {
 		
 	}
 
@@ -118,84 +118,84 @@ class DirectFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::getGroup
 	 */
-	public function getGroup($file) {
+	public function getGroup( $file ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::getModificationTime
 	 */
-	public function getModificationTime($file) {
+	public function getModificationTime( $file ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::getOwner
 	 */
-	public function getOwner($file) {
+	public function getOwner( $file ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::getSize
 	 */
-	public function getSize($file) {
+	public function getSize( $file ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::isDir
 	 */
-	public function isDir($path) {
+	public function isDir( $path ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::isFile
 	 */
-	public function isFile($path) {
+	public function isFile( $path ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::isReadable
 	 */
-	public function isReadable($file) {
+	public function isReadable( $file ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::isWritable
 	 */
-	public function isWritable($file) {
+	public function isWritable( $file ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::listDir
 	 */
-	public function listDir($path, $includeHidden = true, $recursive = false) {
+	public function listDir( $path, $includeHidden = true, $recursive = false ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::makeDir
 	 */
-	public function makeDir($path, $chmod = false, $chown = false, $chgrp = false) {
+	public function makeDir( $path, $chmod = false, $chown = false, $chgrp = false ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::touch
 	 */
-	public function touch($file, $time = 0, $atime = 0) {
+	public function touch( $file, $time = 0, $atime = 0 ) {
 		
 	}
 
 	/**
 	 * @see Filesystem::writeToFile
 	 */
-	public function writeToFile($file, $contents) {
+	public function writeToFile( $file, $contents ) {
 		
 	}	
 	
