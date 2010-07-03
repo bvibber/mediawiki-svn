@@ -299,7 +299,7 @@ class WikilogMainPage
 	 */
 	private function loadWikilogData() {
 		if ( !$this->mWikilogDataLoaded ) {
-			$dbr = $this->getDB();
+			$dbr = wfGetDB( DB_SLAVE );
 			$data = $this->getWikilogDataFromId( $dbr, $this->getId() );
 			if ( $data ) {
 				$this->mWikilogSubtitle = unserialize( $data->wlw_subtitle );
