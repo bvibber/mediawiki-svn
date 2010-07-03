@@ -278,6 +278,7 @@ $messages['en'] = array(
 	'configure-setting-wgExtensionFunctions' => 'Extension Functions',
 	'configure-setting-wgExtensionMessagesFiles' => 'Extension messages files',
 	'configure-setting-wgExternalStores' => 'External storage configuration',
+	'configure-setting-wgSQLMode' => 'SQL mode',
 	'configure-setting-wgHooks' => 'Hooks',
 	'configure-setting-wgPagePropLinkInvalidations' => 'Page property link table invalidation lists',
 	'configure-setting-wgParserOutputHooks' => 'Parser output hooks',

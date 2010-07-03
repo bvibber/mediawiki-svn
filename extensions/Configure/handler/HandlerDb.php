@@ -343,6 +343,7 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			'wgSharedDB',
 			'wgSharedPrefix',
 			'wgSharedTables',
+			'wgSQLMode',
 			'wgDBClusterTimeout',
 			'wgDBservers',
 			'wgLBFactoryConf',
