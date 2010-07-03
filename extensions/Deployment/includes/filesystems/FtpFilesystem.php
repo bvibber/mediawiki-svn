@@ -117,7 +117,7 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::changeFileGroup
 	 */
 	public function changeFileGroup( $file, $group, $recursive = false ) {
-		
+		return false;
 	}
 
 	/**

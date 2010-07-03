@@ -42,7 +42,24 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::changeFileGroup
 	 */
 	public function changeFileGroup( $file, $group, $recursive = false ) {
+		if ( !$this->exists( $file ) ) {
+			return false;
+		}
 		
+		// Not recursive, so just use chgrp.
+		if ( !$recursive || !$this->is_dir($file) ) {
+			return @chgrp( $file, $group );
+		}
+		
+		// Recursive approach required.
+		$file = rtrim( $file, '/' ) . '/';
+		$files = $this->listDir( $file );
+		
+		foreach ( $files as $fileName ) {
+			$this->changeFileGroup( $file . $fileName, $group, $recursive );
+		}
+
+		return true;		
 	}
 
 	/**
