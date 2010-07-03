@@ -343,14 +343,26 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::getSize
 	 */
 	public function getSize( $file ) {
-		
+		return ftp_size( $this->connection, $file );
 	}
 
 	/**
 	 * @see Filesystem::isDir
 	 */
 	public function isDir( $path ) {
+		$cwd = $this->getCurrentWorkingDir();
+		wfSuppressWarnings();
+		$result = ftp_chdir( $this->connection, rtrim( $path, '/' ) . '/' );
+		wfRestoreWarnings();
 		
+		if ( $result && $path == $this->getCurrentWorkingDir() || $this->getCurrentWorkingDir() != $cwd ) {
+			wfSuppressWarnings();
+			@ftp_chdir( $this->connection, $cwd );
+			wfRestoreWarnings();
+			return true;
+		}
+		
+		return false;		
 	}
 
 	/**

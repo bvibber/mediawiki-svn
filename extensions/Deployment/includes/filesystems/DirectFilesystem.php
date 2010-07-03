@@ -302,14 +302,20 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::getSize
 	 */
 	public function getSize( $file ) {
-		
+		wfSuppressWarnings();
+		$result = filesize( $file );
+		wfRestoreWarnings();		
+		return $result;			
 	}
 
 	/**
 	 * @see Filesystem::isDir
 	 */
 	public function isDir( $path ) {
-		
+		wfSuppressWarnings();
+		$result = (bool)is_dir( $path );
+		wfRestoreWarnings();		
+		return $result;				
 	}
 
 	/**
