@@ -352,7 +352,66 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::listDir
 	 */
 	public function listDir( $path, $includeHidden = true, $recursive = false ) {
+		if ( $this->isFile( $path ) ) {
+			$limit_file = basename( $path );
+			$path = dirname( $path );
+		} else {
+			$limit_file = false;
+		}
+
+		if ( !$this->isDir( $path ) ) {
+			return false;
+		}
+
+		wfSuppressWarnings();
+		$dir = dir( $path );
+		wfRestoreWarnings();
 		
+		if ( !$dir ) {
+			return false;
+		}
+
+		$ret = array();
+
+		while ( false !== ( $entry = $dir->read() ) ) {
+			$struc = array();
+			$struc['name'] = $entry;
+
+			if ( '.' == $struc['name'] || '..' == $struc['name'] )
+				continue;
+
+			if ( ( !$includeHidden && '.' == $struc['name'][0] ) || ( $limit_file && $struc['name'] != $limit_file ) ) {
+				continue;
+			}
+
+			$entryPath = "$path/$entry";
+			
+			$struc['perms'] 	= $this->getChmod( $entryPath );
+			$struc['number'] 	= false;
+			$struc['owner']    	= $this->getOwner( $entryPath );
+			$struc['group']    	= $this->getGroup( $entryPath );
+			$struc['size']    	= $this->getSize( $entryPath );
+			$struc['lastmodunix']= $this->getModificationTime( $entryPath );
+			$struc['lastmod']   = date( 'M j', $struc['lastmodunix'] );
+			$struc['time']    	= date( 'h:i:s', $struc['lastmodunix'] );
+			$struc['type']		= $this->isDir( $entryPath ) ? 'd' : 'f';
+
+			if ( $struc['type'] == 'd' ) {
+				if ( $recursive ) {
+					$struc['files'] = $this->listDir( $path . '/' . $struc['name'], $includeHidden, $recursive );
+				}
+				else {
+					$struc['files'] = array();
+				}
+			}
+
+			$ret[$struc['name']] = $struc;
+		}
+		
+		$dir->close();
+		unset($dir);
+		
+		return $ret;		
 	}
 
 	/**

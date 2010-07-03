@@ -357,7 +357,7 @@ class FtpFilesystem extends Filesystem {
 		
 		if ( $result && $path == $this->getCurrentWorkingDir() || $this->getCurrentWorkingDir() != $cwd ) {
 			wfSuppressWarnings();
-			@ftp_chdir( $this->connection, $cwd );
+			ftp_chdir( $this->connection, $cwd );
 			wfRestoreWarnings();
 			return true;
 		}
@@ -394,9 +394,65 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::listDir
 	 */
 	public function listDir( $path, $includeHidden = true, $recursive = false ) {
+		if ( $this->isFile( $path ) ) {
+			$limit_file = basename( $path );
+			$path = dirname( $path );
+		}
+		else {
+			$limit_file = false;
+		}
 		
-	}
+		wfSuppressWarnings();
+		$ftp_chdir = ftp_chdir( $this->connection, $path );
+		wfRestoreWarnings();
+		
+		if ( !$ftp_chdir ) {
+			return false;
+		}
+		
+		wfSuppressWarnings();
+		$pwd = ftp_pwd( $this->connection );
+		$list = ftp_rawlist( $this->connection, '-a', false );
+		ftp_chdir( $this->connection, $pwd );
+		wfRestoreWarnings();
+		
+		if ( empty( $list ) ) {
+			return false;
+		}
+			
+		$dirlist = array();
+		
+		foreach ( $list as $k => $v ) {
+			$entry = $this->parseListing( $v );
+			
+			if ( empty( $entry ) 
+				|| ( '.' == $entry['name'] || '..' == $entry['name'] )
+				|| ( !$includeHidden && '.' == $entry['name'][0] ) 
+				|| ( $limit_file && $entry['name'] != $limit_file ) ) {
+					continue;
+			}
 
+			$dirlist[ $entry['name'] ] = $entry;
+		}
+
+		$ret = array();
+		
+		foreach ( (array)$dirlist as $struc ) {
+			if ( 'd' == $struc['type'] ) {
+				if ( $recursive ) {
+					$struc['files'] = $this->listDir( $path . '/' . $struc['name'], $includeHidden, $recursive );
+				}					
+				else {
+					$struc['files'] = array();
+				}
+			}
+
+			$ret[$struc['name']] = $struc;
+		}
+		
+		return $ret;		
+	}
+	
 	/**
 	 * @see Filesystem::makeDir
 	 */
@@ -417,5 +473,77 @@ class FtpFilesystem extends Filesystem {
 	public function writeToFile( $file, $contents ) {
 		
 	}	
+	
+	/**
+	 * Function copied from wp-admin/includes/class-wp-filesystem-ftpext.php in WP 3.0.
+	 */
+	protected function parseListing( $line ) {
+		static $is_windows;
+		if ( is_null($is_windows) )
+			$is_windows = stripos( ftp_systype($this->link), 'win') !== false;
+
+		if ( $is_windows && preg_match('/([0-9]{2})-([0-9]{2})-([0-9]{2}) +([0-9]{2}):([0-9]{2})(AM|PM) +([0-9]+|<DIR>) +(.+)/', $line, $lucifer) ) {
+			$b = array();
+			if ( $lucifer[3] < 70 )
+				$lucifer[3] +=2000;
+			else
+				$lucifer[3] += 1900; // 4digit year fix
+			$b['isdir'] = ( $lucifer[7] == '<DIR>');
+			if ( $b['isdir'] )
+				$b['type'] = 'd';
+			else
+				$b['type'] = 'f';
+			$b['size'] = $lucifer[7];
+			$b['month'] = $lucifer[1];
+			$b['day'] = $lucifer[2];
+			$b['year'] = $lucifer[3];
+			$b['hour'] = $lucifer[4];
+			$b['minute'] = $lucifer[5];
+			$b['time'] = @mktime($lucifer[4] + (strcasecmp($lucifer[6], "PM") == 0 ? 12 : 0), $lucifer[5], 0, $lucifer[1], $lucifer[2], $lucifer[3]);
+			$b['am/pm'] = $lucifer[6];
+			$b['name'] = $lucifer[8];
+		} elseif ( !$is_windows && $lucifer = preg_split('/[ ]/', $line, 9, PREG_SPLIT_NO_EMPTY)) {
+			//echo $line."\n";
+			$lcount = count($lucifer);
+			if ( $lcount < 8 )
+				return '';
+			$b = array();
+			$b['isdir'] = $lucifer[0]{0} === 'd';
+			$b['islink'] = $lucifer[0]{0} === 'l';
+			if ( $b['isdir'] )
+				$b['type'] = 'd';
+			elseif ( $b['islink'] )
+				$b['type'] = 'l';
+			else
+				$b['type'] = 'f';
+			$b['perms'] = $lucifer[0];
+			$b['number'] = $lucifer[1];
+			$b['owner'] = $lucifer[2];
+			$b['group'] = $lucifer[3];
+			$b['size'] = $lucifer[4];
+			if ( $lcount == 8 ) {
+				sscanf($lucifer[5], '%d-%d-%d', $b['year'], $b['month'], $b['day']);
+				sscanf($lucifer[6], '%d:%d', $b['hour'], $b['minute']);
+				$b['time'] = @mktime($b['hour'], $b['minute'], 0, $b['month'], $b['day'], $b['year']);
+				$b['name'] = $lucifer[7];
+			} else {
+				$b['month'] = $lucifer[5];
+				$b['day'] = $lucifer[6];
+				if ( preg_match('/([0-9]{2}):([0-9]{2})/', $lucifer[7], $l2) ) {
+					$b['year'] = date("Y");
+					$b['hour'] = $l2[1];
+					$b['minute'] = $l2[2];
+				} else {
+					$b['year'] = $lucifer[7];
+					$b['hour'] = 0;
+					$b['minute'] = 0;
+				}
+				$b['time'] = strtotime( sprintf('%d %s %d %02d:%02d', $b['day'], $b['month'], $b['year'], $b['hour'], $b['minute']) );
+				$b['name'] = $lucifer[8];
+			}
+		}
+
+		return $b;
+	} 
 		
 }
