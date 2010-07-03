@@ -154,14 +154,14 @@ class DirectFilesystem extends Filesystem {
 			$success = false;
 		}
 		
-		return $success;		
+		return $success;
 	}
 
 	/**
 	 * @see Filesystem::doCopy
 	 */
 	protected function doCopy( $from, $to ) {
-		
+		return copy( $from, $to );
 	}
 
 	/**

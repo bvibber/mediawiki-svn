@@ -193,18 +193,24 @@ class FtpFilesystem extends Filesystem {
 			}
 		}
 
-		if ( $success && $this->exists( $path ) && !@ftp_rmdir( $this->link, $path ) ) {
+		if ( $success && $this->exists( $path ) && !@ftp_rmdir( $this->connection, $path ) ) {
 			$success = false;
 		}
 		
-		return $success;	
+		return $success;
 	}
 
 	/**
 	 * @see Filesystem::doCopy
 	 */
 	protected function doCopy( $from, $to ) {
+		$content = $this->get_contents( $from );
 		
+		if ( $content === false ) {
+			return false;
+		}
+			
+		return $this->writeToFile( $to, $content );		
 	}
 
 	/**
