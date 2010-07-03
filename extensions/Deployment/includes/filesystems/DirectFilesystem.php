@@ -35,7 +35,7 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::changeDir
 	 */
 	public function changeDir( $dir ) {
-		return @chdir( $dir );
+		return (bool)@chdir( $dir );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class DirectFilesystem extends Filesystem {
 		}
 		
 		// Not recursive, so just use chgrp.
-		if ( !$recursive || !$this->is_dir($file) ) {
+		if ( !$recursive || !$this->isDir( $file ) ) {
 			return @chgrp( $file, $group );
 		}
 		
@@ -66,7 +66,33 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::chmod
 	 */
 	public function chmod( $file, $mode = false, $recursive = false ) {
+		// TODO: refactor up?
+		if ( !$mode ) {
+			if ( $this->isFile( $file ) ) {
+				$mode = FS_CHMOD_FILE;
+			}
+			elseif ( $this->isDir( $file ) ) {
+				$mode = FS_CHMOD_DIR;
+			}
+			else {
+				return false;
+			}
+		}
+
+		// Not recursive, so just use chmod.
+		if ( !$recursive || !$this->isDir( $file ) ) {
+			return (bool)@chmod( $file, $mode );
+		}
+			
+		// Recursive approach required.
+		$file = rtrim( $file, '/' ) . '/';
+		$files = $this->listDir( $file );
 		
+		foreach ( $files as $fileName ) {
+			$this->chmod( $file . $fileName, $mode, $recursive );
+		}
+
+		return true;	
 	}
 
 	/**

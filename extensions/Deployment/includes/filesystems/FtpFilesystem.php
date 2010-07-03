@@ -110,7 +110,7 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::changeDir
 	 */
 	public function changeDir( $dir ) {
-		return @ftp_chdir( $this->connection, $dir );
+		return (bool)@ftp_chdir( $this->connection, $dir );
 	}
 
 	/**
@@ -124,7 +124,38 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::chmod
 	 */
 	public function chmod( $file, $mode = false, $recursive = false ) {
+		// TODO: refactor up?
+		if ( !$mode ) {
+			if ( $this->isFile( $file ) ) {
+				$mode = FS_CHMOD_FILE;
+			}
+			elseif ( $this->isDir( $file ) ) {
+				$mode = FS_CHMOD_DIR;
+			}
+			else {
+				return false;
+			}
+		}
+
+		// Not recursive, so just use chmod.
+		if ( !$recursive || !$this->isDir( $file ) ) {
+			if ( !function_exists( 'ftp_chmod' ) ) {
+				return (bool)@ftp_site( $this->connection, sprintf( 'CHMOD %o %s', $mode, $file ) );
+			}
+			else {
+				return (bool)@ftp_chmod( $this->connection, $mode, $file );	
+			}
+		}
+			
+		// Recursive approach required.
+		$file = rtrim( $file, '/' ) . '/';
+		$files = $this->listDir( $file );
 		
+		foreach ( $files as $fileName ) {
+			$this->chmod( $file . $fileName, $mode, $recursive );
+		}
+
+		return true;
 	}
 
 	/**

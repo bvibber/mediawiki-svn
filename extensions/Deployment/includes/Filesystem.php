@@ -17,6 +17,9 @@
  * @defgroup Filesystem Filesystem
  */
 
+define('FS_CHMOD_DIR', 0755 );
+define('FS_CHMOD_FILE', 0644 );
+
 /**
  * Base class providing a way to access filesystems.
  * 
