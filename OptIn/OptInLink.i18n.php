@@ -763,11 +763,19 @@ $messages['mt'] = array(
 	'tooltip-pt-optin-feedback' => 'Ibgħat rispons fuq l-esperjenza tiegħek bil-funzjonijiet il-ġodda',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'optin-try' => 'ایستفاده از بتا',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
 $messages['nds-nl'] = array(
 	'optin-try' => 'Beta uutpreberen',
+	'tooltip-pt-optin-try' => 'De nieje functies uutpreberen',
 	'optin-leave' => 'Beta uutzetten',
 	'optin-feedback' => "Is 't wat?",
 );

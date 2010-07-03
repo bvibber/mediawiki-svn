@@ -366,6 +366,7 @@ $messages['mt'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'vector-collapsiblenav-preference' => "Inklapbaor navigasiemenu inschakelen bie 't gebruuk van Vector",
 	'vector-collapsiblenav-more' => 'Meer talen',
 );
 

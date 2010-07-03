@@ -255,8 +255,10 @@ $messages['cs'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'wikieditor-publish-button-publish' => 'съхранѥ́ниѥ',
 	'wikieditor-publish-dialog-minor' => 'ма́лаꙗ мѣ́на',
 	'wikieditor-publish-dialog-watch' => 'си страни́цѧ блюдє́ниѥ',
+	'wikieditor-publish-dialog-publish' => 'съхранѥ́ниѥ',
 );
 
 /** Welsh (Cymraeg)

@@ -1298,6 +1298,14 @@ $messages['mt'] = array(
 	'ct-update-table' => 'Aġġorna t-tabella',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'ct-event-name' => 'Gebeurtenisse',
+	'ct-expert-header' => '"Expert"-kliks',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

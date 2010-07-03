@@ -4075,6 +4075,43 @@ $messages['myv'] = array(
 	'optin-survey-answer-changes-other' => 'Лия:',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'optin-title-justoptedin' => 'بتا دله خِش بمویی',
+	'optin-survey-yes' => 'اره',
+	'optin-survey-no' => 'نا',
+	'optin-survey-intro' => 'بخاطر ایستیفاده از بتا شمجه ممنونمی
+اگه بتوندی اینجه شه نظرات ره بنویس تا وه ره ململته هکنیم "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'بتای چچی خار بی‌یه؟ چچی ون دله نخار بی‌یه؟',
+	'optin-survey-question-whyoptout' => 'چچی وسّه بتا ره دوستی؟',
+	'optin-survey-answer-whyoptout-hard' => 'وه ره ایستیفاده هکردن خله سخته',
+	'optin-survey-answer-whyoptout-didntwork' => 'خله خار نی‌یه',
+	'optin-survey-answer-whyoptout-notpredictable' => 'اونتی که خاستمه نی‌یه',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'مه ره خِش نمو',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'ونه طرح دوستن و زوونه‌ئون جه خِشم نیموئه.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'جدید نوار ابزار جه خِشم نیموئه',
+	'optin-survey-answer-whyoptout-other' => 'دیگه چیزا:',
+	'optin-survey-question-explain' => 'خواهشا شه دلایل ره بنویسین:',
+	'optin-survey-answer-changes-other' => 'دیگه:',
+	'optin-improvements2' => '==چچی بهته بیّه==
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+;نوار ابزار پیشرفته
+جدید ِنوار دچی‌ین ره آسون هکرده.
+عکسا اینجه ره قشنگته هکرده.
+دیگه درهم برهم نی‌یه خله راه دکته.
+;گپ
+بساتن لینک و جدول آسونه
+;و بیشته
+اما خله چیزا مثل ناوبری پیشرفته، ئوشاری زوونه‌ئون و دگردستن ره بهته هکردمی.
+
+== خانی بدونی چتی توندی کومک هکنی؟ ==
+برای اطلاع بیشته درباره رابطه با توانایی ایستفاده ابتکاری [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative اینجه] ره سر بزنین.
+<div style="clear:both"></div>',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -4131,7 +4168,7 @@ Wie willen grege weten wa-jie van de nieje vormgeving vienen, \'t zol dus mooi w
 	'optin-survey-question-os' => 'Welk besturingssysteem he-j?',
 	'optin-survey-answer-os-other' => 'Aander besturingssysteem:',
 	'optin-survey-question-res' => 'Wat is joe beeldscharmreselusie?',
-	'optin-survey-question-changes' => 'Wat zo-jie aanders willen hemmen in de toekomstige Beta (kies meugelijkheen dee van toepassing bin)?',
+	'optin-survey-question-changes' => 'Wat zo-jie aanders willen in de toekomstige Bèta (kies meugelijkheen dee van toepassing bin)?',
 	'optin-survey-answer-changes-nav' => 'De navigasie van de webstee makkelijker maken.',
 	'optin-survey-answer-changes-edittools' => 'Meer en betere bewarkingshulpmiddels',
 	'optin-survey-answer-changes-upload' => "Verbeter 't toevoegen van inhoud en media.",

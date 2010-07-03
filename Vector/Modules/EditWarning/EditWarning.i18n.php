@@ -485,6 +485,15 @@ $messages['mt'] = array(
 	'vector-editwarning-preference' => "Avżani kull meta nħalli paġna ta' modifika b'modifiki li għadhom ma ġewx salvati",
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'vector-editwarning-warning' => 'A-j disse pagina ofsluten dan kan \'t ween dat der wieziging dee-j emaak hemmen kwiet raken.
+A-j an-emeld bin, dan ku-j disse waorschuwing uutzetten in \'t tabblad "Bewarken" in joew veurkeuren.',
+	'vector-editwarning-preference' => 'Waorschuw mien a-k een bewörken pagina of wil sluten dee-j nog neet op-esleugen is',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -591,7 +600,7 @@ Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiune
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'vector-editwarning-warning' => 'Lassanne sta pàgene tu puè perdè tutte le date ca è cangiate.
+	'vector-editwarning-warning' => '↓ Assenne da sta pàgene tu puè perdè tutte le date ca è cangiate.
 Ce tu è trasute, tu puè disabbilità st\'avvertimende jndr\'à sezione "Cangiaminde..." de le preferenze tune.',
 	'vector-editwarning-preference' => "Avvisave quanne jie lasse 'na pàgene cangiate senze ca agghie sarvate le cangiaminde",
 );

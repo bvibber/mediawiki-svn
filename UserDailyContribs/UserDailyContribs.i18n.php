@@ -298,6 +298,13 @@ $messages['mt'] = array(
 	'userdailycontribs-desc' => "Kontribuzzjonijiet ta' kuljum tal-utenti għall-estensjoni tal-itraċċar tal-klikks",
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'userdailycontribs-desc' => 'Dagelijkse gebrukersbiedragen veur de uutbreidingen um gebrukersklik mee te volgen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

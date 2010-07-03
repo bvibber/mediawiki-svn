@@ -491,6 +491,18 @@ $messages['mt'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Ipprova funzjonijiet ġodda',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'prefswitch-link-anon' => 'Nieje functies',
+	'tooltip-pt-prefswitch-link-anon' => 'Meer over de nieje functies',
+	'prefswitch-link-on' => 'Weerumme',
+	'tooltip-pt-prefswitch-link-on' => 'Nieje functies uutzetten',
+	'prefswitch-link-off' => 'Nieje functies',
+	'tooltip-pt-prefswitch-link-off' => 'Nieje functies uutpreberen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

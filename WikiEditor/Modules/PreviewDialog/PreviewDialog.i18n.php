@@ -398,6 +398,7 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-previewDialog-preference' => '미리보기 활성화',
 	'wikieditor-previewDialog-tab' => '미리 보기',
 	'wikieditor-previewDialog-loading' => '불러오는 중...',
 );
@@ -527,7 +528,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'wikieditor-previewDialog-preference' => 'Abìlita convërsassion ëd preuva',
+	'wikieditor-previewDialog-preference' => 'Abilité le conversassion ëd preuva',
 	'wikieditor-previewDialog-tab' => 'Previsualisassion',
 	'wikieditor-previewDialog-loading' => 'A caria ...',
 );
