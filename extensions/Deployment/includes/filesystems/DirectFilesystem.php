@@ -322,21 +322,30 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::isFile
 	 */
 	public function isFile( $path ) {
-		
+		wfSuppressWarnings();
+		$result = (bool)is_file( $path );
+		wfRestoreWarnings();		
+		return $result;				
 	}
 
 	/**
 	 * @see Filesystem::isReadable
 	 */
 	public function isReadable( $file ) {
-		
+		wfSuppressWarnings();
+		$result = (bool)is_readable( $file );
+		wfRestoreWarnings();		
+		return $result;			
 	}
 
 	/**
 	 * @see Filesystem::isWritable
 	 */
 	public function isWritable( $file ) {
-		
+		wfSuppressWarnings();
+		$result = (bool)is_writable( $file );
+		wfRestoreWarnings();		
+		return $result;			
 	}
 
 	/**

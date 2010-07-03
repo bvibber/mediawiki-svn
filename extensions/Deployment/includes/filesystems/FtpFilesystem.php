@@ -369,21 +369,25 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::isFile
 	 */
 	public function isFile( $path ) {
-		
+		return $this->exists( $path ) && !$this->isDir( $path );
 	}
 
 	/**
 	 * @see Filesystem::isReadable
+	 * 
+	 * TODO
 	 */
 	public function isReadable( $file ) {
-		
+		return true;
 	}
 
 	/**
 	 * @see Filesystem::isWritable
+	 * 
+	 * TODO
 	 */
 	public function isWritable( $file ) {
-		
+		return true;
 	}
 
 	/**
