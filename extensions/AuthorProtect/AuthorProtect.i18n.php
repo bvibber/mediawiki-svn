@@ -193,6 +193,7 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'authorprotect' => "Gwareziñ ar bajenn diouzh ar re n'int ket aozerien anezhi",
@@ -202,7 +203,7 @@ $messages['br'] = array(
 	'authorprotect-edit' => "Strishaat ar gwir kemmañ d'an aozerien hepken",
 	'authorprotect-move' => "Strishaat ar gwir adenvel d'an aozerien hepken",
 	'authorprotect-expiry' => 'Deiziad termen',
-	'authorprotect-reason' => 'Abeg',
+	'authorprotect-reason' => 'Abeg :',
 	'authorprotect-intro' => "Ober gant ar furmskrid-mañ evit prennañ ar bajenn-mañ d'ar re n'int ket aozerien",
 	'authorprotect-success' => 'Gwareziñ sevenet !',
 	'authorprotect-failure' => "C'hwitet ar gwareziñ !",
@@ -805,6 +806,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'authorprotect' => '非作成者からページを保護',
@@ -813,8 +815,8 @@ $messages['ja'] = array(
 	'authorprotect-confirm' => '保護レベルを変更',
 	'authorprotect-edit' => '編集を作成者に制限',
 	'authorprotect-move' => '移動を作成者に制限',
-	'authorprotect-expiry' => '期限',
-	'authorprotect-reason' => '理由',
+	'authorprotect-expiry' => '期限：',
+	'authorprotect-reason' => '理由：',
 	'authorprotect-intro' => 'このページを非作成者から保護するのにこのフォームを使ってください',
 	'authorprotect-success' => '保護成功！',
 	'authorprotect-failure' => '保護失敗',
@@ -889,8 +891,8 @@ $messages['ko'] = array(
 	'authorprotect-confirm' => '보호 수준 변경',
 	'authorprotect-edit' => '저자의 편집 제한하기',
 	'authorprotect-move' => '저자의 이동 제한',
-	'authorprotect-expiry' => '만료 시간',
-	'authorprotect-reason' => '이유',
+	'authorprotect-expiry' => '기한:',
+	'authorprotect-reason' => '이유:',
 	'authorprotect-intro' => '이 양식을 이용해 저자가 아닌 사람의 조작을 제한합니다',
 	'authorprotect-success' => '보호 완료!',
 	'authorprotect-failure' => '보호 실패',

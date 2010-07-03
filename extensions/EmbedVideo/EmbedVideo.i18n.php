@@ -206,15 +206,16 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'embedvideo-desc' => 'A gionta na funsion dël parser për anserì video da sorziss popolar',
-	'embedvideo-missing-params' => 'A EmbedVideo ai manco dij paràmetr obligatori.',
-	'embedvideo-bad-params' => "EmbedVideo a l'ha arseivù un parametr pa bon.",
+	'embedvideo-desc' => 'A gionta na funsion dël parser për anserì dij filmà da dle sorgiss popolar',
+	'embedvideo-missing-params' => 'A EmbedVideo a-j manco dij paràmetr obligatori.',
+	'embedvideo-bad-params' => "EmbedVideo a l'ha arseivù un paràmeter pa bon.",
 	'embedvideo-unparsable-param-string' => 'EmbedVideo a l\'ha arseivù la stringa ëd paràmetr pa bon-a "<code>$1</code>".',
-	'embedvideo-unrecognized-service' => 'EmbedVideo a l\'ha pa arconossù ël servissi video "<code>$1</code>".',
-	'embedvideo-bad-id' => 'EmbedVideo a l\'ha arseivù n\'id pa bon "$1" për ël servissi "$2".',
+	'embedvideo-unrecognized-service' => 'EmbedVideo a l\'ha pa arconossù ël servissi dij filmà "<code>$1</code>".',
+	'embedvideo-bad-id' => 'EmbedVideo a l\'ha arseivù n\'identificativ pa bon "$1" për ël servissi "$2".',
 	'embedvideo-illegal-width' => 'EmbedVideo a l\'ha arseivù ël paràmetr ëd dimension pa bon-a "$1".',
 );
 
@@ -268,5 +269,18 @@ $messages['tl'] = array(
 	'embedvideo-unrecognized-service' => 'Hindi makilala ng Ibaon ang Bidyo ang palingkurang pambidyong "<code>$1</code>".',
 	'embedvideo-bad-id' => 'Nakatanggap ng isang masamang id na "$1" ang Ibaon ang Bidyo para sa serbisyong "$2".',
 	'embedvideo-illegal-width' => 'Nakatanggap ang Ibaon ang Bidyo ng ilegal na parametro ng lapad na "$1".',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'embedvideo-desc' => 'Popüler kaynaklardan video katıştırabilmek için bir ayrıştırıcı işlev (parser function) ekler',
+	'embedvideo-missing-params' => 'EmbedVideo için gerekli bir parametre eksik.',
+	'embedvideo-bad-params' => 'EmbedVideo yanlış bir parametre algıladı.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo ayrıştırılamaz parametre değeri algıladı "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'EmbedVideo "<code>$1</code>" video servisini algılamıyor.',
+	'embedvideo-bad-id' => 'EmbedVideo "$2" hizmeti için yanlış bir tanımlayıcı numara algıladı: "$1"',
+	'embedvideo-illegal-width' => 'EmbedVideo uygulanamaz bir genişlik parametresi algıladı: "$1"',
 );
 

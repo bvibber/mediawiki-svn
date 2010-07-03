@@ -320,6 +320,13 @@ $messages['mt'] = array(
 	'wikieditor-highlight-preference' => 'Attiva l-kontroll ortografiku matul il-modifika',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-highlight-preference' => "Codemarkering inschakelen tiejens 't bewarken",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

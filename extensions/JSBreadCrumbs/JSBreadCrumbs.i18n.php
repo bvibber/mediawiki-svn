@@ -33,6 +33,14 @@ $messages['be-tarask'] = array(
 	'jsbreadcrumbs-leading-description' => 'Навігацыйны шлях',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'jsbreadcrumbs-desc' => 'Ouzhpennañ a ra un heuliad liammoù merdeiñ dindan barenn an ivinelloù',
+	'jsbreadcrumbs-leading-description' => 'Hentad merdeiñ',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -55,6 +63,14 @@ $messages['dsb'] = array(
 $messages['fr'] = array(
 	'jsbreadcrumbs-desc' => "Ajoute une suite de liens de navigation sous la barre d'onglets",
 	'jsbreadcrumbs-leading-description' => 'Parcours de navigation',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'jsbreadcrumbs-desc' => 'Engade un conxunto de ligazóns de navegación baixo a barra de lapelas',
+	'jsbreadcrumbs-leading-description' => 'Barra de navegación',
 );
 
 /** Swiss German (Alemannisch)
@@ -102,6 +118,14 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'jsbreadcrumbs-desc' => 'Voegt een spoor van broodkruimels toe onder de menubalk',
 	'jsbreadcrumbs-leading-description' => 'Navigatiepad',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'jsbreadcrumbs-desc' => 'Dodaje szlak nawigacyjny poniżej paska zakładek',
+	'jsbreadcrumbs-leading-description' => 'Szlak nawigacyjny',
 );
 
 /** Piedmontese (Piemontèis)

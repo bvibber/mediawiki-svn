@@ -513,6 +513,7 @@ $messages['nds-nl'] = array(
 	'usabilityinitiative' => 'Bruukbaorheidsinitiatief',
 	'usabilityinitiative-desc' => "Functionaliteit dee deur 't Bruukbaorheidsinitiatief van Wikipedie is ontwikkeld um de gebruuksvriendelijkheid van MediaWiki te verbeteren",
 	'prefs-beta' => 'Bètafuncties',
+	'prefs-labs' => 'Alphafuncties',
 );
 
 /** Dutch (Nederlands)

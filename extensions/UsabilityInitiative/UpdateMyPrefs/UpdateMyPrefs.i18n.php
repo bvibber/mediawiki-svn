@@ -369,6 +369,15 @@ $messages['mt'] = array(
 	'updatemyprefs-label-message' => "Aġġorna awtomatikament il-preferenzi tiegħi b'impostazzjonijiet u għodda predefiniti ġodda hekk kif isiru disponibbli",
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'prefs-updates' => 'Instellingen biewarken',
+	'updatemyprefs-desc' => "Veurkeursinstelling veur gebrukers um an te geven of ze bie 't beschikbaor koemen gelieke gebruuk willen maken van nieje functies",
+	'updatemyprefs-label-message' => "Mien veurkeuren autematisch biewarken mit nieje standardinstellingen en hulpmiddels bie 't beschikbaor koemen",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

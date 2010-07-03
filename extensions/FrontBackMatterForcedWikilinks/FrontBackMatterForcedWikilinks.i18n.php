@@ -154,13 +154,14 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'frontbackforced-desc' => 'A taca argoment ëd testa e argomend ëd coa a le pàgine e a amplementa ij wikilink forsà',
-	'frontbackforced-front' => '_(argoment_ëd_testa)',
-	'frontbackforced-back' => '_(argoment_ëd_coa)',
-	'frontbackforced-forced' => '_(wikilink_forsà)',
+	'frontbackforced-desc' => "A taca dle session an testa e an coa dle pàgine e a buta an euvra j'anliure wiki forsà",
+	'frontbackforced-front' => '_(session_ëd_testa)',
+	'frontbackforced-back' => '_(session_ëd_coa)',
+	'frontbackforced-forced' => '_(anliura_wiki_forsà)',
 );
 
 /** Portuguese (Português)

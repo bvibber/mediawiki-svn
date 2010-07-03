@@ -54,6 +54,13 @@ $messages['ia'] = array(
 	'pageobjectmodel-desc' => 'Adde un insimul de classes pro abstraction del syntaxe de MediaWiki pro permitter le extraction e manipulation facile de paginas intra altere programmas',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'pageobjectmodel-desc' => '他のプログラム内での、ページの簡単な抽出や操作を許可するために、MediaWiki構文の抽象化クラスを追加する。',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -75,11 +82,19 @@ $messages['nl'] = array(
 	'pageobjectmodel-desc' => "Voegt klassen toe voor de abstractie van de MediaWiki-syntaxis om eenvoudige extractie en manipulatie van pagina's binnen andere programma's mogelijk te maken",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'pageobjectmodel-desc' => 'Dodaje zestaw klas do obsługi składni MediaWiki umożliwiających łatwe zaciągnięcie i obróbkę stron w innych programach',
+);
+
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'pageobjectmodel-desc' => "A gionta n'ansema ëd class për l'astrassion dla sintass Mediawiki për përmëtte strassion e manipolassion bel fé ëd pàgine sensa àutr program",
+	'pageobjectmodel-desc' => "A gionta n'ansema ëd classe për l'astrassion dla sintassi ëd Mediawiki për përmëtte l'estrassion e la manipolassion bel fé ëd pàgine sensa d'àutr programa",
 );
 
 /** Portuguese (Português)

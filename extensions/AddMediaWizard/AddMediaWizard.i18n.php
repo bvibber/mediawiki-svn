@@ -276,6 +276,13 @@ $messages['pt-br'] = array(
 	'addmediawizard-desc' => 'Assistente para o carregamento de multimídias, desenvolvido em parceria pela Kagura e a Wikimedia Foundation',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'addmediawizard-desc' => 'Aggiunge le wizard de le media, sviluppate inzieme a Katura e Uicchimedia Foundation',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

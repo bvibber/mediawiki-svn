@@ -369,26 +369,26 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'changeauthor' => 'Kemmañ aozer an adweladennoù',
-	'changeauthor-desc' => "Aotreañ a ra da gemm anv oberour ur c'hemm",
+	'changeauthor-desc' => "Aotren a ra cheñch anv aozer ur c'hemm pe kemmoù",
 	'changeauthor-title' => 'Kemmañ aozer un adweladenn',
 	'changeauthor-search-box' => 'Klask adweladennoù',
 	'changeauthor-pagename-or-revid' => 'Anv ar bajenn pe niverenn an adweladenn :',
 	'changeauthor-pagenameform-go' => 'Mont',
 	'changeauthor-comment' => 'Notenn :',
 	'changeauthor-changeauthors-multi' => 'Kemmañ {{PLURAL:$1|an aozer|an aozerien}}',
-	'changeauthor-explanation-multi' => 'Gant ar furmskrid-mañ e c\'heloc\'h kemmañ aozer un adweladenn.
-Kemmit dindan anv un pe meur a aozerien, ouzhpennit un evezhiadenn (diret) ha klikit war ar bouton "Kemmañ an aozer(ien)".',
+	'changeauthor-explanation-multi' => 'Gant ar furmskrid-mañ e c\'hallit cheñch aozerien un adweladenn.
+Trawalc\'h eo cheñch un anv pe meur a hini er roll amañ dindan, merkañ un evezhiadenn (diret) ha klikañ war ar bouton "Cheñch an aozer(ien)".',
 	'changeauthor-changeauthors-single' => 'Cheñch aozer',
-	'changeauthor-explanation-single' => 'Gant ar furmskrid-mañ e c\'heloc\'h kemmañ aozer un adweladenn.
-Cheñchit dindan anv an aozer, ouzhpennit un evezhiadenn (diret) ha klikit war ar bouton "Kemmañ an aozer".',
+	'changeauthor-explanation-single' => 'Gant ar furmskrid-mañ e c\'hallit cheñch aozer un adweladenn.
+Trawalc\'h eo cheñch an anv amañ dindan, merkañ un evezhiadenn (diret) ha klikañ war ar bouton "Cheñch an aozer".',
 	'changeauthor-invalid-username' => 'Anv implijer "$1" fall.',
 	'changeauthor-nosuchuser' => 'Implijer "$1" ebet.',
 	'changeauthor-revview' => 'Adweladenn #$1 eus $2',
 	'changeauthor-nosuchtitle' => 'N\'eus pajenn ebet anvet "$1".',
-	'changeauthor-weirderror' => "Ur fazi souezhus-tre a zo bet.
-Mar plij adklaskit ho reked.
-Ma 'z eus bet meur a wech eus ar fazi-se e talvez ez eo sur a-walc'h torret an diaz roadennoù",
-	'changeauthor-invalidform' => 'Mar plij implijit ar furmskrid krouet gant ar [[Special:ChangeAuthor|bajenn ispisial]], ha ket ur furmskrid hiniennel',
+	'changeauthor-weirderror' => "Ur fazi souezhus-tre zo c'hoarvezet.
+Adkasit ho reked mar plij.
+Ma talc'h ar fazi-se da c'hoarvezout e talvez eo torret an diaz roadennoù, sur a-walc'h.",
+	'changeauthor-invalidform' => "Grit gant ar furmskrid pourchaset gant ar [[Special:ChangeAuthor|bajenn dibar]], kentoc'h eget gant ur furmskrid personelaet",
 	'changeauthor-success' => 'Kaset eo bet ho reked da benn vat.',
 	'changeauthor-logentry' => 'Kemmoù an aozer $2 da $1 eus $3 davet $4',
 	'changeauthor-logpagename' => "Marilh ar c'hemmoù graet gant an aozer",

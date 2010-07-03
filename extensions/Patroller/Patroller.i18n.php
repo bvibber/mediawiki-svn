@@ -1434,7 +1434,7 @@ $messages['oc'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
-	'patrol-revert-reason' => 'Аххос',
+	'patrol-revert-reason' => 'Аххос:',
 );
 
 /** Deitsch (Deitsch)
@@ -1454,7 +1454,7 @@ $messages['pl'] = array(
 	'patrol-desc' => 'Rozszerzony interfejs patrolowania ostatnich zmian',
 	'patrol-endorse' => 'Zatwierdź',
 	'patrol-revert' => 'Cofnij',
-	'patrol-revert-reason' => 'Powód:',
+	'patrol-revert-reason' => 'Powód',
 	'patrol-skip' => 'Pomiń',
 	'patrol-reverting' => 'Wycofanie: $1',
 	'patrol-nonefound' => 'Nie znaleziono edycji do patrolowania.',
@@ -2066,7 +2066,7 @@ $messages['yue'] = array(
 	'patrol' => '巡啲編輯',
 	'patrol-endorse' => '簽署支持',
 	'patrol-revert' => '打回頭',
-	'patrol-revert-reason' => '理由:',
+	'patrol-revert-reason' => '原因:',
 	'patrol-skip' => '跳',
 	'patrol-reverting' => '打回頭：$1',
 	'patrol-nonefound' => '揾唔到好嘅版本來簽。',

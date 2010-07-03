@@ -511,6 +511,8 @@ $messages['mt'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
+	'wikieditor' => 'Uut-ebreien teksverwarker veur wikitekse',
+	'wikieditor-desc' => 'Hierdeur krie-j een teksverwarker veur wikitekse dee-j uut kunnen breien en modules mit extra functies',
 	'wikieditor-wikitext-tab' => 'Wikitekse',
 	'wikieditor-loading' => "An 't laojen",
 );

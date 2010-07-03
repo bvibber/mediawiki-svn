@@ -369,6 +369,7 @@ Vide $2 pro un registro de vacuationes recente.',
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'purewikideletion' => 'ピュア・ウィキ削除',
 	'randomexcludeblank' => 'ランダムページ（白紙状態を除く）',
 	'populateblankedpagestable' => '白紙化されたページの一覧表を読み込む',
 	'purewikideletion-desc' => 'ページが白紙化されるなど、赤リンクになるべきものに関する機能',

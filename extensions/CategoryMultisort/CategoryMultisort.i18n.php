@@ -239,13 +239,14 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'categorymultisort-desc' => 'Përmëtte che le categorìe a sio vëddùe con ordinament diferent',
 	'categorymultisort-defaultsortkey-name' => 'Për sòlit',
 	'categorymultisort-sortkey' => 'Ordinament:',
-	'categorymultisort-go' => 'Và',
+	'categorymultisort-go' => 'Andé',
 	'categorymultisort-default-sortkey' => 'Ordinament për sòlit:',
 	'prefs-category' => 'Categorìa',
 );

@@ -1978,7 +1978,7 @@ $messages['mk'] = array(
 	'youtubeauthsub_keywords' => 'Клучни зборови',
 	'youtubeauthsub_category' => 'Категорија',
 	'youtubeauthsub_submit' => 'Најавување',
-	'youtubeauthsub_clickhere' => 'Кликни тука за најавување на YouTube',
+	'youtubeauthsub_clickhere' => 'Кликнете тука за да се најавите на YouTube',
 	'youtubeauthsub_tokenerror' => 'Грешка при создавањето на потврдниот жетон. Обидете се повторно.',
 	'youtubeauthsub_success' => "Честитаме!
 Вашиот видео запис е подигнат.

@@ -36,6 +36,7 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'js2support-desc' => 'Embreg eus JS2 evel un astenn',
+	'prefs-script-debug' => 'Didraenañ ar skriptoù',
 );
 
 /** Catalan (Català)
@@ -246,6 +247,15 @@ $messages['tl'] = array(
 	'js2support-desc' => 'Suportang JS2 bilang isang karugtong',
 	'js2support-debug-preference' => 'Huwag paganahin ang panitik na pampangkat at pampaliit',
 	'prefs-script-debug' => 'Pagtanggal ng depekto mula sa panitik',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'js2support-desc' => 'Eklenti olarak JS2 desteği',
+	'js2support-debug-preference' => 'Kaynak gruplandırmayı ve küçültmeyi devre dışı bırak',
+	'prefs-script-debug' => 'Kaynak ayıklama',
 );
 
 /** Vietnamese (Tiếng Việt)

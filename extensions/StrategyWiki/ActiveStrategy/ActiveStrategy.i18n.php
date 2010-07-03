@@ -352,6 +352,14 @@ $messages['tl'] = array(
 	'nedits' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
 );
 
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'activestrategy' => 'Etkin Strateji',
+	'nedits' => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
