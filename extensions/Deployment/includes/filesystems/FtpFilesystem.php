@@ -162,7 +162,7 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::chown
 	 */
 	public function chown( $file, $owner, $recursive = false ) {
-		
+		return false;
 	}
 
 	/**

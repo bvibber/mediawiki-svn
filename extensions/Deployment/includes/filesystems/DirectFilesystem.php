@@ -99,14 +99,62 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::chown
 	 */
 	public function chown( $file, $owner, $recursive = false ) {
+		if ( !$this->exists( $file ) ) {
+			return false;
+		}
 		
+		// Not recursive, so just use chown.
+		if ( !$recursive || !$this->isDir( $file ) ) {
+			return (bool)@chown( $file, $owner );
+		}
+			
+		// Recursive approach required.
+		$file = rtrim( $file, '/' ) . '/';
+		$files = $this->listDir( $file );
+		
+		foreach ( $files as $fileName ) {
+			$this->chown( $file . $fileName, $owner, $recursive );
+		}
+
+		return true;	
 	}
 
 	/**
 	 * @see Filesystem::delete
 	 */
 	public function delete( $path, $recursive = false ) {
+		if ( empty( $path ) ) {
+			return false;
+		}
+			
+		// For win32, occasional problems deleteing files otherwise.
+		$path = str_replace( '\\', '/', $path ); 
+
+		if ( $this->isFile( $path ) ) {
+			return (bool)@unlink( $path );
+		}
+			
+		if ( !$recursive && $this->isDir( $path ) ) {
+			return (bool)@rmdir( $path );
+		}
+			
+		// Recursive approach required.
+		$path = rtrim( $path, '/' ) . '/';
+		$files = $this->listDir( $path );
 		
+		$success = true;
+		
+		foreach ( $files as $fileName ) {
+			if ( !$this->delete( $path . $fileName, $owner, $recursive ) ) {
+				$success = false;
+			}
+		}
+
+		if ( $success && file_exists( $path ) && !@rmdir( $path ) ) {
+			$success = false;
+		}
+		
+		return $success;		
 	}
 
 	/**
