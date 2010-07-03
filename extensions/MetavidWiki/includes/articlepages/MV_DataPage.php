@@ -17,7 +17,7 @@
  		parent::__construct( $title );
  	}
  	public function view() {
-		global $wgRequest, $wgUser, $wgOut, $wgJsMimeType, $mvgScriptPath;
+		global $wgRequest, $wgUser, $wgOut;
 			
 		// copied from CategoryPage ...
 		$diff = $wgRequest->getVal( 'diff' );

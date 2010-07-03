@@ -45,7 +45,7 @@ class MV_StreamPage extends Article {
  		return new MV_StreamPage( $article->mTitle, $mvTitle );
  	}
  	public function view() {
-		global $wgRequest, $wgUser, $wgOut, $wgJsMimeType, $mvgScriptPath;
+		global $wgRequest, $wgUser, $wgOut;
 		// @@TODO fix stream view() for old versions ... will likely have to replicate Article::view() 
 
 		// include the metavid headers (for embedding video in the page) 
@@ -60,7 +60,6 @@ class MV_StreamPage extends Article {
 		$this->outputWikiText( $text );
 	}
 	function outputWikiText( $text, $cache = true ) {
-		global $wgOut, $wgUser;
 		wfProfileIn( __METHOD__ );
 		$MV_MetavidInterface = new MV_MetavidInterface( 'stream', $this );
 		// will require the mv_embed script for video playback:		
@@ -81,7 +80,7 @@ class MV_StreamPage extends Article {
 		return true;
 	}
  	function viewRequest() {
- 		global $wgRequest, $wgUser, $wgOut, $wgTitle;
+ 		global $wgOut, $wgTitle;
  		// @@TODO figure out a way to be a special page but not be in the special namepsace.
 		// namely hide the edit/discussion links and rarely cache
  		$wgTitle->mNamespace = NS_SPECIAL;
@@ -107,7 +106,7 @@ class MV_StreamPage extends Article {
 		$wgOut->output();
  	}
  	function delete() {
- 		global $wgOut, $wgRequest, $wgUser;
+ 		global $wgOut, $wgRequest;
  		if ( !$wgRequest->wasPosted() ) {
  			$wgOut->addHTML( wfMsgExt( 'mv_stream_delete_warrning', 'parsemag',
 			 MV_Index::countMVDInRange( $this->mvTitle->getStreamId() ) ) );
