@@ -49,7 +49,7 @@ class TagStorysubmission {
 	 * @return HTML
 	 */
 	private static function getFrom( Parser $parser, array $args ) {
-		global $wgUser, $wgStyleVersion, $wgJsMimeType, $wgScriptPath, $wgStylePath;
+		global $wgUser, $wgStyleVersion, $wgScriptPath, $wgStylePath;
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$maxLen = array_key_exists( 'maxlength', $args ) && is_int( $args['maxlength'] ) ? $args['maxlength'] : $egStoryboardMaxStoryLen;

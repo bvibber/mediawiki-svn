@@ -27,7 +27,7 @@ class TagStoryboard {
 	 * @return array
 	 */
 	public static function render( $input, array $args, Parser $parser, $frame ) {
-		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $wgContLanguageCode;
+		global $wgScriptPath, $wgStylePath, $wgStyleVersion, $wgContLanguageCode;
 		global $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
 		efStoryboardAddJSLocalisation( $parser );
