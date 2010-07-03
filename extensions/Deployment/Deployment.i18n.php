@@ -27,4 +27,5 @@ $messages['en'] = array(
 	'deploy-ftp-username-required' => 'FTP username is required',
 	'deploy-ftp-password-required' => 'FTP password is required',
 	'deploy-ftp-hostname-required' => 'FTP hostname is required',
+	'deploy-ftp-connect-failed' => 'Failed to connect to FTP server $1:$2'
 );

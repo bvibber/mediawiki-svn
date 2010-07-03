@@ -76,8 +76,9 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::connect
 	 */
 	public function connect() {
+		// Attempt to create a connection, either with ssl or without.
 		if ( $this->options['ssl'] && function_exists( 'ftp_ssl_connect' ) ) {
-			// TODO
+			$this->connection = @ftp_ssl_connect( $this->options['hostname'], $this->options['port'], $this->options['timeout'] );
 		}
 		else {
 			// If this is true, ftp_ssl_connect was not defined, so add an error.
@@ -85,10 +86,22 @@ class FtpFilesystem extends Filesystem {
 				$this->addError( 'deploy-ftp-ssl-not-loaded' );
 			}
 			
-			// TODO
+			$this->connection = @ftp_connect( $this->options['hostname'], $this->options['port'], $this->options['timeout'] );
 		}
 		
-		// TODO
+		// Check if a connection has been established.
+		if ( !$this->connection ) {
+			$this->addErrorMessage( wfMsgExt( 'deploy-ftp-connect-failed', $this->options['hostname'], $this->options['port'] ) );
+			return false;
+		}
+		
+		// Attempt to set the connection to use passive FTP.
+		@ftp_pasv( $this->connection, true );
+		
+		// Make sure the timeout is at least as much as the option.
+		if ( @ftp_get_option( $this->connection, FTP_TIMEOUT_SEC ) < $this->options['timeout'] ) {
+			@ftp_set_option( $this->connection, FTP_TIMEOUT_SEC, $this->options['timeout'] );
+		}
 		
 		return true;
 	}
