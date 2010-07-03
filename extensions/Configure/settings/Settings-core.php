@@ -1060,6 +1060,7 @@ $editRestricted = array(
 	'wgDBtype',
 	'wgDBuser',
 	'wgDBadminuser',
+	'wgSQLMode',
 	'wgDefaultExternalStore',
 	'wgExternalStores',
 	'wgLBFactoryConf',
@@ -1157,8 +1158,6 @@ $notEditableSettings = array(
 	'wgAvailableRights',
 	'wgCommandLineMode',
 	'wgConf',
-	'wgDBconnection', // Too old
-	'wgSQLMode',
 	'wgDBmysql4', // Too old
 	'wgEditEncoding', // Too old
 	'wgExceptionHooks',
