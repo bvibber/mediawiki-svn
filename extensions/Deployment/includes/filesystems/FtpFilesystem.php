@@ -328,14 +328,15 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::getModificationTime
 	 */
 	public function getModificationTime( $file ) {
-		
+		return ftp_mdtm( $this->connection, $file );
 	}
 
 	/**
 	 * @see Filesystem::getOwner
 	 */
 	public function getOwner( $file ) {
-		
+		$dir = $this->listDir( $file );
+		return $dir[$file]['owner'];		
 	}
 
 	/**

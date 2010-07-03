@@ -272,14 +272,30 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::getModificationTime
 	 */
 	public function getModificationTime( $file ) {
-		
+		wfSuppressWarnings();
+		$result = filemtime( $file );
+		wfRestoreWarnings();		
+		return $result;		
 	}
 
 	/**
 	 * @see Filesystem::getOwner
 	 */
 	public function getOwner( $file ) {
+		wfSuppressWarnings();
+		$owneruid = fileowner( $file );
+		wfRestoreWarnings();
 		
+		if ( !$owneruid ) {
+			return false;
+		}
+			
+		if ( function_exists( 'posix_getpwuid' ) ) {
+			$ownerArray = posix_getpwuid( $owneruid );
+			return $ownerArray['name'];				
+		}
+		
+		return $owneruid;		
 	}
 
 	/**
