@@ -25,6 +25,13 @@
 abstract class Filesystem {
 	
 	/**
+	 * Array for storing error messages.
+	 * 
+	 * @var array of string
+	 */
+	protected $errors = array();
+	
+	/**
 	 * Creates a connection to the filesystem.
 	 * 
 	 * @return boolean Indicates whether the connection has been established.
@@ -265,7 +272,7 @@ abstract class Filesystem {
 	 */
 	public function __construct() {
 		// TODO
-	}		
+	}
 	
 	public static function findFolder() {
 		// TODO
@@ -323,6 +330,34 @@ abstract class Filesystem {
 	 */	
 	public function removeDir( $path, $recursive = false ) {
 		$this->delete( $path, $recursive );
+	}
+	
+	/**
+	 * Returns an array with all errors.
+	 * 
+	 * @return array
+	 */
+	public function getErrors() {
+		return $this->errors;
+	}	
+	
+	/**
+	 * Adds an error message created from a message key to the log file and stores it for further use.
+	 * 
+	 * @param string $errorMessageKey
+	 */
+	protected function addError( $errorMessageKey ) {
+		$this->addErrorMessage( wfMsg( $errorMessageKey ) );
+	}
+	
+	/**
+	 * Adds an error message to the log file and stores it for further use.
+	 * 
+	 * @param string $error
+	 */	
+	protected function addErrorMessage( $error ) {
+		$this->errors[] = $error;
+		wfDebug( $error );
 	}	
 	
 }

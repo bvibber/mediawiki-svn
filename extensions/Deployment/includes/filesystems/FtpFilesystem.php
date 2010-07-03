@@ -18,16 +18,78 @@
 class FtpFilesystem extends Filesystem {
 	
 	/**
+	 * A list of options.
+	 * 
+	 * @var array
+	 */
+	protected $options = array();
+	
+	/**
+	 * The FTP connection link.
+	 * 
+	 * @var unknown_type
+	 */
+	protected $connection;
+	
+	/**
 	 * Constructor.
 	 */
-	public function __construct() {
+	public function __construct( $options ) {
+		$this->options = $options;
 		
+		// Check if possible to use ftp functions.
+		if ( !extension_loaded('ftp') ) {
+			$this->addError( 'deploy-ftp-not-loaded' );
+			return false;
+		}
+		
+		// Check for missing required options.
+		if ( !array_key_exists( 'username', $options ) ) {
+			$this->addError( 'deploy-ftp-username-required' );
+		}
+		
+		if ( !array_key_exists( 'password', $options ) ) {
+			$this->addError( 'deploy-ftp-password-required' );
+		}	
+
+		if ( !array_key_exists( 'hostname', $options ) ) {
+			$this->addError( 'deploy-ftp-hostname-required' );
+		}			
+		
+		// Set default option values for those not provided.
+		if ( !array_key_exists( 'port', $options ) ) {
+			$options['port'] = 21;
+		}
+		
+		if ( !array_key_exists( 'timeout', $options ) ) {
+			$options['timeout'] = 240;
+		}		
+		
+		// Other option handling.
+		$options['ssl'] = array_key_exists( 'connection_type', $options ) && $options['connection_type'] == 'ftps';
+		
+		// Store the options.
+		$this->options = $options;
 	}
 	
 	/**
 	 * @see Filesystem::connect
 	 */
 	public function connect() {
+		if ( $this->options['ssl'] && function_exists( 'ftp_ssl_connect' ) ) {
+			// TODO
+		}
+		else {
+			// If this is true, ftp_ssl_connect was not defined, so add an error.
+			if ( $this->options['ssl'] ) {
+				$this->addError( 'deploy-ftp-ssl-not-loaded' );
+			}
+			
+			// TODO
+		}
+		
+		// TODO
+		
 		return true;
 	}
 	
