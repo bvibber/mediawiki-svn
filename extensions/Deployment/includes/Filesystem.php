@@ -268,7 +268,7 @@ abstract class Filesystem {
 	 * 
 	 * @return boolean Success indicator
 	 */
-	protected abstract function doMove( $from, $to );	
+	protected abstract function doMove( $from, $to, $overwrite );	
 	
 	/**
 	 * Constructor
@@ -303,7 +303,7 @@ abstract class Filesystem {
 			return false;
 		}
 		
-		return $this->doCopy();
+		return $this->doCopy( $from, $to );
 	}
 	
 	/**
@@ -320,7 +320,7 @@ abstract class Filesystem {
 			return false;
 		}
 		
-		return $this->doMove();
+		return $this->doMove( $from, $to, $overwrite );
 	}	
 	
 	/**

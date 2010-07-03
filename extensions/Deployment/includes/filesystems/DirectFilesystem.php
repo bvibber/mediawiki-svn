@@ -167,8 +167,18 @@ class DirectFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::doMove
 	 */
-	protected function doMove( $from, $to ) {
-		
+	protected function doMove( $from, $to, $overwrite ) {
+		// try using rename first.  if that fails (for example, source is read only) try copy and delete.
+		if ( @rename( $from, $to) ) {
+			return true;
+		}
+
+		if ( $this->copy( $from, $to, $overwrite ) && $this->exists( $to ) ) {
+			$this->delete( $from );
+			return true;
+		} else {
+			return false;
+		}	
 	}
 
 	/**

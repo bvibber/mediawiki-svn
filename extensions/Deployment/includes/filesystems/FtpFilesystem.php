@@ -204,7 +204,7 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::doCopy
 	 */
 	protected function doCopy( $from, $to ) {
-		$content = $this->get_contents( $from );
+		$content = $this->getContents( $from );
 		
 		if ( $content === false ) {
 			return false;
@@ -216,8 +216,8 @@ class FtpFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::doMove
 	 */
-	protected function doMove( $from, $to ) {
-		
+	protected function doMove( $from, $to, $overwrite ) {
+		return (bool)@ftp_rename( $this->connection, $from, $to );
 	}
 
 	/**
