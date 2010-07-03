@@ -35,7 +35,10 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::changeDir
 	 */
 	public function changeDir( $dir ) {
-		return (bool)@chdir( $dir );
+		wfSuppressWarnings();
+		$result = (bool)chdir( $dir );
+		wfRestoreWarnings();
+		return $result;
 	}
 
 	/**
@@ -48,7 +51,10 @@ class DirectFilesystem extends Filesystem {
 		
 		// Not recursive, so just use chgrp.
 		if ( !$recursive || !$this->isDir( $file ) ) {
-			return @chgrp( $file, $group );
+			wfSuppressWarnings();
+			$result = chgrp( $file, $group );
+			wfRestoreWarnings();
+			return $result;
 		}
 		
 		// Recursive approach required.
@@ -81,7 +87,10 @@ class DirectFilesystem extends Filesystem {
 
 		// Not recursive, so just use chmod.
 		if ( !$recursive || !$this->isDir( $file ) ) {
-			return (bool)@chmod( $file, $mode );
+			wfSuppressWarnings();
+			$result = (bool)chmod( $file, $mode );
+			wfRestoreWarnings();
+			return $result; 
 		}
 			
 		// Recursive approach required.
@@ -105,7 +114,10 @@ class DirectFilesystem extends Filesystem {
 		
 		// Not recursive, so just use chown.
 		if ( !$recursive || !$this->isDir( $file ) ) {
-			return (bool)@chown( $file, $owner );
+			wfSuppressWarnings();
+			$result = (bool)chown( $file, $owner );
+			wfRestoreWarnings();			
+			return $result;
 		}
 			
 		// Recursive approach required.
@@ -131,11 +143,17 @@ class DirectFilesystem extends Filesystem {
 		$path = str_replace( '\\', '/', $path ); 
 
 		if ( $this->isFile( $path ) ) {
-			return (bool)@unlink( $path );
+			wfSuppressWarnings();
+			$result = (bool)unlink( $path );
+			wfRestoreWarnings();			
+			return $result;
 		}
 			
 		if ( !$recursive && $this->isDir( $path ) ) {
-			return (bool)@rmdir( $path );
+			wfSuppressWarnings();
+			$result = (bool)rmdir( $path );
+			wfRestoreWarnings();			
+			return $result;
 		}
 			
 		// Recursive approach required.
@@ -150,8 +168,14 @@ class DirectFilesystem extends Filesystem {
 			}
 		}
 
-		if ( $success && file_exists( $path ) && !@rmdir( $path ) ) {
-			$success = false;
+		if ( $success && file_exists( $path ) ) {
+			wfSuppressWarnings();
+			$rmdirRes = rmdir( $path );
+			wfRestoreWarnings();	
+
+			if ( !$rmdirRes ) {
+				$success = false;
+			}
 		}
 		
 		return $success;
@@ -169,7 +193,10 @@ class DirectFilesystem extends Filesystem {
 	 */
 	protected function doMove( $from, $to, $overwrite ) {
 		// try using rename first.  if that fails (for example, source is read only) try copy and delete.
-		if ( @rename( $from, $to) ) {
+			wfSuppressWarnings();
+			$renameRes = rename( $from, $to);
+			wfRestoreWarnings();		
+		if ( $renameRes ) {
 			return true;
 		}
 
@@ -185,23 +212,30 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::exists
 	 */
 	public function exists( $file ) {
-		return @file_exists( $file );
+		wfSuppressWarnings();
+		$result = file_exists( $file );
+		wfRestoreWarnings();		
+		return $result;
 	}
 
 	/**
-	 * FIXME does not handle errors in fileperms()
-	 * 
 	 * @see Filesystem::getChmod
 	 */
 	public function getChmod( $file ) {
-		return substr( decoct( @fileperms( $file ) ), 3 );
+		wfSuppressWarnings();
+		$fileperms = fileperms( $file );
+		wfRestoreWarnings();		
+		return substr( decoct( $fileperms ), 3 );
 	}
 
 	/**
 	 * @see Filesystem::getContents
 	 */
 	public function getContents( $file ) {
-		return @file_get_contents( $file );
+		wfSuppressWarnings();
+		$result = file_get_contents( $file );
+		wfRestoreWarnings();		
+		return $result;
 	}
 
 	/**

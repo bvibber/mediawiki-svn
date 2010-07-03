@@ -78,7 +78,9 @@ class FtpFilesystem extends Filesystem {
 	public function connect() {
 		// Attempt to create a connection, either with ssl or without.
 		if ( $this->options['ssl'] && function_exists( 'ftp_ssl_connect' ) ) {
-			$this->connection = @ftp_ssl_connect( $this->options['hostname'], $this->options['port'], $this->options['timeout'] );
+			wfSuppressWarnings();
+			$this->connection = ftp_ssl_connect( $this->options['hostname'], $this->options['port'], $this->options['timeout'] );
+			wfRestoreWarnings();			
 		}
 		else {
 			// If this is true, ftp_ssl_connect was not defined, so add an error.
@@ -86,7 +88,9 @@ class FtpFilesystem extends Filesystem {
 				$this->addError( 'deploy-ftp-ssl-not-loaded' );
 			}
 			
-			$this->connection = @ftp_connect( $this->options['hostname'], $this->options['port'], $this->options['timeout'] );
+			wfSuppressWarnings();
+			$this->connection = ftp_connect( $this->options['hostname'], $this->options['port'], $this->options['timeout'] );
+			wfRestoreWarnings();			
 		}
 		
 		// Check if a connection has been established.
@@ -96,12 +100,16 @@ class FtpFilesystem extends Filesystem {
 		}
 		
 		// Attempt to set the connection to use passive FTP.
-		@ftp_pasv( $this->connection, true );
-		
+		wfSuppressWarnings();
+		ftp_pasv( $this->connection, true );		
+		wfRestoreWarnings();		
+
 		// Make sure the timeout is at least as much as the option.
-		if ( @ftp_get_option( $this->connection, FTP_TIMEOUT_SEC ) < $this->options['timeout'] ) {
-			@ftp_set_option( $this->connection, FTP_TIMEOUT_SEC, $this->options['timeout'] );
-		}
+		wfSuppressWarnings();
+		if ( ftp_get_option( $this->connection, FTP_TIMEOUT_SEC ) < $this->options['timeout'] ) {
+			ftp_set_option( $this->connection, FTP_TIMEOUT_SEC, $this->options['timeout'] );
+		}		
+		wfRestoreWarnings();		
 		
 		return true;
 	}
@@ -110,7 +118,10 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::changeDir
 	 */
 	public function changeDir( $dir ) {
-		return (bool)@ftp_chdir( $this->connection, $dir );
+		wfSuppressWarnings();
+		$result = (bool)ftp_chdir( $this->connection, $dir );
+		wfRestoreWarnings();		
+		return $result;
 	}
 
 	/**
@@ -140,10 +151,16 @@ class FtpFilesystem extends Filesystem {
 		// Not recursive, so just use chmod.
 		if ( !$recursive || !$this->isDir( $file ) ) {
 			if ( !function_exists( 'ftp_chmod' ) ) {
-				return (bool)@ftp_site( $this->connection, sprintf( 'CHMOD %o %s', $mode, $file ) );
+				wfSuppressWarnings();
+				$result = (bool)ftp_site( $this->connection, sprintf( 'CHMOD %o %s', $mode, $file ) );
+				wfRestoreWarnings();				
+				return $result;
 			}
 			else {
-				return (bool)@ftp_chmod( $this->connection, $mode, $file );	
+				wfSuppressWarnings();
+				$result = (bool)ftp_chmod( $this->connection, $mode, $file );
+				wfRestoreWarnings();				
+				return $result;
 			}
 		}
 			
@@ -174,11 +191,17 @@ class FtpFilesystem extends Filesystem {
 		}
 			
 		if ( $this->isFile( $path ) ) {
-			return (bool)@ftp_delete( $this->connection, $path );
+			wfSuppressWarnings();
+			$result = (bool)ftp_delete( $this->connection, $path );
+			wfRestoreWarnings();			
+			return $result;
 		}
 			
 		if ( !$recursive ) {
-			return (bool)@ftp_rmdir( $this->connection, $path );
+			wfSuppressWarnings();
+			$result = (bool)ftp_rmdir( $this->connection, $path );
+			wfRestoreWarnings();			
+			return $result;
 		}
 			
 		// Recursive approach required.
@@ -193,8 +216,14 @@ class FtpFilesystem extends Filesystem {
 			}
 		}
 
-		if ( $success && $this->exists( $path ) && !@ftp_rmdir( $this->connection, $path ) ) {
-			$success = false;
+		if ( $success && $this->exists( $path ) ) {
+			wfSuppressWarnings();
+			$ftp_rmdir = ftp_rmdir( $this->connection, $path );
+			wfRestoreWarnings();
+
+			if ( !$ftp_rmdir ) {
+				$success = false;
+			} 
 		}
 		
 		return $success;
@@ -217,14 +246,19 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::doMove
 	 */
 	protected function doMove( $from, $to, $overwrite ) {
-		return (bool)@ftp_rename( $this->connection, $from, $to );
+		wfSuppressWarnings();
+		$result = (bool)ftp_rename( $this->connection, $from, $to );
+		wfRestoreWarnings();		
+		return $result;
 	}
 
 	/**
 	 * @see Filesystem::exists
 	 */
 	public function exists( $file ) {
-		$list = @ftp_nlist( $this->connection, $file );
+		wfSuppressWarnings();
+		$list = ftp_nlist( $this->connection, $file );
+		wfRestoreWarnings();		
 		return !empty( $list );		
 	}
 
@@ -250,7 +284,10 @@ class FtpFilesystem extends Filesystem {
 			return false;
 		}
 			
-		if ( !@ftp_fget( $this->connection, $temp, $file, $type ) ) {
+		wfSuppressWarnings();
+		$ftp_fget = ftp_fget( $this->connection, $temp, $file, $type );
+		wfRestoreWarnings();		
+		if ( !$ftp_fget ) {
 			return false;
 		}
 
