@@ -16,7 +16,7 @@
  * 
  */
  
- /* Add the hooks needed for playback */
+/* Add the hooks needed for playback */
 mw.Smil = function( options ){	
 	return this.init( options );
 }
@@ -104,7 +104,9 @@ mw.Smil.prototype = {
 		return ;
 	},
 	
-		
+	/**
+	 * Render a specific time
+	 */
 	renderTime: function( time, callback ) {
 		// Get the render target: 
 		var $renderTarget = this.embedPlayer.getRenderTarget();
@@ -121,6 +123,7 @@ mw.Smil.prototype = {
 	    this.getBuffer().addAssetsReadyCallback( callback );
 	},
 	
+	
 	/**
 	* We use animateTime instead of a tight framerate loop
 	* so that we can optimize with css transformations
@@ -129,6 +132,35 @@ mw.Smil.prototype = {
 	animateTime: function( time, timeDelta ){		
 		//mw.log("Smil::animateTime: " + time + ' delta: ' + timeDelta ); 	
 		this.getBody().renderTime( time, timeDelta );
+	},
+	
+	/**
+	 * Pause all animations and playback
+	 */
+	pause: function( currentTime ){
+		this.getBody().pause( currentTime );
+	},
+	
+	/**
+	 * 	Checks if the playback is in sync with the current time
+	 * @return {boolean} 
+	 * 	true if playback is insync, 
+	 * 	false if not in sync with all animation elements ( video tag for now )		
+	 */
+	getPlaybackSyncDelta: function( currentTime ){
+		return this.getAnimate().getPlaybackSyncDelta( currentTime );
+	},
+	
+	getBufferedPercent: function(){
+		// Get the clip buffered percent
+		return this.getBuffer().getBufferedPercent();
+	},
+	
+	/**
+	 * Pass on the request to start buffering the entire sequence of clips 
+	 */
+	startBuffer: function(){
+		this.getBuffer().startBuffer();
 	},
 	
 	/**

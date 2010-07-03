@@ -64,7 +64,7 @@ mw.SmilBody.prototype = {
 		mw.log( "renderTime:: " + time );
 		 
 		// Get all the draw elements from the body this time: 
-		var elementList = this.getElementsForTime( time ,
+		this.getElementsForTime( time ,
 			/* SMIL Element in Range */ 
 			function( smilElement) {				
 				// var relativeTime = time - smilElement.parentTimeOffset;
@@ -85,6 +85,16 @@ mw.SmilBody.prototype = {
 				_this.smil.getTransitions().elementOutOfRange( smilElement, time );				
 			}
 		);
+	},
+	
+	/**
+	 * Send a pause request to the animation engine for all active body elements
+	 */
+	pause: function( currentTime ){
+		var _this = this;
+		this.getElementsForTime( currentTime , function( smilElement ){
+			_this.smil.getAnimate().pauseAnimation( smilElement )
+		});
 	},
 	
 	/**
@@ -154,11 +164,11 @@ mw.SmilBody.prototype = {
 			
 			// Check if element is in range: 
 			if( time >= startOffset && time <= ( startOffset + nodeDuration)  ){
-				if( inRangeCallback ){
+				if( typeof inRangeCallback == 'function' ){
 					inRangeCallback( $node );
 				}	
 			} else {
-				if( outOfRangeCallback ){
+				if( typeof outOfRangeCallback == 'function'){
 					outOfRangeCallback( $node );
 				}
 			}

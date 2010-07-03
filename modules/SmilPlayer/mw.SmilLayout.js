@@ -68,7 +68,7 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 * Get and increment the top zindex counter: 
+	 * Get and increment the top z-index counter: 
 	 */
 	getTopZIndex: function(){
 		return this.topZindex++;	
@@ -78,6 +78,7 @@ mw.SmilLayout.prototype = {
 	* Draw a smilElement to the layout. 
 	*  
 	* If the element does not exist in the html dom add it.	
+	* @parma {Element} smilElement to be drawn. 
 	*/ 
 	drawElement: function( smilElement ) {
 		var _this = this;		

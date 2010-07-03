@@ -10,7 +10,7 @@ mw.SmilAnimate.prototype = {
 	init: function( smilObject ){		
 		this.smil = smilObject;
 		
-		this.framerate = mw.getConfig( 'SmilPlayer.framerate' );
+		this.framerate = mw.getConfig( 'SmilPlayer.framerate');
 		
 		this.callbackRate = 1000 / this.framerate;
 		this.animateInterval = [];
@@ -19,8 +19,46 @@ mw.SmilAnimate.prototype = {
 	/**
 	 * Pause any active animation or video playback
 	 */
-	pauseAnimation: function(){
-		
+	pauseAnimation: function( smilElement ){
+		// Pause the animation of a given element ( presently just video )		
+		switch( this.smil.getRefType( smilElement ) ){
+			case 'video':
+				$j ( '#' + this.smil.getAssetId( smilElement ) ).get( 0 ).pause();
+			break;
+		}
+		// non-video elements just pause by clearing any animation loops
+		if( this.animateInterval[ this.smil.getAssetId( smilElement ) ]  ){
+			clearInterval( this.animateInterval[ this.smil.getAssetId( smilElement ) ]  );
+		}
+	},
+	
+	/**
+	 * Checks if assets are insync 
+	 *  re
+	 */
+	getPlaybackSyncDelta: function( time ){
+		var _this = this;
+		// Get all the elements for the current time:
+		var maxOutOfSync = 0;
+		this.smil.getBody().getElementsForTime( time, function( smilElement ){
+			mw.log( 'check element: '+ time + ' ' +  _this.smil.getAssetId( smilElement ) );
+			// var relativeTime = time - smilElement.parentTimeOffset;
+			var relativeTime = time - $j( smilElement ).data ( 'parentStartOffset' );
+			switch( _this.smil.getRefType( smilElement ) ){
+				case 'video':
+					var vid = $j ( '#' + _this.smil.getAssetId( smilElement ) ).get( 0 );
+					var vidTime = ( !vid || !vid.currentTime )? 0 : vid.currentTime;					
+					mw.log( "getPlaybackSyncDelta:: video time should be: " + relativeTime + ' video time is: ' + vidTime );
+					
+					var syncOffset = ( relativeTime -vidTime );
+					if( syncOffset >  maxOutOfSync ){
+						maxOutOfSync = syncOffset;
+					}
+				break;
+			}
+		});
+		// Return the max out of sync element
+		return maxOutOfSync;
 	},
 	
 	/**
@@ -30,8 +68,7 @@ mw.SmilAnimate.prototype = {
 	* @param {float} deltaTime Extra time interval to be animated between animateTransform calls
 	*/
 	animateTransform: function( smilElement, animateTime, deltaTime ){
-		var _this = this;							
-		
+		var _this = this;
 		// check for deltaTime to animate over, if zero, then we should just transformElement directly: 
 		if( !deltaTime || deltaTime === 0 ){
 			_this.transformElement( smilElement, animateTime );
@@ -41,8 +78,7 @@ mw.SmilAnimate.prototype = {
 			this.transformVideoForPlayback( smilElement, animateTime );
 			return;
 		}
-		
-		
+				
 		// Check if the current smilElement has any transforms to be done
 		if( ! this.checkForTransformUpdate( smilElement, animateTime, deltaTime ) ){
 			// xxx no animate loop needed for element: smilElement
@@ -97,8 +133,7 @@ mw.SmilAnimate.prototype = {
 				return true;
 			 }
 		}
-		
-		
+				
 		// NOTE: our img node check avoids deltaTime check but its assumed to not matter much
 		// since any our supported keyframe granularity will be equal to deltaTime ie 1/4 a second. 		
 		if( refType == 'img' ){
@@ -171,12 +206,24 @@ mw.SmilAnimate.prototype = {
 			mw.log( "transformVideoForTime:: seek complete ");
 		});
 	},
+	
 	/** 
 	 * Used to support video playback
 	 */
-	transformVideoForPlayback: function( smilElement, animateTime ){
-		// xxx should fire buffer delay for now just play: 
-		$j ( '#' + this.smil.getAssetId( smilElement ) ).get( 0 ).play();
+	transformVideoForPlayback: function( smilElement, animateTime ){ 
+		var $vid = $j ( '#' + this.smil.getAssetId( smilElement ) );		
+		// make the video is being displayed and get a pointer to the video element:
+		var vid = $vid.show().get( 0 );
+		// Check the buffer if we can play this time and the video is "paused" ( if so start playback )
+		if( this.smil.getBuffer().canPlayTime( smilElement, animateTime ) 
+			&& vid.paused
+		) {
+			//mw.log( "transformVideoForPlayback:: should play:" + animateTime );
+			vid.play();
+			return ;
+		}		
+		// Else issue the initial "play" request
+		vid.play();		
 	},
 	
 	/**
