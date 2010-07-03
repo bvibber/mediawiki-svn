@@ -201,15 +201,6 @@ abstract class Filesystem {
 	public abstract function getModificationTime( $file );
 	
 	/**
-	 * Returns the creation time of a file.
-	 * 
-	 * @param $file
-	 * 
-	 * @return integer or false
-	 */		
-	public abstract function getCreationTime( $file );
-	
-	/**
 	 * Returns the size of a file in bytes, or false in case of an error.
 	 * 
 	 * @param $file

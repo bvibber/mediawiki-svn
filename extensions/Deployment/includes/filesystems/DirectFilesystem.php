@@ -239,24 +239,33 @@ class DirectFilesystem extends Filesystem {
 	}
 
 	/**
-	 * @see Filesystem::getCreationTime
-	 */
-	public function getCreationTime( $file ) {
-		
-	}
-
-	/**
 	 * @see Filesystem::getCurrentWorkingDir
 	 */
 	public function getCurrentWorkingDir() {
-		
+		wfSuppressWarnings();
+		$result = getcwd();
+		wfRestoreWarnings();		
+		return $result;		
 	}
 
 	/**
 	 * @see Filesystem::getGroup
 	 */
 	public function getGroup( $file ) {
+		wfSuppressWarnings();
+		$gid = filegroup( $file );
+		wfRestoreWarnings();
 		
+		if ( !$gid ) {
+			return false;
+		}
+			
+		if ( function_exists( 'posix_getgrgid' ) ) {
+			$groupArray = posix_getgrgid( $gid );
+			return $groupArray['name'];				
+		}
+		
+		return $gid;
 	}
 
 	/**

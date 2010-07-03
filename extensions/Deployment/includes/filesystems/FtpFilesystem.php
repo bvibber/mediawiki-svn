@@ -307,24 +307,21 @@ class FtpFilesystem extends Filesystem {
 	}
 
 	/**
-	 * @see Filesystem::getCreationTime
-	 */
-	public function getCreationTime( $file ) {
-		
-	}
-
-	/**
 	 * @see Filesystem::getCurrentWorkingDir
 	 */
 	public function getCurrentWorkingDir() {
-		
+		wfSuppressWarnings();
+		$result = ftp_pwd( $this->connection );
+		wfRestoreWarnings();		
+		return $result;			
 	}
 
 	/**
 	 * @see Filesystem::getGroup
 	 */
 	public function getGroup( $file ) {
-		
+		$dir = $this->listDir( $file );
+		return $dir[$file]['group'];		
 	}
 
 	/**
