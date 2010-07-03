@@ -44,9 +44,11 @@ abstract class Filesystem {
 	/**
 	 * Reads entire file into a string.
 	 * 
+	 * @param string $file Path to the file.
+	 * 
 	 * @return string or false
 	 */
-	public abstract function getContents();
+	public abstract function getContents( $file );
 	
 	/**
 	 * Writes a string to a file.

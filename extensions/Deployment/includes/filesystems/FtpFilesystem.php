@@ -239,8 +239,34 @@ class FtpFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::getContents
 	 */
-	public function getContents() {
+	public function getContents( $file ) {
+		$type = FTP_BINARY;
+
+		// TODO: port wp_tempnam
+		$tempFileName = wp_tempnam( $file );
+		$temp = fopen( $tempFileName , 'w+' );
+
+		if ( !$temp ) {
+			return false;
+		}
+			
+		if ( !@ftp_fget( $this->connection, $temp, $file, $type ) ) {
+			return false;
+		}
+
+		// Skip back to the start of the file being written to.
+		fseek( $temp, 0 ); 
 		
+		$contents = array();
+
+		while ( !feof( $temp ) ) {
+			$contents[] = fread( $temp, 8192 );
+		}
+
+		fclose( $temp );
+		unlink( $tempFileName );
+		
+		return implode( '', $contents );		
 	}
 
 	/**

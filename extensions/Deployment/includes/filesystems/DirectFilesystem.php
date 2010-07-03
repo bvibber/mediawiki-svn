@@ -200,8 +200,8 @@ class DirectFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::getContents
 	 */
-	public function getContents() {
-		
+	public function getContents( $file ) {
+		return @file_get_contents( $file );
 	}
 
 	/**
