@@ -214,7 +214,7 @@ mw.SmilBody.prototype = {
 				if( blockType == 'seq' ){
 					$node.data( 'implictDuration', $node.data('implictDuration') + childDuration ); 			
 				}			
-				// with par blocks ImplictDuration is longest child
+				// With par blocks ImplictDuration is longest duration child
 				if( blockType == 'par' ){
 					if( childDuration > $node.data( 'implictDuration' ) ){
 						$node.data( 'implictDuration',  childDuration); 
@@ -224,11 +224,16 @@ mw.SmilBody.prototype = {
 		}
 						
 		// Check the explicit duration attribute: 
-		if( $node.attr('dur') ) {			
+		if( $node.attr('dur') ) {
+			var computedDuration = this.smil.parseTime( $node.attr('dur') ) ;
+			// Check for "begin" that extends the duration by begin time
+			if( $node.attr( 'begin') ){
+				computedDuration+= this.smil.parseTime( $node.attr('begin') );
+			}  
 			//mw.log(" return dur: " + mw.smil.parseTime( $node.attr('dur') ) );			
-			$node.data('computedDuration', this.smil.parseTime( $node.attr('dur') ) );
+			$node.data('computedDuration', computedDuration );
 		} else { 
-			// Else return the implictDuration ( built from its children )
+			// Else return use implictDuration ( built from its children )
 			if( $node.data( 'implictDuration' ) ){
 				//mw.log(" implictDuration:: " + $node.data( 'implictDuration' ) ); 
 				$node.data('computedDuration', $node.data( 'implictDuration' ) );

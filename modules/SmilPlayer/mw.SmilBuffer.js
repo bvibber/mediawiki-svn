@@ -55,7 +55,7 @@ mw.SmilBuffer.prototype = {
 			var relativeStartTime = $j( smilElement ).data ( 'startOffset' );
 			var nodeBufferedPercent =  _this.getElementPercentLoaded( smilElement );
 			
-			// xxx BUG in firefox buffer hangs at 93-99%
+			// xxx BUG in firefox buffer sometimes hangs at 93-99%
 			if( nodeBufferedPercent > .91){
 				nodeBufferedPercent= 1;
 			}
@@ -91,9 +91,14 @@ mw.SmilBuffer.prototype = {
 		if( totalBufferPerc == bufferCount ) {
 			if( maxTimeBuffred == 0 )
 				return 0;
-			this.prevBufferPercent = maxTimeBuffred / _this.smil.getDuration();			
-			// update the prevBufferPercent and recurse
-			return this.getBufferedPercent();
+			var newBufferPercet = maxTimeBuffred / _this.smil.getDuration();
+			if( newBufferPercet != this.prevBufferPercent ){
+				// Update the prevBufferPercent and recurse
+				this.prevBufferPercent = newBufferPercet;		
+				return this.getBufferedPercent();
+			} else {
+				return 1;
+			}
 		}
 		// update the previous buffer and return the minimum in range buffer percent 
 		this.prevBufferPercent = minTimeBuffred / _this.smil.getDuration();		
@@ -211,7 +216,7 @@ mw.SmilBuffer.prototype = {
 			$vid.unbind('progress').bind('progress', function( e ) {		
 				// jQuery does not copy over the eventData .loaded and .total
 				var eventData = e.originalEvent;
-				//mw.log("Video loaded prgress:" + assetId +' ' +  (eventData.loaded / eventData.total ) );
+				//mw.log("Video loaded progress:" + assetId +' ' +  (eventData.loaded / eventData.total ) );
 				if( eventData.loaded && eventData.total ) {
 					_this.videoLoadedPercent[assetId] = eventData.loaded / eventData.total;
 				}
@@ -238,7 +243,7 @@ mw.SmilBuffer.prototype = {
 	* Add a callback for when assets loaded and "ready"  
 	*/
 	addAssetsReadyCallback: function( callback ) {
-		mw.log( "addAssetsReadyCallback:: " + this.assetLoadingSet.length  );
+		//mw.log( "smilBuffer::addAssetsReadyCallback:" + this.assetLoadingSet.length  );
 		// if no assets are "loading"  issue the callback directly: 
 		if ( this.assetLoadingSet.length == 0 ){
 			if( callback )
@@ -265,7 +270,7 @@ mw.SmilBuffer.prototype = {
 	* Asset is ready, check queue and issue callback if empty 
 	*/
 	assetReady: function( assetId ) {
-		mw.log("SmilBuffer::assetReady:" + assetId);
+		//mw.log("SmilBuffer::assetReady:" + assetId);
 		for( var i=0; i <  this.assetLoadingSet.length ; i++ ){			
 			if( assetId == this.assetLoadingSet[i] ) {
 				 this.assetLoadingSet.splice( i, 1 );

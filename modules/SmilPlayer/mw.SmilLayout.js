@@ -24,21 +24,15 @@ mw.SmilLayout.prototype = {
 		
 		// Reset the htmlDOM cache
 		this.$rootLayout = null;
-	},	
+	},
 	
 	/**
-	* Get Html DOM
-	*/
-	getHtml: function(){
-		var _this = this;		
-				
-		// Setup target Size: 
-		this.targetWidth = this.smil.embedPlayer.getWidth();
-		this.targetHeight = this.smil.embedPlayer.getHeight();		
-		
-		mw.log("SmilLayout:: getHtml:: " + this.targetWidth  );
-										
-		return this.getRootLayout();
+	 * Setup the layout if not already setup
+	 */
+	setupLayout: function( $renderTarget ){
+		if( ! $renderTarget.find( '.smilRootLayout').length ) {
+			$renderTarget.append( this.getRootLayout() );
+		}
 	},
 	
 	/*
@@ -46,8 +40,12 @@ mw.SmilLayout.prototype = {
 	*/
 	getRootLayout: function(){
 		var _this = this;
-		mw.log( "SmilLayout::getRootLayout:" );  
-		if( !this.$rootLayout ){
+		mw.log( "SmilLayout::getRootLayout:" );
+		if( !this.$rootLayout ){						
+			// Setup target Size: 
+			this.targetWidth = this.smil.embedPlayer.getWidth();
+			this.targetHeight = this.smil.embedPlayer.getHeight();		
+			
 			this.$rootLayout = $j('<div />' )
 				.attr( 'id', _this.smil.embedPlayer.id + '_smil-root-layout' )
 				.addClass( 'smilRootLayout' ) 

@@ -71,8 +71,7 @@ mw.FirefoggRender.prototype = {
 		
 		if( options ['statusTarget']){
 			this.statusTarget = options ['statusTarget'];
-		}
-	
+		}	
 		
 		// If no height width provided use target DOM width/height
 		if( !this.renderOptions.width && !this.renderOptions.height ) {
@@ -103,10 +102,11 @@ mw.FirefoggRender.prototype = {
 		mw.log( "Firefogg Render Settings:" + JSON.stringify( _this.renderOptions ) );
 		this.fogg.initRender(  JSON.stringify( _this.renderOptions ), 'foggRender.ogv' );				
 			
-		// add audio if we had any:
+		// Add audio if we had any:
 
-		//now issue the save video as call
-		_this.fogg.saveVideoAs();		
+		// Now issue the save video as call
+		_this.fogg.saveVideoAs();
+		
 		_this.doNextFrame();		
 	},
 	
@@ -116,8 +116,9 @@ mw.FirefoggRender.prototype = {
 	doNextFrame: function() {
 		var _this = this;
 		// internal function to handle updates:						
-		mw.log( "FirefoggRender::doNextFrame: on " + ( Math.round( _this.renderTime * 10 ) / 10 ) + " of " +
+		/*mw.log( "FirefoggRender::doNextFrame: on " + ( Math.round( _this.renderTime * 10 ) / 10 ) + " of " +
 			( Math.round( _this.player.getDuration() * 10 ) / 10 ) );
+		*/
 		
 		_this.player.setCurrentTime( _this.renderTime, function() {								
 			
@@ -129,10 +130,10 @@ mw.FirefoggRender.prototype = {
 			if ( _this.renderTime >= _this.player.getDuration() || ! _this.continueRendering ) {
 				_this.doFinalRender();
 			} else {			
-				// Don't block on render
+				// Don't block on render requests
 				setTimeout(function(){
 					_this.doNextFrame();
-				},10 )
+				},1 )
 			}
 		} );
 	},

@@ -69,7 +69,8 @@ mw.SmilAnimate.prototype = {
 	*/
 	animateTransform: function( smilElement, animateTime, deltaTime ){
 		var _this = this;
-		mw.log("animateTransform::" + smilElement.id + ' AnimateTime: ' + animateTime + ' delta:' + deltaTime);
+		//mw.log("SmilAnimate::animateTransform:" + smilElement.id + ' AnimateTime: ' + animateTime + ' delta:' + deltaTime);
+		
 		// Check for deltaTime to animate over, if zero
 		if( !deltaTime || deltaTime === 0 ){
 			// transformElement directly ( no playback or animation loop ) 
@@ -218,7 +219,8 @@ mw.SmilAnimate.prototype = {
 				
 		// Check for "start offset"					
 				
-		mw.log( "transformVideoForTime::" + assetId + " ct:" +vid.currentTime + ' should be: ' + animateTime );
+		//mw.log( "SmilAnimate::transformVideoForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + animateTime );
+		
 		// Register a buffer ready callback
 		this.smil.getBuffer().videoBufferSeek( smilElement, animateTime, function() {			
 			mw.log( "transformVideoForTime:: seek complete ");

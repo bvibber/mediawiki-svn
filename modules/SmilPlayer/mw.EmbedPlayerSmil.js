@@ -66,7 +66,7 @@ mw.EmbedPlayerSmil = {
 	 * @param {function} callback Function to be called once currentTime is loaded and displayed 
 	 */
 	setCurrentTime: function( time, callback ) {
-		mw.log('EmbedPlayerSmil::setCurrentTime: ' + time );		
+		//mw.log('EmbedPlayerSmil::setCurrentTime: ' + time );		
 		// Set "loading" spinner here)
 		$j( this ).append(
 			$j( '<div />')			
