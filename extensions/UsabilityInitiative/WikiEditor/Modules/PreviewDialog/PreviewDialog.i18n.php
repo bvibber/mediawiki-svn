@@ -101,6 +101,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
+	'wikieditor-previewDialog-preference' => 'Gweredekaat prenestr kendivizout ar rakweled',
 	'wikieditor-previewDialog-tab' => 'Rakwelet',
 	'wikieditor-previewDialog-loading' => 'O kargañ...',
 );

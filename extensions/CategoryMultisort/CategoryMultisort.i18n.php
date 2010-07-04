@@ -80,6 +80,11 @@ $messages['dsb'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'categorymultisort-go' => 'Yi',
+);
+
 /** Spanish (Español)
  * @author Bola
  * @author Crazymadlover
@@ -181,6 +186,13 @@ $messages['id'] = array(
 $messages['ja'] = array(
 	'categorymultisort-sortkey' => 'ソートキー:',
 	'prefs-category' => 'カテゴリ',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'prefs-category' => '분류',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

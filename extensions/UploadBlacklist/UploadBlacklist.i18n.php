@@ -311,7 +311,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'uploadblacklist-desc' => 'Dodaje funkcjonalność czarnej listy przesyłanych plików',
+	'uploadblacklist-desc' => 'Dodaje funkcję czarnej listy przesyłanych plików',
 );
 
 /** Piedmontese (Piemontèis)

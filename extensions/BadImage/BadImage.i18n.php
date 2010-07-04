@@ -2084,7 +2084,7 @@ $messages['sah'] = array(
 	'badimages-name' => 'Аата:',
 	'badimages-not-added' => 'Ойуу кыайан киирбэтэ.',
 	'badimages-not-removed' => 'Ойуу кыайан сотуллубата.',
-	'badimages-reason' => 'Быһаарыыта:',
+	'badimages-reason' => 'Төрүөтэ:',
 	'badimages-remove' => '(соторго)',
 	'badimages-remove-btn' => 'Соторго',
 	'badimages-remove-confirm' => 'Испииһэктэн маны: $1 соторгун бигэргэт:',
@@ -2646,6 +2646,11 @@ $messages['vo'] = array(
 	'badimages-log-add' => '[[$1]] peläükon lisede magodas badik',
 	'badimages-log-remove' => '[[$1]] pemoükon se lised magodas badik',
 	'badimages-page' => '{{ns:help}}:Lised magodas badik',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'badimages-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

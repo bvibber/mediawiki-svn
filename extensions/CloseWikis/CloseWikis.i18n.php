@@ -1071,7 +1071,7 @@ $messages['ksh'] = array(
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-dreason' => 'Der Jrond (för Aanzezeije):',
 	'closewikis-page-close-reason' => 'Der Jrond (för en et Logbooch ze schrieve):',
-	'closewikis-page-close-submit' => 'Zomache!',
+	'closewikis-page-close-submit' => 'Zohmaache',
 	'closewikis-page-close-success' => 'Dat Wiki es jetz zojemaat.',
 	'closewikis-page-reopen' => 'Wiki wider opmaache',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
@@ -2012,6 +2012,11 @@ $messages['vo'] = array(
 	'closewikis-log-reopen' => 'edönumaifükon $2',
 	'right-editclosedwikis' => 'Votükön vükis pefärmüköl',
 	'right-closewikis' => 'Färmükön vükis',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'closewikis-page-reopen-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

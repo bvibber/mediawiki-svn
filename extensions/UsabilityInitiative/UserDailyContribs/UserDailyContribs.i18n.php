@@ -363,10 +363,11 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'userdailycontribs-desc' => 'Contribuțiile zilnice ale contribuitorilor pentru monitorizarea gradului de click-uri',
+	'userdailycontribs-desc' => 'Contribuțiile zilnice ale utilizatorilor pentru extensia monitorizării clicurilor',
 );
 
 /** Tarandíne (Tarandíne)

@@ -624,6 +624,13 @@ Slědk k:
 	'right-crosswikiblock' => 'Wužywarjow na drugich wikijach blokěrowaś a dowóliś',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'crosswikiblock-expiry' => 'Nuwuwu:',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
@@ -2347,7 +2354,7 @@ $messages['scn'] = array(
 	'crosswikiblock-desc' => 'Pirmetti di bluccari utenti supra autri wiki usannu na [[Special:Crosswikiblock|pàggina spiciali]]',
 	'crosswikiblock' => "Blocca utenti supra n'autra wiki",
 	'crosswikiblock-expiry' => 'Scadenza:',
-	'crosswikiblock-reason' => 'Mutivu dô bloccu:',
+	'crosswikiblock-reason' => 'Mutivu:',
 	'crosswikiblock-submit' => "Blocca l'utenti",
 	'crosswikiblock-anononly' => "Blocca sulu l'utenti anònimi (l'utenti riggistrati ca cundivìdinu lu stissu IP nun vèninu bluccati)",
 	'crosswikiblock-nocreate' => 'Mpidisci la criazzioni di àutri account',
@@ -2928,6 +2935,12 @@ Geikön lü:
 * [[Special:CrosswikiBlock|Blokamafomet]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Säblokams su vük at no kanons paledunön medü pad at. Gebolös padi: [[Special:IPBlockList|{{int:ipblocklist}}]]',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'crosswikiblock-reason' => '理由：',
+	'crosswikiunblock-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

@@ -197,6 +197,17 @@ Njamóžoš tós ten bok napóraś, ale móžoš jen [{{fullurl:{{FULLPAGENAME}}
 <createbox>break=no</createbox>",
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'createbox-desc' => 'Go tɔxɛ na axa gɔmedzedze',
+	'createbox-create' => 'Dze egɔme',
+	'createbox-exists' => "Taflatse, woŋlɔ \"'''{{FULLPAGENAME}}'''\" xoxo.
+
+Wòmateŋu adze axa sia gɔme o, ke boŋ wòateŋu [{{fullurl:{{FULLPAGENAME}}|action=edit}} atrɔ asi le eŋu], [{{fullurl:{{FULLPAGENAME}}}} alo axlẽ], alo wòateŋu adze axa bubu gɔme kple go si le afisia ɖome.",
+);
+
 /** Greek (Ελληνικά)
  * @author Konsnos
  * @author ZaDiak

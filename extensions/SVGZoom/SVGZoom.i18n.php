@@ -217,7 +217,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'svgzoom-desc' => 'Dodaje do MediaWiki przy podglądzie plików w formacie SVG funkcjonalność przewijania i przybliżania',
+	'svgzoom-desc' => 'Dodaje do MediaWiki przy podglądzie plików w formacie SVG funkcję przewijania i przybliżania',
 );
 
 /** Piedmontese (Piemontèis)

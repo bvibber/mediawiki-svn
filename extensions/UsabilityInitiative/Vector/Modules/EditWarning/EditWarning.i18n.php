@@ -592,7 +592,7 @@ Yaykusqa kaspaykiqa, kay yuyampayta hark'ayta atinki allinkachinaykikunapi \"Lla
  */
 $messages['ro'] = array(
 	'vector-editwarning-warning' => 'Părăsind această pagină, există riscul pierderii modificărilor efectuate.
-Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dv.',
+Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dumneavoastră.',
 	'vector-editwarning-preference' => 'Avertizează-mă când părăsesc o pagină fără a salva modificările',
 );
 

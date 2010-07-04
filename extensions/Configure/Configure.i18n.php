@@ -2393,6 +2393,14 @@ Pšosym napóraj jen abo změń jen, aby wužywał rozšyrjenje.',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Rozšyrjenja nalicyś, kótarež stoje za toś ten wiki k dispoziciji]].',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'configure-js-remove' => 'Tutui',
+	'configure-section-search' => 'Dii',
+	'configure-throttle-action-edit' => 'Trɔ asi le eŋu',
+	'configure-throttle-action-move' => 'Ɖɔli eƒe nɔƒe',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
@@ -6029,7 +6037,7 @@ $messages['li'] = array(
 	'configure-ext-settings-dep-error' => '$1: vereiste waerd: $2, hujige waerd: $3',
 	'configure-ext-use-extension' => 'Gebroek dees oetbreijing',
 	'configure-ext-use' => 'Gebroeke',
-	'configure-form-reason' => 'Raej veur wieziging:',
+	'configure-form-reason' => 'Reeje:',
 	'configure-customised' => "''Dees insjtèlling is aangepas''",
 	'configure-arrayinput-oneperline' => "''(eine per regel)''",
 	'configure-summary' => 'Op dees speciaal pagina kans te deze wiki insjtèlle. Betrach [http://www.mediawiki.org/wiki/Manual:Configuration_settings Insjtèllinge] veur mier informatie.',
@@ -6895,7 +6903,7 @@ $messages['nn'] = array(
 	'configure-ext-settings-dep-error' => '$1: krev verdien: $2, har no verdien: $3',
 	'configure-ext-use-extension' => 'Nytt denne utvidinga',
 	'configure-ext-use' => 'Nytt',
-	'configure-form-reason' => 'Årsak for endringa:',
+	'configure-form-reason' => 'Årsak:',
 	'configure-customised' => "''Denne innstillinga har blitt eigendefinert''",
 	'configure-arrayinput-oneperline' => "''(ein per rad)''",
 	'configure-summary' => 'Denne spesialsida lèt deg konfigurera denne wikien, sjå [http://mediawiki.org/wiki/Manual:Configuration_settings konfigurasjonsinnstillingar] for meir informasjon.',
@@ -8625,7 +8633,7 @@ $messages['scn'] = array(
 	'configure-ext-doc' => 'Talìa la documentazioni in linea',
 	'configure-ext-use-extension' => "Usa st'estensioni",
 	'configure-ext-use' => 'Usa',
-	'configure-form-reason' => 'Mutivu dâ variazioni:',
+	'configure-form-reason' => 'Mutivu:',
 	'configure-customised' => "''St'impostazioni fu pirsonalizzata''",
 	'configure-arrayinput-oneperline' => "''(unu pi riga)''",
 	'configure-btn-save' => "Sarva l'impostazioni",
@@ -10414,6 +10422,11 @@ Jafolös oni u votükolös oni ad gebön veitükumami at.',
 	'configure-boolop-description-or' => 'Stip pu bal muton veratön.',
 	'configure-boolop-description-xor' => 'Kuratiko stip bal muton veratön',
 	'configure-boolop-description-not' => 'Stips nonik mutons veratön',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'configure-form-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

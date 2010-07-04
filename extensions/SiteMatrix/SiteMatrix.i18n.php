@@ -419,10 +419,15 @@ $messages['dsb'] = array(
 	'sitematrix-fishbowl' => 'wobźěłowanje wobgranicowane',
 );
 
-/** Ewe (Eʋegbe) */
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
 $messages['ee'] = array(
 	'sitematrix' => 'Wikimedia wikiwo ƒe xexlẽme',
+	'sitematrix-summary' => 'Axa tɔxe sia fia Wikimedia wikiwo katã ƒe xexlẽme',
+	'sitematrix-desc' => 'Efia [[Special:SiteMatrix|Wikimedia wikiwo ƒe ŋkɔwo]]',
 	'sitematrix-language' => 'Gbe',
+	'sitematrix-others' => 'Wikimedia dɔwɔwɔ bubuwo',
 );
 
 /** Greek (Ελληνικά)

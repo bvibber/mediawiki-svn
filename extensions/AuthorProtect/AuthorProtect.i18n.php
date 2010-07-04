@@ -202,7 +202,7 @@ $messages['br'] = array(
 	'authorprotect-confirm' => 'Kemmañ al liveoù gwareziñ',
 	'authorprotect-edit' => "Strishaat ar gwir kemmañ d'an aozerien hepken",
 	'authorprotect-move' => "Strishaat ar gwir adenvel d'an aozerien hepken",
-	'authorprotect-expiry' => 'Deiziad termen',
+	'authorprotect-expiry' => 'Deiziad termen :',
 	'authorprotect-reason' => 'Abeg :',
 	'authorprotect-intro' => "Ober gant ar furmskrid-mañ evit prennañ ar bajenn-mañ d'ar re n'int ket aozerien",
 	'authorprotect-success' => 'Gwareziñ sevenet !',
@@ -1115,8 +1115,8 @@ $messages['no'] = array(
 	'authorprotect-confirm' => 'Endre beskyttelsesnivåer',
 	'authorprotect-edit' => 'Begrens redigering til forfattere',
 	'authorprotect-move' => 'Begrens flytting til forfattere',
-	'authorprotect-expiry' => 'Varighet',
-	'authorprotect-reason' => 'Årsak',
+	'authorprotect-expiry' => 'Utløper:',
+	'authorprotect-reason' => 'Årsak:',
 	'authorprotect-intro' => 'Bruk dette skjemaet for å låse denne siden for andre enn forfattere',
 	'authorprotect-success' => 'Beskytting lyktes.',
 	'authorprotect-failure' => 'Beskytting mislyktes',
@@ -1430,6 +1430,7 @@ $messages['su'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Sertion
  */
 $messages['sv'] = array(
 	'authorprotect' => 'Skydda sidan från andra än författaren',
@@ -1438,7 +1439,7 @@ $messages['sv'] = array(
 	'authorprotect-confirm' => 'Ändra beskyddningsnivåer',
 	'authorprotect-edit' => 'Låt endast författaren redigera sidan',
 	'authorprotect-move' => 'Låt endast författaren flytta sidan',
-	'authorprotect-expiry' => 'Varaktighet:',
+	'authorprotect-expiry' => 'Utgår:',
 	'authorprotect-reason' => 'Anledning:',
 	'authorprotect-intro' => 'Använd detta formulär för att låsa sidan för andra än författaren',
 	'authorprotect-success' => 'Beskyddningen lyckades!',
@@ -1608,6 +1609,11 @@ $messages['vo'] = array(
 	'authorprotect-failure' => 'Jelam no eplöpon',
 	'protect-level-author' => 'Jelön ta nelautans',
 	'restriction-level-author' => 'Redakamadäl te lautane',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'authorprotect-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

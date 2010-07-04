@@ -427,11 +427,12 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector' => 'Îmbunătățiri la nivelul interfaței pentru Vector',
-	'vector-desc' => 'Îmbunătățiri la elementele interfaței a temei Vector.',
+	'vector' => 'Îmbunătățiri la nivelul interfeței Vector',
+	'vector-desc' => 'Îmbunătățiri ale elementele interfeței Vector.',
 );
 
 /** Tarandíne (Tarandíne)

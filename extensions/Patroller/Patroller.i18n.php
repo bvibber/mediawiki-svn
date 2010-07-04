@@ -2041,6 +2041,11 @@ $messages['vo'] = array(
 	'patrol-revert-reason' => 'Kod:',
 );
 
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'patrol-revert-reason' => '理由：',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

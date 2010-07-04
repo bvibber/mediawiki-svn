@@ -1306,6 +1306,11 @@ $wgGoogleMapsMessages['dsb'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Ewe (Eʋegbe) */
+$wgGoogleMapsMessages['ee'] = array(
+	'gm-search' => 'Dii',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
@@ -5016,6 +5021,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-refresh-points' => 'Освежи тачке',
 	'gm-width' => 'Ширина',
 	'gm-height' => 'Висина',
+	'gm-scale-control' => 'Скалирање',
 	'gm-overview-control' => 'Преглед',
 	'gm-zoom-control' => 'Навигација',
 	'gm-large' => 'Велика',

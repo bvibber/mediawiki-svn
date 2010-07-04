@@ -476,6 +476,11 @@ $messages['dsb'] = array(
 	'right-datatransferimport' => 'Daty importěrowaś',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'dt_xml_page' => 'Axa',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover

@@ -101,6 +101,7 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'jsbreadcrumbs-desc' => "Setzt eng Lëscht vun Navigatiounslinken ënnert d'Läischt vun den Navigatiounsongleten derbäi",
 	'jsbreadcrumbs-leading-description' => 'Navigatiounspad',
 );
 
@@ -118,6 +119,14 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'jsbreadcrumbs-desc' => 'Voegt een spoor van broodkruimels toe onder de menubalk',
 	'jsbreadcrumbs-leading-description' => 'Navigatiepad',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'jsbreadcrumbs-desc' => 'Legger til et brødsmulespor under fanelinjen',
+	'jsbreadcrumbs-leading-description' => 'Navigasjonsspor',
 );
 
 /** Polish (Polski)

@@ -590,7 +590,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'assert_edit_title' => 'Brak wystąpień',
-	'assertedit-desc' => 'Dodaje funkcjonalność weryfikacji zalogowania oraz flagi bota przy próbie edycji do wykorzystania przez boty',
+	'assertedit-desc' => 'Dodaje funkcję weryfikacji zalogowania oraz flagi bota przy próbie edycji do wykorzystania przez boty',
 	'assert_edit_message' => 'Określone żądanie ($1) nie wystąpiło.',
 );
 

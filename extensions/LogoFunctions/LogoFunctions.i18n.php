@@ -139,6 +139,14 @@ $messages['nl'] = array(
 	'logofunctions-filenotexist' => 'Fout: [[File:$1]] bestaat niet',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'logofunctions-desc' => 'Legg til tolkefunksjon for å sette wikiens logo',
+	'logofunctions-filenotexist' => 'Feil: [[File:$1]] finnes ikke',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

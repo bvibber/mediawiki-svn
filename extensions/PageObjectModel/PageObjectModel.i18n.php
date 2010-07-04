@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'pageobjectmodel-desc' => 'Adds a set of classes for abstraction of MediaWiki syntax to allow easy extraction and manipulation of pages within other programs',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'pageobjectmodel-desc' => 'Дадае набор клясаў абстракцыі сынтаксісу MediaWiki для лёгкага атрыманьня і апрацоўкі старонак іншымі праграмамі',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -80,6 +87,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'pageobjectmodel-desc' => "Voegt klassen toe voor de abstractie van de MediaWiki-syntaxis om eenvoudige extractie en manipulatie van pagina's binnen andere programma's mogelijk te maken",
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'pageobjectmodel-desc' => 'Legger til et sett av klasser for abstraksjon av MediaWiki-syntaks for enkel utvinning og manipulering av sider inni andre program',
 );
 
 /** Polish (Polski)

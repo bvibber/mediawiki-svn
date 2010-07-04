@@ -513,6 +513,11 @@ Pšosym cakaj, až eksistěrujuca akcija jo se skóńcyła.',
 	'tag-logpagetext' => 'To jo protokol wšych pśidanjow a wótpóranjow wobrazowych wobznamjenjow.',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'imagetagging-article' => 'Axa:',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
@@ -2132,6 +2137,11 @@ Xin hãy chờ tác vụ hoàn thành.',
 	'imagetagging-taggedimages-displaying' => 'Hiển thị $1 - $2 trong tổng số $3 hình của "$4"',
 	'tag-logpagename' => 'Gắn thẻ cho nhật trình',
 	'tag-logpagetext' => 'Đây là nhật trình ghi lại tất cả tác vụ thêm và bỏ thẻ hình ảnh.',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'imagetagging-tagcancel-button' => '取消',
 );
 
 /** Yiddish (ייִדיש)

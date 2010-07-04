@@ -835,6 +835,11 @@ $messages['vi'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Hủy bỏ',
 );
 
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'wikieditor-template-editor-dialog-cancel' => '取消',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

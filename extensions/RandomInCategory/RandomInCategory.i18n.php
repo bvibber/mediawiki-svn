@@ -212,6 +212,11 @@ $messages['dsb'] = array(
 	'randomincategory-submit' => 'W pórěźe',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'randomincategory-submit' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista

@@ -197,6 +197,11 @@ $messages['dsb'] = array(
 	'searchbox-namespaces' => 'Mjenjowe rumy:',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'searchbox-go' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista

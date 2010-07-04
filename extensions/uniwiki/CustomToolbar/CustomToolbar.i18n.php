@@ -724,6 +724,11 @@ Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
 	'ct_user_sample' => 'Wužywarske mě',
 );
 
+/** Ewe (Eʋegbe) */
+$wgCustomToolbarMessages['ee'] = array(
+	'ct_submit' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Geraki
  * @author Omnipaedista
@@ -2598,6 +2603,7 @@ $wgCustomToolbarMessages['sr-ec'] = array(
 	'ct_italic_tip_ins' => 'Унбаци текст у курзиву',
 	'ct_italic_tip_wrap' => 'Пребаци овај текст у курзив',
 	'ct_italic_caption' => 'Курзив',
+	'ct_internal_sample' => 'ИмеСтране',
 	'ct_internal_tip_ins' => 'Убаци унутрашњу везу',
 	'ct_internal_tip_wrap' => 'Учини овај текст унутрашњом везом',
 	'ct_internal_caption' => 'Унутрашња веза',

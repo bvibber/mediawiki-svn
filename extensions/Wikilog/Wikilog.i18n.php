@@ -1886,6 +1886,14 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
 	'wikilog-doc-import-comment' => 'Importěrowana wikilogowa dokumentacija',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'wikilog-new-item-go' => 'Dze egɔme',
+	'wikilog-edit-lc' => 'trɔ asi le eŋu',
+	'wikilog-delete-lc' => 'tutui',
+	'wikilog-page-lc' => 'axa',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Dada
@@ -2385,6 +2393,7 @@ Julkaistaksesi artikkeleita ja ottaaksesi muut wikilogin ominaisuudet käyttöö
 	'wikilog-edit-signpub' => 'Allekirjoita ja julkaise tämä artikkeli',
 	'wikilog-edit-signpub-tooltip' => 'Aiheuttaa tämän artikkelin allekirjoituksen ja julkaisemisen wikilogiinsa tallennettaessa.
 Poista tämän laatikon valinta pitääksesi artikkelin luonnoksena.',
+	'wikilog-comment-permalink' => '$1 kello $2',
 	'wikilog-comment-note-edited' => 'viimeksi muokattu $1 kello $2',
 	'wikilog-comment-anonsig' => '$3 (anonyymi)',
 	'wikilog-comment-pending' => 'Tämä kommentti odottaa hyväksyntää.',
@@ -4768,7 +4777,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'wikilog-desc' => 'Dodaje funkcjonalność blogu – tworzy hybrydę wiki i blogu',
+	'wikilog-desc' => 'Dodaje funkcję blogu – tworzy hybrydę wiki i blogu',
 	'wikilog-auto' => 'Wikiblog Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikiblog',
 	'right-wl-postcomment' => 'Dodawanie komentarzy do wikirejestru artykułów',
@@ -4785,7 +4794,7 @@ $messages['pl'] = array(
 	'wikilog-missing-wikilog' => 'To jest strona [[{{int:wikilog-help}}|wikiblogu]] dla [[{{FULLPAGENAME}}]].
 
 Ten wikiblog jeszcze nie został utworzony.
-Jeśli chcesz opublikować artykuł i włączyć inne funkcjonalności wikiblogu musi on najpierw zostać utworzony.
+Jeśli chcesz opublikować artykuł i włączyć inne funkcje wikiblogu musi on najpierw zostać utworzony.
 
 * <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Utwórz wikiblog].</span>',
 	'wikilog-information' => 'Informacje o wikiblogu',

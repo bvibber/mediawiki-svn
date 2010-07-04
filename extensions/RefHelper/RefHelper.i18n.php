@@ -305,6 +305,12 @@ Bóžko njamógu žedne reference naraźiś.
 Móžoš [[Special:RefHelper|referencu manuelnje pśidaś]] abo [[Special:RefSearch|za citatom pytaś, kótaryž coš pśidaś]].',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'refhelper-create' => 'Dze egɔme',
+	'refhelper-search' => 'Dii',
+);
+
 /** Spanish (Español)
  * @author Pertile
  * @author Peter17

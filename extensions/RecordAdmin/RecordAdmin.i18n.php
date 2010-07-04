@@ -511,6 +511,13 @@ $messages['dsb'] = array(
 	'recordadmin-notset' => 'Žeden "$1"',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'recordadmin-buttonsearch' => 'Dii',
+	'recordadmin-buttoncreate' => 'Dze egɔme',
+	'recordadmin-editlink' => 'trɔ asi le eŋu',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author ZaDiak

@@ -293,6 +293,11 @@ $messages['dsb'] = array(
 	'player-goto-file' => 'dataja',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'player-goto-page' => 'Axa',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Geraki

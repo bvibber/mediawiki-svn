@@ -728,6 +728,14 @@ Nejskerjej taki wužywaŕ njejo.',
 	'right-regexblock' => 'Zawoborujo wužywarjam wobźěłowanje na wšych wikijach na wikijowej farmje',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'regexblock-form-expiry' => 'Nuwuwu:',
+	'regexblock-view-go' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dada
@@ -3257,6 +3265,11 @@ $messages['vo'] = array(
 	'regexblock-view-empty' => 'Lised gebananemas e ladetas-IP peblokölas vagon.',
 	'regexblock-view-time' => 'in $1',
 	'right-regexblock' => 'Blokön gebanis in vüks valik vükafarma',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'regexblock-form-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

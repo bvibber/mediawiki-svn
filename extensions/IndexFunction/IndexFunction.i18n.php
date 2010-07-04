@@ -1099,9 +1099,13 @@ Po kliknutí na šípku sa zobrazia všetky stránky indexované pod daným náz
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'indexfunc-badtitle' => 'Неисправан наслов: "$1"',
 	'index-search' => 'Претрага:',
 	'index-submit' => 'Пошаљи',
+	'index-emptylist' => 'Нема страна повезаних са "$1"',
+	'index-expand-detail' => 'Покажи стране индексиране под овим насловом',
 	'index-hide-detail' => 'Сакриј списак страна',
+	'index-no-results' => 'Претрага није дала никакве резултате',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */

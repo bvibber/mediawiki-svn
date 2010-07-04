@@ -1433,6 +1433,17 @@ Móžoš k toś tomu wulašowanjeju [{{fullurl:{{FULLPAGENAME}}|action=delvote}}
 	'deletequeue-case-needs-review' => 'Toś ten pad trjeba [[$1|pśeglědanje]].',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'deletequeue-list-search' => 'Dii',
+	'deletequeue-list-header-page' => 'Axa',
+	'deletequeue-list-header-expiry' => 'Nuwuwu',
+	'deletequeue-case-page' => 'Axa:',
+	'deletequeue-case-expiry' => 'Nuwuwu:',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista
@@ -4474,7 +4485,7 @@ Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} legge inn ditt eget bifall a
 	'deletequeue-case-details' => 'Grunnleggende detaljer',
 	'deletequeue-case-page' => 'Side:',
 	'deletequeue-case-reason' => 'Årsak:',
-	'deletequeue-case-expiry' => 'Utgår:',
+	'deletequeue-case-expiry' => 'Utløp:',
 	'deletequeue-case-needs-review' => 'Denne saken krever [[$1|revidering]].',
 );
 
@@ -6459,6 +6470,11 @@ $messages['vo'] = array(
 	'deletequeue-list-status' => 'Stad:',
 	'deletequeue-list-header-page' => 'Pad',
 	'deletequeue-list-header-discusspage' => 'Bespikapad',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'deletequeue-case-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

@@ -2048,6 +2048,11 @@ $messages['vo'] = array(
 	'todo-form-submit' => 'Sedön seividi',
 );
 
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'todo-list-cancel' => '取消',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent

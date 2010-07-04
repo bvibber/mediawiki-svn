@@ -926,6 +926,7 @@ Toś ten bok dajo se jano na wobgranicowanych wužywarjow nałožyś.",
  * @author Natsubee
  */
 $messages['ee'] = array(
+	'whitelisttableedit' => 'Trɔ asi le eŋu',
 	'whitelistnever' => 'gbeɖe',
 );
 

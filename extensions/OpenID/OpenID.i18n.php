@@ -721,8 +721,8 @@ tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 Ma fell deoc'h implijout OpenID da gevreañ diwezhatoc'h, e c'hallit [[Special:OpenIDConvert|amdreiñ ho kont evit implijout OpenID]].",
 	'openidnousername' => "N'eus bet diferet anv implijer ebet.",
 	'openidbadusername' => 'Un anv implijer fall zo bet lakaet.',
-	'openidautosubmit' => "Er bajenn-mañ ez eus ur furmskrid hag a c'hallfe bezañ kaset emgefre m'ho peus weredekaet JavaScript.
-Ma n'eus ket, gwaskit war ar bouton « Continue » (kenderc'hel).",
+	'openidautosubmit' => "Er bajenn-mañ ez eus ur furmskrid hag a c'hallfe bezañ kaset emgefre m'hoc'h eus gweredekaet JavaScript.
+Ma n'eus ket, pouezit war ar bouton \"Continue\" (kenderc'hel).",
 	'openidclientonlytext' => "Ne c'hallit ket implijout kontoù adalek ar wiki-mañ evel OpenID war lec'hiennoù all.",
 	'openidloginlabel' => 'URL OpenID',
 	'openidlogininstructions' => "{{SITENAME}} a embreg an [http://openid.net/ OpenID] stantard evit ur sinadur hepken etre al lec'hiennoù Kenrouedad.
@@ -1248,6 +1248,11 @@ Ty njeby se bźez OpenID pśizjawiś.',
 	'openid-provider-label-yahoo' => 'Z pomocu twójogo konta Yahoo se pśizjawiś',
 	'openid-provider-label-aol' => 'Zapódaj swójo wužywarske mě AOL',
 	'openid-provider-label-other-username' => 'Zapódaj swójo wužywarske mě $1',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'openid-urls-delete' => 'Tutui',
 );
 
 /** Greek (Ελληνικά)
@@ -3633,6 +3638,7 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
  * @author Gunnernett
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'openid-desc' => 'Logg inn på wikien med ein [http://openid.net/ OpenID] og logg inn på andre sider som bruker OpenID med kontoen herifrå',
@@ -3675,7 +3681,7 @@ Kontakt ein [[Special:ListUsers/sysop|administrator]].',
 	'openidchoosemanual' => 'Eit valfritt namn:',
 	'openidchooseexisting' => 'Ein konto på denne wikien som finst frå før',
 	'openidchooseusername' => 'Brukarnamn:',
-	'openidchoosepassword' => 'passord:',
+	'openidchoosepassword' => 'Passord:',
 	'openidconvertinstructions' => 'Dette skjemaet lèt deg endra brukarkontoen din slik at han kan nytta ei OpenID-adresse eller leggja til fleire OpenID-adresser.',
 	'openidconvertoraddmoreids' => 'Konverter til OpenID eller legg til ei anna OpenID-adresse',
 	'openidconvertsuccess' => 'Konverterte til OpenID',
@@ -3767,7 +3773,7 @@ Vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
 	'openidchoosemanual' => 'Et valgfritt navn:',
 	'openidchooseexisting' => 'En eksisterende konto på denne wikien',
 	'openidchooseusername' => 'brukernavn:',
-	'openidchoosepassword' => 'passord:',
+	'openidchoosepassword' => 'Passord:',
 	'openidconvertinstructions' => 'Dette skjemaet lar deg endre brukerkontoen din til å bruke en OpenID-adresse eller å legge til flere OpenID-adresser.',
 	'openidconvertoraddmoreids' => 'Konverter til OpenID eller legg til en annen OpenID-adresse',
 	'openidconvertsuccess' => 'Konverterte til OpenID',
@@ -4953,6 +4959,7 @@ $messages['su'] = array(
  * @author Lokal Profil
  * @author M.M.S.
  * @author Najami
+ * @author Nghtwlkr
  * @author Per
  */
 $messages['sv'] = array(
@@ -4997,7 +5004,7 @@ du kan välja ett från alternativen nedan.',
 	'openidchoosemanual' => 'Ett valfritt namn:',
 	'openidchooseexisting' => 'Ett existerande konto på denna wiki',
 	'openidchooseusername' => 'Användarnamn:',
-	'openidchoosepassword' => 'lösenord:',
+	'openidchoosepassword' => 'Lösenord:',
 	'openidconvertinstructions' => 'Detta formulär låter dig ändra dina användarkonton till att använda eller lägga till en eller flera OpenID-adresser',
 	'openidconvertoraddmoreids' => 'Konvertera till OpenID eller lägg till en ny OpenID-adress',
 	'openidconvertsuccess' => 'Konverterade till OpenID',

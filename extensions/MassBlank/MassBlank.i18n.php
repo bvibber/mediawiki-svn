@@ -44,6 +44,14 @@ $messages['af'] = array(
 	'massblank-blankcomment' => 'Rede:',
 );
 
+/** Arabic (العربية)
+ * @author Loya
+ */
+$messages['ar'] = array(
+	'massblank-nopages' => 'لا صفحات جديدة بواسطة [[Special:Contributions/$1|$1]] في أحدث التغييرات.',
+	'massblank-blankcomment' => 'السبب:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -382,5 +390,10 @@ Ipasok ang pangalan ng tagagamit o adres ng IP upang makakuha ng isang talaan ng
  */
 $messages['uk'] = array(
 	'massblank-blankcomment' => 'Причина:',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'massblank-blankcomment' => '理由：',
 );
 

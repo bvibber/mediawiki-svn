@@ -228,6 +228,11 @@ $messages['dsb'] = array(
 	'contrib-tracking-button' => 'Dalej',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'contrib-tracking-error' => 'Vodada',
+);
+
 /** Greek (Ελληνικά)
  * @author Konsnos
  * @author Omnipaedista

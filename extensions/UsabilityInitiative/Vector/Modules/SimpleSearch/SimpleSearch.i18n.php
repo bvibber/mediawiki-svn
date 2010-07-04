@@ -377,6 +377,14 @@ $messages['io'] = array(
 	'vector-simplesearch-containing' => 'quan kontenas...',
 );
 
+/** Icelandic (Íslenska)
+ * @author Ævar Arnfjörð Bjarmason
+ */
+$messages['is'] = array(
+	'vector-simplesearch-search' => 'Leita',
+	'vector-simplesearch-containing' => 'sem innihalda ...',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco

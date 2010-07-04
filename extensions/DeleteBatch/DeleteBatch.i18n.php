@@ -349,6 +349,11 @@ Nagrata dataja by měła mě boka a opcionelnu pśicynu wopśimjeś, kótarejž 
 	'right-deletebatch' => 'Někotare boki wulašowaś',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'deletebatch-delete' => 'Tutui',
+);
+
 /** Greek (Ελληνικά)
  * @author Omnipaedista
  */
@@ -1300,6 +1305,7 @@ $messages['sr-ec'] = array(
 	'deletebatch-omitting-invalid' => 'Сакривање неисправне стране $1.',
 	'deletebatch-file-bad-format' => 'Фајл би требало да буде обичан текст',
 	'deletebatch-file-missing' => 'Није било могуће прочитати задат фајл',
+	'deletebatch-select-yourself' => 'Ви',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */

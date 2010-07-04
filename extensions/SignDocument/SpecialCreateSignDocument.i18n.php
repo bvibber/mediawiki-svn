@@ -457,6 +457,15 @@ Móžoš jo [{{fullurl:{{#Special:SignDocument}}|doc=$2}} testowaś].',
 To njedajo se drugi raz cyniś.',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'createsigndoc-pagename' => 'Axa:',
+	'createsigndoc-bday' => 'Dzigbe:',
+	'createsigndoc-create' => 'Dze egɔme',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover

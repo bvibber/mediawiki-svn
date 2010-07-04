@@ -3189,6 +3189,11 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 	'ow_shown_datasets' => 'Pokazane datowe sajźby',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'ow_create' => 'Dze egɔme',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover

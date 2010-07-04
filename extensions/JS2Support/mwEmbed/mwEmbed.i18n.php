@@ -465,6 +465,22 @@ $messages['nl'] = array(
 	'mwe-test-plural' => '{{PLURAL:$1|$1 test|$1 tests}} uitgevoerd',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'mwe-loading_txt' => 'Laster ...',
+	'mwe-error_load_lib' => 'Feil: JavaScript $1 kunne ikke gjenhentes eller definerer ikke $2',
+	'mwe-apiproxy-setup' => 'Setter opp API-mellomtjener',
+	'mwe-load-drag-item' => 'Laster dratt element',
+	'mwe-ok' => 'OK',
+	'mwe-cancel' => 'Avbryt',
+	'mwe-enable-gadget' => 'Aktiver multimedia-beta (mwEmbed) for alle sider',
+	'mwe-enable-gadget-done' => 'Skjermelement for multimedia-beta har blitt aktivert',
+	'mwe-must-login-gadget' => 'For å aktivere skjermelement må du <a target="_new" href="$1">logge inn</a>',
+	'mwe-test-plural' => 'Jeg kjørte {{PLURAL:$1|én test|$1 tester}}',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -646,5 +662,10 @@ $messages['vi'] = array(
 	'mwe-size-kilobytes' => '$1 kB',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Hủy bỏ',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'mwe-cancel' => '取消',
 );
 

@@ -307,6 +307,11 @@ $messages['dsb'] = array(
 	'editmsg-patch-success' => 'Zapłata wuspěšna.',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'editmsg-search' => 'Dii',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
@@ -1325,6 +1330,8 @@ $messages['sr-ec'] = array(
 	'editmsg-target' => 'Циљана порука:',
 	'editmsg-search' => 'Претрага',
 	'editmsg-new-search' => 'Нова претрага',
+	'editmsg-apply-patch' => 'Примени печ.',
+	'editmsg-patch-success' => 'Успешно печовано.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

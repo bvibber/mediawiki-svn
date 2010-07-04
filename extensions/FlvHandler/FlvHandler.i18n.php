@@ -105,9 +105,11 @@ $messages['eu'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Silvonen
  */
 $messages['fi'] = array(
 	'flvhandler_desc' => 'Mahdollistaa Flash Video (.flv) -tiedostojen lisäämisen tavanomaisten tiedostojen tapaan (esim. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>).',
+	'flv-long-desc' => '(Flash Video, $1 × $2 pikseliä, tiedostokoko: $3)',
 );
 
 /** French (Français)
@@ -317,6 +319,13 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'flvhandler_desc' => 'Povoliť Flash Video (.flv) na mieste obrázkov v štandardných značkách obrázkov (napr. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => '(Flash video, $1 × $2 pixlov, veľkosť súboru: $3)',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'flv-long-desc' => '(Флеш видео, $1 × $2 пиксела, величина фајла: $3)',
 );
 
 /** Telugu (తెలుగు)

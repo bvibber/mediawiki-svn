@@ -1356,6 +1356,14 @@ Nowša wersija $2 stoj na http://pecl.php.net/package/APC/$2 k dispoziciji.',
 	'viewapc-usercache-cleared' => "'''''Aplikaciski cache wuproznjony.'''''",
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'viewapc-ls-submit' => 'Yi',
+	'viewapc-ls-limit-none' => 'Wokatã',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover

@@ -201,6 +201,11 @@ $messages['dsb'] = array(
 	'mostrevisors-viewcontributors' => 'Głownych wobźěłarjow se woglědaś',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'mostrevisors-submit' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author ZaDiak
  */

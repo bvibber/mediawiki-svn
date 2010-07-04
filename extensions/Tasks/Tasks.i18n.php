@@ -883,6 +883,13 @@ $messages['dsb'] = array(
 	'tasks-pref-showtaskcomments' => 'Bok za nadawkowe komentary zapśěgnuś',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'tasks_delete' => 'Tutui',
+	'tasks_table_header_page' => 'Axa',
+	'tasks_search_form_title' => 'Dii',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Konsnos
@@ -2646,7 +2653,7 @@ $messages['no'] = array(
 	'tasks_ascending' => 'Eldste først',
 	'tasks_status_open' => 'Åpen',
 	'tasks_status_assigned' => 'Tildelt',
-	'tasks_status_closed' => 'Lukka',
+	'tasks_status_closed' => 'Lukket',
 	'tasks_status_wontfix' => 'Vil ikke ordnes',
 	'tasks_action_open' => 'Oppgave «$1» åpnet.',
 	'tasks_action_assigned' => 'Oppgave «$1» tildelt.',
