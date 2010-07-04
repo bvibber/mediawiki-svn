@@ -242,6 +242,13 @@ mw.Smil.prototype = {
 	 */
 	
 	/**
+	 * Returns a set of audio ranges for flattening. 
+	 */
+	getAudioTimeSet: function( ){
+		return {};
+	},
+	
+	/**
 	* maps a smil element id to a html safe id 
 	* as a decedent subname of the embedPlayer parent
 	*
@@ -352,6 +359,7 @@ mw.Smil.prototype = {
 			return parseFloat( parseFloat( timeValue ) * timeFactor );
 		}
 		mw.log("Error could not parse time: " + timeValue);
+		return 0;
 	}
 }
 

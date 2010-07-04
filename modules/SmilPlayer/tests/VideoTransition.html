@@ -14,6 +14,9 @@
 					$j('#seekInProgress').hide();
 				});
 			});
+			$j('#startBuffer').click( function(){
+				$j('#videoTransition').get(0).load();
+			});
 		});
 	</script>
 </head>
@@ -25,6 +28,8 @@
 
 <video id="videoTransition" type="application/smil" src="VideoTransitionSmil.xml" width="400" height="300"></video>
 <p></p>seek to <input id="seekInputTime" size="4" value = "5"></input><span id="seekInProgress" style="display: none"> Seeking<blink>...</blink></span>
+<br/>
+<a id="startBuffer" href="#">Start buffering</a>
 </td>
 <td valign="top">
 Sample playlist code: 

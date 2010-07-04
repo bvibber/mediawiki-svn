@@ -61,14 +61,14 @@ mw.SmilBody.prototype = {
 	*/
 	renderTime: function( time, deltaTime ){
 		var _this = this;
-		mw.log( "renderTime:: " + time );
+		//mw.log( "renderTime:: " + time );
 		 
 		// Get all the draw elements from the body this time: 
 		this.getElementsForTime( time ,
 			/* SMIL Element in Range */ 
 			function( smilElement) {				
 				// var relativeTime = time - smilElement.parentTimeOffset;
-				var relativeTime = time - $j( smilElement ).data ( 'parentStartOffset' );
+				var relativeTime = time - $j( smilElement ).data ( 'startOffset' );
 				
 				// Render the active elements using the layout engine
 				_this.smil.getLayout().drawElement( smilElement );
@@ -124,16 +124,11 @@ mw.SmilBody.prototype = {
 	 * @param {Object} $node Node to recursively search for elements in the given time range
 	 */ 
 	getElementsForTimeRecurse: function( $node, time, startOffset, inRangeCallback, outOfRangeCallback){
+		var _this = this;
 		// Setup local pointers:
 		var nodeDuration = this.getNodeDuration( $node );
 		var nodeType = this.getNodeSmilType( $node );
 		var nodeParentType = this.getNodeSmilType( $node.parent() );		
-		var _this = this;
-		
-		// Set startOffset to zero if not defined. 
-		if( !startOffset ) {
-			startOffset = 0;
-		}
 								
 				
 		// If 'par' or 'seq' recurse to get elements for layout
@@ -159,11 +154,17 @@ mw.SmilBody.prototype = {
 		
 		// If the nodeType is "ref" or smilText run the callback
 		if( nodeType == 'ref' || nodeType == 'smilText' ) {		
+			
+			// Update the startOffsets if the node has a "begin" attribute
+			if( $node.attr('begin') ){
+				startOffset+= this.smil.parseTime( $node.attr('begin') );
+			}
+			
 			// Add the parent startOffset 
-			$node.data( 'parentStartOffset', startOffset );			
+			$node.data( 'startOffset', startOffset );						
 			
 			// Check if element is in range: 
-			if( time >= startOffset && time <= ( startOffset + nodeDuration)  ){
+			if( time >= startOffset && time <= ( startOffset + nodeDuration) ){
 				if( typeof inRangeCallback == 'function' ){
 					inRangeCallback( $node );
 				}	

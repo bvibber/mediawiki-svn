@@ -12,21 +12,27 @@ mw.SmilTransitions.prototype = {
 	
 	// Generates a transition overlay based on the transition type  
 	transformTransitionOverlay: function( smilElement, animateTime ) {
-		mw.log('SmilTransitions::transformTransitionOverlay:' + animateTime);		
-		
+		/*mw.log('SmilTransitions::transformTransitionOverlay:' + animateTime + 
+				' tIn:' + $j( smilElement ).attr( 'transIn' )  + 
+				' tOut:' + $j( smilElement ).attr( 'transOut' ) );		
+		*/
 		// Get the transition type and id: 
 		var transitionInRange = false;		
 		
 		if( $j( smilElement ).attr( 'transIn' ) ){		
 			$transition = this.smil.$dom.find( '#' + $j( smilElement ).attr( 'transIn' ) );
 			// Check if the transition is in range
-			var duration = this.smil.parseTime( $transition.attr('dur') );
-			if( duration > animateTime  ){
-				var percent = animateTime/ duration;
+			var transitionDuration = this.smil.parseTime( $transition.attr('dur') );
+			//mw.log("SmilTransitions: test: td:" + transitionDuration + ' > ' + animateTime);
+			if( transitionDuration > animateTime  ){				
+				var percent = animateTime / transitionDuration;
+				/* mw.log("SmilTransitions: " + $j( smilElement ).attr( 'transIn' ) + " in range for " + 
+						this.smil.getAssetId( smilElement ) + " draw:" + percent );
+				*/
 				this.drawTransition( percent, $transition, smilElement );	
 				transitionInRange = true;
 			} else {
-				// Hide this overlay
+				// Out of range hide this overlay
 				$j( '#' + this.getTransitionOverlayId( $transition, smilElement ) ).hide();			
 			}
 		}
@@ -38,6 +44,9 @@ mw.SmilTransitions.prototype = {
 			var nodeDuration = this.smil.getBody().getNodeDuration( smilElement ); 
 			if( animateTime > ( nodeDuration - duration ) ){			
 				var percent = animateTime - ( nodeDuration - duration ) / duration;
+				// Invert the percentage for "transOut"
+				percent = 1 - percent;
+				
 				this.drawTransition( percent, $transition, smilElement );
 				transitionInRange = true;
 			} else {
@@ -54,14 +63,16 @@ mw.SmilTransitions.prototype = {
 	elementOutOfRange: function ( smilElement, time ){
 		// for now just hide
 		if( $j( smilElement ).attr( 'transIn' ) ){		
-			$j( '#' + this.getTransitionOverlayId( 
+			$j( '#' + 
+				this.getTransitionOverlayId( 
 					this.smil.$dom.find( '#' + $j( smilElement ).attr( 'transIn' ) ),
 					smilElement
 				)
 			).hide();
 		}
 		if( $j( smilElement ).attr( 'transOut' ) ){
-			$j( '#' + this.getTransitionOverlayId( 
+			$j( '#' + 
+				this.getTransitionOverlayId( 
 					this.smil.$dom.find( '#' + $j( smilElement ).attr( 'transOut' ) ),
 					smilElement
 				)
@@ -71,9 +82,13 @@ mw.SmilTransitions.prototype = {
 	
 	/**
 	 * Updates a transition to a requested percent
+	 * 
+	 * @param {float} percent Percent to draw transition
+	 * @param {Element} $transition The transition node
+	 * @param {Element} smilElement The element to transition on. 
 	 */
 	drawTransition: function( percent, $transition, smilElement ){
-		mw.log( 'SmilTransitions::drawTransition::' +  $transition.attr('id') );
+		//mw.log( 'SmilTransitions::drawTransition::' +  $transition.attr('id') );
 		// Map draw request to correct transition handler:
 		if( ! this.transitionFunctionMap[ $transition.attr('type') ] 
 		    ||
@@ -90,6 +105,15 @@ mw.SmilTransitions.prototype = {
 	
 	/**
 	 * Maps all supported transition function types 
+	 * 	
+	 * Also see: http://www.w3.org/TR/SMIL/smil-transitions.html
+	 *
+	 * Each transition map function accepts: 
+	 * 
+	 * @param {Object} _this Reference to SmilTransistions object
+	 * @param {float} percent Percent to draw transition
+	 * @param {Element} $transition The transition node
+	 * @param {Element} smilElement The element to transition on. 
 	 */
 	transitionFunctionMap : {
 		'fade' : {
@@ -109,10 +133,16 @@ mw.SmilTransitions.prototype = {
 					);
 					mw.log('fadeFromColor:: added: ' + transitionOverlayId);														
 				}
-				// Update transition based on interpolation percentage:
-				// Invert the percentage:
-				var percent = 1 - percent;
+				
+				// Invert the percentage since we setting opacity from full color we are fading from		
+				percent = 1 - percent;	
+				
+				// Update the overlay opacity
 				$j( '#' + transitionOverlayId  ).css( 'opacity', percent );
+			},
+			'crossfade': function( _this, percent, $transition, smilElement ){
+				// fade "ourselves" ... in cases of overlapping timelines this will create a true cross fade
+				$j( '#' + _this.smil.getAssetId( smilElement )  ).css( 'opacity', percent );
 			}
 		}		
 	},

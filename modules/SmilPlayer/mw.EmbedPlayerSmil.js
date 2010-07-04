@@ -23,6 +23,9 @@ mw.EmbedPlayerSmil = {
 	// flag to register when video is paused to fill a buffer. 
 	pausedForBuffer: false,
 	
+	// The virtual volume for all underling clips
+	volume: .75,
+	
 	// The max out of sync value before pausing playback 
 	// set to .5 second: 
 	maxSyncDelta: .5,
@@ -47,6 +50,14 @@ mw.EmbedPlayerSmil = {
 		this.setCurrentTime( 0, function(){
 			mw.log("EmbedPlayerSmil::doEmbedPlayer:: render callback ready " );
 		}); 				
+	},
+	
+	/**
+	 * set the virtual smil volume ( will key all underling assets against this volume )
+	 * ( of course we don't try to normalize across clips anything like that right now )
+	 */
+	setPlayerElementVolume: function( percent ){
+		this.volume = percent;
 	},
 	
 	/**
@@ -121,14 +132,15 @@ mw.EmbedPlayerSmil = {
 			
 			// Start up monitor:
 			_this.monitor();
-		})
+		});
 	},
+	/**
+	 * Maps a "load" call to startBuffer call in the smil engine 
+	 */
 	load: function(){
-		this.getSmil( function( smil ){
-			// update the smil element
-			_this.smil = smil;
-			doPlay();
-		})
+		var _this = this;
+		this.play();
+		this.pause();
 	},
 	
 	stop: function(){
@@ -169,8 +181,8 @@ mw.EmbedPlayerSmil = {
 		// Update the bufferedPercent		
 		this.bufferedPercent = this.smil.getBufferedPercent();
 		
-		// Update the smilPlayTime if not paused:
-		if( !this.isPaused() ){
+		// Update the smilPlayTime if playing
+		if( this.isPlaying() ){
 		
 			// Check for buffer under-run if so don't update time
 			var syncDelta = this.smil.getPlaybackSyncDelta( this.smilPlayTime );
@@ -187,7 +199,7 @@ mw.EmbedPlayerSmil = {
 				this.controlBuilder.setStatus( gM('mwe-embedplayer-buffering') );				
 				return ;
 			}{
-				//update playtime if not pausedForBuffer
+				// Update playtime if not pausedForBuffer
 				this.smilPlayTime =  this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
 			}
 			// Done with sync delay: 
@@ -251,5 +263,24 @@ mw.EmbedPlayerSmil = {
 		}
 		// If no thumb could be found use the first frame of smil: 
 		this.doEmbedPlayer(); 
+	},
+	
+	/**
+	 * Smil Engine utility functions
+	 */
+	
+	/**
+	 * Returns an array of audio urls, start and end points.
+	 * 
+	 * This is used to support flattening by building a set of 
+	 * start and end points for a series of audio files or audio
+	 * tracks from movie files. 
+	 */
+	getAudioTimeSet: function(){
+		if(!this.smil)
+			return null;
+		
+		return this.smil.getAudioTimeSet();		
 	}
+	
 }

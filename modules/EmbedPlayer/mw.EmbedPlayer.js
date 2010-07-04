@@ -2780,7 +2780,7 @@ mw.EmbedPlayer.prototype = {
 	* Abstract Update volume Method must be override by plug-in / player interface
 	*/
 	setPlayerElementVolume: function( percent ) {
-		mw.log(' error player does not support volume adjustment' );
+		mw.log('Error player does not support volume adjustment' );
 	},
 	
 	/**
@@ -2984,14 +2984,16 @@ mw.EmbedPlayer.prototype = {
 	/**
 	* Update the Buffer status based on the local bufferedPercent var
 	*/
-	updateBufferStatus: function() {		
+	updateBufferStatus: function() {
+		
 		// Get the buffer target based for playlist vs clip 
 		$buffer = this.$interface.find( '.mw_buffer' );		
 		// Update the buffer progress bar (if available )
 		if ( this.bufferedPercent != 0 ) {
-			// mw.log('bufferedPercent: ' + this.bufferedPercent);			
-			if ( this.bufferedPercent > 1 )
+			//mw.log('Update buffer css: ' + ( this.bufferedPercent * 100 ) + '% ' + $buffer.length );			
+			if ( this.bufferedPercent > 1 ){
 				this.bufferedPercent = 1;
+			}
 			
 			$buffer.css({
 				"width" : ( this.bufferedPercent * 100 ) + '%'
