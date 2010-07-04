@@ -390,6 +390,13 @@ EmbedPlayerManager.prototype = {
 		mw.load( playerDependencyRequest, function() {								
 			var waitForMeta = true;					
 			
+			// Be sure to "stop" the target ( sometimes firefox keeps playing the video even 
+			// though its been removed from the DOM )					
+			if( playerElement.pause ){
+				playerElement.pause();
+			}
+						
+			
 			// Let extensions determine if its worthwhile to wait for metadata:
 			// We pass an object to the trigger to preserve reference values		
 			var eventObject = { 
@@ -536,13 +543,14 @@ EmbedPlayerManager.prototype = {
 				swapPlayerElement[ method ] = playerInterface[ method ];
 			}
 		}
+		
 		// Check if we are using native controls ( should keep the video embed around )
 		// "wrap" the player interface
 		if( playerInterface.useNativeControls() ) {
 			$j( targetElement )
 			.attr('id', playerInterface.pid )
 			.after( 
-				swapPlayerElement
+				$j( swapPlayerElement ).css('display', 'none')
 			)
 		} else {
 			$j( targetElement ).replaceWith( swapPlayerElement );
@@ -557,10 +565,16 @@ EmbedPlayerManager.prototype = {
 		
 		// If we don't already have a loadSpiner add one: 
 		if( $j('#loadingSpinner_' + playerInterface.id ).length == 0 ){
-			$j( swapPlayerElement ).append( 
-				$j('<div />')
-				.loadingSpinner()	
-			);
+			if( playerInterface.useNativeControls() ) {
+				$j( targetElement )
+					.getAbsoluteOverlaySpinner()
+					.attr('id', 'loadingSpinner_' + playerInterface.id ) 
+			}else{
+				$j( swapPlayerElement ).append( 
+					$j('<div />')
+					.loadingSpinner()	
+				);
+			}
 		}
 		return true;
 	},
@@ -1421,9 +1435,12 @@ mw.EmbedPlayer.prototype = {
 				if( customSource.src ){
 					var $source = $j('<source />')
 						.attr( 'src', customSource.src );	
-					
+					// xxx todo pull list of valid source attributes from mediaSource prototype
 					if( customSource.type ){
 						$source.attr('type', customSource.type )
+					}
+					if( customSource.title ){
+						$source.attr('title', customSource.title );
 					}
 					this.mediaElement.tryAddSource( $source.get(0) );
 				}
