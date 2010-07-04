@@ -418,7 +418,36 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::makeDir
 	 */
 	public function makeDir( $path, $chmod = false, $chown = false, $chgrp = false ) {
+		// Safe mode fails with a trailing slash under certain PHP versions.
+		$path = rtrim( $path, '/' );
 		
+		if ( empty( $path ) ) {
+			$path = '/';
+		}
+
+		if ( !$chmod ) {
+			$chmod = FS_CHMOD_DIR;
+		}
+			
+		wfSuppressWarnings();
+		$mkdir = mkdir($path);
+		wfRestoreWarnings();
+		
+		if ( !$mkdir ) {
+			return false;
+		}
+			
+		$this->chmod( $path, $chmod );
+		
+		if ( $chown ) {
+			$this->chown( $path, $chown );
+		}
+			
+		if ( $chgrp ) {
+			$this->changeFileGroup( $path, $chgrp );
+		}
+			
+		return true;		
 	}
 
 	/**

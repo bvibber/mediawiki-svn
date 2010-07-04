@@ -457,7 +457,25 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::makeDir
 	 */
 	public function makeDir( $path, $chmod = false, $chown = false, $chgrp = false ) {
+		wfSuppressWarnings();
+		$ftp_mkdir = ftp_mkdir( $this->connection, $path );
+		wfRestoreWarnings();
 		
+		if ( !$ftp_mkdir ) {
+			return false;
+		}
+			
+		$this->chmod( $path, $chmod );
+		
+		if ( $chown ) {
+			$this->chown( $path, $chown );
+		}
+			
+		if ( $chgrp ) {
+			$this->changeFileGroup( $path, $chgrp );
+		}
+			
+		return true;		
 	}
 
 	/**
