@@ -389,6 +389,13 @@ $wgUseInstantCommons = false;
 $wgShowEXIF = function_exists( 'exif_read_data' );
 
 /**
+ * If to automatically update the img_metadata field
+ * if the metadata field is outdated but compatible with the current version.
+ * Defaults to false.
+ */
+$wgUpdateCompatibleMetadata = false;
+
+/**
  * Set to true to enable the upload _link_ while local uploads are disabled.
  * Assumes that the special page link will be bounced to another server where
  * uploads do work.

@@ -21,12 +21,8 @@ class ForeignAPIFile extends File {
                         'titles' => 'File:' . $title->getText(),
                         'iiprop' => 'timestamp|user|comment|url|size|sha1|metadata|mime',
                         'prop' => 'imageinfo',
-			'iimetadataversion' => Exif::version()
+			'iimetadataversion' => mediaHandler::getMetadataVersion()
 			 ) );
-		// Note to self/fixme: Using Exif::version() here is obviously not good, as
-		// metadata is handler specific. Original plan was to use handler->getMetadataVersion()
-		// but that doesn't work, because we don't know mime type yet, thus don't know handler yet.
-		// need to think of a better way of doing this.
 
 		$info = $repo->getImageInfo( $data );
 

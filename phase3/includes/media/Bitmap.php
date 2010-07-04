@@ -366,11 +366,11 @@ class BitmapHandler extends ImageHandler {
 		global $wgShowEXIF;
 		if ( !$wgShowEXIF ) {
 			# Metadata disabled and so an empty field is expected
-			return true;
+			return self::METADATA_GOOD;
 		}
 		if ( $metadata === '0' ) {
 			# Special value indicating that there is no EXIF data in the file
-			return true;
+			return self::METADATA_GOOD;
 		}
 		wfSuppressWarnings();
 		$exif = unserialize( $metadata );
@@ -378,11 +378,18 @@ class BitmapHandler extends ImageHandler {
 		if ( !isset( $exif['MEDIAWIKI_EXIF_VERSION'] ) ||
 			$exif['MEDIAWIKI_EXIF_VERSION'] != Exif::version() )
 		{
-			# Wrong version
+			if ( isset( $exif['MEDIAWIKI_EXIF_VERSION'] ) &&
+				$exif['MEDIAWIKI_EXIF_VERSION'] == 1 ) 
+			{
+				//back-compatible but old
+				wfDebug( __METHOD__.": back-compat version\n" );
+				return self::METADATA_COMPATIBLE;
+			}
+			# Wrong (non-compatible) version
 			wfDebug( __METHOD__.": wrong version\n" );
-			return false;
+			return self::METADATA_BAD;
 		}
-		return true;
+		return self::METADATA_GOOD;
 	}
 
 	/**

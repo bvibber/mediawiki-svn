@@ -302,6 +302,7 @@ class LocalFile extends File {
 	 * Upgrade a row if it needs it
 	 */
 	function maybeUpgradeRow() {
+		global $wgUpdateCompatibleMetadata;
 		if ( wfReadOnly() ) {
 			return;
 		}
@@ -312,9 +313,14 @@ class LocalFile extends File {
 			$this->upgraded = true;
 		} else {
 			$handler = $this->getHandler();
-			if ( $handler && !$handler->isMetadataValid( $this, $this->metadata ) ) {
-				$this->upgradeRow();
-				$this->upgraded = true;
+			if ( $handler ) {
+				$validity = $handler->isMetadataValid( $this, $this->metadata );
+				if ( $validity === MediaHandler::METADATA_BAD
+					|| ( $validity === MediaHandler::METADATA_COMPATIBLE && $wgUpdateCompatibleMetadata ) 
+				) {
+					$this->upgradeRow();
+					$this->upgraded = true;
+				}
 			}
 		}
 	}

@@ -824,6 +824,14 @@ $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getLocalURL()
 
+'GetMetadataVersion': modify the image metadata version currently in use. This is
+	used when requesting image metadata from a ForiegnApiRepo. Media handlers
+	that need to have versioned metadata should add an element to the end of
+	the version array of the form 'handler_name=version'. Most media handlers
+	won't need to do this unless they broke backwards compatibility with a
+	previous version of the media handler metadata output. 
+&$version: Array of version strings
+
 'GetPreferences': modify user preferences
 $user: User whose preferences are being modified.
 &$preferences: Preferences description array, to be fed to an HTMLForm object

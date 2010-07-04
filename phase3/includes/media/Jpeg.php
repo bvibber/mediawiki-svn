@@ -30,7 +30,9 @@ class JpegHandler extends BitmapHandler {
 
 	function convertMetadataVersion( $metadata, $version = 1 ) {
 		// basically flattens arrays.
-		if ( $version != 1 ) {
+		$version = explode(';', $version, 2);
+		$version = intval($version[0]);
+		if ( $version < 1 || $version >= 2 ) {
 			return $metadata;
 		}
 
@@ -46,8 +48,7 @@ class JpegHandler extends BitmapHandler {
 				$val = formatExif::flattenArray( $val );
 			}
 		}
-		$metadata['MEDIAWIKI_EXIF_VERSION'] = $version;
+		$metadata['MEDIAWIKI_EXIF_VERSION'] = 1;
 		return $metadata;
 	}
-	function getMetadataVersion () { return Exif::version(); }
 }

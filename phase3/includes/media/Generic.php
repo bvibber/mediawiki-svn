@@ -12,7 +12,9 @@
  */
 abstract class MediaHandler {
 	const TRANSFORM_LATER = 1;
-
+	const METADATA_GOOD = true;
+	const METADATA_BAD = false;
+	const METADATA_COMPATIBLE = 2; // for old but backwards compatible.
 	/**
 	 * Instance cache
 	 */
@@ -88,10 +90,24 @@ abstract class MediaHandler {
 
 	/**
 	* Get metadata version.
-	* @return integer version
-	* @todo Originally this was going to be used by ForeignAPIFile, but currently does nothing.
+	*
+	* This is not used for validating metadata, this is used for the api when returning
+	* metadata, since api content formats should stay the same over time, and so things
+	* using ForiegnApiRepo can keep backwards compatibility
+	*
+	* All core media handlers share a common version number, and extensions can
+	* use the GetMetadataVersion hook to append to the array (they should append a unique
+	* string so not to get confusing). If there was a media handler named 'foo' with metadata
+	* version 3 it might add to the end of the array the element 'foo=3'. if the core metadata
+	* version is 2, the end version string would look like '2;foo=3'.
+	*
+	* @return string version string
 	*/
-	function getMetadataVersion () { return 1; }
+	static function getMetadataVersion () {
+		$version = Array( '2' ); // core metadata version
+		wfRunHooks('GetMetadataVersion', Array(&$version));
+		return implode( ';', $version);
+	 }
 
 	/**
 	* Convert metadata version.
@@ -120,9 +136,15 @@ abstract class MediaHandler {
 
 	/**
 	 * Check if the metadata string is valid for this handler.
-	 * If it returns false, Image will reload the metadata from the file and update the database
+	 * If it returns MediaHandler::METADATA_BAD (or false), Image
+	 * will reload the metadata from the file and update the database.
+	 * MediaHandler::METADATA_GOOD for if the metadata is a-ok,
+	 * MediaHanlder::METADATA_COMPATIBLE if metadata is old but backwards
+	 * compatible (which may or may not trigger a metadata reload).
 	 */
-	function isMetadataValid( $image, $metadata ) { return true; }
+	function isMetadataValid( $image, $metadata ) { 
+		return self::METADATA_GOOD;
+	}
 
 
 	/**

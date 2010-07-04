@@ -191,7 +191,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 	 * @param $scale Array containing 'width' and 'height' items, or null
 	 * @return Array: result array
 	 */
-	static function getInfo( $file, $prop, $result, $scale = null, $version = 0 ) {
+	static function getInfo( $file, $prop, $result, $scale = null, $version = 'latest' ) {
 		$vals = array();
 		if ( isset( $prop['timestamp'] ) ) {
 			$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $file->getTimestamp() );
@@ -240,7 +240,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		}
 		if ( isset( $prop['metadata'] ) ) {
 			$metadata = unserialize( $file->getMetadata() );
-			if ( $version !== 0 ) {
+			if ( $version !== 'latest' ) {
 				$metadata = $file->convertMetadataVersion( $metadata, $version );
 			}
 			$vals['metadata'] = $metadata ? self::processMetaData( $metadata, $result ) : null;
@@ -311,9 +311,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 				ApiBase::PARAM_DFLT => - 1
 			),
 			'metadataversion' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => 1,
-				ApiBase::PARAM_MIN => 0,
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_DFLT => '1',
 			),
 			'continue' => null,
 		);
@@ -349,7 +348,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'urlwidth' => array( "If {$p}prop=url is set, a URL to an image scaled to this width will be returned.",
 					    'Only the current version of the image can be scaled' ),
 			'urlheight' => "Similar to {$p}urlwidth. Cannot be used without {$p}urlwidth",
-			'metadataversion' => array( "Version of metadata to use. if 0 is specified, use latest version.", 
+			'metadataversion' => array( "Version of metadata to use. if 'latest' is specified, use latest version.", 
 						"Defaults to '1' for bacwards compatability" ),
 			'continue' => 'When more results are available, use this to continue',
 		);
