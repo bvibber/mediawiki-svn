@@ -17,7 +17,12 @@
   </head>
   <body>
     <par>
-     
+    
+    <audio src="http://upload.wikimedia.org/wikipedia/commons/5/5a/La_Donna_E_Mobile_Rigoletto.ogg"
+    	begin="1s"
+    	dur="10s"
+    />
+    
  	<video src="http://upload.wikimedia.org/wikipedia/commons/d/d3/Okapia_johnstoni5.ogg" 		
 		transIn="fromGreen"	
 		type="video/ogg" 	
@@ -27,7 +32,7 @@
 	/>	
 	
     <video src="http://upload.wikimedia.org/wikipedia/commons/0/0d/B-36_bomber.ogg" 	
-    	begin="5s"	 		
+    	begin="5s"    	 	
     	transIn="xFade"
     	 		
 		fill="transition" 

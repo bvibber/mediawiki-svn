@@ -152,6 +152,13 @@ mw.Smil.prototype = {
 	},
 	
 	/**
+	 * Get the set of audio ranges for flattening. 
+	 */
+	getAudioTimeSet: function(){
+		return this.getBody().getFlatAudioTimeLine();
+	},
+	
+	/**
 	 * Pass on the request to start buffering the entire sequence of clips 
 	 */
 	startBuffer: function(){
@@ -234,17 +241,10 @@ mw.Smil.prototype = {
 		
 	/**
 	 * Some Smil Utility functions
-	 */
+	 */	
 	
 	/**
-	 * Returns a set of audio ranges for flattening. 
-	 */
-	getAudioTimeSet: function( ){
-		return {};
-	},
-	
-	/**
-	* maps a smil element id to a html safe id 
+	* maps a smil element id to a html 'safer' id 
 	* as a decedent subname of the embedPlayer parent
 	*
 	* @param {Object} smilElement Element to get id for
@@ -280,9 +280,15 @@ mw.Smil.prototype = {
 			return;
 		}
 		// Get the smil type
-		var smilType = $j( smilElement ).get(0).nodeName.toLowerCase();	
+		var smilType = $j( smilElement ).get(0).nodeName.toLowerCase();
+		
+		if( this.getBody().smilBlockTypeMap[ smilType ] != 'ref' ){
+			mw.log("Error: trying to get ref type of node that is not a ref" + smilType);
+			return null; 
+		}
+		
+		// If the smilType is ref, check for a content type
 		if( smilType == 'ref' ){
-			// If the smilType is ref, check for a content type
 			switch( $j( smilElement ).attr( 'type' ) ) {
 				case 'text/html':
 					smilType = 'cdata_html';
@@ -291,6 +297,9 @@ mw.Smil.prototype = {
 				case 'video/h.264':
 				case 'video/webm':
 					smilType = 'video';
+				break;
+				case 'audio/ogg':
+					smilType = 'audio';
 				break;
 			}
 		}

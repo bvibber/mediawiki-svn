@@ -79,7 +79,7 @@ mw.EmbedPlayerSmil = {
 		var _this = this;
 		this.getSmil( function( smil ){	
 			smil.renderTime( time, function(){
-				mw.log( "setCurrentTime:: renderTime callback" );
+				//mw.log( "setCurrentTime:: renderTime callback" );
 				$j('#loadingSpinner_' + _this.id ).remove();
 				
 				_this.monitor();
@@ -277,9 +277,9 @@ mw.EmbedPlayerSmil = {
 	 * tracks from movie files. 
 	 */
 	getAudioTimeSet: function(){
-		if(!this.smil)
+		if(!this.smil){
 			return null;
-		
+		}		
 		return this.smil.getAudioTimeSet();		
 	}
 	

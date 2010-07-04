@@ -81,7 +81,9 @@ mw.FirefoggRender.prototype = {
 		
 		
 	},
-	
+	getPlayer: function(){
+		return $j( this.playerTarget ).get( 0 );
+	},
 	// Start rendering
 	doRender: function() {
 		var _this = this;
@@ -94,16 +96,30 @@ mw.FirefoggRender.prototype = {
 		
 		// Set the continue rendering flag to true:
 		this.continueRendering = true;
-		
-		// Get the player:
-		this.player = $j( this.playerTarget ).get( 0 );
 
 		// Set a target file:
 		mw.log( "Firefogg Render Settings:" + JSON.stringify( _this.renderOptions ) );
 		this.fogg.initRender(  JSON.stringify( _this.renderOptions ), 'foggRender.ogv' );				
 			
 		// Add audio if we had any:
+		var audioSet = this.getPlayer().getAudioTimeSet();		
+		var previusAudioTime = 0;
+		for( var i=0; i < audioSet.length ; i++) {
+			var currentAudio = audioSet[i];
+			// Check if we need to add silence
+			if( currentAudio.startTime > previusAudioTime ){
+				mw.log("FirefoggRender::addSilence " + ( currentAudio.startTime - previusAudioTime ));
+				this.fogg.addSilence( currentAudio.startTime - previusAudioTime );
+			}
+			// Add the block of audio from the url
+			mw.log("FirefoggRender::addAudioUrl " + currentAudio.src + 
+					', ' + currentAudio.offset + ', ' + currentAudio.duration );
+			this.fogg.addAudioUrl( currentAudio.src, currentAudio.offset, currentAudio.duration );
 
+			// Update previusAudioTime
+			previusAudioTime = currentAudio.startTime + currentAudio.duration;
+		}
+		
 		// Now issue the save video as call
 		_this.fogg.saveVideoAs();
 		
@@ -120,14 +136,14 @@ mw.FirefoggRender.prototype = {
 			( Math.round( _this.player.getDuration() * 10 ) / 10 ) );
 		*/
 		
-		_this.player.setCurrentTime( _this.renderTime, function() {								
+		_this.getPlayer().setCurrentTime( _this.renderTime, function() {								
 			
 			_this.fogg.addFrame( $j( _this.playerTarget ).attr( 'id' ) );
 			$j( _this.statusTarget ).text( "AddFrame::" + ( Math.round( _this.renderTime * 1000 ) / 1000 ) );
 			
 			_this.renderTime += _this.interval;
 			 
-			if ( _this.renderTime >= _this.player.getDuration() || ! _this.continueRendering ) {
+			if ( _this.renderTime >= _this.getPlayer().getDuration() || ! _this.continueRendering ) {
 				_this.doFinalRender();
 			} else {			
 				// Don't block on render requests

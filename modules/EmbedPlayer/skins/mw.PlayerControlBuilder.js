@@ -162,7 +162,7 @@ mw.PlayerControlBuilder.prototype = {
 			this.supportedComponets['timedText'] = true;
 		}		
 		// Check for kalturaAttribution 	
-		if( mw.getConfig( 'EmbedPlayer.KalturaAttribution' ) ){							 
+		if( mw.getConfig( 'EmbedPlayer.KalturaAttribution' ) ){			
 			this.supportedComponets[ 'kalturaAttribution' ] = true;
 		}
 		

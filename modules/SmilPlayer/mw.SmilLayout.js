@@ -158,6 +158,9 @@ mw.SmilLayout.prototype = {
 			case 'video': 
 				return this.getSmilVideoHtml( smilElement );
 			break;
+			case 'audio':
+				return this.getSmilAudioHtml( smilElement );
+			break;
 			// Smil Text: http://www.w3.org/TR/SMIL/smil-text.html ( obviously we support a subset )
 			case 'smiltext':
 				return this.getSmilTextHtml( smilElement );
@@ -181,13 +184,25 @@ mw.SmilLayout.prototype = {
 	/**
 	* Return the video
 	*/
-	getSmilVideoHtml: function( videoElement ){
+	getSmilVideoHtml: function( smilElement ){
 		return $j('<video />')
 			.attr( {
-				'id' : this.smil.getAssetId( videoElement ), 
-				'src' : this.smil.getAssetUrl( $j( videoElement ).attr( 'src' ) )
+				'id' : this.smil.getAssetId( smilElement ), 
+				'src' : this.smil.getAssetUrl( $j( smilElement ).attr( 'src' ) )
 			} )
 			.addClass( 'smilFillWindow' )
+	},
+	
+	/**
+	 * Return audio element ( by default audio tracks are hidden )
+	 */
+	getSmilAudioHtml: function ( smilElement ){
+		return $j('<audio />')
+		.attr( {
+			'id' : this.smil.getAssetId( smilElement ), 
+			'src' : this.smil.getAssetUrl( $j( smilElement ).attr( 'src' ) )
+		} )
+		.css( 'display', 'none');
 	},
 	
 	/**
