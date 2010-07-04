@@ -454,7 +454,19 @@ class DirectFilesystem extends Filesystem {
 	 * @see Filesystem::touch
 	 */
 	public function touch( $file, $time = 0, $atime = 0 ) {
-		
+		if ( $time == 0 ) {
+			$time = time();
+		}
+			
+		if ( $atime == 0 ) {
+			$atime = time();
+		}
+			
+		wfSuppressWarnings();
+		$result = (bool)touch( $file, $time, $atime );
+		wfRestoreWarnings();
+				
+		return $result;			
 	}
 
 	/**

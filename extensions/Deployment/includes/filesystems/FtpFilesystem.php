@@ -482,7 +482,7 @@ class FtpFilesystem extends Filesystem {
 	 * @see Filesystem::touch
 	 */
 	public function touch( $file, $time = 0, $atime = 0 ) {
-		
+		return false;
 	}
 
 	/**
