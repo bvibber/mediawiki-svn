@@ -15,6 +15,11 @@ $messages['en'] = array(
 	'jsbreadcrumbs-desc' => 'Adds a trail of breadcrumbs below the tab bar',
 	'jsbreadcrumbs-separator' => '»',
 	'jsbreadcrumbs-leading-description' => 'Navigation trail',
+	'prefs-jsbreadcrumbs' => 'Bread Crumbs',
+	'prefs-jsbreadcrumbs-showsite' => 'Include site name in bread crumbs (useful when used across wikis)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Display bread crumbs',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Number of bread crumbs',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximum 20 bread crumbs',
 );
 
 /** Afrikaans (Afrikaans)
