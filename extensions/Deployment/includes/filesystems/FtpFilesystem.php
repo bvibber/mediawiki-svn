@@ -488,8 +488,29 @@ class FtpFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::writeToFile
 	 */
-	public function writeToFile( $file, $contents ) {
+	public function writeToFile( $file, $contents, $mode = false  ) {
+		$tempfile = wp_tempnam( $file );
+		$temp = fopen( $tempfile, 'w+' );
 		
+		if ( !$temp ) {
+			return false;
+		}
+
+		fwrite( $temp, $contents );
+		
+		// Skip back to the start of the file being written to
+		fseek( $temp, 0 );
+
+		wfSuppressWarnings();
+		$ret = ftp_fput( $this->connection, $file, $temp, $this->isBinary( $contents ) ? FTP_BINARY : FTP_ASCII );
+		wfRestoreWarnings();
+		
+		fclose( $temp );
+		unlink( $tempfile );
+
+		$this->chmod( $file, $mode );
+
+		return $ret;		
 	}	
 	
 	/**
@@ -497,20 +518,23 @@ class FtpFilesystem extends Filesystem {
 	 */
 	protected function parseListing( $line ) {
 		static $is_windows;
-		if ( is_null($is_windows) )
-			$is_windows = stripos( ftp_systype($this->link), 'win') !== false;
+		
+		if ( is_null( $is_windows ) ) {
+			$is_windows = stripos( ftp_systype( $this->connection ), 'win' ) !== false;
+		}
 
-		if ( $is_windows && preg_match('/([0-9]{2})-([0-9]{2})-([0-9]{2}) +([0-9]{2}):([0-9]{2})(AM|PM) +([0-9]+|<DIR>) +(.+)/', $line, $lucifer) ) {
+		if ( $is_windows && preg_match( '/([0-9]{2})-([0-9]{2})-([0-9]{2}) +([0-9]{2}):([0-9]{2})(AM|PM) +([0-9]+|<DIR>) +(.+)/', $line, $lucifer ) ) {
 			$b = array();
-			if ( $lucifer[3] < 70 )
-				$lucifer[3] +=2000;
-			else
-				$lucifer[3] += 1900; // 4digit year fix
-			$b['isdir'] = ( $lucifer[7] == '<DIR>');
-			if ( $b['isdir'] )
-				$b['type'] = 'd';
-			else
-				$b['type'] = 'f';
+			
+			if ( $lucifer[3] < 70 ) {
+				$lucifer[3] += 2000;
+			}
+			else {
+				$lucifer[3] += 1900; // 4 digit year fix
+			}
+				
+			$b['isdir'] = ( $lucifer[7] == '<DIR>' );
+			$b['type'] = $b['isdir'] ? 'd' : 'f';
 			$b['size'] = $lucifer[7];
 			$b['month'] = $lucifer[1];
 			$b['day'] = $lucifer[2];
@@ -520,35 +544,46 @@ class FtpFilesystem extends Filesystem {
 			$b['time'] = @mktime($lucifer[4] + (strcasecmp($lucifer[6], "PM") == 0 ? 12 : 0), $lucifer[5], 0, $lucifer[1], $lucifer[2], $lucifer[3]);
 			$b['am/pm'] = $lucifer[6];
 			$b['name'] = $lucifer[8];
-		} elseif ( !$is_windows && $lucifer = preg_split('/[ ]/', $line, 9, PREG_SPLIT_NO_EMPTY)) {
+		} elseif ( !$is_windows && $lucifer = preg_split( '/[ ]/', $line, 9, PREG_SPLIT_NO_EMPTY ) ) {
 			//echo $line."\n";
+			
 			$lcount = count($lucifer);
-			if ( $lcount < 8 )
+			
+			if ( $lcount < 8 ) {
 				return '';
+			}
+				
 			$b = array();
 			$b['isdir'] = $lucifer[0]{0} === 'd';
 			$b['islink'] = $lucifer[0]{0} === 'l';
-			if ( $b['isdir'] )
+			if ( $b['isdir'] ) {
 				$b['type'] = 'd';
-			elseif ( $b['islink'] )
+			}
+			elseif ( $b['islink'] ) {
 				$b['type'] = 'l';
-			else
+			}	
+			else {
 				$b['type'] = 'f';
+			}
 			$b['perms'] = $lucifer[0];
 			$b['number'] = $lucifer[1];
 			$b['owner'] = $lucifer[2];
 			$b['group'] = $lucifer[3];
 			$b['size'] = $lucifer[4];
+			
 			if ( $lcount == 8 ) {
-				sscanf($lucifer[5], '%d-%d-%d', $b['year'], $b['month'], $b['day']);
-				sscanf($lucifer[6], '%d:%d', $b['hour'], $b['minute']);
-				$b['time'] = @mktime($b['hour'], $b['minute'], 0, $b['month'], $b['day'], $b['year']);
+				sscanf( $lucifer[5], '%d-%d-%d', $b['year'], $b['month'], $b['day'] );
+				sscanf( $lucifer[6], '%d:%d', $b['hour'], $b['minute'] );
+				wfSuppressWarnings();
+				$b['time'] = mktime( $b['hour'], $b['minute'], 0, $b['month'], $b['day'], $b['year'] );
+				wfRestoreWarnings();
 				$b['name'] = $lucifer[7];
 			} else {
 				$b['month'] = $lucifer[5];
 				$b['day'] = $lucifer[6];
-				if ( preg_match('/([0-9]{2}):([0-9]{2})/', $lucifer[7], $l2) ) {
-					$b['year'] = date("Y");
+				
+				if ( preg_match( '/([0-9]{2}):([0-9]{2})/', $lucifer[7], $l2 ) ) {
+					$b['year'] = date( 'Y' );
 					$b['hour'] = $l2[1];
 					$b['minute'] = $l2[2];
 				} else {
@@ -556,7 +591,8 @@ class FtpFilesystem extends Filesystem {
 					$b['hour'] = 0;
 					$b['minute'] = 0;
 				}
-				$b['time'] = strtotime( sprintf('%d %s %d %02d:%02d', $b['day'], $b['month'], $b['year'], $b['hour'], $b['minute']) );
+				
+				$b['time'] = strtotime( sprintf( '%d %s %d %02d:%02d', $b['day'], $b['month'], $b['year'], $b['hour'], $b['minute'] ) );
 				$b['name'] = $lucifer[8];
 			}
 		}

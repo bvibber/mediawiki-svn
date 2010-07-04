@@ -53,12 +53,13 @@ abstract class Filesystem {
 	/**
 	 * Writes a string to a file.
 	 * 
-	 * @param string $file Path to the file.
-	 * @param string $contents
+	 * @param $file String: Path to the file.
+	 * @param $contents String
+	 * @param $mode Boolean
 	 * 
 	 * @return boolean Success indicator
 	 */
-	public abstract function writeToFile( $file, $contents );
+	public abstract function writeToFile( $file, $contents, $mode = false  );
 	
 	/**
 	 * Gets the current working directory.
@@ -354,6 +355,17 @@ abstract class Filesystem {
 	protected function addErrorMessage( $error ) {
 		$this->errors[] = $error;
 		wfDebug( $error );
+	}	
+	
+	/**
+	 * Determines if the string provided contains binary characters.
+	 *
+	 * @param $text String: the contents to test against
+	 * 
+	 * @return Boolean: true if string is binary, false otherwise
+	 */
+	protected function isBinary( $text ) {
+		return (bool)preg_match( '|[^\x20-\x7E]|', $text ); // chr(32)..chr(127)
 	}	
 	
 }

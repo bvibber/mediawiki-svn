@@ -472,8 +472,23 @@ class DirectFilesystem extends Filesystem {
 	/**
 	 * @see Filesystem::writeToFile
 	 */
-	public function writeToFile( $file, $contents ) {
+	public function writeToFile( $file, $contents, $mode = false  ) {
+		wfSuppressWarnings();
+		$fopen = fopen( $file, 'w' );
+		wfRestoreWarnings();
 		
+		if ( !( $fp = $fopen ) ) {
+			return false;
+		}
+		
+		wfSuppressWarnings();
+		fwrite( $fp, $contents );
+		fclose( $fp );
+		wfRestoreWarnings();
+		
+		$this->chmod( $file, $mode );
+		
+		return true;		
 	}	
 	
 }
