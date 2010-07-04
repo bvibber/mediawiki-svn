@@ -567,9 +567,9 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'usabilityinitiative' => 'Inicjatywa Użyteczności',
-	'usabilityinitiative-desc' => 'Funkcjonalności rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
-	'prefs-beta' => 'Funkcjonalności testowe',
-	'prefs-labs' => 'Funkcjonalności doświadczalne',
+	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu ułatwienia korzystania z oprogramowania MediaWiki',
+	'prefs-beta' => 'Funkcje testowe',
+	'prefs-labs' => 'Funkcje doświadczalne',
 );
 
 /** Piedmontese (Piemontèis)
@@ -623,7 +623,7 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'usabilityinitiative' => 'Inițiativa de Utilizabilitate',
-	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de inițiativa de utilizabilitate a Wikipedia pentru a facilita folosirea softului MediaWiki',
+	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de Inițiativa de Utilizabilitate a Wikipedia pentru a facilita folosirea softului MediaWiki',
 	'prefs-beta' => 'Opțiuni beta',
 	'prefs-labs' => 'Opțiuni „labs”',
 );

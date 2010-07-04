@@ -303,7 +303,9 @@ $messages['dsb'] = array(
  */
 $messages['ee'] = array(
 	'optin-try' => 'Zã Beta kpɔ',
+	'tooltip-pt-optin-try' => 'Zã trɔtrɔ yeyewo kpɔ',
 	'optin-leave' => 'Ɖe asi le Beta ŋu',
+	'tooltip-pt-optin-leave' => 'Ɖe asi le trɔtrɔ yeyewo ŋu',
 	'optin-feedback' => 'Wò susuwo le Beta ŋu',
 );
 
@@ -848,9 +850,9 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'optin-try' => 'Wypróbuj wersję testową',
-	'tooltip-pt-optin-try' => 'Wypróbuj nowe funkcjonalności',
+	'tooltip-pt-optin-try' => 'Wypróbuj nowe funkcje',
 	'optin-leave' => 'Koniec testowania',
-	'tooltip-pt-optin-leave' => 'Wyłącz nowe funkcjonalności',
+	'tooltip-pt-optin-leave' => 'Wyłącz nowe funkcje',
 	'optin-feedback' => 'Opinia o wersji testowej',
 	'tooltip-pt-optin-feedback' => 'Prześlij opinię na temat nowych funkcji',
 );
@@ -912,12 +914,13 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'optin-try' => 'Încercați Beta',
 	'tooltip-pt-optin-try' => 'Încercați funcții noi',
-	'optin-leave' => 'Părăsiți Beta',
+	'optin-leave' => 'Părăsire Beta',
 	'tooltip-pt-optin-leave' => 'Dezactivați funcțiile noi',
 	'optin-feedback' => 'Părere despre Beta',
 	'tooltip-pt-optin-feedback' => 'Furnizați un feedback cu privire la experiența cu noile funcționalități',

@@ -389,7 +389,8 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'vector-collapsiblenav-preference' => 'Aktiver sammenleggbar venstre navigeringsmeny',
+	'vector-collapsiblenav-preference' => 'Aktiver sammenlegging av element i navigeringsmenyen i drakten Vector',
+	'vector-collapsiblenav-more' => 'Flere språk',
 );
 
 /** Occitan (Occitan)
@@ -452,7 +453,7 @@ $messages['qu'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'vector-collapsiblenav-preference' => 'Activează ascunderea itemilor meniului de navigare în fațeta Vector',
+	'vector-collapsiblenav-preference' => 'Activează ascunderea elementelor meniului de navigare în interfața Vector',
 	'vector-collapsiblenav-more' => 'Mai multe limbi',
 );
 

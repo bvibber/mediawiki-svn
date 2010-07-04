@@ -1921,15 +1921,16 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author AdiJapan
  * @author Firilacroco
+ * @author Minisarm
  * @author Stelistcristi
  * @author Strainu
  */
 $messages['ro'] = array(
 	'prefstats' => 'Statistici despre preferințe',
-	'prefstats-desc' => 'Urmăiți statistici despre câți utilizatori au o anumită preferință activată',
+	'prefstats-desc' => 'Urmărirea statisticilor referitoare la numărul utilizatorilor care au activat o anumită preferință',
 	'prefstats-title' => 'Statistici despre preferințe',
-	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferințe.
-Apăsați pe ele pentru a vizualiza statistici despre ele.',
+	'prefstats-list-intro' => 'În prezent, următoarele preferințe sunt urmărite.
+Apăsați pe una dintre ele pentru a vizualiza statisticile în cauză.',
 	'prefstats-noprefs' => 'Nicio preferință nu este în prezent urmărită.
 Configurați $wgPrefStatsTrackPrefs pentru a urmări preferințe.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|utilizator și-a|utilizatori și-au}} activat această preferință de cînd a început colectarea datelor statistice

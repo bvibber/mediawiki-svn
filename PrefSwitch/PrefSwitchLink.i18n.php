@@ -173,14 +173,15 @@ $messages['de'] = array(
 );
 
 /** Zazaki (Zazaki)
+ * @author Asmen
  * @author Xoser
  */
 $messages['diq'] = array(
-	'prefswitch-link-anon' => 'Xacetano Newe',
+	'prefswitch-link-anon' => 'Xısusiyetê newey',
 	'tooltip-pt-prefswitch-link-anon' => 'xecatano neweyani ser bimuse',
-	'prefswitch-link-on' => 'Mi peyser bere',
-	'tooltip-pt-prefswitch-link-on' => 'Xacetano newe bikefilne',
-	'prefswitch-link-off' => 'Xacetano Newe',
+	'prefswitch-link-on' => 'Mı peyser bere',
+	'tooltip-pt-prefswitch-link-on' => 'Xısusiyetanê neweyan bıqefelne (megurene)',
+	'prefswitch-link-off' => 'Xısusiyetê newey',
 	'tooltip-pt-prefswitch-link-off' => 'Xecatano neweyani sixulne',
 );
 
@@ -551,12 +552,12 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'prefswitch-link-anon' => 'Nowe funkcjonalności',
-	'tooltip-pt-prefswitch-link-anon' => 'Więcej informacji o nowych funkcjonalnościach',
+	'prefswitch-link-anon' => 'Nowe funkcje',
+	'tooltip-pt-prefswitch-link-anon' => 'Więcej informacji o nowych funkcjach',
 	'prefswitch-link-on' => 'Stary wygląd',
-	'tooltip-pt-prefswitch-link-on' => 'Wyłącz nowe funkcjonalności',
-	'prefswitch-link-off' => 'Nowe funkcjonalności',
-	'tooltip-pt-prefswitch-link-off' => 'Wypróbuj nowe funkcjonalności',
+	'tooltip-pt-prefswitch-link-on' => 'Wyłącz nowe funkcje',
+	'prefswitch-link-off' => 'Nowe funkcje',
+	'tooltip-pt-prefswitch-link-off' => 'Wypróbuj nowe funkcje',
 );
 
 /** Piedmontese (Piemontèis)
