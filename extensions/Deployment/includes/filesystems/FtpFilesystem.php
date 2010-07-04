@@ -541,7 +541,9 @@ class FtpFilesystem extends Filesystem {
 			$b['year'] = $lucifer[3];
 			$b['hour'] = $lucifer[4];
 			$b['minute'] = $lucifer[5];
-			$b['time'] = @mktime($lucifer[4] + (strcasecmp($lucifer[6], "PM") == 0 ? 12 : 0), $lucifer[5], 0, $lucifer[1], $lucifer[2], $lucifer[3]);
+			wfSuppressWarnings();
+			$b['time'] = mktime( $lucifer[4] + (strcasecmp($lucifer[6], 'PM' ) == 0 ? 12 : 0), $lucifer[5], 0, $lucifer[1], $lucifer[2], $lucifer[3] );
+			wfRestoreWarnings();
 			$b['am/pm'] = $lucifer[6];
 			$b['name'] = $lucifer[8];
 		} elseif ( !$is_windows && $lucifer = preg_split( '/[ ]/', $line, 9, PREG_SPLIT_NO_EMPTY ) ) {
