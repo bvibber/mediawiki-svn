@@ -1,6 +1,9 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.34 - 4 July 2010
+  Updated FlaggedRevs and Translate extensions.
+
 0.15.33 - 3 July 2010
   Added $wgSqlMode.
 
