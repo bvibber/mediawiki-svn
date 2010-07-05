@@ -450,6 +450,15 @@ $messages['lt'] = array(
 	'vector-editwarning-preference' => 'Perspėti mane, kai palieku redagavimo puslapį, o jame yra neišsaugotų pakeitimų',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'vector-editwarning-warning' => 'Atstājot šo lapu tu zaudēsi izdarītās izmaiņas. 
+Ja esi pieteicies, jūs vari atspējot šo brīdinājumu savās izvēlēs sadaļā "rediģēšana"',
+	'vector-editwarning-preference' => 'Brīdināt mani, kad es atstāju lapas rediģēšanu nesaglabājot izmaiņas',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

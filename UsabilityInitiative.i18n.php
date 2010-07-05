@@ -192,8 +192,8 @@ $messages['de'] = array(
 $messages['diq'] = array(
 	'usabilityinitiative' => 'teşebbusê şuxulnayişi',
 	'usabilityinitiative-desc' => 'Xacetî ke Wikipedia Usability Initiative viraşt, programê MediaWikiyî asan keno',
-	'prefs-beta' => 'Xacetane beta',
-	'prefs-labs' => 'Xacetanê labs',
+	'prefs-beta' => 'Xacetê beta',
+	'prefs-labs' => 'Xacetê labs',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -703,7 +703,10 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'usabilityinitiative' => 'Inisiatif Kamangpaatan',
+	'usabilityinitiative-desc' => 'Fitur-fitur anu dikembangkeun ku Inisiatif Kamangpaatan Wikipédia pikeun ngaronjatkeun kamangpaatan MédiaWiki',
 	'prefs-beta' => 'Fitur béta',
+	'prefs-labs' => 'Fitur Labs',
 );
 
 /** Swedish (Svenska)

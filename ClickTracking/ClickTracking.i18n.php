@@ -972,8 +972,10 @@ $messages['ig'] = array(
 $messages['io'] = array(
 	'ct-beginner' => 'Novico',
 	'ct-expert' => 'Experto',
+	'ct-editing' => 'Prezente, vu redaktas:',
 	'ct-anon-users' => 'Anonima uzanti',
 	'ct-and' => 'e(d)',
+	'ct-update-table' => 'Aktualigar tabelo',
 );
 
 /** Italian (Italiano)
@@ -1588,7 +1590,7 @@ $messages['ro'] = array(
 	'ct-intermediate' => 'Intermediar',
 	'ct-expert' => 'Expert',
 	'ct-date-range' => 'Interval de timp',
-	'ct-editing' => 'Modificare curentă:',
+	'ct-editing' => 'În curs de modificare:',
 	'ct-anon-users' => 'Utilizatori anonimi',
 	'ct-user-contribs' => 'Totalul contribuțiilor utilizatorului',
 	'ct-user-span' => 'Contribuțiile utilizatorului în intervalul de timp',
@@ -1815,12 +1817,16 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'ct-event-name' => 'Ngaran acara',
 	'ct-total-header' => 'Jumlah klik',
 	'ct-start-date' => 'Titimangsa Ngamimitian (YYYYMMDD)',
 	'ct-end-date' => 'Titimangsa Anggeusan (YYYYMMDD)',
 	'ct-change-graph' => 'Robah grafik',
 	'ct-expert' => 'Mahér',
 	'ct-anon-users' => 'Pamaké anonim',
+	'ct-user-contribs' => 'Sakabéh kontribusi pamaké',
+	'ct-user-span' => 'Kontribusi pamaké tina lilana',
+	'ct-and' => 'jeung',
 );
 
 /** Swedish (Svenska)

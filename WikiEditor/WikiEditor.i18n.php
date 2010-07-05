@@ -701,6 +701,7 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Ngamuat',
 );
 

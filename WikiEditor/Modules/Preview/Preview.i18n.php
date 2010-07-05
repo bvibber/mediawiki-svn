@@ -433,6 +433,13 @@ $messages['id'] = array(
 	'wikieditor-preview-loading' => 'Memuat...',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'wikieditor-preview-changes-tab' => 'Chanji',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto

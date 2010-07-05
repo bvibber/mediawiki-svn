@@ -110,6 +110,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'wikieditor-previewDialog-preference' => 'Omogući dijalog pretpregleda',
 	'wikieditor-previewDialog-tab' => 'Pregled',
 	'wikieditor-previewDialog-loading' => 'Učitavam...',
 );
@@ -218,6 +219,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
+	'wikieditor-previewDialog-preference' => 'Habilitar vista previa de diálogo',
 	'wikieditor-previewDialog-tab' => 'Previsualizar',
 	'wikieditor-previewDialog-loading' => 'Cargando...',
 );
@@ -432,8 +434,10 @@ $messages['lb'] = array(
 /** Latvian (Latviešu)
  * @author Marozols
  * @author Papuass
+ * @author Xil
  */
 $messages['lv'] = array(
+	'wikieditor-previewDialog-preference' => 'Atļaut priekšskates dialogu',
 	'wikieditor-previewDialog-tab' => 'Pirmskats',
 	'wikieditor-previewDialog-loading' => 'Ielādē…',
 );
