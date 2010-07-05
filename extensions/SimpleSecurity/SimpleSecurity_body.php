@@ -364,9 +364,11 @@ class SimpleSecurity {
 	static function fixSearchType() {
 		global $wgDBtype, $wgSearchType;
 		if ( $wgSearchType ) return;
-		elseif ( $wgDBtype == 'mysql' )    $wgSearchType = 'SearchMySQL4';
+		elseif ( $wgDBtype == 'mysql' )    $wgSearchType = 'SearchMySQL';
 		elseif ( $wgDBtype == 'postgres' ) $wgSearchType = 'SearchPostgres';
+		elseif ( $wgDBtype == 'sqlite' )   $wgSearchType = 'SearchSqlite';
 		elseif ( $wgDBtype == 'oracle' )   $wgSearchType = 'SearchOracle';
+		elseif ( $wgDBtype == 'ibm_db2' )  $wgSearchType = 'SearchIBM_DB2';
 		else                               $wgSearchType = 'SearchEngineDummy';
 	}
 }
