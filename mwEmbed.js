@@ -309,8 +309,12 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		* @param {Function} callback Function called once loading is complete
 		* 		
 		*/				
-		load: function( loadRequest, instanceCallback ) {
+		load: function( loadRequest, instanceCallback ) {			
 			//mw.log("mw.load:: " + loadRequest );
+
+			// Throw out any loadRequests that are not strings
+			loadRequest = this.cleanLoadRequest( loadRequest );
+
 			// Ensure the callback is only called once per load instance 
 			var callback = function(){
 				//mw.log( 'instanceCallback::running callback: ' + instanceCallback );
@@ -320,8 +324,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 					instanceCallback( loadRequest );
 					instanceCallback = null;
 				}
-			}
-						
+			}			
+			
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( mw.isEmpty( loadRequest ) ) {
 				mw.log( 'Empty load request: ( ' + loadRequest + ' ) ' );
@@ -394,7 +398,25 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			}
 			return false;
 		},
-			
+		
+		/**
+		 * Clean the loadRequest ( throw out any non-string items ) 
+		 */
+		cleanLoadRequest: function( loadRequest ){
+			var cleanRequest = [];
+			if( typeof loadRequest == 'string' )
+				return loadRequest;
+			for( var i =0;i < loadRequest.length; i++ ){
+				if( typeof loadRequest[i] == 'object' ) {
+					cleanRequest[i] = this.cleanLoadRequest(  loadRequest[i] );
+				} else if( typeof loadRequest[i] == 'string' ){
+					cleanRequest[i] = $j.trim(  loadRequest[i] );
+				} else{
+					// bad request type skip
+				}
+			}
+			return cleanRequest;
+		},
 		/**
 		* Load a set of scripts.
 		* Will issue many load requests or package the request for the resource loader
@@ -579,8 +601,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		*/ 
 		runModuleLoadQueue: function(){		
 			var _this = this;			
-			mw.log( "mw.runModuleLoadQueue:: "  );
-			var cat = _this.moduleLoadQueue;			
+			mw.log( "mw.runModuleLoadQueue:: "  );					
 			var runModuleFunctionQueue = function(){				
 				// Run all the callbacks 
 				for( var moduleName in _this.moduleLoadQueue ){
@@ -616,7 +637,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 					// ( in IE we have to wait until its "ready" since it does not follow dom order )
 					var moduleResourceList = this.getFlatModuleResourceList( moduleName );
 					// Build the sharedResourceList 	
-					for( var i in moduleResourceList ){									
+					for( var i=0; i < moduleResourceList.length; i++ ){									
 						var moduleResource = moduleResourceList[i];
 						// Check if already in the full resource list if so add to shared. 
 						if( fullResourceList[ moduleResource ] ){
@@ -630,13 +651,13 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				}
 											
 				// Local module request set ( stores the actual request we will make after grouping shared resources
-				var moduleRequestSet = [];			
+				var moduleRequestSet = {};			
 				
 				// Only add non-shared to respective modules load requests
 				for( var moduleName in this.moduleLoadQueue ) {
 					moduleRequestSet[ moduleName ] = [];	
 					var moduleResourceList = this.getFlatModuleResourceList( moduleName );
-					for( var i in moduleResourceList ){
+					for( var i =0; i < moduleResourceList.length; i++ ){
 						var moduleResource = moduleResourceList[i];
 						if( $j.inArray( moduleResource, sharedResourceList ) == -1 ){
 							moduleRequestSet[ moduleName ].push( moduleResource );
@@ -666,11 +687,11 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				
 				// Load the shared resources							
 				mw.load( sharedResourceList, function(){
-					mw.log("Shared Resources loaded");					
+					//mw.log("Shared Resources loaded");					
 					// xxx check if we are in "IE" and dependencies need to be loaded "first"  							
 					sharedResourceLoadDone = true;
 					checkModulesDone();						
-				});		
+				});	
 				// Load all module Request Set 									
 				for( var moduleName in moduleRequestSet ){
 					localLoadCallInstance( moduleName,	moduleRequestSet[ moduleName ] );	
