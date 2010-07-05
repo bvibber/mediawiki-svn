@@ -17,8 +17,8 @@
  * @defgroup Filesystem Filesystem
  */
 
-define('FS_CHMOD_DIR', 0755 );
-define('FS_CHMOD_FILE', 0644 );
+define( 'FS_CHMOD_DIR', 0755 );
+define( 'FS_CHMOD_FILE', 0644 );
 
 /**
  * Base class providing a way to access filesystems.
@@ -270,7 +270,7 @@ abstract class Filesystem {
 	public function __construct() {
 		// TODO
 	}
-	
+	/*
 	public static function findFolder() {
 		// TODO
 	}
@@ -278,7 +278,7 @@ abstract class Filesystem {
 	private static function searchForFolder() {
 		// TODO
 	}
-	
+	*/
 	public function getContentsArray() {
 		return explode( "\n", $this->getContents() );
 	}

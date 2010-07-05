@@ -277,6 +277,7 @@ class FtpFilesystem extends Filesystem {
 		$type = FTP_BINARY;
 
 		// TODO: port wp_tempnam
+		die( __METHOD__ . ' TODO: port wp_tempnam' );
 		$tempFileName = wp_tempnam( $file );
 		$temp = fopen( $tempFileName , 'w+' );
 
@@ -286,7 +287,8 @@ class FtpFilesystem extends Filesystem {
 			
 		wfSuppressWarnings();
 		$ftp_fget = ftp_fget( $this->connection, $temp, $file, $type );
-		wfRestoreWarnings();		
+		wfRestoreWarnings();
+				
 		if ( !$ftp_fget ) {
 			return false;
 		}
@@ -515,6 +517,7 @@ class FtpFilesystem extends Filesystem {
 	
 	/**
 	 * Function copied from wp-admin/includes/class-wp-filesystem-ftpext.php in WP 3.0.
+	 * Only made it conform to the general MW guidelines, might still be messy at places though.
 	 */
 	protected function parseListing( $line ) {
 		static $is_windows;
