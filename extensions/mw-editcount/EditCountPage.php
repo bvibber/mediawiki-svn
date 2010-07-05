@@ -62,7 +62,7 @@ class EditCountPage extends SpecialPage {
 		
 		$nt = Title::newFromURL($this->target);
 		if (!$nt) {
-			$wgOut->addWikiMsg("editcount-notuser", $this->target));
+			$wgOut->addWikiMsg("editcount-notuser", $this->target);
 			wfProfileOut(__METHOD__);
 			return;
 		}
@@ -86,7 +86,7 @@ class EditCountPage extends SpecialPage {
 		wfProfileIn(__METHOD__);
 		
 		if ($ec->getTotal() == 0) {
-			$wgOut->addWikiMsg("editcount-noedits", $ec->getName()));
+			$wgOut->addWikiMsg("editcount-noedits", $ec->getName());
 			wfProfileOut(__METHOD__);
 			return;
 		}

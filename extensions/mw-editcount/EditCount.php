@@ -152,7 +152,7 @@ function efEditCountParserFunction($parser, $param1 = "", $param2 = "") {
 	
 	//FIXME: don't use is_numeric
 	if (!is_numeric($param2)) {
-		$index = Namespace::getCanonicalIndex(strtolower($param2));
+		$index = MWNamespace::getCanonicalIndex(strtolower($param2));
 		if ($index === null) {
 			wfProfileOut(__FUNCTION__);
 			return array("found" => false);
