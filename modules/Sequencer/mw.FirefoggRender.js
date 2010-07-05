@@ -87,7 +87,10 @@ mw.FirefoggRender.prototype = {
 	// Start rendering
 	doRender: function() {
 		var _this = this;
-		
+		// Make sure we get a target destination
+		if( !_this.fogg.saveVideoAs() ){
+			return false;
+		}
 		// Set the render time to "startTime" of the render request
 		this.renderTime = this.startTime;
 		
@@ -118,12 +121,10 @@ mw.FirefoggRender.prototype = {
 
 			// Update previusAudioTime
 			previusAudioTime = currentAudio.startTime + currentAudio.duration;
-		}
-		
-		// Now issue the save video as call
-		_this.fogg.saveVideoAs();
-		
-		_this.doNextFrame();		
+		}		
+		// Now issue the save video as call	
+		_this.doNextFrame();
+		return true;
 	},
 	
 	/**

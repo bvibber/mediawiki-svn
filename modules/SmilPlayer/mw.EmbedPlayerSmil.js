@@ -99,7 +99,7 @@ mw.EmbedPlayerSmil = {
 				// If no render target exist create one: 
 				$j( this ).html( 	
 					$j( '<div />')
-					.attr('id', 'smilCanvas_' + this.id )
+					.attr( 'id', 'smilCanvas_' + this.id )
 					.css( {
 						'width' : '100%',
 						'height' : '100%',

@@ -326,22 +326,24 @@ mw.Smil.prototype = {
 	 * DIGIT               ::= [0-9]
 	 * 
 	 * @param {mixed} timeValue time value of smil structure
-	 * @ return {float} Seconds from time value 
+	 * @return {float} Seconds from time value, if timeValue is empty or null return 0 
 	 */
 	parseTime : function( timeValue ){
-		// If timeValue is already a number return seconds: 
+		if( !timeValue )
+			return 0;
+		
+		// If timeValue is already a clean number of seconds, return seconds: 
 		if( ! isNaN( timeValue ) ){
 			return parseFloat( timeValue );
 		}
-		// Trim whitespace
+		// Trim whitespace if empty return zero
 		timeValue = $j.trim( timeValue );
-		if( timeValue == '' ){
-			mw.log("Error: Empty time value ");
+		if( timeValue == '' ){			
 			return 0;
 		}
 	
 		// First check for hh:mm:ss time: 
-		if ( timeValue.split( ':' ).length == 3 ||  timeValue.split( ':' ).length == 2 ) {
+		if ( timeValue.split( ':' ).length == 3 ||  timeValue.split( ':' ).length == 2 ) {			
 			return mw.npt2seconds( timeValue );
 		}
 		

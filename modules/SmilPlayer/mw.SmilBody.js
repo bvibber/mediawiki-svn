@@ -28,7 +28,8 @@ mw.SmilBody.prototype = {
 		'audio' : 'ref',
 		'img' : 'ref',
 		'textstream' : 'ref',
-		'video' : 'ref'
+		'video' : 'ref',
+		'smiltext' : 'ref'
 	},
 	
 	// Constructor: 
@@ -162,7 +163,7 @@ mw.SmilBody.prototype = {
 					'src' : _this.smil.getAssetUrl ( $node.attr('src') ),
 					'duration' : _this.getNodeDuration( $node ),
 					'startTime' : $node.data( 'startOffset' ),
-					'offset' : 0 // have to add in media-offset support
+					'offset' : _this.smil.parseTime( $node.attr( 'clipBegin') )  
 				};
 				
 				// If audioTimeline is empty insert directly 

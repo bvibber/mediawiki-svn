@@ -18,24 +18,18 @@
 				$j('#videoClipBegin').get(0).load();
 				return false;
 			});
-			$j('#renderToFile').click(function(){				
-				$j(this).empty().unbind().after(
-					$j('<span />').text( ' ' ),
-					$j('<span />').attr('id', 'targetFoggStatus' )
-				);
-				
+			$j('#renderToFile').click(function(){												
 				// xxx for local rendering 'AddMedia.firefogg' is overkill 
-				// but will have to clean up modularity later
-				
+				// but will have to clean up modularity later				
 				mw.load( ['AddMedia.firefogg','mw.FirefoggRender'],function(){
 					var foggRender = $j('#videoClipBegin').firefoggRender({
 						'statusTarget': '#targetFoggStatus'
 					});
-					foggRender.doRender();
-
-					$j('#renderToFile').text('Stop Render').click(function(){
-						foggRender.stopRender();						
-					}); 
+					if( foggRender.doRender() ){
+						$j('#renderToFile').text('Stop Render').click(function(){
+							foggRender.stopRender();						
+						}); 
+					}
 				})
 				return false;
 			});
@@ -52,7 +46,7 @@
 <p></p>seek to <input id="seekInputTime" size="4" value = "6"></input><span id="seekInProgress" style="display: none"> Seeking<blink>...</blink></span>
 <br/>
 <a id="startBuffer" href="#">Start buffering</a> <br>
-<a id="renderToFile" href="#">Render to file</a>
+<a id="renderToFile" href="#">Render to file</a> <span id="targetFoggStatus"></span>
 </td>
 <td valign="top">
 Sample playlist code: 

@@ -331,7 +331,7 @@ mw.SmilAnimate.prototype = {
 		if( !animateInRange  ) {
 			if( animateTime == 0 ) {
 				// just a hack for now ( should read from previous animation or from source attribute
-				//this.updateElementLayout( smilImgElement, { 'top':1,'left':1,'width':1, 'height':1 } );
+				// this.updateElementLayout( smilImgElement, { 'top':1,'left':1,'width':1, 'height':1 } );
 				var $target = $j( '#' + this.smil.getAssetId( smilImgElement ));
 				$target.css( {
 					'top' : '0px',

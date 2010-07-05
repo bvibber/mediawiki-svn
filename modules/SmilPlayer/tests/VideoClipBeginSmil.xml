@@ -14,14 +14,14 @@
     <seq>    
 	
     <video src="http://upload.wikimedia.org/wikipedia/commons/9/94/Folgers.ogv" 	
-		dur="2s"
-		clipBegin = "16s"
-	/>
-	
-	<video src="http://upload.wikimedia.org/wikipedia/commons/1/14/Independence_Day%2C_1940_Promotion.ogv"		
-		dur="5s"		
+		dur="5s"
+		clipBegin = "17s"
 	/>	
 	
+	<video src="http://upload.wikimedia.org/wikipedia/commons/1/14/Independence_Day%2C_1940_Promotion.ogv"		
+		dur="1s"		
+	/>	
+		
 	<video src="http://upload.wikimedia.org/wikipedia/commons/1/14/Independence_Day%2C_1940_Promotion.ogv"
     	transIn="fromBlack"	 				
 		dur="2s"		
@@ -34,17 +34,16 @@
 	/>
 	
 	<video src="http://upload.wikimedia.org/wikipedia/commons/1/14/Independence_Day%2C_1940_Promotion.ogv" 				
-		dur="5"
+		dur="2"
 		clipBegin = "18"
 	/>	
 	
-    <!-- where does quality come from 
  	<video src="http://upload.wikimedia.org/wikipedia/commons/8/8b/Yochai_Benkler_-_On_Autonomy%2C_Control_and_Cultural_Experience.ogg" 		
 		transIn="fromBlack"
-		dur="27"
+		dur="10"
 		clipBegin = "0:3:43"
-	/>	
-	-->
+	/>		
+	
     </seq>
     
   </body>
