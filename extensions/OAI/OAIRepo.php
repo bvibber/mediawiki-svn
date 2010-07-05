@@ -80,7 +80,7 @@ $oaiDeleteIds = array();
 
 function oaiUpdatePage( $id, $action ) {
 	$dbw = wfGetDB( DB_MASTER );
-	#$dbw->immediateBegin();
+	#$dbw->begin();
 	$dbw->replace( 'updates',
 		array( 'up_page' ),
 		array( 'up_page'      => $id,
