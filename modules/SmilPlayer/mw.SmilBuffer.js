@@ -113,7 +113,8 @@ mw.SmilBuffer.prototype = {
 	},
 	
 	/**
-	 * continueBufferLoad the buffer 
+	 * continueBufferLoad the buffer
+	 * @param bufferTime The base time to load new buffer items into 
 	 */
 	continueBufferLoad: function( bufferTime ){
 		var _this = this;		
@@ -137,7 +138,7 @@ mw.SmilBuffer.prototype = {
 	},
 	
 	/**
-	 * Start loading and buffering an target smilelement
+	 * Start loading and buffering an target smilElement
 	 */
 	loadElement: function( smilElement ){
 		var _this = this;

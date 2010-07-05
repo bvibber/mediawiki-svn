@@ -89,6 +89,9 @@ mw.SmilBody.prototype = {
 			},
 			/* SMIL Element out of range */
 			function( smilElement ){
+				// Stop the animation or playback 
+				_this.smil.getAnimate().pauseAnimation( smilElement )
+				
 				// Hide the element in the layout 
 				_this.smil.getLayout().hideElement( smilElement );
 				

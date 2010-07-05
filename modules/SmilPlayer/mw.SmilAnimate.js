@@ -20,6 +20,10 @@ mw.SmilAnimate.prototype = {
 	 * Pause any active animation or video playback
 	 */
 	pauseAnimation: function( smilElement ){
+		// Check if the element is in the html dom: 
+		if( !$j ( '#' + this.smil.getAssetId( smilElement ) ).length ){
+			return ;
+		}
 		// Pause the animation of a given element ( presently just video )		
 		switch( this.smil.getRefType( smilElement ) ){
 			case 'video':
@@ -216,13 +220,19 @@ mw.SmilAnimate.prototype = {
 		// Get the video element 
 		var assetId = this.smil.getAssetId( smilElement );
 		var vid = $j ( '#' + assetId ).get( 0 );		
+		
+		var videoSeekTime = animateTime;
+		//Add the clipBegin if set
+		if( $j( smilElement ).attr( 'clipBegin') && 
+				this.smil.parseTime( $j( smilElement ).attr( 'clipBegin') ) )
+		{
+			videoSeekTime += this.smil.parseTime( $j( smilElement ).attr( 'clipBegin') );  
+		}
 				
-		// Check for "start offset"					
-				
-		//mw.log( "SmilAnimate::transformVideoForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + animateTime );
+		mw.log( "SmilAnimate::transformVideoForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + videoSeekTime );
 		
 		// Register a buffer ready callback
-		this.smil.getBuffer().videoBufferSeek( smilElement, animateTime, function() {			
+		this.smil.getBuffer().videoBufferSeek( smilElement, videoSeekTime, function() {			
 			mw.log( "transformVideoForTime:: seek complete ");
 		});
 	},

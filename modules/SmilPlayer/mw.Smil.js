@@ -335,6 +335,10 @@ mw.Smil.prototype = {
 		}
 		// Trim whitespace
 		timeValue = $j.trim( timeValue );
+		if( timeValue == '' ){
+			mw.log("Error: Empty time value ");
+			return 0;
+		}
 	
 		// First check for hh:mm:ss time: 
 		if ( timeValue.split( ':' ).length == 3 ||  timeValue.split( ':' ).length == 2 ) {
