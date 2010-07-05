@@ -60,6 +60,11 @@ $messages['de'] = array(
 $messages['dsb'] = array(
 	'jsbreadcrumbs-desc' => 'Pśidawa slěd srjodkow pód rejtarkoweju lejstwu',
 	'jsbreadcrumbs-leading-description' => 'Nawigaciski slěd',
+	'prefs-jsbreadcrumbs' => 'Srjodki',
+	'prefs-jsbreadcrumbs-showsite' => 'Sedłowe mě do srjodkow zapśěgnuś (wužytne, gaž wužywa se w někotarych wikijach)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Srjodki zwobrazniś',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Licba srjodkow',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maksimalnje 20 srjodkow',
 );
 
 /** French (Français)
@@ -92,6 +97,11 @@ $messages['gsw'] = array(
 $messages['hsb'] = array(
 	'jsbreadcrumbs-desc' => 'Přidawa slěd srjódkow pod rajtarkowej lajstu',
 	'jsbreadcrumbs-leading-description' => 'Nawigaciski slěd',
+	'prefs-jsbreadcrumbs' => 'Srjódki',
+	'prefs-jsbreadcrumbs-showsite' => 'Sydłowe mjeno do srjódkow zapřijeć (wužitne, hdyž so we wjacorych wikijach wužiwa)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Srjódki zwobraznić',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Ličba srjódkow',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maksimalnje 20 srjódkow',
 );
 
 /** Interlingua (Interlingua)
@@ -116,6 +126,11 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'jsbreadcrumbs-desc' => 'Додава траги од трошки под лентата со јазичиња',
 	'jsbreadcrumbs-leading-description' => 'Траги од навигацијата',
+	'prefs-jsbreadcrumbs' => 'Трошки',
+	'prefs-jsbreadcrumbs-showsite' => 'Вклучи го името на мреж. место во трошките (корисно за употреба на повеќе викија)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Прикажувај трошки',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Број на трошки',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Највеќе до 20 трошки',
 );
 
 /** Dutch (Nederlands)
@@ -146,8 +161,13 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'jsbreadcrumbs-desc' => 'A gionta com na trassa ëd fërvaje sota a la tichëtta dla bara',
+	'jsbreadcrumbs-desc' => 'A gionta com na trassa ëd farin-a sota a la tichëtta dla bara',
 	'jsbreadcrumbs-leading-description' => 'Trassa ëd navigassion',
+	'prefs-jsbreadcrumbs' => 'Povrà (ëd farin-a)',
+	'prefs-jsbreadcrumbs-showsite' => 'Anclud ël nòm dël sit ant la povrà (ùtil quand dovrà an tra wiki)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Visualisa povrà',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Nùmer ëd povrà',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Al pi 20 povrà',
 );
 
 /** Portuguese (Português)

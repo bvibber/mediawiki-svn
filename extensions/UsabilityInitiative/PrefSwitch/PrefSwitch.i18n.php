@@ -1230,9 +1230,9 @@ Ma rica kene hemi biwecine.',
 	'prefswitch-survey-question-os' => 'Kamci sisteme oparatifi ser komputer tu sixulyena?',
 	'prefswitch-survey-answer-os-other' => 'Sisteme Opratife bini',
 	'prefswitch-survey-question-res' => 'Monitor tu de resulasyon cita ya?',
-	'prefswitch-title-on' => 'Xacetane Newe',
+	'prefswitch-title-on' => 'Xaceto Newe',
 	'prefswitch-title-switched-on' => 'Xerli bu!',
-	'prefswitch-title-off' => 'Xacetane newe a bike',
+	'prefswitch-title-off' => 'Xaceto newe a bike',
 	'prefswitch-title-switched-off' => 'Berxudar bu',
 	'prefswitch-title-feedback' => 'Fiqir bide',
 	'prefswitch-success-on' => 'Eka hacetê new a biya. Ma umid keni ti xacetanê newe hes keni. Ti her zeman eşkena eyaranê verini ser ena "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" link de reyna a bike.',
@@ -2674,9 +2674,8 @@ Tim Pengalaman Pengguna Yayasan Wikimedia telah bekerja bersama sukarelawan dari
 * '''Perbaikan pencarian:''' Kami telah memerbaiki saran pencarian untuk membawa Anda ke halaman yang sedang Anda cari lebih cepat.
 * '''Fitur baru lainnya:''' Kami juga memerkenalkan kotak tabel agar membuat tabel lebih mudah serta fitur cari dan gantikan untuk menyederhanakan penyuntingan halaman.
 * '''Logo Wikipedia:''' Kami telah memutakhirkan logo kami. Baca lebih lanjut di [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blog Wikimedia].",
-	'prefswitch-main-logged-changes' => "
-* Sekarang '''tab {{int:watch}}''' menjadi sebuah bintang.
-* Sekarang '''tab {{int:move}}''' berada di menu ''dropdown'' tepat disebelah kotak pencarian.",
+	'prefswitch-main-logged-changes' => "* Sekarang '''tab {{int:watch}}''' menjadi sebuah bintang.
+* Sekarang '''tab {{int:move}}''' berada di menu turunan tepat di sebelah kotak pencarian.",
 	'prefswitch-main-feedback' => '===Umpan balik?===
 Kami ingin mendengar pendapat Anda. Silakan kunjungi [[$1|halaman umpan balik]] kami atau, bila Anda tertarik pada usaha kami dalam memperbaiki perangkat lunak ini, kunjungi [http://usability.wikimedia.org wiki kebergunaan] kami untuk informasi lebih lanjut.',
 	'prefswitch-main-anon' => '=== Bawa saya kembali === 
@@ -3378,8 +3377,87 @@ $messages['ml'] = array(
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
+	'prefswitch' => 'Keutamaan Peralihan Inisiatif Kepenggunaan',
+	'prefswitch-desc' => 'Membenarkan pengguna untuk beralih ke set pilihan',
+	'prefswitch-jswarning' => '↓ Perubahan pada muka laman anda [[User:$1/$2.js|$2 JavaScript]] perlu diserta dan disimpan pada [[{{ns:user}}:$1/vector.js]] <!-- atau [[{{ns:user}}:$1/common.js]]--> untuk langkah seterusnya',
+	'prefswitch-csswarning' => '↓ Fungsi  [[User:$1/$2.css|vector  $2 pilihan]] tidak akan digunakan. Anda boleh menggunakkan CSS pilihan anda untuk vector di [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Tidak',
+	'prefswitch-survey-submit-off' => 'Padamkan ciri-ciri baru',
+	'prefswitch-survey-cancel-off' => 'Seandainya anda ingin terus menggunakan Beta, sila kembali ke $1',
+	'prefswitch-survey-submit-feedback' => 'Hantarkan maklumbalas',
+	'prefswitch-survey-cancel-feedback' => 'Seandainya anda tidak ingin menghantar maklumbalas, kembali ke $1',
+	'prefswitch-survey-question-like' => 'Apakah yang anda suka tentang cir-ciri baru yang diterapkan?',
+	'prefswitch-survey-question-dislike' => 'Apakah yang anda tidak suka tentang ciri-ciri baru yang diterapkan?',
+	'prefswitch-survey-question-whyoff' => 'Anda telah memadmkan semua ciri-ciri baru. Sila tandakan perkara-perkara perlu.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Ciri-ciri baru sukar untuk digunakan.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Ciri-ciri yang tidak berfungsi dengan baik.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Ciri-ciri baru tidak berfungsi dengan sepenuhnya.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Saya tidak suka cara dan reka bentuk ciri-ciri baru.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Saya tidak suka bahagian tab dan muka.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Saya tidak suka peralatan perkakas baru.',
+	'prefswitch-survey-answer-whyoff-other' => 'Sebab-sebab lain.',
+	'prefswitch-survey-question-browser' => 'Apakah pelayar web yang anda gunakan?',
+	'prefswitch-survey-answer-browser-other' => 'Pelayar web lain:',
+	'prefswitch-survey-question-os' => 'Apakah sistem komputer yang anda gunakan?',
+	'prefswitch-survey-answer-os-other' => 'Sistem operasi lain:',
+	'prefswitch-survey-question-res' => 'Apakah revolusi skrin anda?',
+	'prefswitch-title-on' => 'Ciri-ciri baru',
+	'prefswitch-title-switched-on' => 'Cubalah!',
+	'prefswitch-title-off' => 'Padamkan fungsi ciri-ciri baru',
+	'prefswitch-title-switched-off' => 'Terima kasih',
+	'prefswitch-title-feedback' => 'Maklum balas',
+	'prefswitch-success-on' => 'Ciri-ciri baru telah diaktifkan. Kami berharap ciri-ciri baru yang diperbaharui mudah digunakan. Anda tetap boleh memadamkan ciri-ciri beta dengan menekan  "[[Special: UsabilityInitiativePrefSwitch | ((int: prefswitch-link-link }}]]" pada bahagian atas laman.',
+	'prefswitch-success-off' => 'Ciri-ciri baru telah dimatikan. Terima kasih kerana cuba menggunakan versi Beta. Anda boleh mengaktifkan semula versi ini dengan menekan "[[Special: UsabilityInitiativePrefSwitch | ((int: prefswitch }}]]" pada bahagian atas laman.',
+	'prefswitch-success-feedback' => 'Maklum balas anda telah dihantar.',
+	'prefswitch-return' => '↓ <hr style="clear:both">
+ Kembali ke <span class="plainlinks">[$ 1 $ 2].</span>',
+	'prefswitch-main' => "↓ {| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Tampilan navigasi laman Wikipedia baru <small>[[Media:VectorNavigation.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic.png|401px|]]
+|-
+| Tampilan bahagian kotak suntingan baru<small>[[Media:VectorEditorBasic.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog.png|401px|]]
+|-
+| Tampilan kotak dialog untuk kegunaan pautan.
+|}
+|}
+'''''Wikimedia Foundation's User Experience Team''''' telah bekerjasama dengan para pengguna daripada komuniti untuk memudahkan kepenggunaan Wikipedia. Kami ingin berkongsi pembaharuan yang telah dilaksanakan, termasuk bentuk muka laman yang baru, ringkas dan ciri-ciri yang padat. Pembaharuan ini bertujuan untuk memudahkan pengguna-pengguna baru untuk menyumbang dalam Wikipedia. Kami telah menjalankan [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study temu-bual dan penyelidikan] dengan para pengguna sepanjang tahun lepas. Peningkatan kepengguaan Wikipedia dan projek-projek berkembarnya merupakan keutamaan Yayasan Wikimedia dan kami akan mengumumkan sebarang pembaharuan yang akan datang. Untuk maklumat yang lebih lanjut, sila layari [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia laman blog Wikimedia]. 
+
+===Antara perubahan baru===
+* '''Navigasi:''' Kami telah memperbaharui sistem navigasi untuk pembacaan dan penyuntingan laman. ''Tab'' pada bahagian atas laman secara ringkas menunjukkan sama ada anda sedang melayari laman rencana atau laman perbincangan dan penyuntingan.    
+* '''Pembaharuan Bar perkakas (''Toolbar'') Penyuntingan:''' Kami telah menyusun semula bar perkakas penyuntingan untuk memudahkan anda. Pemformatan laman dan kepenggunaan fungsi lain kini lebih mudah.
+* '''Wizard Pautan:''' Perkakas mudah diguna ini, membolehkan anda menambah pautuan pada laman wiki lain dan pautan luar. 
+* '''Pembaikan carian:''' Kami telah mempertingkatkan enjin carian berdasarkan cadangan untuk memudahkan anda mencari laman yang anda ingin layari. 
+* '''Ciri-ciri baru:''' Kami turut memperkenalkan wizard jadual untuk memudahkan penyediaan jadual dan memudahkan penyuntingan laman.
+* '''Logo Wikipedia:''' Kami telah mengemaskinikan logo Wikiepdia. Untuk maklumat lanjut, sila baca [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Blog Wikimedia]",
+	'prefswitch-main-logged-changes' => " * Bahagian '''tab {{int:senarai pautan}} ''' kini berbentuk bintang.
+*  Bahagian '''tab {{int:pindah}}''' kini terletak bersebelahan dengan bar carian.",
+	'prefswitch-main-feedback' => '===Cadangaan?===
+Kami ingin mendengar cadangan anda. Sila kemukakan [[Wikipedia:Pendapat_dan_cadangan_pengguna |pandangan, pendapat dan cadangan]] kepada kami. Sekiranya anda ingin menyumbang kepakaran anda untuk meningkatkan mutu perisian dan Wikipedia, sila layari [http://usability.wikimedia.org Usability wiki] untuk maklumat lebih lanjut.',
+	'prefswitch-main-anon' => '===Kembali===
+[$1 Klik sini untuk mematikan ciri-ciri baru]. Anda perlu log masuk atau membuat akuan baru terlebih dahulu.',
+	'prefswitch-main-on' => '=== Kembali === 
+ Klik [$ 2 di sini untuk mematikan] ciri baru.',
+	'prefswitch-main-off' => '==Cubalah!===
+[$1 Klik di sini untuk mengaktifkan ciri-ciri baru].',
+	'prefswitch-survey-intro-feedback' => 'Kami ingin mengetahui maklum balas anda. 
+Sila hantarkan soal selidk di bawah.',
+	'prefswitch-survey-intro-off' => 'Terima kasih kerana cuba menggunakan ciri-ciri baru. 
+Untuk membantu kami meningkatkan mutu laman, sila isikan soal selidik dibawah.',
+	'prefswitch-feedbackpage' => 'Project:Pendapat dan cadangan pengguna',
 );
 
 /** Maltese (Malti)
@@ -4543,9 +4621,18 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'prefswitch-desc' => 'Ngawenangkeun pamaké pikeun gunta-ganti sababaraha setélan préferénsi',
+	'prefswitch-jswarning' => 'Sing émut yén ku ngarobah kulit, [[User:$1/$2.js|$2 JavaScript]] anjeun perlu disalin ka [[{{ns:user}}:$1/vector.js]] <!-- or [[{{ns:user}}:$1/common.js]]--> ngarah bisa tetep jalan.',
+	'prefswitch-csswarning' => '[[User:$1/$2.css|Gaya kumadinya $2]] anjeun geus moal dilarapkeun deui. Anjeun bisa nambahkeun CSS kumadinya pikeun véktor dina [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Enya',
 	'prefswitch-survey-false' => 'Teu',
 	'prefswitch-survey-submit-off' => 'Tumpurkeun fitur anyar',
+	'prefswitch-survey-cancel-off' => 'Mun anjeun rék neruskeun maké fitur anyar, anjeun bisa balik ka $1.',
+	'prefswitch-survey-question-like' => 'Naon anu dipikaresep ti fitur anyar?',
+	'prefswitch-survey-question-dislike' => 'Naon anu teu dipikaresep ti fitur anyar?',
+	'prefswitch-survey-question-whyoff' => 'Naha bet mareuman fitur-fitur anyar?
+Mangga pilih sadaya anu cocog.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Hésé teuing cara makéna.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Teu resep tab jeung pidangan anyarna.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alesan séjén:',
@@ -4789,6 +4876,8 @@ $messages['th'] = array(
 $messages['tl'] = array(
 	'prefswitch' => 'Pindutan ng nais sa Pampanimula ng Pagkanagagamit',
 	'prefswitch-desc' => 'Pahintulutan ang mga tagagamit na magpalit ng mga pangkat ng mga nais',
+	'prefswitch-jswarning' => 'Tandaan na sa pagbago ng pabalat, ang iyong [[User:$1/$2.js|$2 JavaScript]] ay kailangang kopyahin papunta sa [[{{ns:user}}:$1/vector.js]] <!-- o [[{{ns:user}}:$1/common.js]]--> upang magpatuloy sa pag-andar.',
+	'prefswitch-csswarning' => 'Ang iyong [[User:$1/$2.css|custom $2 styles]] ay hindi na gagamitin.  Makapagdaragdag ka ng pinasadyang CSS para sa bektor sa loob ng [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Oo',
 	'prefswitch-survey-false' => 'Huwag',
 	'prefswitch-survey-submit-off' => 'Huwag buhayin ang bagong mga katasangkapang-katangian',
@@ -4851,6 +4940,8 @@ Ang Pangkat na Pangkaranasan ng Tagagamit ng Pundasyong Wikimedia ay nakikilahok
 * '''Mga pagpapainam sa paghahanap''': Pinainam namin ang mga mungkahi sa paghahanap upang mas mabilis kang makapunta sa pahinang hinahanap mo.
 * '''Iba pang bagong mga kasangkapang-katangian''':  Ipinakilala rin namin ang isang mahiwagang tabla upang maging maginhawa ang paggawa ng mga tabla at kasangkapang-katangiang panghanap at pampalit upang mapapayak ang pagbago sa pahina.
 * '''Logo ng Wikipedia''': Isinapanahon namin ang logo namin. Magbasa pa ng marami sa [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog ng Wikimedia].",
+	'prefswitch-main-logged-changes' => " * Ang '''laylay na {{int:watch}}''' ay isa na ngayong bituin.
+* Ang '''laylay na {{int:move}}''' ay nasa pambagsak-pababa na ngayon katabi ng halang na panghanap.",
 	'prefswitch-main-feedback' => '===Balik-tugon?===
 Nais naming makarinig mula sa iyo.  Pakidalaw ang aming [[$1|pahina ng balik-tugon]] o, kung interesado ka sa aming nagaganap na mga gawain sa pagpapaigi ng sopwer, dalawin ang aming [http://usability.wikimedia.org wiki ng pagkanagagamit] para sa mas marami pang kabatiran.',
 	'prefswitch-main-anon' => '===Ibalik ako===

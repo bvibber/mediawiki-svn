@@ -189,6 +189,14 @@ $messages['lb'] = array(
 	'right-editalluserpages' => 'Benotzersäiten änneren',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'userpageeditprotection-desc' => 'Ierobežo lietotāju lapu rediģēšanu, atļaujot to tikai pašam lietotājam un lietotājiem ar atļauju to darīt',
+	'right-editalluserpages' => 'Rediģēt lietotāju lapas',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -231,12 +231,13 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Marcin Łukasz Kiejzik
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'checkpoint' => 'Zapisz i kontynuuj edytowanie',
-	'checkpoint-desc' => 'Pozwala zapisać edycję i kontynuować edytowanie',
-	'checkpoint-tooltip' => 'Zapisz swoje postępy i kontynuuj edycję strony',
-	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|zapisane checkpointy]])',
+	'checkpoint' => 'Zapisz i kontynuuj edycję',
+	'checkpoint-desc' => 'Pozwala zapisać zmiany i kontynuować edycję',
+	'checkpoint-tooltip' => 'Zapisz dotychczas wprowadzone zmiany i kontynuuj edycję strony',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|zapisany punkt kontrolny]])',
 );
 
 /** Piedmontese (Piemontèis)

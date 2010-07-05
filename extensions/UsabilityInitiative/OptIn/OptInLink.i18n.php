@@ -708,11 +708,15 @@ $messages['lt'] = array(
 
 /** Latvian (Latviešu)
  * @author Marozols
+ * @author Xil
  */
 $messages['lv'] = array(
 	'optin-try' => 'Izmēģināt Beta',
+	'tooltip-pt-optin-try' => 'Izmēģināt jaunās iespējas',
 	'optin-leave' => 'Pamest Beta',
+	'tooltip-pt-optin-leave' => 'Izslēgt jaunās iespējas',
 	'optin-feedback' => 'Atsauksmes par Beta',
+	'tooltip-pt-optin-feedback' => 'Sniegt savas atsauksmes par jaunajām funkcijām',
 );
 
 /** Macedonian (Македонски)
@@ -1050,6 +1054,7 @@ $messages['su'] = array(
 	'tooltip-pt-optin-try' => 'Cobaan fitur anyar',
 	'optin-leave' => 'Tinggalkeun Béta',
 	'tooltip-pt-optin-leave' => 'Pareuman fitur anyar',
+	'tooltip-pt-optin-feedback' => 'Kirimkeun pamangih anjeun ngeunaan pangalaman maké fitur anyar',
 );
 
 /** Swedish (Svenska)

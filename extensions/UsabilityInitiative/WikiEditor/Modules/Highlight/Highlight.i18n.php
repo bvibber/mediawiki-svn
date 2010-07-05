@@ -292,6 +292,13 @@ $messages['lt'] = array(
 	'wikieditor-highlight-preference' => 'Įjungti sintaksės paryškinimą redaguojant',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'wikieditor-highlight-preference' => 'Atļaut sintakses iezīmēšanu rediģējot',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

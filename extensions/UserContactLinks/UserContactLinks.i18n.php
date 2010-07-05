@@ -341,6 +341,14 @@ $messages['lb'] = array(
 	'usercontactlinks-desc' => 'Erméiglecht et fir einfach an dauernd aner Benotzernimm mat Hëllef vun der Syntax ^^^user^^^ derbäizesetzen',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'usercontactlink-baduser' => 'Kļūdains lietotājvārds',
+	'usercontactlinks-desc' => " Vienkaršo citu lietot'ju vārdu pievienošanu izmantojot ^^^user^^^ sintaksi",
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

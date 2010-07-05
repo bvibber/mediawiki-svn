@@ -329,6 +329,13 @@ $messages['lb'] = array(
 	'vector-collapsiblenav-more' => 'Méi Sproochen',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'vector-collapsiblenav-more' => 'Vairāk valodu',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

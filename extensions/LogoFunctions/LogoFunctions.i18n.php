@@ -123,6 +123,13 @@ $messages['lb'] = array(
 	'logofunctions-filenotexist' => 'Feeler: [[File:$1]] gëtt et net',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'logofunctions-filenotexist' => 'Kļūda: [[File:$1]] neeksistē',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -158,6 +158,13 @@ $messages['lb'] = array(
 	'cassandra-desc' => 'Den Text vun der Versioun an enger [http://cassandra.apache.org/Apache Cassandra] Datebank späicheren',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'cassandra-desc' => 'Saglabāt [http://cassandra.apache.org/ Apache Cassandra] datubāzē',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

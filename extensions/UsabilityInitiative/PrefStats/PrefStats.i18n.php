@@ -1174,6 +1174,7 @@ Klik pada salah satu untuk melihat statistiknya.',
  * @author Malafaya
  */
 $messages['io'] = array(
+	'prefstats-xaxis' => 'Duro (hori)',
 	'prefstats-factor-hour' => 'horo',
 	'prefstats-factor-sixhours' => 'sis hori',
 	'prefstats-factor-day' => 'dio',
@@ -2192,12 +2193,15 @@ $messages['sr-el'] = array(
  */
 $messages['su'] = array(
 	'prefstats' => 'Statistika préferénsi',
+	'prefstats-title' => 'Statistika préferénsi',
+	'prefstats-xaxis' => 'Durasi (jam)',
 	'prefstats-factor-hour' => 'jam',
 	'prefstats-factor-sixhours' => 'genep jam',
 	'prefstats-factor-day' => 'poé',
 	'prefstats-factor-week' => 'minggu',
 	'prefstats-factor-twoweeks' => 'dua minggu',
 	'prefstats-factor-fourweeks' => 'opat minggu',
+	'prefstats-factor-default' => 'balik deui ka skala buhun',
 );
 
 /** Swedish (Svenska)

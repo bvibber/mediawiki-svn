@@ -33,6 +33,13 @@ $messages['dsb'] = array(
 	'pageobjectmodel-desc' => 'Pśidawa sajźbu klasow za abstrakcijow syntakse MediaWiki, aby zmóžniło jadnoru ekstrakciju a manipolěrowanje bokow w drugich programach',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'pageobjectmodel-desc' => 'Agrega un conjunto de clases para la captación de sintaxis de MediaWiki para permitir la extracción y manipulación fácil de páginas dentro de otros programas.',
+);
+
 /** French (Français)
  * @author IAlex
  */

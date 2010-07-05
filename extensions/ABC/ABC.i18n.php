@@ -61,6 +61,13 @@ $messages['aln'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Hinstein
+ */
+$messages['am'] = array(
+	'abcdownload' => 'አውርድ',
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */

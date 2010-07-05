@@ -239,3 +239,12 @@ $messages['tl'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Hindi mageokodigong ang isa o mahigit pang mga kodigong postal at inalis mula sa mapa.',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'ukgeocoding_name' => 'Mã hóa Địa lý Bản đồ Anh',
+	'ukgeocoding_desc' => 'Mở rộng các bản đồ với hàm cú pháp display_uk_point hoạt động do Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Một số mã bưu chính bị bỏ qua vì không thể được mã hóa địa lý.',
+);
+

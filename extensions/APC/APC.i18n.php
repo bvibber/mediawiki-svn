@@ -1659,13 +1659,14 @@ Versión más nueva $2 está disponible en http://pecl.php.net/package/APC/$2',
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
 	'apc' => 'APC informatsioon',
 	'apc-desc' => 'MediaWiki abil [[Special:ViewAPC|APC puhvri vaatamine ja juhtimine]]',
 	'right-apc' => 'Kasutada kõiki [[Special:ViewAPC|ViewAPC]] võimalusi',
-	'viewapc-apc-not-available' => 'Puhhvri infot ei leidnud.
+	'viewapc-apc-not-available' => 'Puhvriteave pole saadaval.
 Näib, et APC ei tööta.',
 	'viewapc-clear-confirm' => 'Kas sa tahad puhvrit tühjendada?',
 	'viewapc-clear-user-cache' => 'Puhasta kasutaja puhver',

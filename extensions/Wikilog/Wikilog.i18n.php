@@ -2096,6 +2096,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Dferg
  * @author Imre
  * @author Locos epraix
@@ -2158,6 +2159,7 @@ Para poder publicar artículos y habilitar otras características de wikilog, es
 	'wikilog-summary-categories' => 'Rellenado en $2',
 	'wikilog-summary-more' => '[[$3|→ continuar leyendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discusión]])',
+	'wikilog-edit-hint' => 'Editar artículo wikilog: $1',
 	'wikilog-edit-fieldset-legend' => 'Ajustes de Wikilog:',
 	'wikilog-edit-signpub' => 'Firma y publica este artículo',
 	'wikilog-edit-signpub-tooltip' => 'Hace que el artículo se firme y publique en este wikilog una vez salvado.
@@ -2179,6 +2181,7 @@ Desmarcar esta casilla para mantener este artículo como borrador.',
 	'wikilog-comment-reject' => 'Rechazar este comentario (acción inmediata)',
 	'wikilog-newtalk-text' => '<!-- página en blanco creada por Wikilog -->',
 	'wikilog-newtalk-summary' => 'creado automáticamente por Wikilog',
+	'wikilog-feed-ns-title' => 'Artículos wikilog de $1',
 	'wikilog-feed-description' => 'Leer los mensajes más recientes en este canal.',
 	'wikilog-comment-feed-title1' => 'Comentario hecho por $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentario acerca de $3, hecho por $2 (#$1)',

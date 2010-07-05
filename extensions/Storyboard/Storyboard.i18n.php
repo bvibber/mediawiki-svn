@@ -568,6 +568,12 @@ Puede [$1 Leer historias publicadas]',
  */
 $messages['fi'] = array(
 	'right-storyreview' => 'Tarkistaa, muokata, julkaista ja piilotaa tarinoita',
+	'storyboard-published' => 'Julkaistu',
+	'storyboard-hidden' => 'Piilotettu',
+	'storyboard-hide' => 'Piilota',
+	'storyboard-language' => 'Kieli',
+	'storyboard-done' => 'Valmis',
+	'storyboard-deletestory' => 'Poista',
 );
 
 /** French (Français)

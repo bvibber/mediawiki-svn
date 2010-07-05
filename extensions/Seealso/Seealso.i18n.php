@@ -434,6 +434,13 @@ $messages['lt'] = array(
 	'seealso' => 'Žiūrėkite taip pat',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'seealso' => 'Skatīt arī',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -328,6 +328,13 @@ $messages['lb'] = array(
 	'catboxattop-categories' => 'Kategorien',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'catboxattop-categories' => 'Kategorijas',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */

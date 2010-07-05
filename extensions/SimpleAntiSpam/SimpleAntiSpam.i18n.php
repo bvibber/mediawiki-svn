@@ -493,6 +493,8 @@ $messages['lt'] = array(
  */
 $messages['lv'] = array(
 	'simpleantispam' => 'Tevis veiktās izmaiņas ir iedarbināja pretspama mehānismu',
+	'simpleantispam-label' => "Pretspama pārbaude. 
+ '''NEAIZPILDĪT!'''",
 );
 
 /** Macedonian (Македонски)

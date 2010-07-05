@@ -332,6 +332,13 @@ $messages['lb'] = array(
 	'didyoumean-desc' => 'Setzt Linken op Säite mat "ähnlechen" Titelen derbäi',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'didyoumean-desc' => 'Pievieno saites uz lapām ar līdzīgiem nosaukumiem',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

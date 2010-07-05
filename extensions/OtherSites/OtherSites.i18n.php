@@ -279,6 +279,13 @@ $messages['lb'] = array(
 	'othersites-desc' => 'Réckelt interwiki-Linken déi keng Sproochlinke sinn an hir eege Këscht',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'othersites' => 'Citas saites',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

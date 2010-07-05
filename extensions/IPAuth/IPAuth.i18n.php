@@ -213,6 +213,13 @@ $messages['lb'] = array(
 	'ipauth-desc' => 'Automatesch alogge vu fixen IP-Adressen',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'ipauth-desc' => 'Automātiska pieteikšanās, ja tiek izmantota fiksēta IP adrese',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

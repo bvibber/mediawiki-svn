@@ -446,16 +446,18 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'imagemap_desc' => 'Lubab kliendipoolse klõpsatava pildi ala, mis kasutab <code>&lt;imagemap&gt;</code>-märgendit.',
-	'imagemap_no_image' => 'Viga: esimesel real peab määrama pildi',
-	'imagemap_invalid_image' => 'Viga: pilt on vigane või teda ei eksisteeri',
-	'imagemap_bad_image' => 'Viga: pilt on siin lehel mustas nimekirjas',
-	'imagemap_no_link' => 'Viga: ei leidnud sobivat linki, rea number $1 lõpust',
-	'imagemap_invalid_title' => 'Viga: Vigane lingi pealkiri, rea number $1 lõpus',
-	'imagemap_missing_coord' => 'Viga: real number $1 on kujundi jaoks vähe kordinaate',
-	'imagemap_unrecognised_shape' => 'Viga: real number $1 on tundmatu kujund, rida peab hakkama ühega neist: default, rect, circle või poly',
-	'imagemap_no_areas' => 'Viga: vähemalt üks ala peaks olema määratud',
-	'imagemap_invalid_coord' => 'Viga: real number $1 on vigane kordinaat see peab olema number',
+	'imagemap_no_image' => 'Tõrge: Esimesel real peab määrama pildi.',
+	'imagemap_invalid_image' => 'Tõrge: Pilt on vigane või teda pole olemas.',
+	'imagemap_bad_image' => 'Tõrge: Pilt on siin lehel mustas nimekirjas.',
+	'imagemap_no_link' => 'Tõrge: Rea $1 lõpust ei leitud sobivat linki',
+	'imagemap_invalid_title' => 'Tõrge: Real $1 lingis vigane pealkiri',
+	'imagemap_missing_coord' => 'Tõrge: Real $1 pole kujundi jaoks piisavalt koordinaate',
+	'imagemap_unrecognised_shape' => 'Tõrge: Real $1 on tundmatu kujund; rida peab algama ühega neist: <tt>default</tt>, <tt>rect</tt>, <tt>circle</tt> või <tt>poly</tt>.',
+	'imagemap_no_areas' => 'Tõrge: Vähemalt üks ala peab olema määratud.',
+	'imagemap_invalid_coord' => 'Tõrge: Real $1 on vigane koordinaat; see peab olema number',
+	'imagemap_invalid_desc' => 'Tõrge: Vigane "desc"-parameeter; peab olema üks järgmistest: <code>$1</code>',
 	'imagemap_description' => 'Info pildi kohta',
+	'imagemap_poly_odd' => 'Tõrge: Real $1 on polügoon paaritu arvu koordinaatidega.',
 );
 
 /** Basque (Euskara)

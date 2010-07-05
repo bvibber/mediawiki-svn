@@ -125,6 +125,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'wikieditor-template-editor-preference' => 'Omogućava uređivanje wiki šablon putem obrazaca',
+	'wikieditor-template-editor-dialog-submit' => 'Ažuriraj',
+	'wikieditor-template-editor-dialog-cancel' => 'Odustani',
 );
 
 /** Catalan (Català)
@@ -405,6 +407,14 @@ $messages['ig'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Emekwàlà',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'Aktualigar',
+	'wikieditor-template-editor-dialog-cancel' => 'Anular',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -475,8 +485,10 @@ $messages['lt'] = array(
 
 /** Latvian (Latviešu)
  * @author Papuass
+ * @author Xil
  */
 $messages['lv'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Rediģēt veidni',
 	'wikieditor-template-editor-dialog-cancel' => 'Atcelt',
 );
 

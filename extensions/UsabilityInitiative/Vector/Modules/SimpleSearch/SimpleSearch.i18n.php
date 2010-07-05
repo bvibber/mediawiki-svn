@@ -427,11 +427,12 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'vector-simplesearch-search' => '검색',
-	'vector-simplesearch-containing' => '전문에 포함된 어구 찾기',
+	'vector-simplesearch-containing' => '다음의 어구가 들어간 문서 찾기',
 );
 
 /** Colognian (Ripoarisch)

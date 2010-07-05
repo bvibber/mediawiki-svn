@@ -582,6 +582,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'fundraiserportal-plain-button' => 'Suportez Wikipedio!',
 	'fundraiserportal-ruby-button' => 'Donacez Nun',
 	'fundraiserportal-rubytext-button' => 'Donacez Nun',
 	'fundraiserportal-sapphire-button' => 'Donacez Nun',

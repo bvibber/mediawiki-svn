@@ -351,6 +351,13 @@ $messages['li'] = array(
 	'doublewiki-desc' => "Toent 'n pagina en de vertaling oet 'n andere wiki in twie kolomme op dezelfde pagina",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'doublewiki-desc' => 'Parāda šo lapu un tās tulkojumu citā wiki vienā lapā kā divas līdzās esošas slejas',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

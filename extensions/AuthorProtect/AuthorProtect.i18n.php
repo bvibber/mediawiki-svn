@@ -282,6 +282,7 @@ $messages['cs'] = array(
 
 /** Welsh (Cymraeg)
  * @author Lloffiwr
+ * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'authorprotect' => 'Diogeler y dudalen rhag ei newid gan neb ond ei hawduron',
@@ -290,8 +291,8 @@ $messages['cy'] = array(
 	'authorprotect-confirm' => 'Newid lefelau diogelu',
 	'authorprotect-edit' => "Cyfyngu'r gallu i olygu i'r awduron",
 	'authorprotect-move' => "Cyfyngu'r gallu i symud tudalen i'r awduron",
-	'authorprotect-expiry' => 'Cyfnod',
-	'authorprotect-reason' => 'Rheswm',
+	'authorprotect-expiry' => 'Yn dod i ben:',
+	'authorprotect-reason' => 'Rheswm:',
 	'authorprotect-intro' => "Defnyddiwch y ffurflen hon i gloi'r dudalen hon rhag neb ond ei hawduron",
 	'authorprotect-success' => 'Llwyddodd y diogelu!',
 	'authorprotect-failure' => 'Ni lwyddodd y diogelu',
@@ -422,8 +423,8 @@ $messages['es'] = array(
 	'authorprotect-confirm' => 'Cambiar niveles de protección',
 	'authorprotect-edit' => 'Restringir edición a autores',
 	'authorprotect-move' => 'Restringir traslado a autores',
-	'authorprotect-expiry' => 'Tiempo de caducidad',
-	'authorprotect-reason' => 'Motivo',
+	'authorprotect-expiry' => 'Vence:',
+	'authorprotect-reason' => 'Razón:',
 	'authorprotect-intro' => 'Usar este formulario para bloquear la página a no-autores.',
 	'authorprotect-success' => '¡Protección exitosa!',
 	'authorprotect-failure' => 'Protección no exitosa',

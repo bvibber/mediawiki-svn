@@ -265,6 +265,13 @@ $messages['lb'] = array(
 	'uploadblacklist-desc' => "Setzt d'Fonctionalitéit vun enger Schwaarzer Lëscht fir d'Eroplueden derbäi",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'uploadblacklist-desc' => 'Ļauj ielādēt melno sarakstu',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

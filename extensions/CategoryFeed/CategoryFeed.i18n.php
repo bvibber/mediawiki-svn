@@ -75,6 +75,14 @@ $messages['cs'] = array(
 	'categoryfeed-desc' => 'Používá kousky z kanálů posledních změn. Vytvoří verzi v rámci stránky. Obzvlášť užitečné pro Wikinews.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'categoryfeed-desc' => 'Yn defnyddio didau o borthiannau newidiadau diweddar.
+Creu fersiwn tudalen fewnol, yn arbennig o ddefnyddiol ar gyfer Wikinews',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

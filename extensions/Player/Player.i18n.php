@@ -361,13 +361,14 @@ $messages['es'] = array(
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
 	'player-file' => 'Faili nimi',
 	'player-play' => 'Mängi',
 	'player-not-allowed' => 'mittelubatud vorming',
-	'player-not-found' => 'faili ei leidnud',
+	'player-not-found' => 'faili ei leidu',
 	'player-clicktoplay' => 'Mängi $1',
 	'player-goto-file' => 'fail',
 );

@@ -217,6 +217,14 @@ $messages['lb'] = array(
 	'flv-long-desc' => '(Flash Video, $1 × $2 Pixel, Gréisst vum Fichier: $3)',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'flvhandler_desc' => 'Atļaut pievienot Flash Video (. Flv) failus kā standarta failus (piemēram, <nowiki> [[</nowiki>{{Ns: fails}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1 × $2 pikseļi, faila izmērs: $3)',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

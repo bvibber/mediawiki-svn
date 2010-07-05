@@ -216,6 +216,13 @@ $messages['lb'] = array(
 	'magicnonumberedheadings-desc' => 'Setzt dat magescht Wuert "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" derbäi',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'magicnonumberedheadings-desc' => 'Pievieno maģisko vārdu "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

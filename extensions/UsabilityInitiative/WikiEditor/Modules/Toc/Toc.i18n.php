@@ -636,6 +636,7 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor-toc-preference' => 'Омогући навигациону табелу садржаја',
 	'wikieditor-toc-show' => 'Покажи садржај',
 	'wikieditor-toc-hide' => 'Сакриј садржај',
 );

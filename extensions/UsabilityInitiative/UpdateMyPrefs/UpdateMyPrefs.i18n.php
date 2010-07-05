@@ -288,6 +288,13 @@ $messages['id'] = array(
 	'updatemyprefs-label-message' => 'Perbarui preferensi saya secara otomatis dengan setelan baku yang baru dan alat-alatnya jika telah tersedia',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'prefs-updates' => 'Aktualigi',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  * @author Una giornata uggiosa '94

@@ -2899,6 +2899,7 @@ Pro ulterior informationes super le Initiativa de Usabilitate, visita nostre [ht
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Kenrick95
@@ -2966,8 +2967,19 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-changes-custom' => 'Memperbolehkan Pengguna yang lebih tinggi untuk kustomisasi',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
 	'optin-improvements2' => '== Apa yang telah diperbaiki? ==
-[[Berkas:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
-[[Berkas:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]',
+[[File:UsabilityToolbar.png|left|link=|Cuplikan kotak peralatan penyuntingan yang baru]]
+[[File:UsabilityDialogs.png|left|link=|Cuplikan kotak dialog pengisian konten yang baru]]
+;Kotak Peralatan Baru
+Kotak peralatan baru menjadikan penyuntingan artikel lebih mudah..
+Ikon yang baru dan diperbarui semakin memerjelas kegunaan masing-masing alat.
+Bagian yang dapat diperbesar mengurangi gangguan sambil menjaga peralatan yang jarang digunakan hanya dengan sekali tekan.
+;Kotak Dialog
+Ketika membuat pranala atau tabel, menekan ikon peralatan sekarang akan membuka sebuah kotak dialog yang membantu Anda membuat pranala dan tabel dengan mengisi kotak isian yang sederhana.
+;Dan Lainnya
+Kami telah memerkenalkan sejumlah perbaikan lain seperti penelusuran yang diperbarui, pencarian yang diperbaiki, dan lainnya.
+== Bagaimana cara melibatkan diri? ==
+Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative halaman utama] kami.
+<div style="clear:both"></div>',
 );
 
 /** Ido (Ido)
@@ -4957,7 +4969,7 @@ Puteți să încercați iar în orice moment apăsând clic pe legătura „{{in
 	'optin-survey-intro' => 'Mulțumim că folosiți versiunea Beta.
 Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar am aprecia dacă ați completa sondajul opțional de mai jos înainte de a da clic pe „[[#leave|{{int:optin-submit-out}}]]”.',
 	'optin-survey-question-likedislike' => 'Ce v-a plăcut la versiunea Beta ? Ce nu v-a plăcut la versiunea Beta ?',
-	'optin-survey-question-whyoptout' => 'De ce părăsiți versiunea Beta ? (Vă rugăm să bifați toate motivele pe care le considerați aplicabile.)',
+	'optin-survey-question-whyoptout' => 'De ce părăsiți versiunea Beta? (Selectați toate variantele adecvate.)',
 	'optin-survey-answer-whyoptout-hard' => 'A fost prea greu de folosit.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Nu a funcționat cum trebuie.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Nu s-a comportat predictibil.',
@@ -5645,6 +5657,9 @@ $messages['su'] = array(
 	'optin-title-justoptedin' => 'Wilujeng sumping di Béta',
 	'optin-title-justoptedout' => 'Ngahaturkeun nuhun tos nyobian Béta',
 	'optin-needlogin' => 'Anjeun kudu [$1 asup log] pikeun nyobaan Béta.',
+	'optin-intro' => 'Inisiatif Kamangpaatan Wikipédia narékahan pikeun ngaronjatkeun kamangpaatan Wikipédia. Badé nyobian Béta?',
+	'optin-feedback-back' => 'Lamun moal ngeusian surpéy, anjeun bisa balik deui ka $1.',
+	'optin-leave-cancel' => 'Mun anjeun rék neruskeun maké Béta, anjeun bisa balik deui ka $1.',
 	'optin-accept-short' => 'Hayu!',
 	'optin-accept-long' => 'Cobaan Béta',
 	'optin-accept-long-anon' => 'Asup log jeung cobaan Béta',
@@ -5660,6 +5675,7 @@ $messages['su'] = array(
 	'optin-survey-question-os' => 'Sistem operasi naon nu dipaké ku anjeun?',
 	'optin-survey-answer-os-other' => 'Sistem operasi lianna:',
 	'optin-survey-question-res' => 'Résolusi layar nu dipaké?',
+	'optin-survey-answer-changes-richtext' => 'Ngembangkeun alat ngédit anu sarupa jeung éditor téks euyeub.',
 	'optin-survey-answer-changes-other' => 'Lianna:',
 );
 

@@ -542,15 +542,15 @@ Napsauta <a href='$1'>palataksesi</a>.",
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'spamdifftool' => 'Gestion de la Liste noire des pourriels',
-	'spamdifftool-desc' => 'Fournit une méthode simple pour ajouter des entrées dans la liste noire des pourriels à partir des diff',
-	'spamdifftool_cantedit' => 'Désolé - Vous n’avez pas la permission d’éditer la Liste noire des pourriels.',
+	'spamdifftool' => 'Gestion de la liste noire des polluriels',
+	'spamdifftool-desc' => 'Fournit une méthode simple pour ajouter des entrées dans la liste noire des polluriels à partir des diff',
+	'spamdifftool_cantedit' => 'Désolé — Vous n’avez pas la permission d’éditer la liste noire des polluriels.',
 	'spamdifftool-no-title' => "'''Erreur :''' pas de titre de page spécifié.",
-	'spamdifftool_notext' => "Il n’y a pas de texte à ajouter à la Liste noire des pourriels. Cliquez <a href='$1'>ici</a> pour continuer.",
-	'spamdifftool_confirm' => "Confirmez que vous voulez ajouter ces entrées dans la Liste noire des pourriels. (Cliquez <a href='$1' target='new'>ici</a> pour signaler tout problème.)",
-	'spamdifftool_summary' => 'Ajouté à la Liste noire des pourriels',
+	'spamdifftool_notext' => "Il n’y a pas de texte à ajouter à la liste noire des polluriels. Cliquez <a href='$1'>ici</a> pour continuer.",
+	'spamdifftool_confirm' => "Confirmez que vous voulez ajouter ces entrées à la liste noire des polluriels. (Cliquez <a href='$1' target='new'>ici</a> pour signaler tout problème.)",
+	'spamdifftool_summary' => 'Ajouté à la liste noire des polluriels',
 	'spamdifftool_urls_detected' => 'Les URLs suivantes ont été détectées dans ces modifications.
-Lesquelles voulez-vous ajouter à la liste noire des pourriels ?
+Lesquelles voulez-vous ajouter à la liste noire des polluriels ?
 Ces options vont des plus restrictives aux moins restrictives.
 Le blocage d’un nom de domaine entier bloquera tous les liens provenant de celui-ci.
 

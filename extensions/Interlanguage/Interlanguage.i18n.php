@@ -211,6 +211,13 @@ $messages['lb'] = array(
 	'interlanguage-desc' => "Erlaabt et d'Linke tëschent Sproochen vun enger anerer Wiki z'iwwerhuelen",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'interlanguage-desc' => 'Paņem starpvalodu saites no citas wiki',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

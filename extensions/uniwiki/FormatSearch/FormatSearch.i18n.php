@@ -256,6 +256,13 @@ $messages['lb'] = array(
 	'formatsearch-desc' => "Botzt d'Säit mat de Resultater vun der Sich",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'formatsearch-desc' => 'Sakārto meklēšanas rezultātu lapu',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

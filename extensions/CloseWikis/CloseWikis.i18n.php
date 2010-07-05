@@ -1163,6 +1163,40 @@ $messages['li'] = array(
 	'right-closewikis' => "Gesjlaote wiki's",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'closewikis-desc' => 'Ļauj slēgt atsevišķas vietnes vairāku wiki grupā',
+	'closewikis-page' => 'Slēgt wiki',
+	'closewikis-page-close' => 'Slēgt wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Iemesls (redzams):',
+	'closewikis-page-close-reason' => 'Iemesls (reģistros):',
+	'closewikis-page-close-submit' => 'Slēgt',
+	'closewikis-page-close-success' => 'Wiki veiksmīgi slēgta',
+	'closewikis-page-reopen' => 'Atjaunot wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Iemesls:',
+	'closewikis-page-reopen-submit' => 'Atjaunot',
+	'closewikis-page-reopen-success' => 'Wiki veiksmīgi atjaunota',
+	'closewikis-page-err-nowiki' => 'Norādītā wiki ir nederīga',
+	'closewikis-page-err-closed' => 'Wiki jau ir slēgta',
+	'closewikis-page-err-opened' => 'Wiki nav slēgta',
+	'closewikis-list' => 'Slēgto wiki saraksts',
+	'closewikis-list-intro' => "Šajā sarakst'uzskitītas pārvaldnieku slēgtās wiki",
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Aizslēdza',
+	'closewikis-list-header-timestamp' => 'Slēgts',
+	'closewikis-list-header-dispreason' => 'Attēlotais iemesls',
+	'closewikis-log' => 'Wiki slēgšnu reģistrs',
+	'closewikis-log-header' => 'Visu pārvaldnieku veikto slēgšanu un atjaunošanu saraksts',
+	'closewikis-log-close' => 'slēdza $2',
+	'closewikis-log-reopen' => 'atjaunoja $2',
+	'right-editclosedwikis' => 'Rediģēt slēgtas wiki',
+	'right-closewikis' => 'Slēgt wiki',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

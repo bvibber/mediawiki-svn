@@ -542,7 +542,7 @@ $messages['pl'] = array(
 	'categoryintersection-desc' => 'Wprowadza do bazy danych tabelę haszy dla szybkiego wyświetlenia [[Special:CategoryIntersection|części wspólnej kilku kategorii]]',
 	'categoryintersection-doit' => 'Lista stron, które są w każdej z tych kategorii',
 	'categoryintersection-maxcategories' => 'Maksymalna dostępna liczba kategorii, dla których można sprawdzić część wspólną to $1.',
-	'categoryintersection-mincategories' => 'Musisz włączyć co najmniej dwie kategorie.',
+	'categoryintersection-mincategories' => 'Musisz dołączyć co najmniej dwie kategorie.',
 	'categoryintersection-results' => 'Wyszukiwanie zwróciło $1 {{PLURAL:$1|wynik|wyniki|wyników}}',
 );
 

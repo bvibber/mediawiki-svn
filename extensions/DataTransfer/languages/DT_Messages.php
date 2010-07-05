@@ -991,6 +991,7 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'dt_xml_template' => 'Shablono',
+	'dt_xml_name' => 'Nomo',
 	'dt_xml_title' => 'Titulo',
 );
 

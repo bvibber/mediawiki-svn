@@ -387,6 +387,7 @@ $messages['id'] = array(
 $messages['io'] = array(
 	'prefswitch-link-anon' => 'Nova funcioni',
 	'tooltip-pt-prefswitch-link-anon' => 'Lernez pri nova funcioni',
+	'prefswitch-link-on' => 'Retroirez',
 	'prefswitch-link-off' => 'Nova funcioni',
 	'tooltip-pt-prefswitch-link-off' => 'Probez nova funcioni',
 );
@@ -610,12 +611,13 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Minisarm
  */
 $messages['ro'] = array(
 	'prefswitch-link-anon' => 'Noi funcționalități',
 	'tooltip-pt-prefswitch-link-anon' => 'Aflați mai multe despre noile funcționalități',
-	'prefswitch-link-on' => 'Du-mă înapoi',
+	'prefswitch-link-on' => 'Interfața veche',
 	'tooltip-pt-prefswitch-link-on' => 'Dezactivează noile funcționalități',
 	'prefswitch-link-off' => 'Noi funcționalități',
 	'tooltip-pt-prefswitch-link-off' => 'Încercați noile funcționalități',
@@ -687,6 +689,7 @@ $messages['sr-el'] = array(
  */
 $messages['su'] = array(
 	'prefswitch-link-anon' => 'Fitur anyar',
+	'tooltip-pt-prefswitch-link-anon' => 'Lenyepan fitur-fitur anyar',
 	'prefswitch-link-on' => 'Balik deui',
 	'tooltip-pt-prefswitch-link-on' => 'Tumpurkeun fitur anyar',
 	'prefswitch-link-off' => 'Fitur anyar',

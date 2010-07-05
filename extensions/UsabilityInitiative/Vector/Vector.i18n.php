@@ -328,6 +328,14 @@ $messages['lb'] = array(
 	'vector-desc' => "Verbessert am Benotzer-Interface Elementer vum Ausgesinn ''Vector''.",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'vector' => 'Vector lietotāja saskarsnes uzlabojumi',
+	'vector-desc' => 'Uzlabo lietotāja saskarsnes elementus Vector apdarē.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -427,12 +435,13 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'vector' => 'Îmbunătățiri la nivelul interfeței Vector',
-	'vector-desc' => 'Îmbunătățiri ale elementele interfeței Vector.',
+	'vector-desc' => 'Îmbunătățiri ale elementelor interfeței Vector.',
 );
 
 /** Tarandíne (Tarandíne)

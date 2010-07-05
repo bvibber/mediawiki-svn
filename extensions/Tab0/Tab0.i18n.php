@@ -237,6 +237,13 @@ $messages['lb'] = array(
 	'tab0-desc' => "Setzt den ''Onglet'' ''0'' derbäi, den et erlaabt déi éischt Sectioun vun enger Säit z'änneren",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'tab0-desc' => 'Pievieno tabu "0" ar saiti lapas pirmās sadaļas rediģēšanai',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

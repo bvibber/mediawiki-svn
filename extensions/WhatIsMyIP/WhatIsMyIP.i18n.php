@@ -585,7 +585,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'whatismyip' => 'Min IP-adresse',
+	'whatismyip' => 'Hva er IP-adressen min',
 	'whatismyip-desc' => 'Viser nåværende brukers [[Special:WhatIsMyIP|IP-adresse]]',
 	'whatismyip-out' => 'Din IP-adresse:',
 	'right-whatismyip' => 'Vis [[Special:WhatIsMyIP|min egen IP-adresse]]',

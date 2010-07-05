@@ -244,6 +244,14 @@ $messages['lb'] = array(
 	'random-users-avatars-desc' => "Setzt den <code>&lt;randomuserswithavatars&gt;</code> Tag derbäi fir d'Avataren vun zoufälleg ausgesichte Benotzer ze weisen",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'random-users-avatars-title' => 'Iepazīsti kopienu',
+	'random-users-avatars-desc' => 'Pievieno <code><randomuserswithavatars></code> tagu, lai parādītu nejauši izvēlētu lietotāju avatarus',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

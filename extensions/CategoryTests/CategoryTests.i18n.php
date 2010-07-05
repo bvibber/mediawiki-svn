@@ -260,6 +260,13 @@ $messages['ltg'] = array(
 	'categorytests-desc' => 'Funkcejis kategoreju puorvērei',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'categorytests-desc' => 'Funkcijas kategoriju testēšanai',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

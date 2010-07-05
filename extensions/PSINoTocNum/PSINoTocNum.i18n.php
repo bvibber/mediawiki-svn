@@ -217,6 +217,13 @@ $messages['lb'] = array(
 	'psinotocnum-desc' => "Neit ''magescht Wuert'' \"<nowiki>__NOTOCNUM__</nowiki>\"",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'psinotocnum-desc' => 'Jauns maģiskais vārds "<nowiki>__NOTOCNUM__</nowiki>"',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

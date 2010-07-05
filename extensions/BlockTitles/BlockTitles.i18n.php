@@ -148,6 +148,14 @@ $messages['cs'] = array(
 	'block_title_error' => 'Promiňte, stránky s tímto názvem není povoleno ukládat.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'block_title_error_page_title' => 'Teitl a rwystrwyd',
+	'block_title_error' => "Mae'n ddrwg gennym, ond ni ellir cadw teitl y dudalen hon.",
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

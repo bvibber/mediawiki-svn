@@ -630,6 +630,16 @@ $messages['id'] = array(
 	'wikieditor-publish-dialog-goback' => 'Kembali',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'wikieditor-publish-button-cancel' => 'Anular',
+	'wikieditor-publish-dialog-minor' => 'Mikra chanjo',
+	'wikieditor-publish-dialog-watch' => 'Surveyar ca pagino',
+	'wikieditor-publish-dialog-goback' => 'Retroirar',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
@@ -1148,9 +1158,13 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'wikieditor-publish-button-publish' => 'Terbitkeun',
 	'wikieditor-publish-button-cancel' => 'Bolay',
+	'wikieditor-publish-dialog-title' => 'Terbitkeun di {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Ringkesna (parobahan naon anu dijieun):',
 	'wikieditor-publish-dialog-minor' => 'Éditan minor',
 	'wikieditor-publish-dialog-watch' => 'Awaskeun ieu kaca',
+	'wikieditor-publish-dialog-publish' => 'Terbitkeun',
 	'wikieditor-publish-dialog-goback' => 'Balik deui',
 );
 
