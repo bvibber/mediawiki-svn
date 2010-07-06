@@ -177,16 +177,16 @@ function efCodeReviewSchemaUpdates() {
 		$wgExtNewIndexes[] = array( 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql" );
 
 		// $wgExtNewFields[] = array( 'code_rev', "$base/archives/codereview-cr_status.sql" ); // FIXME FIXME this is a change to options... don't know how
-		
+
 		if ( !update_row_exists( 'add old to code_rev enum' ) ) {
-			$wgExtModifiedFields[] = array( 'code_rev', 'cr_status', "$base/archives/codereview-cr_old_status.sql" );		
+			$wgExtModifiedFields[] = array( 'code_rev', 'cr_status', "$base/archives/codereview-cr_old_status.sql" );
 		}
 
 		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
 		$wgExtNewTables[] = array( 'code_test_suite', "$base/archives/codereview-code_tests.sql" );
 	} elseif ( $wgDBtype == 'sqlite' ) {
 		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" );
-	} elseif( $wgDBtype == 'postgres' ) {
+	} elseif ( $wgDBtype == 'postgres' ) {
 		// TODO
 	}
 	return true;

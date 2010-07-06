@@ -132,7 +132,7 @@ class ApiCodeRevisions extends ApiQueryBase {
 					'path',
 					'message',
 					'author',
-					'timestamp',	
+					'timestamp',
 				),
 			),
 		);
