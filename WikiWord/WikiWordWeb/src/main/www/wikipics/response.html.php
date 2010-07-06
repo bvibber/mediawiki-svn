@@ -271,7 +271,7 @@ function printConcept($concept, $langs, $terse = true) {
     <?php if ($gallery && $terse && $more) { ?>
     <tr class="row_images row_more_images">
       <td class="cell_more_images" colspan="3" width="100%" style="vertical-align:bottom; padding: 1ex; font-size:normal;">
-      <?php print " <div><strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "all ".count($gallery)." images...") . "]</strong></div>"; ?>
+      <?php print " <div><strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more images...") . "]</strong></div>"; ?>
       </td>
     </tr>
     <?php } ?>
