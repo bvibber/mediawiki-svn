@@ -26,7 +26,7 @@
 						'statusTarget': '#targetFoggStatus'
 					});
 					if( foggRender.doRender() ){
-						$j('#renderToFile').text('Stop Render').click(function(){
+						$j('#renderToFile').text('Stop Render').unbind().click(function(){
 							foggRender.stopRender();						
 						}); 
 					}

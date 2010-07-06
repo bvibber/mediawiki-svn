@@ -5,12 +5,12 @@
 	<title>SMIL Sequence Editor example</title>
  	<script type="text/javascript" src="../../../mwEmbed.js?debug=true"></script>
  	<script type="text/javascript">
- 		mw.ready(function(){
- 			mw.load( 'Sequencer', function(){
-	 			$j('#seqcontainer').sequencer({
-	        		'mv_pl_src':'media/sequence_transition_smil.xml',
+ 		mw.ready( function(){
+ 			mw.load( 'SequenceEdit', function(){ 	 			
+	 			$j('#seqContainer').sequenceEdit({
+	        		'smilSource' : 'SampleEditorSequenceSmil.xml',
 	        		//set the add media wizard to only include commons:   
-	        		'amw_conf':{
+	        		'AddMediaConf':{
 	        			 'enabled_providers':[ 'wiki_commons', 'kaltura', 'archive_org', 'flickr', 'metavid' ],
 	        			 'import_url_mode' : 'remote_link',
 	        			 'default_query' : 'fish'
@@ -21,8 +21,7 @@
  	</script>
 <style>
 	body {
-		font: x-small sans-serif;
-		background: #f9f9f9 url(headbg.jpg) 0 0 no-repeat;
+		font: x-small sans-serif;	
 		color: black;
 		margin: 0;
 		padding: 0;
@@ -34,10 +33,9 @@
  	
 </head>
 <body>
-	<div id="seqcontainer" style="position:absolute;top:5px;bottom:10px;left:10px;right:10px;">
+	<div id="seqContainer" style="position:absolute;top:5px;bottom:10px;left:10px;right:10px;">
 		Loading sequence editor ...
-	</div>
-	
+	</div>	
   </body>
 </html>
 

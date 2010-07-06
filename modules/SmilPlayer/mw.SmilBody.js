@@ -49,12 +49,8 @@ mw.SmilBody.prototype = {
 		var _this = this;
 		if( !$node.attr('id')
 			&& !$node.attr( 'xml:id' )
-			&& ( 
-				_this.getNodeSmilType( $node ) == 'ref'
-				|| _this.getNodeSmilType( $node ) == 'smilText'
-			)
 		){
-			$node.attr('id', _this.smil.embedPlayer.id + '_ref_' + _this.idIndex );
+			$node.attr('id', _this.getNodeSmilType( $node ) + '_' + _this.idIndex );
 			mw.log('SmilBody:: gave: ' + $node.get(0).nodeName + ' id: ' + $node.attr('id') );
 			_this.idIndex++;
 		}
@@ -248,16 +244,28 @@ mw.SmilBody.prototype = {
 	},
 	
 	/**
-	 * getElementsForTimeRecurse
-	 * @param {Object} $node Node to recursively search for elements in the given time range
-	 */ 
+	 * get the sequence elements from a given par node if no node is provied assume root
+	 * @param {element=} $parNode Optional parNode to list all sequence timelines 
+	 */
+	getSeqElements: function( $node ){
+		if( ! $node ){
+			$node = this.$dom;
+		}
+		return $node.find('seq');
+	},
+	
 	
 	/**
 	 * Recurse over all body elements, issues a callback on all ref and smilText nodes
 	 * adds startOffset info for easy timeline checks.
+	 *  @param {Object} $node Node Starting point
 	 */
 	getRefElementsRecurse: function( $node, startOffset, callback ){
 		var _this = this;
+		
+		// Make sure $node is wrapped in jQuery object
+		$node = $j( $node );
+		
 		// Setup local pointers:		
 		var nodeType = this.getNodeSmilType( $node );
 		
@@ -301,8 +309,8 @@ mw.SmilBody.prototype = {
 	 * Returns the smil body duration
 	 * ( wraps getDurationRecurse to get top level node duration ) 
 	 */	
-	getDuration: function(){		
-		this.duration = this.getNodeDuration( this.$dom );	
+	getDuration: function( forceRefresh ){		
+		this.duration = this.getNodeDuration( this.$dom , forceRefresh);	
 		mw.log("smilBody:: getDuration: " + this.duration );
 		return this.duration;	
 	},
@@ -317,6 +325,11 @@ mw.SmilBody.prototype = {
 			$node.data('computedDuration') != null
 		) {
 			return $node.data('computedDuration');
+		}
+		if( forceRefresh ){
+			//clear out implictDuration
+			$node.data( 'implictDuration', false );
+			$node.data( 'computedDuration', false );
 		}
 		
 		var _this = this;		

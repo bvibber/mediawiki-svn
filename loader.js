@@ -46,15 +46,15 @@ var mwCoreComponentList = [
 *  is transcluded into base mwEmbed class include.  
 */
 var mwEnabledModuleList = [
-	'AddMedia',
-	'ClipEdit',
 	'EmbedPlayer',
-	'ApiProxy',
-	'Sequencer',
 	'TimedText',
 	'SmilPlayer',
 	'MediaRss',	
-	'SwarmTransport'
+	'SwarmTransport',
+	'AddMedia',
+	'ClipEdit',
+	'SequenceEdit',	
+	'ApiProxy'
 ];
 
 /**

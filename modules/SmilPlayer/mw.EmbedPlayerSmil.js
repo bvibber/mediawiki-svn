@@ -68,11 +68,8 @@ mw.EmbedPlayerSmil = {
 	setCurrentTime: function( time, callback ) {
 		//mw.log('EmbedPlayerSmil::setCurrentTime: ' + time );		
 		// Set "loading" spinner here)
-		$j( this ).append(
-			$j( '<div />')			
-			.attr('id', 'loadingSpinner_' + this.id )
-			.loadingSpinner()
-		);
+		$j( this ).getAbsoluteOverlaySpinner()
+			.attr('id', 'loadingSpinner_' + this.id )			
 		// Start seek
 		this.controlBuilder.onSeek();
 		this.smilPlayTime = time;

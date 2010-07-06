@@ -26,7 +26,7 @@
 						'statusTarget': '#targetFoggStatus'
 					});
 					if( foggRender.doRender() ){
-						$j('#renderToFile').text('Stop Render').click(function(){
+						$j('#renderToFile').text('Stop Render').unbind().click(function(){
 							foggRender.stopRender();						
 						}); 
 					}
@@ -42,17 +42,21 @@
 <tr>
 <td>
 
-<video id="videoClipBegin" type="application/smil" src="VideoClipBeginSmil.xml" width="400" height="300"></video>
+<video id="videoClipBegin" width="400" height="300">
+	<source type="application/smil" src="VideoClipBeginSmil.xml" />
+</video>
 <p></p>seek to <input id="seekInputTime" size="4" value = "6"></input><span id="seekInProgress" style="display: none"> Seeking<blink>...</blink></span>
 <br/>
 <a id="startBuffer" href="#">Start buffering</a> <br>
 <a id="renderToFile" href="#">Render to file</a> <span id="targetFoggStatus"></span>
 </td>
 <td valign="top">
-Sample playlist code: 
+Sample Smil Embed code: 
 <div style="clear:both"></div>
 <textarea style="width:500px;">
-<video id="videoClipBegin" type="application/smil" src="VideoClipBeginSmil.xml" width="400" height="300"></video>
+<video id="videoClipBegin" width="400" height="300">
+	<source type="application/smil" src="VideoClipBeginSmil.xml" />
+</video>
 </textarea>
 <div style="clear:both"></div>
 

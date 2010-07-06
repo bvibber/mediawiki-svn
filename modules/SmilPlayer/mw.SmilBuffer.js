@@ -131,7 +131,7 @@ mw.SmilBuffer.prototype = {
 			}
 			// get the percentage buffered, translated into buffer time and call continueBufferLoad with a timeout
 			var timeBuffered = _this.getBufferedPercent() * _this.smil.getDuration();
-			mw.log( 'ContinueBufferLoad::Timed buffered: ' + timeBuffered );
+			//mw.log( 'ContinueBufferLoad::Timed buffered: ' + timeBuffered );
 			_this.continueBufferLoad( timeBuffered );
 		}, this.smil.embedPlayer.monitorRate * 2 );
 		
@@ -156,7 +156,6 @@ mw.SmilBuffer.prototype = {
 		// but in theory we could set something up with large images
 		switch( this.smil.getRefType( smilElement ) ){
 			case 'video':
-				// xxx "seek" to support offsets
 				var vid = $j( '#' + this.smil.getAssetId( smilElement ) ).get(0);
 				
 				// The load request does not work very well instead .play() then .pause() and seek when on display
@@ -167,6 +166,9 @@ mw.SmilBuffer.prototype = {
 					// Issue the load / play request 
 					vid.play();
 					vid.volume = 0;
+					
+					// XXX seek to clipBegin if provided ( we don't need to load before that point )
+				
 				} else {
 					// else we have some percentage loaded pause playback 
 					//( should continue to load the asset )
@@ -285,6 +287,27 @@ mw.SmilBuffer.prototype = {
 	},
 	
 	/**
+	 * Clip ready for grabbing a frame such as a canvas thumb
+	 */
+	canGrabRelativeTime: function( smilElement, relativeTime, callback ){
+		var absoluteTime = relativeTime;
+		if( $j( smilElement ).attr('clipBegin') ){
+			absoluteTime += this.smil.parseTime( $j( smilElement ).attr('clipBegin') );
+		}
+		switch( this.smil.getRefType( smilElement ) ){
+			case 'video':
+				this.videoBufferSeek( smilElement, absoluteTime, callback )
+			break;
+			case 'image':
+				this.loadImageCallback( smilElement, callback );
+			break;
+			default:
+				// Assume other formats are directly displayed
+			break;
+		}
+	},
+	
+	/**
 	 * Check if we can play a given time 
 	 * @return {boolean} True if the time can be played, false if we need to buffer
 	 */
@@ -331,25 +354,6 @@ mw.SmilBuffer.prototype = {
 	},
 	
 	/**
-	 * Manage seek listeners 
-	 */
-	runSeekCallback: function(assetId, time, callback){
-		var _this = this;
-		
-		// Get the video target: 
-		var vid = $j ( '#' +  assetId).get(0);			
-		
-		if( this.videoListeners[ assetId ] ){
-			this.videoListeners[ assetId ] = true;
-			vid.addEventListener( 'seeked', function(){
-				
-			});
-		}
-		
-		this.videoListeners[ assetId ] = callback;
-	},
-	
-	/**
 	 * Abstract the seeked Listener so we don't have stacking bindings 
 	 */
 	registerVideoSeekListener: function( assetId ){
@@ -363,10 +367,23 @@ mw.SmilBuffer.prototype = {
 		}, false);
 	},
 	
+	loadImageCallback: function ( smilElement, callback ){
+		var assetId = this.smil.getAssetId( smilElement );
+		// Make sure the image is in the dom ( load it )
+		this.loadElement( smilElement );
+		// add the jQuery "loaded" callback
+		$j( '#' +  assetId).loaded( callback );		
+	},
+	
 	videoBufferSeek: function ( smilElement, seekTime, callback ){
 		var _this = this;
-		// Get the video target: 
+		
+		// Get the asset target:		
 		var assetId = this.smil.getAssetId( smilElement );
+		
+		// make sure the target video is in the dom: 
+		this.loadElement( smilElement );		
+		
 		var $vid = $j ( '#' +  assetId);
 		var vid = $vid.get(0);
 		// Add the asset to the loading set
