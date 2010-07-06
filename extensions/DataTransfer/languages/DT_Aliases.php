@@ -10,6 +10,8 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
+	'ImportCSV' => array( 'ImportCSV' ),
+	'ImportXML' => array( 'ImportXML' ),
 	'ViewXML' => array( 'ViewXML' ),
 );
 
