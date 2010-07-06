@@ -254,6 +254,8 @@ function printConcept($concept, $langs, $terse = true) {
       <td colspan="3">
 	  <h1 class="name <?php print "weight_$wclass"; ?>"><?php print getConceptDetailsLink($langs, $concept); ?>:</h1>
 	   <p class="definition"><?php print htmlspecialchars($definition); ?></p> 
+	  <div class="wikipages"><?php printConceptPageList( $langs, $concept, $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ); ?></div>
+	  <strong class="more">[<?php print getConceptDetailsLink($langs, $concept, "details..."); ?>]</strong>
       </td>
     </tr>
 
@@ -264,14 +266,17 @@ function printConcept($concept, $langs, $terse = true) {
 	  else $more = printConceptImageList( $gallery, $terse, $wwGalleryColumns, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages ); 
       ?>
       </td>
-      <?php if ($gallery) { ?>
-      <td class="cell_more_images" colspan="1" width="100%" style="vertical-align:bottom; padding: 1ex; font-size:normal;">
-      <?php if ($terse) print " <div><strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more/details...") . "]</strong></div>"; ?>
-      </td>
-      <?php } ?>
     </tr>
 
-    <?php if (@$concept['narrower']) { ?>
+    <?php if ($gallery && $terse && $more) { ?>
+    <tr class="row_images row_more_images">
+      <td class="cell_more_images" colspan="3" width="100%" style="vertical-align:bottom; padding: 1ex; font-size:normal;">
+      <?php print " <div><strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "all ".count($gallery)." images...") . "]</strong></div>"; ?>
+      </td>
+    </tr>
+    <?php } ?>
+
+    <?php if (!$terse && @$concept['narrower']) { ?>
     <tr class="row_narrower">
       <td class="cell_related" colspan="3">
       <strong class="label">Narrower:</strong>
@@ -283,6 +288,7 @@ function printConcept($concept, $langs, $terse = true) {
     </tr>
     <?php } ?>
 
+    <?php if (!$terse && @$concept['narrower']) { ?>
     <?php 
       $related = getRelatedConceptList($concept);
       if ($related) { 
@@ -297,23 +303,15 @@ function printConcept($concept, $langs, $terse = true) {
       </td>
     </tr>
     <?php } ?>
+    <?php } ?>
 
-    <?php if (@$concept['broader']) { ?>
+    <?php if (!$terse && @$concept['broader']) { ?>
     <tr class="row_category">
       <td class="cell_related" colspan="3">
       <strong class="label">Broader:</strong>
       <?php 
 	  $more = printConceptList( $langs, $concept['broader'], $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ); 
       ?>
-      <?php if ($terse && $more) print " <strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more...") . "]</strong>"; ?>
-      </td>
-    </tr>
-    <?php } ?>
-
-    <?php if (!$terse && @$concept['pages']) { ?>
-    <tr class="row_pages">
-      <td class="cell_pages wikipages" colspan="3">
-      <strong class="label">Wiki pages:</strong> <?php $more = printConceptPageList( $langs, $concept, $lclass, $terse ? $wwMaxPreviewLinks : $wwMaxDetailLinks ); ?>
       <?php if ($terse && $more) print " <strong class=\"more\">[" . getConceptDetailsLink($langs, $concept, "more...") . "]</strong>"; ?>
       </td>
     </tr>

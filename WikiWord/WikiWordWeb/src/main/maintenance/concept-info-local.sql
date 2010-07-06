@@ -59,3 +59,13 @@ from {collection}_{thesaurus}_relation
 on X.concept = I.concept and I.lang = "{lang}"
 set I.related = X.related;
 
+-- collect features
+update {collection}_{thesaurus}_concept_info as I
+join ( select concept1 as concept, group_concat(distinct concat(concept2, ":", if (local_concept_name is null, "", local_concept_name)) separator "|") as related 
+from {collection}_{thesaurus}_features
+	left join {collection}_{thesaurus}_origin as O on O.global_concept = concept2 and O.lang = "{lang}"
+	where bilink >= 1
+	group by concept1 ) as X
+on X.concept = I.concept and I.lang = "{lang}"
+set I.features = X.features;
+
