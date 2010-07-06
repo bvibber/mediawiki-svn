@@ -54,20 +54,20 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				// Common UsabilityInitiative funtions
-				array( 'src' => 'js/usability.js', 'version' => 3 ),
+				array( 'src' => 'js/usability.js', 'version' => 4 ),
 				
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 15 ),
-				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 8 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 16 ),
+				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.color.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 17 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 31 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 32 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 36 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 195 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 196 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 71 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 28 ),
@@ -82,10 +82,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 447 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 448 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 457 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 458 ),
 			),
 		),
 	);
