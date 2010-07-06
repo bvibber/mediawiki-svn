@@ -23,6 +23,7 @@ class CodeCommentsListView extends CodeView {
 	function getPager() {
 		return new CodeCommentsTablePager( $this );
 	}
+
 	function getRepo() {
 		return $this->mRepo;
 	}

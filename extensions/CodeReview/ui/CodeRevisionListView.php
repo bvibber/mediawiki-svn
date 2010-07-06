@@ -206,7 +206,10 @@ class CodeRevisionListView extends CodeView {
 	function getSpecializedWhereClause( $dbr ) {
 		return array();
 	}
-	
+
+	function getRepo() {
+		return $this->mRepo;
+	}
 }
 
 // Pager for CodeRevisionListView
