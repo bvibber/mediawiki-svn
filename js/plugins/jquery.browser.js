@@ -65,7 +65,7 @@ jQuery Browser Plugin
 			['PLAYSTATION 3', 'PS3']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3|docomo)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],

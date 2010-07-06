@@ -92,6 +92,10 @@ mw.usability.getMsg = function( key, args ) {
 mw.usability.testBrowser = function( map ) {
 	// Check over each browser condition to determine if we are running in a compatible client
 	var browser = map[$j( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$j.browser.name];
+	// if the browser is set to a boolean value, return that value
+	if ( typeof browser == 'boolean' ) {
+		return browser;
+	}
 	if ( typeof browser !== 'object' ) {
 		// Unknown, so we assume it's working
 		return true;
@@ -420,7 +424,7 @@ jQuery Browser Plugin
 			['PLAYSTATION 3', 'PS3']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3|docomo)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],
