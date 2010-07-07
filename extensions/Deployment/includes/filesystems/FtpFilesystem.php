@@ -27,9 +27,9 @@ class FtpFilesystem extends Filesystem {
 	/**
 	 * The FTP connection link.
 	 * 
-	 * @var resource
+	 * @var FTP resource or false
 	 */
-	protected $connection;
+	protected $connection = false;
 	
 	/**
 	 * Constructor.

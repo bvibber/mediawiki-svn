@@ -27,9 +27,9 @@ class Ssh2Filesystem extends Filesystem {
 	/**
 	 * The FTP connection link.
 	 * 
-	 * @var FTP resource
+	 * @var FTP resource or false
 	 */
-	protected $connection;
+	protected $connection = false;
 	
 	/**
 	 * The SFTP connection link.
@@ -95,6 +95,10 @@ class Ssh2Filesystem extends Filesystem {
 			$options['port'] = 21;
 		}
 		
+		if ( !array_key_exists( 'timeout', $options ) ) {
+			$options['timeout'] = 240;
+		}		
+		
 		// Store the options.
 		$this->options = $options;		
 	}
@@ -119,7 +123,7 @@ class Ssh2Filesystem extends Filesystem {
 		}
 
 		if ( $this->publicKeyAuthentication ) {
-			$ssh2_auth_pubkey_file = ssh2_auth_pubkey_file($this->link, $this->options['username'], $this->options['public_key'], $this->options['private_key'], $this->options['password'] );
+			$ssh2_auth_pubkey_file = ssh2_auth_pubkey_file( $this->link, $this->options['username'], $this->options['public_key'], $this->options['private_key'], $this->options['password'] );
 			
 			if ( !$ssh2_auth_pubkey_file ) {
 				$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-key-authentication-failed', $this->options['username'] ) );
@@ -307,5 +311,31 @@ class Ssh2Filesystem extends Filesystem {
 	public function writeToFile( $file, $contents ) {
 		
 	}	
+	
+	/**
+	 * Executes a command.
+	 * 
+	 * @param string $command
+	 */
+	protected function runCommand( $command ) {
+		if ( !$this->connection ) {
+			return false;
+		}
+		
+		if ( $stream = ssh2_exec( $this->connection, $command ) ) {
+			stream_set_blocking( $stream, true );
+			stream_set_timeout( $stream, $this->options['timeout'] );
+			
+			$data = stream_get_contents( $stream );
+			
+			fclose( $stream );
+
+			return $data;
+		}
+		else {
+			$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-command-failed', $command ) );
+			return false;			
+		}
+	}
 	
 }

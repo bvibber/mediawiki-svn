@@ -34,8 +34,9 @@ $messages['en'] = array(
 	'deploy-ssh2-username-required' => 'SSH username is required',
 	'deploy-ssh2-password-required' => 'SSH password or private key is required',
 	'deploy-ssh2-hostname-required' => 'SSH hostname is required',
-	'deploy-ftp-connect-failed' => 'Failed to connect to SSH2 server $1:$2',
+	'deploy-ssh2-connect-failed' => 'Failed to connect to SSH2 server $1:$2',
 	'deploy-ssh2-key-authentication-failed' => 'Public and private keys are incorrect for username $1',
 	'deploy-ssh2-password-authentication-failed' => 'Username or password incorrect for username $1',
+	'deploy-ssh2-command-failed' => 'Unable to perform command: $1',
 	
 );
