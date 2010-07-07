@@ -37,6 +37,7 @@ class Exif {
 	const UNDEFINED = 7;    //!< An 8-bit byte that can take any value depending on the field definition
 	const SLONG     = 9;    //!< A 32-bit (4-byte) signed integer (2's complement notation),
 	const SRATIONAL = 10;   //!< Two SLONGs. The first SLONG is the numerator and the second SLONG is the denominator.
+	const IGNORE    = -1;   // A fake value for things we don't want or don't support.
 
 	//@{
 	/* @var array
@@ -96,9 +97,7 @@ class Exif {
 	 *
 	 * @param $file String: filename.
 	 * @fixme the following are broke:
-	 * SubjectArea, ExifVersion, Flashpix Version (probably any Exif:Undefined with non 1 count)
-	 * SceneType, FileSource, MakerNote (we really don't want makerNote though),
-	 * ComponenentsConfiguration, and possibly others pending better testing.
+	 * SubjectArea, GPSAltitudeRef, possibly more, need more testing.
 	 *
 	 * DigitalZoomRatio = 0/0 is rejected. need to determine if thats valid.
 	 * possibly should treat 0/0 = 0. need to read exif spec on that.
@@ -106,6 +105,9 @@ class Exif {
 	function __construct( $file ) {
 		/**
 		 * Page numbers here refer to pages in the EXIF 2.2 standard
+		 *
+		 * Note, Exif::UNDEFINED is treated as a string, not as an array of bytes
+		 * so don't put a count parameter for any UNDEFINED values.
 		 *
 		 * @link http://exif.org/Exif2-2.PDF The Exif 2.2 specification
 		 */
@@ -157,20 +159,20 @@ class Exif {
 			'EXIF' => array(
 				# TODO: NOTE: Nonexistence of this field is taken to mean nonconformance
 				# to the EXIF 2.1 AND 2.2 standards
-				'ExifVersion' => array( Exif::UNDEFINED, 4 ),		# Exif version
-				'FlashPixVersion' => array( Exif::UNDEFINED, 4 ),	# Supported Flashpix version #p32
+				'ExifVersion' =>  Exif::UNDEFINED,			# Exif version
+				'FlashPixVersion' => Exif::UNDEFINED,			# Supported Flashpix version #p32
 
 				# Tags relating to Image Data Characteristics
 				'ColorSpace' => Exif::SHORT,				# Color space information #p32
 
 				# Tags relating to image configuration
-				'ComponentsConfiguration' => array( Exif::UNDEFINED, 1),	# Meaning of each component #p33
+				'ComponentsConfiguration' => Exif::UNDEFINED,			# Meaning of each component #p33
 				'CompressedBitsPerPixel' => Exif::RATIONAL,			# Image compression mode
 				'PixelYDimension' => Exif::SHORT.','.Exif::LONG,		# Valid image width
 				'PixelXDimension' => Exif::SHORT.','.Exif::LONG,		# Valid image height
 
 				# Tags relating to related user information
-				'MakerNote' => Exif::UNDEFINED,				# Manufacturer notes
+				'MakerNote' => Exif::IGNORE,				# Manufacturer notes
 				'UserComment' => Exif::UNDEFINED,			# User comments #p34
 
 				# Tags relating to related file information
@@ -189,7 +191,7 @@ class Exif {
 				'ExposureProgram' => Exif::SHORT,			# Exposure Program #p38
 				'SpectralSensitivity' => Exif::ASCII,			# Spectral sensitivity
 				'ISOSpeedRatings' => Exif::SHORT,			# ISO speed rating
-				'OECF' => Exif::UNDEFINED,				# Optoelectronic conversion factor
+				'OECF' => Exif::IGNORE,					# Optoelectronic conversion factor. Note: We don't have support for this atm.
 				'ShutterSpeedValue' => Exif::SRATIONAL,			# Shutter speed
 				'ApertureValue' => Exif::RATIONAL,			# Aperture
 				'BrightnessValue' => Exif::SRATIONAL,			# Brightness
@@ -202,7 +204,7 @@ class Exif {
 				'FocalLength' => Exif::RATIONAL,			# Lens focal length
 				'SubjectArea' => array( Exif::SHORT, 4 ),		# Subject area
 				'FlashEnergy' => Exif::RATIONAL,			# Flash energy
-				'SpatialFrequencyResponse' => Exif::UNDEFINED,		# Spatial frequency response
+				'SpatialFrequencyResponse' => Exif::IGNORE,		# Spatial frequency response. Not supported atm.
 				'FocalPlaneXResolution' => Exif::RATIONAL,		# Focal plane X resolution
 				'FocalPlaneYResolution' => Exif::RATIONAL,		# Focal plane Y resolution
 				'FocalPlaneResolutionUnit' => Exif::SHORT,		# Focal plane resolution unit #p46
@@ -211,7 +213,7 @@ class Exif {
 				'SensingMethod' => Exif::SHORT,				# Sensing method #p46
 				'FileSource' => Exif::UNDEFINED,			# File source #p47
 				'SceneType' => Exif::UNDEFINED,				# Scene type #p47
-				'CFAPattern' => Exif::UNDEFINED,			# CFA pattern
+				'CFAPattern' => Exif::IGNORE,				# CFA pattern. not supported atm.
 				'CustomRendered' => Exif::SHORT,			# Custom image processing #p48
 				'ExposureMode' => Exif::SHORT,				# Exposure mode #p48
 				'WhiteBalance' => Exif::SHORT,				# White Balance #p49
@@ -222,7 +224,7 @@ class Exif {
 				'Contrast' => Exif::SHORT,				# Contrast #p50
 				'Saturation' => Exif::SHORT,				# Saturation #p50
 				'Sharpness' => Exif::SHORT,				# Sharpness #p50
-				'DeviceSettingDescription' => Exif::UNDEFINED,		# Desice settings description
+				'DeviceSettingDescription' => Exif::IGNORE,		# Desice settings description. FIXME: this could maybe be supported.
 				'SubjectDistanceRange' => Exif::SHORT,			# Subject distance range #p51
 
 				'ImageUniqueID' => Exif::ASCII,				# Unique image ID
@@ -346,6 +348,88 @@ class Exif {
 			unset( $this->mFilteredExifData );
 		}
 
+		$this->toHex( 'FileSource', true );
+		$this->toHex( 'SceneType', true );
+
+		$this->charCodeString( 'UserComment' );
+		$this->charCodeString( 'GPSProcessingMethod');
+		$this->charCodeString( 'GPSAreaInformation' );
+		
+		//ComponentsConfiguration should really be an array instead of a string...
+		if ( isset ( $this->mFilteredExifData['ComponentsConfiguration'] ) ) {
+			$val = $this->mFilteredExifData['ComponentsConfiguration'];
+			$ccVals = array();
+			for ($i = 0; $i < strlen($val); $i++) {
+				$ccVals[$i] = ord( substr($val, $i, 1) );
+			}
+			$ccVals['_type'] = 'ol'; //this is for formatting later.
+			$this->mFilteredExifData['ComponentsConfiguration'] = $ccVals;
+		}
+
+	}
+	/**
+	* do userComment and similar. pg. 34 of exif standard.
+	* basically first 8 bytes is charset, rest is value.
+	* Needs more testing, as its unclear from exif standard if they mean
+	* utf-8, utf-16, or something else by 'unicode'.
+	* @param $prop String prop name.
+	* @todo this is in need of testing.
+	*/
+	function charCodeString ( $prop ) {
+		if ( isset( $this->mFilteredExifData[$prop] ) ) {
+
+			if ( strlen($this->mFilteredExifData[$prop]) <= 8 ) {
+				//invalid. Must be at least 9 bytes long.
+
+				$this->debug( $this->mFilteredExifData[$prop] , __FUNCTION__, false );
+				unset($this->mFilteredExifData[$prop]);
+				return;
+			}
+
+			$charCode = substr( $this->mFilteredExifData[$prop], 0, 8);
+			$val = substr( $this->mFilteredExifData[$prop], 8);
+			
+			
+			switch ($charCode) {
+				case "\x4A\x49\x53\x00\x00\x00\x00\x00":
+					//JIS
+					$val = iconv("Shift-JIS", "UTF-8//IGNORE", $val);
+					break;
+				default: //unicode or undefined. leave as is.
+					break;
+			}
+			
+			//trim and check to make sure not only whitespace.
+			$val = trim($val);
+			if ( strlen( $val ) === 0 ) {
+				//only whitespace.
+				$this->debug( $this->mFilteredExifData[$prop] , __FUNCTION__, "$prop: Is only whitespace" );
+				unset($this->mFilteredExifData[$prop]);
+				return;
+			}
+
+			//all's good.
+			$this->mFilteredData[$prop] = $val;
+		}
+	}
+	/**
+	* Convert an Exif::UNDEFINED from a raw binary string
+	* to a hex string. This is sometimes needed depending on
+	* the type of UNDEFINED field
+	* @param $prop String name of property
+	* @param $stripLeadingZero boolean should it strip first leading zero
+	*	if present on result (bit of a hack).
+	*/
+	function toHex ( $prop, $stripLeadingZero = false ) {
+		if ( isset( $this->mFilteredExifData[$prop] ) ) {
+			$val = bin2hex( $this->mFilteredExifData[$prop] );
+			if ( $stripLeadingZero ) {
+				if (substr( $val, 0, 1) === '0') {
+					$val = substr( $val, 1);
+				}
+			}
+			$this->mFilteredExifData[$prop] = $val;
+		}
 	}
 	/**
 	* Convert gps in exif form to a single floating point number
@@ -498,6 +582,13 @@ class Exif {
 	}
 
 	function isUndefined( $in ) {
+
+		$this->debug( $in, __FUNCTION__, true );
+		return true;
+
+		/* Exif::UNDEFINED means string of bytes
+		so this validation does not make sense.
+		comment out for now.
 		if ( !is_array( $in ) && preg_match( '/^\d{4}$/', $in ) ) { // Allow ExifVersion and FlashpixVersion
 			$this->debug( $in, __FUNCTION__, true );
 			return true;
@@ -505,6 +596,7 @@ class Exif {
 			$this->debug( $in, __FUNCTION__, false );
 			return false;
 		}
+		*/
 	}
 
 	function isSlong( $in ) {
@@ -589,6 +681,9 @@ class Exif {
 			case (string)Exif::SHORT.','.Exif::LONG:
 				$this->debug( $val, __FUNCTION__, $debug );
 				return $this->isShort( $val ) || $this->isLong( $val );
+			case (string)Exif::IGNORE:
+				$this->debug( $val, __FUNCTION__, $debug );
+				return false;
 			default:
 				$this->debug( $val, __FUNCTION__, "The tag '$tag' is unknown" );
 				return false;
