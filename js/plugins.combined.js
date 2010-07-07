@@ -6794,7 +6794,7 @@ fn: {
 							$section.fadeIn( 'fast' );
 							if ( $section.hasClass( 'loading' ) ) {
 								// Loading of this section was deferred, load it now
-								$this = $(this);
+								var $this = $(this);
 								$this.addClass( 'current loading' );
 								setTimeout( function() {
 									$section.trigger( 'loadSection' );
