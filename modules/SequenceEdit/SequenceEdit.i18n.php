@@ -11,9 +11,17 @@ $messages['en'] = array(
 	'mwe-sequenceedit-loading_timeline' => 'Loading timeline ...',
 	'mwe-sequenceedit-loading_player' => 'Loading player...',
 	'mwe-sequenceedit-loading_edit' => 'Loading edit...',
+	'mwe-sequenceedit-no_selected_resource' => '<h3>No resource selected</h3> Select a clip to enable editing.',
 	'mwe-sequenceedit-no-sequence-start-new' => 'Empty sequence, [$1 browser for assets] to create a new sequence',
 	'mwe-sequenceedit-video-track' => 'Video track',
 	'mwe-sequenceedit-audio-track' => 'Audio track',
+
+	'mwe-sequenceedit-trim-clip' => 'Trim clip',
+	'mwe-sequenceedit-preview' => 'Preview',
+	'mwe-sequenceedit-apply-changes' => 'Apply changes',
+	
+	'mwe-sequenceedit-start-time' => 'Start time',
+	'mwe-sequenceedit-clip-duration' => 'Clip duration',
 
 	'mwe-sequenceedit-transition_in' => 'Transition in',
 	'mwe-sequenceedit-transition_out' => 'Transition out',
@@ -29,7 +37,7 @@ $messages['en'] = array(
 	'mwe-sequenceedit-menu_options' => 'Options',
 	'mwe-sequenceedit-loading_user_rights' => 'Loading user rights ...',
 	'mwe-sequenceedit-no_edit_permissions' => 'You do not have permissions to save changes to this sequence',
-	'mwe-sequenceedit-edit_clip' => 'Edit clip',
+
 	'mwe-sequenceedit-edit_save' => 'Save sequence changes',
 	'mwe-sequenceedit-saving_wait' => 'Save in progress (please wait)',
 	'mwe-sequenceedit-save_done' => 'Save complete',
@@ -44,8 +52,7 @@ $messages['en'] = array(
 	'mwe-sequenceedit-pixle2sec' => 'pixels to seconds',
 	'mwe-sequenceedit-rmclip' => 'Remove clip',
 	'mwe-sequenceedit-clip_in' => 'clip in',
-	'mwe-sequenceedit-clip_out' => 'clip out',	
-	'mwe-sequenceedit-no_selected_resource' => '<h3>No resource selected</h3> Select a clip to enable editing.',
+	'mwe-sequenceedit-clip_out' => 'clip out',		
 	'mwe-sequenceedit-error_edit_multiple' => '<h3>Multiple resources selected</h3> Select a single clip to edit it.',
 	'mwe-sequenceedit-editor_options' => 'Editor options',
 	'mwe-sequenceedit-editor_mode' => 'Editor mode',

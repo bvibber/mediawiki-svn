@@ -60,6 +60,22 @@ mw.SequenceEditPlayer.prototype = {
 	
 	},
 	
+	previewSmilClip: function(){	
+		// Set the borders to 'red' to indicate preview
+		this.sequenceEdit.getContainer().find( '.mwseq-player' )
+			.css('border', 'solid thin red');
+		
+		// Get a special target of this subsmil node:  
+		
+	},
+	
+	closePreivew: function(){
+		// restore border
+		this.sequenceEdit.getContainer().find( '.mwseq-player' )
+			.css({'border': null});
+	},
+	
+	
 	resizePlayer: function(){		
 		mw.log("SequenceEditPlayer:: resizePlayer: " + $j('#' + this.getSmilPlayerId() ).length );		
 		$j('#' + this.getSmilPlayerId() ).get(0)

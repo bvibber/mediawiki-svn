@@ -11,6 +11,7 @@
 		"mw.SequenceEditPlayer" : "mw.SequenceEditPlayer.js",
 		"mw.SequenceEditTimeline" : "mw.SequenceEditTimeline.js",
 		"mw.SequenceEditKeyBindings" : "mw.SequenceEditKeyBindings.js",
+		"mw.SequenceEditTools" : "mw.SequenceEditTools.js",
 		
 		"mw.FirefoggRender"	: "mw.FirefoggRender.js",
 		"$j.fn.layout"		: "ui.layout/ui.layout-1.2.0.js",
@@ -38,14 +39,16 @@
 		// Make sure we have the required mwEmbed libs:			
 		return [
 			[	// Load the EmbedPlayer Module ( includes lots of dependent classes )   
-				'EmbedPlayer'
+				'EmbedPlayer',
+				'mw.SequenceEdit'
 			],		
 			[										
 				'$j.contextMenu',
-				'mw.SequenceEdit',
+						
 				'mw.SequenceEditPlayer',
 				'mw.SequenceEditTimeline',
 				'mw.SequenceEditKeyBindings',
+				'mw.SequenceEditTools',
 				
 				'mw.style.SequenceEdit'
 			],

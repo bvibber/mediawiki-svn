@@ -199,7 +199,9 @@ mw.SequenceEditTimeline.prototype = {
 	},
 	// calls the edit interface passing in the selected clip:
 	editClip: function( selectedClip ){
-		
+		// get the smil element for the edit tool:
+		var smilClip = this.sequenceEdit.getSmil().$dom.find('#' + $j( selectedClip ).data('smilId') );
+		this.sequenceEdit.getEditTools().drawClipEditTool(smilClip, 'trim');
 	},
 	
 	/**
@@ -217,12 +219,13 @@ mw.SequenceEditTimeline.prototype = {
 			});			
 			// Invalidate / update embedPlayer duration: 
 			this.sequenceEdit.getEmbedPlayer().getDuration( true );
-		}		
+		}
 	},
 	/**
 	 * Remove selected clips and update the smil player
 	 */
-	removeSelectedClips: function(  ){				
+	removeSelectedClips: function(  ){		
+		var smil = this.sequenceEdit.getSmil();
 		// modify the smil.dom and rebuild
 		this.getTimelineContainer().find( '.selectedClip' ).each(function( inx, selectedClip ){
 			// Remove from smil dom:
@@ -452,11 +455,7 @@ mw.SequenceEditTimeline.prototype = {
 		}
 		return  $j( sequenceNode ).data('id');		
 	}
-}
-	
-	
-	
-	
+}	
 	
 	
 } )( window.mw );	

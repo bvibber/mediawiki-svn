@@ -68,8 +68,9 @@ mw.SequenceEdit.prototype = {
 				this[optionName] = mw_sequenceedit_default_options[ optionName ]
 			}
 		}
-		// For style properties assgin top level mwe-sequence-edit class
-		this.getContainer().addClass('mwe-sequence-edit');
+		// For style properties assign top level mwe-sequence-edit class
+		this.getContainer()
+			.addClass('mwe-sequence-edit');
 	},
 	
 	// Return the container id for the sequence
@@ -116,7 +117,7 @@ mw.SequenceEdit.prototype = {
 			
 		});
 		
-		// Add deafult clip edit 
+		// Add default clip edit 
 		
 	},
 	getPlayer: function(){
@@ -135,17 +136,25 @@ mw.SequenceEdit.prototype = {
 		return this.smil;
 	},
 	getTimeline: function(){
-		if( ! this.timeline ){
+		if( !this.timeline ){
 			this.timeline = new mw.SequenceEditTimeline( this );			
 		}
 		return this.timeline;
 	},
+	getEditTools: function(){
+		if( !this.editTools ){
+			this.editTools = new mw.SequenceEditTools( this );
+		}
+		return this.editTools;
+	},
+	
 	getKeyBindings:function(){
 		if( ! this.keyBindings ){
 			this.keyBindings = new mw.SequenceEditKeyBindings( this );
 		}
 		return this.keyBindings;
 	},
+	
 	// Apply the resizable layout bindings and default sizes		
 	applyLayoutBindings: function(){
 		var _this = this;
@@ -200,7 +209,7 @@ mw.SequenceEdit.prototype = {
 			.append( 			
 				$j('<div />')
 					.addClass( "ui-layout-center mwseq-edit" )
-					.text( gM('mwe-sequenceedit-loading_edit') ),
+					.html( this.getEditTools().defaultText ),
 				$j('<div />')
 					.addClass( "ui-layout-east mwseq-player" )
 					.text( gM('mwe-sequenceedit-loading_player') ),	
@@ -210,7 +219,9 @@ mw.SequenceEdit.prototype = {
 			)
 		).children();
 	},
-	
+	getEditToolTarget: function(){
+		return this.getContainer().find( '.mwseq-edit' );
+	},
 	getContainer: function(){
 		return $j( this.interfaceContainer );
 	}

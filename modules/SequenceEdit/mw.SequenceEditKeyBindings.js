@@ -2,6 +2,22 @@
 * Stores the key bindings
 */
 
+/**
+ * jQuery helper for input focus binding 
+ */
+( function( $ ) {
+	$.fn.sequenceEditInput = function( sequenceEdit ) {
+		$j(this)
+			.focus( function(){
+				sequenceEdit.getKeyBindings().onFocus();
+			})
+			.blur( function(){
+				sequenceEdit.getKeyBindings().onBlur();
+			})
+		return this;
+	}		
+} )( jQuery );
+
 mw.SequenceEditKeyBindings = function( sequenceEdit ) {
 	return this.init( sequenceEdit );
 };
@@ -24,7 +40,7 @@ mw.SequenceEditKeyBindings.prototype = {
 		switch( eventType ){		
 			case 'copy':
 				this.copyEvent = callback;
-			break;
+				break;
 			case 'cut':
 				this.cutEvent = callback;
 				break;
@@ -40,11 +56,11 @@ mw.SequenceEditKeyBindings.prototype = {
 		}
 		return this;
 	},	
-	onInputFocus: function( ){
-		_this.inputFocus = true;
+	onFocus: function( ){		
+		this.inputFocus = true;		
 	},
-	onInputBlur: function(){
-		_this.inputFocus = false;
+	onBlur: function(){
+		this.inputFocus = false;
 	},	
 	setupKeyBindigs: function(){
 		var _this = this;
