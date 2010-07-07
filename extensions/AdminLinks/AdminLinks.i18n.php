@@ -22,8 +22,8 @@ $messages['en'] = array(
 	'adminlinks_editmainpagename' => 'Edit name of main page',
 	'adminlinks_users' => 'Users',
 	'adminlinks_createuser' => 'Create a user',
-	'adminlinks_browsesearch' => 'Browsing and searching',
-	'adminlinks_importexport' => 'Importing and exporting',
+	'adminlinks_browsesearch' => 'Browse and search',
+	'adminlinks_importexport' => 'Import and export',
 	'right-adminlinks' => 'See the link to [[Special:AdminLinks|Admin links]]',
 );
 
