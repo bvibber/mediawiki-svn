@@ -27,9 +27,16 @@ class Ssh2Filesystem extends Filesystem {
 	/**
 	 * The FTP connection link.
 	 * 
-	 * @var resource
+	 * @var FTP resource
 	 */
 	protected $connection;
+	
+	/**
+	 * The SFTP connection link.
+	 * 
+	 * @var SSH2 SFTP resource
+	 */
+	protected $sftpConnection;	
 	
 	/**
 	 * Indicates if public key authentication is used instead of a regular password.
@@ -68,12 +75,17 @@ class Ssh2Filesystem extends Filesystem {
 		// TODO: validate that both keys are set (error if only one)
 		$this->publicKeyAuthentication = array_key_exists( 'public_key', $options ) && array_key_exists( 'private_key', $options );
 		
+		if ( $this->publicKeyAuthentication ) {
+			$options['hostkey'] = array( 'hostkey' => 'ssh-rsa' );
+		}
+		
 		// Regular authentication needs a username.
 		if ( !$this->publicKeyAuthentication && !array_key_exists( 'username', $options ) ) {
 			$this->addError( 'deploy-ssh2-username-required' );
 		}
 		
 		// Regular authentication needs a password.
+		// TODO: if publick key: make sure the key is not empty
 		if ( !$this->publicKeyAuthentication && !array_key_exists( 'password', $options ) ) {
 			$this->addError( 'deploy-ssh2-password-required' );
 		}		
@@ -91,7 +103,41 @@ class Ssh2Filesystem extends Filesystem {
 	 * @see Filesystem::connect
 	 */
 	public function connect() {
-		
+		if ( $this->publicKeyAuthentication ) {
+			wfSuppressWarnings();
+			$this->connection = ssh2_connect( $this->options['hostname'], $this->options['port'], $this->options['hostkey'] );
+			wfRestoreWarnings();
+		} else {
+			wfSuppressWarnings();
+			$this->connection = ssh2_connect( $this->options['hostname'], $this->options['port'] );
+			wfRestoreWarnings();
+		}
+
+		if ( !$this->connection ) {
+			$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-connect-failed', $this->options['hostname'], $this->options['port'] ) );
+			return false;
+		}
+
+		if ( $this->publicKeyAuthentication ) {
+			$ssh2_auth_pubkey_file = ssh2_auth_pubkey_file($this->link, $this->options['username'], $this->options['public_key'], $this->options['private_key'], $this->options['password'] );
+			
+			if ( !$ssh2_auth_pubkey_file ) {
+				$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-key-authentication-failed', $this->options['username'] ) );
+				return false;
+			}			
+
+		} else {
+			$ssh2_auth_password = ssh2_auth_password( $this->connection, $this->options['username'], $this->options['password'] );
+			
+			if ( !$ssh2_auth_password ) {
+				$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-password-authentication-failed', $this->options['username'] ) );
+				return false;
+			}
+		}
+
+		$this->sftpConnection = ssh2_sftp( $this->connection );
+
+		return true;		
 	}
 	
 	/**
