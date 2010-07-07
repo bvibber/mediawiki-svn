@@ -483,6 +483,9 @@ background-position:100% 50%;
 body.rtl #wikieditor-toolbar-link-int-target-status-external{
 background-image:url( ../images/wikiEditor/dialogs/insert-link-external-rtl.png?1);
 }
+body.rtl #wikieditor-toolbar-reference-dialog label{
+float:right;
+}
 .wikiEditor-template-dialog-fields label{
 text-transform:capitalize;
 float:left;

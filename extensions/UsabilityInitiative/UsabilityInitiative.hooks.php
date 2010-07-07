@@ -23,7 +23,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector.expandableSearch.css', 'version' => 8 ),
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 2 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 14 ),
-				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 29 ),
+				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 30 ),
 				array( 'src' => 'css/wikiEditor.preview.css', 'version' => 2 ),
 				array( 'src' => 'css/wikiEditor.previewDialog.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.toc.css', 'version' => 31 ),
@@ -31,11 +31,11 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 113 ),
+				array( 'src' => 'css/combined.css', 'version' => 114 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 113 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 114 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -85,7 +85,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins.combined.js', 'version' => 448 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 458 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 459 ),
 			),
 		),
 	);

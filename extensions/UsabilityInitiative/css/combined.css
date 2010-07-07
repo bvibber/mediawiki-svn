@@ -505,6 +505,9 @@ body.rtl #wikieditor-toolbar-link-int-target-status-external {
 body.rtl #wikieditor-toolbar-link-int-target-status-external {
 	background-image: url( ../images/wikiEditor/dialogs/insert-link-external-rtl.png?1);
 }
+body.rtl #wikieditor-toolbar-reference-dialog label {
+	float: right;
+}
 /* Template Editor Dialogs */
 .wikiEditor-template-dialog-fields label {
 	text-transform: capitalize;
