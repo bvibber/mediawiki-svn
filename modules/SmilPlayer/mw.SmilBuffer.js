@@ -298,13 +298,14 @@ mw.SmilBuffer.prototype = {
 			case 'video':
 				this.videoBufferSeek( smilElement, absoluteTime, callback )
 			break;
-			case 'image':
+			case 'img':
 				this.loadImageCallback( smilElement, callback );
 			break;
 			default:
 				// Assume other formats are directly displayed
+				callback();
 			break;
-		}
+		}		
 	},
 	
 	/**
@@ -367,12 +368,17 @@ mw.SmilBuffer.prototype = {
 		}, false);
 	},
 	
-	loadImageCallback: function ( smilElement, callback ){
+	loadImageCallback: function ( smilElement, callback ){		
 		var assetId = this.smil.getAssetId( smilElement );
 		// Make sure the image is in the dom ( load it )
 		this.loadElement( smilElement );
-		// add the jQuery "loaded" callback
-		$j( '#' +  assetId).loaded( callback );		
+		mw.log("loadImageCallback:: drwa img: " + assetId  + $j( '#' +  assetId ).length );
+		// If we already have naturalHeight no need for loading callback 
+		if( $j( '#' +  assetId).get(0).naturalHeight ){
+			callback();
+		}else {
+			$j( '#' +  assetId).load( callback );
+		}
 	},
 	
 	videoBufferSeek: function ( smilElement, seekTime, callback ){

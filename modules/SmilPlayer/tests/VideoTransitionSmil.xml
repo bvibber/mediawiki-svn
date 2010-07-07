@@ -24,7 +24,7 @@
   <body>
     <seq>
        <ref type="text/html" dur="4" uri="Template:My_Video_Intro_Text"><![CDATA[
-<h3> <span class="mw-headline" id="cat">cat</span></h3>
+<h1> <span class="mw-headline" id="cat">cat</span></h1>
 <div class="thumb tright"><div class="thumbinner" style="width:102px;"><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Nos_kota.jpg/120px-Nos_kota.jpg"></div></div>
 <div style="color:gray"> MY Date: 21 January, 2010 00:45</div>
 

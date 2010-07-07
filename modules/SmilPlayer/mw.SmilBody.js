@@ -231,7 +231,7 @@ mw.SmilBody.prototype = {
 			var nodeDuration = _this.getNodeDuration( $node );
 			
 			// Check if element is in range: 
-			if( time >= startOffset && time <= ( startOffset + nodeDuration) ){
+			if( time >= startOffset && time < ( startOffset + nodeDuration) ){
 				if( typeof inRangeCallback == 'function' ){
 					inRangeCallback( $node );
 				}	

@@ -230,14 +230,20 @@ mw.EmbedPlayerSmil = {
 	/**
 	* Get the duration of smil document. 
 	*/
-	getDuration: function(){
+	getDuration: function( forceRefresh ){
+		if( forceRefresh )
+			this.duration = null;
 		if( !this.duration ){
 			if( this.smil ){
-				this.duration = this.smil.getDuration();
+				this.duration = this.smil.getDuration( forceRefresh  );
 			} else {
 				this.duration = this.parent_getDuration();
 			}
 		}
+		// If we forceRefresh duration stop playback if playing, so we can update the interface.
+		if( forceRefresh )
+			this.stop();
+		
 		return this.duration;
 	},
 	

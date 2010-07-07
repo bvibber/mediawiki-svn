@@ -239,7 +239,6 @@ mw.Smil.prototype = {
 		if (!this.$dom) {
 			return 0;
 		}
-
 		if (!this.duration || forceRefresh ) {
 			this.duration = this.getBody().getDuration( forceRefresh );
 		}
@@ -252,10 +251,11 @@ mw.Smil.prototype = {
 		this.getLayout().getRootLayout().find( '#' + this.getAssetId( $smilElement ) )
 			.remove();
 		
-		// remove from dom
+		// Remove from dom
 		$smilElement.remove();
 		
-		// xxx todo invalidate dom duration cache 
+		// Invalidate dom duration cache 
+		this.duration = null;
 	},
 	/**
 	 * Some Smil Utility functions
@@ -279,7 +279,11 @@ mw.Smil.prototype = {
 		}
 		return this.embedPlayer.id + '_' + $j(smilElement).attr('id');
 	},
-
+	
+	getEmbedPlayer: function(){
+		return this.embedPlayer;
+	},
+	
 	/**
 	 * Get an absolute path to asset based on the smil URL
 	 * 
