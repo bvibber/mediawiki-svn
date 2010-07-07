@@ -26,6 +26,8 @@ class AdminLinks extends SpecialPage {
 		// 'general' section
 		$general_section = new ALSection( wfMsg( 'adminlinks_general' ) );
 		$main_row = new ALRow( 'main' );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Statistics' ) );
+		$main_row->addItem( ALItem::newFromSpecialPage( 'Version' ) );
 		$main_row->addItem( ALItem::newFromSpecialPage( 'Specialpages' ) );
 		$main_row->addItem( ALItem::newFromSpecialPage( 'Allmessages' ) );
 		$main_row->addItem( ALItem::newFromEditLink( 'Sidebar', wfMsg( 'adminlinks_editsidebar' ) ) );
