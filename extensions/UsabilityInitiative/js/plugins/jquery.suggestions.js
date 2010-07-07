@@ -167,7 +167,7 @@ $.suggestions = {
 							} else {
 								// Add <span> with text
 								if( context.config.highlightInput ) {
-									matchedText = text.substr( 0, context.data.prevText.length );
+									matchedText = context.data.prevText;
 								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )

@@ -62,6 +62,7 @@
 	color: white;
 	color: HighlightText;
 }
-.autoellipsis-matched {
+.autoellipsis-matched,
+.highlight {
 	font-weight: bold;
 }

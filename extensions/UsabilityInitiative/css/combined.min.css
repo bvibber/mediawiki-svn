@@ -60,7 +60,8 @@ background-color:silver;
 color:white;
 color:HighlightText;
 }
-.autoellipsis-matched{
+.autoellipsis-matched,
+.highlight{
 font-weight:bold;
 }
 #mw-panel.collapsible-nav div.portal{

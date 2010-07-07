@@ -62,7 +62,8 @@
 	color: white;
 	color: HighlightText;
 }
-.autoellipsis-matched {
+.autoellipsis-matched,
+.highlight {
 	font-weight: bold;
 }/* Prototype code to show collapsing left nav options */
 #mw-panel.collapsible-nav div.portal {

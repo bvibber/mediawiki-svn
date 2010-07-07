@@ -245,32 +245,15 @@ $.fn.autoEllipsis = function( options ) {
 		// protected text element - the width of this element is counted, but next is never trimmed from it
 		var $protectedText = null;
 
-		if ( options.matchText ) {
-			var text = $this.text();
-			var matchedText = options.matchText;
-			$trimmableText =  $( '<span />' )
-				.css( 'whiteSpace', 'nowrap' )
-				.addClass( 'autoellipsis-trimmed' )
-				.text( $this.text().substr( matchedText.length, $this.text().length ) );
-			$protectedText = $( '<span />' )
-				.addClass( 'autoellipsis-matched' )
-				.css( 'whiteSpace', 'nowrap' )
-				.text( options.matchText );
-			$container
-				.empty()
-				.append( $protectedText )
-				.append( $trimmableText );
+		if ( options.hasSpan ) {
+			$trimmableText = $this.children( options.selector );
 		} else {
-			if ( options.hasSpan ) {
-				$trimmableText = $this.children( options.selector );
-			} else {
-				$trimmableText = $( '<span />' )
-					.css( 'whiteSpace', 'nowrap' )
-					.text( $this.text() );
-				$this
-					.empty()
-					.append( $trimmableText );
-			}
+			$trimmableText = $( '<span />' )
+				.css( 'whiteSpace', 'nowrap' )
+				.text( $this.text() );
+			$this
+				.empty()
+				.append( $trimmableText );
 		}
 		
 		var text = $container.text();
@@ -348,6 +331,7 @@ $.fn.autoEllipsis = function( options ) {
 			$container.attr( 'title', text );
 		}
 		if ( options.matchText ) {
+			$container.highlightText( options.matchText );
 			matchTextCache[text][options.matchText][w] = $container.html();
 		} else {
 			cache[text][w] = $container.html();
@@ -1145,7 +1129,7 @@ $.suggestions = {
 							} else {
 								// Add <span> with text
 								if( context.config.highlightInput ) {
-									matchedText = text.substr( 0, context.data.prevText.length );
+									matchedText = context.data.prevText;
 								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )
