@@ -37,6 +37,10 @@ require_once( 'FiveUpgrade.inc' );
 
 class ImageBuilder extends FiveUpgrade {
 	function ImageBuilder( $dryrun = false ) {
+		global $wgUpdateCompatibleMetadata;
+		//make sure to update old, but compatible img_metadata fields.
+		$wgUpdateCompatibleMetadata = true;
+
 		parent::FiveUpgrade();
 
 		$this->maxLag = 10; # if slaves are lagged more than 10 secs, wait
