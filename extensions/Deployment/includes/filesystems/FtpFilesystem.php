@@ -27,18 +27,18 @@ class FtpFilesystem extends Filesystem {
 	/**
 	 * The FTP connection link.
 	 * 
-	 * @var unknown_type
+	 * @var resource
 	 */
 	protected $connection;
 	
 	/**
 	 * Constructor.
+	 * 
+	 * @param array $options
 	 */
-	public function __construct( $options ) {
-		$this->options = $options;
-		
+	public function __construct( array $options ) {
 		// Check if possible to use ftp functions.
-		if ( !extension_loaded('ftp') ) {
+		if ( !extension_loaded( 'ftp' ) ) {
 			$this->addError( 'deploy-ftp-not-loaded' );
 			return false;
 		}

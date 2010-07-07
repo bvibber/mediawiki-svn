@@ -18,10 +18,73 @@
 class Ssh2Filesystem extends Filesystem {
 	
 	/**
-	 * Constructor.
+	 * A list of options.
+	 * 
+	 * @var array
 	 */
-	public function __construct() {
+	protected $options = array();
+	
+	/**
+	 * The FTP connection link.
+	 * 
+	 * @var resource
+	 */
+	protected $connection;
+	
+	/**
+	 * Indicates if public key authentication is used instead of a regular password.
+	 * 
+	 * @var boolean
+	 */
+	protected $publicKeyAuthentication;
+	
+	/**
+	 * Constructor.
+	 * 
+	 * @param array $options
+	 */
+	public function __construct( array $options ) {
+		// Check if possible to use ssh2 functions.
+		if ( !extension_loaded( 'ssh2' ) ) {
+			$this->addError( 'deploy-ssh2-not-loaded' );
+			return false;
+		}
 		
+		// Check if function stream_get_contents is available.
+		if ( !function_exists( 'stream_get_contents' ) ) {
+			$this->addError( 'deploy-ssh2-no-stream-get-contents' );
+			return false;
+		}		
+		
+		// Check for missing required options.		
+		if ( !array_key_exists( 'password', $options ) ) {
+			$this->addError( 'deploy-ssh2-password-required' );
+		}	
+
+		if ( !array_key_exists( 'hostname', $options ) ) {
+			$this->addError( 'deploy-ssh2-hostname-required' );
+		}
+
+		// TODO: validate that both keys are set (error if only one)
+		$this->publicKeyAuthentication = array_key_exists( 'public_key', $options ) && array_key_exists( 'private_key', $options );
+		
+		// Regular authentication needs a username.
+		if ( !$this->publicKeyAuthentication && !array_key_exists( 'username', $options ) ) {
+			$this->addError( 'deploy-ssh2-username-required' );
+		}
+		
+		// Regular authentication needs a password.
+		if ( !$this->publicKeyAuthentication && !array_key_exists( 'password', $options ) ) {
+			$this->addError( 'deploy-ssh2-password-required' );
+		}		
+		
+		// Set default option values for those not provided.
+		if ( !array_key_exists( 'port', $options ) ) {
+			$options['port'] = 21;
+		}
+		
+		// Store the options.
+		$this->options = $options;		
 	}
 	
 	/**
