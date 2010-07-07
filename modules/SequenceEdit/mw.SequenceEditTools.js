@@ -20,7 +20,7 @@ mw.SequenceEditTools.prototype = {
 			'title': gM('mwe-sequenceedit-trim-clip'),
 			'editWidgets' : [ 'trimTimeline' ], 
 			'editableAttributes' : ['clipBegin','dur' ],			
-			'editActions' : ['preview', 'apply', 'cancel']
+			'editActions' : ['preview', 'cancel']
 		}
 	},
 	editableAttributes:{
@@ -38,7 +38,13 @@ mw.SequenceEditTools.prototype = {
 			update : function( _this, smilClip, attributeName, value){
 				// Validate time
 				var seconds = _this.sequenceEdit.getSmil().parseTime( value );
-				$j( smilClip ).attr( attributeName, mw.seconds2npt( seconds ) )
+				$j( smilClip ).attr( attributeName, mw.seconds2npt( seconds ) );
+				// Update the clip duration :
+				_this.sequenceEdit.getEmbedPlayer().getDuration( true );
+				// Seek to "this clip" 
+				_this.sequenceEdit.getEmbedPlayer().setCurrentTime( 
+					$j( smilClip ).data('startOffset')
+				);
 			},			
 			getSmilVal : function( _this, smilClip, attributeName ){
 				var smil = _this.sequenceEdit.getSmil();	
@@ -55,10 +61,10 @@ mw.SequenceEditTools.prototype = {
 			'icon' : 'play',
 			'title' : gM('mwe-sequenceedit-preview'),
 			'action': function( _this, smilClip, toolId){				
-				//_this.sequenceEdit.getPlayer().previewClip( smilClip );
+				_this.sequenceEdit.getPlayer().previewClip( smilClip );
 			}
 		},
-		'apply' :{
+		/*'apply' :{
 			'icon' : 'check',
 			'title' : gM('mwe-sequenceedit-apply-changes'),
 			'action': function( _this, smilClip, toolId){
@@ -67,7 +73,7 @@ mw.SequenceEditTools.prototype = {
 					_this.defaultText
 				)
 			}
-		},
+		},*/
 		'cancel':{
 			'icon': 'close',
 			'title' : gM('mwe-cancel'),
@@ -109,7 +115,7 @@ mw.SequenceEditTools.prototype = {
 		//for( var i =0 ; i < tool.editWidgets.length ; i ++ ){			
 		//}	
 		
-		// Build out the attritube  list:
+		// Build out the attribute  list:
 		for( var i=0; i < tool.editableAttributes.length ; i++ ){
 			attributeName = tool.editableAttributes[i];
 			$target.append( 
@@ -127,8 +133,7 @@ mw.SequenceEditTools.prototype = {
 			)	
 		}
 	},
-	getEditAction: function( smilClip, toolId, editActionId ){
-		
+	getEditAction: function( smilClip, toolId, editActionId ){		
 		if(! this.editActions[ editActionId ]){
 			mw.log("Error: getEditAction: " + editActionId + ' not found ');
 			return ;
@@ -192,7 +197,7 @@ mw.SequenceEditTools.prototype = {
 							smilClip, 
 							attributeName, 
 							$j( this ).val() 
-					);
+					);										
 				})
 			);
 	},	

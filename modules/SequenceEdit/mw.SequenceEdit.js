@@ -58,8 +58,9 @@ mw.SequenceEdit.prototype = {
 	id: null, 
 	
 	init: function( options ){
-		if(!options)
+		if(!options){
 			options = {};
+		}
 		//	Validate and set default options :
 		for( var optionName in mw_sequenceedit_default_options ){
 			if( typeof options[ optionName] != 'undefined'){
@@ -90,8 +91,9 @@ mw.SequenceEdit.prototype = {
 	getSmilSource: function(){
 		return this.smilSource;
 	},
+	
 	/**
-	 * draw the initial sequence ui, uses ui.layout for adjustable layout  
+	 * Draw the initial sequence ui, uses ui.layout for adjustable layout  
 	 */
 	drawUI: function( ){
 		var _this = this;

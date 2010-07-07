@@ -17,6 +17,9 @@ mw.EmbedPlayerSmil = {
 	// Store the actual play time
 	smilPlayTime: 0,
 	
+	// Flag to register the player being embedd
+	smilPlayerEmbedded: false,
+	
 	// Store the pause time 
 	smilPauseTime: 0,
 	
@@ -45,9 +48,14 @@ mw.EmbedPlayerSmil = {
 	*/
 	doEmbedPlayer: function() {
 		var _this = this;
-		mw.log("EmbedPlayerSmil::doEmbedPlayer: " + this.id ) ;
+		// check if we have already embed the player:
+		if( this.smilPlayerEmbedded ){
+			return; 
+		}
+		this.smilPlayerEmbedded = true;
+		mw.log("EmbedPlayerSmil::doEmbedPlayer: " + this.id + " time:" + this.smilPlayTime ) ;
 				
-		this.setCurrentTime( 0, function(){
+		this.setCurrentTime( this.smilPlayTime, function(){
 			mw.log("EmbedPlayerSmil::doEmbedPlayer:: render callback ready " );
 		}); 				
 	},
@@ -72,9 +80,9 @@ mw.EmbedPlayerSmil = {
 			.attr('id', 'loadingSpinner_' + this.id )			
 		// Start seek
 		this.controlBuilder.onSeek();
-		this.smilPlayTime = time;
+		this.smilPlayTime = time;		
 		var _this = this;
-		this.getSmil( function( smil ){	
+		this.getSmil( function( smil ){				
 			smil.renderTime( time, function(){
 				//mw.log( "setCurrentTime:: renderTime callback" );
 				$j('#loadingSpinner_' + _this.id ).remove();
@@ -111,21 +119,22 @@ mw.EmbedPlayerSmil = {
 	
 	play: function(){
 		var _this = this;
-		mw.log(" EmbedPlayerSmil::play " );		
-
+		mw.log(" EmbedPlayerSmil::play " + _this.smilPlayTime );		
 		// Update the interface
 		this.parent_play();
 		
 		// Make sure this.smil is ready : 
-		this.getSmil( function( smil ){
-			// update the smil element
-			_this.smil = smil;
-			
-			// Start buffering the movie if not already doing so: 
+		this.getSmil( function( smil ){			
+			// Start buffering the movie 
 			_this.smil.startBuffer();
 			
 			// Set start clock time: 		
-			_this.clockStartTime = new Date().getTime();							
+			_this.clockStartTime = new Date().getTime();
+			// Update the pause time:
+			_this.smilPauseTime = 0;
+						
+			// Sync with current smilPlayTime
+			_this.clockStartTime = _this.clockStartTime -( _this.smilPlayTime * 1000 );
 			
 			// Start up monitor:
 			_this.monitor();
@@ -136,8 +145,12 @@ mw.EmbedPlayerSmil = {
 	 */
 	load: function(){
 		var _this = this;
-		this.play();
-		this.pause();
+		this.getSmil( function( smil ){
+			// Start buffering the movie 
+			_this.smil.startBuffer();
+			// Start up monitor:
+			_this.monitor();
+		})
 	},
 	
 	stop: function(){
@@ -176,8 +189,7 @@ mw.EmbedPlayerSmil = {
 		// Get a local variable of the new target time: 		
 		
 		// Update the bufferedPercent		
-		this.bufferedPercent = this.smil.getBufferedPercent();
-		
+		this.bufferedPercent = this.smil.getBufferedPercent();		
 		// Update the smilPlayTime if playing
 		if( this.isPlaying() ){
 		
@@ -190,18 +202,26 @@ mw.EmbedPlayerSmil = {
 				this.pausedForBuffer
 				)
 			){			
+				mw.log('EmbedSmilPlayer:: monitor: syncDelta too large buffering: ' +syncDelta );
 				this.pausedForBuffer = true;
 				this.clockStartTime += syncDelta + this.monitorRate;			
 				this.parent_monitor();
 				this.controlBuilder.setStatus( gM('mwe-embedplayer-buffering') );				
 				return ;
-			}{
-				// Update playtime if not pausedForBuffer
-				this.smilPlayTime =  this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
 			}
+			
+			if( !this.pausedForBuffer ){
+				// Update playtime if not pausedForBuffer				
+				this.smilPlayTime =  this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
+				mw.log(" update smilPlayTime: " + this.smilPauseTime + " getTime: " + new Date().getTime() + 
+						' - clockStartTime: ' + this.clockStartTime + ' = ' + 
+						( ( new Date().getTime() - this.clockStartTime ) / 1000 )  + 
+						" \n time:" + this.smilPlayTime );
+			}
+			
 			// Done with sync delay: 
 			this.pausedForBuffer = false;
-				
+			mw.log( "Call animateTime: " + this.smilPlayTime);
 			// Issue an animate time request with monitorDelta 
 			this.smil.animateTime( this.smilPlayTime, this.monitorRate ); 
 		}

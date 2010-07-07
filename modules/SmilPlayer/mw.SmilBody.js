@@ -92,6 +92,9 @@ mw.SmilBody.prototype = {
 				// Hide the element in the layout 
 				_this.smil.getLayout().hideElement( smilElement );
 				
+				// Update activePlayback flag
+				$j( smilElement ).data('activePlayback', false)
+				
 				// Expire transitions if needed
 				_this.smil.getTransitions().elementOutOfRange( smilElement, time );				
 			}

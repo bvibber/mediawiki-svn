@@ -14,6 +14,7 @@ mw.SequenceEditPlayer.prototype = {
 	init: function( sequenceEdit ){
 		this.sequenceEdit = sequenceEdit;
 	},	
+	
 	/**
 	 * Draw a smil player to the screen.
 	 */
@@ -60,12 +61,8 @@ mw.SequenceEditPlayer.prototype = {
 	
 	},
 	
-	previewSmilClip: function(){	
-		// Set the borders to 'red' to indicate preview
-		this.sequenceEdit.getContainer().find( '.mwseq-player' )
-			.css('border', 'solid thin red');
-		
-		// Get a special target of this subsmil node:  
+	previewClip: function( smilClip ){				
+		// Seek and play start of smilClip  
 		
 	},
 	

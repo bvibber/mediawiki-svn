@@ -118,10 +118,15 @@ mw.SmilBuffer.prototype = {
 	 */
 	continueBufferLoad: function( bufferTime ){
 		var _this = this;		
-		// Get all active elements for requested bufferTime
-		this.smil.getBody().getElementsForTime( bufferTime, function( smilElement){			
-			// Start loading active assets 
-			_this.loadElement( smilElement );
+		// Get all active elements for requested bufferTime		
+		this.smil.getBody().getElementsForTime( bufferTime, function( smilElement){
+			// If the element is in "activePlayback" ( don't try to load it )
+			/*mw.log('continueBufferLoad::' + _this.smil.getAssetId( smilElement ) 
+					+ $j( smilElement ).data('activePlayback' ));*/
+			if( ! $j( smilElement ).data('activePlayback' ) ){
+				// Start loading active assets 
+				_this.loadElement( smilElement );
+			}
 		})
 		// Loop on loading until all elements are loaded
 		setTimeout( function(){
@@ -130,7 +135,7 @@ mw.SmilBuffer.prototype = {
 				return ;
 			}
 			// get the percentage buffered, translated into buffer time and call continueBufferLoad with a timeout
-			var timeBuffered = _this.getBufferedPercent() * _this.smil.getDuration();
+			var timeBuffered = _this.getBufferedPercent() * _this.smil.getDuration();			
 			//mw.log( 'ContinueBufferLoad::Timed buffered: ' + timeBuffered );
 			_this.continueBufferLoad( timeBuffered );
 		}, this.smil.embedPlayer.monitorRate * 2 );
@@ -170,6 +175,7 @@ mw.SmilBuffer.prototype = {
 					// XXX seek to clipBegin if provided ( we don't need to load before that point )
 				
 				} else {
+					//mw.log("loadElement:: pause video: " + this.smil.getAssetId( smilElement ));
 					// else we have some percentage loaded pause playback 
 					//( should continue to load the asset )
 					vid.pause();

@@ -19,7 +19,7 @@ mw.SmilAnimate.prototype = {
 	/**
 	 * Pause any active animation or video playback
 	 */
-	pauseAnimation: function( smilElement ){
+	pauseAnimation: function( smilElement ){		
 		// Check if the element is in the html dom: 
 		if( !$j ( '#' + this.smil.getAssetId( smilElement ) ).length ){
 			return ;
@@ -241,7 +241,11 @@ mw.SmilAnimate.prototype = {
 	 * Used to support video playback
 	 */
 	transformVideoForPlayback: function( smilElement, animateTime ){ 
-		var $vid = $j ( '#' + this.smil.getAssetId( smilElement ) );		
+		var $vid = $j ( '#' + this.smil.getAssetId( smilElement ) );	
+		
+		// Set activePlayback flag ( informs edit and buffer actions ) 
+		$j( smilElement ).data('activePlayback', true)
+		
 		// Make the video is being displayed and get a pointer to the video element:
 		var vid = $vid.show().get( 0 );
 		
@@ -255,7 +259,7 @@ mw.SmilAnimate.prototype = {
 		if( this.smil.getBuffer().canPlayTime( smilElement, animateTime ) 
 			&& vid.paused
 		) {
-			//mw.log( "transformVideoForPlayback:: should play:" + animateTime );
+			//mw.log( "transformVideoForPlayback:: should play:" + animateTime );						
 			vid.play();
 			return ;
 		}		

@@ -116,7 +116,7 @@ mw.SequenceEditTimeline.prototype = {
 		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){				
 			// Check Buffer for when the first frame of the smilNode can be grabbed: 		
 			smil.getBuffer().canGrabRelativeTime( $node, 0, function(){
-				mw.log("getTrackClipInterface::canGrabRelativeTime for " + smil.getAssetId( $node ));
+				//mw.log("getTrackClipInterface::canGrabRelativeTime for " + smil.getAssetId( $node ));
 				_this.drawClipThumb( $node , 0);
 			});
 		});
@@ -183,7 +183,11 @@ mw.SequenceEditTimeline.prototype = {
 					_this.handleMultiSelect( this );
 				})								
 			);			
-		})		
+		})				
+		// Give the track set a width relative to the number of clips 
+		$clipTrackSet.css('width', ($clipTrackSet.find( '.timelineClip' ).length + 1) * 
+				( this.timelineThumbSize.width + 12 ) 
+			);
 		
 		// Add global TrackClipInterface bindings:
 		var keyBindings = this.sequenceEdit.getKeyBindings();		 
