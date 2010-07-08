@@ -61,9 +61,15 @@ mw.SequenceEditPlayer.prototype = {
 	
 	},
 	
-	previewClip: function( smilClip ){				
+	previewClip: function( smilClip ){
+		var _this = this;
 		// Seek and play start of smilClip  
-		
+		var startOffset = $j( smilClip ).data('startOffset');
+		var clipEndTime = startOffset + 
+			this.sequenceEdit.getSmil().getBody().getClipDuration( smilClip );
+		this.getEmbedPlayer().setCurrentTime( startOffset, function(){
+			_this.getEmbedPlayer().play( clipEndTime );
+		})
 	},
 	
 	closePreivew: function(){
@@ -75,7 +81,7 @@ mw.SequenceEditPlayer.prototype = {
 	
 	resizePlayer: function(){		
 		mw.log("SequenceEditPlayer:: resizePlayer: " + $j('#' + this.getSmilPlayerId() ).length );		
-		$j('#' + this.getSmilPlayerId() ).get(0)
+		this.getEmbedPlayer()
 			.resizePlayer(  
 				this.getPlayerSize(),
 				true
@@ -100,9 +106,14 @@ mw.SequenceEditPlayer.prototype = {
 		}			
 		return size;
 	},
-	
 	/**
-	 * Get a player id based on
+	 * get the embedplayer object instance
+	 */
+	getEmbedPlayer: function(){
+		return $j( '#' + this.getSmilPlayerId() ).get(0);
+	},
+	/**
+	 * Get a player id
 	 */
 	getSmilPlayerId: function(){
 		if( !this.smilPlayerId ){				

@@ -117,10 +117,16 @@ mw.SequenceEdit.prototype = {
 			// Add the timeline
 			_this.getTimeline().drawTimeline();	
 			
-		});
+		});		
+		// Draw the top level menu
+		this.getMenu().drawMenu();
 		
-		// Add default clip edit 
-		
+	},
+	getMenu: function(){
+		if( !this.menu){
+			this.menu = new mw.SequenceEditMenu( this ); 
+		}
+		return this.menu;
 	},
 	getPlayer: function(){
 		if( ! this.player ){
@@ -129,7 +135,7 @@ mw.SequenceEdit.prototype = {
 		return this.player;
 	},	
 	getEmbedPlayer:function(){
-		 return $j( '#' + this.getPlayer().getSmilPlayerId() ).get(0);
+		 return this.getPlayer().getEmbedPlayer();
 	},
 	getSmil: function(){
 		if( !this.smil ){ 
@@ -164,7 +170,7 @@ mw.SequenceEdit.prototype = {
 			'applyDefaultStyles': true,
 			/* player container */
 			'east__minSize': 240,
-			'east__size': 400,
+			'east__size': 440,
 			'east__onresize':function(){	
 				_this.getPlayer().resizePlayer();
 			},
@@ -174,7 +180,7 @@ mw.SequenceEdit.prototype = {
 			
 			/* timeline container */
 			'south__minSize' : 160,
-			'south__size' : 240,
+			'south__size' : 150,
 			'south__onresize' : function(){
 				_this.getTimeline().resizeTimeline();
 			}
@@ -220,6 +226,9 @@ mw.SequenceEdit.prototype = {
 					.text( gM('mwe-sequenceedit-loading_timeline') )				
 			)
 		).children();
+	},
+	getMenuTarget: function(){
+		return this.getContainer().find( '.mwseq-menu' );
 	},
 	getEditToolTarget: function(){
 		return this.getContainer().find( '.mwseq-edit' );

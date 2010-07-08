@@ -203,9 +203,10 @@ mw.SequenceEditTimeline.prototype = {
 	},
 	// calls the edit interface passing in the selected clip:
 	editClip: function( selectedClip ){
+		var smil = this.sequenceEdit.getSmil();
 		// get the smil element for the edit tool:
-		var smilClip = this.sequenceEdit.getSmil().$dom.find('#' + $j( selectedClip ).data('smilId') );
-		this.sequenceEdit.getEditTools().drawClipEditTool(smilClip, 'trim');
+		var smilClip = smil.$dom.find('#' + $j( selectedClip ).data('smilId') );		
+		this.sequenceEdit.getEditTools().drawClipEditTool( smilClip );
 	},
 	
 	/**

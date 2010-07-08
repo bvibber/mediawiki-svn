@@ -4,6 +4,11 @@
 
 // Wrap in mw to not pollute global namespace
 ( function( mw ) {
+	mw.setDefaultConfig({
+		// If the sequencer should attribute kaltura
+		"SequenceEdit.KalturaAttribution" : true
+	})
+	
 	mw.addResourcePaths( {
 		
 		"mw.SequenceEdit"	: "mw.SequenceEdit.js",		
@@ -12,7 +17,8 @@
 		"mw.SequenceEditTimeline" : "mw.SequenceEditTimeline.js",
 		"mw.SequenceEditKeyBindings" : "mw.SequenceEditKeyBindings.js",
 		"mw.SequenceEditTools" : "mw.SequenceEditTools.js",
-		
+		"mw.SequenceEditMenu" : "mw.SequenceEditMenu.js", 
+			
 		"mw.FirefoggRender"	: "mw.FirefoggRender.js",
 		"$j.fn.layout"		: "ui.layout/ui.layout-1.2.0.js",
 		
@@ -49,6 +55,7 @@
 				'mw.SequenceEditTimeline',
 				'mw.SequenceEditKeyBindings',
 				'mw.SequenceEditTools',
+				'mw.SequenceEditMenu',
 				
 				'mw.style.SequenceEdit'
 			],

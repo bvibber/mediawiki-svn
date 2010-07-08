@@ -299,7 +299,7 @@ mw.Smil.prototype = {
 	/**
 	 * Get the smil resource type based on nodeName and type attribute
 	 */
-	getRefType : function(smilElement) {
+	getRefType : function( smilElement ) {
 		if ($j(smilElement).length == 0) {
 			mw.log('Error: Smil::getRefType on empty smilElement');
 			return;

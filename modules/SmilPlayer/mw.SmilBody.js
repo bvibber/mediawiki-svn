@@ -160,7 +160,7 @@ mw.SmilBody.prototype = {
 				var audioObj = {
 					'type' : nodeType,
 					'src' : _this.smil.getAssetUrl ( $node.attr('src') ),
-					'duration' : _this.getNodeDuration( $node ),
+					'duration' : _this.getClipDuration( $node ),
 					'startTime' : $node.data( 'startOffset' ),
 					'offset' : _this.smil.parseTime( $node.attr( 'clipBegin') )  
 				};
@@ -231,7 +231,7 @@ mw.SmilBody.prototype = {
 		// Recurse on every ref element and run relevant callbacks
 		this.getRefElementsRecurse( this.$dom, 0, function( $node ){
 			var startOffset = $node.data( 'startOffset' );
-			var nodeDuration = _this.getNodeDuration( $node );
+			var nodeDuration = _this.getClipDuration( $node );
 			
 			// Check if element is in range: 
 			if( time >= startOffset && time < ( startOffset + nodeDuration) ){
@@ -305,7 +305,7 @@ mw.SmilBody.prototype = {
 			callback( $node )
 		}
 		// Return the node Duration for tracking startOffset
-		return this.getNodeDuration( $node );
+		return this.getClipDuration( $node );
 	},
 	
 	/**
@@ -313,7 +313,7 @@ mw.SmilBody.prototype = {
 	 * ( wraps getDurationRecurse to get top level node duration ) 
 	 */	
 	getDuration: function( forceRefresh ){		
-		this.duration = this.getNodeDuration( this.$dom , forceRefresh);	
+		this.duration = this.getClipDuration( this.$dom , forceRefresh);	
 		mw.log("smilBody:: getDuration: " + this.duration );
 		return this.duration;	
 	},
@@ -323,7 +323,7 @@ mw.SmilBody.prototype = {
 	 * @param {jQueryObject} $node 
 	 * @param {boolean} forceRefresh If a fresh duration should be calculated 
 	 */
-	getNodeDuration: function( $node, forceRefresh ){		
+	getClipDuration: function( $node, forceRefresh ){		
 		if( !forceRefresh && 
 			$node.data('computedDuration') != null
 		) {
@@ -345,7 +345,7 @@ mw.SmilBody.prototype = {
 		if( $node.children().length ){
 			$node.children().each( function( inx, childNode ){				
 				// If in a sequence add to duration 		
-				var childDuration = _this.getNodeDuration( $j( childNode ), forceRefresh );							
+				var childDuration = _this.getClipDuration( $j( childNode ), forceRefresh );							
 				if( blockType == 'seq' ){
 					$node.data( 'implictDuration', $node.data('implictDuration') + childDuration ); 			
 				}			

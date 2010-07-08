@@ -15,11 +15,13 @@ $messages['en'] = array(
 	'mwe-sequenceedit-no-sequence-start-new' => 'Empty sequence, [$1 browser for assets] to create a new sequence',
 	'mwe-sequenceedit-video-track' => 'Video track',
 	'mwe-sequenceedit-audio-track' => 'Audio track',
+	'mwe-sequenceedit-sequencer_credit_line' => 'Developed by [$1 Kaltura, Inc] in partnership with the [$1 Wikimedia Foundation]',
 
-	'mwe-sequenceedit-trim-clip' => 'Trim clip',
+	'mwe-sequenceedit-cliptool-trim' => 'Trim clip',
+	'mwe-sequenceedit-cliptool-duration' => 'Set duration',
 	'mwe-sequenceedit-preview' => 'Preview',
 	'mwe-sequenceedit-apply-changes' => 'Apply changes',
-	
+
 	'mwe-sequenceedit-start-time' => 'Start time',
 	'mwe-sequenceedit-clip-duration' => 'Clip duration',
 
@@ -52,7 +54,7 @@ $messages['en'] = array(
 	'mwe-sequenceedit-pixle2sec' => 'pixels to seconds',
 	'mwe-sequenceedit-rmclip' => 'Remove clip',
 	'mwe-sequenceedit-clip_in' => 'clip in',
-	'mwe-sequenceedit-clip_out' => 'clip out',		
+	'mwe-sequenceedit-clip_out' => 'clip out',
 	'mwe-sequenceedit-error_edit_multiple' => '<h3>Multiple resources selected</h3> Select a single clip to edit it.',
 	'mwe-sequenceedit-editor_options' => 'Editor options',
 	'mwe-sequenceedit-editor_mode' => 'Editor mode',
@@ -60,7 +62,6 @@ $messages['en'] = array(
 	'mwe-sequenceedit-advanced_editor_desc' => 'advanced editor (Final Cut style)',
 	'mwe-sequenceedit-other_options' => 'Other options',
 	'mwe-sequenceedit-contextmenu_opt' => 'Enable context menus',
-	'mwe-sequenceedit-sequencer_credit_line' => 'Developed by [$1 Kaltura, Inc] in partnership with the [$1 Wikimedia Foundation]',	
 	'mwe-sequenceedit-sequence-create-one' => 'Nostart a sequence',
 );
 $messages['af'] = array(

@@ -17,9 +17,14 @@ mw.SequenceEditTools.prototype = {
 	defaultText : gM('mwe-sequenceedit-no_selected_resource'),
 	tools:{
 		'trim':{
-			'title': gM('mwe-sequenceedit-trim-clip'),
+			'title': gM('mwe-sequenceedit-cliptool-trim'),
 			'editWidgets' : [ 'trimTimeline' ], 
 			'editableAttributes' : ['clipBegin','dur' ],			
+			'editActions' : ['preview', 'cancel']
+		},
+		'duration':{
+			'title': gM('mwe-sequenceedit-cliptool-duration'),			 
+			'editableAttributes' : [ 'dur' ],
 			'editActions' : ['preview', 'cancel']
 		}
 	},
@@ -95,9 +100,21 @@ mw.SequenceEditTools.prototype = {
 	getEditToolId: function( toolId, attributeName){
 		return 'editTool_' + toolId + '_' + attributeName;
 	},
-	drawClipEditTool: function( smilClip, toolId  ){
+	drawClipEditTool: function( smilClip ){
 		$target = this.sequenceEdit.getEditToolTarget();
-
+ 
+		var toolId = '';
+		// get the toolId based on what "ref type" smilClip is:
+		switch( this.sequenceEdit.getSmil().getRefType( smilClip ) ){
+			case 'video':
+				toolId = 'trim'
+			break;
+			default:
+				toolId = 'duration'
+			break;
+		}
+		
+		
 		// Make sure the toolid exists
 		if( !this.tools[ toolId ] ){
 			mw.log("Error: tool " + toolId + ' not found');
@@ -112,8 +129,10 @@ mw.SequenceEditTools.prototype = {
 		);
 		
 		// Build out widgets 
+		//if( tool.editWidgets ){
 		//for( var i =0 ; i < tool.editWidgets.length ; i ++ ){			
 		//}	
+		//}
 		
 		// Build out the attribute  list:
 		for( var i=0; i < tool.editableAttributes.length ; i++ ){
