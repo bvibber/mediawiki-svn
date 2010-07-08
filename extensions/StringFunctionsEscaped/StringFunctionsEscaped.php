@@ -46,6 +46,11 @@ if ( !class_exists('ExtStringFunctions',false) &&
  counting from the beginning. The last piece is at position -1.
  See: http://php.net/manual/function.explode.php
 
+ {{#stripnewlines:value}}
+
+ Remove multiple newlines.  Any time there is more than one newline in "value",
+ they are changed to a single newline.
+
 
  Copyright (c) 2009 Jack D. Pond
  Licensed under GNU version 2
@@ -54,7 +59,7 @@ if ( !class_exists('ExtStringFunctions',false) &&
 $wgExtensionCredits['parserhook'][] = array(
 	'path'            => __FILE__,
 	'name'            => 'StringFunctionsEscaped',
-	'version'         => '1.0.0', // Sept 7, 2009
+	'version'         => '1.0.1', // July 7, 2010
 	'descriptionmsg'  => 'pfunc_desc',
 	'author'          => array('Jack D. Pond'),
 	'license'         => 'GNU Version 2',
@@ -74,21 +79,23 @@ function wfStringFunctionsEscaped ( ) {
 
 	$wgExtStringFunctionsEscaped = new ExtStringFunctionsEscaped ( );
 
-	$wgParser->setFunctionHook('pos_e',      array(&$wgExtStringFunctionsEscaped,'runPos_e'      ));
-	$wgParser->setFunctionHook('rpos_e',     array(&$wgExtStringFunctionsEscaped,'runRPos_e'     ));
-	$wgParser->setFunctionHook('pad_e',      array(&$wgExtStringFunctionsEscaped,'runPad_e'      ));
-	$wgParser->setFunctionHook('replace_e',  array(&$wgExtStringFunctionsEscaped,'runReplace_e'  ));
-	$wgParser->setFunctionHook('explode_e',  array(&$wgExtStringFunctionsEscaped,'runExplode_e'  ));
+	$wgParser->setFunctionHook('pos_e',         array( &$wgExtStringFunctionsEscaped, 'runPos_e' ));
+	$wgParser->setFunctionHook('rpos_e',        array( &$wgExtStringFunctionsEscaped, 'runRPos_e' ));
+	$wgParser->setFunctionHook('pad_e',         array( &$wgExtStringFunctionsEscaped, 'runPad_e' ));
+	$wgParser->setFunctionHook('replace_e',     array( &$wgExtStringFunctionsEscaped, 'runReplace_e' ));
+	$wgParser->setFunctionHook('explode_e',     array( &$wgExtStringFunctionsEscaped, 'runExplode_e' ));
+	$wgParser->setFunctionHook('stripnewlines', array( &$wgExtStringFunctionsEscaped, 'runStrip_nl' ));
 }
 
 function wfStringFunctionsEscapedLanguageGetMagic( &$magicWords, $langCode = "en" ) {
 	switch ( $langCode ) {
 		default:
-		$magicWords['pos_e']          = array ( 0, 'pos_e' );
-		$magicWords['rpos_e']         = array ( 0, 'rpos_e' );
-		$magicWords['pad_e']          = array ( 0, 'pad_e' );
-		$magicWords['replace_e']      = array ( 0, 'replace_e' );
-		$magicWords['explode_e']      = array ( 0, 'explode_e' );
+		$magicWords['pos_e']         = array ( 0, 'pos_e' );
+		$magicWords['rpos_e']        = array ( 0, 'rpos_e' );
+		$magicWords['pad_e']         = array ( 0, 'pad_e' );
+		$magicWords['replace_e']     = array ( 0, 'replace_e' );
+		$magicWords['explode_e']     = array ( 0, 'explode_e' );
+		$magicWords['stripnewlines'] = array ( 0, 'stripnewlines' );
 	}
 	return true;
 }
@@ -103,9 +110,9 @@ class ExtStringFunctionsEscaped {
 	 */
 	function runPos_e ( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
 		global $wgParser;
-		list($callback,$flags) = $wgParser->mFunctionHooks['pos'];
+		list( $callback, $flags ) = $wgParser->mFunctionHooks['pos'];
 		return @call_user_func_array( $callback,
-			array_merge(array($parser),array($inStr,stripcslashes($inNeedle),$inOffset) ));
+			array_merge( array( $parser ), array( $inStr, stripcslashes( $inNeedle ), $inOffset ) ) );
 	}
 
 	/**
@@ -114,11 +121,11 @@ class ExtStringFunctionsEscaped {
 	 * Note: If the needle is not found, -1 is returned.
 	 * Note: The needle is limited to specific length.
 	 */
-	function runRPos_e( &$parser, $inStr = '', $inNeedle = '' ) {
+	function runRPos_e( &$parser , $inStr = '', $inNeedle = '' ) {
 		global $wgParser;
-		list($callback,$flags) = $wgParser->mFunctionHooks['rpos'];
+		list( $callback, $flags ) = $wgParser->mFunctionHooks['rpos'];
 		return @call_user_func_array( $callback,
-			array_merge(array($parser),array($inStr,stripcslashes($inNeedle)) ));
+			array_merge( array( $parser ), array( $inStr, stripcslashes( $inNeedle ) ) ) );
 	}
 
 	/**
@@ -127,9 +134,9 @@ class ExtStringFunctionsEscaped {
 	 */
 	function runPad_e( &$parser, $inStr = '', $inLen = 0, $inWith = '', $inDirection = '' ) {
 		global $wgParser;
-		list($callback,$flags) = $wgParser->mFunctionHooks['pad'];
+		list( $callback , $flags ) = $wgParser->mFunctionHooks['pad'];
 		return @call_user_func_array( $callback,
-			array_merge(array($parser),array($inStr, $inLen , stripcslashes($inWith), $inDirection) ));
+			array_merge( array( $parser ), array( $inStr, $inLen, stripcslashes( $inWith ), $inDirection ) ) );
 	}
 
 	/**
@@ -138,11 +145,11 @@ class ExtStringFunctionsEscaped {
 	 * Note: The needle is limited to specific length.
 	 * Note: The product is limited to specific length.
 	 */
-	function runReplace_e( $parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
+	function runReplace_e( &$parser, $inStr = '', $inReplaceFrom = '', $inReplaceTo = '' ) {
 		global $wgParser;
-		list($callback,$flags) = $wgParser->mFunctionHooks['replace'];
+		list( $callback, $flags ) = $wgParser->mFunctionHooks['replace'];
 		return @call_user_func_array( $callback,
-			array_merge(array($parser),array($inStr, stripcslashes($inReplaceFrom), stripcslashes($inReplaceTo)) ));
+			array_merge( array( $parser ), array( $inStr, stripcslashes( $inReplaceFrom ), stripcslashes( $inReplaceTo ) ) ) );
 	}
 
 	/**
@@ -152,11 +159,18 @@ class ExtStringFunctionsEscaped {
 	 * Note: The divider is limited to specific length.
 	 * Note: Empty string is returned, if there is not enough exploded chunks.
 	 */
-	function runExplode_e ( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
+	function runExplode_e( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
 		global $wgParser;
-		list($callback,$flags) = $wgParser->mFunctionHooks['explode'];
+		list( $callback, $flags ) = $wgParser->mFunctionHooks['explode'];
 		return @call_user_func_array( $callback,
-			array_merge(array($parser),array($inStr, stripcslashes($inDiv), $inPos) ));
+			array_merge(array( $parser ), array( $inStr, stripcslashes( $inDiv ), $inPos ) ));
+	}
+
+	/**
+	 * {{#stripnewlines:value}}
+	 */
+	function runStrip_nl( &$parser , $inStr = '' ) {
+		return preg_replace( stripcslashes( '/\n\n+/' ), stripcslashes( '\n' ), $inStr );
 	}
 
 }
