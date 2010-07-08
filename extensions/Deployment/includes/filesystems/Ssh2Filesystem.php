@@ -118,7 +118,7 @@ class Ssh2Filesystem extends Filesystem {
 		}
 
 		if ( !$this->connection ) {
-			$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-connect-failed', $this->options['hostname'], $this->options['port'] ) );
+			$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-connect-failed', 'parsemag', $this->options['hostname'], $this->options['port'] ) );
 			return false;
 		}
 
@@ -126,7 +126,7 @@ class Ssh2Filesystem extends Filesystem {
 			$ssh2_auth_pubkey_file = ssh2_auth_pubkey_file( $this->link, $this->options['username'], $this->options['public_key'], $this->options['private_key'], $this->options['password'] );
 			
 			if ( !$ssh2_auth_pubkey_file ) {
-				$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-key-authentication-failed', $this->options['username'] ) );
+				$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-key-authentication-failed', 'parsemag', $this->options['username'] ) );
 				return false;
 			}			
 
@@ -134,7 +134,7 @@ class Ssh2Filesystem extends Filesystem {
 			$ssh2_auth_password = ssh2_auth_password( $this->connection, $this->options['username'], $this->options['password'] );
 			
 			if ( !$ssh2_auth_password ) {
-				$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-password-authentication-failed', $this->options['username'] ) );
+				$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-password-authentication-failed', 'parsemag', $this->options['username'] ) );
 				return false;
 			}
 		}
@@ -333,7 +333,7 @@ class Ssh2Filesystem extends Filesystem {
 			return $data;
 		}
 		else {
-			$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-command-failed', $command ) );
+			$this->addErrorMessage( wfMsgExt( 'deploy-ssh2-command-failed', 'parsemag', $command ) );
 			return false;			
 		}
 	}

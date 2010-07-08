@@ -95,7 +95,7 @@ class FtpFilesystem extends Filesystem {
 		
 		// Check if a connection has been established.
 		if ( !$this->connection ) {
-			$this->addErrorMessage( wfMsgExt( 'deploy-ftp-connect-failed', $this->options['hostname'], $this->options['port'] ) );
+			$this->addErrorMessage( wfMsgExt( 'deploy-ftp-connect-failed', 'parsemag', $this->options['hostname'], $this->options['port'] ) );
 			return false;
 		}
 		
