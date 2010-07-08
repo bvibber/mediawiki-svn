@@ -10,7 +10,7 @@ class JSBreadCrumbsHooks {
 		global $wgExtensionAssetsPath;
 
 		if ( self::enableBreadCrumbs() ) {
-			$out->addScriptFile( "$wgExtensionAssetsPath/JSBreadCrumbs/js/BreadCrumbs.js", 6 );
+			$out->addScriptFile( "$wgExtensionAssetsPath/JSBreadCrumbs/js/BreadCrumbs.js", 7 );
 			$out->addExtensionStyle( "$wgExtensionAssetsPath/JSBreadCrumbs/css/BreadCrumbs.css?1" );
 		}
 

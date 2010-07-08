@@ -37,14 +37,7 @@ $j(document).ready( function() {
     // Get the full title
     var title = wgTitle;
     if ( wgNamespaceNumber != 0 ) {
-    	// If this is the project namespace, or we aren't showing the site name
-    	// then add the namespace to the title. This avoids showing the sitename
-    	// twice when adding pages in the project namespace.
-    	// TODO: This is an awkward way to do this, and bug prone when the user
-    	// logs in with a project page in the history. Find a better way.
-        if ( wgNamespaceNumber != 4 || !wgJSBreadCrumbsShowSiteName ) {
-            title = wgFormattedNamespaces[wgNamespaceNumber] + ":" + wgTitle;
-        }
+        title = wgFormattedNamespaces[wgNamespaceNumber] + ":" + wgTitle;
     }
 
     // Remove duplicates
@@ -79,14 +72,14 @@ $j(document).ready( function() {
     // Add the bread crumbs
     for ( var i = 0; i < titleState.length; i++ ) {
         if ( wgJSBreadCrumbsShowSiteName == true ) {
-            urltoappend = '<a href="' + urlState[i] + '">' + siteState[i] + ':' + titleState[i] + '</a> ';
+            urltoappend = '<a href="' + urlState[i] + '">' + '(' + siteState[i] + ') ' + titleState[i] + '</a> ';
         } else {
             urltoappend = '<a href="' + urlState[i] + '">' + titleState[i] + '</a> ';
-    	}
+        }
+        // Only add the separator if this isn't the last title
         if ( i < titleState.length - 1 ) {
-		    // Only add the separator if this isn't the last title
 		    urltoappend = urltoappend + wgJSBreadCrumbsSeparator + ' ';
-	    }
+        }
         mwextbc.append( urltoappend );
     }
 

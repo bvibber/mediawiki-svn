@@ -28,7 +28,7 @@ $wgExtensionCredits['other'][] = array(
         'path' => __FILE__,
         'name' => 'JSBreadCrumbs',
         'author' => 'Ryan Lane',
-        'version' => '0.4',
+        'version' => '0.5',
         'url' => 'http://www.mediawiki.org/wiki/Extension:JSBreadCrumbs',
         'descriptionmsg' => 'jsbreadcrumbs-desc',
 );
