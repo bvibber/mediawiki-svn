@@ -546,7 +546,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		global $wgSessionStarted, $wgUser;
 
 		if ( !$wgSessionStarted ) {
-			$wgUser->SetupSession();
+			wfSetupSession();
 		}
 
 		$_SESSION['openid_server_request'] = $request;
@@ -601,7 +601,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		} else {
 			$id = $user->getId();
 			$wgUser = $user;
-			$wgUser->SetupSession();
+			wfSetupSession();
 			$wgUser->SetCookies();
 			wfRunHooks( 'UserLoginComplete', array( &$wgUser ) );
 			return false;
