@@ -3915,9 +3915,9 @@ Others will be hidden by default.
 'exif-gpslongitude-e' => 'East longitude',
 'exif-gpslongitude-w' => 'West longitude',
 
-# Pseudotags used for GPSAltitudeRef
-'exif-gpsaltitude-0' => 'Metres above sea level',
-'exif-gpsaltitude-1' => 'Metres below sea level',
+# Pseudotags used for GPSAltitude
+'exif-gpsaltitude-above-sealevel' => '$1 Metres above sea level',
+'exif-gpsaltitude-below-sealevel' => '$1 Metres below sea level',
 
 'exif-gpsstatus-a' => 'Measurement in progress',
 'exif-gpsstatus-v' => 'Measurement interoperability',

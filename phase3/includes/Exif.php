@@ -97,7 +97,7 @@ class Exif {
 	 *
 	 * @param $file String: filename.
 	 * @fixme the following are broke:
-	 * SubjectArea, GPSAltitudeRef, possibly more, need more testing.
+	 * SubjectArea. Need to test the more obscure tags.
 	 *
 	 * DigitalZoomRatio = 0/0 is rejected. need to determine if thats valid.
 	 * possibly should treat 0/0 = 0. need to read exif spec on that.
@@ -232,12 +232,12 @@ class Exif {
 
 			# GPS Attribute Information (p52)
 			'GPS' => array(
-				'GPSVersionID' => array( Exif::BYTE, 4 ),		# GPS tag version
+				'GPSVersion' => Exif::UNDEFINED,			 # array( Exif::BYTE, 4 )  GPS tag version. Note exif standard calls this GPSVersionID, but php doesn't like the id. also php thinks its wrong type
 				'GPSLatitudeRef' => Exif::ASCII,			# North or South Latitude #p52-53
 				'GPSLatitude' => array( Exif::RATIONAL, 3 ),		# Latitude
 				'GPSLongitudeRef' => Exif::ASCII,			# East or West Longitude #p53
 				'GPSLongitude' => array( Exif::RATIONAL, 3),		# Longitude
-				'GPSAltitudeRef' => Exif::BYTE,				# Altitude reference
+				'GPSAltitudeRef' => Exif::UNDEFINED,			# Altitude reference. Note, the exif standard says this should be an EXIF::Byte, but php seems to disagree.
 				'GPSAltitude' => Exif::RATIONAL,			# Altitude
 				'GPSTimeStamp' => array( Exif::RATIONAL, 3),		# GPS time (atomic clock)
 				'GPSSatellites' => Exif::ASCII,				# Satellites used for measurement
@@ -281,7 +281,6 @@ class Exif {
 		$this->mRawExifData = $data ? $data : array();
 		$this->makeFilteredData();
 		$this->collapseData();
-		$this->makeFormattedData();
 		$this->debugFile( __FUNCTION__, false );
 	}
 
@@ -342,20 +341,21 @@ class Exif {
 		$this->exifGPStoNumber( 'GPSDestLongitude' );
 
 		if ( isset( $this->mFilteredExifData['GPSAltitude'] ) && isset( $this->mFilteredExifData['GPSAltitudeRef'] ) ) {
-			if ( $this->mFilteredExifData['GPSAltitudeRef'] === 1 ) {
+			if ( $this->mFilteredExifData['GPSAltitudeRef'] === "\1" ) {
 				$this->mFilteredExifData['GPSAltitude'] *= - 1;
 			}
-			unset( $this->mFilteredExifData );
+			unset( $this->mFilteredExifData['GPSAltitudeRef'] );
 		}
 
-		$this->toHex( 'FileSource', true );
-		$this->toHex( 'SceneType', true );
+		$this->getOrd( 'FileSource' );
+		$this->getOrd( 'SceneType' );
 
 		$this->charCodeString( 'UserComment' );
 		$this->charCodeString( 'GPSProcessingMethod');
 		$this->charCodeString( 'GPSAreaInformation' );
 		
 		//ComponentsConfiguration should really be an array instead of a string...
+
 		if ( isset ( $this->mFilteredExifData['ComponentsConfiguration'] ) ) {
 			$val = $this->mFilteredExifData['ComponentsConfiguration'];
 			$ccVals = array();
@@ -364,6 +364,21 @@ class Exif {
 			}
 			$ccVals['_type'] = 'ol'; //this is for formatting later.
 			$this->mFilteredExifData['ComponentsConfiguration'] = $ccVals;
+		}
+	
+		//GPSVersion(ID) is just very screwed up by php
+		//put into a version string, and change the tag name.
+		if ( isset ( $this->mFilteredExifData['GPSVersion'] ) ) {
+			$val = $this->mFilteredExifData['GPSVersion'];
+			$newVal = '';
+			for ($i = 0; $i < strlen($val); $i++) {
+				if ( $i !== 0 ) {
+					$newVal .= '.';
+				}
+				$newVal .= ord( substr($val, strlen($val) - $i - 1, 1) );
+			}
+			$this->mFilteredExifData['GPSVersionID'] = $newVal;
+			unset( $this->mFilteredExifData['GPSVersion'] );
 		}
 
 	}
@@ -375,7 +390,7 @@ class Exif {
 	* @param $prop String prop name.
 	* @todo this is in need of testing.
 	*/
-	function charCodeString ( $prop ) {
+	private function charCodeString ( $prop ) {
 		if ( isset( $this->mFilteredExifData[$prop] ) ) {
 
 			if ( strlen($this->mFilteredExifData[$prop]) <= 8 ) {
@@ -414,21 +429,13 @@ class Exif {
 	}
 	/**
 	* Convert an Exif::UNDEFINED from a raw binary string
-	* to a hex string. This is sometimes needed depending on
+	* to its value. This is sometimes needed depending on
 	* the type of UNDEFINED field
 	* @param $prop String name of property
-	* @param $stripLeadingZero boolean should it strip first leading zero
-	*	if present on result (bit of a hack).
 	*/
-	function toHex ( $prop, $stripLeadingZero = false ) {
+	private function getOrd ( $prop ) {
 		if ( isset( $this->mFilteredExifData[$prop] ) ) {
-			$val = bin2hex( $this->mFilteredExifData[$prop] );
-			if ( $stripLeadingZero ) {
-				if (substr( $val, 0, 1) === '0') {
-					$val = substr( $val, 1);
-				}
-			}
-			$this->mFilteredExifData[$prop] = $val;
+			$this->mFilteredExifData[$prop] = ord( $this->mFilteredExifData[$prop] );
 		}
 	}
 	/**
@@ -436,7 +443,7 @@ class Exif {
 	* for example 10 degress 20`40`` S -> -10.34444
 	* @param String $prop a gps coordinate exif tag name (like GPSLongitude)
 	*/
-	function exifGPStoNumber ( $prop ) {
+	private function exifGPStoNumber ( $prop ) {
 		$loc =& $this->mFilteredExifData[$prop];
 		$dir =& $this->mFilteredExifData[$prop . 'Ref'];
 		$res = false;
@@ -466,9 +473,10 @@ class Exif {
 	}
 
 	/**
-	 * @todo document
+	 * Use FormatExif to create formatted values for display to user
+	 * (is this ever used?)
 	 */
-	function makeFormattedData( ) {
+	private function makeFormattedData( ) {
 		$format = new FormatExif( $this->getFilteredData() );
 		$this->mFormattedExifData = $format->getFormattedData();
 	}
@@ -495,6 +503,9 @@ class Exif {
 	 * Get $this->mFormattedExifData
 	 */
 	function getFormattedData() {
+		if (!$this->mFormattedExifData) {
+			$this->makeFormattedData();
+		}
 		return $this->mFormattedExifData;
 	}
 	/**#@-*/
@@ -523,7 +534,7 @@ class Exif {
 	 * @param $in Mixed: the input value to check
 	 * @return bool
 	 */
-	function isByte( $in ) {
+	private function isByte( $in ) {
 		if ( !is_array( $in ) && sprintf('%d', $in) == $in && $in >= 0 && $in <= 255 ) {
 			$this->debug( $in, __FUNCTION__, true );
 			return true;
@@ -533,7 +544,7 @@ class Exif {
 		}
 	}
 
-	function isASCII( $in ) {
+	private function isASCII( $in ) {
 		if ( is_array( $in ) ) {
 			return false;
 		}
@@ -551,7 +562,7 @@ class Exif {
 		return true;
 	}
 
-	function isShort( $in ) {
+	private function isShort( $in ) {
 		if ( !is_array( $in ) && sprintf('%d', $in) == $in && $in >= 0 && $in <= 65536 ) {
 			$this->debug( $in, __FUNCTION__, true );
 			return true;
@@ -561,7 +572,7 @@ class Exif {
 		}
 	}
 
-	function isLong( $in ) {
+	private function isLong( $in ) {
 		if ( !is_array( $in ) && sprintf('%d', $in) == $in && $in >= 0 && $in <= 4294967296 ) {
 			$this->debug( $in, __FUNCTION__, true );
 			return true;
@@ -571,7 +582,7 @@ class Exif {
 		}
 	}
 
-	function isRational( $in ) {
+	private function isRational( $in ) {
 		$m = array();
 		if ( !is_array( $in ) && @preg_match( '/^(\d+)\/(\d+[1-9]|[1-9]\d*)$/', $in, $m ) ) { # Avoid division by zero
 			return $this->isLong( $m[1] ) && $this->isLong( $m[2] );
@@ -581,7 +592,7 @@ class Exif {
 		}
 	}
 
-	function isUndefined( $in ) {
+	private function isUndefined( $in ) {
 
 		$this->debug( $in, __FUNCTION__, true );
 		return true;
@@ -599,7 +610,7 @@ class Exif {
 		*/
 	}
 
-	function isSlong( $in ) {
+	private function isSlong( $in ) {
 		if ( $this->isLong( abs( $in ) ) ) {
 			$this->debug( $in, __FUNCTION__, true );
 			return true;
@@ -609,7 +620,7 @@ class Exif {
 		}
 	}
 
-	function isSrational( $in ) {
+	private function isSrational( $in ) {
 		$m = array();
 		if ( !is_array( $in ) && preg_match( '/^(\d+)\/(\d+[1-9]|[1-9]\d*)$/', $in, $m ) ) { # Avoid division by zero
 			return $this->isSlong( $m[0] ) && $this->isSlong( $m[1] );
@@ -630,7 +641,7 @@ class Exif {
 	 * @param $recursive Boolean: true if called recursively for array types.
 	 * @return bool
 	 */
-	function validate( $section, $tag, $val, $recursive = false ) {
+	private function validate( $section, $tag, $val, $recursive = false ) {
 		$debug = "tag is '$tag'";
 		$etype = $this->mExifTags[$section][$tag];
 		$ecount = 1;
@@ -699,7 +710,7 @@ class Exif {
 	 * @param $fname String:
 	 * @param $action Mixed: , default NULL.
 	 */
-	function debug( $in, $fname, $action = null ) {
+	private function debug( $in, $fname, $action = null ) {
 		if ( !$this->log ) {
 			return;
 		}
@@ -726,7 +737,7 @@ class Exif {
 	 * @param $fname String: the name of the function calling this function
 	 * @param $io Boolean: Specify whether we're beginning or ending
 	 */
-	function debugFile( $fname, $io ) {
+	private function debugFile( $fname, $io ) {
 		if ( !$this->log ) {
 			return;
 		}
@@ -1126,6 +1137,14 @@ class FormatExif {
 					}
 					break;
 
+				case 'GPSAltitude':
+					if ( $val < 0 ) {
+						$val = $this->msg( 'GPSAltitude', 'below-sealevel', $this->formatNum( -$val ) );
+					} else {
+						$val = $this->msg( 'GPSAltitude', 'above-sealevel', $this->formatNum( $val ) );
+					}
+					break;
+
 				case 'GPSStatus':
 					switch( $val ) {
 					case 'A': case 'V':
@@ -1164,17 +1183,6 @@ class FormatExif {
 
 				case 'GPSDateStamp':
 					$val = $wgLang->date( substr( $val, 0, 4 ) . substr( $val, 5, 2 ) . substr( $val, 8, 2 ) . '000000' );
-					break;
-
-				case 'GPSAltitudeRef':
-					switch( $val ) {
-					case 0: case 1:
-						$tags[$tag] = $this->msg( 'GPSAltitude', $val );
-						break;
-					default:
-						$tags[$tag] = $val;
-						break;
-					}
 					break;
 
 				case 'GPSLatitude':
@@ -1240,6 +1248,7 @@ class FormatExif {
 				case 'ImageDescription':
 				case 'Artist':
 				case 'Copyright':
+				case 'GPSVersionID':
 					$val = htmlspecialchars( $val );
 					break;
 
@@ -1419,6 +1428,7 @@ class FormatExif {
 	function formatCoords( $coord, $type ) {
 		$ref = '';
 		if ( $coord < 0 ) {
+			$nCoord = -$coord;
 			if ( $type === 'latitude' ) {
 				$ref = 'S';
 			}
@@ -1427,6 +1437,7 @@ class FormatExif {
 			}
 		}
 		else {
+			$nCoord = $coord;
 			if ( $type === 'latitude' ) {
 				$ref = 'N';
 			}
@@ -1435,9 +1446,9 @@ class FormatExif {
 			}
 		}
 
-		$deg = floor( $coord );
-		$min = floor( ( $coord - $deg ) * 60.0 );
-		$sec = round( ( ( $coord - $deg ) - $min / 60 ) * 3600, 2 );
+		$deg = floor( $nCoord );
+		$min = floor( ( $nCoord - $deg ) * 60.0 );
+		$sec = round( ( ( $nCoord - $deg ) - $min / 60 ) * 3600, 2 );
 
 		$deg = $this->formatNum( $deg );
 		$min = $this->formatNum( $min );
