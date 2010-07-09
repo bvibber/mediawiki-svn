@@ -5,15 +5,15 @@
 * Supports basic "sequencer" functionality as a javascript rewrite system.
 */
 
-mw.addMessages( {
-	"mwe-no-sequence-create" : "No sequence exists named $1, You can [$2 start a sequence]",
-	"mwe-sequence-create-one" : "start a sequence"
-});
+mw.addMessageKeys( [
+	"mwe-sequenceedit-no-sequence-create",
+	"mwe-sequenceedit-create-sequence"
+]);
 
-RemoteMwSequencer = function( options ) {
+mw.RemoteSequenceEdit = function( options ) {
 	return this.init( options ); 
 };
-RemoteMwSequencer.prototype = {
+mw.RemoteSequenceEdit.prototype = {
 	/**
 	* @constructor
 	* @param {Object} options RemoteMwSequencer options
@@ -24,7 +24,7 @@ RemoteMwSequencer.prototype = {
 		this.target = ( options.target )? options.target : this.target;
 	},
 	
-	updateUI: function() {		
+	drawUI: function() {		
 		// Check page type 
 		if( this.action == 'view' ) {	
 			this.showViewUI();
@@ -35,35 +35,37 @@ RemoteMwSequencer.prototype = {
 	* if not present give link to "create" one. 
 	*/
 	showViewUI: function() {
+		var _this = this;
 		if( wgArticleId == 0 ) {
-			$startLink = $j('<div>').append( 
-				$j('<a>')
-					.text( gM('mwe-sequence-create-one') )
-					.attr('id', 'mwe-sequence-create')
-			);
+			// Update create button 
+			$j('#ca-edit span').text( gM('mwe-sequenceedit-create-sequence' ));
+			
 			$j( this.target ).html(
-				gM("mwe-no-sequence-create", [this.title, $startLink.html() ])
+				gM("mwe-sequenceedit-no-sequence-create", 
+					$j('<a />').attr('href','#').click(function() {
+						_this.showEditor();
+					})
+				)
 			);
-			$j('#mwe-sequence-create').click(function() {
-				$j('body').append( '<div id="seqcontainer" style="position:absolute;top:5px;bottom:10px;left:10px;right:10px;" />' );
-				mw.load( 'Sequencer', function() {
-	 				$j('#seqcontainer').sequencer({
-		 				'amw_conf':{
-						 'enabled_providers':['wiki_commons']
-					}
-				})
-	 			});
-				
-			});
 		}else{
-			$j( this.target ).html(
-				'<playlist id="playlist" src="' +wgArticlePath.replace('$1', this.title) + '?action=raw&.xml" wikiTitleKey="' + this.title + '" ></playlist>'
-			);
-			$j('#playlist').embedPlayer();
+			// Get the article source?
 			
 		}
-	}
-	
+	},
+	showEditor: function(){
+		$j('body').append( '<div id="seqcontainer" style="position:absolute;top:5px;bottom:10px;left:10px;right:10px;" />' );
+		mw.load( 'SequenceEdit', function(){ 	 			
+			$j('#seqcontainer').sequenceEdit({
+	    		'smilSource' : 'SampleEditorSequenceSmil.xml',
+	    		//set the add media wizard to only include commons:   
+	    		'AddMediaConf':{
+	    			 'enabled_providers':[ 'wiki_commons' ],
+	    			 'import_url_mode' : 'remote_link',
+	    			 'default_query' : 'fish'
+	    		}     		
+			});
+		});
+	},
 	// Check page type 
 	
 	// "view" page 	

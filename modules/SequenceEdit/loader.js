@@ -4,12 +4,9 @@
 
 // Wrap in mw to not pollute global namespace
 ( function( mw ) {
-	mw.setDefaultConfig({
-		// If the sequencer should attribute kaltura
-		"SequenceEdit.KalturaAttribution" : true
-	})
 	
 	mw.addResourcePaths( {
+		"mw.SequenceEdit"	: "mw.SequenceEdit.js",
 		
 		"mw.SequenceEdit"	: "mw.SequenceEdit.js",		
 		"mw.style.SequenceEdit" : "mw.style.SequenceEdit.css",
@@ -18,16 +15,23 @@
 		"mw.SequenceEditKeyBindings" : "mw.SequenceEditKeyBindings.js",
 		"mw.SequenceEditTools" : "mw.SequenceEditTools.js",
 		"mw.SequenceEditMenu" : "mw.SequenceEditMenu.js", 
-			
+		"mw.SequenceEditRender" : "mw.SequenceEditRender.js",
+		
 		"mw.FirefoggRender"	: "mw.FirefoggRender.js",
 		"$j.fn.layout"		: "ui.layout/ui.layout-1.2.0.js",
 		
-		"RemoteMwSequencer" :	"remotes/RemoteMwSequencer.js",
+		"mw.RemoteSequenceEdit" : "mw.RemoteSequenceEdit.js",
 		
 		"mw.style.SequenceEdit" : "css/mw.style.SequenceEdit.css",
 		
 		"playlistEmbed" : "playlistEmbed.js"
 	} );
+	
+	mw.setDefaultConfig({
+		// If the sequencer should attribute kaltura
+		"SequenceEdit.KalturaAttribution" : true
+	})
+	
 	
 	/**
 	 * The FirefoggRender sub module 
@@ -56,6 +60,7 @@
 				'mw.SequenceEditKeyBindings',
 				'mw.SequenceEditTools',
 				'mw.SequenceEditMenu',
+				'mw.SequenceEditRender',
 				
 				'mw.style.SequenceEdit'
 			],

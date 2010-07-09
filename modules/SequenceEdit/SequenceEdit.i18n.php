@@ -16,14 +16,18 @@ $messages['en'] = array(
 	'mwe-sequenceedit-video-track' => 'Video track',
 	'mwe-sequenceedit-audio-track' => 'Audio track',
 	'mwe-sequenceedit-sequencer_credit_line' => 'Developed by [$1 Kaltura, Inc] in partnership with the [$1 Wikimedia Foundation]',
-
+	'mwe-sequenceedit-no-sequence-create' => 'Sequence does not exists, You can [$1 start a sequence]',
 	'mwe-sequenceedit-cliptool-trim' => 'Trim clip',
 	'mwe-sequenceedit-cliptool-duration' => 'Set duration',
 	'mwe-sequenceedit-preview' => 'Preview',
 	'mwe-sequenceedit-apply-changes' => 'Apply changes',
-
 	'mwe-sequenceedit-start-time' => 'Start time',
 	'mwe-sequenceedit-clip-duration' => 'Clip duration',
+
+	'mwe-sequenceedit-save-sequence' => 'Save sequence',
+	'mwe-sequenceedit-render-sequence' => 'Render sequence to file',
+	'mwe-sequenceedit-create-sequence' => 'Create sequence',
+
 
 	'mwe-sequenceedit-transition_in' => 'Transition in',
 	'mwe-sequenceedit-transition_out' => 'Transition out',

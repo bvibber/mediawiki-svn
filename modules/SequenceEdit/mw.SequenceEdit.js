@@ -133,7 +133,13 @@ mw.SequenceEdit.prototype = {
 			this.player = new mw.SequenceEditPlayer( this );
 		}
 		return this.player;
-	},	
+	},
+	getRender: function(){
+		if( !this.render ){
+			this.render = new mw.SequenceEditRender( this );
+		}
+		return this.render;
+	},
 	getEmbedPlayer:function(){
 		 return this.getPlayer().getEmbedPlayer();
 	},
@@ -163,7 +169,7 @@ mw.SequenceEdit.prototype = {
 		return this.keyBindings;
 	},
 	
-	// Apply the resizable layout bindings and default sizes		
+	// Apply the re-sizable layout bindings and default sizes		
 	applyLayoutBindings: function(){
 		var _this = this;
 		this.getContainer().find('.resizableLayout').layout({ 
@@ -200,7 +206,8 @@ mw.SequenceEdit.prototype = {
 				'height': '25px',
 				'width': '100%',
 				'top': '0px',
-				'left' : '0px'
+				'left' : '0px',
+				'background' : '#fff'
 			})
 			.text('Menu')
 			,		
@@ -227,6 +234,7 @@ mw.SequenceEdit.prototype = {
 			)
 		).children();
 	},
+
 	getMenuTarget: function(){
 		return this.getContainer().find( '.mwseq-menu' );
 	},

@@ -1037,7 +1037,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 *            dialogHtml String to be inserted in msg box
 	 * @param {Mixed}
 	 *            buttonOption A button object for the dialog Can be a string
-	 *            for the close buton
+	 *            for the close button
 	 */
 	mw.addDialog = function ( title, dialogHtml, buttons ) {
 		$j( '#mwTempLoaderDialog' ).remove();

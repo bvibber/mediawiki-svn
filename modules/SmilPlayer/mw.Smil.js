@@ -227,7 +227,7 @@ mw.Smil.prototype = {
 	 * states...
 	 */
 	syncWithTime : function(time) {
-		/* .. not yet implementd ... */
+		/* .. not yet supported... */
 		mw.log('smil sync: ' + time);
 	},
 
