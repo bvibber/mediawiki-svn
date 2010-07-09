@@ -330,6 +330,16 @@ $messages['frp'] = array(
 	'wikieditor-template-editor-preference' => 'Activar lo changement a bâsa de formulèros des modèlos vouiqui',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-template-editor-preference' => 'Cuir an comas deasachadh de theamplaidean wiki stèidhichte air foirmean',
+	'wikieditor-template-editor-dialog-title' => 'Deasaich an teamplaid',
+	'wikieditor-template-editor-dialog-submit' => 'Ùraich',
+	'wikieditor-template-editor-dialog-cancel' => 'Sguir dheth',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -458,6 +468,16 @@ $messages['ko'] = array(
 	'wikieditor-template-editor-dialog-cancel' => '취소',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-template-editor-preference' => 'Шаблонланы формала бла тюрлендириу амалны джандыр',
+	'wikieditor-template-editor-dialog-title' => 'Шаблонну тюрлендириу',
+	'wikieditor-template-editor-dialog-submit' => 'Джангырт',
+	'wikieditor-template-editor-dialog-cancel' => 'Ызына алыу',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -477,9 +497,11 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Garas
+ * @author Vpovilaitis
  */
 $messages['lt'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Redaguoti šabloną',
+	'wikieditor-template-editor-dialog-submit' => 'Pakeisti',
 	'wikieditor-template-editor-dialog-cancel' => 'Atšaukti',
 );
 
@@ -751,7 +773,9 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'wikieditor-template-editor-preference' => 'Citakan wiki kudu bisa diédit maké bentuk formulir',
 	'wikieditor-template-editor-dialog-title' => 'Édit citakan',
+	'wikieditor-template-editor-dialog-submit' => 'Anyarkeun',
 	'wikieditor-template-editor-dialog-cancel' => 'Bolay',
 );
 

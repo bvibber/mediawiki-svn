@@ -881,6 +881,30 @@ Configurar $wgPrefStatsTrackPrefs por siuvre des prèferences.',
 	'prefstats-legend-in' => 'Vôt participar',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'prefstats' => 'Staitistearachd nan roghainnean',
+	'prefstats-desc' => "Cum sùil air an staitistearachd a dh'innseas dhut cò mheud cleachdaiche a tha a' cleachdadh a leithid seo de dh'fheart",
+	'prefstats-title' => 'Staitistearachd nan roghainnean',
+	'prefstats-list-intro' => "Tha thu a' cumail sùil air staitistearachd na leanas.
+Briog air aonan dhiubh gus a chuid staitistearachd fhaicinn.",
+	'prefstats-noprefs' => 'Chan eil thu a\' cumail sùil air staitistearachd sam bith.
+Deasaich $wgPrefStatsTrackPrefs gus sùil a chumail air roghainnean.',
+	'prefstats-xaxis' => 'Faid (uairean a thìde)',
+	'prefstats-factors' => 'Seall gach: $1',
+	'prefstats-factor-hour' => 'uair a thìde',
+	'prefstats-factor-sixhours' => 'sia uairean a thìde',
+	'prefstats-factor-day' => 'latha',
+	'prefstats-factor-week' => 'seachdain',
+	'prefstats-factor-twoweeks' => 'dà sheachdain',
+	'prefstats-factor-fourweeks' => 'ceithir seachdainean',
+	'prefstats-factor-default' => 'air ais dhan sgèile bhunaiteach',
+	'prefstats-legend-out' => 'Air a dhiùltadh',
+	'prefstats-legend-in' => 'Air gabhail ris',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -1352,6 +1376,23 @@ $messages['ko'] = array(
 	'prefstats-factor-default' => '기본값',
 	'prefstats-legend-out' => '비활성화한 사용자 수',
 	'prefstats-legend-in' => '활성화한 사용자 수',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'prefstats-xaxis' => 'Баргъанлыгъы (сагъат)',
+	'prefstats-factors' => 'Къараула: $1',
+	'prefstats-factor-hour' => 'сагъат',
+	'prefstats-factor-sixhours' => 'алты сагъат',
+	'prefstats-factor-day' => 'кюн',
+	'prefstats-factor-week' => 'ыйыкъ',
+	'prefstats-factor-twoweeks' => 'эки ыйыкъ',
+	'prefstats-factor-fourweeks' => 'тёрт ыйыкъ',
+	'prefstats-factor-default' => 'Тынгылау бла масштабха къайт',
+	'prefstats-legend-out' => 'Джукъландыла',
+	'prefstats-legend-in' => 'Джандырылдыла',
 );
 
 /** Colognian (Ripoarisch)

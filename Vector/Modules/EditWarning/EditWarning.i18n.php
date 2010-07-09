@@ -289,6 +289,15 @@ Se vos éte branchiê avouéc voutron compto, vos pouede enlevar ceti avèrtisse
 	'vector-editwarning-preference' => 'M’avèrtir quand quito una pâge de changement sen sôvar los changements',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'vector-editwarning-warning' => 'Ma dh\'fhàgas tu an duilleag seo, faodaidh gun caill thu mùthadh sam bith a rinn thu.
+Ma tha thu air logadh a-steach, \'s urrainn dhut an rabhadh seo a chur dheth san roinn "Deasachadh" sna roghainnean agad.',
+	'vector-editwarning-preference' => 'Thoir rabhadh dhomh ma bhios mi an impis duilleag deasachaidh fhàgail mus do shàbhail mi na mùthaidhean agam',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -420,6 +429,15 @@ $messages['ko'] = array(
 	'vector-editwarning-warning' => '이 창에서 벗어나면 저장하지 않은 편집이 모두 사라집니다.
 로그인한 경우, 환경 설정 ‘편집상자’란에서 이 경고창을 띄우지 않도록 설정할 수 있습니다.',
 	'vector-editwarning-preference' => '수정한 내용을 저장하지 않고 편집 양식을 닫거나 다른 페이지로 이동할 때 알림',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'vector-editwarning-warning' => 'Башха бетге кёчсегиз, этген тюрлениулеригиз тас болургъа боллукъдула.
+Системада регистрацияны ётген эсегиз, бу билдириуню джарашдырыуларыгъызны «Тюрлендириу» деген бёлюмюнде джукълатыргъа боллукъсуз.',
+	'vector-editwarning-preference' => 'Тюрлендириулени сакълатмай редакторлау бетден кетген сагъатымда билдир',
 );
 
 /** Colognian (Ripoarisch)
@@ -671,6 +689,13 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
 	'vector-editwarning-preference' => 'Upozori me kada napustim stranicu sa nesačuvanim promenama',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'vector-editwarning-preference' => 'Béjaan kuring lamun ninggalkeun kaca édit anu parobahanana can disimpen',
 );
 
 /** Swedish (Svenska)

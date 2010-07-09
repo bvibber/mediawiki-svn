@@ -194,6 +194,13 @@ $messages['frp'] = array(
 	'wikieditor-highlight-preference' => 'Activar la coloracion sintaxica pendent lo changement',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-highlight-preference' => 'Cuir an comas comharrachadh co-chàraidh nuair a bhithear ri deasachadh',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -269,6 +276,13 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'wikieditor-highlight-preference' => '편집할때, 구문 강조를 활성화함',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-highlight-preference' => 'Редакторлагъан сагъатда синтаксисни белгилеуню джандыр',
 );
 
 /** Colognian (Ripoarisch)

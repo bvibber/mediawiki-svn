@@ -189,6 +189,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'wikieditor-previewDialog-preference' => 'Pśeglědowy dialog zmóžniś',
 	'wikieditor-previewDialog-tab' => 'Pśeglěd',
 	'wikieditor-previewDialog-loading' => 'Zacytujo se...',
 );
@@ -286,6 +287,15 @@ $messages['fur'] = array(
 	'wikieditor-previewDialog-loading' => 'Daûr a cjamâ…',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-previewDialog-preference' => 'Cuir an comas còmhradh an ro-sheallaidh',
+	'wikieditor-previewDialog-tab' => 'Ro-shealladh',
+	'wikieditor-previewDialog-loading' => "'Ga luchdadh...",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -351,9 +361,11 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author IvanLanin
  */
 $messages['id'] = array(
+	'wikieditor-previewDialog-preference' => 'Izinkan kotak pratayang',
 	'wikieditor-previewDialog-tab' => 'Pratayang',
 	'wikieditor-previewDialog-loading' => 'Memuat...',
 );
@@ -497,8 +509,10 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'wikieditor-previewDialog-preference' => 'Aktiver forhåndsvisningsdialog',
 	'wikieditor-previewDialog-tab' => 'Forhåndsvisning',
 	'wikieditor-previewDialog-loading' => 'Laster…',
 );
@@ -543,6 +557,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wikieditor-previewDialog-tab' => 'مخليدنه',
+	'wikieditor-previewDialog-loading' => 'د برسېرېدلو په حال کې...',
 );
 
 /** Portuguese (Português)

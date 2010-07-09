@@ -151,10 +151,12 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author ArnoLagrange
+ * @author Maximillion Pegasus
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'vector-collapsiblenav-preference' => 'Ŝalti kaŝeblan dekstran navigan menuon',
+	'vector-collapsiblenav-more' => 'Pli lingvoj',
 );
 
 /** Spanish (Español)
@@ -208,6 +210,14 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'vector-collapsiblenav-preference' => "Activer le menu de navigation à gauche repliable avec l'habillage vector",
 	'vector-collapsiblenav-more' => 'Plus de langues',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'vector-collapsiblenav-preference' => 'Cuir an comas dùmhlachadh nan rudan san chlàr-taice seòlaidh san chraiceann Vector',
+	'vector-collapsiblenav-more' => 'Barrachd chànan',
 );
 
 /** Galician (Galego)
@@ -321,6 +331,14 @@ $messages['ko'] = array(
 	'vector-collapsiblenav-more' => '기타 언어',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'vector-collapsiblenav-preference' => 'Сол менюда «Вектор» темада блокла джашырыу амалны джандыр',
+	'vector-collapsiblenav-more' => 'Дагъыда тилле',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -429,6 +447,13 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'vector-collapsiblenav-preference' => "↓ Abilité a stërmé j'element ant la bara ëd navigassion ant ël livel Vector",
 	'vector-collapsiblenav-more' => "↓ Pì 'd lenghe",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'vector-collapsiblenav-more' => 'نورې ژبې',
 );
 
 /** Portuguese (Português)
@@ -557,6 +582,14 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'vector-collapsiblenav-preference' => 'Vector temasında dolaşım menüsündeki ögelerin daraltılmasını etkinleştir',
 	'vector-collapsiblenav-more' => 'Daha fazla dil',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'vector-collapsiblenav-preference' => 'Дозволити згортати блоки навігаційного меню в оформленні «Векторне»',
+	'vector-collapsiblenav-more' => 'Інші мови',
 );
 
 /** Vietnamese (Tiếng Việt)

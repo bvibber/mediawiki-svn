@@ -304,6 +304,16 @@ $messages['frp'] = array(
 	'usabilityinitiative-desc' => 'Fonccionalitâts dèvelopâs per l’iniciativa d’utilisabilitât de Vouiquipèdia por mèlyorar l’utilisabilitât de MediaWiki.',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'usabilityinitiative' => 'Iomairt na So-chleachdachd',
+	'usabilityinitiative-desc' => 'Feartan le Iomairt na So-chleachdachd aig Wikipedia gus piseach a thoirt air so-chleachdachd MediaWiki',
+	'prefs-beta' => 'Feartan Beta',
+	'prefs-labs' => 'Feartan nan deuchainn-lannan',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -433,6 +443,15 @@ $messages['ko'] = array(
 	'usabilityinitiative-desc' => '위키백과 Usability Initiative에서 제작한, 미디어위키 사용성을 높여 주는 기능',
 	'prefs-beta' => '베타 기능',
 	'prefs-labs' => '실험 중인 기능',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'usabilityinitiative' => 'Юзабилити башламчылыкъ',
+	'prefs-beta' => 'Бета-амалла',
+	'prefs-labs' => 'Эксперимент амалла',
 );
 
 /** Colognian (Ripoarisch)
@@ -720,6 +739,14 @@ $messages['sv'] = array(
 	'usabilityinitiative-desc' => "Funktioner utvecklade av ''Wikipedias initiativ för användbarhet'', för att förbättra MediaWikis användbarhet",
 	'prefs-beta' => 'Betafunktioner',
 	'prefs-labs' => 'Testfunktioner',
+);
+
+/** Swahili (Kiswahili)
+ * @author Muddyb Blast Producer
+ */
+$messages['sw'] = array(
+	'usabilityinitiative-desc' => 'Zana zilizotengenezwa na Hatua ya Urahisishaji wa Matumizi ya Wikipedia kuongeza ufanisi wa matumizi ya MediaWiki',
+	'prefs-beta' => 'Zana za Beta',
 );
 
 /** Telugu (తెలుగు)

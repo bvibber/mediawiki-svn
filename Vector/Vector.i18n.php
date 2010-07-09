@@ -224,6 +224,14 @@ $messages['frp'] = array(
 	'vector-desc' => 'Mèlyoracions des èlèments de l’entèrface utilisator de l’habelyâjo « Vèctor ».',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'vector' => 'Leasachaidhean an UI airson Vector',
+	'vector-desc' => 'Cuiridh seo piseach air eileamaidean eadar-aghaidh nan cleachdaichean san chraiceann Vector.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -310,6 +318,14 @@ $messages['ka'] = array(
 $messages['ko'] = array(
 	'vector' => '벡터 스킨의 인터페이스 향상',
 	'vector-desc' => '벡터 스킨의 사용자 인터페이스를 향상',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'vector' => '«Вектор» темагъа интерфейсни игилендириу',
+	'vector-desc' => '«Вектор» темагъа къошулуучу интерфейсни игилендириулери',
 );
 
 /** Colognian (Ripoarisch)

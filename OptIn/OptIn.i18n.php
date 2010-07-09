@@ -1360,6 +1360,7 @@ Wir möchten gerne erfahren, was Sie über unsere neue Benutzeroberfläche denke
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'optin' => 'Kullanılabilirlik Girişimi katılım',
@@ -1424,6 +1425,19 @@ Beta ser çı pêşniyazê şıma  esto ma re bışawe. seba anketi:
 	'optin-survey-answer-changes-predictability' => 'performans o ke texmin beno, dewlemend kerê',
 	'optin-survey-answer-changes-custom' => 'xususi kerdışê karberani re destur bıdi',
 	'optin-survey-answer-changes-other' => 'ey bin:',
+	'optin-improvements2' => '=== Çi vuriya?===
+[[File:UsabilityToolbar.png|left|link=| Yew resimê interfaceyê nuştişi]]
+[[File:UsabilityDialogs.png|left|link=| Yew resimê qutiyê diyalogê newe seba dekerdişi gireyan]]
+;Xecatanê Neweyan
+Xecatanê Neweyan Eka nuştiş u formet kerdişi eka rehat kerdo.
+Eni xacetanê neweyan de ti hind eşkena kolay binusi. xacetanê neweyan kaberanê neweyan rê her çi kolay keni.  
+;Diyalog
+Eka yew tablo wikipediya esta. Hind ti kolay eşkena pel de gire bierz. Ma yew wizard viraşt  ke hind tablo viraştiş kolay biy; format kerdişi zaf rahet o.
+;Zaf zi esti
+Seba wendiş u nuştişê meqaleyan kolay kerdişi, ma nevigasyon raver berdi. Tuşan ke ser pel de hind tu ra mocneni eka ti meqele vurnen ya zi ti pela miniqeşeyi vuneni ya zi ti kamci pele wendeni.
+== Ti seni yardim keni? ==
+Tiya de ser Usability Initiative biweni [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style="clear:both"></div>',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -2269,6 +2283,87 @@ $messages['fur'] = array(
 $messages['ga'] = array(
 	'optin-intro' => 'Tá Tionscnamh Inúsáideachta na Vicipéide ag obair chun inúsáideacht na Vicipéide a fheabhsú.
 Ar mhaith leat ár Béite a thriail?',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'optin' => 'Gabh ri Iomairt na So-chleachdachd',
+	'optin-desc' => 'Leig le cleachdaichean am Beta fheuchainn, sin na leasachaidhean as ùire aig Iomairt na So-chleachdachd.',
+	'optin-title-optedout' => 'Feuch am Beta',
+	'optin-title-optedin' => 'Fàg am Beta',
+	'optin-title-justoptedin' => 'Fàilte dhan Bheta',
+	'optin-title-justoptedout' => "Gun robh math agad airson feuchainn ris a' Bheta againn",
+	'optin-title-feedback' => "Beachdan air a' Bheta",
+	'optin-needlogin' => "Feumaidh tu [$1 logadh a-steach] gus feuchainn ris a' Bheta.",
+	'optin-intro' => "Bha Iomairt na So-chleachdachd aig Wikipedia ag obair gu cruaidh gus piseach a thoirt air so-chleachdachd Wikipedia.
+Am bu toigh leat feuchainn ris a' Bheta againn?",
+	'optin-feedback-intro' => "Gun robh math agad airson feuchainn ris a' Bheta.
+Bu toigh leinn do bheachdan air an eadar-aghaidh ùr againn a chluinntinn 's bhitheamaid fada 'nad chomain nam b' urrainn dhut an t-suirbhidh shaor-thoileach gu h-ìosal a lìonadh a-steach.",
+	'optin-feedback-back' => "Mur eil thu airson an t-suirbhidh a lìonadh a-steach, 's urrainn dhut tilleadh a $1.",
+	'optin-success-in' => "Tha thu a' feuchainn ris a' Bheta a-nis.
+'S urrainn dhut fhàgail uair sam bith ma bhriogas tu air a' cheangal \"{{int:optin-leave}}\" aig barr na duilleige.",
+	'optin-leave-cancel' => "Ma tha thu airson leantainn ort leis a' Bheta, 's urrainn dhut tilleadh a $1.",
+	'optin-success-out' => "Dh'fhàg thu am Beta gu soirbheachail.
+'S urrainn dhut feuchainn ris a-rithist uair sam bith ma bhriogas tu air a' cheangal \"{{int:optin-try}}\" aig barr na duilleige.",
+	'optin-success-feedback' => 'Gun robh math agad airson do bheachdan!',
+	'optin-accept-short' => 'Ceart ma-thà!',
+	'optin-accept-long' => "Feuch ris a' Bheta",
+	'optin-accept-long-anon' => "Log a-steach 's feuch ris a' Bheta",
+	'optin-deny-short' => "Cha bu toigh l', mòran taing",
+	'optin-deny-long' => 'Till dhan duilleag roimhe',
+	'optin-submit-out' => 'Fàg am Beta',
+	'optin-submit-feedback' => 'Thoir beachd',
+	'optin-survey-yes' => "Bu toigh l'",
+	'optin-survey-no' => "Cha bu toigh l'",
+	'optin-survey-intro' => "Gun robh math agad airson feuchainn ris a' Bheta.
+Bu toigh leinn do bheachdan air an eadar-aghaidh ùr againn a chluinntinn 's bhitheamaid fada 'nad chomain nam b' urrainn dhut an t-suirbhidh shaor-thoileach a lìonadh a-steach gu h-ìosal mus briog thu air \"[[#leave|{{int:optin-submit-out}}]]\".",
+	'optin-survey-question-likedislike' => "Dè bha a' còrdadh riut sa Bheta? Dè nach robh a' còrdadh riut sa Bheta?",
+	'optin-survey-question-whyoptout' => "Carson a tha thu a' fàgail a' Bheta? (Tagh gach freagairt a tha fìor.)",
+	'optin-survey-answer-whyoptout-hard' => 'Bha e ro dhoirbh ri chleachdadh.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Cha robh e ag obair mar bu chòir.',
+	'optin-survey-answer-whyoptout-notpredictable' => "Cha robh e a' dèanamh mar a bha dùil.",
+	'optin-survey-answer-whyoptout-didntlike-look' => "Cha robh an coltas a' còrdadh rium.",
+	'optin-survey-answer-whyoptout-didntlike-layout' => "Cha bu toigh leam na tabaichean ùra 's an coltas ùr.",
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Cha bu toigh leam am bàr-inneil ùr.',
+	'optin-survey-answer-whyoptout-other' => 'Adhbhar eile:',
+	'optin-survey-question-explain' => 'Mìnich do fhreagairt gu h-àrd no innis dhuinn barrachd:',
+	'optin-survey-question-techfail' => "An do thachair thu ri lochd teicnigeach sam bith fhad 's a bha thu a' cleachdadh a' Bheta?",
+	'optin-survey-question-techfail-ifyes' => 'Ma thachair, innis dhuinn na thachair:',
+	'optin-survey-question-usedtoolbar' => 'An do chleachd thu am bàr-inneil ùr as urrainn dhut leudachadh airson duilleag a dheasachadh?',
+	'optin-survey-question-usedtoolbar-ifyes' => "Ma chleachd, dè do bheachd air? An robh càil ann mu dhèidhinn nach robh a' còrdadh riut?",
+	'optin-survey-question-usedtoolbar-ifno' => 'Mura chleachd, an innis thu dhuinn carson? An cleachd thu e a-mach o seo? Innis dhuinn.',
+	'optin-survey-question-different' => "Am bitheadh tu a' cleachdadh a' Bheta fhathast nam bitheamaid air càil a dhèanamh air dòigh eile?",
+	'optin-survey-question-feedback' => 'Innis dhuinn ma tha beachd, dragh no moladh sam bith eile agad - tha beachdan de gach seòrsa feumail:',
+	'optin-survey-question-browser' => "Dè am brabhsair a bha thu a' cleachdadh?",
+	'optin-survey-answer-browser-other' => 'Brabhsair eile:',
+	'optin-survey-question-os' => "Dè an siostam-obrachaidh a bhios tu a' cleachdadh?",
+	'optin-survey-answer-os-other' => 'Siostam-obrachaidh eile:',
+	'optin-survey-question-res' => 'Dè an dùmhlachd-bhreacaidh a tha aig an sgrìn agad?',
+	'optin-survey-question-changes' => 'Dè na rudan a bu toigh leat faicinn sa Bheta san àm ri teachd (tagh gach aon dhiubh a tha fìor)?',
+	'optin-survey-answer-changes-nav' => 'Dèanaibh seòladh na làraich nas fhasa san fharsaingeachd.',
+	'optin-survey-answer-changes-edittools' => "Bu toigh leam barrachd innealan deasachaidh 's feadhainn nas fhearr.",
+	'optin-survey-answer-changes-upload' => 'Cuiribh piseach air an t-susbaint is luchdadh suas meadhanan.',
+	'optin-survey-answer-changes-richtext' => 'Leasaichibh innealan deasachaidh a tha coltach ri deasaichean rich-text.',
+	'optin-survey-answer-changes-lookfeel' => 'Ùraichibh coltas na làraich.',
+	'optin-survey-answer-changes-predictability' => 'Cuiribh piseach air gus an dèan e na tha dùil ris.',
+	'optin-survey-answer-changes-custom' => 'Leigibh le daoine a ghnàthachadh barrachd.',
+	'optin-survey-answer-changes-other' => 'Eile:',
+	'optin-improvements2' => "== Dè tha nas fhearr a-nis? ==
+[[File:UsabilityToolbar.png|left|link=|Dealbh-sgrìn a' bhàir-inneil dheasachaidh leasaichte]]
+[[File:UsabilityDialogs.png|left|link=|Dealbh-sgrìn a' chòmhraidh ùir airson cruthachadh susbainte]]
+;Am bàr-inneil leasaichte
+Tha e nas fhasa artagail a dheasachadh leis a' bhàr-inneil leasaichte.
+Tha e nas soilleire na tha gach inneal a' dèanamh leis na h-ìomhaigheagan ùra is leasaichte.
+Tha na roinnean leudaichte a' lughdachadh a' ghànrachaidh fhad 's a chumas e na h-innealan a chleachdas tu gu tric deas ri do làimh.
+;An còmhradh
+Nuair a chruthaicheas tu ceanglaichean no clàir, fosglaidh tu bogsa còmhraidh ùr ma bhriogas tu air ìomhaigheag an inneil agus 's urrainn dhut ceanglaichean is clàr a chruthachadh an uairsin le foirm simplidh.
+;Agus barrachd fhathast
+Chuir sinn an sàs grunn leasachaidhean eile mar sheòladh leasaichte, tabaichean air nòs easa, lorg leasaichte is torr a bharrachd.
+== Mar a ghabhas tu pàirt ann ==
+Airson barrachd fiosrachaidh air Iomairt na So-chleachdachd, tadhail air an [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative duilleag-dhachaigh] againn.
+<div style=\"clear:both\"></div>",
 );
 
 /** Galician (Galego)
@@ -3409,6 +3504,25 @@ $messages['ko'] = array(
  * @author Iltever
  */
 $messages['krc'] = array(
+	'optin' => 'Юзабилити башламчылыкъгъа къошулуу',
+	'optin-desc' => 'Къошулуучулагъа интерфейсни бета-версиясын («Beta») — Юзабилити башламчылыкъны юсю бла этилген ахыр игилендириуню сынаргъа къояды.',
+	'optin-title-optedout' => 'Бета-версияны сынаб кёр',
+	'optin-title-optedin' => 'Бета-версиядан чыкъ',
+	'optin-title-justoptedin' => 'Бета-версиягъа хош келигиз',
+	'optin-title-justoptedout' => 'Интерфейсни бета-версиясын сынагъаннга къошулгъаныгъыз ючюн сау болугъуз',
+	'optin-title-feedback' => 'Оюмугъузну ийигиз',
+	'optin-needlogin' => '[$1 Системагъа кирирге] керексиз бета-версияны сынар ючюн.',
+	'optin-intro' => 'Юзабилити башламчылыкъны юсю бла Википедияны хайырланыу тынчыракъ болурча иш бардырылгъанды.
+Бета-версияны саныргъа излеймисиз?',
+	'optin-accept-short' => 'Этейик алай!',
+	'optin-accept-long' => 'Бета-версияны сынаб кёр',
+	'optin-accept-long-anon' => 'Авторизацияны ёт да интерфейсни бета-версиясын сынаб кёр',
+	'optin-deny-short' => 'Огъай, сау болугъуз.',
+	'optin-deny-long' => 'Алгъадагъы бетге къайт',
+	'optin-submit-out' => 'Бета-версиядан чыкъ',
+	'optin-submit-feedback' => 'Оюмугъузну ийигиз',
+	'optin-survey-yes' => 'Хоу',
+	'optin-survey-no' => 'Огъай',
 	'optin-survey-answer-changes-other' => 'Башха:',
 );
 
@@ -5660,6 +5774,7 @@ $messages['su'] = array(
 	'optin-intro' => 'Inisiatif Kamangpaatan Wikipédia narékahan pikeun ngaronjatkeun kamangpaatan Wikipédia. Badé nyobian Béta?',
 	'optin-feedback-back' => 'Lamun moal ngeusian surpéy, anjeun bisa balik deui ka $1.',
 	'optin-leave-cancel' => 'Mun anjeun rék neruskeun maké Béta, anjeun bisa balik deui ka $1.',
+	'optin-success-feedback' => 'Ngahaturkeun nuhun kanggo sumbang pamendakna!',
 	'optin-accept-short' => 'Hayu!',
 	'optin-accept-long' => 'Cobaan Béta',
 	'optin-accept-long-anon' => 'Asup log jeung cobaan Béta',
@@ -5670,6 +5785,7 @@ $messages['su'] = array(
 	'optin-survey-no' => 'Teu',
 	'optin-survey-question-whyoptout' => 'Naha bet ninggalkeun Béta? (mangga pilih sadaya nu cocog.)',
 	'optin-survey-answer-whyoptout-hard' => 'Hésé makéna.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Fungsina teu jalan.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'optin-survey-answer-whyoptout-other' => 'Alesan séjén:',
 	'optin-survey-question-os' => 'Sistem operasi naon nu dipaké ku anjeun?',

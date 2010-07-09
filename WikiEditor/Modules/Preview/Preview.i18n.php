@@ -352,6 +352,16 @@ $messages['fur'] = array(
 	'wikieditor-preview-loading' => 'Daûr a cjamâ…',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-preview-preference' => 'Cuir an comas ro-shealladh taobh ri taobh',
+	'wikieditor-preview-tab' => 'Ro-shealladh',
+	'wikieditor-preview-changes-tab' => 'Mùthaidhean',
+	'wikieditor-preview-loading' => "'Ga luchdadh...",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -490,6 +500,16 @@ $messages['ko'] = array(
 	'wikieditor-preview-tab' => '미리 보기',
 	'wikieditor-preview-changes-tab' => '차이',
 	'wikieditor-preview-loading' => '불러오는 중...',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-preview-preference' => 'Бир бири къатында ал къарауну джандыр',
+	'wikieditor-preview-tab' => 'Ал къарау',
+	'wikieditor-preview-changes-tab' => 'Тюрлениуле',
+	'wikieditor-preview-loading' => 'Джюклениу...',
 );
 
 /** Colognian (Ripoarisch)
@@ -667,6 +687,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'wikieditor-preview-tab' => 'مخليدنه',
 	'wikieditor-preview-changes-tab' => 'بدلونونه',
+	'wikieditor-preview-loading' => 'د برسېرېدلو په حال کې...',
 );
 
 /** Portuguese (Português)

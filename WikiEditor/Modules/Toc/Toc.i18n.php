@@ -277,6 +277,15 @@ $messages['frp'] = array(
 	'wikieditor-toc-hide' => 'Cachiér lo contegnu',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-toc-preference' => 'Cuir clàr-innse an comas a ghabhas a sheòladh',
+	'wikieditor-toc-show' => 'Seall an clàr-innse',
+	'wikieditor-toc-hide' => 'Cuir am falach an clàr-innse',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -389,6 +398,15 @@ $messages['ko'] = array(
 	'wikieditor-toc-preference' => '편집용 목차를 활성화',
 	'wikieditor-toc-show' => '내용 보기',
 	'wikieditor-toc-hide' => '내용 숨김',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-toc-preference' => 'Навигация амалы бла ичиндегилени таблицасын джандыр',
+	'wikieditor-toc-show' => 'Башларын кёргюз',
+	'wikieditor-toc-hide' => 'Башларын джашыр',
 );
 
 /** Colognian (Ripoarisch)
@@ -643,6 +661,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'wikieditor-toc-preference' => 'Omogući navigacionu tabelu sadržaja',
 	'wikieditor-toc-show' => 'Pokaži sadržaj',
 	'wikieditor-toc-hide' => 'Sakrij sadržaj',
 );

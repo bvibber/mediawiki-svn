@@ -156,6 +156,13 @@ $messages['fr'] = array(
 	'wikieditor-templates-preference' => 'Activer le repliement des modèles',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-templates-preference' => 'Cuir an comas dùmhlachadh theamplaidean',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -231,6 +238,13 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'wikieditor-templates-preference' => '틀 접기 활성화하기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-templates-preference' => 'Шаблонланы джашырыу амалны джандыр',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -376,6 +390,13 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
 	'wikieditor-templates-preference' => 'Omogućava razmotavanje šablona',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-templates-preference' => 'Citakanana kudu bisa ditilepkeun',
 );
 
 /** Swedish (Svenska)

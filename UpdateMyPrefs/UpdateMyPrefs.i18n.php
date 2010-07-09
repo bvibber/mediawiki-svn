@@ -223,6 +223,15 @@ $messages['fr'] = array(
 	'updatemyprefs-label-message' => 'Mettre à jour automatiquement mes préférences avec les nouvelles valeurs par défaut et outils quand ils sont disponibles',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'prefs-updates' => 'Ùrachaidhean',
+	'updatemyprefs-desc' => 'Roghainn airson nan cleachdaichean far an urrainn dhaibh taghadh am bu toigh leotha ùrachaidhean air eadar-aghaidh nan cleachdaichean o àm gu àm nuair a nochdas iad.',
+	'updatemyprefs-label-message' => 'Ùraich na roghainnean agam leis an roghainnean is innealan bunaiteach ùra nuair a nochdas iad',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -331,6 +340,13 @@ $messages['ko'] = array(
 	'prefs-updates' => '업데이트',
 	'updatemyprefs-desc' => '새로운 기능이 나올 때마다 주기적으로 인터페이스를 업데이트를 원하는지 표시하는 사용자 환경 설정',
 	'updatemyprefs-label-message' => '새로운 기능이 나올 때마다 기본 환경 설정을 자동적으로 업데이트하기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'prefs-updates' => 'Джангыртыула',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -508,6 +524,13 @@ $messages['sl'] = array(
 	'updatemyprefs-label-message' => 'Samodejno posodobi moje nastavitve z novimi privzetimi nastavitvami in orodji, ko ta postanejo na voljo',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'prefs-updates' => 'Anyaran',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Dafer45
@@ -516,6 +539,14 @@ $messages['sv'] = array(
 	'prefs-updates' => 'Uppdateringar',
 	'updatemyprefs-desc' => 'Användarinställning för att ange om de vill ha regelbundna uppdateringar av användargränssnitt då de görs tillgängliga',
 	'updatemyprefs-label-message' => 'Uppdatera mina inställningar automatiskt med nya standardinställningarna och verktyg när de blir tillgängliga',
+);
+
+/** Swahili (Kiswahili)
+ * @author Muddyb Blast Producer
+ */
+$messages['sw'] = array(
+	'prefs-updates' => 'Visasisho',
+	'updatemyprefs-desc' => 'Mapendekezo kwa ajili ya watumiaji kuweka bayana iwapo wanataka visasisho vya kusano za muda kama zimetengenezwa na kupatikana',
 );
 
 /** Telugu (తెలుగు)
@@ -548,6 +579,15 @@ $messages['tr'] = array(
 	'prefs-updates' => 'Güncellemeler',
 	'updatemyprefs-desc' => 'Kullanıcılar için periyodik kullanıcı arayüz güncellemelerini var olduklarında isteyip istemediklerini belirten tercih',
 	'updatemyprefs-label-message' => 'Yeni varsayılan ayarlar ve araçlar var oldukça tercihlerimi otomatik olarak güncelle',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'prefs-updates' => 'Оновлення',
+	'updatemyprefs-desc' => 'Опція, яка дозволяє користувачам задіювати оновлення інтерфейсу з їх появою',
+	'updatemyprefs-label-message' => 'Автоматично додавати в мої налаштування нові засоби та налаштування за промовчанням',
 );
 
 /** Vietnamese (Tiếng Việt)

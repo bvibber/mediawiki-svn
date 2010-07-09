@@ -741,6 +741,34 @@ $messages['frp'] = array(
 	'ct-update-table' => 'Betar a jorn la trâbla',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'clicktracking' => 'An lorgachadh briogaidh aig Iomairt na So-chleachdachd',
+	'clicktracking-desc' => 'Lorgachadh briogaidh airson sùil a chumail air tachartasan nach cuir air duilleag e fhèin ùrachadh',
+	'ct-title' => 'Briogaidhean iomlan le cleachdaichean',
+	'ct-event-name' => 'Ainm tachartais',
+	'ct-expert-header' => 'Briogaidhean nan "sàr-eòlach"',
+	'ct-intermediate-header' => 'Briogaidhean "luchd-eadar-mheadhanach"',
+	'ct-beginner-header' => 'Briogaidhean "luchd-tòiseachaidh"',
+	'ct-total-header' => 'Briogaidhean uile gu lèir',
+	'ct-start-date' => 'Latha tòiseachaidh (BBBBMMLL)',
+	'ct-end-date' => 'Latha crìochnachaidh (BBBBMMLL)',
+	'ct-increment-by' => "Àireamh de latha a tha gach puing dàta 'ga riochdachadh",
+	'ct-change-graph' => 'Atharraich an graf',
+	'ct-beginner' => 'Luchd-tòiseachaidh',
+	'ct-intermediate' => 'Luchd-eadar-mheadhanach',
+	'ct-expert' => 'Sàr-eòlaich',
+	'ct-date-range' => 'An raon-ama',
+	'ct-editing' => "A' deasachadh an-dràsta:",
+	'ct-anon-users' => 'Cleachdaichean gun ainm',
+	'ct-user-contribs' => "Mùthaidhean a' chleachdaiche uile gu lèir",
+	'ct-user-span' => "Mùthaidhean a' chleachdaiche am broinn an raoin-ama",
+	'ct-and' => 'agus',
+	'ct-update-table' => 'Ùraich an clàr',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
