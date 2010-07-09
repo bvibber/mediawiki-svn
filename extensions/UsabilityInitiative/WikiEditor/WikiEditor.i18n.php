@@ -314,6 +314,16 @@ $messages['frp'] = array(
 	'wikieditor-wikitext-tab' => 'Vouiquitèxto',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor' => 'Eadar-aghaidh deasachadh wikitext adhartach',
+	'wikieditor-desc' => 'Bheir seo dhut eadar-aghaidh deasachadh wikitext adhartach agus iomadh mòideal a bheir dhut feartan',
+	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => "'Ga luchdadh",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -428,6 +438,16 @@ $messages['ko'] = array(
 	'wikieditor-desc' => '확장된 위키 문법 편집 인터페이스와 다양한 기능을 제공하는 모듈을 제공',
 	'wikieditor-wikitext-tab' => '위키텍스트',
 	'wikieditor-loading' => '로딩중',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor' => 'Викитекст редакторлауну кенгертилген интерфейси',
+	'wikieditor-desc' => 'Викитекст редакторлауну кенгертилген интерфейсин эмда модулла берген кёб башха функцияны джетиштиреди.',
+	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Джюклеу',
 );
 
 /** Colognian (Ripoarisch)

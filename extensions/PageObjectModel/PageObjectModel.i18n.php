@@ -42,9 +42,10 @@ $messages['es'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Verdy p
  */
 $messages['fr'] = array(
-	'pageobjectmodel-desc' => "Ajoute un ensemble de classes pour abstraire la syntaxe de MediaWiki pour faciliter l'extraction et la manipulation des pages dans d'autres programmes",
+	'pageobjectmodel-desc' => 'Ajoute un ensemble de classes permettant l’abstraction de la syntaxe de MediaWiki afin de faciliter l’extraction et la manipulation des pages dans d’autres programmes',
 );
 
 /** Galician (Galego)
@@ -52,6 +53,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'pageobjectmodel-desc' => 'Engade un conxunto de clases para a captación de sintaxe MediaWiki de modo que permita a fácil extracción e manipulación de páxinas dentro doutros programas',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'pageobjectmodel-desc' => 'Fiegt e Reihe vu Klasse yy zur Abstraktion vu dr MediaWiki-Syntax go ne eifache Dateexport un d Bearbeitig vu Syte mit andere Programm megli mache',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

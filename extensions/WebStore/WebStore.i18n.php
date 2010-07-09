@@ -3006,6 +3006,9 @@ $1',
 $messages['yi'] = array(
 	'inplace_scaler_not_enough_params' => 'נישטא גענוג פאראמעטערס',
 	'webstore_path_invalid' => 'טעקע נאמען איז אומגילטיק.',
+	'webstore_dest_open' => 'קען נישט עפֿענען די ציל טעקע "$1"',
+	'webstore_dest_lock' => 'נישט געקענט פֿאַרשפאַרן ציל טעקע "$1".',
+	'webstore_archive_lock' => 'נישט געקענט פֿאַרשפאַרן אַרכיוו טעקע "$1".',
 );
 
 /** Chinese (China) (‪中文(中国大陆)‬)

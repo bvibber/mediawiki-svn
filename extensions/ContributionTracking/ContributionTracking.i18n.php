@@ -852,6 +852,13 @@ $messages['sah'] = array(
 	'contrib-tracking-button' => 'Салгыы',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'contrib-tracking-error' => 'දෝෂය',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

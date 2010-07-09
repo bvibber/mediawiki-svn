@@ -355,8 +355,8 @@ $messages['dsb'] = array(
 	'authorprotect-confirm' => 'Šćitne stopnje změniś',
 	'authorprotect-edit' => 'Wobźěłanje na awtorow wobgranicowaś',
 	'authorprotect-move' => 'Pśesunjenje na awtorow wobgranicowaś',
-	'authorprotect-expiry' => 'Cas pśepadnjenja',
-	'authorprotect-reason' => 'Pśicyna',
+	'authorprotect-expiry' => 'Pśepadnjo:',
+	'authorprotect-reason' => 'Pśicyna:',
 	'authorprotect-intro' => 'Toś ten formular za zastajenje boka pśeśiwo njeawtoram wužywaś',
 	'authorprotect-success' => 'Šćit wuspěšny!',
 	'authorprotect-failure' => 'Šćit njewuspěšny',
@@ -578,7 +578,7 @@ $messages['gsw'] = array(
 	'authorprotect-edit' => 'Bearbeitig uf Autore bschränke',
 	'authorprotect-move' => 'Verschiebig uf Autore bschränke',
 	'authorprotect-expiry' => 'Sperrduur',
-	'authorprotect-reason' => 'Grund',
+	'authorprotect-reason' => 'Grund:',
 	'authorprotect-intro' => 'Mit däm Formular chasch d Sytebearbeitig uf Autore bschränke.',
 	'authorprotect-success' => 'Syte isch gschitzt wore!',
 	'authorprotect-failure' => 'Syte het nit chenne gschitzt wäre!',
@@ -732,6 +732,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Rex
  */
 $messages['id'] = array(
@@ -741,8 +742,8 @@ $messages['id'] = array(
 	'authorprotect-confirm' => 'Mengganti tingkat perlindungan',
 	'authorprotect-edit' => 'Membatasi penyuntingan hanya untuk penulis pertama',
 	'authorprotect-move' => 'Membatasi pemindahan hanya untuk penulis pertama',
-	'authorprotect-expiry' => 'Waktu kadaluwarsa',
-	'authorprotect-reason' => 'Alasan',
+	'authorprotect-expiry' => 'Kadaluwarsa:',
+	'authorprotect-reason' => 'Alasan:',
 	'authorprotect-intro' => 'Gunakan formulir berikut untuk mengunci halaman ini dari non-penulis pertama',
 	'authorprotect-success' => 'Perlindungan berhasil!',
 	'authorprotect-failure' => 'Perlindungan tidak berhasil',
@@ -1391,8 +1392,8 @@ $messages['sr-el'] = array(
 	'authorprotect-confirm' => 'Promeni nivoe zaštite',
 	'authorprotect-edit' => 'Ograniči pravo izmene na autore',
 	'authorprotect-move' => 'Ograniči pravo premeštanja samo na autore',
-	'authorprotect-expiry' => 'Vreme isteka',
-	'authorprotect-reason' => 'Razlog',
+	'authorprotect-expiry' => 'Ističe:',
+	'authorprotect-reason' => 'Razlog:',
 	'authorprotect-intro' => 'Koristite ovu formu da biste zaključali ovaj članak za ne-autore',
 	'authorprotect-success' => 'Zaštita uspešna!',
 	'authorprotect-failure' => 'Zaštita neuspešna',
@@ -1460,10 +1461,11 @@ $messages['te'] = array(
 	'authorprotect-confirm' => 'సంరక్షణా స్థాయిలను మార్చు',
 	'authorprotect-edit' => 'రచయితలను మాత్రమే మార్పులు చేయనివ్వు',
 	'authorprotect-move' => 'తరలింపుని రచయితలు మాత్రమే చేయనివ్వు',
-	'authorprotect-expiry' => 'గడువు ముగిసే సమయం',
-	'authorprotect-reason' => 'కారణము',
+	'authorprotect-expiry' => 'కాలంచెల్లు తేదీ:',
+	'authorprotect-reason' => 'కారణం:',
 	'authorprotect-success' => 'సంరక్షణ విజయవంతం!',
 	'authorprotect-failure' => 'సంరక్షణ విఫలమైంది',
+	'right-authorprotect' => 'రచించిన పుటలను రక్షించుకోవగలగడం',
 );
 
 /** Tetum (Tetun)

@@ -2649,6 +2649,7 @@ $wgCustomToolbarMessages['sr-el'] = array(
 	'ct_italic_tip_ins' => 'Unbaci tekst u kurzivu',
 	'ct_italic_tip_wrap' => 'Prebaci ovaj tekst u kurziv',
 	'ct_italic_caption' => 'Kurziv',
+	'ct_internal_sample' => 'ImeStrane',
 	'ct_internal_tip_ins' => 'Ubaci unutrašnju vezu',
 	'ct_internal_tip_wrap' => 'Učini ovaj tekst unutrašnjom vezom',
 	'ct_internal_caption' => 'Unutrašnja veza',

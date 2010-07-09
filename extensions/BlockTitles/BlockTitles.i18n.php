@@ -153,7 +153,15 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'block_title_error_page_title' => 'Teitl a rwystrwyd',
+	'blocktitles-desc' => 'Darparu ffordd sylfaenol o rwystro tudalennau sydd â theitlau penodol rhag cael eu cadw neu greu',
 	'block_title_error' => "Mae'n ddrwg gennym, ond ni ellir cadw teitl y dudalen hon.",
+);
+
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'block_title_error_page_title' => 'Blokeret titel',
 );
 
 /** German (Deutsch)

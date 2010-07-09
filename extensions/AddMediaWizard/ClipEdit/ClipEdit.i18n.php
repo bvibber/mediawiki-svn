@@ -608,6 +608,7 @@ $messages['id'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Sisipkan pada urutan',
 	'mwe-clipedit-preview_insert' => 'Sisipkan pratayang',
 	'mwe-clipedit-cancel_image_insert' => 'Batalkan penyisipan',
+	'mwe-clipedit-sc_attributes' => 'Suntingan detail klip',
 	'mwe-clipedit-sc_inoutpoints' => 'Atur titik masuk-keluar',
 	'mwe-clipedit-sc_overlays' => 'Hamparan',
 	'mwe-clipedit-sc_audio' => 'Kontrol audio',

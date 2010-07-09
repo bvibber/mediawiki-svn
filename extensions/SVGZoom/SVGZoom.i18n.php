@@ -269,6 +269,11 @@ $messages['sr-ec'] = array(
 	'svgzoom-desc' => 'Додаје МедијаВикију могућност скроловања по и увећавања SVG слика',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'svgzoom-desc' => 'Dodaje MedijaVikiju mogućnost skrolovanja po i uvećavanja SVG slika',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

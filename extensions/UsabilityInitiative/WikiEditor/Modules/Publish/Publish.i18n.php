@@ -492,6 +492,21 @@ $messages['frp'] = array(
 	'wikieditor-publish-dialog-goback' => 'Retôrn',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-publish-preference' => 'Cuir an comas foillseachadh ceum air cheum',
+	'wikieditor-publish-button-publish' => 'Foillisch',
+	'wikieditor-publish-button-cancel' => 'Sguir dheth',
+	'wikieditor-publish-dialog-title' => 'Foillsich gu {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Gearr-chunntas an deasachaidh (mìnich na rinn thu gu goirid):',
+	'wikieditor-publish-dialog-minor' => 'Mùthadh beag',
+	'wikieditor-publish-dialog-watch' => 'Cum sùil air an duilleag seo',
+	'wikieditor-publish-dialog-publish' => 'Foillisch',
+	'wikieditor-publish-dialog-goback' => 'Air ais',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -710,6 +725,21 @@ $messages['ko'] = array(
 	'wikieditor-publish-dialog-watch' => '이 문서 주시하기',
 	'wikieditor-publish-dialog-publish' => '게시',
 	'wikieditor-publish-dialog-goback' => '돌아가기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-publish-preference' => 'Атлам-атлам чыгъарыуну джандыр',
+	'wikieditor-publish-button-publish' => 'Чыгъар',
+	'wikieditor-publish-button-cancel' => 'Ызына алыу',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} проектде чыгъар',
+	'wikieditor-publish-dialog-summary' => 'Тюрлениулени ачыкълау (къаллай тюрлениулени этилгенин къысхасы бла белгилегиз):',
+	'wikieditor-publish-dialog-minor' => 'Гитче тюрлендириу',
+	'wikieditor-publish-dialog-watch' => 'Бу бетни сынчыкъла',
+	'wikieditor-publish-dialog-publish' => 'Чыгъар',
+	'wikieditor-publish-dialog-goback' => 'Артха',
 );
 
 /** Colognian (Ripoarisch)
@@ -953,6 +983,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wikieditor-publish-button-publish' => 'خپرول',
+	'wikieditor-publish-dialog-watch' => 'همدا مخ کتل',
 	'wikieditor-publish-dialog-publish' => 'خپرول',
 );
 

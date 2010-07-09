@@ -223,6 +223,14 @@ $messages['fy'] = array(
 	'absenteelandlord-desc' => 'Slút de database automatysk as de behearders allegearre in beskate tiid ynaktyf binne',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'absenteelandlord-reason' => "Chaidh an stòr-dàta a ghlasadh leis fhèin a chionn 's gun robh na riadairean 'nan tàmh ro fhada.",
+	'absenteelandlord-desc' => "Glasaidh seo an stòr-dàta wiki ma bhios na sysops uile gu lèir 'nan tàmh fad greis",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -106,21 +106,21 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'rt-desc' => 'Etrefas evit RT (Request Tracker)',
+	'rt-desc' => 'Etrefas plijus evit RT (Request Tracker)',
 	'rt-inactive' => "An astenn RT n'eo ket oberiant",
-	'rt-badquery' => "Ur fazi a zo bet gant an astenn RT a-pad ur reked d'an diaz roadennoù",
-	'rt-badlimit' => "N'eo ket mat an arguzenn LIMIT (l) : rankout a ra bezañ un niver.
-Klasket hoc'h eus : '''$1'''",
-	'rt-badorderby' => "N'eo ket mat an arguzenn ORDER BY (ob) : rankout a ra bezañ ur maezienn skoueriek (gwelet an teuliadur).
-Klasket hoc'h eus : '''$1'''",
-	'rt-badstatus' => "N'eo ket mat ar status queue (o) : rankout a ra bezañ ur maezienn skoueriek (gwelet an teuliadur).
-Klasket hoc'h eus : '''$1'''",
+	'rt-badquery' => 'Ur fazi zo bet gant an astenn RT en ur eskemm gant an diaz roadennoù RT',
+	'rt-badlimit' => "Arguzenn LIMIT (l) direizh : rankout a ra bezañ un niver.
+Lakaet hoc'h eus : '''$1'''",
+	'rt-badorderby' => "Arguzenn ORDER BY (ob) direizh : rankout a ra bezañ ur vaezienn voutin(gwelet an teuliadur).
+Lakaet hoc'h eus : '''$1'''",
+	'rt-badstatus' => "Arguzenn status direizh (s) : rankout a ra bezañ ur vaezienn voutin (gwelet an teuliadur).
+Lakaet hoc'h eus : '''$1'''",
 	'rt-badcfield' => "Arguzenn maezienn bersonelaet direizh : rankout a ra bezañ ur ger eeun (sellit ouzh an teulioù titouriñ).
 Klasket hoc'h eus gant : '''$1'''",
-	'rt-badqueue' => "N'eo ket mat an arguzenn queue (o) : rankout a ra bezañ ur ger eeun.
-Klasket hoc'h eus : '''$1'''",
-	'rt-badowner' => "N'eo ket mat an arguzenn owner (o) : rankout a ra bezañ un anv gwiriek.
-Klasket hoc'h eus : '''$1'''",
+	'rt-badqueue' => "Arguzenn queue (o) direizh : rankout a ra bezañ ur ger eeun.
+Lakaet hoc'h eus : '''$1'''",
+	'rt-badowner' => "Arguzenn owner (o) direizh : rankout a ra bezañ un anv implijer reizh.
+Lakaet hoc'h eus : '''$1'''",
 	'rt-nomatches' => "N'eus bet kavet tiked RT ebet o klotañ",
 );
 

@@ -233,6 +233,8 @@ Doe dit als volgt: &lt;stockchart ticker="AAPL"/&gt;',
  */
 $messages['no'] = array(
 	'stockcharts-desc' => 'Legger til en <nowiki><stockchart ticker="AAPL"/></nowiki>-merkelapp for et interaktivt aksjekart',
+	'stockcharts-missingticker' => 'For å bygge inn et aksjekart må du angi minst én ticker.
+Bruk: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
 /** Occitan (Occitan)

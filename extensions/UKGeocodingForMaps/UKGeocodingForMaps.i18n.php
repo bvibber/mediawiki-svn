@@ -135,6 +135,15 @@ $messages['ia'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Un o plus codices postal non poteva esser geocodificate e ha essite omittite del carta.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'ukgeocoding_name' => 'Kode Geo Britania Raya untuk Peta',
+	'ukgeocoding_desc' => 'Perluas Peta dengan fungsi parser display_uk_point dengan menggunakan Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Satu kode pos atau lebih tidak dapat dikodegeokan dan telah dihapus dari peta.',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */

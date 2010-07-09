@@ -187,6 +187,18 @@ $messages['cs'] = array(
 	'postcomment_nopostingtoadd' => 'Žádný příspěvek k přidání.',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'postcomment_notloggedin' => 'Du er ikke logget ind.',
+	'postcomment_youareloggedinas' => 'Du er logget ind som $1',
+	'postcomment_leavemessagefor' => 'Efterlad en besked til $1',
+	'postcomment_on' => 'På',
+	'postcomment_said' => 'sagde',
+	'postcomment_replyto' => 'Svar til $1',
+);
+
 /** German (Deutsch)
  * @author Leithian
  * @author Melancholie

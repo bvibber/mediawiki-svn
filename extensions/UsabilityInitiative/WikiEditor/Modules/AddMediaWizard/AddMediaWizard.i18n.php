@@ -148,6 +148,13 @@ $messages['fr'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activer le gadget « Assistant d’ajout de média »',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Cuir an comas an gleus "Draoidh nam meadhanan"',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -224,6 +231,13 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'wikieditor-addMediaWizard-preference' => '"미디어 마법사" 가젯을 활성화하기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-addMediaWizard-preference' => '«Медиа къошууну мастери» гаджетни джукълат',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -372,6 +386,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'wikieditor-addMediaWizard-preference' => '"Ortam ekleme sihirbazı" gadget\'ını etkinleştir',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Увімкнути додаток «Майстер додавання медіа»',
 );
 
 /** Vietnamese (Tiếng Việt)

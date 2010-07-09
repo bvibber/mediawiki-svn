@@ -311,6 +311,20 @@ $messages['cy'] = array(
 	'spamdifftool_cantedit' => "Sylwer - nid yw'r gallu gennych i olygu'r rhestr spam gwaharddedig.",
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'spamdifftool_cantedit' => 'Beklager - du har desværre ikke tilladelse til at redigere den sorte liste over spam.',
+	'spamdifftool-no-title' => "'''Fejl:''' ingen sidetitel blev angivet.",
+	'spamdifftool_no_urls_detected' => "Ingen URL'er blev fundet.
+Klik <a href='$1'>her</a> for at gå tilbage.",
+	'spamdifftool_option_domain' => 'alt fra dette domæne',
+	'spamdifftool_option_directory' => 'dette underdomæne og katalog',
+	'spamdifftool_option_none' => 'ingenting',
+	'spamdifftool_block' => 'Bloker:',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author Consta

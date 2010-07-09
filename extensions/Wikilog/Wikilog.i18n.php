@@ -1583,12 +1583,22 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author MGA73
  */
 $messages['da'] = array(
+	'wikilog-title' => 'Titel',
+	'wikilog-actions' => 'Handlinger',
+	'wikilog-comments' => 'Kommentarer',
+	'wikilog-view-summary' => 'Resumé',
 	'wikilog-pager-newest' => 'nyeste',
 	'wikilog-pager-oldest' => 'ældste',
+	'wikilog-pager-prev' => 'forrige',
+	'wikilog-no-comments' => 'ingen kommentarer',
 	'wikilog-summary-uncategorized' => 'Ukategoriserede',
+	'wikilog-comment-deleted' => 'Denne kommentar blev slettet.',
+	'wikilog-comment-edit' => 'Redigér denne kommentar',
+	'wikilog-comment-delete' => 'Slet denne kommentar',
 );
 
 /** German (Deutsch)
@@ -2687,7 +2697,7 @@ Desmarque esta caixa para considerar o artigo un borrador.',
 	'wikilog-comment-reject' => 'Rexeitar este comentario (acción inmediata)',
 	'wikilog-newtalk-text' => '<!-- páxina baleira creada polo wikilog -->',
 	'wikilog-newtalk-summary' => 'creada automaticamente polo wikilog',
-	'wikilog-feed-ns-title' => '$1 artigos do wikiblogue',
+	'wikilog-feed-ns-title' => '$1 artigos do wikilog',
 	'wikilog-feed-description' => 'Lea as mensaxes máis recentes nesta fonte de novas.',
 	'wikilog-comment-feed-title1' => 'Comentario de $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentario de $2 a "$3" (#$1)',
@@ -4545,6 +4555,7 @@ For å publisere artikler og tillate andre wikiloggegenskaper må denne opprette
 	'wikilog-summary-categories' => 'Lagret under $2',
 	'wikilog-summary-more' => '[[$3|→ fortsett å lese...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusjon]])',
+	'wikilog-edit-hint' => 'Rediger wikilog-artikkel: $1',
 	'wikilog-edit-fieldset-legend' => 'Alternativ for Wikilog:',
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',
 	'wikilog-edit-signpub-tooltip' => 'Lagring fører til at denne artikkelen blir signert og publisert i sin wikilogg.
@@ -4566,6 +4577,7 @@ Hak vekk denne boksen dersom du vil beholde artikkelen som et utkast.',
 	'wikilog-comment-reject' => 'Avvis denne kommentaren (utføres umiddelbart)',
 	'wikilog-newtalk-text' => '<!-- tom side opprettet av Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisk opprettet av Wikilog',
+	'wikilog-feed-ns-title' => '$1 wikilog-artikler',
 	'wikilog-feed-description' => 'Les det nyeste innlegget i denne feeden.',
 	'wikilog-comment-feed-title1' => 'Kommentar av $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Kommentar av $2 til $3 (#$1)',
@@ -6695,6 +6707,7 @@ Yorum, bir moderatör tarafından incelendikten sonra görülecek.',
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Aleksandrit
  * @author Prima klasy4na
  * @author Тест
@@ -6752,6 +6765,7 @@ $messages['uk'] = array(
 	'wikilog-error-msg' => 'Вікілоґ: $1',
 	'wikilog-invalid-param' => 'Неправильний параметр: $1.',
 	'wikilog-invalid-author' => 'Неправильне ім’я автора: $1.',
+	'wikilog-file-not-found' => 'Неіснуючий файл: $1.',
 	'wikilog-form-category' => 'Категорія:',
 	'wikilog-form-name' => 'Назва:',
 	'wikilog-form-author' => 'Автор:',

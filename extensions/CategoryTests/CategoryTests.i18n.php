@@ -91,6 +91,13 @@ $messages['cs'] = array(
 	'categorytests-desc' => 'Funkce pro testování kategorií',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'categorytests-desc' => 'Swyddogaethau ar gyfer profi categorïau',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

@@ -624,9 +624,41 @@ $messages['cu'] = array(
 
 /** Welsh (Cymraeg)
  * @author Fulup
+ * @author Xxglennxx
  */
 $messages['cy'] = array(
+	'youtubeauthsub' => 'Uwchlwytho fideo YouTube',
+	'youtubeauthsub-desc' => 'Yn caniatáu defnyddwyr i [[Special:YouTubeAuthSub|uwchlwytho fideos]] yn syth i YouTube',
+	'youtubeauthsub_info' => "I uwchlwytho fideo i YouTube i'w cynnwys ar dudalen, cwblhewch y wybodaeth yma:",
 	'youtubeauthsub_title' => 'Teitl',
+	'youtubeauthsub_description' => 'Disgrifiad',
+	'youtubeauthsub_password' => 'Cyfrinair YouTube',
+	'youtubeauthsub_username' => 'Enw defnyddiwr YouTube',
+	'youtubeauthsub_keywords' => 'Allweddeiriau',
+	'youtubeauthsub_category' => 'Categori',
+	'youtubeauthsub_submit' => 'Cyflwyno',
+	'youtubeauthsub_clickhere' => 'Cliciwch yma i fewngofnodi i YouTube',
+	'youtubeauthsub_tokenerror' => "Gwall wrth gynhyrchu tocyn awdurdodiad. Rhowch gynnig ar ail-lwytho'r dudalen.",
+	'youtubeauthsub_success' => "Llongyfarchiadau!
+Uwchlwythwyd eich fideo.
+<a href='http://www.youtube.com/watch?v=$1'>Edrychwch arno</a>.
+Efallai bydd angen amser prosesu ar YouTube, felly efallai ni fydd yn barod yn syth.
+
+I gynnwys eich fideo mewn tudalen ar y wici, gosodwch y cod yma:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'I uwchlwytho fideo, bydd angen mewngofnodi i YouTube yn gyntaf arnoch.',
+	'youtubeauthsub_uploadhere' => "Uwchlwytho'ch fideo o fan hyn:",
+	'youtubeauthsub_uploadbutton' => 'Uwchlwytho',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Edrych ar y fideo hwn]',
+	'youtubeauthsub_summary' => 'Yn uwchlwytho fideo YouTube',
+	'youtubeauthsub_uploading' => "Mae'n eich fideo'n cael ei uwchlwytho.
+Arhoswch, os gwelwch yn dda.",
+	'youtubeauthsub_viewpage' => 'Ar yn ail, gallwch [[$1|edrych ar eich fideo]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Rhowch un neu ragor o allweddeiriau.',
+	'youtubeauthsub_jserror_notitle' => 'Rhowch deitl ar gyfer y fideo.',
+	'youtubeauthsub_jserror_nodesc' => 'Rhowch ddisgrifiad ar gyfer y fideo.',
 );
 
 /** Danish (Dansk)
@@ -1953,6 +1985,7 @@ $messages['mg'] = array(
 	'youtubeauthsub_category' => 'Sokajy',
 	'youtubeauthsub_submit' => 'Alefa',
 	'youtubeauthsub_clickhere' => "Tsindrio eto ra tia hiditra anatin'ny Youtube",
+	'youtubeauthsub_tokenerror' => 'Tsi-fetezana teo am-pangatahana ilay alalana, avaozy ny pejy.',
 	'youtubeauthsub_uploadhere' => 'Hampiditra ny video-nao avy eto :',
 	'youtubeauthsub_uploadbutton' => 'Hampiditra',
 	'youtubeauthsub_summary' => 'Hampiditra video YouTube',

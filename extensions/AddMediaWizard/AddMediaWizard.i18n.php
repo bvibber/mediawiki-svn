@@ -65,6 +65,13 @@ $messages['cy'] = array(
 	'addmediawizard-desc' => 'Ychwanegu dewin cyfryngau, a ddatblygwyd gan Kaltura a Sefydliad Wikimedia ar y cyd',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'addmediawizard-desc' => 'Tilføj mediaguide, udviklet i samarbejde mellem Kaltura og Wikimedia Foundation',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

@@ -133,9 +133,12 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'rped' => 'Pelacakan keberadaan halaman jauh',
+	'rped-desc' => 'Menghubungkan pranala wiki ke Wikipedia bila halaman tidak ada di wiki setempat tetapi ada di Wikipedia',
 	'rped-wikipedia-url' => 'http://id.wikipedia.org/wiki/$1',
 );
 

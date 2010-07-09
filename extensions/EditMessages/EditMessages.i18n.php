@@ -1342,6 +1342,8 @@ $messages['sr-el'] = array(
 	'editmsg-target' => 'Ciljana poruka:',
 	'editmsg-search' => 'Pretraga',
 	'editmsg-new-search' => 'Nova pretraga',
+	'editmsg-apply-patch' => 'Primeni peč.',
+	'editmsg-patch-success' => 'Uspešno pečovano.',
 );
 
 /** Sundanese (Basa Sunda)

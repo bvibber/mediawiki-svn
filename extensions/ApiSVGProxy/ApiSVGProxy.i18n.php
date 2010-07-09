@@ -50,6 +50,13 @@ $messages['ca'] = array(
 	'apisvgproxy-desc' => 'Fa de servidor intermediari de fitxers SVG per a dipòsits de fitxers (probablement remots) al domini local',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'apisvgproxy-desc' => "Ffeiliau SVG dirprwyon o ystorfa ffeil, sydd efallai'n bell, i'r parth lleol",
+);
+
 /** Danish (Dansk)
  * @author Emilkris33
  */

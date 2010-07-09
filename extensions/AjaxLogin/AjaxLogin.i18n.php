@@ -171,6 +171,21 @@ V uživatelských jménech se dbá na velikost písmen!
 Zkontrolujte zda jste jméno napsali správně!',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'ajaxlogin-desc' => "Blwch dynamig sy'n caniatáu defnyddwyr i fewngofnodi ac atgoffa cyfrinair",
+	'ajaxLogin1' => "I gwblhau mewngofnodi, mae'n rhaid ichi roi cyfrinair newydd.
+Bydd hwn yn mynd â chi i dudalen arall ac efallai byddwch yn colli'ch golygiadau cyfredol.",
+	'ajaxLogin2' => "Ydych chi'n siŵr?
+Efallai byddwch yn colli'ch newidiadau i'r dudalen hon os yr ydych yn gadael.",
+	'ajaxlogin-create' => 'Creu cyfrif',
+	'al-nosuchuser' => 'Nid oes dim defnyddiwr o\'r enw "$1".
+Ydych chi\'n defnyddio priflythrennau?
+Gwiriwch eich sillafu.',
+);
+
 /** Danish (Dansk)
  * @author Hylle
  * @author Lhademmor

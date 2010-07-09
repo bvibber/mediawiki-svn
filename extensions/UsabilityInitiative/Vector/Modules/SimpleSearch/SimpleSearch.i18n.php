@@ -278,6 +278,14 @@ $messages['frp'] = array(
 	'vector-simplesearch-containing' => 'que contint...',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'vector-simplesearch-search' => 'Lorg',
+	'vector-simplesearch-containing' => 'anns a bheil...',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -433,6 +441,14 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'vector-simplesearch-search' => '검색',
 	'vector-simplesearch-containing' => '다음의 어구가 들어간 문서 찾기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'vector-simplesearch-search' => 'Излеу',
+	'vector-simplesearch-containing' => 'ичиндегиси…',
 );
 
 /** Colognian (Ripoarisch)
@@ -833,11 +849,12 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'vector-simplesearch-search' => 'Tìm kiếm',
-	'vector-simplesearch-containing' => 'có chứa...',
+	'vector-simplesearch-containing' => 'có chứa…',
 );
 
 /** Mingrelian (მარგალური)

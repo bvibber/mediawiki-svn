@@ -1110,9 +1110,13 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'indexfunc-badtitle' => 'Neispravan naslov: "$1"',
 	'index-search' => 'Pretraga:',
 	'index-submit' => 'Pošalji',
+	'index-emptylist' => 'Nema strana povezanih sa "$1"',
+	'index-expand-detail' => 'Pokaži strane indeksirane pod ovim naslovom',
 	'index-hide-detail' => 'Sakrij spisak strana',
+	'index-no-results' => 'Pretraga nije dala nikakve rezultate',
 );
 
 /** Swedish (Svenska)

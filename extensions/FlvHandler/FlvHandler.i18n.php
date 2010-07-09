@@ -336,6 +336,11 @@ $messages['sr-ec'] = array(
 	'flv-long-desc' => '(Флеш видео, $1 × $2 пиксела, величина фајла: $3)',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'flv-long-desc' => '(Fleš video, $1 × $2 piksela, veličina fajla: $3)',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

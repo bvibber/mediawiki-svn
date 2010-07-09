@@ -1796,6 +1796,7 @@ $messages['cu'] = array(
  * @author BabelFrode
  * @author Byrial
  * @author Hylle
+ * @author Nghtwlkr
  */
 $messages['da'] = array(
 	'configure' => 'Konfigurér wikien',
@@ -1810,7 +1811,7 @@ $messages['da'] = array(
 	'configure-ext-ext-dependencies' => "'''Advarsel''' denne udvidelse kræver at {{PLURAL:$2|den følgende udvidelse|de følgende udvidelser}} er aktiveret: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fejl''' Udvidelsen $1 kræver at $2 er aktiveret.",
 	'configure-ext-doc' => 'Se dokumentation på internettet',
-	'configure-ext-schemachange' => "'''Advarsel:''' Denne udvidelse kræver en opdatering af databasen for at fungere korrekt!",
+	'configure-ext-schemachange' => "'''Advarsel:''' Denne udvidelse kræver en [http://www.mediawiki.org/wiki/Manual:Update.php opdatering af databasen] for at fungere korrekt!",
 	'configure-ext-settings' => 'Indstillinger',
 	'configure-ext-settings-dep-errors' => 'Denne udvidelse kan ikke aktiveres fordi {{PLURAL:$1|den følgende indstilling|de følgende indstillinger}} viser en en forkert værdi:',
 	'configure-ext-settings-dep-error' => '$1: nødvendig værdi: $2, nuværende værdi: $3',
@@ -6883,6 +6884,7 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'configure' => 'Konfigurer wikien',
@@ -6897,7 +6899,7 @@ $messages['nn'] = array(
 	'configure-ext-ext-dependencies' => "'''Åtvaring:''' denne utvidinga krev at {{PLURAL:$2|den fylgjande utvidinga|dei fylgjande utvidingane}} vert aktiverte: $1.",
 	'configure-ext-ext-dependency-err' => "'''Feil:''' utvidinga $1 krev at $2-utvidinga vert aktivert.",
 	'configure-ext-doc' => 'Sjå dokumentasjon på nett',
-	'configure-ext-schemachange' => "'''Åtvaring:''' denne utvidinga krev ei oppdatering av databasen for å fungera som ho skal!",
+	'configure-ext-schemachange' => "'''Åtvaring:''' denne utvidinga krev ei [http://www.mediawiki.org/wiki/Manual:Update.php oppdatering av databasen] for å fungera som ho skal.",
 	'configure-ext-settings' => 'Innstillingar',
 	'configure-ext-settings-dep-errors' => 'Denne utvidinga kan ikkje verta aktivert med di {{PLURAL:$1|det fylgjande oppsettet|dei fylgjande oppsetta}} har ein uakseptabel verdi:',
 	'configure-ext-settings-dep-error' => '$1: krev verdien: $2, har no verdien: $3',
@@ -7088,7 +7090,7 @@ $messages['no'] = array(
 	'configure-ext-ext-dependencies' => "'''Advarsel:''' denne utvidelsen krever at {{PLURAL:$2|den følgende utvidelsen|de følgende utvidelsene}} blir aktivert: $1.",
 	'configure-ext-ext-dependency-err' => "'''Feil:''' utvidelsen $1 krever at utvidelsen $2 blir aktivert.",
 	'configure-ext-doc' => 'Se dokumentasjon på internett',
-	'configure-ext-schemachange' => "'''Advarsel:''' denne utvidelsen krever en oppdatering av databasen for å fungere som den skal.",
+	'configure-ext-schemachange' => "'''Advarsel:''' denne utvidelsen krever en [http://www.mediawiki.org/wiki/Manual:Update.php oppdatering av databasen] for å fungere korrekt.",
 	'configure-ext-settings' => 'Innstillinger',
 	'configure-ext-settings-dep-errors' => 'Denne utvidelsen kan ikke aktiveres fordi {{PLURAL:$1|den følgende innstillingen har en uakseptabel verdi|de følgende innstillingene har uakseptable verdier}}:',
 	'configure-ext-settings-dep-error' => '$1: nødvendig verdi: $2, nåværende verdi: $3',

@@ -453,6 +453,32 @@ $messages['sr-ec'] = array(
 	'datatransclusion-bad-template-name' => 'Неисправан назив шаблона: $1.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'datatransclusion-bad-template-name' => 'Neispravan naziv šablona: $1.',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'datatransclusion-desc' => 'Import och rendering av registrerade data från externa datakällor',
+	'datatransclusion-missing-source' => 'Ingen datakälla anges.
+Andra eller "source"-argument krävs.',
+	'datatransclusion-unknown-source' => '"$1" är inte känd.',
+	'datatransclusion-missing-key' => '$2 är giltiga nycklar i datakällan $1.',
+	'datatransclusion-bad-argument-by' => 'Dåligt nyckelfält anges.
+"$2" är inte ett nyckelfält i datakällan "$1".
+{{PLURAL:$4|Giltig nyckel|Giltiga nycklar är}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Inget nyckelvärde anges.
+Andra eller "nyckel"-argument krävs.',
+	'datatransclusion-missing-argument-template' => 'Ingen mall anges.
+Första eller "template"-argument krävs.',
+	'datatransclusion-record-not-found' => 'Inga uppgifter matchande $2 = $3 hittades i datakällan $1.',
+	'datatransclusion-bad-template-name' => 'Dåligt mallnamn: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> existerar inte.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

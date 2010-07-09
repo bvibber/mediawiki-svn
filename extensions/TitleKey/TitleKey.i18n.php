@@ -93,6 +93,13 @@ $messages['cs'] = array(
 	'titlekey-desc' => 'Implementace našeptávače hledajícího podle počátku názvu',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'titlekey-desc' => 'Bagstykke til søgning efter titelpræfiks',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Raimond Spekking
@@ -404,6 +411,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'titlekey-desc' => 'Motor de sugestão de pesquisa por prefixo de título',
+);
+
+/** Romanian (Română)
+ * @author AdiJapan
+ */
+$messages['ro'] = array(
+	'titlekey-desc' => 'Mecanism de sugestie de căutare prin prefixul titlului',
 );
 
 /** Tarandíne (Tarandíne)

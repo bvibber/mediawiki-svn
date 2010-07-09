@@ -175,8 +175,11 @@ $messages['ia'] = array(
  * @author Farras
  */
 $messages['id'] = array(
+	'categorymultisort-desc' => 'Mengizinkan kategori dilihat menggunakan kunci urut yang berbeda',
 	'categorymultisort-defaultsortkey-name' => 'Baku',
+	'categorymultisort-sortkey' => 'Kunci urut:',
 	'categorymultisort-go' => 'Tuju ke',
+	'categorymultisort-default-sortkey' => 'Kunci urut baku:',
 	'prefs-category' => 'Kategori',
 );
 
@@ -229,6 +232,18 @@ $messages['nl'] = array(
 	'categorymultisort-go' => 'OK',
 	'categorymultisort-default-sortkey' => 'Standaard sorteerwijze:',
 	'prefs-category' => 'Categorie',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'categorymultisort-desc' => 'Tillater kategorier å bli vist med forskjellige sorteringsnøkler',
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'categorymultisort-sortkey' => 'Sorteringsnøkkel:',
+	'categorymultisort-go' => 'Gå',
+	'categorymultisort-default-sortkey' => 'Standard sorteringsnøkkel:',
+	'prefs-category' => 'Kategori',
 );
 
 /** Deitsch (Deitsch)
@@ -323,6 +338,28 @@ $messages['sr-el'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Podrazumevano',
 	'categorymultisort-sortkey' => 'Ključ sortiranja:',
 	'categorymultisort-go' => 'Idi',
+	'prefs-category' => 'Kategorija',
+);
+
+/** Swedish (Svenska)
+ * @author Jopparn
+ */
+$messages['sv'] = array(
+	'categorymultisort-desc' => 'Tillåter kategorierna att studeras med olika sorteringsnycklar',
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'categorymultisort-sortkey' => 'Sorteringsnyckel',
+	'categorymultisort-go' => 'Gå till',
+	'categorymultisort-default-sortkey' => 'Standard sorteringsnyckel',
+	'prefs-category' => 'Kategori',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'categorymultisort-defaultsortkey-name' => 'అప్రమేయం',
+	'categorymultisort-go' => 'వెళ్ళు',
+	'prefs-category' => 'వర్గం',
 );
 
 /** Turkish (Türkçe)

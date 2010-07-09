@@ -377,10 +377,14 @@ $messages['sk'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Per
  */
 $messages['sv'] = array(
+	'delayeddefinition-desc' => 'Lägger till &lt;define&gt; och &lt;display&gt; för att tillåta att kod blir omplacerad.',
+	'delaydef-error-missing-def' => 'Fel: Definition behövs för &lt;display name="$1"&gt; hittades inte.',
 	'delaydef-error-no-name' => 'Fel: Ingen parameter angiven.',
+	'delaydef-error-redef' => 'Fel: Försök att omdefinera $1.',
 );
 
 /** Telugu (తెలుగు)

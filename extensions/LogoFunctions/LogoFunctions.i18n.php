@@ -52,6 +52,14 @@ $messages['de'] = array(
 	'logofunctions-filenotexist' => 'Fehler: [[File:$1]] existiert nicht',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'logofunctions-desc' => 'Parserowu funkciju pśidaś, aby wikilogo nastajiło',
+	'logofunctions-filenotexist' => 'Zmólka: [[File:$1]] njeeksistěrujo',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

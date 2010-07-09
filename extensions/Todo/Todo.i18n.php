@@ -270,11 +270,11 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'todo' => 'Roll traoù da ober',
-	'todo-desc' => "Astenn arnod evit ur [[Special:Todo|roll hiniennel eus an traoù d'ober]]",
+	'todo-desc' => 'Astenn arnodel evit ur [[Special:Todo|roll hiniennel eus an trevelloù da gas da benn]]',
 	'todo-tab' => "d'ober",
 	'todo-new-queue' => 'nevez',
 	'todo-mail-subject' => "Kraf kaset da benn e-touez roll traoù d'ober $1",
-	'todo-mail-body' => "Goulennet hoc'h eus resevout ur postel kemenn pa 'vo echuet gant un elfenn hoc'h eus lakaet e roll an traoù d'ober a zo da $1.
+	'todo-mail-body' => "Goulennet hoc'h eus resev ur c'hmenn dre bostel pa vo bet kaset da benn un elfenn lakaet ganeoc'h war roll trevelloù da gas da benn $1.
 
 Elfenn : $2
 Kaset : $3
@@ -284,7 +284,7 @@ $4",
 	'todo-invalid-item' => 'Elfenn diank pe direizh',
 	'todo-update-else-item' => 'O klask hizivaat elfennoù unan all',
 	'todo-unrecognize-type' => "Seurt n'eo ket bet anavezet",
-	'todo-user-invalide' => "N'eo ket mat an dra d'ober hoc'h eus lakaet pe ez eus un diouer outi pe n'en deus ket an implijer e roll eus an traoù d'ober.",
+	'todo-user-invalide' => "Direizh pe ezvezant eo an dra spisaet pe neuze n'eus ket gant an implijer a roll trevelloù da gas da benn.",
 	'todo-item-list' => "Hoc'h elfennoù",
 	'todo-no-item' => "N'eus netra da ober.",
 	'todo-invalid-owner' => "Direizh eo perc'henn an elfenn-mañ",
@@ -296,7 +296,7 @@ $4",
 	'todo-new-item' => 'Elfenn nevez',
 	'todo-issue-summary' => 'Diverrañ eus ar gudenn :',
 	'todo-form-details' => 'Munudoù :',
-	'todo-form-email' => "Evit resevout ur postel kemenn pa 'vo serret an elfenn, roit ho postel er framm da heul :",
+	'todo-form-email' => "Evit resev ur c'hemenn dre bostel pa vez serr an elfenn, lakait ho postel er framm dindan :",
 	'todo-form-submit' => 'Kas ar reked',
 	'right-todo' => 'Kaout ur roll "traoù d\'ober".',
 	'right-todosubmit' => "Strishaat gwirioù rolloù traoù d'ober an implijerien",
@@ -1988,6 +1988,7 @@ $4',
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -1995,13 +1996,19 @@ $messages['tr'] = array(
 	'todo-tab' => 'yapılacaklar',
 	'todo-new-queue' => 'yeni',
 	'todo-invalid-item' => 'Eksik veya geçersiz öğe',
+	'todo-update-else-item' => 'Bir başkasının işlemleri güncellenmeye çalışılıyor',
+	'todo-unrecognize-type' => 'Tanımlanamayan tip',
 	'todo-item-list' => 'Sizin öğeniz',
 	'todo-invalid-owner' => 'Bu öğede geçersiz sahip',
 	'todo-add-queue' => 'Kuyruk ekle...',
+	'todo-move-queue' => 'Kuyruğa taşındı...',
+	'todo-list-for' => '$1 için yapılacaklar listesi',
 	'todo-list-change' => 'Değiştir',
 	'todo-list-cancel' => 'İptal',
 	'todo-new-item' => 'Yeni öğe',
 	'todo-form-details' => 'Detaylar:',
+	'todo-form-submit' => 'Sorguyu gir',
+	'right-todosubmit' => 'Kullanıcının yapılacaklar listesi haklarını kısıtla',
 );
 
 /** Veps (Vepsan kel')

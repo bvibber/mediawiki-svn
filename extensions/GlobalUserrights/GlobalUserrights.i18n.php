@@ -508,11 +508,12 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Misterr
  */
 $messages['ro'] = array(
 	'globaluserrights' => 'Administrarea drepturilor utilizatorilor globali',
-	'gur-desc' => 'Ușor de administrat [[Special: GlobalUserRights |drepturile globale pentru utilizator]]',
+	'gur-desc' => 'Administrarea ușoară a [[Special: GlobalUserRights |drepturilor globale pentru utilizator]]',
 	'gur-rightslog-name' => 'Jurnal drepturi globale',
 	'gur-rightslog-header' => 'Acest jurnal cuprinde modificările drepturilor globale.',
 	'gur-rightslog-entry' => 'Schimbă apartenența grupului global pentru $1 de la $2 la $3',

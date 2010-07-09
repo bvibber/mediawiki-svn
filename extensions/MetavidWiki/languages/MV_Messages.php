@@ -9034,6 +9034,7 @@ Molimo Vas da prijavite ovo [[{{MediaWiki:Grouppage-sysop}}|administratoru sajta
 	'mv_sequence_edit_text' => 'Pređi u tekst editor',
 	'mv_sequence_edit_visual_editor' => 'Pređi u vizuelni editor',
 	'mv_other_options' => 'Druge opcije',
+	'mv_days' => '$1 {{PLURAL:$1|dan|dana}}',
 	'mv_hours' => '$1 {{PLURAL:$1|sat|sati}}',
 	'mv_hours_singular' => '1 sat',
 	'mv_minutes' => '$1 {{PLURAL:$1|minuta|minuta}}',

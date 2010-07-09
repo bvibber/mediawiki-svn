@@ -460,6 +460,33 @@ $messages['cs'] = array(
 	'right-badimages' => 'Aktualizování seznamu špatných souborů',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'badimages' => 'Rhestr o ddelweddi gwael',
+	'badimage-desc' => 'Ymestyn galluoedd y rhestr o ddelweddi gwael o MediaWiki',
+	'badimages-add-btn' => 'Ychwanegu',
+	'badimages-added' => "Ychwanegwyd $1 i'r rhestr.",
+	'badimages-count' => "{{PLURAL:$1|Ceir|Ceir}} '''$1''' {{PLURAL:$1|delwedd|o ddelweddi}} ar y rhestr o ddelweddi gwael.",
+	'badimages-name' => 'Enw:',
+	'badimages-not-added' => "Nid oedd dim modd ychwanegu'r ddelwedd.",
+	'badimages-not-removed' => "Nid oedd dim modd tynnu'r ddelwedd.",
+	'badimages-reason' => 'Rheswm:',
+	'badimages-remove' => '(tynnu)',
+	'badimages-remove-btn' => 'Tynnu',
+	'badimages-remove-confirm' => "Cadarnhewch eich bod chi am dynnu $1 o'r rhestr:",
+	'badimages-removed' => "Tynnwyd $1 o'r rhestr.",
+	'badimages-subheading' => 'Eitemau cyfredol',
+	'badimages-unprivileged' => "(Nid yw'r hawliau priodol i newid y rhestr gennych)",
+	'badimages-log-name' => 'Rhestr o ddelweddi gwael',
+	'badimages-log-header' => "Dyma log newidiadau i'r [[{{MediaWiki:Badimages-page}}|rhestr o ddelweddi gwael]].",
+	'badimages-log-add' => "ychwanegwyd [[$1]] i'r rhestr o ddelweddi gwael",
+	'badimages-log-remove' => "tynnwyd [[$1]] o'r rhestr o ddelweddi gwael",
+	'badimages-page' => '{{ns:help}}:Rhestr o ddelweddi gwael',
+	'right-badimages' => "Diweddaru'r rhestr o ddelweddi gwael",
+);
+
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Jon Harald Søby

@@ -247,11 +247,13 @@ $messages['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'activestrategy' => 'Aktive arbeidsgrupper',
 	'active-strategy-desc' => 'Viser antall redigeringer på arbeidsgruppesider',
 	'active-strategy-intro' => 'Antall redigeringer på arbeidsgruppesider {{PLURAL:$1|den siste $1 dag|de siste $1 dager}}.',
+	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringer}}',
 );
 
 /** Occitan (Occitan)
@@ -302,6 +304,13 @@ $messages['pt-br'] = array(
 	'active-strategy-desc' => 'Mostra o número de edições das páginas da equipe de trabalho',
 	'active-strategy-intro' => 'Número de edições às páginas dos grupos de trabalho {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
 	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
+);
+
+/** Romanian (Română)
+ * @author AdiJapan
+ */
+$messages['ro'] = array(
+	'nedits' => '$1 {{PLURAL:$1|modificare|modificări}}',
 );
 
 /** Russian (Русский)

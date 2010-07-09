@@ -5091,6 +5091,7 @@ $wgGoogleMapsMessages['sr-el'] = array(
 	'gm-refresh-points' => 'Osveži tačke',
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
+	'gm-scale-control' => 'Skaliranje',
 	'gm-overview-control' => 'Pregled',
 	'gm-zoom-control' => 'Navigacija',
 	'gm-large' => 'Velika',

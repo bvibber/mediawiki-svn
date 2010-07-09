@@ -172,6 +172,13 @@ $messages['frp'] = array(
 	'userdailycontribs-desc' => 'Contribucions de tôs los jorns per utilisator por l’èxtension de survelyence des clics',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'userdailycontribs-desc' => "Mùthaidhean làitheil a' chleachdaiche airson gleus lorgachadh nam briogadh",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

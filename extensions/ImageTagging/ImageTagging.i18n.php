@@ -2058,6 +2058,7 @@ Pakihintay lamang na mabuo muna ang umiiral na kilos.',
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -2069,11 +2070,14 @@ $messages['tr'] = array(
 	'imagetagging-images' => 'Resimler',
 	'imagetagging-removetag' => 'etiketi kaldır',
 	'imagetagging-done-button' => 'Etiketleme tamamlandı',
+	'imagetagging-tag-button' => 'Etiketle',
 	'imagetagging-tagcancel-button' => 'İptal',
+	'imagetagging-tagging-instructions' => 'Etiketlemek için resim üzerindeki kişilere ya da şeylere tıklayınız',
 	'imagetagging-addingtag' => 'Etiket ekleniyor...',
 	'imagetagging-removingtag' => 'Etiket kaldırılıyor...',
 	'imagetagging-addtagsuccess' => 'Etiket eklendi.',
 	'imagetagging-removetagsuccess' => 'Etiket kaldırıldı.',
+	'imagetagging-oneuniquetagmessage' => 'Resim üzerinde bu isimde bir etiket zaten var.',
 	'imagetagging-taggedimages-title' => '"$1" resimleri',
 	'tag-logpagename' => 'Etiketleme kaydı',
 );

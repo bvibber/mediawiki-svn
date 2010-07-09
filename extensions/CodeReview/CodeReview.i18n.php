@@ -3423,6 +3423,7 @@ $messages['gl'] = array(
 	'code-status-ok' => 'de acordo',
 	'code-status-verified' => 'verificado',
 	'code-status-deferred' => 'diferido',
+	'code-status-old' => 'vello',
 	'code-pathsearch-legend' => 'Procurar as revisións nesta resposta por ruta',
 	'code-pathsearch-path' => 'Ruta:',
 	'code-pathsearch-filter' => 'Filtro aplicado:',
@@ -4468,6 +4469,7 @@ $3',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Iwan Novirion
@@ -4551,6 +4553,7 @@ $messages['id'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'diverifikasi',
 	'code-status-deferred' => 'ditangguhkan',
+	'code-status-old' => 'lama',
 	'code-pathsearch-legend' => 'Cari revisi di jejak penyimpanan ini:',
 	'code-pathsearch-path' => 'Jalan:',
 	'code-pathsearch-filter' => 'Penerapan filter:',
@@ -6758,6 +6761,7 @@ $messages['no'] = array(
 	'code-status-ok' => 'OK',
 	'code-status-verified' => 'verifisert',
 	'code-status-deferred' => 'utsatt',
+	'code-status-old' => 'gammel',
 	'code-pathsearch-legend' => 'Søk revisjoner i denne repo etter sti',
 	'code-pathsearch-path' => 'Sti:',
 	'code-pathsearch-filter' => 'Benyttet filter:',
@@ -8542,6 +8546,7 @@ $messages['sr-el'] = array(
 	'code-status-resolved' => 'rešeno',
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'provereno',
+	'code-status-old' => 'staro',
 	'code-pathsearch-path' => 'Putanja:',
 	'code-revfilter-cr_status' => 'Status = $1',
 	'code-rev-submit' => 'Zapamti izmene',
@@ -8556,6 +8561,7 @@ $messages['sr-el'] = array(
 	'codereview-reply-link' => 'odgovori',
 	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|uspeo test|uspela testa|uspela testa|uspela testa|uspelih testova}}',
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|uspeo test|uspela testa|uspela testa|uspela testa|uspelih testova}}, $3 {{PLURAL:$4|neuspeo test|neuspela testa|neuspela testa|neuspela testa|neuspelih testova}}',
+	'codereview-tests-failed' => 'Nije prošlo',
 	'codereview-email-subj' => '[$1] [$2]: Novi komentar dodat',
 	'repoadmin-new-button' => 'Napravi',
 	'repoadmin-edit-bug' => 'Putanja do Bagzile:',

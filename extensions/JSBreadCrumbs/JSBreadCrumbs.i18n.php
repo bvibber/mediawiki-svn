@@ -22,6 +22,13 @@ $messages['en'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximum 20 bread crumbs',
 );
 
+/** Message documentation (Message documentation)
+ * @author Peter17
+ */
+$messages['qqq'] = array(
+	'prefs-jsbreadcrumbs' => 'This is the name of the extension JS Bread Crumbs (http://www.mediawiki.org/wiki/Extension:BreadCrumbs). The expression "Bread Crumbs" designates a kind of navigation bar (see http://en.wiktionary.org/wiki/breadcrumbs).',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -36,6 +43,7 @@ $messages['af'] = array(
 $messages['be-tarask'] = array(
 	'jsbreadcrumbs-desc' => 'Дадае навігацыйны шлях («хлебныя крошкі») пад панэль закладак',
 	'jsbreadcrumbs-leading-description' => 'Навігацыйны шлях',
+	'prefs-jsbreadcrumbs' => 'Навігацыйны шлях',
 );
 
 /** Breton (Brezhoneg)
@@ -52,6 +60,11 @@ $messages['br'] = array(
 $messages['de'] = array(
 	'jsbreadcrumbs-desc' => 'Fügt eine Brotkrümelnavigation unterhalb der Reiterleiste hinzu',
 	'jsbreadcrumbs-leading-description' => 'Navigationspfad',
+	'prefs-jsbreadcrumbs' => '„Brotkrümel“',
+	'prefs-jsbreadcrumbs-showsite' => 'Name der Website in die Brotkrümelnavigation aufnehmen (nützlich sofern wikiübergreifend eingesetzt)',
+	'prefs-jsbreadcrumbs-showcrumbs' => '„Brotkrümel“ anzeigen',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Anzahl der „Brotkrümel“',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximal 20 „Brotkrümel“',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -73,6 +86,11 @@ $messages['dsb'] = array(
 $messages['fr'] = array(
 	'jsbreadcrumbs-desc' => "Ajoute une suite de liens de navigation sous la barre d'onglets",
 	'jsbreadcrumbs-leading-description' => 'Parcours de navigation',
+	'prefs-jsbreadcrumbs' => 'Barre de navigation',
+	'prefs-jsbreadcrumbs-showsite' => 'Inclure le nom du site dans la barre de navigation (utile lorsque la fonctionnalité est utilisée à travers plusieurs wikis)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Afficher la barre de navigation',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Nombre de liens de navigation',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximum 20 liens de navigation',
 );
 
 /** Galician (Galego)
@@ -81,6 +99,11 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'jsbreadcrumbs-desc' => 'Engade un conxunto de ligazóns de navegación baixo a barra de lapelas',
 	'jsbreadcrumbs-leading-description' => 'Barra de navegación',
+	'prefs-jsbreadcrumbs' => 'Barra de navegación',
+	'prefs-jsbreadcrumbs-showsite' => 'Incluír o nome do sitio na barra de navegación (útil ao usar a funcionalidade a través de varios wikis)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Mostrar a barra de navegación',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Número de ligazóns de navegación',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Un máximo de 20 ligazóns de navegación',
 );
 
 /** Swiss German (Alemannisch)
@@ -110,6 +133,11 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'jsbreadcrumbs-desc' => 'Adde un tracia de "micas de pan" sub le barra de schedas',
 	'jsbreadcrumbs-leading-description' => 'Percurso de navigation',
+	'prefs-jsbreadcrumbs' => 'Micas de pan',
+	'prefs-jsbreadcrumbs-showsite' => 'Includer le nomine del sito in le micas de pan (utile si usate trans wikis)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Monstrar micas de pan',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Numero de micas de pan',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Al plus 20 micas de pan',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -139,6 +167,11 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'jsbreadcrumbs-desc' => 'Voegt een spoor van broodkruimels toe onder de menubalk',
 	'jsbreadcrumbs-leading-description' => 'Navigatiepad',
+	'prefs-jsbreadcrumbs' => 'Navigatiegeschiedenis',
+	'prefs-jsbreadcrumbs-showsite' => "Sitenaam opnemen in de navigatiegeschiedenis (handig bij gebruik van meerdere wiki's)",
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Navigatiegeschiedenis weergeven',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => "Aantal weer te geven pagina's in navigatiegeschiedenis",
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => "Maximaal 20 weergegeven pagina's",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -158,16 +191,17 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'jsbreadcrumbs-desc' => 'A gionta com na trassa ëd farin-a sota a la tichëtta dla bara',
 	'jsbreadcrumbs-leading-description' => 'Trassa ëd navigassion',
-	'prefs-jsbreadcrumbs' => 'Povrà (ëd farin-a)',
-	'prefs-jsbreadcrumbs-showsite' => 'Anclud ël nòm dël sit ant la povrà (ùtil quand dovrà an tra wiki)',
-	'prefs-jsbreadcrumbs-showcrumbs' => 'Visualisa povrà',
-	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Nùmer ëd povrà',
-	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Al pi 20 povrà',
+	'prefs-jsbreadcrumbs' => 'Ampovrà ëd farin-a',
+	'prefs-jsbreadcrumbs-showsite' => "Anclud ël nòm dël sit ant l'ampovrà (ùtil quand dovrà an tra wiki diferente)",
+	'prefs-jsbreadcrumbs-showcrumbs' => "Visualisé l'ampovrà",
+	'prefs-jsbreadcrumbs-numberofcrumbs' => "Nùmer d'ampovrà",
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Al pi 20 ampovrà',
 );
 
 /** Portuguese (Português)
@@ -176,6 +210,11 @@ $messages['pms'] = array(
 $messages['pt'] = array(
 	'jsbreadcrumbs-desc' => 'Adiciona o percurso até a página corrente, por baixo da barra de separadores',
 	'jsbreadcrumbs-leading-description' => 'Percurso de navegação',
+	'prefs-jsbreadcrumbs' => 'Percurso de Navegação',
+	'prefs-jsbreadcrumbs-showsite' => 'Incluir o nome do site no percurso de navegação (útil quando usado entre wikis)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Mostrar percurso de navegação',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Número de passos',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'No máximo 20 passos',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

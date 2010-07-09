@@ -34,6 +34,13 @@ $messages['af'] = array(
 	'ajaxquerypages-desc' => 'Voeg AJAX by navraebladsye soos [[Special:Shortpages|Kort bladsye]]',
 );
 
+/** Amharic (አማርኛ)
+ * @author Hinstein
+ */
+$messages['am'] = array(
+	'ajaxquerypages-desc' => 'የፍለጋው ገፀ ላይ የተወሰነ AJAX ጨምር፣ ለምሳሌ እንደ [[Special:Shortpages|{{int:shortpages}}]] አይነቶች',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

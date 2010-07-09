@@ -315,6 +315,14 @@ $messages['ga'] = array(
 	'abcdownload' => 'íoslódáil:',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'abc-desc' => 'Cuiridh seo ris taga <code>&lt;abc&gt;</code> gus ceòl ABC fhòrmatadh',
+	'abcdownload' => 'Luchdaich a-nuas:',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -1327,6 +1327,15 @@ $messages['sh'] = array(
 	'contributors-submit' => 'Prikaži',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'contributors' => 'දායකයින්',
+	'contributors-target' => 'ශීර්ෂය:',
+	'contributors-submit' => 'පෙන්වන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

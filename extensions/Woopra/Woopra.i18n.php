@@ -91,6 +91,13 @@ $messages['cs'] = array(
 	'woopra-desc' => 'Umožňuje fungování [http://www.woopra.com/ Woopra Live Tracking Software] v rámci vaší wiki',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'woopra-desc' => 'Caniatáu i [http://www.woopra.com/ Woopra Live Tracking Software] weithio ar ran eich gosodiad MediaWici',
+);
+
 /** Danish (Dansk)
  * @author Masz
  */

@@ -1322,6 +1322,7 @@ $messages['sr-el'] = array(
 	'deletebatch-omitting-invalid' => 'Sakrivanje neispravne strane $1.',
 	'deletebatch-file-bad-format' => 'Fajl bi trebalo da bude običan tekst',
 	'deletebatch-file-missing' => 'Nije bilo moguće pročitati zadat fajl',
+	'deletebatch-select-yourself' => 'Vi',
 );
 
 /** Swedish (Svenska)
