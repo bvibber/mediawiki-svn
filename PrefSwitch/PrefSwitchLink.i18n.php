@@ -121,6 +121,18 @@ $messages['ca'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Proveu les noves funcions',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'prefswitch-link-anon' => 'تایبەتمەندییە نوێکان',
+	'tooltip-pt-prefswitch-link-anon' => 'فێربوون سەبارەت بە تایبەتمەندییە نوێکان',
+	'prefswitch-link-on' => 'بمگەڕێنەوە',
+	'tooltip-pt-prefswitch-link-on' => 'لەکارخستنی تایبەتمەندییە نوێکان',
+	'prefswitch-link-off' => 'تایبەتمەندییە نوێکان',
+	'tooltip-pt-prefswitch-link-off' => 'تاقیکردنەوەیەکی تایبەتمەندییە نوێکان',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil
@@ -741,8 +753,11 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'prefswitch-link-anon' => 'Zana mpya',
+	'tooltip-pt-prefswitch-link-anon' => 'Soma juu ya mtindo na zana mpya',
 	'prefswitch-link-on' => 'Nirudishe',
+	'tooltip-pt-prefswitch-link-on' => 'Zima zana mpya',
 	'prefswitch-link-off' => 'Zana mpya',
+	'tooltip-pt-prefswitch-link-off' => 'Jaribu kutumia mtindo na zana mpya',
 );
 
 /** Telugu (తెలుగు)

@@ -5889,10 +5889,14 @@ Om du vill veta mer om användbarhetsinitiativet, besök vår [http://usability.
  * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'optin' => 'Chagua Hatua ya Urahisishaji wa Matumizi',
+	'optin-desc' => 'Ruhusu watumiaji wajaribu kutumia Beta, maendeleo ya hivi sasa ya Hatua ya Urahisishaji wa Matumizi.',
 	'optin-title-optedout' => 'Jaribu Beta',
 	'optin-title-optedin' => 'Ondoka Beta',
 	'optin-title-justoptedin' => 'Karibu Beta',
 	'optin-title-justoptedout' => 'Asante kwa kujaribu kutumia bidhaa pepe ya Beta',
+	'optin-title-feedback' => 'Mwitiko wa Beta',
+	'optin-needlogin' => 'Inabidi [$1 uingie] ili ujaribu Beta.',
 	'optin-intro' => 'Mpango wa Matumizi ya Wikipedia umekuwa ukifanya kazi kwa juhudi kuboresha matumizi ya Wikipedia.
 Ungependa kujaribu Beta yetu?',
 	'optin-feedback-intro' => 'Ahsante kwa kujaribu Beta.
@@ -5919,6 +5923,7 @@ Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru i
 	'optin-survey-question-whyoptout' => 'Kwanini unaondoka Beta? (Tafadhali jaza vifungu hivyo vyote.)',
 	'optin-survey-answer-whyoptout-hard' => 'Ilikuwa vigumu sana kutumia.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Haikufanya kazi vizuri.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Haikufanyakazi kitegemezi.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Sikuipenda jinsi inavyoonekana.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Sikupenda tabo mpya na mpangilio wake.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Sijapenda mwambaa zana mpya.',
@@ -5926,6 +5931,11 @@ Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru i
 	'optin-survey-question-explain' => 'Tafadhali elezea au fafanua juu ya majibu yako hapo juu:',
 	'optin-survey-question-techfail' => 'Umepata tatizo lolote la kiufundi wakati unatumia Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Ikiwa ndiyo, tafadhali fafanua au elezea:',
+	'optin-survey-question-browser' => 'Kivinjari kipi unachotumia?',
+	'optin-survey-answer-browser-other' => 'Kivinjari kingine:',
+	'optin-survey-question-os' => 'Unatumia mfumo gani wa uendeshaji?',
+	'optin-survey-answer-os-other' => 'Mfumo mwingine wa uendeshaji:',
+	'optin-survey-question-res' => 'Je, skrini yako ina msongo upi wa piseli?',
 );
 
 /** Telugu (తెలుగు)

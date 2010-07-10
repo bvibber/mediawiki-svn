@@ -542,11 +542,12 @@ $messages['sv'] = array(
 );
 
 /** Swahili (Kiswahili)
+ * @author Lloffiwr
  * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
 	'prefs-updates' => 'Visasisho',
-	'updatemyprefs-desc' => 'Mapendekezo kwa ajili ya watumiaji kuweka bayana iwapo wanataka visasisho vya kusano za muda kama zimetengenezwa na kupatikana',
+	'updatemyprefs-desc' => 'Mapendekezo kwa ajili ya watumiaji kuweka bayana iwapo wanataka visasisho vya kusano wakati vinapatikana',
 );
 
 /** Telugu (తెలుగు)

@@ -2279,9 +2279,22 @@ Klicka på en inställning för att visa statistik om den.',
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'prefstats' => 'Takwimu za mapendekezo',
+	'prefstats-desc' => 'Fuatilia takwimu kuhusu idadi ya watumiaji wanaotumia mapendekezo fulani',
 	'prefstats-title' => 'Takwimu za mapendekezo',
+	'prefstats-list-intro' => 'Hivi sasa, mapendekezo yafuatayo yanafuatiliwa. 
+Bonyeza kitu ili kuangalia takwimu zake.',
+	'prefstats-xaxis' => 'Muda (masaa)',
+	'prefstats-factors' => 'Tazama kwa: $1',
+	'prefstats-factor-hour' => 'saa',
+	'prefstats-factor-sixhours' => 'masaa sita',
+	'prefstats-factor-day' => 'siku',
+	'prefstats-factor-week' => 'wiki',
+	'prefstats-factor-twoweeks' => 'wiki mbili',
+	'prefstats-factor-fourweeks' => 'wiki nne',
 );
 
 /** Telugu (తెలుగు)

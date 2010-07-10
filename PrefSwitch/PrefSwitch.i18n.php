@@ -764,10 +764,22 @@ Per ajudar-nos a millorar-les, si us plau ompliu el formulari opcional d'aquí s
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
+ * @author Marmzok
  */
 $messages['ckb-arab'] = array(
 	'prefswitch-survey-true' => 'بەڵێ',
 	'prefswitch-survey-false' => 'نا',
+	'prefswitch-survey-submit-off' => 'لەکارخستنی تایبەتمەندییە نوێکان',
+	'prefswitch-survey-cancel-off' => 'ئەگەر دەتەوێ لە بەکارھێنانی تایبەتمەندییە نوێکان بەردەوام ببیت، دەتوانی بگەڕێیەوە بۆ $1.',
+	'prefswitch-survey-submit-feedback' => 'پێڕاگەیاندنەوە',
+	'prefswitch-survey-cancel-feedback' => 'ئەگەر ناتەوێ پێڕاگەیاندنەوە سازبکەیت، دەتوانی بگەڕێیەوە بۆ $1.',
+	'prefswitch-survey-question-like' => 'سەبارەت بە تایبەتمەندییە نوێکان چیت بەدڵ بوو؟',
+	'prefswitch-survey-question-dislike' => 'سەبارەت بە تایبەتمەندییە نوێکان چیت بەدڵ نەبوو؟',
+	'prefswitch-survey-answer-whyoff-hard' => 'تایبەتمەندییەکان زۆر بۆ بەکارھێنان دژواربوون.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'تایبەتمەندییەکان بەباشی کاریان نەکرد.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'ڕواڵەتی تایبەتمەندییەکان بەدڵم نەبوو.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'تاب و نەخشە نوێکانم بەدڵ نەبوو.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'شریتامرازە نوێکە بەدڵم نەبوو.',
 	'prefswitch-survey-answer-whyoff-other' => 'ھۆکاری دیکە:',
 	'prefswitch-survey-question-browser' => 'کام گەڕۆک بەکار دەهێنی؟',
 	'prefswitch-survey-answer-browser-other' => 'گەڕۆکی دیکە:',
@@ -775,7 +787,17 @@ $messages['ckb-arab'] = array(
 	'prefswitch-survey-answer-os-other' => 'سیستەمنی بەکارھێنانی دیکە:',
 	'prefswitch-survey-question-res' => 'رەزۆلوشنی شاشەکەت چەندە؟',
 	'prefswitch-title-on' => 'تایبەتمەندییە نوێکان',
+	'prefswitch-title-switched-on' => 'فەرموو!',
+	'prefswitch-title-off' => 'لەکارخستنی تایبەتمەندییە نوێکان',
 	'prefswitch-title-switched-off' => 'سوپاس',
+	'prefswitch-title-feedback' => 'پێڕاگەیاندنەوە',
+	'prefswitch-success-feedback' => 'پەیامەکەت ناردرا.',
+	'prefswitch-main-logged-changes' => "* ئێستا '''تابی {{int:watch}}''' ئەستێرەیەکە.
+* ئێستا '''تابی {{int:move}}''' بۆخوارەکراوەیەکە لەپاڵ شریتی گەڕان.",
+	'prefswitch-main-anon' => '===بمگەڕێنەوە===
+[$1 بۆ لەکارخستنی تایبەتمەندییەنوێکان کردتە بکە سەر ئێرە]. بۆ ئەوە داواتان لێدەکرێ بڕۆنە ژوورەوە یان لەپێشدا ھەژمارێک درووست بکەن.',
+	'prefswitch-main-on' => '===بمگەڕێنەوە!===
+[$2 بۆ لەکارخستنی تایبەتمەندییەنوێکان کردتە بکە سەر ئێرە].',
 );
 
 /** Czech (Česky)
@@ -1432,14 +1454,14 @@ $messages['el'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
 | [[Image:VectorNavigation-el.png|401px|]]
 |-
-| Ένα στιγμιότυπο του νέου περιβάλλοντος πλοήγησης της Βικιπαίδειας<br/><small>[[Media:VectorNavigation-en.png|(μεγέθυνση)]]</small>
+| Ένα στιγμιότυπο του νέου περιβάλλοντος πλοήγησης της Βικιπαίδειας <small>[[Media:VectorNavigation-en.png|(μεγέθυνση)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorEditorBasic-el.png|401px|]]
 |-
-| Ένα στιγμιότυπο της βασικής σελίδας επεξεργασίας<br/><small>[[Media:VectorEditorBasic-en.png|(μεγέθυνση)]]</small>
+| Ένα στιγμιότυπο της βασικής διεπαφής για την επεξεργασία σελίδων <small>[[Media:VectorEditorBasic-en.png|(μεγέθυνση)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -1450,7 +1472,7 @@ $messages['el'] = array(
 |}
 |}
 
-Η ''Wikimedia Foundation's User Experience Team'' δουλέψαμε με εθελοντές από την κοινότητα για να κάνουμε πιο εύκολα τα πράγματα για εσάς.  Είμαστε ενθουσιασμένοι που μοιραζόμαστε μαζί σας μερικές βελτιώσεις, που περιλαμβάνουν μια καινούρια εμφάνιση και αισθητική και  απλοποιημένες λειτουργίες επεξεργασίας.  Οι αλλαγές σκοπεύουν να κάνουν ευκολότερο στους νέους συνεισφέροντες να ξεκινήσουν, και βασίζονται στις [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study δοκιμές χρηστικότητας που διεξήχθησαν τον τελευταίο χρόνο]. Η βελτίωση της χρηστικότητας των εγχειρημάτων μας είναι προτεραιότητα του Ιδρύματος Wikimedia και θα συνεχίσουμε να δημοσιεύουμε κι άλλες ενημερώσεις στο μέλλον. Για περισσότερες λεπτομέρειες, επισκεφτείτε το σχετικό  [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post] του Wikimedia .
+Η ομάδα ''User Experience'' του Ιδρύματος Wikimedia δουλέψαμε με εθελοντές από την κοινότητα για να κάνουμε πιο εύκολα τα πράγματα για εσάς.  Είμαστε ενθουσιασμένοι που μοιραζόμαστε μαζί σας μερικές βελτιώσεις, που περιλαμβάνουν μια καινούρια εμφάνιση και αισθητική και απλοποιημένες λειτουργίες επεξεργασίας.  Οι αλλαγές σκοπεύουν να κάνουν ευκολότερο στους νέους συνεισφέροντες να ξεκινήσουν, και βασίζονται στις [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study δοκιμές χρηστικότητας που διεξήχθησαν τον τελευταίο χρόνο]. Η βελτίωση της χρηστικότητας των εγχειρημάτων μας είναι προτεραιότητα του Ιδρύματος Wikimedia και θα συνεχίσουμε να δημοσιεύουμε κι άλλες ενημερώσεις στο μέλλον. Για περισσότερες λεπτομέρειες, επισκεφτείτε το σχετικό  [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia μήνυμα στο ιστολόγιο] του Ιδρύματος Wikimedia.
 
 ===Αυτά που αλλάξαμε===
 * '''Πλοήγηση:''' Έχουμε βελτιώσει την πλοήγηση για την ανάγνωση και την επεξεργασία σελίδων. Τώρα οι καρτέλες στο πάνω μέρος της κάθε σελίδας δείχνουν πιο καθαρά αν βλέπετε την ίδια τη σελίδα  ή τη σελίδα συζήτησης, και επίσης αν διαβάζετε ή αν επεξεργάζεστε μια σελίδα.
@@ -1458,7 +1480,7 @@ $messages['el'] = array(
 * '''Οδηγός για συνδέσμους:'''  Ένα εύχρηστο εργαλείο που σας επιτρέπει να προσθέσετε συνδέσμους προς άλλες σελίδες της Βικιπαίδειας καθώς και προς εξωτερικούς ιστότοπους.
 * '''Βελτιώσεις στην αναζήτηση:''' Έχουμε βελτιώσει τις συμβουλές αναζήτησης, ώστε  να οδηγηθείτε στη σελίδα που ψάχνετε πιο γρήγορα. 
 * '''Άλλες νέες λειτουργίες:'''  Επιπλέον έχουμε εισαγάγει έναν οδηγό που διευκολύνει τη δημιουργία πινάκων, και μια λειτουργία για αναζήτηση-αντικατάσταση που απλοποιεί την επεξεργασία σελίδων.
-* '''Έμβλημα της Βικιπαίδειας:''' Ανανεώσαμε το έμβλημα. Διαβάστε περισσότερα στο [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
+* '''Λογότυπο της Βικιπαίδειας:''' Ανανεώσαμε το λογότυπο. Διαβάστε περισσότερα στο [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d ιστολόγιο του Ιδρύματος Wikimedia].",
 	'prefswitch-main-logged-changes' => "* Η '''{{int:watch}} καρτέλα''' είναι τώρα ένα αστέρι. 
 * Η ''''καρτέλα {{int:move}}'''' είναι τώρα στην αναπτυσσόμενη λίστα δίπλα στην μπάρα αναζήτησης.",
 	'prefswitch-main-feedback' => '=== Ανατροφοδότηση; === 
@@ -1901,6 +1923,7 @@ $messages['fa'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -1967,7 +1990,7 @@ Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapa
 === Tässä tehtyjä muutoksia ===
 * '''Navigaatio:''' Paransimme navigaatiota sivujen lukemiseksi ja muokkaamiseksi. Nyt jokaisen sivun yläreunassa olevat välilehdet ovat selvempiä.
 * '''Muokkauspalkin parannukset:''' Olemme järjestäneet muokkauspalkin uudelleen, jotta sitä olisi helpompi käyttää. Nyt sivujen muotoilu on yksinkertaisempaa ja havainnollisempaa.
-* '''Ohjattu linkkitoiminto:''' Helppokäyttöinen työkalu antaa sinun lisätä linkkejä sekä muille wikisivuille ja ulkoisille sivustoille.
+* '''Ohjattu linkkitoiminto:''' Helppokäyttöinen työkalu mahdollistaa muille wikisivuille ja ulkoisille sivustoille vievien linkkien lisäämisen.
 * '''Hakuparannukset:''' Olemme parantaneet hakuehdotuksia, jotta löytäisit etsimäsi sivun nopeammin.
 * '''Muut uudet toiminnot:''' Olemme myös tuoneet esiin ohjatun taulukonlisäystoiminnon taulukoiden helpompaan lisäämiseen ja etsi ja korvaa -toiminnon yksinkertaisempaan muokkaamiseen.
 * '''Wikipedian logo:''' Olemme päivittäneet logoa. Lue lisää [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedian blogista].",
@@ -1976,9 +1999,9 @@ Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapa
 	'prefswitch-main-feedback' => '=== Palautetta? ===
 Otamme mielellämme palautetta vastaan. Käy [[$1|palautesivulla]], tai jos olet kiinnostunut jatkuvasta ohjelmistokehityksestämme, katso lisätietoja [http://usability.wikimedia.org/ käytettävyyswikistä].',
 	'prefswitch-main-anon' => '=== Palaa vanhaan versioon ===
-[$1 Napsauta tästä, jos haluat poistaa uudet ominaisuudet käytöstä]. Sinua pyydetään ensin kirjautumaan sisään tai luomaan tunnus.',
+[$1 Poista uudet ominaisuudet käytöstä napsauttamalla tästä]. Sinua pyydetään ensin kirjautumaan sisään tai luomaan tunnus.',
 	'prefswitch-main-on' => '=== Palaa vanhaan versioon ===
-[$2 Napsauta tästä, jos haluat poistaa uudet ominaisuudet käytöstä].',
+[$2 Poista uudet ominaisuudet käytöstä napsauttamalla tästä].',
 	'prefswitch-main-off' => '=== Kokeile ominaisuuksia ===
 [$1 Napsauta tästä, jos haluat ottaa uudet ominaisuudet käyttöön].',
 	'prefswitch-survey-intro-feedback' => 'Otamme mielellämme palautetta vastaan.
@@ -4940,11 +4963,11 @@ $messages['sw'] = array(
 	'prefswitch-survey-submit-off' => 'Zima zana mpya',
 	'prefswitch-survey-cancel-off' => 'Ikiwa utapenda kuendelea kutumia zana mpya, basi unaweza kurudi katika $1.',
 	'prefswitch-survey-submit-feedback' => 'Tuma mrejeresho',
-	'prefswitch-survey-cancel-feedback' => 'Iwapo hutaki kutoa maoni, unaweza kurudi katika $ 1.',
+	'prefswitch-survey-cancel-feedback' => 'Iwapo hutaki kutoa maoni, unaweza kurudi katika $1.',
 	'prefswitch-survey-question-like' => 'Kipi ulichopenda kwenye hii zana mpya?',
-	'prefswitch-survey-question-dislike' => 'Kipi usichokipenda kwenye hii zana mpya?',
+	'prefswitch-survey-question-dislike' => 'Kipi usichokipenda kuhusu hii zana mpya?',
 	'prefswitch-survey-question-whyoff' => 'Kwanini unaizima hii zana mpya?
-Tafadhali chagua vifungu vyote vya kujaza.',
+Tafadhali chagua vifungu vyote vinavyohusika.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Ilikuwa vigumu kutumia zana hizi.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Zana hazikufanyakazi vizuri.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Zana hazikufanyakazi kitegemezi.',
@@ -4956,7 +4979,7 @@ Tafadhali chagua vifungu vyote vya kujaza.',
 	'prefswitch-survey-answer-browser-other' => 'Kivinjari kingine:',
 	'prefswitch-survey-question-os' => 'Unatumia mfumo gani wa uendeshaji?',
 	'prefswitch-survey-answer-os-other' => 'Mfumo mwingine wa uendeshaji:',
-	'prefswitch-survey-question-res' => 'Je, ni msongo upi wa skrini yako?',
+	'prefswitch-survey-question-res' => 'Je, skrini yako ina msongo upi wa piseli?',
 	'prefswitch-title-on' => 'Zana mpya',
 	'prefswitch-title-switched-on' => 'Furahia!',
 	'prefswitch-title-off' => 'Zima zana mpya',
