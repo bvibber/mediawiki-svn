@@ -133,6 +133,13 @@ $messages['pt'] = array(
 	'pageobjectmodel-desc' => 'Adiciona um conjunto de classes de abstracção da sintaxe do MediaWiki, que permitem a extracção e manipulação simplificada de páginas a partir de outros programas',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'pageobjectmodel-desc' => 'Adiciona um conjunto de classes de abstração da sintaxe do MediaWiki, que permitem a extração e manipulação simplificada de páginas a partir de outros programas',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

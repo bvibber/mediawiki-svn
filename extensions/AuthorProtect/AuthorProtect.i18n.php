@@ -787,6 +787,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule
+ * @author OrbiliusMagister
  * @author Pietrodn
  */
 $messages['it'] = array(
@@ -796,8 +797,8 @@ $messages['it'] = array(
 	'authorprotect-confirm' => 'Cambia i livelli di protezione',
 	'authorprotect-edit' => 'Limita le modifiche agli autori',
 	'authorprotect-move' => 'Limita gli spostamenti agli autori',
-	'authorprotect-expiry' => 'Scadenza',
-	'authorprotect-reason' => 'Motivo',
+	'authorprotect-expiry' => 'Scadenza:',
+	'authorprotect-reason' => 'Motivo:',
 	'authorprotect-intro' => 'Usa questo modulo per proteggere questa pagina dai non-autori',
 	'authorprotect-success' => 'Protezione avvenuta con successo!',
 	'authorprotect-failure' => 'Protezione fallita',

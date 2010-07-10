@@ -15,6 +15,13 @@ $messages['qqq'] = array(
 	'active-strategy-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author ;Hiba;1
+ */
+$messages['ar'] = array(
+	'activestrategy' => 'استراتيجية نشطة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

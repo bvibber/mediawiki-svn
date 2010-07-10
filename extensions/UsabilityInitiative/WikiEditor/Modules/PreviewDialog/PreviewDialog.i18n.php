@@ -133,6 +133,15 @@ $messages['ce'] = array(
 	'wikieditor-previewDialog-loading' => 'Чуйолуш…',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-previewDialog-preference' => 'ڕێگە بدە بە پەنجەرەی پێشبینین',
+	'wikieditor-previewDialog-tab' => 'پێشبینین',
+	'wikieditor-previewDialog-loading' => 'باركردن‌ ...',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -197,8 +206,10 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Dead3y3
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
+	'wikieditor-previewDialog-preference' => 'Ενεργοποίηση διαλόγου προεπισκόπησης',
 	'wikieditor-previewDialog-tab' => 'Προεπισκόπηση',
 	'wikieditor-previewDialog-loading' => 'Φόρτωση...',
 );

@@ -464,12 +464,19 @@ $messages['ca'] = array(
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
+	'specialuserstats' => 'ئامارەکانی بەکارھێنان',
+	'usagestatistics' => 'ئامارەکانی بەکارھێنان',
+	'usagestatisticsfor' => '<h2>ئامارەکانی بەکارھێنان بۆ [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>ئامارەکانی بەکارھێنان بۆ گشت بەکارھێنەران</h2>',
+	'usagestatisticsinterval' => 'ماوە:',
+	'usagestatisticsnamespace' => 'بۆشاییی ناو:',
 	'usagestatisticstype' => 'جۆر',
-	'usagestatisticsstart' => 'ڕێکەوتی دەستپێک',
-	'usagestatisticsend' => 'ڕێکەوتی کۆتایی',
+	'usagestatisticsstart' => 'ڕێکەوتی دەستپێکردن:',
+	'usagestatisticsend' => 'ڕێکەوتی کۆتایی:',
 	'usagestatisticsnostart' => 'تکایە ڕێکەوتێکی دەستپێک دیاری بکە',
 	'usagestatisticsnoend' => 'تکایە ڕێکەوتێکی کۆتایی دیاری بکە',
 	'usagestatisticsbadstartend' => '<b>ڕێکەوتی <i>دەستپێک</i> یا \\ و <i>کۆتایی</i> ناساز!</b>',

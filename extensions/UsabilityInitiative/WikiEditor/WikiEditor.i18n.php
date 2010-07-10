@@ -152,6 +152,7 @@ $messages['ce'] = array(
  * @author Asoxor
  */
 $messages['ckb-arab'] = array(
+	'wikieditor' => 'ڕووکاری پێشکەوتووی دەستکاریکردنی ویکیدەق',
 	'wikieditor-wikitext-tab' => 'ویکیدەق',
 	'wikieditor-loading' => 'بارکردن',
 );

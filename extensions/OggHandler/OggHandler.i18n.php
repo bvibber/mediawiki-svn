@@ -600,6 +600,13 @@ $messages['ca'] = array(
 	'ogg-oggThumb-failed' => "L'oggThumb no ha pogut crear una miniatura.",
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'ogg-dismiss' => 'بەستن',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

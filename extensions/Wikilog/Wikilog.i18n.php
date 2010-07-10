@@ -5258,12 +5258,12 @@ O comentário só aparecerá após ser revisto por um moderador.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author BrunaaAa
  * @author Giro720
  * @author Hamilton Abreu
  * @author Juliano
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'wikilog-desc' => "Adiciona funcionalidades de ''blog'', criando um híbrido ''wiki-blog''",
@@ -5321,6 +5321,7 @@ Para publicar e ativar outras funcionalidade do wikilog, será necessário prime
 	'wikilog-summary-categories' => 'Categorizado em $2',
 	'wikilog-summary-more' => '[[$3|→ continuar lendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussão]])',
+	'wikilog-edit-hint' => 'Editar o artigo wikilog: $1',
 	'wikilog-edit-fieldset-legend' => 'Opções de wikilog:',
 	'wikilog-edit-signpub' => 'Asssinar e publicar este artigo',
 	'wikilog-edit-signpub-tooltip' => 'Causa que este artigo seja assinado e publicado no respectivo wikilog quando for gravado.
@@ -5342,6 +5343,7 @@ Desmarque a caixa para manter o artigo em rascunho.',
 	'wikilog-comment-reject' => 'Rejeitar este comentário (ação imediata)',
 	'wikilog-newtalk-text' => '<!-- página em branco criada pelo Wikilog -->',
 	'wikilog-newtalk-summary' => 'criado automaticamente pelo wikilog',
+	'wikilog-feed-ns-title' => '$1 artigos wikilog',
 	'wikilog-feed-description' => 'Leia as postagens mais recentes neste feed.',
 	'wikilog-comment-feed-title1' => 'Comentário de $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentário de $2 para $3 (#$1)',

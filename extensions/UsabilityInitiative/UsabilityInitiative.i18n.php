@@ -742,9 +742,11 @@ $messages['sv'] = array(
 );
 
 /** Swahili (Kiswahili)
+ * @author Lloffiwr
  * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'usabilityinitiative' => 'Hatua ya Urahisishaji wa Matumizi',
 	'usabilityinitiative-desc' => 'Zana zilizotengenezwa na Hatua ya Urahisishaji wa Matumizi ya Wikipedia kuongeza ufanisi wa matumizi ya MediaWiki',
 	'prefs-beta' => 'Zana za Beta',
 );

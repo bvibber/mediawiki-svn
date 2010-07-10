@@ -71,6 +71,13 @@ $messages['ca'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Habilita el giny «Assistent per afegir multimèdia»',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-addMediaWizard-preference' => 'مۆڵەتدانی ئامرازۆکی "فێڵی زیادکردنی میدیا"',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

@@ -1886,6 +1886,13 @@ $messages['sv'] = array(
 	'ct-update-table' => 'Tppdatera tabell',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'ct-and' => 'na',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

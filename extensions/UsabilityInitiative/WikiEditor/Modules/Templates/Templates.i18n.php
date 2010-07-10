@@ -72,6 +72,13 @@ $messages['ca'] = array(
 	'wikieditor-templates-preference' => 'Habilita el replegament de plantilles',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-templates-preference' => 'مۆڵەتدانی کۆکردنەوەی داڕێژە',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

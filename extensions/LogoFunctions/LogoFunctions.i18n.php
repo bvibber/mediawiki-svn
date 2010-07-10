@@ -60,6 +60,14 @@ $messages['dsb'] = array(
 	'logofunctions-filenotexist' => 'Zmólka: [[File:$1]] njeeksistěrujo',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'logofunctions-desc' => 'Agregar función analizadora para establecer el logo del wiki',
+	'logofunctions-filenotexist' => 'Error: [[File:$1]] no existe',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

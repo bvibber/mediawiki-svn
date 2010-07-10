@@ -152,8 +152,11 @@ $messages['ce'] = array(
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
+ * @author Marmzok
  */
 $messages['ckb-arab'] = array(
+	'wikieditor-template-editor-preference' => 'ڕێگە بدە بە دەستکاریکردنی وەک فۆرم بۆ داڕێژەکانی ویکی',
+	'wikieditor-template-editor-dialog-title' => 'دەستکاریکردنی دارێژە',
 	'wikieditor-template-editor-dialog-submit' => 'نوێ کردنەوە',
 	'wikieditor-template-editor-dialog-cancel' => 'ھەڵوەشاندنەوە',
 );

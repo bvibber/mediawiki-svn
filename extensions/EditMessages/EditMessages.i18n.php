@@ -804,13 +804,18 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'editmessages' => '메시지 편집',
+	'editmsg-target' => '대상 메시지:',
 	'editmsg-search' => '찾기',
+	'editmsg-show-list' => '"$1" 메시지의 내용 보기',
+	'editmsg-get-patch' => '패치 생성',
 	'editmsg-new-search' => '새 검색',
+	'editmsg-apply-patch' => '패치 적용',
 );
 
 /** Krio (Krio)

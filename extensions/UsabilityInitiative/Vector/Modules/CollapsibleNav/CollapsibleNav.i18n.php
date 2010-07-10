@@ -90,6 +90,13 @@ $messages['ca'] = array(
 	'vector-collapsiblenav-more' => 'Més llengües',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'vector-collapsiblenav-more' => 'زمانەکانی دیکە',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil

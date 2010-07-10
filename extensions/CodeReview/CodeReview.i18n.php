@@ -448,6 +448,7 @@ $4',
 );
 
 /** Arabic (العربية)
+ * @author ;Hiba;1
  * @author Meno25
  * @author OsamaK
  */
@@ -527,6 +528,7 @@ $messages['ar'] = array(
 	'code-status-ok' => 'موافق',
 	'code-status-verified' => 'محققة',
 	'code-status-deferred' => 'مؤجل',
+	'code-status-old' => 'قديم',
 	'code-pathsearch-legend' => 'ابحث في النسخ في هذا المستودع بواسطة المسار',
 	'code-pathsearch-path' => 'المسار:',
 	'code-rev-submit' => 'احفظ التغييرات',
@@ -7592,6 +7594,7 @@ $messages['pt-br'] = array(
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'verificado',
 	'code-status-deferred' => 'deferido',
+	'code-status-old' => 'antigo',
 	'code-pathsearch-legend' => 'Pesquisar revisões neste repositório por caminho',
 	'code-pathsearch-path' => 'Caminho:',
 	'code-pathsearch-filter' => 'Filtro aplicado:',
