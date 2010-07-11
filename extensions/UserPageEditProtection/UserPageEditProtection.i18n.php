@@ -42,6 +42,14 @@ $messages['aln'] = array(
 	'right-editalluserpages' => 'Redakto faqet përdorues',
 );
 
+/** Arabic (العربية)
+ * @author ;Hiba;1
+ */
+$messages['ar'] = array(
+	'userpageeditprotection-desc' => 'يحصر تحرير صفحات المستخدم على المستخدم و المحررين المسموح لهم بذلك',
+	'right-editalluserpages' => 'تحرير صفحات المستخدم',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

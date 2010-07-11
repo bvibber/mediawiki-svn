@@ -1146,6 +1146,26 @@ $messages['ko'] = array(
  * @author Iltever
  */
 $messages['krc'] = array(
+	'clicktracking' => 'Юзабилити башламчылыкъ юсю бла басыуланы сынчыкълау',
+	'clicktracking-desc' => 'Басыуланы сынчыкълау. Бетни джангыртханнга келтирмеген болууланы сынчыкъларгъа деб этилгенди.',
+	'ct-title' => 'Къошулуучуланы чычханлары бла агрегирланнган басыулары',
+	'ct-event-name' => 'Болууну аты',
+	'ct-expert-header' => '«Экспертлени» басылары',
+	'ct-intermediate-header' => '«Орта къошулуучуланы» басыулары',
+	'ct-beginner-header' => '«Джангыланы» басыулары',
+	'ct-total-header' => 'Бютеу басыула',
+	'ct-start-date' => 'Башланнганны датасы (ДДДДААКК)',
+	'ct-end-date' => 'Бошалгъанны датасы (ДДДДААКК)',
+	'ct-increment-by' => 'Кюнлени, билгилени хар нохтасы кёргюзген саны',
+	'ct-change-graph' => 'Графикни тюрлендир',
+	'ct-beginner' => 'Джангы адам',
+	'ct-intermediate' => 'Орта къошулуучу',
+	'ct-expert' => 'Эксперт',
+	'ct-date-range' => 'Даталаны диапазону',
+	'ct-editing' => 'Бара тургъан тюрлендириу:',
+	'ct-anon-users' => 'Анонимле',
+	'ct-user-contribs' => 'Бютеу къошулуучула къошхан юлюш',
+	'ct-user-span' => 'Къошулуучуланы къошхан юлюшлери кёзюуге кёре',
 	'ct-and' => 'эм',
 	'ct-update-table' => 'Таблицаны джангырт',
 );
@@ -1890,7 +1910,10 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'ct-anon-users' => 'Watumiaji bila majina',
+	'ct-user-contribs' => 'Jumla ya michango ya mtumiaji',
 	'ct-and' => 'na',
+	'ct-update-table' => 'Sasisha jedwali',
 );
 
 /** Telugu (తెలుగు)

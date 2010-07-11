@@ -256,6 +256,13 @@ $messages['ko'] = array(
 	'userdailycontribs-desc' => '클릭 추적 확장 기능을 위한 사용자 일일 기여',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'userdailycontribs-desc' => 'Басыула изленир ючюн къошулуучуланы хар кюнлюк къошханлары',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

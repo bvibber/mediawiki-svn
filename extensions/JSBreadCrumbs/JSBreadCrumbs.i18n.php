@@ -223,6 +223,11 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'jsbreadcrumbs-desc' => 'Adiciona o percurso até a página corrente, por baixo da barra de separadores',
 	'jsbreadcrumbs-leading-description' => 'Percurso de navegação',
+	'prefs-jsbreadcrumbs' => 'Percurso de Navegação',
+	'prefs-jsbreadcrumbs-showsite' => 'Incluir o nome do site no percurso de navegação (útil quando usado entre wikis)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Mostrar percurso de navegação',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Número de passos',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'No máximo 20 passos',
 );
 
 /** Russian (Русский)

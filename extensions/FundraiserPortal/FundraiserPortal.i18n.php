@@ -107,6 +107,7 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'fundraiserportal' => 'তহবিল সংগ্রহের প্রবেশদ্বার',
 	'fundraiserportal-plain-button' => 'উইকিপিডিয়াকে সাহায্য করুন!',
 	'fundraiserportal-ruby-button' => 'এখনই দান করুন',
 	'fundraiserportal-rubytext-button' => 'এখনই দান করুন',

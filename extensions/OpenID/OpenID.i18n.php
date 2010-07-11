@@ -5793,12 +5793,13 @@ $messages['zh-hans'] = array(
 	'openidloginlabel' => 'OpenID地址',
 	'openidlogininstructions' => '{{SITENAME}} 支持用于网站间单点登录的[http://openid.net/ OpenID] 标准。
 OpenID可以让你不必使用不同的密码登录不同站点。
-（详情请参见[http://en.wikipedia.org/wiki/OpenID 维基百科关于 OpenID 的条目]。)
+（详情请参见[http://en.wikipedia.org/wiki/OpenID 维基百科关于 OpenID 的条目]。）
 
-If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
-To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
+如果你在{{SITENAME}}上已经拥有账户，可以按一般方法，使用用户名和密码[[Special:UserLogin|登录]]。
 
-There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
+如果想今后使用OpenID登录，可以登录后 [[Special:OpenIDConvert|将一般账户转换为OpenID账户]]。
+
+[http://openid.net/get/ OpenID的提供者]有很多，你可能在使用其他服务时已经建立了一个可以使用OpenID的账户了。',
 	'openidupdateuserinfo' => '更新我的个人信息',
 	'openiddelete' => '删除OpenID',
 	'openiddelete-text' => '按下"{{int:openiddelete-button}}"按钮后，OpenID $1将从你的账户中删除。你以后将无法再使用这个OpenID登录。',

@@ -10186,6 +10186,7 @@ $messages['ps'] = array(
 	'ow_OptionAttribute' => 'ځانتيا',
 	'ow_OptionAttributeOption' => 'خوښنه',
 	'ow_OptionAttributeOptions' => 'خوښنې',
+	'ow_Relations' => 'اړيکې',
 	'ow_Synonyms' => 'هممانيزونه',
 	'ow_SynonymsAndTranslations' => 'هممانيزونه او ژباړې',
 	'ow_Source' => 'سرچينه',

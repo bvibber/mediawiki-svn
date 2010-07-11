@@ -19,6 +19,13 @@ $messages['be-tarask'] = array(
 	'pageobjectmodel-desc' => 'Дадае набор клясаў абстракцыі сынтаксісу MediaWiki для лёгкага атрыманьня і апрацоўкі старонак іншымі праграмамі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'pageobjectmodel-desc' => "Ouzhpennañ a ra ur strobad renkadoù a c'haller pakañ drezo ereadurezh Mediawiki evit aesaat eztennañ pajennoù hag embreger anezho e diabarzh programmoù all",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

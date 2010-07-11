@@ -110,6 +110,16 @@ $messages['bg'] = array(
 	'unicodeconverter-newtext' => 'Преобразуван текст:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'unicodeconverter' => 'ইউনিকো্ড কনভার্টার',
+	'unicodeconverter-ok' => 'ঠিক আছে',
+	'unicodeconverter-oldtext' => 'মূল লেখা:',
+	'unicodeconverter-newtext' => 'রূপান্তরিত লেখা:',
+);
+
 /** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
  * @author Usingha
  */

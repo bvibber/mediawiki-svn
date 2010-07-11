@@ -33,6 +33,13 @@ $messages['be-tarask'] = array(
 	'nedits' => '$1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}}',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'activestrategy' => 'স্বক্রিয়া স্ট্রেটেজি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D

@@ -225,6 +225,13 @@ $messages['mk'] = array(
 	'interlanguage-desc' => 'Презема меѓујазични врски од друго вики',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'interlanguage-desc' => 'മറ്റൊരു വിക്കിയിൽ നിന്നും അന്തർഭാഷാ കണ്ണികൾ എടുക്കുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -450,6 +450,7 @@ $messages['ko'] = array(
  */
 $messages['krc'] = array(
 	'usabilityinitiative' => 'Юзабилити башламчылыкъ',
+	'usabilityinitiative-desc' => 'MediaWiki-ни аммалары Википедияны Юзабилити башламчылыгъыны юсю  бла, аны хайырланыуун тынчыракъ этер умутда, къуралгъандыла',
 	'prefs-beta' => 'Бета-амалла',
 	'prefs-labs' => 'Эксперимент амалла',
 );

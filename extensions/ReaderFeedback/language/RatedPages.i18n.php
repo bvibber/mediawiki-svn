@@ -89,6 +89,13 @@ $messages['bg'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|рецензия|рецензии}}',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'ratedpages-graphs' => 'রেটিং ডাটা',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

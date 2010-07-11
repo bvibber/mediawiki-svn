@@ -5094,6 +5094,7 @@ $messages['ps'] = array(
 	'wikilog-pager-last' => 'وروستني',
 	'wikilog-has-comments' => '{{PLURAL:$1|يوه تبصره|$1 تبصرې}}',
 	'wikilog-edit-fieldset-legend' => 'د ويکي يادښت خوښنې:',
+	'wikilog-comment-deleted' => 'دا تبصره ړنګه شوې.',
 	'wikilog-comment-edit' => 'دا تبصره سمول',
 	'wikilog-comment-delete' => 'دا تبصره ړنګول',
 	'wikilog-comment-history' => 'د تبصرې پېښليک کتل',

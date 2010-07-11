@@ -1411,6 +1411,8 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wah-short-audio' => '$1 غږيزه دوتنه، $2',
+	'wah-menu-jobs' => 'دندې',
+	'wah-menu-pref' => 'غوره توبونه',
 );
 
 /** Portuguese (Português)
