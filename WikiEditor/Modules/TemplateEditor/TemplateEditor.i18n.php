@@ -645,6 +645,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wikieditor-template-editor-dialog-submit' => 'اوسمهالول',
+	'wikieditor-template-editor-dialog-cancel' => 'ناګارل',
 );
 
 /** Portuguese (Português)

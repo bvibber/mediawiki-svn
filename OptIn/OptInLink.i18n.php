@@ -201,10 +201,14 @@ $messages['ce'] = array(
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
+ * @author Marmzok
  */
 $messages['ckb-arab'] = array(
 	'optin-try' => 'تاقی‌کردنەوەی بیتا',
+	'tooltip-pt-optin-try' => 'تاقیکردنەوەیەکی تایبەتمەندییە نوێکان',
 	'optin-leave' => 'دەرچوون لە بیتا',
+	'tooltip-pt-optin-leave' => 'لەکارخستنی تایبەتمەندییە نوێکان',
+	'optin-feedback' => 'پێڕاگەیاندنەوەی بێتا',
 );
 
 /** Czech (Česky)
@@ -668,6 +672,7 @@ $messages['krc'] = array(
 	'optin-try' => 'Бета-версияны сынаб кёр',
 	'tooltip-pt-optin-try' => 'Джангы амалланы сынагъыз',
 	'optin-leave' => 'Бета-версиядан чыкъ',
+	'tooltip-pt-optin-leave' => 'Джангы амалланы джукълатыгъыз',
 	'optin-feedback' => 'Оюмугъузну ийигиз',
 	'tooltip-pt-optin-feedback' => 'Джангы функцияла бла хайырланнганыгъызны юсюнден оюмугъузуну къоюгъуз',
 );

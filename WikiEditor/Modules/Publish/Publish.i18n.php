@@ -983,6 +983,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wikieditor-publish-button-publish' => 'خپرول',
+	'wikieditor-publish-button-cancel' => 'ناګارل',
 	'wikieditor-publish-dialog-watch' => 'همدا مخ کتل',
 	'wikieditor-publish-dialog-publish' => 'خپرول',
 );

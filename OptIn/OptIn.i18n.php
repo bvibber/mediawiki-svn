@@ -975,8 +975,12 @@ $messages['ckb-arab'] = array(
 	'optin-title-optedin' => 'وازهێنان لە بێتا',
 	'optin-title-justoptedin' => 'بەخێرهاتی بۆ بێتا',
 	'optin-title-justoptedout' => 'سوپاس بۆ تاقی‌کردنەوەی بێتا',
+	'optin-title-feedback' => 'پێڕاگەیاندنەوەی بێتا',
 	'optin-leave-cancel' => 'گەر دەتەوێ لە کەڵک وەرگرتنی بێتا بەردەوام بی، دەتوانی بگەرێیتەوە بۆ $1.',
+	'optin-success-feedback' => 'سوپاس بۆ پێڕاگەیاندنەوەت!',
 	'optin-accept-short' => 'با ئەنجامی دەین!',
+	'optin-accept-long' => 'تاقیکردنەوەی بێتا',
+	'optin-accept-long-anon' => 'بڕۆ ژوورەوە و بێتا تاقی بکەوە',
 	'optin-deny-short' => 'سوپاس، نەخێر',
 	'optin-deny-long' => 'گەڕانەوە بۆ لاپەڕەی پێشوو',
 	'optin-submit-out' => 'وازهێنان لە بێتا',
@@ -984,6 +988,7 @@ $messages['ckb-arab'] = array(
 	'optin-survey-no' => 'نەخێر',
 	'optin-survey-question-likedislike' => 'کاتی بەکارهێنان سەبارەت بە بێتا چیت بەدڵ بوو؟ چیت بە دڵ نەبوو؟',
 	'optin-survey-answer-whyoptout-hard' => 'کەڵک وەرگرتنی زۆر زەحمەت بوو.',
+	'optin-survey-answer-whyoptout-didntwork' => 'بە باشی کاری نەکرد.',
 	'optin-survey-answer-whyoptout-other' => 'هۆکاری دیکە:',
 	'optin-survey-question-browser' => 'کام گەڕۆک بەکار دەهێنی؟',
 	'optin-survey-answer-browser-other' => 'گەڕۆکی دیکە:',
@@ -3514,6 +3519,15 @@ $messages['krc'] = array(
 	'optin-needlogin' => '[$1 Системагъа кирирге] керексиз бета-версияны сынар ючюн.',
 	'optin-intro' => 'Юзабилити башламчылыкъны юсю бла Википедияны хайырланыу тынчыракъ болурча иш бардырылгъанды.
 Бета-версияны саныргъа излеймисиз?',
+	'optin-feedback-intro' => 'Интерфейсни бета-версиясын сынаргъа хо болгъаныгъыз ючюн сау болугъуз.
+Джангы интерфейсни юсюнден оюмугъузну билирге излейбиз, аны ючюн тюбюрекде берилген соруб алыугъа къошулсагъыз, ыспас этерикбиз.',
+	'optin-feedback-back' => 'Соруб алыугъа къошулургъа излемей эсегиз, $1 бетге къайтыргъа боллукъсуз.',
+	'optin-success-in' => 'Энди сиз интерфейсни бета-версиясын сынаугъа къошулгъансыз.
+Сиз программадан къачан сюйсегиз да чыгъаргъа боллукъсуз, экранны баш джанында «{{int:optin-leave}}» джибериуден басханлай.',
+	'optin-leave-cancel' => 'Мындан ары да бета-версияны хайырланыргъа излей эсегиз, къайтыргъа боллукъсуз: $1.',
+	'optin-success-out' => 'Интерфейсни бета-версиясын сынагъан режимден тыйыншлы чыкъдыгъыз.
+Экранны баш онг мюйюшюнде «{{int:optin-try}}» джибериуню басыб, энтда сынаб кёрюрге боллукъсуз бу версияны.',
+	'optin-success-feedback' => 'Оюмугъузну билдиргенигиз ючюн сау болугъуз!',
 	'optin-accept-short' => 'Этейик алай!',
 	'optin-accept-long' => 'Бета-версияны сынаб кёр',
 	'optin-accept-long-anon' => 'Авторизацияны ёт да интерфейсни бета-версиясын сынаб кёр',
@@ -3523,7 +3537,51 @@ $messages['krc'] = array(
 	'optin-submit-feedback' => 'Оюмугъузну ийигиз',
 	'optin-survey-yes' => 'Хоу',
 	'optin-survey-no' => 'Огъай',
+	'optin-survey-intro' => 'Интерфейсни бета-версиясын сынаугъа къошулгъаныгъыз ючюн сау болугъуз.
+Джангы интерфейсни юсюнден оюмугъузун билирге излейбиз, аны ючюн, «[[#leave|{{int:optin-submit-out}}]]» тиекни басарыгъызны аллы бла, тюбюрекде берилген соруулагъа джууаб берсегиз, разы боллукъ эдик.',
+	'optin-survey-question-likedislike' => 'Beta-ны несин джаратдыгъыз? Beta-ны несин джарамадыгъыз?',
+	'optin-survey-question-whyoptout' => 'Beta-дан нек чыгъасыз? (бютеу келишгенлени сайлагъыз)',
+	'optin-survey-answer-whyoptout-hard' => 'Хайырланнган асыры къыйынды.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Тюзюуюн ишлемейди.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Алгъадан билмезча ишлейди.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Кёрюнюмюн джаратмайма.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Джангы тиекле бла вёрсткасын джаратмадым.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Джангы редакторлау панелни джаратмадым.',
+	'optin-survey-answer-whyoptout-other' => 'Башха чурум:',
+	'optin-survey-question-explain' => 'Башында берген джууабыгъызны ангылатыгъыз эмда кескинлегиз.',
+	'optin-survey-question-techfail' => 'Beta-ны хайырланнган сагъатда техника джанындан бузукъ болгъанмыды?',
+	'optin-survey-question-techfail-ifyes' => 'Болгъан эсе, кескинлегиз эмда ангылатыгъыз:',
+	'optin-survey-question-usedtoolbar' => 'Бетлени редакторлагъан сагъатда джангы инструмент панелни хайырланнган эдигизми?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Хайырланнган эсегиз, аны несин джаратдыгъыз? Несин джаратмадыгъыз?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Хайырланмагъан эсегиз, нек хайырланмадыгъыз? Келир заманда хайырланыр акъылыгъыз бармыды? Ангылатыгъыз.',
+	'optin-survey-question-different' => 'Сиз Beta-ны хайырланырча нени тюрлендирирге керекди?',
+	'optin-survey-question-feedback' => 'Тилейбиз, бизге оюмугъузну билдиригиз:',
+	'optin-survey-question-browser' => 'Къайсы браузерни хайырланасыз?',
+	'optin-survey-answer-browser-other' => 'Башха браузер:',
+	'optin-survey-question-os' => 'Къайсы операцион системаны хайырландырасыз?',
+	'optin-survey-answer-os-other' => 'Башха операцион система:',
+	'optin-survey-question-res' => 'Экраныгъызны разрешениеси къаллайды?',
+	'optin-survey-question-changes' => 'Эндиги бета-версиялада къаллай тюрлениулени кёрюрге сюе эдигиз (келишген пунктланы сайлагъыз)?',
+	'optin-survey-answer-changes-nav' => 'Сайтда бютеулей навигация тынчыракъ этилсин.',
+	'optin-survey-answer-changes-edittools' => 'Редакторлау инструментле кенгертилинсинле эмда игилендирилинсинле.',
+	'optin-survey-answer-changes-upload' => 'Джюклеу эмда медиа игилендирилсин.',
+	'optin-survey-answer-changes-richtext' => 'Текст редакторлача редакторлау инструментле къуралсынла.',
+	'optin-survey-answer-changes-lookfeel' => 'Сайтны «тыш кёрюнюмю» джангыртылсын.',
+	'optin-survey-answer-changes-predictability' => 'Ишлеуню алгъадан билиу игиленсин.',
+	'optin-survey-answer-changes-custom' => 'Энчи джарашдырыула кёбюрек болсунла.',
 	'optin-survey-answer-changes-other' => 'Башха:',
+	'optin-improvements2' => '== Не заты игилендирилгенди? ==
+[[File:UsabilityToolbar.png|left|link=|Кенгертилиннген редакторлаў панелни сураты]]
+[[File:UsabilityDialogs.png|left|link=|Джангы къураў диалогланы сураты]]
+; Кенгертилиннген инструмент панель
+Кенгертилиннген инструмент панель статьяланы редакторлагъанны тынчыракъ этеди. Джангы эмда игилендирилген сурат-белгиле этимлери бла интрументлени келишиўлерин тюзюрек кёргюзтедиле. Ачылыўчу бёлюмле тизгинсизликни азайтады, алай а аз хайырланнган инструментлени чычхан бла бир басыў узакълыкъда тутадыла.
+; Диалогну терезеси
+Энди джибериўле неда таблицала салгъан сагъатда, келишген сурат-белгиден басаргъа боллукъду, ачылгъан диалог терезе, тынч форманы толтуруў бла, джибериў неда таблица къураргъа болушурукъду.
+; Дагъыда
+Талай башха игилендириў да этгенбиз, аланы ичинде – навигацияны игилендириў, каскад вкладкала, игиленнген излеу эмда кёб башха зат.
+== Къалай къошулгъун  ==
+Юзабилити башламчылыкъны юсюнден кёбюрек билир ючюн, бизни [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative бетибизни кёрюгюз].
+<div style="clear:both"></div>',
 );
 
 /** Colognian (Ripoarisch)
