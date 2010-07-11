@@ -191,7 +191,8 @@ class Exif {
 				'ExposureProgram' => Exif::SHORT,			# Exposure Program #p38
 				'SpectralSensitivity' => Exif::ASCII,			# Spectral sensitivity
 				'ISOSpeedRatings' => Exif::SHORT,			# ISO speed rating
-				'OECF' => Exif::IGNORE,					# Optoelectronic conversion factor. Note: We don't have support for this atm.
+				'OECF' => Exif::IGNORE,
+				# Optoelectronic conversion factor. Note: We don't have support for this atm.
 				'ShutterSpeedValue' => Exif::SRATIONAL,			# Shutter speed
 				'ApertureValue' => Exif::RATIONAL,			# Aperture
 				'BrightnessValue' => Exif::SRATIONAL,			# Brightness
@@ -224,7 +225,9 @@ class Exif {
 				'Contrast' => Exif::SHORT,				# Contrast #p50
 				'Saturation' => Exif::SHORT,				# Saturation #p50
 				'Sharpness' => Exif::SHORT,				# Sharpness #p50
-				'DeviceSettingDescription' => Exif::IGNORE,		# Desice settings description. FIXME: this could maybe be supported.
+				'DeviceSettingDescription' => Exif::IGNORE,
+				# Desice settings description. This could maybe be supported. Need to find an
+				# example file that uses this to see if it has stuff of interest in it.
 				'SubjectDistanceRange' => Exif::SHORT,			# Subject distance range #p51
 
 				'ImageUniqueID' => Exif::ASCII,				# Unique image ID
@@ -232,12 +235,16 @@ class Exif {
 
 			# GPS Attribute Information (p52)
 			'GPS' => array(
-				'GPSVersion' => Exif::UNDEFINED,			 # array( Exif::BYTE, 4 )  GPS tag version. Note exif standard calls this GPSVersionID, but php doesn't like the id. also php thinks its wrong type
+				'GPSVersion' => Exif::UNDEFINED,
+				# Should be an array of 4 Exif::BYTE's. However php treats it as an undefined
+				# Note exif standard calls this GPSVersionID, but php doesn't like the id suffix
 				'GPSLatitudeRef' => Exif::ASCII,			# North or South Latitude #p52-53
 				'GPSLatitude' => array( Exif::RATIONAL, 3 ),		# Latitude
 				'GPSLongitudeRef' => Exif::ASCII,			# East or West Longitude #p53
 				'GPSLongitude' => array( Exif::RATIONAL, 3),		# Longitude
-				'GPSAltitudeRef' => Exif::UNDEFINED,			# Altitude reference. Note, the exif standard says this should be an EXIF::Byte, but php seems to disagree.
+				'GPSAltitudeRef' => Exif::UNDEFINED,
+				# Altitude reference. Note, the exif standard says this should be an EXIF::Byte,
+				# but php seems to disagree.
 				'GPSAltitude' => Exif::RATIONAL,			# Altitude
 				'GPSTimeStamp' => array( Exif::RATIONAL, 3),		# GPS time (atomic clock)
 				'GPSSatellites' => Exif::ASCII,				# Satellites used for measurement
@@ -347,14 +354,15 @@ class Exif {
 			unset( $this->mFilteredExifData['GPSAltitudeRef'] );
 		}
 
-		$this->getOrd( 'FileSource' );
-		$this->getOrd( 'SceneType' );
+		$this->exifPropToOrd( 'FileSource' );
+		$this->exifPropToOrd( 'SceneType' );
 
 		$this->charCodeString( 'UserComment' );
 		$this->charCodeString( 'GPSProcessingMethod');
 		$this->charCodeString( 'GPSAreaInformation' );
 		
 		//ComponentsConfiguration should really be an array instead of a string...
+		//This turns a string of binary numbers into an array of numbers.
 
 		if ( isset ( $this->mFilteredExifData['ComponentsConfiguration'] ) ) {
 			$val = $this->mFilteredExifData['ComponentsConfiguration'];
@@ -366,8 +374,13 @@ class Exif {
 			$this->mFilteredExifData['ComponentsConfiguration'] = $ccVals;
 		}
 	
-		//GPSVersion(ID) is just very screwed up by php
-		//put into a version string, and change the tag name.
+		//GPSVersion(ID) is treated as the wrong type by php exif support.
+		//Go through each byte turning it into a version string.
+		//For example: "\x00\x00\x02\x02" -> "2.2.0.0"
+
+		//Also change exif tag name from GPSVersion (what php exif thinks it is)
+		//to GPSVersionID (what the exif standard thinks it is).
+
 		if ( isset ( $this->mFilteredExifData['GPSVersion'] ) ) {
 			$val = $this->mFilteredExifData['GPSVersion'];
 			$newVal = '';
@@ -433,7 +446,7 @@ class Exif {
 	* the type of UNDEFINED field
 	* @param $prop String name of property
 	*/
-	private function getOrd ( $prop ) {
+	private function exifPropToOrd ( $prop ) {
 		if ( isset( $this->mFilteredExifData[$prop] ) ) {
 			$this->mFilteredExifData[$prop] = ord( $this->mFilteredExifData[$prop] );
 		}
