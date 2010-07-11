@@ -148,28 +148,62 @@ class Ssh2Filesystem extends Filesystem {
 	 * @see Filesystem::changeDir
 	 */
 	public function changeDir( $dir ) {
-		
+		return $this->runCommand( 'cd ' . $dir );
 	}
 
 	/**
 	 * @see Filesystem::changeFileGroup
 	 */
 	public function changeFileGroup( $file, $group, $recursive = false ) {
-		
+		if ( !$this->exists( $file ) ) {
+			return false;
+		}
+			
+		if ( !$recursive || !$this->isDir( $file ) ) {
+			return $this->runCommand( sprintf( 'chgrp %o %s', $mode, escapeshellarg( $file ) ) );
+		}
+			
+		return $this->runCommand( sprintf( 'chgrp -R %o %s', $mode, escapeshellarg( $file ) ) );		
 	}
 
 	/**
 	 * @see Filesystem::chmod
 	 */
 	public function chmod( $file, $mode = false, $recursive = false ) {
+		if ( !$this->exists( $file ) ) {
+			return false;
+		}
+
+		if ( !$mode ) {
+			if ( $this->is_file($file) ) {
+				$mode = FS_CHMOD_FILE;
+			}
+			elseif ( $this->is_dir($file) ) {
+				$mode = FS_CHMOD_DIR;
+			}
+			else {
+				return false;
+			}
+		}		
 		
+		if ( !$recursive || !$this->isDir( $file ) ) {
+			return $this->runCommand( sprintf( 'chmod %o %s', $mode, escapeshellarg( $file ) ) );
+		}
+			
+		return $this->runCommand( sprintf( 'chmod -R %o %s', $mode, escapeshellarg( $file ) ) );		
 	}
 
 	/**
 	 * @see Filesystem::chown
 	 */
 	public function chown( $file, $owner, $recursive = false ) {
-		
+		if ( !$this->exists( $file ) ) {
+			return false;
+		}
+			
+		if ( ! $recursive || ! $this->is_dir($file) )
+			return $this->run_command(sprintf('chown %o %s', $mode, escapeshellarg($file)), true);
+		return $this->run_command(sprintf('chown -R %o %s', $mode, escapeshellarg($file)), true);		
 	}
 
 	/**
