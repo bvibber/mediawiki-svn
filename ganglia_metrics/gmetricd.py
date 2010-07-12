@@ -180,7 +180,7 @@ selectServer.addReader(unixSocket)
 diskStats = DiskStats.DiskStats()
 pushMetrics = GangliaMetrics.MetricCollection()
 
-mysqlStats = MySQLStats.MySQLStats( conf['dbuser'], conf['dbpassword'] )
+mysqlStats = MySQLStats.MySQLStats( conf['dbuser'], conf['dbpassword'], conf['mysqlclient'] )
 allMetrics = (diskStats, pushMetrics, mysqlStats)
 
 # Daemonize

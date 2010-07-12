@@ -1,5 +1,5 @@
-SOURCES=__init__.py gmetricd.py GangliaMetrics.py MySQLStats.py SelectServer.py
-OBJECTS=gmetricd.pyo GangliaMetrics.pyo MySQLStats.pyo SelectServer.pyo
+SOURCES=__init__.py gmetricd.py GangliaMetrics.py MySQLStats.py SelectServer.py DiskStats.py
+OBJECTS=gmetricd.pyo GangliaMetrics.pyo MySQLStats.pyo SelectServer.pyo DiskStats.pyo
 
 all: $(OBJECTS)
 

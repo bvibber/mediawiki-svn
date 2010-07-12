@@ -6,7 +6,7 @@ from xml.dom.minidom import parseString
 A collection of metrics from MySQL, using SHOW STATUS and SHOW PROCESSLIST
 """
 class MySQLStats(MetricCollection):
-	def __init__(self, user, password):
+	def __init__(self, user, password, client):
 		self.metrics = {
 			'mysql_questions': DeltaMetricItem(
 				'mysql_questions', 
@@ -35,6 +35,7 @@ class MySQLStats(MetricCollection):
 		}
 		self.user = user
 		self.password = password
+		self.client = client
 
 		if self.query('select 1') == None:
 			self.disabled = True
@@ -76,10 +77,9 @@ class MySQLStats(MetricCollection):
 		return True
 
 	def query(self, sql):
-		global conf
 		proc = subprocess.Popen(
 			[
-				conf['mysqlclient'], '-XB', 
+				self.client, '-XB', 
 				'--user=' + self.user,
 				'--password=' + self.password,
 				'-e', sql
