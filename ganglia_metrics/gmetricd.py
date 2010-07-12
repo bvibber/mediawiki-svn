@@ -1,20 +1,36 @@
 #! /usr/bin/env python
 
 from xdrlib import Packer
-import sys, socket, re, GangliaMetrics, MySQLStats, time, os, signal, pwd, logging, commands
+import sys, socket, re, GangliaMetrics, DiskStats, MySQLStats, time, os, signal, pwd, logging
+import StringIO, ConfigParser
 from SelectServer import *
 
 # Configuration
 
-conf = {
-	'gmondConf': '/etc/gmond.conf',
+configParser = ConfigParser.ConfigParser( {
+	'gmondconf': '/etc/gmond.conf',
 	'sock': '/tmp/gmetric.sock',
 	'log': '/var/log/gmetricd/gmetricd.log',
 	'pid': '/var/run/gmetricd.pid',
 	'user': 'gmetric',
-	'dbuser': 'wikiadmin',
-	'dbpassword': commands.getoutput('/home/wikipedia/bin/wikiadmin_pass')
-}
+	'dbuser': '',
+	'dbpassword': '',
+	'mysqlclient': 'mysql',
+} )
+
+try:
+	configFile = open('/etc/gmetricd.conf')
+except:
+	configFile = False
+if configFile:
+	configData = "[DEFAULT]\n"
+	configData += configFile.read()
+	configFile.close()
+	configParser.readfp(StringIO.StringIO(configData))
+
+conf = {}
+for name, value in configParser.items('DEFAULT'):
+	conf[name] = value
 
 unixSocket = None
 
@@ -106,7 +122,7 @@ os.setuid(userId)
 selectServer = SelectServer()
 
 # Determine the multicast address
-gmondFile = open(conf['gmondConf'])
+gmondFile = open(conf['gmondconf'])
 addrRegex = re.compile(r"^\s*mcast_join\s*=\s*([0-9.:]+)")
 portRegex = re.compile(r"^\s*port\s*=\s*([0-9]+)")
 ttlRegex  = re.compile(r"^\s*ttl\s*=\s*([0-9]+)")
@@ -161,7 +177,7 @@ unixSocket.listen(10)
 selectServer.addReader(unixSocket)
 
 # Create the metrics
-diskStats = GangliaMetrics.DiskStats()
+diskStats = DiskStats.DiskStats()
 pushMetrics = GangliaMetrics.MetricCollection()
 
 mysqlStats = MySQLStats.MySQLStats( conf['dbuser'], conf['dbpassword'] )

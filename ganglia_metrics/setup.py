@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='ganglia_metrics',
-      version='1.0',
+      version='1.3',
       description='Ganglia metric daemon',
       author='Tim Starling',
       author_email='tstarling@wikimedia.org',

@@ -1,4 +1,4 @@
-import logging, commands, time
+import logging, subprocess, time, pprint
 from GangliaMetrics import *
 from xml.dom.minidom import parseString
 
@@ -8,54 +8,95 @@ A collection of metrics from MySQL, using SHOW STATUS and SHOW PROCESSLIST
 class MySQLStats(MetricCollection):
 	def __init__(self, user, password):
 		self.metrics = {
-			'mysql_questions':          DeltaMetricItem('mysql_questions', 'q/s'),
-			'mysql_threads_connected':  RollingMetric('mysql_threads_connected', 60),
-			'mysql_threads_running':    RollingMetric('mysql_threads_running', 60),
-			'mysql_slave_lag':          Metric('mysql_slave_lag', 's') 
+			'mysql_questions': DeltaMetricItem(
+				'mysql_questions', 
+				{
+					'TITLE': 'MySQL queries',
+					'DESC': 'Queries per second received at this MySQL server',
+					'GROUP': 'mysql'
+				},
+				'q/s'),
+			'mysql_threads_connected': RollingMetric(
+				'mysql_threads_connected',
+				{
+					'TITLE': 'MySQL threads connected',
+					'DESC': 'Number of threads connected to this MySQL server',
+					'GROUP': 'mysql'
+				},
+				60),
+			'mysql_threads_running': RollingMetric(
+				'mysql_threads_running', 
+				{
+					'TITLE': 'MySQL threads running',
+					'DESC': 'Number of MySQL threads in a non-sleep state',
+					'GROUP': 'mysql'
+				},
+				60)
 		}
 		self.user = user
 		self.password = password
-		self.pipes = None
 
 		if self.query('select 1') == None:
 			self.disabled = True
-		else:
-			self.disabled = False
 			logger = logging.getLogger('GangliaMetrics')
 			logger.warning('Unable to run query, disabling MySQL statistics')
+		else:
+			self.disabled = False
+			lag = self.getLag()
+			if lag != None:
+				self.addLagMetric()
+
+	def addLagMetric(self):
+		self.metrics['mysql_slave_lag'] = Metric(
+			'mysql_slave_lag', 
+			{
+				'TITLE': 'MySQL slave lag',
+				'DESC': 'MySQL slave lag in seconds (may be zero if replication is broken)',
+				'GROUP': 'mysql'
+			},
+			's') 
 
 	def update(self):
-		if disabled:
+		if self.disabled:
 			return False
 
 		refTime = time.time()
 		status = self.showStatus()
-		if not status:
-			self.markDown()
-			return False
+		if status:
+			self.metrics['mysql_questions'].set(int(status['Questions']), refTime)
+			self.metrics['mysql_threads_connected'].set(int(status['Threads_connected']))
+			self.metrics['mysql_threads_running'].set(int(status['Threads_running']))
 
 		lag = self.getLag()
+		if lag != None:
+			if 'mysql_slave_lag' not in self.metrics:
+				self.addLagMetric()
+			self.metrics['mysql_slave_lag'].set(int(lag))
 
-		self.metrics['mysql_questions'].set(int(status['Questions']), refTime)
-		self.metrics['mysql_threads_connected'].set(int(status['Threads_connected']))
-		self.metrics['mysql_threads_running'].set(int(status['Threads_running']))
-		self.metrics['mysql_slave_lag'].set(float(lag)) # float = wishful thinking
 		return True
 
-	def escapeshellarg(self, s):
-		return s.replace( "\\", "\\\\").replace( "'", "'\\''")
-
 	def query(self, sql):
-		out = commands.getoutput("mysql -XB -u '%s' -p'%s' -e '%s'" % (
-			self.escapeshellarg(self.user), 
-			self.escapeshellarg(self.password),
-			self.escapeshellarg(sql)
-			))
+		global conf
+		proc = subprocess.Popen(
+			[
+				conf['mysqlclient'], '-XB', 
+				'--user=' + self.user,
+				'--password=' + self.password,
+				'-e', sql
+			],
+			stdout = subprocess.PIPE,
+			stderr = subprocess.PIPE )
+		(out, stderr) = proc.communicate()
+		if proc.returncode:
+			logger = logging.getLogger('GangliaMetrics')
+			logger.warning("SQL error: " + stderr.rstrip())
+			return None
+
 		try:
 			dom = parseString(out)
 		except:
 			logger = logging.getLogger('GangliaMetrics')
-			logger.warning("SQL error: Unable to parse XML result\n")
+			logger.warning("SQL error: Unable to parse XML result")
 			return None
 		return dom
 
@@ -64,35 +105,39 @@ class MySQLStats(MetricCollection):
 		self.metrics['mysql_threads_connected'].set(None)
 		self.metrics['mysql_threads_running'].set(None)
 		self.metrics['mysql_slave_lag'].set(None)
-		self.conn = None
 
 	def showStatus(self):
-		result = self.query("SHOW STATUS")
+		result = self.query("SHOW /*!50002 GLOBAL */ STATUS")
 		if not result:
 			return None
 
 		resultHash = {}
 		for row in result.documentElement.getElementsByTagName('row'):
-			name = row.getElementsByTagName('Variable_name')[0].childNodes[0].data
-			value = row.getElementsByTagName('Value')[0].childNodes[0].data
-			resultHash[name] = value
+			name = None
+			value = None
+			for field in row.childNodes:
+				if field.nodeName != 'field' or field.firstChild == None:
+					continue
+				if field.getAttribute('name') == 'Variable_name':
+					name = field.firstChild.data
+				elif field.getAttribute('name') == 'Value':
+					value = field.firstChild.data
+			if name != None and value != None:
+				resultHash[name] = value
 		return resultHash
 
 	def getLag(self):
-		result = self.query("SHOW PROCESSLIST")
+		result = self.query("SHOW SLAVE STATUS")
 		if not result:
 			return None
 
-		for row in result.documentElement.getElementsByTagName('row'):
-			user = row.getElementsByTagName('User')[0].childNodes[0].data
-			time = row.getElementsByTagName('Time')[0].childNodes[0].data
-			state = row.getElementsByTagName('State')[0].childNodes[0].data
-			if user == 'system user' and \
-				state != 'Waiting for master to send event' and \
-				state != 'Connecting to master' and \
-				state != 'Queueing master event to the relay log' and \
-				state != 'Waiting for master update' and \
-				state != 'Requesting binlog dump':
-					return time
+		fields = result.documentElement.getElementsByTagName('field')
+		if not fields.length:
+			return None
+
+		for field in fields:
+			if field.getAttribute('name') == 'Seconds_Behind_Master' and field.firstChild:
+				return field.firstChild.data
+
 		return None
-		
+
