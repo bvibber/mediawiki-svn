@@ -155,132 +155,152 @@ class Ssh2Filesystem extends Filesystem {
 	 * @see Filesystem::changeFileGroup
 	 */
 	public function changeFileGroup( $file, $group, $recursive = false ) {
-		if ( !$this->exists( $file ) ) {
-			return false;
-		}
-			
-		if ( !$recursive || !$this->isDir( $file ) ) {
-			return $this->runCommand( sprintf( 'chgrp %o %s', $mode, escapeshellarg( $file ) ) );
-		}
-			
-		return $this->runCommand( sprintf( 'chgrp -R %o %s', $mode, escapeshellarg( $file ) ) );		
+		// FIXME?		
+		return $this->runCommandRecursivly( 'chgrp', $file, $recursive );		
 	}
 
 	/**
 	 * @see Filesystem::chmod
 	 */
 	public function chmod( $file, $mode = false, $recursive = false ) {
-		if ( !$this->exists( $file ) ) {
-			return false;
-		}
-
-		if ( !$mode ) {
-			if ( $this->is_file($file) ) {
-				$mode = FS_CHMOD_FILE;
-			}
-			elseif ( $this->is_dir($file) ) {
-				$mode = FS_CHMOD_DIR;
-			}
-			else {
-				return false;
-			}
-		}		
-		
-		if ( !$recursive || !$this->isDir( $file ) ) {
-			return $this->runCommand( sprintf( 'chmod %o %s', $mode, escapeshellarg( $file ) ) );
-		}
-			
-		return $this->runCommand( sprintf( 'chmod -R %o %s', $mode, escapeshellarg( $file ) ) );		
+		return $this->runCommandRecursivly( 'chmod', $file, $recursive, $mode );
 	}
 
 	/**
 	 * @see Filesystem::chown
 	 */
 	public function chown( $file, $owner, $recursive = false ) {
-		if ( !$this->exists( $file ) ) {
-			return false;
-		}
-			
-		if ( ! $recursive || ! $this->is_dir($file) )
-			return $this->run_command(sprintf('chown %o %s', $mode, escapeshellarg($file)), true);
-		return $this->run_command(sprintf('chown -R %o %s', $mode, escapeshellarg($file)), true);		
+		return $this->runCommandRecursivly( 'chown', $file, $recursive, $mode );
 	}
 
 	/**
 	 * @see Filesystem::delete
 	 */
 	public function delete( $path, $recursive = false ) {
+		if ( $this->isFile( $path ) ) {
+			return ssh2_sftp_unlink( $this->sftp_link, $path );
+		}
+			
+		if ( !$recursive ) {
+			return ssh2_sftp_rmdir( $this->sftp_link, $path );
+		}
+			 
+		$filelist = $this->listDir( $path );
 		
+		if ( is_array( $filelist ) ) {
+			foreach ( $filelist as $filename => $fileinf ) {
+				$this->delete( $path . '/' . $filename, $recursive );
+			}
+		}
+		
+		return ssh2_sftp_rmdir( $this->sftpConnection, $path );		
 	}
 
 	/**
 	 * @see Filesystem::doCopy
 	 */
-	protected function doCopy( $from, $to ) {
+	protected function doCopy( $source, $destination ) {
+		$content = $this->get_contents( $source );
 		
+		if ( false === $content ) {
+			return false;
+		}
+			
+		return $this->writeToFile( $destination, $content );		
 	}
 
 	/**
 	 * @see Filesystem::doMove
 	 */
-	protected function doMove( $from, $to ) {
-		
+	protected function doMove( $source, $destination ) {
+		wfSuppressWarnings();
+		$ssh2_sftp_rename = ssh2_sftp_rename( $this->connection, $source, $destination );
+		wfRestoreWarnings();
+		return $ssh2_sftp_rename; 
 	}
 
 	/**
 	 * @see Filesystem::exists
 	 */
 	public function exists( $file ) {
-		
+		return file_exists( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );		
 	}
 
 	/**
 	 * @see Filesystem::getChmod
 	 */
 	public function getChmod( $file ) {
-		
+		wfSuppressWarnings();
+		$fileperms = fileperms( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' );
+		wfRestoreWarnings();
+		return substr( decoct( $fileperms ) ), 3 );
 	}
 
 	/**
 	 * @see Filesystem::getContents
 	 */
 	public function getContents() {
-		
-	}
-
-	/**
-	 * @see Filesystem::getCreationTime
-	 */
-	public function getCreationTime( $file ) {
-		
+		return file_get_contents( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
 	/**
 	 * @see Filesystem::getCurrentWorkingDir
 	 */
 	public function getCurrentWorkingDir() {
+		$cwd = $this->runCommand( 'pwd' );
 		
+		if ( $cwd ) {
+			$cwd = rtrim( $cwd, '/' ) . '/';
+		}
+			
+		return $cwd;		
 	}
 
 	/**
 	 * @see Filesystem::getGroup
 	 */
 	public function getGroup( $file ) {
+		wfSuppressWarnings();
+		$gid = filegroup( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
+		wfRestoreWarnings();
 		
+		if ( !$gid ) {
+			return false;
+		}
+			
+		if ( !function_exists( 'posix_getgrgid' ) ) {
+			return $gid;
+		}
+			
+		$groupArray = posix_getgrgid( $gid );
+		return $groupArray['name'];		
 	}
 
 	/**
 	 * @see Filesystem::getModificationTime
 	 */
 	public function getModificationTime( $file ) {
-		
+		return filemtime( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
 	/**
 	 * @see Filesystem::getOwner
 	 */
 	public function getOwner( $file ) {
+		wfSuppressWarnings();
+		$owneruid = filegroup( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
+		wfRestoreWarnings();
 		
+		if ( !$owneruid ) {
+			return false;
+		}
+			
+		if ( !function_exists( 'posix_getpwuid' ) ) {
+			return $owneruid;
+		}
+			
+		$ownerArray = posix_getpwuid( $owneruid );
+		return $ownerArray['name'];			
 	}
 
 	/**
@@ -345,6 +365,30 @@ class Ssh2Filesystem extends Filesystem {
 	public function writeToFile( $file, $contents ) {
 		
 	}	
+	
+	protected function  runCommandRecursivly( $command, $file, $recursive, $mode = false ) {
+		if ( !$this->exists( $file ) ) {
+			return false;
+		}
+		
+		if ( !$mode ) {
+			if ( $this->is_file($file) ) {
+				$mode = FS_CHMOD_FILE;
+			}
+			elseif ( $this->is_dir($file) ) {
+				$mode = FS_CHMOD_DIR;
+			}
+			else {
+				return false;
+			}
+		}			
+		
+		if ( !$recursive || !$this->isDir( $file ) ) {
+			return $this->runCommand( $command . sprintf( 'chmod %o %s', $mode, escapeshellarg( $file ) ) );
+		}
+			
+		return $this->runCommand( $command .sprintf( 'chmod -R %o %s', $mode, escapeshellarg( $file ) ) );		
+	}
 	
 	/**
 	 * Executes a command.
