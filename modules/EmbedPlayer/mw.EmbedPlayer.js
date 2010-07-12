@@ -3474,7 +3474,10 @@ mw.EmbedTypes = {
 		this.players.addPlayer( htmlPlayer );
 		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed	
-		var javaEnabled = navigator.javaEnabled();		
+		try{
+			var javaEnabled = navigator.javaEnabled();
+		} catch ( e ){
+		}
 		// Some browsers filter out duplicate mime types, hiding some plugins
 		var uniqueMimesOnly = $j.browser.opera || $j.browser.safari;
 		// Opera will switch off javaEnabled in preferences if java can't be found.

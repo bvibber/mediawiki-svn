@@ -229,11 +229,11 @@ mw.SmilAnimate.prototype = {
 			videoSeekTime += this.smil.parseTime( $j( smilElement ).attr( 'clipBegin') );  
 		}
 				
-		mw.log( "SmilAnimate::transformVideoForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + videoSeekTime );
+		//mw.log( "SmilAnimate::transformVideoForTime:" + assetId + " ct:" +vid.currentTime + ' should be: ' + videoSeekTime );
 		
 		// Register a buffer ready callback
 		this.smil.getBuffer().videoBufferSeek( smilElement, videoSeekTime, function() {			
-			mw.log( "transformVideoForTime:: seek complete ");
+			//mw.log( "transformVideoForTime:: seek complete ");
 		});
 	},
 	

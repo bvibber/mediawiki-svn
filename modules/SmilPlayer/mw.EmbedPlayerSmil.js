@@ -238,10 +238,10 @@ mw.EmbedPlayerSmil = {
 			if( !this.pausedForBuffer ){
 				// Update playtime if not pausedForBuffer				
 				this.smilPlayTime =  this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
-				mw.log(" update smilPlayTime: " + this.smilPauseTime + " getTime: " + new Date().getTime() + 
+				/*mw.log(" update smilPlayTime: " + this.smilPauseTime + " getTime: " + new Date().getTime() + 
 						' - clockStartTime: ' + this.clockStartTime + ' = ' + 
 						( ( new Date().getTime() - this.clockStartTime ) / 1000 )  + 
-						" \n time:" + this.smilPlayTime );
+						" \n time:" + this.smilPlayTime );*/
 			}
 			
 			// Done with sync delay: 
