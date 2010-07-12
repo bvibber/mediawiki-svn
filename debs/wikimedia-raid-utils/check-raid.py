@@ -1,8 +1,42 @@
 #!/usr/bin/python
 
-import sys, os, re, subprocess
+import sys, os, os.path, re, subprocess
 
 def main():
+	osName = os.uname()[0]
+	if osName == 'SunOS':
+		utility = 'zpool'
+	elif osName == 'Linux':
+		utility = getLinuxUtility()
+	else:
+		print 'WARNING: Operating system "%s" is not supported by this check script' % (osName)
+		sys.exit(1)
+
+	try:
+		if utility == None:
+			print 'OK: no RAID installed'
+			status = 0
+		elif utility == 'arcconf':
+			status = checkAdaptec()
+		elif utility == 'tw_cli':
+			status = check3ware()
+		elif utility == 'MegaCli':
+			status = checkMegaSas()
+		elif utility == 'zpool':
+			status = checkZfs()
+		elif utility == 'mdadm':
+			status = checkSoftwareRaid()
+		else:
+			print 'WARNING: %s is not yet supported by this check script' % (utility)
+			status = 1
+	except:
+		error = sys.exc_info()[1]
+		print 'WARNING: check-raid.py encountered exception: ' + str(error)
+		status = 1
+	
+	sys.exit(status)
+
+def getLinuxUtility():
 	f = open("/proc/devices", "r")
 	regex = re.compile('^\s*\d+\s+(\w+)')
 	utility = None
@@ -23,28 +57,38 @@ def main():
 			break
 		elif name == 'megaraid_sas_ioctl':
 			utility = 'MegaCli'
-
+			break
+	
 	f.close()
+	if utility != None:
+		return utility
+
+	# Try mdadm
+	devices = getSoftwareRaidDevices()
+	if len(devices):
+		return 'mdadm'
+
+	return None
+
+def getSoftwareRaidDevices():
+	if not os.path.exists('/sbin/mdadm'):
+		return []
 
 	try:
-		if utility == None:
-			print 'OK: no RAID installed'
-			status = 0
-		elif utility == 'arcconf':
-			status = checkAdaptec()
-		elif utility == 'tw_cli':
-			status = check3ware()
-		elif utility == 'MegaCli':
-			status = checkMegaSas()
-		else:
-			print 'WARNING: %s is not yet supported by this check script' % (utility)
-			status = 1
+		proc = subprocess.Popen(['/sbin/mdadm', '--detail', '--scan'], 
+				stdout=subprocess.PIPE)
 	except:
-		error = sys.exc_info()[1]
-		print 'WARNING: check-raid.py encountered exception: ' + str(error)
-		status = 1
-	
-	sys.exit(status)
+		return []
+
+	regex = re.compile('^ARRAY\s+([^ ]*) ')
+	devices = []
+	for line in proc.stdout:
+		m = regex.match(line)
+		if m != None:
+			devices.append(m.group(1))
+	proc.wait()
+
+	return devices
 
 def checkAdaptec():
 	# Need to change directory so that the log file goes to the right place
@@ -194,5 +238,97 @@ def checkMegaSas():
 
 	print 'OK: State is %s, checked %d logical device(s)' % (state, numDrives)
 	return 0
+
+def checkZfs():
+	try:
+		proc = subprocess.Popen(['/sbin/zpool', 'list', '-Honame,health'],
+				stdout=subprocess.PIPE)
+	except:
+		error = sys.exc_info()[1]
+		print 'WARNING: error executing zpool: %s' % str(error)
+		return 1
+
+	regex = re.compile('^(\S+)\s+(\S+)')
+	status = 0
+	msg = ''
+	for line in proc.stdout:
+		m = regex.match(line)
+		if m != None:
+			name = m.group(1)
+			health = m.group(2)
+			if health != 'ONLINE':
+				status = 2
+
+			if msg != '':
+				msg += ', '
+			msg += name + ': ' + health
+
+	ret = proc.wait()
+	if ret != 0:
+		print 'WARNING: zpool returned exit status %d' % (ret)
+		return 1
+	
+	if status:
+		print 'CRITICAL: ' + msg
+	else:
+		print 'OK: ' + msg
+	return status
+
+def checkSoftwareRaid():
+	devices = getSoftwareRaidDevices()
+	if len(devices) == 0:
+		print 'WARNING: Unexpectedly checked no devices'
+		return 1
+
+	args = ['/sbin/mdadm', '--detail']
+	args.extend(devices)
+	try:
+		proc = subprocess.Popen(args, stdout = subprocess.PIPE)
+	except:
+		error = sys.exc_info()[1]
+		print 'WARNING: error executing mdadm: %s' % str(error)
+		return 1
+
+	deviceRegex = re.compile('^(/[^ ]*):$')
+	statRegex = re.compile('^ *(Active|Working|Failed|Spare) Devices *: *(\d+)')
+	currentDevice = None
+	stats = {
+		'Active': 0,
+		'Working': 0,
+		'Failed': 0,
+		'Spare': 0
+	}
+	for line in proc.stdout:
+		m = deviceRegex.match(line)
+		if m == None:
+			if currentDevice == None:
+				continue
+		else:
+			currentDevice = m.group(1)
+			continue
+		
+		m = statRegex.match(line)
+		if m == None:
+			continue
+
+		stats[m.group(1)] += int(m.group(2))
+
+	ret = proc.wait()
+	if ret != 0:
+		print 'WARNING: mdadm returned exit status %d' % (ret)
+		return 1
+
+	msg = ''
+	for name in ('Active', 'Working', 'Failed', 'Spare'):
+		if msg != '':
+			msg += ', '
+		msg += name + ': ' + str(stats[name])
+	
+	if stats['Failed'] > 0:
+		print 'CRITICAL: ' + msg
+		return 2
+	else:
+		print 'OK: ' + msg
+		return 0
 
 main()
