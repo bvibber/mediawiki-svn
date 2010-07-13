@@ -318,10 +318,14 @@ $messages['ca'] = array(
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
+ * @author Marmzok
  */
 $messages['ckb-arab'] = array(
 	'ct-start-date' => 'ڕێکەوتی دەستپێکردن (YYYYMMDD)',
 	'ct-end-date' => 'ڕێکەوتی دوایی‌ھاتن (YYYYMMDD)',
+	'ct-beginner' => 'دەستپێکەر',
+	'ct-intermediate' => 'نێوەندی',
+	'ct-expert' => 'شارەزا',
 	'ct-and' => 'و',
 	'ct-update-table' => 'نوێکردنەوەی خشتە',
 );

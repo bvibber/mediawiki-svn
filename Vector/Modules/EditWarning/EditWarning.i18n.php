@@ -19,9 +19,10 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 
 /** Message documentation (Message documentation)
  * @author Raymond
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'vector-editwarning-warning' => "Do '''not''' use <nowiki>{{int:prefs-editing}}</nowiki> for \"Editing\". It is forbidden in this message, see [[mwr:68405]].",
+	'vector-editwarning-warning' => "{{doc-important|Do ''not'' use <nowiki>{{int:prefs-editing}}</nowiki> for \"Editing\". It is forbidden in this message, see [[mwr:68405]].}}",
 );
 
 /** Afrikaans (Afrikaans)
