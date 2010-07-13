@@ -192,6 +192,19 @@ $messages['nl'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo heeft een ongeldige breedteparameter "$1" ontvangen.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'embedvideo-desc' => 'Legger til en tolkefunksjon for å bygge inn videoer fra populære kilder',
+	'embedvideo-missing-params' => 'EmbedVideo mangler en nødvendig parameter.',
+	'embedvideo-bad-params' => 'EmbedVideo mottok en dårlig parameter.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo mottok den utolkbare parameterstrengen «<code>$1</code>».',
+	'embedvideo-unrecognized-service' => 'EmbedVideo kjenner ikke igjen videotjenesten «<code>$1</code>».',
+	'embedvideo-bad-id' => 'EmbedVideo mottok en dårlig id «$1» for tjenesten «$2».',
+	'embedvideo-illegal-width' => 'EmbedVideo mottok den ulovlige breddeparameteren «$1».',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

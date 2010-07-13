@@ -407,6 +407,7 @@ $messages['lb'] = array(
 	'purewikideletion-pref-watchunblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'blank-log' => 'eidel maachen',
 	'blank-log-name' => 'Logbuch vun de Säiten déi eidel gemaach goufen',
+	'blank-log-header' => "Hei ass d'Lëscht vun de Säiten déi eidelgemaach goufen respektiv wou eidel Säiten nees zréck gesat goufen.",
 	'blank-log-entry-blank' => 'huet $1 eidegemaacht',
 	'blank-log-entry-unblank' => "huet d'eidelmaache vu(n) $1 réckgängeg gemaach",
 	'blank-log-link' => '[[{{#Special:Log}}/blank|Logbuch vun den eidelgmaachte Säiten]]',

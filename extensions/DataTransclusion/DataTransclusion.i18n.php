@@ -286,11 +286,13 @@ Un prime parametro "template" es obligatori.',
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author EdoDodo
  */
 $messages['it'] = array(
 	'datatransclusion-unknown-source' => "Origine dati incorreta specificata.
 ''$1'' non è noto.",
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non esiste.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -374,6 +376,13 @@ Argumenty pierwszy lub „szablon“ są wymagane.',
 	'datatransclusion-record-not-found' => 'Brak rekordów pasujących $2 = $3 w danych ze źródła $1.',
 	'datatransclusion-bad-template-name' => 'Zła nazwa szablonu – $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> nie istnieje.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'datatransclusion-desc' => 'Amportassion e presentassion ëd record ëd dat da sorziss esterne ëd dat',
 );
 
 /** Portuguese (Português)

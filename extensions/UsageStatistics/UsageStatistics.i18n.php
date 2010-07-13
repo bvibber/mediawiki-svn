@@ -41,6 +41,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Lejonel
@@ -55,6 +56,7 @@ $messages['qqq'] = array(
 	'usagestatisticstype' => '{{Identical|Type}}',
 	'usagestatisticsstart' => '{{Identical|Start date}}',
 	'usagestatisticsend' => '{{Identical|End date}}',
+	'usagestatisticsintervalday' => '{{Identical|Day}}',
 	'usagestatisticsintervalmonth' => '{{Identical|Month}}',
 	'usagestatisticsincremental' => 'This message is used on [[Special:SpecialUserStats]] in a dropdown menu to choose to generate incremental statistics.
 

@@ -102,6 +102,13 @@ $messages['cs'] = array(
 	'oai-desc' => 'Poskytuje rozhraní k [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] úložišti',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'oairepository' => 'Storfa OAI',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

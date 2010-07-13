@@ -1220,6 +1220,7 @@ Hiej veur waere de relevante functies van de MediaWiki-parser gebroek.",
 	'expand_templates_xml_output' => 'XML-oetveur',
 	'expand_templates_ok' => 'ok',
 	'expand_templates_remove_comments' => 'Wis opmerkinge',
+	'expand_templates_remove_nowiki' => "Óngerdrök <nowiki>-tags in 't resultaat",
 	'expand_templates_generate_xml' => 'XML-parserboum bekieke',
 	'expand_templates_preview' => 'Veurvertoeaning',
 );

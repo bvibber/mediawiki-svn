@@ -604,6 +604,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'prefswitch' => 'Cheñch dibaboù an intrudu implijadusted',
 	'prefswitch-desc' => "Talvezout a ra d'an implijerien da cheñch an holl benndibaboù",
+	'prefswitch-jswarning' => "Da-heul ar c'hemm neuz, ho [[User:$1/$2.js|JavaScript $2]] a rank bezañ kopiet davet [[User:$1/vector.js]] pe [[User:$1/common.js]] evit gellout kenderc'hel da vont en-dro.",
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nann',
 	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
@@ -794,12 +795,16 @@ $messages['ckb-arab'] = array(
 	'prefswitch-success-feedback' => 'پەیامەکەت ناردرا.',
 	'prefswitch-main-logged-changes' => "* ئێستا '''تابی {{int:watch}}''' ئەستێرەیەکە.
 * ئێستا '''تابی {{int:move}}''' بۆخوارەکراوەیەکە لەپاڵ شریتی گەڕان.",
+	'prefswitch-main-feedback' => '===پێڕاگەیاندنەوە؟===
+ئێمە پێمان خۆشە لێتان ببیستین. تکایە سەردانی [[$1|پەڕەی پێڕاگەیاندن]] بکەن، یا ئەگەر ئامانجەکانمان بۆ باشترکردنی نەرمامێر سەرنجتانی ڕاکێشاوە، بۆ زانیاری زیاتر سەردانی [http://usability.wikimedia.org تواناکانی ویکی] بکەن.',
 	'prefswitch-main-anon' => '===بمگەڕێنەوە===
 [$1 بۆ لەکارخستنی تایبەتمەندییەنوێکان کردتە بکە سەر ئێرە]. بۆ ئەوە داواتان لێدەکرێ بڕۆنە ژوورەوە یان لەپێشدا ھەژمارێک درووست بکەن.',
 	'prefswitch-main-on' => '===بمگەڕێنەوە!===
 [$2 بۆ لەکارخستنی تایبەتمەندییەنوێکان کردتە بکە سەر ئێرە].',
 	'prefswitch-main-off' => '===تاقیکردنەوەیان!===
 [$1 بۆ خستنەکاری تایبەتمەندییەنوێکان کردتە بکە سەر ئێرە].',
+	'prefswitch-survey-intro-feedback' => 'پێمان خۆشە لە ئێوە ببیسین.<br />
+تکایە پێش کرتە کردنە سەر "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"، ئەو ھەڵسەنگاندنە دڵخوازانەی خوارەوە پڕکەنەوە.',
 );
 
 /** Czech (Česky)

@@ -115,6 +115,7 @@ $messages['qqq'] = array(
 	'contribstats-desc' => '{{desc}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
+	'contribstats-day' => '{{Identical|Day}}',
 	'contribstats-currency' => '{{Identical|Currency}}',
 	'contribstats-day-totals' => 'The day for which the contribution statistics are being displayed.',
 	'contribstats-conversion' => 'Click conversion rate, see [[:wikipedia:Conversion rate|Wikipedia article]].',
@@ -2894,7 +2895,7 @@ $messages['li'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Totaal veur deze maondj|Maondjelikse totale veur de aafgeloupe $1 maondje}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Totaal veur $1 maondj|Maondjelikse totale veur $1 maondje}}',
 	'contribstats-currency-range-totals' => 'Totale möntjeinhijjer (ven $1 toet $2)',
-	'contribstats-contribution-range-breakdown' => 'Details ven gifte (ven $1 toet $1)',
+	'contribstats-contribution-range-breakdown' => 'Details ven gifte (ven $1 toet $2)',
 	'contribstats-currency-totals' => "Totale möntjeinhijjer veur 't fiskaal jaor ven $1",
 	'contribstats-contribution-breakdown' => "Details ven donaasjes veur 't fiskaal jaor $1",
 	'contribstats-day' => 'Daag',

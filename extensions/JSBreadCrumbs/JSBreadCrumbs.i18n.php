@@ -44,6 +44,10 @@ $messages['be-tarask'] = array(
 	'jsbreadcrumbs-desc' => 'Дадае навігацыйны шлях («хлебныя крошкі») пад панэль закладак',
 	'jsbreadcrumbs-leading-description' => 'Навігацыйны шлях',
 	'prefs-jsbreadcrumbs' => 'Навігацыйны шлях',
+	'prefs-jsbreadcrumbs-showsite' => 'Далучаць назву сайта ў навігацыйны шлях (карысна пад час выкарыстаньня некалькіх вікі)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Паказваць навігацыйны шлях',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Даўжыня навігацыйнага шляху',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Ня болей 20 пунктаў',
 );
 
 /** Breton (Brezhoneg)
@@ -236,5 +240,10 @@ $messages['pt-br'] = array(
 $messages['ru'] = array(
 	'jsbreadcrumbs-desc' => 'Добавляет навигационный путь по сайту («хлебные крошки») под панель вкладок',
 	'jsbreadcrumbs-leading-description' => 'Навигационный путь',
+	'prefs-jsbreadcrumbs' => 'Хлебные крошки',
+	'prefs-jsbreadcrumbs-showsite' => 'Включать название сайта в «хлебные крошки» (полезно при использовании нескольких вики)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Показывать «хлебные крошки»',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Число «хлебных крошек»',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Не более 20 «хлебных крошек»',
 );
 

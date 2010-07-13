@@ -1172,6 +1172,7 @@ $messages['ps'] = array(
 	'gep-addcategorybutton' => 'ورګډول',
 	'gep-suggestcategorybutton' => 'سپارل',
 	'gep-sections' => 'برخې',
+	'gep-addsection' => 'يوه برخه ورګډول',
 	'gep-addsectionbutton' => 'ورګډول',
 );
 

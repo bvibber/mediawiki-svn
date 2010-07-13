@@ -183,6 +183,18 @@ $messages['id'] = array(
 	'prefs-category' => 'Kategori',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'categorymultisort-desc' => 'Permette di visualizzare il contenuto delle categorie con diversi criteri di ordinamento',
+	'categorymultisort-defaultsortkey-name' => 'Predefinito',
+	'categorymultisort-sortkey' => 'Criterio di ordinamento:',
+	'categorymultisort-go' => 'Vai',
+	'categorymultisort-default-sortkey' => 'Criterio di ordinamento predefinito:',
+	'prefs-category' => 'Categoria',
+);
+
 /** Japanese (日本語)
  * @author Iwai.masaharu
  */

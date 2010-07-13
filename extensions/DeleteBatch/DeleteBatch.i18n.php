@@ -1141,6 +1141,7 @@ J'archivi carià a dovrìo conten-e ël nòm dla pàgina e na rason opsional, se
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'deletebatch-caption' => 'د مخ لړليک:',
 	'deletebatch-or' => '<b>يا</b>',
 	'deletebatch-delete' => 'ړنګول',
 	'deletebatch-select-yourself' => 'تاسې',

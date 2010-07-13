@@ -203,6 +203,13 @@ $wgGoogleMapsMessages['niu'] = array(
 	'gm-search' => 'Kumi',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$wgGoogleMapsMessages['bjn'] = array(
+	'gm-back' => 'mantuk',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

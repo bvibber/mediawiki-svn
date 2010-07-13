@@ -36,6 +36,13 @@ $messages['qqq'] = array(
 	'imagemap_desc' => 'Short description of the Imagemap extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Alamnirvana
+ */
+$messages['bjn'] = array(
+	'imagemap_invalid_coord' => 'Buntat: koordinat kada sah pada baris ka $1, musti barupa angka',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  * @author SPQRobin

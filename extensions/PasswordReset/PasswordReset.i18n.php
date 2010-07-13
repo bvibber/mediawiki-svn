@@ -989,11 +989,12 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
  * @author Pahles
  */
 $messages['li'] = array(
 	'passwordreset' => 'Wachwaord obbenuuts insjtèlle',
-	'passwordreset-desc' => "Duid 'n [[Speciaal:PasswordReset|speciaal pagina]] bie om wachwaorde van gebroekers obbenuuts in te sjtèlle - hieveur is 't rech 'passwordreset' nudig",
+	'passwordreset-desc' => "Voog 'n [[Special:PasswordReset|speciaal pagina]] toe om wachwäörd van gebroekers opnuuj in te stelle - hieveur is 't rech 'passwordreset' neudig",
 	'passwordreset-invalidusername' => 'Verkierde gebroeker',
 	'passwordreset-emptyusername' => 'Gebroeker neet ingegeve',
 	'passwordreset-nopassmatch' => 'De wachwäörd kómme neet euverein',
@@ -1009,7 +1010,7 @@ $messages['li'] = array(
 	'passwordreset-accountdisabled' => 'Gebroeker is gedeaktiveerd',
 	'disabledusers' => 'Gedeaktiveerde gebroekers',
 	'disabledusers-summary' => "Dit is 'n lies van gebroekers die gedeaktiveerd zien via PasswordReset",
-	'right-passwordreset' => "Wachwaord van 'ne gebroeker obbenuuts insjtèlle ([[Speciaal:PasswordReset|speciaal pagina]])",
+	'right-passwordreset' => "Wachwaord van 'ne gebroeker obbenuuts insjtèlle ([[Special:PasswordReset|speciaal pagina]])",
 );
 
 /** Eastern Mari (Олык Марий)

@@ -296,10 +296,11 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'categorystepper-desc' => 'Visualizza una casella stepper per le categorie che permette di navigare avanti e indietro in ordine alfabetico attraverso una o più categorie di una pagina',
+	'categorystepper-desc' => "Visualizza una casella ''stepper'' per le categorie che permette di navigare avanti e indietro in ordine alfabetico attraverso una o più categorie di una pagina",
 	'categorystepper-end' => '(Fine della categoria)',
 	'categorystepper-start' => '(Inizio della categoria)',
 );

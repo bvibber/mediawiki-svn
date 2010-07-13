@@ -288,7 +288,7 @@ $messages['cy'] = array(
 	'watchers_header' => '{{PLURAL:$2|Defnyddwyr|Defnyddiwr|Defnyddwyr|Defnyddwyr|Defnyddwyr|Defnyddwyr}} sy\'n dilyn hynt "[[:$1]]"',
 	'watchers_noone_watches' => 'Nid oes neb yn dilyn hynt y dudalen [[:$1]].',
 	'watchers_x_or_more' => "Mae'r dudalen [[:$2]] ar restr wylio o leiaf $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
-	'watchers_less_than_x' => "Mae'r dudalen hon ar restr gwylio llai na(g) $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
+	'watchers_less_than_x' => "Mae'r dudalen hon ar restr wylio llai na(g) $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
 	'watchers-num' => "{{PLURAL:$1|Nid oes gan neb o'r defnyddwyr|Mae gan un defnyddiwr|Mae gan $1 ddefnyddiwr|Mae gan $1 defnyddiwr|Mae gan $1 defnyddiwr|Mae gan $1 o ddefnyddwyr}} y dudalen [[:$2]] ar {{PLURAL:$1|eu rhestri gwylio|ei restr wylio|eu rhestri gwylio|eu rhestri gwylio|eu rhestri gwylio|eu rhestri gwylio}}.",
 	'right-watchers-list' => "[[Special:Watchers|Rhestru defnyddwyr sy'n dilyn hynt tudalen benodol]]",
 );

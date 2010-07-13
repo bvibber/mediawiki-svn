@@ -513,6 +513,15 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'mwe-loading_txt' => 'A caria ...',
+	'mwe-error_load_lib' => 'Eror: JavaScript $1 as peul pa trovesse o a definiss pa $2',
+	'mwe-apiproxy-setup' => 'Amposté proxy API',
+	'mwe-load-drag-item' => 'carié element copià',
+	'mwe-ok' => 'Va bin',
+	'mwe-cancel' => 'Scancela',
+	'mwe-enable-gadget' => 'Abìlita la beta multimedia (mwEmbed) për tute le pàgine',
+	'mwe-enable-gadget-done' => "Ël gadget beta multimedia a l'é stàit abilità",
+	'mwe-must-login-gadget' => 'Për abilité ël gadget it deuve <a target="_new" href="$1">intré</a>',
+	'mwe-test-plural' => "I l'heu fàit {{PLURAL:$1|$1 test|$1 test}}",
 );
 
 /** Pashto (پښتو)

@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'addmediawizard-desc' => 'Wizard vir byvoeg van media, ontwikkel in samewerking met Kaltura en die Wikimedia-stigting',
 );
 
+/** Arabic (العربية)
+ * @author Moemin05
+ */
+$messages['ar'] = array(
+	'addmediawizard-desc' => 'معالج إضافة الوسائط، طَوَّرَاه بالشراكة كالتورا و مؤسّسة ويكيميديا',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

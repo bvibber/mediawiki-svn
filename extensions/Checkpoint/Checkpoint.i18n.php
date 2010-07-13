@@ -22,6 +22,15 @@ $messages['qqq'] = array(
 	'checkpoint-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author Moemin05
+ */
+$messages['ar'] = array(
+	'checkpoint' => 'احفظ واستمرّ في التحرير',
+	'checkpoint-desc' => 'يُتيح حفظ المراجعة والإستمرار في التحرير',
+	'checkpoint-tooltip' => 'إحفظ هذه المرحلة واستمرّ في تحرير الصفحة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -157,6 +166,16 @@ $messages['ia'] = array(
 	'checkpoint-desc' => 'Permitte salveguardar un modification e continuar a modificar',
 	'checkpoint-tooltip' => 'Salveguardar tu progresso e continuar a modificar le pagina',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|salveguardar puncto de controlo]])',
+);
+
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'checkpoint' => 'Salva e continua a modificare',
+	'checkpoint-desc' => 'Permette di salvare una modifica e di continuare ad apportare modifiche',
+	'checkpoint-tooltip' => 'Salva i tuoi cambiamenti e continua con la modifica della pagina',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|checkpoint]])',
 );
 
 /** Japanese (日本語)

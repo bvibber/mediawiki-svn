@@ -469,6 +469,7 @@ $messages['ps'] = array(
 	'lastuserlogin_userid' => 'کارن-نوم',
 	'lastuserlogin_username' => 'اصلي نوم',
 	'lastuserlogin_useremail' => 'د کارن برېښليک',
+	'lastuserlogin_daysago' => 'ورځې دمخه',
 );
 
 /** Portuguese (Português)

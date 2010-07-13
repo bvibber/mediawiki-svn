@@ -1482,6 +1482,19 @@ $messages['pt-br'] = array(
 	'wah-menu-pref' => 'Preferências',
 	'wah-lookingforjob' => 'Procurando uma tarefa ...',
 	'wah-start-on-visit' => 'Iniciar o Wiki@Home sempre que eu visitar este site.',
+	'wah-jobs-while-away' => 'Executar tarefas só quando eu me ausentar do navegador por mais de 20 minutos.',
+	'wah-nojobfound' => 'Não foram encontradas tarefas. Nova tentativa em $1.',
+	'wah-notoken-login' => 'Está autenticado? Se não, por favor, entre e autentique-se.',
+	'wah-apioff' => 'A API do Wiki@Home parece estar desligada. Por favor, contate o administrador da wiki.',
+	'wah-doing-job' => 'Tarefa: <i>$1</i> em: <i>$2</i>',
+	'wah-downloading' => 'Descarregamento do arquivo <i>$1%</i> terminado',
+	'wah-encoding' => 'Codificação do arquivo <i>$1%</i> terminada',
+	'wah-encoding-fail' => 'A codificação falhou. Por favor, recarregue esta página ou tente novamente mais tarde.',
+	'wah-uploading' => 'Carregamento do arquivo <i>$1</i> terminado',
+	'wah-uploadfail' => 'O carregamento do arquivo falhou',
+	'wah-doneuploading' => 'Carregamento completado. Obrigado pela sua contribuição.',
+	'wah-needs-firefogg' => 'Para participar no Wiki@Home você precisa instalar o <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Ocorreu um erro na API. Por favor, tente novamente mais tarde.',
 );
 
 /** Romanian (Română)

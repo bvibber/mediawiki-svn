@@ -1066,6 +1066,7 @@ $messages['ps'] = array(
 	'adminlinks' => 'د پازوال تړنې',
 	'adminlinks_documentation' => '$1 لاسوند',
 	'adminlinks_general' => 'ټولګړی',
+	'adminlinks_editsidebar' => 'څنګپټه سمول',
 	'adminlinks_editcss' => 'د CSS دوتنه سمول',
 	'adminlinks_editmainpagename' => 'د اصلي مخ نوم سمول',
 	'adminlinks_users' => 'کارنان',

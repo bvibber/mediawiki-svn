@@ -4870,12 +4870,17 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  */
 $messages['ps'] = array(
 	'deletequeue-delnom-otherreason' => 'بل سبب',
+	'deletequeue-review-delete' => 'دا مخ ړنګول.',
 	'deletequeue-review-newreason' => 'نوی سبب:',
 	'deletequeue-vote-reason' => 'تبصرې:',
 	'deletequeue-vote-submit' => 'سپارل',
+	'deletequeue-list-search-legend' => 'د مخونو پلټنه',
 	'deletequeue-list-status' => 'دريځ:',
+	'deletequeue-list-search' => 'پلټل',
+	'deletequeue-list-anyqueue' => '(هر يو)',
 	'deletequeue-list-header-page' => 'مخ',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
+	'deletequeue-list-header-discusspage' => 'د خبرو اترو مخ',
 	'deletequeue-list-header-reason' => 'د ړنګولو سبب',
 	'deletequeue-case-page' => 'مخ:',
 	'deletequeue-case-reason' => 'سبب:',

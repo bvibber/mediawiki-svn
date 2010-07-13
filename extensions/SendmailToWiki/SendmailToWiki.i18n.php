@@ -113,6 +113,13 @@ $messages['ca'] = array(
 	'sendmailtowiki-inpin' => 'PIN:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

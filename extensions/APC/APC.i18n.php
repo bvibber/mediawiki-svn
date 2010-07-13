@@ -3679,6 +3679,13 @@ $messages['lt'] = array(
 	'viewapc-php-version' => 'PHP versija',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'viewapc-ls-submit' => 'Aiziet!',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

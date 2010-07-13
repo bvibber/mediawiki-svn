@@ -1209,6 +1209,7 @@ $messages['ps'] = array(
 	'imstatus_default' => 'تلواليز',
 	'imstatus_example' => 'بېلګه',
 	'imstatus_or' => 'يا',
+	'imstatus_your_name' => 'ستاسې $1 نوم',
 );
 
 /** Portuguese (Português)

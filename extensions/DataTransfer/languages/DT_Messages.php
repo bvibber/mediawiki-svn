@@ -1004,6 +1004,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
@@ -1023,6 +1024,7 @@ $messages['it'] = array(
 	'dt_xml_title' => 'Titolo',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Testo libero',
+	'dt_import_encodingtype' => 'Tipo di codifica',
 	'right-datatransferimport' => 'Importa dati',
 );
 

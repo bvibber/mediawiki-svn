@@ -976,7 +976,11 @@ $messages['ckb-arab'] = array(
 	'optin-title-justoptedin' => 'بەخێرهاتی بۆ بێتا',
 	'optin-title-justoptedout' => 'سوپاس بۆ تاقی‌کردنەوەی بێتا',
 	'optin-title-feedback' => 'پێڕاگەیاندنەوەی بێتا',
+	'optin-feedback-intro' => 'سپاستان دەکەین بۆ تاقیکردنەوەی بێتا. <br />
+پێمان خۆشە بزانین ئێوە سەبارەت بەم ڕواڵەتە نوێیە چی بیردەکەنەوە، بۆیە سوپاستان دەکەین دیسان ئەگەر ئەو ھەڵسەنگاندنە دڵخوازانەی خوارەوە پڕکەنەوە.',
 	'optin-leave-cancel' => 'گەر دەتەوێ لە کەڵک وەرگرتنی بێتا بەردەوام بی، دەتوانی بگەرێیتەوە بۆ $1.',
+	'optin-success-out' => 'بە سەرکەوتوویی بێتات بەجێ ھێشت.<br />
+ھەرکاتێ کە بتەوێ دەتوانی بە کرتەکردنە سەر بەستەری "{{int:optin-try}}" لە سەرەوەی پەڕەکەدا، دیسان تاقی بکەیتەوە.',
 	'optin-success-feedback' => 'سوپاس بۆ پێڕاگەیاندنەوەت!',
 	'optin-accept-short' => 'با ئەنجامی دەین!',
 	'optin-accept-long' => 'تاقیکردنەوەی بێتا',
@@ -989,7 +993,13 @@ $messages['ckb-arab'] = array(
 	'optin-survey-question-likedislike' => 'کاتی بەکارهێنان سەبارەت بە بێتا چیت بەدڵ بوو؟ چیت بە دڵ نەبوو؟',
 	'optin-survey-answer-whyoptout-hard' => 'کەڵک وەرگرتنی زۆر زەحمەت بوو.',
 	'optin-survey-answer-whyoptout-didntwork' => 'بە باشی کاری نەکرد.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'ڕواڵەتەکەی بە دڵم نەبوو.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'تاب و نەخشە نوێکانم بەدڵ نەبوو.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'شریتامرازە نوێکە بەدڵم نەبوو.',
 	'optin-survey-answer-whyoptout-other' => 'هۆکاری دیکە:',
+	'optin-survey-question-usedtoolbar' => 'ئایا ئەو شریتامرازە نوێیەت بۆ دەستکاری پەڕەیەک بەکارھێناوە؟',
+	'optin-survey-question-usedtoolbar-ifyes' => 'ئەگەر بەڵێ، سەبارەت بەوە چیت بە دڵ بوو؟ چیت بە دڵ نەبوو؟',
+	'optin-survey-question-usedtoolbar-ifno' => 'ئەگەر نەخێر، بۆ نەخێر؟ ئەیا لە داھاتوودا بەکاری دێنیت؟ تکایە شی بکەوە.',
 	'optin-survey-question-browser' => 'کام گەڕۆک بەکار دەهێنی؟',
 	'optin-survey-answer-browser-other' => 'گەڕۆکی دیکە:',
 	'optin-survey-question-os' => 'کام سیستەمی کارپێکردن بەکاردێنی؟',
@@ -4263,6 +4273,7 @@ $messages['myv'] = array(
  * @author محک
  */
 $messages['mzn'] = array(
+	'optin-title-optedout' => 'بتا جه کار بکش',
 	'optin-title-justoptedin' => 'بتا دله خِش بمویی',
 	'optin-survey-yes' => 'اره',
 	'optin-survey-no' => 'نا',

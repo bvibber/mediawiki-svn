@@ -643,6 +643,22 @@ $messages['cs'] = array(
 	'ogg-oggThumb-failed' => 'oggThumb nedokázal vytvořit náhled.',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'ogg-long-error' => '(Ffeil OGG annilys: $1)',
+	'ogg-play' => 'Chwarae',
+	'ogg-pause' => 'Oedi',
+	'ogg-stop' => 'Aros',
+	'ogg-play-sound' => 'Gwrando',
+	'ogg-player-thumbnail' => 'Llun llonydd yn unig',
+	'ogg-more' => 'Mwy...',
+	'ogg-dismiss' => 'Cau',
+	'ogg-download' => 'Islwytho ffeil',
+	'ogg-desc-link' => "Ynglŷn â'r ffeil hon",
+);
+
 /** Danish (Dansk)
  * @author Byrial
  * @author Jon Harald Søby
@@ -2012,6 +2028,8 @@ $messages['li'] = array(
 	'ogg-dismiss' => 'Sloet',
 	'ogg-download' => 'Bestandj downloade',
 	'ogg-desc-link' => 'Euver dit bestandj',
+	'ogg-oggThumb-version' => 'OggHandler vereis oggThumb versie $1 of hoeger.',
+	'ogg-oggThumb-failed' => 'oggThumb kós geine thumbnail make.',
 );
 
 /** Lithuanian (Lietuvių)

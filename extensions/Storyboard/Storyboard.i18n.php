@@ -1410,6 +1410,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'storyboard-published' => 'خپاره شوي',
 	'storyboard-hidden' => 'پټ',
 	'storyboard-publish' => 'خپرول',
 	'storyboard-hide' => 'پټول',

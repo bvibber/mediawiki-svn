@@ -554,6 +554,14 @@ $messages['pms'] = array(
 	'wikieditor-toc-hide' => 'Stërma contnù',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-toc-show' => 'مېنځپانګه ښکاره کول',
+	'wikieditor-toc-hide' => 'مېنځپانګه پټول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Indech

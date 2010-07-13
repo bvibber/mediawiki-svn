@@ -2160,6 +2160,8 @@ $wgCustomToolbarMessages['pnb'] = array(
  */
 $wgCustomToolbarMessages['ps'] = array(
 	'ct_internal_sample' => 'دمخ-نوم',
+	'ct_internal_caption' => 'کورنۍ تړنه',
+	'ct_external_caption' => 'باندنۍ تړنه',
 	'ct_image_caption' => 'انځور ورګډول',
 	'ct_math_caption' => 'فورمول',
 	'ct_submit' => 'ورځه!',

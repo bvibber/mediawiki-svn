@@ -354,6 +354,16 @@ $messages['niu'] = array(
 	'configure-section-search' => 'Kumi',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'configure-desc-group' => 'Bubuhan',
+	'configure-desc-val' => 'Nilai',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-section-pages' => 'Tungkaran',
+);
+
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */
@@ -1260,7 +1270,7 @@ $messages['br'] = array(
 	'configure-ext-ext-dependencies' => "'''Diwallit :''' an astenn-mañ en deus ezhomm e vefe gweredekaat an {{PLURAL:$2|astenn|astennoù}} da-heul : $1.",
 	'configure-ext-ext-dependency-err' => "'''Fazi :''' an astenn $1 en deus ezhomm e vefe gweredekaat an astenn $2.",
 	'configure-ext-doc' => 'Gwelet an teuliadoù enlinenn',
-	'configure-ext-schemachange' => "'''Diwallit :''' an astenn-mañ en deus ezhomm un hizivadenn eus ar bank roadennoù evit mon en-dro en un doare reizh !",
+	'configure-ext-schemachange' => "'''Diwallit :''' an astenn-mañ en deus ezhomm un [http://www.mediawiki.org/wiki/Manual:Update.php hizivadenn eus ar bank roadennoù] evit mont en-dro en un doare reizh !",
 	'configure-ext-settings' => 'Arventennoù',
 	'configure-ext-settings-dep-errors' => "Ne c'hell ket bezañ diellaouet an astenn-mañ dre {{PLURAL:$1|m'en deus an arventenn|m'o deus an arventennoù}} un dalvoudenn direizh :",
 	'configure-ext-settings-dep-error' => '$1: talvoud rekis : $2, talvoud red : $3',
@@ -1790,6 +1800,21 @@ Abyste mohli používat toto rozšíření, vytvořte ho nebo změňte konfigura
  */
 $messages['cu'] = array(
 	'configure-js-remove' => 'поничьжє́ниѥ',
+);
+
+/** Welsh (Cymraeg)
+ * @author Jay99
+ */
+$messages['cy'] = array(
+	'configure' => 'Ffurfweddu y wici',
+	'configure-desc' => 'Caniatáu i ddefnyddwyr awdurdodedig | Configure [[Arbennig: configure]] y wici drwy ryngwyneb gwe-seiliedig',
+	'configure-desc-group' => 'Grŵp',
+	'configure-desc-key' => 'Allweddol',
+	'configure-desc-ns' => 'Parthau',
+	'configure-desc-val' => 'Gwerth',
+	'configure-edit-core' => 'Newidiadau Cysylltiedig',
+	'configure-edit-ext' => 'Estuniadau',
+	'configure-viewconfig-default-diff' => 'Newidiadau o ball fachludiadau',
 );
 
 /** Danish (Dansk)
@@ -6017,6 +6042,7 @@ $messages['lg'] = array(
 
 /** Limburgish (Limburgs)
  * @author Aelske
+ * @author Ooswesthoesbes
  * @author Pahles
  */
 $messages['li'] = array(
@@ -6032,7 +6058,7 @@ $messages['li'] = array(
 	'configure-ext-ext-dependencies' => "'''Waarsjoewing:''' dees oetbreijing vereis aktevatie van de volgende {{PLURAL:$2|oetbreijing|oetbreijinge}}: $1",
 	'configure-ext-ext-dependency-err' => "'''Fout:''' de oetbreijing $1 vereis dat de oetbreijing $2 geakteveerd weurt.",
 	'configure-ext-doc' => 'Bekiek online documentatie',
-	'configure-ext-schemachange' => "'''Waarsjoewing:''' um dees oetbreijing richtig te laote wirke moot de database waere biegewirk!",
+	'configure-ext-schemachange' => "'''Waarsjoewing:''' um dees oetbreijing richtig te laote wirke moot de [http://www.mediawiki.org/wiki/Manual:Update.php database] waere biegewirk!",
 	'configure-ext-settings' => 'Insjtèllinge',
 	'configure-ext-settings-dep-errors' => "Dees oetbreijing kan neet waere ingesjakeld, want de volgende {{PLURAL:$1|insjèlling haet|insjèllinge höbbe}} 'n ongeljige waerd:",
 	'configure-ext-settings-dep-error' => '$1: vereiste waerd: $2, hujige waerd: $3',
@@ -6100,6 +6126,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-namespaces' => 'Naamruumdes',
 	'configure-section-stats' => 'Sitesjtattestieke',
 	'configure-section-skin' => 'Vörmgeving',
+	'configure-section-vector' => 'Vectoroeterlik',
 	'configure-section-category' => 'Categorieë',
 	'configure-section-cache' => 'Cache',
 	'configure-section-pcache' => 'Parsercache',
@@ -6120,6 +6147,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-specialpages' => "Speciaal pagina's",
 	'configure-section-recentchanges' => 'Recènte verangeringe',
 	'configure-section-users' => 'Gebroekers',
+	'configure-section-externalauth' => 'Extern authentikaasje',
 	'configure-section-feed' => 'Feed',
 	'configure-section-job' => 'Take',
 	'configure-section-extension' => 'Oetbreijinge',
@@ -6135,7 +6163,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-output' => 'Oetvoer',
 	'configure-select-wiki' => 'Wikiselectie',
 	'configure-select-wiki-desc' => 'Selecteer de wiki daes doe wils insjtèlle.',
-	'configure-select-wiki-view-desc' => 'Selecteer de wiki woevans doe de versies wils betrachte.',
+	'configure-select-wiki-view-desc' => 'Selecteer de wiki woevans doe de instellingsversies wils betrachte.',
 	'configure-select-wiki-view-all' => "Alle wiki's",
 	'configure-select-wiki-view-specific' => 'Specifieke wiki:',
 	'configure-select-wiki-submit' => 'Selectere',
@@ -10030,6 +10058,33 @@ $messages['ug-arab'] = array(
 	'configure-section-timezone' => 'ۋاقىت رايونى',
 	'configure-section-zh-conversion' => 'خەنچە ئايلاندۇرۇش',
 	'configure-section-debug' => 'سازلاش',
+	'configure-section-site' => 'بېكەت ئىختىيارىيلاشتۇرۇش',
+	'configure-section-css-js' => 'CSS ۋە JavaScript',
+	'configure-section-namespaces' => 'ئات بوشلۇقى',
+	'configure-section-stats' => 'بېكەت ستاتىستىكا',
+	'configure-section-skin' => 'تېرەلەر',
+	'configure-section-vector' => 'Vector تېرە',
+	'configure-section-category' => 'كاتېگورىيە',
+	'configure-section-cache' => 'غەملەك',
+	'configure-section-pcache' => 'تەھلىلچى غەملەكى',
+	'configure-section-messagecache' => 'ئۇچۇر غەملەك',
+	'configure-section-access' => 'زىيارەت',
+	'configure-section-groups' => 'گۇرۇپپا',
+	'configure-section-block' => 'چەكلە',
+	'configure-section-rates' => 'سۈرئەت چەكلىمىسى',
+	'configure-section-proxy' => 'ۋاكالەتچىلەر',
+	'configure-section-cookie' => 'Cookies',
+	'configure-section-performance' => 'ئىقتىدار',
+	'configure-section-upload' => 'يۈكلە',
+	'configure-section-sharedupload' => 'ھەمبەھىرلەپ يۈكلە',
+	'configure-section-mime' => 'MIME تىپى',
+	'configure-section-images' => 'ھۆججەتلەر',
+	'configure-section-antivirus' => 'ۋىرۇسخور',
+	'configure-section-parser' => 'تەھلىلچى',
+	'configure-section-specialpages' => 'ئالاھىدە بەتلەر',
+	'configure-section-recentchanges' => 'يېقىنقى ئۆزگەرتىشلەر',
+	'configure-section-users' => 'ئىشلەتكۈچىلەر',
+	'configure-section-externalauth' => 'سىرتقى دەلىللەش',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

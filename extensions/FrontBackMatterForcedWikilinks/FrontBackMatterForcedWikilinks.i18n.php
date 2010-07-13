@@ -153,6 +153,16 @@ $messages['nl'] = array(
 	'frontbackforced-forced' => '_(forced_wikilinks)',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'frontbackforced-desc' => 'Legger til saker foran og bak lenker til sider og implementerer tvungne wikilenker',
+	'frontbackforced-front' => '_(foran_sak)',
+	'frontbackforced-back' => '_(bak_sak)',
+	'frontbackforced-forced' => '_(tvungne_wikilenker)',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

@@ -334,6 +334,24 @@ Insira o nome do utilizador ou o endereço IP para obter a lista das páginas cu
 	'right-massblank' => 'Esvaziar (remover o conteúdo de) múltiplas páginas',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'massblank' => 'Esvaziar múltiplas páginas',
+	'massblank-desc' => 'Dá a administradores a capacidade de [[Special:MassBlank|esvaziar múltiplas páginas]] (remover o seu conteúdo)',
+	'massblank-nopages' => 'Não existem páginas novas criadas por [[Special:Contributions/$1|$1]] nas mudanças recentes.',
+	'massblank-list' => 'As páginas seguintes foram criadas recentemente por [[Special:Contributions/$1|$1]];
+insira um comentário e clique sobre o botão para esvaziá-las.',
+	'massblank-defaultreason' => 'Esvaziamento das páginas adicionadas por $1',
+	'massblank-tools' => 'Esta ferramenta permite remover o conteúdo de múltiplas páginas adicionadas recentemente por um usuário ou endereço de IP.
+Insira o nome do usuário ou o endereço de IP para obter a lista das páginas cujo conteúdo será removido.',
+	'massblank-submit-user' => 'Prosseguir',
+	'massblank-submit-blank' => 'Esvaziar selecionadas',
+	'massblank-blankcomment' => 'Motivo:',
+	'right-massblank' => 'Remover o conteúdo de múltiplas páginas',
+);
+
 /** Russian (Русский)
  * @author Grigol
  * @author Александр Сигачёв

@@ -930,9 +930,12 @@ Pode [[Special:RefHelper|adicionar a referência manualmente]] ou [[Special:RefS
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'refhelper' => 'Assistente de referências',
+	'refsearch' => 'Pesquisa de referências',
 	'refhelper-refcreate_legend' => 'Criar nova referência',
 	'refhelper-refcreate_another' => 'Criar outra referência',
 	'refhelper-refcreate_success' => 'A página [[$1]] não existia e foi criada.',
