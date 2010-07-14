@@ -30,21 +30,155 @@ class IPTC {
 		//charset info contained in tag 1:90.
 		if (isset($parsed['1#090']) && isset($parsed['1#090'][0])) {
 			$c = self::getCharset($parsed['1#090'][0]);
+			unset( $parsed['1#090'] );
 		}
 
 		foreach ( $parsed as $tag => $val ) {
 			switch( $tag ) {
-				case '2#120': /*IPTC caption*/
+				case '2#120': /*IPTC caption. mapped with exif ImageDescription*/
 					$data['ImageDescription'] = self::convIPTC( $val, $c );
 					break;
-				case '2#116': /* copyright */
+				case '2#116': /* copyright. Mapped with exif copyright */
 					$data['Copyright'] = self::convIPTC( $val, $c );
 					break;
-				case '2#080': /* byline */
+				case '2#080': /* byline. Mapped with exif Artist */
+					/* TODO: figure out how to handle byline title (2:85) */
 					$data['Artist'] = self::convIPTC( $val, $c );
 					break;
-				/* there are many many more that should be done */
+				case '2#025': /* keywords */
+					$data['Keywords'] = self::convIPTC( $val, $c );
+					break;
+				case '2#101': /* Country (shown)*/
+					$data['CountryDest'] = self::convIPTC( $val, $c );
+					break;
+				case '2#095': /* state/province (shown) */
+					$data['ProvinceOrStateDest'] = self::convIPTC( $val, $c );
+					break;
+				case '2#090': /* city (Shown) */
+					$data['CityDest'] = self::convIPTC( $val, $c );
+					break;
+				case '2#092': /* sublocation (shown) */
+					$data['SublocationDest'] = self::convIPTC( $val, $c );
+					break;
+				case '2#005': /* object name/title */
+					$data['ObjectName'] = self::convIPTC( $val, $c );
+					break;
+				case '2#040': /* special instructions */
+					$data['SpecialInstructions'] = self::convIPTC( $val, $c );
+					break;
+				case '2#105': /* headline*/
+					$data['Headline'] = self::convIPTC( $val, $c );
+					break;
+				case '2#110': /* credit */
+					/*"Identifies the provider of the objectdata,
+					 * not necessarily the owner/creator". */
+					$data['Credit'] = self::convIPTC( $val, $c );
+					break;
+				case '2#115': /* source */
+					/* "Identifies the original owner of the intellectual content of the
+					 *objectdata. This could be an agency, a member of an agency or	
+					 *an individual." */
+					$data['Source'] = self::convIPTC( $val, $c );
+					break;
+				case '2#007': /* edit status (lead, correction, etc) */
+					$data['EditStatus'] = self::convIPTC( $val, $c );
+					break;
+				case '2#010': /*urgency (1-8. 1 most, 5 normal, 8 low priority)*/
+					$data['Urgency'] = self::convIPTC( $val, $c );
+					break;
+				case '2#022':
+					/* "Identifies objectdata that recurs often and predictably...
+					 * Example: Euroweather" */
+					$data['FixtureIdentifier'] = self::convIPTC( $val, $c );
+					break;
+				case '2#026':
+					/* Content location code (iso 3166 + some custom things)
+					 * ex: TUR (for turkey), XUN (for UN), XSP (outer space)
+					 * See wikipedia article on iso 3166 and appendix D of iim std. */
+					$data['LocationDestCode'] = self::convIPTC( $val, $c );
+					break;
+				case '2#027':
+					/* Content location name. Full prinatable name
+					 * of location of photo. */
+					$data['LocationDest'] = self::convIPTC( $val, $c );
+					break;
+				case '2#065':
+					/* Originating Program.
+					 * Combine with Program version (2:70) if present.
+					 */
+					$software = self::convIPTC( $val, $c );
 
+					if ( count( $software ) !== 1 ) {
+						//according to iim standard this cannot have multiple values
+						//so if there is more than one, something weird is happening,
+						//and we skip it.
+						wfDebugLog( 'iptc', 'IPTC: Wrong count on 2:65 Software field' );
+						break;
+					}
+
+					if ( isset( $parsed['2#070'] ) ) {
+						//if a version is set for the software.
+						$softwareVersion = self::convIPTC( $parsed['2#070'], $c );
+						unset($parsed['2#070']);
+						$data['Software'] = array( array( $software[0], $softwareVersion[0] ) );
+					} else {
+						$data['Software'] = $software;
+					}
+
+
+					break;
+				case '2#075':
+					/* Object cycle.
+					 * a for morning (am), p for evening, b for both */
+					$data['ObjectCycle'] = self::convIPTC( $val, $c );
+					break;
+				case '2#100':
+					/* Country/Primary location code.
+					 * "Indicates the code of the country/primary location where the
+					 * intellectual property of the objectdata was created"
+					 * unclear how this differs from 2#026
+					 */
+					$data['CountryDestCode'] = self::convIPTC( $val, $c );
+					break;
+				case '2#118': /*contact*/
+					$data['Contact'] = self::convIPTC( $val, $c );
+					break;
+				case '2#122':
+					/* Writer/Editor
+					 * "Identification of the name of the person involved in the writing,
+					 * editing or correcting the objectdata or caption/abstract."
+					 */
+					$data['Writer'] = self::convIPTC( $val, $c );
+					break;
+				case '2#135': /* lang code */
+					$data['LanguageCode'] = self::convIPTC( $val, $c );
+					break;
+				case '2#000': /* iim version */
+					// unlike other tags, this is a 2-byte binary number.
+					//technically this is required if there is iptc data
+					//but in practise it isn't always there.
+					if ( strlen( $val[0] ) == 2 ) {
+						//if is just to be paranoid.
+						$versionValue = ord( substr( $val[0], 0, 1 ) ) * 256;
+						$versionValue += ord( substr( $val[0], 1, 1 ) );
+						$data['iimVersion'] = $versionValue;
+					}
+					break;
+
+
+				// TODO: the date related tags
+				// does not do 2:103. Unsure if there is useful data there.
+				// TODO: 2:15, 2:20
+				// other things not currently done, and not sure if should:
+				// 2:12
+				// purposely does not do 2:125, 2:130, 2:131,
+				// 2:47, 2:50, 2:45, 2:42, 2:8, 2:4, 2:3
+				// 2:200, 2:201, 2:202
+				// or the audio stuff (2:150 to 2:154)
+
+				default:
+					wfDebugLog( 'iptc', "Unsupported iptc tag: $tag. Value: " . implode( ',', $val ));
+					break;
 			}
 
 		}
@@ -86,7 +220,7 @@ class IPTC {
 			$oldData = $data;
 			UtfNormal::quickIsNFCVerify( $data ); //make $data valid utf-8
 			if ($data === $oldData) return $data;
-			else return convIPTCHelper ( $data, 'ISO-8859-1' ); //should this be windows-1252?
+			else return self::convIPTCHelper ( $oldData, 'ISO-8859-1' ); //should this be windows-1252?
 		}
 		return $data;
 	}

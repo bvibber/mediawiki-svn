@@ -3759,11 +3759,33 @@ Others will be hidden by default.
 'exif-gpsdifferential'             => 'GPS differential correction',
 'exif-coordinate-format'           => '$1° $2′ $3″ $4',
 'exif-jpegfilecomment'             => 'JPEG file comment',
+'exif-keywords'                    => 'Keywords',
+'exif-countrydest'                 => 'Country shown',
+'exif-countrydestcode'             => 'Code for country shown',
+'exif-provinceorstatedest'         => 'Province or state shown',
+'exif-citydest'                    => 'City shown',
+'exif-sublocationdest'             => 'Sublocation of city shown',
+'exif-objectname'                  => 'Object name',
+'exif-specialinstructions'         => 'Special instructions',
+'exif-headline'                    => 'Headline',
+'exif-credit'                      => 'Credit/Provider',
+'exif-source'                      => 'Source',
+'exif-editstatus'                  => 'Editorial status of image',       
+'exif-urgency'                     => 'Urgency',
+'exif-fixtureidentifier'           => 'Fixture name',
+'exif-locationdest'                => 'Location depicted',
+'exif-locationdestcode'            => 'Code of location depicted',
+'exif-objectcycle'                 => 'Time of day that media is intended for',
+'exif-contact'                     => 'Contact information',
+'exif-writer'                      => 'Writer',
+'exif-languagecode'                => 'Language',
+'exif-iimversion'                  => 'IIM version',
 
 # Make & model, can be wikified in order to link to the camera and model name
-'exif-make-value'     => '$1', # do not translate or duplicate this message to other languages
-'exif-model-value'    => '$1', # do not translate or duplicate this message to other languages
-'exif-software-value' => '$1', # do not translate or duplicate this message to other languages
+'exif-make-value'             => '$1', # do not translate or duplicate this message to other languages
+'exif-model-value'            => '$1', # do not translate or duplicate this message to other languages
+'exif-software-value'         => '$1', # do not translate or duplicate this message to other languages
+'exif-software-version-value' => '$1 (Version $2)',
 
 # EXIF attributes
 'exif-compression-1' => 'Uncompressed',
@@ -3938,6 +3960,10 @@ Others will be hidden by default.
 # Pseudotags used for GPSTrackRef, GPSImgDirectionRef and GPSDestBearingRef
 'exif-gpsdirection-t' => 'True direction',
 'exif-gpsdirection-m' => 'Magnetic direction',
+
+'exif-objectcycle-a' => 'Morning only',
+'exif-objectcycle-p' => 'Evening only',
+'exif-objectcycle-b' => 'Both morning and evening',
 
 # External editor support
 'edit-externally'      => 'Edit this file using an external application',

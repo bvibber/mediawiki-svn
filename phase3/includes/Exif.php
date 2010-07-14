@@ -1235,8 +1235,16 @@ class FormatExif {
 				// the make, model and software name to link to their articles.
 				case 'Make':
 				case 'Model':
-				case 'Software':
 					$val = $this->msg( $tag, '', $val );
+					break;
+
+				case 'Software':
+					if ( is_array( $val ) ) {
+						//if its a software, version array.
+						$val = wfMsg( 'exif-software-version-value', $val[0], $val[1] );
+					} else {
+						$val = $this->msg( $tag, '', $val );
+					}
 					break;
 
 				case 'ExposureTime':
@@ -1262,12 +1270,47 @@ class FormatExif {
 				case 'Artist':
 				case 'Copyright':
 				case 'GPSVersionID':
+				case 'Keywords':
+				case 'CountryDest':
+				case 'CountryDestCode':
+				case 'ProvinceOrStateDest':
+				case 'CityDest':
+				case 'SublocationDest':
+				case 'ObjectName':
+				case 'SpecialInstructions':
+				case 'Headline':
+				case 'Credit':
+				case 'Source':
+				case 'EditStatus':
+				case 'Urgency':
+				case 'FixtureIdentifier':
+				case 'LocationDest':
+				case 'LocationDestCode':
+				case 'Contact':
+				case 'Writer':
+				case 'JPEGFileComment':
+
 					$val = htmlspecialchars( $val );
 					break;
 
-				// Here begins the non-exif data
-				case 'JPEGFileComment':
-					$val = htmlspecialchars( $val );
+				case 'ObjectCycle':
+					switch ( $val ) {
+					case 'a': case 'p': case 'b':
+						$val = $this->msg( $tag, $val );
+						break;
+					default:
+						$val = htmlspecialchars( $val );
+						break;
+					}
+					break;
+
+				case 'LanguageCode':
+					$lang = $wgLang->getLanguageName( strtolower( $val ) );
+					if ($lang) {
+						$val = htmlspecialchars( $lang );
+					} else {
+						$val = htmlspecialchars( $val );
+					}
 					break;
 				
 				default:

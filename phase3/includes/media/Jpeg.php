@@ -43,6 +43,18 @@ class JpegHandler extends BitmapHandler {
 			return $metadata;
 		}
 
+		// Treat Software as a special case because in can contain
+		// an array of (SoftwareName, Version).
+		if (isset( $metadata['Software'] ) 
+			&& is_array( $metadata['Software'] ) 
+			&& is_array( $metadata['Software'][0])
+			&& isset( $metadata['Software'][0][0] )
+			&& isset( $metadata['Software'][0][1])
+		 ) {
+			$metadata['Software'] = $metadata['Software'][0][0] . ' (Version '
+				. $metadata['Software'][0][1] . ')';
+		}
+
 		foreach ( $metadata as &$val ) {
 			if ( is_array( $val ) ) {
 				$val = formatExif::flattenArray( $val );
