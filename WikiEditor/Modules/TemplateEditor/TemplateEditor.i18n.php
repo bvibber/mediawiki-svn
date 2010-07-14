@@ -331,6 +331,9 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'wikieditor-template-editor-preference' => 'Activar lo changement a bâsa de formulèros des modèlos vouiqui',
+	'wikieditor-template-editor-dialog-title' => 'Changiér lo modèlo',
+	'wikieditor-template-editor-dialog-submit' => 'Betar a jorn',
+	'wikieditor-template-editor-dialog-cancel' => 'Anular',
 );
 
 /** Scottish Gaelic (Gàidhlig)

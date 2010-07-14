@@ -163,6 +163,13 @@ $messages['fr'] = array(
 	'wikieditor-templates-preference' => 'Activer le repliement des modèles',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-templates-preference' => 'Activar lo retrèt des modèlos',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

@@ -599,12 +599,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Kouign-amann
  * @author Y-M D
  */
 $messages['br'] = array(
 	'prefswitch' => 'Cheñch dibaboù an intrudu implijadusted',
 	'prefswitch-desc' => "Talvezout a ra d'an implijerien da cheñch an holl benndibaboù",
-	'prefswitch-jswarning' => "Da-heul ar c'hemm neuz, ho [[User:$1/$2.js|JavaScript $2]] a rank bezañ kopiet davet [[User:$1/vector.js]] pe [[User:$1/common.js]] evit gellout kenderc'hel da vont en-dro.",
+	'prefswitch-jswarning' => "Da-heul ar c'hemm neuz, ho [[User:$1/$2.js|JavaScript $2]] a rank bezañ kopiet davet [[User:$1/vector.js]] <!-- pe [[User:$1/common.js]]--> evit gellout kenderc'hel da vont en-dro.",
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nann',
 	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
@@ -1992,7 +1993,7 @@ Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
 | Kuvakaappaus uudesta linkkien lisäys -valintaikkunasta.
 |}
 |}
-Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia sinulle. Haluamme kertoa eräistä uudistuksista, kuten uudesta ilmeestä ja yksinkertaistetuista muokkaustoiminnoista. Näiden muutoksien tarkoituksena on helpottaa uusien muokkaajien alkuun pääsemistä. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study käytettävyystestaukseen, joka toteutettiin viime vuoden aikana]. Käytettävyyden parantaminen hankkeissamme on etusijalla Wikimedia Foundationissa ja lisää päivityksiä on tulossa. Lisätietoja löytyy aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
+Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia sinulle. Haluamme kertoa eräistä uudistuksista, kuten uudesta ilmeestä ja yksinkertaistetuista muokkaustoiminnoista. Näiden muutoksien tarkoituksena on auttaa uusia muokkaajia pääsemään helpommin alkuun. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study viime vuoden aikana toteutettuun käytettävyystestaukseen]. Hankkeiden käytettävyyden parantaminen kuuluu Wikimedia Foundationin merkittävimpiin tehtäviin, ja lisää päivityksiä on tulossa. Lisätietoja saat aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
 
 === Tässä tehtyjä muutoksia ===
 * '''Navigaatio:''' Paransimme navigaatiota sivujen lukemiseksi ja muokkaamiseksi. Nyt jokaisen sivun yläreunassa olevat välilehdet ovat selvempiä.
@@ -5648,6 +5649,8 @@ $messages['yi'] = array(
 כדי אָפווענדן די נייע אייגנקייטן [$1 קליקט דאָ]. מען וועט אײַך ערשט בעטן אַרײַנלאָגירן אָדער שאַפֿן אַ נײַע קאנטע.',
 	'prefswitch-main-on' => '=== ברענגט מיך צוריק! === 
 [$2 קליקט דאָ אויסצולעשן די נײַע אייגנקייטן].',
+	'prefswitch-main-off' => '=== פּרואווט אויס! === 
+ [$1 דריקט דאָ כדי אַקטיווירן די נײַע אייגנקייטן].',
 	'prefswitch-survey-intro-off' => 'א דאַנק פֿאַרן אויספרובירן אונזערע נײַע אייגנקייטן.
 בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );

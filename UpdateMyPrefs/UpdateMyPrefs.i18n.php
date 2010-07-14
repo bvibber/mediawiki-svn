@@ -223,6 +223,15 @@ $messages['fr'] = array(
 	'updatemyprefs-label-message' => 'Mettre à jour automatiquement mes préférences avec les nouvelles valeurs par défaut et outils quand ils sont disponibles',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'prefs-updates' => 'Mises a jorn',
+	'updatemyprefs-desc' => 'Prèference por los utilisators por spècefiar se souhètont avêr des mises a jorn pèriodiques de l’entèrface utilisator quand sont disponibles.',
+	'updatemyprefs-label-message' => 'Betar a jorn ôtomaticament mes prèferences avouéc les novèles valors per dèfôt et los outils quand sont disponiblos',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

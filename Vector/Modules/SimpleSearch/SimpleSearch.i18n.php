@@ -274,7 +274,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'vector-simplesearch-search' => 'Rechèrche',
+	'vector-simplesearch-search' => 'Rechèrchiér',
 	'vector-simplesearch-containing' => 'que contint...',
 );
 
