@@ -97,6 +97,7 @@ Here are the IPs used (5000 max, sorted by address):',
 [http://www.ip2location.com/$1 Geolocate] ·
 [http://toolserver.org/~overlordq/scripts/checktor.fcgi?ip=$1 Tor check] ·
 [http://ws.arin.net/whois/?queryinput=$1 WHOIS]]</span>', # do not translate or duplicate this message to other languages
+	'checkuser-xff'              => 'XFF',
 );
 
 /** Message documentation (Message documentation)

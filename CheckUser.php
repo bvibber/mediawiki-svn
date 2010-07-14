@@ -55,7 +55,8 @@ $wgSpecialPageGroups['CheckUser'] = 'users';
 $wgAPIListModules['checkuser'] = 'CheckUserApi';
 $wgAPIListModules['checkuserlog'] = 'CheckUserApiLog';
 
-$wgExtensionMessagesFiles['CheckUser'] = $dir . 'CheckUser.i18n.php';
+$wgExtensionMessagesFiles['CheckUser'] = $dir . 'CheckUser.i18n.en.php';
+//FIXME: $wgExtensionMessagesFiles['CheckUser'] = $dir . 'CheckUser.i18n.php';
 $wgExtensionAliasesFiles['CheckUser'] = $dir . 'CheckUser.alias.php';
 
 // New user rights

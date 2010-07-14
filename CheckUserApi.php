@@ -6,7 +6,7 @@ class CheckUserApi extends ApiQueryBase {
 		parent::__construct( $query, $moduleName, 'cu' );
 	} 
 	
-	public function execute( $resultPageSet = null ) {
+	public function execute() {
 		global $wgUser;
 		
 		// Before doing anything at all, let's check permissions
@@ -22,38 +22,86 @@ class CheckUserApi extends ApiQueryBase {
 		if ( !isset( $params['type'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'cutype' ) );
 		}
-		if ( !isset( $params['reason'] ) ) {
-			$params['reason'] = '';
-		}
 		if ( !isset( $params['period'] ) ) {
 			$params['period'] = 0;
 		}
 		
-		$result = new CheckUser( $params['target'] );
+		$endResult = array();
 		
-		switch( $params['type'] ) {
-			case "user2ip":
-				$result = $result->doUser2IP( $params, $params['prop'], 'LIMIT ' . $params['limit'] );
-				break;
-			case "user2edits":
-				$result = $result->doUser2Edits( $params['reason'], $params['period'] );
-				break;
-			case "ip2user":
-				$result = $result->doIP2User( $params['reason'], $params['period'] );
-				break;
-			case "ip2edits":
-				$result = $result->doIP2Edits( $params['reason'], $params['period'] );
-				break;
+		foreach( $params['target'] as $target ) {
+			$result = new CheckUser( $target );
 			
+			switch( $params['type'] ) {
+				case "user2ip":
+					$ips = $this->doUser2IP( $result, $params, $params['prop'], $params['limit'] );
+					$endResult[] = array( 'target' => $result->target, 'ips' => $ips );
+					break;
+				case "user2edits":
+					$endResult[] = $result->doUser2Edits( $params['reason'], $params['period'] );
+					break;
+				case "ip2user":
+					$endResult[] = $result->doIP2User( $params['reason'], $params['period'] );
+					break;
+				case "ip2edits":
+					$endResult[] = $result->doIP2Edits( $params['reason'], $params['period'] );
+					break;
+				
+			}
 		}		
 		
 		$this->getResult()->setIndexedTagName( $result, 'checkuser' );
-		$this->getResult()->addValue( 'query', $this->getModuleName(), $result );
+		$this->getResult()->addValue( 'query', $this->getModuleName(), $endResult );
 
 	}
 	
-	public function executeGenerator( $resultPageSet ) {
-		$this->execute( $resultPageSet );
+	public function doUser2IP( &$cuClass, $params, $prop, $limit ) {
+		
+		$dbParams = $cuClass->doUser2IP( $params, $prop, $limit );
+		
+		$retArray = array();
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		//$dbr->setFlag( DBO_DEBUG );
+		
+		$ret = $dbr->select( 
+			$dbParams[0],
+			$dbParams[1],
+			$dbParams[2], 
+			__METHOD__,
+			$dbParams[3]
+		);
+		 
+		if ( !$dbr->numRows( $ret ) ) {
+			return $retArray;
+		} else {
+			$counter = 0;
+			
+			foreach( $ret as $id => $row ) {
+				$retArray[$counter] = array( 'ip' => $row->cuc_ip );
+				
+				if( in_array( 'count', $prop ) || is_null( $prop ) ) $retArray[$counter]['count'] = $row->count;
+				if( in_array( 'first', $prop ) || is_null( $prop ) ) $retArray[$counter]['first'] = $row->first;
+				if( in_array( 'last', $prop ) || is_null( $prop ) ) $retArray[$counter]['last'] = $row->last;
+				if( in_array( 'hex', $prop ) || is_null( $prop ) ) $retArray[$counter]['hex'] = $row->cuc_ip_hex;
+				if( in_array( 'blockinfo', $prop ) || is_null( $prop ) ) {
+					$blockinfo = CheckUser::checkBlockInfo( $row->cuc_ip );
+					if( $blockinfo ) {
+						$retArray[$counter]['blockinfo']['by'] = $blockinfo->ipb_by_text;
+						$retArray[$counter]['blockinfo']['reason'] = $blockinfo->ipb_reason;
+						$retArray[$counter]['blockinfo']['timestamp'] = $blockinfo->ipb_timestamp;
+						$retArray[$counter]['blockinfo']['expiry'] = $blockinfo->ipb_expiry;
+					}
+				}
+				
+				$counter++;
+				
+			}
+		}
+		
+		$dbr->freeResult( $ret );
+		
+		return $retArray;
 	}
 
 	
@@ -64,12 +112,20 @@ class CheckUserApi extends ApiQueryBase {
 	public function getAllowedParams() { 
 		return array(
 			'target' => array( 
+				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_TYPE => 'user',
 			),
 			'type' => array( 
 				ApiBase::PARAM_TYPE => array( 'user2ip', 'user2edits', 'ip2user', 'ip2edits' ),
 			),
-			'reason' => 'string',
+			'reason' => array(
+				ApiBase::PARAM_DFLT => '',
+				ApiBase::PARAM_TYPE => 'string'
+			),
+			'period' => array(
+				ApiBase::PARAM_DFLT => 30,
+				ApiBase::PARAM_TYPE => 'integer'
+			),
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_DFLT => 'count|first|last|blockinfo',
