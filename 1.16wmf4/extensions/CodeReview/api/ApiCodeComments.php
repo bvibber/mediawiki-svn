@@ -30,6 +30,7 @@ class ApiCodeComments extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
 		if( !$wgUser->isAllowed('codereview-use') ) {
 			$this->dieUsage('You don\'t have permission to view code comments','permissiondenied');

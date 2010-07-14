@@ -15,6 +15,7 @@ class ApiClickTracking extends ApiBase {
 	public function execute() {
 		global $wgUser, $wgTitle, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2, $wgClickTrackContribGranularity3;
 
+		$this->getMain()->setCachePrivate();
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
@@ -74,7 +75,6 @@ class ApiClickTracking extends ApiBase {
 				$this->dieUsage( 'The URL to redirect to must be domain-relative, i.e. start with a /', 'badurl' );
 			}
 		}
-		$this->getMain()->setCacheMaxAge( 0 );
 	}
 
 	/**

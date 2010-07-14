@@ -65,6 +65,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 		$this->addFields( array( 'wl_namespace', 'wl_title' ) );
 		$this->addFieldsIf( 'wl_notificationtimestamp', isset( $prop['changed'] ) );
 		$this->addWhereFld( 'wl_user', $wgUser->getId() );
+		$this->getMain()->setVaryCookie(); // Temp live hack until new code using getWatchlistUser() is merged
 		$this->addWhereFld( 'wl_namespace', $params['namespace'] );
 		$this->addWhereIf( 'wl_notificationtimestamp IS NOT NULL', isset( $show['changed'] ) );
 		$this->addWhereIf( 'wl_notificationtimestamp IS NULL', isset( $show['!changed'] ) );
