@@ -231,9 +231,9 @@ class Ssh2Filesystem extends Filesystem {
 	 */
 	public function getChmod( $file ) {
 		wfSuppressWarnings();
-		$fileperms = fileperms( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' );
+		$fileperms = fileperms( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 		wfRestoreWarnings();
-		return substr( decoct( $fileperms ) ), 3 );
+		return substr( decoct( $fileperms ), 3 );
 	}
 
 	/**
