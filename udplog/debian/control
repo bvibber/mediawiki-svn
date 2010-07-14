@@ -7,5 +7,5 @@ Standards-Version: 3.7.2
 
 Package: udplog
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, lsb-base (>= 3.0-6)
 Description: Utilities for UDP logging

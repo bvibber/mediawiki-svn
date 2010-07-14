@@ -1,0 +1,8 @@
+#!/bin/sh
+if ! getent passwd udp2log > /dev/null; then
+	groupadd udp2log
+	useradd -d/ -c'udp2log daemon' -gudp2log -s/sbin/nologin udp2log
+fi
+chown udp2log:udp2log /var/log/udp2log
+
+#DEBHELPER#

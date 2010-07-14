@@ -2,6 +2,9 @@
 #include <map>
 #include <stdint.h>
 #include <boost/lexical_cast.hpp>
+#include <cstring>
+
+using std::strtok;
 
 int main(int argc, char** argv)
 {

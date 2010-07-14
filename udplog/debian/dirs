@@ -1,1 +1,3 @@
 usr/bin
+var/log/udp2log
+etc

@@ -4,11 +4,12 @@
 #include <stdexcept>
 #include <string>
 #include <cerrno>
+#include <cstring>
 
 class libc_error : public std::runtime_error {
 public:
 	libc_error(const std::string & what_arg)
-		: std::runtime_error(std::string(what_arg).append(": ").append(strerror(errno)))
+		: std::runtime_error(std::string(what_arg).append(": ").append(std::strerror(errno)))
 	{}
 
 	const char* what() {

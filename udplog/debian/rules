@@ -55,8 +55,9 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
-	# Add here commands to install the package into debian/udplog.
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/udplog
+	# Create default configuration file
+	install -m644 udp2log/udp2log.conf.default $(CURDIR)/debian/udplog/etc/udp2log
 
 
 # Build architecture-independent files here.
@@ -78,7 +79,7 @@ binary-arch: build install
 #	dh_installpam
 #	dh_installmime
 #	dh_python
-#	dh_installinit
+	dh_installinit --name=udp2log
 #	dh_installcron
 #	dh_installinfo
 	dh_installman

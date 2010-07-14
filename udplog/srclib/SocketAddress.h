@@ -5,6 +5,7 @@
 #include "IPAddress.h"
 #include <boost/shared_ptr.hpp>
 #include <stdexcept>
+#include <cstring>
 
 class SocketAddress 
 {
@@ -40,13 +41,13 @@ public:
 		switch (ip.GetType()) {
 			case AF_INET:
 				data.v4.sin_family = AF_INET;
-				memcpy(&data.v4.sin_addr, ip.GetBinaryData(), ip.GetBinaryLength());
+				std::memcpy(&data.v4.sin_addr, ip.GetBinaryData(), ip.GetBinaryLength());
 				data.v4.sin_port = htons(port);
 				length = sizeof(sockaddr_in);
 				break;
 			case AF_INET6:
 				data.v6.sin6_family = AF_INET6;
-				memcpy(&data.v6.sin6_addr, ip.GetBinaryData(), ip.GetBinaryLength());
+				std::memcpy(&data.v6.sin6_addr, ip.GetBinaryData(), ip.GetBinaryLength());
 				data.v6.sin6_port = htons(port);
 				length = sizeof(sockaddr_in6);
 				break;
