@@ -78,13 +78,14 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
-	'stalkerlog-desc' => 'Ouzhpennañ a ra ur [[Special:Log/stalkerlog|marilh]] eus taolioù lugañ/dilugañ an implijerien',
-	'stalkerlog-log-login' => 'Luget.',
+	'stalkerlog-desc' => 'Ouzhpennañ a ra ur [[Special:Log/stalkerlog|marilh]] eus taolioù kevreañ/digevreañ an implijerien',
+	'stalkerlog-log-login' => 'kevreet.',
 	'stalkerlog-log-logout' => 'Diluget.',
 	'stalkerlog-log-type' => 'Marilh anaoudadurioù an implijer',
-	'stalkerlog-log-text' => 'Setu aze ur marilh eus taolioù lugañ/dilugañ an implijer',
+	'stalkerlog-log-text' => 'Setu aze ur marilh eus taolioù kevreañ/digevreañ an implijer.',
 );
 
 /** Bosnian (Bosanski)

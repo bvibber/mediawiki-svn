@@ -496,6 +496,7 @@ $messages['ms'] = array(
  * @author Chrisportelli
  */
 $messages['mt'] = array(
+	'userimages-desc' => "Toħloq galleriji ta' stampi mtella' mill-utenti b'<code><nowiki><userimage /></nowiki></code>",
 	'userimages-caption' => 'Immaġini mtellgħin mill-utent $1',
 	'userimages-noname' => "Isem ta' l-utent invalidu jew nieqes.",
 	'userimages-noimages' => "L-utent $1 ma tella' l-ebda immaġini.",

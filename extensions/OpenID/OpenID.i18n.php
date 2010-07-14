@@ -701,7 +701,7 @@ Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] 
 	'openidtimezone' => 'Takad eur :',
 	'openidchooselegend' => 'Dibab an anv implijer',
 	'openidchooseinstructions' => "An holl implijerien o deus ezhomm ul lesanv ;
-tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
+gellout a rit dibab unan eus ar c'hinnigoù a-is.",
 	'openidchoosenick' => 'Ho lesanv ($1)',
 	'openidchoosefull' => "Hoc'h anv klok ($1)",
 	'openidchooseurl' => "Un anv tapet eus hoc'h OpenID ($1)",

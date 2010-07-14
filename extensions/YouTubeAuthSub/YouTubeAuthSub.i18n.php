@@ -421,6 +421,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'youtubeauthsub' => 'Enporzhiañ ur video YouTube',
@@ -433,7 +434,7 @@ $messages['br'] = array(
 	'youtubeauthsub_keywords' => "Gerioù alc'hwez",
 	'youtubeauthsub_category' => 'Rummad',
 	'youtubeauthsub_submit' => 'Kas',
-	'youtubeauthsub_clickhere' => "Klikañ amañ d'en em lugañ ouzh YouTube",
+	'youtubeauthsub_clickhere' => 'Klikañ amañ evit kevreañ ouzh YouTube',
 	'youtubeauthsub_tokenerror' => 'Fazi e-ser krouiñ an aotre, klaskit freskaat ar bajenn.',
 	'youtubeauthsub_success' => "Gourc'hemennoù!
 Enporzhiet eo bet ho video.
@@ -2752,6 +2753,9 @@ YouTube, возможно, будет некоторое время обраба
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'youtubeauthsub' => 'Награти відео YouTube',
+	'youtubeauthsub-desc' => 'Доволює хоснователям [[Special:YouTubeAuthSub|награти відео]] прямо до YouTube',
+	'youtubeauthsub_title' => 'Назва',
 	'youtubeauthsub_description' => 'Попис',
 	'youtubeauthsub_password' => 'Гесло на YouTube',
 	'youtubeauthsub_username' => 'Мено хоснователя на YouTube',
@@ -2759,6 +2763,24 @@ $messages['rue'] = array(
 	'youtubeauthsub_category' => 'Катеґорія',
 	'youtubeauthsub_submit' => 'Послати',
 	'youtubeauthsub_clickhere' => 'Кликнутём ту ся приголосите до YouTube',
+	'youtubeauthsub_success' => "Ґратулуєме!
+Ваше відео є награте.
+<a href='http://www.youtube.com/watch?v=$1'>Посмотьте ся на ваше відео</a>.
+YouTube може даякый час тырвати, покы ся ваше відео зпрацує, также іщі не є приправлене.
+
+Відео можете на вікі сторінку вложыти помочов наслїдуючого коду:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Жебы сьте могли награти відео, мусите ся наперед приголосити на YouTube.',
+	'youtubeauthsub_uploadhere' => 'Награйте своє відео стады:',
+	'youtubeauthsub_uploadbutton' => 'Награти',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Посмотрити відео]',
+	'youtubeauthsub_summary' => 'Награвать ся відео YouTube',
+	'youtubeauthsub_uploading' => 'Ваше відео ся награвать.
+Просиме, почекайте.',
+	'youtubeauthsub_viewpage' => 'Інакше, тыж собі можете [[$1|посмотрити ваше відео]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Просиме, задайте єдно або веце ключовых слов.',
 );
 
 /** Yakut (Саха тыла)

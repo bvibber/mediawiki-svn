@@ -309,6 +309,18 @@ $messages['fr'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Essayer les nouvelles fonctionnalités',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'prefswitch-link-anon' => 'Novèles fonccionalitâts',
+	'tooltip-pt-prefswitch-link-anon' => 'Nen savêr més sur les novèles fonccionalitâts',
+	'prefswitch-link-on' => 'Retôrn',
+	'tooltip-pt-prefswitch-link-on' => 'Dèsactivar les novèles fonccionalitâts',
+	'prefswitch-link-off' => 'Novèles fonccionalitâts',
+	'tooltip-pt-prefswitch-link-off' => 'Èprovar les novèles fonccionalitâts',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

@@ -302,6 +302,8 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'usabilityinitiative' => 'Iniciativa d’utilisabilitât',
 	'usabilityinitiative-desc' => 'Fonccionalitâts dèvelopâs per l’iniciativa d’utilisabilitât de Vouiquipèdia por mèlyorar l’utilisabilitât de MediaWiki.',
+	'prefs-beta' => 'Fonccionalitâts « Bèta »',
+	'prefs-labs' => 'Fonccionalitâts « Laboratiors »',
 );
 
 /** Scottish Gaelic (Gàidhlig)

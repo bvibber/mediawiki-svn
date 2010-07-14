@@ -344,6 +344,14 @@ $messages['cs'] = array(
 	'group-patroller-member' => 'strážce',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'group-patroller' => 'Patrolwyr',
+	'group-patroller-member' => 'patrolwr',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  * @author Masz

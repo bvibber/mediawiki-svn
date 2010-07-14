@@ -104,7 +104,7 @@ $messages['br'] = array(
 	'lastuserlogin_useremail' => 'Postel an implijer',
 	'lastuserlogin_lastlogin' => 'Kevreadenn ziwezhañ',
 	'lastuserlogin_daysago' => 'Deiz zo',
-	'right-lastlogin' => "Gwelet peur e oa ar wech ziwezhañ ma 'z eo en em luget un implijer",
+	'right-lastlogin' => "Gwelet peur e oa ar wech ziwezhañ m'en deus kevreet un implijer",
 );
 
 /** Catalan (Català)

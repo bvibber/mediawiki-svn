@@ -1804,17 +1804,18 @@ $messages['cu'] = array(
 
 /** Welsh (Cymraeg)
  * @author Jay99
+ * @author Lloffiwr
  */
 $messages['cy'] = array(
-	'configure' => 'Ffurfweddu y wici',
-	'configure-desc' => 'Caniatáu i ddefnyddwyr awdurdodedig | Configure [[Arbennig: configure]] y wici drwy ryngwyneb gwe-seiliedig',
+	'configure' => "Ffurfweddu'r wici",
+	'configure-desc' => "Yn caniatáu i ddefnyddwyr awdurdodedig [[Special:Configure|ffurfweddu]]'r wici drwy ddefnyddio rhyngwyneb ar y we",
 	'configure-desc-group' => 'Grŵp',
-	'configure-desc-key' => 'Allweddol',
-	'configure-desc-ns' => 'Parthau',
+	'configure-desc-key' => 'Allwedd',
+	'configure-desc-ns' => 'Parth',
 	'configure-desc-val' => 'Gwerth',
-	'configure-edit-core' => 'Newidiadau Cysylltiedig',
-	'configure-edit-ext' => 'Estuniadau',
-	'configure-viewconfig-default-diff' => 'Newidiadau o ball fachludiadau',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Estyniadau',
+	'configure-viewconfig-default-diff' => "Gwahaniaethau o gymharu â'r gosodiadau rhagosodedig",
 );
 
 /** Danish (Dansk)
@@ -6400,7 +6401,7 @@ $messages['mk'] = array(
 	'configure-section-htcp' => 'HTCP-мултикаст',
 	'configure-section-misc' => 'Разно',
 	'configure-section-filter' => 'Филтрирање',
-	'configure-section-mw-extensions' => 'МедијаВики додатоци',
+	'configure-section-mw-extensions' => 'Додатоци за МедијаВики',
 	'configure-section-external-tools' => 'Надворешни алатки',
 	'configure-section-filesystem' => 'Интеракција помеѓу Податочниот систем и Школката',
 	'configure-section-thumbnail' => 'Поставување на минијатури',

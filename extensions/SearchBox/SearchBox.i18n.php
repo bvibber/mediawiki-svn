@@ -502,7 +502,7 @@ $messages['lg'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'searchbox-desc' => 'Дозволи вклучување на форми на пребарување',
+	'searchbox-desc' => 'Дозволува вклучување на обрасци за пребарување',
 	'searchbox-search' => 'Барај',
 	'searchbox-go' => 'Оди',
 	'searchbox-namespaces' => 'Именски простори:',

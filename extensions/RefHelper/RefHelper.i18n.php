@@ -180,11 +180,11 @@ $messages['br'] = array(
 	'refhelper-toolbox_link_create' => 'Krouiñ an dave',
 	'refhelper-toolbox_link_search' => "Krouiñ an dave adalek ar c'hlask",
 	'refhelper-newarticle_nocitation' => "N'eus arroudenn ebet liammet gant an anv-mañ.",
-	'refhelper-newarticle_suggestions' => "Ma 'z eus un arroudenn o klotañ amañ a-is, tu 'zo deoc'h krouiñ ar bajenn-mañ en ur klikañ war ar bouton \"Krouiñ\".
+	'refhelper-newarticle_suggestions' => 'Ma \'z eus un arroudenn o klotañ amañ a-is, gellout a rit krouiñ ar bajenn-mañ en ur klikañ war ar bouton "Krouiñ".
 
-<h2>Kinnigoù</h2>",
-	'refhelper-newarticle_nosuggestions' => "Alas, ne oan ket gouest da ginnig dave ebet.
-Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].",
+<h2>Kinnigoù</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Alas, ne oan ket gouest da ginnig dave ebet.
+Gellout a rit [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].',
 );
 
 /** Bosnian (Bosanski)

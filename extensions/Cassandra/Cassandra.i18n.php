@@ -137,6 +137,13 @@ $messages['id'] = array(
 	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
 );
 
+/** Italian (Italiano)
+ * @author Stefano-c
+ */
+$messages['it'] = array(
+	'cassandra-desc' => 'Memorizza il testo della revisione nel database [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

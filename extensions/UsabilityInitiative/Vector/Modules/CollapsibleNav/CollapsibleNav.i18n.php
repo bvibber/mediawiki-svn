@@ -219,6 +219,14 @@ $messages['fr'] = array(
 	'vector-collapsiblenav-more' => 'Plus de langues',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'vector-collapsiblenav-preference' => 'Activar lo menu de navigacion repleyâblo avouéc l’habelyâjo « Vèctor »',
+	'vector-collapsiblenav-more' => 'Més de lengoues',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

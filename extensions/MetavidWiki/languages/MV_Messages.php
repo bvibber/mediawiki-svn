@@ -6073,7 +6073,7 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Уредник на метаподатоци за снимки и пребарување на медии]',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Уредник на метаподатоци за снимки и пребарување на мултимедијални податотеки]',
 	'metavid' => 'Metavid страница',
 	'mv_missing_stream' => 'Недостасува емитување: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki специјални страници',
@@ -6251,7 +6251,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_search_no_results' => 'Нема совпаднати медии',
 	'mv_media_matches' => 'Медиски совпаѓања',
 	'mv_remove_filter' => 'отстрани филтер',
-	'mv_advaced_search' => 'Напредно пребарување на медии',
+	'mv_advaced_search' => 'Напредно пребарување на податотеки',
 	'mv_expand_play' => 'Прошири и пушти на исто место',
 	'mv_play_inline' => 'Пуштај вметнато',
 	'mv_view_in_stream_interface' => 'Погледај во посредникот за емитувања',

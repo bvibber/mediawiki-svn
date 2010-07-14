@@ -264,6 +264,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'vote' => 'Votiñ',
@@ -282,7 +283,7 @@ sfinks|Sfinks',
 	'vote-results-choice' => 'Dibab',
 	'vote-results-count' => 'Mouezh',
 	'vote-results-none' => "N'eus bet lakaet vot ebet evit c'hoazh",
-	'vote-login' => "Ret eo deoc'h [$1 en em lugañ] evit votiñ.",
+	'vote-login' => "Ret eo deoc'h [$1 kevreañ] evit votiñ.",
 	'vote-invalid-choice' => "Ret eo deoc'h dibab unan eus an dibarzhioù hegerz.",
 	'right-vote' => 'Vot',
 	'right-voteadmin' => "Gwelet disoc'hoù ar votadeg",
@@ -1613,6 +1614,14 @@ $messages['ru'] = array(
 	'vote-invalid-choice' => 'Вы можете выбрать один из доступных вариантов',
 	'right-vote' => 'голосовать',
 	'right-voteadmin' => 'просматривать результаты голосования',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'vote' => 'Голосованя',
+	'vote-submit' => 'Голосовати',
 );
 
 /** Sinhala (සිංහල)

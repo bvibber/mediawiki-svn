@@ -3070,6 +3070,21 @@ $2',
 	'group-manager-member' => 'управляющий',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'whitelisttablemodify' => 'Змінити',
+	'whitelisttablemodifyall' => 'Вшыткы',
+	'whitelisttablemodifynone' => 'Жадне',
+	'whitelisttablepage' => 'Вікі-сторінка',
+	'whitelisttabletype' => 'Тіп приступу',
+	'whitelisttableedit' => 'Едітовати',
+	'whitelisttableview' => 'Видїти',
+	'whitelisttablenewdate' => 'Новый датум:',
+	'whitelisttableremove' => 'Одстранити',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */

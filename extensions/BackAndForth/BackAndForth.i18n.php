@@ -198,11 +198,12 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'backforth-next' => 'Nesaf ($1)',
-	'backandforth-desc' => 'Yn ychwanegu\'r dolenni galw alffabetig "Nesaf" a "Blaenorol" i frig y dudalen',
+	'backandforth-desc' => "Yn ychwanegu'r dolenni 'Nesaf' a 'Blaenorol' ar frig tudalennau sydd yn nhrefn yr wyddor",
 	'backforth-prev' => 'Blaenorol ($1)',
 );
 

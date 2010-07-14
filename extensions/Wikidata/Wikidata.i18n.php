@@ -11305,6 +11305,8 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'languages' => 'Вікідата: Языковый манажер',
+	'langman_title' => 'Языковый манажер',
 	'langman_langname' => 'Назва языка:',
 	'langman_iso639-3' => 'Код ISO 639-3:',
 	'langman_iso639-2' => 'Код ISO 639-2:',
@@ -11349,10 +11351,26 @@ $messages['rue'] = array(
 	'ow_OptionAttributeOptions' => 'Можности',
 	'ow_OtherDefinedMeaning' => 'Інше дефіноване значіня',
 	'ow_PopupAnnotation' => 'Анотація',
+	'ow_Text' => 'Текст',
+	'ow_Time' => 'Час',
+	'ow_TranslatedText' => 'Переложеный текст',
+	'ow_TranslatedTextAttributeValue' => 'Текст',
+	'ow_Link' => 'Одказ',
+	'ow_LinkAttributeValues' => 'Одказы',
+	'ow_User' => 'Хоснователь',
+	'ow_added' => 'Придане',
+	'ow_removed' => 'Одстранене',
+	'ow_meaningsoftitle' => 'Значіня «$1»',
+	'copy' => 'Вікідата: копіровати',
+	'ow_history_transaction' => 'Трансакція:',
+	'ow_class_attr_type_link' => 'Одказ',
 	'ow_statistics' => 'Вікідата: Штатістікы',
 	'ow_show' => 'Вказати',
 	'ow_upload' => 'Награти',
 	'ow_create' => 'Створити',
+	'ow_suggest_previous' => 'Попереднїй',
+	'ow_suggest_next' => 'Наступный',
+	'ow_suggest_clear' => 'Вычістити',
 );
 
 /** Sicilian (Sicilianu)

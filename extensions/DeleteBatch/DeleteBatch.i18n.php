@@ -196,10 +196,10 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'deletebatch' => 'Dilemel ur strollad pajennoù',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Dilemel ur strollad pajennoù]]',
-	'deletebatch-help' => "Dilemel ur strollad pajennoù.
-Tu 'zo deoc'h lañsañ un dilemadur eeun pe dilemel pajennoù listennet en ur restr.
-Dibabit un iplijer a vo lakaet e marilh an dilamadennoù.
-Ur restr enporzhiet a c'hello bezañ ennañ : anv ur bajenn hag un abeg (diret) evit he dilemel, rankout a raio bezañ dispartiet gant ur \"|\" evit pep linenn.",
+	'deletebatch-help' => 'Dilemel ur strollad pajennoù.
+Gellout a rit lañsañ un dilammadenn eeun pe dilemel pajennoù listennet en ur restr.
+Dibabit un implijer a vo lakaet e marilh an dilammadennoù.
+Ur restr enporzhiet a c\'hello bezañ ennañ : anv ur bajenn hag un abeg (diret) evit he dilemel, rankout a raio bezañ dispartiet gant ur "|" evit pep linenn.',
 	'deletebatch-caption' => 'Roll ar pajennoù :',
 	'deletebatch-title' => 'Dilemel ur strollad',
 	'deletebatch-link-back' => "Distreiñ d'ar bajenn dibar",

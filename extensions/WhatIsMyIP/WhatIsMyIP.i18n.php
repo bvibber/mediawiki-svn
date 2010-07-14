@@ -694,6 +694,13 @@ $messages['ru'] = array(
 	'right-whatismyip' => 'просмотр [[Special:WhatIsMyIP|собственного IP-адреса]]',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'whatismyip' => 'Яка є моя IP-адреса',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */

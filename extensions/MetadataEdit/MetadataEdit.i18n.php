@@ -773,9 +773,11 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Giangian15
  */
 $messages['mt'] = array(
+	'metadataedit-desc' => "Poġġi l-kategoriji, il-ħoloq għal-lingwi u mudelli permessi f'kaxxa tat-test separata waqt il-modifika tal-paġni",
 	'metadata_help' => 'Metadata:',
 );
 

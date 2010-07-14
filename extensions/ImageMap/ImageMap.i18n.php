@@ -40,7 +40,7 @@ $messages['qqq'] = array(
  * @author Alamnirvana
  */
 $messages['bjn'] = array(
-	'imagemap_invalid_coord' => 'Buntat: koordinat kada sah pada baris ka $1, musti barupa angka',
+	'imagemap_invalid_coord' => 'Nyunyuk: koordinat kada sah pada baris ka $1, musti barupa angka',
 );
 
 /** Afrikaans (Afrikaans)

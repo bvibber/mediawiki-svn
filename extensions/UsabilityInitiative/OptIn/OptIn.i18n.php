@@ -749,8 +749,8 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
 	'optin-leave-cancel' => "M'hoc'h eus c'hoant da genderc'hel da implijout Beta, e c'hallit distreiñ da $1.",
-	'optin-success-out' => "Kuitaet hoc'h eus Beta.
-Tu zo deoc'h e amprouiñ en-dro en ur glikañ war al liamm \"{{int:optin-try}}\" en nec'h, a-zehou ar skramm.",
+	'optin-success-out' => 'Kuitaet hoc\'h eus Beta.
+Gellout a rit e amprouiñ en-dro en ur glikañ war al liamm "{{int:optin-try}}" en nec\'h, a-zehou ar skramm.',
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
 	'optin-accept-long' => 'Amprouiñ Beta',
@@ -3843,14 +3843,14 @@ $messages['lt'] = array(
 	'optin-title-justoptedin' => 'Sveiki atvykę į Beta',
 	'optin-title-justoptedout' => 'Dėkojame, kad bandote Beta',
 	'optin-needlogin' => 'Jums reikia [$1 prisijungti], norint bandyti Beta',
-	'optin-intro' => 'Vikipedija Naudojimo iniciatyva dirbo siekiant pagerinti Vikipedijos naudojimą.
-Norite pabandyti Açai beta versiją?',
+	'optin-intro' => 'Vikipedijos Naudojimo Iniciatyvos grupė sunkiai dirbo, siekdami pagerinti Vikipedijos naudingumą.
+Gal norėtumėte pabandyti mūsų sukurtą Beta?',
 	'optin-success-in' => 'Dabar bandote Beta. 
 Galite grįžti bet kuriuo metu, paspaudę "{{int:optin-leave}}" viršutiniame dešiniajame ekrano kampe.',
 	'optin-leave-cancel' => 'Jei norite toliau naudoti Beta, galite grįžti į $1',
 	'optin-success-out' => 'Jūs sėkmingai palikote Beta.
 Galite vėl išmėginti Beta, bet kuriuo metu paspaudę "{{int:optin-try}}" viršutiniame dešiniajame ekrano kampe.',
-	'optin-accept-short' => 'Padarykime tai!',
+	'optin-accept-short' => 'Pabandykime!',
 	'optin-accept-long' => 'Išbandykite Beta',
 	'optin-deny-short' => 'Ne, ačiū',
 	'optin-deny-long' => 'Grįžti į ankstesnį puslapį',

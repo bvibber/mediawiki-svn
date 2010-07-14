@@ -155,6 +155,13 @@ $messages['fr'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activer le gadget « Assistant d’ajout de média »',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Activar l’outil « Assistent d’aponsa de mèdia »',
+);
+
 /** Scottish Gaelic (Gàidhlig)
  * @author Akerbeltz
  */

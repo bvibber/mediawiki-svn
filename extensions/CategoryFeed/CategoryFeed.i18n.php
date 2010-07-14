@@ -76,11 +76,12 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'categoryfeed-desc' => 'Yn defnyddio didau o borthiannau newidiadau diweddar.
-Creu fersiwn tudalen fewnol, yn arbennig o ddefnyddiol ar gyfer Wikinews',
+	'categoryfeed-desc' => "Yn defnyddio didau o borthiannau newidiadau diweddar.
+Yn cynhyrchu fersiwn oddi mewn i dudalen, sy'n arbennig o ddefnyddiol ar gyfer Wikinews",
 );
 
 /** German (Deutsch)

@@ -105,7 +105,7 @@ $messages['br'] = array(
 	'mwe-cancel' => 'Nullañ',
 	'mwe-enable-gadget' => 'Gweredekaat liesvedia beta (mwEmbed) war an holl bajennoù',
 	'mwe-enable-gadget-done' => 'Gweredekaet eo bet ar gadjet liesvedia beta',
-	'mwe-must-login-gadget' => 'Evit gweredekaat ar gadjet e rankoc\'h <a target="_new" href="$1">kevreañ</a>',
+	'mwe-must-login-gadget' => 'Evit gweredekaat ar gadjet e rankit <a target="_new" href="$1">kevreañ</a>',
 	'mwe-test-plural' => 'Sevenet em eus $1 amprouadenn{{PLURAL:$1||}}',
 );
 
