@@ -73,7 +73,7 @@ class SIOInternalObjectValue extends SMWWikiPageValue {
 	}
 	function getExportData() {
 		global $smwgNamespace;
-		return new SMWExpData( new SMWExpResource( null ) );
+		return new SMWExpData( new SMWExpResource( SIOExporter::getResolverURL() . $this->mSIOTitle->getPrefixedURL() ) );
 	}
 
 	function getTitle() {
@@ -82,6 +82,16 @@ class SIOInternalObjectValue extends SMWWikiPageValue {
 
 	function getWikiValue() {
 		return $this->mSIOTitle->getPrefixedName();
+	}
+}
+
+/**
+ * Class to work around the fact that SMWExporter::$m_ent_wiki is protected.
+ **/
+class SIOExporter extends SMWExporter {
+
+	static function getResolverURL() {
+		return SMWExporter::$m_ent_wiki;
 	}
 }
 
@@ -169,8 +179,13 @@ class SIOSQLStore extends SMWSQLStore2 {
 		return array( $upRels2, $upAtts2, $upText2, $upCoords );
 	}
 
-	static function createRDF( $title, $rdfDataArray ) {
-		$pageName = $title->getText();
+	static function createRDF( $title, $rdfDataArray, $fullexport = true, $backlinks = false ) {
+		// if it's not a full export, don't add internal object data
+		if ( !$fullexport ) {
+			return true;
+		}
+
+		$pageName = $title->getDBkey();
 		$namespace = $title->getNamespace();
 
 		// go through all SIOs for the current page, create RDF for
