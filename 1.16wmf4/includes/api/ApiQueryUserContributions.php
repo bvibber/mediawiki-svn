@@ -166,7 +166,7 @@ class ApiQueryContributions extends ApiQueryBase {
 
 		// Make sure private data (deleted revisions) isn't cached
 		$this->getMain()->setVaryCookie();
-		if ( !$wgUser->isAllowed( 'hideuser' ) ) {
+		if ( !$wgUser->isAllowed( 'hideuser' ) )
 			$this->addWhere( $this->getDB()->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0' );
 		// We only want pages by the specified users.
 		if ( $this->prefixMode )

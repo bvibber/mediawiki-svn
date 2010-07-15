@@ -96,7 +96,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 			if ( $this->fld_patrol ) {
 				$this->getMain()->setVaryCookie();
-				if ( !$user->useRCPatrol() && !$user->useNPPatrol() ) {
+				if ( !$user->useRCPatrol() && !$user->useNPPatrol() )
 					$this->dieUsage( 'patrol property is not available', 'patrol' );
 			}
 		}
