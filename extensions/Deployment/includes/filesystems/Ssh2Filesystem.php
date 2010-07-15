@@ -239,7 +239,7 @@ class Ssh2Filesystem extends Filesystem {
 	/**
 	 * @see Filesystem::getContents
 	 */
-	public function getContents() {
+	public function getContents( $file ) {
 		return file_get_contents( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
@@ -307,35 +307,35 @@ class Ssh2Filesystem extends Filesystem {
 	 * @see Filesystem::getSize
 	 */
 	public function getSize( $file ) {
-		
+		return filesize( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
 	/**
 	 * @see Filesystem::isDir
 	 */
 	public function isDir( $path ) {
-		
+		return is_dir( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
 	/**
 	 * @see Filesystem::isFile
 	 */
 	public function isFile( $path ) {
-		
+		return is_file( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
 	/**
 	 * @see Filesystem::isReadable
 	 */
 	public function isReadable( $file ) {
-		
+		return is_readable( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
 	/**
 	 * @see Filesystem::isWritable
 	 */
 	public function isWritable( $file ) {
-		
+		return is_writable( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
 	}
 
 	/**
