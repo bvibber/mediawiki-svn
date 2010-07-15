@@ -68,18 +68,12 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		DataTransclusionSource::__construct( $spec );
 
 		$this->url = $spec[ 'url' ];
+		$this->dataPath = @$spec[ 'dataPath' ];
+		$this->errorPath = @$spec[ 'errorPath' ];
 		$this->dataFormat = @$spec[ 'dataFormat' ];
-		$this->dataPath = DataTransclusionSource::splitList( @$spec[ 'dataPath' ], '/' );
 		$this->fieldPathes = @$spec[ 'fieldPathes' ];
-		$this->errorPath = DataTransclusionSource::splitList( @$spec[ 'errorPath' ], '/' );
 		$this->httpOptions = @$spec[ 'httpOptions' ];
 		$this->timeout = @$spec[ 'timeout' ];
-
-		if ( $this->fieldPathes ) {
-			foreach ( $this->fieldPathes as $i => $p ) {
-				$this->fieldPathes[ $i ] = DataTransclusionSource::splitList( $p, '/' );
-			}
-		}
 
 		if ( !$this->dataFormat ) {
 			$this->dataFormat = 'php';
@@ -200,14 +194,21 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	}
 
 	public function extractError( $data ) {
-		return $this->extractField( $data, $this->errorPath );
+		$err = $this->resolvePath( $data, $this->errorPath );
+
+		$err = $this->asString( $err );
+		return $err;
 	}
 
 	public function extractRecord( $data ) {
-		$rec = $this->extractField( $data, $this->dataPath );
+		$rec = $this->resolvePath( $data, $this->dataPath );
 
 		$rec = $this->flattenRecord( $rec );
 		return $rec;
+	}
+
+	public function asString( $value ) {
+		return "$value"; //XXX: will often fail. we could just throw here for non-primitives?
 	}
 
 	public function flattenRecord( $rec ) {
@@ -219,7 +220,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 			foreach ( $this->fieldNames as $k ) {
 				if ( isset( $this->fieldPathes[$k] ) ) { 
 					$path = $this->fieldPathes[$k];
-					$v = $this->extractField( $rec, $path );
+					$v = $this->resolvePath( $rec, $path );
 				} else {
 					$v = $rec[ $k ];
 				}
@@ -231,15 +232,25 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		} else {
 			return $rec;
 		}
+
+		foreach ( $rec as $k => $v ) {
+			if ( !is_null( $v ) && !is_string( $v ) && !is_int( $v ) ) {
+				$rec[ $k ] = $this->asString( $v ); 
+			}
+		}
 	}
 
-	public function extractField( $data, $path ) {
+	public function resolvePath( $data, $path, $split = true ) {
 		if ( is_object( $data ) ) {
 			$data = wfObjectToArray( $data );
 		}
 
 		if ( !is_array( $data ) || $path === '.' ) {
 			return $data; 
+		}
+
+		if ( $split && is_string( $path ) ) {
+			$path = DataTransclusionSource::splitList( $path, '/' );
 		}
 
 		if ( is_string( $path ) || is_int( $path ) ) {
@@ -268,7 +279,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		$next = $data[ $p ];
 
 		if ( $next && $path ) {
-			return $this->extractField( $next, $path );
+			return $this->resolvePath( $next, $path );
 		} else {
 			return $next;
 		}

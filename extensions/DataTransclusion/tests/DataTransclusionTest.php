@@ -64,6 +64,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->testHandleRecordTag();
 		$this->testDBDataTransclusionSource();
 		$this->testWebDataTransclusionSource();
+		$this->testXmlDataTransclusionSource();
 	}
 
 	function testErrorMessage() {
@@ -466,6 +467,28 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			$rec = $source->fetchRecord( 'name', 'foo' );
 			$this->assertEquals( $rec['id'], 3 );
 		}
+	}
+
+	function testXmlDataTransclusionSource() {
+		$spec = array(
+			'name' => 'FOO',
+			'keyFields' => 'item',
+			'optionNames' => 'lang',
+			'url' => 'http://acme.com/{name}',
+			'dataFormat' => 'rdf+xml',
+			'dataPath' => '/rdf:RDF',
+			'errorPath' => '/html//*[@class="error"]',
+			'fieldPathes' => array(
+			  'latitude' => './/pos:lat',
+			  'longitude' => './/pos:long',
+			),
+		);
+
+		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-item-{item}.rdf.xml';
+		$source = new XmlDataTransclusionSource( $spec );
+
+		$rec = $source->fetchRecord( 'item', 'Berlin' );
+		$this->assertEquals( $rec['latitude'], "52.461" );
 	}
 }
 
