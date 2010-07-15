@@ -1090,9 +1090,15 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'wikieditor-publish-preference' => 'Запнути кроковане публікованя',
 	'wikieditor-publish-button-publish' => 'Публіковати',
 	'wikieditor-publish-button-cancel' => 'Сторно',
+	'wikieditor-publish-dialog-title' => 'Публіковати на {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Опис едітованя (короткый опис змін, зробленых вами):',
+	'wikieditor-publish-dialog-minor' => 'Мала едітація',
+	'wikieditor-publish-dialog-watch' => 'Слїдовати тоту сторінку',
 	'wikieditor-publish-dialog-publish' => 'Публіковати',
+	'wikieditor-publish-dialog-goback' => 'Назад',
 );
 
 /** Yakut (Саха тыла)

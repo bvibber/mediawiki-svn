@@ -683,6 +683,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'vector-simplesearch-search' => 'Глядати',
+	'vector-simplesearch-containing' => 'обсягуючій...',
 );
 
 /** Yakut (Саха тыла)

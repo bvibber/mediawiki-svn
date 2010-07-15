@@ -665,6 +665,16 @@ $messages['ru'] = array(
 	'wikieditor-loading' => 'Загрузка',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor' => 'Росшыреный інтерфейс едітованя вікітексту',
+	'wikieditor-desc' => 'Забезпечує росшырительный інтерфейс едітованя вікітексту з богато функціоналныма модулами',
+	'wikieditor-wikitext-tab' => 'Вікітекст',
+	'wikieditor-loading' => 'Награває ся',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

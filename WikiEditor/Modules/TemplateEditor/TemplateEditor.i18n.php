@@ -719,6 +719,9 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'wikieditor-template-editor-preference' => 'Запнути формуларову едітацію шаблон вікі',
+	'wikieditor-template-editor-dialog-title' => 'Едітовати шаблону',
+	'wikieditor-template-editor-dialog-submit' => 'Обновити',
 	'wikieditor-template-editor-dialog-cancel' => 'Сторно',
 );
 

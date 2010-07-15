@@ -2221,7 +2221,7 @@ Pour en savoir plus sur l’initiative d’utilisabilité, visitez notre [http:/
  */
 $messages['frp'] = array(
 	'optin' => 'Participar a l’iniciativa d’utilisabilitât',
-	'optin-desc' => 'Pèrmèt ux utilisators d’èprovar la Bèta, les mèlyoracions de l’iniciativa d’utilisabilitât.',
+	'optin-desc' => 'Pèrmèt ux utilisators d’èprovar la Bèta, les dèrriéres mèlyoracions de l’iniciativa d’utilisabilitât.',
 	'optin-title-optedout' => 'Èprovar la Bèta',
 	'optin-title-optedin' => 'Quitar la Bèta',
 	'optin-title-justoptedin' => 'Benvegnua a la Bèta',
@@ -2251,8 +2251,8 @@ Vos la pouede tornar èprovar a tot moment en cliquent sur lo lim « {{int:optin
 	'optin-survey-intro' => 'Grant-marci d’èprovar la Bèta.
 Nos amerians savêr cen que vos pensâd de noutra novèla entèrface, donc nos aprèciyerians que vos rempléd lo quèstionèro u chouèx ce-desot devant que clicar dessus « [[#leave|{{int:optin-submit-out}}]] ».',
 	'optin-survey-question-likedislike' => 'Qu’est-o que vos éd amâ dens la Bèta ? Qu’est-o que vos éd pas amâ dens la Bèta ?',
-	'optin-survey-question-whyoptout' => 'Porquè quitâd-vos la Bèta ? (Chouèsésséd tot cen que convint.)',
-	'optin-survey-answer-whyoptout-hard' => 'Ére trop mâlésiê de l’utilisar.',
+	'optin-survey-question-whyoptout' => 'Porquè quitâd-vos la Bèta ? (Volyéd chouèsir tot cen que convint.)',
+	'optin-survey-answer-whyoptout-hard' => 'O ére trop mâlésiê de l’utilisar.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Cen fonccione pas bien.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Cen s’est pas passâ coment prèvu.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'J’é pas amâ son aparence.',
@@ -2263,7 +2263,7 @@ Nos amerians savêr cen que vos pensâd de noutra novèla entèrface, donc nos a
 	'optin-survey-question-techfail' => 'Éd-vos rencontrâ des problèmos tècnicos en utilisent la Bèta ?',
 	'optin-survey-question-techfail-ifyes' => 'Se ouè, èxplicâd ou ben aprovondésséd :',
 	'optin-survey-question-usedtoolbar' => 'Éd-vos utilisâ la bârra d’outils dèroulâbla novèla por changiér una pâge ?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'Se ouè, qu’éd-vos amâ et qu’éd-vos pas amâ a son propôs ?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Se ouè, qu’est-o que vos éd amâ et pués qu’est-o que vos éd pas amâ a son propôs ?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Se nan, porquè ? L’utiliseréd-vos dens l’avegnir ? Èxplicâd.',
 	'optin-survey-question-different' => 'Qu’est-o qu’arêt diu étre difèrent por que vos continuâd a utilisar la Bèta ?',
 	'optin-survey-question-feedback' => 'Balyéd-nos voutron avis :',
@@ -2272,7 +2272,7 @@ Nos amerians savêr cen que vos pensâd de noutra novèla entèrface, donc nos a
 	'optin-survey-question-os' => 'Quint sistèmo d’èxplouètacion utilisâd-vos ?',
 	'optin-survey-answer-os-other' => 'Ôtro sistèmo d’èxplouètacion :',
 	'optin-survey-question-res' => 'Quinta est la rèsolucion de voutron ècran ?',
-	'optin-survey-question-changes' => 'Qu’ameriâd-vos vêre dens la Bèta dens l’avegnir (chouèsésséd tot cen que convint) ?',
+	'optin-survey-question-changes' => 'Qu’ameriâd-vos vêre dens la Bèta dens l’avegnir (volyéd chouèsir tot cen que convint) ?',
 	'optin-survey-answer-changes-nav' => 'Fâre que la navigacion g·ènèrala du seto seye ples simpla a utilisar.',
 	'optin-survey-answer-changes-edittools' => 'Ôgmentar et mèlyorar los outils d’èdicion.',
 	'optin-survey-answer-changes-upload' => 'Mèlyorar lo tèlèchargement de contegnu et de fichiérs multimèdia.',
@@ -3529,16 +3529,16 @@ $messages['krc'] = array(
 	'optin-needlogin' => '[$1 Системагъа кирирге] керексиз бета-версияны сынар ючюн.',
 	'optin-intro' => 'Юзабилити башламчылыкъны юсю бла Википедияны хайырланыу тынчыракъ болурча иш бардырылгъанды.
 Бета-версияны саныргъа излеймисиз?',
-	'optin-feedback-intro' => 'Интерфейсни бета-версиясын сынаргъа хо болгъаныгъыз ючюн сау болугъуз.
-Джангы интерфейсни юсюнден оюмугъузну билирге излейбиз, аны ючюн тюбюрекде берилген соруб алыугъа къошулсагъыз, ыспас этерикбиз.',
-	'optin-feedback-back' => 'Соруб алыугъа къошулургъа излемей эсегиз, $1 бетге къайтыргъа боллукъсуз.',
+	'optin-feedback-intro' => 'Интерфейсни бета-версиясын сынаргъа разы болгъаныгъыз ючюн саў болугъуз.
+Джангы интерфейсни юсюнден оюмугъузну билирге излейбиз, аны ючюн тюбюрекде берилген соруб алыўгъа къошулсагъыз, разы боллукъбуз.',
+	'optin-feedback-back' => 'Соруб алыўгъа къошулургъа излемей эсегиз, $1ге къайтыргъа боллукъсуз.',
 	'optin-success-in' => 'Энди сиз интерфейсни бета-версиясын сынаугъа къошулгъансыз.
 Сиз программадан къачан сюйсегиз да чыгъаргъа боллукъсуз, экранны баш джанында «{{int:optin-leave}}» джибериуден басханлай.',
 	'optin-leave-cancel' => 'Мындан ары да бета-версияны хайырланыргъа излей эсегиз, къайтыргъа боллукъсуз: $1.',
 	'optin-success-out' => 'Интерфейсни бета-версиясын сынагъан режимден тыйыншлы чыкъдыгъыз.
 Экранны баш онг мюйюшюнде «{{int:optin-try}}» джибериуню басыб, энтда сынаб кёрюрге боллукъсуз бу версияны.',
 	'optin-success-feedback' => 'Оюмугъузну билдиргенигиз ючюн сау болугъуз!',
-	'optin-accept-short' => 'Этейик алай!',
+	'optin-accept-short' => 'Алгъа!',
 	'optin-accept-long' => 'Бета-версияны сынаб кёр',
 	'optin-accept-long-anon' => 'Авторизацияны ёт да интерфейсни бета-версиясын сынаб кёр',
 	'optin-deny-short' => 'Огъай, сау болугъуз.',
@@ -3547,10 +3547,10 @@ $messages['krc'] = array(
 	'optin-submit-feedback' => 'Оюмугъузну ийигиз',
 	'optin-survey-yes' => 'Хоу',
 	'optin-survey-no' => 'Огъай',
-	'optin-survey-intro' => 'Интерфейсни бета-версиясын сынаугъа къошулгъаныгъыз ючюн сау болугъуз.
-Джангы интерфейсни юсюнден оюмугъузун билирге излейбиз, аны ючюн, «[[#leave|{{int:optin-submit-out}}]]» тиекни басарыгъызны аллы бла, тюбюрекде берилген соруулагъа джууаб берсегиз, разы боллукъ эдик.',
-	'optin-survey-question-likedislike' => 'Beta-ны несин джаратдыгъыз? Beta-ны несин джарамадыгъыз?',
-	'optin-survey-question-whyoptout' => 'Beta-дан нек чыгъасыз? (бютеу келишгенлени сайлагъыз)',
+	'optin-survey-intro' => 'Интерфейсни бета-версиясын сынаўгъа къошулгъаныгъыз ючюн саў болугъуз.
+Джангы интерфейсни юсюнден оюмугъузну билирге излейбиз, аны ючюн, «[[#leave|{{int:optin-submit-out}}]]» тиекни басарыгъызны аллы бла, тюбюрекде берилген соруўлагъа джуўаб берсегиз, разы боллукъбуз.',
+	'optin-survey-question-likedislike' => 'Beta-ны несин джаратдыгъыз? Beta-ны несин джаратмадыгъыз?',
+	'optin-survey-question-whyoptout' => 'Beta-дан нек чыгъасыз? (бютеў келишгенлени вариантланы сайлагъыз)',
 	'optin-survey-answer-whyoptout-hard' => 'Хайырланнган асыры къыйынды.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Тюзюуюн ишлемейди.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Алгъадан билмезча ишлейди.',
@@ -3558,7 +3558,7 @@ $messages['krc'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Джангы тиекле бла вёрсткасын джаратмадым.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Джангы редакторлау панелни джаратмадым.',
 	'optin-survey-answer-whyoptout-other' => 'Башха чурум:',
-	'optin-survey-question-explain' => 'Башында берген джууабыгъызны ангылатыгъыз эмда кескинлегиз.',
+	'optin-survey-question-explain' => 'Башында берген джууабыгъызны ангылатыгъыз неда кескинлегиз:',
 	'optin-survey-question-techfail' => 'Beta-ны хайырланнган сагъатда техника джанындан бузукъ болгъанмыды?',
 	'optin-survey-question-techfail-ifyes' => 'Болгъан эсе, кескинлегиз эмда ангылатыгъыз:',
 	'optin-survey-question-usedtoolbar' => 'Бетлени редакторлагъан сагъатда джангы инструмент панелни хайырланнган эдигизми?',
@@ -3568,8 +3568,8 @@ $messages['krc'] = array(
 	'optin-survey-question-feedback' => 'Тилейбиз, бизге оюмугъузну билдиригиз:',
 	'optin-survey-question-browser' => 'Къайсы браузерни хайырланасыз?',
 	'optin-survey-answer-browser-other' => 'Башха браузер:',
-	'optin-survey-question-os' => 'Къайсы операцион системаны хайырландырасыз?',
-	'optin-survey-answer-os-other' => 'Башха операцион система:',
+	'optin-survey-question-os' => 'Къайсы операция системаны хайырландырасыз?',
+	'optin-survey-answer-os-other' => 'Башха операция система:',
 	'optin-survey-question-res' => 'Экраныгъызны разрешениеси къаллайды?',
 	'optin-survey-question-changes' => 'Эндиги бета-версиялада къаллай тюрлениулени кёрюрге сюе эдигиз (келишген пунктланы сайлагъыз)?',
 	'optin-survey-answer-changes-nav' => 'Сайтда бютеулей навигация тынчыракъ этилсин.',
@@ -3584,7 +3584,7 @@ $messages['krc'] = array(
 [[File:UsabilityToolbar.png|left|link=|Кенгертилиннген редакторлаў панелни сураты]]
 [[File:UsabilityDialogs.png|left|link=|Джангы къураў диалогланы сураты]]
 ; Кенгертилиннген инструмент панель
-Кенгертилиннген инструмент панель статьяланы редакторлагъанны тынчыракъ этеди. Джангы эмда игилендирилген сурат-белгиле этимлери бла интрументлени келишиўлерин тюзюрек кёргюзтедиле. Ачылыўчу бёлюмле тизгинсизликни азайтады, алай а аз хайырланнган инструментлени чычхан бла бир басыў узакълыкъда тутадыла.
+Кенгертилиннген инструмент панель статьяланы редакторлагъанны тынчыракъ этеди. Джангы эмда игилендирилген сурат-белгиле этимлери бла интрументлени келишиўлерин тюзюрек кёргюзтедиле. Ачылыўчу бёлюмле тизгинсизликни азайтадыла, алай а аз хайырланнган инструментлени чычхан бла бир басыў узакълыкъда тутадыла.
 ; Диалогну терезеси
 Энди джибериўле неда таблицала салгъан сагъатда, келишген сурат-белгиден басаргъа боллукъду, ачылгъан диалог терезе, тынч форманы толтуруў бла, джибериў неда таблица къураргъа болушурукъду.
 ; Дагъыда
@@ -5383,6 +5383,28 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'optin-title-optedout' => 'Опробовати Бета-верзію',
+	'optin-title-optedin' => 'Опустити Бета-верзію',
+	'optin-title-justoptedin' => 'Витайте в Бета-верзії',
+	'optin-title-justoptedout' => 'Дякуєме вам за опробованя нашой Бета',
+	'optin-title-feedback' => 'Назоры на Бета',
+	'optin-needlogin' => 'Кідь хочете спробовати Бета, мусите ся [$1 приголосити].',
+	'optin-deny-short' => 'Ніт, дякую',
+	'optin-survey-yes' => 'Гей',
+	'optin-survey-no' => 'Ніт',
+	'optin-survey-answer-whyoptout-hard' => 'Была дуже тяжка на хоснованя.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Не фунґовала справнї.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Не працовала предвідаво.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Не любив ся мі єй взгляд.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Не любили ся мі новы заложкы і композіція.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Не любив ся мі новый панел інштрументів.',
+	'optin-survey-answer-whyoptout-other' => 'Інша причіна:',
+	'optin-survey-question-explain' => 'Поясните або доповните вашу одповідь выше:',
+	'optin-survey-question-browser' => 'Якый вебовый переглядач хоснуєте?',
+	'optin-survey-answer-browser-other' => 'Іншый веб-переглядач:',
+	'optin-survey-question-os' => 'Якый операчный сістем хоснуєте?',
+	'optin-survey-answer-os-other' => 'Іншый операчный сістем:',
+	'optin-survey-question-res' => 'Яке є розлішіня вашой образовкы?',
 	'optin-survey-answer-changes-other' => 'Інше:',
 );
 

@@ -670,6 +670,16 @@ $messages['ru'] = array(
 	'prefs-labs' => 'Экспериментальные возможности',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'usabilityinitiative' => 'Ініціатіва хосновательности',
+	'usabilityinitiative-desc' => 'Вылїпшіня хосновательности МедіаВікі, зроблены в рамках Ініціатівы хосновательности Вікіпедії (Wikipedia Usability Initiative)',
+	'prefs-beta' => 'Бета-функції',
+	'prefs-labs' => 'Експеріменталны функції',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -286,6 +286,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'wikieditor-previewDialog-preference' => 'Activar la bouèta de dialogo d’apèrçu',
 	'wikieditor-previewDialog-tab' => 'Prèvisualisacion',
 	'wikieditor-previewDialog-loading' => 'Chargement...',
 );

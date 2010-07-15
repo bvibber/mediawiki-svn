@@ -683,6 +683,18 @@ $messages['ru'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Опробуйте новые возможности',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'prefswitch-link-anon' => 'Новы функції',
+	'tooltip-pt-prefswitch-link-anon' => 'Дознайте ся о новых функціях',
+	'prefswitch-link-on' => 'Зробити як было',
+	'tooltip-pt-prefswitch-link-on' => 'Выпнути новы функції',
+	'prefswitch-link-off' => 'Новы функції',
+	'tooltip-pt-prefswitch-link-off' => 'Спробуйте новы можности',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

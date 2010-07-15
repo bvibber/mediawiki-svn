@@ -380,6 +380,13 @@ $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-templates-preference' => 'Запнути згортаня шаблон',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

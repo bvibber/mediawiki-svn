@@ -514,6 +514,14 @@ $messages['ru'] = array(
 	'vector-collapsiblenav-more' => 'Больше языков',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'vector-collapsiblenav-preference' => 'Поволити згортати положкы навіґачного меню во взглядї «Векторне»',
+	'vector-collapsiblenav-more' => 'Іншы языкы',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -552,9 +560,10 @@ $messages['su'] = array(
 /** Swedish (Svenska)
  * @author Ainali
  * @author Boivie
+ * @author MagnusA
  */
 $messages['sv'] = array(
-	'vector-collapsiblenav-preference' => 'Aktivera ihoppfällning av poster i navigeringsmenyn i Vector-utseendet',
+	'vector-collapsiblenav-preference' => 'Aktivera hopfällning av poster i navigeringsmenyn i Vector-utseendet',
 	'vector-collapsiblenav-more' => 'Fler språk',
 );
 
