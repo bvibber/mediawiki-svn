@@ -31,7 +31,6 @@ $messages['en'] = array(
 	'code-authors' => 'authors',
 	'code-status' => 'states',
 	'code-tags' => 'tags',
-	'code-tests' => 'Test cases',
 	'code-authors-text' => 'Below is a list of repo authors in order of recent commits. Local wiki accounts are shown in parentheses.',
 	'code-author-haslink' => 'This author is linked to the wiki user $1',
 	'code-author-orphan' => 'This author has no link with a wiki account',
@@ -52,7 +51,6 @@ $messages['en'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Date',
 	'code-field-comments' => 'Notes',
-	'code-field-tests' => 'Tests',
 	'code-field-path' => 'Path',
 	'code-field-text' => 'Note',
 	'code-field-select' => 'Select',
@@ -114,12 +112,6 @@ $messages['en'] = array(
 	'codereview-subtitle' => 'For $1',
 
 	'codereview-reply-link' => 'reply',
-	
-	'codereview-tests-succeeded2' => '$1 succeeded {{PLURAL:$2|test|tests}}',
-	'codereview-tests-failed2'  => '$1 succeeded {{PLURAL:$2|test|tests}}, $3 failed {{PLURAL:$4|test|tests}}:',
-	'codereview-tests-running' => 'Test cases are running...',
-	'codereview-tests-aborted' => 'Test run aborted.',
-	'codereview-tests-failed' => 'Failed',
 
 	'codereview-email-subj' => '[$1] [$2]: New comment added',
 	'codereview-email-body' => 'User "$1" posted a comment on $3.
@@ -138,15 +130,6 @@ Full URL: $3
 Commit summary:
 
 $4',
-
-	'codereview-email-subj3' => '[$1] [$2]: Automatic testing detected regression',
-	'codereview-email-body3' => 'Automatic testing has revealed a regression due to the changes in $1.
-
-Full URL: $2
-
-Commit summary:
-
-$3',
 
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',
@@ -219,14 +202,6 @@ $messages['qqq'] = array(
 ----
 $1 = Repository name',
 	'codereview-reply-link' => '{{Identical|Reply}}',
-	'codereview-tests-succeeded2' => 'Parameters:
-* $1 is a formatted form of the number succeeded tests (has a span)
-* $2 is the number of succeeded tests',
-	'codereview-tests-failed2' => 'Parameters:
-* $1 is a formatted form of the number succeeded tests (has a span)
-* $2 is the number of succeeded tests
-* $3 is a formatted form of the number failed tests (has a span)
-* $4 is the number of failed tests',
 	'codereview-email-subj2' => 'Subject of an e-mail sent to a user whose revision has been followed upon.
 * <code>$1</code> – Repository name
 * <code>$2</code> – Number of the original revision (which has been followed upon)',
@@ -235,11 +210,6 @@ $1 = Repository name',
 * <code>$2</code> – Number of the revision that has been followed upon.
 * <code>$3</code> – URL to the new revision.
 * <code>$4</code> – Commit message of the new revision.',
-	'codereview-email-subj3' => '* <code>$1</code> – Repository name
-* <code>$2</code> – Number of the revision',
-	'codereview-email-body3' => '* <code>$1</code> – Number of the revision where a regression has been introduced
-* <code>$2</code> – URL to the revision
-* <code>$3</code> – Commit message for the revision',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',

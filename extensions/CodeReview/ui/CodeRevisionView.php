@@ -92,12 +92,6 @@ class CodeRevisionView extends CodeView {
 		}
 
 		$html .= $this->formatMetaData( $fields );
-		# Show test case info
-		$tests = $this->formatTests();
-		if ( $tests ) {
-			$html .= "<h2 id='code-tests'>" . wfMsgHtml( 'code-tests' ) .
-				"</h2>\n" . $tests;
-		}
 		# Output diff
 		if ( $this->mRev->isDiffable() ) {
 			$diffHtml = $this->formatDiff();
@@ -301,56 +295,6 @@ class CodeRevisionView extends CodeView {
 		$repo = $this->mRepo->getName();
 		$special = SpecialPage::getTitleFor( 'Code', "$repo/tag/$tag" );
 		return $this->mSkin->link( $special, htmlspecialchars( $tag ) );
-	}
-
-	protected function formatTests() {
-		$runs = $this->mRev->getTestRuns();
-		$html = '';
-		if ( count( $runs ) ) {
-			foreach ( $runs as $run ) {
-				$html .= "<h3>" . htmlspecialchars( $run->suite->name ) . "</h3>\n";
-				if ( $run->status == 'complete' ) {
-					global $wgLang;
-
-					$total = $run->countTotal;
-					$success = $run->countSuccess;
-					$failed = $total - $success;
-					$success_tests = "<span class='mw-codereview-success'>" . $wgLang->formatNum( $success ) . "</span>";
-					if ( $failed ) {
-						$failed_tests = "<span class='mw-codereview-fail'>" . $wgLang->formatNum( $failed ) . "</span>";
-						$html .= wfMsgExt(
-							'codereview-tests-failed2',
-							'parse',
-							$success_tests,
-							$success,
-							$failed_tests,
-							$failed
-						);
-
-						$tests = $run->getResults( false );
-						$html .= "<ul>\n";
-						foreach ( $tests as $test ) {
-							$html .= "<li>" . htmlspecialchars( $test->caseName ) . "</li>\n";
-						}
-						$html .= "</ul>\n";
-					} else {
-						$html .= wfMsgExt(
-							'codereview-tests-succeeded2',
-							'parseinline',
-							$success_tests,
-							$success
-						);
-					}
-				} elseif ( $run->status == "running" ) {
-					$html .= wfMsgExt( 'codereview-tests-running', 'parse' );
-				} elseif ( $run->status == "abort" ) {
-					$html .= wfMsgExt( 'codereview-tests-aborted', 'parse' );
-				} else {
-					// Err, this shouldn't happen?
-				}
-			}
-		}
-		return $html;
 	}
 
 	protected function formatDiff() {

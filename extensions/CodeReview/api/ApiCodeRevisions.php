@@ -89,9 +89,6 @@ class ApiCodeRevisions extends ApiQueryBase {
 		if ( isset( $this->props['commentcount'] ) ) {
 			$item['commentcount'] = $row->comments;
 		}
-		if ( isset( $this->props['tests'] ) ) {
-			$item['tests'] = $row->tests;
-		}
 		if ( isset( $this->props['path'] ) ) {
 			$item['path'] = $row->cr_path;
 		}
@@ -128,7 +125,6 @@ class ApiCodeRevisions extends ApiQueryBase {
 					'revid',
 					'status',
 					'commentcount',
-					'tests',
 					'path',
 					'message',
 					'author',
