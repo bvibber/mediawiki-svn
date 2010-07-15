@@ -368,7 +368,7 @@ class Ssh2Filesystem extends Filesystem {
 
 			if ( 
 				('.' == $struc['name'] || '..' == $struc['name'] ) 
-				|| ( !$include_hidden && '.' == $struc['name'][0] )
+				|| ( !$includeHidden && '.' == $struc['name'][0] )
 				|| ( $limit_file && $struc['name'] != $limit_file )
 				) {
 					continue; // Do not care about these folders.
@@ -388,7 +388,7 @@ class Ssh2Filesystem extends Filesystem {
 
 			if ( 'd' == $struc['type'] ) {
 				if ( $recursive ) {
-					$struc['files'] = $this->dirlist( $path . '/' . $struc['name'], $include_hidden, $recursive );
+					$struc['files'] = $this->listDir( $path . '/' . $struc['name'], $includeHidden, $recursive );
 				}
 				else {
 					$struc['files'] = array();
