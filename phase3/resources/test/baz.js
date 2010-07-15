@@ -1,2 +1,2 @@
 // Test output
-mw.log( 'Baz (first)' );
+mw.log( 'Baz (1)' );

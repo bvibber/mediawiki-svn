@@ -1,2 +1,2 @@
 // Test output
-mw.log( 'Buz (first)' );
+mw.log( 'Buz (2)' );

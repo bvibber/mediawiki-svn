@@ -65,11 +65,11 @@ class ResourceLoader {
 			'style' => 'resources/test/bar.css',
 		),
 		'buz' => array(
-			'script' => 'resources/test/baz.js',
+			'script' => 'resources/test/buz.js',
 			'loader' => 'resources/test/loader.js',
 		),
 		'baz' => array(
-			'script' => 'resources/test/buz.js',
+			'script' => 'resources/test/baz.js',
 			'loader' => 'resources/test/loader.js',
 		),
 		'wikibits' => array(

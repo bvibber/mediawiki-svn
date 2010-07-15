@@ -1,2 +1,2 @@
 // Test output
-mw.log( 'Bar (second)' );
+mw.log( 'Bar (3)' );

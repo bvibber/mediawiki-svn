@@ -1,2 +1,2 @@
 // Test output
-mw.log( 'Test (fourth)' );
+mw.log( 'Test (5)' );
