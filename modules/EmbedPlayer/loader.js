@@ -90,18 +90,11 @@
 
 	/**
 	* Check the current DOM for any tags in "EmbedPlayer.RewriteTags"
-	* 
-	* NOTE: this function can be part of setup can run prior to jQuery being ready
 	*/
 	mw.documentHasPlayerTags = function() {
 		var rewriteTags = mw.getConfig( 'EmbedPlayer.RewriteTags' );			
-		if( rewriteTags ) {			
-			var jtags = rewriteTags.split( ',' );
-			for ( var i = 0; i < jtags.length; i++ ) { 
-				if( document.getElementsByTagName( jtags[i] )[0] ) {				
-					return true;
-				}
-			}
+		if( $j( rewriteTags ).length != 0 ) {			
+			return true;			
 		}
 		
 		var tagCheckObject = { 'hasTags' : false };
@@ -244,9 +237,7 @@
 			dependencyRequest.push( 'mw.style.PlayerSkin' + pSkin );
 		}	
 		
-		// Allow extension to extend the request. 
-		//mw.log( 'LoaderEmbedPlayerUpdateRequest' );
-		
+		// Allow extension to extend the request. 				
 		$j( mw ).trigger( 'LoaderEmbedPlayerUpdateRequest', 
 				[ playerElement, dependencyRequest ] );
 

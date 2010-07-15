@@ -1532,12 +1532,18 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		} else {
 			tm.seconds = Math.round( tm.seconds );
 		}
-		if ( tm.seconds < 10 )
+		if ( tm.seconds < 10 ){
 			tm.seconds = '0' +	tm.seconds;
-		if ( tm.minutes < 10 )
-			tm.minutes = '0' + tm.minutes;
-	
-		return tm.hours + ":" + tm.minutes + ":" + tm.seconds;
+		}
+		if( tm.hours == 0 ){
+			hoursStr = ''
+		} else {
+			if ( tm.minutes < 10 )
+				tm.minutes = '0' + tm.minutes;
+			
+			hoursStr = tm.hours + ":"; 
+		}
+		return hoursStr + tm.minutes + ":" + tm.seconds;
 	}
 	
 	/**
@@ -2175,7 +2181,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 *            callback Function called once all triggers have been run
 	 * 
 	 */
-	mw.runTriggersCallback = function( targetObject, triggerName, callback ){
+	mw.runTriggersCallback = function( targetObject, triggerName, callback ){		
 		mw.log( ' runTriggersCallback:: ' + triggerName  );
 		// If events are not present directly run callback
 		if( ! $j( targetObject ).data( 'events' ) ||
@@ -2196,7 +2202,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		
 		mw.log(" runTriggersCallback:: " + callbackCount );
 		var callInx = 0;
-		$j( targetObject ).trigger( 'checkPlayerSourcesEvent', function() {
+		$j( targetObject ).trigger( triggerName, function() {
 			callInx++;
 			if( callInx == callbackCount ){										
 				// Run callback
