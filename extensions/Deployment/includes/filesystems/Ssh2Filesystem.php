@@ -314,14 +314,14 @@ class Ssh2Filesystem extends Filesystem {
 	 * @see Filesystem::isDir
 	 */
 	public function isDir( $path ) {
-		return is_dir( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
+		return is_dir( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $path, '/' ) );
 	}
 
 	/**
 	 * @see Filesystem::isFile
 	 */
 	public function isFile( $path ) {
-		return is_file( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $file, '/' ) );
+		return is_file( 'ssh2.sftp://' . $this->sftpConnection . '/' . ltrim( $path, '/' ) );
 	}
 
 	/**
@@ -349,21 +349,44 @@ class Ssh2Filesystem extends Filesystem {
 	 * @see Filesystem::makeDir
 	 */
 	public function makeDir( $path, $chmod = false, $chown = false, $chgrp = false ) {
+		$path = rtrim( $path, '/' );
 		
+		if ( !$chmod ) {
+			$chmod = FS_CHMOD_DIR;
+		}
+			
+		if ( !ssh2_sftp_mkdir( $this->sftpConnection, $path, $chmod, true ) ) {
+			return false;
+		}
+			
+		if ( $chown ) {
+			$this->chown( $path, $chown );
+		}
+			
+		if ( $chgrp ) {
+			$this->chgrp( $path, $chgrp );
+		}
+			
+		return true;		
 	}
 
 	/**
 	 * @see Filesystem::touch
 	 */
 	public function touch( $file, $time = 0, $atime = 0 ) {
-		
+		return false;
 	}
 
 	/**
 	 * @see Filesystem::writeToFile
 	 */
 	public function writeToFile( $file, $contents ) {
-		
+		$file = ltrim( $file, '/' );
+		$ret = file_put_contents( 'ssh2.sftp://' . $this->sftpConnection . '/' . $file, $contents );
+
+		$this->chmod( $file );
+
+		return $ret !== false;		
 	}	
 	
 	protected function  runCommandRecursivly( $command, $file, $recursive, $mode = false ) {
@@ -372,10 +395,10 @@ class Ssh2Filesystem extends Filesystem {
 		}
 		
 		if ( !$mode ) {
-			if ( $this->is_file($file) ) {
+			if ( $this->isFile( $file ) ) {
 				$mode = FS_CHMOD_FILE;
 			}
-			elseif ( $this->is_dir($file) ) {
+			elseif ( $this->isDir( $file ) ) {
 				$mode = FS_CHMOD_DIR;
 			}
 			else {
