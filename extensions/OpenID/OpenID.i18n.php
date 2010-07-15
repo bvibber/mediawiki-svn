@@ -679,7 +679,7 @@ $messages['br'] = array(
 	'openidconfigerrortext' => "N'eo ket mat stokañ ar c'hefluniañ OpenID evit ar wiki-mañ.
 Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] al lec'hienn-mañ.",
 	'openidpermission' => 'Fazi aotre OpenID',
-	'openidpermissiontext' => "N'eo ket aotreet an OpenID ho peus roet d'en em lugañ war ar servijer-mañ.",
+	'openidpermissiontext' => "N'eo ket aotreet an OpenID hoc'h eus roet da gevreañ war ar servijer-mañ.",
 	'openidcancel' => 'Gwiriekadur nullet',
 	'openidcanceltext' => "Nullet eo bet ar gwiriekadenn eus ar chomlec'h OpenID.",
 	'openidfailure' => "C'hwitet eo ar gwiriadur",
@@ -687,7 +687,7 @@ Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] 
 	'openidsuccess' => 'Gwiriet pep tra ervat',
 	'openidsuccesstext' => "Gwiriet eo bet chomlec'h an OpenID ervat.",
 	'openidusernameprefix' => 'Implijer OpenID',
-	'openidserverlogininstructions' => 'Lakait ho ger tremen amañ a-is evit en em lugañ e $3 evel an implijer $2 (pajenn implijer $1).',
+	'openidserverlogininstructions' => 'Lakait ho ger tremen amañ a-is evit kevreañ e $3 evel an implijer $2 (pajenn implijer $1).',
 	'openidtrustinstructions' => "Gwiriañ ha c'hoant hoc'h eus da rannañ titouroù gant $1.",
 	'openidallowtrust' => 'Aotren $1 da fiziout er gont implijer-mañ.',
 	'openidnopolicy' => "N'en deus ket meneget al lec'hienn a bolitikerezh prevezded.",

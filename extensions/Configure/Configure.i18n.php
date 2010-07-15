@@ -1255,6 +1255,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -1301,6 +1302,7 @@ $messages['br'] = array(
 	'configure-no-transwiki' => "N'oc'h ket aotreet da gemmañ reoliadurioù wikioù all",
 	'configure-old' => 'Stummoù kozh',
 	'configure-old-versions' => "Roll stummoù kozh ar c'hefluniadur :",
+	'configure-old-not-available' => "Ar stumm kent eus ar c'hefluniadur bet goulennet ganeoc'h, $1, a zo dizimplijadus",
 	'configure-old-changes' => 'kemmoù',
 	'configure-old-summary' => '$1 dre $2 $4 $3',
 	'configure-saved' => "Enrollet eo bet ar c'hefluniadur",

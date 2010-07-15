@@ -434,6 +434,13 @@ $messages['ru'] = array(
 	'wikieditor-highlight-preference' => 'Включить подсветку синтаксиса при редактировании',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-highlight-preference' => 'Почас едітованя высвічовати сінтакс',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

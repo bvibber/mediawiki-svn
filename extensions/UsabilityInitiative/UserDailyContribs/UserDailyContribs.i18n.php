@@ -398,6 +398,13 @@ $messages['ru'] = array(
 	'userdailycontribs-desc' => 'Ежедневный вклад участников для расширения отслеживания нажатий',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'userdailycontribs-desc' => 'Штоденны приспевкы хоснователїв про росшырїня што слїдує клікнутя',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

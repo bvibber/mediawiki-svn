@@ -360,6 +360,13 @@ $messages['ru'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Включить гаджет «Мастер добавления медиа»',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Поволити додаток «Майстер придаваня медіа»',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

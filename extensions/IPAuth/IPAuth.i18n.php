@@ -47,9 +47,10 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
-	'ipauth-desc' => "Lugañ emgefre adalek ur chomlec'h IP stabil",
+	'ipauth-desc' => "Kevreañ emgefre adalek ur chomlec'h IP stabil",
 );
 
 /** Bosnian (Bosanski)

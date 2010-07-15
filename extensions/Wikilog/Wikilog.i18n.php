@@ -1274,8 +1274,8 @@ Rankout a rafent bezañ implijet e pennadoù an esaouenn anv Wikilog hepken.",
 	'wikilog-comment-invalid-name' => 'Direizh eo an anv pourchaset.',
 	'wikilog-no-such-article' => "N'eus ket eus ar pennad wikilog goulennet.",
 	'wikilog-reading-draft' => "Un tamm brouilhoñs eo ar pennad wikilog-mañ. N'eo ket bet embannet c'hoazh.",
-	'wikilog-posting-anonymously' => "N'oc'h ket keveet evit poent ;
-embannet e vo hoc'h evezhiadenn en un doare dizanv, anavezet gant ho chomlec'h lugañ da Internet.
+	'wikilog-posting-anonymously' => "N'oc'h ket kevreet evit poent ;
+embannet e vo hoc'h evezhiadenn en un doare dizanv, anavezet gant ho chomlec'h kevreañ da Internet.
 Rankout a rafec'h lakaat ul lesanv a-us a-benn anavezout hoc'h evezhiadenn, pe $1 evit ma vefe deroet en un doare reizh.",
 	'wikilog-anonymous-moderated' => "Ur wech ma vo postet hoc'h evezhiadenn ganeoc'h, ne vo ket posupl e lenn kerkent.
 Ne vo gwelet an evezhiadenn nemet ur wech ma vo bet gwiriet gant ur merour.",

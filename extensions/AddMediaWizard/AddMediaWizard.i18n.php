@@ -231,7 +231,7 @@ $messages['mg'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'addmediawizard-desc' => 'Додај помошник со медии, изработен во партнерство со Kaltura и Фондацијата Викимедија.',
+	'addmediawizard-desc' => 'Помошник за додавање мултимедијални содржини, изработен од Kaltura во соработка со Фондацијата Викимедија.',
 );
 
 /** Dutch (Nederlands)

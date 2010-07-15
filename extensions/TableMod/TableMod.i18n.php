@@ -289,6 +289,13 @@ $messages['ia'] = array(
 	'tablemod-error-missingid' => 'Le attributo "ident" manca in le etiquetta.',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'tablemod-msg-remove' => 'Rimuovi',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

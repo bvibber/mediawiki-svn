@@ -4042,6 +4042,7 @@ $messages['lb'] = array(
 	'mwe-upload-misc-error' => 'Onbekannte Feeler beim Eroplueden',
 	'mwe-wgfogg_warning_bad_extension' => 'Dir hutt e Fichier mat enger Erweiderung déi net ënnerstëtzt gëtt (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">méi Informatiounen</a>) erausgesicht.',
 	'mwe-thumbnail-more' => 'Vergréisseren',
+	'mwe-license-header' => 'Lizenz',
 	'mwe-filedesc' => 'Resumé',
 	'mwe-filesource' => 'Quell:',
 	'mwe-filestatus' => 'Copyright Statut:',

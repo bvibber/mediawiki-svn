@@ -987,6 +987,17 @@ $messages['ru'] = array(
 	'tooltip-pt-optin-feedback' => 'Оставить отзыв о своём опыте работы с новыми функциями',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'optin-try' => 'Опробовати Бета-верзію',
+	'tooltip-pt-optin-try' => 'Спробовати новы можности',
+	'optin-leave' => 'Опустити Бета-верзію',
+	'tooltip-pt-optin-leave' => 'Выпнути новы можности',
+	'optin-feedback' => 'Назоры на Бета',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

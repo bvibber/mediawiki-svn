@@ -759,6 +759,8 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'wikieditor-preview-preference' => 'Запнути нагляды в панелї',
+	'wikieditor-preview-tab' => 'Нагляд',
 	'wikieditor-preview-changes-tab' => 'Зміны',
 	'wikieditor-preview-loading' => 'Награваня...',
 );

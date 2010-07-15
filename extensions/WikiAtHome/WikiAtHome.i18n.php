@@ -1012,6 +1012,13 @@ $messages['ig'] = array(
 	'wah-uploadfail' => 'Itinyé elu á dálá',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'wah-menu-pref' => 'Preferenze',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author 青子守歌

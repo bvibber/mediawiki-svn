@@ -3355,6 +3355,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -3615,6 +3616,7 @@ $messages['br'] = array(
 	'configure-setting-wgMemCachedServers' => 'Servijerioù Memcached',
 	'configure-setting-wgSessionsInMemcached' => "Stokañ an dalc'hoù er grubuilh",
 	'configure-setting-wgUseMemCached' => 'Implijout memcached',
+	'configure-setting-wgLocalisationCacheConf' => "Kefluniadur ar c'hrubuilh evit al lec'hiadur",
 	'configure-setting-wgEnableParserCache' => 'Gweredekaat krubuilh ar parser',
 	'configure-setting-wgUseETag' => 'Kas an talbennoù ETag',
 	'configure-setting-wgAlwaysUseTidy' => 'Implijout « Tidy » atav',

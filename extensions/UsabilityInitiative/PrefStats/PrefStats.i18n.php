@@ -2077,11 +2077,17 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'prefstats' => 'Штатістіка наставлїнь',
+	'prefstats-title' => 'Штатістіка наставлїнь',
+	'prefstats-xaxis' => 'Тырваня (в годинах)',
 	'prefstats-factor-hour' => 'годину',
 	'prefstats-factor-sixhours' => 'шість годин',
 	'prefstats-factor-day' => 'день',
 	'prefstats-factor-week' => 'тыждень',
 	'prefstats-factor-twoweeks' => 'два тыжднї',
+	'prefstats-factor-fourweeks' => 'штири тыжднї',
+	'prefstats-legend-out' => 'Одголошіня',
+	'prefstats-legend-in' => 'Приголошіня',
 );
 
 /** Yakut (Саха тыла)

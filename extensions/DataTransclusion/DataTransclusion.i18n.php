@@ -379,10 +379,11 @@ Argumenty pierwszy lub „szablon“ są wymagane.',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'datatransclusion-desc' => 'Amportassion e presentassion ëd record ëd dat da sorziss esterne ëd dat',
+	'datatransclusion-desc' => 'Amporté e smon-e an forma ëd dat da dle sorgiss esterne ëd dat',
 );
 
 /** Portuguese (Português)
