@@ -3,41 +3,39 @@
 <title> MediaRss player </title>
 
 <script type="text/javascript" src="../../../mwEmbed.js?debug=true>"></script>
+
 <!--
 <script type="text/javascript" src="http://html5.kaltura.org/js"></script>
 <script type="text/javascript" src="../../../mwEmbedLoader.js"></script>    
 <script type="text/javascript" src="../mwEmbed/mwEmbedLoader.js"></script>  
 <script type="text/javascript" src="../mwEmbed/mwEmbed.js?debug=true>"></script>  
-<script type="text/javascript" src="../../../ResourceLoader.php?class=window.jQuery,mwEmbed&debug=true"></script>
- 
+<script type="text/javascript" src="../../../ResourceLoader.php?class=window.jQuery,mwEmbed&debug=true"></script> 
 -->
   
 <script type="text/javascript">
 	// For testing safari in chrome / 
 	if( document.URL.indexOf('forceMobileSafari') != -1 ){		
 		mw.setConfig( 'forceMobileSafari' , true );
-	}	
+	}
 		
-	mw.ready(function(){	
-		$j('#mediaRssTarget').mediaRssPlayer({
+	mw.ready( function(){	
+		$j('#mediaRssTarget').playlist({
 			'src' : "kalturaInterviewPlaylist.xml",
+			'type' : 'application/rss+xml',
 			'layout' : 'vertical'
 		});
 		
-		$j('#mediaRssTargetHorizontal').mediaRssPlayer({
+		$j('#mediaRssTargetHorizontal').playlist({
 			'src' : "kalturaInterviewPlaylist.xml",
+			'type' : 'application/rss+xml',
 			'layout' : 'horizontal'
-		})
+		});
 	});
 </script>
 </head>
 <body>
 <h2> Sample MediaRss Playlist  </h2>
 <br />
-<!--  
-	<div type="application/rss+xml" 
-	src="media/kalturaInterviewPlaylist.xml"  width="500" height="730" > </div>
--->
  
 Sample Media Rss ( <a href="kalturaInterviewPlaylist.xml">kalturaInterviewPlay.xml</a> ) Vertical 
 
