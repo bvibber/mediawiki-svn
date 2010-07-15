@@ -1,4 +1,5 @@
 <?php
+if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 /**
  * CategoryWatch extension
  * - Extends watchlist functionality to include notification about membership changes of watched categories
@@ -13,12 +14,17 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
+define( 'CATEGORYWATCH_VERSION', '1.2.0, 2010-07-15' );
 
-define( 'CATEGORYWATCH_VERSION', '1.1.1, 2010-04-21' );
-
+# Whether or not to also send notificaton to the person who made the change
 $wgCategoryWatchNotifyEditor = true;
-$wgCategoryWatchUseAutoCat   = false;
+
+# Set this to give every user a unique category that they're automatically watching
+# - the format of the category name is defined on the "categorywatch-autocat" localisation message
+$wgCategoryWatchUseAutoCat = false;
+
+# Set this to make the categorisation work by realname instead of username
+$wgCategoryWatchUseAutoCatRealName = false;
 
 $wgExtensionFunctions[] = 'wfSetupCategoryWatch';
 $wgExtensionCredits['other'][] = array(
@@ -43,7 +49,7 @@ class CategoryWatch {
 	 * Get a list of categories before article updated
 	 */
 	function onArticleSave( &$article, &$user, &$text ) {
-		global $wgCategoryWatchUseAutoCat;
+		global $wgCategoryWatchUseAutoCat, $wgCategoryWatchUseAutoCatRealName;
 
 		$this->before = array();
 		$dbr  = wfGetDB( DB_SLAVE );
@@ -66,8 +72,9 @@ class CategoryWatch {
 
 			# Insert an entry into watchlist for each
 			while ( $row = $dbr->fetchRow( $res ) ) {
-				$uname = User::newFromId( $row[0] )->getName();
-				$wl_title = str_replace( ' ', '_', wfMsg( 'categorywatch-autocat', $uname ) );
+				$user = User::newFromId( $row[0] );
+				$name = $wgCategoryWatchUseAutoCatRealName ? $user->getRealName() : $user->getName();
+				$wl_title = str_replace( ' ', '_', wfMsg( 'categorywatch-autocat', $name ) );
 				$dbr->insert( $wtbl, array( 'wl_user' => $row[0], 'wl_namespace' => NS_CATEGORY, 'wl_title' => $wl_title ) );
 			}
 			$dbr->freeResult( $res );
@@ -80,6 +87,7 @@ class CategoryWatch {
 	 * Find changes in categorisation and send messages to watching users
 	 */
 	function onArticleSaveComplete( &$article, &$user, &$text, &$summary, &$medit ) {
+
 		# Get cats after update
 		$this->after = array();
 		$dbr  = wfGetDB( DB_SLAVE );
@@ -101,6 +109,7 @@ class CategoryWatch {
 			$page     = "$pagename ($pageurl)";
 
 			if ( count( $add ) == 1 && count( $sub ) == 1 ) {
+
 				$add = array_shift( $add );
 				$sub = array_shift( $sub );
 
@@ -108,21 +117,14 @@ class CategoryWatch {
 				$message = wfMsg( 'categorywatch-catmovein', $page, $this->friendlyCat( $add ), $this->friendlyCat( $sub ) );
 				$this->notifyWatchers( $title, $user, $message, $summary, $medit );
 
-				# $title   = Title::newFromText( $sub, NS_CATEGORY );
-				# $message = wfMsg( 'categorywatch-catmoveout', $page, $this->friendlyCat( $sub ), $this->friendlyCat( $add ) );
-				# $this->notifyWatchers( $title, $user, $message, $summary, $medit );
 			} else {
+
 				foreach ( $add as $cat ) {
 					$title   = Title::newFromText( $cat, NS_CATEGORY );
 					$message = wfMsg( 'categorywatch-catadd', $page, $this->friendlyCat( $cat ) );
 					$this->notifyWatchers( $title, $user, $message, $summary, $medit );
 				}
 
-				# foreach ( $sub as $cat ) {
-				#	$title   = Title::newFromText( $cat, NS_CATEGORY );
-				#	$message = wfMsg( 'categorywatch-catsub', $page, $this->friendlyCat( $cat ) );
-				#	$this->notifyWatchers( $title, $user, $message, $summary, $medit );
-				# }
 			}
 		}
 
