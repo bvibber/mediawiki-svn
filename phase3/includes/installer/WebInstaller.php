@@ -84,6 +84,17 @@ class WebInstaller extends Installer {
 		$this->exportVars();
 		$this->setupLanguage();
 
+		if( $this->getVar( '_InstallDone' ) && $this->request->getVal( 'localsettings' ) )
+		{
+			$ls = new LocalSettingsGenerator( $this );
+			$this->request->response()->header('Content-type: text/plain');
+			$this->request->response()->header(
+				'Content-Disposition: attachment; filename="LocalSettings.php"'
+			);
+			echo $ls->getText();
+			return $this->session;
+		}
+
 		if ( isset( $session['happyPages'] ) ) {
 			$this->happyPages = $session['happyPages'];
 		} else {
@@ -159,7 +170,13 @@ class WebInstaller extends Installer {
 		# Execute the page
 		$this->currentPageName = $page->getName();
 		$this->startPageWrapper( $pageName );
-		$result = $page->execute();
+		$localSettings = $this->getLocalSettingsStatus();
+		if( !$localSettings->isGood() ) {
+			$this->showStatusBox( $localSettings );
+			$result = 'output';
+		} else {
+			$result = $page->execute();
+		}
 		$this->endPageWrapper();
 
 		if ( $result == 'skip' ) {
@@ -271,9 +288,8 @@ class WebInstaller extends Installer {
 
 	/**
 	 * Clean up from execute()
-	 * @private.
 	 */
-	function finish() {
+	public function finish() {
 		$this->output->output();
 		$this->session['happyPages'] = $this->happyPages;
 		$this->session['skippedPages'] = $this->skippedPages;
@@ -732,14 +748,21 @@ class WebInstaller extends Installer {
 	}
 
 	/**
-	 * Output an error box using a Status object
+	 * Output an error or warning box using a Status object
 	 */
-	function showStatusErrorBox( $status ) {
-		$text = $status->getWikiText();
-		$this->output->addHTML( $this->getErrorBox( $text ) );
+	function showStatusBox( $status ) {
+		if( !$status->isGood() ) {
+			$text = $status->getWikiText();
+			if( $status->isOk() ) {
+				$box = $this->getWarningBox( $text );
+			} else {
+				$box = $this->getErrorBox( $text );
+			}
+			$this->output->addHTML( $box );
+		}
 	}
 
-	function showStatusError( $status ) {
+	function showStatusMessage( $status ) {
 		$text = $status->getWikiText();
 		$this->output->addWikiText(
 			"<div class=\"config-message\">\n" .
@@ -907,10 +930,6 @@ class WebInstaller_Language extends WebInstallerPage {
 				}
 				if ( isset( $languages[$contLang] ) ) {
 					$this->setVar( 'wgLanguageCode', $contLang );
-					if ( $this->getVar( '_AdminName' ) === null ) {
-						// Load localised sysop username in *content* language
-						$this->setVar( '_AdminName', wfMsgForContent( 'config-admin-default-username' ) );
-					}
 				}
 				return 'continue';
 			}
@@ -986,7 +1005,7 @@ class WebInstaller_DBConnect extends WebInstallerPage {
 				$this->setVar( '_UpgradeDone', false );
 				return 'continue';
 			} else {
-				$this->parent->showStatusErrorBox( $status );
+				$this->parent->showStatusBox( $status );
 			}
 		}
 
@@ -1113,7 +1132,7 @@ class WebInstaller_DBSettings extends WebInstallerPage {
 			} elseif ( $status->isGood() ) {
 				return 'continue';
 			} else {
-				$this->parent->showStatusErrorBox( $status );
+				$this->parent->showStatusBox( $status );
 			}
 		}
 
@@ -1371,7 +1390,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		$extensions = $this->parent->findExtensions();
 		if( $extensions ) {
 			$extHtml = $this->parent->getFieldsetStart( 'config-extensions' );
-			foreach( $extensions as $ext ) {
+			foreach( array_keys($extensions) as $ext ) {
 				$extHtml .= $this->parent->getCheckBox( array(
 					'var' => "ext-$ext",
 					'rawtext' => $ext,
@@ -1402,15 +1421,22 @@ class WebInstaller_Options extends WebInstallerPage {
 				'var' => 'wgLogo',
 				'label' => 'config-logo'
 			) ) .
-			$this->parent->getHelpBox( 'config-logo-help' ) .
+			$this->parent->getHelpBox( 'config-logo-help' )
+		);
+		$canUse = $this->getVar( '_ExternalHTTP' ) ?
+			'config-instantcommons-good' : 'config-instantcommons-bad';
+		$this->addHTML(
+			$this->parent->getCheckBox( array(
+				'var' => 'wgUseInstantCommons',
+				'label' => 'config-instantcommons',
+			) ) .
+			$this->parent->getHelpBox( 'config-instantcommons-help', wfMsgNoTrans( $canUse ) ) .
 			$this->parent->getFieldsetEnd()
 		);
 
-		$caches = array( 'none', 'anything', 'db' );
-		$selected = 'db';
+		$caches = array( 'none' );
 		if( count( $this->getVar( '_Caches' ) ) ) {
 			$caches[] = 'accel';
-			$selected = 'accel';
 		}
 		$caches[] = 'memcached';
 
@@ -1423,7 +1449,7 @@ class WebInstaller_Options extends WebInstallerPage {
 				'label' => 'config-cache-options',
 				'itemLabelPrefix' => 'config-cache-',
 				'values' => $caches,
-				'value' => $selected,
+				'value' => 'none',
 			) ) .
 			$this->parent->getHelpBox( 'config-cache-help' ) .
 			'<div id="config-memcachewrapper">' .
@@ -1523,7 +1549,8 @@ class WebInstaller_Options extends WebInstallerPage {
 		$this->parent->setVarsFromRequest( array( '_RightsProfile', '_LicenseCode',
 			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUpload', 'wgLogo',
 			'wgEnableUserEmail', 'wgEnotifUserTalk', 'wgEnotifWatchlist',
-			'wgEmailAuthentication', 'wgMainCacheType', '_MemCachedServers' ) );
+			'wgEmailAuthentication', 'wgMainCacheType', '_MemCachedServers',
+			'wgUseInstantCommons' ) );
 
 		if ( !in_array( $this->getVar( '_RightsProfile' ),
 			array_keys( $this->parent->rightsProfiles ) ) )
@@ -1569,36 +1596,39 @@ class WebInstaller_Install extends WebInstallerPage {
 	function execute() {
 		if( $this->parent->request->wasPosted() ) {
 			return 'continue';
+		} elseif( $this->getVar( '_InstallDone' ) ) {
+			$this->startForm();
+			$status = new Status();
+			$status->warning( 'config-install-alreadydone' );
+			$this->parent->showStatusBox( $status );
+		} else {
+			$this->startForm();
+			$this->addHTML("<ul>");
+			$this->parent->performInstallation(
+				array( $this, 'startStage'),
+				array( $this, 'endStage' )
+			);
+			$this->addHTML("</ul>");
 		}
-		$this->startForm();
-		$this->addHTML("<ul>");
-		foreach( $this->parent->getInstallSteps() as $step ) {
-			$this->startStage( "config-install-$step" );
-			$func = 'install' . ucfirst( $step );
-			$status = $this->parent->{$func}();
-			$ok = $status->isGood();
-			if ( !$ok ) {
-				$this->parent->showStatusErrorBox( $status );
-			}
-			$this->endStage( $ok );
-		}
-		$this->addHTML("</ul>");
 		$this->endForm();
 		return true;
-
 	}
 
-	private function startStage( $msg ) {
-		$this->addHTML( "<li>" . wfMsgHtml( $msg ) . wfMsg( 'ellipsis') );
+	public function startStage( $step ) {
+		$this->addHTML( "<li>" . wfMsgHtml( "config-install-$step" ) . wfMsg( 'ellipsis') );
 	}
 
-	private function endStage( $success = true ) {
+	public function endStage( $step, $status ) {
+		$success = $status->isGood();
 		$msg = $success ? 'config-install-step-done' : 'config-install-step-failed';
 		$html = wfMsgHtml( 'word-separator' ) . wfMsgHtml( $msg );
 		if ( !$success ) {
 			$html = "<span class=\"error\">$html</span>";
 		}
 		$this->addHTML( $html . "</li>\n" );
+		if( !$success ) {
+			$this->parent->showStatusBox( $status );
+		}
 	}
 }
 
@@ -1606,10 +1636,10 @@ class WebInstaller_Complete extends WebInstallerPage {
 	public function execute() {
 		global $IP;
 		$this->startForm();
-		$msg = file_exists( "$IP/LocalSettings.php" ) ? 'config-install-done-moved' : 'config-install-done';
 		$this->addHTML(
 			$this->parent->getInfoBox(
-				wfMsgNoTrans( $msg,
+				wfMsgNoTrans( 'config-install-done',
+					$GLOBALS['wgServer'] . $this->parent->getURL( array( 'localsettings' => 1 ) ),
 					$GLOBALS['wgServer'] .
 						$this->getVar( 'wgScriptPath' ) . '/index' .
 						$this->getVar( 'wgScriptExtension' )

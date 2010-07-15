@@ -308,7 +308,6 @@ $messages = array(
 'tog-watchdefault'            => 'Adicionar as páginas que eu editar às minhas páginas vigiadas',
 'tog-watchmoves'              => 'Adicionar as páginas que eu mover às minhas páginas vigiadas',
 'tog-watchdeletion'           => 'Adicionar as páginas que eu eliminar às minhas páginas vigiadas',
-'tog-minordefault'            => 'Por omissão, marcar todas as edições como menores',
 'tog-previewontop'            => 'Mostrar a antevisão antes da caixa de edição',
 'tog-previewonfirst'          => 'Mostrar a antevisão na primeira edição',
 'tog-nocache'                 => 'Desactivar cache de páginas',
@@ -1135,7 +1134,7 @@ Outros administradores da {{SITENAME}} continuarão a poder aceder ao conteúdo 
 'revdelete-radio-unset'       => 'Não',
 'revdelete-suppress'          => 'Ocultar dados dos administradores e de todos os outros',
 'revdelete-unsuppress'        => 'Remover restrições das revisões restauradas',
-'revdelete-log'               => 'Motivo da eliminação:',
+'revdelete-log'               => 'Motivo:',
 'revdelete-submit'            => 'Aplicar {{PLURAL:$1|à revisão seleccionada|às revisões seleccionadas}}',
 'revdelete-logentry'          => 'modificou visibilidade das revisões de [[$1]]',
 'logdelete-logentry'          => 'alterou visibilidade de eventos do [[$1]]',
@@ -1892,7 +1891,7 @@ A descrição na [$2 página de descrição] é mostrada abaixo.',
 'filedelete-legend'           => 'Eliminar ficheiro',
 'filedelete-intro'            => "Está prestes a eliminar o ficheiro '''[[Media:$1|$1]]''' e todo o seu histórico.",
 'filedelete-intro-old'        => "Está prestes a eliminar a versão de '''[[Media:$1|$1]]''' tal como se encontrava em [$4 $3, $2].",
-'filedelete-comment'          => 'Motivo de eliminação:',
+'filedelete-comment'          => 'Motivo:',
 'filedelete-submit'           => 'Eliminar',
 'filedelete-success'          => "'''$1''' foi eliminado.",
 'filedelete-success-old'      => "A versão de '''[[Media:$1|$1]]''' tal como $3, $2 foi eliminada.",
@@ -2265,7 +2264,7 @@ Consulte $2 para um registo de eliminações recentes.',
 'dellogpagetext'         => 'Abaixo uma lista das eliminações mais recentes.',
 'deletionlog'            => 'registo de eliminações',
 'reverted'               => 'Revertido para versão anterior',
-'deletecomment'          => 'Motivo de eliminação:',
+'deletecomment'          => 'Motivo:',
 'deleteotherreason'      => 'Outro/motivo adicional:',
 'deletereasonotherlist'  => 'Outro motivo',
 'deletereason-dropdown'  => '* Motivos de eliminação comuns
@@ -2601,17 +2600,17 @@ Para bloquear ou desbloquear a base de dados, este precisa de poder ser escrito 
 # Move page
 'move-page'                    => 'Mover $1',
 'move-page-legend'             => 'Mover página',
-'movepagetext'                 => "Usando o formulário abaixo pode mover esta página e todo o seu histórico de edições para uma nova página com outro nome.
-A página original será transformada num redireccionamento para a nova página.
+'movepagetext'                 => "Usando o formulário abaixo pode mover esta página e todo o seu histórico de edições para uma página nova com outro nome.
+A página original será transformada num redireccionamento para a página nova.
 Pode corrigir de forma automática os redireccionamentos existentes que apontam para a página original.
-Caso escolha não o fazer, certifique-se de que não existem [[Special:DoubleRedirects|redireccionamentos duplos]] ou [[Special:BrokenRedirects|quebrados]].
+Caso escolha não o fazer, após a operação certifique-se de que dela não resultaram  [[Special:DoubleRedirects|redireccionamentos duplos]] ou [[Special:BrokenRedirects|quebrados]].
 É da sua responsabilidade verificar que os links continuam a apontar para onde é suposto que apontem.
 
 Note que a página '''não''' será movida se já existir uma página com o novo nome, a menos que esta esteja vazia ou seja um redireccionamento sem qualquer histórico de edições.
-Isto significa que pode mover uma página de volta para o seu nome original se cometeu algum engano e que não pode mover uma página para cima de outra já existente.
+Isto significa que pode mover uma página de volta para o seu nome original se a tiver movido por engano e que não pode mover uma página para cima de outra já existente.
 
 '''CUIDADO!'''
-Para uma página popular esta operação pode representar uma mudança drástica e inesperada;
+Numa página popular esta operação pode representar uma mudança drástica e inesperada;
 certifique-se de que compreende as consequências da mudança antes de prosseguir, por favor.",
 'movepagetalktext'             => "Se existir uma página de discussão associada, ela será automaticamente movida, '''a não ser que:'''
 *já exista uma página de discussão com o novo título que não esteja vazia, ou
@@ -2647,7 +2646,7 @@ Faça a fusão manual das páginas de discussão, por favor.'''",
 'movepage-page-unmoved'        => 'Não foi possível mover a página $1 para $2.',
 'movepage-max-pages'           => 'O limite de $1 {{PLURAL:$1|página movida|páginas movidas}} foi atingido; não será possível mover mais páginas de forma automática.',
 '1movedto2'                    => 'moveu [[$1]] para [[$2]]',
-'1movedto2_redir'              => 'moveu [[$1]] para [[$2]] sobre redirecionamento',
+'1movedto2_redir'              => 'moveu [[$1]] para [[$2]] com redireccionamento',
 'move-redirect-suppressed'     => 'redirecionamento suprimido',
 'movelogpage'                  => 'Registo de movimento',
 'movelogpagetext'              => 'Abaixo encontra-se uma lista de páginas movidas.',

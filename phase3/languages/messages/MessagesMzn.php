@@ -95,7 +95,6 @@ $messages = array(
 'tog-watchdefault'            => 'اضافه هاکردن صفحه‌هایی که چیمبه به منه پیگری ِرج',
 'tog-watchmoves'              => 'صفحه‌ئونی که کشمبه ره منه پِگیری ِرج دله بنویس',
 'tog-watchdeletion'           => 'اضافه هاکردن صفحه‌هایی که پاک کامبه به منه پیگری ِرج',
-'tog-minordefault'            => 'همه صفحه‌ئون دچیه ره جزئی پیش‌گامون دار',
 'tog-previewontop'            => 'نیمایش پیش‌نیمایش قبل از ویرایش ِجعبه(نه قبل از وه).',
 'tog-previewonfirst'          => 'پیش نیمایش زمون اولین دچی‌ین',
 'tog-nocache'                 => 'حافظه نهانی صفحه ره خنثی هاکن',
@@ -130,14 +129,14 @@ $messages = array(
 'editfont-serif'     => 'فونت Serif',
 
 # Dates
-'sunday'        => 'یه‌شه‌مبه',
-'monday'        => 'ده‌شه‌مبه',
-'tuesday'       => 'سه‌شه‌مبه',
-'wednesday'     => 'چؤرشه‌مبه',
-'thursday'      => 'په‌نچ‌شه‌مبه',
+'sunday'        => 'یه‌شنبه',
+'monday'        => 'دِشنبه',
+'tuesday'       => 'سه‌شنبه',
+'wednesday'     => 'چارشنبه',
+'thursday'      => 'پنج‌شنبه',
 'friday'        => 'جومه',
-'saturday'      => 'شه‌مبه',
-'sun'           => 'یه‌شه‌مه',
+'saturday'      => 'شنبه',
+'sun'           => 'یه‌شنبه',
 'mon'           => 'ده‌شه‌مه',
 'tue'           => 'سه‌شه‌مه',
 'wed'           => 'چؤرشه‌مه',
@@ -187,6 +186,7 @@ $messages = array(
 'subcategories'          => 'جیر رج‌ئون',
 'category-empty'         => 'ای رج ره ده‌له ئه‌سا هیچی دأنیه',
 'category-article-count' => '{{PLURAL:$2|ای رج هأمـینـتا وألـگ ره داره‌نه.|ای  {{PLURAL:$1ولگ|ولگ|$1 ئون}}، $2 جه ایجه دأره‌نه.}}',
+'listingcontinuesabbrev' => '(دمباله)',
 
 'about'         => 'ده‌لـه‌واره',
 'newwindow'     => '(ته‌رنه‌ روجین ده‌له‌ وا بونه)',
@@ -194,20 +194,32 @@ $messages = array(
 'moredotdotdot' => 'ویـشـتـه...',
 'mypage'        => 'مه ولگ',
 'mytalk'        => 'مه گپ',
+'anontalk'      => 'گپ بزوئن اینتا آی‌پی وسّه',
 'navigation'    => 'چـأرخـه‌سـه‌ن',
+'and'           => '&#32;و',
 
 # Cologne Blue skin
+'qbfind'         => 'پیدا هکردن',
 'qbbrowse'       => 'چأرخه‌سه‌ن',
 'qbedit'         => 'دأچیه‌ن',
 'qbpageoptions'  => 'ای وألـگ',
+'qbpageinfo'     => 'بافت',
 'qbmyoptions'    => 'مـه وألـگ‌ئون',
 'qbspecialpages' => 'شا ولگ ئون',
+'faq'            => 'معمولی سوالا',
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
+'vector-action-addsection'  => 'ایضافه هکردن عونوان',
+'vector-action-delete'      => 'پاک هاکردن',
+'vector-action-move'        => 'دکش هاکردن',
 'vector-action-protect'     => 'موحافظت',
+'vector-action-undelete'    => 'دباره بنویشته بیّن',
+'vector-action-unprotect'   => 'موحافظت نکاردن',
 'vector-namespace-category' => 'رج',
 'vector-namespace-help'     => 'دأسـگـیری وألـگ',
+'vector-namespace-image'    => 'پرونده',
+'vector-namespace-main'     => 'صحفه',
 'vector-view-history'       => 'چـه‌کوت ئـه‌شـه‌نـه‌ن',
 'vector-view-view'          => 'بأخـونـه‌سـه‌ن',
 'vector-view-viewsource'    => 'چـه‌شــمـه ئـه‌شـه‌نـه‌ن',
@@ -231,6 +243,7 @@ $messages = array(
 'create-this-page' => 'ای وألگ ره وا هأکه‌نین',
 'delete'           => 'وربـأئـیـتـه‌ن',
 'protect_change'   => 'ده‌گـه‌ره‌سـه‌ن',
+'unprotect'        => 'دیگه محافظت نکان',
 'newpage'          => 'نـه ولـگ',
 'talkpage'         => 'ای ولـگ پـألـی گـب بـأزوئـه‌ن',
 'talkpagelinktext' => 'گپ',
@@ -258,14 +271,20 @@ $2، $1',
 'disclaimers'          => 'خواهان فه‌رو نیشته‌نه‌ن',
 'disclaimerpage'       => 'Project:تکذیب‌نومهٔ همه‌گونی',
 'edithelp'             => 'دأچـیه‌ن ره رانـه‌ما',
-'edithelppage'         => 'رانه‌ما:دَچی‌ین',
+'edithelppage'         => 'رونما:دَچی‌ین',
 'helppage'             => 'Help:رونما',
 'mainpage'             => 'گت ولگ',
 'mainpage-description' => 'گت ولگ',
 'policy-url'           => 'Project:سیاستون',
 'portal'               => 'مازرون دأروازه',
+'portal-url'           => 'Project:کارورون لوش',
 'privacy'              => 'کاری رول',
 'privacypage'          => 'Project:Privacy_policy',
+
+'badaccess'        => 'نتوندی هچی ره هارشی',
+'badaccess-group0' => 'شما این کار ره نتونی هاکنین.',
+
+'versionrequired' => 'نوسخهٔ $1 نرم‌افزار مدیاویکی جه لازم هسّه',
 
 'ok'                      => 'خا',
 'retrievedfrom'           => '"$1" جـه بأئـیـتـه بـأیـه',
@@ -295,15 +314,30 @@ $2، $1',
 'red-link-title'          => '$1 (ای ولـگ دأنـیـه)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
-'nstab-main'     => 'ولـگ',
-'nstab-user'     => 'کارور گپ',
-'nstab-special'  => 'شـاء ولـگ',
-'nstab-project'  => 'پروژه',
-'nstab-image'    => 'فایل',
-'nstab-template' => 'شابلون',
-'nstab-category' => 'رج',
+'nstab-main'      => 'ولـگ',
+'nstab-user'      => 'کارور گپ',
+'nstab-media'     => 'رسانه',
+'nstab-special'   => 'شـاء ولـگ',
+'nstab-project'   => 'پروژه',
+'nstab-image'     => 'فایل',
+'nstab-mediawiki' => 'پیغوم',
+'nstab-template'  => 'شابلون',
+'nstab-help'      => 'رونما',
+'nstab-category'  => 'رج',
+
+# Main script and global functions
+'nosuchaction'      => 'نونه اینتی هاکردن',
+'nosuchactiontext'  => 'اینتا کار اینترنتی ِنشونی دله غیرموجازه
+شما احتمالا اینترنتی آدرس ره ایشتباه بنویشنی یا لینک ایشتبا ره کلیک هاکردنی
+همینتی ممکن هسته ایرادی {{SITENAME}} دله داره.',
+'nosuchspecialpage' => 'اینتا شاء ولگ وجود ندانه',
+'nospecialpagetext' => '<strong>شما اتا غیرموجاز صفحه ره بخاسنی.</strong>
+
+اینان شاء صفحه‌ئون هستنه: [[Special:SpecialPages|{{int:specialpages}}]]',
 
 # General errors
+'error'         => 'خِطا',
+'databaseerror' => 'خطای داده‌ئون پایگا',
 'badtitle'      => 'نخش عونوان',
 'viewsource'    => 'چـه‌شـمـه بـأویـنـه‌ن',
 'viewsourcefor' => '$1 ره وسه',
@@ -357,6 +391,20 @@ $2، $1',
 'savearticle'                      => 'جـا دأکه‌ته‌ن ولـگ',
 'preview'                          => 'پیش نه‌مایه‌ش',
 'showpreview'                      => 'پیش‌هاره‌شا نه‌شون هـه‌دائه‌ن',
+'blockedtext'                      => "'''شمه آی پی دوسته بیّه.'''
+
+این کار ره $1 انجام هدائه.
+اینت وسه که ته این کار ره هکردی: $2''
+
+* شروع دوسته بین: $8
+* زمون پایان این دوسته گی: $6
+* کاوری که خاستمی ونه آی پی ره دوندیم: $7
+
+شما بتونی با $1 با اتا از [[{{MediaWiki:Grouppage-sysop}}|مدیر|مدیرا]] تماس بیرین و ونجه گپ بزنین.
+
+ شمه یاد دواشه که اگه شه ایمیل ره ننوشت بائین نتونی مدیرا وسه ایمیل بزنین اگه ایمیل ره ننوشنی ترجیحات دله بنویسین[[Special:Preferences|اینجه ایمیل ره بنویس]]
+نشونی آی‌پی شما $3 و شماره قطع دسترسی شما $5 هسته. حتما این دِتا شوماره ره گپ بزوئن دله به کار بورین.",
+'blockednoreason'                  => 'معلوم نی‌یه چچی وسه اینتی بیّه!',
 'whitelistedittitle'               => 'جور هکاردن ره وسه ونه سیستم ره دله ئه نین',
 'newarticle'                       => '(ته‌رنه)',
 'blocked-notice-logextract'        => 'دسترسی اینتا کارور الآن دوستوئه.

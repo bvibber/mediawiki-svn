@@ -121,7 +121,7 @@ class SpecialPage {
 
 		# Users and rights
 		'Blockip'                   => array( 'SpecialPage', 'Blockip', 'block' ),
-		'Ipblocklist'               => array( 'SpecialPage', 'Ipblocklist' ),
+		'Ipblocklist'               => 'IPUnblockForm',
 		'Unblock'                   => array( 'SpecialRedirectToSpecial', 'Unblock', 'Ipblocklist', false, array( 'uselang', 'ip', 'id' ), array( 'action' => 'unblock' ) ),
 		'Resetpass'                 => 'SpecialResetpass',
 		'DeletedContributions'      => 'DeletedContributionsPage',
@@ -143,7 +143,7 @@ class SpecialPage {
 
 		# Media reports and uploads
 		'Listfiles'                 => array( 'SpecialPage', 'Listfiles' ),
-		'Filepath'                  => array( 'SpecialPage', 'Filepath' ),
+		'Filepath'                  => 'SpecialFilepath',
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
 		'FileDuplicateSearch'       => array( 'SpecialPage', 'FileDuplicateSearch' ),
 		'Upload'                    => 'SpecialUpload',
@@ -186,13 +186,13 @@ class SpecialPage {
 		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
 		'Listbots'                  => array( 'SpecialRedirectToSpecial', 'Listbots', 'Listusers', 'bot' ),
 		'Movepage'                  => array( 'UnlistedSpecialPage', 'Movepage' ),
-		'Mycontributions'           => array( 'SpecialMycontributions' ),
-		'Mypage'                    => array( 'SpecialMypage' ),
-		'Mytalk'                    => array( 'SpecialMytalk' ),
+		'Mycontributions'           => 'SpecialMycontributions',
+		'Mypage'                    => 'SpecialMypage',
+		'Mytalk'                    => 'SpecialMytalk',
 		'Revisiondelete'            => 'SpecialRevisionDelete',
 		'RevisionMove'              => 'SpecialRevisionMove',
-		'Specialpages'              => array( 'UnlistedSpecialPage', 'Specialpages' ),
-		'Userlogout'                => array( 'UnlistedSpecialPage', 'Userlogout' ),
+		'Specialpages'              => 'SpecialSpecialpages',
+		'Userlogout'                => 'SpecialUserlogout',
 	);
 
 	static public $mAliases;
@@ -308,8 +308,10 @@ class SpecialPage {
 	 * an associative record to $wgSpecialPages. This avoids autoloading SpecialPage.
 	 *
 	 * @param $page SpecialPage
+	 * Deprecated in 1.7, warnings in 1.17, might be removed in 1.20
 	 */
 	static function addPage( &$page ) {
+		wfDeprecated( __METHOD__ );
 		if ( !self::$mListInitialised ) {
 			self::initList();
 		}
@@ -624,16 +626,16 @@ class SpecialPage {
 			$found = false;
 			foreach ( $aliases as $n => $values ) {
 				if ( strcasecmp( $name, $n ) === 0 ) {
-					wfWarn( "Found alias defined for $n when searching for special page aliases
-for $name. Case mismatch?" );
+					wfWarn( "Found alias defined for $n when searching for" .
+						"special page aliases for $name. Case mismatch?" );
 					$name = $values[0];
 					$found = true;
 					break;
 				}
 			}
 			if ( !$found ) {
-				wfWarn( "Did not find alias for special page '$name'.
-Perhaps no page aliases are defined for it?" );
+				wfWarn( "Did not find alias for special page '$name'." . 
+					"Perhaps no aliases are defined for it?" );
 			}
 		}
 		if ( $subpage !== false && !is_null( $subpage ) ) {

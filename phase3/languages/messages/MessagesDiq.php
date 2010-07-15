@@ -35,7 +35,6 @@ $messages = array(
 'tog-watchdefault'            => 'Pelê ke mı vurnayê, lista mına seyrkerdışi ke',
 'tog-watchmoves'              => 'Pelê ke mı kırışnayê, lista mına seyrkerdışi ke',
 'tog-watchdeletion'           => 'Pelê ke mı esterıtê, lista mına seyrkerdışi ke',
-'tog-minordefault'            => "Vurnayışanê xo pêrune ''vurnayışo qıckek'' nışan bıde",
 'tog-previewontop'            => 'Verqayti pela nuştışi ser de bımocne',
 'tog-previewonfirst'          => 'Vurnayışo verên de verqayti tım bımocne',
 'tog-nocache'                 => 'Pelan mia xo viri',
@@ -824,7 +823,7 @@ Eke şertê ilawekerdey ke niyê ro, idarekerê bini {{SITENAME}} de nêşenê h
 'revdelete-radio-unset'       => 'Nê',
 'revdelete-suppress'          => 'Hem ê binan ra hem zi serkaran ra malumatan bınım',
 'revdelete-unsuppress'        => 'reizyonê ke tepiya anciye serbest ker',
-'revdelete-log'               => 'qey hewn a kerdışi sebeb:',
+'revdelete-log'               => 'Sebeb:',
 'revdelete-submit'            => 'Cewab be {{PLURAL:$1|çımraviyarnayışi|çımraviyarnayışan}} de',
 'revdelete-logentry'          => '[[$1]] qey neyi esayişê revizyon vuriya',
 'logdelete-logentry'          => '[[$1]] qey neyi esayişê vaqayi vuriya',
@@ -882,7 +881,10 @@ rocaneyan kontrol bıkere.',
 'revmove-badparam-title'       => 'Parametreyê xeleti',
 'revmove-badparam'             => 'Waştişê tu de cikek ke illegal ya zi kem est ê. Ma rica keni "peyser" şo u reyna deneme bike.',
 'revmove-norevisions-title'    => 'Çımraviyarnayışo waşte nêvêreno',
+'revmove-norevisions'          => 'Seba kerdişê ena fonksiyon, ti hama yew ya zi yew ra zafyer revizyonê hedefi belli nikerd ya zi revizyonê ke belli biyo ey cini yo.',
 'revmove-nullmove-title'       => 'Sernameo xırabın',
+'revmove-nullmove'             => 'Peleyê hedefi u peleyê cimeyi eyni name nigene.
+Eka peyser şo pele verini u reyna "$1" ra yew nameya newe biwecine.',
 'revmove-success-existing'     => '{{PLURAL:$1|Yew revizyon [[$2]] ra|$1 revizyonan from [[$2]] ra}} pele [[$3]] rê berda.',
 'revmove-success-created'      => '{{PLURAL:$1|Yew revizyon [[$2]] ra|$1 revizyonan from [[$2]] ra}} pele [[$3]] ke newe a biya o rê berda.',
 
@@ -1320,6 +1322,9 @@ Eka tu wazene ke nameyo raşt xo bide, ma nameyo raşt ti iştirakanê ti de moc
 'upload_directory_missing'    => 'Direktorê dosyayê ($1)î biyo vînî u webserver de nieşkeno viraziye.',
 'upload_directory_read_only'  => 'Direktorê dosyayê ($1)î webserver de nieşkeno binuse.',
 'uploaderror'                 => 'Ğeletê bar kerdişî',
+'upload-recreate-warning'     => "'''Diqet: Yew dosya pê ena name wedariya ya zi vurniya.'''
+
+Logê wedariyayiş u berdişi seba ena pele a ti ra xezir kerda:",
 'uploadtext'                  => "Qey barkerdişê dosyayî, formê cêrinî bişuxulne.
 Dosyayê ke vera cû bar biyê eke şima qayîl e ney dosyayan bivînê ya zî bigerî biewnê[[Special:FileList|listeyê dosyayê bar bîyaye]] (tekrar) bar bîyaye [[Special:Log/upload|rocaneyê barkerdişî]] de, hewn a şîyaye zî tîya de [[Special:Log/delete|rocaneyê hewn a kerdişî]] pawiyene.
 
@@ -1539,7 +1544,7 @@ listeya ke ha ver a têna na {{PLURAL:$1|dosyaya ewwili|dosyaya $1 ewwili}} mocn
 'filedelete-legend'           => 'Dosya bıestere',
 'filedelete-intro'            => "Ti ho dosyayê '''[[Media:$1|$1]]'''i u tarixê ey dosyayê hemî estereno.",
 'filedelete-intro-old'        => "Ti ho versiyonê '''[[Media:$1|$1]]'''i [$4 $3, $2] estereno.",
-'filedelete-comment'          => 'Sebebê esterayişî',
+'filedelete-comment'          => 'Sebeb:',
 'filedelete-submit'           => 'Bıestere',
 'filedelete-success'          => "'''$1'''  esteriyayo.",
 'filedelete-success-old'      => "Versiyonê'''[[Media:$1|$1]]'''î $3, $2 esteriyayo.",
@@ -1859,7 +1864,7 @@ Ena deme ra, ma qe vurnayışan ser ena pele tı haberdar keni. Hem zi çı dem 
 'enotif_lastvisited'           => 'ziyareta şıma ye peyini ra nata heme vuryayiş ê ke biyê bıewnê $1i re..',
 'enotif_lastdiff'              => 'qey vinayişê ney vurnayişi bıewnê pelê $1i',
 'enotif_anon_editor'           => 'karbero anonim $1',
-'enotif_body'                  => 'embaz ê/o $WATCHINGUSERNAME,
+'enotif_body'                  => 'embazê $WATCHINGUSERNAME,
 
 {{SITENAME}} keyepel de no $PAGETITLE pelo sernameyın re $PAGEEDITDATE no tarix de $PAGEEDITOR no karberi $CHANGEDORCREATED. şıma eşkeni bıresi halê no peli re $PAGETITLE_URL na adresi ra.
 
@@ -1878,6 +1883,9 @@ no pel o ke behs beno heta ziyaret kerdışê yewna heli, mesajê vuriyayişi n�
 --
 qey vurnayişê eyari:
 {{fullurl:Special:Watchlist/edit}}
+
+qey wedarayişê ena pele liste xo ra seyr kerdişi, şo
+$UNWATCHURL
 
 qey hemkari u pêşniyazi:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1904,7 +1912,7 @@ Qe qeydê wedarnayışi, $2 bevinin.',
 'dellogpagetext'         => 'listeya cêrıni heme qaydê hewn a kerdeyan o.',
 'deletionlog'            => 'qaydê hewnakerdışani',
 'reverted'               => 'revizyono verin tepiya anciyayo',
-'deletecomment'          => 'Sebeb qe wedarnayışi:',
+'deletecomment'          => 'Sebeb:',
 'deleteotherreason'      => 'Sebebo bin:',
 'deletereasonotherlist'  => 'Sebebo bin',
 'deletereason-dropdown'  => '*sebebê hewnakerdışê pêroyî
@@ -2111,7 +2119,7 @@ Cıkewtışo tewr peyêno ke bloke biyo, cêr seba referansi belikerdeyo:',
 'ipaddress'                       => 'Adresê IPi',
 'ipadressorusername'              => 'Adresê IPî ya zi namayê karberî',
 'ipbexpiry'                       => 'Çi wext de qediyeno:',
-'ipbreason'                       => 'Sebeb',
+'ipbreason'                       => 'Sebeb:',
 'ipbreasonotherlist'              => 'Sebebê bini',
 'ipbreason-dropdown'              => '*sebebê verni-grewtışi yê pêroyi
 ** malumatê şaş têare kerdış
@@ -2906,30 +2914,30 @@ Ma aya bini numnen.
 'limitall'         => 'hemi',
 
 # E-mail address confirmation
-'confirmemail'             => 'Adresê emaîlî xo konfirme bike',
-'confirmemail_noemail'     => 'Yew emaîlê tu raştîyê çin o ke [[Special:Preferences|tercihê karberî]] ayar bike.',
-'confirmemail_text'        => 'qey şuxulnayişê e-postayê wikiyi gani ewwil e-posyaê şıma tesdiq bıbo.
+'confirmemail'              => 'Adresê emaîlî xo konfirme bike',
+'confirmemail_noemail'      => 'Yew emaîlê tu raştîyê çin o ke [[Special:Preferences|tercihê karberî]] ayar bike.',
+'confirmemail_text'         => 'qey şuxulnayişê e-postayê wikiyi gani ewwil e-posyaê şıma tesdiq bıbo.
 adresa şıma re qey erşawıtışê e-postayê tesdiqi, butonê cêrıni bıtıknê.
 e-posta yo ke erşawiyeno tede gıreyê kodê tesdiqi esto, gıreyi bıtıkne akerê u e-postayê xo tesdiq kerê.',
-'confirmemail_pending'     => 'Yew codê konfirmasyonî ma ti ra şiravt;
+'confirmemail_pending'      => 'Yew codê konfirmasyonî ma ti ra şiravt;
 Eka ti newe hesabê xo viraşt, ti gani yew di dekika vindero u email xo kontrol bike, yani reyna yew hesab meviraz.',
-'confirmemail_send'        => 'Yew kodê konfirmasyonî email mina bişirave',
-'confirmemail_sent'        => 'Emailê konfirmasyonî şiravt',
-'confirmemail_oncreate'    => 'Yew codê konfirmasyonî ma ti ra şiravt;
+'confirmemail_send'         => 'Yew kodê konfirmasyonî email mina bişirave',
+'confirmemail_sent'         => 'Emailê konfirmasyonî şiravt',
+'confirmemail_oncreate'     => 'Yew codê konfirmasyonî ma ti ra şiravt;
 Ena kod semed ci kewtîşî lazim niyo, feqat ti gani sistem rê eno kod bimocne ke ti opsiyonê emailî wîkî a bike.',
-'confirmemail_sendfailed'  => '{{SITENAME}} nieşkenî ti ra yew emailê konfirmasyonî bişiravî.
+'confirmemail_sendfailed'   => '{{SITENAME}} nieşkenî ti ra yew emailê konfirmasyonî bişiravî.
 Rica keno ke adresê emailî xo kontrol bike.  
 
 Email şawitoğ eno reyna ard: $1',
-'confirmemail_invalid'     => 'Kodê konfirmasyonî raşt niyo.
+'confirmemail_invalid'      => 'Kodê konfirmasyonî raşt niyo.
 Wextê kod ê konfirmasyonî viyerto.',
-'confirmemail_needlogin'   => ' $1 lazimo ke ti adresê emaîl ê xo konfirme bike.',
-'confirmemail_success'     => 'Email adresê tu konfirme biy.
+'confirmemail_needlogin'    => ' $1 lazimo ke ti adresê emaîl ê xo konfirme bike.',
+'confirmemail_success'      => 'Email adresê tu konfirme biy.
 Ti eşkeno [[Special:UserLogin|ci kewt]].',
-'confirmemail_loggedin'    => 'Eka email adresê tu konfirme biy.',
-'confirmemail_error'       => 'Konfirmasyon ni biy, yew ğelet esto.',
-'confirmemail_subject'     => '{{SITENAME}} konfirmasyonê adres ê emalî',
-'confirmemail_body'        => 'yew ten, muhtemelen şıma no IP-adresi ra,
+'confirmemail_loggedin'     => 'Eka email adresê tu konfirme biy.',
+'confirmemail_error'        => 'Konfirmasyon ni biy, yew ğelet esto.',
+'confirmemail_subject'      => '{{SITENAME}} konfirmasyonê adres ê emalî',
+'confirmemail_body'         => 'yew ten, muhtemelen şıma no IP-adresi ra,
 keyepelê {{SITENAME}}i de pê no $2 e-postayi hesab kerd a.   
 
 eke raşta no e-posta eyê şıma yo şıma gani tesdiq bıkerî, qey tesdiq kerdışi gani karê e-postayê keyepeli {{SITENAME}} aktif bıbo, qey aktif kerdışi gıreyê cêrıni bıtıkne.
@@ -2941,8 +2949,21 @@ eke şıma hesab *a nêkerdo*, qey ibtalê tesdiqkerdışê adresa e-postayi gı
 $5
 
 kodê tesdiqi heta ıney tarixi $4 meqbul o.',
-'confirmemail_invalidated' => 'Konfermasyonê adres ê emaîlî iptal biy',
-'invalidateemail'          => 'confirmasyonê e-maili iptal bik',
+'confirmemail_body_changed' => 'Yew ten, muhtemelen şıma no IP-adresi $1 ra,
+keyepelê {{SITENAME}}i de pê no $2 e-postayi hesab kerd a.   
+
+Eke raşta no e-posta eyê şıma yo şıma gani tesdiq bıkerî, 
+qey tesdiq kerdışi gani karê e-postayê keyepeli {{SITENAME}} aktif bıbo, qey aktif kerdışi gıreyê cêrıni bıtıkne:
+
+$3
+
+eke şıma hesab *a nêkerdo*, qey ibtalê tesdiqkerdışê adresa e-postayi gıreyê cêrıni bıtıknê:
+
+$5
+
+kodê tesdiqi heta ıney tarixi $4 meqbul o.',
+'confirmemail_invalidated'  => 'Konfermasyonê adres ê emaîlî iptal biy',
+'invalidateemail'           => 'confirmasyonê e-maili iptal bik',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Transcludê înterwîkîyî nihebityeno]',

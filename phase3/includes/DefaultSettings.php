@@ -281,17 +281,14 @@ $wgAllowImageMoving = true;
 $wgIllegalFileChars = ":";
 
 /**
- * New file storage paths; currently used only for deleted files.
- * Set it like this:
- *
- *   $wgFileStore['deleted']['directory'] = '/var/wiki/private/deleted';
+ * @deprecated use $wgDeletedDirectory
  */
 $wgFileStore = array();
-/** @cond file_level_code */
-$wgFileStore['deleted']['directory'] = false; //  Defaults to $wgUploadDirectory/deleted
-$wgFileStore['deleted']['url'] = null;        //  Private
-$wgFileStore['deleted']['hash'] = 3;          //  3-level subdirectory split
-/** @endcond */
+
+/**
+ * What directory to place deleted uploads in
+ */
+$wgDeletedDirectory = false; //  Defaults to $wgUploadDirectory/deleted
 
 /**
  * Set this to true if you use img_auth and want the user to see details on why access failed.
@@ -342,9 +339,11 @@ $wgImgAuthPublicTest = true;
  *
  * These settings describe a foreign MediaWiki installation. They are optional, and will be ignored
  * for local repositories:
- *   - descBaseUrl       URL of image description pages, e.g. http://en.wikipedia.org/wiki/Image:
+ *   - descBaseUrl       URL of image description pages, e.g. http://en.wikipedia.org/wiki/File:
  *   - scriptDirUrl      URL of the MediaWiki installation, equivalent to $wgScriptPath, e.g.
- *                      http://en.wikipedia.org/w
+ *                       http://en.wikipedia.org/w
+ *   - scriptExtension   Script extension of the MediaWiki installation, equivalent to 
+ *                       $wgScriptExtension, e.g. .php5 defaults to .php
  *
  *   - articleUrl        Equivalent to $wgArticlePath, e.g. http://en.wikipedia.org/wiki/$1
  *   - fetchDescription  Fetch the text of the remote file description page. Equivalent to
@@ -400,7 +399,7 @@ $wgRemoteUploads = false;
  * Uploads to this wiki will NOT be put there - they will be put into
  * $wgUploadDirectory.
  * If $wgUseSharedUploads is set, the wiki will look in the shared repository if
- * no file of the given name is found in the local repository (for [[Image:..]],
+ * no file of the given name is found in the local repository (for [[File:..]],
  * [[Media:..]] links). Thumbnails will also be looked for and generated in this
  * directory.
  *
@@ -483,7 +482,7 @@ $wgHashedSharedUploadDirectory = true;
  *
  * Please specify the namespace, as in the example below.
  */
-$wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/Image:";
+$wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/File:";
 
 /**
  * This is the list of preferred extensions for uploading files. Uploading files
@@ -540,7 +539,7 @@ $wgUploadSizeWarning = false;
 /**
  * list of trusted media-types and mime types.
  * Use the MEDIATYPE_xxx constants to represent media types.
- * This list is used by Image::isSafeFile
+ * This list is used by File::isSafeFile
  *
  * Types not listed here will have a warning about unsafe content
  * displayed on the images description page. It would also be possible
@@ -1548,7 +1547,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '293';
+$wgStyleVersion = '297';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -1776,6 +1775,18 @@ $wgFixArabicUnicode = true;
  * fix any ZWJ sequences in existing page titles.
  */
 $wgFixMalayalamUnicode = true;
+
+/**
+ * Set this to always convert certain Unicode sequences to modern ones
+ * regardless of the content language. This has a small performance
+ * impact.
+ *
+ * See $wgFixArabicUnicode and $wgFixMalayalamUnicode for conversion
+ * details.
+ *
+ * @since 1.17
+ */
+$wgAllUnicodeFixes = false;
 
 /**
  * Set this to eg 'ISO-8859-1' to perform character set conversion when 
@@ -2270,6 +2281,12 @@ $wgVectorExtraStyles = null;
  * Display user edit counts in various prominent places.
  */
 $wgEdititis = false;
+
+/**
+ * Experimental better directionality support.
+ */
+$wgBetterDirectionality = false;
+
 
 /** @} */ # End of output format settings }
 
@@ -2774,7 +2791,6 @@ $wgDefaultUserOptions = array(
 	'imagesize'               => 2,
 	'justify'                 => 0,
 	'math'                    => 1,
-	'minordefault'            => 0,
 	'newpageshidepatrolled'   => 0,
 	'nocache'                 => 0,
 	'noconvertlink'           => 0,

@@ -31,9 +31,13 @@ class MysqlInstaller extends InstallerDBType {
 	function getName() {
 		return 'mysql';
 	}
-	
-	function isCompiled() {
-		return $this->checkExtension( 'mysql' );
+
+	function __construct( $parent ) {
+		parent::__construct( $parent );
+	}
+
+	public function isCompiled() {
+		return self::checkExtension( 'mysql' );
 	}
 
 	function getGlobalDefaults() {
@@ -362,6 +366,17 @@ class MysqlInstaller extends InstallerDBType {
 		return Status::newGood();
 	}
 
+	public function preInstall() {
+		# Add our user callback to installSteps, right before the tables are created.
+		$callback = array(
+			array(
+				'name' => 'user',
+				'callback' => array( $this, 'setupUser' ),
+			)
+		);
+		$this->parent->addInstallStepFollowing( "tables", $callback );
+	}
+
 	function setupDatabase() {
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
@@ -376,6 +391,28 @@ class MysqlInstaller extends InstallerDBType {
 		return $status;
 	}
 
+	function setupUser() {
+		global $IP;
+
+		if ( !$this->getVar( '_CreateDBAccount' ) ) {
+			return Status::newGood();
+		}
+
+		$status = $this->getConnection();
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		$db = $this->getVar( 'wgDBname' );
+		$this->db->selectDB( $db );
+		$error = $this->db->sourceFile( "$IP/maintenance/users.sql" );
+		if ( $error !== true ) {
+			$status->fatal( 'config-install-user-failed', $this->getVar( 'wgDBuser' ), $error );
+		}
+
+		return $status;
+	}
+
 	function createTables() {
 		global $IP;
 		$status = $this->getConnection();
@@ -383,10 +420,17 @@ class MysqlInstaller extends InstallerDBType {
 			return $status;
 		}
 		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
-		if ( !$this->db->sourceFile( "$IP/maintenance/tables.sql" ) ) {
-			//@todo
+		
+		if( $this->db->tableExists( 'user' ) ) {
+			$status->warning( 'config-install-tables-exist' );
+			return $status;
+		} 
+		
+		$error = $this->db->sourceFile( "$IP/maintenance/tables.sql" );
+		if( $error !== true ) {
+			$status->fatal( 'config-install-tables-failed', $error );
 		}
-		return Status::newGood();
+		return $status;
 	}
 
 	function getTableOptions() {

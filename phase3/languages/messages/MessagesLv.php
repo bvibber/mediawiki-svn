@@ -64,7 +64,6 @@ $messages = array(
 'tog-watchdefault'            => 'Pievienot manis izmainītās lapas uzraugāmo lapu sarakstam',
 'tog-watchmoves'              => 'Pievienot manis pārvietotās lapas uzraugāmo lapu sarakstam',
 'tog-watchdeletion'           => 'Pievienot manis izdzēstās lapas uzraugāmo lapu sarakstam',
-'tog-minordefault'            => 'Atzīmēt visus labojumus jau sākotnēji par maznozīmīgiem',
 'tog-previewontop'            => 'Parādīt priekšskatījumu virs rediģēšanas lauka, nevis zem',
 'tog-previewonfirst'          => 'Parādīt priekšskatījumu jau uzsākot rediģēšanu',
 'tog-nocache'                 => 'Neļaut pārlūkam saglabāt lapas kešatmiņā',
@@ -435,6 +434,7 @@ Tavs lietotāja konts ir izveidots. Neaizmirsti, ka ir iespējams mainīt [[Spec
 'nav-login-createaccount'    => 'Izveidot jaunu lietotāju vai doties iekšā',
 'loginprompt'                => 'Lai ieietu {{grammar:lokatīvs|{{SITENAME}}}}, tavam datoram ir jāpieņem sīkdatnes (<i>cookies</i>).',
 'userlogin'                  => 'Izveidot jaunu lietotāju vai doties iekšā',
+'userloginnocreate'          => 'Ieiet',
 'logout'                     => 'Iziet',
 'userlogout'                 => 'Iziet',
 'notloggedin'                => 'Neesi iegājis',
@@ -551,11 +551,11 @@ Bloķējot norādītais iemesls bija: ''\$2''.
 
 *Bloka sākums: \$8
 *Bloka beigas: \$6
-*Ar šo mēģināja nobloķēt: \$7
+*Bija domāts nobloķēt: \$7
 
 Tu vari sazināties ar \$1 vai kādu citu [[{{MediaWiki:Grouppage-sysop}}|administratoru]] lai apspriestu šo bloku.
 
-Pievērs uzmanību, tam, ka ja tu neesi norādījis derīgu e-pasta adresi ''[[Special:Preferences|manās izvēlēs]]'', tev nedarbosies \"sūtīt e-pastu\" iespēja.
+Pievērs uzmanību, tam, ka ja tu neesi norādījis derīgu e-pasta adresi ''[[Special:Preferences|savās izvēlēs]]'', tev nedarbosies \"sūtīt e-pastu\" iespēja.
 
 Tava IP adrese ir \$3 un bloka identifikators ir #\$5. Lūdzu iekļauj vienu no tiem, vai abus, visos turpmākajos pieprasījumos.",
 'autoblockedtext'                  => 'Tava IP adrese ir tikusi automātiski nobloķēta, tāpēc, ka to (nupat kā) ir lietojis cits lietotājs, kuru nobloķēja $1.
@@ -744,7 +744,7 @@ Mēģiniet [[Special:Search|meklēt]], lai atrastu saistītas lapas!',
 'revdelete-radio-same'       => '(nemainīt)',
 'revdelete-radio-set'        => 'Jā',
 'revdelete-radio-unset'      => 'Nē',
-'revdelete-log'              => 'Dzēšanas iemesls:',
+'revdelete-log'              => 'Iemesls:',
 'revdel-restore'             => 'mainīt redzamību',
 'pagehist'                   => 'Lapas vēsture',
 'revdelete-content'          => 'saturs',
@@ -1203,7 +1203,7 @@ Uzklikšķinot uz kādas kolonnas virsraksta, var sakārtot pēc kāda cita para
 'filedelete-legend'           => 'Dzēst failu',
 'filedelete-intro'            => "Tu taisies izdzēst '''[[Media:$1|$1]]''', kopā ar visu tā hronoloģiju.",
 'filedelete-intro-old'        => "Tu tagad taisies izdzēst faila '''[[Media:$1|$1]]''' versiju, kas tika augšuplādēta [$4 $3, $2].",
-'filedelete-comment'          => 'Dzēšanas iemesls:',
+'filedelete-comment'          => 'Iemesls:',
 'filedelete-submit'           => 'Izdzēst',
 'filedelete-success'          => "'''$1''' tika veiksmīgi izdzēsts.",
 'filedelete-success-old'      => "Faila '''[[Media:$1|$1]]''' versija $3, $2 tika izdzēsta.",
@@ -1477,7 +1477,7 @@ iepriekšējas versijas.",
 'dellogpagetext'         => 'Šajā lapā ir pēdējo dzēsto lapu saraksts.',
 'deletionlog'            => 'dzēšanas reģistrs',
 'reverted'               => 'Atjaunots uz iepriekšējo versiju',
-'deletecomment'          => 'Dzēšanas iemesls',
+'deletecomment'          => 'Iemesls:',
 'deleteotherreason'      => 'Cits/papildu iemesls:',
 'deletereasonotherlist'  => 'Cits iemesls',
 'deletereason-dropdown'  => '*Izplatīti dzēšanas iemesli
@@ -1515,7 +1515,7 @@ Lūdzu, spied \"''back''\" un atjaunini iepriekšējo lapu. Tad mēģini vēlrei
 'protect-title'               => 'Izmainīt "$1" aizsargāšanas līmeni?',
 'prot_1movedto2'              => '"[[$1]]" pārdēvēju par "[[$2]]"',
 'protect-legend'              => 'Apstiprināt aizsargāšanu',
-'protectcomment'              => 'Aizsargāšanas iemesls:',
+'protectcomment'              => 'Iemesls:',
 'protectexpiry'               => 'Beidzas:',
 'protect_expiry_invalid'      => 'Beigu termiņš ir nederīgs.',
 'protect_expiry_old'          => 'Beigu termiņs ir pagātnē.',
@@ -1626,6 +1626,7 @@ kāds cits iespējams to ir atjaunojis ātrāk.',
 'whatlinkshere-next'       => '{{PLURAL:$1|nākamo|nākamos $1}}',
 'whatlinkshere-links'      => '← saites',
 'whatlinkshere-hideredirs' => '$1 pāradresācijas',
+'whatlinkshere-hidetrans'  => '$1 lapas, kurās šī lapa izmantota kā veidne',
 'whatlinkshere-hidelinks'  => '$1 saites',
 'whatlinkshere-filters'    => 'Filtri',
 
@@ -1637,7 +1638,7 @@ Norādi konkrētu iemeslu (piemēram, linkus uz vandalizētajām lapām).',
 'ipaddress'                    => 'IP adrese/lietotājvārds',
 'ipadressorusername'           => 'IP adrese vai lietotājvārds',
 'ipbexpiry'                    => 'Termiņš',
-'ipbreason'                    => 'Iemesls',
+'ipbreason'                    => 'Iemesls:',
 'ipbreasonotherlist'           => 'Cits iemesls',
 'ipbreason-dropdown'           => '*Biežākie bloķēšanas iemesli
 ** Ievieto nepatiesu informāciju
@@ -1763,7 +1764,7 @@ Ja tomēr vēlēsies, tad tev šī diskusiju lapa būs jāpārvieto vai jāapvie
 'movesubpage'             => '{{PLURAL:$1|Apakšlapa|Apakšlapas}}',
 'movesubpagetext'         => 'Šai lapai ir $1 {{PLURAL:$1|apakšlapa|apakšlapas}}, kas redzamas zemāk.',
 'movenosubpage'           => 'Šai lapai nav apakšlapu.',
-'movereason'              => 'Iemesls',
+'movereason'              => 'Iemesls:',
 'revertmove'              => 'atcelt',
 'delete_and_move'         => 'Dzēst un pārvietot',
 'delete_and_move_text'    => '==Nepieciešama dzēšana==
@@ -1884,6 +1885,7 @@ Pirmajā gadījumā var arī lietot šādu metodi, piem., [[{{#Special:Export}}/
 'tooltip-watch'                   => 'Pievienot šo lapu uzraugāmo lapu sarakstam',
 'tooltip-recreate'                => 'Atjaunot lapu, lai arī tā ir bijusi izdzēsta',
 'tooltip-upload'                  => 'Sākt augšuplādi',
+'tooltip-rollback'                => '"Novērst" atceļ visas šī lietotāja izmaiņas vienā piegājienā',
 'tooltip-undo'                    => '"Atgriezt" atgriež šīs izmaiņas un atver labošanas formu priekšskatījuma veidā.
 Tas atļauj pievienot iemeslu kopsavilkumā.',
 
@@ -1948,6 +1950,13 @@ To visticamāk izraisīja ārēja saite uz melnajā sarakstā esošu interneta v
 'ilsubmit'              => 'Meklēt',
 'bydate'                => '<b>pēc datuma</b>',
 'sp-newimages-showfrom' => 'Rādīt jaunos attēlus sākot no $1, $2',
+
+# Bad image list
+'bad_image_list' => 'Formāts: 
+
+Tiek ņemti vērā tikai ieraksti rindiņā kas sākas ar * 
+Pirmajai saitei rindiņā ir jābūt uz attiecīgo failu 
+Jebkuras sekojošas saites tiks uzskatītas par izņēmumiem t.i. lapām kurās fails drīkt tikt izmantots',
 
 # Metadata
 'metadata'          => 'Metadati',

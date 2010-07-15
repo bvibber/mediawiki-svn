@@ -23,10 +23,10 @@ class LocalSettingsGenerator {
 			'wgDBtype', 'wgSecretKey', 'wgRightsUrl', 'wgSitename', 'wgRightsIcon',
 			'wgRightsText', 'wgRightsCode', 'wgMainCacheType', 'wgEnableUploads',
 			'wgMainCacheType', '_MemCachedServers', 'wgDBserver', 'wgDBuser',
-			'wgDBpassword' ), $db->getGlobalNames() );
+			'wgDBpassword', 'wgUseInstantCommons' ), $db->getGlobalNames() );
 		$unescaped = array( 'wgRightsIcon' );
 		$boolItems = array( 'wgEnableEmail', 'wgEnableUserEmail', 'wgEnotifUserTalk',
-			'wgEnotifWatchlist', 'wgEmailAuthentication', 'wgEnableUploads' );
+			'wgEnotifWatchlist', 'wgEmailAuthentication', 'wgEnableUploads', 'wgUseInstantCommons' );
 		foreach( $confItems as $c ) {
 			$val = $installer->getVar( $c );
 			if( in_array( $c, $boolItems ) ) {
@@ -72,26 +72,6 @@ class LocalSettingsGenerator {
 		}
 
 		return $localSettings;
-	}
-
-	/**
-	 * Write the file
-	 * @param $secretKey String A random string to
-	 * @return boolean On successful file write
-	 */
-	public function writeLocalSettings() {
-		$localSettings = $this->getText();
-		wfSuppressWarnings();
-		$ret = file_put_contents( $this->configPath . '/LocalSettings.php', $localSettings );
-		wfRestoreWarnings();
-
-		$status = Status::newGood();
-
-		if ( !$ret ) {
-			$status->fatal( 'config-install-localsettings-unwritable', $localSettings );
-		}
-
- 		return $status;
 	}
 
 	private function buildMemcachedServerList() {
@@ -191,10 +171,10 @@ if ( \$wgCommandLineMode ) {
 \$wgEnableUserEmail  = {$this->values['wgEnableUserEmail']}; # UPO
 
 \$wgEmergencyContact = \"{$this->values['wgEmergencyContact']}\";
-\$wgPasswordSender = \"{$this->values['wgPasswordSender']}\";
+\$wgPasswordSender   = \"{$this->values['wgPasswordSender']}\";
 
-\$wgEnotifUserTalk = {$this->values['wgEnotifUserTalk']}; # UPO
-\$wgEnotifWatchlist = {$this->values['wgEnotifWatchlist']}; # UPO
+\$wgEnotifUserTalk      = {$this->values['wgEnotifUserTalk']}; # UPO
+\$wgEnotifWatchlist     = {$this->values['wgEnotifWatchlist']}; # UPO
 \$wgEmailAuthentication = {$this->values['wgEmailAuthentication']};
 
 ## Database settings
@@ -207,14 +187,17 @@ if ( \$wgCommandLineMode ) {
 {$this->dbSettings}
 
 ## Shared memory settings
-\$wgMainCacheType = $cacheType;
+\$wgMainCacheType    = $cacheType;
 \$wgMemCachedServers = $mcservers;
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-\$wgEnableUploads       = {$this->values['wgEnableUploads']};
+\$wgEnableUploads  = {$this->values['wgEnableUploads']};
 {$magic}\$wgUseImageMagick = true;
 {$magic}\$wgImageMagickConvertCommand = \"{$this->values['wgImageMagickConvertCommand']}\";
+
+# InstantCommons allows wiki to use images from http://commons.wikimedia.org
+\$wgUseInstantCommons  = {$this->values['wgUseInstantCommons']};
 
 ## If you use ImageMagick (or any other shell command) on a
 ## Linux server, this will need to be set to the name of an
@@ -238,6 +221,7 @@ if ( \$wgCommandLineMode ) {
 
 \$wgLocalInterwiki   = strtolower( \$wgSitename );
 
+# Site language code, should be one of ./languages/Language(.*).php
 \$wgLanguageCode = \"{$this->values['wgLanguageCode']}\";
 
 \$wgSecretKey = \"{$this->values['wgSecretKey']}\";
@@ -251,11 +235,12 @@ if ( \$wgCommandLineMode ) {
 ## License and Creative Commons licenses are supported so far.
 {$rights}\$wgEnableCreativeCommonsRdf = true;
 \$wgRightsPage = \"\"; # Set to the title of a wiki page that describes your license/copyright
-\$wgRightsUrl = \"{$this->values['wgRightsUrl']}\";
+\$wgRightsUrl  = \"{$this->values['wgRightsUrl']}\";
 \$wgRightsText = \"{$this->values['wgRightsText']}\";
 \$wgRightsIcon = \"{$this->values['wgRightsIcon']}\";
 # \$wgRightsCode = \"{$this->values['wgRightsCode']}\"; # Not yet used
 
+# Path to the GNU diff3 utility. Used for conflict resolution.
 \$wgDiff3 = \"{$this->values['wgDiff3']}\";
 
 # When you make changes to this configuration file, this will make

@@ -221,9 +221,10 @@ class ApiQuery extends ApiBase {
 	public function execute() {
 		$this->params = $this->extractRequestParams();
 		$this->redirects = $this->params['redirects'];
+		$this->convertTitles = $this->params['converttitles'];
 
 		// Create PageSet
-		$this->mPageSet = new ApiPageSet( $this, $this->redirects );
+		$this->mPageSet = new ApiPageSet( $this, $this->redirects, $this->convertTitles );
 
 		// Instantiate requested modules
 		$modules = array();
@@ -307,6 +308,20 @@ class ApiQuery extends ApiBase {
 			$result->setIndexedTagName( $normValues, 'n' );
 			$result->addValue( 'query', 'normalized', $normValues );
 		}
+		
+		// Title conversions
+		$convValues = array();
+		foreach ( $pageSet->getConvertedTitles() as $rawTitleStr => $titleStr ) {
+			$convValues[] = array(
+				'from' => $rawTitleStr,
+				'to' => $titleStr
+			);
+		}
+
+		if ( count( $convValues ) ) {
+			$result->setIndexedTagName( $convValues, 'c' );
+			$result->addValue( 'query', 'converted', $convValues );
+		}		
 
 		// Interwiki titles
 		$intrwValues = array();
@@ -373,6 +388,17 @@ class ApiQuery extends ApiBase {
 				'pageid' => $pageid,
 				'missing' => ''
 			);
+		}
+		// Report special pages
+		foreach ( $pageSet->getSpecialTitles() as $fakeId => $title ) {
+			$vals = array();
+			ApiQueryBase::addTitleInfo( $vals, $title );
+			$vals['special'] = '';
+			if ( $title->getNamespace() == NS_SPECIAL && 
+					!SpecialPage::exists( $title->getText() ) ) {
+				$vals['missing'] = '';			
+			}
+			$pages[$fakeId] = $vals;
 		}
 
 		// Output general page information for found titles
@@ -445,7 +471,7 @@ class ApiQuery extends ApiBase {
 		}
 
 		// Generator results
-		$resultPageSet = new ApiPageSet( $this, $this->redirects );
+		$resultPageSet = new ApiPageSet( $this, $this->redirects, $this->convertTitles );
 
 		// Create and execute the generator
 		$generator = new $className ( $this, $generatorName );
@@ -491,6 +517,7 @@ class ApiQuery extends ApiBase {
 				ApiBase::PARAM_TYPE => $this->mAllowedGenerators
 			),
 			'redirects' => false,
+			'converttitles' => false,
 			'indexpageids' => false,
 			'export' => false,
 			'exportnowrap' => false,
@@ -575,6 +602,7 @@ class ApiQuery extends ApiBase {
 			'generator' => array( 'Use the output of a list as the input for other prop/list/meta items',
 					'NOTE: generator parameter names must be prefixed with a \'g\', see examples' ),
 			'redirects' => 'Automatically resolve redirects',
+			'converttitles' => 'Automatically convert titles to their canonical form',
 			'indexpageids' => 'Include an additional pageids section listing all returned page IDs',
 			'export' => 'Export the current revisions of all given or generated pages',
 			'exportnowrap' => 'Return the export XML without wrapping it in an XML result (same format as Special:Export). Can only be used with export',

@@ -31,7 +31,6 @@ $wgMessageStructure = array(
 		'tog-watchdefault',
 		'tog-watchmoves',
 		'tog-watchdeletion',
-		'tog-minordefault',
 		'tog-previewontop',
 		'tog-previewonfirst',
 		'tog-nocache',
@@ -1391,6 +1390,7 @@ $wgMessageStructure = array(
 		'shared-repo-from',
 		'shared-repo',
 		'shared-repo-name-wikimediacommons',
+		'filepage.css',
 	),
 	'filerevert' => array(
 		'filerevert',

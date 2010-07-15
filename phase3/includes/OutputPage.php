@@ -9,7 +9,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class OutputPage {
 	var $mMetatags = array(), $mKeywords = array(), $mLinktags = array();
 	var $mExtStyles = array();
-	var $mPagetitle = '', $mBodytext = '', $mDebugtext = '';
+	var $mPagetitle = '', $mBodytext = '';
+
+	/**
+	 * Holds the debug lines that will be outputted as comments in page source if
+	 * $wgDebugComments is enabled. See also $wgShowDebug.
+	 * TODO: make a getter method for this
+	 */
+	public $mDebugtext = '';
+
 	var $mHTMLtitle = '', $mIsarticle = true, $mPrintable = false;
 	var $mSubtitle = '', $mRedirect = '', $mStatusCode;
 	var $mLastModified = '', $mETag = false;
@@ -1793,20 +1801,6 @@ class OutputPage {
 	}
 
 	/**
-	 * @deprecated use permissionRequired()
-	 */
-	public function sysopRequired() {
-		throw new MWException( "Call to deprecated OutputPage::sysopRequired() method\n" );
-	}
-
-	/**
-	 * @deprecated use permissionRequired()
-	 */
-	public function developerRequired() {
-		throw new MWException( "Call to deprecated OutputPage::developerRequired() method\n" );
-	}
-
-	/**
 	 * Produce the stock "please login to use the wiki" page
 	 */
 	public function loginToUse() {
@@ -2105,9 +2099,7 @@ class OutputPage {
 		}
 		$sk->setupUserCss( $this );
 
-		$dir = $wgContLang->getDir();
-		$htmlAttribs = array( 'lang' => $wgContLanguageCode, 'dir' => $dir );
-		$ret = Html::htmlHeader( $htmlAttribs );
+		$ret = Html::htmlHeader( array( 'lang' => wfUILang()->getCode() ) );
 
 		if ( $this->getHTMLTitle() == '' ) {
 			$this->setHTMLTitle( wfMsg( 'pagetitle', $this->getPageTitle() ) );
@@ -2162,6 +2154,7 @@ class OutputPage {
 		}
 
 		# Class bloat
+		$dir = wfUILang()->getDir();
 		$bodyAttrs['class'] = "mediawiki $dir";
 
 		if ( $wgLang->capitalizeAllNouns() ) {
@@ -2433,8 +2426,7 @@ class OutputPage {
 	 */
 	protected function styleLink( $style, $options ) {
 		if( isset( $options['dir'] ) ) {
-			global $wgContLang;
-			$siteDir = $wgContLang->getDir();
+			$siteDir = wfUILang()->getDir();
 			if( $siteDir != $options['dir'] ) {
 				return '';
 			}

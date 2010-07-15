@@ -111,7 +111,6 @@ $messages = array(
 'tog-watchdefault'            => 'Déan faire ar leathanaigh a athraím',
 'tog-watchmoves'              => 'Cuir ar mo liosta faire leathanaigh a athainmnaím',
 'tog-watchdeletion'           => 'Cuir ar mo liosta faire leathanaigh a scriosaim',
-'tog-minordefault'            => 'Déan mionathruithe de gach aon athrú, mar réamhshocrú',
 'tog-previewontop'            => 'Cuir an réamhamharc os cionn an bhosca eagair, <br />agus ná cuir é taobh thíos de',
 'tog-previewonfirst'          => 'Taispeáin réamhamharc don chéad athrú',
 'tog-nocache'                 => 'Ciorraigh taisce na leathanach',
@@ -733,7 +732,7 @@ Treoir: (rth) = difríocht ón leagan reatha, (rmh) = difríocht ón leagan roim
 
 # History merging
 'mergehistory-from'   => 'Leathanach fhoinse:',
-'mergehistory-reason' => 'Fáth',
+'mergehistory-reason' => 'Fáth:',
 
 # Merge log
 'revertmerge' => 'Díchumaisc',
@@ -1331,7 +1330,7 @@ Féach ar $2 chun cuntas na scriosiadh deireanacha a fháil.',
 'dellogpagetext'        => 'Seo é liosta de na scriosaidh is déanaí.',
 'deletionlog'           => 'cuntas scriosaidh',
 'reverted'              => 'Tá eagrán níos luaithe in úsáid anois',
-'deletecomment'         => 'Cúis don scriosadh',
+'deletecomment'         => 'Fáth:',
 'deleteotherreason'     => 'Fáth eile/breise:',
 'deletereasonotherlist' => 'Fáth eile',
 'deletereason-dropdown' => '*Fáthanna coitianta scriosta
@@ -1474,7 +1473,7 @@ leathanaigh áirithe a rinne an duine damáiste ar).',
 'ipaddress'               => 'Seoladh IP / ainm úsáideora',
 'ipadressorusername'      => 'Seoladh IP nó ainm úsáideora:',
 'ipbexpiry'               => 'Am éaga',
-'ipbreason'               => 'Cúis',
+'ipbreason'               => 'Fáth:',
 'ipbreasonotherlist'      => 'Fáth eile',
 'ipbreason-dropdown'      => '*Fáthanna coitianta
 ** Loitiméaracht
@@ -1595,7 +1594,7 @@ Sna cásanna sin, caithfidh tú an leathanach a aistrigh nó a chumasc tú féin
 '1movedto2_redir'         => 'rinneadh athsheoladh de [[$1]] go [[$2]]',
 'movelogpage'             => 'Log athainmnithe',
 'movelogpagetext'         => 'Liosta is ea seo thíos de leathanaigh athainmnithe.',
-'movereason'              => 'Cúis',
+'movereason'              => 'Fáth:',
 'revertmove'              => 'athúsáid',
 'delete_and_move'         => 'Scrios agus athainmnigh',
 'delete_and_move_text'    => '==Tá scriosadh riachtanach==

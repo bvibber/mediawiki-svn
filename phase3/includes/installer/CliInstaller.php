@@ -62,34 +62,40 @@ class CliInstaller extends Installer {
 		if ( isset( $option['pass'] ) ) {
 			$this->setVar( '_AdminPassword', $option['pass'] );
 		}
-
-		$this->output = new CliInstallerOutput( $this );
 	}
 
 	/**
 	 * Main entry point.
 	 */
 	function execute( ) {
-		foreach( $this->getInstallSteps() as $step ) {
-			$this->showMessage("Installing $step... ");
+		foreach( $this->getInstallSteps() as $stepObj ) {
+			$step = is_array( $stepObj ) ? $stepObj['name'] : $stepObj;
+			$this->showMessage( wfMsg( "config-install-$step") .
+					wfMsg( 'ellipsis' ) . wfMsg( 'word-separator' ) );
 			$func = 'install' . ucfirst( $step );
 			$status = $this->{$func}();
-			$ok = $status->isGood();
-			if ( !$ok ) {
-				$this->showStatusError( $status );
+			$warnings = $status->getWarningsArray();
+			if ( !$status->isOk() ) {
+				$this->showStatusMessage( $status );
+				echo "\n";
 				exit;
+			} elseif ( count($warnings) !== 0 ) {
+				foreach ( $status->getWikiTextArray( $warnings ) as $w ) {
+					$this->showMessage( $w . wfMsg( 'ellipsis') .
+						wfMsg( 'word-separator' ) );
+				}
 			}
-			$this->showMessage("done\n");
+			$this->showMessage( wfMsg( 'config-install-step-done' ) ."\n");
 		}
 	}
 
 	function showMessage( $msg /*, ... */ ) {
-		$this->output->addHTML($msg);
-		$this->output->output();
+		echo html_entity_decode( strip_tags( $msg ), ENT_QUOTES );
+		flush();
 	}
 
-	function showStatusError( $status ) {
-		$this->output->addHTML($status->getWikiText()."\n");
-		$this->output->flush();
+	function showStatusMessage( $status ) {
+		$this->showMessage( $status->getWikiText() );
 	}
+
 }

@@ -40,6 +40,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * XmlFunctions.php has been removed. Use the Xml or Html classes as appropriate.
 * Added $wgSQLMode for setting database SQL modes - either performance (null)
   or other reasons (such as enabling stricter checks)
+* $wgFileStore has been deprecated. The only usage $wgFileStore['deleted'] has
+  been turned into $wgDeletedDirectory
+* $wgDeletedDirectory has been added to specify what directory to place deleted
+  uploads in
 
 === New features in 1.17 ===
 * (bug 10183) Users can now add personal styles and scripts to all skins via
@@ -97,6 +101,19 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 8507) Group file links by namespace:title on image pages
 * Stop emitting named entities, so we can use <!DOCTYPE html> while still being
   well-formed XML
+* texvc now supports \bcancel and \xcancel in addition to \cancel and \cancelto
+* Added scriptExtension setting to $wgForeignFileRepos
+* ForeignApiRepo uses scriptDirUrl if apiBase not set
+* (bug 24212) Added MediaWiki:Filepage.css which is also included on foreign
+  client wikis.
+* (bug 14685) Double underscore magic word usage is now tracked in the 
+  page_props table, as well as the behavioral magic words {{DEFAULTSORT}} and 
+  {{DISPLAYTITLE}}
+* (bug 24045) MediaWiki:Ipb-needreblock is now wrapped in a div with class
+  "mw-ipd-needreblock"
+* (bug 24313) The preference to mark edits minor by default was removed,
+  because it encourages edits to be marked minor accidentally and it can be
+  easily replicated by custom user scripts for those who really want it.
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -220,12 +237,15 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 23642) Recognize mime types of MS OpenXML documents.
 * (bug 22784) Normalise underscores and spaces in autocomments.
 * (bug 19910) Headings of the form ===+\s+ are now displayed as valid headings
+* (bug 24022) Only check file extensions on the uploadpage when needed.
+* (bug 24076) Recognize Office 2003 files with OpenXML trailers
+* (bug 24244) Updated comments in DefaultSettings.php to reflect Image: --> File:
+  namespace rename.
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
 * (bug 22764) uselang parameter for action=parse.
 * (bug 22944) API: watchlist options are inconsistent.
-* (bug 22339) "Go" result should be available through the API.
 * (bug 22868) don't list infinite block expiry date as "now" in API logevents.
 * (bug 22290) prop=revisions now outputs "comment" field even when comment.
   is empty, for consistency with list=recentchanges.
@@ -250,7 +270,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 24089) Logevents causes PHP Notice if leprop=title isn't supplied
 * (bug 23473) Give description of properties on all modules
 * (bug 24136) unknownerror when adding new section without summary, but forceditsummary
-
+* (bug 16886) Sister projects box moves down the extract of the first result in IE 7.
+* (bug 22339) Added srwhat=nearmatch to list=search to get a "go" result
+* (bug 24303) Added new &servedby parameter to all actions which adds the hostname
+  that served the request to the result. It is also added unconditionally on error
+* (bug 24185) Titles in the Media and Special namespace are now supported for 
+  title normalization in action=query. Special pages have their name resolved
+  to the local alias.
+* (bug 24296) Added converttitles parameter to convert titles to their 
+  canonical language variant.
+  
 === Languages updated in 1.17 ===
 
 MediaWiki supports over 330 languages. Many localisations are updated

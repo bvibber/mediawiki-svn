@@ -362,7 +362,6 @@ $messages = array(
 'tog-watchdefault'            => 'Selbst geänderte Seiten automatisch beobachten',
 'tog-watchmoves'              => 'Selbst verschobene Seiten automatisch beobachten',
 'tog-watchdeletion'           => 'Selbst gelöschte Seiten automatisch beobachten',
-'tog-minordefault'            => 'Eigene Änderungen standardmäßig als geringfügig markieren',
 'tog-previewontop'            => 'Vorschau oberhalb des Bearbeitungsfensters anzeigen',
 'tog-previewonfirst'          => 'Beim ersten Bearbeiten immer die Vorschau anzeigen',
 'tog-nocache'                 => 'Seitencache deaktivieren',
@@ -947,7 +946,7 @@ oder in den zugehörigen <span class="plainlinks">[{{fullurl:{{#special:Log}}|pa
 'userpage-userdoesnotexist-view'   => 'Benutzerkonto „$1“ existiert nicht.',
 'blocked-notice-logextract'        => '{{GENDER:$1|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} ist zurzeit gesperrt.
 Zur Information folgt ein aktueller Auszug aus dem Benutzersperr-Logbuch:',
-'clearyourcache'                   => "'''Hinweis - Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei ''Aktualisieren'' anklicken.",
+'clearyourcache'                   => "'''Hinweis - Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' auf dem Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei ''Aktualisieren'' anklicken.",
 'usercssyoucanpreview'             => "'''Tipp:''' Benutze den „{{int:showpreview}}“-Button, um dein neues CSS vor dem Speichern zu testen.",
 'userjsyoucanpreview'              => "'''Tipp:''' Benutze den „{{int:showpreview}}“-Button, um dein neues JavaScript vor dem Speichern zu testen.",
 'usercsspreview'                   => "== Vorschau deines Benutzer-CSS ==
@@ -1098,7 +1097,7 @@ Grund der Sperre: ''$2''",
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
 'rev-deleted-text-unhide'     => "Diese Version wurde '''gelöscht'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
-Einem Administrator kannst du [$1 diesen Link zur Version] nennen.",
+Als Administrator kannst du [$1 diese Version einsehen].",
 'rev-suppressed-text-unhide'  => "Diese Version wurde '''unterdrückt'''.
 Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Unterdrückungs-Logbuch].
 Als Administrator kannst du [$1 diese Version einsehen].",
@@ -1112,10 +1111,10 @@ Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} L�
 'rev-suppressed-no-diff'      => "Du kannst diesen Versionsunterschied nicht betrachten, da eine der Versionen '''gelöscht''' wurde.",
 'rev-deleted-unhide-diff'     => "Eine der Versionen dieses Unterschieds wurde '''gelöscht'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
-Einem Administrator kannst du [$1 diesen Link zum Versionsunterschied] nennen.",
+Als Administrator kannst du [$1 diese Version einsehen].",
 'rev-suppressed-unhide-diff'  => "Eine der Versionen dieses Unterschieds wurde '''unterdrückt'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Unterdrückungs-Logbuch].
-Einem Administrator kannst du [$1 diesen Link zum Versionsunterschied] nennen.",
+Als Administrator kannst du [$1 diese Version einsehen].",
 'rev-deleted-diff-view'       => "Eine Version dieses Versionsunterschiedes wurde '''gelöscht'''.
 Als Administrator kannst du diesen Versionsunterschied sehen. Details finden sich im [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
 'rev-suppressed-diff-view'    => "Eine der Versionen dieses Versionsunterschiedes wurde '''unterdrückt'''.
@@ -1152,7 +1151,7 @@ Andere Administratoren auf {{SITENAME}} haben Zugriff auf den versteckten Inhalt
 'revdelete-radio-unset'       => 'Nein',
 'revdelete-suppress'          => 'Grund der Löschung auch vor Administratoren verstecken',
 'revdelete-unsuppress'        => 'Einschränkungen für wiederhergestellte Versionen aufheben',
-'revdelete-log'               => 'Grund der Löschung:',
+'revdelete-log'               => 'Grund:',
 'revdelete-submit'            => 'Auf gewählte {{PLURAL:$1|Version|Versionen}} anwenden',
 'revdelete-logentry'          => 'hat die Versionsansicht für „[[$1]]“ geändert',
 'logdelete-logentry'          => 'hat die Sichtbarkeit für „[[$1]]“ geändert',
@@ -1207,7 +1206,7 @@ Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernam
 'revmove-legend'               => 'Zielseite und Zusammenfassung festlegen',
 'revmove-submit'               => 'Versionen zur ausgewählten Seite verschieben',
 'revisionmoveselectedversions' => 'Ausgewählte Versionen verschieben',
-'revmove-reasonfield'          => 'Begründung:',
+'revmove-reasonfield'          => 'Grund:',
 'revmove-titlefield'           => 'Zielseite:',
 'revmove-badparam-title'       => 'Falsche Parameter',
 'revmove-badparam'             => 'Deine Anfrage enthält unerlaubte oder mangelhafte Parameter. Bitte klicke auf „zurück“ und versuche es erneut.',
@@ -1872,6 +1871,7 @@ Eine [[Special:WhatLinksHere/$2|vollständige Liste]] ist verfügbar.',
 'uploadnewversion-linktext' => 'Eine neue Version dieser Datei hochladen',
 'shared-repo-from'          => 'aus $1',
 'shared-repo'               => 'einem gemeinsam genutzten Medienarchiv',
+'filepage.css'              => '/* CSS an dieser Stelle wirkt sich auf die Dateibeschreibungsseite aus, auch auf fremden Client-Wikis */',
 
 # File reversion
 'filerevert'                => 'Zurücksetzen von „$1“',
@@ -2260,7 +2260,7 @@ Rückmeldungen und weitere Hilfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 'dellogpagetext'         => 'Dies ist das Logbuch der gelöschten Seiten und Dateien.',
 'deletionlog'            => 'Lösch-Logbuch',
 'reverted'               => 'Auf eine alte Version zurückgesetzt',
-'deletecomment'          => 'Grund der Löschung:',
+'deletecomment'          => 'Grund:',
 'deleteotherreason'      => 'Anderer/ergänzender Grund:',
 'deletereasonotherlist'  => 'Anderer Grund',
 'deletereason-dropdown'  => '* Allgemeine Löschgründe
@@ -2376,7 +2376,7 @@ Der aktuelle Text der gelöschten Seite ist nur Administratoren zugänglich.',
 'undeleteviewlink'             => 'ansehen',
 'undeletereset'                => 'Abbrechen',
 'undeleteinvert'               => 'Auswahl umkehren',
-'undeletecomment'              => 'Begründung:',
+'undeletecomment'              => 'Grund:',
 'undeletedarticle'             => 'hat „[[$1]]“ wiederhergestellt',
 'undeletedrevisions'           => '{{PLURAL:$1|1 Version wurde|$1 Versionen wurden}} wiederhergestellt',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 Version|$1 Versionen}} und {{PLURAL:$2|1 Datei|$2 Dateien}} wurden wiederhergestellt',
@@ -2474,7 +2474,7 @@ Bitte gib den Grund für die Sperre an.',
 'ipbanononly'                     => 'Nur anonyme Benutzer sperren',
 'ipbcreateaccount'                => 'Erstellung von Benutzerkonten verhindern',
 'ipbemailban'                     => 'E-Mail-Versand sperren',
-'ipbenableautoblock'              => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht',
+'ipbenableautoblock'              => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzerkonten versucht',
 'ipbsubmit'                       => 'IP-Adresse/Benutzer sperren',
 'ipbother'                        => 'Andere Dauer (englisch):',
 'ipboptions'                      => '2 Stunden:2 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,6 Monate:6 months,1 Jahr:1 year,Unbeschränkt:infinite',

@@ -13,6 +13,10 @@ $messages = array();
 $messages['en'] = array(
 	'config-title'                    => 'MediaWiki $1 installation',
 	'config-information'              => 'Information',
+	'config-localsettings-upgrade'    => "'''Warning''': Your <code>LocalSettings.php</code> file has been detected.
+Your software is able to upgrade. Please move LocalSettings.php to somewhere safe in then run the installer again.",
+	'config-localsettings-noupgrade'  => "'''Error''': Your <code>LocalSettings.php</code> file has been detected.
+Your software is not able to upgrade at this time. The installer has been disabled for security reasons.",
 	'config-session-error'            => 'Error starting session: $1',
 	'config-session-expired'          => 'Your session data seems to have expired.
 Sessions are configured for a lifetime of $1.
@@ -304,7 +308,6 @@ All page titles in this namespace start with a certain prefix, which you can spe
 Traditionally, this prefix is derived from the name of the wiki, but it cannot contain punctuation characters such as "#" or ":".',
 	'config-ns-invalid'               => 'The specified namespace "<nowiki>$1</nowiki>" is invalid.
 Specify a different project namespace',
-	'config-admin-default-username'   => 'WikiSysop',
 	'config-admin-box'                => 'Administrator account',
 	'config-admin-name'               => 'Your name:',
 	'config-admin-password'           => 'Password:',
@@ -394,6 +397,15 @@ Ideally, this should not be accessible from the web.',
 Upload an image of the appropriate size, and enter the URL here.
 
 If you do not want a logo, leave this box blank.",
+	'config-instantcommons'           => 'Enable Instant Commons',
+	'config-instantcommons-help'      => '[http://www.mediawiki.org/wiki/InstantCommons Instant Commons] is a feature that allows wikis
+to use images, sounds and other media found on the [http://commons.wikimedia.org/ Wikimedia Commons] site. In order to do this, MediaWiki requires
+access to the Internet. $1
+
+For more information on this feature, including instructions on how to set it up for
+wikis other than the Wikimedia Commons, consult [http://mediawiki.org/wiki/Manual:$wgForeignFileRepos the manual].', // $1 is for indicating whether or not we should be able to use the feature
+	'config-instantcommons-good'      => 'We were able to detect internet connectivity during the environment checks. You can enable this feature if you want to.',
+	'config-instantcommons-bad'       => '\'\'Unfortunately, we were unable to detect internet connectivity during the environment checks, so you might be unable to use this feature. If your server is behind a proxy, you may need to do some [http://www.mediawiki.org/wiki/Manual:$wgHTTPProxy additional configuration]\'\'',
 	'config-cc-error'                 => 'The Creative Commons license chooser gave no result.
 Enter the license name manually.',
 	'config-cc-again'                 => 'Pick again...',
@@ -402,57 +414,43 @@ Enter the license name manually.',
 	'config-cache-options'            => 'Settings for object caching:',
 	'config-cache-help'               => 'Object caching is used to improve the speed of MediaWiki by caching frequently used data.
 Medium to large sites are highly encouraged to enable this, and small sites will see benefits as well.',
-	'config-cache-none'               => 'No caching.
-No functionality is removed, but speed may be impacted.',
+	'config-cache-none'               => 'No caching (no functionality is removed, but speed may be impacted on larger wiki sites)',
 	'config-cache-accel'              => 'PHP object caching (APC, eAccelerator, XCache or WinCache)',
 	'config-cache-memcached'          => 'Use Memcached (requires additional setup and configuration)',
-	'config-cache-db'                 => 'Cache data into the database',
-	'config-cache-anything'           => 'MediaWiki will attempt to cache data anywhere possible, except in Memcached, unless indicated explicitely',
 	'config-memcached-servers'        => 'Memcached servers:',
 	'config-memcached-help'           => 'List of IP addresses to use for Memcached.
-Should be separated with commas and specify the port to be used (for example: 1.2.3.4:56, 7.8.9.10:11).',
+Should be separated with commas and specify the port to be used (for example: 127.0.0.1:11211, 192.168.1.25:11211).',
 	'config-extensions'               => 'Extensions',
 	'config-extensions-help'          => 'The extensions listed above were detected in your <code>./extensions</code> directory.
 
 They may require additional configuration, but you can enable them now',
-	'config-install-step-done'        => 'Done',
-	'config-install-step-failed'      => 'Failed',
+	'config-install-alreadydone'      => "'''Warning: You seem to have already installed MediaWiki and are trying to install it again. Please proceed to the next page.",
+	'config-install-step-done'        => 'done',
+	'config-install-step-failed'      => 'failed',
 	'config-install-extensions'       => 'Including extensions',
 	'config-install-database'         => 'Setting up database',
 	'config-install-pg-schema-failed' => 'Tables creation failed.
 Make sure that the user "$1" can write to the schema "$2".',
+	'config-install-user'             => 'Creating database user',
+	'config-install-user-failed'      => 'Granting permission to user "$1" failed: $2',
 	'config-install-tables'           => 'Creating tables',
+	'config-install-tables-exist'     => "'''Warning''': MediaWiki tables seem to already exist. Skipping creation",
+	'config-install-tables-failed'    => "'''Error''': Table creation failed with the following error $1",
 	'config-install-interwiki'        => 'Populating default interwiki table',
 	'config-install-interwiki-sql'    => 'Could not find file <code>interwiki.sql</code>',
+	'config-install-interwiki-exists' => "'''Warning''': Interwiki table seems to already have entires. Skipping default list",
 	'config-install-secretkey'        => 'Generating secret key',
 	'config-insecure-secretkey'       => "'''Warning:''' Unable to create secure <code>\$wgSecretKey</code>.
 Consider changing it manually.",
 	'config-install-sysop'            => 'Creating administrator user account',
-	'config-install-localsettings'    => 'Creating LocalSettings.php',
-	'config-install-localsettings-unwritable' => 'Warning: Could not write <code>LocalSettings.php</code>.
-Create it yourself, using the following text:
-<textarea name="LocalSettings" id="LocalSettings" cols="80" rows="25" readonly="readonly">
-$1
-</textarea>
-',
 	'config-install-done'             => "'''Congratulations!'''
 You have successfully installed MediaWiki.
 
 We have generated a <code>LocalSettings.php</code> file for you. It contains all your configuration.
 
-You will need to move it from <code>./config/LocalSettings.php</code> to <code>./LocalSettings.php</code> in order for MediaWiki to work:
+You will need to [$1 download] it and put it in the base of your wiki installation (the same directory as index.php)
 
-On a Unix/Linux system:
-
-<pre>
-mv ./config/LocalSettings.php ./LocalSettings.php
-</pre>
-
-When that's done, you can [$1 '''enter your wiki''']",
-	'config-install-done-moved'       => "'''Congratulations!'''
-You have successfully installed MediaWiki.
-
-[$1 Enter your wiki]",
+When that's done, you can [$2 '''enter your wiki''']", // $1 is the URL to LocalSettings download, $2 is link to wiki
 );
 
 /** Dutch (Nederlands)
@@ -670,7 +668,6 @@ Alle paginanamen in deze naamruimte beginnen met een bepaald voorvoegsel dat u h
 Dit voorvoegsel wordt meestal afgeleid van de naam van de wiki, maar het kan geen bijzondere tekens bevatten als \"#\" of \":\".",
 	'config-ns-invalid' => 'De aangegeven naamruimte "<nowiki>$1</nowiki>" is ongeldig.
 Geef een andere naamruimte op.',
-	'config-admin-default-username' => 'WikiBeheerder',
 	'config-admin-box' => 'Beheerdersaccount',
 	'config-admin-name' => 'Uw naam:',
 	'config-admin-password' => 'Wachtwoord:',
@@ -778,5 +775,4 @@ U hebt MediaWiki geïnstalleerd.
 $messages['ru'] = array(
 	'config-title'                  => 'Установка MediaWiki $1',
 	'config-page-language'          => 'Язык',
-	'config-admin-default-username' => 'ВикиАдминистратор',
 );

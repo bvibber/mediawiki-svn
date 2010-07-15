@@ -117,7 +117,6 @@ This is the toolbar: [[Image:Toolbar.png]]",
 'tog-watchdefault'            => "[[Special:Preferences]], tab 'Watchlist'. Offers user to add edited pages to watchlist.",
 'tog-watchmoves'              => "[[Special:Preferences]], tab 'Watchlist'. Offers user to add moved pages to watchlist.",
 'tog-watchdeletion'           => "[[Special:Preferences]], tab 'Watchlist'. Offers user to add deleted pages to watchlist.",
-'tog-minordefault'            => "[[Special:Preferences]], tab 'Edit'. Offers user to mark all edits minor by default.",
 'tog-previewontop'            => 'Toggle option used in [[Special:Preferences]].',
 'tog-previewonfirst'          => 'Toggle option used in [[Special:Preferences]].',
 'tog-nocache'                 => "[[Special:Preferences]], tab 'Misc.'. Offers the user the option of disabling caching of pages in the browser",
@@ -987,9 +986,9 @@ There are three radio buttons in each row, and the captions above each column re
 {{Identical|No}}',
 'revdelete-suppress'          => 'Option for oversight',
 'revdelete-unsuppress'        => '{{RevisionDelete}}',
-'revdelete-log'               => '{{Identical|Reason for deletion}}
+'revdelete-log'               => '{{Identical|Reason}}
 Log comment text for oversight. {{RevisionDelete}}
-[[File:RevDelete Special-RevisionDelete (r60428).png|frame|center|Screenshot of the interface]]',
+[[File:RevDelete Special-RevisionDelete (r60428).png|thumb|331px||Screenshot of the interface]]',
 'revdelete-submit'            => '{{RevisionDelete}}
 This is the submit button on [[Special:RevisionDelete]].
 [[File:RevDelete Special-RevisionDelete (r60428).png|frame|center|Screenshot of the interface]]',
@@ -1870,6 +1869,7 @@ $1 is the name of the shared repository. On wikimedia sites, $1 is {{msg-mw|shar
 * {{msg-mw|shared-repo-from}}
 * {{msg-mw|sharedupload}}, {{msg-mw|sharedupload-desc-here}}, {{msg-mw|sharedupload-desc-there}}',
 'shared-repo-name-wikimediacommons' => '{{optional}}',
+'filepage.css'                      => '{{Optional}}',
 
 # File reversion
 'filerevert'                => '{{Identical|Revert}}',
@@ -1901,7 +1901,7 @@ $1 is the name of the shared repository. On wikimedia sites, $1 is {{msg-mw|shar
 * $2 is a date
 * $3 is a hour
 * $4 is an URL and must follow square bracket: [$4',
-'filedelete-comment'          => '{{Identical|Reason for deletion}}',
+'filedelete-comment'          => '{{Identical|Reason}}',
 'filedelete-submit'           => 'Delete button when deleting a file for admins
 
 {{Identical|Delete}}',
@@ -2118,7 +2118,7 @@ $1 is a page title",
 'allpagessubmit'    => 'Text on submit button in [[Special:AllPages]], [[Special:RecentChanges]], [[Special:RecentChangesLinked]], [[Special:NewPages]], [[Special:Log]], [[Special:ListUsers]], [[Special:ProtectedPages]], [[Special:ProtectedTitles]], [[Special:WhatLinksHere]] and [[Special:Watchlist]].
 
 {{Identical|Go}}',
-'allpagesprefix'    => 'Used for the label of the input box of [[Special:PrefixIndex]].',
+'allpagesprefix'    => "Used for the label of the input box of [[Special:PrefixIndex]]. On this page you can either write 'Name of namespace:string from which to begin display in alphabetical order' in the top box, or you can choose a namespace in the bottom box and put 'string from which to begin display in alphabetical order' in the top box. The result will be the same.",
 
 # Special:Categories
 'categories'                    => 'The page name of [[Special:Categories]].
@@ -2184,31 +2184,37 @@ $1 is a list of internet protocols.',
 'newuserlog-autocreate-entry' => 'This message is used in the [[:mw:Extension:Newuserlog|new user log]] to mark an account that was created by MediaWiki as part of a [[:mw:Extension:CentralAuth|CentralAuth]] global account.',
 
 # Special:ListGroupRights
-'listgrouprights'                 => 'The name of the special page [[Special:ListGroupRights]].',
-'listgrouprights-summary'         => 'The description used on [[Special:ListGroupRights]].',
-'listgrouprights-key'             => 'Footer note for the [[Special:ListGroupRights]] page',
-'listgrouprights-group'           => "The title of the column in the table, about user groups (like you are in the ''translator'' group).
+'listgrouprights'                  => 'The name of the special page [[Special:ListGroupRights]].',
+'listgrouprights-summary'          => 'The description used on [[Special:ListGroupRights]].',
+'listgrouprights-key'              => 'Footer note for the [[Special:ListGroupRights]] page',
+'listgrouprights-group'            => "The title of the column in the table, about user groups (like you are in the ''translator'' group).
 
 {{Identical|Group}}",
-'listgrouprights-rights'          => "The title of the column in the table, about user rights (like you can ''edit'' this page).",
-'listgrouprights-helppage'        => "The link used on [[Special:ListGroupRights]]. Just translate \"Group rights\", and '''leave the \"Help:\" namespace exactly as it is'''.",
-'listgrouprights-members'         => 'Used on [[Special:ListGroupRights]] and [[Special:Statistics]] as a link to [[Special:ListUsers|Special:ListUsers/"group"]], a list of members in that group.',
-'listgrouprights-right-display'   => "{{optional}}
+'listgrouprights-rights'           => "The title of the column in the table, about user rights (like you can ''edit'' this page).",
+'listgrouprights-helppage'         => "The link used on [[Special:ListGroupRights]]. Just translate \"Group rights\", and '''leave the \"Help:\" namespace exactly as it is'''.",
+'listgrouprights-members'          => 'Used on [[Special:ListGroupRights]] and [[Special:Statistics]] as a link to [[Special:ListUsers|Special:ListUsers/"group"]], a list of members in that group.',
+'listgrouprights-right-display'    => "{{optional}}
 * $1 is the text from the 'right-...' messages, i.e. [[MediaWiki:right-edit]] = {{int:right-edit}}
 * $2 is the codename of this right",
-'listgrouprights-right-revoked'   => "{{optional}}
+'listgrouprights-right-revoked'    => "{{optional}}
 * $1 is the text from the 'right-...' messages, i.e. [[MediaWiki:right-edit]] = {{int:right-edit}}
 * $2 is the codename of this right",
-'listgrouprights-addgroup'        => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+'listgrouprights-addgroup'         => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
 * $1 is an enumeration of group names.
 * $2 is the number of group names in $1.
 See also {{msg|listgrouprights-removegroup}}.',
-'listgrouprights-removegroup'     => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+'listgrouprights-removegroup'      => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
 * $1 is an enumeration of group names.
 * $2 is the number of group names in $1.
 See also {{msg|listgrouprights-addgroup}}.',
-'listgrouprights-addgroup-all'    => '{{doc-right}}',
-'listgrouprights-removegroup-all' => '{{doc-right}}',
+'listgrouprights-addgroup-all'     => '{{doc-right}}',
+'listgrouprights-removegroup-all'  => '{{doc-right}}',
+'listgrouprights-addgroup-self'    => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+* $1 are the group names.
+* $2 is the number of group names in $1.',
+'listgrouprights-removegroup-self' => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+* $1 are the group names.
+* $2 is the number of group names in $1.',
 
 # E-mail user
 'emailuser'        => 'Link in the sidebar',
@@ -2311,7 +2317,7 @@ $1 is the <b>approximate</b> number of revisions that the page has, the message 
 
 {{Identical|Deletion log}}',
 'reverted'               => '{{Identical|Revert}}',
-'deletecomment'          => '{{Identical|Reason for deletion}}',
+'deletecomment'          => '{{Identical|Reason}}',
 'deleteotherreason'      => '{{Identical|Other/additional reason}}',
 'deletereasonotherlist'  => '{{Identical|Other reason}}',
 'deletereason-dropdown'  => 'Default reasons for deletion. Displayed as a drop-down list. Format:
@@ -2670,7 +2676,9 @@ Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page 
 'move-page-legend'             => 'Legend of the fieldset around the input form of [[Special:MovePage/testpage]].
 
 {{Identical|Move page}}',
-'movepagetext'                 => 'Introduction shown when moving a page ([[Special:MovePage]]).',
+'movepagetext'                 => 'Introduction shown when moving a page ([[Special:MovePage]]).
+
+Special pages mentioned: {{msg-mw|Doubleredirects}}, {{msg-mw|Brokenredirects}}',
 'movepagetalktext'             => "Text on the special 'Move page'. This text only appears if the talk page is not empty.",
 'movearticle'                  => 'The text before the name of the page that you are moving.
 

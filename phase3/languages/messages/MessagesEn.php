@@ -459,6 +459,7 @@ $specialPageAliases = array(
 	'RevisionMove'              => array( 'RevisionMove' ),
 	'ComparePages'              => array( 'ComparePages' ),
 	'Selenium'                  => array( 'Selenium' ),
+	'Badtitle'                  => array( 'Badtitle' ),
 );
 
 /**
@@ -636,7 +637,6 @@ XHTML id names.
 'tog-watchdefault'            => 'Add pages I edit to my watchlist',
 'tog-watchmoves'              => 'Add pages I move to my watchlist',
 'tog-watchdeletion'           => 'Add pages I delete to my watchlist',
-'tog-minordefault'            => 'Mark all edits minor by default',
 'tog-previewontop'            => 'Show preview before edit box',
 'tog-previewonfirst'          => 'Show preview on first edit',
 'tog-nocache'                 => 'Disable page caching',
@@ -1500,7 +1500,7 @@ Other administrators on {{SITENAME}} will still be able to access the hidden con
 'revdelete-hide-text'         => 'Hide revision text',
 'revdelete-hide-image'        => 'Hide file content',
 'revdelete-hide-name'         => 'Hide action and target',
-'revdelete-hide-comment'      => 'Hide edit comment',
+'revdelete-hide-comment'      => 'Hide edit summary',
 'revdelete-hide-user'         => "Hide editor's username/IP address",
 'revdelete-hide-restricted'   => 'Suppress data from administrators as well as others',
 'revdelete-radio-same'        => '(do not change)',
@@ -1508,7 +1508,7 @@ Other administrators on {{SITENAME}} will still be able to access the hidden con
 'revdelete-radio-unset'       => 'No',
 'revdelete-suppress'          => 'Suppress data from administrators as well as others',
 'revdelete-unsuppress'        => 'Remove restrictions on restored revisions',
-'revdelete-log'               => 'Reason for deletion:',
+'revdelete-log'               => 'Reason:',
 'revdelete-submit'            => 'Apply to selected {{PLURAL:$1|revision|revisions}}',
 'revdelete-logentry'          => 'changed revision visibility of [[$1]]',
 'logdelete-logentry'          => 'changed event visibility of [[$1]]',
@@ -2294,6 +2294,7 @@ The description on its [$2 file description page] there is shown below.',
 'shared-repo-from'                  => 'from $1',
 'shared-repo'                       => 'a shared repository',
 'shared-repo-name-wikimediacommons' => 'Wikimedia Commons', # only translate this message to other languages if you have to change it
+'filepage.css'                      => '/* CSS placed here is included on the file description page, also included on foreign client wikis */', # only translate this message to other languages if you have to change it
 
 # File reversion
 'filerevert'                => 'Revert $1',
@@ -2312,7 +2313,7 @@ The description on its [$2 file description page] there is shown below.',
 'filedelete-legend'           => 'Delete file',
 'filedelete-intro'            => "You are about to delete the file '''[[Media:$1|$1]]''' along with all of its history.",
 'filedelete-intro-old'        => "You are deleting the version of '''[[Media:$1|$1]]''' as of [$4 $3, $2].",
-'filedelete-comment'          => 'Reason for deletion:',
+'filedelete-comment'          => 'Reason:',
 'filedelete-submit'           => 'Delete',
 'filedelete-success'          => "'''$1''' has been deleted.",
 'filedelete-success-old'      => "The version of '''[[Media:$1|$1]]''' as of $3, $2 has been deleted.",
@@ -2737,7 +2738,7 @@ See $2 for a record of recent deletions.',
 'dellogpagetext'         => 'Below is a list of the most recent deletions.',
 'deletionlog'            => 'deletion log',
 'reverted'               => 'Reverted to earlier revision',
-'deletecomment'          => 'Reason for deletion:',
+'deletecomment'          => 'Reason:',
 'deleteotherreason'      => 'Other/additional reason:',
 'deletereasonotherlist'  => 'Other reason',
 'deletereason-dropdown'  => '*Common delete reasons

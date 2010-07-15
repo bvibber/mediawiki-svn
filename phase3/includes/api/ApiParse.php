@@ -138,7 +138,7 @@ class ApiParse extends ApiBase {
 					$p_result = false;
 					$pcache = ParserCache::singleton();
 					if ( $wgEnableParserCache ) {
-						$p_result = $pcache->get( $articleObj, $wgUser );
+						$p_result = $pcache->get( $articleObj, $popts );
 					}
 					if ( !$p_result ) {
 						$p_result = $wgParser->parse( $articleObj->getContent(), $titleObj, $popts );
@@ -162,6 +162,7 @@ class ApiParse extends ApiBase {
 
 			if ( $params['pst'] || $params['onlypst'] ) {
 				$text = $wgParser->preSaveTransform( $text, $titleObj, $wgUser, $popts );
+				$this->getMain()->setVaryCookie();
 			}
 			if ( $params['onlypst'] ) {
 				// Build a result and bail out
@@ -187,6 +188,7 @@ class ApiParse extends ApiBase {
 
 		if ( !is_null( $params['summary'] ) ) {
 			$result_array['parsedsummary'] = array();
+			$this->getMain()->setVaryCookie();
 			$result->setContent( $result_array['parsedsummary'], $wgUser->getSkin()->formatComment( $params['summary'], $titleObj ) );
 		}
 
@@ -221,6 +223,7 @@ class ApiParse extends ApiBase {
 		if ( isset( $prop['headitems'] ) || isset( $prop['headhtml'] ) ) {
 			$out = new OutputPage;
 			$out->addParserOutputNoText( $p_result );
+			$this->getMain()->setVaryCookie();
 			$userSkin = $wgUser->getSkin();
 		}
 
@@ -452,7 +455,7 @@ class ApiParse extends ApiBase {
 			array( 'code' => 'missingrev', 'info' => 'There is no revision ID oldid' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view deleted revisions' ),
 			array( 'code' => 'missingtitle', 'info' => 'The page you specified doesn\'t exist' ),
-			array( 'code' => 'nosuchsection', 'info' => 'There is no section sectionnumber in page'),
+			array( 'code' => 'nosuchsection', 'info' => 'There is no section sectionnumber in page' ),
 			array( 'nosuchpageid' ),
 		) );
 	}

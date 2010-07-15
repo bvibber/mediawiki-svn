@@ -34,6 +34,7 @@
  * @author Korg
  * @author Korrigan
  * @author Kropotkine 113
+ * @author Litlok
  * @author Louperivois
  * @author McDutchie
  * @author Meithal
@@ -356,7 +357,6 @@ $messages = array(
 'tog-watchdefault'            => 'Ajouter les pages que je modifie à ma liste de suivi',
 'tog-watchmoves'              => 'Ajouter les pages que je renomme à ma liste de suivi',
 'tog-watchdeletion'           => 'Ajouter les pages que je supprime à ma liste de suivi',
-'tog-minordefault'            => 'Marquer mes modifications comme mineures par défaut',
 'tog-previewontop'            => 'Montrer la prévisualisation au-dessus de la zone de modification',
 'tog-previewonfirst'          => 'Montrer la prévisualisation lors de la première modification',
 'tog-nocache'                 => 'Désactiver le cache des pages',
@@ -722,7 +722,7 @@ Veuillez essayer de nouveau dans quelques minutes.',
 'protectedinterface'   => 'Cette page fournit du texte d’interface pour le logiciel et est protégée pour éviter les abus.',
 'editinginterface'     => "'''Attention :''' vous êtes en train de modifier une page utilisée pour créer le texte de l’interface du logiciel. Les changements se répercuteront, selon le contexte, sur toutes ou certaines pages visibles par les autres utilisateurs. Pour les traductions, nous vous invitons à utiliser le projet MediaWiki d’internationalisation des messages [http://translatewiki.net/wiki/Main_Page?setlang=fr translatewiki.net].",
 'sqlhidden'            => '(Requête SQL cachée)',
-'cascadeprotected'     => 'Cette page est actuellement protégée car elle est incluse dans {{PLURAL:$1|la page suivante|les pages suivantes}}, ayant été protégée{{PLURAL:$1||s}} avec l’option « protection en cascade » activée :
+'cascadeprotected'     => 'Cette page est protégée car elle est incluse par {{PLURAL:$1|la page suivante, qui a été protégée|les pages suivantes, qui ont été protégées}} avec l’option « protection en cascade » activée :
 $2',
 'namespaceprotected'   => "Vous n’avez pas la permission de modifier les pages de l’espace de noms « '''$1''' ».",
 'customcssjsprotected' => 'Vous n’avez pas la permission de modifier cette page, car elle contient les préférences d’un autre utilisateur.',
@@ -999,7 +999,7 @@ L’administrateur ayant verrouillé la base de données a donné l’explicatio
 />$1",
 'protectedpagewarning'             => "'''AVERTISSEMENT : cette page est protégée. Seuls les utilisateurs ayant le statut d’administrateur peuvent la modifier.''' La dernière entrée du journal est affichée ci-dessous pour référence :",
 'semiprotectedpagewarning'         => "'''Note :''' Cette page a été protégée de telle façon que seuls les contributeurs enregistrés puissent la modifier. La dernière entrée du journal est affichée ci-dessous pour référence :",
-'cascadeprotectedwarning'          => "'''ATTENTION :''' Cette page a été protégée de manière à ce que seuls les administrateurs puissent l’éditer. Cette protection a été faite car cette page est incluse dans {{PLURAL:$1|une page protégée|des pages protégées}} avec la « protection en cascade » activée.",
+'cascadeprotectedwarning'          => "'''ATTENTION :''' Cette page a été protégée de manière à ce que seuls les administrateurs puissent l’éditer. Cette protection est héritée par son inclusion par {{PLURAL:$1|la page protégée suivante, qui a|les pages protégées suivantes, qui ont}} la « protection en cascade » activée :",
 'titleprotectedwarning'            => "'''ATTENTION : Cette page a été protégée de telle manière que des [[Special:ListGroupRights|droits spécifiques]] sont requis pour pouvoir la créer.''' La dernière entrée du journal est affichée ci-dessous pour référence :",
 'templatesused'                    => '{{PLURAL:$1|Modèle utilisé|Modèles utilisés}} par cette page :',
 'templatesusedpreview'             => '{{PLURAL:$1|Modèle utilisé|Modèles utilisés}} dans cette prévisualisation :',
@@ -1104,7 +1104,7 @@ Comme administrateur, vous pouvez toujours [$1 voir cette version] si vous le vo
 En tant qu’administrateur, vous pouvez la visualiser ; des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
 'rev-suppressed-text-view'    => "Cette version de la page a été '''supprimée'''.
 En tant qu’administrateur, vous pouvez la visualiser ; des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} journal des suppressions].",
-'rev-deleted-no-diff'         => "Vous ne pouvez par voir ce diff parce qu’une des versions a été '''effacée'''.
+'rev-deleted-no-diff'         => "Vous ne pouvez pas voir ce diff parce qu’une des versions a été '''effacée'''.
 Des détails sont disponibles dans le [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} journal des effacements].",
 'rev-suppressed-no-diff'      => "Vous ne pouvez pas voir cette différence car une des révisions a été '''supprimée'''.",
 'rev-deleted-unhide-diff'     => "Une des révisions de cette différence a été '''effacée'''.
@@ -1149,7 +1149,7 @@ Les autres administrateurs de {{SITENAME}} pourront toujours accéder au contenu
 'revdelete-radio-unset'       => 'Non',
 'revdelete-suppress'          => 'Cacher les données également pour les administrateurs',
 'revdelete-unsuppress'        => 'Enlever les restrictions sur les versions restaurées',
-'revdelete-log'               => 'Raison de la suppression :',
+'revdelete-log'               => 'Motif :',
 'revdelete-submit'            => 'Appliquer {{PLURAL:$1|à la révision sélectionnée|aux révisions sélectionnées}}',
 'revdelete-logentry'          => 'a modifié la visibilité de la version de [[$1]]',
 'logdelete-logentry'          => 'a modifié la visibilité de l’événement de [[$1]]',
@@ -1889,7 +1889,7 @@ Une [[Special:WhatLinksHere/$2|liste complète]] est disponible.',
 'filedelete-legend'           => 'Supprimer le fichier',
 'filedelete-intro'            => "Vous êtes sur le point de supprimer '''[[Media:$1|$1]]''' ainsi que tout son historique.",
 'filedelete-intro-old'        => "Vous êtes en train d’effacer la version de '''[[Media:$1|$1]]''' du [$4 $2 à $3].",
-'filedelete-comment'          => 'Motif de suppression :',
+'filedelete-comment'          => 'Motif :',
 'filedelete-submit'           => 'Supprimer',
 'filedelete-success'          => "'''$1''' a été supprimé.",
 'filedelete-success-old'      => "La version de '''[[Media:$1|$1]]''' du $2 à $3 a été supprimée.",
@@ -2012,7 +2012,7 @@ Les entrées <s>barrées</s> ont été résolues.',
 'protectedpages-indef'    => 'Uniquement les protections permanentes',
 'protectedpages-cascade'  => 'Uniquement les protections en cascade',
 'protectedpagestext'      => 'Les pages suivantes sont protégées contre les modifications ou le déplacement.',
-'protectedpagesempty'     => 'Aucune page n’est protégée actuellement.',
+'protectedpagesempty'     => 'Aucune page n’est protégée de cette façon.',
 'protectedtitles'         => 'Titres protégés',
 'protectedtitlestext'     => 'Les titres suivants sont protégés à la création',
 'protectedtitlesempty'    => 'Aucun titre n’est actuellement protégé avec ces paramètres.',
@@ -2261,7 +2261,7 @@ Voir $2 pour une liste des suppressions récentes.',
 'dellogpagetext'         => 'Voici la liste des suppressions les plus récentes.',
 'deletionlog'            => 'journal des suppressions',
 'reverted'               => 'Version précédente rétablie',
-'deletecomment'          => 'Motif de suppression :',
+'deletecomment'          => 'Motif :',
 'deleteotherreason'      => 'Motif autre ou supplémentaire :',
 'deletereasonotherlist'  => 'Autre motif',
 'deletereason-dropdown'  => '* Motifs de suppression les plus courants
@@ -2321,7 +2321,7 @@ Voici les réglages actuels de la page '''$1''' :",
 Voici les réglages actuels de la page '''$1''' :",
 'protect-locked-access'       => "Vous n’avez pas les droits nécessaires pour modifier les niveaux de protection de pages.
 Voici les réglages actuels de la page '''$1''' :",
-'protect-cascadeon'           => 'Cette page est actuellement protégée car incluse dans {{PLURAL:$1|la page suivante, qui a été protégée|les pages suivantes, qui ont été protégées}} avec l’option « protection en cascade » activée. Vous pouvez changer le niveau de protection de cette page sans que cela n’affecte la protection en cascade.',
+'protect-cascadeon'           => 'Cette page est protégée car incluse dans {{PLURAL:$1|la page suivante, qui a été protégée|les pages suivantes, qui ont été protégées}} avec l’option « protection en cascade » activée. Vous pouvez changer le niveau de protection de cette page sans que cela n’affecte la protection en cascade.',
 'protect-default'             => 'Autoriser tous les utilisateurs',
 'protect-fallback'            => 'Nécessite la permission « $1 »',
 'protect-level-autoconfirmed' => 'Bloquer les nouveaux utilisateurs et les utilisateurs anonymes',

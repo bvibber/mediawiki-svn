@@ -43,6 +43,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'deletedhistory' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view deleted file information', 'permissiondenied' );
@@ -147,13 +148,13 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				$file['height'] = $row->fa_height;
 				$file['width'] = $row->fa_width;
 			}
-			if ( $fld_description ){
+			if ( $fld_description ) {
 				$file['description'] = $row->fa_description;
 			}
-			if ( $fld_metadata ){
+			if ( $fld_metadata ) {
 				$file['metadata'] = $row->fa_metadata ? ApiQueryImageInfo::processMetaData( unserialize( $row->fa_metadata ), $result ) : null;
 			}
-			if ( $fld_bitdepth ){
+			if ( $fld_bitdepth ) {
 				$file['bitdepth'] = $row->fa_bits;
 			}
 			if ( $fld_mime ) {

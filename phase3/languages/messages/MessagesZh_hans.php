@@ -225,7 +225,6 @@ $messages = array(
 'tog-watchdefault'            => '将我编辑的页面添加到我的监视列表',
 'tog-watchmoves'              => '将我移动的页面添加到我的监视列表',
 'tog-watchdeletion'           => '将我删除的页面添加到我的监视列表',
-'tog-minordefault'            => '默认将编辑设置为小编辑',
 'tog-previewontop'            => '在编辑框上方显示预览',
 'tog-previewonfirst'          => '在首次编辑时显示预览',
 'tog-nocache'                 => '禁用页面缓存',
@@ -723,8 +722,9 @@ $2',
 'showpreview'                      => '显示预览',
 'showlivepreview'                  => '实时预览',
 'showdiff'                         => '显示差异',
-'anoneditwarning'                  => "'''警告：'''您没有登录，您的IP位址将记录在此页的编辑历史中。",
-'anonpreviewwarning'               => "''您没有登录。您的IP位址将记录在此页的编辑历史中。''",
+'anoneditwarning'                  => "'''警告：'''您没有登录。
+您的IP地址将记录在此页的编辑历史中。",
+'anonpreviewwarning'               => "''您没有登录。保存页面将会把您的IP地址记录在此页的编辑历史中。''",
 'missingsummary'                   => "'''提示：''' 您没有提供一个编辑摘要。如果您再次单击保存，您的编辑将不带编辑摘要保存。",
 'missingcommenttext'               => '请在下面输入评论。',
 'missingcommentheader'             => "'''提示：''' 您没有为此评论提供一个标题。如果您再次单击“{{int:savearticle}}”，您的编辑将不带标题保存。",
@@ -808,8 +808,8 @@ $2',
 'token_suffix_mismatch'            => "'''由于您用户端中的编辑令牌毁损了一些标点符号字元，为防止编辑的文字损坏，您的编辑已经被拒绝。'''
 这种情况通常出现于使用含有很多臭虫、以网络为主的匿名代理服务的时候。",
 'editing'                          => '正在编辑$1',
-'editingsection'                   => '正在编辑$1 （段落）',
-'editingcomment'                   => '正在编辑$1 （评论）',
+'editingsection'                   => '正在编辑$1（段落）',
+'editingcomment'                   => '正在编辑$1（新段落）',
 'editconflict'                     => '编辑冲突：$1',
 'explainconflict'                  => '有人在你开始编辑后更改了页面。
 上面的文字框内显示的是目前本页的内容。
@@ -834,9 +834,9 @@ $2',
 'longpagewarning'                  => "'''警告'''：该页面的长度是$1KB；一些浏览器在编辑长度接近或大于32KB的页面可能存在问题。
 您应该考虑将此页面分成更小的章节。",
 'longpageerror'                    => "'''错误：您所提交的文本长度有$1KB，这大于$2KB的最大值。'''该文本不能被保存。",
-'readonlywarning'                  => "'''警告：数据库被锁以进行维护，所以您目前将无法保存您的修改。'''您或许希望先将本段文字复制并保存到文本文件，然后等一会儿再修改。
+'readonlywarning'                  => "'''警告：数据库被锁定以进行维护，所以您目前将无法保存您的修改。'''您或许希望将本段文字先复制并保存到文本文件，并在稍后进行修改。
 
-管理员有如下解释：$1",
+锁定数据库的管理员有如下解释：$1",
 'protectedpagewarning'             => "'''警告：此页已经被保护，只有拥有管理员权限的用户才可修改。'''
 最近的日志在下面提供以便参考：",
 'semiprotectedpagewarning'         => "'''注意：''' 本页面被锁定，仅限注册用户编辑。
@@ -988,7 +988,7 @@ $2',
 'revdelete-hide-text'         => '隐藏修订文本',
 'revdelete-hide-image'        => '隐藏文件内容',
 'revdelete-hide-name'         => '隐藏动作和目标',
-'revdelete-hide-comment'      => '隐藏编辑说明',
+'revdelete-hide-comment'      => '隐藏编辑摘要',
 'revdelete-hide-user'         => '隐藏编辑者的用户名/IP地址',
 'revdelete-hide-restricted'   => '同时阻止管理员与其他用户查看数据',
 'revdelete-radio-same'        => '(勿更改)',
@@ -996,7 +996,7 @@ $2',
 'revdelete-radio-unset'       => '否',
 'revdelete-suppress'          => '同时阻止管理员与其他用户查看数据',
 'revdelete-unsuppress'        => '在已恢复的修订中移除限制',
-'revdelete-log'               => '删除原因：',
+'revdelete-log'               => '理由：',
 'revdelete-submit'            => '应用于选中的{{PLURAL:$1|修订}}',
 'revdelete-logentry'          => '[[$1]]的修订可见性已更改',
 'logdelete-logentry'          => '[[$1]]的事件可见性已更改',
@@ -1050,11 +1050,13 @@ $1",
 'revmove-reasonfield'          => '理由：',
 'revmove-titlefield'           => '目标页面：',
 'revmove-badparam-title'       => '坏的参数',
-'revmove-badparam'             => '您的请求含有不合法的者不足的参数。请点击「返回」再试。',
+'revmove-badparam'             => '您的请求含有不合法的者不足的参数。
+请返回先前的页面再试。',
 'revmove-norevisions-title'    => '无效的目标修订版本',
 'revmove-norevisions'          => '您尚未指定一个或者多个目标修订版本去做这项功能或者所指定的修订版本不存在。',
 'revmove-nullmove-title'       => '坏的标题',
-'revmove-nullmove'             => '来源和目标页面相同。请点击「返回」再输入跟 "$1" 不相同的名字。',
+'revmove-nullmove'             => '目标页面不可以跟来源页面相同。
+请返回先前的页面再输入跟 "$1" 不相同的名字。',
 'revmove-success-existing'     => '由[[$2]]中的{{PLURAL:$1|一次修订版本|$1次修订版本}}已经移动至现有的页面[[$3]]。',
 'revmove-success-created'      => '由[[$2]]中的{{PLURAL:$1|一次修订版本|$1次修订版本}}已经移动至新建的页面[[$3]]。',
 
@@ -1492,15 +1494,12 @@ $1",
 
 这个页面的删除和移动日志在这里提供以便参考：",
 'uploadtext'                  => "使用下面的表单来上传文件。
-要查看或搜索以前上传的文件
-可以进入[[Special:FileList|文件上传列表]]，
-（重新）上传将在[[Special:Log/upload|上传日志]]中记录，
-而删除将在[[Special:Log/delete|删除日志]]中记录。
+要查看或搜索以前上传的文件，可以进入[[Special:FileList|文件上传列表]]，（重新）上传也将在[[Special:Log/upload|上传日志]]中记录，而删除将在[[Special:Log/delete|删除日志]]中记录。
 
-要在页面中加入文件，使用以下其中一种形式的连接:
-* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.jpg]]</nowiki></tt>'''去用文件的完整版本
-* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:file.png|200px|thumb|left|替换文字]]</nowiki></tt>'''去用一个200像素宽，左面盒上有'替换文字'的描述
-* '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki></tt>'''去直接连接到文件而不显示文件",
+要在页面中加入文件，使用以下其中一种形式的链接：
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>'''使用文件的完整版本
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|200px|thumb|left|替换文字]]</nowiki></tt>'''使用放置于左侧的一个框内的200像素宽的图片，同时使用“替换文字”作为描述
+* '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki></tt>'''直接链接到文件而不显示文件",
 'upload-permitted'            => '允许的文件类型：$1。',
 'upload-preferred'            => '建议的文件类型：$1。',
 'upload-prohibited'           => '禁止的文件类型：$1。',
@@ -1707,7 +1706,7 @@ $1',
 'filedelete-legend'           => '删除文件',
 'filedelete-intro'            => "您现正删除文件'''[[Media:$1|$1]]'''。",
 'filedelete-intro-old'        => "你现正删除'''[[Media:$1|$1]]'''于[$4 $2 $3]的版本。",
-'filedelete-comment'          => '删除理由：',
+'filedelete-comment'          => '理由：',
 'filedelete-submit'           => '删除',
 'filedelete-success'          => "'''$1'''已经删除。",
 'filedelete-success-old'      => "'''[[Media:$1|$1]]'''于 $2 $3 的版本已经删除。",
@@ -2082,7 +2081,7 @@ $UNWATCHURL
 'dellogpagetext'         => '以下是最近的删除的列表。',
 'deletionlog'            => '删除日志',
 'reverted'               => '恢复到早期版本',
-'deletecomment'          => '删除原因：',
+'deletecomment'          => '理由：',
 'deleteotherreason'      => '其它／附加的理由：',
 'deletereasonotherlist'  => '其他原因',
 'deletereason-dropdown'  => '*常用删除理由
@@ -2105,13 +2104,14 @@ $UNWATCHURL
 'editcomment'       => '编辑摘要："<i>$1</i>"。',
 'revertpage'        => '已恢复[[Special:Contributions/$2|$2]]（[[User talk:$2|对话]]）的编辑至[[User:$1|$1]]的最后一个修订版本',
 'revertpage-nouser' => '恢复由（移除了的用户名）的编辑到[[User:$1|$1]]的最后一个修订版本',
-'rollback-success'  => '已恢复$1的编辑；更改回$2的最后修订版本。',
+'rollback-success'  => '已恢复$1的编辑；
+更改回$2的最后修订版本。',
 
 # Edit tokens
 'sessionfailure-title' => '登录信息失败',
 'sessionfailure'       => '似乎您的登录会话有问题；
 为了防止会话劫持，这个操作已经被取消。
-请点击“后退”并重新载入页面，然后重试。',
+请返回先前的页面，重新载入该页面，然后重试。',
 
 # Protect
 'protectlogpage'              => '保护日志',
@@ -2250,7 +2250,7 @@ $1',
 最近的封锁日志项目在下面提供以便参考：',
 'sp-contributions-search'              => '搜索贡献记录',
 'sp-contributions-username'            => 'IP地址或用户名称：',
-'sp-contributions-toponly'             => '只显示最新的修订版本',
+'sp-contributions-toponly'             => '只显示最新修订版本的编辑',
 'sp-contributions-submit'              => '搜索',
 
 # What links here
@@ -2323,9 +2323,9 @@ $1',
 'ipblocklist'                     => '已封禁IP地址和用户名',
 'ipblocklist-legend'              => '检索一位已经被查封的用户',
 'ipblocklist-username'            => '用户名称或IP地址：',
-'ipblocklist-sh-userblocks'       => '$1次账户封锁',
-'ipblocklist-sh-tempblocks'       => '$1次临时封锁',
-'ipblocklist-sh-addressblocks'    => '$1次单IP封锁',
+'ipblocklist-sh-userblocks'       => '$1账户封锁',
+'ipblocklist-sh-tempblocks'       => '$1临时封锁',
+'ipblocklist-sh-addressblocks'    => '$1单IP封锁',
 'ipblocklist-submit'              => '搜索',
 'ipblocklist-localblock'          => '本地封锁',
 'ipblocklist-otherblocks'         => '其他{{PLURAL:$1|封锁|封锁}}',
@@ -2518,7 +2518,7 @@ $1已经被封锁。您是否想更改这个设置？',
 'allmessagesdefault'            => '默认的信息文字',
 'allmessagescurrent'            => '现时的信息文字',
 'allmessagestext'               => '这里列出所有可定制的系统界面。
-如果想贡献正宗的MediaWiki本地化的话，请参阅[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]以及[http://translatewiki.net translatewiki.net]。',
+如果想贡献通用的MediaWiki本地化的话，请参阅[http://www.mediawiki.org/wiki/Localisation MediaWiki本地化]以及[http://translatewiki.net translatewiki.net]。',
 'allmessagesnotsupportedDB'     => "这个页面无法使用，因为'''\$wgUseDatabaseMessages'''已被设置关闭。",
 'allmessages-filter-legend'     => '过滤',
 'allmessages-filter'            => '以自定状况过滤：',
@@ -2788,8 +2788,8 @@ $1',
 'file-info-gif-looped' => '循环',
 'file-info-gif-frames' => '$1帧',
 'file-info-png-looped' => '循环',
-'file-info-png-repeat' => '播放$1遍{{PLURAL:$1|time|times}}',
-'file-info-png-frames' => '$1帧 {{PLURAL:$1|frame|frames}}',
+'file-info-png-repeat' => '已播放$1遍',
+'file-info-png-frames' => '$1帧',
 
 # Special:NewFiles
 'newimages'             => '新建图像画廊',

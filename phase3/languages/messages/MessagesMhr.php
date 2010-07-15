@@ -81,7 +81,6 @@ $messages = array(
 'tog-watchdefault'          => 'Мыйын тӧрлатыме лаштык-влакым эскерыме лӱмерыш ешараш',
 'tog-watchmoves'            => 'Мыйын лӱмым вашталтыме лаштык-влакым эскерыме лӱмерыш ешараш',
 'tog-watchdeletion'         => 'Мыйын шӧрымӧ лаштык-влакым эскерыме лӱмерыш ешараш',
-'tog-minordefault'          => 'Посна каласыме огыл дык, чыла тӧрлатымашым изи тӧрлатымаш гай палемдаш',
 'tog-previewontop'          => 'Тӧрлатымаш тӧрза деч ончыч ончылгоч ончымашым шындаш',
 'tog-previewonfirst'        => 'Ончылгоч ончымашым икымше тӧрлатымаш годым ончыкташ',
 'tog-nocache'               => 'Лаштыкым кешироватлымым чараш',
@@ -672,7 +671,7 @@ $messages = array(
 'uploadnewversion-linktext' => 'Тиде файлын у тӱрлыкшым пурташ',
 
 # File deletion
-'filedelete-comment'          => 'Шӧрымын амалже:',
+'filedelete-comment'          => 'Амал:',
 'filedelete-submit'           => 'Шӧраш',
 'filedelete-otherreason'      => 'Вес/ешартыш амал:',
 'filedelete-reason-otherlist' => 'Вес амал',
@@ -812,7 +811,7 @@ $messages = array(
 'deletedarticle'        => '«[[$1]]» шӧрымӧ',
 'dellogpage'            => 'Шӧрымӧ нерген журнал',
 'deletionlog'           => 'шӧрымӧ нерген журнал',
-'deletecomment'         => 'Шӧрымын амалже:',
+'deletecomment'         => 'Амал:',
 'deleteotherreason'     => 'Вес/ешартыш амал:',
 'deletereasonotherlist' => 'Вес амал',
 

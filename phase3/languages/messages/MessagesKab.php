@@ -57,7 +57,6 @@ $messages = array(
 'tog-watchdefault'            => 'Rnu isebtar i ttbeddileɣ deg wumuɣ n uɛessi inu',
 'tog-watchmoves'              => 'Rnu isebtar i smimḍeɣ deg wumuɣ n uɛessi inu',
 'tog-watchdeletion'           => 'Rnu isebtar i mḥiɣ deg wumuɣ n uɛessi inu',
-'tog-minordefault'            => 'Rcem akk ibeddlen am ibeddlen ifessasen d ameslugen',
 'tog-previewontop'            => 'Ssken pre-timeẓriwt uqbel tankult ubeddel',
 'tog-previewonfirst'          => 'Ssken pre-timeẓriwt akk d ubeddel amezwaru',
 'tog-nocache'                 => 'Kkes lkac n usebter',
@@ -592,7 +591,7 @@ Inedbalen wiyaḍ deg wiki-yagi zemren ad ẓren imuren i yettwafren u zemren a 
 'revdelete-hide-restricted'   => 'Eg icekkilen i inedbalen d yimdanen wiyaḍ',
 'revdelete-suppress'          => 'Kkes talɣut seg inedbalen d yimdanen wiyaḍ',
 'revdelete-unsuppress'        => 'Kkes icekkilen ɣef tisiwal i yuɣalen-d',
-'revdelete-log'               => 'Awennit n uɣmis:',
+'revdelete-log'               => 'Ayɣer',
 'revdelete-submit'            => 'Eg-it i tasiwelt tettwafren',
 'revdelete-logentry'          => 'asekkud n tasiwelt tettubeddel i  [[$1]]',
 'logdelete-logentry'          => 'asekkud n tamirt tettubeddel i [[$1]]',
@@ -693,7 +692,7 @@ i yesɛan akk awalen i banen-d).",
 'userrights-editusergroup' => 'Beddel iderman n wemseqdac',
 'saveusergroups'           => 'Smekti iderman n yimseqdacen',
 'userrights-groupsmember'  => 'Amaslad deg:',
-'userrights-reason'        => 'Ayɣer yettubeddel:',
+'userrights-reason'        => 'Ayɣer',
 
 # Groups
 'group'       => 'Adrum:',
@@ -1072,7 +1071,7 @@ Tadhelt:
 'dellogpagetext'  => 'Deg ukessar, yella wumuɣ n yimḥayin imaynuten.',
 'deletionlog'     => 'Aɣmis n umḥay',
 'reverted'        => 'Asuɣal i tasiwel taqdimt',
-'deletecomment'   => 'Ayɣer tebɣiḍ ad temḥuḍ',
+'deletecomment'   => 'Ayɣer',
 
 # Rollback
 'cantrollback' => 'Ur yezmir ara ad yessuɣal; yella yiwen kan amseqdac iwumi ibeddel/yexleq asebter-agi.',

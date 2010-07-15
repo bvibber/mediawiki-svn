@@ -25,8 +25,8 @@ class PostgresInstaller extends InstallerDBType {
 		return 'postgres';
 	}
 
-	function isCompiled() {
-		return $this->checkExtension( 'pgsql' );
+	public function isCompiled() {
+		return self::checkExtension( 'pgsql' );
 	}
 
 	function getConnectForm() {

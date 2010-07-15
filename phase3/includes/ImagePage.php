@@ -152,6 +152,11 @@ class ImagePage extends Article {
 			$wgOut->addHTML(
 				"<script type=\"text/javascript\">attachMetadataToggle('mw_metadata', '$expand', '$collapse');</script>\n" );
 		}
+		
+		$css = $this->repo->getDescriptionStylesheetUrl();
+		if ( $css ) {
+			$wgOut->addStyle( $css );
+		}
 	}
 	
 	public function getRedirectTarget() {
@@ -229,8 +234,8 @@ class ImagePage extends Article {
 	/**
 	 * Create the TOC
 	 *
-	 * @param bool $metadata Whether or not to show the metadata link
-	 * @return string
+	 * @param $metadata Boolean: whether or not to show the metadata link
+	 * @return String
 	 */
 	protected function showTOC( $metadata ) {
 		$r = array(
@@ -252,8 +257,8 @@ class ImagePage extends Article {
 	 *
 	 * FIXME: bad interface, see note on MediaHandler::formatMetadata().
 	 *
-	 * @param array $exif The array containing the EXIF data
-	 * @return string
+	 * @param $metadata Array: the array containing the EXIF data
+	 * @return String
 	 */
 	protected function makeMetadataTable( $metadata ) {
 		$r = "<div class=\"mw-imagepage-section-metadata\">";

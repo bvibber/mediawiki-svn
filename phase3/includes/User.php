@@ -66,7 +66,6 @@ class User {
 		'watchdefault',
 		'watchmoves',
 		'watchdeletion',
-		'minordefault',
 		'previewontop',
 		'previewonfirst',
 		'nocache',
@@ -2740,13 +2739,6 @@ class User {
 	}
 
 	/**
-	 * @deprecated
-	 */
-	function setLoaded( $loaded ) {
-		wfDeprecated( __METHOD__ );
-	}
-
-	/**
 	 * Get this user's personal page title.
 	 *
 	 * @return \type{Title} User's personal page title
@@ -3792,8 +3784,6 @@ class User {
 	 * @param $signature String Text to leave in the signature
 	 * @param $summary String the summary for this change, defaults to
 	 *                        "Leave system message."
-	 * @param $article Article The article to update, defaults to the
-	 *                        user's talk page.
 	 * @param $editor User The user leaving the message, defaults to
 	 *                        "{{MediaWiki:usermessage-editor}}"
 	 * @param $flags Int default edit flags

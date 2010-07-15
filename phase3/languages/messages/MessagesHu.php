@@ -314,7 +314,6 @@ $messages = array(
 'tog-watchdefault'            => 'Az általam szerkesztett lapok felvétele a figyelőlistára',
 'tog-watchmoves'              => 'Az általam átnevezett lapok felvétele a figyelőlistára',
 'tog-watchdeletion'           => 'Az általam törölt lapok felvétele a figyelőlistára',
-'tog-minordefault'            => 'Alapértelmezésben minden szerkesztésemet jelölje aprónak',
 'tog-previewontop'            => 'Előnézet megjelenítése a szerkesztőablak előtt',
 'tog-previewonfirst'          => 'Előnézet első szerkesztésnél',
 'tog-nocache'                 => 'A lapok gyorstárazásának letiltása',
@@ -897,8 +896,8 @@ Ha úgy látod, hogy az üzenetek, amiket ide kapsz, nem neked szólnak, [[Speci
 vagy [{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkesztheted a lapot].</span>',
 'noarticletext-nopermission'       => 'Ez a lap jelenleg nem tartalmaz szöveget.
 [[Special:Search/{{PAGENAME}}|Rákereshetsz a lap címére]] más lapok tartalmában, vagy <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} megtekintheted a kapcsolódó naplófájlokat]</span>.',
-'userpage-userdoesnotexist'        => 'Nincs „$1” nevű regisztrált szerkesztőnk.
-Nézd meg, hogy valóban ezt a lapot szeretnéd létrehozni vagy szerkeszteni.',
+'userpage-userdoesnotexist'        => 'Nincs „$1” nevű regisztrált felhasználónk.
+Nézd meg, hogy valóban ezt a lapot szeretnéd-e létrehozni vagy szerkeszteni.',
 'userpage-userdoesnotexist-view'   => 'Nincs regisztrálva „$1” szerkesztői azonosító.',
 'blocked-notice-logextract'        => 'A felhasználó jelenleg blokkolva van.
 A blokkolási napló legutóbbi ide vonatkozó bejegyzése a következő:',
@@ -1115,7 +1114,7 @@ A(z) {{SITENAME}} adminisztrátorai továbbra is meg tudják tekinteni az elrejt
 'revdelete-radio-unset'       => 'Nem',
 'revdelete-suppress'          => 'Adatok elrejtése az adminisztrátorok és a többi felhasználó elől is',
 'revdelete-unsuppress'        => 'Korlátozások eltávolítása a visszaállított változatokról',
-'revdelete-log'               => 'A törlés oka:',
+'revdelete-log'               => 'Ok:',
 'revdelete-submit'            => 'Alkalmazás a kiválasztott {{PLURAL:$1|változatra|változatokra}}',
 'revdelete-logentry'          => 'módosította a(z) [[$1]] lap egy vagy több változatának láthatóságát',
 'logdelete-logentry'          => '[[$1]] eseményének láthatóságának módosítása',
@@ -1845,7 +1844,7 @@ A [$2 fájl ottani leírólapjának] másolata alább látható.',
 'filedelete-legend'           => 'Fájl törlése',
 'filedelete-intro'            => "Törölni készülsz a(z) '''[[Media:$1|$1]]''' médiafájlt, a teljes fájltörténetével együtt.",
 'filedelete-intro-old'        => '<span class="plainlinks">A(z) \'\'\'[[Media:$1|$1]]\'\'\' fájl, dátum: [$4 $3, $2] változatát törlöd.</span>',
-'filedelete-comment'          => 'Indoklás:',
+'filedelete-comment'          => 'Ok:',
 'filedelete-submit'           => 'Törlés',
 'filedelete-success'          => "A(z) '''$1''' médiafájlt törölted.",
 'filedelete-success-old'      => "A(z) '''[[Media:$1|$1]]''' $3, $2-kori változata sikeresen törölve lett.",
@@ -2218,7 +2217,7 @@ A legutóbbi törlések listájához lásd a $2 lapot.',
 'dellogpagetext'         => 'Itt láthatók a legutóbb törölt lapok.',
 'deletionlog'            => 'törlési napló',
 'reverted'               => 'Visszaállítva a korábbi változatra',
-'deletecomment'          => 'A törlés oka',
+'deletecomment'          => 'Ok:',
 'deleteotherreason'      => 'További indoklás:',
 'deletereasonotherlist'  => 'Egyéb indok',
 'deletereason-dropdown'  => '*Gyakori törlési okok
@@ -2260,7 +2259,7 @@ Kérjük, hogy nyomd meg a "vissza" gombot, és töltsd le újra az oldalt, ahon
 'protect-title'               => '„$1” levédése',
 'prot_1movedto2'              => '[[$1]] lapot átneveztem [[$2]] névre',
 'protect-legend'              => 'Levédés megerősítése',
-'protectcomment'              => 'A védelem oka:',
+'protectcomment'              => 'Ok:',
 'protectexpiry'               => 'Időtartam',
 'protect_expiry_invalid'      => 'A lejárati idő érvénytelen.',
 'protect_expiry_old'          => 'A lejárati idő a múltban van.',
@@ -2427,7 +2426,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'ipaddress'                       => 'IP-cím',
 'ipadressorusername'              => 'IP-cím vagy felhasználói név',
 'ipbexpiry'                       => 'Lejárat:',
-'ipbreason'                       => 'Indok:',
+'ipbreason'                       => 'Ok:',
 'ipbreasonotherlist'              => 'Más ok',
 'ipbreason-dropdown'              => '*Gyakori blokkolási okok
 ** Téves információ beírása

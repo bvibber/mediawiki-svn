@@ -151,8 +151,9 @@ class DatabaseSqlite extends DatabaseBase {
 	/**
 	 * Attaches external database to our connection, see http://sqlite.org/lang_attach.html
 	 * for details.
-	 * @param $name: Database name to be used in queries like SELECT foo FROM dbname.table
-	 * @param $file: Database file name. If omitted, will be generated using $name and $wgSQLiteDataDir
+	 * @param $name String: database name to be used in queries like SELECT foo FROM dbname.table
+	 * @param $file String: database file name. If omitted, will be generated using $name and $wgSQLiteDataDir
+	 * @param $fname String: calling function name
 	 */
 	function attachDatabase( $name, $file = false, $fname = 'DatabaseSqlite::attachDatabase' ) {
 		global $wgSQLiteDataDir;
@@ -436,14 +437,6 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
-	 * Query whether a given column exists in the mediawiki schema
-	 */
-	function fieldExists( $table, $field, $fname = '' ) {
-		$info = $this->fieldInfo( $table, $field );
-		return (bool)$info;
-	}
-
-	/**
 	 * Get information about a given field
 	 * Returns false if the field does not exist.
 	 */
@@ -514,13 +507,6 @@ class DatabaseSqlite extends DatabaseBase {
 			$params = $params[0];
 		}
 		return parent::buildLike( $params ) . "ESCAPE '\' ";
-	}
-
-	/**
-	 * How lagged is this slave?
-	 */
-	public function getLag() {
-		return 0;
 	}
 
 	/**

@@ -134,7 +134,6 @@ $messages = array(
 'tog-watchdefault'            => 'Vo dir nöi gmachti oder verändereti Syte beobachte',
 'tog-watchmoves'              => 'Sälber verschobeni Sytene beobachte',
 'tog-watchdeletion'           => 'Sälber glöschti Sytene beobachte',
-'tog-minordefault'            => 'Alli dyni Änderigen als «chlyni Änderige» markiere',
 'tog-previewontop'            => 'Vorschou vor em Editierfänschter aazeige',
 'tog-previewonfirst'          => 'Vorschou aazeige bim erschten Editiere',
 'tog-nocache'                 => 'Syte-Cache deaktiviere',
@@ -928,7 +927,7 @@ As Ammann (Administrator) chasch dää Unterschid bschaue; villicht het s Detail
 'revdelete-radio-unset'       => 'Nei',
 'revdelete-suppress'          => 'Grund vu dr Leschig au vor dr Ammanne versteckle',
 'revdelete-unsuppress'        => 'Yyschränkige fir di widerhergstellte Versione ufhebe',
-'revdelete-log'               => 'Leschgrund:',
+'revdelete-log'               => 'Grund:',
 'revdelete-submit'            => 'Uf {{PLURAL:$1|di uusgwehlt Version|usgwehlti Versione}} aawände',
 'revdelete-logentry'          => 'het d Versionsaasicht fir „[[$1]]“ gänderet',
 'logdelete-logentry'          => 'het d Sichtbarkeit fir „[[$1]]“ gänderet',
@@ -2017,7 +2016,7 @@ Im $2 het s e Lischt vu dr letschte Leschige.',
 'dellogpagetext'         => 'Des isch s Logbuech vu dr gleschte Syte un Dateie.',
 'deletionlog'            => 'Lösch-Logbuech',
 'reverted'               => 'Uf e alti Version zruckgsetzt',
-'deletecomment'          => 'Löschigsgrund',
+'deletecomment'          => 'Grund:',
 'deleteotherreason'      => 'Andere/zuesätzleche Grund:',
 'deletereasonotherlist'  => 'Andere Grund',
 'deletereason-dropdown'  => '* Allgmeini Leschgrind
@@ -2216,7 +2215,7 @@ Des sott numme erfolge go Vandalismus verhindere un in Ibereinstimmig mit in dr 
 'ipaddress'                       => 'IP-Adräss oder Benutzername:',
 'ipadressorusername'              => 'IP-Adräss oder Benutzername:',
 'ipbexpiry'                       => 'Sperrduur:',
-'ipbreason'                       => 'Begrindig:',
+'ipbreason'                       => 'Grund:',
 'ipbreasonotherlist'              => 'Anderi Begrindig',
 'ipbreason-dropdown'              => '* Allgmeini Sperrgrind
 ** Lesche vu Syte
@@ -2379,7 +2378,7 @@ I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde."
 'movesubpage'                  => '{{PLURAL:$1|Untersyte|Untersyte}}',
 'movesubpagetext'              => 'Die Syte het $1 {{PLURAL:$1|Untersyte|Untersyte}}.',
 'movenosubpage'                => 'Die Syte het kei Untersyte.',
-'movereason'                   => 'Grund',
+'movereason'                   => 'Grund:',
 'revertmove'                   => 'Zrugg verschiebe',
 'delete_and_move'              => 'Lösche un Verschiebe',
 'delete_and_move_text'         => '== D Ziilsyte isch scho vorhande, lösche?==

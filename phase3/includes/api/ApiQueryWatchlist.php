@@ -74,6 +74,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_notificationtimestamp = isset( $prop['notificationtimestamp'] );
 
 			if ( $this->fld_patrol ) {
+				$this->getMain()->setVaryCookie();
 				if ( !$user->useRCPatrol() && !$user->useNPPatrol() ) {
 					$this->dieUsage( 'patrol property is not available', 'patrol' );
 				}
@@ -141,9 +142,11 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			}
 
 			// Check permissions.  FIXME: should this check $user instead of $wgUser?
-			if ( ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
-			{
-				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
+				$this->getMain()->setVaryCookie();
+				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
+					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+				}
 			}
 
 			/* Add additional conditions to query depending upon parameters. */
@@ -258,8 +261,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		}
 
 		if ( $this->fld_notificationtimestamp ) {
-			$vals['notificationtimestamp'] = ( $row->wl_notificationtimestamp == null ) 
-				? '' 
+			$vals['notificationtimestamp'] = ( $row->wl_notificationtimestamp == null )
+				? ''
 				: wfTimestamp( TS_ISO_8601, $row->wl_notificationtimestamp );
 		}
 
@@ -269,6 +272,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
 			global $wgUser;
+			$this->getMain()->setVaryCookie();
 			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
 		}
 

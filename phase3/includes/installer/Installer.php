@@ -11,9 +11,8 @@ abstract class Installer {
 	 * MediaWiki configuration globals that will eventually be passed through 
 	 * to LocalSettings.php. The names only are given here, the defaults 
 	 * typically come from DefaultSettings.php.
-	 * @protected
 	 */
-	var $defaultVarNames = array(
+	protected $defaultVarNames = array(
 		'wgSitename',
 		'wgPasswordSender',
 		'wgLanguageCode', 
@@ -33,33 +32,34 @@ abstract class Installer {
 		'wgScriptPath',
 		'wgScriptExtension',
 		'wgMetaNamespace',
-//		'wgDeletedDirectory',
+		'wgDeletedDirectory',
 		'wgEnableUploads',
 		'wgLogo',
 		'wgShellLocale',
 		'wgSecretKey',
+		'wgUseInstantCommons',
 	);
 
 	/**
 	 * Variables that are stored alongside globals, and are used for any 
 	 * configuration of the installation process aside from the MediaWiki 
 	 * configuration. Map of names to defaults.
-	 * @protected
 	 */
-	var $internalDefaults = array(
+	protected $internalDefaults = array(
 		'_UserLang' => 'en',
 		'_Environment' => false,
 		'_CompiledDBs' => array(),
 		'_SafeMode' => false,
 		'_RaiseMemory' => false,
 		'_UpgradeDone' => false,
+		'_InstallDone' => false,
 		'_Caches' => array(),
 		'_InstallUser' => 'root',
 		'_InstallPassword' => '',
 		'_SameAccount' => true,
 		'_CreateDBAccount' => false,
 		'_NamespaceType' => 'site-name',
-		'_AdminName' => null, // will be set later, when the user selects language
+		'_AdminName' => '', // will be set later, when the user selects language
 		'_AdminPassword' => '',
 		'_AdminPassword2' => '',
 		'_AdminEmail' => '',
@@ -70,6 +70,7 @@ abstract class Installer {
 		'_CCDone' => false,
 		'_Extensions' => array(),
 		'_MemCachedServers' => '',
+		'_ExternalHTTP' => false,
 	);
 
 	/**
@@ -78,9 +79,8 @@ abstract class Installer {
 	 *
 	 * To add a new type, create a <type>Installer class and a Database<type> 
 	 * class, and add a config-type-<type> message to MessagesEn.php.
-	 * @private
 	 */
-	var $dbTypes = array(
+	private $dbTypes = array(
 		'mysql',
 		'postgres',
 		'sqlite',
@@ -94,17 +94,15 @@ abstract class Installer {
 
 	/**
 	 * Cached DB installer instances, access using getDBInstaller()
-	 * @private
 	 */
-	var $dbInstallers = array();
+	private $dbInstallers = array();
 
 	/**
 	 * A list of environment check methods called by doEnvironmentChecks(). 
 	 * These may output warnings using showMessage(), and/or abort the 
 	 * installation process by returning false.
-	 * @protected
 	 */
-	var $envChecks = array( 
+	protected $envChecks = array(
 		'envLatestVersion',
 		'envCheckDB',
 		'envCheckRegisterGlobals',
@@ -126,20 +124,21 @@ abstract class Installer {
 		'envCheckUploadsDirectory',
 	);
 
-	var $installSteps = array(
+	/**
+	 * Steps for installation.
+	 */
+	protected $installSteps = array(
 		'database',
 		'tables',
 		'interwiki',
 		'secretkey',
 		'sysop',
-		'localsettings',
 	);
 
 	/**
 	 * Known object cache types and the functions used to test for their existence
-	 * @protected
 	 */
-	var $objectCaches = array( 
+	protected $objectCaches = array(
 		'xcache' => 'xcache_get',
 		'apc' => 'apc_fetch',
 		'eaccel' => 'eaccelerator_get',
@@ -207,9 +206,8 @@ abstract class Installer {
 	);
 	/**
 	 * Cached Title and ParserOptions used by parse()
-	 * @private
 	 */
-	var $parserTitle, $parserOptions;
+	private $parserTitle, $parserOptions;
 
 	/**
 	 * Constructor, always call this from child classes
@@ -223,6 +221,10 @@ abstract class Installer {
 		global $wgExtensionMessagesFiles;
 		$wgExtensionMessagesFiles['MediawikiInstaller'] =
 			'./includes/installer/Installer.i18n.php';
+
+		global $wgUser;
+		$wgUser = User::newFromId( 0 );
+		// Having a user with id = 0 safeguards us from DB access via User::loadOptions()
 
 		// Set our custom <doclink> hook
 		global $wgHooks;
@@ -260,7 +262,7 @@ abstract class Installer {
 	 */
 	abstract function showMessage( $msg /*, ... */ );
 
-	abstract function showStatusError( $status );
+	abstract function showStatusMessage( $status );
 
 	/**
 	 * Get a list of known DB types
@@ -277,6 +279,8 @@ abstract class Installer {
 		if ( !$type ) {
 			$type = $this->getVar( 'wgDBtype' );
 		}
+		$type = strtolower($type);
+
 		if ( !isset( $this->dbInstallers[$type] ) ) {
 			$class = ucfirst( $type ). 'Installer';
 			$this->dbInstallers[$type] = new $class( $this );
@@ -373,6 +377,7 @@ abstract class Installer {
 			$this->showMessage( 'config-env-latest-can-not-check', $latestInfoUrl );
 			return;
 		}
+		$this->setVar( '_ExternalHTTP', true );
 		$latestInfo = FormatJson::decode($latestInfo);
 		if ($latestInfo === false || !isset( $latestInfo->mwreleases ) ) {
 			# For when the request is successful but there's e.g. some silly man in
@@ -576,7 +581,9 @@ abstract class Installer {
 					return $command;
 
 				$file = str_replace( '$1', $command, $versionInfo[0] );
-				if ( strstr( wfShellExec( $file ), $versionInfo[1]) !== false )
+				# Should maybe be wfShellExec( $file), but runs into a ulimit, see
+				# http://www.mediawiki.org/w/index.php?title=New-installer_issues&diff=prev&oldid=335456 
+				if ( strstr( `$file`, $versionInfo[1]) !== false )
 					return $command;
 			}
 		}
@@ -833,7 +840,7 @@ abstract class Installer {
 		$dh = opendir( $dir );
 		while ( ( $file = readdir( $dh ) ) !== false ) {
 			if( file_exists( "$dir/$file/$file.php" ) ) {
-				$exts[] = $file;
+				$exts[$file] = null;
 			}
 		}
 		$this->setVar( '_Extensions', $exts );
@@ -850,6 +857,44 @@ abstract class Installer {
 		return $this->installSteps;
 	}
 
+	/**
+	 * Actually perform the installation
+	 * @param Array $startCB A callback array for the beginning of each step
+	 * @param Array $endCB A callback array for the end of each step
+	 * @return Array of Status objects
+	 */
+	public function performInstallation( $startCB, $endCB ) {
+		$installResults = array();
+		$installer = $this->getDBInstaller();
+		foreach( $this->getInstallSteps() as $stepObj ) {
+			$step = is_array( $stepObj ) ? $stepObj['name'] : $stepObj;
+			call_user_func_array( $startCB, array( $step ) );
+			$status = null;
+
+			# Call our working function
+			if ( is_array( $stepObj ) ) {
+				# A custom callaback
+				$callback = $stepObj['callback'];
+				$status = call_user_func_array( $callback, array( $installer ) );
+			} else {
+				# Boring implicitly named callback
+				$func = 'install' . ucfirst( $step );
+				$status = $this->{$func}( $installer );
+			}
+			call_user_func_array( $endCB, array( $step, $status ) );
+			$installResults[$step] = $status;
+
+			// If we've hit some sort of fatal, we need to bail. Callback
+			// already had a chance to do output above.
+			if( !$status->isOk() )
+				break;
+		}
+		if( $status->isOk() ) {
+			$this->setVar( '_InstallDone', true );
+		}
+		return $installResults;
+	}
+
 	public function installExtensions() {
 		global $wgHooks, $wgAutoloadClasses;
 		$exts = $this->getVar( '_Extensions' );
@@ -860,23 +905,25 @@ abstract class Installer {
 		return Status::newGood();
 	}
 
-	public function installDatabase() {
-		$installer = $this->getDBInstaller( $this->getVar( 'wgDBtype' ) );
-		$status = $installer->setupDatabase();
+	public function installDatabase( &$installer ) {
+		if(!$installer) {
+			$type = $this->getVar( 'wgDBtype' );
+			$status = Status::newFatal( "config-no-db", $type );
+		} else {
+			$status = $installer->setupDatabase();
+		}
 		return $status;
 	}
 
-	public function installTables() {
-		$installer = $this->getDBInstaller();
+	public function installTables( &$installer ) {
 		$status = $installer->createTables();
-		if( $status->isGood() ) {
+		if( $status->isOK() ) {
 			LBFactory::enableBackend();
 		}
 		return $status;
 	}
 
-	public function installInterwiki() {
-		$installer = $this->getDBInstaller();
+	public function installInterwiki( &$installer ) {
 		return $installer->populateInterwikiTable();
 	}
 
@@ -888,6 +935,9 @@ abstract class Installer {
 			$file = fopen( "/dev/urandom", "r" );
 			wfRestoreWarnings();
 		}
+
+		$status = Status::newGood();
+
 		if ( $file ) {
 			$secretKey = bin2hex( fread( $file, 32 ) );
 			fclose( $file );
@@ -896,10 +946,11 @@ abstract class Installer {
 			for ( $i=0; $i<8; $i++ ) {
 				$secretKey .= dechex(mt_rand(0, 0x7fffffff));
 			}
-			$this->output->addWarningMsg( 'config-insecure-secretkey' );
+			$status->warning( 'config-insecure-secretkey' );
 		}
 		$this->setVar( 'wgSecretKey', $secretKey );
-		return Status::newGood();
+
+		return $status;
 	}
 
 	public function installSysop() {
@@ -923,9 +974,29 @@ abstract class Installer {
 		return Status::newGood();
 	}
 
-	public function installLocalsettings() {
-		$localSettings = new LocalSettingsGenerator( $this );
-		return $localSettings->writeLocalSettings();
+	/**
+	 * Determine if LocalSettings exists. If it does, return an appropriate
+	 * status for whether we should can upgrade or not
+	 * @return Status
+	 */
+	function getLocalSettingsStatus() {
+		global $IP;
+
+		$status = Status::newGood();
+
+		wfSuppressWarnings();
+		$ls = file_exists( "$IP/LocalSettings.php" );
+		wfRestoreWarnings();
+		
+		if( $ls ) {
+			if( $this->getDBInstaller()->needsUpgrade() ) {
+				$status->warning( 'config-localsettings-upgrade' );
+			}
+			else {
+				$status->fatal( 'config-localsettings-noupgrade' );
+			}
+		}
+		return $status;
 	}
 
 	/**
@@ -971,4 +1042,18 @@ abstract class Installer {
 		$GLOBALS['wgShowSQLErrors'] = true;
 		$GLOBALS['wgShowDBErrorBacktrace'] = true;
 	}
+
+	/**
+	 * Add an installation step following the given step. 
+	 * @param $findStep String the step to find.  Use NULL to put the step at the beginning.
+	 * @param $callback array
+	 */
+	function addInstallStepFollowing( $findStep, $callback ) {
+		$where = 0;
+		if( $findStep !== null ) $where = array_search( $findStep, $this->installSteps );
+
+		array_splice( $this->installSteps, $where, 0, $callback );
+	}
+
+
 }

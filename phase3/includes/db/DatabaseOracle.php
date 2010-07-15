@@ -850,8 +850,8 @@ class DatabaseOracle extends DatabaseBase {
 	 * For internal calls. Use fieldInfo for normal usage.
 	 * Returns false if the field doesn't exist
 	 *
-	 * @param Array $table
-	 * @param String $field
+	 * @param $table Array
+	 * @param $field String
 	 */
 	private function fieldInfoMulti( $table, $field ) {
 		$tableWhere = '';
@@ -905,16 +905,8 @@ class DatabaseOracle extends DatabaseBase {
 		return $this->fieldInfoMulti ($table, $field);
 	}
 
-	function fieldExists( $table, $field, $fname = 'DatabaseOracle::fieldExists' ) {
-		return (bool)$this->fieldInfo( $table, $field, $fname );
-	}
-
 	function begin( $fname = '' ) {
 		$this->mTrxLevel = 1;
-	}
-
-	function immediateCommit( $fname = '' ) {
-		return true;
 	}
 
 	function commit( $fname = '' ) {
@@ -1152,17 +1144,6 @@ class DatabaseOracle extends DatabaseBase {
 		return 'BITOR(' . $fieldLeft . ', ' . $fieldRight . ')';
 	}
 
-	/**
-	 * How lagged is this slave?
-	 *
-	 * @return int
-	 */
-	public function getLag() {
-		# Not implemented for Oracle
-		return 0;
-	}
-
-	function setFakeSlaveLag( $lag ) { }
 	function setFakeMaster( $enabled = true ) { }
 
 	function getDBname() {
