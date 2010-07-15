@@ -20,7 +20,7 @@
 
 /* Configuration */
 
-// Set this to false to include all plugins individually
+// Set this to 'raw' to include all plugins individually
 $wgUsabilityInitiativeResourceMode = 'minified';
 
 /* Setup */
