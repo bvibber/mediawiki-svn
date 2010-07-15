@@ -66,6 +66,9 @@ final class SMQueryPrinters {
 			'height' => array(
 				'default' => $egMapsMapHeight
 			),
+			'mappingservice' => array(
+				'default' => $egMapsDefaultServices['qp']
+			),			
 			'geoservice' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableGeoServices
@@ -73,8 +76,6 @@ final class SMQueryPrinters {
 				'default' => $egMapsDefaultGeoService
 			),
 			'format' => array(
-				'required' => true,
-				'default' => $egMapsDefaultServices['qp']
 			),
 			'centre' => array(
 				'aliases' => array( 'center' ),

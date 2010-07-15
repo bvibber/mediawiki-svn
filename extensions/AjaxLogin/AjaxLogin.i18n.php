@@ -32,11 +32,12 @@ $messages['qqq'] = array(
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
  * @author J Subhi
  */
 $messages['bjn'] = array(
 	'ajaxLogin2' => 'Piyan yakin kah?
-Piyan kawa kahilangan ubahan piyan pada tungkaran ini munnya piyan tulak keluar tungkaran ini daminian.',
+Piyan kawa kahilangan ubahan nang tuntung piyan ulah di tungkaran ini munnya piyan tulak kaluar tungkaran ini daminian.',
 	'ajaxlogin-create' => 'Ulah sabuah akun',
 	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
 Ngaran pamakay sifatnya sansitip.
@@ -168,6 +169,21 @@ Pokud opustíte tuto stránku, můžete ztratit své neuložené úpravy.',
 	'al-nosuchuser' => 'Uživatel se jménem „$1“ neexistuje.
 V uživatelských jménech se dbá na velikost písmen!
 Zkontrolujte zda jste jméno napsali správně!',
+);
+
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'ajaxlogin-desc' => "Blwch dynamig sy'n caniatáu defnyddwyr i fewngofnodi ac atgoffa cyfrinair",
+	'ajaxLogin1' => "I gwblhau mewngofnodi, mae'n rhaid ichi roi cyfrinair newydd.
+Bydd hwn yn mynd â chi i dudalen arall ac efallai byddwch yn colli'ch golygiadau cyfredol.",
+	'ajaxLogin2' => "Ydych chi'n siŵr?
+Efallai byddwch yn colli'ch newidiadau i'r dudalen hon os yr ydych yn gadael.",
+	'ajaxlogin-create' => 'Creu cyfrif',
+	'al-nosuchuser' => 'Nid oes dim defnyddiwr o\'r enw "$1".
+Ydych chi\'n defnyddio priflythrennau?
+Gwiriwch eich sillafu.',
 );
 
 /** Danish (Dansk)

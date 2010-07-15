@@ -99,6 +99,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'webchat' => 'Flap web',
@@ -106,7 +107,7 @@ $messages['br'] = array(
 	'webchat-header' => "A-drugarez d'ar bajenn dibar-mañ e c'hallit kenlabourat war-eeun gant implijerien all eus ar wiki.
 Evit kevreañ, klikit war ar bouton \"Kevreañ\".
 Ma'z oc'h kevreet e vo bet rakleuniet ho lesanv.
-Ul lesanv a vo lakaet d'an implijerien dianv dre ziouer, met gallout a ra bezañ cheñchet.",
+Ul lesanv a vo lakaet d'an implijerien dizanv dre ziouer, met gallout a ra bezañ cheñchet.",
 	'right-webchat' => 'Aotreet da implijout ar [[Special:WebChat|flap web]]',
 );
 

@@ -211,11 +211,25 @@ $messages['lb'] = array(
 	'interlanguage-desc' => "Erlaabt et d'Linke tëschent Sproochen vun enger anerer Wiki z'iwwerhuelen",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'interlanguage-desc' => 'Paņem starpvalodu saites no citas wiki',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
 	'interlanguage-desc' => 'Презема меѓујазични врски од друго вики',
+);
+
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'interlanguage-desc' => 'മറ്റൊരു വിക്കിയിൽ നിന്നും അന്തർഭാഷാ കണ്ണികൾ എടുക്കുക',
 );
 
 /** Dutch (Nederlands)

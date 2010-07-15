@@ -624,6 +624,13 @@ Slědk k:
 	'right-crosswikiblock' => 'Wužywarjow na drugich wikijach blokěrowaś a dowóliś',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'crosswikiblock-expiry' => 'Nuwuwu:',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Omnipaedista
@@ -633,7 +640,7 @@ $messages['el'] = array(
 	'crosswikiblock-reason' => 'Λόγος:',
 	'crosswikiblock-submit' => 'Φραγή αυτού του χρήστη',
 	'crosswikiblock-nocreate' => 'Παρεμπόδιση δημιουργίας λογαριασμού',
-	'crosswikiunblock-reason' => 'Λόγος',
+	'crosswikiunblock-reason' => 'Λόγος:',
 	'crosswikiunblock-submit' => 'Άρση φραγής αυτού του χρήστη',
 	'crosswikiblock-noexpiry' => 'Μη έγκυρη λήξη: $1.',
 	'crosswikiblock-noreason' => 'Δεν δόθηκε κάποιος λόγος.',
@@ -1325,7 +1332,7 @@ $messages['it'] = array(
 Per favore, controlla che tu sia autorizzato a farlo su questa wiki e che l'azione sia conforme a tutte le policy.",
 	'crosswikiblock-target' => 'Indirizzo IP o nome utente e wiki di destinazione:',
 	'crosswikiblock-expiry' => 'Scadenza del blocco:',
-	'crosswikiblock-reason' => 'Motivo del blocco:',
+	'crosswikiblock-reason' => 'Motivo:',
 	'crosswikiblock-submit' => "Blocca l'utente",
 	'crosswikiblock-anononly' => 'Blocca solo utenti anonimi (gli utenti registrati che condividono lo stesso IP non vengono bloccati)',
 	'crosswikiblock-nocreate' => 'Impedisci la creazione di altri account',
@@ -1335,7 +1342,7 @@ Per favore, controlla che tu sia autorizzato a farlo su questa wiki e che l'azio
 	'crosswikiunblock-header' => "Questa pagina permette di sbloccare un utente su un'altra wiki.
 Per favore, controlla che tu sia autorizzato a farlo su questa wiki e che l'azione sia conforme a tutte le policy.",
 	'crosswikiunblock-user' => 'Nome utente, indirizzo IP o ID di blocco e wiki di destinazione',
-	'crosswikiunblock-reason' => 'Motivo dello sblocco:',
+	'crosswikiunblock-reason' => 'Motivo:',
 	'crosswikiunblock-submit' => "Sblocca l'utente",
 	'crosswikiunblock-success' => "L'utente '''$1''' è stato sbloccato con successo.
 
@@ -1384,7 +1391,7 @@ $messages['ja'] = array(
 	'crosswikiunblock-header' => 'このページでは他ウィキの利用者をブロック解除することができます。
 あなたのその行動は、影響を与えるウィキ全ての方針で適切かどうか、注意深く考えてください。',
 	'crosswikiunblock-user' => '利用者名かIPアドレスまたはブロックID、および対象となるウィキ:',
-	'crosswikiunblock-reason' => 'ブロック解除理由:',
+	'crosswikiunblock-reason' => '理由:',
 	'crosswikiunblock-submit' => 'この利用者のブロックを解除',
 	'crosswikiunblock-success' => "利用者 '''$1''' のブロックを解除しました。
 
@@ -2058,7 +2065,7 @@ $messages['pl'] = array(
 Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasadami.',
 	'crosswikiblock-target' => 'Adres IP lub nazwa użytkownika i docelowa wiki:',
 	'crosswikiblock-expiry' => 'Czas blokady:',
-	'crosswikiblock-reason' => 'Powód:',
+	'crosswikiblock-reason' => 'Powód',
 	'crosswikiblock-submit' => 'Zablokuj użytkownika',
 	'crosswikiblock-anononly' => 'Zablokuj tylko anonimowych użytkowników',
 	'crosswikiblock-nocreate' => 'Zablokuj tworzenie konta',
@@ -2068,7 +2075,7 @@ Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasad
 	'crosswikiunblock-header' => 'Ta strona pozwala na odblokowanie użytkownika na innych wiki.
 Upewnij się czy masz prawo to zrobić i czy to co robisz jest w zgodzie z zasadami.',
 	'crosswikiunblock-user' => 'Nazwa użytkownika, adres IP lub ID blokady i docelowa wiki:',
-	'crosswikiunblock-reason' => 'Powód:',
+	'crosswikiunblock-reason' => 'Powód',
 	'crosswikiunblock-submit' => 'Odblokuj użytkownika',
 	'crosswikiunblock-success' => "Użytkownik '''$1''' został odblokowany.
 
@@ -2347,7 +2354,7 @@ $messages['scn'] = array(
 	'crosswikiblock-desc' => 'Pirmetti di bluccari utenti supra autri wiki usannu na [[Special:Crosswikiblock|pàggina spiciali]]',
 	'crosswikiblock' => "Blocca utenti supra n'autra wiki",
 	'crosswikiblock-expiry' => 'Scadenza:',
-	'crosswikiblock-reason' => 'Mutivu dô bloccu:',
+	'crosswikiblock-reason' => 'Mutivu:',
 	'crosswikiblock-submit' => "Blocca l'utenti",
 	'crosswikiblock-anononly' => "Blocca sulu l'utenti anònimi (l'utenti riggistrati ca cundivìdinu lu stissu IP nun vèninu bluccati)",
 	'crosswikiblock-nocreate' => 'Mpidisci la criazzioni di àutri account',
@@ -2928,6 +2935,12 @@ Geikön lü:
 * [[Special:CrosswikiBlock|Blokamafomet]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Säblokams su vük at no kanons paledunön medü pad at. Gebolös padi: [[Special:IPBlockList|{{int:ipblocklist}}]]',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'crosswikiblock-reason' => '理由：',
+	'crosswikiunblock-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

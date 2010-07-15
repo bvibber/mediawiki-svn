@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'addmediawizard-desc' => 'Wizard vir byvoeg van media, ontwikkel in samewerking met Kaltura en die Wikimedia-stigting',
 );
 
+/** Arabic (العربية)
+ * @author Moemin05
+ */
+$messages['ar'] = array(
+	'addmediawizard-desc' => 'معالج إضافة الوسائط، طَوَّرَاه بالشراكة كالتورا و مؤسّسة ويكيميديا',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -63,6 +70,13 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'addmediawizard-desc' => 'Ychwanegu dewin cyfryngau, a ddatblygwyd gan Kaltura a Sefydliad Wikimedia ar y cyd',
+);
+
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'addmediawizard-desc' => 'Tilføj mediaguide, udviklet i samarbejde mellem Kaltura og Wikimedia Foundation',
 );
 
 /** German (Deutsch)
@@ -206,6 +220,13 @@ $messages['lb'] = array(
 	'addmediawizard-desc' => 'En Assistent fir Medien derbäisetzen, deen an engem Partenariat tëschent Kaltura a n der Wikimedia Foundatioun entwéckelt gouf',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'addmediawizard-desc' => "Hanampy mpanampy ho an'ny media, noforonina ary niara-nitarin'ny Kaltura sy ny Wikimedia Foundation",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -267,6 +288,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'addmediawizard-desc' => 'Assistente para o carregamento de multimídias, desenvolvido em parceria pela Kagura e a Wikimedia Foundation',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'addmediawizard-desc' => 'Aggiunge le wizard de le media, sviluppate inzieme a Katura e Uicchimedia Foundation',
 );
 
 /** Russian (Русский)

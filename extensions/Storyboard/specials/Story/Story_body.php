@@ -183,7 +183,7 @@ class SpecialStory extends IncludableSpecialPage {
 	 * @param $story
 	 */
 	private function showStoryForm( $story ) {
-		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath, $wgContLanguageCode;
+		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgScriptPath, $wgContLanguageCode;
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->setPageTitle( $story->story_title );

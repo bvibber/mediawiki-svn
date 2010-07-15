@@ -327,7 +327,7 @@ function mvfAutoAllPageHeader() {
 	$wgOut->addScript( $mvExtraHeader );
 }
 function mvAddPerNamespaceJS( &$title ){
-	global $mvgScriptPath, $wgJsMimeType, $wgOut;
+	global $mvgScriptPath, $wgOut;
 	if( $title->getNamespace() == MV_NS_STREAM )
 		$wgOut->addScriptFile( "{$mvgScriptPath}/skins/mv_stream.js" );
 }

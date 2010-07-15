@@ -91,6 +91,13 @@ $messages['cs'] = array(
 	'categorytests-desc' => 'Funkce pro testování kategorií',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'categorytests-desc' => 'Swyddogaethau ar gyfer profi categorïau',
+);
+
 /** German (Deutsch)
  * @author Imre
  */
@@ -258,6 +265,13 @@ $messages['lb'] = array(
  */
 $messages['ltg'] = array(
 	'categorytests-desc' => 'Funkcejis kategoreju puorvērei',
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'categorytests-desc' => 'Funkcijas kategoriju testēšanai',
 );
 
 /** Malagasy (Malagasy)

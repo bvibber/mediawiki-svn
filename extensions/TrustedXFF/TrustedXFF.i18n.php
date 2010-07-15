@@ -372,6 +372,13 @@ $messages['pt-br'] = array(
 	'trustedxff-desc' => 'Manuseamento de uma lista de endereços proxy confiáveis ([http://meta.wikimedia.org/wiki/XFF_project projeto XFF])',
 );
 
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'trustedxff-desc' => 'Gestiunea unei liste de adrese proxy de încredere ([http://meta.wikimedia.org/wiki/XFF_project proiectul XFF])',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

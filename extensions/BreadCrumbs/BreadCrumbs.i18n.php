@@ -345,6 +345,13 @@ $messages['lt'] = array(
 	'breadcrumbs-desc' => 'Rodo naudotojo kelią svetainėje',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'breadcrumbs-desc' => 'Parād lietotāja ceļu cauri wiki',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

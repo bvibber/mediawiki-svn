@@ -21,34 +21,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
-
-	protected $markerStringFormat = 'getGMaps3MarkerData(lat, lon, "title", "label", "icon")';
-	
-	protected function getDefaultZoom() {
-		global $egMapsGMaps3Zoom;
-		return $egMapsGMaps3Zoom;
-	}
 	
 	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
-	 */
-	public function doMapServiceLoad() {
-		global $egGMaps3OnThisPage;
-		
-		$egGMaps3OnThisPage++;
-		
-		$this->elementNr = $egGMaps3OnThisPage;
-	}
-	
-	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
+	 * @see MapsBaseMap::addSpecificMapHTML
 	 *
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsGMaps3Prefix, $egGMaps3OnThisPage;
-		
-		$mapName = $egMapsGMaps3Prefix . '_' . $egGMaps3OnThisPage;
+		$mapName = $this->service->getMapId();;
 		
 		$this->output .= Html::element(
 			'div',
@@ -72,7 +51,7 @@ addOnloadHook(
 				types: [],
 				mapTypeId: $this->type
 			},
-			[$this->markerString]
+			$this->markerJs
 		);
 	}
 );

@@ -365,6 +365,14 @@ $messages['lt'] = array(
 	'categoryonupload-label' => 'Kategorija:',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'categoryonupload-desc' => 'Piedāvā lietotājam izvēlēties kategoriju augšupielādējot failu',
+	'categoryonupload-label' => 'Kategorija:',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

@@ -933,6 +933,13 @@ $messages['lg'] = array(
 	'contributors-nosuchpage' => 'Tewali lupapula $1.',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'contributors-toolbox' => 'Mpandray anjara matetika',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Jose77
  */
@@ -1318,6 +1325,15 @@ $messages['rue'] = array(
  */
 $messages['sh'] = array(
 	'contributors-submit' => 'Prikaži',
+);
+
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'contributors' => 'දායකයින්',
+	'contributors-target' => 'ශීර්ෂය:',
+	'contributors-submit' => 'පෙන්වන්න',
 );
 
 /** Slovak (Slovenčina)

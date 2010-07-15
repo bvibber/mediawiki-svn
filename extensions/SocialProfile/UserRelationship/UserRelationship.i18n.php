@@ -1283,6 +1283,13 @@ Molimo zahtjevajte prijatelje/neprijatelje preko ispravnog linka.',
 	'foe_removed_subject' => 'Super! $1 je uklonio Vas kao neprijatelja na {{SITENAME}}!',
 );
 
+/** Буряад (Буряад)
+ * @author ОйЛ
+ */
+$messages['bxr'] = array(
+	'ur-main-page' => 'Нюур хуудаһан',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  * @author SMP
@@ -6090,10 +6097,14 @@ $messages['ps'] = array(
 	'ur-give-gift' => 'يوه ډالۍ ورکول',
 	'ur-previous' => 'پخوانی',
 	'ur-next' => 'راتلونکي',
+	'ur-remove-relationship-title-foe' => 'آيا تاسې غواړۍ چې $1 د خپلې سيالۍ نه ليرې کړۍ؟',
+	'ur-remove-relationship-title-friend' => 'آيا تاسې غواړۍ چې $1 د خپل ملګرتوب نه ليرې کړۍ؟',
 	'ur-remove-error-message-remove-yourself' => 'تاسې خپل ځان نه شی ليري کولای.',
 	'ur-remove' => 'غورځول',
 	'ur-cancel' => 'ناګارل',
 	'ur-login' => 'ننوتل',
+	'ur-add-title-foe' => 'آيا تاسې $1 د يوه سيال په توګه د ځان سره ګډول غواړۍ؟',
+	'ur-add-title-friend' => 'آيا تاسې $1 د يوه ملګري په توګه د ځان سره ګډول غواړۍ؟',
 	'ur-add-button-foe' => 'د سيال په توګه ورګډول',
 	'ur-add-button-friend' => 'د ملګري په توګه ورګډول',
 	'ur-add-error-message-existing-relationship-friend' => 'تاسې د پخوا نه د $1 سره ملګری ياست.',
@@ -7976,6 +7987,11 @@ Begolös stadi flena/neflena medü yüm verätik.',
 	'ur-title-friend' => 'Lised flenas gebana: $1',
 	'friend_request_subject' => 'Geban: $1 eläükon oli as flen in {{SITENAME}}!',
 	'foe_request_subject' => 'Krigö! Geban: $1 eläükon oli as neflen in {{SITENAME}}!',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'ur-cancel' => '取消',
 );
 
 /** Kalmyk (Хальмг)

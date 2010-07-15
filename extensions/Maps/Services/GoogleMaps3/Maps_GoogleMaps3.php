@@ -14,7 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * TODO
+ * Class holding information and functionallity specific to Google Maps v3.
+ * This infomation and features can be used by any mapping feature. 
+ * 
+ * @since 0.1
  * 
  * @ingroup MapsGoogleMaps3
  * 
@@ -22,6 +25,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsGoogleMaps3 extends MapsMappingService {
 	
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.6.3
+	 */	
 	function __construct() {
 		parent::__construct(
 			'googlemaps3',
@@ -29,6 +37,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 		);
 	}
 	
+	/**
+	 * @see MapsMappingService::initParameterInfo
+	 * 
+	 * @since 0.5
+	 */	
 	protected function initParameterInfo( array &$parameters ) {
 		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
 		
@@ -59,6 +72,53 @@ class MapsGoogleMaps3 extends MapsMappingService {
 				*/
 		);
 	}
+	
+	/**
+	 * @see iMappingService::getDefaultZoom
+	 * 
+	 * @since 0.6.5
+	 */	
+	public function getDefaultZoom() {
+		global $egMapsGoogleMaps3Zoom;
+		return $egMapsGoogleMaps3Zoom;
+	}	
+	
+	/**
+	 * @see MapsMappingService::getMapId
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		global $egMapsGoogleMaps3Prefix, $egGoogleMaps3OnThisPage;
+		
+		if ( $increment ) {
+			$egGoogleMaps3OnThisPage++;
+		}
+		
+		return $egMapsGoogleMaps3Prefix . '_' . $egGoogleMaps3OnThisPage;
+	}	
+	
+	/**
+	 * @see MapsMappingService::createMarkersJs
+	 * 
+	 * @since 0.6.5
+	 */
+	public function createMarkersJs( array $markers ) {
+		$markerItems = array();
+		
+		foreach ( $markers as $marker ) {
+			$markerItems[] = Xml::encodeJsVar( array(
+				'lat' => $marker[0],
+				'lon' => $marker[1],
+				'title' => $marker[2],
+				'label' =>$marker[3],
+				'icon' => $marker[4]
+			) );
+		}
+		
+		// Create a string containing the marker JS.
+		return '[' . implode( ',', $markerItems ) . ']';
+	}	
 	
 	protected static $mapTypes = array(
 		'normal' => 'ROADMAP',

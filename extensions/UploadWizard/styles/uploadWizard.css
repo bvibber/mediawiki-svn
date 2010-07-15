@@ -14,6 +14,8 @@ form.mwe-upwiz-form {
 
 #upload-wizard {
 	margin-top: 18px;
+	min-width: 32em;
+	max-width: 64em;
 }
 
 /*
@@ -272,8 +274,10 @@ a[disabled=true]:hover {
 	vertical-align: middle;
 }
 
+/* I don't like that this has to have width, to ensure that all the floats work out correctly.*/
 .mwe-upwiz-data {
 	float: left;
+	width: 46em;
 }
 
 
@@ -288,13 +292,6 @@ a[disabled=true]:hover {
 }
 
 
-
-/* XXX this has to be 'centered' beneath the 'x's -- this is about right for english but we need a more 
-   robust layout strategy for i18n */
-.proceed {
-	text-align: right; 	
-	width: 410px;
-}
 
 .shim {
 	float:right;
@@ -349,28 +346,38 @@ a[disabled=true]:hover {
 #mwe-upwiz-macro-files {
 	margin-top: 12px;
 }
+
 .mwe-upwiz-info-file {
 	margin-bottom: 1em;
-	padding-bottom: 1em;
-	width: 60em;
 }
 
-
 .mwe-upwiz-details-input {
-	width: 400px;
+	width: 33em;
 	float: left;
 }
 
-
-.mwe-upwiz-details-label {
+.mwe-upwiz-details-fieldname {
 	width: 10em;
 	padding-top:  0.5em;
 	float: left;
 }
 
-.mwe-upwiz-details-input.mwe-error {
-	float: none;
+.mwe-upwiz-details-input-error {
+	padding-left: 10em;
+	/* XXX the following rules pop it open at a fixed width so layout doesn't change :( */
+	/* min-height: 3em;
+	position: relative; */
 }
+
+/* XXX the following rule keeps errors on the details page at the bottom of a fixed-height space, see above */
+/*
+.mwe-upwiz-details-input-error label.mwe-validator-error,
+.mwe-upwiz-details-input-error label.mwe-error {
+	position: absolute;
+	bottom: 0px;
+}
+*/
+
 
 .mwe-upwiz-desc-lang-select {
 	width: 11em;
@@ -378,19 +385,15 @@ a[disabled=true]:hover {
 	font-size: small;
 }
 
-.mwe-upwiz-desc-lang-container {
-	float: left;
-}
-
 .mwe-upwiz-desc-lang-text {
-	width: 240px;
+	width: 20em;
 	overflow: hidden;
 	font-family: sans-serif; /* XXX is this right? */
 	font-size: small;
 }
 
-.mwe-upwiz-details-descriptions-add, .mwe-upwiz-details-input.mwe-error {
-	margin-left: 10em; /* width of mwe-upwiz-details-label */
+.mwe-upwiz-details-descriptions-add {
+	margin-left: 10em; /* width of mwe-upwiz-details-fieldname */
 }
 
 .mwe-upwiz-details-descriptions-add {
@@ -404,7 +407,7 @@ a[disabled=true]:hover {
 }
 
 .mwe-long-textarea {
-	width: 21em;
+	width: 31em;
 }
 
 fieldset .mwe-long-textarea {
@@ -412,9 +415,8 @@ fieldset .mwe-long-textarea {
 }
 
 
-
-.mwe-upwiz-details-label-input {
-	margin-bottom: 1em;
+.mwe-upwiz-details-fieldname-input {
+	margin-bottom: 1em; 
 }
 
 .mwe-upwiz-details-filename. {
@@ -423,7 +425,7 @@ fieldset .mwe-long-textarea {
 }
 
 .mwe-upwiz-other-textarea {
-	width: 468px;
+	/* width: 40.3em; */
 } 
 
 fieldset.mwe-fieldset {
@@ -443,17 +445,17 @@ legend.mwe-legend {
 }
 
 .mwe-upwiz-thirdparty-fields {
-	margin-bottom: 5px;
+	margin-bottom: .5em;
 }
 
 .mwe-upwiz-thirdparty-fields label {
-	width: 100px;
+	width: 9em;
 	display: inline-block;
-	padding-bottom: 5px;
+	padding-bottom: .5em;
 }
 
 .mwe-upwiz-thirdparty-fields textarea {
-	margin: 0px
+	margin: 0
 }
 
 .mwe-upwiz-thirdparty-license {
@@ -461,7 +463,7 @@ legend.mwe-legend {
 }
 
 .mwe-upwiz-deed-form-internal {
-	padding: 5px 0px 20px 40px;
+	padding: 0.5em 0 1.5em 3em;
 }
 
 
@@ -499,17 +501,20 @@ a.mwe-upwiz-tooltip-link {
 	cursor: pointer;
 }
 
-.mwe-error {
+.mwe-error, .mwe-validator-error {
 	color: #ff0000;
 }
 
-.mwe-upwiz-deed-form-internal label.mwe-error {
-	margin-left: 100px;
+.mwe-upwiz-deed-thirdparty .mwe-upwiz-deed-form-internal label.mwe-error,
+.mwe-upwiz-deed-thirdparty .mwe-upwiz-deed-form-internal label.mwe-validator-error {
+	margin-left: 9em;
 }
 
-input[type='text'].mwe-error, textarea.mwe-error {
+/* XXX fix this later -- we get non-rounded corners somehow */
+input[type='text'].mwe-error, textarea.mwe-error,
+input[type='text'].mwe-validator-error, textarea.mwe-validator-error {
 	color: black;
-	border: 1px solid #ff0000;
+	border-color: #ff0000;
 }
 
 .mwe-upwiz-toggler {
@@ -530,6 +535,24 @@ input[type='text'].mwe-error, textarea.mwe-error {
 	margin-bottom: 2em;
 }
 
+/* may change in RTL */
 .mwe-upwiz-required-field {
 	/* font-weight: bold; */
+}
+
+.mwe-upwiz-required-marker {
+	color: #0099cc;
+}
+
+.mwe-readonly {
+	background-color: #ffffff;
+}
+
+.mwe-date-display {
+	width: 100%;
+	background: #ffffff url('calendar.gif') no-repeat right center;
+}
+
+.ui-datepicker-current-day a.ui-state-active {
+	background: #ffff99;
 }

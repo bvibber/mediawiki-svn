@@ -334,6 +334,14 @@ $messages['lb'] = array(
 	'minnamelength-desc' => 'Eng Mindestlängt vum Benotzrnumm verlaangen',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'minnamelength-error' => 'Jūsu lietotājvārds ir pārāk īss. Minimālais garums ir $1.',
+	'minnamelength-desc' => 'Ieviest minimālo lietotājvārda garumu',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

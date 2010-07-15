@@ -110,6 +110,16 @@ $messages['bg'] = array(
 	'unicodeconverter-newtext' => 'Преобразуван текст:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'unicodeconverter' => 'ইউনিকো্ড কনভার্টার',
+	'unicodeconverter-ok' => 'ঠিক আছে',
+	'unicodeconverter-oldtext' => 'মূল লেখা:',
+	'unicodeconverter-newtext' => 'রূপান্তরিত লেখা:',
+);
+
 /** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
  * @author Usingha
  */
@@ -493,7 +503,7 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'unicodeconverter' => 'Уникод претворач',
+	'unicodeconverter' => 'Претворач на Уникод',
 	'unicodeconverter-desc' => 'Прост пример за модул за специјална страница. [[Special:UnicodeConverter|Ако му се зададе низата UTF-8]], ја претвора во HTML ентитети погодни за интернет-страници по стандардот ISO 8859-1',
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинален текст:',

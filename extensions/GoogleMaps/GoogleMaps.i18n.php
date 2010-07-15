@@ -203,6 +203,13 @@ $wgGoogleMapsMessages['niu'] = array(
 	'gm-search' => 'Kumi',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$wgGoogleMapsMessages['bjn'] = array(
+	'gm-back' => 'mantuk',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -1304,6 +1311,11 @@ $wgGoogleMapsMessages['dsb'] = array(
 	'gm-earth' => 'Zemja',
 	'gm-moon' => 'Mjasec',
 	'gm-mars' => 'Mars',
+);
+
+/** Ewe (Eʋegbe) */
+$wgGoogleMapsMessages['ee'] = array(
+	'gm-search' => 'Dii',
 );
 
 /** Greek (Ελληνικά)
@@ -4263,6 +4275,8 @@ $wgGoogleMapsMessages['pms'] = array(
 $wgGoogleMapsMessages['ps'] = array(
 	'gm-balloon-title' => 'سرليک:',
 	'gm-remove' => 'غورځول',
+	'gm-trace-area' => 'پل په پل يوې سيمې پسې تلل',
+	'gm-load-map' => 'نخشه برسېرول',
 	'gm-clip-result' => 'يوه نخشه ورګډول',
 	'gm-no-results' => 'اوبښۍ، هېڅ کومه پايله نشته',
 	'gm-searching' => 'د پلټنې په حال کې...',
@@ -5016,6 +5030,7 @@ $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-refresh-points' => 'Освежи тачке',
 	'gm-width' => 'Ширина',
 	'gm-height' => 'Висина',
+	'gm-scale-control' => 'Скалирање',
 	'gm-overview-control' => 'Преглед',
 	'gm-zoom-control' => 'Навигација',
 	'gm-large' => 'Велика',
@@ -5085,6 +5100,7 @@ $wgGoogleMapsMessages['sr-el'] = array(
 	'gm-refresh-points' => 'Osveži tačke',
 	'gm-width' => 'Širina',
 	'gm-height' => 'Visina',
+	'gm-scale-control' => 'Skaliranje',
 	'gm-overview-control' => 'Pregled',
 	'gm-zoom-control' => 'Navigacija',
 	'gm-large' => 'Velika',

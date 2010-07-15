@@ -35,10 +35,12 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.6.4 a3' );
+	define( 'SM_VERSION', '0.6.5 a4' );
 
-	$smgScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';
+	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+	$smgScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';	
 	$smgDir 		= dirname( __FILE__ ) . '/';
+	unset( $useExtensionPath );
 
 	$smgStyleVersion = $wgStyleVersion . '-' . SM_VERSION;
 
@@ -59,6 +61,10 @@ if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
  * 'Initialization' function for the Semantic Maps extension. 
  * The only work done here is creating the extension credits for
  * Semantic Maps. The actuall work in done via the Maps hooks.
+ * 
+ * @since 0.1
+ * 
+ * @return true
  */
 function smfSetup() {
 	global $wgExtensionCredits, $wgLang, $wgOut, $egMapsServices, $smgScriptPath;
@@ -92,6 +98,10 @@ function smfSetup() {
 
 /**
  * Adds a link to Admin Links page.
+ * 
+ * @since 0.2
+ * 
+ * @return true
  */
 function smfAddToAdminLinks( &$admin_links_tree ) {
     $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );

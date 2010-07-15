@@ -919,6 +919,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'securepoll' => 'Mouezhiadeg suraet',
@@ -975,7 +976,7 @@ Ret deoc'h renkañ pep dibarzh etre 1 ha 999.",
 	'securepoll-api-invalid-params' => 'Arventennoù direizh.',
 	'securepoll-api-no-user' => "N'eus bet kavet implijer ebet dezhañ an ID merket.",
 	'securepoll-api-token-mismatch' => 'Ne glot ket ar jedouer surentez, dibosupl emlugañ',
-	'securepoll-not-logged-in' => 'Rankout a rin en em lugañ a-benn votiñ en dilennadeg-mañ',
+	'securepoll-not-logged-in' => 'Rankout a rit kevreañ a-benn votiñ en dilennadeg-mañ.',
 	'securepoll-too-few-edits' => "Ho tigarez, n'hallit ket votiñ. Ret eo bezañ graet da nebeutañ $1 {{PLURAL:$1|degasadenn|degasadenn}} a-benn gallout mouezhiañ en dilennadeg-mañ, ha graet hoc'h eus $2.",
 	'securepoll-blocked' => "Ho tigarez, n'oc'h ket evit votiñ en dilennadeg-mañ pa'z eo stanket ho tegasadennoù evit ar mare.",
 	'securepoll-bot' => "Ho tigarez, n'hall ket ar c'hontoù dezho ar statud robod votiñ en dilennadeg-mañ",
@@ -1938,7 +1939,7 @@ heme tercihan re gani şıma benateyê 1 u 999  de yew derece bıdi.',
 	'securepoll-header-details' => 'teferruati',
 	'securepoll-strike-button' => 'serê ey de xetek bıanc.',
 	'securepoll-unstrike-button' => 'serê ey de xetek meanc.',
-	'securepoll-strike-reason' => 'Sebep:',
+	'securepoll-strike-reason' => 'Sebeb:',
 	'securepoll-strike-cancel' => 'İptal',
 	'securepoll-strike-error' => 'serê ey de xeta bıanc/meanc ardene ca  xeta da: $1',
 	'securepoll-strike-token-mismatch' => 'datayê hesabi vindbiyayeyo',
@@ -4360,6 +4361,7 @@ $messages['io'] = array(
 	'securepoll-strike-reason' => 'Motivo:',
 	'securepoll-header-reason' => 'Motivo',
 	'securepoll-language-label' => 'Selektez linguo:',
+	'securepoll-header-title' => 'Nomo',
 	'securepoll-subpage-list' => 'Listo',
 );
 
@@ -4804,6 +4806,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Klutzy
  * @author Kwj2772
  * @author Mhha
@@ -4833,7 +4836,7 @@ $messages['ko'] = array(
 
 <pre>$1</pre>',
 	'securepoll-thanks' => '감사합니다. 당신의 투표가 기록되었습니다.',
-	'securepoll-return' => '$1로 돌아가기',
+	'securepoll-return' => '$1(으)로 돌아가기',
 	'securepoll-encrypt-error' => '당신의 투표를 암호화하는 데 실패했습니다.
 당신의 투표가 기록되지 않았습니다.
 
@@ -5214,7 +5217,7 @@ $messages['li'] = array(
 	'securepoll' => 'VeiligSjtömme',
 	'securepoll-desc' => 'Oetbreiding veur verkeziginge en vraogelieste',
 	'securepoll-invalid-page' => 'Óngeldige subpagina "<nowiki>$1</nowiki>"',
-	'securepoll-need-admin' => "Doe mós 'ne beheerder zeen óm dees hanjeling te moge oetveure.",
+	'securepoll-need-admin' => "Doe mós 'ne stömmingbeheerder zeen óm dees hanjeling te moge oetveure.",
 	'securepoll-too-few-params' => 'Óngenóg subpaasjparamaeters (óngeljige verwiezing).',
 	'securepoll-invalid-election' => '"$1" is gein geljig verkezigingsnómmer.',
 	'securepoll-welcome' => '<strong>Wèlkóm $1!</strong>',
@@ -5261,7 +5264,7 @@ Decodere is neet meugelik.",
 	'securepoll-api-no-user' => "d'r Is geine gebroeker gevónje mit 't opgegaeve ID.",
 	'securepoll-api-token-mismatch' => 'Beveiligingstoke kömp neet euverein, inlogge is neet meugelik.',
 	'securepoll-not-logged-in' => 'Doe mós aanmelde óm aan dees sjtömming deil te nömme',
-	'securepoll-too-few-edits' => "Sorry, doe kins neet deilnömme aan de sjtömming. Doe mós temisnte $1 bewèrkinge höbbe gemaak óm te kinne sjtömme in dees verkeziging en doe höbs d'r $2.",
+	'securepoll-too-few-edits' => "Sorry, doe kins neet deilnömme aan de sjtömming. Doe mós temisnte $1 {{PLURAL:$1|bewèrking|bewèrkinger}} höbbe gemaak óm te kinne sjtömme in dees verkeziging en doe höbs d'r $2.",
 	'securepoll-blocked' => 'Sorry, doe kins neet deilnömme aan de sjtömming ómdet se geblokkeerd bös.',
 	'securepoll-bot' => "Sorry, gebroekers mit 'ne botvlag moge neet sjtömme in dees sjtömming.",
 	'securepoll-not-in-group' => 'Allein lede van de groep "$1" kinne aan dees sjtömming deilnömme.',
@@ -5276,9 +5279,10 @@ Decodere is neet meugelik.",
 	'securepoll-header-details' => 'Details',
 	'securepoll-strike-button' => 'Haol door',
 	'securepoll-unstrike-button' => 'Haol neet door',
-	'securepoll-strike-reason' => 'Raej:',
+	'securepoll-strike-reason' => 'Reeje:',
 	'securepoll-strike-cancel' => 'Braek aaf',
 	'securepoll-strike-error' => "Fout bie 't (neet) doorhaole: $1",
+	'securepoll-strike-token-mismatch' => 'Sessiegegaeves zeen verlaore gegange',
 	'securepoll-details-link' => 'Details',
 	'securepoll-details-title' => 'Sjtömdetails: #$1',
 	'securepoll-invalid-vote' => '"$1" is gein geljig sjtömnómmer',
@@ -9297,6 +9301,13 @@ $messages['vo'] = array(
 	'securepoll-header-voter-name' => 'Nem',
 	'securepoll-strike-reason' => 'Kod:',
 	'securepoll-header-reason' => 'Kod',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'securepoll-strike-reason' => '理由：',
+	'securepoll-strike-cancel' => '取消',
+	'securepoll-header-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

@@ -217,7 +217,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'svgzoom-desc' => 'Dodaje do MediaWiki przy podglądzie plików w formacie SVG funkcjonalność przewijania i przybliżania',
+	'svgzoom-desc' => 'Dodaje do MediaWiki przy podglądzie plików w formacie SVG funkcję przewijania i przybliżania',
 );
 
 /** Piedmontese (Piemontèis)
@@ -260,6 +260,18 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'svgzoom-desc' => 'Pridáva možnosti posúvania a približovania do prehliadača SVG súborov MediaWiki',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'svgzoom-desc' => 'Додаје МедијаВикију могућност скроловања по и увећавања SVG слика',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'svgzoom-desc' => 'Dodaje MedijaVikiju mogućnost skrolovanja po i uvećavanja SVG slika',
 );
 
 /** Swedish (Svenska)

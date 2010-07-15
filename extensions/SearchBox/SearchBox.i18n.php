@@ -197,6 +197,11 @@ $messages['dsb'] = array(
 	'searchbox-namespaces' => 'Mjenjowe rumy:',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'searchbox-go' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista
@@ -497,7 +502,7 @@ $messages['lg'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'searchbox-desc' => 'Дозволи вклучување на форми на пребарување',
+	'searchbox-desc' => 'Дозволува вклучување на обрасци за пребарување',
 	'searchbox-search' => 'Барај',
 	'searchbox-go' => 'Оди',
 	'searchbox-namespaces' => 'Именски простори:',

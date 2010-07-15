@@ -522,13 +522,22 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Administrador do PackageForce',
+	'pf-desc' => 'Fazer [[Special:PackageForce|download de pacotes]] de predefinições úteis, etc.',
+	'pf-only-admins-allowed' => "Esta página é apenas para utilizadores com o privilégio 'packageforce-admin'.",
+	'pf-admin-menu-default' => 'Padrão',
+	'pf-admin-menu-unsortedtemplates' => 'Predefinições ainda não organizadas',
+	'pf-admin-link-view-documentation' => 'Ver documentação associada à página.',
 	'pf-admin-link-editlink-page' => 'Editar página',
 	'pf-admin-link-approve' => 'Aprovar página',
 	'pf-header-documentation' => 'Documentação',
 	'pf-header-in_packages' => 'Pacotes',
+	'pf-header-edit' => 'Editar link',
 	'pf-header-type' => 'Tipo de página',
 	'pf-header-page_title' => 'Título',
 	'pf-header-approve' => 'Aprovar',

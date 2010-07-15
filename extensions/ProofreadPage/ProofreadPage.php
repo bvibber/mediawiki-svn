@@ -35,6 +35,9 @@ $wgQueryPages['IndexPagesPage'] = 'IndexPages';
 # Bump the version number every time you change proofread.js
 $wgProofreadPageVersion = 26;
 
+# Group allowed to modify pagequality
+$wgGroupPermissions['user']['pagequality'] = true;
+
 # Max width of zoomable image
 $wgProofreadPageMaxWidth = 2048;
 
@@ -375,7 +378,7 @@ var prp_default_footer = \"" . Xml::escapeJsString( wfMsgGetKey( 'proofreadpage_
 
 function pr_preparePage( $out, $m, $isEdit ) {
 	global $wgJsMimeType, $wgScriptPath,  $wgRequest, $wgProofreadPageVersion, $wgProofreadPageMaxWidth;
-	global $wgTitle;
+	global $wgTitle, $wgUser;
 
 	if ( !isset( $wgTitle->pr_index_title ) ) {
 		pr_load_index( $wgTitle );
@@ -428,6 +431,8 @@ function pr_preparePage( $out, $m, $isEdit ) {
 		'proofreadPageNextURL' => $next_url,
 		'proofreadPageHeader' => $header,
 		'proofreadPageFooter' => $footer,
+		'proofreadPageAddButtons' => $wgUser->isAllowed('pagequality'),
+		'proofreadPageUserName' => $wgUser->getName(),
 	);
 	$varScript = Skin::makeVariablesScript( $jsVars );
 
@@ -747,7 +752,7 @@ function pr_renderPages( $input, $args, &$parser ) {
 		return '<strong class="error">' . wfMsgForContent( 'proofreadpage_nosuch_index' ) . '</strong>';
 	}
 
-	$parser->mOutput->addTemplate( $index_title, $index_title->getArticleID(), $index_title->getLatestRevID() );
+	$parser->getOutput()->addTemplate( $index_title, $index_title->getArticleID(), $index_title->getLatestRevID() );
 	
 	$out = '';
 	
@@ -990,7 +995,7 @@ function pr_attemptSave( $editpage ) {
 		list( $old_q , $old_username, $old_ptext ) = pr_parse_page( $old_text );
 		if( $old_q != -1 ) {
 			//check usernames
-			if( ($old_q != $q) && $wgUser->isAnon() ) {
+			if( ($old_q != $q) && !$wgUser->isAllowed('pagequality') ) {
 				$wgOut->showErrorPage( 'proofreadpage_nologin', 'proofreadpage_nologintext' );
 				return false;
 			}

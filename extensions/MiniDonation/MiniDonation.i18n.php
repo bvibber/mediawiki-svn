@@ -320,6 +320,14 @@ $messages['lt'] = array(
 	'donationform-submit' => 'Aukoti per PayPal',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'donationform-desc' => 'Pievieno tagu <code><donateform></code> ziedojumu caur PayPal atbalstam',
+	'donationform-submit' => 'Ziedot ar PayPal',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

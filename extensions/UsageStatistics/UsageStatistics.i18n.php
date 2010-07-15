@@ -41,6 +41,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Lejonel
@@ -55,6 +56,7 @@ $messages['qqq'] = array(
 	'usagestatisticstype' => '{{Identical|Type}}',
 	'usagestatisticsstart' => '{{Identical|Start date}}',
 	'usagestatisticsend' => '{{Identical|End date}}',
+	'usagestatisticsintervalday' => '{{Identical|Day}}',
 	'usagestatisticsintervalmonth' => '{{Identical|Month}}',
 	'usagestatisticsincremental' => 'This message is used on [[Special:SpecialUserStats]] in a dropdown menu to choose to generate incremental statistics.
 
@@ -464,12 +466,19 @@ $messages['ca'] = array(
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
+	'specialuserstats' => 'ئامارەکانی بەکارھێنان',
+	'usagestatistics' => 'ئامارەکانی بەکارھێنان',
+	'usagestatisticsfor' => '<h2>ئامارەکانی بەکارھێنان بۆ [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>ئامارەکانی بەکارھێنان بۆ گشت بەکارھێنەران</h2>',
+	'usagestatisticsinterval' => 'ماوە:',
+	'usagestatisticsnamespace' => 'بۆشاییی ناو:',
 	'usagestatisticstype' => 'جۆر',
-	'usagestatisticsstart' => 'ڕێکەوتی دەستپێک',
-	'usagestatisticsend' => 'ڕێکەوتی کۆتایی',
+	'usagestatisticsstart' => 'ڕێکەوتی دەستپێکردن:',
+	'usagestatisticsend' => 'ڕێکەوتی کۆتایی:',
 	'usagestatisticsnostart' => 'تکایە ڕێکەوتێکی دەستپێک دیاری بکە',
 	'usagestatisticsnoend' => 'تکایە ڕێکەوتێکی کۆتایی دیاری بکە',
 	'usagestatisticsbadstartend' => '<b>ڕێکەوتی <i>دەستپێک</i> یا \\ و <i>کۆتایی</i> ناساز!</b>',
@@ -1809,6 +1818,8 @@ $messages['ps'] = array(
 	'usagestatisticstype' => 'ډول',
 	'usagestatisticsstart' => 'د پيل نېټه:',
 	'usagestatisticsend' => 'د پای نېټه:',
+	'usagestatisticsnostart' => 'لطفاً د پيل يوه نېټه وټاکۍ',
+	'usagestatisticsnoend' => 'لطفاً د پای يوه نېټه وټاکۍ',
 	'usagestatisticsbadstartend' => '<b>بد <i>پيل</i> او/يا <i>پای </i> نېټه!</b>',
 	'usagestatisticsintervalday' => 'ورځ',
 	'usagestatisticsintervalweek' => 'اوونۍ',
@@ -2345,13 +2356,14 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'specialuserstats' => 'Kullanım istatistikleri',
 	'usagestatistics' => 'Kullanım istatistikleri',
 	'usagestatisticsinterval' => 'Aralık:',
-	'usagestatisticsnamespace' => 'İsim alanı:',
+	'usagestatisticsnamespace' => 'Ad boşluğu:',
 	'usagestatisticsexcluderedirects' => 'Yönlendirmeleri kapsam dışında bırak',
 	'usagestatisticstype' => 'Tür:',
 	'usagestatisticsstart' => 'Başlangıç tarihi:',

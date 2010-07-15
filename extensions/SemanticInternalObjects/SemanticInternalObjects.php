@@ -9,7 +9,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'SIO_VERSION', '0.5' );
+define( 'SIO_VERSION', '0.6' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,

@@ -213,6 +213,13 @@ $messages['lb'] = array(
 	'jskit-desc' => 'Integréiert JS-Kit-Toolen a Wiki-Säiten',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'jskit-desc' => 'Integrē js-kit rīkus wiki lapā',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

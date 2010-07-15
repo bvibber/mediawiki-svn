@@ -105,7 +105,7 @@ $messages['br'] = array(
 	'mwe-cancel' => 'Nullañ',
 	'mwe-enable-gadget' => 'Gweredekaat liesvedia beta (mwEmbed) war an holl bajennoù',
 	'mwe-enable-gadget-done' => 'Gweredekaet eo bet ar gadjet liesvedia beta',
-	'mwe-must-login-gadget' => 'Evit gweredekaat ar gadjet e rankoc\'h <a target="_new" href="$1">kevreañ</a>',
+	'mwe-must-login-gadget' => 'Evit gweredekaat ar gadjet e rankit <a target="_new" href="$1">kevreañ</a>',
 	'mwe-test-plural' => 'Sevenet em eus $1 amprouadenn{{PLURAL:$1||}}',
 );
 
@@ -465,6 +465,22 @@ $messages['nl'] = array(
 	'mwe-test-plural' => '{{PLURAL:$1|$1 test|$1 tests}} uitgevoerd',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'mwe-loading_txt' => 'Laster ...',
+	'mwe-error_load_lib' => 'Feil: JavaScript $1 kunne ikke gjenhentes eller definerer ikke $2',
+	'mwe-apiproxy-setup' => 'Setter opp API-mellomtjener',
+	'mwe-load-drag-item' => 'Laster dratt element',
+	'mwe-ok' => 'OK',
+	'mwe-cancel' => 'Avbryt',
+	'mwe-enable-gadget' => 'Aktiver multimedia-beta (mwEmbed) for alle sider',
+	'mwe-enable-gadget-done' => 'Skjermelement for multimedia-beta har blitt aktivert',
+	'mwe-must-login-gadget' => 'For å aktivere skjermelement må du <a target="_new" href="$1">logge inn</a>',
+	'mwe-test-plural' => 'Jeg kjørte {{PLURAL:$1|én test|$1 tester}}',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -497,6 +513,15 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'mwe-loading_txt' => 'A caria ...',
+	'mwe-error_load_lib' => 'Eror: JavaScript $1 as peul pa trovesse o a definiss pa $2',
+	'mwe-apiproxy-setup' => 'Amposté proxy API',
+	'mwe-load-drag-item' => 'carié element copià',
+	'mwe-ok' => 'Va bin',
+	'mwe-cancel' => 'Scancela',
+	'mwe-enable-gadget' => 'Abìlita la beta multimedia (mwEmbed) për tute le pàgine',
+	'mwe-enable-gadget-done' => "Ël gadget beta multimedia a l'é stàit abilità",
+	'mwe-must-login-gadget' => 'Për abilité ël gadget it deuve <a target="_new" href="$1">intré</a>',
+	'mwe-test-plural' => "I l'heu fàit {{PLURAL:$1|$1 test|$1 test}}",
 );
 
 /** Pashto (پښتو)
@@ -646,5 +671,10 @@ $messages['vi'] = array(
 	'mwe-size-kilobytes' => '$1 kB',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Hủy bỏ',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'mwe-cancel' => '取消',
 );
 

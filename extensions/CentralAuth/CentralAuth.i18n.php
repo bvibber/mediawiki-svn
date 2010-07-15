@@ -377,6 +377,7 @@ You may view and modify any of them, or create a new set.',
  * @author Jon Harald Søby
  * @author Kwj2772
  * @author Lejonel
+ * @author Lloffiwr
  * @author McDutchie
  * @author Meno25
  * @author Mormegil
@@ -405,6 +406,9 @@ $messages['qqq'] = array(
 Label for this field is {{msg-mw|centralauth-admin-info-home}}',
 	'centralauth-admin-yes' => '{{Identical|Yes}}',
 	'centralauth-admin-no' => '{{Identical|No}}',
+	'centralauth-admin-hidden-oversight' => "Means that some deleted content or other information has been hidden by someone having the power of 'Oversight'.
+
+See [http://meta.wikimedia.org/wiki/Oversight meta] for explanation of 'oversight' or 'revision delete' function.",
 	'centralauth-admin-unattached' => '{{Identical|Unattached accounts}}',
 	'centralauth-admin-blocked' => '$1 is the date/time of expiry, $2 is the reason of the block, $3 is the date of expiry, $4 is the time of expiry.',
 	'centralauth-admin-list-attached-on' => 'Column heading for a table column displaying dates when local accounts were attached to a global account',
@@ -850,7 +854,7 @@ Se puede borrar una colla sacando-le totz os dreitos asignatos.",
 	'centralauth-editgroup-noset' => '(garra)',
 	'centralauth-editgroup-submit' => "Alzar cambeos en os premisos d'a colla",
 	'centralauth-editgroup-perms' => 'Premisos asignatos:',
-	'centralauth-editgroup-reason' => "Razón d'o cambio:",
+	'centralauth-editgroup-reason' => 'Razón:',
 	'centralauth-editgroup-success' => "S'han cambiato os premisos d'a colla",
 	'centralauth-editgroup-success-text' => "Ha cambiato con exito os premisos d'a colla $1. [[Special:GlobalGroupPermissions|Torne t'a confeguración de collas]]",
 	'centralauth-editgroup-editsets' => '([[Special:EditWikiSets|editar]])',
@@ -889,6 +893,7 @@ $messages['ang'] = array(
 );
 
 /** Arabic (العربية)
+ * @author ;Hiba;1
  * @author Alnokta
  * @author Meno25
  * @author OsamaK
@@ -959,7 +964,9 @@ $messages['ar'] = array(
 	'centralauth-merge-method-password' => 'مؤكدة بواسطة كلمة السر',
 	'centralauth-merge-method-admin' => 'حساب إداري مدمج',
 	'centralauth-merge-method-new' => 'حساب جديد',
-	'centralauth-merge-method-login' => 'مؤكدة بواسطة تسجيل الدخول',
+	'centralauth-merge-method-login' => 'انشئ عمد الدخول',
+	'centralauth-merge-method-primary-desc' => 'هذا هو الويكي الذي تم دمج الحساب فيه. لاحظ أنه قد يختلف عن ويكي الحقيقي لهذا المستخدم.',
+	'centralauth-merge-method-new-desc' => 'يبين أنه تم إنشاء الحساب العالمي تلقائيا عندما تم إنشاء ذلك الحساب المحلي.',
 	'centralauth-finish-title' => 'انتهاء الدمج',
 	'centralauth-finish-text' => 'لو كانت هذه الحسابات تنتمي لك، يمكنك إنهاء عملية توحيد الدخول ببساطة بكتابة كلمات السر للحسابات الأخرى هنا:',
 	'centralauth-finish-password' => 'كلمة السر:',
@@ -1002,7 +1009,7 @@ $messages['ar'] = array(
 	'centralauth-admin-list-attached-on' => 'مرتبطة',
 	'centralauth-admin-list-method' => 'طريقة',
 	'centralauth-admin-list-editcount' => 'عدد التعديلات',
-	'centralauth-admin-list-blocked' => 'حالة المنع',
+	'centralauth-admin-list-blocked' => 'محظور',
 	'centralauth-admin-unmerge' => 'تم اختيار الفصل',
 	'centralauth-admin-merge' => 'تم اختيار الدمج',
 	'centralauth-admin-bad-input' => 'اختيار دمج غير صحيح',
@@ -1122,6 +1129,7 @@ $messages['ar'] = array(
 	'centralauth-globalgroupmembership-badknownwiki' => "المستخدم العام '''$1''' ليس نشطا على الويكي الذي حددته (''$2'').
 ربما تكون تحاول إعطاء صلاحيات للمستخدم الخاطئ!",
 	'centralauth-editset' => 'تعديل مجموعات الويكي',
+	'centralauth-editset-legend-rw' => 'تحرير أو إنشاء مجموعة ويكي',
 	'centralauth-editset-new' => 'إنشاء مجموعة جديدة',
 	'centralauth-editset-notfound' => 'مجموعة الويكي "$1" لم يتم العثور عليها.',
 	'centralauth-editset-optin' => 'معتمد على الاشتراك (يشمل فقط الويكيات المحددة)',
@@ -1143,6 +1151,7 @@ $messages['ar'] = array(
 	'centralauth-editset-success' => 'تم تغيير مجموعة الويكي بنجاح.',
 	'centralauth-editset-return' => 'رجوع إلى القائمة الرئيسية',
 	'right-globalgroupmembership' => 'تعديل العضوية للمجموعات العامة',
+	'right-centralauth-lock' => 'إقفال أو إخفاء الحساب العالمي',
 	'right-centralauth-merge' => 'دمج حسابهم',
 	'right-globalgrouppermissions' => 'التحكم بالمجموعات العامة',
 );
@@ -1583,7 +1592,7 @@ Date cuenta qu'un grupu nun esiste a nun ser que tenga permisos asignaos.",
 	'centralauth-editgroup-noset' => '(nengún)',
 	'centralauth-editgroup-submit' => 'Guardar los cambeos de los permisos de grupu',
 	'centralauth-editgroup-perms' => 'Permisos asignaos:',
-	'centralauth-editgroup-reason' => 'Motivu del cambéu:',
+	'centralauth-editgroup-reason' => 'Motivu:',
 	'centralauth-editgroup-success' => 'Permisos de grupu camudaos',
 	'centralauth-editgroup-success-text' => 'Camudasti con ésitu los permisos de grupu del grupu $1.
 [[Special:GlobalGroupPermissions|Torna al remanamientu de grupos]]',
@@ -1830,7 +1839,7 @@ $messages['bcc'] = array(
 	'centralauth-editgroup-noset' => '(هچ‌یک)',
 	'centralauth-editgroup-submit' => 'ذخیره کن تغییراتء په اجارتان گروه',
 	'centralauth-editgroup-perms' => 'داتگین اجارت ان:',
-	'centralauth-editgroup-reason' => 'دلیل په عوض کتن:',
+	'centralauth-editgroup-reason' => 'دلیل:',
 	'centralauth-editgroup-success' => 'اجازت گروه عوض بوت',
 	'centralauth-editgroup-success-text' => 'شما گون موفقیت اجارتان گروهء په گروه  $1 عوض کت.
 [[Special:GlobalGroupPermissions|برگرد په گروه مدیریت]]',
@@ -2599,7 +2608,7 @@ $messages['bn'] = array(
 	'centralauth-editgroup-noset' => '(কিছু নাই)',
 	'centralauth-editgroup-submit' => 'গ্রুপ অনুমতিসমূহ পরিবর্তন করা হয়েছে',
 	'centralauth-editgroup-perms' => 'প্রদানকৃত অনুমতিসমূহ:',
-	'centralauth-editgroup-reason' => 'পরিবর্তনের কারণ:',
+	'centralauth-editgroup-reason' => 'কারণ:',
 	'centralauth-editgroup-success' => 'গ্রুপ অনুমতি পরিবর্তন করা হয়েছে',
 	'centralauth-editgroup-success-text' => 'আপনি সফল ভাবে $1 গ্রুপের অনুমতি পরিবর্তন করেছেন।
 [[Special:GlobalGroupPermissions|গ্রুপ ব্যবস্থাপনায় ফিরে যাও]]',
@@ -2641,7 +2650,7 @@ $messages['br'] = array(
 	'centralauth-desc' => "[[Special:MergeAccount|Kendeuziñ a ra ar c'hontoù implijer]] war wikioù {{MediaWiki:Centralauth-groupname}}",
 	'centralauth-mergeaccount-desc' => '[[Special:MergeAccount|Kendeuziñ a ra meur a gont]] evit ur marilhañ unvan',
 	'centralauth-merge-denied' => "Ho tigarez, n'oc'h ket aotreet da vont war ar bajenn-mañ.",
-	'centralauth-merge-notlogged' => 'Trugarez d\'en em <span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto={{#special:MergeAccount}}}} lugañ]</span> evit gwiriañ eo bet kendeuzet mat ho kontoù.',
+	'centralauth-merge-notlogged' => 'Trugarez da <span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto={{#special:MergeAccount}}}} gevreañ]</span> evit gwiriañ eo bet kendeuzet mat ho kontoù.',
 	'centralauth-merge-welcome' => "'''N'eo ket bet treuzkaset ho kontoù implijer davet reizhiad emlugañ unvan {{MediaWiki:Centralauth-groupname}} c'hoazh.'''
 
 Ma tibabit treuzkas ho kontoù e viot gouest da implijout an hevelep anv implijer ha ger-tremen hed-ha-hed holl raktresoù {{MediaWiki:Centralauth-groupname}} en holl yezhoù a c'haller kaout.
@@ -2669,8 +2678,8 @@ Didermenet ez eus bet ur wiki all evel kont pennañ evit hoc'h anv implijer; kit
 	'centralauth-merge-step3-submit' => "Kendeuziñ ar c'hontoù",
 	'centralauth-complete' => "Kendeuzet eo ar c'hontoù !",
 	'centralauth-incomplete' => "N'eo ket echu kendeuziñ ar c'hontoù !",
-	'centralauth-complete-text' => 'Gallout a rit bremañ en em lugañ ouzh ne vern pe raktres eus {{MediaWiki:Centralauth-groupname}} hep bezañ rediet da grouiñ ur gont nevez.',
-	'centralauth-incomplete-text' => "Pa vo bet kendeuzet an doare da vezañ anavezet e c'hallot en em lugañ war ne vern pe raktres eus {{MediaWiki:Centralauth-groupname}} hep bezañ rediet da grouiñ ur gont nevez.",
+	'centralauth-complete-text' => 'Gallout a rit bremañ kevreañ ouzh ne vern pe raktres eus {{MediaWiki:Centralauth-groupname}} hep bezañ rediet da grouiñ ur gont nevez.',
+	'centralauth-incomplete-text' => "Pa vo bet kendeuzet an doare da vezañ anavezet e c'hallot kevreañ war ne vern pe raktres eus {{MediaWiki:Centralauth-groupname}} hep bezañ rediet da grouiñ ur gont nevez.",
 	'centralauth-not-owner-text' => 'Staget eo bet ent emgefre an anv implijer "$1" ouzh perc\'henn ar gont $2.
 
 Mard eo c\'hwi e c\'hallot kas da benn vat an argerzh kendeuziñ kontoù dre verkañ amañ ar ger-tremen pennañ evit ar gont-se :',
@@ -2765,7 +2774,7 @@ Abeg : $1',
 	'centralauth-admin-reason' => 'Abeg :',
 	'centralauth-admin-reason-other' => 'Abeg all/ouzhpenn :',
 	'centralauth-admin-status' => 'Kemmañ statud ar gont hollek',
-	'centralauth-admin-status-intro' => "Tu 'zo deoc'h implijout ar furmskrid-mañ evit kemmañ statud ar gont hollek-se",
+	'centralauth-admin-status-intro' => 'Gellout a rit implijout ar furmskrid-mañ evit kemmañ statud ar gont hollek-se',
 	'centralauth-admin-status-locked' => 'Prennet :',
 	'centralauth-admin-status-locked-no' => "N'eo ket stanket ar gont",
 	'centralauth-admin-status-locked-yes' => "Stanket eo ar gont evit ar c'hemmañ",
@@ -2869,7 +2878,7 @@ Tennet $3',
 	'centralauth-editset-name' => 'Anv :',
 	'centralauth-editset-type' => 'Seurt :',
 	'centralauth-editset-wikis' => 'Wikioù :',
-	'centralauth-editset-reason' => 'Abegoù :',
+	'centralauth-editset-reason' => 'Abeg :',
 	'centralauth-editset-submit' => 'Kas',
 	'centralauth-editset-submit-delete' => 'Diverkañ',
 	'centralauth-editset-badname' => "Direizh eo anv ar c'hoari a wikioù pe nann-titouret.",
@@ -3401,7 +3410,7 @@ $messages['ceb'] = array(
 	'centralauth-finish-login' => 'Dayon',
 	'centralauth-finish-send-confirmation' => "I-''e-mail'' ang pasword",
 	'centralauth-admin-username' => 'Ngalan',
-	'centralauth-admin-reason' => 'Hinungdan:',
+	'centralauth-admin-reason' => 'Rason:',
 	'centralauth-seconds-ago' => '$1 {{PLURAL:$1|ka segundo|ka segundo}} ang milabay',
 	'centralauth-minutes-ago' => '$1 {{PLURAL:$1|ka gutlo|ka gutlo}} ang milabay',
 	'centralauth-hours-ago' => '$1 {{PLURAL:$1|ka oras|ka oras}} ang milabay',
@@ -3751,6 +3760,7 @@ $messages['cy'] = array(
 	'centralauth-admin-info-registered' => 'Wedi cofrestri:',
 	'centralauth-admin-info-locked' => 'Ar glo:',
 	'centralauth-admin-info-hidden' => 'Lefel cudd:',
+	'centralauth-admin-list-editcount' => 'Nifer y golygiadau',
 	'centralauth-prefs-status' => 'Statws y cyfrif wici-gyfan:',
 	'centralauth-prefs-not-managed' => 'Ddim yn defnyddio cyfrif unedig',
 	'centralauth-prefs-unattached' => 'Heb ei gadarnhau',
@@ -3991,7 +4001,7 @@ Bemærk at en gruppe ikke findes med mindre den har nogen rettigheder.',
 	'centralauth-editgroup-noset' => '(ingen)',
 	'centralauth-editgroup-submit' => 'Gem ændringer af gruppetilladelser',
 	'centralauth-editgroup-perms' => 'Tildelte tilladelser:',
-	'centralauth-editgroup-reason' => 'Årsag til ændringen:',
+	'centralauth-editgroup-reason' => 'Begrundelse:',
 	'centralauth-editgroup-success' => 'Gruppetilladelserne er ændret',
 	'centralauth-editgroup-success-text' => 'Du har ændret gruppetilladelsene til gruppen $1.
 [[Special:GlobalGroupPermissions|Tilbage til gruppeadministration]]',
@@ -4462,6 +4472,15 @@ belki hesaban de parolayan değişk esto:',
 	'centralauth-merge-method-admin' => 'hesabê adminî yew biyo',
 	'centralauth-merge-method-new' => 'hesabê newî',
 	'centralauth-merge-method-login' => 'ser cikewtîş de viraziya',
+	'centralauth-merge-method-primary-desc' => 'Ena wikiya ke hesab tiya de tewr verni de yew biya.
+Diqet biki belki ena heseb, wikiyê merkeziyê ena karberi ra ferqli ya.',
+	'centralauth-merge-method-empty-desc' => 'Ena nişan keni xesabê lokali yew biya cunki zerrê ey de vurnayiş cina.',
+	'centralauth-merge-method-mail-desc' => 'Ena nişan keni xesabê lokali yew biya cunki adresê emaili ena hesab u emailê hesebê merkezi eyni ye.',
+	'centralauth-merge-method-password-desc' => 'Ena nişan keni xesabê lokali yew biya cunki karber yew sifreyê raşti da.',
+	'centralauth-merge-method-admin-desc' => 'Ena nişan keno ke hesabê lokali stewardan yew kerd.
+Ena xacet qefiliyeyo seba sebebanê asayişi.',
+	'centralauth-merge-method-new-desc' => 'Ena işaret keno ke hesabê globali otomatiki viraziye key hesabê loklai viraziya.',
+	'centralauth-merge-method-login-desc' => 'Ena işaret keno ke hesabê lokali otomatiki viraziye key karber site kewto.',
 	'centralauth-finish-title' => 'Yew biyayîş qediya',
 	'centralauth-finish-text' => 'Eka enê hesaban tu yo, pê nuştişê parola ti eşkeno eno processê yew kerdişî biqed:',
 	'centralauth-finish-password' => 'Parola:',
@@ -4540,6 +4559,14 @@ Paralanê ke qe hesabanê lokalan reset beno u şino paralonê verinî.',
 	'centralauth-admin-status-submit' => 'Statu rone',
 	'centralauth-admin-status-nonexistent' => 'Ğelet: hesabê globalî "<nowiki>$1</nowiki>" çini yo.',
 	'centralauth-admin-setstatus-success' => 'Ti statuyê hesabê gobalî vurna.',
+	'centralauth-admin-status-reasons' => '* 
+** vandalizm-teyna hesab
+** spam-teyna hesab
+* Sebebanê qilid kerdişi-u-sebabanê nimnaye
+** nameyê karberi ke arsizi
+** enformasyonê şêxsi ke uygun niya',
+	'centralauth-admin-logsnippet' => 'Vurnayişê hesabanê globali verini',
+	'centralauth-admin-suppressreason' => 'wikiyanê hemi de suppres biya pê $1, pê ena sebebanê: $2',
 	'globalusers' => 'Listeyê karberi yê globalî',
 	'centralauth-listusers-locked' => 'kilit biyo',
 	'centralauth-listusers-attached' => 'lokal de esto',
@@ -4559,6 +4586,7 @@ Paralanê ke qe hesabanê lokalan reset beno u şino paralonê verinî.',
 	'centralauth-prefs-count-unattached' => 'Hesbanê konfirme nebiyo ke pê nameyê tu $1 {{PLURAL:$1|project|projects}} esto.',
 	'centralauth-prefs-detail-unattached' => 'Ena proje konfirme nibiyo ke hesabê globalî ra girediyayo.',
 	'centralauth-prefs-manage' => 'Hesabê globalî îdare bike',
+	'centralauth-prefs-view' => 'Enformasyonê ena karberi bivini',
 	'centralauth-renameuser-merged' => 'Belki ena $1 karber sistemê cikewtişê yewî ta transfer biyo.
 Reyna name dayiş belki ena karber sistemê gloablî ra wedarneno.',
 	'centralauth-renameuser-reserved' => 'Karberê $2î qe yew hesabê globalî rê reserve biyo.',
@@ -4568,6 +4596,7 @@ Reyna name dayiş belki ena karber sistemê gloablî ra wedarneno.',
 	'centralauth-logout-progress' => 'Projeyê {{int:Centralauth-groupname}}î rê ti veciyeno:',
 	'centralauth-login-no-others' => 'Projeyanê {{int:Centralauth-groupname}} binî rê ti otomatik kewto:',
 	'centralauth-logout-no-others' => 'Projeyanê {{int:Centralauth-groupname}} binî rê ti otomatik veciyo:',
+	'centralauth-hidden-blockreason' => 'wikiyanê hemi de pê $1, $2 de pê ena sebebanê: $3',
 	'centralauth-log-name' => 'Logê hesab ê globalî',
 	'centralauth-log-header' => 'Ena qeyd de operasyonanê hesaban ê globalî esto: wedarnayîşî, kilit kerdişî u qefilnayîşî.',
 	'centralauth-log-entry-delete' => 'hesabo kurewi "$1" esteriya',
@@ -4593,6 +4622,7 @@ $3 wedarno',
 	'centralauth-rightslog-entry-setrename' => 'Nameyê setê wîkî yê "$2"î, \'\'$1\'\' rê vurne',
 	'centralauth-rightslog-entry-setnewtype' => 'tipê "$1"î, $2 ra $3 vurne',
 	'centralauth-rightslog-entry-setchange' => '"$1" de wîkîyan vurne: de kerd: $2; wedarne: $3',
+	'centralauth-rightslog-entry-deleteset' => 'Sete Wiki "$1" wedarna',
 	'centralauth-rightslog-set-optin' => 'ser opt-in',
 	'centralauth-rightslog-set-optout' => 'ser opt-out',
 	'autologin' => 'Cikewtîşê otomatîkî',
@@ -4637,6 +4667,8 @@ Belki ti heqan dano yew karbero bînî!",
 	'centralauth-editset' => 'Setanê wîkîyan',
 	'centralauth-editset-legend-rw' => 'Setanê wîkîyan bivurne ya zi biviraze',
 	'centralauth-editset-legend-ro' => 'Listeye setanê wîkîyan',
+	'centralauth-editset-intro-rw' => 'Ena setanê wikiyi hora viraziya.
+Ti eşkena setan bivini ya zi bivurni ya zi yew seta newe virazi.',
 	'centralauth-editset-intro-ro' => 'Cer de listeye setane wikiyan esta.',
 	'centralauth-editset-item-rw' => '[[Special:WikiSets/$2|$1]] ([[Special:WikiSets/delete/$2|biwedarne]])',
 	'centralauth-editset-new' => 'Yew setê wîkîyî viraze',
@@ -4971,9 +5003,17 @@ Sy snaź wopytał, pšawa wopacnemu wužywarjeju pśipokazaś!",
 	'right-globalgrouppermissions' => 'Globalne kupki zastojaś',
 );
 
-/** Ewe (Eʋegbe) */
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
 $messages['ee'] = array(
+	'centralauth-merge-denied' => 'Taflatse, womeɖe mɔ na wò bena na kpɔ axa sia o.',
 	'centralauth-finish-login' => 'Ge ɖe eme',
+	'centralauth-admin-delete-button' => 'Tutu ŋkɔ sia',
+	'centralauth-log-status-hidden' => 'woɣlae',
+	'centralauth-editset-name' => 'Ŋkɔ:',
+	'centralauth-editset-submit' => 'Ɖoe ɖa',
+	'centralauth-editset-submit-delete' => 'Tutui',
 );
 
 /** Greek (Ελληνικά)
@@ -5002,7 +5042,7 @@ $messages['el'] = array(
 
 Εάν κάποιος άλλος έχει ήδη πάρει το όνομα χρήστη σας σε άλλον ιστότοπο, αυτό δεν θα τον ενοχλήσει, θα σας δωθεί όμως την ευκαιρία αργότερα να λύσετε το πρόβλημα μαζί του ή με κάποιον διαχειριστή.",
 	'centralauth-merge-step1-title' => 'Έναρξη ενοποίησης των λογαριασμών',
-	'centralauth-merge-step1-detail' => 'Παρακαλώ εισάγεται τον κωδικό του λογαριασμού σας.
+	'centralauth-merge-step1-detail' => 'Παρακαλούμε εισάγετε τον κωδικό πρόσβασης του λογαριασμού σας.
 Ο κωδικός σας και η ηλεκτρονική διεύθυνση που έχετε δηλώσει θα υποβληθούν σε έλεγχο με τους λογαριασμούς σε άλλα εγχειρήματα για να επιβεβαιωθεί ότι ταιριάζουν.
 Δεν θα γίνει καμία αλλαγή έως ότου επιβεβαιώσετε ότι τα πάντα είναι εντάξει.',
 	'centralauth-merge-step1-submit' => 'Επαλήθευση των πληροφοριών σύνδεσης',
@@ -5055,6 +5095,12 @@ $messages['el'] = array(
 	'centralauth-merge-method-admin' => 'Συγχωνευμένος λογαριασμός λόγω ιδιότητας διαχειριστή',
 	'centralauth-merge-method-new' => 'νέος λογαριασμός',
 	'centralauth-merge-method-login' => 'δημιουργήθηκε κάνοντας σύνδεση',
+	'centralauth-merge-method-empty-desc' => 'Ένδειξη ότι ο τοπικός λογαριασμός συγχωνεύτηκε διότι δεν είχαν γίνει επεξεργασίες από αυτόν.',
+	'centralauth-merge-method-mail-desc' => 'Ένδειξη ότι ο τοπικός λογαριασμός συγχωνεύτηκε διότι η ηλεκτρονική διεύθυνσή του ταίριαξε στην ηλεκτρονική διεύθυνση του κυρίου λογαριασμού.',
+	'centralauth-merge-method-password-desc' => "Ένδειξη ότι ο τοπικός λογαριασμός συγχωνεύτηκε διότι ο χρήστης εισήγαγε έγκυρο κωδικό πρόσβασης γι' αυτόν.",
+	'centralauth-merge-method-admin-desc' => 'Ένδειξη ότι ο τοπικός λογαριασμός συγχωνεύτηκε χειροκίνητα από τους stewards.<br /> 
+Εκείνη η λειτουργία είναι τώρα απενεργοποιημένη για λόγους ασφάλειας.',
+	'centralauth-merge-method-new-desc' => 'Ένδειξη ότι ο καθολικός λογαριασμός δημιουργήθηκε αυτόματα όταν ο τοπικός λογαριασμός δημιουργούνταν.',
 	'centralauth-finish-title' => 'Ολοκλήρωση της συγχώνευσης',
 	'centralauth-finish-text' => 'Εάν αυτοί οι λογαριασμοί ανήκουν πραγματικά σε σας, μπορείτε να ολοκληρώσετε απλά την διαδικασία ενοποίησης λογαριασμών πληκτρολογώντας εδώ τους κωδικούς πρόσβασης των άλλων λογαριασμών:',
 	'centralauth-finish-password' => 'Κωδικός:',
@@ -6369,7 +6415,7 @@ $messages['fa'] = array(
 	'centralauth-editgroup-noset' => '(هیچ)',
 	'centralauth-editgroup-submit' => 'ذخیره تغییرات داده شده در اختیارات گروه',
 	'centralauth-editgroup-perms' => 'اختیارات داده شده:',
-	'centralauth-editgroup-reason' => 'دلیل تغییر:',
+	'centralauth-editgroup-reason' => 'دلیل:',
 	'centralauth-editgroup-success' => 'اختیارات گروه‌ها تغییر یافت',
 	'centralauth-editgroup-success-text' => 'شما توانستید اختیارات گروه $1 را با موفقیت تغییر دهید.
 [[Special:GlobalGroupPermissions|به مدیریت گروه‌ها بازگردید]]',
@@ -6633,17 +6679,20 @@ Ryhmää ei ole olemassa, jos sille ei ole annettu mitään oikeuksia.',
 	'centralauth-globalgroupmembership-badknownwiki' => "Yhdistettyä tunnusta '''$1''' ei ole olemassa wikissä '' $2 ''.
 Tarkista, ettet yritä muuttaa väärän käyttäjän oikeuksia!",
 	'centralauth-editset' => 'Muokkaa wikijoukkoja',
+	'centralauth-editset-legend-ro' => 'Luettelo wikijoukoista',
 	'centralauth-editset-new' => 'Luo uusi joukko',
 	'centralauth-editset-notfound' => 'Wikijoukkoa ”$1” ei löytynyt.',
 	'centralauth-editset-optin' => 'Liittymisperusteinen (vain määritellyissä wikeissä)',
 	'centralauth-editset-optout' => 'Eroamisperusteinen (sisältäen kaikki wikit pois lukien määritellyt)',
 	'centralauth-editset-legend-edit' => 'Muokataan wikijoukkoa ”$1”',
+	'centralauth-editset-legend-view' => 'Wikijoukko ”$1”',
 	'centralauth-editset-legend-new' => 'Uusi wikijoukko',
 	'centralauth-editset-name' => 'Nimi:',
 	'centralauth-editset-type' => 'Tyyppi:',
 	'centralauth-editset-wikis' => 'Wikit:',
 	'centralauth-editset-reason' => 'Syy:',
 	'centralauth-editset-submit' => 'Lähetä',
+	'centralauth-editset-submit-delete' => 'Poista',
 	'centralauth-editset-badname' => 'Virheellinen tai tyhjä nimi joukolle.',
 	'centralauth-editset-badtype' => 'Virheellinen joukon tyyppi.',
 	'centralauth-editset-setexists' => 'Samanniminen joukko on jo olemassa',
@@ -6651,7 +6700,8 @@ Tarkista, ettet yritä muuttaa väärän käyttäjän oikeuksia!",
 	'centralauth-editset-nouse' => '(ei mitään)',
 	'centralauth-editset-usage' => 'Käytetty ryhmissä:',
 	'centralauth-editset-badwikis' => '{{PLURAL:$2|Seuraavaa wikiä|Seuraavia wikejä}} ei ole: $1.',
-	'centralauth-editset-success' => 'Wikijoukko muutettu onnistuneesti.',
+	'centralauth-editset-success' => 'Wikijoukon muuttaminen onnistui.',
+	'centralauth-editset-success-delete' => 'Wikijoukon poistaminen onnistui.',
 	'centralauth-editset-return' => 'Palaa päänäkymään',
 	'right-globalgroupmembership' => 'Muokata globaalien ryhmien jäsenyyksiä',
 	'right-centralauth-merge' => 'Yhdistää omat tunnuksensa',
@@ -8370,7 +8420,7 @@ $messages['hi'] = array(
 	'centralauth-editgroup-members-link' => '[[Special:GlobalUsers/$1|$2 अधिकार होने वाले सदस्योंकी सूची]]',
 	'centralauth-editgroup-submit' => 'ग्रुप अधिकारोंमें किये बदलाव संजोयें',
 	'centralauth-editgroup-perms' => 'दिये हुए अधिकार:',
-	'centralauth-editgroup-reason' => 'बदलाव के लिये कारण:',
+	'centralauth-editgroup-reason' => 'कारण:',
 	'centralauth-editgroup-success' => 'ग्रुप अधिकार बदल दियें',
 	'centralauth-editgroup-success-text' => 'आपने $1 ग्रुपके ग्रुप अधिकार बदल दिये हैं।
 [[Special:GlobalGroupPermissions|ग्रुप व्यवस्थापन की ओर वापस जायें]]',
@@ -8598,7 +8648,7 @@ Napomena, skupina ne postoji dok joj nisu dodijeljena prava.',
 	'centralauth-editgroup-noset' => '(ništa)',
 	'centralauth-editgroup-submit' => 'Spremi promjene prava za skupinu',
 	'centralauth-editgroup-perms' => 'Dodijeljena prava:',
-	'centralauth-editgroup-reason' => 'Razlog za promjenu:',
+	'centralauth-editgroup-reason' => 'Razlog:',
 	'centralauth-editgroup-success' => 'Promijenjena prava skupine',
 	'centralauth-editgroup-success-text' => 'Uspješno ste promijenili prava za skupinu $1.
 [[Special:GlobalGroupPermissions|Vrati se na upravljanje skupinama]]',
@@ -9814,11 +9864,14 @@ $messages['io'] = array(
 	'centralauth-prefs-complete' => 'Omno es en bona stando!',
 	'centralauth-log-status-none' => '(nula)',
 	'centralauth-newgroup-legend' => 'Krear nova grupo',
+	'centralauth-editgroup-subtitle' => 'Vu chanjas $1',
 	'centralauth-editgroup-noset' => '(nula)',
 	'centralauth-editgroup-reason' => 'Motivo:',
 	'centralauth-editset-name' => 'Nomo:',
+	'centralauth-editset-type' => 'Tipo:',
 	'centralauth-editset-reason' => 'Motivo:',
 	'centralauth-editset-submit' => 'Sendez',
+	'centralauth-editset-submit-delete' => 'Efacar',
 	'centralauth-editset-nouse' => '(nula)',
 );
 
@@ -10698,7 +10751,7 @@ Sawijining klompok bisa dibusak kanthi ngilangi kabèh hak saka klompok iku.',
 	'centralauth-editgroup-noset' => '(ora ana)',
 	'centralauth-editgroup-submit' => 'Simpen owah-owahan ing idin-idin kelompok',
 	'centralauth-editgroup-perms' => 'Wènèhna idin-idin:',
-	'centralauth-editgroup-reason' => 'Alesané ngowahi:',
+	'centralauth-editgroup-reason' => 'Alesan:',
 	'centralauth-editgroup-success' => 'Idin-idin kelompok diganti',
 	'centralauth-editgroup-success-text' => 'Panjenengan sacara suksès bisa ngganti idin kelompok kanggo kelompok $1. [[Special:GlobalGroupPermissions|Balia menyang pangurusan kelompok]]',
 	'centralauth-editgroup-editsets' => '([[Special:EditWikiSets|sunting]])',
@@ -11189,7 +11242,7 @@ Other accounts are not yet confirmed.',
 	'centralauth-editgroup-members-link' => '[[Special:GlobalUsers/$1|$2 رۇقساتتارى بار قاتىسۋشى ٴتىزىمى]]',
 	'centralauth-editgroup-submit' => 'توپ رۇقساتتارى وزگەرىستەرىن ساقتا',
 	'centralauth-editgroup-perms' => 'تۇيىستىرىلگەن رۇقساتتار:',
-	'centralauth-editgroup-reason' => 'وزگەرتۋ سەبەبى:',
+	'centralauth-editgroup-reason' => 'سەبەبى:',
 	'centralauth-editgroup-success' => 'توپ رۇقساتتارى وزگەرتىلدى',
 	'centralauth-editgroup-success-text' => '$1 توبىنىڭ توپ رۇقساتتارىن ٴساتتى وزگەرتتىڭىز. [[Special:GlobalGroupPermissions|توپ رەتتەۋىنە قايتا كەلۋ]]',
 	'centralauth-globalgrouppermissions-knownwiki' => 'تىركەلگىسى بار ۋىيكىيدى بولەكتەڭىز:',
@@ -11367,7 +11420,7 @@ Other accounts are not yet confirmed.',
 	'centralauth-editgroup-members-link' => '[[Special:GlobalUsers/$1|$2 рұқсаттары бар қатысушы тізімі]]',
 	'centralauth-editgroup-submit' => 'Топ рұқсаттары өзгерістерін сақта',
 	'centralauth-editgroup-perms' => 'Түйістірілген рұқсаттар:',
-	'centralauth-editgroup-reason' => 'Өзгерту себебі:',
+	'centralauth-editgroup-reason' => 'Себебі:',
 	'centralauth-editgroup-success' => 'Топ рұқсаттары өзгертілді',
 	'centralauth-editgroup-success-text' => '$1 тобының топ рұқсаттарын сәтті өзгерттіңіз. [[Special:GlobalGroupPermissions|Топ реттеуіне қайта келу]]',
 	'centralauth-globalgrouppermissions-knownwiki' => 'Тіркелгісі бар уикиді бөлектеңіз:',
@@ -11545,7 +11598,7 @@ Qaýsıbir teñdestirw derekter jetistirmeý bul betti surağansız, sodıqtan e
 	'centralauth-editgroup-members-link' => '[[Special:GlobalUsers/$1|$2 ruqsattarı bar qatıswşı tizimi]]',
 	'centralauth-editgroup-submit' => 'Top ruqsattarı özgeristerin saqta',
 	'centralauth-editgroup-perms' => 'Tüýistirilgen ruqsattar:',
-	'centralauth-editgroup-reason' => 'Özgertw sebebi:',
+	'centralauth-editgroup-reason' => 'Sebebi:',
 	'centralauth-editgroup-success' => 'Top ruqsattarı özgertildi',
 	'centralauth-editgroup-success-text' => '$1 tobınıñ top ruqsattarın sätti özgerttiñiz. [[Special:GlobalGroupPermissions|Top rettewine qaýta kelw]]',
 	'centralauth-globalgrouppermissions-knownwiki' => 'Tirkelgisi bar wïkïdi bölekteñiz:',
@@ -11658,7 +11711,7 @@ $messages['km'] = array(
 	'centralauth-editgroup-members-link' => '[[Special:GlobalUsers/$1|បញ្ជី​អ្នកប្រើប្រាស់​ដែល​មានសិទ្ធិ​ជា$2]]',
 	'centralauth-editgroup-noset' => '(ទទេ)',
 	'centralauth-editgroup-submit' => 'រក្សារទុកបំលាស់ប្តូរចំពោះក្រុមសមាជិកភាព',
-	'centralauth-editgroup-reason' => 'មូលហេតុនៃការផ្លាស់ប្តូរ៖',
+	'centralauth-editgroup-reason' => 'មូលហេតុ៖',
 	'centralauth-editgroup-success' => 'ក្រុមសមាជិកភាព​បានផ្លាស់ប្តូរហើយ',
 	'centralauth-editgroup-editsets' => '([[Special:EditWikiSets|កែប្រែ]])',
 	'centralauth-globalgrouppermissions-knownwiki' => 'វិគីដែលពួកគេមានគណនី៖',
@@ -11669,7 +11722,7 @@ $messages['km'] = array(
 	'centralauth-editset-name' => 'ឈ្មោះ​៖',
 	'centralauth-editset-type' => 'ប្រភេទ​៖',
 	'centralauth-editset-wikis' => 'វិគី៖',
-	'centralauth-editset-reason' => 'មូលហេតុ:',
+	'centralauth-editset-reason' => 'មូលហេតុ៖',
 	'centralauth-editset-submit' => 'ដាក់ស្នើ',
 	'centralauth-editset-nouse' => '(ទទេ)',
 	'centralauth-editset-usage' => 'ត្រូវបានប្រើក្នុងក្រុម៖',
@@ -12759,7 +12812,7 @@ De wachtwoorden voor de lokale gebruikers worden teruggezet naar de wachtwoorden
 	'centralauth-admin-nonexistent' => 'Er is geine globale gebroeker veur "<nowiki>$1</nowiki>"',
 	'centralauth-admin-delete-nonexistent' => 'Fout: de globale gebroeker "<nowiki>$1</nowiki>" besteit neet.',
 	'centralauth-token-mismatch' => 'Waenges verlees vanne sessiegegaeves kós öch verzeuk neet verwerk waere.',
-	'centralauth-admin-reason' => 'Ree:',
+	'centralauth-admin-reason' => 'Reeje:',
 	'centralauth-admin-status' => 'Zit globaal gebroekerstaat',
 	'centralauth-admin-status-intro' => 'De kins dit form gebroeke om de staat ven de globaal gebroeker te angere',
 	'centralauth-admin-status-locked' => 'Geslaote',
@@ -12847,7 +12900,7 @@ Doe kans de rechte van alle gróppe betrachte en bewirke es doe dao de rechte ve
 	'centralauth-editgroup-noset' => '(gein)',
 	'centralauth-editgroup-submit' => 'Wijzige aan groepsrechte opsloon',
 	'centralauth-editgroup-perms' => 'Toegekindje rech:',
-	'centralauth-editgroup-reason' => 'Ree:',
+	'centralauth-editgroup-reason' => 'Reeje:',
 	'centralauth-editgroup-success' => 'Groepsrech verangerdj',
 	'centralauth-editgroup-success-text' => 'Doe höbs de grópsrechte veur gróp $1 aangepas. [[Special:GlobalGroupPermissions|Trök nao grópsbeheer]]',
 	'centralauth-editgroup-editsets' => '([[Special:EditWikiSets|bewèrk]])',
@@ -13127,7 +13180,7 @@ Grupė neegzistuoja, kol ji neturi jai priskirtų teisių.',
 	'centralauth-editgroup-noset' => '(nėra)',
 	'centralauth-editgroup-submit' => 'Įrašyti grupės teisių pakeitimus',
 	'centralauth-editgroup-perms' => 'Priskirtos teisės:',
-	'centralauth-editgroup-reason' => 'Pakeitimų priežastis:',
+	'centralauth-editgroup-reason' => 'Priežastis:',
 	'centralauth-editgroup-success' => 'Grupės teisės pakeistos',
 	'centralauth-editgroup-success-text' => 'Jūs sėkmingai pakeitėte $1 grupės teises.
 [[Special:GlobalGroupPermissions|Grįžti į grupių valdymą]]',
@@ -13459,7 +13512,7 @@ $messages['mk'] = array(
 	'centralauth-months-ago' => 'пред $1 {{PLURAL:$1|месец|месеци}}',
 	'centralauth-years-ago' => 'пред $1 {{PLURAL:$1|година|години}}',
 	'centralauth-prefs-status' => 'Статус на глобална сметка:',
-	'centralauth-prefs-not-managed' => 'Не користи обединета сметка',
+	'centralauth-prefs-not-managed' => 'Не се користи обединета сметка',
 	'centralauth-prefs-unattached' => 'Непотврдено',
 	'centralauth-prefs-complete' => 'Сè е в ред!',
 	'centralauth-prefs-migration' => 'Во преселба',
@@ -14083,7 +14136,7 @@ $messages['mr'] = array(
 	'centralauth-editgroup-members-link' => '[[Special:GlobalUsers/$1|$2 अधिकार असणार्‍या सदस्यांची यादी]]',
 	'centralauth-editgroup-submit' => 'गट अधिकारांमधील बदल जतन करा',
 	'centralauth-editgroup-perms' => 'दिलेले अधिकार:',
-	'centralauth-editgroup-reason' => 'बदलासाठीचे कारण:',
+	'centralauth-editgroup-reason' => 'कारण:',
 	'centralauth-editgroup-success' => 'गट अधिकार बदलले',
 	'centralauth-editgroup-success-text' => 'तुम्ही $1 गटाचे गट अधिकार बदललेले आहेत.
 [[Special:GlobalGroupPermissions|गट व्यवस्थापनाकडे परत जा]]',
@@ -14308,7 +14361,7 @@ Sila ambil perhatian bahawa sesebuah kumpulan tidak wujud kecuali setelah diberi
 	'centralauth-editgroup-noset' => '(tiada)',
 	'centralauth-editgroup-submit' => 'Simpan perubahan pada keizinan kumpulan',
 	'centralauth-editgroup-perms' => 'Keizinan diberi:',
-	'centralauth-editgroup-reason' => 'Sebab tukar:',
+	'centralauth-editgroup-reason' => 'Sebab:',
 	'centralauth-editgroup-success' => 'Keizinan kumpulan telah ditukar',
 	'centralauth-editgroup-success-text' => 'Anda telah menukar keizinan bagi kumpulan $1.
 [[Special:GlobalGroupPermissions|Kembali ke pengurusan kumpulan]]',
@@ -14623,7 +14676,7 @@ En ne’e Grupp gifft dat so lang noch nich, betdat dor Rechten towiest sünd.',
 	'centralauth-editgroup-noset' => '(keen)',
 	'centralauth-editgroup-submit' => 'Ännern an de Gruppenrechten spiekern',
 	'centralauth-editgroup-perms' => 'Tokennt Rechten:',
-	'centralauth-editgroup-reason' => 'Grund för Ännern:',
+	'centralauth-editgroup-reason' => 'Grund:',
 	'centralauth-editgroup-success' => 'Gruppenrechten ännert',
 	'centralauth-editgroup-success-text' => 'Du hest nu de Gruppenrechten för de Gruppe $1 ännert.
 [[Special:GlobalGroupPermissions|Trüch na dat Verwalten vun globale Gruppen]]',
@@ -15234,7 +15287,7 @@ Merk at gruppa ikkje finst med mindre ho har fått tildelt rettar.',
 	'centralauth-editgroup-noset' => '(ingen)',
 	'centralauth-editgroup-submit' => 'Lagra endringar i gruppeløyve',
 	'centralauth-editgroup-perms' => 'Tildelte løyve:',
-	'centralauth-editgroup-reason' => 'Endringsårsak:',
+	'centralauth-editgroup-reason' => 'Årsak:',
 	'centralauth-editgroup-success' => 'Gruppeløyve endra',
 	'centralauth-editgroup-success-text' => 'Du har endra gruppeløyva til gruppa $1.
 [[Special:GlobalGroupPermissions|Attende til gruppehandsaming]]',
@@ -15251,7 +15304,7 @@ Merk at gruppa ikkje finst med mindre ho har fått tildelt rettar.',
 	'centralauth-editset-name' => 'Namn:',
 	'centralauth-editset-type' => 'Type:',
 	'centralauth-editset-wikis' => 'Wikiar:',
-	'centralauth-editset-reason' => 'Grunn:',
+	'centralauth-editset-reason' => 'Årsak:',
 	'centralauth-editset-submit' => 'OK',
 	'centralauth-editset-badname' => 'Ugyldig eller tomt settnamn.',
 	'centralauth-editset-badtype' => 'Ugyldig settype.',
@@ -15934,6 +15987,7 @@ $messages['pdt'] = array(
  * @author Leinad
  * @author Maikking
  * @author Matma Rex
+ * @author Nux
  * @author Qblik
  * @author Sp5uhe
  * @author ToSter
@@ -15948,7 +16002,7 @@ $messages['pl'] = array(
 	'centralauth-merge-notlogged' => '<span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto={{#special:MergeAccount}}}} Zaloguj się]</span>, by sprawdzić, czy wszystkie Twoje konta zostały przyłączone do konta uniwersalnego.',
 	'centralauth-merge-welcome' => "'''Twoje konto użytkownika nie zostało jeszcze przekształcone na konto uniwersalne w obrębie projektów {{MediaWiki:Centralauth-groupname}}.'''
 
-Funkcjonalność konta uniwersalnego pozwala na korzystanie z tej samej nazwy użytkownika i hasła do zalogowania się we wszystkich projektach {{MediaWiki:Centralauth-groupname}}, we wszystkich wersjach językowych. Ułatwia to np. ładowanie plików na [http://commons.wikimedia.org/ Wikimedia Commons] i pozwala unikać nieporozumień lub nawet konfliktów, które mogą powstać, gdy dwie osoby wybiorą tę samą nazwę użytkownika na różnych projektach.
+Posiadanie konta uniwersalnego pozwala na korzystanie z tej samej nazwy użytkownika i hasła do zalogowania się we wszystkich projektach {{MediaWiki:Centralauth-groupname}}, we wszystkich wersjach językowych. Ułatwia to np. ładowanie plików na [http://commons.wikimedia.org/ Wikimedia Commons] i pozwala unikać nieporozumień lub nawet konfliktów, które mogą powstać, gdy dwie osoby wybiorą tę samą nazwę użytkownika na różnych projektach.
 
 Jeśli ktoś inny wykorzystuje na innym projekcie identyczną nazwę użytkownika do Twojej, przekształcenie Twojego konta na konto uniwersalne nie stanie się dla niego problemem, lecz da Ci szansę na późniejsze znalezienie rozwiązania we współpracy bezpośrednio z tą osobą lub z wykorzystaniem pomocy któregoś z administratorów.",
 	'centralauth-merge-step1-title' => 'Przekształć na uniwersalne',
@@ -16010,7 +16064,7 @@ Zauważ, że inaczej może być na prawdziwej domowej wiki użytkownika.',
 	'centralauth-merge-method-mail-desc' => 'Wskazuje, że lokalne konto zostało przyłączone ponieważ ustawiony dla niego adres e‐mail jest identyczny jak dla konta głównego.',
 	'centralauth-merge-method-password-desc' => 'Wskazuje, że konto lokalne zostało przyłączone ponieważ użytkownik podał dla niego prawidłowe hasło.',
 	'centralauth-merge-method-admin-desc' => 'Wskazuje, że konto lokalne zostało ręcznie przyłączone przez stewardów.
-Ta funkcjonalność jest obecnie wyłączona ze względów bezpieczeństwa.',
+Ta funkcja jest obecnie wyłączona ze względów bezpieczeństwa.',
 	'centralauth-merge-method-new-desc' => 'Wskazuje, że konto uniwersalne zostało utworzone automatycznie w procesie tworzenia konta lokalnego.',
 	'centralauth-merge-method-login-desc' => 'Wskazuje, że konto lokalne zostało utworzone automatycznie w czasie logowania się przez niego.',
 	'centralauth-finish-title' => 'Zakończono tworzenie konta uniwersalnego',
@@ -16207,7 +16261,7 @@ Każdy z nich możesz przeglądać oraz modyfikować, możesz także utworzyć n
 	'centralauth-editset-name' => 'Nazwa:',
 	'centralauth-editset-type' => 'Typ:',
 	'centralauth-editset-wikis' => 'Wiki:',
-	'centralauth-editset-reason' => 'Powód:',
+	'centralauth-editset-reason' => 'Powód',
 	'centralauth-editset-submit' => 'Zatwierdź',
 	'centralauth-editset-submit-delete' => 'Usuń',
 	'centralauth-editset-badname' => 'Nieprawidłowa lub pusta nazwa zbioru.',
@@ -16578,6 +16632,7 @@ $messages['ps'] = array(
 	'centralauth-editset-submit' => 'سپارل',
 	'centralauth-editset-submit-delete' => 'ړنګول',
 	'centralauth-editset-nouse' => '(هېڅ)',
+	'centralauth-editset-usage' => 'کارېدلی په ډله د:',
 );
 
 /** Portuguese (Português)
@@ -17463,7 +17518,7 @@ Redenumirea va cauza utilizatorului local detașarea de la contul global.',
 	'centralauth-editgroup-noset' => '(nimic)',
 	'centralauth-editgroup-submit' => 'Salvați schimbări la permisiunile grupului',
 	'centralauth-editgroup-perms' => 'Acordat permisiunile:',
-	'centralauth-editgroup-reason' => 'Motiv pentru schimbare:',
+	'centralauth-editgroup-reason' => 'Motiv:',
 	'centralauth-editgroup-success' => 'Permisiile grupului au fost salvate',
 	'centralauth-editgroup-success-text' => 'Ați schimbat cu cucces permisiunile de grup pentru grupul $1.
 [[Special:GlobalGroupPermissions|Înapoi la gestionarea de grup]]',
@@ -18012,7 +18067,7 @@ $messages['sah'] = array(
 	'centralauth-editgroup-noset' => '(суох)',
 	'centralauth-editgroup-submit' => 'Бөлөх бырааптарын уларытыыны бигэргэтии',
 	'centralauth-editgroup-perms' => 'Бэриллибит бырааптар:',
-	'centralauth-editgroup-reason' => 'Уларытыы төрүөтэ:',
+	'centralauth-editgroup-reason' => 'Төрүөтэ:',
 	'centralauth-editgroup-success' => 'Бөлөхтөр бырааптара уларыйда',
 	'centralauth-editgroup-success-text' => '$1 бөлөх быраабын сөпкө уларыттыҥ.
 [[Special:GlobalGroupPermissions|Бөлөхтөрү салайыыга төннүү]]',
@@ -18665,6 +18720,7 @@ $messages['sr-ec'] = array(
 	'centralauth-editset-wikis' => 'Викији:',
 	'centralauth-editset-reason' => 'Разлог:',
 	'centralauth-editset-submit' => 'унеси',
+	'centralauth-editset-submit-delete' => 'Обриши',
 	'centralauth-editset-badname' => 'Неисправно или празно име скупа.',
 	'centralauth-editset-badtype' => 'Непознат тип скупа.',
 	'centralauth-editset-setexists' => 'Скуп са овим именом већ постоји',
@@ -18868,6 +18924,7 @@ Razlog: $1',
 	'centralauth-editset-wikis' => 'Vikiji:',
 	'centralauth-editset-reason' => 'Razlog:',
 	'centralauth-editset-submit' => 'unesi',
+	'centralauth-editset-submit-delete' => 'Obriši',
 	'centralauth-editset-badname' => 'Neispravno ili prazno ime skupa.',
 	'centralauth-editset-badtype' => 'Nepoznat tip skupa.',
 	'centralauth-editset-setexists' => 'Skup sa ovim imenom već postoji',
@@ -19065,7 +19122,7 @@ Du hääst disse Spesioalsiede sunner Authentizierengsdoaten apruupen, so dät n
 	'centralauth-editgroup-noset' => '(neen)',
 	'centralauth-editgroup-submit' => 'Annerengen an do Gruppengjuchte spiekerje',
 	'centralauth-editgroup-perms' => 'Touwiesde Gjuchte:',
-	'centralauth-editgroup-reason' => 'Gruund foar ju Annerenge:',
+	'centralauth-editgroup-reason' => 'Gruund:',
 	'centralauth-editgroup-success' => 'Gruppengjuchte annerd',
 	'centralauth-editgroup-success-text' => 'Du hääst mäd Ärfoulch do Gruppengjuchte foar ju $1-Gruppe annerd. [[Special:GlobalGroupPermissions|Tourääch tou Management fon globoale Gruppen]].',
 	'centralauth-editgroup-editsets' => '([[Special:EditWikiSets|beoarbaidje]])',
@@ -19242,7 +19299,7 @@ Kecap sandi pikeun rekening-rekening lokal sacara otomatis balik ka kecap sandi 
 	'centralauth-editgroup-name' => 'Ngaran grup:',
 	'centralauth-editgroup-display-edit' => '$2 ([[MediaWiki:Group-$1|édit]])',
 	'centralauth-editgroup-members' => 'Daptar anggota:',
-	'centralauth-editgroup-reason' => 'Alesan parobahan:',
+	'centralauth-editgroup-reason' => 'Alesan:',
 	'centralauth-editgroup-success' => 'Parobahan hak jumplukan geus disimpen',
 	'centralauth-editset-reason' => 'Alesan:',
 	'right-centralauth-merge' => 'Gabungkeun rekening ieu',
@@ -19924,7 +19981,7 @@ $messages['tg-cyrl'] = array(
 	'centralauth-editgroup-noset' => '(ҳеҷ)',
 	'centralauth-editgroup-submit' => 'Захираи тағйироти додашуда дар ихтиёроти гурӯҳ',
 	'centralauth-editgroup-perms' => 'Ихтиёроти таъйиншуда:',
-	'centralauth-editgroup-reason' => 'Сабаби тағйир:',
+	'centralauth-editgroup-reason' => 'Сабаб:',
 	'centralauth-editgroup-success' => 'Ихтиёроти гурӯҳ тағйир ёфт',
 	'centralauth-globalgrouppermissions-knownwiki' => 'Викие ки дар он онҳо ҳисоб доранд:',
 	'centralauth-editset' => 'Вироиши маҷмӯъҳои вики',
@@ -20089,6 +20146,7 @@ Digar hisobho to hol ta'jid naşudaand.",
 	'centralauth-editgroup-noset' => '(heç)',
 	'centralauth-editgroup-submit' => 'Zaxirai taƣjiroti dodaşuda dar ixtijoroti gurūh',
 	'centralauth-editgroup-perms' => "Ixtijoroti ta'jinşuda:",
+	'centralauth-editgroup-reason' => 'Sabab:',
 	'centralauth-editgroup-success' => 'Ixtijoroti gurūh taƣjir joft',
 	'centralauth-globalgrouppermissions-knownwiki' => 'Vikie ki dar on onho hisob dorand:',
 	'centralauth-editset' => "Viroişi maçmū'hoi viki",
@@ -20203,7 +20261,7 @@ $messages['th'] = array(
 	'centralauth-editgroup-subtitle' => 'กำลังแก้ไข $1',
 	'centralauth-editgroup-name' => 'ชื่อของกลุ่ม:',
 	'centralauth-editgroup-noset' => '(ไม่มี)',
-	'centralauth-editgroup-reason' => 'เหตุผลสำหรับการเปลี่ยน:',
+	'centralauth-editgroup-reason' => 'เหตุผล:',
 	'centralauth-editset-reason' => 'เหตุผล:',
 	'centralauth-editset-submit' => 'ตกลง',
 	'centralauth-editset-nouse' => '(ไม่มี)',
@@ -22058,6 +22116,13 @@ $messages['vro'] = array(
 	'centralauth-logout-progress' => 'Läät nime alt vällä ka tõisist {{MediaWiki:Centralauth-groupname}} projektest:',
 );
 
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'centralauth-admin-reason' => '理由：',
+	'centralauth-editgroup-reason' => '理由：',
+	'centralauth-editset-reason' => '理由：',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
@@ -22256,7 +22321,7 @@ $messages['yue'] = array(
 	'centralauth-editgroup-members-link' => '[[Special:GlobalUsers/$1|含有$2許可嘅用戶一覽]]',
 	'centralauth-editgroup-submit' => '保存更改到組許可',
 	'centralauth-editgroup-perms' => '指定咗嘅許可:',
-	'centralauth-editgroup-reason' => '更改嘅原因:',
+	'centralauth-editgroup-reason' => '原因:',
 	'centralauth-editgroup-success' => '組許可已經更改',
 	'centralauth-editgroup-success-text' => '你已經成功噉改咗$1組嘅組許可。[[Special:GlobalGroupPermissions|返去組管理]]',
 	'centralauth-globalgrouppermissions-knownwiki' => '揀一個響佢哋有戶口嘅wiki:',

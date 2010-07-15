@@ -146,6 +146,13 @@ $messages['lb'] = array(
 	'peoplecategories-desc' => 'Ännert den ugewisenen Numm vu Säite vu "Virnumm Faniljennumm" op "Familjennumm, Virnumm" op de spezifizéierte Säitekategorien',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'peoplecategories-desc' => 'Nomaina lapu nosaukumus no "Vārds Uzvārds" uz "Uzvārds, Vārds" iepriekšnorādītās kategorijās',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

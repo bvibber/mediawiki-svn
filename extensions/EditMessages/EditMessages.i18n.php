@@ -307,6 +307,11 @@ $messages['dsb'] = array(
 	'editmsg-patch-success' => 'Zapłata wuspěšna.',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'editmsg-search' => 'Dii',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
@@ -799,13 +804,18 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author ToePeu
  * @author Yknok29
  */
 $messages['ko'] = array(
 	'editmessages' => '메시지 편집',
+	'editmsg-target' => '대상 메시지:',
 	'editmsg-search' => '찾기',
+	'editmsg-show-list' => '"$1" 메시지의 내용 보기',
+	'editmsg-get-patch' => '패치 생성',
 	'editmsg-new-search' => '새 검색',
+	'editmsg-apply-patch' => '패치 적용',
 );
 
 /** Krio (Krio)
@@ -1325,6 +1335,8 @@ $messages['sr-ec'] = array(
 	'editmsg-target' => 'Циљана порука:',
 	'editmsg-search' => 'Претрага',
 	'editmsg-new-search' => 'Нова претрага',
+	'editmsg-apply-patch' => 'Примени печ.',
+	'editmsg-patch-success' => 'Успешно печовано.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1335,6 +1347,8 @@ $messages['sr-el'] = array(
 	'editmsg-target' => 'Ciljana poruka:',
 	'editmsg-search' => 'Pretraga',
 	'editmsg-new-search' => 'Nova pretraga',
+	'editmsg-apply-patch' => 'Primeni peč.',
+	'editmsg-patch-success' => 'Uspešno pečovano.',
 );
 
 /** Sundanese (Basa Sunda)

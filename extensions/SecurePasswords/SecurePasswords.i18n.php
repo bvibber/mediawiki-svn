@@ -96,11 +96,11 @@ $messages['br'] = array(
 	'securepasswords-desc' => "Sevel a ra hacherezh gerioù-tremen suroc'h hag ouzhpennañ a ra ur gwirier kemplezhder ar gerioù-tremen.",
 	'securepasswords-valid' => 'Direizh pe re verr eo ho ker-tremen.
 Ret eo dezhañ :',
-	'securepasswords-minlength' => "kaout an hirder a $1 arouezenn{{PLURAL:$1||}} d'an nebeutañ",
+	'securepasswords-minlength' => 'bezañ $1 {{PLURAL:$1|arouezenn|arouezenn}} hir da nebeutañ',
 	'securepasswords-lowercase' => 'ennañ ul lizherenn vunut da nebeutañ',
 	'securepasswords-uppercase' => 'ennañ ur bennlizherenn da nebeutañ',
 	'securepasswords-digit' => '1 sifr ennañ da nebeutañ',
-	'securepasswords-special' => "kaout 1 arouezenn arbennik d'an nebeutañ (an arouezennoù arbennik a zo : $1)",
+	'securepasswords-special' => "Enderc'hel 1 arouezenn dibar da nebeutañ (an arouezennoù dibar zo : $1)",
 	'securepasswords-username' => "bezañ disheñvel eus hoc'h anv implijer",
 	'securepasswords-word' => 'arabat eo e vefe ur ger',
 );

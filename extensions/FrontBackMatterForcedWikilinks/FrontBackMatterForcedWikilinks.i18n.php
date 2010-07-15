@@ -153,6 +153,27 @@ $messages['nl'] = array(
 	'frontbackforced-forced' => '_(forced_wikilinks)',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'frontbackforced-desc' => 'Legger til saker foran og bak lenker til sider og implementerer tvungne wikilenker',
+	'frontbackforced-front' => '_(foran_sak)',
+	'frontbackforced-back' => '_(bak_sak)',
+	'frontbackforced-forced' => '_(tvungne_wikilenker)',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'frontbackforced-desc' => "A taca dle session an testa e an coa dle pàgine e a buta an euvra j'anliure wiki forsà",
+	'frontbackforced-front' => '_(session_ëd_testa)',
+	'frontbackforced-back' => '_(session_ëd_coa)',
+	'frontbackforced-forced' => '_(anliura_wiki_forsà)',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

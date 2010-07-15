@@ -705,6 +705,13 @@ $messages['pms'] = array(
 	'communityvoice-ratings-error-no-title' => 'Atribut dël tìtol mancant ant ël tag ëd valutassion.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'communityvoice-ratings-scale-status-thanks' => 'ستاسې له رايې نه مننه!',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  * @author Waldir

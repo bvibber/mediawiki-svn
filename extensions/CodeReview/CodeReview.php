@@ -41,6 +41,7 @@ $wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'api/ApiCodeUpdate.php';
 $wgAutoloadClasses['ApiCodeDiff'] = $dir . 'api/ApiCodeDiff.php';
 $wgAutoloadClasses['ApiCodeComments'] = $dir . 'api/ApiCodeComments.php';
 $wgAutoloadClasses['ApiCodeTestUpload'] = $dir . 'api/ApiCodeTestUpload.php';
+$wgAutoloadClasses['ApiCodeRevisions'] = $dir . 'api/ApiCodeRevisions.php';
 
 $wgAutoloadClasses['SubversionAdaptor'] = $dir . 'backend/Subversion.php';
 $wgAutoloadClasses['CodeDiffHighlighter'] = $dir . 'backend/DiffHighlighter.php';
@@ -84,6 +85,7 @@ $wgAPIModules['codeupdate'] = 'ApiCodeUpdate';
 $wgAPIModules['codediff'] = 'ApiCodeDiff';
 $wgAPIModules['codetestupload'] = 'ApiCodeTestUpload';
 $wgAPIListModules['codecomments'] = 'ApiCodeComments';
+$wgAPIListModules['coderevisions'] = 'ApiCodeRevisions';
 
 $wgExtensionMessagesFiles['CodeReview'] = $dir . 'CodeReview.i18n.php';
 $wgExtensionAliasesFiles['CodeReview'] = $dir . 'CodeReview.alias.php';
@@ -167,18 +169,24 @@ $wgCodeReviewDeferredPaths = array();
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
 function efCodeReviewSchemaUpdates() {
-	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables;
+	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables, $wgExtModifiedFields;
 	$base = dirname( __FILE__ );
 	if ( $wgDBtype == 'mysql' ) {
 		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" ); // Initial install tables
 		$wgExtNewFields[] = array( 'code_rev', 'cr_diff', "$base/archives/codereview-cr_diff.sql" );
 		$wgExtNewIndexes[] = array( 'code_relations', 'repo_to_from', "$base/archives/code_relations_index.sql" );
+
 		// $wgExtNewFields[] = array( 'code_rev', "$base/archives/codereview-cr_status.sql" ); // FIXME FIXME this is a change to options... don't know how
+
+		if ( !update_row_exists( 'add old to code_rev enum' ) ) {
+			$wgExtModifiedFields[] = array( 'code_rev', 'cr_status', "$base/archives/codereview-cr_old_status.sql" );
+		}
+
 		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
 		$wgExtNewTables[] = array( 'code_test_suite', "$base/archives/codereview-code_tests.sql" );
 	} elseif ( $wgDBtype == 'sqlite' ) {
 		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" );
-	} elseif( $wgDBtype == 'postgres' ) {
+	} elseif ( $wgDBtype == 'postgres' ) {
 		// TODO
 	}
 	return true;

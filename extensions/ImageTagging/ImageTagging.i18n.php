@@ -300,7 +300,7 @@ $messages['br'] = array(
 	'imagetagging-addimagetag' => 'Balizennañ ar skeudenn-mañ',
 	'imagetagging-article' => 'Pajenn :',
 	'imagetagging-articletotag' => 'Pajenn da valizennañ',
-	'imagetagging-canteditothermessage' => "Ne c'helloc'h ket kemmañ ar bajenn-mañ, pe n'oc'h ket aotreet d'en ober pe ez eo gwarezet ar bajenn-mañ evit abegoù all.",
+	'imagetagging-canteditothermessage' => "Ne c'hellit ket kemmañ ar bajenn-mañ, pe n'oc'h ket aotreet d'en ober pe ez eo gwarezet ar bajenn-mañ evit abegoù all.",
 	'imagetagging-imghistory' => 'Istor',
 	'imagetagging-images' => 'skeudennoù',
 	'imagetagging-inthisimage' => 'Er skeudenn-mañ : $1',
@@ -511,6 +511,11 @@ Pšosym cakaj, až eksistěrujuca akcija jo se skóńcyła.',
 	'imagetagging-taggedimages-displaying' => '{{PLURAL:$1|Zwobraznjujo|Zwobraznjujotej|Zwobraznjuju|Zwobraznjujo}} se $1 -  $2 z $3 wobrazow wót "$4"',
 	'tag-logpagename' => 'Protokol wobznamjenjowanja',
 	'tag-logpagetext' => 'To jo protokol wšych pśidanjow a wótpóranjow wobrazowych wobznamjenjow.',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'imagetagging-article' => 'Axa:',
 );
 
 /** Greek (Ελληνικά)
@@ -2053,6 +2058,7 @@ Pakihintay lamang na mabuo muna ang umiiral na kilos.',
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -2064,11 +2070,14 @@ $messages['tr'] = array(
 	'imagetagging-images' => 'Resimler',
 	'imagetagging-removetag' => 'etiketi kaldır',
 	'imagetagging-done-button' => 'Etiketleme tamamlandı',
+	'imagetagging-tag-button' => 'Etiketle',
 	'imagetagging-tagcancel-button' => 'İptal',
+	'imagetagging-tagging-instructions' => 'Etiketlemek için resim üzerindeki kişilere ya da şeylere tıklayınız',
 	'imagetagging-addingtag' => 'Etiket ekleniyor...',
 	'imagetagging-removingtag' => 'Etiket kaldırılıyor...',
 	'imagetagging-addtagsuccess' => 'Etiket eklendi.',
 	'imagetagging-removetagsuccess' => 'Etiket kaldırıldı.',
+	'imagetagging-oneuniquetagmessage' => 'Resim üzerinde bu isimde bir etiket zaten var.',
 	'imagetagging-taggedimages-title' => '"$1" resimleri',
 	'tag-logpagename' => 'Etiketleme kaydı',
 );
@@ -2132,6 +2141,11 @@ Xin hãy chờ tác vụ hoàn thành.',
 	'imagetagging-taggedimages-displaying' => 'Hiển thị $1 - $2 trong tổng số $3 hình của "$4"',
 	'tag-logpagename' => 'Gắn thẻ cho nhật trình',
 	'tag-logpagetext' => 'Đây là nhật trình ghi lại tất cả tác vụ thêm và bỏ thẻ hình ảnh.',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'imagetagging-tagcancel-button' => '取消',
 );
 
 /** Yiddish (ייִדיש)

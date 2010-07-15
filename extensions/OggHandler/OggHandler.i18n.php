@@ -600,6 +600,13 @@ $messages['ca'] = array(
 	'ogg-oggThumb-failed' => "L'oggThumb no ha pogut crear una miniatura.",
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'ogg-dismiss' => 'بەستن',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -634,6 +641,22 @@ $messages['cs'] = array(
 	'ogg-desc-link' => 'O tomto souboru',
 	'ogg-oggThumb-version' => 'OggHandler vyžaduje oggThumb verze $1 nebo novější.',
 	'ogg-oggThumb-failed' => 'oggThumb nedokázal vytvořit náhled.',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'ogg-long-error' => '(Ffeil OGG annilys: $1)',
+	'ogg-play' => 'Chwarae',
+	'ogg-pause' => 'Oedi',
+	'ogg-stop' => 'Aros',
+	'ogg-play-sound' => 'Gwrando',
+	'ogg-player-thumbnail' => 'Llun llonydd yn unig',
+	'ogg-more' => 'Mwy...',
+	'ogg-dismiss' => 'Cau',
+	'ogg-download' => 'Islwytho ffeil',
+	'ogg-desc-link' => "Ynglŷn â'r ffeil hon",
 );
 
 /** Danish (Dansk)
@@ -1920,7 +1943,7 @@ udder sök Der en annder Affspellprojramm uß.',
 	'ogg-player-selected' => '(Ußjesoht)',
 	'ogg-use-player' => 'Affspellprojramm:',
 	'ogg-more' => 'Enshtelle&nbsp;…',
-	'ogg-dismiss' => 'Zomaache!',
+	'ogg-dismiss' => 'Zohmaache',
 	'ogg-download' => 'Datei erunger lade',
 	'ogg-desc-link' => 'Övver di Datei',
 );
@@ -2005,6 +2028,8 @@ $messages['li'] = array(
 	'ogg-dismiss' => 'Sloet',
 	'ogg-download' => 'Bestandj downloade',
 	'ogg-desc-link' => 'Euver dit bestandj',
+	'ogg-oggThumb-version' => 'OggHandler vereis oggThumb versie $1 of hoeger.',
+	'ogg-oggThumb-failed' => 'oggThumb kós geine thumbnail make.',
 );
 
 /** Lithuanian (Lietuvių)
@@ -2056,10 +2081,10 @@ $messages['mk'] = array(
 	'ogg-short-audio' => 'Ogg $1 звучна податотека, $2',
 	'ogg-short-video' => 'Ogg $1 видео податотека, $2',
 	'ogg-short-general' => 'Мултимедијална податотека Ogg $1, $2',
-	'ogg-long-audio' => '(Ogg $1 звучна податотека, должина $2, $3)',
-	'ogg-long-video' => '(Ogg $1 видео податотека, должина $2, $4×$5 пиксели, $3)',
-	'ogg-long-multiplexed' => '(Ogg мултиплексирана аудио/видео податотека, $1, должина $2, $4×$5 пиксели, $3 вкупно)',
-	'ogg-long-general' => '(мултимедијална податотека Ogg, должина $2, $3)',
+	'ogg-long-audio' => '(Ogg $1 аудиоснимка, траење $2, $3)',
+	'ogg-long-video' => '(Ogg $1 видеоснимка, траење $2, $4×$5 пиксели, $3)',
+	'ogg-long-multiplexed' => '(Ogg-мултиплексирана аудио/видеоснимка, $1, траење $2, $4×$5 пиксели, вкупно $3)',
+	'ogg-long-general' => '(Ogg-снимка, траење $2, $3)',
 	'ogg-long-error' => '(Оштетена ogg податотека: $1)',
 	'ogg-play' => 'Почни',
 	'ogg-pause' => 'Паузирај',
@@ -2117,7 +2142,7 @@ $messages['ml'] = array(
 	'ogg-no-xiphqt' => 'ക്വിക്ക്റ്റൈമിനുള്ള XiphQT ഘടകം താങ്കളുടെ പക്കലുണ്ടെന്നു കാണുന്നില്ല.
 ഓഗ് പ്രമാണങ്ങൾ ഈ ഘടകമില്ലാതെ പ്രവർത്തിപ്പിക്കാൻ ക്വിക്ക്റ്റൈമിനു കഴിയില്ല.
 ദയവായി <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT ഡൗൺലോഡ് ചെയ്യുക</a> അല്ലെങ്കിൽ മറ്റൊരു പ്ലേയർ തിരഞ്ഞെടുക്കുക.',
-	'ogg-player-videoElement' => 'ബ്രൗസറിൽ സ്വതവേയുള്ള പിന്തുണ',
+	'ogg-player-videoElement' => 'ബ്രൗസറിൽ സ്വതേയുള്ള പിന്തുണ',
 	'ogg-player-oggPlugin' => 'ബ്രൗസർ പ്ലഗിൻ',
 	'ogg-player-quicktime-mozilla' => 'ക്വിക്ക്റ്റൈം',
 	'ogg-player-quicktime-activex' => 'ക്വിക്ക്റ്റൈം (ആക്റ്റീവ്‌‌എക്സ്)',
@@ -2707,6 +2732,7 @@ Pe piacere <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_d
 /** Russian (Русский)
  * @author Ahonc
  * @author Kv75
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -2714,10 +2740,10 @@ $messages['ru'] = array(
 	'ogg-short-audio' => 'Звуковой файл Ogg $1, $2',
 	'ogg-short-video' => 'Видео-файл Ogg $1, $2',
 	'ogg-short-general' => 'Медиа-файл Ogg $1, $2',
-	'ogg-long-audio' => '(звуковой файл Ogg $1, длина $2, $3)',
-	'ogg-long-video' => '(видео-файл Ogg $1, длина $2, $4×$5 пикселов, $3)',
-	'ogg-long-multiplexed' => '(мультиплексный аудио/видео-файл Ogg, $1, длина $2, $4×$5 пикселов, $3 всего)',
-	'ogg-long-general' => '(медиа-файл Ogg, длина $2, $3)',
+	'ogg-long-audio' => '(звуковой файл Ogg $1, длительность $2, $3)',
+	'ogg-long-video' => '(видео-файл Ogg $1, длительность $2, $4×$5 пикселов, $3)',
+	'ogg-long-multiplexed' => '(мультиплексный аудио/видео-файл Ogg, $1, длительность $2, $4×$5 пикселов, $3 всего)',
+	'ogg-long-general' => '(медиа-файл Ogg, длительность $2, $3)',
 	'ogg-long-error' => '(неправильный ogg-файл: $1)',
 	'ogg-play' => 'Воспроизвести',
 	'ogg-pause' => 'Пауза',

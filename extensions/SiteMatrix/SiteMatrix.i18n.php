@@ -419,10 +419,15 @@ $messages['dsb'] = array(
 	'sitematrix-fishbowl' => 'wobźěłowanje wobgranicowane',
 );
 
-/** Ewe (Eʋegbe) */
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
 $messages['ee'] = array(
 	'sitematrix' => 'Wikimedia wikiwo ƒe xexlẽme',
+	'sitematrix-summary' => 'Axa tɔxe sia fia Wikimedia wikiwo katã ƒe xexlẽme',
+	'sitematrix-desc' => 'Efia [[Special:SiteMatrix|Wikimedia wikiwo ƒe ŋkɔwo]]',
 	'sitematrix-language' => 'Gbe',
+	'sitematrix-others' => 'Wikimedia dɔwɔwɔ bubuwo',
 );
 
 /** Greek (Ελληνικά)
@@ -1166,7 +1171,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'sitematrix' => 'വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക',
 	'sitematrix-summary' => 'ഈ താൾ വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക പ്രദർശിപ്പിക്കുന്നു.',
-	'sitematrix-desc' => '[[Special:SiteMatrix|മീഡിയാവിക്കി വിക്കികളുടെ പട്ടിക]] പ്രദർശിപ്പിക്കുന്നു',
+	'sitematrix-desc' => '[[Special:SiteMatrix|വിക്കിമീഡിയ വിക്കികളുടെ പട്ടിക]] പ്രദർശിപ്പിക്കുന്നു',
 	'sitematrix-language' => 'ഭാഷ',
 	'sitematrix-project' => 'സം‌രംഭത്തിന്റെ പേര്‌, സഹസം‌രംഭങ്ങളിലേക്കുള്ള കണ്ണി, മറ്റ് വിക്കികളിലേക്കുള്ള കണ്ണി',
 	'sitematrix-others' => 'വിക്കിമീഡിയയുടെ മറ്റു സം‌രംഭങ്ങൾ',

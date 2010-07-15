@@ -15,6 +15,13 @@ $messages['qqq'] = array(
 	'active-strategy-desc' => '{{desc}}',
 );
 
+/** Arabic (العربية)
+ * @author ;Hiba;1
+ */
+$messages['ar'] = array(
+	'activestrategy' => 'استراتيجية نشطة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -24,6 +31,13 @@ $messages['be-tarask'] = array(
 	'active-strategy-desc' => 'Паказаць колькасьць рэдагаваньняў для старонак спэцыяльнай групы',
 	'active-strategy-intro' => 'Колькасьць рэдагаваньняў старонак працоўнай групай за $1 {{PLURAL:$1|апошні дзень|апошнія дні|апошніх дзён}}.',
 	'nedits' => '$1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}}',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'activestrategy' => 'স্বক্রিয়া স্ট্রেটেজি',
 );
 
 /** Breton (Brezhoneg)
@@ -166,6 +180,13 @@ $messages['io'] = array(
 	'nedits' => '$1 {{PLURAL:$1|redakto|redakti}}',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'nedits' => '$1 {{PLURAL:$1|contributo|contributi}}',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -240,11 +261,13 @@ $messages['nl'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'activestrategy' => 'Aktive arbeidsgrupper',
 	'active-strategy-desc' => 'Viser antall redigeringer på arbeidsgruppesider',
 	'active-strategy-intro' => 'Antall redigeringer på arbeidsgruppesider {{PLURAL:$1|den siste $1 dag|de siste $1 dager}}.',
+	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringer}}',
 );
 
 /** Occitan (Occitan)
@@ -297,6 +320,13 @@ $messages['pt-br'] = array(
 	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
 );
 
+/** Romanian (Română)
+ * @author AdiJapan
+ */
+$messages['ro'] = array(
+	'nedits' => '$1 {{PLURAL:$1|modificare|modificări}}',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -343,6 +373,14 @@ $messages['tl'] = array(
 	'active-strategy-desc' => 'Nagpapaikta ng bilang ng mga pagbabago sa mga pahina ng madiskarteng pagpaplano',
 	'active-strategy-intro' => 'Bilang ng mga pagbabago sa mga pahina ng puwersang panggawain sa loob ng huling {{PLURAL:$1|$1 araw|$1 mga araw}}.',
 	'nedits' => '$1 {{PLURAL:$1|pagbabago|mga pagbabago}}',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'activestrategy' => 'Etkin Strateji',
+	'nedits' => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
 );
 
 /** Vietnamese (Tiếng Việt)

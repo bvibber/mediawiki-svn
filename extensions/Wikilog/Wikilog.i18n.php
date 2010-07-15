@@ -1274,8 +1274,8 @@ Rankout a rafent bezañ implijet e pennadoù an esaouenn anv Wikilog hepken.",
 	'wikilog-comment-invalid-name' => 'Direizh eo an anv pourchaset.',
 	'wikilog-no-such-article' => "N'eus ket eus ar pennad wikilog goulennet.",
 	'wikilog-reading-draft' => "Un tamm brouilhoñs eo ar pennad wikilog-mañ. N'eo ket bet embannet c'hoazh.",
-	'wikilog-posting-anonymously' => "N'oc'h ket luget evit poent ;
-embannet e vo hoc'h evezhiadenn en un doare dianv, anavezet gant ho chomlec'h lugañ da Internet.
+	'wikilog-posting-anonymously' => "N'oc'h ket keveet evit poent ;
+embannet e vo hoc'h evezhiadenn en un doare dizanv, anavezet gant ho chomlec'h lugañ da Internet.
 Rankout a rafec'h lakaat ul lesanv a-us a-benn anavezout hoc'h evezhiadenn, pe $1 evit ma vefe deroet en un doare reizh.",
 	'wikilog-anonymous-moderated' => "Ur wech ma vo postet hoc'h evezhiadenn ganeoc'h, ne vo ket posupl e lenn kerkent.
 Ne vo gwelet an evezhiadenn nemet ur wech ma vo bet gwiriet gant ur merour.",
@@ -1583,12 +1583,22 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author MGA73
  */
 $messages['da'] = array(
+	'wikilog-title' => 'Titel',
+	'wikilog-actions' => 'Handlinger',
+	'wikilog-comments' => 'Kommentarer',
+	'wikilog-view-summary' => 'Resumé',
 	'wikilog-pager-newest' => 'nyeste',
 	'wikilog-pager-oldest' => 'ældste',
+	'wikilog-pager-prev' => 'forrige',
+	'wikilog-no-comments' => 'ingen kommentarer',
 	'wikilog-summary-uncategorized' => 'Ukategoriserede',
+	'wikilog-comment-deleted' => 'Denne kommentar blev slettet.',
+	'wikilog-comment-edit' => 'Redigér denne kommentar',
+	'wikilog-comment-delete' => 'Slet denne kommentar',
 );
 
 /** German (Deutsch)
@@ -1810,6 +1820,7 @@ Aby se nastawki wózjawili a druge wikilogowe funkcije zmóžnili, musy se wón 
 	'wikilog-summary-categories' => 'Wótpołožony pód $2',
 	'wikilog-summary-more' => '[[$3|→ dalej cytaś...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusija]])',
+	'wikilog-edit-hint' => 'Nastawk wikiprotokola wobźěłaś: $1',
 	'wikilog-edit-fieldset-legend' => 'Wikilogowe opcije:',
 	'wikilog-edit-signpub' => 'Toś ten pśinosk pódpisaś a wózjawiś',
 	'wikilog-edit-signpub-tooltip' => 'Zawinujo, až toś ten pśinosk pódpišo a wózjawijo w swójom wikilogu, gaž se składujo.
@@ -1831,6 +1842,7 @@ Wótpóraj markěrowanje toś togo kašćika, aby se pśinosk wobchował ako nac
 	'wikilog-comment-reject' => 'Toś ten komentar wótpokazaś (direktna akcija)',
 	'wikilog-newtalk-text' => '<!-- prozny bok napórany pśez Wikilog -->',
 	'wikilog-newtalk-summary' => 'jo se awtomatiski napórał pséz Wikilog',
+	'wikilog-feed-ns-title' => '$1: nastawiki wikiprotokola',
 	'wikilog-feed-description' => 'Cytaj nejnowše pśinoski w toś tom kanalu.',
 	'wikilog-comment-feed-title1' => 'Komentar wót $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Komentar wót $2 k $3 (#$1)',
@@ -1884,6 +1896,14 @@ Komentar buźo se akle pokazaś, za tym až moderator jo jen pśeglědał.',
 	'wikilog-page-lc' => 'bok',
 	'wikilog-history-lc' => 'historija',
 	'wikilog-doc-import-comment' => 'Importěrowana wikilogowa dokumentacija',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'wikilog-new-item-go' => 'Dze egɔme',
+	'wikilog-edit-lc' => 'trɔ asi le eŋu',
+	'wikilog-delete-lc' => 'tutui',
+	'wikilog-page-lc' => 'axa',
 );
 
 /** Greek (Ελληνικά)
@@ -2088,6 +2108,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Dferg
  * @author Imre
  * @author Locos epraix
@@ -2150,6 +2171,7 @@ Para poder publicar artículos y habilitar otras características de wikilog, es
 	'wikilog-summary-categories' => 'Rellenado en $2',
 	'wikilog-summary-more' => '[[$3|→ continuar leyendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discusión]])',
+	'wikilog-edit-hint' => 'Editar artículo wikilog: $1',
 	'wikilog-edit-fieldset-legend' => 'Ajustes de Wikilog:',
 	'wikilog-edit-signpub' => 'Firma y publica este artículo',
 	'wikilog-edit-signpub-tooltip' => 'Hace que el artículo se firme y publique en este wikilog una vez salvado.
@@ -2171,6 +2193,7 @@ Desmarcar esta casilla para mantener este artículo como borrador.',
 	'wikilog-comment-reject' => 'Rechazar este comentario (acción inmediata)',
 	'wikilog-newtalk-text' => '<!-- página en blanco creada por Wikilog -->',
 	'wikilog-newtalk-summary' => 'creado automáticamente por Wikilog',
+	'wikilog-feed-ns-title' => 'Artículos wikilog de $1',
 	'wikilog-feed-description' => 'Leer los mensajes más recientes en este canal.',
 	'wikilog-comment-feed-title1' => 'Comentario hecho por $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentario acerca de $3, hecho por $2 (#$1)',
@@ -2385,6 +2408,7 @@ Julkaistaksesi artikkeleita ja ottaaksesi muut wikilogin ominaisuudet käyttöö
 	'wikilog-edit-signpub' => 'Allekirjoita ja julkaise tämä artikkeli',
 	'wikilog-edit-signpub-tooltip' => 'Aiheuttaa tämän artikkelin allekirjoituksen ja julkaisemisen wikilogiinsa tallennettaessa.
 Poista tämän laatikon valinta pitääksesi artikkelin luonnoksena.',
+	'wikilog-comment-permalink' => '$1 kello $2',
 	'wikilog-comment-note-edited' => 'viimeksi muokattu $1 kello $2',
 	'wikilog-comment-anonsig' => '$3 (anonyymi)',
 	'wikilog-comment-pending' => 'Tämä kommentti odottaa hyväksyntää.',
@@ -2675,7 +2699,7 @@ Desmarque esta caixa para considerar o artigo un borrador.',
 	'wikilog-comment-reject' => 'Rexeitar este comentario (acción inmediata)',
 	'wikilog-newtalk-text' => '<!-- páxina baleira creada polo wikilog -->',
 	'wikilog-newtalk-summary' => 'creada automaticamente polo wikilog',
-	'wikilog-feed-ns-title' => '$1 artigos do wikiblogue',
+	'wikilog-feed-ns-title' => '$1 artigos do wikilog',
 	'wikilog-feed-description' => 'Lea as mensaxes máis recentes nesta fonte de novas.',
 	'wikilog-comment-feed-title1' => 'Comentario de $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentario de $2 a "$3" (#$1)',
@@ -3714,6 +3738,7 @@ $messages['ja'] = array(
 	'wikilog-summary-categories' => '$2に分類',
 	'wikilog-summary-more' => '[[$3|→ 続きを読む…]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|トーク]])',
+	'wikilog-edit-hint' => 'ウィキログ記事を編集：$1',
 	'wikilog-edit-fieldset-legend' => 'ウィキログのオプション:',
 	'wikilog-edit-signpub' => 'この記事に署名し公開する',
 	'wikilog-edit-signpub-tooltip' => '保存時にこの記事が署名され、そのウィキログに公開されます。この記事を下書きのままにするのなら、このボックスをチェックしないでください。',
@@ -3734,6 +3759,7 @@ $messages['ja'] = array(
 	'wikilog-comment-reject' => 'このコメントを拒否 (即時)',
 	'wikilog-newtalk-text' => '<!-- ウィキログによって作成された空白ページ -->',
 	'wikilog-newtalk-summary' => 'ウィキログにより自動的に作成',
+	'wikilog-feed-ns-title' => '$1ウィキログ記事',
 	'wikilog-feed-description' => 'このフィードで最新の投稿を読む。',
 	'wikilog-comment-feed-title1' => '$2からのコメント(#$1)',
 	'wikilog-comment-feed-title2' => '$3への$2からのコメント(#$1)',
@@ -4069,9 +4095,45 @@ $messages['lzz'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
+	'wikilog-specialwikilog-title' => "Tatitr'asa wiki",
+	'wikilog-specialwikilog' => "Tatitr'asa wiki",
+	'wikilog-log-pagename' => "Tatitr'asa momban'ny tao eo amin'ny Tatitr'asa wiki",
+	'wikilog-log-pagetext' => "Eo ambany misy lisitry ny tao eo amin'ny wikilog",
 	'wikilog-new-item-go' => 'Amboary',
 	'wikilog-published' => 'Voatahiry',
 	'wikilog-actions' => 'Tao/asa',
+	'wikilog-comment-edit' => 'Hanova io hafatra io',
+	'wikilog-comment-delete' => 'Hamafa ilay hafatra',
+	'wikilog-comment-history' => "Hijery ny tantaran'ny hafatra",
+	'wikilog-comment-approve' => 'Hanaiky io hafatra io (tao mandaitra avy hatrany)',
+	'wikilog-comment-reject' => 'Handà io hafatra io (tao mandaitra avy hatrany)',
+	'wikilog-newtalk-text' => "<!-- Pejy fotsy noforonin'i Wikilog -->",
+	'wikilog-newtalk-summary' => "noforonin'i Wikilog ho azy",
+	'wikilog-feed-ns-title' => "Lahatsoratra tatitr'asa wiki $1",
+	'wikilog-comment-feed-title1' => "Hafatra napetrak'i $2 (faha $1)",
+	'wikilog-comment-feed-title2' => "Hafatri'i $2 tamin'ny $3 (faha $1)",
+	'wikilog-form-wikilog' => "Tatitr'asa wiki",
+	'wikilog-form-category' => 'Sokajy :',
+	'wikilog-form-name' => 'Anarana :',
+	'wikilog-form-author' => 'Mpanoratra azy:',
+	'wikilog-form-tag' => 'Mpanamarika :',
+	'wikilog-form-date' => 'Daty :',
+	'wikilog-form-status' => 'Sata :',
+	'wikilog-form-preview' => 'Topi-maso :',
+	'wikilog-form-comment' => 'Resaka :',
+	'wikilog-show-all' => 'Petra-tsoratra rehetra',
+	'wikilog-show-published' => 'Voatahiry',
+	'wikilog-show-drafts' => 'Fanoharana',
+	'wikilog-submit' => 'Alefa',
+	'wikilog-preview' => 'Topi-maso',
+	'wikilog-edit-lc' => 'hanova',
+	'wikilog-reply-lc' => 'hamaly',
+	'wikilog-delete-lc' => 'hamafa',
+	'wikilog-approve-lc' => 'ekena',
+	'wikilog-reject-lc' => 'lavina',
+	'wikilog-page-lc' => 'pejy',
+	'wikilog-history-lc' => 'tantara',
+	'wikilog-doc-import-comment' => "Toromarika nampidirina avy any amin'ny Tatitr'asa wiki",
 );
 
 /** Macedonian (Македонски)
@@ -4531,6 +4593,7 @@ For å publisere artikler og tillate andre wikiloggegenskaper må denne opprette
 	'wikilog-summary-categories' => 'Lagret under $2',
 	'wikilog-summary-more' => '[[$3|→ fortsett å lese...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|diskusjon]])',
+	'wikilog-edit-hint' => 'Rediger wikilog-artikkel: $1',
 	'wikilog-edit-fieldset-legend' => 'Alternativ for Wikilog:',
 	'wikilog-edit-signpub' => 'Signér og publiser denne artikkelen',
 	'wikilog-edit-signpub-tooltip' => 'Lagring fører til at denne artikkelen blir signert og publisert i sin wikilogg.
@@ -4552,6 +4615,7 @@ Hak vekk denne boksen dersom du vil beholde artikkelen som et utkast.',
 	'wikilog-comment-reject' => 'Avvis denne kommentaren (utføres umiddelbart)',
 	'wikilog-newtalk-text' => '<!-- tom side opprettet av Wikilog -->',
 	'wikilog-newtalk-summary' => 'automatisk opprettet av Wikilog',
+	'wikilog-feed-ns-title' => '$1 wikilog-artikler',
 	'wikilog-feed-description' => 'Les det nyeste innlegget i denne feeden.',
 	'wikilog-comment-feed-title1' => 'Kommentar av $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Kommentar av $2 til $3 (#$1)',
@@ -4766,7 +4830,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'wikilog-desc' => 'Dodaje funkcjonalność blogu – tworzy hybrydę wiki i blogu',
+	'wikilog-desc' => 'Dodaje funkcję blogu – tworzy hybrydę wiki i blogu',
 	'wikilog-auto' => 'Wikiblog Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikiblog',
 	'right-wl-postcomment' => 'Dodawanie komentarzy do wikirejestru artykułów',
@@ -4783,7 +4847,7 @@ $messages['pl'] = array(
 	'wikilog-missing-wikilog' => 'To jest strona [[{{int:wikilog-help}}|wikiblogu]] dla [[{{FULLPAGENAME}}]].
 
 Ten wikiblog jeszcze nie został utworzony.
-Jeśli chcesz opublikować artykuł i włączyć inne funkcjonalności wikiblogu musi on najpierw zostać utworzony.
+Jeśli chcesz opublikować artykuł i włączyć inne funkcje wikiblogu musi on najpierw zostać utworzony.
 
 * <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Utwórz wikiblog].</span>',
 	'wikilog-information' => 'Informacje o wikiblogu',
@@ -4821,6 +4885,7 @@ Jeśli chcesz opublikować artykuł i włączyć inne funkcjonalności wikiblogu
 	'wikilog-summary-categories' => 'W {{PLURAL:$1|kategorii|kategoriach:}} $2',
 	'wikilog-summary-more' => '[[$3|→ kontynuuj czytanie...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|dyskusja]])',
+	'wikilog-edit-hint' => 'Edytuj artykuł wikilogu – $1',
 	'wikilog-edit-fieldset-legend' => 'Opcje wikiblogu:',
 	'wikilog-edit-signpub' => 'Podpisz i opublikuj ten artykuł',
 	'wikilog-edit-signpub-tooltip' => 'Zapisanie tego artykułu spowoduje jego podpisanie i opublikowanie.
@@ -4843,6 +4908,7 @@ Usuń zaznaczenie aby pozostawić ten artykuł jako wersję roboczą.',
 	'wikilog-newtalk-text' => '<!-- pusta strona utworzona przez wikiblog -->',
 	'wikilog-newtalk-summary' => 'utworzone automatycznie przez wikiblog',
 	'wikilog-feed-title' => '{{SITENAME}} – $1 [$2]',
+	'wikilog-feed-ns-title' => 'Artykuły wikilogu $1',
 	'wikilog-feed-description' => 'Przeczytaj najnowsze posty w tym wątku.',
 	'wikilog-comment-feed-title1' => 'Komentarz od $2 (nr $1)',
 	'wikilog-comment-feed-title2' => 'Komentarz od $2 do $3 (nr $1)',
@@ -4959,6 +5025,7 @@ Për publiché d'artìcoj and permëtte d'àutre fonsionalità wikilog, a venta 
 	'wikilog-summary-categories' => 'Archivi sota $2',
 	'wikilog-summary-more' => '[[$3|→ anans a lese...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|ciaciarade]])',
+	'wikilog-edit-hint' => 'Modìfica artìcol wikilog: $1',
 	'wikilog-edit-fieldset-legend' => 'Opsion ëd wikilog:',
 	'wikilog-edit-signpub' => "Sot-signa e pùblica s'artìcol",
 	'wikilog-edit-signpub-tooltip' => "A fa an manera che l'artìcol a sia sot-signà e publicà an sò wikilog cand salvà.
@@ -4980,6 +5047,7 @@ Desselession-a costa casela për manten-e l'artìcol an në stat dë sbòss.",
 	'wikilog-comment-reject' => 'Arfudé ës coment (assion imedià)',
 	'wikilog-newtalk-text' => '<!-- pàgina veuida creà da Wikilog -->',
 	'wikilog-newtalk-summary' => 'creà an automàtich da Wikilog',
+	'wikilog-feed-ns-title' => '$1 artìcoj wikilog',
 	'wikilog-feed-description' => "Lese j'artìcoj pì recent an cost feed.",
 	'wikilog-comment-feed-title1' => 'Coment da $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Coment da $2 a $3 (#$1)',
@@ -5064,6 +5132,7 @@ $messages['ps'] = array(
 	'wikilog-pager-last' => 'وروستني',
 	'wikilog-has-comments' => '{{PLURAL:$1|يوه تبصره|$1 تبصرې}}',
 	'wikilog-edit-fieldset-legend' => 'د ويکي يادښت خوښنې:',
+	'wikilog-comment-deleted' => 'دا تبصره ړنګه شوې.',
 	'wikilog-comment-edit' => 'دا تبصره سمول',
 	'wikilog-comment-delete' => 'دا تبصره ړنګول',
 	'wikilog-comment-history' => 'د تبصرې پېښليک کتل',
@@ -5228,12 +5297,12 @@ O comentário só aparecerá após ser revisto por um moderador.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author BrunaaAa
  * @author Giro720
  * @author Hamilton Abreu
  * @author Juliano
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'wikilog-desc' => "Adiciona funcionalidades de ''blog'', criando um híbrido ''wiki-blog''",
@@ -5291,6 +5360,7 @@ Para publicar e ativar outras funcionalidade do wikilog, será necessário prime
 	'wikilog-summary-categories' => 'Categorizado em $2',
 	'wikilog-summary-more' => '[[$3|→ continuar lendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussão]])',
+	'wikilog-edit-hint' => 'Editar o artigo wikilog: $1',
 	'wikilog-edit-fieldset-legend' => 'Opções de wikilog:',
 	'wikilog-edit-signpub' => 'Asssinar e publicar este artigo',
 	'wikilog-edit-signpub-tooltip' => 'Causa que este artigo seja assinado e publicado no respectivo wikilog quando for gravado.
@@ -5312,6 +5382,7 @@ Desmarque a caixa para manter o artigo em rascunho.',
 	'wikilog-comment-reject' => 'Rejeitar este comentário (ação imediata)',
 	'wikilog-newtalk-text' => '<!-- página em branco criada pelo Wikilog -->',
 	'wikilog-newtalk-summary' => 'criado automaticamente pelo wikilog',
+	'wikilog-feed-ns-title' => '$1 artigos wikilog',
 	'wikilog-feed-description' => 'Leia as postagens mais recentes neste feed.',
 	'wikilog-comment-feed-title1' => 'Comentário de $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Comentário de $2 para $3 (#$1)',
@@ -5742,6 +5813,10 @@ $messages['rue'] = array(
 	'wikilog-no-comments' => 'жадны коментарї',
 	'wikilog-has-comments' => '$1 {{PLURAL:$1|коментарь|коментарї|коментарів}}',
 	'wikilog-summary-uncategorized' => 'Некатеґорізованы',
+	'wikilog-comment-anonsig' => '$3 (анонім)',
+	'wikilog-title-comments' => 'Коментарї - $1',
+	'wikilog-post-comment' => 'Послати новый коментарь',
+	'wikilog-post-reply' => 'Послати нову одповідь',
 	'wikilog-form-wikilog' => 'Вікілоґ:',
 	'wikilog-form-category' => 'Катеґорія:',
 	'wikilog-form-name' => 'Назва:',
@@ -5760,6 +5835,7 @@ $messages['rue'] = array(
 	'wikilog-delete-lc' => 'змазати',
 	'wikilog-approve-lc' => 'схвалити',
 	'wikilog-page-lc' => 'сторінка',
+	'wikilog-history-lc' => 'історія',
 );
 
 /** Sardinian (Sardu)
@@ -6677,6 +6753,7 @@ Yorum, bir moderatör tarafından incelendikten sonra görülecek.',
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Aleksandrit
  * @author Prima klasy4na
  * @author Тест
@@ -6734,6 +6811,7 @@ $messages['uk'] = array(
 	'wikilog-error-msg' => 'Вікілоґ: $1',
 	'wikilog-invalid-param' => 'Неправильний параметр: $1.',
 	'wikilog-invalid-author' => 'Неправильне ім’я автора: $1.',
+	'wikilog-file-not-found' => 'Неіснуючий файл: $1.',
 	'wikilog-form-category' => 'Категорія:',
 	'wikilog-form-name' => 'Назва:',
 	'wikilog-form-author' => 'Автор:',

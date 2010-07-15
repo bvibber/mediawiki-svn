@@ -237,7 +237,7 @@
 			}
 		}
 
-		// $dbw->immediateCommit();
+		// $dbw->commit();
 
 		# First time through: get contents, set time for conflict
 		# checking, etc.

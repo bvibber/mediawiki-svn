@@ -316,6 +316,7 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-characters-page-greek',
 				'wikieditor-toolbar-characters-page-cyrillic',
 				'wikieditor-toolbar-characters-page-arabic',
+				'wikieditor-toolbar-characters-page-persian',
 				'wikieditor-toolbar-characters-page-hebrew',
 				'wikieditor-toolbar-characters-page-bangla',
 				'wikieditor-toolbar-characters-page-telugu',

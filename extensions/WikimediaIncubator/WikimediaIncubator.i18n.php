@@ -437,6 +437,11 @@ $messages['dsb'] = array(
 	'randombytest-nopages' => 'W twójom testowem wikiju w mjenjowem rumje $1 boki njejsu.',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'wminc-viewuserlang-go' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista
@@ -822,10 +827,13 @@ $messages['ig'] = array(
  * @author Darth Kule
  * @author HalphaZ
  * @author Melos
+ * @author OrbiliusMagister
  */
 $messages['it'] = array(
 	'wminc-viewuserlang-user' => 'Nome utente:',
 	'wminc-viewuserlang-go' => 'Vai',
+	'wminc-testwiki' => 'Test wiki:',
+	'wminc-prefinfo-code' => 'Il codice ISO 639 per la lingua',
 	'wminc-prefinfo-project' => "Seleziona il progetto Wikimedia (l'opzione Incubator è per gli utentu che fanno del lavoro generale)",
 	'wminc-prefinfo-error' => 'Hai selezionato un progetto che ha bisogno di un codice di linguaggio',
 	'wminc-warning-unprefixed' => '"Attenzione: la pagina che si sta modificando non corrisponde a quella prefissata"',
@@ -987,6 +995,24 @@ $messages['lt'] = array(
 	'wminc-warning-suggest-move' => 'Galite [{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} perkelti puslapį į $1].',
 	'right-viewuserlang' => 'Žiūrėti [[Special:ViewUserLang|naudotojo kalbą ir testavimo wiki]]',
 	'randombytest' => 'Atsitiktinis puslapis iš testavimo wiki',
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'wminc-viewuserlang' => 'Sameklēt lietotāja valodu un testa projektu',
+	'wminc-viewuserlang-user' => 'Lietotājvārds:',
+	'wminc-viewuserlang-go' => 'Aiziet!',
+	'wminc-testwiki' => 'Testa projekts:',
+	'wminc-prefinfo-language' => 'Tava interfeisa valoda - nav saistīta ar testa projektu, kurā tu piedalies',
+	'wminc-prefinfo-code' => 'ISO 639 valodas kods',
+	'wminc-prefinfo-project' => 'Izvēlēties Wikimedia projektu (iespēja Incubator ir domāta tiem lietotājiem, kuri darbojas inkubatorā vispār, nevis konkrētos testa projektos)',
+	'wminc-prefinfo-error' => 'Jūs izvēlējāties projektu, bet nenorādījāt valodas kodu',
+	'wminc-warning-unprefixed' => "'''Brīdinājums:''' Lapai kuru rediģējat nav pievienots prefikss!",
+	'wminc-warning-suggest' => 'Varētu izveidot lapu [[$1]].',
+	'wminc-warning-suggest-move' => 'Varat [{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} pārvietot šo lapu uz $1].',
+	'right-viewuserlang' => 'Apskatīt [[Special:ViewUserLang|lietotāja valodu un testa projektu]]',
 );
 
 /** Lazuri (Lazuri)

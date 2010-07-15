@@ -44,6 +44,14 @@ $messages['af'] = array(
 	'massblank-blankcomment' => 'Rede:',
 );
 
+/** Arabic (العربية)
+ * @author Loya
+ */
+$messages['ar'] = array(
+	'massblank-nopages' => 'لا صفحات جديدة بواسطة [[Special:Contributions/$1|$1]] في أحدث التغييرات.',
+	'massblank-blankcomment' => 'السبب:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -100,7 +108,7 @@ Gib einen Kommentar ein und drücke auf den Knopf zum Leeren der Seiten.',
 Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Seiten zu erhalten.',
 	'massblank-submit-user' => 'Hole die Liste',
 	'massblank-submit-blank' => 'Ausgewählte Seiten leeren',
-	'massblank-blankcomment' => 'Grund für die Massenleerung:',
+	'massblank-blankcomment' => 'Grund:',
 	'right-massblank' => 'Massenleerung von Seiten',
 );
 
@@ -326,6 +334,24 @@ Insira o nome do utilizador ou o endereço IP para obter a lista das páginas cu
 	'right-massblank' => 'Esvaziar (remover o conteúdo de) múltiplas páginas',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'massblank' => 'Esvaziar múltiplas páginas',
+	'massblank-desc' => 'Dá a administradores a capacidade de [[Special:MassBlank|esvaziar múltiplas páginas]] (remover o seu conteúdo)',
+	'massblank-nopages' => 'Não existem páginas novas criadas por [[Special:Contributions/$1|$1]] nas mudanças recentes.',
+	'massblank-list' => 'As páginas seguintes foram criadas recentemente por [[Special:Contributions/$1|$1]];
+insira um comentário e clique sobre o botão para esvaziá-las.',
+	'massblank-defaultreason' => 'Esvaziamento das páginas adicionadas por $1',
+	'massblank-tools' => 'Esta ferramenta permite remover o conteúdo de múltiplas páginas adicionadas recentemente por um usuário ou endereço de IP.
+Insira o nome do usuário ou o endereço de IP para obter a lista das páginas cujo conteúdo será removido.',
+	'massblank-submit-user' => 'Prosseguir',
+	'massblank-submit-blank' => 'Esvaziar selecionadas',
+	'massblank-blankcomment' => 'Motivo:',
+	'right-massblank' => 'Remover o conteúdo de múltiplas páginas',
+);
+
 /** Russian (Русский)
  * @author Grigol
  * @author Александр Сигачёв
@@ -375,5 +401,17 @@ Ipasok ang pangalan ng tagagamit o adres ng IP upang makakuha ng isang talaan ng
 	'massblank-submit-blank' => 'Napili na ang pagpapatlang',
 	'massblank-blankcomment' => 'Dahilan ng pagpapatlang:',
 	'right-massblank' => 'Malawakang tanggalan ng laman ang mga pahina',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'massblank-blankcomment' => 'Причина:',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'massblank-blankcomment' => '理由：',
 );
 

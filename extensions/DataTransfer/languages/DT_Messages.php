@@ -302,10 +302,10 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'datatransfer-desc' => 'Aotreañ a ra da enporzhiañ hag ezporzhiañ roadennoù eus galvoù patromoù',
 	'viewxml' => 'Gwelet XML',
-	'dt_viewxml_docu' => 'Mar plij dibabit e-barzh ar rummadoù hag an esaouennoù anv da heul evit gwelet er furmad XML.',
+	'dt_viewxml_docu' => 'Dibabit e-touez ar rummadoù hag an esaouennoù anv da heul evit gwelet er furmad XML.',
 	'dt_viewxml_categories' => 'Rummadoù',
-	'dt_viewxml_namespaces' => 'esaouennoù anv',
-	'dt_viewxml_simplifiedformat' => 'Furmad eeunet',
+	'dt_viewxml_namespaces' => 'Esaouennoù anv',
+	'dt_viewxml_simplifiedformat' => 'Furmad eeunaet',
 	'dt_xml_namespace' => 'Esaouenn anv',
 	'dt_xml_pages' => 'Pajennoù',
 	'dt_xml_page' => 'Pajenn',
@@ -316,13 +316,13 @@ $messages['br'] = array(
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Testenn dieub',
 	'importxml' => 'Enporzhiañ  XML',
-	'dt_import_selectfile' => 'Mar plij dibabit ar restr $1 da enporzhiañ :',
-	'dt_import_encodingtype' => 'Doare enkodañ',
+	'dt_import_selectfile' => 'Dibabit ar restr $1 da enporzhiañ :',
+	'dt_import_encodingtype' => 'Seurt enkodadur',
 	'dt_import_editsummary' => 'Enporzhiadur $1',
 	'dt_import_importing' => "Oc'h enporzhiañ...",
 	'dt_import_success' => '$1 {{PLURAL:$1|bajenn|pajenn}} a vo krouet diwar ar restr $2.',
 	'importcsv' => 'Enporzh CSV',
-	'dt_importcsv_badheader' => 'Fazi : titl ar golonenn $1 , "$2", a rank bezañ "$3", "$4" pe gant ar stumm "anv_ar_patrom[anv_ar_maezienn]"',
+	'dt_importcsv_badheader' => 'Fazi : titl ar bann $1, "$2", a rank bezañ "$3", "$4" pe gant ar stumm "anv_ar_patrom[anv_ar_vaezienn]"',
 	'right-datatransferimport' => 'Enporzhiañ roadennoù',
 );
 
@@ -474,6 +474,11 @@ $messages['dsb'] = array(
 	'importcsv' => 'Importěrowanje CSV',
 	'dt_importcsv_badheader' => "Zmólka: głowa słupa $1, '$2', musy pak '$3', '$4' byś pak formu 'mě_pśedłogi[mě_póla]' měś",
 	'right-datatransferimport' => 'Daty importěrowaś',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'dt_xml_page' => 'Axa',
 );
 
 /** Greek (Ελληνικά)
@@ -986,6 +991,7 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'dt_xml_template' => 'Shablono',
+	'dt_xml_name' => 'Nomo',
 	'dt_xml_title' => 'Titulo',
 );
 
@@ -998,6 +1004,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
@@ -1017,6 +1024,7 @@ $messages['it'] = array(
 	'dt_xml_title' => 'Titolo',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Testo libero',
+	'dt_import_encodingtype' => 'Tipo di codifica',
 	'right-datatransferimport' => 'Importa dati',
 );
 
@@ -1950,6 +1958,7 @@ $messages['tl'] = array(
  * @author Joseph
  * @author Karduelis
  * @author Mach
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -1959,7 +1968,7 @@ $messages['tr'] = array(
 	'dt_viewxml_categories' => 'Kategoriler',
 	'dt_viewxml_namespaces' => 'Alan adları',
 	'dt_viewxml_simplifiedformat' => 'Basitleştirilmiş format',
-	'dt_xml_namespace' => 'Alan adı',
+	'dt_xml_namespace' => 'Ad boşluğu',
 	'dt_xml_pages' => 'Sayfalar',
 	'dt_xml_page' => 'Sayfa',
 	'dt_xml_template' => 'Şablon',

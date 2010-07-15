@@ -42,6 +42,10 @@ function wfSpamDiffToolOnDiffView( $diffEngine, $oldRev, $newRev ) {
 		return true;
 	}
 
+	if ( !$oldRev || !$newRev ) {
+		return true;
+	}
+
 	$wgOut->addHTML(
 		'<table style="width:100%"><tr><td style="width:50%"></td><td style="width:50%">
 		<div style="text-align:center">[' . $wgUser->getSkin()->link(

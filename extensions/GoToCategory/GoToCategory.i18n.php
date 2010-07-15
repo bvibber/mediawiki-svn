@@ -255,7 +255,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'gotocategory-desc' => 'Przeszukiwanie przestrzeni nazw Kategoria: dla funkcjonalności „Przejdź” w wyszukiwarce',
+	'gotocategory-desc' => 'Przeszukiwanie przestrzeni nazw Kategoria – dla funkcji „Idź do strony” w wyszukiwarce',
 );
 
 /** Piedmontese (Piemontèis)

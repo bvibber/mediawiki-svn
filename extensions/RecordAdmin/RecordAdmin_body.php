@@ -1033,7 +1033,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 */
 	function expandTableMagic( &$parser, $type ) {
 		global $wgTitle;
-		$parser->mOutput->mCacheTime = -1;
+		$parser->mOutput->mCacheTime = 100;
 		$filter   = array();
 		$op       = array();
 		$title    = '';

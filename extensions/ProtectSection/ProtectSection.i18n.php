@@ -211,12 +211,13 @@ $messages['fi'] = array(
  * @author Grondin
  * @author PieRRoMaN
  * @author Sherbrooke
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'protectsection_desc' => 'Permet aux utilisateurs autorisés de protéger des parties d’une page au moyen de la balise <code>&lt;protect&gt;</code>',
 	'protectsection_add_remove' => 'Vous avez tenté d’ajouter ou d’effacer une section protégée.',
 	'protectsection_modify' => 'Vous avez tenté de modifier du texte protégé.',
-	'protectsection_add_above' => "Vous avez essayé d'insérer du texte devant une section protégée",
+	'protectsection_add_above' => 'Vous avez essayé d’insérer du texte devant une section protégée',
 	'protectsection_forbidden' => 'Interdit',
 	'right-protectsection' => 'Protéger les sections de page',
 );

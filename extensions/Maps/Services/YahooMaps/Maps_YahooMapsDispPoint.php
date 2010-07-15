@@ -20,33 +20,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	
-	protected $markerStringFormat = 'getYMarkerData(lat, lon, "title", "label", "icon")';
-	
-	protected function getDefaultZoom() {
-		global $egMapsYahooMapsZoom;
-		return $egMapsYahooMapsZoom;
-	}
-	
 	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 *
-	 */
-	public function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage;
-		
-		$egYahooMapsOnThisPage++;
-		
-		$this->elementNr = $egYahooMapsOnThisPage;
-	}
-	
-	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
-	 *
+	 * @see MapsBaseMap::addSpecificMapHTML
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
-		
-		$mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
+		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
 			'div',
@@ -70,7 +48,7 @@ addOnloadHook(
 			[$this->types],
 			[$this->controls],
 			$this->autozoom,
-			[$this->markerString]
+			$this->markerJs
 		);
 	}
 );

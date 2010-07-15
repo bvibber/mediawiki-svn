@@ -241,7 +241,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'closewikis-desc' => "Aotreañ a ra da brennañ lec'hiennoù wiki er merour wiki-mañ",
+	'closewikis-desc' => "Talvezout a ra da serriñ lec'hiennoù wiki er vagouri wikioù-mañ",
 	'closewikis-page' => 'Serriñ ar wiki',
 	'closewikis-page-close' => 'Serriñ ar wiki',
 	'closewikis-page-close-wiki' => 'Wiki :',
@@ -254,17 +254,17 @@ $messages['br'] = array(
 	'closewikis-page-reopen-reason' => 'Abeg :',
 	'closewikis-page-reopen-submit' => 'Addigeriñ',
 	'closewikis-page-reopen-success' => 'Addigoret eo bet ar wiki ervat',
-	'closewikis-page-err-nowiki' => "N'eo ket mat ar wiki bet lakaet",
+	'closewikis-page-err-nowiki' => 'Fall eo ar wiki spisaet',
 	'closewikis-page-err-closed' => 'Serret eo ar wiki dija',
 	'closewikis-page-err-opened' => "N'eo ket serret ar wiki",
 	'closewikis-list' => 'Roll ar wikioù serret',
-	'closewikis-list-intro' => 'Er roll-mañ ez eus ar wikioù serret gant ar stewarded.',
+	'closewikis-list-intro' => 'Er roll-mañ emañ ar wikioù serret gant stewarded.',
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Serret gant',
 	'closewikis-list-header-timestamp' => "Serret d'an",
 	'closewikis-list-header-dispreason' => 'Abeg diskwelet',
 	'closewikis-log' => 'Marilh ar wikioù serret',
-	'closewikis-log-header' => 'Amañ ez eo ur marilh eus prennadurioù hag addigoradurioù wikioù bet graet gant stewarded',
+	'closewikis-log-header' => 'Amañ emañ marilh ar serriñ hag an addigeriñ wikioù graet gant stewarded',
 	'closewikis-log-close' => '{{Gender:.|en|he}} deus serret $2',
 	'closewikis-log-reopen' => '{{Gender:.|en|he}} deus addigoret $2',
 	'right-editclosedwikis' => 'Aozañ ar wikioù serret',
@@ -1071,7 +1071,7 @@ $messages['ksh'] = array(
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-dreason' => 'Der Jrond (för Aanzezeije):',
 	'closewikis-page-close-reason' => 'Der Jrond (för en et Logbooch ze schrieve):',
-	'closewikis-page-close-submit' => 'Zomache!',
+	'closewikis-page-close-submit' => 'Zohmaache',
 	'closewikis-page-close-success' => 'Dat Wiki es jetz zojemaat.',
 	'closewikis-page-reopen' => 'Wiki wider opmaache',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
@@ -1143,7 +1143,7 @@ $messages['li'] = array(
 	'closewikis-page-close-success' => 'De wiki is noe gesjlote',
 	'closewikis-page-reopen' => 'Wiki heräöpene',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
-	'closewikis-page-reopen-reason' => 'Raej:',
+	'closewikis-page-reopen-reason' => 'Reeje:',
 	'closewikis-page-reopen-submit' => 'Heräöpene',
 	'closewikis-page-reopen-success' => 'De wiki is noe heräöpend',
 	'closewikis-page-err-nowiki' => 'Ongeljige naam van wiki opgegaeve',
@@ -1161,6 +1161,40 @@ $messages['li'] = array(
 	'closewikis-log-reopen' => 'haet $2 heräöpend',
 	'right-editclosedwikis' => 'Gesjlaote wikis bewirke',
 	'right-closewikis' => "Gesjlaote wiki's",
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'closewikis-desc' => 'Ļauj slēgt atsevišķas vietnes vairāku wiki grupā',
+	'closewikis-page' => 'Slēgt wiki',
+	'closewikis-page-close' => 'Slēgt wiki',
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-dreason' => 'Iemesls (redzams):',
+	'closewikis-page-close-reason' => 'Iemesls (reģistros):',
+	'closewikis-page-close-submit' => 'Slēgt',
+	'closewikis-page-close-success' => 'Wiki veiksmīgi slēgta',
+	'closewikis-page-reopen' => 'Atjaunot wiki',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
+	'closewikis-page-reopen-reason' => 'Iemesls:',
+	'closewikis-page-reopen-submit' => 'Atjaunot',
+	'closewikis-page-reopen-success' => 'Wiki veiksmīgi atjaunota',
+	'closewikis-page-err-nowiki' => 'Norādītā wiki ir nederīga',
+	'closewikis-page-err-closed' => 'Wiki jau ir slēgta',
+	'closewikis-page-err-opened' => 'Wiki nav slēgta',
+	'closewikis-list' => 'Slēgto wiki saraksts',
+	'closewikis-list-intro' => "Šajā sarakst'uzskitītas pārvaldnieku slēgtās wiki",
+	'closewikis-list-header-wiki' => 'Wiki',
+	'closewikis-list-header-by' => 'Aizslēdza',
+	'closewikis-list-header-timestamp' => 'Slēgts',
+	'closewikis-list-header-dispreason' => 'Attēlotais iemesls',
+	'closewikis-log' => 'Wiki slēgšnu reģistrs',
+	'closewikis-log-header' => 'Visu pārvaldnieku veikto slēgšanu un atjaunošanu saraksts',
+	'closewikis-log-close' => 'slēdza $2',
+	'closewikis-log-reopen' => 'atjaunoja $2',
+	'right-editclosedwikis' => 'Rediģēt slēgtas wiki',
+	'right-closewikis' => 'Slēgt wiki',
 );
 
 /** Macedonian (Македонски)
@@ -1495,7 +1529,7 @@ $messages['pt-br'] = array(
 	'closewikis-page-close-success' => 'Wiki foi fechada com sucesso',
 	'closewikis-page-reopen' => 'Reabrir wiki',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
-	'closewikis-page-reopen-reason' => 'Razão:',
+	'closewikis-page-reopen-reason' => 'Motivo:',
 	'closewikis-page-reopen-submit' => 'Reabrir',
 	'closewikis-page-reopen-success' => 'Wiki reaberta com sucesso',
 	'closewikis-page-err-nowiki' => 'A wiki especificada é inválida',
@@ -2012,6 +2046,11 @@ $messages['vo'] = array(
 	'closewikis-log-reopen' => 'edönumaifükon $2',
 	'right-editclosedwikis' => 'Votükön vükis pefärmüköl',
 	'right-closewikis' => 'Färmükön vükis',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'closewikis-page-reopen-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

@@ -1,8 +1,8 @@
 <?php
 /**
- * A query printer for maps using the Google Maps API
+ * A query printer for maps using the Google Maps API.
  *
- * @file SM_GoogleMaps.php
+ * @file SM_GoogleMapsQP.php
  * @ingroup SMGoogleMaps
  *
  * @author Robert Buzink
@@ -14,23 +14,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-final class SMGoogleMapsQP extends SMMapPrinter {
+class SMGoogleMapsQP extends SMMapPrinter {
 	
+	/**
+	 * @see SMMapPrinter::getServiceName
+	 */	
 	protected function getServiceName() {
 		return 'googlemaps2';
 	}
 	
 	/**
-	 * @see SMMapPrinter::setQueryPrinterSettings()
+	 * @see SMMapPrinter::initSpecificParamInfo
 	 */
-	protected function setQueryPrinterSettings() {
-		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix, $egMapsGMapOverlays;
-		
-		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
+	protected function initSpecificParamInfo( array &$parameters ) {
+		global $egMapsGMapOverlays;
 
-		$this->defaultZoom = $egMapsGoogleMapsZoom;
-		
-		$this->specificParameters = array(
+		$parameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -42,46 +41,26 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	}
 	
 	/**
-	 * @see SMMapPrinter::doMapServiceLoad()
+	 * @see SMMapPrinter::addSpecificMapHTML
 	 */
-	protected function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage;
+	public function addSpecificMapHTML() {
+		$mapName = $this->service->getMapId();	
 		
-		$egGoogleMapsOnThisPage++;
-		
-		$this->elementNr = $egGoogleMapsOnThisPage;
-	}
-	
-	/**
-	 * @see SMMapPrinter::addSpecificMapHTML()
-	 */
-	protected function addSpecificMapHTML() {
-		$this->mService->addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
-		
-		// TODO: refactor up like done in maps with display point
-		$markerItems = array();
-		
-		foreach ( $this->mLocations as $location ) {
-			list( $lat, $lon, $title, $label, $icon ) = $location;
-			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
-		}
-		
-		// Create a string containing the marker JS.
-		$markersString = implode( ',', $markerItems );
+		$this->service->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
 		
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$this->mService->addDependency( Html::inlineScript( <<<EOT
+		$this->service->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
-		initializeGoogleMap('$this->mapName', 
+		initializeGoogleMap('$mapName', 
 			{
 				lat: $this->centreLat,
 				lon: $this->centreLon,
@@ -89,9 +68,10 @@ addOnloadHook(
 				type: $this->type,
 				types: [$this->types],
 				controls: [$this->controls],
-				scrollWheelZoom: $this->autozoom
+				scrollWheelZoom: $this->autozoom,
+				kml: [$this->kml]
 			},
-			[$markersString]	
+			$this->markerJs	
 		);
 	}
 );
@@ -100,7 +80,10 @@ EOT
 	}
 	
 	/**
-	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the specific ones to the list.
+	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the
+	 * specific ones to the list.
+	 * 
+	 * @return array
 	 */
     public function getParameters() {
         $params = parent::getParameters();

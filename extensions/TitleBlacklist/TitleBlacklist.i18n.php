@@ -1068,9 +1068,9 @@ $messages['ml'] = array(
 	'titleblacklist-desc' => '[[MediaWiki:Titleblacklist]], [[MediaWiki:Titlewhitelist]] എന്നിവയിൽ കൊടുത്തിരിക്കുന്ന അംഗത്വങ്ങളും താളുകളും സൃഷ്ടിക്കുന്നത് തടയാൻ  കാര്യനിർവാഹകരെ അനുവദിക്കുന്നു.',
 	'titleblacklist' => '# ഇതു തലക്കെട്ടിന്റെ കരിമ്പട്ടികയാണ്‌. ഈ പട്ടികയിലുള്ള ഇനവുമായി  യോജിക്കുന്ന ലേഖനങ്ങളും ഉപയോക്തൃനാമങ്ങളും സൃഷ്ടിക്കാനാവില്ല. 
 # അഭിപ്രായത്തിനു "#" ഉപയോഗിക്കുക.
-# ഇതു സ്വതവേ കേസ് സെൻസിറ്റീവ് ആണ്.',
+# ഇതു സ്വതേ കേസ് സെൻസിറ്റീവ് ആണ്.',
 	'titlewhitelist' => '# ഇത് തലക്കെട്ടിന്റെ ശുദ്ധപട്ടികയാണ്. കുറിപ്പിടാനായി "#" ഉപയോഗിക്കുക.  
-# ഇത് സ്വതവേ കേസ് സെൻസിറ്റീവ് ആണ്',
+# ഇത് സ്വതേ കേസ് സെൻസിറ്റീവ് ആണ്',
 	'titleblacklist-forbidden-edit' => '"$2" എന്ന തലക്കെട്ട് സൃഷ്ടിക്കുന്നതു നിരോധിച്ചിട്ടുള്ളതാണ്‌. ആ തലക്കെട്ട് താഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്ന കരിമ്പട്ടിക ഇനവുമായി യോജിക്കുന്നു: <code>$1</code>',
 	'titleblacklist-forbidden-move' => '"$3" എന്ന തലക്കെട്ട് സൃഷ്ടിക്കുന്നതു നിരോധിച്ചിട്ടുള്ളതിനാൽ, "$2" എന്ന താൾ "$3" എന്ന തലക്കെട്ടിലേക്കു മാറ്റാൻ പറ്റില്ല. ആ തലക്കെട്ട് താഴെ പ്രദർശിപ്പിച്ചിരിക്കുന്ന കരിമ്പട്ടിക ഇനവുമായി യോജിക്കുന്നു: <code>$1</code>',
 	'titleblacklist-forbidden-upload' => '"$2" എന്ന നാമം പ്രമാണത്തിനു കൊടുക്കുന്നത് നിരോധിച്ചിട്ടുള്ളതാണ്‌.
@@ -1319,9 +1319,26 @@ O nome corresponde à seguinte entrada na lista negra: <code>$1</code>',
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'titleblacklist-desc' => 'Permite administratorilor să interzică crearea de pagini și de conturi de utilizator, folosind o [[MediaWiki:Titleblacklist|listă neagră]] și o [[MediaWiki:Titlewhitelist|listă albă]]',
+	'titleblacklist' => '# Aceasta este lista neagră pentru titluri. Nu pot fi create titluri și conturi care corespund la una din expresiile regulate de aici.
+# Folosiți „#” pentru comentarii.
+# În mod implicit nu contează majusculele.',
+	'titlewhitelist' => '# Aceasta este lista albă pentru titluri. Folosiți „#” pentru comentarii. 
+# În mod implicit nu contează majusculele.',
+	'titleblacklist-forbidden-edit' => 'Este interzisă crearea unui titlu „$2”.
+Interdicția a fost declanșată de următorul element din lista neagră: <code>$1</code>',
+	'titleblacklist-forbidden-move' => 'Titlul „$2” nu se poate redenumi în „$3” pentru că acesta din urmă este interzis.
+Interdicția a fost declanșată de următorul element din lista neagră: <code>$1</code>',
+	'titleblacklist-forbidden-upload' => 'Numele de fișier „$2” este interzis.
+Interdicția a fost declanșată de următorul element din lista neagră: <code>$1</code>',
+	'titleblacklist-forbidden-new-account' => 'Nu se poate crea un cont de utilizator cu numele „$2”.
+Interdicția a fost declanșată de următorul element din lista neagră: <code>$1</code>',
+	'titleblacklist-invalid' => '{{PLURAL:$1|Următoarea linie|Următoarele linii}} din lista neagră a titlurilor {{PLURAL:$1|este invalidă|sînt invalide}};
+corectați{{PLURAL:$1|o|-le}} înainte de a salva pagina.',
 	'right-tboverride' => 'Înlocuiți titlul listei negre',
 );
 

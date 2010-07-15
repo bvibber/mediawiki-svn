@@ -191,11 +191,11 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'newestpages' => 'Pajennoù nevesañ',
 	'newestpages-desc' => 'Diskouez a ra an [[Special:Newestpages|X pajenn ziwezhañ]] bet ouzhpennet war ar wiki.',
-	'newestpages-header' => "'''Ar bajenn-mañ a zo ur roll eus ar {{PLURAL:$1|bajenn neveshañ|$1 pajenn neveshañ}} war ar wiki.'''",
+	'newestpages-header' => "'''Rollañ a ra ar bajenn-mañ {{PLURAL:$1|pajenn nevesañ|$1 pajenn nevesañ}} ar wiki.'''",
 	'newestpages-limitlinks' => 'Diskouez betek $1 pajenn',
-	'newestpages-namespace' => 'Spasi anvioù :',
+	'newestpages-namespace' => 'Esaouenn anv :',
 	'newestpages-none' => 'Pajenn ebet kavet.',
-	'newestpages-ns-header' => "'''Ar bajenn-mañ a zo ur roll eus ar {{PLURAL:$1|bajenn neveshañ|$1 pajenn neveshañ}} er spas $2 .'''",
+	'newestpages-ns-header' => "'''Rollañ a ra ar bajenn-mañ ar {{PLURAL:$1|bajenn nevesañ|$1 pajenn nevesañ}} en esaouenn anv $2.'''",
 	'newestpages-showing' => 'Rollañ {{PLURAL:$1|diouzh ar bajenn nevesañ|diouzh ar $1 pajenn nevesañ}} :',
 	'newestpages-submit' => 'Mont',
 	'newestpages-showredir' => 'Diskouez ar pajennoù adkas',
@@ -308,8 +308,7 @@ $messages['dsb'] = array(
 $messages['ee'] = array(
 	'newestpages' => 'Axa siwo le yeye wu',
 	'newestpages-desc' => 'Efia [[Special:Newestpages|axa X susuewo]] siwo woda ɖe wiki la dzi',
-	'newestpages-header' => "'''This page lists the {{PLURAL:$1|newest page|$1 newest pages}} on the wiki.'''<br />
-'''Axa sia fia {{PLURAL:$1|axa yeyeawu|axa $1 yeyeawu}} le wiki la dzi'''",
+	'newestpages-header' => "'''Axa sia fia {{PLURAL:$1|axa yeyeawu|axa $1 yeyeawowu}} le wiki la dzi'''",
 	'newestpages-limitlinks' => 'Fia axawo ƒe xexlẽme vaseɖe $1',
 	'newestpages-none' => 'Womekpɔ nuŋɔ̃ŋlɔ̃wo aɖeke o.',
 	'newestpages-showing' => 'Wofia {{PLURAL: $1|axa yeyetɔwu|axa $1 yeyewutɔwo}}:',
@@ -1103,7 +1102,7 @@ $messages['pt'] = array(
 	'newestpages-namespace' => 'Espaço nominal:',
 	'newestpages-none' => 'Não foram encontrados resultados.',
 	'newestpages-ns-header' => "'''Esta página lista {{PLURAL:$1|a página mais recente|as $1 páginas mais recentes}} do espaço nominal $2.'''",
-	'newestpages-showing' => 'Listando {{PLURAL:$1|a página mais recente|as $1 páginas mais recentes}}:',
+	'newestpages-showing' => 'A listar {{PLURAL:$1|a página mais recente|as $1 páginas mais recentes}}:',
 	'newestpages-submit' => 'Ir',
 	'newestpages-showredir' => 'Mostrar redireccionamentos',
 	'newestpages-hideredir' => 'Ocultar redireccionamentos',
@@ -1412,6 +1411,7 @@ $messages['to'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -1419,7 +1419,7 @@ $messages['tr'] = array(
 	'newestpages-desc' => 'Vikiye eklenen [[Special:Newestpages|son X sayfayı]] gösterir',
 	'newestpages-header' => "'''Bu sayfa, vikideki {{PLURAL:$1|en yeni sayfayı|en yeni $1 sayfayı}} listelemektedir.'''",
 	'newestpages-limitlinks' => '$1 sayfaya kadar göster',
-	'newestpages-namespace' => 'Alan adı',
+	'newestpages-namespace' => 'Ad boşluğu:',
 	'newestpages-none' => 'Girdi bulunamadı.',
 	'newestpages-ns-header' => "'''Bu sayfa, $2 isim alanındaki {{PLURAL:$1|en yeni sayfayı|en yeni $1 sayfayı}} listelemektedir.'''",
 	'newestpages-showing' => '{{PLURAL:$1|En yeni sayfa|En yeni $1 sayfa}} listeleniyor:',

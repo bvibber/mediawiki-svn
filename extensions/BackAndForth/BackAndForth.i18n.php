@@ -197,6 +197,16 @@ $messages['cs'] = array(
 	'backforth-prev' => 'Předchozí ($1)',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'backforth-next' => 'Nesaf ($1)',
+	'backandforth-desc' => "Yn ychwanegu'r dolenni 'Nesaf' a 'Blaenorol' ar frig tudalennau sydd yn nhrefn yr wyddor",
+	'backforth-prev' => 'Blaenorol ($1)',
+);
+
 /** Danish (Dansk)
  * @author Hylle
  * @author Sarrus

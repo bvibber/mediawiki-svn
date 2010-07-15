@@ -954,12 +954,13 @@ $messages['bs'] = array(
 	'sf_createclass_listofvalues' => 'Spisak vrijednosti',
 	'formstart' => 'Dodaj stranicu putem obrasca',
 	'sf_formstart_badform' => 'Greška: nije pronađena stranica obrasca na $1',
-	'sf_formstart_createoredit' => 'Dodaj ili uredi',
+	'sf_formstart_createoredit' => 'Napravi ili uredi',
 	'formedit' => 'Uredi sa obrascem',
-	'sf_formedit_createtitle' => 'Dodaj $1: $2',
+	'sf_formedit_createtitle' => 'Napravi $1: $2',
 	'sf_formedit_altformsonly' => 'Molimo Vas da odaberete jedan od slijedećih obrazaca za dodavanje ovoj stranici:',
 	'sf_formcreate' => 'Napravi sa obrascem',
 	'sf_viewform' => 'Pogledaj obrazac',
+	'sf_editsource' => 'Uredi izvor',
 	'sf_formedit_edittitle' => 'Uređivanje $1: $2',
 	'sf_formedit_remove' => 'Ukloni',
 	'sf_formedit_addanother' => 'Dodaj slijedeći',
@@ -1429,6 +1430,11 @@ jolic bok z tym mjenim južo eksistěrujo, buźoš se k formularoju dalej pósr�
 	'sf_blank_namespace' => 'Głowny',
 	'right-viewedittab' => 'Rejtark "Wobźěłaś" za boki, kótarež su wobźěłujobne pśez formular, se woglědaś',
 	'right-editrestrictedfields' => 'Wobgranicowane formularne póla wobźěłaś',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'sf_createtemplate_deletefield' => 'Tutui',
 );
 
 /** Greek (Ελληνικά)
@@ -2149,7 +2155,7 @@ $messages['gl'] = array(
 	'sf_createtemplate_categorylabel' => 'Categoría definida polo modelo (opcional):',
 	'sf_createtemplate_templatefields' => 'Modelo dos campos',
 	'sf_createtemplate_fieldsdesc' => 'Para facer que os campos deste modelo non requiran xa nomes de campo, simplemente introduza o índice de cada campo (p. ex. 1, 2, 3, etc.) como nome, no canto dun nome real.',
-	'sf_createtemplate_fieldname' => 'Nome do Campo:',
+	'sf_createtemplate_fieldname' => 'Nome do campo:',
 	'sf_createtemplate_displaylabel' => 'Mostrar etiqueta:',
 	'sf_createtemplate_semanticproperty' => 'Propiedade semántica:',
 	'sf_createtemplate_fieldislist' => 'Este campo pode conter unha lista de valores separados por vírgulas',
@@ -3030,6 +3036,7 @@ si un pagina con iste nomine ja existe, tu essera inviate a un formulario pro mo
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Rex
@@ -3107,10 +3114,10 @@ Jika belum, Anda akan diarahkan ke formulir untuk menambahkan halaman.',
 	'sf_formstart_noform_docu' => 'Masukkan nama halaman di sini dan pilih formulir untuk menyuntingnya.
 Jika halaman ini sudah ada, Anda akan diarahkan ke formulir untuk menyunting halaman itu.
 Jika belum, Anda akan diarahkan ke formulir untuk menambahkan halaman.',
-	'sf_formstart_createoredit' => 'Tambah atau sunting',
+	'sf_formstart_createoredit' => 'Buat atau sunting',
 	'formedit' => 'Sunting dengan formulir',
-	'sf_formedit_createtitle' => 'Tambah $1: $2',
-	'sf_formedit_badurl' => "Ini adalah halaman untuk menambah data. Anda harus memberikan baik nama formulir maupun nama halaman target di URL;
+	'sf_formedit_createtitle' => 'Buat $1: $2',
+	'sf_formedit_badurl' => "Ini adalah halaman untuk menyunting menggunakan formulir. Anda harus memberikan baik nama formulir maupun nama halaman target di URL;
 bentuknya harus seperti 'Special:FormEdit?form=&lt;form name&gt;&target=&lt;target page&gt;', atau 'Special:FormEdit/&lt;form name&gt;/&lt;target page&gt;'.",
 	'sf_formedit_altforms' => 'Sebagai gantinya, Anda dapat menambahkan halaman ini dengan salah satu dari formulir berikut:',
 	'sf_formedit_altformsonly' => 'Silakan pilih salah satu dari formulir berikut untuk menambah halaman ini:',
@@ -3784,7 +3791,7 @@ Si soll an dësem Format opgeruff ginn:",
  */
 $messages['li'] = array(
 	'createproperty' => 'Eigesjap aanmake',
-	'sf_createproperty_propname' => 'Naam:',
+	'sf_createproperty_propname' => 'Naam eigesjap:',
 	'sf_createproperty_proptype' => 'Type:',
 	'templates' => 'Sjablone',
 	'createtemplate' => "'n Sjabloon aanmake",
@@ -3792,9 +3799,9 @@ $messages['li'] = array(
 	'createform' => 'Formeleer aanmake',
 	'createcategory' => "'n Categorie aanmake",
 	'formstart' => 'Pazjena toevoge',
-	'sf_formstart_createoredit' => 'Toevoge of bewèrke',
+	'sf_formstart_createoredit' => 'Maak aan of bewirk',
 	'formedit' => 'Bewèrke mit dit formeleer',
-	'sf_formedit_createtitle' => '$1 toevoge: $2',
+	'sf_formedit_createtitle' => 'Maak $1 aan: $2',
 	'sf_editsource' => 'Brón bewèrke',
 	'sf_formedit_edittitle' => '$1 bewèrke: $2',
 );
@@ -5019,7 +5026,7 @@ $messages['ps'] = array(
 	'sf_deletionlog' => 'د ړنګولو يادښت',
 	'sf_form_freetextlabel' => 'خپلواکه متن',
 	'sf_category_desc' => 'همدا د $1 وېشنيزه ده.',
-	'sf_blank_namespace' => 'اصلي',
+	'sf_blank_namespace' => 'آرنی',
 );
 
 /** Portuguese (Português)

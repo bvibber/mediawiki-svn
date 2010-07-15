@@ -782,6 +782,14 @@ $messages['ru'] = array(
 Чтобы отметить сразу несколько страниц, удерживая клавишу Shift, отметьте начальную и конечную страницы требуемой последовательности.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'watchsubpages-addtitles' => 'Придати сторінкы',
+	'watchsubpages-addtitlestowatchlist' => 'Придати сторінкы до списку слїдованых сторінок',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */

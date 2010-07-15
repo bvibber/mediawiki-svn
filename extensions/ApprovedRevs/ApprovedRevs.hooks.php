@@ -20,7 +20,7 @@ class ApprovedRevsHooks {
 		if ( $action == 'submit' ) {
 			$title = $parser->getTitle();
 			$approvedText = ApprovedRevs::getApprovedContent( $title );
-			if ( ! is_null( $approvedText ) ) {
+			if ( !is_null( $approvedText ) ) {
 				$text = $approvedText;
 			}
 		}
@@ -144,7 +144,7 @@ class ApprovedRevsHooks {
 	 */
 	static function addApprovalLink( $historyPage, &$row , &$s )  {
 		$title = $historyPage->getTitle();
-		if ( ApprovedRevs::hasUnsupportedNamespace( $title ) ) {
+		if ( ! ApprovedRevs::pageIsApprovable( $title ) ) {
 			return true;
 		}
 
@@ -188,7 +188,7 @@ class ApprovedRevsHooks {
 			return true;
 		}
 		$title = $article->getTitle();
-		if ( ApprovedRevs::hasUnsupportedNamespace( $title ) ) {
+		if ( ! ApprovedRevs::pageIsApprovable( $title ) ) {
 			return true;
 		}
 		if ( ! $title->userCan( 'approverevisions' ) ) {
@@ -259,7 +259,7 @@ class ApprovedRevsHooks {
 	 */
 	static function setTranscludedPageRev( $parser, &$title, &$skip, &$id ) {
 		$revision_id = ApprovedRevs::getApprovedRevID( $title );
-		if ( ! is_null( $revision_id ) ) {
+		if ( !is_null( $revision_id ) ) {
 			$id = $revision_id;
 		}
 		return true;
@@ -271,6 +271,37 @@ class ApprovedRevsHooks {
 	 */
 	static function deleteRevisionApproval( &$article, &$user, $reason, $id ) {
 		ApprovedRevs::deleteRevisionApproval( $article->getTitle() );
+		return true;
+	}
+
+	/**
+	 * Register magic-word variable IDs
+	 */
+	static function addMagicWordVariableIDs( &$magicWordVariableIDs ) {
+		$magicWordVariableIDs[] = 'MAG_APPROVEDREVS';
+		return true;
+	}
+ 
+	/**
+	 * Set the actual value of the magic words
+	 */
+	static function addMagicWordLanguage( &$magicWords, $langCode ) {
+		switch( $langCode ) {
+		default:
+			$magicWords['MAG_APPROVEDREVS'] = array( 0, '__APPROVEDREVS__' );
+		}
+		return true;
+	}
+
+	/**
+	 * Set values in the page_props table based on the presence of the
+	 * 'APPROVEDREVS' magic word in a page
+	 */
+	static function handleMagicWords( &$parser, &$text ) {
+		$mw_hide = MagicWord::get( 'MAG_APPROVEDREVS' );
+		if ( $mw_hide->matchAndRemove( $text ) ) {
+			$parser->mOutput->setProperty( 'approvedrevs', 'y' );
+		}
 		return true;
 	}
 

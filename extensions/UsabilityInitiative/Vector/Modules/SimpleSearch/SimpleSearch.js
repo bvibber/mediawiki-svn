@@ -18,6 +18,7 @@ $j(document).ready( function() {
 			'ltr': {
 				// SimpleSearch is broken in Opera < 9.6
 				'opera': [['>=', 9.6]],
+				'docomo': false,
 				'blackberry': false,
 				'ipod': false,
 				'iphone': false
@@ -25,6 +26,7 @@ $j(document).ready( function() {
 			// Right-to-left languages
 			'rtl': {
 				'opera': [['>=', 9.6]],
+				'docomo': false,
 				'blackberry': false,
 				'ipod': false,
 				'iphone': false

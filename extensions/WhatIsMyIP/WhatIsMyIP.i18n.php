@@ -585,7 +585,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'whatismyip' => 'Min IP-adresse',
+	'whatismyip' => 'Hva er IP-adressen min',
 	'whatismyip-desc' => 'Viser nåværende brukers [[Special:WhatIsMyIP|IP-adresse]]',
 	'whatismyip-out' => 'Din IP-adresse:',
 	'right-whatismyip' => 'Vis [[Special:WhatIsMyIP|min egen IP-adresse]]',
@@ -692,6 +692,13 @@ $messages['ru'] = array(
 	'whatismyip-desc' => 'Показывает текущий [[Special:WhatIsMyIP|IP-адрес]] участника',
 	'whatismyip-out' => 'Ваш IP-адрес:',
 	'right-whatismyip' => 'просмотр [[Special:WhatIsMyIP|собственного IP-адреса]]',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'whatismyip' => 'Яка є моя IP-адреса',
 );
 
 /** Sinhala (සිංහල)

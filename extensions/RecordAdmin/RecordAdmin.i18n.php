@@ -511,6 +511,13 @@ $messages['dsb'] = array(
 	'recordadmin-notset' => 'Žeden "$1"',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'recordadmin-buttonsearch' => 'Dii',
+	'recordadmin-buttoncreate' => 'Dze egɔme',
+	'recordadmin-editlink' => 'trɔ asi le eŋu',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author ZaDiak
@@ -1458,7 +1465,7 @@ Categoriseer de gegevenssjablonen [[:$1|$1]].',
 	'recordadmin-editlink' => 'bewerken',
 	'recordadmin-created' => 'Aangemaakt',
 	'recordadmin-modified' => 'Gewijzigd',
-	'recordadmin-actions' => 'Acties',
+	'recordadmin-actions' => 'Handelingen',
 	'recordadmin-needscontent' => 'Inhoud toevoegen...',
 	'recordadmin-editwithform' => 'Eigenschappen',
 	'recordadmin-typeinfo' => 'Gegeven van het type $1',

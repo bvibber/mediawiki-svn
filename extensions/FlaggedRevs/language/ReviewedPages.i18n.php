@@ -74,19 +74,20 @@ Se da un vinclo t'a zaguera versión d'iste livel.",
 );
 
 /** Arabic (العربية)
+ * @author ;Hiba;1
  * @author Meno25
  * @author OsamaK
  */
 $messages['ar'] = array(
 	'reviewedpages' => 'صفحات مراجعة',
-	'reviewedpages-leg' => 'اعرض الصفحات حسب أعلى مستوى مراجعة',
+	'reviewedpages-leg' => 'عرض الصفحات التي تمت مراجعتها',
 	'reviewedpages-list' => 'هذه الصفحة تعرض الصفحات التي تمت مراجعتها (على أقصى تقدير) للمستوى المحدد.',
 	'reviewedpages-none' => 'لا توجد صفحات في هذه القائمة',
 	'reviewedpages-lev-0' => 'منظورة',
 	'reviewedpages-lev-1' => 'جودة',
 	'reviewedpages-lev-2' => 'مختارة',
 	'reviewedpages-all' => 'نسخ مراجعة',
-	'reviewedpages-best' => 'مراجعة فائقة',
+	'reviewedpages-best' => 'افضل مراجعة',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -467,14 +468,14 @@ E Gleich isch aagee zue dr letschte Version uf däm Nivo.",
 $messages['he'] = array(
 	'reviewedpages' => 'דפים שנבדקו',
 	'reviewedpages-leg' => 'רשימת הדפים שאושרו',
-	'reviewedpages-list' => "דף זה מציג את כל הדפים [[{{MediaWiki:Validationpage}}|המאושרים]] ש'''רמתם הגבוהה ביותר''' (לגירסה) היא הרמה שצוינה.
+	'reviewedpages-list' => "דף זה מציג את כל הדפים [[{{MediaWiki:Validationpage}}|המאושרים]] ש'''רמתם הגבוהה ביותר''' (לירסה) היא הרמה שצוינה.
 יוצג קישור לגירסה האחרונה ברמה זו.",
 	'reviewedpages-none' => 'אין דפים ברשימה זו',
 	'reviewedpages-lev-0' => 'נצפה',
 	'reviewedpages-lev-1' => 'איכותי',
 	'reviewedpages-lev-2' => 'מומלץ',
 	'reviewedpages-all' => 'גרסאות שנבדקו',
-	'reviewedpages-best' => 'הגרסה האיכותית ביותר',
+	'reviewedpages-best' => 'הגרסה הטובה ביותר',
 );
 
 /** Hindi (हिन्दी)
@@ -981,15 +982,18 @@ Existe um link para a última edição com o mesmo nível.',
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'reviewedpages' => 'Pagini revizuite',
-	'reviewedpages-list' => 'Această pagină afișează paginile care au fost revizuite (la cel mai mare nivel) la nivelul specificat.',
+	'reviewedpages-leg' => 'Afișarea paginilor revizuite',
+	'reviewedpages-list' => "Această listă conține paginile [[{{MediaWiki:Validationpage}}|revizuite]] al căror nivel ''maxim'' de revizuire (al unei revizii) este cel specificat.
+O legătură către ultima revizie de acel nivel este furnizată.",
 	'reviewedpages-none' => 'Nu există pagini în această listă',
 	'reviewedpages-lev-1' => 'Calitate',
 	'reviewedpages-all' => 'versiuni revizuite',
-	'reviewedpages-best' => 'prima revizie',
+	'reviewedpages-best' => 'cea mai bună revizie',
 );
 
 /** Tarandíne (Tarandíne)

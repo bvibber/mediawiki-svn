@@ -210,9 +210,9 @@ $messages['br'] = array(
 	'imstatus_gtalk_height' => 'uhelder ar boest, e piksel.',
 	'imstatus_gtalk_width' => 'ledander ar boest, e piksel.',
 	'imstatus_icq_id' => 'ho ID ICQ',
-	'imstatus_icq_style' => "un niver etre 0 ha 26 (ya, tu 'zo kaout 27 stil disheñvel).",
+	'imstatus_icq_style' => 'un niver etre 0 ha 26 (ya, gellout a rit kaout 27 stil disheñvel).',
 	'imstatus_live_code' => "ho ID war lec'hienn Live Messenger",
-	'imstatus_live_get_code' => 'Ho ker tremen Live Messenger : <strong>n\'eo ket ho chomlec\'h postel</strong>, rankout a reoc\'h krouiñ unan en
+	'imstatus_live_get_code' => 'Ho ker tremen Live Messenger : <strong>n\'eo ket ho chomlec\'h postel</strong>, rankout a rit krouiñ unan en
 <a href="$1">ho tibaboù Live Messenger</a>.
 An ID ho peus da reiñ a zo savet gant sifroù ha lizherennoù etre "$2" ha "$3".',
 	'imstatus_skype_nbstyle' => "Notenn : ma tibaboc'h ur stil hag a zo ivez un obererezh, ho tibab obererezh a vo flastret gant an obererezh a glot gant ar stil ho peus dibabet.",
@@ -1209,6 +1209,7 @@ $messages['ps'] = array(
 	'imstatus_default' => 'تلواليز',
 	'imstatus_example' => 'بېلګه',
 	'imstatus_or' => 'يا',
+	'imstatus_your_name' => 'ستاسې $1 نوم',
 );
 
 /** Portuguese (Português)

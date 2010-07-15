@@ -286,11 +286,13 @@ Un prime parametro "template" es obligatori.',
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author EdoDodo
  */
 $messages['it'] = array(
 	'datatransclusion-unknown-source' => "Origine dati incorreta specificata.
 ''$1'' non è noto.",
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non esiste.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -351,6 +353,36 @@ Een eerste argument of "template"-argument is verplicht.',
 	'datatransclusion-record-not-found' => 'Er is geen overeenkomstig gegeven $2 = $3 gevonden in de gegevensbron $1.',
 	'datatransclusion-bad-template-name' => 'Ongeldige sjabloonnaam: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  bestaat niet.',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'datatransclusion-desc' => 'Import i renderowanie rekordów danych z zewnętrznych źródeł',
+	'datatransclusion-missing-source' => 'Nie określono źródła danych.
+Argumenty drugi lub „źródło“są wymagane.',
+	'datatransclusion-unknown-source' => 'Określono złe źródło danych.
+Nie znam „$1“.',
+	'datatransclusion-missing-key' => 'Nie określono klucza.
+$2 są prawidłowymi kluczami dla źródła danych $1.',
+	'datatransclusion-bad-argument-by' => 'Określono złe pole klucza.
+„$2“ nie jest kluczem w źródłe danych „$1“.
+{{PLURAL:$4|Prawidłowy klucz to|Prawidłowe klucze:}} $3.',
+	'datatransclusion-missing-argument-key' => 'Nie określono wartości klucza.
+Argumenty drugi lub „klucz“ są wymagane.',
+	'datatransclusion-missing-argument-template' => 'Nie określono szablonu.
+Argumenty pierwszy lub „szablon“ są wymagane.',
+	'datatransclusion-record-not-found' => 'Brak rekordów pasujących $2 = $3 w danych ze źródła $1.',
+	'datatransclusion-bad-template-name' => 'Zła nazwa szablonu – $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> nie istnieje.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'datatransclusion-desc' => 'Amportassion e presentassion ëd record ëd dat da sorziss esterne ëd dat',
 );
 
 /** Portuguese (Português)
@@ -421,6 +453,39 @@ $2 не является ключевым полем в источнике да�
 	'datatransclusion-record-not-found' => 'В источнике данных $1 не найдено записи, соответствующей $2 = $3',
 	'datatransclusion-bad-template-name' => 'Неправильное название шаблона: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  не существуе.',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'datatransclusion-bad-template-name' => 'Неисправан назив шаблона: $1.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'datatransclusion-bad-template-name' => 'Neispravan naziv šablona: $1.',
+);
+
+/** Swedish (Svenska)
+ * @author Boivie
+ */
+$messages['sv'] = array(
+	'datatransclusion-desc' => 'Import och rendering av registrerade data från externa datakällor',
+	'datatransclusion-missing-source' => 'Ingen datakälla anges.
+Andra eller "source"-argument krävs.',
+	'datatransclusion-unknown-source' => '"$1" är inte känd.',
+	'datatransclusion-missing-key' => '$2 är giltiga nycklar i datakällan $1.',
+	'datatransclusion-bad-argument-by' => 'Dåligt nyckelfält anges.
+"$2" är inte ett nyckelfält i datakällan "$1".
+{{PLURAL:$4|Giltig nyckel|Giltiga nycklar är}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Inget nyckelvärde anges.
+Andra eller "nyckel"-argument krävs.',
+	'datatransclusion-missing-argument-template' => 'Ingen mall anges.
+Första eller "template"-argument krävs.',
+	'datatransclusion-record-not-found' => 'Inga uppgifter matchande $2 = $3 hittades i datakällan $1.',
+	'datatransclusion-bad-template-name' => 'Dåligt mallnamn: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> existerar inte.',
 );
 
 /** Tagalog (Tagalog)

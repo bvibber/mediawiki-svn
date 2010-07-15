@@ -402,6 +402,14 @@ $messages['lt'] = array(
 	'timeline-desc' => 'Sukuria laiko grafikus naudojant gairę <code>&lt;timeline&gt;</code>',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'timeline-desc' => 'Pievieno <code>&lt;timeline&gt;</code> tagu, lai varētu izveidot hronoloģijas',
+	'timeline-invalidmap' => 'EasyTimeline',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -506,6 +514,14 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'timeline-desc' => 'Adiciona a marca <code>&lt;timeline&gt;</code> para criar linhas de tempo',
 	'timeline-invalidmap' => 'O mapa de imagem gerado pelo EasyTimeline é inválido',
+);
+
+/** Romanian (Română)
+ * @author AdiJapan
+ */
+$messages['ro'] = array(
+	'timeline-desc' => 'Adaugă baliza <code>&lt;timeline&gt;</code> pentru a crea grafice temporale.',
+	'timeline-invalidmap' => 'Imagine invalidă creată de EasyTimeline',
 );
 
 /** Tarandíne (Tarandíne)

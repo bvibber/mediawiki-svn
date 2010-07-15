@@ -420,6 +420,11 @@ Coš weto pókšacowaś?',
 	'tooltip-drafts-save' => 'Ako nacerjenje składowaś',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'drafts-view-article' => 'Axa',
+);
+
 /** Greek (Ελληνικά)
  * @author Dead3y3
  * @author Geraki
@@ -914,9 +919,11 @@ Apakah Anda ingin meninggalkan halaman ini?',
  * @author Malafaya
  */
 $messages['io'] = array(
+	'drafts' => 'Kladi',
 	'drafts-view-article' => 'Pagino',
 	'drafts-view-saved' => 'Registragita',
 	'drafts-view-notice' => 'Vu havas $1 por ca pagino.',
+	'drafts-view-notice-link' => '$1 {{PLURAL:$1|klado|kladi}}',
 );
 
 /** Italian (Italiano)
@@ -1418,6 +1425,8 @@ It veus-to continué?',
 $messages['ps'] = array(
 	'drafts' => 'ګارلیکونه',
 	'drafts-view-article' => 'مخ',
+	'drafts-save' => 'د يوه ګارليک په توګه خوندي کول',
+	'drafts-save-save' => 'ګارليک خوندي کول',
 );
 
 /** Portuguese (Português)

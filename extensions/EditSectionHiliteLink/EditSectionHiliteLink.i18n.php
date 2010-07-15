@@ -213,6 +213,13 @@ $messages['lb'] = array(
 	'editsectionhilitelink-desc' => "Den entspriechenden Abschnitt ervirhiewen wann Dir mat der Maus iwwert den 'Änneren'-Link fuert",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'editsectionhilitelink-desc' => 'Iezīmē atbilstošo lapas daļu, novietojot peli uz rediģēšanas saites',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

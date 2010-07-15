@@ -61,6 +61,13 @@ $messages['aln'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
+/** Amharic (አማርኛ)
+ * @author Hinstein
+ */
+$messages['am'] = array(
+	'abcdownload' => 'አውርድ',
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */
@@ -306,6 +313,14 @@ $messages['fy'] = array(
 $messages['ga'] = array(
 	'abc-desc' => 'Cuir clib <code>&lt;abc&gt;</code> chun ceoil ABC a formáidigh',
 	'abcdownload' => 'íoslódáil:',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'abc-desc' => 'Cuiridh seo ris taga <code>&lt;abc&gt;</code> gus ceòl ABC fhòrmatadh',
+	'abcdownload' => 'Luchdaich a-nuas:',
 );
 
 /** Galician (Galego)

@@ -240,6 +240,15 @@ $messages['dsb'] = array(
 	'cleanchanges-showuserlinks' => 'Wužywarske wótkaze pokazaś',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'cleanchanges-changerightslink' => 'ɖɔli hamewo',
+	'cleanchanges-language' => 'Gbe:',
+	'cleanchanges-language-na' => 'Wokatã',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
@@ -285,9 +294,11 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'cleanchanges-changerightslink' => 'muuda gruppe',
+	'cleanchanges-desc' => 'Kompaktsem ülevaade [[Special:RecentChanges|viimastest muudatustest]]',
 	'cleanchanges-language' => 'Keel:',
 	'cleanchanges-language-na' => 'Kõik',
 	'cleanchanges-users' => 'Kasutajad (erald:&nbsp;|):',
+	'cleanchanges-showuserlinks' => 'Näita kasutajalinke',
 );
 
 /** Basque (Euskara)
@@ -310,7 +321,7 @@ $messages['eu'] = array(
 $messages['fi'] = array(
 	'cleanchanges-changerightslink' => 'muokkaa ryhmiä',
 	'cleanchanges-desc' => 'Tiivistetymmät [[Special:RecentChanges|muutoslistaukset]].',
-	'cleanchanges-language' => 'Kieli',
+	'cleanchanges-language' => 'Kieli:',
 	'cleanchanges-language-na' => 'Kaikki',
 	'cleanchanges-users' => 'Käyttäjät (erotin: |)',
 	'cleanchanges-showuserlinks' => 'Näytä käyttäjälinkit',

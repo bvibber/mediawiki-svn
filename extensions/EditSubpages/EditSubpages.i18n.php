@@ -410,6 +410,21 @@ $messages['lb'] = array(
   #</pre><!-- Dës Zeil net änneren -->",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'editsubpages-desc' => 'Ļauj sistēmas operatoriem atbloķēt lapu, izmantojot [[MediaWiki:Unlockedpages]], lai to varētu rediģēt anonīmie lietotāji',
+	'unlockedpages' => '# <!-- šo līniju neaiztikt --><pre>
+ # Norādi lapas, kuras vēlies atbloķēt zemāk, rakstot 
+ # * Lapas nosaukums 
+ # Pirms lapas nosukuma jābūt zvaigznītei, citādi tā netiks atbloķēt
+ # Lapu nosaukumi var būt [[saites]] un ir reģistrjutīgi 
+ # Arī diskusiju lapas tiks automātiski atbloķētas līdz ar lapu 
+ # Plašākai informācijai skatīt http://www.mediawiki.org/wiki/Extension:EditSubpages
+ # </pre><!-- šo līniju neaiztikt -->',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

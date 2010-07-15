@@ -1393,6 +1393,8 @@ $messages['sr-ec'] = array(
 	'formarticleexists' => 'Страна постоји',
 	'formarticleexiststext' => 'Страна [[$1]] већ постоји.',
 	'formbadpagename' => 'Лоше име стране',
+	'formsavesummary' => 'Нова страна користи [[Special:Form/$1|страну $1]]',
+	'formsaveerror' => 'Грешка приликом снимања форме',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1407,6 +1409,8 @@ $messages['sr-el'] = array(
 	'formarticleexists' => 'Strana postoji',
 	'formarticleexiststext' => 'Strana [[$1]] već postoji.',
 	'formbadpagename' => 'Loše ime strane',
+	'formsavesummary' => 'Nova strana koristi [[Special:Form/$1|stranu $1]]',
+	'formsaveerror' => 'Greška prilikom snimanja forme',
 );
 
 /** Seeltersk (Seeltersk)

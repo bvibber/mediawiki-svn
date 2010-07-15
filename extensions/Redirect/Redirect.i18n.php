@@ -203,7 +203,7 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
-	'redirect-desc' => 'Einvawdige instelling ven redireks bie [[MdiaWiki:Redirect-addnewaccount|gebroeker aanmake]] en [[MediaWiki:Redirect-userlogoutcomplete|aafmelje]]',
+	'redirect-desc' => 'Einvawdige instelling van doorverwiezinge bie [[MediaWiki:Redirect-addnewaccount|gebroeker aanmake]] en [[MediaWiki:Redirect-userlogoutcomplete|aafmelde]]',
 );
 
 /** Macedonian (Македонски)

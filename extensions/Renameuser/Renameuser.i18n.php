@@ -655,9 +655,12 @@ Mae'r lòg ail-enwi defnyddwyr i'w weld isod.",
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Froztbyte
  */
 $messages['da'] = array(
 	'renameuser' => 'Omdøb bruger',
+	'renameuser-linkoncontribs' => 'omdøb bruger',
+	'renameuser-linkoncontribs-text' => 'Omdøb denne bruger',
 	'renameuser-desc' => "Laver en [[Special:Renameuser|specialside]] til at omdøbe en bruger (kræver rettigheden ''renameuser'')",
 	'renameuserold' => 'Nuværende brugernavn:',
 	'renameusernew' => 'Nyt brugernavn:',
@@ -958,7 +961,7 @@ Palun ürita uuesti.',
 	'renameuserlogpage' => 'Kasutajanime muutmise logi',
 	'renameuserlogpagetext' => 'See on kasutajanimede muutmise logi.',
 	'renameuserlogentry' => 'nimetas kasutaja $1 ümber kasutajaks "$2"',
-	'renameuser-log' => '{{PLURAL:$1|1 redaktsioon|$1 redaktsiooni}}. Põhjus: $2',
+	'renameuser-log' => '{{PLURAL:$1|1 redigeerimine|$1 redigeerimist}}. Põhjus: $2',
 	'renameuser-move-log' => 'Teisaldatud automaatselt, kui kasutaja "[[User:$1|$1]]" nimetati ümber kasutajaks "[[User:$2|$2]]"',
 	'right-renameuser' => 'Muuta kasutajanimesid',
 	'renameuser-renamed-notice' => 'Kasutaja on ümbernimetatud.
@@ -2749,18 +2752,18 @@ $messages['pt'] = array(
 	'renameuser-error-request' => 'Houve um problema ao receber este pedido.
 Retorne e tente de novo.',
 	'renameuser-error-same-user' => 'Não é possível alterar o nome de um utilizador para o nome anterior.',
-	'renameusersuccess' => 'O utilizador "<nowiki>$1</nowiki>" foi renomeado para "<nowiki>$2</nowiki>".',
+	'renameusersuccess' => 'O nome do utilizador "<nowiki>$1</nowiki>" foi alterado para "<nowiki>$2</nowiki>".',
 	'renameuser-page-exists' => 'Já existe a página $1. Não é possível sobrescrever automaticamente.',
 	'renameuser-page-moved' => 'A página $1 foi movida com sucesso para $2.',
 	'renameuser-page-unmoved' => 'Não foi possível mover a página $1 para $2.',
-	'renameuserlogpage' => 'Registo de renomeação de utilizadores',
+	'renameuserlogpage' => 'Registo de alteração do nome de utilizadores',
 	'renameuserlogpagetext' => 'Este é um registo de alterações efectuadas a nomes de utilizadores.',
-	'renameuserlogentry' => 'renomeou $1 para "$2"',
+	'renameuserlogentry' => 'mudou nome $1 para "$2"',
 	'renameuser-log' => '{{PLURAL:$1|1 edição|$1 edições}}. Motivo: $2',
 	'renameuser-move-log' => 'Página movida automaticamente ao alterar o nome do utilizador "[[User:$1|$1]]" para "[[User:$2|$2]]"',
 	'right-renameuser' => 'Alterar nomes de utilizadores',
-	'renameuser-renamed-notice' => 'Este nome de utilizador foi renomeado.
-O registo de renomeação é apresentado abaixo.',
+	'renameuser-renamed-notice' => 'Este nome de utilizador foi alterado.
+É apresentado abaixo o registo de alteração do nome de utilizadores.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -3334,7 +3337,7 @@ Som referens återfinns omdöpningsloggen nedan.',
  * @author Veeven
  */
 $messages['te'] = array(
-	'renameuser' => 'సభ్యనామం మార్పు',
+	'renameuser' => 'వాడుకరి పేరుమార్చు',
 	'renameuser-linkoncontribs' => 'వాడుకరి పేరుమార్చు',
 	'renameuser-linkoncontribs-text' => 'ఈ వాడుకరి పేరుని మార్చండి',
 	'renameuser-desc' => "వాడుకరి పేరు మార్చండి (''renameuser'' అన్న అధికారం కావాలి)",
@@ -3794,12 +3797,29 @@ $messages['wa'] = array(
  */
 $messages['yi'] = array(
 	'renameuser' => 'בײַטן באַניצער נאָמען',
-	'renameuserold' => 'לויפיגער באניצער-נאמען:',
-	'renameusernew' => 'נייער באניצער-נאמען',
+	'renameuserold' => 'לויפיגער באַניצער-נאָמען:',
+	'renameusernew' => 'נײַער באַניצער-נאָמען:',
+	'renameuserreason' => 'סיבה פֿאַר ענדערן נאָמען:',
+	'renameuserwarnings' => 'ווארענונגען:',
+	'renameuserconfirm' => 'יאָ, ענדער דעם באַניצער־נאָמען',
+	'renameusersubmit' => 'אײַנגעבן',
 	'renameusererrordoesnotexist' => 'דער באניצער "<nowiki>$1</nowiki>" עקסיסטירט נישט.',
 	'renameusererrorexists' => 'דער באניצער  "<nowiki>$1</nowiki>" עקסיסטירט שוין.',
 	'renameusererrorinvalid' => 'דער באניצער נאמען  "<nowiki>$1</nowiki>" איז נישט גילטיק.',
+	'renameusererrortoomany' => 'דער באַניצער "<nowiki>$1</nowiki>" האט $2 {{PLURAL:$2|בײַשטײַערונג|בײַשטײַערונגען}}; ענדערן א באַניצער־נאָמען ווען דער באַניצער האט מער ווי $3 {{PLURAL:$3|בײַשטײַערונג|בײַשטײַערונגען}} קען אומגינציק משפיע זײַן אויף דער סארווער פֿונקציאנירונג.',
+	'renameuser-error-same-user' => 'מען קען נישט ענדערן א באַניצער צום זעלבן נאָמען ווי פֿריער.',
+	'renameusersuccess' => 'דער באַניצער־נאָמען "<nowiki>$1</nowiki>" איז געווארן געענדערט צו "<nowiki>$2</nowiki>".',
+	'renameuser-page-exists' => "דער בלאַט $1 עקזיסטירט שוין און מ'קען אים נישט אויטאָמאַטיש איבערשרײַבן.",
+	'renameuser-page-moved' => 'דער בלאַט $1 איז געווארן באַוועגט צו $2.',
+	'renameuser-page-unmoved' => 'מען קען נישט באַוועגן דעם בלאַט $1 צו $2.',
 	'renameuserlogpage' => 'באַניצער נאָמען-טויש לאָג-בוך',
+	'renameuserlogpagetext' => 'דאָס איז אַ לאג פֿון ענדערונגען צו באַניצער־נעמען.',
+	'renameuserlogentry' => 'מ\'האט דעם נאָמען $1 געענדערט צו "$2"',
+	'renameuser-log' => '{{PLURAL:$1|1 רעדאַקטירונג|$1 רעדאַקטירונגעם}}. גרונד: $2',
+	'renameuser-move-log' => 'אויטאמאַטיש באַוועגט בלאַט דורך ענדערן באַניצער־נאָמען פֿון "[[User:$1|$1]]" צו "[[User:$2|$2]]"',
+	'right-renameuser' => 'בײַטן באַניצער נעמען',
+	'renameuser-renamed-notice' => 'דער נאָמען פֿון דעם באַניצער איז געענדערט געווארן.
+דער ענדערן נעמען לאגבוך ווערט געוויזן אונטן.',
 );
 
 /** Cantonese (粵語) */

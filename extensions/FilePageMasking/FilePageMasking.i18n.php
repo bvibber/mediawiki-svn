@@ -190,6 +190,13 @@ $messages['lb'] = array(
 	'filepagemasking-desc' => 'Ersetzt ".xxx" duerch "_xxx" an de Linke vun der Säit vun der Beschreiwung vum Fichier',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'filepagemasking-desc' => 'Pārveido ".xxx" par "_xxx" saitēs uz failu aprakstiem',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

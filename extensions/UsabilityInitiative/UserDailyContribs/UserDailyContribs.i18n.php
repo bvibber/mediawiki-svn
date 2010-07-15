@@ -172,6 +172,13 @@ $messages['frp'] = array(
 	'userdailycontribs-desc' => 'Contribucions de tôs los jorns per utilisator por l’èxtension de survelyence des clics',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'userdailycontribs-desc' => "Mùthaidhean làitheil a' chleachdaiche airson gleus lorgachadh nam briogadh",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -249,6 +256,13 @@ $messages['ko'] = array(
 	'userdailycontribs-desc' => '클릭 추적 확장 기능을 위한 사용자 일일 기여',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'userdailycontribs-desc' => 'Басыула изленир ючюн къошулуучуланы хар кюнлюк къошханлары',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -296,6 +310,13 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'userdailycontribs-desc' => "Kontribuzzjonijiet ta' kuljum tal-utenti għall-estensjoni tal-itraċċar tal-klikks",
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'userdailycontribs-desc' => 'Dagelijkse gebrukersbiedragen veur de uutbreidingen um gebrukersklik mee te volgen',
 );
 
 /** Dutch (Nederlands)
@@ -356,10 +377,11 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'userdailycontribs-desc' => 'Contribuțiile zilnice ale contribuitorilor pentru monitorizarea gradului de click-uri',
+	'userdailycontribs-desc' => 'Contribuțiile zilnice ale utilizatorilor pentru extensia monitorizării clicurilor',
 );
 
 /** Tarandíne (Tarandíne)

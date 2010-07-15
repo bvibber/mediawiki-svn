@@ -190,6 +190,7 @@ $settings = array(
 			'wgDBAvgStatusPoll' => 'int',
 			'wgUseDumbLinkUpdate' => 'bool',
 			'wgExternalStores' => 'array',
+			'wgSQLMode' => 'text',
 		),
 		'load-balancing' => array(
 			'wgDBClusterTimeout' => 'int',
@@ -1059,6 +1060,7 @@ $editRestricted = array(
 	'wgDBtype',
 	'wgDBuser',
 	'wgDBadminuser',
+	'wgSQLMode',
 	'wgDefaultExternalStore',
 	'wgExternalStores',
 	'wgLBFactoryConf',
@@ -1156,7 +1158,6 @@ $notEditableSettings = array(
 	'wgAvailableRights',
 	'wgCommandLineMode',
 	'wgConf',
-	'wgDBconnection', // Too old
 	'wgDBmysql4', // Too old
 	'wgEditEncoding', // Too old
 	'wgExceptionHooks',
@@ -1204,4 +1205,5 @@ $settingsVersion = array(
 	'wgJQueryMinified' => array( array( '1.17alpha', '>=' ) ),
 	'wgJQueryOnEveryPage' => array( array( '1.17alpha', '>=' ) ),
 	'wgJQueryVersion' => array( array( '1.17alpha', '>=' ) ),
+	'wgSQLMode' => array( array( '1.17alpha', '>=' ) ),
 );

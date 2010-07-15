@@ -205,7 +205,7 @@ $messages['af'] = array(
  */
 $messages['aln'] = array(
 	'babel' => 'Informatat e përdoruesit në babel',
-	'babel-desc' => 'Shton funksionin interpretues <code>#babel</code> për me lejue gjenerimine kutisë babel të përdoruesit me mundësi të përfshimjes së stampave të përshtatuna',
+	'babel-desc' => "Shton funksionin interpretues <code>#babel</code> për m'e lejue gjenerimine kutisë babel të përdoruesit me mundësi të përfshimjes së shabllonave të përshtatun",
 	'babel-url' => 'Project:Babel',
 	'babel-autocreate-abort' => 'Emni i përdoruesit që e keni dhânë âsht i përdorun në kategorinë [[$1|Babel]] vetë-krijo dhe nuk mundet me u regjistrue.',
 	'babel-autocreate-reason' => 'Tue krijue faqen e kategorisë në [[$1|Babel]]',
@@ -1465,30 +1465,33 @@ $messages['gan'] = array(
 );
 
 /** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
  * @author Caoimhin
  * @author Sionnach
  * @author Steafan31
  */
 $messages['gd'] = array(
-	'babel' => 'Fiosrachadh Babel mun neach-cleachdaidh',
-	'babel-desc' => 'A’ cur parser function <code>#babel</code> ris an duilleig, gus an téid colbh babel a chruthachadh mun neach-cleachdaidh.  Gabhaidh templates sònraichte a chleachdadh.',
+	'babel' => 'Fiosrachadh Babel mun chleachdaiche',
+	'babel-desc' => 'Cuiridh seo am parser function <code>#babel</code> ris an duilleag gus an dèid colbh babel a chruthachadh mun chleachdaiche seo, le comas gus teamplaidean sònraichte a ghabhail a-steach.',
 	'babel-url' => 'Project:Babel',
-	'babel-autocreate-text-levels' => 'Tha na daoine seo ag innse gu bheil comas ìre $1 aca sa chànan $2.',
-	'babel-autocreate-text-main' => 'Tha na daoine seo ag innse gu bheil iad eòlach air a’ chànan $1.',
-	'babel-0' => 'Tha an neach-cleachdaidh [[$1|gun eòlas idir]] air [[$2|$3]] (no tha {{GENDER:$4|e|i}} ga tuigsinn air éiginn).',
-	'babel-1' => 'Tha comas [[$1|ìre bhunaitich]] aig an neach-cleachdaidh seo air [[$2|$3]].',
-	'babel-2' => 'Tha comas [[$1|ìre mheadhanaich]] aig an neach-cleachdaidh seo air [[$2|$3]].',
-	'babel-3' => 'Tha comas [[$1|ìre adhartaich]] aig an neach-cleachdaidh seo air [[$2|$3]].',
-	'babel-4' => 'Tha comas [[$1|ìre dhùchasaich cha mhór]] aig an neach-cleachdaidh seo air [[$2|$3]].',
-	'babel-5' => 'Tha comas [[$1|ìre phroifeiseanta]] aig an neach-cleachdaidh seo air [[$2|$3]].',
-	'babel-N' => 'Tha [[$1|tuigse dhùthchasach]] aig an neach-cleachdaidh seo air [[$2|$3]].',
-	'babel-0-n' => 'Tha an neach-cleachdaidh seo [[$1|gun eòlas idir]] air [[$2|a’ Ghàidhlig]] (no tha {{GENDER:$4|e|i}} ga tuigsinn air éiginn).',
-	'babel-1-n' => 'Tha comas [[$1|ìre bhunaitich]] aig an neach-cleachdaidh seo air [[$2|a’ Ghàidhlig]].',
-	'babel-2-n' => 'Tha comas [[$1|ìre mheadhanaich]] aig an neach-cleachdaidh seo air [[$2|a’ Ghàidhlig]].',
-	'babel-3-n' => 'Tha comas [[$1|ìre adhartaich]] aig an neach-cleachdaidh seo air [[$2|a’ Ghàidhlig]].',
-	'babel-4-n' => 'Tha comas [[$1|ìre dhùthchasaich cha mhór]] aig an neach-cleachdaidh seo air [[$2|a’ Ghàidhlig]].',
-	'babel-5-n' => 'Tha comas [[$1|ìre phroifeiseanta]] aig an neach-cleachdaidh seo air [[$2|a’ Ghàidhlig]].',
-	'babel-N-n' => 'Tha [[$1|tuigse dhùthchasach]] aig an neach-cleachdaidh seo air [[$2|a’ Ghàidhlig]].',
+	'babel-autocreate-abort' => "Tha an t-ainm-cleachdaiche a shònraich thu 'ga chleachdadh airson fèin-chrutheachadh na roinne [[$1|Babel]] agus cha ghabh a chlàrachadh.",
+	'babel-autocreate-reason' => "A' cruthachadh duilleag roinne [[$1|Babel]] leis fhèin.",
+	'babel-autocreate-text-levels' => 'Tha na cleachdaichean san roinn seo ag innse gu bheil comas ìre $1 aca ann an $2.',
+	'babel-autocreate-text-main' => "Tha na cleachdaichean san roinn seo ag innse gu bheil iad eòlach air a' chànan a leanas: $1.",
+	'babel-0' => "[[$1|Cha tuig]] an cleachdaiche seo [[$2|$3]] idir (no chan eil {{GENDER:$4|e|i}} 'ga tuigsinn ach air èiginn).",
+	'babel-1' => "Tha comas labhairt [[$1|bunaiteach]] sa [[$2|$3|Ghàidhlig]] aig a' chleachdaiche seo.",
+	'babel-2' => "Tha comas labhairt [[$1|meadhanach]] aig a' chleachdaiche seo sa [[$2|$3|Ghàidhlig]].",
+	'babel-3' => "Tha comas labhairt [[$1|adhartach]] aig a' chleachdaiche seo sa [[$2|$3|Ghàidhlig]].",
+	'babel-4' => "Tha comas labhairt [[$1|cha mhòr mar cuideigin air ag bheil i on ghlùn]] aig a' chleachdaiche seo sa [[$2|$3|Ghàidhlig]].",
+	'babel-5' => "Tha comas labhairt [[$1|proifeiseanta]] aig a' chleachdaiche seo sa [[$2|$3|Ghàidhlig]].",
+	'babel-N' => "Tha [[$2|$3]] [[$1|on ghlùn]] aig a' chleachdaiche seo.",
+	'babel-0-n' => "[[$1|Cha tuig]] an cleachdaiche seo [[$2|Gàidhlig]] idir (no chan eil {{GENDER:$4|e|i}} 'ga tuigsinn ach air èiginn).",
+	'babel-1-n' => "Tha comas labhairt [[$1|bunaiteach]] sa [[$2|Ghàidhlig]] aig a' chleachdaiche seo.",
+	'babel-2-n' => "Tha comas labhairt [[$1|meadhanach]] aig a' chleachdaiche seo sa [[$2|Ghàidhlig]].",
+	'babel-3-n' => "Tha comas labhairt [[$1|adhartach]] aig a' chleachdaiche seo sa [[$2|Ghàidhlig]].",
+	'babel-4-n' => "Tha comas labhairt [[$1|cha mhòr mar cuideigin air ag bheil i on ghlùn]] aig a' chleachdaiche seo sa [[$2|Ghàidhlig]].",
+	'babel-5-n' => "Tha comas labhairt [[$1|proifeiseanta]] aig a' chleachdaiche seo sa [[$2|Ghàidhlig]].",
+	'babel-N-n' => "Tha [[$2|Gàidhlig]] [[$1|on ghlùn]] aig a' chleachdaiche seo.",
 );
 
 /** Galician (Galego)
@@ -4441,6 +4444,33 @@ $messages['wo'] = array(
 	'babel-4-n' => 'Bii jëfandikukat dégg na [[$2|wolof]] yu [[$1|jege ku ci juddu]].',
 	'babel-5-n' => 'Bii jëfandikukat dégg na [[$2|wolof]] yu [[$1|xereñ]].',
 	'babel-N-n' => 'Bii jëfandikukat dégg na [[$2|wolof]] ni [[$1|ku ci juddu]].',
+);
+
+/** Wu (吴语)
+ * @author Wu-chinese.com
+ */
+$messages['wuu'] = array(
+	'babel' => 'Babel用户信息',
+	'babel-desc' => '加只<code>#babel</code>处理功能，允许自动产生一只babel用户框栏，包含可自定义个模版',
+	'babel-url' => 'Project:Babel',
+	'babel-autocreate-abort' => '箇只用户名弗好注册，因其畀用作[[$1|Babel]]分类个自动创建。',
+	'babel-autocreate-reason' => '自动建立[[$1|Babel]]分类页。',
+	'babel-autocreate-text-levels' => '垃拉箇只分类里向个用户具有语言$2个$1能力。',
+	'babel-autocreate-text-main' => '箇只分类里向个用户能够理解语言$1。',
+	'babel-0' => '箇位用户[[$1|呒没]][[$2|$3]]个知识（或者觉着渠交关难懂）。',
+	'babel-1' => '箇位用户有[[$1|基本]]个[[$2|$3]]知识。',
+	'babel-2' => '箇位用户有[[$1|中等]]个[[$2|$3]]知识。',
+	'babel-3' => '箇位用户有[[$1|高等]]个[[$2|$3]]知识。',
+	'babel-4' => '箇位用户有[[$1|接近母语人]]个[[$2|$3]]知识。',
+	'babel-5' => '箇位用户有[[$1|专业]]个[[$2|$3]]知识。',
+	'babel-N' => '箇位用户以[[$2|$3]]为[[$1|母语]]。',
+	'babel-0-n' => '箇位用户[[$1|弗懂]][[$2|吴语]]（或者觉着渠邪气难）。',
+	'babel-1-n' => '箇位用户个[[$2|吴语]]能力达到[[$1|初等水平]]。',
+	'babel-2-n' => '箇位用户个[[$2|吴语]]能力达到[[$1|中等水平]]。',
+	'babel-3-n' => '箇位用户个[[$2|吴语]]能力达到[[$1|高等水平]]。',
+	'babel-4-n' => '箇位用户个[[$2|吴语]]能力达到[[$1|接近母语水平]]。',
+	'babel-5-n' => '箇位用户个[[$2|吴语]]能力达到[[$1|专业水平]]。',
+	'babel-N-n' => '箇位用户个[[$2|吴语]]能力达到[[$1|母语水平]]。',
 );
 
 /** Kalmyk (Хальмг)

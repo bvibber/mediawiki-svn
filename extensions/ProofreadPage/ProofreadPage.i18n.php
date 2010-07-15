@@ -564,7 +564,7 @@ $messages['br'] = array(
 	'proofreadpage_indexdupe' => 'Liamm e doubl',
 	'proofreadpage_indexdupetext' => "Ne c'hell ket ar pajennoù bezañ listennet muioc'h evit ur wech war ur bajenn meneger.",
 	'proofreadpage_nologin' => "N'eo ket kevreet",
-	'proofreadpage_nologintext' => "Rankout a reoc'h bezañ [[Special:UserLogin|luget]] evit kemmañ statud reizhañ ar pajennoù.",
+	'proofreadpage_nologintext' => 'Rankout a rit bezañ [[Special:UserLogin|kevreet]] evit kemmañ statud reizhañ ar pajennoù.',
 	'proofreadpage_notallowed' => "N'eo ket aotreet ar c'hemm-mañ",
 	'proofreadpage_notallowedtext' => "Noc'h ket aotreet da gemmañ ar statud reizhañ ar bajenn-mañ.",
 	'proofreadpage_number_expected' => 'Fazi : gortozet e vez un dalvoud niverel',
@@ -794,11 +794,13 @@ Poznámky||10',
 );
 
 /** Danish (Dansk)
+ * @author Dferg
  * @author Jon Harald Søby
  * @author Sarrus
  */
 $messages['da'] = array(
 	'proofreadpage_namespace' => 'Side',
+	'proofreadpage_index_namespace' => 'Indeks',
 	'proofreadpage_badpage' => 'Forkert format',
 	'proofreadpage_badpagetext' => 'Formatet på den side, du forsøgte at gemme, er forkert.',
 	'proofreadpage_indexdupetext' => 'Sider kan ikke vises mere end én gang på en indeksside.',
@@ -2141,6 +2143,7 @@ Catatan||10',
 	'proofreadpage_pages' => '{{PLURAL:$1|halaman|halaman}}',
 	'proofreadpage_specialpage_legend' => 'Pencarian halaman indek',
 	'proofreadpage_source' => 'Sumber',
+	'proofreadpage_source_message' => 'Versi pindai digunakan untuk membuat teks ini',
 );
 
 /** Ido (Ido)

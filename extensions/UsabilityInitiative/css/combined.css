@@ -37,7 +37,6 @@
 	color: black;
 	color: WindowText;
 	margin: 0;
-	width: 100%;
 	line-height: 1.5em;
 	padding: 0.01em 0.25em;
 }
@@ -63,7 +62,8 @@
 	color: white;
 	color: HighlightText;
 }
-.autoellipsis-matched {
+.autoellipsis-matched,
+.highlight {
 	font-weight: bold;
 }/* Prototype code to show collapsing left nav options */
 #mw-panel.collapsible-nav div.portal {
@@ -505,6 +505,9 @@ body.rtl #wikieditor-toolbar-link-int-target-status-external {
 }
 body.rtl #wikieditor-toolbar-link-int-target-status-external {
 	background-image: url( ../images/wikiEditor/dialogs/insert-link-external-rtl.png?1);
+}
+body.rtl #wikieditor-toolbar-reference-dialog label {
+	float: right;
 }
 /* Template Editor Dialogs */
 .wikiEditor-template-dialog-fields label {

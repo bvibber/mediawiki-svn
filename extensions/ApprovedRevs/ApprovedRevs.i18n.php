@@ -48,6 +48,16 @@ $messages['af'] = array(
 	'approvedpages' => 'Goedgekeurde bladsye',
 );
 
+/** Arabic (العربية)
+ * @author Moemin05
+ */
+$messages['ar'] = array(
+	'approvedrevs-approve' => 'موافقة',
+	'approvedrevs-unapprove' => 'إزالة موافقة',
+	'approvedpages' => 'صفحات تمّت الموافقة عليها',
+	'approvedrevs-approvedpages-docu' => 'صفحات الويكي التالية لها مراجعات موافق عليها.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -70,6 +80,7 @@ $messages['be-tarask'] = array(
 	'approvedpages' => 'Зацьверджаныя старонкі',
 	'approvedrevs-approvedpages-docu' => 'Ніжэй пададзеныя старонкі {{GRAMMAR:родны|{{SITENAME}}}}, якія маюць зацьверджаныя вэрсіі.',
 	'right-approverevisions' => 'зацьверджаньне вызначаных вэрсіяў вікі-старонак',
+	'right-viewlinktolatest' => 'прагляд тлумачальнага тэксту ў версе старонак, якія маюць зацьверджаныя вэрсіі',
 );
 
 /** Breton (Brezhoneg)
@@ -93,6 +104,78 @@ E plas e vo lakaet an adweladenn nevesañ.",
 	'approvedrevs-approvedpages-docu' => 'Setu ar pajennoù wiki hag o deus un adweladenn aprouet.',
 	'right-approverevisions' => 'Merkañ un adweladenn bennak eus ur bajenn wiki evel aprouet',
 	'right-viewlinktolatest' => 'Gwelet an destenn displegañ e penn uhelañ ar pajennoù hag o deus un adweladenn aprouet',
+);
+
+/** Bosnian (Bosanski)
+ * @author Palapa
+ */
+$messages['bs'] = array(
+	'approvedrevs-logdesc' => 'Ovo je zapis revizija koje su odobrene.',
+	'approvedrevs-approve' => 'odobri',
+	'approvedrevs-unapprove' => 'neodobreno',
+	'approvedrevs-approvesuccess' => 'Ova revizija stranice je postavljena kao odobrena verzija.',
+	'approvedrevs-unapprovesuccess' => 'Više ne postoji odobrena verzija ove stranice.
+Umjesto toga, zadnja revizija će biti prikazana.',
+	'approvedrevs-approveaction' => 'postavi $2 kao odobrenu reviziju za "[[$1]]"',
+	'approvedrevs-notlatest' => 'Ovo je odobrena verzija ove stranice; to nije najnovija verzija.',
+	'approvedrevs-approvedandlatest' => 'Ovo je odobrena verzija ove stranice, a ujedno i najnovija.',
+	'approvedrevs-viewlatest' => 'Pogledaj zadnju reviziju.',
+	'approvedpages' => 'Odobrene stranice',
+	'right-approverevisions' => 'Postavi određenu reviziju wiki stranice kao odobrenu',
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'approvedrevs-desc' => 'Ermöglicht es, stets eine bestimmte Version einer Seite als bestätigte Version anzuzeigen',
+	'approvedrevs-logname' => 'Versionsbestätigungs-Logbuch',
+	'approvedrevs-logdesc' => 'In diesem Logbuch werden die Versionsbestätigungen von Seiten protokolliert.',
+	'approvedrevs-approve' => 'bestätigen',
+	'approvedrevs-unapprove' => 'ablehnen',
+	'approvedrevs-approvesuccess' => 'Diese Version der Seite wurde als bestätigte Version festgelegt.',
+	'approvedrevs-unapprovesuccess' => 'Nunmehr existiert keine bestätigte Version dieser Seite.
+Stattdessen wird die neueste Version angezeigt.',
+	'approvedrevs-approveaction' => '$2 als bestätigte Version für „[[$1]]“ festlegen',
+	'approvedrevs-unapproveaction' => 'bestätigte Version für „[[$1]]“ zurücknehmen',
+	'approvedrevs-notlatest' => 'Dies ist die bestätigte Version dieser Seite, allerdings nicht die neueste Version.',
+	'approvedrevs-approvedandlatest' => 'Dies ist die bestätigte sowie die neueste Version dieser Seite.',
+	'approvedrevs-viewlatest' => 'Die neueste Version ansehen.',
+	'approvedpages' => 'Bestätigte Seiten',
+	'approvedrevs-approvedpages-docu' => 'Die folgenden Seiten, sind die Seiten dieses Wikis, die eine bestätigte Version haben.',
+	'right-approverevisions' => 'Eine bestimmte Version einer Wikiseite als bestätigt festlegen',
+	'right-viewlinktolatest' => 'Erläuternde Hinweise im Kopf der Seiten anzeigen, die eine bestätigte Version haben.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'approvedrevs-desc' => 'Wěstu wersiju boka ako pśizwólonu nastajiś',
+	'approvedrevs-logname' => 'Protokol pśizwólonych wersijow',
+	'approvedrevs-logdesc' => 'To jo protokol wersijow, kótarež su se pśizwólili.',
+	'approvedrevs-approve' => 'pśizwóliś',
+	'approvedrevs-unapprove' => 'zakazaś',
+	'approvedrevs-approvesuccess' => 'Toś ta wersija boka jo se ako pśizwólona wersija nastajiła.',
+	'approvedrevs-unapprovesuccess' => 'Njejo wěcej pśizwólona wersija za toś ten bok.
+Město togo nejnowša wersija se pokažo.',
+	'approvedrevs-approveaction' => '$2 ako pśizwólonu wersiju za "[[$1]]" nastajiś',
+	'approvedrevs-unapproveaction' => 'Pśizwólonu wersiju za "[[$1]]" anulěrowaś',
+	'approvedrevs-notlatest' => 'To jo pśizwólona wersija toś togo boka; njejo nejnowša.',
+	'approvedrevs-approvedandlatest' => 'To jo pśizwólona wersija toś togo boka a teke nejnowša.',
+	'approvedrevs-viewlatest' => 'Nejnowšu wersiju pokazaś',
+	'approvedpages' => 'Pśizwólone boki',
+	'approvedrevs-approvedpages-docu' => 'Slědujuce boki we wikiju maju pśizwólonu wersiju.',
+	'right-approverevisions' => 'Wěstu wersiju wikiboka ako pśizwólonu nastajiś',
+	'right-viewlinktolatest' => 'Tekst wujasnjenja górjejce na bokach pokazaś, kótarež maju pśizwólonu wersiju',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'approvedrevs-approve' => 'aprobar',
+	'approvedrevs-unapprove' => 'desaprobar',
 );
 
 /** Finnish (Suomi)
@@ -141,6 +224,29 @@ Au lieu de cela, la révision la plus récente sera affichée.',
 	'right-viewlinktolatest' => 'Voir le texte explicatif en haut des pages qui ont une révision approuvée',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'approvedrevs-desc' => 'Marcar como aprobada unha única revisión dunha páxina',
+	'approvedrevs-logname' => 'Rexistro de aprobación de revisións',
+	'approvedrevs-logdesc' => 'Este é o rexistro das revisións aprobadas.',
+	'approvedrevs-approve' => 'aprobar',
+	'approvedrevs-unapprove' => 'desaprobar',
+	'approvedrevs-approvesuccess' => 'Esta é a revisión aprobada da páxina.',
+	'approvedrevs-unapprovesuccess' => 'Esta páxina xa non ten ningunha versión aprobada.
+No canto dela, móstrase a revisión máis recente.',
+	'approvedrevs-approveaction' => 'marcou $2 como a revisión aprobada de "[[$1]]"',
+	'approvedrevs-unapproveaction' => 'anulou unha revisión aprobada de "[[$1]]"',
+	'approvedrevs-notlatest' => 'Esta é a revisión aprobada da páxina, pero non é a máis recente.',
+	'approvedrevs-approvedandlatest' => 'Esta é a revisión aprobada da páxina, e tamén a máis recente.',
+	'approvedrevs-viewlatest' => 'Ollar a revisión máis recente.',
+	'approvedpages' => 'Páxinas aprobadas',
+	'approvedrevs-approvedpages-docu' => 'A continuación están as páxinas do wiki que posúen unha revisión aprobada.',
+	'right-approverevisions' => 'Marcar como aprobada unha revisión específica dunha páxina do wiki',
+	'right-viewlinktolatest' => 'Ollar o texto explicativo ao comezo das páxinas que posúen unha revisión aprobada',
+);
+
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
@@ -162,6 +268,29 @@ Statt däm wird di nejscht Version aazeigt.',
 	'approvedrevs-approvedpages-docu' => 'Des sin d Syte, wu s e aagluegti Version het.',
 	'right-approverevisions' => 'E sicheri Version vun ere Wikisyte as aagluegt markiere',
 	'right-viewlinktolatest' => 'Dr Erklerigstext aaluege obe uf Syte, wu s e aagluegti Version git',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'approvedrevs-desc' => 'Jednotliwu wersiju strony jako schwalenu stajić',
+	'approvedrevs-logname' => 'Protokol schwalenja wersijow',
+	'approvedrevs-logdesc' => 'To je protokol wersije, kotrež buchu schwalene.',
+	'approvedrevs-approve' => 'schwalić',
+	'approvedrevs-unapprove' => 'zakazać',
+	'approvedrevs-approvesuccess' => 'Tuta wersija strony je so jako schwalena wersija stajiła.',
+	'approvedrevs-unapprovesuccess' => 'Schwalena wersija za tutu stronu wjace njeje.
+Město toho so najnowša wersija pokaza.',
+	'approvedrevs-approveaction' => 'je $2 jako schwalenu wersiju za "[[$1]]" nastajił',
+	'approvedrevs-unapproveaction' => 'je status schwalena wersija za "[[$1]]" wotstronił',
+	'approvedrevs-notlatest' => 'To je schwalena wersija tuteje strony; njeje najnowša.',
+	'approvedrevs-approvedandlatest' => 'To je schwalena wersija tuteje strony, kotraž je tež najnowša.',
+	'approvedrevs-viewlatest' => 'Najnowšu wersiju pokazać',
+	'approvedpages' => 'Schwalene wersije',
+	'approvedrevs-approvedpages-docu' => 'Slědowace strony we wikiju maja schwalenu wersiju.',
+	'right-approverevisions' => 'Wěstu wersiju wikistrony jako schwalenu nastajić',
+	'right-viewlinktolatest' => 'Rozłožowacy tekst horjeka na stronach pokazać, kotrež maja schwalenu wersiju.',
 );
 
 /** Interlingua (Interlingua)
@@ -275,6 +404,29 @@ Em vez dela, será apresentada a revisão mais recente.',
 	'right-viewlinktolatest' => 'Ver um texto explicativo no topo das páginas que têm uma revisão aprovada',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'approvedrevs-desc' => 'Marcar como aprovada uma das revisões de uma página',
+	'approvedrevs-logname' => 'Registro de revisões aprovadas',
+	'approvedrevs-logdesc' => 'Este é o registro das revisões que foram aprovadas.',
+	'approvedrevs-approve' => 'aprovar',
+	'approvedrevs-unapprove' => 'reprovar',
+	'approvedrevs-approvesuccess' => 'Esta revisão da página foi definida como a versão aprovada.',
+	'approvedrevs-unapprovesuccess' => 'Deixou de existir uma versão aprovada para esta página.
+Em vez dela, será apresentada a revisão mais recente.',
+	'approvedrevs-approveaction' => 'definir $2 como a revisão aprovada de "[[$1]]"',
+	'approvedrevs-unapproveaction' => 'desfazer a definição da revisão aprovada de "[[$1]]"',
+	'approvedrevs-notlatest' => 'Esta é a revisão aprovada desta página; não é a revisão mais recente.',
+	'approvedrevs-approvedandlatest' => 'Esta é a revisão aprovada desta página e também a revisão mais recente.',
+	'approvedrevs-viewlatest' => 'Ver a revisão mais recente.',
+	'approvedpages' => 'Páginas aprovadas',
+	'approvedrevs-approvedpages-docu' => 'As seguintes páginas desta wiki têm uma revisão aprovada.',
+	'right-approverevisions' => 'Definir como aprovada uma revisão específica de uma página da wiki',
+	'right-viewlinktolatest' => 'Ver um texto explicativo no topo das páginas que têm uma revisão aprovada',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -296,5 +448,28 @@ $messages['ru'] = array(
 	'approvedrevs-approvedpages-docu' => 'Ниже показан список вики-страниц, имеющих подтверждённые версии.',
 	'right-approverevisions' => 'отметка определённых версий вики-страниц как подтверждённых',
 	'right-viewlinktolatest' => 'просмотр пояснительного текста в верхней части страниц, имеющих утверждённые версии',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'approvedrevs-desc' => 'Bir sayfanın belirli bir revizyonunu onaylanmış olarak ayarla',
+	'approvedrevs-logname' => 'Revizyon onay günlüğü',
+	'approvedrevs-logdesc' => 'Bu liste onaylanmış revizyon günlüğüdür.',
+	'approvedrevs-approve' => 'onayla',
+	'approvedrevs-unapprove' => 'onayı kaldır',
+	'approvedrevs-approvesuccess' => 'Sayfaya ait bu revizyon onaylanmış revizyon olarak ayarlandı.',
+	'approvedrevs-unapprovesuccess' => 'Bu sayfanın artık onaylanmış sürümü yok.
+Onun yerine, en son revizyon gösterilecektir.',
+	'approvedrevs-approveaction' => '$2 revizyonunu "[[$1]]" sayfasının onaylanmış revizyonu olarak ayarladı',
+	'approvedrevs-unapproveaction' => '"[[$1]]" sayfasının onaylanmış revizyonunun onayını kaldırdı.',
+	'approvedrevs-notlatest' => 'Bu sayfanın onaylanmış revizyonudur; en son revizyon değildir.',
+	'approvedrevs-approvedandlatest' => 'Bu revizyon, sayfanın hem onaylanmış hem de en son revizyonudur.',
+	'approvedrevs-viewlatest' => 'En son revizyonu görüntüle',
+	'approvedpages' => 'Onaylanmış sayfalar',
+	'approvedrevs-approvedpages-docu' => 'Aşağıdakiler, onaylanmış revizyonu bulunan viki sayfalardır.',
+	'right-approverevisions' => 'Bir viki sayfasının belirli bir revizyonunu onaylanmış olarak ayarla',
+	'right-viewlinktolatest' => 'Onaylanmış revizyonu bulunan sayfaların başındaki açıklayıcı metni görüntüle',
 );
 

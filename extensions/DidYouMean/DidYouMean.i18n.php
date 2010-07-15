@@ -20,6 +20,13 @@ $messages['qqq'] = array(
 	'didyoumean-desc' => 'Extension description displayed on [[Special:Version]].',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'didyoumean-desc' => 'Tambahi tautan ka tungkaran-tungkaran nang bajudul "mahirip"',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -323,6 +330,13 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'didyoumean-desc' => 'Setzt Linken op Säite mat "ähnlechen" Titelen derbäi',
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'didyoumean-desc' => 'Pievieno saites uz lapām ar līdzīgiem nosaukumiem',
 );
 
 /** Malagasy (Malagasy)

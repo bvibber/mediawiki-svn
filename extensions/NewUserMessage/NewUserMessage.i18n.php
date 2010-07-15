@@ -430,6 +430,14 @@ $messages['lt'] = array(
 	'newuseredit-summary' => 'Prideda [[{{int:newusermessage-template}}|pasveikinimo pranešimą]] į naujo naudotojo aptarimo puslapį',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'newusermessage-desc' => 'Pievieno sveicienu jauno lietotāju diskusijām',
+	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Apsveic]] jaunu lietotāju',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

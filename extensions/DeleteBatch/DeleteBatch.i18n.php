@@ -196,10 +196,10 @@ $messages['bg'] = array(
 $messages['br'] = array(
 	'deletebatch' => 'Dilemel ur strollad pajennoù',
 	'deletebatch-desc' => '[[Special:DeleteBatch|Dilemel ur strollad pajennoù]]',
-	'deletebatch-help' => "Dilemel ur strollad pajennoù.
-Tu 'zo deoc'h lañsañ un dilemadur eeun pe dilemel pajennoù listennet en ur restr.
-Dibabit un iplijer a vo lakaet e marilh an dilamadennoù.
-Ur restr enporzhiet a c'hello bezañ ennañ : anv ur bajenn hag un abeg (diret) evit he dilemel, rankout a raio bezañ dispartiet gant ur \"|\" evit pep linenn.",
+	'deletebatch-help' => 'Dilemel ur strollad pajennoù.
+Gellout a rit lañsañ un dilammadenn eeun pe dilemel pajennoù listennet en ur restr.
+Dibabit un implijer a vo lakaet e marilh an dilammadennoù.
+Ur restr enporzhiet a c\'hello bezañ ennañ : anv ur bajenn hag un abeg (diret) evit he dilemel, rankout a raio bezañ dispartiet gant ur "|" evit pep linenn.',
 	'deletebatch-caption' => 'Roll ar pajennoù :',
 	'deletebatch-title' => 'Dilemel ur strollad',
 	'deletebatch-link-back' => "Distreiñ d'ar bajenn dibar",
@@ -347,6 +347,11 @@ Nagrata dataja by měła mě boka a opcionelnu pśicynu wopśimjeś, kótarejž 
 	'deletebatch-select-yourself' => 'ty',
 	'deletebatch-no-page' => 'Pšosym pódaj nanejmjenjej jaden bok za wulašowanje ABO wujeŕ dataju, kótaraž wopśimujo lisćinu bokow.',
 	'right-deletebatch' => 'Někotare boki wulašowaś',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'deletebatch-delete' => 'Tutui',
 );
 
 /** Greek (Ελληνικά)
@@ -1136,6 +1141,7 @@ J'archivi carià a dovrìo conten-e ël nòm dla pàgina e na rason opsional, se
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'deletebatch-caption' => 'د مخ لړليک:',
 	'deletebatch-or' => '<b>يا</b>',
 	'deletebatch-delete' => 'ړنګول',
 	'deletebatch-select-yourself' => 'تاسې',
@@ -1300,6 +1306,7 @@ $messages['sr-ec'] = array(
 	'deletebatch-omitting-invalid' => 'Сакривање неисправне стране $1.',
 	'deletebatch-file-bad-format' => 'Фајл би требало да буде обичан текст',
 	'deletebatch-file-missing' => 'Није било могуће прочитати задат фајл',
+	'deletebatch-select-yourself' => 'Ви',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
@@ -1316,6 +1323,7 @@ $messages['sr-el'] = array(
 	'deletebatch-omitting-invalid' => 'Sakrivanje neispravne strane $1.',
 	'deletebatch-file-bad-format' => 'Fajl bi trebalo da bude običan tekst',
 	'deletebatch-file-missing' => 'Nije bilo moguće pročitati zadat fajl',
+	'deletebatch-select-yourself' => 'Vi',
 );
 
 /** Swedish (Svenska)

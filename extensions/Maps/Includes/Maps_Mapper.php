@@ -12,11 +12,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
+/**
+ * Class with generic mapping methods.
+ * 
+ * @since 0.1
+ * 
+ * @author Jeroen De Dauw
+ */
 final class MapsMapper {
 	
 	/**
 	 * Initialization function. Needs to be called before parameters using Maps defined validation
-	 * or formatting functions are handled. 
+	 * or formatting functions are handled.
 	 */
 	public static function initialize() {
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
@@ -29,6 +36,8 @@ final class MapsMapper {
 	
 	/**
 	 * Returns if the value is a location.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $location
 	 * @param string $name The name of the parameter.
@@ -43,7 +52,7 @@ final class MapsMapper {
 		}
 		
 		if ( self::geocoderIsAvailable() ) {
-			return MapsGeocoder::isLocation( $location, $parameters['geoservice']['value'], $parameters['service']['value'] );
+			return MapsGeocoder::isLocation( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
 		} else {
 			return MapsCoordinateParser::areCoordinates( $location );
 		}
@@ -60,16 +69,20 @@ final class MapsMapper {
 	 */	
 	public static function areLocations( $locations, $name, array $parameters, $metaDataSeparator = false ) {
 		$locations = (array)$locations;
+		
 		foreach ( $locations as $location ) {
 			if ( !self::isLocation( $location, $name, $parameters, $metaDataSeparator ) ) {
 				return false;
 			}
 		}
+		
 		return true;
 	}
 
 	/**
 	 * Formats a location to a coordinate set in a certain representation.
+	 * 
+	 * @since 0.6
 	 * 
 	 * @param string $locations
 	 * @param string $name The name of the parameter.
@@ -77,7 +90,7 @@ final class MapsMapper {
 	 */		
 	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
-			$location = MapsGeocoder::attemptToGeocodeToString( $location, $parameters['geoservice']['value'], $parameters['service']['value'] );
+			$location = MapsGeocoder::attemptToGeocodeToString( $location, $parameters['geoservice']['value'], $parameters['mappingservice']['value'] );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
 		}
@@ -85,7 +98,7 @@ final class MapsMapper {
 
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
-	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
+	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName.
 	 *
 	 * @param string $service
 	 * @param string $feature
@@ -147,6 +160,8 @@ final class MapsMapper {
 	/**
 	 * Determines if a value is a valid map dimension, and optionally corrects it.
 	 *
+	 * @since 0.6
+	 *
 	 * @param string or number $value The value as it was entered by the user.
 	 * @param string $dimension Must be width or height.
 	 * @param boolean $correct If true, the value will be corrected when invalid. Defaults to false.
@@ -168,7 +183,7 @@ final class MapsMapper {
 
 		// Determine the minimum and maximum values.
 		if ( preg_match( '/^.*%$/', $value ) ) {
-			if ( count( $egMapsSizeRestrictions[$dimension] >= 4 ) ) {
+			if ( count( $egMapsSizeRestrictions[$dimension] ) >= 4 ) {
 				$min = $egMapsSizeRestrictions[$dimension][2];
 				$max = $egMapsSizeRestrictions[$dimension][3];
 			} else {
@@ -183,15 +198,15 @@ final class MapsMapper {
 
 		// See if the actual value is withing the limits.
 		$number = preg_replace( '/[^0-9]/', '', $value );
-		if ( $number < $egMapsSizeRestrictions[$dimension][0] ) {
+		if ( $number < $min ) {
 			if ( $correct ) {
-				$value = $egMapsSizeRestrictions[$dimension][0];
+				$value = $min;
 			} else {
 				return false;
 			}
-		} else if ( $number > $egMapsSizeRestrictions[$dimension][1] ) {
+		} else if ( $number > $max ) {
 			if ( $correct ) {
-				$value = $egMapsSizeRestrictions[$dimension][1];
+				$value = $max;
 			} else {
 				return false;
 			}
@@ -209,6 +224,8 @@ final class MapsMapper {
 
 	/**
 	 * Corrects the provided map demension value when not valid.
+	 *
+	 * @since 0.6
 	 *
 	 * @param string or number $value The value as it was entered by the user.
 	 * @param string $dimension Must be width or height.
@@ -274,16 +291,17 @@ final class MapsMapper {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
 
 		return array(
-			'service' => array(
+			'mappingservice' => array(
 				'criteria' => array(
 					'in_array' => self::getAllServiceValues()
 				),
+				'aliases' => array( 'service' )
 			),
 			'geoservice' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableGeoServices
 				),
-				'dependencies' => array( 'service' ),
+				'dependencies' => array( 'mappingservice' ),
 			),
 			'zoom' => array(
 				'type' => 'integer',

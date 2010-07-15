@@ -52,6 +52,30 @@ $messages['de'] = array(
 	'logofunctions-filenotexist' => 'Fehler: [[File:$1]] existiert nicht',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'logofunctions-desc' => 'Parserowu funkciju pśidaś, aby wikilogo nastajiło',
+	'logofunctions-filenotexist' => 'Zmólka: [[File:$1]] njeeksistěrujo',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'logofunctions-desc' => 'Agregar función analizadora para establecer el logo del wiki',
+	'logofunctions-filenotexist' => 'Error: [[File:$1]] no existe',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'logofunctions-desc' => 'Funtzio analizatua gehitzen dio wikiko logoari',
+	'logofunctions-filenotexist' => 'Errorea: [[File:$1]] ez da existitzen',
+);
+
 /** French (Français)
  * @author Jean-Frédéric
  * @author Peter17
@@ -115,6 +139,13 @@ $messages['lb'] = array(
 	'logofunctions-filenotexist' => 'Feeler: [[File:$1]] gëtt et net',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'logofunctions-filenotexist' => 'Kļūda: [[File:$1]] neeksistē',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -131,12 +162,28 @@ $messages['nl'] = array(
 	'logofunctions-filenotexist' => 'Fout: [[File:$1]] bestaat niet',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'logofunctions-desc' => 'Legg til tolkefunksjon for å sette wikiens logo',
+	'logofunctions-filenotexist' => 'Feil: [[File:$1]] finnes ikke',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'logofunctions-desc' => 'Dodaje funkcję parsera umożliwiającą ustawienie logo dla wiki',
 	'logofunctions-filenotexist' => 'Błąd – [[File:$1]] nie istnieje',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'logofunctions-desc' => 'Gionta funsion dël parser për amposté ël sìmbol dla wiki',
+	'logofunctions-filenotexist' => 'Eror: [[File:$1]] a esist pa',
 );
 
 /** Portuguese (Português)

@@ -15,6 +15,7 @@ class FRUserCounters {
 			'frp_user_params',
 			array( 'frp_user_id' => $uid ),
 			__METHOD__
+			// 'FOR UPDATE'
 		);
 		# Parse params
 		$p = array(); // init
@@ -99,7 +100,7 @@ class FRUserCounters {
 			$p['totalContentEdits'] += 1;
 			$changed = true;
 		}
-		if ( $summary != '' ) {
+		if ( !preg_match( '/^\/\*.*\*\/$/', $summary ) ) {
 			$p['editComments'] += 1;
 			$changed = true;
 		}

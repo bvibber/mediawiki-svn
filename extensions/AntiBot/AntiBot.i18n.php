@@ -328,6 +328,13 @@ $messages['lt'] = array(
 	'antibot-desc' => 'Nesudėtinga aplinka spamboto patikrinimams ir trigerio užkrovoms',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'antibot-desc' => "Tontolo nomoramoraina kokoa ho an'ny fankatoavina ny rôbô mpanao spam",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

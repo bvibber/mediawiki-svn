@@ -1412,6 +1412,7 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'bookinfo-header' => 'Informații despre carte',
@@ -1420,12 +1421,12 @@ $messages['ro'] = array(
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editură:',
 	'bookinfo-result-year' => 'An:',
-	'bookinfo-error-invalidisbn' => 'ISBN nevalid.',
+	'bookinfo-error-invalidisbn' => 'ISBN invalid.',
 	'bookinfo-error-nosuchitem' => 'Elementul nu există sau nu a putut fi găsit.',
 	'bookinfo-error-nodriver' => 'Nu poate fi accesată nicio sursă cu informații despe carte.',
 	'bookinfo-error-noresponse' => 'Niciun răspuns sau cererea a expirat.',
 	'bookinfo-purchase' => 'Cumpărați această carte de la $1',
-	'bookinfo-provider' => 'Furnizor date: $1',
+	'bookinfo-provider' => 'Furnizor de date: $1',
 );
 
 /** Tarandíne (Tarandíne)

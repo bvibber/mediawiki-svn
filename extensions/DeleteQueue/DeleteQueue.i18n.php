@@ -1433,6 +1433,17 @@ Móžoš k toś tomu wulašowanjeju [{{fullurl:{{FULLPAGENAME}}|action=delvote}}
 	'deletequeue-case-needs-review' => 'Toś ten pad trjeba [[$1|pśeglědanje]].',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'deletequeue-list-search' => 'Dii',
+	'deletequeue-list-header-page' => 'Axa',
+	'deletequeue-list-header-expiry' => 'Nuwuwu',
+	'deletequeue-case-page' => 'Axa:',
+	'deletequeue-case-expiry' => 'Nuwuwu:',
+);
+
 /** Greek (Ελληνικά)
  * @author Crazymadlover
  * @author Omnipaedista
@@ -4474,7 +4485,7 @@ Du kan [{{fullurl:{{FULLPAGENAME}}|action=delvote}} legge inn ditt eget bifall a
 	'deletequeue-case-details' => 'Grunnleggende detaljer',
 	'deletequeue-case-page' => 'Side:',
 	'deletequeue-case-reason' => 'Årsak:',
-	'deletequeue-case-expiry' => 'Utgår:',
+	'deletequeue-case-expiry' => 'Utløp:',
 	'deletequeue-case-needs-review' => 'Denne saken krever [[$1|revidering]].',
 );
 
@@ -4859,12 +4870,17 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  */
 $messages['ps'] = array(
 	'deletequeue-delnom-otherreason' => 'بل سبب',
+	'deletequeue-review-delete' => 'دا مخ ړنګول.',
 	'deletequeue-review-newreason' => 'نوی سبب:',
 	'deletequeue-vote-reason' => 'تبصرې:',
 	'deletequeue-vote-submit' => 'سپارل',
+	'deletequeue-list-search-legend' => 'د مخونو پلټنه',
 	'deletequeue-list-status' => 'دريځ:',
+	'deletequeue-list-search' => 'پلټل',
+	'deletequeue-list-anyqueue' => '(هر يو)',
 	'deletequeue-list-header-page' => 'مخ',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
+	'deletequeue-list-header-discusspage' => 'د خبرو اترو مخ',
 	'deletequeue-list-header-reason' => 'د ړنګولو سبب',
 	'deletequeue-case-page' => 'مخ:',
 	'deletequeue-case-reason' => 'سبب:',
@@ -6459,6 +6475,11 @@ $messages['vo'] = array(
 	'deletequeue-list-status' => 'Stad:',
 	'deletequeue-list-header-page' => 'Pad',
 	'deletequeue-list-header-discusspage' => 'Bespikapad',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'deletequeue-case-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

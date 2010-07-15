@@ -608,6 +608,7 @@ $messages['id'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Sisipkan pada urutan',
 	'mwe-clipedit-preview_insert' => 'Sisipkan pratayang',
 	'mwe-clipedit-cancel_image_insert' => 'Batalkan penyisipan',
+	'mwe-clipedit-sc_attributes' => 'Suntingan detail klip',
 	'mwe-clipedit-sc_inoutpoints' => 'Atur titik masuk-keluar',
 	'mwe-clipedit-sc_overlays' => 'Hamparan',
 	'mwe-clipedit-sc_audio' => 'Kontrol audio',
@@ -994,6 +995,9 @@ $messages['pt-br'] = array(
 	'mwe-clipedit-inline-description' => 'Título',
 	'mwe-clipedit-edit-video-tools' => 'Ferramentas de edição de vídeo:',
 	'mwe-clipedit-duration' => 'Duração:',
+	'mwe-clipedit-layout' => 'Posicionamento',
+	'mwe-clipedit-layout_right' => 'Imagem posicionada à direita',
+	'mwe-clipedit-layout_left' => 'Imagem posicionada à esquerda',
 );
 
 /** Russian (Русский)

@@ -942,7 +942,7 @@ $messages['ml'] = array(
 	'countedits-ok' => 'ശരി',
 	'countedits-nosuchuser' => '$1 എന്ന പേരുള്ള ഉപയോക്താവ് നിലവിലില്ല.',
 	'countedits-resultheader' => '$1ന്റെ ഫലങ്ങൾ',
-	'countedits-resulttext' => '$1 ഈ വിക്കിയിൽ $2 തിരുത്തലുകൾ നടത്തിയിരിക്കുന്നു',
+	'countedits-resulttext' => '$1 ഈ വിക്കിയിൽ {{PLURAL:$2|ഒരു തിരുത്തൽ|$2 തിരുത്തലുകൾ}} നടത്തിയിരിക്കുന്നു',
 	'countedits-mostactive' => 'ഏറ്റവും സജീവരായ ഉപയോക്താക്കൾ',
 	'countedits-nocontribs' => 'ഈ വിക്കിയിൽ സജീവമായി സംഭാവന ചെയ്യുന്നവരില്ല',
 );

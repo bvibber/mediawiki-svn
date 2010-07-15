@@ -413,6 +413,8 @@ Gali būti naudojamas kaip [[{{#special:advancedrandom}}/{{ns:template}}:Feature
  */
 $messages['mg'] = array(
 	'advancedrandom' => "Antsipirihan'ny kisendra",
+	'advancedrandom-desc' => "Mamoaka pejy iray, pejin-dresaka iray na pejy mikasika ny lohahevitra ao amin'ny anaran-tsehatra amin'ny fomba kisendra.
+Afaka ampiasaina ohatry ny <tt><nowiki>[[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]]</nowiki></tt> mba hahazo pejin-dresaky ny lahatsoratra tsara vita amin'ny fomba kisendra na ohatry ny <tt><nowiki>[[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]</nowiki></tt> mba hahazo rakitra manana lisansa malalaka GNU (GFDL).",
 );
 
 /** Macedonian (Македонски)

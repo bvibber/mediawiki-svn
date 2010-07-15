@@ -724,6 +724,11 @@ Pšosym pśekontrolěruj swój blokěrowak wuskokowańskich woknow.',
 	'ct_user_sample' => 'Wužywarske mě',
 );
 
+/** Ewe (Eʋegbe) */
+$wgCustomToolbarMessages['ee'] = array(
+	'ct_submit' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Geraki
  * @author Omnipaedista
@@ -2155,6 +2160,8 @@ $wgCustomToolbarMessages['pnb'] = array(
  */
 $wgCustomToolbarMessages['ps'] = array(
 	'ct_internal_sample' => 'دمخ-نوم',
+	'ct_internal_caption' => 'کورنۍ تړنه',
+	'ct_external_caption' => 'باندنۍ تړنه',
 	'ct_image_caption' => 'انځور ورګډول',
 	'ct_math_caption' => 'فورمول',
 	'ct_submit' => 'ورځه!',
@@ -2598,6 +2605,7 @@ $wgCustomToolbarMessages['sr-ec'] = array(
 	'ct_italic_tip_ins' => 'Унбаци текст у курзиву',
 	'ct_italic_tip_wrap' => 'Пребаци овај текст у курзив',
 	'ct_italic_caption' => 'Курзив',
+	'ct_internal_sample' => 'ИмеСтране',
 	'ct_internal_tip_ins' => 'Убаци унутрашњу везу',
 	'ct_internal_tip_wrap' => 'Учини овај текст унутрашњом везом',
 	'ct_internal_caption' => 'Унутрашња веза',
@@ -2643,6 +2651,7 @@ $wgCustomToolbarMessages['sr-el'] = array(
 	'ct_italic_tip_ins' => 'Unbaci tekst u kurzivu',
 	'ct_italic_tip_wrap' => 'Prebaci ovaj tekst u kurziv',
 	'ct_italic_caption' => 'Kurziv',
+	'ct_internal_sample' => 'ImeStrane',
 	'ct_internal_tip_ins' => 'Ubaci unutrašnju vezu',
 	'ct_internal_tip_wrap' => 'Učini ovaj tekst unutrašnjom vezom',
 	'ct_internal_caption' => 'Unutrašnja veza',

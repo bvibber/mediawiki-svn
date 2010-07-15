@@ -253,7 +253,12 @@ $messages['bn'] = array(
 নির্দিষ্ট কোনোটির পরিসংখ্যান জানতে যে-কোনো একটি ওপর ক্লিক করুন।',
 	'prefstats-noprefs' => 'বর্তমানে কোনো পছন্দ অনুসরণ করা হচ্ছে না।
 পছন্দ অনুসরণ করতে $wgPrefStatsTrackPrefs কনফিগার করুন।',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|জন ব্যবহারকারী|জন ব্যবহারকারী}} এখন পর্যন্ত পছন্দের পরিসংখ্যান কার্যরত হবার পর তা চালু করেছেন
+** $2 {{PLURAL:$2|জন ব্যবহারকারীর|জন ব্যবহারকারীর}} বর্তমানেও এটি চালু রয়েছে
+** $3 {{PLURAL:$3|জন ব্যবহারকারী|জন ব্যবহারকারী}} কার্যরত হবার পর থেকে তা বন্ধ রেখেছেন
+* সর্বমোট, $4 {{PLURAL:$4|জন ব্যবহারকারী|জন ব্যবহারকারী}} এই পছন্দের সেট ব্যবহার করছেন',
 	'prefstats-xaxis' => 'সময় (ঘন্টা)',
+	'prefstats-factors' => 'প্রদর্শন করো: $1টি',
 	'prefstats-factor-hour' => 'ঘন্টা',
 	'prefstats-factor-sixhours' => 'ছয় ঘন্টা',
 	'prefstats-factor-day' => 'দিন',
@@ -876,6 +881,30 @@ Configurar $wgPrefStatsTrackPrefs por siuvre des prèferences.',
 	'prefstats-legend-in' => 'Vôt participar',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'prefstats' => 'Staitistearachd nan roghainnean',
+	'prefstats-desc' => "Cum sùil air an staitistearachd a dh'innseas dhut cò mheud cleachdaiche a tha a' cleachdadh a leithid seo de dh'fheart",
+	'prefstats-title' => 'Staitistearachd nan roghainnean',
+	'prefstats-list-intro' => "Tha thu a' cumail sùil air staitistearachd na leanas.
+Briog air aonan dhiubh gus a chuid staitistearachd fhaicinn.",
+	'prefstats-noprefs' => 'Chan eil thu a\' cumail sùil air staitistearachd sam bith.
+Deasaich $wgPrefStatsTrackPrefs gus sùil a chumail air roghainnean.',
+	'prefstats-xaxis' => 'Faid (uairean a thìde)',
+	'prefstats-factors' => 'Seall gach: $1',
+	'prefstats-factor-hour' => 'uair a thìde',
+	'prefstats-factor-sixhours' => 'sia uairean a thìde',
+	'prefstats-factor-day' => 'latha',
+	'prefstats-factor-week' => 'seachdain',
+	'prefstats-factor-twoweeks' => 'dà sheachdain',
+	'prefstats-factor-fourweeks' => 'ceithir seachdainean',
+	'prefstats-factor-default' => 'air ais dhan sgèile bhunaiteach',
+	'prefstats-legend-out' => 'Air a dhiùltadh',
+	'prefstats-legend-in' => 'Air gabhail ris',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -1169,6 +1198,7 @@ Klik pada salah satu untuk melihat statistiknya.',
  * @author Malafaya
  */
 $messages['io'] = array(
+	'prefstats-xaxis' => 'Duro (hori)',
 	'prefstats-factor-hour' => 'horo',
 	'prefstats-factor-sixhours' => 'sis hori',
 	'prefstats-factor-day' => 'dio',
@@ -1346,6 +1376,37 @@ $messages['ko'] = array(
 	'prefstats-factor-default' => '기본값',
 	'prefstats-legend-out' => '비활성화한 사용자 수',
 	'prefstats-legend-in' => '활성화한 사용자 수',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'prefstats' => 'Джарашдырыуланы статистикасы',
+	'prefstats-desc' => 'Ненчи къошулуўчу къайсы джарашдырыўну хайырланнганын сынчыкълагъан статистика',
+	'prefstats-title' => 'Джарашдырыўланы статистикасы',
+	'prefstats-list-intro' => 'Бусагъатда эндиги джарашдырыўла сынчыкъланадыла.
+Бирин сайлагъыз статистикасына къарар ючюн.',
+	'prefstats-noprefs' => 'Бусагъатда джарашдырўла сынчыкъланмайдыла.
+$wgPrefStatsTrackPrefs-ни салыгъыз, джарашдырыўланы сынчыкълар ючюн.',
+	'prefstats-counters' => '* $1 Статистика джыйыу башланнганлы бу параметрни {{PLURAL:$1|къошулуучу|къошулуучу}} джандыргъанды.
+** $2 {{PLURAL:$2|къошулуучу|къошулуучу}} параметрни джандыргъанлай къойгъандыла
+** $3 {{PLURAL:$3|къошулуучу|къошулуучу}} параметрни джукълатхандыла',
+	'prefstats-counters-expensive' => '* $1 Параметрле ючюн статистика джыйыу башланнганлы бу параметрни {{PLURAL:$1|къошулуучу|къошулуучу}} джандыргъанды.
+** $2 {{PLURAL:$2|къошулуучу|къошулуучу}} параметрни джандыргъандыла
+** $3 {{PLURAL:$3|къошулуучу|къошулуучу}} параметрни джукълатхандыла
+* Бютеўлей бу параметрни $4 {{PLURAL:$4|къошулуўчу|къошулуўчу}} салгъанды',
+	'prefstats-xaxis' => 'Баргъанлыгъы (сагъат)',
+	'prefstats-factors' => 'Къараула: $1',
+	'prefstats-factor-hour' => 'сагъат',
+	'prefstats-factor-sixhours' => 'алты сагъат',
+	'prefstats-factor-day' => 'кюн',
+	'prefstats-factor-week' => 'ыйыкъ',
+	'prefstats-factor-twoweeks' => 'эки ыйыкъ',
+	'prefstats-factor-fourweeks' => 'тёрт ыйыкъ',
+	'prefstats-factor-default' => 'Тынгылау бла масштабха къайт',
+	'prefstats-legend-out' => 'Джукъландыла',
+	'prefstats-legend-in' => 'Джандырылдыла',
 );
 
 /** Colognian (Ripoarisch)
@@ -1535,7 +1596,7 @@ $messages['ml'] = array(
 	'prefstats-factor-week' => 'ആഴ്ച്ച',
 	'prefstats-factor-twoweeks' => 'രണ്ട് ആഴ്ച്ച',
 	'prefstats-factor-fourweeks' => 'നാല് ആഴ്‌‌ച്ച',
-	'prefstats-factor-default' => 'സ്വതവേയുള്ള അളവിലേയ്ക്ക് മടങ്ങുക',
+	'prefstats-factor-default' => 'സ്വതേയുള്ള അളവിലേയ്ക്ക് മടങ്ങുക',
 	'prefstats-legend-out' => 'ഐച്ഛിക ഒഴിവാക്കൽ',
 	'prefstats-legend-in' => 'ഐച്ഛിക ഉൾപ്പെടുത്തൽ',
 );
@@ -1623,6 +1684,9 @@ $messages['nds-nl'] = array(
 	'prefstats-factor-week' => 'weke',
 	'prefstats-factor-twoweeks' => 'twee weken',
 	'prefstats-factor-fourweeks' => 'vier weken',
+	'prefstats-factor-default' => 'weerumme naor de standardschaole',
+	'prefstats-legend-out' => 'Of-emeld',
+	'prefstats-legend-in' => 'An-emeld',
 );
 
 /** Dutch (Nederlands)
@@ -1913,15 +1977,16 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author AdiJapan
  * @author Firilacroco
+ * @author Minisarm
  * @author Stelistcristi
  * @author Strainu
  */
 $messages['ro'] = array(
 	'prefstats' => 'Statistici despre preferințe',
-	'prefstats-desc' => 'Urmăiți statistici despre câți utilizatori au o anumită preferință activată',
+	'prefstats-desc' => 'Urmărirea statisticilor referitoare la numărul utilizatorilor care au activat o anumită preferință',
 	'prefstats-title' => 'Statistici despre preferințe',
-	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferințe.
-Apăsați pe ele pentru a vizualiza statistici despre ele.',
+	'prefstats-list-intro' => 'În prezent, următoarele preferințe sunt urmărite.
+Apăsați pe una dintre ele pentru a vizualiza statisticile în cauză.',
 	'prefstats-noprefs' => 'Nicio preferință nu este în prezent urmărită.
 Configurați $wgPrefStatsTrackPrefs pentru a urmări preferințe.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|utilizator și-a|utilizatori și-au}} activat această preferință de cînd a început colectarea datelor statistice
@@ -2183,12 +2248,15 @@ $messages['sr-el'] = array(
  */
 $messages['su'] = array(
 	'prefstats' => 'Statistika préferénsi',
+	'prefstats-title' => 'Statistika préferénsi',
+	'prefstats-xaxis' => 'Durasi (jam)',
 	'prefstats-factor-hour' => 'jam',
 	'prefstats-factor-sixhours' => 'genep jam',
 	'prefstats-factor-day' => 'poé',
 	'prefstats-factor-week' => 'minggu',
 	'prefstats-factor-twoweeks' => 'dua minggu',
 	'prefstats-factor-fourweeks' => 'opat minggu',
+	'prefstats-factor-default' => 'balik deui ka skala buhun',
 );
 
 /** Swedish (Svenska)
@@ -2225,9 +2293,22 @@ Klicka på en inställning för att visa statistik om den.',
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'prefstats' => 'Takwimu za mapendekezo',
+	'prefstats-desc' => 'Fuatilia takwimu kuhusu idadi ya watumiaji wanaotumia mapendekezo fulani',
 	'prefstats-title' => 'Takwimu za mapendekezo',
+	'prefstats-list-intro' => 'Hivi sasa, mapendekezo yafuatayo yanafuatiliwa. 
+Bonyeza kitu ili kuangalia takwimu zake.',
+	'prefstats-xaxis' => 'Muda (masaa)',
+	'prefstats-factors' => 'Tazama kwa: $1',
+	'prefstats-factor-hour' => 'saa',
+	'prefstats-factor-sixhours' => 'masaa sita',
+	'prefstats-factor-day' => 'siku',
+	'prefstats-factor-week' => 'wiki',
+	'prefstats-factor-twoweeks' => 'wiki mbili',
+	'prefstats-factor-fourweeks' => 'wiki nne',
 );
 
 /** Telugu (తెలుగు)

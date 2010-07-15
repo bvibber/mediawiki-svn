@@ -1,5 +1,22 @@
 <?php
-# (c) Aaron Schulz 2007, GPL
+/*
+ (c) Aaron Schulz 2007, GPL
+ 
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ http://www.gnu.org/copyleft/gpl.html
+*/
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo "ConfirmAccount extension\n";
@@ -50,10 +67,12 @@ $wgAccountRequestExtraInfo = true;
 
 # Prospective account access levels.
 # An associative array of integer => (special page param,user group,autotext) pairs.
-# The account queues are at Special:ConfirmAccount/param.
-# The integer keys are used to enumerate the type.
+# The account queues are at Special:ConfirmAccount/param. The integer keys enumerate the type.
+# When a request of a certain type (param) is approved, the new user:
+# (a) is placed in the <user group> group (if not User or *)
+# (b) If $wgMakeUserPageFromBio, <autotext> is appended his/her user page
 $wgAccountRequestTypes = array(
-	0 => array( 'authors', 'user' )
+	0 => array( 'authors', 'user', null )
 );
 
 # If set, will add {{DEFAULTSORT:sortkey}} to userpages for auto-categories.

@@ -42,6 +42,14 @@ $messages['aln'] = array(
 	'right-editalluserpages' => 'Redakto faqet përdorues',
 );
 
+/** Arabic (العربية)
+ * @author ;Hiba;1
+ */
+$messages['ar'] = array(
+	'userpageeditprotection-desc' => 'يحصر تحرير صفحات المستخدم على المستخدم و المحررين المسموح لهم بذلك',
+	'right-editalluserpages' => 'تحرير صفحات المستخدم',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -187,6 +195,14 @@ $messages['ko'] = array(
 $messages['lb'] = array(
 	'userpageeditprotection-desc' => "Limitéiert d'Ännere vu Benotzersäiten op d'Benotzer an autoriséiert Editeuren",
 	'right-editalluserpages' => 'Benotzersäiten änneren',
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'userpageeditprotection-desc' => 'Ierobežo lietotāju lapu rediģēšanu, atļaujot to tikai pašam lietotājam un lietotājiem ar atļauju to darīt',
+	'right-editalluserpages' => 'Rediģēt lietotāju lapas',
 );
 
 /** Macedonian (Македонски)

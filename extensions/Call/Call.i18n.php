@@ -227,6 +227,31 @@ V případě problémů můžete zkusit <b>{{#special:call}}/DebuG</b>",
 	'call-save-failed' => "Následující text NEBYL uložený do stránky ''$1'', protože tato stránka už existuje.",
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'call' => 'Galw',
+	'call-desc' => "Creu hypergyswllt i nodyn (neu tudalen wici normal) sy'n osgoi paramedrau.
+Gellid ei ddefnyddio mewn gorchymyn y porydd neu o fewn testun wici",
+	'call-text' => "Mae'r estyniad Galw yn disgwyl tudalen wici a pharamedrau dewisol ar gyfer y dudalen honno fel arg.<br /><br />
+
+Enghraifft 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Enghraifft 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Enghraifft 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Enghraifft 4 (URL y Porydd): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+Bydd yr <i>estyniad Galw</i> yn galw'r dudalen dan sylw ac osgoi'r paramedrau .<br />
+Byddwch yn gweld cynnwys y dudalen a'i theitl ond bydd hi'n dudalen arbennig, h.y., ni ellid golygu'r fath dudalen.<br />Bydd y cynnwys yn amrywio yn ôl y gwerthoedd o'r paramedrau a osgoir.<br /><br />
+
+Mae'r <i>estyniad Galw</i> yn ddefnyddiol wrth adeiladu rhaglenni rhyngweithiol gyda MediaWiki.<br />
+Am enghraifft, gweler <a href='http://semeb.com/dpldemo/Template:Catlist'>y rhyngwyneb defnyddio graffigol DPL</a> ..<br />
+Os oes problemau, rhowch gynnig ar <b>{{#special:call}}/DebuG</b>",
+	'call-save' => "Cedwir allbwn o'r galwad hon mewn tudalen o'r enw ''$1''.",
+	'call-save-success' => 'Cadwyd y testun yma i dudalen <big>[[$1]]</big>.',
+	'call-save-failed' => "NI chadwyd y testun yma i dudalen <big>[[$1]]</big> am fod y dudalen yn bodoli'n barod.",
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Umherirrender

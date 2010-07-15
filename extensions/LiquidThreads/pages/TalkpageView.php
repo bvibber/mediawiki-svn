@@ -152,7 +152,9 @@ class TalkpageView extends LqtView {
 
 		$html .= $headerRow . "\n" . Xml::tags( 'tbody', null, implode( "\n", $rows ) );
 		$html = $h2_header . Xml::tags( 'table', array( 'class' => 'lqt_toc' ), $html );
-
+		// wrap our output in a div for containment
+		$html = Xml::tags( 'div', array( 'class' => 'lqt-contents-wrapper' ), $html );
+		
 		return $html;
 	}
 
@@ -323,6 +325,7 @@ class TalkpageView extends LqtView {
 		}
 
 		$html .= $pager->getNavigationBar();
+		$html .= Xml::openElement( 'div', array( 'class' => 'lqt-threads lqt-talkpage-threads' ) );
 
 		$this->output->addHTML( $html );
 
@@ -330,7 +333,7 @@ class TalkpageView extends LqtView {
 			$this->showThread( $t );
 		}
 
-		$this->output->addHTML( $pager->getNavigationBar() );
+		$this->output->addHTML( Xml::closeElement( 'div' ) . $pager->getNavigationBar() );
 
 		return false;
 	}

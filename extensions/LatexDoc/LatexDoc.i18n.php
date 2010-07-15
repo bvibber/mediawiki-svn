@@ -139,7 +139,7 @@ Ezvont : $2
 $3',
 	'latexdoc_get_dvi' => 'Kaout DVI',
 	'latexdoc_get_pdf' => 'Kaout PDF',
-	'latexdoc-desc' => 'Kemm kenlabour eus ar restroù LaTeX.',
+	'latexdoc-desc' => 'Kemmoù a-stroll eus teulioù LaTeX.',
 );
 
 /** Bosnian (Bosanski)

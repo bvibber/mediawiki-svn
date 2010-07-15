@@ -330,6 +330,7 @@ $messages['bn'] = array(
 	'readerfeedback-submitting' => 'জমা হচ্ছে …',
 	'readerfeedback-finished' => 'ধন্যবাদ!',
 	'readerfeedback-tagfilter' => 'ট্যাগ:',
+	'readerfeedback-tierfilter' => 'রেটিং:',
 	'readerfeedback-tier-high' => 'ভাল',
 	'readerfeedback-tier-medium' => 'মোটামোটি',
 	'readerfeedback-tier-poor' => 'খারাপ',

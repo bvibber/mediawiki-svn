@@ -53,7 +53,8 @@ CREATE TABLE /*_*/code_rev (
   -- 'ok': Reviewed, no issues spotted
   -- 'verified': Reviewed and tested, no issues spotted
   -- 'deferred': Not reviewed at this time (usually non-Wikimedia extension)
-  cr_status enum('new', 'fixme', 'reverted', 'resolved', 'ok', 'verified', 'deferred') not null default 'new',
+  -- 'old': Predates the extension/doesn't require review
+  cr_status enum('new', 'fixme', 'reverted', 'resolved', 'ok', 'verified', 'deferred', 'old') not null default 'new',
 
   -- Base path of this revision :
   -- * if the revision change only one file, the file path

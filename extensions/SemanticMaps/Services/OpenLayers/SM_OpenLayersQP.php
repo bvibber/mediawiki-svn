@@ -1,7 +1,7 @@
 <?php
 
 /**
- * A query printer for maps using the Open Layers API
+ * A query printer for maps using the Open Layers API.
  *
  * @file SM_OpenLayersQP.php 
  * @ingroup SMOpenLayers
@@ -13,71 +13,48 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-final class SMOpenLayersQP extends SMMapPrinter {
+class SMOpenLayersQP extends SMMapPrinter {
 
+	/**
+	 * @see SMMapPrinter::getServiceName
+	 */		
 	protected function getServiceName() {
 		return 'openlayers';
 	}	
 	
 	/**
-	 * @see SMMapPrinter::setQueryPrinterSettings()
+	 * @see SMMapPrinter::addSpecificMapHTML
 	 */
-	protected function setQueryPrinterSettings() {
-		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
+	public function addSpecificMapHTML() {
+		global $wgLang;
 		
-		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-		$this->defaultZoom = $egMapsOpenLayersZoom;
-	}
-
-	/**
-	 * @see SMMapPrinter::doMapServiceLoad()
-	 */
-	protected function doMapServiceLoad() {
-		global $egOpenLayersOnThisPage;
-		
-		$egOpenLayersOnThisPage++;
-		
-		$this->elementNr = $egOpenLayersOnThisPage;
-	}
-	
-	/**
-	 * @see SMMapPrinter::addSpecificMapHTML()
-	 */
-	protected function addSpecificMapHTML() {
-		// TODO: refactor up like done in maps with display point
-		$markerItems = array();
-		
-		foreach ( $this->mLocations as $location ) {
-			// Create a string containing the marker JS .
-			list( $lat, $lon, $title, $label, $icon ) = $location;
-
-			$markerItems[] = "getOLMarkerData($lon, $lat, '$title', '$label', '$icon')";
-		}
-
-		$markersString = implode( ',', $markerItems );
+		$mapName = $this->service->getMapId();			
 
 		$this->output .= Html::element(
 			'div',
 			array(
-				'id' => $this->mapName,
+				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc; overflow: hidden;",
 			),
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
+		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
 		
-		$this->mService->addDependency( Html::inlineScript( <<<EOT
+		$langCode = $wgLang->getCode();
+		
+		$this->service->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
-			'$this->mapName',
+			'$mapName',
 			$this->centreLat,
 			$this->centreLon,
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
-			[$markersString]
+			$this->markerJs,
+			'$langCode'
 		);
 	}
 );
@@ -86,7 +63,10 @@ EOT
 	}
 
 	/**
-	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the specific ones to the list.
+	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the
+	 * specific ones to the list.
+	 * 
+	 * @return array
 	 */
     public function getParameters() {
         $params = parent::getParameters();

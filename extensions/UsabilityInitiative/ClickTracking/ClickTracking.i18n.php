@@ -316,6 +316,20 @@ $messages['ca'] = array(
 	'ct-update-table' => 'Actualitza taula',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'ct-start-date' => 'ڕێکەوتی دەستپێکردن (YYYYMMDD)',
+	'ct-end-date' => 'ڕێکەوتی دوایی‌ھاتن (YYYYMMDD)',
+	'ct-beginner' => 'دەستپێکەر',
+	'ct-intermediate' => 'نێوەندی',
+	'ct-expert' => 'شارەزا',
+	'ct-and' => 'و',
+	'ct-update-table' => 'نوێکردنەوەی خشتە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -731,6 +745,34 @@ $messages['frp'] = array(
 	'ct-update-table' => 'Betar a jorn la trâbla',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'clicktracking' => 'An lorgachadh briogaidh aig Iomairt na So-chleachdachd',
+	'clicktracking-desc' => 'Lorgachadh briogaidh airson sùil a chumail air tachartasan nach cuir air duilleag e fhèin ùrachadh',
+	'ct-title' => 'Briogaidhean iomlan le cleachdaichean',
+	'ct-event-name' => 'Ainm tachartais',
+	'ct-expert-header' => 'Briogaidhean nan "sàr-eòlach"',
+	'ct-intermediate-header' => 'Briogaidhean "luchd-eadar-mheadhanach"',
+	'ct-beginner-header' => 'Briogaidhean "luchd-tòiseachaidh"',
+	'ct-total-header' => 'Briogaidhean uile gu lèir',
+	'ct-start-date' => 'Latha tòiseachaidh (BBBBMMLL)',
+	'ct-end-date' => 'Latha crìochnachaidh (BBBBMMLL)',
+	'ct-increment-by' => "Àireamh de latha a tha gach puing dàta 'ga riochdachadh",
+	'ct-change-graph' => 'Atharraich an graf',
+	'ct-beginner' => 'Luchd-tòiseachaidh',
+	'ct-intermediate' => 'Luchd-eadar-mheadhanach',
+	'ct-expert' => 'Sàr-eòlaich',
+	'ct-date-range' => 'An raon-ama',
+	'ct-editing' => "A' deasachadh an-dràsta:",
+	'ct-anon-users' => 'Cleachdaichean gun ainm',
+	'ct-user-contribs' => "Mùthaidhean a' chleachdaiche uile gu lèir",
+	'ct-user-span' => "Mùthaidhean a' chleachdaiche am broinn an raoin-ama",
+	'ct-and' => 'agus',
+	'ct-update-table' => 'Ùraich an clàr',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -962,8 +1004,10 @@ $messages['ig'] = array(
 $messages['io'] = array(
 	'ct-beginner' => 'Novico',
 	'ct-expert' => 'Experto',
+	'ct-editing' => 'Prezente, vu redaktas:',
 	'ct-anon-users' => 'Anonima uzanti',
 	'ct-and' => 'e(d)',
+	'ct-update-table' => 'Aktualigar tabelo',
 );
 
 /** Italian (Italiano)
@@ -1106,6 +1150,26 @@ $messages['ko'] = array(
  * @author Iltever
  */
 $messages['krc'] = array(
+	'clicktracking' => 'Юзабилити башламчылыкъ юсю бла басыуланы сынчыкълау',
+	'clicktracking-desc' => 'Басыуланы сынчыкълау. Бетни джангыртханнга келтирмеген болууланы сынчыкъларгъа деб этилгенди.',
+	'ct-title' => 'Къошулуучуланы чычханлары бла агрегирланнган басыулары',
+	'ct-event-name' => 'Болууну аты',
+	'ct-expert-header' => '«Экспертлени» басылары',
+	'ct-intermediate-header' => '«Орта къошулуучуланы» басыулары',
+	'ct-beginner-header' => '«Джангыланы» басыулары',
+	'ct-total-header' => 'Бютеу басыула',
+	'ct-start-date' => 'Башланнганны датасы (ДДДДААКК)',
+	'ct-end-date' => 'Бошалгъанны датасы (ДДДДААКК)',
+	'ct-increment-by' => 'Кюнлени, билгилени хар нохтасы кёргюзген саны',
+	'ct-change-graph' => 'Графикни тюрлендир',
+	'ct-beginner' => 'Джангы адам',
+	'ct-intermediate' => 'Орта къошулуучу',
+	'ct-expert' => 'Эксперт',
+	'ct-date-range' => 'Даталаны диапазону',
+	'ct-editing' => 'Бара тургъан тюрлендириу:',
+	'ct-anon-users' => 'Анонимле',
+	'ct-user-contribs' => 'Бютеу къошулуучула къошхан юлюш',
+	'ct-user-span' => 'Къошулуучуланы къошхан юлюшлери кёзюуге кёре',
 	'ct-and' => 'эм',
 	'ct-update-table' => 'Таблицаны джангырт',
 );
@@ -1286,6 +1350,14 @@ $messages['mt'] = array(
 	'ct-user-span' => 'Kontribuzzjonijiet tal-utent fix-xefaq temporanju adottat',
 	'ct-and' => 'u',
 	'ct-update-table' => 'Aġġorna t-tabella',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'ct-event-name' => 'Gebeurtenisse',
+	'ct-expert-header' => '"Expert"-kliks',
 );
 
 /** Dutch (Nederlands)
@@ -1570,7 +1642,7 @@ $messages['ro'] = array(
 	'ct-intermediate' => 'Intermediar',
 	'ct-expert' => 'Expert',
 	'ct-date-range' => 'Interval de timp',
-	'ct-editing' => 'Editare curentă:',
+	'ct-editing' => 'În curs de modificare:',
 	'ct-anon-users' => 'Utilizatori anonimi',
 	'ct-user-contribs' => 'Totalul contribuțiilor utilizatorului',
 	'ct-user-span' => 'Contribuțiile utilizatorului în intervalul de timp',
@@ -1797,12 +1869,16 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'ct-event-name' => 'Ngaran acara',
 	'ct-total-header' => 'Jumlah klik',
 	'ct-start-date' => 'Titimangsa Ngamimitian (YYYYMMDD)',
 	'ct-end-date' => 'Titimangsa Anggeusan (YYYYMMDD)',
 	'ct-change-graph' => 'Robah grafik',
 	'ct-expert' => 'Mahér',
 	'ct-anon-users' => 'Pamaké anonim',
+	'ct-user-contribs' => 'Sakabéh kontribusi pamaké',
+	'ct-user-span' => 'Kontribusi pamaké tina lilana',
+	'ct-and' => 'jeung',
 );
 
 /** Swedish (Svenska)
@@ -1832,6 +1908,16 @@ $messages['sv'] = array(
 	'ct-user-span' => 'Användarbidrag i tidsperiod',
 	'ct-and' => 'och',
 	'ct-update-table' => 'Tppdatera tabell',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'ct-anon-users' => 'Watumiaji bila majina',
+	'ct-user-contribs' => 'Jumla ya michango ya mtumiaji',
+	'ct-and' => 'na',
+	'ct-update-table' => 'Sasisha jedwali',
 );
 
 /** Telugu (తెలుగు)
@@ -2056,9 +2142,12 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'clicktracking' => 'ניצלעכקייט איניציאַטיוו קליקן אויפֿפאַסן',
 	'ct-beginner' => 'אָנהייבער',
 	'ct-anon-users' => 'אַנאנימע באַניצער',
+	'ct-user-contribs' => 'סח"כ באַניצער בײַשטײַערונגען',
 	'ct-and' => 'און',
+	'ct-update-table' => 'דערהײַנטיקן טאַבעלע',
 );
 
 /** Yoruba (Yorùbá)

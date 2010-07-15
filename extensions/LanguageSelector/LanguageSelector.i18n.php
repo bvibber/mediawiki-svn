@@ -343,6 +343,15 @@ $messages['frp'] = array(
 	'languageselector-setlang' => 'Dèfenir',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'languageselector' => 'Cànan',
+	'languageselector-desc' => "Roghnaiche cànain air gach duilleag 's airson cèilichean cuideachd",
+	'languageselector-setlang' => 'suidhich',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

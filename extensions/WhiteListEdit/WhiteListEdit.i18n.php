@@ -926,6 +926,7 @@ Toś ten bok dajo se jano na wobgranicowanych wužywarjow nałožyś.",
  * @author Natsubee
  */
 $messages['ee'] = array(
+	'whitelisttableedit' => 'Trɔ asi le eŋu',
 	'whitelistnever' => 'gbeɖe',
 );
 
@@ -3067,6 +3068,21 @@ $2',
 	'group-restricted-member' => 'Участник, ограниченный в правах',
 	'group-manager' => 'Управляющие',
 	'group-manager-member' => 'управляющий',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'whitelisttablemodify' => 'Змінити',
+	'whitelisttablemodifyall' => 'Вшыткы',
+	'whitelisttablemodifynone' => 'Жадне',
+	'whitelisttablepage' => 'Вікі-сторінка',
+	'whitelisttabletype' => 'Тіп приступу',
+	'whitelisttableedit' => 'Едітовати',
+	'whitelisttableview' => 'Видїти',
+	'whitelisttablenewdate' => 'Новый датум:',
+	'whitelisttableremove' => 'Одстранити',
 );
 
 /** Sinhala (සිංහල)

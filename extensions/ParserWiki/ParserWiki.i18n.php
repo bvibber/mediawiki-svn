@@ -170,9 +170,10 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Marcin Łukasz Kiejzik
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'parserwiki-desc' => 'Pozwala na zdefiniowanie gramatyki w wiki, następnie użyj tej formy gramatycznej do wprowadzania gramatyki na tą samą wiki',
+	'parserwiki-desc' => 'Pozwala na zdefiniowanie gramatyki w wiki, następnie użycie jej do wprowadzania informacji na tej samej wiki',
 );
 
 /** Piedmontese (Piemontèis)

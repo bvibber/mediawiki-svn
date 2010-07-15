@@ -23,6 +23,7 @@ class CodeStatusChangeListView extends CodeView {
 	function getPager() {
 		return new CodeStatusChangeTablePager( $this );
 	}
+
 	function getRepo() {
 		return $this->mRepo;
 	}

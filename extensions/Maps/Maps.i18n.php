@@ -22,6 +22,7 @@ $messages['en'] = array(
 Available mapping services: $1",
 	'maps_map' => 'Map',
 	'maps-loading-map' => 'Loading map...',
+	'maps-markers' => 'Markers',
 
 	// Coordinate handling
 	'maps-abb-north' => 'N',
@@ -84,6 +85,17 @@ $messages['qqq'] = array(
 	'maps_geocoding_failed_for' => '* $1 is a list
 * $2 is the number of list items for PLURAL use.',
 	'maps_centred_on' => '$1 and $2 are latitude and longitude.',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'maps-abb-north' => 'U',
+	'maps-abb-east' => 'T',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'B',
+	'maps_wikipedia' => 'Wikipidia',
 );
 
 /** Afrikaans (Afrikaans)
@@ -195,6 +207,7 @@ $messages['be-tarask'] = array(
 	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
 	'maps_map' => 'Мапа',
 	'maps-loading-map' => 'Загрузка мапы…',
+	'maps-markers' => 'Пазнакі',
 	'maps-abb-north' => 'Пн.',
 	'maps-abb-east' => 'У.',
 	'maps-abb-south' => 'Пд.',
@@ -356,6 +369,7 @@ $messages['de'] = array(
 Verfügbare Kartografie-Dienste: $1',
 	'maps_map' => 'Karte',
 	'maps-loading-map' => 'Karte wird geladen …',
+	'maps-markers' => 'Markierungen',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
@@ -395,6 +409,7 @@ $messages['dsb'] = array(
 K dispoziciji stojece kórtowe słužby: $1',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Kórta se zacytujo...',
+	'maps-markers' => 'Marki',
 	'maps-abb-north' => 'PP',
 	'maps-abb-east' => 'PZ',
 	'maps-abb-south' => 'PD',
@@ -408,6 +423,7 @@ K dispoziciji stojece kórtowe słužby: $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Slědujuca koordinata njejo se spóznała|Slědujucej koordinaśe njejstej se spóznałej|Slědujuce koordinaty njejsu se spóznali|Slědujuce koordinaty njejsu se spóznali}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědujuca koordinata njejo se spóznała|Slědujucej koordinaśe stej se spóznałej|Slědujuce koordinaty su se spóznali|Slědujuce koordinaty su se spóznali}} a {{PLURAL:$2|njejo se wuwóstajiła|njejstej se wuwóstajiłej|njejsu wuwóstajili|njejsu se wuwóstajili}} na kórśe: $1',
 	'maps_map_cannot_be_displayed' => 'Kórta njedajo se zwobrazniś.',
+	'maps_invalid_distance' => 'Gódnota $1 njejo płaśiwa distanca.',
 	'maps-geocoder-not-available' => 'Funkcija geokoděrowanja Kórtow njestoj k dispoziciji, twójo městno njedajo se geokoděrowaś.',
 	'maps_click_to_activate' => 'Klikni, aby kórtu aktiwěrował',
 	'maps_centred_on' => 'Kórta na $1, $2 centrěrowana.',
@@ -499,6 +515,7 @@ $messages['es'] = array(
 	'maps_desc' => 'Proporciona la capacidad de mostrar los datos de coordenadas en los mapas y geocodifica direcciones ([http://wiki.bn2vs.com/wiki/Maps demo]). Servicios de mapeo disponibles: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando mapa...',
+	'maps-markers' => 'Marcadores',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -599,6 +616,7 @@ $messages['fr'] = array(
 Services de cartographie disponibles : $1',
 	'maps_map' => 'Carte',
 	'maps-loading-map' => 'Chargement de la carte...',
+	'maps-markers' => 'Marqueurs',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -658,6 +676,7 @@ $messages['gl'] = array(
 Servizos de cartografía dispoñibles: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Cargando o mapa...',
+	'maps-markers' => 'Marcadores',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'S',
@@ -701,6 +720,7 @@ $messages['gsw'] = array(
 	'maps_desc' => 'Ergänzt d Megligkeit Koordinatedate in Charte un Geocodeadrässe aazzeige. Verfiegbari Chartedienscht: $1. [http://www.mediawiki.org/wiki/Extension:Maps Dokumäntation]. [http://wiki.bn2vs.com/wiki/Maps Demo]',
 	'maps_map' => 'Charte',
 	'maps-loading-map' => 'Am Lade vu dr Charte ...',
+	'maps-markers' => 'Markierige',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
@@ -791,6 +811,7 @@ $messages['hsb'] = array(
 K dispoziciji stejace kartowe słužby: $1',
 	'maps_map' => 'Karta',
 	'maps-loading-map' => 'Karta so začituje...',
+	'maps-markers' => 'Marki',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'W',
 	'maps-abb-south' => 'J',
@@ -864,6 +885,7 @@ $messages['ia'] = array(
 Servicios cartographic disponibile: $1',
 	'maps_map' => 'Carta',
 	'maps-loading-map' => 'Cargamento del carta…',
+	'maps-markers' => 'Marcatores',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1137,6 +1159,7 @@ $messages['mk'] = array(
 Картографски служби на располагање: $1',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Ја вчитувам картата...',
+	'maps-markers' => 'Обележувачи',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ј',
@@ -1209,6 +1232,7 @@ $messages['nl'] = array(
 Beschikbare kaartdiensten: $1',
 	'maps_map' => 'Kaart',
 	'maps-loading-map' => 'Bezig met het laden van de kaart...',
+	'maps-markers' => 'Markeringen',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'Z',
@@ -1270,6 +1294,7 @@ $messages['no'] = array(
 Tilgjengelige karttjenester: $1',
 	'maps_map' => 'Kart',
 	'maps-loading-map' => 'Laster kart...',
+	'maps-markers' => 'Markører',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ø',
 	'maps-abb-south' => 'S',
@@ -1285,6 +1310,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Følgende {{PLURAL:$2|koordinat|koordinater}} ble ikke gjenkjent og har blitt utelatt fra kartet:
 $1',
 	'maps_map_cannot_be_displayed' => 'Kartet kan ikke vises.',
+	'maps_invalid_distance' => 'Verdien $1 er ikke en gyldig avstand.',
 	'maps-geocoder-not-available' => 'Geokodingsfunksjonen i Maps er ikke tilgjengelig. Din plassering kan ikke geokodes.',
 	'maps_click_to_activate' => 'Klikk for å aktivere kartet',
 	'maps_centred_on' => 'Kart sentrert om $1, $2.',
@@ -1341,6 +1367,7 @@ $messages['pl'] = array(
 	'maps_desc' => 'Umożliwia wyświetlanie na mapach współrzędnych oraz adresów geograficznych ([http://wiki.bn2vs.com/wiki/Maps demo]). Dostępne serwisy mapowe: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Wczytywanie mapy…',
+	'maps-markers' => 'Zaznaczenia',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1357,7 +1384,7 @@ Mapa nie może zostać wyświetlona.',
 $1',
 	'maps_map_cannot_be_displayed' => 'Mapa nie może zostać wyświetlona.',
 	'maps_invalid_distance' => 'Wartość $1 nie jest poprawną odległością.',
-	'maps-geocoder-not-available' => 'Funkcjonalność geokodowania map nie jest dostępna. Lokalizacja nie może zostać zakodowana.',
+	'maps-geocoder-not-available' => 'Funkcja geokodowania map nie jest dostępna. Lokalizacja nie może zostać zakodowana.',
 	'maps_click_to_activate' => 'Kliknij, aby aktywować mapę',
 	'maps_centred_on' => 'Środek mapy – $1, $2.',
 	'maps_overlays' => 'Nakładki',
@@ -1376,6 +1403,7 @@ $messages['pms'] = array(
 	'maps_desc' => "A dà la possibilità ëd visualisé le coordinà ant le mape, e j'adrësse geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Sërvissi ëd mapatura disponìbil: $1",
 	'maps_map' => 'Pian',
 	'maps-loading-map' => 'Cariament ëd la carta...',
+	'maps-markers' => 'Marcador',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1407,6 +1435,10 @@ $1",
  */
 $messages['ps'] = array(
 	'maps_map' => 'نخشه',
+	'maps-abb-north' => 'سهـ',
+	'maps-abb-east' => 'خ',
+	'maps-abb-south' => 'سو',
+	'maps-abb-west' => 'ل',
 	'maps_photos' => 'انځورونه',
 	'maps_videos' => 'ويډيوګانې',
 	'maps_wikipedia' => 'ويکيپېډيا',
@@ -1422,6 +1454,7 @@ $messages['pt'] = array(
 Serviços de cartografia disponíveis: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'A carregar o mapa...',
+	'maps-markers' => 'Marcadores',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'E',
 	'maps-abb-south' => 'S',
@@ -1451,6 +1484,7 @@ $1',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -1458,23 +1492,32 @@ $messages['pt-br'] = array(
 Serviços de mapeamento disponíveis: $1',
 	'maps_map' => 'Mapa',
 	'maps-loading-map' => 'Carregando mapa...',
+	'maps-markers' => 'Marcadores',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'L',
 	'maps-abb-south' => 'S',
 	'maps-abb-west' => 'O',
 	'maps-latitude' => 'Latitude:',
 	'maps-longitude' => 'Longitude:',
+	'maps-invalid-coordinates' => 'O valor $1 não foi reconhecido como um conjunto de coordenadas válido.',
 	'maps_coordinates_missing' => 'Nenhuma coordenada fornecida para o mapa',
 	'maps_geocoding_failed' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado|geocodificados}}: $1.
 O mapa não pode ser exibido.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|O seguinte endereço não pode|Os seguintes endereços não puderam}} ser {{PLURAL:$2|geocodificado e foi omitido|geocodificados e foram omitidos}} do mapa:
 $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida|As seguintes coordenadas não foram reconhecidas}}: $1.',
+	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
+$1',
 	'maps_map_cannot_be_displayed' => 'O mapa não pode ser mostrado.',
 	'maps_invalid_distance' => 'O valor $1 não é uma distância válida.',
+	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para ativar o mapa',
+	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
+	'maps_overlays' => 'Sobreposições',
 	'maps_photos' => 'Fotos',
 	'maps_videos' => 'Vídeos',
+	'maps_wikipedia' => 'Wikipédia',
+	'maps_webcams' => 'Webcams',
 );
 
 /** Romanian (Română)
@@ -1520,6 +1563,7 @@ $messages['ru'] = array(
 Доступные картографические службы: $1',
 	'maps_map' => 'Карта',
 	'maps-loading-map' => 'Идёт загрузка карты…',
+	'maps-markers' => 'Отметки',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'В',
 	'maps-abb-south' => 'Ю',
@@ -1688,25 +1732,40 @@ $1',
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'maps_map' => 'Harita',
+	'maps-loading-map' => 'Harita yükleniyor...',
 	'maps-abb-north' => 'K',
 	'maps-abb-east' => 'D',
 	'maps-abb-south' => 'G',
 	'maps-abb-west' => 'B',
 	'maps-latitude' => 'Enlem:',
 	'maps-longitude' => 'Boylam:',
+	'maps-invalid-coordinates' => '$1 değeri geçerli bir koordinat olarak algılanmadı.',
 	'maps_coordinates_missing' => 'Harita için koordinat girilmedi.',
+	'maps_geocoding_failed' => 'Takip eden {{PLURAL:$2|adres|adresler}} coğrafi olarak kodlanmaıyor: $1',
 	'maps_unrecognized_coords' => 'Şu {{PLURAL:$2|koordinat|koordinatlar}} tanınamadı: $1',
 	'maps_map_cannot_be_displayed' => 'Harita görüntülenemiyor.',
+	'maps_invalid_distance' => '$1 değeri geçerli bir mesafe değeri değildir.',
+	'maps-geocoder-not-available' => 'Haritanın coğrafi kodlama özelliği etkin değil. Konumunuz kodlanamıyor.',
 	'maps_click_to_activate' => 'Haritayı etkinleştirmek için tıkla',
 	'maps_centred_on' => 'Harita, $1 $2 koordinatlarında ortalandı.',
+	'maps_overlays' => 'Katmanlar',
 	'maps_photos' => 'Fotoğraflar',
 	'maps_videos' => 'Videolar',
 	'maps_wikipedia' => 'Vikipedi',
 	'maps_webcams' => 'Web kameraları',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'maps-latitude' => 'Широта:',
+	'maps-longitude' => 'Довгота:',
 );
 
 /** Veps (Vepsan kel') */

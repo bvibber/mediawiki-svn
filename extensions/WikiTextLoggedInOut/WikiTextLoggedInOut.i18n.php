@@ -36,6 +36,13 @@ $messages['aln'] = array(
 	'wikitextloggedinout-desc' => "Dy parser grepa, <code>&lt;loggedin&gt;</code> dhe <code>&lt;loggedout&gt;</code> për të treguar tekst të ndryshme në varësi të përdoruesit ' login shtetit",
 );
 
+/** Amharic (አማርኛ)
+ * @author Hinstein
+ */
+$messages['am'] = array(
+	'wikitextloggedinout-desc' => 'መንቶ parser hooks <code>&lt;loggedin&gt;</code> እና <code>&lt;loggedout&gt;</code> የተጠቃሚውን መግቢያ (login) መቀመጫ (state) መሰረት በማድረግ የተለያዩ ፅሁፎችን ለማሳየት',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

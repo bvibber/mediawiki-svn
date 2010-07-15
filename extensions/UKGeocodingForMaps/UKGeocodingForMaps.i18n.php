@@ -135,6 +135,15 @@ $messages['ia'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Un o plus codices postal non poteva esser geocodificate e ha essite omittite del carta.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'ukgeocoding_name' => 'Kode Geo Britania Raya untuk Peta',
+	'ukgeocoding_desc' => 'Perluas Peta dengan fungsi parser display_uk_point dengan menggunakan Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Satu kode pos atau lebih tidak dapat dikodegeokan dan telah dihapus dari peta.',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
@@ -237,5 +246,14 @@ $messages['tl'] = array(
 	'ukgeocoding_name' => 'Pagge-geokodigong UK para sa mga Mapa',
 	'ukgeocoding_desc' => 'Nagdurugtong ng mga Mapa na may isang pareser na tungkuling para sa display_uk_point na may pagpapatupad na Mga Mapa ng Google',
 	'ukgeocoding_couldNotGeocode' => 'Hindi mageokodigong ang isa o mahigit pang mga kodigong postal at inalis mula sa mapa.',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'ukgeocoding_name' => 'Mã hóa Địa lý Bản đồ Anh',
+	'ukgeocoding_desc' => 'Mở rộng các bản đồ với hàm cú pháp display_uk_point hoạt động do Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Một số mã bưu chính bị bỏ qua vì không thể được mã hóa địa lý.',
 );
 

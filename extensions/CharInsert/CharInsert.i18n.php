@@ -326,6 +326,13 @@ $messages['li'] = array(
 	'charinsert-desc' => "Maak 't meugelik [[MediaWiki:Edittools|neet-standaard karakters]] in te veure venoet e deilvènster via JavaScript",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'charinsert-desc' => 'Atļauj izveidot javaskripta kasti [[MediaWiki:Edittools|nestandarta rakstu zimēm]]',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

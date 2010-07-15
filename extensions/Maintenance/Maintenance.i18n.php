@@ -642,12 +642,18 @@ $2',
 	'maintenance-memc-withsession' => "gant an dalc'h :",
 	'maintenance-memc-withoutsession' => "hep an dalc'h :",
 	'maintenance-memc-total' => 'hollad :',
+	'maintenance-memc-parsercache' => 'Krubuilh ar parser',
 	'maintenance-memc-hits' => 'klikoù :',
 	'maintenance-memc-invalid' => 'direizh :',
 	'maintenance-memc-expired' => "aet d'e dermen :",
 	'maintenance-memc-absent' => 'ezvezant :',
+	'maintenance-memc-stub' => "Treuzoù loc'hañ :",
+	'maintenance-memc-imagecache' => 'Krubuilh ar skeudenn',
 	'maintenance-memc-misses' => "c'hwitet :",
 	'maintenance-memc-updates' => 'hizivadennoù :',
+	'maintenance-memc-uncacheable' => 'er-maez krubuilh :',
+	'maintenance-memc-diffcache' => "Krubuilh an diforc'hioù",
+	'maintenance-eval' => "Ober gant ar furmskrid-mañ evit prizañ ar c'hod PHP en endro MediaWiki.",
 	'maintenance-re-from' => "Anv an implijer da biv eo ret kemer ar c'hemmoù",
 	'maintenance-re-to' => "Anv an implijer da biv eo ret deverkañ ar c'hemmoù",
 	'maintenance-re-rc' => "Chom hep hizivaat taolenn ar c'hemmoù nevez",
@@ -1221,6 +1227,7 @@ Se cancela el traslado.',
 );
 
 /** Estonian (Eesti)
+ * @author Pikne
  * @author Silvar
  */
 $messages['et'] = array(
@@ -1232,7 +1239,7 @@ $messages['et'] = array(
 	'maintenance-bureaucrat' => 'Eduta kasutajat bürokraadi staatusesse',
 	'maintenance-reason' => 'Põhjus',
 	'maintenance-deleted' => 'KUSTUTATUD',
-	'maintenance-re-nf' => 'Kasutajat $1 ei leidnud',
+	'maintenance-re-nf' => 'Kasutajat $1 ei leidu',
 );
 
 /** Basque (Euskara)
@@ -4671,8 +4678,10 @@ $messages['ug-latn'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'maintenance-reason' => 'Причина',
 	'maintenance-confirm' => 'Підтвердити',
 );
 
@@ -4831,6 +4840,11 @@ Topätükam pestöpädon.',
 	'maintenance-re-nf' => 'Geban: $1 no petuvon',
 	'maintenance-re-de' => 'Redakams pemoüköl: $1',
 	'maintenance-re-re' => 'Redakams padönugivülons{{int:ellipsis}} peledunon.',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'maintenance-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

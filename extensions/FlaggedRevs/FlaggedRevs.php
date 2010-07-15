@@ -302,14 +302,16 @@ $wgPHPlotDir = $dir . 'phplot-5.0.5';
 
 $wgAutoloadClasses['FlaggedRevs'] = $dir . 'FlaggedRevs.class.php';
 $wgAutoloadClasses['FRUserCounters'] = $dir . 'FRUserCounters.php';
+$wgAutoloadClasses['FRInclusionManager'] = $dir . 'FRInclusionManager.php';
 $wgAutoloadClasses['FlaggedRevsHooks'] = $dir . 'FlaggedRevs.hooks.php';
 $wgAutoloadClasses['FlaggedRevsLogs'] = $dir . 'FlaggedRevsLogs.php';
-$wgAutoloadClasses['FRCacheUpdate'] = $dir . 'FRCacheUpdate.php';
-$wgAutoloadClasses['FRCacheUpdateJob'] = $dir . 'FRCacheUpdate.php';
-$wgAutoloadClasses['FRLinksUpdate'] = $dir . 'FRLinksUpdate.php';
+$wgAutoloadClasses['FRExtraCacheUpdate'] = $dir . 'FRExtraCacheUpdate.php';
+$wgAutoloadClasses['FRExtraCacheUpdateJob'] = $dir . 'FRExtraCacheUpdate.php';
+$wgAutoloadClasses['FRSquidUpdate'] = $dir . 'FRExtraCacheUpdate.php';
+$wgAutoloadClasses['FRDependencyUpdate'] = $dir . 'FRDependencyUpdate.php';
 
 # Special case cache invalidations
-$wgJobClasses['flaggedrevs_CacheUpdate'] = 'FRCacheUpdateJob';
+$wgJobClasses['flaggedrevs_CacheUpdate'] = 'FRExtraCacheUpdateJob';
 
 $wgExtensionMessagesFiles['FlaggedRevs'] = $langDir . 'FlaggedRevs.i18n.php';
 $wgExtensionAliasesFiles['FlaggedRevs'] = $langDir . 'FlaggedRevs.alias.php';
@@ -463,8 +465,8 @@ $wgHooks['APIQueryAfterExecute'][] = 'FlaggedRevsApiHooks::addApiRevisionData';
 # Parser hooks, selects the desired images/templates
 $wgHooks['ParserClearState'][] = 'FlaggedRevsHooks::parserAddFields';
 $wgHooks['BeforeParserFetchTemplateAndtitle'][] = 'FlaggedRevsHooks::parserFetchStableTemplate';
-$wgHooks['BeforeParserMakeImageLinkObj'][] = 'FlaggedRevsHooks::parserMakeStableFileLink';
-$wgHooks['BeforeGalleryFindFile'][] = 'FlaggedRevsHooks::galleryFindStableFileTime';
+$wgHooks['BeforeParserMakeImageLinkObj'][] = 'FlaggedRevsHooks::parserFetchStableFile';
+$wgHooks['BeforeGalleryFindFile'][] = 'FlaggedRevsHooks::galleryFetchStableFile';
 # Additional parser versioning
 $wgHooks['ParserAfterTidy'][] = 'FlaggedRevsHooks::parserInjectTimestamps';
 $wgHooks['OutputPageParserOutput'][] = 'FlaggedRevsHooks::outputInjectTimestamps';
@@ -483,18 +485,17 @@ $wgHooks['UserRights'][] = 'FlaggedRevsHooks::recordDemote';
 # User edit tallies
 $wgHooks['ArticleRollbackComplete'][] = 'FlaggedRevsHooks::incrementRollbacks';
 $wgHooks['NewRevisionFromEditComplete'][] = 'FlaggedRevsHooks::incrementReverts';
-# Extra cache updates for stable versions
-$wgHooks['HTMLCacheUpdate::doUpdate'][] = 'FlaggedRevsHooks::doCacheUpdate';
-# Updates stable version tracking data
-$wgHooks['LinksUpdate'][] = 'FlaggedRevsHooks::onLinksUpdate';
-# Clear dead config rows
+# Update fr_page_id values on revision restore
+$wgHooks['ArticleRevisionUndeleted'][] = 'FlaggedRevsHooks::onRevisionRestore';
+# Update config, tracking rows, cache on page changes
+$wgHooks['ArticleEditUpdates'][] = 'FlaggedRevsHooks::onArticleEditUpdates';
 $wgHooks['ArticleDeleteComplete'][] = 'FlaggedRevsHooks::onArticleDelete';
+$wgHooks['ArticleUndelete'][] = 'FlaggedRevsHooks::onArticleUndelete';
+$wgHooks['FileUpload'][] = 'FlaggedRevsHooks::onFileUpload';
 $wgHooks['ArticleRevisionVisibilitySet'][] = 'FlaggedRevsHooks::onRevisionDelete';
 $wgHooks['ArticleRevisionVisiblitySet'][] = 'FlaggedRevsHooks::onRevisionDelete'; // B/C for now
 $wgHooks['TitleMoveComplete'][] = 'FlaggedRevsHooks::onTitleMoveComplete';
-# Check on undelete/merge for changes to stable version
-$wgHooks['ArticleMergeComplete'][] = 'FlaggedRevsHooks::updateFromMerge';
-$wgHooks['ArticleRevisionUndeleted'][] = 'FlaggedRevsHooks::onRevisionRestore';
+$wgHooks['ArticleMergeComplete'][] = 'FlaggedRevsHooks::onArticleMergeComplete';
 # ########
 
 # ######## Other #########
@@ -539,6 +540,8 @@ function efSetFlaggedRevsConditionalHooks() {
 		# Parser stuff
 		$wgHooks['ParserFirstCallInit'][] = 'FlaggedRevsHooks::onParserFirstCallInit';
 		$wgHooks['LanguageGetMagic'][] = 'FlaggedRevsHooks::onLanguageGetMagic';
+		$wgHooks['ParserGetVariableValueSwitch'][] = 'FlaggedRevsHooks::onParserGetVariableValueSwitch';
+		$wgHooks['MagicWordwgVariableIDs'][] = 'FlaggedRevsHooks::onMagicWordwgVariableIDs';
 	}
 	# Give bots the 'autoreview' right (here so it triggers after CentralAuth)
 	# @TODO: better way to ensure hook order

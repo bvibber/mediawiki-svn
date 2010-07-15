@@ -125,6 +125,8 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'wikieditor-template-editor-preference' => 'Omogućava uređivanje wiki šablon putem obrazaca',
+	'wikieditor-template-editor-dialog-submit' => 'Ažuriraj',
+	'wikieditor-template-editor-dialog-cancel' => 'Odustani',
 );
 
 /** Catalan (Català)
@@ -146,6 +148,17 @@ $messages['ce'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Куцкеп хийцам',
 	'wikieditor-template-editor-dialog-submit' => 'Карлаяккха',
 	'wikieditor-template-editor-dialog-cancel' => 'Цаоьшу',
+);
+
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-template-editor-preference' => 'ڕێگە بدە بە دەستکاریکردنی وەک فۆرم بۆ داڕێژەکانی ویکی',
+	'wikieditor-template-editor-dialog-title' => 'دەستکاریکردنی دارێژە',
+	'wikieditor-template-editor-dialog-submit' => 'نوێ کردنەوە',
+	'wikieditor-template-editor-dialog-cancel' => 'ھەڵوەشاندنەوە',
 );
 
 /** Czech (Česky)
@@ -318,6 +331,19 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'wikieditor-template-editor-preference' => 'Activar lo changement a bâsa de formulèros des modèlos vouiqui',
+	'wikieditor-template-editor-dialog-title' => 'Changiér lo modèlo',
+	'wikieditor-template-editor-dialog-submit' => 'Betar a jorn',
+	'wikieditor-template-editor-dialog-cancel' => 'Anular',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-template-editor-preference' => 'Cuir an comas deasachadh de theamplaidean wiki stèidhichte air foirmean',
+	'wikieditor-template-editor-dialog-title' => 'Deasaich an teamplaid',
+	'wikieditor-template-editor-dialog-submit' => 'Ùraich',
+	'wikieditor-template-editor-dialog-cancel' => 'Sguir dheth',
 );
 
 /** Galician (Galego)
@@ -397,6 +423,14 @@ $messages['ig'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Emekwàlà',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'Aktualigar',
+	'wikieditor-template-editor-dialog-cancel' => 'Anular',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -440,6 +474,16 @@ $messages['ko'] = array(
 	'wikieditor-template-editor-dialog-cancel' => '취소',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-template-editor-preference' => 'Шаблонланы формала бла тюрлендириу амалны джандыр',
+	'wikieditor-template-editor-dialog-title' => 'Шаблонну тюрлендириу',
+	'wikieditor-template-editor-dialog-submit' => 'Джангырт',
+	'wikieditor-template-editor-dialog-cancel' => 'Ызына алыу',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -459,16 +503,20 @@ $messages['lb'] = array(
 
 /** Lithuanian (Lietuvių)
  * @author Garas
+ * @author Vpovilaitis
  */
 $messages['lt'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Redaguoti šabloną',
+	'wikieditor-template-editor-dialog-submit' => 'Pakeisti',
 	'wikieditor-template-editor-dialog-cancel' => 'Atšaukti',
 );
 
 /** Latvian (Latviešu)
  * @author Papuass
+ * @author Xil
  */
 $messages['lv'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Rediģēt veidni',
 	'wikieditor-template-editor-dialog-cancel' => 'Atcelt',
 );
 
@@ -518,6 +566,16 @@ $messages['mt'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Immodifika l-mudell',
 	'wikieditor-template-editor-dialog-submit' => 'Aġġorna',
 	'wikieditor-template-editor-dialog-cancel' => 'Annulla',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-template-editor-preference' => 'Formelier-ebaseerd bewarken van wikimallen inschakelen',
+	'wikieditor-template-editor-dialog-title' => 'Mallen bewarken',
+	'wikieditor-template-editor-dialog-submit' => 'Biewarken',
+	'wikieditor-template-editor-dialog-cancel' => 'Ofbreken',
 );
 
 /** Dutch (Nederlands)
@@ -590,6 +648,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wikieditor-template-editor-dialog-submit' => 'اوسمهالول',
+	'wikieditor-template-editor-dialog-cancel' => 'ناګارل',
 );
 
 /** Portuguese (Português)
@@ -721,7 +780,9 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'wikieditor-template-editor-preference' => 'Citakan wiki kudu bisa diédit maké bentuk formulir',
 	'wikieditor-template-editor-dialog-title' => 'Édit citakan',
+	'wikieditor-template-editor-dialog-submit' => 'Anyarkeun',
 	'wikieditor-template-editor-dialog-cancel' => 'Bolay',
 );
 
@@ -815,6 +876,11 @@ $messages['vi'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Sửa đổi bản mẫu',
 	'wikieditor-template-editor-dialog-submit' => 'Cập nhật',
 	'wikieditor-template-editor-dialog-cancel' => 'Hủy bỏ',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 
 /** Yiddish (ייִדיש)

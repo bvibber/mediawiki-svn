@@ -571,6 +571,13 @@ $messages['lt'] = array(
 	'sitenotice-desc' => 'Leisti naudotojams paslėpti pranešimą',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'sitenotice_close' => 'paslēpt',
+);
+
 /** Literary Chinese (文言) */
 $messages['lzh'] = array(
 	'sitenotice_close' => '關',

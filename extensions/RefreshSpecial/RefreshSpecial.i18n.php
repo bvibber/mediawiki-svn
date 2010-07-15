@@ -227,7 +227,7 @@ P'ho peus dibabet an holl pajennoù ho peus c'hoant freskaat klikit war \"Freska
 	'refreshspecial-refreshing' => 'o freskaat ar pajennoù arbennik',
 	'refreshspecial-skipped' => 'diwar gorre, lammet',
 	'refreshspecial-choice' => 'o freskaat pajennoù ispisial',
-	'refreshspecial-js-disabled' => "(<i>Ne c'helloc'h ket dibab an holl pajennoù pa 'z eo diweredekaet JavaScript</i>)",
+	'refreshspecial-js-disabled' => "(<i>Ne c'hellit ket dibab an holl pajennoù pa 'z eo diweredekaet JavaScript</i>)",
 	'refreshspecial-select-all-pages' => 'Diuzañ an holl bajennoù',
 	'refreshspecial-link-back' => "Distreiñ d'ar bajenn dibar",
 	'refreshspecial-none-selected' => "N'ho peus dibabet pajenn ispisial ebet. Distro davet an dibab dre ziouer.",

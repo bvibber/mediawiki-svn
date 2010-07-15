@@ -60,7 +60,7 @@ if ( !$wgEnableResourceLoader && $myResourceLoader->outputFormat != 'messages' )
 	echo '/*ScriptLoader is not enabled for this site. To enable add the following line to your LocalSettings.php';
 	echo '<pre><b>$$wgEnableResourceLoader=true;</b></pre>*/';
 	echo 'alert(\'Script loader is disabled\');';
-	wfAbruptExit( 1 );
+	die( 1 );
 }
 
 // Run ResourceLoader action:

@@ -113,6 +113,13 @@ $messages['ca'] = array(
 	'sendmailtowiki-inpin' => 'PIN:',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'sendmailtowiki-inpin' => 'PIN:',
+);
+
 /** German (Deutsch)
  * @author Imre
  */
@@ -498,9 +505,13 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'sendmailtowiki-desc' => 'Publicação de conteúdos numa wiki, através de um endereço de e-mail dinâmico e dedicado',
+	'prefs-sendmailtowiki' => 'Publicar conteúdos por e-mail',
+	'sendmailtowiki-inemail' => 'Endereço de e-mail dedicado:',
 	'sendmailtowiki-inpin' => 'PIN:',
 	'sendmailtowiki-err-pinlength' => 'PIN precisa conter exatamente 5 algarismos.',
 	'sendmailtowiki-err-invalidpin' => 'PIN inválido. Acesso negado.',

@@ -351,6 +351,20 @@ $messages['li'] = array(
 	'doublewiki-desc' => "Toent 'n pagina en de vertaling oet 'n andere wiki in twie kolomme op dezelfde pagina",
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'doublewiki-desc' => 'Parāda šo lapu un tās tulkojumu citā wiki vienā lapā kā divas līdzās esošas slejas',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'doublewiki-desc' => "Maneho pejy sy ny dikan-teniny avy amina wiki hafa amin'ny alàlan'ny tsanganana roa eo amin'ny pejy iray",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

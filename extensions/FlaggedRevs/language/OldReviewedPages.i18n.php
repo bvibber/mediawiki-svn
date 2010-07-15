@@ -127,12 +127,13 @@ $messages['an'] = array(
 );
 
 /** Arabic (العربية)
+ * @author ;Hiba;1
  * @author Meno25
  * @author OsamaK
  * @author Ouda
  */
 $messages['ar'] = array(
-	'oldreviewedpages' => 'صفحات مراجعة قديمة',
+	'oldreviewedpages' => 'صفحات مع تغييرات معلقة',
 	'oldreviewedpages-legend' => 'عرض الصفحات المراجعة ذات المراجعات غير المراجعة',
 	'oldreviewedpages-list' => 'هذه الصفحة تعرض {{PLURAL:$1||صفحة مراجعة فيها|صفحتين مراجعتين فيهما|صفحات مراجعة فيها}} تعديلات قيد الانتظار.',
 	'oldreviewedpages-none' => 'لا توجد حاليا صفحات تطابق هذه المواصفات',
@@ -706,7 +707,7 @@ $messages['he'] = array(
 	'oldreviewedpages-recent' => 'פחות משעה',
 	'oldreviewed-category' => 'קטגוריה:',
 	'oldreviewed-watched' => 'דפים ברשימת המעקב שלי',
-	'oldreviewed-stable' => 'הגירסה היציבה כברירת מחדל',
+	'oldreviewed-stable' => 'הגרסה היציבה כברירת מחדל',
 	'oldreviewed-diff' => 'בדיקה',
 	'oldreviewed-size' => 'השינוי המירבי בגודל בבתים:',
 	'oldreviewedpages-unwatched' => '(לא במעקב)',
@@ -1063,7 +1064,7 @@ $messages['ml'] = array(
 	'oldreviewedpages-recent' => '(1 മണിക്കൂറിൽ താഴെ)',
 	'oldreviewed-category' => 'വർഗ്ഗം:',
 	'oldreviewed-watched' => 'ഞാൻ ശ്രദ്ധിക്കുന്ന താളുകൾ',
-	'oldreviewed-stable' => 'സ്വതവേ സ്ഥിരതയുള്ള പതിപ്പ്',
+	'oldreviewed-stable' => 'സ്വതേ സ്ഥിരതയുള്ള പതിപ്പ്',
 	'oldreviewed-diff' => 'സംശോധനം',
 	'oldreviewed-size' => 'പരമാവധി മാറ്റങ്ങൾ (ബൈറ്റുകൾ):',
 	'oldreviewedpages-unwatched' => '(ശ്രദ്ധിക്കുന്നില്ല)',
@@ -1277,6 +1278,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ساعت|ساعتونه}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ورځ|ورځې}})',
 	'oldreviewed-category' => 'وېشنيزه:',
 );
@@ -1488,9 +1490,11 @@ $messages['sr-ec'] = array(
 	'oldreviewedpages-recent' => '(мање од једног часа)',
 	'oldreviewed-category' => 'Категорија:',
 	'oldreviewed-watched' => 'Стране на мојем списку надгледања',
-	'oldreviewed-stable' => 'Стабилизоване стране',
+	'oldreviewed-stable' => 'Стабилна верзија је подразумевана',
 	'oldreviewed-diff' => 'преглед',
+	'oldreviewed-size' => 'Највећа измена (бајтови):',
 	'oldreviewedpages-unwatched' => '(ненадгледано)',
+	'oldreviewedpages-watched' => '($1 {{PLURAL:$1|активан корисник|активна корисника|активна корисника|активна корисника|активних корисника}} гледа)',
 	'oldreviewedpages-viewing' => '(под прегледом)',
 );
 
@@ -1507,9 +1511,11 @@ $messages['sr-el'] = array(
 	'oldreviewedpages-recent' => '(manje od jednog časa)',
 	'oldreviewed-category' => 'Kategorija:',
 	'oldreviewed-watched' => 'Strane na mojem spisku nadgledanja',
-	'oldreviewed-stable' => 'Stabilizovane strane',
+	'oldreviewed-stable' => 'Stabilna verzija je podrazumevana',
 	'oldreviewed-diff' => 'pregled',
+	'oldreviewed-size' => 'Najveća izmena (bajtovi):',
 	'oldreviewedpages-unwatched' => '(nenadgledano)',
+	'oldreviewedpages-watched' => '($1 {{PLURAL:$1|aktivan korisnik|aktivna korisnika|aktivna korisnika|aktivna korisnika|aktivnih korisnika}} gleda)',
 	'oldreviewedpages-viewing' => '(pod pregledom)',
 );
 
@@ -1616,6 +1622,7 @@ $messages['tl'] = array(
  * @author Karduelis
  * @author Manco Capac
  * @author Runningfridgesrule
+ * @author Srhat
  */
 $messages['tr'] = array(
 	'oldreviewedpages' => 'Bekleyen değişiklik içeren sayfalar',
@@ -1627,7 +1634,7 @@ $messages['tr'] = array(
 	'oldreviewedpages-recent' => '(1 saatten daha az)',
 	'oldreviewed-category' => 'Kategori:',
 	'oldreviewed-watched' => 'İzleme listemdeki sayfalar',
-	'oldreviewed-stable' => 'Kararlı sürümü varsayılandır',
+	'oldreviewed-stable' => 'Varsayılan sürüm kararlı sürümdür',
 	'oldreviewed-diff' => 'gözden geçir',
 	'oldreviewed-size' => 'Azami değişiklik (bayt):',
 	'oldreviewedpages-unwatched' => '(izlenmiyor)',

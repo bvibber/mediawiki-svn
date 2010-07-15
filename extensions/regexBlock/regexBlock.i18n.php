@@ -728,6 +728,14 @@ Nejskerjej taki wužywaŕ njejo.',
 	'right-regexblock' => 'Zawoborujo wužywarjam wobźěłowanje na wšych wikijach na wikijowej farmje',
 );
 
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'regexblock-form-expiry' => 'Nuwuwu:',
+	'regexblock-view-go' => 'Yi',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Dada
@@ -2357,7 +2365,7 @@ Jeżeli uważasz, że nastąpiła pomyłka [[$1|skontaktuj się z nami]]',
 	'regexblock-reason-regex' => 'Nazwa użytkownika została zablokowana z powodu wandalizmu lub innego naruszenia zasad, wykonanych przez użytkownika o bardzo podobnej nazwie.
 Utwórz inną nazwę użytkownika lub [[$1|skontaktuj się z nami]] w celu rozwiązania problemu.',
 	'regexblock-form-username' => 'Adres IP lub nazwa użytkownika:',
-	'regexblock-form-reason' => 'Powód:',
+	'regexblock-form-reason' => 'Powód',
 	'regexblock-form-expiry' => 'Czas blokady:',
 	'regexblock-form-match' => 'Dokładnie',
 	'regexblock-form-account-block' => 'Zablokuj możliwość tworzenia nowych kont',
@@ -2419,7 +2427,7 @@ S'it chërde che a sia n'eror, për piasì [[$1|contatne]]",
 	'regexblock-reason-regex' => "Sto nòm utent-sì a peul pa modifichè për vandalism o àutr dann fàit na n'utent con nòm ësmijant.
 Për piasì crea n'àutr nòm utent o [[$1|contatne]] për parlé dël problema.",
 	'regexblock-form-username' => 'Adrëssa IP o nòm utent:',
-	'regexblock-form-reason' => 'rason:',
+	'regexblock-form-reason' => 'Rason:',
 	'regexblock-form-expiry' => 'Fin:',
 	'regexblock-form-match' => 'Pròpi istess',
 	'regexblock-form-account-block' => 'Blòca la creassion ëd neuv cont',
@@ -3257,6 +3265,11 @@ $messages['vo'] = array(
 	'regexblock-view-empty' => 'Lised gebananemas e ladetas-IP peblokölas vagon.',
 	'regexblock-view-time' => 'in $1',
 	'right-regexblock' => 'Blokön gebanis in vüks valik vükafarma',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'regexblock-form-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

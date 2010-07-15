@@ -107,6 +107,7 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'fundraiserportal' => 'তহবিল সংগ্রহের প্রবেশদ্বার',
 	'fundraiserportal-plain-button' => 'উইকিপিডিয়াকে সাহায্য করুন!',
 	'fundraiserportal-ruby-button' => 'এখনই দান করুন',
 	'fundraiserportal-rubytext-button' => 'এখনই দান করুন',
@@ -582,6 +583,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'fundraiserportal-plain-button' => 'Suportez Wikipedio!',
 	'fundraiserportal-ruby-button' => 'Donacez Nun',
 	'fundraiserportal-rubytext-button' => 'Donacez Nun',
 	'fundraiserportal-sapphire-button' => 'Donacez Nun',

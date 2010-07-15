@@ -258,6 +258,7 @@ The contents of this page appear in the "Order as a printed book" box on <nowiki
 * <tt>$2</tt> is a link captioned {{msg-mw|coll-suggest_undo}}',
 	'coll-suggest_undo_tooltip' => '{{Identical|Undo}}',
 	'coll-suggest_undo' => '{{Identical|Undo}}',
+	'coll-load_local_book' => 'PLURAL support not yet available for collection extension. See the discussion on [[Thread:Support/PLURAL support for Coll-load local book/reply]].',
 	'right-collectionsaveasuserpage' => '{{doc-right|collectionsaveasuserpage}}',
 	'right-collectionsaveascommunitypage' => '{{doc-right|collectionsaveascommunitypage}}',
 );
@@ -1180,12 +1181,12 @@ JavaScript সক্রিয় না করা পর্যন্ত, এই 
  */
 $messages['br'] = array(
 	'coll-desc' => '[[Special:Book|Sevel levrioù]]',
-	'coll-book_creator_intro' => "<big>Gant ar ''c'hrouer levrioù'' e c'hallit sevel ul levr a ya d'e ober pajennoù wiki dibabet ganeoc'h. Gallout a rit ezporzhiañ al levr e furmadoù disheñvel (evel, da skouer, PDF pe ODF) pe urzhiañ ur stumm moullet.</big>",
+	'coll-book_creator_intro' => "<big>Gant ar ''c'hrouer levrioù'' e c'hallit sevel ul levr a ya d'e ober pajennoù wiki dibabet ganeoc'h. Gallout a rit ezporzhiañ al levr e furmadoù disheñvel (evel, da skouer, PDF pe ODF) pe urzhiañ ur stumm moullet anezhañ.</big>",
 	'coll-manage_your_book' => 'Merañ ho levr',
 	'coll-book_creator_help' => "Gwelet [[{{MediaWiki:Coll-helppage}}|ar bajenn skoazell diwar-benn al levrioù]] evit gouzout hiroc'h.",
-	'coll-start_book_creator' => "Kregiñ gant ar c'hrouer levrioù",
+	'coll-start_book_creator' => "Lañsañ ar c'hrouer levrioù",
 	'coll-book_creator_continue' => "Kenderc'hel da implijout ar c'hrouer levrioù",
-	'coll-book_creator_disable_text' => "Ar ''c'hrouer levrioù'' a vo diweredekaet hag al levrioù evit pere emoac'h o labourat warno a vo diverket eus an dalc'h eus ho merdeer.",
+	'coll-book_creator_disable_text' => "Diweredekaet e vo ar ''c'hrouer levrioù'' ha diverket al levr a labourit warnañ.",
 	'coll-book_creator_text_article' => '{{MediaWiki:Coll-helppage}}/Testenn ar mod levr',
 	'coll-collection' => 'Levr',
 	'coll-collections' => 'Levrioù',
@@ -1299,16 +1300,16 @@ Kit e darempred gant ur merour MediaWiki.",
 	'coll-hide_info' => 'Kuzhat an titouroù',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress urzhiañ titouroù',
 	'coll-suggest_title' => 'Pajennoù kinniget evit ho levr',
-	'coll-suggest_intro_text' => "Ar c'hinnigoù a zo diazezet war hollad ar pajennoù wiki en ho levr er mare-mañ.
-Hizivaet eo ar roll bep tro ma glikoc'h war ar bouton ouzhpennañ pe tennañ.",
+	'coll-suggest_intro_text' => "Diazezet eo ar c'hinnigoù war an torkad pajennoù wiki zo en ho levr evit poent.
+Hizivaet e vez ar roll bep tro ma klikit war ar bouton ouzhpennañ pe tennañ.",
 	'coll-suggested_articles' => 'Kinnigoù',
 	'coll-suggest_reset_bans' => 'adderaouekaat',
-	'coll-suggest_reset_bans_tooltip' => "Diskouez ar c'hinnigoù kozh bet tennet kuit",
+	'coll-suggest_reset_bans_tooltip' => "Diskouez ar c'hinnigoù kozh tennet kuit a-raok",
 	'coll-suggest_add_selected' => 'Ouzhpennañ ar pajennoù diuzet',
 	'coll-suggest_ban_selected' => 'Diverkañ ar pajennoù diuzet',
 	'coll-suggest_your_book' => 'Ho levr',
 	'coll-suggest_show' => 'diskouez',
-	'coll-suggest_ban_tooltip' => "Tennañ kuit ar bajenn-mann eus roll ar c'hinnigoù",
+	'coll-suggest_ban_tooltip' => "Tennañ kuit ar bajenn-mañ eus roll ar c'hinnigoù",
 	'coll-suggest_article_ban' => "Tennet eo bet ar bajenn <strong>$1</strong> eus ar c'hinnigoù ($2).",
 	'coll-suggest_article_add' => "Ouzhpennet eo bet ar bajenn <strong>$1</strong> d'ho levr ($2).",
 	'coll-suggest_article_remove' => 'Tennnet eo bet ar bajenn <strong>$1</strong> eus ho levr ($2).',
@@ -1873,6 +1874,7 @@ Mae'r rhestr yn cael ei adnewyddu bob tro yr ydych yn pwyso ar y botymau ychwane
 	'coll-suggest_article_remove' => "Tynnwyd y dudalen <strong>$1</strong> o'ch llyfr ($2).",
 	'coll-suggest_undo_tooltip' => 'Dadwneud y weithred hon',
 	'coll-suggest_undo' => 'dadwneud',
+	'coll-load_local_book' => "Pwyswch ar 'Iawn' i barhau â'ch llyfr %TITLE%, ag iddo %NUMPAGES% o dudalennau wici. Pwyswch ar 'Diddymu' i'w ddileu a dechrau eto gyda llyfr gwag.",
 	'right-collectionsaveasuserpage' => 'Gallu cadw llyfrau ar dudalennau yn y parth defnyddiwr',
 	'right-collectionsaveascommunitypage' => 'Gallu rhoi llyfrau ar gadw ar dudalennau cymunedol',
 );
@@ -2295,12 +2297,16 @@ Eka ena nihebitiyeno, ma rica keno browser xo reyna ciwane bike</p>',
 	'coll-rendering_status' => 'strong>Statu:</strong> $1',
 	'coll-rendering_article' => '(pelê wîkîyî: $1)',
 	'coll-rendering_page' => '(pel: $1)',
+	'coll-rendering_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Enformasyonê nuştişê pele render keni',
+	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Enformasyonê tope pele render keni',
 	'coll-rendering_finished_title' => 'Render kerdişî qediya',
 	'coll-rendering_finished_text' => '<strong>Ena dosyayê documentî viraziyayo.</strong>
 <strong>[$1 Dosya bar bike]</strong> komputerê xo.
 
 Notan:
 * Ti ena miwazeno? [[{{MediaWiki:Coll-helppage}}|Qe kitaban de pelê yardimî]] bivîne ke belki ti hewlyer keno.',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Enformasyonê nuştişê pele render keni',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Enformasyonê tope pele render keni',
 	'coll-notfound_title' => 'Kitab nedîy',
 	'coll-notfound_text' => 'Pelê kitabî nedîy',
 	'coll-download_notfound_title' => 'Dosya nedîy',
@@ -2341,6 +2347,7 @@ Ma rica keno îdarekarê MedîyaWîkîyî ra yew mesaj bişirav.',
 	'coll-suggest_article_remove' => 'Pel <strong>$1</strong> kitabê tu ra wedarnaye ($2).',
 	'coll-suggest_undo_tooltip' => 'Hereket reyna biyar',
 	'coll-suggest_undo' => 'reyna biyar',
+	'coll-load_local_book' => 'OK rê bitexne ke ti kitabê xo %TITLE% de %NUMPAGES% pelanê wikiyi esta ay de dewam bike. Cancel ra bitexne ke wedarne u yew kitabê newi ra dest pê bike.',
 	'right-collectionsaveasuserpage' => 'Kitab ze pelê karberî qeyd bike',
 	'right-collectionsaveascommunitypage' => 'Kitab ze pelê cemeatî qeyd bike',
 );
@@ -5057,6 +5064,8 @@ Jika tidak, silakan tekan tombol muat ulang di penjelajah web Anda.</p>',
 
 Catatan:
 * Tidak puas dengan hasilnya? Lihat [[{{MediaWiki:Coll-helppage}}|halaman bantuan tentang buku]] untuk kemungkinan mengembangkannya.',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Mengubah teks info halaman',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Mengubah teks info koleksi',
 	'coll-notfound_title' => 'Buku tak ditemukan',
 	'coll-notfound_text' => 'Tidak dapat menemukan halaman buku.',
 	'coll-download_notfound_title' => 'Berkas tak ditemukan',
@@ -5095,6 +5104,7 @@ Daftar diperbaharui kapanpun anda clik tombol tambahkan atau hapus.',
 	'coll-suggest_article_remove' => 'Halaman <strong>$1</strong> telah dihapus dari buku anda ($2).',
 	'coll-suggest_undo_tooltip' => 'Batalkan pilihan ini',
 	'coll-suggest_undo' => 'batalkan',
+	'coll-load_local_book' => 'Klik OK untuk melanjutkan dengan buku Anda yang berjudul %TITLE% yang berisi %NUMPAGES% halaman wiki. Klik Batal untuk menghapusnya dan memulai dengan buku kosong.',
 	'right-collectionsaveasuserpage' => 'Menyimpan koleksi buku sebagai halaman pengguna',
 	'right-collectionsaveascommunitypage' => 'Menyimpan koleksi buku sebagai halaman komunitas',
 );
@@ -5125,9 +5135,14 @@ $messages['io'] = array(
 	'coll-save_collection' => 'Registragar libro',
 	'coll-yes' => 'Yes',
 	'coll-no' => 'No',
+	'coll-cancel' => 'Anular',
+	'coll-update' => 'Aktualigar',
 	'coll-limit_exceeded_title' => 'Libro tro granda',
+	'coll-limit_exceeded_text' => 'Vua libro esas tro granda.
+On ne povas adjuntar plusa pagini.',
 	'coll-rendering_status' => '<strong>Stando:</strong> $1',
 	'coll-rendering_page' => '(pagino: $1)',
+	'coll-download_notfound_title' => 'Arkivo ne trovesis',
 	'coll-about_pp' => 'Pri $1',
 	'coll-suggest_your_book' => 'Vua libro',
 	'coll-suggest_undo' => 'desfacar',
@@ -5162,6 +5177,7 @@ $messages['is'] = array(
  * @author Civvì
  * @author Darth Kule
  * @author Melos
+ * @author Nemo bis
  * @author Pietrodn
  * @author Stefano-c
  */
@@ -5246,7 +5262,7 @@ Si desidera sovrascrivere il libro corrente, aggiungere il nuovo contenuto o ann
 <p><strong>Avanzamento:</strong> <span id="renderingProgress">$1</span>% <span id="renderingStatus">$2</span></p>
 
 <p>Questa pagina dovrebbe aggiornarsi automaticamente ogni pochi secondi.
-Se questo non funziona, premi il pulsante di aggiornamento del tuo browser.</p>',
+Se ciò non succede, premi il pulsante di aggiornamento del tuo browser.</p>',
 	'coll-rendering_status' => '<strong>Stato:</strong> $1',
 	'coll-rendering_article' => '(pagina wiki: $1)',
 	'coll-rendering_page' => '(pagina: $1)',
@@ -5769,6 +5785,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Ilovesabbath
  * @author Klutzy
  * @author Kwj2772
@@ -5877,7 +5894,7 @@ $messages['ko'] = array(
 	'coll-is_cached' => '<ul><li>이 문서의 캐시된 버전이 발견되었습니다. 따라서 다시 렌더링하지 않으셔도 됩니다. <a href="$1">다시 렌더링하기</a></li></ul>',
 	'coll-excluded-templates' => '[[:Category:$1|$1]] 분류에 속한 틀은 제외되었습니다.',
 	'coll-blacklisted-templates' => '틀 블랙리스트 [[:$1]]에 있는 틀은 제외되었습니다.',
-	'coll-return_to_collection' => '<p><a href="$1">$2</a>로 돌아갑니다</p>',
+	'coll-return_to_collection' => '<p><a href="$1">$2</a>(으)로 돌아갑니다.</p>',
 	'coll-book_title' => '인쇄된 책으로 주문',
 	'coll-book_text' => '인쇄 협력자를 통해 책을 인쇄합니다.',
 	'coll-order_from_pp' => '$1에서 책 미리 보기',
@@ -5885,7 +5902,7 @@ $messages['ko'] = array(
 	'coll-invalid_podpartner_title' => '인쇄 협력자 정보 잘못됨',
 	'coll-invalid_podpartner_msg' => '제공받은 인쇄 협력자 정보가 잘못되었습니다. 관리자에게 해당 문제를 연락해주세요.',
 	'coll-license' => '라이선스',
-	'coll-return_to' => '[[:$1]]으로 돌아갑니다.',
+	'coll-return_to' => '[[:$1]](으)로 돌아갑니다.',
 	'coll-more_info' => '정보 더 보기',
 	'coll-hide_info' => '정보 숨기기',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress 주문 정보',
@@ -6459,7 +6476,7 @@ $messages['mk'] = array(
 	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Информативен текст за испишувањето на збирки',
 	'coll-rendering_finished_title' => 'Отцртувањето заврши',
 	'coll-rendering_finished_text' => '<strong>Податотеката на документот е создадена.</strong>
-<strong>[$1 Преземете ја податотеката]</strong> на вашиот компјутер.
+<strong>[$1 Преземете ја податотеката]</strong> на вашиот сметач.
 
 Белешки:
 * Не сте задоволни со резултатот? Погледајте ја нашата [[{{MediaWiki:Coll-helppage}}|страница за помош со книги]] за да ги видите можностите за нејзино подобрување.',
@@ -10886,6 +10903,11 @@ Pads pluik nonik kanons paläükön.',
 	'coll-blacklisted-templates' => '* Samafomots blägaliseda: [[:$1]] pefakipons.',
 	'coll-about_pp' => 'Tefü $1',
 	'coll-return_to' => 'Geikön lü [[:$1]]',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'coll-cancel' => '取消',
 );
 
 /** Yiddish (ייִדיש)

@@ -22,8 +22,8 @@ $messages['en'] = array(
 	'adminlinks_editmainpagename' => 'Edit name of main page',
 	'adminlinks_users' => 'Users',
 	'adminlinks_createuser' => 'Create a user',
-	'adminlinks_browsesearch' => 'Browsing and searching',
-	'adminlinks_importexport' => 'Importing and exporting',
+	'adminlinks_browsesearch' => 'Browse and search',
+	'adminlinks_importexport' => 'Import and export',
 	'right-adminlinks' => 'See the link to [[Special:AdminLinks|Admin links]]',
 );
 
@@ -1066,6 +1066,7 @@ $messages['ps'] = array(
 	'adminlinks' => 'د پازوال تړنې',
 	'adminlinks_documentation' => '$1 لاسوند',
 	'adminlinks_general' => 'ټولګړی',
+	'adminlinks_editsidebar' => 'څنګپټه سمول',
 	'adminlinks_editcss' => 'د CSS دوتنه سمول',
 	'adminlinks_editmainpagename' => 'د اصلي مخ نوم سمول',
 	'adminlinks_users' => 'کارنان',

@@ -69,6 +69,13 @@ $messages['cs'] = array(
 	'randomimage-desc' => 'Poskytuje náhodný výběr multimediálních souborů pomocí značky <code>&lt;randomimage /&gt;</code>',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'randomimage-desc' => 'Darparu detholydd cyfryngau ar hap gan ddefnyddio <code>&lt;randomimage /&gt;></code>',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

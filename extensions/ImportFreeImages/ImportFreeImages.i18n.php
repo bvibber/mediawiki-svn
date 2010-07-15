@@ -248,10 +248,19 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
+	'importfreeimages' => 'Importer frie billeder',
+	'importfreeimages_nophotosfound' => "Ingen billeder blev fundet med dine søgekriterier '$1', prøv igen.",
+	'importfreeimages_importthis' => 'importér denne',
 	'importfreeimages_next' => 'Næste $1',
+	'importfreeimages_size_square' => 'Kvadratisk',
+	'importfreeimages_size_small' => 'Lille',
+	'importfreeimages_size_medium' => 'Mellem',
+	'importfreeimages_size_large' => 'Stor',
+	'importfreeimages_size_original' => 'Original',
 );
 
 /** German (Deutsch)

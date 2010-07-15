@@ -284,7 +284,7 @@ class HideRevisionForm extends SpecialPage {
 		$title->invalidateCache();
 
 		// Done with all database pieces; commit!
-		$dbw->immediateCommit();
+		$dbw->commit();
 
 		// Also purge remote proxies.
 		// Ideally this would be built into the above, but squid code is

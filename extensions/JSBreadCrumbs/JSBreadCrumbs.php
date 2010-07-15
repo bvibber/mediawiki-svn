@@ -16,17 +16,19 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
-$wgJSBreadCrumbsMaxCrumbs = 5;
 //BreadCrumbsSeparator default set via localization
 $wgJSBreadCrumbsSeparator = '';
 $wgJSBreadCrumbsCookiePath = '/';
+$wgDefaultUserOptions['jsbreadcrumbs-showcrumbs'] = false;
+$wgDefaultUserOptions['jsbreadcrumbs-showsite'] = false;
+$wgDefaultUserOptions['jsbreadcrumbs-numberofcrumbs'] = 5;
 
 // Sets Credits
 $wgExtensionCredits['other'][] = array(
         'path' => __FILE__,
         'name' => 'JSBreadCrumbs',
         'author' => 'Ryan Lane',
-        'version' => '0.3',
+        'version' => '0.5',
         'url' => 'http://www.mediawiki.org/wiki/Extension:JSBreadCrumbs',
         'descriptionmsg' => 'jsbreadcrumbs-desc',
 );
@@ -42,3 +44,4 @@ $wgExtensionMessagesFiles['JSBreadCrumbs'] =
 // Registers Hooks
 $wgHooks['BeforePageDisplay'][] = 'JSBreadCrumbsHooks::addResources';
 $wgHooks['MakeGlobalVariablesScript'][] = 'JSBreadCrumbsHooks::addJSVars';
+$wgHooks['GetPreferences'][] = 'JSBreadCrumbsHooks::addPreferences';

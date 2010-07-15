@@ -254,7 +254,7 @@ $messages['bcl'] = array(
 	'badimages-name' => 'Pangaran:',
 	'badimages-not-added' => 'Dai maikakaag an retrato.',
 	'badimages-not-removed' => 'Dai mahahalî an ladawan.',
-	'badimages-reason' => 'Rasón:',
+	'badimages-reason' => 'Rason:',
 	'badimages-remove' => '(halîon)',
 	'badimages-remove-btn' => 'Halîon',
 	'badimages-removed' => 'Pighalî sa lista an $1.',
@@ -458,6 +458,33 @@ $messages['cs'] = array(
 	'badimages-log-remove' => '[[$1]] byl odstraněn ze seznamu špatných souborů',
 	'badimages-page' => '{{ns:help}}:Seznam špatných souborů',
 	'right-badimages' => 'Aktualizování seznamu špatných souborů',
+);
+
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'badimages' => 'Rhestr o ddelweddi gwael',
+	'badimage-desc' => 'Ymestyn galluoedd y rhestr o ddelweddi gwael o MediaWiki',
+	'badimages-add-btn' => 'Ychwanegu',
+	'badimages-added' => "Ychwanegwyd $1 i'r rhestr.",
+	'badimages-count' => "{{PLURAL:$1|Ceir|Ceir}} '''$1''' {{PLURAL:$1|delwedd|o ddelweddi}} ar y rhestr o ddelweddi gwael.",
+	'badimages-name' => 'Enw:',
+	'badimages-not-added' => "Nid oedd dim modd ychwanegu'r ddelwedd.",
+	'badimages-not-removed' => "Nid oedd dim modd tynnu'r ddelwedd.",
+	'badimages-reason' => 'Rheswm:',
+	'badimages-remove' => '(tynnu)',
+	'badimages-remove-btn' => 'Tynnu',
+	'badimages-remove-confirm' => "Cadarnhewch eich bod chi am dynnu $1 o'r rhestr:",
+	'badimages-removed' => "Tynnwyd $1 o'r rhestr.",
+	'badimages-subheading' => 'Eitemau cyfredol',
+	'badimages-unprivileged' => "(Nid yw'r hawliau priodol i newid y rhestr gennych)",
+	'badimages-log-name' => 'Rhestr o ddelweddi gwael',
+	'badimages-log-header' => "Dyma log newidiadau i'r [[{{MediaWiki:Badimages-page}}|rhestr o ddelweddi gwael]].",
+	'badimages-log-add' => "ychwanegwyd [[$1]] i'r rhestr o ddelweddi gwael",
+	'badimages-log-remove' => "tynnwyd [[$1]] o'r rhestr o ddelweddi gwael",
+	'badimages-page' => '{{ns:help}}:Rhestr o ddelweddi gwael',
+	'right-badimages' => "Diweddaru'r rhestr o ddelweddi gwael",
 );
 
 /** Danish (Dansk)
@@ -1404,7 +1431,7 @@ $messages['ku-latn'] = array(
 	'badimages' => 'Lîsteya wêneyên pîs',
 	'badimages-add-btn' => 'Têkê',
 	'badimages-name' => 'Nav:',
-	'badimages-reason' => 'Sedem:',
+	'badimages-reason' => 'Sedem',
 	'badimages-remove' => '(jêbibe)',
 	'badimages-remove-btn' => 'Jêbibe',
 	'badimages-log-name' => 'Lîsteya wêneyên pîs',
@@ -1460,7 +1487,7 @@ $messages['li'] = array(
 	'badimages-name' => 'Naam:',
 	'badimages-not-added' => "'t Plaetje kós neet waere toegevoeg.",
 	'badimages-not-removed' => "'t Plaetje kós neet waere eweggesjaf.",
-	'badimages-reason' => 'Raej:',
+	'badimages-reason' => 'Reeje:',
 	'badimages-remove' => '(ewegsjaffe)',
 	'badimages-remove-btn' => 'Ewegsjaffe',
 	'badimages-remove-confirm' => 'Bevestig dats doe $1 van de lies wils ewegsjaffe:',
@@ -1621,7 +1648,7 @@ $messages['mt'] = array(
 	'badimages-name' => 'Isem:',
 	'badimages-not-added' => 'L-Istampa ma tistax tiġi miżjuda.',
 	'badimages-not-removed' => 'L-Istampa ma tistax titneħħa.',
-	'badimages-reason' => 'Raġġuni:',
+	'badimages-reason' => 'Raġuni:',
 	'badimages-remove' => '(neħħi)',
 	'badimages-remove-btn' => 'Neħħi',
 	'badimages-remove-confirm' => 'Jekk jogħġbok konferma jekk ma tixtiqx tneħħi $1 mil-lista:',
@@ -1629,7 +1656,7 @@ $messages['mt'] = array(
 	'badimages-subheading' => 'Affarijiet kurrenti',
 	'badimages-unprivileged' => "(M'għandhekx biżżejjed permessi sabiex tbiddel il-lista)",
 	'badimages-log-name' => "Lista ta' stampi ħżiena",
-	'badimages-log-header' => "Dawn huwa reġistru ta' tibdil fil-[{{MediaWiki:Badimages-page}}|lista ta' stampi ħżiena]].",
+	'badimages-log-header' => "Dan huwa reġistru ta' tibdil fil-[[{{MediaWiki:Badimages-page}}|lista ta' stampi ħżiena]].",
 	'badimages-log-add' => "żied [[$1]] mal-lista ta' stampi ħżiena",
 	'badimages-log-remove' => "neħħa [[$1]] mil-lista ta' stampi ħżiena",
 	'badimages-page' => "{{ns:help}}:Lista ta' stampi ħżiena",
@@ -2084,7 +2111,7 @@ $messages['sah'] = array(
 	'badimages-name' => 'Аата:',
 	'badimages-not-added' => 'Ойуу кыайан киирбэтэ.',
 	'badimages-not-removed' => 'Ойуу кыайан сотуллубата.',
-	'badimages-reason' => 'Быһаарыыта:',
+	'badimages-reason' => 'Төрүөтэ:',
 	'badimages-remove' => '(соторго)',
 	'badimages-remove-btn' => 'Соторго',
 	'badimages-remove-confirm' => 'Испииһэктэн маны: $1 соторгун бигэргэт:',
@@ -2648,6 +2675,11 @@ $messages['vo'] = array(
 	'badimages-page' => '{{ns:help}}:Lised magodas badik',
 );
 
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'badimages-reason' => '理由：',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
@@ -2670,7 +2702,7 @@ $messages['yue'] = array(
 	'badimages-name' => '名:',
 	'badimages-not-added' => '呢幅圖唔加得。',
 	'badimages-not-removed' => '呢哩幅圖唔減得。',
-	'badimages-reason' => '理由:',
+	'badimages-reason' => '原因:',
 	'badimages-remove' => '(減)',
 	'badimages-remove-btn' => '減',
 	'badimages-remove-confirm' => '真係要由張表度減 $1:',

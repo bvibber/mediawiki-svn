@@ -1578,6 +1578,7 @@ $messages['sma'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'spamregex' => 'Регуларни изрази за спам',
 	'spamregex-desc' => '[[Special:SpamRegex|Филтрирајте]] нежељене фразе у измењеним странама, помоћу регуларних израза',
 	'spamregex-error-unblocking' => 'Грешка приликом одблокирања "$1". Вероватно та фраза и није блокирана.',
 	'spamregex-summary' => 'Текст се нашао у опису странице.',
@@ -1607,6 +1608,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'spamregex' => 'Regularni izrazi za spam',
 	'spamregex-desc' => '[[Special:SpamRegex|Filtrirajte]] neželjene fraze u izmenjenim stranama, pomoću regularnih izraza',
 	'spamregex-error-unblocking' => 'Greška prilikom odblokiranja "$1". Verovatno ta fraza i nije blokirana.',
 	'spamregex-summary' => 'Tekst se našao u opisu stranice.',

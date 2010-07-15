@@ -50,6 +50,13 @@ $messages['ce'] = array(
 	'wikimediamobile-desc' => 'Гlодарца йолу хийцамашца MediaWiki оцу лерагlирсан кхоллам Викимедийа, хlокху чохь ю http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'wikimediamobile-desc' => 'MediaWiki støtter funktioner til Wikimedia-mobil-projektet hostet på http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** German (Deutsch)
  * @author Kebap
  * @author Kghbln
@@ -143,6 +150,13 @@ $messages['lb'] = array(
 	'wikimediamobile-desc' => 'MediaWiki ënnerstetzt Fonctioune fir de Wikimedia-Mobile Projet deen Dir op http://github.com/hcatlin/wikimedia-mobile fannt',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'wikimediamobile-desc' => 'MediaWiki atbalst funkcijas Wikimedia-mobile projektam (http://github.com/hcatlin/wikimedia-mobile)',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -155,6 +169,13 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'wikimediamobile-desc' => 'Ondersteunende functies in MediaWiki voor het project Wikipedia mobiel gehost op http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikimediamobile-desc' => 'MediaWiki-støttefunksjoner for Wikimedia-mobilprosjektet, vertet av http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Polish (Polski)

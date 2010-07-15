@@ -25,7 +25,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 // Include the Validator extension if that hasn't been done yet, since it's required for Maps to work.
 if ( !defined( 'Validator_VERSION' ) ) {
-	@include_once( 'extensions/Validator/Validator.php' );
+	@include_once( dirname( __FILE__ ) . '/../Validator/Validator.php' );
 }
 
 // Only initialize the extension when all dependencies are present.
@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6.4 a3' );
+	define( 'Maps_VERSION', '0.6.5 a4' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -46,8 +46,10 @@ else {
 	define( 'Maps_GEO_MIN', "'" );
 	define( 'Maps_GEO_SEC', '"' );
 
-	$egMapsScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
+	$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
+	$egMapsScriptPath 	= ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Maps';
 	$egMapsDir 			= dirname( __FILE__ ) . '/';
+	unset( $useExtensionPath );
 
 	// To ensure Maps remains compatible with pre 1.16.
 	if ( version_compare( $wgVersion, '1.16', '<' ) ) {
@@ -76,13 +78,17 @@ else {
 
 /**
  * Initialization function for the Maps extension.
+ * 
+ * @since 0.1
+ * 
+ * @return true
  */
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses;
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices;
 	global $egMapsDir, $egMapsUseMinJs, $egMapsJsExt;
 
-	// Autoload the includes/ classes.
+	// Autoload the "includes/" classes.
 	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Includes/Maps_CoordinateParser.php';
 	$wgAutoloadClasses['MapsDistanceParser'] 		= $egMapsDir . 'Includes/Maps_DistanceParser.php';
@@ -93,11 +99,14 @@ function efMapsSetup() {
 		wfLoadExtensionMessages( 'Maps' );
 	}
 
-	// Load the service/ classes and interfaces.
-	require_once $egMapsDir . 'Services/Maps_iMappingService.php';
+	// Load the "service/" classes and interfaces.
+	require_once $egMapsDir . 'Services/iMappingService.php';
 	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
 	
 	wfRunHooks( 'MappingServiceLoad' );
+	
+	// Load the "feature/" classes and interfaces.
+	require_once $egMapsDir . 'Features/iMappingFeature.php';
 	
 	wfRunHooks( 'MappingFeatureLoad' );
 
@@ -137,6 +146,10 @@ function efMapsSetup() {
 
 /**
  * Adds a link to Admin Links page.
+ * 
+ * @since 0.2
+ * 
+ * @return true
  */
 function efMapsAddToAdminLinks( &$admin_links_tree ) {
     $displaying_data_section = $admin_links_tree->getSection( wfMsg( 'smw_adminlinks_displayingdata' ) );

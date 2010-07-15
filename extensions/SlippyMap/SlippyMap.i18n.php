@@ -907,7 +907,7 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'slippymap_desc' => 'Tillater bruk av taggen <tt>&lt;slippymap&gt;</tt> for å vise et «slippy map» fra OpenLayers. Kartene kommer fra [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'Legger til et <tt>&lt;slippymap%gt;</tt>-element som gjør det mulig å bygge inn statiske & dynamiske kart. Støtter flere karttjenester, inkludert [http://openstreetmap.org OpenStreetMap] og NASA Worldwind.',
 	'slippymap_error' => '$1-feil: $2',
 	'slippymap_errors' => '$1-feil:',
 	'slippymap_error_missing_attribute_lat' => 'Manglende <tt>lat</tt>-attributt (for breddegraden).',

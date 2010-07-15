@@ -14,7 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * TODO
+ * Class holding information and functionallity specific to OpenLayers.
+ * This infomation and features can be used by any mapping feature. 
+ * 
+ * @since 0.1
  * 
  * @ingroup MapsOpenLayers
  * 
@@ -22,6 +25,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsOpenLayers extends MapsMappingService {
 	
+	/**
+	 * Constructor
+	 * 
+	 * @since 0.6.3
+	 */	
 	function __construct() {
 		parent::__construct(
 			'openlayers',
@@ -32,6 +40,11 @@ class MapsOpenLayers extends MapsMappingService {
 		$egMapsOLLoadedLayers = array();
 	}	
 	
+	/**
+	 * @see MapsMappingService::initParameterInfo
+	 * 
+	 * @since 0.5
+	 */	
 	protected function initParameterInfo( array &$parameters ) {
 		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
@@ -64,6 +77,53 @@ class MapsOpenLayers extends MapsMappingService {
 	}
 	
 	/**
+	 * @see iMappingService::getDefaultZoom
+	 * 
+	 * @since 0.6.5
+	 */	
+	public function getDefaultZoom() {
+		global $egMapsOpenLayersZoom;
+		return $egMapsOpenLayersZoom;
+	}		
+	
+	/**
+	 * @see MapsMappingService::getMapId
+	 * 
+	 * @since 0.6.5
+	 */
+	public function getMapId( $increment = true ) {
+		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
+		
+		if ( $increment ) {
+			$egOpenLayersOnThisPage++;
+		}
+		
+		return $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
+	}		
+	
+	/**
+	 * @see MapsMappingService::createMarkersJs
+	 * 
+	 * @since 0.6.5
+	 */
+	public function createMarkersJs( array $markers ) {
+		$markerItems = array();
+		
+		foreach ( $markers as $marker ) {
+			$markerItems[] = Xml::encodeJsVar( array(
+				'lat' => $marker[0],
+				'lon' => $marker[1],
+				'title' => $marker[2],
+				'label' =>$marker[3],
+				'icon' => $marker[4]
+			) );
+		}
+		
+		// Create a string containing the marker JS.
+		return '[' . implode( ',', $markerItems ) . ']';
+	}	
+	
+	/**
 	 * @see MapsMappingService::getDependencies
 	 * 
 	 * @return array
@@ -72,10 +132,10 @@ class MapsOpenLayers extends MapsMappingService {
 		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
 		return array(
-			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ),
+			Html::linkedStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ),
 			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ),
 			Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
-			Html::inlineScript( 'initOLSettings(200, 100);' )
+			Html::inlineScript( 'initOLSettings(200, 100); var msgMarkers = ' . Xml::encodeJsVar( wfMsg( 'maps-markers' ) ) . ';' )
 		);			
 	}	
 	
@@ -157,6 +217,8 @@ class MapsOpenLayers extends MapsMappingService {
 	 * Removed the layer groups from the layer list, and adds their members back in.
 	 * 
 	 * @param array $layers
+	 * @param string $name
+	 * @param array $parameters
 	 */
 	public static function unpackLayerGroups( array &$layers, $name, array $parameters ) {
 		global $egMapsOLLayerGroups;

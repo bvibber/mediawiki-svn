@@ -92,6 +92,10 @@ mw.usability.getMsg = function( key, args ) {
 mw.usability.testBrowser = function( map ) {
 	// Check over each browser condition to determine if we are running in a compatible client
 	var browser = map[$j( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$j.browser.name];
+	// if the browser is set to a boolean value, return that value
+	if ( typeof browser == 'boolean' ) {
+		return browser;
+	}
 	if ( typeof browser !== 'object' ) {
 		// Unknown, so we assume it's working
 		return true;
@@ -241,32 +245,15 @@ $.fn.autoEllipsis = function( options ) {
 		// protected text element - the width of this element is counted, but next is never trimmed from it
 		var $protectedText = null;
 
-		if ( options.matchText ) {
-			var text = $this.text();
-			var matchedText = options.matchText;
-			$trimmableText =  $( '<span />' )
-				.css( 'whiteSpace', 'nowrap' )
-				.addClass( 'autoellipsis-trimmed' )
-				.text( $this.text().substr( matchedText.length, $this.text().length ) );
-			$protectedText = $( '<span />' )
-				.addClass( 'autoellipsis-matched' )
-				.css( 'whiteSpace', 'nowrap' )
-				.text( options.matchText );
-			$container
-				.empty()
-				.append( $protectedText )
-				.append( $trimmableText );
+		if ( options.hasSpan ) {
+			$trimmableText = $this.children( options.selector );
 		} else {
-			if ( options.hasSpan ) {
-				$trimmableText = $this.children( options.selector );
-			} else {
-				$trimmableText = $( '<span />' )
-					.css( 'whiteSpace', 'nowrap' )
-					.text( $this.text() );
-				$this
-					.empty()
-					.append( $trimmableText );
-			}
+			$trimmableText = $( '<span />' )
+				.css( 'whiteSpace', 'nowrap' )
+				.text( $this.text() );
+			$this
+				.empty()
+				.append( $trimmableText );
 		}
 		
 		var text = $container.text();
@@ -344,6 +331,7 @@ $.fn.autoEllipsis = function( options ) {
 			$container.attr( 'title', text );
 		}
 		if ( options.matchText ) {
+			$container.highlightText( options.matchText );
 			matchTextCache[text][options.matchText][w] = $container.html();
 		} else {
 			cache[text][w] = $container.html();
@@ -420,7 +408,7 @@ jQuery Browser Plugin
 			['PLAYSTATION 3', 'PS3']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3|docomo)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],
@@ -1141,7 +1129,7 @@ $.suggestions = {
 							} else {
 								// Add <span> with text
 								if( context.config.highlightInput ) {
-									matchedText = text.substr( 0, context.data.prevText.length );
+									matchedText = context.data.prevText;
 								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )
@@ -1152,7 +1140,8 @@ $.suggestions = {
 								// New width is only calculated here, applied later
 								var $span = $result.children( 'span' );
 								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
-									expWidth = $span.outerWidth();
+									// factor in any padding, margin, or border space on the parent
+									expWidth = $span.outerWidth() + ( context.data.$container.width() - $span.parent().width());
 								}
 								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
@@ -6671,8 +6660,8 @@ fn: {
 				}
 				if ( 'characters' in page ) {
 					var html = '';
-					for ( character in page.characters ) {
-						html += $.wikiEditor.modules.toolbar.fn.buildCharacter( page.characters[character], actions );
+					for ( var i = 0; i < page.characters.length; i++ ) {
+						html += $.wikiEditor.modules.toolbar.fn.buildCharacter( page.characters[i], actions );
 					}
 					$characters
 						.html( html )
@@ -6789,7 +6778,7 @@ fn: {
 							$section.fadeIn( 'fast' );
 							if ( $section.hasClass( 'loading' ) ) {
 								// Loading of this section was deferred, load it now
-								$this = $(this);
+								var $this = $(this);
 								$this.addClass( 'current loading' );
 								setTimeout( function() {
 									$section.trigger( 'loadSection' );

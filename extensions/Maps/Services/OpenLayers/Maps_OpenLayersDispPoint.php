@@ -20,33 +20,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	
-	protected $markerStringFormat = 'getOLMarkerData(lon, lat, "title", "label", "icon")';
-
-	protected function getDefaultZoom() {
-		global $egMapsOpenLayersZoom;
-		return $egMapsOpenLayersZoom;
-	}
-	
 	/**
-	 * @see MapsBaseMap::doMapServiceLoad()
-	 */
-	public function doMapServiceLoad() {
-		global $egOpenLayersOnThisPage;
-		
-		$egOpenLayersOnThisPage++;
-		
-		$this->elementNr = $egOpenLayersOnThisPage;
-	}
-	
-	/**
-	 * @see MapsBaseMap::addSpecificMapHTML()
+	 * @see MapsBaseMap::addSpecificMapHTML
 	 */
 	public function addSpecificMapHTML() {
-		global $egMapsOpenLayersPrefix, $egOpenLayersOnThisPage;
+		global $wgLang;
 		
-		$layerItems = $this->mService->createLayersStringAndLoadDependencies( $this->layers );
+		$layerItems = $this->service->createLayersStringAndLoadDependencies( $this->layers );
 		
-		$mapName = $egMapsOpenLayersPrefix . '_' . $egOpenLayersOnThisPage;
+		$mapName = $this->service->getMapId();
 		
 		$this->output .= Html::element(
 			'div',
@@ -56,6 +38,8 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 			),
 			wfMsg( 'maps-loading-map' )
 		);
+		
+		$langCode = $wgLang->getCode();
 		
 		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
@@ -68,7 +52,8 @@ addOnloadHook(
 			$this->zoom,
 			[$layerItems],
 			[$this->controls],
-			[$this->markerString]
+			$this->markerJs,
+			'$langCode'
 		);
 	}
 );

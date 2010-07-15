@@ -14,6 +14,9 @@ class ApprovedRevs {
 	 * one.
 	 */
 	public static function getApprovedRevID( $title ) {
+		if ( ! self::pageIsApprovable( $title ) ) {
+			return null;
+		}
 		$dbr = wfGetDB( DB_SLAVE );
 		$page_id = $title->getArticleId();
 		$rev_id = $dbr->selectField( 'approved_revs', 'rev_id', array( 'page_id' => $page_id ) );
@@ -42,15 +45,41 @@ class ApprovedRevs {
 	}
 
 	/**
-	 * Returns whether this page is in a namespace that the Approved Revs
-	 * extension doesn't support.
+	 * Returns whether this page can be approved - either because it's in
+	 * a supported namespace, or because it's been specially marked as
+	 * approvable. Also stores the boolean answer as a field in the page
+	 * object, to speed up processing if it's called more than once.
 	 */
-	public static function hasUnsupportedNamespace( $title ) {
-		global $egApprovedRevsUnsupportedNamespaces;
-		$unsupported_namespaces = $egApprovedRevsUnsupportedNamespaces;
-		$unsupported_namespaces[] = NS_FILE;
-		$unsupported_namespaces[] = NS_CATEGORY;
-		return( in_array( $title->getNamespace(), $unsupported_namespaces ) );
+	public static function pageIsApprovable( $title ) {
+		// if this function was already called for this page, the
+		// value should have been stored as a field in the $title object
+		if ( isset( $title->isApprovable ) ) {
+			return $title->isApprovable;
+		}
+
+		// check the namespace
+		global $egApprovedRevsNamespaces;
+		if ( in_array( $title->getNamespace(), $egApprovedRevsNamespaces ) ) {
+			$title->isApprovable = true;
+			return true;
+		}
+
+		// it's not in an included namespace, so check for the page
+		// property - for some reason, calling the standard
+		// getProperty() function doesn't work, so we just do a DB
+		// query on the page_props table
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'page_props', 'COUNT(*)',
+			array(
+				'pp_page' => $title->getArticleID(),
+				'pp_propname' => 'approvedrevs',
+				'pp_value' => 'y'
+			)
+		);
+		$row = $dbr->fetchRow( $res );
+		$isApprovable = ( $row[0] == '1' );
+		$title->isApprovable = $isApprovable;
+		return $isApprovable;
 	}
 
 	/**

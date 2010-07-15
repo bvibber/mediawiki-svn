@@ -17,12 +17,22 @@
  * @defgroup Filesystem Filesystem
  */
 
+define( 'FS_CHMOD_DIR', 0755 );
+define( 'FS_CHMOD_FILE', 0644 );
+
 /**
  * Base class providing a way to access filesystems.
  * 
  * @author Jeroen De Dauw
  */
 abstract class Filesystem {
+	
+	/**
+	 * Array for storing error messages.
+	 * 
+	 * @var array of string
+	 */
+	protected $errors = array();
 	
 	/**
 	 * Creates a connection to the filesystem.
@@ -34,19 +44,22 @@ abstract class Filesystem {
 	/**
 	 * Reads entire file into a string.
 	 * 
+	 * @param string $file Path to the file.
+	 * 
 	 * @return string or false
 	 */
-	public abstract function getContents();
+	public abstract function getContents( $file );
 	
 	/**
 	 * Writes a string to a file.
 	 * 
-	 * @param string $file Path to the file.
-	 * @param string $contents
+	 * @param $file String: Path to the file.
+	 * @param $contents String
+	 * @param $mode Boolean
 	 * 
 	 * @return boolean Success indicator
 	 */
-	public abstract function writeToFile( $file, $contents );
+	public abstract function writeToFile( $file, $contents, $mode = false  );
 	
 	/**
 	 * Gets the current working directory.
@@ -107,7 +120,7 @@ abstract class Filesystem {
 	public abstract function getOwner( $file );
 	
 	/**
-	 * Returns file permissions. 
+	 * Returns file permissions.
 	 * 
 	 * @param string $file Path to the file.
 	 * 
@@ -189,15 +202,6 @@ abstract class Filesystem {
 	public abstract function getModificationTime( $file );
 	
 	/**
-	 * Returns the creation time of a file.
-	 * 
-	 * @param $file
-	 * 
-	 * @return integer or false
-	 */		
-	public abstract function getCreationTime( $file );
-	
-	/**
 	 * Returns the size of a file in bytes, or false in case of an error.
 	 * 
 	 * @param $file
@@ -258,15 +262,15 @@ abstract class Filesystem {
 	 * 
 	 * @return boolean Success indicator
 	 */
-	protected abstract function doMove( $from, $to );	
+	protected abstract function doMove( $from, $to, $overwrite );	
 	
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
 		// TODO
-	}		
-	
+	}
+	/*
 	public static function findFolder() {
 		// TODO
 	}
@@ -274,7 +278,7 @@ abstract class Filesystem {
 	private static function searchForFolder() {
 		// TODO
 	}
-	
+	*/
 	public function getContentsArray() {
 		return explode( "\n", $this->getContents() );
 	}
@@ -293,7 +297,7 @@ abstract class Filesystem {
 			return false;
 		}
 		
-		return $this->doCopy();
+		return $this->doCopy( $from, $to );
 	}
 	
 	/**
@@ -310,7 +314,7 @@ abstract class Filesystem {
 			return false;
 		}
 		
-		return $this->doMove();
+		return $this->doMove( $from, $to, $overwrite );
 	}	
 	
 	/**
@@ -323,6 +327,45 @@ abstract class Filesystem {
 	 */	
 	public function removeDir( $path, $recursive = false ) {
 		$this->delete( $path, $recursive );
+	}
+	
+	/**
+	 * Returns an array with all errors.
+	 * 
+	 * @return array
+	 */
+	public function getErrors() {
+		return $this->errors;
+	}	
+	
+	/**
+	 * Adds an error message created from a message key to the log file and stores it for further use.
+	 * 
+	 * @param string $errorMessageKey
+	 */
+	protected function addError( $errorMessageKey ) {
+		$this->addErrorMessage( wfMsg( $errorMessageKey ) );
+	}
+	
+	/**
+	 * Adds an error message to the log file and stores it for further use.
+	 * 
+	 * @param string $error
+	 */	
+	protected function addErrorMessage( $error ) {
+		$this->errors[] = $error;
+		wfDebug( $error );
+	}	
+	
+	/**
+	 * Determines if the string provided contains binary characters.
+	 *
+	 * @param $text String: the contents to test against
+	 * 
+	 * @return Boolean: true if string is binary, false otherwise
+	 */
+	protected function isBinary( $text ) {
+		return (bool)preg_match( '|[^\x20-\x7E]|', $text ); // chr(32)..chr(127)
 	}	
 	
 }

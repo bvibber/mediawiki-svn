@@ -452,6 +452,14 @@ $messages['tl'] = array(
 	'untidy' => 'Tanggalin mula sa pagiging maayos',
 );
 
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'tidy' => 'Düzenli',
+	'untidy' => 'Düzensiz',
+);
+
 /** Ukrainian (Українська)
  * @author Aleksandrit
  * @author Prima klasy4na

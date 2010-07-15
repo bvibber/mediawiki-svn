@@ -42,6 +42,7 @@ $messages['aln'] = array(
 );
 
 /** Arabic (العربية)
+ * @author ;Hiba;1
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -51,7 +52,7 @@ $messages['ar'] = array(
 	'group-widgeteditor' => 'محررو الودجات',
 	'group-widgeteditor-member' => 'محرر ودجات',
 	'grouppage-widgeteditor' => 'Project:محررو الودجات',
-	'right-editwidgets' => 'تحرير الصفحات في نطاق "{{ns:widget}}"',
+	'right-editwidgets' => 'إنشاء وتحرير [http://www.mediawiki.org/wiki/Extension:Widgets widgets] في الــ <tt>{{ns:widget}}</tt> مكان الاسم',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -87,7 +88,7 @@ Ar widgetoù kinniget gant ar gumuniezh a gaver war [http://www.mediawikiwidgets
  */
 $messages['bs'] = array(
 	'widgets-desc' => 'Omogućuje wiki administratorima da dodaju dodatke u slobodnoj formi na wiki putem uređivanja stranica unutar imenskog prostora {{ns:widget}}.
-Prvobitno razvijeno za [http://www.ardorado.com Ardorado.com]',
+Prvobitno razvijeni dodaci se mogu naći na [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org].',
 	'widgets-error' => 'Greška u [[{{ns:widget}}:$1|widgetu $1]]',
 	'group-widgeteditor' => 'Uređivači dodataka',
 	'group-widgeteditor-member' => 'Uređivač dodataka',
@@ -390,9 +391,9 @@ $messages['nn'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'widgets-desc' => 'Tillater wikiadministratorer å legge til fri-form widgets til wikien ved å redigere siden innen {{ns:widget}}-navnerommet.
-Opprinnelig utviklet for [http://www.ardorado.com Ardorado.com]',
-	'widgets-error' => 'Feil i [[{{ns:widget}}:$1|widget $1]]',
+	'widgets-desc' => 'Tillater wikiadministratorer å legge til fri-form skjermelement til wikien ved å redigere siden innen {{ns:widget}}-navnerommet.
+Fellesskaps-bidratte skjermelement kan finnes på [http://mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
+	'widgets-error' => 'Feil i [[{{ns:widget}}:$1|skjermelement $1]]',
 	'group-widgeteditor' => 'Bidragsytere for skjermelement',
 	'group-widgeteditor-member' => 'Bidragsyter for skjermelement',
 	'grouppage-widgeteditor' => 'Project:Bidragsytere for skjermelement',
@@ -532,9 +533,11 @@ Ang mga widyet na inambag ng pamayan ay matatagpuan sa [http://www.mediawikiwidg
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
-	'widgets-desc' => 'Дозволяє адміністраторам вікі додавати різноманітні віджети шляхом редагування сторінок простору назв {{ns:widget}}. Спочатку розроблений для [http://www.ardorado.com Ardorado.com]',
+	'widgets-desc' => 'Дозволяє адміністраторам вікі додавати різноманітні віджети шляхом редагування сторінок простору назв {{ns:widget}}.
+Підтримувані спільнотою віджети можна знайти на [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Помилка [[{{ns:widget}}:$1|віджету $1]]',
 	'group-widgeteditor' => 'Редактори віджетів',
 	'group-widgeteditor-member' => 'Редактор віджетів',
@@ -547,7 +550,7 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'widgets-desc' => 'Cho phép các quản lý viên wiki thêm công cụ đa năng vào wiki bằng cách sửa đổi trang trong không gian tên {{ns:widget}}.
-Mới đầu được phát triển cho [http://www.ardorado.com Ardorado.com].',
+Có thể lấy thêm công cụ đa năng do cộng đồng đóng góp tại [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org].',
 	'widgets-error' => 'Lỗi trong [[{{ns:widget}}:$1|công cụ đa năng $1]]',
 	'group-widgeteditor' => 'Người sửa công cụ đa năng',
 	'group-widgeteditor-member' => 'Người sửa công cụ đa năng',

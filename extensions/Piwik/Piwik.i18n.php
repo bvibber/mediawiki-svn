@@ -612,6 +612,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'piwik-desc' => 'పివిక్ స్క్రిప్టుని మీడియావికీ పుటలలో చొప్పిస్తుంది మరియు [[Special:Piwik|కొన్ని గణాంకాల]]ను చేరుస్తుంది',
 	'piwik-lastvisits' => 'చివరి సందర్శనలు',
 	'piwik-countries' => 'దేశాలు',
 	'piwik-browsers' => 'విహారిణులు',

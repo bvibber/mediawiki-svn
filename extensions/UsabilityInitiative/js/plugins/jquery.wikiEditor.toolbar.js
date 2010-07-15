@@ -497,8 +497,8 @@ fn: {
 				}
 				if ( 'characters' in page ) {
 					var html = '';
-					for ( character in page.characters ) {
-						html += $.wikiEditor.modules.toolbar.fn.buildCharacter( page.characters[character], actions );
+					for ( var i = 0; i < page.characters.length; i++ ) {
+						html += $.wikiEditor.modules.toolbar.fn.buildCharacter( page.characters[i], actions );
 					}
 					$characters
 						.html( html )
@@ -615,7 +615,7 @@ fn: {
 							$section.fadeIn( 'fast' );
 							if ( $section.hasClass( 'loading' ) ) {
 								// Loading of this section was deferred, load it now
-								$this = $(this);
+								var $this = $(this);
 								$this.addClass( 'current loading' );
 								setTimeout( function() {
 									$section.trigger( 'loadSection' );

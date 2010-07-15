@@ -135,6 +135,14 @@ $messages['ca'] = array(
 	'prefs-labs' => 'Característiques de laboratori',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'prefs-beta' => 'کەرەسەکانی بیتا',
+	'prefs-labs' => 'کەرەسەکانی تاقیگەکان',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -184,8 +192,8 @@ $messages['de'] = array(
 $messages['diq'] = array(
 	'usabilityinitiative' => 'teşebbusê şuxulnayişi',
 	'usabilityinitiative-desc' => 'Xacetî ke Wikipedia Usability Initiative viraşt, programê MediaWikiyî asan keno',
-	'prefs-beta' => 'Xacetane beta',
-	'prefs-labs' => 'Xacetanê labs',
+	'prefs-beta' => 'Xacetê beta',
+	'prefs-labs' => 'Xacetê labs',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -294,6 +302,18 @@ $messages['fr'] = array(
 $messages['frp'] = array(
 	'usabilityinitiative' => 'Iniciativa d’utilisabilitât',
 	'usabilityinitiative-desc' => 'Fonccionalitâts dèvelopâs per l’iniciativa d’utilisabilitât de Vouiquipèdia por mèlyorar l’utilisabilitât de MediaWiki.',
+	'prefs-beta' => 'Fonccionalitâts « Bèta »',
+	'prefs-labs' => 'Fonccionalitâts « Laboratiors »',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'usabilityinitiative' => 'Iomairt na So-chleachdachd',
+	'usabilityinitiative-desc' => 'Feartan le Iomairt na So-chleachdachd aig Wikipedia gus piseach a thoirt air so-chleachdachd MediaWiki',
+	'prefs-beta' => 'Feartan Beta',
+	'prefs-labs' => 'Feartan nan deuchainn-lannan',
 );
 
 /** Galician (Galego)
@@ -427,6 +447,16 @@ $messages['ko'] = array(
 	'prefs-labs' => '실험 중인 기능',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'usabilityinitiative' => 'Юзабилити башламчылыкъ',
+	'usabilityinitiative-desc' => 'MediaWiki-ни аммалары Википедияны Юзабилити башламчылыгъыны юсю  бла, аны хайырланыуун тынчыракъ этер умутда, къуралгъандыла',
+	'prefs-beta' => 'Бета-амалла',
+	'prefs-labs' => 'Эксперимент амалла',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -504,6 +534,8 @@ $messages['mt'] = array(
 $messages['nds-nl'] = array(
 	'usabilityinitiative' => 'Bruukbaorheidsinitiatief',
 	'usabilityinitiative-desc' => "Functionaliteit dee deur 't Bruukbaorheidsinitiatief van Wikipedie is ontwikkeld um de gebruuksvriendelijkheid van MediaWiki te verbeteren",
+	'prefs-beta' => 'Bètafuncties',
+	'prefs-labs' => 'Alphafuncties',
 );
 
 /** Dutch (Nederlands)
@@ -557,9 +589,9 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'usabilityinitiative' => 'Inicjatywa Użyteczności',
-	'usabilityinitiative-desc' => 'Funkcjonalności rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
-	'prefs-beta' => 'Funkcjonalności testowe',
-	'prefs-labs' => 'Funkcjonalności doświadczalne',
+	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu ułatwienia korzystania z oprogramowania MediaWiki',
+	'prefs-beta' => 'Funkcje testowe',
+	'prefs-labs' => 'Funkcje doświadczalne',
 );
 
 /** Piedmontese (Piemontèis)
@@ -612,8 +644,8 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'usabilityinitiative' => 'Inițiativa de utilizabilitate',
-	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de inițiativa de utilizabilitate a Wikipedia pentru a facilita folosirea softului MediaWiki',
+	'usabilityinitiative' => 'Inițiativa de Utilizabilitate',
+	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de Inițiativa de Utilizabilitate a Wikipedia pentru a facilita folosirea softului MediaWiki',
 	'prefs-beta' => 'Opțiuni beta',
 	'prefs-labs' => 'Opțiuni „labs”',
 );
@@ -684,11 +716,19 @@ $messages['sr-ec'] = array(
 	'prefs-beta' => 'Бета функције',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'prefs-beta' => 'Beta funkcije',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
 $messages['su'] = array(
+	'usabilityinitiative' => 'Inisiatif Kamangpaatan',
+	'usabilityinitiative-desc' => 'Fitur-fitur anu dikembangkeun ku Inisiatif Kamangpaatan Wikipédia pikeun ngaronjatkeun kamangpaatan MédiaWiki',
 	'prefs-beta' => 'Fitur béta',
+	'prefs-labs' => 'Fitur Labs',
 );
 
 /** Swedish (Svenska)
@@ -702,6 +742,16 @@ $messages['sv'] = array(
 	'usabilityinitiative-desc' => "Funktioner utvecklade av ''Wikipedias initiativ för användbarhet'', för att förbättra MediaWikis användbarhet",
 	'prefs-beta' => 'Betafunktioner',
 	'prefs-labs' => 'Testfunktioner',
+);
+
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ * @author Muddyb Blast Producer
+ */
+$messages['sw'] = array(
+	'usabilityinitiative' => 'Hatua ya Urahisishaji wa Matumizi',
+	'usabilityinitiative-desc' => 'Zana zilizotengenezwa na Hatua ya Urahisishaji wa Matumizi ya Wikipedia kuongeza ufanisi wa matumizi ya MediaWiki',
+	'prefs-beta' => 'Zana za Beta',
 );
 
 /** Telugu (తెలుగు)
@@ -793,6 +843,7 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'usabilityinitiative' => 'ניצלעכקייט איניציאַטיוו',
+	'usabilityinitiative-desc' => 'אייגנקייטן אָנטוויקלט דורכן וויקיפעדיע ניצלעכקייט איניציאַטיוו צו פֿאַרבעסערן די נוצבאַרקייט פֿון מעדיעוויקי.',
 	'prefs-beta' => 'בעטאַ אייגנשאַפֿטן',
 	'prefs-labs' => 'לאַבאראַטאריע מעגלעכקייטן',
 );

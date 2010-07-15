@@ -100,6 +100,7 @@ Add one below.',
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Lloffiwr
@@ -121,6 +122,7 @@ $messages['qqq'] = array(
 	'centralnotice-translate' => '{{Identical|Translate}}',
 	'centralnotice-notice-exists' => 'Error message displayed in Special:CentralNotice when trying to add a notice with the same name of another notice',
 	'centralnotice-template-exists' => 'Error message displayed in Special:NoticeTemplate when trying to add a template with the same name of another template',
+	'centralnotice-day' => '{{Identical|Day}}',
 	'centralnotice-start-date' => 'Used in Special:CentralNotice.
 
 {{Identical|Start date}}',
@@ -846,6 +848,7 @@ Ouzhpennit unan da heul.",
 	'centralnotice-no-templates-translate' => "N'eus patrom ebet da dreiñ",
 	'centralnotice-number-uses' => 'Implijoù',
 	'centralnotice-edit-template' => 'Kemmañ ar patrom',
+	'centralnotice-edit-template-summary' => "Da grouiñ ur gemennadenn da vezañ lec'helaet, enklozañ un neudennad gant ur varrennig-stagañ etre teir briataenn, da skouer {{{jimbo-quote}}}.",
 	'centralnotice-message' => 'Kemennadenn',
 	'centralnotice-message-not-set' => "N'eo ket bet savet ar gemennadenn",
 	'centralnotice-clone' => 'Eilañ',
@@ -1128,6 +1131,7 @@ Níže můžete vytvořit nové.',
 
 /** Welsh (Cymraeg)
  * @author Lloffiwr
+ * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'centralnotice' => "Gweinyddu'r hysbysiad canolog",
@@ -1161,8 +1165,13 @@ Gall hefyd gael ei ddefnyddio i ychwanegu hen hysbysiadau neu eu tynnu i ffwrdd.
 	'centralnotice-notices' => 'Hysbysiadau',
 	'centralnotice-notice-exists' => "Mae'r hysbysiad eisoes ar gael.
 Ni chaiff ei ychwanegu",
+	'centralnotice-template-exists' => "Mae'r faner yn bodoli'n barod.
+Ddim yn ychwanegu",
 	'centralnotice-notice-doesnt-exist' => "Nid yw'r hysbysiad ar gael.
 Dim i gael gwared ohono",
+	'centralnotice-template-still-bound' => "Mae'r faner yn perthyn i ymgyrch o hyd.
+Ddim yn tynnu.",
+	'centralnotice-template-body' => 'Corff y faner:',
 	'centralnotice-day' => 'Dydd',
 	'centralnotice-year' => 'Blwyddyn',
 	'centralnotice-month' => 'Mis',
@@ -1172,6 +1181,8 @@ Dim i gael gwared ohono",
 	'centralnotice-project-name' => "Enw'r prosiect",
 	'centralnotice-start-date' => 'Dyddiad cychwyn',
 	'centralnotice-start-time' => 'Amser cychwyn (UTC)',
+	'centralnotice-no-templates' => 'Ni chanfuwyd unrhyw faner. 
+Ychwanegu rhai!',
 	'centralnotice-start-hour' => 'Amser dechrau',
 	'centralnotice-weights' => 'Pwysau',
 	'centralnotice-notice-is-locked' => "Mae'r hysbysiad wedi ei gloi.
@@ -1393,6 +1404,7 @@ Yew de bike',
 	'centralnotice-no-templates-translate' => 'Hin templeteyan çino ke ti biçarne',
 	'centralnotice-number-uses' => 'Ça de kar keno',
 	'centralnotice-edit-template' => 'Template bivurne',
+	'centralnotice-edit-template-summary' => 'Seba mesajanê lokali viraştişi, yew tire u hire paranatezi de bikefilne, mesela {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Mesaj',
 	'centralnotice-message-not-set' => 'Mesaj nişiravt',
 	'centralnotice-clone' => 'Kopye bike',
@@ -4619,6 +4631,7 @@ Legg til en under',
 	'centralnotice-no-templates-translate' => 'Det finnes ingen maler å redigere oversettelser for',
 	'centralnotice-number-uses' => 'Anvendelser',
 	'centralnotice-edit-template' => 'Rediger mal',
+	'centralnotice-edit-template-summary' => 'For å opprette en lokaliserbar melding, legg ved en bindestreks-streng inni tre krøllparanteser, for eksempel {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Melding',
 	'centralnotice-message-not-set' => 'Melding ikke satt',
 	'centralnotice-clone' => 'Klon',
@@ -6567,6 +6580,7 @@ Magdagdag ng isa sa ibaba',
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
+ * @author Srhat
  */
 $messages['tr'] = array(
 	'centralnotice' => 'Merkezi uyarı yöneticisi',
@@ -6643,6 +6657,7 @@ Aşağıya bir tane ekleyin',
 	'centralnotice-no-templates-translate' => 'Çevirileri değiştirmek için hiç şablon yok',
 	'centralnotice-number-uses' => 'Kullanımlar',
 	'centralnotice-edit-template' => 'Şablonu değiştir',
+	'centralnotice-edit-template-summary' => 'Yerelleştirilebilir bir mesaj oluşturmak için, tireli bir metni üç köşeli parantez arasına yazın, örnek {{{jimbo-quote}}}',
 	'centralnotice-message' => 'Mesaj',
 	'centralnotice-message-not-set' => 'Mesaj ayarlanmadı',
 	'centralnotice-clone' => 'Klonla',

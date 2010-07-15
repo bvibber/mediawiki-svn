@@ -354,6 +354,16 @@ $messages['niu'] = array(
 	'configure-section-search' => 'Kumi',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'configure-desc-group' => 'Bubuhan',
+	'configure-desc-val' => 'Nilai',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-section-pages' => 'Tungkaran',
+);
+
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */
@@ -1260,7 +1270,7 @@ $messages['br'] = array(
 	'configure-ext-ext-dependencies' => "'''Diwallit :''' an astenn-mañ en deus ezhomm e vefe gweredekaat an {{PLURAL:$2|astenn|astennoù}} da-heul : $1.",
 	'configure-ext-ext-dependency-err' => "'''Fazi :''' an astenn $1 en deus ezhomm e vefe gweredekaat an astenn $2.",
 	'configure-ext-doc' => 'Gwelet an teuliadoù enlinenn',
-	'configure-ext-schemachange' => "'''Diwallit :''' an astenn-mañ en deus ezhomm un hizivadenn eus ar bank roadennoù evit mon en-dro en un doare reizh !",
+	'configure-ext-schemachange' => "'''Diwallit :''' an astenn-mañ en deus ezhomm un [http://www.mediawiki.org/wiki/Manual:Update.php hizivadenn eus ar bank roadennoù] evit mont en-dro en un doare reizh !",
 	'configure-ext-settings' => 'Arventennoù',
 	'configure-ext-settings-dep-errors' => "Ne c'hell ket bezañ diellaouet an astenn-mañ dre {{PLURAL:$1|m'en deus an arventenn|m'o deus an arventennoù}} un dalvoudenn direizh :",
 	'configure-ext-settings-dep-error' => '$1: talvoud rekis : $2, talvoud red : $3',
@@ -1792,10 +1802,27 @@ $messages['cu'] = array(
 	'configure-js-remove' => 'поничьжє́ниѥ',
 );
 
+/** Welsh (Cymraeg)
+ * @author Jay99
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'configure' => "Ffurfweddu'r wici",
+	'configure-desc' => "Yn caniatáu i ddefnyddwyr awdurdodedig [[Special:Configure|ffurfweddu]]'r wici drwy ddefnyddio rhyngwyneb ar y we",
+	'configure-desc-group' => 'Grŵp',
+	'configure-desc-key' => 'Allwedd',
+	'configure-desc-ns' => 'Parth',
+	'configure-desc-val' => 'Gwerth',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'Estyniadau',
+	'configure-viewconfig-default-diff' => "Gwahaniaethau o gymharu â'r gosodiadau rhagosodedig",
+);
+
 /** Danish (Dansk)
  * @author BabelFrode
  * @author Byrial
  * @author Hylle
+ * @author Nghtwlkr
  */
 $messages['da'] = array(
 	'configure' => 'Konfigurér wikien',
@@ -1810,7 +1837,7 @@ $messages['da'] = array(
 	'configure-ext-ext-dependencies' => "'''Advarsel''' denne udvidelse kræver at {{PLURAL:$2|den følgende udvidelse|de følgende udvidelser}} er aktiveret: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fejl''' Udvidelsen $1 kræver at $2 er aktiveret.",
 	'configure-ext-doc' => 'Se dokumentation på internettet',
-	'configure-ext-schemachange' => "'''Advarsel:''' Denne udvidelse kræver en opdatering af databasen for at fungere korrekt!",
+	'configure-ext-schemachange' => "'''Advarsel:''' Denne udvidelse kræver en [http://www.mediawiki.org/wiki/Manual:Update.php opdatering af databasen] for at fungere korrekt!",
 	'configure-ext-settings' => 'Indstillinger',
 	'configure-ext-settings-dep-errors' => 'Denne udvidelse kan ikke aktiveres fordi {{PLURAL:$1|den følgende indstilling|de følgende indstillinger}} viser en en forkert værdi:',
 	'configure-ext-settings-dep-error' => '$1: nødvendig værdi: $2, nuværende værdi: $3',
@@ -2391,6 +2418,14 @@ Pšosym napóraj jen abo změń jen, aby wužywał rozšyrjenje.',
 	'configure-farmer-settings' => '[[Special:Configure|Toś ten wiki konfigurěrowaś]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Rozšyrjenja za toś ten wiki konfigurěrowaś]].',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Rozšyrjenja nalicyś, kótarež stoje za toś ten wiki k dispoziciji]].',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'configure-js-remove' => 'Tutui',
+	'configure-section-search' => 'Dii',
+	'configure-throttle-action-edit' => 'Trɔ asi le eŋu',
+	'configure-throttle-action-move' => 'Ɖɔli eƒe nɔƒe',
 );
 
 /** Greek (Ελληνικά)
@@ -5431,7 +5466,7 @@ $messages['km'] = array(
 	'configure-ext-settings' => 'ការកំណត់​ផ្សេងៗ',
 	'configure-ext-use-extension' => 'ប្រើប្រាស់​ផ្នែកបន្ថែម​នេះ',
 	'configure-ext-use' => 'ការប្រើប្រាស់',
-	'configure-form-reason' => 'ហេតុផល​សម្រាប់​ផ្លាស់ប្ដូរ​៖',
+	'configure-form-reason' => 'មូលហេតុ៖',
 	'configure-arrayinput-oneperline' => "''(មួយ​ក្នុង​មួយ​បន្ទាត់​)''",
 	'configure-summary' => 'ទំព័រ​ពិសេស​នេះ​អនុញ្ញាត​ឲ្យ​អ្នក​ធ្វើ​ការ​កំណត់​រចនា​សម្ព័ន្ធ​នៃ​វិគី​នេះ​។ សូម​មើល​[http://www.mediawiki.org/wiki/Manual:Configuration_settings ​ការ​កំណត់​រចនា​សម្ព័ន្ធ]សម្រាប់​ព័ត៌មាន​បន្ថែម​។',
 	'configure-btn-save' => 'រក្សាទុក​ការកំណត់',
@@ -6008,6 +6043,7 @@ $messages['lg'] = array(
 
 /** Limburgish (Limburgs)
  * @author Aelske
+ * @author Ooswesthoesbes
  * @author Pahles
  */
 $messages['li'] = array(
@@ -6023,13 +6059,13 @@ $messages['li'] = array(
 	'configure-ext-ext-dependencies' => "'''Waarsjoewing:''' dees oetbreijing vereis aktevatie van de volgende {{PLURAL:$2|oetbreijing|oetbreijinge}}: $1",
 	'configure-ext-ext-dependency-err' => "'''Fout:''' de oetbreijing $1 vereis dat de oetbreijing $2 geakteveerd weurt.",
 	'configure-ext-doc' => 'Bekiek online documentatie',
-	'configure-ext-schemachange' => "'''Waarsjoewing:''' um dees oetbreijing richtig te laote wirke moot de database waere biegewirk!",
+	'configure-ext-schemachange' => "'''Waarsjoewing:''' um dees oetbreijing richtig te laote wirke moot de [http://www.mediawiki.org/wiki/Manual:Update.php database] waere biegewirk!",
 	'configure-ext-settings' => 'Insjtèllinge',
 	'configure-ext-settings-dep-errors' => "Dees oetbreijing kan neet waere ingesjakeld, want de volgende {{PLURAL:$1|insjèlling haet|insjèllinge höbbe}} 'n ongeljige waerd:",
 	'configure-ext-settings-dep-error' => '$1: vereiste waerd: $2, hujige waerd: $3',
 	'configure-ext-use-extension' => 'Gebroek dees oetbreijing',
 	'configure-ext-use' => 'Gebroeke',
-	'configure-form-reason' => 'Raej veur wieziging:',
+	'configure-form-reason' => 'Reeje:',
 	'configure-customised' => "''Dees insjtèlling is aangepas''",
 	'configure-arrayinput-oneperline' => "''(eine per regel)''",
 	'configure-summary' => 'Op dees speciaal pagina kans te deze wiki insjtèlle. Betrach [http://www.mediawiki.org/wiki/Manual:Configuration_settings Insjtèllinge] veur mier informatie.',
@@ -6091,6 +6127,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-namespaces' => 'Naamruumdes',
 	'configure-section-stats' => 'Sitesjtattestieke',
 	'configure-section-skin' => 'Vörmgeving',
+	'configure-section-vector' => 'Vectoroeterlik',
 	'configure-section-category' => 'Categorieë',
 	'configure-section-cache' => 'Cache',
 	'configure-section-pcache' => 'Parsercache',
@@ -6111,6 +6148,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-specialpages' => "Speciaal pagina's",
 	'configure-section-recentchanges' => 'Recènte verangeringe',
 	'configure-section-users' => 'Gebroekers',
+	'configure-section-externalauth' => 'Extern authentikaasje',
 	'configure-section-feed' => 'Feed',
 	'configure-section-job' => 'Take',
 	'configure-section-extension' => 'Oetbreijinge',
@@ -6126,7 +6164,7 @@ Maak die map aan, of veranger 't um dees oetbreijing te gebroeke.",
 	'configure-section-output' => 'Oetvoer',
 	'configure-select-wiki' => 'Wikiselectie',
 	'configure-select-wiki-desc' => 'Selecteer de wiki daes doe wils insjtèlle.',
-	'configure-select-wiki-view-desc' => 'Selecteer de wiki woevans doe de versies wils betrachte.',
+	'configure-select-wiki-view-desc' => 'Selecteer de wiki woevans doe de instellingsversies wils betrachte.',
 	'configure-select-wiki-view-all' => "Alle wiki's",
 	'configure-select-wiki-view-specific' => 'Specifieke wiki:',
 	'configure-select-wiki-submit' => 'Selectere',
@@ -6363,7 +6401,7 @@ $messages['mk'] = array(
 	'configure-section-htcp' => 'HTCP-мултикаст',
 	'configure-section-misc' => 'Разно',
 	'configure-section-filter' => 'Филтрирање',
-	'configure-section-mw-extensions' => 'МедијаВики додатоци',
+	'configure-section-mw-extensions' => 'Додатоци за МедијаВики',
 	'configure-section-external-tools' => 'Надворешни алатки',
 	'configure-section-filesystem' => 'Интеракција помеѓу Податочниот систем и Школката',
 	'configure-section-thumbnail' => 'Поставување на минијатури',
@@ -6875,6 +6913,7 @@ Er wordt een voorvertoning weergegeven als u het veld verlaat.',
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Gunnernett
  * @author Harald Khan
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'configure' => 'Konfigurer wikien',
@@ -6889,13 +6928,13 @@ $messages['nn'] = array(
 	'configure-ext-ext-dependencies' => "'''Åtvaring:''' denne utvidinga krev at {{PLURAL:$2|den fylgjande utvidinga|dei fylgjande utvidingane}} vert aktiverte: $1.",
 	'configure-ext-ext-dependency-err' => "'''Feil:''' utvidinga $1 krev at $2-utvidinga vert aktivert.",
 	'configure-ext-doc' => 'Sjå dokumentasjon på nett',
-	'configure-ext-schemachange' => "'''Åtvaring:''' denne utvidinga krev ei oppdatering av databasen for å fungera som ho skal!",
+	'configure-ext-schemachange' => "'''Åtvaring:''' denne utvidinga krev ei [http://www.mediawiki.org/wiki/Manual:Update.php oppdatering av databasen] for å fungera som ho skal.",
 	'configure-ext-settings' => 'Innstillingar',
 	'configure-ext-settings-dep-errors' => 'Denne utvidinga kan ikkje verta aktivert med di {{PLURAL:$1|det fylgjande oppsettet|dei fylgjande oppsetta}} har ein uakseptabel verdi:',
 	'configure-ext-settings-dep-error' => '$1: krev verdien: $2, har no verdien: $3',
 	'configure-ext-use-extension' => 'Nytt denne utvidinga',
 	'configure-ext-use' => 'Nytt',
-	'configure-form-reason' => 'Årsak for endringa:',
+	'configure-form-reason' => 'Årsak:',
 	'configure-customised' => "''Denne innstillinga har blitt eigendefinert''",
 	'configure-arrayinput-oneperline' => "''(ein per rad)''",
 	'configure-summary' => 'Denne spesialsida lèt deg konfigurera denne wikien, sjå [http://mediawiki.org/wiki/Manual:Configuration_settings konfigurasjonsinnstillingar] for meir informasjon.',
@@ -7080,7 +7119,7 @@ $messages['no'] = array(
 	'configure-ext-ext-dependencies' => "'''Advarsel:''' denne utvidelsen krever at {{PLURAL:$2|den følgende utvidelsen|de følgende utvidelsene}} blir aktivert: $1.",
 	'configure-ext-ext-dependency-err' => "'''Feil:''' utvidelsen $1 krever at utvidelsen $2 blir aktivert.",
 	'configure-ext-doc' => 'Se dokumentasjon på internett',
-	'configure-ext-schemachange' => "'''Advarsel:''' denne utvidelsen krever en oppdatering av databasen for å fungere som den skal.",
+	'configure-ext-schemachange' => "'''Advarsel:''' denne utvidelsen krever en [http://www.mediawiki.org/wiki/Manual:Update.php oppdatering av databasen] for å fungere korrekt.",
 	'configure-ext-settings' => 'Innstillinger',
 	'configure-ext-settings-dep-errors' => 'Denne utvidelsen kan ikke aktiveres fordi {{PLURAL:$1|den følgende innstillingen har en uakseptabel verdi|de følgende innstillingene har uakseptable verdier}}:',
 	'configure-ext-settings-dep-error' => '$1: nødvendig verdi: $2, nåværende verdi: $3',
@@ -8320,7 +8359,7 @@ $messages['ro'] = array(
 	'configure-ext-settings' => 'Setări',
 	'configure-ext-use-extension' => 'Folosește această extensie',
 	'configure-ext-use' => 'Folosește',
-	'configure-form-reason' => 'Motiv pentru schimbare:',
+	'configure-form-reason' => 'Motiv:',
 	'configure-btn-save' => 'Salvează setările',
 	'configure-error' => 'Configurația nu a putut fi salvată',
 	'configure-js-add' => 'Adaufă o intrare nouă',
@@ -8625,7 +8664,7 @@ $messages['scn'] = array(
 	'configure-ext-doc' => 'Talìa la documentazioni in linea',
 	'configure-ext-use-extension' => "Usa st'estensioni",
 	'configure-ext-use' => 'Usa',
-	'configure-form-reason' => 'Mutivu dâ variazioni:',
+	'configure-form-reason' => 'Mutivu:',
 	'configure-customised' => "''St'impostazioni fu pirsonalizzata''",
 	'configure-arrayinput-oneperline' => "''(unu pi riga)''",
 	'configure-btn-save' => "Sarva l'impostazioni",
@@ -9794,6 +9833,7 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
  * @author Joseph
  * @author Karduelis
  * @author Mach
+ * @author Srhat
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -9801,7 +9841,7 @@ $messages['tr'] = array(
 	'configure-desc' => 'Yetkili kullanıcıların vikiyi web-tabanlı bir arayüz ile [[Special:Configure|yapılandırmasına]] izin verir',
 	'configure-desc-group' => 'Grup',
 	'configure-desc-key' => 'Anahtar',
-	'configure-desc-ns' => 'Ad alanı',
+	'configure-desc-ns' => 'Ad boşluğu',
 	'configure-desc-val' => 'Değer',
 	'configure-edit-core' => 'MedyaViki',
 	'configure-edit-ext' => 'Eklentiler',
@@ -10019,6 +10059,33 @@ $messages['ug-arab'] = array(
 	'configure-section-timezone' => 'ۋاقىت رايونى',
 	'configure-section-zh-conversion' => 'خەنچە ئايلاندۇرۇش',
 	'configure-section-debug' => 'سازلاش',
+	'configure-section-site' => 'بېكەت ئىختىيارىيلاشتۇرۇش',
+	'configure-section-css-js' => 'CSS ۋە JavaScript',
+	'configure-section-namespaces' => 'ئات بوشلۇقى',
+	'configure-section-stats' => 'بېكەت ستاتىستىكا',
+	'configure-section-skin' => 'تېرەلەر',
+	'configure-section-vector' => 'Vector تېرە',
+	'configure-section-category' => 'كاتېگورىيە',
+	'configure-section-cache' => 'غەملەك',
+	'configure-section-pcache' => 'تەھلىلچى غەملەكى',
+	'configure-section-messagecache' => 'ئۇچۇر غەملەك',
+	'configure-section-access' => 'زىيارەت',
+	'configure-section-groups' => 'گۇرۇپپا',
+	'configure-section-block' => 'چەكلە',
+	'configure-section-rates' => 'سۈرئەت چەكلىمىسى',
+	'configure-section-proxy' => 'ۋاكالەتچىلەر',
+	'configure-section-cookie' => 'Cookies',
+	'configure-section-performance' => 'ئىقتىدار',
+	'configure-section-upload' => 'يۈكلە',
+	'configure-section-sharedupload' => 'ھەمبەھىرلەپ يۈكلە',
+	'configure-section-mime' => 'MIME تىپى',
+	'configure-section-images' => 'ھۆججەتلەر',
+	'configure-section-antivirus' => 'ۋىرۇسخور',
+	'configure-section-parser' => 'تەھلىلچى',
+	'configure-section-specialpages' => 'ئالاھىدە بەتلەر',
+	'configure-section-recentchanges' => 'يېقىنقى ئۆزگەرتىشلەر',
+	'configure-section-users' => 'ئىشلەتكۈچىلەر',
+	'configure-section-externalauth' => 'سىرتقى دەلىللەش',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
@@ -10413,6 +10480,11 @@ Jafolös oni u votükolös oni ad gebön veitükumami at.',
 	'configure-boolop-description-or' => 'Stip pu bal muton veratön.',
 	'configure-boolop-description-xor' => 'Kuratiko stip bal muton veratön',
 	'configure-boolop-description-not' => 'Stips nonik mutons veratön',
+);
+
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'configure-form-reason' => '理由：',
 );
 
 /** Yiddish (ייִדיש)

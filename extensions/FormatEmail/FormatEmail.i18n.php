@@ -431,6 +431,16 @@ Dës E-Mail gouf iech vun $1 iwwer den E-Mail-System vun {{SITENAME}} geschéckt
 $2',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'email_footer' => '-------------------------------------------------- -------------------------- 
+ Šo e-pastu nosūtīja $1 izmantojot {{SITENAME}} e-pasta sistēmu. 
+
+ $2',
+);
+
 /** Macedonian (Македонски)
  * @author Brest
  */

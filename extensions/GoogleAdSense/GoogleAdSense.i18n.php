@@ -284,6 +284,13 @@ $messages['lt'] = array(
 	'googleadsense-desc' => 'Prideda [http://www.google.com/adsense Google AdSense] į šoninę juostą',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'googleadsense-desc' => ' Pievieno [http://www.google.com/adsense Google AdSense] sānu joslai',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -1,7 +1,10 @@
 <?php
 
 /**
- * Initialization file for parser function functionality in the Maps extension
+ * Initialization file for parser function functionality in the Maps extension.
+ * Also contains a common handler for map display parser functions which does
+ * service, geoservice and coordinates resolving, and then passes the parameters
+ * to the relevant parser function class.
  *
  * @file Maps_ParserFunctions.php
  * @ingroup Maps
@@ -31,7 +34,7 @@ final class MapsParserFunctions {
 	public static function initialize() {
 		global $egMapsFeatures;
 		
-		include_once dirname( __FILE__ ) . '/Maps_iMapParserFunction.php';
+		include_once dirname( __FILE__ ) . '/iMappingParserFunction.php';
 		
 		// This runs a small hook that enables parser functions to run initialization code.
 		foreach ( $egMapsFeatures['pf'] as $hook ) {
@@ -65,10 +68,11 @@ final class MapsParserFunctions {
 		foreach ( $args as $arg ) {
 			$split = explode( '=', $arg );
 			$name = strtolower( trim( array_shift( $split ) ) );
-			if ( count( $split ) > 0 && self::inParamAliases( $name, 'service', MapsMapper::getCommonParameters() ) ) {
+			
+			if ( count( $split ) > 0 && self::inParamAliases( $name, 'mappingservice', MapsMapper::getCommonParameters() ) ) {
 				if ( !$setService ) {
 					$serviceName = implode( '=', $split );
-					$parameters[] = 'service=' . $serviceName;
+					$parameters[] = 'mappingservice=' . $serviceName;
 					$setService = true;
 				}
 			} else {
@@ -134,7 +138,7 @@ final class MapsParserFunctions {
 		$equals = $compareMainName && $mainParamName == $name;
 
 		if ( !$equals && array_key_exists( $mainParamName, $paramInfo ) ) {
-			$equals = in_array( $name, $paramInfo[$mainParamName] );
+			$equals = in_array( $name, $paramInfo[$mainParamName]['aliases'] );
 		}
 
 		return $equals;

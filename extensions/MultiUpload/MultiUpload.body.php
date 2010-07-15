@@ -308,7 +308,7 @@ class MultipleUploadForm extends UploadForm {
 	}
 
 		if ( $licenseshtml != '' ) {
-			global $wgAjaxLicensePreview, $wgJsMimeType;
+			global $wgAjaxLicensePreview;
 			$wgOut->addScriptFile( 'upload.js' );
 			// This is one nasty hack...but necessary to make upload.js not bitch if the user actually touches the "Licensing" dropdown menu instead of just admiring it from a distance.
 			$wgOut->addInlineScript( 'var wgAjaxLicensePreview = "'.$wgAjaxLicensePreview.'";' );

@@ -21,16 +21,16 @@ var GOverlays = [
  * Returns GMarker object on the provided location. It will show a popup baloon
  * with title and label when clicked, if either of these is set.
  */
-function createGMarker( point, title, label, icon ) {
+function createGMarker( markerData ) {
 	var marker;
 	
-	if ( icon != '' ) {
+	if ( markerData.icon != '' ) {
 		var iconObj = new GIcon( G_DEFAULT_ICON );
-		iconObj.image = icon;
+		iconObj.image = markerData.icon;
 
 		
 		var newimg = new Image();
-		newimg.src = icon;
+		newimg.src = markerData.icon;
 		
 		// Only do these things when there is an actual width, which there won,t the first time the image is loaded.
 		// TODO: this means the image won't have it's correct size when it differs from the default on first load!
@@ -47,14 +47,14 @@ function createGMarker( point, title, label, icon ) {
 			iconObj.iconAnchor = anchor;			
 		}
 
-		marker = new GMarker( point, { icon:iconObj } );
+		marker = new GMarker( markerData.point, { icon: iconObj } );
 	} else {
-		marker = new GMarker( point );
+		marker = new GMarker( markerData.point );
 	}
 	
-	if ( ( title + label ).length > 0 ) {
-		var bothTxtAreSet = title.length > 0 && label.length > 0;
-		var popupText = bothTxtAreSet ? '<b>' + title + '</b><hr />' + label : title + label;	
+	if ( ( markerData.title + markerData.label ).length != '' ) {
+		var bothTxtAreSet = markerData.title.length != '' && markerData.label.length != '';
+		var popupText = bothTxtAreSet ? '<b>' + markerData.title + '</b><hr />' + markerData.label : markerData.title + markerData.label;	
 		popupText = '<div style="overflow:auto;max-height:140px;">' + popupText + '</div>';
 
 		GEvent.addListener(marker, 'click',
@@ -101,55 +101,73 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	map.setMapType(mapOptions.type);	
 
+	var hasSearchBar = false;
+	
+	for ( i = mapOptions.controls.length - 1; i >= 0; i-- ) {
+		if ( mapOptions.controls[i] == 'searchbar' ) {
+			hasSearchBar = true;
+			break;
+		}
+	}
+	
 	// List of GControls: http://code.google.com/apis/maps/documentation/reference.html#GControl
-	for (i = 0; i < mapOptions.controls.length; i++){
-		if (mapOptions.controls[i].toLowerCase() == 'auto') {
-			if (mapElement.offsetHeight > 75) mapOptions.controls[i] = mapElement.offsetHeight > 320 ? 'large' : 'small';
+	for ( i = 0; i < mapOptions.controls.length; i++ ) {
+		if ( mapOptions.controls[i].toLowerCase() == 'auto' ) {
+			if ( mapElement.offsetHeight > 75 ) mapOptions.controls[i] = mapElement.offsetHeight > 320 ? 'large' : 'small';
 		}			
 		
-		switch (mapOptions.controls[i]) {
+		switch ( mapOptions.controls[i] ) {
 			case 'large' : 
-				map.addControl(new GLargeMapControl3D());
+				map.addControl( new GLargeMapControl3D() );
 				break;
 			case 'small' : 
-				map.addControl(new GSmallZoomControl3D());
+				map.addControl( new GSmallZoomControl3D() );
 				break;
 			case 'large-original' : 
-				map.addControl(new GLargeMapControl());
+				map.addControl( new GLargeMapControl() );
 				break;
 			case 'small-original' : 
-				map.addControl(new GSmallMapControl());
+				map.addControl( new GSmallMapControl() );
 				break;
 			case 'zoom' : 
-				map.addControl(new GSmallZoomControl());
+				map.addControl( new GSmallZoomControl() );
 				break;
 			case 'type' : 
-				map.addControl(new GMapTypeControl());
+				map.addControl( new GMapTypeControl() );
 				break;				
 			case 'type-menu' : 
-				map.addControl(new GMenuMapTypeControl());
+				map.addControl( new GMenuMapTypeControl() );
 				break;
 			case 'overlays' : 
-				map.addControl(new MoreControl());
-				break;					
+				map.addControl( new MoreControl() );
+				break;		
 			case 'overview' : case 'overview-map' : 
-				map.addControl(new GOverviewMapControl());
-				break;					
+				map.addControl( new GOverviewMapControl() );
+				break;
 			case 'scale' : 
-				map.addControl(new GScaleControl());
+				if ( hasSearchBar ) {
+					map.addControl( new GScaleControl(), new GControlPosition( G_ANCHOR_BOTTOM_LEFT, new GSize( 5,37 ) ) );
+				}
+				else {
+					map.addControl( new GScaleControl() );
+				}
 				break;
 			case 'nav-label' : case 'nav' : 
-				map.addControl(new GNavLabelControl());
-				break;	
+				map.addControl( new GNavLabelControl() );
+				break;
+			case 'searchbar' :
+				map.enableGoogleBar();
+				break;
 		}
 	}	
 
 	var bounds = ((mapOptions.zoom == null || mapOptions.centre == null) && markers.length > 1) ? new GLatLngBounds() : null;
 
-	for (i = 0; i < markers.length; i++) {
+	for ( i = markers.length - 1; i >= 0; i-- ) {
 		var marker = markers[i];
-		map.addOverlay(createGMarker(marker.point, marker.title, marker.label, marker.icon));
-		if (bounds != null) bounds.extend(marker.point);
+		marker.point = new GLatLng( marker.lat, marker.lon );
+		map.addOverlay( createGMarker( marker ) );
+		if ( bounds != null ) bounds.extend( marker.point );
 	}
 
 	if (bounds != null) {
@@ -163,15 +181,18 @@ function createGoogleMap(mapName, mapOptions, markers) {
 
 	map.enableContinuousZoom();
 	
-	// Make the map variable available for other functions
+	// Code to add KML files.
+	var kmlOverlays = [];
+	for ( i = mapOptions.kml.length - 1; i >= 0; i-- ) {
+		kmlOverlays[i] = new GGeoXml( mapOptions.kml[i] );
+		map.addOverlay( kmlOverlays[i] );
+	}
+	
+	// Make the map variable available for other functions.
 	if (!window.GMaps) window.GMaps = new Object;
 	eval("window.GMaps." + mapName + " = map;"); 	
 	
 	return map;
-}
- 
-function getGMarkerData(lat, lon, title, label, icon) {
-		return {point: new GLatLng(lat, lon), title: title, label: label, icon: icon};
 }
 
 function setupCheckboxShiftClick() { return true; }

@@ -67,6 +67,15 @@ $messages['ady-cyrl'] = array(
 	'youtubeauthsub_title' => 'Тхылъышъхьэ',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'youtubeauthsub_submit' => 'Kirim',
+	'youtubeauthsub_clickhere' => 'Klik di sia gasan masuk log ka YouTube',
+	'youtubeauthsub_uploadbutton' => 'Unggah',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
@@ -412,6 +421,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'youtubeauthsub' => 'Enporzhiañ ur video YouTube',
@@ -424,7 +434,7 @@ $messages['br'] = array(
 	'youtubeauthsub_keywords' => "Gerioù alc'hwez",
 	'youtubeauthsub_category' => 'Rummad',
 	'youtubeauthsub_submit' => 'Kas',
-	'youtubeauthsub_clickhere' => "Klikañ amañ d'en em lugañ ouzh YouTube",
+	'youtubeauthsub_clickhere' => 'Klikañ amañ evit kevreañ ouzh YouTube',
 	'youtubeauthsub_tokenerror' => 'Fazi e-ser krouiñ an aotre, klaskit freskaat ar bajenn.',
 	'youtubeauthsub_success' => "Gourc'hemennoù!
 Enporzhiet eo bet ho video.
@@ -615,9 +625,41 @@ $messages['cu'] = array(
 
 /** Welsh (Cymraeg)
  * @author Fulup
+ * @author Xxglennxx
  */
 $messages['cy'] = array(
+	'youtubeauthsub' => 'Uwchlwytho fideo YouTube',
+	'youtubeauthsub-desc' => 'Yn caniatáu defnyddwyr i [[Special:YouTubeAuthSub|uwchlwytho fideos]] yn syth i YouTube',
+	'youtubeauthsub_info' => "I uwchlwytho fideo i YouTube i'w cynnwys ar dudalen, cwblhewch y wybodaeth yma:",
 	'youtubeauthsub_title' => 'Teitl',
+	'youtubeauthsub_description' => 'Disgrifiad',
+	'youtubeauthsub_password' => 'Cyfrinair YouTube',
+	'youtubeauthsub_username' => 'Enw defnyddiwr YouTube',
+	'youtubeauthsub_keywords' => 'Allweddeiriau',
+	'youtubeauthsub_category' => 'Categori',
+	'youtubeauthsub_submit' => 'Cyflwyno',
+	'youtubeauthsub_clickhere' => 'Cliciwch yma i fewngofnodi i YouTube',
+	'youtubeauthsub_tokenerror' => "Gwall wrth gynhyrchu tocyn awdurdodiad. Rhowch gynnig ar ail-lwytho'r dudalen.",
+	'youtubeauthsub_success' => "Llongyfarchiadau!
+Uwchlwythwyd eich fideo.
+<a href='http://www.youtube.com/watch?v=$1'>Edrychwch arno</a>.
+Efallai bydd angen amser prosesu ar YouTube, felly efallai ni fydd yn barod yn syth.
+
+I gynnwys eich fideo mewn tudalen ar y wici, gosodwch y cod yma:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'I uwchlwytho fideo, bydd angen mewngofnodi i YouTube yn gyntaf arnoch.',
+	'youtubeauthsub_uploadhere' => "Uwchlwytho'ch fideo o fan hyn:",
+	'youtubeauthsub_uploadbutton' => 'Uwchlwytho',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Edrych ar y fideo hwn]',
+	'youtubeauthsub_summary' => 'Yn uwchlwytho fideo YouTube',
+	'youtubeauthsub_uploading' => "Mae'n eich fideo'n cael ei uwchlwytho.
+Arhoswch, os gwelwch yn dda.",
+	'youtubeauthsub_viewpage' => 'Ar yn ail, gallwch [[$1|edrych ar eich fideo]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Rhowch un neu ragor o allweddeiriau.',
+	'youtubeauthsub_jserror_notitle' => 'Rhowch deitl ar gyfer y fideo.',
+	'youtubeauthsub_jserror_nodesc' => 'Rhowch ddisgrifiad ar gyfer y fideo.',
 );
 
 /** Danish (Dansk)
@@ -1935,6 +1977,7 @@ $messages['lzz'] = array(
  */
 $messages['mg'] = array(
 	'youtubeauthsub' => 'Hampiditra video YouTube',
+	'youtubeauthsub-desc' => "Hahafahan'ny mpikambana [[Special:YouTubeAuthSub|mampiditra video]] avy eo amin'i Youtube",
 	'youtubeauthsub_info' => "Fenoy ny tokony hofenoina rehefa te-hampiditra video avy any amin'ny YouTube :",
 	'youtubeauthsub_title' => 'Lohateny',
 	'youtubeauthsub_description' => 'Visavisa',
@@ -1944,6 +1987,8 @@ $messages['mg'] = array(
 	'youtubeauthsub_category' => 'Sokajy',
 	'youtubeauthsub_submit' => 'Alefa',
 	'youtubeauthsub_clickhere' => "Tsindrio eto ra tia hiditra anatin'ny Youtube",
+	'youtubeauthsub_tokenerror' => 'Tsi-fetezana teo am-pangatahana ilay alalana, avaozy ny pejy.',
+	'youtubeauthsub_authsubinstructions' => "Raha ampiditra video ianao, dia midira aloha eo amin'i Youtube.",
 	'youtubeauthsub_uploadhere' => 'Hampiditra ny video-nao avy eto :',
 	'youtubeauthsub_uploadbutton' => 'Hampiditra',
 	'youtubeauthsub_summary' => 'Hampiditra video YouTube',
@@ -1969,7 +2014,7 @@ $messages['mk'] = array(
 	'youtubeauthsub_keywords' => 'Клучни зборови',
 	'youtubeauthsub_category' => 'Категорија',
 	'youtubeauthsub_submit' => 'Најавување',
-	'youtubeauthsub_clickhere' => 'Кликни тука за најавување на YouTube',
+	'youtubeauthsub_clickhere' => 'Кликнете тука за да се најавите на YouTube',
 	'youtubeauthsub_tokenerror' => 'Грешка при создавањето на потврдниот жетон. Обидете се повторно.',
 	'youtubeauthsub_success' => "Честитаме!
 Вашиот видео запис е подигнат.
@@ -2475,6 +2520,7 @@ $messages['pnt'] = array(
 $messages['ps'] = array(
 	'youtubeauthsub' => 'د يوټيوب ويډيو پورته کول',
 	'youtubeauthsub-desc' => 'يو کارن په دې توانوي چې يوټيوب ته راساً [[Special:YouTubeAuthSub|ويډيوګانې ورپورته کړي]]',
+	'youtubeauthsub_info' => 'يوټيوب (YouTube) کې د يوې ويډيو د پورته کولو او بيا په يوه مخ کې د ويډيو ورټومبلو لپاره، د مالوماتو اړونده ځايونه ډک کړۍ:',
 	'youtubeauthsub_title' => 'سرليک',
 	'youtubeauthsub_description' => 'څرګندونه',
 	'youtubeauthsub_password' => 'د يوټيوب پټنوم',
@@ -2707,6 +2753,9 @@ YouTube, возможно, будет некоторое время обраба
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'youtubeauthsub' => 'Награти відео YouTube',
+	'youtubeauthsub-desc' => 'Доволює хоснователям [[Special:YouTubeAuthSub|награти відео]] прямо до YouTube',
+	'youtubeauthsub_title' => 'Назва',
 	'youtubeauthsub_description' => 'Попис',
 	'youtubeauthsub_password' => 'Гесло на YouTube',
 	'youtubeauthsub_username' => 'Мено хоснователя на YouTube',
@@ -2714,6 +2763,24 @@ $messages['rue'] = array(
 	'youtubeauthsub_category' => 'Катеґорія',
 	'youtubeauthsub_submit' => 'Послати',
 	'youtubeauthsub_clickhere' => 'Кликнутём ту ся приголосите до YouTube',
+	'youtubeauthsub_success' => "Ґратулуєме!
+Ваше відео є награте.
+<a href='http://www.youtube.com/watch?v=$1'>Посмотьте ся на ваше відео</a>.
+YouTube може даякый час тырвати, покы ся ваше відео зпрацує, также іщі не є приправлене.
+
+Відео можете на вікі сторінку вложыти помочов наслїдуючого коду:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Жебы сьте могли награти відео, мусите ся наперед приголосити на YouTube.',
+	'youtubeauthsub_uploadhere' => 'Награйте своє відео стады:',
+	'youtubeauthsub_uploadbutton' => 'Награти',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Посмотрити відео]',
+	'youtubeauthsub_summary' => 'Награвать ся відео YouTube',
+	'youtubeauthsub_uploading' => 'Ваше відео ся награвать.
+Просиме, почекайте.',
+	'youtubeauthsub_viewpage' => 'Інакше, тыж собі можете [[$1|посмотрити ваше відео]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Просиме, задайте єдно або веце ключовых слов.',
 );
 
 /** Yakut (Саха тыла)

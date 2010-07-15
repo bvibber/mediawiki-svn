@@ -256,12 +256,17 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'ratinghistory' => 'পাতার রেটিংয়ের ইতিহাস',
+	'ratinghistory-tab' => 'রেটিং',
+	'ratinghistory-link' => 'পাতার রেটিং',
 	'ratinghistory-period' => 'সময়:',
 	'ratinghistory-month' => 'গত মাস',
 	'ratinghistory-3months' => 'গত ৩ মাস',
 	'ratinghistory-year' => 'বিগত বছর',
 	'ratinghistory-3years' => 'গত ৩ বছর',
 	'ratinghistory-ave' => 'গড়: $1',
+	'ratinghistory-svg' => 'SVG হিসেবে দেখাও',
+	'ratinghistory-table-rating' => 'রেটিং',
 	'ratinghistory-table-votes' => 'ভোট',
 );
 
@@ -656,6 +661,7 @@ $messages['et'] = array(
 	'ratinghistory-year' => 'viimane aasta',
 	'ratinghistory-3years' => 'viimased 3 aastat',
 	'ratinghistory-ave' => 'Keskmine: $1',
+	'ratinghistory-chart' => 'Lugejate antud hinnangud',
 	'ratinghistory-purge' => 'tühjenda vahemälu',
 	'ratinghistory-table' => 'Lugejahinnangute ülevaade',
 	'ratinghistory-users' => 'Hinnanud kasutajad',

@@ -390,6 +390,15 @@ $messages['lt'] = array(
 	'icon-badwidth' => 'Blogas plotis',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'icon-badimage' => 'Nederīgs attēls',
+	'icon-badwidth' => 'Nederīgs platums',
+	'icon-desc' => 'Ļauj izmantot attēlus kā ikonas un ikonu saites',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

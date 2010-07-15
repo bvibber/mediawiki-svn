@@ -71,6 +71,13 @@ $messages['es'] = array(
 	'rped-wikipedia-url' => 'http://es.wikipedia.org/wiki/$1',
 );
 
+/** Finnish (Suomi)
+ * @author Silvonen
+ */
+$messages['fi'] = array(
+	'rped-wikipedia-url' => 'http://fi.wikipedia.org/wiki/$1',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -126,10 +133,13 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
-	'rped-wikipedia-url' => 'http://id.wikipedia.org/wiki/',
+	'rped' => 'Pelacakan keberadaan halaman jauh',
+	'rped-desc' => 'Menghubungkan pranala wiki ke Wikipedia bila halaman tidak ada di wiki setempat tetapi ada di Wikipedia',
+	'rped-wikipedia-url' => 'http://id.wikipedia.org/wiki/$1',
 );
 
 /** Japanese (日本語)
@@ -139,7 +149,7 @@ $messages['id'] = array(
 $messages['ja'] = array(
 	'rped' => '遠隔ページ存在検出',
 	'rped-desc' => 'ページがローカルのウィキに存在しないがウィキペディアに存在する場合に、そのウィキリンクをウィキペディアにリンクする',
-	'rped-wikipedia-url' => 'http://ja.wikipedia.org/wiki/',
+	'rped-wikipedia-url' => 'http://ja.wikipedia.org/wiki/$1',
 );
 
 /** Ladino (Ladino)
@@ -154,7 +164,7 @@ $messages['lad'] = array(
  */
 $messages['lb'] = array(
 	'rped' => 'Entdecke vu Säiten op externe Siten',
-	'rped-wikipedia-url' => 'http://lb.wikipedia.org/wiki/',
+	'rped-wikipedia-url' => 'http://lb.wikipedia.org/wiki/$1',
 );
 
 /** Macedonian (Македонски)
@@ -243,6 +253,6 @@ $messages['ru'] = array(
 $messages['tl'] = array(
 	'rped' => 'Pangtuklas ng pag-iral ng malayong pahina',
 	'rped-desc' => 'Nagkakawing ng mga ng kawing na pangwika sa Wikipedia kapag hindi umiiral ang pahina sa katutubong wiki subalit umiiral sa Wikipedia',
-	'rped-wikipedia-url' => 'http://tl.wikipedia.org/wiki/',
+	'rped-wikipedia-url' => 'http://tl.wikipedia.org/wiki/$1',
 );
 

@@ -66,6 +66,7 @@ class ApiReview extends ApiBase {
 			$form->setDim( $tag, intval( $params['flag_' . $tag] ) );
 		}
 		if ( $form->isApproval() ) {
+			$parserOutput = null;
 			// Now get the template and image parameters needed
 			// If it is the current revision, try the parser cache first
 			$article = new FlaggedArticle( $title, $revid );
@@ -73,17 +74,18 @@ class ApiReview extends ApiBase {
 				$parserCache = ParserCache::singleton();
 				$parserOutput = $parserCache->get( $article, $wgUser );
 			}
-			if ( empty( $parserOutput ) ) {
+			if ( !$parserOutput || !isset( $parserOutput->fr_fileSHA1Keys ) ) {
 				// Miss, we have to reparse the page
 				global $wgParser;
 				$text = $article->getContent();
 				$options = FlaggedRevs::makeParserOptions();
-				$parserOutput = $wgParser->parse( $text, $title, $options );
+				$parserOutput = $wgParser->parse(
+					$text, $title, $options, true, true, $article->getLatest() );
 			}
 			// Set version parameters for review submission
 			list( $templateParams, $imageParams, $fileVersion ) =
-				FlaggedRevs::getIncludeParams( $article,
-					$parserOutput->mTemplateIds, $parserOutput->fr_ImageSHA1Keys );
+				RevisionReviewForm::getIncludeParams( $article,
+					$parserOutput->mTemplateIds, $parserOutput->fr_fileSHA1Keys );
 			$form->setTemplateParams( $templateParams );
 			$form->setFileParams( $imageParams );
 			$form->setFileVersion( $fileVersion );

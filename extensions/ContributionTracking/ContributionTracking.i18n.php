@@ -228,6 +228,11 @@ $messages['dsb'] = array(
 	'contrib-tracking-button' => 'Dalej',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'contrib-tracking-error' => 'Vodada',
+);
+
 /** Greek (Ελληνικά)
  * @author Konsnos
  * @author Omnipaedista
@@ -643,7 +648,7 @@ $messages['ml'] = array(
 	'contrib-tracking-error' => 'പിഴവ്',
 	'contrib-tracking-error-text' => 'ഫോം സമർപ്പണം അസാധുവായ വിധത്തിലാണ്',
 	'contrib-tracking-submitting' => 'പണമടയ്ക്കാനായി സമർപ്പിക്കുന്നു...',
-	'contrib-tracking-continue' => 'താങ്കൾ സ്വതവേ തിരിച്ചുവിടപ്പെട്ടില്ലങ്കിൽ, പേയ്‌‌പാൽ വഴിയുള്ള താങ്കളുടെ സംഭാവന പൂർത്തിയാക്കാനായി ബട്ടൺ ഞെക്കുക.',
+	'contrib-tracking-continue' => 'താങ്കൾ സ്വതേ തിരിച്ചുവിടപ്പെട്ടില്ലങ്കിൽ, പേയ്‌‌പാൽ വഴിയുള്ള താങ്കളുടെ സംഭാവന പൂർത്തിയാക്കാനായി ബട്ടൺ ഞെക്കുക.',
 	'contrib-tracking-button' => 'തുടരുക',
 );
 
@@ -845,6 +850,13 @@ $messages['sah'] = array(
 	'contrib-tracking-submitting' => 'Төлөбүрү таҥастааччыга ыытыы...',
 	'contrib-tracking-continue' => 'Аптамаатынан наадалаах сиргэ тиийбэтэх буоллаххына, тимэҕи баттаан PayPal тиһилигин көмөтүнэн сиэртибэлээһиҥҥин түмүктээ.',
 	'contrib-tracking-button' => 'Салгыы',
+);
+
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'contrib-tracking-error' => 'දෝෂය',
 );
 
 /** Slovak (Slovenčina)

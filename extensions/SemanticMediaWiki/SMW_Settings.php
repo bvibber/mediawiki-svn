@@ -23,8 +23,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # web. Change it if required ($wgScriptPath is the path to the base directory
 # of your wiki). No final slash.
 ##
-$useExtensionPath = version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath;
-$smwgScriptPath = ( $useExtensionPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMediaWiki';
+$smwgScriptPath = ( 
+	( version_compare( $wgVersion, '1.16', '>=' ) && isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath )
+	? $wgExtensionAssetsPath : $wgScriptPath . '/extensions'
+	) . '/SemanticMediaWiki';
 ##
 
 ###
@@ -295,6 +297,18 @@ $smwgResultFormats = array(
 # aliases will be treated like if the alias parameter had been omitted.
 ##
 $smwgResultAliases = array();
+##
+
+### Predefined default result formats
+# Array of default result formats, optionlly defined per datatype. Can be redefined in
+# the settings to remove or add certain defaults.
+##
+$smwgResultDefaults = array();
+##
+
+### Indicates if result format defaulting should be applied by SMW core.
+##
+$smwgUseResultDefaults = false;
 ##
 
 ### Predefined sources for queries

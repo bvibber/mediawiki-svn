@@ -50,6 +50,13 @@ $messages['ca'] = array(
 	'apisvgproxy-desc' => 'Fa de servidor intermediari de fitxers SVG per a dipòsits de fitxers (probablement remots) al domini local',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'apisvgproxy-desc' => "Ffeiliau SVG dirprwyon o ystorfa ffeil, sydd efallai'n bell, i'r parth lleol",
+);
+
 /** Danish (Dansk)
  * @author Emilkris33
  */
@@ -167,6 +174,13 @@ $messages['ko'] = array(
  */
 $messages['lb'] = array(
 	'apisvgproxy-desc' => 'Liwwert SVG-Fichiere vun engem (méiglecherweis net lokalem) Depot vum Fichieren an de lokalen Domain',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'apisvgproxy-desc' => "Manome rakitra SVG avy ao amin'ny petra-drakitra mankao amin'ny vala an-toerana",
 );
 
 /** Macedonian (Македонски)

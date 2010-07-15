@@ -46,9 +46,13 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author ;Hiba;1
+ * @author Loya
  * @author Mohamed Ouda
  */
 $messages['ar'] = array(
+	'configuredpages-none' => 'لا توجد صفحات في هذه القائمة.',
+	'configuredpages-config' => 'ضبط',
 	'configuredpages-prec-none' => 'لا سابقة',
 	'configuredpages-prec-quality' => 'سابقة جودة',
 	'configuredpages-prec-pristine' => 'سابقة فائقة',
@@ -342,15 +346,16 @@ E Deil Yystellige chenne sich villicht unterscheide, je nochdäm weli Version em
 /** Hebrew (עברית)
  * @author Amire80
  * @author DoviJ
+ * @author Rotemliss
  */
 $messages['he'] = array(
 	'configuredpages-none' => 'אין דפים ברשימה זו.',
-	'configuredpages-precedence' => 'סדר קדימה',
+	'configuredpages-precedence' => 'קדימות:',
 	'configuredpages-prec-none' => 'ללא עדיפות',
 	'configuredpages-prec-quality' => 'עדיפות לגרסאות איכותיות',
 	'configuredpages-prec-pristine' => 'עדיפות לגרסאות מושלמות',
-	'configuredpages-def-draft' => 'הגירסה האחרונה',
-	'configuredpages-def-stable' => 'גירסה יציבה',
+	'configuredpages-def-draft' => 'הגרסה האחרונה',
+	'configuredpages-def-stable' => 'גרסה יציבה',
 );
 
 /** Croatian (Hrvatski)
@@ -432,10 +437,13 @@ $messages['id'] = array(
 	'configuredpages-def-stable' => 'versi stabil',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author Beta16
+ */
 $messages['it'] = array(
 	'configuredpages-config' => 'Configurazione',
 	'configuredpages-prec-none' => 'nessuna precendenza',
+	'configuredpages-def-draft' => 'ultima versione',
 );
 
 /** Japanese (日本語)
@@ -539,7 +547,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'configuredpages' => 'സംശോധന ക്രമീകരണങ്ങൾ ഉള്ള താളുകൾ',
-	'configuredpages-text' => 'സൈറ്റിൽ സ്വതവേ വിവിധ അംഗീകാര സജ്ജീകരണങ്ങളുള്ള താളുകളാണ് താഴെ കൊടുത്തിരിക്കുന്നത്.
+	'configuredpages-text' => 'സൈറ്റിൽ സ്വതേ വിവിധ അംഗീകാര സജ്ജീകരണങ്ങളുള്ള താളുകളാണ് താഴെ കൊടുത്തിരിക്കുന്നത്.
 
 വായനക്കാർക്ക് ഏത് പതിപ്പുകൾ പ്രദർശിപ്പിക്കണം എന്നതനുസരിച്ചോ, സംശോധനം ഒഴിവാക്കി ആർക്കൊക്കെ തിരുത്താം എന്നതടിസ്ഥാനപ്പെടുത്തിയോ ചില സജ്ജീകരണങ്ങൾ മാറാവുന്നതാണ്.',
 	'configuredpages-none' => 'ഈ പട്ടികയിൽ താളുകളൊന്നുമില്ല.',
@@ -649,6 +657,13 @@ Chèiche ampostassion a peulo cangé che version a l'é smonùa ai letor o rëst
 	'configuredpages-prec-pristine' => 'ùltima pa contaminà',
 	'configuredpages-def-draft' => 'ùltima version',
 	'configuredpages-def-stable' => 'version publicà',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'configuredpages-none' => 'په همدې لړليک کې هېڅ کوم مخ نشته',
 );
 
 /** Portuguese (Português)
@@ -828,6 +843,7 @@ May ilang mga pagtatakdang maaaring magbago na ang bersyon ay ipinapakita sa mga
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Srhat
  */
 $messages['tr'] = array(
 	'configuredpages' => 'İnceleme yapılandırması olan sayfalar',
@@ -839,9 +855,9 @@ Bazı ayarlar, okuyuculara hangi sürümün görüntüleneceğini değiştirebil
 	'configuredpages-precedence' => 'Öncelik:',
 	'configuredpages-prec-none' => 'en son kontrol edilen',
 	'configuredpages-prec-quality' => 'en son kaliteli',
-	'configuredpages-prec-pristine' => 'en son öncelikli',
+	'configuredpages-prec-pristine' => 'en son bozulmamış',
 	'configuredpages-def-draft' => 'son sürüm',
-	'configuredpages-def-stable' => 'yayınlanan sürüm',
+	'configuredpages-def-stable' => 'kararlı sürüm',
 );
 
 /** Ukrainian (Українська)
@@ -896,14 +912,16 @@ Một số tùy chọn có thể có ảnh hưởng đến phiên bản được
 	'configuredpages-def-stable' => 'phiên bản xuất bản',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Onecountry
+ */
 $messages['zh-hans'] = array(
-	'configuredpages' => '页面已有复审设定',
-	'configuredpages-text' => '下面是已有和站点预设设定不同的审核设定。
+	'configuredpages' => '已设定审核的页面',
+	'configuredpages-text' => '下面是使用非站点默认审核设置的页面列表。
 
-部份设定的更改是向读者展示的。',
-	'configuredpages-none' => '没有页面在这个清单中',
-	'configuredpages-config' => '设定',
+一些设置可能改变读者显示版本，也可能进一步限制哪些用户的编辑无需审核。',
+	'configuredpages-none' => '本页面清单为空。',
+	'configuredpages-config' => '设置',
 	'configuredpages-precedence' => '优先级：',
 	'configuredpages-prec-none' => '没有优先级',
 	'configuredpages-prec-quality' => '质量优先级',

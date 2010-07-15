@@ -167,7 +167,7 @@ $.suggestions = {
 							} else {
 								// Add <span> with text
 								if( context.config.highlightInput ) {
-									matchedText = text.substr( 0, context.data.prevText.length );
+									matchedText = context.data.prevText;
 								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )
@@ -178,7 +178,8 @@ $.suggestions = {
 								// New width is only calculated here, applied later
 								var $span = $result.children( 'span' );
 								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
-									expWidth = $span.outerWidth();
+									// factor in any padding, margin, or border space on the parent
+									expWidth = $span.outerWidth() + ( context.data.$container.width() - $span.parent().width());
 								}
 								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}

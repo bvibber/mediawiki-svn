@@ -180,11 +180,11 @@ $messages['br'] = array(
 	'refhelper-toolbox_link_create' => 'Krouiñ an dave',
 	'refhelper-toolbox_link_search' => "Krouiñ an dave adalek ar c'hlask",
 	'refhelper-newarticle_nocitation' => "N'eus arroudenn ebet liammet gant an anv-mañ.",
-	'refhelper-newarticle_suggestions' => "Ma 'z eus un arroudenn o klotañ amañ a-is, tu 'zo deoc'h krouiñ ar bajenn-mañ en ur klikañ war ar bouton \"Krouiñ\".
+	'refhelper-newarticle_suggestions' => 'Ma \'z eus un arroudenn o klotañ amañ a-is, gellout a rit krouiñ ar bajenn-mañ en ur klikañ war ar bouton "Krouiñ".
 
-<h2>Kinnigoù</h2>",
-	'refhelper-newarticle_nosuggestions' => "Alas, ne oan ket gouest da ginnig dave ebet.
-Tu 'zo deoc'h [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].",
+<h2>Kinnigoù</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Alas, ne oan ket gouest da ginnig dave ebet.
+Gellout a rit [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Special:RefSearch|klask an arroudenn da ouzhpennañ]].',
 );
 
 /** Bosnian (Bosanski)
@@ -303,6 +303,12 @@ $messages['dsb'] = array(
 	'refhelper-newarticle_nosuggestions' => '
 Bóžko njamógu žedne reference naraźiś.
 Móžoš [[Special:RefHelper|referencu manuelnje pśidaś]] abo [[Special:RefSearch|za citatom pytaś, kótaryž coš pśidaś]].',
+);
+
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'refhelper-create' => 'Dze egɔme',
+	'refhelper-search' => 'Dii',
 );
 
 /** Spanish (Español)
@@ -924,9 +930,12 @@ Pode [[Special:RefHelper|adicionar a referência manualmente]] ou [[Special:RefS
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'refhelper' => 'Assistente de referências',
+	'refsearch' => 'Pesquisa de referências',
 	'refhelper-refcreate_legend' => 'Criar nova referência',
 	'refhelper-refcreate_another' => 'Criar outra referência',
 	'refhelper-refcreate_success' => 'A página [[$1]] não existia e foi criada.',

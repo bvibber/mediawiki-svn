@@ -6073,7 +6073,7 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Уредник на метаподатоци за снимки и пребарување на медии]',
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Уредник на метаподатоци за снимки и пребарување на мултимедијални податотеки]',
 	'metavid' => 'Metavid страница',
 	'mv_missing_stream' => 'Недостасува емитување: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki специјални страници',
@@ -6251,7 +6251,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_search_no_results' => 'Нема совпаднати медии',
 	'mv_media_matches' => 'Медиски совпаѓања',
 	'mv_remove_filter' => 'отстрани филтер',
-	'mv_advaced_search' => 'Напредно пребарување на медии',
+	'mv_advaced_search' => 'Напредно пребарување на податотеки',
 	'mv_expand_play' => 'Прошири и пушти на исто место',
 	'mv_play_inline' => 'Пуштај вметнато',
 	'mv_view_in_stream_interface' => 'Погледај во посредникот за емитувања',
@@ -8876,6 +8876,7 @@ $messages['sr-ec'] = array(
 	'mv_sequence_edit_text' => 'Пређи у текст едитор',
 	'mv_sequence_edit_visual_editor' => 'Пређи у визуелни едитор',
 	'mv_other_options' => 'Друге опције',
+	'mv_days' => '$1 {{PLURAL:$1|дан|дана}}',
 	'mv_hours' => '$1 {{PLURAL:$1|сат|сати}}',
 	'mv_hours_singular' => '1 сат',
 	'mv_minutes' => '$1 {{PLURAL:$1|минута|минута}}',
@@ -9033,6 +9034,7 @@ Molimo Vas da prijavite ovo [[{{MediaWiki:Grouppage-sysop}}|administratoru sajta
 	'mv_sequence_edit_text' => 'Pređi u tekst editor',
 	'mv_sequence_edit_visual_editor' => 'Pređi u vizuelni editor',
 	'mv_other_options' => 'Druge opcije',
+	'mv_days' => '$1 {{PLURAL:$1|dan|dana}}',
 	'mv_hours' => '$1 {{PLURAL:$1|sat|sati}}',
 	'mv_hours_singular' => '1 sat',
 	'mv_minutes' => '$1 {{PLURAL:$1|minuta|minuta}}',

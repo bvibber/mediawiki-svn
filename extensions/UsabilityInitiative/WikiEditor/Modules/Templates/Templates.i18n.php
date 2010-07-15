@@ -72,6 +72,13 @@ $messages['ca'] = array(
 	'wikieditor-templates-preference' => 'Habilita el replegament de plantilles',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-templates-preference' => 'مۆڵەتدانی کۆکردنەوەی داڕێژە',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -156,6 +163,20 @@ $messages['fr'] = array(
 	'wikieditor-templates-preference' => 'Activer le repliement des modèles',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-templates-preference' => 'Activar lo retrèt des modèlos',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-templates-preference' => 'Cuir an comas dùmhlachadh theamplaidean',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -233,6 +254,13 @@ $messages['ko'] = array(
 	'wikieditor-templates-preference' => '틀 접기 활성화하기',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-templates-preference' => 'Шаблонланы джашырыу амалны джандыр',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -266,6 +294,13 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'wikieditor-templates-preference' => 'Ippermetti l-funzjoni li taħbi l-mudelli',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-templates-preference' => 'Inklapbaore mallen',
 );
 
 /** Dutch (Nederlands)
@@ -371,6 +406,13 @@ $messages['sr-el'] = array(
 	'wikieditor-templates-preference' => 'Omogućava razmotavanje šablona',
 );
 
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-templates-preference' => 'Citakanana kudu bisa ditilepkeun',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
@@ -397,6 +439,13 @@ $messages['th'] = array(
  */
 $messages['tl'] = array(
 	'wikieditor-templates-preference' => 'Paganahin ang bumabagsak na suleras',
+);
+
+/** Turkish (Türkçe)
+ * @author Srhat
+ */
+$messages['tr'] = array(
+	'wikieditor-templates-preference' => 'Şablon daraltmayı etkinleştir',
 );
 
 /** Ukrainian (Українська)

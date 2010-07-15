@@ -610,7 +610,7 @@ Lennit-pizh an teul ha, mar fell deoc\'h embann ho skoazell, leugnit ar maezienn
 	'sign-email' => "Chomlec'h postel :",
 	'sign-indicates-req' => '<small><i><font color="red">*</font> diskouez a ra ar maeziennoù ret.</i></small>',
 	'sign-hide-note' => '<small><i><font color="red">**</font> Notenn : Gallout a raio atav an habaskerien lenn an titouroù n\'int ket bet rollet.</i></small>',
-	'sign-list-anonymous' => 'Rollañ en un doare dianv',
+	'sign-list-anonymous' => 'Rollañ en un doare dizanv',
 	'sign-list-hideaddress' => "Chom hep menegiñ ar chomlec'h",
 	'sign-list-hideextaddress' => "Arabat menegiñ ar gêr, ar stad (departamant), ar c'hod post pe ar vro",
 	'sign-list-hidephone' => 'chom hep menegiñ an niverenn bellgomz',

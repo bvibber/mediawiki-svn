@@ -159,9 +159,13 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Omnipaedista
+ * @author Απεργός
  */
 $messages['el'] = array(
+	'transliterator-error-ambiguous' => 'Αμφίσημος κανόνας <code>$1</code> στο [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Περισσότεροι από $1 {{PLURAL:$1|κανόνα|κανόνες}} στο [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Ο κανόνας <code>$1</code> έχει περισσότερους από $3 χαρακτήρες αριστερά στο [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => 'Το [[MediaWiki:$2]] πρέπει να αποτελείται τουλάχιστον από $1 {{PLURAL:$1|χαρακτήρα|χαρακτήρες}}',
 );
 
 /** Spanish (Español)

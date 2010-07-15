@@ -3189,6 +3189,11 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 	'ow_shown_datasets' => 'Pokazane datowe sajźby',
 );
 
+/** Ewe (Eʋegbe) */
+$messages['ee'] = array(
+	'ow_create' => 'Dze egɔme',
+);
+
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
@@ -8068,6 +8073,8 @@ $messages['mai'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
+	'wikidata-desc' => "Manampy banky angona amin'ny endrika wiki ho an'ny karazam-botoatiny maro samihafa",
+	'wikidata-handler-namespace-move-error' => "Ny pejy ao amin'ny anaran-tsehatra zakan'i Wikidata dia tsy afaka afindra.",
 	'languages' => 'Wikidata : Rindrankajy mitantana ny fiteny',
 	'langman-desc' => "Hanampy sy hanova ny paramètra mikasika ny fiteny amin'ny [[Special:Languages]]",
 	'langman_title' => 'Mpitantana fiteny',
@@ -8085,6 +8092,8 @@ $messages['mg'] = array(
 	'importlangnames_title' => 'Hampiditra anarana fiteny',
 	'importlangnames_not_allowed' => 'tsy manana alàlana mampiditra anarana fiteny ianao',
 	'importlangnames_added' => 'Nampiana ny anarana fiteny « $1 »',
+	'importlangnames_not_found' => "<strong>Tsy nahitana idi-piteny ho an'i « $1 » !</strong>",
+	'datasearch' => 'Wikidata : mitady data',
 	'datasearch_language' => 'Tenim-pirenena/fiteny :',
 	'datasearch_found_word' => 'hita ilay teny',
 	'datasearch_meaning' => 'dika',
@@ -8092,8 +8101,10 @@ $messages['mg'] = array(
 	'datasearch_search_text' => 'Lahatsoratra tadiavina :',
 	'datasearch_within_words' => "Amin'ny teny :",
 	'datasearch_within_ext_ids' => "Amin'ny famantarana avy ety ivelany :",
+	'datasearch_showing_only' => '{{PLURAL:}}Fanehoana valimiady $1 (tontaliny : $2)',
 	'datasearch_match_ext_ids' => "Famantarana avy ety ivelany mety mitivy amin'ny <i>$1</i>",
 	'datasearch_match_words' => "Teny miady amin'ny <i>$1</i> sy ny dikany",
+	'datasearch_match_words_lang' => "Teny <i>$1</i> miady amin'ny <i>$2</i> sy ny dikany",
 	'importtsv' => 'Wikidata: Fampidirana data TSV',
 	'ow_importtsv_title1' => 'Hampiditra data manan-tovana TSV',
 	'ow_importtsv_title2' => 'Hampiditra ny dika',
@@ -8273,7 +8284,7 @@ $messages['mk'] = array(
 	'ow_ClassAttributeLevel' => 'Ниво',
 	'ow_ClassAttributeType' => 'Тип',
 	'ow_ClassMembership' => 'Членство во класа',
-	'ow_Collection' => 'Колекција',
+	'ow_Collection' => 'Збирка',
 	'ow_Collection_colon' => 'Збирка:',
 	'ow_CollectionMember' => 'Член на збирка',
 	'ow_CollectionMembership' => 'Член во колекција',
@@ -10181,6 +10192,7 @@ $messages['ps'] = array(
 	'ow_OptionAttribute' => 'ځانتيا',
 	'ow_OptionAttributeOption' => 'خوښنه',
 	'ow_OptionAttributeOptions' => 'خوښنې',
+	'ow_Relations' => 'اړيکې',
 	'ow_Synonyms' => 'هممانيزونه',
 	'ow_SynonymsAndTranslations' => 'هممانيزونه او ژباړې',
 	'ow_Source' => 'سرچينه',
@@ -11293,6 +11305,8 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'languages' => 'Вікідата: Языковый манажер',
+	'langman_title' => 'Языковый манажер',
 	'langman_langname' => 'Назва языка:',
 	'langman_iso639-3' => 'Код ISO 639-3:',
 	'langman_iso639-2' => 'Код ISO 639-2:',
@@ -11337,10 +11351,26 @@ $messages['rue'] = array(
 	'ow_OptionAttributeOptions' => 'Можности',
 	'ow_OtherDefinedMeaning' => 'Інше дефіноване значіня',
 	'ow_PopupAnnotation' => 'Анотація',
+	'ow_Text' => 'Текст',
+	'ow_Time' => 'Час',
+	'ow_TranslatedText' => 'Переложеный текст',
+	'ow_TranslatedTextAttributeValue' => 'Текст',
+	'ow_Link' => 'Одказ',
+	'ow_LinkAttributeValues' => 'Одказы',
+	'ow_User' => 'Хоснователь',
+	'ow_added' => 'Придане',
+	'ow_removed' => 'Одстранене',
+	'ow_meaningsoftitle' => 'Значіня «$1»',
+	'copy' => 'Вікідата: копіровати',
+	'ow_history_transaction' => 'Трансакція:',
+	'ow_class_attr_type_link' => 'Одказ',
 	'ow_statistics' => 'Вікідата: Штатістікы',
 	'ow_show' => 'Вказати',
 	'ow_upload' => 'Награти',
 	'ow_create' => 'Створити',
+	'ow_suggest_previous' => 'Попереднїй',
+	'ow_suggest_next' => 'Наступный',
+	'ow_suggest_clear' => 'Вычістити',
 );
 
 /** Sicilian (Sicilianu)

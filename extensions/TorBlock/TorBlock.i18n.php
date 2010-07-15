@@ -703,13 +703,13 @@ Redigering via TOR er blokkert for å hindre misbruk.',
  */
 $messages['no'] = array(
 	'torblock-desc' => 'Gjør det mulig å blokkere Tors utgangsnoder fra å redigere en wiki',
-	'torblock-blocked' => 'Din IP-adresse, <tt>$1</tt>, har blitt automatisk identifisert som en utgangsnode fra TOR.
-Redigering via TOR er blokkert for å forhindre misbruk.',
+	'torblock-blocked' => 'Din IP-adresse, <tt>$1</tt>, har blitt automatisk identifisert som en utgangsnode fra Tor.
+Redigering via Tor er blokkert for å forhindre misbruk.',
 	'torblock-isexitnode' => 'IP-adressen $1 er blokkert som en utgangsnode for Tor.',
-	'right-torunblocked' => 'Kan redigere fra automatisk blokkerte TOR-noder',
+	'right-torunblocked' => 'Kan redigere fra automatisk blokkerte Tor-noder',
 	'tag-tor-description' => 'Om denne taggen er på, ble redigeringen gjort via en Tor-node.',
-	'tag-tor' => 'Gjort via tor',
-	'abusefilter-edit-builder-vars-tor-exit-node' => 'Hvorvidt endringen ble gjort gjennom et tor-utgangsknutepunkt.',
+	'tag-tor' => 'Gjort via Tor',
+	'abusefilter-edit-builder-vars-tor-exit-node' => 'Hvorvidt endringen ble gjort gjennom et Tor-utgangsknutepunkt.',
 );
 
 /** Occitan (Occitan)
@@ -788,6 +788,7 @@ A edição através de Tor está bloqueada para prevenir abusos.',
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Stelistcristi
  */
 $messages['ro'] = array(
@@ -795,7 +796,10 @@ $messages['ro'] = array(
 	'torblock-blocked' => 'Adresa dvs IP - <tt>$1</tt> - a fost identificată automat ca un nod de ieșire tor.
 Editarea prin tor este blocată pentru a preveni abuzuri.',
 	'torblock-isexitnode' => 'Adresa IP $1 este blocată ca un nod de ieșire Tor.',
+	'right-torunblocked' => "Nu este afectat de blocarea automată a nodurilor de ieșire ''tor''",
+	'tag-tor-description' => "Dacă această baliză este activată, s-a făcut o modificare de la un nod de ieșire ''tor''.",
 	'tag-tor' => 'Făcut prin tor',
+	'abusefilter-edit-builder-vars-tor-exit-node' => "Dacă modificarea s-a făcut printr-un nod de ieșire ''tor''",
 );
 
 /** Tarandíne (Tarandíne)
