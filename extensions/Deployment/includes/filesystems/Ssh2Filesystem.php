@@ -362,13 +362,13 @@ class Ssh2Filesystem extends Filesystem {
 			return false;
 		}
 
-		while (false !== ( $entry = $dir->read() ) ) {
+		while ( ( $entry = $dir->read() ) !== false ) {
 			$struc = array();
 			$struc['name'] = $entry;
 
 			if ( 
-				('.' == $struc['name'] || '..' == $struc['name'] ) 
-				|| ( !$includeHidden && '.' == $struc['name'][0] )
+				( $struc['name'] == '.' || $struc['name'] == '..' ) 
+				|| ( !$includeHidden && $struc['name'][0] == '.' )
 				|| ( $limit_file && $struc['name'] != $limit_file )
 				) {
 					continue; // Do not care about these folders.
@@ -386,7 +386,7 @@ class Ssh2Filesystem extends Filesystem {
 			$struc['time']    	= date( 'h:i:s', $struc['lastmodunix'] );
 			$struc['type']		= $this->isDir( $entryPath ) ? 'd' : 'f';
 
-			if ( 'd' == $struc['type'] ) {
+			if ( $struc['type'] == 'd' ) {
 				if ( $recursive ) {
 					$struc['files'] = $this->listDir( $path . '/' . $struc['name'], $includeHidden, $recursive );
 				}
