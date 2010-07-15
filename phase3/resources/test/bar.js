@@ -1,2 +1,2 @@
 // Test output
-mw.log( 'Bar (3)' );
+$( '#tests' ).append( '<li class="bar">Bar (3)</li>' );

@@ -3,12 +3,18 @@
 <html>
 	<head>
 		<title>Resource Loader Test</title>
-		<script type="text/javascript" src="../../load.php?modules=core|test&debug=1"></script>
+		<style>
+			#tests li {
+				color: white;
+			}
+		</style>
+		<script type="text/javascript" src="../../load.php?modules=core|test&debug=0"></script>
 		<script>
 			mw.config.set( 'wgScriptPath', '../..' );
 		</script>
 	</head>
 	<body>
-		<h1>Resource Loader Test</h1>
+		<h1>Resource Loader Tests</h1>
+		<ul id="tests"></ul>
 	</body>
 </html>

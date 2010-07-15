@@ -147,21 +147,6 @@ window.mw.loader = new ( function() {
 	function request( needs, callback ) {
 		queue[queue.length] = { 'needs': filter( ['undefined', 'registered'], needs ), 'callback': callback };
 	}
-	function resolve( ) {
-		for ( var q in queue ) {
-			for ( n in queue[q].needs ) {
-				if ( registry[queue[q].needs[n]].state === 'ready' ) {
-					queue[q].needs.slice( n, 1 );
-				}
-			}
-		}
-		for ( var q in queue ) {
-			if ( queue[q].needs.length === 0 ) {
-				queue[q].callback();
-				queue.slice( q, 1 );
-			}
-		}
-	}
 	
 	/* Public Functions */
 	
@@ -194,35 +179,39 @@ window.mw.loader = new ( function() {
 		if ( ready && batch.length ) {
 			// Always order modules alphabetically to help reduce cache misses for otherwise identical content
 			batch.sort();
-			// Build request from module batch and configuration
-			var request = $.extend(
-				// Modules are in the format foo|bar|baz|buz
-				{ 'modules': batch.join( '|' ) },
+			
+			var base = $.extend( {},
 				// Pass configuration values through the URL
 				mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] ),
 				// Ensure request comes back in the proper mode (debug or not)
 				{ 'debug': typeof mw.debug !== 'undefined' ? '1' : '0' }
 			);
-			
+			var requests = [];
+			if ( base.debug == '1' ) {
+				for ( b in batch ) {
+					requests[requests.length] = $.extend( { 'modules': batch[b] }, base );
+				}
+			} else {
+				requests[requests.length] = $.extend( { 'modules': batch.join( '|' ) }, base );
+			}
 			// It may be more performant to do this with an Ajax call, but that's limited to same-domain, so we can
-			// either auto-detect (if there really is any benefit) or just use this method, which is safe either
-			// way. Also note, we're using "each" here so we only clear the batch if there was a head to add to
+			// either auto-detect (if there really is any benefit) or just use this method, which is safe either way.
 			setTimeout(  function() {
-				$( 'head' ).each( function() {
-					// Clear the batch - this MUST happen before we append the script element to the body or it's possible that
-					// the script will be locally cached, instantly load, and work the batch again, all before we've cleared it
-					// causing each request to include modules which have already been loaded
-					batch = [];
-					// Append script to head
-					$(this).append(
-						$( '<script type="text/javascript"></script>' )
-							.attr( 'src', mw.util.buildUrlString( {
-								'path': mw.config.get( 'wgScriptPath' ) + '/load.php',
-								'query': request
-							} ) )
-							.ready( function() { resolve(); } )
-					);
-				} );
+				// Clear the batch - this MUST happen before we append the script element to the body or it's possible that
+				// the script will be locally cached, instantly load, and work the batch again, all before we've cleared it
+				// causing each request to include modules which have already been loaded
+				batch = [];
+				var html = '';
+				for ( r in requests ) {
+					// Build out the HTML
+					var src = mw.util.buildUrlString( {
+						'path': mw.config.get( 'wgScriptPath' ) + '/load.php',
+						'query': requests[r]
+					} );
+					html += '<script type="text/javascript" src="' + src + '"></script>';
+				}
+				// Append script to head
+				$( 'head' ).append( html );
 			}, 0 )
 		}
 	};
