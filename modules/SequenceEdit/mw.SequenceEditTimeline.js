@@ -348,7 +348,9 @@ mw.SequenceEditTimeline.prototype = {
 	// Draw a clip thumb into the timeline clip target
 	drawClipThumb: function ( $node , relativeTime ){		
 		var _this = this;
-		var smil = this.sequenceEdit.getSmil();
+		var smil = this.sequenceEdit.getSmil();	
+		
+		
 		// Buffer the asset then render it into the layout target:
 		smil.getBuffer().canGrabRelativeTime( $node, relativeTime, function(){		
 			var $timelineClip = $j( '#' + _this.getTimelineClipId( $node ) );
@@ -408,13 +410,22 @@ mw.SequenceEditTimeline.prototype = {
 			)
 			// remove loader
 			.find('.loadingSpinner').remove();
-			// Add thumb
-			smil.getLayout().drawElementThumb( 
-				$j( '#' + _this.getTimelineClipId( $node ) ).find('.thumbTraget'), 
-				$node, 
-				relativeTime
-			)
-		})		
+			
+			var $thumbTarget = $j( '#' + _this.getTimelineClipId( $node ) ).find('.thumbTraget');
+			
+			// Check for a "poster" image use that temporarily while we wait for the video to seek and draw
+			if( $node.attr('poster') ){
+				$thumbTarget.append( 
+					$j('<img />')
+					.attr( 'src', smil.getAssetUrl( $node.attr('poster') ) )
+					.css('height', $thumbTarget.height() )
+				)
+			}					
+			
+			// Add the seek, add to canvas and draw thumb request
+			smil.getLayout().drawElementThumb( $thumbTarget, $node, relativeTime );
+		
+		})
 	},
 	/**
 	 * Gets an sequence track control interface 

@@ -113,7 +113,9 @@ mw.SmilLayout.prototype = {
 		}
 	},
 	
-	drawElementThumb: function( $target, $node, relativeTime ){				
+	drawElementThumb: function( $target, $node, relativeTime ){			
+		// parse the time incase it came in as human input
+		relativeTime = this.smil.parseTime( relativeTime );
 		switch ( this.smil.getRefType( $node )){
 			case 'video':				
 				this.getVideoCanvasThumb($target,  $node, relativeTime )	
@@ -137,31 +139,46 @@ mw.SmilLayout.prototype = {
 				// draw an audio icon in the target
 			break;
 		}							
-	},	
+	},
+	
 	getVideoCanvasThumb: function($target, $node, relativeTime ){
 		
-		var naturaSize = {};			
-		var drawElement = $j( '#' + this.smil.getAssetId( $node ) ).get(0);		
+		var naturaSize = {};					
+		var drawElement = $j( '#' + this.smil.getAssetId( $node ) ).get(0);	
 		
-		naturaSize.height = drawElement.videoHeight;
-		naturaSize.width = drawElement.videoWidth;
-
-		// Draw the thumb via canvas grab
-		// NOTE I attempted to scale down the image using canvas but failed 
-		// xxx should revisit thumb size issue:
-		$target.html( $j('<canvas />')				
-			.attr({
-				height: naturaSize.height,
-				width : naturaSize.width
-			}).css( {
-				height:'100%',
-				widht:'100%'
-			})
-			.addClass("ui-corner-all")
-		).find( 'canvas')
-		.get(0)	
-		.getContext('2d')
-		.drawImage( drawElement, 0, 0)
+		var drawFrame = function(){
+			naturaSize.height = drawElement.videoHeight;
+			naturaSize.width = drawElement.videoWidth;
+	
+			// Draw the thumb via canvas grab
+			// NOTE I attempted to scale down the image using canvas but failed 
+			// xxx should revisit thumb size issue:
+			$target.html( $j('<canvas />')				
+				.attr({
+					height: naturaSize.height,
+					width : naturaSize.width
+				}).css( {
+					height:'100%',
+					widht:'100%'
+				})
+				.addClass("ui-corner-all")
+			).find( 'canvas')
+			.get(0)	
+			.getContext('2d')
+			.drawImage( drawElement, 0, 0)
+		}
+		
+		// check if relativeTime transform matches current absolute time then render directly:
+		var drawTime = ( relativeTime + this.smil.parseTime( $j( $node ).attr('clipBegin') ) );
+		if( drawElement.currentTime ==  drawTime ){
+			mw.log("getVideoCanvasThumb: Draw time:" + drawTime + " matches video time drawFrame:" +drawElement.currentTime );
+			drawFrame();
+		} else {
+			// check if we need to spawn a video copy for the draw request
+			
+			// no match do seek 
+			mw.log( "getVideoCanvasThumb: Draw time:" + drawTime + ' != ' + drawElement.currentTime );
+		}
 	},
 	
 	/**

@@ -17,14 +17,14 @@ mw.EmbedPlayerSmil = {
 	// Store the actual play time
 	smilPlayTime: 0,
 	
-	// Flag to register the player being embedd
+	// Flag to register the player being embedded
 	smilPlayerEmbedded: false,
 	
 	// Store the pause time 
 	smilPauseTime: 0,
 	
 	// Store a playback duration 
-	smilsmilPlayEndTime: null,
+	smilplaySegmentEndTime: null,
 	
 	// flag to register when video is paused to fill a buffer. 
 	pausedForBuffer: false,
@@ -85,19 +85,37 @@ mw.EmbedPlayerSmil = {
 		}
 		// Start seek
 		this.controlBuilder.onSeek();
-		this.smilPlayTime = time;		
+		this.smilPlayTime = time;
+		this.smilPauseTime = this.smilPlayTime;
 		var _this = this;
 		this.getSmil( function( smil ){				
 			smil.renderTime( time, function(){
 				//mw.log( "setCurrentTime:: renderTime callback" );
-				$j('#loadingSpinner_' + _this.id ).remove();
-				
+				$j('#loadingSpinner_' + _this.id ).remove();				
 				_this.monitor();
 				if( callback ){
 					callback();
 				}
 			} );
 		});
+	},
+	/**
+	* Issue a seeking request. 
+	*
+	* @param {Float} percentage
+	*/
+	doSeek: function( percentage ) {
+		mw.log( 'EmbedPlayerSmil::doSeek p: ' + percentage );
+		this.seeking = true;
+		var _this = this;
+		// Run the seeking hook
+		
+		$j( this.embedPlayer ).trigger( 'onSeek' );			
+		this.setCurrentTime( percentage * this.getDuration(), function(){			
+			mw.log("EmbedPlayerSmil:: seek done");
+			_this.seeking = false;
+			_this.monitor();		
+		})
 	},
 	
 	/**
@@ -123,34 +141,31 @@ mw.EmbedPlayerSmil = {
 	},
 	/**
 	 * Smil play function 
-	 * @param {float=} smilPlayEndTime Optional duration to be played before pausing playback
+	 * @param {float=} playSegmentEndTime Optional duration to be played before pausing playback
 	 */
-	play: function( smilPlayEndTime ){
+	play: function( playSegmentEndTime ){
 		var _this = this;
-		mw.log(" EmbedPlayerSmil::play " + _this.smilPlayTime );		
+		mw.log(" EmbedPlayerSmil::play " + _this.smilPlayTime + ' to ' + playSegmentEndTime + ' pause time: ' + this.smilPauseTime );		
 		// Update the interface
 		this.parent_play();
 		
-		// Update the smilPlayEndTime flag
-		if( ! smilPlayEndTime ){
-			this.smilPlayEndTime  = null;
+		// Update the playSegmentEndTime flag
+		if( ! playSegmentEndTime ){
+			this.playSegmentEndTime  = null;
 		} else {
-			this.smilPlayEndTime = smilPlayEndTime;
+			this.playSegmentEndTime = playSegmentEndTime;
 		}
 		
 		// Make sure this.smil is ready : 
 		this.getSmil( function( smil ){			
 			// Start buffering the movie 
 			_this.smil.startBuffer();
-			
-			// Set start clock time: 		
-			_this.clockStartTime = new Date().getTime();
-			
-			// Update the pause time:
-			_this.smilPauseTime = 0;
 						
 			// Sync with current smilPlayTime
-			_this.clockStartTime = _this.clockStartTime -( _this.smilPlayTime * 1000 );
+			_this.clockStartTime = new Date().getTime() -( _this.smilPlayTime * 1000 );
+
+			// Zero out the pause time:
+			_this.smilPauseTime = 0;
 			
 			// Start up monitor:
 			_this.monitor();
@@ -180,7 +195,7 @@ mw.EmbedPlayerSmil = {
 	* Preserves the pause time across for timed playback 
 	*/
 	pause: function() {
-		mw.log( 'EmbedPlayerSmil::pause at time' +  this.smilPlayTime );
+		mw.log( 'EmbedPlayerSmil::pause at time:' +  this.smilPlayTime );
 		this.smilPauseTime = this.smilPlayTime;
 		
 		// Issue pause to smil engine
@@ -204,9 +219,10 @@ mw.EmbedPlayerSmil = {
 	monitor: function(){		
 		// Get a local variable of the new target time: 		
 		
-		// Check if we reached smilPlayEndTime and pause playback  
-		if( this.smilPlayEndTime && this.smilPlayTime >= this.smilPlayEndTime ) {
-			this.smilPlayEndTime= null;
+		// Check if we reached playSegmentEndTime and pause playback  
+		if( this.playSegmentEndTime && this.smilPlayTime >= this.playSegmentEndTime ) {
+			mw.log("monitor:: Reached playSegmentEndTime pause playback: " + this.playSegmentEndTime );
+			this.playSegmentEndTime= null;
 			this.pause();
 			this.parent_monitor();
 			return ;
@@ -238,14 +254,17 @@ mw.EmbedPlayerSmil = {
 			if( !this.pausedForBuffer ){
 				// Update playtime if not pausedForBuffer				
 				this.smilPlayTime =  this.smilPauseTime + ( ( new Date().getTime() - this.clockStartTime ) / 1000 );
-				/*mw.log(" update smilPlayTime: " + this.smilPauseTime + " getTime: " + new Date().getTime() + 
+				/*
+				mw.log(" update smilPlayTime: " + this.smilPauseTime + " getTime: " + new Date().getTime() + 
 						' - clockStartTime: ' + this.clockStartTime + ' = ' + 
 						( ( new Date().getTime() - this.clockStartTime ) / 1000 )  + 
-						" \n time:" + this.smilPlayTime );*/
+						" \n time:" + this.smilPlayTime );
+				*/
 			}
 			
-			// Done with sync delay: 
+			// Reset the pausedForBuffer flag: 
 			this.pausedForBuffer = false;
+			
 			//mw.log( "Call animateTime: " + this.smilPlayTime);
 			// Issue an animate time request with monitorDelta 
 			this.smil.animateTime( this.smilPlayTime, this.monitorRate ); 
