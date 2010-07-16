@@ -1,13 +1,13 @@
+#!/usr/bin/php
 <?php
 
 /**
  * A PHP code beautifier aimed at adding lots of spaces to files that lack them,
  * in keeping with MediaWiki's spacey site style.
- * 
+ *
  * @author Tim Starling
  * @author Jeroen De Dauw
  */
-
 
 if ( php_sapi_name() != 'cli' ) {
 	echo "This script must be run from the command line\n";
@@ -45,18 +45,18 @@ function stylize_recursively( $dir ) {
 
 function stylize_file( $filename, $backup = true ) {
 	echo "Stylizing file $filename\n";
-	
+
 	$s = ( $filename == '-' )
 		? file_get_contents( '/dev/stdin' )
 		: file_get_contents( $filename );
-	
+
 	if ( $s === false ) {
 		return;
 	}
-	
+
 	$stylizer = new Stylizer( $s );
 	$s = $stylizer->stylize();
-	
+
 	if ( $filename == '-' ) {
 		echo $s;
 	} else {
@@ -133,7 +133,7 @@ class Stylizer {
 	);
 	static $spaceBefore = array(
 		')',
-		'-', // $foo = -1; shouldn't change to $foo = - 1; 
+		'-', // $foo = -1; shouldn't change to $foo = - 1;
 	);
 	static $spaceAfter = array(
 		'(',
@@ -192,7 +192,7 @@ class Stylizer {
 	function getPrev() {
 		return $this->get( $this->p - 1 );
 	}
-	
+
 	function getNext() {
 		return $this->get( $this->p + 1 );
 	}
@@ -264,11 +264,13 @@ class Stylizer {
 			// Add the token contents
 			if ( $curType == T_COMMENT ) {
 				$curText = $this->fixComment( $curText );
-			} elseif ( $curType == T_WHITESPACE ) {
-				$curText = $this->fixWhitespace( $curText );
 			}
 
 			$out .= $curText;
+
+			if ( substr( $out, -1 ) === "\n" ) {
+				$out = $this->fixWhitespace( $out );
+			}
 
 			$wantSpaceAfter = $this->isSpaceAfter( $curToken );
 			// Special case: space after =&
@@ -299,6 +301,6 @@ class Stylizer {
 
 	function fixWhitespace( $s ) {
 		// Fix whitespace at the line end
-		return preg_replace( '!^([\t ]+)(\n.*)$!s', '\2', $s, 1 );
+		return preg_replace( "#[\t ]*\n#", "\n", $s );
 	}
 }
