@@ -16,8 +16,8 @@ $messages['en'] = array(
 	'edituser' => 'Edit user',
 	'edituser-username' => 'Username:',
 	'edituser-dosearch' => 'Search',
-	'edituser-nouser' => 'The specified user does not exist.',
-	'edituser-exempt' => 'The specified user cannot be edited.',
+	'edituser-nouser' => 'The user "$1" does not exist.',
+	'edituser-exempt' => 'The user "$1" cannot be edited.',
 	'right-edituser' => 'Edit the preferences of other users',
 	'right-edituser-exempt' => "Others cannot edit this user's preferences",
 );

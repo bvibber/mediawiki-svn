@@ -31,12 +31,12 @@ class EditUser extends SpecialPage {
 		}
 		$targetuser = User::NewFromName( $this->target );
 		if( $targetuser->getID() == 0 ) {
-			$wgOut->addWikiText( wfMsg( 'edituser-nouser' ) );
+			$wgOut->addWikiMsg( 'edituser-nouser', htmlspecialchars( $this->target ) );
 			return;
 		}
 		#Allow editing self via this interface
 		if( $targetuser->isAllowed( 'edituser-exempt' ) && $targetuser->getName() != $wgUser->getName() ) {
-			$wgOut->addWikiText( wfMsg( 'edituser-exempt' ) );
+			$wgOut->addWikiMsg( 'edituser-exempt', $targetuser->getName() );
 			return;
 		}
 
