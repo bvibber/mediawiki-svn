@@ -117,7 +117,8 @@ class NamedResourceLoader {
 		global $wgExtensionMessagesFiles;
 
 		// Get the module name
-		$moduleName = end( explode('/', $modulePath ) );
+		$modulePathParts = explode('/', $modulePath );
+		$moduleName = end( $modulePathParts );
 
 		// Set the directory context for relative js/css paths
 		self::$directoryContext = $modulePath;
