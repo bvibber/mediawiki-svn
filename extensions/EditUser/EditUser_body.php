@@ -144,13 +144,14 @@ class EditUser extends SpecialPage {
 
 	
 	function makeSearchForm() {
+		$fields = array();
+		$fields['edituser-username'] = Html::input( 'username', $this->target );
+
 		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
-		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
-		$form .= Xml::element( 'label', array( 'for' => 'username' ), wfMsg( 'edituser-username' ) ) . ' ';
-		$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'username', 'id' => 'username', 'value' => $this->target ) ) . ' ';
-		$form .= Xml::element( 'input', array( 'type' => 'submit', 'name' => 'dosearch', 'value' => wfMsg( 'edituser-dosearch' ) ) );
-		$form .= Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'issearch', 'value' => '1' ) );
-		$form .= Xml::closeElement( 'form' );
+		$form = Html::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) ) .
+			Xml::buildForm( $fields, 'edituser-dosearch' ) .
+			Html::hidden( 'issearch', '1' ) .
+			Html::closeElement( 'form' );
 		return $form;
 	}
 }

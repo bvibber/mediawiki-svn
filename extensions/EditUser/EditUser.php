@@ -16,7 +16,7 @@ require_once("$IP/includes/GlobalFunctions.php");
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'EditUser',
-	'version'        => '1.6',
+	'version'        => '1.6.1',
 	'author'         => 'Ryan Schmidt',
 	'descriptionmsg' => 'edituser-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:EditUser',
