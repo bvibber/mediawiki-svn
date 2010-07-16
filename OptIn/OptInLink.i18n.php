@@ -996,6 +996,7 @@ $messages['rue'] = array(
 	'optin-leave' => 'Опустити Бета-верзію',
 	'tooltip-pt-optin-leave' => 'Выпнути новы можности',
 	'optin-feedback' => 'Назоры на Бета',
+	'tooltip-pt-optin-feedback' => 'Зохабити одозву о скусеностях з новыма функціями',
 );
 
 /** Yakut (Саха тыла)
