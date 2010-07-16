@@ -35,6 +35,10 @@ class SIOInternalObject {
 	public function getName() {
 		return $this->mMainTitle->getDBkey() . '#' . $this->mIndex;
 	}
+
+	public function getNamespace() {
+		return $this->mMainTitle->getNamespace();
+	}
 }
 
 /**
@@ -114,9 +118,8 @@ class SIOSQLStore extends SMWSQLStore2 {
 		return $ids;
 	}
 
-	function getStorageSQL( $mainPageName, $namespace, $internalObject ) {
-		$mainPageID = $this->makeSMWPageID( $mainPageName, $namespace, '' );
-		$ioID = $this->makeSMWPageID( $internalObject->getName(), $namespace, '' );
+	function getStorageSQL( $internalObject ) {
+		$ioID = $this->makeSMWPageID( $internalObject->getName(), $internalObject->getNamespace(), '' );
 		$upRels2 = array();
 		$upAtts2 = array();
 		$upText2 = array();
@@ -297,7 +300,7 @@ class SIOHandler {
 		$allText2Inserts = array();
 		$allCoordsInserts = array();
 		foreach ( self::$mInternalObjects as $internalObject ) {
-			list( $upRels2, $upAtts2, $upText2, $upCoords ) = $sioSQLStore->getStorageSQL( $pageName, $namespace, $internalObject );
+			list( $upRels2, $upAtts2, $upText2, $upCoords ) = $sioSQLStore->getStorageSQL( $internalObject );
 			$allRels2Inserts = array_merge( $allRels2Inserts, $upRels2 );
 			$allAtts2Inserts = array_merge( $allAtts2Inserts, $upAtts2 );
 			$allText2Inserts = array_merge( $allText2Inserts, $upText2 );
