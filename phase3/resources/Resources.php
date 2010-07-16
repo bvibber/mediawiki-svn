@@ -9,29 +9,12 @@ ResourceLoader::register( array(
 		'script' => 'resources/base/mw.js',
 		'base' => true,
 	),
-	'mw.config' => array(
-		'script' => 'resources/base/mw/mw.config.js',
-		'base' => true,
-	),
-	'mw.loader' => array(
-		'script' => 'resources/base/mw/mw.loader.js',
-		'base' => true,
-	),
-	'mw.msg' => array(
-		'script' => 'resources/base/mw/mw.msg.js',
-		'base' => true,
-	),
 	'mw.util' => array(
 		'script' => 'resources/base/mw/mw.util.js',
 		'base' => true,
 	),
 	'mw.debug' => array(
 		'script' => 'resources/base/mw/mw.debug.js',
-		'base' => true,
-		'debug' => true
-	),
-	'mw.log' => array(
-		'script' => 'resources/base/mw/mw.log.js',
 		'base' => true,
 		'debug' => true
 	),
