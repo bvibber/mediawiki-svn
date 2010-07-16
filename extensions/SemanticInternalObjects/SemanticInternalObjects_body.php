@@ -236,8 +236,9 @@ class SIOHandler {
 	}
 
 	public static function doSetInternal( &$parser ) {
-		$mainPageFullName = $parser->getTitle()->getText();
-		if ( ( $nsText = $parser->getTitle()->getNsText() ) != '' ) {
+		$title = $parser->getTitle();
+		$mainPageFullName = $title->getText();
+		if ( ( $nsText = $title->getNsText() ) != '' ) {
 			$mainPageFullName = $nsText . ':' . $mainPageFullName;
 		}
 
@@ -256,7 +257,7 @@ class SIOHandler {
 		$curObjectNum = self::$mInternalObjectIndex;
 		$params = func_get_args();
 		array_shift( $params ); // we already know the $parser...
-		$internalObject = new SIOInternalObject( $parser->getTitle(), $curObjectNum );
+		$internalObject = new SIOInternalObject( $title, $curObjectNum );
 		$objToPagePropName = array_shift( $params );
 		$internalObject->addPropertyAndValue( $objToPagePropName, self::$mCurPageFullName );
 		foreach ( $params as $param ) {
