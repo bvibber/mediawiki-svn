@@ -3,19 +3,19 @@
 ResourceLoader::register( array(
 	'jquery' => array(
 		'script' => 'resources/base/jquery-1.4.2.js',
-		'base' => true,
+		'raw' => true,
 	),
 	'mw' => array(
 		'script' => 'resources/base/mw.js',
-		'base' => true,
+		'raw' => true,
 	),
 	'mw.util' => array(
 		'script' => 'resources/base/mw/mw.util.js',
-		'base' => true,
+		'raw' => true,
 	),
 	'mw.debug' => array(
 		'script' => 'resources/base/mw/mw.debug.js',
-		'base' => true,
+		'raw' => true,
 		'debug' => true
 	),
 	'test' => array(

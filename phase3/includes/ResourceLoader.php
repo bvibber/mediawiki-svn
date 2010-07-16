@@ -32,8 +32,8 @@
  * 		'loader' => 'resources/foo/loader.js',
  * 		// If you need any localized messages brought into the JavaScript environment, list the keys here
  * 		'messages' => array( 'foo-hello', 'foo-goodbye' ),
- * 		// Base-only scripts are special scripts loaded in the base-package
- * 		'base' => false,
+ * 		// Raw scripts are are loaded without using the loader and can not bundle loaders, styles and messages
+ * 		'raw' => false,
  * 		// Debug-only scripts are special scripts that are only loaded when requested and while in debug mode
  * 		'debug' => false,
  * 	) );
@@ -154,7 +154,7 @@ class ResourceLoader {
 	 * 		'style' => [string: path to file, optional],
 	 * 		'loader' => [string: path to file, optional],
 	 * 		'messages' => [array: message keys, optional],
-	 * 		'base' => [boolean: include in base package only, optional],
+	 * 		'raw' => [boolean: include directly without any loading support, optional],
 	 * 		'debug' => [boolean: include in debug mode only, optional],
 	 * 	)
 	 * 
@@ -183,7 +183,7 @@ class ResourceLoader {
 			'style' => null,
 			'messages' => null,
 			'loader' => null,
-			'base' => false,
+			'raw' => false,
 			'debug' => false,
 		), $options );
 		// Validate script option
@@ -217,7 +217,6 @@ class ResourceLoader {
 	 * 		'lang' => [string: language code, optional, code of default language by default],
 	 * 		'skin' => [string: name of skin, optional, name of default skin by default],
 	 * 		'dir' => [string: 'ltr' or 'rtl', optional, direction of lang by default],
-	 * 		'base' => [boolean: true to include base-only scripts, optional, false by default],
 	 * 		'debug' => [boolean: true to include debug-only scripts, optional, false by default],
 	 * 	)
 	 */
@@ -228,89 +227,81 @@ class ResourceLoader {
 			'user' => $request->getBool( 'user', $wgUser->isLoggedIn() ),
 			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
 			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
-			'base' => $request->getBool( 'base' ),
 			'debug' => $request->getBool( 'debug' ),
 		) );
-		$modules = explode( '|', $request->getVal( 'modules' ) );
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {
 			$lang = $wgLang->factory( $parameters['lang'] );
 			$parameters['dir'] = $lang->getDir();
 		}
-		// Optionally include all base-only scripts
-		$base = array();
-		if ( $parameters['base'] ) {
-			foreach ( static::$modules as $name => $options ) {
-				if ( $options['base'] ) {
-					// Only include debug scripts in debug mode
-					if ( $options['debug'] ) {
-						if ( $parameters['debug'] ) {
-							$base[] = $name;
-						}
-					} else {
-						$base[] = $name;
+		// Get modules - filtering out any we don't know about
+		$modules = array();
+		foreach ( explode( '|', $request->getVal( 'modules' ) ) as $module ) {
+			if ( isset( static::$modules[$module] ) ) {
+				if ( static::$modules[$module]['debug'] ) {
+					if ( $parameters['debug'] ) {
+						$modules[] = $module;
 					}
+				} else {
+					$modules[] = $module;
 				}
-			}
-		}
-		// Include requested modules which have been registered - ignoring any which have not been
-		$other = array();
-		foreach ( static::$modules as $name => $options ) {
-			if ( in_array( $name, $modules ) && !in_array( $name, $base )) {
-				$other[] = $name;
 			}
 		}
 		// Use output buffering
 		ob_start();
-		// Optionally include base modules
-		if ( $parameters['base'] ) {
-			// Base modules
-			foreach ( $base as $module ) {
+		// Output raw modules first
+		foreach ( $modules as $module ) {
+			if ( static::$modules[$module]['raw'] ) {
 				readfile( static::$modules[$module]['script'] );
 			}
-			// All module loaders - keep track of which loaders have been included to prevent multiple modules with a
-			// single loader causing the loader to be included more than once
+		}
+		// Special meta-information for the 'mw' module
+		if ( in_array( 'mw', $modules ) ) {
+			// Collect all loaders
 			$loaders = array();
 			foreach ( self::$modules as $name => $options ) {
-				if ( $options['loader'] !== null && !in_array( $options['loader'], $loaders ) ) {
-					readfile( $options['loader'] );
+				if ( $options['loader'] !== null ) {
 					$loaders[] = $options['loader'];
 				}
 			}
+			// Include each loader once
+			foreach ( array_unique( $loaders ) as $loader ) {
+				readfile( $loader );
+			}
+			/*
+			 * Skin::makeGlobalVariablesScript needs to be modified so that we still output the globals for now, but also
+			 * put them into the initial payload like this:
+			 * 
+			 * 		// Sets the inital configuration
+			 * 		mw.config.set( { 'name': 'value', ... } );
+			 * 
+			 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
+			 */
 		}
-		
-		/*
-		 * Skin::makeGlobalVariablesScript needs to be modified so that we still output the globals for now, but also
-		 * put them into the initial payload like this:
-		 * 
-		 * 		// Sets the inital configuration
-		 * 		mw.config.set( { 'name': 'value', ... } );
-		 * 
-		 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
-		 */
-		
-		// Other modules
-		$blobs = static::messages( $parameters['lang'], $other );
-		foreach ( $other as $module ) {
-			// Script
-			$script = file_get_contents( static::$modules[$module]['script'] );
-			if ( !$parameters['debug'] ) {
-				$script = static::filter( 'strip-debug', $script );
-			}
-			// Style
-			$style = static::$modules[$module]['style'] ? file_get_contents( static::$modules[$module]['style'] ) : '';
-			if ( $style !== '' ) {
-				if ( $parameters['dir'] == 'rtl' ) {
-					$style = static::filter( 'flip-css', $style );
+		// Output non-raw modules
+		$blobs = static::messages( $parameters['lang'], $modules );
+		foreach ( $modules as $module ) {
+			if ( !static::$modules[$module]['raw'] ) {
+				// Script
+				$script = file_get_contents( static::$modules[$module]['script'] );
+				if ( !$parameters['debug'] ) {
+					$script = static::filter( 'strip-debug', $script );
 				}
-				$style = Xml::escapeJsString(
-					static::filter( 'minify-css', $style, static::$modules[$module]['style'] )
-				);
+				// Style
+				$style = static::$modules[$module]['style'] ? file_get_contents( static::$modules[$module]['style'] ) : '';
+				if ( $style !== '' ) {
+					if ( $parameters['dir'] == 'rtl' ) {
+						$style = static::filter( 'flip-css', $style );
+					}
+					$style = Xml::escapeJsString(
+						static::filter( 'minify-css', $style, static::$modules[$module]['style'] )
+					);
+				}
+				// Messages
+				$messages = isset( $blobs[$module] ) ? $blobs[$module] : '{}';
+				// Output
+				echo "mw.loader.implement(\n'{$module}', function() { {$script} }, '{$style}', {$messages}\n);\n";
 			}
-			// Messages
-			$messages = isset( $blobs[$module] ) ? $blobs[$module] : '{}';
-			// Output
-			echo "mw.loader.implement(\n'{$module}', function() { {$script} }, '{$style}', {$messages}\n);\n";
 		}
 		// Set headers -- when we support CSS only mode, this might change!
 		header( 'Content-Type: text/javascript' );
