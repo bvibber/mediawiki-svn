@@ -302,7 +302,7 @@ class NamedResourceLoader {
 	* Return the module name for a given resource or false if not found
 	* @param $resourceName resource to get the module for
 	*/
-	public function getModuleNameForResource( $resourceName ){
+	public static function getModuleNameForResource( $resourceName ){
 		if( isset( self::$resourceParentModuleName [ $resourceName ] ) ){
 			return self::$resourceParentModuleName [ $resourceName ];
 		} else {
