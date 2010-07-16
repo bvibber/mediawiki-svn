@@ -15,7 +15,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @author Roan Kattouw
+ * @author Roan Kattouw, Trevor Parscal
  *
  */
 
@@ -45,22 +45,10 @@ if ( $wgRequest->isPathInfoBad() ) {
 	// FIXME: Doesn't this execute the rest of the request anyway?
 	// Was taken from api.php so I guess it's maybe OK but it doesn't look good.
 }
-
-$loader = new ResourceLoader( $wgRequest->getVal( 'lang', 'en' ) );
-$loader->setUseJSMin( $wgRequest->getBool( 'jsmin', true ) );
-$loader->setUseCSSMin( $wgRequest->getBool( 'cssmin', true ) );
-$loader->setUseCSSJanus( $wgRequest->getVal( 'dir', 'ltr' ) == 'rtl' );
-$loader->setUseDebugMode( $wgRequest->getBool( 'debug', false ) );
-$moduleParam = $wgRequest->getVal( 'modules' );
-$modules = $moduleParam ? explode( '|', $moduleParam ) : array();
-foreach ( $modules as $module ) {
-	$loader->addModule( $module );
-}
-
-// TODO: Cache-Control header
-// TODO: gziphandler
-header( 'Content-Type', 'text/javascript' );
-echo $loader->getOutput();
+// Include core resource list
+require_once "$IP/resources/Resources.php";
+// Respond to resource loading request
+ResourceLoader::respond( $wgRequest );
 
 wfProfileOut( 'loader.php' );
 wfLogProfilingData();

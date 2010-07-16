@@ -15,143 +15,268 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @author Roan Kattouw
- *
+ * @author Roan Kattouw, Trevor Parscal
  */
 
-/**
- * TODO: Class description
+/*
+ * Dynamic JavaScript and CSS resource loading system
+ * 
+ * @example
+ * 	// Registers a module with the resource loading system
+ * 	ResourceLoader::register( 'foo', array(
+ * 		// At minimum you must have a script file
+ * 		'script' => 'resources/foo/foo.js',
+ * 		// Optionally you can have a style file as well
+ * 		'style' => 'resources/foo/foo.css',
+ * 		// Only needed if you are doing something fancy with your loader, otherwise one will be generated for you
+ * 		'loader' => 'resources/foo/loader.js',
+ * 		// If you need any localized messages brought into the JavaScript environment, list the keys here
+ * 		'messages' => array( 'foo-hello', 'foo-goodbye' ),
+ * 		// Base-only scripts are special scripts loaded in the base-package
+ * 		'base' => false,
+ * 		// Debug-only scripts are special scripts that are only loaded when requested and while in debug mode
+ * 		'debug' => false,
+ * 	) );
+ * @example
+ * 	// Responds to a resource loading request
+ * 	ResourceLoader::respond( $wgRequest );
  */
 class ResourceLoader {
+	
+	/* Protected Static Members */
+	
+	protected static $modules = array();
+	
+	/* Protected Static Methods */
+	
 	/**
-	 * List of core scripts to include if the "core" module is specified - it's like a bucket
-	 */
-	private static $coreScripts = array(
-		'jquery' => 'resources/core/jquery-1.4.2.js',
-		'mw' => 'resources/core/mw.js',
-		'mw.config' => 'resources/core/mw/mw.config.js',
-		'mw.loader' => 'resources/core/mw/mw.loader.js',
-		'mw.msg' => 'resources/core/mw/mw.msg.js',
-		'mw.util' => 'resources/core/mw/mw.util.js',
-	);
-	private static $debugScripts = array(
-		'mw.debug' => 'resources/core/mw/mw.debug.js',
-		'mw.log' => 'resources/core/mw/mw.log.js',
-	);
-	/**
-	 * List of modules.
+	 * Runs text through a filter, caching the filtered result for future calls
 	 * 
-	 * Format:
-	 *	'modulename' => array(
-	 * 		'script' => 'resources/foo/bar.js',
-	 * 		'loader' => 'resources/foo/loader.js',
-	 * 		'style' => 'resources/foo/bar.css',
-	 * 		'messages' => array( 'messagekey1', 'messagekey2' )
-	 * 	);
-	 * 'script' and 'loader' are mandatory.
+	 * @param string $filter name of filter to run
+	 * @param string $data text to filter, such as JavaScript or CSS text
+	 * @param string $file path to file being filtered, (optional: only required for CSS to resolve paths)
+	 * @return string filtered data
 	 */
-	public static $modules = array(
-		'test' => array(
-			'script' => 'resources/test/test.js',
-			'loader' => 'resources/test/loader.js',
-			'style' => 'resources/test/test.css',
-		),
-		'foo' => array(
-			'script' => 'resources/test/foo.js',
-			'loader' => 'resources/test/loader.js',
-			'style' => 'resources/test/foo.css',
-		),
-		'bar' => array(
-			'script' => 'resources/test/bar.js',
-			'loader' => 'resources/test/loader.js',
-			'style' => 'resources/test/bar.css',
-		),
-		'buz' => array(
-			'script' => 'resources/test/buz.js',
-			'loader' => 'resources/test/loader.js',
-			'style' => 'resources/test/buz.css',
-		),
-		'baz' => array(
-			'script' => 'resources/test/baz.js',
-			'loader' => 'resources/test/loader.js',
-			'style' => 'resources/test/baz.css',
-		),
-		'wikibits' => array(
-			'script' => 'skins/common/wikibits.js',
-			'loader' => 'skins/common/loader.js',
-		),
-	);
-	
-	private $loadedModules = array();
-	private $includeCore = false;
-	
-	private $useJSMin = false;
-	private $useCSSMin = true;
-	private $useCSSJanus = true;
-	private $useDebugMode = false;
-	
-	private $lang;
-	
-	public function __construct( $lang ) {
-		$this->lang = $lang;
+	protected static function filter( $filter, $data, $file = null ) {
+		global $wgMemc;
+		$key = wfMemcKey( 'resourceloader', $filter, md5( $data ) );
+		$cached = $wgMemc->get( $key );
+		if ( $cached !== false && $cached !== null ) {
+			return $cached;
+		}
+		switch ( $filter ) {
+			case 'minify-js':
+				$result = JSMin::minify( $data );
+				break;
+			case 'minify-css':
+				$result = Minify_CSS::minify( $data, array( 'currentDir' => dirname( $file ), 'docRoot' => '.' ) );
+				break;
+			case 'flip-css':
+				$cssJanus = new CSSJanus();
+				$result = $cssJanus::transform( $data, true, false );
+				break;
+			case 'strip-debug':
+				$result = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $data );
+				break;
+			default:
+				// Don't cache anything, just pass right through
+				return $data;
+		}
+		$wgMemc->set( $key, $result );
+		return $result;
 	}
+	/**
+	 * Get a list of JSON encoded message lists for a set of modules, automatically caching JSON blobs in the database
+	 * 
+	 * @param string $lang language code
+	 * @param array $modules module names
+	 * @return array JSON objects containing message keys and values for each module, keyed by module name
+	 */
+	protected static function messages( $lang, $modules ) {
+		// TODO: Invalidate blob when module touched
+		if ( empty( $modules ) ) {
+			return array();
+		}
+		// Try getting from the DB first
+		$blobs = array();
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select(
+			'msg_resource',
+			array( 'mr_blob', 'mr_resource' ),
+			array( 'mr_resource' => $modules, 'mr_lang' => $lang ),
+			__METHOD__
+		);
+		foreach ( $result as $row ) {
+			$blobs[$row->mr_resource] = $row->mr_blob;
+		}
+		// Generate blobs for any missing modules and store them in the DB
+		$missing = array_diff( $modules, array_keys( $blobs ) );
+		foreach ( $missing as $module ) {
+			// Build message blob for module messages
+			$messages = isset( static::$modules[$module]['messages'] ) ?
+				array_keys( static::$modules[$module]['messages'] ) : false;
+			if ( $messages ) {
+				foreach ( ResourceLoader::$modules[$module]['messages'] as $key ) {
+					$messages[$encKey] = wfMsgExt( $key, array( 'language' => $lang ) );
+				}
+				$blob = json_encode( $messages );
+				// Store message blob
+				$dbw = wfGetDb( DB_MASTER );
+				$dbw->replace(
+					'msg_resource',
+					array( array( 'mr_lang', 'mr_resource' ) ),
+					array( array(
+						'mr_lang' => $lang,
+						'mr_module' => $module,
+						'mr_blob' => $blob,
+						'mr_timestamp' => wfTimestampNow(),
+					) )
+				);
+				// Add message blob to result
+				$blobs[$module] = $blob;
+			}
+		}
+		return $blobs;
+	}
+	
+	/* Static Methods */
 	
 	/**
-	 * Add a module to the output. This includes the module's
-	 * JS itself, its style and its messages.
-	 * @param $module string Module name
+	 * Registers a module with the ResourceLoader system
+	 * 
+	 * @param mixed $module string of name of module or array of name/options pairs
+	 * @param array $options module options (optional when using multiple-registration calling style)
+	 * @return boolean false if there were any errors, in which case one or more modules were not registered
+	 * 
+	 * $options format:
+	 * 	array(
+	 * 		'script' => [string: path to file],
+	 * 		'style' => [string: path to file, optional],
+	 * 		'loader' => [string: path to file, optional],
+	 * 		'messages' => [array: message keys, optional],
+	 * 		'base' => [boolean: include in base package only, optional],
+	 * 		'debug' => [boolean: include in debug mode only, optional],
+	 * 	)
+	 * 
+	 * @todo We need much more clever error reporting, not just in detailing what happened, but in bringing errors to
+	 * the client in a way that they can easily see them if they want to, such as by using FireBug
 	 */
-	public function addModule( $module ) {
-		if ( $module == 'core' ) {
-			$this->includeCore = true;
-		} else if ( isset( self::$modules[$module] ) ) {
-			$this->loadedModules[] = $module;
-		} else {
-			// We have a problem, they've asked for something we don't have!
-		}
-	}
-	
-	public function setUseJSMin( $use ) {
-		$this->useJSMin = $use;
-	}
-	
-	public function setUseCSSMin( $use ) {
-		$this->useCSSMin = $use;
-	}
-	
-	public function setUseCSSJanus( $use ) {
-		$this->useCSSJanus = $use;
-	}
-	
-	public function setUseDebugMode( $use ) {
-		$this->useDebugMode = $use;
-	}
-	
-	public function getOutput() {
-		// Because these are keyed by module, in the case that more than one module asked for the same script only the
-		// first will end up being registered - the client loader can't handle multiple modules per implementation yet,
-		// so this is fine, but causes silent failure it strange abusive cases
-		$this->loadedModules = array_unique( $this->loadedModules );
-		$retval = '';
-		
-		if ( $this->includeCore ) {
-			// TODO: file_get_contents() errors?
-			// TODO: CACHING!
-			foreach ( self::$coreScripts as $script ) {
-				if ( file_exists( $script ) ) {
-					$retval .= file_get_contents( $script );
+	public static function register( $module, $options = array() ) {
+		// Allow multiple modules to be registered in one call
+		if ( is_array( $module ) && empty( $options ) ) {
+			$success = true;
+			foreach ( $module as $name => $options ) {
+				if ( !static::register( $name, $options ) ) {
+					$success = false;
 				}
 			}
-			if ( $this->useDebugMode ) {
-				// TODO: file_get_contents() errors?
-				// TODO: CACHING!
-				foreach ( self::$debugScripts as $script ) {
-					if ( file_exists( $script ) ) {
-						$retval .= file_get_contents( $script );
+			return $success;
+		}
+		// Disallow duplicate registrations
+		if ( isset( static::$modules[$module] ) ) {
+			// A module has already been registered by this name
+			return false;
+		}
+		// Always include a set of default options in each registration - more data, less isset() checks
+		$options = array_merge( array(
+			'script' => null,
+			'style' => null,
+			'messages' => null,
+			'loader' => null,
+			'base' => false,
+			'debug' => false,
+		), $options );
+		// Validate script option
+		if ( !is_string( $options['script'] ) ) {
+			// Module does not include a script
+			return false;
+		}
+		if ( !file_exists( $options['script'] ) ) {
+			// Script file does not exist
+			return false;
+		}
+		if ( $options['loader'] !== null && !file_exists( $options['loader'] ) ) {
+			// Loader file does not exist
+			return false;
+		}
+		if ( $options['style'] !== null && !file_exists( $options['style'] ) ) {
+			// Style file does not exist
+			return false;
+		}
+		static::$modules[$module] = $options;
+	}
+	/*
+	 * Outputs a response to a resource load-request, including a content-type header
+	 * 
+	 * @param array $modules module names to include in the request
+	 * @param array $options options which affect the content of the response (optional)
+	 * 
+	 * $options format:
+	 * 	array(
+	 * 		'user' => [boolean: true for logged in, false for anon, optional, state of current user by default],
+	 * 		'lang' => [string: language code, optional, code of default language by default],
+	 * 		'skin' => [string: name of skin, optional, name of default skin by default],
+	 * 		'dir' => [string: 'ltr' or 'rtl', optional, direction of lang by default],
+	 * 		'base' => [boolean: true to include base-only scripts, optional, false by default],
+	 * 		'debug' => [boolean: true to include debug-only scripts, optional, false by default],
+	 * 	)
+	 */
+	public static function respond( WebRequest $request ) {
+		global $wgUser, $wgLang, $wgDefaultSkin;
+		// Fallback on system settings
+		$parameters = array_merge( array(
+			'user' => $request->getBool( 'user', $wgUser->isLoggedIn() ),
+			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
+			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
+			'base' => $request->getBool( 'base' ),
+			'debug' => $request->getBool( 'debug' ),
+		) );
+		$modules = explode( '|', $request->getVal( 'modules' ) );
+		// Get the direction from the requested language
+		if ( !isset( $parameters['dir'] ) ) {
+			$lang = $wgLang->factory( $parameters['lang'] );
+			$parameters['dir'] = $lang->getDir();
+		}
+		// Optionally include all base-only scripts
+		$base = array();
+		if ( $parameters['base'] ) {
+			foreach ( static::$modules as $name => $options ) {
+				if ( $options['base'] ) {
+					// Only include debug scripts in debug mode
+					if ( $options['debug'] ) {
+						if ( $parameters['debug'] ) {
+							$base[] = $name;
+						}
+					} else {
+						$base[] = $name;
 					}
 				}
 			}
-			$retval .= $this->getLoaderJS();
+		}
+		// Include requested modules which have been registered - ignoring any which have not been
+		$other = array();
+		foreach ( static::$modules as $name => $options ) {
+			if ( in_array( $name, $modules ) && !in_array( $name, $base )) {
+				$other[] = $name;
+			}
+		}
+		// Use output buffering
+		ob_start();
+		// Optionally include base modules
+		if ( $parameters['base'] ) {
+			// Base modules
+			foreach ( $base as $module ) {
+				readfile( static::$modules[$module]['script'] );
+			}
+			// All module loaders - keep track of which loaders have been included to prevent multiple modules with a
+			// single loader causing the loader to be included more than once
+			$loaders = array();
+			foreach ( self::$modules as $name => $options ) {
+				if ( $options['loader'] !== null && !in_array( $options['loader'], $loaders ) ) {
+					readfile( $options['loader'] );
+					$loaders[] = $options['loader'];
+				}
+			}
 		}
 		
 		/*
@@ -164,166 +289,36 @@ class ResourceLoader {
 		 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
 		 */
 		
-		// Get messages in one go
-		$blobs = MessageBlobStore::get( $this->lang, $this->loadedModules );
-		
-		// TODO: file_get_contents() errors?
-		// TODO: CACHING!
-		foreach ( $this->loadedModules as $module ) {
-			$mod = self::$modules[$module];
-			$script = $style = '';
-			$messages = isset( $blobs[$module] ) ? $blobs[$module] : '';
-			if ( file_exists( $mod['script'] ) ) {
-				$script = file_get_contents( $mod['script'] );
+		// Other modules
+		$blobs = static::messages( $parameters['lang'], $other );
+		foreach ( $other as $module ) {
+			// Script
+			$script = file_get_contents( static::$modules[$module]['script'] );
+			if ( !$parameters['debug'] ) {
+				$script = static::filter( 'strip-debug', $script );
 			}
-			if ( !$this->useDebugMode ) {
-				$script = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $script );
-			}
-			if ( isset( $mod['style'] ) && file_exists( $mod['style'] ) ) {
-				$css = file_get_contents( $mod['style'] );
-				if ( $this->useCSSJanus ) {
-					$css = $this->cssJanus( $css );
+			// Style
+			$style = static::$modules[$module]['style'] ? file_get_contents( static::$modules[$module]['style'] ) : '';
+			if ( $style !== '' ) {
+				if ( $parameters['dir'] == 'rtl' ) {
+					$style = static::filter( 'flip-css', $style );
 				}
-				if ( $this->useCSSMin ) {
-					$css = $this->cssMin( $css, $mod['style'] );
-				}
-				$style = Xml::escapeJsString( $css );
+				$style = Xml::escapeJsString(
+					static::filter( 'minify-css', $style, static::$modules[$module]['style'] )
+				);
 			}
-			
-			$retval .= "mw.loader.implement( '$module', function() { $script }, '$style', { $messages } );\n";
+			// Messages
+			$messages = isset( $blobs[$module] ) ? $blobs[$module] : '{}';
+			// Output
+			echo "mw.loader.implement( '{$module}', function() { {$script} }, '{$style}', {$messages} );\n";
 		}
-		
-		if ( !$this->useDebugMode && $this->useJSMin ) {
-			$retval = $this->jsMin( $retval );
+		// Set headers -- when we support CSS only mode, this might change!
+		header( 'Content-Type: text/javascript' );
+		// Final processing
+		if ( $parameters['debug'] ) {
+			ob_end_flush();
+		} else {
+			echo static::filter( 'minify-js', ob_get_clean() );
 		}
-		return $retval;
-	}
-	
-	public function getLoaderJS() {
-		$retval = '';
-		// Only add each file once (just in case there are multiple modules in a single loader, which is common)
-		$loaders = array();
-		foreach ( self::$modules as $name => $module ) {
-			// TODO: file_get_contents() errors?
-			// TODO: CACHING!
-			if ( !in_array( $module['loader'], $loaders ) && file_exists( $module['loader'] ) ) {
-				$retval .= file_get_contents( $module['loader'] );
-				$loaders[] = $module['loader'];
-			}
-		}
-		// FIXME: Duplicated; centralize in doJSTransforms() or something?
-		if ( $this->useJSMin ) {
-			$retval = $this->jsMin( $retval );
-		}
-		return $retval;
-	}
-	
-	public function jsMin( $js ) {
-		global $wgMemc;
-		$key = wfMemcKey( 'resourceloader', 'jsmin', md5( $js ) );
-		$cached = $wgMemc->get( $key );
-		if ( $cached !== false && $cached !== null ) {
-			return $cached;
-		}
-		$retval = JSMin::minify( $js );
-		$wgMemc->set( $key, $retval );
-		return $retval;
-	}
-	
-	public function cssMin( $css, $file ) {
-		global $wgMemc;
-		$key = wfMemcKey( 'resourceloader', 'cssmin', md5( $css ) );
-		$cached = $wgMemc->get( $key );
-		if( $cached !== false && $cached !== null ) {
-			return $cached;
-		}
-		// TODO: Test how well this path rewriting stuff works with various setups
-		$retval = Minify_CSS::minify( $css, array( 'currentDir' => dirname( $file ), 'docRoot' => '.' ) ); 
-		$wgMemc->set( $key, $retval );
-		return $retval;
-	}
-	
-	public function cssJanus( $css ) {
-		global $wgMemc;
-		$key = wfMemcKey( 'resourceloader', 'cssjanus', md5( $css ) );
-		$cached = $wgMemc->get( $key );
-		if ( $cached !== false && $cached !== null ) {
-			return $cached;
-		}
-		$retval = $css; // TODO: Actually flip
-		$wgMemc->set( $key, $retval );
-		return $retval;
-	}
-}
-
-class MessageBlobStore {
-	/**
-	 * Get the message blobs for a set of modules
-	 * @param $lang string Language code
-	 * @param $modules array Array of module names
-	 * @return array An array of incomplete JSON objects (i.e. without the {} ) containing messages keys and their values. Array keys are module names.
-	 */
-	public static function get( $lang, $modules ) {
-		// TODO: Invalidate blob when module touched
-		if ( !count( $modules ) ) {
-			return array();
-		}
-		// Try getting from the DB first
-		$blobs = self::getFromDB( $lang, $modules );
-		
-		// Generate blobs for any missing modules and store them in the DB
-		$missing = array_diff( $modules, array_keys( $blobs ) );
-		foreach ( $missing as $module ) {
-			$blob = self::generateMessageBlob( $lang, $module );
-			if ( $blob ) {
-				self::set( $lang, $module, $blob );
-				$blobs[$module] = $blob;
-			}
-		}
-		return $blobs;
-	}
-	
-	/**
-	 * Set the message blob for a given module in a given language
-	 * @param $lang string Language code
-	 * @param $module string Module name
-	 * @param $blob string Incomplete JSON object, see get()
-	 */
-	public static function set( $lang, $module, $blob ) {
-		$dbw = wfGetDb( DB_MASTER );
-		$dbw->replace( 'msg_resource', array( array( 'mr_lang', 'mr_resource' ) ),
-			array( array(
-				'mr_lang' => $lang,
-				'mr_module' => $module,
-				'mr_blob' => $blob,
-				'mr_timestamp' => wfTimestampNow(),
-			) )
-		);
-	}
-	
-	private static function getFromDB( $lang, $modules ) {
-		$retval = array();
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'msg_resource', array( 'mr_blob', 'mr_resource' ),
-			array( 'mr_resource' => $modules, 'mr_lang' => $lang ),
-			__METHOD__
-		);
-		foreach ( $res as $row ) {
-			$retval[$row->mr_resource] = $row->mr_blob;
-		}
-		return $retval;
-	}
-	
-	private static function generateMessageBlob( $lang, $module ) {
-		if ( !isset ( ResourceLoader::$modules[$module]['messages'] ) ) {
-			return false;
-		}
-		$messages = array();
-		foreach ( ResourceLoader::$modules[$module]['messages'] as $key ) {
-			$encKey = Xml::escapeJsString( $key );
-			$encValue = Xml::escapeJsString( wfMsg( $key ) ); // TODO: Use something rawer than wfMsg()?
-			$messages[] = "'$encKey': '$encValue'";
-		}
-		return implode( ",", $messages );
 	}
 }
