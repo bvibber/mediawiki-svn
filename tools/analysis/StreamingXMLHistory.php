@@ -119,7 +119,8 @@ class StreamingXMLHistoryParser{
 			"Revision MD5",
 			"new?",
 			"edit size",
-			"net size change"
+			"net size change",
+			"anonymous?"
 		);
 		fputcsv($this->outputFile, $csvData);
 	}
@@ -174,7 +175,8 @@ class StreamingXMLHistoryParser{
 			$md5,
 			$isNew,
 			$textSize,
-			$textSize - $this->oldSize	
+			$textSize - $this->oldSize,
+			isset($revision->contributor->username)? "no":"yes"
 		);
 		$this->oldSize = $textSize;
 		fputcsv($this->outputFile, $csvData);
