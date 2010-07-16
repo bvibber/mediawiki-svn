@@ -40,6 +40,10 @@ window.mw.loader = new ( function() {
 	 * @throws Error if circular reference is detected
 	 */
 	function needs( module ) {
+		if ( !( module in registry ) ) {
+			// Undefined modules have no needs
+			return [];
+		}
 		var resolved = [];
 		var unresolved = [];
 		if ( arguments.length === 3 ) {
@@ -158,7 +162,7 @@ window.mw.loader = new ( function() {
 		function append( modules ) {
 			for ( m in modules ) {
 				// Prevent requesting modules which are loading, loaded or ready
-				if ( registry[modules[m]].state == 'registered' || registry[modules[m]].state == 'undefined' ) {
+				if ( modules[m] in registry && registry[modules[m]].state == 'registered' ) {
 					// Since the batch can live between calls to work until document ready, we need to make sure we aren't
 					// making a duplicate entry
 					if ( batch.indexOf( modules[m] ) == -1 ) {

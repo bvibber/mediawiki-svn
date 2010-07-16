@@ -310,7 +310,7 @@ class ResourceLoader {
 			// Messages
 			$messages = isset( $blobs[$module] ) ? $blobs[$module] : '{}';
 			// Output
-			echo "mw.loader.implement( '{$module}', function() { {$script} }, '{$style}', {$messages} );\n";
+			echo "mw.loader.implement(\n'{$module}', function() { {$script} }, '{$style}', {$messages}\n);\n";
 		}
 		// Set headers -- when we support CSS only mode, this might change!
 		header( 'Content-Type: text/javascript' );
