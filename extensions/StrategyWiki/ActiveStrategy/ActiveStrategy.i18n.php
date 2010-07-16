@@ -299,6 +299,13 @@ $messages['pms'] = array(
 	'nedits' => '$1 {{PLURAL:$1|modìfica|modìfiche}}',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'nedits' => '$1 {{PLURAL:$1|سمون|سمونونه}}',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Lijealso

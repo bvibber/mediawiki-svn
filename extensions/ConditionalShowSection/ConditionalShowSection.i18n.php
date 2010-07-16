@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'conditionalshowsection-desc' => '{{desc}}',
 );
 
+/** Kabardian (Cyrillic) ()
+ * @author Тамэ Балъкъэрхэ
+ */
+$messages['kbd-cyrl'] = array(
+	'conditionalshowsection-desc' => 'Тег cshow хетхэ, викитхыгъэм и къудамэр гъэпщкIу/къэгъэлъагъуэ нэпцIым щхьа',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

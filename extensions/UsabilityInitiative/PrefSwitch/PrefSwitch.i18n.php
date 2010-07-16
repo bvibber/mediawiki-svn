@@ -1514,6 +1514,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'prefswitch' => 'Baskulo por preferencoj de Uzebleco Initiato',
 	'prefswitch-desc' => 'Permesi al uzantoj ŝanĝi arojn da preferencoj',
+	'prefswitch-jswarning' => 'Memoru ke kun la etosŝanĝo , vi devos kopii vian [[User:$1/$2.js|$2 ĴavaSkriptaĵon]] al [[{{ns:user}}:$1/vector.js]]<!-- aŭ [[{{ns:user}}:$1/common.js]] --> por ke ĝi daŭre funkciu.',
+	'prefswitch-csswarning' => 'Via [[User:$1/$2.css|personigita $2-stilo]] ne plu aplikiĝos. Vi povas aldoni personigitajn CSS-ojn por vector-etoso en [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Jes',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Malŝalti novajn funkciojn',
@@ -1579,6 +1581,8 @@ Ni penis faciligi aferojn por niaj uzantoj. Ni ĝojas provizi iujn novajn plibon
 * '''Serĉaj plibonigoj:''' Ni plibonigis serĉsugestojn por pli rapide direkti vin al la paĝo kiun vi serĉas.
 * '''Aliaj novaj funkcioj:''' Ni ankaŭ aldonis tabelan asistanton, por faciligi kreadon de tabeloj, kaj funkcio por anstataŭigi tekston en paĝoj.
 * '''Vikipedia puzlo-globo''': Ni ĝisdatigis la puzloglobon. Legu plu ĉe la [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Vikimedia-blogo].",
+	'prefswitch-main-logged-changes' => "* La '''{{int:watch}}-klapeto''' estas nun stelo.
+* La'''{{int:move}}-klapeto''' estas nun en la malfadebla strio apud la serĉa baro.",
 	'prefswitch-main-feedback' => '===Reagoj?===
 Ni ŝatus aŭdi pri vi. Bonvolu viziti nian [[$1|reagopaĝon]] aŭ se vi interesiĝas pri niaj nunaj penoj por plibonigi la softvaron, vizitu nian [http://usability.wikimedia.org uzeblecovikion] por pliaj informoj.',
 	'prefswitch-main-anon' => '===Revenigu min  al la antaŭa versio===
@@ -3666,6 +3670,14 @@ $messages['ml'] = array(
 	'prefswitch-feedbackpage' => 'Project:ഉപയോക്തൃ അനുഭവ അഭിപ്രായങ്ങൾ',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'prefswitch-survey-true' => 'होय',
+	'prefswitch-survey-false' => 'नाही',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
@@ -4731,8 +4743,52 @@ $messages['rue'] = array(
 	'prefswitch-success-feedback' => 'Ваш назор быв одосланый.',
 	'prefswitch-return' => '<hr style="clear:both">
 Вернути ся до <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-rue.png|401px|]]
+|-
+| Снимок образовкы з новым навіґачным інтерфейсом<small>[[Media:VectorNavigation-rue.png|(звекшыти)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-rue.png|401px|]]
+|-
+| Снимок образовкы з основным едітачным інтерфейсом <small>[[Media:VectorEditorBasic-rue.png|(звекшыти)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-rue.png|401px|]]
+|-
+| Снимок образовкы з новым діалоґом про вкладаня одказів
+|}
+|}
+Тім надації Вікімедія про хосновательску приветливость працёвав з доброволниками з комуніты, жебы упростив працю. Тїшыме ся, же ся з вами можеме подїлити о пару вылїпшінь включавчі нового нового взгляду і упростеной едітації. Цілём тых змін є злегчіти зачаткы новачком і суть заложены на нашых [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study тестох з мінулого року]. Здоконалюваня хосновательности нашых проєктів є пріорітов надації Вікімедія і в будучности будеме нукати далшы іновації. Детайлы можете найти во [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ вістї на блогу Вікімедія].
+
+=== Што сьме змінили === 
+* '''Навіґація:''' Маєме лїпшу оріентацію про чітаня і едітацію сторінок. Заложкы во верхній части сторінкы нынї ясно зображують, ці собі смотрите статю ці діскузію а ці сторінку чітаєте або едітуєте.
+* '''Вылїпшіня панела інштрументів:''' Переорґанізовали сьме едітачный панел інштрументів, жебы ся лїпше хосновав. Форматованя сторінок є теперь простїше і інтуітівнїше.
+* '''Проводник окдазами:''' Простїше хоснорівательный інштрумент вам поможе придавати одказы на іншы статї вікі, як і на екстерны сторінкы.
+* '''Вылїпшіня выглядаваня:''' Злїпшыли сьме нашептавач у выглядаваня, жебы сьте ся скорше дістали на сторінку, котру глядаєте.
+* '''Далшы новы можности:''' Тыж сьме завели проводника таблицёв, абы было створюваня таблиць легше, і тыж функцію выглядаваня і нагороджуваня про простїшу едітацію сторінок.
+* '''Лоґо Вікіпедії:''' Модернізовали сьме наше лоґо. Веце ся дознаєте на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блоґу Вікімедія].",
 	'prefswitch-main-logged-changes' => "* Намісто '''заложкы {{int:watch}}''' є од теперь звіздочка.
 * '''Заложка {{int:move}}''' є нынї в одкрывачім меню піля выглядаваня.",
+	'prefswitch-main-feedback' => '===Коментарї?===
+Увитаєме вашы назоры. Навщівте нашу [[$1|сторінку про коментарї]] або пок вас інтересує наше довгочасове усиля о здоконалёваня софтверу, можете найти веце інформацій на [http://usability.wikimedia.org вікі проєктї хосновательности].',
+	'prefswitch-main-anon' => '===Хочу назад===
+Кідь хочете, можете собі [$1 выпнути новы функції]. Перше ся але будете мусити приголосити або реґістровати.',
+	'prefswitch-main-on' => '=== Хочу назад! === 
+[$2 Кликните гев, кідь хочете выпнути новы функції].',
+	'prefswitch-main-off' => '=== Спробуйте їх! === 
+Кідь собі хочете спробовати новы функції, просиме [$1 кликните гев].',
+	'prefswitch-survey-intro-feedback' => 'Потїшыме ся, кідь ся дознаме ваш назор.
+Просиме, выповните формулар ниже а потім кликните на „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“.',
+	'prefswitch-survey-intro-off' => 'Дякуєме за спробованя нашых новых функцій.
+Хочете-ли нам помочі злїпшыти їх, выповните неповинный формулар ниже а потом кликните на „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“.',
+	'prefswitch-feedbackpage' => 'Project: Одозва скусености хоснователя',
 );
 
 /** Yakut (Саха тыла)

@@ -3356,9 +3356,9 @@ Illos deberea solmente esser usate in articulos in le spatio de nomines Wikilog.
 	'wikilog-comment-invalid-name' => 'Le nomine fornite es invalide.',
 	'wikilog-no-such-article' => 'Le articulo Wikilog requestate non existe.',
 	'wikilog-reading-draft' => 'Iste articulo Wikilog es un version provisori, illo non ha ancora essite publicate.',
-	'wikilog-posting-anonymously' => 'Tu non es actualmente identificate;
+	'wikilog-posting-anonymously' => 'Al momento tu non es authenticate;
 tu commento essera publicate anonymemente, identificate per tu adresse de connexion a Internet.
-Tu deberea o fornir un pseudonymo ci supra pro identificar tu commento, o $1 de sorta que le commento sia attribuite correctemente.',
+Tu deberea o fornir un pseudonymo hic supra pro identificar tu commento, o $1 de sorta que le commento sia attribuite correctemente.',
 	'wikilog-anonymous-moderated' => 'Le commento submittite non essera immediatemente visibile in iste pagina;
 illo apparera post esser revidite per un moderator.',
 	'wikilog-post-comment' => 'Publicar un nove commento',
@@ -5813,7 +5813,20 @@ $messages['rue'] = array(
 	'wikilog-no-comments' => 'жадны коментарї',
 	'wikilog-has-comments' => '$1 {{PLURAL:$1|коментарь|коментарї|коментарів}}',
 	'wikilog-summary-uncategorized' => 'Некатеґорізованы',
+	'wikilog-comment-permalink' => '$1 о $2',
+	'wikilog-comment-note-item' => 'послане $1',
+	'wikilog-comment-note-edited' => 'послїдня едітація $1 о $2',
 	'wikilog-comment-anonsig' => '$3 (анонім)',
+	'wikilog-comment-pending' => 'Тот коментарь чекає на схвалїня.',
+	'wikilog-comment-deleted' => 'Тот коментарь быв змазаный.',
+	'wikilog-comment-omitted-x' => 'Коментарь посланый (#$1).',
+	'wikilog-comment-autosumm' => 'Новый коментарь од $1: $2',
+	'wikilog-reply-to-comment' => 'Одповісти на тот коментарь',
+	'wikilog-comment-page' => 'Перейти на сторінку того коментаря',
+	'wikilog-comment-edit' => 'Змінити тот коментарь',
+	'wikilog-comment-delete' => 'Змазати тот коментарь',
+	'wikilog-comment-history' => 'Видїти історію коментаря',
+	'wikilog-comment-approve' => 'Схвалити тот коментарь (такой выконане )',
 	'wikilog-title-comments' => 'Коментарї - $1',
 	'wikilog-post-comment' => 'Послати новый коментарь',
 	'wikilog-post-reply' => 'Послати нову одповідь',

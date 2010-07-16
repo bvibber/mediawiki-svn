@@ -41,6 +41,14 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'adminlinks_users' => 'Pamuruk',
+	'adminlinks_createuser' => 'Ulah pamuruk',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

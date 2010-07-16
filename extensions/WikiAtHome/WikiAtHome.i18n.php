@@ -945,7 +945,7 @@ $messages['ia'] = array(
 	'wah-start-on-visit' => 'Mitter Wiki@Home in action cata vice que io visita iste sito.',
 	'wah-jobs-while-away' => 'Executar cargas solmente quando io ha essite absente de mi navigator durante 20 minutas.',
 	'wah-nojobfound' => 'Nulle carga trovate. Reprobara in $1.',
-	'wah-notoken-login' => 'Es tu identificate? Si non, per favor primo aperi un session.',
+	'wah-notoken-login' => 'Es tu authenticate? Si non, per favor aperi un session primo.',
 	'wah-apioff' => 'Le API de Wiki@Home pare esser inactive. Per favor contacta le administrator del wiki.',
 	'wah-doing-job' => 'Carga: <i>$1</i> in: <i>$2</i>',
 	'wah-downloading' => 'Discargamento del file <i>$1%</i> complete',
@@ -1418,6 +1418,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wah-short-audio' => '$1 غږيزه دوتنه، $2',
+	'wah-short-video' => '$1 ويډيويي دوتنې، $2',
 	'wah-menu-jobs' => 'دندې',
 	'wah-menu-pref' => 'غوره توبونه',
 );

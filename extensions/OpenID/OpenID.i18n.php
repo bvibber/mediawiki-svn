@@ -1706,6 +1706,7 @@ Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Peter17
  * @author Zetud
  */
 $messages['fr'] = array(
@@ -1748,7 +1749,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidchooseauto' => 'Un nom créé automatiquement ($1)',
 	'openidchoosemanual' => 'Un nom de votre choix :',
 	'openidchooseexisting' => 'Un compte existant sur ce wiki',
-	'openidchooseusername' => "nom d'utilisateur :",
+	'openidchooseusername' => 'Nom d’utilisateur :',
 	'openidchoosepassword' => 'mot de passe :',
 	'openidconvertinstructions' => 'Ce formulaire vous permet de changer votre compte utilisateur pour utiliser une adresse OpenID ou ajouter des adresses OpenID supplémentaires.',
 	'openidconvertoraddmoreids' => 'Convertir vers OpenID ou ajouter une autre adresse OpenID',
@@ -2514,7 +2515,7 @@ tu pote seliger un del optiones in basso.',
 	'openidconvertsuccesstext' => 'Tu ha convertite con successo tu OpenID a $1.',
 	'openidconvertyourstext' => 'Isto es ja tu OpenID.',
 	'openidconvertothertext' => 'Isto es le OpenID de alcuno altere.',
-	'openidalreadyloggedin' => "'''Tu es ja identificate, $1!'''
+	'openidalreadyloggedin' => "'''Tu es jam authenticate, $1!'''
 
 Si tu vole usar OpenID pro aperir un session in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto pro usar OpenID]].",
 	'openidnousername' => 'Nulle nomine de usator specificate.',
@@ -2538,7 +2539,7 @@ Tu non potera plus aperir un session con iste OpenID.',
 	'openiddelete-button' => 'Confirmar',
 	'openiddeleteerrornopassword' => 'Tu non pote deler tote tu OpenIDs proque tu conto non ha un contrasigno.
 Il esserea impossibile aperir un session sin OpenID.',
-	'openiddeleteerroropenidonly' => 'Tu non pote deler tote tu OpenIDs proque tu ha le permission de identificar te solmente con OpenID.
+	'openiddeleteerroropenidonly' => 'Tu non pote deler tote tu OpenIDs proque tu ha le permission de authenticar te solmente con OpenID.
 Il esserea impossibile aperir un session sin OpenID.',
 	'openiddelete-sucess' => 'Le OpenID ha essite removite de tu conto con successo.',
 	'openiddelete-error' => 'Un error occurreva durante le remotion del OpenID de tu conto.',

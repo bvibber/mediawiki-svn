@@ -427,6 +427,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Grondin
  * @author IAlex
+ * @author Peter17
  * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
@@ -435,7 +436,7 @@ $messages['fr'] = array(
 	'countedits' => 'Compteur de modifications',
 	'countedits-desc' => '[[Special:CountEdits|Page spéciale]] qui comptabilise le nombre de modifications des utilisateurs et qui fournit la liste des dix contributeurs les plus prolifiques.',
 	'countedits-warning' => 'Avertissement : ne jugez pas un livre par sa couverture. Ne jugez pas non plus un utilisateur en fonction du nombre de ses contributions.',
-	'countedits-username' => 'Utilisateur',
+	'countedits-username' => 'Nom d’utilisateur :',
 	'countedits-ok' => 'Accepter',
 	'countedits-nosuchuser' => 'Aucun utilisateur ne correspond à $1',
 	'countedits-resultheader' => 'Résultats pour $1',

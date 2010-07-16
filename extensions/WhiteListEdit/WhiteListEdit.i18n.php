@@ -2804,6 +2804,7 @@ $messages['ps'] = array(
 	'whitelisttableremove' => 'غورځول',
 	'whitelistnewtabledate' => 'د پای نېټه:',
 	'whitelistnewtablereview' => 'مخليدنه',
+	'whitelistpagelist' => 'د $1 لپاره د {{SITENAME}} مخونه',
 	'whitelistrequestconf' => '$1 ته د نوي مخونو غوښتنه ولېږل شوه',
 	'whitelistnever' => 'هېڅکله',
 );

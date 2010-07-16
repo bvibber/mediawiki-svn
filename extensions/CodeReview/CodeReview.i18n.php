@@ -5039,7 +5039,6 @@ $messages['ka'] = array(
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-statuschanges' => 'სტატუსის შეცვლა',
 	'code-authors' => 'ავტორები',
-	'code-tests' => 'ტესტური შემთხვევები',
 	'code-author-orphan' => 'ამ ავტორს არ აქვს ვიკი-ანგარიშის ბმული',
 	'code-author-name' => 'მომხმარებლის სახელის შეტანა:',
 	'code-author-link' => 'კავშირის დამყარება?',
@@ -5047,7 +5046,6 @@ $messages['ka'] = array(
 	'code-field-author' => 'ავტორი',
 	'code-field-status' => 'სტატუსი',
 	'code-field-timestamp' => 'თარიღი',
-	'code-field-tests' => 'ტესტი',
 	'code-field-text' => 'შენიშვნა',
 	'code-field-select' => 'არჩევა',
 	'code-rev-author' => 'ავტორი:',
@@ -5058,6 +5056,7 @@ $messages['ka'] = array(
 	'code-rev-modified-r' => 'ჩაენაცვლა',
 	'code-rev-modified-d' => 'წაშლილი',
 	'code-rev-modified-m' => 'განახლებული',
+	'code-rev-imagediff' => 'სურათის ცვლილებები',
 	'code-rev-status' => 'სტატუსი:',
 	'code-rev-status-set' => 'სტატუსის შეცვლა',
 	'code-rev-tags' => 'ღილაკები:',
@@ -5096,10 +5095,6 @@ $messages['ka'] = array(
 	'code-release-badrange' => 'ზედმეტად დიდი დიაპაზონი!',
 	'codereview-subtitle' => '$1-სთვის',
 	'codereview-reply-link' => 'პასუხი',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|წარმატებული შემოწმება|წარმატებული შემოწმების}}',
-	'codereview-tests-running' => 'კონკრეტული მაგალითების შესრულება...',
-	'codereview-tests-aborted' => 'შემოწმების შესრულება დასრულდა.',
-	'codereview-tests-failed' => 'წარუმატებელია',
 	'codereview-email-body' => 'მომხმარებელმა "$1" დადო კომენტარი $3-ზე.
 
 ბმული: $2
@@ -5107,13 +5102,6 @@ $messages['ka'] = array(
 კომენტარი:
 
 $4',
-	'codereview-email-body3' => 'ავტომატურმა შემოწმებამ აღმოაჩინა რეგრესია $1 ცვლილებასთან.
-
-სრული URL: $2
-
-ცვლილებების აღწერა:
-
-$3',
 	'repoadmin-new-button' => 'შექმნა',
 	'repoadmin-edit-button' => 'კარგი',
 	'repoadmin-edit-sucess' => 'საცავი «[[Special:Code/$1|$1]]» წარმატებით შეიცვალა',
