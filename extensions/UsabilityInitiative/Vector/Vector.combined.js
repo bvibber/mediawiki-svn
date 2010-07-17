@@ -547,50 +547,37 @@ $j(document).ready( function() {
 		return true;
 	}
 	
-	// Add form submission handler
-	$j( 'div#simpleSearch > input#searchInput' )
-		.each( function() {
-			$j( '<label />' )
-				.text( mw.usability.getMsg( 'vector-simplesearch-search' ) )
-				.css({
-					'display': 'none',
-					'position' : 'absolute',
-					'color': '#999999',
-					'cursor': 'text',
-					'margin': '0 4px',
-					'top': '6px',
-					'line-height': '13px'
-				})
-				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
-				.mousedown( function() {
-					$j(this).parent().find( 'input#searchInput' ).focus();
-					return false;
-				})
-				.appendTo( $j(this).parent() );
-			if ( $j(this).val() == '' ) {
-				$j(this).parent().find( 'label' ).fadeIn( 100 );
-			}
-		})
-		.bind( 'keypress', function() {
-			// just in case the text field was focus before our handler was bound to it
-			if ( $j(this).parent().find( 'label:visible' ).size() > 0 )
-				$j(this).parent().find( 'label' ).fadeOut( 100 );
-		})
-		.focus( function() {
-			$j(this).parent().find( 'label' ).fadeOut( 100 );
-		})
-		.blur( function() {
-			if ( $j(this).val() == '' ) {
-				$j(this).parent().find( 'label' ).fadeIn( 100 );
-			}
-		});
-		// listen for dragend events in order to clear the label from the search field if
-		// text is dragged into it. Only works for mozilla
-		$j( document ).bind( 'dragend', function( event ) {
-			if ( $j( 'div#simpleSearch > label:visible' ).size() > 0 
-				&& $j( 'div#simpleSearch > input#searchInput' ).val().length > 0 )
-					$j( 'div#simpleSearch > label' ).fadeOut( 100 );
-		} );
+	// Placeholder text
+	// if the placeholder attribute is supported, use it
+	if ( 'placeholder' in document.createElement( 'input' ) ) {
+		$j( 'div#simpleSearch > input#searchInput' )
+			.attr( 'placeholder', mw.usability.getMsg( 'vector-simplesearch-search' ) );
+	} else {
+		$j( 'div#simpleSearch > input#searchInput' )
+			.each( function() {
+				var $input = $j( this );
+				$input
+					.bind( 'blur', function() {
+						if ( $input.val().length == 0 ) {
+							$input
+								.val( mw.usability.getMsg( 'vector-simplesearch-search' ) )
+								.addClass( 'placeholder' );
+							}
+						} )
+					.bind( 'focus', function() {
+						if ( $input.hasClass( 'placeholder' ) ) {
+							$input.val( '' ).removeClass( 'placeholder' );
+						}
+					} )
+					.parents( 'form' )
+						.bind( 'submit', function() {
+							$input.trigger( 'focus' );
+						} );
+					if ( $input.val() == '' ) {
+						$input.trigger( 'blur' );
+					}
+			} );
+	}
 	$j( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {
 		fetch: function( query ) {
 			var $this = $j(this);
