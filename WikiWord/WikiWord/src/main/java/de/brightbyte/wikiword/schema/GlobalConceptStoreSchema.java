@@ -106,6 +106,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		meaningTable = new RelationTable(this, "meaning", getDefaultTableAttributes());
 		meaningTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ) );
+		meaningTable.addField( new DatabaseField(this, "concept_name", getTextType(255), null, true, null) );
 		meaningTable.addField( new DatabaseField(this, "lang", getTextType(10), null, true, null ) );
 		meaningTable.addField( new DatabaseField(this, "rule", "INT", null, true, KeyType.INDEX) );
 		meaningTable.addField( new DatabaseField(this, "freq", "INT", null, true, null ) );
@@ -113,6 +114,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		meaningTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "lang_term_concept", new String[] {"lang", "term_text", "concept"}) );
 		meaningTable.addKey( new DatabaseKey(this, KeyType.INDEX, "term_concept", new String[] {"term_text", "concept"}) );
 		meaningTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_lang", new String[] {"concept", "lang"}) );
+		meaningTable.addKey( new DatabaseKey(this, KeyType.INDEX, "lang_concept_name", new String[] {"lang", "concept_name"}) );
 		addTable(meaningTable);
 		
 		aboutTable = new RelationTable(this, "about", getDefaultTableAttributes());

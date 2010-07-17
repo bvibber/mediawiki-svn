@@ -725,8 +725,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		DatabaseTable localMeanings = localdb.getTable("meaning");
 		DatabaseTable origin = database.getTable("origin");
 		
-		String sql = "INSERT INTO "+meaningTable.getSQLName()+" (concept, lang, rule, freq, term_text) "
-			+ " SELECT O.global_concept, "+database.quoteString(c.getLanguage())+", M.rule, M.freq, M.term_text "
+		String sql = "INSERT INTO "+meaningTable.getSQLName()+" (concept, lang, concept_name, rule, freq, term_text) "
+			+ " SELECT O.global_concept, O.lang, O.local_concept_name, M.rule, M.freq, M.term_text "
 			+ " FROM "+origin.getSQLName()+" as O " 
 			+ " JOIN "+localMeanings.getSQLName()+" as M ON M.concept = O.local_concept "
 			+ " AND O.lang = "+database.quoteString(c.getLanguage());
