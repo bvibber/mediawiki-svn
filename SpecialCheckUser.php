@@ -48,7 +48,7 @@ class SpecialCheckUser extends SpecialPage {
 			} elseif ( $wgCheckUserForceSummary && !strlen( $reason ) ) {
 				$wgOut->addWikiMsg( 'checkuser-noreason' );
 			} elseif ( $checktype == 'user2ip' ) {
-				//$this->doUser2IP( $user, $reason, $period );
+				$this->doUser2IP( $user, $reason, $period );
 			} elseif ( $xff && $checktype == 'subipedits' ) {
 				$this->doIPEditsRequest( $xff, true, $reason, $period );
 			} elseif ( $checktype == 'subipedits' ) {
@@ -95,7 +95,7 @@ class SpecialCheckUser extends SpecialPage {
 			);
 		}
 		
-		$form = Xml::openElement( 'form', array( 'name' => 'checkuserform', 'id' => 'checkuserform', 'action' => $action, 'method' => 'post' ) ) .
+		$form = Xml::openElement( 'form', array( 'name' => 'checkuserform', 'id' => 'checkuserform', 'action' => $action, 'method' => 'get' ) ) .
 			Xml::openElement( 'fieldset' ) . Xml::openElement( 'legend' ) . wfMsgHtml( 'checkuser-query' ) . Xml::closeElement( 'legend') . 
 			Xml::openElement( 'table', array( 'border' => 0, 'cellpadding' => 2 ) ) . Xml::openElement( 'tr' ) .
 			Xml::openElement( 'td' ) . wfMsgHtml( 'checkuser-target' ) . Xml::closeElement( 'td' ) .
@@ -124,6 +124,8 @@ class SpecialCheckUser extends SpecialPage {
 			Xml::openElement( 'td' ) . Xml::input( 'reason', 46, $reason, array( 'maxlength' => '255', 'id' => 'checkreason' ) ) . Xml::closeElement( 'td' ) .
 			Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' ) .
 			$this->getPeriodMenu( $period ) .
+			Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' ) .
+			$this->getLimitMenu() .
 			Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' ) .
 			Xml::openElement( 'td' ) . 
 			Xml::submitButton( wfMsg( 'checkuser-check' ), array( 'id' => 'checkusersubmit', 'name' => 'checkusersubmit' ) ) .
@@ -176,6 +178,22 @@ class SpecialCheckUser extends SpecialPage {
 		return $s;
 	}
 	
+	protected function getLimitMenu() {
+		global $wgRequest;
+		
+		$currLimit = $wgRequest->getVal( 'limit' );
+		
+		$s = '<td>' . wfMsgHtml( 'checkuser-limit' ) . '</td>';
+		$s .= '<td>' . Xml::openElement( 'select', array( 'name' => 'limit', 'id' => 'limit', 'style' => 'margin-top:.2em;' ) );
+		
+		foreach( array( 20, 50, 100, 250, 500, 5000 ) as $limit ) {
+			$s .= Xml::option( $limit, $limit, $limit == $currLimit );
+		}
+		
+		$s .= Xml::closeElement( 'select' ) . "</td>\n";
+		return $s;
+	}
+	
 	/**
 	 * Make a quick JS form for admins to calculate block ranges
 	 */
@@ -210,7 +228,7 @@ class SpecialCheckUser extends SpecialPage {
 			'period' => $period
 		) );
 		
-		$pager = new CUTablePager( $result );
+		$pager = new CUTablePagerUser2IP( $result );
 		
 		$output =
 		$pager->getNavigationBar() .
@@ -234,7 +252,7 @@ class SpecialCheckUser extends SpecialPage {
 	
 }
 
-class CUTablePager extends TablePager { 
+class CUTablePagerOld extends TablePager { 
 
 	private $mCUSelectParams;
 	private $mBlockInfo;
@@ -246,6 +264,8 @@ class CUTablePager extends TablePager {
 	}
 	
 	function getQueryInfo() {
+		$dbr = new wfGetDB( DB_SLAVE );
+		
 		$ret = array(
 			'tables' => $this->mCUSelectParams[0],
 			'fields' => $this->mCUSelectParams[1],
@@ -271,7 +291,7 @@ class CUTablePager extends TablePager {
 	//}
 	
 	function isFieldSortable( $field ) {
-		return true;
+		return in_array( $field, array( 'cuc_ip', 'first', 'last' ) );
 	} 
 	
 	function getDefaultSort() {
@@ -280,6 +300,8 @@ class CUTablePager extends TablePager {
 	
 	function formatValue( $name, $value ) { 
 		global $wgContLang;
+		
+		var_dump( $this->mCurrentRow );
 		
 		switch( $name ) {
 			case 'cuc_ip':
@@ -399,3 +421,6 @@ class CUTablePager extends TablePager {
 	}
 
 }
+
+
+

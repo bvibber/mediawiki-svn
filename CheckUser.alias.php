@@ -13,6 +13,7 @@ $aliases = array();
  */
 $aliases['en'] = array(
 	'CheckUser' => array( 'CheckUser' ),
+	'CheckUserLog' => array( 'CheckUserLog' ),
 );
 
 /** Arabic (العربية) */

@@ -44,18 +44,22 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCheckUserSchemaUpdates';
 $wgHooks['ContributionsToolLinks'][] = 'efLoadCheckUserLink';
 
 $wgAutoloadClasses['SpecialCheckUser'] = $dir . 'SpecialCheckUser.php';
+$wgAutoloadClasses['SpecialCheckUserLog'] = $dir . 'SpecialCheckUserLog.php';
 $wgAutoloadClasses['CheckUserApi'] = $dir . 'CheckUserApi.php';
 $wgAutoloadClasses['CheckUserApiLog'] = $dir . 'CheckUserApiLog.php';
 $wgAutoloadClasses['CheckUser'] = $dir . 'CheckUser.body.php';
+$wgAutoloadClasses['CUTablePagerUser2IP'] = $dir . 'CheckUser.pager.php';
 
 // Set up the new special page
 $wgSpecialPages['CheckUser'] = 'SpecialCheckUser';
 $wgSpecialPageGroups['CheckUser'] = 'users';
+$wgSpecialPages['CheckUserLog'] = 'SpecialCheckUserLog';
+$wgSpecialPageGroups['CheckUserLog'] = 'users';
 
 $wgAPIListModules['checkuser'] = 'CheckUserApi';
 $wgAPIListModules['checkuserlog'] = 'CheckUserApiLog';
 
-$wgExtensionMessagesFiles['CheckUser'] = $dir . 'CheckUser.i18n.en.php';
+$wgExtensionMessagesFiles['CheckUser'] = $wgExtensionMessagesFiles['CheckUser'] = $dir . 'CheckUser.i18n.en.php';
 //FIXME: $wgExtensionMessagesFiles['CheckUser'] = $dir . 'CheckUser.i18n.php';
 $wgExtensionAliasesFiles['CheckUser'] = $dir . 'CheckUser.alias.php';
 
