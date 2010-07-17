@@ -152,10 +152,10 @@ $messages['avk'] = array(
 $messages['be-tarask'] = array(
 	'edituser-desc' => 'Дазваляе прывілеяваным удзельнікам рэдагаваць устаноўкі іншых удзельнікаў',
 	'edituser' => 'Рэдагаваць удзельніка',
-	'edituser-username' => 'Імя ўдзельніка',
+	'edituser-username' => 'Імя ўдзельніка:',
 	'edituser-dosearch' => 'Шукаць',
-	'edituser-nouser' => 'Пазначаны ўдзельнік не існуе',
-	'edituser-exempt' => 'Пазначаны ўдзельнік ня можа рэдагавацца',
+	'edituser-nouser' => 'Удзельнік «$1» не існуе.',
+	'edituser-exempt' => 'Удзельнік «$1» ня можа рэдагавацца.',
 	'right-edituser' => 'рэдагаваньне ўстановак іншых удзельнікаў',
 	'right-edituser-exempt' => 'іншыя ня могуць рэдагаваць ўстаноўкі гэтага ўдзельніка',
 );
@@ -189,8 +189,8 @@ $messages['br'] = array(
 	'edituser' => 'Aozañ an implijer',
 	'edituser-username' => 'Anv implijer :',
 	'edituser-dosearch' => 'Klask',
-	'edituser-nouser' => "N'eus ket eus an implijer-se",
-	'edituser-exempt' => "N'haller ket degas kemmoù d'an implijer-se.",
+	'edituser-nouser' => 'N\'eus ket eus an implijer "$1".',
+	'edituser-exempt' => 'N\'haller ket degas kemmoù d\'an implijer "$1".',
 	'right-edituser' => 'Kemmañ a ra penndibaboù an implijerien all',
 	'right-edituser-exempt' => "An dud diavaez n'hallont ket degas kemmoù e penndibaboù an implijer-mañ",
 );
@@ -258,6 +258,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author MF-Warburg
  * @author Raimond Spekking
  * @author The Evil IP address
@@ -268,10 +269,10 @@ $messages['de'] = array(
 	'edituser' => 'Benutzer bearbeiten',
 	'edituser-username' => 'Benutzername:',
 	'edituser-dosearch' => 'Suchen',
-	'edituser-nouser' => 'Der angegebene Benutzer ist nicht vorhanden',
-	'edituser-exempt' => 'Der angegebene Benutzer kann nicht bearbeitet werden',
+	'edituser-nouser' => 'Der Benutzer „$1“ ist nicht vorhanden.',
+	'edituser-exempt' => 'Der Benutzer „$1“ kann nicht bearbeitet werden.',
 	'right-edituser' => 'Einstellungen anderer Benutzer bearbeiten',
-	'right-edituser-exempt' => 'Einstellungen können durch Dritte nicht bearbeitet werden',
+	'right-edituser-exempt' => 'Einstellungen können nicht durch Dritte bearbeitet werden',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -326,10 +327,10 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'edituser-desc' => 'Permite a usuarios privilegiados editar las preferencias de otro usuario',
 	'edituser' => 'Editar usuario',
-	'edituser-username' => 'Nombre',
+	'edituser-username' => 'Nombre de usuario:',
 	'edituser-dosearch' => 'Buscar',
-	'edituser-nouser' => 'El usuario especificado no existe',
-	'edituser-exempt' => 'El usuario especificado no puede ser editado',
+	'edituser-nouser' => 'El usuario "$1" no existe.',
+	'edituser-exempt' => 'El usuario "$1" no puede ser editado.',
 	'right-edituser' => 'Editar las preferencias de otro usuario',
 	'right-edituser-exempt' => 'Otros no pueden editar estas preferencias de usuario',
 );
@@ -376,6 +377,7 @@ $messages['fi'] = array(
 );
 
 /** French (Français)
+ * @author Farras
  * @author Grondin
  * @author Louperivois
  * @author Meithal
@@ -387,8 +389,8 @@ $messages['fr'] = array(
 	'edituser' => "Modifier l'utilisateur",
 	'edituser-username' => 'Nom d’utilisateur :',
 	'edituser-dosearch' => 'Rechercher',
-	'edituser-nouser' => "L'utilisateur spécifié n'existe pas",
-	'edituser-exempt' => "L'utilisateur spécifié ne peut pas être modifié",
+	'edituser-nouser' => 'L\'utilisateur "$1" n\'existe pas.',
+	'edituser-exempt' => 'L\'utilisateur "$1" ne peut pas être modifié.',
 	'right-edituser' => 'Modifie les préférences des autres utilisateurs',
 	'right-edituser-exempt' => 'Les préférences de cet utilisateur ne sont pas modifiables par les autres',
 );
@@ -409,8 +411,8 @@ $messages['gl'] = array(
 	'edituser' => 'Editar Usuario',
 	'edituser-username' => 'Nome de usuario:',
 	'edituser-dosearch' => 'Procurar',
-	'edituser-nouser' => 'O usuario especificado non existe',
-	'edituser-exempt' => 'O usuario especificado non pode ser editado',
+	'edituser-nouser' => 'O usuario "$1" non existe.',
+	'edituser-exempt' => 'O usuario "$1" non pode ser editado.',
 	'right-edituser' => 'Editar as preferencias doutros usuarios',
 	'right-edituser-exempt' => 'As súas preferencias non poden ser editadas por outros',
 );
@@ -557,24 +559,25 @@ $messages['ia'] = array(
 	'edituser' => 'Modificar usator',
 	'edituser-username' => 'Nomine de usator:',
 	'edituser-dosearch' => 'Cercar',
-	'edituser-nouser' => 'Le usator specificate non existe',
-	'edituser-exempt' => 'Le usator specificate non pote esser modificate',
+	'edituser-nouser' => 'Le usator "$1" non existe.',
+	'edituser-exempt' => 'Le usator "$1" non pote esser modificate',
 	'right-edituser' => 'Modificar le preferentias de altere usatores',
 	'right-edituser-exempt' => 'Altere personas non pote modificar le preferentias de iste usator',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'edituser-desc' => 'Mengijinkan pengguna yang berhak untuk menyunting preferensi pengguna lain',
 	'edituser' => 'Sunting pengguna',
-	'edituser-username' => 'Nama',
+	'edituser-username' => 'Nama pengguna:',
 	'edituser-dosearch' => 'Cari',
-	'edituser-nouser' => 'Pengguna yang dimaksud tidak ditemukan',
-	'edituser-exempt' => 'Pengguna yang dimaksud tidak dapat disunting',
+	'edituser-nouser' => 'Pengguna "$1" tidak dapat ditemukan.',
+	'edituser-exempt' => 'Pengguna "$1" tidak dapat disunting',
 	'right-edituser' => 'Sunting preferensi pengguna lain',
 	'right-edituser-exempt' => 'Orang lain tidak dapat menyunting preferensi pengguna ini',
 );
@@ -720,10 +723,10 @@ $messages['kw'] = array(
 $messages['lb'] = array(
 	'edituser-desc' => "Erlaabt et Benotzer déi gewësse Rechter hunn anere Benotzer hir Astellungen z'änneren",
 	'edituser' => 'Benotzer änneren',
-	'edituser-username' => 'Numm',
+	'edituser-username' => 'Benotzernumm:',
 	'edituser-dosearch' => 'Sichen',
-	'edituser-nouser' => 'Dee Benotzer gëtt et net',
-	'edituser-exempt' => 'Dee Benotzer kann net geännert ginn',
+	'edituser-nouser' => "De Benotzer ''$1'' gëtt et net.",
+	'edituser-exempt' => 'De Benotzer "$1" kann net geännert ginn.',
 	'right-edituser' => "D'Astellunge vun anere Benotzer änneren",
 	'right-edituser-exempt' => "D'Astellunge kënnen net vun Anere geännert ginn",
 );
@@ -772,8 +775,8 @@ $messages['mk'] = array(
 	'edituser' => 'Уреди го корисникот',
 	'edituser-username' => 'Корисничко име:',
 	'edituser-dosearch' => 'Пребарај',
-	'edituser-nouser' => 'Назначениот корисник не постои',
-	'edituser-exempt' => 'Назначениот корисник не може да биде уреден',
+	'edituser-nouser' => 'Корисникот „$1“ не постои.',
+	'edituser-exempt' => 'Корисникот „$1“ не може да биде уреден.',
 	'right-edituser' => 'Уредување на нагодувањата на други корисници',
 	'right-edituser-exempt' => 'Други не можат да ги уредуваат нагодувањата на овој корисник',
 );
@@ -852,10 +855,10 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'edituser-desc' => 'Maakt het voor bevoegde gebruikers mogelijk om de voorkeuren van andere gebruikers te bewerken',
 	'edituser' => 'Gebruiker bewerken',
-	'edituser-username' => 'Naam',
+	'edituser-username' => 'Naam:',
 	'edituser-dosearch' => 'Zoeken',
-	'edituser-nouser' => 'De opgegeven gebruiker bestaat niet',
-	'edituser-exempt' => 'De opgegeven gebruiker kan niet bewerkt worden',
+	'edituser-nouser' => 'De gebruiker "$1" bestaat niet.',
+	'edituser-exempt' => 'De gebruiker "$1" kan niet bewerkt worden.',
 	'right-edituser' => 'Voorkeuren van andere gebruikers bewerken',
 	'right-edituser-exempt' => 'Voorkeuren niet te bewerken door anderen',
 );
@@ -863,14 +866,15 @@ $messages['nl'] = array(
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
  * @author Harald Khan
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'edituser-desc' => 'Lar priviligerte brukarar endra andre brukarar sine instillingar',
 	'edituser' => 'Endra brukar',
-	'edituser-username' => 'Namn',
+	'edituser-username' => 'Brukarnamn:',
 	'edituser-dosearch' => 'Søk',
-	'edituser-nouser' => 'Den oppgjevne brukaren finst ikkje',
-	'edituser-exempt' => 'Den oppgjevne brukaren kan ikkje bli endra',
+	'edituser-nouser' => 'Brukaren «$1» finst ikkje.',
+	'edituser-exempt' => 'Brukaren «$1» kan ikkje bli endra.',
 	'right-edituser' => 'Redigera innstillingane til andre brukarar',
 	'right-edituser-exempt' => 'Innstilingane deira kan ikkje bli endra av andre',
 );
@@ -882,10 +886,10 @@ $messages['nn'] = array(
 $messages['no'] = array(
 	'edituser-desc' => 'Lar priviligerte brukere redigere andre brukeres innstillinger',
 	'edituser' => 'Rediger bruker',
-	'edituser-username' => 'Navn',
+	'edituser-username' => 'Brukernavn:',
 	'edituser-dosearch' => 'Søk',
-	'edituser-nouser' => 'Den angitte brukeren finnes ikke',
-	'edituser-exempt' => 'Det angitte brukeren kan ikke redigeres',
+	'edituser-nouser' => 'Brukeren «$1» finnes ikke.',
+	'edituser-exempt' => 'Brukeren «$1» kan ikke redigeres.',
 	'right-edituser' => 'Rediger innstillingene til andre brukere',
 	'right-edituser-exempt' => 'Andre kan ikke redigere denne brukerens innstillinger',
 );
@@ -976,22 +980,23 @@ $messages['pt'] = array(
 	'edituser' => 'Editar Utilizador',
 	'edituser-username' => 'Utilizador:',
 	'edituser-dosearch' => 'Pesquisar',
-	'edituser-nouser' => 'O utilizador especificado não existe',
-	'edituser-exempt' => 'O utilizador especificado não pode ser editado',
+	'edituser-nouser' => 'O utilizador "$1" não existe.',
+	'edituser-exempt' => 'O utilizador "$1" não pode ser editado.',
 	'right-edituser' => 'Editar as preferências de outros utilizadores',
 	'right-edituser-exempt' => 'Não podem ter as suas preferências editadas por outros',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'edituser-desc' => 'Permite que utilizadores com privilégios editem as preferências de outros utilizadores',
 	'edituser' => 'Editar Utilizador',
-	'edituser-username' => 'Nome',
+	'edituser-username' => 'Usuário',
 	'edituser-dosearch' => 'Pesquisar',
-	'edituser-nouser' => 'O utilizador especificado não existe',
-	'edituser-exempt' => 'O utilizador especificado não pode ser editado',
+	'edituser-nouser' => 'O utilizador "$1" não existe.',
+	'edituser-exempt' => 'O usuário "$1" não pode ser editado.',
 	'right-edituser' => 'Editar as preferências de outros utilizadores',
 	'right-edituser-exempt' => 'Outros não podem editar as preferências deste usuário',
 );
@@ -1032,6 +1037,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Ferrer
  * @author Александр Сигачёв
  */
@@ -1040,8 +1046,8 @@ $messages['ru'] = array(
 	'edituser' => 'Изменить участника',
 	'edituser-username' => 'Имя участника:',
 	'edituser-dosearch' => 'Найти',
-	'edituser-nouser' => 'Указанный участник не существует',
-	'edituser-exempt' => 'Указанный участник не может быть отредактирован',
+	'edituser-nouser' => 'Участник «$1» не существует',
+	'edituser-exempt' => 'Участник «$1» не может быть отредактирован',
 	'right-edituser' => 'редактирование настроек других участников',
 	'right-edituser-exempt' => 'другие не могут редактировать настройки этого участника',
 );
@@ -1140,14 +1146,15 @@ $messages['su'] = array(
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
+ * @author Nghtwlkr
  */
 $messages['sv'] = array(
 	'edituser-desc' => 'Gör det möjligt för användare med viss behörighet att ändra andra användares inställningar',
 	'edituser' => 'Redigera användare',
 	'edituser-username' => 'Namn',
 	'edituser-dosearch' => 'Sök',
-	'edituser-nouser' => 'Den angivna användaren finns inte',
-	'edituser-exempt' => 'Den angivna användaren kan inte redigeras',
+	'edituser-nouser' => 'Användaren «$1» finns inte.',
+	'edituser-exempt' => 'Användaren «$1» kan inte redigeras.',
 	'right-edituser' => 'Redigera andra användares inställningar',
 	'right-edituser-exempt' => 'Deras inställningar kan inte redigeras av andra',
 );

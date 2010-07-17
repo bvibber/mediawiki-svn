@@ -900,6 +900,19 @@ $messages['ru'] = array(
 	'showprocesslist-info' => 'Информация',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'showprocesslist-id' => 'ID',
+	'showprocesslist-user' => 'Хоснователь',
+	'showprocesslist-db' => 'Датабаза',
+	'showprocesslist-command' => 'Приказ',
+	'showprocesslist-time' => 'Час',
+	'showprocesslist-state' => 'Штат',
+	'showprocesslist-info' => 'Інфо',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

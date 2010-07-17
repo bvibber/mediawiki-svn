@@ -821,6 +821,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
@@ -828,7 +829,9 @@ $messages['mr'] = array(
 टप्प्या-टप्प्याने प्रकाशन शक्य करा',
 	'wikieditor-publish-button-publish' => 'प्रकाशित करा
 दाखवा',
+	'wikieditor-publish-button-cancel' => 'रद्द करा',
 	'wikieditor-publish-dialog-summary' => 'संपादनाचा सारांश:(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
+	'wikieditor-publish-dialog-minor' => 'छोटा बदल',
 	'wikieditor-publish-dialog-goback' => '↓ परत फिरा
 ↓ मागे जा',
 );

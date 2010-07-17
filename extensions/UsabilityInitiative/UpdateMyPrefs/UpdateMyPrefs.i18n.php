@@ -387,6 +387,13 @@ $messages['ml'] = array(
 	'updatemyprefs-label-message' => 'എന്റെ ക്രമീകരണങ്ങൾ സ്വതേ തരുന്ന പുതിയ ഉപകരണങ്ങളും സജ്ജീകരണങ്ങളും ലഭ്യമാകുന്ന മുറയ്ക്ക് സ്വയം പുതുക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'prefs-updates' => 'अद्ययावते',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */

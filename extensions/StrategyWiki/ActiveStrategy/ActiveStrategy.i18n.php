@@ -173,6 +173,16 @@ $messages['ia'] = array(
 	'nedits' => '$1 {{PLURAL:$1|modification|modificationes}}',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'activestrategy' => 'Strategi Aktif',
+	'active-strategy-desc' => 'Menampilkan jumlah suntingan pada halaman perencanaan strategis',
+	'active-strategy-intro' => 'Jumlah suntingan terhadap halaman tugas bersama dalam {{PLURAL:$1|$1 hari|$1 hari}} terakhir.',
+	'nedits' => '$1 {{PLURAL:$1|suntingan|suntingan}}',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

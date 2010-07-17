@@ -512,6 +512,8 @@ $messages['br'] = array(
 	'qp_export_to_xls' => "Ezporzhiañ ar stadegoù d'ar furmad XLS",
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|implijer|implijer}} o deus respontet d'ar goulennoù",
 	'qp_func_no_such_poll' => "N'eus ket eus ar votadeg-mañ ($1)",
+	'qp_func_invalid_question_id' => 'Id direizh evit ar goulenn=$2 direizh (ket un niver) evit ar sontadeg $1',
+	'qp_func_invalid_proposal_id' => 'Id kinnig=$3 direizh (ket un niver) evit ar sontadeg $1, goulenn $2',
 	'qp_error_in_question_header' => 'Talbenn goulenn direizh : $1',
 	'qp_error_invalid_question_type' => 'Seurt goulenn direizh : $1',
 	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',

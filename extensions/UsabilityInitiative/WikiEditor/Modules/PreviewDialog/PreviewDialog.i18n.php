@@ -630,6 +630,13 @@ $messages['ru'] = array(
 	'wikieditor-previewDialog-loading' => 'Загрузка…',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-previewDialog-loading' => 'Награваня...',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

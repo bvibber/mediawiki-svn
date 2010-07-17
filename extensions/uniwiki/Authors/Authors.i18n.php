@@ -532,6 +532,13 @@ $messages['ru'] = array(
 	'authors_anonymous' => 'Аноним',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'authors_authors' => 'Авторы',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  * @author චතුනි අලහප්පෙරුම

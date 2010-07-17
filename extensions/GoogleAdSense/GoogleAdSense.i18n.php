@@ -397,6 +397,13 @@ $messages['ru'] = array(
 	'googleadsense-desc' => 'Добавляет [http://www.google.com/adsense рекламу Google AdSense] в навигационную панель',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'googleadsense-desc' => 'Придасть [http://www.google.com/adsense Google AdSense] на бочный панел',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */

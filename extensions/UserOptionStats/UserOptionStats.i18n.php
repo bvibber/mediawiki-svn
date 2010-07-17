@@ -640,6 +640,13 @@ $messages['ru'] = array(
 	'uos-title' => 'Распределение значений пользовательской настройки $1',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'uos-other' => '*Іншы',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */

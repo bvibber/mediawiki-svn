@@ -843,6 +843,7 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'findspam' => 'Найти спам',
 	'findspam-ip' => 'IP-адреса:',
 	'findspam-ok' => 'ОК',
 );

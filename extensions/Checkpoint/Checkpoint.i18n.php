@@ -168,6 +168,16 @@ $messages['ia'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|salveguardar puncto de controlo]])',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'checkpoint' => 'Simpan dan lanjutkan penyuntingan',
+	'checkpoint-desc' => 'Izinkan seseorang menyimpan suntingan dan melanjutkan penyuntingan',
+	'checkpoint-tooltip' => 'Simpan perubahan Anda dan lanjutkan penyuntingan halaman',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|simpan checkpoint]])',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */

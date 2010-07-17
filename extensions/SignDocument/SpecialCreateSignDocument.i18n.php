@@ -1652,6 +1652,26 @@ $messages['ru'] = array(
 Это не может быть сделано ещё раз.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'createsigndoc-pagename' => 'Сторінка:',
+	'createsigndoc-allowedgroup' => 'Поволена ґрупа:',
+	'createsigndoc-email' => 'Адреса електронічной пошты:',
+	'createsigndoc-address' => 'Домашня адреса:',
+	'createsigndoc-extaddress' => 'Місто, штат, країна:',
+	'createsigndoc-phone' => 'Телефонне чісло:',
+	'createsigndoc-bday' => 'День народжіня:',
+	'createsigndoc-minage' => 'Мінімалны рокы:',
+	'createsigndoc-introtext' => 'Уведжіня:',
+	'createsigndoc-hidden' => 'Схованый',
+	'createsigndoc-optional' => 'Опціоналный',
+	'createsigndoc-create' => 'Створити',
+	'createsigndoc-error-generic' => 'Хыба: $1',
+	'createsigndoc-error-pagenoexist' => 'Хыба: Сторінка [[$1]] не екзістує.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

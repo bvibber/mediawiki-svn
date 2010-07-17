@@ -539,6 +539,13 @@ $messages['ru'] = array(
 	'right-viewpiwik' => 'просмотр [[Special:Piwik|статистики Piwik]]',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'piwik-countries' => 'Країны',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

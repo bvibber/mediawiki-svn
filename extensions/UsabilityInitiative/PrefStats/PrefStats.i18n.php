@@ -1601,6 +1601,18 @@ $messages['ml'] = array(
 	'prefstats-legend-in' => 'ഐച്ഛിക ഉൾപ്പെടുത്തൽ',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'prefstats-factor-hour' => 'तास',
+	'prefstats-factor-sixhours' => 'सहा तास',
+	'prefstats-factor-day' => 'दिवस',
+	'prefstats-factor-week' => 'आठवडा',
+	'prefstats-factor-twoweeks' => 'दोन आठवडे',
+	'prefstats-factor-fourweeks' => 'चार आठवडे',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Kurniasan
  */

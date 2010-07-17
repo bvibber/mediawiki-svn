@@ -56,6 +56,8 @@ $messages['be-tarask'] = array(
 $messages['br'] = array(
 	'jsbreadcrumbs-desc' => 'Ouzhpennañ a ra un heuliad liammoù merdeiñ dindan barenn an ivinelloù',
 	'jsbreadcrumbs-leading-description' => 'Hentad merdeiñ',
+	'prefs-jsbreadcrumbs' => 'Barenn merdeiñ',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Diskouez ar varenn merdeiñ',
 	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Niver a liammoù merdeiñ',
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => "D'ar muiañ 20 liamm merdeiñ",
 );

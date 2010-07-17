@@ -371,6 +371,13 @@ $messages['ru'] = array(
 	'right-massblank' => 'массовая очистка страниц',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'massblank-submit-user' => 'Выконати',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

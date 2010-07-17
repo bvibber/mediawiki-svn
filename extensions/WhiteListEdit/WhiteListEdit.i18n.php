@@ -3075,15 +3075,30 @@ $2',
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'mywhitelistpages' => 'Мої сторінкы',
+	'whitelistfor' => '<center>Актуална інформація про <b>$1</b></center>',
 	'whitelisttablemodify' => 'Змінити',
 	'whitelisttablemodifyall' => 'Вшыткы',
 	'whitelisttablemodifynone' => 'Жадне',
 	'whitelisttablepage' => 'Вікі-сторінка',
 	'whitelisttabletype' => 'Тіп приступу',
+	'whitelisttableexpires' => 'Кінчіть ся',
+	'whitelisttablemodby' => 'Послїднїй змінив',
+	'whitelisttablemodon' => 'Послїднїй раз змінено о',
 	'whitelisttableedit' => 'Едітовати',
 	'whitelisttableview' => 'Видїти',
 	'whitelisttablenewdate' => 'Новый датум:',
+	'whitelisttablechangedate' => 'Змінити датум скінчіня',
+	'whitelisttablesetedit' => 'Наставити на едітованя',
+	'whitelisttablesetview' => 'Наставити на зображіня',
 	'whitelisttableremove' => 'Одстранити',
+	'whitelistnewtabledate' => 'Датум скінчіня:',
+	'whitelistnewtableedit' => 'Наставити на едітованя',
+	'whitelistnewtableview' => 'Наставити на зображіня',
+	'whitelistnewtableprocess' => 'Спрацёвати',
+	'whitelistnewtablereview' => 'Перевірити',
+	'group-manager' => 'Манажеры',
+	'group-manager-member' => 'Манажер',
 );
 
 /** Sinhala (සිංහල)
@@ -3720,6 +3735,7 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Тест
  */
 $messages['uk'] = array(
 	'whitelistedit-desc' => 'Редагування прав доступу користувачів',
@@ -3744,6 +3760,7 @@ $messages['uk'] = array(
 	'whitelisttableremove' => 'Вилучити',
 	'whitelistnewtabledate' => 'Дата закінчення:',
 	'whitelistnewtableedit' => 'Установити для редагування',
+	'whitelistnewtablereview' => 'Огляд',
 );
 
 /** Veps (Vepsan kel')

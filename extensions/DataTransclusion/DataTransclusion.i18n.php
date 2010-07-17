@@ -96,6 +96,7 @@ $1 — невядомая.',
  * @author Y-M D
  */
 $messages['br'] = array(
+	'datatransclusion-record-not-found' => 'Enrolladenn ebet o wiriañ $2 = $3 a zo bet kavet e danvez ar roadennoù $1.',
 	'datatransclusion-bad-template-name' => 'Anv patrom direizh : $1.',
 	'datatransclusion-unknown-template' => "N'eus ket eus <nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>.",
 );
@@ -283,6 +284,29 @@ Un prime parametro "template" es obligatori.',
 	'datatransclusion-record-not-found' => 'Nulle dato correspondente a $2 = $3 ha essite trovate in le fonte de datos $1.',
 	'datatransclusion-bad-template-name' => 'Nomine de patrono incorrecte: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non existe.',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'datatransclusion-desc' => 'Mengimpor dan membuat catatan data dari sumber data luar',
+	'datatransclusion-missing-source' => 'Tidak ada sumber data yang disebutkan.
+Argumen kedua atau "sumber" dibutuhkan.',
+	'datatransclusion-unknown-source' => 'Sumber data buruk disebutkan.
+"$1" tidak dikenal.',
+	'datatransclusion-missing-key' => 'Tidak ada kunci yang disebutkan.
+$2 adalah kunci sah pada sumber data $1.',
+	'datatransclusion-bad-argument-by' => 'Bidang kunci buruk disebutkan.
+"$2" bukan sebuah bidang kunci pada sumber data "$1".
+{{PLURAL:$4|Kunci sah|Kunci sah adalah}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Tidak ada nilai kunci yang disebutkan.
+Argumen kedua atau "kunci" dibutuhkan.',
+	'datatransclusion-missing-argument-template' => 'Tidak ada templat yang disebutkan.
+Argumen pertama atau "templat" dibutuhkan.',
+	'datatransclusion-record-not-found' => 'Tidak ada catatan yang cocok dengan $2 = $3 ditemukan di sumber data $1.',
+	'datatransclusion-bad-template-name' => 'Nama templat buruk: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> tidak ada.',
 );
 
 /** Italian (Italiano)
@@ -546,5 +570,13 @@ Birincisi ya da "şablon" ispatı gerekmektedir.',
 	'datatransclusion-record-not-found' => '$1 veri kaynağında, $2 = $3 şekline uyan hiç bir kayıt bulunamadı.',
 	'datatransclusion-bad-template-name' => 'Kötü şablon adı: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> varolmamaktadır.',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'datatransclusion-bad-template-name' => 'Неправильна назва шаблону: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> не існує.',
 );
 

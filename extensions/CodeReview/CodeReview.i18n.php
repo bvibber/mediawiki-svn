@@ -6666,7 +6666,6 @@ $messages['no'] = array(
 	'code-authors' => 'forfattere',
 	'code-status' => 'tilstander',
 	'code-tags' => 'tagger',
-	'code-tests' => 'Testtilfeller',
 	'code-authors-text' => 'Nedenfor er en liste over repo-forfattere sortert etter siste bidrag. Lokale wikikontoer vises i parantes.',
 	'code-author-haslink' => 'Denne forfatteren er lenket til wikibruker $1',
 	'code-author-orphan' => 'Denne forfatteren har ingen lenke til en wiki-konto',
@@ -6687,7 +6686,6 @@ $messages['no'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Dato',
 	'code-field-comments' => 'Notater',
-	'code-field-tests' => 'Tester',
 	'code-field-path' => 'Sti',
 	'code-field-text' => 'Notat',
 	'code-field-select' => 'Velg',
@@ -6717,7 +6715,7 @@ $messages['no'] = array(
 	'code-rev-purge-link' => 'Rense',
 	'code-rev-total' => 'Totalt antall resultat: $1',
 	'code-status-new' => 'ny',
-	'code-status-fixme' => 'Fixmeg',
+	'code-status-fixme' => 'fiksmeg',
 	'code-status-reverted' => 'tilbakestilt',
 	'code-status-resolved' => 'løst',
 	'code-status-ok' => 'OK',
@@ -6743,11 +6741,6 @@ $messages['no'] = array(
 	'code-release-badrange' => 'Intervallet er for stort!',
 	'codereview-subtitle' => 'For $1',
 	'codereview-reply-link' => 'svar',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}, $3 {{PLURAL:$4|test|tester}} feilet',
-	'codereview-tests-running' => 'Testtilfeller kjører...',
-	'codereview-tests-aborted' => 'Testkjøring avbrutt.',
-	'codereview-tests-failed' => 'Mislyktes',
 	'codereview-email-subj' => '[$1] [$2]: Ny kommentar lagt inn',
 	'codereview-email-body' => 'Bruker $1 la inn en kommentar på $3
 
@@ -6764,14 +6757,6 @@ Full nettadresse: $3
 Sammendrag:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Automatisk testing oppdaget regresjon',
-	'codereview-email-body3' => 'Automatisk testing har oppdaget regresjon grunnet endringer i $1.
-
-Full nettadresse: $2
-
-Sammendrag av bidrag:
-
-$3',
 	'repoadmin' => 'Databaseadministrasjon',
 	'repoadmin-new-legend' => 'Lag en ny database',
 	'repoadmin-new-label' => 'Databasenavn',

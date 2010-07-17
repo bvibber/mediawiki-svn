@@ -929,6 +929,14 @@ $messages['ru'] = array(
 	'nss-db-error' => 'Ошибка чтения базы данных аутентификации',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'am-username' => 'мено хоснователя',
+	'am-email' => 'електронічна пошта',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

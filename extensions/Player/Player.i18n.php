@@ -1170,6 +1170,14 @@ $messages['ru'] = array(
 	'player-goto-file' => 'файл',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'player-goto-page' => 'Сторінка',
+	'player-goto-file' => 'файл',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

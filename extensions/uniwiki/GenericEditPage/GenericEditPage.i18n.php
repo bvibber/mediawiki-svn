@@ -1304,6 +1304,17 @@ $messages['ru'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'gep-categories' => 'Катеґорії',
+	'gep-addcategory' => 'Придати катеґорію',
+	'gep-addcategorybutton' => 'Придати',
+	'gep-suggestcategory' => 'Порадити катеґорію',
+	'gep-suggestcategorybutton' => 'Одослати',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */

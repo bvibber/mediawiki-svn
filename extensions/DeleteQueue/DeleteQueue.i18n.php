@@ -3061,6 +3061,7 @@ Tu pote registrar tu proprie declaration pro o contra iste deletion [{{fullurl:{
  * @author Rex
  */
 $messages['id'] = array(
+	'deletequeue-desc' => 'Membuat sebuah [[Special:DeleteQueue|sistem berbasis antre untuk mengelola penghapusan]]',
 	'deletequeue-action-queued' => 'Penghapusan',
 	'deletequeue-action' => 'Usulkan penghapusan',
 	'deletequeue-action-title' => 'Usulkan penghapusan untuk "$1"',
@@ -3107,6 +3108,8 @@ Alasan yang diberikan untuk penghapusan ini adalah ''$1''.",
 	'deletequeue-review-submit' => 'Simpan Tinjauan',
 	'deletequeue-review-original' => 'Alasan pencalonan',
 	'deletequeue-actiondisabled-notexpired' => 'Langkah berikut dilarang karena pencalonan penghapusan belum kadaluwarsa:',
+	'deletequeue-review-badaction' => 'Anda melakukan tindakan yang tidak sah',
+	'deletequeue-review-actiondenied' => 'Anda melakukan tindakan yang dilarang untuk halaman ini',
 	'deletequeue-review-objections' => "'''Perhatian''': Penghapusan halaman ini memiliki [{{fullurl:{{FULLPAGENAME}}|action=delvoteview&votetype=object}} penolakan].
 Pastikan bahwa Anda telah mempertimbangkan penolakan tersebut sebelum menghapus halaman ini.",
 	'deletequeue-reviewspeedy-tab' => 'Tinjau penghapusan cepat',
@@ -3171,6 +3174,8 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
 	'deletequeue-case-intro' => 'Halaman ini berisi informasi mengenai kasus penghapusan tertentu.',
 	'deletequeue-list-header-reason' => 'Alasan penghapusan',
 	'deletequeue-case-votes' => 'Dukungan/penolakan:',
+	'deletequeue-case-title' => 'Rincian kasus penghapusan',
+	'deletequeue-case-details' => 'Rincian dasar',
 	'deletequeue-case-page' => 'Halaman:',
 	'deletequeue-case-reason' => 'Alasan:',
 	'deletequeue-case-expiry' => 'Kadaluwarsa:',

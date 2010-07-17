@@ -2002,6 +2002,20 @@ $messages['ru'] = array(
 $messages['rue'] = array(
 	'specialuserstats' => 'Штатістіка хоснованя',
 	'usagestatistics' => 'Штатістіка хоснованя',
+	'usagestatisticstype' => 'Тіп:',
+	'usagestatisticsstart' => 'Датум початку:',
+	'usagestatisticsend' => 'Датум закінчіня:',
+	'usagestatisticssubmit' => 'Ґенеровати штатістіку',
+	'usagestatisticsnostart' => 'Просиме, уведьте датум початку',
+	'usagestatisticsnoend' => 'Просиме, уведьте датум закінчіня',
+	'usagestatisticsintervalday' => 'День',
+	'usagestatisticsintervalweek' => 'Тыждень',
+	'usagestatisticsintervalmonth' => 'Місяць',
+	'usagestatisticsincremental' => 'Інкременталне',
+	'usagestatisticsincremental-text' => 'інкременталне',
+	'usagestatisticscumulative' => 'Кумулатівне',
+	'usagestatisticscumulative-text' => 'кумулатівне',
+	'usagestatisticscalselect' => 'Выбрати',
 );
 
 /** Sinhala (සිංහල)

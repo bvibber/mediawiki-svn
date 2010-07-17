@@ -2727,6 +2727,7 @@ $messages['rue'] = array(
 	'regexblock-form-submit' => 'Заблоковати того хоснователя',
 	'regexblock-view-all' => 'Вшыткы',
 	'regexblock-view-go' => 'Іти на',
+	'regexblock-view-block-unblock' => 'одблоковати',
 );
 
 /** Sassaresu (Sassaresu)

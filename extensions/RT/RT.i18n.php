@@ -395,6 +395,7 @@ Tu entrava: '''$1'''",
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  */
 $messages['id'] = array(
 	'rt-desc' => 'Antarmuka keren untuk RT (Request Tracker)',
@@ -405,6 +406,8 @@ Anda mencoba: '''$1'''",
 	'rt-badorderby' => "Argumen ORDER BY (ob) tidak sah: harus standar (lihat dokumentasi).
 Anda mencoba: '''$1'''",
 	'rt-badstatus' => "Argumen status (s) tidak sah: harus standar (lihat dokumentasi).
+Anda mencoba: '''$1'''",
+	'rt-badcfield' => "Argumen bidang status tidak sah: harus sederhana (lihat dokumentasi).
 Anda mencoba: '''$1'''",
 	'rt-badqueue' => "Argumen queue (q) tidak sah: harus kata sederhana.
 Anda mencoba: '''$1'''",

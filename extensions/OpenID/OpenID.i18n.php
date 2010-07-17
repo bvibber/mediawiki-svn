@@ -3793,7 +3793,7 @@ Vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
 	'openidchooseauto' => 'Et automatisk opprettet navn ($1)',
 	'openidchoosemanual' => 'Et valgfritt navn:',
 	'openidchooseexisting' => 'En eksisterende konto på denne wikien',
-	'openidchooseusername' => 'brukernavn:',
+	'openidchooseusername' => 'Brukernavn:',
 	'openidchoosepassword' => 'Passord:',
 	'openidconvertinstructions' => 'Dette skjemaet lar deg endre brukerkontoen din til å bruke en OpenID-adresse eller å legge til flere OpenID-adresser.',
 	'openidconvertoraddmoreids' => 'Konverter til OpenID eller legg til en annen OpenID-adresse',
@@ -4565,6 +4565,14 @@ OpenID позволяет вам заходить на различные веб
 	'openid-provider-label-yahoo' => 'Представиться, используя учётную запись Yahoo',
 	'openid-provider-label-aol' => 'Введите ваше имя в AOL',
 	'openid-provider-label-other-username' => 'Введите ваше имя участника $1',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'openidchooseusername' => 'Мено хоснователя:',
+	'openidchoosepassword' => 'Гесло:',
 );
 
 /** Sicilian (Sicilianu)

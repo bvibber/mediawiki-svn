@@ -1220,6 +1220,13 @@ $messages['mk'] = array(
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'storyboard-publish' => 'प्रकाशित करा',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

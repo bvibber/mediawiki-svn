@@ -53,6 +53,13 @@ $messages['cy'] = array(
 	'cassandra-desc' => 'Cadw testun diwygiad yng nghronfa ddata [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'cassandra-desc' => 'Gem versionstekst i [http://cassandra.apache.org/ Apache Cassandra] databasen',
+);
+
 /** German (Deutsch)
  * @author The Evil IP address
  */

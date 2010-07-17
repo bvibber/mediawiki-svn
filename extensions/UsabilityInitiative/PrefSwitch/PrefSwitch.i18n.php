@@ -3676,6 +3676,7 @@ $messages['ml'] = array(
 $messages['mr'] = array(
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
+	'prefswitch-survey-submit-feedback' => 'प्रतिसाद पाठवा',
 );
 
 /** Malay (Bahasa Melayu)

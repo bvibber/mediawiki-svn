@@ -987,6 +987,18 @@ $messages['ru'] = array(
 Вы можете [[Special:RefHelper|добавить сноску вручную]] или [[Special:RefSearch|произвести поиск ссылок]].',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'refhelper-label_authorsurname' => 'Призвіско:',
+	'refhelper-pages' => 'Сторінкы:',
+	'refhelper-year' => 'Рік:',
+	'refhelper-category' => 'Катеґорія $1:',
+	'refhelper-create' => 'Створити',
+	'refhelper-search' => 'Глядати',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

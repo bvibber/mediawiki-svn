@@ -311,10 +311,12 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Morten LJ
  */
 $messages['da'] = array(
 	'bookinfo-header' => 'Boginformation',
+	'bookinformation-desc' => 'Udvider [[Special:Booksources|specialsiden med bogkilder]] med information fra en webservice',
 	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Forfatter:',
 	'bookinfo-result-publisher' => 'Udgiver:',

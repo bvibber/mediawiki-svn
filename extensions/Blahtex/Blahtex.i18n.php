@@ -1156,7 +1156,7 @@ $messages['frp'] = array(
 	'math_IllegalDelimiter' => 'Dèlimitior dèfendu aprés « $1 »',
 	'math_IllegalFinalBackslash' => 'Lo caractèro « \\ » pôt pas aparêtre a la fin de la buchiê.',
 	'math_IllegalNestedFontEncodings' => 'Les comandes d’encodâjo de caractèros pôvont pas étre embrecâs.',
-	'math_IllegalRedefinition' => 'La comanda « $1 » est ja dèfenia, vos pouede pas la tornar dèfenir.',
+	'math_IllegalRedefinition' => 'La comanda « $1 » est ja dèfenia, vos la pouede pas tornar dèfenir.',
 	'math_InvalidColour' => 'La color « $1 » est envalida.',
 	'math_InvalidUtf8Input' => 'La chêna de caractèros buchiê est pas u format UTF-8.',
 	'math_LatexFontNotSpecified' => 'Niona police de caractèros LaTeX at étâ spècefiâ por « $1 ».',
@@ -1739,6 +1739,7 @@ Proba usar le commando "$3{...}".',
  * @author Kandar
  */
 $messages['id'] = array(
+	'math_CannotCreateTexFile' => 'Tidak dapat membuat berkas tex',
 	'math_CannotRunDvipng' => 'Tidak bisa menjalankan dvipng',
 	'math_CannotRunLatex' => 'Tidak dapat menjalankan latex',
 	'math_IllegalCharacter' => 'Karakter masukan tidak sah',

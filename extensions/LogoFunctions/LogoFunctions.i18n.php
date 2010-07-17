@@ -119,6 +119,14 @@ $messages['ia'] = array(
 	'logofunctions-filenotexist' => 'Error: [[File:$1]] non existe',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'logofunctions-desc' => 'Menambahkan fungsi parser untuk mengatur logo wiki',
+	'logofunctions-filenotexist' => 'Kesalahan: [[File: $1]] tidak ada',
+);
+
 /** Georgian (ქართული)
  * @author David1010
  */

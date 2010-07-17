@@ -242,6 +242,13 @@ $messages['tl'] = array(
 	'wikimediamobile-desc' => 'Ang mga tungkuling pangsuporta ng MediaWiki para sa proyektong mobil na Wikipedia ay nakalangkay sa http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Ukrainian (Українська)
+ * @author JenVan
+ */
+$messages['uk'] = array(
+	'wikimediamobile-desc' => 'Допоміжні функції MediaWiki для мобільного проекту Вікімедії, розміщеного на http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

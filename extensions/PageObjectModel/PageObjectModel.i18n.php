@@ -83,6 +83,13 @@ $messages['ia'] = array(
 	'pageobjectmodel-desc' => 'Adde un insimul de classes pro abstraction del syntaxe de MediaWiki pro permitter le extraction e manipulation facile de paginas intra altere programmas',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'pageobjectmodel-desc' => 'Menambahkan serangkaian kelas untuk abstraksi sintaks MediaWiki yang memperbolehkan ekstraksi dan manipulasi halaman di program lain',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

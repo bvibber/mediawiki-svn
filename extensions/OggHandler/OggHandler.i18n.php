@@ -1498,6 +1498,7 @@ Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Rex
@@ -1530,6 +1531,7 @@ Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-dismiss' => 'Tutup',
 	'ogg-download' => 'Unduh berkas',
 	'ogg-desc-link' => 'Mengenai berkas ini',
+	'ogg-oggThumb-version' => 'OggHandler membutuhkan oggThumb versi $1 atau terbaru.',
 );
 
 /** Igbo (Igbo) */

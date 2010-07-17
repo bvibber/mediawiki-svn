@@ -714,6 +714,15 @@ $messages['ru'] = array(
 	'specialwhoiswatchingaddbtn' => 'Добавить выбранных участников',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'whoiswatching' => 'Хто слїдує вікі сторінку',
+	'specialwhoiswatchingaddusers' => 'Придати хоснователїв слїдуючіх сторінку',
+	'specialwhoiswatchingaddbtn' => 'Придати выбраных хоснователїв',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */

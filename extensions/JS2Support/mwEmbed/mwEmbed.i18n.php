@@ -583,6 +583,14 @@ $messages['ru'] = array(
 	'mwe-test-plural' => 'Я прошёл {{PLURAL:$1|$1 проверку|$1 проверки|$1 проверок}}',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mwe-ok' => 'ОК',
+	'mwe-cancel' => 'Сторно',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
