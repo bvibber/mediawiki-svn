@@ -541,11 +541,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'wikieditor-template-editor-dialog-title' => 'साच्याचे संपादन करा',
 	'wikieditor-template-editor-dialog-submit' => 'अद्ययावत करा',
+	'wikieditor-template-editor-dialog-cancel' => 'रद्द करा',
 );
 
 /** Malay (Bahasa Melayu)

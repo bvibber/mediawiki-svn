@@ -502,11 +502,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'wikieditor' => 'विकिमजकूर संपादनाची विकसित सुविधा',
 	'wikieditor-wikitext-tab' => 'विकिमजकूर',
+	'wikieditor-loading' => 'चढवत आहे…',
 );
 
 /** Malay (Bahasa Melayu)

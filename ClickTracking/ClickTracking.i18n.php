@@ -1300,6 +1300,14 @@ $messages['ml'] = array(
 	'ct-update-table' => 'പട്ടിക പുതുക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'ct-expert' => 'तज्ज्ञ',
+	'ct-and' => 'आणि',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Kurniasan

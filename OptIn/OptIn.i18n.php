@@ -4097,6 +4097,31 @@ $messages['mn'] = array(
 	'optin-survey-answer-changes-other' => 'Бусад:',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'optin-survey-no' => 'नाही',
+	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
+	'optin-survey-question-browser' => 'तुम्ही कोणता न्यहाळक (ब्राऊजर) वापरता ?',
+	'optin-survey-answer-browser-other' => 'इतर न्याहाळक(बाउजर}',
+	'optin-survey-answer-changes-other' => 'इतर',
+	'optin-improvements2' => '== कोणकोणत्या सुधारणा केल्या आहेत? ==
+[[File:UsabilityToolbar.png|left|link=|संवर्धीत संपादन साधनपट्टीचा देखावा]]
+[[File:UsabilityDialogs.png|left|link=|नवीन मजकुर निर्मिती संवादगवाक्षाचा देखावा ]]
+;संवर्धीत संपादन साधनपट्टी
+The enhanced toolbar makes it easier to edit articles.
+New and improved icons make it clearer what action each tool performs.
+Expanded sections reduce clutter while keeping infrequently used tools just a click away.
+;संवादगवाक्ष
+When creating links or tables, clicking the tool icon now opens a dialog box which helps you to create links and tables by filling out a simple form.
+;आणिअजून
+We have introduced a number of other improvements such as enhanced navigation, cascading tabs, improved search, and more.
+== कसे सहभागी व्हावे ==
+To find out more about the Usability Initiative, please visit our [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style="clear:both"></div>',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Diagramma Della Verita

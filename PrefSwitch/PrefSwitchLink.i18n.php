@@ -529,6 +529,13 @@ $messages['ml'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'prefswitch-link-anon' => 'नवीन वैशीष्ट्ये',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

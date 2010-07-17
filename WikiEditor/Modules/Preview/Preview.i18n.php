@@ -573,10 +573,14 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'wikieditor-preview-preference' => 'सोबतच बाजूस दिसणारी झलक शक्य करा',
+	'wikieditor-preview-tab' => 'झलक',
+	'wikieditor-preview-changes-tab' => 'बदल',
+	'wikieditor-preview-loading' => 'चढवत आहे…',
 );
 
 /** Malay (Bahasa Melayu)
