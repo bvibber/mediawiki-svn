@@ -2,15 +2,15 @@
 
 ResourceLoader::register( array(
 	'jquery' => array(
-		'script' => 'resources/base/jquery/jquery-1.4.2.js',
+		'script' => 'resources/jquery/jquery-1.4.2.js',
 		'raw' => true,
 	),
 	'jquery.tabIndex' => array(
-		'script' => 'resources/base/jquery/jquery.tabIndex.js',
+		'script' => 'resources/jquery/jquery.tabIndex.js',
 		'raw' => true,
 	),
 	'mw' => array(
-		'script' => 'resources/base/mw/mw.js',
+		'script' => 'resources/mw/mw.js',
 		'raw' => true,
 	),
 	'test' => array(
