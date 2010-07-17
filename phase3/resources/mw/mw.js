@@ -19,7 +19,16 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
  */
 ( function() {
 	
-	/* Functions */
+	/* Constants */
+	
+	// This will not change until we are 100% ready to turn off legacy globals
+	const LEGACY_GLOBALS = true;
+	
+	/* Members */
+	
+	this.legacy = LEGACY_GLOBALS ? window : {};
+	
+	/* Methods */
 	
 	/**
 	 * Log a string msg to the console
@@ -80,10 +89,10 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		/* Private Members */
 		
 		var that = this;
-		// List of configuration values
-		var values = {};
+		// List of configuration values - in legacy mode these configurations were ALL in the global space
+		var values = LEGACY_GLOBALS ? window : {};
 		
-		/* Public Functions */
+		/* Public Methods */
 		
 		/**
 		 * Sets one or multiple configuration values using a key and a value or an object of keys and values
@@ -142,7 +151,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		// List of localized messages
 		var messages = {};
 		
-		/* Public Functions */
+		/* Public Methods */
 		
 		this.set = function( keys, value ) {
 			if ( typeof keys === 'object' ) {
@@ -199,7 +208,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		// True after document ready occurs
 		var ready = false;
 		
-		/* Private Functions */
+		/* Private Methods */
 		
 		/**
 		 * Gets a list of modules names that a module needs in their proper dependency order
@@ -322,7 +331,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 			queue[queue.length] = { 'needs': filter( ['undefined', 'registered'], needs ), 'callback': callback };
 		}
 		
-		/* Public Functions */
+		/* Public Methods */
 		
 		/**
 		 * Processes the queue, loading and executing when things when ready.
@@ -497,7 +506,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		// Decoded user agent string cache
 		var client = null;
 		
-		/* Public Functions */
+		/* Public Methods */
 		
 		/**
 		 * Builds a url string from an object containing any of the following components:
@@ -627,7 +636,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 				// Translations for conforming operating system names
 				var osTranslations = [['sunos', 'solaris']];
 				
-				/* Functions */
+				/* Methods */
 				
 				// Performs multiple replacements on a string
 				function translate( source, translations ) {
