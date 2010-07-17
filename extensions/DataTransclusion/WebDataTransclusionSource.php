@@ -228,16 +228,16 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 				$r[ $k ] = $v; 
 			}
 
-			return $r;
-		} else {
-			return $rec;
-		}
+			$rec = $r;
+		} 
 
 		foreach ( $rec as $k => $v ) {
 			if ( !is_null( $v ) && !is_string( $v ) && !is_int( $v ) ) {
 				$rec[ $k ] = $this->asString( $v ); 
 			}
 		}
+
+		return $rec;
 	}
 
 	public function resolvePath( $data, $path, $split = true ) {

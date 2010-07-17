@@ -59,6 +59,7 @@ class XmlDataTransclusionSource extends WebDataTransclusionSource {
 
 	public function resolvePath( $dom, $xpath ) {
 		$lookup = new DOMXPath( $dom->ownerDocument );
+
 		$res = $lookup->query( $xpath, $dom );
 
 		if ( $res instanceof DOMNodeList ) {
@@ -86,30 +87,6 @@ class XmlDataTransclusionSource extends WebDataTransclusionSource {
 		}
 
 		return "$v";
-	}
-
-	public function flattenRecord( $rec ) {
-		$rec = parent::flattenRecord( $rec );
-
-		if ( !$rec ) return $rec;
-
-		foreach ( $rec as $k => $v ) {
-			if ( is_object($v) ) {
-				if ( $v instanceof DOMNodeList ) {
-					$v = $v->item( 0 ); 
-				}
-
-				if ( $v instanceof DOMNamedNodeMap ) {
-					$v = $v->item( 0 ); 
-				}
-
-				if ( $v instanceof DOMNode ) {
-					$rec[ $k ] = $v->textContent; 
-				}
-			}
-		}
-
-		return $rec;
 	}
 
 }
