@@ -54,7 +54,7 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				// Common UsabilityInitiative funtions
-				array( 'src' => 'js/usability.js', 'version' => 4 ),
+				array( 'src' => 'js/usability.js', 'version' => 5 ),
 				
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
@@ -66,7 +66,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 17 ),
 				array( 'src' => 'js/plugins/jquery.highlightText.js', 'version' => 1 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 32 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 33 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 36 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 196 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
@@ -83,10 +83,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 450 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 451 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 461 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 464 ),
 			),
 		),
 	);
