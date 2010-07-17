@@ -1,7 +1,7 @@
 /**
  * Plugin that highlights matched word partials in a given element
  * TODO: add a function for restoring the previous text
- * TODO: 
+ * TODO: accept mappings for converting shortcuts like WP: to Wikipedia: 
  */
 ( function( $ ) {
 
@@ -36,7 +36,7 @@ $.highlightText = {
 				skip = 1;
 			}
 		} else if ( node.nodeType == 1 && node.childNodes && !/(script|style)/i.test( node.tagName )
-				&& !( node.tagName.toLowerCase() == 'span' && node.classList.contains( 'highlight' ) ) ) {
+				&& !( node.tagName.toLowerCase() == 'span' && node.className.match( 'highlight' ) ) ) {
 			for ( var i = 0; i < node.childNodes.length; ++i ) {
 				i += $.highlightText.innerHighlight( node.childNodes[i], pat );
 			}
