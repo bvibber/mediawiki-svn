@@ -253,6 +253,7 @@ class ResourceLoader {
 		foreach ( $modules as $module ) {
 			if ( static::$modules[$module]['raw'] ) {
 				readfile( static::$modules[$module]['script'] );
+				echo "\n";
 			}
 		}
 		// Special meta-information for the 'mw' module
@@ -267,6 +268,11 @@ class ResourceLoader {
 			// Include each loader once
 			foreach ( array_unique( $loaders ) as $loader ) {
 				readfile( $loader );
+				echo "\n";
+			}
+			// Configure debug mode on server
+			if ( $parameters['debug'] ) {
+				echo "mw.debug = true;\n";
 			}
 			/*
 			 * Skin::makeGlobalVariablesScript needs to be modified so that we still output the globals for now, but also
@@ -300,7 +306,7 @@ class ResourceLoader {
 				// Messages
 				$messages = isset( $blobs[$module] ) ? $blobs[$module] : '{}';
 				// Output
-				echo "mw.loader.implement(\n'{$module}', function() { {$script} }, '{$style}', {$messages}\n);\n";
+				echo "mw.loader.implement( '{$module}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
 			}
 		}
 		// Set headers -- when we support CSS only mode, this might change!

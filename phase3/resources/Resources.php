@@ -13,11 +13,6 @@ ResourceLoader::register( array(
 		'script' => 'resources/base/mw/mw.util.js',
 		'raw' => true,
 	),
-	'mw.debug' => array(
-		'script' => 'resources/base/mw/mw.debug.js',
-		'raw' => true,
-		'debug' => true
-	),
 	'test' => array(
 		'script' => 'resources/test/test.js',
 		'loader' => 'resources/test/loader.js',
