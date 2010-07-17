@@ -1071,8 +1071,8 @@ CREATE TABLE /*_*/interwiki (
   -- The URL of the file api.php
   iw_api blob NOT NULL,
 
-  -- The name of the database (for a connection to be established with wfGetLB( 'dbname' ))
-  iw_dbname varchar(32) NOT NULL,
+  -- The name of the database (for a connection to be established with wfGetLB( 'wikiid' ))
+  iw_wikiid varchar(64) NOT NULL,
   
   -- A boolean value indicating whether the wiki is in this project
   -- (used, for example, to detect redirect loops)

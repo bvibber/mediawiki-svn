@@ -533,11 +533,11 @@ class Title {
 	 *
 	 * @return \type{\string} the DB name
 	 */
-	public function getTransDBname() {
+	public function getTransWikiID() {
 		if ( $this->mInterwiki == '' )
 			return false;
 
-		return Interwiki::fetch( $this->mInterwiki )->getDBname();
+		return Interwiki::fetch( $this->mInterwiki )->getWikiID();
 	}
 
 	/**

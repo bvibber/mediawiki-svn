@@ -3430,7 +3430,7 @@ class Parser {
 
 		}
 
-		return "<h2>$fullTitle</h2><pre>$text</pre> List of templates: <pre>".$listSubTemplates.'</pre>' . $list2;
+		return "<h2>$fullTitle</h2><pre>$url1\n$url2\n$text</pre> List of templates: <pre>".$listSubTemplates.'</pre>' . $list2;
 	}
 	
 	
