@@ -3839,6 +3839,10 @@ Biex tgħinna ntejbuhom, jekk jogħġbok imla l-kwestjonarju opzjonali segwenti 
  */
 $messages['nds-nl'] = array(
 	'prefswitch' => 'Veurkeuren veur Bruukbaorheidsinitiatief wisselen',
+	'prefswitch-desc' => 'Hierdeur ku-j een groep instellingen wiezigen',
+	'prefswitch-jswarning' => "Vergeet neet dat mit 't wiezigen van de vormgeving joew [[User:$1/$2.js|JavaScript veur $2]] ekopieerd mut wönnen naor [[{{ns:user}}:$1/vector.js]] of [[{{ns:user}}:$1/common.js]] um 't nog te laoten doon.",
+	'prefswitch-csswarning' => 'Joew [[User:$1/$2.css|an-epassen stielen veur $2]] bin neet meer actief.
+Je kunnen de CSS-stielen veur Vector anpassen in de pagina [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-submit-off' => 'Nieje functies uutzetten',
@@ -3866,6 +3870,8 @@ Kies de meugelijkheen dee van toepassing bin.',
 	'prefswitch-title-off' => 'Nieje functies uutzetten',
 	'prefswitch-title-switched-off' => 'Bedank',
 	'prefswitch-title-feedback' => "Is 't wat?",
+	'prefswitch-main-logged-changes' => "* 't Onderwarp '''{{int:watch}}''' is noen een steerntjen.
+* 't Onderwarp '''{{int:move}}''' steet noen in 't uutklapmenu naos 't zeukvienster.",
 );
 
 /** Dutch (Nederlands)
