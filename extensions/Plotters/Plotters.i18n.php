@@ -503,6 +503,8 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'plotters-uses' => 'Benotzt',
 	'plotters-missing-script' => 'Et gouf kee Script definéiert.',
+	'plotters-excessively-long-scriptname' => 'Den Numm vum Script ass ze laang.
+Leet w.e.g. e Script fest, den Numm vun deem däerf net méi laang si wéi 255 Zeechen.',
 );
 
 /** Macedonian (Македонски)

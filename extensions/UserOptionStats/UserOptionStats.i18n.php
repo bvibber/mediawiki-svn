@@ -306,7 +306,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'uos-unknown' => '* Per dèfôt',
+	'uos-unknown' => '*Per dèfôt',
 	'uos-other' => '* Ôtres',
 );
 

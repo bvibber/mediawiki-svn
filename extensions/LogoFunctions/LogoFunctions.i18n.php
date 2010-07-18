@@ -124,7 +124,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'logofunctions-desc' => 'Menambahkan fungsi parser untuk mengatur logo wiki',
-	'logofunctions-filenotexist' => 'Kesalahan: [[File: $1]] tidak ada',
+	'logofunctions-filenotexist' => 'Kesalahan: [[File:$1]] tidak ada',
 );
 
 /** Georgian (ქართული)

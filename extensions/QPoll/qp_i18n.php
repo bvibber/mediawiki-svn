@@ -515,6 +515,8 @@ $messages['br'] = array(
 	'qp_func_invalid_question_id' => 'Id direizh evit ar goulenn=$2 direizh (ket un niver) evit ar sontadeg $1',
 	'qp_func_invalid_proposal_id' => 'Id kinnig=$3 direizh (ket un niver) evit ar sontadeg $1, goulenn $2',
 	'qp_error_in_question_header' => 'Talbenn goulenn direizh : $1',
+	'qp_error_id_in_stats_mode' => 'Dibosupl eo diskleriañ un ID eus ar sontadeg er mod stadegoù',
+	'qp_error_dependance_in_stats_mode' => "Dibosupl eo diskleriañ ar chadenn amzalc'h d'ar sontadeg er mod stadegoù",
 	'qp_error_invalid_question_type' => 'Seurt goulenn direizh : $1',
 	'qp_error_vote_dependance_poll' => 'Mar plij, votit evit ar sontadeg $1 da gentañ.',
 	'qp_error_too_many_spans' => 'Re a strolladoù rummadoù evit an niver hollek a isrummadoù termenet',

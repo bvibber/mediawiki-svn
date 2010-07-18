@@ -298,6 +298,9 @@ Perak chom hep rannañ anezhi ?",
 Studiet e vo a-benn nebeut.
 Gellout a rit [$1 lenn istorioù embannet].',
 	'storyboard-emailtitle' => 'Kinnig an istor graet mat',
+	'storyboard-emailbody' => 'Ho istor anvet "$1" a zo bet kinniget.
+Adlennet e vo ganeomp a-benn nebeut.
+Gellout a rit [$2 lenn an istorioù embannet].',
 	'storyreview' => 'Barnadenn an istor',
 	'storyboard-deleteimage' => 'Dilemel ar skeudenn',
 	'storyboard-done' => 'Graet',

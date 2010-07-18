@@ -1532,6 +1532,7 @@ Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-download' => 'Unduh berkas',
 	'ogg-desc-link' => 'Mengenai berkas ini',
 	'ogg-oggThumb-version' => 'OggHandler membutuhkan oggThumb versi $1 atau terbaru.',
+	'ogg-oggThumb-failed' => 'oggThumb gagal membuat miniatur gambar.',
 );
 
 /** Igbo (Igbo) */
@@ -2311,6 +2312,8 @@ Instelleer <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_do
 	'ogg-dismiss' => 'Sluten',
 	'ogg-download' => 'Bestaand binnenhaolen',
 	'ogg-desc-link' => 'Over dit bestaand',
+	'ogg-oggThumb-version' => 'Veur OggHandler he-j oggThumb-versie $1 of hoger neudig.',
+	'ogg-oggThumb-failed' => 'oggThumb kon gien ofbeeldingsoverzichte anmaken.',
 );
 
 /** Dutch (Nederlands)

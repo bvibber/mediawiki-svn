@@ -355,10 +355,11 @@ $messages['niu'] = array(
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
+ * @author Alamnirvana
  * @author Ezagren
  */
 $messages['bjn'] = array(
-	'configure-desc-group' => 'Bubuhan',
+	'configure-desc-group' => 'Galambang',
 	'configure-desc-val' => 'Nilai',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-section-pages' => 'Tungkaran',

@@ -389,8 +389,8 @@ $messages['fr'] = array(
 	'edituser' => "Modifier l'utilisateur",
 	'edituser-username' => 'Nom d’utilisateur :',
 	'edituser-dosearch' => 'Rechercher',
-	'edituser-nouser' => 'L\'utilisateur "$1" n\'existe pas.',
-	'edituser-exempt' => 'L\'utilisateur "$1" ne peut pas être modifié.',
+	'edituser-nouser' => "L'utilisateur « $1 » n'existe pas.",
+	'edituser-exempt' => "L'utilisateur « $1 » ne peut pas être modifié.",
 	'right-edituser' => 'Modifie les préférences des autres utilisateurs',
 	'right-edituser-exempt' => 'Les préférences de cet utilisateur ne sont pas modifiables par les autres',
 );

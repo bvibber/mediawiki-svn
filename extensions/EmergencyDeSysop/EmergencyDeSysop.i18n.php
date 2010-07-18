@@ -474,6 +474,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author IvanLanin
  */
 $messages['id'] = array(
@@ -487,7 +488,7 @@ $messages['id'] = array(
 	'emergencydesysop-notasysop' => 'Pengguna yang dimaksud bukanlah seorang pengurus.',
 	'emergencydesysop-nogroups' => 'Tidak ada',
 	'emergencydesysop-done' => 'Proses selesai, ANda dan [[$1]] telah dikeluarkan dari daftar pengurus.',
-	'emergencydesysop-invalidtarget' => 'Pengguna yang dituju tidak ada.',
+	'emergencydesysop-invalidtarget' => 'Pengguna yang dituju tidak ditemukan.',
 	'emergencydesysop-blocked' => 'Anda tidak dapat mengakses halaman ini ketika sedang diblok',
 	'emergencydesysop-noright' => 'Anda tidak memiliki izin yang memadai untuk mengakses halaman ini',
 	'right-emergencydesysop' => 'Mampu untuk memecat seorang pengurus lain, bersama-sama',

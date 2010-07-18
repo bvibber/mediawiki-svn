@@ -125,6 +125,15 @@ $messages['ia'] = array(
 	'frontbackforced-forced' => '_(wikiligamines_fortiate)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'frontbackforced-front' => '_(front_matter)',
+	'frontbackforced-back' => '_(back_matter)',
+	'frontbackforced-forced' => '_(forced_wikilinks)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

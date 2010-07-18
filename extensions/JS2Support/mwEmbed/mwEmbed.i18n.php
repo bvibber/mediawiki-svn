@@ -344,6 +344,7 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  */
@@ -354,6 +355,10 @@ $messages['id'] = array(
 	'mwe-load-drag-item' => 'Memuat butir terseret',
 	'mwe-ok' => 'Oke',
 	'mwe-cancel' => 'Batalkan',
+	'mwe-enable-gadget' => 'Aktifkan beta multimedia (mwEmbed) untuk semua halaman',
+	'mwe-enable-gadget-done' => 'Gadget beta multimedia telah diaktifkan',
+	'mwe-must-login-gadget' => 'Untuk mengaktifkan gadget Anda harus <a target="_new" href="$1">masuk log</a>',
+	'mwe-test-plural' => 'Saya menjalankan {{PLURAL:$1|$1 tes|$1 tes}}',
 );
 
 /** Igbo (Igbo) */

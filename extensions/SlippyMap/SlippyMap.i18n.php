@@ -1009,10 +1009,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
-	'slippymap_desc' => 'Permite o uso da marca <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> para apresentar um mapa corrediço OpenLayers. Os mapas provêm de [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_desc' => 'Adiciona um elemento <tt>&lt;slippymap&gt;</tt> que permite a incorporação de mapas estáticos & dinâmicos. Suporta vários serviços de cartografia incluindo o [http://openstreetmap.org OpenStreetMap] e o NASA Worldwind',
 	'slippymap_error' => '$1 erro: $2',
 	'slippymap_errors' => '$1 erros:',
 	'slippymap_error_missing_attribute_lat' => 'Faltando o atributo <tt>lat</tt> (para a latitude).',
