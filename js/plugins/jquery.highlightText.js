@@ -41,7 +41,7 @@ $.highlightText = {
 			}
 		// if this is an element with childnodes, and not a script, style or an element we created
 		} else if ( node.nodeType == 1 && node.childNodes && !/(script|style)/i.test( node.tagName )
-				&& !( node.tagName.toLowerCase() == 'span' && node.className.match( 'highlight' ) ) ) {
+				&& !( node.tagName.toLowerCase() == 'span' && node.className.match( /\bhighlight/ ) ) ) {
 			for ( var i = 0; i < node.childNodes.length; ++i ) {
 				// call the highlight function for each child node
 				$.highlightText.innerHighlight( node.childNodes[i], pat );
