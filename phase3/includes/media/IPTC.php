@@ -19,7 +19,6 @@ class IPTC {
         * @return Array iptc metadata array
         */
         static function parse( $rawData ) {
-                // TODO: This is nowhere near complete yet.
                 $parsed = iptcparse( $rawData );
                 $data = Array();
                 if (!is_array($parsed)) {
@@ -153,6 +152,40 @@ class IPTC {
 				case '2#135': /* lang code */
 					$data['LanguageCode'] = self::convIPTC( $val, $c );
 					break;
+
+				// Start date stuff.
+				// It doesn't accept incomplete dates even though they are valid
+				// according to spec.
+				// Should potentially store timezone as well.
+				case '2#055':
+					//Date created (not date digitized).
+					//Maps to exif DateTimeOriginal
+					if ( isset( $parsed['2#060'] ) ) {
+						$time = $parsed['2#060'];
+					} else {
+						$time = Array();
+					}
+					$timestamp =  self::timeHelper( $val, $time, $c );
+					if ($timestamp) {
+						$data['DateTimeOriginal'] = $timestamp;
+					}
+					break;
+
+				case '2#062':
+					//Date converted to digital representation.
+					//Maps to exif DateTimeDigitized
+					if ( isset( $parsed['2#063'] ) ) {
+						$time = $parsed['2#063'];
+					} else {
+						$time = Array();
+					}
+					$timestamp =  self::timeHelper( $val, $time, $c );
+					if ($timestamp) {
+						$data['DateTimeDigitized'] = $timestamp;
+					}
+					break;
+
+
 				case '2#000': /* iim version */
 					// unlike other tags, this is a 2-byte binary number.
 					//technically this is required if there is iptc data
@@ -176,6 +209,12 @@ class IPTC {
 				// 2:200, 2:201, 2:202
 				// or the audio stuff (2:150 to 2:154)
 
+				case '2#070':
+				case '2#060':
+				case '2#063':
+					//ignore. Handled elsewhere.
+					break;
+
 				default:
 					wfDebugLog( 'iptc', "Unsupported iptc tag: $tag. Value: " . implode( ',', $val ));
 					break;
@@ -183,6 +222,71 @@ class IPTC {
 
 		}
 		return $data;
+	}
+
+	/**
+	* Convert an iptc date and time tags into the exif format
+	*
+	* @todo Potentially this should also capture the timezone offset. 
+	* @param Array $date The date tag
+	* @param Array $time The time tag
+	* @return String Date in exif format.
+	*/
+	private static function timeHelper( $date, $time, $c ) {
+		if ( count( $date ) === 1 ) {
+			//the standard says this should always be 1
+			//just double checking.
+			list($date) = self::convIPTC( $date, $c );
+		} else {
+			return null;
+		}
+
+		if ( count( $time ) === 1 ) {
+			list($time) = self::convIPTC( $time, $c );
+			$dateOnly = false;
+		} else {
+			$time = '000000+0000'; //placeholder
+			$dateOnly = true;
+		}
+
+		if ( ! ( preg_match('/\d\d\d\d\d\d[-+]\d\d\d\d/', $time) 
+			&& preg_match('/\d\d\d\d\d\d\d\d/', $date)
+			&& substr($date, 0, 4) !== '0000'
+			&& substr($date, 4, 2) !== '00'
+			&& substr($date, 6, 2) !== '00'
+		 ) ) {
+			//something wrong.
+			// Note, this rejects some valid dates according to iptc spec
+			// for example: the date 00000400 means the photo was taken in
+			// april, but the year and day is unknown. We don't process these
+			// types of incomplete dates atm.
+			wfDebugLog( 'iptc', "IPTC: invalid time ( $time ) or date ( $date )");
+			return null;
+		}
+
+		if ( substr($date, 0, 4) < "1902" ) {
+			//We run into the reverse y2k38 bug.
+			//might do something better later...
+			wfDebugLog( 'iptc', "IPTC: date is too early (reverse y2k38 bug) ( $date )");
+			return null;	
+		}
+		
+		$unixTS = wfTimestamp( TS_UNIX, $date . substr( $time, 0, 6 ));
+		$tz = ( intval( substr( $time, 7, 2 ) ) *60*60 )
+			+ ( intval( substr( $time, 9, 2 ) ) * 60 );
+
+		if ( substr( $time, 6, 1 ) === '-' ) {
+			$tz = - $tz;
+		}
+
+		$finalTimestamp = wfTimestamp( TS_EXIF, $unixTS + $tz );
+		if ( $dateOnly ) {
+			//return the date only
+			return substr( $finalTimestamp, 0, 10 );
+		} else {
+			return $finalTimestamp;
+		}
+
 	}
 
 	/**

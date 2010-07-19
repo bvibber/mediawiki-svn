@@ -918,7 +918,10 @@ class FormatExif {
 						$val = wfMsg( 'exif-unknowndate' );
 					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d) (?:\d\d):(?:\d\d):(?:\d\d)$/', $val ) ) {
 						$val = $wgLang->timeanddate( wfTimestamp( TS_MW, $val ) );
+					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d)$/', $val ) ) {
+						$val = $wgLang->date( wfTimestamp( TS_MW, $val . ' 00:00:00' ) );
 					}
+					// else it will just output $val without formatting it.
 					break;
 
 				case 'ExposureProgram':
