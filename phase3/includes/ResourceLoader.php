@@ -15,7 +15,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @author Roan Kattouw, Trevor Parscal
+ * @author Roan Kattouw
+ * @author Trevor Parscal
  */
 
 /*
@@ -113,10 +114,10 @@ class ResourceLoader {
 		$missing = array_diff( $modules, array_keys( $blobs ) );
 		foreach ( $missing as $module ) {
 			// Build message blob for module messages
-			$messages = isset( static::$modules[$module]['messages'] ) ?
-				array_keys( static::$modules[$module]['messages'] ) : false;
+			$messages = isset( self::$modules[$module]['messages'] ) ?
+				array_keys( self::$modules[$module]['messages'] ) : false;
 			if ( $messages ) {
-				foreach ( ResourceLoader::$modules[$module]['messages'] as $key ) {
+				foreach ( self::$modules[$module]['messages'] as $key ) {
 					$messages[$encKey] = wfMsgExt( $key, array( 'language' => $lang ) );
 				}
 				$blob = json_encode( $messages );
@@ -166,14 +167,14 @@ class ResourceLoader {
 		if ( is_array( $module ) && empty( $options ) ) {
 			$success = true;
 			foreach ( $module as $name => $options ) {
-				if ( !static::register( $name, $options ) ) {
+				if ( !self::register( $name, $options ) ) {
 					$success = false;
 				}
 			}
 			return $success;
 		}
 		// Disallow duplicate registrations
-		if ( isset( static::$modules[$module] ) ) {
+		if ( isset( self::$modules[$module] ) ) {
 			// A module has already been registered by this name
 			return false;
 		}
@@ -203,13 +204,12 @@ class ResourceLoader {
 			// Style file does not exist
 			return false;
 		}
-		static::$modules[$module] = $options;
+		self::$modules[$module] = $options;
 	}
 	/*
 	 * Outputs a response to a resource load-request, including a content-type header
 	 * 
-	 * @param array $modules module names to include in the request
-	 * @param array $options options which affect the content of the response (optional)
+	 * @param WebRequest $request web request object to respond to
 	 * 
 	 * $options format:
 	 * 	array(
@@ -223,12 +223,12 @@ class ResourceLoader {
 	public static function respond( WebRequest $request ) {
 		global $wgUser, $wgLang, $wgDefaultSkin;
 		// Fallback on system settings
-		$parameters = array_merge( array(
+		$parameters = array(
 			'user' => $request->getBool( 'user', $wgUser->isLoggedIn() ),
 			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
 			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
 			'debug' => $request->getBool( 'debug' ),
-		) );
+		);
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {
 			$lang = $wgLang->factory( $parameters['lang'] );
@@ -237,12 +237,8 @@ class ResourceLoader {
 		// Get modules - filtering out any we don't know about
 		$modules = array();
 		foreach ( explode( '|', $request->getVal( 'modules' ) ) as $module ) {
-			if ( isset( static::$modules[$module] ) ) {
-				if ( static::$modules[$module]['debug'] ) {
-					if ( $parameters['debug'] ) {
-						$modules[] = $module;
-					}
-				} else {
+			if ( isset( self::$modules[$module] ) ) {
+				if ( !self::$modules[$module]['debug'] || $parameters['debug'] ) {
 					$modules[] = $module;
 				}
 			}
@@ -251,8 +247,8 @@ class ResourceLoader {
 		ob_start();
 		// Output raw modules first
 		foreach ( $modules as $module ) {
-			if ( static::$modules[$module]['raw'] ) {
-				readfile( static::$modules[$module]['script'] );
+			if ( self::$modules[$module]['raw'] ) {
+				readfile( self::$modules[$module]['script'] );
 				echo "\n";
 			}
 		}
@@ -285,22 +281,23 @@ class ResourceLoader {
 			 */
 		}
 		// Output non-raw modules
-		$blobs = static::messages( $parameters['lang'], $modules );
+		$blobs = self::messages( $parameters['lang'], $modules );
 		foreach ( $modules as $module ) {
-			if ( !static::$modules[$module]['raw'] ) {
+			if ( !self::$modules[$module]['raw'] ) {
 				// Script
-				$script = file_get_contents( static::$modules[$module]['script'] );
+				$script = file_get_contents( self::$modules[$module]['script'] );
 				if ( !$parameters['debug'] ) {
-					$script = static::filter( 'strip-debug', $script );
+					$script = self::filter( 'strip-debug', $script );
 				}
 				// Style
-				$style = static::$modules[$module]['style'] ? file_get_contents( static::$modules[$module]['style'] ) : '';
+				$style = self::$modules[$module]['style'] ? file_get_contents( self::$modules[$module]['style'] ) : '';
 				if ( $style !== '' ) {
 					if ( $parameters['dir'] == 'rtl' ) {
-						$style = static::filter( 'flip-css', $style );
+						$style = self::filter( 'flip-css', $style );
 					}
 					$style = Xml::escapeJsString(
-						static::filter( 'minify-css', $style, static::$modules[$module]['style'] )
+						$parameters['debug'] ?
+							$style : self::filter( 'minify-css', $style, self::$modules[$module]['style'] )
 					);
 				}
 				// Messages
@@ -315,7 +312,7 @@ class ResourceLoader {
 		if ( $parameters['debug'] ) {
 			ob_end_flush();
 		} else {
-			echo static::filter( 'minify-js', ob_get_clean() );
+			echo self::filter( 'minify-js', ob_get_clean() );
 		}
 	}
 }
