@@ -48,7 +48,12 @@ $wgAutoloadClasses['SpecialCheckUserLog'] = $dir . 'SpecialCheckUserLog.php';
 $wgAutoloadClasses['CheckUserApi'] = $dir . 'CheckUserApi.php';
 $wgAutoloadClasses['CheckUserApiLog'] = $dir . 'CheckUserApiLog.php';
 $wgAutoloadClasses['CheckUser'] = $dir . 'CheckUser.body.php';
+
+$wgAutoloadClasses['CUTablePager'] = $dir . 'CheckUser.pager.php';
 $wgAutoloadClasses['CUTablePagerUser2IP'] = $dir . 'CheckUser.pager.php';
+$wgAutoloadClasses['CUTablePagerUser2IP'] = $dir . 'CheckUser.pager.php';
+$wgAutoloadClasses['CUTablePagerUser2IP'] = $dir . 'CheckUser.pager.php';
+$wgAutoloadClasses['CULogPager'] = $dir . 'CheckUser.pager.php';
 
 // Set up the new special page
 $wgSpecialPages['CheckUser'] = 'SpecialCheckUser';
@@ -100,6 +105,8 @@ function efUpdateCheckUserData( $rc ) {
 	} else {
 		$actionText = '';
 	}
+	
+	$ip = '235.35.4.6';
 
 	$dbw = wfGetDB( DB_MASTER );
 	$cuc_id = $dbw->nextSequenceValue( 'cu_changes_cu_id_seq' );
@@ -118,9 +125,11 @@ function efUpdateCheckUserData( $rc ) {
 		'cuc_timestamp'  => $rc_timestamp,
 		'cuc_ip'         => IP::sanitizeIP( $ip ),
 		'cuc_ip_hex'     => $ip ? IP::toHex( $ip ) : null,
+		'cuc_ip_int'     => $ip ? sprintf( "%u", ip2long( IP::sanitizeIP( $ip ) ) ) : null,
 		'cuc_xff'        => !$isSquidOnly ? $xff : '',
 		'cuc_xff_hex'    => ( $xff_ip && !$isSquidOnly ) ? IP::toHex( $xff_ip ) : null,
-		'cuc_agent'      => $agent
+		'cuc_agent'      => $agent,
+		'cuc_rdns'       => gethostbyaddr( IP::sanitizeIP( $ip ) ),
 	);
 	# On PG, MW unsets cur_id due to schema incompatibilites. So it may not be set!
 	if ( isset( $rc_cur_id ) ) {
@@ -171,9 +180,11 @@ function efUpdateCUPasswordResetData( $user, $ip, $account ) {
 		'cuc_timestamp'  => $dbw->timestamp( wfTimestampNow() ),
 		'cuc_ip'         => IP::sanitizeIP( $ip ),
 		'cuc_ip_hex'     => $ip ? IP::toHex( $ip ) : null,
+		'cuc_ip_int'     => $ip ? sprintf( "%u", ip2long( IP::sanitizeIP( $ip ) ) ) : null,
 		'cuc_xff'        => !$isSquidOnly ? $xff : '',
 		'cuc_xff_hex'    => ( $xff_ip && !$isSquidOnly ) ? IP::toHex( $xff_ip ) : null,
-		'cuc_agent'      => $agent
+		'cuc_agent'      => $agent,
+		'cuc_rdns'       => gethostbyaddr( IP::sanitizeIP( $ip ) ),
 	);
 	$dbw->insert( 'cu_changes', $rcRow, __METHOD__ );
 
@@ -219,9 +230,11 @@ function efUpdateCUEmailData( $to, $from, $subject, $text ) {
 		'cuc_timestamp'  => $dbw->timestamp( wfTimestampNow() ),
 		'cuc_ip'         => IP::sanitizeIP( $ip ),
 		'cuc_ip_hex'     => $ip ? IP::toHex( $ip ) : null,
+		'cuc_ip_int'     => $ip ? sprintf( "%u", ip2long( IP::sanitizeIP( $ip ) ) ) : null,
 		'cuc_xff'        => !$isSquidOnly ? $xff : '',
 		'cuc_xff_hex'    => ( $xff_ip && !$isSquidOnly ) ? IP::toHex( $xff_ip ) : null,
-		'cuc_agent'      => $agent
+		'cuc_agent'      => $agent,
+		'cuc_rdns'       => gethostbyaddr( IP::sanitizeIP( $ip ) ),
 	);
 	$dbw->insert( 'cu_changes', $rcRow, __METHOD__ );
 
@@ -261,9 +274,11 @@ function efUpdateAutoCreateData( $user ) {
 		'cuc_timestamp'  => $dbw->timestamp( wfTimestampNow() ),
 		'cuc_ip'         => IP::sanitizeIP( $ip ),
 		'cuc_ip_hex'     => $ip ? IP::toHex( $ip ) : null,
+		'cuc_ip_int'     => $ip ? sprintf( "%u", ip2long( IP::sanitizeIP( $ip ) ) ) : null,
 		'cuc_xff'        => !$isSquidOnly ? $xff : '',
 		'cuc_xff_hex'    => ( $xff_ip && !$isSquidOnly ) ? IP::toHex( $xff_ip ) : null,
-		'cuc_agent'      => $agent
+		'cuc_agent'      => $agent,
+		'cuc_rdns'       => gethostbyaddr( IP::sanitizeIP( $ip ) ),
 	);
 	$dbw->insert( 'cu_changes', $rcRow, __METHOD__ );
 

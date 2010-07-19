@@ -36,14 +36,9 @@ class CheckUserApi extends ApiQueryBase {
 					$ips = $this->doUser2IP( $result, $params, $params['prop'], $params['limit'] );
 					$endResult[] = array( 'target' => $result->target, 'ips' => $ips );
 					break;
-				case "user2edits":
-					$endResult[] = $result->doUser2Edits( $params['reason'], $params['period'] );
-					break;
 				case "ip2user":
-					$endResult[] = $result->doIP2User( $params['reason'], $params['period'] );
-					break;
-				case "ip2edits":
-					$endResult[] = $result->doIP2Edits( $params['reason'], $params['period'] );
+					$users = $this->doIP2User( $result, $params, $params['prop'], $params['limit'] );
+					$endResult[] = array( 'target' => $result->target, 'users' => $users );
 					break;
 				
 			}
@@ -56,37 +51,59 @@ class CheckUserApi extends ApiQueryBase {
 	
 	public function doUser2IP( &$cuClass, $params, $prop, $limit ) {
 		
-		$result = $cuClass->doUser2IP( $params, $prop, $limit );
+		$dbParams = $cuClass->doUser2IP( $params, $prop, $limit );
 		
 		$retArray = array();
+
+		$dbr = wfGetDB( DB_SLAVE );
 		
-		$counter = 0;
-			
-		foreach( $result[0] as $id => $row ) {
-			$retArray[$counter] = array( 'ip' => $row->cuc_ip );
-			
-			if( in_array( 'count', $prop ) || is_null( $prop ) ) $retArray[$counter]['count'] = $row->count;
-			if( in_array( 'first', $prop ) || is_null( $prop ) ) $retArray[$counter]['first'] = $row->first;
-			if( in_array( 'last', $prop ) || is_null( $prop ) ) $retArray[$counter]['last'] = $row->last;
-			if( in_array( 'hex', $prop ) || is_null( $prop ) ) $retArray[$counter]['hex'] = $row->cuc_ip_hex;
-			if( in_array( 'blockinfo', $prop ) || is_null( $prop ) ) {
-				$blockinfo = CheckUser::checkBlockInfo( $row->cuc_ip );
-				if( $blockinfo ) {
-					$retArray[$counter]['blockinfo'] = array();
-					$retArray[$counter]['blockinfo']['by'] = $blockinfo->ipb_by_text;
-					$retArray[$counter]['blockinfo']['reason'] = $blockinfo->ipb_reason;
-					$retArray[$counter]['blockinfo']['timestamp'] = $blockinfo->ipb_timestamp;
-					$retArray[$counter]['blockinfo']['expiry'] = $blockinfo->ipb_expiry;
+		$ret = $dbr->select( 
+			$dbParams[0][0],
+			$dbParams[0][1],
+			$dbParams[0][2], 
+			__METHOD__,
+			$dbParams[0][4]
+		);
+		 
+		if ( !$dbr->numRows( $ret ) ) {
+			return $retArray;
+		} else {
+			$counter = 0;
+				
+			foreach( $ret as $row ) {
+				$retArray[$counter] = array( 'ip' => $row->cuc_ip );
+				
+				if( in_array( 'count', $prop ) || is_null( $prop ) ) $retArray[$counter]['count'] = $row->count;
+				if( in_array( 'first', $prop ) || is_null( $prop ) ) $retArray[$counter]['first'] = $row->first;
+				if( in_array( 'last', $prop ) || is_null( $prop ) ) $retArray[$counter]['last'] = $row->last;
+				if( in_array( 'hex', $prop ) || is_null( $prop ) ) $retArray[$counter]['hex'] = $row->cuc_ip_hex;
+				if( in_array( 'agent', $prop ) || is_null( $prop ) ) $retArray[$counter]['agent'] = $row->cuc_agent;
+				if( in_array( 'blockinfo', $prop ) || is_null( $prop ) ) {
+					$blockinfo = CheckUser::checkBlockInfo( $row->cuc_ip );
+					if( $blockinfo ) {
+						$retArray[$counter]['blockinfo'] = array();
+						$retArray[$counter]['blockinfo']['by'] = $blockinfo->ipb_by_text;
+						$retArray[$counter]['blockinfo']['reason'] = $blockinfo->ipb_reason;
+						$retArray[$counter]['blockinfo']['timestamp'] = $blockinfo->ipb_timestamp;
+						$retArray[$counter]['blockinfo']['expiry'] = $blockinfo->ipb_expiry;
+					}
 				}
+				if( in_array( 'alledits', $prop ) || is_null( $prop ) ) {
+					$retArray[$counter]['alledits'] = CheckUser::getAllEdits( $row->cuc_ip_hex, $dbParams[1] );
+				}
+				if( in_array( 'rdns', $prop ) || is_null( $prop ) ) {
+					if( empty( $row->rdns ) ) {
+						$retArray[$counter]['rdns'] = gethostbyaddr( $row->cuc_ip );
+					}
+					else {
+						$retArray[$counter]['rdns'] = $row->cuc_rdns;
+					}
+				}
+				
+				$counter++;
+				
 			}
-			if( in_array( 'alledits', $prop ) || is_null( $prop ) ) {
-				$retArray[$counter]['alledits'] = CheckUser::getAllEdits( $row->cuc_ip_hex, $result[1] );
-			}
-			
-			$counter++;
-			
 		}
-		
 
 		return $retArray;
 	}
@@ -103,7 +120,7 @@ class CheckUserApi extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'user',
 			),
 			'type' => array( 
-				ApiBase::PARAM_TYPE => array( 'user2ip', 'user2edits', 'ip2user', 'ip2edits' ),
+				ApiBase::PARAM_TYPE => array( 'user2ip', 'ip2user' ),
 			),
 			'reason' => array(
 				ApiBase::PARAM_DFLT => '',
@@ -115,7 +132,7 @@ class CheckUserApi extends ApiQueryBase {
 			),
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'count|first|last|blockinfo|alledits',
+				ApiBase::PARAM_DFLT => 'count|first|last|blockinfo|alledits|agent|rdns',
 				ApiBase::PARAM_TYPE => array(
 					'count',
 					'first',
@@ -123,6 +140,8 @@ class CheckUserApi extends ApiQueryBase {
 					'hex',
 					'blockinfo',
 					'alledits',
+					'agent',
+					'rdns',
 				)
 			), 
 			'limit' => array(

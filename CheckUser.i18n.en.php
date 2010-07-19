@@ -107,4 +107,6 @@ Here are the IPs used (5000 max, sorted by address):',
 	'checkuser-blockinfo'        => 'Block info',
 	'checkuser-expires'          => 'Expires',
 	'checkuser-limit'            => 'Results to show:',
+	'checkuser-cuc_agent'        => 'User agent',
+	'checkuser-cuc_rdns'         => 'Reverse DNS',
 );

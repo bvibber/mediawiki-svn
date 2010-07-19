@@ -6,8 +6,6 @@ class SpecialCheckUser extends SpecialPage {
 		global $wgUser;
 		
 		parent::__construct( 'CheckUser', 'checkuser' );
-		
-		wfLoadExtensionMessages( 'CheckUser' );
 	} 
 	
 	function execute( $subpage ) {
@@ -150,9 +148,6 @@ class SpecialCheckUser extends SpecialPage {
 		}
 	}
 	
-	function getLogSubpageTitle() {
-	}
-	
 	/**
 	 * Add CSS/JS
 	 */
@@ -250,176 +245,6 @@ class SpecialCheckUser extends SpecialPage {
 	
 	
 	
-}
-
-class CUTablePagerOld extends TablePager { 
-
-	private $mCUSelectParams;
-	private $mBlockInfo;
-
-	function __construct( $result ) {
-		$this->mCUSelectParams = $result;
-		
-		parent::__construct(); 
-	}
-	
-	function getQueryInfo() {
-		$dbr = new wfGetDB( DB_SLAVE );
-		
-		$ret = array(
-			'tables' => $this->mCUSelectParams[0],
-			'fields' => $this->mCUSelectParams[1],
-			'conds' => $this->mCUSelectParams[2],
-			'options' => $this->mCUSelectParams[3]
-		);
-		
-		if( isset( $ret['options']['ORDER BY'] ) ) {
-			unset( $ret['options']['ORDER BY'] );
-		}
-		
-		return $ret;
-	}
-	
-	function getIndexField() {
-		return 'cuc_ip';
-	}
- 
-	//function formatRow( $row ) {
-		//$title = Title::newFromDBkey( $row->cuc_ip );
-		//$s = '<td><a href="' /* . $title->getFullURL()*/ . '">' . $row->cuc_ip . '</a></li>';
-		//return $s;
-	//}
-	
-	function isFieldSortable( $field ) {
-		return in_array( $field, array( 'cuc_ip', 'first', 'last' ) );
-	} 
-	
-	function getDefaultSort() {
-		return 'cuc_ip';
-	} 
-	
-	function formatValue( $name, $value ) { 
-		global $wgContLang;
-		
-		var_dump( $this->mCurrentRow );
-		
-		switch( $name ) {
-			case 'cuc_ip':
-				$value = '<a href="' .
-					$this->getTitle()->escapeLocalURL( 'user=' . urlencode( $value ) . '&reason=' . urlencode( $reason ) ) . '">' .
-					htmlspecialchars( $value ) . '</a>' .
-					' (<a href="' . SpecialPage::getTitleFor( 'Blockip' )->escapeLocalURL( 'ip=' . urlencode( $value ) ) . '">' .
-					wfMsgHtml( 'blocklink' ) . '</a>)<br /><small>' . 
-					wfMsgExt( 'checkuser-toollinks', array( 'parseinline' ), urlencode( $value ) ) . '</small>';
-				
-				break;
-			case 'count':
-				$dbr = wfGetDB( DB_SLAVE );
-				$dbr->setFlag( DBO_DEBUG );
-
-				# If we get some results, it helps to know if the IP in general
-				# has a lot more edits, e.g. "tip of the iceberg"...
-				$ipedits = $dbr->estimateRowCount( 'cu_changes', '*',
-					array( 'cuc_ip_hex' => $this->mCurrentRow->cuc_ip_hex, $this->mCUSelectParams[2][0] ),
-					__METHOD__ );
-				# If small enough, get a more accurate count
-				if ( $ipedits <= 1000 ) {
-					$ipedits = $dbr->selectField( 'cu_changes', 'COUNT(*)',
-						array( 'cuc_ip_hex' => $this->mCurrentRow->cuc_ip_hex, $this->mCUSelectParams[2][0] ),
-						__METHOD__ );
-				}
-				
-				$value .= '<td>' . $ipedits . '</td>';
-				break;
-				
-			case 'first':
-				return $wgContLang->timeanddate( wfTimestamp( TS_MW, $value ), true );
-				break;
-			case 'last':
-				$ret = $wgContLang->timeanddate( wfTimestamp( TS_MW, $value ), true );
-				
-				$ret .= '</td>';
-				
-				if( $this->mBlockInfo ) {
-					$ret .= '<td style="background-color: #FFFFCC;">';
-				}
-				else {
-					$ret .= '<td>';
-				}
-				
-				$ret .= $this->fixBlockInfo( $this->mBlockInfo ) . '</td>';
-				//Wow, that's hacky.
-				
-				return $ret;
-		}
-		
-		return $value;
-	}
-	
-	function fixBlockInfo( $info ) {
-		global $wgContLang;
-		
-		$this->mBlockInfo = $info;
-		
-		if( !$info ) return '';
-
-		$expirydate = wfMsg( 'checkuser-expires' ) . ' ' . $wgContLang->timeanddate( wfTimestamp( TS_MW, $info->ipb_expiry ), true );
-		
-		if( !is_numeric( $info->ipb_expiry ) ) {
-			$expirydate = '';
-		}
-		
-		return wfMsgExt( 'checkuser-blockedby', 'parseinline', $info->ipb_by_text, $info->ipb_reason, $wgContLang->timeanddate( wfTimestamp( TS_MW, $info->ipb_timestamp ), true ), $expirydate );
-	}
-	
-	function getCellAttrs( $field, $value ) {
-		$retArr = array( 'class' => 'TablePager_col_' . $field );
-		
-		if( 
-			( $field == 'first' && $value == $this->mCurrentRow->last ) || 
-			( $field == 'last' && $value == $this->mCurrentRow->first )
-		) {
-			$retArr['style'] = 'background-color: #FFFFCC;';
-		}
-		
-		return $retArr;
-	}
-	
-	function getFieldNames() {
-		$fields = array(
-			$this->getDefaultSort() => wfMsg( 'checkuser-cuc_ip' ),
-			'count' => wfMsg( 'checkuser-count' ),
-			'allusers' => wfMsg( 'checkuser-allusers' ),
-			'first' => wfMsg( 'checkuser-first' ),
-			'last' => wfMsg( 'checkuser-last' ),
-			'blockinfo' => wfMsg( 'checkuser-blockinfo' ),
-		);
-		return $fields;
-	} 
-	
-	function getTitle() {
-		return SpecialPage::getTitleFor( 'CheckUser', false );
-	}
-	
-	function formatRow( $row ) {
-		$this->mCurrentRow = $row;  	# In case formatValue etc need to know
-		$this->mBlockInfo = CheckUser::checkBlockInfo( $this->mCurrentRow->cuc_ip );
-		
-		$s = Xml::openElement( 'tr', $this->getRowAttrs($row) );
-		$fieldNames = $this->getFieldNames();
-		foreach ( $fieldNames as $field => $name ) {
-			if( $field == 'blockinfo' || $field == 'allusers' ) continue;
-			$value = isset( $row->$field ) ? $row->$field : null;
-			$formatted = strval( $this->formatValue( $field, $value ) );
-			if ( $formatted == '' ) {
-				$formatted = '&#160;';
-			}
-			$s .= Xml::tags( 'td', $this->getCellAttrs( $field, $value ), $formatted );
-		}
-		$s .= "</tr>\n";
-		return $s;
-	}
-
 }
 
 

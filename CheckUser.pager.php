@@ -2,114 +2,72 @@
 
 abstract class CUTablePager extends TablePager {
 
-	public $mLimitsShown;
-	public $mTimeConds;
+	protected $mCUSelectParams;
+	protected $mTimeConds;
+	protected $mBlockInfo = false;
 
-	function __construct( $result = array(), $index = 'cuc_ip' ) {
-		parent::__construct();
-		
-		$this->mIndexField = $index;
-		$this->mResult = $result[0];
+	function __construct( $result ) {
+		$this->mCUSelectParams = $result[0];
 		$this->mTimeConds = $result[1];
 		
-	}
-
-	/* This function normally does a database query to get the results; we need
-	 * to make a pretend result using a FakeResultWrapper.
-	 */
-	function reallyDoQuery( $offset, $limit, $descending ) {
-		global $wgRequest;
-		
-		$result = array();
-		
-		$index = ( $wgRequest->getVal( 'sort' ) ) ? $wgRequest->getVal( 'sort' ) : $this->mIndexField;
-
-		if ( $descending ) {
-			$operator = '>';
-			
-			$obj = new CUSortArray( 'DESC', $index );
-		} else {
-			$operator = '<';
-			
-			$obj = new CUSortArray( 'ASC', $index );
-		}
-		
-		$forNow = array();
-		
-		foreach( $this->mResult as $row ) {
-			$row = (array) $row;
-			
-			$forNow[] = $this->fixRowResult( $row );
-		}
-		
-		$this->mResult = $forNow;
-		
-		usort( $this->mResult, array( $obj, 'run' ) );
-
-		$count = 0;
-		foreach( $this->mResult as $res ) {
-			
-			if ( $offset != '' ) {
-				if ( $descending ) {
-					if( $res[$this->mIndexField] > $offset ) continue;
-				} else {
-					if( $res[$this->mIndexField] < $offset ) continue;
-				}
-				
-			}
-			
-			$result[] = $res;
-			
-			$count++;
-			
-			if( $count == $limit ) break;
-		}
-		
-		return new FakeResultWrapper( $result );
+		parent::__construct(); 
 	}
 	
-	abstract function fixRowResult( $row );
+	function getQueryInfo() {
+		$ret = array(
+			'tables' => $this->mCUSelectParams[0],
+			'fields' => $this->mCUSelectParams[1],
+			'conds' => $this->mCUSelectParams[2],
+			'options' => $this->mCUSelectParams[4]
+		);
+		
+		if( isset( $ret['options']['ORDER BY'] ) ) {
+			unset( $ret['options']['ORDER BY'] );
+		}
+		
+		$this->addMoreQueryInfo( $ret );
+		
+		return $ret;
+	}
+	
+	abstract function addMoreQueryInfo( &$query );
+	
+	function isFieldSortable( $field ) {
+		return true;
+	} 
 	
 	function getTitle() {
 		return SpecialPage::getTitleFor( 'CheckUser', false );
 	}
 	
-	function isFieldSortable( $field ) {
-		return true;
-	}
-	
-	function getQueryInfo() {
-		return '';
-	}
-	
 }
 
-class CUTablePagerUser2IP extends CUTablePager {
+class CUTablePagerUser2IP extends CUTablePager { 
 
-	function fixRowResult( $row ) {
-		$row['allusers'] = CheckUser::getAllEdits( $row['cuc_ip_hex'], $this->mTimeConds );
-			
-		$blockinfo = CheckUser::checkBlockInfo( $row['cuc_ip'] );
-		$row['blockinfo'] = $blockinfo;
-		
-		if( $blockinfo ) {
-			$row['blockinfo'] = array();
-			
-			$row['blockinfo']['by'] = $blockinfo->ipb_by_text;
-			$row['blockinfo']['reason'] = $blockinfo->ipb_reason;
-			$row['blockinfo']['timestamp'] = $blockinfo->ipb_timestamp;
-			$row['blockinfo']['expiry'] = $blockinfo->ipb_expiry;
-		}
-		
-		return $row;
+	protected $mBlockInfo = false;
+	
+	function addMoreQueryInfo( &$query ) {
+		$query['fields'][] = $query['fields'][0] . ' AS allusers';
+		$query['fields'][] = $query['fields'][0] . ' AS blockinfo';
+		$query['fields'][] = 'cuc_ip_int';
 	}
 	
-	function formatValue( $field, $value ) {
+	function getIndexField() {
+		return 'cuc_ip_int';
+	}
+ 
+	
+	function getDefaultSort() {
+		return 'cuc_ip';
+	} 
+	
+	function formatValue( $name, $value ) { 
 		global $wgContLang;
 		
-		switch( $field ) {
+		switch( $name ) {
 			case 'cuc_ip':
-				return '<a href="' .
+				$this->mBlockInfo = CheckUser::checkBlockInfo( $this->mCurrentRow->cuc_ip );
+				$value = '<a href="' .
 					$this->getTitle()->escapeLocalURL( 'user=' . urlencode( $value ) . '&reason=' . urlencode( $reason ) ) . '">' .
 					htmlspecialchars( $value ) . '</a>' .
 					' (<a href="' . SpecialPage::getTitleFor( 'Blockip' )->escapeLocalURL( 'ip=' . urlencode( $value ) ) . '">' .
@@ -117,47 +75,84 @@ class CUTablePagerUser2IP extends CUTablePager {
 					wfMsgExt( 'checkuser-toollinks', array( 'parseinline' ), urlencode( $value ) ) . '</small>';
 				
 				break;
+			case 'allusers':
+				$dbr = wfGetDB( DB_SLAVE );
+				$dbr->setFlag( DBO_DEBUG );
+
+				# If we get some results, it helps to know if the IP in general
+				# has a lot more edits, e.g. "tip of the iceberg"...
+				$ipedits = $dbr->estimateRowCount( 'cu_changes', '*',
+					array( 'cuc_ip_hex' => $this->mCurrentRow->cuc_ip_hex, $this->mTimeConds ),
+					__METHOD__ );
+				# If small enough, get a more accurate count
+				if ( $ipedits <= 1000 ) {
+					$ipedits = $dbr->selectField( 'cu_changes', 'COUNT(*)',
+						array( 'cuc_ip_hex' => $this->mCurrentRow->cuc_ip_hex, $this->mTimeConds ),
+						__METHOD__ );
+				}
+				
+				return $ipedits;
+				break;
+				
 			case 'first':
 				return $wgContLang->timeanddate( wfTimestamp( TS_MW, $value ), true );
 				break;
 			case 'last':
 				return $wgContLang->timeanddate( wfTimestamp( TS_MW, $value ), true );
 				break;
+			case 'cuc_agent':
+				return "<small>$value</small>";
 			case 'blockinfo':
-				return $this->fixBlockInfo( $value );
+				if( $this->mBlockInfo ) {
+					return $this->fixBlockInfo( $this->mBlockInfo );
+				}
+				
+				return '';
 				break;
+			case 'cuc_rdns':
+				if( empty( $this->mCurrentRow->rdns ) ) {
+					$value = gethostbyaddr( $this->mCurrentRow->cuc_ip );
+				}
 		}
 		
 		return $value;
 	}
 	
-	private function fixBlockInfo( $value ) {
+	function fixBlockInfo( $info ) {
 		global $wgContLang;
 		
-		if( !$value ) return '';
-
-		$expirydate = wfMsg( 'checkuser-expires' ) . ' ' . $wgContLang->timeanddate( wfTimestamp( TS_MW, $value['expiry'] ), true );
+		$this->mBlockInfo = $info;
 		
-		if( !is_numeric( $value['expiry'] ) ) {
+		if( !$info ) return '';
+
+		$expirydate = wfMsg( 'checkuser-expires' ) . ' ' . $wgContLang->timeanddate( wfTimestamp( TS_MW, $info->ipb_expiry ), true );
+		
+		if( !is_numeric( $info->ipb_expiry ) ) {
 			$expirydate = '';
 		}
 		
-		return wfMsgExt( 'checkuser-blockedby', 'parseinline', $value['by'], $value['reason'], $wgContLang->timeanddate( wfTimestamp( TS_MW, $value['timestamp'] ), true ), $expirydate );
+		return wfMsgExt( 'checkuser-blockedby', 'parseinline', $info->ipb_by_text, $info->ipb_reason, $wgContLang->timeanddate( wfTimestamp( TS_MW, $info->ipb_timestamp ), true ), $expirydate );
 	}
 	
 	function getCellAttrs( $field, $value ) {
 		$retArr = array( 'class' => 'TablePager_col_' . $field );
 		
-		if( 
-			( $field == 'first' && $value == $this->mCurrentRow->last ) || 
-			( $field == 'last' && $value == $this->mCurrentRow->first ) ||
-			( $field == 'blockinfo' && !empty( $value ) ) 
-		) {
-			$retArr['style'] = 'background-color: #FFFFCC;';
-			
-			if( $field == 'blockinfo' ) {
-				$retArr['style'] .= 'width: 33%;';
-			}
+		switch($field ) {
+			case 'first':
+				if( $value != $this->mCurrentRow->last ) break;
+			case 'last':
+				if( $value != $this->mCurrentRow->first ) break;
+				$retArr['style'] = 'background-color: #FFFFCC;';
+				break;
+			case 'blockinfo':
+				if( $this->mBlockInfo ) {
+					$retArr['style'] = 'background-color: #FFFFCC;';
+					$retArr['width'] = '25%';
+				}
+				break;
+			case 'cuc_agent':
+				$retArr['width'] = '20%';
+				break;
 		}
 		
 		return $retArr;
@@ -166,61 +161,107 @@ class CUTablePagerUser2IP extends CUTablePager {
 	function getFieldNames() {
 		$fields = array(
 			$this->getDefaultSort() => wfMsg( 'checkuser-cuc_ip' ),
+			'cuc_rdns' => wfMsg( 'checkuser-cuc_rdns' ),
 			'count' => wfMsg( 'checkuser-count' ),
 			'allusers' => wfMsg( 'checkuser-allusers' ),
 			'first' => wfMsg( 'checkuser-first' ),
 			'last' => wfMsg( 'checkuser-last' ),
+			'cuc_agent' => wfMsg( 'checkuser-cuc_agent' ),
 			'blockinfo' => wfMsg( 'checkuser-blockinfo' ),
 		);
 		return $fields;
 	} 
-	
-	function getDefaultSort() {
-		return 'cuc_ip';
-	}
-	
+
 }
 
-class CUSortArray {
+class CULogPager extends ReverseChronologicalPager {
+	var $searchConds, $specialPage, $y, $m;
 
-	var $dir, $index;
+	function __construct( $specialPage, $searchConds, $y, $m ) {
+		parent::__construct();
+		/*
+		$this->messages = array_map( 'wfMsg',
+			array( 'comma-separator', 'checkuser-log-userips', 'checkuser-log-ipedits', 'checkuser-log-ipusers',
+			'checkuser-log-ipedits-xff', 'checkuser-log-ipusers-xff' ) );*/
 
-	function __construct( $dir, $index ) {
-		$this->dir = $dir;
-		$this->index = $index;
+		$this->getDateCond( $y, $m );
+		$this->searchConds = $searchConds ? $searchConds : array();
+		$this->specialPage = $specialPage;
 	}
-	
-	function run( $old, $new ) {
-		if( $this->index == "blockinfo" ) {	
 
-			if( $this->dir == "DESC" ) {
-				return $this->runeval( $old, $new );
-			}
-			else {
-				return $this->runeval( $new, $old );
-			}
+	function formatRow( $row ) {
+		global $wgLang;
+
+		$skin = $this->getSkin();
+
+		if ( $row->cul_reason === '' ) {
+			$comment = '';
+		} else {
+			$comment = $skin->commentBlock( $row->cul_reason );
 		}
-		else {
-			if( $this->dir == "DESC" ) {
-				 return strnatcmp( $old[$this->index], $new[$this->index] );
-			}
-			else {
-				return strnatcmp( $new[$this->index], $old[$this->index] );
-			}
+
+		$user = $skin->userLink( $row->cul_user, $row->user_name );
+
+		if ( $row->cul_type == 'user2ip' || $row->cul_type == 'user2edits' ) {
+			$target = $skin->userLink( $row->cul_target_id, $row->cul_target_text ) .
+				$skin->userToolLinks( $row->cul_target_id, $row->cul_target_text );
+		} else {
+			$target = $row->cul_target_text;
+		}
+
+		return '<li>' .
+			$wgLang->timeanddate( wfTimestamp( TS_MW, $row->cul_timestamp ), true ) .
+			wfMsg( 'comma-separator' ) .
+			wfMsg(
+				'checkuser-log-' . $row->cul_type,
+				$user,
+				$target
+			) .
+			$comment .
+			'</li>';
+	}
+
+	function getStartBody() {
+		if ( $this->getNumRows() ) {
+			return '<ul>';
+		} else {
+			return '';
 		}
 	}
-	
-	function runeval( $old, $new ) {
-		$oper = ( $this->dir == "DESC" ) ? -1 : 1;
-		
-		if( !isset( $old[$this->index]['timestamp'] ) ) {
-			return -1;
+
+	function getEndBody() {
+		if ( $this->getNumRows() ) {
+			return '</ul>';
+		} else {
+			return '';
 		}
-		elseif( !isset( $new[$this->index]['timestamp'] ) ) {
-			return 1;
-		}
-		else {
-			return $oper * strnatcmp( $old[$this->index]['timestamp'], $new[$this->index]['timestamp'] );
-		}
+	}
+
+	function getEmptyBody() {
+		return '<p>' . wfMsgHtml( 'checkuser-empty' ) . '</p>';
+	}
+
+	function getQueryInfo() {
+		$this->searchConds[] = 'user_id = cul_user';
+		return array(
+			'tables' => array( 'cu_log', 'user' ),
+			'fields' => $this->selectFields(),
+			'conds'  => $this->searchConds
+		);
+	}
+
+	function getIndexField() {
+		return 'cul_timestamp';
+	}
+
+	function getTitle() {
+		return $this->specialPage->getTitle();
+	}
+
+	function selectFields() {
+		return array(
+			'cul_id', 'cul_timestamp', 'cul_user', 'cul_reason', 'cul_type',
+			'cul_target_id', 'cul_target_text', 'user_name'
+		);
 	}
 }

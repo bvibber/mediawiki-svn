@@ -22,13 +22,15 @@ CREATE TABLE cu_changes (
   cuc_timestamp  TIMESTAMPTZ,
   cuc_ip         CIDR,
   cuc_ip_hex     TEXT,
+  cuc_ip_int     INTEGER      NULL,
   cuc_xff        TEXT,
   cuc_xff_hex    TEXT,
-  cuc_agent      TEXT
+  cuc_agent      TEXT,
+  cuc_rdns       TEXT,
 );
 
 CREATE INDEX cuc_ip_hex_time  ON cu_changes( cuc_ip_hex, cuc_timestamp );
-CREATE INDEX cuc_user_ip_time ON cu_changes( cuc_user, cuc_ip, cuc_timestamp );
+CREATE INDEX cuc_user_ip_time ON cu_changes( cuc_user, cuc_ip, cuc_timestamp, cuc_ip_int );
 CREATE INDEX cuc_xff_hex_time ON cu_changes( cuc_xff_hex, cuc_timestamp );
 
 COMMIT;

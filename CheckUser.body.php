@@ -44,6 +44,8 @@ class CheckUser {
 			'cuc_ip',
 			'cuc_ip_hex',
 			'cuc_user',
+			'cuc_agent',
+			'cuc_rdns',
 			'COUNT(*) AS count',
 			'MIN(cuc_timestamp) AS first', 
 			'MAX(cuc_timestamp) AS last'
@@ -51,13 +53,13 @@ class CheckUser {
 			
 		$opts = array(
 			'GROUP BY' => 'cuc_ip,cuc_ip_hex',
-			'ORDER BY' => 'last DESC',
+			'ORDER BY' => 'cuc_ip_int ASC',
 			'USE INDEX' => 'cuc_user_ip_time'
 		);
 		
 		if( !empty( $limit ) ) $opts['LIMIT'] = $limit;
 		
-		$ret = $dbr->select(
+		$ret = array(
 			$cu_changes,
 			$select,
 			array(
@@ -67,10 +69,6 @@ class CheckUser {
 			__METHOD__,
 			$opts
 		);
-		
-		if( !$ret->numRows() ) {
-			return array();
-		}
 		
 		return array( $ret, $time_conds );
 		
@@ -123,7 +121,7 @@ class CheckUser {
 	public static function checkBlockInfo( $name ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$ret = $dbr->select(
+		$ret = $dbr->selectRow(
 			'ipblocks',
 			array(
 				'ipb_by_text',
@@ -137,15 +135,7 @@ class CheckUser {
 			__METHOD__
 		);
 		
-		
-		foreach( $ret as $res ) {
-			$return = $res;
-			break;
-		}
-		
-		$dbr->freeResult( $ret );
-		
-		if( isset( $return ) ) return $return;
+		if( !is_null( $ret ) ) return $ret;
 		
 		return false;
 	}

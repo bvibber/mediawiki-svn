@@ -42,6 +42,9 @@ CREATE TABLE /*$wgDBprefix*/cu_changes (
   -- IP address as hexidecimal
   cuc_ip_hex VARCHAR(255) default NULL,
   
+  -- IP addresses stored in decimal format
+  cuc_ip_int INT unsigned NULL,
+  
   -- XFF header, visible, all data
   cuc_xff VARCHAR(255) BINARY NULL default '',
   
@@ -50,6 +53,9 @@ CREATE TABLE /*$wgDBprefix*/cu_changes (
   
   -- User agent
   cuc_agent VARCHAR(255) BINARY default NULL,
+  
+  -- Reverse DNS
+  cuc_rdns VARCHAR( 255 ) NULL,
   
   PRIMARY KEY cuc_id (cuc_id),
   INDEX cuc_ip_hex_time (cuc_ip_hex,cuc_timestamp),
