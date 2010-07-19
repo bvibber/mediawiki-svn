@@ -15,7 +15,7 @@ class Interwiki {
 	protected static $smCache = array();
 	const CACHE_LIMIT = 100; // 0 means unlimited, any other value is max number of entries.
 
-	protected $mPrefix, $mURL, $mAPI, $mLocal, $mTrans;
+	protected $mPrefix, $mURL, $mAPI, $mWikiID, $mLocal, $mTrans;
 
 	public function __construct( $prefix = null, $url = '', $api = '', $wikiid = '', $local = 0, $trans = 0 ) {
 		$this->mPrefix = $prefix;
