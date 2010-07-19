@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -31,6 +32,7 @@ class ApiCodeRevisions extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'codereview-use' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view code revisions', 'permissiondenied' );
@@ -81,7 +83,7 @@ class ApiCodeRevisions extends ApiQueryBase {
 	private function formatRow( $row ) {
 		$item = array();
 		if ( isset( $this->props['revid'] ) ) {
-			$item['revid'] = $row->cr_rev_id;
+			$item['revid'] = intval( $row->cr_rev_id );
 		}
 		if ( isset( $this->props['status'] ) ) {
 			$item['status'] = $row->cr_status;
