@@ -824,11 +824,6 @@ $j(document).ready( function() {
 				],
 				rows: [
 					{
-						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-description' },
-						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-syntax' },
-						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-result' }
-					},
-					{
 						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-description' },
 						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-syntax' },
 						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-result' }
