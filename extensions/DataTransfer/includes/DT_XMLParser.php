@@ -74,7 +74,7 @@ class DTXMLParser {
 	var $mDebug = false;
 	var $mSource = null;
 	var $mCurFieldName = null;
-	var $mCurFieldValue = null;
+	var $mCurFieldValue = '';
 	var $mCurTemplate = null;
 	var $mCurPage = null; // new DTWikiPage();
 	var $mPages = array();
@@ -247,6 +247,7 @@ class DTXMLParser {
 		$field_str = str_replace( ' ', '_', wfMsgForContent( 'dt_xml_field' ) );
 		if ( $name == $field_str ) {
 			$this->mCurTemplate->addField( $this->mCurFieldName, $this->mCurFieldValue );
+			$this->mCurFieldValue = '';
 		} else {
 			return $this->throwXMLerror( "Expected </$field_str>, got </$name>" );
 		}
@@ -254,7 +255,7 @@ class DTXMLParser {
 	}
 
 	function field_value( $parser, $data ) {
-		$this->mCurFieldValue = $data;
+		$this->mCurFieldValue .= $data;
 	}
 
 	function in_freetext( $parser, $name, $attribs ) {
