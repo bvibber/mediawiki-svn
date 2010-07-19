@@ -66,7 +66,7 @@ function wfDPLmagic( &$magicWords, $langCode = 'en' ) {
 	return true;
 }
 
-function parseForum( $input, $argv, &$parser ) {
+function parseForum( $input, $argv, $parser ) {
 	$f = new DPLForum();
 	return $f->parse( $input, $parser );
 }
