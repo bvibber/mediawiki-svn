@@ -30,7 +30,7 @@
  * EditPage.php should be rewritten to provide a cleaner interface
  * @ingroup API
  */
-class ApiMirrorEditPage extends ApiBase {
+class ApiMirrorEditPage extends ApiEditPage {
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName );
@@ -40,10 +40,10 @@ class ApiMirrorEditPage extends ApiBase {
 		global $wgUser;
 		$params = $this->extractRequestParams();
                 
-                if ( is_null( $params['user'] ) ) {
-                    $this->dieUsageMsg( array( 'missingparam', 'user' ) );
-                }
-                $user = $params['user'];
+		if ( is_null( $params['user'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
+		}
+		$user = $params['user'];
 
 		if ( is_null( $params['title'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'title' ) );
@@ -340,137 +340,22 @@ class ApiMirrorEditPage extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
-	public function mustBePosted() {
-		return true;
-	}
-
-	public function isWriteMode() {
-		return true;
-	}
-
 	protected function getDescription() {
 		return 'Create and edit pages using any username.';
 	}
-
+	
 	public function getPossibleErrors() {
-		global $wgMaxArticleSize;
-
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'title' ),
-			array( 'missingtext' ),
-			array( 'invalidtitle', 'title' ),
-			array( 'createonly-exists' ),
-			array( 'nocreate-missing' ),
-			array( 'nosuchrevid', 'undo' ),
-			array( 'nosuchrevid', 'undoafter' ),
-			array( 'revwrongpage', 'id', 'text' ),
-			array( 'undo-failure' ),
-			array( 'hashcheckfailed' ),
-			array( 'hookaborted' ),
-			array( 'noimageredirect-anon' ),
-			array( 'noimageredirect-logged' ),
-			array( 'spamdetected', 'spam' ),
-			array( 'filtered' ),
-			array( 'blockedtext' ),
-			array( 'contenttoobig', $wgMaxArticleSize ),
-			array( 'noedit-anon' ),
-			array( 'noedit' ),
-			array( 'actionthrottledtext' ),
-			array( 'wasdeleted' ),
-			array( 'nocreate-loggedin' ),
-			array( 'blankpage' ),
-			array( 'editconflict' ),
-			array( 'emptynewsection' ),
-			array( 'unknownerror', 'retval' ),
-			array( 'code' => 'nosuchsection', 'info' => 'There is no section section.' ),
-			array( 'code' => 'invalidsection', 'info' => 'The section parameter must be set to an integer or \'new\'' ),
+			array( 'missingparam', 'user' ),
 		) );
 	}
 
 	protected function getAllowedParams() {
-		return array(
-                        'user' => null,
-			'title' => null,
-			'section' => null,
-			'text' => null,
-			'token' => null,
-			'summary' => null,
-			'minor' => false,
-			'notminor' => false,
-			'bot' => false,
-			'basetimestamp' => null,
-			'starttimestamp' => null,
-			'recreate' => false,
-			'createonly' => false,
-			'nocreate' => false,
-			'captchaword' => null,
-			'captchaid' => null,
-			'watch' => array(
-				ApiBase::PARAM_DFLT => false,
-				ApiBase::PARAM_DEPRECATED => true,
-			),
-			'unwatch' => array(
-				ApiBase::PARAM_DFLT => false,
-				ApiBase::PARAM_DEPRECATED => true,
-			),
-			'watchlist' => array(
-				ApiBase::PARAM_DFLT => 'preferences',
-				ApiBase::PARAM_TYPE => array(
-					'watch',
-					'unwatch',
-					'preferences',
-					'nochange'
-				),
-			),
-			'md5' => null,
-			'prependtext' => null,
-			'appendtext' => null,
-			'undo' => array(
-				ApiBase::PARAM_TYPE => 'integer'
-			),
-			'undoafter' => array(
-				ApiBase::PARAM_TYPE => 'integer'
-			),
-		);
+		return array_merge( array( 'user' => null ), parent::getAllowedParams() );
 	}
 
 	protected function getParamDescription() {
-		$p = $this->getModulePrefix();
-		return array(
-			'user' => 'Username',
-                        'title' => 'Page title',
-			'section' => 'Section number. 0 for the top section, \'new\' for a new section',
-			'text' => 'Page content',
-			'token' => 'Edit token. You can get one of these through prop=info',
-			'summary' => 'Edit summary. Also section title when section=new',
-			'minor' => 'Minor edit',
-			'notminor' => 'Non-minor edit',
-			'bot' => 'Mark this edit as bot',
-			'basetimestamp' => array( 'Timestamp of the base revision (gotten through prop=revisions&rvprop=timestamp).',
-						'Used to detect edit conflicts; leave unset to ignore conflicts.'
-			),
-			'starttimestamp' => array( 'Timestamp when you obtained the edit token.',
-						'Used to detect edit conflicts; leave unset to ignore conflicts'
-			),
-			'recreate' => 'Override any errors about the article having been deleted in the meantime',
-			'createonly' => 'Don\'t edit the page if it exists already',
-			'nocreate' => 'Throw an error if the page doesn\'t exist',
-			'watch' => 'Add the page to your watchlist',
-			'unwatch' => 'Remove the page from your watchlist',
-			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
-			'captchaid' => 'CAPTCHA ID from previous request',
-			'captchaword' => 'Answer to the CAPTCHA',
-			'md5' => array(	"The MD5 hash of the {$p}text parameter, or the {$p}prependtext and {$p}appendtext parameters concatenated.",
-				 	'If set, the edit won\'t be done unless the hash is correct' ),
-			'prependtext' => "Add this text to the beginning of the page. Overrides {$p}text",
-			'appendtext' => "Add this text to the end of the page. Overrides {$p}text",
-			'undo' => "Undo this revision. Overrides {$p}text, {$p}prependtext and {$p}appendtext",
-			'undoafter' => 'Undo all revisions from undo to this one. If not set, just undo one revision',
-		);
-	}
-
-	public function getTokenSalt() {
-		return '';
+		return array_merge( array( 'user' => 'Username' ), parent::getParamDescription() );
 	}
 
 	protected function getExamples() {
