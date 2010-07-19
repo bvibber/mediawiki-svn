@@ -389,9 +389,11 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'prefs-updates' => 'अद्ययावते',
+	'updatemyprefs-label-message' => '↓ माझ्या पसंती, नविन अचुक कोंदण (डिफॉल्ट सेटिंग्ज) व उपकरणांसह जेंव्हा केंव्हा उपलब्ध होतील तेंव्हा अद्ययावत करा',
 );
 
 /** Malay (Bahasa Melayu)

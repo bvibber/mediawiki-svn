@@ -3672,11 +3672,28 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
+	'prefswitch-survey-submit-off' => '↓ नविन बीटा चेहरामोहरा बंद करा',
+	'prefswitch-survey-cancel-off' => '↓ जर आपणास नविन बीटा चेहरामोहरा वापराणे सुरू ठेवायचे असल्यास $1 कडे परत जा.',
 	'prefswitch-survey-submit-feedback' => 'प्रतिसाद पाठवा',
+	'prefswitch-survey-cancel-feedback' => '↓ जर आपणास प्रतिसाद (फिडबॅक) द्यावयाचा नसल्यास, आपण $1 कडे परत जाउ शकता.',
+	'prefswitch-survey-question-like' => '↓ नविन बीटा चेहरामोहर्‍याबद्दल आपणास काय आवडले?',
+	'prefswitch-survey-question-dislike' => '↓ नविन बीटा चेहरामोहर्‍याबद्दल आपणास काय नावडले?',
+	'prefswitch-survey-question-whyoff' => '↓ नविन चेहरामोहरा आपण कां बंद करीत आहात?
+खालील जे लागु असेल ते निवडा.',
+	'prefswitch-survey-answer-whyoff-hard' => '↓ हा चेहरामोहरा वापरावयास फार कठिण आहे',
+	'prefswitch-survey-answer-whyoff-didntwork' => '↓ नविन चेहरामोहरा चांगल्या तर्‍हेने काम करीत नाही.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => '↓ विचार केला होता तसे ते बदल काम करीत नाही.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => '↓ मला ते ज्या तर्‍हेने प्रदर्शित झालेत ते आवडले नाही',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => '↓ मला नविन उपकरणगट आवडला नाही',
+	'prefswitch-survey-answer-whyoff-other' => '↓ इतर कारणे:',
+	'prefswitch-survey-question-os' => '↓ आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
+	'prefswitch-survey-answer-os-other' => '↓ इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
+	'prefswitch-title-switched-on' => '↓ मजा करा!',
 );
 
 /** Malay (Bahasa Melayu)
@@ -5039,6 +5056,7 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'prefswitch' => 'Saklar préferénsi Inisiatif Kamangpaatan',
 	'prefswitch-desc' => 'Ngawenangkeun pamaké pikeun gunta-ganti sababaraha setélan préferénsi',
 	'prefswitch-jswarning' => 'Sing émut yén ku ngarobah kulit, [[User:$1/$2.js|$2 JavaScript]] anjeun perlu disalin ka [[{{ns:user}}:$1/vector.js]] <!-- or [[{{ns:user}}:$1/common.js]]--> ngarah bisa tetep jalan.',
 	'prefswitch-csswarning' => '[[User:$1/$2.css|Gaya kumadinya $2]] anjeun geus moal dilarapkeun deui. Anjeun bisa nambahkeun CSS kumadinya pikeun véktor dina [[{{ns:user}}:$1/vector.css]].',
@@ -5056,6 +5074,8 @@ Mangga pilih sadaya anu cocog.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Teu resep tab jeung pidangan anyarna.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alesan séjén:',
+	'prefswitch-survey-question-browser' => 'Panyungsi naon nu dipaké?',
+	'prefswitch-survey-answer-browser-other' => 'Panyungsi lianna:',
 	'prefswitch-survey-question-os' => 'Anjeun maké sistem operasi naon?',
 	'prefswitch-survey-answer-os-other' => 'Sistem operasi lianna:',
 	'prefswitch-survey-question-res' => 'Résolusi layar nu dipaké?',

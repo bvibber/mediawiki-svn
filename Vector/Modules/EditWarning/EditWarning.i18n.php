@@ -496,6 +496,13 @@ $messages['ml'] = array(
 	'vector-editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തൽ താളിൽ നിന്നും പോകുമ്പോൾ എന്നെ അറിയിക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'vector-editwarning-preference' => '↓ जर मी संपादित करीत असलेल्या पानावरील माझे संपादिलेले बदल जतन न केल्यास मला इशारा द्या',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Kurniasan
  */

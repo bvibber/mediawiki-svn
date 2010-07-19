@@ -4099,12 +4099,23 @@ $messages['mn'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'optin-survey-no' => 'नाही',
 	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
+	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
+	'optin-survey-question-techfail' => '↓ बीटा वापरतांना आपण काही तांत्रिक अडचणी अनुभवल्या काय?',
+	'optin-survey-question-techfail-ifyes' => '↓ जर "होय" असेल तर समजवा किंवा विस्तृत वर्णन करा :',
+	'optin-survey-question-usedtoolbar' => '↓ आपण पान संपादण्यासाठी नविन उपकरणगट(टुलबार) वापरला आहे काय?',
+	'optin-survey-question-usedtoolbar-ifyes' => '↓ जर "होय" असेल तर त्यातील आपणास काय आवडले व नावडले?',
+	'optin-survey-question-usedtoolbar-ifno' => '↓ जर "नाही" तर कां नाही आवडला?आपण भविष्यात याचा वापर कराल काय? कृपया सांगा.',
+	'optin-survey-question-different' => '↓ बीटाच्या वापरासाठी आम्ही वेगळे काय करावयास हवे ज्याने आपण बीटाचा वापर सुरू ठेवाल?',
+	'optin-survey-question-feedback' => '↓ आम्हास यासंबंधी आपली प्रतिक्रिया,विचार जाणुन घ्यायचे आहेत-ते आम्हास महत्वपूर्ण आहेत.',
 	'optin-survey-question-browser' => 'तुम्ही कोणता न्यहाळक (ब्राऊजर) वापरता ?',
-	'optin-survey-answer-browser-other' => 'इतर न्याहाळक(बाउजर}',
+	'optin-survey-answer-browser-other' => 'इतर न्याहाळक(बाउजर)',
+	'optin-survey-question-res' => '↓ आपल्या दृश्यपटलाचे पृथक्करण (स्क्रिन रिजोल्युशन) काय आहे?',
+	'optin-survey-answer-changes-edittools' => '↓ संपादन उपकरणांत (ऐडिट टुल्स) वाढ व दर्जावाढ करा.',
 	'optin-survey-answer-changes-other' => 'इतर',
 	'optin-improvements2' => '== कोणकोणत्या सुधारणा केल्या आहेत? ==
 [[File:UsabilityToolbar.png|left|link=|संवर्धीत संपादन साधनपट्टीचा देखावा]]
@@ -5954,8 +5965,11 @@ $messages['su'] = array(
 	'optin-survey-question-whyoptout' => 'Naha bet ninggalkeun Béta? (mangga pilih sadaya nu cocog.)',
 	'optin-survey-answer-whyoptout-hard' => 'Hésé makéna.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Fungsina teu jalan.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Teu resep nempona.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Teu resep tab jeung pidangan anyarna.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'optin-survey-answer-whyoptout-other' => 'Alesan séjén:',
+	'optin-survey-question-browser' => 'Panyungsi naon nu dipaké?',
 	'optin-survey-question-os' => 'Sistem operasi naon nu dipaké ku anjeun?',
 	'optin-survey-answer-os-other' => 'Sistem operasi lianna:',
 	'optin-survey-question-res' => 'Résolusi layar nu dipaké?',
