@@ -655,8 +655,10 @@ $messages['sc'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author තඹරු විජේසේකර
  */
 $messages['si'] = array(
+	'wikieditor-previewDialog-preference' => 'පෙර-දැකුම් කවුළුව බලගන්වන්න.',
 	'wikieditor-previewDialog-tab' => 'පෙර දසුන',
 	'wikieditor-previewDialog-loading' => 'ප්‍රවේශනය වෙමින් පවතී...',
 );

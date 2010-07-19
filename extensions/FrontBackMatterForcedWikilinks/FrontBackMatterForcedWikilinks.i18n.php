@@ -129,6 +129,7 @@ $messages['ia'] = array(
  * @author Farras
  */
 $messages['id'] = array(
+	'frontbackforced-desc' => 'Tambahkan isi depan dan belakang ke halaman dan terapkan pranala wiki wajib',
 	'frontbackforced-front' => '_(front_matter)',
 	'frontbackforced-back' => '_(back_matter)',
 	'frontbackforced-forced' => '_(forced_wikilinks)',

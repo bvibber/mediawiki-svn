@@ -2281,6 +2281,7 @@ $messages['su'] = array(
 	'prefstats' => 'Statistika préferénsi',
 	'prefstats-title' => 'Statistika préferénsi',
 	'prefstats-xaxis' => 'Durasi (jam)',
+	'prefstats-factors' => 'Tempo unggal: $1',
 	'prefstats-factor-hour' => 'jam',
 	'prefstats-factor-sixhours' => 'genep jam',
 	'prefstats-factor-day' => 'poé',

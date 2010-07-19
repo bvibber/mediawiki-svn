@@ -80,6 +80,13 @@ $messages['cs'] = array(
 	'crowdauthentication-desc' => 'Zásuvný modul pro ověření služby Atlassian Crowd',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'crowdauthentication-desc' => 'Ategyn dilysu ar gyfer Atlassian Crowd',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

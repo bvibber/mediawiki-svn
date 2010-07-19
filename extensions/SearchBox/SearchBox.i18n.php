@@ -712,10 +712,11 @@ $messages['rue'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
  * @author බිඟුවා
  */
 $messages['si'] = array(
-	'searchbox-desc' => 'සෙවුම් පෝරමයන්හි අන්තර්ගතය සඳහා ඉඩදෙන්න',
+	'searchbox-desc' => 'සෙවුම් පත්‍රයන්හි අන්තර්ගතය සඳහා ඉඩදෙන්න',
 	'searchbox-search' => 'සොයන්න',
 	'searchbox-go' => 'යන්න',
 	'searchbox-namespaces' => 'නාමඅවකාශයන්:',

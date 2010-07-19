@@ -1739,9 +1739,21 @@ Proba usar le commando "$3{...}".',
  * @author Kandar
  */
 $messages['id'] = array(
+	'math_noblahtex' => 'Tidak dapat menjalankan blahtex, yang seharusnya di $1',
+	'blahtext-desc' => 'Keluaran MathML untuk tag &lt;math&gt;',
+	'math_AmbiguousInfix' => 'Penempatan berambigu "$1".
+Coba gunakan kurung kurawal tambahan "{ ... }" untuk melakukan disambiguasi.',
+	'math_CannotChangeDirectory' => 'Tidak dapat mengubah direktori kerja',
 	'math_CannotCreateTexFile' => 'Tidak dapat membuat berkas tex',
 	'math_CannotRunDvipng' => 'Tidak bisa menjalankan dvipng',
 	'math_CannotRunLatex' => 'Tidak dapat menjalankan latex',
+	'math_CannotWritePngDirectory' => 'Tidak dapat menulis ke direktori keluaran PNG',
+	'math_CannotWriteTexFile' => 'Tidak dapat menulis ke berkas tex',
+	'math_CasesRowTooBig' => 'Hanya diperbolehkan dua entri di setiap baris dari blok "kasus"',
+	'math_DoubleSubscript' => 'Menemukan dua subskrip tertempel pada dasar yang sama.
+Hanya satu yang diperbolehkan.',
+	'math_DoubleSuperscript' => 'Menemukan dua superskrip tertempel pada dasar yang sama.
+Hanya satu yang diperbolehkan.',
 	'math_IllegalCharacter' => 'Karakter masukan tidak sah',
 	'math_IllegalCommandInMathMode' => 'Perintah "$1" tidak sah pada mode matematik',
 	'math_IllegalCommandInMathModeWithHint' => 'Perintah "$1" tidak sah pada mode matematik
@@ -1749,14 +1761,49 @@ Mungkin anda ingin menggunakan "$2" ?',
 	'math_IllegalCommandInTextMode' => 'Perintah "$1" tidak sah pada mode teks',
 	'math_IllegalCommandInTextModeWithHint' => 'Perintah "$1" tidak sah pada mode teks
 Mungkin anda ingin menggunakan "$2"?',
+	'math_IllegalDelimiter' => 'Pembatas tidak sah setelah "$1"',
+	'math_IllegalFinalBackslash' => 'Garis miring terbalik "\\" tidak sah di ujung masukan',
+	'math_IllegalNestedFontEncodings' => 'Perintah pengkodean jenis huruf tidak mungkin diulang',
+	'math_IllegalRedefinition' => 'Perintah "$1" telah didefinisikan; Anda tidak dapat mendefinisikan ulang',
 	'math_InvalidColour' => 'Warna "$1" salah',
+	'math_InvalidUtf8Input' => 'Untaian masukan UTF-8 tidak sah',
+	'math_LatexFontNotSpecified' => 'Tidak ada jenis huruf LaTeX yang ditetapkan untuk "$1"',
+	'math_LatexPackageUnavailable' => 'Tidak dapat membuat PNG karena paket LaTeX "$1" tidak tersedia',
+	'math_MismatchedBeginAndEnd' => 'Perintah "$1" dan "$2" tidak cocok',
+	'math_MisplacedLimits' => 'Perintah "$1" hanya dapat muncul setelah sebuah operator matematika.
+Coba gunakan  "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'Nama perintah baru hilang atau tidak sah setelah "\\newcommand".
+Harus ada satu perintah tepat yang ditetapkan;
+perintah ini harus dimulai dengan garis miring terbalik "\\" dan hanya berisi aksara alfabetis.',
+	'math_MissingDelimiter' => 'Pembatas hilang setelah "$1"',
 	'math_MissingOpenBraceAfter' => 'Kekurangan kurawal buka "{" setelah "$1"',
 	'math_MissingOpenBraceAtEnd' => 'Kehilangan kurawal buka "{" pada ujung input',
 	'math_MissingOpenBraceBefore' => 'Kehilangan kurawal buka "{" sebelum "$1"',
+	'math_MissingOrIllegalParameterCount' => 'Jumlah parameter hilang atau tidak sah dalam definisi "$1".
+Harus ada satu digit tunggal antara 1 sampai dengan 9.',
 	'math_MissingOrIllegalParameterIndex' => 'Indeks parameter hilang atau ilegal pada definisi "$1"',
+	'math_NonAsciiInMathMode' => 'Karakter non-ASCII hanya dapat digunakan dalam mode teks.
+Coba selesaikan karakter bermasalah pada "\\text(...)".',
+	'math_NotEnoughArguments' => 'Argumen yang dimasukkan ke "$1" belum mencukupi',
 	'math_PngIncompatibleCharacter' => 'Tidak bisa membuat PNG yang berisi karakter $1',
+	'math_ReservedCommand' => 'Perintah "$1" ditetapkan untuk penggunaan internal oleh blahtex',
+	'math_SubstackRowTooBig' => 'Hanya diperbolehkan satu entri di setiap baris dari blok "subtumpuk"',
+	'math_TooManyMathmlNodes' => 'Terlalu banyak titik pada pohon MathML',
 	'math_TooManyTokens' => 'Masukan terlalu panjang',
+	'math_UnavailableSymbolFontCombination' => 'Simbol "$1" tidak tersedia dalam jenis karakter "$2"',
+	'math_UnexpectedNextCell' => 'Perintah "&" hanya muncul di dalam blok "\\begin ... \\end"',
+	'math_UnexpectedNextRow' => 'Perintah "\\\\" hanya muncul di dalam blok "\\begin ... \\end"',
+	'math_UnmatchedBegin' => 'Menemukan "\\begin" tanpa "\\end"',
+	'math_UnmatchedCloseBrace' => 'Menemukan kurung kurawal tertutup "}" tanpa kurung kurawal terbuka "{"',
+	'math_UnmatchedEnd' => 'Menemukan "\\end" tanpa "\\begin"',
+	'math_UnmatchedLeft' => 'Menemukan "\\left" tanpa "\\right"',
+	'math_UnmatchedOpenBrace' => 'Menemukan kurung kurawal terbuka "{" tanpa kurung kurawal tertutup "}"',
+	'math_UnmatchedOpenBracket' => 'Menemukan kurung siku terbuka "[" tanpa kurung siku tertutup "]"',
+	'math_UnmatchedRight' => 'Menemukan "\\right" tanpa "\\left"',
 	'math_UnrecognisedCommand' => 'Perintah tak dikenali "$1"',
+	'math_WrongFontEncoding' => 'Simbol "$1" tidak muncul dalam pengodean jenis huruf "$2"',
+	'math_WrongFontEncodingWithHint' => 'Simbol "$1" tidak muncul dalam pengodean jenis huruf "$2".
+Coba gunakan perintah "$3(...)".',
 );
 
 /** Italian (Italiano)

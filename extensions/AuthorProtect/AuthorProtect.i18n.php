@@ -1473,7 +1473,7 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'authorprotect-reason' => 'Motivu',
+	'authorprotect-reason' => 'Razaun:',
 );
 
 /** Thai (ไทย)

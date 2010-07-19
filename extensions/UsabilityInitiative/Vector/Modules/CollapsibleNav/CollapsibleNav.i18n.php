@@ -385,6 +385,13 @@ $messages['ml'] = array(
 	'vector-collapsiblenav-more' => 'ഇതര ഭാഷകളിൽ',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'vector-collapsiblenav-more' => '↓ इतर भाषा दाखवा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Diagramma Della Verita

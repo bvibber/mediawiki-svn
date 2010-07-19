@@ -506,6 +506,13 @@ $messages['ml'] = array(
 	'prefs-labs' => 'പരീക്ഷണശാലയിൽ തയ്യാറാകുന്ന സൗകര്യങ്ങൾ',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'prefs-beta' => '↓ बीटा चेहेरेपट्टी',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Diagramma Della Verita

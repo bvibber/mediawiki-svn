@@ -288,7 +288,7 @@ $messages['cy'] = array(
 	'watchers_header' => '{{PLURAL:$2|Defnyddwyr|Defnyddiwr|Defnyddwyr|Defnyddwyr|Defnyddwyr|Defnyddwyr}} sy\'n dilyn hynt "[[:$1]]"',
 	'watchers_noone_watches' => 'Nid oes neb yn dilyn hynt y dudalen [[:$1]].',
 	'watchers_x_or_more' => "Mae'r dudalen [[:$2]] ar restr wylio o leiaf $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
-	'watchers_less_than_x' => "Mae'r dudalen hon ar restr wylio llai na(g) $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
+	'watchers_less_than_x' => "Mae'r dudalen [[:$2]] ar restr wylio llai na(g) $1 {{PLURAL:$1||defnyddiwr|ddefnyddiwr|o ddefnyddwyr|o ddefnyddwyr|o ddefnyddwyr}}.",
 	'watchers-num' => "{{PLURAL:$1|Nid oes gan neb o'r defnyddwyr|Mae gan un defnyddiwr|Mae gan $1 ddefnyddiwr|Mae gan $1 defnyddiwr|Mae gan $1 defnyddiwr|Mae gan $1 o ddefnyddwyr}} y dudalen [[:$2]] ar {{PLURAL:$1|eu rhestri gwylio|ei restr wylio|eu rhestri gwylio|eu rhestri gwylio|eu rhestri gwylio|eu rhestri gwylio}}.",
 	'right-watchers-list' => "[[Special:Watchers|Rhestru defnyddwyr sy'n dilyn hynt tudalen benodol]]",
 );
@@ -879,14 +879,20 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
+	'watchers' => 'Urmăritori',
+	'watchers-desc' => 'Afișează [[Special:Watchers|care utilizatori urmăresc o anumită pagină]]',
 	'watchers_link_title' => 'Cine urmărește această pagină?',
-	'watchers_error_article' => "'''Eroare:''' Pagina nu există.",
-	'watchers_header' => '{{PLURAL:$2|Utilizator care urmărește|Utilizatori care urmăresc}} "[[:$1]]"',
-	'watchers_noone_watches' => 'Nimeni nu urmărește această pagină.',
-	'watchers_x_or_more' => '$1 sau mai mulți {{PLURAL:$1|utilizatori|utilizatori}} au această pagină în lista de urmărire.',
-	'watchers_less_than_x' => 'Mai puțin de $1 {{PLURAL:$1|utilizatori|utilizatori}} au această pagină pe lista de urmărire.',
+	'watchers_error_article' => "'''Eroare:''' pagina nu există.",
+	'watchers-error-invalid-page' => "'''Eroare:''' „$1” este un titlu de pagină invalid.",
+	'watchers_header' => '{{PLURAL:$2|Utilizator care urmărește|Utilizatori care urmăresc}} „[[:$1]]”',
+	'watchers_noone_watches' => 'Nimeni nu urmărește pagina [[:$1]].',
+	'watchers_x_or_more' => '$1 sau mai mulți {{PLURAL:$1|utilizatori|utilizatori}} urmăresc pagina [[:$2]].',
+	'watchers_less_than_x' => 'Mai puțin de $1 {{PLURAL:$1|utilizator|utilizatori}} urmăresc pagina [[:$2]].',
+	'watchers-num' => '$1 {{PLURAL:$1|utilizator urmărește|utilizatori urmăresc}} pagina [[:$2]].',
+	'right-watchers-list' => '[[Special:Watchers|Arată utilizatorii care urmăresc o anumită pagină]]',
 );
 
 /** Russian (Русский)
