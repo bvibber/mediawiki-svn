@@ -79,14 +79,18 @@ class DTImportCSV extends SpecialPage {
 				$encoding = $wgRequest->getVal( 'encoding' );
 				$pages = array();
 				$error_msg = self::getCSVData( $source->mHandle, $encoding, $pages );
-				if ( ! is_null( $error_msg ) )
+				if ( ! is_null( $error_msg ) ) {
 					$text .= $error_msg;
-				else
-					$text .= self::modifyPages( $pages );
+				} else {
+					$importSummary = $wgRequest->getVal( 'import_summary' );
+					$text .= self::modifyPages( $pages, $importSummary );
+				}
 			}
 		} else {
 			$select_file_label = wfMsg( 'dt_import_selectfile', 'CSV' );
 			$encoding_type_label = wfMsg( 'dt_import_encodingtype' );
+			$import_summary_label = wfMsg( 'dt_import_summarydesc' );
+			$default_summary = wfMsgForContent( 'dt_import_editsummary', 'CSV' );
 			$import_button = wfMsg( 'import-interwiki-submit' );
 			$text = <<<END
 	<p>$select_file_label</p>
@@ -95,7 +99,10 @@ class DTImportCSV extends SpecialPage {
 	<p>$encoding_type_label: <select name="encoding">
 	<option selected value="utf8">UTF-8</option>
 	<option value="utf16">UTF-16</option>
-	</select>
+	</select></p>
+	<p>$import_summary_label
+	<input type="text" name="import_summary" value="$default_summary" />
+	</p>
 	<p><input type="Submit" name="import_file" value="$import_button"></p>
 	</form>
 
@@ -160,24 +167,26 @@ END;
 		}
 	}
 
-	function modifyPages( $pages ) {
+	function modifyPages( $pages, $editSummary ) {
+		global $wgUser, $wgLang;
+		
 		$text = "";
 		$jobs = array();
-		$job_params = array();
-		global $wgUser;
-		$job_params['user_id'] = $wgUser->getId();
-		$job_params['edit_summary'] = wfMsgForContent( 'dt_import_editsummary', 'CSV' );
+		$jobParams = array();
+		$jobParams['user_id'] = $wgUser->getId();
+		$jobParams['edit_summary'] = $editSummary;
 		foreach ( $pages as $page ) {
 			$title = Title::newFromText( $page->getName() );
 			if ( is_null( $title ) ) {
 				$text .= '<p>' . wfMsg( 'img-auth-badtitle', $page->getName() ) . "</p>\n";
 				continue;
 			}
-			$job_params['text'] = $page->createText();
-			$jobs[] = new DTImportJob( $title, $job_params );
+			$jobParams['text'] = $page->createText();
+			$jobs[] = new DTImportJob( $title, $jobParams );
 		}
 		Job::batchInsert( $jobs );
-		$text .= wfMsg( 'dt_import_success', count( $jobs ), 'CSV' );
+		$text .= wfMsgExt( 'dt_import_success', array( 'parse' ),  $wgLang->formatNum( count( $jobs ) ), 'CSV' );
+
 		return $text;
 	}
 
