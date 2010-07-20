@@ -63,9 +63,9 @@ $j(document).ready( function() {
 						.bind( 'submit', function() {
 							$input.trigger( 'focus' );
 						} );
-					if ( $input.val() == '' ) {
-						$input.trigger( 'blur' );
-					}
+				if ( $input.val() == '' ) {
+					$input.trigger( 'blur' );
+				}
 			} );
 	}
 	$j( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {
