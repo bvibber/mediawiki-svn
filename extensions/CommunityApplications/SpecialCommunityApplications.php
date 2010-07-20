@@ -30,7 +30,7 @@ class SpecialCommunityApplications extends SpecialPage {
 		$wgOut->addHTML( "<hr/>" );
 		$wgOut->addHTML( "<table><tbody>" );
 		
-		$data = get_object_vars(json_decode( $row->ch_data ));
+		$data = FormatJson::decode( $row->ch_data, true );
 		
 		$header = wfMsg( 'community-applications-application-title', $row->ch_id,
 				$data['family-name'], $data['given-name'] );
