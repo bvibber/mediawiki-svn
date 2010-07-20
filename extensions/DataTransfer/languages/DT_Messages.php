@@ -30,6 +30,7 @@ $messages['en'] = array(
 	'importxml'                   => 'Import XML',
 	'dt_import_selectfile'        => 'Please select the $1 file to import:',
 	'dt_import_encodingtype'      => 'Encoding type',
+	'dt_import_summarydesc'       => 'Summary of import:',
 	'dt_import_editsummary'       => '$1 import',
 	'dt_import_importing'         => 'Importing...',
 	'dt_import_success'           => '$1 {{PLURAL:$1|page|pages}} will be created from the $2 file.',
