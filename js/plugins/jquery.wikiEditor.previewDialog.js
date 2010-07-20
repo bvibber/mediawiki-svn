@@ -68,49 +68,49 @@ fn: {
 						width: $( 'body' ).width() - 300,
 						position: ['center', 'top'],
 						open: function() {
-								// Gets the latest copy of the wikitext
-								var wikitext = context.fn.getContents();
-								var $dialog = $( '#' + dialogID );
-								$dialog
-									.css( 'position', 'relative' )
-									.css( 'height', $( 'body' ).height() - 200 )
-									.parent()
-									.css( 'top', '25px' );
-								// $dialog.dialog( 'option', 'width', $( 'body' ).width() - 300 );
-								// Aborts when nothing has changed since the last preview
-								if ( context.modules.preview.previewText == wikitext ) {
-									return;
-								}
-								
-								$dialog.find( '.wikiEditor-preview-dialog-contents' ).empty();
-								$dialog.find( '.wikiEditor-ui-loading' ).show();
-								$.post(
-									wgScriptPath + '/api.php',
-									{
-										'action': 'parse',
-										'title': wgPageName,
-										'text': wikitext,
-										'prop': 'text',
-										'pst': '',
-										'format': 'json'
-									},
-									function( data ) {
-										if (
-											typeof data.parse == 'undefined' ||
-											typeof data.parse.text == 'undefined' ||
-											typeof data.parse.text['*'] == 'undefined'
-										) {
-											return;
-										}
-										context.modules.preview.previewText = wikitext;
-										$dialog.find( '.wikiEditor-ui-loading' ).hide();
-										$dialog.find( '.wikiEditor-preview-dialog-contents' )
-											.html( '<h1 class="firstHeading" id="firstHeading">'+wgTitle+'</h1>' + 
-												data.parse.text['*'] )
-											.find( 'a:not([href^=#])' ).click( function() { return false; } );
-									},
-									'json'
-								);
+							// Gets the latest copy of the wikitext
+							var wikitext = context.fn.getContents();
+							var $dialog = $( '#' + dialogID );
+							$dialog
+								.css( 'position', 'relative' )
+								.css( 'height', $( 'body' ).height() - 200 )
+								.parent()
+								.css( 'top', '25px' );
+							// $dialog.dialog( 'option', 'width', $( 'body' ).width() - 300 );
+							// Aborts when nothing has changed since the last preview
+							if ( context.modules.preview.previewText == wikitext ) {
+								return;
+							}
+							
+							$dialog.find( '.wikiEditor-preview-dialog-contents' ).empty();
+							$dialog.find( '.wikiEditor-ui-loading' ).show();
+							$.post(
+								wgScriptPath + '/api.php',
+								{
+									'action': 'parse',
+									'title': wgPageName,
+									'text': wikitext,
+									'prop': 'text',
+									'pst': '',
+									'format': 'json'
+								},
+								function( data ) {
+									if (
+										typeof data.parse == 'undefined' ||
+										typeof data.parse.text == 'undefined' ||
+										typeof data.parse.text['*'] == 'undefined'
+									) {
+										return;
+									}
+									context.modules.preview.previewText = wikitext;
+									$dialog.find( '.wikiEditor-ui-loading' ).hide();
+									$dialog.find( '.wikiEditor-preview-dialog-contents' )
+										.html( '<h1 class="firstHeading" id="firstHeading">'+wgTitle+'</h1>' + 
+											data.parse.text['*'] )
+										.find( 'a:not([href^=#])' ).click( function() { return false; } );
+								},
+								'json'
+							);
 						}
 					},
 					resizeme: false
