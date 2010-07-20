@@ -149,6 +149,9 @@ $messages['en'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
+	'wikieditor-toolbar-characters-page-thai' => 'Thai',
+	'wikieditor-toolbar-characters-page-lao' => 'Lao',
+	'wikieditor-toolbar-characters-page-khmer' => 'Khmer',
 	/* Help Section */
 	'wikieditor-toolbar-section-help' => 'Help',
 	'wikieditor-toolbar-help-heading-description' => 'Description',
