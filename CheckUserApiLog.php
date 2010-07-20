@@ -20,6 +20,10 @@ class CheckUserApiLog extends ApiQueryBase {
 		
 		$queryParams = CheckUserLog::getQuery( $params['initiator'], $params['target'], null, null, $params['expand'], $params['xff'] );
 		
+		if( isset( $queryParams['error'] ) ) {
+			$this->dieUsageMsg( array( $queryParams['error'] ) );
+		}
+		
 		$this->addTables( $queryParams['tables'] );
 		$this->addFields( $queryParams['fields'] );
 		
@@ -118,17 +122,47 @@ class CheckUserApiLog extends ApiQueryBase {
 	}
 	
 	public function getParamDescription() { 
+		return array(
+			'target' => 'The IP or username that was checked',
+			'initiator' => 'The user that ran the checkuser',
+			'start' => 'The timestamp to start enumerating from',
+			'end' => 'The timestamp to stop enumerating at',
+			'dir' => 'The direction in which to enumerate',
+			'limit' => 'The maximum amount of calls to list',
+			'expand' => 'List all logs, including similar logs',
+			'xff' => 'Show edits routed through the target IP using XFF (only when using the target parameter)',
+			'prop' => array(
+				'Which properties to get',
+				' user       - Adds the username of the checking user',
+				' target     - Adds the username or IP that was checked',
+				' timestamp  - Adds the time and date of checkuser',
+				' reason     - Adds the reason for the call',
+				' type       - Adds the type of checkuser call.',
+				' api        - Adds whether or not the call was from the API',
+			),
+		);
 	}
 	
 	public function getDescription() { 
+		return 'List a log of all previous checkuser calls';
 	}
 	
 	public function getPossibleErrors() { 
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to see the checkuser log' ),
+			array( 'code' => 'culnosuchuser', 'info' => 'The user you specified doesn\'t exist' ),
+		) );
 	}
 	
 	public function getExamples() { 
+		return array(
+			'api.php?action=query&list=checkuserlog',
+			'api.php?action=query&list=checkuserlog&cultarget=Example&culexpand'
+		);
 	}
 	
 	public function getVersion() { 
+		//return __CLASS__ . ': $Id: ApiQueryBlocks.php 69339 2010-07-14 19:00:54Z catrope $';
+		##FIXME
 	}
 }

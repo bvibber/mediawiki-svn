@@ -6,14 +6,18 @@ class CheckUser {
 	var $api = false;
 	
 	function __construct( $target, $api = false ) {
-		$this->target = $target;
+		$this->target = CheckUser::parseTarget( $target );
 		$this->api = $api;
 	}
 	
 	function doUser2IP( $params, $prop = array(), $limit = '' ) {
+	
+		if ( !isset( $this->target['user'] ) ) {
+			return array( 'error' => 'nosuchusershort' );
+		}
 		
 		##FIXME: Make sure that the special page detects errors
-		$userTitle = Title::newFromText( $this->target, NS_USER );
+		$userTitle = Title::newFromText( $this->target['user'], NS_USER );
 		if ( !is_null( $userTitle ) ) {
 			// normalize the username
 			$user = $this->target = $userTitle->getText();
@@ -21,7 +25,7 @@ class CheckUser {
 		
 		# IPs are passed in as a blank string
 		if ( !$user ) {
-			return array( 'error' => 'nouserspecified'  );
+			return array( 'error' => 'nosuchusershort'  );
 		}
 		
 		# Get ID, works better than text as user may have been renamed
@@ -172,6 +176,15 @@ class CheckUser {
 		$cutoff_unixtime = $cutoff_unixtime - ( $cutoff_unixtime % 86400 );
 		$cutoff = $dbr->addQuotes( $dbr->timestamp( $cutoff_unixtime ) );
 		return "cuc_timestamp > $cutoff";
+	}
+	
+	public static function parseTarget( $target ) {
+		if ( IP::isIPAddress( $target ) ) {
+			return array( 'ip' => IP::sanitizeIP( $target ) );
+		}
+		else {
+			return array( 'user' => $target );
+		}
 	}
 	
 }

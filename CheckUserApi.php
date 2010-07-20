@@ -49,6 +49,10 @@ class CheckUserApi extends ApiQueryBase {
 		
 		$dbParams = $cuClass->doUser2IP( $params, $prop, $limit );
 		
+		if( isset( $dbParams['error'] ) ) {
+			$this->dieUsageMsg( array( $dbParams['error'] ) );
+		}
+
 		$this->addTables( $dbParams[0][0] );
 		$this->addFields( $dbParams[0][1] );
 		
@@ -63,7 +67,7 @@ class CheckUserApi extends ApiQueryBase {
 			$params['dir'] = 'older';
 		}
 		
-		$this->addWhereRange( 'cuc_ip_int', $params['dir'], $params['start'], $params['end'] );
+		$this->addWhereRange( 'cuc_ip', $params['dir'], $params['start'], $params['end'] );
 		
 		foreach( $dbParams[0][4] as $id => $opt ) {
 			$this->addOption( $id, $opt );
@@ -77,7 +81,7 @@ class CheckUserApi extends ApiQueryBase {
 		foreach( $res as $id => $row ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've had enough
-				$this->setContinueEnumParameter( 'start', $row->cuc_ip_int );
+				$this->setContinueEnumParameter( 'start', $row->cuc_ip );
 				break;
 			}
 			
@@ -112,7 +116,7 @@ class CheckUserApi extends ApiQueryBase {
 			
 			$fit = $this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $logEntry );
 			if ( !$fit ) {
-				$this->setContinueEnumParameter( 'start', $row->cuc_ip_int );
+				$this->setContinueEnumParameter( 'start', $row->cuc_ip );
 				break;
 			}
 		}
@@ -139,7 +143,7 @@ class CheckUserApi extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'string'
 			),
 			'period' => array(
-				ApiBase::PARAM_DFLT => 30,
+				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_TYPE => 'integer'
 			),
 			'start' => array(
@@ -184,17 +188,57 @@ class CheckUserApi extends ApiQueryBase {
 	}
 	
 	public function getParamDescription() { 
+		return array(
+			'target' => 'The IP or username to check',
+			'type' => array(
+				'Type of checkuser to run',
+				' user2ip    - Get IPs used by a certain user',
+				' ip2user    - Get usernames used by a certain IP'
+			),
+			'reason' => 'Reason for checking IP addresses',
+			'period' => 'How many days back to check',
+			'xff' => 'Show edits routed through the target IP using XFF (only for ip2user)',
+			'start' => 'The IP or username to start enumerating from',
+			'end' => 'The IP or username to stop enumerating at',
+			'dir' => 'The direction in which to enumerate',
+			'limit' => 'The maximum amount of IPs or usernames to list',
+			'prop' => array(
+				'Which properties to get',
+				' count      - Adds how many edits the IP or username has',
+				' first      - Adds first usage of the IP address or username',
+				' last       - Adds last usage of the IP address or username',
+				' hex        - Adds the hex-encoded IP address (only for user2ip)',
+				' blockinfo  - If the IP or user is blocked, adds the block information',
+				' alledits   - Counts all edits from the hex-encoded IP address (only for user2ip)',
+				' agent      - Shows the user agent of the IP or username',
+				' rdns       - Shows the Reverse DNS of the IP address (only for user2ip)',
+			),
+		);
 	}
 	
 	public function getDescription() { 
+		return 'Check users\' IP addresses and other information';
 	}
 	
 	public function getPossibleErrors() { 
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to use checkuser' ),
+			array( 'code' => 'cunocutarget', 'info' => 'The cutarget parameter must be set' ),
+			array( 'code' => 'cunocutype', 'info' => 'The cutype parameter must be set' ),
+			array( 'code' => 'cunosuchuser', 'info' => 'The user you specified doesn\'t exist' ),
+			array( 'code' => 'cidrtoobroad', 'info' => 'CIDR ranges broader than /16 are not accepted' ),
+		) );
 	}
 	
 	public function getExamples() { 
+		return array(
+			'api.php?action=query&list=checkuser&cutarget=Example&cutype=user2ip',
+			'api.php?action=query&list=checkuser&cutarget=127.0.0.1&cutype=ip2user&cuxff&cuperiod=50'
+		);
 	}
 	
 	public function getVersion() { 
+		//return __CLASS__ . ': $Id: ApiQueryBlocks.php 69339 2010-07-14 19:00:54Z catrope $';
+		##FIXME
 	}
 }

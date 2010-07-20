@@ -134,19 +134,6 @@ class SpecialCheckUser extends SpecialPage {
 		$wgOut->addHTML( $form );
 	}
 	
-	/**
-	 * As we use the same small set of messages in various methods and that
-	 * they are called often, we call them once and save them in $this->message
-	 */
-	protected function preCacheMessages() {
-		// Precache various messages
-		if ( !isset( $this->message ) ) {
-			foreach ( explode( ' ', 'diff hist minoreditletter newpageletter blocklink log' ) as $msg ) {
-				$this->message[$msg] = wfMsgExt( $msg, array( 'escape' ) );
-			}
-		}
-	}
-	
 	protected function addStyles() {
 		global $wgScriptPath, $wgCheckUserStyleVersion, $wgCheckUserCSSVersion, $wgCheckUserJQueryVersion, $wgCheckUserPopupVersion, $wgOut;
 		// FIXME, use Html::
