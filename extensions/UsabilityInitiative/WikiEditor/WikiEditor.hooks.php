@@ -17,16 +17,16 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/PreviewDialog/PreviewDialog.js', 'version' => 2 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 98 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 99 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Templates/Templates.js', 'version' => 1 ),
 			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 112 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 113 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 112 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 113 ),
 		),
 	);
 	static $messages = array(
@@ -322,6 +322,9 @@ class WikiEditorHooks {
 				'wikieditor-toolbar-characters-page-telugu',
 				'wikieditor-toolbar-characters-page-sinhala',
 				'wikieditor-toolbar-characters-page-gujarati',
+				'wikieditor-toolbar-characters-page-thai',
+				'wikieditor-toolbar-characters-page-lao',
+				'wikieditor-toolbar-characters-page-khmer',
 				/* Help Section */
 				'wikieditor-toolbar-section-help',
 				'wikieditor-toolbar-help-heading-description',
