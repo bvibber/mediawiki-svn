@@ -1,4 +1,4 @@
-#!/usr/bin/php -q
+#!/usr/bin/php -d memory_limit=2000M -q
 <?php
 if(count($argv) != 2){
 	print("\n\tUsage: $argv[0] <inputfile> \n");
