@@ -8,7 +8,6 @@ class ApiCodeUpdate extends ApiBase {
 		if( !$wgUser->isAllowed('codereview-use') ) {
 			$this->dieUsage('You don\'t have permission update code','permissiondenied');
 		}
-		$this->getMain()->setVaryCookie();
 		$params = $this->extractRequestParams();
 
 		if ( !isset( $params['repo'] ) ) {

@@ -36,6 +36,7 @@ class ApiQueryGlobalBlocks extends ApiQueryBase {
 	}
 
 	public function execute() {
+		global $wgUser;
 		$params = $this->extractRequestParams();
 
 		$prop = array_flip($params['prop']);
