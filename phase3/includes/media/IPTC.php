@@ -25,14 +25,24 @@ class IPTC {
                         return $data;
                 }
 
-                $c = '?';
+                $c = '';
 		//charset info contained in tag 1:90.
 		if (isset($parsed['1#090']) && isset($parsed['1#090'][0])) {
 			$c = self::getCharset($parsed['1#090'][0]);
+			if ($c === false) {
+				//Unknown charset. refuse to parse.
+				//note: There is a different between
+				//unknown and no charset specified.
+				return array();
+			}
 			unset( $parsed['1#090'] );
 		}
 
 		foreach ( $parsed as $tag => $val ) {
+			if ( isset( $val[0] ) && trim($val[0]) == '' ) {
+				wfDebugLog('iptc', "IPTC tag $tag had only whitespace as its value.");
+				continue;
+			}
 			switch( $tag ) {
 				case '2#120': /*IPTC caption. mapped with exif ImageDescription*/
 					$data['ImageDescription'] = self::convIPTC( $val, $c );
@@ -265,10 +275,11 @@ class IPTC {
 		}
 
 		if ( substr($date, 0, 4) < "1902" ) {
-			//We run into the reverse y2k38 bug.
-			//might do something better later...
-			wfDebugLog( 'iptc', "IPTC: date is too early (reverse y2k38 bug) ( $date )");
-			return null;	
+			// We run into the reverse y2k38 bug.
+			// Avoid using wfTimestamp as it doesn't work for pre-1902 dates
+			return substr( $date, 0, 4 ) . ':'
+				. substr( $date, 4, 2 ) . ':'
+				. substr( $date, 6, 2 );
 		}
 		
 		$unixTS = wfTimestamp( TS_UNIX, $date . substr( $time, 0, 6 ));
@@ -300,10 +311,10 @@ class IPTC {
 			foreach ($data as &$val) {
 				$val = self::convIPTCHelper( $val, $charset );
 			}
-
 		} else {
 			$data = self::convIPTCHelper ( $data, $charset );
 		}
+
 		return $data;
 	}
 	/**
@@ -312,21 +323,21 @@ class IPTC {
 	* @param $charset String: The charset
 	*/
 	private static function convIPTCHelper ( $data, $charset ) {
-		if ( $charset !== '?' ) {
+		if ( $charset ) {
 			$data = iconv($charset, "UTF-8//IGNORE", $data);
 			if ($data === false) {
 				$data = "";
-				wfDebug(__METHOD__ . " Error converting iptc data charset $charset to utf-8");
+				wfDebugLog('iptc', __METHOD__ . " Error converting iptc data charset $charset to utf-8");
 			}
 		} else {
-			//treat as utf-8 if is valid utf-8. otherwise pretend its iso-8859-1
+			//treat as utf-8 if is valid utf-8. otherwise pretend its windows-1252
 			// most of the time if there is no 1:90 tag, it is either ascii, latin1, or utf-8
 			$oldData = $data;
 			UtfNormal::quickIsNFCVerify( $data ); //make $data valid utf-8
-			if ($data === $oldData) return $data;
-			else return self::convIPTCHelper ( $oldData, 'ISO-8859-1' ); //should this be windows-1252?
+			if ($data === $oldData) return $data; //if validation didn't change $data
+			else return self::convIPTCHelper ( $oldData, 'Windows-1252' );
 		}
-		return $data;
+		return trim( $data );
 	}
 
 	/**
@@ -455,9 +466,9 @@ class IPTC {
 				$c = 'CSN_369103';
 				break;
 			default:
-				wfDebug(__METHOD__ . 'Unkown charset in iptc 1:90: ' . bin2hex( $tag ) ); 
-				//at this point should we give up and refuse to parse iptc?
-				$c = '?';
+				wfDebugLog('iptc', __METHOD__ . 'Unkown charset in iptc 1:90: ' . bin2hex( $tag ) ); 
+				//at this point just give up and refuse to parse iptc?
+				$c = false;
 		}
 		return $c;
 	}

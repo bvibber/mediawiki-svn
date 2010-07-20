@@ -2923,6 +2923,13 @@ $wgMessageStructure = array(
 		'exif-gpsdestdistance-m',
 		'exif-gpsdestdistance-n',
 	),
+	'exif-gdop' => array(
+		'exif-gpsdop-excellent',
+		'exif-gpsdop-good',
+		'exif-gpsdop-moderate',
+		'exif-gpsdop-fair',
+		'exif-gpsdop-poor',
+	),
 	'exif-objectcycle' => array(
 		'exif-objectcycle-a',
 		'exif-objectcycle-p',
@@ -2931,6 +2938,10 @@ $wgMessageStructure = array(
 	'exif-gpsdirection' => array(
 		'exif-gpsdirection-t',
 		'exif-gpsdirection-m',
+	),
+	'exif-ycbcrpositioning' => array(
+		'exif-ycbcrpositioning-1',
+		'exif-ycbcrpositioning-2',
 	),
 	'edit-externally' => array(
 		'edit-externally',

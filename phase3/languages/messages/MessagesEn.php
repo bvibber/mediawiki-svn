@@ -3634,7 +3634,13 @@ Others will be hidden by default.
 * exposuretime
 * fnumber
 * isospeedratings
-* focallength',
+* focallength
+* artist
+* copyright
+* imagedescription
+* gpslatitude
+* gpslongitude
+* gpsaltitude',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Width',
@@ -3938,8 +3944,8 @@ Others will be hidden by default.
 'exif-gpslongitude-w' => 'West longitude',
 
 # Pseudotags used for GPSAltitude
-'exif-gpsaltitude-above-sealevel' => '$1 meters above sea level',
-'exif-gpsaltitude-below-sealevel' => '$1 meters below sea level',
+'exif-gpsaltitude-above-sealevel' => '$1 {{plural:$1|meters|meter}} above sea level',
+'exif-gpsaltitude-below-sealevel' => '$1 {{plural:$1|meters|meter}} below sea level',
 
 'exif-gpsstatus-a' => 'Measurement in progress',
 'exif-gpsstatus-v' => 'Measurement interoperability',
@@ -3961,9 +3967,18 @@ Others will be hidden by default.
 'exif-gpsdirection-t' => 'True direction',
 'exif-gpsdirection-m' => 'Magnetic direction',
 
+'exif-gpsdop-excellent' => 'Excellent ($1)',
+'exif-gpsdop-good'      => 'Good ($1)',
+'exif-gpsdop-moderate'  => 'Moderate ($1)',
+'exif-gpsdop-fair'      => 'Fair ($1)',
+'exif-gpsdop-poor'      => 'Poor ($1)',
+
 'exif-objectcycle-a' => 'Morning only',
 'exif-objectcycle-p' => 'Evening only',
 'exif-objectcycle-b' => 'Both morning and evening',
+
+'exif-ycbcrpositioning-1' => 'Centered',
+'exif-ycbcrpositioning-2' => 'Co-sited',
 
 # External editor support
 'edit-externally'      => 'Edit this file using an external application',

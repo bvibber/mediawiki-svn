@@ -24,7 +24,7 @@
  */
 
 /**
- * @todo document (e.g. one-sentence class-overview description)
+ * Class to extract and validate Exif data from jpeg (and possibly tiff) files.
  * @ingroup Media
  */
 class Exif {
@@ -376,7 +376,7 @@ class Exif {
 	
 		//GPSVersion(ID) is treated as the wrong type by php exif support.
 		//Go through each byte turning it into a version string.
-		//For example: "\x00\x00\x02\x02" -> "2.2.0.0"
+		//For example: "\x02\x02\x00\x00" -> "2.2.0.0"
 
 		//Also change exif tag name from GPSVersion (what php exif thinks it is)
 		//to GPSVersionID (what the exif standard thinks it is).
@@ -388,7 +388,7 @@ class Exif {
 				if ( $i !== 0 ) {
 					$newVal .= '.';
 				}
-				$newVal .= ord( substr($val, strlen($val) - $i - 1, 1) );
+				$newVal .= ord( substr($val, $i, 1) );
 			}
 			$this->mFilteredExifData['GPSVersionID'] = $newVal;
 			unset( $this->mFilteredExifData['GPSVersion'] );
@@ -396,12 +396,10 @@ class Exif {
 
 	}
 	/**
-	* do userComment and similar. pg. 34 of exif standard.
+	* Do userComment tags and similar. See pg. 34 of exif standard.
 	* basically first 8 bytes is charset, rest is value.
-	* Needs more testing, as its unclear from exif standard if they mean
-	* utf-8, utf-16, or something else by 'unicode'.
+	* This has not been tested on any shift-JIS strings.
 	* @param $prop String prop name.
-	* @todo this is in need of testing.
 	*/
 	private function charCodeString ( $prop ) {
 		if ( isset( $this->mFilteredExifData[$prop] ) ) {
@@ -421,10 +419,26 @@ class Exif {
 			switch ($charCode) {
 				case "\x4A\x49\x53\x00\x00\x00\x00\x00":
 					//JIS
-					$val = iconv("Shift-JIS", "UTF-8//IGNORE", $val);
+					$charset = "Shift-JIS";
 					break;
-				default: //unicode or undefined. leave as is.
+				case "UNICODE\x00":
+					$charset = "UTF-16";
 					break;
+				default: //ascii or undefined.
+					$charset = "";
+					break;
+			}
+			// This could possibly check to see if iconv is really installed
+			// or if we're using the compatability wraper in globalFunctions.php
+			if ($charset) {
+				$val = iconv($charset, 'UTF-8//IGNORE', $val);
+			} else {
+				// if valid utf-8, assume that, otherwise assume windows-1252
+				$valCopy = $val;
+				UtfNormal::quickIsNFCVerify( $valCopy ); //validates $valCopy.
+				if ( $valCopy !== $val ) {
+					$val = iconv('Windows-1252', 'UTF-8//IGNORE', $val);
+				}
 			}
 			
 			//trim and check to make sure not only whitespace.
@@ -437,7 +451,7 @@ class Exif {
 			}
 
 			//all's good.
-			$this->mFilteredData[$prop] = $val;
+			$this->mFilteredExifData[$prop] = $val;
 		}
 	}
 	/**
@@ -765,7 +779,10 @@ class Exif {
 }
 
 /**
- * @todo document (e.g. one-sentence class-overview description)
+ * Format Image metadata values into a human readable form.
+ * Note despite the name, this formats more than just exif
+ * values.
+ * @todo Perhaps rename to FormatMetadata
  * @ingroup Media
  */
 class FormatExif {
@@ -818,6 +835,34 @@ class FormatExif {
 			} else {
 				$type = 'ul'; // default unorcdered list.
 			}
+
+			//This is done differently as the tag is an array.
+			if ($tag == 'GPSTimeStamp' && count($vals) === 3) {
+				//hour min sec array
+
+				$h = explode('/', $vals[0]);
+				$m = explode('/', $vals[1]);
+				$s = explode('/', $vals[2]);
+
+				// this should already be validated
+				// when loaded from file, but it could
+				// come from a foreign repo, so be
+				// paranoid.
+				if ( !isset($h[1])
+					|| !isset($m[1])
+					|| !isset($s[1])
+					|| $h[1] == 0
+					|| $m[1] == 0
+					|| $s[1] == 0
+				) {
+					continue;
+				}
+				$tags[$tag] = intval( $h[0] / $h[1] )
+					. ':' . intval( $m[0] / $m[1] )
+					. ':' . str_pad( intval( $s[0] / $s[1] ), 2, '0', STR_PAD_LEFT );
+				continue;
+			}
+
 		
 			foreach ( $vals as &$val ) {
 
@@ -867,7 +912,17 @@ class FormatExif {
 					break;
 
 				// TODO: YCbCrSubSampling
-				// TODO: YCbCrPositioning
+				case 'YCbCrPositioning':
+					switch ( $val ) {
+					case 1:
+					case 2:
+						$val = $this->msg( $tag, $val );
+						break;
+					default:
+						$val = $val;
+						break;
+					}
+					break;
 
 				case 'XResolution':
 				case 'YResolution':
@@ -914,12 +969,21 @@ class FormatExif {
 				case 'DateTime':
 				case 'DateTimeOriginal':
 				case 'DateTimeDigitized':
-					if ( $val == '0000:00:00 00:00:00' ) {
+				case 'GPSDateStamp':
+					if ( $val == '0000:00:00 00:00:00' || $val == '    :  :     :  :  ' ) {
 						$val = wfMsg( 'exif-unknowndate' );
 					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d) (?:\d\d):(?:\d\d):(?:\d\d)$/', $val ) ) {
 						$val = $wgLang->timeanddate( wfTimestamp( TS_MW, $val ) );
 					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d)$/', $val ) ) {
-						$val = $wgLang->date( wfTimestamp( TS_MW, $val . ' 00:00:00' ) );
+						// avoid using wfTimestamp here for the pre-1902 photos
+						// due to reverse y2k38 bug. $wgLang->timeanddate() is also
+						// broken on dates from before 1902 so don't worry about it
+						// in the above case (not to mention that most photos from the
+						// 1800's don't have a time recorded anyways).
+						$val = $wgLang->date( substr( $val, 0, 4 )
+							. substr( $val, 5, 2 )
+							. substr( $val, 8, 2 )
+							. '000000' );
 					}
 					// else it will just output $val without formatting it.
 					break;
@@ -1197,10 +1261,6 @@ class FormatExif {
 					}
 					break;
 
-				case 'GPSDateStamp':
-					$val = $wgLang->date( substr( $val, 0, 4 ) . substr( $val, 5, 2 ) . substr( $val, 8, 2 ) . '000000' );
-					break;
-
 				case 'GPSLatitude':
 				case 'GPSDestLatitude':
 					$val = $this->formatCoords( $val, 'latitude' );
@@ -1213,10 +1273,10 @@ class FormatExif {
 				case 'GPSSpeedRef':
 					switch( $val ) {
 					case 'K': case 'M': case 'N':
-						$tags[$tag] = $this->msg( 'GPSSpeed', $val );
+						$val = $this->msg( 'GPSSpeed', $val );
 						break;
 					default:
-						$tags[$tag] = $val;
+						$val = $val;
 						break;
 					}
 					break;
@@ -1224,14 +1284,30 @@ class FormatExif {
 				case 'GPSDestDistanceRef':
 					switch( $val ) {
 					case 'K': case 'M': case 'N':
-						$tags[$tag] = $this->msg( 'GPSDestDistance', $val );
+						$val = $this->msg( 'GPSDestDistance', $val );
 						break;
 					default:
-						$tags[$tag] = $val;
+						$val = $val;
 						break;
 					}
 					break;
 
+				case 'GPSDOP':
+					// See http://en.wikipedia.org/wiki/Dilution_of_precision_(GPS)
+					if ( $val <= 2 ) {
+						$val = $this->msg( $tag, 'excellent', $this->formatNum( $val ) );
+					} elseif ( $val <= 5 ) {
+						$val = $this->msg( $tag, 'good', $this->formatNum( $val ) );
+					} elseif ( $val <= 10 ) {
+						$val = $this->msg( $tag, 'moderate', $this->formatNum( $val ) );
+					} elseif ( $val <= 20 ) {
+						$val = $this->msg( $tag, 'fair', $this->formatNum( $val ) );
+					} else {
+						$val = $this->msg( $tag, 'poor', $this->formatNum( $val ) );
+					}
+					break;
+
+	
 
 				// This is not in the Exif standard, just a special
 				// case for our purposes which enables wikis to wikify
@@ -1450,8 +1526,8 @@ class FormatExif {
 	/**
 	 * Calculate the greatest common divisor of two integers.
 	 *
-	 * @param $a Integer: FIXME
-	 * @param $b Integer: FIXME
+	 * @param $a Integer: Numerator
+	 * @param $b Integer: Denominator
 	 * @return int
 	 * @private
 	 */

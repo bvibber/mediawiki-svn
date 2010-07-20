@@ -599,6 +599,13 @@ $wgEXIFMessages = array(
 	'exif-gpsdestdistance-n',
 	'exif-gpsdirection-t',
 	'exif-gpsdirection-m',
+	'exif-gpsdop-excellent',
+	'exif-gpsdop-good',
+	'exif-gpsdop-moderate',
+	'exif-gpsdop-fair',
+	'exif-gpsdop-poor',
+	'exif-ycbcrpositioning-1',
+	'exif-ycbcrpositioning-2',
 	//non-exif metadata that is still image metadata
 	'exif-jpegfilecomment',
 	'exif-keywords',

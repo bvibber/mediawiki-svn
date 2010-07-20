@@ -8,6 +8,10 @@ This is meant to comply with http://www.metadataworkinggroup.org/pdf/mwg_guidanc
 @todo other image formats.
 */
 class BitmapMetadataHandler {
+	const MAX_JPEG_SEGMENTS = 200;
+	// the max segment is a sanity check.
+	// A jpeg file should never even remotely have
+	// that many segments. Your average file has about 10.
 	private $filetype;
 	private $filename;
 	private $metadata = Array();
@@ -36,9 +40,10 @@ class BitmapMetadataHandler {
 	*/
 	function jpegSegmentSplitter () {
 		$filename = $this->filename;
+		$segmentCount = 0;
 		if ( $this->filetype !== 'image/jpeg' ) throw new MWException( "jpegSegmentSplitter called on non-jpeg" );
 
-		$segments = Array( 'XMP_ext' => Array() );
+		$segments = Array( 'XMP_ext' => array(), 'COM' => array() );
 
 		if ( !$filename ) throw new MWException( "No filename specified for BitmapMetadataHandler" );
 		if ( !file_exists( $filename ) || is_dir( $filename ) ) throw new MWException( "Invalid file $filename passed to BitmapMetadataHandler" );
@@ -51,6 +56,11 @@ class BitmapMetadataHandler {
 		if ( $buffer !== "\xFF\xD8" ) throw new MWException( "Not a jpeg, no SOI" );
 		while ( !feof( $fh ) ) {
 			$buffer = fread( $fh, 1 );
+			$segmentCount++;
+			if ( $segmentCount > self::MAX_JPEG_SEGMENTS ) {
+				// this is just a sanity check
+				throw new MWException('Too many jpeg segments. Aborting');
+			}
 			if ( $buffer !== "\xFF" ) {
 				throw new MWException( "Error reading jpeg file marker" );
 			}
@@ -58,7 +68,17 @@ class BitmapMetadataHandler {
 			$buffer = fread( $fh, 1 );
 			if ( $buffer === "\xFE" ) {
 				// COM section -- file comment
-				$segments["COM"] = self::jpegExtractMarker( $fh );
+				// First see if valid utf-8,
+				// if not try to convert it to windows-1252.
+				$com = $oldCom = trim( self::jpegExtractMarker( $fh ) );
+				UtfNormal::quickIsNFCVerify( $com ); 
+				//turns $com to valid utf-8.
+				//thus if no change, its utf-8, otherwise its something else.
+				if ( $com !== $oldCom ) {
+					$oldCom = iconv( 'windows-1252', 'UTF-8//IGNORE', $oldCom );
+				}
+				$segments["COM"][] = $oldCom;
+
 			} elseif ( $buffer === "\xE1" ) {
 				// APP1 section (Exif, XMP, and XMP extended)
 				$temp = self::jpegExtractMarker( $fh );
@@ -67,8 +87,6 @@ class BitmapMetadataHandler {
 				if ( substr( $temp, 0, 29 ) === "http://ns.adobe.com/xap/1.0/\x00" ) {
 					$segments["XMP"] = $temp;
 				} elseif ( substr( $temp, 0, 35 ) === "http://ns.adobe.com/xmp/extension/\x00" ) {
-					// fixme - put some limit on this? what if someone
-					// uploaded a file with 100mb worth of metadata.
 					$segments["XMP_ext"][] = $temp;
 				}
 			} elseif ( $buffer === "\xED" ) {
@@ -288,7 +306,7 @@ class BitmapMetadataHandler {
 		$meta->getExif();
 		$seg = Array();
 		$seg = $meta->JpegSegmentSplitter();
-		if ( isset( $seg['COM'] ) ) {
+		if ( isset( $seg['COM'] ) && isset( $seg['COM'][0] ) ) {
 			$meta->addMetadata( Array( 'JPEGFileComment' => $seg['COM'] ), 'file-comment' );
 		}
 		if ( isset( $seg['PSIR'] ) ) {
