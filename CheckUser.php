@@ -31,6 +31,9 @@ $wgCheckUserForceSummary = false;
 
 // Increment this number every time you touch the .js file.
 $wgCheckUserStyleVersion = 5;
+$wgCheckUserPopupVersion = 1;
+$wgCheckUserCSSVersion = 1;
+$wgCheckUserJQueryVersion = 1;
 
 # Recent changes data hook
 global $wgHooks;
@@ -45,9 +48,12 @@ $wgHooks['ContributionsToolLinks'][] = 'efLoadCheckUserLink';
 
 $wgAutoloadClasses['SpecialCheckUser'] = $dir . 'SpecialCheckUser.php';
 $wgAutoloadClasses['SpecialCheckUserLog'] = $dir . 'SpecialCheckUserLog.php';
+
 $wgAutoloadClasses['CheckUserApi'] = $dir . 'CheckUserApi.php';
 $wgAutoloadClasses['CheckUserApiLog'] = $dir . 'CheckUserApiLog.php';
+
 $wgAutoloadClasses['CheckUser'] = $dir . 'CheckUser.body.php';
+$wgAutoloadClasses['CheckUserLog'] = $dir . 'CheckUser.body.php';
 
 $wgAutoloadClasses['CUTablePager'] = $dir . 'CheckUser.pager.php';
 $wgAutoloadClasses['CUTablePagerUser2IP'] = $dir . 'CheckUser.pager.php';
@@ -105,8 +111,6 @@ function efUpdateCheckUserData( $rc ) {
 	} else {
 		$actionText = '';
 	}
-	
-	$ip = '235.35.4.6';
 
 	$dbw = wfGetDB( DB_MASTER );
 	$cuc_id = $dbw->nextSequenceValue( 'cu_changes_cu_id_seq' );

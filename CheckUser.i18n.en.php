@@ -77,24 +77,26 @@ Here are the IPs used (5000 max, sorted by address):',
 	'checkuser-ipeditcount'      => '~$1 from all users',
 	'checkuser-log-subpage'      => 'Log',
 	'checkuser-log-return'       => 'Return to CheckUser main form',
-	'checkuser-log-user2ip'      => '$1 got IP addresses for $2',
-	'checkuser-log-ip2edits'      => '$1 got edits for $2',
-	'checkuser-log-ip2user'      => '$1 got users for $2',
-	'checkuser-log-ip2edits-xff'  => '$1 got edits for XFF $2',
-	'checkuser-log-ip2user-xff'  => '$1 got users for XFF $2',
-	'checkuser-log-user2edits'    => '$1 got edits for $2',
+	
+	'checkuser-log-userips'      => '$1 got IP addresses for $2 $3',
+	'checkuser-log-ipedits'     => '$1 got edits for $2 $3',
+	'checkuser-log-ipusers'      => '$1 got users for $2 $3',
+	'checkuser-log-ipedits-xff' => '$1 got edits for XFF $2 $3',
+	'checkuser-log-ipusers-xff'  => '$1 got users for XFF $2 $3',
+	'checkuser-log-useredits'   => '$1 got edits for $2 $3',
 
 	'checkuser-autocreate-action' => 'was automatically created',
 	'checkuser-email-action'     => 'sent an email to user "$1"',
 	'checkuser-reset-action'     => 'reset password for user "$1"',
 
-	'checkuser-toollinks'        => '----
-	<span class="plainlinks">[http://openrbl.org/query?$1 RDNS] &bull;
-[http://www.robtex.com/rbls/$1.html RBLs] &bull;
-[http://www.dnsstuff.com/tools/tracert.ch?ip=$1 Traceroute] <br />
-[http://www.ip2location.com/$1 Geolocate] &bull;
-[http://toolserver.org/~overlordq/scripts/checktor.fcgi?ip=$1 Tor] &bull;
-[http://ws.arin.net/whois/?queryinput=$1 WHOIS]</span>', # do not translate or duplicate this message to other languages
+	'checkuser-toollinks'        => '
+*[[Special:Block/$1|block]]
+*<span class="plainlinks">[http://openrbl.org/query?$1 rdns]</span>
+*<span class="plainlinks">[http://www.robtex.com/rbls/$1.html rbls]</span> 
+*<span class="plainlinks">[http://www.dnsstuff.com/tools/tracert.ch?ip=$1 traceroute]</span> 
+*<span class="plainlinks">[http://www.ip2location.com/$1 geolocate]</span> 
+*<span class="plainlinks">[http://toolserver.org/~overlordq/scripts/checktor.fcgi?ip=$1 tor]</span> 
+*<span class="plainlinks">[http://ws.arin.net/whois/?queryinput=$1 whois]</span>', # do not translate or duplicate this message to other languages
 	'checkuser-xff'              => 'XFF',
 	'checkuser-blockedby'        => 'Blocked by [[User:$1|$1]] on $3 with reason: "<nowiki>$2</nowiki>". $4',
 	'checkuser-type'             => 'Type of check:',
@@ -109,4 +111,8 @@ Here are the IPs used (5000 max, sorted by address):',
 	'checkuser-limit'            => 'Results to show:',
 	'checkuser-cuc_agent'        => 'User agent',
 	'checkuser-cuc_rdns'         => 'Reverse DNS',
+	'checkuser-more'             => '(more)',
+	'checkuser-using-api'        => '(using the API)',
+	'checkuser-expand'           => 'Show identical results (results with identical targets, checkusers, etc within 1 hour)',
+	'checkuser-initiator'        => 'Initiator:',
 );

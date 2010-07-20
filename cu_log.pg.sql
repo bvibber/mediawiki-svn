@@ -9,6 +9,7 @@ CREATE TABLE cu_log (
   cul_user_text    TEXT     NOT NULL,
   cul_reason       TEXT     NOT NULL DEFAULT '',
   cul_type         TEXT     NOT NULL DEFAULT '',
+  cul_api          INTEGER  NOT NULL DEFAULT 0, 
   cul_target_id    INTEGER      NULL REFERENCES mwuser(user_id) ON DELETE SET NULL,
   cul_target_text  TEXT     NOT NULL DEFAULT '',
   cul_target_hex   TEXT     NOT NULL DEFAULT '',

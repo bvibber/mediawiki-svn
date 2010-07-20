@@ -3,13 +3,16 @@
 class CheckUser {
 
 	var $target;
+	var $api = false;
 	
-	function __construct( $target ) {
+	function __construct( $target, $api = false ) {
 		$this->target = $target;
+		$this->api = $api;
 	}
 	
 	function doUser2IP( $params, $prop = array(), $limit = '' ) {
-
+		
+		##FIXME: Make sure that the special page detects errors
 		$userTitle = Title::newFromText( $this->target, NS_USER );
 		if ( !is_null( $userTitle ) ) {
 			// normalize the username
@@ -30,7 +33,7 @@ class CheckUser {
 		}
 
 		# Record check...
-		if ( !$this->addLogEntry( 'user2ip', 'user', $user, $params['reason'], $user_id ) ) {
+		if ( !$this->addLogEntry( 'userips', 'user', $user, $params['reason'], $user_id ) ) {
 			$retArray['warn'] = 'checkuser-log-fail';
 		}
 		
@@ -42,6 +45,7 @@ class CheckUser {
 		
 		$select = array(
 			'cuc_ip',
+			'cuc_ip_int',
 			'cuc_ip_hex',
 			'cuc_user',
 			'cuc_agent',
@@ -106,6 +110,7 @@ class CheckUser {
 				'cul_user_text' => $wgUser->getName(),
 				'cul_reason' => $reason,
 				'cul_type' => $logType,
+				'cul_api' => intval( $this->api ),
 				'cul_target_id' => $targetID,
 				'cul_target_text' => $target,
 				'cul_target_hex' => $targetHex,
@@ -169,5 +174,77 @@ class CheckUser {
 		return "cuc_timestamp > $cutoff";
 	}
 	
+}
+
+class CheckUserLog {
+
+	public static function getQuery( $initiator, $target, $year, $month, $expanded ) {
+		
+		$searchConds = array();
+		
+		if ( !is_null( $initiator ) ) {
+			$user = User::newFromName( $target );
+			if ( !$user || !$user->getID() ) {
+				return array( 'error' =>  'nosuchusershort' );
+			} else {
+				$searchConds['cul_user'] = $user->getID();
+			}
+		}
 	
+		if( !is_null( $target ) ) {
+			// Is it an IP?
+			list( $start, $end ) = IP::parseRange( $target );
+			if ( $start !== false ) {
+				if ( $start == $end ) {
+					$searchConds[] = 'cul_target_hex = ' . $dbr->addQuotes( $start ) . ' OR ' .
+						'(cul_range_end >= ' . $dbr->addQuotes( $start ) . ' AND ' .
+						'cul_range_start <= ' . $dbr->addQuotes( $end ) . ')';
+				} else {
+					$searchConds[] = 
+						'(cul_target_hex >= ' . $dbr->addQuotes( $start ) . ' AND ' .
+						'cul_target_hex <= ' . $dbr->addQuotes( $end ) . ') OR ' .
+						'(cul_range_end >= ' . $dbr->addQuotes( $start ) . ' AND ' .
+						'cul_range_start <= ' . $dbr->addQuotes( $end ) . ')';
+				}
+			} else {
+				// Is it a user?
+				$user = User::newFromName( $target );
+				if ( $user && $user->getID() ) {
+					$searchConds['cul_type'] = array( 'userips', 'useredits' );
+					$searchConds['cul_target_id'] = $user->getID();
+				} elseif ( $target ) {
+					return array( 'error' =>  'nosuchusershort' );
+				}
+			}
+		}
+	
+		$searchConds[] = 'user_id = cul_user';
+		
+		$ret = array(
+			'tables' => array( 
+				'cu_log', 
+				'user' 
+			),
+			'fields' => array(
+				'cul_id', 
+				'cul_timestamp', 
+				'cul_user', 
+				'cul_reason', 
+				'cul_type',
+				'cul_target_id', 
+				'cul_target_text', 
+				'cul_api', 
+				'user_name'
+			),
+			'conds'  => $searchConds,
+			'options' => array()
+		);
+		
+		##FIXME: How well will this work for renames?
+		if( !$expanded ) {
+			$ret['options']['GROUP BY'] = "DATE_FORMAT( cul_timestamp, '%Y%m%d%H' ), cul_user, cul_target_text, cul_type, cul_reason, cul_api";
+		}
+		
+		return $ret;
+	}
 }

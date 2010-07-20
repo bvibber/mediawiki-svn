@@ -40,6 +40,19 @@ abstract class CUTablePager extends TablePager {
 		return SpecialPage::getTitleFor( 'CheckUser', false );
 	}
 	
+	function getCellAttrs( $field, $value ) {
+		$retArr = array( 
+			'class' => 'TablePager_col_' . $field,
+			'style' => 'padding: 0.3em;'
+		);
+		
+		$retArr = $this->fixCellAttrs( $field, $value, $retArr );
+		
+		return $retArr;
+	}
+	
+	abstract function fixCellAttrs( $field, $value, $retArr );
+	
 }
 
 class CUTablePagerUser2IP extends CUTablePager { 
@@ -70,9 +83,11 @@ class CUTablePagerUser2IP extends CUTablePager {
 				$value = '<a href="' .
 					$this->getTitle()->escapeLocalURL( 'user=' . urlencode( $value ) . '&reason=' . urlencode( $reason ) ) . '">' .
 					htmlspecialchars( $value ) . '</a>' .
-					' (<a href="' . SpecialPage::getTitleFor( 'Blockip' )->escapeLocalURL( 'ip=' . urlencode( $value ) ) . '">' .
-					wfMsgHtml( 'blocklink' ) . '</a>)<br /><small>' . 
-					wfMsgExt( 'checkuser-toollinks', array( 'parseinline' ), urlencode( $value ) ) . '</small>';
+					'<span class="mw-checkuser-menu"><span class="mw-checkuser-toggle">'. 
+					wfMsgExt( 'checkuser-more', array( 'inline' ) ) .
+					'</span><span class="mw-checkuser-items">'.
+					wfMsgExt( 'checkuser-toollinks', array( 'parseinline' ), urlencode( $value ) ) . 
+					'</span></span>';
 				
 				break;
 			case 'allusers':
@@ -102,12 +117,6 @@ class CUTablePagerUser2IP extends CUTablePager {
 				break;
 			case 'cuc_agent':
 				return "<small>$value</small>";
-			case 'blockinfo':
-				if( $this->mBlockInfo ) {
-					return $this->fixBlockInfo( $this->mBlockInfo );
-				}
-				
-				return '';
 				break;
 			case 'cuc_rdns':
 				if( empty( $this->mCurrentRow->rdns ) ) {
@@ -134,24 +143,20 @@ class CUTablePagerUser2IP extends CUTablePager {
 		return wfMsgExt( 'checkuser-blockedby', 'parseinline', $info->ipb_by_text, $info->ipb_reason, $wgContLang->timeanddate( wfTimestamp( TS_MW, $info->ipb_timestamp ), true ), $expirydate );
 	}
 	
-	function getCellAttrs( $field, $value ) {
-		$retArr = array( 'class' => 'TablePager_col_' . $field );
+	function fixCellAttrs( $field, $value, $retArr ) {
 		
 		switch($field ) {
+			case 'cuc_ip':
+				if( $this->mBlockInfo ) $retArr['style'] .= 'background-color: #FFCCCC;';
+				break;
 			case 'first':
 				if( $value != $this->mCurrentRow->last ) break;
 			case 'last':
 				if( $value != $this->mCurrentRow->first ) break;
-				$retArr['style'] = 'background-color: #FFFFCC;';
-				break;
-			case 'blockinfo':
-				if( $this->mBlockInfo ) {
-					$retArr['style'] = 'background-color: #FFFFCC;';
-					$retArr['width'] = '25%';
-				}
+				$retArr['style'] .= 'background-color: #FFFFCC;';
 				break;
 			case 'cuc_agent':
-				$retArr['width'] = '20%';
+				$retArr['width'] = '45%';
 				break;
 		}
 		
@@ -167,7 +172,6 @@ class CUTablePagerUser2IP extends CUTablePager {
 			'first' => wfMsg( 'checkuser-first' ),
 			'last' => wfMsg( 'checkuser-last' ),
 			'cuc_agent' => wfMsg( 'checkuser-cuc_agent' ),
-			'blockinfo' => wfMsg( 'checkuser-blockinfo' ),
 		);
 		return $fields;
 	} 
@@ -175,17 +179,13 @@ class CUTablePagerUser2IP extends CUTablePager {
 }
 
 class CULogPager extends ReverseChronologicalPager {
-	var $searchConds, $specialPage, $y, $m;
+	var $params, $specialPage;
 
-	function __construct( $specialPage, $searchConds, $y, $m ) {
+	function __construct( $specialPage, $params, $year, $month ) {
 		parent::__construct();
-		/*
-		$this->messages = array_map( 'wfMsg',
-			array( 'comma-separator', 'checkuser-log-userips', 'checkuser-log-ipedits', 'checkuser-log-ipusers',
-			'checkuser-log-ipedits-xff', 'checkuser-log-ipusers-xff' ) );*/
-
-		$this->getDateCond( $y, $m );
-		$this->searchConds = $searchConds ? $searchConds : array();
+		
+		$this->params = $params;
+		$this->getDateCond( $year, $month );
 		$this->specialPage = $specialPage;
 	}
 
@@ -202,7 +202,7 @@ class CULogPager extends ReverseChronologicalPager {
 
 		$user = $skin->userLink( $row->cul_user, $row->user_name );
 
-		if ( $row->cul_type == 'user2ip' || $row->cul_type == 'user2edits' ) {
+		if ( in_array( $row->cul_type, array( 'user2ip', 'user2edits', 'userips', 'useredits' ) ) ) {
 			$target = $skin->userLink( $row->cul_target_id, $row->cul_target_text ) .
 				$skin->userToolLinks( $row->cul_target_id, $row->cul_target_text );
 		} else {
@@ -213,9 +213,10 @@ class CULogPager extends ReverseChronologicalPager {
 			$wgLang->timeanddate( wfTimestamp( TS_MW, $row->cul_timestamp ), true ) .
 			wfMsg( 'comma-separator' ) .
 			wfMsg(
-				'checkuser-log-' . $row->cul_type,
+				CULogPager::getLogEquiv( 'checkuser-log-' . $row->cul_type ),
 				$user,
-				$target
+				$target,
+				( $row->cul_api ) ? wfMsg( 'checkuser-using-api' ) : ''
 			) .
 			$comment .
 			'</li>';
@@ -242,12 +243,7 @@ class CULogPager extends ReverseChronologicalPager {
 	}
 
 	function getQueryInfo() {
-		$this->searchConds[] = 'user_id = cul_user';
-		return array(
-			'tables' => array( 'cu_log', 'user' ),
-			'fields' => $this->selectFields(),
-			'conds'  => $this->searchConds
-		);
+		return $this->params;
 	}
 
 	function getIndexField() {
@@ -257,11 +253,23 @@ class CULogPager extends ReverseChronologicalPager {
 	function getTitle() {
 		return $this->specialPage->getTitle();
 	}
-
-	function selectFields() {
-		return array(
-			'cul_id', 'cul_timestamp', 'cul_user', 'cul_reason', 'cul_type',
-			'cul_target_id', 'cul_target_text', 'user_name'
-		);
+	
+	static function getLogEquiv( $type ) {
+			switch( $type ) {
+				case 'checkuser-log-user2ip':
+					return 'checkuser-log-userips';
+				case 'checkuser-log-ip2edits':
+					return 'checkuser-log-ipedits';
+				case 'checkuser-log-ip2user':
+					return 'checkuser-log-ipusers';
+				case 'checkuser-log-ip2edits-xff':
+					return 'checkuser-log-ipeditsxff';
+				case 'checkuser-log-ip2user-xff':
+					return 'checkuser-log-ipusersxff';
+				case 'checkuser-log-user2edits':
+					return 'checkuser-log-useredits';
+				default:
+					return $type;
+			}
 	}
 }

@@ -1,0 +1,35 @@
+/* Every time you change this CSS please bump $wgCheckUserCSSVersion in CheckUser.php */
+
+.mw-checkuser-menu	 {
+  font-family: arial, verdana, sans-serif;
+  position: relative;
+}
+
+.mw-checkuser-menu	 .mw-checkuser-toggle {
+  color: #666;
+  font-weight: bold;
+  cursor: hand;
+  cursor: pointer;
+  margin-left: 1em;
+  left: 0;
+  top: 0;
+  //width: 50px;
+}
+.mw-checkuser-menu	 .mw-checkuser-toggle-hover {
+  color: red;
+}
+
+.mw-checkuser-menu	 .mw-checkuser-items {
+  position: absolute;
+  left: 60px;
+  top: 0;
+  z-index: 10;
+  font-size: 105%;
+  margin-left: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  background-color: #eee;
+  border: 1px dotted #aaa;
+  opacity: 1.00;
+
+}

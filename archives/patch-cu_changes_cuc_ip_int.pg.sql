@@ -13,3 +13,5 @@ UPDATE mw_cu_changes SET `cuc_ip_int` = INET_ATON( `cuc_ip` );
 
 ALTER TABLE `mw_cu_changes` DROP INDEX `cuc_user_ip_time` ,
 ADD INDEX `cuc_user_ip_time` ( `cuc_user` , `cuc_ip` , `cuc_timestamp` , `cuc_ip_int` ) 
+
+ALTER TABLE `mw_cu_log` ADD `cul_api` TINYINT( 1 ) NOT NULL AFTER `cul_type` 

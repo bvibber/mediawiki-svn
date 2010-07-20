@@ -26,98 +26,75 @@ class SpecialCheckUserLog extends SpecialPage {
 	protected function showLog() {
 		global $wgRequest, $wgOut, $wgUser;
 		
-		$type = $wgRequest->getVal( 'cuSearchType' );
-		$target = $wgRequest->getVal( 'cuSearch' );
+		$initiator = $wgRequest->getVal( 'initiator' );
+		$target = $wgRequest->getVal( 'target' );
 		$year = $wgRequest->getIntOrNull( 'year' );
 		$month = $wgRequest->getIntOrNull( 'month' );
+		$expanded = $wgRequest->getBool( 'expanded' );
+		$xff = $wgRequest->getBool( 'xff' );
+		
 		$error = false;
+		
 		$dbr = wfGetDB( DB_SLAVE );
-		$searchConds = false;
 
 		$wgOut->setPageTitle( wfMsg( 'checkuser-log' ) );
 
-		$wgOut->addHTML( $wgUser->getSkin()->makeKnownLinkObj( $this->getTitle(), wfMsgHtml( 'checkuser-log-return' ) ) );
-
-		if ( $type === null ) {
-			$type = 'target';
-		} elseif ( $type == 'initiator' ) {
-			$user = User::newFromName( $target );
-			if ( !$user || !$user->getID() ) {
-				$error = 'checkuser-user-nonexistent';
-			} else {
-				$searchConds = array( 'cul_user' => $user->getID() );
-			}
-		} else /* target */ {
-			$type = 'target';
-			// Is it an IP?
-			list( $start, $end ) = IP::parseRange( $target );
-			if ( $start !== false ) {
-				if ( $start == $end ) {
-					$searchConds = array( 'cul_target_hex = ' . $dbr->addQuotes( $start ) . ' OR ' .
-						'(cul_range_end >= ' . $dbr->addQuotes( $start ) . ' AND ' .
-						'cul_range_start <= ' . $dbr->addQuotes( $end ) . ')'
-					);
-				} else {
-					$searchConds = array(
-						'(cul_target_hex >= ' . $dbr->addQuotes( $start ) . ' AND ' .
-						'cul_target_hex <= ' . $dbr->addQuotes( $end ) . ') OR ' .
-						'(cul_range_end >= ' . $dbr->addQuotes( $start ) . ' AND ' .
-						'cul_range_start <= ' . $dbr->addQuotes( $end ) . ')'
-					);
-				}
-			} else {
-				// Is it a user?
-				$user = User::newFromName( $target );
-				if ( $user && $user->getID() ) {
-					$searchConds = array(
-						'cul_type' => array( 'userips', 'useredits' ),
-						'cul_target_id' => $user->getID(),
-					);
-				} elseif ( $target ) {
-					$error = 'checkuser-user-nonexistent';
-				}
-			}
-		}
-
-		$searchTypes = array( 'initiator', 'target' );
-		$select = "<select name=\"cuSearchType\" style='margin-top:.2em;'>\n";
-		foreach ( $searchTypes as $searchType ) {
-			if ( $type == $searchType ) {
-				$checked = 'selected="selected"';
-			} else {
-				$checked = '';
-			}
-			$caption = wfMsgHtml( 'checkuser-search-' . $searchType );
-			$select .= "<option value=\"$searchType\" $checked>$caption</option>\n";
-		}
-		$select .= '</select>';
-
-		$encTarget = htmlspecialchars( $target );
-		$msgSearch = wfMsgHtml( 'checkuser-search' );
-		$input = "<input type=\"text\" name=\"cuSearch\" value=\"$encTarget\" size=\"40\"/>";
-		$msgSearchForm = wfMsgHtml( 'checkuser-search-form', $select, $input );
-		$formAction = $this->getTitle()->escapeLocalUrl();
-		$msgSearchSubmit = '&#160;&#160;' . wfMsgHtml( 'checkuser-search-submit' ) . '&#160;&#160;';
-
-		$s = "<form method='get' action=\"$formAction\">\n" .
-			"<fieldset><legend>$msgSearch</legend>\n" .
-			"<p>$msgSearchForm</p>\n" .
-			"<p>" . $this->getDateMenu( $year, $month ) . "&#160;&#160;&#160;\n" .
-			"<input type=\"submit\" name=\"cuSearchSubmit\" value=\"$msgSearchSubmit\"/></p>\n" .
-			"</fieldset></form>\n";
-		$wgOut->addHTML( $s );
-
-		if ( $error !== false ) {
+		$wgOut->addHTML( $wgUser->getSkin()->makeKnownLinkObj( SpecialPage::getTitleFor( 'CheckUser', false ), wfMsgHtml( 'checkuser-log-return' ) ) );
+		
+		$this->doForm( $initiator, $target, $year, $month, $expanded, $xff );
+		
+		$queryParams = CheckUserLog::getQuery( $initiator, $target, $year, $month, $expanded, $xff );
+		
+		if ( isset( $queryParams['error'] ) ) {
 			$wgOut->addWikiText( '<div class="errorbox">' . wfMsg( $error ) . '</div>' );
 			return;
 		}
 
-		$pager = new CULogPager( $this, $searchConds, $year, $month );
+		$pager = new CULogPager( $this, $queryParams, $year, $month );
 		$wgOut->addHTML(
 			$pager->getNavigationBar() .
 			$pager->getBody() .
 			$pager->getNavigationBar()
 		);
+	}
+	
+	protected function doForm( $initiator, $target, $year, $month, $expanded, $xff ) {
+		global $wgOut, $wgUser;
+		
+		$action = $this->getTitle()->escapeLocalUrl();
+		
+		$form = Xml::openElement( 'form', array( 'name' => 'checkuserlogform', 'id' => 'checkuserlogform', 'action' => $action, 'method' => 'get' ) ) .
+			Xml::openElement( 'fieldset' ) . Xml::openElement( 'legend' ) . wfMsgHtml( 'checkuser-search' ) . Xml::closeElement( 'legend') . 
+			Xml::openElement( 'table', array( 'border' => 0, 'cellpadding' => 2 ) ) . Xml::openElement( 'tr' ) .
+			Xml::openElement( 'td' ) . wfMsgHtml( 'checkuser-target' ) . Xml::closeElement( 'td' ) .
+			Xml::openElement( 'td' ) . Xml::input( 'target', 46, $target, array( 'id' => 'checklogtarget' ) ) . 
+			'&#160;&#160;'. Xml::check( 'xff', $xff ) . '&#160;' . Xml::label( wfMsg( 'checkuser-xff' ), 'xff' ) . Xml::closeElement( 'td' ) .
+			
+			Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' ) .
+			Xml::openElement( 'td' ) . wfMsgHtml( 'checkuser-initiator' ) . Xml::closeElement( 'td' ) .
+			Xml::openElement( 'td' ) . Xml::input( 'initiator', 46, $initiator, array( 'id' => 'checkloginitiator' ) ) . Xml::closeElement( 'td' ) .
+			Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' ) .
+			
+			Xml::openElement( 'td', array( 'colspan' => 2 ) ) . $this->getDateMenu( $year, $month ) . Xml::closeElement( 'td' ) .
+			
+			Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' ) .
+			
+			Xml::openElement( 'td', array( 'colspan' => 2 ) ) . 
+			
+			Xml::label( wfMsg( 'checkuser-expand' ), 'expanded' ) . ' ' . Xml::check( 'expanded', $expanded ) . 
+			
+			Xml::closeElement( 'td' ) .
+			
+			Xml::closeElement( 'tr' ) . Xml::openElement( 'tr' ) .
+
+			Xml::openElement( 'td' ) . 
+			Xml::submitButton( wfMsgHtml( 'checkuser-search-submit' ), array( 'id' => 'checkuserlogsubmit', 'name' => 'checkuserlogsubmit' ) ) .
+			Xml::closeElement( 'td' ) . Xml::closeElement( 'tr' ) . Xml::closeElement( 'table' ) . Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' );
+			
+
+		# Output form
+		$wgOut->addHTML( $form );
 	}
 	
 	/**

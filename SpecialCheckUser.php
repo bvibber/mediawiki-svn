@@ -9,11 +9,12 @@ class SpecialCheckUser extends SpecialPage {
 	} 
 	
 	function execute( $subpage ) {
-		global $wgRequest, $wgOut, $wgUser, $wgCheckUserForceSummary;
+		global $wgRequest, $wgOut, $wgUser, $wgCheckUserForceSummary, $wgScriptPath;
 	
 		wfLoadExtensionMessages( 'CheckUser' ); 
 		
 		$this->setHeaders();
+		$this->addStyles();
 		
 		if ( !$wgUser->isAllowed( 'checkuser' ) ) {
 			if ( $wgUser->isAllowed( 'checkuser-log' ) ) {
@@ -47,10 +48,8 @@ class SpecialCheckUser extends SpecialPage {
 				$wgOut->addWikiMsg( 'checkuser-noreason' );
 			} elseif ( $checktype == 'user2ip' ) {
 				$this->doUser2IP( $user, $reason, $period );
-			} elseif ( $xff && $checktype == 'subipedits' ) {
-				$this->doIPEditsRequest( $xff, true, $reason, $period );
-			} elseif ( $checktype == 'subipedits' ) {
-				$this->doIPEditsRequest( $ip, false, $reason, $period );
+			} elseif ( $checktype == 'ip2user' ) {
+				$this->doIP2User( $user, $reason, $period );
 			} elseif ( $xff && $checktype == 'subipusers' ) {
 				$this->doIPUsersRequest( $xff, true, $reason, $period, $tag, $talkTag );
 			} elseif ( $checktype == 'subipusers' ) {
@@ -62,8 +61,8 @@ class SpecialCheckUser extends SpecialPage {
 		
 		# Add CIDR calculation convenience form
 		$this->addJsCIDRForm();
-		$this->addStyles();
 		
+		$this->finishJS();
 	}
 	
 	protected function doForm( $user, $reason, $checktype, $xff, $period ) {
@@ -148,15 +147,40 @@ class SpecialCheckUser extends SpecialPage {
 		}
 	}
 	
-	/**
-	 * Add CSS/JS
-	 */
 	protected function addStyles() {
-		global $wgScriptPath, $wgCheckUserStyleVersion, $wgOut;
+		global $wgScriptPath, $wgCheckUserStyleVersion, $wgCheckUserCSSVersion, $wgCheckUserJQueryVersion, $wgCheckUserPopupVersion, $wgOut;
 		// FIXME, use Html::
-		$encJSFile = htmlspecialchars( "$wgScriptPath/extensions/CheckUser/checkuser.js?$wgCheckUserStyleVersion" );
+		
+		$jsPath = "$wgScriptPath/extensions/CheckUser/js/";
+		
+		$encJSFile = htmlspecialchars( "{$jsPath}checkuser.js?$wgCheckUserStyleVersion" );
 		$wgOut->addScript( "<script type=\"text/javascript\" src=\"$encJSFile\"></script>" );
+		
+		$encJSFile = htmlspecialchars( "{$jsPath}jquery-1.3.2.min.js?$wgCheckUserJQueryVersion" );
+		$wgOut->addScript( "<script type=\"text/javascript\" src=\"$encJSFile\"></script>" );
+		
+		$encJSFile = htmlspecialchars( "{$jsPath}jquery.ui-1.7.min.js?$wgCheckUserJQueryVersion" );
+		$wgOut->addScript( "<script type=\"text/javascript\" src=\"$encJSFile\"></script>" );
+		
+		$encJSFile = htmlspecialchars( "{$jsPath}checkuser-popup.js?$wgCheckUserPopupVersion" );
+		$wgOut->addScript( "<script type=\"text/javascript\" src=\"$encJSFile\"></script>" );
+		
+		$wgOut->addExtensionStyle( "{$wgScriptPath}/extensions/CheckUser/checkuser.css?" . $wgCheckUserCSSVersion );
+
+	} 
+	
+	protected function finishJS() {
+		global $wgOut;
+		
+		$out = <<<HTML
+		<script>
+		$('.mw-checkuser-menu').rb_menu({triggerEvent: 'click', hideOnLoad: true, loadHideDelay: 0, autoHide: true, transition: 'swing'});
+		</script>
+HTML;
+		
+		$wgOut->addHTML( $out );
 	}
+		
 	
 	/**
 	 * Get a selector of time period options
@@ -233,10 +257,28 @@ class SpecialCheckUser extends SpecialPage {
 		$wgOut->addHTML( $output ); 
 	}
 	
-	function doUser2Edits() {
+	function doIP2User( $ip, $reason, $period ) {
+		global $wgOut;
+		
+		$checkuser = new CheckUser( $user );
+
+		$result = $checkuser->doIP2User( array(
+			'target' => $ip,
+			'reason' => $reason,
+			'period' => $period
+		) );
+		
+		$pager = new CUTablePagerIP2User( $result );
+		
+		$output =
+		$pager->getNavigationBar() .
+		$pager->getBody() .
+		$pager->getNavigationBar();
+		
+		$wgOut->addHTML( $output ); 
 	}
 	
-	function doIP2User() {
+	function doUser2Edits() {
 	}
 	
 	function doIP2Edits() {

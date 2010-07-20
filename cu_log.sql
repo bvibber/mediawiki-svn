@@ -17,6 +17,9 @@ CREATE TABLE /*$wgDBprefix*/cu_log (
 
   -- String indicating the type of query, may be "userips", "ipedits", "ipusers", "ipedits-xff", "ipusers-xff"
   cul_type varbinary(30) not null,
+  
+  -- Whether or not the script was accessed using the API
+  cul_api TINYINT( 1 ) NOT NULL DEFAULT 0, 
 
   -- Integer target, interpretation depends on cul_type
   -- For username targets, this is the user_id

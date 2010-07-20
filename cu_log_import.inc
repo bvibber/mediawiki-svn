@@ -75,6 +75,7 @@ function import_cu_log( $db, $log ) {
 					'cul_user_text' => $user->getName(),
 					'cul_reason' => $data['reason'],
 					'cul_type' => $data['type'],
+					'cul_api' => 0, 
 					'cul_target_id' => $targetID,
 					'cul_target_text' => $data['target'],
 					'cul_target_hex' => $hex,
