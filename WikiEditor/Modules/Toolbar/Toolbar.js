@@ -1924,6 +1924,8 @@ $j(document).ready( function() {
 					// and indexOf() followed by substr() to find the offsets. This is actually
 					// faster because our indexOf+substr loop is faster than a match loop, and the
 					// /g match is so ridiculously fast that it's negligible.
+					// FIXME: Repetitively calling encapsulateSelection() is probably the best strategy
+					// in Firefox/Webkit, but in IE replacing the entire content once is better.
 					var index;
 					for ( var i = 0; i < match.length; i++ ) {
 						index = s.indexOf( match[i] );
@@ -1931,15 +1933,18 @@ $j(document).ready( function() {
 							// This shouldn't happen
 							break;
 						}
+						var matchedText = s.substr( index, match[i].length );
 						s = s.substr( index + match[i].length );
 						
 						var start = index + offset;
 						var end = start + match[i].length;
-						var newEnd = start + replaceStr.length;
+						// Make regex placeholder substitution ($1) work
+						var replace = isRegex ? matchedText.replace( regex, replaceStr ) : replaceStr;
+						var newEnd = start + replace.length;
 						$textarea
 							.textSelection( 'setSelection', { 'start': start, 'end': end } )
 							.textSelection( 'encapsulateSelection', {
-									'peri': replaceStr,
+									'peri': replace,
 									'replace': true } )
 							.textSelection( 'setSelection', { 'start': start, 'end': newEnd } );
 						offset = newEnd;
@@ -1949,16 +1954,18 @@ $j(document).ready( function() {
 						.show();
 					$j(this).data( 'offset', 0 );
 				} else {
+					// Make regex placeholder substitution ($1) work
+					var replace = isRegex ? match[0].replace( regex, replaceStr ): replaceStr;
 					var start = match.index + offset;
 					var end = start + match[0].length;
-					var newEnd = start + replaceStr.length;
+					var newEnd = start + replace.length;
 					var context = $j( this ).data( 'context' );
 					$textarea.textSelection( 'setSelection', { 'start': start,
 						'end': end } );
 					if ( mode == 'replace' ) {
 						$textarea
 							.textSelection( 'encapsulateSelection', {
-								'peri': replaceStr,
+								'peri': replace,
 								'replace': true } )
 							.textSelection( 'setSelection', {
 								'start': start,
