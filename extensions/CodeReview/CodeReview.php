@@ -177,3 +177,10 @@ function efCodeReviewSchemaUpdates() {
 	return true;
 }
 
+# Unit tests
+$wgHooks['UnitTestsList'][] = 'efCodeReviewUnitTests';
+
+function efCodeReviewUnitTests( &$files ) {
+	$files[] = dirname( __FILE__ ) . '/tests/CodeReviewTest.php';
+	return true;
+}
