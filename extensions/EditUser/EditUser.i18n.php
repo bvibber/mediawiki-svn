@@ -1070,6 +1070,7 @@ $messages['scn'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
  * @author නන්දිමිතුරු
  */
 $messages['si'] = array(
@@ -1078,6 +1079,8 @@ $messages['si'] = array(
 	'edituser-dosearch' => 'ගවේෂණය',
 	'edituser-nouser' => 'නම් කරන ලද පරිශීලකයා නොපවතියි',
 	'edituser-exempt' => 'නම් කරන ලද පරිශීලකයා සංස්කරණය කල නොහැක',
+	'right-edituser' => 'අනිකුත් පරිශීලකයන්ගේ රුචිකත්‍වයන් වෙනස් කරන්න.',
+	'right-edituser-exempt' => 'අනිකුත් පරිශීලකයන්ට මෙම අභිරුචීන් වෙනස් කළ නොහැකිය.',
 );
 
 /** Slovak (Slovenčina)
@@ -1316,10 +1319,10 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'edituser-desc' => 'Cho phép những thành viên đặc quyền được sửa đổi tùy chọn của thành viên khác',
 	'edituser' => 'Sửa chữa Thành viên',
-	'edituser-username' => 'Tên',
+	'edituser-username' => 'Tên người dùng:',
 	'edituser-dosearch' => 'Tìm kiếm',
-	'edituser-nouser' => 'Thành viên chỉ định không tồn tại',
-	'edituser-exempt' => 'Thành viên chỉ định không sửa được',
+	'edituser-nouser' => 'Thành viên “$1” không tồn tại.',
+	'edituser-exempt' => 'Thành viên “$1” không sửa được.',
 	'right-edituser' => 'Sửa đổi tùy chọn cá nhân của thành viên khác',
 	'right-edituser-exempt' => 'Những người khác không thể sửa đổi tùy chọn cá nhân của thành viên này',
 );

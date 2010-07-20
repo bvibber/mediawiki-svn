@@ -602,6 +602,7 @@ Kuckt no ob Dir den Numm richteg geschriwwen hutt.',
 
 /** Limburgish (Limburgs)
  * @author Aelske
+ * @author Ooswesthoesbes
  * @author Pahles
  */
 $messages['li'] = array(
@@ -611,6 +612,9 @@ Hiedoor waers doe weggeleid van dees pagina, en verlus doe mäögelik dien hujig
 	'ajaxLogin2' => 'Wils doe wiejergaon?
 Doe verlus mäögelik dien hujige bewirkinge es doe dees pagina noe verleuts.',
 	'ajaxlogin-create' => 'Registrere',
+	'al-nosuchuser' => 'De gebroeker "$1" besteit neet.
+Gebroekersname zeen houflèttergeveulig.
+Kiek nans naoë sjriefwies.',
 );
 
 /** Lithuanian (Lietuvių)

@@ -6102,7 +6102,7 @@ Unaweza kujaribu tena wakati wowote kwa kubonyeza kiungo cha "{{int:optin-try|ja
 	'optin-survey-intro' => 'Ahsante kwa kujaribu Beta.
 Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru iwapo utajaza utafiti wa hiari hapo chini kabla hujabonyeza "[[#leave|{{int:optin-submit-out|ondoka}}]]".',
 	'optin-survey-question-likedislike' => 'Kipi umekipenda katika Beta? Kipi hujakipenda katika Beta?',
-	'optin-survey-question-whyoptout' => 'Kwanini unaondoka Beta? (Tafadhali jaza vifungu hivyo vyote.)',
+	'optin-survey-question-whyoptout' => 'Kwanini unaondoka Beta? (Tafadhali chagua sababu zako zote.)',
 	'optin-survey-answer-whyoptout-hard' => 'Ilikuwa vigumu sana kutumia.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Haikufanya kazi vizuri.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Haikufanyakazi kitegemezi.',

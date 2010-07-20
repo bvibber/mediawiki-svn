@@ -6378,7 +6378,7 @@ $messages['mk'] = array(
 	'configure-section-groups' => 'Групи',
 	'configure-section-block' => 'Блокирања',
 	'configure-section-rates' => 'Ограничувања на стапки',
-	'configure-section-proxy' => 'Проксија',
+	'configure-section-proxy' => 'Застапници',
 	'configure-section-cookie' => 'Колачиња',
 	'configure-section-performance' => 'Исполнување задачи',
 	'configure-section-upload' => 'Подигнување',
@@ -7955,6 +7955,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Crazymadlover
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -8081,7 +8082,7 @@ Para usar esta extensão crie-o ou altere-o, por favor.',
 	'configure-select-wiki-view-desc' => 'Seleccione uma wiki da qual deseja ver as versões de configuração.',
 	'configure-select-wiki-view-all' => 'Todas as wikis',
 	'configure-select-wiki-view-specific' => 'Wiki específica:',
-	'configure-select-wiki-submit' => 'Selecionar',
+	'configure-select-wiki-submit' => 'Seleccionar',
 	'configure-setting-not-available' => 'Este parâmetro não está disponível nesta versão do MediaWiki',
 	'configure-transwiki-not-in-range' => 'A wiki solicitada, $1, não faz parte {{PLURAL:$3|do valor permitido|dos valores permitidos}}: $2.',
 	'configure-view' => 'Ver',

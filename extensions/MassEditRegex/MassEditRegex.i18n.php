@@ -1227,9 +1227,12 @@ Os valores de troca não devem ter o ''escape''.",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'masseditregex' => 'Edições em massa usando expressões regulares',
+	'masseditregex-desc' => '[[Special:MassEditRegex|Página especial]] para editar múltiplas páginas numa só operação, usando expressões regulares',
 	'masseditregex-executebtn' => 'Executar',
 	'masseditregex-before' => 'Antes',
 	'masseditregex-page-not-exists' => '$1 não existe',

@@ -265,6 +265,13 @@ $messages['lb'] = array(
 	'uploadblacklist-desc' => "Setzt d'Fonctionalitéit vun enger Schwaarzer Lëscht fir d'Eroplueden derbäi",
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'uploadblacklist-desc' => "Voog 'n zwarte lies toe veur uploads",
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
