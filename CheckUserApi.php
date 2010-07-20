@@ -238,7 +238,7 @@ class CheckUserApi extends ApiQueryBase {
 	}
 	
 	public function getVersion() { 
-		//return __CLASS__ . ': $Id: ApiQueryBlocks.php 69339 2010-07-14 19:00:54Z catrope $';
+		//return __CLASS__ . ': $Id$';
 		##FIXME
 	}
 }
