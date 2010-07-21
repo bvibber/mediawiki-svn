@@ -34,6 +34,8 @@ typedef uint32_t logpos_t;
 
 #define BINLOG_NAMELEN	512
 
+#define MASTER_RETRY	30
+
 static void strdup_free(char **, char const *);
 static void usage(void);
 
@@ -118,6 +120,8 @@ static pthread_mutex_t rst_mtx = PTHREAD_MUTEX_INITIALIZER,
 static status_t reader_st = ST_STOPPED;
 static int master_thread_stop;
 
+static void slave_process_logs(writer_t *);
+static int slave_connect(writer_t *);
 static void executed_up_to(writer_t *, char const *, logpos_t);
 static void sync_ack(writer_t *);
 static int nsyncs;
@@ -318,8 +322,13 @@ start_master_read_thread()
 	reader_st = ST_INITIALISING;
 	(void) pthread_mutex_unlock(&rst_mtx);
 
-	if (master_connect() == -1)
-		return -1;
+	for (;;) {
+		if (master_connect() == 0)
+			break;
+
+		logmsg("master connect failed; sleeping for retry");
+		(void) sleep(MASTER_RETRY);
+	}
 
 	(void) pthread_create(&master_thread, NULL, read_master_logs, NULL);
 
@@ -352,7 +361,7 @@ read_master_logs(p)
 			break;
 
 	reconnect:
-		(void) sleep(30);
+		(void) sleep(MASTER_RETRY);
 		logmsg("reconnecting to master...");
 		mysql_close(master_conn);
 		if (master_connect() == -1)
@@ -422,11 +431,11 @@ unsigned long	 len;
 		(void) pthread_mutex_unlock(&rst_mtx);
 
 		if (master_thread_stop) {
-			logmsg("shutting down");
-			(void) pthread_mutex_unlock(&rst_mtx);
 			mysql_close(master_conn);
 
 			(void) pthread_mutex_lock(&rst_mtx);
+			logmsg("shutting down; read up to %s,%lu",
+				curfile, (unsigned long) curpos);
 			reader_st = ST_STOPPED;
 			master_thread_stop = 0;
 			free(curfile);
@@ -437,15 +446,12 @@ unsigned long	 len;
 			return 0;
 		}
 
-
 		if (len == packet_error) {
 			logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
 				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
 			return -1;
 		}
-
-		(void) pthread_mutex_unlock(&rst_mtx);
 
 		if ((ent = parse_binlog(master_conn->net.read_pos + 1, len - 1)) == NULL) {
 			logmsg("failed parsing binlog");
@@ -484,8 +490,7 @@ unsigned long	 len;
 			if ((db_regex == NULL || regexec(db_regex, ent->le_database, 0, NULL, 0) == 0) &&
 			    (ignore_regex == NULL || regexec(ignore_regex, ent->le_database, 0, NULL, 0) != 0) &&
 			    (ent->le_type == ET_INTVAR || ent->le_type == ET_QUERY)) {
-			writer_t	*writer;
-				lq_put(&writer->wr_log_queue, ent);
+				lq_put(&writer.wr_log_queue, ent);
 			} else {
 				free_log_entry(ent);
 			}
@@ -664,7 +669,8 @@ lq_entry_t	*entry;
 		if (debug)
 			logmsg("queue is full, sleeping...");
 		(void) pthread_mutex_unlock(&q->lq_mtx);
-		(void) sleep(5);
+	/*	(void) sleep(5);*/
+		(void) usleep(5000);
 		(void) pthread_mutex_lock(&q->lq_mtx);
 	}
 
@@ -731,11 +737,32 @@ int	i;
 	return 0;
 }
 
+int
+slave_connect(self)
+	writer_t	*self;
+{
+	if ((self->wr_conn = mysql_init(NULL)) == NULL) {
+		logmsg("out of memory in mysql_init");
+		return -1;
+	}
+
+	mysql_options(self->wr_conn, MYSQL_READ_DEFAULT_GROUP, "trainwreck-slave");
+
+	if (mysql_real_connect(self->wr_conn, slave_host, slave_user, slave_pass, NULL,
+				slave_port, NULL, 0) == NULL) {
+		logmsg("cannot connect to slave %s:%d: %s",
+				slave_host, slave_port, mysql_error(self->wr_conn));
+		mysql_close(self->wr_conn);
+		return -1;
+	}
+
+	return 0;
+}
+
 static void *
 slave_write_thread(p)
 	void *p;
 {
-logentry_t	*e;
 writer_t	*self = p;
 char		 namebuf[16];
 
@@ -753,30 +780,41 @@ char		 namebuf[16];
 
 	self->wr_status = ST_INITIALISING;
 
-	if ((self->wr_conn = mysql_init(NULL)) == NULL) {
-		logmsg("out of memory in mysql_init");
-		return 0;
-	}
-
-	mysql_options(self->wr_conn, MYSQL_READ_DEFAULT_GROUP, "trainwreck-slave");
-
-	if (mysql_real_connect(self->wr_conn, slave_host, slave_user, slave_pass, NULL,
-				slave_port, NULL, 0) == NULL) {
-		logmsg("cannot connect to slave %s:%d: %s",
-				slave_host, slave_port, mysql_error(self->wr_conn));
-		return 0;
+	for (;;) {
+		if (slave_connect(self) == 0)
+			break;
+		sleep(30);
 	}
 
 	if (retrieve_binlog_position(self) != 0) {
 		logmsg("could not retrieve binlog position");
-		exit(1);
+		mysql_close(self->wr_conn);
+		return NULL;
 	}
 
 	(void) pthread_mutex_lock(&wi_mtx);
 	writers_initialising--;
 	(void) pthread_cond_signal(&wi_cond);
 	(void) pthread_mutex_unlock(&wi_mtx);
-	
+
+	for (;;) {
+		slave_process_logs(self);
+		mysql_close(self->wr_conn);
+		sleep(30);
+
+		for (;;) {
+			if (slave_connect(self) == 0)
+				break;
+			sleep(30);
+		}
+	}
+}
+
+void
+slave_process_logs(self)
+	writer_t	*self;
+{
+logentry_t	*e;
 	self->wr_status = ST_WAIT_FOR_ENTRY;
 	while ((e = lq_get(&self->wr_log_queue)) != NULL) {
 		if (debug)
@@ -791,7 +829,8 @@ char		 namebuf[16];
 				logmsg("%s,%lu: cannot select \"%s\": %s",
 					e->le_file, (unsigned long) e->le_pos,
 					e->le_database, mysql_error(self->wr_conn));
-				exit(1);
+				mysql_close(self->wr_conn);
+				return;
 			}
 
 		switch (e->le_type) {
@@ -805,7 +844,7 @@ char		 namebuf[16];
 					e->le_database,
 					mysql_errno(self->wr_conn), mysql_error(self->wr_conn), 
 					query);
-				exit(1);
+				return;
 			}
 
 			break;
@@ -820,7 +859,7 @@ char		 namebuf[16];
 					e->le_database,
 					mysql_errno(self->wr_conn), mysql_error(self->wr_conn), 
 					query);
-				exit(1);
+				return;
 			}
 			executed_up_to(self, e->le_file, e->le_pos);
 
@@ -830,7 +869,7 @@ char		 namebuf[16];
 		free_log_entry(e);
 		self->wr_status = ST_WAIT_FOR_ENTRY;
 	}
-	return NULL;
+	return;
 }
 
 /*ARGSUSED*/
