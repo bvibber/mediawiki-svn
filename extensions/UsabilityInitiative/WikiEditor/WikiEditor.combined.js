@@ -1169,6 +1169,7 @@ $j(document).ready( function() {
 							'action': 'query',
 							'indexpageids': '',
 							'titles': target,
+							'converttitles': '',
 							'format': 'json'
 						},
 						success: function( data ) {
