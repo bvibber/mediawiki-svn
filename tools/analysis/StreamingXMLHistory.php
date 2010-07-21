@@ -29,7 +29,14 @@ $parser->run();
  	
  }
 
-
+ class PageAction{
+ 	public $isAccepted;
+ 	public function __construct($accepted = true){
+ 		$this->isAccepted = $accepted;
+ 	}
+ }
+ 
+ 
  class Revert{
 	public $revertToIndex;
 	public $selfIndex;
@@ -100,13 +107,19 @@ class StreamingXMLHistoryParser{
 		$counter = 0;
 		foreach($this->revTypes as $i){
 			$csvLine = "";
-			if( get_class($i) == "Revert" ){
-				if( ($i->selfIndex - $i->revertToIndex) == 1){
-					$csvLine .= "status-change-";
-				}
-				else{
-					$csvLine .= "Revert-";	
-				}
+			
+			switch(get_class($i)){
+				case "Revert":
+					if( ($i->selfIndex - $i->revertToIndex) == 1){
+						$csvLine .= "status-change-";
+					}
+					else{
+						$csvLine .= "Revert-";	
+					}
+					break;
+				case "PageAction":
+					$csvLine .= "PageAction-";
+					break;	
 			}
 			$csvLine .= ($i->isAccepted)?"accepted":"rejected";
 			$csvData = array( $csvLine );
@@ -197,9 +210,11 @@ class StreamingXMLHistoryParser{
 		
 		if($this->pagelog && $this->nextLog){
 			//note: assumes more page revisions exist than log action items		
-			while ( ($this->nextLog) 
-				&& ($csvData[1] > $this->nextLog[1]) ){
-			    fputcsv( $this->nextLog );
+			while (( $this->nextLog ) 
+				&& ( $csvData[1] > $this->nextLog[1] )){
+			    fputcsv( $this->outputFile, $this->nextLog );
+			    $this->md5History[] = $md5;
+			    $this->revTypes[] = new PageAction();
 			    $this->nextLog = $this->getNextLogDataLine();
 			  }
 		}
