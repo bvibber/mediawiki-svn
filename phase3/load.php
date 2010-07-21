@@ -21,13 +21,14 @@
  */
 
 /**
+ * @file
  * This file is the entry point for the resource loader.
  */
  
 // TODO: Caching + easy 304s before WebStart
 
 require ( dirname( __FILE__ ) . '/includes/WebStart.php' );
-wfProfileIn( 'loader.php' );
+wfProfileIn( 'load.php' );
 
 // URL safety checks
 //
@@ -51,7 +52,7 @@ require_once "$IP/resources/Resources.php";
 // Respond to resource loading request
 ResourceLoader::respond( $wgRequest );
 
-wfProfileOut( 'loader.php' );
+wfProfileOut( 'load.php' );
 wfLogProfilingData();
 
 // Shut down the database

@@ -123,7 +123,7 @@ class CSSJanus {
 	 * @param bool $swapLeftRightInURL If true, swap 'left' and 'right' in URLs
 	 * @return Transformed stylesheet
 	 */
-	public function transform( $css, $swapLtrRtlInURL = false, $swapLeftRightInURL = false ) {
+	public static function transform( $css, $swapLtrRtlInURL = false, $swapLeftRightInURL = false ) {
 		// We wrap tokens in ` , not ~ like the original implementation does.
 		// This was done because ` is not a legal character in CSS and can only
 		// occur in URLs, where we escape it to %60 before inserting our tokens.	
