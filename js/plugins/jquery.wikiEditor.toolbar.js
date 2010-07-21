@@ -658,11 +658,11 @@ fn: {
 			// This class shows the spinner and serves as a marker for the click handler in buildTab()
 			$section.addClass( 'loading' ).append( $( '<div />' ).addClass( 'spinner' ) );
 			$section.bind( 'loadSection', function() {
-				$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+				$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, id, section, $section );
 				$section.removeClass( 'loading' );
 			} );
 		} else {
-			$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+			$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, id, section, $section );
 		}
 		
 		// Show or hide section
@@ -673,7 +673,7 @@ fn: {
 		}
 		return $section;
 	},
-	reallyBuildSection : function( context, section, $section ) {
+	reallyBuildSection: function( context, id, section, $section ) {
 		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + $section.attr( 'rel' ), [section] );
 		switch ( section.type ) {
 			case 'toolbar':
@@ -699,7 +699,7 @@ fn: {
 					}
 				}
 				$section.append( $index ).append( $pages );
-				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, page, $pages, $index );
+				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, id, $pages, $index );
 				break;
 		}
 	},
