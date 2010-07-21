@@ -14,6 +14,7 @@
  * @author Christian List
  * @author EPO
  * @author Emilkris33
+ * @author Froztbyte
  * @author H92
  * @author Hylle
  * @author Jan Friberg
@@ -185,12 +186,11 @@ $messages = array(
 'tog-editsection'             => 'Redigér afsnit ved hjælp af [redigér]-henvisninger',
 'tog-editsectiononrightclick' => 'Redigér afsnit ved at højreklikke på deres titler (JavaScript)',
 'tog-showtoc'                 => 'Vis indholdsfortegnelse (på sider med mere end tre afsnit)',
-'tog-rememberpassword'        => 'Husk adgangskode til næste besøg fra denne computer',
+'tog-rememberpassword'        => 'Husk min adgangskode på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
 'tog-watchcreations'          => 'Tilføj sider jeg opretter til min overvågningsliste',
 'tog-watchdefault'            => 'Tilføj sider jeg redigerer til min overvågningsliste',
 'tog-watchmoves'              => 'Tilføj sider jeg flytter til min overvågningsliste',
 'tog-watchdeletion'           => 'Tilføj sider jeg sletter til min overvågningsliste',
-'tog-minordefault'            => 'Markér som standard alle redigering som mindre',
 'tog-previewontop'            => 'Vis forhåndsvisning over redigeringsboksen',
 'tog-previewonfirst'          => 'Vis forhåndsvisning når du starter med at redigere',
 'tog-nocache'                 => 'Slå caching af sider fra',
@@ -325,31 +325,32 @@ $messages = array(
 'faqpage'        => 'Project:OSS',
 
 # Vector skin
-'vector-action-addsection'   => 'Nyt emne',
-'vector-action-delete'       => 'Slet',
-'vector-action-move'         => 'Flyt',
-'vector-action-protect'      => 'Beskyt',
-'vector-action-undelete'     => 'Gendan',
-'vector-action-unprotect'    => 'Fjern beskyttelse',
-'vector-namespace-category'  => 'Kategori',
-'vector-namespace-help'      => 'Hjælpeside',
-'vector-namespace-image'     => 'Fil',
-'vector-namespace-main'      => 'Side',
-'vector-namespace-media'     => 'Medieside',
-'vector-namespace-mediawiki' => 'Besked',
-'vector-namespace-project'   => 'Projektside',
-'vector-namespace-special'   => 'Specialside',
-'vector-namespace-talk'      => 'Diskussion',
-'vector-namespace-template'  => 'Skabelon',
-'vector-namespace-user'      => 'Brugerside',
-'vector-view-create'         => 'Opret',
-'vector-view-edit'           => 'Redigér',
-'vector-view-history'        => 'Se historik',
-'vector-view-view'           => 'Vis',
-'vector-view-viewsource'     => 'Se kilden',
-'actions'                    => 'Handlinger',
-'namespaces'                 => 'Navnerum',
-'variants'                   => 'Varianter',
+'vector-action-addsection'       => 'Nyt emne',
+'vector-action-delete'           => 'Slet',
+'vector-action-move'             => 'Flyt',
+'vector-action-protect'          => 'Beskyt',
+'vector-action-undelete'         => 'Gendan',
+'vector-action-unprotect'        => 'Fjern beskyttelse',
+'vector-namespace-category'      => 'Kategori',
+'vector-namespace-help'          => 'Hjælpeside',
+'vector-namespace-image'         => 'Fil',
+'vector-namespace-main'          => 'Side',
+'vector-namespace-media'         => 'Medieside',
+'vector-namespace-mediawiki'     => 'Besked',
+'vector-namespace-project'       => 'Projektside',
+'vector-namespace-special'       => 'Specialside',
+'vector-namespace-talk'          => 'Diskussion',
+'vector-namespace-template'      => 'Skabelon',
+'vector-namespace-user'          => 'Brugerside',
+'vector-simplesearch-preference' => 'Aktivér forbedrede søgeforslag (kun Vector-udseendet)',
+'vector-view-create'             => 'Opret',
+'vector-view-edit'               => 'Redigér',
+'vector-view-history'            => 'Se historik',
+'vector-view-view'               => 'Vis',
+'vector-view-viewsource'         => 'Se kilden',
+'actions'                        => 'Handlinger',
+'namespaces'                     => 'Navnerum',
+'variants'                       => 'Varianter',
 
 'errorpagetitle'    => 'Fejl',
 'returnto'          => 'Tilbage til $1.',
@@ -571,7 +572,7 @@ Din konto er blevet oprettet. Glem ikke at personliggøre dine [[Special:Prefere
 'yourname'                   => 'Dit brugernavn:',
 'yourpassword'               => 'Din adgangskode:',
 'yourpasswordagain'          => 'Gentag adgangskode',
-'remembermypassword'         => 'Husk min adgangskode til næste gang.',
+'remembermypassword'         => 'Husk mit brugernavn på denne computer (højst $1 {{PLURAL:$1|dag|dage}})',
 'yourdomainname'             => 'Dit domænenavn',
 'externaldberror'            => 'Der er opstået en fejl i en ekstern adgangsdatabase, eller du har ikke rettigheder til at opdatere denne.',
 'login'                      => 'Log på',
@@ -702,7 +703,7 @@ Du har muligvis allerede skiftet din adgangskode eller anmodet om en ny midlerti
 'anonpreviewwarning'               => "''Du er ikke logget ind. Hvis du gemmer, registreres din IP-adresse i versionshistorikken.''",
 'missingsummary'                   => "'''Påmindelse:''' Du har ikke angivet en redigeringsbeskrivelse. Hvis du igen trykker på \"Gem\", gemmes ændringerne uden en beskrivelse.",
 'missingcommenttext'               => 'Indtast venligst et resume.',
-'missingcommentheader'             => "'''BEMÆRK:''' du har ikke angivet en overskrift i feltet „Emne:“. Hvis du igen trykker på „Gem side“, gemmes bearbejdningen uden overskrift.",
+'missingcommentheader'             => "'''Bemærk:''' Du har ikke angivet en overskrift i feltet „Emne:“ for denne kommentar. Hvis du trykker „Gem side“ én gang til, gemmes dine ændringer uden overskrift.",
 'summary-preview'                  => 'Forhåndsvisning af beskrivelsen:',
 'subject-preview'                  => 'Forhåndsvisning af emnet:',
 'blockedtitle'                     => 'Brugeren er blokeret',
@@ -776,8 +777,8 @@ Loggen over den seneste blokering ses nedenfor:',
 '''Konqueror''': Klik på ''reload'' eller tryk på ''F5'';
 '''Opera''': Tøm cachen i ''Tools → Preferences'';
 '''Internet Explorer''': hold ''controltasten'' nede og klik på ''refresh'' eller tryk på ''control-F5''.",
-'usercssyoucanpreview'             => "'''Tip:''' Brug knappen 'forhåndsvisning' til at teste dit nye css/js før du gemmer.",
-'userjsyoucanpreview'              => "'''Tip:''' Brug knappen 'forhåndsvisning' til at teste dit nye css/js før du gemmer.",
+'usercssyoucanpreview'             => "'''Tip:''' Brug \"{{int:showpreview}}\"-knappen for at teste dit nye CSS inden du gemmer.",
+'userjsyoucanpreview'              => "'''Tip:''' Brug \"{{int:showpreview}}\"-knappen for at teste dit nye JavaScript inden du gemmer.",
 'usercsspreview'                   => "'''Husk at dette kun er en forhåndsvisning af dit eget css.
 '''Det er ikke gemt endnu!'''",
 'userjspreview'                    => "'''Husk at du kun tester/forhåndsviser dit eget javascript, det er ikke gemt endnu!'''",
@@ -977,7 +978,7 @@ Andre administratorer på {{SITENAME}} vil fortsat være i stand til at se det s
 'revdelete-radio-unset'       => 'Nej',
 'revdelete-suppress'          => 'Skjul også informationen for administratorer',
 'revdelete-unsuppress'        => 'Ophæv begrænsninger for gendannede versioner',
-'revdelete-log'               => 'Sletningsårsag:',
+'revdelete-log'               => 'Begrundelse:',
 'revdelete-submit'            => 'Udfør på {{PLURAL:$1|den udvalgte version|de udvalgte versioner}}',
 'revdelete-logentry'          => 'Versionsvisning ændret for [[$1]]',
 'logdelete-logentry'          => "ændrede [[$1]]'s synlighed",
@@ -1026,14 +1027,24 @@ Se venligst loglisterne.',
 Se [[Special:IPBlockList|IP blokeringslisten]] for alle blokeringer.',
 
 # Revision move
-'moverevlogentry'              => 'flyttede ((plural: $ 3 | én revision | $ 3 revisioner)) fra $ 1 til $ 2',
-'revisionmove'                 => 'Flyt ændringer fra "$ 1"',
-'revmove-explain'              => 'Følgende ændringer vil blive flyttet fra $ 1 til den angivne målside. Hvis målsiden ikke findes, vil den blive oprettet. Ellers vil disse revisioner blive flettet ind i sidens historik.',
+'moverevlogentry'              => 'flyttede {{PLURAL:$3|en version|$3 versioner}} fra $1 til $2',
+'revisionmove'                 => 'Flyt ændringer fra "$1"',
+'revmove-explain'              => 'Følgende versioner vil blive flyttet fra $1 til den angivne målside. Hvis målsiden ikke findes, vil den blive oprettet. Ellers vil disse versioner blive flettet ind i sidens historik.',
+'revmove-legend'               => 'Sæt målside og opsummering',
+'revmove-submit'               => 'Flyt revisioner til den valgte side',
 'revisionmoveselectedversions' => 'Flyt valgte revisioner',
 'revmove-reasonfield'          => 'Begrundelse:',
 'revmove-titlefield'           => 'Målside:',
 'revmove-badparam-title'       => 'Forkerte parametre',
+'revmove-badparam'             => 'Din forespørgsel indeholder ugyldige eller utilstrækkelige parametre.
+Vend tilbage til forrige side og prøv igen.',
+'revmove-norevisions-title'    => 'Ugyldig målversion',
+'revmove-norevisions'          => 'Du har ikke angivet en eller flere målversioner for at udføre denne funktion eller den angivne version eksisterer ikke.',
 'revmove-nullmove-title'       => 'Forkert titel',
+'revmove-nullmove'             => 'Slutsiden kan ikke være identisk med startsiden.
+Vend tilbage til forrige side og vælg et andet navn fra "$1".',
+'revmove-success-existing'     => '{{PLURAL:$1|En version fra [[$2]] er|$1 versioner fra [[$2]] er}} blevet flyttet til den eksisterende side [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|En version fra [[$2]] er|$1 versioner fra [[$2]] er}} blevet flyttet til den nyligt oprettede side [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Sammenflet sidehistorikker',
@@ -1255,7 +1266,7 @@ Du kan også vælge at lade andre brugere kontakte dig gennem din bruger- eller 
 'prefs-advancedrendering'       => 'Avancerede indstillinger',
 'prefs-advancedsearchoptions'   => 'Avancerede indstillinger',
 'prefs-advancedwatchlist'       => 'Avancerede indstillinger',
-'prefs-display'                 => 'Indstillinger for visning',
+'prefs-displayrc'               => 'Indstillinger for visning',
 'prefs-diffs'                   => 'Forskelle',
 
 # User rights
@@ -1366,6 +1377,7 @@ Du kan også vælge at lade andre brugere kontakte dig gennem din bruger- eller 
 'right-override-export-depth' => 'Eksportere sider inkl. henviste sider op til en dybde på 5',
 'right-sendemail'             => 'Sende e-mail til andre brugere',
 'right-revisionmove'          => 'Flyt revisioner',
+'right-selenium'              => 'Kør Selenium tests',
 
 # User rights log
 'rightslog'      => 'Rettighedslog',
@@ -1408,6 +1420,7 @@ Du kan også vælge at lade andre brugere kontakte dig gennem din bruger- eller 
 'action-userrights'           => 'ændre alle brugerrettigheder',
 'action-userrights-interwiki' => 'ændre brugerrettigheder for brugere på andre wikier',
 'action-siteadmin'            => 'låse eller låse databasen op',
+'action-revisionmove'         => 'flyt versioner',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|ændring|ændringer}}',
@@ -1690,7 +1703,7 @@ Indholdet på dens [$2 filbeskrivelsesside] er vist herunder.',
 'filedelete-legend'           => 'Slet fil',
 'filedelete-intro'            => "Du er ved at slette filen '''[[Media:$1|$1]]''' sammen med hele dens historik.",
 'filedelete-intro-old'        => '<span class="plainlinks">Du er ved at slette en tidligere version af \'\'\'[[Media:$1|$1]]\'\'\' fra [$4 $2, $3].</span>',
-'filedelete-comment'          => 'Kommentar:',
+'filedelete-comment'          => 'Begrundelse:',
 'filedelete-submit'           => 'Slet',
 'filedelete-success'          => "'''$1''' er blevet slettet.",
 'filedelete-success-old'      => "Versionen af '''[[Media:$1|$1]]''' fra $2 $3 er blevet slettet.",
@@ -2023,13 +2036,17 @@ Kontakt bidragyderen:
 e-mail: $PAGEEDITOR_EMAIL
 wiki: $PAGEEDITOR_WIKI
 
-Du vil ikke modtage flere beskeder om yderligere ændringer med mindre du besøger denne side.
+Du vil ikke modtage flere beskeder om yderligere ændringer medmindre du besøger denne side.
 På din overvågningsliste kan du også nulstille alle markeringer på de sider, du overvåger.
 
              Med venlig hilsen {{SITENAME}}s informationssystem
 
 -- 
-Besøg {{fullurl:Special:Watchlist/edit}} for at ændre indstillingerne for din overvågningsliste
+For at ændre indstillingerne for din overvågningsliste, besøg
+{{fullurl:{{#special:Watchlist}}/edit}}
+
+For at slette siden fra din overvågningsliste, besøg
+$UNWATCHURL
 
 Tilbagemelding og yderligere hjælp:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2055,7 +2072,7 @@ Bekræft venligst at du virkelig vil gøre dette, at du forstår konsekvenserne,
 'dellogpagetext'         => 'Herunder vises de nyeste sletninger. Alle tider er serverens tid.',
 'deletionlog'            => 'sletningslog',
 'reverted'               => 'Gendannet en tidligere version',
-'deletecomment'          => 'Begrundelse for sletning',
+'deletecomment'          => 'Begrundelse:',
 'deleteotherreason'      => 'Anden/uddybende begrundelse:',
 'deletereasonotherlist'  => 'Anden begrundelse',
 'deletereason-dropdown'  => '
@@ -2226,6 +2243,7 @@ $1',
 Den seneste post i blokeringsloggen vises nedenfor:',
 'sp-contributions-search'              => 'Søg efter bidrag',
 'sp-contributions-username'            => 'IP-adresse eller brugernavn:',
+'sp-contributions-toponly'             => 'Vis kun redigeringer, der er aktuelle versioner',
 'sp-contributions-submit'              => 'Søg',
 
 # What links here
@@ -2257,7 +2275,7 @@ Angiv en konkret begrundelse herunder (for eksempel med angivelse af sider der h
 'ipaddress'                       => 'IP-adresse/brugernavn',
 'ipadressorusername'              => 'IP-adresse eller brugernavn',
 'ipbexpiry'                       => 'varighed',
-'ipbreason'                       => 'Begrundelse',
+'ipbreason'                       => 'Begrundelse:',
 'ipbreasonotherlist'              => 'Anden begrundelse',
 'ipbreason-dropdown'              => '*Generelle begrundelser
 ** Indsættelse af forkerte oplysninger
@@ -2719,7 +2737,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Advarsel''': Denne filtype kan muligvis indeholde skadelig kode. 
-Du kan beskadige dit system hvis du udfører den.<hr />",
+Du kan beskadige dit system hvis du udfører den.",
 'imagemaxsize'         => "Maksimal billedstørrelse<br />''(på filbeskrivelsessider)''",
 'thumbsize'            => 'Thumbnailstørrelse :',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|side|sider}}',
@@ -2731,6 +2749,9 @@ Du kan beskadige dit system hvis du udfører den.<hr />",
 'show-big-image-thumb' => '<small>Størrelse af forhåndsvisning: $1 × $2 pixel</small>',
 'file-info-gif-looped' => 'gentaget',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|ramme|rammer}}',
+'file-info-png-looped' => 'gentaget',
+'file-info-png-repeat' => 'afspillede $1 {{PLURAL:$1|gang|gange}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|billede|billeder}}',
 
 # Special:NewFiles
 'newimages'             => 'Galleri med de nyeste billeder',
@@ -3124,6 +3145,7 @@ Bekræft venligst, at du virkelig vil oprette denne side igen.",
 'table_pager_first'        => 'Første side',
 'table_pager_last'         => 'Sidste side',
 'table_pager_limit'        => 'Vis $1 indførsler pr. side',
+'table_pager_limit_label'  => 'Elementer pr. side:',
 'table_pager_limit_submit' => 'Start',
 'table_pager_empty'        => 'Ingen resultater',
 
@@ -3148,7 +3170,9 @@ Bekræft venligst, at du virkelig vil oprette denne side igen.",
 'watchlistedit-noitems'        => 'Din overvågningsliste er tom.',
 'watchlistedit-normal-title'   => 'Rediger overvågningsliste',
 'watchlistedit-normal-legend'  => 'Slet sider fra overvågningslisten',
-'watchlistedit-normal-explain' => 'Siderne på din overvågningsliste er vist nedenfor. Hvis du vil fjerne en side, skal du markere feltet ud for den, og klik på "((int: Watchlistedit-normal-submit))". Du kan også [[Special: Watchlist / raw | redigere siden direkte]].',
+'watchlistedit-normal-explain' => 'Siderne på din overvågningsliste er vist nedenfor.
+For at fjerne en side, skal boksen ud for den markeres, og klik på "{{int:Watchlistedit-normal-submit}}".
+Du kan også [[Special:Watchlist/raw|redigere siden direkte]].',
 'watchlistedit-normal-submit'  => 'Fjern valgte',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 side|$1 sider}} er fjernet fra din overvågningsliste:',
 'watchlistedit-raw-title'      => 'Direkte redigering af overvågningsliste',
@@ -3259,6 +3283,15 @@ Denne side oplister de tags som programmet kan mærke en redigering med, og dere
 'tags-hitcount-header'    => 'Taggede ændringer',
 'tags-edit'               => 'Redigér',
 'tags-hitcount'           => '{{PLURAL:$1|en ændring|$1 ændringer}}',
+
+# Special:ComparePages
+'comparepages'     => 'Sammenlign sider',
+'compare-selector' => 'Sammenlign sideversioner',
+'compare-page1'    => 'Side 1',
+'compare-page2'    => 'Side 2',
+'compare-rev1'     => 'Version 1',
+'compare-rev2'     => 'Version 2',
+'compare-submit'   => 'Sammenlign',
 
 # Database error messages
 'dberr-header'      => 'Wikien har et problem',

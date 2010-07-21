@@ -1068,6 +1068,12 @@ CREATE TABLE /*_*/interwiki (
   -- insertion.
   iw_url blob NOT NULL,
   
+  -- The URL of the file api.php
+  iw_api blob NOT NULL,
+
+  -- The name of the database (for a connection to be established with wfGetLB( 'wikiid' ))
+  iw_wikiid varchar(64) NOT NULL,
+  
   -- A boolean value indicating whether the wiki is in this project
   -- (used, for example, to detect redirect loops)
   iw_local bool NOT NULL,
@@ -1311,7 +1317,8 @@ CREATE UNIQUE INDEX /*i*/pp_page_propname ON /*_*/page_props (pp_page,pp_propnam
 
 -- A table to log updates, one text key row per update.
 CREATE TABLE /*_*/updatelog (
-  ul_key varchar(255) NOT NULL PRIMARY KEY
+  ul_key varchar(255) NOT NULL PRIMARY KEY,
+  ul_value blob
 ) /*$wgDBTableOptions*/;
 
 

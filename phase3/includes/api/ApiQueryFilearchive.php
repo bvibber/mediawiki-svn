@@ -43,6 +43,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'deletedhistory' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view deleted file information', 'permissiondenied' );
@@ -147,13 +148,13 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				$file['height'] = $row->fa_height;
 				$file['width'] = $row->fa_width;
 			}
-			if ( $fld_description ){
+			if ( $fld_description ) {
 				$file['description'] = $row->fa_description;
 			}
-			if ( $fld_metadata ){
+			if ( $fld_metadata ) {
 				$file['metadata'] = $row->fa_metadata ? ApiQueryImageInfo::processMetaData( unserialize( $row->fa_metadata ), $result ) : null;
 			}
-			if ( $fld_bitdepth ){
+			if ( $fld_bitdepth ) {
 				$file['bitdepth'] = $row->fa_bits;
 			}
 			if ( $fld_mime ) {
@@ -224,7 +225,18 @@ class ApiQueryFilearchive extends ApiQueryBase {
 			'limit' => 'How many total images to return',
 			'sha1' => "SHA1 hash of image. Overrides {$this->getModulePrefix()}sha1base36",
 			'sha1base36' => 'SHA1 hash of image in base 36 (used in MediaWiki)',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'What image information to get:',
+				' sha1         - Adds sha1 hash for the image',
+				' timestamp    - Adds timestamp for the uploaded version',
+				' user         - Adds user for uploaded the image version',
+				' size         - Adds the size of the image in bytes',
+				' dimensions   - Adds the height and width of the image',
+				' description  - Adds description the image version',
+				' mime         - Adds MIME of the image',
+				' metadata     - Lists EXIF metadata for the version of the image',
+				' bitdepth     - Adds the bit depth of the version',
+            ),
 		);
 	}
 

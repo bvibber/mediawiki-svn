@@ -1515,8 +1515,8 @@ if( count( $errs ) ) {
 		<label class='column'>E-mail notification about changes:</label>
 		<ul class="plain">
 		<li><?php aField( $conf, "Enotif", "Disabled", "radio", "enotif_disabled" ); ?></li>
-		<li><?php aField( $conf, "Enotif", "Enabled for changes to user discussion pages only", "radio", "enotif_usertalk" ); ?></li>
-		<li><?php aField( $conf, "Enotif", "Enabled for changes to user discussion pages, and to pages on watchlists (not recommended for large wikis)", "radio", "enotif_allpages" ); ?></li>
+		<li><?php aField( $conf, "Enotif", "Changes to user discussion pages only", "radio", "enotif_usertalk" ); ?></li>
+		<li><?php aField( $conf, "Enotif", "Changes to user discussion pages, and to pages on watchlists (not recommended for large wikis)", "radio", "enotif_allpages" ); ?></li>
 		</ul>
 	</div>
 	<div class="config-desc">
@@ -2293,7 +2293,7 @@ function getShellLocale( $wikiLang ) {
 			<li><a href="http://www.mediawiki.org/wiki/Manual:Contents">Administrator's Guide</a></li>
 			<li><a href="http://www.mediawiki.org/wiki/Manual:FAQ">FAQ</a></li>
 		</ul>
-		<p style="font-size:90%;margin-top:1em">MediaWiki is Copyright © 2001-2009 by Magnus Manske, Brion Vibber,
+		<p style="font-size:90%;margin-top:1em">MediaWiki is Copyright © 2001-2010 by Magnus Manske, Brion Vibber,
 		 Lee Daniel Crocker, Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason, Niklas Laxström,
 		 Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor, Aaron Schulz and others.</p>
 	</div></div>

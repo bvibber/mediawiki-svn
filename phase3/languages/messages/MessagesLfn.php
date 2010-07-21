@@ -52,7 +52,6 @@ $messages = array(
 'tog-watchdefault'            => 'Junta pajes ce me ia edita a me lista de pajes oservada',
 'tog-watchmoves'              => 'Junta pajes ce me ia moveda a me lista de pajes oservada',
 'tog-watchdeletion'           => 'Junta pajes ce me ia sutrae a me lista de pajes oservada',
-'tog-minordefault'            => 'Marca costumal tota editas como minor',
 'tog-previewontop'            => 'Mostra la previde ante la caxa de editas',
 'tog-previewonfirst'          => 'Mostra la previde a la edita prima',
 'tog-nocache'                 => 'Desengana la reserva de pajes',
@@ -720,7 +719,7 @@ Si tu vole sutrae la paje de tu lista de pajes oservada en la futur, clica a \"n
 Vide $2 per un catalogo de sutraes resente.',
 'deletedarticle'        => 'sutraeda "[[$1]]"',
 'dellogpage'            => 'catalogo de sutraes',
-'deletecomment'         => 'Razona per esta sutrae:',
+'deletecomment'         => 'Razona:',
 'deleteotherreason'     => 'Otra/plu razona:',
 'deletereasonotherlist' => 'Otra razona',
 
@@ -845,7 +844,7 @@ En esta casos, tu va nesesa move o fusa la paje per mano, si desirada.",
 '1movedto2_redir'  => '[[$1]] es moveda a [[$2]] tra redirije',
 'movelogpage'      => 'Move arcive',
 'movelogpagetext'  => 'A su es un lista de pajes moveda',
-'movereason'       => 'Razona',
+'movereason'       => 'Razona:',
 'revertmove'       => 'retro',
 
 # Export

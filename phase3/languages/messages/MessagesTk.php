@@ -54,7 +54,6 @@ $messages = array(
 'tog-watchdefault'            => 'Redaktirlän sahypalarymy gözegçilik sanawyma goş',
 'tog-watchmoves'              => 'Adyny üýtgeden sahypalarymy gözegçilik sanawyma goş',
 'tog-watchdeletion'           => 'Öçüren sahypalarymy gözegçilik sanawyma goş',
-'tog-minordefault'            => 'Ähli özgerdişleri "ujypsyzja" diýip belle',
 'tog-previewontop'            => 'Deslapky syny redaktirleme gutusynyň üstünde görkez',
 'tog-previewonfirst'          => 'Özgerdişde deslapky syny görkez',
 'tog-nocache'                 => '
@@ -865,7 +864,7 @@ Administrator hökmünde bu aratapawudy görüp bilersiňiz; [{{fullurl:{{#Speci
 'revdelete-radio-unset'       => 'Ýok',
 'revdelete-suppress'          => 'Maglumatlary administratorlardan we beýlekilerden gizläň',
 'revdelete-unsuppress'        => 'Dikeldilen wersiýalardaky çäklendirmeleri aýyr',
-'revdelete-log'               => 'Öçürmekligiň sebäbi:',
+'revdelete-log'               => 'Sebäp:',
 'revdelete-submit'            => 'Saýlanylan {{PLURAL:$1|wersiýada|wersiýalarda}}  peýdalan',
 'revdelete-logentry'          => '[[$1]] üçin wersiýa görünme derejesini üýtgetdi',
 'logdelete-logentry'          => '[[$1]] üçin waka görünme derejesini üýtgetdi',
@@ -1129,7 +1128,7 @@ $1 {{PLURAL:$1|simwoldan|simwoldan}} köp bolmaly däl.',
 'prefs-advancedrendering'       => 'Giňeldilen opsiýalar',
 'prefs-advancedsearchoptions'   => 'Giňeldilen opsiýalar',
 'prefs-advancedwatchlist'       => 'Giňeldilen opsiýalar',
-'prefs-display'                 => 'Görkeziş opsiýalary',
+'prefs-displayrc'               => 'Görkeziş opsiýalary',
 'prefs-diffs'                   => 'Tapawutlar',
 
 # User rights
@@ -1556,7 +1555,7 @@ Goşmaça maglumat üçin [$2 faýl düşündiriş sahypasyna] serediň.',
 'filedelete-legend'           => 'Faýly öçür',
 'filedelete-intro'            => "'''[[Media:$1|$1]]''' faýlyny tutuş geçmişi bilen bilelikde öçürjek bolup dursuňyz.",
 'filedelete-intro-old'        => "'''[[Media:$1|$1]]''' faýlynyň [$4 $3, $2] seneli wersiýasyny öçürýärsiňiz.",
-'filedelete-comment'          => 'Öçürmekligiň sebäbi:',
+'filedelete-comment'          => 'Sebäp:',
 'filedelete-submit'           => 'Öçür',
 'filedelete-success'          => "'''$1''' öçürildi.",
 'filedelete-success-old'      => "'''[[Media:$1|$1]]''' faýlynyň $3, $2 seneli wersiýasy öçürildi.",
@@ -1926,7 +1925,7 @@ Bu amalyň getirip biljek netijelerine gözüňiz ýetýän bolsa we amalyň [[{
 'dellogpagetext'         => 'Aşakdaky sanaw iň soňky öçürmeleriň sanawydyr.',
 'deletionlog'            => 'öçürme gündeligi',
 'reverted'               => 'Irki wersiýasyna yzyna getirildi',
-'deletecomment'          => 'Öçürmäniň sebäbi:',
+'deletecomment'          => 'Sebäp:',
 'deleteotherreason'      => 'Başga/goşmaça sebäp:',
 'deletereasonotherlist'  => 'Başga sebäpler',
 'deletereason-dropdown'  => '*Adaty öçürme sebäpleri
@@ -2595,7 +2594,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Duýduryş''': Bu faýlda zyýanly kod bar bolmagy ahmal.
-Ony işletseňiz iş ulgamyňyza howp astyna salmagyňyz mümkin />",
+Ony işletseňiz iş ulgamyňyza howp astyna salmagyňyz mümkin.",
 'imagemaxsize'         => "Surat ölçeginiň çägi:<br />''(faýl düşündiriş sahypalary üçin)''",
 'thumbsize'            => 'Miniatýura ölçegi:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|sahypa|sahypa}}',

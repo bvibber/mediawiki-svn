@@ -139,7 +139,7 @@ abstract class MediaHandler {
 	 * Get the thumbnail extension and MIME type for a given source MIME type
 	 * @return array thumbnail extension and MIME type
 	 */
-	function getThumbType( $ext, $mime ) {
+	function getThumbType( $ext, $mime, $params = null ) {
 		return array( $ext, $mime );
 	}
 
@@ -357,9 +357,19 @@ abstract class ImageHandler extends MediaHandler {
 		if ( !isset( $params['width'] ) ) {
 			return false;
 		}
+
 		if ( !isset( $params['page'] ) ) {
 			$params['page'] = 1;
+		} else  {
+			if ( $params['page'] > $image->pageCount() ) {
+				$params['page'] = $image->pageCount();
+			}
+
+			if ( $params['page'] < 1 ) {
+				$params['page'] = 1;
+			}
 		}
+
 		$srcWidth = $image->getWidth( $params['page'] );
 		$srcHeight = $image->getHeight( $params['page'] );
 		if ( isset( $params['height'] ) && $params['height'] != -1 ) {

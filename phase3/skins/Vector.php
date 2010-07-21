@@ -37,7 +37,7 @@ class SkinVector extends SkinTemplate {
 		$out->addScript(
 			'<!--[if lt IE 7]><style type="text/css">body{behavior:url("' .
 				htmlspecialchars( $wgLocalStylePath ) .
-				'/vector/csshover.htc")}</style><![endif]-->'
+				"/{$this->stylename}/csshover.htc\")}</style><![endif]-->"
 		);
 	}
 
@@ -52,14 +52,14 @@ class SkinVector extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		// Append skin-specific styles
-		$out->addStyle( 'vector/main-rtl.css', 'screen', '', 'rtl' );
-		$out->addStyle( 'vector/main-ltr.css', 'screen', '', 'ltr' );
+		$out->addStyle( "{$this->stylename}/main-rtl.css", 'screen', '', 'rtl' );
+		$out->addStyle( "{$this->stylename}/main-ltr.css", 'screen', '', 'ltr' );
 
 		// Add extra stylesheets
 		// THIS IS ONLY USEFUL FOR EXPERIMENTING WITH DIFFERNT STYLE OPTIONS! THIS WILL BE REMOVED IN THE NEAR FUTURE.
 		if ( is_array( $wgVectorExtraStyles ) ) {
 			foreach ( $wgVectorExtraStyles as $style ) {
-				$out->addStyle( 'vector/' . $style, 'screen' );
+				$out->addStyle( "{$this->stylename}/$style", 'screen' );
 			}
 		}
 	}
@@ -293,7 +293,7 @@ class SkinVector extends SkinTemplate {
 			// Checks if the user is logged in
 			if ( $this->loggedin ) {
 				if ( $wgVectorUseIconWatch ) {
-					$class = 'icon ';
+					$class = 'icon';
 					$place = 'views';
 				} else {
 					$class = '';
@@ -487,7 +487,7 @@ class VectorTemplate extends QuickTemplate {
 			<!-- bodyContent -->
 			<div id="bodyContent">
 				<!-- tagline -->
-				<h3 id="siteSub"><?php $this->msg( 'tagline' ) ?></h3>
+				<div id="siteSub"><?php $this->msg( 'tagline' ) ?></div>
 				<!-- /tagline -->
 				<!-- subtitle -->
 				<div id="contentSub"<?php $this->html('userlangattributes') ?>><?php $this->html( 'subtitle' ) ?></div>
@@ -682,7 +682,7 @@ class VectorTemplate extends QuickTemplate {
 		if ( !is_array( $elements ) ) {
 			$elements = array( $elements );
 		// If there's a series of elements, reverse them when in RTL mode
-		} else if ( $wgContLang->isRTL() ) {
+		} else if ( wfUILang()->isRTL() ) {
 			$elements = array_reverse( $elements );
 		}
 		// Render elements
@@ -695,7 +695,7 @@ class VectorTemplate extends QuickTemplate {
 	<h5><?php $this->msg('namespaces') ?></h5>
 	<ul<?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['namespace_urls'] as $key => $link ): ?>
-			<li <?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><span><?php echo htmlspecialchars( $link['text'] ) ?></span></a></li>
+			<li <?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></span></li>
 		<?php endforeach; ?>
 	</ul>
 </div>
@@ -730,7 +730,7 @@ class VectorTemplate extends QuickTemplate {
 	<h5><?php $this->msg('views') ?></h5>
 	<ul<?php $this->html('userlangattributes') ?>>
 		<?php foreach ( $this->data['view_urls'] as $key => $link ): ?>
-			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo (array_key_exists('img',$link) ?  '<img src="'.$link['img'].'" alt="'.$link['text'].'" />' : '<span>'.htmlspecialchars( $link['text'] ).'</span>') ?></a></li>
+			<li<?php echo $link['attributes'] ?>><span><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo (array_key_exists('img',$link) ?  '<img src="'.$link['img'].'" alt="'.$link['text'].'" />' : htmlspecialchars( $link['text'] ) ) ?></a></span></li>
 		<?php endforeach; ?>
 	</ul>
 </div>
@@ -771,7 +771,7 @@ class VectorTemplate extends QuickTemplate {
 		<?php if ( $wgVectorUseSimpleSearch && $wgUser->getOption( 'vector-simplesearch' ) ): ?>
 		<div id="simpleSearch">
 			<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />
-			<button id="searchButton" type='submit' name='button' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>>&#160;</button>
+			<button id="searchButton" type='submit' name='button' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>><img src="<?php echo $GLOBALS['wgStylePath'] . "/{$this->skin->stylename}/images/search-" . ( $GLOBALS['wgContLang']->isRTL() ? 'rtl' : 'ltr' ) . '.png?' . $GLOBALS['wgStyleVersion'] ?>" alt="<?php $this->msg( 'searchbutton' ) ?>" /></button>
 		</div>
 		<?php else: ?>
 		<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />

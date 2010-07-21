@@ -97,7 +97,6 @@ $messages = array(
 'tog-watchdefault'            => 'Ajuntar las páiginas que you eiditar a las minhas páiginas begiadas',
 'tog-watchmoves'              => ' Ajuntar las páiginas que you mober a las minhas páiginas begiadas',
 'tog-watchdeletion'           => ' Ajuntar las páiginas que you eileminar a las minhas páiginas begiadas',
-'tog-minordefault'            => 'Por oumisson, marcar todas las eidiçones cumo menores',
 'tog-previewontop'            => "Amostrar l'antebison antes de la caixa d'eidiçon",
 'tog-previewonfirst'          => "Amostrar l'antebison na purmeira eidiçon",
 'tog-nocache'                 => 'Zatibar caching de páiginas',
@@ -908,7 +907,7 @@ Por fabor, bei se ye esso que quieres fazer, que antendes las cunsequéncias i s
 Consulte $2 para um registo de eliminações recentes.',
 'deletedarticle'        => 'botado pa la rue "[[$1]]"',
 'dellogpage'            => 'Registro de botado fuora',
-'deletecomment'         => 'Rezon pa botar pa fuora:',
+'deletecomment'         => 'Rezon:',
 'deleteotherreason'     => 'Rezon adicional:',
 'deletereasonotherlist' => 'Outra rezon',
 

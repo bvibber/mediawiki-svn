@@ -24,17 +24,6 @@
  * @ingroup Maintenance
  */
 
-/** */
-$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record', 'run-disabled' );
-$optionsWithArgs = array( 'regex', 'seed', 'setversion' );
-
-if ( !defined( "NO_COMMAND_LINE" ) ) {
-	require_once( dirname( __FILE__ ) . '/commandLine.inc' );
-}
-require_once( "$IP/maintenance/parserTestsParserHook.php" );
-require_once( "$IP/maintenance/parserTestsStaticParserHook.php" );
-require_once( "$IP/maintenance/parserTestsParserTime.php" );
-
 /**
  * @ingroup Maintenance
  */
@@ -114,17 +103,7 @@ class ParserTest {
 			$this->regex = '';
 		}
 
-		if ( isset( $options['record'] ) ) {
-			$this->recorder = new DbTestRecorder( $this );
-		} elseif ( isset( $options['compare'] ) ) {
-			$this->recorder = new DbTestPreviewer( $this );
-		} elseif ( isset( $options['upload'] ) ) {
-			$this->recorder = new RemoteTestRecorder( $this );
-		} elseif ( class_exists( 'PHPUnitTestRecorder' ) ) {
-			$this->recorder = new PHPUnitTestRecorder( $this );
-		} else {
-			$this->recorder = new TestRecorder( $this );
-		}
+		$this->setupRecorder();
 		$this->keepUploads = isset( $options['keep-uploads'] );
 
 		if ( isset( $options['seed'] ) ) {
@@ -135,6 +114,19 @@ class ParserTest {
 
 		$this->hooks = array();
 		$this->functionHooks = array();
+	}
+
+	public function setupRecorder() {
+		global $options;
+		if ( isset( $options['record'] ) ) {
+			$this->recorder = new DbTestRecorder( $this );
+		} elseif ( isset( $options['compare'] ) ) {
+			$this->recorder = new DbTestPreviewer( $this );
+		} elseif ( isset( $options['upload'] ) ) {
+			$this->recorder = new RemoteTestRecorder( $this );
+		} else {
+			$this->recorder = new TestRecorder( $this );
+		}
 	}
 
 	/**
@@ -589,6 +581,11 @@ class ParserTest {
 		$GLOBALS['wgMemc'] = new FakeMemCachedClient;
 		$GLOBALS['wgOut'] = new OutputPage;
 
+		global $wgHooks;
+		$wgHooks['ParserTestParser'][] = 'ParserTestParserHook::setup';
+		$wgHooks['ParserTestParser'][] = 'ParserTestStaticParserHook::setup';
+		$wgHooks['ParserGetVariableValueTs'][] = 'ParserTest::getFakeTimestamp';
+
 		MagicWord::clearCache();
 
 		global $wgUser;
@@ -607,7 +604,7 @@ class ParserTest {
 			'site_stats', 'hitcounter',	'ipblocks', 'image', 'oldimage',
 			'recentchanges', 'watchlist', 'math', 'interwiki',
 			'querycache', 'objectcache', 'job', 'l10n_cache', 'redirect', 'querycachetwo',
-			'archive', 'user_groups', 'page_props', 'category'
+			'archive', 'user_groups', 'page_props', 'category',
 		);
 
 		if ( $wgDBtype === 'mysql' )
@@ -626,7 +623,7 @@ class ParserTest {
 	 * Currently this will only be done once per run, and any changes to
 	 * the db will be visible to later tests in the run.
 	 */
-	function setupDatabase() {
+	public function setupDatabase() {
 		global $wgDBprefix, $wgDBtype;
 		if ( $this->databaseSetupDone ) {
 			return;
@@ -771,7 +768,7 @@ class ParserTest {
 		$db->tablePrefix( $prefix );
 	}
 
-	private function teardownDatabase() {
+	public function teardownDatabase() {
 		global $wgDBtype;
 		if ( !$this->databaseSetupDone ) {
 			return;
@@ -783,7 +780,6 @@ class ParserTest {
 			return;
 		}
 
-		/*
 		$tables = $this->listTables();
 		$db = wfGetDB( DB_MASTER );
 		foreach ( $tables as $table ) {
@@ -792,7 +788,6 @@ class ParserTest {
 		}
 		if ($wgDBtype == 'oracle')
 			$db->query('BEGIN FILL_WIKI_INFO; END;');
-		*/
 	}
 
 	/**
@@ -1044,7 +1039,8 @@ class ParserTest {
 		}
 
 		$art = new Article( $title );
-		$art->insertNewArticle( $text, '', false, false );
+		$art->doEdit( $text, '', EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY,
+			false, null, false, false, '', true );
 
 		$this->teardownGlobals();
 	}
@@ -1052,9 +1048,10 @@ class ParserTest {
 	/**
 	 * Steal a callback function from the primary parser, save it for
 	 * application to our scary parser. If the hook is not installed,
-	 * die a painful dead to warn the others.
+	 * abort processing of this file.
 	 *
 	 * @param $name String
+	 * @return Bool true if tag hook is present
 	 */
 	public function requireHook( $name ) {
 		global $wgParser;
@@ -1062,16 +1059,19 @@ class ParserTest {
 		if ( isset( $wgParser->mTagHooks[$name] ) ) {
 			$this->hooks[$name] = $wgParser->mTagHooks[$name];
 		} else {
-			wfDie( "This test suite requires the '$name' hook extension.\n" );
+			echo "   This test suite requires the '$name' hook extension, skipping.\n";
+			return false;
 		}
+		return true;
 	}
 
 	/**
 	 * Steal a callback function from the primary parser, save it for
 	 * application to our scary parser. If the hook is not installed,
-	 * die a painful dead to warn the others.
+	 * abort processing of this file.
 	 *
 	 * @param $name String
+	 * @return Bool true if function hook is present
 	 */
 	public function requireFunctionHook( $name ) {
 		global $wgParser;
@@ -1079,8 +1079,10 @@ class ParserTest {
 		if ( isset( $wgParser->mFunctionHooks[$name] ) ) {
 			$this->functionHooks[$name] = $wgParser->mFunctionHooks[$name];
 		} else {
-			wfDie( "This test suite requires the '$name' function hook extension.\n" );
+			echo "   This test suite requires the '$name' function hook extension, skipping.\n";
+			return false;
 		}
+		return true;
 	}
 
 	/*
@@ -1145,6 +1147,11 @@ class ParserTest {
 			'^' .
 			$this->term->color( 0 );
 		return "$display\n$caret";
+	}
+
+	static function getFakeTimestamp( &$parser, &$ts ) {
+		$ts = 123;
+		return true;
 	}
 }
 
@@ -1655,7 +1662,9 @@ class TestFileIterator implements Iterator {
 					foreach ( explode( "\n", $data['hooks'] ) as $line ) {
 						$line = trim( $line );
 						if ( $line ) {
-							if ( $this->parser ) $this->parser->requireHook( $line );
+							if ( $this->parser && !$this->parser->requireHook( $line ) ) {
+								return false;
+							}
 						}
 					}
 					$data = array();
@@ -1669,7 +1678,9 @@ class TestFileIterator implements Iterator {
 					foreach ( explode( "\n", $data['functionhooks'] ) as $line ) {
 						$line = trim( $line );
 						if ( $line ) {
-							if ( $this->parser ) $this->parser->requireFunctionHook( $line );
+							if ( $this->parser && !$this->parser->requireFunctionHook( $line ) ) {
+								return false;
+							}
 						}
 					}
 					$data = array();
@@ -1733,3 +1744,4 @@ class TestFileIterator implements Iterator {
 		return false;
 	}
 }
+

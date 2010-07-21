@@ -220,7 +220,6 @@ $messages = array(
 'tog-watchdefault'            => 'Engadir as páxinas que edite á miña lista de vixilancia',
 'tog-watchmoves'              => 'Engadir as páxinas que mova á miña lista de vixilancia',
 'tog-watchdeletion'           => 'Engadir as páxinas que borre á miña lista de vixilancia',
-'tog-minordefault'            => 'Marcar por omisión todas as edicións como pequenas',
 'tog-previewontop'            => 'Mostrar o botón de vista previa antes da caixa de edición e non despois dela',
 'tog-previewonfirst'          => 'Mostrar a vista previa na primeira edición',
 'tog-nocache'                 => 'Deshabilitar a memoria caché das páxinas',
@@ -579,7 +578,7 @@ Función: $1<br />
 Dúbida: $2',
 'viewsource'           => 'Ver o código fonte',
 'viewsourcefor'        => 'de "$1"',
-'actionthrottled'      => 'Acción ocasional',
+'actionthrottled'      => 'Acción limitada',
 'actionthrottledtext'  => "Como unha medida de loita contra o ''spam'', limítase a realización desta acción a un número determinado de veces nun curto espazo de tempo, e vostede superou este límite.
 Inténteo de novo nuns minutos.",
 'protectedpagetext'    => 'Esta páxina foi protexida para evitar a edición.',
@@ -1043,7 +1042,7 @@ Os demais administradores de {{SITENAME}} poderán acceder ao contido agochado e
 'revdelete-radio-unset'       => 'Non',
 'revdelete-suppress'          => 'Eliminar os datos da vista dos administradores así coma da doutros',
 'revdelete-unsuppress'        => 'Retirar as restricións sobre as revisións restauradas',
-'revdelete-log'               => 'Motivo para o borrado:',
+'revdelete-log'               => 'Motivo:',
 'revdelete-submit'            => 'Aplicar {{PLURAL:$1|á revisión seleccionada|ás revisións seleccionadas}}',
 'revdelete-logentry'          => 'mudou a visibilidade dunha revisión de "[[$1]]"',
 'logdelete-logentry'          => 'mudou a visibilidade do evento de [[$1]]',
@@ -1101,11 +1100,11 @@ Vexa a [[Special:IPBlockList|lista de enderezos IP bloqueados]] para comprobar a
 'revmove-reasonfield'          => 'Motivo:',
 'revmove-titlefield'           => 'Páxina de destino:',
 'revmove-badparam-title'       => 'Parámetros incorrectos',
-'revmove-badparam'             => '<span class="error">A súa solicitude contén parámetros insuficientes ou ilegais. Volva atrás e inténteo de novo.</span>',
+'revmove-badparam'             => 'A súa solicitude contén parámetros insuficientes ou ilegais. Volva atrás e inténteo de novo.',
 'revmove-norevisions-title'    => 'A revisión especificada é incorrecta',
-'revmove-norevisions'          => '<span class="error">Non especificou unha ou máis revisións sobre as que levar a cabo esta operación; ou poida tamén que a revisión especificada non exista.</span>',
+'revmove-norevisions'          => 'Non especificou unha ou máis revisións sobre as que levar a cabo esta operación; ou poida tamén que a revisión especificada non exista.',
 'revmove-nullmove-title'       => 'Título incorrecto',
-'revmove-nullmove'             => '<span class="error">As páxinas de orixe e destino son idénticas. Volva atrás e introduza un nome de páxina diferente de "$1".</span>',
+'revmove-nullmove'             => 'As páxinas de orixe e destino son idénticas. Volva atrás e introduza un nome de páxina diferente de "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|Moveuse unha revisión de "[[$2]]"|Movéronse $1 revisións de "[[$2]]"}} á páxina "[[$3]]".',
 'revmove-success-created'      => '{{PLURAL:$1|Moveuse unha revisión de "[[$2]]"|Movéronse $1 revisións de "[[$2]]"}} á nova páxina "[[$3]]", creada hai uns intres.',
 
@@ -1329,7 +1328,9 @@ Tamén pode deixar que outras persoas se poñan en contacto con vostede desde a 
 'prefs-advancedrendering'       => 'Opcións avanzadas',
 'prefs-advancedsearchoptions'   => 'Opcións avanzadas',
 'prefs-advancedwatchlist'       => 'Opcións avanzadas',
-'prefs-display'                 => 'Opcións de visualización',
+'prefs-displayrc'               => 'Opcións de visualización',
+'prefs-displaysearchoptions'    => 'Opcións de visualización',
+'prefs-displaywatchlist'        => 'Opcións de visualización',
 'prefs-diffs'                   => 'Diferenzas',
 
 # User rights
@@ -1440,6 +1441,7 @@ Tamén pode deixar que outras persoas se poñan en contacto con vostede desde a 
 'right-override-export-depth' => 'Exportar páxinas incluíndo as páxinas ligadas ata unha profundidade de 5',
 'right-sendemail'             => 'Enviar correos electrónicos a outros usuarios',
 'right-revisionmove'          => 'Mover revisións',
+'right-selenium'              => 'Realizar probas de selenio',
 
 # User rights log
 'rightslog'      => 'Rexistro de dereitos de usuario',
@@ -1793,7 +1795,7 @@ A descrición da [$2 páxina de descrición do ficheiro] móstrase a continuaci�
 'filedelete-legend'           => 'Eliminar un ficheiro',
 'filedelete-intro'            => "Está a piques de eliminar o ficheiro \"'''[[Media:\$1|\$1]]'''\" xunto con todo o seu historial.",
 'filedelete-intro-old'        => 'Vai eliminar a versión de "\'\'\'[[Media:$1|$1]]\'\'\'" do [$4 $2, ás $3].',
-'filedelete-comment'          => 'Comentario:',
+'filedelete-comment'          => 'Motivo:',
 'filedelete-submit'           => 'Eliminar',
 'filedelete-success'          => "Borrouse o ficheiro \"'''\$1'''\".",
 'filedelete-success-old'      => 'Eliminouse a versión de "\'\'\'[[Media:$1|$1]]\'\'\'" do $2 ás $3.',
@@ -2167,7 +2169,7 @@ No $2 pode ver unha lista cos borrados máis recentes.',
 'dellogpagetext'         => 'A continuación atópase a lista cos borrados máis recentes.',
 'deletionlog'            => 'rexistro de borrados',
 'reverted'               => 'Volveuse a unha versión anterior',
-'deletecomment'          => 'Razón para o borrado:',
+'deletecomment'          => 'Motivo:',
 'deleteotherreason'      => 'Outro motivo:',
 'deletereasonotherlist'  => 'Outro motivo',
 'deletereason-dropdown'  => '*Motivos frecuentes para borrar
@@ -2344,6 +2346,7 @@ $1',
 Velaquí está a última entrada do rexistro de bloqueos, por se quere consultala:',
 'sp-contributions-search'              => 'Busca de contribucións',
 'sp-contributions-username'            => 'Enderezo IP ou nome de usuario:',
+'sp-contributions-toponly'             => 'Mostrar só as últimas revisións',
 'sp-contributions-submit'              => 'Procurar',
 
 # What links here
@@ -2853,7 +2856,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Aviso:''' este tipo de ficheiro pode conter código malicioso.
-O seu sistema pode quedar comprometido se o executa.<hr />",
+O seu sistema pode quedar comprometido se o executa.",
 'imagemaxsize'         => "Límite de tamaño das imaxes:<br />''(nas páxinas de descrición de ficheiros)''",
 'thumbsize'            => 'Tamaño da miniatura:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|páxina|páxinas}}',
@@ -2865,6 +2868,9 @@ O seu sistema pode quedar comprometido se o executa.<hr />",
 'show-big-image-thumb' => '<small>Tamaño desta presentación da imaxe: $1 × $2 píxeles</small>',
 'file-info-gif-looped' => 'en bucle',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|fotograma|fotogramas}}',
+'file-info-png-looped' => 'en bucle',
+'file-info-png-repeat' => 'reproducido $1 {{PLURAL:$1|vez|veces}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|fotograma|fotogramas}}',
 
 # Special:NewFiles
 'newimages'             => 'Galería de imaxes novas',

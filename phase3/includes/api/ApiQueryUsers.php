@@ -126,7 +126,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 			$data = array();
 			$res = $this->select( __METHOD__ );
-			foreach ( $rowes as $row ) {
+			foreach ( $res as $row ) {
 				$user = User::newFromRow( $row );
 				$name = $user->getName();
 				$data[$name]['name'] = $name;
@@ -162,6 +162,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 				}
 
 				if ( !is_null( $params['token'] ) ) {
+					// Don't cache tokens
+					$this->getMain()->setCachePrivate();
+					
 					$tokenFunctions = $this->getTokenFunctions();
 					foreach ( $params['token'] as $t ) {
 						$val = call_user_func( $tokenFunctions[$t], $user );

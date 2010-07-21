@@ -9,6 +9,7 @@
  *
  * @author Nkosi ya Cabinda
  * @author Sab
+ * @author Urhixidur
  * @author Wikimistusik
  * @author Zetud
  */
@@ -115,7 +116,6 @@ $messages = array(
 'tog-watchdefault'            => 'Va jinon reduyun ik betayan telizeem suzdá',
 'tog-watchmoves'              => 'Kosuzdasikira va jinon arrundayan bueem',
 'tog-watchdeletion'           => 'Kosuzdasikira va jinon sulayan bueem',
-'tog-minordefault'            => 'Jinaf betakseem omavon mezolonon zo torigid',
 'tog-previewontop'            => 'Abdinedira nediwer vamoe sutelaxo',
 'tog-previewonfirst'          => 'Nedira va abdinedira bal taneafa betara',
 'tog-nocache'                 => 'Gritegirara va bupreyutasiki',
@@ -692,7 +692,7 @@ Ta ropasusu warzafu bu yo va [[Special:Search|aneyara ko wiki]] yawal.',
 'revdelete-hide-restricted' => 'Rewara va bat irutareem pu kot ristusik az elekara va bati walasiki',
 'revdelete-suppress'        => 'Origsulara mal ristusik lidam artan',
 'revdelete-unsuppress'      => 'Dimirutara va dimplekun betaks yo',
-'revdelete-log'             => '"Log" sebusiki :',
+'revdelete-log'             => 'Lazava :',
 'revdelete-submit'          => 'Ko reban siatos rewar',
 'revdelete-logentry'        => 'Betayana betarafa rowinuca ke [[$1]]',
 'logdelete-logentry'        => 'Betayana bifafa rowinuca ke [[$1]]',
@@ -1154,7 +1154,7 @@ Sulara \"log\" va batu bu krafiason batlize zo nedir :",
 'filedelete-legend'           => 'Sulara va iyeltak',
 'filedelete-intro'            => "Rin va '''[[Media:$1|$1]]''' iyeltak is varaf izvot fu sulal.",
 'filedelete-intro-old'        => "Rin va siatos ke '''[[Media:$1|$1]]''' wetce [$4 $3, $2] sulal.",
-'filedelete-comment'          => 'Sebuks :',
+'filedelete-comment'          => 'Elekaradanda :',
 'filedelete-submit'           => 'Sulara',
 'filedelete-success'          => "'''$1''' al zo sular.",
 'filedelete-success-old'      => "Siatos ke '''[[Media:$1|$1]]''' iyeltak ba $3 ke $2 zo sulayar.",
@@ -1463,7 +1463,7 @@ Ta vexala dem noeltaf sulareem va $2 disukel.',
 Bazen bartiv tir tel ke zanisiko.',
 'deletionlog'            => 'izvot va sulareem',
 'reverted'               => 'Dimplekura va tel abdif siatos',
-'deletecomment'          => 'Sularadanda',
+'deletecomment'          => 'Lazava :',
 'deleteotherreason'      => 'Ara ik loplekufa lazava :',
 'deletereasonotherlist'  => 'Ara lazava',
 'deletereason-dropdown'  => '*Giltafa sularalazava
@@ -1737,7 +1737,7 @@ Dans ce cas, vous devrez renommer ou fusionner la page manuellement si vous le d
 '1movedto2_redir'         => '[[$1]] arbureyen kal [[$2]] (graskara)',
 'movelogpage'             => 'Arrundara va "log" bu',
 'movelogpagetext'         => 'Vleveon vexala dem arrundayanu bu se.',
-'movereason'              => 'Lazava va arplekura',
+'movereason'              => 'Lazava :',
 'revertmove'              => 'dimplekura',
 'delete_and_move'         => 'Sulara is arplekura',
 'delete_and_move_text'    => '==Sulara eruna==
@@ -1889,8 +1889,8 @@ Ise va bazera va lazava ko vildeks nover.',
 'creditspage'      => 'Rostbu',
 
 # Spam protection
-'spamprotectiontitle' => 'Page automatiquement protégée pour cause de spam',
-'spamprotectiontext'  => 'Page automatiquement protégée pour cause de spam',
+'spamprotectiontitle' => 'Filtre de protection anti-polluriels',
+'spamprotectiontext'  => 'La création ou sauvegarde de la page a été automatiquement bloquée par le filtre anti-polluriel. Ceci est probablement causé par l’inclusion d’un lien vers un site externe apparaissant sur la liste noire.',
 'spamprotectionmatch' => 'Le texte suivant a déclenché le détecteur de spam: $1',
 'spambot_username'    => 'Tucuara va MediaWiki "spam"
 MediaWiki spam cleanup',

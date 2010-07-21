@@ -164,6 +164,8 @@ class ApiQueryContributions extends ApiQueryBase {
 			);
 		}
 
+		// Make sure private data (deleted revisions) isn't cached
+		$this->getMain()->setVaryCookie();
 		if ( !$wgUser->isAllowed( 'hideuser' ) ) {
 			$this->addWhere( $this->getDB()->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0' );
 		}
@@ -215,9 +217,12 @@ class ApiQueryContributions extends ApiQueryBase {
 				 $this->fld_patrolled )
 		{
 			global $wgUser;
+			// Don't cache private data
+			$this->getMain()->setVaryCookie();
 			if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 			}
+			
 			// Use a redundant join condition on both
 			// timestamp and ID so we can use the timestamp
 			// index
@@ -316,6 +321,7 @@ class ApiQueryContributions extends ApiQueryBase {
 
 				if ( $this->fld_parsedcomment ) {
 					global $wgUser;
+					$this->getMain()->setVaryCookie();
 					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rev_comment, $title );
 				}
 			}
@@ -418,7 +424,18 @@ class ApiQueryContributions extends ApiQueryBase {
 			'userprefix' => "Retrieve contibutions for all users whose names begin with this value. Overrides {$p}user",
 			'dir' => 'The direction to search (older or newer)',
 			'namespace' => 'Only list contributions in these namespaces',
-			'prop' => 'Include additional pieces of information',
+			'prop' => array(
+				'Include additional pieces of information',
+				' ids            - Adds the page id and revision id',
+				' title          - Adds the title and namespace id of the page',
+				' timestamp      - Adds the timestamp of the edit',
+				' comment        - Adds the comment of the edit',
+				' parsedcomment  - Adds the parsed comment of the edit',
+				' size           - Adds the size of the page',
+				' flags          - Adds flags of the edit',
+				' patrolled      - Tags patrolled edits',
+				' tags           - Lists tags for the edit',
+			),
 			'show' => array( "Show only items that meet this criteria, e.g. non minor edits only: {$p}show=!minor",
 					"NOTE: if {$p}show=patrolled or {$p}show=!patrolled is set, revisions older than $wgRCMaxAge won\'t be shown", ),
 			'tag' => 'Only list revisions tagged with this tag',

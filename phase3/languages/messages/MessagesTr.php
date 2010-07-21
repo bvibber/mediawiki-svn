@@ -17,6 +17,7 @@
  * @author Karduelis
  * @author Katpatuka
  * @author Mach
+ * @author Manco Capac
  * @author Metal Militia
  * @author Mskyrider
  * @author Myildirim2007
@@ -305,7 +306,6 @@ $messages = array(
 'tog-watchdefault'            => 'Değişiklik yapılan sayfayı izleme listesine ekle',
 'tog-watchmoves'              => 'Taşıdığım sayfaları izleme listeme ekle',
 'tog-watchdeletion'           => 'Sildiğim sayfaları izleme listeme ekle',
-'tog-minordefault'            => "Değişikliği 'küçük değişiklik' olarak seçili getir",
 'tog-previewontop'            => 'Önizlemeyi yazma alanın üstünde göster',
 'tog-previewonfirst'          => 'Değiştirmede önizlemeyi göster',
 'tog-nocache'                 => 'Sayfaları bellekleme',
@@ -445,31 +445,32 @@ $messages = array(
 'faqpage'        => 'Project:SSS',
 
 # Vector skin
-'vector-action-addsection'   => 'Konu ekle',
-'vector-action-delete'       => 'Sil',
-'vector-action-move'         => 'Taşı',
-'vector-action-protect'      => 'Koru',
-'vector-action-undelete'     => 'Silinmeyi geri al',
-'vector-action-unprotect'    => 'Korumayı kaldır',
-'vector-namespace-category'  => 'Kategori',
-'vector-namespace-help'      => 'Yardım sayfası',
-'vector-namespace-image'     => 'Dosya',
-'vector-namespace-main'      => 'Sayfa',
-'vector-namespace-media'     => 'Ortam sayfası',
-'vector-namespace-mediawiki' => 'İleti',
-'vector-namespace-project'   => 'Proje sayfası',
-'vector-namespace-special'   => 'Özel sayfa',
-'vector-namespace-talk'      => 'Tartışma',
-'vector-namespace-template'  => 'Şablon',
-'vector-namespace-user'      => 'Kullanıcı sayfası',
-'vector-view-create'         => 'Oluştur',
-'vector-view-edit'           => 'Değiştir',
-'vector-view-history'        => 'Geçmişi görüntüle',
-'vector-view-view'           => 'Oku',
-'vector-view-viewsource'     => 'Kaynağı gör',
-'actions'                    => 'Eylemler',
-'namespaces'                 => 'Ad alanları',
-'variants'                   => 'Varyantlar',
+'vector-action-addsection'       => 'Konu ekle',
+'vector-action-delete'           => 'Sil',
+'vector-action-move'             => 'Taşı',
+'vector-action-protect'          => 'Koru',
+'vector-action-undelete'         => 'Silinmeyi geri al',
+'vector-action-unprotect'        => 'Korumayı kaldır',
+'vector-namespace-category'      => 'Kategori',
+'vector-namespace-help'          => 'Yardım sayfası',
+'vector-namespace-image'         => 'Dosya',
+'vector-namespace-main'          => 'Sayfa',
+'vector-namespace-media'         => 'Ortam sayfası',
+'vector-namespace-mediawiki'     => 'İleti',
+'vector-namespace-project'       => 'Proje sayfası',
+'vector-namespace-special'       => 'Özel sayfa',
+'vector-namespace-talk'          => 'Tartışma',
+'vector-namespace-template'      => 'Şablon',
+'vector-namespace-user'          => 'Kullanıcı sayfası',
+'vector-simplesearch-preference' => 'Gelişmiş arama önerilerini getir (Sadece Vector motifi için)',
+'vector-view-create'             => 'Oluştur',
+'vector-view-edit'               => 'Değiştir',
+'vector-view-history'            => 'Geçmişi görüntüle',
+'vector-view-view'               => 'Oku',
+'vector-view-viewsource'         => 'Kaynağı gör',
+'actions'                        => 'Eylemler',
+'namespaces'                     => 'Ad alanları',
+'variants'                       => 'Varyantlar',
 
 'errorpagetitle'    => 'Hata',
 'returnto'          => '$1 sayfasına dön.',
@@ -823,7 +824,7 @@ Girişi bitirmek için, burada yeni bir parola yazın:',
 'missingsummary'                   => "'''Uyarı:''' Herhangi bir özet yazmadın. 
 Kaydet tuşuna tekrar basarsan sayfa özetsiz kaydedilecek.",
 'missingcommenttext'               => 'Lütfen aşağıda bir açıklama yazınız.',
-'missingcommentheader'             => "'''Hatırlatıcı:''' Bu yorum için konu/başlık sunmadınız. Eğer tekrar Kaydet tuşuna basarsanız, değişikliğiniz konu/başlık olmadan kaydedilecektir.",
+'missingcommentheader'             => "'''Hatırlatma''' Bu yorum için bir konu/başlık sunmadınız. Eğer \"((int: savearticle))\" tuşuna tekrar basarsanız, değişikliğiniz konu/başlık olmadan kaydedilecektir.",
 'summary-preview'                  => 'Ön izleme özeti:',
 'subject-preview'                  => 'Konu/Başlık ön izlemesi:',
 'blockedtitle'                     => 'Kullanıcı erişimi engellendi.',
@@ -1090,7 +1091,7 @@ Bir hizmetli olarak bu değişikliği görebilirsiniz; [{{fullurl:{{#Special:Log
 'revdelete-radio-unset'       => 'Hayır',
 'revdelete-suppress'          => 'Verileri hem diğerlerinden hem de hizmetlilerden gizle',
 'revdelete-unsuppress'        => 'Geri döndürülmüş revizyonlardaki kısıtlamaları kaldır',
-'revdelete-log'               => 'Silinme için sebep:',
+'revdelete-log'               => 'Neden:',
 'revdelete-submit'            => 'Seçilen {{PLURAL:$1|sürüme|sürümlere}} uygula',
 'revdelete-logentry'          => '[[$1]] için revizyon görünürlüğü değişti',
 'logdelete-logentry'          => '[[$1]] için olay görünürlüğü değişti',
@@ -1139,14 +1140,22 @@ Lütfen günlükleri kontrol edin.',
 Şu anda işlevsel olan yasak ve engellemelerin listesi için [[Special:IPBlockList|IP engelleme listesine]] bakın.',
 
 # Revision move
+'moverevlogentry'              => '{{PLURAL:$3|bir sürüm|$3 sürümleri}} $1 den $2 ye taşındı',
+'revisionmove'                 => 'Sürümleri "$1" dan taşı',
+'revmove-explain'              => 'Takip eden sürümler $1 dan belirtilmiş olan hedef sayfaya taşınacaktır. Eğer hedef sayfa yoksa yaratılacaktır. Aksi taktirde, bu sürümler sayfanın geçmişine yerleştirilecektir.',
 'revmove-legend'               => 'Hedef sayfa ve özet ayarla',
 'revmove-submit'               => 'Revizyonları seçilen sayfaya taşı',
 'revisionmoveselectedversions' => 'Seçili revizyonları taşı',
 'revmove-reasonfield'          => 'Sebep:',
 'revmove-titlefield'           => 'Hedef sayfa:',
 'revmove-badparam-title'       => 'Kötü parametreler',
+'revmove-badparam'             => 'İsteğiniz uygun olmayan ya da yetersiz değişkenler içermektedir. Lütfen "geri" giderek tekrar deneyiniz.',
 'revmove-norevisions-title'    => 'Geçersiz hedef revizyonu',
+'revmove-norevisions'          => 'Bu işlevi yerine getirmek için bir ya da daha fazla hedef sürümünü belirlemediniz ya da belirtilen sürüm bulunmamaktadır.',
 'revmove-nullmove-title'       => 'Kötü başlık',
+'revmove-nullmove'             => 'Kaynak ve hedef sayfaları aynıdır. Lütfen "geri" gidip "$1" dan başka bir sayfa ismi giriniz.',
+'revmove-success-existing'     => '{{PLURAL:$1|[[$2]] den bir sürüm|$1 sürüm [[$2]] den}}varolan [[$3]] sayfasına taşındı.',
+'revmove-success-created'      => '{{PLURAL:$1|[[$2]] den bir sürüm|$1 sürüm [[$2]] den}}yeni yaratılan [[$3]] sayfasına taşındı.',
 
 # History merging
 'mergehistory'                     => 'Sayfa geçmişlerini takas et.',
@@ -1367,7 +1376,7 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'prefs-advancedrendering'       => 'Gelişmiş seçenekler',
 'prefs-advancedsearchoptions'   => 'Gelişmiş seçenekler',
 'prefs-advancedwatchlist'       => 'Gelişmiş seçenekler',
-'prefs-display'                 => 'Görüntü seçenekleri',
+'prefs-displayrc'               => 'Görüntü seçenekleri',
 'prefs-diffs'                   => 'Farklar',
 
 # User rights
@@ -1384,7 +1393,7 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 * Seçili bir kutu, kullanıcının o gruba dahil olduğu anlamına gelir
 * Seçilmemiş bir kutu, kullanıcının o grupta olmadığı anlamına gelir.
 * *, grubu bir kez oluşturduktan sonra silemeceğinizi belirtir, ya da karşılıklı olarak.',
-'userrights-reason'            => 'Sebep:',
+'userrights-reason'            => 'Neden:',
 'userrights-no-interwiki'      => 'Diğer vikilerdeki kullanıcıların izinlerini değiştirmeye yetkiniz yok.',
 'userrights-nodatabase'        => '$1 veritabanı mevcut veya bölgesel değil',
 'userrights-nologin'           => 'Kullanıcı haklarını atamak için hizmetli hesabı ile [[Special:UserLogin|giriş yapmanız gerekir]].',
@@ -1478,6 +1487,7 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'right-override-export-depth' => "Sayfaları, derinlik 5'e kadar bağlantılı sayfalarla beraber, dışa aktar",
 'right-sendemail'             => 'Diğer kullanıcılara e-posta gönder',
 'right-revisionmove'          => 'Revizyonları taşı',
+'right-selenium'              => 'Selenyum testleri yap',
 
 # User rights log
 'rightslog'      => 'Kullanıcı hakları kayıtları',
@@ -1823,7 +1833,7 @@ Sıradaki liste sadece bu dosyaya bağlantı veren {{PLURAL:$1|ilk dosyayı|ilk 
 'filedelete-legend'           => 'Dosya sil',
 'filedelete-intro'            => "'''[[Media:$1|$1]]''' dosyasını tüm geçmişiyle birlikte silmek üzeresiniz.",
 'filedelete-intro-old'        => "'''[[Media:$1|$1]]''' dosyasının [$4 $3, $2] tarihli sürümünü siliyorsunuz.",
-'filedelete-comment'          => 'Silinme sebebi:',
+'filedelete-comment'          => 'Neden:',
 'filedelete-submit'           => 'sil',
 'filedelete-success'          => "'''$1''' silindi.",
 'filedelete-success-old'      => "'''[[Media:$1|$1]]''' dosyasının $3, $2 tarihli sürümü silindi.",
@@ -2018,7 +2028,7 @@ Ayrıca [[Special:WantedCategories|İstenen kategoriler]]'e bakınız.",
 # Special:LinkSearch
 'linksearch'       => 'Dış bağlantılar',
 'linksearch-pat'   => 'Motif ara:',
-'linksearch-ns'    => 'Alan adı:',
+'linksearch-ns'    => 'Ad boşluğu:',
 'linksearch-ok'    => 'Ara',
 'linksearch-text'  => '"*.wikipedia.org" gibi jokerler kullanılabilir.<br />
 Desteklenen iletişim kuralları: <tt>$1</tt>',
@@ -2196,7 +2206,7 @@ Yakın zamanda silinenleri görmek için: $2.',
 'dellogpagetext'         => 'Aşağıdaki liste son silme kayıtlarıdır.',
 'deletionlog'            => 'silme kayıtları',
 'reverted'               => 'Önceki sürüm geri getirildi',
-'deletecomment'          => 'Silme nedeni',
+'deletecomment'          => 'Neden:',
 'deleteotherreason'      => 'Diğer/ilave neden:',
 'deletereasonotherlist'  => 'Diğer nedenler',
 'deletereason-dropdown'  => '*Genel silme gerekçeleri
@@ -2227,7 +2237,8 @@ Son değişikliği yapan: [[User:$3|$3]] ([[User talk:$3|Talk]]{{int:pipe-separa
 $2 tarafından değiştirilmiş önceki sürüme geri dönüldü.',
 
 # Edit tokens
-'sessionfailure' => 'Giriş oturumunuzla ilgili bir sorun var gibi görünüyor;
+'sessionfailure-title' => 'Oturum başarısızlığı',
+'sessionfailure'       => 'Giriş oturumunuzla ilgili bir sorun var gibi görünüyor;
 bu eylem, oturum gaspına karşı önlem olarak iptal edildi.
 Lütfen "geri" gidin ve geldiğiniz sayfayı yeniden yükleyin, sonra tekrar deneyin.',
 
@@ -2345,7 +2356,7 @@ $1',
 'undelete-show-file-submit'    => 'Evet',
 
 # Namespace form on various pages
-'namespace'      => 'Alan adı:',
+'namespace'      => 'Ad boşluğu:',
 'invert'         => 'Seçili haricindekileri göster',
 'blanknamespace' => '(Ana)',
 
@@ -2372,6 +2383,7 @@ $1',
 Son engelleme günlüğü girdisi referans amacıyla aşağıda verilmiştir:',
 'sp-contributions-search'              => 'Katkıları ara',
 'sp-contributions-username'            => 'IP veya kullanıcı:',
+'sp-contributions-toponly'             => 'Sadece en üsteki sürümleri göster',
 'sp-contributions-submit'              => 'Ara',
 
 # What links here
@@ -2877,7 +2889,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Uyarı''': Bu dosya türü kötü niyetli kodlar içerebilir.
-Bunu çalıştırarak, sisteminiz tehlikeye atılabilir.<hr />",
+Bunu çalıştırarak, sisteminiz tehlikeye atılabilir.",
 'imagemaxsize'         => "Resim boyutu sınırı:<br />''(dosya açıklama sayfaları için)''",
 'thumbsize'            => 'Küçük boyut:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|sayfa|sayfa}}',
@@ -2889,6 +2901,9 @@ Bunu çalıştırarak, sisteminiz tehlikeye atılabilir.<hr />",
 'show-big-image-thumb' => '<small>Ön izleme boyutu: $1 × $2 piksel</small>',
 'file-info-gif-looped' => 'döngüye girdi',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|kare|kare}}',
+'file-info-png-looped' => 'döngüye girdi',
+'file-info-png-repeat' => '$1 {{PLURAL:$1|defa|defa}} oynatıldı',
+'file-info-png-frames' => '$1 {{PLURAL:$1|frame|frames}}',
 
 # Special:NewFiles
 'newimages'             => 'Yeni dosya galerisi',
@@ -3328,6 +3343,7 @@ Sayfayı baştan açmak isityorsanız, lütfen onaylayın.",
 'table_pager_first'        => 'İlk',
 'table_pager_last'         => 'Son',
 'table_pager_limit'        => 'Her sayfada $1 nesne göster',
+'table_pager_limit_label'  => 'Sayfa başına öğe:',
 'table_pager_limit_submit' => 'Git',
 'table_pager_empty'        => 'Sonuç yok',
 
@@ -3464,6 +3480,15 @@ Dosya adını "{{ns:file}}:" öneki olmadan gir.',
 'tags-hitcount-header'    => 'Etiketli değişiklikler',
 'tags-edit'               => 'değiştir',
 'tags-hitcount'           => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
+
+# Special:ComparePages
+'comparepages'     => 'Sayfaları karşılaştır',
+'compare-selector' => 'Sayfa sürümlerini karşılaştır',
+'compare-page1'    => 'Sayfa 1',
+'compare-page2'    => 'Sayfa 2',
+'compare-rev1'     => 'Sürüm 1',
+'compare-rev2'     => 'Sürüm 2',
+'compare-submit'   => 'Karşılaştır',
 
 # Database error messages
 'dberr-header'      => 'Bu vikinin bir sorunu var',

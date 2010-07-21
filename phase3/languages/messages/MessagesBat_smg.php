@@ -74,7 +74,6 @@ $messages = array(
 'tog-watchdefault'            => 'Pridietė poslapius, katrūs taisau, i keravuojamu sāraša',
 'tog-watchmoves'              => 'Pridietė poslapius, katrūs parkelio, i keravuojamu sāraša',
 'tog-watchdeletion'           => 'Pridietė poslapius, katrūs ėštrino, i keravuojamu sāraša',
-'tog-minordefault'            => 'Palē nutīliejėma pažīmietė redagavėmus kāp mažus',
 'tog-previewontop'            => 'Ruodītė parvaiza vėrš redagavėma lauka',
 'tog-previewonfirst'          => 'Ruodītė straipsnė parvėiza pėrmu redagavėmu',
 'tog-nocache'                 => "Nenauduotė poslapiu kaupėma (''caching'')",
@@ -826,7 +825,7 @@ Ana gal sodarītė ne daugiau kāp $1 {{PLURAL:$1|sėmbuolis|sėmbuolē|sėmbuol
 'userrights-editusergroup' => 'Keistė nauduotuoju gropes',
 'saveusergroups'           => 'Sauguotė nauduotuoju gropes',
 'userrights-groupsmember'  => 'Narīs:',
-'userrights-reason'        => 'Keitėma prižastis:',
+'userrights-reason'        => 'Prīžastis:',
 
 # Groups
 'group'               => 'Gropė:',
@@ -1024,7 +1023,7 @@ Paspaude ont štolpelė ontraštės pakeisėt ėšruokavėma.',
 'filedelete'                  => 'Trintė $1',
 'filedelete-legend'           => 'Trintė faila',
 'filedelete-intro'            => "Tamsta roušeties ėštrėntė faila '''[[Media:$1|$1]]''' so vėsa anuo istuorėjė.",
-'filedelete-comment'          => 'Kuomentars:',
+'filedelete-comment'          => 'Prīžastis:',
 'filedelete-submit'           => 'Trintė',
 'filedelete-success'          => "'''$1''' bova ėštrints.",
 'filedelete-nofile'           => "'''$1''' nēsa.",
@@ -1285,7 +1284,7 @@ Paskotiniu pašalinėmu istuorėjė - $2.',
 'dellogpagetext'         => 'Žemiau īr pateikiams paskotiniu ėštrīnimu sārašos.',
 'deletionlog'            => 'pašalinėmu istuorėjė',
 'reverted'               => 'Atkorta i onkstesne versėje',
-'deletecomment'          => 'Trīnima prižastis',
+'deletecomment'          => 'Prīžastis:',
 'deleteotherreason'      => 'Kėta/papėlduoma prižastis:',
 'deletereasonotherlist'  => 'Kėta prižastis',
 'deletereason-dropdown'  => '*Dažnas trīnėma prižastīs
@@ -1460,7 +1459,7 @@ Parveizėkiet [[Special:Log/delete|trīnimu sāraša]], nuoriedamė rastė pasko
 'ipaddress'                   => 'IP adresos',
 'ipadressorusername'          => 'IP adresos a nauduotuojė vards',
 'ipbexpiry'                   => 'Galiuojėma čiesos',
-'ipbreason'                   => 'Prižastis',
+'ipbreason'                   => 'Prīžastis:',
 'ipbreasonotherlist'          => 'Kėta prīžastis',
 'ipbreason-dropdown'          => '*Dažniausės bluokavėma prižastīs
 ** Melagėngas infuormacėjės rašīms
@@ -1576,7 +1575,7 @@ Prašuom sojongtė šėtuos poslapios.'''",
 '1movedto2_redir'         => '[[$1]] parvadints i [[$2]] (onkstiau bova nukrēpamāsis)',
 'movelogpage'             => 'Parvardinėmu istuorėjė',
 'movelogpagetext'         => 'Sārašos parvadintu poslapiu.',
-'movereason'              => 'Prižastis:',
+'movereason'              => 'Prīžastis:',
 'revertmove'              => 'atmestė',
 'delete_and_move'         => 'Ėštrintė ė parkeltė',
 'delete_and_move_text'    => '==Rēkalings ėštrīnims==
@@ -1730,7 +1729,7 @@ Paskėrties straipsnis „[[:$1]]“ jau īr. A nuorėt ana ėštrintė, kū gal
 'nextdiff'     => 'Paskesinis pakeitėms →',
 
 # Media information
-'mediawarning'         => "'''Diemesė''': Šėts fails gal torietė kenksmėnga kuoda, anū palaidus Tamstas sėstėma gal būtė sogadinta.<hr />",
+'mediawarning'         => "'''Diemesė''': Šėts fails gal torietė kenksmėnga kuoda, anū palaidus Tamstas sėstėma gal būtė sogadinta.",
 'imagemaxsize'         => 'Rėbuotė abruozdieliu dėdoma anū aprašīma poslapī lėgė:',
 'thumbsize'            => 'Somažėntu pavēkslieliu didums:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|poslapis|poslapē|poslapiu}}',

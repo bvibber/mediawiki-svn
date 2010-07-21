@@ -114,7 +114,6 @@ $messages = array(
 'tog-watchdefault'            => 'মই সম্পাদনা কৰা সকলো পৃষ্ঠা মোৰ লক্ষ্য-তালিকাত যোগ কৰক',
 'tog-watchmoves'              => 'মই স্থানান্তৰ কৰা সকলো পৃষ্ঠা মোৰ লক্ষ্য-তালিকাত যোগ কৰক',
 'tog-watchdeletion'           => 'মই বিলোপ কৰা সকলো পৃষ্ঠা মোৰ লক্ষ্য-তালিকাত যোগ কৰক',
-'tog-minordefault'            => 'সকলো সম্পাদনা অগুৰুত্বপূর্ণ বুলি নিজে নিজে চিহ্নিত কৰক',
 'tog-previewontop'            => 'সম্পাদনা বাকছৰ ওপৰত খচৰা দেখুৱাওক',
 'tog-previewonfirst'          => 'প্রথম সম্পাদনাৰ পিছ্ত খচৰা দেখুৱাওক',
 'tog-nocache'                 => 'পৃষ্ঠা Caching নিষ্ক্রীয় কৰক',
@@ -900,7 +899,6 @@ $1ৰ দ্বাৰ এই অবৰোধ কৰা হৈছে ।
 'prefs-advancedrendering'     => 'উচ্চতৰ উপায়ান্তৰ সমূহ',
 'prefs-advancedsearchoptions' => 'উচ্চতৰ উপায়ান্তৰ সমূহ',
 'prefs-advancedwatchlist'     => 'উচ্চতৰ উপায়ান্তৰ সমূহ',
-'prefs-display'               => 'প্ৰদৰ্শনী উপায়ান্তৰ সমূহ',
 'prefs-diffs'                 => 'পাৰ্থক্য',
 
 # User rights
@@ -1119,7 +1117,7 @@ $1ৰ দ্বাৰ এই অবৰোধ কৰা হৈছে ।
 সাম্প্রতিক বিলোপনসমূহৰ তালিকা চাবলৈ $2 চাঁওক।',
 'deletedarticle'        => '"[[$1]]" ক বাতিল কৰা হৈছে।',
 'dellogpage'            => 'বাতিল কৰা সুচী',
-'deletecomment'         => 'বিলোপনৰ কাৰণ।',
+'deletecomment'         => 'কাৰণ:',
 'deleteotherreason'     => 'আন/অতিৰিক্ত কাৰণ:',
 'deletereasonotherlist' => 'আন কাৰণ:',
 
@@ -1199,7 +1197,7 @@ $1ৰ দ্বাৰ এই অবৰোধ কৰা হৈছে ।
 
 # Block/unblock
 'blockip'                  => 'সদস্য বাৰণ কৰক',
-'ipbreason'                => 'কাৰণ',
+'ipbreason'                => 'কাৰণ:',
 'ipbreasonotherlist'       => 'অন্য কাৰণ',
 'ipboptions'               => '২ ঘ্ণ্টা:2 hours,১ দিন:1 day,৩ দিন:3 days,১ সপ্তাহ:1 week,২ সপ্তাহ:2 weeks,১ মাহ:1 month,৩ মাহ:3 months,৬ মাহ:6 months,১ বছৰ:1 year,অনির্দিস্ট কাল:infinite',
 'ipblocklist'              => 'বাৰণ কৰা আই-পি ঠিকনা আৰু সদস্যৰ তালিকা',

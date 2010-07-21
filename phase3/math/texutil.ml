@@ -409,6 +409,10 @@ let find = function
     | "\\mod"              -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH,"\\mod ", "mod")))
     | "\\Diamond"          -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UF, "\\Diamond ", "&loz;")))
     | "\\dotsb"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UF, "\\dotsb ", "&sdot;&sdot;&sdot;")))
+    | "\\dotsc"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UF, "\\dotsc ", "...")))
+    | "\\dotsi"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UF, "\\dotsi ", "&sdot;&sdot;&sdot;")))
+    | "\\dotsm"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UF, "\\dotsm ", "&sdot;&sdot;&sdot;")))
+    | "\\dotso"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UF, "\\dotso ", "...")))
     | "\\reals"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH,"\\mathbb{R}", "<b>R</b>")))
     | "\\Reals"            -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH,"\\mathbb{R}", "<b>R</b>")))
     | "\\R"                -> (tex_use_ams (); LITERAL (HTMLABLE (FONT_UFH,"\\mathbb{R}", "<b>R</b>")))
@@ -508,12 +512,15 @@ let find = function
     | "\\over"             -> FUN_INFIXh ("\\over ", fun num den -> Html.html_render num, "<hr style=\"{background: black}\"/>", Html.html_render den)
     | "\\sqrt"             -> FUN_AR1 "\\sqrt "
     | "\\cancel"           -> FUN_AR1 "\\cancel "
+    | "\\bcancel"           -> FUN_AR1 "\\bcancel "
+    | "\\xcancel"           -> FUN_AR1 "\\xcancel "
     | "\\cancelto"         -> FUN_AR2 "\\cancelto "
     | "\\pmod"             -> FUN_AR1hl ("\\pmod ", ("(mod ", ")"))
     | "\\bmod"             -> FUN_AR1hl ("\\bmod ", ("mod ", ""))
     | "\\emph"             -> FUN_AR1 "\\emph "
     | "\\texttt"           -> FUN_AR1 "\\texttt "
     | "\\textbf"           -> FUN_AR1 "\\textbf "
+    | "\\textsf"           -> FUN_AR1 "\\textsf "
     | "\\textit"           -> FUN_AR1hf ("\\textit ", FONTFORCE_IT)
     | "\\textrm"           -> FUN_AR1hf ("\\textrm ", FONTFORCE_RM)
     | "\\rm"               -> DECLh ("\\rm ", FONTFORCE_RM)
@@ -726,6 +733,7 @@ let find = function
     | "\\mathsf"           -> (tex_use_ams (); FUN_AR1 "\\mathsf ")
     | "\\mathcal"          -> (tex_use_ams (); FUN_AR1 "\\mathcal ")
     | "\\mathbb"           -> (tex_use_ams (); FUN_AR1 "\\mathbb ")
+    | "\\mathtt"           -> (tex_use_ams (); FUN_AR1 "\\mathtt ")
     | "\\mathfrak"         -> (tex_use_ams (); FUN_AR1 "\\mathfrak ")
     | "\\operatorname"     -> (tex_use_ams (); FUN_AR1 "\\operatorname ")
     | "\\text"             -> raise (Failure "malformatted \\text")

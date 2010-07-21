@@ -363,7 +363,6 @@ $messages = array(
 'tog-watchdefault'            => 'Přidávat mnou editované stránky ke sledovaným',
 'tog-watchmoves'              => 'Přidávat přesouvané stránky mezi sledované',
 'tog-watchdeletion'           => 'Přidávat stránky, které smažu, mezi sledované',
-'tog-minordefault'            => 'Označit editaci implicitně jako malá editace',
 'tog-previewontop'            => 'Zobrazovat náhled před editačním oknem (ne za ním)',
 'tog-previewonfirst'          => 'Zobrazit při první editaci náhled',
 'tog-nocache'                 => 'Nepoužívat cache',
@@ -473,7 +472,7 @@ $messages = array(
 'index-category'                 => 'Indexované stránky',
 'noindex-category'               => 'Neindexované stránky',
 
-'mainpagetext'      => "'''MediaWiki bylo úspěšně nainstalováno.'''",
+'mainpagetext'      => "'''MediaWiki byla úspěšně nainstalována.'''",
 'mainpagedocfooter' => '[http://meta.wikimedia.org/wiki/Help:Contents Uživatelská příručka] vám napoví, jak MediaWiki používat.
 
 == Začínáme ==
@@ -881,7 +880,8 @@ Možná jste si již úspěšně heslo změnili, nebo jste si vyžádali nové d
 'anonpreviewwarning'               => "''Nejste přihlášen(a). Uložením zveřejníte svou IP adresu v historii této stránky.''",
 'missingsummary'                   => "'''Připomenutí:''' Nezadali jste shrnutí editace. Pokud ještě jednou kliknete na Uložit změny, bude vaše editace zapsána bez shrnutí.",
 'missingcommenttext'               => 'Zadejte komentář',
-'missingcommentheader'             => "'''Připomenutí:''' Nezadali jste předmět/nadpis pro tento komentář. Pokud ještě jednou kliknete na Uložit změny, bude vaše editace zapsána i bez toho.",
+'missingcommentheader'             => "'''Připomenutí:''' Nezadali jste předmět/nadpis pro tento komentář.
+Pokud ještě jednou kliknete na „{{int:savearticle}}“, bude vaše editace zapsána i bez toho.",
 'summary-preview'                  => 'Náhled shrnutí:',
 'subject-preview'                  => 'Náhled předmětu/nadpisu:',
 'blockedtitle'                     => 'Uživatel zablokován',
@@ -1147,7 +1147,7 @@ pokud nebyla nastavena další omezení.",
 'revdelete-radio-unset'       => 'Ne',
 'revdelete-suppress'          => 'Utajit data i před správci',
 'revdelete-unsuppress'        => 'Odstranit omezení na vrácené verze',
-'revdelete-log'               => 'Zdůvodnění smazání:',
+'revdelete-log'               => 'Důvod:',
 'revdelete-submit'            => 'Aplikovat na {{PLURAL:$1|zvolenou revizi|zvolené revize}}',
 'revdelete-logentry'          => 'změnil viditelnost revizí u [[$1]]',
 'logdelete-logentry'          => 'mění viditelnost události [[$1]]',
@@ -1199,17 +1199,17 @@ Prohlédněte si protokolovací záznamy.',
 'moverevlogentry'              => 'přesunul {{PLURAL:$3|jednu revizi|$3 revize|$3 revizí}} z $1 do $2',
 'revisionmove'                 => 'Přesunout revize z „$1“',
 'revmove-explain'              => 'Následující revize budou přesunuty z $1 do uvedené cílové stránky. Pokud cílová stránka neexistuje, bude vytvořena. Jinak budou tyto revize začleněny do historie stránky.',
-'revmove-legend'               => 'Nastavit cílovou stránku a shrnutí',
+'revmove-legend'               => 'Nastavte cílovou stránku a shrnutí',
 'revmove-submit'               => 'Přesunout revize do vybrané stránky',
 'revisionmoveselectedversions' => 'Přesunout vybrané revize',
 'revmove-reasonfield'          => 'Důvod:',
 'revmove-titlefield'           => 'Cílová stránka:',
 'revmove-badparam-title'       => 'Chybné parametry',
-'revmove-badparam'             => '<span class="error">Váš požadavek obsahuje neplatné nebo nedostatečné parametry. Stiskněte prosím tlačítko „zpět“ a zkuste to znovu.</span>',
+'revmove-badparam'             => 'Váš požadavek obsahuje neplatné nebo nedostatečné parametry. Stiskněte prosím tlačítko „zpět“ a zkuste to znovu.',
 'revmove-norevisions-title'    => 'Neplatná cílová revize',
-'revmove-norevisions'          => '<span class="error">Neuvedli jste jednu nebo více cílových revizí nebo uvedená revize neexistuje.</span>',
+'revmove-norevisions'          => 'Neuvedli jste jednu nebo více cílových revizí nebo uvedená revize neexistuje.',
 'revmove-nullmove-title'       => 'Chybný název',
-'revmove-nullmove'             => '<span class="error">Zdrojová stránka je stejná jako cílová. Stiskněte prosím tlačítko „zpět“ a zadejte jiný název stránky než „$1“.</span>',
+'revmove-nullmove'             => 'Zdrojová stránka je stejná jako cílová. Stiskněte prosím tlačítko „zpět“ a zadejte jiný název stránky než „$1“.',
 'revmove-success-existing'     => '{{PLURAL:$1|Jedna revize ze stránky [[$2]] byla přesunuta|$1 revize ze stránky [[$2]] byly přesunuty|$1 revizí ze stránky [[$2]] bylo přesunuto}} do existující stránky [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Jedna revize ze stránky [[$2]] byla přesunuta|$1 revize ze stránky [[$2]] byly přesunuty|$1 revizí ze stránky [[$2]] bylo přesunuto}} do nově vytvořené stránky [[$3]].',
 
@@ -1430,7 +1430,9 @@ Také můžete dovolit ostatním uživatelům vás prostřednictvím uživatelsk
 'prefs-advancedrendering'       => 'Rozšířené možnosti',
 'prefs-advancedsearchoptions'   => 'Rozšířené možnosti',
 'prefs-advancedwatchlist'       => 'Rozšířené možnosti',
-'prefs-display'                 => 'Nastavení vzhledu',
+'prefs-displayrc'               => 'Možnosti zobrazení',
+'prefs-displaysearchoptions'    => 'Možnosti zobrazení',
+'prefs-displaywatchlist'        => 'Možnosti zobrazení',
 'prefs-diffs'                   => 'Porovnání verzí',
 
 # User rights
@@ -1541,6 +1543,7 @@ Také můžete dovolit ostatním uživatelům vás prostřednictvím uživatelsk
 'right-override-export-depth' => 'Exportovat stránky včetně odkazovaných stránek až do hloubky 5',
 'right-sendemail'             => 'Odesílání e-mailů ostatním uživatelům',
 'right-revisionmove'          => 'Přesouvání verzí',
+'right-selenium'              => 'Spouštění testů v Seleniu',
 
 # User rights log
 'rightslog'      => 'Kniha práv uživatelů',
@@ -1878,7 +1881,7 @@ Níže jsou zobrazeny informace, které obsahuje jeho [$2 tamější stránka s 
 'filedelete-legend'           => 'Smazat soubor',
 'filedelete-intro'            => "Chystáte se smazat soubor '''[[Media:$1|$1]]''' i s celou historií.",
 'filedelete-intro-old'        => "Chystáte se smazat verzi souboru '''[[Media:$1|$1]]''' z [$4 $3 $2].",
-'filedelete-comment'          => 'Důvod smazání:',
+'filedelete-comment'          => 'Důvod:',
 'filedelete-submit'           => 'Smazat',
 'filedelete-success'          => "Soubor '''$1''' byl smazán.",
 'filedelete-success-old'      => "Verze souboru '''[[Media:$1|$1]]''' z $3 $2 byla smazána.",
@@ -2245,7 +2248,7 @@ Rady a kontakt:
 'dellogpagetext'         => 'Zde je seznam posledních smazaných stránek.',
 'deletionlog'            => 'Kniha smazaných stránek',
 'reverted'               => 'Obnovení předchozí verze',
-'deletecomment'          => 'Důvod smazání:',
+'deletecomment'          => 'Důvod:',
 'deleteotherreason'      => 'Jiný/další důvod:',
 'deletereasonotherlist'  => 'Jiný důvod',
 'deletereason-dropdown'  => '*Obvyklé důvody smazání
@@ -2925,7 +2928,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Upozornění''': Tento typ souboru může obsahovat škodlivý kód.
-Otevřením souboru můžete ohrozit svůj počítač.<hr />",
+Otevřením souboru můžete ohrozit svůj počítač.",
 'imagemaxsize'         => "Maximální velikost obrázku:<br />
 ''(na stránce s popisem souboru)''",
 'thumbsize'            => 'Velikost náhledu:',
@@ -2938,6 +2941,9 @@ Otevřením souboru můžete ohrozit svůj počítač.<hr />",
 'show-big-image-thumb' => '<small>Velikost tohoto náhledu je: $1 × $2 pixelů</small>',
 'file-info-gif-looped' => 've smyčce',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|snímek|snímky|snímků}}',
+'file-info-png-looped' => 've smyčce',
+'file-info-png-repeat' => 'opakováno $1{{PLURAL:$1|krát|krát}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|snímek|snímky|snímků}}',
 
 # Special:NewFiles
 'newimages'             => 'Galerie nových souborů',

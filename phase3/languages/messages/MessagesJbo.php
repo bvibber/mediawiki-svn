@@ -64,9 +64,11 @@ $messages = array(
 'dec'           => 'dec',
 
 # Categories related messages
-'pagecategories'  => '{{PLURAL:$1|klesi|klesi}}',
-'category_header' => 'fe le kibypapri cu klesi "$1"',
-'subcategories'   => "le'a ti",
+'pagecategories'         => '{{PLURAL:$1|klesi|klesi}}',
+'category_header'        => 'fe le kibypapri cu klesi "$1"',
+'subcategories'          => "le'a ti",
+'category-subcat-count'  => "$2 klesi cu vipsi le vi klesi .i $1 vipkle cu ni'a se jarco",
+'category-article-count' => "$2 kibypapri cu cmima le vi klesi .i $1 kibypapri cu ni'a se jarco",
 
 'mytalk'     => 'casnu mi',
 'navigation' => 'ckupau',
@@ -177,17 +179,18 @@ $messages = array(
 'editingcomment' => 'ca galfi le selcmene be zoi $1 (comment)',
 
 # History pages
-'cur'        => 'cab',
-'last'       => "prula'i",
-'page_first' => 'pamoi',
-'page_last'  => 'fanmo',
+'revisionasof' => "velfarvi de'i",
+'cur'          => 'cab',
+'last'         => "prula'i",
+'page_first'   => 'pamoi',
+'page_last'    => 'fanmo',
 
 # Revision deletion
 'rev-delundel' => 'jarco/mipri',
 
 # Diffs
 'lineno'   => 'Linji $1',
-'editundo' => 'ubunydyobu',
+'editundo' => 'fatstika',
 
 # Search results
 'searchresults'             => "tu'a le se sisku",
@@ -214,6 +217,8 @@ $messages = array(
 'hide'              => 'Toljarco',
 'show'              => 'Jarco',
 'minoreditletter'   => 'm',
+'newpageletter'     => 'n',
+'boteditletter'     => 'z',
 
 # Recent changes linked
 'recentchangeslinked' => "srana nunga'i",
@@ -221,6 +226,10 @@ $messages = array(
 # Upload
 'upload'    => 'benji lo datnyvei',
 'uploadbtn' => 'benji lo datnyvei',
+
+# File description page
+'filehist-current'  => 'cabna',
+'filehist-datetime' => 'detytcika',
 
 # Random page
 'randompage' => 'cunso ckupau',
@@ -238,8 +247,12 @@ $messages = array(
 # Watchlist
 'watchlist'     => 'selzgaste',
 'mywatchlist'   => 'selzgaste',
-'watch'         => 'zgana',
+'watch'         => 'jundi',
 'watchthispage' => 'zgana ti',
+
+# Displayed when you click the "watch" button and it is in the process of watching
+'watching'   => "co'a jundi",
+'unwatching' => "co'u jundi",
 
 # Delete
 'deletedarticle' => "pu daspo la'e lu [[$1]] li'u",
@@ -288,6 +301,7 @@ $messages = array(
 'tooltip-n-help'                => 'sidju kibypapri',
 'tooltip-t-whatlinkshere'       => "nu liste lo zifyga'ikibjudri poi ke'a kibjorne le vi ckupau",
 'tooltip-t-recentchangeslinked' => "lo puzi nunga'i pe lo kibypapri poi kibjorne le vi ckupau",
+'tooltip-undo'                  => "fatygau le nunstika gi'e jarco le stika tampapri tai lo nu troci jarco .i kakne jmina lo krinu le torvelski",
 
 # Special:FilePath
 'filepath-page' => 'se datnyvei zoi',

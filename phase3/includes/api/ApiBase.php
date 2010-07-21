@@ -317,12 +317,13 @@ abstract class ApiBase {
 					if ( is_array( $type ) ) {
 						$choices = array();
 						$nothingPrompt = false;
-						foreach ( $type as $t )
+						foreach ( $type as $t ) {
 							if ( $t === '' ) {
 								$nothingPrompt = 'Can be empty, or ';
 							} else {
 								$choices[] =  $t;
 							}
+						}
 						$desc .= $paramPrefix . $nothingPrompt . $prompt . implode( ', ', $choices );
 					} else {
 						switch ( $type ) {
@@ -711,8 +712,10 @@ abstract class ApiBase {
 						$value = wfTimestamp( TS_MW, $value );
 						break;
 					case 'user':
-						if ( !is_array( $value ) ) $value = array( $value );
-						
+						if ( !is_array( $value ) ) {
+                            $value = array( $value );
+                        }
+
 						foreach ( $value as $key => $val ) {
 							$title = Title::makeTitleSafe( NS_USER, $val );
 							if ( is_null( $title ) ) {
@@ -721,9 +724,10 @@ abstract class ApiBase {
 							$value[$key] = $title->getText();
 						}
 						
-						if ( !$multi ) $value = $value[0];
-						
-						break;
+						if ( !$multi ) {
+                            $value = $value[0];
+                        }
+                        break;
 					default:
 						ApiBase::dieDebug( __METHOD__, "Param $encParamName's type is unknown - $type" );
 				}
@@ -928,6 +932,7 @@ abstract class ApiBase {
 		'userrights-nodatabase' => array( 'code' => 'nosuchdatabase', 'info' => "Database ``\$1'' does not exist or is not local" ),
 		'nouserspecified' => array( 'code' => 'invaliduser', 'info' => "Invalid username ``\$1''" ),
 		'noname' => array( 'code' => 'invaliduser', 'info' => "Invalid username ``\$1''" ),
+		'summaryrequired' => array( 'code' => 'summaryrequired', 'info' => 'Summary required' ),
 
 		// API-specific messages
 		'readrequired' => array( 'code' => 'readapidenied', 'info' => "You need read permission to use this module" ),
@@ -1080,6 +1085,33 @@ abstract class ApiBase {
 	 */
 	public function getTokenSalt() {
 		return false;
+	}
+
+	/**
+	* Gets the user for whom to get the watchlist
+	*  
+	* @returns User
+	*/
+	public function getWatchlistUser( $params ) {
+		global $wgUser;
+		if ( !is_null( $params['owner'] ) && !is_null( $params['token'] ) ) {
+			$user = User::newFromName( $params['owner'], false );
+			if ( !$user->getId() ) {
+				$this->dieUsage( 'Specified user does not exist', 'bad_wlowner' );
+			}
+			$token = $user->getOption( 'watchlisttoken' );
+			if ( $token == '' || $token != $params['token'] ) {
+				$this->dieUsage( 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences', 'bad_wltoken' );
+			}
+		} else {
+			// User not determined by URL, so don't cache
+			$this->getMain()->setVaryCookie();
+			if ( !$wgUser->isLoggedIn() ) {
+				$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
+			}
+			$user = $wgUser;
+		}
+		return $user;
 	}
 
 	/**

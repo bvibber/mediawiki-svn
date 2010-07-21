@@ -41,6 +41,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
+		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'deletedhistory' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view deleted revision information', 'permissiondenied' );
@@ -210,6 +211,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 
 			if ( $fld_parsedcomment ) {
 				global $wgUser;
+				$this->getMain()->setVaryCookie();
 				$rev['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->ar_comment, $title );
 			}
 			if ( $fld_minor && $row->ar_minor_edit == 1 ) {
@@ -309,7 +311,17 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			'end' => 'The timestamp to stop enumerating at (1,2)',
 			'dir' => 'The direction in which to enumerate (1,2)',
 			'limit' => 'The maximum amount of revisions to list',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' revid          - Adds the revision id of the deleted revision',
+				' user           - Adds user who made the revision',
+				' comment        - Adds the comment of the revision',
+				' parsedcomment  - Adds the parsed comment of the revision',
+				' minor          - Tags if the revision is minor',
+				' len            - Adds the length of the revision',
+				' content        - Adds the content of the revision',
+				' token          - Gives the edit token',
+			),
 			'namespace' => 'Only list pages in this namespace (3)',
 			'user' => 'Only list revisions by this user',
 			'excludeuser' => 'Don\'t list revisions by this user',

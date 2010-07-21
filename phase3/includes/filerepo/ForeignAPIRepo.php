@@ -25,7 +25,10 @@ class ForeignAPIRepo extends FileRepo {
 
 	function __construct( $info ) {
 		parent::__construct( $info );
-		$this->mApiBase = $info['apibase']; // http://commons.wikimedia.org/w/api.php
+		
+		// http://commons.wikimedia.org/w/api.php		
+		$this->mApiBase = isset( $info['apibase'] ) ? $info['apibase'] : null; 
+
 		if( isset( $info['apiThumbCacheExpiry'] ) ) {
 			$this->apiThumbCacheExpiry = $info['apiThumbCacheExpiry'];
 		}
@@ -106,14 +109,17 @@ class ForeignAPIRepo extends FileRepo {
 	function fetchImageQuery( $query ) {
 		global $wgMemc;
 
-		$url = $this->mApiBase .
-			'?' .
-			wfArrayToCgi(
-				array_merge( $query,
-					array(
-						'format' => 'json',
-						'action' => 'query',
-						'redirects' => 'true' ) ) );
+		$query = array_merge( $query,
+			array(
+				'format' => 'json',
+				'action' => 'query',
+				'redirects' => 'true' 
+			) );
+		if ( $this->mApiBase ) {
+			$url = wfAppendQuery( $this->mApiBase, $query );
+		} else {
+			$url = $this->makeUrl( $query, 'api' );
+		}
 
 		if( !isset( $this->mQueryCache[$url] ) ) {
 			$key = $this->getLocalCacheKey( 'ForeignAPIRepo', 'Metadata', md5( $url ) );
@@ -149,7 +155,7 @@ class ForeignAPIRepo extends FileRepo {
 	function findBySha1( $hash ) {
 		$results = $this->fetchImageQuery( array(
 										'aisha1base36' => $hash,
-										'aiprop'       => 'timestamp|user|comment|url|size|sha1|metadata|mime',
+										'aiprop'       => ForeignAPIFile::getProps(),
 										'list'         => 'allimages', ) );
 		$ret = array();
 		if ( isset( $results['query']['allimages'] ) ) {
@@ -211,10 +217,13 @@ class ForeignAPIRepo extends FileRepo {
 			}
 			$localUrl =  $wgServer . $wgUploadPath . '/' . $path . $fileName;
 			# FIXME: Delete old thumbs that aren't being used. Maintenance script?
+			wfSuppressWarnings();
 			if( !file_put_contents($wgUploadDirectory . '/' . $path . $fileName, $thumb ) ) {
+				wfRestoreWarnings();
 				wfDebug( __METHOD__ . " could not write to thumb path\n" );
 				return $foreignUrl;
 			}
+			wfRestoreWarnings();
 			$wgMemc->set( $key, $localUrl, $this->apiThumbCacheExpiry );
 			wfDebug( __METHOD__ . " got local thumb $localUrl, saving to cache \n" );
 			return $localUrl;

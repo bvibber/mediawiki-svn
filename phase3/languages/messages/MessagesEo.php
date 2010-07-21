@@ -282,7 +282,6 @@ $messages = array(
 'tog-watchdefault'            => 'Priatenti redaktintajn paĝojn de vi',
 'tog-watchmoves'              => 'Aldoni paĝojn, kiujn mi movas, al mia atentaro',
 'tog-watchdeletion'           => 'Aldoni paĝojn, kiujn mi forigas, al mia atentaro',
-'tog-minordefault'            => 'Marki defaŭlte ĉiujn redaktojn kiel etajn',
 'tog-previewontop'            => 'Montri antaŭrigardon antaŭ redaktilo',
 'tog-previewonfirst'          => 'Montri antaŭrigardon je unua redakto',
 'tog-nocache'                 => 'Malŝalti kaŝmemorigon de paĝoj',
@@ -392,7 +391,7 @@ $messages = array(
 'index-category'                 => 'Indeksitaj paĝoj',
 'noindex-category'               => 'Neindeksitaj paĝoj',
 
-'mainpagetext'      => "'''MediaViki softvaro sukcese instaliĝis.'''",
+'mainpagetext'      => "'''MediaWiki estis sukcese instalita.'''",
 'mainpagedocfooter' => "Konsultu la [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide User's Guide] por informo pri uzado de vikia programaro.
 
 ==Kiel komenci==
@@ -424,31 +423,32 @@ $messages = array(
 'faqpage'        => 'Project:Oftaj demandoj',
 
 # Vector skin
-'vector-action-addsection'   => 'Aldoni temon',
-'vector-action-delete'       => 'Forigi',
-'vector-action-move'         => 'Alinomigi',
-'vector-action-protect'      => 'Protekti',
-'vector-action-undelete'     => 'Malforigi',
-'vector-action-unprotect'    => 'Malprotekti',
-'vector-namespace-category'  => 'Kategorio',
-'vector-namespace-help'      => 'Helpopaĝo',
-'vector-namespace-image'     => 'Dosiero',
-'vector-namespace-main'      => 'Paĝo',
-'vector-namespace-media'     => 'Dosiera paĝo',
-'vector-namespace-mediawiki' => 'Mesaĝo',
-'vector-namespace-project'   => 'Projekta paĝo',
-'vector-namespace-special'   => 'Speciala paĝo',
-'vector-namespace-talk'      => 'Diskuto',
-'vector-namespace-template'  => 'Ŝablono',
-'vector-namespace-user'      => 'Uzula paĝo',
-'vector-view-create'         => 'Krei',
-'vector-view-edit'           => 'Redakti',
-'vector-view-history'        => 'Vidi historion',
-'vector-view-view'           => 'Legi',
-'vector-view-viewsource'     => 'Vidi fonton',
-'actions'                    => 'Agoj',
-'namespaces'                 => 'Nomspacoj',
-'variants'                   => 'Variantoj',
+'vector-action-addsection'       => 'Aldoni temon',
+'vector-action-delete'           => 'Forigi',
+'vector-action-move'             => 'Alinomigi',
+'vector-action-protect'          => 'Protekti',
+'vector-action-undelete'         => 'Malforigi',
+'vector-action-unprotect'        => 'Malprotekti',
+'vector-namespace-category'      => 'Kategorio',
+'vector-namespace-help'          => 'Helpopaĝo',
+'vector-namespace-image'         => 'Dosiero',
+'vector-namespace-main'          => 'Paĝo',
+'vector-namespace-media'         => 'Dosiera paĝo',
+'vector-namespace-mediawiki'     => 'Mesaĝo',
+'vector-namespace-project'       => 'Projekta paĝo',
+'vector-namespace-special'       => 'Speciala paĝo',
+'vector-namespace-talk'          => 'Diskuto',
+'vector-namespace-template'      => 'Ŝablono',
+'vector-namespace-user'          => 'Uzula paĝo',
+'vector-simplesearch-preference' => 'Ebligi plibonigitajn serĉajn sugestojn (nur Vektora etoso)',
+'vector-view-create'             => 'Krei',
+'vector-view-edit'               => 'Redakti',
+'vector-view-history'            => 'Vidi historion',
+'vector-view-view'               => 'Legi',
+'vector-view-viewsource'         => 'Vidi fonton',
+'actions'                        => 'Agoj',
+'namespaces'                     => 'Nomspacoj',
+'variants'                       => 'Variantoj',
 
 'errorpagetitle'    => 'Eraro',
 'returnto'          => 'Reiri al $1.',
@@ -498,7 +498,7 @@ $messages = array(
 'otherlanguages'    => 'Aliaj lingvoj',
 'redirectedfrom'    => '(Alidirektita el $1)',
 'redirectpagesub'   => 'Alidirektilo',
-'lastmodifiedat'    => 'Laste redaktita je $2, $1.',
+'lastmodifiedat'    => 'Ĉi tiu paĝo estis lastafoje redaktita je $2, $1.',
 'viewcount'         => 'Montrita {{PLURAL:$1|unufoje|$1 fojojn}}.',
 'protectedpage'     => 'Protektita paĝo',
 'jumpto'            => 'Iri al:',
@@ -809,8 +809,8 @@ Vi eble jam ŝanĝis vian pasvorton aŭ petis novan provizoran pasvorton.',
 'anonpreviewwarning'               => "''Vi ne estas ensalutita. La konservo de la paĝo registros vian IP-adreson en kronologio de ĉi tiu paĝo.''",
 'missingsummary'                   => "'''Rememorigilo:''' Vi ne provizis redaktan resumon. Se vi alklakos denove la savan butonon, via redaktaĵo estos storata sen resumo.",
 'missingcommenttext'               => 'Bonvolu entajpi komenton malsupre.',
-'missingcommentheader'             => "'''Atento:''' Vi ne donis temo/subtitolo por ĉi tiu komento. 
-Se vi klakos Konservi denove, via redakto estos konservita sen ĝi.",
+'missingcommentheader'             => "'''Atenton:''' Vi ne provizis temon aŭ subtitolon por ĉi tiu komento. 
+Se vi klakos \"Konservi\" denove, via redakto estos konservita sen ĝi.",
 'summary-preview'                  => 'Resuma antaŭrigardo:',
 'subject-preview'                  => 'Antaŭrigardo de Temo/Subitolo:',
 'blockedtitle'                     => 'La uzanto estas forbarita.',
@@ -1089,7 +1089,7 @@ Aliaj administrantoj ĉe {{SITENAME}} plu povos aliri la kaŝitan entenon kaj re
 'revdelete-radio-unset'       => 'Ne',
 'revdelete-suppress'          => 'Subpremi datenojn de kaj administrantoj kaj aliaj',
 'revdelete-unsuppress'        => 'Forigi limigojn al restarigitaj versioj',
-'revdelete-log'               => 'Kialo por forigado:',
+'revdelete-log'               => 'Kialo:',
 'revdelete-submit'            => 'Apliki al {{PLURAL:$1|elektita revizio|elektitaj revizioj}}',
 'revdelete-logentry'          => 'ŝanĝis videblecon de versio por [[$1]]',
 'logdelete-logentry'          => 'ŝanĝis eventan videblecon de [[$1]]',
@@ -1142,15 +1142,18 @@ Rigardu la [[Special:IPBlockList|IP-forbarliston]] por la listo de nune operacia
 'revisionmove'                 => 'Movi reviziojn de "$1"',
 'revmove-explain'              => 'La jenaj revizioj estos movita de $1 al la donita cela paĝo. Se la celo ne ekzistas, ĝi estos kreita. Alie, ĉi tiuj revizioj estos kunigita en la paĝa historio.',
 'revmove-legend'               => 'Aldoni celan paĝon kaj resumon',
-'revisionmoveselectedversions' => 'Movi elektitaj reviziojn',
+'revmove-submit'               => 'Movi reviziojn al la selektita  paĝo',
+'revisionmoveselectedversions' => 'Movi elektitajn reviziojn',
 'revmove-reasonfield'          => 'Kialo:',
 'revmove-titlefield'           => 'Cela paĝo:',
 'revmove-badparam-title'       => 'Malbonaj parametroj',
-'revmove-badparam'             => '<span class="error">Via peto enhavas kontraŭleĝajn aŭ nesufiĉajn parametrojn. Bonvolu premi "malantaŭen" kaj provi denove.</span>',
+'revmove-badparam'             => 'Via peto enhavas kontraŭleĝajn aŭ nesufiĉajn parametrojn. Bonvolu premi "malantaŭen" kaj provi denove.',
 'revmove-norevisions-title'    => 'Nevalida cela revizio',
-'revmove-norevisions'          => '<span class="error">Vi ne specifis unu aŭ pliajn reviziojn por apliki ĉi tiun funkcion aŭ la specifita revizio ne ekzistas.</span>',
+'revmove-norevisions'          => 'Vi ne specifis unu aŭ pliajn reviziojn por apliki ĉi tiun funkcion aŭ la specifita revizio ne ekzistas.',
 'revmove-nullmove-title'       => 'Fuŝa titolo',
-'revmove-nullmove'             => '<span class="error">Origina kaj cela paĝoj samas. Bonvolu malantaŭeniri kaj tajpi paĝon malsaman de "$1".</span>',
+'revmove-nullmove'             => 'Origina kaj cela paĝoj samas. Bonvolu malantaŭeniri kaj tajpi paĝon malsaman de "$1".',
+'revmove-success-existing'     => '{{PLURAL:$1|Unu revizio de [[$2]]  estis movita|$1 revizioj de [[$2]] estis movitaj}} al la ekzistanta paĝo [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Unu revizio de [[$2]]  estis movita|$1 revizioj de [[$2]] estis movitaj}} al la novkreita paĝo [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Kunfandigi historiojn de paĝoj',
@@ -1326,7 +1329,7 @@ Jen hazarde generita valoro por via uzo: $1',
 'timezoneregion-indian'         => 'Hinda Oceano',
 'timezoneregion-pacific'        => 'Pacifiko',
 'allowemail'                    => 'Rajtigi retmesaĝojn de aliaj uzantoj',
-'prefs-searchoptions'           => 'Serĉi opciojn',
+'prefs-searchoptions'           => 'Serĉaj opcioj',
 'prefs-namespaces'              => 'Nomspacoj',
 'defaultns'                     => 'Alimaniere, traserĉi la jenajn nomspacojn:',
 'default'                       => 'defaŭlte',
@@ -1371,7 +1374,7 @@ Vi povas ankaŭ elekti permesigi aliaj uzantoj kontakti vin per via uzanto-paĝo
 'prefs-advancedrendering'       => 'Progresaj opcioj',
 'prefs-advancedsearchoptions'   => 'Progresaj opcioj',
 'prefs-advancedwatchlist'       => 'Progresaj opcioj',
-'prefs-display'                 => 'Montraj opcioj',
+'prefs-displayrc'               => 'Montraj opcioj',
 'prefs-diffs'                   => 'Diferencoj',
 
 # User rights
@@ -1482,6 +1485,7 @@ Vi povas ankaŭ elekti permesigi aliaj uzantoj kontakti vin per via uzanto-paĝo
 'right-override-export-depth' => 'Eksporti paĝojn inkluzivante ligitajn paĝojn ĝis profundeco de 5',
 'right-sendemail'             => 'Sendi retpoŝton al aliaj uzantoj',
 'right-revisionmove'          => 'Movi reviziojn',
+'right-selenium'              => 'Ekzekuti testojn de Selenium',
 
 # User rights log
 'rightslog'      => 'Protokolo de uzanto-rajtoj',
@@ -1586,14 +1590,17 @@ Paĝoj en [[Special:Watchlist|via atentaro]] estas '''grasaj'''.",
 'upload_directory_missing'    => 'La alŝuta dosierujo ($1) estas nek trovebla nek kreebla de la retservilo.',
 'upload_directory_read_only'  => 'La TTT-servilo ne povas alskribi la alŝuto-dosierujon ($1).',
 'uploaderror'                 => 'Eraro okazis dum alŝuto',
-'uploadtext'                  => "Uzu la jenan formon por alŝuti dosierojn.
-Vidi aŭ serĉi antaŭe alŝutitajn bildojn, iru la [[Special:FileList|Listo de alŝutitaj dosieroj]]; (re)alŝutaĵoj ankaŭ estas registrita en la [[Special:Log/upload|Protokolo de alŝutoj]], forigoj en la [[Special:Log/delete|protokolo de forigoj]].
+'upload-recreate-warning'     => "''Atenton: dosiero kun tiu nomo estis forigita aŭ alinomita.'''
+
+La forigo kaj mova protokoloj por ĉi tiu paĝo estas provizitaj ĉi tie por oportuno:",
+'uploadtext'                  => "Uzu la jenan formularon por alŝuti dosierojn.
+Vidi aŭ serĉi antaŭe alŝutitajn bildojn, iru al [[Special:FileList|Listo de alŝutitaj dosieroj]]; (re)alŝutaĵoj ankaŭ estas registrita en la [[Special:Log/upload|Protokolo de alŝutoj]], forigoj en la [[Special:Log/delete|protokolo de forigoj]].
 
 Por inkluzivi la dosieron en paĝon, skribu ligilon laŭ la formoj
 
-* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Bildo.jpg]]</nowiki>''' por uzi la plena versio de la dosiero
-* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Bildo.png|200px|thumb|left|alternativa teksto]]</nowiki>''' por uzi 200-rastrumera versio en kesto al la maldekstro (\"left\") kun \"alternativa teksto\" kiel la priskribo.
-* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Dosiero.ogg]]</nowiki>''' por ligi rekte al la dosiero ne montranta la dosieron.",
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Bildo.jpg]]</nowiki>''' por uzi la plenan version de la dosiero
+* '''<nowiki>[[</nowiki>{{ns:file}}<nowiki>:Bildo.png|200px|thumb|left|alternativa teksto]]</nowiki>''' por uzi 200-rastrumeran version en kesto maldekstre (\"left\") kun \"alternativa teksto\" kiel priskribo.
+* '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:Dosiero.ogg]]</nowiki>''' por ligi rekte al la dosiero ne montrante la dosieron.",
 'upload-permitted'            => 'Permesitaj dosiertipoj: $1.',
 'upload-preferred'            => 'Preferitaj dosiertipoj: $1.',
 'upload-prohibited'           => 'Malpermesitaj dosiero-tipoj: $1.',
@@ -1624,6 +1631,7 @@ Por inkluzivi la dosieron en paĝon, skribu ligilon laŭ la formoj
 'filename-tooshort'           => 'La dosiera nomo estas tro mallonga.',
 'filetype-banned'             => 'Ĉi tiu tipo de dosiero estas malpermesita.',
 'verification-error'          => 'Ĉi tiu dosiero ne pasis dosieran konfirmon.',
+'hookaborted'                 => 'La ŝanĝo kiun vi provis fari estis haltigita de etendaĵa hoko.',
 'illegal-filename'            => 'La dosiernomo ne estas permesata.',
 'overwrite'                   => 'Anstataŭigo de ekzistanta dosiero ne permesitas.',
 'unknown-error'               => 'Malkonata eraro okazis.',
@@ -1665,6 +1673,7 @@ Se vi ankoraŭ volas alŝuti vian dosieron, bonvolu retroigi kaj uzi novan nomon
 'overwroteimage'              => 'alŝutis novan version de "[[$1]]"',
 'uploaddisabled'              => 'Alŝutado estas malŝaltita',
 'copyuploaddisabled'          => 'Alŝuto de URL malfunkciigita.',
+'uploadfromurl-queued'        => 'Via alŝuto estis vicatendigata.',
 'uploaddisabledtext'          => 'Alŝutado de dosieroj estas malebligita.',
 'php-uploaddisabledtext'      => 'Dosiera alŝutado estas malŝalta en PHP. Bonvolu kontroli la preferon file_uploads.',
 'uploadscripted'              => 'HTML-aĵo aŭ skriptokodaĵo troviĝas en tiu ĉi tiu dosiero, kiun TTT-foliumilo eble interpretus erare.',
@@ -1808,7 +1817,7 @@ Jen la priskribo en ties [$2 dosier-priskriba paĝo].',
 'filedelete-legend'           => 'Forigi dosieron.',
 'filedelete-intro'            => "Vi preskaŭ forigos dosieron '''[[Media:$1|$1]]''' kune kun ĉiom da ĝia historio.",
 'filedelete-intro-old'        => "Vi forigas version de '''[[Media:$1|$1]]''' ekde [$4 $3, $2].",
-'filedelete-comment'          => 'Kialo por forigo:',
+'filedelete-comment'          => 'Kialo:',
 'filedelete-submit'           => 'Forigi',
 'filedelete-success'          => "'''$1''' estas forigita.",
 'filedelete-success-old'      => "La versio de '''[[Media:$1|$1]]''' ekde $3, $2 estas forigita.",
@@ -2180,7 +2189,7 @@ Vidu la paĝon $2 por registro de lastatempaj forigoj.',
 Ĉiuj tempoj sekvas la horzonon UTC.',
 'deletionlog'            => 'protokolo pri forigoj',
 'reverted'               => 'Malfaris al antaŭa revisio',
-'deletecomment'          => 'Kialo por forigo:',
+'deletecomment'          => 'Kialo:',
 'deleteotherreason'      => 'Alia/plua kialo:',
 'deletereasonotherlist'  => 'Alia kialo',
 'deletereason-dropdown'  => '*Oftaj kialoj por forigo
@@ -2352,6 +2361,7 @@ $1',
 Jen la lasta ero de la forbara protokolo:',
 'sp-contributions-search'              => 'Serĉado de kontribuoj',
 'sp-contributions-username'            => 'IP-adreso aŭ salutnomo:',
+'sp-contributions-toponly'             => 'Montru nur ŝanĝojn kiuj estas la plej lastaj revizioj',
 'sp-contributions-submit'              => 'Serĉi',
 
 # What links here
@@ -2661,6 +2671,7 @@ Datoj de versioj kaj nomoj de redaktantoj estos preservitaj.
 'importstart'                => 'Importante paĝojn...',
 'import-revision-count'      => '$1 {{PLURAL:$1|versio|versioj}}',
 'importnopages'              => 'Neniu paĝo por importi.',
+'imported-log-entries'       => '{{PLURAL:$1|Protokollinio|Protokollinioj}} $1 {{PLURAL:$1|importita|importitaj}}',
 'importfailed'               => 'Malsukcesis la importo: $1',
 'importunknownsource'        => 'Nekonata fonta speco de alŝuto',
 'importcantopen'             => 'Ne povas malfermi import-dosieron',
@@ -2852,7 +2863,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Warning''': This file type may contain malicious code.
-By executing it, your system may be compromised.<hr />",
+By executing it, your system may be compromised.",
 'imagemaxsize'         => "Limo por bildoj:<br />''(por dosieraj priskribo-paĝoj)''",
 'thumbsize'            => 'Grandeco de bildetoj:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|paĝo|paĝoj}}',
@@ -2864,6 +2875,9 @@ By executing it, your system may be compromised.<hr />",
 'show-big-image-thumb' => '<small>Grandeco de ĉi antaŭvido: $1 × $2 rastrumeroj</small>',
 'file-info-gif-looped' => 'ripeta GIF',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|ĉelo|ĉeloj}}',
+'file-info-png-looped' => 'ripetita',
+'file-info-png-repeat' => 'Ludis $1 fojo{{PLURAL:$1||j}}n',
+'file-info-png-frames' => '$1 kadro{{PLURAL:$1||j}}',
 
 # Special:NewFiles
 'newimages'             => 'Aro da novaj bildoj',
@@ -3263,6 +3277,7 @@ Bonvolu konfirmi ke vi ja volas rekrei la paĝon.",
 'table_pager_first'        => 'Unua paĝo',
 'table_pager_last'         => 'Lasta paĝo',
 'table_pager_limit'        => 'Montri $1 aĵojn por paĝo',
+'table_pager_limit_label'  => 'Eroj por paĝo:',
 'table_pager_limit_submit' => 'Ek',
 'table_pager_empty'        => 'Neniaj rezultoj',
 
@@ -3336,7 +3351,10 @@ Vi povas ankaŭ [[Special:Watchlist/edit|redakti norme]].',
 'filepath'         => 'Vojo al dosiero',
 'filepath-page'    => 'Dosiero:',
 'filepath-submit'  => 'Vojo',
-'filepath-summary' => 'Ĉi tiu speciala paĝo redonas la kompletan padon por dosiero. Bildoj estas montrataj en alta distingivo, aliaj dosieraj tipoj estas rekte startataj per ties asociita programo.',
+'filepath-summary' => 'Ĉi tiu speciala paĝo liveras kompletan vojon al dosiero.
+Bildoj montriĝas en plena distingivo, aliaj dosiertipoj estas malfermataj rekte per ties asociita programo.
+
+Entajpu la dosiernomon sen la prefikso "{{ns:file}}:"',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Serĉu duplikatajn dosierojn',
@@ -3394,6 +3412,15 @@ Enigu la dosiernomon sen la "{{ns:file}}:" prefikso.',
 'tags-hitcount-header'    => 'Markitaj ŝanĝoj',
 'tags-edit'               => 'redakti',
 'tags-hitcount'           => '$1 {{PLURAL:$1|ŝanĝo|ŝanĝoj}}',
+
+# Special:ComparePages
+'comparepages'     => 'Kompari paĝojn',
+'compare-selector' => 'Kompari reviziojn de paĝo',
+'compare-page1'    => 'Paĝo 1',
+'compare-page2'    => 'Paĝo 2',
+'compare-rev1'     => 'Revizio 1',
+'compare-rev2'     => 'Revizio 2',
+'compare-submit'   => 'Komparu',
 
 # Database error messages
 'dberr-header'      => 'Ĉi tiu vikio havas problemon',

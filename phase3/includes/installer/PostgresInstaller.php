@@ -1,6 +1,6 @@
 <?php
 
-class PostgresInstaller extends InstallerDBType {
+class PostgresInstaller extends DatabaseInstaller {
 
 	protected $globalNames = array(
 		'wgDBserver',
@@ -25,8 +25,8 @@ class PostgresInstaller extends InstallerDBType {
 		return 'postgres';
 	}
 
-	function isCompiled() {
-		return $this->checkExtension( 'pgsql' );
+	public function isCompiled() {
+		return self::checkExtension( 'pgsql' );
 	}
 
 	function getConnectForm() {

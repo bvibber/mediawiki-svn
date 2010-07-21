@@ -458,6 +458,8 @@ $specialPageAliases = array(
 	'Activeusers'               => array( 'ActiveUsers' ),
 	'RevisionMove'              => array( 'RevisionMove' ),
 	'ComparePages'              => array( 'ComparePages' ),
+	'Selenium'                  => array( 'Selenium' ),
+	'Badtitle'                  => array( 'Badtitle' ),
 );
 
 /**
@@ -635,7 +637,6 @@ XHTML id names.
 'tog-watchdefault'            => 'Add pages I edit to my watchlist',
 'tog-watchmoves'              => 'Add pages I move to my watchlist',
 'tog-watchdeletion'           => 'Add pages I delete to my watchlist',
-'tog-minordefault'            => 'Mark all edits minor by default',
 'tog-previewontop'            => 'Show preview before edit box',
 'tog-previewonfirst'          => 'Show preview on first edit',
 'tog-nocache'                 => 'Disable page caching',
@@ -1499,7 +1500,7 @@ Other administrators on {{SITENAME}} will still be able to access the hidden con
 'revdelete-hide-text'         => 'Hide revision text',
 'revdelete-hide-image'        => 'Hide file content',
 'revdelete-hide-name'         => 'Hide action and target',
-'revdelete-hide-comment'      => 'Hide edit comment',
+'revdelete-hide-comment'      => 'Hide edit summary',
 'revdelete-hide-user'         => "Hide editor's username/IP address",
 'revdelete-hide-restricted'   => 'Suppress data from administrators as well as others',
 'revdelete-radio-same'        => '(do not change)',
@@ -1507,7 +1508,7 @@ Other administrators on {{SITENAME}} will still be able to access the hidden con
 'revdelete-radio-unset'       => 'No',
 'revdelete-suppress'          => 'Suppress data from administrators as well as others',
 'revdelete-unsuppress'        => 'Remove restrictions on restored revisions',
-'revdelete-log'               => 'Reason for deletion:',
+'revdelete-log'               => 'Reason:',
 'revdelete-submit'            => 'Apply to selected {{PLURAL:$1|revision|revisions}}',
 'revdelete-logentry'          => 'changed revision visibility of [[$1]]',
 'logdelete-logentry'          => 'changed event visibility of [[$1]]',
@@ -1567,11 +1568,13 @@ See the [[Special:IPBlockList|IP block list]] for the list of currently operatio
 'revmove-reasonfield'          => 'Reason:',
 'revmove-titlefield'           => 'Target page:',
 'revmove-badparam-title'       => 'Bad parameters',
-'revmove-badparam'             => '<span class="error">Your request contains illegal or insufficient parameters. Please hit "back" and try again.</span>',
+'revmove-badparam'             => 'Your request contains illegal or insufficient parameters.
+Go back to the previous page and try again.',
 'revmove-norevisions-title'    => 'Invalid target revision',
-'revmove-norevisions'          => '<span class="error">You have not specified one or more target revisions to perform this function or the specified revision does not exist.</span>',
+'revmove-norevisions'          => 'You have not specified one or more target revisions to perform this function or the specified revision does not exist.',
 'revmove-nullmove-title'       => 'Bad title',
-'revmove-nullmove'             => '<span class="error">Source and target page are identical. Please hit "back" and enter a page name different to "$1".</span>',
+'revmove-nullmove'             => 'The target page cannot be the same as the source page.
+Go back to the previous page and choose a different name from "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|One revision from [[$2]] has|$1 revisions from [[$2]] have}} been moved to the existing page [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|One revision from [[$2]] has|$1 revisions from [[$2]] have}} been moved to the newly created page [[$3]].',
 
@@ -1823,7 +1826,9 @@ You can also choose to let others contact you through your user or talk page wit
 'prefs-advancedrendering'       => 'Advanced options',
 'prefs-advancedsearchoptions'   => 'Advanced options',
 'prefs-advancedwatchlist'       => 'Advanced options',
-'prefs-display'                 => 'Display options',
+'prefs-displayrc'               => 'Display options',
+'prefs-displaysearchoptions'    => 'Display options',
+'prefs-displaywatchlist'        => 'Display options',
 'prefs-diffs'                   => 'Diffs',
 
 # User rights
@@ -1936,6 +1941,7 @@ You can also choose to let others contact you through your user or talk page wit
 'right-override-export-depth' => 'Export pages including linked pages up to a depth of 5',
 'right-sendemail'             => 'Send e-mail to other users',
 'right-revisionmove'          => 'Move revisions',
+'right-selenium'              => 'Run Selenium tests',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -2290,6 +2296,7 @@ The description on its [$2 file description page] there is shown below.',
 'shared-repo-from'                  => 'from $1',
 'shared-repo'                       => 'a shared repository',
 'shared-repo-name-wikimediacommons' => 'Wikimedia Commons', # only translate this message to other languages if you have to change it
+'filepage.css'                      => '/* CSS placed here is included on the file description page, also included on foreign client wikis */', # only translate this message to other languages if you have to change it
 
 # File reversion
 'filerevert'                => 'Revert $1',
@@ -2308,7 +2315,7 @@ The description on its [$2 file description page] there is shown below.',
 'filedelete-legend'           => 'Delete file',
 'filedelete-intro'            => "You are about to delete the file '''[[Media:$1|$1]]''' along with all of its history.",
 'filedelete-intro-old'        => "You are deleting the version of '''[[Media:$1|$1]]''' as of [$4 $3, $2].",
-'filedelete-comment'          => 'Reason for deletion:',
+'filedelete-comment'          => 'Reason:',
 'filedelete-submit'           => 'Delete',
 'filedelete-success'          => "'''$1''' has been deleted.",
 'filedelete-success-old'      => "The version of '''[[Media:$1|$1]]''' as of $3, $2 has been deleted.",
@@ -2733,7 +2740,7 @@ See $2 for a record of recent deletions.',
 'dellogpagetext'         => 'Below is a list of the most recent deletions.',
 'deletionlog'            => 'deletion log',
 'reverted'               => 'Reverted to earlier revision',
-'deletecomment'          => 'Reason for deletion:',
+'deletecomment'          => 'Reason:',
 'deleteotherreason'      => 'Other/additional reason:',
 'deletereasonotherlist'  => 'Other reason',
 'deletereason-dropdown'  => '*Common delete reasons
@@ -2768,7 +2775,7 @@ changed back to last revision by $2.',
 'sessionfailure-title' => 'Session failure',
 'sessionfailure'       => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
-Please hit "back" and reload the page you came from, then try again.',
+Go back to the previous page, reload that page and then try again.',
 
 # Protect
 'protectlogpage'              => 'Protection log',
@@ -2918,7 +2925,7 @@ The latest block log entry is provided below for reference:',
 The latest block log entry is provided below for reference:',
 'sp-contributions-search'              => 'Search for contributions',
 'sp-contributions-username'            => 'IP address or username:',
-'sp-contributions-toponly'             => 'Show only top revisions',
+'sp-contributions-toponly'             => 'Only show edits that are latest revisions',
 'sp-contributions-submit'              => 'Search',
 'sp-contributions-explain'             => '', # only translate this message to other languages if you have to change it
 'sp-contributions-footer'              => '-', # do not translate or duplicate this message to other languages
@@ -3539,7 +3546,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Warning''': This file type may contain malicious code.
-By executing it, your system may be compromised.<hr />",
+By executing it, your system may be compromised.",
 'imagemaxsize'         => "Image size limit:<br />''(for file description pages)''",
 'thumbsize'            => 'Thumbnail size:',
 'widthheight'          => '$1×$2', # only translate this message to other languages if you have to change it

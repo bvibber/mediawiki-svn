@@ -47,7 +47,6 @@ $messages = array(
 'tog-watchdefault'            => 'Dodaj stranice koje uređujem u moj spisak praćenja',
 'tog-watchmoves'              => 'Dodaj stranice koje premještam u moj spisak praćenja',
 'tog-watchdeletion'           => 'Stranice koje brišem dodaj na moj spisak praćenja',
-'tog-minordefault'            => 'Označi da su sve izmjene u pravilu manje',
 'tog-previewontop'            => 'Prikaži pretpregled prije kutije za uređivanje',
 'tog-previewonfirst'          => 'Prikaži pretpregled na prvoj izmjeni',
 'tog-nocache'                 => 'Onemogući keširanje stranica',
@@ -841,7 +840,7 @@ Drugi administratori projekta {{SITENAME}} će i dalje moći pristupiti sakriven
 'revdelete-radio-unset'       => 'Ne',
 'revdelete-suppress'          => 'Sakrij podatke od administratora kao i od drugih',
 'revdelete-unsuppress'        => 'Ukloni ograničenja na vraćenim revizijama',
-'revdelete-log'               => 'Razlog za brisanje:',
+'revdelete-log'               => 'Razlog:',
 'revdelete-submit'            => 'Primijeni na odabrane {{PLURAL:$1|izmjena|izmjene}}',
 'revdelete-logentry'          => 'promijenjena vidljivost revizije [[$1]]',
 'logdelete-logentry'          => 'promijenjena vidljivost događaja [[$1]]',
@@ -1097,7 +1096,6 @@ Također omogućuje drugim korisnicima da vas kontaktiraju preko Vaše korisnič
 'prefs-advancedrendering'       => 'Napredne opcije',
 'prefs-advancedsearchoptions'   => 'Napredne opcije',
 'prefs-advancedwatchlist'       => 'Napredne opcije',
-'prefs-display'                 => 'Postavke displeja',
 'prefs-diffs'                   => 'Razlike',
 
 # User rights
@@ -1390,7 +1388,7 @@ V. $2 za registar nedavnih brisanja.',
 'deletedarticle'        => 'obrisan "[[$1]]"',
 'dellogpage'            => 'Registar brisanja',
 'deletionlog'           => 'registar brisanja',
-'deletecomment'         => 'Razlog za brisanje:',
+'deletecomment'         => 'Razlog:',
 'deleteotherreason'     => 'Ostali/dodatni razlog/zi:',
 'deletereasonotherlist' => 'Ostali razlog/zi',
 

@@ -175,7 +175,7 @@ S kann sai, dass es ää orrer meh Zaiche drin hot, wu in Sairetitel nid därfe 
 # Login and logout pages
 'yourname'                => 'Benutzername:',
 'yourpassword'            => 'Passwort:',
-'remembermypassword'      => 'Mai Passwort uff dem Computer merke',
+'remembermypassword'      => 'Mai Passwort uff dem Computer merke (hechschtens fer $1 {{PLURAL:$1|Dach|Dach}})',
 'login'                   => 'Omelde',
 'nav-login-createaccount' => 'Aamelde / Benutzerkonto aaleche',
 'userlogin'               => 'Omelde / Benutzerkonto anleche',
@@ -458,7 +458,7 @@ Bitte du bstätiche, dass Du des wllscht du, dass Du verstehsch, was des hääß
 Guck $2 fer e Lischt vun de letschte Leschunge.',
 'deletedarticle'        => 'hot "[[$1]]" glescht',
 'dellogpage'            => 'Leschlogbuch',
-'deletecomment'         => 'Grund fer d Leschung:',
+'deletecomment'         => 'Grund:',
 'deleteotherreason'     => 'Annere/zusätzliche Grund:',
 'deletereasonotherlist' => 'Annere Grund',
 
