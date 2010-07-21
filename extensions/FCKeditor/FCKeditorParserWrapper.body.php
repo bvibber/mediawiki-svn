@@ -16,22 +16,6 @@ class FCKeditorParserWrapper extends Parser {
 		}
 	}
 
-	function replaceInternalLinks( $s ) {
-		return parent::replaceInternalLinks( $s );
-	}
-
-	function makeImage( $title, $options, $holders = false ) {
-		return parent::makeImage( $title, $options, $holders );
-	}
-
-	function internalParse( $text, $isMain = true ) {
-		return parent::internalParse( $text, $isMain );
-	}
-
-	function parse( $text, Title $title, ParserOptions $options, $linestart = true, $clearState = true, $revid = null ) {
-		return parent::parse( $text, $title, $options, $linestart, $clearState, $revid );
-	}
-
 	/**
 	 * parse any parentheses in format ((title|part|part))
 	 * and call callbacks to get a replacement text for any found piece
