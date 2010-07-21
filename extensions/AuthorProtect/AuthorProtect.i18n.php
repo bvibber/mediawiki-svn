@@ -1167,7 +1167,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'authorprotect-reason' => 'Grund',
+	'authorprotect-reason' => 'Grund:',
 );
 
 /** Polish (Polski)

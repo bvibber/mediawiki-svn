@@ -517,6 +517,36 @@ Consulte $2 para ver um registo dos esvaziamentos recentes de páginas.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Preencher]] a tabela de páginas esvaziadas',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'purewikideletion' => 'Eliminação pura',
+	'randomexcludeblank' => 'Página aleatória (excluir páginas vazias)',
+	'populateblankedpagestable' => 'Preencher tabela de páginas esvaziadas',
+	'purewikideletion-desc' => 'Entre outras coisas, faz com que os links para páginas esvaziadas apareçam em vermelho',
+	'purewikideletion-pref-watchblank' => 'Adicionar as páginas que eu esvaziar às minhas páginas vigiadas',
+	'purewikideletion-pref-watchunblank' => 'Adicionar as páginas, que eu venha a reverter o esvaziamento, às minhas páginas vigiadas',
+	'purewikideletion-blanked' => "Uma versão anterior desta página foi esvaziada por [[User:$1|$1]] ([[User talk:$1|discussão]]) ([[Special:Contributions/$1|contribs]]) em $5 às $6.
+
+O motivo apresentado para o esvaziamento da página, foi: ''<nowiki>$3</nowiki>''.
+
+Pode [{{fullurl:{{FULLPAGENAMEE}}|action=history}} ver o histórico da página], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} editar a última versão], ou escrever a página nova no espaço em branco abaixo.",
+	'blank-log' => 'esvaziada',
+	'blank-log-name' => 'Registro de esvaziamento de páginas',
+	'blank-log-header' => 'Encontra-se abaixo uma lista de esvaziamentos e reversões de esvaziamentos de páginas.',
+	'blank-log-entry-blank' => 'esvaziou $1',
+	'blank-log-entry-unblank' => 'reverteu esvaziamento de $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|registro de esvaziamento de páginas]]',
+	'purewikideletion-blanknologin' => 'Não está autenticado',
+	'purewikideletion-blanknologintext' => 'Você deve ser um usuário registrado e estar [[Special:UserLogin|autenticado]] para esvaziar uma página.',
+	'purewikideletion-unblanknologintext' => 'Você deve ser um usuário registrado e estar [[Special:UserLogin|autenticado]] para reverter o esvaziamento de uma página.',
+	'purewikideletion-blankedtext' => '[[$1]] foi esvaziada.
+Consulte $2 para ver um registro dos esvaziamentos recentes de páginas.',
+	'purewikideletion-population-done' => 'O preenchimento da tabela de páginas esvaziadas foi feito.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Preencher]] a tabela de páginas esvaziadas',
+);
+
 /** Russian (Русский)
  * @author Grigol
  * @author Александр Сигачёв

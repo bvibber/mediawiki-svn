@@ -29,6 +29,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'block_title_error_page_title' => 'Geblokkeerde bladsynaam',
 	'block_title_error' => "Jammer, die stoor van 'n bladsy met hierdie naam word nie toegelaat nie.",
 );
 

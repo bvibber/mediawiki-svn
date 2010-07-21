@@ -1480,6 +1480,7 @@ $messages['pdc'] = array(
 	'dt_xml_namespace' => 'Blatznaame',
 	'dt_xml_pages' => 'Bledder',
 	'dt_xml_page' => 'Blatt',
+	'dt_xml_template' => 'Moddel',
 	'dt_xml_name' => 'Naame',
 	'dt_xml_title' => 'Titel',
 );

@@ -873,6 +873,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'optin-try' => 'Beta prowiere',
 	'optin-leave' => 'Beta verlosse',
 );
 

@@ -58,10 +58,10 @@ $messages['niu'] = array(
 $messages['af'] = array(
 	'edituser-desc' => 'Laat bevoegde gebruikers toe om ander gebruikers se voorkeure te wysig',
 	'edituser' => 'Wysig gebruiker',
-	'edituser-username' => 'Naam',
+	'edituser-username' => 'Gebruikersnaam:',
 	'edituser-dosearch' => 'Soek',
-	'edituser-nouser' => 'Die gebruiker bestaan nie',
-	'edituser-exempt' => 'Die gebruiker kan nie gewysig word nie',
+	'edituser-nouser' => 'Die gebruiker "$1" bestaan nie',
+	'edituser-exempt' => 'Die gebruiker "$1" kan nie gewysig word nie',
 	'right-edituser' => 'Verander ander gebruikers se voorkeure',
 	'right-edituser-exempt' => 'Ander kan nie die gebruiker se voorkeure verander nie',
 );
@@ -270,7 +270,7 @@ $messages['de'] = array(
 	'edituser-username' => 'Benutzername:',
 	'edituser-dosearch' => 'Suchen',
 	'edituser-nouser' => 'Der Benutzer „$1“ ist nicht vorhanden.',
-	'edituser-exempt' => 'Der Benutzer „$1“ kann nicht bearbeitet werden.',
+	'edituser-exempt' => '{{GENDER:$1|Der Benutzer|Die Benutzerin|Der Benutzer}} „$1“ kann nicht bearbeitet werden.',
 	'right-edituser' => 'Einstellungen anderer Benutzer bearbeiten',
 	'right-edituser-exempt' => 'Einstellungen können nicht durch Dritte bearbeitet werden',
 );
@@ -927,7 +927,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'edituser-username' => 'Naame',
+	'edituser-username' => 'Yuuser-Naame:',
 	'edituser-dosearch' => 'Uffgucke',
 );
 
@@ -949,12 +949,13 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'edituser-desc' => 'A përmëtt a utent privilegià ëd modifiché ij "mè gust" ëd j\'àutr utent',
 	'edituser' => 'Modìfica utent',
-	'edituser-username' => 'Nòm utent:',
+	'edituser-username' => 'Stranòm:',
 	'edituser-dosearch' => 'Serca',
 	'edituser-nouser' => "L'utent spessificà a esist pa",
 	'edituser-exempt' => "L'utent spessificà a peul pa esse modificà",

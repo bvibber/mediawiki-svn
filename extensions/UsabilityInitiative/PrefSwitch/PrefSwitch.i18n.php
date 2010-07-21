@@ -4162,6 +4162,7 @@ For å hjelpe oss med å forbedre dem kan du fylle ut det valgfrie skjemaet unde
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-answer-whyoff-other' => 'Annerer Grund:',
 );

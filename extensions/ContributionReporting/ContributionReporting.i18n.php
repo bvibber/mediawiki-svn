@@ -3517,6 +3517,7 @@ $messages['pdc'] = array(
 	'contribstats-month' => 'Munet',
 	'contribstats-value-under' => 'Wennicher als $1',
 	'contribstats-value-over' => 'Iwwer $1',
+	'contribstats-template' => 'Moddel',
 	'fundraiserstats-day' => 'Daag $1 vun $2',
 );
 

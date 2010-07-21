@@ -308,6 +308,13 @@ $messages['no'] = array(
 	'massblank-blankcomment' => 'Årsak:',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'massblank-blankcomment' => 'Grund:',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

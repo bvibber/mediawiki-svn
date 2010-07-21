@@ -408,20 +408,20 @@ Argumenty pierwszy lub „szablon“ są wymagane.',
  */
 $messages['pms'] = array(
 	'datatransclusion-desc' => 'Amporté e smon-e an forma ëd dat da dle sorgiss esterne ëd dat',
-	'datatransclusion-missing-source' => 'Pa gnun-e sorziss ëd dat spessificà.
-A l\'é ciamà l\'argoment scond o "sorziss".',
-	'datatransclusion-unknown-source' => 'Sorziss ëd dat spessificà pa bon-a.
-"$1" a l\'é pa conossù.',
-	'datatransclusion-missing-key' => 'Pa gnun-e ciav spessificà.
-$2 a son ciav bon-e ant la sorziss ëd dat $1.',
+	'datatransclusion-missing-source' => 'Gnun-e sogziss ëd dat spessificà.
+Ël second argoment o "sorgiss" a l\'é obligatòri',
+	'datatransclusion-unknown-source' => 'Sorgiss ëd dat spessificà pa bon-a.
+"$1" a l\'é dësconossù.',
+	'datatransclusion-missing-key' => 'Gnun-e ciav spessificà.
+$2 a son ciav bon-e ant la sorgiss ëd dat $1.',
 	'datatransclusion-bad-argument-by' => 'Camp ciav spessificà pa bon.
-"$2" a l\'é pa un camp ciav ant la sorziss ëd dat "$1".
-{{PLURAL:$4|Ciav bon-a|Ciav bon-e a son}}: $3.',
-	'datatransclusion-missing-argument-key' => 'Pa gnun valor ëd ciav spessificà.
-A l\'é ciamà l\'argoment scond o "ciav".',
-	'datatransclusion-missing-argument-template' => 'Pa gnun stamp spessificà.
-A l\'é ciamà l\'argoment prim o "stamp".',
-	'datatransclusion-record-not-found' => "Pa gnun-e registrassion ch'a vala $2 = $3 a l'é stàita trovà ant la sorziss ëd dat $1.",
+"$2" a l\'é pa un camp ciav ant la sorgiss ëd dat "$1".
+{{PLURAL:$4|La ciav bon-a a l\'é|Le ciav bon-e a son}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Gnun valor ëd ciav spessificà.
+Ël second argoment o "ciav" a l\'é obligatòri.',
+	'datatransclusion-missing-argument-template' => 'Gnun ëstamp spessificà.
+Ël prim argoment o "stamp" a l\'é obligatòri.',
+	'datatransclusion-record-not-found' => "Gnun-a registrassion ch'a vala $2 = $3 a l'é stàita trovà ant la sorgiss ëd dat $1.",
 	'datatransclusion-bad-template-name' => 'Nòm dë stamp pa bon: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  a esist pa.',
 );
