@@ -152,6 +152,7 @@ class MysqlUpdater extends DatabaseUpdater {
 				array( 'add_index', 'iwlinks', 'iwl_prefix_from_title',  'patch-rename-iwl_prefix.sql' ),
 				array( 'add_field', 'updatelog', 'ul_value',              'patch-ul_value.sql' ),
 				array( 'add_field', 'interwiki',     'iw_api',           'patch-iw_api_and_wikiid.sql' ),
+				array( 'add_table', 'msg_resource',                      'patch-msg_resource.sql' ),
 			),
 		);
 	}
