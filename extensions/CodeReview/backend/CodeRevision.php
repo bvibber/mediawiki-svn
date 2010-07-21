@@ -15,9 +15,9 @@ class CodeRevision {
 
 		$common = null;
 		if ( $rev->mPaths ) {
-			if ( count( $rev->mPaths ) == 1 )
+			if ( count( $rev->mPaths ) == 1 ) {
 				$common = $rev->mPaths[0]['path'];
-			else {
+			} else {
 				$first = array_shift( $rev->mPaths );
 
 				$common = explode( '/', $first['path'] );
@@ -30,9 +30,10 @@ class CodeRevision {
 						list( $compare, $common ) = array( $common, $compare );
 
 					$tmp = array();
-					foreach ( $common as $k => $v )
+					foreach ( $common as $k => $v ) {
 						if ( $v == $compare[$k] ) $tmp[] = $v;
 						else break;
+					}
 					$common = $tmp;
 				}
 				$common = implode( '/', $common );
