@@ -3,12 +3,12 @@
 //keep PHP 5.3 happy
 date_default_timezone_set("UTC");
 
-if(count($argv) != 3){
-	print("\n\tUsage: $argv[0] <inputfile> <outputfile>\n");
+if(count($argv) < 3){
+	print("\n\tUsage: $argv[0] <inputfile> <outputfile> [pagelog]\n");
 	exit(-1);		
 }
 
-$parser = new StreamingXMLHistoryParser($argv[1], $argv[2]);
+$parser = new StreamingXMLHistoryParser($argv[1], $argv[2], isset($argv[3]) ? $argv[3] : null);
 $parser->run();
 
 
@@ -67,7 +67,10 @@ class StreamingXMLHistoryParser{
 	public $inputFileName;
 	public $outputFileName;
 	public $outputFile;
-
+	public $pagelog;
+	public $pagelogFile;
+	public $nextLog;
+	
 	//md5 hashes of the revision texts
 	public $md5History;
 	
@@ -77,12 +80,16 @@ class StreamingXMLHistoryParser{
 	//size of previous revision
 	public $oldSize;
 	
-	public function __construct( $inputFN, $outputFN){
+	public function __construct( $inputFN, $outputFN, $pagelog){
 		$this->inputFileName = $inputFN;
 		$this->outputFileName = $outputFN;
 		$this->outputFile = fopen($this->outputFileName, "w+");
 		$this->md5History = array();
 		$this->revTypes = array();
+		$this->pagelog = $pagelog;
+		if($pagelog){
+			$this->pagelogFile = fopen($this->pagelog, "r");
+		}
 		$this->oldSize = 0;
 	}
 
@@ -130,17 +137,25 @@ class StreamingXMLHistoryParser{
 		$reader->open($this->inputFileName);		
 		$this->writeCSVHeader();
 		$current_rev = 0;
+		if($this->pagelog){
+			$this->nextLog = $this->getNextLogDataLine();
+		}
 		//read each revision
 		while ( $reader->read()){
 			if ( $reader->nodeType == XMLREADER::ELEMENT
 				&& $reader->localName == "revision") {
-					
 					$current_rev++;
 					$this->parseRev($reader->readOuterXML());
 				}//revision	
 		} //while
 		$this->writeRevisionStatus();
 		
+	}
+	
+	public function getNextLogDataLine(){
+		$csvArray = null;
+		// a CSV array for writing, make sure $csvArray[1] = timestamp
+		return $csvArray; 
 	}
 	
 	
@@ -179,6 +194,15 @@ class StreamingXMLHistoryParser{
 			isset($revision->contributor->username)? "no":"yes"
 		);
 		$this->oldSize = $textSize;
+		
+		if($this->pagelog && $this->nextLog){
+			//note: assumes more page revisions exist than log action items		
+			while ( ($this->nextLog) 
+				&& ($csvData[1] > $this->nextLog[1]) ){
+			    fputcsv( $this->nextLog );
+			    $this->nextLog = $this->getNextLogDataLine();
+			  }
+		}
 		fputcsv($this->outputFile, $csvData);
 	}
 	
