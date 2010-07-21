@@ -1387,16 +1387,14 @@ CREATE TABLE /*_*/msg_resource (
   -- Timestamp of last update
   mr_timestamp binary(14) NOT NULL
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/mr_lang_resource ON /*_*/msg_resource (mr_lang, mr_resource);
+CREATE UNIQUE INDEX /*i*/mr_resource_lang ON /*_*/msg_resource (mr_resource, mr_lang);
 
 -- Table for administering which message is contained in which resource
 CREATE TABLE /*_*/msg_resource_links (
   mrl_resource varchar(255) NOT NULL,
-  -- Language code
-  mrl_lang varbinary(32) NOT NULL,
   -- Message key
   mrl_message varchar(255) NOT NULL
 ) /*$wgDBTableOptions*/;
-CREATE UNIQUE INDEX /*i*/mrl_lang_message_resource ON /*_*/msg_resource_links (mrl_lang, mrl_message, mrl_resource);
+CREATE UNIQUE INDEX /*i*/mrl_message_resource ON /*_*/msg_resource_links (mrl_message, mrl_resource);
 
 -- vim: sw=2 sts=2 et

@@ -73,10 +73,10 @@ class ResourceLoader {
 				$result = Minify_CSS::minify( $data, array( 'currentDir' => dirname( $file ), 'docRoot' => '.' ) );
 				break;
 			case 'flip-css':
-				$cssJanus = new CSSJanus();
-				$result = $cssJanus::transform( $data, true, false );
+				$result = CSSJanus::transform( $data, true, false );
 				break;
 			case 'strip-debug':
+				// FIXME: Fragile
 				$result = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $data );
 				break;
 			default:
@@ -85,59 +85,6 @@ class ResourceLoader {
 		}
 		$wgMemc->set( $key, $result );
 		return $result;
-	}
-	/**
-	 * Get a list of JSON encoded message lists for a set of modules, automatically caching JSON blobs in the database
-	 * 
-	 * @param string $lang language code
-	 * @param array $modules module names
-	 * @return array JSON objects containing message keys and values for each module, keyed by module name
-	 */
-	protected static function messages( $lang, $modules ) {
-		// TODO: Invalidate blob when module touched
-		if ( empty( $modules ) ) {
-			return array();
-		}
-		// Try getting from the DB first
-		$blobs = array();
-		$dbr = wfGetDB( DB_SLAVE );
-		$result = $dbr->select(
-			'msg_resource',
-			array( 'mr_blob', 'mr_resource' ),
-			array( 'mr_resource' => $modules, 'mr_lang' => $lang ),
-			__METHOD__
-		);
-		foreach ( $result as $row ) {
-			$blobs[$row->mr_resource] = $row->mr_blob;
-		}
-		// Generate blobs for any missing modules and store them in the DB
-		$missing = array_diff( $modules, array_keys( $blobs ) );
-		foreach ( $missing as $module ) {
-			// Build message blob for module messages
-			$messages = isset( self::$modules[$module]['messages'] ) ?
-				array_keys( self::$modules[$module]['messages'] ) : false;
-			if ( $messages ) {
-				foreach ( self::$modules[$module]['messages'] as $key ) {
-					$messages[$encKey] = wfMsgExt( $key, array( 'language' => $lang ) );
-				}
-				$blob = json_encode( $messages );
-				// Store message blob
-				$dbw = wfGetDb( DB_MASTER );
-				$dbw->replace(
-					'msg_resource',
-					array( array( 'mr_lang', 'mr_resource' ) ),
-					array( array(
-						'mr_lang' => $lang,
-						'mr_module' => $module,
-						'mr_blob' => $blob,
-						'mr_timestamp' => wfTimestampNow(),
-					) )
-				);
-				// Add message blob to result
-				$blobs[$module] = $blob;
-			}
-		}
-		return $blobs;
 	}
 	
 	/* Static Methods */
@@ -206,6 +153,11 @@ class ResourceLoader {
 		}
 		self::$modules[$module] = $options;
 	}
+	
+	public static function getModules() {
+		return self::$modules;
+	}
+	
 	/*
 	 * Outputs a response to a resource load-request, including a content-type header
 	 * 
@@ -281,7 +233,7 @@ class ResourceLoader {
 			 */
 		}
 		// Output non-raw modules
-		$blobs = self::messages( $parameters['lang'], $modules );
+		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
 		foreach ( $modules as $module ) {
 			if ( !self::$modules[$module]['raw'] ) {
 				// Script
@@ -316,3 +268,6 @@ class ResourceLoader {
 		}
 	}
 }
+
+// FIXME: Temp hack
+require_once "$IP/resources/Resources.php";

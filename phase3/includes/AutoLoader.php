@@ -155,6 +155,7 @@ $wgAutoloadLocalClasses = array(
 	'MediaWiki' => 'includes/Wiki.php',
 	'MemCachedClientforWiki' => 'includes/memcached-client.php',
 	'Message' => 'includes/Message.php',
+	'MessageBlobStore' => 'includes/MessageBlobStore.php',
 	'MessageCache' => 'includes/MessageCache.php',
 	'MimeMagic' => 'includes/MimeMagic.php',
 	'Minify_CSS' => 'includes/Minify_CSS.php',

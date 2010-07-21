@@ -22,11 +22,13 @@ ResourceLoader::register( array(
 		'script' => 'resources/test/foo.js',
 		'loader' => 'resources/test/loader.js',
 		'style' => 'resources/test/foo.css',
+		'messages' => array( 'january', 'february', 'march', 'april', 'may', 'june' ),
 	),
 	'bar' => array(
 		'script' => 'resources/test/bar.js',
 		'loader' => 'resources/test/loader.js',
 		'style' => 'resources/test/bar.css',
+		'messages' => array( 'july', 'august', 'september', 'october', 'november', 'december' ),
 	),
 	'buz' => array(
 		'script' => 'resources/test/buz.js',
