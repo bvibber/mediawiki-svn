@@ -3786,6 +3786,11 @@ Others will be hidden by default.
 'exif-writer'                      => 'Writer',
 'exif-languagecode'                => 'Language',
 'exif-iimversion'                  => 'IIM version',
+'exif-iimcategory'                 => 'Category',
+'exif-iimsupplementalcategory'     => 'Supplemental categories',
+'exif-datetimeexpires'             => 'Do not use after',
+'exif-datetimereleased'            => 'Released on',
+'exif-originaltransmissionref'     => 'Original transmission location code',
 
 # Make & model, can be wikified in order to link to the camera and model name
 'exif-make-value'             => '$1', # do not translate or duplicate this message to other languages

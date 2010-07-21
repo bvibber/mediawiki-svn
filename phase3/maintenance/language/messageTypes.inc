@@ -632,4 +632,9 @@ $wgEXIFMessages = array(
 	'exif-writer',
 	'exif-languagecode',
 	'exif-iimversion',
+	'exif-iimcategory',
+	'exif-iimsupplementalcategory',
+	'exif-datetimeexpires',
+	'exif-datetimereleased',
+	'exif-originaltransmissionref',
 );

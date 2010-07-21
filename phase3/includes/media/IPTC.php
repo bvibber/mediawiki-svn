@@ -51,8 +51,28 @@ class IPTC {
 					$data['Copyright'] = self::convIPTC( $val, $c );
 					break;
 				case '2#080': /* byline. Mapped with exif Artist */
-					/* TODO: figure out how to handle byline title (2:85) */
-					$data['Artist'] = self::convIPTC( $val, $c );
+					/* merge with byline title (2:85)
+					 * like how exif does it with
+					 * Title, person. Not sure if this is best
+					 * approach since we no longer have the two fields
+					 * seperate. each byline title entry corresponds to a
+					 * specific byline.                          */
+
+					$bylines = self::convIPTC( $val, $c );
+					if ( isset( $parsed['2#085'] ) ) {
+						$titles = self::convIPTC( $parsed['2#085'], $c );
+					} else {
+						$titles = array();
+					}
+
+					for ( $i = 0; $i < count( $titles ); $i++ ) {
+						if ( isset( $bylines[$i] ) ) {
+							// theoretically this should always be set
+							// but doesn't hurt to be careful.
+							$bylines[$i] = $titles[$i] . ', ' . $bylines[$i];
+						}
+					}
+					$data['Artist'] = $bylines;
 					break;
 				case '2#025': /* keywords */
 					$data['Keywords'] = self::convIPTC( $val, $c );
@@ -89,8 +109,15 @@ class IPTC {
 					 *an individual." */
 					$data['Source'] = self::convIPTC( $val, $c );
 					break;
+
 				case '2#007': /* edit status (lead, correction, etc) */
 					$data['EditStatus'] = self::convIPTC( $val, $c );
+					break;
+				case '2#015': /* category. deprected. max 3 letters in theory, often more */
+					$data['iimCategory'] = self::convIPTC( $val, $c );
+					break;
+				case '2#020': /* category. deprected. */
+					$data['iimSupplementalCategory'] = self::convIPTC( $val, $c );
 					break;
 				case '2#010': /*urgency (1-8. 1 most, 5 normal, 8 low priority)*/
 					$data['Urgency'] = self::convIPTC( $val, $c );
@@ -149,6 +176,13 @@ class IPTC {
 					 */
 					$data['CountryDestCode'] = self::convIPTC( $val, $c );
 					break;
+				case '2#103':
+					/* original transmission ref.
+					 * "A code representing the location of original transmission ac-
+					 * cording to practices of the provider."
+					*/
+					$data['OriginalTransmissionRef'] = self::convIPTC( $val, $c );
+					break;
 				case '2#118': /*contact*/
 					$data['Contact'] = self::convIPTC( $val, $c );
 					break;
@@ -195,6 +229,31 @@ class IPTC {
 					}
 					break;
 
+				case '2#030':
+					//Date released.
+					if ( isset( $parsed['2#035'] ) ) {
+						$time = $parsed['2#035'];
+					} else {
+						$time = Array();
+					}
+					$timestamp =  self::timeHelper( $val, $time, $c );
+					if ($timestamp) {
+						$data['DateTimeReleased'] = $timestamp;
+					}
+					break;
+
+				case '2#037':
+					//Date expires.
+					if ( isset( $parsed['2#038'] ) ) {
+						$time = $parsed['2#038'];
+					} else {
+						$time = Array();
+					}
+					$timestamp =  self::timeHelper( $val, $time, $c );
+					if ($timestamp) {
+						$data['DateTimeExpires'] = $timestamp;
+					}
+					break;
 
 				case '2#000': /* iim version */
 					// unlike other tags, this is a 2-byte binary number.
@@ -209,10 +268,7 @@ class IPTC {
 					break;
 
 
-				// TODO: the date related tags
-				// does not do 2:103. Unsure if there is useful data there.
-				// TODO: 2:15, 2:20
-				// other things not currently done, and not sure if should:
+				// Things not currently done, and not sure if should:
 				// 2:12
 				// purposely does not do 2:125, 2:130, 2:131,
 				// 2:47, 2:50, 2:45, 2:42, 2:8, 2:4, 2:3

@@ -969,6 +969,8 @@ class FormatExif {
 				case 'DateTime':
 				case 'DateTimeOriginal':
 				case 'DateTimeDigitized':
+				case 'DateTimeReleased':
+				case 'DateTimeExpires':
 				case 'GPSDateStamp':
 					if ( $val == '0000:00:00 00:00:00' || $val == '    :  :     :  :  ' ) {
 						$val = wfMsg( 'exif-unknowndate' );
@@ -1368,6 +1370,9 @@ class FormatExif {
 				case 'Contact':
 				case 'Writer':
 				case 'JPEGFileComment':
+				case 'iimCategory':
+				case 'iimSupplementalCategory':
+				case 'OriginalTransmissionRef':
 
 					$val = htmlspecialchars( $val );
 					break;
