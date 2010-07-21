@@ -145,7 +145,9 @@ $wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
 $wgCodeReviewMaxDiffSize = 500000;
 
 /**
- * Any base paths matching regular expressions in this array will have their
+ * Key is repository name. Value is an array of regexes
+ *
+ * Any base paths matching regular expressions in these arrays will have their
  * default status set to deferred instead of new. Helpful if you've got a part
  * of the repository you don't care about.
  */
