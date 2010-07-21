@@ -582,6 +582,13 @@ $messages['oc'] = array(
 	'wikieditor-loading' => 'Cargament',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'wikieditor-loading' => 'Laade',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich

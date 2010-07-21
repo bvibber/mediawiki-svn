@@ -4746,8 +4746,10 @@ Nos agradariá de saber çò que pensatz de nòstra interfàcia novèla, nos agr
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'optin-title-optedout' => 'Beta prowiere',
 	'optin-title-optedin' => 'Beta verlosse',
 	'optin-title-justoptedin' => 'Wilkum zu Beta',
+	'optin-accept-long' => 'Beta prowiere',
 	'optin-deny-short' => 'Nee, ken Interest',
 	'optin-deny-long' => 'Zerick zum letscht Blatt',
 	'optin-submit-out' => 'Beta verlosse',
