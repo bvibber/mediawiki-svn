@@ -7,7 +7,12 @@ $j(document).ready( function() {
 	}
 	// Add the toc module
 	if ( $j.fn.wikiEditor ) {
-		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule',
-			{ 'toc' : { 'rtl' : ( $j( 'body' ).is( '.rtl' ) ) } } );
+		mw.usability.load( [ '$j.ui','$j.ui.draggable', '$j.ui.resizable' ], function() {
+			// load the module and let it know were ready to go
+			$j( '#wpTextbox1' )
+				.wikiEditor( 'addModule', { 'toc' : { 'rtl' : ( $j( 'body' ).is( '.rtl' ) ) } } )
+				//FIXME - should move the ready handler code to the create function so this isn't necissary
+				.data( 'wikiEditor-context' ).fn.trigger( 'ready' );
+		} );
 	}
 });
