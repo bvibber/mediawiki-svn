@@ -279,7 +279,7 @@ class SkinVector extends SkinTemplate {
 			// Checks if the user is logged in
 			if ( $this->loggedin ) {
 				if ( $wgVectorUseIconWatch ) {
-					$class = 'icon ';
+					$class = 'icon';
 					$place = 'views';
 				} else {
 					$class = '';
@@ -757,7 +757,7 @@ class VectorTemplate extends QuickTemplate {
 		<?php if ( $wgVectorUseSimpleSearch && $wgUser->getOption( 'vector-simplesearch' ) ): ?>
 		<div id="simpleSearch">
 			<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />
-			<button id="searchButton" type='submit' name='button' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>>&nbsp;</button>
+			<button id="searchButton" type='submit' name='button' <?php echo $this->skin->tooltipAndAccesskey( 'search-fulltext' ); ?>><img src="<?php echo $GLOBALS['wgStylePath'] . "/{$this->skin->stylename}/images/search-" . ( $GLOBALS['wgContLang']->isRTL() ? 'rtl' : 'ltr' ) . '.png?' . $GLOBALS['wgStyleVersion'] ?>" alt="<?php $this->msg( 'searchbutton' ) ?>" /></button>
 		</div>
 		<?php else: ?>
 		<input id="searchInput" name="search" type="text" <?php echo $this->skin->tooltipAndAccesskey( 'search' ); ?> <?php if( isset( $this->data['search'] ) ): ?> value="<?php $this->text( 'search' ) ?>"<?php endif; ?> />

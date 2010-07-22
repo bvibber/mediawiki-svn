@@ -351,6 +351,7 @@ div#mw-head h5 {
 	#simpleSearch {
 		margin-top: 0.65em;
 		position: relative;
+		min-height: 1px; /* Gotta trigger hasLayout for IE7 */
 		border: solid 1px #AAAAAA;
 		background-color: white;
 		background-image: url(images/search-fade.png?1);
@@ -361,7 +362,13 @@ div#mw-head h5 {
 		font-size: 13px;
 		top: 0.25em;
 	}
-	#simpleSearch input#searchInput {
+	div#simpleSearch .placeholder {
+		color: #999999;
+	}
+	div#simpleSearch input::-webkit-input-placeholder { 
+		color: #999999;
+	}
+	div#simpleSearch input#searchInput {
 		margin: 0;
 		border-width: 0;
 		padding: 3px;
@@ -373,26 +380,17 @@ div#mw-head h5 {
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	#simpleSearch button#searchButton {
 		padding: 0;
-		margin: 5px 5px 0 5px;
-		height: 13px;
-		width: 12px;
+		margin: 0 5px;
 		border: none;
 		cursor: pointer;
 		background-color: transparent;
-		background-image: url(images/search-ltr.png?1);
-		background-position: center center;
-		background-repeat: no-repeat;
+		font-size: x-small;
 	}
-	.suggestions-special .special-label {
-		font-size: 0.8em;
-		color: gray;
-	}
-	.suggestions-special .special-query {
-		color: black;
-		font-style: italic;
-	}
-	.suggestions-special .special-hover {
-		background-color: silver;
+	div#simpleSearch button#searchButton img {
+		border: none;
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
 	}
 /* Panel */
 div#mw-panel {
@@ -728,7 +726,11 @@ blockquote {
 	font-style: italic;
 }*/
 pre, code, tt {
-	font-family: monospace, sans-serif;
+	/*
+	 * It's important for this rule to first reference an actual font name, some browsers will render the monospace text
+	 * too small otherwise, namely Firefox, Chrome and Safari
+	 */
+	font-family: monospace, "Courier New";
 }
 code {
 	background-color: #f9f9f9;
