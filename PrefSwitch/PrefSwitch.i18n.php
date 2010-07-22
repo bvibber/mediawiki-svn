@@ -4431,7 +4431,7 @@ A Equipa de Experiência de Utilização (User Experience Team) da Wikimedia Fou
 * '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e uma funcionalidade de procura e substituição para simplificar a edição de páginas.
 * '''Logótipo da Wikipédia:''' Actualizámos o nosso logótipo. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue Wikimedia].",
 	'prefswitch-main-logged-changes' => "* O '''separador {{int:watch}}''' é agora uma estrela.
-* O '''separador {{int:move}}''' está agora na lista descendente ao lado da barra de pesquisa.",
+* O '''separador {{int:move}}''' está agora na lista descendente ao lado da caixa de pesquisa.",
 	'prefswitch-main-feedback' => '===O seu comentário?===
 Gostariamos de conhecer a sua opinião. Visite a nossa [[$1|página de comentários]], por favor. Se tiver interesse em acompanhar os esforços continuados de melhoria do software, visite a nossa [http://usability.wikimedia.org wiki da usabilidade] para mais informação.',
 	'prefswitch-main-anon' => '===Voltar atrás===
