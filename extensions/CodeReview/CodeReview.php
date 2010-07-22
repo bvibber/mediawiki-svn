@@ -52,8 +52,10 @@ $wgAutoloadClasses['CodeCommentLinker'] = $dir . 'backend/CodeCommentLinker.php'
 $wgAutoloadClasses['CodeCommentLinkerHtml'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodeCommentLinkerWiki'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodePropChange'] = $dir . 'backend/CodePropChange.php';
+$wgAutoloadClasses['RepoStats'] = $dir . 'backend/RepoStats.php';
 
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'ui/CodeRepoListView.php';
+$wgAutoloadClasses['CodeRepoStatsView'] = $dir . 'ui/CodeRepoStatsView.php';
 $wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'ui/CodeRevisionAuthorView.php';
 $wgAutoloadClasses['CodeRevisionAuthorLink'] = $dir . 'ui/CodeRevisionAuthorLink.php';
 $wgAutoloadClasses['CodeRevisionCommitter'] = $dir . 'ui/CodeRevisionCommitter.php';

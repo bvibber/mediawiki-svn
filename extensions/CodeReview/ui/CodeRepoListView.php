@@ -34,6 +34,7 @@ class CodeRepoListView {
 		$links[] = "[[Special:Code/$name/author|" . wfMsgHtml( 'code-authors' ) . "]]";
 		$links[] = "[[Special:Code/$name/status|" . wfMsgHtml( 'code-status' ) . "]]";
 		$links[] = "[[Special:Code/$name/releasenotes|" . wfMsgHtml( 'code-releasenotes' ) . "]]";
+		$links[] = "[[Special:Code/$name/stats|" . wfMsgHtml( 'code-stats' ) . "]]";
 		$text .= $wgLang->pipeList( $links );
 		$text .= ")";
 		return $text;

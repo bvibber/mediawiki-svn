@@ -35,6 +35,9 @@ class SpecialCode extends SpecialPage {
 				} elseif ( $params[1] === 'author' ) {
 					$view = new CodeAuthorListView( $params[0] );
 					break;
+				} elseif ( $params[1] === 'stats' ) {
+					$view = new CodeRepoStatsView( $params[0] );
+					break;
 				} elseif ( $params[1] === 'status' ) {
 					$view = new CodeStatusListView( $params[0] );
 					break;
