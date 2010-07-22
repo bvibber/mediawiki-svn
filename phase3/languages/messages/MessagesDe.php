@@ -362,7 +362,6 @@ $messages = array(
 'tog-watchdefault'            => 'Selbst geänderte Seiten automatisch beobachten',
 'tog-watchmoves'              => 'Selbst verschobene Seiten automatisch beobachten',
 'tog-watchdeletion'           => 'Selbst gelöschte Seiten automatisch beobachten',
-'tog-minordefault'            => 'Eigene Änderungen standardmäßig als geringfügig markieren',
 'tog-previewontop'            => 'Vorschau oberhalb des Bearbeitungsfensters anzeigen',
 'tog-previewonfirst'          => 'Beim ersten Bearbeiten immer die Vorschau anzeigen',
 'tog-nocache'                 => 'Seitencache deaktivieren',
@@ -504,31 +503,32 @@ $messages = array(
 'faqpage'        => 'Project:FAQ',
 
 # Vector skin
-'vector-action-addsection'   => 'Abschnitt hinzufügen',
-'vector-action-delete'       => 'Löschen',
-'vector-action-move'         => 'Verschieben',
-'vector-action-protect'      => 'Schützen',
-'vector-action-undelete'     => 'Wiederherstellen',
-'vector-action-unprotect'    => 'Freigeben',
-'vector-namespace-category'  => 'Kategorie',
-'vector-namespace-help'      => 'Hilfeseite',
-'vector-namespace-image'     => 'Datei',
-'vector-namespace-main'      => 'Seite',
-'vector-namespace-media'     => 'Medienseite',
-'vector-namespace-mediawiki' => 'MediaWiki-Systemnachricht',
-'vector-namespace-project'   => 'Projektseite',
-'vector-namespace-special'   => 'Spezialseite',
-'vector-namespace-talk'      => 'Diskussion',
-'vector-namespace-template'  => 'Vorlage',
-'vector-namespace-user'      => 'Benutzerseite',
-'vector-view-create'         => 'Erstellen',
-'vector-view-edit'           => 'Bearbeiten',
-'vector-view-history'        => 'Versionsgeschichte',
-'vector-view-view'           => 'Lesen',
-'vector-view-viewsource'     => 'Quelltext anzeigen',
-'actions'                    => 'Aktionen',
-'namespaces'                 => 'Namensräume',
-'variants'                   => 'Varianten',
+'vector-action-addsection'       => 'Abschnitt hinzufügen',
+'vector-action-delete'           => 'Löschen',
+'vector-action-move'             => 'Verschieben',
+'vector-action-protect'          => 'Schützen',
+'vector-action-undelete'         => 'Wiederherstellen',
+'vector-action-unprotect'        => 'Freigeben',
+'vector-namespace-category'      => 'Kategorie',
+'vector-namespace-help'          => 'Hilfeseite',
+'vector-namespace-image'         => 'Datei',
+'vector-namespace-main'          => 'Seite',
+'vector-namespace-media'         => 'Medienseite',
+'vector-namespace-mediawiki'     => 'MediaWiki-Systemnachricht',
+'vector-namespace-project'       => 'Projektseite',
+'vector-namespace-special'       => 'Spezialseite',
+'vector-namespace-talk'          => 'Diskussion',
+'vector-namespace-template'      => 'Vorlage',
+'vector-namespace-user'          => 'Benutzerseite',
+'vector-simplesearch-preference' => 'Erweiterte Suchvorschläge aktivieren (nur Vector)',
+'vector-view-create'             => 'Erstellen',
+'vector-view-edit'               => 'Bearbeiten',
+'vector-view-history'            => 'Versionsgeschichte',
+'vector-view-view'               => 'Lesen',
+'vector-view-viewsource'         => 'Quelltext anzeigen',
+'actions'                        => 'Aktionen',
+'namespaces'                     => 'Namensräume',
+'variants'                       => 'Varianten',
 
 'errorpagetitle'    => 'Fehler',
 'returnto'          => 'Zurück zur Seite $1.',
@@ -883,7 +883,7 @@ Möglicherweise hast du dein Passwort bereits erfolgreich geändert oder ein neu
 'anonpreviewwarning'               => "''Du bist nicht angemeldet. Beim Speichern wird deine IP-Adresse in der Versionsgeschichte aufgezeichnet.''",
 'missingsummary'                   => "'''Hinweis:''' Du hast keine Zusammenfassung angegeben. Wenn du erneut auf „Seite speichern“ klickst, wird deine Änderung ohne Zusammenfassung übernommen.",
 'missingcommenttext'               => 'Dein Abschnitt enthält keinen Text.',
-'missingcommentheader'             => "'''ACHTUNG:''' Du hast keine Überschrift im Feld „Betreff:“ eingegeben. Wenn du erneut auf „Seite speichern“ klickst, wird deine Bearbeitung ohne Überschrift gespeichert.",
+'missingcommentheader'             => "'''ACHTUNG:''' Du hast kein Betreff/Überschrift eingegeben. Wenn du erneut auf „{{int:savearticle}}“ klickst, wird deine Bearbeitung ohne Überschrift gespeichert.",
 'summary-preview'                  => 'Vorschau der Zusammenfassungszeile:',
 'subject-preview'                  => 'Vorschau des Betreffs:',
 'blockedtitle'                     => 'Benutzer ist gesperrt',
@@ -946,7 +946,7 @@ oder in den zugehörigen <span class="plainlinks">[{{fullurl:{{#special:Log}}|pa
 'userpage-userdoesnotexist-view'   => 'Benutzerkonto „$1“ existiert nicht.',
 'blocked-notice-logextract'        => '{{GENDER:$1|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} ist zurzeit gesperrt.
 Zur Information folgt ein aktueller Auszug aus dem Benutzersperr-Logbuch:',
-'clearyourcache'                   => "'''Hinweis - Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei ''Aktualisieren'' anklicken.",
+'clearyourcache'                   => "'''Hinweis - Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' auf dem Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei ''Aktualisieren'' anklicken.",
 'usercssyoucanpreview'             => "'''Tipp:''' Benutze den „{{int:showpreview}}“-Button, um dein neues CSS vor dem Speichern zu testen.",
 'userjsyoucanpreview'              => "'''Tipp:''' Benutze den „{{int:showpreview}}“-Button, um dein neues JavaScript vor dem Speichern zu testen.",
 'usercsspreview'                   => "== Vorschau deines Benutzer-CSS ==
@@ -1097,7 +1097,7 @@ Grund der Sperre: ''$2''",
 Nähere Angaben zum Löschvorgang sowie eine Begründung finden sich im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
 'rev-deleted-text-unhide'     => "Diese Version wurde '''gelöscht'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
-Einem Administrator kannst du [$1 diesen Link zur Version] nennen.",
+Als Administrator kannst du [$1 diese Version einsehen].",
 'rev-suppressed-text-unhide'  => "Diese Version wurde '''unterdrückt'''.
 Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} Unterdrückungs-Logbuch].
 Als Administrator kannst du [$1 diese Version einsehen].",
@@ -1111,10 +1111,10 @@ Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} L�
 'rev-suppressed-no-diff'      => "Du kannst diesen Versionsunterschied nicht betrachten, da eine der Versionen '''gelöscht''' wurde.",
 'rev-deleted-unhide-diff'     => "Eine der Versionen dieses Unterschieds wurde '''gelöscht'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].
-Einem Administrator kannst du [$1 diesen Link zum Versionsunterschied] nennen.",
+Als Administrator kannst du [$1 diese Version einsehen].",
 'rev-suppressed-unhide-diff'  => "Eine der Versionen dieses Unterschieds wurde '''unterdrückt'''.
 Details stehen im [{{fullurl:{{#special:Log}}/delete|page={{FULLPAGENAMEE}}}} Unterdrückungs-Logbuch].
-Einem Administrator kannst du [$1 diesen Link zum Versionsunterschied] nennen.",
+Als Administrator kannst du [$1 diese Version einsehen].",
 'rev-deleted-diff-view'       => "Eine Version dieses Versionsunterschiedes wurde '''gelöscht'''.
 Als Administrator kannst du diesen Versionsunterschied sehen. Details finden sich im [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} Lösch-Logbuch].",
 'rev-suppressed-diff-view'    => "Eine der Versionen dieses Versionsunterschiedes wurde '''unterdrückt'''.
@@ -1151,10 +1151,10 @@ Andere Administratoren auf {{SITENAME}} haben Zugriff auf den versteckten Inhalt
 'revdelete-radio-unset'       => 'Nein',
 'revdelete-suppress'          => 'Grund der Löschung auch vor Administratoren verstecken',
 'revdelete-unsuppress'        => 'Einschränkungen für wiederhergestellte Versionen aufheben',
-'revdelete-log'               => 'Grund der Löschung:',
+'revdelete-log'               => 'Grund:',
 'revdelete-submit'            => 'Auf gewählte {{PLURAL:$1|Version|Versionen}} anwenden',
-'revdelete-logentry'          => 'hat die Versionsansicht für „[[$1]]“ geändert',
-'logdelete-logentry'          => 'hat die Sichtbarkeit für „[[$1]]“ geändert',
+'revdelete-logentry'          => 'hat die Versionsansicht von „[[$1]]“ geändert',
+'logdelete-logentry'          => 'hat die Sichtbarkeit von „[[$1]]“ geändert',
 'revdelete-success'           => "'''Die Versionsansicht wurde aktualisiert.'''",
 'revdelete-failure'           => "'''Die Versionssichtbarkeit konnte nicht aktualisiert werden:'''
 $1",
@@ -1206,14 +1206,14 @@ Siehe die [[Special:IPBlockList|Liste der gesperrten IP-Adressen und Benutzernam
 'revmove-legend'               => 'Zielseite und Zusammenfassung festlegen',
 'revmove-submit'               => 'Versionen zur ausgewählten Seite verschieben',
 'revisionmoveselectedversions' => 'Ausgewählte Versionen verschieben',
-'revmove-reasonfield'          => 'Begründung:',
+'revmove-reasonfield'          => 'Grund:',
 'revmove-titlefield'           => 'Zielseite:',
 'revmove-badparam-title'       => 'Falsche Parameter',
-'revmove-badparam'             => '<span class="error">Deine Anfrage enthält unerlaubte oder mangelhafte Parameter. Bitte klicke auf „zurück“ und versuche es erneut.</span>',
+'revmove-badparam'             => 'Deine Anfrage enthält unerlaubte oder mangelhafte Parameter. Bitte klicke auf „zurück“ und versuche es erneut.',
 'revmove-norevisions-title'    => 'Ungültige Zielversion',
-'revmove-norevisions'          => '<span class="error">Du hast keine Zielversion angegeben, um diese Aktion durchzuführen oder die angegebene Version existiert nicht.</span>',
+'revmove-norevisions'          => 'Du hast keine Zielversion angegeben, um diese Aktion durchzuführen oder die angegebene Version existiert nicht.',
 'revmove-nullmove-title'       => 'Ungültiger Titel',
-'revmove-nullmove'             => '<span class="error">Quell- und Zielseite sind identisch. Bitte klicke auf „zurück“ und gib einen anderen Seitennamen als „$1“ ein.</span>',
+'revmove-nullmove'             => 'Quell- und Zielseite sind identisch. Bitte klicke auf „zurück“ und gib einen anderen Seitennamen als „$1“ ein.',
 'revmove-success-existing'     => '{{PLURAL:$1|Eine Version von [[$2]] wurde|$1 Versionen von [[$2]] wurden}} zur existierenden Seite [[$3]] verschoben.',
 'revmove-success-created'      => '{{PLURAL:$1|Eine Version von [[$2]] wurde|$1 Versionen von [[$2]] wurden}} zur neu angelegten Seite [[$3]] verschoben.',
 
@@ -1435,7 +1435,9 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'prefs-advancedrendering'       => 'Erweiterte Optionen',
 'prefs-advancedsearchoptions'   => 'Erweiterte Optionen',
 'prefs-advancedwatchlist'       => 'Erweiterte Optionen',
-'prefs-display'                 => 'Anzeigeoptionen',
+'prefs-displayrc'               => 'Anzeigeoptionen',
+'prefs-displaysearchoptions'    => 'Anzeigeoptionen',
+'prefs-displaywatchlist'        => 'Anzeigeoptionen',
 'prefs-diffs'                   => 'Versionsvergleich',
 
 # User rights
@@ -1545,6 +1547,7 @@ Mit anderen Benutzern kannst du auch über die Benutzerdiskussionsseiten Kontakt
 'right-override-export-depth' => 'Exportiere Seiten einschließlich verlinkter Seiten bis zu einer Tiefe von 5',
 'right-sendemail'             => 'E-Mails an andere Benutzer senden',
 'right-revisionmove'          => 'Versionen verschieben',
+'right-selenium'              => 'Tests mit Selenium durchführen',
 
 # User rights log
 'rightslog'      => 'Rechte-Logbuch',
@@ -1870,6 +1873,7 @@ Eine [[Special:WhatLinksHere/$2|vollständige Liste]] ist verfügbar.',
 'uploadnewversion-linktext' => 'Eine neue Version dieser Datei hochladen',
 'shared-repo-from'          => 'aus $1',
 'shared-repo'               => 'einem gemeinsam genutzten Medienarchiv',
+'filepage.css'              => '/* CSS an dieser Stelle wirkt sich auf die Dateibeschreibungsseite aus, auch auf fremden Client-Wikis */',
 
 # File reversion
 'filerevert'                => 'Zurücksetzen von „$1“',
@@ -2258,7 +2262,7 @@ Rückmeldungen und weitere Hilfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 'dellogpagetext'         => 'Dies ist das Logbuch der gelöschten Seiten und Dateien.',
 'deletionlog'            => 'Lösch-Logbuch',
 'reverted'               => 'Auf eine alte Version zurückgesetzt',
-'deletecomment'          => 'Grund der Löschung:',
+'deletecomment'          => 'Grund:',
 'deleteotherreason'      => 'Anderer/ergänzender Grund:',
 'deletereasonotherlist'  => 'Anderer Grund',
 'deletereason-dropdown'  => '* Allgemeine Löschgründe
@@ -2374,7 +2378,7 @@ Der aktuelle Text der gelöschten Seite ist nur Administratoren zugänglich.',
 'undeleteviewlink'             => 'ansehen',
 'undeletereset'                => 'Abbrechen',
 'undeleteinvert'               => 'Auswahl umkehren',
-'undeletecomment'              => 'Begründung:',
+'undeletecomment'              => 'Grund:',
 'undeletedarticle'             => 'hat „[[$1]]“ wiederhergestellt',
 'undeletedrevisions'           => '{{PLURAL:$1|1 Version wurde|$1 Versionen wurden}} wiederhergestellt',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 Version|$1 Versionen}} und {{PLURAL:$2|1 Datei|$2 Dateien}} wurden wiederhergestellt',
@@ -2427,6 +2431,7 @@ $1',
 Zur Information folgt der aktuelle Auszug aus dem Sperr-Logbuch:',
 'sp-contributions-search'              => 'Suche nach Benutzerbeiträgen',
 'sp-contributions-username'            => 'IP-Adresse oder Benutzername:',
+'sp-contributions-toponly'             => 'Nur aktuelle Versionen zeigen',
 'sp-contributions-submit'              => 'Suchen',
 
 # What links here
@@ -2471,7 +2476,7 @@ Bitte gib den Grund für die Sperre an.',
 'ipbanononly'                     => 'Nur anonyme Benutzer sperren',
 'ipbcreateaccount'                => 'Erstellung von Benutzerkonten verhindern',
 'ipbemailban'                     => 'E-Mail-Versand sperren',
-'ipbenableautoblock'              => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht',
+'ipbenableautoblock'              => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzerkonten versucht',
 'ipbsubmit'                       => 'IP-Adresse/Benutzer sperren',
 'ipbother'                        => 'Andere Dauer (englisch):',
 'ipboptions'                      => '2 Stunden:2 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,6 Monate:6 months,1 Jahr:1 year,Unbeschränkt:infinite',
@@ -2955,7 +2960,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Warnung:''' Dieser Dateityp kann böswilligen Programmcode enthalten.
-Durch das Herunterladen und Öffnen der Datei kann dein Computer beschädigt werden.<hr />",
+Durch das Herunterladen und Öffnen der Datei kann dein Computer beschädigt werden.",
 'imagemaxsize'         => "Maximale Bildgröße:<br />''(für Dateibeschreibungsseiten)''",
 'thumbsize'            => 'Standardgröße der Vorschaubilder (Thumbnails):',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|1 Seite|$3 Seiten}}',
@@ -2967,6 +2972,9 @@ Durch das Herunterladen und Öffnen der Datei kann dein Computer beschädigt wer
 'show-big-image-thumb' => '<small>Größe der Voransicht: $1 × $2 Pixel</small>',
 'file-info-gif-looped' => 'Endlosschleife',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|Bild|Bilder}}',
+'file-info-png-looped' => 'Endlosschleife',
+'file-info-png-repeat' => '$1-{{PLURAL:$1|mal|mal}} abgespielt',
+'file-info-png-frames' => '$1 {{PLURAL:$1|Bild|Bilder}}',
 
 # Special:NewFiles
 'newimages'             => 'Neue Dateien',
@@ -3002,7 +3010,7 @@ Darauf folgende Seitenlinks in derselben Zeile definieren Ausnahmen, in deren Ko
 
 # EXIF tags
 'exif-imagewidth'                  => 'Breite',
-'exif-imagelength'                 => 'Länge',
+'exif-imagelength'                 => 'Höhe',
 'exif-bitspersample'               => 'Bits pro Farbkomponente',
 'exif-compression'                 => 'Art der Kompression',
 'exif-photometricinterpretation'   => 'Pixelzusammensetzung',
@@ -3370,6 +3378,7 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'table_pager_first'        => 'Erste Seite',
 'table_pager_last'         => 'Letzte Seite',
 'table_pager_limit'        => 'Zeige $1 Einträge pro Seite',
+'table_pager_limit_label'  => 'Positionen pro Seite:',
 'table_pager_limit_submit' => 'Los',
 'table_pager_empty'        => 'Keine Ergebnisse',
 
@@ -3508,6 +3517,15 @@ Die Eingabe muss ohne den Zusatz „{{ns:file}}:“ erfolgen.',
 'tags-edit'               => 'bearbeiten',
 'tags-hitcount'           => '$1 {{PLURAL:$1|Änderung|Änderungen}}',
 
+# Special:ComparePages
+'comparepages'     => 'Seiten vergleichen',
+'compare-selector' => 'Seitenversionen vergleichen',
+'compare-page1'    => 'Seite 1',
+'compare-page2'    => 'Seite 2',
+'compare-rev1'     => 'Version 1',
+'compare-rev2'     => 'Version 2',
+'compare-submit'   => 'Vergleichen',
+
 # Database error messages
 'dberr-header'      => 'Dieses Wiki hat ein Problem',
 'dberr-problems'    => 'Entschuldigung. Diese Seite hat momentan technische Schwierigkeiten.',
@@ -3528,20 +3546,5 @@ Die Eingabe muss ohne den Zusatz „{{ns:file}}:“ erfolgen.',
 'htmlform-submit'              => 'Übertragen',
 'htmlform-reset'               => 'Änderungen rückgängig machen',
 'htmlform-selectorother-other' => 'Andere',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Kategorie hinzufügen',
-'ajax-add-category-submit'     => 'Hinzufügen',
-'ajax-confirm-title'           => 'Aktion bestätigen',
-'ajax-confirm-prompt'          => 'Du kannst unten eine Zusammenfassung eingeben.
-Klicke „Speichern“ um die Bearbeitung zu speichern.',
-'ajax-confirm-save'            => 'Speichern',
-'ajax-add-category-summary'    => 'Kategorie „$1“ hinzufügen',
-'ajax-remove-category-summary' => 'Kategorie „$1“ entfernen',
-'ajax-confirm-actionsummary'   => 'Auszuführende Aktion:',
-'ajax-error-title'             => 'Fehler',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Es war nicht möglich, die Kategorie zu entfernen.
-Dies passiert normalerweise, wenn die Kategorie über eine Vorlage eingebunden ist.',
 
 );

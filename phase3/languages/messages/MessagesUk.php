@@ -18,6 +18,7 @@
  * @author Ickis
  * @author Ilyaroz
  * @author Innv
+ * @author KEL
  * @author Kalan
  * @author NickK
  * @author Prima klasy4na
@@ -253,12 +254,11 @@ $messages = array(
 'tog-editsection'             => 'Показувати посилання [ред.] для кожного розділу',
 'tog-editsectiononrightclick' => 'Редагувати розділи при клацанні правою кнопкою мишки на заголовку (JavaScript)',
 'tog-showtoc'                 => 'Показувати зміст (для сторінок з більш ніж трьома заголовками)',
-'tog-rememberpassword'        => "Запам'ятати мій обліковий запис на цьому комп'ютері",
+'tog-rememberpassword'        => "Запам'ятати мій обліковий запис на цьому комп'ютері (на строк не більше $1 {{PLURAL:$1|дня|днів}})",
 'tog-watchcreations'          => 'Додавати створені мною сторінки до мого списку спостереження',
 'tog-watchdefault'            => 'Додавати змінені мною сторінки до мого списку спостереження',
 'tog-watchmoves'              => 'Додавати перейменовані мною сторінки до мого списку спостереження',
 'tog-watchdeletion'           => 'Додавати вилучені мною сторінки до мого списку спостереження',
-'tog-minordefault'            => 'Спочатку позначати всі зміни незначними',
 'tog-previewontop'            => 'Показувати попередній перегляд перед вікном редагування, а не після',
 'tog-previewonfirst'          => 'Показувати попередній перегляд при першому редагуванні',
 'tog-nocache'                 => 'Заборонити кешування сторінок',
@@ -399,31 +399,32 @@ $messages = array(
 'faqpage'        => 'Project:Часті питання',
 
 # Vector skin
-'vector-action-addsection'   => 'Додати тему',
-'vector-action-delete'       => 'Вилучити',
-'vector-action-move'         => 'Перейменувати',
-'vector-action-protect'      => 'Захистити',
-'vector-action-undelete'     => 'Відновити',
-'vector-action-unprotect'    => 'Зняти захист',
-'vector-namespace-category'  => 'Категорія',
-'vector-namespace-help'      => 'Сторінка довідки',
-'vector-namespace-image'     => 'Файл',
-'vector-namespace-main'      => 'Сторінка',
-'vector-namespace-media'     => 'Медіа-сторінка',
-'vector-namespace-mediawiki' => 'Повідомлення',
-'vector-namespace-project'   => 'Сторінка проекту',
-'vector-namespace-special'   => 'Спеціальна сторінка',
-'vector-namespace-talk'      => 'Обговорення',
-'vector-namespace-template'  => 'Шаблон',
-'vector-namespace-user'      => 'Сторінка користувача',
-'vector-view-create'         => 'Створити',
-'vector-view-edit'           => 'Редагувати',
-'vector-view-history'        => 'Переглянути історію',
-'vector-view-view'           => 'Читати',
-'vector-view-viewsource'     => 'Переглянути код',
-'actions'                    => 'Дії',
-'namespaces'                 => 'Простори назв',
-'variants'                   => 'Варіанти',
+'vector-action-addsection'       => 'Додати тему',
+'vector-action-delete'           => 'Вилучити',
+'vector-action-move'             => 'Перейменувати',
+'vector-action-protect'          => 'Захистити',
+'vector-action-undelete'         => 'Відновити',
+'vector-action-unprotect'        => 'Зняти захист',
+'vector-namespace-category'      => 'Категорія',
+'vector-namespace-help'          => 'Сторінка довідки',
+'vector-namespace-image'         => 'Файл',
+'vector-namespace-main'          => 'Сторінка',
+'vector-namespace-media'         => 'Медіа-сторінка',
+'vector-namespace-mediawiki'     => 'Повідомлення',
+'vector-namespace-project'       => 'Сторінка проекту',
+'vector-namespace-special'       => 'Спеціальна сторінка',
+'vector-namespace-talk'          => 'Обговорення',
+'vector-namespace-template'      => 'Шаблон',
+'vector-namespace-user'          => 'Сторінка користувача',
+'vector-simplesearch-preference' => 'Увімкнути розширені пошукові підказки (лише для оформлення "Векторне")',
+'vector-view-create'             => 'Створити',
+'vector-view-edit'               => 'Редагувати',
+'vector-view-history'            => 'Переглянути історію',
+'vector-view-view'               => 'Читати',
+'vector-view-viewsource'         => 'Переглянути код',
+'actions'                        => 'Дії',
+'namespaces'                     => 'Простори назв',
+'variants'                       => 'Варіанти',
 
 'errorpagetitle'    => 'Помилка',
 'returnto'          => 'Повернення до сторінки «$1».',
@@ -648,7 +649,7 @@ $1',
 'yourname'                   => "Ім'я користувача:",
 'yourpassword'               => 'Пароль:',
 'yourpasswordagain'          => 'Повторний набір пароля:',
-'remembermypassword'         => "Запам'ятовувати мій обліковий запис на цьому комп'ютері",
+'remembermypassword'         => "Запам'ятати мій обліковий запис на цьому комп'ютері (на строк не більше $1 {{PLURAL:$1|дня|днів}})",
 'yourdomainname'             => 'Ваш домен:',
 'externaldberror'            => 'Сталася помилка при автентифікації за допомогою зовнішньої бази даних, або у вас недостатньо прав для внесення змін до свого зовнішнього облікового запису.',
 'login'                      => 'Вхід до системи',
@@ -784,8 +785,8 @@ $1',
 'missingsummary'                   => "'''Нагадування''': Ви не дали короткого опису змін.
 Натиснувши кнопку «Зберегти» ще раз, ви збережете зміни без коментаря.",
 'missingcommenttext'               => 'Будь ласка, введіть нижче ваше повідомлення.',
-'missingcommentheader'             => "'''Нагадування''': Ви не зазначили коментар до редагування.
-Натиснувши кнопку «Зберегти сторінку» ще раз, ви збережете редагування без коментаря.",
+'missingcommentheader'             => "'''Нагадування''': ви не вказали тему/заголовок для цього коментаря.
+Натиснувши кнопку «{{int:savearticle}}» ще раз, ви збережете редагування без заголовка.",
 'summary-preview'                  => 'Опис буде:',
 'subject-preview'                  => 'Заголовок буде:',
 'blockedtitle'                     => 'Користувача заблоковано',
@@ -1070,7 +1071,7 @@ $3 зазначив таку причину: ''$2''",
 'revdelete-radio-unset'       => 'Ні',
 'revdelete-suppress'          => 'Приховувати дані також і від адміністраторів',
 'revdelete-unsuppress'        => 'Зняти обмеження з відновлених версій',
-'revdelete-log'               => 'Причина вилучення:',
+'revdelete-log'               => 'Причина:',
 'revdelete-submit'            => 'Застосувати до {{PLURAL:$1|обраної версії|обраних версій}}',
 'revdelete-logentry'          => 'змінив видимість версії сторінки для [[$1]]',
 'logdelete-logentry'          => 'змінена видимість події для [[$1]]',
@@ -1119,7 +1120,22 @@ $1",
 Див. [[Special:IPBlockList|список IP-блокувань]], щоб переглянути список поточних блокувань.',
 
 # Revision move
-'revmove-reasonfield' => 'Причина:',
+'moverevlogentry'              => 'переніс {{PLURAL:$3|одну версію|$3 версії|$3 версій}} з $1 до $2',
+'revisionmove'                 => 'Переміщення версій з "$1"',
+'revmove-explain'              => 'Наступні версії сторінок будуть перенесені з $1 до вибраної сторінки. Версії буде додано до історії цільової сторінки. Якщо ж цільової сторінки не існує, її буде створено.',
+'revmove-legend'               => 'Вкажіть цільову сторінку та коментар',
+'revmove-submit'               => 'Перемістити версії на обрану сторінку',
+'revisionmoveselectedversions' => 'Перемістити вибрані версії',
+'revmove-reasonfield'          => 'Причина:',
+'revmove-titlefield'           => 'Цільова сторінка:',
+'revmove-badparam-title'       => 'Неприпустимі параметри',
+'revmove-badparam'             => 'Ваш запит містить недопустимі значення параметрів, або параметри не вказані. Будь ласка, натисніть «назад» та спробуйте ще раз.',
+'revmove-norevisions-title'    => 'Недопустима цільова версія',
+'revmove-norevisions'          => 'Ви не вказали жодної цільової версії для виконання цієї дії, або вказана версія не існує.',
+'revmove-nullmove-title'       => 'Неприпустима назва',
+'revmove-nullmove'             => 'Назви початкової та цільової сторінок збігаються. Будь ласка, натисніть «назад» та введіть назву, відмінну від «$1».',
+'revmove-success-existing'     => '{{PLURAL:$1|Одна версія сторінки [[$2]] була перенесена|$1 версії сторінки [[$2]] були перенесені|$1 версій сторінки [[$2]] було перенесено}} на існуючу сторінку [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Одна версія сторінки [[$2]] була перенесена|$1 версії сторінки [[$2]] були перенесені|$1 версій сторінки [[$2]] було перенесено}} на новостворену сторінку [[$3]].',
 
 # History merging
 'mergehistory'                     => "Об'єднання історій редагувань",
@@ -1340,7 +1356,9 @@ $1",
 'prefs-advancedrendering'       => 'Розширені налаштування',
 'prefs-advancedsearchoptions'   => 'Розширені налаштування',
 'prefs-advancedwatchlist'       => 'Розширені налаштування',
-'prefs-display'                 => 'Налаштування показу',
+'prefs-displayrc'               => 'Налаштування показу',
+'prefs-displaysearchoptions'    => 'Налаштування показу',
+'prefs-displaywatchlist'        => 'Налаштування показу',
 'prefs-diffs'                   => 'Різниці версій',
 
 # User rights
@@ -1450,6 +1468,8 @@ $1",
 'right-reset-passwords'       => 'скидання паролів інших користувачів',
 'right-override-export-depth' => "експорт сторінок, включаючи пов'язані сторінки з глибиною до 5",
 'right-sendemail'             => 'відправляти пошту іншим користувачам',
+'right-revisionmove'          => 'Перенесення версій',
+'right-selenium'              => 'Запуск перевірок Selenium',
 
 # User rights log
 'rightslog'      => 'Журнал прав користувача',
@@ -1492,6 +1512,7 @@ $1",
 'action-userrights'           => 'зміну всіх прав користувача',
 'action-userrights-interwiki' => 'зміну прав користувачів у інших вікі',
 'action-siteadmin'            => 'блокування і розблоковування баз даних',
+'action-revisionmove'         => 'перенесення версій',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|зміна|зміни|змін}}',
@@ -1803,7 +1824,7 @@ $1',
 'filedelete-legend'           => 'Вилучити файл',
 'filedelete-intro'            => "Ви збираєтесь вилучити '''[[Media:$1|$1]]''' і всю його історію.",
 'filedelete-intro-old'        => "Ви вилучаєте версію '''[[Media:$1|$1]]''' від [$4 $3, $2].",
-'filedelete-comment'          => 'Причина вилучення:',
+'filedelete-comment'          => 'Причина',
 'filedelete-submit'           => 'Вилучити',
 'filedelete-success'          => "'''$1''' було вилучено.",
 'filedelete-success-old'      => "Версія '''[[Media:$1|$1]]''' від $3, $2 була вилучена.",
@@ -2074,8 +2095,8 @@ $1',
 'emailuserfooter'      => 'Цей лист був надісланий користувачеві $2 від користувача $1 за допомогою функції «Надіслати листа» проекту {{SITENAME}}.',
 
 # User Messenger
-'usermessage-summary' => 'Leaving system message.',
-'usermessage-editor'  => 'System messenger',
+'usermessage-summary' => 'Залишити системне повідомлення.',
+'usermessage-editor'  => 'Системний вісник',
 
 # Watchlist
 'watchlist'            => 'Список спостереження',
@@ -2092,7 +2113,7 @@ $1',
 'removedwatchtext'     => 'Сторінка «[[:$1]]» вилучена з вашого [[Special:Watchlist|списку спостереження]].',
 'watch'                => 'Спостерігати',
 'watchthispage'        => 'Спостерігати за цією сторінкою',
-'unwatch'              => 'Скасувати спостереження',
+'unwatch'              => 'Скас. спостереження',
 'unwatchthispage'      => 'Скасувати спостереження',
 'notanarticle'         => 'Не стаття',
 'notvisiblerev'        => 'Версія була вилучена',
@@ -2171,7 +2192,7 @@ $UNWATCHURL
 'dellogpagetext'         => 'Нижче наведений список останніх вилучень.',
 'deletionlog'            => 'журнал вилучень',
 'reverted'               => 'Повернуто до більш ранньої версії',
-'deletecomment'          => 'Причина вилучення:',
+'deletecomment'          => 'Причина:',
 'deleteotherreason'      => 'Інша/додаткова причина:',
 'deletereasonotherlist'  => 'Інша причина',
 'deletereason-dropdown'  => '* Типові причини вилучення
@@ -2200,7 +2221,8 @@ $UNWATCHURL
 'rollback-success'  => 'Відкинуті редагування користувача $1; повернення до версії користувача $2.',
 
 # Edit tokens
-'sessionfailure' => 'Здається, виникли проблеми з поточним сеансом роботи;
+'sessionfailure-title' => 'Помилка сеансу',
+'sessionfailure'       => 'Здається, виникли проблеми з поточним сеансом роботи;
 ця дія була скасована з метою попередити «захоплення сеансу».
 Будь ласка, натисніть кнопку «Назад» і перезавантажте сторінку, з якої ви прийшли.',
 
@@ -2342,6 +2364,7 @@ $1',
 Далі наведено останній запис з журналу блокувань:',
 'sp-contributions-search'              => 'Пошук внеску',
 'sp-contributions-username'            => "IP-адреса або ім'я користувача:",
+'sp-contributions-toponly'             => 'Показувати тільки редагування, що є останніми версіями',
 'sp-contributions-submit'              => 'Знайти',
 
 # What links here
@@ -2373,7 +2396,7 @@ $1',
 'ipaddress'                       => 'IP-адреса:',
 'ipadressorusername'              => "IP-адреса або ім'я користувача:",
 'ipbexpiry'                       => 'Термін:',
-'ipbreason'                       => 'Причина',
+'ipbreason'                       => 'Причина:',
 'ipbreasonotherlist'              => 'Інша причина',
 'ipbreason-dropdown'              => "* Типові причини блокування
 ** Вставка неправильної інформації
@@ -2860,7 +2883,7 @@ $1',
 'nextdiff'     => 'Наступне редагування →',
 
 # Media information
-'mediawarning'         => "'''Увага''': цей файл може містити шкідливий програмний код, виконання якого може бути небезпечним для вашої системи. <hr />",
+'mediawarning'         => "'''Увага''': цей файл може містити шкідливий програмний код, виконання якого може бути небезпечним для вашої системи.",
 'imagemaxsize'         => "Обмеження розміру зображення:<br />''(для сторінок опису файлів)''",
 'thumbsize'            => 'Розмір зменшеної версії зображення:',
 'widthheight'          => '$1 × $2',
@@ -2873,6 +2896,9 @@ $1',
 'show-big-image-thumb' => '<small>Розмір при попередньому перегляді: $1 × $2 пікселів</small>',
 'file-info-gif-looped' => 'кільцеве',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|кадр|кадри|кадрів}}',
+'file-info-png-looped' => 'закільцьований',
+'file-info-png-repeat' => 'продемонстрований $1 {{PLURAL:$1|раз|рази|разів}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|кадр|кадри|кадрів}}',
 
 # Special:NewFiles
 'newimages'             => 'Галерея нових файлів',
@@ -3276,6 +3302,7 @@ $1',
 'table_pager_first'        => 'Перша сторінка',
 'table_pager_last'         => 'Остання сторінка',
 'table_pager_limit'        => 'Показувати $1 елементів на сторінці',
+'table_pager_limit_label'  => 'Записів на сторінку:',
 'table_pager_limit_submit' => 'Виконати',
 'table_pager_empty'        => 'Не знайдено',
 
@@ -3416,6 +3443,15 @@ $1',
 'tags-edit'               => 'редагувати',
 'tags-hitcount'           => '$1 {{PLURAL:$1|зміна|зміни|змін}}',
 
+# Special:ComparePages
+'comparepages'     => 'Порівняння сторінок',
+'compare-selector' => 'Порівняння версій сторінок',
+'compare-page1'    => 'Сторінка 1',
+'compare-page2'    => 'Сторінка 2',
+'compare-rev1'     => 'Версія 1',
+'compare-rev2'     => 'Версія 2',
+'compare-submit'   => 'Порівняти',
+
 # Database error messages
 'dberr-header'      => 'Ця вікі має проблеми',
 'dberr-problems'    => 'Вибачте! На цьому сайті виникли технічні труднощі.',
@@ -3436,20 +3472,5 @@ $1',
 'htmlform-submit'              => 'Відправити',
 'htmlform-reset'               => 'Відкотити зміни',
 'htmlform-selectorother-other' => 'Інше',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Додати категорію',
-'ajax-add-category-submit'     => 'Додати',
-'ajax-confirm-title'           => 'Підтвердити дію',
-'ajax-confirm-prompt'          => 'Нижче ви можете вказати опис зроблених змін.
-Натисніть "Зберегти", щоб зберегти ваші редагування.',
-'ajax-confirm-save'            => 'Зберегти',
-'ajax-add-category-summary'    => 'Додати категорію „$1“',
-'ajax-remove-category-summary' => 'Вилучити категорію „$1“',
-'ajax-confirm-actionsummary'   => 'Мета дії:',
-'ajax-error-title'             => 'Помилка',
-'ajax-error-dismiss'           => 'Гаразд',
-'ajax-remove-category-error'   => 'Не вдалося прибрати дану категорію.
-Таке трапляється зазвичай тоді, коли категорія додається в статтю через шаблон.',
 
 );

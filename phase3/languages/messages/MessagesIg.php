@@ -31,7 +31,6 @@ $messages = array(
 'tog-watchdefault'            => 'Tinyé ihü m na rüoru élu na ndetu ihem ne lé',
 'tog-watchmoves'              => 'Tinyé ihü m na puzié na ndetu ihe m ne lé',
 'tog-watchdeletion'           => 'Tinyé ihü m na gbakashia na ndetu ihe m ne lé',
-'tog-minordefault'            => 'Me ka nhoro da na orü ntakịrị níle',
 'tog-previewontop'            => 'Zitú ntàkịrị mgbe opuzọr zi igbe orü',
 'tog-previewonfirst'          => 'Zitú nke takírí orü mbu',
 'tog-nocache'                 => 'Kúfù ikạchèrè ihü',
@@ -927,16 +926,5 @@ Biko meríáríá ozor.',
 'htmlform-submit'              => 'Nye fwuör',
 'htmlform-reset'               => 'Emekwàlà gbanwere',
 'htmlform-selectorother-other' => 'Nke ozor',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Tinyé ébéonọr',
-'ajax-add-category-submit'     => 'Tinyé kwa',
-'ajax-confirm-title'           => 'Me mmèmé inábata',
-'ajax-confirm-save'            => 'Donyéré',
-'ajax-add-category-summary'    => "Tonyé ébéanọr ''$1''",
-'ajax-remove-category-summary' => "Wefu ébéanọr ''$1''",
-'ajax-confirm-actionsummary'   => 'Ihe I gi me:',
-'ajax-error-title'             => 'Nsogbú',
-'ajax-error-dismiss'           => 'Ngwanu',
 
 );

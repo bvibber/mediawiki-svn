@@ -78,7 +78,7 @@ image/cgm cgm
 image/gif gif
 image/ief ief
 image/jpeg jpeg jpg jpe
-image/png png
+image/png png apng
 image/svg+xml svg
 image/tiff tiff tif
 image/vnd.djvu djvu djv
@@ -152,3 +152,6 @@ application/vnd.ms-excel.sheet.macroEnabled.12 xlsm
 application/vnd.ms-excel.template.macroEnabled.12 xltm
 application/vnd.ms-excel.addin.macroEnabled.12 xlam
 application/vnd.ms-excel.sheet.binary.macroEnabled.12 xlsb
+model/vnd.dwfx+xps dwfx
+application/vnd.ms-xpsdocument xps
+application/x-opc+zip docx dotx docm dotm potx ppsx pptx ppam pptm potm ppsm xlsx xltx xlsm xltm xlam xlsb dwfx xps

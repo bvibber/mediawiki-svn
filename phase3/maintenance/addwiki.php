@@ -33,9 +33,10 @@ class AddWiki extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->mDescription = "Add a new wiki to the family. Wikimedia specific!";
-		$this->addArg( 'language', 'Language code of new site' );
-		$this->addArg( 'site', 'Type of site' );
-		$this->addArg( 'dbname', 'Name of database to create' );
+		$this->addArg( 'language', 'Language code of new site, e.g. en' );
+		$this->addArg( 'site', 'Type of site, e.g. wikipedia' );
+		$this->addArg( 'dbname', 'Name of database to create, e.g. enwiki' );
+		$this->addArg( 'domain', 'Domain name of the wiki, e.g. en.wikipedia.org' );
 	}
 
 	public function getDbType() {
@@ -43,12 +44,13 @@ class AddWiki extends Maintenance {
 	}
 
 	public function execute() {
-		global $IP, $wgDefaultExternalStore, $wgNoDBParam;
+		global $IP, $wgDefaultExternalStore, $wgNoDBParam, $wgPasswordSender;
 
 		$wgNoDBParam = true;
 		$lang = $this->getArg( 0 );
 		$site = $this->getArg( 1 );
 		$dbName = $this->getArg( 2 );
+		$domain = $this->getArg( 3 );
 		$languageNames = Language::getLanguageNames();
 
 		if ( !isset( $languageNames[$lang] ) ) {
@@ -81,7 +83,7 @@ class AddWiki extends Maintenance {
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/ClickTracking/ClickTrackingEvents.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/ClickTracking/ClickTracking.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.sql" );
-		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/Optin/OptIn.sql" );
+		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/OptIn/OptIn.sql" );
 
 		$dbw->query( "INSERT INTO site_stats(ss_row_id) VALUES (1)" );
 
@@ -130,7 +132,8 @@ class AddWiki extends Maintenance {
 		$wgArticle = new Article( $wgTitle );
 		$ucsite = ucfirst( $site );
 
-		$wgArticle->insertNewArticle( $this->getFirstArticle( $ucsite, $name ), '', false, false );
+		$wgArticle->doEdit( $this->getFirstArticle( $ucsite, $name ), '', EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY,
+			false, null, false, false, '', true );
 
 		$this->output( "Adding to dblists\n" );
 
@@ -145,7 +148,17 @@ class AddWiki extends Maintenance {
 		# print "Constructing interwiki SQL\n";
 		# Rebuild interwiki tables
 		# passthru( '/home/wikipedia/conf/interwiki/update' );
-
+		
+		$time = wfTimestamp( TS_RFC2822 );
+		// These arguments need to be escaped twice: once for echo and once for at
+		$escDbName = wfEscapeShellArg( wfEscapeShellArg( $dbName ) );
+		$escTime = wfEscapeShellArg( wfEscapeShellArg( $time ) );
+		$escUcsite = wfEscapeShellArg( wfEscapeShellArg( $ucsite ) );
+		$escName = wfEscapeShellArg( wfEscapeShellArg( $name ) );
+		$escLang = wfEscapeShellArg( wfEscapeShellArg( $lang ) );
+		$escDomain = wfEscapeShellArg( wfEscapeShellArg( $domain ) );
+		shell_exec( "echo notifyNewProjects $escDbName $escTime $escUcsite $escName $escLang $escDomain | at now + 15 minutes" );
+		
 		$this->output( "Script ended. You still have to:
 	* Add any required settings in InitialiseSettings.php
 	* Run sync-common-all

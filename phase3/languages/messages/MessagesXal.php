@@ -68,12 +68,11 @@ $messages = array(
 'tog-editsection'             => '«Чиклх» заавр болвчн хүвд үзүлх',
 'tog-editsectiononrightclick' => 'Һарчига барун индстлһар хүвиг чиклх (JavaScript кергтә)',
 'tog-showtoc'                 => 'Һарг үзүлх (3 икәр толһата халхсд)',
-'tog-rememberpassword'        => 'Намаг эн тоолдврд тодлх',
+'tog-rememberpassword'        => 'Намаг эн тоолдврд тодлх ($1 {{PLURAL:$1|өдрт|өдрмүдт}} икәр биш)',
 'tog-watchcreations'          => 'Би эврәннь немгдсн халхс шинҗллһнә сеткүлд немх',
 'tog-watchdefault'            => 'Би эврәннь чиклсн халхс шинҗллһнә сеткүлд немх',
 'tog-watchmoves'              => 'Би эврәннь көндсн халхс шинҗллһнә сеткүлд немх',
 'tog-watchdeletion'           => 'Би эврәннь һарһсн халхс шинҗллһнә сеткүлд немх',
-'tog-minordefault'            => 'Цуг сольлһн баһ чинртә таасн болулх',
 'tog-previewontop'            => 'Сольлһна теегин өмн хәләвр үзүлх',
 'tog-previewonfirst'          => 'Сольхла, хәләвр үзүлх.',
 'tog-nocache'                 => 'Халхин кешлһн унтрах',
@@ -954,7 +953,7 @@ e-mail\'ар $PAGEEDITOR_EMAIL
 $2 шидрә һарһлһна төлә хәләтн.',
 'deletedarticle'        => '«[[$1]]» халхиг һарһв',
 'dellogpage'            => 'Һарһллһна сеткүл',
-'deletecomment'         => 'Һарһллһна учр:',
+'deletecomment'         => 'Учр:',
 'deleteotherreason'     => 'Талдан аль дәкәд учр:',
 'deletereasonotherlist' => 'Талдан учр',
 
@@ -1302,12 +1301,5 @@ $2 шидрә һарһлһна төлә хәләтн.',
 # HTML forms
 'htmlform-reset'               => 'Сольлһиг уга кех',
 'htmlform-selectorother-other' => 'Талдан',
-
-# Add categories per AJAX
-'ajax-add-category'        => 'Әәшлиг немх',
-'ajax-add-category-submit' => 'Немх',
-'ajax-confirm-save'        => 'Хадһлх',
-'ajax-error-title'         => 'Эндү',
-'ajax-error-dismiss'       => 'Тиим',
 
 );

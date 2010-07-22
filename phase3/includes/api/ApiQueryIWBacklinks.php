@@ -20,7 +20,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -87,7 +87,7 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 
 		$count = 0;
 		$result = $this->getResult();
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++ $count > $params['limit'] ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				// Continue string preserved in case the redirect query doesn't pass the limit
@@ -111,7 +111,6 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 				break;
 			}
 		}
-		$db->freeResult( $res );
 
 		$this->getResult()->setIndexedTagName_internal(
 			array( 'query', $this->getModuleName() ),
@@ -144,7 +143,7 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 	}
 
 	public function getDescription() {
-		return array('Find all pages that link to the given interwiki link.',
+		return array( 'Find all pages that link to the given interwiki link.',
 			'Can be used to find all links with a prefix, or',
 			'all links to a title (any prefix).',
 			'Using neither parameter is effectively "All IW Links"',

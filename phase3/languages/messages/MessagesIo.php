@@ -121,12 +121,11 @@ $messages = array(
 'tog-editsection'             => 'Kapabligez redakto di secioni per [redaktar]-ligamini',
 'tog-editsectiononrightclick' => 'Kapabligez redakto di secioni kande on dextra-klikus tituli di secioni (JavaScript bezonesas)',
 'tog-showtoc'                 => 'Montrez indexo (por pagini havanta plu multa kam 3 tituli)',
-'tog-rememberpassword'        => 'Memorez mea pasovorto en ica komputoro',
+'tog-rememberpassword'        => 'Memorez mea pasovorto en ica komputoro (maxime $1 {{PLURAL:$1|dio|dii}})',
 'tog-watchcreations'          => 'Adjuntez pagini kreota da me ad mea surveyaji',
 'tog-watchdefault'            => 'Adjuntez pagini redaktota da me ad mea surveyaji',
 'tog-watchmoves'              => 'Adjuntez pagini movota da me ad mea surveyaji',
 'tog-watchdeletion'           => 'Adjuntez pagini efacota da me ad mea surveyaji',
-'tog-minordefault'            => 'Markizez kustume omna redaktajo kom mikra',
 'tog-previewontop'            => 'Montrez prevido avan la redakto-buxo',
 'tog-previewonfirst'          => 'Montrez prevido pos la unesma redakto',
 'tog-nocache'                 => 'Nekapableskez cache-ar pagini',
@@ -432,7 +431,7 @@ Voluntez, ne obliviez chanjor vua [[Special:Preferences|preferaji en {{SITENAME}
 'yourname'                   => 'Vua uzantonomo:',
 'yourpassword'               => 'Pasovorto:',
 'yourpasswordagain'          => 'Riskribez la pasovorto:',
-'remembermypassword'         => 'Memorez mea pasovorto inter sesioni en ca komputoro',
+'remembermypassword'         => 'Memorez mea pasovorto en ca komputoro (maximo: $1 {{PLURAL:$1|dio|dii}})',
 'yourdomainname'             => 'Vua domano:',
 'login'                      => 'Enirar',
 'nav-login-createaccount'    => 'Enirar',
@@ -456,10 +455,11 @@ Voluntez, elektez ula diferanta uzantonomo.',
 'noname'                     => 'Vu ne donis valida uzantonomo.',
 'loginsuccesstitle'          => 'Eniro sucesoza',
 'loginsuccess'               => "'''Vu eniris a {{SITENAME}} kom \"\$1\".'''",
-'nosuchuser'                 => 'Ne existas uzero "$1".
+'nosuchuser'                 => 'Ne existas uzanto "$1".
 Uzanto-nomi esas mayu/minuskulo-distingenda.
 Kontrolez vua espelado, o [[Special:UserLogin/signup|krear nova konto]].',
-'nosuchusershort'            => 'Esas nula uzero "<nowiki>$1</nowiki>". Kontrolez la espelado.',
+'nosuchusershort'            => 'Esas nula uzanto "<nowiki>$1</nowiki>".
+Kontrolez la espelado.',
 'nouserspecified'            => 'Vu mustas specigar uzantonomo.',
 'wrongpassword'              => 'La skribita pasovorto esis nekorekta. Voluntez probar itere.',
 'wrongpasswordempty'         => 'Vu ne skribis pasovorto. Probez nove.',
@@ -643,6 +643,10 @@ Surskriburo: '''({{int:cur}})''' = diferi kun l'aktuala versiono,
 'revdelete-otherreason'      => 'Altra/suplementala motivo:',
 'revdelete-reasonotherlist'  => 'Altra motivo',
 
+# Revision move
+'revmove-reasonfield'    => 'Motivo:',
+'revmove-nullmove-title' => 'Nekorekta titulo',
+
 # History merging
 'mergehistory-reason' => 'Motivo:',
 
@@ -724,6 +728,7 @@ Probez prefixizar vua demando kun ''all:'' por serchar omna kontenajo (inkluzant
 'prefs-watchlist-edits-max'     => '(maxima nombro: 1000)',
 'prefs-misc'                    => 'Mixaji',
 'prefs-resetpass'               => 'Chanjar pasovorto',
+'prefs-rendering'               => 'Aspekto',
 'saveprefs'                     => 'Registragar',
 'resetprefs'                    => 'Riestablisar preferaji',
 'prefs-editing'                 => 'Grandeso dil areo por texto',
@@ -745,14 +750,16 @@ Probez prefixizar vua demando kun ''all:'' por serchar omna kontenajo (inkluzant
 'guesstimezone'                 => 'Obtenar la kloko dil "browser"',
 'timezoneregion-africa'         => 'Afrika',
 'timezoneregion-america'        => 'Amerika',
+'timezoneregion-antarctica'     => 'Antarktika',
 'timezoneregion-asia'           => 'Azia',
 'timezoneregion-atlantic'       => 'Atlantiko',
 'timezoneregion-australia'      => 'Australia',
 'timezoneregion-europe'         => 'Europa',
+'timezoneregion-indian'         => 'Indiana Oceano',
 'timezoneregion-pacific'        => 'Pacifico',
 'allowemail'                    => 'Permisez e-posti de altra uzanti',
 'prefs-namespaces'              => 'Nomari',
-'defaultns'                     => 'Serchar en la spaco-nomi omise:',
+'defaultns'                     => 'Altre serchar en ca nomari:',
 'prefs-files'                   => 'Arkivi',
 'youremail'                     => 'Vua e-adreso:',
 'username'                      => 'Uzantonomo:',
@@ -769,7 +776,9 @@ Ol mustas ne havar plu kam $1 {{PLURAL:$1|litero|literi}}.',
 'gender-female'                 => 'Femina',
 'email'                         => 'Elek-posto',
 'prefs-help-email-required'     => 'E-postala adreso es bezonata.',
+'prefs-info'                    => 'Bazala informeso',
 'prefs-signature'               => 'Signaturo',
+'prefs-diffs'                   => 'Diferi',
 
 # User rights
 'userrights-user-editname' => 'Skribez uzantonomo:',
@@ -804,6 +813,7 @@ Ol mustas ne havar plu kam $1 {{PLURAL:$1|litero|literi}}.',
 'right-rollback'      => 'Rapide retrorular la redakti da la lasta uzanto qua redaktis specigita pagino',
 
 # User rights log
+'rightslog'  => 'Uzanto-yuri-registraro',
 'rightsnone' => '(nula)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -853,7 +863,7 @@ Ol mustas ne havar plu kam $1 {{PLURAL:$1|litero|literi}}.',
 'recentchangeslinked-title'   => 'Chanji pri "$1"',
 'recentchangeslinked-summary' => "Co esas listo di recenta chanji ad pagini ligita da specigita pagino, od pagini en specigita kategorio.
 Pagini en [[Special:Watchlist|vua surveryo-listo]] esas '''dika'''.",
-'recentchangeslinked-page'    => 'Nomo dil pagino:',
+'recentchangeslinked-page'    => 'Nomo di la pagino:',
 'recentchangeslinked-to'      => 'Montrez chanji a pagini ligita a la specigita pagino vice',
 
 # Upload
@@ -863,8 +873,8 @@ Pagini en [[Special:Watchlist|vua surveryo-listo]] esas '''dika'''.",
 'uploadnologin'     => 'Vu ne eniris',
 'uploadnologintext' => 'Vu mustas [[Special:UserLogin|enirir]] por adkargar arkivi.',
 'uploaderror'       => 'Eroro dum adkargo',
-'uploadlog'         => 'Adkargo-log',
-'uploadlogpage'     => 'Adkargar-registraro',
+'uploadlog'         => 'adkargo-registraro',
+'uploadlogpage'     => 'Adkargo-registraro',
 'uploadlogpagetext' => 'Infre esas listo di la plu recenta adkargaji.
 Videz rezumo plu vidala en la [[Special:NewFiles|galerio di nova arkivi]].',
 'filename'          => 'Arkivo-nomo',
@@ -897,6 +907,8 @@ Volutez kontrolar '''<tt>[[:$1]]</tt>''' se vu ne esas certa pri chanjar olu.
 'file-anchor-link'          => 'Failo',
 'filehist'                  => 'Historio dil arkivo',
 'filehist-help'             => 'Kliktez sur la dato/horo por vidar arkivo quale ol aparis ye ta tempo.',
+'filehist-deleteall'        => 'efacar omno',
+'filehist-deleteone'        => 'efacar',
 'filehist-current'          => 'aktuala',
 'filehist-datetime'         => 'Dato/Horo',
 'filehist-thumb'            => 'Imajeto',
@@ -986,6 +998,7 @@ Volutez kontrolar '''<tt>[[:$1]]</tt>''' se vu ne esas certa pri chanjar olu.
 'protectedtitles'         => 'Protektita tituli',
 'listusers'               => 'Uzanto-listo',
 'usereditcount'           => '$1 {{PLURAL:$1|redakto|redakti}}',
+'usercreated'             => 'Kreita ye $1 $2',
 'newpages'                => 'Nova pagini',
 'newpages-username'       => 'Uzantonomo:',
 'ancientpages'            => 'Maxim anciena artikli',
@@ -1003,7 +1016,7 @@ Volutez kontrolar '''<tt>[[:$1]]</tt>''' se vu ne esas certa pri chanjar olu.
 'booksources-go'            => 'Irar',
 
 # Special:Log
-'specialloguserlabel'  => 'Uzero:',
+'specialloguserlabel'  => 'Uzanto:',
 'speciallogtitlelabel' => 'Titulo:',
 'log'                  => 'Registrari',
 'all-logs-page'        => 'Omna publika registrari',
@@ -1037,6 +1050,9 @@ Volutez kontrolar '''<tt>[[:$1]]</tt>''' se vu ne esas certa pri chanjar olu.
 
 # Special:ListUsers
 'listusers-submit' => 'Montrez',
+
+# Special:ActiveUsers
+'activeusers-noresult' => 'Nula uzanto trovesis.',
 
 # Special:Log/newusers
 'newuserlogpage'          => 'Uzanto-kreo-registro',
@@ -1113,7 +1129,7 @@ Videz $2 por obtenar registro di recenta efaci.',
 'dellogpagetext'        => 'Infre esas listo di la plu recenta efaci.',
 'deletionlog'           => 'registro di efaciti',
 'reverted'              => 'Rekuperita ad antea versiono',
-'deletecomment'         => "Motivo por l'efaco:",
+'deletecomment'         => 'Motivo:',
 'deleteotherreason'     => 'Altra/suplementala motivo:',
 'deletereasonotherlist' => 'Altra motivo',
 'deletereason-dropdown' => '*Ordinara motivi por efaco
@@ -1137,28 +1153,29 @@ La lasta chanjo a la pagino esis da [[User:$3|$3]] ([[User talk:$3|Diskutez]]{{i
 restauris ad lasta versiono da $2.',
 
 # Protect
-'protectlogpage'          => 'Protekto-registraro',
-'protectedarticle'        => 'protektita "[[$1]]"',
-'unprotectedarticle'      => 'desprotektita [[$1]]',
-'protect-title'           => 'Protektante "$1"',
-'prot_1movedto2'          => '[[$1]] movita a [[$2]]',
-'protect-legend'          => 'Konfirmar protekto',
-'protectcomment'          => 'Motivo:',
-'protectexpiry'           => 'Expiras:',
-'protect_expiry_invalid'  => 'Expirotempo es ne-valida.',
-'protect_expiry_old'      => 'Expirotempo es in pasinta.',
-'protect-default'         => 'Permisar omna uzanti',
-'protect-fallback'        => 'Bezonar permiso "$1"',
-'protect-level-sysop'     => 'Nur administranti',
-'protect-summary-cascade' => 'kaskade',
-'protect-expiring'        => 'expiras ye $1 (UTC)',
-'protect-othertime'       => 'Altra tempo:',
-'protect-othertime-op'    => 'altra tempo',
-'protect-otherreason'     => 'Altra/suplementala motivo:',
-'protect-otherreason-op'  => 'Altra motivo',
-'protect-expiry-options'  => '1 horo:1 hour,1 dio:1 day,1 semano:1 week,2 semani:2 weeks,1 monato:1 month,3 monati:3 months,6 monati:6 months,1 yaro:1 year,infinita:infinite',
-'restriction-type'        => 'Permiso:',
-'pagesize'                => '(bicoki)',
+'protectlogpage'            => 'Protekto-registraro',
+'protectedarticle'          => 'protektita "[[$1]]"',
+'unprotectedarticle'        => 'desprotektita [[$1]]',
+'protect-title'             => 'Protektante "$1"',
+'prot_1movedto2'            => '[[$1]] movita a [[$2]]',
+'protect-legend'            => 'Konfirmar protekto',
+'protectcomment'            => 'Motivo:',
+'protectexpiry'             => 'Expiras:',
+'protect_expiry_invalid'    => 'Expirotempo es ne-valida.',
+'protect_expiry_old'        => 'Expirotempo es in pasinta.',
+'protect-default'           => 'Permisar omna uzanti',
+'protect-fallback'          => 'Bezonar permiso "$1"',
+'protect-level-sysop'       => 'Nur administranti',
+'protect-summary-cascade'   => 'kaskade',
+'protect-expiring'          => 'expiras ye $1 (UTC)',
+'protect-expiry-indefinite' => 'nefinita',
+'protect-othertime'         => 'Altra tempo:',
+'protect-othertime-op'      => 'altra tempo',
+'protect-otherreason'       => 'Altra/suplementala motivo:',
+'protect-otherreason-op'    => 'Altra motivo',
+'protect-expiry-options'    => '1 horo:1 hour,1 dio:1 day,1 semano:1 week,2 semani:2 weeks,1 monato:1 month,3 monati:3 months,6 monati:6 months,1 yaro:1 year,infinita:infinite',
+'restriction-type'          => 'Permiso:',
+'pagesize'                  => '(bicoki)',
 
 # Restrictions (nouns)
 'restriction-edit'   => 'Redaktar',
@@ -1259,7 +1276,7 @@ Videz [[Special:IPBlockList|IP-blokuslisto]] por revizor blokusadi.',
 'change-blocklink'   => 'chanjar blokuso',
 'contribslink'       => 'kontrib',
 'autoblocker'        => 'Autoblokusita nam vu havas la sama IP-adreso kam "[[User:$1|$1]]". Motivo: "$2"',
-'blocklogpage'       => 'Blokusar-registraro',
+'blocklogpage'       => 'Blokuso-registraro',
 'blocklogentry'      => 'blokusis [[$1]] dum periodo de $2 $3',
 'unblocklogentry'    => 'desblokusis "$1"',
 'ipb_expiry_invalid' => 'Nevalida expiro-tempo.',
@@ -1579,13 +1596,5 @@ Vu darfos adjuntar kauso en la rezumo.',
 # HTML forms
 'htmlform-reset'               => 'Desfacar chanji',
 'htmlform-selectorother-other' => 'Altra',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Adjuntar kategorio',
-'ajax-add-category-submit'     => 'Adjuntar',
-'ajax-confirm-save'            => 'Registragar',
-'ajax-add-category-summary'    => 'Adjuntar kategorio "$1"',
-'ajax-remove-category-summary' => 'Forigar kategorio "$1"',
-'ajax-error-title'             => 'Eroro',
 
 );

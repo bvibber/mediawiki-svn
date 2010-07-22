@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -111,7 +111,7 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		$pageids = array();
 		$count = 0;
 		$result = $this->getResult();
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++ $count > $limit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				// TODO: Security issue - if the user has no right to view next title, it will still be shown
@@ -145,7 +145,6 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 				$pageids[] = $row->pl_from;
 			}
 		}
-		$db->freeResult( $res );
 
 		if ( is_null( $resultPageSet ) ) {
 			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'l' );
@@ -183,11 +182,16 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 	}
 
 	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
 			'from' => 'The page title to start enumerating from',
 			'prefix' => 'Search for all page titles that begin with this value',
-			'unique' => "Only show unique links. Cannot be used with generator or {$this->getModulePrefix()}prop=ids",
-			'prop' => 'What pieces of information to include',
+			'unique' => "Only show unique links. Cannot be used with generator or {$p}prop=ids",
+			'prop' => array(
+				'What pieces of information to include',
+				" ids    - Adds pageid of where the link is from (Cannot be used with {$p}unique)",
+				' title  - Adds the title of the link',
+			),
 			'namespace' => 'The namespace to enumerate',
 			'limit' => 'How many total links to return',
 			'continue' => 'When more results are available, use this to continue',
@@ -199,9 +203,10 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 	}
 
 	public function getPossibleErrors() {
+		$m = $this->getModuleName();
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'params', 'info' => $this->getModuleName() . ' cannot be used as a generator in unique links mode' ),
-			array( 'code' => 'params', 'info' => $this->getModuleName() . ' cannot return corresponding page ids in unique links mode' ),
+			array( 'code' => 'params', 'info' => "{$m} cannot be used as a generator in unique links mode" ),
+			array( 'code' => 'params', 'info' => "{$m} cannot return corresponding page ids in unique links mode" ),
 			array( 'code' => 'params', 'info' => 'alcontinue and alfrom cannot be used together' ),
 			array( 'code' => 'badcontinue', 'info' => 'Invalid continue parameter' ),
 		) );

@@ -71,7 +71,7 @@ div#mw-head h5 {
 	#p-personal {
 		position: absolute;
 		top: 0;
-		margin-right: 10em;
+		padding-right: 10em;
 		left: 0.75em;
 	}
 	#p-personal h5 {
@@ -87,10 +87,12 @@ div#mw-head h5 {
 		line-height: 1.125em;
 		float: left;
 	}
+	/* This one flips! */
 	#p-personal li {
 		margin-right: 0.75em;
 		margin-top: 0.5em;
 		font-size: 0.75em;
+		white-space: nowrap;
 	}
 	/* Navigation Containers */
 	#left-navigation {
@@ -156,19 +158,18 @@ div#mw-head h5 {
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div.vectorTabs li a {
 		display: inline-block;
-		height: 2.5em;
-		padding-right: 0.4em;
-		padding-left: 0.4em;
+		height: 1.9em;
+		padding-right: 0.5em;
+		padding-left: 0.5em;
 		background-image: url(images/tab-break.png?1);
 		background-position: bottom left;
 		background-repeat: no-repeat;
 	}
-	div.vectorTabs li a,
-	div.vectorTabs li a span {
+	div.vectorTabs li a{
 		color: #0645ad;
 		cursor: pointer;
 	}
-	div.vectorTabs li a span {
+	div.vectorTabs li a  {
 		font-size: 0.8em;
 	}
 	/* IGNORED BY IE6 */
@@ -176,27 +177,23 @@ div#mw-head h5 {
 		display: block;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
-	div.vectorTabs a span {
+	div.vectorTabs span a  {
 		display: inline-block;
 		padding-top: 1.25em;
 	}
 	/* IGNORED BY IE6 */
 	/* @noflip */
-	div.vectorTabs a > span {
+	div.vectorTabs span > a {
 		float: left;
 		display: block;
 	}
 	div.vectorTabs li.selected a,
-	div.vectorTabs li.selected a span,
-	div.vectorTabs li.selected a:visited
-	div.vectorTabs li.selected a:visited span {
+	div.vectorTabs li.selected a:visited{
 		color: #333333;
 		text-decoration: none;
 	}
 	div.vectorTabs li.new a,
-	div.vectorTabs li.new a span,
-	div.vectorTabs li.new a:visited,
-	div.vectorTabs li.new a:visited span {
+	div.vectorTabs li.new a:visited{
 		color: #a55858;
 	}
 	/* Variants and Actions */
@@ -349,6 +346,7 @@ div#mw-head h5 {
 	div#simpleSearch {
 		margin-top: 0.65em;
 		position: relative;
+		min-height: 1px; /* Gotta trigger hasLayout for IE7 */
 		border: solid 1px #AAAAAA;
 		background-color: white;
 		background-image: url(images/search-fade.png?1);
@@ -363,11 +361,17 @@ div#mw-head h5 {
 		font-size: 13px;
 		top: 0.25em;
 	}
+	div#simpleSearch .placeholder {
+		color: #999999;
+	}
+	div#simpleSearch input::-webkit-input-placeholder { 
+		color: #999999;
+	}
 	div#simpleSearch input#searchInput {
 		margin: 0;
 		border-width: 0;
 		padding: 3px;
-		line-height: 1em;
+		vertical-align: top;
 		/*
 		 * DON'T PANIC! Browsers that won't scale this properly are the same browsers that have JS issues that prevent
 		 * this from ever being shown anyways.
@@ -378,20 +382,18 @@ div#mw-head h5 {
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	div#simpleSearch button#searchButton {
-		margin: 0;
 		padding: 0;
-		width: 1.75em;
-		height: 16px;
+		margin: 0 5px;
 		border: none;
 		cursor: pointer;
 		background-color: transparent;
-		background-image: url(images/search-rtl.png?1);
-		background-position: center center;
-		background-repeat: no-repeat;
+		font-size: x-small;
 	}
-	/* IGNORED BY IE6 */
-	div#simpleSearch > button#searchButton {
-		height: 100%;
+	div#simpleSearch button#searchButton img {
+		border: none;
+		margin: 0;
+		padding: 0;
+		vertical-align: middle;
 	}
 /* Panel */
 div#mw-panel {
@@ -727,7 +729,11 @@ blockquote {
 	font-style: italic;
 }*/
 pre, code, tt {
-	font-family: monospace, sans-serif;
+	/*
+	 * It's important for this rule to first reference an actual font name, some browsers will render the monospace text
+	 * too small otherwise, namely Firefox, Chrome and Safari
+	 */
+	font-family: monospace, "Courier New";
 }
 code {
 	background-color: #f9f9f9;
@@ -898,16 +904,18 @@ div.magnify a, div.magnify img {
 	border: none !important;
 	background: none !important;
 }
+/* @noflip */
 div.tright {
-	clear: left;
-	float: left;
-	border-width: .5em 1.4em .8em 0;
-}
-div.tleft {
-	float: right;
 	clear: right;
-	margin-left: .5em;
+	float: right;
 	border-width: .5em 0 .8em 1.4em;
+}
+/* @noflip */
+div.tleft {
+	float: left;
+	clear: left;
+	margin-right: .5em;
+	border-width: .5em 1.4em .8em 0;
 }
 img.thumbborder {
 	border: 1px solid #dddddd;
@@ -1103,7 +1111,10 @@ div#bodyContent {
 	outline: none;
 	display: block;
 	width: 26px;
-	height: 2.5em;
+	/* This hides the text but shows the background image */
+	padding-top: 3.1em;
+	height: 0;
+	overflow: hidden;
 }
 #ca-unwatch.icon a {
 	background-image: url(images/watch-icons.png?1);

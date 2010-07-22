@@ -54,7 +54,6 @@ $messages = array(
 'tog-watchdefault'            => 'Προστιθέναι τὰς δέλτους ἃς μεταγράφω τοῖς ἐφορωμένοις μου',
 'tog-watchmoves'              => 'Προστιθέναι τὰς δέλτους ἃς κινῶ τοῖς ἐφορωμένοις μου',
 'tog-watchdeletion'           => 'Προστιθέναι τὰς δέλτους ἃς διαγράφω τοῖς ἐφορωμένοις μου',
-'tog-minordefault'            => 'Σημαίνειν ὡς ἥττονας ἁπάσας τὰς μεταγραφὰς προκαθωρισμένως',
 'tog-previewontop'            => 'Δεικνύναι τὸ προεπισκοπεῖν πρὸ τοῦ κυτίου μεταγραφῆς',
 'tog-previewonfirst'          => 'Τῆς πρώτης μεταγραφῆς, δεικνύναι τὸ προεπισκοπεῖν',
 'tog-nocache'                 => 'Ἀπενεργοποιεῖν τὸ κρύπτειν τὰς δέλτους',
@@ -734,7 +733,7 @@ $2',
 'revdelete-radio-unset'       => 'Οὐ',
 'revdelete-suppress'          => 'Κρύπτειν τὴν ἐμφάνισιν δεδομένων παρὰ τοὺς Γέροντας ἐπἴσης',
 'revdelete-unsuppress'        => 'Αἴρειν περιορίσεις ἐπὶ τῶν ἀποκατεστημένων ἐκδόσεων',
-'revdelete-log'               => 'Aἰτία διαγραφῆς:',
+'revdelete-log'               => 'Αἰτία:',
 'revdelete-submit'            => 'Ἐφαρμογὴ ἐπὶ {{PLURAL:$1|τῇ ἐπειλεγμένῇ ἀναθεωρήσει|ταῖς ἐπειλεγμέναις ἀναθεωρήσεσιν}}',
 'revdelete-logentry'          => 'ἠλλαγμένη ἡ ὁρατότης τῆς ἀναθεωρήσεως τοῦ [[$1]]',
 'logdelete-logentry'          => 'ἀλλάττειν τὴν ὁρατότητα τῶν γεγονότων διὰ τὸ [[$1]]',
@@ -745,6 +744,8 @@ $1",
 'logdelete-failure'           => "'''Ἡ ὁρατότης τοῦ καταλόγου μὴ ῥυθμίσιμος ἦν:'''
 $1",
 'revdel-restore'              => 'Ἀλλάττειν ὁρατότητα',
+'revdel-restore-deleted'      => 'ἐσβεσμέναι ἀναθεωρήσεις',
+'revdel-restore-visible'      => 'ὁραταὶ ἀναθεωρήσεις',
 'pagehist'                    => 'Ἱστορία δέλτου',
 'deletedhist'                 => 'Ἱστορία διαγεγραμμένη',
 'revdelete-content'           => 'περιεχόμενον',
@@ -766,6 +767,10 @@ $1",
 
 # Suppression log
 'suppressionlog' => 'Κατάλογος διαγραφῶν',
+
+# Revision move
+'revmove-reasonfield'    => 'Αἰτία:',
+'revmove-nullmove-title' => 'Κακὸν τὸ ἐπώνυμον',
 
 # History merging
 'mergehistory'                     => 'Συγχωνεύειν ἱστορίας δέλτων',
@@ -971,7 +976,6 @@ $1",
 'prefs-advancedrendering'       => 'Προηγμέναι ἐπιλογαί',
 'prefs-advancedsearchoptions'   => 'Προηγμέναι ἐπιλογαί',
 'prefs-advancedwatchlist'       => 'Προηγμέναι ἐπιλογαί',
-'prefs-display'                 => 'Ἐπίδειξις ἐπιλογῶν',
 'prefs-diffs'                   => 'Διαφοραί',
 
 # User rights
@@ -1316,7 +1320,7 @@ $1",
 'filedelete-legend'           => 'Διαγράφειν ἀρχεῖον',
 'filedelete-intro'            => "Διαγράφεις τὸ ἀρχεῖον '''[[Media:$1|$1]]''' μετὰ τῆς χρονογραφίας αὐτοῦ.",
 'filedelete-intro-old'        => "Διαγράφεις τὴν ἔκδοσιν τῆς '''[[Media:$1|$1]]''' μέχρι [$4 $3, $2].",
-'filedelete-comment'          => 'Αἰτία διαγραφῆς:',
+'filedelete-comment'          => 'Αἰτία:',
 'filedelete-submit'           => 'Διαγράφειν',
 'filedelete-success'          => "'''$1''' διαγραφὲν ἐστίν.",
 'filedelete-success-old'      => "Ἡ ἔκδοσις τῆς '''[[Media:$1|$1]]''' μέχρι $3, $2 διεγράφη.",
@@ -1648,7 +1652,7 @@ $NEWPAGE
 'dellogpagetext'         => 'Κατωτέρω ἐστὶ διαλογή τις τῶν ὑστάτων διαγραφῶν.',
 'deletionlog'            => 'κατάλογος διαγραφῶν',
 'reverted'               => 'Ἐπαναφορὰ εἰς προτέραν ἔκδοσιν',
-'deletecomment'          => 'Αἰτία τοῦ σβεννύναι:',
+'deletecomment'          => 'Αἰτία:',
 'deleteotherreason'      => 'Αἰτία ἄλλη/πρὀσθετος:',
 'deletereasonotherlist'  => 'Αἰτία ἄλλη',
 'deletereason-dropdown'  => '*Κοιναὶ αἰτίαι διαγραφῆς
@@ -1678,7 +1682,7 @@ $NEWPAGE
 'protect-title'               => 'Ἀλλάττειν κλίμακα προστασίας διὰ "$1"',
 'prot_1movedto2'              => '[[$1]] ἐκινήθη πρὸς [[$2]]',
 'protect-legend'              => 'Ἐπιβεβαιοῦν φύλαξιν',
-'protectcomment'              => 'Αιτία:',
+'protectcomment'              => 'Αἰτία:',
 'protectexpiry'               => 'Λήγει:',
 'protect_expiry_invalid'      => 'Ἄκυρος χρόνος λήξεως.',
 'protect_expiry_old'          => 'Χρόνος λήξεως ἐν τῷ παρελθόντι ἐστίν.',
@@ -2752,16 +2756,5 @@ $1',
 'htmlform-submit'              => 'Ὑποβάλλειν',
 'htmlform-reset'               => 'Ἀναστρέφειν μεταβολάς',
 'htmlform-selectorother-other' => 'Ἄλλον',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Προστιθέναι κατηγορίαν',
-'ajax-add-category-submit'     => 'Προστιθέναι',
-'ajax-confirm-title'           => 'Καταβεβαιοῦν δρᾶσιν',
-'ajax-confirm-save'            => 'Γράφειν',
-'ajax-add-category-summary'    => 'Προστιθέναι κατηγορίαν "$1"',
-'ajax-remove-category-summary' => 'Ἀφαιρεῖν κατηγορίαν "$1"',
-'ajax-confirm-actionsummary'   => 'Πρακτέα:',
-'ajax-error-title'             => 'Σφάλμα',
-'ajax-error-dismiss'           => 'εἶεν',
 
 );

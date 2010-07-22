@@ -56,7 +56,6 @@ $messages = array(
 'tog-watchdefault'            => 'Tsenya matlaka ao ke a fetolago go lenano laka la ditlhapetšo',
 'tog-watchmoves'              => 'Tsenya matlaka ao ke a hudušago go lenano laka la ditlhapetšo',
 'tog-watchdeletion'           => 'Tsenya matlaka ao ke a phumulago go lenano laka la ditlhapetšo',
-'tog-minordefault'            => 'Swaya diphetogo ka moka bjalo ka diphetogo tše nnyenyane',
 'tog-previewontop'            => 'Bontšha Ponopele pele ga lepokisi la diphetogo',
 'tog-previewonfirst'          => 'Bontšha Ponopeleka phetogo ya pele',
 'tog-nocache'                 => "Thibela go tsenya matlakala go segakolodi (''cache'')",
@@ -481,7 +480,7 @@ Leka [[Special:Search|go fetleka wikii]] go humana matlakala a mapsha.',
 # Revision deletion
 'rev-delundel'        => 'Bontšha/Fihla',
 'revdelete-hide-text' => 'Fihla dihlaka tša poeletšo',
-'revdelete-log'       => "Ahlaahla ''log'':",
+'revdelete-log'       => 'Lebaka:',
 
 # History merging
 'mergehistory-from' => 'Letlakala la mothopo:',
@@ -538,7 +537,7 @@ Le swanela goba fase ga $1 {{PLURAL:$1|ya tlhaka|ya ditlhaka}}',
 'userrights-editusergroup' => 'Fetola sehlopha sa bašomiši',
 'saveusergroups'           => 'Boloko Dihlopha tša bašomiši',
 'userrights-groupsmember'  => 'Leloko la:',
-'userrights-reason'        => 'Lebaka lago fetola:',
+'userrights-reason'        => 'Lebaka:',
 'userrights-no-interwiki'  => 'Gawa dumelwa go fetola di dumello tša mošumiši go di wiki tše dingwe.',
 
 # Groups
@@ -635,7 +634,7 @@ Matlakala ago ba [[Special:Watchlist|lenanong la gago la matlakala ditlhapetšo]
 'filedelete'                  => 'Phumula $1',
 'filedelete-legend'           => 'Phumula faele',
 'filedelete-intro'            => "O phumula '''[[Media:$1|$1]]'''.",
-'filedelete-comment'          => 'Lebaka la go phumula:',
+'filedelete-comment'          => 'Lebaka:',
 'filedelete-submit'           => 'Phumula',
 'filedelete-success'          => "'''$1''' e phumutšwe.",
 'filedelete-nofile'           => "'''$1''' ga e gona.",
@@ -797,7 +796,7 @@ Ka kgopela sitlediša gore ke se o nyakago  go sedira, le gore o kwešiša ditla
 Lebelela $2 go hweetša sedi ka diphulo tša bjale.',
 'deletedarticle'        => 'E phumutšwe "[[$1]]"',
 'dellogpage'            => "''Log'' yago phumula",
-'deletecomment'         => 'Lebaka la go phumula:',
+'deletecomment'         => 'Lebaka:',
 'deleteotherreason'     => 'Mabaka a mangwe:',
 'deletereasonotherlist' => 'Mabaka a mangwe',
 

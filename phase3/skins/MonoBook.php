@@ -76,7 +76,7 @@ class MonoBookTemplate extends QuickTemplate {
 
 	<h1 id="firstHeading" class="firstHeading"><?php $this->html('title') ?></h1>
 	<div id="bodyContent">
-		<h3 id="siteSub"><?php $this->msg('tagline') ?></h3>
+		<div id="siteSub"><?php $this->msg('tagline') ?></div>
 		<div id="contentSub"<?php $this->html('userlangattributes') ?>><?php $this->html('subtitle') ?></div>
 <?php if($this->data['undelete']) { ?>
 		<div id="contentSub2"><?php $this->html('undelete') ?></div>
@@ -310,7 +310,8 @@ if($this->data['copyrightico']) { ?>
 			<ul>
 <?php		foreach($this->data['language_urls'] as $langlink) { ?>
 				<li class="<?php echo htmlspecialchars($langlink['class'])?>"><?php
-				?><a href="<?php echo htmlspecialchars($langlink['href']) ?>"><?php echo $langlink['text'] ?></a></li>
+				?><a href="<?php echo htmlspecialchars($langlink['href']) ?>" title="<?php
+				echo htmlspecialchars($langlink['title']) ?>"><?php echo $langlink['text'] ?></a></li>
 <?php		} ?>
 			</ul>
 		</div>

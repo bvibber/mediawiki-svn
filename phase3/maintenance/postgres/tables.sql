@@ -392,7 +392,9 @@ CREATE TABLE interwiki (
   iw_prefix  TEXT      NOT NULL  UNIQUE,
   iw_url     TEXT      NOT NULL,
   iw_local   SMALLINT  NOT NULL,
-  iw_trans   SMALLINT  NOT NULL  DEFAULT 0
+  iw_trans   SMALLINT  NOT NULL  DEFAULT 0,
+  iw_api     TEXT      NOT NULL  DEFAULT '',
+  iw_wikiid  TEXT      NOT NULL  DEFAULT '',
 );
 
 
@@ -559,7 +561,8 @@ CREATE UNIQUE INDEX protected_titles_unique ON protected_titles(pt_namespace, pt
 
 
 CREATE TABLE updatelog (
-  ul_key TEXT NOT NULL PRIMARY KEY
+  ul_key TEXT NOT NULL PRIMARY KEY,
+  ul_value TEXT
 );
 
 

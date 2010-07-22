@@ -28,7 +28,17 @@ class FetchText extends Maintenance {
 		$this->mDescription = "Fetch the revision text from an old_id";
 	}
 
-	public function execute() {
+	/*
+	 * returns a string containing the following in order:
+	 *	 textid
+	 *	 \n
+	 *	 length of text (-1 on error = failure to retrieve/unserialize/gunzip/etc)
+	 *	 \n
+	 *	 text  (may be empty)
+	 *
+	 * note that that the text string itself is *not* followed by newline
+	 */
+	 public function execute() {
 		$db = wfGetDB( DB_SLAVE );
 		$stdin = $this->getStdin();
 		while ( !feof( $stdin ) ) {
@@ -39,16 +49,23 @@ class FetchText extends Maintenance {
 			}
 			$textId = intval( $line );
 			$text = $this->doGetText( $db, $textId );
-			$this->output( $textId . "\n" . strlen( $text ) . "\n" . $text );
+			if ($text === false) {
+				# actual error, not zero-length text
+				$textLen = "-1";
+			}
+			else {
+				$textLen = strlen($text);
+			}
+			$this->output( $textId . "\n" . $textLen . "\n" . $text );
 		}
 	}
-	
+
 	/**
- 	 * May throw a database error if, say, the server dies during query.
+	 * May throw a database error if, say, the server dies during query.
 	 * @param $db Database object
 	 * @param $id int The old_id
 	 * @return String
- 	 */
+	 */
 	private function doGetText( $db, $id ) {
 		$id = intval( $id );
 		$row = $db->selectRow( 'text',

@@ -9,6 +9,11 @@ if (webkit_match) {
 		clientPC.indexOf('spoofer') == -1;
 	var is_safari_win = is_safari && clientPC.indexOf('windows') != -1;
 	var webkit_version = parseInt(webkit_match[1]);
+	// Tests for chrome here, to avoid breaking old scripts safari left alone
+	// This is here for accesskeys
+	var is_chrome = clientPC.indexOf('chrome') !== -1 &&
+		clientPC.indexOf('spoofer') === -1;
+	var is_chrome_mac = is_chrome && clientPC.indexOf('mac') !== -1
 }
 // For accesskeys; note that FF3+ is included here!
 var is_ff2 = /firefox\/[2-9]|minefield\/3/.test( clientPC );
@@ -232,6 +237,8 @@ function escapeQuotesHTML( text ) {
 var tooltipAccessKeyPrefix = 'alt-';
 if ( is_opera ) {
 	tooltipAccessKeyPrefix = 'shift-esc-';
+} else if ( is_chrome ) {
+	tooltipAccessKeyPrefix = is_chrome_mac ? 'ctrl-option-' : 'alt-';
 } else if ( !is_safari_win && is_safari && webkit_version > 526 ) {
 	tooltipAccessKeyPrefix = 'ctrl-alt-';
 } else if ( !is_safari_win && ( is_safari
@@ -316,7 +323,25 @@ function addPortletLink( portlet, href, text, id, tooltip, accesskey, nextnode )
 	if ( !root ) {
 		return null;
 	}
-	var node = root.getElementsByTagName( 'ul' )[0];
+	var uls = root.getElementsByTagName( 'ul' );
+	var node;
+	if ( uls.length > 0 ) {
+		node = uls[0];
+	} else {
+		node = document.createElement( 'ul' );
+		var lastElementChild = null;
+		for ( var i = 0; i < root.childNodes.length; ++i ) { /* get root.lastElementChild */
+			if ( root.childNodes[i].nodeType == 1 ) {
+				lastElementChild = root.childNodes[i];
+			}
+		}
+		if ( lastElementChild && lastElementChild.nodeName.match( /div/i ) ) {
+			/* Insert into the menu divs */
+			lastElementChild.appendChild( node );
+		} else {
+			root.appendChild( node );
+		}
+	}
 	if ( !node ) {
 		return null;
 	}

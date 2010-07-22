@@ -322,7 +322,6 @@ $messages = array(
 'tog-watchdefault'            => 'Dodaj sve nove i izmijenjene stranice u popis praćenja',
 'tog-watchmoves'              => 'Dodaj sve stranice koje premjestim na popis praćenja',
 'tog-watchdeletion'           => 'Dodaj sve stranice koje izbrišem na popis praćenja',
-'tog-minordefault'            => 'Normalno označavaj sve moje izmjene kao manje',
 'tog-previewontop'            => 'Prikaži kako će stranica izgledati iznad okvira za uređivanje',
 'tog-previewonfirst'          => 'Prikaži kako će stranica izgledati čim otvorim uređivanje',
 'tog-nocache'                 => 'Isključi međuspremnik (cache) stranica.',
@@ -1098,7 +1097,7 @@ Drugi administratori ovoga projekta ({{SITENAME}}) moći će i dalje pristupiti 
 'revdelete-radio-unset'       => 'Ne',
 'revdelete-suppress'          => 'Sakrij podatke od administratora i ostalih suradnika',
 'revdelete-unsuppress'        => 'Ukloni ograničenja na vraćenim izmjenama',
-'revdelete-log'               => 'Razlog za brisanje:',
+'revdelete-log'               => 'Razlog:',
 'revdelete-submit'            => 'Primijeni na {{PLURAL:$1|odabranu inačicu|odabrane inačice}}',
 'revdelete-logentry'          => 'promijenjena vidljivost izmjene za [[$1]]',
 'logdelete-logentry'          => 'promijenjena vidljivost uređivanja [[$1]]',
@@ -1364,7 +1363,7 @@ Možete omogućiti drugima da vas kontaktiraju na suradničkoj stranici ili stra
 'prefs-advancedrendering'       => 'Napredne opcije',
 'prefs-advancedsearchoptions'   => 'Napredne opcije',
 'prefs-advancedwatchlist'       => 'Napredne opcije',
-'prefs-display'                 => 'Prikaži opcije',
+'prefs-displayrc'               => 'Prikaži opcije',
 'prefs-diffs'                   => 'razl',
 
 # User rights
@@ -1798,7 +1797,7 @@ Slijedeći popis prikazuje {{PLURAL:$1|stranice koje|prvih $1 stranica koje}} vo
 'filedelete-legend'           => 'Izbriši datoteku',
 'filedelete-intro'            => "Brišete datoteku '''[[Media:$1|$1]]''' uključujući i sve njezine stare izmjene.",
 'filedelete-intro-old'        => "Brišete inačicu '''[[Media:$1|$1]]''' od [$4 $3, $2].",
-'filedelete-comment'          => 'Komentar:',
+'filedelete-comment'          => 'Razlog:',
 'filedelete-submit'           => 'Izbriši',
 'filedelete-success'          => "Datoteka '''$1''' je izbrisana.",
 'filedelete-success-old'      => "Inačica datoteke '''[[Media:$1|$1]]''' od $3, $2 je obrisana.",
@@ -2176,7 +2175,7 @@ Vidi $2 za evidenciju nedavnih brisanja.',
 Sva vremena su prema poslužiteljevom vremenu.',
 'deletionlog'            => 'evidencija brisanja',
 'reverted'               => 'Vraćeno na prijašnju inačicu',
-'deletecomment'          => 'Razlog za brisanje',
+'deletecomment'          => 'Razlog:',
 'deleteotherreason'      => 'Drugi/dodatni razlog:',
 'deletereasonotherlist'  => 'Drugi razlog',
 'deletereason-dropdown'  => '*Razlozi brisanja stranica
@@ -2380,7 +2379,7 @@ vandalizirane).',
 'ipaddress'                       => 'IP adresa',
 'ipadressorusername'              => 'IP adresa ili suradničko ime',
 'ipbexpiry'                       => 'Rok (na engleskom)',
-'ipbreason'                       => 'Razlog',
+'ipbreason'                       => 'Razlog:',
 'ipbreasonotherlist'              => 'Drugi razlog',
 'ipbreason-dropdown'              => "*Najčešći razlozi za blokiranje
 ** Netočne informacije
@@ -2557,7 +2556,7 @@ Molimo odaberite drugo ime.',
 'movesubpage'                  => '{{PLURAL:$1|Podstranica|Podstranice}}',
 'movesubpagetext'              => 'Ova stranica ima $1 {{PLURAL:$1|podstarnicu|podstranice}} koje su prikazane ispod.',
 'movenosubpage'                => 'Ova stranica nema podstranica.',
-'movereason'                   => 'Razlog',
+'movereason'                   => 'Razlog:',
 'revertmove'                   => 'vrati',
 'delete_and_move'              => 'Izbriši i premjesti',
 'delete_and_move_text'         => '==Nužno brisanje==
@@ -2849,7 +2848,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Upozorenje''': Ova datoteka možda sadrži štetan kod.
-Njegovim izvršavanjem mogli biste oštetiti svoj sustav.<hr />",
+Njegovim izvršavanjem mogli biste oštetiti svoj sustav.",
 'imagemaxsize'         => "Ograniči veličinu slike:<br />''(za stranicu s opisom datoteke)''",
 'thumbsize'            => 'Veličina sličice (umanjene inačice slike):',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|stranica|stranice}}',
@@ -3399,6 +3398,15 @@ Unesite ime datoteke bez prefiksa "{{ns:file}}:"',
 'tags-edit'               => 'uredi',
 'tags-hitcount'           => '$1 {{PLURAL:$1|promjena|promjene|promjena}}',
 
+# Special:ComparePages
+'comparepages'     => 'Usporedite stranice',
+'compare-selector' => 'Usporedite inačice stranice',
+'compare-page1'    => 'Stranica 1',
+'compare-page2'    => 'Stranica 2',
+'compare-rev1'     => 'Izmjena 1',
+'compare-rev2'     => 'Izmjena 2',
+'compare-submit'   => 'Usporedite',
+
 # Database error messages
 'dberr-header'      => 'Ovaj wiki ima problem',
 'dberr-problems'    => 'Ispričavamo se! Ova stranica ima tehničkih poteškoća.',
@@ -3419,19 +3427,5 @@ Unesite ime datoteke bez prefiksa "{{ns:file}}:"',
 'htmlform-submit'              => 'Pošalji',
 'htmlform-reset'               => 'Poništi izmjene',
 'htmlform-selectorother-other' => 'Drugi',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Dodaj kategoriju',
-'ajax-add-category-submit'     => 'Dodaj',
-'ajax-confirm-title'           => 'Potvrdi radnju',
-'ajax-confirm-prompt'          => 'Kliknite na "Spremi" da biste sačuvali Vašu izmjenu.',
-'ajax-confirm-save'            => 'Spremi',
-'ajax-add-category-summary'    => 'Dodaj kategoriju "$1"',
-'ajax-remove-category-summary' => 'Ukloni kategoriju "$1"',
-'ajax-confirm-actionsummary'   => 'Radnja koja se izvodi:',
-'ajax-error-title'             => 'Greška',
-'ajax-error-dismiss'           => 'U redu',
-'ajax-remove-category-error'   => 'Nije bilo moguće ukloniti ovu kategoriju.
-Ovo se obično događa kada je kategorija dodana na stranicu u predlošku.',
 
 );

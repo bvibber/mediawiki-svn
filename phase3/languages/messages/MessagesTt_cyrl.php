@@ -157,7 +157,6 @@ $messages = array(
 'tog-watchdefault'            => 'Үзгәрткән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchmoves'              => 'Күчергән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchdeletion'           => 'Бетерелгән битләремне күзәтү исемлегемгә өстәү',
-'tog-minordefault'            => 'Барлык үзгәртүләрне килешү буенча кече дип билгеләнсен',
 'tog-previewontop'            => 'Үзгәртү тәрәзәсеннән өстәрәк битне алдан карау өлкәсен күрсәтелсен',
 'tog-previewonfirst'          => 'Үзгәртү битенә күчкәндә башта алдан карау бите күрсәтелсен',
 'tog-nocache'                 => 'Битләр кэшлауны тыярга',
@@ -1334,7 +1333,7 @@ $NEWPAGE
 'deletedarticle'        => '«[[$1]]» бетерелде',
 'dellogpage'            => 'Бетерү көндәлеге',
 'deletionlog'           => 'бетерү көндәлеге',
-'deletecomment'         => 'Бетерү сәбәбе:',
+'deletecomment'         => 'Сәбәп:',
 'deleteotherreason'     => 'Башка/өстәмә сәбәп:',
 'deletereasonotherlist' => 'Башка сәбәп',
 
@@ -1672,14 +1671,5 @@ $1',
 'htmlform-submit'              => 'Җибәрү',
 'htmlform-reset'               => 'Үзгәртүләрне кире кайтару',
 'htmlform-selectorother-other' => 'Башка',
-
-# Add categories per AJAX
-'ajax-add-category'          => 'Бүлек өстәргә',
-'ajax-add-category-submit'   => 'Өстәргә',
-'ajax-confirm-save'          => 'Саклау',
-'ajax-error-title'           => 'Хата',
-'ajax-error-dismiss'         => 'ОК',
-'ajax-remove-category-error' => 'Бу бүлекне алып ташлап булмады.
-Гадәттә шаблон аша өстәлгән бүлекләрдә шушындый хаталар чыга.',
 
 );

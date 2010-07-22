@@ -195,7 +195,7 @@ abstract class Maintenance {
 
 	/**
 	 * Return input from stdin.
-	 * @param $length Integer: the number of bytes to read. If null,
+	 * @param $len Integer: the number of bytes to read. If null,
 	 *        just return the handle. Maintenance::STDIN_ALL returns
 	 *        the full length
 	 * @return Mixed
@@ -217,13 +217,16 @@ abstract class Maintenance {
 	 * Throw some output to the user. Scripts can call this with no fears,
 	 * as we handle all --quiet stuff here
 	 * @param $out String: the text to show to the user
-	 * @param $channel Mixed: unique identifier for the channel. See function outputChanneled.
+	 * @param $channel Mixed: unique identifier for the channel. See
+	 *     function outputChanneled.
 	 */
 	protected function output( $out, $channel = null ) {
 		if ( $this->mQuiet ) {
 			return;
 		}
 		if ( $channel === null ) {
+			$this->cleanupChanneled();
+
 			$f = fopen( 'php://stdout', 'w' );
 			fwrite( $f, $out );
 			fclose( $f );
@@ -256,25 +259,34 @@ abstract class Maintenance {
 
 	private $atLineStart = true;
 	private $lastChannel = null;
-	
+
+	/**
+	 * Clean up channeled output.  Output a newline if necessary.
+	 */
+	public function cleanupChanneled() {
+		if ( !$this->atLineStart ) {
+			$handle = fopen( 'php://stdout', 'w' );
+			fwrite( $handle, "\n" );
+			fclose( $handle );
+			$this->atLineStart = true;
+		}
+	}
+
 	/**
 	 * Message outputter with channeled message support. Messages on the
 	 * same channel are concatenated, but any intervening messages in another
 	 * channel start a new line.
 	 * @param $msg String: the message without trailing newline
-	 * @param $channel Channel identifier or null for no channel. Channel comparison uses ===.
+	 * @param $channel Channel identifier or null for no
+	 *     channel. Channel comparison uses ===.
 	 */
 	public function outputChanneled( $msg, $channel = null ) {
-		$handle = fopen( 'php://stdout', 'w' );
-
 		if ( $msg === false ) {
-			// For cleanup
-			if ( !$this->atLineStart ) {
-				fwrite( $handle, "\n" );
-			}
-			fclose( $handle );
+			$this->cleanupChanneled();
 			return;
 		}
+
+		$handle = fopen( 'php://stdout', 'w' );
 
 		// End the current line if necessary
 		if ( !$this->atLineStart && $channel !== $this->lastChannel ) {
@@ -556,7 +568,7 @@ abstract class Maintenance {
 				$die = true;
 			}
 		}
-		
+
 		if ( $die ) {
 			$this->maybeHelp( true );
 		}
@@ -588,7 +600,7 @@ abstract class Maintenance {
 		$screenWidth = 80; // TODO: Caculate this!
 		$tab = "    ";
 		$descWidth = $screenWidth - ( 2 * strlen( $tab ) );
-		
+
 		ksort( $this->mParams );
 		if ( $this->hasOption( 'help' ) || $force ) {
 			$this->mQuiet = false;
@@ -772,7 +784,7 @@ abstract class Maintenance {
 	 * @param $delete Boolean: whether or not to actually delete the records
 	 * @author Rob Church <robchur@gmail.com>
 	 */
-	protected function purgeRedundantText( $delete = true ) {
+	public function purgeRedundantText( $delete = true ) {
 		# Data should come off the master, wrapped in a transaction
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();

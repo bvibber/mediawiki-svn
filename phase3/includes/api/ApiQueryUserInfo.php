@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -40,6 +40,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 	}
 
 	public function execute() {
+		$this->getMain()->setCachePrivate();
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 		$r = array();
@@ -54,7 +55,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 	}
 
 	protected function getCurrentUserInfo() {
-		global $wgUser;
+		global $wgUser, $wgRequest;
 		$result = $this->getResult();
 		$vals = array();
 		$vals['id'] = intval( $wgUser->getId() );
@@ -76,7 +77,9 @@ class ApiQueryUserInfo extends ApiQueryBase {
 		}
 
 		if ( isset( $this->prop['groups'] ) ) {
-			$vals['groups'] = $wgUser->getGroups();
+			$autolist = ApiQueryUsers::getAutoGroups( $wgUser );
+		
+			$vals['groups'] = array_merge( $autolist, $wgUser->getGroups() );
 			$result->setIndexedTagName( $vals['groups'], 'g' );	// even if empty
 		}
 
@@ -123,45 +126,17 @@ class ApiQueryUserInfo extends ApiQueryBase {
 		}
 		
 		if ( isset( $this->prop['acceptlang'] ) ) {
-			$vals['acceptlang'] = $this->getAcceptLang();
-			$result->setIndexedTagName( $vals['acceptlang'], 'lang' );
+			$langs = $wgRequest->getAcceptLang();
+			$acceptLang = array();
+			foreach ( $langs as $lang => $val ) {
+				$r = array( 'q' => $val );
+				ApiResult::setContent( $r, $lang );
+				$acceptLang[] = $r;
+			}
+			$result->setIndexedTagName( $acceptLang, 'lang' );
+			$vals['acceptlang'] = $acceptLang;
 		}
 		return $vals;
-	}
-	
-	protected function getAcceptLang() {
-		// Modified version of code found at http://www.thefutureoftheweb.com/blog/use-accept-language-header
-		if ( !isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
-			return array();
-		}
-		
-		// Break up string into pieces (languages and q factors)
-		$lang_parse = null;
-		preg_match_all( '/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0(\.[0-9]+))?)?/i',
-			$_SERVER['HTTP_ACCEPT_LANGUAGE'], $lang_parse );
-		
-		if ( !count( $lang_parse[1] ) ) {
-			return array();
-		}
-		// Create a list like "en" => 0.8
-		$langs = array_combine( $lang_parse[1], $lang_parse[4] );
-		// Set default q factor to 1
-		foreach ( $langs as $lang => $val ) {
-			if ( $val === '' ) {
-				$langs[$lang] = 1;
-			}
-		}
-		// Sort list
-		arsort( $langs, SORT_NUMERIC );
-		
-		// Format for API output
-		$retval = array();
-		foreach ( $langs as $lang => $val ) {
-			$r = array( 'q' => $val );
-			ApiResult::setContent( $r, $lang );
-			$retval[] = $r;
-		}
-		return $retval;
 	}
 
 	protected function getRateLimits() {

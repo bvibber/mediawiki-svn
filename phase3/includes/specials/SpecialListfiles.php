@@ -1,12 +1,27 @@
 <?php
 /**
- * @file
- * @ingroup SpecialPage
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
  */
 
 /**
- *
+ * @file
+ * @ingroup SpecialPage
  */
+ 
 function wfSpecialListfiles( $par = null ) {
 	global $wgOut;
 
@@ -173,21 +188,28 @@ class ImageListPager extends TablePager {
 	function getForm() {
 		global $wgRequest, $wgScript, $wgMiserMode;
 		$search = $wgRequest->getText( 'ilsearch' );
-
-		$s = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'mw-listfiles-form' ) ) .
-			Xml::openElement( 'fieldset' ) .
-			Xml::element( 'legend', null, wfMsg( 'listfiles' ) ) .
-			Xml::tags( 'label', null, wfMsgHtml( 'table_pager_limit', $this->getLimitSelect() ) );
-
+		$inputForm = array();
+		$inputForm['table_pager_limit_label'] = $this->getLimitSelect();
 		if ( !$wgMiserMode ) {
-			$s .= "<br />\n" .
-				Xml::inputLabel( wfMsg( 'listfiles_search_for' ), 'ilsearch', 'mw-ilsearch', 20, $search );
+			$inputForm['listfiles_search_for'] = Html::input( 'ilsearch', $search, 'text', array(
+								'size' => '40',
+								'maxlength' => '255',
+								'id' => 'mw-ilsearch',
+			) );
 		}
-		$s .= ' ' .
-			Xml::submitButton( wfMsg( 'table_pager_limit_submit' ) ) ."\n" .
-			$this->getHiddenFields( array( 'limit', 'ilsearch' ) ) .
-			Xml::closeElement( 'fieldset' ) .
-			Xml::closeElement( 'form' ) . "\n";
+		$inputForm['username'] = Html::input( 'username', $this->mUserName, 'text', array(
+						'size' => '40',
+						'maxlength' => '255',
+						'id' => 'mw-listfiles-username',
+		) );
+		$s = Html::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript, 'id' => 'mw-listfiles-form' ) ) .
+			Xml::fieldset( wfMsg( 'listfiles' ) ) .
+			Html::openElement( 'table', array( 'id' => 'mw-listfiles-table' ) ) .
+			Xml::buildForm( $inputForm, 'table_pager_limit_submit' ) .
+			$this->getHiddenFields( array( 'limit', 'ilsearch', 'username' ) ) .
+			Html::closeElement( 'table' ) .
+			Html::closeElement( 'fieldset' ) .
+			Html::closeElement( 'form' ) . "\n";
 		return $s;
 	}
 

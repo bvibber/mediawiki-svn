@@ -152,6 +152,11 @@ class ImagePage extends Article {
 			$wgOut->addHTML(
 				"<script type=\"text/javascript\">attachMetadataToggle('mw_metadata', '$expand', '$collapse');</script>\n" );
 		}
+		
+		$css = $this->repo->getDescriptionStylesheetUrl();
+		if ( $css ) {
+			$wgOut->addStyle( $css );
+		}
 	}
 	
 	public function getRedirectTarget() {
@@ -229,8 +234,8 @@ class ImagePage extends Article {
 	/**
 	 * Create the TOC
 	 *
-	 * @param bool $metadata Whether or not to show the metadata link
-	 * @return string
+	 * @param $metadata Boolean: whether or not to show the metadata link
+	 * @return String
 	 */
 	protected function showTOC( $metadata ) {
 		$r = array(
@@ -252,8 +257,8 @@ class ImagePage extends Article {
 	 *
 	 * FIXME: bad interface, see note on MediaHandler::formatMetadata().
 	 *
-	 * @param array $exif The array containing the EXIF data
-	 * @return string
+	 * @param $metadata Array: the array containing the EXIF data
+	 * @return String
 	 */
 	protected function makeMetadataTable( $metadata ) {
 		$r = "<div class=\"mw-imagepage-section-metadata\">";
@@ -323,9 +328,9 @@ class ImagePage extends Article {
 			} else {
 				$params = array( 'page' => $page );
 			}
-			$width_orig = $this->displayImg->getWidth();
+			$width_orig = $this->displayImg->getWidth( $page );
 			$width = $width_orig;
-			$height_orig = $this->displayImg->getHeight();
+			$height_orig = $this->displayImg->getHeight( $page );
 			$height = $height_orig;
 			$mime = $this->displayImg->getMimeType();
 			$showLink = false;
@@ -629,9 +634,7 @@ EOT
 		);
 		$count = $dbr->numRows( $res );
 		if ( $count == 0 ) {
-			$wgOut->addHTML( "<div id='mw-imagepage-nolinkstoimage'>\n" );
-			$wgOut->addWikiMsg( 'nolinkstoimage' );
-			$wgOut->addHTML( "</div>\n" );
+			$wgOut->wrapWikiMsg( Html::rawElement( 'div', array ( 'id' => 'mw-imagepage-nolinkstoimage' ), "\n$1\n" ), 'nolinkstoimage' );
 			return;
 		}
 		
@@ -646,30 +649,40 @@ EOT
 			);
 		}
 
-		$wgOut->addHTML( "<ul class='mw-imagepage-linkstoimage'>\n" );
+		$wgOut->addHTML( Html::openElement( 'ul', array( 'class' => 'mw-imagepage-linkstoimage' ) ) . "\n" );
 		$sk = $wgUser->getSkin();
 		$count = 0;
+		$elements = array();
 		while ( $s = $res->fetchObject() ) {
 			$count++;
 			if ( $count <= $limit ) {
 				// We have not yet reached the extra one that tells us there is more to fetch
-				$link = $sk->link(
-					Title::makeTitle( $s->page_namespace, $s->page_title ),
-					null,
-					array(),
-					array(),
-					array( 'known', 'noclasses' )
-				);
-				$wgOut->addHTML( "<li>{$link}</li>\n" );
+				$elements[] =  $s;
 			}
 		}
-		$wgOut->addHTML( "</ul>\n" );
+
+		// Sort the list by namespace:title
+		usort ( $elements, array( $this, 'compare' ) );
+
+		// Create links for every element
+		foreach( $elements as $element ) {    
+			$link = $sk->linkKnown( Title::makeTitle( $element->page_namespace, $element->page_title ) );
+			$wgOut->addHTML( Html::rawElement(
+						'li',
+						array( 'id' => 'mw-imagepage-linkstoimage-ns' . $element->page_namespace ),
+						$link
+					) . "\n"
+			);
+
+		};
+		$wgOut->addHTML( Html::closeElement( 'ul' ) . "\n" );
 		$res->free();
 
 		// Add a links to [[Special:Whatlinkshere]]
-		if ( $count > $limit )
+		if ( $count > $limit ) {
 			$wgOut->addWikiMsg( 'morelinkstoimage', $this->mTitle->getPrefixedDBkey() );
-		$wgOut->addHTML( "</div>\n" );
+		}
+		$wgOut->addHTML( Html::closeElement( 'div' ) . "\n" );
 	}
 	
 	protected function imageRedirects() {
@@ -796,6 +809,22 @@ EOT
 		$wgOut->addWikiText( $description );
 	}
 
+
+	/**
+	 * Callback for usort() to do link sorts by (namespace, title)
+	 * Function copied from Title::compare()
+	 * 
+	 * @param $a object page to compare with
+	 * @param $b object page to compare with
+	 * @return Integer: result of string comparison, or namespace comparison
+	 */
+	protected function compare( $a, $b ) {
+		if ( $a->page_namespace == $b->page_namespace ) {
+			return strcmp( $a->page_title, $b->page_title );
+		} else {
+			return $a->page_namespace - $b->page_namespace;
+		}
+	}
 }
 
 /**

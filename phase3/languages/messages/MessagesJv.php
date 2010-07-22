@@ -65,7 +65,6 @@ $messages = array(
 'tog-watchdefault'            => 'Tambahna kaca sing tak-sunting ing daftar pangawasan',
 'tog-watchmoves'              => 'Tambahkan kaca sing tak-pindhah ing daftar pangawasan',
 'tog-watchdeletion'           => 'Tambahkan kaca sing tak-busak ing daftar pangawasan',
-'tog-minordefault'            => 'Tandhanana kabèh suntingan dadi suntingan cilik secara baku',
 'tog-previewontop'            => 'Tuduhna pratayang sadurungé kothak sunting lan ora sawisé',
 'tog-previewonfirst'          => 'Tuduhna pratayang ing suntingan kapisan',
 'tog-nocache'                 => 'Patènana <em>cache</em> kaca',
@@ -524,6 +523,7 @@ Tulung nunggu dhisik sadurungé njajal manèh.',
 'resetpass_forbidden'       => 'Tembung sandhi ora bisa diganti',
 'resetpass-no-info'         => 'Panjenengan kudu mlebu log kanggo ngaksès kaca iki sacara langsung.',
 'resetpass-submit-loggedin' => 'Ganti tembung sandi',
+'resetpass-submit-cancel'   => 'Batal',
 'resetpass-wrong-oldpass'   => 'Tembung sandi ora sah. 
 Panjengen manawa wis kasil ganti tembung sandi utawa nyuwun tembung sandi sauntara sing anyar.',
 'resetpass-temp-password'   => 'Tembung sandi sauntara:',
@@ -801,7 +801,7 @@ Pangurus {{SITENAME}} liyané bakal tetep bisa ngaksès isi sing kadhelikaké ik
 'revdelete-radio-unset'       => 'Ora',
 'revdelete-suppress'          => 'Uga dhelikan saka pangurus',
 'revdelete-unsuppress'        => 'Busak watesan ing revisi sing dibalèkaké',
-'revdelete-log'               => 'Alesan pambusakan:',
+'revdelete-log'               => 'Alesan:',
 'revdelete-submit'            => 'Trapna ing {{PLURAL:$1|révisi|révisi}} kapilih',
 'revdelete-logentry'          => 'owahna tampilan revisi kanggo [[$1]]',
 'logdelete-logentry'          => 'owahna aturan pandhelikan saka [[$1]]',
@@ -841,6 +841,10 @@ Mangga priksa cathetan log.',
 # Suppression log
 'suppressionlog'     => "Log barang-barang sing didelikaké (''oversight'')",
 'suppressionlogtext' => "Ing ngisor iki kapacak daftar pambusakan lan pamblokiran pungkasan sing uga nyangkut isi sing didelikaké saka para opsis. Mangga mirsani [[Special:IPBlockList|daftar pamblokiran IP]] kanggo daftar pambuwangan (''ban'') lan pamblokiran sing saiki lagi operasional.",
+
+# Revision move
+'revmove-reasonfield'    => 'Alesan:',
+'revmove-nullmove-title' => 'Judhulé ora sah',
 
 # History merging
 'mergehistory'                     => 'Gabung sejarah kaca',
@@ -1059,7 +1063,7 @@ Panjenengan uga bisa milih supaya wong liya ngubungi panjenengan liwat jeneng pa
 'prefs-advancedrendering'       => 'Opsi lanjutan',
 'prefs-advancedsearchoptions'   => 'Opsi lanjutan',
 'prefs-advancedwatchlist'       => 'Opsi lanjutan',
-'prefs-display'                 => 'Opsi tampilan',
+'prefs-displayrc'               => 'Opsi tampilan',
 'prefs-diffs'                   => 'Prabédan',
 
 # User rights
@@ -1434,7 +1438,7 @@ Dhèskripsi saka [$2 kaca dhèskripsiné] kapacak ing ngisor iki.',
 'filerevert'                => 'Balèkna $1',
 'filerevert-legend'         => 'Balèkna berkas',
 'filerevert-intro'          => "Panjenengan mbalèkaké '''[[Media:$1|$1]]''' menyang [vèrsi $4 ing $3, $2].",
-'filerevert-comment'        => 'Komentar:',
+'filerevert-comment'        => 'Alesan:',
 'filerevert-defaultcomment' => 'Dibalèkaké menyang vèrsi ing $2, $1',
 'filerevert-submit'         => 'Balèkna',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' wis dibalèkaké menyang [vèrsi $4 ing $3, $2].",
@@ -1445,7 +1449,7 @@ Dhèskripsi saka [$2 kaca dhèskripsiné] kapacak ing ngisor iki.',
 'filedelete-legend'           => 'Mbusak berkas',
 'filedelete-intro'            => "Panjenengan bakal mbusak berkas '''[[Media:$1|$1]]''' sekaliyan kabèh riwayaté.",
 'filedelete-intro-old'        => "Panjenengan mbusak vèrsi '''[[Media:$1|$1]]''' per [$4 $3, $2].",
-'filedelete-comment'          => 'Alesan mbusak:',
+'filedelete-comment'          => 'Alesan:',
 'filedelete-submit'           => 'Busak',
 'filedelete-success'          => "'''$1''' wis dibusak.",
 'filedelete-success-old'      => "Berkas '''[[Media:$1|$1]]''' vèrsi $3, $2 wis dibusak.",
@@ -1799,7 +1803,7 @@ Umpan balik lan pitulung sabanjuré:
 'dellogpagetext'         => 'Ing ngisor iki kapacak log pambusakan kaca sing anyar dhéwé.',
 'deletionlog'            => 'Cathetan sing dibusak',
 'reverted'               => 'Dibalèkaké ing revisi sadurungé',
-'deletecomment'          => 'Alesan dibusak:',
+'deletecomment'          => 'Alesan:',
 'deleteotherreason'      => 'Alesan liya utawa tambahan:',
 'deletereasonotherlist'  => 'Alesan liya',
 'deletereason-dropdown'  => '*Alesan pambusakan
@@ -1865,7 +1869,7 @@ Ing ngisor iki kapacak konfigurasi kanggo kaca '''$1''':",
 'protect-othertime-op'        => 'wektu liya',
 'protect-existing-expiry'     => 'Wektu kadaluwarsa saiki: $3, $2',
 'protect-otherreason'         => 'Alesan liya/tambahan:',
-'protect-otherreason-op'      => 'alesan liya/tambahan',
+'protect-otherreason-op'      => 'Alesan liya',
 'protect-dropdown'            => '*Alesan umum pangreksan
 ** Vandalisme makaping-kaping
 ** Spam makaping-kaping
@@ -1918,7 +1922,7 @@ Panjenengan mbokmenawa ngetutaké pranala sing salah, utawa revisi iku wis dipul
 'undeleteviewlink'             => 'pirsani',
 'undeletereset'                => "''Reset''",
 'undeleteinvert'               => 'Walik pilihan',
-'undeletecomment'              => 'Komentar:',
+'undeletecomment'              => 'Alesan:',
 'undeletedarticle'             => '"$1" wis dibalèkaké',
 'undeletedrevisions'           => '$1 {{PLURAL:$1|révisi|révisi}} wis dibalèkaké',
 'undeletedrevisions-files'     => '$1 {{PLURAL:$1|révisi|révisi}} lan $2 berkas dibalèkaké',
@@ -1993,6 +1997,7 @@ $1',
 
 # Block/unblock
 'blockip'                         => 'Blokir panganggo',
+'blockip-title'                   => 'Blokir panganggo',
 'blockip-legend'                  => 'Blokir panganggo',
 'blockiptext'                     => 'Enggonen formulir ing ngisor iki kanggo mblokir sawijining alamat IP utawa panganggo supaya ora bisa nyunting kaca.
 Prekara iki perlu dilakoni kanggo menggak vandalisme, lan miturut [[{{MediaWiki:Policy-url}}|kawicaksanan {{SITENAME}}]].
@@ -2000,7 +2005,7 @@ Lebokna alesan panjenengan ing ngisor iki (contoné njupuk conto kaca sing wis t
 'ipaddress'                       => 'Alamat IP',
 'ipadressorusername'              => 'Alamat IP utawa jeneng panganggo',
 'ipbexpiry'                       => 'Kadaluwarsa',
-'ipbreason'                       => 'Alesan',
+'ipbreason'                       => 'Alesan:',
 'ipbreasonotherlist'              => 'Alesan liya',
 'ipbreason-dropdown'              => '*Alesan umum mblokir panganggo
 ** Mènèhi informasi palsu
@@ -2433,7 +2438,7 @@ $1',
 'nextdiff'     => 'Panyuntingan sing luwih anyar →',
 
 # Media information
-'mediawarning'         => "'''Pènget:''' Berkas iki mbokmenawa ngandhut kode sing bebayani, yèn dilakokaké sistém panjenengan bisa kena pangaruh ala.<hr />",
+'mediawarning'         => "'''Pènget:''' Berkas iki mbokmenawa ngandhut kode sing bebayani, yèn dilakokaké sistém panjenengan bisa kena pangaruh ala.",
 'imagemaxsize'         => "Wates ukuran gambar:<br />''(kanggo kaca dhèskripsi berkas)''",
 'thumbsize'            => 'Ukuran gambar cilik (thumbnail):',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|kaca|kaca}}',
@@ -2750,6 +2755,7 @@ Pranala-pranala sabanjuré ing baris sing padha dianggep minangka ''pengecualian
 'watchlistall2'    => 'kabèh',
 'namespacesall'    => 'kabèh',
 'monthsall'        => 'kabèh',
+'limitall'         => 'kabèh',
 
 # E-mail address confirmation
 'confirmemail'             => 'Konfirmasi alamat e-mail',
@@ -2898,7 +2904,7 @@ Panjenengan uga bisa [[Special:Watchlist/edit|nganggo éditor standar panjenenga
 # Special:FilePath
 'filepath'         => 'Lokasi berkas',
 'filepath-page'    => 'Berkas:',
-'filepath-submit'  => 'Lokasi',
+'filepath-submit'  => 'Golèk',
 'filepath-summary' => 'Kaca astaméwa utawa kusus iki nuduhaké jalur pepak sawijining berkas.
 Gambar dituduhaké mawa résolusi kebak lan tipe liyané berkas bakal dibuka langsung mawa program kagandhèng.
 
@@ -2980,12 +2986,5 @@ Katrangan tampilan:
 'htmlform-submit'              => 'Kirim',
 'htmlform-reset'               => 'Batalna pangowahan',
 'htmlform-selectorother-other' => 'Liya',
-
-# Add categories per AJAX
-'ajax-add-category'        => 'Tambah kategori',
-'ajax-add-category-submit' => 'Tambah',
-'ajax-confirm-save'        => 'Simpen',
-'ajax-error-title'         => 'Kaluputan',
-'ajax-error-dismiss'       => 'OK',
 
 );

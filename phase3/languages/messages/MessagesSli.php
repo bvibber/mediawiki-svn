@@ -42,7 +42,6 @@ $messages = array(
 'tog-watchdefault'            => 'Salber geänderte on neu erstellte Seyta automatisch beobachta (zu menner Beobachtungsliste hinzufügen)',
 'tog-watchmoves'              => 'Vo merr salber verschobene Seyta autoatisch beobachta',
 'tog-watchdeletion'           => 'Salber geläschte Seyta automatisch beobachta',
-'tog-minordefault'            => 'Eegene Änderunga standardmäßig als geringfiegich markiern',
 'tog-previewontop'            => 'Vurschau uberhoalb voo dam Beoarbeetungsfanster oazäan',
 'tog-previewonfirst'          => 'Beim irscha Beoarbeeta emmer de Vurschau oazeega',
 'tog-nocache'                 => 'Zwischaspeicharn derr Seyte (eim cache) deaktiviern',
@@ -779,7 +778,7 @@ Andere Administratoren uff {{SITENAME}} hoan Zugriff uff dann versteckta Inhalt 
 'revdelete-hide-restricted'   => 'Daten au vur Administratorn und andern underdricka',
 'revdelete-suppress'          => 'Grund der Läschung au vor Administratora verstecka',
 'revdelete-unsuppress'        => 'Einschränkungen fier wiederhergestallte Versionn uffhebn',
-'revdelete-log'               => 'Grund dar Läschung:',
+'revdelete-log'               => 'Begriendung:',
 'revdelete-submit'            => 'Uff ausgewählte {{PLURAL:$1|Version|Versiona}} oawenda',
 'revdelete-logentry'          => 'hoot de Versionsansicht fier „[[$1]]“ geändert',
 'logdelete-logentry'          => 'hoot de Sichtbarkeit fier „[[$1]]“ geändert',
@@ -1003,7 +1002,7 @@ Miet andern Nutzern koast du au ieber de Nutzerdischkurseyta Kontakt uffnahma, o
 'prefs-signature'           => 'Underschrift',
 'prefs-dateformat'          => 'Datumsfurmat',
 'prefs-timeoffset'          => 'Zeitunderschied',
-'prefs-display'             => 'Oazeigeoptiona',
+'prefs-displayrc'           => 'Oazeigeoptiona',
 
 # User rights
 'userrights'                  => 'Nutzerrechteverwaltung',
@@ -1355,7 +1354,7 @@ Anne [[Special:WhatLinksHere/$2|vullständige Liste]] ies verfiegbar.',
 'filedelete-legend'           => 'Läsche Datei',
 'filedelete-intro'            => "Du läschst de Datei '''„[[Media:$1|$1]]“''' inklusive ihrer Versionsgeschichte.",
 'filedelete-intro-old'        => "Du läschst vu dar Datei '''„[[Media:$1|$1]]“''' de [$4 Version vum $2, $3 Seeger].",
-'filedelete-comment'          => 'Grund:',
+'filedelete-comment'          => 'Begriendung:',
 'filedelete-submit'           => 'Läscha',
 'filedelete-success'          => "'''„$1“''' wourde geläscht.",
 'filedelete-success-old'      => "Vu dar Datei '''„[[Media:$1|$1]]“''' wurde de Version vum $2, $3 Seeger geläscht.",
@@ -1702,7 +1701,7 @@ Rickmeldungen und wettere Helfe: {{fullurl:{{MediaWiki:Helppage}}}}',
 'dellogpagetext'         => 'Dies ies doas Logbuch dar geläschta Seyta und Dateien.',
 'deletionlog'            => 'Läsch-Logbuch',
 'reverted'               => 'Uff anne aale Version zerrickegesetzt',
-'deletecomment'          => 'Grund dar Läschung:',
+'deletecomment'          => 'Begriendung:',
 'deleteotherreason'      => 'Anderer/ergänzender Grund:',
 'deletereasonotherlist'  => 'Anderer Grund',
 'deletereason-dropdown'  => '* Allgemeene Läschgrinde
@@ -2319,7 +2318,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Warnung:''' Dieser Dateityp koan beswilligen Programmcode enthalta.
-Durch doas Herunderloada und Effna dar Datei koan dei Computer beschädigt waan.<hr />",
+Durch doas Herunderloada und Effna dar Datei koan dei Computer beschädigt waan.",
 'imagemaxsize'         => "Maximale Bildgrieße:<br />''(fier Dateibeschreibungsseyta)''",
 'thumbsize'            => 'Standardgriße dar Vurschaubilder (Thumbnails):',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|1 Seyte|$3 Seyta}}',
@@ -2852,18 +2851,5 @@ De Eengabe muuß ohne dann Zusatz „{{ns:file}}:“ erfolga.',
 'htmlform-submit'              => 'Ieberträän',
 'htmlform-reset'               => 'Änderunga rickgängig macha',
 'htmlform-selectorother-other' => 'Ondere',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Kategorie hinzufiega',
-'ajax-add-category-submit'     => 'Hinzufügen',
-'ajax-confirm-title'           => 'Aksjonn bestätiga',
-'ajax-confirm-save'            => 'Speichern',
-'ajax-add-category-summary'    => 'Kategorie „$1“ hinzufiega',
-'ajax-remove-category-summary' => 'Kategorie „$1“ entferna',
-'ajax-confirm-actionsummary'   => 'Auszufiehrende Aksjonn:',
-'ajax-error-title'             => 'Fahler',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Is woar ne meeglich, de Kategorie zu entferna.
-Dies passiert normalerweise, wenn de Kategorie ieber anne Vurloage eingebunda ies.',
 
 );

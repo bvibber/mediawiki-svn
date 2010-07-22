@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -126,24 +126,29 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 			$data = array();
 			$res = $this->select( __METHOD__ );
-			while ( ( $r = $db->fetchObject( $res ) ) ) {
-				$user = User::newFromRow( $r );
+			foreach ( $res as $row ) {
+				$user = User::newFromRow( $row );
 				$name = $user->getName();
 				$data[$name]['name'] = $name;
+
 				if ( isset( $this->prop['editcount'] ) ) {
 					$data[$name]['editcount'] = intval( $user->getEditCount() );
 				}
+
 				if ( isset( $this->prop['registration'] ) ) {
 					$data[$name]['registration'] = wfTimestampOrNull( TS_ISO_8601, $user->getRegistration() );
 				}
-				if ( isset( $this->prop['groups'] ) && !is_null( $r->ug_group ) ) {
+
+				if ( isset( $this->prop['groups'] ) && !is_null( $row->ug_group ) ) {
 					// This row contains only one group, others will be added from other rows
-					$data[$name]['groups'][] = $r->ug_group;
+					$data[$name]['groups'][] = $row->ug_group;
 				}
-				if ( isset( $this->prop['blockinfo'] ) && !is_null( $r->blocker_name ) ) {
-					$data[$name]['blockedby'] = $r->blocker_name;
-					$data[$name]['blockreason'] = $r->ipb_reason;
+
+				if ( isset( $this->prop['blockinfo'] ) && !is_null( $row->blocker_name ) ) {
+					$data[$name]['blockedby'] = $row->blocker_name;
+					$data[$name]['blockreason'] = $row->ipb_reason;
 				}
+
 				if ( isset( $this->prop['emailable'] ) && $user->canReceiveEmail() ) {
 					$data[$name]['emailable'] = '';
 				}
@@ -157,6 +162,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 				}
 
 				if ( !is_null( $params['token'] ) ) {
+					// Don't cache tokens
+					$this->getMain()->setCachePrivate();
+					
 					$tokenFunctions = $this->getTokenFunctions();
 					foreach ( $params['token'] as $t ) {
 						$val = call_user_func( $tokenFunctions[$t], $user );
@@ -175,10 +183,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 				$data[$u] = array( 'name' => $u );
 				$urPage = new UserrightsPage;
 				$iwUser = $urPage->fetchUser( $u );
+
 				if ( $iwUser instanceof UserRightsProxy ) {
 					$data[$u]['interwiki'] = '';
+
 					if ( !is_null( $params['token'] ) ) {
 						$tokenFunctions = $this->getTokenFunctions();
+
 						foreach ( $params['token'] as $t ) {
 							$val = call_user_func( $tokenFunctions[$t], $iwUser );
 							if ( $val === false ) {
@@ -192,8 +203,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 					$data[$u]['missing'] = '';
 				}
 			} else {
-				if ( isset( $this->prop['groups'] ) && isset( $data[$u]['groups'] ) )
-				{
+				if ( isset( $this->prop['groups'] ) && isset( $data[$u]['groups'] ) ) {
+					$autolist = ApiQueryUsers::getAutoGroups( User::newFromName( $u ) );
+					
+					$data[$u]['groups'] = array_merge( $autolist, $data[$u]['groups'] );
+				
 					$this->getResult()->setIndexedTagName( $data[$u]['groups'], 'g' );
 				}
 			}
@@ -207,6 +221,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			$done[] = $u;
 		}
 		return $this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'user' );
+	}
+	
+	/**
+	* Gets all the groups that a user is automatically a member of
+	* @return array
+	*/
+	public static function getAutoGroups( $user ) {
+		$groups = array( '*' );
+
+		if ( !$user->isAnon() ) {
+			$groups[] = 'user';
+		}
+
+		return array_merge( $groups, Autopromote::getAutopromoteGroups( $user ) );
 	}
 
 	public function getAllowedParams() {

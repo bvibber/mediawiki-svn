@@ -232,7 +232,7 @@ class Preferences {
 
 		// Language
 		global $wgContLanguageCode;
-		$languages = array_reverse( Language::getLanguageNames( false ) );
+		$languages = Language::getLanguageNames( false );
 		if ( !array_key_exists( $wgContLanguageCode, $languages ) ) {
 			$languages[$wgContLanguageCode] = $wgContLanguageCode;
 		}
@@ -710,11 +710,6 @@ class Preferences {
 			'section' => 'editing/advancedediting',
 			'label-message' => 'tog-showtoolbar',
 		);
-		$defaultPreferences['minordefault'] = array(
-			'type' => 'toggle',
-			'section' => 'editing/advancedediting',
-			'label-message' => 'tog-minordefault',
-		);
 
 		if ( $wgUseExternalEditor ) {
 			$defaultPreferences['externaleditor'] = array(
@@ -750,7 +745,7 @@ class Preferences {
 		$defaultPreferences['rcdays'] = array(
 			'type' => 'float',
 			'label-message' => 'recentchangesdays',
-			'section' => 'rc/display',
+			'section' => 'rc/displayrc',
 			'min' => 1,
 			'max' => ceil( $wgRCMaxAge / ( 3600 * 24 ) ),
 			'help' => wfMsgExt(
@@ -763,7 +758,7 @@ class Preferences {
 			'type' => 'int',
 			'label-message' => 'recentchangescount',
 			'help-message' => 'prefs-help-recentchangescount',
-			'section' => 'rc/display',
+			'section' => 'rc/displayrc',
 		);
 		$defaultPreferences['usenewrc'] = array(
 			'type' => 'toggle',
@@ -807,7 +802,7 @@ class Preferences {
 			'type' => 'float',
 			'min' => 0,
 			'max' => 7,
-			'section' => 'watchlist/display',
+			'section' => 'watchlist/displaywatchlist',
 			'help' => wfMsgHtml( 'prefs-watchlist-days-max' ),
 			'label-message' => 'prefs-watchlist-days',
 		);
@@ -817,7 +812,7 @@ class Preferences {
 			'max' => 1000,
 			'label-message' => 'prefs-watchlist-edits',
 			'help' => wfMsgHtml( 'prefs-watchlist-edits-max' ),
-			'section' => 'watchlist/display',
+			'section' => 'watchlist/displaywatchlist',
 		);
 		$defaultPreferences['extendwatchlist'] = array(
 			'type' => 'toggle',
@@ -899,19 +894,19 @@ class Preferences {
 		$defaultPreferences['searchlimit'] = array(
 			'type' => 'int',
 			'label-message' => 'resultsperpage',
-			'section' => 'searchoptions/display',
+			'section' => 'searchoptions/displaysearchoptions',
 			'min' => 0,
 		);
 		$defaultPreferences['contextlines'] = array(
 			'type' => 'int',
 			'label-message' => 'contextlines',
-			'section' => 'searchoptions/display',
+			'section' => 'searchoptions/displaysearchoptions',
 			'min' => 0,
 		);
 		$defaultPreferences['contextchars'] = array(
 			'type' => 'int',
 			'label-message' => 'contextchars',
-			'section' => 'searchoptions/display',
+			'section' => 'searchoptions/displaysearchoptions',
 			'min' => 0,
 		);
 
@@ -920,7 +915,16 @@ class Preferences {
 			$defaultPreferences['disablesuggest'] = array(
 				'type' => 'toggle',
 				'label-message' => 'mwsuggest-disable',
-				'section' => 'searchoptions/display',
+				'section' => 'searchoptions/displaysearchoptions',
+			);
+		}
+		
+		global $wgVectorUseSimpleSearch;
+		if ( $wgVectorUseSimpleSearch ) {
+			$defaultPreferences['vector-simplesearch'] = array(
+				'type' => 'toggle',
+				'label-message' => 'vector-simplesearch-preference',
+				'section' => 'searchoptions/displaysearchoptions'
 			);
 		}
 
@@ -987,8 +991,8 @@ class Preferences {
 	}
 
 	/**
-	 * @param object $user The user object
-	 * @return array Text/links to display as key; $skinkey as value
+	 * @param $user The User object
+	 * @return Array: text/links to display as key; $skinkey as value
 	 */
 	static function generateSkinOptions( $user ) {
 		global $wgDefaultSkin, $wgLang, $wgAllowUserCss, $wgAllowUserJs;
@@ -1141,9 +1145,9 @@ class Preferences {
 		return true;
 	}
 
-	static function getFormObject( $user ) {
+	static function getFormObject( $user, $formClass = 'PreferencesForm' ) {
 		$formDescriptor = Preferences::getPreferences( $user );
-		$htmlForm = new PreferencesForm( $formDescriptor, 'prefs' );
+		$htmlForm = new $formClass( $formDescriptor, 'prefs' );
 
 		$htmlForm->setSubmitText( wfMsg( 'saveprefs' ) );
 		# Used message keys: 'accesskey-preferences-save', 'tooltip-preferences-save'

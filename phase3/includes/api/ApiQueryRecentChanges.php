@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -143,9 +143,11 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 			// Check permissions
 			global $wgUser;
-			if ( ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
-			{
-				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
+				$this->getMain()->setVaryCookie();
+				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
+					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+				}
 			}
 
 			/* Add additional conditions to query depending upon parameters. */
@@ -252,7 +254,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 
 		/* Iterate through the rows, adding data extracted from them to our query result. */
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++ $count > $params['limit'] ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				$this->setContinueEnumParameter( 'start', wfTimestamp( TS_ISO_8601, $row->rc_timestamp ) );
@@ -272,8 +274,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 				break;
 			}
 		}
-
-		$db->freeResult( $res );
 
 		/* Format the result */
 		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'rc' );
@@ -378,6 +378,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
 			global $wgUser;
+			$this->getMain()->setVaryCookie();
 			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
 		}
 
@@ -414,6 +415,9 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		}
 
 		if ( !is_null( $this->token ) ) {
+			// Don't cache tokens
+			$this->getMain()->setCachePrivate();
+			
 			$tokenFunctions = $this->getTokenFunctions();
 			foreach ( $this->token as $t ) {
 				$val = call_user_func( $tokenFunctions[$t], $row->rc_cur_id,
@@ -536,7 +540,21 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			'namespace' => 'Filter log entries to only this namespace(s)',
 			'user' => 'Only list changes by this user',
 			'excludeuser' => 'Don\'t list changes by this user',
-			'prop' => 'Include additional pieces of information',
+			'prop' => array(
+				'Include additional pieces of information',
+				' user           - Adds the user responsible for the edit and tags if they are an IP',
+				' comment        - Adds the comment for the edit',
+				' parsedcomment  - Adds the parsed comment for the edit',
+				' flags          - Adds flags for the edit',
+				' timestamp      - Adds timestamp of the edit',
+				' title          - Adds the page title of the edit',
+				' ids            - Adds the page id, recent changes id and the new and old revision id',
+				' sizes          - Adds the new and old page length in bytes',
+				' redirect       - Tags edit if page is a redirect',
+				' patrolled      - Tags edits have have been patrolled',
+				' loginfo        - Adds log information (logid, logtype, etc) to log entries',
+				' tags           - Lists tags for the entry',
+			),
 			'token' => 'Which tokens to obtain for each change',
 			'show' => array(
 				'Show only items that meet this criteria.',

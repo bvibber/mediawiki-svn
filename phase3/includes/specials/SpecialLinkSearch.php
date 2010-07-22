@@ -1,11 +1,29 @@
 <?php
 /**
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+/**
  * @file
  * @ingroup SpecialPage
  *
  * @author Brion Vibber
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
+ 
 
 /**
  * Special:LinkSearch to search the external-links table.
@@ -96,7 +114,7 @@ class LinkSearchPage extends QueryPage {
 		$field = 'el_index';
 		$rv = LinkFilter::makeLikeArray( $query , $prot );
 		if ($rv === false) {
-			//makeLike doesn't handle wildcard in IP, so we'll have to munge here.
+			// LinkFilter doesn't handle wildcard in IP, so we'll have to munge here.
 			if (preg_match('/^(:?[0-9]{1,3}\.)+\*\s*$|^(:?[0-9]{1,3}\.){3}[0-9]{1,3}:[0-9]*\*\s*$/', $query)) {
 				$rv = array( $prot . rtrim($query, " \t*"), $dbr->anyString() );
 				$field = 'el_to';

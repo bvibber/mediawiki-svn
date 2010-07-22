@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -127,6 +127,9 @@ class ApiQueryBlocks extends ApiQueryBase {
 				'ipb_auto' => 0
 			) );
 		}
+		
+		// Make sure private data (deleted blocks) isn't cached
+		$this->getMain()->setVaryCookie();
 		if ( !$wgUser->isAllowed( 'hideuser' ) ) {
 			$this->addWhereFld( 'ipb_deleted', 0 );
 		}
@@ -271,7 +274,17 @@ class ApiQueryBlocks extends ApiQueryBase {
 			'ip' => array(	'Get all blocks applying to this IP or CIDR range, including range blocks.',
 					'Cannot be used together with bkusers. CIDR ranges broader than /16 are not accepted' ),
 			'limit' => 'The maximum amount of blocks to list',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' id         - Adds the id of the block',
+				' user       - Adds the username of the blocked user',
+				' by         - Adds the username of the blocking admin',
+				' timestamp  - Adds the timestamp of when the block was given',
+				' expiry     - Adds the timestamp of when the block expires',
+				' reason     - Adds the reason given for the block',
+				' range      - Adds the range of IPs affected by the block',
+				' flags      - Tags the ban with (autoblock, anononly, etc)',
+			),
 		);
 	}
 

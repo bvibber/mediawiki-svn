@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -322,7 +322,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$count = 0;
 		$res = $this->select( __METHOD__ );
 
-		while ( $row = $db->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++ $count > $limit ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				if ( !$enumRevMode ) {
@@ -345,7 +345,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 				break;
 			}
 		}
-		$db->freeResult( $res );
 	}
 
 	private function extractRowInfo( $row ) {
@@ -396,6 +395,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 				if ( $this->fld_parsedcomment ) {
 					global $wgUser;
+					$this->getMain()->setVaryCookie();
 					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $comment, $title );
 				}
 			}
@@ -412,6 +412,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 
 		if ( !is_null( $this->token ) ) {
+			// Don't cache tokens
+			$this->getMain()->setCachePrivate();
+			
 			$tokenFunctions = $this->getTokenFunctions();
 			foreach ( $this->token as $t ) {
 				$val = call_user_func( $tokenFunctions[$t], $title->getArticleID(), $title, $revision );
@@ -452,6 +455,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 			}
 			if ( $this->expandTemplates ) {
+				global $wgParser;
 				$text = $wgParser->preprocess( $text, $title, new ParserOptions() );
 			}
 			ApiResult::setContent( $vals, $text );
@@ -549,7 +553,18 @@ class ApiQueryRevisions extends ApiQueryBase {
 	public function getParamDescription() {
 		$p = $this->getModulePrefix();
 		return array(
-			'prop' => 'Which properties to get for each revision',
+			'prop' => array(
+				'Which properties to get for each revision:',
+				' ids            - The ID of the revision',
+				' flags          - Revision flags (minor)',
+				' timestamp      - The timestamp of the revision',
+				' user           - Gives user to make the revision',
+				' size           - Length of the revision',
+				' comment        - Comment by the user for revision',
+				' parsedcomment  - Parsed comment by the user for the revision',
+				' content        - Text of the revision',
+				' tags           - Tags for the revision',
+			),
 			'limit' => 'Limit how many revisions will be returned (enum)',
 			'startid' => 'From which revision id to start enumeration (enum)',
 			'endid' => 'Stop revision enumeration on this revid (enum)',

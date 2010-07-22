@@ -79,6 +79,7 @@
  * @author Slomox
  * @author Sp5uhe
  * @author Srhat
+ * @author Tedjuh10
  * @author Tgr
  * @author The Evil IP address
  * @author UV
@@ -116,7 +117,6 @@ This is the toolbar: [[Image:Toolbar.png]]",
 'tog-watchdefault'            => "[[Special:Preferences]], tab 'Watchlist'. Offers user to add edited pages to watchlist.",
 'tog-watchmoves'              => "[[Special:Preferences]], tab 'Watchlist'. Offers user to add moved pages to watchlist.",
 'tog-watchdeletion'           => "[[Special:Preferences]], tab 'Watchlist'. Offers user to add deleted pages to watchlist.",
-'tog-minordefault'            => "[[Special:Preferences]], tab 'Edit'. Offers user to mark all edits minor by default.",
 'tog-previewontop'            => 'Toggle option used in [[Special:Preferences]].',
 'tog-previewonfirst'          => 'Toggle option used in [[Special:Preferences]].',
 'tog-nocache'                 => "[[Special:Preferences]], tab 'Misc.'. Offers the user the option of disabling caching of pages in the browser",
@@ -604,6 +604,7 @@ $1 is a filename, I think.',
 'viewsourcefor'        => 'Subtitle shown when trying to edit a protected page.
 
 {{Identical|For $1}}',
+'actionthrottled'      => 'This is the title of an error page. Read it in combination with {{msg-mw|actionthrottledtext}}.',
 'protectedpagetext'    => 'This message is displayed when trying to edit a page you can\'t edit because it has been protected.
 
 * $1: the protection type, e.g. "protect" for fully protected pages',
@@ -986,9 +987,9 @@ There are three radio buttons in each row, and the captions above each column re
 {{Identical|No}}',
 'revdelete-suppress'          => 'Option for oversight',
 'revdelete-unsuppress'        => '{{RevisionDelete}}',
-'revdelete-log'               => '{{Identical|Reason for deletion}}
+'revdelete-log'               => '{{Identical|Reason}}
 Log comment text for oversight. {{RevisionDelete}}
-[[File:RevDelete Special-RevisionDelete (r60428).png|frame|center|Screenshot of the interface]]',
+[[File:RevDelete Special-RevisionDelete (r60428).png|thumb|331px||Screenshot of the interface]]',
 'revdelete-submit'            => '{{RevisionDelete}}
 This is the submit button on [[Special:RevisionDelete]].
 [[File:RevDelete Special-RevisionDelete (r60428).png|frame|center|Screenshot of the interface]]',
@@ -1085,8 +1086,42 @@ Parameters:
 'suppressionlogtext' => 'Description text of the suppression log. Shown at top of [[Special:log/suppress]].',
 
 # Revision move
-'revisionmove'        => 'Title for a special page. $1 is the title of a page.',
-'revmove-reasonfield' => '{{Identical|Reason}}',
+'moverevlogentry'              => "Description of action in a log. The name of the user who did this action appears before this message.
+
+Refers to an action using the Revmove feature. The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don't change, only their associated page is changed.",
+'revisionmove'                 => 'Title for a special page. $1 is the title of a page.',
+'revmove-legend'               => 'The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don\'t change, only their associated page is changed.
+
+This message appears to be the legend of a fieldset. I guess that "Target page" should be the destination page of the move.',
+'revmove-submit'               => "The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don't change, only their associated page is changed.",
+'revisionmoveselectedversions' => "The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don't change, only their associated page is changed.",
+'revmove-reasonfield'          => '{{Identical|Reason}}',
+'revmove-titlefield'           => 'The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don\'t change, only their associated page is changed.
+
+This message appears to be a field legend. I guess that "Target page" is the destination page of the move.',
+'revmove-norevisions-title'    => 'This is the title of the page which contains the body text [[MediaWiki:Revmove-norevisions]].
+
+"Target revision" refers to one or more revisions which should be moved from one page to another. The revisions themselves don\'t change, only their associated page is changed.
+
+This text is for an error page of an error that normally should not happen (or only very rarely). A rough translation should suffice.',
+'revmove-norevisions'          => "The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don't change, only their associated page is changed.
+
+This message appears to be an error message. The word 'target' appears to be redundant (that means you can leave it out when translating).",
+'revmove-nullmove'             => 'The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don\'t change, only their associated page is changed.
+
+It appears that "Target page" is the destination page of the move.',
+'revmove-success-existing'     => "The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don't change, only their associated page is changed.
+
+Variables:
+* $1 is the number of revisions moved
+* $2 is the name of the source page
+* $3 is the name of the destination page",
+'revmove-success-created'      => "The Revmove feature refers to one or more revisions which should be moved from one page to another. The revisions themselves don't change, only their associated page is changed.
+
+Variables:
+* $1 is the number of revisions moved
+* $2 is the name of the source page
+* $3 is the name of the destination page",
 
 # History merging
 'mergehistory-autocomment'      => 'This message is used as an edit summary when a redirect is automatically created after an entire page history is merged into another page history, and the user who did the merge wrote no comment.
@@ -1164,7 +1199,7 @@ Possible alternatives to the word 'content' are 'subject matter' or 'wiki subjec
 'searchprofile-project'          => 'An option in the [[Special:Search]] page.',
 'searchprofile-images'           => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
 'searchprofile-everything'       => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.',
-'searchprofile-advanced'         => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:search] page.
+'searchprofile-advanced'         => 'An option in the [http://translatewiki.net/wiki/Special:Search Special:Search] page.
 
 {{Identical|Advanced}}',
 'searchprofile-articles-tooltip' => '{{Identical|Search in $1}}',
@@ -1334,9 +1369,20 @@ Used in [[Special:Preferences]]. Parameters are:
 {{Identical|Advanced options}}',
 'prefs-advancedwatchlist'       => 'Used in [[Special:Preferences]], tab "Watchlist".
 {{Identical|Advanced options}}',
-'prefs-display'                 => '"Display" is a noun that specifies the kind of "options". So translate as "options about display", not as "display the options".
+'prefs-displayrc'               => '"Display" is a noun that specifies the kind of "options". So translate as "options about display", not as "display the options".
 
-Used in [[Special:Preferences]], tab "Recent changes".',
+Used in [[Special:Preferences]], tab "Recent changes". The display options refer to:
+* {{msg-mw|Recentchangesdays}}
+* {{msg-mw|Recentchangescount}}',
+'prefs-displaysearchoptions'    => '"Display" is a noun that specifies the kind of "options". So translate as "options about display", not as "display the options".
+
+Used in [[Special:Preferences]], tab "Search options". The display options refer to:
+* {{msg-mw|Vector-simplesearch-preference}}',
+'prefs-displaywatchlist'        => '"Display" is a noun that specifies the kind of "options". So translate as "options about display", not as "display the options".
+
+Used in [[Special:Preferences]], tab "Watchlist". The display options refer to:
+* {{msg-mw|Prefs-watchlist-days}}
+* {{msg-mw|Prefs-watchlist-edits}}',
 'prefs-diffs'                   => 'Used in [[Special:Preferences]], tab "Misc".',
 
 # User rights
@@ -1506,6 +1552,7 @@ An alternative wording for translators could be \'Get the wiki to accept a track
 'right-override-export-depth' => '{{doc-right|override-export-depth}}',
 'right-sendemail'             => '{{doc-right}}',
 'right-revisionmove'          => '{{doc-right|revisionmove}}',
+'right-selenium'              => '{{Doc-right}}',
 
 # User rights log
 'rightslog'      => 'In [[Special:Log]]',
@@ -1834,6 +1881,7 @@ $1 is the name of the shared repository. On wikimedia sites, $1 is {{msg-mw|shar
 * {{msg-mw|shared-repo-from}}
 * {{msg-mw|sharedupload}}, {{msg-mw|sharedupload-desc-here}}, {{msg-mw|sharedupload-desc-there}}',
 'shared-repo-name-wikimediacommons' => '{{optional}}',
+'filepage.css'                      => '{{Optional}}',
 
 # File reversion
 'filerevert'                => '{{Identical|Revert}}',
@@ -1865,7 +1913,7 @@ $1 is the name of the shared repository. On wikimedia sites, $1 is {{msg-mw|shar
 * $2 is a date
 * $3 is a hour
 * $4 is an URL and must follow square bracket: [$4',
-'filedelete-comment'          => '{{Identical|Reason for deletion}}',
+'filedelete-comment'          => '{{Identical|Reason}}',
 'filedelete-submit'           => 'Delete button when deleting a file for admins
 
 {{Identical|Delete}}',
@@ -2082,7 +2130,7 @@ $1 is a page title",
 'allpagessubmit'    => 'Text on submit button in [[Special:AllPages]], [[Special:RecentChanges]], [[Special:RecentChangesLinked]], [[Special:NewPages]], [[Special:Log]], [[Special:ListUsers]], [[Special:ProtectedPages]], [[Special:ProtectedTitles]], [[Special:WhatLinksHere]] and [[Special:Watchlist]].
 
 {{Identical|Go}}',
-'allpagesprefix'    => 'Used for the label of the input box of [[Special:PrefixIndex]].',
+'allpagesprefix'    => "Used for the label of the input box of [[Special:PrefixIndex]]. On this page you can either write 'Name of namespace:string from which to begin display in alphabetical order' in the top box, or you can choose a namespace in the bottom box and put 'string from which to begin display in alphabetical order' in the top box. The result will be the same.",
 
 # Special:Categories
 'categories'                    => 'The page name of [[Special:Categories]].
@@ -2148,31 +2196,38 @@ $1 is a list of internet protocols.',
 'newuserlog-autocreate-entry' => 'This message is used in the [[:mw:Extension:Newuserlog|new user log]] to mark an account that was created by MediaWiki as part of a [[:mw:Extension:CentralAuth|CentralAuth]] global account.',
 
 # Special:ListGroupRights
-'listgrouprights'                 => 'The name of the special page [[Special:ListGroupRights]].',
-'listgrouprights-summary'         => 'The description used on [[Special:ListGroupRights]].',
-'listgrouprights-key'             => 'Footer note for the [[Special:ListGroupRights]] page',
-'listgrouprights-group'           => "The title of the column in the table, about user groups (like you are in the ''translator'' group).
+'listgrouprights'                  => 'The name of the special page [[Special:ListGroupRights]].',
+'listgrouprights-summary'          => 'The description used on [[Special:ListGroupRights]].',
+'listgrouprights-key'              => 'Footer note for the [[Special:ListGroupRights]] page',
+'listgrouprights-group'            => "The title of the column in the table, about user groups (like you are in the ''translator'' group).
 
 {{Identical|Group}}",
-'listgrouprights-rights'          => "The title of the column in the table, about user rights (like you can ''edit'' this page).",
-'listgrouprights-helppage'        => "The link used on [[Special:ListGroupRights]]. Just translate \"Group rights\", and '''leave the \"Help:\" namespace exactly as it is'''.",
-'listgrouprights-members'         => 'Used on [[Special:ListGroupRights]] and [[Special:Statistics]] as a link to [[Special:ListUsers|Special:ListUsers/"group"]], a list of members in that group.',
-'listgrouprights-right-display'   => "{{optional}}
+'listgrouprights-rights'           => "The title of the column in the table, about user rights (like you can ''edit'' this page).
+{{Identical|Right}}",
+'listgrouprights-helppage'         => "The link used on [[Special:ListGroupRights]]. Just translate \"Group rights\", and '''leave the \"Help:\" namespace exactly as it is'''.",
+'listgrouprights-members'          => 'Used on [[Special:ListGroupRights]] and [[Special:Statistics]] as a link to [[Special:ListUsers|Special:ListUsers/"group"]], a list of members in that group.',
+'listgrouprights-right-display'    => "{{optional}}
 * $1 is the text from the 'right-...' messages, i.e. [[MediaWiki:right-edit]] = {{int:right-edit}}
 * $2 is the codename of this right",
-'listgrouprights-right-revoked'   => "{{optional}}
+'listgrouprights-right-revoked'    => "{{optional}}
 * $1 is the text from the 'right-...' messages, i.e. [[MediaWiki:right-edit]] = {{int:right-edit}}
 * $2 is the codename of this right",
-'listgrouprights-addgroup'        => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+'listgrouprights-addgroup'         => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
 * $1 is an enumeration of group names.
 * $2 is the number of group names in $1.
 See also {{msg|listgrouprights-removegroup}}.',
-'listgrouprights-removegroup'     => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+'listgrouprights-removegroup'      => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
 * $1 is an enumeration of group names.
 * $2 is the number of group names in $1.
 See also {{msg|listgrouprights-addgroup}}.',
-'listgrouprights-addgroup-all'    => '{{doc-right}}',
-'listgrouprights-removegroup-all' => '{{doc-right}}',
+'listgrouprights-addgroup-all'     => '{{doc-right}}',
+'listgrouprights-removegroup-all'  => '{{doc-right}}',
+'listgrouprights-addgroup-self'    => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+* $1 are the group names.
+* $2 is the number of group names in $1.',
+'listgrouprights-removegroup-self' => 'This is an individual right for groups, used on [[Special:ListGroupRights]].
+* $1 are the group names.
+* $2 is the number of group names in $1.',
 
 # E-mail user
 'emailuser'        => 'Link in the sidebar',
@@ -2275,7 +2330,7 @@ $1 is the <b>approximate</b> number of revisions that the page has, the message 
 
 {{Identical|Deletion log}}',
 'reverted'               => '{{Identical|Revert}}',
-'deletecomment'          => '{{Identical|Reason for deletion}}',
+'deletecomment'          => '{{Identical|Reason}}',
 'deleteotherreason'      => '{{Identical|Other/additional reason}}',
 'deletereasonotherlist'  => '{{Identical|Other reason}}',
 'deletereason-dropdown'  => 'Default reasons for deletion. Displayed as a drop-down list. Format:
@@ -2451,6 +2506,7 @@ The link appears in a list of similar ones separated by {{msg-mw|pipe-separator}
 'sp-contributions-username'            => 'This message appears whenever someone requests [[Special:Contributions]].
 
 {{Identical/IP address or username}}',
+'sp-contributions-toponly'             => '"top revision" means the "latest revision"',
 'sp-contributions-submit'              => '{{Identical|Search}}',
 
 # What links here
@@ -2633,7 +2689,9 @@ Shown as subtitle of [[Special:MovePage/testpage]]. $1 is the title of the page 
 'move-page-legend'             => 'Legend of the fieldset around the input form of [[Special:MovePage/testpage]].
 
 {{Identical|Move page}}',
-'movepagetext'                 => 'Introduction shown when moving a page ([[Special:MovePage]]).',
+'movepagetext'                 => 'Introduction shown when moving a page ([[Special:MovePage]]).
+
+Special pages mentioned: {{msg-mw|Doubleredirects}}, {{msg-mw|Brokenredirects}}',
 'movepagetalktext'             => "Text on the special 'Move page'. This text only appears if the talk page is not empty.",
 'movearticle'                  => 'The text before the name of the page that you are moving.
 
@@ -2931,7 +2989,10 @@ The message appears after the name of the patroller.',
 'show-big-image'       => 'Displayed under an image at the image description page, when it is displayed smaller there than it was uploaded.',
 'show-big-image-thumb' => 'File info displayed on file description page.',
 'file-info-gif-looped' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/Gif .gif file] on its file description page. Looped means repeating in the context of an animated gif. It is a sequence of images, each displayed after the other, and the first one displayed after the last, in a never ending loop. For example of message in use see [[:File:Mouse10.gif]].',
-'file-info-gif-frames' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/Gif .gif file] on its file description page.
+'file-info-gif-frames' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/Gif .gif file] on its file description page.',
+'file-info-png-looped' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/APNG .apng file] on its file description page. Looped means repeating indefinetly in the context of an animated png. It is a sequence of images, each displayed after the other, and the first one displayed after the last, in a never ending loop.',
+'file-info-png-repeat' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/APNG .apng file] on its file description page. The sequence of images is repeating a limited amount of time. It is a sequence of images, each displayed after the other, and the first one displayed after the last, for $1 times.',
+'file-info-png-frames' => 'Part of the information provided about a [http://en.wikipedia.org/wiki/APNG .apng file] on its file description page.
 
 The variable $1 is the number of individual frames in an animated gif file.
 
@@ -3614,6 +3675,19 @@ Used on [[Special:Tags]]. Verb. Used as display text on a link to create/edit a 
 
 * <code>$1</code> is the number of changes marked with the tag',
 
+# Special:ComparePages
+'comparepages'     => 'The title of [[Special:ComparePages]]',
+'compare-selector' => 'Header of the form on [[Special:ComparePages]]',
+'compare-page1'    => 'Label for the field of the 1st page in the comparison for [[Special:ComparePages]]
+{{Identical|Page}}',
+'compare-page2'    => 'Label for the field of the 2nd page in the comparison for [[Special:ComparePages]]
+{{Identical|Page}}',
+'compare-rev1'     => 'Label for the field of the 1st revision in the comparison for [[Special:ComparePages]]
+{{Identical|Revision}}',
+'compare-rev2'     => 'Label for the field of the 2nd revision in the comparison for [[Special:ComparePages]]
+{{Identical|Revision}}',
+'compare-submit'   => 'Submit button on [[Special:ComparePages]]',
+
 # Database error messages
 'dberr-header'    => 'This message does not allow any wiki nor html markup.',
 'dberr-problems'  => 'This message does not allow any wiki nor html markup.',
@@ -3630,12 +3704,5 @@ Used on [[Special:Tags]]. Verb. Used as display text on a link to create/edit a 
 * stub threshold (appearance tab)
 
 {{Identical|Other}}',
-
-# Add categories per AJAX
-'ajax-add-category-submit'   => '{{Identical|Add}}',
-'ajax-confirm-save'          => '{{Identical|Save}}',
-'ajax-confirm-actionsummary' => 'This message is followed by one of the following messages; {{msg-mw|ajax-add-category-summary}}, {{msg-mw|ajax-remove-category-summary}}.',
-'ajax-error-title'           => '{{Identical|Error}}',
-'ajax-error-dismiss'         => '{{Identical|OK}}',
 
 );

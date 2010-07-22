@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -128,12 +128,12 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		// Otherwise, the group of the new row is appended to the last entry.
 		// The setContinue... is more complex because of this, and takes into account the higher sql limit
 		// to make sure all rows that belong to the same user are received.
-		//
-		while ( true ) {
-			$row = $db->fetchObject( $res );
+
+		$row = $db->fetchObject( $res );
+		foreach ( $res as $row ) {
 			$count++;
 
-			if ( !$row || $lastUser !== $row->user_name ) {
+			if ( $lastUser !== $row->user_name ) {
 				// Save the last pass's user data
 				if ( is_array( $lastUserData ) ) {
 					$fit = $result->addValue( array( 'query', $this->getModuleName() ),
@@ -143,11 +143,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 								$this->keyToTitle( $lastUserData['name'] ) );
 						break;
 					}
-				}
-
-				// No more rows left
-				if ( !$row ) {
-					break;
 				}
 
 				if ( $count > $limit ) {
@@ -187,8 +182,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 			}
 		}
 
-		$db->freeResult( $res );
-
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'u' );
 	}
 
@@ -226,6 +219,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 			'group' => 'Limit users to a given group name',
 			'prop' => array(
 				'What pieces of information to include.',
+				' blockinfo     - Adds the information about a current block on the user',
+				' groups        - Lists groups that the user is in',
+				' editcount     - Adds the edit count of the user',
+				' registration  - Adds the timestamp of when the user registered',
 				'`groups` property uses more server resources and may return fewer results than the limit' ),
 			'limit' => 'How many total user names to return',
 			'witheditsonly' => 'Only list users who have made edits',

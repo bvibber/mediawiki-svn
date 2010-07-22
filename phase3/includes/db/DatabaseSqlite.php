@@ -12,6 +12,8 @@
  */
 class DatabaseSqlite extends DatabaseBase {
 
+	private static $fulltextEnabled = null;
+
 	var $mAffectedRows;
 	var $mLastResult;
 	var $mDatabaseFile;
@@ -22,10 +24,14 @@ class DatabaseSqlite extends DatabaseBase {
 	 * Parameters $server, $user and $password are not used.
 	 */
 	function __construct( $server = false, $user = false, $password = false, $dbName = false, $failFunction = false, $flags = 0 ) {
+		global $wgSharedDB;
 		$this->mFailFunction = $failFunction;
 		$this->mFlags = $flags;
 		$this->mName = $dbName;
-		$this->open( $server, $user, $password, $dbName );
+
+		if ( $this->open( $server, $user, $password, $dbName ) && $wgSharedDB ) {
+			$this->attachDatabase( $wgSharedDB );
+		}
 	}
 
 	function getType() {
@@ -112,17 +118,57 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
+	 * Check if the searchindext table is FTS enabled.
+	 * @returns false if not enabled.
+	 */
+	function checkForEnabledSearch() {
+		if ( self::$fulltextEnabled === null ) {
+			self::$fulltextEnabled = false;
+			$res = $this->query( "SELECT sql FROM sqlite_master WHERE tbl_name = 'searchindex'", __METHOD__ );
+			if ( $res ) {
+				$row = $res->fetchRow();
+				self::$fulltextEnabled = stristr($row['sql'], 'fts' ) !== false;
+			}
+		}
+		return self::$fulltextEnabled;
+	}
+
+	/**
 	 * Returns version of currently supported SQLite fulltext search module or false if none present.
 	 * @return String
 	 */
 	function getFulltextSearchModule() {
 		$table = 'dummy_search_test';
 		$this->query( "DROP TABLE IF EXISTS $table", __METHOD__ );
+
 		if ( $this->query( "CREATE VIRTUAL TABLE $table USING FTS3(dummy_field)", __METHOD__, true ) ) {
 			$this->query( "DROP TABLE IF EXISTS $table", __METHOD__ );
 			return 'FTS3';
 		}
 		return false;
+	}
+
+	/**
+	 * Attaches external database to our connection, see http://sqlite.org/lang_attach.html
+	 * for details.
+	 * @param $name String: database name to be used in queries like SELECT foo FROM dbname.table
+	 * @param $file String: database file name. If omitted, will be generated using $name and $wgSQLiteDataDir
+	 * @param $fname String: calling function name
+	 */
+	function attachDatabase( $name, $file = false, $fname = 'DatabaseSqlite::attachDatabase' ) {
+		global $wgSQLiteDataDir;
+		if ( !$file ) {
+			$file = self::generateFileName( $wgSQLiteDataDir, $name );
+		}
+		$file = $this->addQuotes( $file );
+		return $this->query( "ATTACH DATABASE $file AS $name", $fname );
+	}
+
+	/**
+	 * @see DatabaseBase::isWriteQuery()
+	 */
+	function isWriteQuery( $sql ) {
+		return parent::isWriteQuery( $sql ) && !preg_match( '/^ATTACH\b/i', $sql );
 	}
 
 	/**
@@ -332,7 +378,7 @@ class DatabaseSqlite extends DatabaseBase {
 
 	function replace( $table, $uniqueIndexes, $rows, $fname = 'DatabaseSqlite::replace' ) {
 		if ( !count( $rows ) ) return true;
-	
+
 		# SQLite can't handle multi-row replaces, so divide up into multiple single-row queries
 		if ( isset( $rows[0] ) && is_array( $rows[0] ) ) {
 			$ret = true;
@@ -388,14 +434,6 @@ class DatabaseSqlite extends DatabaseBase {
 	function getServerVersion() {
 		$ver = $this->mConn->getAttribute( PDO::ATTR_SERVER_VERSION );
 		return $ver;
-	}
-
-	/**
-	 * Query whether a given column exists in the mediawiki schema
-	 */
-	function fieldExists( $table, $field, $fname = '' ) {
-		$info = $this->fieldInfo( $table, $field );
-		return (bool)$info;
 	}
 
 	/**
@@ -472,13 +510,6 @@ class DatabaseSqlite extends DatabaseBase {
 	}
 
 	/**
-	 * How lagged is this slave?
-	 */
-	public function getLag() {
-		return 0;
-	}
-
-	/**
 	 * Called by the installer script (when modified according to the MediaWikiLite installation instructions)
 	 * - this is the same way PostgreSQL works, MySQL reads in tables.sql and interwiki.sql using dbsource (which calls db->sourceFile)
 	 */
@@ -498,7 +529,7 @@ class DatabaseSqlite extends DatabaseBase {
 		if ( !$f ) {
 			dieout( "Could not find the interwiki.sql file." );
 		}
-		
+
 		$sql = "INSERT INTO interwiki(iw_prefix,iw_url,iw_local) VALUES ";
 		while ( !feof( $f ) ) {
 			$line = fgets( $f, 1024 );
@@ -507,7 +538,7 @@ class DatabaseSqlite extends DatabaseBase {
 			$this->query( "$sql $matches[1],$matches[2])" );
 		}
 	}
-	
+
 	public function getSearchEngine() {
 		return "SearchSqlite";
 	}
@@ -543,7 +574,7 @@ class DatabaseSqlite extends DatabaseBase {
 			// DATETIME -> TEXT
 			$s = preg_replace( '/\b(datetime|timestamp)\b/i', 'TEXT', $s );
 			// No ENUM type
-			$s = preg_replace( '/enum\([^)]*\)/i', 'BLOB', $s );
+			$s = preg_replace( '/\benum\s*\([^)]*\)/i', 'TEXT', $s );
 			// binary collation type -> nothing
 			$s = preg_replace( '/\bbinary\b/i', '', $s );
 			// auto_increment -> autoincrement
@@ -627,7 +658,7 @@ class SQLiteField {
 		return true;
 	}
 
-	# isKey(),  isMultipleKey() not implemented, MySQL-specific concept. 
+	# isKey(),  isMultipleKey() not implemented, MySQL-specific concept.
 	# Suggest removal from base class [TS]
 
 	function type() {

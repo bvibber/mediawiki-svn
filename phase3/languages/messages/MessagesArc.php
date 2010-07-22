@@ -604,7 +604,6 @@ Note that some pages may continue to be displayed as if you were still logged in
 'prefs-advancedrendering'     => 'ܓܒܝܬ̈ܐ ܡܬܩܕ̈ܡܢܐ',
 'prefs-advancedsearchoptions' => 'ܓܒܝܬ̈ܐ ܡܬܩܕ̈ܡܢܐ',
 'prefs-advancedwatchlist'     => 'ܓܒܝܬ̈ܐ ܡܬܩܕ̈ܡܢܐ',
-'prefs-display'               => 'ܚܘܝ ܓܒܝܬ̈ܐ',
 'prefs-diffs'                 => 'ܦܪ̈ܝܫܘܝܬܐ',
 
 # User rights
@@ -761,7 +760,7 @@ Note that some pages may continue to be displayed as if you were still logged in
 # File deletion
 'filedelete'                  => 'ܫܘܦ $1',
 'filedelete-legend'           => 'ܫܘܦ ܠܦܦܐ',
-'filedelete-comment'          => 'ܥܠܬܐ ܕܫܝܦܐ:',
+'filedelete-comment'          => 'ܥܠܬܐ:',
 'filedelete-submit'           => 'ܫܘܦ',
 'filedelete-nofile'           => "'''$1''' ܠܝܬ.",
 'filedelete-otherreason'      => 'ܥܠܬܐ ܐܚܪܬܐ:',
@@ -967,7 +966,7 @@ Note that some pages may continue to be displayed as if you were still logged in
 'deletedarticle'         => 'ܫܦ "[[$1]]"',
 'dellogpage'             => 'ܣܓܠܐ ܕܫܝܦܐ',
 'deletionlog'            => 'ܣܓܠܐ ܕܫܝܦܐ',
-'deletecomment'          => 'ܥܠܬܐ ܕܫܝܦܐ:',
+'deletecomment'          => 'ܥܠܬܐ:',
 'deleteotherreason'      => 'ܥܠܬܐ ܐܚܪܬܐ/ܝܬܝܪܬܐ:',
 'deletereasonotherlist'  => 'ܥܠܬܐ ܐܚܪܬܐ',
 'delete-edit-reasonlist' => 'ܫܚܠܦ ܥܠܠܬ̈ܐ ܕܫܝܦܐ',
@@ -1336,13 +1335,5 @@ Do you want to change the settings?',
 'htmlform-submit'              => 'ܫܕܪ',
 'htmlform-reset'               => 'ܠܐ ܥܒܘܕ ܫܘܚܠܦ̈ܐ',
 'htmlform-selectorother-other' => 'ܐܚܪܢܐ',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'ܐܘܣܦ ܣܕܪܐ',
-'ajax-add-category-submit'     => 'ܐܘܣܦ',
-'ajax-confirm-save'            => 'ܢܛܘܪ',
-'ajax-remove-category-summary' => 'ܠܚܝ ܣܕܪܐ "$1"',
-'ajax-error-title'             => 'ܦܘܕܐ',
-'ajax-error-dismiss'           => 'ܛܒ',
 
 );

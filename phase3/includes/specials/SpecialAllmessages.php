@@ -1,5 +1,23 @@
 <?php
 /**
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+/**
  * Use this special page to get a list of the MediaWiki system messages.
  * @file
  * @ingroup SpecialPage
@@ -375,43 +393,4 @@ class AllmessagesTablePager extends TablePager {
 		return '';
 	}
 }
-/* Overloads the relevant methods of the real ResultsWrapper so it
- * doesn't go anywhere near an actual database.
- */
-class FakeResultWrapper extends ResultWrapper {
 
-	var $result     = array();
-	var $db         = null;	// And it's going to stay that way :D
-	var $pos        = 0;
-	var $currentRow = null;
-
-	function __construct( $array ){
-		$this->result = $array;
-	}
-
-	function numRows() {
-		return count( $this->result );
-	}
-
-	function fetchRow() {
-		$this->currentRow = $this->result[$this->pos++];
-		return $this->currentRow;
-	}
-
-	function seek( $row ) {
-		$this->pos = $row;
-	}
-
-	function free() {}
-
-	// Callers want to be able to access fields with $this->fieldName
-	function fetchObject(){
-		$this->currentRow = $this->result[$this->pos++];
-		return (object)$this->currentRow;
-	}
-
-	function rewind() {
-		$this->pos = 0;
-		$this->currentRow = null;
-	}
-}

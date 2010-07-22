@@ -115,8 +115,10 @@ class Skin extends Linker {
 
 		if( isset( $skinNames[$key] ) ) {
 			return $key;
+		} else if( isset( $skinNames[$wgDefaultSkin] ) ) {
+			return $wgDefaultSkin;
 		} else {
-			return 'monobook';
+			return 'vector';
 		}
 	}
 
@@ -150,8 +152,8 @@ class Skin extends Linker {
 				# except by SQL manipulation if a previously valid skin name
 				# is no longer valid.
 				wfDebug( "Skin class does not exist: $className\n" );
-				$className = 'SkinMonobook';
-				require_once( "{$wgStyleDirectory}/MonoBook.php" );
+				$className = 'SkinVector';
+				require_once( "{$wgStyleDirectory}/Vector.php" );
 			}
 		}
 		$skin = new $className;
@@ -388,7 +390,7 @@ class Skin extends Linker {
 			implode( "\t", $digitTransTable ),
 		);
 
-		$mainPage = Title::newFromText( wfMsgForContent( 'mainpage' ) );
+		$mainPage = Title::newMainPage();
 		$vars = array(
 			'skin' => $skinName,
 			'stylepath' => $wgStylePath,
@@ -616,11 +618,7 @@ CSS;
 		// Per-site custom styles
 		if( $wgUseSiteCss ) {
 			global $wgHandheldStyle;
-			$query = wfArrayToCGI( array(
-				'usemsgcache' => 'yes',
-				'ctype' => 'text/css',
-				'smaxage' => $wgSquidMaxage
-			) + $siteargs );
+			$query = wfArrayToCGI( self::getDynamicStylesheetQuery() );
 			# Site settings must override extension css! (bug 15025)
 			$out->addStyle( self::makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI ) );
 			$out->addStyle( self::makeNSUrl( 'Print.css', $query, NS_MEDIAWIKI ), 'print' );
@@ -665,6 +663,22 @@ CSS;
 		}
 
 		wfProfileOut( __METHOD__ );
+	}
+	
+	/**
+	 * Get the query to generate a dynamic stylesheet
+	 * 
+	 * @return array
+	 */
+	public static function getDynamicStylesheetQuery() {
+		global $wgSquidMaxage;
+		return array(
+				'action' => 'raw',
+				'maxage' => $wgSquidMaxage,
+				'usemsgcache' => 'yes',
+				'ctype' => 'text/css',
+				'smaxage' => $wgSquidMaxage,
+			);
 	}
 
 	/**
@@ -1511,11 +1525,16 @@ CSS;
 			return $out;
 		}
 		// Allow for site and per-namespace customization of copyright notice.
+		$forContent = true;
 		if( isset( $wgArticle ) ) {
-			wfRunHooks( 'SkinCopyrightFooter', array( $wgArticle->getTitle(), $type, &$msg, &$link ) );
+			wfRunHooks( 'SkinCopyrightFooter', array( $wgArticle->getTitle(), $type, &$msg, &$link, &$forContent ) );
 		}
 
-		$out .= wfMsgForContent( $msg, $link );
+		if ( $forContent ) {
+			$out .= wfMsgForContent( $msg, $link );
+		} else {
+			$out .= wfMsg( $msg, $link );
+		}
 		return $out;
 	}
 
@@ -1894,12 +1913,13 @@ CSS;
 			$nt = Title::newFromText( $l );
 			$url = $nt->escapeFullURL();
 			$text = $wgContLang->getLanguageName( $nt->getInterwiki() );
+			$title = htmlspecialchars( $nt->getText() );
 
 			if ( $text == '' ) {
 				$text = $l;
 			}
 			$style = $this->getExternalLinkAttributes();
-			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
+			$s .= "<a href=\"{$url}\" title=\"{$title}\"{$style}>{$text}</a>";
 		}
 		if( $wgContLang->isRTL() ) {
 			$s .= '</span>';
@@ -1988,7 +2008,7 @@ CSS;
 		);
 	}
 
-	function uploadLink() {
+	function getUploadLink() {
 		global $wgUploadNavigationUrl;
 
 		if( $wgUploadNavigationUrl ) {
@@ -2106,7 +2126,7 @@ CSS;
 		}
 
 		$bar = array();
-		$this->addToSidebar( $bar, wfMsgForContentNoTrans( 'sidebar' ) );
+		$this->addToSidebar( $bar, 'sidebar' );
 
 		wfRunHooks( 'SkinBuildSidebar', array( $this, &$bar ) );
 		if ( $wgEnableSidebarCache ) {
@@ -2115,16 +2135,26 @@ CSS;
 		wfProfileOut( __METHOD__ );
 		return $bar;
 	}
+	/**
+	 * Add content from a sidebar system message
+	 * Currently only used for MediaWiki:Sidebar (but may be used by Extensions)
+	 *
+	 * This is just a wrapper around addToSidebarPlain() for backwards compatibility
+	 * 
+	 * @param &$bar array
+	 * @param $message String
+	 */
+	function addToSidebar( &$bar, $message ) {
+		$this->addToSidebarPlain( $bar, wfMsgForContent( $message ) );
+	}
 	
 	/**
-	 * Add content to the sidebar from text
-	 * @since 1.16
+	 * Add content from plain text
+	 * @since 1.17
 	 * @param &$bar array
 	 * @param $text string
-	 * 
-	 * @return array
 	 */
-	function addToSidebar( &$bar, $text ) {
+	function addToSidebarPlain( &$bar, $text ) {
 		$lines = explode( "\n", $text );
 		$wikiBar = array(); # We need to handle the wikitext on a different variable, to avoid trying to do an array operation on text, which would be a fatal error.
 
@@ -2141,9 +2171,6 @@ CSS;
 			} else {
 				$line = trim( $line, '* ' );
 				if( strpos( $line, '|' ) !== false ) { // sanity check
-					global $wgMessageCache;
-					$line = $wgMessageCache->transform( $line );
-					
 					$line = array_map( 'trim', explode( '|', $line, 2 ) );
 					$link = wfMsgForContent( $line[0] );
 					if( $link == '-' ) {

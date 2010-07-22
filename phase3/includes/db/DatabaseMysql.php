@@ -113,8 +113,12 @@ class DatabaseMysql extends DatabaseBase {
 				if( $wgDBmysql5 ) {
 					$this->query( 'SET NAMES utf8', __METHOD__ );
 				}
-				// Turn off strict mode
-				$this->query( "SET sql_mode = ''", __METHOD__ );
+				// Set SQL mode, default is turning them all off, can be overridden or skipped with null
+				global $wgSQLMode;
+				if ( is_string( $wgSQLMode ) ) {
+					$mode = $this->addQuotes( $wgSQLMode );
+					$this->query( "SET sql_mode = $mode", __METHOD__ );
+				}
 			}
 
 			// Turn off strict mode if it is on
@@ -258,7 +262,10 @@ class DatabaseMysql extends DatabaseBase {
 
 	function fieldInfo( $table, $field ) {
 		$table = $this->tableName( $table );
-		$res = $this->query( "SELECT * FROM $table LIMIT 1" );
+		$res = $this->query( "SELECT * FROM $table LIMIT 1", __METHOD__, true );
+		if ( !$res ) {
+			return false;
+		}
 		$n = mysql_num_fields( $res->result );
 		for( $i = 0; $i < $n; $i++ ) {
 			$meta = mysql_fetch_field( $res->result, $i );
@@ -295,6 +302,46 @@ class DatabaseMysql extends DatabaseBase {
 		$this->mConn = false;
 		$this->open( $this->mServer, $this->mUser, $this->mPassword, $this->mDBname );
 		return true;
+	}
+
+	/**
+	 * Returns slave lag.
+	 * At the moment, this will only work if the DB user has the PROCESS privilege
+	 * @result int
+	 */
+	function getLag() {
+		if ( !is_null( $this->mFakeSlaveLag ) ) {
+			wfDebug( "getLag: fake slave lagged {$this->mFakeSlaveLag} seconds\n" );
+			return $this->mFakeSlaveLag;
+		}
+		$res = $this->query( 'SHOW PROCESSLIST', __METHOD__ );
+		# Find slave SQL thread
+		while ( $row = $this->fetchObject( $res ) ) {
+			/* This should work for most situations - when default db
+			 * for thread is not specified, it had no events executed,
+			 * and therefore it doesn't know yet how lagged it is.
+			 *
+			 * Relay log I/O thread does not select databases.
+			 */
+			if ( $row->User == 'system user' &&
+				$row->State != 'Waiting for master to send event' &&
+				$row->State != 'Connecting to master' &&
+				$row->State != 'Queueing master event to the relay log' &&
+				$row->State != 'Waiting for master update' &&
+				$row->State != 'Requesting binlog dump' &&
+				$row->State != 'Waiting to reconnect after a failed master event read' &&
+				$row->State != 'Reconnecting after a failed master event read' &&
+				$row->State != 'Registering slave on master'
+				) {
+				# This is it, return the time (except -ve)
+				if ( $row->Time > 0x7fffffff ) {
+					return false;
+				} else {
+					return $row->Time;
+				}
+			}
+		}
+		return false;
 	}
 
 	function getServerVersion() {
@@ -336,6 +383,9 @@ class DatabaseMysql extends DatabaseBase {
 		}
 	}
 
+	/**
+	 * FROM MYSQL DOCS: http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_release-lock
+	 */
 	public function unlock( $lockName, $method ) {
 		$lockName = $this->addQuotes( $lockName );
 		$result = $this->query( "SELECT RELEASE_LOCK($lockName) as lockstatus", $method );
@@ -361,6 +411,16 @@ class DatabaseMysql extends DatabaseBase {
 
 	public function unlockTables( $method ) {
 		$this->query( "UNLOCK TABLES", $method );
+	}
+
+	/**
+	 * Get search engine class. All subclasses of this
+	 * need to implement this if they wish to use searching.
+	 *
+	 * @return String
+	 */
+	public function getSearchEngine() {
+		return 'SearchMySQL';
 	}
 
 	public function setBigSelects( $value = true ) {

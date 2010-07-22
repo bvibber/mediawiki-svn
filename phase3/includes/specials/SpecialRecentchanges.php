@@ -1,15 +1,31 @@
 <?php
+/**
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
 
 /**
  * Implements Special:Recentchanges
  * @ingroup SpecialPage
  */
-class SpecialRecentChanges extends SpecialPage {
+class SpecialRecentChanges extends IncludableSpecialPage {
 	var $rcOptions, $rcSubpage;
 
-	public function __construct() {
-  		parent::__construct( 'Recentchanges' );
-		$this->includable( true );
+	public function __construct( $name = 'Recentchanges' ) {
+		parent::__construct( $name );
 	}
 
 	/**
@@ -91,7 +107,7 @@ class SpecialRecentChanges extends SpecialPage {
 	/**
 	 * Main execution point
 	 *
-	 * @param $subpage string
+	 * @param $subpage String
 	 */
 	public function execute( $subpage ) {
 		global $wgRequest, $wgOut;
@@ -142,7 +158,7 @@ class SpecialRecentChanges extends SpecialPage {
 	/**
 	 * Return an array with a ChangesFeed object and ChannelFeed object
 	 *
-	 * @return array
+	 * @return Array
 	 */
 	public function getFeedObject( $feedFormat ){
 		$changesFeed = new ChangesFeed( $feedFormat, 'rcfeed' );
@@ -186,7 +202,7 @@ class SpecialRecentChanges extends SpecialPage {
 	 * update the timestamp
 	 *
 	 * @param $feedFormat String
-	 * @return string or false
+	 * @return String or false
 	 */
 	public function checkLastModified( $feedFormat ) {
 		global $wgUseRCPatrol, $wgOut;
@@ -275,7 +291,7 @@ class SpecialRecentChanges extends SpecialPage {
 	/**
 	 * Process the query
 	 *
-	 * @param $conds array
+	 * @param $conds Array
 	 * @param $opts FormOptions
 	 * @return database result or false (for Recentchangeslinked only)
 	 */
@@ -354,7 +370,7 @@ class SpecialRecentChanges extends SpecialPage {
 	/**
 	 * Send output to $wgOut, only called if not used feeds
 	 *
-	 * @param $rows array of database rows
+	 * @param $rows Array of database rows
 	 * @param $opts FormOptions
 	 */
 	public function webOutput( $rows, $opts ) {
@@ -490,7 +506,7 @@ class SpecialRecentChanges extends SpecialPage {
 	 * Get options to be displayed in a form
 	 *
 	 * @param $opts FormOptions
-	 * @return array
+	 * @return Array
 	 */
 	function getExtraOptions( $opts ){
 		$extraOpts = array();
@@ -532,7 +548,7 @@ class SpecialRecentChanges extends SpecialPage {
 	 * Creates the choose namespace selection
 	 *
 	 * @param $opts FormOptions
-	 * @return string
+	 * @return String
 	 */
 	protected function namespaceFilterForm( FormOptions $opts ) {
 		$nsSelect = Xml::namespaceSelector( $opts['namespace'], '' );
@@ -545,7 +561,7 @@ class SpecialRecentChanges extends SpecialPage {
 	 * Create a input to filter changes by categories
 	 *
 	 * @param $opts FormOptions
-	 * @return array
+	 * @return Array
 	 */
 	protected function categoryFilterForm( FormOptions $opts ) {
 		list( $label, $input ) = Xml::inputLabelSep( wfMsg('rc_categories'),
@@ -560,7 +576,7 @@ class SpecialRecentChanges extends SpecialPage {
 	/**
 	 * Filter $rows by categories set in $opts
 	 *
-	 * @param $rows array of database rows
+	 * @param $rows Array of database rows
 	 * @param $opts FormOptions
 	 */
 	function filterByCategories( &$rows, FormOptions $opts ) {
@@ -618,9 +634,11 @@ class SpecialRecentChanges extends SpecialPage {
 
 	/**
 	 * Makes change an option link which carries all the other options
-	 * @param $title see Title
-	 * @param $override
-	 * @param $options
+	 *
+	 * @param $title Title
+	 * @param $override Array: options to override
+	 * @param $options Array: current options
+	 * @param $active Boolean: whether to show the link in bold
 	 */
 	function makeOptionsLink( $title, $override, $options, $active = false ) {
 		global $wgUser;
@@ -636,8 +654,9 @@ class SpecialRecentChanges extends SpecialPage {
 
 	/**
 	 * Creates the options panel.
-	 * @param $defaults array
-	 * @param $nondefaults array
+	 *
+	 * @param $defaults Array
+	 * @param $nondefaults Array
 	 */
 	function optionsPanel( $defaults, $nondefaults ) {
 		global $wgLang, $wgUser, $wgRCLinkLimits, $wgRCLinkDays;

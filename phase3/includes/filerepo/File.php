@@ -480,7 +480,7 @@ abstract class File {
 			return null;
 		}
 		$extension = $this->getExtension();
-		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType() );
+		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType(), $params );
 		$thumbName = $this->handler->makeParamString( $params ) . '-' . $this->getName();
 		if ( $thumbExt != $extension ) {
 			$thumbName .= ".$thumbExt";
@@ -899,7 +899,7 @@ abstract class File {
 
 		$encName = $db->addQuotes( $this->getName() );
 		$res = $db->select( array( 'page', 'imagelinks'), 
-							array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect' ),
+							array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect', 'page_latest' ),
 							array( 'page_id' => 'il_from', 'il_to' => $encName ),
 							__METHOD__,
 							$options );
@@ -908,7 +908,7 @@ abstract class File {
 		if ( $db->numRows( $res ) ) {
 			while ( $row = $db->fetchObject( $res ) ) {
 				if ( $titleObj = Title::newFromRow( $row ) ) {
-					$linkCache->addGoodLinkObj( $row->page_id, $titleObj, $row->page_len, $row->page_is_redirect );
+					$linkCache->addGoodLinkObj( $row->page_id, $titleObj, $row->page_len, $row->page_is_redirect, $row->page_latest );
 					$retVal[] = $titleObj;
 				}
 			}
@@ -931,7 +931,8 @@ abstract class File {
 	 * @return bool
 	 */
 	function isLocal() {
-		return $this->getRepoName() == 'local';
+		$repo = $this->getRepo();
+		return $repo && $repo->isLocal();
 	}
 
 	/**

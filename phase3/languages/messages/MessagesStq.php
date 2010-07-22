@@ -55,7 +55,6 @@ $messages = array(
 'tog-watchdefault'            => 'Aal do sälwen annerde Sieden beooboachtje',
 'tog-watchmoves'              => 'Aal do sälwen ferschäuwede Sieden beooboachtje',
 'tog-watchdeletion'           => 'Aal do sälwen läskede Sieden beooboachtje',
-'tog-minordefault'            => 'Alle Annerengen as littek markierje',
 'tog-previewontop'            => 'Foarschau buppe dät Beoarbaidengsfinster anwiese',
 'tog-previewonfirst'          => 'Bie dät eerste Beoarbaidjen altied ju Foarschau anwiese',
 'tog-nocache'                 => 'Siedencache deaktivierje',
@@ -841,7 +840,7 @@ Uur Administratore ap {{SITENAME}} hääbe Tougriep ap dän ferstatte Inhoold un
 'revdelete-radio-unset'       => 'Noa',
 'revdelete-suppress'          => 'Gruund fon ju Läskenge uk foar Administratore ferstopped',
 'revdelete-unsuppress'        => 'Ienschränkengen foar wier häärstoalde Versione aphieuwje',
-'revdelete-log'               => 'Gruund foar läskjen:',
+'revdelete-log'               => 'Gruund:',
 'revdelete-submit'            => 'Ap uutwäälde  {{PLURAL:$1|Version|Versione}} anweende',
 'revdelete-logentry'          => 'Versionsansicht annerd foar [[$1]]',
 'logdelete-logentry'          => 'annerde ju Sichtboarkaid foar [[$1]]',
@@ -1103,7 +1102,7 @@ Mäd uur Benutsere koast du uk uur do Benutserdiskussionssieden Kontakt apnieme,
 'prefs-advancedrendering'       => 'Uutwiedede Optione',
 'prefs-advancedsearchoptions'   => 'Uutwiedede Optione',
 'prefs-advancedwatchlist'       => 'Uutwiedede Optione',
-'prefs-display'                 => 'Anwies-Optione',
+'prefs-displayrc'               => 'Anwies-Optione',
 'prefs-diffs'                   => 'Versionsfergliek',
 
 # User rights
@@ -1887,7 +1886,7 @@ In $2 fiende Jie ne Lieste fon do lääste Läskengen.',
 'dellogpagetext'         => 'Hier is ne Lieste fon do lääste Läskengen.',
 'deletionlog'            => 'Läsk-Logbouk',
 'reverted'               => 'Ap ne oolde Version touräächsät',
-'deletecomment'          => 'Gruund foar ju Läskenge:',
+'deletecomment'          => 'Gruund:',
 'deleteotherreason'      => 'Uur/additionoalen Gruund:',
 'deletereasonotherlist'  => 'Uur Gruund',
 'deletereason-dropdown'  => '* Algemeene Läskgruunde
@@ -2252,7 +2251,7 @@ Fersäik jädden n uur Noome.',
 'movesubpage'                  => '{{PLURAL:$1|Unnersiede|Unnersieden}}',
 'movesubpagetext'              => 'Disse Siede häd $1 {{PLURAL:$1|Unnersiede|Unnersieden}}.',
 'movenosubpage'                => 'Disse Siede häd neen Unnersieden.',
-'movereason'                   => 'Kuute Begründenge:',
+'movereason'                   => 'Gruund:',
 'revertmove'                   => 'tourääch ferschuuwe',
 'delete_and_move'              => 'Läskje un ferschuuwe',
 'delete_and_move_text'         => '==Sielartikkel is al deer, läskje?==
@@ -2532,7 +2531,7 @@ $1',
 'nextdiff'     => 'Tou ne näiere Version →',
 
 # Media information
-'mediawarning'         => "'''Woarschauenge:''' Disse Oard fon Doatäi kon n schoadelken Programcode änthoolde. Truch dät Deelleeden un Eepenjen fon disse Doatäi kon dän Computer Schoade toubroacht wäide.<hr />",
+'mediawarning'         => "'''Woarschauenge:''' Disse Oard fon Doatäi kon n schoadelken Programcode änthoolde. Truch dät Deelleeden un Eepenjen fon disse Doatäi kon dän Computer Schoade toubroacht wäide.",
 'imagemaxsize'         => "Maximoale Bieldegrööte:<br />''(foar Doatäibeschrieuwengssieden)''",
 'thumbsize'            => 'Grööte fon do Foarschaubielden (thumbnails):',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|1 Siede|$3 Sieden}}',
@@ -3098,20 +3097,5 @@ Ju Iengoawe mout sunner dän Tousats „{{ns:file}}:“ geböäre.',
 'htmlform-submit'              => 'Uurdreege',
 'htmlform-reset'               => 'Annerengen touräächtraale',
 'htmlform-selectorother-other' => 'Uur',
-
-# Add categories per AJAX
-'ajax-add-category'            => 'Kategorie bietouföigje',
-'ajax-add-category-submit'     => 'Bietouföigje',
-'ajax-confirm-title'           => 'Aktion bestäätigje',
-'ajax-confirm-prompt'          => 'Du koast hier unner ne Touhoopefoatenge ienreeke.
-Klik „Spiekerje“ uum ju Beoarbaidenge tou spiekerjen.',
-'ajax-confirm-save'            => 'Spiekerje',
-'ajax-add-category-summary'    => 'Kategorie „$1“ bietouföigje',
-'ajax-remove-category-summary' => 'Kategorie „$1“ wächhoalje',
-'ajax-confirm-actionsummary'   => 'Uuttoufierende Aktion:',
-'ajax-error-title'             => 'Failer',
-'ajax-error-dismiss'           => 'OK',
-'ajax-remove-category-error'   => 'Dät waas nit muugelk, ju Kategorie wächtouhoaljen.
-Dät passiert normoalerwiese, wan ju Kategorie uur ne Foarloage an ju Siede bietouföiged is',
 
 );

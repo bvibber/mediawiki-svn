@@ -19,7 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
@@ -48,6 +48,9 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		if ( !is_null( $params['lang'] ) && $params['lang'] != $wgLang->getCode() ) {
 			$oldLang = $wgLang; // Keep $wgLang for restore later
 			$wgLang = Language::factory( $params['lang'] );
+		} else if ( is_null( $params['lang'] ) ) {
+			// Language not determined by URL but by user preferences, so don't cache
+			$this->getMain()->setVaryCookie();
 		}
 
 		$prop = array_flip( (array)$params['prop'] );

@@ -161,7 +161,7 @@ class Block {
 		wfDebug( "Block::load: '$address', '$user', $killExpired\n" );
 
 		$options = array();
-		$db =& $this->getDBOptions( $options );
+		$db = $this->getDBOptions( $options );
 
 		if ( 0 == $user && $address === '' ) {
 			# Invalid user specification, not blocked
@@ -283,7 +283,7 @@ class Block {
 	 *
 	 * @param $address String: IP address range
 	 * @param $killExpired Boolean: whether to delete expired rows while loading
-	 * @param $userid Integer: if not 0, then sets ipb_anon_only
+	 * @param $user Integer: if not 0, then sets ipb_anon_only
 	 * @return Boolean
 	 */
 	public function loadRange( $address, $killExpired = true, $user = 0 ) {
@@ -299,7 +299,7 @@ class Block {
 		$range = substr( $iaddr, 0, 4 );
 
 		$options = array();
-		$db =& $this->getDBOptions( $options );
+		$db = $this->getDBOptions( $options );
 		$conds = array(
 			'ipb_range_start' . $db->buildLike( $range, $db->anyString() ),
 			"ipb_range_start <= '$iaddr'",

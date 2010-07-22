@@ -218,12 +218,13 @@ class Title {
 			return array();
 		}
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'page', array( 'page_namespace', 'page_title' ),
-			'page_id IN (' . $dbr->makeList( $ids ) . ')', __METHOD__ );
+		
+		$res = $dbr->select( 'page', array( '*' ),
+			array( 'page_id' => $ids ), __METHOD__ );
 
 		$titles = array();
 		foreach ( $res as $row ) {
-			$titles[] = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$titles[] = Title::newFromRow( $row );
 		}
 		return $titles;
 	}
@@ -240,7 +241,7 @@ class Title {
 		$t->mArticleID = isset( $row->page_id ) ? intval( $row->page_id ) : -1;
 		$t->mLength = isset( $row->page_len ) ? intval( $row->page_len ) : -1;
 		$t->mRedirect = isset( $row->page_is_redirect ) ? (bool)$row->page_is_redirect : null;
-		$t->mLatestID = isset( $row->page_latest ) ? $row->page_latest : false;
+		$t->mLatestID = isset( $row->page_latest ) ? intval( $row->page_latest ) : false;
 
 		return $t;
 	}
@@ -255,11 +256,12 @@ class Title {
 	 * @param $ns \type{\int} the namespace of the article
 	 * @param $title \type{\string} the unprefixed database key form
 	 * @param $fragment \type{\string} The link fragment (after the "#")
+	 * @param $interwiki \type{\string} The interwiki prefix
 	 * @return \type{Title} the new object
 	 */
-	public static function &makeTitle( $ns, $title, $fragment = '' ) {
+	public static function &makeTitle( $ns, $title, $fragment = '', $interwiki = '' ) {
 		$t = new Title();
-		$t->mInterwiki = '';
+		$t->mInterwiki = $interwiki;
 		$t->mFragment = $fragment;
 		$t->mNamespace = $ns = intval( $ns );
 		$t->mDbkeyform = str_replace( ' ', '_', $title );
@@ -277,11 +279,12 @@ class Title {
 	 * @param $ns \type{\int} the namespace of the article
 	 * @param $title \type{\string} the database key form
 	 * @param $fragment \type{\string} The link fragment (after the "#")
+	 * @param $interwiki \type{\string} The interwiki prefix
 	 * @return \type{Title} the new object, or NULL on an error
 	 */
-	public static function makeTitleSafe( $ns, $title, $fragment = '' ) {
+	public static function makeTitleSafe( $ns, $title, $fragment = '', $interwiki = '' ) {
 		$t = new Title();
-		$t->mDbkeyform = Title::makeName( $ns, $title, $fragment );
+		$t->mDbkeyform = Title::makeName( $ns, $title, $fragment, $interwiki );
 		if ( $t->secureAndSplit() ) {
 			return $t;
 		} else {
@@ -473,13 +476,17 @@ class Title {
 	 * @param $ns \type{\int} numerical representation of the namespace
 	 * @param $title \type{\string} the DB key form the title
 	 * @param $fragment \type{\string} The link fragment (after the "#")
+	 * @param $interwiki \type{\string} The interwiki prefix
 	 * @return \type{\string} the prefixed form of the title
 	 */
-	public static function makeName( $ns, $title, $fragment = '' ) {
+	public static function makeName( $ns, $title, $fragment = '', $interwiki = '' ) {
 		global $wgContLang;
 
 		$namespace = $wgContLang->getNsText( $ns );
 		$name = $namespace == '' ? $title : "$namespace:$title";
+		if ( strval( $interwiki ) != '' ) {
+			$name = "$interwiki:$name";
+		}
 		if ( strval( $fragment ) != '' ) {
 			$name .= '#' . $fragment;
 		}
@@ -512,6 +519,19 @@ class Title {
 			return false;
 
 		return Interwiki::fetch( $this->mInterwiki )->isTranscludable();
+	}
+
+	/**
+	 * Returns the DB name of the distant wiki 
+	 * which owns the object.
+	 *
+	 * @return \type{\string} the DB name
+	 */
+	public function getTransWikiID() {
+		if ( $this->mInterwiki == '' )
+			return false;
+
+		return Interwiki::fetch( $this->mInterwiki )->getWikiID();
 	}
 
 	/**
@@ -2326,25 +2346,24 @@ class Title {
 	 * What is the page_latest field for this page?
 	 *
 	 * @param $flags \type{\int} a bit field; may be GAID_FOR_UPDATE to select for update
-	 * @return \type{\int} or false if the page doesn't exist
+	 * @return \type{\int} or 0 if the page doesn't exist
 	 */
 	public function getLatestRevID( $flags = 0 ) {
 		if ( $this->mLatestID !== false )
-			return $this->mLatestID;
+			return intval( $this->mLatestID );
+		# Calling getArticleID() loads the field from cache as needed
+		if ( !$this->getArticleID( $flags ) ) {
+			return $this->mLatestID = 0;
+		}
+		$linkCache = LinkCache::singleton();
+		$this->mLatestID = intval( $linkCache->getGoodLinkFieldObj( $this, 'revision' ) );
 
-		$db = ( $flags & GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$this->mLatestID = (int)$db->selectField(
-			'page', 'page_latest', $this->pageCond(), __METHOD__ );
 		return $this->mLatestID;
 	}
 
 	/**
 	 * This clears some fields in this object, and clears any associated
 	 * keys in the "bad links" section of the link cache.
-	 *
-	 * - This is called from Article::insertNewArticle() to allow
-	 * loading of the new page_id. It's also called from
-	 * Article::doDeleteArticle()
 	 *
 	 * @param $newid \type{\int} the new Article ID
 	 */
@@ -2560,7 +2579,7 @@ class Title {
 		}
 		$fragment = strstr( $dbkey, '#' );
 		if ( false !== $fragment ) {
-			$this->setFragment( $fragment );
+			$this->setFragment( preg_replace( '/^#_*/', '#', $fragment ) );
 			$dbkey = substr( $dbkey, 0, strlen( $dbkey ) - strlen( $fragment ) );
 			# remove whitespace again: prevents "Foo_bar_#"
 			# becoming "Foo_bar_"
@@ -2715,7 +2734,7 @@ class Title {
 		}
 
 		$res = $db->select( array( 'page', $table ),
-			array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect' ),
+			array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect', 'page_latest' ),
 			array(
 				"{$prefix}_from=page_id",
 				"{$prefix}_namespace" => $this->getNamespace(),
@@ -2727,7 +2746,7 @@ class Title {
 		if ( $db->numRows( $res ) ) {
 			foreach ( $res as $row ) {
 				if ( $titleObj = Title::makeTitle( $row->page_namespace, $row->page_title ) ) {
-					$linkCache->addGoodLinkObj( $row->page_id, $titleObj, $row->page_len, $row->page_is_redirect );
+					$linkCache->addGoodLinkObj( $row->page_id, $titleObj, $row->page_len, $row->page_is_redirect, $row->page_latest );
 					$retVal[] = $titleObj;
 				}
 			}
@@ -2805,7 +2824,6 @@ class Title {
 		if ( $wgContLang->hasVariants() ) {
 			$variants = $wgContLang->getVariants();
 			foreach ( $variants as $vCode ) {
-				if ( $vCode == $wgContLang->getCode() ) continue; // we don't want default variant
 				$urls[] = $this->getInternalURL( '', $vCode );
 			}
 		}
@@ -3701,7 +3719,7 @@ class Title {
 		switch( $this->mNamespace ) {
 		case NS_MEDIA:
 		case NS_FILE:
-			return wfFindFile( $this );  // file exists, possibly in a foreign repo
+			return (bool)wfFindFile( $this );  // file exists, possibly in a foreign repo
 		case NS_SPECIAL:
 			return SpecialPage::exists( $this->getDBkey() );  // valid special page
 		case NS_MAIN:
