@@ -19,9 +19,10 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 
 /** Message documentation (Message documentation)
  * @author Raymond
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'vector-editwarning-warning' => "Do '''not''' use <nowiki>{{int:prefs-editing}}</nowiki> for \"Editing\". It is forbidden in this message, see [[mwr:68405]].",
+	'vector-editwarning-warning' => "{{doc-important|Do ''not'' use <nowiki>{{int:prefs-editing}}</nowiki> for \"Editing\". It is forbidden in this message, see [[mwr:68405]].}}",
 );
 
 /** Afrikaans (Afrikaans)
@@ -120,10 +121,12 @@ Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «Caixa d'
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
 	'vector-editwarning-warning' => 'بەجێ‌هێشتنی ئەم لاپەڕەیە دەبێتە هۆی لە‌دەست چوونی هەموو ئەو گۆڕانکاریانەی کردووتە.',
+	'vector-editwarning-preference' => 'ھۆشیارم بکەوە کاتێک لە پەڕەیەکی دەستکاری بە گۆڕانکاریی پاشەکەوت‌نەکراو دەردەچم',
 );
 
 /** Czech (Česky)
@@ -287,6 +290,15 @@ Se vos éte branchiê avouéc voutron compto, vos pouede enlevar ceti avèrtisse
 	'vector-editwarning-preference' => 'M’avèrtir quand quito una pâge de changement sen sôvar los changements',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'vector-editwarning-warning' => 'Ma dh\'fhàgas tu an duilleag seo, faodaidh gun caill thu mùthadh sam bith a rinn thu.
+Ma tha thu air logadh a-steach, \'s urrainn dhut an rabhadh seo a chur dheth san roinn "Deasachadh" sna roghainnean agad.',
+	'vector-editwarning-preference' => 'Thoir rabhadh dhomh ma bhios mi an impis duilleag deasachaidh fhàgail mus do shàbhail mi na mùthaidhean agam',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -420,6 +432,15 @@ $messages['ko'] = array(
 	'vector-editwarning-preference' => '수정한 내용을 저장하지 않고 편집 양식을 닫거나 다른 페이지로 이동할 때 알림',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'vector-editwarning-warning' => 'Башха бетге кёчсегиз, этген тюрлениулеригиз тас болургъа боллукъдула.
+Системада регистрацияны ётген эсегиз, бу билдириуню джарашдырыуларыгъызны «Тюрлендириу» деген бёлюмюнде джукълатыргъа боллукъсуз.',
+	'vector-editwarning-preference' => 'Тюрлендириулени сакълатмай редакторлау бетден кетген сагъатымда билдир',
+);
+
 /** Colognian (Ripoarisch)
  * @author Als-Holder
  * @author Purodha
@@ -448,6 +469,15 @@ $messages['lt'] = array(
 	'vector-editwarning-preference' => 'Perspėti mane, kai palieku redagavimo puslapį, o jame yra neišsaugotų pakeitimų',
 );
 
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'vector-editwarning-warning' => 'Atstājot šo lapu tu zaudēsi izdarītās izmaiņas. 
+Ja esi pieteicies, jūs vari atspējot šo brīdinājumu savās izvēlēs sadaļā "rediģēšana"',
+	'vector-editwarning-preference' => 'Brīdināt mani, kad es atstāju lapas rediģēšanu nesaglabājot izmaiņas',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -466,6 +496,13 @@ $messages['ml'] = array(
 	'vector-editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തൽ താളിൽ നിന്നും പോകുമ്പോൾ എന്നെ അറിയിക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'vector-editwarning-preference' => '↓ जर मी संपादित करीत असलेल्या पानावरील माझे संपादिलेले बदल जतन न केल्यास मला इशारा द्या',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Kurniasan
  */
@@ -481,6 +518,15 @@ Anda boleh melumpuhkan amaran in di bahagian "Menyunting" dalam keutamaan anda.'
 $messages['mt'] = array(
 	'vector-editwarning-warning' => 'Jekk tħalli din il-paġna jista\' jwassal sabiex titlef kwalunkwe tibdil li tkun għamilt. Jekk int tinsab fil-kont tiegħek, tista\' tneħħi dan l-avviż fis-sezzjoni "Modifiki" tal-preferenzi tiegħek.',
 	'vector-editwarning-preference' => "Avżani kull meta nħalli paġna ta' modifika b'modifiki li għadhom ma ġewx salvati",
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'vector-editwarning-warning' => 'A-j disse pagina ofsluten dan kan \'t ween dat der wieziging dee-j emaak hemmen kwiet raken.
+A-j an-emeld bin, dan ku-j disse waorschuwing uutzetten in \'t tabblad "Bewarken" in joew veurkeuren.',
+	'vector-editwarning-preference' => 'Waorschuw mien a-k een bewörken pagina of wil sluten dee-j nog neet op-esleugen is',
 );
 
 /** Dutch (Nederlands)
@@ -581,7 +627,7 @@ Yaykusqa kaspaykiqa, kay yuyampayta hark'ayta atinki allinkachinaykikunapi \"Lla
  */
 $messages['ro'] = array(
 	'vector-editwarning-warning' => 'Părăsind această pagină, există riscul pierderii modificărilor efectuate.
-Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dv.',
+Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dumneavoastră.',
 	'vector-editwarning-preference' => 'Avertizează-mă când părăsesc o pagină fără a salva modificările',
 );
 
@@ -589,7 +635,7 @@ Dacă sunteți autentificat, puteți dezactiva această avertizare în secțiune
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'vector-editwarning-warning' => 'Lassanne sta pàgene tu puè perdè tutte le date ca è cangiate.
+	'vector-editwarning-warning' => '↓ Assenne da sta pàgene tu puè perdè tutte le date ca è cangiate.
 Ce tu è trasute, tu puè disabbilità st\'avvertimende jndr\'à sezione "Cangiaminde..." de le preferenze tune.',
 	'vector-editwarning-preference' => "Avvisave quanne jie lasse 'na pàgene cangiate senze ca agghie sarvate le cangiaminde",
 );
@@ -603,6 +649,15 @@ $messages['ru'] = array(
 	'vector-editwarning-warning' => 'Переход на другую страницу может привести к потере сделанных вами изменений.
 Если вы зарегистрированы в системе, то вы можете отключить это предупреждение в разделе «Редактирование» ваших настроек.',
 	'vector-editwarning-preference' => 'Предупреждать меня, когда я покидаю страницу редактирования с несохранёнными изменениями',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'vector-editwarning-warning' => 'Переход на іншу сторінку запричінить страту вашых змін.
+Покы сьте {{GENDER:|приголошеный|приголошена|приголошены}}, можете собі тото варованя выпнути на заложцї „Едітованя“ в хосновательскім наставлїню.',
+	'vector-editwarning-preference' => 'Упозорнити ня, кідь буду опущати сторінку без уложіня змін',
 );
 
 /** Yakut (Саха тыла)
@@ -646,6 +701,18 @@ To opozorilo lahko onemogočite v razdelku »Urejanje« svojih nastavitev.',
  */
 $messages['sr-ec'] = array(
 	'vector-editwarning-preference' => 'Упозори ме када напустим страницу са несачуваним променама',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'vector-editwarning-preference' => 'Upozori me kada napustim stranicu sa nesačuvanim promenama',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'vector-editwarning-preference' => 'Béjaan kuring lamun ninggalkeun kaca édit anu parobahanana can disimpen',
 );
 
 /** Swedish (Svenska)

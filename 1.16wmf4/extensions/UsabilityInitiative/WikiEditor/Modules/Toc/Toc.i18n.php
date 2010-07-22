@@ -123,6 +123,14 @@ $messages['ca'] = array(
 	'wikieditor-toc-hide' => 'Amaga el contingut',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-toc-show' => 'نیشاندانی ناوەڕۆک',
+	'wikieditor-toc-hide' => 'شاردنەوەی ناوەڕۆک',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil
@@ -269,6 +277,15 @@ $messages['frp'] = array(
 	'wikieditor-toc-hide' => 'Cachiér lo contegnu',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-toc-preference' => 'Cuir clàr-innse an comas a ghabhas a sheòladh',
+	'wikieditor-toc-show' => 'Seall an clàr-innse',
+	'wikieditor-toc-hide' => 'Cuir am falach an clàr-innse',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -383,6 +400,15 @@ $messages['ko'] = array(
 	'wikieditor-toc-hide' => '내용 숨김',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-toc-preference' => 'Навигация амалы бла ичиндегилени таблицасын джандыр',
+	'wikieditor-toc-show' => 'Башларын кёргюз',
+	'wikieditor-toc-hide' => 'Башларын джашыр',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -465,6 +491,15 @@ $messages['mt'] = array(
 	'wikieditor-toc-hide' => 'Aħbi l-kontenut',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-toc-preference' => 'Navigeerbaore onderwarplieste inschakelen',
+	'wikieditor-toc-show' => 'Onderwarpen laoten zien',
+	'wikieditor-toc-hide' => 'Onderwarpen verbargen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -517,6 +552,14 @@ $messages['pms'] = array(
 	'wikieditor-toc-preference' => 'Abìlita a scanucié la tàula dij contnù',
 	'wikieditor-toc-show' => 'Mosta contnù',
 	'wikieditor-toc-hide' => 'Stërma contnù',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-toc-show' => 'مېنځپانګه ښکاره کول',
+	'wikieditor-toc-hide' => 'مېنځپانګه پټول',
 );
 
 /** Portuguese (Português)
@@ -579,6 +622,15 @@ $messages['ru'] = array(
 	'wikieditor-toc-hide' => 'Скрыть оглавление',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-toc-preference' => 'Запнути навіґовательный обсяг',
+	'wikieditor-toc-show' => 'Вказати обсяг',
+	'wikieditor-toc-hide' => 'Сховати обсяг',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -619,14 +671,24 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor-toc-preference' => 'Омогући навигациону табелу садржаја',
 	'wikieditor-toc-show' => 'Покажи садржај',
 	'wikieditor-toc-hide' => 'Сакриј садржај',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'wikieditor-toc-preference' => 'Omogući navigacionu tabelu sadržaja',
 	'wikieditor-toc-show' => 'Pokaži sadržaj',
 	'wikieditor-toc-hide' => 'Sakrij sadržaj',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'wikieditor-toc-show' => 'Témbongkeun eusi',
+	'wikieditor-toc-hide' => 'Sumputkeun eusi',
 );
 
 /** Swedish (Svenska)

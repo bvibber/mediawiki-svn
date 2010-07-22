@@ -32,6 +32,7 @@ $j(document).ready( function() {
 							'fr': [2, -286],
 							'es': [2, -358],
 							'he': [2, -142],
+							'hu': [2, -214],
 							'it': [2, -286],
 							'nl': [2, -502],
 							'pt': [2, -358],
@@ -46,6 +47,7 @@ $j(document).ready( function() {
 							'fr': 'format-bold-G.png',
 							'es': 'format-bold-N.png',
 							'he': 'format-bold-B.png',
+							'hu': 'format-bold-F.png',
 							'it': 'format-bold-G.png',
 							'ka': 'format-bold-ka.png',
 							'nl': 'format-bold-V.png',
@@ -92,6 +94,7 @@ $j(document).ready( function() {
 							'fr': 'format-italic-I.png',
 							'es': 'format-italic-C.png',
 							'he': 'format-italic-I.png',
+							'hu': 'format-italic-D.png',
 							'it': 'format-italic-C.png',
 							'ka': 'format-italic-ka.png',
 							'nl': 'format-italic-C.png',
@@ -601,7 +604,19 @@ $j(document).ready( function() {
 				'characters': [
 					"~", "|", "\u00a1", "\u00bf", "\u2020", "\u2021", "\u2194", "\u2191", "\u2193", "\u2022", "\u00b6",
 					"#", "\u00bd", "\u2153", "\u2154", "\u00bc", "\u00be", "\u215b", "\u215c", "\u215d", "\u215e",
-					"\u221e", "\u2018", "\u201e", "\u201c", "\u2019", "\u201d",
+					"\u221e", "\u2018", "\u2019",
+					{
+						'label': "\u201c\u201d",
+						'action': {
+							'type': 'encapsulate', 'options': { 'pre': "\u201c", 'post': "\u201d" }
+						}
+					},
+					{
+						'label': "\u201e\u201c",
+						'action': {
+							'type': 'encapsulate', 'options': { 'pre': "\u201e", 'post': "\u201c" }
+						}
+					},
 					{
 						'label': "\u00ab\u00bb",
 						'action': {
@@ -612,7 +627,7 @@ $j(document).ready( function() {
 					"\u20ac", "\u20a0", "\u20a3", "\u0192", "\u20b4", "\u20ad", "\u20a4", "\u2133", "\u20a5", "\u20a6",
 					"\u2116", "\u20a7", "\u20b0", "\u00a3", "\u17db", "\u20a8", "\u20aa", "\u09f3", "\u20ae", "\u20a9",
 					"\u00a5", "\u2660", "\u2663", "\u2665", "\u2666", "m\u00b2", "m\u00b3", "\u2013", "\u2014",
-					"\u2026", "\u2018", "\u201c", "\u2019", "\u201d", "\u00b0", "\u2033", "\u2032", "\u2248", "\u2260",
+					"\u2026", "\u2018", "\u2019", "\u201c", "\u201d", "\u00b0", "\u2032", "\u2033", "\u2248", "\u2260",
 					"\u2264", "\u2265", "\u00b1", "\u2212", "\u00d7", "\u00f7", "\u2190", "\u2192", "\u00b7", "\u00a7"
 				]
 			},
@@ -759,6 +774,58 @@ $j(document).ready( function() {
 					[ "\u25cc\u0ac8", "\u0ac8" ], [ "\u25cc\u0ac9", "\u0ac9" ], [ "\u25cc\u0acb", "\u0acb" ],
 					[ "\u25cc\u0acc", "\u0acc" ], [ "\u25cc\u0acd", "\u0acd" ]
 				]
+			},
+			'thai': {
+				'labelMsg': 'wikieditor-toolbar-characters-page-thai',
+				'language': 'th',
+				'layout': 'characters',
+				'characters': [
+					"\u0e01", "\u0e02", "\u0e03", "\u0e04", "\u0e05", "\u0e06", "\u0e07", "\u0e08", "\u0e09", "\u0e0a",
+					"\u0e0b", "\u0e0c", "\u0e0d", "\u0e0e", "\u0e0f", "\u0e10", "\u0e11", "\u0e12", "\u0e13", "\u0e14",
+					"\u0e15", "\u0e16", "\u0e17", "\u0e18", "\u0e19", "\u0e1a", "\u0e1b", "\u0e1c", "\u0e1d", "\u0e1e",
+					"\u0e1f", "\u0e20", "\u0e21", "\u0e22", "\u0e23", "\u0e24", "\u0e25", "\u0e26", "\u0e27", "\u0e28",
+					"\u0e29", "\u0e2a", "\u0e2b", "\u0e2c", "\u0e2d", "\u0e2e", "\u0e30", "\u0e31", "\u0e32", "\u0e45",
+					"\u0e33", "\u0e34", "\u0e35", "\u0e36", "\u0e37", "\u0e38", "\u0e39", "\u0e40", "\u0e41", "\u0e42",
+					"\u0e43", "\u0e44", "\u0e47", "\u0e48", "\u0e49", "\u0e4a", "\u0e4b", "\u0e4c", "\u0e4d", "\u0e3a",
+					"\u0e4e", "\u0e50", "\u0e51", "\u0e52", "\u0e53", "\u0e54", "\u0e55", "\u0e56", "\u0e57", "\u0e58",
+					"\u0e59", "\u0e3f", "\u0e46", "\u0e2f", "\u0e5a", "\u0e4f", "\u0e5b"
+				]
+			},
+			'lao': {
+				'labelMsg': 'wikieditor-toolbar-characters-page-lao',
+				'language': 'lo',
+				'layout': 'characters',
+				'characters': [
+					"\u0e81", "\u0e82", "\u0e84", "\u0e87", "\u0e88", "\u0eaa", "\u0e8a", "\u0e8d", "\u0e94", "\u0e95",
+					"\u0e96", "\u0e97", "\u0e99", "\u0e9a", "\u0e9b", "\u0e9c", "\u0e9d", "\u0e9e", "\u0e9f", "\u0ea1",
+					"\u0ea2", "\u0ea5", "\u0ea7", "\u0eab", "\u0ead", "\u0eae", "\u0ea3", "\u0edc", "\u0edd", "\u0ebc",
+					"\u0ebd", "\u0eb0", "\u0eb1", "\u0eb2", "\u0eb3", "\u0eb4", "\u0eb5", "\u0eb6", "\u0eb7", "\u0eb8",
+					"\u0eb9", "\u0ebb", "\u0ec0", "\u0ec1", "\u0ec2", "\u0ec3", "\u0ec4", "\u0ec8", "\u0ec9", "\u0eca",
+					"\u0ecb", "\u0ecc", "\u0ecd", "\u0ed0", "\u0ed1", "\u0ed2", "\u0ed3", "\u0ed4", "\u0ed5", "\u0ed6",
+					"\u0ed7", "\u0ed8", "\u0ed9", "\u20ad", "\u0ec6", "\u0eaf"
+				]
+			},
+			'khmer': {
+				'labelMsg': 'wikieditor-toolbar-characters-page-khmer',
+				'language': 'km',
+				'layout': 'characters',
+				'characters': [
+					"\u1780", "\u1781", "\u1782", "\u1783", "\u1784", "\u1785", "\u1786", "\u1787", "\u1788", "\u1789",
+					"\u178a", "\u178b", "\u178c", "\u178d", "\u178e", "\u178f", "\u1790", "\u1791", "\u1792", "\u1793",
+					"\u1794", "\u1795", "\u1796", "\u1797", "\u1798", "\u1799", "\u179a", "\u179b", "\u179c", "\u179f",
+					"\u17a0", "\u17a1", "\u17a2", "\u17a3", "\u17a4", "\u17a5", "\u17a6", "\u17a7", "\u17a8", "\u17a9",
+					"\u17aa", "\u17ab", "\u17ac", "\u17ad", "\u17ae", "\u17af", "\u17b0", "\u17b1", "\u17b2", "\u17b3",
+					"\u17d2", "\u17b4", "\u17b5", "\u17b6", "\u17b7", "\u17b8", "\u17b9", "\u17ba", "\u17bb", "\u17bc", 
+					"\u17bd", "\u17be", "\u17bf", "\u17c0", "\u17c1", "\u17c2", "\u17c3", "\u17c4", "\u17c5", "\u17c6",
+					"\u17c7", "\u17c8", "\u17c9", "\u17ca", "\u17cb", "\u17cc", "\u17cd", "\u17ce", "\u17cf", "\u17d0",
+					"\u17d1", "\u17d3", "\u17dd", "\u17dc", "\u17e0", "\u17e1", "\u17e2", "\u17e3", "\u17e4", "\u17e5",
+					"\u17e6", "\u17e7", "\u17e8", "\u17e9", "\u17db", "\u17d4", "\u17d5", "\u17d6", "\u17d7", "\u17d8",
+					"\u17d9", "\u17da", "\u17f0", "\u17f1", "\u17f2", "\u17f3", "\u17f4", "\u17f5", "\u17f6", "\u17f7",
+					"\u17f8", "\u17f9", "\u19e0", "\u19e1", "\u19e2", "\u19e3", "\u19e4", "\u19e5", "\u19e6", "\u19e7",
+					"\u19e8", "\u19e9", "\u19ea", "\u19eb", "\u19ec", "\u19ed", "\u19ee", "\u19ef", "\u19f0", "\u19f1",
+					"\u19f2", "\u19f3", "\u19f4", "\u19f5", "\u19f6", "\u19f7", "\u19f8", "\u19f9", "\u19fa", "\u19fb",
+					"\u19fc", "\u19fd", "\u19fe", "\u19ff"
+				]
 			}
 		}
 	},
@@ -823,11 +890,6 @@ $j(document).ready( function() {
 					{ textMsg: 'wikieditor-toolbar-help-heading-result' }
 				],
 				rows: [
-					{
-						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-description' },
-						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-syntax' },
-						'result': { htmlMsg: 'wikieditor-toolbar-help-content-heading1-result' }
-					},
 					{
 						'description': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-description' },
 						'syntax': { htmlMsg: 'wikieditor-toolbar-help-content-heading2-syntax' },
@@ -1070,6 +1132,7 @@ $j(document).ready( function() {
 							'action': 'query',
 							'indexpageids': '',
 							'titles': target,
+							'converttitles': '',
 							'format': 'json'
 						},
 						success: function( data ) {
@@ -1929,6 +1992,8 @@ $j(document).ready( function() {
 					// and indexOf() followed by substr() to find the offsets. This is actually
 					// faster because our indexOf+substr loop is faster than a match loop, and the
 					// /g match is so ridiculously fast that it's negligible.
+					// FIXME: Repetitively calling encapsulateSelection() is probably the best strategy
+					// in Firefox/Webkit, but in IE replacing the entire content once is better.
 					var index;
 					for ( var i = 0; i < match.length; i++ ) {
 						index = s.indexOf( match[i] );
@@ -1936,15 +2001,18 @@ $j(document).ready( function() {
 							// This shouldn't happen
 							break;
 						}
+						var matchedText = s.substr( index, match[i].length );
 						s = s.substr( index + match[i].length );
 						
 						var start = index + offset;
 						var end = start + match[i].length;
-						var newEnd = start + replaceStr.length;
+						// Make regex placeholder substitution ($1) work
+						var replace = isRegex ? matchedText.replace( regex, replaceStr ) : replaceStr;
+						var newEnd = start + replace.length;
 						$textarea
 							.textSelection( 'setSelection', { 'start': start, 'end': end } )
 							.textSelection( 'encapsulateSelection', {
-									'peri': replaceStr,
+									'peri': replace,
 									'replace': true } )
 							.textSelection( 'setSelection', { 'start': start, 'end': newEnd } );
 						offset = newEnd;
@@ -1954,16 +2022,18 @@ $j(document).ready( function() {
 						.show();
 					$j(this).data( 'offset', 0 );
 				} else {
+					// Make regex placeholder substitution ($1) work
+					var replace = isRegex ? match[0].replace( regex, replaceStr ): replaceStr;
 					var start = match.index + offset;
 					var end = start + match[0].length;
-					var newEnd = start + replaceStr.length;
+					var newEnd = start + replace.length;
 					var context = $j( this ).data( 'context' );
 					$textarea.textSelection( 'setSelection', { 'start': start,
 						'end': end } );
 					if ( mode == 'replace' ) {
 						$textarea
 							.textSelection( 'encapsulateSelection', {
-								'peri': replaceStr,
+								'peri': replace,
 								'replace': true } )
 							.textSelection( 'setSelection', {
 								'start': start,

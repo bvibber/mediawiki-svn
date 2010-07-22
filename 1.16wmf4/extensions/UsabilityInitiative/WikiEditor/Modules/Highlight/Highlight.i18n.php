@@ -194,6 +194,13 @@ $messages['frp'] = array(
 	'wikieditor-highlight-preference' => 'Activar la coloracion sintaxica pendent lo changement',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-highlight-preference' => 'Cuir an comas comharrachadh co-chàraidh nuair a bhithear ri deasachadh',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -271,6 +278,13 @@ $messages['ko'] = array(
 	'wikieditor-highlight-preference' => '편집할때, 구문 강조를 활성화함',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-highlight-preference' => 'Редакторлагъан сагъатда синтаксисни белгилеуню джандыр',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -290,6 +304,13 @@ $messages['lb'] = array(
  */
 $messages['lt'] = array(
 	'wikieditor-highlight-preference' => 'Įjungti sintaksės paryškinimą redaguojant',
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'wikieditor-highlight-preference' => 'Atļaut sintakses iezīmēšanu rediģējot',
 );
 
 /** Macedonian (Македонски)
@@ -318,6 +339,13 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'wikieditor-highlight-preference' => 'Attiva l-kontroll ortografiku matul il-modifika',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-highlight-preference' => "Codemarkering inschakelen tiejens 't bewarken",
 );
 
 /** Dutch (Nederlands)
@@ -404,6 +432,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-highlight-preference' => 'Включить подсветку синтаксиса при редактировании',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-highlight-preference' => 'Почас едітованя высвічовати сінтакс',
 );
 
 /** Yakut (Саха тыла)

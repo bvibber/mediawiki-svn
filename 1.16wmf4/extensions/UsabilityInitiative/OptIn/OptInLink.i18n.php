@@ -201,10 +201,14 @@ $messages['ce'] = array(
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
+ * @author Marmzok
  */
 $messages['ckb-arab'] = array(
 	'optin-try' => 'تاقی‌کردنەوەی بیتا',
+	'tooltip-pt-optin-try' => 'تاقیکردنەوەیەکی تایبەتمەندییە نوێکان',
 	'optin-leave' => 'دەرچوون لە بیتا',
+	'tooltip-pt-optin-leave' => 'لەکارخستنی تایبەتمەندییە نوێکان',
+	'optin-feedback' => 'پێڕاگەیاندنەوەی بێتا',
 );
 
 /** Czech (Česky)
@@ -275,15 +279,16 @@ $messages['de-formal'] = array(
 );
 
 /** Zazaki (Zazaki)
+ * @author Asmen
  * @author Aspar
  */
 $messages['diq'] = array(
 	'optin-try' => 'Beta tesel/cereb bıker',
-	'tooltip-pt-optin-try' => 'xususano neweyani tesel bıker/bıcerebın',
+	'tooltip-pt-optin-try' => 'Xısusiyetanê neweyan bıcerrebne',
 	'optin-leave' => 'acai beta ra vec',
-	'tooltip-pt-optin-leave' => 'xususano neweyan bıqefeln',
+	'tooltip-pt-optin-leave' => 'Xısusiyetanê neweyan bıqefelne (qapan ke)',
 	'optin-feedback' => 'feedback bıde',
-	'tooltip-pt-optin-feedback' => 'pê xususano neweyan derheqê tecrubeyanê xo de malumat bıde',
+	'tooltip-pt-optin-feedback' => 'Tecrubanê xo be xısusiyetanê neweyan sero malumat bıde',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -303,7 +308,9 @@ $messages['dsb'] = array(
  */
 $messages['ee'] = array(
 	'optin-try' => 'Zã Beta kpɔ',
+	'tooltip-pt-optin-try' => 'Zã trɔtrɔ yeyewo kpɔ',
 	'optin-leave' => 'Ɖe asi le Beta ŋu',
+	'tooltip-pt-optin-leave' => 'Ɖe asi le trɔtrɔ yeyewo ŋu',
 	'optin-feedback' => 'Wò susuwo le Beta ŋu',
 );
 
@@ -443,6 +450,18 @@ $messages['frp'] = array(
 $messages['fur'] = array(
 	'optin-try' => 'Prove Beta',
 	'tooltip-pt-optin-feedback' => 'Mande opinions e ideis su la tô esperience cu lis gnovis funzions',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'optin-try' => 'Feuch am Beta',
+	'tooltip-pt-optin-try' => 'Feuch na feartan ùra',
+	'optin-leave' => 'Fàg am Beta',
+	'tooltip-pt-optin-leave' => 'Cuir dheth na feartan ùra',
+	'optin-feedback' => "Beachdan air a' Bheta",
+	'tooltip-pt-optin-feedback' => 'Innis dhomh dè do bheachd air na feartan ùra',
 );
 
 /** Galician (Galego)
@@ -646,6 +665,18 @@ $messages['ko'] = array(
 	'tooltip-pt-optin-feedback' => '새로운 기능에 대한 당신의 의견을 남겨주세요',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'optin-try' => 'Бета-версияны сынаб кёр',
+	'tooltip-pt-optin-try' => 'Джангы амалланы сынагъыз',
+	'optin-leave' => 'Бета-версиядан чыкъ',
+	'tooltip-pt-optin-leave' => 'Джангы амалланы джукълатыгъыз',
+	'optin-feedback' => 'Оюмугъузну ийигиз',
+	'tooltip-pt-optin-feedback' => 'Джангы функцияла бла хайырланнганыгъызны юсюнден оюмугъузуну къоюгъуз',
+);
+
 /** Colognian (Ripoarisch)
  * @author Melancholie
  * @author Purodha
@@ -706,11 +737,15 @@ $messages['lt'] = array(
 
 /** Latvian (Latviešu)
  * @author Marozols
+ * @author Xil
  */
 $messages['lv'] = array(
 	'optin-try' => 'Izmēģināt Beta',
+	'tooltip-pt-optin-try' => 'Izmēģināt jaunās iespējas',
 	'optin-leave' => 'Pamest Beta',
+	'tooltip-pt-optin-leave' => 'Izslēgt jaunās iespējas',
 	'optin-feedback' => 'Atsauksmes par Beta',
+	'tooltip-pt-optin-feedback' => 'Sniegt savas atsauksmes par jaunajām funkcijām',
 );
 
 /** Macedonian (Македонски)
@@ -763,11 +798,19 @@ $messages['mt'] = array(
 	'tooltip-pt-optin-feedback' => 'Ibgħat rispons fuq l-esperjenza tiegħek bil-funzjonijiet il-ġodda',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'optin-try' => 'ایستفاده از بتا',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
 $messages['nds-nl'] = array(
 	'optin-try' => 'Beta uutpreberen',
+	'tooltip-pt-optin-try' => 'De nieje functies uutpreberen',
 	'optin-leave' => 'Beta uutzetten',
 	'optin-feedback' => "Is 't wat?",
 );
@@ -830,6 +873,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'optin-try' => 'Beta prowiere',
 	'optin-leave' => 'Beta verlosse',
 );
 
@@ -840,9 +884,9 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'optin-try' => 'Wypróbuj wersję testową',
-	'tooltip-pt-optin-try' => 'Wypróbuj nowe funkcjonalności',
+	'tooltip-pt-optin-try' => 'Wypróbuj nowe funkcje',
 	'optin-leave' => 'Koniec testowania',
-	'tooltip-pt-optin-leave' => 'Wyłącz nowe funkcjonalności',
+	'tooltip-pt-optin-leave' => 'Wyłącz nowe funkcje',
 	'optin-feedback' => 'Opinia o wersji testowej',
 	'tooltip-pt-optin-feedback' => 'Prześlij opinię na temat nowych funkcji',
 );
@@ -904,12 +948,13 @@ $messages['qu'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'optin-try' => 'Încercați Beta',
 	'tooltip-pt-optin-try' => 'Încercați funcții noi',
-	'optin-leave' => 'Părăsiți Beta',
+	'optin-leave' => 'Părăsire Beta',
 	'tooltip-pt-optin-leave' => 'Dezactivați funcțiile noi',
 	'optin-feedback' => 'Părere despre Beta',
 	'tooltip-pt-optin-feedback' => 'Furnizați un feedback cu privire la experiența cu noile funcționalități',
@@ -941,6 +986,18 @@ $messages['ru'] = array(
 	'tooltip-pt-optin-leave' => 'Отключить новые возможности',
 	'optin-feedback' => 'Отправить отзыв',
 	'tooltip-pt-optin-feedback' => 'Оставить отзыв о своём опыте работы с новыми функциями',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'optin-try' => 'Опробовати Бета-верзію',
+	'tooltip-pt-optin-try' => 'Спробовати новы можности',
+	'optin-leave' => 'Опустити Бета-верзію',
+	'tooltip-pt-optin-leave' => 'Выпнути новы можности',
+	'optin-feedback' => 'Назоры на Бета',
+	'tooltip-pt-optin-feedback' => 'Зохабити одозву о скусеностях з новыма функціями',
 );
 
 /** Yakut (Саха тыла)
@@ -1039,6 +1096,7 @@ $messages['su'] = array(
 	'tooltip-pt-optin-try' => 'Cobaan fitur anyar',
 	'optin-leave' => 'Tinggalkeun Béta',
 	'tooltip-pt-optin-leave' => 'Pareuman fitur anyar',
+	'tooltip-pt-optin-feedback' => 'Kirimkeun pamangih anjeun ngeunaan pangalaman maké fitur anyar',
 );
 
 /** Swedish (Svenska)

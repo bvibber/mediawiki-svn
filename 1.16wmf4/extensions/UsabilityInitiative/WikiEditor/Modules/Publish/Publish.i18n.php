@@ -152,6 +152,7 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Wikitanvir
  */
 $messages['bn'] = array(
 	'wikieditor-publish-preference' => 'ধাপে ধাপে প্রকাশ করা সক্রিয় করো',
@@ -160,7 +161,7 @@ $messages['bn'] = array(
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} এ প্রকাশ করো',
 	'wikieditor-publish-dialog-summary' => 'সম্পাদনা সারাংশ (আপনি কি পরিবর্তন করেছেন তা অল্প কথায় লিখুন):',
 	'wikieditor-publish-dialog-minor' => 'অনুল্লেখ্য সম্পাদনা',
-	'wikieditor-publish-dialog-watch' => 'এই পাতাটি নজরে রাখো',
+	'wikieditor-publish-dialog-watch' => 'এই পাতাটি নজরে রাখুন',
 	'wikieditor-publish-dialog-publish' => 'প্রকাশ করো',
 	'wikieditor-publish-dialog-goback' => 'ফিরে যাও',
 );
@@ -224,9 +225,15 @@ $messages['ce'] = array(
  * @author Asoxor
  */
 $messages['ckb-arab'] = array(
+	'wikieditor-publish-preference' => 'ڕێگە بدە بە بڵاوکردنەوەی ھەنگاوبەھەنگاو',
+	'wikieditor-publish-button-publish' => 'بڵاوی بکەوە',
+	'wikieditor-publish-button-cancel' => 'ھەڵوەشاندنەوە',
+	'wikieditor-publish-dialog-title' => 'لە {{SITENAME}} بڵاوی بکەوە',
+	'wikieditor-publish-dialog-summary' => 'پوختەی دەستکاری (بە کورتی ئەی گۆڕانکارییانەی کردووتە ئاشکرا دەکاتەوە):',
 	'wikieditor-publish-dialog-minor' => 'دەستکاریی بچووک',
 	'wikieditor-publish-dialog-watch' => 'چاودێڕیی ئەم پەڕە بکە',
 	'wikieditor-publish-dialog-publish' => 'بڵاوی بکەوە',
+	'wikieditor-publish-dialog-goback' => 'بگەڕێوە',
 );
 
 /** Czech (Česky)
@@ -248,8 +255,10 @@ $messages['cs'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'wikieditor-publish-button-publish' => 'съхранѥ́ниѥ',
 	'wikieditor-publish-dialog-minor' => 'ма́лаꙗ мѣ́на',
 	'wikieditor-publish-dialog-watch' => 'си страни́цѧ блюдє́ниѥ',
+	'wikieditor-publish-dialog-publish' => 'съхранѥ́ниѥ',
 );
 
 /** Welsh (Cymraeg)
@@ -483,6 +492,21 @@ $messages['frp'] = array(
 	'wikieditor-publish-dialog-goback' => 'Retôrn',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-publish-preference' => 'Cuir an comas foillseachadh ceum air cheum',
+	'wikieditor-publish-button-publish' => 'Foillisch',
+	'wikieditor-publish-button-cancel' => 'Sguir dheth',
+	'wikieditor-publish-dialog-title' => 'Foillsich gu {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Gearr-chunntas an deasachaidh (mìnich na rinn thu gu goirid):',
+	'wikieditor-publish-dialog-minor' => 'Mùthadh beag',
+	'wikieditor-publish-dialog-watch' => 'Cum sùil air an duilleag seo',
+	'wikieditor-publish-dialog-publish' => 'Foillisch',
+	'wikieditor-publish-dialog-goback' => 'Air ais',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -621,6 +645,16 @@ $messages['id'] = array(
 	'wikieditor-publish-dialog-goback' => 'Kembali',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'wikieditor-publish-button-cancel' => 'Anular',
+	'wikieditor-publish-dialog-minor' => 'Mikra chanjo',
+	'wikieditor-publish-dialog-watch' => 'Surveyar ca pagino',
+	'wikieditor-publish-dialog-goback' => 'Retroirar',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
@@ -691,6 +725,21 @@ $messages['ko'] = array(
 	'wikieditor-publish-dialog-watch' => '이 문서 주시하기',
 	'wikieditor-publish-dialog-publish' => '게시',
 	'wikieditor-publish-dialog-goback' => '돌아가기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-publish-preference' => 'Атлам-атлам чыгъарыуну джандыр',
+	'wikieditor-publish-button-publish' => 'Чыгъар',
+	'wikieditor-publish-button-cancel' => 'Ызына алыу',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} проектде чыгъар',
+	'wikieditor-publish-dialog-summary' => 'Тюрлениулени ачыкълау (къаллай тюрлениулени этилгенин къысхасы бла белгилегиз):',
+	'wikieditor-publish-dialog-minor' => 'Гитче тюрлендириу',
+	'wikieditor-publish-dialog-watch' => 'Бу бетни сынчыкъла',
+	'wikieditor-publish-dialog-publish' => 'Чыгъар',
+	'wikieditor-publish-dialog-goback' => 'Артха',
 );
 
 /** Colognian (Ripoarisch)
@@ -772,6 +821,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
@@ -779,7 +829,10 @@ $messages['mr'] = array(
 टप्प्या-टप्प्याने प्रकाशन शक्य करा',
 	'wikieditor-publish-button-publish' => 'प्रकाशित करा
 दाखवा',
+	'wikieditor-publish-button-cancel' => 'रद्द करा',
+	'wikieditor-publish-dialog-title' => '↓ {{संकेतस्थळनाव}} येथे प्रदर्शित करा',
 	'wikieditor-publish-dialog-summary' => 'संपादनाचा सारांश:(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
+	'wikieditor-publish-dialog-minor' => 'छोटा बदल',
 	'wikieditor-publish-dialog-goback' => '↓ परत फिरा
 ↓ मागे जा',
 );
@@ -812,6 +865,21 @@ $messages['mt'] = array(
 	'wikieditor-publish-dialog-watch' => 'Segwi din il-paġna',
 	'wikieditor-publish-dialog-publish' => 'Ippubblika',
 	'wikieditor-publish-dialog-goback' => 'Mur lura',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-publish-preference' => 'Stap veur stap publiceren inschakelen',
+	'wikieditor-publish-button-publish' => 'Publiceren',
+	'wikieditor-publish-button-cancel' => 'Ofbreken',
+	'wikieditor-publish-dialog-title' => 'Publiceren naor {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => "Bewarkingssamenvatting (beschrief de wijzingen in 't kort):",
+	'wikieditor-publish-dialog-minor' => 'Kleine bewarking',
+	'wikieditor-publish-dialog-watch' => 'Volg disse pagina',
+	'wikieditor-publish-dialog-publish' => 'Publiceren',
+	'wikieditor-publish-dialog-goback' => 'Weerumme',
 );
 
 /** Dutch (Nederlands)
@@ -919,6 +987,8 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'wikieditor-publish-button-publish' => 'خپرول',
+	'wikieditor-publish-button-cancel' => 'ناګارل',
+	'wikieditor-publish-dialog-watch' => 'همدا مخ کتل',
 	'wikieditor-publish-dialog-publish' => 'خپرول',
 );
 
@@ -1024,9 +1094,15 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'wikieditor-publish-preference' => 'Запнути кроковане публікованя',
 	'wikieditor-publish-button-publish' => 'Публіковати',
 	'wikieditor-publish-button-cancel' => 'Сторно',
+	'wikieditor-publish-dialog-title' => 'Публіковати на {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Опис едітованя (короткый опис змін, зробленых вами):',
+	'wikieditor-publish-dialog-minor' => 'Мала едітація',
+	'wikieditor-publish-dialog-watch' => 'Слїдовати тоту сторінку',
 	'wikieditor-publish-dialog-publish' => 'Публіковати',
+	'wikieditor-publish-dialog-goback' => 'Назад',
 );
 
 /** Yakut (Саха тыла)
@@ -1114,6 +1190,7 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'wikieditor-publish-button-publish' => 'Objavi',
 	'wikieditor-publish-button-cancel' => 'Poništi',
+	'wikieditor-publish-dialog-summary' => 'Opis izmene (ukratko opišite šta ste izmenili):',
 	'wikieditor-publish-dialog-minor' => 'Mala izmena',
 	'wikieditor-publish-dialog-publish' => 'Objavi',
 	'wikieditor-publish-dialog-goback' => 'Vrati se',
@@ -1123,8 +1200,13 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'wikieditor-publish-button-publish' => 'Terbitkeun',
 	'wikieditor-publish-button-cancel' => 'Bolay',
+	'wikieditor-publish-dialog-title' => 'Terbitkeun di {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Ringkesna (parobahan naon anu dijieun):',
+	'wikieditor-publish-dialog-minor' => 'Éditan minor',
 	'wikieditor-publish-dialog-watch' => 'Awaskeun ieu kaca',
+	'wikieditor-publish-dialog-publish' => 'Terbitkeun',
 	'wikieditor-publish-dialog-goback' => 'Balik deui',
 );
 

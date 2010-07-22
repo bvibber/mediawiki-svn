@@ -71,6 +71,13 @@ $messages['ca'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Habilita el giny «Assistent per afegir multimèdia»',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Marmzok
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-addMediaWizard-preference' => 'مۆڵەتدانی ئامرازۆکی "فێڵی زیادکردنی میدیا"',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -146,6 +153,20 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activer le gadget « Assistant d’ajout de média »',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Activar l’outil « Assistent d’aponsa de mèdia »',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Cuir an comas an gleus "Draoidh nam meadhanan"',
 );
 
 /** Galician (Galego)
@@ -224,6 +245,13 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'wikieditor-addMediaWizard-preference' => '"미디어 마법사" 가젯을 활성화하기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-addMediaWizard-preference' => '«Медиа къошууну мастери» гаджетни джукълат',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -332,6 +360,13 @@ $messages['ru'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Включить гаджет «Мастер добавления медиа»',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Поволити додаток «Майстер придаваня медіа»',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -372,6 +407,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'wikieditor-addMediaWizard-preference' => '"Ortam ekleme sihirbazı" gadget\'ını etkinleştir',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Увімкнути додаток «Майстер додавання медіа»',
 );
 
 /** Vietnamese (Tiếng Việt)

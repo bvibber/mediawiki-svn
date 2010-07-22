@@ -92,6 +92,10 @@ mw.usability.getMsg = function( key, args ) {
 mw.usability.testBrowser = function( map ) {
 	// Check over each browser condition to determine if we are running in a compatible client
 	var browser = map[$j( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$j.browser.name];
+	// if the browser is set to a boolean value, return that value
+	if ( typeof browser == 'boolean' ) {
+		return browser;
+	}
 	if ( typeof browser !== 'object' ) {
 		// Unknown, so we assume it's working
 		return true;

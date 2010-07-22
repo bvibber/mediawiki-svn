@@ -148,6 +148,15 @@ $messages['ce'] = array(
 	'wikieditor-loading' => 'Чуйолуш',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor' => 'ڕووکاری پێشکەوتووی دەستکاریکردنی ویکیدەق',
+	'wikieditor-wikitext-tab' => 'ویکیدەق',
+	'wikieditor-loading' => 'بارکردن',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -304,6 +313,17 @@ $messages['frp'] = array(
 	'wikieditor' => 'Entèrface de changement de vouiquitèxto avanciê',
 	'wikieditor-desc' => 'Balye una entèrface de changement de vouiquitèxto èxtensibla et un mouél de fonccionalitâts.',
 	'wikieditor-wikitext-tab' => 'Vouiquitèxto',
+	'wikieditor-loading' => 'Chargement',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor' => 'Eadar-aghaidh deasachadh wikitext adhartach',
+	'wikieditor-desc' => 'Bheir seo dhut eadar-aghaidh deasachadh wikitext adhartach agus iomadh mòideal a bheir dhut feartan',
+	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => "'Ga luchdadh",
 );
 
 /** Galician (Galego)
@@ -422,6 +442,16 @@ $messages['ko'] = array(
 	'wikieditor-loading' => '로딩중',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor' => 'Викитекст редакторлауну кенгертилген интерфейси',
+	'wikieditor-desc' => 'Викитекст редакторлауну кенгертилген интерфейсин эмда модулла берген кёб башха функцияны джетиштиреди.',
+	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Джюклеу',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -472,11 +502,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'wikieditor' => 'विकिमजकूर संपादनाची विकसित सुविधा',
 	'wikieditor-wikitext-tab' => 'विकिमजकूर',
+	'wikieditor-loading' => 'चढवत आहे…',
 );
 
 /** Malay (Bahasa Melayu)
@@ -497,6 +529,16 @@ $messages['mt'] = array(
 	'wikieditor-desc' => "Tipprovdi interfaċċa ta' modifika tat-test tal-wiki estendibbli u ħafna moduli li jipprovdu aktar funzjonalitajiet",
 	'wikieditor-wikitext-tab' => 'Test tal-wiki',
 	'wikieditor-loading' => "Tiela'",
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor' => 'Uut-ebreien teksverwarker veur wikitekse',
+	'wikieditor-desc' => 'Hierdeur krie-j een teksverwarker veur wikitekse dee-j uut kunnen breien en modules mit extra functies',
+	'wikieditor-wikitext-tab' => 'Wikitekse',
+	'wikieditor-loading' => "An 't laojen",
 );
 
 /** Dutch (Nederlands)
@@ -538,6 +580,13 @@ $messages['oc'] = array(
 	'wikieditor-desc' => 'Provesís una interfàcia de modificacion de wikitèxte extensible e mantuna foncionalitats.',
 	'wikieditor-wikitext-tab' => 'Wikitèxte',
 	'wikieditor-loading' => 'Cargament',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'wikieditor-loading' => 'Laade',
 );
 
 /** Polish (Polski)
@@ -625,6 +674,16 @@ $messages['ru'] = array(
 	'wikieditor-loading' => 'Загрузка',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor' => 'Росшыреный інтерфейс едітованя вікітексту',
+	'wikieditor-desc' => 'Забезпечує росшырительный інтерфейс едітованя вікітексту з богато функціоналныма модулами',
+	'wikieditor-wikitext-tab' => 'Вікітекст',
+	'wikieditor-loading' => 'Награває ся',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -683,6 +742,7 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Ngamuat',
 );
 

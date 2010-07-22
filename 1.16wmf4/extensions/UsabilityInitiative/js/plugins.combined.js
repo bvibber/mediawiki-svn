@@ -92,6 +92,10 @@ mw.usability.getMsg = function( key, args ) {
 mw.usability.testBrowser = function( map ) {
 	// Check over each browser condition to determine if we are running in a compatible client
 	var browser = map[$j( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$j.browser.name];
+	// if the browser is set to a boolean value, return that value
+	if ( typeof browser == 'boolean' ) {
+		return browser;
+	}
 	if ( typeof browser !== 'object' ) {
 		// Unknown, so we assume it's working
 		return true;
@@ -241,32 +245,15 @@ $.fn.autoEllipsis = function( options ) {
 		// protected text element - the width of this element is counted, but next is never trimmed from it
 		var $protectedText = null;
 
-		if ( options.matchText ) {
-			var text = $this.text();
-			var matchedText = options.matchText;
-			$trimmableText =  $( '<span />' )
-				.css( 'whiteSpace', 'nowrap' )
-				.addClass( 'autoellipsis-trimmed' )
-				.text( $this.text().substr( matchedText.length, $this.text().length ) );
-			$protectedText = $( '<span />' )
-				.addClass( 'autoellipsis-matched' )
-				.css( 'whiteSpace', 'nowrap' )
-				.text( options.matchText );
-			$container
-				.empty()
-				.append( $protectedText )
-				.append( $trimmableText );
+		if ( options.hasSpan ) {
+			$trimmableText = $this.children( options.selector );
 		} else {
-			if ( options.hasSpan ) {
-				$trimmableText = $this.children( options.selector );
-			} else {
-				$trimmableText = $( '<span />' )
-					.css( 'whiteSpace', 'nowrap' )
-					.text( $this.text() );
-				$this
-					.empty()
-					.append( $trimmableText );
-			}
+			$trimmableText = $( '<span />' )
+				.css( 'whiteSpace', 'nowrap' )
+				.text( $this.text() );
+			$this
+				.empty()
+				.append( $trimmableText );
 		}
 		
 		var text = $container.text();
@@ -344,6 +331,7 @@ $.fn.autoEllipsis = function( options ) {
 			$container.attr( 'title', text );
 		}
 		if ( options.matchText ) {
+			$container.highlightText( options.matchText );
 			matchTextCache[text][options.matchText][w] = $container.html();
 		} else {
 			cache[text][w] = $container.html();
@@ -420,7 +408,7 @@ jQuery Browser Plugin
 			['PLAYSTATION 3', 'PS3']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3|docomo)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],
@@ -844,6 +832,68 @@ $.fn.extend( {
 } );
 } )( jQuery );
 /**
+ * Plugin that highlights matched word partials in a given element
+ * TODO: add a function for restoring the previous text
+ * TODO: accept mappings for converting shortcuts like WP: to Wikipedia: 
+ */
+( function( $ ) {
+
+$.highlightText = {
+	
+	// Split our pattern string at spaces and run our highlight function on the results
+	splitAndHighlight: function( node, pat ) {
+		var patArray = pat.split(" ");
+		for ( var i = 0; i < patArray.length; i++ ) {
+			if ( patArray[i].length == 0 ) continue;
+			$.highlightText.innerHighlight( node, patArray[i] );
+		}
+		return node;
+	},
+	// scans a node looking for the pattern and wraps a span around each match 
+	innerHighlight: function( node, pat ) {
+		// if this is a text node
+		if ( node.nodeType == 3 ) {
+			// TODO - need to be smarter about the character matching here. 
+			// non latin characters can make regex think a new word has begun. 
+			// look for an occurence of our pattern and store the starting position 
+			var pos = node.data.search( new RegExp( "\\b" + RegExp.escape( pat ), "i" ) );
+			if ( pos >= 0 ) {
+				// create the span wrapper for the matched text
+				var spannode = document.createElement( 'span' );
+				spannode.className = 'highlight';
+				// shave off the characters preceding the matched text
+				var middlebit = node.splitText( pos );
+				// shave off any unmatched text off the end
+				middlebit.splitText( pat.length );
+				// clone for appending to our span
+				var middleclone = middlebit.cloneNode( true );
+				// append the matched text node to the span
+				spannode.appendChild( middleclone );
+				// replace the matched node, with our span-wrapped clone of the matched node
+				middlebit.parentNode.replaceChild( spannode, middlebit );
+			}
+		// if this is an element with childnodes, and not a script, style or an element we created
+		} else if ( node.nodeType == 1 && node.childNodes && !/(script|style)/i.test( node.tagName )
+				&& !( node.tagName.toLowerCase() == 'span' && node.className.match( /\bhighlight/ ) ) ) {
+			for ( var i = 0; i < node.childNodes.length; ++i ) {
+				// call the highlight function for each child node
+				$.highlightText.innerHighlight( node.childNodes[i], pat );
+			}
+		}
+	}
+};
+
+$.fn.highlightText = function( matchString ) {
+	return $( this ).each( function() {
+		var $this = $( this );
+		$this.data( 'highlightText', { originalText: $this.text() } );
+		$.highlightText.splitAndHighlight( this, matchString );
+	} );
+};
+
+} )( jQuery );
+
+/**
  * This plugin provides a generic way to add suggestions to a text box.
  *
  * Usage:
@@ -1012,7 +1062,7 @@ $.suggestions = {
 							} else {
 								// Add <span> with text
 								if( context.config.highlightInput ) {
-									matchedText = text.substr( 0, context.data.prevText.length );
+									matchedText = context.data.prevText;
 								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )
@@ -1023,7 +1073,8 @@ $.suggestions = {
 								// New width is only calculated here, applied later
 								var $span = $result.children( 'span' );
 								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
-									expWidth = $span.outerWidth();
+									// factor in any padding, margin, or border space on the parent
+									expWidth = $span.outerWidth() + ( context.data.$container.width() - $span.parent().width());
 								}
 								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
@@ -4472,7 +4523,7 @@ fn: {
 							$section.fadeIn( 'fast' );
 							if ( $section.hasClass( 'loading' ) ) {
 								// Loading of this section was deferred, load it now
-								$this = $(this);
+								var $this = $(this);
 								$this.addClass( 'current loading' );
 								setTimeout( function() {
 									$section.trigger( 'loadSection' );
@@ -4515,11 +4566,11 @@ fn: {
 			// This class shows the spinner and serves as a marker for the click handler in buildTab()
 			$section.addClass( 'loading' ).append( $( '<div />' ).addClass( 'spinner' ) );
 			$section.bind( 'loadSection', function() {
-				$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+				$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, id, section, $section );
 				$section.removeClass( 'loading' );
 			} );
 		} else {
-			$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+			$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, id, section, $section );
 		}
 		
 		// Show or hide section
@@ -4530,7 +4581,7 @@ fn: {
 		}
 		return $section;
 	},
-	reallyBuildSection : function( context, section, $section ) {
+	reallyBuildSection: function( context, id, section, $section ) {
 		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + $section.attr( 'rel' ), [section] );
 		switch ( section.type ) {
 			case 'toolbar':
@@ -4556,7 +4607,7 @@ fn: {
 					}
 				}
 				$section.append( $index ).append( $pages );
-				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, page, $pages, $index );
+				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, id, $pages, $index );
 				break;
 		}
 	},

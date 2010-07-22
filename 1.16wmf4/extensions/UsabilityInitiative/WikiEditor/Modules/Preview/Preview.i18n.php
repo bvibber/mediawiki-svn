@@ -153,6 +153,16 @@ $messages['ce'] = array(
 	'wikieditor-preview-loading' => 'Чуйолуш…',
 );
 
+/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
+ */
+$messages['ckb-arab'] = array(
+	'wikieditor-preview-preference' => 'ڕێگەپێدان بە پێشبینینی شانبەشان',
+	'wikieditor-preview-tab' => 'پێشبینین',
+	'wikieditor-preview-changes-tab' => 'گۆڕانکارییەکان',
+	'wikieditor-preview-loading' => 'باركردن‌ ...',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -342,6 +352,16 @@ $messages['fur'] = array(
 	'wikieditor-preview-loading' => 'Daûr a cjamâ…',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'wikieditor-preview-preference' => 'Cuir an comas ro-shealladh taobh ri taobh',
+	'wikieditor-preview-tab' => 'Ro-shealladh',
+	'wikieditor-preview-changes-tab' => 'Mùthaidhean',
+	'wikieditor-preview-loading' => "'Ga luchdadh...",
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -423,6 +443,13 @@ $messages['id'] = array(
 	'wikieditor-preview-loading' => 'Memuat...',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'wikieditor-preview-changes-tab' => 'Chanji',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
@@ -473,6 +500,16 @@ $messages['ko'] = array(
 	'wikieditor-preview-tab' => '미리 보기',
 	'wikieditor-preview-changes-tab' => '차이',
 	'wikieditor-preview-loading' => '불러오는 중...',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'wikieditor-preview-preference' => 'Бир бири къатында ал къарауну джандыр',
+	'wikieditor-preview-tab' => 'Ал къарау',
+	'wikieditor-preview-changes-tab' => 'Тюрлениуле',
+	'wikieditor-preview-loading' => 'Джюклениу...',
 );
 
 /** Colognian (Ripoarisch)
@@ -536,10 +573,14 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'wikieditor-preview-preference' => 'सोबतच बाजूस दिसणारी झलक शक्य करा',
+	'wikieditor-preview-tab' => 'झलक',
+	'wikieditor-preview-changes-tab' => 'बदल',
+	'wikieditor-preview-loading' => 'चढवत आहे…',
 );
 
 /** Malay (Bahasa Melayu)
@@ -560,6 +601,16 @@ $messages['mt'] = array(
 	'wikieditor-preview-tab' => 'Dehra proviżorja',
 	'wikieditor-preview-changes-tab' => 'Tibdil',
 	'wikieditor-preview-loading' => "Tiela'...",
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikieditor-preview-preference' => 'Bewarken en naokieken naos mekaar',
+	'wikieditor-preview-tab' => 'Naokieken',
+	'wikieditor-preview-changes-tab' => 'Wiezigingen',
+	'wikieditor-preview-loading' => "An 't laojen...",
 );
 
 /** Dutch (Nederlands)
@@ -640,6 +691,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'wikieditor-preview-tab' => 'مخليدنه',
 	'wikieditor-preview-changes-tab' => 'بدلونونه',
+	'wikieditor-preview-loading' => 'د برسېرېدلو په حال کې...',
 );
 
 /** Portuguese (Português)
@@ -711,6 +763,8 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'wikieditor-preview-preference' => 'Запнути нагляды в панелї',
+	'wikieditor-preview-tab' => 'Нагляд',
 	'wikieditor-preview-changes-tab' => 'Зміны',
 	'wikieditor-preview-loading' => 'Награваня...',
 );
@@ -766,6 +820,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'wikieditor-preview-tab' => 'Pretpregled',
 	'wikieditor-preview-loading' => 'Učitavanje...',
 );
 
@@ -774,6 +829,7 @@ $messages['sr-el'] = array(
  */
 $messages['su'] = array(
 	'wikieditor-preview-tab' => 'Pramidang',
+	'wikieditor-preview-changes-tab' => 'Parobahan',
 	'wikieditor-preview-loading' => 'Ngamuat…',
 );
 

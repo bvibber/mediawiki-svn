@@ -25,6 +25,7 @@ PLUGINS := \
 	js/plugins/jquery.color.js\
 	js/plugins/jquery.cookie.js\
 	js/plugins/jquery.delayedBind.js\
+	js/plugins/jquery.highlightText.js\
 	js/plugins/jquery.suggestions.js\
 	js/plugins/jquery.textSelection.js\
 	js/plugins/jquery.wikiEditor.js\

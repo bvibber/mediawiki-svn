@@ -706,7 +706,7 @@ $messages['bn'] = array(
 	'optin-survey-answer-changes-nav' => 'সাইটের সার্বিক নেভিগেশন ব্যবহার সহজ করো।',
 	'optin-survey-answer-changes-edittools' => 'সম্পাদনা টুল বৃদ্ধি এবং সমৃদ্ধ করা।',
 	'optin-survey-answer-changes-upload' => 'কন্টেন্ট এবং মিডিয়া আপলোড ব্যবস্থার উন্নয়ন।',
-	'optin-survey-answer-changes-richtext' => 'সমৃদ্ধ-টেক্সট সম্পাদকের মত একই রকমের সম্পাদনা টুল উন্নয়ন করো।',
+	'optin-survey-answer-changes-richtext' => 'সমৃদ্ধ-টেক্সট সম্পাদকের মত একই রকম ভাবে সম্পাদনা টুলের উন্নয়ন করো।',
 	'optin-survey-answer-changes-lookfeel' => 'সাইটের "লুক এন্ড ফিল" হালনাগাদ করুন।',
 	'optin-survey-answer-changes-predictability' => 'আন্দাজ করার ক্ষমতা উন্নয়ন করুন।',
 	'optin-survey-answer-changes-custom' => 'আরও বেশি স্বনির্ধারণের সুযোগ',
@@ -749,8 +749,8 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
 	'optin-leave-cancel' => "M'hoc'h eus c'hoant da genderc'hel da implijout Beta, e c'hallit distreiñ da $1.",
-	'optin-success-out' => "Kuitaet hoc'h eus Beta.
-Tu zo deoc'h e amprouiñ en-dro en ur glikañ war al liamm \"{{int:optin-try}}\" en nec'h, a-zehou ar skramm.",
+	'optin-success-out' => 'Kuitaet hoc\'h eus Beta.
+Gellout a rit e amprouiñ en-dro en ur glikañ war al liamm "{{int:optin-try}}" en nec\'h, a-zehou ar skramm.',
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
 	'optin-accept-long' => 'Amprouiñ Beta',
@@ -967,6 +967,7 @@ $messages['ce'] = array(
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
@@ -974,8 +975,16 @@ $messages['ckb-arab'] = array(
 	'optin-title-optedin' => 'وازهێنان لە بێتا',
 	'optin-title-justoptedin' => 'بەخێرهاتی بۆ بێتا',
 	'optin-title-justoptedout' => 'سوپاس بۆ تاقی‌کردنەوەی بێتا',
+	'optin-title-feedback' => 'پێڕاگەیاندنەوەی بێتا',
+	'optin-feedback-intro' => 'سپاستان دەکەین بۆ تاقیکردنەوەی بێتا. <br />
+پێمان خۆشە بزانین ئێوە سەبارەت بەم ڕواڵەتە نوێیە چی بیردەکەنەوە، بۆیە سوپاستان دەکەین دیسان ئەگەر ئەو ھەڵسەنگاندنە دڵخوازانەی خوارەوە پڕکەنەوە.',
 	'optin-leave-cancel' => 'گەر دەتەوێ لە کەڵک وەرگرتنی بێتا بەردەوام بی، دەتوانی بگەرێیتەوە بۆ $1.',
+	'optin-success-out' => 'بە سەرکەوتوویی بێتات بەجێ ھێشت.<br />
+ھەرکاتێ کە بتەوێ دەتوانی بە کرتەکردنە سەر بەستەری "{{int:optin-try}}" لە سەرەوەی پەڕەکەدا، دیسان تاقی بکەیتەوە.',
+	'optin-success-feedback' => 'سوپاس بۆ پێڕاگەیاندنەوەت!',
 	'optin-accept-short' => 'با ئەنجامی دەین!',
+	'optin-accept-long' => 'تاقیکردنەوەی بێتا',
+	'optin-accept-long-anon' => 'بڕۆ ژوورەوە و بێتا تاقی بکەوە',
 	'optin-deny-short' => 'سوپاس، نەخێر',
 	'optin-deny-long' => 'گەڕانەوە بۆ لاپەڕەی پێشوو',
 	'optin-submit-out' => 'وازهێنان لە بێتا',
@@ -983,9 +992,20 @@ $messages['ckb-arab'] = array(
 	'optin-survey-no' => 'نەخێر',
 	'optin-survey-question-likedislike' => 'کاتی بەکارهێنان سەبارەت بە بێتا چیت بەدڵ بوو؟ چیت بە دڵ نەبوو؟',
 	'optin-survey-answer-whyoptout-hard' => 'کەڵک وەرگرتنی زۆر زەحمەت بوو.',
+	'optin-survey-answer-whyoptout-didntwork' => 'بە باشی کاری نەکرد.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'ڕواڵەتەکەی بە دڵم نەبوو.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'تاب و نەخشە نوێکانم بەدڵ نەبوو.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'شریتامرازە نوێکە بەدڵم نەبوو.',
 	'optin-survey-answer-whyoptout-other' => 'هۆکاری دیکە:',
+	'optin-survey-question-usedtoolbar' => 'ئایا ئەو شریتامرازە نوێیەت بۆ دەستکاری پەڕەیەک بەکارھێناوە؟',
+	'optin-survey-question-usedtoolbar-ifyes' => 'ئەگەر بەڵێ، سەبارەت بەوە چیت بە دڵ بوو؟ چیت بە دڵ نەبوو؟',
+	'optin-survey-question-usedtoolbar-ifno' => 'ئەگەر نەخێر، بۆ نەخێر؟ ئەیا لە داھاتوودا بەکاری دێنیت؟ تکایە شی بکەوە.',
 	'optin-survey-question-browser' => 'کام گەڕۆک بەکار دەهێنی؟',
 	'optin-survey-answer-browser-other' => 'گەڕۆکی دیکە:',
+	'optin-survey-question-os' => 'کام سیستەمی کارپێکردن بەکاردێنی؟',
+	'optin-survey-answer-os-other' => 'سیستەمی بەکارھێنانی دیکە:',
+	'optin-survey-question-res' => 'رەزۆلوشنی شاشەکەت چەندە؟',
+	'optin-survey-question-changes' => 'حەز دەکەی کام گۆڕانکاریانە لە داھاتوودا لە بیتادا ببینی؟ (تکایە گشت ئەو شتانەی پێت باشن ھەڵبژێرە)',
 );
 
 /** Czech (Česky)
@@ -1355,6 +1375,7 @@ Wir möchten gerne erfahren, was Sie über unsere neue Benutzeroberfläche denke
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'optin' => 'Kullanılabilirlik Girişimi katılım',
@@ -1419,6 +1440,19 @@ Beta ser çı pêşniyazê şıma  esto ma re bışawe. seba anketi:
 	'optin-survey-answer-changes-predictability' => 'performans o ke texmin beno, dewlemend kerê',
 	'optin-survey-answer-changes-custom' => 'xususi kerdışê karberani re destur bıdi',
 	'optin-survey-answer-changes-other' => 'ey bin:',
+	'optin-improvements2' => '=== Çi vuriya?===
+[[File:UsabilityToolbar.png|left|link=| Yew resimê interfaceyê nuştişi]]
+[[File:UsabilityDialogs.png|left|link=| Yew resimê qutiyê diyalogê newe seba dekerdişi gireyan]]
+;Xecatanê Neweyan
+Xecatanê Neweyan Eka nuştiş u formet kerdişi eka rehat kerdo.
+Eni xacetanê neweyan de ti hind eşkena kolay binusi. xacetanê neweyan kaberanê neweyan rê her çi kolay keni.  
+;Diyalog
+Eka yew tablo wikipediya esta. Hind ti kolay eşkena pel de gire bierz. Ma yew wizard viraşt  ke hind tablo viraştiş kolay biy; format kerdişi zaf rahet o.
+;Zaf zi esti
+Seba wendiş u nuştişê meqaleyan kolay kerdişi, ma nevigasyon raver berdi. Tuşan ke ser pel de hind tu ra mocneni eka ti meqele vurnen ya zi ti pela miniqeşeyi vuneni ya zi ti kamci pele wendeni.
+== Ti seni yardim keni? ==
+Tiya de ser Usability Initiative biweni [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style="clear:both"></div>',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -2187,7 +2221,7 @@ Pour en savoir plus sur l’initiative d’utilisabilité, visitez notre [http:/
  */
 $messages['frp'] = array(
 	'optin' => 'Participar a l’iniciativa d’utilisabilitât',
-	'optin-desc' => 'Pèrmèt ux utilisators d’èprovar la Bèta, les mèlyoracions de l’iniciativa d’utilisabilitât.',
+	'optin-desc' => 'Pèrmèt ux utilisators d’èprovar la Bèta, les dèrriéres mèlyoracions de l’iniciativa d’utilisabilitât.',
 	'optin-title-optedout' => 'Èprovar la Bèta',
 	'optin-title-optedin' => 'Quitar la Bèta',
 	'optin-title-justoptedin' => 'Benvegnua a la Bèta',
@@ -2217,8 +2251,8 @@ Vos la pouede tornar èprovar a tot moment en cliquent sur lo lim « {{int:optin
 	'optin-survey-intro' => 'Grant-marci d’èprovar la Bèta.
 Nos amerians savêr cen que vos pensâd de noutra novèla entèrface, donc nos aprèciyerians que vos rempléd lo quèstionèro u chouèx ce-desot devant que clicar dessus « [[#leave|{{int:optin-submit-out}}]] ».',
 	'optin-survey-question-likedislike' => 'Qu’est-o que vos éd amâ dens la Bèta ? Qu’est-o que vos éd pas amâ dens la Bèta ?',
-	'optin-survey-question-whyoptout' => 'Porquè quitâd-vos la Bèta ? (Chouèsésséd tot cen que convint.)',
-	'optin-survey-answer-whyoptout-hard' => 'Ére trop mâlésiê de l’utilisar.',
+	'optin-survey-question-whyoptout' => 'Porquè quitâd-vos la Bèta ? (Volyéd chouèsir tot cen que convint.)',
+	'optin-survey-answer-whyoptout-hard' => 'O ére trop mâlésiê de l’utilisar.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Cen fonccione pas bien.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Cen s’est pas passâ coment prèvu.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'J’é pas amâ son aparence.',
@@ -2229,7 +2263,7 @@ Nos amerians savêr cen que vos pensâd de noutra novèla entèrface, donc nos a
 	'optin-survey-question-techfail' => 'Éd-vos rencontrâ des problèmos tècnicos en utilisent la Bèta ?',
 	'optin-survey-question-techfail-ifyes' => 'Se ouè, èxplicâd ou ben aprovondésséd :',
 	'optin-survey-question-usedtoolbar' => 'Éd-vos utilisâ la bârra d’outils dèroulâbla novèla por changiér una pâge ?',
-	'optin-survey-question-usedtoolbar-ifyes' => 'Se ouè, qu’éd-vos amâ et qu’éd-vos pas amâ a son propôs ?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Se ouè, qu’est-o que vos éd amâ et pués qu’est-o que vos éd pas amâ a son propôs ?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Se nan, porquè ? L’utiliseréd-vos dens l’avegnir ? Èxplicâd.',
 	'optin-survey-question-different' => 'Qu’est-o qu’arêt diu étre difèrent por que vos continuâd a utilisar la Bèta ?',
 	'optin-survey-question-feedback' => 'Balyéd-nos voutron avis :',
@@ -2238,7 +2272,7 @@ Nos amerians savêr cen que vos pensâd de noutra novèla entèrface, donc nos a
 	'optin-survey-question-os' => 'Quint sistèmo d’èxplouètacion utilisâd-vos ?',
 	'optin-survey-answer-os-other' => 'Ôtro sistèmo d’èxplouètacion :',
 	'optin-survey-question-res' => 'Quinta est la rèsolucion de voutron ècran ?',
-	'optin-survey-question-changes' => 'Qu’ameriâd-vos vêre dens la Bèta dens l’avegnir (chouèsésséd tot cen que convint) ?',
+	'optin-survey-question-changes' => 'Qu’ameriâd-vos vêre dens la Bèta dens l’avegnir (volyéd chouèsir tot cen que convint) ?',
 	'optin-survey-answer-changes-nav' => 'Fâre que la navigacion g·ènèrala du seto seye ples simpla a utilisar.',
 	'optin-survey-answer-changes-edittools' => 'Ôgmentar et mèlyorar los outils d’èdicion.',
 	'optin-survey-answer-changes-upload' => 'Mèlyorar lo tèlèchargement de contegnu et de fichiérs multimèdia.',
@@ -2264,6 +2298,87 @@ $messages['fur'] = array(
 $messages['ga'] = array(
 	'optin-intro' => 'Tá Tionscnamh Inúsáideachta na Vicipéide ag obair chun inúsáideacht na Vicipéide a fheabhsú.
 Ar mhaith leat ár Béite a thriail?',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'optin' => 'Gabh ri Iomairt na So-chleachdachd',
+	'optin-desc' => 'Leig le cleachdaichean am Beta fheuchainn, sin na leasachaidhean as ùire aig Iomairt na So-chleachdachd.',
+	'optin-title-optedout' => 'Feuch am Beta',
+	'optin-title-optedin' => 'Fàg am Beta',
+	'optin-title-justoptedin' => 'Fàilte dhan Bheta',
+	'optin-title-justoptedout' => "Gun robh math agad airson feuchainn ris a' Bheta againn",
+	'optin-title-feedback' => "Beachdan air a' Bheta",
+	'optin-needlogin' => "Feumaidh tu [$1 logadh a-steach] gus feuchainn ris a' Bheta.",
+	'optin-intro' => "Bha Iomairt na So-chleachdachd aig Wikipedia ag obair gu cruaidh gus piseach a thoirt air so-chleachdachd Wikipedia.
+Am bu toigh leat feuchainn ris a' Bheta againn?",
+	'optin-feedback-intro' => "Gun robh math agad airson feuchainn ris a' Bheta.
+Bu toigh leinn do bheachdan air an eadar-aghaidh ùr againn a chluinntinn 's bhitheamaid fada 'nad chomain nam b' urrainn dhut an t-suirbhidh shaor-thoileach gu h-ìosal a lìonadh a-steach.",
+	'optin-feedback-back' => "Mur eil thu airson an t-suirbhidh a lìonadh a-steach, 's urrainn dhut tilleadh a $1.",
+	'optin-success-in' => "Tha thu a' feuchainn ris a' Bheta a-nis.
+'S urrainn dhut fhàgail uair sam bith ma bhriogas tu air a' cheangal \"{{int:optin-leave}}\" aig barr na duilleige.",
+	'optin-leave-cancel' => "Ma tha thu airson leantainn ort leis a' Bheta, 's urrainn dhut tilleadh a $1.",
+	'optin-success-out' => "Dh'fhàg thu am Beta gu soirbheachail.
+'S urrainn dhut feuchainn ris a-rithist uair sam bith ma bhriogas tu air a' cheangal \"{{int:optin-try}}\" aig barr na duilleige.",
+	'optin-success-feedback' => 'Gun robh math agad airson do bheachdan!',
+	'optin-accept-short' => 'Ceart ma-thà!',
+	'optin-accept-long' => "Feuch ris a' Bheta",
+	'optin-accept-long-anon' => "Log a-steach 's feuch ris a' Bheta",
+	'optin-deny-short' => "Cha bu toigh l', mòran taing",
+	'optin-deny-long' => 'Till dhan duilleag roimhe',
+	'optin-submit-out' => 'Fàg am Beta',
+	'optin-submit-feedback' => 'Thoir beachd',
+	'optin-survey-yes' => "Bu toigh l'",
+	'optin-survey-no' => "Cha bu toigh l'",
+	'optin-survey-intro' => "Gun robh math agad airson feuchainn ris a' Bheta.
+Bu toigh leinn do bheachdan air an eadar-aghaidh ùr againn a chluinntinn 's bhitheamaid fada 'nad chomain nam b' urrainn dhut an t-suirbhidh shaor-thoileach a lìonadh a-steach gu h-ìosal mus briog thu air \"[[#leave|{{int:optin-submit-out}}]]\".",
+	'optin-survey-question-likedislike' => "Dè bha a' còrdadh riut sa Bheta? Dè nach robh a' còrdadh riut sa Bheta?",
+	'optin-survey-question-whyoptout' => "Carson a tha thu a' fàgail a' Bheta? (Tagh gach freagairt a tha fìor.)",
+	'optin-survey-answer-whyoptout-hard' => 'Bha e ro dhoirbh ri chleachdadh.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Cha robh e ag obair mar bu chòir.',
+	'optin-survey-answer-whyoptout-notpredictable' => "Cha robh e a' dèanamh mar a bha dùil.",
+	'optin-survey-answer-whyoptout-didntlike-look' => "Cha robh an coltas a' còrdadh rium.",
+	'optin-survey-answer-whyoptout-didntlike-layout' => "Cha bu toigh leam na tabaichean ùra 's an coltas ùr.",
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Cha bu toigh leam am bàr-inneil ùr.',
+	'optin-survey-answer-whyoptout-other' => 'Adhbhar eile:',
+	'optin-survey-question-explain' => 'Mìnich do fhreagairt gu h-àrd no innis dhuinn barrachd:',
+	'optin-survey-question-techfail' => "An do thachair thu ri lochd teicnigeach sam bith fhad 's a bha thu a' cleachdadh a' Bheta?",
+	'optin-survey-question-techfail-ifyes' => 'Ma thachair, innis dhuinn na thachair:',
+	'optin-survey-question-usedtoolbar' => 'An do chleachd thu am bàr-inneil ùr as urrainn dhut leudachadh airson duilleag a dheasachadh?',
+	'optin-survey-question-usedtoolbar-ifyes' => "Ma chleachd, dè do bheachd air? An robh càil ann mu dhèidhinn nach robh a' còrdadh riut?",
+	'optin-survey-question-usedtoolbar-ifno' => 'Mura chleachd, an innis thu dhuinn carson? An cleachd thu e a-mach o seo? Innis dhuinn.',
+	'optin-survey-question-different' => "Am bitheadh tu a' cleachdadh a' Bheta fhathast nam bitheamaid air càil a dhèanamh air dòigh eile?",
+	'optin-survey-question-feedback' => 'Innis dhuinn ma tha beachd, dragh no moladh sam bith eile agad - tha beachdan de gach seòrsa feumail:',
+	'optin-survey-question-browser' => "Dè am brabhsair a bha thu a' cleachdadh?",
+	'optin-survey-answer-browser-other' => 'Brabhsair eile:',
+	'optin-survey-question-os' => "Dè an siostam-obrachaidh a bhios tu a' cleachdadh?",
+	'optin-survey-answer-os-other' => 'Siostam-obrachaidh eile:',
+	'optin-survey-question-res' => 'Dè an dùmhlachd-bhreacaidh a tha aig an sgrìn agad?',
+	'optin-survey-question-changes' => 'Dè na rudan a bu toigh leat faicinn sa Bheta san àm ri teachd (tagh gach aon dhiubh a tha fìor)?',
+	'optin-survey-answer-changes-nav' => 'Dèanaibh seòladh na làraich nas fhasa san fharsaingeachd.',
+	'optin-survey-answer-changes-edittools' => "Bu toigh leam barrachd innealan deasachaidh 's feadhainn nas fhearr.",
+	'optin-survey-answer-changes-upload' => 'Cuiribh piseach air an t-susbaint is luchdadh suas meadhanan.',
+	'optin-survey-answer-changes-richtext' => 'Leasaichibh innealan deasachaidh a tha coltach ri deasaichean rich-text.',
+	'optin-survey-answer-changes-lookfeel' => 'Ùraichibh coltas na làraich.',
+	'optin-survey-answer-changes-predictability' => 'Cuiribh piseach air gus an dèan e na tha dùil ris.',
+	'optin-survey-answer-changes-custom' => 'Leigibh le daoine a ghnàthachadh barrachd.',
+	'optin-survey-answer-changes-other' => 'Eile:',
+	'optin-improvements2' => "== Dè tha nas fhearr a-nis? ==
+[[File:UsabilityToolbar.png|left|link=|Dealbh-sgrìn a' bhàir-inneil dheasachaidh leasaichte]]
+[[File:UsabilityDialogs.png|left|link=|Dealbh-sgrìn a' chòmhraidh ùir airson cruthachadh susbainte]]
+;Am bàr-inneil leasaichte
+Tha e nas fhasa artagail a dheasachadh leis a' bhàr-inneil leasaichte.
+Tha e nas soilleire na tha gach inneal a' dèanamh leis na h-ìomhaigheagan ùra is leasaichte.
+Tha na roinnean leudaichte a' lughdachadh a' ghànrachaidh fhad 's a chumas e na h-innealan a chleachdas tu gu tric deas ri do làimh.
+;An còmhradh
+Nuair a chruthaicheas tu ceanglaichean no clàir, fosglaidh tu bogsa còmhraidh ùr ma bhriogas tu air ìomhaigheag an inneil agus 's urrainn dhut ceanglaichean is clàr a chruthachadh an uairsin le foirm simplidh.
+;Agus barrachd fhathast
+Chuir sinn an sàs grunn leasachaidhean eile mar sheòladh leasaichte, tabaichean air nòs easa, lorg leasaichte is torr a bharrachd.
+== Mar a ghabhas tu pàirt ann ==
+Airson barrachd fiosrachaidh air Iomairt na So-chleachdachd, tadhail air an [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative duilleag-dhachaigh] againn.
+<div style=\"clear:both\"></div>",
 );
 
 /** Galician (Galego)
@@ -2894,6 +3009,7 @@ Pro ulterior informationes super le Initiativa de Usabilitate, visita nostre [ht
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Kenrick95
@@ -2961,8 +3077,19 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-changes-custom' => 'Memperbolehkan Pengguna yang lebih tinggi untuk kustomisasi',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
 	'optin-improvements2' => '== Apa yang telah diperbaiki? ==
-[[Berkas:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
-[[Berkas:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]',
+[[File:UsabilityToolbar.png|left|link=|Cuplikan kotak peralatan penyuntingan yang baru]]
+[[File:UsabilityDialogs.png|left|link=|Cuplikan kotak dialog pengisian konten yang baru]]
+;Kotak Peralatan Baru
+Kotak peralatan baru menjadikan penyuntingan artikel lebih mudah..
+Ikon yang baru dan diperbarui semakin memerjelas kegunaan masing-masing alat.
+Bagian yang dapat diperbesar mengurangi gangguan sambil menjaga peralatan yang jarang digunakan hanya dengan sekali tekan.
+;Kotak Dialog
+Ketika membuat pranala atau tabel, menekan ikon peralatan sekarang akan membuka sebuah kotak dialog yang membantu Anda membuat pranala dan tabel dengan mengisi kotak isian yang sederhana.
+;Dan Lainnya
+Kami telah memerkenalkan sejumlah perbaikan lain seperti penelusuran yang diperbarui, pencarian yang diperbaiki, dan lainnya.
+== Bagaimana cara melibatkan diri? ==
+Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative halaman utama] kami.
+<div style="clear:both"></div>',
 );
 
 /** Ido (Ido)
@@ -3392,7 +3519,79 @@ $messages['ko'] = array(
  * @author Iltever
  */
 $messages['krc'] = array(
+	'optin' => 'Юзабилити башламчылыкъгъа къошулуу',
+	'optin-desc' => 'Къошулуучулагъа интерфейсни бета-версиясын («Beta») — Юзабилити башламчылыкъны юсю бла этилген ахыр игилендириуню сынаргъа къояды.',
+	'optin-title-optedout' => 'Бета-версияны сынаб кёр',
+	'optin-title-optedin' => 'Бета-версиядан чыкъ',
+	'optin-title-justoptedin' => 'Бета-версиягъа хош келигиз',
+	'optin-title-justoptedout' => 'Интерфейсни бета-версиясын сынагъаннга къошулгъаныгъыз ючюн сау болугъуз',
+	'optin-title-feedback' => 'Оюмугъузну ийигиз',
+	'optin-needlogin' => '[$1 Системагъа кирирге] керексиз бета-версияны сынар ючюн.',
+	'optin-intro' => 'Юзабилити башламчылыкъны юсю бла Википедияны хайырланыў тынчыракъ болурча талай иш этилгенди.
+Бета-версияны сынаргъа сюемисиз?',
+	'optin-feedback-intro' => 'Интерфейсни бета-версиясын сынаргъа разы болгъаныгъыз ючюн саў болугъуз.
+Джангы интерфейсни юсюнден оюмугъузну билирге излейбиз, аны ючюн тюбюрекде берилген соруб алыўгъа къошулсагъыз, разы боллукъбуз.',
+	'optin-feedback-back' => 'Соруб алыўгъа къошулургъа излемей эсегиз, $1ге къайтыргъа боллукъсуз.',
+	'optin-success-in' => 'Энди сиз интерфейсни бета-версиясын сынаугъа къошулгъансыз.
+Сиз программадан къачан сюйсегиз да чыгъаргъа боллукъсуз, экранны баш джанында «{{int:optin-leave}}» джибериуден басханлай.',
+	'optin-leave-cancel' => 'Мындан ары да бета-версияны хайырланыргъа излей эсегиз, къайтыргъа боллукъсуз: $1.',
+	'optin-success-out' => 'Интерфейсни бета-версиясын сынагъан режимден тыйыншлы чыкъдыгъыз.
+Экранны баш онг мюйюшюнде «{{int:optin-try}}» джибериуню басыб, энтда сынаб кёрюрге боллукъсуз бу версияны.',
+	'optin-success-feedback' => 'Оюмугъузну билдиргенигиз ючюн сау болугъуз!',
+	'optin-accept-short' => 'Алгъа!',
+	'optin-accept-long' => 'Бета-версияны сынаб кёр',
+	'optin-accept-long-anon' => 'Авторизацияны ёт да интерфейсни бета-версиясын сынаб кёр',
+	'optin-deny-short' => 'Огъай, сау болугъуз.',
+	'optin-deny-long' => 'Алгъадагъы бетге къайт',
+	'optin-submit-out' => 'Бета-версиядан чыкъ',
+	'optin-submit-feedback' => 'Оюмугъузну ийигиз',
+	'optin-survey-yes' => 'Хоу',
+	'optin-survey-no' => 'Огъай',
+	'optin-survey-intro' => 'Интерфейсни бета-версиясын сынаўгъа къошулгъаныгъыз ючюн саў болугъуз.
+Джангы интерфейсни юсюнден оюмугъузну билирге излейбиз, аны ючюн, «[[#leave|{{int:optin-submit-out}}]]» тиекни басарыгъызны аллы бла, тюбюрекде берилген соруўлагъа джуўаб берсегиз, разы боллукъбуз.',
+	'optin-survey-question-likedislike' => 'Beta-ны несин джаратдыгъыз? Beta-ны несин джаратмадыгъыз?',
+	'optin-survey-question-whyoptout' => 'Beta-дан нек чыгъасыз? (бютеў келишгенлени вариантланы сайлагъыз)',
+	'optin-survey-answer-whyoptout-hard' => 'Хайырланнган асыры къыйынды.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Тюзюуюн ишлемейди.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Алгъадан билмезча ишлейди.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Кёрюнюмюн джаратмайма.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Джангы тиекле бла вёрсткасын джаратмадым.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Джангы редакторлау панелни джаратмадым.',
+	'optin-survey-answer-whyoptout-other' => 'Башха чурум:',
+	'optin-survey-question-explain' => 'Башында берген джууабыгъызны ангылатыгъыз неда кескинлегиз:',
+	'optin-survey-question-techfail' => 'Beta-ны хайырланнган сагъатда техника джанындан бузукъ болгъанмыды?',
+	'optin-survey-question-techfail-ifyes' => 'Болгъан эсе, кескинлегиз эмда ангылатыгъыз:',
+	'optin-survey-question-usedtoolbar' => 'Бетлени редакторлагъан сагъатда джангы инструмент панелни хайырланнган эдигизми?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Хайырланнган эсегиз, аны несин джаратдыгъыз? Несин джаратмадыгъыз?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Хайырланмагъан эсегиз, нек хайырланмадыгъыз? Келир заманда хайырланыр акъылыгъыз бармыды? Ангылатыгъыз.',
+	'optin-survey-question-different' => 'Сиз Beta-ны хайырланырча нени тюрлендирирге керекди?',
+	'optin-survey-question-feedback' => 'Тилейбиз, бизге оюмугъузну билдиригиз:',
+	'optin-survey-question-browser' => 'Къайсы браузерни хайырланасыз?',
+	'optin-survey-answer-browser-other' => 'Башха браузер:',
+	'optin-survey-question-os' => 'Къайсы операция системаны хайырландырасыз?',
+	'optin-survey-answer-os-other' => 'Башха операция система:',
+	'optin-survey-question-res' => 'Экраныгъызны разрешениеси къаллайды?',
+	'optin-survey-question-changes' => 'Эндиги бета-версиялада къаллай тюрлениулени кёрюрге сюе эдигиз (келишген пунктланы сайлагъыз)?',
+	'optin-survey-answer-changes-nav' => 'Сайтда бютеулей навигация тынчыракъ этилсин.',
+	'optin-survey-answer-changes-edittools' => 'Редакторлау инструментле кенгертилинсинле эмда игилендирилинсинле.',
+	'optin-survey-answer-changes-upload' => 'Джюклеу эмда медиа игилендирилсин.',
+	'optin-survey-answer-changes-richtext' => 'Текст редакторлача редакторлау инструментле къуралсынла.',
+	'optin-survey-answer-changes-lookfeel' => 'Сайтны «тыш кёрюнюмю» джангыртылсын.',
+	'optin-survey-answer-changes-predictability' => 'Ишлеуню алгъадан билиу игиленсин.',
+	'optin-survey-answer-changes-custom' => 'Энчи джарашдырыула кёбюрек болсунла.',
 	'optin-survey-answer-changes-other' => 'Башха:',
+	'optin-improvements2' => '== Не заты игилендирилгенди? ==
+[[File:UsabilityToolbar.png|left|link=|Кенгертилиннген редакторлаў панелни сураты]]
+[[File:UsabilityDialogs.png|left|link=|Джангы къураў диалогланы сураты]]
+; Кенгертилиннген инструмент панель
+Кенгертилиннген инструмент панель статьяланы редакторлагъанны тынчыракъ этеди. Джангы эмда игилендирилген сурат-белгиле этимлери бла интрументлени келишиўлерин тюзюрек кёргюзтедиле. Ачылыўчу бёлюмле тизгинсизликни азайтадыла, алай а аз хайырланнган инструментлени чычхан бла бир басыў узакълыкъда тутадыла.
+; Диалогну терезеси
+Энди джибериўле неда таблицала салгъан сагъатда, келишген сурат-белгиден басаргъа боллукъду, ачылгъан диалог терезе, тынч форманы толтуруў бла, джибериў неда таблица къураргъа болушурукъду.
+; Дагъыда
+Талай башха игилендириў да этгенбиз, аланы ичинде – навигацияны игилендириў, каскад вкладкала, игиленнген излеу эмда кёб башха зат.
+== Къалай къошулгъун  ==
+Юзабилити башламчылыкъны юсюнден кёбюрек билир ючюн, бизни [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative бетибизни кёрюгюз].
+<div style="clear:both"></div>',
 );
 
 /** Colognian (Ripoarisch)
@@ -3644,14 +3843,14 @@ $messages['lt'] = array(
 	'optin-title-justoptedin' => 'Sveiki atvykę į Beta',
 	'optin-title-justoptedout' => 'Dėkojame, kad bandote Beta',
 	'optin-needlogin' => 'Jums reikia [$1 prisijungti], norint bandyti Beta',
-	'optin-intro' => 'Vikipedija Naudojimo iniciatyva dirbo siekiant pagerinti Vikipedijos naudojimą.
-Norite pabandyti Açai beta versiją?',
+	'optin-intro' => 'Vikipedijos Naudojimo Iniciatyvos grupė sunkiai dirbo, siekdami pagerinti Vikipedijos naudingumą.
+Gal norėtumėte pabandyti mūsų sukurtą Beta?',
 	'optin-success-in' => 'Dabar bandote Beta. 
 Galite grįžti bet kuriuo metu, paspaudę "{{int:optin-leave}}" viršutiniame dešiniajame ekrano kampe.',
 	'optin-leave-cancel' => 'Jei norite toliau naudoti Beta, galite grįžti į $1',
 	'optin-success-out' => 'Jūs sėkmingai palikote Beta.
 Galite vėl išmėginti Beta, bet kuriuo metu paspaudę "{{int:optin-try}}" viršutiniame dešiniajame ekrano kampe.',
-	'optin-accept-short' => 'Padarykime tai!',
+	'optin-accept-short' => 'Pabandykime!',
 	'optin-accept-long' => 'Išbandykite Beta',
 	'optin-deny-short' => 'Ne, ačiū',
 	'optin-deny-long' => 'Grįžti į ankstesnį puslapį',
@@ -3898,6 +4097,42 @@ $messages['mn'] = array(
 	'optin-survey-answer-changes-other' => 'Бусад:',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'optin-survey-no' => 'नाही',
+	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
+	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
+	'optin-survey-question-techfail' => '↓ बीटा वापरतांना आपण काही तांत्रिक अडचणी अनुभवल्या काय?',
+	'optin-survey-question-techfail-ifyes' => '↓ जर "होय" असेल तर समजवा किंवा विस्तृत वर्णन करा :',
+	'optin-survey-question-usedtoolbar' => '↓ आपण पान संपादण्यासाठी नविन उपकरणगट(टुलबार) वापरला आहे काय?',
+	'optin-survey-question-usedtoolbar-ifyes' => '↓ जर "होय" असेल तर त्यातील आपणास काय आवडले व नावडले?',
+	'optin-survey-question-usedtoolbar-ifno' => '↓ जर "नाही" तर कां नाही आवडला?आपण भविष्यात याचा वापर कराल काय? कृपया सांगा.',
+	'optin-survey-question-different' => '↓ बीटाच्या वापरासाठी आम्ही वेगळे काय करावयास हवे ज्याने आपण बीटाचा वापर सुरू ठेवाल?',
+	'optin-survey-question-feedback' => '↓ आम्हास यासंबंधी आपली प्रतिक्रिया,विचार जाणुन घ्यायचे आहेत-ते आम्हास महत्वपूर्ण आहेत.',
+	'optin-survey-question-browser' => 'तुम्ही कोणता न्यहाळक (ब्राऊजर) वापरता ?',
+	'optin-survey-answer-browser-other' => 'इतर न्याहाळक(बाउजर)',
+	'optin-survey-question-res' => '↓ आपल्या दृश्यपटलाचे पृथक्करण (स्क्रिन रिजोल्युशन) काय आहे?',
+	'optin-survey-answer-changes-edittools' => '↓ संपादन उपकरणांत (ऐडिट टुल्स) वाढ व दर्जावाढ करा.',
+	'optin-survey-answer-changes-other' => 'इतर',
+	'optin-improvements2' => '== कोणकोणत्या सुधारणा केल्या आहेत? ==
+[[File:UsabilityToolbar.png|left|link=|संवर्धीत संपादन साधनपट्टीचा देखावा]]
+[[File:UsabilityDialogs.png|left|link=|नवीन मजकुर निर्मिती संवादगवाक्षाचा देखावा ]]
+;संवर्धीत संपादन साधनपट्टी
+The enhanced toolbar makes it easier to edit articles.
+New and improved icons make it clearer what action each tool performs.
+Expanded sections reduce clutter while keeping infrequently used tools just a click away.
+;संवादगवाक्ष
+When creating links or tables, clicking the tool icon now opens a dialog box which helps you to create links and tables by filling out a simple form.
+;आणिअजून
+We have introduced a number of other improvements such as enhanced navigation, cascading tabs, improved search, and more.
+== कसे सहभागी व्हावे ==
+To find out more about the Usability Initiative, please visit our [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style="clear:both"></div>',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Diagramma Della Verita
@@ -4070,6 +4305,44 @@ $messages['myv'] = array(
 	'optin-survey-answer-changes-other' => 'Лия:',
 );
 
+/** Mazanderani (مازِرونی)
+ * @author محک
+ */
+$messages['mzn'] = array(
+	'optin-title-optedout' => 'بتا جه کار بکش',
+	'optin-title-justoptedin' => 'بتا دله خِش بمویی',
+	'optin-survey-yes' => 'اره',
+	'optin-survey-no' => 'نا',
+	'optin-survey-intro' => 'بخاطر ایستیفاده از بتا شمجه ممنونمی
+اگه بتوندی اینجه شه نظرات ره بنویس تا وه ره ململته هکنیم "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'بتای چچی خار بی‌یه؟ چچی ون دله نخار بی‌یه؟',
+	'optin-survey-question-whyoptout' => 'چچی وسّه بتا ره دوستی؟',
+	'optin-survey-answer-whyoptout-hard' => 'وه ره ایستیفاده هکردن خله سخته',
+	'optin-survey-answer-whyoptout-didntwork' => 'خله خار نی‌یه',
+	'optin-survey-answer-whyoptout-notpredictable' => 'اونتی که خاستمه نی‌یه',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'مه ره خِش نمو',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'ونه طرح دوستن و زوونه‌ئون جه خِشم نیموئه.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'جدید نوار ابزار جه خِشم نیموئه',
+	'optin-survey-answer-whyoptout-other' => 'دیگه چیزا:',
+	'optin-survey-question-explain' => 'خواهشا شه دلایل ره بنویسین:',
+	'optin-survey-answer-changes-other' => 'دیگه:',
+	'optin-improvements2' => '==چچی بهته بیّه==
+[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+;نوار ابزار پیشرفته
+جدید ِنوار دچی‌ین ره آسون هکرده.
+عکسا اینجه ره قشنگته هکرده.
+دیگه درهم برهم نی‌یه خله راه دکته.
+;گپ
+بساتن لینک و جدول آسونه
+;و بیشته
+اما خله چیزا مثل ناوبری پیشرفته، ئوشاری زوونه‌ئون و دگردستن ره بهته هکردمی.
+
+== خانی بدونی چتی توندی کومک هکنی؟ ==
+برای اطلاع بیشته درباره رابطه با توانایی ایستفاده ابتکاری [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative اینجه] ره سر بزنین.
+<div style="clear:both"></div>',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -4126,7 +4399,7 @@ Wie willen grege weten wa-jie van de nieje vormgeving vienen, \'t zol dus mooi w
 	'optin-survey-question-os' => 'Welk besturingssysteem he-j?',
 	'optin-survey-answer-os-other' => 'Aander besturingssysteem:',
 	'optin-survey-question-res' => 'Wat is joe beeldscharmreselusie?',
-	'optin-survey-question-changes' => 'Wat zo-jie aanders willen hemmen in de toekomstige Beta (kies meugelijkheen dee van toepassing bin)?',
+	'optin-survey-question-changes' => 'Wat zo-jie aanders willen in de toekomstige Bèta (kies meugelijkheen dee van toepassing bin)?',
 	'optin-survey-answer-changes-nav' => 'De navigasie van de webstee makkelijker maken.',
 	'optin-survey-answer-changes-edittools' => 'Meer en betere bewarkingshulpmiddels',
 	'optin-survey-answer-changes-upload' => "Verbeter 't toevoegen van inhoud en media.",
@@ -4473,8 +4746,10 @@ Nos agradariá de saber çò que pensatz de nòstra interfàcia novèla, nos agr
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'optin-title-optedout' => 'Beta prowiere',
 	'optin-title-optedin' => 'Beta verlosse',
 	'optin-title-justoptedin' => 'Wilkum zu Beta',
+	'optin-accept-long' => 'Beta prowiere',
 	'optin-deny-short' => 'Nee, ken Interest',
 	'optin-deny-long' => 'Zerick zum letscht Blatt',
 	'optin-submit-out' => 'Beta verlosse',
@@ -4563,7 +4838,7 @@ Chcielibyśmy poznać Twoją opinię dotyczącą nowego interfejsu, w związku z
 	'optin-survey-question-res' => 'Z jakiej rozdzielczości ekranu korzystasz?',
 	'optin-survey-question-changes' => 'Jakie zmiany chciałbyś zobaczyć w wersji testowej w przyszłości? Zaznacz wszystkie prawidłowe odpowiedzi.',
 	'optin-survey-answer-changes-nav' => 'Poprawienie ogólne nawigacji wewnątrz witryny, aby stała się łatwiejsza w użyciu.',
-	'optin-survey-answer-changes-edittools' => 'Zwiększenie liczby i rozszerzenie funkcjonalności narzędzi edycyjnych.',
+	'optin-survey-answer-changes-edittools' => 'Zwiększenie liczby i rozszerzenie funkcji narzędzi edycyjnych.',
 	'optin-survey-answer-changes-upload' => 'Poprawienie przesyłania treści i plików.',
 	'optin-survey-answer-changes-richtext' => 'Opracowanie narzędzi edycyjnych zbliżonych do tych z profesjonalnych edytorów tekstu.',
 	'optin-survey-answer-changes-lookfeel' => 'Zaktualizowanie wyglądu i stylu witryny.',
@@ -4884,11 +5159,11 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'optin' => 'Optațo pentru Usability Initiative',
+	'optin' => 'Participați la Inițiativa de Utilizabilitate',
 	'optin-desc' => 'Permiteți utilizatorilor să încerce versiunea Beta, ultimele îmbunătățiri de utilizabilitate ale Usability Initiative',
 	'optin-title-optedout' => 'Încercați Beta',
-	'optin-title-optedin' => 'Părăsiți Beta',
-	'optin-title-justoptedin' => 'Bine aţi venit la Beta',
+	'optin-title-optedin' => 'Părăsire Beta',
+	'optin-title-justoptedin' => 'Bine ați venit la Beta',
 	'optin-title-justoptedout' => 'Vă mulțumim că ați încercat Beta',
 	'optin-title-feedback' => 'Păreri în legătură cu Beta',
 	'optin-needlogin' => 'Trebuie să vă [$1 autentificați] pentru a încerca Beta.',
@@ -4908,14 +5183,14 @@ Puteți să încercați iar în orice moment apăsând clic pe legătura „{{in
 	'optin-accept-long-anon' => 'Autentificați-vă și încercați Beta',
 	'optin-deny-short' => 'Nu, mulțumesc',
 	'optin-deny-long' => 'Reveniți la pagina anterioară',
-	'optin-submit-out' => 'Părăsiți Beta',
+	'optin-submit-out' => 'Părăsire Beta',
 	'optin-submit-feedback' => 'Trimiteți răspunsurile',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Nu',
 	'optin-survey-intro' => 'Mulțumim că folosiți versiunea Beta.
 Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar am aprecia dacă ați completa sondajul opțional de mai jos înainte de a da clic pe „[[#leave|{{int:optin-submit-out}}]]”.',
 	'optin-survey-question-likedislike' => 'Ce v-a plăcut la versiunea Beta ? Ce nu v-a plăcut la versiunea Beta ?',
-	'optin-survey-question-whyoptout' => 'De ce părăsiți versiunea Beta ? (Vă rugăm selectați toate care se aplică.)',
+	'optin-survey-question-whyoptout' => 'De ce părăsiți versiunea Beta? (Selectați toate variantele adecvate.)',
 	'optin-survey-answer-whyoptout-hard' => 'A fost prea greu de folosit.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Nu a funcționat cum trebuie.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Nu s-a comportat predictibil.',
@@ -4930,7 +5205,7 @@ Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar
 	'optin-survey-question-usedtoolbar-ifyes' => 'Dacă da, ce ți-a plăcut la ea ? Ce nu ți-a plăcut la ea ?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Dacă nu, de ce nu ? Veți dori în viitor ? Vă rugăm explicați.',
 	'optin-survey-question-different' => 'Ce am fi putut face diferit pentru a nu părăsi versiunea Beta ?',
-	'optin-survey-question-feedback' => 'Vă rugăm înștiințați-ne prin orice alte comentarii, preocupări sau gânduri ai pentru noi - toate mesajele sunt utile:',
+	'optin-survey-question-feedback' => 'Vă rugăm înștiințați-ne despre orice alte comentarii, preocupări sau gânduri aveți pentru noi — toate mesajele sunt utile:',
 	'optin-survey-question-browser' => 'Ce navigator folosiți?',
 	'optin-survey-answer-browser-other' => 'Alt browser:',
 	'optin-survey-question-os' => 'Ce sistem de operare folosiți?',
@@ -4940,7 +5215,7 @@ Ne-am dori să știm ce părere aveți despre noua noastră interfață, așadar
 	'optin-survey-answer-changes-nav' => 'Navigarea sitului să fie mai ușoară.',
 	'optin-survey-answer-changes-edittools' => 'Uneltele de editare să fie mai bune și mai numeroase.',
 	'optin-survey-answer-changes-upload' => 'Trimiterea de conținut și de fișiere să fie îmbunătățită.',
-	'optin-survey-answer-changes-richtext' => "Unelte de editare ca în editoarele ''rich-text''.",
+	'optin-survey-answer-changes-richtext' => 'Unelte de editare ca în editoarele „rich-text”.',
 	'optin-survey-answer-changes-lookfeel' => 'Aspectul și funcționalitatea sitului să fie actualizate.',
 	'optin-survey-answer-changes-predictability' => 'Uneltele să aibă un comportament mai previzibil.',
 	'optin-survey-answer-changes-custom' => 'Un grad mai mare de personalizare.',
@@ -5146,7 +5421,81 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'optin' => 'Участь в ініціатіви хосновательности',
+	'optin-desc' => 'Доволює хоснователям спробовати Бета-верзію, найновше вылїпшіня хосновательности створена Ініціатівов хосновательности,',
+	'optin-title-optedout' => 'Опробовати Бета-верзію',
+	'optin-title-optedin' => 'Опустити Бета-верзію',
+	'optin-title-justoptedin' => 'Витайте в Бета-верзії',
+	'optin-title-justoptedout' => 'Дякуєме вам за опробованя нашой Бета',
+	'optin-title-feedback' => 'Назоры на Бета',
+	'optin-needlogin' => 'Кідь хочете спробовати Бета, мусите ся [$1 приголосити].',
+	'optin-intro' => 'Ініціатіва хосновательности Вікіпедії твердо робила на вылїпшіню хосновательности Вікіпедії.
+Не хочете спробовати нашу Бета-верзію?',
+	'optin-feedback-intro' => 'Дякуєме, же пробуєте Бета-верзію.
+Хотїли бы сьме знати, што собі думаєте о нашім новім інтерфейсу, также оцїниме, кідь выповните волительне звідованя зображене ниже.',
+	'optin-feedback-back' => 'Покы ся не хочете нашого звідованя зучастнити, можете ся вернути на сторінку $1.',
+	'optin-success-in' => 'Теперь ся зучастните тестованя Бета-верзії.
+З тестованя ся можете хоцьколи одголосити кликнутём на одказ „{{int:optin-leave}}“ во верхнїй части образовкы.',
+	'optin-leave-cancel' => 'Покы хочете і далей хосновати Бета-верзію, можете ся вернути на сторінку $1.',
+	'optin-success-out' => 'Успішно сьте опустили Бета-верзію.
+Хоцьколи єй будете мочі знову спробовати кликнутём на одказ „{{int:optin-try}}“ во верьхнїй части образовкы.',
+	'optin-success-feedback' => 'Дякуєме за ваш назор!',
+	'optin-accept-short' => 'Іду до того!',
+	'optin-accept-long' => 'Спробовати Бета-верзію',
+	'optin-accept-long-anon' => 'Приголосити ся і спробовати Бета-верзію',
+	'optin-deny-short' => 'Ніт, дякую',
+	'optin-deny-long' => 'Вернути ся на попередню сторінку',
+	'optin-submit-out' => 'Опустити Бета-верзію',
+	'optin-submit-feedback' => 'Одослати назор',
+	'optin-survey-yes' => 'Гей',
+	'optin-survey-no' => 'Ніт',
+	'optin-survey-intro' => 'Дякуєме, же пробуєте Бета-верзію.
+Хотїли бы сьме знати, што собі о нашім новім інтерфейсу думаєте, также оціниме, кідь перед кликнутём на „[[#leave|{{int:optin-submit-out}}]]“ выповните неповинне звідованя зображене ниже.',
+	'optin-survey-question-likedislike' => 'Што ся вам на Бета-верзії любило? Што ся вам на Бета-верзії не любило?',
+	'optin-survey-question-whyoptout' => 'Чом хочете опустити Бета-верзію? (Выберте вшыткы релевантны причіны)',
+	'optin-survey-answer-whyoptout-hard' => 'Была дуже тяжка на хоснованя.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Не фунґовала справнї.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Не працовала предвідаво.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Не любив ся мі єй взгляд.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Не любили ся мі новы заложкы і композіція.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Не любив ся мі новый панел інштрументів.',
+	'optin-survey-answer-whyoptout-other' => 'Інша причіна:',
+	'optin-survey-question-explain' => 'Поясните або доповните вашу одповідь выше:',
+	'optin-survey-question-techfail' => 'Зазначіли сьте при хоснованю Бета-верзії даякы технічны тяжкости?',
+	'optin-survey-question-techfail-ifyes' => 'Кідь гей, просиме уточните або поясните:',
+	'optin-survey-question-usedtoolbar' => 'Хосновали сьте новый розгортовачій панел інштрументів про едітованя сторінок?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Кідь гей, што ся вам на тім любило? Што ся вам на тім не любило?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Кідь нїт, так чом? Спробуєте то даколи в будучности? Просиме, поясните.',
+	'optin-survey-question-different' => 'Што сьме могли зробити лїпше, жебы сьте не перестали хосновати Бета-верзію?',
+	'optin-survey-question-feedback' => 'Просиме, напиште нам хоцьякы далшы коментарї, старости ці ідеї, котры нам хочете дати знати - хоцьяка одозва поможе:',
+	'optin-survey-question-browser' => 'Якый вебовый переглядач хоснуєте?',
+	'optin-survey-answer-browser-other' => 'Іншый веб-переглядач:',
+	'optin-survey-question-os' => 'Якый операчный сістем хоснуєте?',
+	'optin-survey-answer-os-other' => 'Іншый операчный сістем:',
+	'optin-survey-question-res' => 'Яке є розлішіня вашой образовкы?',
+	'optin-survey-question-changes' => 'Якы зміны бы сьте в будучности в Бета-верзії {{GENDER:|хотїв видїти|хотїла видїти|хотїли видїти}} (выберте вшыткы релевантны можности)?',
+	'optin-survey-answer-changes-nav' => 'Зробити цілу навіґацію сайту простїшов в хоснованю.',
+	'optin-survey-answer-changes-edittools' => 'Росшырити і здоконалити інштрументы едітованя.',
+	'optin-survey-answer-changes-upload' => 'Здоконалити начітаваня файлів.',
+	'optin-survey-answer-changes-richtext' => 'Вытворїня едітачных інштрументів аналоґічных текстовым едіторам.',
+	'optin-survey-answer-changes-lookfeel' => 'Модернізовати взгляд і хованя сайту.',
+	'optin-survey-answer-changes-predictability' => 'Здоконалити передвидательность выконности.',
+	'optin-survey-answer-changes-custom' => 'Доволити веце хосновательскых наставлїнь.',
 	'optin-survey-answer-changes-other' => 'Інше:',
+	'optin-improvements2' => '== Што сьме вылїпшыли? ==
+[[File:UsabilityToolbar.png|left|link=|Снимок образовкы зображуючій вылїпшеный едітачный панел інштрументів]]
+[[File:UsabilityDialogs.png|left|link=|Снимок образовкы новый діалоґовых окен]]
+;Вылїпшіня панелів інштрументів
+Вылїпшеный панел інштрументів злегчує едітацію статей.
+Новы і вылїпшены іконкы ясно означують, што котрый інштрумент робить.
+Розгортуючі части панела зменшують безлад, притім менше хоснованы інштрументы суть доступны єдным кликом.
+;Діалоґ
+При вытваряню одказів або таблиць ся кликнутём на іконку інштрументу отворить діалоґове окно, котре вам посередництвом простого формулара поможе з творбов одказів і таблиць.
+;І далшы
+Пририхтовали сьме много далшых вылїпшінь, як є здоконалена навіґація, каскадовы заложкы, вылїпшене гляданя і іншы.
+== Як ся запоїти ==
+Кідь ся хочете о Ініціатіви хосновательности дізнати веце, навщівте [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative наш сайт].
+<div style="clear:both"></div>',
 );
 
 /** Yakut (Саха тыла)
@@ -5603,15 +5952,31 @@ $messages['su'] = array(
 	'optin-title-justoptedin' => 'Wilujeng sumping di Béta',
 	'optin-title-justoptedout' => 'Ngahaturkeun nuhun tos nyobian Béta',
 	'optin-needlogin' => 'Anjeun kudu [$1 asup log] pikeun nyobaan Béta.',
+	'optin-intro' => 'Inisiatif Kamangpaatan Wikipédia narékahan pikeun ngaronjatkeun kamangpaatan Wikipédia. Badé nyobian Béta?',
+	'optin-feedback-back' => 'Lamun moal ngeusian surpéy, anjeun bisa balik deui ka $1.',
+	'optin-leave-cancel' => 'Mun anjeun rék neruskeun maké Béta, anjeun bisa balik deui ka $1.',
+	'optin-success-feedback' => 'Ngahaturkeun nuhun kanggo sumbang pamendakna!',
+	'optin-accept-short' => 'Hayu!',
 	'optin-accept-long' => 'Cobaan Béta',
 	'optin-accept-long-anon' => 'Asup log jeung cobaan Béta',
+	'optin-deny-short' => 'Moal, nuhun',
 	'optin-deny-long' => 'Balik ka kaca saméméhna',
 	'optin-submit-out' => 'Tinggalkeun Béta',
+	'optin-survey-yes' => 'Enya',
+	'optin-survey-no' => 'Teu',
 	'optin-survey-question-whyoptout' => 'Naha bet ninggalkeun Béta? (mangga pilih sadaya nu cocog.)',
 	'optin-survey-answer-whyoptout-hard' => 'Hésé makéna.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Fungsina teu jalan.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Teu resep nempona.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Teu resep tab jeung pidangan anyarna.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'optin-survey-answer-whyoptout-other' => 'Alesan séjén:',
+	'optin-survey-question-browser' => 'Panyungsi naon nu dipaké?',
+	'optin-survey-question-os' => 'Sistem operasi naon nu dipaké ku anjeun?',
 	'optin-survey-answer-os-other' => 'Sistem operasi lianna:',
+	'optin-survey-question-res' => 'Résolusi layar nu dipaké?',
+	'optin-survey-answer-changes-richtext' => 'Ngembangkeun alat ngédit anu sarupa jeung éditor téks euyeub.',
+	'optin-survey-answer-changes-other' => 'Lianna:',
 );
 
 /** Swedish (Svenska)
@@ -5708,10 +6073,14 @@ Om du vill veta mer om användbarhetsinitiativet, besök vår [http://usability.
  * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'optin' => 'Chagua Hatua ya Urahisishaji wa Matumizi',
+	'optin-desc' => 'Ruhusu watumiaji wajaribu kutumia Beta, maendeleo ya hivi sasa ya Hatua ya Urahisishaji wa Matumizi.',
 	'optin-title-optedout' => 'Jaribu Beta',
 	'optin-title-optedin' => 'Ondoka Beta',
 	'optin-title-justoptedin' => 'Karibu Beta',
 	'optin-title-justoptedout' => 'Asante kwa kujaribu kutumia bidhaa pepe ya Beta',
+	'optin-title-feedback' => 'Mwitiko wa Beta',
+	'optin-needlogin' => 'Inabidi [$1 uingie] ili ujaribu Beta.',
 	'optin-intro' => 'Mpango wa Matumizi ya Wikipedia umekuwa ukifanya kazi kwa juhudi kuboresha matumizi ya Wikipedia.
 Ungependa kujaribu Beta yetu?',
 	'optin-feedback-intro' => 'Ahsante kwa kujaribu Beta.
@@ -5735,9 +6104,10 @@ Unaweza kujaribu tena wakati wowote kwa kubonyeza kiungo cha "{{int:optin-try|ja
 	'optin-survey-intro' => 'Ahsante kwa kujaribu Beta.
 Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru iwapo utajaza utafiti wa hiari hapo chini kabla hujabonyeza "[[#leave|{{int:optin-submit-out|ondoka}}]]".',
 	'optin-survey-question-likedislike' => 'Kipi umekipenda katika Beta? Kipi hujakipenda katika Beta?',
-	'optin-survey-question-whyoptout' => 'Kwanini unaondoka Beta? (Tafadhali jaza vifungu hivyo vyote.)',
+	'optin-survey-question-whyoptout' => 'Kwanini unaondoka Beta? (Tafadhali chagua sababu zako zote.)',
 	'optin-survey-answer-whyoptout-hard' => 'Ilikuwa vigumu sana kutumia.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Haikufanya kazi vizuri.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Haikufanyakazi kitegemezi.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Sikuipenda jinsi inavyoonekana.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Sikupenda tabo mpya na mpangilio wake.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Sijapenda mwambaa zana mpya.',
@@ -5745,6 +6115,11 @@ Tungependa kujua unafikiriaje kuhusu kusano zetu mpya, hivyo basi tungeshukuru i
 	'optin-survey-question-explain' => 'Tafadhali elezea au fafanua juu ya majibu yako hapo juu:',
 	'optin-survey-question-techfail' => 'Umepata tatizo lolote la kiufundi wakati unatumia Beta?',
 	'optin-survey-question-techfail-ifyes' => 'Ikiwa ndiyo, tafadhali fafanua au elezea:',
+	'optin-survey-question-browser' => 'Kivinjari kipi unachotumia?',
+	'optin-survey-answer-browser-other' => 'Kivinjari kingine:',
+	'optin-survey-question-os' => 'Unatumia mfumo gani wa uendeshaji?',
+	'optin-survey-answer-os-other' => 'Mfumo mwingine wa uendeshaji:',
+	'optin-survey-question-res' => 'Je, skrini yako ina msongo upi wa piseli?',
 );
 
 /** Telugu (తెలుగు)
@@ -6415,6 +6790,9 @@ $messages['yi'] = array(
 	'optin-feedback-back' => 'אַז איר ווילט נישט אויספֿילן דעם פֿרעגבויגן, קענט איר צוריקקערן צו $1.',
 	'optin-success-in' => 'אַצינד פרובירט איר אויס בעטא.
 איר קענט עס פֿאַרלאזן ווען איר ווילט, מען דאַרף נאר אָנקליקן דעם לינק "{{int:optin-leave}}" אויבן.',
+	'optin-leave-cancel' => 'ווען איר ווילט ווײַטער ניצן בעטא, קענט איר צוריקקערן צו $1.',
+	'optin-success-out' => 'איר האט דערפֿאלגרייך פֿאַרלאזט בעטא.
+איר קענט עס אויספרובירן נאכאַמאָל ווען איר ווילט, דורך קליקן דעם "{{int:optin-try}}" לינק אין דער הייך פונעם בלאַט.',
 	'optin-success-feedback' => 'א דאַנק פֿאַרן פֿידבעק!',
 	'optin-accept-short' => 'לאמיר טון!',
 	'optin-accept-long' => 'פרובירן בעטא',
@@ -6427,26 +6805,33 @@ $messages['yi'] = array(
 	'optin-survey-no' => 'ניין',
 	'optin-survey-answer-whyoptout-hard' => "ס'איז געווען צו שווער צו ניצן.",
 	'optin-survey-answer-whyoptout-didntwork' => 'עס האט נישט פֿונקציאָנירן געהעריג..',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'די אויסזע האט מיר נישט געפֿאלן',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'די נײַע טאַבן און צעשטעל האבן מיר נישט געפֿאלן.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'דער נײַער ווערקצייגפאַס האט מיר נישט געפֿאלן.',
 	'optin-survey-answer-whyoptout-other' => 'אַנדער טעם:',
-	'optin-survey-question-browser' => 'וועלכער בלעטערער ניצט איר?',
+	'optin-survey-question-techfail-ifyes' => 'ווען יא, ביטע ערקלערן',
+	'optin-survey-question-usedtoolbar-ifyes' => 'ווען יאָ, וואָס האט אייך געפֿאלן וועגן עס? וואס האט אייך נישט געפֿאלן וועגן עס?',
+	'optin-survey-question-different' => 'וואָס וואלטן אונז געקענט טון אנדערש בכדי איר זאלט ווײַטער ניצן די בעטא?',
+	'optin-survey-question-browser' => 'וועלכן בלעטערער ניצט איר?',
 	'optin-survey-answer-browser-other' => 'אנדער בלעטערער:',
 	'optin-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
 	'optin-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
-	'optin-survey-question-res' => 'וואס איז די רעזאלוציע פון אייער עקראן?',
+	'optin-survey-question-res' => 'וואָס איז די רעזאלוציע פון אייער עקראַן?',
+	'optin-survey-answer-changes-edittools' => 'פֿאַרברייטערן און פאַרבעסערן די רעדאַקטירן געצייג.',
 	'optin-survey-answer-changes-upload' => 'פֿאַרבעסערן אינהאַלט און מעדיע אַרויפֿלאָדן.',
 	'optin-survey-answer-changes-custom' => 'דערלויבן גרעסערע באַניצער צופאַסונגען.',
 	'optin-survey-answer-changes-other' => 'אנדער:',
 	'optin-improvements2' => '== וואָס האט מען פֿאַרבעסערט? ==
-[[File:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
-[[File:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+[[File:UsabilityToolbar.png|left|link=|עקראַנבליד פון דעם פֿאַרברייטערטן רעדאַקטירן געצייגפאַס]]
+[[File:UsabilityDialogs.png|left|link=|עקראַנבליד פון דעם נײַעם דיאַלאג קעסטל פֿאַר שאַפֿן אינהאָלט]]
 ; פֿאַרבייטערטער געצייגפאַס
 מיטן פֿאַרבייטערטן געצייגפאַס איז גרינגער צו רעדאַקטירן אַרטיקלען.
 נײַע און פֿאַרבעסערטע סימבאלן ווײַזן דײַטלעך די אַקציע פֿון יעדן סימבאל.
-פֿאַרברייטבאַרע טיילן  רעדוצירן אָנגעלאַף און האַלטן דאס ווייניג געצוצטע געצייג ווײַט איין קליק.
+פֿאַרברייטבאַרע טיילן  רעדוצירן אָנגעלאַף און האַלטן די ווייניג געצוצטע געצייג ווײַט איין קליק.
 ;דיאַלאג
 ווען איר שאַפֿט לינקען אדער טאַבעלעס, טוט קליקן אויף א סימבאל עפֿענען א דיאַלאג קעסטל וואָס העלפֿט שאַפֿן לינקען און טאַבעלעס מיט אָנפֿילן אן איינפֿאכער פֿארעם.
 ;און נאך
-מיר האבן ארײַנגעלייגט נאך פֿאַבעסערונגען למשל פֿאַרברייטערטע נאַוויגאַציע, גראַדירטע טאַבן, פֿאַרבעסערטן זוך, און נאך.
+מיר האבן ארײַנגעלייגט נאך פֿאַרבעסערונגען למשל פֿאַרברייטערטע נאַוויגאַציע, גראַדירטע טאַבן, פֿאַרבעסערטן זוך, און נאך.
 == מער אינפֿארמאַציע ==
 צו דערגיין מער וועגן דעם ניצלעכקייט איניציאַאטיוו, באַזוכט אונזער [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative היימבלאַט].
 <div style="clear:both"></div>',

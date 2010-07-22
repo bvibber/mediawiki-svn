@@ -224,6 +224,14 @@ $messages['frp'] = array(
 	'vector-desc' => 'Mèlyoracions des èlèments de l’entèrface utilisator de l’habelyâjo « Vèctor ».',
 );
 
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'vector' => 'Leasachaidhean an UI airson Vector',
+	'vector-desc' => 'Cuiridh seo piseach air eileamaidean eadar-aghaidh nan cleachdaichean san chraiceann Vector.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -312,6 +320,14 @@ $messages['ko'] = array(
 	'vector-desc' => '벡터 스킨의 사용자 인터페이스를 향상',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'vector' => '«Вектор» темагъа интерфейсни игилендириу',
+	'vector-desc' => '«Вектор» темагъа къошулуучу интерфейсни игилендириулери',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -326,6 +342,14 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'vector' => 'Verbesserunge vum Benotzer-IInterface (UI) fir Vector',
 	'vector-desc' => "Verbessert am Benotzer-Interface Elementer vum Ausgesinn ''Vector''.",
+);
+
+/** Latvian (Latviešu)
+ * @author Xil
+ */
+$messages['lv'] = array(
+	'vector' => 'Vector lietotāja saskarsnes uzlabojumi',
+	'vector-desc' => 'Uzlabo lietotāja saskarsnes elementus Vector apdarē.',
 );
 
 /** Macedonian (Македонски)
@@ -427,11 +451,13 @@ $messages['qu'] = array(
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector' => 'Îmbunătățiri la nivelul interfaței pentru Vector',
-	'vector-desc' => 'Îmbunătățiri la elementele interfaței a temei Vector.',
+	'vector' => 'Îmbunătățiri la nivelul interfeței Vector',
+	'vector-desc' => 'Îmbunătățiri ale elementelor interfeței Vector.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -448,6 +474,14 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'vector' => 'Улучшения интерфейса для темы «Векторное»',
 	'vector-desc' => 'Улучшения пользовательского интерфейса для темы оформления «Векторное»',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'vector' => 'Здоконалїня хосновательского інтерфейсу про Вектор',
+	'vector-desc' => 'Здоконалює елементы хосновательского інтерфейсу Вектор.',
 );
 
 /** Yakut (Саха тыла)

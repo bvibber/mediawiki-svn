@@ -113,10 +113,12 @@ $messages['ca'] = array(
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb-arab'] = array(
 	'vector-simplesearch-search' => 'گەڕان',
+	'vector-simplesearch-containing' => 'بە لەبەرگرتنەوەی ...',
 );
 
 /** Czech (Česky)
@@ -272,8 +274,16 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'vector-simplesearch-search' => 'Rechèrche',
+	'vector-simplesearch-search' => 'Rechèrchiér',
 	'vector-simplesearch-containing' => 'que contint...',
+);
+
+/** Scottish Gaelic (Gàidhlig)
+ * @author Akerbeltz
+ */
+$messages['gd'] = array(
+	'vector-simplesearch-search' => 'Lorg',
+	'vector-simplesearch-containing' => 'anns a bheil...',
 );
 
 /** Galician (Galego)
@@ -375,6 +385,14 @@ $messages['io'] = array(
 	'vector-simplesearch-containing' => 'quan kontenas...',
 );
 
+/** Icelandic (Íslenska)
+ * @author Ævar Arnfjörð Bjarmason
+ */
+$messages['is'] = array(
+	'vector-simplesearch-search' => 'Leita',
+	'vector-simplesearch-containing' => 'sem innihalda ...',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco
@@ -417,11 +435,20 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'vector-simplesearch-search' => '검색',
-	'vector-simplesearch-containing' => '전문에 포함된 어구 찾기',
+	'vector-simplesearch-containing' => '다음의 어구가 들어간 문서 찾기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'vector-simplesearch-search' => 'Излеу',
+	'vector-simplesearch-containing' => 'ичиндегиси…',
 );
 
 /** Colognian (Ripoarisch)
@@ -495,9 +522,11 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'vector-simplesearch-search' => 'शोधा',
 	'vector-simplesearch-containing' => '.......हे असलेले',
 );
 
@@ -523,6 +552,7 @@ $messages['mt'] = array(
  */
 $messages['nds-nl'] = array(
 	'vector-simplesearch-search' => 'Zeuken',
+	'vector-simplesearch-containing' => 'bevat...',
 );
 
 /** Dutch (Nederlands)
@@ -655,6 +685,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'vector-simplesearch-search' => 'Глядати',
+	'vector-simplesearch-containing' => 'обсягуючій...',
 );
 
 /** Yakut (Саха тыла)
@@ -821,11 +852,12 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'vector-simplesearch-search' => 'Tìm kiếm',
-	'vector-simplesearch-containing' => 'có chứa...',
+	'vector-simplesearch-containing' => 'có chứa…',
 );
 
 /** Mingrelian (მარგალური)
