@@ -2136,12 +2136,14 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
  * @author KilluaZaoldyeck
  * @author Shinjiman
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'patrol' => '覆查編輯',
+	'patrol-desc' => '分擔工作量以增強巡邏界面',
 	'patrol-endorse' => '批註',
 	'patrol-revert' => '回退',
 	'patrol-revert-reason' => '原因：',

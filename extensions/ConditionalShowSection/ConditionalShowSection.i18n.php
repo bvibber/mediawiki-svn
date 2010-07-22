@@ -366,3 +366,10 @@ $messages['vi'] = array(
 	'conditionalshowsection-desc' => 'Thêm thẻ cshow để hiện/ẩn đoạn mã wiki tùy theo điều kiện',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
+ */
+$messages['zh-hant'] = array(
+	'conditionalshowsection-desc' => '添加cshow標籤有條件地 顯示 /隱藏一段維基文本',
+);
+

@@ -1623,6 +1623,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
  * @author Shinjiman
  * @author Wrightbus
  */
@@ -1634,7 +1635,7 @@ $messages['zh-hant'] = array(
 	'countedits-ok' => '確定',
 	'countedits-nosuchuser' => '沒有一位名叫$1的用戶。',
 	'countedits-resultheader' => '$1的結果',
-	'countedits-resulttext' => '$1有$2次編輯',
+	'countedits-resulttext' => '$1做了$2次{{PLURAL:$2|edit|編輯}}',
 	'countedits-mostactive' => '最活躍的貢獻者',
 	'countedits-nocontribs' => '在這個wiki中沒有貢獻。',
 );

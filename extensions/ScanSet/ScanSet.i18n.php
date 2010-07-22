@@ -1224,6 +1224,13 @@ $messages['sah'] = array(
 	'scanset_prev' => '&lt; Иннинээҕи',
 );
 
+/** Sinhala (සිංහල)
+ * @author Singhalawap
+ */
+$messages['si'] = array(
+	'scanset_opendir_error' => 'දෝශය:$1 නාමාවලිය විවෘත කල නොහැක',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

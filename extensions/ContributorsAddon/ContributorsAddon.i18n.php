@@ -467,3 +467,10 @@ $messages['vi'] = array(
 	'contributorsaddon-desc' => 'Thêm popup onMouseOver của JS vào liên kết "Những người đóng góp chính"',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
+ */
+$messages['zh-hant'] = array(
+	'contributorsaddon-desc' => '添加JavaScript的彈出式窗口至“主要貢獻者”鏈接',
+);
+

@@ -5835,6 +5835,7 @@ OpenID可以让你不必使用不同的密码登录不同站点。
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
  * @author Gzdavidwong
  * @author Horacewai2
  * @author Liangent
@@ -5900,12 +5901,13 @@ $messages['zh-hant'] = array(
 	'openidloginlabel' => 'OpenID網址',
 	'openidlogininstructions' => '{{SITENAME}} 支持用於網站間單點登錄的[http://openid.net/ OpenID] 標準。
 OpenID可以讓你不必使用不同的密碼登錄不同站點。
-（詳情請參見[http://en.wikipedia.org/wiki/OpenID 維基百科關於 OpenID 的條目]。)
+(詳情請參見[http://zh.wikipedia.org/wiki/OpenID 維基百科關於 OpenID 的條目]。)
 
-If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
-To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
+如果你已經在{{SITENAME}}有一個帳戶，你可以用你的帳號及密碼[[Special:UserLogin|登入]]。
 
-There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
+要在未來使用OpenID，你可以在登入後[[Special:OpenIDConvert|轉換你的帳戶]]成為OpenID
+
+這裡有許多[http://openid.net/get/ OpenID提供者]，你可能已經有一個OpenID了。',
 	'openidupdateuserinfo' => '更新我的個人信息',
 	'openiddelete' => '刪除OpenID',
 	'openiddelete-text' => '當你按下"{{int:openiddelete-button}}"按鈕，你會將OpenID $1從你的戶口中移除。你以後都不可以再使用這個OpenID登入。',

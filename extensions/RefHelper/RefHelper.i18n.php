@@ -936,6 +936,7 @@ Pode [[Special:RefHelper|adicionar a referência manualmente]] ou [[Special:RefS
 $messages['pt-br'] = array(
 	'refhelper' => 'Assistente de referências',
 	'refsearch' => 'Pesquisa de referências',
+	'refhelper-desc' => 'Ajuda na criação de páginas para referências',
 	'refhelper-refcreate_legend' => 'Criar nova referência',
 	'refhelper-refcreate_another' => 'Criar outra referência',
 	'refhelper-refcreate_success' => 'A página [[$1]] não existia e foi criada.',

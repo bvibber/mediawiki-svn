@@ -605,14 +605,15 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Pinodd
  */
 $messages['it'] = array(
 	'edituser-desc' => 'Permette agli utenti con i privilegi necessari di modificare le preferenze di altri utenti',
 	'edituser' => 'Modifica utente',
-	'edituser-username' => 'Nome',
+	'edituser-username' => 'Nome utente:',
 	'edituser-dosearch' => 'Ricerca',
-	'edituser-nouser' => "L'utente indicato non esiste",
-	'edituser-exempt' => "L'utente specificato non può essere modificato",
+	'edituser-nouser' => 'L\'utente "$ 1" non esiste.',
+	'edituser-exempt' => 'L\'utente "$ 1" non può essere modificato.',
 	'right-edituser' => 'Modifica le preferenze degli altri utenti',
 	'right-edituser-exempt' => 'Le sue preferenze non possono essere modificate da altri',
 );
@@ -957,8 +958,8 @@ $messages['pms'] = array(
 	'edituser' => 'Modìfica utent',
 	'edituser-username' => 'Stranòm:',
 	'edituser-dosearch' => 'Serca',
-	'edituser-nouser' => "L'utent spessificà a esist pa",
-	'edituser-exempt' => "L'utent spessificà a peul pa esse modificà",
+	'edituser-nouser' => 'L\'utent "$1" a esist pa.',
+	'edituser-exempt' => 'L\'utent "$1" a peul pa esse modificà.',
 	'right-edituser' => 'Modìfica ij "mè gust" ëd j\'àutr utent',
 	'right-edituser-exempt' => 'J\'àutr a peulo pa modifiché sti "mè gust"-sì',
 );

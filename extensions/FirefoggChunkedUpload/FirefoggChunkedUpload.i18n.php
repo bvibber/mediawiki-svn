@@ -248,3 +248,10 @@ $messages['tr'] = array(
 	'firefoggcu-desc' => "Firefogg'un Toplu Yükleme iletişim kuralı",
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
+ */
+$messages['zh-hant'] = array(
+	'firefoggcu-desc' => 'Firefogg的分塊上傳協議',
+);
+

@@ -1523,6 +1523,83 @@ Pode [$1 ler histórias publicadas].',
 	'storyboard-storydeletionconfirm' => 'Tem a certeza de que deseja eliminar esta história de forma definitiva?',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'storyboard-name' => 'Histórias',
+	'storyboard-desc' => 'Fornece uma [[Special:Story|página de destino para os doadores]], uma página onde se podem [[Special:StorySubmission|enviar]] histórias e uma [[Special:StoryReview|interface de moderação das histórias]]',
+	'right-storyreview' => 'Revisar, editar, publicar e ocultar histórias',
+	'storyboard-anerroroccured' => 'Ocorreu um erro: $1',
+	'storyboard-unpublished' => 'Não publicada',
+	'storyboard-published' => 'Publicada',
+	'storyboard-hidden' => 'Ocultada',
+	'storyboard-unpublish' => 'Retirar de publicação',
+	'storyboard-publish' => 'Publicar',
+	'storyboard-hide' => 'Ocultar',
+	'storyboard-option-unpublished' => 'não publicada',
+	'storyboard-option-published' => 'publicada',
+	'storyboard-option-hidden' => 'oculta',
+	'story' => 'História',
+	'storyboard-submittedbyon' => 'Enviada por $1 em $2, às $3.',
+	'storyboard-viewstories' => 'Ver as histórias',
+	'storyboard-nosuchstory' => 'A história que você solicitou não existe.
+Ela pode ter sido removida.',
+	'storyboard-storyunpublished' => 'A história que solicitou ainda não foi publicada.',
+	'storyboard-nostorytitle' => 'Você precisa especificar o título ou a identificação da história que pretende ver.',
+	'storyboard-cantedit' => 'Você não tem permissão para editar histórias.',
+	'storyboard-canedit' => 'Você pode [$1 editar] e publicar esta história.',
+	'storyboard-createdandmodified' => 'Criada em $1, às $2 e modificada pela última vez em $3, às $4',
+	'storyboard-authorname' => 'Nome do autor',
+	'storyboard-authorlocation' => 'Localização do autor',
+	'storyboard-authoroccupation' => 'Profissão do autor',
+	'storyboard-authoremail' => 'Endereço de e-mail do autor',
+	'storyboard-thestory' => 'A história',
+	'storyboard-storystate' => 'Estado',
+	'storyboard-language' => 'Língua',
+	'storyboard-storymetadata' => 'Enviada por $1 em $2, às $3.',
+	'storyboard-storymetadatafrom' => 'Publicada por $1 de $2 em $3, às $4.',
+	'storyboard-yourname' => 'O seu nome (obrigatório)',
+	'storyboard-location' => 'A sua localização',
+	'storyboard-occupation' => 'A sua profissão',
+	'storyboard-story' => 'A sua história',
+	'storyboard-photo' => 'Tem uma fotografia sua?
+Que tal partilhá-la?',
+	'storyboard-email' => 'O seu endereço de e-mail (obrigatório)',
+	'storyboard-storytitle' => 'Um título curto e descritivo (obrigatório)',
+	'storyboard-agreement' => 'Concordo com a publicação e uso desta história nos termos da licença [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Atribuição-Partilha nos Termos da Mesma Licença]',
+	'storyboard-charsleft' => '(restam $1 {{PLURAL:$1|caractere|caracteres}})',
+	'storyboard-cannotbelonger' => 'A sua história tem <b>$1</b> {{PLURAL:$1|caractere|caracteres}} a mais do que o permitido!',
+	'storyboard-charsneeded' => '(é preciso mais $1 {{PLURAL:$1|caractere|caracteres}})',
+	'storyboard-needtoagree' => 'Para enviar a sua história, você tem de concordar com a sua publicação.',
+	'storyboard-submissioncomplete' => 'Envio finalizado',
+	'storyboard-submissionincomplete' => 'Falha no envio',
+	'storyboard-alreadyexists' => '"$1" já foi usado.',
+	'storyboard-alreadyexistschange' => '"{0}" já foi usado; escolha outro título, por favor.',
+	'storyboard-changetitle' => 'Alterar o título.',
+	'storyboard-notsubmitted' => 'A autenticação falhou; nenhuma história foi salva.',
+	'storyboard-charstomany' => '$1 caracteres a mais!',
+	'storyboard-morecharsneeded' => 'são necessários mais $1 caracteres',
+	'storyboard-charactersleft' => 'restam $1 caracteres',
+	'storyboard-createdsuccessfully' => 'Obrigado por partilhar conosco a sua história.
+Iremos revisá-la em breve.
+Você pode [$1 ler as histórias publicadas].',
+	'storyboard-emailtitle' => 'História submetida com sucesso',
+	'storyboard-emailbody' => 'A sua história intitulada "$1" foi submetida com sucesso.
+Iremos revisá-la em breve.
+Você pode [$2 ler as histórias publicadas].',
+	'storyreview' => 'Revisão da história',
+	'storyboard-deleteimage' => 'Apagar imagem',
+	'storyboard-done' => 'Feito',
+	'storyboard-working' => 'Processando...',
+	'storyboard-imagedeletionconfirm' => 'Você tem certeza de que pretende apagar o histórico desta imagem de forma definitiva?',
+	'storyboard-imagedeleted' => 'Imagem eliminada',
+	'storyboard-showimage' => 'Mostrar imagem',
+	'storyboard-hideimage' => 'Ocultar imagem',
+	'storyboard-deletestory' => 'Remover',
+	'storyboard-storydeletionconfirm' => 'Você tem certeza de que deseja eliminar esta história de forma definitiva?',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

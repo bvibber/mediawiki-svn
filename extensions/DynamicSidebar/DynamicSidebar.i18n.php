@@ -292,3 +292,10 @@ $messages['vi'] = array(
 	'dynamicsidebar-desc' => 'Cung cấp thanh bên động dựa trên trang thành viên, nhóm, và thể loại',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
+ */
+$messages['zh-hant'] = array(
+	'dynamicsidebar-desc' => '根據用戶，組別和類別提供動態頁面側邊欄',
+);
+

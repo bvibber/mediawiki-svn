@@ -542,6 +542,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Locos epraix
  * @author Peter17
  * @author Sanbec
  * @author Translationista
@@ -565,6 +566,7 @@ $messages['es'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor seleccione el archivo $1 a importar:',
 	'dt_import_encodingtype' => 'Tipo de codificación',
+	'dt_import_summarydesc' => 'Resumen de importación:',
 	'dt_import_editsummary' => '$1 importación',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán creadas del archivo $2.',
@@ -728,6 +730,7 @@ $messages['gl'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor, seleccione o ficheiro $1 a importar:',
 	'dt_import_encodingtype' => 'Tipo de codificación',
+	'dt_import_summarydesc' => 'Resumo da importación:',
 	'dt_import_editsummary' => 'Importación en $1',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '{{PLURAL:$1|Unha páxina será creada|$1 páxinas serán creadas}} a partir do ficheiro $2.',
@@ -1424,6 +1427,7 @@ $messages['no'] = array(
 	'importxml' => 'Importer XML',
 	'dt_import_selectfile' => 'Vennligst velg $1-filen som skal importeres:',
 	'dt_import_encodingtype' => 'Tegnkodingstype',
+	'dt_import_summarydesc' => 'Importsammendrag:',
 	'dt_import_editsummary' => '$1-importering',
 	'dt_import_importing' => 'Importerer...',
 	'dt_import_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra $2-filen.',
@@ -1532,6 +1536,7 @@ $messages['pms'] = array(
 	'importxml' => 'Ampòrta XML',
 	'dt_import_selectfile' => 'Për piasì selession-a ël file $1 da amporté:',
 	'dt_import_encodingtype' => 'Tipo ëd codìfica',
+	'dt_import_summarydesc' => "Somari dj'amportassion:",
 	'dt_import_editsummary' => '$1 ampòrta',
 	'dt_import_importing' => "An camin ch'as ampòrta...",
 	'dt_import_success' => "$1 {{PLURAL:$1|pàgina|pàgine}} a saran creà da l'archivi $2.",
