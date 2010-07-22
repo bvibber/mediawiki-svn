@@ -3167,12 +3167,15 @@ class Parser {
 			} elseif ( $title->isTrans() ) {
 				// TODO: Work by Peter17 in progress
 
-					$text = Interwiki::interwikiTransclude( $title );
+				$text = Interwiki::interwikiTransclude( $title );
+				
+				if ( $text !== false ) {
 					# Preprocess it like a template
 					$text = $this->preprocessToDom( $text, self::PTD_FOR_INCLUSION );
+					$found = true;
 					$isChildObj = true;
+				}
 
-				$found = true;
 			}
 
 			# Do infinite loop check

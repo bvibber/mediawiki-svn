@@ -261,16 +261,9 @@ class Interwiki {
 
 	/**
 	 * Transclude an interwiki link.
-	 * TODO: separate in interwikiTranscludeFromDB & interwikiTranscludeFromAPI according to the iw type 
 	 */
 	public static function interwikiTransclude( $title ) {
-		
-		global $wgEnableScaryTranscluding;
-
-		if ( !$wgEnableScaryTranscluding ) {
-			return wfMsg('scarytranscludedisabled');
-		}
-		
+			
 		// If we have a wikiID, we will use it to get an access to the remote database
 		// if not, we will use the API URL to retrieve the data through a HTTP Get
 		
@@ -279,25 +272,20 @@ class Interwiki {
 		
 		if ( $wikiID !== '') {
 		
-			$finalText = self::fetchTemplateFromDB( $wikiID, $title->getNamespace(), $title->getDBkey());
-			$subTemplates = self::fetchSubTemplatesListFromDB( $wikiID, $title->getNamespace(), $title->getDBkey());
-			
-			foreach ($subTemplates as $template) {
-				$listSubTemplates.=$template['namespace'].':'.$template['title']."\n";
-				$list2.="<h2>".$template['title']."</h2>\n<pre>".self::fetchTemplateFromDB( $wikiID, $template['namespace'], $template['title'])."</pre>";
-			}
+			$finalText = self::fetchTemplateFromDB( $wikiID, $title );
+			return $finalText;
 
 		} else if( $transAPI !== '' ) {
+			
+			$fullTitle = $title->getNsText().':'.$title->getText();
 	
 			$url1 = $transAPI."?action=query&prop=revisions&titles=$fullTitle&rvprop=content&format=json";
 	
 			if ( strlen( $url1 ) > 255 ) {
-				return wfMsg( 'Interwiki-transclusion-url-too-long' );
+				return false;
 			}
 			
-			$text = self::fetchTemplateHTTPMaybeFromCache( $url1 );
-			
-			$fullTitle = $title->getNsText().':'.$title->getText();
+			$finalText = self::fetchTemplateHTTPMaybeFromCache( $url1 );
 	
 			$url2 = $transAPI."?action=parse&text={{".$fullTitle."}}&prop=templates&format=json";
 			
@@ -308,96 +296,33 @@ class Interwiki {
 				$templates = $myArray['parse']['templates'];
 			}
 			
-			
-			// TODO: The templates are retrieved one by one.
-			// We should split the templates in two groups: up-to-date and out-of-date
-			// Only the second group would be retrieved through the API or DB request
+			// TODO: The templates are retrieved one by one. We should get them all in 1 request
+			// Here, we preload and cache the subtemplates
 			for ($i = 0 ; $i < count( $templates ) ; $i++) {
 				$newTitle = $templates[$i]['*'];
 				
 				$url = $transAPI."?action=query&prop=revisions&titles=$newTitle&rvprop=content&format=json";
 				
-				$listSubTemplates.= $newTitle."\n";
-				$list2.="<h2>".$newTitle."</h2>\n<pre>".self::fetchTemplateHTTPMaybeFromCache( $url )."</pre>";
+				// $newText is unused, but requesting it will put the template in the cache
+				$newText = self::fetchTemplateHTTPMaybeFromCache( $url );
 	
 			}
+			return $finalText;
 			
-			$finalText = "$url1\n$url2\n$text";
-			
-		} else {
-			return wfMsg( 'Interwiki-transclusion-failed' );
 		}
-
-		return "<h2>$fullTitle</h2><pre>$finalText</pre> List of templates: <pre>".$listSubTemplates.'</pre>' . $list2;
+		return false;
 	}
 	
-	public static function fetchTemplateFromDB ( $wikiID, $namespace, $DBkey ) {
+	public static function fetchTemplateFromDB ( $wikiID, $title ) {
 		
-		try {
-			$dbr = wfGetDb( DB_SLAVE, array(), $wikiID );
-		} catch (Exception $e) {
-			return wfMsg( 'Failed-to-connect-the-distant-DB' );
-		}
+		$revision = Revision::loadFromTitleForeignWiki( $wikiID, $title );
 		
-		$fields = array('old_text', 'page_id');
-		$res = $dbr->select(
-			array( 'page', 'revision', 'text' ),
-			$fields,
-			array( 'rev_id=page_latest',
-			       'page_namespace' => $namespace,
-			       'page_title'     => $DBkey,
-			       'page_id=rev_page',
-			       'rev_text_id=old_id'),
-			null,
-			array( 'LIMIT' => 1 )
-			);
-
-		$obj = $dbr->resultObject( $res );
-
-		if ( $obj ) {		
-			$row = $obj->fetchObject();
-			$obj->free();
-			
-			if( $row ) {
-				$res = new Revision( $row );
-				$articleID = $res->mTextRow->page_id;
-				$text = $articleID."\n".$res->mTextRow->old_text;
-			}
+		if ( $revision ) {
+			$text = $revision->getText();
+			return $text;
 		}
 				
-		return $text;
-	}
-	
-	public static function fetchSubTemplatesListFromDB ( $wikiID, $namespace, $DBkey ) {
-		
-		try {
-			$dbr = wfGetDb( DB_SLAVE, array(), $wikiID );
-		} catch (Exception $e) {
-			return wfMsg( 'Failed-to-connect-the-distant-DB' );
-		}
-		
-		$fields = array('tl_namespace', 'tl_title');
-		$res = $dbr->select(
-			array( 'page', 'templatelinks' ),
-			$fields,
-			array( 'page_namespace' => $namespace,
-			       'page_title'     => $DBkey,
-			       'tl_from=page_id' )
-			);
-		
-		$obj = $dbr->resultObject( $res );
-
-		if ( $obj ) {
-			
-			$listTemplates = array();
-			
-			while ($row = $obj->fetchObject() ) {
-				$listTemplates[] = array( 'namespace' => $row->tl_namespace, 'title' => $row->tl_title );
-			}
-			$obj->free();
-		}
-		
-		return $listTemplates;
+		return false;
 	}
 	
 	public static function fetchTemplateHTTPMaybeFromCache( $url ) {
@@ -429,7 +354,7 @@ class Interwiki {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->replace( 'transcache', array('tc_url'), array(
 			'tc_url' => $url,
-			'tc_time' => $dbw->timestamp( time() ),
+			'tc_time' => $dbw->timestamp( ),
 			'tc_contents' => $text)
 		);
 				
