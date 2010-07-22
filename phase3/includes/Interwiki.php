@@ -278,41 +278,45 @@ class Interwiki {
 		} else if( $transAPI !== '' ) {
 			
 			$fullTitle = $title->getNsText().':'.$title->getText();
-	
-			$url1 = $transAPI."?action=query&prop=revisions&titles=$fullTitle&rvprop=content&format=json";
-	
-			if ( strlen( $url1 ) > 255 ) {
-				return false;
-			}
 			
-			$finalText = self::fetchTemplateHTTPMaybeFromCache( $url1 );
+			$finalText = self::fetchTemplateFromAPI( $wikiID, $transAPI, $fullTitle );
 	
-			$url2 = $transAPI."?action=parse&text={{".$fullTitle."}}&prop=templates&format=json";
+			//Retrieve the list of subtemplates
+			$url2 = wfAppendQuery( $transAPI,
+						array( 'action' => 'query',
+						'titles' => $fullTitle,
+						'prop' => 'templates',
+						'format' => 'json'
+						)
+					);
 			
 			$get = Http::get( $url2 );
 			$myArray = FormatJson::decode($get, true);
 			
-			if ( ! empty( $myArray['parse'] )) {
-				$templates = $myArray['parse']['templates'];
+			if ( ! empty( $myArray['query'] )) {
+				if ( ! empty( $myArray['query']['pages'] )) {
+					$templates = array_pop( $myArray['query']['pages'] );
+					if ( ! empty( $templates['templates'] )) {
+						$templates = $templates['templates'];
+					} else {
+						$templates = array( );
+					}
+				}
 			}
 			
-			// TODO: The templates are retrieved one by one. We should get them all in 1 request
+			// TODO: The subtemplates are retrieved one by one. We should get them all in 1 request
 			// Here, we preload and cache the subtemplates
-			for ($i = 0 ; $i < count( $templates ) ; $i++) {
-				$newTitle = $templates[$i]['*'];
-				
-				$url = $transAPI."?action=query&prop=revisions&titles=$newTitle&rvprop=content&format=json";
-				
-				// $newText is unused, but requesting it will put the template in the cache
-				$newText = self::fetchTemplateHTTPMaybeFromCache( $url );
-	
-			}
+			self::cacheTemplatesFromAPI( $wikiID, $transAPI, $templates );
+			
 			return $finalText;
 			
 		}
 		return false;
 	}
 	
+	/**
+	 * Retrieve the wikitext of a distant page accessing the foreign DB
+	 */
 	public static function fetchTemplateFromDB ( $wikiID, $title ) {
 		
 		$revision = Revision::loadFromTitleForeignWiki( $wikiID, $title );
@@ -325,43 +329,77 @@ class Interwiki {
 		return false;
 	}
 	
-	public static function fetchTemplateHTTPMaybeFromCache( $url ) {
-		global $wgTranscludeCacheExpiry;
-		$dbr = wfGetDB( DB_SLAVE );
-		$tsCond = $dbr->timestamp( time() - $wgTranscludeCacheExpiry );
-		$obj = $dbr->selectRow( 'transcache', array('tc_time', 'tc_contents' ),
-				array( 'tc_url' => $url, "tc_time >= " . $dbr->addQuotes( $tsCond ) ) );
-
-		if ( $obj ) {
-			return $obj->tc_contents;
-		}
-	
-		$get = Http::get( $url );
+	/**
+	 * Retrieve the wikitext of a distant page using the API of the foreign wiki
+	 */
+	public static function fetchTemplateFromAPI( $wikiID, $transAPI, $fullTitle ) {
+		global $wgMemc, $wgTranscludeCacheExpiry;
 		
+		$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $fullTitle );
+		$text = $wgMemc->get( $key );
+		if( $text ){
+			return $text;
+		}
+		
+		$url = wfAppendQuery(
+			$transAPI,
+			array(	'action' => 'query',
+					'titles' => $fullTitle,
+					'prop' => 'revisions',
+					'rvprop' => 'content',
+					'format' => 'json'
+			)
+		);
+		
+		$get = Http::get( $url );
 		$content = FormatJson::decode( $get, true );
 			
 		if ( ! empty($content['query']['pages']) ) {
 			
 			$page = array_pop( $content['query']['pages'] );
 			$text = $page['revisions'][0]['*'];
-			
-		} else	{
-			
-			return wfMsg( 'scarytranscludefailed', $url );
-			
+			$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );
+			return $text;
 		}
-	
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->replace( 'transcache', array('tc_url'), array(
-			'tc_url' => $url,
-			'tc_time' => $dbw->timestamp( ),
-			'tc_contents' => $text)
-		);
-				
-		return $text;
+		return false;
 	}	
 
-	
-	
+	public static function cacheTemplatesFromAPI( $wikiID, $transAPI, $titles ){
+		global $wgMemc, $wgTranscludeCacheExpiry;
+		
+		$outdatedTitles = array( );
+		
+		foreach( $titles as $title ){
+			$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $title['title'] );
+			$text = $wgMemc->get( $key );
+			if( !$text ){
+				$outdatedTitles[] = $title['title'];
+			}			
+		}
+		
+		$batches = array_chunk( $outdatedTitles, 50 );
+		
+		foreach( $batches as $batch ){
+			$url = wfAppendQuery(
+				$transAPI,
+				array(	'action' => 'query',
+						'titles' => implode( '|', $batch ),
+						'prop' => 'revisions',
+						'rvprop' => 'content',
+						'format' => 'json'
+				)
+			);
+			$get = Http::get( $url );
+			$content = FormatJson::decode( $get, true );
+				
+			if ( ! empty($content['query']['pages']) ) {
+				foreach( $content['query']['pages'] as $page ) {
+					$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $page['title'] );
+					$text = $page['revisions'][0]['*'];
+					$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );	
+				}
+			}			
+		}
+	}
 	
 }
