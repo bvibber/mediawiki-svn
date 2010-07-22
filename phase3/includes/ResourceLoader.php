@@ -129,7 +129,7 @@ class ResourceLoader {
 		$options = array_merge( array(
 			'script' => null,
 			'style' => null,
-			'messages' => null,
+			'messages' => array(),
 			'loader' => null,
 			'raw' => false,
 			'debug' => false,

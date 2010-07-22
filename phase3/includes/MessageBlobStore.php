@@ -19,7 +19,6 @@
  * @author Trevor Parscal
  */
 
-// TODO: Keep msg_resource_links up-to-date
 // TODO: Add relevant code to MessageCache::replace()
 // TODO: Figure out what to do in LocalisationCache::recache(). Empty entire table?
 
@@ -82,16 +81,88 @@ class MessageBlobStore {
 			__METHOD__,
 			array( 'IGNORE' )
 		);
-		if ( $success && $dbw->affectedRows() == 0 ) {
-			// Blob was already present, fetch it
-			$blob = $dbr->selectField( 'msg_resource', 'mr_blob', array(
-					'mr_resource' => $module,
-					'mr_lang' => $lang,
-				),
-				__METHOD__
-			);
+		if ( $success ) {
+			if ( $dbw->affectedRows() == 0 ) {
+				// Blob was already present, fetch it
+				$blob = $dbr->selectField( 'msg_resource', 'mr_blob', array(
+						'mr_resource' => $module,
+						'mr_lang' => $lang,
+					),
+					__METHOD__
+				);
+			} else {
+				// Update msg_resource_links
+				$rows = array();
+				$allModules = ResourceLoader::getModules();
+				foreach ( $allModules[$module]['messages'] as $key ) {
+					$rows[] = array(
+						'mrl_resource' => $module,
+						'mrl_message' => $key
+					);
+				}
+				$dbw->insert( 'msg_resource_links', $rows,
+					__METHOD__, array( 'IGNORE' )
+				);
+			}
 		}
 		return $blob;
+	}
+	
+	/**
+	 * Update all message blobs for a given module.
+	 * @param $module string Module name
+	 */
+	public static function updateModule( $module ) {
+		// Find all existing blobs for this module
+		$dbw = wfGetDb( DB_MASTER );
+		$res = $dbw->select( 'msg_resource', array( 'mr_lang', 'mr_blob' ),
+			array( 'mr_resource' => $module ),
+			__METHOD__
+		);
+		
+		// Build the new msg_resource rows
+		$newRows = array();
+		$now = $dbw->timestamp();
+		// Save the last-processed old and new blobs for later
+		$oldBlob = $newBlob = null;
+		foreach ( $res as $row ) {
+			$oldBlob = $row->mr_blob;
+			$newBlob = self::generateMessageBlob( $module, $row->mr_lang );
+			$newRows[] = array(
+				'mr_resource' => $module,
+				'mr_lang' => $row->mr_lang,
+				'mr_blob' => $newBlob,
+				'mr_timestamp' => $now
+			);
+		}
+
+		$dbw->replace( 'msg_resource',
+			array( array( 'mr_resource', 'mr_lang' ) ),
+			$newRows, __METHOD__
+		);
+		
+		// Figure out which messages were added and removed
+		$oldMessages = array_keys( FormatJson::decode( $oldBlob, true ) );
+		$newMessages = array_keys( FormatJson::decode( $newBlob, true ) );
+		$added = array_diff( $newMessages, $oldMessages );
+		$removed = array_diff( $oldMessages, $newMessages );
+		
+		// Delete old messages, insert new ones
+		$dbw->delete( 'msg_resource_links', array(
+				'mrl_resource' => $resource,
+				'mrl_message' => $oldMessages
+			), __METHOD__
+		);
+		$newLinksRows = array();
+		foreach ( $newMessages as $message ) {
+			$newLinksRows[] = array(
+				'mrl_resource' => $resource,
+				'mrl_message' => $message
+			);
+		}
+		$dbw->insert( 'msg_resource_links', $newLinksRows, __METHOD__,
+			 array( 'IGNORE' ) // just in case
+		);
 	}
 	
 	/**
@@ -106,7 +177,7 @@ class MessageBlobStore {
 		// in one iteration.
 		$updates = null;
 		do {
-			$updates = self::getUpdates( $key, $updates );
+			$updates = self::getUpdatesForMessage( $key, $updates );
 			foreach ( $updates as $key => $update ) {
 				// Update the row on the condition that it
 				// didn't change since we fetched it by putting
@@ -129,6 +200,9 @@ class MessageBlobStore {
 				}
 			}
 		} while ( count( $updates ) );
+		
+		// No need to update msg_resource_links because we didn't add
+		// or remove any messages, we just changed their contents.
 	}
 	
 	/**
@@ -137,7 +211,7 @@ class MessageBlobStore {
 	 * @param $prevUpdates array Updates queue to refresh or null to build a fresh update queue
 	 * @return array Updates queue
 	 */
-	private static function getUpdates( $key, $prevUpdates = null ) {
+	private static function getUpdatesForMessage( $key, $prevUpdates = null ) {
 		$dbw = wfGetDb( DB_MASTER );
 		if ( is_null( $prevUpdates ) ) {
 			// Fetch all blobs referencing $key
