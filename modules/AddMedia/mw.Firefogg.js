@@ -884,6 +884,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * into which a video has already been selected.
 	 */
 	getEncoderSettings: function() {
+		// set the current_encoder_settings form the default_encoder_settings if not yet set 
 		if ( this.current_encoder_settings == null ) {
 		
 			// Clone the default settings			
@@ -915,8 +916,15 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				' passthrough:' + settings['passthrough'] );
 				
 			this.current_encoder_settings = settings;
-		}		
-		//Update the format based on codec selection
+		}	
+		
+		// remove maxSize if width or height is set:
+		if( ( this.current_encoder_settings['width'] || this.current_encoder_settings['height'] ) 
+		    && this.current_encoder_settings['maxSize'] ){
+			delete this.current_encoder_settings['maxSize'];
+		}
+
+		// Update the format based on codec selection
 		if( this.current_encoder_settings['videoCodec'] == 'vp8' ){
 			this.fogg.setFormat('webm');
 		} else {
