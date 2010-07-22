@@ -221,8 +221,16 @@ abstract class Maintenance {
 		if( $this->mQuiet ) {
 			return;
 		}
-		$out = preg_replace( '/\n\z/', '', $out );
-		$this->outputChanneled( $out, $channel );
+		if ( $channel === null ) {
+			$f = fopen( 'php://stdout', 'w' );
+			if ( $this->lastChannel !== null ) fwrite( $f, "\n" );
+			fwrite( $f, $out );
+			fclose( $f );
+		}
+		else {
+			$out = preg_replace( '/\n\z/', '', $out );
+			$this->outputChanneled( $out, $channel );
+		}
 	}
 
 	/**
