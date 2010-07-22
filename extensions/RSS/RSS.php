@@ -1,6 +1,5 @@
 <?php
 
-<?php
 /**
  * RSS-Feed MediaWiki extension
  *
