@@ -12,6 +12,7 @@ class PrefSwitchSurvey {
 		'boolean' => 'PrefSwitchSurveyFieldBoolean',
 		'dimensions' => 'PrefSwitchSurveyFieldDimensions',
 		'text' => 'PrefSwitchSurveyFieldText',
+		'smallinput' => 'PrefSwitchSurveyFieldSmallInput',
 	);
 	
 	/* Static Functions */
@@ -334,6 +335,26 @@ class PrefSwitchSurveyFieldText implements PrefSwitchSurveyField {
 		$html = Xml::tags( 'dt', null, wfMsgWikiHtml( $config['question'] ) );
 		$html .= Xml::tags(
 			'dd', null, Xml::textarea( "prefswitch-survey-{$question}", $answerData ? $answerData : '' )
+		);
+		return $html;
+	}
+	public static function save( $question, $request ) {
+		$answer = $request->getVal( "prefswitch-survey-{$question}" );
+		return array(
+			'pss_answer' => null,
+			'pss_answer_data' => $answer !== '' ? $answer : null,
+		);
+	}
+}
+
+class PrefSwitchSurveyFieldSmallInput implements PrefSwitchSurveyField {
+
+	/* Static Functions */
+
+	public static function render( $question, $config, $answer, $answerData ) {
+		$html = Xml::tags( 'dt', null, wfMsgWikiHtml( $config['question'] ) );
+		$html .= Xml::tags(
+			'dd', null, Xml::input( "prefswitch-survey-{$question}", 5, $answerData ? $answerData : '' )
 		);
 		return $html;
 	}
