@@ -937,19 +937,33 @@ $messages['pt-br'] = array(
 	'refhelper' => 'Assistente de referências',
 	'refsearch' => 'Pesquisa de referências',
 	'refhelper-desc' => 'Ajuda na criação de páginas para referências',
+	'refhelper-refsearch' => 'Pesquisa de referências',
 	'refhelper-refcreate_legend' => 'Criar nova referência',
+	'refhelper-refsearch_legend' => 'Pesquisar referências na PubMed',
 	'refhelper-refcreate_another' => 'Criar outra referência',
+	'refhelper-refcreate_autocomment' => 'Criação automatizada de páginas.',
 	'refhelper-refcreate_success' => 'A página [[$1]] não existia e foi criada.',
 	'refhelper-refcreate_failure' => 'A página [[$1]] já existe!',
+	'refhelper-label_workspace' => 'Área de trabalho (área para copiar e colar):',
+	'refhelper-label_authorforename' => 'Nome próprio do autor $1:',
 	'refhelper-label_authorsurname' => 'Sobrenome:',
 	'refhelper-title' => 'Título:',
+	'refhelper-journal' => 'Periódico:',
 	'refhelper-volume' => 'Volume:',
 	'refhelper-pages' => 'Páginas:',
 	'refhelper-year' => 'Ano:',
+	'refhelper-refname' => 'Nome da referência:',
 	'refhelper-category' => 'Categoria $1:',
 	'refhelper-create' => 'Criar',
 	'refhelper-search' => 'Pesquisar',
 	'refhelper-toolbox_link_create' => 'Criar referência',
+	'refhelper-toolbox_link_search' => 'Criar referência a partir da pesquisa',
+	'refhelper-newarticle_nocitation' => 'Não existe nenhuma citação com este nome.',
+	'refhelper-newarticle_suggestions' => 'Se existir uma citação coincidente abaixo, você pode criar esta página clicando o respectivo botão "{{int:refhelper-create}}".
+
+<h2>Sugestões</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Infelizmente, não foi possível sugerir nenhuma referência.
+Você pode [[Special:RefHelper|adicionar a referência manualmente]] ou [[Special:RefSearch|pesquisar a citação a adicionar]].',
 );
 
 /** Russian (Русский)

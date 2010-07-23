@@ -217,6 +217,7 @@ $1 = Repository name',
 * <code>$2</code> – Number of the revision that has been followed upon.
 * <code>$3</code> – URL to the new revision.
 * <code>$4</code> – Commit message of the new revision.',
+	'code-stats' => '{{Identical|Statistics}}',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
@@ -746,7 +747,6 @@ $messages['be-tarask'] = array(
 	'code-authors' => 'аўтары',
 	'code-status' => 'станы',
 	'code-tags' => 'тэгі',
-	'code-tests' => 'Тэсты',
 	'code-authors-text' => 'Ніжэй пададзены сьпіс аўтараў коду ў сховішчы ў парадку апошніх зьменаў. Рахункі лякальнай вікі паказаныя ў дужках.',
 	'code-author-haslink' => 'Гэты аўтар асацыяваны з удзельнікам $1',
 	'code-author-orphan' => 'Гэты аўтар ня мае спасылкі на рахунак удзельніка вікі',
@@ -767,7 +767,6 @@ $messages['be-tarask'] = array(
 	'code-field-status' => 'Статус',
 	'code-field-timestamp' => 'Дата',
 	'code-field-comments' => 'Камэнтары',
-	'code-field-tests' => 'Тэсты',
 	'code-field-path' => 'Шлях',
 	'code-field-text' => 'Камэнтар',
 	'code-field-select' => 'Выбраць',
@@ -823,11 +822,6 @@ $messages['be-tarask'] = array(
 	'code-release-badrange' => 'Занадта вялікі дыяпазон!',
 	'codereview-subtitle' => 'Для $1',
 	'codereview-reply-link' => 'адказаць',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|пасьпяховая праверка|пасьпяховыя праверкі|пасьпяховых праверак}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|пасьпяховая праверка|пасьняховыя праверкі|пасьпяховых праверак}}, $3 {{PLURAL:$4|няўдалая праверка|няўдалых праверкі|няўдалых праверак}}:',
-	'codereview-tests-running' => 'Выконваюцца праверкі…',
-	'codereview-tests-aborted' => 'Выкананьне праверкі спыненае.',
-	'codereview-tests-failed' => 'Памылкі',
 	'codereview-email-subj' => '[$1] [$2]: Дададзены новы камэнтар',
 	'codereview-email-body' => 'Удзельнік «$1» дадаў камэнтар для $3.
 
@@ -844,14 +838,9 @@ $4',
 Кароткае апісаньне зьменаў:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Аўтаматычнае тэставаньне выявіла рэгрэсію',
-	'codereview-email-body3' => 'Аўтаматычнае тэставаньне выявіла рэгрэсію ў сувязі са зьменамі ў $1.
-
-Поўны URL-адрас: $2
-
-Апісаньне зьменаў:
-
-$3',
+	'code-stats' => 'статыстыка',
+	'code-stats-header' => 'Статыстыка сховішча для $1',
+	'code-stats-count' => 'Колькасьць вэрсіяў',
 	'repoadmin' => 'Кіраваньне сховішчам коду',
 	'repoadmin-new-legend' => 'Стварыць новае сховішча',
 	'repoadmin-new-label' => 'Назва сховішча:',
@@ -1413,7 +1402,6 @@ $messages['cs'] = array(
 	'code-authors' => 'autoři',
 	'code-status' => 'stavy',
 	'code-tags' => 'značky',
-	'code-tests' => 'Testování',
 	'code-authors-text' => 'Toto je seznam autorů v úložišti seřazený podle posledních commitů. V závorkách jsou uživatelská jména na této wiki.',
 	'code-author-haslink' => 'Tento autor je spojen s wiki uživatelem $1',
 	'code-author-orphan' => 'Tento autor není svázaný s žádným wikiuživatelem',
@@ -1434,7 +1422,6 @@ $messages['cs'] = array(
 	'code-field-status' => 'Stav',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Poznámky',
-	'code-field-tests' => 'Testy',
 	'code-field-path' => 'Cesta',
 	'code-field-text' => 'Poznámka',
 	'code-field-select' => 'Vybrat',
@@ -1490,11 +1477,6 @@ $messages['cs'] = array(
 	'code-release-badrange' => 'Rozsah je příliš velký!',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'odpovědět',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|úspěšný test|úspěšné testy|úspěšných testů}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|úspěšný test|úspěšné testy|úspěšných testů}}, $3 {{PLURAL:$4|neúspěšný test|neúspěšné testy|neúspěšných testů}}:',
-	'codereview-tests-running' => 'Testy se právě provádějí…',
-	'codereview-tests-aborted' => 'Provádění testů bylo přerušeno.',
-	'codereview-tests-failed' => 'Selhaly',
 	'codereview-email-subj' => '[$1] [$2]: Přidán nový komentář',
 	'codereview-email-body' => 'Uživatel „$1“ přidal komentář k $3.
 
@@ -1511,14 +1493,12 @@ $4',
 Komentář ke změně:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Automatické testování detekovalo regresi',
-	'codereview-email-body3' => 'Automatické testování odhalilo regresi způsobenou změnami v $1.
-
-Úplné URL: $2
-
-Komentář ke commitu:
-
-$3',
+	'code-stats' => 'statistika',
+	'code-stats-header' => 'Statistika pro úložiště $1',
+	'code-stats-main' => 'K $1 obsahovalo úložiště $2 {{PLURAL:$2|revizi|revize|revizí}} od [[Special:Code/$3/author|$4 {{PLURAL:$4|autora|autorů}}]].',
+	'code-stats-staus-breakdown' => 'Počet revizí podle stavu',
+	'code-stats-fixme-breakdown' => 'Rozdělení potřebných oprav podle autora',
+	'code-stats-count' => 'Počet revizí',
 	'repoadmin' => 'Správa úložišť',
 	'repoadmin-new-legend' => 'Vytvořit nové úložiště',
 	'repoadmin-new-label' => 'Název úložiště:',
@@ -1634,6 +1614,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Metalhead64
  * @author Purodha
  * @author Umherirrender
@@ -1660,7 +1641,6 @@ $messages['de'] = array(
 	'code-authors' => 'Autoren',
 	'code-status' => 'Status',
 	'code-tags' => 'Tags',
-	'code-tests' => 'Testfälle',
 	'code-authors-text' => 'Es folgt die Liste der Repositoriumsautoren, sortiert nach den letzten Übertragungen.
 Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'code-author-haslink' => 'Dieser Autor ist mit dem Wiki-Benutzer $1 verlinkt',
@@ -1682,7 +1662,6 @@ Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Notizen',
-	'code-field-tests' => 'Tests',
 	'code-field-path' => 'Pfad',
 	'code-field-text' => 'Notiz',
 	'code-field-select' => 'Auswählen',
@@ -1738,11 +1717,6 @@ Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'code-release-badrange' => 'Der Bereich ist zu groß!',
 	'codereview-subtitle' => 'Für $1',
 	'codereview-reply-link' => 'antworten',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|erfolgreicher Test|erfolgreiche Tests}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|erfolgreicher Test|erfolgreiche Tests}}, $3 {{PLURAL:$4|fehlgeschlagender Test|fehlgeschlagende Tests}}:',
-	'codereview-tests-running' => 'Testfälle sind am laufen …',
-	'codereview-tests-aborted' => 'Testlauf ist abgebrochen.',
-	'codereview-tests-failed' => 'Fehlgeschlagen',
 	'codereview-email-subj' => '[$1] [$2]: Neuer Kommentar hinzugefügt',
 	'codereview-email-body' => 'Benutzer „$1“ hat Revision $3 kommentiert:
 
@@ -1759,15 +1733,13 @@ Volle URL: $3
 Übertragungszusammenfassung:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Die automatische Prüfung entdeckte einen Rückgang',
-	'codereview-email-body3' => 'Die automatische Prüfung entdeckte einen Rückgang aufgrund der Änderungen in $1.
-
-Vollständige URL: $2
-
-Übertragungszusammenfassung:
-
-$3',
-	'repoadmin' => 'Repositoriums-Administration',
+	'code-stats' => 'Statistiken',
+	'code-stats-header' => 'Repositoriumsstatistik für $1',
+	'code-stats-main' => 'Mit Stand $1 wurden von [[Special:Code/$3/author|$4 {{PLURAL:$4|Autor|Autoren}}]] $2 {{PLURAL:$2|Revision|Revisionen}} im Repositorium durchgeführt.',
+	'code-stats-staus-breakdown' => 'Anzahl der Revisionen pro Staat',
+	'code-stats-fixme-breakdown' => 'Aufschlüsselung der FIXMEs pro Autor',
+	'code-stats-count' => 'Anzahl der Revisionen',
+	'repoadmin' => 'Repositoriumsadministration',
 	'repoadmin-new-legend' => 'Neues Repositorium erstellen',
 	'repoadmin-new-label' => 'Name des Repositoriums:',
 	'repoadmin-new-button' => 'Erstellen',
@@ -2424,7 +2396,6 @@ $messages['es'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-tests' => 'Casos de prueba',
 	'code-authors-text' => 'Abajo hay una lista de los autores de repositorios por orden de tareas recientes. Cuentas de wiki locales se muestran entre paréntesis.',
 	'code-author-haslink' => 'Este autor está enlazado con el usuario $1',
 	'code-author-orphan' => 'Este autor no está enlazado con ningún usuario de la wiki',
@@ -2445,7 +2416,6 @@ $messages['es'] = array(
 	'code-field-status' => 'Estatus',
 	'code-field-timestamp' => 'Fecha',
 	'code-field-comments' => 'Apuntes',
-	'code-field-tests' => 'Pruebas',
 	'code-field-path' => 'Ruta',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seleccionar',
@@ -2501,11 +2471,6 @@ $messages['es'] = array(
 	'code-release-badrange' => 'Rango es demasiado largo!',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL: $2|prueba culminada|pruebas culminadas}} con éxito',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|prueba realizada|pruebas realizadas}} con éxito, $3 {{PLURAL:$4|prueba fallida|pruebas fallidas}}:',
-	'codereview-tests-running' => 'Casos de prueba en ejecución...',
-	'codereview-tests-aborted' => 'Ejecución de prueba abortada.',
-	'codereview-tests-failed' => 'Falló',
 	'codereview-email-subj' => '[$1] [$2]: Añadido nuevo comentario',
 	'codereview-email-body' => 'El usuario «$1» envió un comentario en $3.
 
@@ -2522,14 +2487,12 @@ URL completa : $3
 Resumen de las confirmaciones:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2] : la prueba automática ha detectado una regresión',
-	'codereview-email-body3' => 'La prueba automática ha mostrado una regresión debido a los cambios realizados en $1.
-
-URL completa: $2
-
-Resumen de confirmación:
-
-$3',
+	'code-stats' => 'estadísticas',
+	'code-stats-header' => 'Estadísticas de repositorio para $1',
+	'code-stats-main' => ' A la fecha de $1, el repositorio tiene $2 {{PLURAL:$2|revisión|revisiones}} hechas por [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
+	'code-stats-staus-breakdown' => 'Número de revisiones por estado',
+	'code-stats-fixme-breakdown' => 'Desglose de correcciones por autor',
+	'code-stats-count' => 'Número de revisiones',
 	'repoadmin' => 'Administración de repositorio',
 	'repoadmin-new-legend' => 'Crear nuevo repositorio',
 	'repoadmin-new-label' => 'Nombre de repositorio:',
@@ -3007,6 +2970,7 @@ $3',
 );
 
 /** French (Français)
+ * @author Aadri
  * @author Cedric31
  * @author Crochet.david
  * @author Dereckson
@@ -3040,7 +3004,6 @@ $messages['fr'] = array(
 	'code-authors' => 'auteurs',
 	'code-status' => 'états',
 	'code-tags' => 'balises',
-	'code-tests' => 'Cas de test',
 	'code-authors-text' => 'Ci-dessous se trouve une liste des auteurs de dépôts dans l’ordre des publications récentes. Les comptes du wiki local sont affichés entre parenthèses.',
 	'code-author-haslink' => 'Cet auteur est lié au compte $1 de ce wiki',
 	'code-author-orphan' => 'Cet auteur n’a pas de lien avec un compte wiki',
@@ -3061,7 +3024,6 @@ $messages['fr'] = array(
 	'code-field-status' => 'État',
 	'code-field-timestamp' => 'Date',
 	'code-field-comments' => 'Notes',
-	'code-field-tests' => 'Tests',
 	'code-field-path' => 'Chemin',
 	'code-field-text' => 'Note',
 	'code-field-select' => 'Sélectionner',
@@ -3117,11 +3079,6 @@ $messages['fr'] = array(
 	'code-release-badrange' => 'La portée est trop grande !',
 	'codereview-subtitle' => 'Pour $1',
 	'codereview-reply-link' => 'répondre',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test réussi|tests réussis}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test réussi|tests réussis}}, $3 {{PLURAL:$4|test échoué|tests échoués}} :',
-	'codereview-tests-running' => 'Tests en cours...',
-	'codereview-tests-aborted' => 'Exécution du test interrompue.',
-	'codereview-tests-failed' => 'Échec',
 	'codereview-email-subj' => '[$1] [$2] : nouveau commentaire ajouté',
 	'codereview-email-body' => 'L’utilisateur « $1 » a posté un commentaire sur $3.
 
@@ -3138,14 +3095,8 @@ URL complète : $3
 Résumé des modifications :
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2] : le test automatique a détecté une régression',
-	'codereview-email-body3' => 'Le test automatique a révélé une régression à cause des changements intervenus dans la version $1.
-
-URL complète : $2
-
-Résumé lors de la soumission :
-
-$3',
+	'code-stats' => 'statistiques',
+	'code-stats-count' => 'Nombre de révisions',
 	'repoadmin' => 'Administration des dépôts',
 	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
 	'repoadmin-new-label' => 'Nom du dépôt :',
@@ -4021,7 +3972,6 @@ $messages['hsb'] = array(
 	'code-authors' => 'awtorojo',
 	'code-status' => 'statusy',
 	'code-tags' => 'taflički',
-	'code-tests' => 'Testowe pady',
 	'code-authors-text' => 'To je lisćina awtorojo repozitorija po porjedźe aktualnych nahraćow. Lokalny wiki so w spinkach pokazuje.',
 	'code-author-haslink' => 'Tutón awtor ma wotkaz na wikijoweho wužiwarja $1',
 	'code-author-orphan' => 'Tutón awtor nima wotkaz k wikijowemu kontu',
@@ -4042,7 +3992,6 @@ $messages['hsb'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Přispomnjenki',
-	'code-field-tests' => 'Testy',
 	'code-field-path' => 'Šćežka',
 	'code-field-text' => 'Přispomnjenka',
 	'code-field-select' => 'Wubrać',
@@ -4098,11 +4047,6 @@ $messages['hsb'] = array(
 	'code-release-badrange' => 'Wobłuk přewulki!',
 	'codereview-subtitle' => 'Za $1',
 	'codereview-reply-link' => 'wotmołwić',
-	'codereview-tests-succeeded2' => ' $1 {{PLURAL:$2|poradźeny test|poradźenej testaj|poradźene testy|poradźenych testow}}',
-	'codereview-tests-failed2' => ' $1 {{PLURAL:$2|poradźeny test|poradźenej testaj|poradźene testy|poradźenych testow}}, $3 {{PLURAL:$4|njeporadźeny test|njeporadźenej testaj|njeporadźene testy|njeporadźenych testow}}:',
-	'codereview-tests-running' => 'Testowe pady běža...',
-	'codereview-tests-aborted' => 'Testowy běh přetorhnjeny.',
-	'codereview-tests-failed' => 'Njeporadźiło',
 	'codereview-email-subj' => '[$1] [$2]: Nowy komentar přidaty',
 	'codereview-email-body' => 'Wužiwar "$1" je komentar wo $3 pósłał.
 
@@ -4119,14 +4063,12 @@ Dopołny URL: $3
 Zjeće přenjesenja:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Awtomatiski test je regresiju wotkrył',
-	'codereview-email-body3' => 'Awtomatiski test je změnow w $1 dla regresiju wotkrył.
-
-Dospołny URL: $2
-
-Zjeće:
-
-$3',
+	'code-stats' => 'Statistika',
+	'code-stats-header' => 'Statistika repozitorija za $1',
+	'code-stats-main' => 'Wot $1 repozitorij ma $2 {{PLURAL:$2|wersiju|wersiji|wersije|wersijow}} wot [[Special:Code/$3/author|$4 {{PLURAL:$4|awtora|awtorow|awtorow|awtorow}}]].',
+	'code-stats-staus-breakdown' => 'Ličba wersijow na status',
+	'code-stats-fixme-breakdown' => 'Zwobraznjenje korekturow na awtora',
+	'code-stats-count' => 'Ličba wersijow',
 	'repoadmin' => 'Administracija repozitorija',
 	'repoadmin-new-legend' => 'Nowy repozitorij wutworić',
 	'repoadmin-new-label' => 'Mjeno repozitorija:',
@@ -4322,7 +4264,6 @@ $messages['ia'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'statos',
 	'code-tags' => 'etiquettas',
-	'code-tests' => 'Casos de test',
 	'code-authors-text' => 'Infra es un lista de autores del deposito in ordine de publicationes recente. Le contos del wiki local es monstrate inter parentheses.',
 	'code-author-haslink' => 'Iste autor es ligate al usator $1 de iste wiki',
 	'code-author-orphan' => 'Iste autor ha nulle ligamine con un conto wiki',
@@ -4343,7 +4284,6 @@ $messages['ia'] = array(
 	'code-field-status' => 'Stato',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
-	'code-field-tests' => 'Tests',
 	'code-field-path' => 'Cammino',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seliger',
@@ -4399,11 +4339,6 @@ $messages['ia'] = array(
 	'code-release-badrange' => 'Intervallo troppo grande!',
 	'codereview-subtitle' => 'Pro $1',
 	'codereview-reply-link' => 'responder',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test|tests}} succedite',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|tests}} succedite, $3 {{PLURAL:$4|test|tests}} fallite:',
-	'codereview-tests-running' => 'Le casos de test es executate...',
-	'codereview-tests-aborted' => 'Execution del test interrumpite.',
-	'codereview-tests-failed' => 'Fallite',
 	'codereview-email-subj' => '[$1] [v$2]: Nove commento addite',
 	'codereview-email-body' => 'Le usator "$1" publicava un commento in v$3.
 
@@ -4420,14 +4355,12 @@ URL complete: $3
 Summario del modification:
 
 $4',
-	'codereview-email-subj3' => '[$1] [v$2]: Un test automatic detegeva un regression',
-	'codereview-email-body3' => 'Un test automatic ha revelate un regression a causa del modificationes in v$1.
-
-URL complete: $2
-
-Summario del commit:
-
-$3',
+	'code-stats' => 'statisticas',
+	'code-stats-header' => 'Statisticas de deposito pro $1',
+	'code-stats-main' => 'Al data de $1, le deposito ha $2 {{PLURAL:$2|version|versiones}} per [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
+	'code-stats-staus-breakdown' => 'Numero de versiones per stato',
+	'code-stats-fixme-breakdown' => 'Separation de corrigenda per autor',
+	'code-stats-count' => 'Numero de versiones',
 	'repoadmin' => 'Administration del depositos',
 	'repoadmin-new-legend' => 'Crear un nove deposito',
 	'repoadmin-new-label' => 'Nomine del deposito:',
@@ -5818,7 +5751,6 @@ $messages['mk'] = array(
 	'code-authors' => 'автори',
 	'code-status' => 'состојби',
 	'code-tags' => 'ознаки',
-	'code-tests' => 'Барања за испробување',
 	'code-authors-text' => 'Еве список на автори за складишта подредени подредени по скорешни измени. Сметките на локалните викија се прикажани во загради.',
 	'code-author-haslink' => 'Овој автор е сврзан со корисникот $1',
 	'code-author-orphan' => 'Овој автор нема врска до вики-сметка',
@@ -5839,7 +5771,6 @@ $messages['mk'] = array(
 	'code-field-status' => 'Статус',
 	'code-field-timestamp' => 'Датум',
 	'code-field-comments' => 'Белешки',
-	'code-field-tests' => 'Испробувања',
 	'code-field-path' => 'Пат',
 	'code-field-text' => 'Напомена',
 	'code-field-select' => 'Избери',
@@ -5895,11 +5826,6 @@ $messages['mk'] = array(
 	'code-release-badrange' => 'Опсегот е преголем',
 	'codereview-subtitle' => 'За $1',
 	'codereview-reply-link' => 'одговори',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|успешна проба|успешни проби}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешна проба|успешни проби}}, $3 {{PLURAL:$4|неуспешна проба|неуспешни проби}}:',
-	'codereview-tests-running' => 'Испробувањето на примери е во тек...',
-	'codereview-tests-aborted' => 'Проверката е откажана.',
-	'codereview-tests-failed' => 'Неуспешно',
 	'codereview-email-subj' => '[$1] [$2]: Додаден е нов коментар',
 	'codereview-email-body' => 'Корисникот „$1“ објави коментар за $3.
 
@@ -5916,14 +5842,12 @@ $4',
 Опис:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Автоматското испробување откри регресија',
-	'codereview-email-body3' => 'Автоматското испробување откри регресија заради промените во $1.
-
-Полна URL-адреса: $2
-
-Опис на измените:
-
-$3',
+	'code-stats' => 'статистики',
+	'code-stats-header' => 'Складишни статистики за $1',
+	'code-stats-main' => 'На $1 складиштето имало $2 {{PLURAL:$2|ревизија|ревизии}} од [[Special:Code/$3/author|$4 {{PLURAL:$4|автор|автори}}]].',
+	'code-stats-staus-breakdown' => 'Број на ревизии по состојба',
+	'code-stats-fixme-breakdown' => 'Расчленет преглед на проблеми на за поправка по автор',
+	'code-stats-count' => 'Број на ревизии',
 	'repoadmin' => 'Управување со складиштето',
 	'repoadmin-new-legend' => 'Создај ново складиште',
 	'repoadmin-new-label' => 'Име на складиштето:',
@@ -5969,7 +5893,6 @@ $messages['ml'] = array(
 	'code-authors' => 'രചയിതാക്കൾ',
 	'code-status' => 'അവസ്ഥകൾ',
 	'code-tags' => 'റ്റാഗുകൾ',
-	'code-tests' => 'പരീക്ഷണ ഓട്ടങ്ങൾ',
 	'code-authors-text' => 'സമീപകാല ഉൾപ്പെടുത്തലുകളുടെ അടിസ്ഥാനത്തിൽ താഴെ റെപ്പോ രചയിതാക്കളുടെ പട്ടിക കൊടുത്തിരിക്കുന്നു. പ്രാദേശിക വിക്കി അംഗത്വങ്ങൾ കോഷ്ഠകങ്ങൾക്കുള്ളിൽ കാണാം.',
 	'code-author-haslink' => '$1 എന്ന വിക്കി ഉപയോക്താവുമായി ഈ രചയിതാവിനെ കണ്ണി ചേർത്തിരിക്കുന്നു',
 	'code-author-orphan' => 'വിക്കി അംഗത്വവുമായി ഈ രചിയിതാവിന് കണ്ണികളൊന്നുമില്ല',
@@ -5990,7 +5913,6 @@ $messages['ml'] = array(
 	'code-field-status' => 'സ്ഥിതി',
 	'code-field-timestamp' => 'തീയതി',
 	'code-field-comments' => 'കുറിപ്പുകൾ',
-	'code-field-tests' => 'പരീക്ഷണങ്ങൾ',
 	'code-field-path' => 'പഥം',
 	'code-field-text' => 'കുറിപ്പ്',
 	'code-field-select' => 'തിരഞ്ഞെടുക്കുക',
@@ -6046,11 +5968,6 @@ $messages['ml'] = array(
 	'code-release-badrange' => 'വളരെ വലിയ പരിധി!',
 	'codereview-subtitle' => '$1 റെപ്പോസിറ്ററിയ്ക്ക് വേണ്ടി',
 	'codereview-reply-link' => 'മറുപടി',
-	'codereview-tests-succeeded2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു',
-	'codereview-tests-failed2' => '{{PLURAL:$2|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $1 കടന്നിരിക്കുന്നു, {{PLURAL:$4|പരീക്ഷണം|പരീക്ഷണങ്ങൾ}} $3 പരാജയപ്പെട്ടിരിക്കുന്നു:',
-	'codereview-tests-running' => 'പരീക്ഷണ ഓട്ടങ്ങൾ തുടരുന്നു...',
-	'codereview-tests-aborted' => 'പരീക്ഷണ ഓട്ടം റദ്ദാക്കിയിരിക്കുന്നു.',
-	'codereview-tests-failed' => 'പരാജയപ്പെട്ടവ',
 	'codereview-email-subj' => '[$1] [$2]: പുതിയ അഭിപ്രായം ചേർത്തിരിക്കുന്നു',
 	'codereview-email-body' => '$3-യിൽ "$1" ഒരു അഭിപ്രായം ചേർത്തിരിക്കുന്നു.
 
@@ -6067,7 +5984,11 @@ $4',
 ചുരുക്കം അംഗീകരിക്കുക:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: സ്വയമുള്ള പരിശോധനകൾ ശോഷണം കണ്ടെത്തിയിരിക്കുന്നു',
+	'code-stats' => 'സ്ഥിതിവിവരക്കണക്കുകൾ',
+	'code-stats-header' => '$1 റെപ്പോസിറ്ററി സ്ഥിതിവിവരക്കണക്കുകൾ',
+	'code-stats-main' => '$1-ൽ, റെപ്പോസിറ്ററിയിൽ [[Special:Code/$3/author|{{PLURAL:$4|ഒരു രചയിതാവ്|$4 രചയിതാക്കൾ}}]] സൃഷ്ടിച്ച {{PLURAL:$2|ഒരു നാൾപതിപ്പ്|$2 നാൾപ്പതിപ്പുകൾ}} ഉണ്ട്.',
+	'code-stats-staus-breakdown' => 'ഓരോ സ്ഥിതിയിലുമുള്ള നാൾപ്പതിപ്പുകളുടെ എണ്ണം',
+	'code-stats-count' => 'നാൾപ്പതിപ്പുകളുടെ എണ്ണം',
 	'repoadmin' => 'റെപ്പോസിറ്ററി കാര്യനിർവഹണം',
 	'repoadmin-new-legend' => 'പുതിയ റെപ്പോസിറ്ററി സൃഷ്ടിക്കുക',
 	'repoadmin-new-label' => 'റെപ്പോസിറ്ററിയുടെ പേര്:',
@@ -6394,7 +6315,6 @@ $messages['nl'] = array(
 	'code-authors' => 'auteurs',
 	'code-status' => 'statussen',
 	'code-tags' => 'labels',
-	'code-tests' => 'Testcases',
 	'code-authors-text' => 'Hieronder staat een lijst met auteurs uit de repository, degene met de meest recente commit bovenaan.
 Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-author-haslink' => 'Deze auteur is gekoppeld aan de wikigebruiker $1',
@@ -6416,7 +6336,6 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Datum',
 	'code-field-comments' => 'Aantekeningen',
-	'code-field-tests' => 'Tests',
 	'code-field-path' => 'Pad',
 	'code-field-text' => 'Opmerking',
 	'code-field-select' => 'Selecteren',
@@ -6472,11 +6391,6 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-release-badrange' => 'De reeks is te groot.',
 	'codereview-subtitle' => 'Voor $1',
 	'codereview-reply-link' => 'antwoorden',
-	'codereview-tests-succeeded2' => '$1 geslaagde {{PLURAL:$2|test|tests}}',
-	'codereview-tests-failed2' => '$1 geslaagde {{PLURAL:$2|test|tests}}, $3 gefaalde {{PLURAL:$4|test|tests}}:',
-	'codereview-tests-running' => 'De tests worden uitgevoerd...',
-	'codereview-tests-aborted' => 'Het testen is afgebroken.',
-	'codereview-tests-failed' => 'Mislukt',
 	'codereview-email-subj' => '[$1] [$2]: Nieuwe opmerking toegevoegd',
 	'codereview-email-body' => 'Gebruiker "$1" heeft een opmerking toegevoegd aan $3:
 
@@ -6493,14 +6407,12 @@ Volledige URL: $3
 Toelichting bij commit:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Regressie ontdekt tijdens automatisch testen',
-	'codereview-email-body3' => 'Tijdens het automatisch testen is gebleken dat er een regressie is ontstaan door de wijzigingen in $1
-
-Volledige URL: $2
-
-Commitsamenvatting:
-
-$3',
+	'code-stats' => 'statistieken',
+	'code-stats-header' => 'Repositorystatistieken voor $1',
+	'code-stats-main' => 'Per $1 heeft de repository $2 {{PLURAL:$2|versie|versies}} door [[Special:Code/$3/author|$4 {{PLURAL:$4|auteur|auteurs}}]].',
+	'code-stats-staus-breakdown' => 'Aantal versies per status',
+	'code-stats-fixme-breakdown' => "Verdeling van de fixme's per auteur",
+	'code-stats-count' => 'Aantal versies',
 	'repoadmin' => 'Repositorybeheer',
 	'repoadmin-new-legend' => 'Nieuwe repository instellen',
 	'repoadmin-new-label' => 'Repositorynaam:',
@@ -6764,6 +6676,9 @@ Full nettadresse: $3
 Sammendrag:
 
 $4',
+	'code-stats' => 'statistikk',
+	'code-stats-fixme-breakdown' => 'Fordeling av fiksmeg-er per forfatter',
+	'code-stats-count' => 'Antall revisjoner',
 	'repoadmin' => 'Databaseadministrasjon',
 	'repoadmin-new-legend' => 'Lag en ny database',
 	'repoadmin-new-label' => 'Databasenavn',
@@ -7331,8 +7246,8 @@ $messages['pt'] = array(
 	'code-old-status' => 'Estado antigo',
 	'code-new-status' => 'Estado novo',
 	'code-prop-changes' => 'Registo de estado e etiquetagem',
-	'codereview-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte de Subversion]]',
-	'code-no-repo' => 'Nenhum repositório configurado!',
+	'codereview-desc' => '[[Special:Code|Ferramenta de revisão de código]] com [[Special:RepoAdmin|suporte Subversion]]',
+	'code-no-repo' => 'Não há nenhum repositório configurado!',
 	'code-repo-not-found' => 'O repositório <b>$1</b> não existe!',
 	'code-load-diff' => 'A carregar diferenças…',
 	'code-notes' => 'comentários recentes',
@@ -7341,7 +7256,6 @@ $messages['pt'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-tests' => 'Baterias de testes',
 	'code-authors-text' => 'Abaixo encontra-se uma lista de autores do repositório por ordem das efectivações recentes. Contas da wiki local são mostradas entre parênteses.',
 	'code-author-haslink' => 'Este autor está associado ao utilizador wiki $1',
 	'code-author-orphan' => 'Este autor não está associado a nenhuma conta wiki',
@@ -7362,7 +7276,6 @@ $messages['pt'] = array(
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
-	'code-field-tests' => 'Testes',
 	'code-field-path' => 'Caminho',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seleccionar',
@@ -7418,12 +7331,7 @@ $messages['pt'] = array(
 	'code-release-badrange' => 'Intervalo é demasiado elevado!',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso, $3 {{PLURAL:$4|teste falhado|testes falhados}}:',
-	'codereview-tests-running' => 'Casos de teste em execução...',
-	'codereview-tests-aborted' => 'Execução de testes abortada.',
-	'codereview-tests-failed' => 'Falhas',
-	'codereview-email-subj' => '[$1] [$2]: Novo comentário adicionado',
+	'codereview-email-subj' => '[$1] [$2]: Adicão de comentário novo',
 	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em $3.
 
 URL completa: $2
@@ -7432,27 +7340,27 @@ Comentário:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Mudanças de seguimento',
-	'codereview-email-body2' => 'Utilizador "$1" fez alterações de seguimento à $2.
+	'codereview-email-body2' => 'O utilizador "$1" fez alterações de seguimento à $2.
 
 URL completa: $3
 
-Resumo da submissão: $4',
-	'codereview-email-subj3' => '[$1] [$2]: Testes automáticos detectaram regressão',
-	'codereview-email-body3' => 'Testes automáticos revelaram uma regressão devido às alterações em $1.
-
-URL completa: $2
-
 Resumo da efectivação:
 
-$3',
+$4',
+	'code-stats' => 'estatísticas',
+	'code-stats-header' => 'Estatísticas do repositório para $1',
+	'code-stats-main' => 'À data de $1, o repositório tinha $2 {{PLURAL:$2|revisão|revisões}} de [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
+	'code-stats-staus-breakdown' => 'Número de revisões por estado',
+	'code-stats-fixme-breakdown' => 'Detalhe de correcções por autor',
+	'code-stats-count' => 'Número de revisões',
 	'repoadmin' => 'Administração do Repositório',
-	'repoadmin-new-legend' => 'Criar um novo repositório',
+	'repoadmin-new-legend' => 'Criar um repositório novo',
 	'repoadmin-new-label' => 'Nome do repositório:',
 	'repoadmin-new-button' => 'Criar',
 	'repoadmin-edit-legend' => 'Modificação do repositório "$1"',
-	'repoadmin-edit-path' => 'Caminho no repositório:',
-	'repoadmin-edit-bug' => 'Caminho no Bugzilla:',
-	'repoadmin-edit-view' => 'Caminho no ViewVC:',
+	'repoadmin-edit-path' => 'Caminho do repositório:',
+	'repoadmin-edit-bug' => 'Caminho do Bugzilla:',
+	'repoadmin-edit-view' => 'Caminho do ViewVC:',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'O repositório "[[Special:Code/$1|$1]]" foi modificado com sucesso.',
 	'right-repoadmin' => 'Gerir repositórios de código',
@@ -7492,7 +7400,6 @@ $messages['pt-br'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-tests' => 'Casos de teste',
 	'code-authors-text' => 'Abaixo está uma lista de autores do repositório ordenados pelos envios mais recentes. Contas do wiki local são exibidas entre parênteses.',
 	'code-author-haslink' => 'Este autor está ligado ao usuário wiki $1',
 	'code-author-orphan' => 'Este autor não tem ligação com uma conta wiki',
@@ -7513,7 +7420,6 @@ $messages['pt-br'] = array(
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
-	'code-field-tests' => 'Testes',
 	'code-field-path' => 'Caminho',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Selecionar',
@@ -7569,11 +7475,6 @@ $messages['pt-br'] = array(
 	'code-release-badrange' => 'Intervalo demasiado grande!',
 	'codereview-subtitle' => 'Para $1',
 	'codereview-reply-link' => 'responder',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|teste|testes}} com sucesso, $3 {{PLURAL:$4|teste falhado|testes falhados}}:',
-	'codereview-tests-running' => 'Casos de teste em execução...',
-	'codereview-tests-aborted' => 'Execução de testes abortada.',
-	'codereview-tests-failed' => 'Falhou',
 	'codereview-email-subj' => '[$1] [$2]: Novo comentário adicionado',
 	'codereview-email-body' => 'O utilizador "$1" colocou um comentário em $3.
 
@@ -7590,22 +7491,20 @@ URL Completa: $3
 Sumário do envio:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Teste automático detectou regressão',
-	'codereview-email-body3' => 'Teste automático revelou uma regressão devido a mudanças na $1.
-
-URL completa: $2
-
-Sumário do envio:
-
-$3',
+	'code-stats' => 'estatísticas',
+	'code-stats-header' => 'Estatísticas do repositório para $1',
+	'code-stats-main' => 'À data de $1, o repositório tinha $2 {{PLURAL:$2|revisão|revisões}} de [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
+	'code-stats-staus-breakdown' => 'Número de revisões por estado',
+	'code-stats-fixme-breakdown' => 'Detalhe de correções por autor',
+	'code-stats-count' => 'Número de revisões',
 	'repoadmin' => 'Administração de Repositório',
 	'repoadmin-new-legend' => 'Criar um novo repositório',
 	'repoadmin-new-label' => 'Nome do repositório:',
 	'repoadmin-new-button' => 'Criar',
 	'repoadmin-edit-legend' => 'Modificação do repositório "$1"',
-	'repoadmin-edit-path' => 'Caminho no repositório:',
-	'repoadmin-edit-bug' => 'Caminho no Bugzilla:',
-	'repoadmin-edit-view' => 'Caminho no ViewVC:',
+	'repoadmin-edit-path' => 'Caminho do repositório:',
+	'repoadmin-edit-bug' => 'Caminho do Bugzilla:',
+	'repoadmin-edit-view' => 'Caminho do ViewVC:',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'O repositório "[[Special:Code/$1|$1]]" foi modificado com sucesso.',
 	'right-repoadmin' => 'Gerenciar repositórios de código',
@@ -7766,6 +7665,7 @@ $4',
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author JenVan
  * @author Kaganer
  * @author Putnik
  * @author Александр Сигачёв
@@ -7792,7 +7692,6 @@ $messages['ru'] = array(
 	'code-authors' => 'авторы',
 	'code-status' => 'состояния',
 	'code-tags' => 'метки',
-	'code-tests' => 'Тестовые запросы',
 	'code-authors-text' => 'Ниже находится список авторов хранилища в порядке свежести вносимых ими изменений. Учётные записи локальной вики показаны в скобках.',
 	'code-author-haslink' => 'Этот автор ассоциирован с участником $1',
 	'code-author-orphan' => 'Для этого автора не установлена связь с учётной записью вики-проекта',
@@ -7813,7 +7712,6 @@ $messages['ru'] = array(
 	'code-field-status' => 'Статус',
 	'code-field-timestamp' => 'Дата',
 	'code-field-comments' => 'Комментариев',
-	'code-field-tests' => 'Тесты',
 	'code-field-path' => 'Путь',
 	'code-field-text' => 'Замечание',
 	'code-field-select' => 'Выбрать',
@@ -7869,11 +7767,6 @@ $messages['ru'] = array(
 	'code-release-badrange' => 'Слишком большой диапазон!',
 	'codereview-subtitle' => 'для $1',
 	'codereview-reply-link' => 'ответить',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|успешная проверка|успешные проверки|успешных проверок}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|успешная проверка|успешные проверки|успешных проверок}}, $3 {{PLURAL:$4|неудавшаяся проверка|неудавшиеся проверки|неудавшихся проверок}}:',
-	'codereview-tests-running' => 'Выполнение контрольных примеров…',
-	'codereview-tests-aborted' => 'Выполнение проверки прервано.',
-	'codereview-tests-failed' => 'Ошибка',
 	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
 	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции r$3.
 
@@ -7890,14 +7783,8 @@ $4',
 Описание изменения:
 
 $4',
-	'codereview-email-subj3' => '[$1] [r$2]: Автоматическая проверка обнаружила регрессию',
-	'codereview-email-body3' => 'Автоматическая проверка выявила регрессию в связи с изменениями в r$1.
-
-Полный URL: $2
-
-Описание изменений:
-
-$3',
+	'code-stats' => 'статистика',
+	'code-stats-count' => 'Количество версий',
 	'repoadmin' => 'Управление хранилищем программного кода',
 	'repoadmin-new-legend' => 'Создать новое хранилище',
 	'repoadmin-new-label' => 'Название хранилища:',

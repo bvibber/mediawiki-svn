@@ -4162,6 +4162,7 @@ $messages['lb'] = array(
 	'mwe-upload-in-progress' => 'Eroplueden amgaang (maacht dës Fënster net zou)',
 	'mwe-uploaded-status' => 'Eropgelueden',
 	'mwe-uploaded-time-remaining' => 'Zäit déi nach bleift: $1',
+	'mwe-upload-done' => 'Ären Upload <i>sollt</i> accessibel sinn.',
 	'mwe-add_media_wizard' => 'Medien-Assistent derbäisetzen',
 	'rsd_box_layout' => 'Layout vun der Këscht',
 	'rsd_list_layout' => 'Layout vun der Lëscht',
