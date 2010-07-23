@@ -473,7 +473,7 @@ class WikiEditorHooks {
 		return true;
 	}
 	
-	function addModulesForThread( $thread, $levelNum, $totalInLevel, $options ) {
+	public static function addModulesForThread( $thread, $levelNum, $totalInLevel, $options ) {
 		static $firstRun = true;
 
 		if( $firstRun ) {
