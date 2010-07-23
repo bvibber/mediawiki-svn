@@ -1898,6 +1898,7 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'clicktracking' => 'Panglacak klik Inisiatif Kamangpaatan',
 	'ct-event-name' => 'Ngaran acara',
 	'ct-expert-header' => 'Klik "ahli"',
 	'ct-total-header' => 'Jumlah klik',
