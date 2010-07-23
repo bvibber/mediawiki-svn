@@ -368,7 +368,7 @@ class MessageCache {
 		wfProfileIn( __METHOD__ );
 
 
-		list( , $code ) = $this->figureMessage( $title );
+		list( $msg, $code ) = $this->figureMessage( $title );
 
 		$cacheKey = wfMemcKey( 'messages', $code );
 		$this->load($code);
@@ -410,6 +410,10 @@ class MessageCache {
 			$sidebarKey = wfMemcKey( 'sidebar', $code );
 			$parserMemc->delete( $sidebarKey );
 		}
+		
+		// Update the message in the message blob store
+		global $wgContLang;
+		MessageBlobStore::updateMessage( $wgContLang->lcfirst( $msg ) );
 
 		wfRunHooks( "MessageCacheReplace", array( $title, $text ) );
 
@@ -769,7 +773,7 @@ class MessageCache {
 	}
 
 	public function figureMessage( $key ) {
-		global $wgContLanguageCode;
+		global $wgContLanguageCode, $wgContLang;
 		$pieces = explode( '/', $key );
 		if( count( $pieces ) < 2 )
 			return array( $key, $wgContLanguageCode );

@@ -149,14 +149,14 @@ class MessageBlobStore {
 		
 		// Delete old messages, insert new ones
 		$dbw->delete( 'msg_resource_links', array(
-				'mrl_resource' => $resource,
+				'mrl_resource' => $module,
 				'mrl_message' => $oldMessages
 			), __METHOD__
 		);
 		$newLinksRows = array();
 		foreach ( $newMessages as $message ) {
 			$newLinksRows[] = array(
-				'mrl_resource' => $resource,
+				'mrl_resource' => $module,
 				'mrl_message' => $message
 			);
 		}
