@@ -68,4 +68,3 @@ $wgExtensionMessagesFiles['WikiEditorAddMediaWizard'] = dirname( __FILE__ ) . '/
 // Register Hooks
 $wgHooks['EditPageBeforeEditToolbar'][] = 'WikiEditorHooks::addModules';
 $wgHooks['GetPreferences'][] = 'WikiEditorHooks::addPreferences';
-$wgHooks['LiquidThreadsShowThread'][] = 'WikiEditorHooks::addModulesForThread';
