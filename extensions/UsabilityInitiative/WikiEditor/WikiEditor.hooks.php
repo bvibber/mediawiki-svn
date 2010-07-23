@@ -473,18 +473,6 @@ class WikiEditorHooks {
 		return true;
 	}
 	
-	public static function addModulesForThread( $thread, $levelNum, $totalInLevel, $options ) {
-		static $firstRun = true;
-
-		if( $firstRun ) {
-			$temp = null;
-			WikiEditorHooks::addModules( $temp );
-			$firstRun = false;
-		}
-
-		return true;
-	}
-
 	/**
 	 * GetPreferences hook
 	 * Add module-releated items to the preferences
