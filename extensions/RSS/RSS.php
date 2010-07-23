@@ -1,31 +1,37 @@
 <?php
 
 /**
- * RSS-Feed MediaWiki extension
- *
- * @file
- * @ingroup Extensions
- * @version 1.6
- * @author mutante, Duesentrieb, Rdb, Mafs, Alxndr, Cmreigrut, K001
- * @copyright © mutante, Duesentrieb, Rdb, Mafs, Alxndr, Cmreigrut, K001
+ * RSS-Feed MediaWiki extension.
  * @link http://www.mediawiki.org/wiki/Extension:RSS Documentation
+ * 
+ * @file RSS.php
+ * @ingroup Extensions
  *
- * Requires: 
- *  # magpie rss parser <http://magpierss.sourceforge.net/>
- *  # iconv <http://www.gnu.org/software/libiconv/>, see also <http://www.php.net/iconv>
- *
- *  07.05.2008 compatible/checked with MediaWiki 1.12
+ * TODO: stylize
+ * TODO: replace all @ by wfSurpressWarnings and wfResumeWarnings
  */
  
 if( !defined( 'MEDIAWIKI' ) ) {
 	die( "This is not a valid entry point.\n" );
 }
  
+define( 'RSS_VERSION', '1.7 alpha' );
+
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'RSS feed',
-	'author' => array('mutante', 'Duesentrieb', 'Rdb', 'Mafs', 'Alxndr', 'Wikinaut', 'Cmreigrut', 'K001'),
-	'version' => '1.6',
+	'author' => array( 
+		'mutante',
+		'Duesentrieb',
+		'Rdb',
+		'Mafs',
+		'Alxndr',
+		'Wikinaut',
+		'Cmreigrut',
+		'K001',
+		'[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]'
+	),
+	'version' => RSS_VERSION,
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RSS',
 	'descriptionmsg' => 'rss-desc',
 );
@@ -33,10 +39,10 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname( __FILE__ );
 $wgExtensionMessagesFiles['RSS'] =  "$dir/RSS.i18n.php";
 
-define('MAGPIE_OUTPUT_ENCODING', 'UTF-8');
+define( 'MAGPIE_OUTPUT_ENCODING', 'UTF-8' );
  
 #change this according to your magpie installation!
-require_once('extensions/magpierss/rss_fetch.inc');
+require_once( dirname( __FILE__ ) . '/magpierss/rss_fetch.inc' );
  
 // Avoid unstubbing $wgParser too early on modern (1.12+) MW versions, as per r35980
 if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
@@ -64,16 +70,16 @@ function renderRss( $input ) {
 	if ( !$input ) return ''; #if <rss>-section is empty, return nothing
 
 	#Parse fields in rss-section
-	$fields = explode( "|", $input );
+	$fields = explode( '|', $input );
 	$url = @$fields[0];
  
 	$args = array();
 	for ( $i = 1; $i < sizeof( $fields ); $i++ ) {
 		$f = $fields[$i];
  
-		if ( strpos( $f, "=" ) === false ) $args[strtolower(trim($f))] = false;
+		if ( strpos( $f, '=' ) === false ) $args[strtolower(trim($f))] = false;
 		else {
-			list( $k, $v ) = explode( "=", $f, 2 );
+			list( $k, $v ) = explode( '=', $f, 2 );
 			if ( trim( $v ) == false ) $args[strtolower(trim($k))] = false;
 			else $args[strtolower(trim($k))] = trim($v);
 		}
