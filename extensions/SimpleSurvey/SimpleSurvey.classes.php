@@ -15,7 +15,11 @@ class SimpleSurvey extends PrefSwitchSurvey {
 	
 	/* update schema*/
 	public static function schema(  ){
-		global $wgExtModifiedFields;
+		global $wgExtModifiedFields, $wgExtNewTables;
+		
+		$wgExtNewTables[] = array( 'prefswitch_survey', 
+			dirname( dirname( __FILE__ ) ) ."/UsabilityInitiative/PrefSwitch/PrefSwitch.sql"
+		);
 		
 		$wgExtModifiedFields[] = array(
 			'prefswitch_survey',
