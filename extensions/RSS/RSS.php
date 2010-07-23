@@ -22,13 +22,17 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
  
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'RSS feed',
 	'author' => array('mutante', 'Duesentrieb', 'Rdb', 'Mafs', 'Alxndr', 'Wikinaut', 'Cmreigrut', 'K001'),
 	'version' => '1.6',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RSS',
-	'description' => 'Displays an RSS feed on a wiki page'
+	'descriptionmsg' => 'rss-desc',
 );
  
+$dir = dirname( __FILE__ );
+$wgExtensionMessagesFiles['RSS'] =  "$dir/RSS.i18n.php";
+
 define('MAGPIE_OUTPUT_ENCODING', 'UTF-8');
  
 #change this according to your magpie installation!
