@@ -9,7 +9,7 @@ class CodeRepoStatsView extends CodeView {
 	}
 
 	function execute() {
-		global $wgOut, $wgLang, $wgSkin;
+		global $wgOut, $wgLang;
 
 		$stats = RepoStats::newFromRepo( $this->mRepo );
 		$repoName = $this->mRepo->getName();

@@ -159,7 +159,7 @@ $wgCodeReviewDeferredPaths = array();
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
 function efCodeReviewSchemaUpdates() {
-	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables, $wgExtModifiedFields;
+	global $wgDBtype, $wgExtNewFields, /*$wgExtPGNewFields,*/ $wgExtNewIndexes, $wgExtNewTables, $wgExtModifiedFields;
 	$base = dirname( __FILE__ );
 	if ( $wgDBtype == 'mysql' ) {
 		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" ); // Initial install tables
