@@ -161,17 +161,14 @@ function renderRss( $input ) {
 
 	# Check for errors.
 	if ( empty( $rss ) ) {
-		wfLoadExtensionMessages( 'RSS' );
 		return wfMsg( 'rss-empty', $url );
 	}
 
 	if ( $rss->ERROR ) {
-		wfLoadExtensionMessages( 'RSS' );
 		return '<div>' . wfMsg( 'rss-error', $url, $rss->ERROR ) . '</div>';
 	}
 
 	if ( !is_array( $rss->items ) ) {
-		wfLoadExtensionMessages( 'RSS' );
 		return '<div>' . wfMsg( 'rss-empty', $url ) . '</div>';
 	}
 
