@@ -277,7 +277,7 @@ class Interwiki {
 
 		} else if( $transAPI !== '' ) {
 			
-			$fullTitle = $title->getNsText().':'.$title->getText();
+			$fullTitle = $title->getSemiPrefixedText( );
 			
 			$finalText = self::fetchTemplateFromAPI( $wikiID, $transAPI, $fullTitle );
 	
@@ -337,9 +337,13 @@ class Interwiki {
 		
 		$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $fullTitle );
 		$text = $wgMemc->get( $key );
-		if( $text ){
-			return $text;
-		}
+		if( is_array ( $text )
+			&& isset ( $text['missing'] )
+			&& $text['missing'] === true ){
+				return false;
+			} else if ( $text ) {
+				return $text;
+			}
 		
 		$url = wfAppendQuery(
 			$transAPI,
@@ -354,12 +358,17 @@ class Interwiki {
 		$get = Http::get( $url );
 		$content = FormatJson::decode( $get, true );
 			
-		if ( ! empty($content['query']['pages']) ) {
-			
-			$page = array_pop( $content['query']['pages'] );
-			$text = $page['revisions'][0]['*'];
-			$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );
-			return $text;
+		if ( isset ( $content['query'] )
+			&&  isset ( $content['query']['pages'] ) ) {
+				$page = array_pop( $content['query']['pages'] );
+				if ( $page
+					&& isset( $page['revisions'][0]['*'] ) ) {
+						$text = $page['revisions'][0]['*'];
+						$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );
+						return $text;
+				} else {
+					$wgMemc->set( $key, array ( 'missing' => true ), $wgTranscludeCacheExpiry );
+				}
 		}
 		return false;
 	}	
@@ -370,10 +379,12 @@ class Interwiki {
 		$outdatedTitles = array( );
 		
 		foreach( $titles as $title ){
-			$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $title['title'] );
-			$text = $wgMemc->get( $key );
-			if( !$text ){
-				$outdatedTitles[] = $title['title'];
+			if ( isset ( $title['title'] ) ) {
+				$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $title['title'] );
+				$text = $wgMemc->get( $key );
+				if( !$text ){
+					$outdatedTitles[] = $title['title'];
+				}
 			}			
 		}
 		
@@ -392,14 +403,18 @@ class Interwiki {
 			$get = Http::get( $url );
 			$content = FormatJson::decode( $get, true );
 				
-			if ( ! empty($content['query']['pages']) ) {
+		if ( isset ( $content['query'] )
+			&&  isset ( $content['query']['pages'] ) ) {
 				foreach( $content['query']['pages'] as $page ) {
 					$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $page['title'] );
-					$text = $page['revisions'][0]['*'];
+					if ( isset ( $page['revisions'][0]['*'] ) ) {
+						$text = $page['revisions'][0]['*'];
+					} else {
+						$text = array ( 'missing' => true );
+					}
 					$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );	
 				}
 			}			
 		}
 	}
-	
 }

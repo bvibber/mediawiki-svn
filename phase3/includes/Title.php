@@ -718,6 +718,20 @@ class Title {
 	}
 
 	/**
+	 * Return the prefixed title with spaces _without_ the interwiki prefix
+	 * 
+	 * @return \type{\string} the title, prefixed by the namespace but not by the interwiki prefix, with spaces
+	 */
+	public function getSemiPrefixedText() {
+		if ( !isset( $this->mSemiPrefixedText ) ){
+			$s = ( $this->mNamespace === NS_MAIN ? '' : $this->getNsText() . ':' ) . $this->mTextform;
+			$s = str_replace( '_', ' ', $s );
+			$this->mSemiPrefixedText = $s;
+		}
+		return $this->mSemiPrefixedText; 
+	}
+
+	/**
 	 * Get the prefixed title with spaces, plus any fragment
 	 * (part beginning with '#')
 	 *
