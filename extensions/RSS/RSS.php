@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This is not a valid entry point.\n" );
 }
 
-define( 'RSS_VERSION', '1.7 alpha' );
+define( 'RSS_VERSION', '1.7' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
