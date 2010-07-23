@@ -906,7 +906,7 @@ class Revision {
 		global $wgRevisionCacheExpiry, $wgMemc;
 		$textId = $this->getTextId();
 		if( isset( $this->mWikiID ) ) {
-			$key = wfForeignMemcKey( $this->mWikiID, 'revisiontext', 'textid', $textId );
+			$key = wfForeignMemcKey( $this->mWikiID, null, 'revisiontext', 'textid', $textId );
 		} else {
 			$key = wfMemcKey( 'revisiontext', 'textid', $textId );
 		}

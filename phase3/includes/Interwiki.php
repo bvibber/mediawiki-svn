@@ -155,7 +155,11 @@ class Interwiki {
 			__METHOD__ ) );
 		$iw = Interwiki::loadFromArray( $row );
 		if ( $iw ) {
-			$mc = array( 'iw_url' => $iw->mURL, 'iw_api' => $iw->mAPI, 'iw_local' => $iw->mLocal, 'iw_trans' => $iw->mTrans );
+			$mc = array( 'iw_url' => $iw->mURL,
+				'iw_api' => $iw->mAPI,
+				'iw_wikiid' => $iw->mWikiID,
+				'iw_local' => $iw->mLocal,
+				'iw_trans' => $iw->mTrans );
 			$wgMemc->add( $key, $mc, $wgInterwikiExpiry );
 			return $iw;
 		}
@@ -257,7 +261,6 @@ class Interwiki {
 		return wfEmptyMsg( $key, $msg ) ? '' : $msg;
 	}
 	
-	
 
 	/**
 	 * Transclude an interwiki link.
@@ -337,13 +340,13 @@ class Interwiki {
 		
 		$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $fullTitle );
 		$text = $wgMemc->get( $key );
-		if( is_array ( $text )
-			&& isset ( $text['missing'] )
-			&& $text['missing'] === true ){
-				return false;
-			} else if ( $text ) {
-				return $text;
-			}
+		if( is_array ( $text ) &&
+				isset ( $text['missing'] ) &&
+				$text['missing'] === true ) {
+			return false;
+		} else if ( $text ) {
+			return $text;
+		}
 		
 		$url = wfAppendQuery(
 			$transAPI,
@@ -358,17 +361,16 @@ class Interwiki {
 		$get = Http::get( $url );
 		$content = FormatJson::decode( $get, true );
 			
-		if ( isset ( $content['query'] )
-			&&  isset ( $content['query']['pages'] ) ) {
-				$page = array_pop( $content['query']['pages'] );
-				if ( $page
-					&& isset( $page['revisions'][0]['*'] ) ) {
-						$text = $page['revisions'][0]['*'];
-						$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );
-						return $text;
-				} else {
-					$wgMemc->set( $key, array ( 'missing' => true ), $wgTranscludeCacheExpiry );
-				}
+		if ( isset ( $content['query'] ) &&
+				isset ( $content['query']['pages'] ) ) {
+			$page = array_pop( $content['query']['pages'] );
+			if ( $page && isset( $page['revisions'][0]['*'] ) ) {
+				$text = $page['revisions'][0]['*'];
+				$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );
+				return $text;
+			} else {
+				$wgMemc->set( $key, array ( 'missing' => true ), $wgTranscludeCacheExpiry );
+			}
 		}
 		return false;
 	}	
@@ -403,8 +405,8 @@ class Interwiki {
 			$get = Http::get( $url );
 			$content = FormatJson::decode( $get, true );
 				
-		if ( isset ( $content['query'] )
-			&&  isset ( $content['query']['pages'] ) ) {
+			if ( isset ( $content['query'] ) &&
+					isset ( $content['query']['pages'] ) ) {
 				foreach( $content['query']['pages'] as $page ) {
 					$key = wfMemcKey( 'iwtransclustiontext', 'textid', $wikiID, $page['title'] );
 					if ( isset ( $page['revisions'][0]['*'] ) ) {
@@ -414,7 +416,7 @@ class Interwiki {
 					}
 					$wgMemc->set( $key, $text, $wgTranscludeCacheExpiry );	
 				}
-			}			
+			}
 		}
 	}
 }
