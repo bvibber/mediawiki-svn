@@ -55,10 +55,6 @@ class ApiQueryTags extends ApiQueryBase {
 		$this->limit = $params['limit'];
 		$this->result = $this->getResult();
 
-		$pageSet = $this->getPageSet();
-		$titles = $pageSet->getTitles();
-		$data = array();
-
 		$this->addTables( 'change_tag' );
 		$this->addFields( 'ct_tag' );
 
@@ -133,6 +129,10 @@ class ApiQueryTags extends ApiQueryBase {
 		return true;
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function getAllowedParams() {
 		return array(
 			'continue' => array(
@@ -161,7 +161,13 @@ class ApiQueryTags extends ApiQueryBase {
 		return array(
 			'continue' => 'When more results are available, use this to continue',
 			'limit' => 'The maximum number of tags to list',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' name         - Adds name of tag',
+				' displayname  - Adds system messsage for the tag',
+				' description  - Adds description of the tag',
+				' hitcount     - Adds the amount of revisions that have this tag',
+			),
 		);
 	}
 

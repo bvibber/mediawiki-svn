@@ -64,7 +64,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	}
 
 	protected function runQuery( &$resultPageSet ) {
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 		$count = 0;
 		foreach ( $res as $row ) {
@@ -118,6 +117,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		$vals['id'] = intval( $row->page_id );
 		ApiQueryBase::addTitleInfo( $vals, $title );
 		return $vals;
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

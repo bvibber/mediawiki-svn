@@ -116,7 +116,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$data = array();
 		$count = 0;
 		$lastUserData = false;
 		$lastUser = false;
@@ -133,7 +132,7 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		foreach ( $res as $row ) {
 			$count++;
 
-			if ( !$row || $lastUser !== $row->user_name ) {
+			if ( $lastUser !== $row->user_name ) {
 				// Save the last pass's user data
 				if ( is_array( $lastUserData ) ) {
 					$fit = $result->addValue( array( 'query', $this->getModuleName() ),
@@ -185,6 +184,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'u' );
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function getAllowedParams() {
 		return array(
 			'from' => null,
@@ -219,6 +222,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 			'group' => 'Limit users to a given group name',
 			'prop' => array(
 				'What pieces of information to include.',
+				' blockinfo     - Adds the information about a current block on the user',
+				' groups        - Lists groups that the user is in',
+				' editcount     - Adds the edit count of the user',
+				' registration  - Adds the timestamp of when the user registered',
 				'`groups` property uses more server resources and may return fewer results than the limit' ),
 			'limit' => 'How many total user names to return',
 			'witheditsonly' => 'Only list users who have made edits',

@@ -44,6 +44,10 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -83,7 +87,7 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 		$res = $this->select( __METHOD__ );
 
 		$pages = array();
-		$categories = array();
+
 		$result = $this->getResult();
 		$count = 0;
 		foreach ( $res as $row ) {
@@ -157,7 +161,11 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 			'prefix' => 'Search for all category titles that begin with this value',
 			'dir' => 'Direction to sort in',
 			'limit' => 'How many categories to return',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' size    - Adds number of pages in the category',
+				' hidden  - Tags categories that are hidden with __HIDDENCAT__',
+			),
 		);
 	}
 

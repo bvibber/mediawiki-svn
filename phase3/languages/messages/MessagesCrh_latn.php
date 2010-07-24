@@ -121,7 +121,6 @@ $messages = array(
 'tog-watchdefault'            => 'Men deñiştirgen saifelerni közetüv cedvelime kirset',
 'tog-watchmoves'              => 'Menim tarafımdan adı deñiştirilgen saifelerni közetüv cedvelime kirset',
 'tog-watchdeletion'           => 'Men yoq etken saifelerni közetüv cedvelime kirset',
-'tog-minordefault'            => 'Yapqan deñişikliklerimni kiçik deñişiklik olaraq işaretle',
 'tog-previewontop'            => 'Baqıp çıquvnı yazuv pencereniñ üstünde köster',
 'tog-previewonfirst'          => 'Deñiştirmede baqıp çıquvnı köster',
 'tog-nocache'                 => 'Saifelerni hatırlama',
@@ -962,7 +961,7 @@ Bundan ğayrı bu vikideki saifeñizden başqa qullanıcılarğa siznen bağlanm
 'prefs-advancedrendering'       => 'İlâve sazlamalar',
 'prefs-advancedsearchoptions'   => 'İlâve sazlamalar',
 'prefs-advancedwatchlist'       => 'İlâve sazlamalar',
-'prefs-display'                 => 'Kösterilüv sazlamaları',
+'prefs-displayrc'               => 'Kösterilüv sazlamaları',
 'prefs-diffs'                   => 'Farqlar',
 
 # User rights
@@ -1251,7 +1250,7 @@ Eger saifede, [[MediaWiki:Disambiguationspage]] saifesinde adı keçken şablon 
 'doubleredirects'            => 'Yollamağa olğan yollamalar',
 'doubleredirectstext'        => 'Bu saifede diger yollama saifelerine yollanma olğan saifeleri kösterile.
 Er satırda birinci ve ekinci yollamağa bağlantılar da, ekinci yollamanıñ maqsat saifesi (adetince o birinci yollamanıñ kerekli maqsadı ola) da bar.
-<s>Üstü sızılğan</s> meseleler endi çezilgen.',
+<del>Üstü sızılğan</del> meseleler endi çezilgen.',
 'double-redirect-fixed-move' => '[[$1]] avuştırıldı, şimdi [[$2]] saifesine yollap tura.',
 
 'brokenredirects'        => 'Bar olmağan saifege yapılğan yollamalar',
@@ -1476,7 +1475,7 @@ yaqın zamanda yoq etilgenlerni körmek içün: $2.',
 'dellogpagetext'        => 'Aşağıdaki cedvel soñki yoq etüv jurnalıdır.',
 'deletionlog'           => 'yoq etüv jurnalı',
 'reverted'              => 'Evelki versiya keri ketirildi',
-'deletecomment'         => 'Yoq etüv sebebi',
+'deletecomment'         => 'Sebep:',
 'deleteotherreason'     => 'Diger/ilâveli sebep:',
 'deletereasonotherlist' => 'Diger sebep',
 
@@ -1850,7 +1849,7 @@ MediaWiki interfeysiniñ çeşit tillerge tercime etüvde iştirak etmege istese
 
 # Media information
 'mediawarning'         => "'''İhtar''': Bu fayl türüniñ içinde yaman niyetli kod ola bile.
-Faylnı işletip işletim sistemañızğa zarar ketirip olursıñız.<hr />",
+Faylnı işletip işletim sistemañızğa zarar ketirip olursıñız.",
 'imagemaxsize'         => "Resim ölçüsi sıñırı:<br />''(fayl malümat saifeleri içün)''",
 'thumbsize'            => 'Kiçik ölçü:',
 'widthheightpage'      => '$1 × $2, {{PLURAL:$3|1|$3}} saife',

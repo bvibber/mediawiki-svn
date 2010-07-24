@@ -135,7 +135,7 @@ $specialPageAliases = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Wotkazy podšmórnić:',
-'tog-highlightbroken'         => 'Wotkazy na prózdne strony wuzběhnyć',
+'tog-highlightbroken'         => 'Wotkazy na njeeksistowace strony formatować <a href="" class="new">tak</a> (alternatiwa: tak<a href="" class="internal">?</a>)',
 'tog-justify'                 => 'Tekst w blokowej sadźbje',
 'tog-hideminor'               => 'Snadne změny w aktualnych změnach schować',
 'tog-hidepatrolled'           => 'Dohladawane změny w aktualnych změnach schować',
@@ -153,7 +153,6 @@ $messages = array(
 'tog-watchdefault'            => 'Strony, kotrež wobdźěłuju, swojim wobkedźbowankam přidać',
 'tog-watchmoves'              => 'Sam přesunjene strony wobkedźbowankam přidać',
 'tog-watchdeletion'           => 'Sam wušmórnjene strony wobkedźbowankam přidać',
-'tog-minordefault'            => 'Wšě změny zwoprědka jako snadne woznamjenić',
 'tog-previewontop'            => 'Přehlad nad wobdźěłanskim polom pokazać',
 'tog-previewonfirst'          => 'Do składowanja přeco přehlad pokazać',
 'tog-nocache'                 => 'Pufrowanje stronow znjemóžnić',
@@ -919,7 +918,7 @@ Druzy administratorojo na {{GRAMMAR:lokatiw|{{SITENAME}}}} móža hišće na sch
 'revdelete-radio-unset'       => 'Ně',
 'revdelete-suppress'          => 'Přičinu wušmórnjenja tež za administratorow schować',
 'revdelete-unsuppress'        => 'Wobmjezowanja za wobnowjene wersije zběhnyć',
-'revdelete-log'               => 'Přičina za wušmórnjenje:',
+'revdelete-log'               => 'Přičina:',
 'revdelete-submit'            => 'Na {{PLURAL:$1|wubranu wersiju|wubranej wersiji|wubrane wersije|wubrane wersije}} nałožować',
 'revdelete-logentry'          => 'Widźomnosć wersije změnjena za [[$1]]',
 'logdelete-logentry'          => 'je widźomnosć za [[$1]] změnił',
@@ -976,11 +975,11 @@ Prošu přepruwuj protokole.',
 'revmove-reasonfield'          => 'Přičina:',
 'revmove-titlefield'           => 'Cilowa strona:',
 'revmove-badparam-title'       => 'Wopačne parametry',
-'revmove-badparam'             => '<span class="error">Twoje naprašowanje wobsahuje njedowolene abo njedosahace parametry. Prošu klikń na "wróći" a spytaj hišće raz.</span>',
+'revmove-badparam'             => 'Twoje naprašowanje wobsahuje njedowolene abo njedosahace parametry. Prošu klikń na "wróći" a spytaj hišće raz.',
 'revmove-norevisions-title'    => 'Njepłaćiwa cilowa wersija',
-'revmove-norevisions'          => '<span class="error">Njejsy jednu wersiju abo wjace wersijow podał, zo by tutu funkciju wuwjedł, abo podata wersija njeeksistuje.</span>',
+'revmove-norevisions'          => 'Njejsy jednu wersiju abo wjace wersijow podał, zo by tutu funkciju wuwjedł, abo podata wersija njeeksistuje.',
 'revmove-nullmove-title'       => 'Njepłaćiwy titul',
-'revmove-nullmove'             => '<span class="error">Žórłowa a cilowa strona stej identiskej. Prošu klikń na  "wróćo" a zapodaj druhe mjeno strony hač "$1".</span>',
+'revmove-nullmove'             => 'Žórłowa a cilowa strona stej identiskej. Prošu klikń na  "wróćo" a zapodaj druhe mjeno strony hač "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|Jedna wersija je so wot [[$2]]|$1 wersiji stej so wot [[$2]]|$1 wersije su so wot [[$2]]|$1 wersijow je so wot [[$2]]}} do eksistowaceje strony [[$3]] {{PLURAL:$1|přesunyła|přesunyłoj|přesunyli|přesunyło}}.',
 'revmove-success-created'      => '{{PLURAL:$1|Jedna wersija je so wot [[$2]]|$1 wersiji stej so wot [[$2]]|$1 wersije su so wot [[$2]]|$1 wersijow je so wot [[$2]]}} do runje wutworjeneje strony [[$3]] {{PLURAL:$1|přesunyła|přesunyłoj|přesunyli|přesunyło}}.',
 
@@ -1201,7 +1200,9 @@ Smě mjenje hač $1 {{PLURAL:$1|znamješko|znamješce|znamješka|znamješkow}} d
 'prefs-advancedrendering'       => 'Rozšěrjene opcije',
 'prefs-advancedsearchoptions'   => 'Rozšěrjene opcije',
 'prefs-advancedwatchlist'       => 'Rozšěrjene opcije',
-'prefs-display'                 => 'Opcije sej wobhladać',
+'prefs-displayrc'               => 'Zwobraznjenske opcije',
+'prefs-displaysearchoptions'    => 'Zwobraznjenske opcije',
+'prefs-displaywatchlist'        => 'Zwobraznjenske opcije',
 'prefs-diffs'                   => 'Rozdźěle',
 
 # User rights
@@ -1312,6 +1313,7 @@ Smě mjenje hač $1 {{PLURAL:$1|znamješko|znamješce|znamješka|znamješkow}} d
 'right-override-export-depth' => 'Strony inkluziwnje wotkazanych stronow hač do hłubokosće 5 eksportować',
 'right-sendemail'             => 'Druhim wužiwarjam e-mejl pósłać',
 'right-revisionmove'          => 'Wersije přesunyć',
+'right-selenium'              => 'Testy ze Seleniumom  přewjesć',
 
 # User rights log
 'rightslog'      => 'Protokol zrjadowanja wužiwarskich prawow',
@@ -1718,7 +1720,7 @@ Slědowaca lisćina pokazuje jenož {{PLURAL:$1|prěni wotkaz strony|prěnjej $1
 
 'doubleredirects'            => 'Dwójne daleposrědkowanja',
 'doubleredirectstext'        => 'Tuta strona nalistuje strony, kotrež k druhim daleposrědkowanskim stronam dale posrědkuja.
-Kóžda rjadka wobsahuje wotkazy k prěnjemu a druhemu daleposrědkowanju kaž tež cil druheho daleposrědkowanja, kotryž je zwjetša  "woprawdźita" cilowa strona, na kotruž prěnje daleposrědkowanje měło pokazać. <s>Přešmórnjene</s> zapiski su hižo sčinjene.',
+Kóžda rjadka wobsahuje wotkazy k prěnjemu a druhemu daleposrědkowanju kaž tež cil druheho daleposrědkowanja, kotryž je zwjetša  "woprawdźita" cilowa strona, na kotruž prěnje daleposrědkowanje měło pokazać. <del>Přešmórnjene</del> zapiski su hižo sčinjene.',
 'double-redirect-fixed-move' => '[[$1]] bu přesunjeny, je nětko daleposrědkowanje do [[$2]]',
 'double-redirect-fixer'      => 'Porjedźer daleposrědkowanjow',
 
@@ -2021,7 +2023,7 @@ Prošu potwjerdź, zo maš wotpohlad to činić, zo rozumiš sćěwki a zo to wo
 'dellogpagetext'         => 'Deleka je lisćina najaktualnišich wušmórnjenjow.',
 'deletionlog'            => 'Protokol wušmórnjenjow',
 'reverted'               => 'Na staršu wersiju cofnjene',
-'deletecomment'          => 'Přičina wušmórnjenja:',
+'deletecomment'          => 'Přičina:',
 'deleteotherreason'      => 'Druha/přidatna přičina:',
 'deletereasonotherlist'  => 'Druha přičina',
 'deletereason-dropdown'  => '*Zwučene přičiny za wušmórnjenje
@@ -2215,7 +2217,7 @@ Najnowši zapisk w protokolu blokowanjow so deleka jako referenca podawa:',
 'ipaddress'                       => 'IP-adresa',
 'ipadressorusername'              => 'IP-adresa abo wužiwarske mjeno',
 'ipbexpiry'                       => 'Spadnjenje',
-'ipbreason'                       => 'Přičina',
+'ipbreason'                       => 'Přičina:',
 'ipbreasonotherlist'              => 'Druha přičina',
 'ipbreason-dropdown'              => '*powšitkowne přičiny
 ** wandalizm
@@ -2382,7 +2384,7 @@ W tutych padach dyrbiš stronu manuelnje přesunyć abo zaměšeć, jeli sej to 
 'movesubpage'                  => '{{PLURAL:$1|Podstrona|Podstronje|Podstrony|Podstronow}}',
 'movesubpagetext'              => 'Strona ma {{PLURAL:$1|slědowacu podstronu|slědowacej $1 podstronje|slědowace $1 podstrony|slědowacych $1 podstronow}}.',
 'movenosubpage'                => 'Tuta strona podstrony nima.',
-'movereason'                   => 'Přičina',
+'movereason'                   => 'Přičina:',
 'revertmove'                   => 'wróćo přesunyć',
 'delete_and_move'              => 'wušmórnyć a přesunyć',
 'delete_and_move_text'         => '== Wušmórnjenje trěbne ==
@@ -2673,7 +2675,7 @@ $1',
 'nextdiff'     => 'Přichodna změna →',
 
 # Media information
-'mediawarning'         => "'''Warnowanje''': Tutón datajowy typ móhł złowólny kod wobsahować. Hdyž so wuwjedźe,  móhło so twój system wobškodźić.<hr />",
+'mediawarning'         => "'''Warnowanje''': Tutón datajowy typ móhł złowólny kod wobsahować. Hdyž so wuwjedźe,  móhł so twój system wobškodźić.",
 'imagemaxsize'         => "Maksimalna wobrazowa wulkosć:<br />''(za strony datajoweho wopisanja)''",
 'thumbsize'            => 'Wulkosć miniaturkow (thumbnails):',
 'widthheight'          => '$1x$2',

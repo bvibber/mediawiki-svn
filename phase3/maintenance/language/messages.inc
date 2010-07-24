@@ -31,7 +31,6 @@ $wgMessageStructure = array(
 		'tog-watchdefault',
 		'tog-watchmoves',
 		'tog-watchdeletion',
-		'tog-minordefault',
 		'tog-previewontop',
 		'tog-previewonfirst',
 		'tog-nocache',
@@ -991,7 +990,9 @@ $wgMessageStructure = array(
 		'prefs-advancedrendering',
 		'prefs-advancedsearchoptions',
 		'prefs-advancedwatchlist',
-		'prefs-display',
+		'prefs-displayrc',
+		'prefs-displaysearchoptions',
+		'prefs-displaywatchlist',
 		'prefs-diffs',
 	),
 	'userrights' => array(
@@ -1103,6 +1104,7 @@ $wgMessageStructure = array(
 		'right-override-export-depth',
 		'right-sendemail',
 		'right-revisionmove',
+		'right-selenium',
 	),
 	'rightslog' => array(
 		'rightslog',
@@ -1390,6 +1392,7 @@ $wgMessageStructure = array(
 		'shared-repo-from',
 		'shared-repo',
 		'shared-repo-name-wikimediacommons',
+		'filepage.css',
 	),
 	'filerevert' => array(
 		'filerevert',
@@ -2142,6 +2145,7 @@ $wgMessageStructure = array(
 		'immobile-target-page',
 		'immobile_namespace',
 		'imagenocrossnamespace',
+		'nonfile-cannot-move-to-file',
 		'imagetypemismatch',
 		'imageinvalidfilename',
 		'fix-double-redirects',

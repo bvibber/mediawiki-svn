@@ -333,7 +333,6 @@ $messages = array(
 'tog-watchdefault'            => 'Pagina’s die ik bewerk automatisch volgen',
 'tog-watchmoves'              => 'Pagina’s die ik hernoem automatisch volgen',
 'tog-watchdeletion'           => 'Pagina’s die ik verwijder automatisch volgen',
-'tog-minordefault'            => 'Mijn bewerkingen als ‘klein’ markeren',
 'tog-previewontop'            => 'Voorvertoning boven bewerkingsveld weergeven',
 'tog-previewonfirst'          => 'Voorvertoning bij eerste bewerking weergeven',
 'tog-nocache'                 => 'Geen caching gebruiken',
@@ -1175,7 +1174,7 @@ Andere beheerders van {{SITENAME}} kunnen de verborgen inhoud benaderen en de ve
 'revdelete-radio-unset'       => 'Nee',
 'revdelete-suppress'          => 'Gegevens voor zowel beheerders als anderen onderdrukken',
 'revdelete-unsuppress'        => 'Beperkingen op teruggezette wijzigingen verwijderen',
-'revdelete-log'               => 'Reden voor verwijderen:',
+'revdelete-log'               => 'Reden:',
 'revdelete-submit'            => 'Toepassen op de geselecteerde {{PLURAL:$1|bewerking|bewerkingen}}',
 'revdelete-logentry'          => 'zichtbaarheid van bewerkingen is gewijzigd voor [[$1]]',
 'logdelete-logentry'          => 'wijzigde zichtbaarheid van gebeurtenis [[$1]]',
@@ -1236,13 +1235,13 @@ Als deze wel bestaat, worden de versies ingevoegd in de paginageschiedenis.',
 'revmove-reasonfield'          => 'Reden:',
 'revmove-titlefield'           => 'Doelpagina:',
 'revmove-badparam-title'       => 'Onjuiste parameters',
-'revmove-badparam'             => '<span class="error">Uw verzoek bevat ongeldige of onvoldoende parameters.
-Klik "Terug" en probeer het opnieuw.</span>',
-'revmove-norevisions-title'    => 'Ongeldige doelversie',
-'revmove-norevisions'          => '<span class="error">U hebt geen versies aangegeven om deze handeling op uit te voeren of de aangegeven versie bestaat niet.</span>',
+'revmove-badparam'             => 'Uw verzoek bevat ongeldige of onvoldoende parameters.
+Klik "Terug" en probeer het opnieuw.',
+'revmove-norevisions-title'    => 'De te verplaatsen versie is ongeldig',
+'revmove-norevisions'          => 'U hebt geen versies aangegeven om deze handeling op uit te voeren of de aangegeven versie bestaat niet.',
 'revmove-nullmove-title'       => 'Ongeldige paginanaam',
-'revmove-nullmove'             => '<span class="error">De bronpagina en doelpagina zijn hetzelfde.
-Klik "Terug" en geef een andere pagina dan "$1" op.</span>',
+'revmove-nullmove'             => 'De bronpagina en doelpagina zijn hetzelfde.
+Klik "Terug" en geef een andere pagina dan "$1" op.',
 'revmove-success-existing'     => '{{PLURAL:$1|Een versie van[[$2]] is|$1 versies van [[$2]] zijn}} verplaatst naar de bestaande pagina [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Een versie van[[$2]] is|$1 versies van [[$2]] zijn}} verplaatst naar de nieuwe pagina [[$3]].',
 
@@ -1472,7 +1471,9 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'prefs-advancedrendering'       => 'Gevorderde instellingen',
 'prefs-advancedsearchoptions'   => 'Gevorderde instellingen',
 'prefs-advancedwatchlist'       => 'Gevorderde instellingen',
-'prefs-display'                 => 'Weergaveinstellingen',
+'prefs-displayrc'               => 'Weergaveinstellingen',
+'prefs-displaysearchoptions'    => 'Weergaveopties',
+'prefs-displaywatchlist'        => 'Weergaveopties',
 'prefs-diffs'                   => 'Verschillen',
 
 # User rights
@@ -1583,6 +1584,7 @@ U kunt ook anderen in staat stellen per e-mail contact met u op te nemen via een
 'right-override-export-depth' => "Pagina's exporteren inclusief pagina's waarnaar verwezen wordt tot een diepte van vijf",
 'right-sendemail'             => 'E-mail versturen aan andere gebruikers',
 'right-revisionmove'          => 'Versies verplaatsen',
+'right-selenium'              => 'Selenium-tests uitvoeren',
 
 # User rights log
 'rightslog'      => 'Gebruikersrechtenlogboek',
@@ -1945,7 +1947,7 @@ De [$2 pagina met de bestandsbeschrijving] wordt hieronder weergegeven.',
 'filedelete-legend'           => 'Bestand verwijderen',
 'filedelete-intro'            => "U staat op het punt om het bestand '''[[Media:$1|$1]]''' te verwijderen, inclusief alle eerdere versies.",
 'filedelete-intro-old'        => "U bent de versie van '''[[Media:$1|$1]]''' van [$4 $3, $2] aan het verwijderen.",
-'filedelete-comment'          => 'Opmerking:',
+'filedelete-comment'          => 'Reden:',
 'filedelete-submit'           => 'Verwijderen',
 'filedelete-success'          => "'''$1''' is verwijderd.",
 'filedelete-success-old'      => "De versie van '''[[Media:$1|$1]]''' van $3, $2 is verwijderd.",
@@ -2016,7 +2018,7 @@ Deze horen waarschijnlijk direct naar het juiste onderwerp te verwijzen.
 'doubleredirectstext'        => "Deze lijst bevat pagina's die doorverwijzen naar andere doorverwijspagina's.
 Elke rij bevat verwijzingen naar de eerste en de tweede doorverwijspagina en een verwijzing naar de doelpagina van de tweede doorverwijspagina.
 Meestal is de laatste pagina het eigenlijke doel, waar de eerste pagina naar zou moeten doorverwijzen.
-<s>Doorgehaalde regels</s> geven aan dat het probleem al is opgelost.",
+<del>Doorgehaalde regels</del> geven aan dat het probleem al is opgelost.",
 'double-redirect-fixed-move' => '[[$1]] is verplaatst en is nu een doorverwijzing naar [[$2]]',
 'double-redirect-fixer'      => 'Doorverwijzingen opschonen',
 
@@ -2323,7 +2325,7 @@ Zie het $2 voor een overzicht van recente verwijderingen.',
 'dellogpagetext'         => "Hieronder is een lijst van recent verwijderde pagina's en bestanden weergegeven.",
 'deletionlog'            => 'verwijderingslogboek',
 'reverted'               => 'Eerdere versie hersteld',
-'deletecomment'          => 'Reden voor verwijderen:',
+'deletecomment'          => 'Reason:',
 'deleteotherreason'      => 'Andere reden:',
 'deletereasonotherlist'  => 'Andere reden',
 'deletereason-dropdown'  => '*Veel voorkomende verwijderredenen
@@ -2505,6 +2507,7 @@ De laatste regel uit het blokkeerlogboek wordt hieronder ter referentie weergege
 De laatste regel uit het blokkeerlogboek wordt hieronder ter referentie weergegeven:',
 'sp-contributions-search'              => 'Zoeken naar bijdragen',
 'sp-contributions-username'            => 'IP-adres of gebruikersnaam:',
+'sp-contributions-toponly'             => 'Alleen nieuwste versies weergeven',
 'sp-contributions-submit'              => 'Bekijken',
 
 # What links here
@@ -2740,6 +2743,7 @@ Wilt u deze verwijderen om plaats te maken voor de te hernoemen pagina?',
 'immobile-source-page'         => 'Deze pagina kan niet hernoemd worden.',
 'immobile-target-page'         => 'Het is niet mogelijk te hernoemen naar die paginanaam.',
 'imagenocrossnamespace'        => 'Een mediabestand kan niet naar een andere naamruimte verplaatst worden',
+'nonfile-cannot-move-to-file'  => 'Het is niet mogelijk te hernoemen van en naar de bestandsnaamruimte',
 'imagetypemismatch'            => 'De nieuwe bestandsextensie is niet gelijk aan het bestandstype',
 'imageinvalidfilename'         => 'De nieuwe bestandsnaam is ongeldig',
 'fix-double-redirects'         => 'Alle doorverwijzingen bijwerken die verwijzen naar de originele paginanaam',
@@ -3046,7 +3050,7 @@ $1',
 'nextdiff'     => 'Nieuwere bewerking →',
 
 # Media information
-'mediawarning'         => "'''Waarschuwing''': dit bestandstype bevat mogelijk programmacode die uw systeem schade kan berokkenen.<hr />",
+'mediawarning'         => "'''Waarschuwing''': dit bestandstype bevat mogelijk programmacode die uw systeem schade kan berokkenen.",
 'imagemaxsize'         => "Maximale afmetingen van afbeeldingen:<br />
 ''(voor op de beschrijvingspagina)''",
 'thumbsize'            => 'Grootte miniatuurafbeelding:',
@@ -3060,6 +3064,9 @@ $1',
 'show-big-image-thumb' => '<small>Afmetingen van deze weergave: $1 × $2 pixels</small>',
 'file-info-gif-looped' => 'herhalend',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|frame|frames}}',
+'file-info-png-looped' => 'herhalend',
+'file-info-png-repeat' => '$1 {{PLURAL:$1|keer|keer}} afgespeeld',
+'file-info-png-frames' => '$1 {{PLURAL:$1|frame|frames}}',
 
 # Special:NewFiles
 'newimages'             => 'Nieuwe bestanden',

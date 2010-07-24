@@ -528,32 +528,42 @@ function wfReadOnlyReason() {
  *                    functionality), or if it is true then use the wikis
  * @return Language object
  */
-function wfGetLangObj( $langcode = false ){
+function wfGetLangObj( $langcode = false ) {
 	# Identify which language to get or create a language object for.
-	if( $langcode instanceof Language )
-		# Great, we already have the object!
+	# Using is_object here due to Stub objects.
+	if( is_object( $langcode ) ) {
+		# Great, we already have the object (hopefully)!
 		return $langcode;
+	}
 		
-	global $wgContLang;
-	if( $langcode === $wgContLang->getCode() || $langcode === true )
+	global $wgContLang, $wgLanguageCode;
+	if( $langcode === true || $langcode === $wgLanguageCode ) {
 		# $langcode is the language code of the wikis content language object.
 		# or it is a boolean and value is true
 		return $wgContLang;
+	}
 	
 	global $wgLang;
-	if( $langcode === $wgLang->getCode() || $langcode === false )
+	if( $langcode === false || $langcode === $wgLang->getCode() ) {
 		# $langcode is the language code of user language object.
 		# or it was a boolean and value is false
 		return $wgLang;
+	}
 
 	$validCodes = array_keys( Language::getLanguageNames() );
-	if( in_array( $langcode, $validCodes ) )
+	if( in_array( $langcode, $validCodes ) ) {
 		# $langcode corresponds to a valid language.
 		return Language::factory( $langcode );
+	}
 
 	# $langcode is a string, but not a valid language code; use content language.
 	wfDebug( "Invalid language code passed to wfGetLangObj, falling back to content language.\n" );
 	return $wgContLang;
+}
+
+function wfUILang() {
+	global $wgBetterDirectionality;
+	return wfGetLangObj( $wgBetterDirectionality ? false: true );
 }
 
 /**
@@ -692,35 +702,22 @@ function wfMsgWeirdKey( $key ) {
  *                  behaves as a content language switch if it is a boolean.
  * @param $transform Boolean: whether to parse magic words, etc.
  * @return string
- * @private
  */
 function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
 	global $wgContLang, $wgMessageCache;
 
 	wfRunHooks('NormalizeMessageKey', array(&$key, &$useDB, &$langCode, &$transform));
 	
-	# If $wgMessageCache isn't initialised yet, try to return something sensible.
-	if( is_object( $wgMessageCache ) ) {
-		$message = $wgMessageCache->get( $key, $useDB, $langCode );
-		if( $message === false ){
-			$message = '&lt;' . htmlspecialchars( $key ) . '&gt;';
-		} elseif ( $transform ) {
-			$message = $wgMessageCache->transform( $message );
-		}
-	} else {
-		$lang = wfGetLangObj( $langCode );
-
-		# MessageCache::get() does this already, Language::getMessage() doesn't
-		# ISSUE: Should we try to handle "message/lang" here too?
-		$key = str_replace( ' ' , '_' , $wgContLang->lcfirst( $key ) );
-
-		if( is_object( $lang ) ) {
-			$message = $lang->getMessage( $key );
-		} else {
-			$message = false;
-		}
+	if ( !is_object( $wgMessageCache ) ) {
+		throw new MWException( "Trying to get message before message cache is initialised" );
 	}
 
+	$message = $wgMessageCache->get( $key, $useDB, $langCode );
+	if( $message === false ){
+		$message = '&lt;' . htmlspecialchars( $key ) . '&gt;';
+	} elseif ( $transform ) {
+		$message = $wgMessageCache->transform( $message );
+	}
 	return $message;
 }
 
@@ -1418,26 +1415,27 @@ function wfEscapeShellArg( ) {
 			// Double the backslashes before any double quotes. Escape the double quotes.
 			$tokens = preg_split( '/(\\\\*")/', $arg, -1, PREG_SPLIT_DELIM_CAPTURE );
 			$arg = '';
-			$delim = false;
+			$iteration = 0;
 			foreach ( $tokens as $token ) {
-				if ( $delim ) {
+				if ( $iteration % 2 == 1 ) {
+					// Delimiter, a double quote preceded by zero or more slashes
 					$arg .= str_replace( '\\', '\\\\', substr( $token, 0, -1 ) ) . '\\"';
-				} else {
+				} else if ( $iteration % 4 == 2 ) {
+					// ^ in $token will be outside quotes, need to be escaped
+					$arg .= str_replace( '^', '^^', $token );
+				} else { // $iteration % 4 == 0
+					// ^ in $token will appear inside double quotes, so leave as is
 					$arg .= $token;
 				}
-				$delim = !$delim;
+				$iteration++;
 			}
-			
 			// Double the backslashes before the end of the string, because
 			// we will soon add a quote
 			$m = array();
 			if ( preg_match( '/^(.*?)(\\\\+)$/', $arg, $m ) ) {
 				$arg = $m[1] . str_replace( '\\', '\\\\', $m[2] );
 			}
-			
-			// The caret is also an special character
-			$arg = str_replace( "^", "^^", $arg );
-			
+
 			// Add surrounding quotes
 			$retVal .= '"' . $arg . '"';
 		} else {
@@ -1899,7 +1897,7 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 		# TS_EXIF
 	} elseif (preg_match('/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)$/D',$ts,$da)) {
 		# TS_MW
-	} elseif (preg_match('/^\d{1,13}$/D',$ts)) {
+	} elseif (preg_match('/^-?\d{1,13}$/D',$ts)) {
 		# TS_UNIX
 		$uts = $ts;
 	} elseif (preg_match('/^\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}.\d{6}$/', $ts)) {
@@ -2093,6 +2091,7 @@ function wfGetSiteNotice() {
  * @deprecated
  */
 function &wfGetMimeMagic() {
+	wfDeprecated( __FUNCTION__ );
 	return MimeMagic::singleton();
 }
 
@@ -2101,9 +2100,10 @@ function &wfGetMimeMagic() {
  * we'll use sys_get_temp_dir(). The TMPDIR, TMP, and TEMP environment
  * variables are then checked in sequence, and if none are set /tmp is
  * returned as the generic Unix default.
- *
- * NOTE: When possible, use the tempfile() function to create temporary
- * files to avoid race conditions on file creation, etc.
+ * It is common to call it with tempnam().
+ * 
+ * NOTE: When possible, use instead the tmpfile() function to create 
+ * temporary files to avoid race conditions on file creation, etc.
  *
  * @return String
  */
@@ -2456,13 +2456,6 @@ function wfUseMW( $req_ver ) {
 }
 
 /**
- * @deprecated use StringUtils::escapeRegexReplacement
- */
-function wfRegexReplacement( $string ) {
-	return StringUtils::escapeRegexReplacement( $string );
-}
-
-/**
  * Return the final portion of a pathname.
  * Reimplemented because PHP5's basename() is buggy with multibyte text.
  * http://bugs.php.net/bug.php?id=33898
@@ -2674,13 +2667,6 @@ function wfDoUpdates()
 }
 
 /**
- * @deprecated use StringUtils::explodeMarkup
- */
-function wfExplodeMarkup( $separator, $text ) {
-	return StringUtils::explodeMarkup( $separator, $text );
-}
-
-/**
  * Convert an arbitrarily-long digit string from one numeric base
  * to another, optionally zero-padding to a minimum column width.
  *
@@ -2792,15 +2778,6 @@ function wfCreateObject( $name, $p ){
 		default:
 			throw new MWException( "Too many arguments to construtor in wfCreateObject" );
 	}
-}
-
-/**
- * Alias for modularized function
- * @deprecated Use Http::isLocalURL() instead
- */
-function wfIsLocalURL( $url ) {
-	wfDeprecated(__FUNCTION__);
-	return Http::isLocalURL( $url );
 }
 
 function wfHttpOnlySafe() {

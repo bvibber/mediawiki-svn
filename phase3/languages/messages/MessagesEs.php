@@ -331,7 +331,6 @@ $messages = array(
 'tog-watchdefault'            => 'Vigilar las páginas que yo modifique',
 'tog-watchmoves'              => 'Vigilar las páginas que renombre',
 'tog-watchdeletion'           => 'Vigilar las páginas que borre',
-'tog-minordefault'            => 'Marcar todas las ediciones como menores por defecto',
 'tog-previewontop'            => 'Mostrar la previsualización antes de la caja de edición en lugar de después',
 'tog-previewonfirst'          => 'Mostrar previsualización al comenzar a editar',
 'tog-nocache'                 => 'Deshabilitar la caché de páginas',
@@ -1055,7 +1054,7 @@ El motivo dado por $3 es ''$2''",
 Leyenda: (act) = diferencias con la versión actual,
 (prev) = diferencias con la versión previa, M = edición menor",
 'history-fieldset-title' => 'Buscar en el historial',
-'history-show-deleted'   => 'Sólamente borrado',
+'history-show-deleted'   => 'Solamente borrado',
 'histfirst'              => 'Primeras',
 'histlast'               => 'Últimas',
 'historysize'            => '({{PLURAL:$1|1 byte|$1 bytes}})',
@@ -1132,7 +1131,7 @@ Otros administradores de {{SITENAME}} aún podrán acceder al contenido oculto y
 'revdelete-radio-unset'       => 'No',
 'revdelete-suppress'          => 'Suprimir datos a los administradores así como al resto',
 'revdelete-unsuppress'        => 'Eliminar restricciones de revisiones restauradas',
-'revdelete-log'               => 'Razón para el borrado:',
+'revdelete-log'               => 'Motivo:',
 'revdelete-submit'            => 'Aplicar a {{PLURAL:$1|la revisión seleccionada|las revisiones seleccionadas}}',
 'revdelete-logentry'          => 'cambió la visibilidad de revisiones de [[$1]]',
 'logdelete-logentry'          => 'cambió la visibilidad de eventos de [[$1]]',
@@ -1190,11 +1189,11 @@ Mire [[Special:IPBlockList|la lista de bloqueos activos]] para ver una lista de 
 'revmove-reasonfield'          => 'Razón:',
 'revmove-titlefield'           => 'Página de destino:',
 'revmove-badparam-title'       => 'Parámetros inadecuados.',
-'revmove-badparam'             => '<span class="error">Su solicitud contiene parámetros ilegales o insuficientes. Por favor, presione "atrás" e intente nuevamente.</span>',
+'revmove-badparam'             => 'Su solicitud contiene parámetros ilegales o insuficientes. Por favor, presione "atrás" e intente nuevamente.',
 'revmove-norevisions-title'    => 'Revisión especificada inválida',
-'revmove-norevisions'          => '<span class="error">No has especificado una o más revisiones para realizar esta función o la revisión especificada no existe.</span>',
+'revmove-norevisions'          => 'No has especificado una o más revisiones para realizar esta función o la revisión especificada no existe.',
 'revmove-nullmove-title'       => 'Título incorrecto',
-'revmove-nullmove'             => '<span class="error">Las páginas fuente y destino son idénticas. Por favor presione "atrás" e ingrese un nombre de página diferente a "$1".</span>',
+'revmove-nullmove'             => 'Las páginas fuente y destino son idénticas. Por favor presione "atrás" e ingrese un nombre de página diferente a "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|Una revisión de [[$2]] ha|$1 revisiones de [[$2]] han}} sido movida{{PLURAL:$1||s}} a la página existente [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Una revisión de [[$2]] ha|$1 revisiones de [[$2]] han}} sido movida{{PLURAL:$1||s}} a la página recién creada [[$3]].',
 
@@ -1418,7 +1417,9 @@ También puede permitir a otros usuarios que te contacten a través de tu págin
 'prefs-advancedrendering'       => 'Opciones avanzadas',
 'prefs-advancedsearchoptions'   => 'Opciones avanzadas',
 'prefs-advancedwatchlist'       => 'Opciones avanzadas',
-'prefs-display'                 => 'Opciones de mostrado',
+'prefs-displayrc'               => 'Opciones de mostrado',
+'prefs-displaysearchoptions'    => 'Opciones de visualización',
+'prefs-displaywatchlist'        => 'Opciones de visualización',
 'prefs-diffs'                   => 'Diferencias',
 
 # User rights
@@ -1529,6 +1530,7 @@ También puede permitir a otros usuarios que te contacten a través de tu págin
 'right-override-export-depth' => 'Exporta páginas incluyendo aquellas enlazadas hasta una profundidad de 5',
 'right-sendemail'             => 'Enviar un correo electrónico a otros usuarios',
 'right-revisionmove'          => 'Mover revisiones',
+'right-selenium'              => 'Ejecutar tests de Selenium',
 
 # User rights log
 'rightslog'      => 'Cambios de perfil de usuario',
@@ -1928,7 +1930,7 @@ Una página es considerada página de desambiguación si utiliza la plantilla qu
 'doubleredirects'            => 'Redirecciones dobles',
 'doubleredirectstext'        => 'Esta página contiene una lista de páginas que redirigen a otras páginas de redirección.
 Cada fila contiene enlaces a la segunda y tercera redirección, así como la primera línea de la segunda redirección, en la que usualmente se encontrará el artículo "real" al que la primera redirección debería apuntar.
-Las entradas <s>tachadas</s> han sido resueltas.',
+Las entradas <del>tachadas</del> han sido resueltas.',
 'double-redirect-fixed-move' => '[[$1]] ha sido trasladado, ahora es una redirección a [[$2]]',
 'double-redirect-fixer'      => 'Corrector de redirecciones',
 
@@ -2236,7 +2238,7 @@ Véase $2 para un registro de los borrados recientes.',
 'dellogpagetext'         => 'A continuación se muestra una lista de los borrados más recientes.',
 'deletionlog'            => 'registro de borrados',
 'reverted'               => 'Recuperar una revisión anterior',
-'deletecomment'          => 'Motivo del borrado',
+'deletecomment'          => 'Motivo:',
 'deleteotherreason'      => 'Otra razón:',
 'deletereasonotherlist'  => 'Otra razón',
 'deletereason-dropdown'  => '*Razones comunes de borrado
@@ -2926,7 +2928,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Atención''': Este fichero puede contener código malicioso.
-Ejecutarlo podría comprometer la seguridad de su equipo.<hr />",
+Ejecutarlo podría comprometer la seguridad de su equipo.",
 'imagemaxsize'         => "Límite de tamaño de imagen:<br />''(para páginas de descripción de archivo)''",
 'thumbsize'            => 'Tamaño de las vistas en miniatura:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:|página|páginas}}',

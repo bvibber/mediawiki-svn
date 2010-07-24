@@ -55,6 +55,10 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		if ( $resultPageSet->isResolvingRedirects() ) {
 			$this->dieUsage( 'Use "gaifilterredir=nonredirects" option instead of "redirects" when using allimages as a generator', 'params' );
@@ -186,7 +190,20 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 			'limit' => 'How many images in total to return',
 			'sha1' => "SHA1 hash of image. Overrides {$this->getModulePrefix()}sha1base36",
 			'sha1base36' => 'SHA1 hash of image in base 36 (used in MediaWiki)',
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' timestamp    - Adds the timestamp when the image was upload',
+				' user         - Adds the username of the last uploader',
+				' comment      - Adds the comment of the last upload',
+				' url          - Adds the URL of the image and its description page',
+				' size         - Adds the size of the image in bytes and its height and width',
+				' dimensions   - Alias of size',
+				' sha1         - Adds the sha1 of the image',
+				' mime         - Adds the MIME of the image',
+				' thumbmime    - Adds the MIME of the tumbnail for the image',
+				' archivename  - Adds the file name of the archive version for non-latest versions',
+				' bitdepth     - Adds the bit depth of the version',
+			),
 		);
 	}
 

@@ -1,57 +1,69 @@
 <?php
 
 /**
- * Base class for DBMS-specific installation helper classes
+ * Base class for DBMS-specific installation helper classes.
  */
-abstract class InstallerDBType {
-	/** The Installer object */
-	var $parent;
+abstract class DatabaseInstaller {
+	
+	/**
+	 * The Installer object.
+	 * 
+	 * TODO: naming this parent is confusing, 'installer' would be clearer.
+	 * 
+	 * @var Installer
+	 */
+	public $parent;
 
-	/* Database connection */
-	var $db;
+	/**
+	 * The database connection.
+	 * 
+	 * @var DatabaseBase
+	 */
+	public $db;
 
-	/** Internal variables for installation */
+	/**
+	 * Internal variables for installation.
+	 * 
+	 * @var array
+	 */
 	protected $internalDefaults = array();
 
-	/** Array of MW configuration globals this class uses */
+	/**
+	 * Array of MW configuration globals this class uses.
+	 * 
+	 * @var array
+	 */
 	protected $globalNames = array();
 
 	/**
-	 * Return the internal name, e.g. 'mysql', or 'sqlite'
+	 * Return the internal name, e.g. 'mysql', or 'sqlite'.
 	 */
-	abstract function getName();
+	public abstract function getName();
 
 	/**
-	 * @return true if the client library is compiled in
+	 * @return true if the client library is compiled in.
 	 */
-	abstract function isCompiled();
-
-	/**
-	 * Get an array of MW configuration globals that will be configured by this class.
-	 */
-	public function getGlobalNames() {
-		return $this->globalNames;
-	}
+	public abstract function isCompiled();
 
 	/**
 	 * Get HTML for a web form that configures this database. Configuration
 	 * at this time should be the minimum needed to connect and test 
 	 * whether install or upgrade is required.
 	 *
-	 * If this is called, $this->parent can be assumed to be a WebInstaller
+	 * If this is called, $this->parent can be assumed to be a WebInstaller.
 	 */
-	abstract function getConnectForm();
+	public abstract function getConnectForm();
 
 	/**
 	 * Set variables based on the request array, assuming it was submitted
 	 * via the form returned by getConnectForm(). Validate the connection 
 	 * settings by attempting to connect with them.
 	 *
-	 * If this is called, $this->parent can be assumed to be a WebInstaller
+	 * If this is called, $this->parent can be assumed to be a WebInstaller.
 	 *
 	 * @return Status
 	 */
-	abstract function submitConnectForm();
+	public abstract function submitConnectForm();
 
 	/**
 	 * Get HTML for a web form that retrieves settings used for installation.
@@ -59,14 +71,15 @@ abstract class InstallerDBType {
 	 * If the DB type has no settings beyond those already configured with 
 	 * getConnectForm(), this should return false.
 	 */
-	abstract function getSettingsForm();
+	public abstract function getSettingsForm();
 
 	/**
 	 * Set variables based on the request array, assuming it was submitted via
 	 * the form return by getSettingsForm().
+	 * 
 	 * @return Status
 	 */
-	abstract function submitSettingsForm();
+	public abstract function submitSettingsForm();
 
 	/**
 	 * Connect to the database using the administrative user/password currently
@@ -75,22 +88,30 @@ abstract class InstallerDBType {
 	 *
 	 * This may be called multiple times, so the result should be cached.
 	 */
-	abstract function getConnection();
-
+	public abstract function getConnection();
+	
 	/**
 	 * Create the database and return a Status object indicating success or
 	 * failure.
 	 *
 	 * @return Status
 	 */
-	abstract function setupDatabase();
+	public abstract function setupDatabase();
 
 	/**
-	 * Create database tables from scratch
-	 * @return \type Status
+	 * Create database tables from scratch.
+	 * 
+	 * @return Status
 	 */
-	abstract function createTables();
+	public abstract function createTables();
 
+	/**
+	 * Get the DBMS-specific options for LocalSettings.php generation.
+	 * 
+	 * @return String
+	 */
+	public abstract function getLocalSettings();	
+	
 	/**
 	 * Perform database upgrades
 	 * @todo make abstract
@@ -98,35 +119,48 @@ abstract class InstallerDBType {
 	/*abstract*/ function doUpgrade() {
 		return false;
 	}
-
+	
 	/**
-	 * Return any table options to be applied to all tables that don't
-	 * override them
-	 * @return Array
+	 * Allow DB installers a chance to make last-minute changes before installation
+	 * occurs. This happens before setupDatabase() or createTables() is called, but
+	 * long after the constructor. Helpful for things like modifying setup steps :)
 	 */
-	function getTableOptions() {
-		return array();
+	public function preInstall() {
+	
 	}
 
 	/**
-	 * Get the DBMS-specific options for LocalSettings.php generation.
-	 * @return String
+	 * Get an array of MW configuration globals that will be configured by this class.
 	 */
-	abstract function getLocalSettings();
+	public function getGlobalNames() {
+		return $this->globalNames;
+	}		
+
+	/**
+	 * Return any table options to be applied to all tables that don't
+	 * override them.
+	 * 
+	 * @return Array
+	 */
+	public function getTableOptions() {
+		return array();
+	}
 
 	/** 
 	 * Construct and initialise parent.
 	 * This is typically only called from Installer::getDBInstaller()
 	 */
-	function __construct( $parent ) {
+	public function __construct( $parent ) {
 		$this->parent = $parent;
 	}
 
 	/**
-	 * Convenience function
-	 * Check if a named extension is present
+	 * Convenience function.
+	 * Check if a named extension is present.
+	 * 
+	 * @see wfDl
 	 */
-	function checkExtension( $name ) {
+	protected static function checkExtension( $name ) {
 		wfSuppressWarnings();
 		$compiled = wfDl( $name );
 		wfRestoreWarnings();
@@ -134,31 +168,31 @@ abstract class InstallerDBType {
 	}
 
 	/**
-	 * Get the internationalised name for this DBMS
+	 * Get the internationalised name for this DBMS.
 	 */
-	function getReadableName() {
+	public function getReadableName() {
 		return wfMsg( 'config-type-' . $this->getName() );
 	}
 	
 	/**
-	 * Get a name=>value map of MW configuration globals that overrides
+	 * Get a name=>value map of MW configuration globals that overrides.
 	 * DefaultSettings.php
 	 */
-	function getGlobalDefaults() {
+	public function getGlobalDefaults() {
 		return array();
 	}
 
 	/**
-	 * Get a name=>value map of internal variables used during installation
+	 * Get a name=>value map of internal variables used during installation.
 	 */
 	public function getInternalDefaults() {
 		return $this->internalDefaults;
 	}
 
 	/**
-	 * Get a variable, taking local defaults into account
+	 * Get a variable, taking local defaults into account.
 	 */
-	function getVar( $var, $default = null ) {
+	public function getVar( $var, $default = null ) {
 		$defaults = $this->getGlobalDefaults();
 		$internal = $this->getInternalDefaults();
 		if ( isset( $defaults[$var] ) ) {
@@ -172,14 +206,14 @@ abstract class InstallerDBType {
 	/**
 	 * Convenience alias for $this->parent->setVar()
 	 */
-	function setVar( $name, $value ) {
+	public function setVar( $name, $value ) {
 		$this->parent->setVar( $name, $value );
 	}
 
 	/**
-	 * Get a labelled text box to configure a local variable
+	 * Get a labelled text box to configure a local variable.
 	 */
-	function getTextBox( $var, $label, $attribs = array() ) {
+	public function getTextBox( $var, $label, $attribs = array() ) {
 		$name = $this->getName() . '_' . $var;
 		$value = $this->getVar( $var );
 		return $this->parent->getTextBox( array(
@@ -192,10 +226,10 @@ abstract class InstallerDBType {
 	}
 
 	/**
-	 * Get a labelled password box to configure a local variable
-	 * Implements password hiding
+	 * Get a labelled password box to configure a local variable.
+	 * Implements password hiding.
 	 */
-	function getPasswordBox( $var, $label, $attribs = array() ) {
+	public function getPasswordBox( $var, $label, $attribs = array() ) {
 		$name = $this->getName() . '_' . $var;
 		$value = $this->getVar( $var );
 		return $this->parent->getPasswordBox( array(
@@ -208,9 +242,9 @@ abstract class InstallerDBType {
 	}
 
 	/**
-	 * Get a labelled checkbox to configure a local boolean variable
+	 * Get a labelled checkbox to configure a local boolean variable.
 	 */
-	function getCheckBox( $var, $label, $attribs = array() ) {
+	public function getCheckBox( $var, $label, $attribs = array() ) {
 		$name = $this->getName() . '_' . $var;
 		$value = $this->getVar( $var );
 		return $this->parent->getCheckBox( array(
@@ -223,7 +257,7 @@ abstract class InstallerDBType {
 	}
 
 	/**
-	 * Get a set of labelled radio buttons
+	 * Get a set of labelled radio buttons.
 	 *
 	 * @param $params Array:
 	 *    Parameters are:
@@ -234,7 +268,7 @@ abstract class InstallerDBType {
 	 *      itemAttribs     Array of attribute arrays, outer key is the value name (optional)
 	 *
 	 */
-	function getRadioSet( $params ) {
+	public function getRadioSet( $params ) {
 		$params['controlName'] = $this->getName() . '_' . $params['var'];
 		$params['value'] = $this->getVar( $params['var'] );
 		return $this->parent->getRadioSet( $params );
@@ -246,7 +280,7 @@ abstract class InstallerDBType {
 	 * fake) passwords.
 	 * @param $varNames Array
 	 */
-	function setVarsFromRequest( $varNames ) {
+	public function setVarsFromRequest( $varNames ) {
 		return $this->parent->setVarsFromRequest( $varNames, $this->getName() . '_' );
 	}
 
@@ -260,7 +294,7 @@ abstract class InstallerDBType {
 	 *
 	 * @return Boolean
 	 */
-	function needsUpgrade() {
+	public function needsUpgrade() {
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
 			return false;
@@ -273,9 +307,9 @@ abstract class InstallerDBType {
 	}
 
 	/**
-	 * Get a standard install-user fieldset
+	 * Get a standard install-user fieldset.
 	 */
-	function getInstallUserBox() {
+	public function getInstallUserBox() {
 		return
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'config-db-install-account' ) ) .
@@ -286,9 +320,9 @@ abstract class InstallerDBType {
 	}
 
 	/**
-	 * Submit a standard install user fieldset
+	 * Submit a standard install user fieldset.
 	 */
-	function submitInstallUserBox() {
+	public function submitInstallUserBox() {
 		$this->setVarsFromRequest( array( '_InstallUser', '_InstallPassword' ) );
 		return Status::newGood();
 	}
@@ -298,7 +332,7 @@ abstract class InstallerDBType {
 	 * @param $noCreateMsg String: Message to display instead of the creation checkbox.
 	 *   Set this to false to show a creation checkbox.
 	 */
-	function getWebUserBox( $noCreateMsg = false ) {
+	public function getWebUserBox( $noCreateMsg = false ) {
 		$name = $this->getName();
 		$s = Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'config-db-web-account' ) ) .
@@ -321,20 +355,24 @@ abstract class InstallerDBType {
 
 	/**
 	 * Submit the form from getWebUserBox().
+	 * 
 	 * @return Status
 	 */
-	function submitWebUserBox() {
-		$this->setVarsFromRequest( array( 'wgDBuser', 'wgDBpassword', 
-			'_SameAccount', '_CreateDBAccount' ) );
+	public function submitWebUserBox() {
+		$this->setVarsFromRequest(
+			array( 'wgDBuser', 'wgDBpassword', '_SameAccount', '_CreateDBAccount' )
+		);
+		
 		if ( $this->getVar( '_SameAccount' ) ) {
 			$this->setVar( 'wgDBuser', $this->getVar( '_InstallUser' ) );
 			$this->setVar( 'wgDBpassword', $this->getVar( '_InstallPassword' ) );
 		}
+		
 		return Status::newGood();
 	}
 
 	/**
-	 * Common function for databases that don't understand the MySQLish syntax of interwiki.sql
+	 * Common function for databases that don't understand the MySQLish syntax of interwiki.sql.
 	 */
 	public function populateInterwikiTable() {
 		$status = $this->getConnection();
@@ -342,6 +380,11 @@ abstract class InstallerDBType {
 			return $status;
 		}
 		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
+
+		if( $this->db->selectRow( 'interwiki', '*', array(), __METHOD__ ) ) {
+			$status->warning( 'config-install-interwiki-exists' );
+			return $status;
+		}
 		global $IP;
 		$rows = file( "$IP/maintenance/interwiki.list",
 			FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES );
@@ -350,7 +393,8 @@ abstract class InstallerDBType {
 			return Status::newFatal( 'config-install-interwiki-sql' );
 		}
 		foreach( $rows as $row ) {
-			if( substr( $row, 0, 2 ) == '--' ) continue; // skip comments -- Whee
+			$row = preg_replace( '/^\s*([^#]*?)\s*(#.*)?$/', '\\1', $row ); // strip comments - whee
+			if ( $row == "" ) continue;
 			$interwikis[] = array_combine(
 				array( 'iw_prefix', 'iw_url', 'iw_local' ),
 				explode( '|', $row )
@@ -361,4 +405,3 @@ abstract class InstallerDBType {
 	}
 
 }
-

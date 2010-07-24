@@ -74,7 +74,6 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 		}
 		$this->addOption( 'ORDER BY', 'cat_title' );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		$catids = array_flip( $cattitles );
@@ -93,6 +92,10 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 				break;
 			}
 		}
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

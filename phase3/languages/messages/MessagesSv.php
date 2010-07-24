@@ -322,13 +322,12 @@ $messages = array(
 'tog-watchdefault'            => 'Lägg till sidor jag redigerar i min bevakningslista',
 'tog-watchmoves'              => 'Lägg till sidor jag flyttar i min bevakningslista',
 'tog-watchdeletion'           => 'Lägg till sidor jag raderar i min bevakningslista',
-'tog-minordefault'            => 'Markera automatiskt ändringar som mindre',
 'tog-previewontop'            => 'Visa förhandsgranskningen ovanför redigeringsrutan',
 'tog-previewonfirst'          => 'Visa förhandsgranskning när redigering påbörjas',
 'tog-nocache'                 => 'Stäng av cachning av sidor',
 'tog-enotifwatchlistpages'    => 'Skicka e-post till mig när en sida på min bevakningslista ändras',
 'tog-enotifusertalkpages'     => 'Skicka e-post till mig när något händer på min diskussionssida',
-'tog-enotifminoredits'        => 'Skicka mig e-post även för små redigeringar',
+'tog-enotifminoredits'        => 'Skicka mig e-post även för mindre ändringar',
 'tog-enotifrevealaddr'        => 'Visa min e-postadress i e-postmeddelanden om ändringar som skickas till andra',
 'tog-shownumberswatching'     => 'Visa antalet användare som bevakar',
 'tog-oldsig'                  => 'Förhandsvisning av nuvarande signatur:',
@@ -1124,7 +1123,7 @@ Andra administratörer på {{SITENAME}} kommer fortfarande att kunna läsa det d
 'revdelete-radio-unset'       => 'Nej',
 'revdelete-suppress'          => 'Undanhåll data även från administratörer',
 'revdelete-unsuppress'        => 'Ta bort begränsningar på återställda versioner',
-'revdelete-log'               => 'Orsak till radering:',
+'revdelete-log'               => 'Anledning:',
 'revdelete-submit'            => 'Tillämpa på {{PLURAL:$1|vald version|valda versioner}}',
 'revdelete-logentry'          => 'ändrade synlighet för versioner av [[$1]]',
 'logdelete-logentry'          => 'ändrade synlighet för åtgärder i [[$1]]',
@@ -1183,11 +1182,11 @@ Se [[Special:IPBlockList|blockeringslistan]] för listan över gällande blocker
 'revmove-reasonfield'          => 'Anledning:',
 'revmove-titlefield'           => 'Målsida:',
 'revmove-badparam-title'       => 'Dåliga parametrar',
-'revmove-badparam'             => '<span class="error">Din begäran innehåller olagliga eller otillräckliga parametrar. Klicka på "tillbaka" och försök igen.</span>',
+'revmove-badparam'             => 'Din begäran innehåller olagliga eller otillräckliga parametrar. Klicka på "tillbaka" och försök igen.',
 'revmove-norevisions-title'    => 'Ogiltig målversion',
-'revmove-norevisions'          => '<span class="error">Du har inte angivit en eller flera målversioner för att utföra denna funktion eller den angivna versionen finns inte.</span>',
+'revmove-norevisions'          => 'Du har inte angivit en eller flera målversioner för att utföra denna funktion eller den angivna versionen finns inte.',
 'revmove-nullmove-title'       => 'Dålig titel',
-'revmove-nullmove'             => '<span class="error">Källa och målsida är identiska. Klicka på "tillbaka" och ange ett sidnamn som skiljer sig från "$1".</span>',
+'revmove-nullmove'             => 'Källa och målsida är identiska. Klicka på "tillbaka" och ange ett sidnamn som skiljer sig från "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|En version från [[$2]] har|$1 versioner från [[$2]] har}} flyttats till den befintliga sidan [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|En version från [[$2]] har|$1 versioner från [[$2]] har}} flyttats till den nyskapade sidan [[$3]].',
 
@@ -1410,7 +1409,7 @@ Du kan också välja att låta andra användare kontakta dig genom din användar
 'prefs-advancedrendering'       => 'Avancerade alternativ',
 'prefs-advancedsearchoptions'   => 'Avancerade alternativ',
 'prefs-advancedwatchlist'       => 'Avancerade alternativ',
-'prefs-display'                 => 'Visningsalternativ',
+'prefs-displayrc'               => 'Visningsalternativ',
 'prefs-diffs'                   => 'Skillnader',
 
 # User rights
@@ -1521,6 +1520,7 @@ Du kan också välja att låta andra användare kontakta dig genom din användar
 'right-override-export-depth' => 'Exportera sidor inklusive länkade sidor till ett djup på 5',
 'right-sendemail'             => 'Skicka e-post till andra användare',
 'right-revisionmove'          => 'Flytta versioner',
+'right-selenium'              => 'Köra Selenium-tester',
 
 # User rights log
 'rightslog'      => 'Användarrättighetslogg',
@@ -1935,7 +1935,7 @@ En sida anses vara en förgreningssida om den inkluderar en mall som länkas til
 
 'doubleredirects'            => 'Dubbla omdirigeringar',
 'doubleredirectstext'        => 'Det här är en lista över sidor som dirigerar om till andra omdirigeringssidor. Varje rad innehåller länkar till den första och andra omdirigeringsidan, samt till målet för den andra omdirigeringen. Målet för den andra omdirigeringen är ofta den "riktiga" sidan, som den första omdirigeringen egentligen ska leda till.
-<s>Stryk över</s> poster som har åtgärdats.',
+<del>Stryk över</del> poster som har åtgärdats.',
 'double-redirect-fixed-move' => '[[$1]] har flyttats, och är nu en omdirigering till [[$2]]',
 'double-redirect-fixer'      => 'Omdirigeringsrättaren',
 
@@ -2238,7 +2238,7 @@ Se $2 för noteringar om de senaste raderingarna.',
 'dellogpagetext'         => 'Nedan listas de senaste raderingarna.',
 'deletionlog'            => 'raderingsloggen',
 'reverted'               => 'Återgått till tidigare version',
-'deletecomment'          => 'Anledning till borttagning:',
+'deletecomment'          => 'Anledning:',
 'deleteotherreason'      => 'Annan/ytterligare anledning:',
 'deletereasonotherlist'  => 'Annan anledning',
 'deletereason-dropdown'  => '*Vanliga anledningar till radering
@@ -2939,7 +2939,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Varning''': Den här filen kan innehålla elak kod.
-Om du kör den kan din dator skadas.<hr />",
+Om du kör den kan din dator skadas.",
 'imagemaxsize'         => "Begränsa bilders storlek:<br />''(för filbeskrivningssidor)''",
 'thumbsize'            => 'Storlek på minibild:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|sida|sidor}}',

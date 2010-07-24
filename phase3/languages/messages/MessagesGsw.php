@@ -134,7 +134,6 @@ $messages = array(
 'tog-watchdefault'            => 'Vo dir nöi gmachti oder verändereti Syte beobachte',
 'tog-watchmoves'              => 'Sälber verschobeni Sytene beobachte',
 'tog-watchdeletion'           => 'Sälber glöschti Sytene beobachte',
-'tog-minordefault'            => 'Alli dyni Änderigen als «chlyni Änderige» markiere',
 'tog-previewontop'            => 'Vorschou vor em Editierfänschter aazeige',
 'tog-previewonfirst'          => 'Vorschou aazeige bim erschten Editiere',
 'tog-nocache'                 => 'Syte-Cache deaktiviere',
@@ -928,7 +927,7 @@ As Ammann (Administrator) chasch dää Unterschid bschaue; villicht het s Detail
 'revdelete-radio-unset'       => 'Nei',
 'revdelete-suppress'          => 'Grund vu dr Leschig au vor dr Ammanne versteckle',
 'revdelete-unsuppress'        => 'Yyschränkige fir di widerhergstellte Versione ufhebe',
-'revdelete-log'               => 'Leschgrund:',
+'revdelete-log'               => 'Grund:',
 'revdelete-submit'            => 'Uf {{PLURAL:$1|di uusgwehlt Version|usgwehlti Versione}} aawände',
 'revdelete-logentry'          => 'het d Versionsaasicht fir „[[$1]]“ gänderet',
 'logdelete-logentry'          => 'het d Sichtbarkeit fir „[[$1]]“ gänderet',
@@ -985,11 +984,11 @@ Bitte prief d Logbiecher.',
 'revmove-reasonfield'          => 'Grund:',
 'revmove-titlefield'           => 'Ziilsyte:',
 'revmove-badparam-title'       => 'Falschi Parameter',
-'revmove-badparam'             => '<span class="error">In dyyre Aafrog het s nit erlaubti oder mangelhafti Parameter. Bitte druck uf „zruck“ un versuech s nomol.</span>',
+'revmove-badparam'             => 'In dyyre Aafrog het s nit erlaubti oder mangelhafti Parameter. Bitte druck uf „zruck“ un versuech s nomol.',
 'revmove-norevisions-title'    => 'Nit giltigi Ziilversion',
-'revmove-norevisions'          => '<span class="error">Du hesch kei Ziilversion aagee, zum die Aktion durzfiere oder d Version, wu Du aagee hesch, git s nit.</span>',
+'revmove-norevisions'          => 'Du hesch kei Ziilversion aagee, zum die Aktion durzfiere oder d Version, wu Du aagee hesch, git s nit.',
 'revmove-nullmove-title'       => 'Nit giltige Titel',
-'revmove-nullmove'             => '<span class="error">Quäll- un Ziilsyte sin idäntisch. Bitte druck uf „zruck“ un gib e andere Sytenname wie „$1“ yy.</span>',
+'revmove-nullmove'             => 'Quäll- un Ziilsyte sin idäntisch. Bitte druck uf „zruck“ un gib e andere Sytenname wie „$1“ yy.',
 'revmove-success-existing'     => '{{PLURAL:$1|Ei Version vu [[$2]] isch|$1 Versione vu [[$2]] sin}} zu dr exischtänte Syte [[$3]] verschobe wore.',
 'revmove-success-created'      => '{{PLURAL:$1|Ei Version vu [[$2]] isch|$1 Versione vu [[$2]] sin}} zue dr nej aagleite Syte [[$3]] verschobe wore.',
 
@@ -1209,7 +1208,7 @@ Des cha nimmi ruckgängig gmacht wäre.',
 'prefs-advancedrendering'       => 'Erwytereti Optione',
 'prefs-advancedsearchoptions'   => 'Erwytereti Optione',
 'prefs-advancedwatchlist'       => 'Erwytereti Optione',
-'prefs-display'                 => 'Aazeigoptione',
+'prefs-displayrc'               => 'Aazeigoptione',
 'prefs-diffs'                   => 'Versionsverglych',
 
 # User rights
@@ -1319,6 +1318,7 @@ Des cha nimmi ruckgängig gmacht wäre.',
 'right-override-export-depth' => 'Exportier Syte mitsamt dr vergleichte Syte bis zuen ere Tiefi vu 5',
 'right-sendemail'             => 'E-Mail an anderi Benutzer schicke',
 'right-revisionmove'          => 'Versione verschiebe',
+'right-selenium'              => 'Tescht mit Selenium uusfiere',
 
 # User rights log
 'rightslog'      => 'Benutzerrächt-Logbuech',
@@ -1713,7 +1713,7 @@ Iberprief anderi Gleicher zue dr Vorlage, voreb Du die leschesch.',
 'doubleredirects'            => 'Doppleti Wyterleitige (Redirects)',
 'doubleredirectstext'        => 'Die Lischt zeigt Wyterleitige, wu uf anderi Wyterleitige vergleiche.
 In jedere Zyylete het s Gleicher zue dr erschte un dr zwote Wyterleitig un s Ziil vu dr zwote Wyterleitig, wu normalerwys di gwinscht Ziilsyten isch. Do sott eigetli scho di erscht Wyterleitig druf zeige.
-<s>Durgstricheni</s> Yytreg sin scho erledigt wore.',
+<del>Durgstricheni</del> Yytreg sin scho erledigt wore.',
 'double-redirect-fixed-move' => 'doppleti Wyterleitig ufglest: [[$1]] → [[$2]]',
 'double-redirect-fixer'      => 'DoubleRedirectBot',
 
@@ -2016,7 +2016,7 @@ Im $2 het s e Lischt vu dr letschte Leschige.',
 'dellogpagetext'         => 'Des isch s Logbuech vu dr gleschte Syte un Dateie.',
 'deletionlog'            => 'Lösch-Logbuech',
 'reverted'               => 'Uf e alti Version zruckgsetzt',
-'deletecomment'          => 'Löschigsgrund',
+'deletecomment'          => 'Grund:',
 'deleteotherreason'      => 'Andere/zuesätzleche Grund:',
 'deletereasonotherlist'  => 'Andere Grund',
 'deletereason-dropdown'  => '* Allgmeini Leschgrind
@@ -2215,7 +2215,7 @@ Des sott numme erfolge go Vandalismus verhindere un in Ibereinstimmig mit in dr 
 'ipaddress'                       => 'IP-Adräss oder Benutzername:',
 'ipadressorusername'              => 'IP-Adräss oder Benutzername:',
 'ipbexpiry'                       => 'Sperrduur:',
-'ipbreason'                       => 'Begrindig:',
+'ipbreason'                       => 'Grund:',
 'ipbreasonotherlist'              => 'Anderi Begrindig',
 'ipbreason-dropdown'              => '* Allgmeini Sperrgrind
 ** Lesche vu Syte
@@ -2378,7 +2378,7 @@ I söttigne Fäll müessti d Diskussionssyten allefalls vo Hand kopiert wärde."
 'movesubpage'                  => '{{PLURAL:$1|Untersyte|Untersyte}}',
 'movesubpagetext'              => 'Die Syte het $1 {{PLURAL:$1|Untersyte|Untersyte}}.',
 'movenosubpage'                => 'Die Syte het kei Untersyte.',
-'movereason'                   => 'Grund',
+'movereason'                   => 'Grund:',
 'revertmove'                   => 'Zrugg verschiebe',
 'delete_and_move'              => 'Lösche un Verschiebe',
 'delete_and_move_text'         => '== D Ziilsyte isch scho vorhande, lösche?==
@@ -2652,7 +2652,7 @@ $1',
 'nextdiff'     => 'Nächschti Änderig →',
 
 # Media information
-'mediawarning'         => "'''Warnig:''' In däre Art Datei chennt s e beswillige Programmcode din ha. Wänn du die Datei uusfiersch, cha s syy, ass Dyy Syschtem bschädigt wird.<hr />",
+'mediawarning'         => "'''Warnig:''' In däre Art Datei chennt s e beswillige Programmcode din ha. Wänn du die Datei uusfiersch, cha s syy, ass Dyy Syschtem bschädigt wird.",
 'imagemaxsize'         => "Maximali Gressi vu Bilder :<br />'' (uf Bildbschrybigs-Syte)''",
 'thumbsize'            => 'Bildvorschou-Gröössi:',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|1 Syte|$3 Syte}}',

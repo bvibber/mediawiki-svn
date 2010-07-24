@@ -1,7 +1,5 @@
 <?php
 
-require_once( "ApiSetup.php" );
-
 class MockApi extends ApiBase {
 	public function execute() { }
 	public function getVersion() { }
@@ -20,7 +18,7 @@ class MockApi extends ApiBase {
 }
 
 
-class ApiTest extends ApiSetup {
+class ApiTest extends ApiTestSetup {
 
 	function setup() {
 		parent::setup();
@@ -57,10 +55,8 @@ class ApiTest extends ApiSetup {
 	}
 
 	function testApi() {
-		global $wgServerName, $wgServer, $wgDBprefix, $wgDBtype;
+		global $wgServerName, $wgServer;
 
-		if ( $wgDBprefix === "parsertest_" || ( $wgDBtype == 'oracle' && $wgDBprefix === 'pt_' ) )
-			$this->markTestSkipped( "This test can't (yet?) be run with the parser tests" );
 		if ( !isset( $wgServerName ) || !isset( $wgServer ) ) {
 			$this->markTestIncomplete( 'This test needs $wgServerName and $wgServer to ' .
 									  'be set in LocalSettings.php' );
@@ -75,10 +71,8 @@ class ApiTest extends ApiSetup {
 	}
 
 	function testApiLoginNoName() {
-		global $wgServerName, $wgServer, $wgDBprefix, $wgDBtype;
+		global $wgServerName, $wgServer;
 
-		if ( $wgDBprefix === "parsertest_" || ( $wgDBtype == 'oracle' && $wgDBprefix === 'pt_' ) )
-			$this->markTestSkipped( "This test can't (yet?) be run with the parser tests" );
 		if ( !isset( $wgServerName ) || !isset( $wgServer ) ) {
 			$this->markTestIncomplete( 'This test needs $wgServerName and $wgServer to ' .
 									  'be set in LocalSettings.php' );
@@ -96,10 +90,8 @@ class ApiTest extends ApiSetup {
 	}
 
 	function testApiLoginBadPass() {
-		global $wgServerName, $wgServer, $wgDBprefix, $wgDBtype;
+		global $wgServerName, $wgServer;
 
-		if ( $wgDBprefix === "parsertest_" || ( $wgDBtype == 'oracle' && $wgDBprefix === 'pt_' ) )
-			$this->markTestSkipped( "This test can't (yet?) be run with the parser tests" );
 		if ( !isset( $wgServerName ) || !isset( $wgServer ) ) {
 			$this->markTestIncomplete( 'This test needs $wgServerName and $wgServer to ' .
 									  'be set in LocalSettings.php' );
@@ -133,10 +125,8 @@ class ApiTest extends ApiSetup {
 	}
 
 	function testApiLoginGoodPass() {
-		global $wgServerName, $wgServer, $wgDBprefix, $wgDBtype;
+		global $wgServerName, $wgServer;
 
-		if ( $wgDBprefix === "parsertest_" || ( $wgDBtype == 'oracle' && $wgDBprefix === 'pt_' ) )
-			$this->markTestSkipped( "This test can't (yet?) be run with the parser tests" );
 		if ( !isset( $wgServerName ) || !isset( $wgServer ) ) {
 			$this->markTestIncomplete( 'This test needs $wgServerName and $wgServer to ' .
 									  'be set in LocalSettings.php' );
@@ -173,10 +163,8 @@ class ApiTest extends ApiSetup {
 	}
 
 	function testApiGotCookie() {
-		global $wgServerName, $wgServer, $wgScriptPath, $wgDBprefix, $wgDBtype;
+		global $wgServerName, $wgServer, $wgScriptPath;
 
-		if ( $wgDBprefix === "parsertest_" || ( $wgDBtype == 'oracle' && $wgDBprefix === 'pt_' ) )
-			$this->markTestSkipped( "This test can't (yet?) be run with the parser tests" );
 		if ( !isset( $wgServerName ) || !isset( $wgServer ) ) {
 			$this->markTestIncomplete( 'This test needs $wgServerName and $wgServer to ' .
 									  'be set in LocalSettings.php' );
@@ -216,10 +204,8 @@ class ApiTest extends ApiSetup {
 	 */
 	function testApiListPages( CookieJar $cj ) {
 		$this->markTestIncomplete( "Not done with this yet" );
-		global $wgServerName, $wgServer, $wgDBprefix, $wgDBtype;
+		global $wgServerName, $wgServer;
 
-		if ( $wgDBprefix === "parsertest_" || ( $wgDBtype == 'oracle' && $wgDBprefix === 'pt_' ) )
-			$this->markTestSkipped( "This test can't (yet?) be run with the parser tests" );
 		if ( $wgServerName == "localhost" || $wgServer == "http://localhost" ) {
 			$this->markTestIncomplete( 'This test needs $wgServerName and $wgServer to ' .
 									  'be set in LocalSettings.php' );

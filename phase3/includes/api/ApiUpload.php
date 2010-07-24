@@ -99,7 +99,7 @@ class ApiUpload extends ApiBase {
 						$this->mParams['comment'],
 						$this->mParams['watchlist'],
 						$this->mParams['ignorewarnings'],
-						$async);
+						$async );
 
 				$this->checkPermissions( $wgUser );
 				if ( $async ) {
@@ -156,12 +156,9 @@ class ApiUpload extends ApiBase {
 
 	/**
 	 * Performs file verification, dies on error.
-	 *
-	 * @param $flag integer passed to UploadBase::verifyUpload, set to
-	 * UploadBase::EMPTY_FILE to skip the empty file check.
 	 */
-	public function verifyUpload( $flag ) {
-		$verification = $this->mUpload->verifyUpload( $flag );
+	public function verifyUpload( ) {
+		$verification = $this->mUpload->verifyUpload( );
 		if ( $verification['status'] === UploadBase::OK ) {
 			return $verification;
 		}
@@ -270,7 +267,9 @@ class ApiUpload extends ApiBase {
 		$this->verifyUpload();
 
 		$warnings = $this->checkForWarnings();
-		if ( isset( $warnings ) ) return $warnings;
+		if ( isset( $warnings ) ) {
+			return $warnings;
+		}
 
 		// Use comment as initial page text by default
 		if ( is_null( $this->mParams['text'] ) ) {

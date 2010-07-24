@@ -117,16 +117,14 @@ class ApiEditPage extends ApiBase {
 				$undoafterRev = Revision::newFromID( $params['undoafter'] );
 			}
 			$undoRev = Revision::newFromID( $params['undo'] );
-			if ( is_null( $undoRev ) || $undoRev->isDeleted( Revision::DELETED_TEXT ) )
-			{
+			if ( is_null( $undoRev ) || $undoRev->isDeleted( Revision::DELETED_TEXT ) ) {
 				$this->dieUsageMsg( array( 'nosuchrevid', $params['undo'] ) );
 			}
 
 			if ( $params['undoafter'] == 0 ) {
 				$undoafterRev = $undoRev->getPrevious();
 			}
-			if ( is_null( $undoafterRev ) || $undoafterRev->isDeleted( Revision::DELETED_TEXT ) )
-			{
+			if ( is_null( $undoafterRev ) || $undoafterRev->isDeleted( Revision::DELETED_TEXT ) ) {
 				$this->dieUsageMsg( array( 'nosuchrevid', $params['undoafter'] ) );
 			}
 
@@ -144,8 +142,7 @@ class ApiEditPage extends ApiBase {
 			$params['text'] = $newtext;
 			// If no summary was given and we only undid one rev,
 			// use an autosummary
-			if ( is_null( $params['summary'] ) && $titleObj->getNextRevisionID( $undoafterRev->getID() ) == $params['undo'] )
-			{
+			if ( is_null( $params['summary'] ) && $titleObj->getNextRevisionID( $undoafterRev->getID() ) == $params['undo'] ) {
 				$params['summary'] = wfMsgForContent( 'undo-summary', $params['undo'], $undoRev->getUserText() );
 			}
 		}
@@ -170,8 +167,7 @@ class ApiEditPage extends ApiBase {
 
 		// Watch out for basetimestamp == ''
 		// wfTimestamp() treats it as NOW, almost certainly causing an edit conflict
-		if ( !is_null( $params['basetimestamp'] ) && $params['basetimestamp'] != '' )
-		{
+		if ( !is_null( $params['basetimestamp'] ) && $params['basetimestamp'] != '' ) {
 			$reqArr['wpEdittime'] = wfTimestamp( TS_MW, $params['basetimestamp'] );
 		} else {
 			$reqArr['wpEdittime'] = $articleObj->getTimestamp();
@@ -183,7 +179,7 @@ class ApiEditPage extends ApiBase {
 			$reqArr['wpStarttime'] = $reqArr['wpEdittime'];	// Fake wpStartime
 		}
 
-		if ( $params['minor'] || ( !$params['notminor'] && $wgUser->getOption( 'minordefault' ) ) )	{
+		if ( $params['minor'] )	{
 			$reqArr['wpMinoredit'] = '';
 		}
 
@@ -193,8 +189,7 @@ class ApiEditPage extends ApiBase {
 
 		if ( !is_null( $params['section'] ) ) {
 			$section = intval( $params['section'] );
-			if ( $section == 0 && $params['section'] != '0' && $params['section'] != 'new' )
-			{
+			if ( $section == 0 && $params['section'] != '0' && $params['section'] != 'new' ) {
 				$this->dieUsage( "The section parameter must be set to an integer or 'new'", "invalidsection" );
 			}
 			$reqArr['wpSection'] = $params['section'];
@@ -229,8 +224,7 @@ class ApiEditPage extends ApiBase {
 		}
 
 		$r = array();
-		if ( !wfRunHooks( 'APIEditBeforeSave', array( $ep, $ep->textbox1, &$r ) ) )
-		{
+		if ( !wfRunHooks( 'APIEditBeforeSave', array( $ep, $ep->textbox1, &$r ) ) ) {
 			if ( count( $r ) ) {
 				$r['result'] = 'Failure';
 				$this->getResult()->addValue( null, $this->getModuleName(), $r );
@@ -305,6 +299,7 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_SUCCESS_NEW_ARTICLE:
 				$r['new'] = '';
+
 			case EditPage::AS_SUCCESS_UPDATE:
 				$r['result'] = 'Success';
 				$r['pageid'] = intval( $titleObj->getArticleID() );
@@ -325,13 +320,16 @@ class ApiEditPage extends ApiBase {
 				}
 				break;
 
+			case EditPage::AS_SUMMARY_NEEDED:
+				$this->dieUsageMsg( array( 'summaryrequired' ) );
+
 			case EditPage::AS_END:
 				// This usually means some kind of race condition
-				// or DB weirdness occurred. 
+				// or DB weirdness occurred.
 				if ( is_array( $result ) && count( $result ) > 0 ) {
-					$this->dieUsageMsg( array( 'unknownerror', $result[0][0] ) );					
+					$this->dieUsageMsg( array( 'unknownerror', $result[0][0] ) );
 				}
-				
+
 				// Unknown error, but no specific error message
 				// Fall through
 			default:
@@ -370,6 +368,7 @@ class ApiEditPage extends ApiBase {
 			array( 'noimageredirect-anon' ),
 			array( 'noimageredirect-logged' ),
 			array( 'spamdetected', 'spam' ),
+			array( 'summaryrequired' ),
 			array( 'filtered' ),
 			array( 'blockedtext' ),
 			array( 'contenttoobig', $wgMaxArticleSize ),

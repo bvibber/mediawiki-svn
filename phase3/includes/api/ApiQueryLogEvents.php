@@ -56,8 +56,6 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		$this->fld_details = isset( $prop['details'] );
 		$this->fld_tags = isset( $prop['tags'] );
 
-		list( $tbl_logging, $tbl_page, $tbl_user ) = $db->tableNamesN( 'logging', 'page', 'user' );
-
 		$hideLogs = LogEventsList::getExcludeClause( $db );
 		if ( $hideLogs !== false ) {
 			$this->addWhere( $hideLogs );
@@ -85,8 +83,8 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		$this->addFieldsIf( 'page_id', $this->fld_ids );
 		$this->addFieldsIf( 'log_user', $this->fld_user );
 		$this->addFieldsIf( 'user_name', $this->fld_user );
-		$this->addFieldsIf( 'log_namespace', $this->fld_title );
-		$this->addFieldsIf( 'log_title', $this->fld_title );
+		$this->addFieldsIf( 'log_namespace', $this->fld_title || $this->fld_parsedcomment );
+		$this->addFieldsIf( 'log_title', $this->fld_title || $this->fld_parsedcomment );
 		$this->addFieldsIf( 'log_comment', $this->fld_comment || $this->fld_parsedcomment );
 		$this->addFieldsIf( 'log_params', $this->fld_details );
 
@@ -206,7 +204,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			case 'block':
 				$vals2 = array();
 				list( $vals2['duration'], $vals2['flags'] ) = $params;
-				
+
 				// Indefinite blocks have no expiry time
 				if ( Block::parseExpiryInput( $params[0] ) !== Block::infinity() ) {
 					$vals2['expiry'] = wfTimestamp( TS_ISO_8601,
@@ -231,7 +229,9 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			$vals['pageid'] = intval( $row->page_id );
 		}
 
-		$title = Title::makeTitle( $row->log_namespace, $row->log_title );
+		if ( $this->fld_title || $this->fld_parsedcomment ) {
+			$title = Title::makeTitle( $row->log_namespace, $row->log_title );
+		}
 
 		if ( $this->fld_title ) {
 			if ( LogEventsList::isDeleted( $row, LogPage::DELETED_ACTION ) ) {
@@ -240,7 +240,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 				ApiQueryBase::addTitleInfo( $vals, $title );
 			}
 		}
-		
+
 		if ( $this->fld_type || $this->fld_action ) {
 			$vals['type'] = $row->log_type;
 			$vals['action'] = $row->log_action;
@@ -263,8 +263,9 @@ class ApiQueryLogEvents extends ApiQueryBase {
 				$vals['userhidden'] = '';
 			} else {
 				$vals['user'] = $row->user_name;
-				if ( !$row->log_user )
+				if ( !$row->log_user ) {
 					$vals['anon'] = '';
+				}
 			}
 		}
 		if ( $this->fld_timestamp ) {
@@ -297,6 +298,15 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		}
 
 		return $vals;
+	}
+
+	public function getCacheMode( $params ) {
+		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
+			// formatComment() calls wfMsg() among other things
+			return 'anon-public-user-private';
+		} else {
+			return 'public';
+		}
 	}
 
 	public function getAllowedParams() {
@@ -351,7 +361,18 @@ class ApiQueryLogEvents extends ApiQueryBase {
 
 	public function getParamDescription() {
 		return array(
-			'prop' => 'Which properties to get',
+			'prop' => array(
+				'Which properties to get',
+				' ids            - Adds the id of the log event',
+				' title          - Adds the title of the page for the log event',
+				' type           - Adds the type of log event',
+				' user           - Adds the user responsible for the log event',
+				' timestamp      - Adds the timestamp for the event',
+				' comment        - Adds the comment of the event',
+				' parsedcomment  - Adds the parsed comment of the event',
+				' details        - Lists addtional details about the event',
+				' tags           - Lists tags for the event',
+			),
 			'type' => 'Filter log entries to only this type(s)',
 			'action' => "Filter log actions to only this type. Overrides {$this->getModulePrefix()}type",
 			'start' => 'The timestamp to start enumerating from',

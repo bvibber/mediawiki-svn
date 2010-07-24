@@ -63,7 +63,6 @@ class ApiQueryExternalLinks extends ApiQueryBase {
 			$this->addOption( 'OFFSET', $params['offset'] );
 		}
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		$count = 0;
@@ -82,6 +81,10 @@ class ApiQueryExternalLinks extends ApiQueryBase {
 				break;
 			}
 		}
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

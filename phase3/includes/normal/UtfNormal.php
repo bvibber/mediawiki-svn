@@ -45,6 +45,7 @@ define( 'UNORM_NFKC', 5 );
 define( 'UNORM_FCD',  6 );
 
 define( 'NORMALIZE_ICU', function_exists( 'utf8_normalize' ) );
+define( 'NORMALIZE_INTL', function_exists( 'normalizer_normalize' ) );
 
 /**
  * Unicode normalization routines for working with UTF-8 strings.
@@ -72,7 +73,7 @@ class UtfNormal {
 	 * @return string a clean, shiny, normalized UTF-8 string
 	 */
 	static function cleanUp( $string ) {
-		if( NORMALIZE_ICU ) {
+		if( NORMALIZE_ICU || NORMALIZE_INTL ) {
 			# We exclude a few chars that ICU would not.
 			$string = preg_replace(
 				'/[\x00-\x08\x0b\x0c\x0e-\x1f]/',
@@ -83,7 +84,8 @@ class UtfNormal {
 
 			# UnicodeString constructor fails if the string ends with a
 			# head byte. Add a junk char at the end, we'll strip it off.
-			return rtrim( utf8_normalize( $string . "\x01", UNORM_NFC ), "\x01" );
+			if ( NORMALIZE_ICU ) return rtrim( utf8_normalize( $string . "\x01", UNORM_NFC ), "\x01" );
+			if ( NORMALIZE_INTL ) return normalizer_normalize( $string, Normalizer::FORM_C );
 		} elseif( UtfNormal::quickIsNFCVerify( $string ) ) {
 			# Side effect -- $string has had UTF-8 errors cleaned up.
 			return $string;
@@ -101,7 +103,9 @@ class UtfNormal {
 	 * @return string a UTF-8 string in normal form C
 	 */
 	static function toNFC( $string ) {
-		if( NORMALIZE_ICU )
+		if( NORMALIZE_INTL )
+			return normalizer_normalize( $string, Normalizer::FORM_C );
+		elseif( NORMALIZE_ICU )
 			return utf8_normalize( $string, UNORM_NFC );
 		elseif( UtfNormal::quickIsNFC( $string ) )
 			return $string;
@@ -117,7 +121,9 @@ class UtfNormal {
 	 * @return string a UTF-8 string in normal form D
 	 */
 	static function toNFD( $string ) {
-		if( NORMALIZE_ICU )
+		if( NORMALIZE_INTL )
+			return normalizer_normalize( $string, Normalizer::FORM_D );
+		elseif( NORMALIZE_ICU )
 			return utf8_normalize( $string, UNORM_NFD );
 		elseif( preg_match( '/[\x80-\xff]/', $string ) )
 			return UtfNormal::NFD( $string );
@@ -134,7 +140,9 @@ class UtfNormal {
 	 * @return string a UTF-8 string in normal form KC
 	 */
 	static function toNFKC( $string ) {
-		if( NORMALIZE_ICU )
+		if( NORMALIZE_INTL )
+			return normalizer_normalize( $string, Normalizer::FORM_KC );
+		elseif( NORMALIZE_ICU )
 			return utf8_normalize( $string, UNORM_NFKC );
 		elseif( preg_match( '/[\x80-\xff]/', $string ) )
 			return UtfNormal::NFKC( $string );
@@ -151,7 +159,9 @@ class UtfNormal {
 	 * @return string a UTF-8 string in normal form KD
 	 */
 	static function toNFKD( $string ) {
-		if( NORMALIZE_ICU )
+		if( NORMALIZE_INTL )
+			return normalizer_normalize( $string, Normalizer::FORM_KD );
+		elseif( NORMALIZE_ICU )
 			return utf8_normalize( $string, UNORM_NFKD );
 		elseif( preg_match( '/[\x80-\xff]/', $string ) )
 			return UtfNormal::NFKD( $string );

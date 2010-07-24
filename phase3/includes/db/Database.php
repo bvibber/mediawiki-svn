@@ -4,7 +4,7 @@
  *
  * @file
  * @ingroup Database
- * This file deals with MySQL interface functions
+ * This file deals with database interface functions
  * and query specifics/optimisations
  */
 
@@ -52,14 +52,6 @@ abstract class DatabaseBase {
 	 */
 	function failFunction( $function = null ) {
 		return wfSetVar( $this->mFailFunction, $function );
-	}
-
-	/**
-	 * Output page, used for reporting errors
-	 * FALSE means discard output
-	 */
-	function setOutputPage( $out ) {
-		wfDeprecated( __METHOD__ );
 	}
 
 	/**
@@ -971,12 +963,12 @@ abstract class DatabaseBase {
 	 * so use sparingly
 	 * Takes same arguments as Database::select()
 	 *
-	 * @param string $table table name
-	 * @param array $vars unused
-	 * @param array $conds filters on the table
-	 * @param string $fname function name for profiling
-	 * @param array $options options for select
-	 * @return int row count
+	 * @param $table String: table name
+	 * @param $vars Array: unused
+	 * @param $conds Array: filters on the table
+	 * @param $fname String: function name for profiling
+	 * @param $options Array: options for select
+	 * @return Integer: row count
 	 */
 	public function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
 		$rows = 0;
@@ -1017,25 +1009,15 @@ abstract class DatabaseBase {
 
 	/**
 	 * Determines whether a field exists in a table
-	 * Usually aborts on failure
-	 * If errors are explicitly ignored, returns NULL on failure
+	 *
+	 * @param $table String: table name
+	 * @param $field String: filed to check on that table
+	 * @param $fname String: calling function name (optional)
+	 * @return Boolean: whether $table has filed $field
 	 */
 	function fieldExists( $table, $field, $fname = 'Database::fieldExists' ) {
-		$table = $this->tableName( $table );
-		$res = $this->query( 'DESCRIBE '.$table, $fname );
-		if ( !$res ) {
-			return null;
-		}
-
-		$found = false;
-
-		while ( $row = $this->fetchObject( $res ) ) {
-			if ( $row->Field == $field ) {
-				$found = true;
-				break;
-			}
-		}
-		return $found;
+		$info = $this->fieldInfo( $table, $field );
+		return (bool)$info;
 	}
 
 	/**
@@ -1278,10 +1260,10 @@ abstract class DatabaseBase {
 	 * Build a partial where clause from a 2-d array such as used for LinkBatch.
 	 * The keys on each level may be either integers or strings.
 	 *
-	 * @param array $data organized as 2-d array(baseKeyVal => array(subKeyVal => <ignored>, ...), ...)
-	 * @param string $baseKey field name to match the base-level keys to (eg 'pl_namespace')
-	 * @param string $subKey field name to match the sub-level keys to (eg 'pl_title')
-	 * @return mixed string SQL fragment, or false if no items in array.
+	 * @param $data Array: organized as 2-d array(baseKeyVal => array(subKeyVal => <ignored>, ...), ...)
+	 * @param $baseKey String: field name to match the base-level keys to (eg 'pl_namespace')
+	 * @param $subKey String: field name to match the sub-level keys to (eg 'pl_title')
+	 * @return Mixed: string SQL fragment, or false if no items in array.
 	 */
 	function makeWhereFrom2d( $data, $baseKey, $subKey ) {
 		$conds = array();
@@ -2012,6 +1994,7 @@ abstract class DatabaseBase {
 	 * @deprecated use begin()
 	 */
 	function immediateBegin( $fname = 'Database::immediateBegin' ) {
+		wfDeprecated( __METHOD__ );
 		$this->begin();
 	}
 
@@ -2020,6 +2003,7 @@ abstract class DatabaseBase {
 	 * @deprecated use commit()
 	 */
 	function immediateCommit( $fname = 'Database::immediateCommit' ) {
+		wfDeprecated( __METHOD__ );
 		$this->commit();
 	}
 
@@ -2032,6 +2016,7 @@ abstract class DatabaseBase {
 	 * @param $oldName String: name of table whose structure should be copied
 	 * @param $newName String: name of table to be created
 	 * @param $temporary Boolean: whether the new table should be temporary
+	 * @param $fname String: calling function name
 	 * @return Boolean: true if operation was successful
 	 */
 	function duplicateTableStructure( $oldName, $newName, $temporary = false, $fname = 'Database::duplicateTableStructure' ) {
@@ -2109,41 +2094,11 @@ abstract class DatabaseBase {
 
 	/**
 	 * Get slave lag.
-	 * At the moment, this will only work if the DB user has the PROCESS privilege
+	 * Currently supported only by MySQL
+	 * @return Database replication lag in seconds
 	 */
 	function getLag() {
-		if ( !is_null( $this->mFakeSlaveLag ) ) {
-			wfDebug( "getLag: fake slave lagged {$this->mFakeSlaveLag} seconds\n" );
-			return $this->mFakeSlaveLag;
-		}
-		$res = $this->query( 'SHOW PROCESSLIST', __METHOD__ );
-		# Find slave SQL thread
-		while ( $row = $this->fetchObject( $res ) ) {
-			/* This should work for most situations - when default db
-			 * for thread is not specified, it had no events executed,
-			 * and therefore it doesn't know yet how lagged it is.
-			 *
-			 * Relay log I/O thread does not select databases.
-			 */
-			if ( $row->User == 'system user' &&
-				$row->State != 'Waiting for master to send event' &&
-				$row->State != 'Connecting to master' &&
-				$row->State != 'Queueing master event to the relay log' &&
-				$row->State != 'Waiting for master update' &&
-				$row->State != 'Requesting binlog dump' &&
-				$row->State != 'Waiting to reconnect after a failed master event read' &&
-				$row->State != 'Reconnecting after a failed master event read' &&
-				$row->State != 'Registering slave on master'
-				) {
-				# This is it, return the time (except -ve)
-				if ( $row->Time > 0x7fffffff ) {
-					return false;
-				} else {
-					return $row->Time;
-				}
-			}
-		}
-		return false;
+		return $this->mFakeSlaveLag;		
 	}
 
 	/**
@@ -2354,9 +2309,10 @@ abstract class DatabaseBase {
 	 * Abstracted from Filestore::lock() so child classes can implement for
 	 * their own needs.
 	 *
-	 * @param $lockName String: Name of lock to aquire
-	 * @param $method String: Name of method calling us
-	 * @return bool
+	 * @param $lockName String: name of lock to aquire
+	 * @param $method String: name of method calling us
+	 * @param $timeout Integer: timeout
+	 * @return Boolean
 	 */
 	public function lock( $lockName, $method, $timeout = 5 ) {
 		return true;
@@ -2368,7 +2324,6 @@ abstract class DatabaseBase {
 	 * @param $lockName String: Name of lock to release
 	 * @param $method String: Name of method calling us
 	 *
-	 * FROM MYSQL DOCS: http://dev.mysql.com/doc/refman/5.0/en/miscellaneous-functions.html#function_release-lock
 	 * @return Returns 1 if the lock was released, 0 if the lock was not established
 	 * by this thread (in which case the lock is not released), and NULL if the named
 	 * lock did not exist
@@ -2399,13 +2354,13 @@ abstract class DatabaseBase {
 	}
 
 	/**
-	 * Get search engine class. All subclasses of this
-	 * need to implement this if they wish to use searching.
+	 * Get search engine class. All subclasses of this need to implement this
+	 * if they wish to use searching.
 	 *
 	 * @return String
 	 */
 	public function getSearchEngine() {
-		return "SearchMySQL";
+		return 'SearchEngineDummy';
 	}
 
 	/**
@@ -2414,7 +2369,7 @@ abstract class DatabaseBase {
 	 *
 	 * This is a MySQL-specific feature.
 	 *
-	 * @param mixed $value true for allow, false for deny, or "default" to restore the initial value
+	 * @param $value Mixed: true for allow, false for deny, or "default" to restore the initial value
 	 */
 	public function setBigSelects( $value = true ) {
 		// no-op
@@ -2811,7 +2766,6 @@ class ResultWrapper implements Iterator {
 	 * Fields can be retrieved with $row->fieldname, with fields acting like
 	 * member variables.
 	 *
-	 * @param $res SQL result object as returned from Database::query(), etc.
 	 * @return MySQL row object
 	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
@@ -2823,7 +2777,6 @@ class ResultWrapper implements Iterator {
 	 * Fetch the next row from the given result object, in associative array
 	 * form.  Fields are retrieved with $row['fieldname'].
 	 *
-	 * @param $res SQL result object as returned from Database::query(), etc.
 	 * @return MySQL row object
 	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
@@ -2881,6 +2834,47 @@ class ResultWrapper implements Iterator {
 
 	function valid() {
 		return $this->current() !== false;
+	}
+}
+
+/* Overloads the relevant methods of the real ResultsWrapper so it
+ * doesn't go anywhere near an actual database.
+ */
+class FakeResultWrapper extends ResultWrapper {
+
+	var $result     = array();
+	var $db         = null;	// And it's going to stay that way :D
+	var $pos        = 0;
+	var $currentRow = null;
+
+	function __construct( $array ){
+		$this->result = $array;
+	}
+
+	function numRows() {
+		return count( $this->result );
+	}
+
+	function fetchRow() {
+		$this->currentRow = $this->result[$this->pos++];
+		return $this->currentRow;
+	}
+
+	function seek( $row ) {
+		$this->pos = $row;
+	}
+
+	function free() {}
+
+	// Callers want to be able to access fields with $this->fieldName
+	function fetchObject(){
+		$this->currentRow = $this->result[$this->pos++];
+		return (object)$this->currentRow;
+	}
+
+	function rewind() {
+		$this->pos = 0;
+		$this->currentRow = null;
 	}
 }
 

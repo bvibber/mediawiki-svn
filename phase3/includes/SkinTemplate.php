@@ -110,7 +110,7 @@ class SkinTemplate extends Skin {
 	 * and eventually it spits out some HTML. Should have interface
 	 * roughly equivalent to PHPTAL 0.7.
 	 *
-	 * @param $callback string (or file)
+	 * @param $classname string (or file)
 	 * @param $repository string: subdirectory where we keep template files
 	 * @param $cache_dir string
 	 * @return object
@@ -297,11 +297,13 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'scriptpath', $wgScriptPath );
 		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
-		$tpl->setRef( 'lang', $wgContLanguageCode );
-		$tpl->set( 'dir', $wgContLang->getDir() );
-		$tpl->set( 'rtl', $wgContLang->isRTL() );
+
+		$lang = wfUILang();
+		$tpl->set( 'lang', $lang->getCode() );
+		$tpl->set( 'dir', $lang->getDir() );
+		$tpl->set( 'rtl', $lang->isRTL() );
+
 		$tpl->set( 'capitalizeallnouns', $wgLang->capitalizeAllNouns() ? ' capitalize-all-nouns' : '' );
-		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
 		$tpl->set( 'username', $wgUser->isAnon() ? null : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage );
@@ -416,6 +418,11 @@ class SkinTemplate extends Skin {
 		$tpl->set( 'bottomscripts', $this->bottomScripts() );
 
 		$printfooter = "<div class=\"printfooter\">\n" . $this->printSource() . "</div>\n";
+		global $wgBetterDirectionality;
+		if ( $wgBetterDirectionality ) {
+			$realBodyAttribs = array( 'lang' => $wgContLanguageCode, 'dir' => $wgContLang->getDir() );
+			$out->mBodytext = Html::rawElement( 'div', $realBodyAttribs, $out->mBodytext );
+		}
 		$out->mBodytext .= $printfooter . $this->generateDebugHTML();
 		$tpl->setRef( 'bodytext', $out->mBodytext );
 
@@ -487,7 +494,7 @@ class SkinTemplate extends Skin {
 	 * an error object of the appropriate type.
 	 * For the base class, assume strings all around.
 	 *
-	 * @param mixed $str
+	 * @param $str Mixed
 	 * @private
 	 */
 	function printOrError( $str ) {

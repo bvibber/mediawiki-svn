@@ -11,6 +11,7 @@
  * @author D.de.loinsigh
  * @author Kwekubo
  * @author Moilleadóir
+ * @author Moydow
  * @author Spacebirdy
  * @author Stifle
  * @author Tameamseo
@@ -105,12 +106,11 @@ $messages = array(
 'tog-editsection'             => 'Cumasaigh mír-eagarthóireacht le naisc mar seo: [athrú]',
 'tog-editsectiononrightclick' => 'Cumasaigh mír-eagarthóireacht le deaschliceáil<br /> ar ceannteidil (JavaScript)',
 'tog-showtoc'                 => "Taispeáin an clár ábhair (d'ailt le níos mó ná 3 ceannteidil)",
-'tog-rememberpassword'        => "Cuimhnigh ar m'fhocal faire ar an ríomhaire seo",
+'tog-rememberpassword'        => "Cuimhnigh ar m'fhocal faire ar an ríomhaire seo (ar feadh uastréimhse de $1 {{PLURAL:$1|lá|lá}})",
 'tog-watchcreations'          => 'Cuir ar mo liosta faire leathanaigh a chruthaím',
 'tog-watchdefault'            => 'Déan faire ar leathanaigh a athraím',
 'tog-watchmoves'              => 'Cuir ar mo liosta faire leathanaigh a athainmnaím',
 'tog-watchdeletion'           => 'Cuir ar mo liosta faire leathanaigh a scriosaim',
-'tog-minordefault'            => 'Déan mionathruithe de gach aon athrú, mar réamhshocrú',
 'tog-previewontop'            => 'Cuir an réamhamharc os cionn an bhosca eagair, <br />agus ná cuir é taobh thíos de',
 'tog-previewonfirst'          => 'Taispeáin réamhamharc don chéad athrú',
 'tog-nocache'                 => 'Ciorraigh taisce na leathanach',
@@ -240,9 +240,15 @@ agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar ú
 
 # Vector skin
 'vector-action-delete'       => 'Scrios',
+'vector-action-move'         => 'Athainmnigh',
+'vector-action-protect'      => 'Glasáil',
+'vector-namespace-category'  => 'Catagóir',
 'vector-namespace-image'     => 'Comhad',
 'vector-namespace-main'      => 'Leathanach',
 'vector-namespace-mediawiki' => 'Teachtaireacht',
+'vector-namespace-special'   => 'Leathanach speisialta',
+'vector-view-create'         => 'Cruthaigh',
+'vector-view-edit'           => 'Athraigh an lch seo',
 'vector-view-view'           => 'Léigh',
 
 'errorpagetitle'    => 'Earráid',
@@ -459,13 +465,14 @@ Cruthaíodh do chuntas. Ná déan dearmad athrú a dhéanamh ar do chuid [[Speci
 'yourname'                   => "D'ainm úsáideora",
 'yourpassword'               => "D'fhocal faire",
 'yourpasswordagain'          => "Athiontráil d'fhocal faire",
-'remembermypassword'         => 'Cuimhnigh orm',
+'remembermypassword'         => "Cuimhnigh ar m'fhocal faire ar an ríomhaire seo (ar feadh uastréimhse de $1 {{PLURAL:$1|lá|lá}})",
 'yourdomainname'             => "D'fhearann",
 'externaldberror'            => 'Bhí earráid bhunachair sonraí ann maidir le fíordheimhniú seachtrach, nóThere was either an external authentication database error or you are not allowed to update your external account.',
 'login'                      => 'Logáil isteach',
 'nav-login-createaccount'    => 'Logáil isteach',
 'loginprompt'                => 'Tá sé riachtanach fianáin a chur i ngníomh chun logáil isteach a dhéanamh ag {{SITENAME}}.',
 'userlogin'                  => 'Logáil isteach / cruthaigh cuntas',
+'userloginnocreate'          => 'Logáil isteach',
 'logout'                     => 'Logáil amach',
 'userlogout'                 => 'Logáil amach',
 'notloggedin'                => 'Níl tú logáilte isteach',
@@ -725,7 +732,7 @@ Treoir: (rth) = difríocht ón leagan reatha, (rmh) = difríocht ón leagan roim
 
 # History merging
 'mergehistory-from'   => 'Leathanach fhoinse:',
-'mergehistory-reason' => 'Fáth',
+'mergehistory-reason' => 'Fáth:',
 
 # Merge log
 'revertmerge' => 'Díchumaisc',
@@ -1030,6 +1037,7 @@ Má theastáilann uait do chomhad a uaslódáil fós, téigh ar ais agus úsáid
 'filehist-deleteone'                => 'scrios',
 'filehist-current'                  => 'reatha',
 'filehist-datetime'                 => 'Dáta/Am',
+'filehist-thumb'                    => 'Mionsamhail',
 'filehist-thumbtext'                => 'Mionsamhail do leagan ó $1',
 'filehist-user'                     => 'Úsáideoir',
 'filehist-dimensions'               => 'Toisí',
@@ -1322,7 +1330,7 @@ Féach ar $2 chun cuntas na scriosiadh deireanacha a fháil.',
 'dellogpagetext'        => 'Seo é liosta de na scriosaidh is déanaí.',
 'deletionlog'           => 'cuntas scriosaidh',
 'reverted'              => 'Tá eagrán níos luaithe in úsáid anois',
-'deletecomment'         => 'Cúis don scriosadh',
+'deletecomment'         => 'Fáth:',
 'deleteotherreason'     => 'Fáth eile/breise:',
 'deletereasonotherlist' => 'Fáth eile',
 'deletereason-dropdown' => '*Fáthanna coitianta scriosta
@@ -1465,7 +1473,7 @@ leathanaigh áirithe a rinne an duine damáiste ar).',
 'ipaddress'               => 'Seoladh IP / ainm úsáideora',
 'ipadressorusername'      => 'Seoladh IP nó ainm úsáideora:',
 'ipbexpiry'               => 'Am éaga',
-'ipbreason'               => 'Cúis',
+'ipbreason'               => 'Fáth:',
 'ipbreasonotherlist'      => 'Fáth eile',
 'ipbreason-dropdown'      => '*Fáthanna coitianta
 ** Loitiméaracht
@@ -1586,7 +1594,7 @@ Sna cásanna sin, caithfidh tú an leathanach a aistrigh nó a chumasc tú féin
 '1movedto2_redir'         => 'rinneadh athsheoladh de [[$1]] go [[$2]]',
 'movelogpage'             => 'Log athainmnithe',
 'movelogpagetext'         => 'Liosta is ea seo thíos de leathanaigh athainmnithe.',
-'movereason'              => 'Cúis',
+'movereason'              => 'Fáth:',
 'revertmove'              => 'athúsáid',
 'delete_and_move'         => 'Scrios agus athainmnigh',
 'delete_and_move_text'    => '==Tá scriosadh riachtanach==
@@ -1790,7 +1798,7 @@ iarradh sábháil. Is dócha gur nasc chuig suíomh seachtrach ba chúis leis.',
 
 # Media information
 'mediawarning'         => "'''Rabhadh''': Tá seans ann go bhfuil cód mailíseach sa chineál comhaid seo.
-B'fheidir go gcuirfear do chóras i gcontúirt dá rithfeá é.<hr />",
+B'fheidir go gcuirfear do chóras i gcontúirt dá rithfeá é.",
 'imagemaxsize'         => "Teorainn mhéid íomhá:<br />''(leathanaigh thuarascáil chomhaid)''",
 'thumbsize'            => 'Méid mionsamhlacha:',
 'file-info'            => '(méid comhad : $1, saghas MIME: $2)',

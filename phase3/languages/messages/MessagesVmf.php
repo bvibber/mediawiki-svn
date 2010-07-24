@@ -70,7 +70,6 @@ $messages = array(
 'tog-watchdefault'           => 'Ale fon miir gändârdnd sajdn soln uf mâj beoobachdungs-lischdn',
 'tog-watchmoves'             => 'Ale fon miir fârschoobnen sajdn soln uf mâj beoobachdungs-lischdn',
 'tog-watchdeletion'          => 'Ale fon miir gleschdn sajdn soln uf mâj beoobachdungs-lischdn',
-'tog-minordefault'           => 'Ale maj ändrungn soln als glaane geldn',
 'tog-previewontop'           => 'Foorschau owârhalb un ned undârhalb fom arbajds-fenschdâr',
 'tog-previewonfirst'         => 'Baj dr ärschdn ändrung imâr ärschd â foorschau ôôdsajchn',
 'tog-nocache'                => 'Sajdn-cache ausschaldn',
@@ -711,7 +710,7 @@ Wenns'd dii sajdn irchendwan amôl nimä fârfolchn wilsd, musd bloos af „{{in
 'deletedtext'            => '„<nowiki>$1</nowiki>“ is gleschd wôrn. Im $2 findsd â lisdn mid dâ ledsdn leschunga.',
 'deletedarticle'         => 'had „[[$1]]“ gleschd',
 'dellogpage'             => 'Logbuch fo di leschunga',
-'deletecomment'          => 'Warum gleschd:',
+'deletecomment'          => 'Grund:',
 'deleteotherreason'      => 'Noch a Grund dâfiir:',
 'deletereasonotherlist'  => 'Andrâr Grund',
 'deletereason-dropdown'  => "* Iibliche Grind fir's Leschn

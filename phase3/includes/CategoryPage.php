@@ -172,12 +172,18 @@ class CategoryViewer {
 	* else use sortkey...
 	*/
 	function getSubcategorySortChar( $title, $sortkey ) {
-		global $wgContLang;
+		global $wgContLang, $wgExperimentalCategorySort;
 
 		if ( $title->getPrefixedText() == $sortkey ) {
-			$firstChar = $wgContLang->firstChar( $title->getDBkey() );
+			$word = $title->getDBkey();
 		} else {
-			$firstChar = $wgContLang->firstChar( $sortkey );
+			$word = $sortkey;
+		}
+
+		if ( $wgExperimentalCategorySort ) {
+			$firstChar = $wgContLang->firstLetterForLists( $word );
+		} else {
+			$firstChar = $wgContLang->firstChar( $word );
 		}
 
 		return $wgContLang->convert( $firstChar );
@@ -202,7 +208,7 @@ class CategoryViewer {
 	 * Add a miscellaneous page
 	 */
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
-		global $wgContLang;
+		global $wgContLang, $wgExperimentalCategorySort;
 		$this->articles[] = $isRedirect
 			? '<span class="redirect-in-category">' .
 				$this->getSkin()->link(
@@ -213,7 +219,12 @@ class CategoryViewer {
 					array( 'known', 'noclasses' )
 				) . '</span>'
 			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
-		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
+
+		if ( $wgExperimentalCategorySort ) {
+			$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstLetterForLists( $sortkey ) );
+		} else {
+			$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
+		}
 	}
 
 	function finaliseCategoryState() {
@@ -226,6 +237,8 @@ class CategoryViewer {
 	}
 
 	function doCategoryQuery() {
+		global $wgExperimentalCategorySort;
+
 		$dbr = wfGetDB( DB_SLAVE, 'category' );
 		if ( $this->from != '' ) {
 			$pageCondition = 'cl_sortkey >= ' . $dbr->addQuotes( $this->from );
@@ -238,39 +251,87 @@ class CategoryViewer {
 			$this->flip = false;
 		}
 
+		$tables = array( 'page', 'categorylinks', 'category' );
+		$fields = array( 'page_title', 'page_namespace', 'page_len',
+			'page_is_redirect', 'cl_sortkey', 'cat_id', 'cat_title',
+			'cat_subcats', 'cat_pages', 'cat_files' );
+		$conds = array( 'cl_to' => $this->title->getDBkey() );
+		$opts = array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' :
+			'cl_sortkey', 'USE INDEX' => array( 'categorylinks' => 'cl_sortkey' ) );
+		$joins = array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
+			'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY ) );
+
+		if ( $wgExperimentalCategorySort ) {
+			# Copy-pasted from below, but that's okay, because the stuff below
+			# will be deleted when this becomes the default.
+			$count = 0;
+			$this->nextPage = null;
+
+			foreach ( array( 'page', 'subcat', 'file' ) as $type ) {
+				$res = $dbr->select(
+					$tables,
+					array_merge( $fields, array( 'cl_raw_sortkey' ) ),
+					$conds + array( 'cl_type' => $type ) + ( $type == 'page' ? array( $pageCondition ) : array() ),
+					__METHOD__,
+					$opts + ( $type == 'page' ? array( 'LIMIT' => $this->limit + 1 ) : array() ),
+					$joins
+				);
+
+				foreach ( $res as $row ) {
+					if ( $type == 'page' && ++$count > $this->limit ) {
+						# We've reached the one extra which shows that there
+						# are additional pages to be had. Stop here...
+						$this->nextPage = $row->cl_sortkey;
+						break;
+					}
+
+					$title = Title::newFromRow( $row );
+
+					if ( $title->getNamespace() == NS_CATEGORY ) {
+						$cat = Category::newFromRow( $row, $title );
+						$this->addSubcategoryObject( $cat, $row->cl_raw_sortkey, $row->page_len );
+					} elseif ( $this->showGallery && $title->getNamespace() == NS_FILE ) {
+						$this->addImage( $title, $row->cl_raw_sortkey, $row->page_len, $row->page_is_redirect );
+					} else {
+						$this->addPage( $title, $row->cl_raw_sortkey, $row->page_len, $row->page_is_redirect );
+					}
+				}
+			}
+
+			return;
+		}
+
+		# Non-$wgExperimentalCategorySort stuff
+
 		$res = $dbr->select(
-			array( 'page', 'categorylinks', 'category' ),
-			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey',
-				'cat_id', 'cat_title', 'cat_subcats', 'cat_pages', 'cat_files' ),
-			array( $pageCondition, 'cl_to' => $this->title->getDBkey() ),
+			$tables,
+			$fields,
+			$conds + array( $pageCondition ),
 			__METHOD__,
-			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
-				'USE INDEX' => array( 'categorylinks' => 'cl_sortkey' ),
-				'LIMIT'    => $this->limit + 1 ),
-			array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
-				'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY ) )
+			$opts + array( 'LIMIT' => $this->limit + 1 ),
+			$joins
 		);
 
 		$count = 0;
 		$this->nextPage = null;
 
-		while ( $x = $dbr->fetchObject ( $res ) ) {
+		foreach ( $res as $row ) {
 			if ( ++$count > $this->limit ) {
 				// We've reached the one extra which shows that there are
 				// additional pages to be had. Stop here...
-				$this->nextPage = $x->cl_sortkey;
+				$this->nextPage = $row->cl_sortkey;
 				break;
 			}
 
-			$title = Title::makeTitle( $x->page_namespace, $x->page_title );
+			$title = Title::newFromRow( $row );
 
 			if ( $title->getNamespace() == NS_CATEGORY ) {
-				$cat = Category::newFromRow( $x, $title );
-				$this->addSubcategoryObject( $cat, $x->cl_sortkey, $x->page_len );
+				$cat = Category::newFromRow( $row, $title );
+				$this->addSubcategoryObject( $cat, $row->cl_sortkey, $row->page_len );
 			} elseif ( $this->showGallery && $title->getNamespace() == NS_FILE ) {
-				$this->addImage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
+				$this->addImage( $title, $row->cl_sortkey, $row->page_len, $row->page_is_redirect );
 			} else {
-				$this->addPage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
+				$this->addPage( $title, $row->cl_sortkey, $row->page_len, $row->page_is_redirect );
 			}
 		}
 	}

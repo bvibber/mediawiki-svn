@@ -43,6 +43,10 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -182,11 +186,16 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 	}
 
 	public function getParamDescription() {
+		$p = $this->getModulePrefix();
 		return array(
 			'from' => 'The page title to start enumerating from',
 			'prefix' => 'Search for all page titles that begin with this value',
-			'unique' => "Only show unique links. Cannot be used with generator or {$this->getModulePrefix()}prop=ids",
-			'prop' => 'What pieces of information to include',
+			'unique' => "Only show unique links. Cannot be used with generator or {$p}prop=ids",
+			'prop' => array(
+				'What pieces of information to include',
+				" ids    - Adds pageid of where the link is from (Cannot be used with {$p}unique)",
+				' title  - Adds the title of the link',
+			),
 			'namespace' => 'The namespace to enumerate',
 			'limit' => 'How many total links to return',
 			'continue' => 'When more results are available, use this to continue',
@@ -198,9 +207,10 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 	}
 
 	public function getPossibleErrors() {
+		$m = $this->getModuleName();
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'params', 'info' => $this->getModuleName() . ' cannot be used as a generator in unique links mode' ),
-			array( 'code' => 'params', 'info' => $this->getModuleName() . ' cannot return corresponding page ids in unique links mode' ),
+			array( 'code' => 'params', 'info' => "{$m} cannot be used as a generator in unique links mode" ),
+			array( 'code' => 'params', 'info' => "{$m} cannot return corresponding page ids in unique links mode" ),
 			array( 'code' => 'params', 'info' => 'alcontinue and alfrom cannot be used together' ),
 			array( 'code' => 'badcontinue', 'info' => 'Invalid continue parameter' ),
 		) );

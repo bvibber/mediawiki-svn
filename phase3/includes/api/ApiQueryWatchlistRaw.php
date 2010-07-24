@@ -50,7 +50,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 
 	private function run( $resultPageSet = null ) {
 		$this->selectNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
-		
+
 		$params = $this->extractRequestParams();
 
 		$user = $this->getWatchlistUser( $params );
@@ -93,7 +93,6 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$res = $this->select( __METHOD__ );
 
-		$db = $this->getDB();
 		$titles = array();
 		$count = 0;
 		foreach ( $res as $row ) {
@@ -170,7 +169,10 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 			'continue' => 'When more results are available, use this to continue',
 			'namespace' => 'Only list pages in the given namespace(s)',
 			'limit' => 'How many total results to return per request',
-			'prop' => 'Which additional properties to get (non-generator mode only)',
+			'prop' => array(
+				'Which additional properties to get (non-generator mode only)',
+				' changed  - Adds timestamp of when the user was last notified about the edit',
+			),
 			'show' => 'Only list items that meet these criteria',
 			'owner' => 'The name of the user whose watchlist you\'d like to access',
 			'token' => 'Give a security token (settable in preferences) to allow access to another user\'s watchlist',

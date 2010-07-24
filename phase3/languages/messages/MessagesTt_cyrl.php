@@ -157,7 +157,6 @@ $messages = array(
 'tog-watchdefault'            => 'Үзгәрткән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchmoves'              => 'Күчергән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchdeletion'           => 'Бетерелгән битләремне күзәтү исемлегемгә өстәү',
-'tog-minordefault'            => 'Барлык үзгәртүләрне килешү буенча кече дип билгеләнсен',
 'tog-previewontop'            => 'Үзгәртү тәрәзәсеннән өстәрәк битне алдан карау өлкәсен күрсәтелсен',
 'tog-previewonfirst'          => 'Үзгәртү битенә күчкәндә башта алдан карау бите күрсәтелсен',
 'tog-nocache'                 => 'Битләр кэшлауны тыярга',
@@ -1064,7 +1063,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'rightsnone'     => '(юк)',
 
 # Associated actions - in the sentence "You do not have permission to X"
-'action-edit'       => 'бу битне узгәртергә',
+'action-edit'       => 'бу битне үзгәртергә',
 'action-createpage' => 'сәхифәләрне язырга',
 'action-move'       => 'бу битне күчерү',
 
@@ -1102,7 +1101,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'rc-enhanced-hide'                  => 'Ваклыкларны яшерү',
 
 # Recent changes linked
-'recentchangeslinked'          => 'Бәйләнешле үзгәртүәләр',
+'recentchangeslinked'          => 'Бәйләнешле үзгәртүләр',
 'recentchangeslinked-feed'     => 'Бәйләнешле үзгәртүләр',
 'recentchangeslinked-toolbox'  => 'Бәйләнешле үзгәртүәләр',
 'recentchangeslinked-title'    => '"$1" битенә бәйләнешле үзгәртүләр',
@@ -1334,7 +1333,7 @@ $NEWPAGE
 'deletedarticle'        => '«[[$1]]» бетерелде',
 'dellogpage'            => 'Бетерү көндәлеге',
 'deletionlog'           => 'бетерү көндәлеге',
-'deletecomment'         => 'Бетерү сәбәбе:',
+'deletecomment'         => 'Сәбәп:',
 'deleteotherreason'     => 'Башка/өстәмә сәбәп:',
 'deletereasonotherlist' => 'Башка сәбәп',
 

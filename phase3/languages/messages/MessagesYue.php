@@ -1,5 +1,5 @@
 <?php
-/** Cantonese (粵語/廣東話)
+/** Cantonese (粵語)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -162,7 +162,6 @@ $messages = array(
 'tog-watchdefault'            => '將我修改嘅頁加入監視清單',
 'tog-watchmoves'              => '將我移動嘅頁加入監視清單',
 'tog-watchdeletion'           => '將我刪除嘅頁加入監視清單',
-'tog-minordefault'            => '預設全部編輯做小修改',
 'tog-previewontop'            => '喺修改欄上方顯示預覽',
 'tog-previewonfirst'          => '第一次修改時顯示預覽',
 'tog-nocache'                 => '停用頁面快取',
@@ -951,7 +950,7 @@ $1',
 'revdelete-radio-unset'       => '唔好',
 'revdelete-suppress'          => '同時壓制由操作員以及其他用戶的資料',
 'revdelete-unsuppress'        => '響已經恢復咗嘅修訂度移除限制',
-'revdelete-log'               => '記錄註解：',
+'revdelete-log'               => '原因：',
 'revdelete-submit'            => '應用到已經選取嘅{{PLURAL:$1|修訂}}',
 'revdelete-logentry'          => '已經更改[[$1]]嘅修訂可見性',
 'logdelete-logentry'          => '已經更改[[$1]]嘅事件可見性',
@@ -1005,11 +1004,13 @@ $1",
 'revmove-reasonfield'          => '原因:',
 'revmove-titlefield'           => '目標頁:',
 'revmove-badparam-title'       => '壞參數',
-'revmove-badparam'             => '<span class="error">你嘅請求有唔合法嘅或者唔夠嘅參數。請撳「返轉頭」再試過。</span>',
+'revmove-badparam'             => '你嘅請求有唔合法嘅或者唔夠嘅參數。
+請返去上一版再試過。',
 'revmove-norevisions-title'    => '無效嘅目標修訂',
-'revmove-norevisions'          => '<span class="error">你未指定一個或者多個目標修訂去做呢項功能或者所指定嘅修訂唔存在。</span>',
+'revmove-norevisions'          => '你未指定一個或者多個目標修訂去做呢項功能或者所指定嘅修訂唔存在。',
 'revmove-nullmove-title'       => '壞標題',
-'revmove-nullmove'             => '<span class="error">來源同埋目標頁係一模一樣嘅。請撳「返轉頭」再輸入同 "$1" 唔同嘅名。</span>',
+'revmove-nullmove'             => '目標頁嘅唔可以同埋來源版一模一樣。
+請返去上一版再輸入同 "$1" 唔同嘅名。',
 'revmove-success-existing'     => '由[[$2]]嘅{{PLURAL:$1|一次修訂|$1次修訂}}已經搬到去現有嘅頁[[$3]]。',
 'revmove-success-created'      => '由[[$2]]嘅{{PLURAL:$1|一次修訂|$1次修訂}}已經搬到去新開嘅頁[[$3]]。',
 
@@ -1229,7 +1230,7 @@ $1",
 'prefs-advancedrendering'       => '進階選項',
 'prefs-advancedsearchoptions'   => '進階選項',
 'prefs-advancedwatchlist'       => '進階選項',
-'prefs-display'                 => '顯示選項',
+'prefs-displayrc'               => '顯示選項',
 'prefs-diffs'                   => '差異',
 
 # User rights
@@ -1340,6 +1341,7 @@ $1",
 'right-override-export-depth' => '倒出包含有五層深連版嘅頁面',
 'right-sendemail'             => '寄電郵畀其他用戶',
 'right-revisionmove'          => '搬修訂',
+'right-selenium'              => '運行Selenium測試',
 
 # User rights log
 'rightslog'      => '用戶權限日誌',
@@ -1663,7 +1665,7 @@ $1',
 'filedelete-legend'           => '刪除檔案',
 'filedelete-intro'            => "你而家刪除緊個檔案'''[[Media:$1|$1]]'''。",
 'filedelete-intro-old'        => "你而家刪除緊'''[[Media:$1|$1]]'''響[$4 $2 $3]嘅版本。",
-'filedelete-comment'          => '刪除原因:',
+'filedelete-comment'          => '原因：',
 'filedelete-submit'           => '刪除',
 'filedelete-success'          => "'''$1'''已經刪除咗。",
 'filedelete-success-old'      => "'''[[Media:$1|$1]]'''響 $2 $3 嘅版本已經刪除咗。",
@@ -1730,7 +1732,7 @@ Template:搞清楚',
 
 'doubleredirects'            => '雙重跳轉',
 'doubleredirectstext'        => '每一行都順次序寫住第一頁名，佢嘅目的頁，同埋目的頁再指去邊度。改嘅時候，應該將第一個跳轉頁轉入第三頁。
-<s>劃咗</s>嘅項目係已經解決咗嘅。',
+<del>劃咗</del>嘅項目係已經解決咗嘅。',
 'double-redirect-fixed-move' => '[[$1]]已經搬好咗，佢而家跳轉過去[[$2]]。',
 'double-redirect-fixer'      => '跳轉修正器',
 
@@ -2028,7 +2030,7 @@ wiki: $PAGEEDITOR_WIKI
 'dellogpagetext'         => '以下係最近嘅刪除清單。',
 'deletionlog'            => '刪除日誌',
 'reverted'               => '恢復到先前嘅修訂',
-'deletecomment'          => '刪除原因:',
+'deletecomment'          => '原因：',
 'deleteotherreason'      => '其它／附加嘅原因:',
 'deletereasonotherlist'  => '其它原因',
 'deletereason-dropdown'  => '*常用刪除原因
@@ -2055,7 +2057,9 @@ wiki: $PAGEEDITOR_WIKI
 
 # Edit tokens
 'sessionfailure-title' => '會話失敗',
-'sessionfailure'       => '你嘅登入會話 (session) 好似有啲問題；為咗防止會話劫持，呢個操作已經取消。請撳「返轉頭」然後重新載入你嚟自嘅頁面，然後再試吓啦。',
+'sessionfailure'       => '你嘅登入會話 (session) 好似有啲問題；
+為咗防止會話劫持，呢個操作已經取消。
+請返去之前嗰版，重新載入嗰版然後再試。',
 
 # Protect
 'protectlogpage'              => '保護日誌',
@@ -2194,7 +2198,7 @@ $1',
 最近嘅封鎖日誌項目響下面提供以便參考：',
 'sp-contributions-search'              => '搵貢獻',
 'sp-contributions-username'            => 'IP地址或用戶名：',
-'sp-contributions-toponly'             => '只顯示最新嘅修訂',
+'sp-contributions-toponly'             => '只顯示最新修訂嘅編輯',
 'sp-contributions-submit'              => '搵',
 
 # What links here
@@ -2715,7 +2719,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''警告'''：呢個檔案類型可能有一啲惡意嘅程式編碼。
-如果執行佢嘅話，你嘅系統可能會被波及。<hr />",
+如果執行佢嘅話，你嘅系統可能會被波及。",
 'imagemaxsize'         => "圖像大細限制:<br />''(用響檔案描述頁)''",
 'thumbsize'            => '縮圖大細：',
 'widthheightpage'      => '$1×$2, $3版',
@@ -2727,6 +2731,9 @@ $1',
 'show-big-image-thumb' => '<small>呢個預覽嘅大細： $1 × $2 像素</small>',
 'file-info-gif-looped' => '循環',
 'file-info-gif-frames' => '$1格',
+'file-info-png-looped' => '循環',
+'file-info-png-repeat' => '播咗$1次',
+'file-info-png-frames' => '$1格',
 
 # Special:NewFiles
 'newimages'             => '新檔案畫廊',

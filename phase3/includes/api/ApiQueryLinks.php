@@ -65,6 +65,10 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -85,7 +89,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		$this->addTables( $this->table );
 		$this->addWhereFld( $this->prefix . '_from', array_keys( $this->getPageSet()->getGoodTitles() ) );
 		$this->addWhereFld( $this->prefix . '_namespace', $params['namespace'] );
-		
+
 		if ( !is_null( $params[$this->titlesParam] ) ) {
 			$lb = new LinkBatch;
 			foreach ( $params[$this->titlesParam] as $t ) {
@@ -138,7 +142,6 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		$this->addOption( 'USE INDEX', "{$this->prefix}_from" );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		if ( is_null( $resultPageSet ) ) {

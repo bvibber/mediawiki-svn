@@ -31,6 +31,8 @@ AND nspname=%s
 AND relname=%s
 AND attname=%s;
 SQL;
+
+		$table = $db->tableName( $table );
 		$res = $db->query(sprintf($q,
 				$db->addQuotes($wgDBmwschema),
 				$db->addQuotes($table),
@@ -309,7 +311,7 @@ class DatabasePostgres extends DatabaseBase {
 				$connectVars['password'] = $password;
 
 				@$this->mConn = pg_connect( $this->makeConnectionString( $connectVars ) );
-				if ( $this->mConn ) {
+				if ( !$this->mConn ) {
 					print "<b>FAILED TO CONNECT!</b></li>";
 					dieout("</ul>");
 				}
@@ -562,8 +564,9 @@ class DatabasePostgres extends DatabaseBase {
 			$SQL = "SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON (n.oid = c.relnamespace) ".
 				"WHERE relname = 'pg_pltemplate' AND nspname='pg_catalog'";
 			$rows = $this->numRows($this->doQuery($SQL));
+			global $wgDBname;
 			if ($rows >= 1) {
-			$olde = error_reporting(0);
+				$olde = error_reporting(0);
 				error_reporting($olde - E_WARNING);
 				$result = $this->doQuery("CREATE LANGUAGE plpgsql");
 				error_reporting($olde);
@@ -1264,24 +1267,6 @@ SQL;
 		return $owner;
 	}
 
-	/**
-	 * Query whether a given column exists in the mediawiki schema
-	 */
-	function fieldExists( $table, $field, $fname = 'DatabasePostgres::fieldExists' ) {
-		global $wgDBmwschema;
-		$etable = preg_replace("/'/", "''", $table);
-		$eschema = preg_replace("/'/", "''", $wgDBmwschema);
-		$ecol = preg_replace("/'/", "''", $field);
-		$SQL = "SELECT 1 FROM pg_catalog.pg_class c, pg_catalog.pg_namespace n, pg_catalog.pg_attribute a "
-			. "WHERE c.relnamespace = n.oid AND c.relname = '$etable' AND n.nspname = '$eschema' "
-			. "AND a.attrelid = c.oid AND a.attname = '$ecol'";
-		$res = $this->query( $SQL, $fname );
-		$count = $res ? $res->numRows() : 0;
-		if ($res)
-			$this->freeResult( $res );
-		return $count;
-	}
-
 	function fieldInfo( $table, $field ) {
 		return PostgresField::fromText($this, $table, $field);
 	}
@@ -1300,9 +1285,7 @@ SQL;
 		$this->query( 'BEGIN', $fname );
 		$this->mTrxLevel = 1;
 	}
-	function immediateCommit( $fname = 'DatabasePostgres::immediateCommit' ) {
-		return true;
-	}
+
 	function commit( $fname = 'DatabasePostgres::commit' ) {
 		$this->query( 'COMMIT', $fname );
 		$this->mTrxLevel = 0;
@@ -1355,7 +1338,7 @@ SQL;
 		echo "<li>Populating interwiki table... ";
 		## Avoid the non-standard "REPLACE INTO" syntax
 		$f = fopen( "../maintenance/interwiki.sql", 'r' );
-		if ( $f ) {
+		if ( !$f ) {
 			print "<b>FAILED</b></li>";
 			dieout( "Could not find the interwiki.sql file" );
 		}
@@ -1467,16 +1450,6 @@ SQL;
 		return array( $startOpts, $useIndex, $preLimitTail, $postLimitTail );
 	}
 
-	/**
-	 * How lagged is this slave?
-	 *
-	 */
-	public function getLag() {
-		# Not implemented for PostgreSQL
-		return false;
-	}
-
-	function setFakeSlaveLag( $lag ) {}
 	function setFakeMaster( $enabled = true ) {}
 
 	function getDBname() {

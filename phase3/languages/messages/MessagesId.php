@@ -317,7 +317,6 @@ $messages = array(
 'tog-watchdefault'            => 'Tambahkan halaman yang saya sunting ke daftar pantauan',
 'tog-watchmoves'              => 'Tambahkan halaman yang saya pindahkan ke daftar pantauan',
 'tog-watchdeletion'           => 'Tambahkan halaman yang saya hapus ke daftar pantauan',
-'tog-minordefault'            => 'Tandai semua suntingan sebagai suntingan kecil secara baku',
 'tog-previewontop'            => 'Perlihatkan pratayang sebelum kotak sunting dan tidak sesudahnya',
 'tog-previewonfirst'          => 'Perlihatkan pratayang pada suntingan pertama',
 'tog-nocache'                 => 'Matikan <em>cache</em> halaman',
@@ -1094,7 +1093,7 @@ Pengurus {{SITENAME}} lain akan tetap dapat mengakses isi yang tersembunyi ini d
 'revdelete-radio-unset'       => 'Tidak',
 'revdelete-suppress'          => 'Sembunyikan juga dari pengurus',
 'revdelete-unsuppress'        => 'Hapus batasan pada revisi yang dikembalikan',
-'revdelete-log'               => 'Alasan penghapusan:',
+'revdelete-log'               => 'Alasan:',
 'revdelete-submit'            => 'Terapkan pada {{PLURAL:$1|revisi|revisi}} terpilih',
 'revdelete-logentry'          => 'ubah tampilan revisi untuk [[$1]]',
 'logdelete-logentry'          => 'mengubah aturan penyembunyian dari [[$1]]',
@@ -1152,11 +1151,11 @@ Lihat [[Special:IPBlockList|daftar IP yang diblokir]] untuk daftar terkininya.',
 'revmove-reasonfield'          => 'Alasan:',
 'revmove-titlefield'           => 'Halaman tujuan:',
 'revmove-badparam-title'       => 'Parameter Buruk',
-'revmove-badparam'             => '<span class="kesalahan">Permintaan Anda mengandung parameter yang tidak sah atau kurang. Silahkan tekan "kembali" dan coba lagi.</span>',
+'revmove-badparam'             => 'Permintaan Anda mengandung parameter yang tidak sah atau kurang. Silahkan tekan "kembali" dan coba lagi.',
 'revmove-norevisions-title'    => 'Revisi target tak sah',
-'revmove-norevisions'          => '<span class="kesalahan">Anda belum menetapkan satu atau lebih revisi tujuan untuk menjalankan fungsi atau revisi yang diberikan tidak ada.</span>',
+'revmove-norevisions'          => 'Anda belum menetapkan satu atau lebih revisi tujuan untuk menjalankan fungsi atau revisi yang diberikan tidak ada.',
 'revmove-nullmove-title'       => 'Judul tidak sah',
-'revmove-nullmove'             => '<span class="kesalahan">Halaman sumber dan tujuan sama. Silahkan tekan "kembali" dan masukan nama halaman yang berbeda dari "$1".</span>',
+'revmove-nullmove'             => 'Halaman sumber dan tujuan sama. Silahkan tekan "kembali" dan masukan nama halaman yang berbeda dari "$1".',
 'revmove-success-existing'     => '{{PLURAL:$1|satu revisi dari [[$2]] telah|$1 revisi dari [[$2]] telah}} dipindahkan ke halaman yang ada [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|satu revisi dari [[$2]] telah|$1 revisi dari [[$2]] telah}} dipindahkan ke halaman baru yang dibuat [[$3]].',
 
@@ -1379,7 +1378,9 @@ Anda juga dapat memilih untuk memungkinkan orang lain menghubungi Anda melalui h
 'prefs-advancedrendering'       => 'Opsi lanjutan',
 'prefs-advancedsearchoptions'   => 'Opsi lanjutan',
 'prefs-advancedwatchlist'       => 'Opsi lanjutan',
-'prefs-display'                 => 'Opsi tampilan',
+'prefs-displayrc'               => 'Pilihan tampilan',
+'prefs-displaysearchoptions'    => 'Pilihan tampilan',
+'prefs-displaywatchlist'        => 'Pilihan tampilan',
 'prefs-diffs'                   => 'Beda',
 
 # User rights
@@ -1490,6 +1491,7 @@ Anda juga dapat memilih untuk memungkinkan orang lain menghubungi Anda melalui h
 'right-override-export-depth' => 'Ekspor halaman termasuk halaman-halaman terkait hingga kedalaman 5',
 'right-sendemail'             => 'Mengirim surel ke pengguna lain',
 'right-revisionmove'          => 'Pindah revisi',
+'right-selenium'              => 'Jalankan uji Selenium',
 
 # User rights log
 'rightslog'      => 'Log perubahan hak akses',
@@ -1815,7 +1817,7 @@ Deskripsi dari [$2 halaman deskripsinya] ditunjukkan di bawah ini.',
 'filedelete-legend'           => 'Menghapus berkas',
 'filedelete-intro'            => "Anda akan menghapus berkas '''[[Media:$1|$1]]''' berikut semua riwayatnya.",
 'filedelete-intro-old'        => '<span class="plainlinks">Anda menghapus versi \'\'\'[[Media:$1|$1]]\'\'\' hingga [$4 $3, $2].</span>',
-'filedelete-comment'          => 'Alasan penghapusan:',
+'filedelete-comment'          => 'Alasan:',
 'filedelete-submit'           => 'Hapus',
 'filedelete-success'          => "'''$1''' telah dihapus.",
 'filedelete-success-old'      => "Berkas '''[[Media:$1|$1]]''' versi $3, $2 telah dihapus.",
@@ -1884,7 +1886,7 @@ Suatu halaman dianggap sebagai halaman disambiguasi apabila halaman tersebut men
 'doubleredirects'            => 'Pengalihan ganda',
 'doubleredirectstext'        => 'Halaman ini memuat daftar halaman yang dialihkan ke halaman pengalihan yang lain. 
 Setiap baris memuat pranala ke pengalihan pertama dan pengalihan kedua serta target dari pengalihan kedua yang umumnya adalah halaman yang "sebenarnya". Halaman peralihan pertama seharusnya dialihkan ke halaman yang bukan merupakan halaman peralihan.
-Nama yang telah <s>dicoret</s> berarti telah dibetulkan.',
+Nama yang telah <del>dicoret</del> berarti telah dibetulkan.',
 'double-redirect-fixed-move' => '[[$1]] telah dipindahkan menjadi halaman peralihan ke [[$2]]',
 'double-redirect-fixer'      => 'Revisi pengalihan',
 
@@ -2184,7 +2186,7 @@ Umpan balik dan bantuan lebih lanjut:
 'dellogpagetext'         => 'Di bawah ini adalah log penghapusan halaman. Semua waktu yang ditunjukkan adalah waktu server.',
 'deletionlog'            => 'log penghapusan',
 'reverted'               => 'Dikembalikan ke revisi sebelumnya',
-'deletecomment'          => 'Alasan penghapusan:',
+'deletecomment'          => 'Alasan:',
 'deleteotherreason'      => 'Alasan lain/tambahan:',
 'deletereasonotherlist'  => 'Alasan lain',
 'deletereason-dropdown'  => '*Alasan penghapusan
@@ -2268,7 +2270,7 @@ Lihat [[Special:ProtectedPages|daftar halaman yang dilindungi]] untuk daftar ter
 'restriction-edit'   => 'Sunting',
 'restriction-move'   => 'Pindahkan',
 'restriction-create' => 'Buat',
-'restriction-upload' => 'Pemuatan',
+'restriction-upload' => 'Unggah',
 
 # Restriction levels
 'restriction-level-sysop'         => 'perlindungan penuh',
@@ -2864,7 +2866,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Peringatan''': Berkas ini mungkin mengandung kode berbahaya.
-Jika dijalankan, sistem Anda akan berisiko terserang.<hr />",
+Jika dijalankan, sistem Anda akan berisiko terserang.",
 'imagemaxsize'         => "Batas ukuran gambar:<br />''(untuk halaman deskripsi berkas)''",
 'thumbsize'            => 'Ukuran miniatur:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|halaman|halaman}}',

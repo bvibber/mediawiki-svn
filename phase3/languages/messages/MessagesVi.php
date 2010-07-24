@@ -279,7 +279,6 @@ $messages = array(
 'tog-watchdefault'            => 'Tự động theo dõi trang tôi sửa',
 'tog-watchmoves'              => 'Tự động theo dõi trang tôi di chuyển',
 'tog-watchdeletion'           => 'Tự động theo dõi trang tôi xóa',
-'tog-minordefault'            => 'Mặc định đánh dấu tất cả sửa đổi của tôi là sửa đổi nhỏ',
 'tog-previewontop'            => 'Hiển thị phần xem thử nằm trên hộp sửa đổi',
 'tog-previewonfirst'          => 'Hiện xem thử tại lần sửa đầu tiên',
 'tog-nocache'                 => 'Không lưu trang trong bộ nhớ đệm',
@@ -293,7 +292,7 @@ $messages = array(
 'tog-externaleditor'          => 'Mặc định dùng trình soạn thảo bên ngoài (chỉ dành cho người thành thạo, cần thiết lập đặc biệt trên máy tính của bạn)',
 'tog-externaldiff'            => 'Mặc định dùng trình so sánh bên ngoài (chỉ dành cho người thành thạo, cần thiết lập đặc biệt trên máy tính của bạn)',
 'tog-showjumplinks'           => 'Bật liên kết “bước tới” trên đầu trang cho bộ trình duyệt thuần văn bản hay âm thanh',
-'tog-uselivepreview'          => 'Sử dụng xem thử trực tiếp (JavaScript) (thử nghiệm)',
+'tog-uselivepreview'          => 'Xem thử trực tiếp (JavaScript; chưa ổn định)',
 'tog-forceeditsummary'        => 'Nhắc tôi khi tôi quên tóm lược sửa đổi',
 'tog-watchlisthideown'        => 'Ẩn các sửa đổi của tôi khỏi danh sách theo dõi',
 'tog-watchlisthidebots'       => 'Ẩn các sửa đổi của robot khỏi danh sách theo dõi',
@@ -862,7 +861,7 @@ hoặc <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE
 'usercsspreview'                   => "'''Hãy nhớ rằng bạn chỉ đang xem thử trang CSS cá nhân của bạn.
 Nó chưa được lưu!'''",
 'userjspreview'                    => "'''Nhớ rằng bạn chỉ đang kiểm thử/xem thử trang JavaScript, nó chưa được lưu!'''",
-'userinvalidcssjstitle'            => "'''Cảnh báo:''' Không có skin “$1”. Hãy nhớ rằng các trang .css và .js tùy chỉnh sử dụng tiêu đề chữ thường, như {{ns:user}}:Ví&nbsp;dụ/monobook.css chứ không phải {{ns:user}}:Ví&nbsp;dụ/Monobook.css.",
+'userinvalidcssjstitle'            => "'''Cảnh báo:''' Không có skin “$1”. Hãy nhớ rằng các trang .css và .js tùy chỉnh sử dụng tiêu đề chữ thường, như {{ns:user}}:Ví&nbsp;dụ/vector.css chứ không phải {{ns:user}}:Ví&nbsp;dụ/Vector.css.",
 'updated'                          => '(Cập nhật)',
 'note'                             => "'''Ghi chú:'''",
 'previewnote'                      => "'''Đây chỉ mới là xem thử; các thay đổi vẫn chưa được lưu!'''",
@@ -1065,7 +1064,7 @@ Các quản lý khác ở {{SITENAME}} vẫn có thể truy nhập vào nội du
 'revdelete-radio-unset'       => 'Không',
 'revdelete-suppress'          => 'Che dữ liệu đối với người quản lý cũng như các thành viên khác',
 'revdelete-unsuppress'        => 'Bỏ các hạn chế trên các phiên bản được phục hồi',
-'revdelete-log'               => 'Lý do xóa:',
+'revdelete-log'               => 'Lý do:',
 'revdelete-submit'            => 'Áp dụng vào {{PLURAL:$1|phiên bản|các phiên bản}} được chọn',
 'revdelete-logentry'          => 'đã thay đổi khả năng nhìn thấy phiên bản của [[$1]]',
 'logdelete-logentry'          => 'đã thay đổi khả năng nhìn thấy sự kiện của [[$1]]',
@@ -1123,11 +1122,11 @@ Xem [[Special:IPBlockList|danh sách các IP bị cấm]] để xem danh sách c
 'revmove-reasonfield'          => 'Lý do:',
 'revmove-titlefield'           => 'Trang mục tiêu:',
 'revmove-badparam-title'       => 'Tham số hỏng',
-'revmove-badparam'             => '<span class="error">Yêu cầu của bạn không đủ tham số hoặc có tham số không hợp lệ. Xin hãy bấm “Lùi” và thử lại.</span>',
+'revmove-badparam'             => 'Yêu cầu của bạn không đủ tham số hoặc có tham số không hợp lệ. Xin hãy bấm “Lùi” và thử lại.',
 'revmove-norevisions-title'    => 'Phiên bản mục tiêu không hợp lệ',
-'revmove-norevisions'          => '<span class="error">Chưa chọn ít nhất một phiên bản mục tiêu để thực hiện tác vụ này, hoặc phiên bản được chọn không tồn tại.</span>',
+'revmove-norevisions'          => 'Chưa chọn ít nhất một phiên bản mục tiêu để thực hiện tác vụ này, hoặc phiên bản được chọn không tồn tại.',
 'revmove-nullmove-title'       => 'Tựa trang sai',
-'revmove-nullmove'             => '<span class="error">Không thể di chuyển phiên bản từ một trang đến cùng trang. Xin hãy bấm “Lùi” và đổi “$1” thành tên trang khác.</span>',
+'revmove-nullmove'             => 'Không thể di chuyển phiên bản từ một trang đến cùng trang. Xin hãy bấm “Lùi” và đổi “$1” thành tên trang khác.',
 'revmove-success-existing'     => '{{PLURAL:$1|Một phiên bản|$1 phiên bản}} [[$2]] đã được di chuyển đến trang tồn tại [[$3]].',
 'revmove-success-created'      => '{{PLURAL:$1|Một phiên bản|$1 phiên bản}} [[$2]] đã được di chuyển đên trang mới [[$3]].',
 
@@ -1350,7 +1349,9 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'prefs-advancedrendering'       => 'Tùy chọn nâng cao',
 'prefs-advancedsearchoptions'   => 'Tùy chọn nâng cao',
 'prefs-advancedwatchlist'       => 'Tùy chọn nâng cao',
-'prefs-display'                 => 'Tùy chọn hiển thị',
+'prefs-displayrc'               => 'Tùy chọn hiển thị',
+'prefs-displaysearchoptions'    => 'Tùy chọn hiển thị',
+'prefs-displaywatchlist'        => 'Tùy chọn hiển thị',
 'prefs-diffs'                   => 'Khác biệt',
 
 # User rights
@@ -1461,6 +1462,7 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'right-override-export-depth' => 'Xuất trang kèm theo các trang được liên kết đến với độ sâu tối đa là 5',
 'right-sendemail'             => 'Gửi thư điện tử cho thành viên khác',
 'right-revisionmove'          => 'Di chuyển phiên bản',
+'right-selenium'              => 'Chạy thử nghiệm Selenium',
 
 # User rights log
 'rightslog'      => 'Nhật trình cấp quyền thành viên',
@@ -1873,7 +1875,7 @@ Hãy nhớ kiểm tra các liên kết khác đến bản mẫu trước khi xó
 'doubleredirects'            => 'Đổi hướng kép',
 'doubleredirectstext'        => 'Trang này liệt kê các trang đổi hướng đến một trang đổi hướng khác.
 Mỗi hàng có chứa các liên kết đến trang đổi hướng thứ nhất và thứ hai, cũng như mục tiêu của trang đổi hướng thứ hai, thường là trang đích “thực sự”, là nơi mà trang đổi hướng đầu tiên nên trỏ đến.
-Các mục <s>bị gạch bỏ</s> là các trang đã được sửa.',
+Các mục <del>bị gạch bỏ</del> là các trang đã được sửa.',
 'double-redirect-fixed-move' => '[[$1]] đã được đổi tên, giờ nó là trang đổi hướng đến [[$2]]',
 'double-redirect-fixer'      => 'Người sửa trang đổi hướng',
 
@@ -2176,7 +2178,7 @@ Xin xác nhận việc bạn định làm, và hiểu rõ những hệ lụy c�
 'dellogpagetext'         => 'Dưới đây là danh sách các trang bị xóa gần đây nhất.',
 'deletionlog'            => 'nhật trình xóa',
 'reverted'               => 'Đã hồi phục một phiên bản cũ',
-'deletecomment'          => 'Lý do',
+'deletecomment'          => 'Lý do:',
 'deleteotherreason'      => 'Lý do khác/bổ sung:',
 'deletereasonotherlist'  => 'Lý do khác',
 'deletereason-dropdown'  => '*Các lý do xóa phổ biến
@@ -2877,12 +2879,12 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Cảnh báo''': Kiểu tập tin này có thể chứa mã hiểm độc.
-Nếu thực thi nó máy tính của bạn có thể bị tiếm quyền.<hr />",
+Nếu thực thi nó máy tính của bạn có thể bị tiếm quyền.",
 'imagemaxsize'         => "Giới hạn cỡ hình:<br />''(trên trang miêu tả tập tin)''",
 'thumbsize'            => 'Cỡ hình thu nhỏ:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|trang|trang}}',
 'file-info'            => '(kích thước tập tin: $1, định dạng MIME: $2)',
-'file-info-size'       => '($1 × $2 điểm ảnh, kích thước: $3, định dạng MIME: $4)',
+'file-info-size'       => '($1×$2 điểm ảnh, kích thước: $3, định dạng MIME: $4)',
 'file-nohires'         => '<small>Không có độ phân giải cao hơn.</small>',
 'svg-long-desc'        => '(tập tin SVG, $1 × $2 điểm ảnh trên danh nghĩa, kích thước: $3)',
 'show-big-image'       => 'Độ phân giải tối đa',
@@ -3438,7 +3440,7 @@ Hãy cho vào tên của tập tin, trừ tiền tố “{{ns:file}}:”.',
 'fileduplicatesearch-legend'   => 'Tìm kiếm tập tin trùng lắp',
 'fileduplicatesearch-filename' => 'Tên tập tin:',
 'fileduplicatesearch-submit'   => 'Tìm kiếm',
-'fileduplicatesearch-info'     => '$1 × $2 điểm ảnh<br />Kích thước tập tin: $3<br />Định dạng MIME: $4',
+'fileduplicatesearch-info'     => '$1×$2 điểm ảnh<br />Kích thước tập tin: $3<br />Định dạng MIME: $4',
 'fileduplicatesearch-result-1' => 'Không có bản sao y hệt với tập tin “$1”.',
 'fileduplicatesearch-result-n' => 'Có {{PLURAL:$2|1 bản sao|$2 bản sao}} y hệt với tập tin “$1”.',
 

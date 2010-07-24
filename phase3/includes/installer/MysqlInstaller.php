@@ -1,6 +1,7 @@
 <?php
 
-class MysqlInstaller extends InstallerDBType {
+class MysqlInstaller extends DatabaseInstaller {
+	
 	protected $globalNames = array(
 		'wgDBserver',
 		'wgDBname',
@@ -16,11 +17,11 @@ class MysqlInstaller extends InstallerDBType {
 		'_MysqlCharset' => 'binary',
 	);
 
-	var $supportedEngines = array( 'InnoDB', 'MyISAM' );
+	public $supportedEngines = array( 'InnoDB', 'MyISAM' );
 
-	var $minimumVersion = '4.0.14';
+	public $minimumVersion = '4.0.14';
 
-	var $webUserPrivs = array(
+	public $webUserPrivs = array(
 		'DELETE',
 		'INSERT',
 		'SELECT',
@@ -28,19 +29,23 @@ class MysqlInstaller extends InstallerDBType {
 		'CREATE TEMPORARY TABLES',
 	);
 
-	function getName() {
+	public function getName() {
 		return 'mysql';
 	}
-	
-	function isCompiled() {
-		return $this->checkExtension( 'mysql' );
+
+	public function __construct( $parent ) {
+		parent::__construct( $parent );
 	}
 
-	function getGlobalDefaults() {
+	public function isCompiled() {
+		return self::checkExtension( 'mysql' );
+	}
+
+	public function getGlobalDefaults() {
 		return array();
 	}
 
-	function getConnectForm() {
+	public function getConnectForm() {
 		return
 			$this->getTextBox( 'wgDBserver', 'config-db-host' ) .
 			$this->parent->getHelpBox( 'config-db-host-help' ) . 
@@ -54,7 +59,7 @@ class MysqlInstaller extends InstallerDBType {
 			$this->getInstallUserBox();
 	}
 
-	function submitConnectForm() {
+	public function submitConnectForm() {
 		// Get variables from the request
 		$newValues = $this->setVarsFromRequest( array( 'wgDBserver', 'wgDBname', 'wgDBprefix' ) );
 
@@ -94,7 +99,7 @@ class MysqlInstaller extends InstallerDBType {
 		return $status;
 	}
 
-	function getConnection() {
+	public function getConnection() {
 		$status = Status::newGood();
 		try {
 			$this->db = new DatabaseMysql(
@@ -114,7 +119,7 @@ class MysqlInstaller extends InstallerDBType {
 		return $status;
 	}
 
-	function doUpgrade() {
+	public function doUpgrade() {
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
 			$this->parent->showStatusError( $status );
@@ -156,7 +161,7 @@ class MysqlInstaller extends InstallerDBType {
 	/**
 	 * Get a list of storage engines that are available and supported
 	 */
-	function getEngines() {
+	public function getEngines() {
 		$engines = array( 'InnoDB', 'MyISAM' );
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
@@ -184,7 +189,7 @@ class MysqlInstaller extends InstallerDBType {
 	/**
 	 * Get a list of character sets that are available and supported
 	 */
-	function getCharsets() {
+	public function getCharsets() {
 		$status = $this->getConnection();
 		$mysql5 = array( 'binary', 'utf8' );
 		$mysql4 = array( 'mysql4' );
@@ -200,7 +205,7 @@ class MysqlInstaller extends InstallerDBType {
 	/**
 	 * Return true if the install user can create accounts
 	 */
-	function canCreateAccounts() {
+	public function canCreateAccounts() {
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
 			return false;
@@ -272,7 +277,7 @@ class MysqlInstaller extends InstallerDBType {
 		return true;
 	}
 
-	function getSettingsForm() {
+	public function getSettingsForm() {
 		if ( $this->canCreateAccounts() ) {
 			$noCreateMsg = false;
 		} else {
@@ -316,7 +321,7 @@ class MysqlInstaller extends InstallerDBType {
 		return $s;
 	}
 
-	function submitSettingsForm() {
+	public function submitSettingsForm() {
 		$newValues = $this->setVarsFromRequest( array( '_MysqlEngine', '_MysqlCharset' ) );
 		$status = $this->submitWebUserBox();
 		if ( !$status->isOK() ) {
@@ -362,7 +367,18 @@ class MysqlInstaller extends InstallerDBType {
 		return Status::newGood();
 	}
 
-	function setupDatabase() {
+	public function preInstall() {
+		# Add our user callback to installSteps, right before the tables are created.
+		$callback = array(
+			array(
+				'name' => 'user',
+				'callback' => array( $this, 'setupUser' ),
+			)
+		);
+		$this->parent->addInstallStepFollowing( "tables", $callback );
+	}
+
+	public function setupDatabase() {
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
 			return $status;
@@ -376,25 +392,54 @@ class MysqlInstaller extends InstallerDBType {
 		return $status;
 	}
 
-	function createTables() {
+	public function setupUser() {
+		global $IP;
+
+		if ( !$this->getVar( '_CreateDBAccount' ) ) {
+			return Status::newGood();
+		}
+
+		$status = $this->getConnection();
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		$db = $this->getVar( 'wgDBname' );
+		$this->db->selectDB( $db );
+		$error = $this->db->sourceFile( "$IP/maintenance/users.sql" );
+		if ( $error !== true ) {
+			$status->fatal( 'config-install-user-failed', $this->getVar( 'wgDBuser' ), $error );
+		}
+
+		return $status;
+	}
+
+	public function createTables() {
 		global $IP;
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
 			return $status;
 		}
 		$this->db->selectDB( $this->getVar( 'wgDBname' ) );
-		if ( !$this->db->sourceFile( "$IP/maintenance/tables.sql" ) ) {
-			//@todo
+		
+		if( $this->db->tableExists( 'user' ) ) {
+			$status->warning( 'config-install-tables-exist' );
+			return $status;
+		} 
+		
+		$error = $this->db->sourceFile( "$IP/maintenance/tables.sql" );
+		if( $error !== true ) {
+			$status->fatal( 'config-install-tables-failed', $error );
 		}
-		return Status::newGood();
+		return $status;
 	}
 
-	function getTableOptions() {
+	public function getTableOptions() {
 		return array( 'engine' => $this->getVar( '_MysqlEngine' ),
 			'default charset' => $this->getVar( '_MysqlCharset' ) );
 	}
 
-	function getLocalSettings() {
+	public function getLocalSettings() {
 		$dbmysql5 = wfBoolToStr( $this->getVar( 'wgDBmysql5', true ) );
 		$prefix = $this->getVar( 'wgDBprefix' );
 		$opts = $this->getTableOptions();

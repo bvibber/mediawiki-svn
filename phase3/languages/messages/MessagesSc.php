@@ -75,7 +75,6 @@ $messages = array(
 'tog-watchdefault'            => 'Aciungi is pàginas chi apo acontzadu a sa watchlist mea',
 'tog-watchmoves'              => 'Aciungi is pàginas chi apo mòvidu a sa watchlist mea',
 'tog-watchdeletion'           => 'Aciungi is pàginas chi apo fuliadu a sa watchlist mea',
-'tog-minordefault'            => 'Signa totu is acontzos comente minores pro difetu',
 'tog-previewontop'            => "Ammustra s'antiprima a subra sa casella de acontzu e no a suta",
 'tog-previewonfirst'          => "Ammustra s'antiprima pro su primu acontzu",
 'tog-nocache'                 => "Disativa sa ''cache'' pro is pàginas",
@@ -949,7 +948,7 @@ Càstia sa [[Special:NewFiles|galleria de files nous]] pro una presentada prus b
 'doubleredirects'     => 'Redirects dòpios',
 'doubleredirectstext' => 'Custa pàgina cuntenet una lista de pàginas ki re-indiritzant a àteras pàginas de re-indiritzamentu.
 Ogni lìnia cuntenet ligàmines a su primu e a su de duos re-indiritzamentu, aici comente sa prima lìnia de sa de duos re-indiritzamentos, chi de sòlitu adòbiat s\'artìculu "beru", a sa cale fintzas su primu re-indiritzamentu dia depet puntare.
-Is re-indiritzamentos <s>cantzellados</s> sunt stados curretos.',
+Is re-indiritzamentos <del>cantzellados</del> sunt stados curretos.',
 
 'brokenredirects'        => 'Redirects isballiaus',
 'brokenredirectstext'    => 'Custus redirects ligant cun pàginas chi no esistint.',
@@ -1111,7 +1110,7 @@ Càstia su log $2 pro unu registru de is ùrtimas fuliaduras.',
 'dellogpage'            => 'Burraduras',
 'dellogpagetext'        => 'A sighire una lista de is prus reghentes burraduras.',
 'reverted'              => 'Torrada a sa versione in antis',
-'deletecomment'         => 'Motivu de sa burradura:',
+'deletecomment'         => 'Motivu:',
 'deleteotherreason'     => 'Àteru motivu o motivu agiuntivu:',
 'deletereasonotherlist' => 'Àteru motivu',
 

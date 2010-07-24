@@ -281,17 +281,14 @@ $wgAllowImageMoving = true;
 $wgIllegalFileChars = ":";
 
 /**
- * New file storage paths; currently used only for deleted files.
- * Set it like this:
- *
- *   $wgFileStore['deleted']['directory'] = '/var/wiki/private/deleted';
+ * @deprecated use $wgDeletedDirectory
  */
 $wgFileStore = array();
-/** @cond file_level_code */
-$wgFileStore['deleted']['directory'] = false; //  Defaults to $wgUploadDirectory/deleted
-$wgFileStore['deleted']['url'] = null;        //  Private
-$wgFileStore['deleted']['hash'] = 3;          //  3-level subdirectory split
-/** @endcond */
+
+/**
+ * What directory to place deleted uploads in
+ */
+$wgDeletedDirectory = false; //  Defaults to $wgUploadDirectory/deleted
 
 /**
  * Set this to true if you use img_auth and want the user to see details on why access failed.
@@ -342,9 +339,11 @@ $wgImgAuthPublicTest = true;
  *
  * These settings describe a foreign MediaWiki installation. They are optional, and will be ignored
  * for local repositories:
- *   - descBaseUrl       URL of image description pages, e.g. http://en.wikipedia.org/wiki/Image:
+ *   - descBaseUrl       URL of image description pages, e.g. http://en.wikipedia.org/wiki/File:
  *   - scriptDirUrl      URL of the MediaWiki installation, equivalent to $wgScriptPath, e.g.
- *                      http://en.wikipedia.org/w
+ *                       http://en.wikipedia.org/w
+ *   - scriptExtension   Script extension of the MediaWiki installation, equivalent to 
+ *                       $wgScriptExtension, e.g. .php5 defaults to .php
  *
  *   - articleUrl        Equivalent to $wgArticlePath, e.g. http://en.wikipedia.org/wiki/$1
  *   - fetchDescription  Fetch the text of the remote file description page. Equivalent to
@@ -400,7 +399,7 @@ $wgRemoteUploads = false;
  * Uploads to this wiki will NOT be put there - they will be put into
  * $wgUploadDirectory.
  * If $wgUseSharedUploads is set, the wiki will look in the shared repository if
- * no file of the given name is found in the local repository (for [[Image:..]],
+ * no file of the given name is found in the local repository (for [[File:..]],
  * [[Media:..]] links). Thumbnails will also be looked for and generated in this
  * directory.
  *
@@ -483,7 +482,7 @@ $wgHashedSharedUploadDirectory = true;
  *
  * Please specify the namespace, as in the example below.
  */
-$wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/Image:";
+$wgRepositoryBaseUrl = "http://commons.wikimedia.org/wiki/File:";
 
 /**
  * This is the list of preferred extensions for uploading files. Uploading files
@@ -540,7 +539,7 @@ $wgUploadSizeWarning = false;
 /**
  * list of trusted media-types and mime types.
  * Use the MEDIATYPE_xxx constants to represent media types.
- * This list is used by Image::isSafeFile
+ * This list is used by File::isSafeFile
  *
  * Types not listed here will have a warning about unsafe content
  * displayed on the images description page. It would also be possible
@@ -1123,6 +1122,14 @@ $wgDBprefix         = '';
 /** MySQL table options to use during installation or update */
 $wgDBTableOptions   = 'ENGINE=InnoDB';
 
+/**
+ * SQL Mode - default is turning off all modes, including strict, if set.
+ * null can be used to skip the setting for performance reasons and assume 
+ * DBA has done his best job.
+ * String override can be used for some additional fun :-)
+ */
+$wgSQLMode = ''; 
+
 /** Mediawiki schema */
 $wgDBmwschema       = 'mediawiki';
 /** Tsearch2 schema */
@@ -1411,7 +1418,7 @@ $wgCacheDirectory = false;
  *   - CACHE_NONE:       Do not cache
  *   - CACHE_DB:         Store cache objects in the DB
  *   - CACHE_MEMCACHED:  MemCached, must specify servers in $wgMemCacheServers
- *   - CACHE_ACCEL:      eAccelerator
+ *   - CACHE_ACCEL:      eAccelerator, APC, XCache or WinCache
  *   - CACHE_DBA:        Use PHP's DBA extension to store in a DBM-style 
  *                       database. This is slow, and is not recommended for 
  *                       anything other than debugging.
@@ -1540,7 +1547,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '291';
+$wgStyleVersion = '299';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -1768,6 +1775,18 @@ $wgFixArabicUnicode = true;
  * fix any ZWJ sequences in existing page titles.
  */
 $wgFixMalayalamUnicode = true;
+
+/**
+ * Set this to always convert certain Unicode sequences to modern ones
+ * regardless of the content language. This has a small performance
+ * impact.
+ *
+ * See $wgFixArabicUnicode and $wgFixMalayalamUnicode for conversion
+ * details.
+ *
+ * @since 1.17
+ */
+$wgAllUnicodeFixes = false;
 
 /**
  * Set this to eg 'ISO-8859-1' to perform character set conversion when 
@@ -2109,7 +2128,7 @@ $wgValidateAllHtml = false;
 /**
  * Default skin, for new users and anonymous visitors. Registered users may
  * change this to any one of the other available skins in their preferences.
- * This have to be completely lowercase; see the "skins" directory for the list
+ * This has to be completely lowercase; see the "skins" directory for the list
  * of available skins.
  */
 $wgDefaultSkin = 'vector';
@@ -2262,6 +2281,12 @@ $wgVectorExtraStyles = null;
  * Display user edit counts in various prominent places.
  */
 $wgEdititis = false;
+
+/**
+ * Experimental better directionality support.
+ */
+$wgBetterDirectionality = false;
+
 
 /** @} */ # End of output format settings }
 
@@ -2690,6 +2715,14 @@ $wgUseCommaCount = false;
  */
 $wgHitcounterUpdateFreq = 1;
 
+/**
+ * How many days user must be idle before he is considered inactive. Will affect
+ * the number shown on Special:Statistics and Special:ActiveUsers special page.
+ * You might want to leave this as the default value, to provide comparable
+ * numbers between different wikis.
+ */
+$wgActiveUserDays = 30;
+
 /** @} */ # End of statistics }
 
 /************************************************************************//**
@@ -2728,6 +2761,7 @@ $wgReservedUsernames = array(
 	'Template namespace initialisation script', // Used in 1.2->1.3 upgrade
 	'msg:double-redirect-fixer', // Automatic double redirect fix
 	'msg:usermessage-editor', // Default user for leaving user messages
+	'msg:proxyblocker', // For Special:Blockme
 );
 
 /**
@@ -2766,7 +2800,6 @@ $wgDefaultUserOptions = array(
 	'imagesize'               => 2,
 	'justify'                 => 0,
 	'math'                    => 1,
-	'minordefault'            => 0,
 	'newpageshidepatrolled'   => 0,
 	'nocache'                 => 0,
 	'noconvertlink'           => 0,
@@ -3701,6 +3734,50 @@ $wgParserTestFiles = array(
  */
 $wgParserTestRemote = false;
 
+/**
+ * Enable Selenium test framework.
+ * This enables maintenance/tests/RunSeleniumTests.php and [[Special:Selenium]].
+ */
+$wgEnableSelenium = false;
+
+/** List of Selenium test classes. These must be registered with the autoloader. */
+$wgSeleniumTests = array(
+	'SimpleSeleniumTest'
+);
+
+
+/** Hostname of selenium server */
+$wgSeleniumTestsSeleniumHost = 'localhost';
+
+/** URL of the wiki to be tested. By default, the local wiki is used. */
+$wgSeleniumTestsWikiUrl = false;
+
+/** Port used by selenium server. */
+$wgSeleniumServerPort = 4444;
+
+/** Wiki login username. Used by Selenium to log onto the wiki. */
+$wgSeleniumTestsWikiUser      = 'Wikiuser';
+
+/** Wiki login password. Used by Selenium to log onto the wiki. */
+$wgSeleniumTestsWikiPassword  = '';
+
+/**
+ * Common browsers on Windows platform. Modify for other platforms or
+ * other Windows browsers.
+ * Use the *chrome handler in order to be able to test file uploads.
+ * Further solution suggestions: http://www.brokenbuild.com/blog/2007/06/07/testing-file-uploads-with-selenium-rc-and-firefoxor-reducing-javascript-security-in-firefox-for-fun-and-profit/
+ */
+$wgSeleniumTestsBrowsers = array(
+	'firefox' => '*firefox /usr/bin/firefox',
+	'iexplorer' => '*iexploreproxy',
+	'opera' => '*chrome /usr/bin/opera',
+);
+
+/** Actually, use this browser */
+$wgSeleniumTestsUseBrowser = 'firefox';
+
+
+
 /** @} */ # end of profiling, testing and debugging }
 
 /************************************************************************//**
@@ -4381,6 +4458,24 @@ $wgCategoryPagingLimit = 200;
  */
 $wgCategoryPrefixedDefaultSortkey = true;
 
+/**
+ * Enable experimental support for non-braindead collation on category pages.
+ * For this to work, you need to alter your categorylinks table by applying
+ * maintenance/archives/patch-categorylinks-better-collation.sql, then keep
+ * up-to-date with changes that are made to that file (they won't be
+ * automatically applied).  You should also set $wgUseDumbLinkUpdate = true and
+ * run maintenance/refreshLinks.php.
+ */
+$wgExperimentalCategorySort = false;
+
+/**
+ * A version indicator for collations that will be stored in cl_collation for
+ * all new rows.  Used when the collation algorithm changes: a script checks
+ * for all rows where cl_collation < $wgCollationVersion and regenerates
+ * cl_sortkey based on cl_raw_sortkey.
+ */
+$wgCollationVersion = 1;
+
 /** @} */ # End categories }
 
 /*************************************************************************//**
@@ -4514,14 +4609,15 @@ $wgLogActions = array(
 	'suppress/file'     => 'revdelete-logentry',
 	'suppress/event'    => 'logdelete-logentry',
 	'suppress/delete'   => 'suppressedarticle',
-	'suppress/block'	=> 'blocklogentry',
+	'suppress/block'    => 'blocklogentry',
 	'suppress/reblock'  => 'reblock-logentry',
-	'patrol/patrol' 	=> 'patrol-log-line',
+	'patrol/patrol'     => 'patrol-log-line',
 );
 
 /**
  * The same as above, but here values are names of functions,
- * not messages
+ * not messages.
+ * @see LogPage::actionText
  */
 $wgLogActionsHandlers = array();
 

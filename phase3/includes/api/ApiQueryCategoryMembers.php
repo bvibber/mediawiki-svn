@@ -43,6 +43,10 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -104,9 +108,6 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$limit = $params['limit'];
 		$this->addOption( 'LIMIT', $limit + 1 );
 
-		$db = $this->getDB();
-
-		$data = array();
 		$count = 0;
 		$lastSortKey = null;
 		$res = $this->select( __METHOD__ );
@@ -260,7 +261,13 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$p = $this->getModulePrefix();
 		$desc = array(
 			'title' => 'Which category to enumerate (required). Must include Category: prefix',
-			'prop' => 'What pieces of information to include',
+			'prop' => array(
+				'What pieces of information to include',
+				' ids        - Adds the page id',
+				' title      - Adds the title and namespace id of the page',
+				' sortkey    - Adds the sortkey used for the category',
+				' timestamp  - Adds the timestamp of when the page was included',
+			),
 			'namespace' => 'Only include pages in these namespaces',
 			'sort' => 'Property to sort by',
 			'dir' => 'In which direction to sort',

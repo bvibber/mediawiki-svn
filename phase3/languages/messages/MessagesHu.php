@@ -10,6 +10,7 @@
  * @author Balasyum
  * @author Bdamokos
  * @author Bennó
+ * @author BáthoryPéter
  * @author CERminator
  * @author Cerasus
  * @author Dani
@@ -313,7 +314,6 @@ $messages = array(
 'tog-watchdefault'            => 'Az általam szerkesztett lapok felvétele a figyelőlistára',
 'tog-watchmoves'              => 'Az általam átnevezett lapok felvétele a figyelőlistára',
 'tog-watchdeletion'           => 'Az általam törölt lapok felvétele a figyelőlistára',
-'tog-minordefault'            => 'Alapértelmezésben minden szerkesztésemet jelölje aprónak',
 'tog-previewontop'            => 'Előnézet megjelenítése a szerkesztőablak előtt',
 'tog-previewonfirst'          => 'Előnézet első szerkesztésnél',
 'tog-nocache'                 => 'A lapok gyorstárazásának letiltása',
@@ -833,7 +833,7 @@ Lehet, hogy már sikeresen megváltoztattad a jelszavad, vagy pedig időközben 
 'missingsummary'                   => "'''Emlékeztető:''' Nem adtál meg szerkesztési összefoglalót. Ha összefoglaló nélkül akarod elküldeni a szöveget, kattints újra a mentésre.",
 'missingcommenttext'               => 'Kérjük, hogy írj összefoglalót szerkesztésedhez.',
 'missingcommentheader'             => "'''Emlékeztető:''' Nem adtad meg a megjegyzés tárgyát vagy címét.
-Ha ismét a Mentés gombra kattintasz, akkor a szerkesztésed nélküle kerül mentésre.",
+Ha ismét a „{{int:savearticle}}” gombra kattintasz, akkor a szerkesztésed nélküle kerül mentésre.",
 'summary-preview'                  => 'A szerkesztési összefoglaló előnézete:',
 'subject-preview'                  => 'A téma/főcím előnézete:',
 'blockedtitle'                     => 'A szerkesztő blokkolva van',
@@ -896,8 +896,8 @@ Ha úgy látod, hogy az üzenetek, amiket ide kapsz, nem neked szólnak, [[Speci
 vagy [{{fullurl:{{FULLPAGENAME}}|action=edit}} szerkesztheted a lapot].</span>',
 'noarticletext-nopermission'       => 'Ez a lap jelenleg nem tartalmaz szöveget.
 [[Special:Search/{{PAGENAME}}|Rákereshetsz a lap címére]] más lapok tartalmában, vagy <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} megtekintheted a kapcsolódó naplófájlokat]</span>.',
-'userpage-userdoesnotexist'        => 'Nincs „$1” nevű regisztrált szerkesztőnk.
-Nézd meg, hogy valóban ezt a lapot szeretnéd létrehozni vagy szerkeszteni.',
+'userpage-userdoesnotexist'        => 'Nincs „$1” nevű regisztrált felhasználónk.
+Nézd meg, hogy valóban ezt a lapot szeretnéd-e létrehozni vagy szerkeszteni.',
 'userpage-userdoesnotexist-view'   => 'Nincs regisztrálva „$1” szerkesztői azonosító.',
 'blocked-notice-logextract'        => 'A felhasználó jelenleg blokkolva van.
 A blokkolási napló legutóbbi ide vonatkozó bejegyzése a következő:',
@@ -955,7 +955,7 @@ A lap szöveget kimásolhatod egy szövegfájlba, amit elmenthetsz későbbre.''
 Az adatbázist lezáró adminisztrátor az alábbi magyarázatot adta: $1",
 'protectedpagewarning'             => "'''Figyelem: Ez a lap le van védve, így csak adminisztrátori jogosultságokkal rendelkező szerkesztők módosíthatják.'''
 A legutolsó ide vonatkozó naplóbejegyzés alább látható:",
-'semiprotectedpagewarning'         => "'''Megjegyzés:''' ez a lap védett, nem vagy újonnan regisztrált szerkesztők nem módosíthatják.",
+'semiprotectedpagewarning'         => "'''Megjegyzés:''' ez a lap védett, így regisztrálatlan, vagy újonnan regisztrált szerkesztők nem módosíthatják.",
 'cascadeprotectedwarning'          => "'''Figyelem:''' ez a lap le van zárva, csak adminisztrátorok szerkeszthetik, mert a következő kaszkádvédelemmel ellátott {{PLURAL:$1|lapon|lapokon}} szerepel beillesztve:",
 'titleprotectedwarning'            => "'''Figyelem: Ez a lap le van védve, így csak a [[Special:ListGroupRights|megfelelő jogosultságokkal]] rendelkező szerkesztők hozhatják létre.'''
 A legutolsó ide vonatkozó naplóbejegyzés alább látható:",
@@ -1114,7 +1114,7 @@ A(z) {{SITENAME}} adminisztrátorai továbbra is meg tudják tekinteni az elrejt
 'revdelete-radio-unset'       => 'Nem',
 'revdelete-suppress'          => 'Adatok elrejtése az adminisztrátorok és a többi felhasználó elől is',
 'revdelete-unsuppress'        => 'Korlátozások eltávolítása a visszaállított változatokról',
-'revdelete-log'               => 'A törlés oka:',
+'revdelete-log'               => 'Ok:',
 'revdelete-submit'            => 'Alkalmazás a kiválasztott {{PLURAL:$1|változatra|változatokra}}',
 'revdelete-logentry'          => 'módosította a(z) [[$1]] lap egy vagy több változatának láthatóságát',
 'logdelete-logentry'          => '[[$1]] eseményének láthatóságának módosítása',
@@ -1168,11 +1168,11 @@ Ellenőrizd a naplókat.',
 'revmove-reasonfield'          => 'Ok:',
 'revmove-titlefield'           => 'Céllap:',
 'revmove-badparam-title'       => 'Hibás paraméterek',
-'revmove-badparam'             => '<span class="error">A kérésed érvénytelen vagy nem elegendő paramétert tartalmaz. Kattints a „Vissza” gombra, majd próbáld újra.</span>',
+'revmove-badparam'             => 'A kérésed érvénytelen vagy nem elegendő paramétert tartalmaz. Kattints a „Vissza” gombra, majd próbáld újra.',
 'revmove-norevisions-title'    => 'Érvénytelen célváltozat',
-'revmove-norevisions'          => '<span class="error">Nem adtad meg az(oka)t a lapváltozato(ka)t, mely(ek)en végre akarod hajtani ezt a műveletet, vagy a kiválasztott lapváltozat nem létezik.</span>',
+'revmove-norevisions'          => 'Nem adtad meg az(oka)t a lapváltozato(ka)t, mely(ek)en végre akarod hajtani ezt a műveletet, vagy a kiválasztott lapváltozat nem létezik.',
 'revmove-nullmove-title'       => 'Hibás cím',
-'revmove-nullmove'             => '<span class="error">A forrás és a céllap megegyezik. Kattints a „Vissza” gombra, majd adj meg a jelenlegi, „$1” címtől különbözőt.</span>',
+'revmove-nullmove'             => 'A forrás és a céllap megegyezik. Kattints a „Vissza” gombra, majd adj meg a jelenlegi, „$1” címtől különbözőt.',
 'revmove-success-existing'     => '{{PLURAL:$1|Egy|$1}} lapváltozat át lett helyezve a(z) [[$2]] lapról a már létező [[$3]] lapra.',
 'revmove-success-created'      => '{{PLURAL:$1|Egy|$1}} lapváltozat át lett helyezve a(z) [[$2]] lapról az újonnan létrehozott [[$3]] lapra.',
 
@@ -1393,7 +1393,9 @@ Ezen kívül más szerkesztők is kapcsolatba lépjenek veled a szerkesztői vag
 'prefs-advancedrendering'       => 'Haladó beállítások',
 'prefs-advancedsearchoptions'   => 'Haladó beállítások',
 'prefs-advancedwatchlist'       => 'Haladó beállítások',
-'prefs-display'                 => 'Megjelenítési beállítások',
+'prefs-displayrc'               => 'Megjelenítési beállítások',
+'prefs-displaysearchoptions'    => 'Megjelenítési beállítások',
+'prefs-displaywatchlist'        => 'Megjelenítési beállítások',
 'prefs-diffs'                   => 'Eltérések (diffek)',
 
 # User rights
@@ -1503,6 +1505,7 @@ Ezen kívül más szerkesztők is kapcsolatba lépjenek veled a szerkesztői vag
 'right-override-export-depth' => 'Lapok exportálása a hivatkozott lapokkal együtt, legfeljebb 5-ös mélységig',
 'right-sendemail'             => 'e-mail küldése más felhasználóknak',
 'right-revisionmove'          => 'lapváltozatok áthelyezése',
+'right-selenium'              => 'Selenium-tesztek futtatása',
 
 # User rights log
 'rightslog'      => 'Szerkesztői jogosultságok naplója',
@@ -1843,7 +1846,7 @@ A [$2 fájl ottani leírólapjának] másolata alább látható.',
 'filedelete-legend'           => 'Fájl törlése',
 'filedelete-intro'            => "Törölni készülsz a(z) '''[[Media:$1|$1]]''' médiafájlt, a teljes fájltörténetével együtt.",
 'filedelete-intro-old'        => '<span class="plainlinks">A(z) \'\'\'[[Media:$1|$1]]\'\'\' fájl, dátum: [$4 $3, $2] változatát törlöd.</span>',
-'filedelete-comment'          => 'Indoklás:',
+'filedelete-comment'          => 'Ok:',
 'filedelete-submit'           => 'Törlés',
 'filedelete-success'          => "A(z) '''$1''' médiafájlt törölted.",
 'filedelete-success-old'      => "A(z) '''[[Media:$1|$1]]''' $3, $2-kori változata sikeresen törölve lett.",
@@ -1912,7 +1915,7 @@ Egy oldal egyértelműsítő lapnak számít, ha tartalmazza a [[MediaWiki:Disam
 'doubleredirects'            => 'Dupla átirányítások',
 'doubleredirectstext'        => 'Ez a lap azokat a lapokat listázza, melyek átirányító lapokra irányítanak át.
 Minden sor tartalmaz egy hivatkozást az első, valamint a második átirányításra, valamint a második átirányítás céljára, ami általában a valódi céllap, erre kellene az első átirányításnak mutatnia.
-Az <s>áthúzott</s> sorok a lista elkészülése óta javítva lettek.',
+Az <del>áthúzott</del> sorok a lista elkészülése óta javítva lettek.',
 'double-redirect-fixed-move' => '[[$1]] átnevezve, a továbbiakban átirányításként működik a(z) [[$2]] lapra',
 'double-redirect-fixer'      => 'Átirányításjavító',
 
@@ -2216,7 +2219,7 @@ A legutóbbi törlések listájához lásd a $2 lapot.',
 'dellogpagetext'         => 'Itt láthatók a legutóbb törölt lapok.',
 'deletionlog'            => 'törlési napló',
 'reverted'               => 'Visszaállítva a korábbi változatra',
-'deletecomment'          => 'A törlés oka',
+'deletecomment'          => 'Ok:',
 'deleteotherreason'      => 'További indoklás:',
 'deletereasonotherlist'  => 'Egyéb indok',
 'deletereason-dropdown'  => '*Gyakori törlési okok
@@ -2258,7 +2261,7 @@ Kérjük, hogy nyomd meg a "vissza" gombot, és töltsd le újra az oldalt, ahon
 'protect-title'               => '„$1” levédése',
 'prot_1movedto2'              => '[[$1]] lapot átneveztem [[$2]] névre',
 'protect-legend'              => 'Levédés megerősítése',
-'protectcomment'              => 'A védelem oka:',
+'protectcomment'              => 'Ok:',
 'protectexpiry'               => 'Időtartam',
 'protect_expiry_invalid'      => 'A lejárati idő érvénytelen.',
 'protect_expiry_old'          => 'A lejárati idő a múltban van.',
@@ -2393,6 +2396,7 @@ $1',
 A blokknapló legutóbbi ide vonatkozó bejegyzése a következő:',
 'sp-contributions-search'              => 'Közreműködések szűrése',
 'sp-contributions-username'            => 'IP-cím vagy felhasználónév:',
+'sp-contributions-toponly'             => 'Csak a jelenleg utolsónak számító változtatásokat mutassa',
 'sp-contributions-submit'              => 'Keresés',
 
 # What links here
@@ -2424,7 +2428,7 @@ Add meg a blokkolás okát is (például idézd a blokkolandó személy által v
 'ipaddress'                       => 'IP-cím',
 'ipadressorusername'              => 'IP-cím vagy felhasználói név',
 'ipbexpiry'                       => 'Lejárat:',
-'ipbreason'                       => 'Indok:',
+'ipbreason'                       => 'Ok:',
 'ipbreasonotherlist'              => 'Más ok',
 'ipbreason-dropdown'              => '*Gyakori blokkolási okok
 ** Téves információ beírása
@@ -2913,7 +2917,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Figyelmeztetés''': Ez a fájltípus kártékony kódot tartalmazhat.
-A futtatása során kárt tehet a számítógépedben.<hr />",
+A futtatása során kárt tehet a számítógépedben.",
 'imagemaxsize'         => "A képek mérete, legfeljebb:<br />''(a leírólapokon)''",
 'thumbsize'            => 'Bélyegkép mérete:',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|egy|$3}} oldal',
@@ -2925,6 +2929,7 @@ A futtatása során kárt tehet a számítógépedben.<hr />",
 'show-big-image-thumb' => '<small>Az előnézet mérete: $1 × $2 képpont</small>',
 'file-info-gif-looped' => 'ismétlődik',
 'file-info-gif-frames' => '{{PLURAL:$1|egy|$1}} képkocka',
+'file-info-png-looped' => 'ismétlődik',
 'file-info-png-repeat' => 'lejátszva {{PLURAL:$1|egy|$1}} alkalommal',
 'file-info-png-frames' => '{{PLURAL:$1|egy|$1}} képkocka',
 

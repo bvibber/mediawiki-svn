@@ -45,9 +45,10 @@ class ApiPageSet extends ApiQueryBase {
 
 	private $mAllPages; // [ns][dbkey] => page_id or negative when missing
 	private $mTitles, $mGoodTitles, $mMissingTitles, $mInvalidTitles;
-	private $mMissingPageIDs, $mRedirectTitles;
+	private $mMissingPageIDs, $mRedirectTitles, $mSpecialTitles;
 	private $mNormalizedTitles, $mInterwikiTitles;
 	private $mResolveRedirects, $mPendingRedirectIDs;
+	private $mConvertTitles, $mConvertedTitles;
 	private $mGoodRevIDs, $mMissingRevIDs;
 	private $mFakePageId;
 
@@ -58,7 +59,7 @@ class ApiPageSet extends ApiQueryBase {
 	 * @param $query ApiQuery
 	 * @param $resolveRedirects bool Whether redirects should be resolved
 	 */
-	public function __construct( $query, $resolveRedirects = false ) {
+	public function __construct( $query, $resolveRedirects = false, $convertTitles = false ) {
 		parent::__construct( $query, 'query' );
 
 		$this->mAllPages = array();
@@ -72,12 +73,16 @@ class ApiPageSet extends ApiQueryBase {
 		$this->mInterwikiTitles = array();
 		$this->mGoodRevIDs = array();
 		$this->mMissingRevIDs = array();
+		$this->mSpecialTitles = array();
 
 		$this->mRequestedPageFields = array();
 		$this->mResolveRedirects = $resolveRedirects;
 		if ( $resolveRedirects ) {
 			$this->mPendingRedirectIDs = array();
 		}
+
+		$this->mConvertTitles = $convertTitles;
+		$this->mConvertedTitles = array();
 
 		$this->mFakePageId = - 1;
 	}
@@ -222,6 +227,15 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
+	 * Get a list of title conversions - maps a title to its converted
+	 * version.
+	 * @return array raw_prefixed_title (string) => prefixed_title (string)
+	 */
+	public function getConvertedTitles() {
+		return $this->mConvertedTitles;
+	}
+
+	/**
 	 * Get a list of interwiki titles - maps a title to its interwiki
 	 * prefix.
 	 * @return array raw_prefixed_title (string) => interwiki_prefix (string)
@@ -244,6 +258,14 @@ class ApiPageSet extends ApiQueryBase {
 	 */
 	public function getMissingRevisionIDs() {
 		return $this->mMissingRevIDs;
+	}
+
+	/**
+	 * Get the list of titles with negative namespace
+	 * @return array Title
+	 */
+	public function getSpecialTitles() {
+		return $this->mSpecialTitles;
 	}
 
 	/**
@@ -644,15 +666,32 @@ class ApiPageSet extends ApiQueryBase {
 				$this->mFakePageId--;
 				continue; // There's nothing else we can do
 			}
+			$unconvertedTitle = $titleObj->getPrefixedText();
+			$titleWasConverted = false;
 			$iw = $titleObj->getInterwiki();
 			if ( strval( $iw ) !== '' ) {
 				// This title is an interwiki link.
 				$this->mInterwikiTitles[$titleObj->getPrefixedText()] = $iw;
 			} else {
-				// Validation
+				// Variants checking
+				global $wgContLang;
+				if ( $this->mConvertTitles &&
+						count( $wgContLang->getVariants() ) > 1  &&
+						!$titleObj->exists() ) {
+					// Language::findVariantLink will modify titleObj into
+					// the canonical variant if possible
+					$wgContLang->findVariantLink( $title, $titleObj );
+					$titleWasConverted = $unconvertedTitle !== $titleObj->getPrefixedText();
+				}
+
+
 				if ( $titleObj->getNamespace() < 0 ) {
-					$this->setWarning( 'No support for special pages has been implemented' );
+					// Handle Special and Media pages
+					$titleObj = $titleObj->fixSpecialName();
+					$this->mSpecialTitles[$this->mFakePageId] = $titleObj;
+					$this->mFakePageId--;
 				} else {
+					// Regular page
 					$linkBatch->addObj( $titleObj );
 				}
 			}
@@ -662,7 +701,9 @@ class ApiPageSet extends ApiQueryBase {
 			// titles with the originally requested when e.g. the
 			// namespace is localized or the capitalization is
 			// different
-			if ( is_string( $title ) && $title !== $titleObj->getPrefixedText() ) {
+			if ( $titleWasConverted ) {
+				$this->mConvertedTitles[$title] = $titleObj->getPrefixedText();
+			} elseif ( is_string( $title ) && $title !== $titleObj->getPrefixedText() ) {
 				$this->mNormalizedTitles[$title] = $titleObj->getPrefixedText();
 			}
 		}

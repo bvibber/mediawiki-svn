@@ -178,7 +178,6 @@ $messages = array(
 'tog-watchdefault'            => 'Dodaj na spisek nadzorov vse članke, ki sem jih ustvaril/-a ali spremenil/-a',
 'tog-watchmoves'              => 'Dodaj strani, ki jih premaknem, na moj spisek nadzorov',
 'tog-watchdeletion'           => 'Dodaj strani, ki jih izbrišem, na moj spisek nadzorov',
-'tog-minordefault'            => 'Vsa urejanja označi kot manjša',
 'tog-previewontop'            => 'Prikaži predogled pred urejevalnim poljem in ne za njim',
 'tog-previewonfirst'          => 'Ob začetku urejanja prikaži predogled',
 'tog-nocache'                 => 'Onemogoči predpomnenje strani',
@@ -472,7 +471,7 @@ $1',
 'nosuchactiontext'  => 'Dejanje, ki ga označuje spletni naslov, je napačno.
 Morda ste se pri naslovu zatipkali ali pa ste sledili napačni povezavi.
 Morda ste odkrili hrošča v programski opremi {{GRAMMAR:genitive|{{SITENAME}}}}.',
-'nosuchspecialpage' => 'Posebna stran, ki ste jo zahtevali, ne obstaja',
+'nosuchspecialpage' => 'Zahtevana posebna stran ne obstaja',
 'nospecialpagetext' => '<strong>Zahtevali ste neveljavno posebno stran.</strong>
 
 Seznam vseh prepoznanih posebnih strani je na razpolago na strani [[Special:SpecialPages|{{int:specialpages}}]].',
@@ -770,7 +769,7 @@ Takšen IP naslov si lahko deli več uporabnikov.
 Lahko poskusite [[Special:Search/{{PAGENAME}}|poiskati naslov te strani]] v drugih straneh, ali <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} poiskati v povezanih dnevniških zapisih]</span>.',
 'userpage-userdoesnotexist'        => 'Uporabniški račun »$1« ni registriran.
 Prosimo preverite, ali res želite ustvariti/urediti to stran.',
-'userpage-userdoesnotexist-view'   => 'Uporabniški račun "$1" ni registriran.',
+'userpage-userdoesnotexist-view'   => 'Uporabniški račun »$1« ni registriran.',
 'blocked-notice-logextract'        => 'Ta uporabnik je trenutno blokiran.
 Najnovejši vnos v dnevniku blokad je prikazan spodaj:',
 'clearyourcache'                   => "'''Opomba:''' Da bodo spremembe prišle do veljave, po shranitvi izpraznite predpomnilnik svojega brskalnika: '''Mozilla/Safari:''' držite ''Shift'' in kliknite ''Reload'' (ali pritisnite ''Ctrl-Shift-R''), '''Internet Explorer:''' ''Ctrl-F5'', '''Opera/Konqueror:''' ''F5''.",
@@ -987,7 +986,7 @@ Do skrite vsebine bodo še vedno lahko dostopali drugi administratorji {{GRAMMAR
 'revdelete-radio-unset'       => 'Ne',
 'revdelete-suppress'          => 'Zadrži podatke od administratorjev kakor tudi od ostalih',
 'revdelete-unsuppress'        => 'Odpraviti omejitve na obnovljenih redakcijah.',
-'revdelete-log'               => 'Razlog brisanja:',
+'revdelete-log'               => 'Razlog:',
 'revdelete-submit'            => 'Uporabi za {{PLURAL:$1|izbrano redakcijo|izbrani redakciji|izbrane redakcije}}',
 'revdelete-logentry'          => 'sprememba vidnosti redakcij strani [[$1]]',
 'logdelete-logentry'          => 'je spremenil vidnost dogodka [[$1]]',
@@ -1046,11 +1045,11 @@ Oglejte si [[Special:IPBlockList|seznam blokiranih IP-jev]] za seznam trenutno a
 'revmove-reasonfield'          => 'Razlog:',
 'revmove-titlefield'           => 'Ciljna stran:',
 'revmove-badparam-title'       => 'Nepravilni parametri',
-'revmove-badparam'             => '<span class="error">Vaša zahteva vsebuje neveljavne ali pomanjkljive parametre. Prosimo, izberite »nazaj« in poskusite znova.</span>',
+'revmove-badparam'             => 'Vaša zahteva vsebuje neveljavne ali pomanjkljive parametre. Prosimo, izberite »nazaj« in poskusite znova.',
 'revmove-norevisions-title'    => 'Neveljavna ciljna redakcija',
-'revmove-norevisions'          => '<span class="error">Niste določili ene ali več ciljnih redakcij za izvedbo te funkcije ali pa izbrana redakcija ne obstaja.</span>',
+'revmove-norevisions'          => 'Niste določili ene ali več ciljnih redakcij za izvedbo te funkcije ali pa izbrana redakcija ne obstaja.',
 'revmove-nullmove-title'       => 'Nepravilen naslov',
-'revmove-nullmove'             => '<span class="error">Izvorna in ciljna stran sta isti. Prosimo, kliknite »nazaj« in vnesite ime strani drugačno od »$1«.</span>',
+'revmove-nullmove'             => 'Izvorna in ciljna stran sta isti. Prosimo, kliknite »nazaj« in vnesite ime strani drugačno od »$1«.',
 'revmove-success-existing'     => '$1 {{PLURAL:$1|redakcija je bila s strani [[$2]] prestavljena|redakciji sta bili s strani [[$2]] prestavljeni|redakcije so bile s strani [[$2]] prestavljene|redakcij je bilo s strani [[$2]] prestavljenih}} na obstoječo stran [[$3]].',
 'revmove-success-created'      => '$1 {{PLURAL:$1|redakcija je bila s strani [[$2]] prestavljena|redakciji sta bili s strani [[$2]] prestavljeni|redakcije so bile s strani [[$2]] prestavljene|redakcij je bilo s strani [[$2]] prestavljenih}} na novo ustvarjeno stran [[$3]].',
 
@@ -1278,7 +1277,9 @@ Poleg tega vpisan e-poštni naslov omogoča drugim, da vam lahko pošiljajo elek
 'prefs-advancedrendering'       => 'Napredne možnosti',
 'prefs-advancedsearchoptions'   => 'Napredne možnosti',
 'prefs-advancedwatchlist'       => 'Napredne možnosti',
-'prefs-display'                 => 'Prikaži možnosti',
+'prefs-displayrc'               => 'Možnosti prikaza',
+'prefs-displaysearchoptions'    => 'Možnosti prikaza',
+'prefs-displaywatchlist'        => 'Možnosti prikaza',
 'prefs-diffs'                   => 'Primerjave',
 
 # User rights
@@ -1389,6 +1390,7 @@ Poleg tega vpisan e-poštni naslov omogoča drugim, da vam lahko pošiljajo elek
 'right-override-export-depth' => 'Izvoz strani, vključno s povezaimi straneh do globine 5',
 'right-sendemail'             => 'Pošiljanje e-pošte drugim uporabnikom',
 'right-revisionmove'          => 'Prestavi redakcije',
+'right-selenium'              => 'Zaganjanje preverjanj Selenium',
 
 # User rights log
 'rightslog'      => 'Dnevnik uporabniških pravic',
@@ -1745,7 +1747,7 @@ Povzetek na njeni [$2 opisni strani datoteke] je prikazan spodaj.',
 'filedelete-legend'           => 'Brisanje datoteke',
 'filedelete-intro'            => "Brišete datoteko '''[[Media:$1|$1]]''' skupaj z njeno celotno zgodovino.",
 'filedelete-intro-old'        => "Brišete različico datoteke '''[[Media:$1|$1]]''' z dne [$4 $3, $2].",
-'filedelete-comment'          => 'Komentar:',
+'filedelete-comment'          => 'Razlog:',
 'filedelete-submit'           => 'Izbriši',
 'filedelete-success'          => "Datoteka '''$1''' je bila izbrisana.",
 'filedelete-success-old'      => "Različica datoteke '''[[Media:$1|$1]]''', z dne $3, $2 je bila izbrisana.",
@@ -1795,7 +1797,7 @@ Preden jih izbrišete, preverite še druge povezave nanje.',
 'statistics-header-hooks'      => 'Drugi statistični podatki',
 'statistics-articles'          => 'Članki',
 'statistics-pages'             => 'Strani',
-'statistics-pages-desc'        => 'Vse strani na wikiju, vključno z pogovornimi stranmi, preusmeritvami itn.',
+'statistics-pages-desc'        => 'Vse strani na wikiju, vključno s pogovornimi stranmi, preusmeritvami itn.',
 'statistics-files'             => 'Naložene datoteke',
 'statistics-edits'             => 'Urejanja strani od postavitve {{GRAMMAR:rodilnik|{{SITENAME}}}}',
 'statistics-edits-average'     => 'Povprečno število urejanj na stran',
@@ -1815,7 +1817,7 @@ Stran se obravnava kot razločitvena, če uporablja predloge povezane iz [[Media
 'doubleredirects'            => 'Dvojne preusmeritve',
 'doubleredirectstext'        => 'Ta stran navaja strani, ki se preusmerjajo na druge preusmeritvene strani.
 Vsaka vrstica vsebuje povezavo do prve in druge preusmeritve, kakor tudi do cilja druge preusmeritve, ki je po navadi »prava« ciljna stran, na katero naj bi kazala prva preusmeritev.
-<s>Prečrtani</s> vnosi so bili razrešeni.',
+<del>Prečrtani</del> vnosi so bili razrešeni.',
 'double-redirect-fixed-move' => 'Stran [[$1]] je bil premaknjen. 
 Sedaj je preusmeritev na [[$2]].',
 'double-redirect-fixer'      => 'Popravljalec preusmeritev',
@@ -2120,7 +2122,7 @@ Za zapise nedavnih brisanj glej $2.',
 'dellogpagetext'         => 'Spodaj je prikazan seznam nedavnih brisanj.',
 'deletionlog'            => 'dnevnik brisanja',
 'reverted'               => 'Obnovljeno na prejšnjo redakcijo',
-'deletecomment'          => 'Razlog za brisanje',
+'deletecomment'          => 'Razlog:',
 'deleteotherreason'      => 'Drugi/dodatni razlogi:',
 'deletereasonotherlist'  => 'Drug razlog',
 'deletereason-dropdown'  => '* Pogosti razlogi za brisanje
@@ -2800,7 +2802,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Opozorilo''': Tovrstni tip datotek lahko vsebuje zlonamerno kodo.
-Z njenim zagonom lahko ogrozite vaš sistem.<hr />",
+Z njenim zagonom lahko ogrozite vaš sistem.",
 'imagemaxsize'         => "Omejitev velikosti slik:<br />''(za opisne strani datotek)''",
 'thumbsize'            => 'Velikost sličice (thumbnail):',
 'widthheight'          => '$1&nbsp;×&nbsp;$2',

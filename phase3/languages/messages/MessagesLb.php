@@ -176,7 +176,6 @@ $messages = array(
 'tog-watchdefault'            => 'Säiten déi ech änneren op meng Iwwerwaachungslëscht setzen',
 'tog-watchmoves'              => 'Säiten déi ech réckelen automatesch op meng Iwwerwaachungslëscht setzen',
 'tog-watchdeletion'           => 'Säiten déi ech läschen op meng Iwwerwaachungslëscht setzen',
-'tog-minordefault'            => "Alles wat ech änneren automatesch als 'Kleng Ännerungen' weisen",
 'tog-previewontop'            => "Déi ''nach-net gespäichert Versioun'' iwwer der Ännerungsfënster weisen",
 'tog-previewonfirst'          => "Beim éischten Änneren déi  ''nach net gespäichert Versioun'' weisen.",
 'tog-nocache'                 => 'Säitecache deaktivéieren',
@@ -968,7 +967,7 @@ Aner {{SITENAME}}-Administrateure kënnen de geläschten Inhalt oder aner geläs
 'revdelete-radio-unset'       => 'Neen',
 'revdelete-suppress'          => 'Grond vum Läschen och fir Administrateure verstoppt',
 'revdelete-unsuppress'        => 'Limitatiounen fir restauréiert Versiounen ophiewen',
-'revdelete-log'               => "Grond fir d'Läschen:",
+'revdelete-log'               => 'Grond:',
 'revdelete-submit'            => 'Op déi gewielte {{PLURAL:$1|Versioun|Versiounen}} uwenden',
 'revdelete-logentry'          => 'Sichtbarkeet vun der Versioun gouf geännert fir [[$1]]',
 'logdelete-logentry'          => "huet d'Sichtbarkeet vun [[$1]] geännert",
@@ -1026,10 +1025,12 @@ Kuckt [[Special:IPBlockList|Lëscht vun de gespaarten IPen]] fir déi aktuell Sp
 'revmove-reasonfield'          => 'Grond:',
 'revmove-titlefield'           => 'Zilsäit:',
 'revmove-badparam-title'       => 'Falsch Parameter',
+'revmove-badparam'             => 'An Ärer Ufro sinn net erlaabten oder net genuch Parameter dran.
+Gitt zréck op déi säit virdrun a probéiert nach emol.',
 'revmove-norevisions-title'    => 'Net-valabel Zilversioun',
-'revmove-norevisions'          => '<span class="error">Dir hutt keng Zilversioun uginn, fir dës Fonctionalitéit ze benotzen oder déi Versioun déi Dir uginn hutt gëtt et net.</span>',
+'revmove-norevisions'          => 'Dir hutt keng Zilversioun uginn, fir dës Fonctionalitéit ze benotzen oder déi Versioun déi Dir uginn hutt gëtt et net.',
 'revmove-nullmove-title'       => 'Schlechten Titel',
-'revmove-nullmove'             => '<span class="error">D\'Quell- an d\'Zilsäit sinn déi selwëscht. Klickt w.e.g. op „zréck“ a gitt en anere Säitennumm wéi "$1" un.</span>',
+'revmove-nullmove'             => 'D\'Quell- an d\'Zilsäit sinn déi selwëscht. Klickt w.e.g. op „zréck“ a gitt en anere Säitennumm wéi "$1" un.',
 'revmove-success-existing'     => "{{PLURAL:$1|Eng Versioun vu(n) [[$2]] gouf|$1 Versioune vu(n) [[$2]] goufen}} op d'Säit [[$3]] geréckelt.",
 'revmove-success-created'      => '{{PLURAL:$1|Eng Versioun vu(n) [[$2]] gouf|$1 Versioune vu(n) [[$2]] goufen}} op déi nei Säit [[$3]] geréckelt.',
 
@@ -1254,7 +1255,9 @@ Dir kënnt et och zouloossen datt aner Benotzer iech - iwwert e Link op Ärer Be
 'prefs-advancedrendering'       => 'Méi Optiounen',
 'prefs-advancedsearchoptions'   => 'Méi Optiounen',
 'prefs-advancedwatchlist'       => 'Méi Optiounen',
-'prefs-display'                 => 'Optioune vum Affichage',
+'prefs-displayrc'               => 'Optioune vun deem wat gewise gëtt',
+'prefs-displaysearchoptions'    => 'Optioune vum Affichage',
+'prefs-displaywatchlist'        => 'Optioune vun deem wat gewise gëtt',
 'prefs-diffs'                   => 'Ënnerscheeder',
 
 # User rights
@@ -1365,6 +1368,7 @@ Dir kënnt et och zouloossen datt aner Benotzer iech - iwwert e Link op Ärer Be
 'right-override-export-depth' => 'Säiten exportéieren inklusiv de verlinkte Säite bis zu enger Déift vu 5',
 'right-sendemail'             => 'Anere Benotzer E-Maile schécken',
 'right-revisionmove'          => 'Versioune réckelen',
+'right-selenium'              => 'Selenium-Tester maachen',
 
 # User rights log
 'rightslog'      => 'Logbuch vun de Benotzerrechter',
@@ -1763,7 +1767,7 @@ Eng Säite gëtt als Homonymiesäit behandelt, wa si eng Schabloun benotzt déi 
 'doubleredirects'            => 'Duebel Viruleedungen',
 'doubleredirectstext'        => 'Op dëser Säit stinn déi Säiten déi op aner Viruleedungssäite viruleeden.
 An all Rei sti Linken zur éischter an zweeter Viruleedung, souwéi d\'Zil vun der zweeter Viruleedung, déi normalerweis déi "richteg" Zilsäit ass, op déi déi éischt Viruleedung hilinke soll.
-<s>Duerchgestrachen</s> Linke goufe schonn esou verännert datt déi duebel Viruleedung opgeléist ass.',
+<del>Duerchgestrachen</del> Linke goufe schonn esou verännert datt déi duebel Viruleedung opgeléist ass.',
 'double-redirect-fixed-move' => '[[$1]] gouf geréckelt, et ass elo eng Viruleedung op [[$2]]',
 'double-redirect-fixer'      => 'Verbesserung vu Viruleedungen',
 
@@ -1908,7 +1912,7 @@ Kuckt och [[Special:WantedCategories|Gewënschte Kategorien]].',
 # Special:ActiveUsers
 'activeusers'            => 'Lëscht vun den aktive Benotzer',
 'activeusers-intro'      => 'Dëst ass eng Lëscht vun de Benotzer déi op iergend eng Manéier an de leschten $1 {{PLURAL:$1|Dag|Deeg}} aktiv waren.',
-'activeusers-count'      => '$1 {{PLURAL:$1|Ännerung|Ännerungen}} {{PLUAL:$3|gëschter|an de leschten $3 Deeg}}',
+'activeusers-count'      => '$1 {{PLURAL:$1|Ännerung|Ännerungen}} {{PLURAL:$3|gëschter|an de leschten $3 Deeg}}',
 'activeusers-from'       => 'Benotzer weisen, ugefaang bäi:',
 'activeusers-hidebots'   => 'Botte verstoppen',
 'activeusers-hidesysops' => 'Administrateure verstoppen',
@@ -2067,7 +2071,7 @@ W.e.g. confirméiert, datt Dir dëst wierklech wëllt, datt Dir d'Konsequenze ve
 'dellogpagetext'         => 'Hei fannt dir eng Lëscht mat rezent geläschte Säiten. All Auerzäiten sinn déi vum Server.',
 'deletionlog'            => 'Läschlëscht',
 'reverted'               => 'Op déi Versioun virdrun zréckgesat',
-'deletecomment'          => "Grond fir d'Läschen:",
+'deletecomment'          => 'Grond:',
 'deleteotherreason'      => 'Aneren/ergänzende Grond:',
 'deletereasonotherlist'  => 'Anere Grond',
 'deletereason-dropdown'  => '* Heefegst Grënn fir eng Säit ze läschen
@@ -2241,6 +2245,7 @@ $1',
 Ënnendrënner steet déi lescht Androung an d'Spärlëscht:",
 'sp-contributions-search'              => 'No Kontributioune sichen',
 'sp-contributions-username'            => 'IP-Adress oder Benotzernumm:',
+'sp-contributions-toponly'             => 'Nëmmen Ännerunge weisen déi déi lescht Versioun sinn',
 'sp-contributions-submit'              => 'Sichen',
 
 # What links here
@@ -2753,7 +2758,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Warnung:''' Dës Zort vu Fichier kann e béiswëllege Programmcode enthalen.
-Duerch d'Opmaache vum Fichier kann Äre System beschiedegt ginn.<hr />",
+Duerch d'Opmaache vum Fichier kann Äre System beschiedegt ginn.",
 'imagemaxsize'         => "Maximal Gréisst fir Biller:<br />''(fir Billerbeschreiwungssäiten)''",
 'thumbsize'            => 'Gréisst vun der Miniatur:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|Säit|Säiten}}',
@@ -2765,6 +2770,9 @@ Duerch d'Opmaache vum Fichier kann Äre System beschiedegt ginn.<hr />",
 'show-big-image-thumb' => '<small>Gréisst vun der Miniatur: $1 × $2 Pixel</small>',
 'file-info-gif-looped' => 'Endloosschleef',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|Bild|Biller}}',
+'file-info-png-looped' => 'Endlossschleef',
+'file-info-png-repeat' => 'gouf $1 {{PLURAL:$1|mol|mol}} gespillt',
+'file-info-png-frames' => '$1 {{PLURAL:$1|Frame|Framen}}',
 
 # Special:NewFiles
 'newimages'             => 'Gallerie vun den neie Biller',

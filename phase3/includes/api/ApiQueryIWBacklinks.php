@@ -33,15 +33,23 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * This gives links pointing to the given interwiki
  * @ingroup API
  */
-class ApiQueryIWBacklinks extends ApiQueryBase {
+class ApiQueryIWBacklinks extends ApiQueryGeneratorBase {
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'iwbl' );
 	}
 
 	public function execute() {
+		$this->run();
+	}
+
+	public function executeGenerator( $resultPageSet ) {
+		$this->run( $resultPageSet );
+	}
+
+	public function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
-		
+
 		if ( isset( $params['title'] ) && !isset( $params['prefix'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'prefix' ) );
 		}
@@ -53,17 +61,21 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 					'original value returned by the previous query', '_badcontinue' );
 			}
 
-			$from = intval( $cont[0] );
-			$prefix = $this->getDB()->strencode( $cont[1] );
-			$title = $this->getDB()->strencode( $this->titleToKey( $cont[2] ) );
+			$prefix = $this->getDB()->strencode( $cont[0] );
+			$title = $this->getDB()->strencode( $this->titleToKey( $cont[1] ) );
+			$from = intval( $cont[2] );
 			$this->addWhere(
-				"iwl_from > $from OR " .
-				"(iwl_from = $from AND " .
-				"(iwl_prefix > '$prefix' OR " .
+				"iwl_prefix > '$prefix' OR " .
 				"(iwl_prefix = '$prefix' AND " .
-				"iwl_title >= '$title')))"
+				"(iwl_title > '$title' OR " .
+				"(iwl_title = '$title' AND " .
+				"iwl_from >= $from)))"
 			);
 		}
+
+		$prop = array_flip( $params['prop'] );
+		$iwprefix = isset( $prop['iwprefix'] );
+		$iwtitle = isset( $prop['iwtitle'] );
 
 		$this->addTables( array( 'iwlinks', 'page' ) );
 		$this->addWhere( 'iwl_from = page_id' );
@@ -73,17 +85,21 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 
 		if ( isset( $params['prefix'] ) ) {
 			$this->addWhereFld( 'iwl_prefix', $params['prefix'] );
-		}
-		
-		if ( isset( $params['title'] ) ) {
-			$this->addWhereFld( 'iwl_title', $params['title'] );
+			if ( isset( $params['title'] ) ) {
+				$this->addWhereFld( 'iwl_title', $params['title'] );
+				$this->addOption( 'ORDER BY', 'iwl_from' );
+			} else {
+				$this->addOption( 'ORDER BY', 'iwl_title, iwl_from' );
+			}
+		} else {
+			$this->addOption( 'ORDER BY', 'iwl_prefix, iwl_title, iwl_from' );
 		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		$this->addOption( 'ORDER BY', 'iwl_from' );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
+
+		$pages = array();
 
 		$count = 0;
 		$result = $this->getResult();
@@ -91,31 +107,48 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 			if ( ++ $count > $params['limit'] ) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
 				// Continue string preserved in case the redirect query doesn't pass the limit
-				$this->setContinueEnumParameter( 'continue', "{$row->iwl_from}|{$row->iwl_prefix}|{$row->iwl_title}" );
+				$this->setContinueEnumParameter( 'continue', "{$row->iwl_prefix}|{$row->iwl_title}|{$row->iwl_from}" );
 				break;
-			}
-			
-			$entry = array();
-			
-			$entry['pageid'] = intval( $row->page_id );
-			$entry['ns'] = $row->page_namespace;
-			$entry['title'] = $row->page_title;
-			
-			if ( $row->page_is_redirect ) {
-				$entry['redirect'] = '';
 			}
 
-			$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
-			if ( !$fit ) {
-				$this->setContinueEnumParameter( 'continue', "{$row->iwl_from}|{$row->iwl_prefix}|{$row->iwl_title}" );
-				break;
+			if ( !is_null( $resultPageSet ) ) {
+				$pages[] = Title::newFromRow( $row );
+			} else {
+				$entry = array();
+
+				$entry['pageid'] = intval( $row->page_id );
+				$entry['ns'] = intval( $row->page_namespace );
+				$entry['title'] = $row->page_title;
+
+				if ( $row->page_is_redirect ) {
+					$entry['redirect'] = '';
+				}
+
+				if ( $iwprefix ) {
+					$entry['iwprefix'] = $row->iwl_prefix;
+				}
+
+				if ( $iwtitle ) {
+					$entry['iwtitle'] = $row->iwl_title;
+				}
+
+				$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $entry );
+				if ( !$fit ) {
+					$this->setContinueEnumParameter( 'continue', "{$row->iwl_prefix}|{$row->iwl_title}|{$row->iwl_from}" );
+					break;
+				}
 			}
 		}
 
-		$this->getResult()->setIndexedTagName_internal(
-			array( 'query', $this->getModuleName() ),
-			'iw'
-		);
+		if ( is_null( $resultPageSet ) ) {
+			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'iw' );
+		} else {
+			$resultPageSet->populateFromTitles( $pages );
+		}
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {
@@ -129,7 +162,15 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
-			)
+			),
+			'prop' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_DFLT => '',
+				ApiBase::PARAM_TYPE => array(
+					'iwprefix',
+					'iwtitle',
+				),
+			),
 		);
 	}
 
@@ -138,16 +179,21 @@ class ApiQueryIWBacklinks extends ApiQueryBase {
 			'prefix' => 'Prefix for the interwiki',
 			'title' => "Interwiki link to search for. Must be used with {$this->getModulePrefix()}prefix",
 			'continue' => 'When more results are available, use this to continue',
+			'prop' => array(
+				'Which properties to get',
+				' iwprefix       - Adds the prefix of the interwiki',
+				' iwtitle        - Adds the title of the interwiki',
+			),
 			'limit' => 'How many total pages to return',
 		);
 	}
 
 	public function getDescription() {
-		return array('Find all pages that link to the given interwiki link.',
+		return array( 'Find all pages that link to the given interwiki link.',
 			'Can be used to find all links with a prefix, or',
-			'all links to a title (any prefix).',
+			'all links to a title (with a given prefix).',
 			'Using neither parameter is effectively "All IW Links"',
-			);
+		);
 	}
 
 	public function getPossibleErrors() {

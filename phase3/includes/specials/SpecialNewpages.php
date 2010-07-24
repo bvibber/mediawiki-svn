@@ -21,7 +21,7 @@
  * implements Special:Newpages
  * @ingroup SpecialPage
  */
-class SpecialNewpages extends SpecialPage {
+class SpecialNewpages extends IncludableSpecialPage {
 
 	// Stored objects
 	protected $opts, $skin;
@@ -31,7 +31,6 @@ class SpecialNewpages extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'Newpages' );
-		$this->includable( true );	
 	}
 
 	protected function setup( $par ) {
@@ -296,9 +295,13 @@ class SpecialNewpages extends SpecialPage {
 		if ( $this->patrollable( $result ) )
 			$classes[] = 'not-patrolled';
 
-		# Tags, if any.
-		list( $tagDisplay, $newClasses ) = ChangeTags::formatSummaryRow( $result->ts_tags, 'newpages' );
-		$classes = array_merge( $classes, $newClasses );
+		# Tags, if any. check for including due to bug 23293
+		if ( !$this->including() ) {
+			list( $tagDisplay, $newClasses ) = ChangeTags::formatSummaryRow( $result->ts_tags, 'newpages' );
+			$classes = array_merge( $classes, $newClasses );
+		} else {
+			$tagDisplay = '';
+		}
 
 		$css = count($classes) ? ' class="'.implode( " ", $classes).'"' : '';
 

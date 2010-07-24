@@ -1,6 +1,6 @@
 <?php
 
-class OracleInstaller extends InstallerDBType {
+class OracleInstaller extends DatabaseInstaller {
 
 	protected $globalNames = array(
 		'wgDBport',
@@ -15,15 +15,15 @@ class OracleInstaller extends InstallerDBType {
 		'_InstallPassword' => '',
 	);
 
-	function getName() {
+	public function getName() {
 		return 'oracle';
 	}
 
-	function isCompiled() {
-		return $this->checkExtension( 'oci8' );
+	public function isCompiled() {
+		return self::checkExtension( 'oci8' );
 	}
 
-	function getConnectForm() {
+	public function getConnectForm() {
 		return
 			Xml::openElement( 'fieldset' ) .
 			Xml::element( 'legend', array(), wfMsg( 'config-db-wiki-settings' ) ) .
@@ -35,7 +35,7 @@ class OracleInstaller extends InstallerDBType {
 			$this->getInstallUserBox();
 	}
 
-	function submitConnectForm() {
+	public function submitConnectForm() {
 		// Get variables from the request
 		$newValues = $this->setVarsFromRequest( array( 'wgDBname', 'wgDBprefix' ) );
 
@@ -77,20 +77,31 @@ class OracleInstaller extends InstallerDBType {
 	}
 
 
-	function getSettingsForm() {}
+	public function getSettingsForm() {
+		// TODO
+	}
 	
-	function submitSettingsForm() {}
+	public function submitSettingsForm() {
+		// TODO
+	}
 
-	function getConnection() {}
+	public function getConnection() {
+		// TODO
+	}
 
-	function setupDatabase() {}
+	public function setupDatabase() {
+		// TODO
+	}
 
-	function createTables() {}
+	public function createTables() {
+		// TODO
+	}
 
-	function getLocalSettings() {
+	public function getLocalSettings() {
 		$prefix = $this->getVar( 'wgDBprefix' );
 		return
 "# Oracle specific settings
 \$wgDBprefix         = \"{$prefix}\";";
 	}
+	
 }

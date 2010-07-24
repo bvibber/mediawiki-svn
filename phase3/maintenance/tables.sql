@@ -623,7 +623,7 @@ CREATE TABLE /*_*/iwlinks (
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/iwl_from ON /*_*/iwlinks (iwl_from, iwl_prefix, iwl_title);
-CREATE INDEX /*i*/iwl_prefix_from_title ON /*_*/iwlinks (iwl_prefix, iwl_from, iwl_title);
+CREATE UNIQUE INDEX /*i*/iwl_prefix_title_from ON /*_*/iwlinks (iwl_prefix, iwl_title, iwl_from);
 
 
 --
@@ -1317,7 +1317,8 @@ CREATE UNIQUE INDEX /*i*/pp_page_propname ON /*_*/page_props (pp_page,pp_propnam
 
 -- A table to log updates, one text key row per update.
 CREATE TABLE /*_*/updatelog (
-  ul_key varchar(255) NOT NULL PRIMARY KEY
+  ul_key varchar(255) NOT NULL PRIMARY KEY,
+  ul_value blob
 ) /*$wgDBTableOptions*/;
 
 

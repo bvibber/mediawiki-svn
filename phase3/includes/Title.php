@@ -218,12 +218,13 @@ class Title {
 			return array();
 		}
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'page', array( 'page_namespace', 'page_title' ),
-			'page_id IN (' . $dbr->makeList( $ids ) . ')', __METHOD__ );
+		
+		$res = $dbr->select( 'page', array( '*' ),
+			array( 'page_id' => $ids ), __METHOD__ );
 
 		$titles = array();
 		foreach ( $res as $row ) {
-			$titles[] = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$titles[] = Title::newFromRow( $row );
 		}
 		return $titles;
 	}
@@ -240,7 +241,7 @@ class Title {
 		$t->mArticleID = isset( $row->page_id ) ? intval( $row->page_id ) : -1;
 		$t->mLength = isset( $row->page_len ) ? intval( $row->page_len ) : -1;
 		$t->mRedirect = isset( $row->page_is_redirect ) ? (bool)$row->page_is_redirect : null;
-		$t->mLatestID = isset( $row->page_latest ) ? $row->page_latest : false;
+		$t->mLatestID = isset( $row->page_latest ) ? intval( $row->page_latest ) : false;
 
 		return $t;
 	}
@@ -255,11 +256,12 @@ class Title {
 	 * @param $ns \type{\int} the namespace of the article
 	 * @param $title \type{\string} the unprefixed database key form
 	 * @param $fragment \type{\string} The link fragment (after the "#")
+	 * @param $interwiki \type{\string} The interwiki prefix
 	 * @return \type{Title} the new object
 	 */
-	public static function &makeTitle( $ns, $title, $fragment = '' ) {
+	public static function &makeTitle( $ns, $title, $fragment = '', $interwiki = '' ) {
 		$t = new Title();
-		$t->mInterwiki = '';
+		$t->mInterwiki = $interwiki;
 		$t->mFragment = $fragment;
 		$t->mNamespace = $ns = intval( $ns );
 		$t->mDbkeyform = str_replace( ' ', '_', $title );
@@ -277,11 +279,12 @@ class Title {
 	 * @param $ns \type{\int} the namespace of the article
 	 * @param $title \type{\string} the database key form
 	 * @param $fragment \type{\string} The link fragment (after the "#")
+	 * @param $interwiki \type{\string} The interwiki prefix
 	 * @return \type{Title} the new object, or NULL on an error
 	 */
-	public static function makeTitleSafe( $ns, $title, $fragment = '' ) {
+	public static function makeTitleSafe( $ns, $title, $fragment = '', $interwiki = '' ) {
 		$t = new Title();
-		$t->mDbkeyform = Title::makeName( $ns, $title, $fragment );
+		$t->mDbkeyform = Title::makeName( $ns, $title, $fragment, $interwiki );
 		if ( $t->secureAndSplit() ) {
 			return $t;
 		} else {
@@ -473,13 +476,17 @@ class Title {
 	 * @param $ns \type{\int} numerical representation of the namespace
 	 * @param $title \type{\string} the DB key form the title
 	 * @param $fragment \type{\string} The link fragment (after the "#")
+	 * @param $interwiki \type{\string} The interwiki prefix
 	 * @return \type{\string} the prefixed form of the title
 	 */
-	public static function makeName( $ns, $title, $fragment = '' ) {
+	public static function makeName( $ns, $title, $fragment = '', $interwiki = '' ) {
 		global $wgContLang;
 
 		$namespace = $wgContLang->getNsText( $ns );
 		$name = $namespace == '' ? $title : "$namespace:$title";
+		if ( strval( $interwiki ) != '' ) {
+			$name = "$interwiki:$name";
+		}
 		if ( strval( $fragment ) != '' ) {
 			$name .= '#' . $fragment;
 		}
@@ -2370,7 +2377,7 @@ class Title {
 	 */
 	public function getLatestRevID( $flags = 0 ) {
 		if ( $this->mLatestID !== false )
-			return $this->mLatestID;
+			return intval( $this->mLatestID );
 		# Calling getArticleID() loads the field from cache as needed
 		if ( !$this->getArticleID( $flags ) ) {
 			return $this->mLatestID = 0;
@@ -2384,10 +2391,6 @@ class Title {
 	/**
 	 * This clears some fields in this object, and clears any associated
 	 * keys in the "bad links" section of the link cache.
-	 *
-	 * - This is called from Article::insertNewArticle() to allow
-	 * loading of the new page_id. It's also called from
-	 * Article::doDeleteArticle()
 	 *
 	 * @param $newid \type{\int} the new Article ID
 	 */
@@ -2848,7 +2851,6 @@ class Title {
 		if ( $wgContLang->hasVariants() ) {
 			$variants = $wgContLang->getVariants();
 			foreach ( $variants as $vCode ) {
-				if ( $vCode == $wgContLang->getCode() ) continue; // we don't want default variant
 				$urls[] = $this->getInternalURL( '', $vCode );
 			}
 		}
@@ -2924,11 +2926,11 @@ class Title {
 
 		// Image-specific checks
 		if ( $this->getNamespace() == NS_FILE ) {
+			if ( $nt->getNamespace() != NS_FILE ) {
+				$errors[] = array( 'imagenocrossnamespace' );
+			}
 			$file = wfLocalFile( $this );
 			if ( $file->exists() ) {
-				if ( $nt->getNamespace() != NS_FILE ) {
-					$errors[] = array( 'imagenocrossnamespace' );
-				}
 				if ( $nt->getText() != wfStripIllegalFilenameChars( $nt->getText() ) ) {
 					$errors[] = array( 'imageinvalidfilename' );
 				}
@@ -2940,7 +2942,10 @@ class Title {
 			if ( !$wgUser->isAllowed( 'reupload-shared' ) && !$destfile->exists() && wfFindFile( $nt ) ) {
 				$errors[] = array( 'file-exists-sharedrepo' );
 			}
+		}
 
+		if ( $nt->getNamespace() == NS_FILE && $this->getNamespace() != NS_FILE ) {
+			$errors[] = array( 'nonfile-cannot-move-to-file' );
 		}
 
 		if ( $auth ) {
@@ -2967,7 +2972,7 @@ class Title {
 		# (so we can undo bad moves right after they're done).
 
 		if ( 0 != $newid ) { # Target exists; check for validity
-			if ( ! $this->isValidMoveTarget( $nt ) ) {
+			if ( !$this->isValidMoveTarget( $nt ) ) {
 				$errors[] = array( 'articleexists' );
 			}
 		} else {
@@ -3447,7 +3452,7 @@ class Title {
 	 */
 	public function isValidMoveTarget( $nt ) {
 		$dbw = wfGetDB( DB_MASTER );
-		# Is it an existsing file?
+		# Is it an existing file?
 		if ( $nt->getNamespace() == NS_FILE ) {
 			$file = wfLocalFile( $nt );
 			if ( $file->exists() ) {

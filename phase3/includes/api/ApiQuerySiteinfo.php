@@ -99,7 +99,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendGeneralInfo( $property ) {
-		global $wgContLang, $wgLang;
+		global $wgContLang;
 
 		$data = array();
 		$mainPage = Title::newMainPage();
@@ -128,7 +128,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		if ( $wgContLang->isRTL() ) {
 			$data['rtl'] = '';
 		}
-		$data['fallback8bitEncoding'] = $wgLang->fallback8bitEncoding();
+		$data['fallback8bitEncoding'] = $wgContLang->fallback8bitEncoding();
 
 		if ( wfReadOnly() ) {
 			$data['readonly'] = '';
@@ -209,9 +209,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendSpecialPageAliases( $property ) {
-		global $wgLang;
+		global $wgContLang;
 		$data = array();
-		foreach ( $wgLang->getSpecialPageAliases() as $specialpage => $aliases )
+		foreach ( $wgContLang->getSpecialPageAliases() as $specialpage => $aliases )
 		{
 			$arr = array( 'realname' => $specialpage, 'aliases' => $aliases );
 			$this->getResult()->setIndexedTagName( $arr['aliases'], 'alias' );
@@ -252,7 +252,6 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 		$this->addOption( 'ORDER BY', 'iw_prefix' );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		$data = array();
@@ -263,7 +262,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			if ( $row->iw_local == '1' ) {
 				$val['local'] = '';
 			}
-//			$val['trans'] = intval( $row->iw_trans ); // should this be exposed?
+			//$val['trans'] = intval( $row->iw_trans ); // should this be exposed?
 			if ( isset( $langNames[$row->iw_prefix] ) ) {
 				$val['language'] = $langNames[$row->iw_prefix];
 			}
@@ -426,6 +425,10 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		}
 		$this->getResult()->setIndexedTagName( $data, 'lang' );
 		return $this->getResult()->addValue( 'query', $property, $data );
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

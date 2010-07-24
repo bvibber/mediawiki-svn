@@ -160,7 +160,6 @@ $messages = array(
 'tog-watchdefault'            => 'Zonta łe pajine modifegae a i oservai spesałi',
 'tog-watchmoves'              => 'Zonta łe pajine spostae a i oservai spesałi',
 'tog-watchdeletion'           => 'Zonta łe pajine scansełae a i oservai spesałi',
-'tog-minordefault'            => 'Indica ogni modifega come minore (soło come predefinio)',
 'tog-previewontop'            => "Mostra l'anteprima sora ła caseła de modifega e no soto",
 'tog-previewonfirst'          => "Mostra l'anteprima par ła prima modifega",
 'tog-nocache'                 => 'Disativa ła "cache" par łe pajine',
@@ -945,7 +944,7 @@ I altri aministradori de {{SITENAME}} i podarà vardar istesso i contenuti scont
 'revdelete-radio-unset'       => 'No',
 'revdelete-suppress'          => 'Scondi le informazion anca ai aministradori',
 'revdelete-unsuppress'        => 'Elimina le limitazion su le revision ripristinà',
-'revdelete-log'               => 'Motivo de la scancelassion:',
+'revdelete-log'               => 'Motivassion:',
 'revdelete-submit'            => 'Àplica a {{PLURAL:$1|la|le}} revision selezionà',
 'revdelete-logentry'          => 'gà modificà la visibilità par una revision de [[$1]]',
 'logdelete-logentry'          => "gà modificà la visibilità de l'evento [[$1]]",
@@ -1202,7 +1201,7 @@ In più te pol anca farte contatar da altri tramite la to pagina personale o la 
 'prefs-advancedrendering'       => 'Preferense avansade',
 'prefs-advancedsearchoptions'   => 'Preferense avansade',
 'prefs-advancedwatchlist'       => 'Preferense avansade',
-'prefs-display'                 => 'Preferense de visualixassion',
+'prefs-displayrc'               => 'Preferense de visualixassion',
 'prefs-diffs'                   => 'Difarense',
 
 # User rights
@@ -1618,7 +1617,7 @@ Qua soto vien mostrà la descrission presente in te la [$2 pàxena de descrissio
 'filedelete-legend'           => 'Scancela el file',
 'filedelete-intro'            => "Te stè par scancelar el file '''[[Media:$1|$1]]''' insieme co' tuta la so cronologia.",
 'filedelete-intro-old'        => "Te sì drio scancelar la version de '''[[Media:$1|$1]]''' del [$4 $3, $2].",
-'filedelete-comment'          => 'Motivo:',
+'filedelete-comment'          => 'Motivassion:',
 'filedelete-submit'           => 'Scancela',
 'filedelete-success'          => "El file '''$1''' el xe stà scancelà.",
 'filedelete-success-old'      => "La version del $3, $2 del file '''[[Media:$1|$1]]''' la xe stà scancelà.",
@@ -1685,7 +1684,7 @@ Vien considerà pagine de disanbiguazion tute quele che contien i modèi elencà
 'doubleredirects'            => 'Redirect dopi',
 'doubleredirectstext'        => 'Sta pagina le elenca pagine che rimanda a altre pagine de rimando.
 Ogni riga la contien dei colegamenti al primo e al secondo rimando, oltre a la destinassion del secondo rimando, che de solito la xe la "vera" pagina de destinassion, a cui dovarìa pontar el primo rimando.
-Le righe <s>sbarà</s> le xe xà stà sistemà.',
+Le righe <del>sbarà</del> le xe xà stà sistemà.',
 'double-redirect-fixed-move' => '[[$1]] xe stà spostà, desso el xe solo un rimando a [[$2]]',
 'double-redirect-fixer'      => 'Coretòr de redirect',
 
@@ -1983,7 +1982,7 @@ Consultare el rejistro de łe $2 par n'elenco de łe pajine scansełà de rexent
 'dellogpagetext'         => 'Qui de seguito ghe xe un ełenco de łe pàxene scancełae de reçente.',
 'deletionlog'            => 'Registro de scancełasión',
 'reverted'               => 'Riportà a la version de prima',
-'deletecomment'          => 'Modivo de ła scansełasion:',
+'deletecomment'          => 'Motivassion:',
 'deleteotherreason'      => 'Altra motivazion o motivazion agiuntiva:',
 'deletereasonotherlist'  => 'Altra motivazion',
 'deletereason-dropdown'  => "*Motivazion piassè comuni par la scancelazion
@@ -2021,7 +2020,7 @@ L'ultima modefega l'è stà fata da [[User:$3|$3]] ([[User talk:$3|discussion]]{
 'protect-title'               => 'Canbia el livèl de protezion par "$1"',
 'prot_1movedto2'              => '[[$1]] spostà a [[$2]]',
 'protect-legend'              => 'Conferma la protezion',
-'protectcomment'              => 'Motivo de ła protezion:',
+'protectcomment'              => 'Motivassion:',
 'protectexpiry'               => 'Scadensa:',
 'protect_expiry_invalid'      => 'Scadensa mìa valida.',
 'protect_expiry_old'          => 'Scadensa zà passà.',
@@ -2176,7 +2175,7 @@ $1',
 'ipaddress'                       => 'Indirisso IP (IP Address)',
 'ipadressorusername'              => 'Indirizo IP o nome utente',
 'ipbexpiry'                       => 'Scadensa',
-'ipbreason'                       => 'Motivazión',
+'ipbreason'                       => 'Motivassion:',
 'ipbreasonotherlist'              => 'Altra motivazion',
 'ipbreason-dropdown'              => '*Motivazion piassè comuni par i blocchi
 ** Inserimento de informazion false
@@ -2626,7 +2625,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Ocio''': Sto file qua el podarìa contegner codice cativo.
-La so esecuzion la podarìa danegiar el to computer.<hr />",
+La so esecuzion la podarìa danegiar el to computer.",
 'imagemaxsize'         => "Dimension massima de le imagini:<br />''(su le relative pagine de descrizion)''",
 'thumbsize'            => 'Grandeza de le miniature:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|pagina|pagine}}',

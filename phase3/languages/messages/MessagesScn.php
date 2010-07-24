@@ -154,7 +154,6 @@ $messages = array(
 'tog-watchdefault'            => "Agghiunci li pàggini canciati a l'ossirvati spiciali",
 'tog-watchmoves'              => "Agghiunci li pàggini spustati a l'ossirvati spiciali",
 'tog-watchdeletion'           => "Agghiunci li pàggini di mìa cancillati a l'ossirvati spiciali",
-'tog-minordefault'            => 'Ìndica ogni canciamentu comu nicu (sulu comu pridifinitu)',
 'tog-previewontop'            => "Ammustra l'antiprima prima dâ casella di canciamentu e nun doppu",
 'tog-previewonfirst'          => "Ammustra l'antiprima supra lu primu canciamentu",
 'tog-nocache'                 => 'Disabbìlita lu caching dî pàggini',
@@ -889,7 +888,7 @@ L'àutri amministratura dû situ ponnu accèdiri comu è gghiè a li cuntinuti a
 'revdelete-hide-restricted'   => "Ammuccia l'informazioni innicati macari a li amministratura",
 'revdelete-suppress'          => "Ammuccia nformazioni puru all'amministratura",
 'revdelete-unsuppress'        => 'Elìmina le limitazzioni su li rivisioni ripristinati',
-'revdelete-log'               => 'Cummentu pi lu log:',
+'revdelete-log'               => 'Mutivu:',
 'revdelete-submit'            => 'Àpplica â rivisioni silizziunata',
 'revdelete-logentry'          => 'hà canciatu la visibbilitati pi na rivisioni di [[$1]]',
 'logdelete-logentry'          => "hà canciatu la visibbilitati de l'eventu [[$1]]",
@@ -1136,7 +1135,7 @@ L'operazioni nun pò èssiri annullata.",
 'prefs-advancedrendering'       => 'Opzioni avanzati',
 'prefs-advancedsearchoptions'   => 'Opzioni avanzati',
 'prefs-advancedwatchlist'       => 'Opzioni avanzati',
-'prefs-display'                 => 'Opzioni di visualizzazioni',
+'prefs-displayrc'               => 'Opzioni di visualizzazioni',
 'prefs-diffs'                   => 'Diffirenzi',
 
 # User rights
@@ -1152,7 +1151,7 @@ L'operazioni nun pò èssiri annullata.",
 * Na casedda di spunta silizzionata ndica l'appartinenza dill'utenti ô gruppu
 * Na casedda di spunta nun silizzionata ndica la sou mancata appartinenza ô gruppu.
 * Lu simbulu * ndica ca nun è pussibili livari l'appartinenza ô gruppo dopo avirla junciuta (o vici versa).",
-'userrights-reason'           => 'Mutivu dû canciu:',
+'userrights-reason'           => 'Mutivu:',
 'userrights-no-interwiki'     => "Nun si disponi di li pirmessi nicissari pi canciari li diritti di l'utenti ni autri siti.",
 'userrights-nodatabase'       => 'Lu database $1 nu esisti o nun è lu database locali.',
 'userrights-nologin'          => "Pi assignari li diritti di l'utenti è nicissariu [[Special:UserLogin|trasiri]] comu amministraturi.",
@@ -1582,7 +1581,7 @@ Vèninu cunzidirati pàggini di disambiguazzioni tutti chiddi ca cuntèninu li t
 'doubleredirects'            => 'Rinnirizzamenti duppi',
 'doubleredirectstext'        => 'Chista pàggina alenca li pàggini chi rinnirìzzanu a àutri pàggini di rinnirizzamentu. 
 Ognuna riga cunteni li culligamenti a lu primu e a lu secunnu redirect, oltri â prima riga di testu dû secunnu redirect ca di sòlitu cunteni la pàggina di distinazzioni "curretta" â quali avissi a puntari macari lu primu redirect.
-Li redirect <s>cancillati</s> furunu curretti.',
+Li redirect <del>cancillati</del> furunu curretti.',
 'double-redirect-fixed-move' => "[[$1]] fu spustata 'n modu automàticu, ora è nu redirect a [[$2]]",
 'double-redirect-fixer'      => 'Curritturi di redirect',
 
@@ -1868,7 +1867,7 @@ Talìa $2 pi na lista di cancillazzioni ricenti.',
 'dellogpagetext'         => 'Di sèquitu sunnu alincati li pàggini cancillati di ricenti.',
 'deletionlog'            => 'Log dî cancillazzioni',
 'reverted'               => 'Ripristinata la virsioni pricidenti',
-'deletecomment'          => 'Mutivazzioni pi cancillari',
+'deletecomment'          => 'Mutivu:',
 'deleteotherreason'      => 'Autra mutivazioni o mutivazioni in più:',
 'deletereasonotherlist'  => 'Autra mutivazioni',
 'deletereason-dropdown'  => "*Mutivazzioni cchiù cumuni pi la cancillazzioni
@@ -1907,7 +1906,7 @@ Pi favuri utilizza lu tastu "\'n arreri" dû tò browser, ricàrrica la pàggina
 'protect-title'               => 'Prutezzioni di "$1"',
 'prot_1movedto2'              => '[[$1]] spustatu a [[$2]]',
 'protect-legend'              => 'Cunferma la prutezzioni',
-'protectcomment'              => 'Mutivu dâ prutizzioni',
+'protectcomment'              => 'Mutivu:',
 'protectexpiry'               => 'Scadenza',
 'protect_expiry_invalid'      => 'Scadenza nun vàlida.',
 'protect_expiry_old'          => 'Scadenza già trascursa.',
@@ -2052,7 +2051,7 @@ $1',
 'ipaddress'                       => 'Ndirizzu IP:',
 'ipadressorusername'              => 'Ndirizzu IP o nomu utenti:',
 'ipbexpiry'                       => 'Durata dû bloccu:',
-'ipbreason'                       => 'Mutivu dû bloccu:',
+'ipbreason'                       => 'Mutivu:',
 'ipbreasonotherlist'              => 'Àutru mutivu',
 'ipbreason-dropdown'              => '*Mutivi cchiù cumuni pî blocchi
 ** Nzerimentu di nformazziuni falsi
@@ -2211,7 +2210,7 @@ Nta sti casi, tu hai a spustari o agghiùnciri manuarmenti la pàggina di discus
 'movesubpage'                  => '{{PLURAL:$1|Suttapàggina|Suttapàggini}}',
 'movesubpagetext'              => 'Sta pàggina havi $1 {{PLURAL:$1|suttapàgina ammustrata|suttapàgini ammustrati}} appressu.',
 'movenosubpage'                => 'Sta pàggina nun havi suttapàggini.',
-'movereason'                   => 'Pi stu mutivu',
+'movereason'                   => 'Mutivu:',
 'revertmove'                   => 'riprìstina',
 'delete_and_move'              => 'Scancella e sposta',
 'delete_and_move_text'         => '==Richiesta di cancillazzioni==
@@ -2490,7 +2489,7 @@ $1',
 'nextdiff'     => 'Diffirenza siquenti →',
 
 # Media information
-'mediawarning'         => "'''Accura''': Stu file pò cuntèniri còdici malignu, esiquènnulu lu vostru sistema putisi vèniri cumprumissu. <hr />",
+'mediawarning'         => "'''Accura''': Stu file pò cuntèniri còdici malignu, esiquènnulu lu vostru sistema putisi vèniri cumprumissu.",
 'imagemaxsize'         => "Diminzioni màssima dî mmàggini:<br />''(pi li pàggini di discrizzioni dô file)''",
 'thumbsize'            => 'Grannizza dî miniaturi:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|pàggina|pàggini}}',

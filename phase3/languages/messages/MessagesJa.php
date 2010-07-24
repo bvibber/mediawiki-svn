@@ -22,6 +22,7 @@
  * @author Joe Elkins
  * @author JtFuruhata
  * @author Kahusi
+ * @author Kanon und wikipedia
  * @author Kkkdc
  * @author Klutzy
  * @author Koba-chan
@@ -319,7 +320,6 @@ $messages = array(
 'tog-watchdefault'            => '自分が編集したページをウォッチリストに追加する',
 'tog-watchmoves'              => '自分が移動したページをウォッチリストに追加する',
 'tog-watchdeletion'           => '自分が削除したページをウォッチリストに追加する',
-'tog-minordefault'            => '細部の編集をデフォルトでチェックする',
 'tog-previewontop'            => 'プレビューをテキストボックスの前に配置する',
 'tog-previewonfirst'          => '編集開始時にもプレビューを表示する',
 'tog-nocache'                 => 'ページをキャッシュしない',
@@ -445,7 +445,7 @@ $messages = array(
 'moredotdotdot' => '続き…',
 'mypage'        => '自分のページ',
 'mytalk'        => '自分のトーク',
-'anontalk'      => 'このIP利用者のトーク',
+'anontalk'      => 'この匿名利用者のトーク',
 'navigation'    => '案内',
 'and'           => 'および',
 
@@ -1049,7 +1049,7 @@ $3による理由は以下の通りです: ''$2''",
 'revdelete-radio-unset'       => 'いいえ',
 'revdelete-suppress'          => '他の利用者と同様に管理者からもデータを隠す',
 'revdelete-unsuppress'        => '復帰版に対する制限を外す',
-'revdelete-log'               => '削除の理由:',
+'revdelete-log'               => '理由：',
 'revdelete-submit'            => '選択した{{PLURAL:$1|版}}に適用',
 'revdelete-logentry'          => '[[$1]]の版の閲覧レベルを変更しました',
 'logdelete-logentry'          => '[[$1]]の操作の閲覧レベルを変更しました',
@@ -1103,9 +1103,9 @@ $1",
 'revmove-reasonfield'          => '理由：',
 'revmove-titlefield'           => '対象ページ：',
 'revmove-badparam-title'       => '不正な引数',
-'revmove-badparam'             => '<span class="error">不正あるいは不十分な引数が指定されました。ページを戻りもう一度やり直してください。</span>',
+'revmove-badparam'             => '不正あるいは不十分な引数が指定されました。ページを戻りもう一度やり直してください。',
 'revmove-norevisions-title'    => '無効な指定版',
-'revmove-norevisions'          => '<span class="error">指定した版が存在しないか、この機能を利用するために1つ以上の版を指定していません。</span>',
+'revmove-norevisions'          => '指定した版が存在しないか、この機能を利用するために1つ以上の版を指定していません。',
 'revmove-nullmove-title'       => '不正なタイトル',
 'revmove-nullmove'             => '移動元と移動先のページが同一のものです。ページを戻り、「$1」とは違うページを入力してください。',
 'revmove-success-existing'     => '{{PLURAL:$1|$1版が、[[$2]]から}}既存のページ[[$3]]へ移動されました。',
@@ -1323,7 +1323,7 @@ $1",
 'prefs-advancedrendering'       => '詳細設定',
 'prefs-advancedsearchoptions'   => '詳細設定',
 'prefs-advancedwatchlist'       => '詳細設定',
-'prefs-display'                 => '表示の設定',
+'prefs-displayrc'               => '表示の設定',
 'prefs-diffs'                   => '差分',
 
 # User rights
@@ -1434,6 +1434,7 @@ $1",
 'right-override-export-depth' => 'リンク先ページを5階層まで含めて書き出す',
 'right-sendemail'             => '他の利用者へ電子メールを送る',
 'right-revisionmove'          => '版の移動',
+'right-selenium'              => 'Selenium テストを実行する',
 
 # User rights log
 'rightslog'      => '利用者権限変更記録',
@@ -1753,7 +1754,7 @@ $1',
 'filedelete-legend'           => 'ファイルの削除',
 'filedelete-intro'            => "'''[[Media:$1|$1]]'''をすべての履歴とともに削除しようとしています。",
 'filedelete-intro-old'        => "'''[[Media:$1|$1]]'''の[$4 $2$3の版]を削除しようとしています。",
-'filedelete-comment'          => '削除理由:',
+'filedelete-comment'          => '理由:',
 'filedelete-submit'           => '削除',
 'filedelete-success'          => "'''$1''' は削除されました。",
 'filedelete-success-old'      => "'''[[Media:$1|$1]]''' の $2 $3 版は削除されています。",
@@ -1819,7 +1820,7 @@ $1',
 [[MediaWiki:Disambiguationspage]] からリンクされたテンプレートを使用しているページは曖昧さ回避ページと見なされます。",
 
 'doubleredirects'            => '二重リダイレクト',
-'doubleredirectstext'        => 'これは他のリダイレクトページにリダイレクトしているページの一覧です。各行は始点のリダイレクトとそのリダイレクト先ページ、および、そのまたリダイレクトしている先のページを含んでいます。3つ目のページがたいていは「真の」リダイレクト先であり、1つ目のリダイレクトはそこを直接指すべきです。<s>打ち消し線</s>のはいった項目は既に修正されています。',
+'doubleredirectstext'        => 'これは他のリダイレクトページにリダイレクトしているページの一覧です。各行は始点のリダイレクトとそのリダイレクト先ページ、および、そのまたリダイレクトしている先のページを含んでいます。3つ目のページがたいていは「真の」リダイレクト先であり、1つ目のリダイレクトはそこを直接指すべきです。<del>打ち消し線</del>のはいった項目は既に修正されています。',
 'double-redirect-fixed-move' => '[[$1]] が移動されているため、リダイレクト先を移動先の [[$2]] へ変更しました。',
 'double-redirect-fixer'      => 'リダイレクト修正係',
 
@@ -2113,7 +2114,7 @@ $UNWATCHURL
 'dellogpagetext'         => '以下は最近の削除と復帰の記録です。',
 'deletionlog'            => '削除記録',
 'reverted'               => '以前の版への差し戻し',
-'deletecomment'          => '削除理由:',
+'deletecomment'          => '理由:',
 'deleteotherreason'      => '他の、または追加の理由:',
 'deletereasonotherlist'  => 'その他の理由',
 'deletereason-dropdown'  => '*よくある削除理由
@@ -2474,7 +2475,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 'movesubpage'                  => '{{PLURAL:$1|サブページ}}',
 'movesubpagetext'              => 'このページには、以下に示す $1{{PLURAL:$1|個}}のサブページがあります。',
 'movenosubpage'                => 'このページにはサブページがありません。',
-'movereason'                   => '理由',
+'movereason'                   => '理由:',
 'revertmove'                   => '差し戻し',
 'delete_and_move'              => '削除して移動する',
 'delete_and_move_text'         => '== 削除が必要です ==
@@ -2781,7 +2782,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 
 # Media information
 'mediawarning'         => "'''警告:''' このファイルは悪意のあるコードを含んでいる可能性があります。
-実行するとコンピューターが危害を被る場合があります。<hr />",
+実行するとコンピューターが危害を被る場合があります。",
 'imagemaxsize'         => "画像の最大サイズ:<br />''(ファイルページに適用)''",
 'thumbsize'            => 'サムネイルの大きさ:',
 'widthheightpage'      => '$1×$2, $3{{PLURAL:$3|ページ}}',

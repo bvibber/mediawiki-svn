@@ -25,8 +25,7 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 	var $rclTargetTitle;
 
 	function __construct(){
-		SpecialPage::SpecialPage( 'Recentchangeslinked' );
-		$this->includable( true );
+		parent::__construct( 'Recentchangeslinked' );
 	}
 
 	public function getDefaultOptions() {
@@ -105,9 +104,10 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$join_conds['page'] = array('LEFT JOIN', 'rc_cur_id=page_id');
 			$select[] = 'page_latest';
 		}
-
-		ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds,
-			$query_options, $opts['tagfilter'] );
+		if ( !$this->including() ) { // bug 23293
+			ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds,
+				$query_options, $opts['tagfilter'] );
+		}
 
 		// XXX: parent class does this, should we too?
 		// wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );

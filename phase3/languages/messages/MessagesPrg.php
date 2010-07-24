@@ -32,7 +32,6 @@ $messages = array(
 'tog-watchdefault'            => 'Preidāis pāusans kawīdans as redigijja prei majjan listin stēisan nadirītan',
 'tog-watchmoves'              => 'Preidāis pāusans, kawīdans as praskajjina prei majjan listin stēisan nadirītan',
 'tog-watchdeletion'           => 'Preidāis pāusans kawīdans as āupausina prei majjan listin stēisan nadirītan',
-'tog-minordefault'            => 'Ebzentlis auprestaminai wissans kitawidīnsnans kāigi mālkans',
 'tog-previewontop'            => 'Waidinnais pirmādiran pirzdau redigīsnas laūkan',
 'tog-previewonfirst'          => 'Waidinnais pirmādiran prei pirman redigīsenin',
 'tog-nocache'                 => 'Izklaūjais rānkas minīsnan',
@@ -761,7 +760,7 @@ Bāndais [[Special:Search|laukītun]] sirzdau nāunans pāusans en wiki',
 'revdelete-radio-unset'      => 'Ni',
 'revdelete-suppress'         => 'Kliptinais infōrmaciōnins ezze perwaldītajamans tīt kāigi ezze kitēimans',
 'revdelete-unsuppress'       => 'Āupausinais arāikinsenins per etwārtai wartīntans wersiōnins',
-'revdelete-log'              => 'Āupausisenes brewīnsli:',
+'revdelete-log'              => 'Brewīnsli:',
 'revdelete-submit'           => 'Pertērpaus prei {{PLURAL:$1|etrīnktan wersiōnin|etrīnktans wersiōnins}}',
 'revdelete-logentry'         => 'ast kitawīdinuns(si) wersiōnis widāminiskwan en [[$1]]',
 'logdelete-logentry'         => 'ast kitawīdinuns(si) audāsenes widāminiskwan en [[$1]]',
@@ -993,7 +992,7 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'prefs-advancedrendering'     => 'Ēmpirsin treppušas opciōnis',
 'prefs-advancedsearchoptions' => 'Ēmpirsin treppušas opciōnis',
 'prefs-advancedwatchlist'     => 'Ēmpirsin treppušas opciōnis',
-'prefs-display'               => 'Waidīnsnas opciōnis',
+'prefs-displayrc'             => 'Waidīnsnas opciōnis',
 
 # User rights
 'userrights'                  => 'Perwāldais enwarīnsenins stēisan tērpautajan',
@@ -1374,7 +1373,7 @@ Preiēiminan ast dīgi [[Special:WhatLinksHere/$2|pilna listi]].',
 'filedelete-legend'           => 'Āupausinais zūrbrukin',
 'filedelete-intro'            => "Tu skatta āupausintun zūrbrukin '''[[Media:$1|$1]]''' ēmpiri sen pastippan tenesse istōrijan.",
 'filedelete-intro-old'        => "Tū āupausina zurbrūkes '''[[Media:$1|$1]]''' wersiōnin iz [$4 $3, $2].",
-'filedelete-comment'          => 'Āupausinsenes brewīnsli:',
+'filedelete-comment'          => 'Brewīnsli:',
 'filedelete-submit'           => 'Āupausinais',
 'filedelete-success'          => "'''$1''' ast āupausintan.",
 'filedelete-success-old'      => "Zūrbrukes '''[[Media:$1|$1]]''' wersiōni iz $3, $2 ast āupausintan.",
@@ -1442,7 +1441,7 @@ Pāusan ast laikātan per ainapreslinsnan pāusan ik tennan tērpaui šablōnin 
 'doubleredirects'            => 'Dwiggubai prawessenei',
 'doubleredirectstext'        => 'Zemmais ast listi wisēisan pāusan sen prawessenins en pāusans, kawīdai prawedda en kittan pāusan.
 Erainā rindā turri ēn sen autengīnsenins en pirman be āntran prawessenin, tīt dīgi autengīnsenin kwēi wedda āntars prawessenis. Jāuku panzdaums autengīnsenin wedda en pāusan, en kawīdan prawerru prawestun pirmasmu pāusan.
-<s>Praglaubātai</s> prawessenei ast reparītan.',
+<del>Praglaubātai</del> prawessenei ast reparītan.',
 'double-redirect-fixed-move' => 'pāusan [[$1]] pastāi praskajjintan.
 Teinū tennan prawedda prei [[$2]].',
 'double-redirect-fixer'      => 'Prawessenin tikrintajs',
@@ -1707,7 +1706,7 @@ Wīdais en $2 listin stēisan panzdauman āupausinsenin.',
 'dellogpagetext'         => 'Zemmais ast panzdauman āupausinsenin listi.',
 'deletionlog'            => 'regīsterin stēisan āupausinsenin',
 'reverted'               => 'Etwārtai wartinnā di pirzdauman wersiōnin',
-'deletecomment'          => 'Āupausinsenes brewīnsli:',
+'deletecomment'          => 'Brewīnsli:',
 'deleteotherreason'      => 'Kitā/papilnimina brewīnsli:',
 'deletereasonotherlist'  => 'Kitā brewīnsli',
 'deletereason-dropdown'  => 'Ukadeznas āupausinsenes brewīnslis:
@@ -2327,7 +2326,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Ēmpirssergīsenis:''' Šis zūrbrukes tīps mazzi turītun ēn sin wārgingiskan kōdan.
-Enskattintei din,  tū mazzi ārditun twajjan sistēman.<hr />",
+Enskattintei din,  tū mazzi ārditun twajjan sistēman.",
 'imagemaxsize'         => "Arāikinais bildin debban:<br />''(per zūrbrukes ebpeisāsenes pāusans)''",
 'thumbsize'            => 'Miniatūris debban:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|pāusan|pāusai}}',

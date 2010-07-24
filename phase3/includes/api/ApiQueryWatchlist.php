@@ -56,7 +56,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		$this->selectNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
 
 		$params = $this->extractRequestParams();
-		
+
 		$user = $this->getWatchlistUser( $params );
 
 		if ( !is_null( $params['prop'] ) && is_null( $resultPageSet ) ) {
@@ -140,10 +140,11 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				$this->dieUsageMsg( array( 'show' ) );
 			}
 
-			// Check permissions.  FIXME: should this check $user instead of $wgUser?
-			if ( ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
-			{
-				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+			// Check permissions.
+			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
+				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
+					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+				}
 			}
 
 			/* Add additional conditions to query depending upon parameters. */
@@ -258,8 +259,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		}
 
 		if ( $this->fld_notificationtimestamp ) {
-			$vals['notificationtimestamp'] = ( $row->wl_notificationtimestamp == null ) 
-				? '' 
+			$vals['notificationtimestamp'] = ( $row->wl_notificationtimestamp == null )
+				? ''
 				: wfTimestamp( TS_ISO_8601, $row->wl_notificationtimestamp );
 		}
 
@@ -356,7 +357,19 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			'excludeuser' => 'Don\'t list changes by this user',
 			'dir' => 'In which direction to enumerate pages',
 			'limit' => 'How many total results to return per request',
-			'prop' => 'Which additional items to get (non-generator mode only).',
+			'prop' => array(
+				'Which additional items to get (non-generator mode only).',
+				' ids                    - Adds revision ids and page ids',
+				' title                  - Adds title of the page',
+				' flags                  - Adds flags for the edit',
+				' user                   - Adds user who made the edit',
+				' comment                - Adds comment of the edit',
+				' parsedcomment          - Adds parsed comment of the edit',
+				' timestamp              - Adds timestamp of the edit',
+				' patrol                 - Tags edits that are patrolled',
+				' size                   - Adds the old and new lengths of the page',
+				' notificationtimestamp  - Adds timestamp of when the user was last notified about the edit',
+			),
 			'show' => array(
 				'Show only items that meet this criteria.',
 				"For example, to see only minor edits done by logged-in users, set {$this->getModulePrefix()}show=minor|!anon"

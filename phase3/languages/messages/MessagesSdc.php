@@ -123,7 +123,6 @@ $messages = array(
 'tog-watchdefault'            => "Aggiungi li pàgini mudìfiggaddi a l'abbaidaddi ippiziari",
 'tog-watchmoves'              => "Aggiungi li pàgini ippusthaddi a l'abbaidaddi ippiziari",
 'tog-watchdeletion'           => "Aggiungi li pàgini canzilladdi a l'abbaidaddi ippiziari",
-'tog-minordefault'            => "Indica tutti li mudìfigghi cumenti 'minori' in otomàtiggu",
 'tog-previewontop'            => "Musthra l'antiprimma sobra la casella di mudìfigga",
 'tog-previewonfirst'          => "Musthra l'antiprimma pa la primma mudìfigga",
 'tog-nocache'                 => 'Disattiba la mimória cache pa li pàgini',
@@ -1889,7 +1888,7 @@ $1",
 'nextdiff'     => 'Diffarènzia sighenti →',
 
 # Media information
-'mediawarning'         => "'''Attinzioni''': Chisthu file pó cuntinì còdizi marignu, chi si eseguiddu pó danniggià lu propriu sisthema infuimmatigu.<hr />",
+'mediawarning'         => "'''Attinzioni''': Chisthu file pó cuntinì còdizi marignu, chi si eseguiddu pó danniggià lu propriu sisthema infuimmatigu.",
 'imagemaxsize'         => "Misura màssima di l'immàgini i'li reratibi pàgini di dischussioni:",
 'thumbsize'            => 'Mannària di li miniadduri:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|pàgina|pàgini}}',

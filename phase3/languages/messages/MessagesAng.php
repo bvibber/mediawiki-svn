@@ -44,7 +44,6 @@ $messages = array(
 'tog-watchdefault'           => 'Sīdan þe iċ ādihte ēacian tō mīnre ƿæccȝetale',
 'tog-watchmoves'             => 'Sīdan þe iċ hƿeorfe ēacian tō mīnre ƿæccȝetale',
 'tog-watchdeletion'          => 'Sīdan þe iċ forlēose ēacian tō mīnre ƿæccȝetale',
-'tog-minordefault'           => 'Ealle ādihtende mearcian tōlas ȝeƿunelīċe',
 'tog-previewontop'           => 'Forescēaƿe sēon fore ādihtbox',
 'tog-previewonfirst'         => 'Forescēaƿe sēon on formestum ādihte',
 'tog-shownumberswatching'    => 'Hū mæniȝ ƿæccende brūcendas sēon',
@@ -867,7 +866,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'deletedarticle'        => 'āfeorsode "[[$1]]"',
 'dellogpage'            => 'Āfeorsunge_wisbōc',
 'deletionlog'           => 'āfeorsunge wisbōc',
-'deletecomment'         => 'Racu for āfeorsunge',
+'deletecomment'         => 'Racu:',
 'deleteotherreason'     => 'Ōðra/ēaca racu:',
 'deletereasonotherlist' => 'Ōðru racu',
 
@@ -955,7 +954,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 
 # Block/unblock
 'blockip'                  => 'Brūcend fortȳnan',
-'ipbreason'                => 'Racu',
+'ipbreason'                => 'Racu:',
 'ipbreasonotherlist'       => 'Ōðeru racu',
 'ipbreason-dropdown'       => '*Gemǣna gǣlungraca
 ** Insettung falses gefrǣges

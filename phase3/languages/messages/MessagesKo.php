@@ -10,6 +10,7 @@
  * @author Albamhandae
  * @author Devunt
  * @author Ficell
+ * @author Gapo
  * @author IRTC1015
  * @author ITurtle
  * @author Klutzy
@@ -305,7 +306,6 @@ $messages = array(
 'tog-watchdefault'            => '내가 편집하는 문서를 주시문서 목록에 추가',
 'tog-watchmoves'              => '내가 이동하는 문서를 주시문서 목록에 추가',
 'tog-watchdeletion'           => '내가 삭제하는 문서를 주시문서 목록에 추가',
-'tog-minordefault'            => '‘사소한 편집’을 항상 선택',
 'tog-previewontop'            => '편집상자 앞에 미리보기 보이기',
 'tog-previewonfirst'          => '처음 편집할 때 미리보기 보기',
 'tog-nocache'                 => '문서 캐시 끄기',
@@ -1081,7 +1081,7 @@ $2개 보다 적게 써야 하지만 지금은 $1개를 쓰고 있습니다.",
 'revdelete-radio-unset'       => '아니오',
 'revdelete-suppress'          => '문서 내용을 관리자에게도 보이지 않게 숨기기',
 'revdelete-unsuppress'        => '복구된 판에 대한 제한을 해제',
-'revdelete-log'               => '삭제 이유:',
+'revdelete-log'               => '이유:',
 'revdelete-submit'            => '선택한 {{PLURAL:$1|판}}에 적용',
 'revdelete-logentry'          => '[[$1]]의 판의 보이기 설정을 변경함',
 'logdelete-logentry'          => '[[$1]]의 로그 보이기 설정을 변경함',
@@ -1139,11 +1139,11 @@ $1",
 'revmove-reasonfield'          => '이유:',
 'revmove-titlefield'           => '대상 문서:',
 'revmove-badparam-title'       => '잘못된 변수',
-'revmove-badparam'             => '<span class="error">당신의 요청이 잘못된 변수를 갖고 있거나 변수 내용이 부족합니다. "뒤로"를 클릭하여 다시 시도해 보십시오.</span>',
+'revmove-badparam'             => '당신의 요청이 잘못된 변수를 갖고 있거나 변수 내용이 부족합니다. "뒤로"를 클릭하여 다시 시도해 보십시오.',
 'revmove-norevisions-title'    => '대상 판 선택이 잘못됨',
-'revmove-norevisions'          => '<span class="error">당신은 이 기능을 수행할 대상 판을 설정하지 않았거나 존재하지 않는 판을 선택하였습니다.</span>',
+'revmove-norevisions'          => '당신은 이 기능을 수행할 대상 판을 설정하지 않았거나 존재하지 않는 판을 선택하였습니다.',
 'revmove-nullmove-title'       => '제목이 잘못됨',
-'revmove-nullmove'             => '<span class="error">옮기기 전 문서와 대상 문서의 제목이 같습니다. "뒤로"를 클릭하여 "$1"과 다른 문서 이름을 입력해주세요.</span>',
+'revmove-nullmove'             => '옮기기 전 문서와 대상 문서의 제목이 같습니다. "뒤로"를 클릭하여 "$1"과 다른 문서 이름을 입력해주세요.',
 'revmove-success-existing'     => '[[$2]] 문서의 편집 $1개가 [[$3]] 문서로 옮겨졌습니다.',
 'revmove-success-created'      => '[[$2]] 문서의 편집 $1개가 [[$3]] 문서로 옮기면서 새 문서를 생성했습니다.',
 
@@ -1341,7 +1341,7 @@ $1",
 'yourrealname'                  => '실명:',
 'yourlanguage'                  => '언어:',
 'yournick'                      => '서명:',
-'prefs-help-signature'          => '토론 문서의 글은 "<nowiki>~~~~</nowiki>"를 표시해야 합니다. 이것은 서명과 시간으로 바뀔 것입니다.',
+'prefs-help-signature'          => '토론 문서에 글을 남기실 때는 서명을 해 주세요. “<nowiki>~~~~</nowiki>”를 입력하시면 서명과 시간이 자동으로 입력됩니다.',
 'badsig'                        => '서명이 잘못되었습니다. HTML 태그를 확인해주세요.',
 'badsiglength'                  => '서명이 너무 깁니다.
 서명은 $1자보다 짧아야 합니다.',
@@ -1364,7 +1364,9 @@ $1",
 'prefs-advancedrendering'       => '고급 설정',
 'prefs-advancedsearchoptions'   => '고급 설정',
 'prefs-advancedwatchlist'       => '고급 설정',
-'prefs-display'                 => '보이기 설정',
+'prefs-displayrc'               => '보이기 설정',
+'prefs-displaysearchoptions'    => '표시 설정',
+'prefs-displaywatchlist'        => '표시 설정',
 'prefs-diffs'                   => '차이',
 
 # User rights
@@ -1475,6 +1477,7 @@ $1",
 'right-override-export-depth' => '5단계로 링크된 문서를 포함하여 문서를 내보내기',
 'right-sendemail'             => '다른 사용자에게 이메일 보내기',
 'right-revisionmove'          => '특정 판 옮기기',
+'right-selenium'              => '셀레늄 테스트 실행',
 
 # User rights log
 'rightslog'      => '사용자 권한 기록',
@@ -1818,7 +1821,7 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'filedelete-legend'           => '파일 삭제하기',
 'filedelete-intro'            => "'''[[Media:$1|$1]]''' 파일과 모든 역사를 삭제합니다.",
 'filedelete-intro-old'        => "'''[[Media:$1|$1]]''' 파일의 [$4 $2 $3] 버전을 삭제합니다.",
-'filedelete-comment'          => '삭제 이유:',
+'filedelete-comment'          => '이유:',
 'filedelete-submit'           => '삭제',
 'filedelete-success'          => "'''$1''' 파일을 삭제했습니다.",
 'filedelete-success-old'      => "'''[[Media:$1|$1]]''' 파일의 $2 $3 버전을 삭제했습니다.",
@@ -1888,7 +1891,7 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'doubleredirects'            => '이중 넘겨주기 목록',
 'doubleredirectstext'        => '이 문서는 다른 넘겨주기 문서로 넘겨주고 있는 문서의 목록입니다.
 매 줄에는 첫 번째 문서와 두 번째 문서의 링크가 있습니다. 그리고 보통 첫 번째 문서가 넘겨주어야 할 "실제" 문서인 두 번째 넘겨주기의 대상이 있습니다.
-<s>취소선이 그인</s> 부분은 이미 해결되었습니다.',
+<del>취소선이 그인</del> 부분은 이미 해결되었습니다.',
 'double-redirect-fixed-move' => '[[$1]] 문서를 옮겼습니다. 이 문서는 이제 [[$2]] 문서로 넘겨줍니다.',
 'double-redirect-fixer'      => '넘겨주기 수리꾼',
 
@@ -2189,7 +2192,7 @@ $UNWATCHURL
 'dellogpagetext'         => '아래의 목록은 최근에 삭제된 문서들입니다.',
 'deletionlog'            => '삭제 기록',
 'reverted'               => '이전 버전으로 되돌렸습니다.',
-'deletecomment'          => '삭제 이유:',
+'deletecomment'          => '이유:',
 'deleteotherreason'      => '다른 이유/추가적인 이유:',
 'deletereasonotherlist'  => '다른 이유',
 'deletereason-dropdown'  => '*일반적인 삭제 이유
@@ -2570,7 +2573,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'movesubpage'                  => '{{PLURAL:$1}}하위 문서',
 'movesubpagetext'              => '이 문서에는 다음 $1개의 하위 문서가 있습니다.',
 'movenosubpage'                => '이 문서에는 하위 문서가 존재하지 않습니다.',
-'movereason'                   => '이유',
+'movereason'                   => '이유:',
 'revertmove'                   => '되돌리기',
 'delete_and_move'              => '삭제하고 이동',
 'delete_and_move_text'         => '== 삭제 필요 ==
@@ -2872,7 +2875,7 @@ $1',
 'nextdiff'     => '다음 편집 →',
 
 # Media information
-'mediawarning'         => "'''경고''': 이 파일에 악성 코드가 포함되어 있을 수 있습니다. 파일을 실행하면 컴퓨터에 문제가 생길 가능성이 있습니다.<hr />",
+'mediawarning'         => "'''경고''': 이 파일에 악성 코드가 포함되어 있을 수 있습니다. 파일을 실행하면 컴퓨터에 문제가 생길 가능성이 있습니다.",
 'imagemaxsize'         => "그림 최대 크기:<br />''(파일 문서에 적용되는 기능)''",
 'thumbsize'            => '섬네일 크기:',
 'widthheightpage'      => '$1×$2, $3페이지',

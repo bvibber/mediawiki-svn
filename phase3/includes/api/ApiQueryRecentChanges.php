@@ -116,7 +116,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		 * 		AND rc_timestamp < $end AND rc_namespace = $namespace
 		 * 		AND rc_deleted = '0'
 		 */
-		$db = $this->getDB();
 		$this->addTables( 'recentchanges' );
 		$index = array( 'recentchanges' => 'rc_timestamp' ); // May change
 		$this->addWhereRange( 'rc_timestamp', $params['dir'], $params['start'], $params['end'] );
@@ -143,9 +142,10 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 			// Check permissions
 			global $wgUser;
-			if ( ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
-			{
-				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
+				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
+					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
+				}
 			}
 
 			/* Add additional conditions to query depending upon parameters. */
@@ -248,7 +248,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 		$count = 0;
 		/* Perform the actual query. */
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		/* Iterate through the rows, adding data extracted from them to our query result. */
@@ -445,6 +444,24 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		}
 	}
 
+	public function getCacheMode( $params ) {
+		if ( isset( $params['show'] ) ) {
+			foreach ( $params['show'] as $show ) {
+				if ( $show === 'patrolled' || $show === '!patrolled' ) {
+					return 'private';
+				}
+			}
+		}
+		if ( isset( $params['token'] ) ) {
+			return 'private';
+		}
+		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
+			// formatComment() calls wfMsg() among other things
+			return 'anon-public-user-private';
+		}
+		return 'public';
+	}
+
 	public function getAllowedParams() {
 		return array(
 			'start' => array(
@@ -534,7 +551,21 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			'namespace' => 'Filter log entries to only this namespace(s)',
 			'user' => 'Only list changes by this user',
 			'excludeuser' => 'Don\'t list changes by this user',
-			'prop' => 'Include additional pieces of information',
+			'prop' => array(
+				'Include additional pieces of information',
+				' user           - Adds the user responsible for the edit and tags if they are an IP',
+				' comment        - Adds the comment for the edit',
+				' parsedcomment  - Adds the parsed comment for the edit',
+				' flags          - Adds flags for the edit',
+				' timestamp      - Adds timestamp of the edit',
+				' title          - Adds the page title of the edit',
+				' ids            - Adds the page id, recent changes id and the new and old revision id',
+				' sizes          - Adds the new and old page length in bytes',
+				' redirect       - Tags edit if page is a redirect',
+				' patrolled      - Tags edits have have been patrolled',
+				' loginfo        - Adds log information (logid, logtype, etc) to log entries',
+				' tags           - Lists tags for the entry',
+			),
 			'token' => 'Which tokens to obtain for each change',
 			'show' => array(
 				'Show only items that meet this criteria.',

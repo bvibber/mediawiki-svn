@@ -63,7 +63,6 @@ class ApiMain extends ApiBase {
 		'parse' => 'ApiParse',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
-		'go' => 'ApiGo',
 		'help' => 'ApiHelp',
 		'paraminfo' => 'ApiParamInfo',
 
@@ -119,15 +118,16 @@ class ApiMain extends ApiBase {
 		),
 		'apihighlimits'	=> array(
 			'msg' => 'Use higher limits in API queries (Slow queries: $1 results; Fast queries: $2 results). The limits for slow queries also apply to multivalue parameters.',
-			'params' => array( ApiMain::LIMIT_SML2, ApiMain::LIMIT_BIG2 )
+			'params' => array( ApiBase::LIMIT_SML2, ApiBase::LIMIT_BIG2 )
 		)
 	);
 
 	private $mPrinter, $mModules, $mModuleNames, $mFormats, $mFormatNames;
 	private $mResult, $mAction, $mShowVersions, $mEnableWrite, $mRequest;
-	private $mInternalMode, $mSquidMaxage, $mModule;
+	private $mInternalMode, $mSquidMaxage, $mModule, $mVaryCookie;
 
-	private $mCacheControl = array( 'must-revalidate' => true );
+	private $mCacheMode = 'private';
+	private $mCacheControl = array();
 
 	/**
 	 * Constructs an instance of ApiMain that utilizes the module and format specified by $request.
@@ -170,6 +170,7 @@ class ApiMain extends ApiBase {
 
 		$this->mSquidMaxage = - 1; // flag for executeActionWithErrorHandling()
 		$this->mCommit = false;
+		$this->mVaryCookie = false;
 	}
 
 	/**
@@ -199,25 +200,12 @@ class ApiMain extends ApiBase {
 	public function getModule() {
 		return $this->mModule;
 	}
-	
+
 	/**
 	 * Get the result formatter object. Only works after setupExecuteAction()
 	 */
 	public function getPrinter() {
 		return $this->mPrinter;
-	}
-
-	/**
-	 * Only kept for backwards compatibility
-	 * @deprecated Use isWriteMode() instead
-	 */
-	public function requestWriteMode() {
-		if ( !$this->mEnableWrite ) {
-			$this->dieUsageMsg( array( 'writedisabled' ) );
-		}
-		if ( wfReadOnly() ) {
-			$this->dieUsageMsg( array( 'readonlytext' ) );
-		}
 	}
 
 	/**
@@ -231,12 +219,82 @@ class ApiMain extends ApiBase {
 	}
 
 	/**
+	 * Set the type of caching headers which will be sent.
+	 *
+	 * @param $mode One of:
+	 *    - 'public':     Cache this object in public caches, if the maxage or smaxage
+	 *         parameter is set, or if setCacheMaxAge() was called. If a maximum age is
+	 *         not provided by any of these means, the object will be private.
+	 *    - 'private':    Cache this object only in private client-side caches.
+	 *    - 'anon-public-user-private': Make this object cacheable for logged-out
+	 *         users, but private for logged-in users. IMPORTANT: If this is set, it must be
+	 *         set consistently for a given URL, it cannot be set differently depending on
+	 *         things like the contents of the database, or whether the user is logged in.
+	 *
+	 *  If the wiki does not allow anonymous users to read it, the mode set here
+	 *  will be ignored, and private caching headers will always be sent. In other words,
+	 *  the "public" mode is equivalent to saying that the data sent is as public as a page
+	 *  view.
+	 *
+	 *  For user-dependent data, the private mode should generally be used. The
+	 *  anon-public-user-private mode should only be used where there is a particularly
+	 *  good performance reason for caching the anonymous response, but where the
+	 *  response to logged-in users may differ, or may contain private data.
+	 *
+	 *  If this function is never called, then the default will be the private mode.
+	 */
+	public function setCacheMode( $mode ) {
+		if ( !in_array( $mode, array( 'private', 'public', 'anon-public-user-private' ) ) ) {
+			wfDebug( __METHOD__ . ": unrecognised cache mode \"$mode\"\n" );
+			// Ignore for forwards-compatibility
+			return;
+		}
+
+		if ( !in_array( 'read', User::getGroupPermissions( array( '*' ) ), true ) ) {
+			// Private wiki, only private headers
+			if ( $mode !== 'private' ) {
+				wfDebug( __METHOD__ . ": ignoring request for $mode cache mode, private wiki\n" );
+				return;
+			}
+		}
+
+		wfDebug( __METHOD__ . ": setting cache mode $mode\n" );
+		$this->mCacheMode = $mode;
+	}
+
+	/**
+	 * @deprecated Private caching is now the default, so there is usually no
+	 * need to call this function. If there is a need, you can use
+	 * $this->setCacheMode('private')
+	 */
+	public function setCachePrivate() {
+		$this->setCacheMode( 'private' );
+	}
+
+	/**
 	 * Set directives (key/value pairs) for the Cache-Control header.
 	 * Boolean values will be formatted as such, by including or omitting
 	 * without an equals sign.
+	 *
+	 * Cache control values set here will only be used if the cache mode is not
+	 * private, see setCacheMode().
 	 */
 	public function setCacheControl( $directives ) {
 		$this->mCacheControl = $directives + $this->mCacheControl;
+	}
+
+	/**
+	 * Make sure Vary: Cookie and friends are set. Use this when the output of a request
+	 * may be cached for anons but may not be cached for logged-in users.
+	 *
+	 * WARNING: This function must be called CONSISTENTLY for a given URL. This means that a
+	 * given URL must either always or never call this function; if it sometimes does and
+	 * sometimes doesn't, stuff will break.
+	 *
+	 * @deprecated Use setCacheMode( 'anon-public-user-private' )
+	 */
+	public function setVaryCookie() {
+		$this->setCacheMode( 'anon-public-user-private' );
 	}
 
 	/**
@@ -289,7 +347,7 @@ class ApiMain extends ApiBase {
 			$errCode = $this->substituteResultWithError( $e );
 
 			// Error results should not be cached
-			$this->setCacheMaxAge( 0 );
+			$this->setCacheMode( 'private' );
 
 			$headerStr = 'MediaWiki-API-Error: ' . $errCode;
 			if ( $e->getCode() === 0 ) {
@@ -306,6 +364,48 @@ class ApiMain extends ApiBase {
 			$this->printResult( true );
 		}
 
+		// Send cache headers after any code which might generate an error, to
+		// avoid sending public cache headers for errors.
+		$this->sendCacheHeaders();
+
+		if ( $this->mPrinter->getIsHtml() && !$this->mPrinter->isDisabled() ) {
+			echo wfReportTime();
+		}
+
+		ob_end_flush();
+	}
+
+	protected function sendCacheHeaders() {
+		if ( $this->mCacheMode == 'private' ) {
+			header( 'Cache-Control: private' );
+			return;
+		}
+
+		if ( $this->mCacheMode == 'anon-public-user-private' ) {
+			global $wgUseXVO, $wgOut;
+			header( 'Vary: Accept-Encoding, Cookie' );
+			if ( $wgUseXVO ) {
+				header( $wgOut->getXVO() );
+				if ( $wgOut->haveCacheVaryCookies() ) {
+					// Logged in, mark this request private
+					header( 'Cache-Control: private' );
+					return;
+				}
+				// Logged out, send normal public headers below
+			} elseif ( session_id() != '' ) {
+				// Logged in or otherwise has session (e.g. anonymous users who have edited)
+				// Mark request private
+				header( 'Cache-Control: private' );
+				return;
+			} // else no XVO and anonymous, send public headers below
+		} else /* if public */ {
+			// Give a debugging message if the user object is unstubbed on a public request
+			global $wgUser;
+			if ( !( $wgUser instanceof StubUser ) ) {
+				wfDebug( __METHOD__ . " \$wgUser is unstubbed on a public request!\n" );
+			}
+		}
+
 		// If nobody called setCacheMaxAge(), use the (s)maxage parameters
 		if ( !isset( $this->mCacheControl['s-maxage'] ) ) {
 			$this->mCacheControl['s-maxage'] = $this->getParameter( 'smaxage' );
@@ -314,11 +414,20 @@ class ApiMain extends ApiBase {
 			$this->mCacheControl['max-age'] = $this->getParameter( 'maxage' );
 		}
 
-		// Set the cache expiration at the last moment, as any errors may change the expiration.
-		// if $this->mSquidMaxage == 0, the expiry time is set to the first second of unix epoch
-		$exp = min( $this->mCacheControl['s-maxage'], $this->mCacheControl['max-age'] );
-		$expires = ( $exp == 0 ? 1 : time() + $exp );
-		header( 'Expires: ' . wfTimestamp( TS_RFC2822, $expires ) );
+		if ( !$this->mCacheControl['s-maxage'] && !$this->mCacheControl['max-age'] ) {
+			// Public cache not requested
+			// Sending a Vary header in this case is harmless, and protects us
+			// against conditional calls of setCacheMaxAge().
+			header( 'Cache-Control: private' );
+			return;
+		}
+
+		$this->mCacheControl['public'] = true;
+
+		// Send an Expires header
+		$maxAge = min( $this->mCacheControl['s-maxage'], $this->mCacheControl['max-age'] );
+		$expiryUnixTime = ( $maxAge == 0 ? 1 : time() + $maxAge );
+		header( 'Expires: ' . wfTimestamp( TS_RFC2822, $expiryUnixTime ) );
 
 		// Construct the Cache-Control header
 		$ccHeader = '';
@@ -336,12 +445,6 @@ class ApiMain extends ApiBase {
 		}
 
 		header( "Cache-Control: $ccHeader" );
-
-		if ( $this->mPrinter->getIsHtml() && !$this->mPrinter->isDisabled() ) {
-			echo wfReportTime();
-		}
-
-		ob_end_flush();
 	}
 
 	/**
@@ -399,6 +502,8 @@ class ApiMain extends ApiBase {
 		if ( !is_null( $requestid ) ) {
 			$this->getResult()->addValue( null, 'requestid', $requestid );
 		}
+		// servedby is especially useful when debugging errors
+		$this->getResult()->addValue( null, 'servedby', wfHostName() );
 		$this->getResult()->addValue( null, 'error', $errMessage );
 
 		return $errMessage['code'];
@@ -412,6 +517,10 @@ class ApiMain extends ApiBase {
 		$requestid = $this->getParameter( 'requestid' );
 		if ( !is_null( $requestid ) ) {
 			$this->getResult()->addValue( null, 'requestid', $requestid );
+		}
+		$servedby = $this->getParameter( 'servedby' );
+		if ( $servedby ) {
+			$this->getResult()->addValue( null, 'servedby', wfHostName() );
 		}
 
 		$params = $this->extractRequestParams();
@@ -484,8 +593,9 @@ class ApiMain extends ApiBase {
 	 * @param $module object An Api module
 	 */
 	protected function checkExecutePermissions( $module ) {
-		global $wgUser, $wgGroupPermissions;
-		if ( $module->isReadMode() && !$wgGroupPermissions['*']['read'] && !$wgUser->isAllowed( 'read' ) )
+		global $wgUser;
+		if ( $module->isReadMode() && !in_array( 'read', User::getGroupPermissions( array( '*' ) ), true ) &&
+			!$wgUser->isAllowed( 'read' ) )
 		{
 			$this->dieUsageMsg( array( 'readrequired' ) );
 		}
@@ -605,6 +715,7 @@ class ApiMain extends ApiBase {
 				ApiBase::PARAM_DFLT => 0
 			),
 			'requestid' => null,
+			'servedby'  => false,
 		);
 	}
 
@@ -620,6 +731,7 @@ class ApiMain extends ApiBase {
 			'smaxage' => 'Set the s-maxage header to this many seconds. Errors are never cached',
 			'maxage' => 'Set the max-age header to this many seconds. Errors are never cached',
 			'requestid' => 'Request ID to distinguish requests. This will just be output back to you',
+			'servedby' => 'Include the hostname that served the request in the results. Unconditionally shown on error',
 		);
 	}
 

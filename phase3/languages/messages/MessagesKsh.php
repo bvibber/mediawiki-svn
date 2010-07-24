@@ -218,7 +218,6 @@ $messages = array(
 'tog-watchdefault'            => 'Dun de Sigge för ming Oppassliss vürschlage, die ich aanpacken un änder',
 'tog-watchmoves'              => 'Dun ming selfs ömjenante Sigge automatisch för ming Oppassliss vürschlage',
 'tog-watchdeletion'           => 'Dun Sigge, die ich fottjeschmesse han, för ming Oppassliss vürschlage',
-'tog-minordefault'            => 'Dun all ming Änderunge jedes Mol als klein Mini-Änderunge vürschlage',
 'tog-previewontop'            => 'Zeich de Vör-Aansich üvver däm Feld för dä Tex enzejevve aan.',
 'tog-previewonfirst'          => 'Zeich de Vör-Aansich tirek för et eetste Mol beim Bearbeide aan',
 'tog-nocache'                 => 'Dun et Sigge Zweschespeichere - et Caching - avschalte',
@@ -1116,7 +1115,7 @@ dem Wiki singe Installation dat anders fassjelaht woode es.",
 'revdelete-radio-unset'       => 'Nä',
 'revdelete-suppress'          => 'Donn dä Jrond och för de Wiki-Köbesse versteische',
 'revdelete-unsuppress'        => 'De Beschrängkonge för der widderjehollte Versione ophevve',
-'revdelete-log'               => 'Der Jrond för et Fottschmiiße:',
+'revdelete-log'               => 'Aanlaß odder Jrund:',
 'revdelete-submit'            => 'Op de aanjekrützte {{PLURAL:$1|Version|Versione|-nix-}} aanwende',
 'revdelete-logentry'          => 'Zojang zo de Versione verändert för „[[$1]]“',
 'logdelete-logentry'          => '„[[$1]]“ verstoche udder widder seeschba jemaat',
@@ -1383,7 +1382,7 @@ Ene zohfällesch ußjewörfelte Schlößel, dää De nämme künnß, wöhr: <cod
 'prefs-advancedrendering'       => 'Extra Ußwahle',
 'prefs-advancedsearchoptions'   => 'Extra Ußwahle',
 'prefs-advancedwatchlist'       => 'Extra Ußwahle',
-'prefs-display'                 => 'Ußwahle för et Leßte Aanzeje',
+'prefs-displayrc'               => 'Ußwahle för et Leßte Aanzeje',
 'prefs-diffs'                   => 'Ongerscheide un Verjliische',
 
 # User rights
@@ -1837,7 +1836,7 @@ Dat sellve shteiht hee dronger.',
 'filedelete-legend'           => 'Schmieß de Datei fott',
 'filedelete-intro'            => "Do beß di Datei '''„[[Media:$1|$1]]“''' am Fottschmieße, un och all ier vörrije Versione, der Text övver se, un all de Änderunge draan.",
 'filedelete-intro-old'        => '<span class="plainlinks">Do schmiiß de Version [$4 fum $2 öm $3 Uhr] fun dä Datei „[[Media:$1|$1]]“ fott.</span>',
-'filedelete-comment'          => 'Der Jrund för et Fottschmieße:',
+'filedelete-comment'          => 'Aanlaß odder Jrund:',
 'filedelete-submit'           => 'Fottschmieße',
 'filedelete-success'          => "'''„$1“''' es fottjeschmeße.",
 'filedelete-success-old'      => "Fun dä Datei '''„[[Media:$1|$1]]“''' es jäz di Version fum $2 öm $3 Uhr fottjeschmeße woode.",
@@ -1913,7 +1912,7 @@ De Links sollte eijentlesch op en Sigg jon, di tirek jemeint es.
 'doubleredirects'            => 'Ömleitunge op Ömleitunge',
 'doubleredirectstext'        => 'Hee fings De en jede Reih ene Link op de iertste un de zweite Ömleitung, donoh ene Link op de Sigg, wo de 
 zweite Ömleitung hin jeiht. För jewöhnlich es dat dann och de richtije Sigg, wo de iertste Ömleitung ald hen jonn sullt.
-<s>Ußjeshtreshe</s> Reije sin ald äleedesh.
+<del>Ußjeshtreshe</del> Reije sin ald äleedesh.
 Met däm „(Ändere)“-Link kanns De de eetste Sigg tirek aanpacke.
 Tipp: Merk Der dä Tittel vun dä Sigg dovör.',
 'double-redirect-fixed-move' => 'dubbel Ömleidung nohm Ömnenne automattesch opjelös: [[$1]] → [[$2]]',
@@ -2238,7 +2237,7 @@ Do kanns hee noh Hölp luure:
 'dellogpagetext'         => 'Hee sin de Sigge oppjeliss, die et neus fottjeschmesse woodte.',
 'deletionlog'            => 'Dat Logboch fum Sigge-Fottschmieße',
 'reverted'               => 'Han de ählere Version vun dä Sigg zoröck jehollt',
-'deletecomment'          => 'Aanlass för et Fottschmieße',
+'deletecomment'          => 'Aanlaß odder Jrund:',
 'deleteotherreason'      => 'Ander Jrund oder Zosätzlich:',
 'deletereasonotherlist'  => 'Ander Jrund',
 'deletereason-dropdown'  => '* Alljemein Jrönde
@@ -2276,7 +2275,7 @@ De Neuste Änderung aan dä Sigg es jetz vun däm Metmaacher „[[User:$3|$3]]�
 'protect-title'               => 'Sigge Schotz för „$1“ ändere',
 'prot_1movedto2'              => 'hät de Sigg vun „[[$1]]“ en „[[$2]]“ ömjenannt.',
 'protect-legend'              => 'Sigg schötze',
-'protectcomment'              => 'Dä Jrund oder Aanlass för et Schötze:',
+'protectcomment'              => 'Aanlaß odder Jrund:',
 'protectexpiry'               => 'Duur, wi lang:',
 'protect_expiry_invalid'      => 'Die Duur för ze Schötz es Kappes, di künne mer nit verstonn.',
 'protect_expiry_old'          => 'Do häs De Desch verdonn. Die Zick för ze Schötze es doch ald eröm!',
@@ -2931,7 +2930,7 @@ $1',
 'nextdiff'     => 'De Änderung donoh zeije →',
 
 # Media information
-'mediawarning'         => '<strong>Opjepass</strong>: En dä Datei künnt en <b>jefährlich Projrammstöck</b> dren stecke. Wa\'mer et laufe looße dät, do künnt dä Sörver, udder Dinge Rääschner, met för de <i lang="en">Cracker</i> opjemaht wääde.<hr />',
+'mediawarning'         => '<strong>Opjepass</strong>: En dä Datei künnt en <b>jefährlich Projrammstöck</b> dren stecke. Wa\'mer et laufe looße dät, do künnt dä Sörver, udder Dinge Rääschner, met för de <i lang="en">Cracker</i> opjemaht wääde.',
 'imagemaxsize'         => "Belder nit jrößer maache wie:<br /> ''(op dä Sigge, wo se beschrevve wääde)''",
 'thumbsize'            => 'Esu breid solle de klein Beldche (Thumbnails/Breefmarke) sin:',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|eij Sigg|$3 Sigge|keij Sigge}}',
