@@ -794,7 +794,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'prefswitch-link-anon' => 'Zana mpya',
-	'tooltip-pt-prefswitch-link-anon' => 'Soma juu ya mtindo na zana mpya',
+	'tooltip-pt-prefswitch-link-anon' => 'Jifunze kuhusu zana mpya',
 	'prefswitch-link-on' => 'Nirudishe',
 	'tooltip-pt-prefswitch-link-on' => 'Zima zana mpya',
 	'prefswitch-link-off' => 'Zana mpya',
@@ -823,6 +823,14 @@ $messages['th'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'ปิดใช้งานคุณลักษณะใหม่',
 	'prefswitch-link-off' => 'คุณลักษณะใหม่',
 	'tooltip-pt-prefswitch-link-off' => 'ลองใช้คุณลักษณะใหม่',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'prefswitch-link-anon' => 'Täze funksiýalar',
+	'prefswitch-link-off' => 'Täze funksiýalar',
 );
 
 /** Tagalog (Tagalog)

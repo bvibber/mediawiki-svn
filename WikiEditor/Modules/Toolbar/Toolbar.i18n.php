@@ -8988,6 +8988,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Devunt
  * @author ITurtle
  * @author Klutzy
@@ -9006,7 +9007,7 @@ $messages['ko'] = array(
 	'wikieditor-toolbar-tool-italic-example' => '기울인 글씨',
 	'wikieditor-toolbar-tool-ilink' => '내부 링크',
 	'wikieditor-toolbar-tool-ilink-example' => '문서 제목',
-	'wikieditor-toolbar-tool-xlink' => '외부 링크 ( http:// 를 붙여 주세요 )',
+	'wikieditor-toolbar-tool-xlink' => '외부 링크 ( http:// 를 붙여 주세요. )',
 	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com 링크 이름',
 	'wikieditor-toolbar-tool-link' => '링크',
 	'wikieditor-toolbar-tool-link-title' => '링크 추가',
@@ -9154,9 +9155,6 @@ $messages['ko'] = array(
 	'wikieditor-toolbar-help-content-xlink-description' => '외부 링크',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org 링크 이름]<br />[http://www.example.org]<br />http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>링크 이름</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
-	'wikieditor-toolbar-help-content-heading1-description' => '1단계 제목',
-	'wikieditor-toolbar-help-content-heading1-syntax' => '= 제목 =',
-	'wikieditor-toolbar-help-content-heading1-result' => '<h1>제목</h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => '2단계 제목',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== 제목 ==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>제목</h2>',
@@ -12964,6 +12962,7 @@ $messages['pnt'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-toolbar' => 'د سمون توکپټه',
 	'wikieditor-toolbar-loading' => 'د برسېرېدلو په حال کې...',
 	'wikieditor-toolbar-tool-ilink' => 'کورنۍ تړنه',
 	'wikieditor-toolbar-tool-ilink-example' => 'د تړنې سرليک',
@@ -12980,7 +12979,9 @@ $messages['ps'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'باندنۍ تړنه',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'کورنۍ تړنه',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'باندنۍ تړنه',
+	'wikieditor-toolbar-tool-file' => 'خښه شوې دوتنه',
 	'wikieditor-toolbar-tool-reference-cancel' => 'ناګارل',
+	'wikieditor-toolbar-tool-reference-insert' => 'ورټومبل',
 	'wikieditor-toolbar-tool-signature' => 'لاسليک او د وخت ټاپه',
 	'wikieditor-toolbar-section-advanced' => 'پرمختللی',
 	'wikieditor-toolbar-tool-heading' => 'سرليک',
@@ -12991,14 +12992,20 @@ $messages['ps'] = array(
 	'wikieditor-toolbar-tool-heading-5' => '۵ کچه',
 	'wikieditor-toolbar-tool-heading-example' => 'د سرليک متن',
 	'wikieditor-toolbar-group-format' => 'لړليک',
+	'wikieditor-toolbar-tool-redirect-example' => 'د هدفي مخ نوم',
 	'wikieditor-toolbar-tool-big' => 'لوی',
 	'wikieditor-toolbar-tool-big-example' => 'لوی متن',
 	'wikieditor-toolbar-tool-small' => 'وړوکی',
 	'wikieditor-toolbar-tool-small-example' => 'وړوکی متن',
+	'wikieditor-toolbar-group-insert' => 'ورټومبل',
+	'wikieditor-toolbar-tool-gallery' => 'د انځورونو انځورتون',
 	'wikieditor-toolbar-tool-newline' => 'نوې کرښه',
 	'wikieditor-toolbar-tool-table' => 'لښتيال',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'ليکې',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => 'ستنې',
 	'wikieditor-toolbar-tool-table-example' => 'بېلګه',
 	'wikieditor-toolbar-tool-table-preview' => 'مخليدنه',
+	'wikieditor-toolbar-tool-table-insert' => 'ورټومبل',
 	'wikieditor-toolbar-tool-table-cancel' => 'ناګارل',
 	'wikieditor-toolbar-tool-replace-search' => 'پلټنه د:',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'بل موندل',
@@ -13017,6 +13024,9 @@ $messages['ps'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'تېلوګو',
 	'wikieditor-toolbar-characters-page-sinhala' => 'سېنهالي',
 	'wikieditor-toolbar-characters-page-gujarati' => 'ګجراتي',
+	'wikieditor-toolbar-characters-page-thai' => 'تايلنډي',
+	'wikieditor-toolbar-characters-page-lao' => 'لاوي',
+	'wikieditor-toolbar-characters-page-khmer' => 'خمري',
 	'wikieditor-toolbar-section-help' => 'لارښود',
 	'wikieditor-toolbar-help-heading-syntax' => 'هغه څه چې ليکۍ',
 	'wikieditor-toolbar-help-heading-result' => 'هغه څه چې لاس ته راوړۍ',
@@ -17047,9 +17057,13 @@ $messages['tk'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'Arap',
 	'wikieditor-toolbar-characters-page-persian' => 'Parsça',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Iwrit',
+	'wikieditor-toolbar-characters-page-bangla' => 'Bengalça',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Singal',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Güjerat',
+	'wikieditor-toolbar-characters-page-thai' => 'Taýlandça',
+	'wikieditor-toolbar-characters-page-lao' => 'Laosça',
+	'wikieditor-toolbar-characters-page-khmer' => 'Khmerçe',
 	'wikieditor-toolbar-section-help' => 'Ýardam',
 	'wikieditor-toolbar-help-heading-description' => 'Düşündiriş',
 	'wikieditor-toolbar-help-heading-syntax' => 'Ýazylyşy',

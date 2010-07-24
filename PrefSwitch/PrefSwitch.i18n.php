@@ -5314,6 +5314,20 @@ $messages['th'] = array(
 	'prefswitch-title-switched-off' => 'ขอขอบคุณ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'prefswitch-survey-true' => 'Hawa',
+	'prefswitch-survey-false' => 'Ýok',
+	'prefswitch-survey-submit-feedback' => 'Seslenme iber',
+	'prefswitch-survey-answer-whyoff-other' => 'Başga sebäp:',
+	'prefswitch-survey-answer-browser-other' => 'Başga brauzer:',
+	'prefswitch-title-on' => 'Täze funksiýalar',
+	'prefswitch-title-switched-off' => 'Sag boluň',
+	'prefswitch-title-feedback' => 'Seslenme',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
