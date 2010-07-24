@@ -18,7 +18,9 @@ class CodeRepoStatsView extends CodeView {
 			$wgLang->timeanddate( $stats->time, true ),
 			$wgLang->formatNum( $stats->revisions ),
 			$repoName,
-			$wgLang->formatNum( $stats->authors )
+			$wgLang->formatNum( $stats->authors ),
+			$wgLang->time( $stats->time, true ),
+			$wgLang->date( $stats->time, true )
 		);
 
 		if ( !empty( $stats->states ) ) {
