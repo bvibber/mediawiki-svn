@@ -22,6 +22,16 @@ $messages['qqq'] = array(
 	'checkpoint-desc' => '{{desc}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'checkpoint' => 'Stoor en gaan voort my wysiging',
+	'checkpoint-desc' => "Maak dit moontlik om 'n wysiging te stoor en met verdere wysigings voort te gaan",
+	'checkpoint-tooltip' => 'Stoor u vordering en gaan voort met die wysiging van die bladsy',
+	'checkpoint-notice' => '([[{{ns:project}}:Tussenstappe|tussenstap stoor]])',
+);
+
 /** Arabic (العربية)
  * @author Moemin05
  */

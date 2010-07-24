@@ -593,6 +593,13 @@ $messages['th'] = array(
 	'prefs-updates' => 'อัปเดต',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'prefs-updates' => 'Täzelemeler',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

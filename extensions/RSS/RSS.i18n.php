@@ -17,6 +17,15 @@ $messages['en'] = array(
 	'rss-empty' => 'Failed to load RSS feed from $1!',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'rss-desc' => "Bied 'n RSS-voer vir 'n wikibladsy",
+	'rss-error' => 'Kon nie die RSS-voer van $1 laai nie, fout: $2',
+	'rss-empty' => 'Kon nie die RSS-voer van $1 laai nie!',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -41,6 +50,15 @@ $messages['ia'] = array(
 	'rss-desc' => 'Monstra un syndication RSS in un pagina wiki',
 	'rss-error' => 'Falleva de cargar le syndication RSS de $1: $2',
 	'rss-empty' => 'Falleva de cargar le syndication RSS de $1!',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'rss-desc' => 'Weist en RSS-Feed op enger Wiki-Säit',
+	'rss-error' => 'Den RSS-Feed vun $1 konnt net geluede ginn: $2',
+	'rss-empty' => 'Den RSS-Feed vun $1 konnt net geluede ginn!',
 );
 
 /** Macedonian (Македонски)
@@ -70,9 +88,12 @@ $messages['pl'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'rss-desc' => 'Mostra um feed RSS em uma página wiki',
+	'rss-desc' => 'Mostra um feed RSS numa página wiki',
+	'rss-error' => 'Não foi possível carregar o feed RSS de $1: $2',
+	'rss-empty' => 'Não foi possível carregar o feed RSS de $1!',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

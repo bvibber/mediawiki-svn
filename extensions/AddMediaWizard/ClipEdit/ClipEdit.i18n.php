@@ -734,6 +734,7 @@ $messages['lb'] = array(
 	'mwe-clipedit-cancel_image_insert' => 'Drasetzen ofbriechen',
 	'mwe-clipedit-sc_attributes' => 'Detailer vum Videclip änneren',
 	'mwe-clipedit-sc_inoutpoints' => 'Eran-Eraus Punkte festleeën',
+	'mwe-clipedit-sc_overlays' => 'Iwwerlagerungen',
 	'mwe-clipedit-sc_audio' => 'Audiosteierung',
 	'mwe-clipedit-sc_duration' => 'Dauer',
 	'mwe-clipedit-template_properties' => 'Eegeschafte vun der Schabloun',
@@ -748,6 +749,8 @@ $messages['lb'] = array(
 	'mwe-clipedit-edit-video-tools' => 'Video-Tools änneren:',
 	'mwe-clipedit-duration' => 'Dauer:',
 	'mwe-clipedit-layout' => 'Layout',
+	'mwe-clipedit-layout_right' => 'Layout vum Bild op der rietser Säit',
+	'mwe-clipedit-layout_left' => 'Layout vum Bild op der lénker Säit',
 );
 
 /** Macedonian (Македонски)

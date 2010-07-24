@@ -988,12 +988,15 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
  * @author Liangent
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'filelist' => '檔案清單',
+	'filelist-desc' => '在[[Special:Filelist|特殊頁面]]列舉上傳的檔案',
 	'filelist-show-list' => '顯示列表',
 	'filelist-show-gallery' => '顯示畫廊',
+	'filelist-image-desc' => '遞減',
 );
 

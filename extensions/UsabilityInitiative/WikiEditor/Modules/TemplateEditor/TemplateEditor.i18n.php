@@ -833,6 +833,15 @@ $messages['th'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'ยกเลิก',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Şablony redaktirle',
+	'wikieditor-template-editor-dialog-submit' => 'Täzele',
+	'wikieditor-template-editor-dialog-cancel' => 'Goýbolsun et',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

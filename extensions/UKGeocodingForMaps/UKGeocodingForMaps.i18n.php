@@ -158,6 +158,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'ukgeocoding_name' => 'UK Geocoding fir Kaarten',
+	'ukgeocoding_couldNotGeocode' => 'Een oder méi Postcode konnten net geocodéiert ginn a goufen op der Kaart ewechgelooss.',
 );
 
 /** Macedonian (Македонски)

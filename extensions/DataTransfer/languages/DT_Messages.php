@@ -1194,6 +1194,7 @@ $messages['lb'] = array(
 	'importxml' => 'XML importéieren',
 	'dt_import_selectfile' => "Sicht de(n) $1-Fichier eraus fir z'importéieren:",
 	'dt_import_encodingtype' => 'Encoding-Typ',
+	'dt_import_summarydesc' => 'Resumé vum Import:',
 	'dt_import_editsummary' => '$1 importéieren',
 	'dt_import_importing' => 'Import am gaang ...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier ugeluecht.',

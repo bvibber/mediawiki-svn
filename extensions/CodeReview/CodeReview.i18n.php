@@ -167,6 +167,7 @@ $4',
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Kwj2772
+ * @author MaxSem
  * @author McDutchie
  * @author Mormegil
  * @author Nike
@@ -218,6 +219,14 @@ $1 = Repository name',
 * <code>$3</code> – URL to the new revision.
 * <code>$4</code> – Commit message of the new revision.',
 	'code-stats' => '{{Identical|Statistics}}',
+	'code-stats-main' => 'Parameters:
+* $1 - time and date when statistics was cached
+* $2 - total number of revisions
+* $3 - repository name, used only to generate links
+* $4 - total number of authors who commited to this repository
+* $5 - same as $1, but time only (optional)
+* $6 - same as $1, but date only (optional)',
+	'code-stats-staus-breakdown' => 'Table header for column containing the number of revisions (commits) having some state (new, ok, reverted etc.)',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
@@ -7667,12 +7676,13 @@ $4',
  * @author Ferrer
  * @author JenVan
  * @author Kaganer
+ * @author MaxSem
  * @author Putnik
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'code' => 'Проверка кода',
-	'code-rev-title' => 'r$1 — Проверка кода',
+	'code' => 'Рецензирование кода',
+	'code-rev-title' => 'r$1 — рецензирование кода',
 	'code-comments' => 'Комментарии',
 	'code-references' => 'Последующие ревизии',
 	'code-change-status' => "изменил '''состояние''' r$1",
@@ -7682,7 +7692,7 @@ $messages['ru'] = array(
 	'code-old-status' => 'Старый статус',
 	'code-new-status' => 'Новый статус',
 	'code-prop-changes' => 'Журнал статусов и меток',
-	'codereview-desc' => '[[Special:Code|Инструмент проверки кода]] с [[Special:RepoAdmin|поддержкой Subversion]]',
+	'codereview-desc' => '[[Special:Code|Инструмент рецензирования кода]] с [[Special:RepoAdmin|поддержкой Subversion]]',
 	'code-no-repo' => 'Отсутствует настроенное хранилище!',
 	'code-repo-not-found' => 'Хранилища <b>$1</b> не существует!',
 	'code-load-diff' => 'Загрузка сравнения…',
@@ -7705,7 +7715,7 @@ $messages['ru'] = array(
 	'code-author-unlinksuccess' => 'Для автора $1 удалена связь с учётной записью',
 	'code-author-badtoken' => 'Ошибка сеанса при попытке выполнить действие.',
 	'code-browsing-path' => "Просмотр ревизий в '''$1'''",
-	'code-field-id' => 'Редакция',
+	'code-field-id' => 'Ревизия',
 	'code-field-author' => 'Автор',
 	'code-field-user' => 'Комментатор',
 	'code-field-message' => 'Описание изменений',
@@ -7719,7 +7729,7 @@ $messages['ru'] = array(
 	'code-rev-date' => 'Дата:',
 	'code-rev-message' => 'Описание изменений:',
 	'code-rev-repo' => 'Хранилище:',
-	'code-rev-rev' => 'Редакция:',
+	'code-rev-rev' => 'Ревизия:',
 	'code-rev-rev-viewvc' => 'через ViewVC',
 	'code-rev-paths' => 'Ссылки на изменения:',
 	'code-rev-modified-a' => 'добавлено',
@@ -7741,14 +7751,14 @@ $messages['ru'] = array(
 	'code-rev-purge-link' => 'очистить кеш',
 	'code-rev-total' => 'Общее количество результатов: $1',
 	'code-status-new' => 'новое',
-	'code-status-fixme' => 'проверить',
+	'code-status-fixme' => 'исправить',
 	'code-status-reverted' => 'откачено',
 	'code-status-resolved' => 'решено',
 	'code-status-ok' => 'готово',
 	'code-status-verified' => 'проверено',
 	'code-status-deferred' => 'отложено',
 	'code-status-old' => 'старый',
-	'code-pathsearch-legend' => 'Поиск в этом хранилище конкретных редакций по их адресу',
+	'code-pathsearch-legend' => 'Поиск в этом хранилище конкретных ревизий по их адресу',
 	'code-pathsearch-path' => 'Путь:',
 	'code-pathsearch-filter' => 'Применённые фильтры:',
 	'code-revfilter-cr_status' => 'Состояние = $1',
@@ -7768,7 +7778,7 @@ $messages['ru'] = array(
 	'codereview-subtitle' => 'для $1',
 	'codereview-reply-link' => 'ответить',
 	'codereview-email-subj' => '[$1] [r$2]: Добавлен новый комментарий',
-	'codereview-email-body' => 'Участник «$1» разместил комментарий к редакции r$3.
+	'codereview-email-body' => 'Участник «$1» разместил комментарий к ревизии r$3.
 
 Полный URL: $2
 
@@ -7784,6 +7794,10 @@ $4',
 
 $4',
 	'code-stats' => 'статистика',
+	'code-stats-header' => 'Статистика репозитория «$1»',
+	'code-stats-main' => 'На $1 в репозитории {{PLURAL:$2|содержится одна ревизия|содержатся $2 ревизии|содержатся $2 ревизий}} [[Special:Code/$3/author|$4 {{PLURAL:$4|автора|авторов}}]].',
+	'code-stats-staus-breakdown' => 'Статистика по состояниям',
+	'code-stats-fixme-breakdown' => 'Распределение изменений со статусом «исправить» по авторам',
 	'code-stats-count' => 'Количество версий',
 	'repoadmin' => 'Управление хранилищем программного кода',
 	'repoadmin-new-legend' => 'Создать новое хранилище',
@@ -7797,10 +7811,10 @@ $4',
 	'repoadmin-edit-sucess' => 'Хранилище «[[Special:Code/$1|$1]]» успешно изменено.',
 	'right-repoadmin' => 'Управление хранилищами кодов',
 	'right-codereview-use' => 'использование Special:Code',
-	'right-codereview-add-tag' => 'Добавление меток к редакциям',
-	'right-codereview-remove-tag' => 'Удаление меток из редакций',
-	'right-codereview-post-comment' => 'Добавление комментариев к редакциям',
-	'right-codereview-set-status' => 'Изменение статуса редакций',
+	'right-codereview-add-tag' => 'Добавление меток к ревизиям',
+	'right-codereview-remove-tag' => 'Снятие меток с ревизий',
+	'right-codereview-post-comment' => 'Добавление комментариев к ревизиям',
+	'right-codereview-set-status' => 'Изменение статуса ревизий',
 	'right-codereview-link-user' => 'Связь авторов с учётными записями вики-проекта',
 	'specialpages-group-developer' => 'Инструменты разработчика',
 );

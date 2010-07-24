@@ -790,6 +790,7 @@ $messages['tk'] = array(
 	'wikieditor' => 'Giňeldilen wikitekst redaktirleme interfeýsi',
 	'wikieditor-desc' => 'Giňeldilýän wikitekst redkatirleme interfeýsini we köp aýratynlykly modullary üpjün edýär',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Ýüklenilýär',
 );
 
 /** Tagalog (Tagalog)
