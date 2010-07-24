@@ -295,7 +295,8 @@ class Interwiki {
 			
 			$get = Http::get( $url2 );
 			$myArray = FormatJson::decode($get, true);
-			
+
+			// Here, we preload and cache the subtemplates
 			if ( ! empty( $myArray['query'] )) {
 				if ( ! empty( $myArray['query']['pages'] )) {
 					$templates = array_pop( $myArray['query']['pages'] );
@@ -304,12 +305,9 @@ class Interwiki {
 					} else {
 						$templates = array( );
 					}
+					self::cacheTemplatesFromAPI( $wikiID, $transAPI, $templates );
 				}
 			}
-			
-			// TODO: The subtemplates are retrieved one by one. We should get them all in 1 request
-			// Here, we preload and cache the subtemplates
-			self::cacheTemplatesFromAPI( $wikiID, $transAPI, $templates );
 			
 			return $finalText;
 			

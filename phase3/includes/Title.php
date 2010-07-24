@@ -2715,6 +2715,10 @@ class Title {
 		$this->mFragment = str_replace( '_', ' ', substr( $fragment, 1 ) );
 	}
 
+	public function setInterwiki( $interwiki ) {
+		$this->mInterwiki = $interwiki;
+	}
+
 	/**
 	 * Get a Title object associated with the talk page of this article
 	 *
