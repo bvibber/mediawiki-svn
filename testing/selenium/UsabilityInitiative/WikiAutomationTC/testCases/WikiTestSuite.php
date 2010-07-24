@@ -8,7 +8,7 @@ require_once 'WikSearch_TC.php';
 require_once 'WikiWatchUnWatch_TC.php';
 
 require_once 'WikiNTOC_ ExistingPage.php';
-require_once 'WikiDialogs_ExsistingPage.php';
+require_once 'WikiDialogs_ExistingPage.php';
 require_once 'WikiToolBarOther_ExistingPage.php';
 require_once 'WikiTextFormat_ExistingPage.php';
 
@@ -26,7 +26,7 @@ $suite->addTestSuite('WikiSearch_TC'); // Working in Chrome
 $suite->addTestSuite('WikiWatchUnWatch_TC');  // Working in Chrome
 
 $suite->addTestSuite("WikiNTOC_ExistingPage"); // Working in Chrome
-$suite->addTestSuite("WikiDialogs_ExsistingPage"); 
+$suite->addTestSuite("WikiDialogs_ExistingPage"); 
 $suite->addTestSuite("WikiToolBarOther_ExistingPage");
 $suite->addTestSuite("WikiTextFormat_ExistingPage");
 

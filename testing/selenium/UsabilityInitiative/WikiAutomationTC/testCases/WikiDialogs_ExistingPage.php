@@ -1,11 +1,11 @@
 <?php
 require_once 'WikiDialogs_TC.php';
 /**
- * Description of WikiExsistingPageDialogs
+ * Description of WikiExistingPageDialogs
  *
  * @author bhagyag
  */
-class WikiDialogs_ExsistingPage  extends WikiDialogs_TC  {
+class WikiDialogs_ExistingPage  extends WikiDialogs_TC  {
      // Set up the testing environment
     function setup(){
         parent::setUp();
