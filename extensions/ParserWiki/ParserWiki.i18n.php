@@ -198,6 +198,13 @@ $messages['pt-br'] = array(
 	'parserwiki-desc' => 'Permite definir uma gramática numa wiki e depois usá-la para inserir informação nessa mesma wiki',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'parserwiki-desc' => "Permette de definì 'na grammateche jndr'à 'na Uicchi e quanne ause quedda grammateche pe mettere 'mbormaziune jndr'à stessa Uicchi",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

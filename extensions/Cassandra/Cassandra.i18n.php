@@ -249,6 +249,13 @@ $messages['pt-br'] = array(
 	'cassandra-desc' => 'Armazenar os textos das revisões na base de dados [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'cassandra-desc' => "Reggistre 'u teste d'a revisione jndr'à l'archivije [http://cassandra.apache.org/ Apache Cassandra]",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -187,6 +187,13 @@ $messages['pt-br'] = array(
 	'hidens-desc' => 'Esconde o espaço nominal do cabeçalho e título quando uma página está num espaço nominal específico ou quando é chamada a função <code><nowiki>{{#hidens:}}</nowiki></code> do analisador sintático',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'hidens-desc' => "Scunne le namespace jndr'à testate e 'u titele quanne 'na pàgene jè jndr'à 'nu specifeche namespace o quanne 'a <code><nowiki>{{#hidens:}}</nowiki></code> funzione de l'analizzatore avène chiamate",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

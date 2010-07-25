@@ -849,6 +849,7 @@ $4',
 $4',
 	'code-stats' => 'статыстыка',
 	'code-stats-header' => 'Статыстыка сховішча для $1',
+	'code-stats-staus-breakdown' => 'Колькасьць вэрсіяў па станам',
 	'code-stats-count' => 'Колькасьць вэрсіяў',
 	'repoadmin' => 'Кіраваньне сховішчам коду',
 	'repoadmin-new-legend' => 'Стварыць новае сховішча',
@@ -3105,6 +3106,10 @@ Résumé des modifications :
 
 $4',
 	'code-stats' => 'statistiques',
+	'code-stats-header' => 'Statistiques du dépôt $1',
+	'code-stats-main' => 'À la date du $1, le dépôt a $2 {{PLURAL:$2|révision|révisions}} faites par [[Special:Code/$3/author|$4 {{PLURIEL:$4|auteur|auteurs}}]].',
+	'code-stats-staus-breakdown' => 'Nombre de révisions par état',
+	'code-stats-fixme-breakdown' => 'Examen des révisions à corriger par auteur',
 	'code-stats-count' => 'Nombre de révisions',
 	'repoadmin' => 'Administration des dépôts',
 	'repoadmin-new-legend' => 'Créer un nouveau dépôt',
@@ -3307,7 +3312,6 @@ $messages['gl'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-tests' => 'Casos de proba',
 	'code-authors-text' => 'A continuación hai unha lista dos autores das respostas por orde de tarefas recentes. As contas de wiki local móstranse entre parénteses.',
 	'code-author-haslink' => 'O autor é ligado co usuario do wiki chamado $1',
 	'code-author-orphan' => 'Este autor non ten ningunha ligazón con algunha conta do wiki',
@@ -3328,7 +3332,6 @@ $messages['gl'] = array(
 	'code-field-status' => 'Estado',
 	'code-field-timestamp' => 'Data',
 	'code-field-comments' => 'Notas',
-	'code-field-tests' => 'Probas',
 	'code-field-path' => 'Ruta',
 	'code-field-text' => 'Nota',
 	'code-field-select' => 'Seleccionar',
@@ -3384,11 +3387,6 @@ $messages['gl'] = array(
 	'code-release-badrange' => 'O rango é longo de máis!',
 	'codereview-subtitle' => 'De $1',
 	'codereview-reply-link' => 'responder',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}, $3 {{PLURAL:$4|proba fallida|probas fallidas}}:',
-	'codereview-tests-running' => 'As probas están en curso...',
-	'codereview-tests-aborted' => 'Interrompeuse a execución da proba.',
-	'codereview-tests-failed' => 'Fallou',
 	'codereview-email-subj' => '[$1] [$2]: engadido un novo comentario',
 	'codereview-email-body' => 'O usuario "$1" deixou un comentario na versión $3.
 
@@ -3405,14 +3403,12 @@ Enderezo URL: $3
 Resumo:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: a proba automática detectou unha regresión',
-	'codereview-email-body3' => 'A proba automática detectou unha regresión debido a variacións na versión $1.
-
-Enderezo URL: $2
-
-Resumo:
-
-$3',
+	'code-stats' => 'estatísticas',
+	'code-stats-header' => 'Estatísticas do repositorio de "$1"',
+	'code-stats-main' => 'A día $6 ás $5, o repositorio ten $2 {{PLURAL:$2|revisión|revisións}} feitas por [[Special:Code/$3/author|$4 {{PLURAL:$4|autor|autores}}]].',
+	'code-stats-staus-breakdown' => 'Número de revisións por estado',
+	'code-stats-fixme-breakdown' => 'Análise de correccións por autor',
+	'code-stats-count' => 'Número de revisións',
 	'repoadmin' => 'Administración do repositorio',
 	'repoadmin-new-legend' => 'Crear un novo repositorio',
 	'repoadmin-new-label' => 'Nome do repositorio:',
@@ -7698,7 +7694,7 @@ $messages['ru'] = array(
 	'code-load-diff' => 'Загрузка сравнения…',
 	'code-notes' => 'последние замечания',
 	'code-statuschanges' => 'изменения статуса',
-	'code-mycommits' => 'мои фиксации',
+	'code-mycommits' => 'мои коммиты',
 	'code-authors' => 'авторы',
 	'code-status' => 'состояния',
 	'code-tags' => 'метки',

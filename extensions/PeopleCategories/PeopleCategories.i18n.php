@@ -209,6 +209,13 @@ $messages['pt-br'] = array(
 	'peoplecategories-desc' => 'Altera os nomes de página de "Nome Sobrenome" para "Sobrenome, Nome" nas páginas de categoria especificadas',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'peoplecategories-desc' => 'Cange le nome de le pàggene visualizzare da "Primenome Urtemenome" a "Urtemenome, Primenome" sus a categorije de pàggene specifeche',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

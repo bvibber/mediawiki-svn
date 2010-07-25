@@ -181,6 +181,7 @@ $messages['az'] = array(
 );
 
 /** Bavarian (Boarisch)
+ * @author Dardio
  * @author Man77
  */
 $messages['bar'] = array(
@@ -199,6 +200,7 @@ $messages['bar'] = array(
 	'passwordreset-disablesuccess' => "s'Benutzakonto mid da Benutza-ID $1 is deaktiviad woan.",
 	'passwordreset-accountdisabled' => 'Benutzakonto is deaktiviad',
 	'disabledusers' => 'Deaktiviade Benutzakontn',
+	'disabledusers-summary' => 'Des is a Listn vo Benutza de wo mim PasswordReset deaktiviad worn han.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

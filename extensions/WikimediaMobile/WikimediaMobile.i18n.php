@@ -221,6 +221,13 @@ $messages['ro'] = array(
 	'wikimediamobile-desc' => 'MediaWiki suportă funcții pentru proiectul Wikimedia mobilă găzduit la http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikimediamobile-desc' => "Le funziune de supporte de MediaUicchi pe 'u proggette UicchiMedia-mobile ospitate sus a http://github.com/hcatlin/wikimedia-mobile",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

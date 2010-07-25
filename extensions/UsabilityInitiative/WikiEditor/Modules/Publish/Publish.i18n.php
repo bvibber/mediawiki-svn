@@ -988,8 +988,11 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'wikieditor-publish-button-publish' => 'خپرول',
 	'wikieditor-publish-button-cancel' => 'ناګارل',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} کې خپرول',
+	'wikieditor-publish-dialog-minor' => 'وړوکی سمون',
 	'wikieditor-publish-dialog-watch' => 'همدا مخ کتل',
 	'wikieditor-publish-dialog-publish' => 'خپرول',
+	'wikieditor-publish-dialog-goback' => 'پر شا تلل',
 );
 
 /** Portuguese (Português)

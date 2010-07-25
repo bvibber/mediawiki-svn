@@ -649,6 +649,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-template-editor-dialog-title' => 'کينډۍ سمول',
 	'wikieditor-template-editor-dialog-submit' => 'اوسمهالول',
 	'wikieditor-template-editor-dialog-cancel' => 'ناګارل',
 );

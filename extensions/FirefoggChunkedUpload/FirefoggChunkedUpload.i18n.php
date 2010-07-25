@@ -201,6 +201,13 @@ $messages['pt-br'] = array(
 	'firefoggcu-desc' => 'Protocolo de Chunked Uploading do Firefogg',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'firefoggcu-desc' => 'Protocolle de carecamende Chunked Firefogg',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

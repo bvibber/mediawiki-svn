@@ -1298,7 +1298,13 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'authorprotect-reason' => 'Mutive',
+	'authorprotect-confirm' => 'Cange le levèlle de protezione',
+	'authorprotect-expiry' => 'Scadenze:',
+	'authorprotect-reason' => 'Mutive:',
+	'authorprotect-success' => 'Protezione riuscite!',
+	'authorprotect-failure' => 'Protezione none riuscite!',
+	'protect-level-author' => 'Protette da le none autore',
+	'right-authorprotect' => 'protette le pàggene autorizzate',
 );
 
 /** Russian (Русский)

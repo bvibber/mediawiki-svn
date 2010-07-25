@@ -154,6 +154,13 @@ $messages['pt-br'] = array(
 	'pageobjectmodel-desc' => 'Adiciona um conjunto de classes de abstração da sintaxe do MediaWiki, que permitem a extração e manipulação simplificada de páginas a partir de outros programas',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'pageobjectmodel-desc' => "Aggiunge 'n'inzieme de classe pe l'astrazione d'a sintasse de MediaUicchi pe permettere 'n'estrazione cchiù facile e 'na manipolazione de le pàggene cu otre programme",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -212,6 +212,14 @@ $messages['pt-br'] = array(
 	'logofunctions-filenotexist' => 'Erro: o arquivo [[File:$1]] não existe',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'logofunctions-desc' => "Aggiunge 'a funzione de analizzatore pe 'mbostà 'u loghe de Uicchi",
+	'logofunctions-filenotexist' => "Errore: [[File:$1]] non g'esiste.",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

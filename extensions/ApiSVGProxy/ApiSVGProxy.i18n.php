@@ -247,6 +247,13 @@ $messages['pt-br'] = array(
 	'apisvgproxy-desc' => 'Representa os ficheiros SVG de um repositório (possivelmente remoto) no domínio local',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'apisvgproxy-desc' => "Le file d'u proxy SVG da 'nu (possibbele remote) archivije de file a 'u dominie locale",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

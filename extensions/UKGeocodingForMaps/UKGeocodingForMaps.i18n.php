@@ -229,6 +229,7 @@ $messages['pt-br'] = array(
 $messages['roa-tara'] = array(
 	'ukgeocoding_name' => 'Geocodifeche UK pe le Mappe',
 	'ukgeocoding_desc' => "Estenne le mappe cu 'na funzione de l'analizzatore ''display_uk_point'' cu l'imblemendazione de Google Maps",
+	'ukgeocoding_couldNotGeocode' => "Une o cchiù codece postale non ge ponne essere geocodificate e onne state mise fore da 'a mappe.",
 );
 
 /** Russian (Русский)

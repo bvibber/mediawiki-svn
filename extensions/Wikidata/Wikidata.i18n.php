@@ -2661,6 +2661,7 @@ $messages['cu'] = array(
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Jon Harald Søby
+ * @author Sarrus
  */
 $messages['da'] = array(
 	'langman_title' => 'Sprogbehandler',
@@ -2673,12 +2674,21 @@ $messages['da'] = array(
 	'datasearch_ext_identifier' => 'Ekstern identifikator',
 	'datasearch_search_text' => 'Søgetekst:',
 	'ow_importtsv_title1' => 'Importer TSV',
+	'ow_importtsv_nothing_added' => 'Intet tilføjet.',
+	'ow_importtsv_nothing_added_test' => 'Intet tilføjet (du foretog en testkørsel).',
 	'ow_history' => 'Historik',
+	'ow_none_selected' => 'Der er ikke valgt noget',
+	'ow_transaction_summary' => 'Beskrivelse',
 	'ow_dm_OK' => 'OK',
+	'ow_GotoSource' => 'Gå til kilde',
 	'ow_Language' => 'Sprog',
 	'ow_Source' => 'Kilde',
 	'ow_Text' => 'Tekst',
+	'ow_Time' => 'Tidspunkt',
 	'ow_TranslatedTextAttributeValue' => 'Tekst',
+	'ow_User' => 'Bruger',
+	'ow_show' => 'Vis',
+	'ow_create' => 'Opret',
 );
 
 /** German (Deutsch)

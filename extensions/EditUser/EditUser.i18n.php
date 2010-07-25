@@ -1033,10 +1033,10 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'edituser-desc' => "L'utinde privilegiete ponne cangià le preferenze de l'otre utinde",
 	'edituser' => "Cange l'utende",
-	'edituser-username' => 'Nome',
+	'edituser-username' => "Nome de l'utende:",
 	'edituser-dosearch' => 'Cirche',
-	'edituser-nouser' => "Stu utende non g'esiste",
-	'edituser-exempt' => 'Stu utende non ge pò essere cangete',
+	'edituser-nouser' => 'L\'utende "$1" non g\'esiste.',
+	'edituser-exempt' => 'L\'utende "$1" non ge pò essere cangiate.',
 	'right-edituser' => "Cange le preferenze de l'otre utinde",
 	'right-edituser-exempt' => 'Non ge puè avè le lore preferenze cangiete da otre',
 );

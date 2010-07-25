@@ -2732,6 +2732,8 @@ Pe piacere <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/Client_d
 	'ogg-dismiss' => 'Chiude',
 	'ogg-download' => 'Scareche stu file',
 	'ogg-desc-link' => "'Mbormaziune sus a stu file",
+	'ogg-oggThumb-version' => "OggHandler richiede 'a versione $1 de oggThumb o una cchiù nove.",
+	'ogg-oggThumb-failed' => 'oggThumb ha fallite sus a crejazione de le miniature.',
 );
 
 /** Russian (Русский)

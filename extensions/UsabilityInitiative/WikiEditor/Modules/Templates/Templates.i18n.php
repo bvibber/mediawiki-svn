@@ -373,6 +373,13 @@ $messages['ro'] = array(
 	'wikieditor-templates-preference' => 'Activează ascunderea formatului',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikieditor-templates-preference' => "Abbilete 'a chiusure de le template",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
