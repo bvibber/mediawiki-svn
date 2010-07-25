@@ -173,8 +173,6 @@ class CodeRevisionView extends CodeView {
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			// Look for a posting...
 			$text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
-			$parent = $wgRequest->getIntOrNull( 'wpParent' );
-			$review = $wgRequest->getInt( 'wpReview' );
 			$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			if ( $isPreview ) {
 				// Save the text for reference on later comment display...
@@ -262,8 +260,6 @@ class CodeRevisionView extends CodeView {
 	protected function statusForm() {
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'codereview-set-status' ) ) {
-			$repo = $this->mRepo->getName();
-			$rev = $this->mRev->getId();
 			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
 				self::buildStatusList( $this->mStatus, $this ) .
 				xml::closeElement( 'select' );
@@ -569,8 +565,7 @@ class CodeRevisionView extends CodeView {
 			$preview = '';
 			$text = $this->text;
 		}
-		$repo = $this->mRepo->getName();
-		$rev = $this->mRev->getId();
+
 		if ( !$this->canPostComments() ) {
 			return '';
 		}

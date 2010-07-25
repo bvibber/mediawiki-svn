@@ -43,7 +43,7 @@ class CodeRevisionCommitter extends CodeRevisionView {
 		if ( $this->validPost( 'codereview-post-comment' ) && strlen( $this->text ) ) {
 			$parent = $wgRequest->getIntOrNull( 'wpParent' );
 			$review = $wgRequest->getInt( 'wpReview' );
-			$isPreview = $wgRequest->getCheck( 'wpPreview' );
+			//$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			$id = $this->mRev->saveComment( $this->text, $review, $parent );
 			// For comments, take us back to the rev page focused on the new comment
 			if ( !$this->jumpToNext ) {

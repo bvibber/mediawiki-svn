@@ -22,7 +22,6 @@ class ApiCodeDiff extends ApiBase {
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		}
 
-		$svn = SubversionAdaptor::newFromRepo( $repo->getPath() );
 		$lastStoredRev = $repo->getLastStoredRev();
 
 		if ( $params['rev'] > $lastStoredRev ) {

@@ -12,7 +12,6 @@ class CodeRepoListView {
 		}
 		$text = '';
 		foreach ( $repos as $repo ) {
-			$name = $repo->getName();
 			$text .= "* " . self::getNavItem( $repo ) . "\n";
 		}
 		$wgOut->addWikiText( $text );
