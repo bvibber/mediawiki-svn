@@ -24,7 +24,8 @@ mw.addMessages({
 	"fogg-badtoken" : "Token is not valid",
 	"fogg-preview" : "Preview video",
 	"fogg-hidepreview" : "Hide preview",
-	"fogg-warning-firebug" : "<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page." 
+	"fogg-warning-firebug" : "<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page.",
+	"fogg-missing-webm-support" : "Please use a [$1 webm compatible] browsers to preview results of webm videos" 
 });
 
 var firefogg_install_links = {
@@ -100,7 +101,7 @@ var default_firefogg_options = {
 * NOTE: we should have the firefogg binding work the same way as 
 * the upload form binding. 
 */
-( function( $ ) { 
+( function( $ ) {
 	$.fn.firefogg = function( options ) {
 		if ( !options ){
 			options = { };
@@ -123,14 +124,14 @@ var default_firefogg_options = {
 } )( jQuery );
 
 
-mw.Firefogg = function( options ) {	
+mw.Firefogg = function( options ) {
 	return this.init( options );
 };
 mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
-	// Minnium version of firefogg allowed
-	min_firefogg_version: '1.1.0',
+	// Minimum version of firefogg allowed
+	min_firefogg_version: '1.2.06',
 	
-	// The default encoder seetings 
+	// The default encoder settings 
 	// NOTE: should be mw.getConfig based 
 	default_encoder_settings: { 
 		'maxSize'        : '400',
@@ -139,13 +140,13 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
         'noUpscaling'    : true
 	},
 	
-	// Lazy initialised, use getFirefogg()
+	// Lazy initialized, use getFirefogg()
 	have_firefogg: null, 
 	
-	// Lazy initialised, use getEncoderSettings()
+	// Lazy initialized, use getEncoderSettings()
 	current_encoder_settings: null, 
 	
-	// Lazy initialised, use getSourceFileInfo()
+	// Lazy initialized, use getSourceFileInfo()
 	sourceFileInfo: null, 
 	
 	// Valid ogg extensions
@@ -350,9 +351,9 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			gM( 'fogg-for_improved_uploads' ) + ' ' : gM( 'fogg-not-installed') + ' ';
 		
 		// Show the "use latest Firefox" message if necessary
-		mw.log( 'bv: ' + mw.versionIsAtLeast( '1.9.1', $j.browser.version ) );
+		mw.log( 'mw.Firefogg:: browser: ' + mw.versionIsAtLeast( '1.9.1', $j.browser.version ) );
 		if ( !( $j.browser.mozilla && mw.versionIsAtLeast( '1.9.1', $j.browser.version ) ) ) {
-			mw.log( 'show use latest::' + _this.target_use_latest_firefox );
+			mw.log( 'mw.Firefogg::show use latest::' + _this.target_use_latest_firefox );
 			
 			// Add the use_latest if not present: 
 			if ( !this.target_use_latest_firefox ) {
@@ -384,7 +385,8 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 			$j( _this.target_use_latest_firefox ).show();
 			return ;
 		}
-		mw.log( 'should show install link');
+		mw.log( 'mw.Firefogg::should show install link');
+		
 		// Otherwise show the "install Firefogg" message
 		var firefoggUrl = _this.getFirefoggInstallUrl();
 		if( firefoggUrl ) {			
@@ -822,42 +824,60 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * This is called when a local encode operation has completed. It updates the UI.
 	 */
 	onLocalEncodeDone: function() {
-		var _this = this;
+		var _this = this;		
+		var videoEmbedCode = '<video controls="true" style="margin:auto" id="fogg_final_vid" '+ 
+			'src="' +_this.fogg.previewUrl + '"></video>';
+			
+		if( this.current_encoder_settings['videoCodec'] == 'vp8' ) {
+			var dummyvid = document.createElement( "video" );
+			if( !dummyvid.canPlayType('video/webm; codecs="vp8, vorbis"') ) {
+				videoEmbedCode = gM('fogg-missing-webm-support', 
+					$j('<a />')
+					.attr({
+						'href' : 'http://www.webmproject.org/users/',
+						'target' : '_new'
+					})
+				)
+			}
+		}			
 		_this.ui.setPrompt( gM( 'fogg-encoding-done' ),
-			gM( 'fogg-encoding-done' ) + '<br>' +
-			// Show the video at full resolution upto 720px wide
-			'<video controls="true" style="margin:auto" id="fogg_final_vid" '+ 
-			'src="' +_this.fogg.previewUrl + '"></video>'
+			$j( '<div />' ).append( 
+				gM( 'fogg-encoding-done' ),
+				$j('<br>' ),
+				videoEmbedCode
+			)			
 		);
 		//Load the video and set a callback:
 		var v = $j( '#fogg_final_vid' ).get( 0 );
-		function resizeVid() {
-			var v = $j( '#fogg_final_vid' ).get(0);
-			if ( v.videoWidth > 720 ) {
-				var vW = 720;
-				var vH = 720 * v.videoHeight / v.videoWidth;
-			} else {
-				var vW = v.videoWidth;
-				var vH = v.videoHeight;
+		if( v ) {
+			function resizeVid() {
+				var v = $j( '#fogg_final_vid' ).get(0);
+				if ( v.videoWidth > 720 ) {
+					var vW = 720;
+					var vH = 720 * v.videoHeight / v.videoWidth;
+				} else {
+					var vW = v.videoWidth;
+					var vH = v.videoHeight;
+				}
+				//reize the video:
+				$j( v ).css({
+					'width': vW,
+					'height': vH
+				});
+				//if large video resize the dialog box:
+				if( vW + 5 > 400 ) {
+					//also resize the dialog box
+					$j( '#upProgressDialog' ).dialog( 'option', 'width', vW + 20 );
+					$j( '#upProgressDialog' ).dialog( 'option', 'height', vH + 120 );
+	
+					//also position the dialog container
+					$j( '#upProgressDialog') .dialog( 'option', 'position', 'center' );
+				}
 			}
-			//reize the video:
-			$j( v ).css({
-				'width': vW,
-				'height': vH
-			});
-			//if large video resize the dialog box:
-			if( vW + 5 > 400 ) {
-				//also resize the dialog box
-				$j( '#upProgressDialog' ).dialog( 'option', 'width', vW + 20 );
-				$j( '#upProgressDialog' ).dialog( 'option', 'height', vH + 120 );
-
-				//also position the dialog container
-				$j( '#upProgressDialog') .dialog( 'option', 'position', 'center' );
-			}
+			v.removeEventListener( "loadedmetadata", resizeVid, true );
+			v.addEventListener( "loadedmetadata", resizeVid, true );
+			v.load();
 		}
-		v.removeEventListener( "loadedmetadata", resizeVid, true );
-		v.addEventListener( "loadedmetadata", resizeVid, true );
-		v.load();
 	},
 
 	/**
@@ -865,6 +885,7 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 	 * into which a video has already been selected.
 	 */
 	getEncoderSettings: function() {
+		// set the current_encoder_settings form the default_encoder_settings if not yet set 
 		if ( this.current_encoder_settings == null ) {
 		
 			// Clone the default settings			
@@ -896,8 +917,15 @@ mw.Firefogg.prototype = { // extends mw.BaseUploadHandler
 				' passthrough:' + settings['passthrough'] );
 				
 			this.current_encoder_settings = settings;
-		}		
-		//Update the format based on codec selection
+		}	
+		
+		// Remove maxSize if width or height is set:
+		if( ( this.current_encoder_settings['width'] || this.current_encoder_settings['height'] ) 
+		    && this.current_encoder_settings['maxSize'] ){
+			delete this.current_encoder_settings['maxSize'];
+		}
+
+		// Update the format based on codec selection
 		if( this.current_encoder_settings['videoCodec'] == 'vp8' ){
 			this.fogg.setFormat('webm');
 		} else {
