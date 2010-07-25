@@ -4,24 +4,26 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class SpecialPlayerStatsGrabber extends SpecialPage {
 	var $action = '';
+
 	function SpecialPlayerStatsGrabber() {
 		SpecialPage::SpecialPage( "PlayerStatsGrabber" );
 		wfLoadExtensionMessages( 'PlayerStatsGrabber' );
 	}
+
 	// used for page title
 	function getDescription() {
 		switch( $this->req_param ) {
 			case 'Survey':
 				return wfMsg( 'ps_take_video_survey' );
-			break;
+
 			case '':
 			default:
 				return wfMsg( 'playerstatsgrabber' );
-			break;
 		}
 	}
+
 	function execute( $par ) {
-		global $wgRequest, $wgOut;
+		global $wgRequest;
 		$this->req_param = $par;
 		// print $wgRequest->getText( 'param' );
 		// set the header:
@@ -32,8 +34,10 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 			case 'Survey':
 				// check if
 				$this->do_survey_forum();
-			break;
-			case '':default:
+				break;
+
+			case '':
+			default:
 				if ( $wgRequest->getVal( 'action' ) == 'submit' ) {
 					$this->do_submit_survey();
 				} else if ( $wgRequest->getVal( 'action' ) == 'survey' ) {
@@ -44,12 +48,14 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 			break;
 		}
 	}
+
 	function do_stats_page() {
-		global $wgOut, $wgRequest;
+		global $wgOut;
 		$wgOut->addWikiText( wfMsg( 'ps_stats_welcome_link' ) );
 	}
+
 	function do_survey_forum() {
-		global $wgOut, $psEmbedAry, $wgTitle, $wgUser, $wgEnableParserCache, $wgParser, $wgScript;
+		global $wgOut, $psEmbedAry, $wgTitle, $wgUser, $wgParser, $wgProxyKey;
 		$wgOut->addHTML ( wfMsg( 'ps_survey_description' ) );
 
 		// select the embed ary element:
@@ -65,6 +71,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 				break;
 			}
 		}
+
 		$embed_code = '';
 		if ( isset( $embed['html_code'] ) ) {
 			// run the stats (if not internal oggPlay)
@@ -157,6 +164,7 @@ EOT
 </tr>
 </table>' );
 	}
+
 	function do_submit_player_log() {
 		global $wgRequest, $psLogEveryPlayRequestPerUser;
 		// do the insert into the userPlayerStats table:
@@ -167,9 +175,9 @@ EOT
 				'user_hash'			=> $wgRequest->getVal( 'uh' ),
 				'file_url'			=> $wgRequest->getVal( 'purl' ),
 				'b_user_agent'		=> $wgRequest->getVal( 'b_user_agent' ),
-				//'b_name'			=> $wgRequest->getVal( 'b_name' ),
-				//'b_version'			=> $wgRequest->getVal( 'b_version' ),
-				//'b_os'				=> $wgRequest->getVal( 'b_os' ),
+				// 'b_name'			=> $wgRequest->getVal( 'b_name' ),
+				// 'b_version'			=> $wgRequest->getVal( 'b_version' ),
+				// 'b_os'				=> $wgRequest->getVal( 'b_os' ),
 				'flash_version'		=> $wgRequest->getVal( 'fv' ),
 				'java_version'		=> $wgRequest->getVal( 'jv' ),
 				'html5_video_enabled' => in_array( 'videoElement', $cs ),
@@ -193,17 +201,18 @@ EOT
 			$dbw->commit();
 		}
 		header( 'Content-Type: text/javascript' );
-		if( $wgRequest->getVal( 'cb' )!=null ){
+		if ( $wgRequest->getVal( 'cb' ) != null ) {
 			return htmlspecialchars( $wgRequest->getVal( 'cb' ) ) . '(' . PhpArrayToJsObject_Recurse(
 					array(
 							'cb_inx' => htmlspecialchars( $wgRequest->getVal( 'cb_inx' ) ),
 							'id' => htmlspecialchars( $insert_id )
 					)
 					) . ');';
-		}else{
+		} else {
 			return htmlspecialchars ( $insert_id );
 		}
 	}
+
 	function do_submit_survey() {
 		global $wgRequest, $wgOut, $wgUser, $psAllowMultipleSurveysPerUser;
 		// print_r($wgRequest);
@@ -256,18 +265,19 @@ EOT
 			$wgOut->addHTML( wfMsg( 'ps_thanks' ) );
 		}
 	}
-	/* to run the stats in cases where we are not using oggHanndler to play*/
-	function runJS_Stats( $vid_url='' ) {
+
+	/* to run the stats in cases where we are not using oggHanndler to play */
+	function runJS_Stats( $vid_url = '' ) {
 		global $wgOut, $wgScriptPath, $wgUser , $wgProxyKey;
 		$scriptPath = OggHandler::getMyScriptPath();
 		// include the javascript and do the stats
 		$jsUserHash = sha1( $wgUser->getName() . $wgProxyKey );
 		$wgOut->addHTML( '
-		<script type="text/javascript" src="'. htmlspecialchars( $scriptPath ) .'/OggPlayer.js"></script>
-		<script type="text/javascript" src="'. htmlspecialchars( $wgScriptPath ) . '/extensions/PlayerStatsGrabber/playerStats.js"></script>
+		<script type="text/javascript" src="' . htmlspecialchars( $scriptPath ) . '/OggPlayer.js"></script>
+		<script type="text/javascript" src="' . htmlspecialchars( $wgScriptPath ) . '/extensions/PlayerStatsGrabber/playerStats.js"></script>
 			<script type="text/javascript">
-				wgOggPlayer.userHash = '.  Xml::encodeJsVar( $jsUserHash ) .';
-				wgOggPlayer.videoUrl='. Xml::encodeJsVar( $vid_url ) . ';
+				wgOggPlayer.userHash = ' .  Xml::encodeJsVar( $jsUserHash ) . ';
+				wgOggPlayer.videoUrl=' . Xml::encodeJsVar( $vid_url ) . ';
 				wgOggPlayer.doStats();
 			</script>'
 		);
