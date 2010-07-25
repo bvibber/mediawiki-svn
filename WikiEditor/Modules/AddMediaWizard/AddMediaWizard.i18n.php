@@ -353,6 +353,13 @@ $messages['ro'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activează gadgetul „Asistent pentru adăugarea fișierelor media”',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Abbilete \'u gadget "Aggiunge wizard media"',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

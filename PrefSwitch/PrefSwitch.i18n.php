@@ -5586,10 +5586,11 @@ $messages['ug-arab'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Ahonc
  * @author Тест
  */
 $messages['uk'] = array(
-	'prefswitch-jswarning' => "Пам'ятайте, що аби ваш [[User:$1/$2.js|$2 JavaScript]] запрацював під новим оформленням треба скопіювати його до [[{{ns:user}}:$1/vector.js]].",
+	'prefswitch-jswarning' => "Пам'ятайте, що при зміні теми оформлення ваш [[User:$1/$2.js|$2 JavaScript]]  треба скопіювати до [[{{ns:user}}:$1/vector.js]] <!-- або [[{{ns:user}}:$1/common.js]]-->, щоб він продовжив працювати.",
 	'prefswitch-csswarning' => 'Ваші [[User:$1/$2.css|власні стилі для $2]] не працюватимуть під новим оформленням. Ви можете додати власні CSS для "векторного" оформлення на [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Так',
 	'prefswitch-survey-false' => 'Ні',
@@ -5615,6 +5616,8 @@ $messages['uk'] = array(
 	'prefswitch-title-on' => 'Нові можливості',
 	'prefswitch-title-switched-on' => 'Користуйтесь!',
 	'prefswitch-title-off' => 'Відключити нові можливості',
+	'prefswitch-title-switched-off' => 'Дякуємо',
+	'prefswitch-title-feedback' => "Зворотний зв'язок",
 	'prefswitch-success-feedback' => 'Ваш відгук відправлено.',
 	'prefswitch-return' => '<hr style="clear:both">
 Повернутися до <span class="plainlinks">[$1 $2]</span>.',

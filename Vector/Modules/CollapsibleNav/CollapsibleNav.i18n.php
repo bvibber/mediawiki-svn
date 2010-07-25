@@ -511,6 +511,14 @@ $messages['ro'] = array(
 	'vector-collapsiblenav-more' => 'Mai multe limbi',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'vector-collapsiblenav-preference' => "Abbilete 'a chiusure de le artichele jndr'à 'u menu de navigazione sus a 'u skin Vector",
+	'vector-collapsiblenav-more' => 'Cchiù linguagge',
+);
+
 /** Russian (Русский)
  * @author AlexSm
  * @author G0rn

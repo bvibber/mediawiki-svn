@@ -616,6 +616,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'wikieditor-previewDialog-preference' => "Abbilete 'u dialoghe de l'andeprime",
 	'wikieditor-previewDialog-tab' => 'Andeprime',
 	'wikieditor-previewDialog-loading' => 'Carecamende...',
 );
