@@ -112,6 +112,10 @@ mw.Smil.prototype = {
 		mw.log("Error SMIL Dom not available");
 		return;
 	},
+	
+	getXMLString: function(){
+		return (new XMLSerializer()).serializeToString(this.$dom.get(0));		
+	},
 
 	/**
 	 * Render a specific time
@@ -134,9 +138,24 @@ mw.Smil.prototype = {
 	 */
 	animateTime : function(time, timeDelta) {
 		// mw.log("Smil::animateTime: " + time + ' delta: ' + timeDelta );
-		this.getBody().renderTime(time, timeDelta);
+		this.getBody().renderTime( time, timeDelta );
 	},
-
+	
+	/**
+	 * Checks if two times are within the framerate time range 
+	 * useful for results of a seek request no exactly matching
+	 * the seek time.  
+	 */	
+	isSameFrameTime: function( time1, time2){
+		var frameRange = 1 / mw.getConfig( 'SmilPlayer.framerate');
+		if ( Math.abs( time1 - time2 ) <  frameRange ) {
+			mw.log( Math.abs( time1 - time2 ) +  ' IS < ' + frameRange );
+			return true;
+		} else {
+			return false;
+		}
+	},
+	
 	/**
 	 * Pause all animations and playback
 	 */
@@ -290,7 +309,7 @@ mw.Smil.prototype = {
 	 * @param {string}
 	 *            assetPath Path to asset to be transformed into url
 	 */
-	getAssetUrl : function(assetPath) {
+	getAssetUrl : function( assetPath ) {
 		// Context url is the smil document url:
 		var contextUrl = mw.absoluteUrl(this.smilUrl);
 		return mw.absoluteUrl(assetPath, contextUrl);

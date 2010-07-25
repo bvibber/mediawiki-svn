@@ -15,6 +15,7 @@
 		"mw.SequenceEditKeyBindings" : "mw.SequenceEditKeyBindings.js",
 		"mw.SequenceEditTools" : "mw.SequenceEditTools.js",
 		"mw.SequenceEditMenu" : "mw.SequenceEditMenu.js", 
+		"mw.SequenceEditFileActions" : "mw.SequenceEditFileActions.js",
 		"mw.SequenceEditRender" : "mw.SequenceEditRender.js",
 		
 		"mw.FirefoggRender"	: "mw.FirefoggRender.js",
@@ -60,6 +61,7 @@
 				'mw.SequenceEditKeyBindings',
 				'mw.SequenceEditTools',
 				'mw.SequenceEditMenu',
+				'mw.SequenceEditFileActions',
 				'mw.SequenceEditRender',
 				
 				'mw.style.SequenceEdit'

@@ -98,10 +98,7 @@ mw.SequenceEditTimeline.prototype = {
 			//_this.getTracksContainer().find('.timelineClip').removeClass( 'selectedClip' );
 		})
 		// Load and display all clip thumbnails 		
-		this.drawTrackThumbs(  trackIndex, sequenceNode, trackType );
-		
-		
-		
+		this.drawTrackThumbs(  trackIndex, sequenceNode, trackType );		
 	},
 	
 	drawTrackThumbs: function( trackIndex, sequenceNode, trackType ){
@@ -115,8 +112,8 @@ mw.SequenceEditTimeline.prototype = {
 		// For every ref node in this sequence draw its thumb: 
 		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){				
 			// Check Buffer for when the first frame of the smilNode can be grabbed: 		
-			smil.getBuffer().canGrabRelativeTime( $node, 0, function(){
-				//mw.log("getTrackClipInterface::canGrabRelativeTime for " + smil.getAssetId( $node ));
+			smil.getBuffer().bufferedSeek( $node, 0, function(){
+				//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getAssetId( $node ));
 				_this.drawClipThumb( $node , 0);
 			});
 		});
@@ -181,13 +178,13 @@ mw.SequenceEditTimeline.prototype = {
 				.click(function(){
 					//Add clip to selection
 					_this.handleMultiSelect( this );
-				})								
-			);			
+				})				
+			);						
 		})				
 		// Give the track set a width relative to the number of clips 
 		$clipTrackSet.css('width', ($clipTrackSet.find( '.timelineClip' ).length + 1) * 
-				( this.timelineThumbSize.width + 12 ) 
-			);
+			( this.timelineThumbSize.width + 12 ) 
+		);
 		
 		// Add global TrackClipInterface bindings:
 		var keyBindings = this.sequenceEdit.getKeyBindings();		 
@@ -351,77 +348,87 @@ mw.SequenceEditTimeline.prototype = {
 		var smil = this.sequenceEdit.getSmil();	
 		
 		
-		// Buffer the asset then render it into the layout target:
-		smil.getBuffer().canGrabRelativeTime( $node, relativeTime, function(){		
-			var $timelineClip = $j( '#' + _this.getTimelineClipId( $node ) );
-			// Add Thumb target and remove loader
-			$timelineClip.append(
-				$j('<div />')					
-				.addClass("thumbTraget"),
+		var $timelineClip = $j( '#' + _this.getTimelineClipId( $node ) );
+		// Add Thumb target and remove loader
+		$timelineClip.empty().append(
+			$j('<div />')					
+			.addClass("thumbTraget"),
 
-				// Edit clip button: 
-				$j('<div />')
-				.css({
-					'position' : 'absolute',
-					'right' : '32px',
-					'bottom' : '5px',
-					'padding' : '2px',
-					'cursor' : 'pointer'
-				})
-				.addClass( 'clipEditLink ui-state-default ui-corner-all' )
-				.append( 
-					$j('<span />')
-					.addClass( 'ui-icon ui-icon-scissors' )
-				)
-				.hide()
-				.buttonHover()
-				.click( function(){
-					_this.editClip( $timelineClip )
-				}),
-				
-				// Remove clip button: 
-				$j('<div />')
-				.css({
-					'position' : 'absolute',
-					'right' : '5px',
-					'bottom' : '5px',
-					'padding' : '2px',
-					'cursor' : 'pointer'
-				})
-				.addClass( 'clipRemoveLink ui-state-default ui-corner-all' )
-				.append( 
-					$j('<span />')
-					.addClass( 'ui-icon ui-icon-trash' )
-				)
-				.hide()
-				.buttonHover()
-				.click( function(){					
-					_this.removeClip( $timelineClip )
-				})
+			// Edit clip button: 
+			$j('<div />')
+			.css({
+				'position' : 'absolute',
+				'right' : '32px',
+				'bottom' : '5px',
+				'padding' : '2px',
+				'cursor' : 'pointer'
+			})
+			.addClass( 'clipEditLink ui-state-default ui-corner-all' )
+			.append( 
+				$j('<span />')
+				.addClass( 'ui-icon ui-icon-scissors' )
 			)
-			// Add mouse over thumb "edit", "remove"  button
-			.hover(
-				function(){
-					$timelineClip.find('.clipEditLink,.clipRemoveLink').fadeIn();
-				},
-				function(){
-					$timelineClip.find('.clipEditLink,.clipRemoveLink').fadeOut();
+			.hide()
+			.buttonHover()
+			.click( function(){
+				_this.editClip( $timelineClip )
+			}),
+			
+			// Remove clip button: 
+			$j('<div />')
+			.css({
+				'position' : 'absolute',
+				'right' : '5px',
+				'bottom' : '5px',
+				'padding' : '2px',
+				'cursor' : 'pointer'
+			})
+			.addClass( 'clipRemoveLink ui-state-default ui-corner-all' )
+			.append( 
+				$j('<span />')
+				.addClass( 'ui-icon ui-icon-trash' )
+			)
+			.hide()
+			.buttonHover()
+			.click( function(){					
+				_this.removeClip( $timelineClip )
+			})
+		)
+		// Add mouse over thumb "edit", "remove"  button
+		.hover(
+			function(){
+				$timelineClip.find('.clipEditLink,.clipRemoveLink').fadeIn();
+			},
+			function(){
+				$timelineClip.find('.clipEditLink,.clipRemoveLink').fadeOut();
+			}
+		)
+		// remove loader
+		.find('.loadingSpinner').remove();
+		
+		var $thumbTarget = $j( '#' + _this.getTimelineClipId( $node ) ).find('.thumbTraget');
+		
+		// Check for a "poster" image use that temporarily while we wait for the video to seek and draw
+		if( $node.attr('poster') ){			
+			var img = new Image();
+			$j( img )
+			.css( {
+				'top': '0px',
+				'position' : 'absolute',
+				'opacity' : '.8',
+				'left': '0px',
+				'height': _this.timelineThumbSize.height
+			})
+			.attr( 'src', smil.getAssetUrl( $node.attr('poster') ) )
+			.load( function(){
+				if( $thumbTarget.children().length == 0 ){
+					$thumbTarget.html(this);	
 				}
-			)
-			// remove loader
-			.find('.loadingSpinner').remove();
-			
-			var $thumbTarget = $j( '#' + _this.getTimelineClipId( $node ) ).find('.thumbTraget');
-			
-			// Check for a "poster" image use that temporarily while we wait for the video to seek and draw
-			if( $node.attr('poster') ){
-				$thumbTarget.append( 
-					$j('<img />')
-					.attr( 'src', smil.getAssetUrl( $node.attr('poster') ) )
-					.css('height', $thumbTarget.height() )
-				)
-			}					
-			
+			})				
+		}			
+		
+		// Buffer the asset then render it into the layout target:
+		smil.getBuffer().bufferedSeek( $node, relativeTime, function(){			
 			// Add the seek, add to canvas and draw thumb request
 			smil.getLayout().drawElementThumb( $thumbTarget, $node, relativeTime );
 		

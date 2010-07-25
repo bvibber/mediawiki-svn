@@ -106,6 +106,7 @@ mw.SequenceEditTools.prototype = {
 				if( !clipBeginTime ){
 					$j(target).find('.trimStartThumb').hide();
 				} else {
+					mw.log("Should update trimStartThumb::" +  $j(smilClip).attr('clipBegin') );
 					// Render a thumbnail for relative start time = 0  
 					smil.getLayout().drawElementThumb( 
 						$j(target).find('.trimStartThumb'), 
@@ -114,9 +115,10 @@ mw.SequenceEditTools.prototype = {
 					)
 				}
 				// Check the duration:
-				var clipDur = $j('editTool_trim_dur').val();
+				var clipDur = $j('#editTool_trim_dur').val();
 				if( clipDur ){
-					// Render a thumbnail for relative start time = 0  
+					mw.log("Should update trimStartThumb::" +  $j(smilClip).attr('clipBegin') );
+					// Render a thumbnail for the updated duration  
 					smil.getLayout().drawElementThumb( 
 						$j(target).find('.trimEndThumb'),
 						smilClip,

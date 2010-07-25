@@ -25,8 +25,24 @@ $messages['en'] = array(
 	'mwe-sequenceedit-clip-duration' => 'Clip duration',
 
 	'mwe-sequenceedit-save-sequence' => 'Save sequence',
+	'mwe-sequenceedit-view-sequence-xml' => 'View SMIL sequence XML',
+	'mwe-sequenceedit-sequence-xml' => 'Sequence smil xml',
 	'mwe-sequenceedit-render-sequence' => 'Render sequence to file',
 	'mwe-sequenceedit-create-sequence' => 'Create sequence',
+
+
+	'mwe-sequenceedit-menu-file' => 'File',
+	'mwe-sequenceedit-menu-file-new' => 'New',
+	'mwe-sequenceedit-menu-file-open' => 'Open',
+	'mwe-sequenceedit-menu-file-save' => 'Save',
+
+	'mwe-sequenceedit-menu-edit' => 'Edit',
+	'mwe-sequenceedit-menu-edit-undo' => 'Undo',
+	'mwe-sequenceedit-menu-edit-redo' => 'Redo',
+
+
+	'mwe-sequenceedit-menu-edit' => 'View',
+	'mwe-sequenceedit-menu-history' => 'Revision history',
 
 
 	'mwe-sequenceedit-transition_in' => 'Transition in',

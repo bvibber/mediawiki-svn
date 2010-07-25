@@ -1049,11 +1049,13 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				'id' : "mwTempLoaderDialog",
 				'title' : title
 			})
-			.css('display', 'none')
+			.css({
+				'display': 'none'
+			})
 			.html( dialogHtml )
 		);
 		
-		// Special buttons == ok gives empty give a single "oky" -> "close"
+		// Special button string 
 		if ( typeof buttons == 'string' ) {
 			var buttonMsg = buttons;
 			buttons = { };
@@ -1068,15 +1070,21 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				'$j.ui'
 			],
 			[
-				'$j.ui.dialog'
+				'$j.ui.dialog',
+				'$j.ui.draggable'
 			]
 		], function() {
+			// Set width to default 400 if mwTempLoaderDialog does not have an
+			// inherit width
+			var width = ( $j( '#mwTempLoaderDialog' ).width() ) ?
+						$j( '#mwTempLoaderDialog' ).width() + 12 : 
+						400;
 			$j( '#mwTempLoaderDialog' ).dialog( {
 				'bgiframe': true,
-				'draggable': false,
+				'draggable': true,
 				'resizable': false,
 				'modal': true,
-				'width':400,
+				'width': width,
 				'buttons': buttons
 			} );
 		} );
@@ -1801,17 +1809,17 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 * @return {string} escaped text html string
 	 */
 	mw.escapeQuotesHTML = function( text ) {
-		var re = new RegExp('&',"g");
-		text = text.replace(re,"&amp;");
-		re = new RegExp('"',"g");
-		text = text.replace(re,"&quot;");
-		re = new RegExp('<',"g");
-		text = text.replace(re,"&lt;");
-		re = new RegExp('>',"g");
-		text = text.replace(re,"&gt;");
-		return text;
+		var replaceMap = {
+			"&" : "&amp;",
+			'"' : "&quot;",
+			'<' : "&lt;",
+			'>' : "&gt;"
+		}
+		for( var i in replaceMap ){
+			text = text.split(i).join( replaceMap[i]);
+		}
+		return text;		
 	};
-	
 		
 	// Array of setup functions
 	var mwSetupFunctions = [];
@@ -1890,8 +1898,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 					
 					// Special Hack for conditional jquery ui inclusion ( once
 					// Usability extension
-					// registers the jquery.ui skin in mw.style this won't be
-					// needed )
+					// registers the jquery.ui skin in mw.style 		
 					if( mw.hasJQueryUiCss() ){
 						mw.style[ 'ui_' + mw.getConfig( 'jQueryUISkin' ) ] = true;						
 					}		
@@ -1938,6 +1945,15 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				return true;
 			}
 		} );
+		// Check all the "style" nodes for @import of jquery-ui-1.7.2.css
+		// xxx Note: we could do this a bit cleaner with regEx
+		$j( 'style' ).each( function( na, styleNode ){
+			if( $j( styleNode ).text().indexOf( '@import' ) != -1 
+				&& $j( styleNode ).text().indexOf( 'jquery-ui-1.7.2.css' ) != -1  ){
+					hasUiCss=true;
+			}
+		});
+				
 		return hasUiCss;		
 	}
 	

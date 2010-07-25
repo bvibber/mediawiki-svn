@@ -54,7 +54,8 @@ var mwEnabledModuleList = [
 	'TimedText',
 	'SmilPlayer',
 	'Playlist',	
-	'SwarmTransport'
+	'SwarmTransport',
+	'SyntaxHighlighter'
 ];
 
 /**

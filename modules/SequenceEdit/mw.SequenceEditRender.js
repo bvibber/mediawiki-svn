@@ -2,7 +2,6 @@ mw.SequenceEditRender = function( sequenceEditor ) {
 	return this.init( sequenceEditor );
 };
 
-// Set up the mvSequencer object
 mw.SequenceEditRender.prototype = {
 	init: function( sequenceEditor ){
 		this.sequenceEditor = sequenceEditor;

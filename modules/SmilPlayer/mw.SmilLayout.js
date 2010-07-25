@@ -142,11 +142,15 @@ mw.SmilLayout.prototype = {
 	},
 	
 	getVideoCanvasThumb: function($target, $node, relativeTime ){
-		
+		var _this = this;
 		var naturaSize = {};					
 		var drawElement = $j( '#' + this.smil.getAssetId( $node ) ).get(0);	
 		
-		var drawFrame = function(){
+		var drawFrame = function( drawElement ){
+			if( !drawElement ){
+				mw.log( 'Error: SmilLayout::getVideoCanvasThumb:Draw element not loaded or defined')
+				return ;
+			}
 			naturaSize.height = drawElement.videoHeight;
 			naturaSize.width = drawElement.videoWidth;
 	
@@ -162,22 +166,31 @@ mw.SmilLayout.prototype = {
 					widht:'100%'
 				})
 				.addClass("ui-corner-all")
-			).find( 'canvas')
-			.get(0)	
-			.getContext('2d')
-			.drawImage( drawElement, 0, 0)
+			)
+			.find( 'canvas')
+				.get(0)	
+				.getContext('2d')
+				.drawImage( drawElement, 0, 0)
 		}
 		
 		// check if relativeTime transform matches current absolute time then render directly:
 		var drawTime = ( relativeTime + this.smil.parseTime( $j( $node ).attr('clipBegin') ) );
-		if( drawElement.currentTime ==  drawTime ){
+		if( this.smil.isSameFrameTime( drawElement.currentTime, drawTime ) ) {
 			mw.log("getVideoCanvasThumb: Draw time:" + drawTime + " matches video time drawFrame:" +drawElement.currentTime );
-			drawFrame();
+			drawFrame( drawElement );
 		} else {
 			// check if we need to spawn a video copy for the draw request
-			
-			// no match do seek 
-			mw.log( "getVideoCanvasThumb: Draw time:" + drawTime + ' != ' + drawElement.currentTime );
+			mw.log( 'getVideoCanvasThumb: Clone object' );
+			// span new draw element
+			var $tmpFrameNode = $node.clone();
+			$tmpFrameNode.attr('id', $node.attr('id') + '_tmpFrameNode' );				
+			this.smil.getBuffer().bufferedSeek( $tmpFrameNode, relativeTime, function(){
+				// update the drawElement 
+				drawElement = $j( '#' + _this.smil.getAssetId( $tmpFrameNode ) ).get(0);
+				drawFrame( drawElement );
+				// remove the temporary node from dom
+				$j( drawElement ).remove();
+			})			
 		}
 	},
 	

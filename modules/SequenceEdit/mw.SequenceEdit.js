@@ -133,6 +133,12 @@ mw.SequenceEdit.prototype = {
 		}
 		return this.player;
 	},
+	getFileActions: function(){
+		if( ! this.fileActions ){
+			this.fileActions = new mw.SequenceEditFileActions( this );
+		}
+		return this.fileActions;
+	},
 	getRender: function(){
 		if( !this.render ){
 			this.render = new mw.SequenceEditRender( this );
