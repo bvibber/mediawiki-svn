@@ -25,7 +25,7 @@ mw.addMessages({
 	"fogg-preview" : "Preview video",
 	"fogg-hidepreview" : "Hide preview",
 	"fogg-warning-firebug" : "<b>Firebug</b> can cause conflicts with <i>Firefogg</i>. Please disable <b>Firebug</b> for this page.",
-	"fogg-missing-webm-support" : "Please use a [$1 webm compatible] browsers to preview results of webm videos" 
+	"fogg-missing-webm-support" : "Please use a [$1 WebM compatible] browser to preview results of WebM videos" 
 });
 
 var firefogg_install_links = {
