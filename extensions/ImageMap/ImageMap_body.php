@@ -27,7 +27,7 @@ class ImageMap {
 	const NONE = 4;
 
 	static function render( $input, $params, $parser ) {
-		global $wgScriptPath, $wgUser, $wgUrlProtocols, $wgNoFollowLinks;
+		global $wgScriptPath, $wgUrlProtocols, $wgNoFollowLinks;
 		wfLoadExtensionMessages( 'ImageMap' );
 
 		$lines = explode( "\n", $input );
