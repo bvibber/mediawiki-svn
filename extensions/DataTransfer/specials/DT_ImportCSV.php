@@ -101,7 +101,7 @@ class DTImportCSV extends SpecialPage {
 	<option value="utf16">UTF-16</option>
 	</select></p>
 	<p>$import_summary_label
-	<input type="text" name="import_summary" value="$default_summary" />
+	<input type="text" id="wpSummary" class="mw-summary" name="import_summary" value="$default_summary" />
 	</p>
 	<p><input type="Submit" name="import_file" value="$import_button"></p>
 	</form>
