@@ -1823,6 +1823,12 @@ Varför inte dela med dig av det?',
  */
 $messages['te'] = array(
 	'storyboard-publish' => 'ప్రచురించు',
+	'storyboard-language' => 'భాష',
+	'storyboard-yourname' => 'మీ పేరు (తప్పనిసరి)',
+	'storyboard-email' => 'మీ ఈ-మెయిలు చిరునామా (తప్పనిసరి)',
+	'storyboard-changetitle' => 'శీర్షికని మార్చండి.',
+	'storyboard-done' => 'పూర్తయ్యింది',
+	'storyboard-storydeletionconfirm' => 'మీరు నిజంగానే ఈ కథనాన్ని తొలగించాలనుకుంటున్నారా?',
 );
 
 /** Tagalog (Tagalog)

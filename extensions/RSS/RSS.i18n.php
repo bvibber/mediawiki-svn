@@ -27,10 +27,11 @@ $messages['af'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'rss-desc' => 'Паказваць як RSS-стужку на вікі-старонцы',
+	'rss-desc' => 'Паказвае RSS-стужкі на вікі-старонках',
 	'rss-error' => 'Памылка загрузкі RSS-стужкі з $1: $2',
 	'rss-empty' => 'Памылка загрузкі RSS-стужкі з $1!',
 );
@@ -134,10 +135,28 @@ $messages['nl'] = array(
 	'rss-empty' => 'Kon RSS feed van $1 niet laden!',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'rss-desc' => 'Viser en RSS-mating på en wikiside',
+	'rss-error' => 'Kunne ikke laste RSS-mating fra $1: $2',
+	'rss-empty' => 'Kunne ikke laste RSS-mating fra $1.',
+);
+
 /** Polish (Polski) */
 $messages['pl'] = array(
 	'rss-error' => 'Nie udało się odczytać kanału $1: $2',
 	'rss-empty' => 'Nie udało się odczytać kanału $1!',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'rss-desc' => 'A mosta un feed RSS su na pàgina wiki',
+	'rss-error' => 'Falì a carié un feed RSS da $1: $2',
+	'rss-empty' => 'Falì a carié un feed RSS da $1!',
 );
 
 /** Portuguese (Português)

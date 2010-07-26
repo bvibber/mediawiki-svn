@@ -213,6 +213,13 @@ $messages['ko'] = array(
 	'addmediawizard-desc' => 'Kaltura와 위키미디어 재단이 공동 개발한 미디어 추가 마법사',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'addmediawizard-desc' => 'Donn dä Assistänt för Medije en et Wiki eren, dä zosamme vun Kaltura und de Mediawiki Shteftong äntweckelt woode es.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

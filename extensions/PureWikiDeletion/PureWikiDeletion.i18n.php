@@ -405,6 +405,11 @@ $messages['lb'] = array(
 	'purewikideletion-desc' => 'Féiert ënner anerem dozou datt eidelgemaachte Säiten als roude Link gewise ginn',
 	'purewikideletion-pref-watchblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'purewikideletion-pref-watchunblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
+	'purewikideletion-blanked' => "Eng vireg Versioun vun dëser Säit gouf eidelgemaach vum [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) den $5 ëm $6 Auer.
+
+De Grond fir d'Eidelmaache war: ''<nowiki>$3</nowiki>''.
+
+Dir kënnt [{{fullurl:{{FULLPAGENAMEE}}|action=history}} de Versiounshistorique vun der Säit gesinn], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} déi lescht Versioun änneren] oder eng nei Säit an de wäisse Raum hei drënner schreiwen.",
 	'blank-log' => 'eidel maachen',
 	'blank-log-name' => 'Logbuch vun de Säiten déi eidel gemaach goufen',
 	'blank-log-header' => "Hei ass d'Lëscht vun de Säiten déi eidelgemaach goufen respektiv wou eidel Säiten nees zréck gesat goufen.",
@@ -417,6 +422,7 @@ $messages['lb'] = array(
 	'purewikideletion-blankedtext' => "[[$1]] gouf eidel gemaacht.
 Kuckt $2 fir d'Lëscht vun de Säiten déi rezent eidel gemaach goufen.",
 	'purewikideletion-population-done' => "D'Tabell mat den eidelgemaachte Säiten ass fäerdeg.",
+	'right-purewikideletion' => "D'Tabell mat den eidelgemaachte Säite [[Special:PopulateBlankedPagesTable|generéieren]]",
 );
 
 /** Macedonian (Македонски)

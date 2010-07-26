@@ -270,6 +270,13 @@ $messages['id'] = array(
 	'categoryonupload-label' => 'Kategori:',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'categoryonupload-label' => 'Ébéonọr:',
+);
+
 /** Icelandic (Íslenska)
  * @author Ævar Arnfjörð Bjarmason
  */

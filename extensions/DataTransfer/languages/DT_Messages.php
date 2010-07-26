@@ -998,6 +998,13 @@ $messages['id'] = array(
 	'right-datatransferimport' => 'Impor data',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'dt_xml_template' => 'Àtụ',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

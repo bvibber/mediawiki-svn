@@ -578,6 +578,13 @@ $messages['id'] = array(
 	'tooltip-pt-optin-feedback' => 'Berikan umpan balik tentang pengalaman Anda dengan fitur baru',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'optin-try' => 'Nwàne kwá Beta',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

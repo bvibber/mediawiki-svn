@@ -7534,6 +7534,9 @@ $messages['ksh'] = array(
 	'ow_exporttsv_not_allowed' => 'Do häs nit dat Rääsch, en en Datei uß Reije met Wääte met Tabulatore dozwesche ze expoteere.',
 	'ow_exporttsv_export_failed' => 'Dä Expoot es donävve jejange',
 	'addcollection' => 'Wikidata: Sammlong dobei donn',
+	'ow_searchnoresult' => "<p>Ühr künnt…:<br />
+* '''…ene Ußdrok aanlääje „[[Expression:$1]]“''' (un winnishßdenß ein Bedüggdeniß dobei donn) udder<br />
+* '''…en Sigg aanlääje „[[:$1]]“''' (en janz jewöhnlijje Sigg em Wiki)</p>",
 	'ow_save' => 'Afspeichere',
 	'ow_history' => 'Versione',
 	'ow_datasets' => 'Date-Knubbel ußsöke',
@@ -7697,6 +7700,7 @@ Wi et ußsüht, es de Datebangk nit mieh konsistent. Wikidata kunnt kein jöltij
 	'ow_needs_xlation_source_lang' => 'Shprooch fun woh övversäze:',
 	'ow_needs_xlation_dest_lang' => 'Shprooch woh hen övversäze:',
 	'ow_needs_xlation_no_dest_lang' => 'Bes esu joot, un donn de Shprooch aanjevve, woh hen ze övversäze.',
+	'ow_statistics' => 'Wikidata: Statistike',
 	'ow_show' => 'Aanzeije!',
 	'ow_upload' => 'Huhlaade',
 	'ow_create' => 'Aanlääje',

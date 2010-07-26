@@ -2358,6 +2358,13 @@ $messages['id'] = array(
 	'fundraiserstats-tab-ytd' => 'Tahun berjalan (USD)',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'contribstats-template' => 'Àtụ',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

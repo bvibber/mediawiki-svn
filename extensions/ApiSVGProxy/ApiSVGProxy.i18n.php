@@ -51,10 +51,11 @@ $messages['ca'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'apisvgproxy-desc' => "Ffeiliau SVG dirprwyon o ystorfa ffeil, sydd efallai'n bell, i'r parth lleol",
+	'apisvgproxy-desc' => "Yn dirprwyo ffeiliau SVG o ystorfa ffeiliau, sydd efallai'n bell, i'r parth lleol",
 );
 
 /** Danish (Dansk)

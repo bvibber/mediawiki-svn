@@ -183,6 +183,17 @@ $messages['id'] = array(
 	'prefs-category' => 'Kategori',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Nke éjị bịdó',
+	'categorymultisort-sortkey' => 'ÙgòdìPịa:',
+	'categorymultisort-go' => 'Gá',
+	'categorymultisort-default-sortkey' => 'ÙgòdìPịa nke ejị bịdó:',
+	'prefs-category' => 'Ébéonọr',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */

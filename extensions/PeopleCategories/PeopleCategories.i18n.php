@@ -125,6 +125,13 @@ $messages['id'] = array(
 	'peoplecategories-desc' => 'Perubahan nama halaman dari "NamaDepan NamaBelakang" menjadi "NamaBelakang, Nama depan" pada halaman kategori tertentu',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'peoplecategories-desc' => 'Ihe gbánwè ne zí ihü nwèrè áhà shí "Áhàmbu Áhàázu" gá "Áhàázu, Áhàmbu" nke ébéanọr ihü ha kpàtàrà',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  */
