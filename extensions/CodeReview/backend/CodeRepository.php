@@ -113,11 +113,11 @@ class CodeRepository {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select(
 			'code_rev',
-			array( 'cr_author', 'MAX(cr_timestamp) AS time' ),
+			array( 'cr_author' ),
 			array( 'cr_repo_id' => $this->getId() ),
 			__METHOD__,
 			array( 'GROUP BY' => 'cr_author',
-				'ORDER BY' => 'time DESC', 'LIMIT' => 500 )
+				'ORDER BY' => 'cr_author', 'LIMIT' => 500 )
 		);
 		$authors = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
