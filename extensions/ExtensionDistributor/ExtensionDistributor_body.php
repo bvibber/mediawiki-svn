@@ -280,7 +280,6 @@ class ExtensionDistributorPage extends SpecialPage {
 		}
 
 		fwrite( $sock, $cmd . "\000\000\000" );
-		$encReponse = '';
 		while ( $sock && !feof( $sock ) ) {
 			$encResponse .= fread( $sock, 8192 );
 		}

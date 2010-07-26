@@ -274,7 +274,7 @@ class LuceneBuilder {
 	 * that might have been missed when the index updater daemon was broken.
 	 */
 	function rebuildDeleted( $since = null ) {
-		global $wgDBname, $options;
+		global $wgDBname;
 		$fname   = 'LuceneBuilder::rebuildDeleted';
 		
 		if( is_null( $since ) ) {
