@@ -161,6 +161,18 @@ class StreamingXMLHistoryParser{
 					$this->parseRev($reader->readOuterXML());
 				}//revision	
 		} //while
+		
+		if($this->pagelog && $this->nextLog){
+			//note: assumes more page revisions exist than log action items		
+			while ( $this->nextLog ){
+			    fputcsv( $this->outputFile, $this->nextLog );
+			    $this->md5History[] = $md5;
+			    $this->revTypes[] = new PageAction();
+			    $this->nextLog = $this->getNextLogDataLine();
+			  }
+		}
+		
+		
 		$this->writeRevisionStatus();
 		
 	}
@@ -208,8 +220,7 @@ class StreamingXMLHistoryParser{
 		);
 		$this->oldSize = $textSize;
 		
-		if($this->pagelog && $this->nextLog){
-			//note: assumes more page revisions exist than log action items		
+		if($this->pagelog && $this->nextLog){		
 			while (( $this->nextLog ) 
 				&& ( $csvData[1] > $this->nextLog[1] )){
 			    fputcsv( $this->outputFile, $this->nextLog );
