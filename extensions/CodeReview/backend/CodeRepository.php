@@ -126,6 +126,31 @@ class CodeRepository {
 		$wgMemc->set( $key, $authors, 3600 * 24 );
 		return $authors;
 	}
+	
+	public function getAuthorCount() {
+		global $wgMemc;
+		$key = wfMemcKey( 'codereview', 'authorcount', $this->getId() );
+		$authorsCount = $wgMemc->get( $key );
+		if ( is_int( $authorsCount ) ) {
+			return $authorsCount;
+		}
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->select(
+			'code_authors',
+			array( 'COUNT(cr_author) AS author_count' ),
+			array( 'cr_repo_id' => $this->getId() ),
+			__METHOD__
+		);
+
+		if ( !$row ) {
+			throw new MWException( 'Failed to load expected author count' );
+		}
+		
+		$authorsCount = $row->author_count;
+		
+		$wgMemc->set( $key, $authorsCount, 3600 * 24 );
+		return $authorsCount;
+	}
 
 	public function getTagList() {
 		global $wgMemc;
@@ -167,8 +192,9 @@ class CodeRepository {
 			),
 			__METHOD__
 		);
-		if ( !$row )
+		if ( !$row ) {
 			throw new MWException( 'Failed to load expected revision data' );
+		}
 		return CodeRevision::newFromRow( $this, $row );
 	}
 
