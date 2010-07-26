@@ -905,7 +905,7 @@ class Revision {
 		// Caching may be beneficial for massive use of external storage
 		global $wgRevisionCacheExpiry, $wgMemc;
 		$textId = $this->getTextId();
-		if( isset( $this->mWikiID ) ) {
+		if( isset( $this->mWikiID ) && $this->mWikiID !== false ) {
 			$key = wfForeignMemcKey( $this->mWikiID, null, 'revisiontext', 'textid', $textId );
 		} else {
 			$key = wfMemcKey( 'revisiontext', 'textid', $textId );
