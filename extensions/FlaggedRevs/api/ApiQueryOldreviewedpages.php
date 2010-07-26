@@ -146,6 +146,15 @@ class ApiQueryOldreviewedpages extends ApiQueryGeneratorBase {
 		}
 	}
 
+	public function getCacheMode( $params ) {
+		if ( $params['filterwatched'] == 'watched' ) {
+			// Private data
+			return 'private';
+		} else {
+			return 'public';
+		}
+	}
+
 	public function getAllowedParams() {
 		$namespaces = FlaggedRevs::getReviewNamespaces();
 		return array (

@@ -29,6 +29,7 @@
 class ApiFlagConfig extends ApiBase {
 
 	public function execute() {
+		$this->getMain()->setCacheMode( 'public' );
 		global $wgFlaggedRevTags;
 		$data = array();
 		foreach( $wgFlaggedRevTags as $tag => $params ) {

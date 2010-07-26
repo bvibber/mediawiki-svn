@@ -110,6 +110,16 @@ class ApiQueryGlobalUserInfo extends ApiQueryBase {
 		}
 	}
 
+	public function getCacheMode( $params ) {
+		if ( !is_null( $params['user'] ) ) {
+			// URL determines user, public caching is fine
+			return 'public';
+		} else {
+			// Code will fall back to $wgUser, don't cache
+			return 'private';
+		}
+	}
+
 	public function getAllowedParams() {
 		return array(
 			'user' => null,

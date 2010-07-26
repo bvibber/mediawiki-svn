@@ -244,6 +244,15 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 		}
 	}
 
+	public function getCacheMode( $params ) {
+		if ( $params['render'] ) {
+			// Rendering uses $wgUser
+			return 'anon-public-user-private';
+		} else {
+			return 'public';
+		}
+	}
+
 	public function getAllowedParams() {
 		return array (
 			'startid' => array(
