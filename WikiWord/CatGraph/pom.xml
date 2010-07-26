@@ -51,32 +51,12 @@
       </dependency>
       <dependency>
          <groupId>org.neo4j</groupId>
-         <artifactId>neo4j-lucene-index</artifactId>
-         <version>1.0</version>
-      </dependency>
-      <dependency>
-         <groupId>org.neo4j</groupId>
          <artifactId>neo4j-shell</artifactId>
          <version>1.0</version>
       </dependency>
       <dependency>
          <groupId>org.neo4j</groupId>
          <artifactId>neo4j-utils</artifactId>
-         <version>1.0</version>
-      </dependency>
-      <dependency>
-         <groupId>org.neo4j</groupId>
-         <artifactId>neo4j-rest</artifactId>
-         <version>1.0</version>
-      </dependency>
-      <dependency>
-         <groupId>org.neo4j</groupId>
-         <artifactId>neo4j-traversal</artifactId>
-         <version>1.0</version>
-      </dependency>
-      <dependency>
-         <groupId>org.neo4j</groupId>
-         <artifactId>neo4j-graph-algo</artifactId>
          <version>1.0</version>
       </dependency>
     </dependencies>

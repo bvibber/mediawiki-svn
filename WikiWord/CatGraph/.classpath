@@ -12,5 +12,8 @@
 	</classpathentry>
 	<classpathentry kind="var" path="M2_REPO/org/apache/geronimo/specs/geronimo-jta_1.1_spec/1.1.1/geronimo-jta_1.1_spec-1.1.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/neo4j/neo4j-index/1.0/neo4j-index-1.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/apache/lucene/lucene-core/2.9.1/lucene-core-2.9.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/neo4j/neo4j-commons/1.0/neo4j-commons-1.0.jar"/>
+	<classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/3.1.11/mysql-connector-java-3.1.11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
