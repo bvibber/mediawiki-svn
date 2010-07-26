@@ -1002,11 +1002,13 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 *            dialogHtml text Html of the loader msg
 	 */
 	mw.addLoaderDialog = function( dialogHtml ) {
-		$dialog = mw.addDialog( dialogHtml, dialogHtml + '<br>' + 
+		$dialog = mw.addDialog( {
+			'title' : dialogHtml, 
+			'content' : dialogHtml + '<br>' + 
 				$j('<div />')
 				.loadingSpinner()
 				.html() 
-		);
+		});
 		return $dialog;
 	}
 	
@@ -1031,62 +1033,73 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	/**
 	 * Add a (temporary) dialog window:
 	 * 
-	 * @param {String}
-	 *            title Title string for the dialog
-	 * @param {String}
-	 *            dialogHtml String to be inserted in msg box
-	 * @param {Mixed}
-	 *            buttonOption A button object for the dialog Can be a string
-	 *            for the close button
+	 * @param {Object} with following keys: 
+	 *            title: {String} Title string for the dialog
+	 *            content: {String} to be inserted in msg box
+	 *            buttons: {Object} A button object for the dialog Can be a string
+	 *            				for the close button
+	 * 			  any jquery.ui.dialog option 
 	 */
-	mw.addDialog = function ( title, dialogHtml, buttons ) {
-		$j( '#mwTempLoaderDialog' ).remove();
+	mw.addDialog = function ( options ) {
+		// Remove any other dialog
+		$j( '#mwTempLoaderDialog' ).remove();			
 		
-		// Append the style free loader ontop:
+		if( !options){
+			options = {};
+		}
+	
+		// Extend the default options with provided options
+		var options = $j.extend({
+			'bgiframe': true,
+			'draggable': true,
+			'resizable': false,
+			'modal': true
+		}, options );
+		
+		if( ! options.title || ! options.content ){
+			mw.log("Error: mwEmbed addDialog missing required options ( title, content ) ")
+			return ;
+		}
+		
+		// Append the dialog div on top:
 		$j( 'body' ).append( 
 			$j('<div />') 
 			.attr( {
 				'id' : "mwTempLoaderDialog",
-				'title' : title
+				'title' : options.title
 			})
 			.css({
 				'display': 'none'
 			})
-			.html( dialogHtml )
+			.append( options.content )
 		);
+	
+		// Build the uiRequest
+		var uiRequest = [ '$j.ui.dialog' ];
+		if( options.draggable ){
+			uiRequest.push( '$j.ui.draggable' )
+		}
+		if( options.resizable ){
+			uiRequest.push( '$j.ui.resizable' );
+		}
 		
 		// Special button string 
-		if ( typeof buttons == 'string' ) {
-			var buttonMsg = buttons;
+		if ( typeof options.buttons == 'string' ) {
+			var buttonMsg = options.buttons;
 			buttons = { };
-			buttons[ buttonMsg ] = function() {
+			options.buttons[ buttonMsg ] = function() {
 				$j( '#mwTempLoaderDialog' ).dialog( 'close' );
 			}
-		} 
+		}				
 		
 		// Load the dialog resources
 		mw.load([
 			[
 				'$j.ui'
 			],
-			[
-				'$j.ui.dialog',
-				'$j.ui.draggable'
-			]
+			uiRequest
 		], function() {
-			// Set width to default 400 if mwTempLoaderDialog does not have an
-			// inherit width
-			var width = ( $j( '#mwTempLoaderDialog' ).width() ) ?
-						$j( '#mwTempLoaderDialog' ).width() + 12 : 
-						400;
-			$j( '#mwTempLoaderDialog' ).dialog( {
-				'bgiframe': true,
-				'draggable': true,
-				'resizable': false,
-				'modal': true,
-				'width': width,
-				'buttons': buttons
-			} );
+			$j( '#mwTempLoaderDialog' ).dialog( options );
 		} );
 		return $j( '#mwTempLoaderDialog' );
 	}

@@ -50,7 +50,7 @@ var mwEnabledModuleList = [
 	'ClipEdit',
 	'EmbedPlayer',
 	'ApiProxy',
-	'SequenceEdit',
+	'Sequencer',
 	'TimedText',
 	'SmilPlayer',
 	'Playlist',	
