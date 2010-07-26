@@ -26,7 +26,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 	
 	
 	public function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion, $wgValidSurveys;
+		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion, $wgValidSurveys, $wgSimpleSurveyRedirectURL;
 		$this->setHeaders();
 		// Set page title
 		$wgOut->setPageTitle( wfMsg( 'simple-survey-title' )  );
@@ -38,6 +38,10 @@ class SpecialSimpleSurvey extends SpecialPage {
 					$wgOut->addHtml("<b>" . wfMsg( 'simple-survey-confirm' ). "</b>");
 				}
 					//forward to new page
+				if($wgSimpleSurveyRedirectURL){
+					$wgRequest->response()->header("Location: $wgSimpleSurveyRedirectURL");
+				}	
+				
 				return;
 		}
 		

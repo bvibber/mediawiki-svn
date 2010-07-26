@@ -10,6 +10,7 @@ $messages['en'] = array(
 	'simple-survey-invalid' => 'That is not a valid survey at this time',
 	'simple-survey-back' => 'Go back',
     'simple-survey-title' => 'Simple Survey',
+	'simple-survey-confirm' => 'Thanks! Your data has been submited.',
 	
 	/*vitals 07 2010 */
 	'simple-survey-intro-vitals-07-2010' => 'This is a quick survey to give us a better idea of who you are',
@@ -17,8 +18,8 @@ $messages['en'] = array(
 	
 	'vitals-07-2010-question-use' => 'How often do you use Wikipedia?',
 	'vitals-07-2010-question-edit' => 'Do you edit Wikipedia?',
-	'vitals-07-2010-question-nonprofit' => 'Did you know Wikipedia is a non-profit?',
-	'vitals-07-2010-question-wikimedia'=> 'Please describe your knowledge of the Wikimedia Foundation, the organization that hosts Wikipedia and its sitser projects such as Wiktionary and Wikiquote:',
+	'vitals-07-2010-question-nonprofit' => 'Did you know Wikipedia is a non-profit project?',
+	'vitals-07-2010-question-wikimedia'=> 'Which of these describes your knowledge of the Wikimedia Foundation, the organization that hosts Wikipedia and its sister projects such as Wiktionary and Wikiquote:',
 	'vitals-07-2010-question-age'=> 'Please tell us your age',
 	'vitals-07-2010-question-programming' => 'Please tell us which one of these describes you:',
 	'vitals-07-2010-question-gender'=> 'Please tell us your gender',

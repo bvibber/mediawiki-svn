@@ -1,5 +1,6 @@
 <?php
 
+$wgSimpleSurveyRedirectURL = "";
 
 $wgValidSurveys[] = 'vitals-07-2010';
 
