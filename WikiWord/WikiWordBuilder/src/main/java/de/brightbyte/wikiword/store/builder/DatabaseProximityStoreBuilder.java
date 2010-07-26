@@ -10,9 +10,9 @@ import de.brightbyte.db.DatabaseTable;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.Inserter;
 import de.brightbyte.db.RelationTable;
+import de.brightbyte.job.ChunkedProgressRateTracker;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.processor.ChunkedProgressRateTracker;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 
 public class DatabaseProximityStoreBuilder 

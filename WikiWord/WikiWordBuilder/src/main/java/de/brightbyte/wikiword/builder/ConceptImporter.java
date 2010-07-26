@@ -7,6 +7,7 @@ import java.util.Set;
 
 import de.brightbyte.application.Arguments;
 import de.brightbyte.data.MultiMap;
+import de.brightbyte.job.ChunkedProgressRateTracker;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.ConceptType;
@@ -17,7 +18,6 @@ import de.brightbyte.wikiword.RevisionInfo;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
-import de.brightbyte.wikiword.processor.ChunkedProgressRateTracker;
 import de.brightbyte.wikiword.schema.AliasScope;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;

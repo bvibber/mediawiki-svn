@@ -13,6 +13,7 @@ import de.brightbyte.data.ChunkyBitSet;
 import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.io.LogOutput;
 import de.brightbyte.io.Output;
+import de.brightbyte.job.ChunkedProgressRateTracker;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.NamespaceSet;
