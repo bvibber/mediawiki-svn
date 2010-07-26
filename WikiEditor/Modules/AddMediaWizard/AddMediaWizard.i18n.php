@@ -254,6 +254,13 @@ $messages['krc'] = array(
 	'wikieditor-addMediaWizard-preference' => '«Медиа къошууну мастери» гаджетни джукълат',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Donn et <i lang="en">Gadget</i> för der Medije-Assistänt aanschallde',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

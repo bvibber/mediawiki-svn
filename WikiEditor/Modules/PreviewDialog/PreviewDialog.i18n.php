@@ -215,12 +215,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author ArnoLagrange
  * @author Lucas
  * @author Marcos
  * @author Yekrats
  * @author Ziko
  */
 $messages['eo'] = array(
+	'wikieditor-previewDialog-preference' => 'Ebligi antaŭprezentan dialogon',
 	'wikieditor-previewDialog-tab' => 'Antaŭvido',
 	'wikieditor-previewDialog-loading' => 'Ŝargante...',
 );

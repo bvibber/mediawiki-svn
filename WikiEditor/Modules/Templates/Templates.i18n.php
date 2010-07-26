@@ -261,6 +261,13 @@ $messages['krc'] = array(
 	'wikieditor-templates-preference' => 'Шаблонланы джашырыу амалны джандыр',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor-templates-preference' => 'Donn et Schablone-Zosammefallde zohlohße',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

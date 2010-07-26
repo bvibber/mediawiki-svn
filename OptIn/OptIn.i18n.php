@@ -3092,6 +3092,13 @@ Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [htt
 <div style="clear:both"></div>',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'optin-title-optedout' => 'Nwàne Beta',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
