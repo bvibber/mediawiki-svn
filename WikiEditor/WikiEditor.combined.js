@@ -91,7 +91,8 @@ $j(document).ready( function() {
 							'nl': [2, -502],
 							'pt': [2, -358],
 							'pt-br': [2, -358],
-							'pl': [2, -142]
+							'pl': [2, -142],
+							'ml': [2, -142]
 						},
 						icon: {
 							'default': 'format-bold.png',
@@ -108,7 +109,8 @@ $j(document).ready( function() {
 							'pt': 'format-bold-N.png',
 							'pt-br': 'format-bold-N.png',
 							'pl': 'format-bold-B.png',
-							'ru': 'format-bold-ru.png'
+							'ru': 'format-bold-ru.png',
+							'ml': 'format-bold-B.png'
 						},
 						action: {
 							type: 'encapsulate',
@@ -138,7 +140,8 @@ $j(document).ready( function() {
 							'pt': [2, -862],
 							'pt-br': [2, -862],
 							'pl': [2, -862],
-							'ru': [2, -934]
+							'ru': [2, -934],
+							'ml': [2, -862]
 						},
 						icon: {
 							'default': 'format-italic.png',
@@ -155,7 +158,8 @@ $j(document).ready( function() {
 							'pt': 'format-italic-I.png',
 							'pt-br': 'format-italic-I.png',
 							'pl': 'format-italic-I.png',
-							'ru': 'format-italic-K.png'
+							'ru': 'format-italic-K.png',
+							'ml': 'format-italic-I.png'
 						},
 						action: {
 							type: 'encapsulate',
