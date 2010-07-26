@@ -62,12 +62,10 @@ END;
 			$title = Title::newFromText( $page->getName() );
 			$job_params['text'] = $page->createText();
 			$jobs[] = new DTImportJob( $title, $job_params );
-			// $text .= "<p>{$page->getName()}:</p>\n";
-			// $text .= "<pre>{$page->createText()}</pre>\n";
 		}
 		Job::batchInsert( $jobs );
 		global $wgLang;
-		$text .= wfMsgExt( 'dt_import_success', $wgLang->formatNum( count( $jobs ) ), 'XML' );
+		$text .= wfMsgExt( 'dt_import_success', array( 'parse' ),  $wgLang->formatNum( count( $jobs ) ), 'XML' );
 		return $text;
 	}
 }
