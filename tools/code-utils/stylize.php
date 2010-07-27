@@ -293,7 +293,7 @@ class Stylizer {
 
 	function fixComment( $s ) {
 		// Fix single-line comments with no leading whitespace
-		if ( preg_match( '!^(#|//)(\S.*)$!s', $s, $m ) ) {
+		if ( preg_match( '!^(#+|//+)(\S.*)$!s', $s, $m ) ) {
 			$s = $m[1] . ' ' . $m[2];
 		}
 		return $s;
