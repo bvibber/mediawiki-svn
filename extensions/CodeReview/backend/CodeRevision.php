@@ -258,7 +258,10 @@ class CodeRevision {
 		$affectedRevs = array();
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
 			foreach ( $m[1] as $rev ) {
-				$affectedRevs[] = intval( $rev );
+				$affectedRev = intval( $rev );
+				if ( $affectedRev != $this->mId ) {
+					$affectedRevs[] = $affectedRev;
+				}
 			}
 		}
 		// Also, get previous revisions that have bugs in common...
@@ -529,7 +532,9 @@ class CodeRevision {
 			__METHOD__
 		);
 		while ( $row = $res->fetchObject() ) {
-			$refs[] = $row;
+			if ( $this->mId != intval( $row->cr_id ) ) {
+				$refs[] = $row;
+			}
 		}
 		return $refs;
 	}
