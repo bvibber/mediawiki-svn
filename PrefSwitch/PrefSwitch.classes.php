@@ -5,7 +5,7 @@ class PrefSwitchSurvey {
 	/* Private Static Members */
 	
 	// Correlation between names of field types and implementation classes
-	private static $fieldTypes = array(
+	protected static $fieldTypes = array(
 		'select' => 'PrefSwitchSurveyFieldSelect',
 		'radios' => 'PrefSwitchSurveyFieldRadios',
 		'checks' => 'PrefSwitchSurveyFieldChecks',
