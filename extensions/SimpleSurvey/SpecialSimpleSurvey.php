@@ -16,8 +16,27 @@ class SpecialSimpleSurvey extends SpecialPage {
 	private $originLink = '';
 	private $originLinkUrl = '';
 	private $originFullUrl = '';
+	private $tokenToCheck = '';
 
 	/* Functions */
+	
+	/**
+	 * Quick token matching wrapper for form processing
+	 */
+	public function checkToken() {
+		global $wgRequest;
+		$this->tokenToCheck = $_SESSION['wsSimpleSurveyToken'];
+		if($this->tokenToCheck != "" &&
+			 ( $wgRequest->getVal( 'token' ) == $this->tokenToCheck ) ){
+			return true;
+		}
+		else return false;
+	}
+	
+	public function setToken(){
+		$this->tokenToCheck = wfGenerateToken( array( $this, time() ) );
+		$_SESSION['wsSimpleSurveyToken'] = $this->tokenToCheck;
+	}
 	
 	public function __construct() {
 		parent::__construct( 'SimpleSurvey' );
@@ -33,7 +52,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 		$surveyName = $wgRequest->getVal("survey");
 		
 		if($wgRequest->wasPosted()){
-				if($surveyName && in_array($surveyName,$wgValidSurveys )){
+				if($surveyName && in_array($surveyName,$wgValidSurveys ) && $this->checkToken() ){
 					SimpleSurvey::save( $surveyName, $wgPrefSwitchSurveys[$surveyName] );
 					$wgOut->addHtml("<b>" . wfMsg( 'simple-survey-confirm' ). "</b>");
 				}
@@ -45,6 +64,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 				return;
 		}
 		
+		$this->setToken();
 		// Get the origin from the request
 		$par = $wgRequest->getVal( 'from', $par );
 		$this->originTitle = Title::newFromText( $par );
@@ -104,6 +124,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 			)
 		);
 		$html .= Xml::hidden( 'survey', $mode );
+		$html .= Xml::hidden( 'token', $this->tokenToCheck);
 		// Render a survey
 		$html .= SimpleSurvey::render(
 			$wgPrefSwitchSurveys[$mode]['questions']
