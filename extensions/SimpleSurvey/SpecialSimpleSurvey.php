@@ -51,8 +51,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 		// $this->originTitle should never be Special:Userlogout
 		if (
 			$this->originTitle &&
-			$this->originTitle->getNamespace() == NS_SPECIAL &&
-			SpecialPage::resolveAlias( $this->originTitle->getText() ) == 'Userlogout'
+			$this->originTitle->isSpecial('Userlogout')
 		) {
 			$this->originTitle = null;
 		}
@@ -74,8 +73,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 		// Handle various modes
 		
 		$this->render( $wgRequest->getVal("survey") );
-		
-		
+	
 		$wgOut->addHtml( '</div>' );
 	}
 	
@@ -85,39 +83,39 @@ class SpecialSimpleSurvey extends SpecialPage {
 		global $wgUser, $wgOut, $wgPrefSwitchSurveys, $wgValidSurveys;
 		// Make sure links will retain the origin
 		$query = array(	'from' => $this->origin, 'fromquery' => $this->originQuery );
-		if ( isset( $wgPrefSwitchSurveys[$mode] )  && in_array($mode, $wgValidSurveys) ){
-			$wgOut->addWikiMsg( "simple-survey-intro-{$mode}" );
-			
-			// Setup a form
-			$html = Xml::openElement(
-				'form', array(
-					'method' => 'post',
-					'action' => $this->getTitle()->getLinkURL( $query ),
-					'class' => 'simple-survey',
-					'id' => "simple-survey-{$mode}"
-				)
-			);
-			$html .= Xml::hidden( 'survey', $mode );
-			// Render a survey
-			$html .= SimpleSurvey::render(
-				$wgPrefSwitchSurveys[$mode]['questions']
-			);
-			// Finish out the form
-			$html .= Xml::openElement( 'dt', array( 'class' => 'prefswitch-survey-submit' ) );
-			$html .= Xml::submitButton(
-				wfMsg( $wgPrefSwitchSurveys[$mode]['submit-msg'] ),
-				array( 'id' => "simple-survey-submit-{$mode}", 'class' => 'prefswitch-survey-submit' )
-			);
-			$html .= Xml::closeElement( 'dt' );
-			$html .= Xml::closeElement( 'form' );
-			$wgOut->addHtml( $html );
-		}
-		else{
+		
+		if ( !isset( $wgPrefSwitchSurveys[$mode] )  && !in_array($mode, $wgValidSurveys) ){
 			$wgOut->addWikiMsg( "simple-survey-invalid" );
 			if ( $this->originTitle ) {	
 				$wgOut->addHTML( wfMsg( "simple-survey-back", $this->originLink ) );
 			}
+			return;
 		}
 		
+		$wgOut->addWikiMsg( "simple-survey-intro-{$mode}" );
+		
+		// Setup a form
+		$html = Xml::openElement(
+			'form', array(
+				'method' => 'post',
+				'action' => $this->getTitle()->getLinkURL( $query ),
+				'class' => 'simple-survey',
+				'id' => "simple-survey-{$mode}"
+			)
+		);
+		$html .= Xml::hidden( 'survey', $mode );
+		// Render a survey
+		$html .= SimpleSurvey::render(
+			$wgPrefSwitchSurveys[$mode]['questions']
+		);
+		// Finish out the form
+		$html .= Xml::openElement( 'dt', array( 'class' => 'prefswitch-survey-submit' ) );
+		$html .= Xml::submitButton(
+			wfMsg( $wgPrefSwitchSurveys[$mode]['submit-msg'] ),
+			array( 'id' => "simple-survey-submit-{$mode}", 'class' => 'prefswitch-survey-submit' )
+		);
+		$html .= Xml::closeElement( 'dt' );
+		$html .= Xml::closeElement( 'form' );
+		$wgOut->addHtml( $html );	
 	}
 }

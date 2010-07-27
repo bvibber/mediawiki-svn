@@ -1,16 +1,6 @@
 <?php 
 class SimpleSurvey extends PrefSwitchSurvey {
 	// Correlation between names of field types and implementation classes
-	private static $fieldTypes = array(
-		'select' => 'PrefSwitchSurveyFieldSelect',
-		'radios' => 'PrefSwitchSurveyFieldRadios',
-		'checks' => 'PrefSwitchSurveyFieldChecks',
-		'boolean' => 'PrefSwitchSurveyFieldBoolean',
-		'dimensions' => 'PrefSwitchSurveyFieldDimensions',
-		'text' => 'PrefSwitchSurveyFieldText',
-		'smallinput' => 'PrefSwitchSurveyFieldSmallInput',
-	);
-	
 	/* Static Functions */
 	
 	/* update schema*/
@@ -112,7 +102,7 @@ class SimpleSurvey extends PrefSwitchSurvey {
 					'pss_name' => $name,
 					'pss_question' => "logged_in",
 					'pss_answer' => $wgUser->isLoggedIn()?"yes":"no",
-					'pss_answer_data' => isset($_SERVER['REMOTE_ADDR'])?$_SERVER['REMOTE_ADDR']:null,
+					'pss_answer_data' => wfGetIP(),
 				),
 				__METHOD__
 			);
