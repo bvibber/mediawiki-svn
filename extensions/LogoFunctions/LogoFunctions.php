@@ -41,9 +41,9 @@ function efLogoFunctions_Setup( &$parser ) {
  * @todo: i18n the magic word
 */
 function efLogoFunctions_Magic( &$magicWords, $langCode ) {
-        $magicWords['setlogo'] = array( 0, 'setlogo' );
-		$magicWords['getlogo'] = array( 0, 'getlogo' );
-        return true;
+	$magicWords['setlogo'] = array( 0, 'setlogo' );
+	$magicWords['getlogo'] = array( 0, 'getlogo' );
+	return true;
 }
  
 function efSetLogo_Render( $parser, $logo = '' ) {
@@ -63,6 +63,6 @@ function efSetLogo_Render( $parser, $logo = '' ) {
 }
 
 function efGetLogo_Render( $parser ) {
-		global $wgLogo;
-		return $wgLogo;
+	global $wgLogo;
+	return $wgLogo;
 }
