@@ -31,7 +31,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'WhiteListEdit',
-	'version'        => 'v0.11.2',
+	'version'        => 'v0.12',
 	'author'         => array('Paul Grinberg', 'Mike Sullivan'),
 	'email'          => 'gri6507 at yahoo dot com, ms-mediawiki AT umich DOT edu',
 	'descriptionmsg' => 'whitelist-desc',
@@ -39,10 +39,8 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 # these are the groups and the rights used within this extension
-if ( !isset( $wgWhiteListRestrictedGroup ) )
-	$wgWhiteListRestrictedGroup = 'restricted';
-if ( !isset( $wgWhiteListManagerGroup ) )
-	$wgWhiteListManagerGroup = 'manager';
+$wgWhiteListRestrictedGroup = 'restricted';
+$wgWhiteListManagerGroup = 'manager';
 
 # Define groups and rights
 if ( !isset( $wgGroupPermissions['*']['usewhitelist'] ) )
@@ -77,18 +75,15 @@ if ( !isset( $wgWhiteListOverride['never']['edit'] ) )
 	$wgWhiteListOverride['never']['edit'] = array();
 
 # Define default case insensitivity setting
-if ( !isset( $wgWhiteListWildCardInsensitive ) )
-	$wgWhiteListWildCardInsensitive = true;
+$wgWhiteListWildCardInsensitive = true;
 
 # Define default user page setting
-if ( !isset( $wgWhiteListAllowUserPages ) )
-	$wgWhiteListAllowUserPages = true;
+$wgWhiteListAllowUserPages = true;
 
 # If you want the pretty calendar feature, you must install the Extension:Usage_Statistics.
 # If you do not want that feature, then set the following variable to false.
 # NOTE: you do not actually need the gnuplot extension for the functionality needed by this extension
-if ( !isset( $wgWhiteListUsePrettyCalendar ) )
-	$wgWhiteListUsePrettyCalendar = true;
+$wgWhiteListUsePrettyCalendar = true;
 
 $dir = dirname( __FILE__ ) . '/';
 
