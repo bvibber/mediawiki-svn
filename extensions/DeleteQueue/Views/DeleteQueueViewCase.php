@@ -143,7 +143,7 @@ class DeleteQueueViewCase extends DeleteQueueView {
 				);
 
 				if ( $vote['current'] == 0 )
-					$thisvote = Xml::tags( 's', null, $thisvote );
+					$thisvote = Xml::tags( 'del', null, $thisvote );
 
 				$userVotes[] = Xml::tags( 'li', array( 'class' => "mw-deletequeue-vote-$type" ), $thisvote );
 			}
