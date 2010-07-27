@@ -33,6 +33,7 @@ $wgHooks['LanguageGetMagic'][] = 'efLogoFunctions_Magic';
  
 function efLogoFunctions_Setup( &$parser ) {
 	$parser->setFunctionHook( 'setlogo', 'efSetLogo_Render' );
+	$parser->setFunctionHook( 'getlogo', 'efGetLogo_Render' );
 	return true;
 }
 
@@ -41,6 +42,7 @@ function efLogoFunctions_Setup( &$parser ) {
 */
 function efLogoFunctions_Magic( &$magicWords, $langCode ) {
         $magicWords['setlogo'] = array( 0, 'setlogo' );
+		$magicWords['getlogo'] = array( 0, 'getlogo' );
         return true;
 }
  
@@ -58,4 +60,9 @@ function efSetLogo_Render( $parser, $logo = '' ) {
 	);
 	$thumb = $imageobj->transform( $thumb_arr );
 	$wgLogo = $thumb->getUrl();
+}
+
+function efGetLogo_Render( $parser ) {
+		global $wgLogo;
+		return $wgLogo;
 }
