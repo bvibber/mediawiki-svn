@@ -57,32 +57,33 @@ function parseRuleTags($ruleTagValues)
    return new InflectionRule($ruleAttributes);
 }
 
-function renderInflection($input, $argv) {
-	global $wgParser, $wgUser;
-
-	$key = $wgParser->replaceVariables($input, end( $wgParser->mArgStack ));
-	if(array_key_exists("lang", $argv))
+function renderInflection($input, $argv, $parser, $frame) {
+	$key = $parser->replaceVariables( $input, $frame );
+	if( array_key_exists( "lang", $argv ) ) {
 		$language = $argv["lang"];
-	else
+	} else {
 		return "?<!-- missing required \"lang\" parameter. -->";
-	if(array_key_exists("pos", $argv))
+	}
+	if ( array_key_exists("pos", $argv) ) {
 		$partOfSpeech = $argv["pos"];
-	else
+	} else {
 		return "?<!-- missing required \"pos\" parameter. -->";
-	if(array_key_exists("generate", $argv))
+	}
+	if ( array_key_exists( "generate", $argv ) ) {
 		$inflectionTypeToGenerate = $argv["generate"];
-	else
+	} else {
 		return "?<!-- missing required \"generate\" parameter. -->";
+	}
 
-	$entry = $wgParser->mTitle->getText();
+	$entry = $parser->mTitle->getText();
 
 	try {
-		$rules = readRules($language, $partOfSpeech);
-		foreach($rules as $rule) {
-			if($rule->entryMatchPattern)
+		$rules = readRules( $language, $partOfSpeech );
+		foreach ( $rules as $rule ) {
+			if ( $rule->entryMatchPattern )
 			{
 				if(!$rule->inflKeyPattern ||
-					($rule->inflKeyPattern && preg_match("/" . $rule->inflKeyPattern . "/", $wgParser->replaceVariables($key, $wgParser->mArgStack))))
+					($rule->inflKeyPattern && preg_match("/" . $rule->inflKeyPattern . "/", $parser->replaceVariables($key, $frame) ) ) )
 				{
 					$inflectedForm = preg_replace(
 						"/" . $rule->entryMatchPattern . "/",
@@ -91,7 +92,7 @@ function renderInflection($input, $argv) {
 					if($count >= 1)
 						return $inflectedForm;
 				}
-			} elseif($rule->inflKeyPattern) {
+			} elseif ($rule->inflKeyPattern) {
 				$inflectedForm = preg_replace(
 					"/" . $rule->inflKeyPattern . "/",
 					$rule->generationReplacementPattern[$inflectionTypeToGenerate],
