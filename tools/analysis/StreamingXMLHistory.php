@@ -77,6 +77,10 @@ class StreamingXMLHistoryParser{
 	public $pagelog;
 	public $pagelogFile;
 	public $nextLog;
+	public $articleName;
+	
+	//page log reader
+	public $logreader;
 	
 	//md5 hashes of the revision texts
 	public $md5History;
@@ -95,7 +99,8 @@ class StreamingXMLHistoryParser{
 		$this->revTypes = array();
 		$this->pagelog = $pagelog;
 		if($pagelog){
-			$this->pagelogFile = fopen($this->pagelog, "r");
+			$this->logreader = new XMLReader();
+			$this->logreader->open($this->pagelog);
 		}
 		$this->oldSize = 0;
 	}
@@ -140,7 +145,8 @@ class StreamingXMLHistoryParser{
 			"new?",
 			"edit size",
 			"net size change",
-			"anonymous?"
+			"anonymous?",
+			"log action"
 		);
 		fputcsv($this->outputFile, $csvData);
 	}
@@ -150,9 +156,22 @@ class StreamingXMLHistoryParser{
 		$reader->open($this->inputFileName);		
 		$this->writeCSVHeader();
 		$current_rev = 0;
+		
+		//get article title
+		while($reader->read()){
+			if($reader->nodeType == XMLREADER::ELEMENT
+				&& $reader->localName == "title"){
+					$this->articleName = $reader->readInnerXml();
+					echo "Reading ".$this->articleName."\n";
+					break;
+				}
+		}
+		
+		//get first log
 		if($this->pagelog){
 			$this->nextLog = $this->getNextLogDataLine();
 		}
+		
 		//read each revision
 		while ( $reader->read()){
 			if ( $reader->nodeType == XMLREADER::ELEMENT
@@ -178,14 +197,36 @@ class StreamingXMLHistoryParser{
 	}
 	
 	public function getNextLogDataLine(){
-		$csvArray = null;
-		// a CSV array for writing, make sure $csvArray[1] = timestamp
-		return $csvArray; 
+		while($this->logreader->read()){
+			if ($this->logreader->nodeType == XMLREADER::ELEMENT
+				&& $this->logreader->localName == "logitem") {
+				$logitem = new SimpleXMLElement($this->logreader->readOuterXml());
+				if(strcmp($logitem->logtitle, $this->articleName)==0){
+					return array(
+						$logitem->id,
+						strtotime($logitem->timestamp),
+						$logitem->contributor->username,
+						"",
+						"",
+						"",
+						"",
+						"",
+						"",
+						$logitem->action
+					);
+				}
+			}
+		}
 	}
 	
 	
 	//foreach revision...
 	public function parseRev($xmlTEXT){
+		
+		if(!$xmlTEXT){
+			return;
+		}
+		
 		$revision = new SimpleXMLElement($xmlTEXT);
 		$textSize = strlen($revision->text);
 		
@@ -193,17 +234,6 @@ class StreamingXMLHistoryParser{
 		$isNew = "no";
 		
 		$revertIndex = array_search($md5, $this->md5History);
-		
-		if($revertIndex === FALSE ){
-			$isNew = 'yes';
-			$this->revTypes[] = new Edit(true);
-		}
-		else{
-			$revert = new Revert(count($this->revTypes), $this->revTypes, true, $revertIndex);
-			$this->revTypes[] = $revert;
-			$revert->updateHistory();
-		}
-		$this->md5History[] = $md5;
 		
 		$csvData = array(
 			$revision->id,
@@ -216,7 +246,8 @@ class StreamingXMLHistoryParser{
 			$isNew,
 			$textSize,
 			$textSize - $this->oldSize,
-			isset($revision->contributor->username)? "no":"yes"
+			isset($revision->contributor->username)? "no":"yes",
+			""
 		);
 		$this->oldSize = $textSize;
 		
@@ -230,6 +261,18 @@ class StreamingXMLHistoryParser{
 			  }
 		}
 		fputcsv($this->outputFile, $csvData);
+		
+		if($revertIndex === FALSE ){
+			$isNew = 'yes';
+			$this->revTypes[] = new Edit(true);
+		}
+		else{
+			$revert = new Revert(count($this->revTypes), $this->revTypes, true, $revertIndex);
+			$this->revTypes[] = $revert;
+			$revert->updateHistory();
+		}
+		$this->md5History[] = $md5;
+		
 	}
 	
 	
