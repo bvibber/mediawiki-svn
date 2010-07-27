@@ -31,11 +31,11 @@ class CodeRevisionListView extends CodeView {
 		}
 
 		$this->showForm();
-		
+
 		// Get the total count across all pages
 		$dbr = wfGetDB( DB_SLAVE );
 		$revCount = $this->getRevCount( $dbr );
-		
+
 		$pager = $this->getPager();
 
 		// Build batch change interface as needed
@@ -169,11 +169,11 @@ class CodeRevisionListView extends CodeView {
 	function getPager() {
 		return new SvnRevTablePager( $this );
 	}
-	
+
 	/**
 	 * Get total number of revisions for this revision view
-	 * 
-	 * @return int Number of revisions 
+	 *
+	 * @return int Number of revisions
 	 */
 	function getRevCount( $dbr ) {
 		$tables = array( 'code_rev' );
@@ -199,7 +199,7 @@ class CodeRevisionListView extends CodeView {
 		else
 			return 0;
 	}
-	
+
 	/**
 	 * @todo Document
 	 */
@@ -288,7 +288,7 @@ class SvnRevTablePager extends SvnTablePager {
 		}
 		return $fields;
 	}
-	
+
 	function formatValue( $name, $value ) { } // unused
 
 	function formatRevValue( $name, $value, $row ) {

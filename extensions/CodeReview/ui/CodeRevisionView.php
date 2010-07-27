@@ -181,7 +181,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return false;
 	}
-	
+
 	protected function canPostComments() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'codereview-post-comment' ) && !$wgUser->isBlocked();
@@ -324,7 +324,7 @@ class CodeRevisionView extends CodeView {
 			return $hilite->render( $diff );
 		}
 	}
-	
+
 	protected function formatImgDiff() {
 		global $wgCodeReviewImgRegex;
 		// Get image diffs
@@ -356,7 +356,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return $html;
 	}
-	
+
 	protected function formatImgCell( $path, $rev, $message ) {
 		$viewvc = $this->mRepo->getViewVcBase();
 		$safePath = wfUrlEncode( $path );
@@ -412,7 +412,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return "<ul class='mw-codereview-changes'>$changes</ul>";
 	}
-	
+
 	protected function formatReferences() {
 		$refs = implode( "\n",
 			array_map( array( $this, 'formatReferenceInline' ), $this->mRev->getReferences() )
@@ -472,7 +472,7 @@ class CodeRevisionView extends CodeView {
 		$line .= "]</i>";
 		return "<li>$line</li>";
 	}
-	
+
 	protected function formatReferenceInline( $row ) {
 		global $wgLang;
 		$rev = intval( $row->cr_id );

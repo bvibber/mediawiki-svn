@@ -31,8 +31,11 @@ class CodeRevision {
 
 					$tmp = array();
 					foreach ( $common as $k => $v ) {
-						if ( $v == $compare[$k] ) $tmp[] = $v;
-						else break;
+						if ( $v == $compare[$k] ) {
+							$tmp[] = $v;
+						} else {
+							break;
+						}
 					}
 					$common = $tmp;
 				}
@@ -45,8 +48,8 @@ class CodeRevision {
 
 		// Check for ignored paths
 		global $wgCodeReviewDeferredPaths;
-		if( isset( $wgCodeReviewDeferredPaths[ $repo->getName() ] ) ) {
-			foreach( $wgCodeReviewDeferredPaths[ $repo->getName() ] as $defer ) {
+		if ( isset( $wgCodeReviewDeferredPaths[ $repo->getName() ] ) ) {
+			foreach ( $wgCodeReviewDeferredPaths[ $repo->getName() ] as $defer ) {
 				if ( preg_match( $defer, $rev->mCommonPath ) ) {
 					$rev->mStatus = 'deferred';
 					break;
@@ -88,10 +91,10 @@ class CodeRevision {
 	}
 
 	/**
-	 * Like getIdString(), but if more than one repository is defined 
+	 * Like getIdString(), but if more than one repository is defined
 	 * on the wiki then it includes the repo name as a prefix to the revision ID
 	 * (separated with a period).
-	 * This ensures you get a unique reference, as the revision ID alone can be 
+	 * This ensures you get a unique reference, as the revision ID alone can be
 	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
 	 * defined then this returns the same as getIdString() as there is no ambiguity.
 	 */
@@ -179,7 +182,7 @@ class CodeRevision {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Quickie protection against huuuuuuuuge batch inserts
 	 */
@@ -313,7 +316,9 @@ class CodeRevision {
 			foreach ( $res as $row ) {
 				$user = $this->mRepo->authorWikiUser( $row->cr_author );
 				// User must exist on wiki and have a valid email addy
-				if ( !$user || !$user->canReceiveEmail() ) continue;
+				if ( !$user || !$user->canReceiveEmail() ) {
+					continue;
+				}
 				// Send message in receiver's language
 				$lang = array( 'language' => $user->getOption( 'language' ) );
 				$user->sendMail(
@@ -508,7 +513,7 @@ class CodeRevision {
 		}
 		return $users;
 	}
-	
+
 	public function getReferences() {
 		$refs = array();
 		$dbr = wfGetDB( DB_SLAVE );

@@ -66,7 +66,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 			$wgOut->addWikiMsg( 'code-author-badtoken' );
 			return;
 		}
-		
+
 		if ( strlen( $this->mTarget ) && $wgRequest->getCheck( 'newname' ) ) {
 			$user = User::newFromName( $this->mTarget, false );
 			if ( !$user || !$user->getId() ) {

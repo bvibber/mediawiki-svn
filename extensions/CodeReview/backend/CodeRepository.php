@@ -181,12 +181,12 @@ class CodeRepository {
 	}
 
 	/**
-	 * Like getRevIdString(), but if more than one repository is defined 
+	 * Like getRevIdString(), but if more than one repository is defined
 	 * on the wiki then it includes the repo name as a prefix to the revision ID
 	 * (separated with a period).
-	 * This ensures you get a unique reference, as the revision ID alone can be 
+	 * This ensures you get a unique reference, as the revision ID alone can be
 	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
-	 * defined then this returns the same as getRevIdString() as there 
+	 * defined then this returns the same as getRevIdString() as there
 	 * is no ambiguity.
 	 */
 	public function getRevIdStringUnique( $id ) {
@@ -267,7 +267,7 @@ class CodeRepository {
 		wfProfileOut( __METHOD__ );
 		return $data;
 	}
-	
+
 	/**
 	 * Set diff cache (for import operations)
 	 * @param $codeRev CodeRevision
@@ -394,7 +394,7 @@ class CodeRepository {
 			$res = false;
 		return self::$userLinks[$author] = $res;
 	}
-	
+
 	/*
 	 * returns an author name if $name wikiuser has an author associated,
 	 * or false
@@ -402,7 +402,7 @@ class CodeRepository {
 	public function wikiUserAuthor( $name ) {
 		if ( isset( self::$authorLinks[$name] ) )
 			return self::$authorLinks[$name];
-	
+
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->selectField(
 			'code_authors',

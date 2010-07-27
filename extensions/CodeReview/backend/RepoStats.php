@@ -4,7 +4,7 @@ class RepoStats {
 	private $repo;
 
 	public $time;
-	
+
 	// Statistics
 	public $revisions,
 		$authors,
