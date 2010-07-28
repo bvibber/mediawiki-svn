@@ -89,8 +89,6 @@ class HTMLForm {
 	}
 
 	function show() {
-		$html = '';
-
 		self::addJS();
 
 		// Load data from the request.
@@ -540,8 +538,6 @@ class HTMLIntField extends HTMLTextField {
 		if ( intval( $value ) != $value ) {
 			return wfMsgExt( 'htmlform-int-invalid', 'parse' );
 		}
-
-		$in_range = true;
 
 		if ( isset( $this->mParams['min'] ) ) {
 			$min = $this->mParams['min'];

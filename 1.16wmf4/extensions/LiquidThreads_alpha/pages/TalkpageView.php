@@ -48,8 +48,6 @@ class TalkpageView extends LqtView {
 
 		$article = new Article( $this->title );
 
-		$oldid = $this->request->getVal( 'oldid', null );
-
 		wfLoadExtensionMessages( 'LiquidThreads' );
 		// If $article_text == "", the talkpage was probably just created
 		// when the first thread was posted to make the links blue.
@@ -111,8 +109,6 @@ class TalkpageView extends LqtView {
 
 		wfLoadExtensionMessages( 'LiquidThreads' );
 
-		$sk = $this->user->getSkin();
-
 		$html = '';
 
 		$h2_header = Xml::tags( 'h2', null, wfMsgExt( 'lqt_contents_title', 'parseinline' ) );
@@ -152,7 +148,9 @@ class TalkpageView extends LqtView {
 
 		$html .= $headerRow . "\n" . Xml::tags( 'tbody', null, implode( "\n", $rows ) );
 		$html = $h2_header . Xml::tags( 'table', array( 'class' => 'lqt_toc' ), $html );
-
+		// wrap our output in a div for containment
+		$html = Xml::tags( 'div', array( 'class' => 'lqt-contents-wrapper' ), $html );
+		
 		return $html;
 	}
 
@@ -180,8 +178,6 @@ class TalkpageView extends LqtView {
 
 		if ( $article->exists() ) {
 			$form_action_url = $this->talkpageUrl( $this->title, 'talkpage_sort_order' );
-			$go = wfMsg( 'go' );
-
 			$html = '';
 
 			$html .= Xml::label( wfMsg( 'lqt_sorting_order' ), 'lqt_sort_select' ) . ' ';
@@ -230,7 +226,7 @@ class TalkpageView extends LqtView {
 		self::addJSandCSS();
 
 		// Expose feed links.
-		global $wgFeedClasses, $wgScriptPath, $wgServer;
+		global $wgFeedClasses;
 		$apiParams = array( 'action' => 'feedthreads', 'type' => 'replies|newthreads',
 				'talkpage' => $this->title->getPrefixedText() );
 		$urlPrefix = wfScript( 'api' ) . '?';
@@ -300,7 +296,6 @@ class TalkpageView extends LqtView {
 
 		$this->output->addHTML( $talkpageHeader );
 
-		global $wgRequest;
 		if ( $this->methodApplies( 'talkpage_new_thread' ) ) {
 			$params = array( 'class' => 'lqt-new-thread lqt-edit-form' );
 			$this->output->addHTML( Xml::openElement( 'div', $params ) );
@@ -323,6 +318,7 @@ class TalkpageView extends LqtView {
 		}
 
 		$html .= $pager->getNavigationBar();
+		$html .= Xml::openElement( 'div', array( 'class' => 'lqt-threads lqt-talkpage-threads' ) );
 
 		$this->output->addHTML( $html );
 
@@ -330,7 +326,7 @@ class TalkpageView extends LqtView {
 			$this->showThread( $t );
 		}
 
-		$this->output->addHTML( $pager->getNavigationBar() );
+		$this->output->addHTML( Xml::closeElement( 'div' ) . $pager->getNavigationBar() );
 
 		return false;
 	}

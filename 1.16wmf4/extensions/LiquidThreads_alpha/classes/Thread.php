@@ -64,8 +64,6 @@ class Thread {
 				$type = Threads::TYPE_NORMAL, $subject = '',
 				$summary = '', $bump = null, $signature = null ) {
 
-		$dbw = wfGetDB( DB_MASTER );
-
 		$thread = new Thread( null );
 
 		if ( !in_array( $type, self::$VALID_TYPES ) ) {
@@ -79,8 +77,6 @@ class Thread {
 		}
 
 		global $wgUser;
-
-		$timestamp = wfTimestampNow();
 
 		$thread->setAuthor( $wgUser );
 
@@ -259,7 +255,7 @@ class Thread {
 			$fname = __METHOD__ . "/" . $fname;
 		}
 
-		$res = $dbr->update( 'thread',
+		$dbr->update( 'thread',
 		     /* SET */ $this->getRow(),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     $fname );
@@ -405,8 +401,6 @@ class Thread {
 	//  there.
 	function leaveTrace( $reason, $oldTitle, $newTitle ) {
 		$this->dieIfHistorical();
-
-		$dbw = wfGetDB( DB_MASTER );
 
 		// Create redirect text
 		$mwRedir = MagicWord::get( 'redirect' );
@@ -1379,7 +1373,6 @@ class Thread {
 
 	function setSortKey( $k = null ) {
 		if ( is_null( $k ) ) {
-			$dbr = wfGetDB( DB_SLAVE );
 			$k = wfTimestamp( TS_MW );
 		}
 
@@ -1591,7 +1584,9 @@ class Thread {
 				$this->reactions = self::$reactionCacheById[$this->id()];
 			} else {
 				$reactions = array();
-				
+
+				$dbr = wfGetDB( DB_SLAVE );
+
 				$res = $dbr->select( 'thread_reaction',
 						array( 'tr_thread' => $this->id() ),
 						__METHOD__ );

@@ -43,7 +43,7 @@ class ApiFeedLQTThreads extends ApiBase {
 	 * Wrap the result as an RSS/Atom feed.
 	 */
 	public function execute() {
-		global $wgFeedClasses, $wgFeedLimit, $wgSitename, $wgContLanguageCode;
+		global $wgFeedClasses;
 
 		$params = $this->extractRequestParams();
 
@@ -173,7 +173,6 @@ class ApiFeedLQTThreads extends ApiBase {
 		}
 
 		// Thread conditions
-		$threadConds = array();
 		$threads = (array)$params['thread'];
 		foreach ( $threads as $thread ) {
 			$root = new Article( Title::newFromText( $thread ) );
