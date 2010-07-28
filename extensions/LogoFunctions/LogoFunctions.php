@@ -2,7 +2,7 @@
 /**
  * LogoFunctions
  *
- * Add parser function to set wiki's logo
+ * Add parser function to about wiki's logo
  *
  * @link http://www.mediawiki.org/wiki/Extension:LogoFunctions
  *
@@ -26,7 +26,7 @@ $wgExtensionCredits[ 'parserhook' ][] = array(
 $dir = dirname( __FILE__ ) . '/';
 
 // internationalization
-$wgExtensionMessagesFiles['ApprovedRevs'] = $dir . 'LogoFunctions.i18n.php';
+$wgExtensionMessagesFiles['LogoFunctions'] = $dir . 'LogoFunctions.i18n.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'efLogoFunctions_Setup';
 $wgHooks['LanguageGetMagic'][] = 'efLogoFunctions_Magic';
@@ -62,7 +62,7 @@ function efSetLogo_Render( $parser, $logo = '' ) {
 	$wgLogo = $thumb->getUrl();
 }
 
-function efGetLogo_Render( $parser ) {
+function efGetLogo_Render( $parser, $prefix = false ) {
 	global $wgLogo;
-	return $wgLogo;
+	return ($prefix?$prefix.':':'').basename($wgLogo);
 }
