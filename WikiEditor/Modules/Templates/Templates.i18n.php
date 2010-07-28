@@ -352,6 +352,13 @@ $messages['pms'] = array(
 	'wikieditor-templates-preference' => 'Abilité lë sgnacament ëd jë stamp',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-templates-preference' => 'کينډۍ غځول چارنده کول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

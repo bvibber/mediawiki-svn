@@ -4956,6 +4956,8 @@ Për savèjne ëd pi an sl'Inissiativa për n'usagi belfé, për piasì ch'a vì
  */
 $messages['ps'] = array(
 	'optin-title-optedout' => 'آزمېښتي بڼه کارول',
+	'optin-title-optedin' => 'آزمېښتي بڼه پرېښودل',
+	'optin-title-justoptedin' => 'آزمېښتي بڼې ته ښه راغلاست',
 	'optin-accept-short' => 'راځه چې وې آزمويو!',
 	'optin-deny-short' => 'نه مننه',
 	'optin-survey-yes' => 'هو',
@@ -4964,6 +4966,7 @@ $messages['ps'] = array(
 	'optin-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
 	'optin-survey-answer-browser-other' => 'بل کتنمل:',
 	'optin-survey-question-os' => 'تاسې کوم چليز غونډال کاروۍ؟',
+	'optin-survey-answer-os-other' => 'بل چليز غونډال:',
 	'optin-survey-answer-changes-other' => 'بل:',
 );
 

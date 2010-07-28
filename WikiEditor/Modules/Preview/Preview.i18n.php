@@ -689,6 +689,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-preview-preference' => 'څنګ په څنګ مخليدنه چارنده کول',
 	'wikieditor-preview-tab' => 'مخليدنه',
 	'wikieditor-preview-changes-tab' => 'بدلونونه',
 	'wikieditor-preview-loading' => 'د برسېرېدلو په حال کې...',

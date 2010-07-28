@@ -4331,6 +4331,8 @@ $messages['ps'] = array(
 	'prefswitch-survey-answer-whyoff-other' => 'بل سبب:',
 	'prefswitch-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
 	'prefswitch-survey-answer-browser-other' => 'بل کتنمل:',
+	'prefswitch-survey-question-os' => 'تاسې کوم چليز غونډال کاروۍ؟',
+	'prefswitch-survey-answer-os-other' => 'بل چليز غونډال:',
 	'prefswitch-title-switched-off' => 'مننه',
 );
 
