@@ -2,7 +2,7 @@
 /**
  * LogoFunctions
  *
- * Add parser function to about wiki's logo
+ * Add parser function about wiki's logo
  *
  * @link http://www.mediawiki.org/wiki/Extension:LogoFunctions
  *
@@ -17,7 +17,7 @@ $messages = array();
 /** English
  */
 $messages['en'] = array(
-	'logofunctions-desc' => "Add parser function to about wiki's logo",
+	'logofunctions-desc' => "Add parser function about wiki's logo",
 	'logofunctions-filenotexist' => 'Error: [[File:$1]] does not exist',
 );
 

@@ -2,7 +2,7 @@
 /**
  * LogoFunctions
  *
- * Add parser function to about wiki's logo
+ * Add parser function about wiki's logo
  *
  * @link http://www.mediawiki.org/wiki/Extension:LogoFunctions
  *
