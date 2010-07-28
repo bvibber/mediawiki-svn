@@ -46,9 +46,6 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		{
 			global $wgLang;
 			$wgLang = Language::factory( $params['lang'] );
-		} else if ( is_null( $params['lang'] ) ) {
-			// Language not determined by URL but by user preferences, so don't cache
-			$this->getMain()->setVaryCookie();
 		}
 		
 		$prop = array_flip( (array)$params['prop'] );
@@ -121,6 +118,19 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			}
 		}
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'message' );
+	}
+
+	public function getCacheMode( $params ) {
+		if ( is_null( $params['lang'] ) ) {
+			// Language not specified, will be fetched from preferences
+			return 'anon-public-user-private';
+		} elseif ( $params['enableparser'] ) {
+			// User-specific parser options will be used
+			return 'anon-public-user-private';
+		} else {
+			// OK to cache
+			return 'public';
+		}
 	}
 
 	public function getAllowedParams() {

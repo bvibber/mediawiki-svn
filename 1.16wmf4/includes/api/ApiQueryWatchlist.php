@@ -68,14 +68,9 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			if ( $token == '' || $token != $params['token'] ) {
 				$this->dieUsage( 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences', 'bad_wltoken' );
 			}
+		} elseif ( !$wgUser->isLoggedIn() ) {
+			$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
 		} else {
-			// Temp live hack until new code using getWatchlistUser() is deployed
-
-			// User not determined by URL, so don't cache
-			$this->getMain()->setVaryCookie();
-			if ( !$wgUser->isLoggedIn() ) {
-				$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
-			}
 			$user = $wgUser;
 		}
 
@@ -95,7 +90,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_notificationtimestamp = isset( $prop['notificationtimestamp'] );
 
 			if ( $this->fld_patrol ) {
-				$this->getMain()->setVaryCookie();
 				if ( !$user->useRCPatrol() && !$user->useNPPatrol() )
 					$this->dieUsage( 'patrol property is not available', 'patrol' );
 			}
@@ -160,13 +154,9 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				$this->dieUsageMsg( array( 'show' ) );
 			}
 			
-			// Check permissions.  FIXME: should this check $user instead of $wgUser?
-			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
-				$this->getMain()->setVaryCookie();
-				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
-					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
-				}
-			}
+			// Check permissions.
+			if ( ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
+				$this->dieUsage( "You need the patrol right to request the patrolled flag", 'permissiondenied' );
 
 			/* Add additional conditions to query depending upon parameters. */
 			$this->addWhereIf( 'rc_minor = 0', isset ( $show['!minor'] ) );
@@ -282,7 +272,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			
 		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
 			global $wgUser;
-			$this->getMain()->setVaryCookie();
 			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
 		}
 

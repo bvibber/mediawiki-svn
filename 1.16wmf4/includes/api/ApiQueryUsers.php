@@ -156,9 +156,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 				if ( !is_null( $params['token'] ) )
 				{
-					// Don't cache tokens
-					$this->getMain()->setCachePrivate();
-					
 					$tokenFunctions = $this->getTokenFunctions();
 					foreach ( $params['token'] as $t )
 					{
@@ -208,6 +205,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			$done[] = $u;
 		}
 		return $this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'user' );
+	}
+
+	public function getCacheMode( $params ) {
+		if ( isset( $params['token'] ) ) {
+			return 'private';
+		} else {
+			return 'public';
+		}
 	}
 
 	public function getAllowedParams() {

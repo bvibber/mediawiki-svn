@@ -164,8 +164,6 @@ class ApiQueryContributions extends ApiQueryBase {
 					"rev_timestamp $op= '$encTS')" );
 		}
 
-		// Make sure private data (deleted revisions) isn't cached
-		$this->getMain()->setVaryCookie();
 		if ( !$wgUser->isAllowed( 'hideuser' ) )
 			$this->addWhere( $this->getDB()->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0' );
 		// We only want pages by the specified users.
@@ -212,12 +210,8 @@ class ApiQueryContributions extends ApiQueryBase {
 				 $this->fld_patrolled )
 		{
 			global $wgUser;
-			// Don't cache private data
-			$this->getMain()->setVaryCookie();
-			if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
-				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
-			}
-			
+			if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
+				$this->dieUsage( "You need the patrol right to request the patrolled flag", 'permissiondenied' );
 			// Use a redundant join condition on both
 			// timestamp and ID so we can use the timestamp
 			// index
@@ -314,7 +308,6 @@ class ApiQueryContributions extends ApiQueryBase {
 				
 				if ( $this->fld_parsedcomment ) {
 					global $wgUser;
-					$this->getMain()->setVaryCookie();
 					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rev_comment, $title );
 				}
 			}
@@ -343,6 +336,12 @@ class ApiQueryContributions extends ApiQueryBase {
 	{
 		return $row->rev_user_text . '|' .
 			wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
+	}
+
+	public function getCacheMode( $params ) {
+		// This module provides access to deleted revisions and patrol flags if
+		// the requester is logged in
+		return 'anon-public-user-private';
 	}
 
 	public function getAllowedParams() {

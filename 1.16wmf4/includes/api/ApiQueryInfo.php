@@ -244,7 +244,6 @@ class ApiQueryInfo extends ApiQueryBase {
 			$this->getProtectionInfo();
 
 		if ( $this->fld_watched )
-			$this->getMain()->setVaryCookie();
 			$this->getWatchedInfo();
 
 		// Run the talkid/subjectid query if requested
@@ -289,9 +288,6 @@ class ApiQueryInfo extends ApiQueryBase {
 		}
 
 		if ( !is_null( $this->params['token'] ) ) {
-			// Don't cache tokens
-			$this->getMain()->setCachePrivate();
-			
 			$tokenFunctions = $this->getTokenFunctions();
 			$pageInfo['starttimestamp'] = wfTimestamp( TS_ISO_8601, time() );
 			foreach ( $this->params['token'] as $t )
@@ -557,6 +553,27 @@ class ApiQueryInfo extends ApiQueryBase {
 		}
 	}
 
+	public function getCacheMode( $params ) {
+		$publicProps = array(
+			'protection',
+			'talkid',
+			'subjectid',
+			'url',
+			'preload',
+		);
+		if ( !is_null( $params['prop'] ) ) {
+			foreach ( $params['prop'] as $prop ) {
+				if ( !in_array( $prop, $publicProps ) ) {
+					return 'private';
+				}
+			}
+		}
+		if ( !is_null( $params['token'] ) ) {
+			return 'private';
+		}
+		return 'public';
+	}
+
 	public function getAllowedParams() {
 		return array (
 			'prop' => array (
@@ -565,11 +582,13 @@ class ApiQueryInfo extends ApiQueryBase {
 				ApiBase :: PARAM_TYPE => array (
 					'protection',
 					'talkid',
-					'watched',
+					'watched', # private
 					'subjectid',
 					'url',
-					'readable',
+					'readable', # private
 					'preload'
+					// If you add more properties here, please consider whether they 
+					// need to be added to getCacheMode()
 				) ),
 			'token' => array (
 				ApiBase :: PARAM_DFLT => null,

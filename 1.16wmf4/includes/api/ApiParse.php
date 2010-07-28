@@ -38,6 +38,9 @@ class ApiParse extends ApiBase {
 	}
 
 	public function execute() {
+		// The data is hot but user-dependent, like page views, so we set vary cookies
+		$this->getMain()->setCacheMode( 'anon-public-user-private' );
+
 		// Get parameters
 		$params = $this->extractRequestParams();
 		$text = $params['text'];
@@ -118,11 +121,10 @@ class ApiParse extends ApiBase {
 			if ( !$titleObj )
 				$titleObj = Title::newFromText( "API" );
 			$wgTitle = $titleObj;
-			if ( $params['pst'] || $params['onlypst'] ) {
+			if ( $params['pst'] || $params['onlypst'] )
 				$text = $wgParser->preSaveTransform( $text, $titleObj, $wgUser, $popts );
-				$this->getMain()->setVaryCookie();
-			}
-			if ( $params['onlypst'] ) {
+			if ( $params['onlypst'] )
+			{
 				// Build a result and bail out
 				$result_array['text'] = array();
 				$this->getResult()->setContent( $result_array['text'], $text );
@@ -145,7 +147,6 @@ class ApiParse extends ApiBase {
 		
 		if ( !is_null( $params['summary'] ) ) {
 			$result_array['parsedsummary'] = array();
-			$this->getMain()->setVaryCookie();
 			$result->setContent( $result_array['parsedsummary'], $wgUser->getSkin()->formatComment( $params['summary'], $titleObj ) );
 		}
 		
@@ -174,7 +175,6 @@ class ApiParse extends ApiBase {
 		if ( isset( $prop['headhtml'] ) ) {
 			$out = new OutputPage;
 			$out->addParserOutputNoText( $p_result );
-			$this->getMain()->setVaryCookie();
 			$result_array['headhtml'] = array();
 			$result->setContent( $result_array['headhtml'], $out->headElement( $wgUser->getSkin() ) );
 		}

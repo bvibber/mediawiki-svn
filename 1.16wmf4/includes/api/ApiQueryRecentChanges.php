@@ -137,12 +137,8 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			
 			// Check permissions
 			global $wgUser;
-			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
-				$this->getMain()->setVaryCookie();
-				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
-					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
-				}
-			}
+			if ( ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
+				$this->dieUsage( "You need the patrol right to request the patrolled flag", 'permissiondenied' );
 
 			/* Add additional conditions to query depending upon parameters. */
 			$this->addWhereIf( 'rc_minor = 0', isset ( $show['!minor'] ) );
@@ -362,7 +358,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		
 		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
 			global $wgUser;
-			$this->getMain()->setVaryCookie();
 			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
 		}
 
@@ -395,9 +390,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			
 		if ( !is_null( $this->token ) )
 		{
-			// Don't cache tokens
-			$this->getMain()->setCachePrivate();
-			
 			$tokenFunctions = $this->getTokenFunctions();
 			foreach ( $this->token as $t )
 			{
@@ -428,6 +420,24 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 					case 'new': return RC_NEW;
 					case 'log': return RC_LOG;
 			}
+	}
+
+	public function getCacheMode( $params ) {
+		if ( isset( $params['show'] ) ) {
+			foreach ( $params['show'] as $show ) {
+				if ( $show === 'patrolled' || $show === '!patrolled' ) {
+					return 'private';
+				}
+			}
+		}
+		if ( isset( $params['token'] ) ) {
+			return 'private';
+		}
+		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
+			// formatComment() calls wfMsg() among other things
+			return 'anon-public-user-private';
+		}
+		return 'public';
 	}
 
 	public function getAllowedParams() {
