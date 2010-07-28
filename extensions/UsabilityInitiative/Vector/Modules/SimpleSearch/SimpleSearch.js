@@ -9,7 +9,10 @@ if ( wgVectorEnabledModules.simplesearch && skin == 'vector' && typeof os_autolo
 
 $j(document).ready( function() {
 	// Only use this function in conjuction with the Vector skin
-	if( !wgVectorEnabledModules.simplesearch || wgVectorPreferences.simplesearch.disablesuggest || skin != 'vector' ) {
+	if( !wgVectorEnabledModules.simplesearch || 
+			wgVectorPreferences.simplesearch.disablesuggest || 
+			!wgVectorPreferences.simplesearch.enable ||
+			skin != 'vector' ) {
 		return true;
 	}
 	var mod = {
