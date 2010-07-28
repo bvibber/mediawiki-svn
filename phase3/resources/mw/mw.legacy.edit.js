@@ -1,5 +1,5 @@
 /*
- * Legacy emulation for the now depricated changepassword.js
+ * Legacy emulation for the now depricated edit.js
  * 
  * Ported by: Trevor Parscal
  */
