@@ -275,7 +275,7 @@ class PagedTiffHandler extends ImageHandler {
 	 * Supports extra parameters for multipage files and thumbnail type (lossless vs. lossy)
 	 */
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
-		global $wgImageMagickConvertCommand, $wgTiffMaxEmbedFileResolution, 
+		global $wgImageMagickConvertCommand, $wgMaxImageAreaForVips, 
 			$wgTiffUseVips, $wgTiffVipsCommand, $wgMaxImageArea;
 
 		$meta = $this->getMetaArray( $image );
@@ -314,13 +314,6 @@ class PagedTiffHandler extends ImageHandler {
 				$height, $dstPath, $page );
 		}
 
-		if ( isset( $meta['page_data'][$page]['pixels'] ) 
-				&& $meta['page_data'][$page]['pixels'] > $wgTiffMaxEmbedFileResolution )
-			return $this->doThumbError( $params, 'tiff_sourcefile_too_large' );
-
-		if ( ( $width * $height ) > $wgTiffMaxEmbedFileResolution )
-			return $this->doThumbError( $params, 'tiff_targetfile_too_large' );
-
 		if ( !wfMkdirParents( dirname( $dstPath ) ) )
 			return $this->doThumbError( $params, 'thumbnail_dest_directory' );
 
@@ -329,7 +322,13 @@ class PagedTiffHandler extends ImageHandler {
 			if ( !$pagesize ) {
 				return $this->doThumbError( $params, 'tiff_no_metadata' );
 			}
-			
+			if ( isset( $meta['page_data'][$page]['pixels'] ) 
+					&& $meta['page_data'][$page]['pixels'] > $wgMaxImageAreaForVips )
+				return $this->doThumbError( $params, 'tiff_sourcefile_too_large' );
+
+			if ( ( $width * $height ) > $wgMaxImageAreaForVips )
+				return $this->doThumbError( $params, 'tiff_targetfile_too_large' );			
+				
 			// Shrink factors must be > 1.
 			if ( ( $pagesize['width'] > $width ) && ( $pagesize['height'] > $height ) ) {
 				$xfac = $pagesize['width'] / $width;
