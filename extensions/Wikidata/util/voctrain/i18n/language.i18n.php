@@ -1852,6 +1852,15 @@ $messages['hu'] = array(
 	'voctrain_other' => 'egyéb',
 );
 
+/** Armenian (Հայերեն)
+ * @author Pandukht
+ */
+$messages['hy'] = array(
+	'voctrain_Hello_World' => 'ԲԱՐԵՎ, ՎԻՔԻ',
+	'voctrain_Permission_Denied' => 'Մուտքը արգտլված է',
+	'voctrain_try_again_' => 'փորձ՞ել եվս մեկ անգամ',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

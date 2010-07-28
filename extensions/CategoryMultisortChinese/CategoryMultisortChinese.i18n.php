@@ -357,6 +357,13 @@ $messages['pt-br'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Tradicional',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categorymultisort-sortkey-name-radical' => 'Radicale',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -208,9 +208,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Iwai.masaharu
+ * @author 青子守歌
  */
 $messages['ja'] = array(
+	'categorymultisort-desc' => '異なるソートキーでカテゴリーで表示することを許可する',
+	'categorymultisort-defaultsortkey-name' => '既定',
 	'categorymultisort-sortkey' => 'ソートキー:',
+	'categorymultisort-go' => '実行',
+	'categorymultisort-default-sortkey' => '既定のソートキー：',
 	'prefs-category' => 'カテゴリ',
 );
 
@@ -332,6 +337,18 @@ $messages['pt-br'] = array(
 	'categorymultisort-go' => 'Ir',
 	'categorymultisort-default-sortkey' => 'Chave de ordenação padrão:',
 	'prefs-category' => 'Categoria',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categorymultisort-desc' => 'Permette a le categorije de essere viste cu diverse chiave de ordinamende',
+	'categorymultisort-defaultsortkey-name' => 'De base',
+	'categorymultisort-sortkey' => 'Chiave de ordenamende:',
+	'categorymultisort-go' => 'Veje',
+	'categorymultisort-default-sortkey' => 'Chiave de ordenamende de base:',
+	'prefs-category' => 'Categorije',
 );
 
 /** Russian (Русский)

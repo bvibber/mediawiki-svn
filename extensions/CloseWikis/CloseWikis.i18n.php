@@ -921,9 +921,16 @@ $messages['id'] = array(
 	'right-closewikis' => 'Tutup wiki',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'closewikis-page-close-wiki' => 'Wiki:',
+	'closewikis-page-close-submit' => 'Mèchié',
+	'closewikis-page-reopen-wiki' => 'Wiki:',
 	'closewikis-page-reopen-reason' => 'Mgbaghaputa:',
+	'closewikis-page-reopen-submit' => 'Mèpókwá',
+	'closewikis-list-header-wiki' => 'Wiki',
 );
 
 /** Ido (Ido)

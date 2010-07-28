@@ -604,6 +604,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Pinodd
  */
@@ -612,8 +613,8 @@ $messages['it'] = array(
 	'edituser' => 'Modifica utente',
 	'edituser-username' => 'Nome utente:',
 	'edituser-dosearch' => 'Ricerca',
-	'edituser-nouser' => 'L\'utente "$ 1" non esiste.',
-	'edituser-exempt' => 'L\'utente "$ 1" non può essere modificato.',
+	'edituser-nouser' => 'L\'utente "$1" non esiste.',
+	'edituser-exempt' => 'L\'utente "$1" non può essere modificato.',
 	'right-edituser' => 'Modifica le preferenze degli altri utenti',
 	'right-edituser-exempt' => 'Le sue preferenze non possono essere modificate da altri',
 );

@@ -910,6 +910,13 @@ $messages['pms'] = array(
 	'tooltip-pt-optin-feedback' => 'Dà dij feedback an sla toa esperiensa con le neuve funsionalità',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'optin-try' => 'آزمېښتي بڼه کارول',
+);
+
 /** Portuguese (Português)
  * @author Capmo
  * @author Giro720

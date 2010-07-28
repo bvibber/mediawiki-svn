@@ -639,6 +639,18 @@ $messages['pms'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Preuva le neuve funsionalità',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'prefswitch-link-anon' => 'نوې ځانګړنې',
+	'tooltip-pt-prefswitch-link-anon' => 'د نوؤ ځانګړنو په اړه مالومات',
+	'prefswitch-link-on' => 'بېرته پر شا ستنېدل',
+	'tooltip-pt-prefswitch-link-on' => 'نوې ځانګړنې ناچارنده کول',
+	'prefswitch-link-off' => 'نوې ځانګړنې',
+	'tooltip-pt-prefswitch-link-off' => 'نوې ځانګړنې آزمويل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

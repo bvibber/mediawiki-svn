@@ -236,10 +236,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Ytsukeng Fyvaprol
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'negref-desc' => 'Предоставляет тег для установления местоположения любого тега <nowiki><ref/></nowiki> внутри поля ввода, для устранения некоторых случаях использование шаблонов',
+	'negref-desc' => 'Предоставляет тег для установления местоположения любого тега <nowiki><ref/></nowiki> внутри поля ввода для устранения некоторых случаев использования шаблонов',
 );
 
 /** Slovak (Slovenčina)
@@ -273,5 +274,12 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'negref-desc' => 'Bazı şablon kullanım durumlarını düzeltmek için girilen metnin içinde bulunan <nowiki><ref/></nowiki> etiketlerinin konumunu ayarlayacak bir etiket sağlar',
+);
+
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'negref-desc' => 'Надає тег для встановлення місцезнаходження будь-якого тега <nowiki><ref/></nowiki> всередині поля введення для усунення деяких випадків використання шаблонів',
 );
 

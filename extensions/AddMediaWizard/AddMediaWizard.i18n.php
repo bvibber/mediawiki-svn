@@ -358,6 +358,13 @@ $messages['tr'] = array(
 	'addmediawizard-desc' => 'Ortam ekleme sihirbazı, Kaltura ve Vikimedya Kuruluşu ortaklığıyla geliştirilmiştir',
 );
 
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'addmediawizard-desc' => 'Майстер додавання медіа-даних, розроблений у партнерстві Kaltura та Фонду Вікімедіа',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

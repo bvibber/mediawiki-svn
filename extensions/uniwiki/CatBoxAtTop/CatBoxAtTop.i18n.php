@@ -281,6 +281,13 @@ $messages['id'] = array(
 	'catboxattop-categories' => 'Kategori',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'catboxattop-categories' => 'Ébéanọr',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

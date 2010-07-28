@@ -512,12 +512,12 @@ $messages['pt-br'] = array(
  * @author Misterr
  */
 $messages['ro'] = array(
-	'globaluserrights' => 'Administrarea drepturilor utilizatorilor globali',
-	'gur-desc' => 'Administrarea ușoară a [[Special: GlobalUserRights |drepturilor globale pentru utilizator]]',
+	'globaluserrights' => 'Administrarea drepturilor globale ale utilizatorilor',
+	'gur-desc' => 'Administrarea facilă a [[Special:GlobalUserRights|drepturilor globale pentru utilizatori]]',
 	'gur-rightslog-name' => 'Jurnal drepturi globale',
 	'gur-rightslog-header' => 'Acest jurnal cuprinde modificările drepturilor globale.',
-	'gur-rightslog-entry' => 'Schimbă apartenența grupului global pentru $1 de la $2 la $3',
-	'right-userrights-global' => 'Administrează drepturile utilizatorilor globali',
+	'gur-rightslog-entry' => 'a schimbat pentru $1 apartenența la grupul global de la $2 la $3',
+	'right-userrights-global' => 'Administrează drepturile globale ale utilizatorilor',
 );
 
 /** Tarandíne (Tarandíne)

@@ -986,9 +986,11 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-publish-preference' => 'ګام په ګام خپرېدنه چارنده کول',
 	'wikieditor-publish-button-publish' => 'خپرول',
 	'wikieditor-publish-button-cancel' => 'ناګارل',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} کې خپرول',
+	'wikieditor-publish-dialog-summary' => 'د سمون لنډيز (په لنډه توګه د خپلو بدلونونو څرګندونه وکړۍ):',
 	'wikieditor-publish-dialog-minor' => 'وړوکی سمون',
 	'wikieditor-publish-dialog-watch' => 'همدا مخ کتل',
 	'wikieditor-publish-dialog-publish' => 'خپرول',

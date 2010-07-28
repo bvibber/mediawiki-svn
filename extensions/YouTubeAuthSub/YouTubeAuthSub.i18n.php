@@ -67,15 +67,6 @@ $messages['ady-cyrl'] = array(
 	'youtubeauthsub_title' => 'Тхылъышъхьэ',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'youtubeauthsub_submit' => 'Kirim',
-	'youtubeauthsub_clickhere' => 'Klik di sia gasan masuk log ka YouTube',
-	'youtubeauthsub_uploadbutton' => 'Unggah',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
@@ -389,6 +380,15 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'Необходимо е да се въведе една или повече ключови думи.',
 	'youtubeauthsub_jserror_notitle' => 'Необходимо е да се въведе заглавие на видеото.',
 	'youtubeauthsub_jserror_nodesc' => 'Необходимо е да се въведе описание на видеото.',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'youtubeauthsub_submit' => 'Kirim',
+	'youtubeauthsub_clickhere' => 'Klik di sia gasan masuk log ka YouTube',
+	'youtubeauthsub_uploadbutton' => 'Unggah',
 );
 
 /** Bengali (বাংলা)
@@ -1490,6 +1490,7 @@ Silakan menunggu.',
 $messages['ig'] = array(
 	'youtubeauthsub_title' => 'Ishi edemede',
 	'youtubeauthsub_keywords' => 'Mkpurụ edemede ngodi',
+	'youtubeauthsub_category' => 'Ébéonọr',
 	'youtubeauthsub_submit' => 'Nye fwuör',
 	'youtubeauthsub_authsubinstructions' => 'I nweríkí tinyé enyónyó-na-jé gi na elú, I ga buzọr banyé ime YouTube.',
 	'youtubeauthsub_uploadhere' => 'Tinyé enyónyó-na-jé nke gi nélú shi nga:',

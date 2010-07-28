@@ -354,17 +354,6 @@ $messages['niu'] = array(
 	'configure-section-search' => 'Kumi',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Alamnirvana
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'configure-desc-group' => 'Galambang',
-	'configure-desc-val' => 'Nilai',
-	'configure-edit-core' => 'MediaWiki',
-	'configure-section-pages' => 'Tungkaran',
-);
-
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */
@@ -1251,6 +1240,17 @@ $messages['bg'] = array(
 	'configure-condition-name-4' => 'В групи',
 	'configure-condition-name-5' => 'Потребителски IP адрес',
 	'configure-farmer-extensions' => '[[Special:Extensions|Конфигуриране на разширенията за това уики]].',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Alamnirvana
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'configure-desc-group' => 'Galambang',
+	'configure-desc-val' => 'Nilai',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-section-pages' => 'Tungkaran',
 );
 
 /** Breton (Brezhoneg)
@@ -4972,13 +4972,18 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Daftar ekstensi yang tersedia untuk wiki ini]].',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'configure-edit-core' => 'NkáWiki',
 	'configure-form-reason' => 'Mgbaghaputa:',
 	'configure-js-remove' => 'Gbakashia',
 	'configure-section-specialpages' => 'Ihü mkpà',
 	'configure-section-search' => 'Chöwá',
 	'configure-throttle-action-edit' => 'Rüwa',
+	'configure-throttle-action-move' => 'Páfụ',
+	'configure-condition-operator-or' => 'Mà',
 );
 
 /** Ido (Ido)

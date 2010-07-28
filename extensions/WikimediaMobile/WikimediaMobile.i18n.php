@@ -50,6 +50,13 @@ $messages['ce'] = array(
 	'wikimediamobile-desc' => 'Гlодарца йолу хийцамашца MediaWiki оцу лерагlирсан кхоллам Викимедийа, хlокху чохь ю http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'wikimediamobile-desc' => 'Swyddogaethau cymorth MediaWici ar gyfer prosiect Wicimedia-symudol a gedwir at http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Danish (Dansk)
  * @author Froztbyte
  */

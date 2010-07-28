@@ -537,6 +537,7 @@ Apakah Anda ingin menyunting halaman tersebut?',
 $messages['ig'] = array(
 	'createpage' => 'Ké ihü',
 	'createpage_submitbutton' => 'Nye fwuör',
+	'createpage_instructions' => 'Tinyé íshí màkà ihü Í chorí ke:',
 	'createpage_tryagain' => 'Mba. M chorí ké ihü ohúrù nwere áhà di iche.',
 );
 

@@ -461,6 +461,8 @@ Anda memiliki komentar di halaman ini? Tambahkan di sini atau <span class="plain
  */
 $messages['ig'] = array(
 	'commentbox-name' => 'Áhà:',
+	'commentbox-log' => 'Ókwúnókwú ohüru',
+	'commentbox-first-comment-heading' => '== Ókwúnókwú ==',
 );
 
 /** Italian (Italiano)

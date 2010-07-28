@@ -1442,6 +1442,7 @@ $messages['roa-tara'] = array(
 	'bookinfo-result-year' => 'Anne:',
 	'bookinfo-error-invalidisbn' => 'ISBN inzerite invalide.',
 	'bookinfo-error-nosuchitem' => "L'artichele non g'esiste o non ge se pò acchià.",
+	'bookinfo-error-noresponse' => "Nisciuna risposte o 'a richieste ha scadute.",
 	'bookinfo-purchase' => 'Accatte stu libbre da $1',
 );
 

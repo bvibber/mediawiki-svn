@@ -397,6 +397,13 @@ $messages['tr'] = array(
 	'newsextension-desc' => 'Bir viki sayfasında ya da RSS veya Atom beslemesi olarak özelleştirilmiş son değişiklikleri gösterir',
 );
 
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'newsextension-desc' => 'Показує персоналізований список свіжих правок на вікі-сторінках у вигляді стрічки RSS або Atom',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

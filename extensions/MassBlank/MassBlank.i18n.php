@@ -247,6 +247,13 @@ $messages['ja'] = array(
 	'right-massblank' => 'ページの一括白紙化',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'massblank-blankcomment' => 'Jrond:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -313,6 +320,25 @@ $messages['no'] = array(
  */
 $messages['pdc'] = array(
 	'massblank-blankcomment' => 'Grund:',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'massblank' => 'Scancelassion a bocc',
+	'massblank-desc' => "A dà a j'aministrator ël privilegi dë [[Special:MassBlank|scancelé a bocc]] dle pàgine",
+	'massblank-nopages' => 'Pa gnun-e pàgine da [[Special:Contributions/$1|$1]] ant le modìfiche recente.',
+	'massblank-list' => 'Le pàgine sì-sota a son ëstàite creà da [[Special:Contributions/$1|$1]];
+buté un coment e sgnacé an sël boton për scanceleje.',
+	'massblank-defaultreason' => 'Scancelassion a bocc dle pàgine giontà da $1',
+	'massblank-tools' => "St'utiss-sì a përmët dë scancelé a bocc le pàgine giontà recentement da un sert utent o n'adrëssa IP.
+Ch'a anserissa lë stranòm ëd l'utent o l'adrëssa IP për avèj na lista ëd pàgine da scancelé.",
+	'massblank-submit-user' => 'Va',
+	'massblank-submit-blank' => 'Scancelé cole selessionà',
+	'massblank-blankcomment' => 'Rason:',
+	'right-massblank' => 'Scancelé dle pàgine a bocc',
 );
 
 /** Pashto (پښتو)
@@ -397,6 +423,14 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'massblank-submit-user' => 'Idi',
 	'massblank-blankcomment' => 'Razlog:',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'massblank-submit-user' => 'వెళ్ళు',
+	'massblank-blankcomment' => 'కారణం:',
 );
 
 /** Tagalog (Tagalog)

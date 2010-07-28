@@ -4380,10 +4380,11 @@ Você não poderia entrar sem um OpenID.',
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Memo18
+ * @author Minisarm
  * @author Misterr
  */
 $messages['ro'] = array(
-	'openid-desc' => 'Loghează-te pe acest wiki cu un [http://openid.net/ OpenID], și conectați-vă la alte site-uri web OpenID cu un cont de utilizator wiki.',
+	'openid-desc' => 'Autentificați-vă pe acest wiki folosind un [http://openid.net/ OpenID] și conectați-vă la alte site-uri web OpenID cu un cont de utilizator wiki',
 	'openidlogin' => 'Autentificare cu OpenID',
 	'openidserver' => 'Server OpenID',
 	'openidxrds' => 'Fișier Yadis',
@@ -4391,10 +4392,10 @@ $messages['ro'] = array(
 	'openiderror' => 'Eroare de verificare',
 	'openiderrortext' => 'A avut loc o eroare în timpul verificării URL-ului OpenID',
 	'openidconfigerror' => 'Eroare de configurare OpenID',
-	'openidconfigerrortext' => 'Configurarea de stocare OpenID pentru acest wiki este nulă.
+	'openidconfigerrortext' => 'Configurarea stocării OpenID pentru acest wiki este invalidă.
 Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidpermission' => 'Eroare de permisiune OpenID',
-	'openidpermissiontext' => 'OpenID nu este permis de a se loga pe acest server.',
+	'openidpermissiontext' => 'OpenID-ul furnizat nu poate fi folosit pe acest server pentru autentificare.',
 	'openidcancel' => 'Verificare anulată',
 	'openidcanceltext' => 'Verificarea URL-ului OpenID a fost anulată.',
 	'openidfailure' => 'Verificare eșuată',
@@ -4404,7 +4405,7 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidusernameprefix' => 'Utilizator OpenID',
 	'openidserverlogininstructions' => 'Introduceți parola mai jos pentru a vă conecta la $3 ca utilizator $2 (pagină de utilizator $1).',
 	'openidtrustinstructions' => 'Verificați dacă doriți să partajați datele cu $1.',
-	'openidallowtrust' => '$1 permite să aibă încredere în acest cont de utilizator',
+	'openidallowtrust' => 'Permite lui $1 să aibă încredere în acest cont de utilizator.',
 	'openidnopolicy' => 'Site-ul nu a specificat politica de confidențialitate.',
 	'openidpolicy' => 'Verificaţi <a target="_new" href="$1">politica de confidenţialitate</a> pentru mai multe informaţii',
 	'openidoptional' => 'Opțional',
@@ -4422,14 +4423,14 @@ se poate alege una din opțiunile de mai jos.',
 	'openidchooseurl' => 'Un nume ales din OpenID-ul dvs. ($1)',
 	'openidchooseauto' => 'Un nume generat automat ($1)',
 	'openidchoosemanual' => 'Un nume la alegere:',
-	'openidchooseexisting' => 'Există un cont pe aces wiki',
-	'openidchooseusername' => 'Nume de utilizator',
+	'openidchooseexisting' => 'Un cont existent pe acest wiki',
+	'openidchooseusername' => 'Nume de utilizator:',
 	'openidchoosepassword' => 'parolă:',
 	'openidconvertsuccess' => 'Convertit cu succes la OpenID',
 	'openidconvertothertext' => 'Acesta este OpenID-ul altcuiva.',
-	'openidalreadyloggedin' => "'''Sunteți deja logat, $1!'''
+	'openidalreadyloggedin' => "'''$1, sunteți deja autentificat!'''
 
-Dacă doriți să utilizați OpenID în viitor, puteți [[Special:OpenIDConvert|converti contul dvs. OpenID]].",
+Dacă doriți să utilizați un OpenID în viitor, puteți [[Special:OpenIDConvert|converti contul la OpenID]].",
 	'openidnousername' => 'Nici un nume de utilizator specificat.',
 	'openidbadusername' => 'Nume de utilizator specificat greșit.',
 	'openidloginlabel' => 'URL OpenID',
@@ -4438,7 +4439,7 @@ Dacă doriți să utilizați OpenID în viitor, puteți [[Special:OpenIDConvert|
 	'openid-urls-action' => 'Acțiune',
 	'openid-urls-delete' => 'Şterge',
 	'openid-add-url' => 'Adaugă un nou OpenID',
-	'openidsigninorcreateaccount' => 'Înregistrați-vă sau creați-vă un nou cont.',
+	'openidsigninorcreateaccount' => 'Autentificați-vă sau creați-vă un nou cont',
 	'openid-provider-label-google' => 'Autentificare folosind contul Google',
 	'openid-provider-label-yahoo' => 'Autentificare folosind contul Yahoo',
 	'openid-provider-label-other-username' => 'Introduceți numele dumneavoastră de $1 utilizator.',

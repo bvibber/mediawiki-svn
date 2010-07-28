@@ -52,6 +52,7 @@ $messages['qqq'] = array(
 	'badimages-remove' => '{{Identical|Remove}}',
 	'badimages-remove-btn' => '{{Identical|Remove}}',
 	'badimages-log-name' => '{{Identical|Bad image list}}',
+	'badimages-log-add' => 'This looks like a section of a log entry. If so, the name of the user who performed this action appears immediately before this message.',
 	'right-badimages' => '{{doc-right|badimages}}',
 );
 
@@ -483,9 +484,9 @@ $messages['cy'] = array(
 	'badimages-removed' => "Tynnwyd $1 o'r rhestr.",
 	'badimages-subheading' => 'Eitemau cyfredol',
 	'badimages-unprivileged' => "(Nid yw'r hawliau priodol i newid y rhestr gennych)",
-	'badimages-log-name' => 'Rhestr o ddelweddi gwael',
-	'badimages-log-header' => "Dyma log newidiadau i'r [[{{MediaWiki:Badimages-page}}|rhestr o ddelweddi gwael]].",
-	'badimages-log-add' => "ychwanegwyd [[$1]] i'r rhestr o ddelweddi gwael",
+	'badimages-log-name' => 'Y rhestr o ddelweddau gwaharddedig',
+	'badimages-log-header' => "Dyma lòg y newidiadau i'r [[{{MediaWiki:Badimages-page}}|rhestr o ddelweddau gwaharddedig]].",
+	'badimages-log-add' => "wedi ychwanegu [[$1]] i'r rhestr o ddelweddau gwaharddedig",
 	'badimages-log-remove' => "tynnwyd [[$1]] o'r rhestr o ddelweddi gwael",
 	'badimages-page' => '{{ns:help}}:Rhestr o ddelweddi gwael',
 	'right-badimages' => "Diweddaru'r rhestr o ddelweddi gwael",

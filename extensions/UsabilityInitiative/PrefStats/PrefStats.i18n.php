@@ -1903,6 +1903,7 @@ Configura $wgPrefStatsTrackPrefs për trassé l epreferense.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'prefstats-xaxis' => 'موده (ساعتونه)',
 	'prefstats-factor-hour' => 'ساعت',
 	'prefstats-factor-sixhours' => 'شپږ ساعته',
 	'prefstats-factor-day' => 'ورځ',

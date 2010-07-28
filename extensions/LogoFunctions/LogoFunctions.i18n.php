@@ -31,9 +31,10 @@ $messages['af'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'logofunctions-desc' => 'Дадае функцыю парсэра для маніпуляцый зь лягатыпам {{GRAMMAR:родны|{{SITENAME}}}}',
+	'logofunctions-desc' => 'Дадае функцыю парсэра для маніпуляцый зь лягатыпам вікі',
 	'logofunctions-filenotexist' => 'Памылка: [[File:$1]] не існуе',
 );
 
@@ -50,7 +51,7 @@ $messages['br'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'logofunctions-desc' => 'Fügt eine Parserfunktion zum Einbinden eines Logos für das Wiki hinzu',
+	'logofunctions-desc' => 'Fügt eine Parserfunktion bezüglich des Wikis Logo hinzu',
 	'logofunctions-filenotexist' => 'Fehler: [[File:$1]] existiert nicht',
 );
 
@@ -127,6 +128,14 @@ $messages['id'] = array(
 	'logofunctions-filenotexist' => 'Kesalahan: [[File:$1]] tidak ada',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'logofunctions-desc' => 'ウィキのロゴに関するパーサー関数を追加する',
+	'logofunctions-filenotexist' => 'エラー：[[File:$1]]は存在しません',
+);
+
 /** Georgian (ქართული)
  * @author David1010
  */
@@ -139,6 +148,7 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'logofunctions-desc' => '위키의 로고에 관한 파서 훅들을 추가합니다.',
+	'logofunctions-filenotexist' => '오류: [[File:$1]]이 존재하지 않습니다',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -160,7 +170,7 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'logofunctions-desc' => 'Додава парсерска функција за поставање на логото на викито',
+	'logofunctions-desc' => 'Додава парсерска функција за логото на викито',
 	'logofunctions-filenotexist' => 'Грешка: [[File:$1]] не постои',
 );
 
@@ -200,7 +210,7 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'logofunctions-desc' => 'Adiciona uma função ao analisador sintáctico para definir o logótipo da wiki',
+	'logofunctions-desc' => 'Adiciona ao analisador sintáctico uma função relacionada com o logótipo da wiki',
 	'logofunctions-filenotexist' => 'Erro: o ficheiro [[File:$1]] não existe',
 );
 
@@ -224,7 +234,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'logofunctions-desc' => 'Добавляет функцию парсера для установки логотипа вики',
+	'logofunctions-desc' => 'Добавляет функцию парсера для работы с логотипом вики',
 	'logofunctions-filenotexist' => 'Ошибка. [[File:$1]] не существует.',
 );
 

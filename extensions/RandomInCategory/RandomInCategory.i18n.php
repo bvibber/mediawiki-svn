@@ -436,6 +436,18 @@ $messages['hu'] = array(
 	'randomincategory-submit' => 'Menj',
 );
 
+/** Armenian (Հայերեն)
+ * @author Pandukht
+ */
+$messages['hy'] = array(
+	'randomincategory' => 'Կատեգորիայի պատահական էջ',
+	'randomincategory-desc' => '[[Special:Randomincategory|Սպասարկող էջ]] կատեգորիայի պատահական էջի ստացման համար',
+	'randomincategory-toolbox' => 'Պատահական էջ',
+	'randomincategory-nocategory' => '$1 կատեգորիան գոյություն չունի կամ դատարկ է',
+	'randomincategory-label' => 'Կատեգորիա:',
+	'randomincategory-submit' => 'Անցնել',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

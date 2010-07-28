@@ -255,6 +255,13 @@ $messages['tr'] = array(
 	'firefoggcu-desc' => "Firefogg'un Toplu Yükleme iletişim kuralı",
 );
 
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'firefoggcu-desc' => 'Порційний протокол завантаження Firefogg',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
  */

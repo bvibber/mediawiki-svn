@@ -611,6 +611,15 @@ $messages['pms'] = array(
 	'wikieditor-loading' => 'Cariament',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor' => 'د پرمختللی ويکي متن د سمون ليدنمخ',
+	'wikieditor-wikitext-tab' => 'ويکي متن',
+	'wikieditor-loading' => 'د برسېرېدو په حال کې',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

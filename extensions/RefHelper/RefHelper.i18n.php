@@ -607,8 +607,16 @@ $messages['id'] = array(
 	'refhelper-search' => 'Cari',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'refhelper-label_authorsurname' => 'Áhá nke azú:',
+	'refhelper-title' => 'Íshí:',
+	'refhelper-volume' => 'Üzü:',
+	'refhelper-pages' => 'Ihü:',
+	'refhelper-year' => 'Afọr:',
+	'refhelper-category' => 'Ébéonọr $1:',
 	'refhelper-create' => 'Ké',
 	'refhelper-search' => 'Chöwá',
 );

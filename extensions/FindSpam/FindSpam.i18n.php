@@ -803,15 +803,16 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  * @author Misterr
  */
 $messages['ro'] = array(
-	'findspam' => 'Găsiți spam',
-	'findspam-desc' => 'Adaugă o [[Special:FindSpam|pagină specială]]  care vă permite să găsiți spam-ul recent adăugat.',
+	'findspam' => 'Caută spam',
+	'findspam-desc' => 'Extensia adaugă o [[Special:FindSpam|pagină specială]] care permite găsirea spamurilor recent adăugate.',
 	'findspam-ip' => 'Adresă IP:',
 	'findspam-ok' => 'OK',
-	'findspam-notextfound' => 'Nici o contribuție găsită',
-	'right-findspam' => 'Caută pentru spam-urile adăugate recent.',
+	'findspam-notextfound' => 'Nicio contribuție găsită',
+	'right-findspam' => 'Căutare după spamurile recent adăugate',
 );
 
 /** Tarandíne (Tarandíne)

@@ -1134,6 +1134,9 @@ Firwat se net hei weisen?',
 Mir kucken se demnächst no.
 Dir kënnt [$1 publizéiert Anekdote liesen].',
 	'storyboard-emailtitle' => 'Anekdot ass elo ofgespäichert',
+	'storyboard-emailbody' => 'Är Anekdot mam Titel "$1" gouf iwwerdro.
+Mir kucken se geschwënn no.
+Dir kënnt [$2 déi publizéiert Anekdote liesen].',
 	'storyreview' => 'Anekdot nokucken',
 	'storyboard-deleteimage' => 'Bild läschen',
 	'storyboard-done' => 'Fäerdeg',

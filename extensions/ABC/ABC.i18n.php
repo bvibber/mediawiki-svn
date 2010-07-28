@@ -37,14 +37,6 @@ $messages['qqq'] = array(
 	'abcvorbis' => '{{optional}}',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'abc-desc' => 'Tambahakan<code>&lt;abc&gt;</code> gasan format musik ABC',
-	'abcdownload' => 'Unduh:',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -127,6 +119,14 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'abc-desc' => 'Добавя етикет <code>&lt;abc&gt;</code> за форматиране на АВС музика',
 	'abcdownload' => 'Изтегляне:',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'abc-desc' => 'Tambahakan<code>&lt;abc&gt;</code> gasan format musik ABC',
+	'abcdownload' => 'Unduh:',
 );
 
 /** Bengali (বাংলা)
@@ -405,6 +405,14 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'abc-desc' => '<code>&lt;abc&gt;</code> tag ABC zeneleírás formázásához',
 	'abcdownload' => 'Letöltés:',
+);
+
+/** Armenian (Հայերեն)
+ * @author Pandukht
+ */
+$messages['hy'] = array(
+	'abc-desc' => 'Ավելացնում է <code>&lt;abc&gt;</code> թեգը ABC երաժշտության ֆորմատավորման համար',
+	'abcdownload' => 'Բեռնել՝',
 );
 
 /** Interlingua (Interlingua)

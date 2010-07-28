@@ -968,6 +968,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Rex
  */
@@ -990,6 +991,7 @@ $messages['id'] = array(
 	'importxml' => 'Impor XML',
 	'dt_import_selectfile' => 'Pilih berkas $1 untuk di impor:',
 	'dt_import_encodingtype' => 'Tipe penyandian',
+	'dt_import_summarydesc' => 'Ringkasan impor:',
 	'dt_import_editsummary' => '$1 impor',
 	'dt_import_importing' => 'Mengimpor...',
 	'dt_import_success' => '$1 {{PLURAL:$1|halaman|halaman}} akan di buat dari  berkas $2.',
@@ -1002,6 +1004,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'dt_viewxml_categories' => 'Ébéanọr',
 	'dt_xml_template' => 'Àtụ',
 );
 
@@ -1051,6 +1054,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author JtFuruhata
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'datatransfer-desc' => 'テンプレート呼び出しに関わるデータのインポートおよびエクスポートを可能にする',
@@ -1071,6 +1075,7 @@ $messages['ja'] = array(
 	'importxml' => 'XMLインポート',
 	'dt_import_selectfile' => 'インポートする $1 ファイルを選択してください:',
 	'dt_import_encodingtype' => 'エンコーディング方式',
+	'dt_import_summarydesc' => '移入の概要：',
 	'dt_import_editsummary' => '$1 のインポート',
 	'dt_import_importing' => 'インポート中…',
 	'dt_import_success' => '$2ファイルから$1{{PLURAL:$1|ページ}}がインポートされます。',

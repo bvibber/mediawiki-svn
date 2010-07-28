@@ -10484,6 +10484,7 @@ $messages['ja'] = array(
 	'configure-setting-wgExtensionFunctions' => '拡張機能の関数',
 	'configure-setting-wgExtensionMessagesFiles' => '拡張機能のメッセージファイル',
 	'configure-setting-wgExternalStores' => '外部ストレージの構成',
+	'configure-setting-wgSQLMode' => 'SQLモード',
 	'configure-setting-wgHooks' => 'フック',
 	'configure-setting-wgPagePropLinkInvalidations' => 'リンクテーブルを無効化するページプロパティ一覧',
 	'configure-setting-wgParserOutputHooks' => 'パーサ出力フック',

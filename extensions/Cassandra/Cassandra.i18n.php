@@ -18,13 +18,6 @@ $messages['qqq'] = array(
 	'cassandra-desc' => '{{desc}}',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -37,6 +30,13 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'cassandra-desc' => 'Захаваньне тэксту вэрсіі ў базе зьвестак [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
 );
 
 /** Breton (Brezhoneg)
@@ -170,6 +170,13 @@ $messages['ja'] = array(
  */
 $messages['ko'] = array(
 	'cassandra-desc' => '[http://cassandra.apache.org/ Apache Cassandra] 데이터베이스에 편집 내용을 저장',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'cassandra-desc' => 'Donn der Täx vun de Versione en ene <i lang="en">[http://cassandra.apache.org/ Apache Cassandra]</i> Datebank faßhallde.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -5016,6 +5016,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Chenzw
  * @author Liangent
  * @author Wmr89502270
@@ -5051,9 +5052,11 @@ $messages['zh-hans'] = array(
 	'contribstats-conversion' => '转换率（%）',
 	'contribstats-template' => '模板',
 	'contribstats-nodata' => '没有提供数据',
+	'contribstats-donatepage' => '捐助页面',
 	'contribstats-average' => '平均',
 	'contribstats-paypal-donations' => 'PayPal捐赠',
 	'contribstats-credit-card' => '信用卡',
+	'contribstats-fraud-note' => '有虚假的捐助存在。',
 	'fundraiserstatistics' => '募捐者统计',
 	'fundraiserstats-date' => '日期',
 	'fundraiserstats-day' => '$2的第$1日',
