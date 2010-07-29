@@ -689,7 +689,7 @@ class CodeRevision {
 		$dbr = wfGetDB( DB_SLAVE );
 		return array(
 			'cp_repo_id' => $this->mRepoId,
-			'cp_path LIKE ' . $dbr->addQuotes( $dbr->escapeLike( $path ) . '%' ),
+			'cp_path ' . $dbr->buildLike( $path, $dbr->anyString() ),
 			// performance
 			'cp_rev_id > ' . ( $this->mRepo->getLastStoredRev() - 20000 ),
 			// join conds

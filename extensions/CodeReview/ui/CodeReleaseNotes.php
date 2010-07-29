@@ -66,7 +66,7 @@ class CodeReleaseNotes extends CodeView {
 			$where = 'cr_id >= ' . intval( $this->mStartRev );
 		}
 		if ( $this->mPath ) {
-			$where .= ' AND (cr_path LIKE ' . $dbr->addQuotes( $dbr->escapeLike( "{$this->mPath}/" ) . '%' );
+			$where .= ' AND (cr_path ' . $dbr->buildLike( "{$this->mPath}/", $dbr->anyString() );
 			$where .= ' OR cr_path = ' . $dbr->addQuotes( $this->mPath ) . ')';
 		}
 		# Select commits within this range...
