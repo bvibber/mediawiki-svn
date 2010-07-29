@@ -93,6 +93,23 @@ mw.Sequencer.prototype = {
 	},
 	
 	/**
+	 * Update the smil xml and then update the interface
+	 */
+	updateSmilXML: function( smilXML ){
+		mw.log("Sequencer::updateSmilXML");
+		var _this = this;
+		
+		// Update the embedPlayer smil: 
+		this.getSmil().updateFromString( smilXML );
+		
+		// Get a duration ( forceRefresh to clear the cache ) 
+		this.getEmbedPlayer().getDuration( true );
+		
+		// redraw the timeline
+		this.getTimeline().drawTimeline();
+	},
+	
+	/**
 	 * Draw the initial sequence ui, uses ui.layout for adjustable layout  
 	 */
 	drawUI: function( ){
@@ -116,6 +133,8 @@ mw.Sequencer.prototype = {
 			// Add the timeline
 			_this.getTimeline().drawTimeline();	
 			
+			// initialize the edit actions ( stores the initial state for undo / redo actions )  
+			_this.getActionsEdit();
 		});		
 		// Draw the top level menu
 		this.getMenu().drawMenu();
@@ -153,9 +172,6 @@ mw.Sequencer.prototype = {
 		}
 		return this.actionsEdit;
 	},
-	
-	
-	
 	getRender: function(){
 		if( !this.render ){
 			this.render = new mw.SequencerRender( this );

@@ -50,7 +50,12 @@ mw.SmilBody.prototype = {
 		if( !$node.attr('id')
 			&& !$node.attr( 'xml:id' )
 		){
-			$node.attr('id', _this.getNodeSmilType( $node ) + '_' + _this.idIndex );
+			// Make sure the id does not already exist ( should be a rare case ) 
+			var idString = _this.getNodeSmilType( $node ) + '_' + _this.idIndex;
+			if( this.$dom.find( '#' + idString ).length != 0 ){
+				idString+= '_' + Math.random();
+			}
+			$node.attr('id',  idString);
 			mw.log('SmilBody:: gave: ' + $node.get(0).nodeName + ' id: ' + $node.attr('id') );
 			_this.idIndex++;
 		}
@@ -409,6 +414,8 @@ mw.SmilBody.prototype = {
 	 * animation, audio, img, text, textstream and video -> 'ref',  
 	 */
 	getNodeSmilType: function( $node ){
+		if( typeof wgMyCoolGlobal != 'undefined')
+			debugger;
 		var blockType = $j( $node ).get(0).nodeName;
 		
 		if( this.smilBlockTypeMap[ blockType ] ){

@@ -57,14 +57,14 @@ mw.SequencerMenu.prototype = {
 					'shortCut' : 'ctrl Z',
 					'icon' : 'arrowreturnthick-1-w',
 					'action': function( _this ){
-						mw.log("SequencerMenu::undo");
+						_this.sequencer.getActionsEdit().undo();
 					}
 				},
 				'redo' : {
 					'shortCut' : 'ctrl Y',
 					'icon' : 'arrowreturnthick-1-e',
-					'action' : function( _this ){
-						mw.log("SequencerMenu::redo");
+					'action' : function( _this ){						
+						_this.sequencer.getActionsEdit().redo();
 					}
 				},
 				'divider': true,

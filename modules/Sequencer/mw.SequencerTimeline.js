@@ -109,8 +109,9 @@ mw.SequencerTimeline.prototype = {
 		// for now assume all tracks start at zero:
 		var startOffset = 0;
 		
-		// For every ref node in this sequence draw its thumb: 
-		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){				
+		// For every ref node in this sequence draw its thumb: 		
+		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){
+			mw.log('SequenceTimeline::drawTrackThumbs:' + $node.attr('id') );
 			// Check Buffer for when the first frame of the smilNode can be grabbed: 		
 			smil.getBuffer().bufferedSeek( $node, 0, function(){
 				//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getAssetId( $node ));
@@ -207,37 +208,26 @@ mw.SequencerTimeline.prototype = {
 	},
 	
 	/**
-	 * @param {Element} selectedClip to be removed
-	 */
-	removeClip: function(selectedClip){
-		var smil = this.sequencer.getSmil();
-		// remove  clip directly 
-		if( selectedClip ){
-			// Remove from smil dom:
-			smil.removeById( $j(selectedClip).data('smilId') );
-			// Remove from timeline dom: 
-			$j( selectedClip ).unbind().fadeOut(function(){ 
-				$j(this).remove() 
-			});			
-			// Invalidate / update embedPlayer duration: 
-			this.sequencer.getEmbedPlayer().getDuration( true );
-		}
-	},
-	/**
 	 * Remove selected clips and update the smil player
 	 */
-	removeSelectedClips: function(  ){		
+	removeSelectedClips: function(){				
 		var smil = this.sequencer.getSmil();
-		// modify the smil.dom and rebuild
 		this.getTimelineContainer().find( '.selectedClip' ).each(function( inx, selectedClip ){
 			// Remove from smil dom:
 			smil.removeById( $j(selectedClip).data('smilId') );
 			// Remove from timeline dom: 
-			$j( selectedClip ).remove();			
+			$j( selectedClip ).fadeOut('fast', function(){
+				$j(this).remove();
+			});
 		})		
+		
 		// Invalidate / update embedPlayer duration: 
 		this.sequencer.getEmbedPlayer().getDuration( true );
+
+		// Register the edit state for undo / redo 
+		this.sequencer.getActionsEdit().registerEdit();
 	},
+	
 	handleReorder: function ( movedClip ){
 		var _this = this;
 		var smil = this.sequencer.getSmil();
@@ -390,8 +380,12 @@ mw.SequencerTimeline.prototype = {
 			)
 			.hide()
 			.buttonHover()
-			.click( function(){					
-				_this.removeClip( $timelineClip )
+			.click( function(){
+				// de-select any other selected clips
+				_this.getTimelineContainer().removeClass( 'selectedClip' );
+				// add the selected clip class to the current: 
+				$timelineClip.addClass( 'selectedClip' );
+				_this.removeSelectedClips();
 			})
 		)
 		// Add mouse over thumb "edit", "remove"  button

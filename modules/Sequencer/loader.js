@@ -36,7 +36,10 @@
 	
 	mw.setDefaultConfig({
 		// If the sequencer should attribute kaltura
-		"Sequencer.KalturaAttribution" : true
+		"Sequencer.KalturaAttribution" : true,
+
+		// The size of the undo stack 
+		"Sequencer.numberOfUndos" : 100
 	})
 	
 	
