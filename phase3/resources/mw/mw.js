@@ -747,5 +747,5 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		};
 	} )();
 	// Attach to window
-	window.mw = $.extend( 'mw' in window ? window.mw : {}, this );
+	window.MediaWiki = window.mw = $.extend( 'mw' in window ? window.mw : {}, this );
 } )();
