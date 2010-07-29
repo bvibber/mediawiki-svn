@@ -697,6 +697,16 @@ $messages['ksh'] = array(
 	'tooltip-pt-optin-feedback' => 'Jiff Röckmäldunge aff övver Ding Äfahrunge met dä neu Saache',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'optin-try' => 'Beta biceribîne',
+	'tooltip-pt-optin-try' => 'Taybetmendiyên nû biceribîne',
+	'optin-leave' => 'Ji betayê derkeve',
+	'tooltip-pt-optin-leave' => 'Taybetmendiyên nû bigire',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Purodha
  * @author Robby
@@ -777,6 +787,16 @@ $messages['ml'] = array(
 	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകൾ വേണ്ട',
 	'optin-feedback' => 'ബീറ്റയുടെ ഉപയോഗാനുഭവമറിയിക്കുക',
 	'tooltip-pt-optin-feedback' => 'പുതിയ സവിശേഷതകളുമായുള്ള താങ്കളുടെ അനുഭവം പങ്കു വെയ്ക്കുക',
+);
+
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'optin-try' => '↓ बीटा वापरुन बघा',
+	'optin-leave' => '↓ बीटा त्यागुन बाहेर
+↓ बीटा सोडा',
+	'tooltip-pt-optin-leave' => '↓ नविन चेहरामोहरा बंद करा',
 );
 
 /** Malay (Bahasa Melayu)

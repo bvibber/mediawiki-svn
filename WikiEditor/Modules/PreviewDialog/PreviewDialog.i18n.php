@@ -610,8 +610,9 @@ $messages['qu'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
+	'wikieditor-previewDialog-preference' => 'Activează caseta de dialog pentru previzualizare',
 	'wikieditor-previewDialog-tab' => 'Previzualizare',
-	'wikieditor-previewDialog-loading' => 'Încărcare...',
+	'wikieditor-previewDialog-loading' => 'Se încarcă...',
 );
 
 /** Tarandíne (Tarandíne)
@@ -756,8 +757,10 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'wikieditor-previewDialog-preference' => 'Увімкнути діалог попереднього перегляду',
 	'wikieditor-previewDialog-tab' => 'Попередній перегляд',
 	'wikieditor-previewDialog-loading' => 'Завантаження...',
 );

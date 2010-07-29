@@ -1889,6 +1889,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -2024,6 +2025,9 @@ $messages['br'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'Telougou',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
+	'wikieditor-toolbar-characters-page-thai' => 'Thai',
+	'wikieditor-toolbar-characters-page-lao' => 'Lao',
+	'wikieditor-toolbar-characters-page-khmer' => 'Khmer',
 	'wikieditor-toolbar-section-help' => 'Skoazell',
 	'wikieditor-toolbar-help-heading-description' => 'Deskrivadur',
 	'wikieditor-toolbar-help-heading-syntax' => 'Ar pezh a skrivit',
@@ -2050,9 +2054,6 @@ $messages['br'] = array(
 	'wikieditor-toolbar-help-content-xlink-description' => 'Liamm diavaez',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org Testenn al liamm]<br />[http://www.example.org]<br />http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Testenn al liamm</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
-	'wikieditor-toolbar-help-content-heading1-description' => 'Titl a live kentañ',
-	'wikieditor-toolbar-help-content-heading1-syntax' => '= Testenn an titl =',
-	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Testenn an titl</h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => 'Titl a eil live',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== Testenn an titl ==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>Testenn an titl</h2>',
@@ -9590,6 +9591,76 @@ $messages['ksh'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'Nommaale Täx<dl><dd>Enjerök<dl><dd>Un norrens enjerök</dd></dl></dd></dl>',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-toolbar-tool-bold' => 'Qalind',
+	'wikieditor-toolbar-tool-bold-example' => 'Nivîsa qalind',
+	'wikieditor-toolbar-tool-italic' => 'Xwar',
+	'wikieditor-toolbar-tool-italic-example' => 'Nivîsa xwar',
+	'wikieditor-toolbar-tool-ilink' => 'Lînka hundirî',
+	'wikieditor-toolbar-tool-ilink-example' => 'Sernavê lînkê',
+	'wikieditor-toolbar-tool-xlink' => 'Lînka derveyî (pêşeka http:// ji bîr neke)',
+	'wikieditor-toolbar-tool-xlink-example' => 'http://www.minak.com sernavê lînkê',
+	'wikieditor-toolbar-tool-link' => 'Lînk',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Betal',
+	'wikieditor-toolbar-tool-reference-title' => 'Referans têxe',
+	'wikieditor-toolbar-tool-reference-insert' => 'Têxistin',
+	'wikieditor-toolbar-tool-reference-text' => 'Teksta referansê',
+	'wikieditor-toolbar-tool-signature' => 'Destnîşan û demxeya demê',
+	'wikieditor-toolbar-section-advanced' => 'Pêşketî',
+	'wikieditor-toolbar-tool-heading' => 'Sernivîs',
+	'wikieditor-toolbar-tool-heading-1' => 'Asta 1',
+	'wikieditor-toolbar-tool-heading-2' => 'Asta 2',
+	'wikieditor-toolbar-tool-heading-3' => 'Asta 3',
+	'wikieditor-toolbar-tool-heading-4' => 'Asta 4',
+	'wikieditor-toolbar-tool-heading-5' => 'Asta 5',
+	'wikieditor-toolbar-tool-heading-example' => 'Teksta sernivîsê',
+	'wikieditor-toolbar-group-format' => 'Teşe',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Nivîs ku nebe formatkirin li vir têxe',
+	'wikieditor-toolbar-tool-redirect-example' => 'Navê rûpela hedef',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Rêzik',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Sitûn',
+	'wikieditor-toolbar-tool-table-example' => 'Mînak',
+	'wikieditor-toolbar-tool-table-preview' => 'Pêşdîtin',
+	'wikieditor-toolbar-tool-table-insert' => 'Têxistin',
+	'wikieditor-toolbar-tool-table-cancel' => 'Betal',
+	'wikieditor-toolbar-tool-replace-close' => 'Girtin',
+	'wikieditor-toolbar-characters-page-latin' => 'Latinî',
+	'wikieditor-toolbar-characters-page-latinextended' => 'Latinî berfirehkirî',
+	'wikieditor-toolbar-characters-page-ipa' => 'IPA',
+	'wikieditor-toolbar-characters-page-symbols' => 'Sembol',
+	'wikieditor-toolbar-characters-page-greek' => 'Yewnanî',
+	'wikieditor-toolbar-characters-page-cyrillic' => 'Kirîlî',
+	'wikieditor-toolbar-characters-page-arabic' => 'Erebî',
+	'wikieditor-toolbar-characters-page-persian' => 'Farsî',
+	'wikieditor-toolbar-characters-page-hebrew' => 'Îbranî',
+	'wikieditor-toolbar-characters-page-bangla' => 'Bangla',
+	'wikieditor-toolbar-characters-page-telugu' => 'Telûgû',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Gucaratî',
+	'wikieditor-toolbar-characters-page-thai' => 'Tay',
+	'wikieditor-toolbar-characters-page-lao' => 'Lao',
+	'wikieditor-toolbar-characters-page-khmer' => 'Xmer',
+	'wikieditor-toolbar-section-help' => 'Alîkarî',
+	'wikieditor-toolbar-help-heading-description' => 'Rave',
+	'wikieditor-toolbar-help-page-format' => 'Teşekirin',
+	'wikieditor-toolbar-help-page-link' => 'Lînk',
+	'wikieditor-toolbar-help-page-heading' => 'Sernivîs',
+	'wikieditor-toolbar-help-page-list' => 'Lîste',
+	'wikieditor-toolbar-help-page-file' => 'Pel',
+	'wikieditor-toolbar-help-page-reference' => 'Referans',
+	'wikieditor-toolbar-help-page-discussion' => 'Guftûgo',
+	'wikieditor-toolbar-help-content-italic-description' => 'Îtalîk',
+	'wikieditor-toolbar-help-content-italic-syntax' => "''Nivîşa îtalîk''",
+	'wikieditor-toolbar-help-content-italic-result' => '<em>Nivîsa îtalîk</em>',
+	'wikieditor-toolbar-help-content-bold-description' => 'Qalind',
+	'wikieditor-toolbar-help-content-bold-syntax' => "'''Nivîsa qalind'''",
+	'wikieditor-toolbar-help-content-bold-result' => '<strong>Nivîsa qalind</strong>',
+	'wikieditor-toolbar-help-content-bolditalic-description' => 'Qalind û îtalîk',
+);
+
 /** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
@@ -10984,6 +11055,8 @@ $messages['mr'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'तेलगु भाषा',
 	'wikieditor-toolbar-characters-page-sinhala' => 'सिंहला',
 	'wikieditor-toolbar-characters-page-gujarati' => 'गुजराती भाषा',
+	'wikieditor-toolbar-characters-page-thai' => '↓ थाई भाषा',
+	'wikieditor-toolbar-characters-page-lao' => '↓ लाऒ भाषा',
 	'wikieditor-toolbar-section-help' => 'सहाय्य
 मदत',
 	'wikieditor-toolbar-help-heading-description' => 'वर्णन',
@@ -15427,6 +15500,9 @@ $messages['sl'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugijski',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Singalščina',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Gudžarati',
+	'wikieditor-toolbar-characters-page-thai' => 'Tajski',
+	'wikieditor-toolbar-characters-page-lao' => 'Laoški',
+	'wikieditor-toolbar-characters-page-khmer' => 'Kmerski',
 	'wikieditor-toolbar-section-help' => 'Pomoč',
 	'wikieditor-toolbar-help-heading-description' => 'Opis',
 	'wikieditor-toolbar-help-heading-syntax' => 'Kaj vtipkaš',
@@ -15453,9 +15529,6 @@ $messages['sl'] = array(
 	'wikieditor-toolbar-help-content-xlink-description' => 'Zunanja povezava',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org Oznaka povezave] <br /> [http://www.example.org] <br /> http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Oznaka povezave</a> <br /> <a href='#' class='external autonumber'>[1]</a> <br /> <a href='#' class='external'>http://www.example.org</a>",
-	'wikieditor-toolbar-help-content-heading1-description' => 'Prvostopenjsko poglavje',
-	'wikieditor-toolbar-help-content-heading1-syntax' => '= Besedilo naslovne vrstice =',
-	'wikieditor-toolbar-help-content-heading1-result' => '<h1> Besedilo naslovne vrstice </h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => 'Drugostopenjsko poglavje (priporočeno)',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== Besedilo naslovne vrstice ==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>Besedilo naslovne vrstice</h2>',

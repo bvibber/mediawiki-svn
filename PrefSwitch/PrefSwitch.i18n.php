@@ -3670,6 +3670,8 @@ $messages['mr'] = array(
 	'prefswitch-survey-question-os' => '↓ आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
 	'prefswitch-survey-answer-os-other' => '↓ इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
 	'prefswitch-title-switched-on' => '↓ मजा करा!',
+	'prefswitch-title-switched-off' => '↓ धन्यवाद
+↓ आभारी आहे',
 );
 
 /** Malay (Bahasa Melayu)
@@ -5592,6 +5594,7 @@ $messages['ug-arab'] = array(
  * @author Тест
  */
 $messages['uk'] = array(
+	'prefswitch-desc' => 'Дозволяє користувачам змінювати параметри налаштувань',
 	'prefswitch-jswarning' => "Пам'ятайте, що при зміні теми оформлення ваш [[User:$1/$2.js|$2 JavaScript]]  треба скопіювати до [[{{ns:user}}:$1/vector.js]] <!-- або [[{{ns:user}}:$1/common.js]]-->, щоб він продовжив працювати.",
 	'prefswitch-csswarning' => 'Ваші [[User:$1/$2.css|власні стилі для $2]] не працюватимуть під новим оформленням. Ви можете додати власні CSS для "векторного" оформлення на [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Так',
@@ -5949,6 +5952,7 @@ Wikimedia Foundation嘅可用性小組同社群嘅志願者一齊係列努力令
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  * @author Onecountry
+ * @author Xiaomingyan
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
@@ -5973,6 +5977,12 @@ $messages['zh-hans'] = array(
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => '我不喜欢它的新工具列。',
 	'prefswitch-survey-answer-whyoff-other' => '其他原因：',
 	'prefswitch-survey-question-browser' => '您用哪款浏览器？',
+	'prefswitch-survey-answer-browser-cb' => '谷歌浏览器Beta',
+	'prefswitch-survey-answer-browser-c1' => '谷歌浏览器1',
+	'prefswitch-survey-answer-browser-c2' => '谷歌浏览器2',
+	'prefswitch-survey-answer-browser-c3' => '谷歌浏览器3',
+	'prefswitch-survey-answer-browser-c4' => '谷歌浏览器4',
+	'prefswitch-survey-answer-browser-c5' => '谷歌浏览器5',
 	'prefswitch-survey-answer-browser-other' => '其它浏览器：',
 	'prefswitch-survey-question-os' => '您用哪套操作系统？',
 	'prefswitch-survey-answer-os-other' => '其它操作系统：',

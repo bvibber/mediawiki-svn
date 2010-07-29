@@ -4109,6 +4109,12 @@ $messages['mn'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'optin-title-justoptedin' => '↓ बीटा चेहरामोहर्‍यात स्वागत',
+	'optin-title-justoptedout' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद
+↓ बीटा वापरुन बघण्याबद्दल आभार',
+	'optin-feedback-intro' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद.
+या नविन चेहरामोहर्‍याबद्दल आपणास काय वाटते हे आम्हास जाणुन घ्यायचे आहे,म्हणुन खालील ऎच्छीक सर्वेक्षण आपण भरुन दिल्यास आम्हाला आवडेल.',
+	'optin-feedback-back' => '↓ जर आपणास सर्वेक्षण भरावयाचे नसल्यास आपण  $1 ला परत जाउ शकता.',
 	'optin-survey-no' => 'नाही',
 	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
 	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
