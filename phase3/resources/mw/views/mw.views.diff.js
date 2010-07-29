@@ -1,5 +1,7 @@
 /*
  * Diff-view progressive enhancement (ported from skins/common/diff.js)
+ * 
+ * Fixes an overflow bug in old versions of Firefox
  */
 
 ( function( $, mw ) {
