@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="commonist" default="dist" basedir=".">
+	<!-- ==== configuration ==== -->
+
+	<!-- environment -->
+	<property environment="env"/>
+	<property file="${user.home}/.build.properties"/>	<!-- these override the project local version -->
+	<property file="build.properties"/>
+
+	<!-- scala -->
+	<property name="scala.home"		value="${env.SCALA_HOME}"/>
+	<property name="scala.library"	value="${scala.home}/lib/scala-library.jar"/>
+	<property name="scala.compiler" value="${scala.home}/lib/scala-compiler.jar"/>
+	<!-- @see http://www.scala-lang.org/docu/ant/index.html -->
+	<!-- 
+	TODO maybe try resource="scala/tools/ant/antlib.xml" so 
+	only one definition with a classpath is necessary
+	-->
+	<taskdef name="scalac" classname="scala.tools.ant.Scalac"
+			classpath="${scala.library}:${scala.compiler}"/>
+	<taskdef name="scaladoc" classname="scala.tools.ant.Scaladoc"
+			classpath="${scala.library}:${scala.compiler}"/>
+			
+	<!-- TODO unused -->
+	<path id="scala.ant">
+		<pathelement location="${scala.library}"/>
+		<pathelement location="${scala.compiler}"/>
+	</path>
+	
+	<path id="build.classpath">
+		<pathelement location="${scala.library}"/>
+		<fileset dir="lib"/>
+	</path>
+	
+	<!-- project specifics -->
+	<property name="source.jars"	value="minibpp-src.jar"/>
+	<property name="binary.jars"	value="scala-library.jar,bsh-2.0b2-fixed.jar,minibpp.jar,sanselan-0.97-incubator.jar,commons-httpclient-3.1.jar,commons-codec-1.3.jar,commons-logging-1.1.jar"/>
+	  
+	<!-- ==== main	==== -->
+	
+	<target name="clean" description="deletes everything that can be rebuilt">
+		<delete dir="build"/>
+	</target>
+	
+	<!-- ==== compile  ==== -->
+	
+	<!--
+	<target name="version" description="create a version file in etc">
+		<echo file="etc/version.txt" message="${version}"/>
+		 
+		<copy file="etc/version.txt" toDir="build/etc"/>
+		<replace file="build/etc/version.txt" value="###">
+			<replacefilter token="@version@"	value="${version}"/>
+		</replace>
+	</target>
+	-->
+	
+	<target name="compile" description="compiles scala classes">
+		<mkdir dir="build/classes"/>
+		<scalac 
+			srcdir="src/scala" 
+			destdir="build/classes" 
+			encoding="${scala.encoding}" 
+			classpathref="build.classpath"
+			deprecation="yes"
+			unchecked="yes"
+		>
+			<!-- addparams -->
+			<include name="**/*.scala"/>
+		</scalac>
+	</target>
+	
+	<target name="jar" depends="compile" description="create the binary jar file">
+		<mkdir dir="build/jar"/>
+		<jar jarfile="build/jar/${project}.jar">
+			<zipfileset dir="build/classes"/>
+			<zipfileset dir=".">
+				<include name="image/${ws.icon}"/>
+				<include name="image/${ws.splash}"/>
+				<include name="etc/version.txt"/>
+				<include name="etc/wikis.txt"/>
+				<include name="etc/licenses.txt"/>
+				<include name="etc/messages.properties"/>
+				<include name="etc/messages_*.properties"/>
+				<include name="etc/image_*.bpp"/>
+				<include name="etc/gallery_*.bpp"/>
+			</zipfileset>
+			<manifest>
+				<attribute name="Application"	value="${description}" />
+				<attribute name="Version"		value="${version}" />
+				<attribute name="Creator"		value="${author}"/>
+				<attribute name="License"		value="${license}"/>
+				
+				<!-- 
+				TODO: use a property, add binary.jars to classpath (manifestclasspath from ant 1.7.0)
+				<attribute name="Main-Class"	value="net.psammead.commonist.Commonist"/>
+				-->
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="doc" description="prepare documentation files">
+		<mkdir dir="build/doc"/>
+		<fixcrlf  srcDir="doc" destDir="build/doc" includes="changes.txt,index.html"
+			tab="remove" tablength="4" eol="crlf" eof="remove" encoding="ISO-8859-1" fixlast="true" />
+		<replace file="build/doc/index.html" token="$(project)" value="${project}"/>
+		<replace file="build/doc/index.html" token="$(version)" value="${version}"/>
+	</target>
+	
+	<!-- ==== full dist ==== -->
+	
+	<target name="dist" depends="compile" description="create a distribution zip">
+		<mkdir dir="build"/>
+		<zip destfile="build/${project}-${version}.zip">
+			<zipfileset dir="." prefix="${project}-${version}" filemode="770">
+				<include name="bin/*"/> 
+			</zipfileset>
+			<zipfileset dir="." prefix="${project}-${version}">
+				<include name="doc/index.html"/>
+				<include name="doc/changes.txt"/>
+				<include name="build.*"/>
+				<include name="src/scala/**"/>
+				<include name="etc/**"/>
+				<exclude name="${sign.keystore}"/>
+				<include name="image/**"/>
+				<include name="lib/**"/>
+				<include name="build/classes/**"/>
+			</zipfileset>
+		</zip>
+	</target>
+	
+	<!-- ==== macintosh app ==== -->
+	
+	<target name="mac-dist" depends="jar" description="create a macintosh .app">
+		<mkdir dir="build/etc"/>
+		<copy file="etc/Info.plist" toDir="build/etc"/>
+		<replace file="build/etc/Info.plist" value="###">
+			<replacefilter token="@bundleName@"			value="${mac.bundle.name}"/>
+			<replacefilter token="@bundleIdentifier@"	value="${mac.bundle.identifier}"/>
+			<replacefilter token="@bundleIcons@"		value="${mac.bundle.icons}"/>
+			<replacefilter token="@bundleInfoString@"	value="${version}"/>
+			<replacefilter token="@bundleVersion@"		value="${version}"/>
+			<replacefilter token="@bundleShortVersion@"	value="${version}"/>
+		</replace>
+		
+		<mkdir dir="build"/>
+		<zip destfile="build/${mac.app}.zip">
+			<zipfileset dir="/System/Library/Frameworks/JavaVM.framework/Versions/Current/Resources/MacOS" 
+				includes="JavaApplicationStub" 	prefix="${mac.app}/Contents/MacOS" filemode="755"/>
+			<zipfileset dir="etc"		includes="PkgInfo"				prefix="${mac.app}/Contents"/>
+			<zipfileset dir="build/etc"	includes="Info.plist"			prefix="${mac.app}/Contents"/>
+			<zipfileset dir="image"		includes="${mac.bundle.icons}"	prefix="${mac.app}/Contents/Resources"/>
+			<zipfileset dir="lib"		includes="${binary.jars}"		prefix="${mac.app}/Contents/Resources/Java"/>
+			<zipfileset dir="build/jar"	includes="${project}.jar"		prefix="${mac.app}/Contents/Resources/Java"/>
+		</zip>
+	</target>
+
+	<!-- ==== webstart app ==== -->
+	
+	<target name="ws-genkey" description="generates a keyStore for signing our jars">
+		<genkey alias="${sign.alias}" storepass="${sign.storepass}" 
+				keystore="${sign.keystore}" keypass="${sign.keypass}"
+				dname="${sign.dname}"/>
+	</target>
+	
+	<target name="ws-sign" depends="jar" description="create signed versions of all jars for webstart">
+		<mkdir dir="build/ws"/>
+		<copy toDir="build/ws">
+			<fileset dir="build/jar"/>
+			<fileset dir="lib" includes="${binary.jars}"/>
+		</copy>
+		<signjar 
+			alias="${sign.alias}"
+			storepass="${sign.storepass}"
+			keystore="${sign.keystore}"
+			keypass="${sign.keypass}"
+		>
+			<!-- jar="build/signed-jar/${project}.jar" -->
+			<fileset dir="build/ws" includes="*.jar"/>
+		</signjar>
+	</target>
+	
+	<target name="ws-dist" depends="ws-sign" description="create a zipfile containing everything needed for webstart">
+		<copy file="etc/${ws.jnlp}" toDir="build/ws"/>
+		<replace file="build/ws/${ws.jnlp}" value="###">
+			<replacefilter token="@jnlp@"			value="${ws.jnlp}"/>
+			<replacefilter token="@title@"			value="${ws.title}"/>
+			<replacefilter token="@vendor@"			value="${ws.vendor}"/>
+			<replacefilter token="@icon@"			value="${ws.icon}"/>
+			<replacefilter token="@splash@"			value="${ws.splash}"/>
+			<replacefilter token="@codebase@"		value="${ws.codebase}"/>
+			<replacefilter token="@mainclass@"		value="${ws.mainclass}"/>
+			<replacefilter token="@homepage@"		value="${ws.homepage}"/>
+			<replacefilter token="@description@"	value="${ws.description}"/>
+			<replacefilter token="@shortdesc@"		value="${ws.shortdesc}"/>
+		</replace>
+		<zip destfile="build/${project}-${version}-ws.zip">
+			<zipfileset dir="build/ws">
+				<include name="${ws.jnlp}"/>
+				<include name="*.jar"/>
+			</zipfileset>
+			<zipfileset dir="image">
+				<include name="${ws.icon}"/>
+				<include name="${ws.splash}"/>
+			</zipfileset>
+		</zip>
+	</target>
+	
+	<!-- ==== export ==== -->
+
+	<target name="import" description="import artefacts from other projects">
+		<ant dir="../minibpp" antfile="build.xml" target="export" inheritAll="false"/>
+		<copy toDir="lib">
+			<fileset dir="../minibpp/build/export" includes="minibpp.jar,minibpp-src.jar"/>
+		</copy>
+	</target>
+	
+	<target name="export" depends="doc,dist,ws-dist" description="create artefacts">
+		<property name="export.dir" value="build/export"/>
+		<mkdir dir="${export.dir}"/>
+		<copy todir="${export.dir}">
+			<fileset dir="build/doc"	includes="changes.txt,index.html"/>
+			<fileset dir="build"		includes="${project}-${version}.zip"/>
+		</copy>
+		<unzip src="build/${project}-${version}-ws.zip" dest="${export.dir}/ws" overwrite="true"/>
+	</target>
+</project>
