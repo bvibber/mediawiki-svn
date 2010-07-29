@@ -1603,14 +1603,18 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
+	'prefstats-xaxis' => '  ↓ कालावधी (तासात)',
 	'prefstats-factor-hour' => 'तास',
 	'prefstats-factor-sixhours' => 'सहा तास',
 	'prefstats-factor-day' => 'दिवस',
 	'prefstats-factor-week' => 'आठवडा',
 	'prefstats-factor-twoweeks' => 'दोन आठवडे',
 	'prefstats-factor-fourweeks' => 'चार आठवडे',
+	'prefstats-legend-out' => '↓ निवडीतुन बाहेर',
+	'prefstats-legend-in' => '↓ निवडुन आत',
 );
 
 /** Malay (Bahasa Melayu)

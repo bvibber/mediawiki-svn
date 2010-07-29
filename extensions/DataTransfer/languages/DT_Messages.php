@@ -786,6 +786,7 @@ $messages['gsw'] = array(
 	'importxml' => 'XML importiere',
 	'dt_import_selectfile' => 'Bitte wehl d $1-Datei zum importiere uus:',
 	'dt_import_encodingtype' => 'Verschlisseligstyp',
+	'dt_import_summarydesc' => 'Zämmefassig vum Import:',
 	'dt_import_editsummary' => '$1-Import',
 	'dt_import_importing' => 'Am Importiere ...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Syte|Syte}} wäre us dr $2-Datei aagleit.',

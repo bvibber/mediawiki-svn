@@ -868,6 +868,7 @@ $messages['ksh'] = array(
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author Erdal Ronahi
  */
 $messages['ku-latn'] = array(
 	'contributors' => 'Bikarhêner',
@@ -879,7 +880,7 @@ $messages['ku-latn'] = array(
 	'contributors-others-long' => 'Li vê derê hên $1 bikarhênerên din yê vê rûpelê hene.',
 	'contributors-others' => 'û $1 yên din',
 	'contributors-badtitle' => 'Sernavekî şaş.',
-	'contributors-nosuchpage' => 'Gotarê $2 tune ye.',
+	'contributors-nosuchpage' => 'Rûpela $1 tune.',
 );
 
 /** Cornish (Kernewek)

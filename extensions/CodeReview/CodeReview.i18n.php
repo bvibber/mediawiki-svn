@@ -999,6 +999,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -1035,6 +1036,7 @@ $messages['br'] = array(
 	'code-author-unlink' => 'diliammañ ?',
 	'code-author-unlinksuccess' => 'Diliammet eo bet an aozer $1',
 	'code-author-badtoken' => "Fazi en dalc'h e-ser seveniñ an ober-mañ.",
+	'code-author-total' => 'Niver hollek a oberer',
 	'code-browsing-path' => "Hentad an adweladennoù a-benn '''$1'''",
 	'code-field-id' => 'Adweladenn',
 	'code-field-author' => 'Aozer',
@@ -1114,6 +1116,9 @@ URL klok : $3
 Diverrañ eus ar c\'hemmoù :
 
 $4',
+	'code-stats' => 'Stadegoù',
+	'code-stats-staus-breakdown' => 'Niver a azgweladur hervez ar stad',
+	'code-stats-count' => 'Niver a azgweladur',
 	'repoadmin' => "Melestradurezh an dastumlec'hioù",
 	'repoadmin-new-legend' => 'Krouiñ ur sanailh nevez',
 	'repoadmin-new-label' => 'Anv ar sanailh :',
@@ -3194,7 +3199,7 @@ $messages['gl'] = array(
 	'code-authors' => 'autores',
 	'code-status' => 'estados',
 	'code-tags' => 'etiquetas',
-	'code-authors-text' => 'A continuación está a lista cos autores das respostas por orde do nome da tarefa. As contas de wiki local móstranse entre parénteses.',
+	'code-authors-text' => 'A continuación está a lista cos autores das respostas ordenados por nome. As contas do wiki local móstranse entre parénteses.',
 	'code-author-haslink' => 'O autor é ligado co usuario do wiki chamado $1',
 	'code-author-orphan' => 'Este autor non ten ningunha ligazón con algunha conta do wiki',
 	'code-author-dolink' => 'Ligar este autor cun usuario do wiki:',

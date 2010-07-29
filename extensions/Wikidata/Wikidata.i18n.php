@@ -5559,6 +5559,7 @@ $messages['hil'] = array(
  * @author CERminator
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Tivek
  */
 $messages['hr'] = array(
 	'langman_langname' => 'Naziv jezika:',
@@ -5568,6 +5569,7 @@ $messages['hr'] = array(
 	'langman_field_optional' => '(opcionalno)',
 	'langman_addlang' => 'Dodaj jezik',
 	'importlangnames' => 'Wikidata: Uvoz jezičnih naziva',
+	'datasearch' => 'Wikidata: Pretraživanje podataka',
 	'datasearch_language' => 'Jezik:',
 	'datasearch_found_word' => 'Pronađena riječ',
 	'datasearch_meaning' => 'Značenje',

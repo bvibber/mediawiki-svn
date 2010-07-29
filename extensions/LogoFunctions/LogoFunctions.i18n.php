@@ -100,7 +100,7 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'logofunctions-desc' => 'Parserfunktion yyfiege zum Yybinde vun eme Logos fir s Wiki',
+	'logofunctions-desc' => 'Parserfunktion yyfiege zum Wiki-Logo',
 	'logofunctions-filenotexist' => 'Fähler: [[File:$1]] git s nit',
 );
 
@@ -151,11 +151,19 @@ $messages['ko'] = array(
 	'logofunctions-filenotexist' => '오류: [[File:$1]]이 존재하지 않습니다',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'logofunctions-desc' => 'Brängk en Paaserfungksjohn för em Wikis sing Sennbeldsche met.',
+	'logofunctions-filenotexist' => 'Fähler: [[Datei:$1]] es nit doh',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'logofunctions-desc' => "Setzt eng Parserfonctioun derbäi fir d'Abane vun engem Logo z'erméiglechen",
+	'logofunctions-desc' => 'Setzt eng Parserfonctioun fir de Wiki-Logo derbäi',
 	'logofunctions-filenotexist' => 'Feeler: [[File:$1]] gëtt et net',
 );
 
@@ -242,7 +250,7 @@ $messages['ru'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
-	'logofunctions-desc' => 'Doda funkcijo razčlenjevalnika za določanje logotipa wikija',
+	'logofunctions-desc' => 'Doda funkcijo razčlenjevalnika o logotipu wikija',
 	'logofunctions-filenotexist' => 'Napaka: [[File:$1]] ne obstaja',
 );
 

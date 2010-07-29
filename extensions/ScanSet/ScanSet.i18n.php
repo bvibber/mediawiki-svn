@@ -1153,9 +1153,11 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author Mihai
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'scanset-desc' => 'Vizualizarea paginilor scanate aflate în colecția de CD-uri/DVD-uri a lui Andreas Grosz',
 	'scanset_no_name' => 'Eroare: Trebuie să specificați numele de serie, de exemplu &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Eroare: Nume de serie invalid sau lipsește.',
 	'scanset_unrecognised_index_format' => 'Eroare: Format de index necunoscut',

@@ -1318,8 +1318,12 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Mvrban
+ * @author Tivek
  */
 $messages['hr'] = array(
+	'youtubeauthsub' => 'Postavi YouTube video',
+	'youtubeauthsub-desc' => 'Omogući suradnicima izravno [[Special:YouTubeAuthSub|postavljanje videa]] na YouTube',
+	'youtubeauthsub_info' => 'Da biste postavili YouTube video na stranicu, popunite sljedeće podatke:',
 	'youtubeauthsub_title' => 'Naslov',
 	'youtubeauthsub_description' => 'Opis',
 	'youtubeauthsub_password' => 'YouTube lozinka',
@@ -1327,6 +1331,28 @@ $messages['hr'] = array(
 	'youtubeauthsub_keywords' => 'Ključne riječi',
 	'youtubeauthsub_category' => 'Kategorija',
 	'youtubeauthsub_submit' => 'Pošalji',
+	'youtubeauthsub_clickhere' => 'Kliknite ovdje za prijavu na YouTube',
+	'youtubeauthsub_tokenerror' => 'Greška u stvaranju autorizacijskog tokena, pokušajte osvježiti stranicu.',
+	'youtubeauthsub_success' => "Čestitke!
+Vaš video je postavljen.
+<a href='http://www.youtube.com/watch?v=$1'>Pogledajte Vaš video</a>.
+YouTubeu treba određeno vrijeme da procesira Vaš video, pa video možda još nije spreman.
+
+Ako želite umetnuti video u stranicu na wikiju, umetnite sljedeći kôd u stranicu:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Da biste postavili video, prvo ćete se morati prijaviti na YouTube.',
+	'youtubeauthsub_uploadhere' => 'Postavite svoj video odavde:',
+	'youtubeauthsub_uploadbutton' => 'Postavljanje',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Pogledajte ovaj video]',
+	'youtubeauthsub_summary' => 'Postavljam YouTube video',
+	'youtubeauthsub_uploading' => 'Vaš video se postavlja.
+Budite strpljivi.',
+	'youtubeauthsub_viewpage' => 'Inače, možete [[$1|pogledati Vaš video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Unesite 1 ili više ključnih riječi.',
+	'youtubeauthsub_jserror_notitle' => 'Unesite naslov videa.',
+	'youtubeauthsub_jserror_nodesc' => 'Unesite opis za video.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -3755,6 +3781,7 @@ YouTube可能需要一些时间处理您的视频，所以可能不会立即出�
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'youtubeauthsub' => '上传YouTube视频',
@@ -3764,10 +3791,10 @@ $messages['zh-hans'] = array(
 	'youtubeauthsub_description' => '描述',
 	'youtubeauthsub_password' => 'YouTube密码',
 	'youtubeauthsub_username' => 'YouTube用户名',
-	'youtubeauthsub_keywords' => '关键字',
+	'youtubeauthsub_keywords' => '关键词',
 	'youtubeauthsub_category' => '分类',
 	'youtubeauthsub_submit' => '提交',
-	'youtubeauthsub_clickhere' => '点击这里登陆YouTube',
+	'youtubeauthsub_clickhere' => '点击这里登录YouTube',
 	'youtubeauthsub_tokenerror' => '认证用户信息时出错，请刷新。',
 	'youtubeauthsub_success' => "成功！
 您的视频已经上传。

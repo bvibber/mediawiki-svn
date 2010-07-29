@@ -1542,9 +1542,18 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Tivek
  */
 $messages['hr'] = array(
+	'whitelistedit-desc' => 'Uređivanje dozvola pristupa ograničenih korisnika',
+	'mywhitelistpages' => 'Moje stranice',
+	'whitelistfor' => '<center>Trenutačne informacije za <b>$1</b></center>',
+	'whitelisttablemodify' => 'Izmijeni',
 	'whitelisttablemodifyall' => 'Sve',
+	'whitelisttablemodifynone' => 'Nijedan',
+	'whitelisttablepage' => 'Wiki stranica',
+	'whitelisttabletype' => 'Tip pristupa',
+	'whitelisttableexpires' => 'Istječe',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnever' => 'nikad',
 );

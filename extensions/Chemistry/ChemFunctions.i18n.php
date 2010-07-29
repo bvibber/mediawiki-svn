@@ -1011,10 +1011,12 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'chemicalsources' => 'Surse pentru chimie',
 	'chemicalsource-desc' => 'Adaugă eticheta <nowiki><chemform></nowiki>, pentru formule chimice',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pagină specială]] destinată surselor pentru chimie',
 	'chemFunctions_ListPage' => 'Surse pentru chimie',
 	'chemFunctions_DataList' => 'Mai ajos este inclusă o listă de situri care pot oferi informații despre substanța chimică pe care o căutați.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compusul $MIXCASNameFormula la NIST</a><br />

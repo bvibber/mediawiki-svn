@@ -80,6 +80,15 @@ $messages['gl'] = array(
 	'rss-empty' => 'Erro ao cargar a fonte de novas RSS de "$1"!',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'rss-desc' => 'Zeigt e RSS-Feed uf ere Wikisyte aa',
+	'rss-error' => 'Dr RSS-Feed het nit vu $1 chenne glade wäre: $2',
+	'rss-empty' => 'Dr RSS-Feed het nit vu $1 chenne glade wäre!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -186,6 +195,15 @@ $messages['pt-br'] = array(
 	'rss-desc' => 'Mostra um feed RSS em uma página wiki',
 	'rss-error' => 'Falha ao carregar feed RSS de $1: $2',
 	'rss-empty' => 'Falha ao carregar feed RSS de $1!',
+);
+
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'rss-desc' => 'Afișează un flux RSS pe o pagină wiki',
+	'rss-error' => 'Eroare la încărcarea fluxului RSS de la $1: $2',
+	'rss-empty' => 'Eroare la încărcarea fluxului RSS de la $1!',
 );
 
 /** Tarandíne (Tarandíne)

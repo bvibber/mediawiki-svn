@@ -191,6 +191,13 @@ $messages['hil'] = array(
 	'woopra-desc' => 'Gapasugot para sa [http://www.woopra.com/ Woopra Live Tracking Software] para obrahon sa imo MediaWiki nga installation',
 );
 
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'woopra-desc' => 'Omogućava [http://www.woopra.com/ Woopra Live Tracking Softwareu] da radi za Vašu MediaWiki instalaciju',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

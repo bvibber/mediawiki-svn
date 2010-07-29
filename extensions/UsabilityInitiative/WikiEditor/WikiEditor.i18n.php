@@ -461,6 +461,13 @@ $messages['ksh'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitäx',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-loading' => 'Bar dibe',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

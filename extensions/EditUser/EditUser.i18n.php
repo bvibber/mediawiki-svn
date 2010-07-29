@@ -432,10 +432,10 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'edituser-desc' => 'Erlaubt berächtigte Benutzer, d Yystellige vu andere Benutzer z verändere',
 	'edituser' => 'Benutzeryystelligen ändere',
-	'edituser-username' => 'Name',
+	'edituser-username' => 'Benutzername:',
 	'edituser-dosearch' => 'Sueche',
-	'edituser-nouser' => 'Dr Benutzer, wu aagee woren isch, git s nit',
-	'edituser-exempt' => 'Dr Benutzer, wu aagee woren isch, cha nit bearbeitet wäre',
+	'edituser-nouser' => 'Dr Benutzer „$1“ git s nit.',
+	'edituser-exempt' => 'Dr Benutzer „$1“ cha nit bearbeitet wäre.',
 	'right-edituser' => 'D Yystellige vu andere Benutzer bearbeite',
 	'right-edituser-exempt' => 'D Yystellige vu däm Benutzer chenne nit dur anderi gänderet wäre',
 );
