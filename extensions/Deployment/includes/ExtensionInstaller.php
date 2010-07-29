@@ -20,9 +20,11 @@ class ExtensionInstaller extends Installer {
 	
 	
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	public function __construct() {
+		parent::__construct();
+		
 		// TODO
 	}	
 	

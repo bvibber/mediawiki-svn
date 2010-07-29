@@ -37,6 +37,8 @@ class FtpFilesystem extends Filesystem {
 	 * @param array $options
 	 */
 	public function __construct( array $options ) {
+		parent::__construct();
+		
 		// Check if possible to use ftp functions.
 		if ( !extension_loaded( 'ftp' ) ) {
 			$this->addError( 'deploy-ftp-not-loaded' );

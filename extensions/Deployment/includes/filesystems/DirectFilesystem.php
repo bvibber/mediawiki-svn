@@ -21,7 +21,9 @@ class DirectFilesystem extends Filesystem {
 	 * Constructor.
 	 */
 	public function __construct() {
+		parent::__construct();
 		
+		// TODO
 	}
 	
 	/**

@@ -51,6 +51,8 @@ class Ssh2Filesystem extends Filesystem {
 	 * @param array $options
 	 */
 	public function __construct( array $options ) {
+		parent::__construct();
+		
 		// Check if possible to use ssh2 functions.
 		if ( !extension_loaded( 'ssh2' ) ) {
 			$this->addError( 'deploy-ssh2-not-loaded' );
