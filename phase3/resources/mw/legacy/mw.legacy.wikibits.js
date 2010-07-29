@@ -1,5 +1,7 @@
 /*
  * Legacy emulation for the now depricated skins/common/wikibits.js
+ * 
+ * MediaWiki JavaScript support functions
  */
 
 ( function( $, mw ) {
