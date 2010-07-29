@@ -1,68 +1,85 @@
 /*
- * Legacy emulation for the now depricated ajaxwatch.js
+ * Legacy emulation for the now depricated skins/common/ajaxwatch.js
  * 
- * Ported by: Trevor Parscal
+ * AJAX functionality for the watch/unwatch link
  * 
- * Animate watch/unwatch links to use asynchronous API requests to watch pages, rather than clicking on links
- * 
- * Warning: Uses mw.legacy.jsMsg() from mw.legacy.wikibits.js
+ * @depends mw.legacy.jsMsg() from mw.legacy.wikibits.js
  */
 
-( function( $ ) {
+( function( $, mw ) {
 
-if ( typeof mw.legacy.wgAjaxWatch === "undefined" || !mw.legacy.wgAjaxWatch ) {
-	$.extend( mw.legacy, {
-		'wgAjaxWatch': {
-			'watchMsg': 'Watch',
-			'unwatchMsg': 'Unwatch',
-			'watchingMsg': 'Watching...',
-			'unwatchingMsg': 'Unwatching...',
-			'tooltip-ca-watchMsg': 'Add this page to your watchlist',
-			'tooltip-ca-unwatchMsg': 'Remove this page from your watchlist'
+/* Extension */
+
+$.extend( mw.legacy, {
+	
+	/* Global Variables */
+	
+	'wgAjaxWatch': {
+		
+		/* Global Variables */
+		
+		'watchMsg': 'Watch',
+		'unwatchMsg': 'Unwatch',
+		'watchingMsg': 'Watching...',
+		'unwatchingMsg': 'Unwatching...',
+		'tooltip-ca-watchMsg': 'Add this page to your watchlist',
+		'tooltip-ca-unwatchMsg': 'Remove this page from your watchlist',
+		
+		/* Functions */
+		
+		/**
+		 * Sets the text of the watch/unwatch link
+		 * 
+		 * @param object link DOM node or jQuery selection of link to set text of
+		 * @param string action message to use ('watch', 'unwatch', 'watching' or 'unwatching')
+		 */
+		'setLinkText': function( link, action ) {
+			var $link = $( link );
+			if ( action == 'watch' || action == 'unwatch' ) {
+				// save the accesskey from the title
+				var keyCommand = $link.attr( 'title' ).match( /\[.*?\]$/ ) ?
+					$link.attr( 'title' ).match( /\[.*?\]$/ )[0] : '';
+				$link.attr( 'title', wgAjaxWatch['tooltip-ca-' + action + 'Msg'] + ' ' + keyCommand );
+			}
+			if ( $link.data( 'icon' ) ) {
+				$link.attr( 'alt', wgAjaxWatch[action + 'Msg'] );
+				if ( action == 'watching' || action == 'unwatching' ) {
+					$link.addClass( 'loading' );
+				} else {
+					$link.removeClass( 'loading' );
+				}
+			} else {
+				$link.html( wgAjaxWatch[action+'Msg'] );
+			}
+		},
+		/**
+		 * Processes responses from the server
+		 * 
+		 * @param object response data from server
+		 */
+		'processResult': function( response ) {
+			response = response.watch;
+			var $link = $(this);
+			// To ensure we set the same status for all watch links with the same target we trigger a custom event on
+			// *all* watch links.
+			if ( response.watched !== undefined ) {
+				wgAjaxWatch.$links.trigger( 'mw-ajaxwatch', [response.title, 'watch'] );
+			} else if ( response.unwatched !== undefined ){
+				wgAjaxWatch.$links.trigger( 'mw-ajaxwatch', [response.title, 'unwatch'] );
+			} else {
+				// Either we got an error code or it just plain broke.
+				window.location.href = $link.attr( 'href' );
+				return;
+			}
+			mw.legacy.jsMsg( response.message, 'watch' );
+			// Bug 12395 - update the watch checkbox on edit pages when the page is watched or unwatched via the tab.
+			if ( response.watched !== undefined ) {
+				$j("#wpWatchthis").attr( 'checked', '1' );
+			} else {
+				$j("#wpWatchthis").removeAttr( 'checked' );
+			}
 		}
 	} );
-}
-$.extend( mw.legacy.wgAjaxWatch, {
-	'setLinkText': function( $link, action ) {
-		if ( action == 'watch' || action == 'unwatch' ) {
-			// save the accesskey from the title
-			var keyCommand = $link.attr( 'title' ).match( /\[.*?\]$/ ) ?
-				$link.attr( 'title' ).match( /\[.*?\]$/ )[0] : '';
-			$link.attr( 'title', wgAjaxWatch['tooltip-ca-' + action + 'Msg'] + ' ' + keyCommand );
-		}
-		if ( $link.data( 'icon' ) ) {
-			$link.attr( 'alt', wgAjaxWatch[action + 'Msg'] );
-			if ( action == 'watching' || action == 'unwatching' ) {
-				$link.addClass( 'loading' );
-			} else {
-				$link.removeClass( 'loading' );
-			}
-		} else {
-			$link.html( wgAjaxWatch[action+'Msg'] );
-		}
-	},
-	'processResult': function( response ) {
-		response = response.watch;
-		var $link = $(this);
-		// To ensure we set the same status for all watch links with the same target we trigger a custom event on
-		// *all* watch links.
-		if ( response.watched !== undefined ) {
-			wgAjaxWatch.$links.trigger( 'mw-ajaxwatch', [response.title, 'watch'] );
-		} else if ( response.unwatched !== undefined ){
-			wgAjaxWatch.$links.trigger( 'mw-ajaxwatch', [response.title, 'unwatch'] );
-		} else {
-			// Either we got an error code or it just plain broke.
-			window.location.href = $link.attr( 'href' );
-			return;
-		}
-		mw.legacy.jsMsg( response.message, 'watch' );
-		// Bug 12395 - update the watch checkbox on edit pages when the page is watched or unwatched via the tab.
-		if ( response.watched !== undefined ) {
-			$j("#wpWatchthis").attr( 'checked', '1' );
-		} else {
-			$j("#wpWatchthis").removeAttr( 'checked' );
-		}
-	}
 } );
 
 /* Initialization */
@@ -116,4 +133,4 @@ $( document ).ready( function() {
 	mw.legacy.wgAjaxWatch.$links = $links;
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );

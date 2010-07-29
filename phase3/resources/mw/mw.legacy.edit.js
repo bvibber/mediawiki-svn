@@ -1,13 +1,19 @@
 /*
- * Legacy emulation for the now depricated edit.js
- * 
- * Ported by: Trevor Parscal
+ * Legacy emulation for the now depricated skins/common/edit.js
  */
 
-( function( $ ) {
+( function( $, mw ) {
+
+/* Extension */
 
 $.extend( mw.legacy, {
+	
+	/* Global Variables */
+	
 	'currentFocused': null,
+	
+	/* Functions */
+	
 	/**
 	 * Generates the actual toolbar buttons with localized text we use it to avoid creating the toolbar
 	 * where javascript is not enabled
@@ -255,4 +261,4 @@ $( document ).ready( function() {
 	} );
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );

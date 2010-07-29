@@ -1,12 +1,15 @@
 /*
- * Legacy emulation for the now depricated block.js
- * 
- * Ported by: Trevor Parscal
+ * Legacy emulation for the now depricated skins/common/block.js
  */
 
-( function( $ ) {
+( function( $, mw ) {
+
+/* Extension */
 
 $.extend( mw.legacy, {
+	
+	/* Functions */
+	
 	'considerChangingExpiryFocus': function() {
 		var $expiry = $( '#wpBlockExpiry' );
 		var $other = $( '#wpBlockOther' );
@@ -25,7 +28,6 @@ $.extend( mw.legacy, {
 			var isEmpty = address.match( /^\s*$/ );
 			var isIp = address.match( /^(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|:(:[0-9A-Fa-f]{1,4}){1,7}|[0-9A-Fa-f]{1,4}(:{1,2}[0-9A-Fa-f]{1,4}|::$){1,7})(\/\d+)?$/ );
 			var isIpRange = isIp && address.match( /\/\d+$/ );
-
 			$( '#wpAnonOnlyRow' ).css( 'display', !isIp && !isEmpty ? 'none' : '' );
 			$( '#wpEnableAutoblockRow,#wpEnableHideUser' ).css( 'display', isIp && !isEmpty ? 'none' : '' );
 			$( '#wpEnableWatchUser' ).css( 'display', isIpRange && !isEmpty ? 'none' : '' );
@@ -39,4 +41,4 @@ $( document ).ready( function() {
 	mw.legacy.considerChangingExpiryFocus();
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );

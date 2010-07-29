@@ -1,16 +1,19 @@
 /*
- * Legacy emulation for the now enhancedchanges edit.js
- * 
- * Ported by: Trevor Parscal
+ * Legacy emulation for the now depricated skins/common/enhancedchanges.js
  */
 
-( function( $ ) {
+( function( $, mw ) {
+
+/* Extension */
 
 $.extend( mw.legacy, {
+	
+	/* Functions */
+	
 	/**
 	 * Switch an RC line between hidden/shown
 	 * 
-	 * @param int idNumber : the id number of the RC group
+	 * @param integer idNumber : the id number of the RC group
 	 */ 
 	'toggleVisibility': function( idNumber ) {
 		var elements = [
@@ -21,6 +24,8 @@ $.extend( mw.legacy, {
 		$( elements.join( ',' ) ).toggleClass( 'mw-changeslist-hidden' ).toggleClass( 'mw-changeslist-expanded' );
 	}
 } );
+
+/* Initialization */
 
 $( document ).ready( function() {
 	/*
@@ -38,4 +43,4 @@ $( document ).ready( function() {
 	);
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );

@@ -1,12 +1,15 @@
 /*
- * Legacy emulation for the now depricated changepassword.js
- * 
- * Ported by: Trevor Parscal
+ * Legacy emulation for the now depricated skins/common/changepassword.js
  */
 
-( function( $ ) {
+( function( $, mw ) {
+
+/* Extension */
 
 $.extend( mw.legacy, {
+	
+	/* Functions */
+	
 	'onNameChange': function() {
 		var state = mw.legacy.wgUserName != $( '#wpName' ).val();
 		$( '#wpPassword' ).attr( 'disabled', state );
@@ -23,4 +26,4 @@ $( document ).ready( function() {
 	mw.legacy.onNameChangeHook();
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );

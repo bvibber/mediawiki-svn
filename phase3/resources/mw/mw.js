@@ -40,7 +40,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 	 * the browser does have a console available 
 	 *
 	 * @author Michael Dale <mdale@wikimedia.org>, Trevor Parscal <tparscal@wikimedia.org>
-	 * @param {String} string String to output to console
+	 * @param string string message to output to console
 	 */
 	this.log = function( string ) {
 		// Allow log messages to use a configured prefix		

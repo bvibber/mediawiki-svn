@@ -1,10 +1,8 @@
 /*
- * Diff tweaks (used to be diff.js)
- * 
- * Ported by: Trevor Parscal
+ * Diff-view progressive enhancement (ported from skins/common/diff.js)
  */
 
-( function( $ ) {
+( function( $, mw ) {
 
 /* Initialization */
 
@@ -27,4 +25,4 @@ $( document ).ready( function() {
 	}
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );

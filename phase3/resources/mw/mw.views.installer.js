@@ -1,10 +1,10 @@
 /*
- * Installer configuration (used to be config.js)
+ * Web-installer progressive enhancement (ported from skins/common/config.js)
  * 
- * Ported by: Trevor Parscal
+ * Makes elements in the configuration form interactive and hides portions of the form when not in-use
  */
 
-( function( $ ) {
+( function( $, mw ) {
 
 /* Initialization */
 
@@ -97,4 +97,4 @@ $( document ).ready( function() {
 	} );
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );

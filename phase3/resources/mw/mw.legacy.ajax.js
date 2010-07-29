@@ -1,14 +1,14 @@
 /*
- * Legacy emulation for the now depricated ajax.js
+ * Legacy emulation for the now depricated skins/common/ajax.js
  * 
  * Original licensing information:
- * 		remote scripting library
- * 		(c) copyright 2005 modernmethod, inc
- * 
- * Ported by: Trevor Parscal
+ * 		Remote Scripting Library
+ * 		(c) Copyright 2005 ModernMethod, Inc.
  */
 
-( function( $ ) {
+( function( $, mw ) {
+
+/* Extension */
 
 $.extend( mw.legacy, {
 
@@ -36,7 +36,7 @@ $.extend( mw.legacy, {
 			return true;
 		}
 		return false;
-	}
+	},
 	/**
 	 * Gets an XMLHttpRequest or equivilant ActiveXObject
 	 * 
@@ -173,4 +173,4 @@ $.extend( mw.legacy, {
 	}
 } );
 
-} )( jQuery );
+} )( jQuery, MediaWiki );
