@@ -18,7 +18,6 @@
  */
 class ExtensionInstaller extends Installer {
 	
-	
 	/**
 	 * Constructor.
 	 */
@@ -32,42 +31,45 @@ class ExtensionInstaller extends Installer {
 	 * Initiates the installation procedure.
 	 */
 	public function doInstallation() {
+		$this->downloadPackage();
 		
+		// TODO: only call when needed
+		$this->unpackPackage();
+		
+		$this->installPackage();
 	}
 	
 	/**
 	 * Downloads a package needed for the installation.
 	 */
 	protected function downloadPackage() {
-		
+		// TODO: create a PackageRepository instance and download
 	}
 	
 	/**
 	 * Unpacks a package needed for the installation.
 	 */
 	protected function unpackPackage() {
-		
+		// TODO
 	}
 	
 	/**
 	 * Installs a package.
 	 */
 	protected function installPackage() {
+		$packageParser = new PackageDescriptorParser();
 		
+		// TODO: do parsing
+		$packageDescriptor = new PackageDescriptor();
+		
+		$packageProcessor = new PackageDescriptorProcessor( $packageDescriptor );
 	}
 
 	/**
-	 * @param unknown_type $msg
+	 * @param string $msg
 	 */
-	public function showMessage($msg) {
+	public function showMessage( $msg ) {
 		
 	}
-
-	/**
-	 * @param unknown_type $status
-	 */
-	public function showStatusMessage($status) {
-		
-	}	
 	
 }

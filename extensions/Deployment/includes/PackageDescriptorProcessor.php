@@ -19,4 +19,11 @@
  */
 class PackageDescriptorProcessor {
 	
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {
+		// TODO
+	}		
+	
 }
