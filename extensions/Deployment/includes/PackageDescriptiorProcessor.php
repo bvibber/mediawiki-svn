@@ -8,14 +8,14 @@
  * @ingroup Deployment
  *
  * @author Jeroen De Dauw
- * @author Kai Kühn
+ * @author Kai KÃ¼hn
  */
 
 /**
  * Package description processing class.
  * 
  * @author Jeroen De Dauw
- * @author Kai Kühn
+ * @author Kai KÃ¼hn
  */
 class PackageDescriptorProcessor {
 	
