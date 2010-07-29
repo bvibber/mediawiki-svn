@@ -26,7 +26,7 @@ abstract class PackageDescriptorParser {
 	 */
 	public function __construct() {
 		// TODO
-	}	
+	}
 	
 }
 

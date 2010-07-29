@@ -24,6 +24,6 @@ class PackageDescriptorProcessor {
 	 */
 	public function __construct() {
 		// TODO
-	}		
+	}	
 	
 }
