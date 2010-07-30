@@ -8,34 +8,34 @@
 
 /* Extension */
 
-$.extend( mw.legacy, {
+$.extend( true, mw.legacy, {
 	
 	/* Functions */
 	
 	/**
 	 * Change the search link to what user entered
 	 */
-	function mwSearchHeaderClick( obj ) {
+	'mwSearchHeaderClick': function( obj ) {
 		var searchbox = document.getElementById( 'searchText' );
-		if( searchbox === null ) {
+		if ( searchbox === null ) {
 			searchbox = document.getElementById( 'powerSearchText' );
 		}
-		if( searchbox === null ) {
+		if ( searchbox === null ) {
 			return; // should always have either normal or advanced search
 		}
 		var searchterm = searchbox.value;
 		var parts = obj.href.split( 'search=' );
 		var lastpart = '';
 		var prefix = 'search=';
-		if( parts.length > 1 && parts[1].indexOf('&') >= 0 ) {
+		if ( parts.length > 1 && parts[1].indexOf('&') >= 0 ) {
 			lastpart = parts[1].substring( parts[1].indexOf('&') );
 		} else {
 			prefix = '&search=';
 		}
 		obj.href = parts[0] + prefix + encodeURIComponent( searchterm ) + lastpart;
-	}
-	function mwToggleSearchCheckboxes( btn ) {
-		if( !document.getElementById ) {
+	},
+	'mwToggleSearchCheckboxes': function( btn ) {
+		if ( !document.getElementById ) {
 			return;
 		}
 		var nsInputs = document.getElementById( 'powersearch' ).getElementsByTagName( 'input' );

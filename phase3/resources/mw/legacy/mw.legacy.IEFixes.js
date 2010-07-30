@@ -23,7 +23,7 @@ String.prototype.hasClass = function( classWanted ) {
 
 /* Extension */
 
-$.extend( mw.legacy, {
+$.extend( true, mw.legacy, {
 	
 	/* Global Variables */
 	

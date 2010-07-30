@@ -6,7 +6,7 @@
 
 /* Extension */
 
-$.extend( mw.legacy, {
+$.extend( true, mw.legacy, {
 	/**
 	 * Exif metadata display for MediaWiki file uploads
 	 * 

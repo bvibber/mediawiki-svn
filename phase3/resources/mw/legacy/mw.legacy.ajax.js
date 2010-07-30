@@ -10,7 +10,7 @@
 
 /* Extension */
 
-$.extend( mw.legacy, {
+$.extend( true, mw.legacy, {
 
 	/* Global Variables */
 	

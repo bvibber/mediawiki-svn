@@ -6,7 +6,7 @@
 
 /* Extension */
 
-$.extend( mw.legacy, {
+$.extend( true, mw.legacy, {
 	
 	/* Functions */
 	
@@ -40,7 +40,6 @@ $.extend( mw.legacy, {
 							targ = targ.parentNode;
 						}
 						// targ is now the target element
-
 						// We don't want to deprive the noble reader of a context menu
 						// for the section edit link, do we?  (Might want to extend this
 						// to all <a>'s?)
