@@ -13,6 +13,60 @@ ResourceLoader::register( array(
 		'script' => 'resources/mw/mw.js',
 		'raw' => true,
 	),
+	'mw.legacy.ajax' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.ajax.js',
+	),
+	'mw.legacy.ajaxwatch' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.ajaxwatch.js',
+	),
+	'mw.legacy.block' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.block.js',
+	),
+	'mw.legacy.changepassword' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.changepassword.js',
+	),
+	'mw.legacy.edit' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.edit.js',
+	),
+	'mw.legacy.enhancedchanges' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.enhancedchanges.js',
+	),
+	'mw.legacy.history' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.history.js',
+	),
+	'mw.legacy.htmlform' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.htmlform.js',
+	),
+	'mw.legacy.IEFixes' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.IEFixes.js',
+	),
+	'mw.legacy.metadata' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.metadata.js',
+	),
+	'mw.legacy.mwsuggest' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.mwsuggest.js',
+	),
+	'mw.legacy.prefs' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.prefs.js',
+	),
+	'mw.legacy.preview' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.preview.js',
+	),
+	'mw.legacy.protect' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.protect.js',
+	),
+	'mw.legacy.rightclickedit' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.rightclickedit.js',
+	),
+	'mw.legacy.search' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.search.js',
+	),
+	'mw.legacy.upload' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.upload.js',
+	),
+	'mw.legacy.wikibits' => array(
+		'script' => 'resources/mw/legacy/mw.legacy.wikibits.js',
+	),
 	'test' => array(
 		'script' => 'resources/test/test.js',
 		'loader' => 'resources/test/loader.js',
@@ -39,9 +93,5 @@ ResourceLoader::register( array(
 		'script' => 'resources/test/baz.js',
 		'loader' => 'resources/test/loader.js',
 		'style' => 'resources/test/baz.css',
-	),
-	'wikibits' => array(
-		'script' => 'skins/common/wikibits.js',
-		'loader' => 'skins/common/loader.js',
 	),
 ) );
