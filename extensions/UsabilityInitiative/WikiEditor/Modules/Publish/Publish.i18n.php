@@ -645,6 +645,13 @@ $messages['id'] = array(
 	'wikieditor-publish-dialog-goback' => 'Kembali',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-publish-dialog-publish' => 'Wéfùtà',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -755,6 +762,16 @@ $messages['ksh'] = array(
 	'wikieditor-publish-dialog-watch' => '{{int:watchthis}}',
 	'wikieditor-publish-dialog-publish' => '{{int:wikieditor-publish-button-publish}}',
 	'wikieditor-publish-dialog-goback' => 'Jangk Retuur!',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-publish-button-publish' => 'Weşandin',
+	'wikieditor-publish-button-cancel' => 'Betal',
+	'wikieditor-publish-dialog-publish' => 'Weşandin',
+	'wikieditor-publish-dialog-goback' => 'Vegere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -443,6 +443,13 @@ $messages['id'] = array(
 	'wikieditor-preview-loading' => 'Memuat...',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-preview-loading' => 'Ọ na biá...',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -520,6 +527,14 @@ $messages['ksh'] = array(
 	'wikieditor-preview-tab' => '{{int:preview}}',
 	'wikieditor-preview-changes-tab' => 'Änderunge',
 	'wikieditor-preview-loading' => 'Ben aam Laade{{int:ellipsis}}',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-preview-tab' => 'Pêşdîtin',
+	'wikieditor-preview-loading' => 'Bar dibe…',
 );
 
 /** Latin (Latina)

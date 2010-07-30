@@ -566,6 +566,16 @@ $messages['id'] = array(
 	'ajax-se-usernotfound' => 'Kesalahan: pengguna tidak ditemukan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'ajax-se-title' => 'Nà rü:',
+	'ajax-se-idling' => '(mgbè $1 gárání)',
+	'ajax-se-userinvalid' => 'Nsógbu: ọ díghì ézíbóté',
+	'ajax-se-usernotfound' => "Nsógbu: ọ'bànifé à díghì",
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

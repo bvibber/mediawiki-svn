@@ -285,6 +285,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'catboxattop-desc' => 'Nè tí ngwa ébéonọr na élú áká ịkengạ ihü',
 	'catboxattop-categories' => 'Ébéanọr',
 );
 

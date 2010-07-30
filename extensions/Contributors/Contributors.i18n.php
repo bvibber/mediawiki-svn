@@ -871,14 +871,15 @@ $messages['ksh'] = array(
  * @author Erdal Ronahi
  */
 $messages['ku-latn'] = array(
-	'contributors' => 'Bikarhêner',
-	'contributors-toolbox' => 'Bikarhênerên serekî',
-	'contributors-legend' => 'Lîsteya bikarhênerên serekî yê gotarekê',
+	'contributors' => 'Kedyar',
+	'contributors-desc' => 'Kurteya kedyarên serekî yên vê rûpelê',
+	'contributors-toolbox' => 'Kedyarên serekî',
+	'contributors-legend' => 'Lîsteya kedyarên serekî yê rûpelê',
 	'contributors-target' => 'Sernav:',
-	'contributors-submit' => 'Pêşêkê',
-	'contributors-subtitle' => 'Bikarhênerên serekî yê $1',
-	'contributors-others-long' => 'Li vê derê hên $1 bikarhênerên din yê vê rûpelê hene.',
-	'contributors-others' => 'û $1 yên din',
+	'contributors-submit' => 'Nîşandan',
+	'contributors-subtitle' => 'Kedyarên serekî yên $1',
+	'contributors-others-long' => 'Di vê rûpelê de {{PLURAL:$1|kedyarekê/î din heye|$1 kedyarên din hene}}.',
+	'contributors-others' => 'û {{PLURAL:$1|kesekekî din|$1 kesên din}}',
 	'contributors-badtitle' => 'Sernavekî şaş.',
 	'contributors-nosuchpage' => 'Rûpela $1 tune.',
 );

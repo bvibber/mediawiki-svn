@@ -3814,8 +3814,8 @@ YouTube可能需要一些时间处理您的视频，所以可能不会立即出�
 请稍等。',
 	'youtubeauthsub_viewpage' => '或者，您可以[[$1|观看该视频]]。',
 	'youtubeauthsub_jserror_nokeywords' => '请输入关键字。',
-	'youtubeauthsub_jserror_notitle' => '请输入视频的名称。',
-	'youtubeauthsub_jserror_nodesc' => '请输入视频的描述。',
+	'youtubeauthsub_jserror_notitle' => '请输入视频名称。',
+	'youtubeauthsub_jserror_nodesc' => '请输入视频描述。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

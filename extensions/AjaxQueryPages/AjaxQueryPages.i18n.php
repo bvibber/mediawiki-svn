@@ -20,13 +20,6 @@ $messages['qqq'] = array(
 	'ajaxquerypages-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author J Subhi
- */
-$messages['bjn'] = array(
-	'ajaxquerypages-desc' => 'Manambahi babarapa AJAX ka tungkaran kueri nangkaya [[Special:Shortpages|{{int:shortpages}}]]',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -68,6 +61,13 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'ajaxquerypages-desc' => 'Добавя AJAX към QueryPages като напр. [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'ajaxquerypages-desc' => 'Manambahi babarapa AJAX ka tungkaran kueri nangkaya [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Bengali (বাংলা)
@@ -338,6 +338,13 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'ajaxquerypages-desc' => 'Deit jet AJAX dobei en Sigge met Leßte, wi zem Beispöll en de [[Special:Shortpages|{{int:shortpages}}]].',
+);
+
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'ajaxquerypages-desc' => 'Ajusta un poco de AJAX en las hojas de búsqueda como [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

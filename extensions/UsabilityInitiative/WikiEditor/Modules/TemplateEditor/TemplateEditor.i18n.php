@@ -491,6 +491,14 @@ $messages['ksh'] = array(
 	'wikieditor-template-editor-preference' => 'Schablone em Wiki övver Fommulaare ändere',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'Rojanekirin',
+	'wikieditor-template-editor-dialog-cancel' => 'Betal',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

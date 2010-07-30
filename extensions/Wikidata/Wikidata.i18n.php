@@ -5504,6 +5504,7 @@ $messages['he'] = array(
 	'ow_needs_xlation_source_lang' => 'שפת המקור:',
 	'ow_needs_xlation_dest_lang' => 'שפת היעד:',
 	'ow_needs_xlation_no_dest_lang' => 'אנא ציינו את שפת היעד.',
+	'ow_statistics' => 'ויקי־דאטא: סטטיסטיקה',
 	'ow_show' => 'הצגה',
 	'ow_upload' => 'העלאה',
 	'ow_create' => 'יצירה',

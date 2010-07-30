@@ -3097,6 +3097,7 @@ Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [htt
  */
 $messages['ig'] = array(
 	'optin-title-optedout' => 'Nwàne Beta',
+	'optin-survey-answer-changes-other' => 'Nke ozor:',
 );
 
 /** Ido (Ido)
@@ -3689,6 +3690,15 @@ Wat hät Der aam dä Verschöönerunge zom Ußprobeere nit jefalle?',
 	'optin-survey-answer-changes-predictability' => 'Maat de Leistung mieh afseebaar.',
 	'optin-survey-answer-changes-custom' => 'Jrüßer Aanpassonge aan der einzelne Metmaacher müjjelesch maache.',
 	'optin-survey-answer-changes-other' => 'Söns jet:',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'optin-survey-yes' => 'Erê',
+	'optin-survey-no' => 'Na',
+	'optin-survey-answer-changes-other' => 'Wekî din:',
 );
 
 /** Cornish (Kernewek)

@@ -53,6 +53,7 @@ $messages['qqq'] = array(
 	'badimages-remove-btn' => '{{Identical|Remove}}',
 	'badimages-log-name' => '{{Identical|Bad image list}}',
 	'badimages-log-add' => 'This looks like a section of a log entry. If so, the name of the user who performed this action appears immediately before this message.',
+	'badimages-log-remove' => 'This looks like a section of a log entry. If so, the name of the user who performed this action appears immediately before this message.',
 	'right-badimages' => '{{doc-right|badimages}}',
 );
 
@@ -487,9 +488,9 @@ $messages['cy'] = array(
 	'badimages-log-name' => 'Y rhestr o ddelweddau gwaharddedig',
 	'badimages-log-header' => "Dyma lòg y newidiadau i'r [[{{MediaWiki:Badimages-page}}|rhestr o ddelweddau gwaharddedig]].",
 	'badimages-log-add' => "wedi ychwanegu [[$1]] i'r rhestr o ddelweddau gwaharddedig",
-	'badimages-log-remove' => "tynnwyd [[$1]] o'r rhestr o ddelweddi gwael",
-	'badimages-page' => '{{ns:help}}:Rhestr o ddelweddi gwael',
-	'right-badimages' => "Diweddaru'r rhestr o ddelweddi gwael",
+	'badimages-log-remove' => "wedi tynnu [[$1]] o'r rhestr o ddelweddau gwaharddedig",
+	'badimages-page' => '{{ns:help}}:Y rhestr o ddelweddau gwaharddedig',
+	'right-badimages' => "Diweddaru'r rhestr o ddelweddau gwaharddedig",
 );
 
 /** Danish (Dansk)

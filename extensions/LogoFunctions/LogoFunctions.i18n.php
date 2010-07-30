@@ -67,7 +67,7 @@ $messages['dsb'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
-	'logofunctions-desc' => 'Agregar función analizadora para establecer el logo del wiki',
+	'logofunctions-desc' => 'Agregar función analizadora sobre el logo del wiki',
 	'logofunctions-filenotexist' => 'Error: [[File:$1]] no existe',
 );
 
@@ -108,7 +108,7 @@ $messages['gsw'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'logofunctions-desc' => 'Parserowu funkciju za nastajenje wikiloga přidać',
+	'logofunctions-desc' => 'Parserowu funkciju wikiloga přidać',
 	'logofunctions-filenotexist' => 'Zmylk: [[File:$1]] njeeksistuje',
 );
 
@@ -194,7 +194,7 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'logofunctions-desc' => 'Legg til tolkefunksjon for å sette wikiens logo',
+	'logofunctions-desc' => 'Legg til tolkefunksjon om wikiens logo',
 	'logofunctions-filenotexist' => 'Feil: [[File:$1]] finnes ikke',
 );
 
@@ -210,7 +210,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'logofunctions-desc' => 'Gionta funsion dël parser për amposté ël sìmbol dla wiki',
+	'logofunctions-desc' => 'Gionta funsion dël parser an sël sìmbol dla wiki',
 	'logofunctions-filenotexist' => 'Eror: [[File:$1]] a esist pa',
 );
 

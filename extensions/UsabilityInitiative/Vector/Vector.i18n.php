@@ -579,6 +579,13 @@ $messages['yi'] = array(
 	'vector-desc' => 'פֿאַרבעסערט דעם באניצער אויבערפֿלאַך פֿאַר דער וועקטאר ווײַזונג.',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'vector' => 'Àwọn ìmúdára UI fún Vector',
+);
+
 /** Cantonese (粵語)
  * @author Horacewai2
  */

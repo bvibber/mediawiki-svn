@@ -31,19 +31,6 @@ $messages['qqq'] = array(
 	'ajaxlogin-desc' => '{{desc}}',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- * @author J Subhi
- */
-$messages['bjn'] = array(
-	'ajaxLogin2' => 'Piyan yakin kah?
-Piyan kawa kahilangan ubahan nang tuntung piyan ulah di tungkaran ini munnya piyan tulak kaluar tungkaran ini daminian.',
-	'ajaxlogin-create' => 'Ulah sabuah akun',
-	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
-Ngaran pamakay sifatnya sansitip.
-Pariksa hijaan piyan.',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -91,6 +78,19 @@ $messages['bg'] = array(
 	'al-nosuchuser' => 'Не съществува потребител с име „$1“.
 Потребителските имена са чувствителни към малки и главни букви.
 Проверете изписването.',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'ajaxLogin2' => 'Piyan yakin kah?
+Piyan kawa kahilangan ubahan nang tuntung piyan ulah di tungkaran ini munnya piyan tulak kaluar tungkaran ini daminian.',
+	'ajaxlogin-create' => 'Ulah sabuah akun',
+	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
+Ngaran pamakay sifatnya sansitip.
+Pariksa hijaan piyan.',
 );
 
 /** Bengali (বাংলা)
@@ -512,6 +512,8 @@ Periksa ejaan anda.',
  */
 $messages['ig'] = array(
 	'ajaxlogin-desc' => 'Ngwa di ichiche nké né nyé uzor ndi na banife Í bàtá na Í chétá édémédé hé shì a batá',
+	'ajaxLogin1' => 'Í chȯrí méfụchà Í bàtá, Í gi nyé mkpụrụ édé cédọlu.
+Ihe á gi vúrú gi gáfè ihü á nà Í nwèríkí tọfù ihe Í na rü.',
 	'ajaxLogin2' => 'I chorí mé iheá?
 I nwèríkí lúfùu ihe í gbanwere na ihüá Í háfụ ihüá ubuá.',
 	'ajaxlogin-create' => 'Ké buwa',

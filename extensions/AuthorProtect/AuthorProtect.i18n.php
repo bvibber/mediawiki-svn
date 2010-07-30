@@ -752,9 +752,11 @@ $messages['id'] = array(
 	'right-authorprotect' => 'Lindungi halaman dengan penulis pertama',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'authorprotect-reason' => 'Mgbaghaputa',
+	'authorprotect-reason' => 'Mgbaghaputa:',
 );
 
 /** Ido (Ido)

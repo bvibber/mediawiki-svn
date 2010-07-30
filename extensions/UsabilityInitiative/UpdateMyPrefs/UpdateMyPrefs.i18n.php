@@ -360,6 +360,13 @@ $messages['krc'] = array(
 	'updatemyprefs-label-message' => 'Джарашдырыуларымы, тынгылау бла болгъан джангы джарашдырыула бла эмда инструментле бла бар болгъанларына кёре, автомат халда джангырт',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'prefs-updates' => 'Rojanekirin',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

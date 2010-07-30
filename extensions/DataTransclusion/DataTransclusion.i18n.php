@@ -219,10 +219,11 @@ Necesítase o primeiro argumento ou "modelo".',
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
+ * @author Purodha
  */
 $messages['gsw'] = array(
 	'datatransclusion-desc' => 'Importiere un Darstelle vu Datesätz us extärne Datequälle',
-	'datatransclusion-missing-source' => 'S isch kei kei Datequälle aagee.
+	'datatransclusion-missing-source' => 'S isch kei Datequälle aagee.
 S brucht e zweit oder e „Quäll“-Argument.',
 	'datatransclusion-unknown-source' => 'S isch e mangelhafti Datequälle aagee wore.
 „$1“ isch nit bekannt.',
@@ -317,6 +318,26 @@ $messages['it'] = array(
 	'datatransclusion-unknown-source' => "Origine dati incorreta specificata.
 ''$1'' non è noto.",
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non esiste.',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'datatransclusion-missing-source' => 'Et es kein Daatequäll aanjejovve.
+Dat zweite Feld met dä Daatequäll es ävver nüüdesch.',
+	'datatransclusion-missing-key' => 'Et es keine Schlössel aanjejovve.
+„$2“ sind de jöltije Schlössele en dä Daatequäll „$1“.',
+	'datatransclusion-bad-argument-by' => 'Et es verkeehte Schlössel aanjejovve.
+„$2“ es keine jöltije Schlössele en dä Daatequäll „$1“.
+{{PLURAL:$4|Dä eijnzijje jöltije Schlössel es|De jöltije Schlössele sin}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Et es keine Wäät för dä Schlössel aanjejovve.
+Dat zweite Feld met däm Wäät för dä Schlössel es ävver nüüdesch.',
+	'datatransclusion-missing-argument-template' => 'Et es kein Schablon aanjejovve.
+Dat eetste Feld met däm Name fun dä Schablon es ävver nüüdesch.',
+	'datatransclusion-record-not-found' => 'Mer han kein zopaß Daatensäz en dä Daatequäll „$1“ jefonge, woh $2 = $3 dren wör.',
+	'datatransclusion-bad-template-name' => '$1 is keine müjjeliche Name för en Schabloon.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> jidd et nit.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

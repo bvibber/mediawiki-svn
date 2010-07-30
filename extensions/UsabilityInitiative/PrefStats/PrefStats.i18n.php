@@ -1439,6 +1439,18 @@ Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
 	'prefstats-legend-in' => 'Aanjemelldt',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'prefstats-factor-hour' => 'demjimêr',
+	'prefstats-factor-sixhours' => 'şeş demjimêr',
+	'prefstats-factor-day' => 'roj',
+	'prefstats-factor-week' => 'hefte',
+	'prefstats-factor-twoweeks' => 'du hefte',
+	'prefstats-factor-fourweeks' => 'çar hefte',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  * @author UV
@@ -1989,6 +2001,28 @@ $messages['qu'] = array(
 	'prefstats' => 'Munakusqa ranuy (kanchachani)',
 	'prefstats-desc' => "Kaypiqa rukunki, hayk'a ruraqkuna ima munakusqankunata allinkachina nisqapi akllarqan",
 	'prefstats-title' => 'Munakusqa ranuy (kanchachani)',
+	'prefstats-list-intro' => "Kunanqa kay qatiq allinkachinakunam qatipasqa kachkanku.
+Hukta ñit'ispa akllay paymanta ranuyta (kanchachanita) qhawanaykipaq.",
+	'prefstats-noprefs' => 'Kunanqa manam ima allinkachinakunapas qatipasqa kachkankuchu.
+$wgPrefStatsTrackPrefs nisqata allinchaykuy allinkachinakunata qatipanaykipaq.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|ruraqmi|ruraqmi}} kay allinkachinayuq kachkan, allinkachina ranuypa qallarisqanmantapacha
+** $2 {{PLURAL:$2|ruraqraqmi|ruraqraqmi}} kay allinkachinayuq
+** $3 {{PLURAL:$3|ruraqmi|ruraqmi}} mana kay allinkachinayuq',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|ruraqmi|ruraqmi}} kay allinkachinayuq kachkan, allinkachina ranuypa qallarisqanmantapacha
+** $2 {{PLURAL:$2|ruraqraqmi|ruraqraqmi}} kay allinkachinayuq
+** $3 {{PLURAL:$3|ruraqmi|ruraqmi}} mana kay allinkachinayuq 
+* Tukuymantaqa $4 {{PLURAL:$4|ruraqmi|ruraqmi}} kay allinkachinata hukcharqan',
+	'prefstats-xaxis' => "Mit'a (pacha/urakuna)",
+	'prefstats-factors' => 'Rikuy llapa: $1',
+	'prefstats-factor-hour' => 'ura',
+	'prefstats-factor-sixhours' => 'suqta ura',
+	'prefstats-factor-day' => "p'unchaw",
+	'prefstats-factor-week' => 'simana',
+	'prefstats-factor-twoweeks' => 'iskay simana',
+	'prefstats-factor-fourweeks' => 'tawa simana',
+	'prefstats-factor-default' => 'kikinmanta kaq iskalaman kutimuy',
+	'prefstats-legend-out' => 'Mana atichisqa',
+	'prefstats-legend-in' => 'Atichisqa',
 );
 
 /** Romanian (Română)

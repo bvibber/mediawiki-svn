@@ -1894,10 +1894,12 @@ $messages['id'] = array(
 	'tasks-pref-showtaskcomments' => 'Transklusikan halaman komentar tugas.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'tasks_delete' => 'Gbakashia',
-	'tasks_more_like_it' => 'dikarírí',
+	'tasks_more_like_it' => 'nà nké ozór',
 	'tasks_search_form_title' => 'Chöwá',
 );
 

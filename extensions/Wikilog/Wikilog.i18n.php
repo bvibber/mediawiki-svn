@@ -3599,7 +3599,7 @@ Komentar tersebut hanya akan muncul setelah ditinjau oleh seorang moderator.',
 $messages['ig'] = array(
 	'wikilog-new-item-go' => 'Ké',
 	'wikilog-item-name' => 'Áhạ edemede:',
-	'wikilog-authors' => 'Onye déré',
+	'wikilog-authors' => 'Ọdè ákwúkwó',
 	'wikilog-title' => 'Ishi edemede',
 	'wikilog-actions' => 'Mmèmé',
 	'wikilog-view-summary' => 'Mmẹkotá',

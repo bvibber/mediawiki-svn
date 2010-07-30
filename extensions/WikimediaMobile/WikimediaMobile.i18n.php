@@ -115,6 +115,13 @@ $messages['gsw'] = array(
 	'wikimediamobile-desc' => 'MediaWiki unterstitzt Funktione fir s Wikimedia-mobile Projäkt, wu s do git: http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'wikimediamobile-desc' => 'פונקציות תמיכה ב־MediaWiki למיזם ויקיפדיה למכשירים ניידים מתארח בכתובת http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Croatian (Hrvatski)
  * @author Tivek
  */

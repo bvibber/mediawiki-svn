@@ -203,13 +203,6 @@ $wgGoogleMapsMessages['niu'] = array(
 	'gm-search' => 'Kumi',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$wgGoogleMapsMessages['bjn'] = array(
-	'gm-back' => 'mantuk',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -657,6 +650,13 @@ $wgGoogleMapsMessages['bg'] = array(
 	'gm-earth' => 'Земя',
 	'gm-moon' => 'Луна',
 	'gm-mars' => 'Марс',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$wgGoogleMapsMessages['bjn'] = array(
+	'gm-back' => 'mantuk',
 );
 
 /** Bengali (বাংলা)
@@ -2707,7 +2707,7 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-remove' => 'wefu',
 	'gm-tab' => 'Ntabi',
 	'gm-searching' => 'ö na cha...',
-	'gm-width' => 'Ásá',
+	'gm-width' => 'Asá',
 	'gm-height' => 'Ógólógó',
 	'gm-zoom-control' => 'Otú Uzọr',
 	'gm-large' => 'Ukwu',
@@ -2715,7 +2715,7 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-small' => 'Ntakịrị',
 	'gm-no-zoom-control' => 'Odigi',
 	'gm-yes' => 'Eeh',
-	'gm-no' => 'Mba',
+	'gm-no' => 'Mbà',
 	'gm-search' => 'Chöwá',
 	'gm-save-path' => 'Donyéré',
 	'gm-back' => 'azú',

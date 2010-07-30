@@ -187,6 +187,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'categorymultisort-desc' => 'Nè kwé kà ébéanọr Í gi zí na ùgòdì dí íchè',
 	'categorymultisort-defaultsortkey-name' => 'Nke éjị bịdó',
 	'categorymultisort-sortkey' => 'ÙgòdìPịa:',
 	'categorymultisort-go' => 'Gá',
@@ -412,6 +413,18 @@ $messages['tr'] = array(
 	'categorymultisort-go' => 'Git',
 	'categorymultisort-default-sortkey' => 'Varsayılan sıralama türü:',
 	'prefs-category' => 'Kategori',
+);
+
+/** Ukrainian (Українська)
+ * @author Apromix
+ */
+$messages['uk'] = array(
+	'categorymultisort-desc' => 'Дозволяє проглядати категорії з різними ключами сортування',
+	'categorymultisort-defaultsortkey-name' => 'За замовчуванням',
+	'categorymultisort-sortkey' => 'Ключ сортування:',
+	'categorymultisort-go' => 'Перейти',
+	'categorymultisort-default-sortkey' => 'Ключ сортування за замовчуванням:',
+	'prefs-category' => 'Категорія',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

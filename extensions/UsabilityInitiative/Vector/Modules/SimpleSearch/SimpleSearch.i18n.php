@@ -459,6 +459,14 @@ $messages['ksh'] = array(
 	'vector-simplesearch-containing' => 'dren änthallde…',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'vector-simplesearch-search' => 'Lêgerîn',
+	'vector-simplesearch-containing' => 'dihundirîne...',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  */

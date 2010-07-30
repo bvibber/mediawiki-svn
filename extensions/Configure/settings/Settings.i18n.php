@@ -10172,6 +10172,8 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'configure-setting-wgSitename' => 'Áhà ama',
+	'configure-setting-wgActionPaths-key' => 'Ọmé',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Íshí ihü',
 	'configure-setting-wgExtraLanguageNames-value' => 'Áhà',
 );
 

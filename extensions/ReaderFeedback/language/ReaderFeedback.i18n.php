@@ -1057,6 +1057,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author DoviJ
  * @author Nahum
  * @author Ori229
@@ -1094,6 +1095,7 @@ $messages['he'] = array(
 	'readerfeedback-tier-poor' => 'גרוע',
 	'tooltip-ca-ratinghist' => 'דירוג קוראים לדף זה',
 	'specialpages-group-feedback' => 'דעת הצופה',
+	'readerfeedback-tt-review' => 'שליחת ביקורת',
 );
 
 /** Croatian (Hrvatski)

@@ -1175,6 +1175,14 @@ $messages['sv'] = array(
 	'slippymap_clicktoactivate' => 'Klicka för att aktivera kartan',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'slippymap_error' => '$1 పొరపాటు: $2',
+	'slippymap_errors' => '$1 పొరపాట్లు:',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
