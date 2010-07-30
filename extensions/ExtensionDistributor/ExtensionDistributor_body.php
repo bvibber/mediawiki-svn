@@ -116,7 +116,7 @@ class ExtensionDistributorPage extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array(
 				'action' => $this->getTitle()->getLocalUrl(),
-				'method' => 'POST' ) ) .
+				'method' => 'GET' ) ) .
 			"<select name=\"extdist_extension\">\n" .
 			"<option value=''></option>\n"
 		);
@@ -160,7 +160,7 @@ class ExtensionDistributorPage extends SpecialPage {
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array(
 				'action' => $this->getTitle()->getLocalUrl(),
-				'method' => 'POST' ) ) .
+				'method' => 'GET' ) ) .
 			Xml::element( 'input' , array( 'type' => 'hidden',
 				'name' => 'extdist_extension', 'value' => $extensionName ) ) .
 			"<select name=\"extdist_version\">\n" );
