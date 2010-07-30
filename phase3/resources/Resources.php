@@ -9,64 +9,76 @@ ResourceLoader::register( array(
 		'script' => 'resources/jquery/jquery.tabIndex.js',
 		'raw' => true,
 	),
-	'mw' => array(
-		'script' => 'resources/mw/mw.js',
+	'mediawiki' => array(
+		'script' => 'resources/mediawiki/mediawiki.js',
 		'raw' => true,
 	),
-	'mw.legacy.ajax' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.ajax.js',
+	'mediawiki.legacy.ajax' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajax.js',
 	),
-	'mw.legacy.ajaxwatch' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.ajaxwatch.js',
+	'mediawiki.legacy.ajaxwatch' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajaxwatch.js',
 	),
-	'mw.legacy.block' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.block.js',
+	'mediawiki.legacy.block' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.block.js',
 	),
-	'mw.legacy.changepassword' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.changepassword.js',
+	'mediawiki.legacy.changepassword' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.changepassword.js',
 	),
-	'mw.legacy.edit' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.edit.js',
+	'mediawiki.legacy.edit' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.edit.js',
 	),
-	'mw.legacy.enhancedchanges' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.enhancedchanges.js',
+	'mediawiki.legacy.enhancedchanges' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.enhancedchanges.js',
 	),
-	'mw.legacy.history' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.history.js',
+	'mediawiki.legacy.history' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.history.js',
 	),
-	'mw.legacy.htmlform' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.htmlform.js',
+	'mediawiki.legacy.htmlform' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.htmlform.js',
 	),
-	'mw.legacy.IEFixes' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.IEFixes.js',
+	'mediawiki.legacy.IEFixes' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.IEFixes.js',
 	),
-	'mw.legacy.metadata' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.metadata.js',
+	'mediawiki.legacy.metadata' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.metadata.js',
 	),
-	'mw.legacy.mwsuggest' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.mwsuggest.js',
+	'mediawiki.legacy.mwsuggest' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.mwsuggest.js',
 	),
-	'mw.legacy.prefs' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.prefs.js',
+	'mediawiki.legacy.prefs' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.prefs.js',
 	),
-	'mw.legacy.preview' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.preview.js',
+	'mediawiki.legacy.preview' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.preview.js',
 	),
-	'mw.legacy.protect' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.protect.js',
+	'mediawiki.legacy.protect' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.protect.js',
 	),
-	'mw.legacy.rightclickedit' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.rightclickedit.js',
+	'mediawiki.legacy.rightclickedit' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.rightclickedit.js',
 	),
-	'mw.legacy.search' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.search.js',
+	'mediawiki.legacy.search' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.search.js',
 	),
-	'mw.legacy.upload' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.upload.js',
+	'mediawiki.legacy.upload' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.upload.js',
 	),
-	'mw.legacy.wikibits' => array(
-		'script' => 'resources/mw/legacy/mw.legacy.wikibits.js',
+	'mediawiki.legacy.wikibits' => array(
+		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.wikibits.js',
 	),
+	
+	'mediawiki.utilities.client' => array(
+		'script' => 'resources/mediawiki/utilities/mediawiki.utilities.client.js',
+	),
+	
+	'mediawiki.views.diff' => array(
+		'script' => 'resources/mediawiki/views/mediawiki.views.diff.js',
+	),
+	'mediawiki.views.install' => array(
+		'script' => 'resources/mediawiki/views/mediawiki.views.install.js',
+	),
+	
 	'test' => array(
 		'script' => 'resources/test/test.js',
 		'loader' => 'resources/test/loader.js',
