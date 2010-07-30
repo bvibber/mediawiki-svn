@@ -14,7 +14,7 @@ $.extend( true, mw.legacy, {
 		var inputs = parent.getElementsByTagName('input');
 		var radios = [];
 		for (var i = 0; i < inputs.length; i++) {
-			if (inputs[i].name == "diff" || inputs[i].name == "oldid") {
+			if (inputs[i].name == 'diff' || inputs[i].name == 'oldid') {
 				radios[radios.length] = inputs[i];
 			}
 		}
@@ -46,7 +46,7 @@ $.extend( true, mw.legacy, {
 								oli.classNameOriginal = '';
 							}
 							
-							oli.className = "selected "+oli.classNameOriginal;
+							oli.className = 'selected '+oli.classNameOriginal;
 							return false;
 						}
 					} else if (inputs[0].checked) {
@@ -67,7 +67,7 @@ $.extend( true, mw.legacy, {
 						lis[i].classNameOriginal = '';
 					}
 							
-					lis[i].className = "selected "+lis[i].classNameOriginal;
+					lis[i].className = 'selected '+lis[i].classNameOriginal;
 					oli = lis[i];
 				}  else { // no radio is checked in this row
 					if (!oli) {

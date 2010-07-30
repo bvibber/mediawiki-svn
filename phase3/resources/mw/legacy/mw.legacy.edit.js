@@ -50,7 +50,7 @@ $.extend( true, mw.legacy, {
 				mw.legacy.insertTags( item.tagOpen, item.tagClose, item.sampleText );
 				// Click tracking
 				if ( typeof $.trackAction != 'undefined' ) {
-					$.trackAction( 'oldedit.' + item.speedTip.replace( / /g, "-" ) );
+					$.trackAction( 'oldedit.' + item.speedTip.replace( / /g, '-' ) );
 				}
 				return false;
 			} )

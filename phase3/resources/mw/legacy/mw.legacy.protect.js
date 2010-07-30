@@ -246,7 +246,7 @@ $.extend( true, mw.legacy, {
 		 * @return Array
 		 */
 		'getLevelSelectors': function() {
-			var all = document.getElementsByTagName("select");
+			var all = document.getElementsByTagName('select');
 			var ours = new Array();
 			for (var i = 0; i < all.length; i++) {
 				var element = all[i];
@@ -273,7 +273,7 @@ $.extend( true, mw.legacy, {
 		 * @return Array
 		 */
 		'getExpiryInputs': function() {
-			var all = document.getElementsByTagName("input");
+			var all = document.getElementsByTagName('input');
 			var ours = new Array();
 			for (var i = 0; i < all.length; i++) {
 				var element = all[i];
@@ -299,7 +299,7 @@ $.extend( true, mw.legacy, {
 		 * @return Array
 		 */
 		'getExpirySelectors': function() {
-			var all = document.getElementsByTagName("select");
+			var all = document.getElementsByTagName('select');
 			var ours = new Array();
 			for (var i = 0; i < all.length; i++) {
 				var element = all[i];

@@ -15,7 +15,7 @@ $.extend( true, mw.legacy, {
 	/* Global Variables */
 	
 	'sajax_debug_mode': false,
-	'sajax_debug_mode': "GET",
+	'sajax_debug_mode': 'GET',
 	
 	/* Functions */
 	
@@ -46,7 +46,7 @@ $.extend( true, mw.legacy, {
 		mw.legacy.sajax_debug( 'sajax_init_object() called..' );
 		var request = false;
 		try {
-			// Try the "new" style before ActiveX so we don't unnecessarily trigger warnings in IE 7 when the user's
+			// Try the 'new' style before ActiveX so we don't unnecessarily trigger warnings in IE 7 when the user's
 			// security settings are set to prompt about ActiveX usage
 			request = new XMLHttpRequest();
 		} catch ( e ) {
@@ -108,7 +108,7 @@ $.extend( true, mw.legacy, {
 		try {
 			request.open( mw.legacy.sajax_request_type, uri, true );
 		} catch ( e ) {
-			if ( window.location.hostname == "localhost" ) {
+			if ( window.location.hostname == 'localhost' ) {
 				alert(
 					'Your browser blocks XMLHttpRequest to \'localhost\', ' +
 					'try using a real hostname for development/testing.'

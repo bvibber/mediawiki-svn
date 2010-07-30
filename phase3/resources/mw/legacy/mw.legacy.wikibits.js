@@ -273,7 +273,7 @@ $.extend( true, mw.legacy, {
 			var tip = element.getAttribute( 'title' );
 			if ( tip && mw.legacy.tooltipAccessKeyRegexp.exec( tip ) ) {
 				tip = tip.replace(mw.legacy.tooltipAccessKeyRegexp,
-						  '[' + mw.legacy.tooltipAccessKeyPrefix + "$5]");
+						  '[' + mw.legacy.tooltipAccessKeyPrefix + '$5]');
 				element.setAttribute( 'title', tip );
 			}
 		}
@@ -377,7 +377,7 @@ $.extend( true, mw.legacy, {
 			outerSpan.appendChild( document.createTextNode( ']' ) );
 			linkHolder.appendChild( document.createTextNode( ' ' ) );
 			linkHolder.appendChild( outerSpan );
-			var cookiePos = document.cookie.indexOf( "hidetoc=" );
+			var cookiePos = document.cookie.indexOf( 'hidetoc=' );
 			if ( cookiePos > -1 && document.cookie.charAt( cookiePos + 8 ) == 1 ) {
 				toggleToc();
 			}
@@ -391,12 +391,12 @@ $.extend( true, mw.legacy, {
 		if ( toc && toggleLink && toc.style.display == 'none' ) {
 			changeText( toggleLink, tocHideText );
 			toc.style.display = 'block';
-			document.cookie = "hidetoc=0";
+			document.cookie = 'hidetoc=0';
 			tocmain.className = 'toc';
 		} else {
 			changeText( toggleLink, tocShowText );
 			toc.style.display = 'none';
-			document.cookie = "hidetoc=1";
+			document.cookie = 'hidetoc=1';
 			tocmain.className = 'toc tochidden';
 		}
 		return false;
@@ -587,20 +587,20 @@ $.extend( true, mw.legacy, {
 		if ( typeof wgSeparatorTransformTable == 'undefined'
 				|| ( wgSeparatorTransformTable[0] == '' && wgDigitTransformTable[2] == '' ) )
 		{
-			var digitClass = "[0-9,.]";
+			var digitClass = '[0-9,.]';
 			mw.legacy.ts_number_transform_table = false;
 		} else {
 			mw.legacy.ts_number_transform_table = {};
 			// Unpack the transform table
 			// Separators
-			var ascii = wgSeparatorTransformTable[0].split("\t");
-			var localised = wgSeparatorTransformTable[1].split("\t");
+			var ascii = wgSeparatorTransformTable[0].split('\t');
+			var localised = wgSeparatorTransformTable[1].split('\t');
 			for ( var i = 0; i < ascii.length; i++ ) {
 				mw.legacy.ts_number_transform_table[localised[i]] = ascii[i];
 			}
 			// Digits
-			ascii = wgDigitTransformTable[0].split("\t");
-			localised = wgDigitTransformTable[1].split("\t");
+			ascii = wgDigitTransformTable[0].split('\t');
+			localised = wgDigitTransformTable[1].split('\t');
 			for ( var i = 0; i < ascii.length; i++ ) {
 				mw.legacy.ts_number_transform_table[localised[i]] = ascii[i];
 			}
@@ -626,11 +626,11 @@ $.extend( true, mw.legacy, {
 		// We allow a trailing percent sign, which we just strip.  This works fine
 		// if percents and regular numbers aren't being mixed.
 		mw.legacy.ts_number_regex = new RegExp(
-			"^(" +
-				"[-+\u2212]?[0-9][0-9,]*(\\.[0-9,]*)?(E[-+\u2212]?[0-9][0-9,]*)?" + // Fortran-style scientific
-				"|" +
-				"[-+\u2212]?" + digitClass + "+%?" + // Generic localised
-			")$", "i"
+			'^(' +
+				'[-+\u2212]?[0-9][0-9,]*(\\.[0-9,]*)?(E[-+\u2212]?[0-9][0-9,]*)?' + // Fortran-style scientific
+				'|' +
+				'[-+\u2212]?' + digitClass + '+%?' + // Generic localised
+			')$', 'i'
 		);
 	},
 	'ts_toLowerCase': function( s ) {
@@ -717,7 +717,7 @@ $.extend( true, mw.legacy, {
 			}
 			s = newNum;
 		}
-		var num = parseFloat( s.replace(/[, ]/g, '').replace("\u2212", '-') );
+		var num = parseFloat( s.replace(/[, ]/g, '').replace('\u2212', '-') );
 		return ( isNaN( num ) ? -Infinity : num );
 	},
 	'ts_currencyToSortKey': function( s ) {
@@ -764,21 +764,21 @@ $.extend( true, mw.legacy, {
 		}
 	},
 	'escapeQuotes': function( text ) {
-		var re = new RegExp( "'", "g" );
-		text = text.replace( re, "\\'" );
-		re = new RegExp( "\\n", "g" );
-		text = text.replace( re, "\\n" );
+		var re = new RegExp( '\'', 'g' );
+		text = text.replace( re, '\\'' );
+		re = new RegExp( '\\n', 'g' );
+		text = text.replace( re, '\\n' );
 		return escapeQuotesHTML( text );
 	},
 	'escapeQuotesHTML': function( text ) {
-		var re = new RegExp( '&', "g" );
-		text = text.replace( re, "&amp;" );
-		re = new RegExp( '"', "g" );
-		text = text.replace( re, "&quot;" );
-		re = new RegExp( '<', "g" );
-		text = text.replace( re, "&lt;" );
-		re = new RegExp( '>', "g" );
-		text = text.replace( re, "&gt;" );
+		var re = new RegExp( '&', 'g' );
+		text = text.replace( re, '&amp;' );
+		re = new RegExp( '\'', 'g' );
+		text = text.replace( re, '&quot;' );
+		re = new RegExp( '<', 'g' );
+		text = text.replace( re, '&lt;' );
+		re = new RegExp( '>', 'g' );
+		text = text.replace( re, '&gt;' );
 		return text;
 	},
 	/**
@@ -837,7 +837,7 @@ $.extend( true, mw.legacy, {
 			return null;
 		}
 		// unhide portlet if it was hidden before
-		root.className = root.className.replace( /(^| )emptyPortlet( |$)/, "$2" );
+		root.className = root.className.replace( /(^| )emptyPortlet( |$)/, '$2' );
 		var span = document.createElement( 'span' );
 		span.appendChild( document.createTextNode( text ) );
 		var link = document.createElement( 'a' );
@@ -1006,11 +1006,11 @@ $.extend( true, mw.legacy, {
 		if( typeof oClassNames == 'object' ) {
 			for( var i = 0; i < oClassNames.length; i++ ) {
 				arrRegExpClassNames[arrRegExpClassNames.length] =
-					new RegExp("(^|\\s)" + oClassNames[i].replace(/\-/g, "\\-") + "(\\s|$)");
+					new RegExp('(^|\\s)' + oClassNames[i].replace(/\-/g, '\\-') + '(\\s|$)');
 			}
 		} else {
 			arrRegExpClassNames[arrRegExpClassNames.length] =
-				new RegExp("(^|\\s)" + oClassNames.replace(/\-/g, "\\-") + "(\\s|$)");
+				new RegExp('(^|\\s)' + oClassNames.replace(/\-/g, '\\-') + '(\\s|$)');
 		}
 		var oElement;
 		var bMatchesAll;

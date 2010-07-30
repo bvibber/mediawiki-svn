@@ -428,9 +428,9 @@ $.extend( true, mw.legacy, {
 		var r = os_timer.r;
 		var query = os_timer.query;
 		os_timer = null;
-		var path = wgMWSuggestTemplate.replace( "{namespaces}", os_getNamespaces( r ) )
-										.replace( "{dbname}", wgDBname )
-										.replace( "{searchTerms}", os_encodeQuery( query ) );
+		var path = wgMWSuggestTemplate.replace( '{namespaces}', os_getNamespaces( r ) )
+										.replace( '{dbname}', wgDBname )
+										.replace( '{searchTerms}', os_encodeQuery( query ) );
 		// try to get from cache, if not fetch using ajax
 		var cached = os_cache[path];
 		if( cached != null && cached != undefined ) {
@@ -448,7 +448,7 @@ $.extend( true, mw.legacy, {
 					xmlhttp.send( null );
 				} catch ( e ) {
 					if ( window.location.hostname == 'localhost' ) {
-						alert( "Your browser blocks XMLHttpRequest to 'localhost', try using a real hostname for development/testing." );
+						alert( 'Your browser blocks XMLHttpRequest to "localhost", try using a real hostname for development/testing.' );
 					}
 					throw e;
 				}
@@ -475,7 +475,7 @@ $.extend( true, mw.legacy, {
 		}
 		// schedule delayed fetching of results
 		if( timeout != 0 ) {
-			os_timer = new os_Timer( setTimeout( "os_delayedFetch()", timeout ), r, query );
+			os_timer = new os_Timer( setTimeout( 'os_delayedFetch()', timeout ), r, query );
 		} else {
 			os_timer = new os_Timer( null, r, query );
 			os_delayedFetch(); // do it now!
@@ -790,7 +790,7 @@ $.extend( true, mw.legacy, {
 				clearInterval( os_animation_timer.id );
 			}
 			os_animation_timer = new os_AnimationTimer( r, w );
-			os_animation_timer.id = setInterval( "os_animateChangeWidth()", os_animation_delay );
+			os_animation_timer.id = setInterval( 'os_animateChangeWidth()', os_animation_delay );
 			w -= fix; // this much is reserved
 		}
 
