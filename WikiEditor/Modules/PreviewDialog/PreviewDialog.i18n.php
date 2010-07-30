@@ -601,6 +601,7 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'wikieditor-previewDialog-preference' => 'Ñawpaq qhawana willanakuyta atichiy',
 	'wikieditor-previewDialog-tab' => 'Ñawpaqta qhawallay',
 	'wikieditor-previewDialog-loading' => 'Chaqnamuspa…',
 );

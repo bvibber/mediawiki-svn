@@ -154,6 +154,9 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-didntwork' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
+	'prefswitch-return' => 'Parameters:
+* $1 is a URL
+* $2 is ...',
 	'prefswitch-main' => 'The three default screenshots are in English and kept on Wikimedia Commons. If you want them to be in your language you will either need to create them yourself, and upload them onto Wikimedia Commons, or ask for help to make these from colleagues on your home wiki.',
 	'prefswitch-main-feedback' => 'Entry asking for feedback in a local page.',
 	'prefswitch-main-anon' => 'Is used on Special:UsabilityInitiativePrefSwitch at Wikimedia.org.',
@@ -2887,6 +2890,15 @@ Untuk membantu kami memperbaikinya, silakan isi survei opsional di bawah ini seb
 	'prefswitch-feedbackpage' => 'Project:Umpan balik pengalaman pengguna',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'prefswitch-survey-true' => 'Eeh',
+	'prefswitch-survey-false' => 'Mbà',
+	'prefswitch-title-switched-off' => 'Imẹẹla',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -3369,6 +3381,27 @@ $messages['krc'] = array(
 	'prefswitch-survey-intro-off' => 'Джангы амалланы сынаб кёргенигиз ючюн саў болугъуз.
 Аланы игилендирир ючюн, тилейбиз, талай соруўгъа джуўаб бир беригиз, «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]» тиекни басарыгъызны аллы бла.',
 	'prefswitch-feedbackpage' => 'Project:Джангы интерфейсни юсюнден оюмла',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'prefswitch-title-switched-on' => 'Vill Spaß!',
+	'prefswitch-title-off' => 'Donn di neue Müjjelichkheite afschallde',
+	'prefswitch-title-switched-off' => 'Mer bedanke uns',
+	'prefswitch-title-feedback' => 'Wat meinß_De dohzoh',
+	'prefswitch-success-feedback' => 'Ding Meinung es enjescheck',
+	'prefswitch-return' => '<hr style="clear:both">
+Retuur noh <span class="plainlinks">[$1 $2]</span>.',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'prefswitch-survey-true' => 'Erê',
+	'prefswitch-survey-false' => 'Na',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -4330,11 +4363,17 @@ Për giutene a amelioreje, për piasì ch\'a ampinissa ël sondagi opsional sì-
 $messages['ps'] = array(
 	'prefswitch-survey-true' => 'هو',
 	'prefswitch-survey-false' => 'نه',
+	'prefswitch-survey-question-like' => 'په نوؤ ځانګړنو کې مو څه خوښ شول؟',
+	'prefswitch-survey-question-dislike' => 'په نوؤ ځانګړنو کې مو څه خوښ نه شول؟',
+	'prefswitch-survey-answer-whyoff-hard' => 'د نوؤ ځانګړنو کارېدنه ډېره ستونزمنه وه.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'زما نوې توکپټه خوښه نه شوه.',
 	'prefswitch-survey-answer-whyoff-other' => 'بل سبب:',
 	'prefswitch-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
 	'prefswitch-survey-answer-browser-other' => 'بل کتنمل:',
 	'prefswitch-survey-question-os' => 'تاسې کوم چليز غونډال کاروۍ؟',
 	'prefswitch-survey-answer-os-other' => 'بل چليز غونډال:',
+	'prefswitch-title-on' => 'نوې ځانګړنې',
+	'prefswitch-title-switched-on' => 'خوند ترې واخلۍ!',
 	'prefswitch-title-switched-off' => 'مننه',
 );
 
@@ -4521,11 +4560,58 @@ Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional aba
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'prefswitch' => "Llamk'apunalla ruraykachanapaq allinkachina churana",
+	'prefswitch-desc' => 'Ruraqkunata atichiy allinkachina tawqakunata churanapaq',
+	'prefswitch-jswarning' => "Uyapura qara wakinchasqa kaptinqa, [[User:$1/$2.js|$2 JavaScript]]-niyki [[{{ns:user}}:$1/vector.js]]-man iskaychanam tiyanqa <!-- or [[{{ns:user}}:$1/common.js]]--> qhipaqtapas llamk'anaykipaq.",
+	'prefswitch-csswarning' => "[[User:$1/$2.css|Kikinchasqa $2 rikch'akuyniykiqa]] manañam llamk'anqachu. Vector qarapaq kikinchasqa CSS nisqata yapayta atinki [[{{ns:user}}:$1/vector.css]]-pi.",
 	'prefswitch-survey-true' => 'Arí',
 	'prefswitch-survey-false' => 'Ama kachunchu',
+	'prefswitch-survey-submit-off' => "Musuq kaqninkunata hark'ay",
+	'prefswitch-survey-cancel-off' => "Musuq kaqninkunawan qhipaqtaraq llamk'ayta munaspaykiqa, $1-man kutimuyta atinki.",
+	'prefswitch-survey-submit-feedback' => 'Musuq kaqninkunamanta rimanakuy',
+	'prefswitch-survey-cancel-feedback' => 'Musuq kaqninkunamanta mana rimanakuyta munaspaykiqa, $1-man kutimuyta atinki.',
+	'prefswitch-survey-question-like' => 'Imatataq musuq kaqninkunapi munanki?',
+	'prefswitch-survey-question-dislike' => 'Imatataq musuq kaqninkunapi manam munankichu?',
+	'prefswitch-survey-question-whyoff' => "Imaraykutaq musuq kaqninkunata hark'achkanki?
+Ama hina kaspa, tukuy paqtaqta akllay.",
+	'prefswitch-survey-answer-whyoff-hard' => "Kaqninkunataqa sasallatam llamk'achini.",
+	'prefswitch-survey-answer-whyoff-didntwork' => "Kaqninkunaqa manam allinta llamk'ankuchu.",
+	'prefswitch-survey-answer-whyoff-notpredictable' => "Kaqninkunap llamk'anantaqa manam qhipaqta yachanichu.",
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "Kaqninkunap rikch'akuynintaqa manam munanichu.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => "Musuq sulapakunatapas rikch'akuynintapas manam munanichu.",
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "Musuq llamk'ana sinrutaqa manam munanichu.",
+	'prefswitch-survey-answer-whyoff-other' => 'Huk rayku:',
+	'prefswitch-survey-question-browser' => "Mayqin llika wamp'unatataq llamk'achinki?",
+	'prefswitch-survey-answer-browser-other' => "Huk llika wamp'una:",
+	'prefswitch-survey-question-os' => "Mayqin llamk'aykuna llikatataq (OS nisqata) llamk'achinki?",
+	'prefswitch-survey-answer-os-other' => "Huk llamk'aykuna llika (OS):",
+	'prefswitch-survey-question-res' => 'Qhawana pampaykiri ima huyakuyuqtaq?',
 	'prefswitch-title-on' => 'Musuq kaqninkuna',
+	'prefswitch-title-switched-on' => "Kusikuspalla llamk'ariy!",
 	'prefswitch-title-off' => "Musuq kaqninkunata hark'ay",
 	'prefswitch-title-switched-off' => 'Añañayki',
+	'prefswitch-title-feedback' => 'Rimanakuy',
+	'prefswitch-success-on' => "Musuq kaqninkunaqa kunan llamk'achkankum. Amalay, musuq kaqninkunaqa kusichisunkiku. Ima hayk'appas chay kaqninkunataqa hark'ayta atinki p'anqap hawanpi kaq \"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]\" nisqa t'inkita ñit'ispa.",
+	'prefswitch-success-off' => "Musuq kaqninkunaqa manañam llamk'achkankuchu. Añañayki musuq kaqninkunata llanchisqaykimanta. Ima hayk'appas chay kaqninkunataqa kutichimuyta atinki p'anqap hawanpi kaq \"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]\" nisqa t'inkita ñit'ispa.",
+	'prefswitch-success-feedback' => 'Rimanakuypaq willasqaykiqa kachasqañam.',
+	'prefswitch-return' => '<hr style="clear:both">
+<span class="plainlinks">[$1 $2]</span>-man kutimuy.',
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} qhichipra'''qa kunan quyllurmi kachkan.
+* '''{{int:move}} qhichipra'''qa kunan maskana sinrup kinrayninpi rikuchinapim rikch'akun.",
+	'prefswitch-main-feedback' => "===Kaymanta willaspa rimanakuy?===
+Qammanta uyarispaykuqa anchata kusirikuykuman.
+Ama hina kaspa, [[$1|rimanakuy p'anqaykuman]] hamuy. Kay llamp'u kaqta allinchanapaq qatinlla aypaykachayniykumanta uyariyta munaspaykiqa, [http://usability.wikimedia.org llamk'apunalla wikiykuman] hamuy astawan yachakunaykipaq.",
+	'prefswitch-main-anon' => "===Kutichimuway===
+[$1 Kaypi ñit'iy musuq kaqninkunata hark'anapaq]. Yaykunaykita icha rakiquna kicharinaykita ñawpaqta mañasunkiku.",
+	'prefswitch-main-on' => "===Kutichimuway!===
+[$2 Kaypi ñit'iy musuq kaqninkunata hark'anapaq].",
+	'prefswitch-main-off' => "===Llanchiy!===
+[$1 Kaypi ñit'iy musuq kaqninkunata atichinapaq].",
+	'prefswitch-survey-intro-feedback' => "Qammanta uyarispaykuqa anchata kusirikuykuman.
+Ama hina kaspa, kay qatiqpi munalla tapuykuy p'anqata hunt'ay \"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]\" nisqata ñit'ispa.",
+	'prefswitch-survey-intro-off' => "Añañayki musuq kaqninkunata llanchisqaykimanta.
+Allinchaywan yanapawanaykipaqqa, kay qatiqpi munalla tapuykuy p'anqata hunt'ariy \"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]\" nisqata ñit'ispa.",
+	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
 /** Romanian (Română)
@@ -5820,7 +5906,7 @@ $messages['yi'] = array(
 $messages['yo'] = array(
 	'prefswitch' => 'Ìyípadà ìfẹ́ràn Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni',
 	'prefswitch-desc' => 'Gbàyè àwọn oníṣe láti ṣèyípadà àwọn ìṣètò àwọn ìfẹ́ràn',
-	'prefswitch-jswarning' => 'Ẹrántí pé pẹ̀lú ìyípadà áwọ̀ ìwojú, [[User:$1/$2.js|JavaScript $2]] yín gbódọ̀ jẹ́ wíwòkọ sí [[{{ns:user}}:$1/vector.js]] <!-- tàbí [[{{ns:user}}:$1/common.js]]--> kó lè baà tẹ̀síwájú ní ṣiṣẹ́.',
+	'prefswitch-jswarning' => 'Ẹrántí pé pẹ̀lú ìyípadà àwọ̀ ìwojú, [[User:$1/$2.js|JavaScript $2]] yín gbódọ̀ jẹ́ wíwòkọ sí [[{{ns:user}}:$1/vector.js]] <!-- tàbí [[{{ns:user}}:$1/common.js]]--> kó lè baà tẹ̀síwájú ní ṣiṣẹ́.',
 	'prefswitch-csswarning' => '[[User:$1/$2.css|Àwọn ọ̀nà atòbáramu $2]] yín kò ní ṣiṣé mọ́. Ẹ le ṣàfikún CSS atòbáramu fún vector nínú [[{{ns:user}}:$1/vector.css]].
 
 Your [[User:$1/$2.css|custom $2 styles]] will no longer be applied. You can add custom CSS for vector in [[{{ns:user}}:$1/vector.css]].',
@@ -5854,8 +5940,41 @@ Your [[User:$1/$2.css|custom $2 styles]] will no longer be applied. You can add 
 	'prefswitch-success-feedback' => 'Ìdáhùn yín ti jẹ́ fífiránṣẹ́.',
 	'prefswitch-return' => '<hr style="clear:both">
 Ẹ padà sí <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Àwọrán ojúìran ìtọ́ka ìfojúkojú Wikipedia tuntun <small>[[Media:VectorNavigation-en.png|(nígbàngbà)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Àwọrán ojúìran ìfojúkojú àtúnṣe ojúewé <small>[[Media:VectorEditorBasic-en.png|(nígbàngbà)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Àwọrán ojúìran pátákó àkíyèsí tuntun fún àwọn ìjápọ̀
+|}
+|}
+Ẹgbẹ́ Ìrírí Oníṣe Wikimedia Foundation ti únṣiṣẹ́ pẹ̀lú àwọn afìfẹ́ṣe láti àgbàjọ láti múu dẹ̀rọ̀ fun yín. Inú wa dùn láti fún yín ní àwọn ìmúdára wọ̀nyí bíì iwojú àti ìṣiṣẹ́ tuntun àti àwọn ìní àtúnṣe ṣíṣọdẹ̀rọ̀. Àwọn ìyípadà tuntun wọ̀nyí wáyé láti jẹ́ kí ó dẹ̀rọ̀ fún àwọn olùfikún tuntun láti bẹ̀rẹ̀, wọ́n sì jẹ́ lórí [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ìdánwò ìṣeémúlò wa tó wáyé ní ọdún tó kọjá]. Mímúdára ìseémúlò àwọn iṣẹ́-ọwọ́ wa ni ohun tó jẹ Wikimedia Foundation lógún bẹ́ẹ̀sìni a ó fun yín nk ọ̀pọ̀ àwọn ìṣọdọ̀tun lọ́jọ́ iwíjú. Fún àwọn ẹ̀kúnrẹ́rẹ́, ẹ ṣèbẹ̀wò sí [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia àgbéjade blog] Wikimedia tó yẹ.
+
+=== Àwọn àtúnṣe tó wáyé nìyí ===
+* '''Ìtọ́ka:''' A ti ṣèmúdára ìtọ́ka fún kíkà àti títúnṣe àwọn ojúewé. Nísinyìí, àwọn ìpele lórí ojúewé kọ̀ọ̀kan fihàn kedere dáadáa bóyá ẹ únwo ojúewé òhún tàbí ojúewé ìfọ̀rọ̀wérọ̀ rẹ̀, àti bóyá ẹ ùnkà tàbí ẹ ùnṣàtúnṣe ojúewé náá.
+* '''Àwọn ìmúdára ìpele irinṣẹ́ ìṣàtúnṣe:''' A ti ṣàtúngbájọ ìpele irinṣẹ́ ìṣàtúnṣe láti jẹ́ kó rorùn fún lílò. Nísinyìí, Ìṣèdá àwọn ojúewé ti dẹ̀rọ̀ ó sì lóye.
+* '''Olùrànwọ́ ìjápọ̀:''' Irinṣẹ́ tó dẹ́rọ̀ láti lò úngbàyín láyè láti ṣàfikún ìjápọ̀ sí àwọn ojúewé wiki míràn àti bákannáà ìjápọ̀ sí àwọn ibi ìtakùn òde.
+* '''Àwọn ìmúdára ìṣàwárí:''' A ti ṣàmúdára àwọn ìmọ̀ràn ìṣàwárí láti mú yín lọ sí ojúewé tí ẹ únwá kíákíá.
+* '''Àwọn ìní tuntun míràn:''' A tún ti ṣe olùránwọ́ tábìlì láti mú dídá tábìlì dẹ̀rọ̀ àti ọ̀nà síṣèrọ́pọ̀ nínú àtúnṣe ojúewé.
+* '''Àmì-iléiṣẹ́ Wikipedia:''' A ti ṣọdọ̀tun àmì-iléiṣẹ́ wa. Ẹ kà nípa rẹ̀ lórí [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blog Wikimedia].",
 	'prefswitch-main-logged-changes' => "* '''Ìpele {{int:watch}}''' nísìnyí jẹ́ ìràwọ̀.
 * '''Ìpele {{int:move}}''' nísìnyí wà nínú ìsílọlẹ̀ lẹ́gbẹ pẹpẹ àwárí.",
+	'prefswitch-main-feedback' => '==Ṣé ẹ ní ìdáhùn?==
+A fẹ́ràn láti mọ èrò yín. Ẹ jọ̀wọ́ ẹ ṣàbẹ̀wò sí [[$1|ojúewé ìdáhùn]] wa, tàbí tó bá jẹ́ pé ipá wa láti sàmúdára atòlànà kọ́mpútà wùyín, ẹ ṣàbẹ̀wò sí [http://usability.wikimedia.org wiki ìṣeémúlò] fún ìfitọ́nilétí lẹ́kùúnrẹ́rẹ́.',
 );
 
 /** Cantonese (粵語)

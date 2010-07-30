@@ -399,6 +399,13 @@ $messages['id'] = array(
 	'wikieditor-loading' => 'Pembebanan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-loading' => 'Ọ na biá',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */

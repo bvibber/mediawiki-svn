@@ -975,8 +975,11 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'optin-try' => 'Beta nisqata llanchiy',
+	'tooltip-pt-optin-try' => 'Musuq kaqninkunata llanchiy',
 	'optin-leave' => 'Beta nisqamanta lluqsiy',
+	'tooltip-pt-optin-leave' => "Musuq kaqninkunata hark'ay",
 	'optin-feedback' => 'Beta nisqata rimanakuy',
+	'tooltip-pt-optin-feedback' => 'Musuq kaqninkunapi rikusqaykikunamanta willaspa rimanakuy',
 );
 
 /** Romanian (Română)
