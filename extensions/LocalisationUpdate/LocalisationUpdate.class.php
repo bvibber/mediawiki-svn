@@ -1,45 +1,71 @@
 <?php
 class LocalisationUpdate {
+	
 	private static $newHashes = null;
 	private static $filecache = array();
 	
-	public static function onRecache( $lc, $langcode, &$cache ) {
-		$cache['messages'] = array_merge( $cache['messages'],
-			self::readFile( $langcode ) );
+	/**
+	 * LocalisationCacheRecache hook handler.
+	 * 
+	 * @param $lc LocalisationCache
+	 * @param $langcode String
+	 * @param $cache Array
+	 * 
+	 * @return true
+	 */
+	public static function onRecache( LocalisationCache $lc, $langcode, array &$cache ) {
+		$cache['messages'] = array_merge(
+			$cache['messages'],
+			self::readFile( $langcode )
+		);
+		
 		$cache['deps'][] = new FileDependency(
-			self::filename( $langcode ) );
+			self::filename( $langcode )
+		);
+		
 		return true;
 	}
 
-	// Called from the cronjob to fetch new messages from SVN
-	public static function updateMessages( $options ) {
+	/**
+	 * Called from the cronjob to fetch new messages from SVN.
+	 * 
+	 * @param $options Array
+	 * 
+	 * @return true
+	 */
+	public static function updateMessages( array $options ) {
 		global $wgLocalisationUpdateDirectory;
 		
 		$verbose = !isset( $options['quiet'] );
 		$all = isset( $options['all'] );
 		$skipCore = isset( $options['skip-core'] );
 		$skipExtensions = isset( $options['skip-extensions'] );
+		
 		if( isset( $options['outdir'] ) ) {
 			$wgLocalisationUpdateDirectory = $options['outdir'];
 		}
 		
-		// Update all MW core messages
+		$result = 0;
+		
+		// Update all MW core messages.
 		if( !$skipCore ) {
 			$result = self::updateMediawikiMessages( $verbose );
 		}
 		
-		// Update all Extension messages
+		// Update all Extension messages.
 		if( !$skipExtensions ) {
 			if( $all ) {
 				global $IP;
 				$extFiles = array();
 				
 				// Look in extensions/ for all available items...
+				// TODO: add support for $wgExtensionAssetsPath
 				$dirs = new RecursiveDirectoryIterator( "$IP/extensions/" );
 				
 				// I ain't kidding... RecursiveIteratorIterator.
 				foreach( new RecursiveIteratorIterator( $dirs ) as $pathname => $item ) {
 					$filename = basename( $pathname );
+					
 					if( preg_match( '/^(.*)\.i18n\.php$/', $filename, $matches ) ) {
 						$group = $matches[1];
 						$extFiles[$group] = $pathname;
@@ -59,129 +85,167 @@ class LocalisationUpdate {
 		// And output the result!
 		self::myLog( "Updated {$result} messages in total" );
 		self::myLog( "Done" );
+		
 		return true;
 	}
 
-	// Update Extension Messages
+	/**
+	 * Update Extension Messages.
+	 * 
+	 * @param $file String
+	 * @param $extension String
+	 * @param $verbose Boolean
+	 * 
+	 * @return Integer: the amount of updated messages
+	 */
 	public static function updateExtensionMessages( $file, $extension, $verbose ) {
 		global $IP, $wgLocalisationUpdateSVNURL;
 		
 		$relfile = wfRelativePath( $file, "$IP/extensions" );
-		// Create a full path
+		
+		// Create a full path.
+		// TODO: add support for $wgExtensionAssetsPath
 		$localfile = "$IP/extensions/$relfile";
 
-		// Get the full SVN directory path
+		// Get the full SVN directory path.
+		// TODO: add support for $wgExtensionAssetsPath
 		$svnfile = "$wgLocalisationUpdateSVNURL/extensions/$relfile";
 
-		// Compare the 2 files
+		// Compare the 2 files.
 		$result = self::compareExtensionFiles( $extension, $svnfile, $file, $verbose, false, true );
+		
 		return $result;
 	}
 
-	// Update the Mediawiki Core Messages
+	/**
+	 * Update the Mediawiki Core Messages.
+	 * 
+	 * @param $verbose Boolean
+	 * 
+	 * @return Integer: the amount of updated messages
+	 */
 	public static function updateMediawikiMessages( $verbose ) {
 		global $IP, $wgLocalisationUpdateSVNURL;
 
-		// Create an array which will later contain all the files that we want to try to update
+		// Create an array which will later contain all the files that we want to try to update.
 		$files = array();
 
-		// The directory which contains the files
+		// The directory which contains the files.
 		$dirname = "languages/messages";
 
-		// Get the full path to the directory
+		// Get the full path to the directory.
 		$localdir = $IP . "/" . $dirname;
 
-		// Get the full SVN Path
+		// Get the full SVN Path.
 		$svndir = "$wgLocalisationUpdateSVNURL/phase3/$dirname";
 
-		// Open the directory
+		// Open the directory.
 		$dir = opendir( $localdir );
 		while ( false !== ( $file = readdir( $dir ) ) ) {
 			$m = array();
 
 			// And save all the filenames of files containing messages
 			if ( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $file, $m ) ) {
-				if ( $m[1] != 'En' ) { // Except for the English one
+				if ( $m[1] != 'En' ) { // Except for the English one.
 					$files[] = $file;
 				}
 			}
 		}
 		closedir( $dir );
 
-		// Find the changed English strings (as these messages won't be updated in ANY language)
-		$changedEnglishStrings = self::compareFiles( $localdir . "/MessagesEn.php", $svndir . "/MessagesEn.php", $verbose, true );
+		// Find the changed English strings (as these messages won't be updated in ANY language).
+		$changedEnglishStrings = self::compareFiles( $localdir . '/MessagesEn.php', $svndir . '/MessagesEn.php', $verbose, true );
 
-		// Count the changes
+		// Count the changes.
 		$changedCount = 0;
 
-		// For each language
-		sort($files);
+		// For each language.
+		sort( $files );
 		foreach ( $files as $file ) {
-			$svnfile = $svndir . "/" . $file;
-			$localfile = $localdir . "/" . $file;
+			$svnfile = $svndir . '/' . $file;
+			$localfile = $localdir . '/' . $file;
 
-			// Compare the files
+			// Compare the files.
 			$result = self::compareFiles( $svnfile, $localfile, $verbose, $changedEnglishStrings, false, true );
 			
-			// And update the change counter
+			// And update the change counter.
 			$changedCount += count( $result );
 		}
 
-		// Log some nice info
+		// Log some nice info.
 		self::myLog( "{$changedCount} Mediawiki messages are updated" );
+		
 		return $changedCount;
 	}
 
-	// Remove all unneeded content
+	/**
+	 * Removes all unneeded content from a file and returns it.
+	 * 
+	 * @param $contents String
+	 * 
+	 * @return String
+	 */
 	public static function cleanupFile( $contents ) {
-		// We don't need any PHP tags
+		// We don't need any PHP tags.
 		$contents = strtr( $contents,
-				array( "<?php" => "",
-				"?" . ">" => ""
-		) );
+			array(
+				'<?php' => '',
+				'?' . '>' => ''
+			)
+		);
+		
 		$results = array();
-		// And we only want the messages array
+		
+		// And we only want the messages array.
 		preg_match( "/\\\$messages(.*\s)*?\);/", $contents, $results );
 
 		// If there is any!
 		if ( !empty( $results[0] ) ) {
 			$contents = $results[0];
 		} else {
-			$contents = "";
+			$contents = '';
 		}
 
-		// Windows vs Unix always stinks when comparing files
+		// Windows vs Unix always stinks when comparing files.
 		$contents = preg_replace( "/\\r\\n?/", "\n", $contents );
 
-		// return the cleaned up file
+		// Return the cleaned up file.
 		return $contents;
 	}
 
+	/**
+	 * 
+	 * @param $basefile String
+	 */
 	public static function getFileContents( $basefile ) {
 		global $wgLocalisationUpdateRetryAttempts;
+		
 		$attempts = 0;
-		$basefilecontents = "";
-		// use cURL to get the SVN contents
+		$basefilecontents = '';
+		
+		// Use cURL to get the SVN contents.
 		if ( preg_match( "/^http/", $basefile ) ) {
-			while( !$basefilecontents && $attempts <= $wgLocalisationUpdateRetryAttempts) {
-				if($attempts > 0) {
+			while( !$basefilecontents && $attempts <= $wgLocalisationUpdateRetryAttempts ) {
+				if( $attempts > 0 ) {
 					$delay = 1;
-					self::myLog( "Failed to download " . $basefile . "; retrying in ${delay}s..." );
+					self::myLog( 'Failed to download ' . $basefile . "; retrying in ${delay}s..." );
 					sleep( $delay );
 				}
+				
 				$basefilecontents = Http::get( $basefile );
 				$attempts++;
 			}
 			if ( !$basefilecontents ) {
-					self::myLog( "Cannot get the contents of " . $basefile . " (curl)" );
+					self::myLog( 'Cannot get the contents of ' . $basefile . ' (curl)' );
 					return false;
 			}
 		} else {// otherwise try file_get_contents
 			if ( !( $basefilecontents = file_get_contents( $basefile ) ) ) {
-				self::myLog( "Cannot get the contents of " . $basefile );
+				self::myLog( 'Cannot get the contents of ' . $basefile );
 				return false;
 			}
 		}
+		
 		return $basefilecontents;
 	}
 
@@ -466,11 +530,15 @@ class LocalisationUpdate {
 	
 	public static function filename( $lang ) {
 		global $wgLocalisationUpdateDirectory, $wgCacheDirectory;
+		
 		$dir = $wgLocalisationUpdateDirectory ?
 			$wgLocalisationUpdateDirectory :
 			$wgCacheDirectory;
-		if ( !$dir )
+			
+		if ( !$dir ) {
 			throw new MWException( 'No cache directory configured' );
+		}
+			
 		return "$dir/l10nupdate-$lang.cache";
 	}
 	
@@ -478,11 +546,13 @@ class LocalisationUpdate {
 		if ( !isset( self::$filecache[$lang] ) ) {
 			$file = self::filename( $lang );
 			$contents = @file_get_contents( $file );
+			
 			if ( $contents === false ) {
 				wfDebug( "Failed to read file '$file'\n" );
 				$retval = array();
 			} else {
 				$retval = unserialize( $contents );
+				
 				if ( $retval === false ) {
 					wfDebug( "Corrupted data in file '$file'\n" );
 					$retval = array();
@@ -490,13 +560,18 @@ class LocalisationUpdate {
 			}
 			self::$filecache[$lang] = $retval;
 		}
+		
 		return self::$filecache[$lang];
 	}
 	
 	public static function writeFile( $lang, $var ) {
 		$file = self::filename( $lang );
-		if ( !@file_put_contents( $file, serialize( $var ) ) )
+		
+		if ( !@file_put_contents( $file, serialize( $var ) ) ) {
 			throw new MWException( "Failed to write to file '$file'" );
+		}
+			
 		self::$filecache[$lang] = $var;
 	}
+	
 }
