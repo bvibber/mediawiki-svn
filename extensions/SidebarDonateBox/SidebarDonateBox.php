@@ -36,7 +36,7 @@ $wgHooks['SkinBuildSidebar'][] = 'efSidebarDonateBox';
 
 function efSidebarDonateBox( $skin, &$bar ) {
 	global $egSidebarDonateBoxContent;
-	$bar['DONATE'] = $egSidebarDonateBoxContent;
+	$bar['donate'] = $egSidebarDonateBoxContent;
 	return true;
 }
 
