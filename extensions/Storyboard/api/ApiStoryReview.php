@@ -23,11 +23,6 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once ( "ApiBase.php" );
-}
-
 /**
  * Api class that facilitates story review actions.
  *
