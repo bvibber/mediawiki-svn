@@ -59,7 +59,8 @@ mw.SequencerTimeline.prototype = {
 			this.trackLayout.resizeAll();
 		}
 	},
-	//draw the timeline
+	
+	// Draw the timeline
 	drawTimeline: function(){		
 		// Empty the timeline container 
 		this.getTimelineContainer().empty();
@@ -67,7 +68,7 @@ mw.SequencerTimeline.prototype = {
 		// Get the top level sequence tracks 
 		var seqTracks = this.sequencer.getSmil().getBody().getSeqElements();		
 		var trackType = 'video'; 
-		// for now just two tracks first is video second is audio 
+		// For now just two tracks first is video second is audio 
 		for( var trackIndex=0; trackIndex < seqTracks.length; trackIndex++){
 			
 			if( trackType == 'audio' ){
@@ -83,8 +84,8 @@ mw.SequencerTimeline.prototype = {
 	drawSequenceTrack: function( trackIndex, sequenceNode, trackType ){	
 		var _this = this;
 		mw.log(" drawSequenceTrack: Track inx: " + trackIndex + ' trackType:' + trackType );
-		// Check if we already have a container for this track set		
-			
+		// Check if we already have a container for this track set				
+		
 		// Add a sequence track Name			
 		this.getTracksContainer().find('.trackNamesContainer').append( 
 			this.getTrackNameInterface( trackIndex, sequenceNode, trackType )
@@ -93,12 +94,12 @@ mw.SequencerTimeline.prototype = {
 		// Add Sequence clips
 		this.getTracksContainer().find('.clipTrackSetContainer').append( 
 			this.getTrackClipInterface( trackIndex ,sequenceNode , trackType )
-		).click(function(){			
+		).click( function(){
 			// xxx todo catch de-select clicks in clipTrackSetContainer that are not a click in the timeline
 			//_this.getTracksContainer().find('.timelineClip').removeClass( 'selectedClip' );
 		})
 		// Load and display all clip thumbnails 		
-		this.drawTrackThumbs(  trackIndex, sequenceNode, trackType );		
+		this.drawTrackThumbs(  trackIndex, sequenceNode, trackType );			
 	},
 	
 	drawTrackThumbs: function( trackIndex, sequenceNode, trackType ){

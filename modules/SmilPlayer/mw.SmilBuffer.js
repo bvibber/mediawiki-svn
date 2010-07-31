@@ -403,7 +403,7 @@ mw.SmilBuffer.prototype = {
 		
 		var $vid = $j ( '#' +  assetId);
 		var vid = $vid.get(0);
-		// Add the asset to the loading set
+		// Add the asset to the loading set (if not there already )
 		_this.addAssetLoading( $vid.attr('id' ) );
 		var seekCallbackDone = false;
 		var runSeekCallback = function(){

@@ -23,15 +23,22 @@ mw.SequencerActionsEdit.prototype = {
 	numberOfUndos : mw.getConfig( 'Sequencer.numberOfUndos' ),
 	
 	init: function( sequencer ) {
-		this.sequencer = sequencer; 
-		// Set the initial edit state: 
-		this.editStack.push(  this.sequencer.getSmil().getXMLString() );
+		this.sequencer = sequencer; 		
 	},	
 	
 	selectAll: function(){
 		//Select all the items in the timeline
 		$target = this.sequencer.getTimeline().getTimelineContainer();
 		$target.find( '.timelineClip' ).addClass( 'selectedClip' );
+	},
+	
+	/**
+	 * Set up the edit stack
+	 */
+	setupEditStack: function(){
+		this.editStack = [];
+		// Set the initial edit state: 
+		this.editStack.push(  this.sequencer.getSmil().getXMLString() );
 	},
 	
 	/**
@@ -55,9 +62,10 @@ mw.SequencerActionsEdit.prototype = {
 	 * Undo an edit action
 	 */
 	undo: function(){
-		this.editIndex--;		
+		this.editIndex--;
+		mw.log("SequenceActionsEdit:: undo stack index:" + this.editIndex);
 		// Change to previous state 
-		this.sequencer.updateSmilXML( this.editStack[ this.editIndex ] );
+		this.sequencer.updateSmilXML( this.editStack[ this.editIndex ] );		
 	},
 	
 	/**

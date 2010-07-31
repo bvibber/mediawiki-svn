@@ -91,7 +91,7 @@ mw.Smil.prototype = {
 		this.$dom = $j( smilXmlString );
 
 		mw.log("Smil::loadFromString: loaded smil dom: " + this.$dom.length + "\n" + smilXmlString );
-
+		/*
 		// Clear out the layout
 		this.layout = null;
 
@@ -103,10 +103,11 @@ mw.Smil.prototype = {
 
 		// Clear out the "buffer" object
 		this.buffer = null;
+		*/
 	},
 	updateFromString: function( smilXmlString ){
-		var tmpDom = $j( smilXmlString );
-		// merge in xml changes? 
+		delete this.$dom; 
+		this.$dom = $j( smilXmlString ); 
 	},
 	/**
 	 * Internal function to get the jQuery smil dom
@@ -269,6 +270,7 @@ mw.Smil.prototype = {
 		}
 		return this.duration;
 	},
+	
 	removeById: function ( smilElementId ) {
 		var $smilElement =  this.$dom.find( '#' + smilElementId );
 

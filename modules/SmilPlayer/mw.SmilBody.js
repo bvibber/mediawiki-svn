@@ -50,13 +50,16 @@ mw.SmilBody.prototype = {
 		if( !$node.attr('id')
 			&& !$node.attr( 'xml:id' )
 		){
-			// Make sure the id does not already exist ( should be a rare case ) 
 			var idString = _this.getNodeSmilType( $node ) + '_' + _this.idIndex;
-			if( this.$dom.find( '#' + idString ).length != 0 ){
-				idString+= '_' + Math.random();
+			// Make sure the id does not already exist ( should be a rare case ) 
+			while( this.$dom.find( '#' + idString ).length != 0 ){
+				_this.idIndex++;
+				idString = _this.getNodeSmilType( $node ) + '_' + _this.idIndex;
 			}
+			// Apply the unique id attribute 
 			$node.attr('id',  idString);
 			mw.log('SmilBody:: gave: ' + $node.get(0).nodeName + ' id: ' + $node.attr('id') );
+			// Increment the index: 
 			_this.idIndex++;
 		}
 		

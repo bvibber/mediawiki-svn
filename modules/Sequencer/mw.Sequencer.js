@@ -96,17 +96,19 @@ mw.Sequencer.prototype = {
 	 * Update the smil xml and then update the interface
 	 */
 	updateSmilXML: function( smilXML ){
-		mw.log("Sequencer::updateSmilXML");
+		mw.log("Sequencer::updateSmilXML" + smilXML);
 		var _this = this;
-		
+		alert( 'before update seq len: ' + this.getSmil().$dom.find('seq').children().length )
 		// Update the embedPlayer smil: 
 		this.getSmil().updateFromString( smilXML );
-		
+		alert( 'after update seq len: ' + this.getSmil().$dom.find('seq').children().length )
 		// Get a duration ( forceRefresh to clear the cache ) 
-		this.getEmbedPlayer().getDuration( true );
-		
+		var dur = this.getEmbedPlayer().getDuration( true );
+		alert( 'restored dur should be: ' + dur);
+		/*		
 		// redraw the timeline
 		this.getTimeline().drawTimeline();
+		*/
 	},
 	
 	/**
@@ -133,8 +135,8 @@ mw.Sequencer.prototype = {
 			// Add the timeline
 			_this.getTimeline().drawTimeline();	
 			
-			// initialize the edit actions ( stores the initial state for undo / redo actions )  
-			_this.getActionsEdit();
+			// initialize the edit stack to support undo / redo actions  
+			_this.getActionsEdit().setupEditStack();
 		});		
 		// Draw the top level menu
 		this.getMenu().drawMenu();
