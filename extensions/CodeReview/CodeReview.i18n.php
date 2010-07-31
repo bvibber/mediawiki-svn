@@ -31,7 +31,6 @@ $messages['en'] = array(
 	'code-authors' => 'authors',
 	'code-status' => 'states',
 	'code-tags' => 'tags',
-	'code-tests' => 'Test cases',
 	'code-authors-text' => 'Below is a list of repo authors in order of recent commits. Local wiki accounts are shown in parentheses.',
 	'code-author-haslink' => 'This author is linked to the wiki user $1',
 	'code-author-orphan' => 'This author has no link with a wiki account',
@@ -52,7 +51,6 @@ $messages['en'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Date',
 	'code-field-comments' => 'Notes',
-	'code-field-tests' => 'Tests',
 	'code-field-path' => 'Path',
 	'code-field-text' => 'Note',
 	'code-field-select' => 'Select',
@@ -114,12 +112,6 @@ $messages['en'] = array(
 	'codereview-subtitle' => 'For $1',
 
 	'codereview-reply-link' => 'reply',
-	
-	'codereview-tests-succeeded2' => '$1 succeeded {{PLURAL:$2|test|tests}}',
-	'codereview-tests-failed2'  => '$1 succeeded {{PLURAL:$2|test|tests}}, $3 failed {{PLURAL:$4|test|tests}}:',
-	'codereview-tests-running' => 'Test cases are running...',
-	'codereview-tests-aborted' => 'Test run aborted.',
-	'codereview-tests-failed' => 'Failed',
 
 	'codereview-email-subj' => '[$1] [$2]: New comment added',
 	'codereview-email-body' => 'User "$1" posted a comment on $3.
@@ -138,15 +130,6 @@ Full URL: $3
 Commit summary:
 
 $4',
-
-	'codereview-email-subj3' => '[$1] [$2]: Automatic testing detected regression',
-	'codereview-email-body3' => 'Automatic testing has revealed a regression due to the changes in $1.
-
-Full URL: $2
-
-Commit summary:
-
-$3',
 
 	'repoadmin' => 'Repository Administration',
 	'repoadmin-new-legend' => 'Create a new repository',
@@ -219,14 +202,6 @@ $messages['qqq'] = array(
 ----
 $1 = Repository name',
 	'codereview-reply-link' => '{{Identical|Reply}}',
-	'codereview-tests-succeeded2' => 'Parameters:
-* $1 is a formatted form of the number succeeded tests (has a span)
-* $2 is the number of succeeded tests',
-	'codereview-tests-failed2' => 'Parameters:
-* $1 is a formatted form of the number succeeded tests (has a span)
-* $2 is the number of succeeded tests
-* $3 is a formatted form of the number failed tests (has a span)
-* $4 is the number of failed tests',
 	'codereview-email-subj2' => 'Subject of an e-mail sent to a user whose revision has been followed upon.
 * <code>$1</code> – Repository name
 * <code>$2</code> – Number of the original revision (which has been followed upon)',
@@ -235,11 +210,6 @@ $1 = Repository name',
 * <code>$2</code> – Number of the revision that has been followed upon.
 * <code>$3</code> – URL to the new revision.
 * <code>$4</code> – Commit message of the new revision.',
-	'codereview-email-subj3' => '* <code>$1</code> – Repository name
-* <code>$2</code> – Number of the revision',
-	'codereview-email-body3' => '* <code>$1</code> – Number of the revision where a regression has been introduced
-* <code>$2</code> – URL to the revision
-* <code>$3</code> – Commit message for the revision',
 	'repoadmin-new-button' => '{{Identical|Create}}',
 	'repoadmin-edit-button' => '{{Identical|OK}}',
 	'right-repoadmin' => '{{doc-right}}',
@@ -5069,7 +5039,6 @@ $messages['ka'] = array(
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-statuschanges' => 'სტატუსის შეცვლა',
 	'code-authors' => 'ავტორები',
-	'code-tests' => 'ტესტური შემთხვევები',
 	'code-author-orphan' => 'ამ ავტორს არ აქვს ვიკი-ანგარიშის ბმული',
 	'code-author-name' => 'მომხმარებლის სახელის შეტანა:',
 	'code-author-link' => 'კავშირის დამყარება?',
@@ -5077,7 +5046,6 @@ $messages['ka'] = array(
 	'code-field-author' => 'ავტორი',
 	'code-field-status' => 'სტატუსი',
 	'code-field-timestamp' => 'თარიღი',
-	'code-field-tests' => 'ტესტი',
 	'code-field-text' => 'შენიშვნა',
 	'code-field-select' => 'არჩევა',
 	'code-rev-author' => 'ავტორი:',
@@ -5088,6 +5056,7 @@ $messages['ka'] = array(
 	'code-rev-modified-r' => 'ჩაენაცვლა',
 	'code-rev-modified-d' => 'წაშლილი',
 	'code-rev-modified-m' => 'განახლებული',
+	'code-rev-imagediff' => 'სურათის ცვლილებები',
 	'code-rev-status' => 'სტატუსი:',
 	'code-rev-status-set' => 'სტატუსის შეცვლა',
 	'code-rev-tags' => 'ღილაკები:',
@@ -5126,10 +5095,6 @@ $messages['ka'] = array(
 	'code-release-badrange' => 'ზედმეტად დიდი დიაპაზონი!',
 	'codereview-subtitle' => '$1-სთვის',
 	'codereview-reply-link' => 'პასუხი',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|წარმატებული შემოწმება|წარმატებული შემოწმების}}',
-	'codereview-tests-running' => 'კონკრეტული მაგალითების შესრულება...',
-	'codereview-tests-aborted' => 'შემოწმების შესრულება დასრულდა.',
-	'codereview-tests-failed' => 'წარუმატებელია',
 	'codereview-email-body' => 'მომხმარებელმა "$1" დადო კომენტარი $3-ზე.
 
 ბმული: $2
@@ -5137,13 +5102,6 @@ $messages['ka'] = array(
 კომენტარი:
 
 $4',
-	'codereview-email-body3' => 'ავტომატურმა შემოწმებამ აღმოაჩინა რეგრესია $1 ცვლილებასთან.
-
-სრული URL: $2
-
-ცვლილებების აღწერა:
-
-$3',
 	'repoadmin-new-button' => 'შექმნა',
 	'repoadmin-edit-button' => 'კარგი',
 	'repoadmin-edit-sucess' => 'საცავი «[[Special:Code/$1|$1]]» წარმატებით შეიცვალა',
@@ -6708,7 +6666,6 @@ $messages['no'] = array(
 	'code-authors' => 'forfattere',
 	'code-status' => 'tilstander',
 	'code-tags' => 'tagger',
-	'code-tests' => 'Testtilfeller',
 	'code-authors-text' => 'Nedenfor er en liste over repo-forfattere sortert etter siste bidrag. Lokale wikikontoer vises i parantes.',
 	'code-author-haslink' => 'Denne forfatteren er lenket til wikibruker $1',
 	'code-author-orphan' => 'Denne forfatteren har ingen lenke til en wiki-konto',
@@ -6729,7 +6686,6 @@ $messages['no'] = array(
 	'code-field-status' => 'Status',
 	'code-field-timestamp' => 'Dato',
 	'code-field-comments' => 'Notater',
-	'code-field-tests' => 'Tester',
 	'code-field-path' => 'Sti',
 	'code-field-text' => 'Notat',
 	'code-field-select' => 'Velg',
@@ -6759,7 +6715,7 @@ $messages['no'] = array(
 	'code-rev-purge-link' => 'Rense',
 	'code-rev-total' => 'Totalt antall resultat: $1',
 	'code-status-new' => 'ny',
-	'code-status-fixme' => 'Fixmeg',
+	'code-status-fixme' => 'fiksmeg',
 	'code-status-reverted' => 'tilbakestilt',
 	'code-status-resolved' => 'løst',
 	'code-status-ok' => 'OK',
@@ -6785,11 +6741,6 @@ $messages['no'] = array(
 	'code-release-badrange' => 'Intervallet er for stort!',
 	'codereview-subtitle' => 'For $1',
 	'codereview-reply-link' => 'svar',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test var vellykket|tester var vellykkede}}, $3 {{PLURAL:$4|test|tester}} feilet',
-	'codereview-tests-running' => 'Testtilfeller kjører...',
-	'codereview-tests-aborted' => 'Testkjøring avbrutt.',
-	'codereview-tests-failed' => 'Mislyktes',
 	'codereview-email-subj' => '[$1] [$2]: Ny kommentar lagt inn',
 	'codereview-email-body' => 'Bruker $1 la inn en kommentar på $3
 
@@ -6806,14 +6757,6 @@ Full nettadresse: $3
 Sammendrag:
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2]: Automatisk testing oppdaget regresjon',
-	'codereview-email-body3' => 'Automatisk testing har oppdaget regresjon grunnet endringer i $1.
-
-Full nettadresse: $2
-
-Sammendrag av bidrag:
-
-$3',
 	'repoadmin' => 'Databaseadministrasjon',
 	'repoadmin-new-legend' => 'Lag en ny database',
 	'repoadmin-new-label' => 'Databasenavn',

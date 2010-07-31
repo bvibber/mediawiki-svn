@@ -2404,6 +2404,13 @@ $wgCustomToolbarMessages['ru'] = array(
 	'ct_user_sample' => 'Имя участника',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$wgCustomToolbarMessages['rue'] = array(
+	'ct_user_user' => 'Хоснователь',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  */

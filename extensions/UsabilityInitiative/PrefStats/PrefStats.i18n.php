@@ -1601,6 +1601,18 @@ $messages['ml'] = array(
 	'prefstats-legend-in' => 'ഐച്ഛിക ഉൾപ്പെടുത്തൽ',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'prefstats-factor-hour' => 'तास',
+	'prefstats-factor-sixhours' => 'सहा तास',
+	'prefstats-factor-day' => 'दिवस',
+	'prefstats-factor-week' => 'आठवडा',
+	'prefstats-factor-twoweeks' => 'दोन आठवडे',
+	'prefstats-factor-fourweeks' => 'चार आठवडे',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Kurniasan
  */
@@ -2077,11 +2089,30 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'prefstats' => 'Штатістіка наставлїнь',
+	'prefstats-desc' => 'Штатістічне слїдованя того, кілько хоснователїв хоснує котры наставлїня',
+	'prefstats-title' => 'Штатістіка наставлїнь',
+	'prefstats-list-intro' => 'Теперь ся слїдують наслїдуючі наставлїня.
+Кликнутём зобразите прислухаючу штатістіку.',
+	'prefstats-noprefs' => 'Моменталнї ся не слїдує жадне наставлїня. Слїдованя мусите наконфіґуровати в $wgPrefStatsTrackPrefs.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|хоснователь собі актівовав|хоснователї собі актівовали|хоснователїв собі актівовало}} тот параметер од початку робиня штатістікы.
+** $2 {{PLURAL:$2|хоснователь  єй собі запнув|хоснователї єй собі запнули|хоснователїв собі єй запнуло}}
+** $3 {{PLURAL:$3|хоснователь  єй собі выпнув|хоснователї єй собі выпнули|хоснователїв собі єй выпнуло}}',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|хоснователь собі актівовав|хоснователї собі актівовали|хоснователїв собі актівовало}} тот параметер од початку робиня штатістікы.
+** $2 {{PLURAL:$2|хоснователь  єй собі запнув|хоснователї єй собі запнули|хоснователїв собі єй запнуло}}
+** $3 {{PLURAL:$3|хоснователь  єй собі выпнув|хоснователї єй собі выпнули|хоснователїв собі єй выпнуло}}
+* Цілком {{PLURAL:$4|має|мають|має}} тот параметер наставлено  $4 {{PLURAL:$4|хоснователь|хоснователї|хоснователїв}}',
+	'prefstats-xaxis' => 'Тырваня (в годинах)',
+	'prefstats-factors' => 'Зобразити по: $1',
 	'prefstats-factor-hour' => 'годину',
 	'prefstats-factor-sixhours' => 'шість годин',
 	'prefstats-factor-day' => 'день',
 	'prefstats-factor-week' => 'тыждень',
 	'prefstats-factor-twoweeks' => 'два тыжднї',
+	'prefstats-factor-fourweeks' => 'штири тыжднї',
+	'prefstats-factor-default' => 'назад на імпліцітну шкалу',
+	'prefstats-legend-out' => 'Одголошіня',
+	'prefstats-legend-in' => 'Приголошіня',
 );
 
 /** Yakut (Саха тыла)

@@ -38,6 +38,7 @@ class OpenLibrarySource extends WebDataTransclusionSource {
 		if ( !isset( $spec['url'] ) ) {
 			$spec['url'] = 'http://openlibrary.org/api/books?bibkeys=ISBN:{isbn}&details=true';
 			//TODO: custom function to normalize ISBN (trim, strip dashes, correct checksum, etc)
+			//       <^demon> Daniel_WMDE: I believe Special:BookSources has an ISBN normalization thing. Might be worth looking at.
 		}
 
 		if ( !isset( $spec['dataFormat'] ) ) {

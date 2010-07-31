@@ -1059,8 +1059,41 @@ Wann dir Iech schonn ugemellt hutt, $1logg Iech$2 an.
 Esou bal wéi Dir ugellt an ageloggt sidd, kommt w.e.g. op dës Säit zréck.
 
 $3Umellen$4",
+	'translate-fs-settings-text' => "Elo gitt Dir am beschten op Är Astellungen a
+wiesselt Är Sprooch vum Interface an déi Sprooch an déi Dir iwwersetze wëllt.
+
+D'Sprooch déi Dir fir den Interface benotzt gëtt als Standard-Zilsprooch benotzt.
+Et geet séier fir d'Astelle vun der Sprooch op déi korrekt ze vergiessen, dofir ass et ugeroden dat elo direkt ze maachen.
+
+Wann Dir schonn do sidd, da kënnt Dir d'Software och froe fir Iwwersetzungen aner Sproochen déi Dir kennt ze weisen.
+Dës Astellung fannt Dir op dem Tab \"{{int:prefs-editing}}\".
+Zéckt net fir och aner Astellungen auszeprobéieren.
+
+Gitt elo op Är [[Special:Preferences|Säit mat den Astellungen]] a kommt duerno op dës Säit zréck.",
 	'translate-fs-settings-skip' => 'Ech si fäerdeg.
 Loosst mech weidermaachen.',
+	'translate-fs-userpage-text' => "Elo musst Dir eng Benotzersäit leeën.
+
+Schreift w.e.g. eppes iwwer Iech, wien Dir sidd a wat Dir maacht.
+Dat hëlleft der {{SITENAME}}-Gemeinschaft bäi der Zesummenaarbecht.
+Op {{SITENAME}} gëtt et Leit aus ganzer Welt, déi u verschiddene Sproochen a Projeten schaffen.
+
+An der ausgefëllter Këscht uewe gesi Dir an der éischter Zeil <nowiki>{{#babel:en-2}}</nowiki>.
+Fëllt et w.e.g mat Äre Sproochkenntnisser aus.
+D'Zuel hanner dem Sproochcode beschreiwt wéi gudd Dir d'Sprooch kënnt.
+D'Méiglechkeete sinn:
+*1 - e bëssen
+*2 - Basiswëssen
+*3 - fléissend
+*4 - bal wéi d'Mammesprooch
+*5 - professionell, z.B. wann Dir e professionellen Iwwersetzer sidd.
+
+Wenn dat Är Mammesprooch ass, loosst d'Zuel ewech a benotzt nëmmen de Sproochcode.
+Beispill: Wann Dir Tamil als Mammesprooch, Englesch gutt an e bësse Swahili kéint Dir dat esou uginn:
+<code><nowiki>{{#babel:ta|en-3|sw-1}}</nowiki></code>
+
+Wann Dir de Sproochcode vun enger Sprooch net kennt, da kuckt en elo no.
+Dir kënnt d'Lëscht ënnen drënner benotzen.",
 	'translate-fs-userpage-submit' => 'Meng Benotzersäit maachen',
 	'translate-fs-userpage-done' => 'Gutt gemaach! dir hutt elo eng Benotzersäit.',
 	'translate-fs-email-text' => 'Gitt w.e.g. Är E-Mailadress an [[Special:Preferences|Ären Astellungen]] un a confirméiert se vun der E-Mail aus déi Dir geschéckt kritt.
@@ -1662,11 +1695,45 @@ $3Зарегистрироваться$4',
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'firststeps' => 'Першы крокы',
 	'translate-fs-pagetitle-done' => ' - зроблено!',
+	'translate-fs-signup-title' => 'Зареґіструйте ся',
 	'translate-fs-userpage-title' => 'Створити вашу сторінку хоснователя',
 	'translate-fs-permissions-title' => 'Жадати права перекладателя',
 	'translate-fs-target-title' => 'Започати перекладаня!',
 	'translate-fs-email-title' => 'Підтвердьте свою адресу ел. пошты',
+	'translate-fs-userpage-text' => 'Теперь вам треба створити сторінку хоснователя.
+
+Напиште дашто о собі, хто сьте і де робите.
+Тото поможе {{SITENAME}} комунітї працовати вєдно.
+На {{SITENAME}} суть люде з цілого світа, котры працують на вшелиякых языках і проєктах.
+
+В поличку выповненым допереду на каждім першім рядку видите <nowiki>{{#babel:en-2}}</nowiki>.
+Просиме, докінчте то з вашов языковов зналостёв.
+Чісло за языковым кодом пописує як добру знаєте тот язык.
+Можности суть:
+* 1 - маленько
+* 2 - основна зналость
+* 3 - добра зналость
+* 4 - рівень материньского языка
+* 5 - язык хоснуєте професіонално, наприклад сьте професіоналный перекладач.
+
+Кідь є язык ваш материньскый, зохабте рівень языкя так, і хоснуйте лем код языка.
+Приклад: кідь Tamil є ваш материньскый язык, Анґліцкы добрі, і маленько Swahili, вы бы написали:
+<code><nowiki>{{#babel:ta|en-3|sw-1}}</nowiki></code>
+
+Кідь не знаєте код языка, так є час ёго поглядати.
+Можете хосновати список ниже.',
+	'translate-fs-userpage-submit' => 'Створити мою сторінку хоснователя',
+	'translate-fs-userpage-done' => 'Добрі зроблено! Теперь маєте сторінку хоснователя.',
+	'translate-fs-permissions-text' => 'Теперь потребуєте подати жадость про приданя до чрупы перекладателїв.
+Покы мы не справиме  код, ідьте до [[Project:Translator]] і наслїдуйте інштрукції.
+Потім ся верните на тоту сторінку.
+
+Кідь сьте одослали вашу пожадавку, єден член з добровольных працовників перевірить вашу пожадавку і схваліть єй так скоро як то буде можне.
+Просиме, будьте терпезливы.
+
+<del>Перевірте ці наслїдуюча пожадавка є  правилно выповнена і стисните ґомбічку пожадавкы.</del>',
 );
 
 /** Slovenian (Slovenščina)
@@ -1755,9 +1822,8 @@ Na voljo je tudi seznam vseh skupin sporočil s [[Special:LanguageStats|trenutni
 Žal je lahko dokumentacija ponekod zastarela.
 Če je kaj takega, kar bi morali storiti, vendar ne ugotovite kako, ne oklevajte in povprašajte na [[Support|podporni strani]].
 
-Prav tako lahko stopite v stik s kolegi prevajalci istega jezika na [[Portal:$1|vašem jezikovnem portalu]].
-Portal kaže glede na vašo trenutno [[Special:Preferences|nastavitev jezika]].
-Prosimo, spremenite jo, če je potrebno.",
+Prav tako lahko stopite v stik s kolegi prevajalci istega jezika na [[Portal_talk:$1|pogovorni strani]] [[Portal:$1|vašega jezikovnega portala]].
+Če še tega niste storili, nastavite [[Special:Preferences|jezik vašega uporabniškega vmesnika na jezik v katerega želite prevajati]], da bo wiki lahko prikazal povezave, ki vam najbolje ustrezajo.",
 	'translate-fs-email-text' => 'Prosimo, navedite svoj e-poštni naslov v [[Special:Preferences|svojih nastavitvah]] in ga potrdite iz e-pošte, ki vam bo poslana.
 
 To omogoča drugim uporabnikom, da stopijo v stik z vami preko e-pošte.

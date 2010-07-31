@@ -40,7 +40,6 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiCodeUpdate'] = $dir . 'api/ApiCodeUpdate.php';
 $wgAutoloadClasses['ApiCodeDiff'] = $dir . 'api/ApiCodeDiff.php';
 $wgAutoloadClasses['ApiCodeComments'] = $dir . 'api/ApiCodeComments.php';
-$wgAutoloadClasses['ApiCodeTestUpload'] = $dir . 'api/ApiCodeTestUpload.php';
 $wgAutoloadClasses['ApiCodeRevisions'] = $dir . 'api/ApiCodeRevisions.php';
 
 $wgAutoloadClasses['SubversionAdaptor'] = $dir . 'backend/Subversion.php';
@@ -53,9 +52,6 @@ $wgAutoloadClasses['CodeCommentLinker'] = $dir . 'backend/CodeCommentLinker.php'
 $wgAutoloadClasses['CodeCommentLinkerHtml'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodeCommentLinkerWiki'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodePropChange'] = $dir . 'backend/CodePropChange.php';
-$wgAutoloadClasses['CodeTestSuite'] = $dir . 'backend/CodeTestSuite.php';
-$wgAutoloadClasses['CodeTestRun'] = $dir . 'backend/CodeTestRun.php';
-$wgAutoloadClasses['CodeTestResult'] = $dir . 'backend/CodeTestResult.php';
 
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'ui/CodeRepoListView.php';
 $wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'ui/CodeRevisionAuthorView.php';
@@ -83,7 +79,6 @@ $wgSpecialPageGroups['RepoAdmin'] = 'developer';
 
 $wgAPIModules['codeupdate'] = 'ApiCodeUpdate';
 $wgAPIModules['codediff'] = 'ApiCodeDiff';
-$wgAPIModules['codetestupload'] = 'ApiCodeTestUpload';
 $wgAPIListModules['codecomments'] = 'ApiCodeComments';
 $wgAPIListModules['coderevisions'] = 'ApiCodeRevisions';
 
@@ -144,19 +139,10 @@ $wgCodeReviewCommentWatcher = false;
 // What images can be used for client-side side-by-side comparisons?
 $wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
 
-// Set to a secret string for HMAC validation of test run data uploads.
-// Should match test runner's $wgParserTestRemote['secret'].
-$wgCodeReviewSharedSecret = false;
-
 /**
  * Maximum size of diff text before it is omitted from the revision view
  */
 $wgCodeReviewMaxDiffSize = 500000;
-
-/**
- * Maximum duration of test in seconds. After that time the test is considered failed.
- */
-$wgCodeReviewTestsTimeout = 60 * 60; // 1 hour
 
 /**
  * Any base paths matching regular expressions in this array will have their
@@ -183,7 +169,6 @@ function efCodeReviewSchemaUpdates() {
 		}
 
 		$wgExtNewTables[] = array( 'code_bugs', "$base/archives/code_bugs.sql" );
-		$wgExtNewTables[] = array( 'code_test_suite', "$base/archives/codereview-code_tests.sql" );
 	} elseif ( $wgDBtype == 'sqlite' ) {
 		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" );
 	} elseif ( $wgDBtype == 'postgres' ) {

@@ -298,6 +298,9 @@ Perak chom hep rannañ anezhi ?",
 Studiet e vo a-benn nebeut.
 Gellout a rit [$1 lenn istorioù embannet].',
 	'storyboard-emailtitle' => 'Kinnig an istor graet mat',
+	'storyboard-emailbody' => 'Ho istor anvet "$1" a zo bet kinniget.
+Adlennet e vo ganeomp a-benn nebeut.
+Gellout a rit [$2 lenn an istorioù embannet].',
 	'storyreview' => 'Barnadenn an istor',
 	'storyboard-deleteimage' => 'Dilemel ar skeudenn',
 	'storyboard-done' => 'Graet',
@@ -1220,6 +1223,13 @@ $messages['mk'] = array(
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'storyboard-publish' => 'प्रकाशित करा',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -1415,6 +1425,7 @@ $messages['ps'] = array(
 	'storyboard-publish' => 'خپرول',
 	'storyboard-hide' => 'پټول',
 	'storyboard-option-hidden' => 'پټ',
+	'story' => 'کيسه',
 	'storyboard-authorname' => 'د ليکوال نوم',
 	'storyboard-authorlocation' => 'د ليکوال ځای',
 	'storyboard-authoroccupation' => 'د ليکوال دنده',
@@ -1422,9 +1433,15 @@ $messages['ps'] = array(
 	'storyboard-thestory' => 'کيسه',
 	'storyboard-storystate' => 'ايالت',
 	'storyboard-language' => 'ژبه',
+	'storyboard-yourname' => 'ستاسې نوم (اړينه برخه)',
 	'storyboard-location' => 'ستاسې ځای',
 	'storyboard-occupation' => 'ستاسې دنده',
 	'storyboard-story' => 'ستاسې کيسه',
+	'storyboard-email' => 'ستاسې برېښليک پته (اړينه برخه)',
+	'storyboard-charsleft' => '($1 {{PLURAL:$1|توری|توري}} پاتې دي)',
+	'storyboard-cannotbelonger' => 'ستاسې کيسه <b>$1</b> {{PLURAL:$1|توری|تورې}} ډېره اوږده ده!',
+	'storyboard-changetitle' => 'سرليک بدلول.',
+	'storyboard-charactersleft' => '$1 توري پاتې دي',
 	'storyboard-deleteimage' => 'انځور ړنګول',
 	'storyboard-done' => 'ترسره شو',
 	'storyboard-showimage' => 'انځور ښکاره کول',

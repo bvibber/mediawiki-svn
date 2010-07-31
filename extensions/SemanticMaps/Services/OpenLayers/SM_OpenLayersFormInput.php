@@ -23,15 +23,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMOpenLayersFormInput extends SMFormInput {
 	
 	/**
-	 * @see MapsMapFeature::setMapSettings()
+	 * @see SMFormInput::getEarthZoom
+	 * 
+	 * @since 0.6.5
 	 */
-	protected function setMapSettings() {
-		global $egMapsOpenLayersPrefix;
-		
-		$this->elementNamePrefix = $egMapsOpenLayersPrefix;
-
-		$this->earthZoom = 1;
-	}
+	protected function getEarthZoom() {
+		return 1;
+	}	
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
@@ -40,21 +38,14 @@ class SMOpenLayersFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
+		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/OpenLayers/SM_OpenLayersForms{$egMapsJsExt}?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
-		
-		if ( empty( $smgOLFormsOnThisPage ) ) {
-			$smgOLFormsOnThisPage = 0;
-			
-			$wgOut->addScriptFile( "$smgScriptPath/Services/OpenLayers/SM_OpenLayersFunctions{$egMapsJsExt}?$smgStyleVersion" );
-		}
 	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML
-	 * 
-	 * TODO: fix map name
 	 */
-	protected function addSpecificMapHTML() {
+	public function addSpecificMapHTML() {
 		global $wgOut, $wgLang;
 		
 		$mapName = $this->service->getMapId( false );

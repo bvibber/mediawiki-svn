@@ -2171,6 +2171,9 @@ $messages['lv'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
+	'renameuser' => "Hanova ny anaran'ny mpikambana",
+	'renameuser-linkoncontribs' => "Manova ny anaran'ny mpikambana",
+	'renameuser-linkoncontribs-text' => "Hanova ny anaran'ity mpikambana ity",
 	'renameuserold' => 'Anaram-pikambana ankehitriny :',
 	'renameusernew' => 'Anaram-pikambana vaovao :',
 	'renameuserreason' => "Anton'ny fanovana anarana :",
@@ -2955,6 +2958,13 @@ $messages['ru'] = array(
 	'right-renameuser' => 'переименование участников',
 	'renameuser-renamed-notice' => 'Этот участник был переименован.
 Ниже для справки приведён журнал переименований.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'right-renameuser' => 'Переменованя хоснователїв',
 );
 
 /** Yakut (Саха тыла)

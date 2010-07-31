@@ -1932,6 +1932,24 @@ $messages['ru'] = array(
 	'recordadmin-notset' => 'Нет «$1»',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'recordadmin-select' => 'Выбрати',
+	'recordadmin-submit' => 'Одослати',
+	'recordadmin-buttonsearch' => 'Глядати',
+	'recordadmin-buttoncreate' => 'Створити',
+	'recordadmin-buttonreset' => 'Ресетовати',
+	'recordadmin-searchresult' => 'Резултаты гляданя',
+	'recordadmin-buttonsave' => 'Уложыти',
+	'recordadmin-viewlink' => 'відїти',
+	'recordadmin-editlink' => 'едітовати',
+	'recordadmin-created' => 'Створено',
+	'recordadmin-modified' => 'Змінено',
+	'recordadmin-actions' => 'Дїї',
+);
+
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
  * @author OC Ripper
  */

@@ -2659,9 +2659,20 @@ $messages['cu'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
+	'langman_title' => 'Sprogbehandler',
+	'langman_langname' => 'Sprognavn:',
+	'langman_iso639-2' => 'ISO 639-2-kode:',
+	'langman_wikimedia' => 'Wikimedia-kode:',
+	'datasearch_language' => 'Sprog:',
+	'datasearch_found_word' => 'Fundne ord',
+	'datasearch_meaning' => 'Betydning',
+	'datasearch_ext_identifier' => 'Ekstern identifikator',
+	'datasearch_search_text' => 'Søgetekst:',
+	'ow_importtsv_title1' => 'Importer TSV',
 	'ow_history' => 'Historik',
 	'ow_dm_OK' => 'OK',
 	'ow_Language' => 'Sprog',
@@ -10167,6 +10178,7 @@ $messages['ps'] = array(
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
 	'ow_transaction_user' => 'د کارن نوم:',
+	'ow_transaction_no_action' => 'هېڅ مه کوۍ',
 	'ow_transaction_restore' => 'بېرته پرځای کول',
 	'ow_transaction_summary' => 'لنډيز',
 	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
@@ -10215,6 +10227,7 @@ $messages['ps'] = array(
 	'ow_copy_no_action_specified' => 'لطفاً يوه کړنه ځانګړې کړی',
 	'ow_copy_help' => 'Help is not implemented yet.',
 	'ow_class_attr_type_link' => 'تړنه',
+	'ow_needs_xlation_source_lang' => 'سرچينيزه ژبه:',
 	'ow_show' => 'ښکاره کول',
 	'ow_upload' => 'پورته کول',
 	'ow_create' => 'جوړول',

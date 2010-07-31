@@ -1300,6 +1300,14 @@ $messages['ml'] = array(
 	'ct-update-table' => 'പട്ടിക പുതുക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'ct-expert' => 'तज्ज्ञ',
+	'ct-and' => 'आणि',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Aurora
  * @author Kurniasan
@@ -1712,7 +1720,28 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'clicktracking' => 'Слїдованя кликнутёх про Ініціатіву хосновательности.',
+	'clicktracking-desc' => 'Слїдованя кликнутёх про слїдованя подїй, котры не запричінюють зновуначітаня сторінкы',
+	'ct-title' => 'Аґреґованы кликнутя',
+	'ct-event-name' => 'Назва події',
+	'ct-expert-header' => 'Кликів «експертів»',
+	'ct-intermediate-header' => 'Кликів «покрочілых»',
+	'ct-beginner-header' => 'Кликнутя «новачків»',
+	'ct-total-header' => 'Цілком кликів',
+	'ct-start-date' => 'Датум початку (РРРРММДД)',
+	'ct-end-date' => 'Датум кінця (РРРРММДД)',
+	'ct-increment-by' => 'Почет днїв репрезентованых каждым бодом.',
+	'ct-change-graph' => 'Змінити ґраф',
+	'ct-beginner' => 'Новачок',
+	'ct-intermediate' => 'Покрочілый',
+	'ct-expert' => 'Експерт',
+	'ct-date-range' => 'Часовый розсяг',
+	'ct-editing' => 'Актівны хоснователї:',
+	'ct-anon-users' => 'Анонімны хоснователї',
+	'ct-user-contribs' => 'Цілком приспевків хоснователя',
+	'ct-user-span' => 'Приспевкы хоснователїв за період',
 	'ct-and' => 'і',
+	'ct-update-table' => 'Актуалізовати таблицю',
 );
 
 /** Yakut (Саха тыла)

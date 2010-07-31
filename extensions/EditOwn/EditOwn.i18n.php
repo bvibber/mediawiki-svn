@@ -264,6 +264,13 @@ $messages['ko'] = array(
 	'editown-desc' => '완전한 편집 권한(editall)이 없는 사용자에게 자신이 만든 문서의 편집 권한을 주는 기능',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Къарачайлы
+ */
+$messages['krc'] = array(
+	'editown-desc' => 'Барысын да тюрлендирге хакъы болмагъан къошулуучула къуру кеслери этген бетлени тюрлдирирге боллукъдула',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -529,6 +529,13 @@ $messages['ml'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിക്കുക',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'prefswitch-link-anon' => 'नवीन वैशीष्ट्ये',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -681,6 +688,18 @@ $messages['ru'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Отключить новые возможности',
 	'prefswitch-link-off' => 'Новые возможности',
 	'tooltip-pt-prefswitch-link-off' => 'Опробуйте новые возможности',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'prefswitch-link-anon' => 'Новы функції',
+	'tooltip-pt-prefswitch-link-anon' => 'Дознайте ся о новых функціях',
+	'prefswitch-link-on' => 'Зробити як было',
+	'tooltip-pt-prefswitch-link-on' => 'Выпнути новы функції',
+	'prefswitch-link-off' => 'Новы функції',
+	'tooltip-pt-prefswitch-link-off' => 'Спробуйте новы можности',
 );
 
 /** Yakut (Саха тыла)

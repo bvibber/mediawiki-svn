@@ -727,15 +727,29 @@ Při změně nastavení ''přednost výběru stabilní verze'', aby se standardn
 );
 
 /** Danish (Dansk)
+ * @author Froztbyte
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
+	'stabilization-def2' => 'Den seneste version',
 	'stabilization-submit' => 'Bekræft',
+	'stabilization-notexists' => 'Der findes ingen side kaldet "[[:$1|$1]]".
+Ingen konfigurering er mulig.',
+	'stabilization-comment' => 'Årsag:',
+	'stabilization-otherreason' => 'Anden årsag:',
 	'stabilization-expiry' => 'Udløb:',
+	'stabilization-othertime' => 'Anden tid:',
+	'stabilization-sel-short-0' => 'Kvalitet',
 	'stabilization-sel-short-1' => 'Ingen',
+	'stabilization-sel-short-2' => 'Urørt',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Nuværende',
+	'stabilization-def-short-1' => 'Publiseret',
+	'stabilize_invalid_level' => 'Ugyldigt beskyttelsesniveau.',
+	'stabilize_expiry_old' => 'Udløbstidspunktet er allerede passeret.',
+	'stabilize_denied' => 'Tilgang nægtet.',
 	'stabilize-expiring' => 'til $1 (UTC)',
+	'stabilization-review' => 'Marker den nuværende version som kontrolleret',
 );
 
 /** German (Deutsch)
@@ -1308,8 +1322,7 @@ $messages['frp'] = array(
 	'stabilization' => 'Stabilisacion de la pâge.',
 	'stabilization-text' => "'''Changiéd los paramètres ce-desot por dèfenir la façon que la vèrsion publeyê de [[:$1|$1]] est chouèsia et montrâ.'''
 
-Quand vos configurâd lo ''chouèx de la vèrsion publeyê'' por utilisar les vèrsions « de qualitât » ou ben « sen tache » per dèfôt,
-assurâd-vos qu’y at verément de tâles vèrsions dens la pâge, ôtrament los changements aront gins de rèsultat.",
+'''Nota :''' changiér lo ''chouèx de la vèrsion publeyê'' por utilisar les vèrsions « de qualitât » ou ben « sen tache » arat gins de rèsultat se celes vèrsions ègzistont pas. Notâd asse-ben que les vèrsions « de qualitât » sont considèrâs coment « controlâs » et d’ense de suita.",
 	'stabilization-perm' => 'Voutron compto at pas los drêts por changiér los paramètres de la vèrsion publeyê.
 Vê-que los paramètres d’ora de [[:$1|$1]] :',
 	'stabilization-page' => 'Nom de la pâge :',
@@ -1790,6 +1803,7 @@ Nulle configuration es possibile.',
 /** Indonesian (Bahasa Indonesia)
  * @author ArdWar
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Kenrick95
  * @author Rex
@@ -1801,17 +1815,18 @@ $messages['id'] = array(
 
 Saat mengubah  konfigurasi ''pilihan versi stabil'' gunakan revisi \"berkualitas\" atau \"murni\" secara default,  
 pastikan untuk memeriksa apakah ada yang benar-benar seperti revisi di halaman, jika ada perubahan akan sedikit berpengaruh.",
-	'stabilization-perm' => 'Akun Anda tak memiliki hak untuk mengganti konfigurasi versi stabil. Berikut konfigurasi terkini dari [[:$1|$1]]:',
+	'stabilization-perm' => 'Akun Anda tidak memiliki izin untuk mengubah konfigurasi versi stabil.
+Berikut adalah pengaturan terkini untuk [[:$1|$1]]:',
 	'stabilization-page' => 'Nama halaman:',
-	'stabilization-leg' => 'Konfirmasi konfigurasi versi stabil',
+	'stabilization-leg' => 'Konfirmasi pengaturan versi stabil',
 	'stabilization-select' => 'Pemilihan versi stabil sebelumnya',
 	'stabilization-select1' => 'Revisi layak terakhir; jika tak ada, versi terperiksa terakhir',
-	'stabilization-select2' => 'Revisi stabil terakhir, tanpa memandang tingkat validasi',
+	'stabilization-select2' => 'Revisi stabil terakhir',
 	'stabilization-select3' => 'Revisi asli terakhir; jika tidak ada, versi layak atau terperiksa terakhir',
 	'stabilization-def' => 'Revisi yang ditampilkan sebagai tampilan baku halaman',
-	'stabilization-def1' => 'Revisi stabil; jika tak ada, maka terkini/konsep',
-	'stabilization-def2' => 'Revisi terkini/konsep',
-	'stabilization-restrict' => 'Pembatasan auto-peninjau',
+	'stabilization-def1' => 'Revisi stabil; jika tidak ada, maka revisi terkini',
+	'stabilization-def2' => 'Revisi terkini',
+	'stabilization-restrict' => 'Pembatasan tinjauan/tinjauan otomatis',
 	'stabilization-restrict-none' => 'Tidak ada tambahan pembatasan',
 	'stabilization-submit' => 'Konfirmasi',
 	'stabilization-notexists' => 'Tak ada halaman berjudul "[[:$1|$1]]".
@@ -1830,14 +1845,15 @@ Konfigurasi tak dapat diterapkan.',
 	'stabilization-def-short-0' => 'Terkini',
 	'stabilization-def-short-1' => 'Stabil',
 	'stabilize_page_invalid' => 'Judul halaman tujuan tidak sah.',
-	'stabilize_page_notexists' => 'Halaman $1 tidak ditemukan.',
+	'stabilize_page_notexists' => 'Halaman yang dituju tidak ditemukan',
 	'stabilize_page_unreviewable' => 'Halaman yang dituju tidak berada dalam ruang nama yang dapat ditinjau.',
+	'stabilize_invalid_autoreview' => 'Pembatasan tinjauan otomatis tidak sah.',
 	'stabilize_invalid_level' => 'Tingkat perlindungan tidak valid.',
 	'stabilize_expiry_invalid' => 'Tanggal kadaluwarsa tak valid.',
 	'stabilize_expiry_old' => 'Tanggal kadaluwarsa telah terlewati.',
-	'stabilize_denied' => 'Hak ases ditolak',
+	'stabilize_denied' => 'Izin ditolak.',
 	'stabilize-expiring' => 'kadaluwarsa $1 (UTC)',
-	'stabilization-review' => 'Tinjau versi sekarang',
+	'stabilization-review' => 'Tandai revisi terkini sebagai terperiksa',
 );
 
 /** Igbo (Igbo)
@@ -3872,6 +3888,10 @@ $messages['uk'] = array(
 	'stabilization-def-short-1' => 'Опублікована',
 	'stabilize_page_invalid' => 'Неприпустима назва цільової сторінки.',
 	'stabilize_page_notexists' => 'Цільової сторінки не існує.',
+	'stabilize_page_unreviewable' => 'Цільова сторінка не перебуває в просторі назв, що може рецензуватись.',
+	'stabilize_invalid_precedence' => 'Неправильний пріоритет версій.',
+	'stabilize_invalid_autoreview' => 'Невірне обмеження автоматичного рецензування.',
+	'stabilize_invalid_level' => 'Невірний рівень захисту.',
 	'stabilize_expiry_invalid' => 'Помилкова дата закінчення.',
 	'stabilize_expiry_old' => 'Зазначений час закінчення пройшов.',
 	'stabilize_denied' => 'Доступ заборонено.',

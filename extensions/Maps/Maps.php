@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6.5 a4' );
+	define( 'Maps_VERSION', '0.6.5 a6' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -74,6 +74,8 @@ else {
 	$wgExtensionFunctions[] = 'efMapsSetup';
 
 	$wgHooks['AdminLinks'][] = 'efMapsAddToAdminLinks';
+	
+	$wgHooks['UnitTestsList'][] = 'efMapsUnitTests';
 }
 
 /**
@@ -162,4 +164,17 @@ function efMapsAddToAdminLinks( &$admin_links_tree ) {
     $smw_docu_row->addItem( AlItem::newFromExternalLink( 'http://www.mediawiki.org/wiki/Extension:Maps', $maps_docu_label ) );
 
     return true;
+}
+
+/**
+ * Hook to add PHPUnit test cases.
+ * 
+ * @since 0.6.5
+ * 
+ * @param array $files
+ */
+function efMapsUnitTests( array &$files ) {
+	$testDir = dirname( __FILE__ ) . '/test/';
+	//$files[] = $testDir . 'MapsCoordinateParserTest.php';
+	return true;
 }

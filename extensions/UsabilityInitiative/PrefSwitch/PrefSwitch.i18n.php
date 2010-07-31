@@ -1514,6 +1514,8 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'prefswitch' => 'Baskulo por preferencoj de Uzebleco Initiato',
 	'prefswitch-desc' => 'Permesi al uzantoj ŝanĝi arojn da preferencoj',
+	'prefswitch-jswarning' => 'Memoru ke kun la etosŝanĝo , vi devos kopii vian [[User:$1/$2.js|$2 ĴavaSkriptaĵon]] al [[{{ns:user}}:$1/vector.js]]<!-- aŭ [[{{ns:user}}:$1/common.js]] --> por ke ĝi daŭre funkciu.',
+	'prefswitch-csswarning' => 'Via [[User:$1/$2.css|personigita $2-stilo]] ne plu aplikiĝos. Vi povas aldoni personigitajn CSS-ojn por vector-etoso en [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Jes',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Malŝalti novajn funkciojn',
@@ -1579,6 +1581,8 @@ Ni penis faciligi aferojn por niaj uzantoj. Ni ĝojas provizi iujn novajn plibon
 * '''Serĉaj plibonigoj:''' Ni plibonigis serĉsugestojn por pli rapide direkti vin al la paĝo kiun vi serĉas.
 * '''Aliaj novaj funkcioj:''' Ni ankaŭ aldonis tabelan asistanton, por faciligi kreadon de tabeloj, kaj funkcio por anstataŭigi tekston en paĝoj.
 * '''Vikipedia puzlo-globo''': Ni ĝisdatigis la puzloglobon. Legu plu ĉe la [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Vikimedia-blogo].",
+	'prefswitch-main-logged-changes' => "* La '''{{int:watch}}-klapeto''' estas nun stelo.
+* La'''{{int:move}}-klapeto''' estas nun en la malfadebla strio apud la serĉa baro.",
 	'prefswitch-main-feedback' => '===Reagoj?===
 Ni ŝatus aŭdi pri vi. Bonvolu viziti nian [[$1|reagopaĝon]] aŭ se vi interesiĝas pri niaj nunaj penoj por plibonigi la softvaron, vizitu nian [http://usability.wikimedia.org uzeblecovikion] por pliaj informoj.',
 	'prefswitch-main-anon' => '===Revenigu min  al la antaŭa versio===
@@ -1993,7 +1997,7 @@ Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
 | Kuvakaappaus uudesta linkkien lisäys -valintaikkunasta.
 |}
 |}
-Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia sinulle. Haluamme kertoa eräistä uudistuksista, kuten uudesta ilmeestä ja yksinkertaistetuista muokkaustoiminnoista. Näiden muutoksien tarkoituksena on auttaa uusia muokkaajia pääsemään helpommin alkuun. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study viime vuoden aikana toteutettuun käytettävyystestaukseen]. Hankkeiden käytettävyyden parantaminen kuuluu Wikimedia Foundationin merkittävimpiin tehtäviin, ja lisää päivityksiä on tulossa. Lisätietoja saat aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
+Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia. Haluamme kertoa eräistä uudistuksista, kuten uudesta ilmeestä ja yksinkertaistetuista muokkaustoiminnoista. Näiden muutoksien tarkoituksena on auttaa uusia muokkaajia pääsemään helpommin alkuun. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study viime vuoden aikana toteutettuun käytettävyystestaukseen]. Hankkeiden käytettävyyden parantaminen kuuluu Wikimedia Foundationin merkittävimpiin tehtäviin, ja lisää päivityksiä on tulossa. Lisätietoja saat aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
 
 === Tässä tehtyjä muutoksia ===
 * '''Navigaatio:''' Paransimme navigaatiota sivujen lukemiseksi ja muokkaamiseksi. Nyt jokaisen sivun yläreunassa olevat välilehdet ovat selvempiä.
@@ -2119,12 +2123,53 @@ Pour nous aider à les améliorer, vous pouvez remplir le sondage optionnel ci-d
 $messages['frp'] = array(
 	'prefswitch' => 'Boton de prèferences de l’iniciativa d’utilisabilitât',
 	'prefswitch-desc' => 'Pèrmèt ux utilisators de changiér des ensemblos de prèferences.',
+	'prefswitch-jswarning' => 'Volyéd notar que suita u changement d’habelyâjo, voutron code [[User:$1/$2.js|JavaScript $2]] dêt étre copiyê vers [[{{ns:user}}:$1/vector.js]] <!-- ou ben [[{{ns:user}}:$1/common.js]]--> por povêr continuar a fonccionar.',
+	'prefswitch-csswarning' => 'Voutron [[User:$1/$2.css|stilo pèrsonalisâ $2]] serat pas més aplicâ. Vos pouede dèfenir un CSS pèrsonalisâ por « Vèctor » dens [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ouè',
 	'prefswitch-survey-false' => 'Nan',
 	'prefswitch-survey-submit-off' => 'Dèsactivar les novèles fonccionalitâts',
 	'prefswitch-survey-cancel-off' => 'Se vos voléd continuar a utilisar les novèles fonccionalitâts, vos pouede tornar a $1.',
 	'prefswitch-survey-submit-feedback' => 'Balyéd voutron avis',
 	'prefswitch-survey-cancel-feedback' => 'Se vos voléd pas balyér voutron avis, vos pouede tornar a $1.',
+	'prefswitch-survey-question-like' => 'Qu’est-o que vos éd amâ dens les novèles fonccionalitâts ?',
+	'prefswitch-survey-question-dislike' => 'Qu’est-o que vos éd pas amâ dens les fonccionalitâts ?',
+	'prefswitch-survey-question-whyoff' => 'Porquè voléd-vos dèsactivar les novèles fonccionalitâts ?
+Volyéd chouèsir tot cen que convint.',
+	'prefswitch-survey-answer-whyoff-hard' => 'O ére trop mâlésiê de l’utilisar.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Cen fonccione pas bien.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Cen s’est pas passâ coment prèvu.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'J’é pas amâ son aparence.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'J’é pas amâ les ongllètes novèles et la novèla disposicion.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'J’é pas amâ la bârra d’outils novèla.',
+	'prefswitch-survey-answer-whyoff-other' => 'Ôtra rêson :',
+	'prefswitch-survey-question-browser' => 'Quint navigator utilisâd-vos ?',
+	'prefswitch-survey-answer-browser-other' => 'Ôtro navigator :',
+	'prefswitch-survey-question-os' => 'Quint sistèmo d’èxplouètacion utilisâd-vos ?',
+	'prefswitch-survey-answer-os-other' => 'Ôtro sistèmo d’èxplouètacion :',
+	'prefswitch-survey-question-res' => 'Quinta est la rèsolucion de voutron ècran ?',
+	'prefswitch-title-on' => 'Novèles fonccionalitâts',
+	'prefswitch-title-switched-on' => 'Savorâd !',
+	'prefswitch-title-off' => 'Dèsactivar les novèles fonccionalitâts',
+	'prefswitch-title-switched-off' => 'Grant-marci',
+	'prefswitch-title-feedback' => 'Avis',
+	'prefswitch-success-feedback' => 'Voutros avis ont étâ mandâs.',
+	'prefswitch-return' => '<hr style="clear:both">
+Tornar a <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-logged-changes' => "* L’'''ongllèta « {{int:watch}} »''' est ora una ètêla.
+* L’'''ongllèta « {{int:move}} »''' est ora dens lo menu dèroulant a coutâ du champ de rechèrche.",
+	'prefswitch-main-feedback' => '===Avis ?===
+Nos amerians cognetre voutros avis. Volyéd visitar la [[$1|pâge d’avis]] ou ben, se vos éte entèrèssiês per noutros èfôrts continus por mèlyorar la programeria, visitâd noutron [http://usability.wikimedia.org vouiqui utilisabilitât] por més d’enformacions.',
+	'prefswitch-main-anon' => '===O ére mielx devant===
+[$1 Clicâd ique por dèsactivar les novèles fonccionalitâts]. Vos serat demandâ de vos branchiér ou ben de vos fâre un compto.',
+	'prefswitch-main-on' => '===Sortéd-mè d’ique !===
+[$2 Clicâd ique por dèsactivar les novèles fonccionalitâts].',
+	'prefswitch-main-off' => '===Èprovâd-les !===
+[$1 Clicâd ique por activar les novèles fonccionalitâts].',
+	'prefswitch-survey-intro-feedback' => 'Nos amerians cognetre voutros avis.
+Volyéd remplir lo quèstionèro u chouèx ce-desot devant que clicar dessus « [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]] ».',
+	'prefswitch-survey-intro-off' => 'Grant-marci d’èprovar noutres novèles fonccionalitâts.
+Por nos édiér a les mèlyorar, volyéd remplir lo quèstionèro u chouèx ce-desot devant que clicar dessus « [[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]] ».',
+	'prefswitch-feedbackpage' => 'Project:Avis d’èxpèrience sur l’utilisabilitât',
 );
 
 /** Scottish Gaelic (Gàidhlig)
@@ -3266,7 +3311,7 @@ $messages['krc'] = array(
 	'prefswitch-survey-question-browser' => 'Къайсы браузерни хайырланасыз?',
 	'prefswitch-survey-answer-browser-other' => 'Башха браузер',
 	'prefswitch-survey-question-os' => 'Къайсы операция системаны хайырландырасыз?',
-	'prefswitch-survey-answer-os-other' => 'Башха операцион система:',
+	'prefswitch-survey-answer-os-other' => 'Башха операция система:',
 	'prefswitch-survey-question-res' => 'Экраныгъызны разрешениеси къалайды?',
 	'prefswitch-title-on' => 'Джангы амалла',
 	'prefswitch-title-switched-on' => 'Хайырланыгъыз!',
@@ -3277,7 +3322,7 @@ $messages['krc'] = array(
 	'prefswitch-success-off' => 'Джангы амалла джукълатылгъандыла. Джангы функцияланы сынаб кёргенигиз ючюн сау болугъуз. Сиз хар къуру да ызына джандырыргъа боллукъсуз аланы бетни башында «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]» джибериуге басыб.',
 	'prefswitch-success-feedback' => 'Сизни оюмугъуз ашырылды.',
 	'prefswitch-return' => '<hr style="clear:both">
-<span class="plainlinks">[$1 $2] бетге къайт</span>.',
+<span class="plainlinks">[$1 $2]ге къайт</span>.',
 	'prefswitch-main' => '{| border="0" align="right" style="margin-left:1em"
 | align="center" |
 {| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;" 
@@ -3625,6 +3670,15 @@ $messages['ml'] = array(
 	'prefswitch-feedbackpage' => 'Project:ഉപയോക്തൃ അനുഭവ അഭിപ്രായങ്ങൾ',
 );
 
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'prefswitch-survey-true' => 'होय',
+	'prefswitch-survey-false' => 'नाही',
+	'prefswitch-survey-submit-feedback' => 'प्रतिसाद पाठवा',
+);
+
 /** Malay (Bahasa Melayu)
  * @author Diagramma Della Verita
  */
@@ -3785,6 +3839,10 @@ Biex tgħinna ntejbuhom, jekk jogħġbok imla l-kwestjonarju opzjonali segwenti 
  */
 $messages['nds-nl'] = array(
 	'prefswitch' => 'Veurkeuren veur Bruukbaorheidsinitiatief wisselen',
+	'prefswitch-desc' => 'Hierdeur ku-j een groep instellingen wiezigen',
+	'prefswitch-jswarning' => "Vergeet neet dat mit 't wiezigen van de vormgeving joew [[User:$1/$2.js|JavaScript veur $2]] ekopieerd mut wönnen naor [[{{ns:user}}:$1/vector.js]] of [[{{ns:user}}:$1/common.js]] um 't nog te laoten doon.",
+	'prefswitch-csswarning' => 'Joew [[User:$1/$2.css|an-epassen stielen veur $2]] bin neet meer actief.
+Je kunnen de CSS-stielen veur Vector anpassen in de pagina [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-submit-off' => 'Nieje functies uutzetten',
@@ -3812,6 +3870,8 @@ Kies de meugelijkheen dee van toepassing bin.',
 	'prefswitch-title-off' => 'Nieje functies uutzetten',
 	'prefswitch-title-switched-off' => 'Bedank',
 	'prefswitch-title-feedback' => "Is 't wat?",
+	'prefswitch-main-logged-changes' => "* 't Onderwarp '''{{int:watch}}''' is noen een steerntjen.
+* 't Onderwarp '''{{int:move}}''' steet noen in 't uutklapmenu naos 't zeukvienster.",
 );
 
 /** Dutch (Nederlands)
@@ -4654,8 +4714,88 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'prefswitch' => 'Перепинач наставлїня Ініціатівы хосновательности',
+	'prefswitch-desc' => 'Уможнює хоснователям перепинати сады наставлїня',
+	'prefswitch-jswarning' => 'Памятайте, жебы ваш [[User:$1/$2.js|$2 JavaScript]] працёвав під новым скіном треба го скопіровати до [[{{ns:user}}:$1/vector.js]] <!-- або [[{{ns:user}}:$1/common.js]]--> кідь має і надале фунґовати.',
+	'prefswitch-csswarning' => 'Ваш [[User:$1/$2.css|хосновательскый скін $2]] ся надалей не буде хосновати. Хосновательске CSS про Вектор собі можете наставити на [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Гей',
 	'prefswitch-survey-false' => 'Нє',
+	'prefswitch-survey-submit-off' => 'Выпнути новы функції',
+	'prefswitch-survey-cancel-off' => 'Покы хочете і далей хосновати новы властности, можете ся вернути на сторінку $1.',
+	'prefswitch-survey-submit-feedback' => 'Одослати назор',
+	'prefswitch-survey-cancel-feedback' => 'Покы нам не хочете послати свій назор, можете ся вернути на$1.',
+	'prefswitch-survey-question-like' => 'Што з новых можностей ся вам любить?',
+	'prefswitch-survey-question-dislike' => 'Што з новых можностей ся вам не любило?',
+	'prefswitch-survey-question-whyoff' => 'Чом сьте выпнули новы можности?
+Выберте вшыткы релевантны можности.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Была дуже тяжка про хоснованя.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Не фунґовала коректно.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Не ховала ся предвидаво.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Не любив ся мі єй взгляд.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Не любили ся мі новы заложкы і композіція.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Не любив ся мі новый панел інштрументів.',
+	'prefswitch-survey-answer-whyoff-other' => 'Інша причіна:',
+	'prefswitch-survey-question-browser' => 'Якый вебовый переглядач хоснуєте?',
+	'prefswitch-survey-answer-browser-other' => 'Іншый веб-переглядач:',
+	'prefswitch-survey-question-os' => 'Якый операчный сістем хоснуєте?',
+	'prefswitch-survey-answer-os-other' => 'Іншый операчный сістем:',
+	'prefswitch-survey-question-res' => 'Яке є розлішіня вашой образовкы?',
+	'prefswitch-title-on' => 'Новы функції',
+	'prefswitch-title-switched-on' => 'Хоснуйте собі тото!',
+	'prefswitch-title-off' => 'Выпнути новы функції',
+	'prefswitch-title-switched-off' => 'Дякуєме',
+	'prefswitch-title-feedback' => 'Одозва',
+	'prefswitch-success-on' => 'Новы функції суть нынї запнуты.  Надїяме ся, же ся вам будуть любити. Хоцьколи їх можете знову выпнути кликнутём на одказ „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ на верьху сторінкы.',
+	'prefswitch-success-off' => 'Новы функції суть нынї выпнуты.  Дякуєме за їх спробованя. Хоцьколи їх можете знову запнути кликнутём на одказ „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ на верьху сторінкы.',
+	'prefswitch-success-feedback' => 'Ваш назор быв одосланый.',
+	'prefswitch-return' => '<hr style="clear:both">
+Вернути ся до <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-rue.png|401px|]]
+|-
+| Снимок образовкы з новым навіґачным інтерфейсом<small>[[Media:VectorNavigation-rue.png|(звекшыти)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-rue.png|401px|]]
+|-
+| Снимок образовкы з основным едітачным інтерфейсом <small>[[Media:VectorEditorBasic-rue.png|(звекшыти)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-rue.png|401px|]]
+|-
+| Снимок образовкы з новым діалоґом про вкладаня одказів
+|}
+|}
+Тім надації Вікімедія про хосновательску приветливость працёвав з доброволниками з комуніты, жебы упростив працю. Тїшыме ся, же ся з вами можеме подїлити о пару вылїпшінь включавчі нового нового взгляду і упростеной едітації. Цілём тых змін є злегчіти зачаткы новачком і суть заложены на нашых [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study тестох з мінулого року]. Здоконалюваня хосновательности нашых проєктів є пріорітов надації Вікімедія і в будучности будеме нукати далшы іновації. Детайлы можете найти во [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ вістї на блогу Вікімедія].
+
+=== Што сьме змінили === 
+* '''Навіґація:''' Маєме лїпшу оріентацію про чітаня і едітацію сторінок. Заложкы во верхній части сторінкы нынї ясно зображують, ці собі смотрите статю ці діскузію а ці сторінку чітаєте або едітуєте.
+* '''Вылїпшіня панела інштрументів:''' Переорґанізовали сьме едітачный панел інштрументів, жебы ся лїпше хосновав. Форматованя сторінок є теперь простїше і інтуітівнїше.
+* '''Проводник окдазами:''' Простїше хоснорівательный інштрумент вам поможе придавати одказы на іншы статї вікі, як і на екстерны сторінкы.
+* '''Вылїпшіня выглядаваня:''' Злїпшыли сьме нашептавач у выглядаваня, жебы сьте ся скорше дістали на сторінку, котру глядаєте.
+* '''Далшы новы можности:''' Тыж сьме завели проводника таблицёв, абы было створюваня таблиць легше, і тыж функцію выглядаваня і нагороджуваня про простїшу едітацію сторінок.
+* '''Лоґо Вікіпедії:''' Модернізовали сьме наше лоґо. Веце ся дознаєте на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блоґу Вікімедія].",
+	'prefswitch-main-logged-changes' => "* Намісто '''заложкы {{int:watch}}''' є од теперь звіздочка.
+* '''Заложка {{int:move}}''' є нынї в одкрывачім меню піля выглядаваня.",
+	'prefswitch-main-feedback' => '===Коментарї?===
+Увитаєме вашы назоры. Навщівте нашу [[$1|сторінку про коментарї]] або пок вас інтересує наше довгочасове усиля о здоконалёваня софтверу, можете найти веце інформацій на [http://usability.wikimedia.org вікі проєктї хосновательности].',
+	'prefswitch-main-anon' => '===Хочу назад===
+Кідь хочете, можете собі [$1 выпнути новы функції]. Перше ся але будете мусити приголосити або реґістровати.',
+	'prefswitch-main-on' => '=== Хочу назад! === 
+[$2 Кликните гев, кідь хочете выпнути новы функції].',
+	'prefswitch-main-off' => '=== Спробуйте їх! === 
+Кідь собі хочете спробовати новы функції, просиме [$1 кликните гев].',
+	'prefswitch-survey-intro-feedback' => 'Потїшыме ся, кідь ся дознаме ваш назор.
+Просиме, выповните формулар ниже а потім кликните на „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“.',
+	'prefswitch-survey-intro-off' => 'Дякуєме за спробованя нашых новых функцій.
+Хочете-ли нам помочі злїпшыти їх, выповните неповинный формулар ниже а потом кликните на „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“.',
+	'prefswitch-feedbackpage' => 'Project: Одозва скусености хоснователя',
 );
 
 /** Yakut (Саха тыла)

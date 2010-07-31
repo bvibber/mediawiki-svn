@@ -1823,6 +1823,7 @@ $messages['da'] = array(
 	'group-autopatrolled-member' => 'autopatruljant',
 	'group-bigexport-member' => 'masse-eksportører',
 	'group-confirmed-member' => 'bekræftet bruger',
+	'group-editprotected-member' => 'redaktør af beskyttet side',
 	'group-filemover-member' => 'filflytter',
 	'group-flood-member' => 'bot-bruger',
 	'group-founder-member' => 'Grundlægger',
@@ -1838,9 +1839,11 @@ $messages['da'] = array(
 	'grouppage-autopatrolled' => '{{ns:project}}:Autopatruljanter',
 	'grouppage-bigexport' => '{{ns:project}}:Storeksportører',
 	'grouppage-confirmed' => '{{ns:project}}:Bekræftede brugere',
+	'grouppage-flood' => '{{ns:project}}:Botbrugere',
 	'grouppage-founder' => '{{ns:project}}:Grundlæggere',
 	'grouppage-import' => '{{ns:project}}:Importører',
 	'grouppage-ipblock-exempt' => '{{ns:project}}:IP-blokeringsundtagelser',
+	'grouppage-researcher' => '{{ns:project}}:Forskere',
 	'grouppage-rollbacker' => '{{ns:project}}:Tilbagerullere',
 	'grouppage-transwiki' => '{{ns:project}}:Transwiki-importører',
 	'group-steward' => 'Forvaltere',
@@ -2309,6 +2312,7 @@ $messages['eml'] = array(
 
 /** Esperanto (Esperanto)
  * @author Airon90
+ * @author ArnoLagrange
  * @author Marcos
  * @author Michawiki
  * @author Petrus Adamus
@@ -2335,7 +2339,7 @@ $messages['eo'] = array(
 	'group-founder' => 'Fondintoj',
 	'group-import' => 'Importantoj',
 	'group-interface_editors' => 'Interfacaj redaktantoj',
-	'group-ipblock-exempt' => 'Sendevigoj por IP-forbaroj',
+	'group-ipblock-exempt' => 'Ne submetita al IP-forbaro',
 	'group-patroller' => 'Patrolantoj',
 	'group-researcher' => 'Esplorantoj de forigitaĵoj',
 	'group-rollbacker' => 'Restarigantoj',
@@ -2354,7 +2358,7 @@ $messages['eo'] = array(
 	'group-founder-member' => 'Fondinto',
 	'group-import-member' => 'Importanto',
 	'group-interface_editors-member' => 'interfaca redaktanto',
-	'group-ipblock-exempt-member' => 'maldeviga de IP-forbaro',
+	'group-ipblock-exempt-member' => 'Ne submetita al IP-forbaro',
 	'group-patroller-member' => 'Patrolanto',
 	'group-researcher-member' => 'esploranto de forigitaĵoj',
 	'group-rollbacker-member' => 'Restariganto',
@@ -3084,7 +3088,7 @@ $messages['frp'] = array(
 	'group-inactive-member' => 'Utilisator que fât ren du tot',
 	'grouppage-inactive' => '{{ns:project}}:Utilisators que font ren du tot',
 	'wikimedia-copyright' => 'Los tèxtos sont disponiblos desot <a href="http://creativecommons.org/licenses/by-sa/3.0/">licence Creative Commons patèrnitât - partâjo a l’identico de les premiéres condicions</a> ;
-d’ôtres condicions pôvont s’aplicar.
+d’ôtres condicions sè pôvont aplicar.
 Vêde les <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">condicions d’usâjo</a> por més de dètalys.',
 	'wikimedia-copyrightwarning' => 'En cliquent dessus « Sôvar ceta pâge », vos accèptâd de placiér por de bon voutra contribucion desot [http://creativecommons.org/licenses/by-sa/3.0/ licence Creative Commons patèrnitât - partâjo a l’identico de les premiéres condicions] et [http://www.gnu.org/copyleft/fdl.html licence de documentacion abada GNU (GFDL)].
 Vos accèptâd d’étre crèditâ per los rèutilisators u muens avouéc un lim hipèrtèxto ou ben una URL de vers la pâge sur laquinta vos contribuâd.
@@ -4244,6 +4248,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Kenrick95
@@ -4262,11 +4267,15 @@ $messages['id'] = array(
 	'group-autoreviewer' => 'Autotinjau',
 	'group-bigexport' => 'Eksportir besar',
 	'group-confirmed' => 'Pengguna terkonfirmasi',
+	'group-editprotected' => 'Penyunting halaman yang terlindungi',
+	'group-filemover' => 'Pemindah berkas',
 	'group-flood' => 'Pengguna bot',
 	'group-founder' => 'Pendiri',
 	'group-import' => 'Importir',
+	'group-interface_editors' => 'Penyunting antarmuka',
 	'group-ipblock-exempt' => 'Pengecualian pemblokiran IP',
 	'group-patroller' => 'Pematroli',
+	'group-researcher' => 'Peneliti',
 	'group-rollbacker' => 'Pengembali revisi',
 	'group-transwiki' => 'Importir transwiki',
 	'group-trusted' => 'Pengguna tepercaya',
@@ -4277,24 +4286,33 @@ $messages['id'] = array(
 	'group-autoreviewer-member' => 'autotinjau',
 	'group-bigexport-member' => 'eksportir besar',
 	'group-confirmed-member' => 'pengguna terkonfirmasi',
+	'group-editprotected-member' => 'penyunting halaman terlindungi',
+	'group-filemover-member' => 'pemindah berkas',
 	'group-flood-member' => 'pengguna bot',
 	'group-founder-member' => 'Pendiri',
 	'group-import-member' => 'Importir',
+	'group-interface_editors-member' => 'penyunting antarmuka',
 	'group-ipblock-exempt-member' => 'Pengecualian pemblokiran IP',
 	'group-patroller-member' => 'Pematroli',
+	'group-researcher-member' => 'peneliti',
 	'group-rollbacker-member' => 'Pengembali revisi',
 	'group-transwiki-member' => 'Importir transwiki',
 	'group-trusted-member' => 'pengguna tepercaya',
 	'grouppage-abusefilter' => '{{ns:project}}:Editor filter penyalahgunaan',
 	'grouppage-accountcreator' => '{{ns:project}}:Pembuat akun',
+	'grouppage-arbcom' => '{{ns:project}}:Anggota komite arbitrasi',
 	'grouppage-autopatrolled' => '{{ns:project}}:Patroli otomatis',
 	'grouppage-autoreviewer' => '{{ns:project}}:Autotinjau',
 	'grouppage-bigexport' => '{{ns:project}}:Eksportir besar',
 	'grouppage-confirmed' => '{{ns:project}}:Pengguna terkonfirmasi',
+	'grouppage-editprotected' => '{{ns:project}}:Penyunting halaman terlindungi',
+	'grouppage-filemover' => '{{ns:project}}:Pemindah berkas',
 	'grouppage-flood' => '{{ns:project}}:Pengguna bot',
 	'grouppage-founder' => '{{ns:project}}:Pendiri',
 	'grouppage-import' => '{{ns:project}}:Importir',
+	'grouppage-interface_editors' => '{{ns:project}}:Penyunting antarmuka',
 	'grouppage-ipblock-exempt' => '{{ns:project}}:Pengecualian pemblokiran IP',
+	'grouppage-researcher' => '{{ns:project}}:Peneliti',
 	'grouppage-rollbacker' => '{{ns:project}}:Pengembali revisi',
 	'grouppage-transwiki' => '{{ns:project}}:Importir transwiki',
 	'grouppage-trusted' => '{{ns:project}}:Pengguna tepercaya',
@@ -5280,8 +5298,8 @@ $messages['lb'] = array(
 	'group-inactive' => 'Benotzer déi net aktiv sinn',
 	'group-inactive-member' => 'net aktive Benotzer',
 	'grouppage-inactive' => '{{ns:project}}:Net aktiv Benotzer',
-	'wikimedia-copyright' => 'Den Text ass disponibel ënnert der <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution/Share-Alike Lizens</a>; zousätzlech Bedingunge kënnen applicabel sinn.
-Kuckt <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Notzungsbedingungen</a> fir méi Detailer.',
+	'wikimedia-copyright' => 'Den Text ass disponibel ënnert der <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution/Share-Alike Lizenz</a>; zousätzlech Bedingunge kënnen applicabel sinn.
+Kuckt <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Benotzungsbedingunge</a> fir méi Detailer.',
 	'wikimedia-copyrightwarning' => "Wann Dir ofspäichert, sidd Dir domat d'accord fir Äre Beitrag ënnert der [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike Lizenz 3.0] an der [http://www.gnu.org/copyleft/fdl.html GFDL] fräizeginn.
 Dir sidd d'accord datt Dir vun deenen déi dëst weiderbenotzen, mindestens, duerch en Hyperlink oder URL op déi Säit op däer Dir matschafft honoréiert gitt.
 Kuckt d'[http://wikimediafoundation.org/wiki/Terms_of_Use Benotzungsbedingungen] fir méi Detailer.",
@@ -7015,13 +7033,17 @@ $messages['ps'] = array(
 	'group-filemover' => 'دوتنې لېږدونکي',
 	'group-flood' => 'د روباټ کارنان',
 	'group-founder' => 'بنسټګران',
+	'group-interface_editors' => 'د کتنمل سمونګران',
 	'group-accountcreator-member' => 'کارن-حساب جوړونکی',
 	'group-flood-member' => 'د روباټ کارن',
 	'group-founder-member' => 'بنسټګر',
+	'group-interface_editors-member' => 'د کتنمل سمونګر',
 	'grouppage-accountcreator' => '{{ns:project}}:کارن-حساب جوړونکي',
 	'grouppage-flood' => '{{ns:project}}:د روباټ کارنان',
 	'grouppage-founder' => '{{ns:project}}:بنسټګر',
+	'grouppage-interface_editors' => '{{ns:project}}:د کتنمل سمونګران',
 	'group-sysadmin' => 'د غونډال پازوالان',
+	'group-editinterface' => 'د کتنمل سمونګران',
 	'group-Global_sysops' => 'نړېوال پازوالان',
 	'group-Staff' => 'امله',
 	'group-sysadmin-member' => 'د غونډال پازوال',

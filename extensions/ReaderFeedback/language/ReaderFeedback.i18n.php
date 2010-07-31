@@ -2068,6 +2068,24 @@ $messages['ru'] = array(
 	'readerfeedback-tt-review' => 'Отправить проверку',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'readerfeedback-level-0' => 'Бідне',
+	'readerfeedback-level-1' => 'Низке',
+	'readerfeedback-level-2' => 'Середнє',
+	'readerfeedback-level-3' => 'Высоке',
+	'readerfeedback-level-4' => 'Ексцелентный',
+	'readerfeedback-submit' => 'Одослати',
+	'readerfeedback-submitting' => 'Одосылать ся...',
+	'readerfeedback-finished' => 'Дякуєме!',
+	'readerfeedback-tierfilter' => 'Оцінка:',
+	'readerfeedback-tier-high' => 'Высоке',
+	'readerfeedback-tier-medium' => 'Середнє',
+	'readerfeedback-tier-poor' => 'Низке',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -3643,7 +3643,7 @@ $messages['ps'] = array(
 	'sign-viewfield-state' => 'ايالت',
 	'sign-viewfield-country' => 'هېواد',
 	'sign-viewfield-ip' => 'IP پته',
-	'sign-viewfield-agent' => 'د کارونکي پلاوی',
+	'sign-viewfield-agent' => 'د کارن پلاوی',
 	'sign-viewfield-phone' => 'ټيليفون',
 	'sign-viewfield-email' => 'برېښليک',
 	'sign-viewfield-age' => 'عمر',
@@ -4048,6 +4048,7 @@ $1',
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'signdocument' => 'Підписати документ',
 	'sign-realname' => 'Мено:',
 	'sign-address' => 'Поштова адреса:',
 	'sign-city' => 'Місто:',
@@ -4069,6 +4070,12 @@ $messages['rue'] = array(
 	'sign-viewfield-age' => 'Век',
 	'sign-viewfield-options' => 'Можности',
 	'sign-signatures' => 'Підписы',
+	'sign-viewsignatures' => 'видїти підписы',
+	'sign-closed' => 'заперто',
+	'sign-uniquequery-similarname' => 'Подобне мено',
+	'sign-uniquequery-similaraddress' => 'Подобна адреса',
+	'sign-uniquequery-similarphone' => 'Подобный телефон',
+	'sign-uniquequery-similaremail' => 'Подобна адреса ел. пошты',
 );
 
 /** Slovak (Slovenčina)

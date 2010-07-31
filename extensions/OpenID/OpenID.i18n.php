@@ -679,7 +679,7 @@ $messages['br'] = array(
 	'openidconfigerrortext' => "N'eo ket mat stokañ ar c'hefluniañ OpenID evit ar wiki-mañ.
 Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] al lec'hienn-mañ.",
 	'openidpermission' => 'Fazi aotre OpenID',
-	'openidpermissiontext' => "N'eo ket aotreet an OpenID ho peus roet d'en em lugañ war ar servijer-mañ.",
+	'openidpermissiontext' => "N'eo ket aotreet an OpenID hoc'h eus roet da gevreañ war ar servijer-mañ.",
 	'openidcancel' => 'Gwiriekadur nullet',
 	'openidcanceltext' => "Nullet eo bet ar gwiriekadenn eus ar chomlec'h OpenID.",
 	'openidfailure' => "C'hwitet eo ar gwiriadur",
@@ -687,7 +687,7 @@ Kit e darempred, mar plij, gant unan eus [[Special:ListUsers/sysop|merourien ]] 
 	'openidsuccess' => 'Gwiriet pep tra ervat',
 	'openidsuccesstext' => "Gwiriet eo bet chomlec'h an OpenID ervat.",
 	'openidusernameprefix' => 'Implijer OpenID',
-	'openidserverlogininstructions' => 'Lakait ho ger tremen amañ a-is evit en em lugañ e $3 evel an implijer $2 (pajenn implijer $1).',
+	'openidserverlogininstructions' => 'Lakait ho ger tremen amañ a-is evit kevreañ e $3 evel an implijer $2 (pajenn implijer $1).',
 	'openidtrustinstructions' => "Gwiriañ ha c'hoant hoc'h eus da rannañ titouroù gant $1.",
 	'openidallowtrust' => 'Aotren $1 da fiziout er gont implijer-mañ.',
 	'openidnopolicy' => "N'en deus ket meneget al lec'hienn a bolitikerezh prevezded.",
@@ -1706,6 +1706,7 @@ Et kykenisi kirjautumaan ilman OpenID-tunnusta.',
  * @author Grondin
  * @author IAlex
  * @author McDutchie
+ * @author Peter17
  * @author Zetud
  */
 $messages['fr'] = array(
@@ -1748,7 +1749,7 @@ Veuillez vous mettre en rapport avec un [[Special:ListUsers/sysop|administrateur
 	'openidchooseauto' => 'Un nom créé automatiquement ($1)',
 	'openidchoosemanual' => 'Un nom de votre choix :',
 	'openidchooseexisting' => 'Un compte existant sur ce wiki',
-	'openidchooseusername' => "nom d'utilisateur :",
+	'openidchooseusername' => 'Nom d’utilisateur :',
 	'openidchoosepassword' => 'mot de passe :',
 	'openidconvertinstructions' => 'Ce formulaire vous permet de changer votre compte utilisateur pour utiliser une adresse OpenID ou ajouter des adresses OpenID supplémentaires.',
 	'openidconvertoraddmoreids' => 'Convertir vers OpenID ou ajouter une autre adresse OpenID',
@@ -2514,7 +2515,7 @@ tu pote seliger un del optiones in basso.',
 	'openidconvertsuccesstext' => 'Tu ha convertite con successo tu OpenID a $1.',
 	'openidconvertyourstext' => 'Isto es ja tu OpenID.',
 	'openidconvertothertext' => 'Isto es le OpenID de alcuno altere.',
-	'openidalreadyloggedin' => "'''Tu es ja identificate, $1!'''
+	'openidalreadyloggedin' => "'''Tu es jam authenticate, $1!'''
 
 Si tu vole usar OpenID pro aperir un session in le futuro, tu pote [[Special:OpenIDConvert|converter tu conto pro usar OpenID]].",
 	'openidnousername' => 'Nulle nomine de usator specificate.',
@@ -2538,7 +2539,7 @@ Tu non potera plus aperir un session con iste OpenID.',
 	'openiddelete-button' => 'Confirmar',
 	'openiddeleteerrornopassword' => 'Tu non pote deler tote tu OpenIDs proque tu conto non ha un contrasigno.
 Il esserea impossibile aperir un session sin OpenID.',
-	'openiddeleteerroropenidonly' => 'Tu non pote deler tote tu OpenIDs proque tu ha le permission de identificar te solmente con OpenID.
+	'openiddeleteerroropenidonly' => 'Tu non pote deler tote tu OpenIDs proque tu ha le permission de authenticar te solmente con OpenID.
 Il esserea impossibile aperir un session sin OpenID.',
 	'openiddelete-sucess' => 'Le OpenID ha essite removite de tu conto con successo.',
 	'openiddelete-error' => 'Un error occurreva durante le remotion del OpenID de tu conto.',
@@ -3792,7 +3793,7 @@ Vennligst kontakt en [[Special:ListUsers/sysop|administrator]].',
 	'openidchooseauto' => 'Et automatisk opprettet navn ($1)',
 	'openidchoosemanual' => 'Et valgfritt navn:',
 	'openidchooseexisting' => 'En eksisterende konto på denne wikien',
-	'openidchooseusername' => 'brukernavn:',
+	'openidchooseusername' => 'Brukernavn:',
 	'openidchoosepassword' => 'Passord:',
 	'openidconvertinstructions' => 'Dette skjemaet lar deg endre brukerkontoen din til å bruke en OpenID-adresse eller å legge til flere OpenID-adresser.',
 	'openidconvertoraddmoreids' => 'Konverter til OpenID eller legg til en annen OpenID-adresse',
@@ -4564,6 +4565,14 @@ OpenID позволяет вам заходить на различные веб
 	'openid-provider-label-yahoo' => 'Представиться, используя учётную запись Yahoo',
 	'openid-provider-label-aol' => 'Введите ваше имя в AOL',
 	'openid-provider-label-other-username' => 'Введите ваше имя участника $1',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'openidchooseusername' => 'Мено хоснователя:',
+	'openidchoosepassword' => 'Гесло:',
 );
 
 /** Sicilian (Sicilianu)

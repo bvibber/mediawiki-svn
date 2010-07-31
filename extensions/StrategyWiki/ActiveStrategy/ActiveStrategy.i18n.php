@@ -173,6 +173,16 @@ $messages['ia'] = array(
 	'nedits' => '$1 {{PLURAL:$1|modification|modificationes}}',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'activestrategy' => 'Strategi Aktif',
+	'active-strategy-desc' => 'Menampilkan jumlah suntingan pada halaman perencanaan strategis',
+	'active-strategy-intro' => 'Jumlah suntingan terhadap halaman tugas bersama dalam {{PLURAL:$1|$1 hari|$1 hari}} terakhir.',
+	'nedits' => '$1 {{PLURAL:$1|suntingan|suntingan}}',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -297,6 +307,13 @@ $messages['pms'] = array(
 	'active-strategy-desc' => 'Mostra ël nùmer ëd modìfiche a le pàgine dla partìa ëd travaj',
 	'active-strategy-intro' => "Nùmer ëd modìfiche a le pàgine dl'echip ëd travaj ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}.",
 	'nedits' => '$1 {{PLURAL:$1|modìfica|modìfiche}}',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'nedits' => '$1 {{PLURAL:$1|سمون|سمونونه}}',
 );
 
 /** Portuguese (Português)

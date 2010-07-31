@@ -292,6 +292,13 @@ $messages['ko'] = array(
 	'fixedimage-desc' => '<code>&lt;fundraising&gt;</code> 이미지 태그를 추가',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Къарачайлы
+ */
+$messages['krc'] = array(
+	'fixedimage-desc' => '<code>&lt;fundraising&gt;</code> тегни сурат кибик къошады',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -502,11 +502,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'wikieditor' => 'विकिमजकूर संपादनाची विकसित सुविधा',
 	'wikieditor-wikitext-tab' => 'विकिमजकूर',
+	'wikieditor-loading' => 'चढवत आहे…',
 );
 
 /** Malay (Bahasa Melayu)
@@ -663,6 +665,16 @@ $messages['ru'] = array(
 	'wikieditor-desc' => 'Обеспечивает расширяемый интерфейс редактирования викитекста и многие функции, предоставляемые модулями',
 	'wikieditor-wikitext-tab' => 'Викитекст',
 	'wikieditor-loading' => 'Загрузка',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor' => 'Росшыреный інтерфейс едітованя вікітексту',
+	'wikieditor-desc' => 'Забезпечує росшырительный інтерфейс едітованя вікітексту з богато функціоналныма модулами',
+	'wikieditor-wikitext-tab' => 'Вікітекст',
+	'wikieditor-loading' => 'Награває ся',
 );
 
 /** Yakut (Саха тыла)

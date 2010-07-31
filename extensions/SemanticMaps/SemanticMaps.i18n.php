@@ -494,6 +494,7 @@ Servicios cartographic disponibile: $1',
 $messages['id'] = array(
 	'semanticmaps_desc' => 'Memampukan penampilan dan penyuntingan data koordinat yang disimpan melalui pengaya MediaWiki Semantic ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). 
 Layanan peta yang tersedia: $1',
+	'semanticmaps-unrecognizeddistance' => 'Nilai $1 bukan jarak yang sah.',
 	'semanticmaps_lookupcoordinates' => 'Cari koordinat',
 	'semanticmaps_enteraddresshere' => 'Masukkan alamat di sini',
 	'semanticmaps_notfound' => 'tidak ditemukan',
@@ -594,6 +595,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'semanticmaps-unrecognizeddistance' => 'De Wäert $1 ass keng valabel Distanz.',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nokucken',
 	'semanticmaps_enteraddresshere' => 'Adress hei aginn',
 	'semanticmaps_notfound' => 'net fonnt',

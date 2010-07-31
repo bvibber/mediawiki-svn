@@ -138,9 +138,12 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  */
 $messages['id'] = array(
 	'js2support-desc' => 'JS2 mendukung sebagai ekstensi',
+	'js2support-debug-preference' => 'Nonaktifkan pengelompokan dan penyusutan sumber',
+	'prefs-script-debug' => 'Penghapusan bug sumber',
 );
 
 /** Japanese (日本語)

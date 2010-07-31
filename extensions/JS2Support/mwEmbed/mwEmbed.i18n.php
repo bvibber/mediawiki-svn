@@ -344,6 +344,7 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  */
@@ -354,6 +355,10 @@ $messages['id'] = array(
 	'mwe-load-drag-item' => 'Memuat butir terseret',
 	'mwe-ok' => 'Oke',
 	'mwe-cancel' => 'Batalkan',
+	'mwe-enable-gadget' => 'Aktifkan beta multimedia (mwEmbed) untuk semua halaman',
+	'mwe-enable-gadget-done' => 'Gadget beta multimedia telah diaktifkan',
+	'mwe-must-login-gadget' => 'Untuk mengaktifkan gadget Anda harus <a target="_new" href="$1">masuk log</a>',
+	'mwe-test-plural' => 'Saya menjalankan {{PLURAL:$1|$1 tes|$1 tes}}',
 );
 
 /** Igbo (Igbo) */
@@ -509,18 +514,19 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'mwe-loading_txt' => 'A caria ...',
 	'mwe-error_load_lib' => 'Eror: JavaScript $1 as peul pa trovesse o a definiss pa $2',
-	'mwe-apiproxy-setup' => 'Amposté proxy API',
-	'mwe-load-drag-item' => 'carié element copià',
+	'mwe-apiproxy-setup' => 'Amposté ël proxy API',
+	'mwe-load-drag-item' => "carié l'element tirà",
 	'mwe-ok' => 'Va bin',
 	'mwe-cancel' => 'Scancela',
 	'mwe-enable-gadget' => 'Abìlita la beta multimedia (mwEmbed) për tute le pàgine',
-	'mwe-enable-gadget-done' => "Ël gadget beta multimedia a l'é stàit abilità",
-	'mwe-must-login-gadget' => 'Për abilité ël gadget it deuve <a target="_new" href="$1">intré</a>',
+	'mwe-enable-gadget-done' => "L'acessòri beta multimedia a l'é stàit abilità",
+	'mwe-must-login-gadget' => 'Për abilité l\'acessòri a dev <a target="_new" href="$1">intré ant ël sistema</a>',
 	'mwe-test-plural' => "I l'heu fàit {{PLURAL:$1|$1 test|$1 test}}",
 );
 
@@ -580,6 +586,14 @@ $messages['ru'] = array(
 	'mwe-enable-gadget-done' => 'Включён гаджет бета-мультимедиа',
 	'mwe-must-login-gadget' => 'Для включения гаджета вам следует <a target="_new" href="$1">представиться</a>.',
 	'mwe-test-plural' => 'Я прошёл {{PLURAL:$1|$1 проверку|$1 проверки|$1 проверок}}',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mwe-ok' => 'ОК',
+	'mwe-cancel' => 'Сторно',
 );
 
 /** Slovak (Slovenčina)

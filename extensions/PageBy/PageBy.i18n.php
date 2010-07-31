@@ -27,6 +27,7 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author Тест
  */
 $messages['qqq'] = array(
 	'pageby-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
@@ -37,6 +38,7 @@ $messages['qqq'] = array(
 * $2 timeanddate
 * $3 link to diff (or first revision of page)',
 	'pageby-contributors' => '{{Identical|Contributors}}',
+	'pageby-anon' => '{{Identical|Anonymous}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -693,11 +695,13 @@ $messages['ug-arab'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'pageby-first' => 'Сторінка створена $1 $2',
 	'pageby-last' => 'Востаннє <a href="$3">змінювалась</a> $1 $2',
 	'pageby-contributors' => 'Автори:',
+	'pageby-anon' => '<i>анонім</i>',
 );
 
 /** Vèneto (Vèneto)

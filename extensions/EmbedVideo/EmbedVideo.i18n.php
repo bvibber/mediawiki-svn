@@ -157,6 +157,19 @@ $messages['ia'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo recipeva le parametro de latitude invalide "$1".',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'embedvideo-desc' => 'Memnambahkan fungsi parser untuk menempelkan video dari sumber-sumber terkenal',
+	'embedvideo-missing-params' => 'EmbedVideo kehilangan parameter yang dibutuhkan.',
+	'embedvideo-bad-params' => 'EmbedVideo menerima parameter buruk.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo menerima untaian parameter yang tak dapat diberi fungsi parser "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'EmbedVideo tidak mengenali layanan video "<code>$1</code>".',
+	'embedvideo-bad-id' => 'EmbedVideo menerima identitas buruk "$1" untuk layanan "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo menerima parameter lebar "$1" tidak sah.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

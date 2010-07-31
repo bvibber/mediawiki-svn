@@ -513,8 +513,13 @@ $messages['pt-br'] = array(
 	'prefs-sendmailtowiki' => 'Publicar conteúdos por e-mail',
 	'sendmailtowiki-inemail' => 'Endereço de e-mail dedicado:',
 	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Número PIN vazio desativa a publicação de conteúdos na wiki através da sua conta.',
 	'sendmailtowiki-err-pinlength' => 'PIN precisa conter exatamente 5 algarismos.',
+	'sendmailtowiki-err-wrongprefix' => 'Prefixo da conta wiki errado. Contate o seu administrador!',
+	'sendmailtowiki-err-invalidaccount' => 'Conta inválida. Verifique o endereço de e-mail de destino.',
+	'sendmailtowiki-err-invalidsender' => 'Remetente inválido. Verifique o endereço de e-mail do remetente.',
 	'sendmailtowiki-err-invalidpin' => 'PIN inválido. Acesso negado.',
+	'sendmailtowiki-err-onlyplain' => 'Devido a potenciais erros de interpretação, só são aceites mensagens de texto.',
 );
 
 /** Russian (Русский)

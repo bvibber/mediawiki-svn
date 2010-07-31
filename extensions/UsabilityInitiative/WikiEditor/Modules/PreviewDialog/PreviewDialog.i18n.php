@@ -286,6 +286,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'wikieditor-previewDialog-preference' => 'Activar la bouèta de dialogo d’apèrçu',
 	'wikieditor-previewDialog-tab' => 'Prèvisualisacion',
 	'wikieditor-previewDialog-loading' => 'Chargement...',
 );
@@ -627,6 +628,13 @@ $messages['ru'] = array(
 	'wikieditor-previewDialog-preference' => 'Включить диалог предпросмотра',
 	'wikieditor-previewDialog-tab' => 'Предпросмотр',
 	'wikieditor-previewDialog-loading' => 'Загрузка…',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-previewDialog-loading' => 'Награваня...',
 );
 
 /** Yakut (Саха тыла)

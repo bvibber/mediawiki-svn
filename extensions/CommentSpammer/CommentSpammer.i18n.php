@@ -242,7 +242,8 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'commentspammer-save-blocked' => 'Voutra adrèce IP est cela d’una pèrsona soupçonâ de crèar de spame, la pâge at pas étâ sôvâ. Volyéd vos [[Special:UserLogin|conèctar ou crèar un compto]] por contornar ceta dèfensa.',
+	'commentspammer-save-blocked' => 'Voutra adrèce IP est cela d’una pèrsona soupçonâ de fâre de spame, donc la pâge at pas étâ sôvâ.
+Vos volyéd [[Special:UserLogin|branchiér ou ben fâre un compto]] por contornar ceta dèfensa.',
 	'commentspammer-log-msg' => 'Changements de [[Special:Contributions/$1|$1]] a [[:$2]].',
 	'commentspammer-log-msg-info' => 'Lo dèrriér spame remonte a {{PLURAL:$1|$1 jorn|$1 jorns}}, lo nivô d’alèrta est a $2 et lo code d’ataca est $3. [http://www.projecthoneypot.org/search_ip.php?ip=$4 Vêre los dètalys] ou ben [[Special:Blockip/$4|blocar]].',
 	'cspammerlogpagetext' => 'Jornal des changements accèptâs ou ben refusâs d’aprés que la sôrsa ére un ôtor de spame cognu.',

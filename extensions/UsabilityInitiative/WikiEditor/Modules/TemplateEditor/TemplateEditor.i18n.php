@@ -541,11 +541,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
 	'wikieditor-template-editor-dialog-title' => 'साच्याचे संपादन करा',
 	'wikieditor-template-editor-dialog-submit' => 'अद्ययावत करा',
+	'wikieditor-template-editor-dialog-cancel' => 'रद्द करा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -719,6 +721,9 @@ $messages['ru'] = array(
  * @author Gazeb
  */
 $messages['rue'] = array(
+	'wikieditor-template-editor-preference' => 'Запнути формуларову едітацію шаблон вікі',
+	'wikieditor-template-editor-dialog-title' => 'Едітовати шаблону',
+	'wikieditor-template-editor-dialog-submit' => 'Обновити',
 	'wikieditor-template-editor-dialog-cancel' => 'Сторно',
 );
 

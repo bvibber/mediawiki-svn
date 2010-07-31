@@ -375,7 +375,29 @@ class ExtensionMessageGroup extends MessageGroupOld {
 	public function getMessageFile( $code ) { return $this->messageFile; }
 	public function setMessageFile( $value ) { $this->messageFile = $value; }
 
+	public function getDescription() {
+		if ( $this->description === null ) {
+			// Load the messages only when needed
+			$this->setDescriptionMsgReal( $this->descriptionKey, $this->descriptionUrl );
+		}
+		return parent::getDescription();
+	}
+
+	// Holders for lazy loading
+	private $descriptionKey, $descriptionUrl;
+
+	/**
+	 * Extensions have almost always a localised description message and
+	 * address to extension homepage.
+	 */
 	public function setDescriptionMsg( $key, $url ) {
+		$this->descriptionKey = $key;
+		$this->descriptionUrl = $url;
+	}
+
+	protected function setDescriptionMsgReal( $key, $url ) {
+		$this->description = '';
+
 		global $wgLang;
 
 		$desc = $this->getMessage( $key, $wgLang->getCode() );
@@ -390,6 +412,10 @@ class ExtensionMessageGroup extends MessageGroupOld {
 
 		if ( $url ) {
 			$this->description .= wfMsgNoTrans( 'translate-ext-url', $url );
+		}
+
+		if ( $this->description === '' ) {
+			$this->description = wfMsgNoTrans( 'translate-group-desc-nodesc' );
 		}
 	}
 
@@ -801,26 +827,78 @@ class WikiPageMessageGroup extends WikiMessageGroup {
 
 		return $checker;
 	}
+
+	public function getDescription() {
+		$title = $this->title;
+		$target = SpecialPage::getTitleFor( 'MyLanguage', $title )->getPrefixedText();
+		return wfMsgNoTrans( 'translate-tag-page-desc', $title, $target );
+	}
 }
 
 class MessageGroups {
 	public static function init() {
 		static $loaded = false;
+		if ( $loaded ) return;
+		$loaded = true;
 
-		if ( $loaded ) {
-			return;
+		global $wgTranslateCC, $wgTranslateEC, $wgTranslateAC;
+		global $wgAutoloadClasses;
+
+		$key = wfMemckey( 'translate-groups' );
+		$value = DependencyWrapper::getValueFromCache( self::getCache(), $key );
+
+		if ( $value === null ) {
+			wfDebug( __METHOD__ . "-nocache\n" );
+			self::loadGroupDefinitions();
+		} else {
+			wfDebug( __METHOD__ . "-withcache\n" );
+			$wgTranslateCC = $value['cc'];
+			$wgTranslateAC = $value['ac'];
+			$wgTranslateEC = $value['ec'];
+
+			foreach ( $value['autoload'] as $class => $file ) {
+				$wgAutoloadClasses[$class] = $file;
+			}
 		}
-		wfDebug( __METHOD__ . "\n" );
+	}
 
+	/**
+	 * Manually reset groups when dependencies cannot
+	 * detect those automatically
+	 */
+	public static function clearCache() {
+		$key = wfMemckey( 'translate-groups' );
+		self::getCache()->delete( $key );
+	}
+
+	/**
+	 * Returns a cache object. Currently just wrapper for
+	 * database cache, but could be improved or replaced
+	 * with something that prefers Memcached over db.
+	 */
+	protected static function getCache() {
+		return wfGetCache( CACHE_DB );
+	}
+
+	public static function loadGroupDefinitions() {
 		global $wgTranslateAddMWExtensionGroups;
+		global $wgEnablePageTranslation, $wgTranslateGroupFiles;
+		global $wgTranslateAC, $wgTranslateEC, $wgTranslateCC;
+		global $wgAutoloadClasses;
 
+		$deps = array();
+		$deps[] = new GlobalDependency( 'wgTranslateAddMWExtensionGroups' );
+		$deps[] = new GlobalDependency( 'wgEnablePageTranslation' );
+		$deps[] = new GlobalDependency( 'wgTranslateGroupFiles' );
+		$deps[] = new GlobalDependency( 'wgTranslateAC' );
+		$deps[] = new GlobalDependency( 'wgTranslateEC' );
+		$deps[] = new GlobalDependency( 'wgTranslateCC' );
+		$deps[] = New FileDependency( dirname( __FILE__ ) . '/groups/mediawiki-defines.txt' );
+		
 		if ( $wgTranslateAddMWExtensionGroups ) {
 			$a = new PremadeMediawikiExtensionGroups;
 			$a->addAll();
 		}
-
-		global $wgTranslateCC;
-		global $wgEnablePageTranslation;
 
 		if ( $wgEnablePageTranslation ) {
 			$dbr = wfGetDB( DB_SLAVE );
@@ -836,24 +914,25 @@ class MessageGroups {
 				$id = "page|$title";
 				$wgTranslateCC[$id] = new WikiPageMessageGroup( $id, $title );
 				$wgTranslateCC[$id]->setLabel( $title );
-				$target = SpecialPage::getTitleFor( 'MyLanguage', $title )->getPrefixedText();
-				$wgTranslateCC[$id]->setDescription( wfMsgNoTrans( 'translate-tag-page-desc', $title, $target ) );
 			}
 		}
 
 		wfRunHooks( 'TranslatePostInitGroups', array( &$wgTranslateCC ) );
 
-		global $wgTranslateGroupFiles, $wgAutoloadClasses;
+		$autoload = array();
 
 		foreach ( $wgTranslateGroupFiles as $configFile ) {
 			wfDebug( $configFile . "\n" );
+			$deps[] = new FileDependency( realpath( $configFile ) );
 			$fgroups = TranslateYaml::parseGroupFile( $configFile );
 
 			foreach( $fgroups as $id => $conf ) {
 				if ( !empty( $conf['AUTOLOAD'] ) && is_array( $conf['AUTOLOAD'] ) ) {
 					$dir = dirname( $configFile );
 					foreach ( $conf['AUTOLOAD'] as $class => $file ) {
+						// For this request and for caching
 						$wgAutoloadClasses[$class] = "$dir/$file";
+						$autoload[$class] = "$dir/$file";
 					}
 				}
 				$group = MessageGroupBase::factory( $conf );
@@ -861,7 +940,18 @@ class MessageGroups {
 			}
 		}
 
-		$loaded = true;
+		$key = wfMemckey( 'translate-groups' );
+		$value = array(
+			'ac' => $wgTranslateAC,
+			'ec' => $wgTranslateEC,
+			'cc' => $wgTranslateCC,
+			'autoload' => $autoload,
+		);
+
+		$wrapper = new DependencyWrapper( $value, $deps );
+		$wrapper->storeToCache( self::getCache(), $key, 60*60*2 );
+
+		wfDebug( __METHOD__ . "-end\n" );
 	}
 
 	public static function getGroup( $id ) {
@@ -898,32 +988,34 @@ class MessageGroups {
 		}
 	}
 
-	public $classes = array();
+	public $classes;
 	private function __construct() {
 		self::init();
 
-		global $wgTranslateEC, $wgTranslateCC;
 
-		$all = array_merge( $wgTranslateEC, array_keys( $wgTranslateCC ) );
-		sort( $all );
-
-		foreach ( $all as $id ) {
-			$g = self::getGroup( $id );
-			$this->classes[$g->getId()] = $g;
-		}
 	}
 
 	public static function singleton() {
 		static $instance;
-
 		if ( !$instance instanceof self ) {
 			$instance = new self();
 		}
-
 		return $instance;
 	}
 
 	public function getGroups() {
+		if ( $this->classes === null ) {
+			$this->classes = array();
+			global $wgTranslateEC, $wgTranslateCC;
+
+			$all = array_merge( $wgTranslateEC, array_keys( $wgTranslateCC ) );
+			sort( $all );
+
+			foreach ( $all as $id ) {
+				$g = self::getGroup( $id );
+				$this->classes[$g->getId()] = $g;
+			}
+		}
 		return $this->classes;
 	}
 }

@@ -276,7 +276,7 @@ class PagedTiffHandler extends ImageHandler {
 	 */
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgImageMagickConvertCommand, $wgTiffMaxEmbedFileResolution, 
-			$wgTiffUseVips, $wgTiffVipsCommand;
+			$wgTiffUseVips, $wgTiffVipsCommand, $wgMaxImageArea;
 
 		$meta = $this->getMetaArray( $image );
 		$errors = PagedTiffHandler::getMetadataErrors( $meta );
@@ -325,12 +325,33 @@ class PagedTiffHandler extends ImageHandler {
 			return $this->doThumbError( $params, 'thumbnail_dest_directory' );
 
 		if ( $wgTiffUseVips ) {
-			// tested in Linux
-			$cmd = wfEscapeShellArg( $wgTiffVipsCommand );
-			$cmd .= ' im_resize_linear "' . wfEscapeShellArg( $srcPath ) . ':' . ( $page - 1 ) . '" ';
-			$cmd .= wfEscapeShellArg( $dstPath );
-			$cmd .= " {$width} {$height} 2>&1";
+			$pagesize = PagedTiffImage::getPageSize($meta, $page);
+			if ( !$pagesize ) {
+				return $this->doThumbError( $params, 'tiff_no_metadata' );
+			}
+			
+			// Shrink factors must be > 1.
+			if ( ( $pagesize['width'] > $width ) && ( $pagesize['height'] > $height ) ) {
+				$xfac = $pagesize['width'] / $width;
+				$yfac = $pagesize['height'] / $height;
+				// tested in Linux and Windows
+				$cmd = wfEscapeShellArg( $wgTiffVipsCommand );
+				$cmd .= ' im_shrink "' . wfEscapeShellArg( $srcPath ) . ':' . ( $page - 1 ) . '" ';
+				$cmd .= wfEscapeShellArg( $dstPath );
+				$cmd .= " {$xfac} {$yfac} 2>&1";
+			} else {
+				// tested in Linux and Windows
+				$cmd = wfEscapeShellArg( $wgTiffVipsCommand );
+				$cmd .= ' im_resize_linear "' . wfEscapeShellArg( $srcPath ) . ':' . ( $page - 1 ) . '" ';
+				$cmd .= wfEscapeShellArg( $dstPath );
+				$cmd .= " {$width} {$height} 2>&1";
+			}
 		} else {
+			if ( ( $width * $height ) > $wgMaxImageArea )
+				return $this->doThumbError( $params, 'tiff_targetfile_too_large' );
+			if ( isset( $meta['page_data'][$page]['pixels'] ) 
+					&& $meta['page_data'][$page]['pixels'] > $wgMaxImageArea )
+				return $this->doThumbError( $params, 'tiff_sourcefile_too_large' );
 			$cmd = wfEscapeShellArg( $wgImageMagickConvertCommand );
 			$cmd .= " " . wfEscapeShellArg( $srcPath ) . "[" . ( $page - 1 ) . "]";
 			$cmd .= " -depth 8 -resize {$width} ";

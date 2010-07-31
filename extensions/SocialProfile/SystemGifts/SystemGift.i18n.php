@@ -1743,7 +1743,7 @@ $messages['mk'] = array(
 	'ga-count' => '$1 има $2 {{PLURAL:$2|награда|награди}}.',
 	'ga-create-gift' => 'Создај подарок',
 	'ga-created' => 'Подарокот е создаден',
-	'ga-currentimage' => 'Моментална слика',
+	'ga-currentimage' => 'Тековна слика',
 	'ga-error-message-invalid-link' => 'Внесената врска е неважечка.',
 	'ga-error-message-no-user' => 'Корисникот кој сакате да го видите не постои.',
 	'ga-error-title' => 'Упс, направивте погрешен потег!',
@@ -2479,6 +2479,21 @@ $4
 Нажмите $5
 и измените ваши настройки, отключив отправку уведомлений по электронной почте.',
 	'right-awardsmanage' => 'создание новых и правка существующих наград',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'ga-back-link' => '<a href="$1">< Назад на $2\'s профіл</a>',
+	'ga-choosefile' => 'Выбрати файл:',
+	'ga-large' => 'Великый',
+	'ga-medium' => 'Середнїй',
+	'ga-mediumlarge' => 'Середнїй - великый',
+	'ga-new' => 'Новый',
+	'ga-next' => 'Далшый',
+	'ga-previous' => 'Попереднїй',
+	'ga-small' => 'Маленькый',
 );
 
 /** Slovak (Slovenčina)

@@ -306,7 +306,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'uos-unknown' => '* Per dèfôt',
+	'uos-unknown' => '*Per dèfôt',
 	'uos-other' => '* Ôtres',
 );
 
@@ -638,6 +638,13 @@ $messages['ru'] = array(
 	'uos-unknown' => '* По умолчанию',
 	'uos-other' => '* Другие',
 	'uos-title' => 'Распределение значений пользовательской настройки $1',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'uos-other' => '*Іншы',
 );
 
 /** Sinhala (සිංහල)

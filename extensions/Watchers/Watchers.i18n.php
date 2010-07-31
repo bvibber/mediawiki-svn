@@ -537,16 +537,20 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  */
 $messages['id'] = array(
 	'watchers' => 'Pemantau',
 	'watchers-desc' => 'Menunjukkan [[Special:Watchers|pengguna yang memiliki sebuah halaman di daftar pantauan mereka]]',
 	'watchers_link_title' => 'Siapa yang memantau halaman ini?',
 	'watchers_error_article' => "'''Galat:''' Halaman tidak ada.",
+	'watchers-error-invalid-page' => "'''Galat:''' \"\$1\" adalah judul halaman tidak sah.",
 	'watchers_header' => '{{PLURAL:$2|Pengguna|Pengguna}} yang memantau "[[:$1]]"',
 	'watchers_noone_watches' => 'Tidak ada yang memantau halaman ini.',
 	'watchers_x_or_more' => '$1 orang {{PLURAL:$1|pengguna|pengguna}} atau lebih memantau halaman ini.',
 	'watchers_less_than_x' => 'Kurang dari $1 orang {{PLURAL:$1|pengguna|pengguna}} memantau halaman ini.',
+	'watchers-num' => '$1 {{PLURAL:$1|pengguna memiliki}} halaman [[:$2]] di daftar pantau {{PLURAL:$1|mereka}}.',
+	'right-watchers-list' => '[[Special:Watchers|Daftar pengguna yang memantau halaman tertentu]]',
 );
 
 /** Italian (Italiano)

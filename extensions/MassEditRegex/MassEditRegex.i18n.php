@@ -269,6 +269,8 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'masseditregex' => 'Kemmoù a-vras gant sikour eztaoladennoù poellel',
+	'masseditregex-desc' => 'Implijout an eztaoladennoù poellel evit [[Special:MassEditRegex|kemmañ un toullad pajennoù en un taol]]',
 	'masseditregex-pagelisttxt' => 'Pajennoù da gemmañ (hep rakger an esaouenn anvioù) :',
 	'masseditregex-matchtxt' => 'Klask :',
 	'masseditregex-replacetxt' => "Erlec'hiañ gant :",
@@ -281,9 +283,11 @@ $messages['br'] = array(
 	'masseditregex-page-not-exists' => "N'eus ket eus $1",
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|pennad|pennad}} kemmet',
 	'masseditregex-view-full-summary' => "Gwelet diverrañ klok ar c'hemmoù",
+	'masseditregex-hint-intro' => 'Setu amañ titouroù ha skouerioù evit ober war-dro an trevelloù boaz :',
 	'masseditregex-hint-headmatch' => 'Klotadenn',
 	'masseditregex-hint-headreplace' => "Erlec'hiañ",
 	'masseditregex-hint-headeffect' => 'Efed',
+	'masseditregex-hint-toappend' => "Ensoc'hañ un tamm testenn e fin ar bajenn - efedus evit ouzhpennañ pajennoù e rummadoù",
 	'masseditregex-hint-remove' => 'Tennañ kuit un tamm destenn eus holl bajennoù ar roll',
 	'masseditregex-listtype-intro' => 'Setu ur roll :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',

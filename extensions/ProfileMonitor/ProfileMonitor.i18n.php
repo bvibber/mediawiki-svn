@@ -875,6 +875,13 @@ $messages['ru'] = array(
 	'profiling-no-data' => 'Не найдено соответствующих данных.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'profiling-ok' => 'ОК',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

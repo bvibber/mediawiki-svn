@@ -877,6 +877,26 @@ $messages['is'] = array(
 	'spamregex-already-blocked' => '„$1“ er nú þegar í banni',
 );
 
+/** Italian (Italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'spamregex-summary' => "Il testo è stato trovato nell'oggetto della pagina.",
+	'spamregex-currently-blocked' => "'''Frasi attualmente bloccate:'''",
+	'spamregex-no-currently-blocked' => "'''Non ci sono frasi bloccate.'''",
+	'spamregex-unblock-success' => 'Sblocco eseguito',
+	'spamregex-block-success' => 'Blocco eseguito',
+	'spamregex-block-message' => "La frase '''$1''' è stata bloccata.",
+	'spamregex-warning-1' => 'Inserisci una frase da bloccare.',
+	'spamregex-error-1' => 'Espressione regolare non valida.',
+	'spamregex-phrase-block' => 'Frase da bloccare:',
+	'spamregex-phrase-block-text' => 'frase bloccata nel testo della pagina',
+	'spamregex-phrase-block-summary' => "frase bloccata nell'oggetto",
+	'spamregex-block-submit' => 'Blocca&nbsp;questa&nbsp;frase',
+	'spamregex-text' => '(Testo)',
+	'spamregex-summary-log' => '(Oggetto)',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

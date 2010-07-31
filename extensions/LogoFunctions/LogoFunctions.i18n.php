@@ -38,9 +38,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
+	'logofunctions-desc' => "Ouzhpenn un arc'hwel d'ar parser a-benn termeniñ logo ar wiki",
 	'logofunctions-filenotexist' => "Fazi : N'eus ket eus [[File:$1]]",
 );
 
@@ -115,6 +117,14 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'logofunctions-desc' => 'Adde un function analysator pro definir le logotypo del wiki',
 	'logofunctions-filenotexist' => 'Error: [[File:$1]] non existe',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'logofunctions-desc' => 'Menambahkan fungsi parser untuk mengatur logo wiki',
+	'logofunctions-filenotexist' => 'Kesalahan: [[File:$1]] tidak ada',
 );
 
 /** Georgian (ქართული)

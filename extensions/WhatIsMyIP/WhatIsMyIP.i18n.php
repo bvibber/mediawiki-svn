@@ -699,6 +699,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'whatismyip' => 'Яка є моя IP-адреса',
+	'whatismyip-out' => 'Ваша IP-адреса:',
 );
 
 /** Sinhala (සිංහල)

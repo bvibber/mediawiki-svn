@@ -27,15 +27,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMGoogleMapsFormInput extends SMFormInput {
 
 	/**
-	 * @see MapsMapFeature::setMapSettings()
+	 * @see SMFormInput::getEarthZoom
+	 * 
+	 * @since 0.6.5
 	 */
-	protected function setMapSettings() {
-		global $egMapsGoogleMapsPrefix;
-		
-		$this->elementNamePrefix = $egMapsGoogleMapsPrefix;
-		$this->showAddresFunction = 'showGAddress';
-
-		$this->earthZoom = 1;
+	protected function getEarthZoom() {
+		return 1;
+	}	
+	
+	/**
+	 * @see SMFormInput::getShowAddressFunction
+	 * 
+	 * @since 0.6.5
+	 */	
+	protected function getShowAddressFunction() {
+		global $egGoogleMapsKey;
+		return $egGoogleMapsKey == '' ? false : 'showGAddress';	
 	}
 	
 	/**
@@ -45,18 +52,14 @@ class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 
+		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/GoogleMaps/SM_GoogleMapsForms{$egMapsJsExt}?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
-		
-		if ( empty( $smgGoogleFormsOnThisPage ) ) {
-			$smgGoogleFormsOnThisPage = 0;
-			$wgOut->addScriptFile( "$smgScriptPath/Services/GoogleMaps/SM_GoogleMapsFunctions{$egMapsJsExt}?$smgStyleVersion" );
-		}
 	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificFormInputHTML
 	 */
-	protected function addSpecificMapHTML() {
+	public function addSpecificMapHTML() {
 		global $wgOut;
 		
 		$mapName = $this->service->getMapId( false );
@@ -100,13 +103,5 @@ addOnloadHook(
 EOT
 		);
 	}
-	
-	/**
-	 * @see SMFormInput::manageGeocoding
-	 */
-	protected function manageGeocoding() {
-		global $egGoogleMapsKey;
-		return $egGoogleMapsKey != '';
-	}
-	
+
 }

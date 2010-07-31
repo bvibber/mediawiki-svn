@@ -1641,6 +1641,13 @@ $messages['ru'] = array(
 	'right-patroller' => 'Патрулирование страниц',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'patrol-skip' => 'Перескочіти',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

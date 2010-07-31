@@ -1010,7 +1010,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'importfreeimages' => 'Importar Imagens Livres',
+	'importfreeimages' => 'Importar imagens livres',
 	'importfreeimages-desc' => 'Fornece uma forma de [[Special:ImportFreeImages|importar fotografias devidamente licenciadas]] do [http://www.flickr.com flickr].',
 	'importfreeimages_description' => 'Esta página permite-lhe procurar fotografias devidamente licenciadas no flickr e importá-las para a sua wiki.',
 	'importfreeimages_nophotosfound' => "Nenhuma fotografia foi encontrada segundo o seu critério de busca '$1'; por favor, tente de novo.",

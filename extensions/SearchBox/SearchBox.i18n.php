@@ -711,6 +711,16 @@ $messages['rue'] = array(
 	'searchbox-namespaces' => 'Просторы назв:',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'searchbox-desc' => 'සෙවුම් පෝරමයන්හි අන්තර්ගතය සඳහා ඉඩදෙන්න',
+	'searchbox-search' => 'සොයන්න',
+	'searchbox-go' => 'යන්න',
+	'searchbox-namespaces' => 'නාමඅවකාශයන්:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

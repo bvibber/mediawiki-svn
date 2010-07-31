@@ -896,6 +896,7 @@ $messages['ang'] = array(
  * @author ;Hiba;1
  * @author Alnokta
  * @author Meno25
+ * @author Moemin05
  * @author OsamaK
  */
 $messages['ar'] = array(
@@ -1141,6 +1142,7 @@ $messages['ar'] = array(
 	'centralauth-editset-wikis' => 'الويكيات:',
 	'centralauth-editset-reason' => 'السبب:',
 	'centralauth-editset-submit' => 'تنفيذ',
+	'centralauth-editset-submit-delete' => 'حذف',
 	'centralauth-editset-badname' => 'أنت حددت اسم مجموعة غير صحيح أو فارغ.',
 	'centralauth-editset-badtype' => 'أنت حددت نوع مجموعة غير صحيح.',
 	'centralauth-editset-setexists' => 'هناك مجموعة ويكي بهذا الاسم بالفعل',
@@ -2642,6 +2644,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -2744,6 +2747,7 @@ Mard eo deoc'h ar gont hollek ivez e c'hallit kendeuziñ ar c'hontoù-se en ur v
 	'centralauth-admin-yes' => 'ya',
 	'centralauth-admin-no' => 'ket',
 	'centralauth-admin-hidden-list' => 'eus ar rolloù publik',
+	'centralauth-admin-hidden-oversight' => 'kuzhet',
 	'centralauth-admin-list-legend-ro' => "Roll ar c'hontoù lec'hel",
 	'centralauth-admin-list-legend-rw' => "Nullañ kendeuzadur ar c'hontoù lec'hel",
 	'centralauth-admin-unattached' => 'distag',
@@ -6033,7 +6037,7 @@ Põhjus: $2',
 	'centralauth-prefs-manage' => 'Vaata oma ühendkontot',
 	'centralauth-renameuser-reserved' => 'Kasutajanime $2 hoitakse globaalse konto jaoks.',
 	'centralauth-account-exists' => 'Konntot ei saa luua, sest soovitud kasutajanimi on ühendkontode süsteemis juba kasutusel.',
-	'centralauth-login-progress' => 'Teid logitakse projektidesse, mida haldab {{int:Centralauth-groupname}}:',
+	'centralauth-login-progress' => 'Sind logitakse {{int:Centralauth-groupname}} projektidesse sisse:',
 	'centralauth-logout-progress' => 'Teid logitakse välja projektidest, mida haldab {{int:Centralauth-groupname}}:',
 	'centralauth-login-no-others' => 'Sind on automaatselt logitud teistesse projektidesse, mida haldab {{int:Centralauth-groupname}}.',
 	'centralauth-logout-no-others' => 'Sind on automaatselt välja logitud teistest projektidest, mida haldab {{int:Centralauth-groupname}}.',
@@ -7031,7 +7035,7 @@ $messages['frp'] = array(
 	'centralauth-desc' => '[[Special:MergeAccount|Fusione los comptos utilisator]] sur los vouiquis de {{MediaWiki:Centralauth-groupname}}.',
 	'centralauth-mergeaccount-desc' => '[[Special:MergeAccount|Fusione un mouél de comptos]] por lo branchement unifiâ.',
 	'centralauth-merge-denied' => 'Dèsolâ, vos avéd pas los drêts d’accès a ceta pâge.',
-	'centralauth-merge-notlogged' => 'Volyéd vos <span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto={{#special:MergeAccount}}}} branchiér]</span> por controlar se voutros comptos ont tôs bien étâ fusionâs.',
+	'centralauth-merge-notlogged' => 'Vos volyéd <span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto={{#special:MergeAccount}}}} branchiér]</span> por controlar se voutros comptos ont tôs bien étâ fusionâs.',
 	'centralauth-merge-welcome' => "'''Voutron compto utilisator at p’oncor étâ dèplaciê vers lo sistèmo de branchement unifiâ de {{MediaWiki:Centralauth-groupname}}.'''
 
 Se vos chouèsésséd de dèplaciér voutros comptos, vos porréd utilisar lo mémo nom d’utilisator et lo mémo mot de pâssa por vos branchiér sur tôs los projèts de {{MediaWiki:Centralauth-groupname}} dens totes les lengoues disponibles.
@@ -7051,12 +7055,12 @@ Nion changement serat fêt tant que vos aréd pas balyê voutron acôrd et pués
 	'centralauth-merge-step3-submit' => 'Fusionar los comptos',
 	'centralauth-complete' => 'Fusion des comptos chavonâ !',
 	'centralauth-incomplete' => 'Fusion des comptos pas chavonâ !',
-	'centralauth-complete-text' => 'Ora, vos pouede vos branchiér sur un projèt de {{MediaWiki:Centralauth-groupname}} quint que seye sen avêr a fâre un compto novél.',
+	'centralauth-complete-text' => 'Ora, vos vos pouede branchiér sur un projèt de {{MediaWiki:Centralauth-groupname}} quint que seye sen avêr a fâre un compto novél.',
 	'centralauth-incomplete-text' => 'Setout que voutron branchement serat unifiâ, vos porréd vos branchiér sur un projèt de {{MediaWiki:Centralauth-groupname}} quint que seye sen avêr a fâre un compto novél.',
 	'centralauth-not-owner-text' => 'Lo compto utilisator « $1 » at étâ ôtomaticament assignê u propriètèro du compto dessus $2.
 
 S’o est vos, vos porréd chavonar lo procès de fusion des comptos en buchient lo mot de pâssa mêtre por cél compto dessus :',
-	'centralauth-notice-dryrun' => "<div class='successbox'>Fôrma de dèmonstracion solament</div><br clear='all'/>",
+	'centralauth-notice-dryrun' => "<div class='successbox'>Ren que la fôrma de dèmonstracion</div><br clear='all'/>",
 	'centralauth-disabled-dryrun' => 'La fusion des comptos est ora en môdo de dèmonstracion ou d’èprôva, pôvont vêr p’oncor verément fusionar de comptos. Dèsolâ !',
 	'centralauth-error-locked' => 'Vos pouede ren changiér perce que voutron compto est vèrrolyê.',
 	'centralauth-readmore-text' => ":''[[w:frp:Vouiquipèdia:Login unico|Nen savêr de ples sur lo '''compto unico''']]...''",
@@ -9297,7 +9301,7 @@ $messages['ia'] = array(
 	'centralauth-merge-notlogged' => 'Per favor <span class="plainlinks">[{{fullurl:{{#special:UserLogin}}|returnto={{#special:MergeAccount}}}} aperi un session]</span> pro verificar que le fusion de tu contos sia complete.',
 	'centralauth-merge-welcome' => "'''Tu conto de usator non ha ancora essite migrate al systema de contos unificate del {{MediaWiki:Centralauth-groupname}}.'''
 
-Si tu opta pro migrar tu contos, tu potera usar le mesme nomine de usator e contrasigno pro identificar te a tote le wikis del {{MediaWiki:Centralauth-groupname}} in tote le linguas disponibile.
+Si tu opta pro migrar tu contos, tu potera usar le mesme nomine de usator e contrasigno pro aperir un session in tote le wikis del {{MediaWiki:Centralauth-groupname}} in tote le linguas disponibile.
 
 Si un altere persona ha ja occupate tu nomine de usator in un altere sito, iste operation non disturbara iste persona, sed tu potera negotiar le cosa plus tarde con iste persona o con un administrator.",
 	'centralauth-merge-step1-title' => 'Comenciar unification de contos',
@@ -9474,7 +9478,7 @@ Renominar lo causara que le conto local sia distachate del global.',
 	'centralauth-account-exists' => 'Non pote crear conto: le nomine de usator requestate es ja in uso in le systema de contos unificate.',
 	'centralauth-login-progress' => 'Apertura de tu session in le projectos del {{int:Centralauth-groupname}}:',
 	'centralauth-logout-progress' => 'Clausura de tu session in le altere projectos del {{MediaWiki:Centralauth-groupname}}:',
-	'centralauth-login-no-others' => 'Tu ha essite automaticamente identificate in le altere projectos del {{int:Centralauth-groupname}}.',
+	'centralauth-login-no-others' => 'Tu ha essite automaticamente authenticate in le altere projectos del {{int:Centralauth-groupname}}.',
 	'centralauth-logout-no-others' => 'Tu session ha essite automaticamente claudite in le altere projectos del {{int:Centralauth-groupname}}.',
 	'centralauth-hidden-blockreason' => 'celate globalmente per $1 a $2 pro le motivo sequente: $3',
 	'centralauth-log-name' => 'Registro de contos global',
@@ -9584,6 +9588,7 @@ Tu pote vider e modificar qualcunque de illos, o crear un nove gruppo.',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Borgx
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Kenrick95
@@ -9654,7 +9659,16 @@ Jika ini adalah Anda, Anda dapat menyelesaikan proses penggabungan log masuk den
 	'centralauth-merge-method-password' => 'dikonfirmasi melalui kata sandi',
 	'centralauth-merge-method-admin' => 'akun pengurus yang telah digabungkan',
 	'centralauth-merge-method-new' => 'akun baru',
-	'centralauth-merge-method-login' => 'dikonfirmasikan melalui log masuk',
+	'centralauth-merge-method-login' => 'dibuat ketika masuk log',
+	'centralauth-merge-method-primary-desc' => 'Ini adalah wiki tempat akun pertama kali digabungkan.
+Ingat bahwa wiki ini mungkin berbeda dari wiki utama si pengguna.',
+	'centralauth-merge-method-empty-desc' => 'Menunjukkan bahwa akun lokal digabungkan karena belum memiliki suntingan.',
+	'centralauth-merge-method-mail-desc' => 'Menunjukkan bahwa akun lokal digabungkan karena alamat surel sama dengan alamat surel akun utama.',
+	'centralauth-merge-method-password-desc' => 'Menunjukkan bahwa akun lokal digabungkan karena pengguna memberi sandi yang sah untuk akun tersebut.',
+	'centralauth-merge-method-admin-desc' => 'Menunjukkan bahwa akun lokal digabungkan secara manual oleh steward.
+Fitur tersebut saat ini dinonaktifkan karena alasan keamanan.',
+	'centralauth-merge-method-new-desc' => 'Menunjukkan bahwa akun global dibuat secara otomatis ketika akun lokal dibuat.',
+	'centralauth-merge-method-login-desc' => 'Menunjukkan bahwa akun lokal dibuat secara otomatis ketika pengguna masuk log.',
 	'centralauth-finish-title' => 'Selesaikan penggabungan',
 	'centralauth-finish-text' => 'Jika akun-akun ini miliki Anda, Anda dapat menyelesaikan proses penggabungan hanya dengan mengetikkan kata sandi untuk akun lain di sini:',
 	'centralauth-finish-password' => 'Kata sandi:',
@@ -9670,19 +9684,29 @@ Akun-akun lain belum dikonfirmasikan.',
 	'centralauth-attach-text' => 'Akun ini belum dimigrasikan ke akun global. Jika akun globalnya merupakan milik Anda juga, silakan menggabungkan akun ini dengan memasukkan kata sandi akun global tersebut:',
 	'centralauth-attach-submit' => 'Migrasi akun',
 	'centralauth-attach-success' => 'Akun berhasil dimigrasikan sebagai akun global.',
-	'centralauth' => 'Administrasi akun global',
+	'centralauth' => 'Pengelola pengguna global',
 	'centralauth-admin-intro' => 'Antarmuka ini dapat digunakan untuk administrasi global akun.',
 	'centralauth-admin-manage' => 'Atur data pengguna',
 	'centralauth-admin-username' => 'Nama pengguna:',
+	'centralauth-admin-lookup-ro' => 'Lihat info pengguna',
+	'centralauth-admin-lookup-rw' => 'Kelola akun pengguna',
 	'centralauth-admin-permission' => 'Hanya steward yang dapat melakukan penggabungan akun orang lain.',
 	'centralauth-admin-no-unified' => 'Belum ada akun global dengan nama pengguna ini.',
+	'centralauth-admin-info-header' => 'Info pengguna global',
 	'centralauth-admin-info-id' => 'ID pengguna:',
 	'centralauth-admin-info-registered' => 'Terdaftar:',
+	'centralauth-admin-info-home' => 'Wiki utama:',
+	'centralauth-admin-info-editcount' => 'Total jumlah suntingan:',
 	'centralauth-admin-info-locked' => 'Terkunci:',
-	'centralauth-admin-info-hidden' => 'Tersembunyi:',
+	'centralauth-admin-info-hidden' => 'Tingkatan tersembunyi:',
+	'centralauth-admin-nohome' => 'tidak dapat ditentukan',
 	'centralauth-admin-yes' => 'ya',
 	'centralauth-admin-no' => 'tidak',
-	'centralauth-admin-unattached' => 'Akun terpisah',
+	'centralauth-admin-hidden-list' => 'dari daftar umum',
+	'centralauth-admin-hidden-oversight' => 'tertinjau',
+	'centralauth-admin-list-legend-ro' => 'Daftar akun lokal',
+	'centralauth-admin-list-legend-rw' => 'Jangan gabung akun lokal',
+	'centralauth-admin-unattached' => 'tidak tergabung',
 	'centralauth-admin-notblocked' => 'Tidak diblokir',
 	'centralauth-admin-blocked' => 'Blokir, berakhir $3 setelah $4. Alasan: $2',
 	'centralauth-admin-blocked-indef' => 'Blokir selamanya. Alasan: $1',
@@ -9691,7 +9715,7 @@ Akun-akun lain belum dikonfirmasikan.',
 	'centralauth-admin-list-attached-on' => 'Tergabung pada',
 	'centralauth-admin-list-method' => 'Metode',
 	'centralauth-admin-list-editcount' => 'Jumlah suntingan',
-	'centralauth-admin-list-blocked' => 'Status pemblokiran',
+	'centralauth-admin-list-blocked' => 'Diblokir',
 	'centralauth-admin-unmerge' => 'Batalkan penggabungan akun terpilih',
 	'centralauth-admin-merge' => 'Gabungkan akun terpilih',
 	'centralauth-admin-bad-input' => 'Pilihan penggabungan tidak sah',
@@ -9708,13 +9732,27 @@ Kata sandi untuk akun-akun lokal secara otomatis kembali ke kata sandi sebelum p
 	'centralauth-admin-delete-nonexistent' => 'Kesalahan: akun global "<nowiki>$1</nowiki>" tidak ditemukan.',
 	'centralauth-token-mismatch' => 'Maaf, kami tidak dapat mengolah pengiriman formulir Anda akibat terhapusnya data sesi.',
 	'centralauth-admin-reason' => 'Alasan:',
+	'centralauth-admin-reason-other' => 'Alasan lain/tambahan:',
 	'centralauth-admin-status' => 'Atur status akun global.',
 	'centralauth-admin-status-intro' => 'Anda dapat menggunakan formulir berikut untuk mengubah status akun global ini',
-	'centralauth-admin-status-locked' => 'Terkunci',
-	'centralauth-admin-status-hidden' => 'Tersembunyi',
+	'centralauth-admin-status-locked' => 'Terkunci:',
+	'centralauth-admin-status-locked-no' => 'Akun tidak diblokir',
+	'centralauth-admin-status-locked-yes' => 'Akun diblokir dari penyuntingan',
+	'centralauth-admin-status-hidden' => 'Tersembunyi:',
+	'centralauth-admin-status-hidden-no' => 'Akun tidak disembunyikan',
+	'centralauth-admin-status-hidden-list' => 'Akun disembunyikan dari daftar umum',
+	'centralauth-admin-status-hidden-oversight' => 'Akun disembunyikan sepenuhnya',
 	'centralauth-admin-status-submit' => 'Atur status',
 	'centralauth-admin-status-nonexistent' => 'Kesalahan: akun global "<nowiki>$1</nowiki>" tidak ditemukan.',
 	'centralauth-admin-setstatus-success' => 'Anda telah berhasil mengubah status akun global ini.',
+	'centralauth-admin-status-reasons' => '* Alasan kunci
+** akun vandalisme
+** akun spam
+* Alasan kunci-dan-sembunyikan
+** penyalahgunaan nama pengguna
+** informasi pribadi yang tidak pantas',
+	'centralauth-admin-logsnippet' => 'Perubahan akun global sebelumnya',
+	'centralauth-admin-suppressreason' => 'Dihapus secara global oleh $1 dengan alasan berikut: $2',
 	'globalusers' => 'Daftar pengguna global',
 	'centralauth-listusers-locked' => 'terkunci',
 	'centralauth-listusers-attached' => 'ada di wiki lokal',
@@ -9734,6 +9772,7 @@ Kata sandi untuk akun-akun lokal secara otomatis kembali ke kata sandi sebelum p
 	'centralauth-prefs-count-unattached' => 'Akun dengan nama Anda yang belum terkonfirmasi masih terdapat dalam $1 {{PLURAL:$1|proyek|proyek}}.',
 	'centralauth-prefs-detail-unattached' => 'Situs proyek ini belum dikonfirmasi sebagai bagian dari akun global.',
 	'centralauth-prefs-manage' => 'Kelola akun global Anda',
+	'centralauth-prefs-view' => 'Lihat info pengguna global',
 	'centralauth-renameuser-merged' => 'Pengguna $1 telah menjadi sistem akun global. Penggantian nama yang bersangkutan akan menyebabkan akun lokal tersebut terpisahkan dari akun globalnya.',
 	'centralauth-renameuser-reserved' => 'Pengguna $2 telah dicadangkan sebagai akun global.',
 	'centralauth-invalid-wiki' => 'DB wiki tidak ditemukan: $1',
@@ -9742,6 +9781,7 @@ Kata sandi untuk akun-akun lokal secara otomatis kembali ke kata sandi sebelum p
 	'centralauth-logout-progress' => 'Anda keluar log dari proyek-proyek {{MediaWiki:Centralauth-groupname}}:',
 	'centralauth-login-no-others' => 'Anda secara otomatis telah masuk log ke proyek-proyek lain dari {{int:Centralauth-groupname}}.',
 	'centralauth-logout-no-others' => 'Anda secara otomatis telah keluar log dari proyek-proyek lain dari {{int:Centralauth-groupname}}.',
+	'centralauth-hidden-blockreason' => 'disembunyikan secara global oleh $1 pada $2 dengan alasan berikut: $3',
 	'centralauth-log-name' => 'Log akun global',
 	'centralauth-log-header' => 'Ini adalah log operasi akun global: penghapusan, penguncian, dan pembukaan kunci.',
 	'centralauth-log-entry-delete' => 'akun global "$1" dihapuskan',
@@ -9753,6 +9793,7 @@ Kata sandi untuk akun-akun lokal secara otomatis kembali ke kata sandi sebelum p
 	'centralauth-log-entry-chgstatus' => 'perubahan status untuk akun global "$1": diatur $2; tidak diatur $3',
 	'centralauth-log-status-locked' => 'terkunci',
 	'centralauth-log-status-hidden' => 'tersembunyi',
+	'centralauth-log-status-oversighted' => 'tertinjau',
 	'centralauth-log-status-none' => '(tidak ada)',
 	'centralauth-rightslog-name' => 'Log hak global',
 	'centralauth-rightslog-entry-usergroups' => 'kelompok pengguna global $1 telah diubah dari $2 menjadi $3',
@@ -9764,6 +9805,7 @@ Kata sandi untuk akun-akun lokal secara otomatis kembali ke kata sandi sebelum p
 	'centralauth-rightslog-entry-setrename' => 'mengubah nama set wiki "$2" menjadi "$1"',
 	'centralauth-rightslog-entry-setnewtype' => 'mengubah tipe "$1" dari $2 menjadi $3',
 	'centralauth-rightslog-entry-setchange' => 'mengubah wiki-wiki dalam "$1": menambahkan: $2; menghapuskan: $3',
+	'centralauth-rightslog-entry-deleteset' => 'set wiki terhapus "$1"',
 	'centralauth-rightslog-set-optin' => 'bergabung',
 	'centralauth-rightslog-set-optout' => 'tidak bergabung',
 	'autologin' => 'Masuk log otomatis',
@@ -9802,13 +9844,22 @@ Suatu kelompok dapat dihapuskan dengan cara menghapuskan semua haknya.',
 	'centralauth-editgroup-editsets' => '([[Special:EditWikiSets|sunting]])',
 	'centralauth-globalgrouppermissions-knownwiki' => 'Wiki di mana mereka memiliki akun:',
 	'centralauth-globalgroupmembership-badknownwiki' => "Pengguna global '''$1''' tidak aktif di wiki yang Anda pilih ('' $2 ''). Anda mungkin memberikan hak ke pengguna yang salah!",
-	'centralauth-editset' => 'Menyunting set wiki',
+	'centralauth-editset' => 'Set wiki',
+	'centralauth-editset-legend-rw' => 'Sunting atau buat set wiki',
+	'centralauth-editset-legend-ro' => 'Daftar set wiki',
+	'centralauth-editset-intro-rw' => 'Set wiki berikut telah dibuat.
+Anda dapat melihat dan mengubahnya, atau membuat set baru.',
+	'centralauth-editset-intro-ro' => 'Di bawah ini adalah daftar set wiki yang sudah ada.',
+	'centralauth-editset-item-rw' => '[[Special:WikiSets/$2|$1]] ([[Special:WikiSets/delete/$2|hapus]])',
 	'centralauth-editset-new' => 'Membuat set baru',
 	'centralauth-editset-notfound' => 'Set wiki "$1" tidak ditemukan.',
 	'centralauth-editset-optin' => 'Bergabung (hanya wiki-wiki tercantum yang turut dalam set)',
 	'centralauth-editset-optout' => 'Tidak bergabung (wiki-wiki tercantum tidak turut dalam set)',
 	'centralauth-editset-legend-edit' => 'Menyunting set wiki "$1"',
+	'centralauth-editset-legend-view' => 'Set wiki "$1"',
 	'centralauth-editset-legend-new' => 'Membuat set wiki baru',
+	'centralauth-editset-legend-delete' => 'Menghapus set wiki "$1"',
+	'centralauth-editset-subtitle' => '< [[Special:WikiSets|Daftar set]]',
 	'centralauth-editset-name' => 'Nama:',
 	'centralauth-editset-type' => 'Tipe:',
 	'centralauth-editset-wikis' => 'Wiki-wiki:<br />(pisahkan dengan spasi)',
@@ -9823,8 +9874,12 @@ Suatu kelompok dapat dihapuskan dengan cara menghapuskan semua haknya.',
 	'centralauth-editset-usage' => 'Digunakan dalam kelompok:',
 	'centralauth-editset-badwikis' => '{{PLURAL:$2|Wiki|Wiki-wiki}} berikut tidak ditemukan: $1.',
 	'centralauth-editset-success' => 'Set wiki berhasil diubah.',
+	'centralauth-editset-success-delete' => 'Set wiki berhasil dihapus.',
 	'centralauth-editset-return' => 'Kembali ke tampilan utama',
 	'right-globalgroupmembership' => 'Sunting keanggotaan kelompok global',
+	'right-centralauth-unmerge' => 'Jangan gabung akun global',
+	'right-centralauth-lock' => 'Kunci atau sembunyikan akun global',
+	'right-centralauth-oversight' => 'Hapus akun global',
 	'right-centralauth-merge' => 'Menggabungkan akun mereka',
 	'right-globalgrouppermissions' => 'Pengaturan kelompok global',
 );
@@ -16758,7 +16813,7 @@ Se a conta global também for sua, pode associar-lhe esta conta introduzindo a p
 	'centralauth-admin-yes' => 'sim',
 	'centralauth-admin-no' => 'não',
 	'centralauth-admin-hidden-list' => 'de listas públicas',
-	'centralauth-admin-hidden-oversight' => 'monitorizada',
+	'centralauth-admin-hidden-oversight' => 'suprimido',
 	'centralauth-admin-list-legend-ro' => 'Lista de contas locais',
 	'centralauth-admin-list-legend-rw' => 'Anular fusão das contas locais',
 	'centralauth-admin-unattached' => 'não acopladas',

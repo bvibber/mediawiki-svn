@@ -23,16 +23,23 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SMYahooMapsFormInput extends SMFormInput {
 	
 	/**
-	 * @see MapsMapFeature::setMapSettings()
+	 * @see SMFormInput::getEarthZoom
+	 * 
+	 * @since 0.6.5
 	 */
-	protected function setMapSettings() {
-		global $egMapsYahooMapsPrefix;
-		
-		$this->elementNamePrefix = $egMapsYahooMapsPrefix;
-		$this->showAddresFunction = 'showYAddress';
-
-		$this->earthZoom = 17;
-	}
+	protected function getEarthZoom() {
+		return 17;
+	}	
+	
+	/**
+	 * @see SMFormInput::getShowAddressFunction
+	 * 
+	 * @since 0.6.5
+	 */	
+	protected function getShowAddressFunction() {
+		global $egYahooMapsKey;
+		return $egYahooMapsKey == '' ? false : 'showYAddress';	
+	}	
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
@@ -41,21 +48,14 @@ class SMYahooMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
+		$this->service->addDependency( Html::linkedScript( "$smgScriptPath/Services/YahooMaps/SM_YahooMapsForms{$egMapsJsExt}?$smgStyleVersion" ) );
 		$this->service->addDependencies( $wgOut );
-		
-		if ( empty( $smgYahooFormsOnThisPage ) ) {
-			$smgYahooFormsOnThisPage = 0;
-			
-			$wgOut->addScriptFile( "$smgScriptPath/Services/YahooMaps/SM_YahooMapsFunctions{$egMapsJsExt}?$smgStyleVersion" );
-		}
 	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML
-	 * 
-	 * TODO: fix map name
 	 */
-	protected function addSpecificMapHTML() {
+	public function addSpecificMapHTML() {
 		global $wgOut;
 		
 		$mapName = $this->service->getMapId( false );
@@ -92,12 +92,4 @@ EOT
 
 	}
 	
-	/**
-	 * @see SMFormInput::manageGeocoding()
-	 */
-	protected function manageGeocoding() {
-		global $egYahooMapsKey;
-		return $egYahooMapsKey != '';
-	}
-
 }

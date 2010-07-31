@@ -522,9 +522,11 @@ $messages['mn'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'vector-simplesearch-search' => 'शोधा',
 	'vector-simplesearch-containing' => '.......हे असलेले',
 );
 
@@ -683,6 +685,7 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'vector-simplesearch-search' => 'Глядати',
+	'vector-simplesearch-containing' => 'обсягуючій...',
 );
 
 /** Yakut (Саха тыла)

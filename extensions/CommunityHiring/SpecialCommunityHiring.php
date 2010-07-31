@@ -183,6 +183,7 @@ class SpecialCommunityHiring extends SpecialPage {
 			// Quick research question
 			'research' => array(
 				'type' => 'textarea',
+				'rows' => '5',
 				'label-message' => 'communityhiring-research',
 				'vertical-label' => 1,
 				'validation-callback' => array( $this, 'validateRequired' ),

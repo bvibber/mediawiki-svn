@@ -33,6 +33,6 @@ $messages['en'] = array(
 	'communityhiring-relocation-ok' => 'Are you willing to relocate to San Francisco, California?',
 	'communityhiring-research' => "In one or two sentences, describe the process in which users are approved to become administrators on English Wikipedia. 
 
-	(You are not expected to know the answer to this question already. You can find the answer [[w:Wikipedia:RFA|here]] but feel free to consult other resources. We're not looking for a detailed description of the process, but a sentence that captures the essence of the process and why it works.)",
+	(You are not expected to know the answer to this question already. You can find the answer [[w:Wikipedia:RFA|here]] but feel free to consult other resources. We're not looking for a detailed description of the process, but a sentence that captures the essence of the process and how it works.)",
 	'communityhiring-field-required' => 'This field is required',
 );

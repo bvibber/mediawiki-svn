@@ -167,6 +167,14 @@ $messages['cs'] = array(
 	'stablepages-config' => 'Konfigurace',
 );
 
+/** Danish (Dansk)
+ * @author Froztbyte
+ */
+$messages['da'] = array(
+	'stablepages-none' => 'Der er ingen sider i denne liste.',
+	'stablepages-config' => 'Konfiguration',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author MF-Warburg
@@ -185,15 +193,16 @@ Bearbeitungen von anderen Bentzern werden standardmäßig solange nicht angezeig
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Mirzali
  * @author Xoser
  */
 $messages['diq'] = array(
 	'stablepages' => 'Pelanê ke vurnayise testiqi ser hewitiyeno',
 	'stablepages-list' => 'Cor de yew liste este ke ey de teyna pelan ke teyna belli karberan eşkeni maqalayen bivurne u kontrol gani niya.
 Vurnayişan otomatik qeyd nibena eka yew karberanê binan meqale vurne heta yew gorevli kontral bike.',
-	'stablepages-none' => 'na liste de pel çino',
-	'stablepages-config' => 'vıraştış',
-	'stablepages-indef' => 'teyna expireya ebedi',
+	'stablepages-none' => 'Ena liste de qet peli çıniyê.',
+	'stablepages-config' => 'Vıraştış',
+	'stablepages-indef' => 'Tenya vêrdışo ebedi',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -306,7 +315,8 @@ Aussi, les modifications faites par les autres utilisateurs ne sont pas affiché
  */
 $messages['frp'] = array(
 	'stablepages' => 'Pâges stâbles.',
-	'stablepages-list' => 'Vê-que una lista de les pâges configurâs a la man por que lo contegnu de lor vèrsion publeyê seye montrâ per dèfôt por los liésors.',
+	'stablepages-list' => 'Vê-que una lista de les pâges que sont rètrentes de façon que solament quârques utilisators la pôvont changiér sen qu’una rèvision seye nècèssèra.
+Los changements fêts per los ôtros utilisators sont pas montrâs per dèfôt ux liésors tant qu’un utilisator ôtorisâ los èye revus.',
 	'stablepages-none' => 'Y at gins de pâge dens ceta lista.',
 	'stablepages-config' => 'Configuracion',
 );
@@ -415,6 +425,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Iwan Novirion
  * @author Rex
@@ -424,6 +435,7 @@ $messages['id'] = array(
 	'stablepages-list' => 'Di bawah ini adalah daftar halaman yang dibatasi sehingga hanya pengguna tertentu dapat melakukan penyuntingan yang tidak membutuhkan peninjauan. Suntingan yang dilakukan pengguna lain tidak akan ditampilkan ke pembaca secara langsung sampai seorang pengguna yang diberi kuasa meninjaunya.',
 	'stablepages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'stablepages-config' => 'Konfigurasi',
+	'stablepages-indef' => 'Hanya untuk kadaluwarsa tak terbatas',
 );
 
 /** Italian (Italiano)
@@ -839,6 +851,7 @@ $messages['uk'] = array(
 	'stablepages-list' => 'Нижче наведено список сторінок, на які тільки певні користувачі можуть вносити зміни, що не потребують рецензування. Зміни, внесені іншими користувачами, за умовчанням не відображаються читачам, поки уповноважений користувач не перевірить їх.',
 	'stablepages-none' => 'У цьому списку немає сторінок.',
 	'stablepages-config' => 'Налаштування',
+	'stablepages-indef' => 'Тільки з невизначеним строком',
 );
 
 /** Vèneto (Vèneto)

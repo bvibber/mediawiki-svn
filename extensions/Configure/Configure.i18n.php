@@ -355,10 +355,11 @@ $messages['niu'] = array(
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
+ * @author Alamnirvana
  * @author Ezagren
  */
 $messages['bjn'] = array(
-	'configure-desc-group' => 'Bubuhan',
+	'configure-desc-group' => 'Galambang',
 	'configure-desc-val' => 'Nilai',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-section-pages' => 'Tungkaran',
@@ -1255,6 +1256,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -1301,6 +1303,7 @@ $messages['br'] = array(
 	'configure-no-transwiki' => "N'oc'h ket aotreet da gemmañ reoliadurioù wikioù all",
 	'configure-old' => 'Stummoù kozh',
 	'configure-old-versions' => "Roll stummoù kozh ar c'hefluniadur :",
+	'configure-old-not-available' => "Ar stumm kent eus ar c'hefluniadur bet goulennet ganeoc'h, $1, a zo dizimplijadus",
 	'configure-old-changes' => 'kemmoù',
 	'configure-old-summary' => '$1 dre $2 $4 $3',
 	'configure-saved' => "Enrollet eo bet ar c'hefluniadur",
@@ -6301,7 +6304,7 @@ $messages['mk'] = array(
 	'configure-ext-schemachange' => "'''Предупредување:''' ова дополнување бара [http://www.mediawiki.org/wiki/Manual:Update.php поднова на базата на податоци] за да работи како што треба!",
 	'configure-ext-settings' => 'Нагодувања',
 	'configure-ext-settings-dep-errors' => 'Ова дополнување не може да се овозможи бидејќи {{PLURAL:$1|следново прилагодување има|следниве прилагодувања имаат}} неприфатлива вредност:',
-	'configure-ext-settings-dep-error' => '$1: потребна вредност: $2, моментална вредност: $3',
+	'configure-ext-settings-dep-error' => '$1: потребна вредност: $2, тековна вредност: $3',
 	'configure-ext-use-extension' => 'Користи го овој додаток',
 	'configure-ext-use' => 'Користи',
 	'configure-form-reason' => 'Причина:',

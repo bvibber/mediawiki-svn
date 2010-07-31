@@ -622,6 +622,15 @@ $messages['ru'] = array(
 	'wikieditor-toc-hide' => 'Скрыть оглавление',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikieditor-toc-preference' => 'Запнути навіґовательный обсяг',
+	'wikieditor-toc-show' => 'Вказати обсяг',
+	'wikieditor-toc-hide' => 'Сховати обсяг',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

@@ -509,7 +509,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'contributionseditcount' => 'همدغه کارونکي $1 سمادونې لري.',
+	'contributionseditcount' => 'دې کارن {{PLURAL:$1|يو سمون ترسره کړی|$1 سمونونه ترسره کړي}}.',
 );
 
 /** Portuguese (Português)

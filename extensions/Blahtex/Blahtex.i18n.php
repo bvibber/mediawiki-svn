@@ -1136,14 +1136,14 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'math_noblahtex' => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1.',
-	'math_AmbiguousInfix' => 'La posicion de « $1 » est pas cllâra (apondre des balises adicionèles « { ... } » pôt la rendre ples cllâra).',
+	'math_AmbiguousInfix' => 'La posicion de « $1 » est pas cllâra (apondre des balises de ples « { ... } » la pôt rendre ples cllâra).',
 	'math_CannotChangeDirectory' => 'Pôt pas changiér de dossiér de travâly.',
 	'math_CannotCreateTexFile' => 'Pôt pas crèar un fichiér TeX.',
 	'math_CannotRunDvipng' => 'Pôt pas ègzécutar dvipng.',
 	'math_CannotRunLatex' => 'Pôt pas ègzécutar LaTeX.',
 	'math_CannotWritePngDirectory' => 'Pôt pas ècrire dens lo dossiér des fichiérs PNG.',
 	'math_CannotWriteTexFile' => 'Pôt pas ècrire dens un fichiér TeX.',
-	'math_CasesRowTooBig' => 'Pôt y avêr ren que doves entrâs dens châque renchiê d’un bloco « câses ».',
+	'math_CasesRowTooBig' => 'Y pôt avêr ren que doves entrâs dens châque renchiê d’un bloco « câses ».',
 	'math_DoubleSubscript' => 'Doux segnos sont rapondus a la méma bâsa, yon solèt est pèrmês.',
 	'math_DoubleSuperscript' => 'Doux èxposents sont rapondus a la méma bâsa, yon solèt est pèrmês.',
 	'math_IllegalCharacter' => 'Caractèro dèfendu dens la balyê buchiê',
@@ -1156,7 +1156,7 @@ $messages['frp'] = array(
 	'math_IllegalDelimiter' => 'Dèlimitior dèfendu aprés « $1 »',
 	'math_IllegalFinalBackslash' => 'Lo caractèro « \\ » pôt pas aparêtre a la fin de la buchiê.',
 	'math_IllegalNestedFontEncodings' => 'Les comandes d’encodâjo de caractèros pôvont pas étre embrecâs.',
-	'math_IllegalRedefinition' => 'La comanda « $1 » est ja dèfenia, vos pouede pas la tornar dèfenir.',
+	'math_IllegalRedefinition' => 'La comanda « $1 » est ja dèfenia, vos la pouede pas tornar dèfenir.',
 	'math_InvalidColour' => 'La color « $1 » est envalida.',
 	'math_InvalidUtf8Input' => 'La chêna de caractèros buchiê est pas u format UTF-8.',
 	'math_LatexFontNotSpecified' => 'Niona police de caractèros LaTeX at étâ spècefiâ por « $1 ».',
@@ -1178,7 +1178,7 @@ dêt comenciér per « \\ » et pués contegnir ren que des caractèros alfabèt
 	'math_NotEnoughArguments' => 'Pas prod d’arguments buchiês por « $1 »',
 	'math_PngIncompatibleCharacter' => 'Pôt pas g·ènèrar lo fichiér PNG que contint lo caractèro $1.',
 	'math_ReservedCommand' => 'La comanda « $1 » est resèrvâ a blahtex.',
-	'math_SubstackRowTooBig' => 'Pôt y avêr ren que yona solèta entrâ dens châque renchiê d’un bloco « sot-pila ».',
+	'math_SubstackRowTooBig' => 'Y pôt avêr ren que yona solèta entrâ dens châque renchiê d’un bloco « sot-pila ».',
 	'math_TooManyMathmlNodes' => 'Y at trop de nuods dens l’âbro MathML.',
 	'math_TooManyTokens' => 'La balyê buchiê est trop longe.',
 	'math_UnavailableSymbolFontCombination' => 'Lo simbolo « $1 » est pas disponiblo por la police de caractèros « $2 ».',
@@ -1739,6 +1739,7 @@ Proba usar le commando "$3{...}".',
  * @author Kandar
  */
 $messages['id'] = array(
+	'math_CannotCreateTexFile' => 'Tidak dapat membuat berkas tex',
 	'math_CannotRunDvipng' => 'Tidak bisa menjalankan dvipng',
 	'math_CannotRunLatex' => 'Tidak dapat menjalankan latex',
 	'math_IllegalCharacter' => 'Karakter masukan tidak sah',

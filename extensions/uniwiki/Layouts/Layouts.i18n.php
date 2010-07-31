@@ -784,6 +784,14 @@ $messages['ru'] = array(
 	'layouts_tagline' => "Эта страница была создана с помощью макета '''$1'''.",
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'layouts_title' => 'Створити сторінку',
+	'layouts_continue' => 'Продовжовати',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */

@@ -1865,6 +1865,19 @@ $messages['ru'] = array(
 	'right-feedback' => 'использование формы отзывов для оценки страниц',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'ratinghistory-period' => 'Період часу:',
+	'ratinghistory-month' => 'послїднїй місяць',
+	'ratinghistory-3months' => 'послїднї 3 місяцї',
+	'ratinghistory-year' => 'послїднїй рік',
+	'ratinghistory-3years' => 'послїднї 3 рокы',
+	'ratinghistory-ave' => 'Середня годнота: $1',
+	'ratinghistory-purge' => 'очістити кеш',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

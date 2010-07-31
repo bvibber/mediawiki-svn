@@ -1083,6 +1083,7 @@ Tekst wótrězka: <pre>$1</pre>',
 	'pt-movepage-logreason' => 'Źěl pśełožujobnego boka $1.',
 	'pt-movepage-started' => 'Zakładny bok jo něnto pśesunjony.
 Pšosym pśekontrolěruj pśełožowański protokol boka za zmólkami a pśewjeźeńsku powěźeńku.',
+	'pt-locked-page' => 'Toś ten bok jo se zastajił, dokulaž pśełožujobny bok se rowno pśesuwa.',
 );
 
 /** Ewe (Eʋegbe)
@@ -2519,9 +2520,14 @@ Text vum Abschnitt: <pre>$1</pre>',
 	'pt-log-mark' => '{{GENDER:$2|huet}} d\'Versioun $3 vun der Säit "[[:$1]]" fir z\'iwwersetze markéiert',
 	'pt-log-unmark' => '{{GENDER:$2|huet}} d\'Säit "[[:$1]]" vun der Iwwersetzung ewechgeholl',
 	'pt-movepage-title' => 'Déi iwwersetzbar Säit $1 réckelen',
+	'pt-movepage-block-base-exists' => "D'Basiszilsäit [[:$1]] gëtt et schonn.",
+	'pt-movepage-block-base-invalid' => "D'Basiszilsäit huet kee valabelen Titel.",
+	'pt-movepage-block-tp-exists' => "D'Iwwersetzungszilsäit [[:$2]] gëtt et schonn.",
 	'pt-movepage-list-pages' => 'Lëscht vun de Säite fir ze réckelen',
 	'pt-movepage-list-translation' => 'Iwwersetzungssäiten',
+	'pt-movepage-list-other' => 'Aner Ënnersäiten',
 	'pt-movepage-list-count' => 'Am ganzen $1 {{PLURAL:$1|Säit|Säite}} fir ze réckelen.',
+	'pt-movepage-legend' => 'Iwwersetzbar Säit réckelen',
 	'pt-movepage-current' => 'Aktuellen Numm:',
 	'pt-movepage-new' => 'Neien Numm:',
 	'pt-movepage-reason' => 'Grond:',
@@ -2530,6 +2536,8 @@ Text vum Abschnitt: <pre>$1</pre>',
 	'pt-movepage-action-perform' => 'Réckelen',
 	'pt-movepage-action-other' => 'Zil änneren',
 	'pt-movepage-logreason' => 'Deel vun der iwwersetzbarer Säit $1.',
+	'pt-movepage-started' => "D'Basissäit ass geréckelt.
+Kuckt w.e.g. d'Logbuch vun den Iwwersetzunge vu Säiten no fir Feelermeldungen respektiv d'Meldung datt alles ok ass.",
 	'pt-locked-page' => 'Dës Säit ass gespaart wëll déi iwwersetzbar Säit elo geréckelt gëtt.',
 );
 
@@ -3170,6 +3178,7 @@ $messages['ps'] = array(
 	'tpt-diff-old' => 'پخوانی متن',
 	'tpt-diff-new' => 'نوی متن',
 	'tpt-sections-template' => 'د ژباړې د مخ کينډۍ',
+	'tpt-nosuchpage' => 'د $1 په نوم کوم مخ نشته',
 	'tpt-rev-latest' => 'تازه بڼه',
 	'tpt-translate-this' => 'همدا مخ ژباړل',
 	'translate-tag-translate-link-desc' => 'همدا مخ ژباړل',
@@ -3575,7 +3584,23 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'pagetranslation' => 'Переклад сторінок',
+	'right-pagetranslation' => 'Означованя верзій сторінок про переклад',
+	'tpt-desc' => 'Росшыріня про перекладаня сторінок з обсягом',
 	'tpt-section' => 'Блок перекладу $1',
+	'tpt-section-new' => 'Новый блок перекладу.
+Назва: $1',
+	'tpt-section-deleted' => 'Блок перекладу $1',
+	'tpt-template' => 'Шаблона сторінкы',
+	'tpt-templatediff' => 'Шаблона сторінкы зміненый.',
+	'tpt-diff-old' => 'Попереднїй текст',
+	'tpt-diff-new' => 'Новый текст',
+	'tpt-submit' => 'Означіти тоту верзію про переклад',
+	'tpt-sections-oldnew' => 'Новы і екзістуючі сторінкы перекладу',
+	'tpt-sections-deleted' => 'Змазаны части сторінок',
+	'tpt-sections-template' => 'Шаблона сторінкы перекладу',
+	'tpt-nosuchpage' => 'Сторінка $1 не екзістує',
+	'tpt-oldrevision' => '$2 не є найновша верзія сторінкы [[$1]].
+Про переклад є можне означіти лем найновшы сторінкы.',
 	'tpt-rev-latest' => 'остатня верзія',
 	'tpt-translate-this' => 'перекласти тоту сторінку',
 	'translate-tag-translate-link-desc' => 'Перекласти тоту сторінку',

@@ -291,7 +291,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'whosonline' => 'Qui es in linea',
-	'whosonline-desc' => 'Monstra [[Special:WhosOnline|un lista]] de usatores identificate e anonyme actualmente in linea',
+	'whosonline-desc' => 'Monstra [[Special:WhosOnline|un lista]] de usatores authenticate e anonyme actualmente in linea',
 );
 
 /** Indonesian (Bahasa Indonesia)

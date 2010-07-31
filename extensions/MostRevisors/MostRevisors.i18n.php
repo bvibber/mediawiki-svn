@@ -759,6 +759,13 @@ $messages['ru'] = array(
 	'mostrevisors-viewcontributors' => 'Показать основных редакторов',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'mostrevisors-submit' => 'Перейти',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
