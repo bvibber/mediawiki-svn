@@ -471,6 +471,10 @@ EOT
 	font-size: 10pt;
 }
 
+.center .ogg-player-options ul {
+	margin: 0.3em 0px 0px 1.5em;
+}
+
 EOT
 ) );
 	}
