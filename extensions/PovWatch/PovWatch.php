@@ -1,5 +1,5 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ):
+if ( !defined( 'MEDIAWIKI' ) ) {
 ?>
 <html>
 <head><title>PovWatch Version 1.0</title></head>
@@ -16,7 +16,7 @@ require_once( "$IP/extensions/PovWatch/PovWatch.php" );
 </html>
 <?php
 	exit( 1 );
-endif;
+}
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
