@@ -29,6 +29,15 @@
  * 		'script' => 'resources/foo/foo.js',
  * 		// Optionally you can have a style file as well
  * 		'style' => 'resources/foo/foo.css',
+ *		// List of styles to include based on the skin
+ *		'themes' => array(
+ *			'default' => 'resources/foo/themes/default/foo.css',
+ *			'vector' => 'resources/foo/themes/vector.foo.css',
+ *		),
+ *		// List of scripts to include based on the language
+ *		'locales' => array(
+ *			'en-gb' => 'resources/foo/locales/en-gb.js',
+ *		),
  * 		// Only needed if you are doing something fancy with your loader, otherwise one will be generated for you
  * 		'loader' => 'resources/foo/loader.js',
  * 		// If you need any localized messages brought into the JavaScript environment, list the keys here
@@ -100,8 +109,10 @@ class ResourceLoader {
 	 * 	array(
 	 * 		'script' => [string: path to file],
 	 * 		'style' => [string: path to file, optional],
-	 * 		'loader' => [string: path to file, optional],
+	 * 		'themes' => [array: paths to styles to include, keyed by skin name, optional],
+	 * 		'locales' => [array: paths to scripts to include, keyed by locale name, optional],
 	 * 		'messages' => [array: message keys, optional],
+	 * 		'loader' => [string: path to file, optional],
 	 * 		'raw' => [boolean: include directly without any loading support, optional],
 	 * 		'debug' => [boolean: include in debug mode only, optional],
 	 * 	)
@@ -129,6 +140,8 @@ class ResourceLoader {
 		$options = array_merge( array(
 			'script' => null,
 			'style' => null,
+			'themes' => array(),
+			'locales' => array(),
 			'messages' => array(),
 			'loader' => null,
 			'raw' => false,
@@ -204,24 +217,8 @@ class ResourceLoader {
 				echo "\n";
 			}
 		}
-		// Special meta-information for the 'mw' module
-		if ( in_array( 'mw', $modules ) ) {
-			// Collect all loaders
-			$loaders = array();
-			foreach ( self::$modules as $name => $options ) {
-				if ( $options['loader'] !== null ) {
-					$loaders[] = $options['loader'];
-				}
-			}
-			// Include each loader once
-			foreach ( array_unique( $loaders ) as $loader ) {
-				readfile( $loader );
-				echo "\n";
-			}
-			// Configure debug mode on server
-			if ( $parameters['debug'] ) {
-				echo "mw.debug = true;\n";
-			}
+		// Special meta-information for the 'mediawiki' module
+		if ( in_array( 'mediawiki', $modules ) ) {
 			/*
 			 * Skin::makeGlobalVariablesScript needs to be modified so that we still output the globals for now, but also
 			 * put them into the initial payload like this:
@@ -231,6 +228,24 @@ class ResourceLoader {
 			 * 
 			 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
 			 */
+			echo "mw.config.set( " . json_encode( $parameters ) . " );\n";
+			// Collect all loaders
+			$loaders = array();
+			$registers = array();
+			foreach ( self::$modules as $name => $options ) {
+				if ( $options['loader'] !== null ) {
+					$loaders[] = $options['loader'];
+				} else {
+					$registers[] = $name;
+				}
+			}
+			// Include loaders
+			foreach ( array_unique( $loaders ) as $loader ) {
+				readfile( $loader );
+				echo "\n";
+			}
+			// Register modules without loaders
+			echo "mw.loader.register( " . json_encode( array_unique( $registers ) ) . " );\n";
 		}
 		// Output non-raw modules
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
@@ -238,11 +253,22 @@ class ResourceLoader {
 			if ( !self::$modules[$module]['raw'] ) {
 				// Script
 				$script = file_get_contents( self::$modules[$module]['script'] );
+				// Locale
+				if ( isset( self::$modules[$module]['locales'][$parameters['lang']] ) ) {
+					$script .= file_get_contents( self::$modules[$module]['locales'][$parameters['lang']] );
+				}
+				// Debug stripping - scary and probably a bad idea
 				if ( !$parameters['debug'] ) {
 					$script = self::filter( 'strip-debug', $script );
 				}
 				// Style
 				$style = self::$modules[$module]['style'] ? file_get_contents( self::$modules[$module]['style'] ) : '';
+				// Theme
+				if ( isset( self::$modules[$module]['themes'][$parameters['skin']] ) ) {
+					$style .= file_get_contents( self::$modules[$module]['themes'][$parameters['skin']] );
+				} else if ( isset( self::$modules[$module]['themes']['default'] ) ) {
+					$style .= file_get_contents( self::$modules[$module]['themes']['default'] );
+				}
 				if ( $style !== '' ) {
 					if ( $parameters['dir'] == 'rtl' ) {
 						$style = self::filter( 'flip-css', $style );
