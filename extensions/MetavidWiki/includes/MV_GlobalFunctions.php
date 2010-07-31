@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Global functions and constants for Metavid MediaWiki.
  *
