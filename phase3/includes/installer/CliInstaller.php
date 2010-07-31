@@ -24,9 +24,8 @@ class CliInstaller extends Installer {
 		'dbpath' => 'wgSQLiteDataDir',
 	);
 
-
 	/** Constructor */
-	function __construct( $siteName, $admin = null, $option = array()) {
+	function __construct( $siteName, $admin = null, $option = array() ) {
 		parent::__construct();
 
 		foreach ( $this->optionMap as $opt => $global ) {
@@ -47,9 +46,6 @@ class CliInstaller extends Installer {
 		$this->setVar( 'wgSitename', $siteName );
 		if ( $admin ) {
 			$this->setVar( '_AdminName', $admin );
-		} else {
-			$this->setVar( '_AdminName',
-				wfMsgForContent( 'config-admin-default-username' ) );
 		}
 
 		if ( !isset( $option['installdbuser'] ) ) {
@@ -67,34 +63,39 @@ class CliInstaller extends Installer {
 	/**
 	 * Main entry point.
 	 */
-	function execute( ) {
-		foreach( $this->getInstallSteps() as $stepObj ) {
-			$step = is_array( $stepObj ) ? $stepObj['name'] : $stepObj;
-			$this->showMessage( wfMsg( "config-install-$step") .
-					wfMsg( 'ellipsis' ) . wfMsg( 'word-separator' ) );
-			$func = 'install' . ucfirst( $step );
-			$status = $this->{$func}();
-			$warnings = $status->getWarningsArray();
-			if ( !$status->isOk() ) {
-				$this->showStatusMessage( $status );
-				echo "\n";
-				exit;
-			} elseif ( count($warnings) !== 0 ) {
-				foreach ( $status->getWikiTextArray( $warnings ) as $w ) {
-					$this->showMessage( $w . wfMsg( 'ellipsis') .
-						wfMsg( 'word-separator' ) );
-				}
-			}
-			$this->showMessage( wfMsg( 'config-install-step-done' ) ."\n");
-		}
+	public function execute() {
+		$this->performInstallation(
+			array( $this, 'startStage'),
+			array( $this, 'endStage' )
+		);
 	}
 
-	function showMessage( $msg /*, ... */ ) {
+	public function startStage( $step ) {
+		$this->showMessage( wfMsg( "config-install-$step") .
+			wfMsg( 'ellipsis' ) . wfMsg( 'word-separator' ) );
+	}
+
+	public function endStage( $step, $status ) {
+		$warnings = $status->getWarningsArray();
+		if ( !$status->isOk() ) {
+			$this->showStatusMessage( $status );
+			echo "\n";
+			exit;
+		} elseif ( count($warnings) !== 0 ) {
+			foreach ( $status->getWikiTextArray( $warnings ) as $w ) {
+				$this->showMessage( $w . wfMsg( 'ellipsis') .
+					wfMsg( 'word-separator' ) );
+			}
+		}
+		$this->showMessage( wfMsg( 'config-install-step-done' ) ."\n");
+	}
+
+	public function showMessage( $msg /*, ... */ ) {
 		echo html_entity_decode( strip_tags( $msg ), ENT_QUOTES );
 		flush();
 	}
 
-	function showStatusMessage( $status ) {
+	public function showStatusMessage( $status ) {
 		$this->showMessage( $status->getWikiText() );
 	}
 

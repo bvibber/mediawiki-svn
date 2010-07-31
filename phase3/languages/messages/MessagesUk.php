@@ -416,7 +416,7 @@ $messages = array(
 'vector-namespace-talk'          => 'Обговорення',
 'vector-namespace-template'      => 'Шаблон',
 'vector-namespace-user'          => 'Сторінка користувача',
-'vector-simplesearch-preference' => 'Увімкнути розширені пошукові підсказки (лише для оформлення "Векторне")',
+'vector-simplesearch-preference' => 'Увімкнути розширені пошукові підказки (лише для оформлення "Векторне")',
 'vector-view-create'             => 'Створити',
 'vector-view-edit'               => 'Редагувати',
 'vector-view-history'            => 'Переглянути історію',
@@ -1356,7 +1356,6 @@ $1",
 'prefs-advancedrendering'       => 'Розширені налаштування',
 'prefs-advancedsearchoptions'   => 'Розширені налаштування',
 'prefs-advancedwatchlist'       => 'Розширені налаштування',
-'prefs-display'                 => 'Налаштування показу',
 'prefs-diffs'                   => 'Різниці версій',
 
 # User rights

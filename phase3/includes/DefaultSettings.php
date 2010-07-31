@@ -1547,7 +1547,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '297';
+$wgStyleVersion = '298';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -2715,6 +2715,14 @@ $wgUseCommaCount = false;
  */
 $wgHitcounterUpdateFreq = 1;
 
+/**
+ * How many days user must be idle before he is considered inactive. Will affect
+ * the number shown on Special:Statistics and Special:ActiveUsers special page.
+ * You might want to leave this as the default value, to provide comparable
+ * numbers between different wikis.
+ */
+$wgActiveUserDays = 30;
+
 /** @} */ # End of statistics }
 
 /************************************************************************//**
@@ -2753,6 +2761,7 @@ $wgReservedUsernames = array(
 	'Template namespace initialisation script', // Used in 1.2->1.3 upgrade
 	'msg:double-redirect-fixer', // Automatic double redirect fix
 	'msg:usermessage-editor', // Default user for leaving user messages
+	'msg:proxyblocker', // For Special:Blockme
 );
 
 /**

@@ -1,21 +1,22 @@
 <?php
 
 /**
- * Base installer class
- * Handles everything that is independent of user interface
+ * Base installer class.
+ * Handles everything that is independent of user interface.
  */
 abstract class Installer {
-	var $settings, $output;
+	public $settings;
+	public $output;
 
 	/**
-	 * MediaWiki configuration globals that will eventually be passed through 
-	 * to LocalSettings.php. The names only are given here, the defaults 
+	 * MediaWiki configuration globals that will eventually be passed through
+	 * to LocalSettings.php. The names only are given here, the defaults
 	 * typically come from DefaultSettings.php.
 	 */
 	protected $defaultVarNames = array(
 		'wgSitename',
 		'wgPasswordSender',
-		'wgLanguageCode', 
+		'wgLanguageCode',
 		'wgRightsIcon',
 		'wgRightsText',
 		'wgRightsUrl',
@@ -41,8 +42,8 @@ abstract class Installer {
 	);
 
 	/**
-	 * Variables that are stored alongside globals, and are used for any 
-	 * configuration of the installation process aside from the MediaWiki 
+	 * Variables that are stored alongside globals, and are used for any
+	 * configuration of the installation process aside from the MediaWiki
 	 * configuration. Map of names to defaults.
 	 */
 	protected $internalDefaults = array(
@@ -77,7 +78,7 @@ abstract class Installer {
 	 * Known database types. These correspond to the class names <type>Installer,
 	 * and are also MediaWiki database types valid for $wgDBtype.
 	 *
-	 * To add a new type, create a <type>Installer class and a Database<type> 
+	 * To add a new type, create a <type>Installer class and a Database<type>
 	 * class, and add a config-type-<type> message to MessagesEn.php.
 	 */
 	private $dbTypes = array(
@@ -88,7 +89,7 @@ abstract class Installer {
 	);
 
 	/**
-	 * Minimum memory size in MB
+	 * Minimum memory size in MB.
 	 */
 	private $minMemorySize = 50;
 
@@ -98,8 +99,8 @@ abstract class Installer {
 	private $dbInstallers = array();
 
 	/**
-	 * A list of environment check methods called by doEnvironmentChecks(). 
-	 * These may output warnings using showMessage(), and/or abort the 
+	 * A list of environment check methods called by doEnvironmentChecks().
+	 * These may output warnings using showMessage(), and/or abort the
 	 * installation process by returning false.
 	 */
 	protected $envChecks = array(
@@ -136,7 +137,7 @@ abstract class Installer {
 	);
 
 	/**
-	 * Known object cache types and the functions used to test for their existence
+	 * Known object cache types and the functions used to test for their existence.
 	 */
 	protected $objectCaches = array(
 		'xcache' => 'xcache_get',
@@ -146,15 +147,15 @@ abstract class Installer {
 	);
 
 	/**
-	 * User rights profiles
+	 * User rights profiles.
 	 */
-	var $rightsProfiles = array(
+	public $rightsProfiles = array(
 		'wiki' => array(),
 		'no-anon' => array(
 			'*' => array( 'edit' => false )
 		),
 		'fishbowl' => array(
-			'*' => array( 
+			'*' => array(
 				'createaccount' => false,
 				'edit' => false,
 			),
@@ -169,9 +170,9 @@ abstract class Installer {
 	);
 
 	/**
-	 * License types
+	 * License types.
 	 */
-	var $licenses = array(
+	public $licenses = array(
 		'none' => array(
 			'url' => '',
 			'icon' => '',
@@ -199,7 +200,7 @@ abstract class Installer {
 		),
 		'cc-choose' => array(
 			// details will be filled in by the selector
-			'url' => '', 
+			'url' => '',
 			'icon' => '',
 			'text' => '',
 		),
@@ -212,7 +213,7 @@ abstract class Installer {
 	/**
 	 * Constructor, always call this from child classes
 	 */
-	function __construct() {
+	public function __construct() {
 		// Disable the i18n cache and LoadBalancer
 		Language::getLocalisationCache()->disableBackend();
 		LBFactory::disableBackend();
@@ -257,25 +258,25 @@ abstract class Installer {
 	/**
 	 * UI interface for displaying a short message
 	 * The parameters are like parameters to wfMsg().
-	 * The messages will be in wikitext format, which will be converted to an 
+	 * The messages will be in wikitext format, which will be converted to an
 	 * output format such as HTML or text before being sent to the user.
 	 */
-	abstract function showMessage( $msg /*, ... */ );
+	public abstract function showMessage( $msg /*, ... */ );
 
-	abstract function showStatusMessage( $status );
+	public abstract function showStatusMessage( $status );
 
 	/**
-	 * Get a list of known DB types
+	 * Get a list of known DB types.
 	 */
-	function getDBTypes() {
+	public function getDBTypes() {
 		return $this->dbTypes;
 	}
 
 	/**
 	 * Get an instance of InstallerDBType for the specified DB type
-	 * @param $type Mixed: DB installer for which is needed, false to use default
+	 * @param $type Mixed: DB installer for which is needed, false to use default.
 	 */
-	function getDBInstaller( $type = false ) {
+	public function getDBInstaller( $type = false ) {
 		if ( !$type ) {
 			$type = $this->getVar( 'wgDBtype' );
 		}
@@ -289,17 +290,17 @@ abstract class Installer {
 	}
 
 	/**
-	 * Do initial checks of the PHP environment. Set variables according to 
+	 * Do initial checks of the PHP environment. Set variables according to
 	 * the observed environment.
 	 *
 	 * It's possible that this may be called under the CLI SAPI, not the SAPI
 	 * that the wiki will primarily run under. In that case, the subclass should
 	 * initialise variables such as wgScriptPath, before calling this function.
 	 *
-	 * Under the web subclass, it can already be assumed that PHP 5+ is in use 
+	 * Under the web subclass, it can already be assumed that PHP 5+ is in use
 	 * and that sessions are working.
 	 */
-	function doEnvironmentChecks() {
+	public function doEnvironmentChecks() {
 		$this->showMessage( 'config-env-php', phpversion() );
 
 		$good = true;
@@ -323,7 +324,7 @@ abstract class Installer {
 	 * The defaults come from $GLOBALS (ultimately DefaultSettings.php).
 	 * Installer variables are typically prefixed by an underscore.
 	 */
-	function getVar( $name, $default = null ) {
+	public function getVar( $name, $default = null ) {
 		if ( !isset( $this->settings[$name] ) ) {
 			return $default;
 		} else {
@@ -334,14 +335,14 @@ abstract class Installer {
 	/**
 	 * Set a MW configuration variable, or internal installer configuration variable.
 	 */
-	function setVar( $name, $value ) {
+	public function setVar( $name, $value ) {
 		$this->settings[$name] = $value;
 	}
 
 	/**
 	 * Exports all wg* variables stored by the installer into global scope
 	 */
-	function exportVars() {
+	public function exportVars() {
 		foreach ( $this->settings as $name => $value ) {
 			if ( substr( $name, 0, 2 ) == 'wg' ) {
 				$GLOBALS[$name] = $value;
@@ -354,22 +355,22 @@ abstract class Installer {
 	 * This is a security mechanism to avoid compromise of the password in the
 	 * event of session ID compromise.
 	 */
-	function getFakePassword( $realPassword ) {
+	public function getFakePassword( $realPassword ) {
 		return str_repeat( '*', strlen( $realPassword ) );
 	}
 
 	/**
-	 * Set a variable which stores a password, except if the new value is a 
+	 * Set a variable which stores a password, except if the new value is a
 	 * fake password in which case leave it as it is.
 	 */
-	function setPassword( $name, $value ) {
+	public function setPassword( $name, $value ) {
 		if ( !preg_match( '/^\*+$/', $value ) ) {
 			$this->setVar( $name, $value );
 		}
 	}
-	
+
 	/** Check if we're installing the latest version */
-	function envLatestVersion() {
+	public function envLatestVersion() {
 		global $wgVersion;
 		$latestInfoUrl = 'http://www.mediawiki.org/w/api.php?action=mwreleases&format=json';
 		$latestInfo = Http::get( $latestInfoUrl );
@@ -391,7 +392,7 @@ abstract class Installer {
 		}
 		if( version_compare( $wgVersion, $currentVersion, '<' ) ) {
 			$this->showMessage( 'config-env-latest-old' );
-			$this->showHelpBox( 'config-env-latest-help', $wgVersion, $currentVersion ); 
+			$this->showHelpBox( 'config-env-latest-help', $wgVersion, $currentVersion );
 		} elseif( version_compare( $wgVersion, $currentVersion, '>' ) ) {
 			$this->showMessage( 'config-env-latest-new' );
 		}
@@ -399,7 +400,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for DB types */
-	function envCheckDB() {
+	public function envCheckDB() {
 		$compiledDBs = array();
 		$goodNames = array();
 		$allNames = array();
@@ -424,14 +425,14 @@ abstract class Installer {
 	}
 
 	/** Environment check for register_globals */
-	function envCheckRegisterGlobals() {
+	public function envCheckRegisterGlobals() {
 		if( wfIniGetBool( "magic_quotes_runtime" ) ) {
 			$this->showMessage( 'config-register-globals' );
 		}
 	}
 
 	/** Environment check for magic_quotes_runtime */
-	function envCheckMagicQuotes() {
+	public function envCheckMagicQuotes() {
 		if( wfIniGetBool( "magic_quotes_runtime" ) ) {
 			$this->showMessage( 'config-magic-quotes-runtime' );
 			return false;
@@ -439,7 +440,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for magic_quotes_sybase */
-	function envCheckMagicSybase() {
+	public function envCheckMagicSybase() {
 		if ( wfIniGetBool( 'magic_quotes_sybase' ) ) {
 			$this->showMessage( 'config-magic-quotes-sybase' );
 			return false;
@@ -447,7 +448,7 @@ abstract class Installer {
 	}
 
 	/* Environment check for mbstring.func_overload */
-	function envCheckMbstring() {
+	public function envCheckMbstring() {
 		if ( wfIniGetBool( 'mbstring.func_overload' ) ) {
 			$this->showMessage( 'config-mbstring' );
 			return false;
@@ -455,7 +456,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for zend.ze1_compatibility_mode */
-	function envCheckZE1() {
+	public function envCheckZE1() {
 		if ( wfIniGetBool( 'zend.ze1_compatibility_mode' ) ) {
 			$this->showMessage( 'config-ze1' );
 			return false;
@@ -463,7 +464,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for safe_mode */
-	function envCheckSafeMode() {
+	public function envCheckSafeMode() {
 		if ( wfIniGetBool( 'safe_mode' ) ) {
 			$this->setVar( '_SafeMode', true );
 			$this->showMessage( 'config-safe-mode' );
@@ -471,7 +472,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for the XML module */
-	function envCheckXML() {
+	public function envCheckXML() {
 		if ( !function_exists( "utf8_encode" ) ) {
 			$this->showMessage( 'config-xml-bad' );
 			return false;
@@ -480,7 +481,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for the PCRE module */
-	function envCheckPCRE() {
+	public function envCheckPCRE() {
 		if ( !function_exists( 'preg_match' ) ) {
 			$this->showMessage( 'config-pcre' );
 			return false;
@@ -488,7 +489,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for available memory */
-	function envCheckMemory() {
+	public function envCheckMemory() {
 		$limit = ini_get( 'memory_limit' );
 		if ( !$limit || $limit == -1 ) {
 			$this->showMessage( 'config-memory-none' );
@@ -512,7 +513,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for compiled object cache types */
-	function envCheckCache() {
+	public function envCheckCache() {
 		$caches = array();
 		foreach ( $this->objectCaches as $name => $function ) {
 			if ( function_exists( $function ) ) {
@@ -527,7 +528,7 @@ abstract class Installer {
 	}
 
 	/** Search for GNU diff3 */
-	function envCheckDiff3() {
+	public function envCheckDiff3() {
 		$paths = array_merge(
 			array(
 				"/usr/bin",
@@ -557,20 +558,20 @@ abstract class Installer {
 	}
 
 	/**
-	 * Search a path for any of the given executable names. Returns the 
-	 * executable name if found. Also checks the version string returned 
-	 * by each executable
+	 * Search a path for any of the given executable names. Returns the
+	 * executable name if found. Also checks the version string returned
+	 * by each executable.
 	 *
 	 * @param $path String: path to search
 	 * @param $names Array of executable names
 	 * @param $versionInfo Boolean false or array with two members:
-	 *       0 => Command to run for version check, with $1 for the path
-	 *       1 => String to compare the output with
+	 *		 0 => Command to run for version check, with $1 for the path
+	 *		 1 => String to compare the output with
 	 *
-	 * If $versionInfo is not false, only executables with a version 
+	 * If $versionInfo is not false, only executables with a version
 	 * matching $versionInfo[1] will be returned.
 	 */
-	function locateExecutable( $path, $names, $versionInfo = false ) {
+	public function locateExecutable( $path, $names, $versionInfo = false ) {
 		if (!is_array($names))
 			$names = array($names);
 
@@ -582,7 +583,7 @@ abstract class Installer {
 
 				$file = str_replace( '$1', $command, $versionInfo[0] );
 				# Should maybe be wfShellExec( $file), but runs into a ulimit, see
-				# http://www.mediawiki.org/w/index.php?title=New-installer_issues&diff=prev&oldid=335456 
+				# http://www.mediawiki.org/w/index.php?title=New-installer_issues&diff=prev&oldid=335456
 				if ( strstr( `$file`, $versionInfo[1]) !== false )
 					return $command;
 			}
@@ -591,7 +592,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for ImageMagick and GD */
-	function envCheckGraphics() {
+	public function envCheckGraphics() {
 		$imcheck = array( "/usr/bin", "/opt/csw/bin", "/usr/local/bin", "/sw/bin", "/opt/local/bin" );
 		foreach( $imcheck as $dir ) {
 			$im = "$dir/convert";
@@ -609,7 +610,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for setting $IP and $wgScriptPath */
-	function envCheckPath() {
+	public function envCheckPath() {
 		$IP = dirname( dirname( dirname( __FILE__ ) ) );
 		$this->setVar( 'IP', $IP );
 		$this->showMessage( 'config-dir', $IP );
@@ -634,7 +635,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for writable config/ directory */
-	function envCheckWriteableDir() {
+	public function envCheckWriteableDir() {
 		$ipDir = $this->getVar( 'IP' );
 		$configDir = $ipDir . '/config';
 		if( !is_writeable( $configDir ) ) {
@@ -649,7 +650,7 @@ abstract class Installer {
 	}
 
 	/** Environment check for setting the preferred PHP file extension */
-	function envCheckExtension() {
+	public function envCheckExtension() {
 		// FIXME: detect this properly
 		if ( defined( 'MW_INSTALL_PHP5_EXT' ) ) {
 			$ext = 'php5';
@@ -660,7 +661,7 @@ abstract class Installer {
 		$this->showMessage( 'config-file-extension', $ext );
 	}
 
-	function envCheckShellLocale() {
+	public function envCheckShellLocale() {
 		# Give up now if we're in safe mode or open_basedir
 		# It's theoretically possible but tricky to work with
 		if ( wfIniGetBool( "safe_mode" ) || ini_get( 'open_basedir' ) || !function_exists( 'exec' ) ) {
@@ -732,8 +733,8 @@ abstract class Installer {
 		# Give up
 		return true;
 	}
-	
-	function envCheckUploadsDirectory() {
+
+	public function envCheckUploadsDirectory() {
 		global $IP, $wgServer;
 		$dir = $IP . '/images/';
 		$url = $wgServer . $this->getVar( 'wgScriptPath' ) . '/images/';
@@ -746,9 +747,9 @@ abstract class Installer {
 	}
 
 	/**
-	 * Checks if scripts located in the given directory can be executed via the given URL
+	 * Checks if scripts located in the given directory can be executed via the given URL.
 	 */
-	function dirIsExecutable( $dir, $url ) {
+	public function dirIsExecutable( $dir, $url ) {
 		$scriptTypes = array(
 			'php' => array(
 				"<?php echo 'ex' . 'ec';",
@@ -780,19 +781,19 @@ abstract class Installer {
 	 * Convert wikitext $text to HTML.
 	 *
 	 * This is potentially error prone since many parser features require a complete
-	 * installed MW database. The solution is to just not use those features when you 
+	 * installed MW database. The solution is to just not use those features when you
 	 * write your messages. This appears to work well enough. Basic formatting and
 	 * external links work just fine.
 	 *
-	 * But in case a translator decides to throw in a #ifexist or internal link or 
-	 * whatever, this function is guarded to catch attempted DB access and to present 
+	 * But in case a translator decides to throw in a #ifexist or internal link or
+	 * whatever, this function is guarded to catch attempted DB access and to present
 	 * some fallback text.
 	 *
 	 * @param $text String
 	 * @param $lineStart Boolean
 	 * @return String
 	 */
-	function parse( $text, $lineStart = false ) {
+	public function parse( $text, $lineStart = false ) {
 		global $wgParser;
 		try {
 			$out = $wgParser->parse( $text, $this->parserTitle, $this->parserOptions, $lineStart );
@@ -807,25 +808,25 @@ abstract class Installer {
 	}
 
 	/**
-	 * Register tag hook below
+	 * Register tag hook below.
 	 */
-	function registerDocLink( &$parser ) {
+	public function registerDocLink( &$parser ) {
 		$parser->setHook( 'doclink', array( $this, 'docLink' ) );
 		return true;
 	}
 
 	/**
-	 * Extension tag hook for a documentation link
+	 * Extension tag hook for a documentation link.
 	 */
-	function docLink( $linkText, $attribs, $parser ) {
+	public function docLink( $linkText, $attribs, $parser ) {
 		$url = $this->getDocUrl( $attribs['href'] );
-		return '<a href="' . htmlspecialchars( $url ) . '">' . 
-			htmlspecialchars( $linkText ) . 
+		return '<a href="' . htmlspecialchars( $url ) . '">' .
+			htmlspecialchars( $linkText ) .
 			'</a>';
 	}
 
 	/**
-	 * Overridden by WebInstaller to provide lastPage parameters
+	 * Overridden by WebInstaller to provide lastPage parameters.
 	 */
 	protected function getDocUrl( $page ) {
 		return "{$_SERVER['PHP_SELF']}?page=" . urlencode( $attribs['href'] );
@@ -858,7 +859,7 @@ abstract class Installer {
 	}
 
 	/**
-	 * Actually perform the installation
+	 * Actually perform the installation.
 	 * @param Array $startCB A callback array for the beginning of each step
 	 * @param Array $endCB A callback array for the end of each step
 	 * @return Array of Status objects
@@ -976,10 +977,10 @@ abstract class Installer {
 
 	/**
 	 * Determine if LocalSettings exists. If it does, return an appropriate
-	 * status for whether we should can upgrade or not
+	 * status for whether we should can upgrade or not.
 	 * @return Status
 	 */
-	function getLocalSettingsStatus() {
+	public function getLocalSettingsStatus() {
 		global $IP;
 
 		$status = Status::newGood();
@@ -987,7 +988,7 @@ abstract class Installer {
 		wfSuppressWarnings();
 		$ls = file_exists( "$IP/LocalSettings.php" );
 		wfRestoreWarnings();
-		
+
 		if( $ls ) {
 			if( $this->getDBInstaller()->needsUpgrade() ) {
 				$status->warning( 'config-localsettings-upgrade' );
@@ -1017,7 +1018,7 @@ abstract class Installer {
 		}
 
 		# posix_getegid() *not* getmygid() because we want the group of the webserver,
-		# not whoever owns the current script
+		# not whoever owns the current script.
 		$gid = posix_getegid();
 		$getpwuid = posix_getpwuid( $gid );
 		$group = $getpwuid["name"];
@@ -1026,7 +1027,7 @@ abstract class Installer {
 	}
 
 	/**
-	 * Override the necessary bits of the config to run an installation
+	 * Override the necessary bits of the config to run an installation.
 	 */
 	public static function overrideConfig() {
 		define( 'MW_NO_SESSION', 1 );
@@ -1044,16 +1045,15 @@ abstract class Installer {
 	}
 
 	/**
-	 * Add an installation step following the given step. 
+	 * Add an installation step following the given step.
 	 * @param $findStep String the step to find.  Use NULL to put the step at the beginning.
 	 * @param $callback array
 	 */
-	function addInstallStepFollowing( $findStep, $callback ) {
+	public function addInstallStepFollowing( $findStep, $callback ) {
 		$where = 0;
 		if( $findStep !== null ) $where = array_search( $findStep, $this->installSteps );
 
 		array_splice( $this->installSteps, $where, 0, $callback );
 	}
-
 
 }

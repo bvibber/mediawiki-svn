@@ -1892,7 +1892,7 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 		# TS_EXIF
 	} elseif (preg_match('/^(\d{4})(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)$/D',$ts,$da)) {
 		# TS_MW
-	} elseif (preg_match('/^\d{1,13}$/D',$ts)) {
+	} elseif (preg_match('/^-?\d{1,13}$/D',$ts)) {
 		# TS_UNIX
 		$uts = $ts;
 	} elseif (preg_match('/^\d{2}-\d{2}-\d{4} \d{2}:\d{2}:\d{2}.\d{6}$/', $ts)) {
@@ -2095,9 +2095,10 @@ function &wfGetMimeMagic() {
  * we'll use sys_get_temp_dir(). The TMPDIR, TMP, and TEMP environment
  * variables are then checked in sequence, and if none are set /tmp is
  * returned as the generic Unix default.
- *
- * NOTE: When possible, use the tempfile() function to create temporary
- * files to avoid race conditions on file creation, etc.
+ * It is common to call it with tempnam().
+ * 
+ * NOTE: When possible, use instead the tmpfile() function to create 
+ * temporary files to avoid race conditions on file creation, etc.
  *
  * @return String
  */
