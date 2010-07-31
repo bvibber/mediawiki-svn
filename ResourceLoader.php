@@ -812,7 +812,7 @@ class ResourceLoader {
 		global $wgEnableScriptLocalization;
 		// Strip out mw.log debug lines (if not in debug mode)
 		if( !$this->debug ){
-			$scriptText = $this->removeLogStatments( $scriptText );
+			$scriptText = $this->removeLogStatements( $scriptText );
 		}
 
 		// Do language swap by index:
@@ -859,7 +859,7 @@ class ResourceLoader {
 	 * Remove all occurances of mw.log( 'some js string or expresion' );
 	 * @param {string} $jsString
 	 */
-	static function removeLogStatments( $jsString ){
+	static function removeLogStatements( $jsString ){
 		$outputJs = '';
 		for ( $i = 0; $i < strlen( $jsString ); $i++ ) {
 			// find next occurance of
