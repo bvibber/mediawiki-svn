@@ -469,6 +469,7 @@ EOT
 	padding: 2pt;
 	text-align: left;
 	font-size: 10pt;
+}
 
 EOT
 ) );
