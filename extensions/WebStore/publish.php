@@ -219,4 +219,3 @@ EOT;
 $w = new WebStorePublish;
 $w->executeCommon();
 
-?>

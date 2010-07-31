@@ -133,4 +133,3 @@ ini_set( 'display_errors', false );
 $s = new InplaceScaler;
 $s->execute();
 
-?>
