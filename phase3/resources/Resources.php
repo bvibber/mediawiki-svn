@@ -1,83 +1,209 @@
 <?php
 
 ResourceLoader::register( array(
-	'jquery' => array(
-		'script' => 'resources/jquery/jquery-1.4.2.js',
-		'raw' => true,
-	),
-	'jquery.tabIndex' => array(
-		'script' => 'resources/jquery/jquery.tabIndex.js',
-		'raw' => true,
-	),
-	'mediawiki' => array(
-		'script' => 'resources/mediawiki/mediawiki.js',
-		'raw' => true,
-	),
-	'mediawiki.legacy.ajax' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajax.js',
-	),
-	'mediawiki.legacy.ajaxwatch' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajaxwatch.js',
-	),
-	'mediawiki.legacy.block' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.block.js',
-	),
-	'mediawiki.legacy.changepassword' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.changepassword.js',
-	),
-	'mediawiki.legacy.edit' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.edit.js',
-	),
-	'mediawiki.legacy.enhancedchanges' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.enhancedchanges.js',
-	),
-	'mediawiki.legacy.history' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.history.js',
-	),
-	'mediawiki.legacy.htmlform' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.htmlform.js',
-	),
-	'mediawiki.legacy.IEFixes' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.IEFixes.js',
-	),
-	'mediawiki.legacy.metadata' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.metadata.js',
-	),
-	'mediawiki.legacy.mwsuggest' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.mwsuggest.js',
-	),
-	'mediawiki.legacy.prefs' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.prefs.js',
-	),
-	'mediawiki.legacy.preview' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.preview.js',
-	),
-	'mediawiki.legacy.protect' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.protect.js',
-	),
-	'mediawiki.legacy.rightclickedit' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.rightclickedit.js',
-	),
-	'mediawiki.legacy.search' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.search.js',
-	),
-	'mediawiki.legacy.upload' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.upload.js',
-	),
-	'mediawiki.legacy.wikibits' => array(
-		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.wikibits.js',
-	),
 	
-	'mediawiki.utilities.client' => array(
-		'script' => 'resources/mediawiki/utilities/mediawiki.utilities.client.js',
-	),
+	/* jQuery */
 	
-	'mediawiki.views.diff' => array(
-		'script' => 'resources/mediawiki/views/mediawiki.views.diff.js',
+	'jquery' => array( 'script' => 'resources/jquery/jquery.js', 'raw' => true ),
+	
+	/* jQuery Plugins */
+	
+	'jquery.tabIndex' => array( 'script' => 'resources/jquery/jquery.tabIndex.js' ),
+	'jquery.cookie' => array( 'script' => 'resources/jquery/jquery.cookie.js' ),
+	
+	/* jQuery UI */
+	
+	// Components
+	'jquery.ui.accordion' => array( 'script' => 'resources/jquery/ui/jquery.ui.accordion.js' ),
+	'jquery.ui.autocomplete' => array( 'script' => 'resources/jquery/ui/jquery.ui.autocomplete.js' ),
+	'jquery.ui.button' => array( 'script' => 'resources/jquery/ui/jquery.ui.button.js' ),
+	'jquery.ui.core' => array(
+		'script' => 'resources/jquery/ui/jquery.ui.core.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.theme.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.theme.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.theme.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.theme.css',
+		),
 	),
-	'mediawiki.views.install' => array(
-		'script' => 'resources/mediawiki/views/mediawiki.views.install.js',
+	'jquery.ui.datepicker' => array(
+		'script' => 'resources/jquery/ui/jquery.ui.datepicker.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.datepicker.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.datepicker.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.datepicker.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.datepicker.css',
+		),
+		'locales' => array(
+			'af' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-af.js',
+			'ar' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ar.js',
+			'az' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-az.js',
+			'bg' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-bg.js',
+			'bs' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-bs.js',
+			'ca' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ca.js',
+			'cs' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-cs.js',
+			'da' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-da.js',
+			'de' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-de.js',
+			'el' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-el.js',
+			'en-gb' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-en-GB.js',
+			'eo' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-eo.js',
+			'es' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-es.js',
+			'et' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-et.js',
+			'eu' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-eu.js',
+			'fa' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fa.js',
+			'fi' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fi.js',
+			'fo' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fo.js',
+			'fr-ch' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fr-CH.js',
+			'fr' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fr.js',
+			'he' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-he.js',
+			'hr' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hr.js',
+			'hu' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hu.js',
+			'hy' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hy.js',
+			'id' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-id.js',
+			'is' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-is.js',
+			'it' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-it.js',
+			'ja' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ja.js',
+			'ko' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ko.js',
+			'lt' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-lt.js',
+			'lv' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-lv.js',
+			'ms' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ms.js',
+			'nl' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-nl.js',
+			'no' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-no.js',
+			'pl' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-pl.js',
+			'pt-br' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-pt-BR.js',
+			'ro' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ro.js',
+			'ru' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ru.js',
+			'sk' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sk.js',
+			'sl' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sl.js',
+			'sq' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sq.js',
+			'sr-sr' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sr-SR.js',
+			'sr' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sr.js',
+			'sv' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sv.js',
+			'ta' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ta.js',
+			'th' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-th.js',
+			'tr' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-tr.js',
+			'uk' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-uk.js',
+			'vi' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-vi.js',
+			'zh-cn' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js',
+			'zh-hk' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-HK.js',
+			'zh-tw' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-TW.js'
+		),
 	),
+	'jquery.ui.dialog' => array( 'script' => 'resources/jquery/ui/jquery.ui.dialog.js' ),
+	'jquery.ui.draggable' => array( 'script' => 'resources/jquery/ui/jquery.ui.draggable.js' ),
+	'jquery.ui.droppable' => array( 'script' => 'resources/jquery/ui/jquery.ui.droppable.js' ),
+	'jquery.ui.mouse' => array( 'script' => 'resources/jquery/ui/jquery.ui.mouse.js' ),
+	'jquery.ui.position' => array( 'script' => 'resources/jquery/ui/jquery.ui.position.js' ),
+	'jquery.ui.progressbar' => array( 'script' => 'resources/jquery/ui/jquery.ui.progressbar.js' ),
+	'jquery.ui.resizable' => array( 'script' => 'resources/jquery/ui/jquery.ui.resizable.js' ),
+	'jquery.ui.selectable' => array( 'script' => 'resources/jquery/ui/jquery.ui.selectable.js' ),
+	'jquery.ui.slider' => array( 'script' => 'resources/jquery/ui/jquery.ui.slider.js' ),
+	'jquery.ui.sortable' => array( 'script' => 'resources/jquery/ui/jquery.ui.sortable.js' ),
+	'jquery.ui.tabs' => array( 'script' => 'resources/jquery/ui/jquery.ui.tabs.js' ),
+	'jquery.ui.widget' => array( 'script' => 'resources/jquery/ui/jquery.ui.widget.js' ),
+	// i18n
+	'jquery.ui.datepicker-af' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-af.js' ),
+	'jquery.ui.datepicker-ar' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ar.js' ),
+	'jquery.ui.datepicker-az' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-az.js' ),
+	'jquery.ui.datepicker-bg' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-bg.js' ),
+	'jquery.ui.datepicker-bs' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-bs.js' ),
+	'jquery.ui.datepicker-ca' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ca.js' ),
+	'jquery.ui.datepicker-cs' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-cs.js' ),
+	'jquery.ui.datepicker-da' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-da.js' ),
+	'jquery.ui.datepicker-de' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-de.js' ),
+	'jquery.ui.datepicker-el' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-el.js' ),
+	'jquery.ui.datepicker-en-GB' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-en-GB.js' ),
+	'jquery.ui.datepicker-eo' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-eo.js' ),
+	'jquery.ui.datepicker-es' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-es.js' ),
+	'jquery.ui.datepicker-et' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-et.js' ),
+	'jquery.ui.datepicker-eu' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-eu.js' ),
+	'jquery.ui.datepicker-fa' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fa.js' ),
+	'jquery.ui.datepicker-fi' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fi.js' ),
+	'jquery.ui.datepicker-fo' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fo.js' ),
+	'jquery.ui.datepicker-fr-CH' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fr-CH.js' ),
+	'jquery.ui.datepicker-fr' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fr.js' ),
+	'jquery.ui.datepicker-he' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-he.js' ),
+	'jquery.ui.datepicker-hr' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hr.js' ),
+	'jquery.ui.datepicker-hu' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hu.js' ),
+	'jquery.ui.datepicker-hy' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hy.js' ),
+	'jquery.ui.datepicker-id' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-id.js' ),
+	'jquery.ui.datepicker-is' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-is.js' ),
+	'jquery.ui.datepicker-it' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-it.js' ),
+	'jquery.ui.datepicker-ja' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ja.js' ),
+	'jquery.ui.datepicker-ko' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ko.js' ),
+	'jquery.ui.datepicker-lt' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-lt.js' ),
+	'jquery.ui.datepicker-lv' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-lv.js' ),
+	'jquery.ui.datepicker-ms' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ms.js' ),
+	'jquery.ui.datepicker-nl' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-nl.js' ),
+	'jquery.ui.datepicker-no' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-no.js' ),
+	'jquery.ui.datepicker-pl' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-pl.js' ),
+	'jquery.ui.datepicker-pt-BR' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-pt-BR.js' ),
+	'jquery.ui.datepicker-ro' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ro.js' ),
+	'jquery.ui.datepicker-ru' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ru.js' ),
+	'jquery.ui.datepicker-sk' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sk.js' ),
+	'jquery.ui.datepicker-sl' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sl.js' ),
+	'jquery.ui.datepicker-sq' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sq.js' ),
+	'jquery.ui.datepicker-sr-SR' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sr-SR.js' ),
+	'jquery.ui.datepicker-sr' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sr.js' ),
+	'jquery.ui.datepicker-sv' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sv.js' ),
+	'jquery.ui.datepicker-ta' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ta.js' ),
+	'jquery.ui.datepicker-th' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-th.js' ),
+	'jquery.ui.datepicker-tr' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-tr.js' ),
+	'jquery.ui.datepicker-uk' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-uk.js' ),
+	'jquery.ui.datepicker-vi' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-vi.js' ),
+	'jquery.ui.datepicker-zh-CN' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js' ),
+	'jquery.ui.datepicker-zh-HK' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-HK.js' ),
+	'jquery.ui.datepicker-zh-TW' => array( 'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-TW.js' ),
+	// Effects
+	'jquery.effects.blind' => array( 'script' => 'resources/jquery/effects/jquery.effects.blind.js' ),
+	'jquery.effects.bounce' => array( 'script' => 'resources/jquery/effects/jquery.effects.bounce.js' ),
+	'jquery.effects.clip' => array( 'script' => 'resources/jquery/effects/jquery.effects.clip.js' ),
+	'jquery.effects.core' => array( 'script' => 'resources/jquery/effects/jquery.effects.core.js' ),
+	'jquery.effects.drop' => array( 'script' => 'resources/jquery/effects/jquery.effects.drop.js' ),
+	'jquery.effects.explode' => array( 'script' => 'resources/jquery/effects/jquery.effects.explode.js' ),
+	'jquery.effects.fold' => array( 'script' => 'resources/jquery/effects/jquery.effects.fold.js' ),
+	'jquery.effects.highlight' => array( 'script' => 'resources/jquery/effects/jquery.effects.highlight.js' ),
+	'jquery.effects.pulsate' => array( 'script' => 'resources/jquery/effects/jquery.effects.pulsate.js' ),
+	'jquery.effects.scale' => array( 'script' => 'resources/jquery/effects/jquery.effects.scale.js' ),
+	'jquery.effects.shake' => array( 'script' => 'resources/jquery/effects/jquery.effects.shake.js' ),
+	'jquery.effects.slide' => array( 'script' => 'resources/jquery/effects/jquery.effects.slide.js' ),
+	'jquery.effects.transfer' => array( 'script' => 'resources/jquery/effects/jquery.effects.transfer.js' ),
+	
+	/* MediaWiki */
+	
+	'mediawiki' => array( 'script' => 'resources/mediawiki/mediawiki.js', 'raw' => true ),
+	
+	/* MediaWiki Legacy */
+	
+	'mediawiki.legacy.ajax' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajax.js' ),
+	'mediawiki.legacy.ajaxwatch' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajaxwatch.js' ),
+	'mediawiki.legacy.block' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.block.js' ),
+	'mediawiki.legacy.changepassword' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.changepassword.js' ),
+	'mediawiki.legacy.edit' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.edit.js' ),
+	'mediawiki.legacy.enhancedchanges' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.enhancedchanges.js' ),
+	'mediawiki.legacy.history' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.history.js' ),
+	'mediawiki.legacy.htmlform' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.htmlform.js' ),
+	'mediawiki.legacy.IEFixes' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.IEFixes.js' ),
+	'mediawiki.legacy.metadata' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.metadata.js' ),
+	'mediawiki.legacy.mwsuggest' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.mwsuggest.js' ),
+	'mediawiki.legacy.prefs' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.prefs.js' ),
+	'mediawiki.legacy.preview' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.preview.js' ),
+	'mediawiki.legacy.protect' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.protect.js' ),
+	'mediawiki.legacy.rightclickedit' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.rightclickedit.js' ),
+	'mediawiki.legacy.search' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.search.js' ),
+	'mediawiki.legacy.upload' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.upload.js' ),
+	'mediawiki.legacy.wikibits' => array( 'script' => 'resources/mediawiki/legacy/mediawiki.legacy.wikibits.js' ),
+	
+	/* MediaWiki Utilities */
+	
+	'mediawiki.utilities.client' => array( 'script' => 'resources/mediawiki/utilities/mediawiki.utilities.client.js' ),
+	
+	/* MediaWiki Views */
+	
+	'mediawiki.views.diff' => array( 'script' => 'resources/mediawiki/views/mediawiki.views.diff.js' ),
+	'mediawiki.views.install' => array( 'script' => 'resources/mediawiki/views/mediawiki.views.install.js' ),
+	
+	/* Test */
 	
 	'test' => array(
 		'script' => 'resources/test/test.js',

@@ -8,14 +8,29 @@
 				color: white;
 			}
 		</style>
-		<script type="text/javascript" src="../../load.php?modules=jquery|mw&debug=1"></script>
-		<script type="text/javascript" src="../../load.php?modules=test&debug=1"></script>
-		<script>
+		<script type="text/javascript" src="../../load.php?modules=jquery|mediawiki&amp;debug=1&amp;skin=vector&amp;lang=ja"></script>
+		<script type="text/javascript">
 			mw.config.set( 'wgScriptPath', '../..' );
+			$(document).ready( function() {
+				mw.loader.using( ['jquery.ui.core', 'jquery.ui.datepicker'], function() {
+					$( '#datepicker' ).datepicker();
+					mw.log( 'datepicker (dynamic)' );
+				} );
+				mw.loader.using( 'test', function() {
+					mw.log( 'test (static with dynamic needs)' );
+				} );
+			} );
 		</script>
 	</head>
 	<body>
 		<h1>Resource Loader Tests</h1>
-		<ul id="tests"></ul>
+		<p>
+			<ul id="tests"></ul>
+		</p>
+		<p>
+			<strong>Datepicker....</strong>
+			<div id="datepicker"></div>
+		</p>
+		<script type="text/javascript" src="../../load.php?modules=test&amp;debug=1&amp;skin=vector&amp;lang=ja"></script>
 	</body>
 </html>

@@ -1,5 +1,5 @@
 /*
- * JavaScript Backwards Compatibility
+ * JavaScript backwards-compatibility and support
  */
 
 // Make calling .indexOf() on an array work on older browsers
@@ -11,6 +11,25 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 			}
 		}
 		return -1;
+	};
+}
+// Add array comparison functionality
+if ( typeof Array.prototype.compare === 'undefined' ) { 
+	Array.prototype.compare = function( against ) {
+	    if ( this.length != against.length ) {
+	    	return false;
+	    }
+	    for ( var i = 0; i < against.length; i++ ) {
+	        if ( this[i].compare ) { 
+	            if ( !this[i].compare( against[i] ) ) {
+	            	return false;
+	            }
+	        }
+	        if ( this[i] !== against[i] ) {
+	        	return false;
+	        }
+	    }
+	    return true;
 	};
 }
 
@@ -99,8 +118,8 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		 */
 		this.set = function( keys, value ) {
 			if ( typeof keys === 'object' ) {
-				for ( var key in keys ) {
-					values[key] = keys[key];
+				for ( var k in keys ) {
+					values[k] = keys[k];
 				}
 			} else if ( typeof keys === 'string' && typeof value !== 'undefined' ) {
 				values[keys] = value;
@@ -112,7 +131,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		this.get = function( keys, fallback ) {
 			if ( typeof keys === 'object' ) {
 				var result = {};
-				for ( var k = 0; k < keys.length; k++ ) {
+				for ( var k  in keys ) {
 					if ( typeof values[keys[k]] !== 'undefined' ) {
 						result[keys[k]] = values[keys[k]];
 					}
@@ -129,7 +148,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		 */
 		this.exists = function( keys ) {
 			if ( typeof keys === 'object' ) {
-				for ( var k = 0; k < keys.length; k++ ) {
+				for ( var k in keys ) {
 					if ( !( keys[k] in values ) ) {
 						return false;
 					}
@@ -155,8 +174,8 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		
 		this.set = function( keys, value ) {
 			if ( typeof keys === 'object' ) {
-				for ( var key in keys ) {
-					messages[key] = keys[key];
+				for ( var k = 0; k < keys.length; k++ ) {
+					messages[k] = keys[k];
 				}
 			} else if ( typeof keys === 'string' && typeof value !== 'undefined' ) {
 				messages[keys] = value;
@@ -168,8 +187,8 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 			}
 			var msg = messages[key];
 			if ( typeof args == 'object' || typeof args == 'array' ) {
-				for ( var argKey in args ) {
-					msg = msg.replace( '\$' + ( parseInt( argKey ) + 1 ), args[argKey] );
+				for ( var a = 0; a < args.length; a++ ) {
+					msg = msg.replace( '\$' + ( parseInt( a ) + 1 ), args[a] );
 				}
 			} else if ( typeof args == 'string' || typeof args == 'number' ) {
 				msg = msg.replace( '$1', args );
@@ -181,7 +200,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 	 * Client-side module loader which integrates with the MediaWiki ResourceLoader
 	 */
 	this.loader = new ( function() {
-		
+
 		/* Private Members */
 		
 		var that = this;
@@ -193,59 +212,69 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		 * 	{
 		 * 		'moduleName': {
 		 * 			'needs': ['required module', 'required module', ...],
-		 * 			'state': 'registered, loading, loaded, or ready',
+		 * 			'state': 'registered', 'loading', 'loaded', 'ready', or 'error'
 		 * 			'script': function() {},
 		 * 			'style': 'css code string',
-		 * 			'localization': { 'key': 'value' }
+		 * 			'messages': { 'key': 'value' }
 		 * 		}
 		 * 	}
 		 */
 		var registry = {};
-		// List of callbacks waiting on dependent modules to be loaded so they can be executed
-		var queue = [];
-		// Until document ready, load requests will be collected in a batch queue
+		// List of modules which will be loaded as when ready
 		var batch = [];
-		// True after document ready occurs
-		var ready = false;
+		// List of modules to be loaded
+		var queue = [];
+		// List of callback functions waiting for modules to be ready to be called
+		var jobs = [];
+		// Flag indicating document ready has occured
+		var ready = [];
 		
 		/* Private Methods */
 		
 		/**
 		 * Gets a list of modules names that a module needs in their proper dependency order
 		 * 
-		 * @param string module name
-		 * @return 
+		 * @param mixed string module name or array of string module names
+		 * @return list of dependencies
 		 * @throws Error if circular reference is detected
 		 */
-		function needs( module ) {
-			if ( !( module in registry ) ) {
+		function resolve( module, resolved, unresolved ) {
+			// Allow calling with an array of module names
+			if ( typeof module === 'object' ) {
+				var modules = [];
+				for ( var m = 0; m < module.length; m++ ) {
+					var needs = resolve( module[m] );
+					for ( var n = 0; n < needs.length; n++ ) {
+						modules[modules.length] = needs[n];
+					}
+				}
+				return modules;
+			} else if ( typeof module === 'string' ) {
 				// Undefined modules have no needs
-				return [];
-			}
-			var resolved = [];
-			var unresolved = [];
-			if ( arguments.length === 3 ) {
-				// Use arguemnts on inner call
-				resolved = arguments[1];
-				unresolved = arguments[2];
-			}
-			unresolved[unresolved.length] = module;
-		    for ( n in registry[module].needs ) {
-		        if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
-		            if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
-		                throw new Error(
-		                	'Circular reference detected: ' + module + ' -> ' + registry[module].needs[n]
-		                );
-		            }
-		            needs( registry[module].needs[n], resolved, unresolved );
-		        }
-		    }
-		    resolved[resolved.length] = module;
-		    unresolved.slice( unresolved.indexOf( module ), 1 );
-			if ( arguments.length === 1 ) {
-			    // Return resolved list on outer call
+				if ( !( module in registry ) ) {
+					return [];
+				}
+				// Recursively resolves dependencies and detects circular references
+				function recurse( module, resolved, unresolved ) {
+					unresolved[unresolved.length] = module;
+				    for ( var n = 0; n < registry[module].needs; n++ ) {
+				        if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
+				            if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
+				                throw new Error(
+				                	'Circular reference detected: ' + module + ' -> ' + registry[module].needs[n]
+				                );
+				            }
+				            recurse( registry[module].needs[n], resolved, unresolved );
+				        }
+				    }
+				    resolved[resolved.length] = module;
+				    unresolved.splice( unresolved.indexOf( module ), 1 );
+				}
+				var resolved = [];
+				recurse( module, resolved, [] );
 				return resolved;
 			}
+			throw new Error( 'Invalid module argument: ' + module );
 		};
 		/**
 		 * Narrows a list of module names down to those matching a specific state. Possible states are 'undefined',
@@ -256,6 +285,11 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		 * @return array list of filtered module names
 		 */
 		function filter( states, modules ) {
+			// Allow states to be given as a string
+			if ( typeof states === 'string' ) {
+				states = [states];
+			}
+			// If called without a list of modules, build and use a list of all modules
 			var list = [];
 			if ( typeof modules === 'undefined' ) {
 				modules = [];
@@ -263,8 +297,9 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 					modules[modules.length] = module;
 				}
 			}
-			for ( var s in states ) {
-				for ( var m in modules ) {
+			// Build a list of modules which are in one of the specified states
+			for ( var s = 0; s < states.length; s++ ) {
+				for ( var m = 0; m < modules.length; m++ ) {
 					if (
 						( states[s] == 'undefined' && typeof registry[modules[m]] === 'undefined' ) ||
 						( typeof registry[modules[m]] === 'object' && registry[modules[m]].state === states[s] )
@@ -282,116 +317,147 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		 */
 		function execute( module ) {
 			if ( typeof registry[module] === 'undefined' ) {
-				throw new Error( 'module has not been registered: ' + module );
-			}
-			switch ( registry[module].state ) {
-				case 'registered':
-					throw new Error( 'module has not completed loading: ' + module );
-					break;
-				case 'loading':
-					throw new Error( 'module has not completed loading: ' + module );
-					break;
-				case 'ready':
-					throw new Error( 'module has already been loaded: ' + module );
-					break;
+				throw new Error( 'Module has not been registered yet: ' + module );
+			} else if ( registry[module].state === 'registered' ) {
+				throw new Error( 'Module has not been requested from the server yet: ' + module );
+			} else if ( registry[module].state === 'loading' ) {
+				throw new Error( 'Module has not completed loading yet: ' + module );
+			} else if ( registry[module].state === 'ready' ) {
+				throw new Error( 'Module has already been loaded: ' + module );
 			}
 			// Add style sheet to document
 			if ( typeof registry[module].style === 'string' && registry[module].style.length ) {
 				$( 'head' ).append( '<style type="text/css">' + registry[module].style + '</style>' );
 			}
 			// Add localizations to message system
-			if ( typeof registry[module].localization === 'object' ) {
-				mw.msg.set( registry[module].localization );
+			if ( typeof registry[module].messages === 'object' ) {
+				mw.msg.set( registry[module].messages );
 			}
+			var state = 'ready';
 			// Execute script
 			try {
 				registry[module].script();
-			} catch( e ) {
+				registry[module].state = 'ready';
+				// Run jobs who's needs have just been met
+				for ( var j = 0; j < jobs.length; j++ ) {
+					if ( filter( 'ready', jobs[j].needs ).compare( jobs[j].needs ) ) {
+						if ( typeof jobs[j].ready === 'function' ) {
+							jobs[j].ready();
+						}
+						jobs.splice( j, 1 );
+						j--;
+					}
+				}
+				// Execute modules who's needs have just been met
+				for ( r in registry ) {
+					if ( registry[r].state == 'loaded' ) {
+						if ( filter( ['ready'], registry[r].needs ).compare( registry[r].needs ) ) {
+							execute( r );
+						}
+					}
+				}
+			} catch ( e ) {
 				mw.log( 'Exception thrown by ' + module + ': ' + e.message );
-			}
-			// Change state
-			registry[module].state = 'ready';
-			
-			// Execute all modules which were waiting for this to be ready
-			for ( r in registry ) {
-				if ( registry[r].state == 'loaded' ) {
-					if ( filter( ['ready'], registry[r].needs ).length == registry[r].needs.length ) {
-						execute( r );
+				registry[module].state = 'error';				
+				// Run error callbacks of jobs affected by this condition
+				for ( var j = 0; j < jobs.length; j++ ) {
+					if ( jobs[j].needs.indexOf( module ) !== -1 ) {
+						if ( typeof jobs[j].error === 'function' ) {
+							jobs[j].error();
+						}
+						jobs.splice( j, 1 );
+						j--;
 					}
 				}
 			}
 		}
 		/**
-		 * Adds a callback and it's needs to the queue
+		 * Adds a needs to the queue with optional callbacks to be run when the needs are ready or fail
 		 * 
-		 * @param array list of module names the callback needs to be ready before being executed
-		 * @param function callback to execute when needs are met
+		 * @param mixed string moulde name or array of string module names
+		 * @param function ready callback to execute when all needs are ready
+		 * @param function error callback to execute when any need fails
 		 */
-		function request( needs, callback ) {
-			queue[queue.length] = { 'needs': filter( ['undefined', 'registered'], needs ), 'callback': callback };
+		function request( needs, ready, error ) {
+			// Allow calling by single module name
+			if ( typeof needs === 'string' ) {
+				needs = [needs];
+				if ( needs[0] in registry ) {
+					for ( var n = 0; n < registry[needs[0]].needs.length; n++ ) {
+						needs[needs.length] = registry[needs[0]].needs[n];
+					}
+				}
+			}
+			// Add ready and error callbacks if they were given
+			if ( arguments.length > 1 ) {
+				jobs[jobs.length] = {
+					'needs': filter( ['undefined', 'registered', 'loading', 'loaded'], needs ),
+					'ready': ready,
+					'error': error
+				};
+			}
+			// Queue up any needs that are undefined or registered
+			needs = filter( ['undefined', 'registered'], needs );
+			for ( var n = 0; n < needs.length; n++ ) {
+				if ( queue.indexOf( needs[n] ) === -1 ) {
+					queue[queue.length] = needs[n];
+				}
+			}
+			// Work the queue
+			that.work();
 		}
 		
 		/* Public Methods */
 		
 		/**
-		 * Processes the queue, loading and executing when things when ready.
+		 * Requests needs from server, loading and executing when things when ready.
 		 */
 		this.work = function() {
 			// Appends a list of modules to the batch
-			function append( modules ) {
-				for ( m in modules ) {
-					// Prevent requesting modules which are loading, loaded or ready
-					if ( modules[m] in registry && registry[modules[m]].state == 'registered' ) {
-						// Since the batch can live between calls to work until document ready, we need to make sure
-						// we aren't making a duplicate entry
-						if ( batch.indexOf( modules[m] ) == -1 ) {
-							batch[batch.length] = modules[m];
-							registry[modules[m]].state = 'loading';
+			for ( var q = 0; q < queue.length; q++ ) {
+				// Only request modules which are undefined or registered
+				if ( !( queue[q] in registry ) || registry[queue[q]].state == 'registered' ) {
+					// Prevent duplicate entries
+					if ( batch.indexOf( queue[q] ) === -1 ) {
+						batch[batch.length] = queue[q];
+						// Mark registered modules as loading
+						if ( queue[q] in registry ) {
+							registry[queue[q]].state = 'loading';
 						}
 					}
 				}
 			}
-			// Fill batch with modules that need to be loaded
-			for ( var q in queue ) {
-				append( queue[q].needs );
-				for ( n in queue[q].needs ) {
-					append( needs( queue[q].needs[n] ) );
-				}
-			}
+			// Clean up the queue
+			queue = [];
 			// After document ready, handle the batch
 			if ( ready && batch.length ) {
 				// Always order modules alphabetically to help reduce cache misses for otherwise identical content
 				batch.sort();
-				
-				var base = $.extend( {},
-					// Pass configuration values through the URL
-					mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] ),
-					// Ensure request comes back in the proper mode (debug or not)
-					{ 'debug': typeof mw.debug !== 'undefined' ? '1' : '0' }
-				);
+				// Build a list of request parameters
+				var base = mw.config.get( [ 'user', 'skin', 'lang', 'debug' ] );
+				// Extend request parameters with a list of modules in the batch
 				var requests = [];
 				if ( base.debug == '1' ) {
-					for ( b in batch ) {
+					for ( var b = 0; b < batch.length; b++ ) {
 						requests[requests.length] = $.extend( { 'modules': batch[b] }, base );
 					}
 				} else {
 					requests[requests.length] = $.extend( { 'modules': batch.join( '|' ) }, base );
 				}
-				// It may be more performant to do this with an Ajax call, but that's limited to same-domain, so we
-				// can either auto-detect (if there really is any benefit) or just use this method, which is safe
+				// Clear the batch - this MUST happen before we append the script element to the body or it's
+				// possible that the script will be locally cached, instantly load, and work the batch again,
+				// all before we've cleared it causing each request to include modules which are already loaded
+				batch = [];
+				// Asynchronously append a script tag to the end of the body
 				setTimeout(  function() {
-					// Clear the batch - this MUST happen before we append the script element to the body or it's
-					// possible that the script will be locally cached, instantly load, and work the batch again,
-					// all before we've cleared it causing each request to include modules which are already loaded
-					batch = [];
 					var html = '';
-					for ( r in requests ) {
+					for ( var r = 0; r < requests.length; r++ ) {
 						// Build out the HTML
 						var src = mw.config.get( 'wgScriptPath' ) + '/load.php?' + jQuery.param( requests[r] );
 						html += '<script type="text/javascript" src="' + src + '"></script>';
 					}
-					// Append script to head
-					$( 'head' ).append( html );
+					// Append script to body
+					$( 'body' ).append( html );
 				}, 0 )
 			}
 		};
@@ -400,6 +466,17 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		 * to this function.
 		 */
 		this.register = function( name, needs ) {
+			// Allow multiple registration
+			if ( typeof name === 'object' ) {
+				for ( var n = 0; n < name.length; n++ ) {
+					if ( typeof name[n] === 'string' ) {
+						that.register( name[n] );
+					} else if ( typeof name[n] === 'object' && name[n].length == 2 ) {
+						that.register( name[n][0], name[n][1] );
+					}
+				}
+				return;
+			}
 			// Validate input
 			if ( typeof name !== 'string' ) {
 				throw new Error( 'name must be a string, not a ' + typeof name );
@@ -428,7 +505,7 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 		this.implement = function( name, script, style, localization ) {
 			// Automaically register module
 			if ( typeof registry[name] === 'undefined' ) {
-				that.register( name, needs );
+				that.register( name );
 			}
 			// Validate input
 			if ( typeof script !== 'function' ) {
@@ -450,38 +527,49 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 			if ( typeof style === 'string' ) {
 				registry[name].style = style;
 			}
-			if ( typeof localization === 'object' ) {
-				registry[name].localization = localization;
+			if ( typeof messages === 'object' ) {
+				registry[name].messages = messages;
 			}
 			// Execute or queue callback
-			if ( filter( ['ready'], registry[name].needs ).length == registry[name].needs.length ) {
+			if ( filter( ['ready'], registry[name].needs ).compare( registry[name].needs ) ) {
 				execute( name );
 			} else {
-				request( registry[name].needs, function() { execute( name ); } );
+				request( name );
 			}
 		};
 		/**
 		 * Executes a function as soon as one or more required modules are ready
 		 * 
 		 * @param mixed string or array of strings of modules names the callback needs to be ready before executing
-		 * @param function callback to execute when all needs are met
+		 * @param function callback to execute when all needs are ready (optional)
+		 * @param function callback to execute when if needs have a errors (optional)
 		 */
-		this.using = function( needs, callback ) {
+		this.using = function( needs, ready, error ) {
 			// Validate input
 			if ( typeof needs !== 'object' && typeof needs !== 'string' ) {
 				throw new Error( 'needs must be a string or an array, not a ' + typeof needs )
 			}
-			if ( typeof callback !== 'function' ) {
-				throw new Error( 'callback must be a function, not a ' + typeof callback )
-			}
+			// Allow calling with a single need as a string
 			if ( typeof needs === 'string' ) {
 				needs = [needs];
 			}
-			// Execute or queue callback
-			if ( filter( ['ready'], needs ).length == needs.length ) {
-				callback();
-			} else {
-				request( needs, callback );
+			// Resolve entire dependency map
+			needs = resolve( needs );
+			// If all needs are met, execute ready immediately
+			if ( filter( ['ready'], needs ).compare( needs ) ) {
+				if ( typeof ready !== 'function' ) {
+					ready();
+				}
+			}
+			// If any needs have errors execute error immediately
+			else if ( filter( ['error'], needs ).length ) {
+				if ( typeof error === 'function' ) {
+					error();
+				}
+			}
+			// Since some needs are not yet ready, queue up a request
+			else {
+				request( needs, ready, error );
 			}
 		};
 		
@@ -498,5 +586,5 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 	this.utilities = {};
 	
 	// Attach to window
-	window.MediaWiki = window.mw = $.extend( 'mw' in window ? window.mw : {}, this );
+	window.MediaWiki = window.mw = this;
 } )();
