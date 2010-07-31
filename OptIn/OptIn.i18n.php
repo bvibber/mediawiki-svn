@@ -4978,6 +4978,7 @@ $messages['ps'] = array(
 	'optin-deny-short' => 'نه مننه',
 	'optin-survey-yes' => 'هو',
 	'optin-survey-no' => 'نه',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'زما نوې توکپټه خوښه نه شوه.',
 	'optin-survey-answer-whyoptout-other' => 'بل سبب:',
 	'optin-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
 	'optin-survey-answer-browser-other' => 'بل کتنمل:',
