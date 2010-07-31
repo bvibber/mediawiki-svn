@@ -306,6 +306,13 @@ $messages['ksh'] = array(
 	'antibot-desc' => 'En ëijfach Jundlaach för SPAM un SPAMbots ze fenge.',
 );
 
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'antibot-desc' => 'Entorno sémpliche para kontrolar botes de spam i la aktivasyón de contenidos',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

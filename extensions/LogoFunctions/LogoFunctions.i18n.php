@@ -59,7 +59,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'logofunctions-desc' => 'Parserowu funkciju pśidaś, aby wikilogo nastajiło',
+	'logofunctions-desc' => 'Parserowu funkciju wikiloga pśidaś',
 	'logofunctions-filenotexist' => 'Zmólka: [[File:$1]] njeeksistěrujo',
 );
 

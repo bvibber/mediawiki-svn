@@ -45,6 +45,15 @@ $messages['de'] = array(
 	'rss-empty' => 'Der RSS-Feed konnte nicht von $1 geladen werden!',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'rss-desc' => 'Zwobraznjujo RSS-kanal na wikiboku',
+	'rss-error' => 'RSS-kanal njejo dał se z $1 zacytaś: $2',
+	'rss-empty' => 'RSS-kanal njejo dał se z $1 zacytaś!',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

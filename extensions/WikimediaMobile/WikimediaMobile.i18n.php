@@ -117,9 +117,10 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'wikimediamobile-desc' => 'פונקציות תמיכה ב־MediaWiki למיזם ויקיפדיה למכשירים ניידים מתארח בכתובת http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'פונקציות תמיכה של מדיה־ויקי עבור מיזם ויקימדיה למכשירים ניידים המתארח בכתובת http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Croatian (Hrvatski)

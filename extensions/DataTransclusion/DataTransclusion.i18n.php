@@ -324,8 +324,11 @@ $messages['it'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'datatransclusion-desc' => 'Määt et müjjelisch Daatesäz uß frembde Daatequälle ußerhallef vum Wiki ze empoteere un aanzezeije.',
 	'datatransclusion-missing-source' => 'Et es kein Daatequäll aanjejovve.
 Dat zweite Feld met dä Daatequäll es ävver nüüdesch.',
+	'datatransclusion-unknown-source' => 'Et es kein joode Daatequäll aanjejovve.
+„$1“ känne mer nit.',
 	'datatransclusion-missing-key' => 'Et es keine Schlössel aanjejovve.
 „$2“ sind de jöltije Schlössele en dä Daatequäll „$1“.',
 	'datatransclusion-bad-argument-by' => 'Et es verkeehte Schlössel aanjejovve.

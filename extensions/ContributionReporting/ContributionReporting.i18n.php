@@ -4966,6 +4966,7 @@ $messages['vi'] = array(
 	'contribstats-average' => 'Trung bình',
 	'contribstats-paypal-donations' => 'Quyên góp dùng PayPal',
 	'contribstats-credit-card' => 'Thẻ tín dụng',
+	'contribstats-unaudited' => 'Các tổng số này chưa được kiểm toán.',
 	'fundraiserstatistics' => 'Thống kê về vận động gây quỹ',
 	'fundraiserstats-date' => 'Ngày',
 	'fundraiserstats-day' => 'Ngày $1 trong $2',

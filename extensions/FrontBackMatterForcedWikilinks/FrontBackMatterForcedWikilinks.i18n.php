@@ -135,6 +135,16 @@ $messages['id'] = array(
 	'frontbackforced-forced' => '_(forced_wikilinks)',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'frontbackforced-desc' => 'Hängk em beschtimmpte Sigg vüre un en ander beschtemmpte Sigg henge aan Wikisigge draan un määt automatesch beschtemmpte Wikilenks en Sigge eren.',
+	'frontbackforced-front' => '_(Vörspann)',
+	'frontbackforced-back' => '_(Aanhang)',
+	'frontbackforced-forced' => '_(automatesch_Wikilenks)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

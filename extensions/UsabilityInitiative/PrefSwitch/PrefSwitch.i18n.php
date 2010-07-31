@@ -2000,15 +2000,15 @@ Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
 | Kuvakaappaus uudesta linkkien lisäys -valintaikkunasta.
 |}
 |}
-Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia. Haluamme kertoa eräistä uudistuksista, kuten uudesta ilmeestä ja yksinkertaistetuista muokkaustoiminnoista. Näiden muutoksien tarkoituksena on auttaa uusia muokkaajia pääsemään helpommin alkuun. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study viime vuoden aikana toteutettuun käytettävyystestaukseen]. Hankkeiden käytettävyyden parantaminen kuuluu Wikimedia Foundationin merkittävimpiin tehtäviin, ja lisää päivityksiä on tulossa. Lisätietoja saat aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
+Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapaaehtoisten kanssa tehdäkseen asioista helpompia. Haluamme kertoa eräistä uudistuksista, kuten uudesta ilmeestä ja yksinkertaisemmista muokkaustoiminnoista. Näiden muutoksien tarkoituksena on auttaa uusia muokkaajia pääsemään helpommin alkuun. Muutokset perustuvat [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study viime vuoden aikana toteutettuun käytettävyystestaukseen]. Hankkeiden käytettävyyden parantaminen kuuluu Wikimedia Foundationin merkittävimpiin tehtäviin, ja lisää päivityksiä on tulossa. Lisätietoja saat aiheeseen liittyvästä Wikimedian [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogiviestistä].
 
 === Tässä tehtyjä muutoksia ===
-* '''Navigaatio:''' Paransimme navigaatiota sivujen lukemiseksi ja muokkaamiseksi. Nyt jokaisen sivun yläreunassa olevat välilehdet ovat selvempiä.
-* '''Muokkauspalkin parannukset:''' Olemme järjestäneet muokkauspalkin uudelleen, jotta sitä olisi helpompi käyttää. Nyt sivujen muotoilu on yksinkertaisempaa ja havainnollisempaa.
+* '''Navigaatio:''' Liikkumista on parannettu sivujen lukemisen ja muokkaamisen yhteydessä. Sivujen yläreunassa olevat välilehdet ovat nyt selvempiä.
+* '''Muokkauspalkin parannukset:''' Muokkauspalkki on järjestetty uudelleen, jotta sitä olisi helpompi käyttää. Sivujen muotoilu on nyt yksinkertaisempaa ja havainnollisempaa.
 * '''Ohjattu linkkitoiminto:''' Helppokäyttöinen työkalu mahdollistaa muille wikisivuille ja ulkoisille sivustoille vievien linkkien lisäämisen.
-* '''Hakuparannukset:''' Olemme parantaneet hakuehdotuksia, jotta löytäisit etsimäsi sivun nopeammin.
-* '''Muut uudet toiminnot:''' Olemme myös tuoneet esiin ohjatun taulukonlisäystoiminnon taulukoiden helpompaan lisäämiseen ja etsi ja korvaa -toiminnon yksinkertaisempaan muokkaamiseen.
-* '''Wikipedian logo:''' Olemme päivittäneet logoa. Lue lisää [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedian blogista].",
+* '''Hakuparannukset:''' Hakuehdotuksia on parannettu, jotta sivut löytyisivät nopeammin.
+* '''Muut uudet toiminnot:''' Taulukoiden lisäämisen helpottamiseksi on tehty ohjattu taulukonlisäystoiminto. Uusi etsi ja korvaa -toiminto helpottaa muokkaamista.
+* '''Wikipedian logo:''' Logoa on päivitetty. Lue lisää [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedian blogista].",
 	'prefswitch-main-logged-changes' => "* '''{{int:watch}}-välilehti''' on nyt tähti.
 * '''{{int:move}}-välilehti''' on nyt pudotusvalikossa hakupalkin vieressä.",
 	'prefswitch-main-feedback' => '=== Palautetta? ===
@@ -5943,21 +5943,21 @@ Your [[User:$1/$2.css|custom $2 styles]] will no longer be applied. You can add 
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
-| [[Image:VectorNavigation-en.png|401px|]]
+| [[Image:VectorNavigation-yo.png|401px|]]
 |-
 | Àwọrán ojúìran ìtọ́ka ìfojúkojú Wikipedia tuntun <small>[[Media:VectorNavigation-en.png|(nígbàngbà)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-en.png|401px|]]
+| [[Image:VectorEditorBasic-yo.png|401px|]]
 |-
 | Àwọrán ojúìran ìfojúkojú àtúnṣe ojúewé <small>[[Media:VectorEditorBasic-en.png|(nígbàngbà)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorLinkDialog-en.png|401px|]]
+| [[Image:VectorLinkDialog-yo.png|401px|]]
 |-
 | Àwọrán ojúìran pátákó àkíyèsí tuntun fún àwọn ìjápọ̀
 |}
@@ -5975,6 +5975,13 @@ Your [[User:$1/$2.css|custom $2 styles]] will no longer be applied. You can add 
 * '''Ìpele {{int:move}}''' nísìnyí wà nínú ìsílọlẹ̀ lẹ́gbẹ pẹpẹ àwárí.",
 	'prefswitch-main-feedback' => '==Ṣé ẹ ní ìdáhùn?==
 A fẹ́ràn láti mọ èrò yín. Ẹ jọ̀wọ́ ẹ ṣàbẹ̀wò sí [[$1|ojúewé ìdáhùn]] wa, tàbí tó bá jẹ́ pé ipá wa láti sàmúdára atòlànà kọ́mpútà wùyín, ẹ ṣàbẹ̀wò sí [http://usability.wikimedia.org wiki ìṣeémúlò] fún ìfitọ́nilétí lẹ́kùúnrẹ́rẹ́.',
+	'prefswitch-main-anon' => '===Gbé mi padà sẹ́yìn===
+[$1 Ẹ tẹ klik síbí láti jáwọ́ àwọn ìní tuntun]. A ó bèrè lọ́wọ́ yín pé kí ẹ wọlé ná tàbí kí ẹ dá àpamọ́.',
+	'prefswitch-main-on' => '===Gbé mi padà sẹ́yìn!===
+[$2 Ẹ tẹ klik síbí láti jáwọ́ àwọn ìní tuntun].',
+	'prefswitch-main-off' => '===Ẹ dán wọn wò!===
+[$1 Ẹ tẹ klik síbí látí lo àwọn ìní tuntun].',
+	'prefswitch-feedbackpage' => 'Project:Ìdáhùn ìrírí oníṣe',
 );
 
 /** Cantonese (粵語)

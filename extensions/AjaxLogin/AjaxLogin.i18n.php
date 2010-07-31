@@ -172,10 +172,11 @@ Zkontrolujte zda jste jméno napsali správně!',
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'ajaxlogin-desc' => "Blwch dynamig sy'n caniatáu defnyddwyr i fewngofnodi ac atgoffa cyfrinair",
+	'ajaxlogin-desc' => "Blwch dynamig sy'n rhoi cyfle i ddefnyddwyr fewngofnodi a chael gafael ar gyfrinair newydd",
 	'ajaxLogin1' => "I gwblhau mewngofnodi, mae'n rhaid ichi roi cyfrinair newydd.
 Bydd hwn yn mynd â chi i dudalen arall ac efallai byddwch yn colli'ch golygiadau cyfredol.",
 	'ajaxLogin2' => "Ydych chi'n siŵr?

@@ -5448,6 +5448,7 @@ $messages['pt-br'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Lockal
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -5636,7 +5637,7 @@ $messages['ru'] = array(
 	'fogg-select_file' => 'Выберите файл',
 	'fogg-select_new_file' => 'Выберите новый файл',
 	'fogg-select_url' => 'Выберите URL',
-	'fogg-check_for_firefogg' => 'Проверка Firefogg …',
+	'fogg-check_for_firefogg' => 'Проверка Firefogg…',
 	'fogg-installed' => 'Firefogg установлен,',
 	'fogg-not-installed' => 'Firefogg не установлен или не включён.',
 	'fogg-for_improved_uploads' => 'Для улучшенных загрузок:',

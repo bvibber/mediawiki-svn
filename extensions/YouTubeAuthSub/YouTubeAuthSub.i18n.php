@@ -1916,7 +1916,12 @@ $messages['kw'] = array(
  * @author Universal Life
  */
 $messages['lad'] = array(
+	'youtubeauthsub_title' => 'Títůlo',
+	'youtubeauthsub_password' => 'YouTube Kóddiche',
+	'youtubeauthsub_username' => 'YouTube Nombre de Usador',
 	'youtubeauthsub_category' => 'Categoría',
+	'youtubeauthsub_uploadbutton' => 'Cargar dosya',
+	'youtubeauthsub_viewpage' => 'I también, puedes [[$1|ver tu viddeo aquí]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

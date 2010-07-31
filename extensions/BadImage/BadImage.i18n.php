@@ -617,15 +617,16 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'badimages' => 'Nevalida bildo-listo',
-	'badimage-desc' => 'Etendu la kapablojn pri la malbona bildolisto de MediaWiki',
+	'badimages' => 'Listo de malbonaj bildoj',
+	'badimage-desc' => 'Plivastigu la kapablojn de MediaWiki pri la listo de malbonaj bildoj',
 	'badimages-add-btn' => 'Aldoni',
 	'badimages-added' => '$1 estis enlistigita.',
-	'badimages-count' => "Estas '''$1''' {{PLURAL:$1|bildo|bildoj}} en la listo de nevalidaj bildoj.",
+	'badimages-count' => "Estas '''$1''' {{PLURAL:$1|bildo|bildoj}} en la listo de malbonaj bildoj.",
 	'badimages-name' => 'Nomo:',
 	'badimages-not-added' => 'Ne eblas aldoni la bildon.',
 	'badimages-not-removed' => 'Ne eblas forigi la bildon.',
@@ -636,11 +637,11 @@ $messages['eo'] = array(
 	'badimages-removed' => '$1 estis forigita el la listo.',
 	'badimages-subheading' => 'Nunaj listanoj',
 	'badimages-unprivileged' => 'Vi ne sufiĉe rajtas ŝanĝi la liston.',
-	'badimages-log-name' => 'Nevalida bildo-listo',
-	'badimages-log-header' => 'Jen protokolo de ŝanĝoj por la [[{{MediaWiki:Badimages-page}}|listo de nevalidaj bildoj]].',
+	'badimages-log-name' => 'Listo de malbonaj bildoj',
+	'badimages-log-header' => 'Jen protokolo de ŝanĝoj por la [[{{MediaWiki:Badimages-page}}|listo de malbonaj bildoj]].',
 	'badimages-log-add' => 'Aldonis [[$1]] al la listo de nevalidaj bildoj',
 	'badimages-log-remove' => 'forigis [[$1]] el la listo de nevalidaj bildoj',
-	'badimages-page' => '{{ns:help}}:Listo de nevalidaj bildoj',
+	'badimages-page' => '{{ns:help}}:Listo de malbonaj bildoj',
 	'right-badimages' => 'Ĝisdatigi la liston de nebonvenaj bildoj',
 );
 
@@ -1172,6 +1173,7 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'badimages' => 'Ndetu nhunuuche di njọ',
+	'badimage-desc' => 'Dòró ihe ndetu nhuunuche njö nwèríkí me na nke NkáWiki',
 	'badimages-add-btn' => 'Tinyé',
 	'badimages-added' => '$1 banyèrè ndetu.',
 	'badimages-name' => 'Áhà:',
