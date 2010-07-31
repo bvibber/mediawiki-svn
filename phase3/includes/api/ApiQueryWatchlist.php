@@ -56,7 +56,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		$this->selectNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
 
 		$params = $this->extractRequestParams();
-		
+
 		$user = $this->getWatchlistUser( $params );
 
 		if ( !is_null( $params['prop'] ) && is_null( $resultPageSet ) ) {
@@ -74,7 +74,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_notificationtimestamp = isset( $prop['notificationtimestamp'] );
 
 			if ( $this->fld_patrol ) {
-				$this->getMain()->setVaryCookie();
 				if ( !$user->useRCPatrol() && !$user->useNPPatrol() ) {
 					$this->dieUsage( 'patrol property is not available', 'patrol' );
 				}
@@ -141,9 +140,9 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				$this->dieUsageMsg( array( 'show' ) );
 			}
 
-			// Check permissions.  FIXME: should this check $user instead of $wgUser?
+			// Check permissions.
 			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
-				$this->getMain()->setVaryCookie();
+				global $wgUser;
 				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 				}
@@ -272,7 +271,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
 			global $wgUser;
-			$this->getMain()->setVaryCookie();
 			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
 		}
 
@@ -313,9 +311,9 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'prop' => array(
-				APIBase::PARAM_ISMULTI => true,
-				APIBase::PARAM_DFLT => 'ids|title|flags',
-				APIBase::PARAM_TYPE => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_DFLT => 'ids|title|flags',
+				ApiBase::PARAM_TYPE => array(
 					'ids',
 					'title',
 					'flags',

@@ -28,6 +28,7 @@
  * @author Shizhao
  * @author Wmr89502270
  * @author Wong128hk
+ * @author Xiaomingyan
  * @author Yfdyh000
  */
 
@@ -61,7 +62,7 @@ $namespaceAliases = array(
 	'用户对话' => NS_USER_TALK,
 	'用户讨论' => NS_USER_TALK,
 	# This has never worked so it's unlikely to annoy anyone if I disable it -- TS
-	#'{{SITENAME}}_对话' => NS_PROJECT_TALK
+	# '{{SITENAME}}_对话' => NS_PROJECT_TALK
 	'图像' => NS_FILE,
 	'档案' => NS_FILE,
 	'文件' => NS_FILE,
@@ -74,14 +75,14 @@ $namespaceAliases = array(
 	'文件对话' => NS_FILE_TALK,
 	'文件讨论' => NS_FILE_TALK,
 	'模板'	=> NS_TEMPLATE,
-	'模板对话'=> NS_TEMPLATE_TALK,
-	'模板讨论'=> NS_TEMPLATE_TALK,
+	'模板对话' => NS_TEMPLATE_TALK,
+	'模板讨论' => NS_TEMPLATE_TALK,
 	'帮助'	=> NS_HELP,
-	'帮助对话'=> NS_HELP_TALK,
-	'帮助讨论'=> NS_HELP_TALK,
+	'帮助对话' => NS_HELP_TALK,
+	'帮助讨论' => NS_HELP_TALK,
 	'分类'	=> NS_CATEGORY,
-	'分类对话'=> NS_CATEGORY_TALK,
-	'分类讨论'=> NS_CATEGORY_TALK,
+	'分类对话' => NS_CATEGORY_TALK,
+	'分类讨论' => NS_CATEGORY_TALK,
 );
 
 $specialPageAliases = array(
@@ -207,12 +208,12 @@ $bookstoreList = array(
 $messages = array(
 # User preference toggles
 'tog-underline'               => '链接下划线：',
-'tog-highlightbroken'         => '无效链接显示为<a href="" class="new">这样</a>（否则：显示为<a href="" class="internal">?</a>）',
+'tog-highlightbroken'         => '无效链接显示为<a href="" class="new">这样</a>（否则显示为<a href="" class="internal">?</a>）',
 'tog-justify'                 => '段落对齐',
 'tog-hideminor'               => '在最近更改中隐藏小修改',
 'tog-hidepatrolled'           => '在最近更改中隐藏已巡查编辑',
 'tog-newpageshidepatrolled'   => '在新页面列表中隐藏已巡查页面',
-'tog-extendwatchlist'         => '增强监视列表以显示所有更改，而不仅是最近的',
+'tog-extendwatchlist'         => '增强监视列表以显示包括最近更改的所有更改',
 'tog-usenewrc'                => '启用增强最近更改（JavaScript）',
 'tog-numberheadings'          => '标题自动编号',
 'tog-showtoolbar'             => '显示编辑工具条（JavaScript）',
@@ -228,12 +229,12 @@ $messages = array(
 'tog-previewontop'            => '在编辑框上方显示预览',
 'tog-previewonfirst'          => '在首次编辑时显示预览',
 'tog-nocache'                 => '禁用页面缓存',
-'tog-enotifwatchlistpages'    => '在我的监视列表中的页面改变时发电子邮件通知我',
-'tog-enotifusertalkpages'     => '在我的讨论页更改时发邮件通知我',
-'tog-enotifminoredits'        => '在页面有小修改时也发邮件通知我',
+'tog-enotifwatchlistpages'    => '当我的监视列表中的页面改变时发送电子邮件通知我',
+'tog-enotifusertalkpages'     => '当我的讨论页更改时发送电子邮件通知我',
+'tog-enotifminoredits'        => '当页面有小修改时也发送电子邮件通知我',
 'tog-enotifrevealaddr'        => '在通知电子邮件列表中显示我的电子邮件地址',
 'tog-shownumberswatching'     => '显示监视此页的用户数',
-'tog-oldsig'                  => '原有签名的预览：',
+'tog-oldsig'                  => '原签名预览：',
 'tog-fancysig'                => '将签名以wiki文本对待（不产生自动链接）',
 'tog-externaleditor'          => '默认使用外部编辑器（供高级用户使用，需要在您的计算机上作出一些特别设置）',
 'tog-externaldiff'            => '默认使用外部差异分析（供高级用户使用，需要在您的计算机上作出一些特别设置）',
@@ -247,8 +248,8 @@ $messages = array(
 'tog-watchlisthideanons'      => '在监视列表中隐藏匿名用户',
 'tog-watchlisthidepatrolled'  => '在监视列表中隐藏已巡查的编辑',
 'tog-nolangconversion'        => '不进行字词转换',
-'tog-ccmeonemails'            => '把我发送给其他用户的邮件同时发送副本给我自己',
-'tog-diffonly'                => '在比较两个修订版本差异时不显示页面内容',
+'tog-ccmeonemails'            => '给我发送我给其他用户发送的电子邮件的副本',
+'tog-diffonly'                => '比较差异时不显示页面内容',
 'tog-showhiddencats'          => '显示隐藏分类',
 'tog-noconvertlink'           => '不进行标题／链接转换',
 'tog-norollbackdiff'          => '执行回退后不显示差异',
@@ -320,28 +321,27 @@ $messages = array(
 'pagecategories'                 => '$1个分类',
 'category_header'                => '分类“$1”的页面',
 'subcategories'                  => '子分类',
-'category-media-header'          => '分类“$1”的媒体',
-'category-empty'                 => "''这个分类中尚未包含任何页面或媒体。''",
+'category-media-header'          => '分类“$1”的媒体文件',
+'category-empty'                 => "''本分类尚未包含任何页面或媒体文件。''",
 'hidden-categories'              => '$1个隐藏分类',
 'hidden-category-category'       => '隐藏分类',
-'category-subcat-count'          => '{{PLURAL:$2|此分类只有下列一个子分类。|此分类包含下列$1个子分类，共有$2个子分类。}}',
-'category-subcat-count-limited'  => '此分类包含下列$1个子分类。',
-'category-article-count'         => '{{PLURAL:$2|此分类只有下列一个页面。|此分类包含下列$1个页面，共有$2个页面。}}',
-'category-article-count-limited' => '此分类包含下列$1个页面。',
-'category-file-count'            => '{{PLURAL:$2|此分类只有下列一个文件。|此分类包含下列$1个文件，共有$2个文件。}}',
-'category-file-count-limited'    => '此分类包含下列$1个文件。',
+'category-subcat-count'          => '{{PLURAL:$2|本分类只有下列一个子分类。|本分类包含下列$1个子分类，共有$2个子分类。}}',
+'category-subcat-count-limited'  => '本分类包含下列$1个子分类。',
+'category-article-count'         => '{{PLURAL:$2|本分类只有下列一个页面。|本分类包含下列$1个页面，共有$2个页面。}}',
+'category-article-count-limited' => '本分类包含下列$1个页面。',
+'category-file-count'            => '{{PLURAL:$2|本分类只有下列一个文件。|本分类包含下列$1个文件，共有$2个文件。}}',
+'category-file-count-limited'    => '本分类包含下列$1个文件。',
 'listingcontinuesabbrev'         => '续',
 'index-category'                 => '已做索引的页面',
 'noindex-category'               => '未做索引的页面',
 
-'mainpagetext'      => "'''已成功安装 MediaWiki。'''",
-'mainpagedocfooter' => '请访问 [http://meta.wikimedia.org/wiki/Help:Contents 用户手册] 以获得使用此 wiki 软件的信息！
+'mainpagetext'      => "'''已成功安装MediaWiki。'''",
+'mainpagedocfooter' => '请查阅[http://meta.wikimedia.org/wiki/Help:Contents 用户指南]以获取使用本wiki软件的信息！
 
 == 入门 ==
-
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki 配置设置列表]
-* [http://www.mediawiki.org/wiki/Manual:FAQ/zh-hans MediaWiki 常见问题解答]
-* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
+* [http://www.mediawiki.org/wiki/Manual:FAQ/zh-hans MediaWiki常见问题]
+* [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki发布邮件列表]',
 
 'about'         => '关于',
 'article'       => '内容页面',
@@ -349,8 +349,8 @@ $messages = array(
 'cancel'        => '取消',
 'moredotdotdot' => '更多……',
 'mypage'        => '我的页面',
-'mytalk'        => '我的讨论页',
-'anontalk'      => '该IP的对话页',
+'mytalk'        => '讨论页',
+'anontalk'      => '该IP的讨论页',
 'navigation'    => '导航',
 'and'           => '和',
 
@@ -362,11 +362,11 @@ $messages = array(
 'qbpageinfo'     => '页面信息',
 'qbmyoptions'    => '我的选项',
 'qbspecialpages' => '特殊页面',
-'faq'            => '常见问题解答',
-'faqpage'        => 'Project:常见问题解答',
+'faq'            => '常见问题',
+'faqpage'        => 'Project:常见问题',
 
 # Vector skin
-'vector-action-addsection'       => '加入主题',
+'vector-action-addsection'       => '添加话题',
 'vector-action-delete'           => '删除',
 'vector-action-move'             => '移动',
 'vector-action-protect'          => '保护',
@@ -447,14 +447,16 @@ $messages = array(
 'jumpto'            => '跳转到：',
 'jumptonavigation'  => '导航',
 'jumptosearch'      => '搜索',
-'view-pool-error'   => '抱歉，服务器在此时已超出负荷；这是由于过多用户试图查看该页面引起的。请在再次尝试访问前稍待片刻。
+'view-pool-error'   => '抱歉，服务器超负荷运转。
+过多用户正尝试查看本页面。
+请在再次尝试访问本页面之前稍等片刻。
 
 $1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => '关于{{SITENAME}}',
 'aboutpage'            => 'Project:关于',
-'copyright'            => '本站的全部文本内容在$1之条款下提供。',
+'copyright'            => '本站全部文字内容使用$1授权。',
 'copyrightpage'        => '{{ns:project}}:版权信息',
 'currentevents'        => '当前事件',
 'currentevents-url'    => 'Project:当前事件',
@@ -472,11 +474,11 @@ $1',
 'privacypage'          => 'Project:隐私政策',
 
 'badaccess'        => '权限错误',
-'badaccess-group0' => '你所请求执行的操作被禁止。',
-'badaccess-groups' => '您刚才的请求只有{{PLURAL:$2|这个|这些}}用户组的用户才能使用：$1',
+'badaccess-group0' => '你被禁止执行你刚才请求的操作。',
+'badaccess-groups' => '您刚才请求的操作只有以下用户组的用户才能使用：$1',
 
 'versionrequired'     => '需要版本为$1的MediaWiki',
-'versionrequiredtext' => '需要版本为$1的MediaWiki才能使用此页。参见[[Special:Version|版本页]]。',
+'versionrequiredtext' => '需要版本为$1的MediaWiki才能使用本页。请见[[Special:Version|版本页面]]。',
 
 'ok'                      => '确定',
 'retrievedfrom'           => '取自“$1”',
@@ -498,7 +500,7 @@ $1',
 'restorelink'             => '$1个被删除的版本',
 'feedlinks'               => '订阅：',
 'feed-invalid'            => '无效的订阅类型。',
-'feed-unavailable'        => '联合订阅并无提供',
+'feed-unavailable'        => '不提供联合订阅源',
 'site-rss-feed'           => '$1的RSS订阅',
 'site-atom-feed'          => '$1的Atom订阅',
 'page-rss-feed'           => '“$1”的RSS订阅',
@@ -519,7 +521,7 @@ $1',
 
 # Main script and global functions
 'nosuchaction'      => '这个命令不存在',
-'nosuchactiontext'  => 'URL指定的命令无效。你可能错误输入了URL地址，或者点击了错误的链接。这一错误亦有可能是由{{SITENAME}}所使用软件自身的错误导致的。',
+'nosuchactiontext'  => 'URL指定的命令无效。你可能误输入了URL地址，或者点击了错误的链接。这一错误亦有可能是由{{SITENAME}}所使用软件自身的错误导致的。',
 'nosuchspecialpage' => '此特殊页面不存在',
 'nospecialpagetext' => '<strong>您请求的特殊页面无效。</strong>
 
@@ -850,7 +852,7 @@ $2',
 'template-protected'               => '（保护）',
 'template-semiprotected'           => '（半保护）',
 'hiddencategories'                 => '这个页面是属于$1个隐藏分类的成员：',
-'edittools'                        => '<!-- 此处的文本将被显示在以下编辑和上传表单中。 -->',
+'edittools'                        => '<!-- 此处的文本将被显示在编辑和上传表单以下。 -->',
 'nocreatetitle'                    => '创建页面受限',
 'nocreatetext'                     => '{{SITENAME}}限制了创建新页面的功能。你可以返回并编辑已有的页面，或者[[Special:UserLogin|登录或创建新账户]]。',
 'nocreate-loggedin'                => '您并无权限去创建新页面。',
@@ -1172,7 +1174,7 @@ $1",
 
 # Preferences page
 'preferences'                   => '参数设置',
-'mypreferences'                 => '我的参数设置',
+'mypreferences'                 => '设置',
 'prefs-edits'                   => '编辑数量：',
 'prefsnologin'                  => '尚未登录',
 'prefsnologintext'              => '您必须先<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登录]</span>才能设置个人参数。',
@@ -1260,9 +1262,9 @@ $1",
 'gender-female'                 => '女',
 'prefs-help-gender'             => '可选：用以软件中的性别指定。此项资料将会被公开。',
 'email'                         => '电子邮箱',
-'prefs-help-realname'           => '真实姓名是可选的。
-如果您选择提供它，那它便用以对您的贡献署名。',
-'prefs-help-email'              => '电子邮件是可选的，但当您忘记您的个密码时需要将新密码重设寄回给您。您亦可以在您没有公开自己的用户身份时通过您的用户页或用户讨论页与您联系。',
+'prefs-help-realname'           => '真实姓名为选填项。
+如果提供，可用于贡献署名。',
+'prefs-help-email'              => '电子邮件为选填项，但是在重设密码时，需要用电子邮件将密码寄给您。你可以选择让别的用户通过用户页或用户讨论页与你联系，这样可不公开您的身份。',
 'prefs-help-email-required'     => '需要电子邮件地址。',
 'prefs-info'                    => '基本资料',
 'prefs-i18n'                    => '国际化',
@@ -1274,6 +1276,9 @@ $1",
 'prefs-advancedrendering'       => '高级选项',
 'prefs-advancedsearchoptions'   => '高级选项',
 'prefs-advancedwatchlist'       => '高级选项',
+'prefs-displayrc'               => '显示选项',
+'prefs-displaysearchoptions'    => '显示选项',
+'prefs-displaywatchlist'        => '显示选项',
 'prefs-diffs'                   => '差异',
 
 # User rights
@@ -1559,7 +1564,6 @@ $1",
 如果你仍然想去上传它的话，请返回并用一个新的名称来上传此文件。[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => '这个文件与以下{{PLURAL:$1|一|多}}个文件重复：',
 'file-deleted-duplicate'      => '一个相同名称的文件 （[[$1]]） 在先前删除过。您应该在重新上传之前检查一下该文件之删除纪录。',
-'successfulupload'            => '上传成功',
 'uploadwarning'               => '上传警告',
 'uploadwarning-text'          => '请修改以下的文件描述并重试。',
 'savefile'                    => '保存文件',
@@ -1587,11 +1591,13 @@ $1",
 您应该要考虑一下继续上传一个文件页面是否合适。
 为方便起见，这一个文件的删除记录已经在下面提供:",
 'filename-bad-prefix'         => '您上传的文件名称是以<strong>“$1”</strong>作为开头，通常这种没有含意的文件名称是由数码相机中自动编排。请在您的文件中重新选择一个更加有意义的文件名称。',
-'upload-successful-msg'       => '你的上传可以在这里找到：$1',
+'upload-success-subj'         => '上传成功',
+'upload-success-msg'          => '你的上传可以在这里找到：[[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => '上传错误',
 'upload-failure-msg'          => '有一个问题与您的上传有关：
 
 $1',
+'upload-warning-subj'         => '上传警告',
 
 'upload-proto-error'        => '协议错误',
 'upload-proto-error-text'   => '远程上传要求 URL 以 <code>http://</code> 或 <code>ftp://</code> 开头。',
@@ -1776,7 +1782,7 @@ Template:消除歧義',
 'disambiguations-text' => '以下的页面都有到<b>消歧义页</b>的链接, 但它们应该是链到适当的标题。<br />一个页面会被视为消歧义页如果它是链自[[MediaWiki:Disambiguationspage]]。',
 
 'doubleredirects'            => '双重重定向页面',
-'doubleredirectstext'        => '此页列出了所有重定向到另一重定向页面的页面。每一行都包含有到第一和第二个重定向页面的链接，以及第二个重定向页面的目标——通常就是“真正的”目标页面，亦即是第一个重定向页面应该指向的页面。<s>已划去</s>的为已经解决的项目。',
+'doubleredirectstext'        => '此页列出了所有重定向到另一重定向页面的页面。每一行都包含有到第一和第二个重定向页面的链接，以及第二个重定向页面的目标——通常就是“真正的”目标页面，亦即是第一个重定向页面应该指向的页面。<del>已划去</del>的为已经解决的项目。',
 'double-redirect-fixed-move' => '[[$1]]已经完成移动，它现在重定向到[[$2]]。',
 'double-redirect-fixer'      => '重定向修正器',
 
@@ -1920,10 +1926,10 @@ Template:消除歧義',
 
 # Special:ActiveUsers
 'activeusers'            => '活跃用户列表',
-'activeusers-intro'      => '这个是在最近$1天之内有一些动作的用户列表。',
-'activeusers-count'      => '最近$3天内的$1次编辑',
+'activeusers-intro'      => '这个列表列出了最近$1天进行过操作的用户。',
+'activeusers-count'      => '最近$3天编辑了$1次',
 'activeusers-from'       => '显示用户开始于：',
-'activeusers-hidebots'   => '隱藏機器人',
+'activeusers-hidebots'   => '隐藏机器人',
 'activeusers-hidesysops' => '隐藏管理员',
 'activeusers-noresult'   => '找不到用户。',
 
@@ -1989,7 +1995,7 @@ Template:消除歧義',
 
 # Watchlist
 'watchlist'            => '监视列表',
-'mywatchlist'          => '我的监视列表',
+'mywatchlist'          => '监视列表',
 'watchlistfor'         => "（'''$1'''的监视列表'）",
 'nowatchlist'          => '您的监视列表为空。',
 'watchlistanontext'    => '请$1以查看或编辑您的监视列表。',
@@ -2228,7 +2234,7 @@ $1',
 # Contributions
 'contributions'       => '用户贡献',
 'contributions-title' => '$1的用户贡献',
-'mycontris'           => '我的贡献',
+'mycontris'           => '贡献',
 'contribsub2'         => '$1的贡献 （$2）',
 'nocontribs'          => '没有找到符合特征的更改。',
 'uctop'               => '（最新修改）',
@@ -2477,6 +2483,7 @@ $1已经被封锁。您是否想更改这个设置？',
 'immobile-source-page'         => '此页面不能移动。',
 'immobile-target-page'         => '无法移动至该目标标题。',
 'imagenocrossnamespace'        => '无法将文件移动到非文件名字空间',
+'nonfile-cannot-move-to-file'  => '无法将非文件移动到文件命名空间',
 'imagetypemismatch'            => '该新扩展名与其类型不匹配',
 'imageinvalidfilename'         => '目标文件名称无效',
 'fix-double-redirects'         => '更新所有指向原始标题的重定向',
@@ -2774,7 +2781,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''警告'''：该文件类型可能包含恶意代码。
-运行它可能对您的系统带来危险。<hr />",
+运行它可能对您的系统带来危险。",
 'imagemaxsize'         => "图像大小限制：<br />''（用于文件描述页面）''",
 'thumbsize'            => '缩略图大小：',
 'widthheightpage'      => '$1×$2，$3页',
@@ -3121,10 +3128,10 @@ Variants for Chinese language
 点击以下按钮可向您的邮箱发送一封确认邮件。该邮件包含有一行代码链接；
 请在您的浏览器中加载此链接以确认您的邮箱地址是有效的。',
 'confirmemail_pending'      => '一个确认码已经被发送到您的邮箱，您可能需要等几分钟才能收到。如果无法收到，请再申请一个新的确认码。',
-'confirmemail_send'         => '邮发确认代码',
+'confirmemail_send'         => '邮件发送确认代码',
 'confirmemail_sent'         => '确认邮件已发送。',
-'confirmemail_oncreate'     => '一个确认代码已经被发送到您的邮箱。该代码并不要求您进行登录，
-但若您要启用在此 wiki 上的任何基于电子邮件的功能，您必须先提交此代码。',
+'confirmemail_oncreate'     => '一个确认代码已经被发送到您的邮箱。登录时无需使用该代码，
+但若要启用在此维基的电子邮件相关功能，则必须先提交此代码。',
 'confirmemail_sendfailed'   => '{{SITENAME}}不能发送确认邮件，请检查您的邮箱地址是否包含非法字符。
 
 邮件传送员回应：$1',

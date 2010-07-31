@@ -91,12 +91,16 @@ class Spyc {
 
 	/**** Private Properties ****/
 
+	/**
+	 * Unused variables, but just commented rather than deleting
+	 * to save altering the library
 	private $_haveRefs;
 	private $_allNodes;
 	private $_lastIndent;
 	private $_lastNode;
 	private $_inBlock;
 	private $_isInline;
+	**/
 	private $_dumpIndent;
 	private $_dumpWordWrap;
 
@@ -190,7 +194,7 @@ class Spyc {
 		} else {
 			 if ( $key == '*' ) // bug 21922 - Quote asterix used as keys
 				$key = "'*'";
-		
+
 			// It's mapped
 			if ( $value !== '' && !is_null( $value ) )
 				$string = $spaces . $key . ': ' . $value . "\n";

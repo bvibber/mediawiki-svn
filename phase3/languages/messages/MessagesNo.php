@@ -66,7 +66,7 @@ $namespaceAliases = array(
 	'Bildediskusjon' => NS_FILE_TALK,
 );
 
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 $linkTrail = '/^([æøåa-z]+)(.*)$/sDu';
 
 $dateFormats = array(
@@ -899,9 +899,9 @@ Det siste loggelementet er oppgitt under som referanse:",
 'permissionserrorstext-withaction' => 'Du har ikke tillatelse til å $2 {{PLURAL:$1|på grunn av|av følgende grunner}}:',
 'recreate-moveddeleted-warn'       => "Advarsel: Du gjenskaper en side som tidligere har blitt slettet.'''
 
-Du burde vurdere hvorvidt det er passende å fortsette å redigere denne siden. 
+Du burde vurdere hvorvidt det er passende å fortsette å redigere denne siden.
 Slette- og flytteloggen for denne siden gjengis her:",
-'moveddeleted-notice'              => 'Denne siden har blitt slettet. 
+'moveddeleted-notice'              => 'Denne siden har blitt slettet.
 Slette- og flytteloggen vises nedenfor.',
 'log-fulllog'                      => 'Vis fullstendig logg',
 'edit-hook-aborted'                => 'Redigering avbrutt av en funksjon, uten forklaring.',
@@ -972,7 +972,7 @@ Forklaring: '''({{int:cur}})''' = forskjell fra nåværende revisjon, '''({{int:
 'rev-deleted-user'            => '(brukernavn fjernet)',
 'rev-deleted-event'           => '(fjernet loggoppføring)',
 'rev-deleted-user-contribs'   => '[brukernavn eller IP-adresse fjernet – redigeringen vises ikke blant bidragene]',
-'rev-deleted-text-permission' => "Denne revisjonen har blitt '''slettet'''. 
+'rev-deleted-text-permission' => "Denne revisjonen har blitt '''slettet'''.
 Det kan være detaljer i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} slettingsloggen].",
 'rev-deleted-text-unhide'     => "Denne sideversjonen har blitt '''slettet'''.
 Det kan være detaljer i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} slettingsloggen].
@@ -1173,7 +1173,7 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 'search-section'                   => '(avsnitt $1)',
 'search-suggest'                   => 'Mente du: $1',
 'search-interwiki-caption'         => 'Søsterprosjekt',
-'search-interwiki-default'         => '$1 resultat:',
+'search-interwiki-default'         => '$1-resultat:',
 'search-interwiki-more'            => '(mer)',
 'search-mwsuggest-enabled'         => 'med forslag',
 'search-mwsuggest-disabled'        => 'ingen forslag',
@@ -1313,6 +1313,9 @@ Du kan også la velge å la andre brukere kontakte deg via brukersiden din uten 
 'prefs-advancedrendering'       => 'Avanserte alternativ',
 'prefs-advancedsearchoptions'   => 'Avanserte alternativ',
 'prefs-advancedwatchlist'       => 'Avanserte alternativ',
+'prefs-displayrc'               => 'Visningsalternativ',
+'prefs-displaysearchoptions'    => 'Visningsalternativer',
+'prefs-displaywatchlist'        => 'Visningsalternativer',
 'prefs-diffs'                   => 'Forskjeller',
 
 # User rights
@@ -1601,7 +1604,6 @@ Om du fortsatt ønsker å laste opp fila, gå tilbake og last den opp under et n
 Om du fortsatt ønsker å laste opp fila, gå tilbake og last den opp under et nytt navn. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Denne filen er en dublett av følgende {{PLURAL:$1|fil|filer}}:',
 'file-deleted-duplicate'      => 'En fil identisk med denne filen ([[$1]]) har tidligere blitt slettet. Du bør sjekke denne filens slettehistorikk før du prøver å laste den opp på nytt.',
-'successfulupload'            => 'Opplastingen er gjennomført',
 'uploadwarning'               => 'Opplastingsadvarsel',
 'uploadwarning-text'          => 'Vennligst endre filbeskrivelsen nedenfor og prøv igjen.',
 'savefile'                    => 'Lagre fil',
@@ -1641,11 +1643,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # div.
  #</pre> <!-- leave this line exactly as it is -->',
-'upload-successful-msg'       => 'Din opplasting er tilgjengelig her: $1',
+'upload-success-subj'         => 'Opplastingen er gjennomført',
+'upload-success-msg'          => 'Din opplasting fra [$2] var vellykket. Den er tilgjengelig her: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Opplastingsproblem',
 'upload-failure-msg'          => 'Det oppsto et problem med opplastingen din:
 
 $1',
+'upload-warning-subj'         => 'Opplastingsadvarsel',
+'upload-warning-msg'          => 'Det oppsto et problem med opplastingen din fra [$2]. Du kan gå tilbake til [[Special:Upload/stash/$1|opplastingsskjemaet]] for å løse dette problemet.',
 
 'upload-proto-error'        => 'Gal protokoll',
 'upload-proto-error-text'   => 'Fjernopplasting behøver adresser som begynner med <code>http://</code> eller <code>ftp://</code>.',
@@ -1832,7 +1837,7 @@ En side anses om en pekerside om den inneholder en mal som det lenkes til fra [[
 'doubleredirects'            => 'Doble omdirigeringer',
 'doubleredirectstext'        => 'Denne siden lister opp de sidene som er omdirigeringer til andre omdirigeringssider.
 Hver rad inneholder lenker til første og andre omdirigering, samt målet for den andre omdirigeringen, som vanligvis er den «virkelige» målsiden som den første omdirigeringen burde peke til.
-<s>Gjennomstrøkne</s> sider har blitt fikset.',
+<del>Gjennomstrøkne</del> sider har blitt fikset.',
 'double-redirect-fixed-move' => '[[$1]] har blitt flyttet, og er nå en omdirigering til [[$2]]',
 'double-redirect-fixer'      => 'Omdirigeringsfikser',
 
@@ -2527,6 +2532,7 @@ Målsiden «[[:$1]]» finnes allerede. Vil du slette den så denne siden kan fly
 'immobile-source-page'         => 'Denne siden kan ikke flyttes.',
 'immobile-target-page'         => 'Kan ikke flytte til det navnet.',
 'imagenocrossnamespace'        => 'Kan ikke flytte filer til andre navnerom enn filnavnerommet',
+'nonfile-cannot-move-to-file'  => 'Kan ikke flytte ikke-filer til filnavnerom',
 'imagetypemismatch'            => 'Den nye filendelsen tilsvarer ikke filtypen',
 'imageinvalidfilename'         => 'Målnavnet er ugyldig',
 'fix-double-redirects'         => 'Oppdater omdirigeringer som fører til den gamle tittelen',
@@ -2822,7 +2828,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Advarsel''': Denne fila kan inneholde farlig kode.
-Ved å åpne den kan systemet ditt kompromitteres.<hr />",
+Ved å åpne den kan systemet ditt kompromitteres.",
 'imagemaxsize'         => "Bildestørrelsesgrense:<br />''(for filbeskrivelsessider)''",
 'thumbsize'            => 'Miniatyrbildestørrelse:',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|én side|$3 sider}}',

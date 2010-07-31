@@ -491,7 +491,7 @@ class Parser {
 	 * @private
 	 * @static
 	 */
-	function getRandomString() {
+	static function getRandomString() {
 		return dechex( mt_rand( 0, 0x7fffffff ) ) . dechex( mt_rand( 0, 0x7fffffff ) );
 	}
 
@@ -945,7 +945,7 @@ class Parser {
 					$last_tag = array_pop( $last_tag_history );
 
 					if ( array_pop( $td_history ) ) {
-						$previous = "</{$last_tag}>{$previous}";
+						$previous = "</{$last_tag}>\n{$previous}";
 					}
 
 					if ( $first_character === '|' ) {
@@ -3021,7 +3021,7 @@ class Parser {
 			if ( $id !== false ) {
 				$text = $this->getVariableValue( $id, $frame );
 				if ( MagicWord::getCacheTTL( $id ) > -1 ) {
-					$this->mOutput->mContainsOldMagic = true;
+					$this->mOutput->updateCacheExpiry( MagicWord::getCacheTTL( $id ) );
 				}
 				$found = true;
 			}
@@ -3316,7 +3316,7 @@ class Parser {
 	 * Fetch the unparsed text of a template and register a reference to it.
 	 */
 	function fetchTemplateAndTitle( $title ) {
-		$templateCb = $this->mOptions->getTemplateCallback();
+		$templateCb = $this->mOptions->getTemplateCallback(); # Defaults to Parser::statelessFetchTemplate()
 		$stuff = call_user_func( $templateCb, $title, $this );
 		$text = $stuff['text'];
 		$finalTitle = isset( $stuff['finalTitle'] ) ? $stuff['finalTitle'] : $title;
@@ -3496,8 +3496,6 @@ class Parser {
 	 * @param $frame PPFrame
 	 */
 	function extensionSubstitution( $params, $frame ) {
-		global $wgRawHtml, $wgContLang;
-
 		$name = $frame->expand( $params['name'] );
 		$attrText = !isset( $params['attr'] ) ? null : $frame->expand( $params['attr'] );
 		$content = !isset( $params['inner'] ) ? null : $frame->expand( $params['inner'] );
@@ -4030,102 +4028,6 @@ class Parser {
 			return str_replace( '<!--MWTOC-->', $toc, $full );
 		} else {
 			return $full;
-		}
-	}
-
-	/**
-	 * Merge $tree2 into $tree1 by replacing the section with index
-	 * $section in $tree1 and its descendants with the sections in $tree2.
-	 * Note that in the returned section tree, only the 'index' and
-	 * 'byteoffset' fields are guaranteed to be correct.
-	 *
-	 * @param $tree1 Array: section tree from ParserOutput::getSectons()
-	*  @param $tree2 Array: section tree
-	 * @param $section Integer: section index
-	 * @param $title Title: Title both section trees come from
-	 * @param $len2 Integer: length of the original wikitext for $tree2
-	 * @return Array: merged section tree
-	 */
-	public static function mergeSectionTrees( $tree1, $tree2, $section, $title, $len2 ) {
-		global $wgContLang;
-		$newTree = array();
-		$targetLevel = false;
-		$merged = false;
-		$lastLevel = 1;
-		$nextIndex = 1;
-		$numbering = array( 0 );
-		$titletext = $title->getPrefixedDBkey();
-		foreach ( $tree1 as $s ) {
-			if ( $targetLevel !== false ) {
-				if ( $s['level'] <= $targetLevel ) {
-					# We've skipped enough
-					$targetLevel = false;
-				} else {
-					continue;
-				}
-			}
-			if ( $s['index'] != $section ||
-					$s['fromtitle'] != $titletext ) {
-				self::incrementNumbering( $numbering,
-					$s['toclevel'], $lastLevel );
-
-				# Rewrite index, byteoffset and number
-				if ( $s['fromtitle'] == $titletext ) {
-					$s['index'] = $nextIndex++;
-					if ( $merged ) {
-						$s['byteoffset'] += $len2;
-					}
-				}
-				$s['number']  = implode( '.', array_map(
-					array( $wgContLang, 'formatnum' ),
-					$numbering ) );
-				$lastLevel = $s['toclevel'];
-				$newTree[] = $s;
-			} else {
-				# We're at $section
-				# Insert sections from $tree2 here
-				foreach ( $tree2 as $s2 ) {
-					# Rewrite the fields in $s2
-					# before inserting it
-					$s2['toclevel'] += $s['toclevel'] - 1;
-					$s2['level'] += $s['level'] - 1;
-					$s2['index'] = $nextIndex++;
-					$s2['byteoffset'] += $s['byteoffset'];
-
-					self::incrementNumbering( $numbering,
-						$s2['toclevel'], $lastLevel );
-					$s2['number']  = implode( '.', array_map(
-						array( $wgContLang, 'formatnum' ),
-						$numbering ) );
-					$lastLevel = $s2['toclevel'];
-					$newTree[] = $s2;
-				}
-				# Skip all descendants of $section in $tree1
-				$targetLevel = $s['level'];
-				$merged = true;
-			}
-		}
-		return $newTree;
-	}
-
-	/**
-	 * Increment a section number. Helper function for mergeSectionTrees()
-	 *
-	 * @param $number Array representing a section number
-	 * @param $level Integer: current TOC level (depth)
-	 * @param $lastLevel Integer: level of previous TOC entry
-	 */
-	private static function incrementNumbering( &$number, $level, $lastLevel ) {
-		if ( $level > $lastLevel ) {
-			$number[$level - 1] = 1;
-		} elseif ( $level < $lastLevel ) {
-			foreach ( $number as $key => $unused )
-				if ( $key >= $level ) {
-					unset( $number[$key] );
-				}
-			$number[$level - 1]++;
-		} else {
-			$number[$level - 1]++;
 		}
 	}
 
@@ -5151,15 +5053,10 @@ class Parser {
 	 * @return string
 	 */
 	public function getDefaultSort() {
-		global $wgCategoryPrefixedDefaultSortkey;
 		if ( $this->mDefaultSort !== false ) {
 			return $this->mDefaultSort;
-		} elseif ( $this->mTitle->getNamespace() == NS_CATEGORY ||
-			!$wgCategoryPrefixedDefaultSortkey )
-		{
-			return $this->mTitle->getText();
 		} else {
-			return $this->mTitle->getPrefixedText();
+			return $this->mTitle->getCategorySortkey();
 		}
 	}
 

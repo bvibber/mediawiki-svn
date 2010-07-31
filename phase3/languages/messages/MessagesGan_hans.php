@@ -573,9 +573,9 @@ $2',
 'previewnote'                      => "'''请记到个光系预览，内容哈冇保存！'''",
 'previewconflict'                  => '个只预览系上首文字编辑区𠮶内容。倷选择保存𠮶话佢才会保存到。',
 'session_fail_preview'             => "'''对伓住！个只段落𠮶资料跌吥嘞，偶个俚处理伓正倷𠮶编辑。请试过吖。哈系扤伓正𠮶话，试吖退出后登入过。'''",
-'session_fail_preview_html'        => "'''对伓住！相关𠮶程式资料跌吥嘞，偶个俚处理伓正倷𠮶编辑。''' 
+'session_fail_preview_html'        => "'''对伓住！相关𠮶程式资料跌吥嘞，偶个俚处理伓正倷𠮶编辑。'''
 
-''个只wiki开放正嘞原HTML码，预览弆到嘞以防止JavaScript𠮶攻击。'' 
+''个只wiki开放正嘞原HTML码，预览弆到嘞以防止JavaScript𠮶攻击。''
 
 '''要系佢系合法编辑𠮶，请试过吖。哈系扤伓正𠮶话，试吖退出后登入过。'''",
 'token_suffix_mismatch'            => "'''倷𠮶用户端𠮶编辑信毁吥嘞嚸标点符号字符，啖𠮶话倷𠮶编辑就拖拒绝嘞。
@@ -953,7 +953,6 @@ $2',
 'file-thumbnail-no'           => "个只档案名系以'''<tt>$1</tt>'''开头。佢好像一只图像𠮶缩小版''（缩图）''。如果倷有个只图像𠮶完整版，伓然请再改过只档名。",
 'fileexists-forbidden'        => '个只档案名已存在；请回头并换过只新𠮶名称来上传个只档案。[[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '到共用档案库里度有嘞同名𠮶档案；请回头并换过只新𠮶名称来上传个只档案。[[File:$1|thumb|center|$1]]',
-'successfulupload'            => '上传正嘞',
 'uploadwarning'               => '上传警告',
 'savefile'                    => '保存盘案',
 'uploadedimage'               => '上传正嘞"[[$1]]"',
@@ -971,6 +970,7 @@ $2',
 倷要想正系真𠮶上传个只档案。
 为到方便起见，个只档案𠮶删除记录到下底提供嘞:",
 'filename-bad-prefix'         => "倷上传𠮶档案名系以'''\"\$1\"'''做开头𠮶，通常个种冇意义𠮶名字系数码相机度𠮶自动编排。请到倷𠮶档案拣过只更加有意义𠮶名字。",
+'upload-success-subj'         => '上传正嘞',
 
 'upload-proto-error'      => '协定错误',
 'upload-proto-error-text' => '远程上传要求 URL 用 <code>http://</code> 或 <code>ftp://</code> 开头。',
@@ -1834,7 +1834,7 @@ $1',
 'nextdiff'     => '下一只差异→',
 
 # Media information
-'mediawarning'         => "'''警告''': 话伓定个只档案含到恶意代码，执行佢话伓定会损坏倷𠮶系统。<hr />",
+'mediawarning'         => "'''警告''': 话伓定个只档案含到恶意代码，执行佢话伓定会损坏倷𠮶系统。",
 'imagemaxsize'         => '档案解释页𠮶图像大细限制到:',
 'thumbsize'            => '缩略图大细:',
 'widthheightpage'      => '$1×$2,$3页',
@@ -2155,11 +2155,11 @@ $1',
 'confirmemail_loggedin'   => '倷𠮶email地址已得到确认。',
 'confirmemail_error'      => '确认过程出错。',
 'confirmemail_subject'    => '{{SITENAME}}电子邮件地址确认',
-'confirmemail_body'       => 'IP地址$1𠮶用户（可能系倷）到{{SITENAME}}注册嘞帐户"$2"，并一同用嘞倷𠮶email地址。 
+'confirmemail_body'       => 'IP地址$1𠮶用户（可能系倷）到{{SITENAME}}注册嘞帐户"$2"，并一同用嘞倷𠮶email地址。
 
-请确认个只帐户系归倷𠮶，接到启动{{SITENAME}}里头𠮶email功能。请到浏览器开到下底𠮶链接: 
+请确认个只帐户系归倷𠮶，接到启动{{SITENAME}}里头𠮶email功能。请到浏览器开到下底𠮶链接:
 
-$3 
+$3
 
 如果个*伓系*倷，就冇必要打开个只链接。确认码会到$4时间过期。',
 

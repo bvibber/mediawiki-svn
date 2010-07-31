@@ -1,52 +1,90 @@
 <?php
 
+/**
+ * Class for manipulating LocalSettings.
+ *
+ * @ingroup Deployment
+ * @since 1.17
+ */
 class LocalSettingsGenerator {
-	private $extensions, $values = array();
-	private $configPath, $dbSettings = '';
+	
+	private $extensions = array();
+	private $values = array();
+	private $configPath = '';
+	private $dbSettings = '';
 	private $safeMode = false;
+	
+	/**
+	 * @var Installer
+	 */
 	private $installer;
 
 	/**
 	 * Constructor.
+	 * 
 	 * @param $installer Installer subclass
 	 */
 	public function __construct( Installer $installer ) {
 		$this->installer = $installer;
+		
 		$this->configPath = $installer->getVar( 'IP' ) . '/config';
 		$this->extensions = $installer->getVar( '_Extensions' );
+		
 		$db = $installer->getDBInstaller( $installer->getVar( 'wgDBtype' ) );
 
-		$confItems = array_merge( array( 'wgScriptPath', 'wgScriptExtension',
-			'wgPasswordSender', 'wgImageMagickConvertCommand', 'wgShellLocale',
-			'wgLanguageCode', 'wgEnableEmail', 'wgEnableUserEmail', 'wgDiff3',
-			'wgEnotifUserTalk', 'wgEnotifWatchlist', 'wgEmailAuthentication',
-			'wgDBtype', 'wgSecretKey', 'wgRightsUrl', 'wgSitename', 'wgRightsIcon',
-			'wgRightsText', 'wgRightsCode', 'wgMainCacheType', 'wgEnableUploads',
-			'wgMainCacheType', '_MemCachedServers', 'wgDBserver', 'wgDBuser',
-			'wgDBpassword', 'wgUseInstantCommons' ), $db->getGlobalNames() );
+		$confItems = array_merge(
+			array(
+				'wgScriptPath', 'wgScriptExtension',
+				'wgPasswordSender', 'wgImageMagickConvertCommand', 'wgShellLocale',
+				'wgLanguageCode', 'wgEnableEmail', 'wgEnableUserEmail', 'wgDiff3',
+				'wgEnotifUserTalk', 'wgEnotifWatchlist', 'wgEmailAuthentication',
+				'wgDBtype', 'wgSecretKey', 'wgRightsUrl', 'wgSitename', 'wgRightsIcon',
+				'wgRightsText', 'wgRightsCode', 'wgMainCacheType', 'wgEnableUploads',
+				'wgMainCacheType', '_MemCachedServers', 'wgDBserver', 'wgDBuser',
+				'wgDBpassword', 'wgUseInstantCommons'
+			),
+			$db->getGlobalNames()
+		);
+		
 		$unescaped = array( 'wgRightsIcon' );
-		$boolItems = array( 'wgEnableEmail', 'wgEnableUserEmail', 'wgEnotifUserTalk',
-			'wgEnotifWatchlist', 'wgEmailAuthentication', 'wgEnableUploads', 'wgUseInstantCommons' );
+		$boolItems = array( 
+			'wgEnableEmail', 'wgEnableUserEmail', 'wgEnotifUserTalk',
+			'wgEnotifWatchlist', 'wgEmailAuthentication', 'wgEnableUploads', 'wgUseInstantCommons'
+		);
+		
 		foreach( $confItems as $c ) {
 			$val = $installer->getVar( $c );
+			
 			if( in_array( $c, $boolItems ) ) {
 				$val = wfBoolToStr( $val );
 			}
+			
 			if ( !in_array( $c, $unescaped ) ) {
 				$val = self::escapePhpString( $val );
 			}
+			
 			$this->values[$c] = $val;
 		}
+		
 		$this->dbSettings = $db->getLocalSettings();
 		$this->safeMode = $installer->getVar( '_SafeMode' );
 		$this->values['wgEmergencyContact'] = $this->values['wgPasswordSender'];
 	}
 
+	/**
+	 * Returns the escaped version of a string of php code.
+	 * 
+	 * @param $string String
+	 * 
+	 * @return String
+	 */
 	public static function escapePhpString( $string ) {
 		if ( is_array( $string ) || is_object( $string ) ) {
 			return false;
 		}
-		return strtr( $string,
+		
+		return strtr(
+			$string,
 			array(
 				"\n" => "\\n",
 				"\r" => "\\r",
@@ -54,18 +92,22 @@ class LocalSettingsGenerator {
 				"\\" => "\\\\",
 				"\$" => "\\\$",
 				"\"" => "\\\""
-			));
+			)
+		);
 	}
 
 	/**
 	 * Return the full text of the generated LocalSettings.php file,
 	 * including the extensions
-	 * @returns String
+	 * 
+	 * @return String
 	 */
 	public function getText() {
 		$localSettings = $this->getDefaultText();
+		
 		if( count( $this->extensions ) ) {
 			$localSettings .= "\n# The following extensions were automatically enabled:\n";
+			
 			foreach( $this->extensions as $ext ) {
 				$localSettings .= "require( 'extensions/$ext/$ext.php' );\n";
 			}
@@ -74,21 +116,30 @@ class LocalSettingsGenerator {
 		return $localSettings;
 	}
 
+	/**
+	 * @return String
+	 */
 	private function buildMemcachedServerList() {
 		$servers = $this->values['_MemCachedServers'];
+		
 		if( !$servers ) {
 			return 'array()';
 		} else {
 			$ret = 'array( ';
 			$servers = explode( ',', $servers );
+			
 			foreach( $servers as $srv ) {
 				$srv = trim( $srv );
 				$ret .= "'$srv', ";
 			}
+			
 			return rtrim( $ret, ', ' ) . ' )';
 		}
 	}
 
+	/**
+	 * @return String
+	 */	
 	private function getDefaultText() {
 		if( !$this->values['wgImageMagickConvertCommand'] ) {
 			$this->values['wgImageMagickConvertCommand'] = '/usr/bin/convert';
@@ -96,14 +147,17 @@ class LocalSettingsGenerator {
 		} else {
 			$magic = '';
 		}
+		
 		if( !$this->values['wgShellLocale'] ) {
 			$this->values['wgShellLocale'] = 'en_US.UTF-8';
 			$locale = '#';
 		} else {
 			$locale = '';
 		}
+		
 		$rights = $this->values['wgRightsUrl'] ? '' : '#';
 		$hashedUploads = $this->safeMode ? '#' : '';
+		
 		switch( $this->values['wgMainCacheType'] ) {
 			case 'anything':
 			case 'db':
@@ -115,6 +169,7 @@ class LocalSettingsGenerator {
 			default:
 				$cacheType = 'CACHE_NONE';
 		}
+		
 		$mcservers = $this->buildMemcachedServerList();
 		return "<?php
 # This file was automatically generated by the MediaWiki {$GLOBALS['wgVersion']}
@@ -248,4 +303,5 @@ if ( \$wgCommandLineMode ) {
 \$wgCacheEpoch = max( \$wgCacheEpoch, gmdate( 'YmdHis', @filemtime( __FILE__ ) ) );
 ";
 	}
+	
 }

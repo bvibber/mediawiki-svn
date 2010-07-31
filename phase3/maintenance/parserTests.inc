@@ -673,21 +673,33 @@ class ParserTest {
 		$db->insert( 'interwiki', array(
 			array( 'iw_prefix' => 'wikipedia',
 				   'iw_url'    => 'http://en.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 0 ),
 			array( 'iw_prefix' => 'meatball',
 				   'iw_url'    => 'http://www.usemod.com/cgi-bin/mb.pl?$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 0 ),
 			array( 'iw_prefix' => 'zh',
 				   'iw_url'    => 'http://zh.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			array( 'iw_prefix' => 'es',
 				   'iw_url'    => 'http://es.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			array( 'iw_prefix' => 'fr',
 				   'iw_url'    => 'http://fr.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			array( 'iw_prefix' => 'ru',
 				   'iw_url'    => 'http://ru.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			) );
 
@@ -780,7 +792,6 @@ class ParserTest {
 			return;
 		}
 
-		/*
 		$tables = $this->listTables();
 		$db = wfGetDB( DB_MASTER );
 		foreach ( $tables as $table ) {
@@ -789,7 +800,6 @@ class ParserTest {
 		}
 		if ($wgDBtype == 'oracle')
 			$db->query('BEGIN FILL_WIKI_INFO; END;');
-		*/
 	}
 
 	/**
@@ -1261,7 +1271,6 @@ class DbTestPreviewer extends TestRecorder  {
 	 * and all that fun stuff
 	 */
 	function start() {
-		global $wgDBtype;
 		parent::start();
 
 		if ( ! $this->db->tableExists( 'testrun' )
@@ -1516,7 +1525,7 @@ class RemoteTestRecorder extends TestRecorder {
 
 		$remote = $wgParserTestRemote;
 		$revId = SpecialVersion::getSvnRevision( $IP );
-		$jsonResults = json_encode( $results );
+		$jsonResults = FormatJson::encode( $results );
 
 		if ( !$remote ) {
 			print "Can't do remote upload without configuring \$wgParserTestRemote!\n";

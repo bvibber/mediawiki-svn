@@ -116,7 +116,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$data = array();
 		$count = 0;
 		$lastUserData = false;
 		$lastUser = false;
@@ -183,6 +182,10 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		}
 
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'u' );
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

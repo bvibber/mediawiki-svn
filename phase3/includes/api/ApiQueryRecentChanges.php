@@ -108,6 +108,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	 * Generates and outputs the result of this query based upon the provided parameters.
 	 */
 	public function execute() {
+		global $wgUser;
 		/* Get the parameters of the request. */
 		$params = $this->extractRequestParams();
 
@@ -116,7 +117,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		 * 		AND rc_timestamp < $end AND rc_namespace = $namespace
 		 * 		AND rc_deleted = '0'
 		 */
-		$db = $this->getDB();
 		$this->addTables( 'recentchanges' );
 		$index = array( 'recentchanges' => 'rc_timestamp' ); // May change
 		$this->addWhereRange( 'rc_timestamp', $params['dir'], $params['start'], $params['end'] );
@@ -142,9 +142,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			}
 
 			// Check permissions
-			global $wgUser;
 			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
-				$this->getMain()->setVaryCookie();
 				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 				}
@@ -199,9 +197,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			/* Set up internal members based upon params. */
 			$this->initProperties( $prop );
 
-			global $wgUser;
-			if ( $this->fld_patrolled && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
-			{
+			if ( $this->fld_patrolled && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 			}
 
@@ -222,8 +218,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addFieldsIf( 'rc_log_type', $this->fld_loginfo );
 			$this->addFieldsIf( 'rc_log_action', $this->fld_loginfo );
 			$this->addFieldsIf( 'rc_params', $this->fld_loginfo );
-			if ( $this->fld_redirect || isset( $show['redirect'] ) || isset( $show['!redirect'] ) )
-			{
+			if ( $this->fld_redirect || isset( $show['redirect'] ) || isset( $show['!redirect'] ) ) {
 				$this->addTables( 'page' );
 				$this->addJoinConds( array( 'page' => array( 'LEFT JOIN', array( 'rc_namespace=page_namespace', 'rc_title=page_title' ) ) ) );
 				$this->addFields( 'page_is_redirect' );
@@ -250,7 +245,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 		$count = 0;
 		/* Perform the actual query. */
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		/* Iterate through the rows, adding data extracted from them to our query result. */
@@ -378,7 +372,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 
 		if ( $this->fld_parsedcomment && isset( $row->rc_comment ) ) {
 			global $wgUser;
-			$this->getMain()->setVaryCookie();
 			$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rc_comment, $title );
 		}
 
@@ -415,9 +408,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		}
 
 		if ( !is_null( $this->token ) ) {
-			// Don't cache tokens
-			$this->getMain()->setCachePrivate();
-			
 			$tokenFunctions = $this->getTokenFunctions();
 			foreach ( $this->token as $t ) {
 				$val = call_user_func( $tokenFunctions[$t], $row->rc_cur_id,
@@ -449,6 +439,24 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			case 'log':
 				return RC_LOG;
 		}
+	}
+
+	public function getCacheMode( $params ) {
+		if ( isset( $params['show'] ) ) {
+			foreach ( $params['show'] as $show ) {
+				if ( $show === 'patrolled' || $show === '!patrolled' ) {
+					return 'private';
+				}
+			}
+		}
+		if ( isset( $params['token'] ) ) {
+			return 'private';
+		}
+		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
+			// formatComment() calls wfMsg() among other things
+			return 'anon-public-user-private';
+		}
+		return 'public';
 	}
 
 	public function getAllowedParams() {

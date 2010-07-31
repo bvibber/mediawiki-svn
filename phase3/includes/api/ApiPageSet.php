@@ -80,7 +80,7 @@ class ApiPageSet extends ApiQueryBase {
 		if ( $resolveRedirects ) {
 			$this->mPendingRedirectIDs = array();
 		}
-		
+
 		$this->mConvertTitles = $convertTitles;
 		$this->mConvertedTitles = array();
 
@@ -225,12 +225,12 @@ class ApiPageSet extends ApiQueryBase {
 	public function getNormalizedTitles() {
 		return $this->mNormalizedTitles;
 	}
-	
+
 	/**
 	 * Get a list of title conversions - maps a title to its converted
 	 * version.
 	 * @return array raw_prefixed_title (string) => prefixed_title (string)
-	 */	
+	 */
 	public function getConvertedTitles() {
 		return $this->mConvertedTitles;
 	}
@@ -259,7 +259,7 @@ class ApiPageSet extends ApiQueryBase {
 	public function getMissingRevisionIDs() {
 		return $this->mMissingRevIDs;
 	}
-	
+
 	/**
 	 * Get the list of titles with negative namespace
 	 * @return array Title
@@ -667,7 +667,7 @@ class ApiPageSet extends ApiQueryBase {
 				continue; // There's nothing else we can do
 			}
 			$unconvertedTitle = $titleObj->getPrefixedText();
-			$titleWasConverted = false;			
+			$titleWasConverted = false;
 			$iw = $titleObj->getInterwiki();
 			if ( strval( $iw ) !== '' ) {
 				// This title is an interwiki link.
@@ -677,14 +677,14 @@ class ApiPageSet extends ApiQueryBase {
 				global $wgContLang;
 				if ( $this->mConvertTitles &&
 						count( $wgContLang->getVariants() ) > 1  &&
-						$titleObj->getArticleID() == 0 ) {
-					// Language::findVariantLink will modify titleObj into 
+						!$titleObj->exists() ) {
+					// Language::findVariantLink will modify titleObj into
 					// the canonical variant if possible
 					$wgContLang->findVariantLink( $title, $titleObj );
 					$titleWasConverted = $unconvertedTitle !== $titleObj->getPrefixedText();
 				}
-				
-				
+
+
 				if ( $titleObj->getNamespace() < 0 ) {
 					// Handle Special and Media pages
 					$titleObj = $titleObj->fixSpecialName();

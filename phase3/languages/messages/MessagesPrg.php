@@ -992,6 +992,7 @@ Tū mazzi dīgi etrīnktun dātun kitēimans drāugautwei sen tin pra tērpautaj
 'prefs-advancedrendering'     => 'Ēmpirsin treppušas opciōnis',
 'prefs-advancedsearchoptions' => 'Ēmpirsin treppušas opciōnis',
 'prefs-advancedwatchlist'     => 'Ēmpirsin treppušas opciōnis',
+'prefs-displayrc'             => 'Waidīnsnas opciōnis',
 
 # User rights
 'userrights'                  => 'Perwāldais enwarīnsenins stēisan tērpautajan',
@@ -1250,7 +1251,6 @@ Ik tū ainatīngi kwaitēi enkraūtun šin zūrbrukin, ettreppais be tērpaus n�
 'file-exists-duplicate'       => 'Šis zūrbrukis ast kōpija {{PLURAL:$1|šisse zūrbrukin|šēisan zūrbrukin}}:',
 'file-deleted-duplicate'      => 'Zūrbrukis idēntiskas sen šin zūrbrukin ([[$1]]) pastāi ankstāis āupausintan.
 Pirzdau tālis ēisnan, tebbei prawerru izbandātun šisse zūrbrukes āupausinsenin istōrijan.',
-'successfulupload'            => 'Zūrbrukes enkraūsenis izpalla',
 'uploadwarning'               => 'Ēmpirssergīsenis ezze enkraūsnan',
 'uploadwarning-text'          => 'Madli kitawīdinais zūrbukes ebpeisāsenis be bandais etkūmps',
 'savefile'                    => 'Enpeisāis zūrbrukin',
@@ -1278,6 +1278,7 @@ Tebbei prawerru prestun, anga ast tikrōmiskan ēmpirsin sadīntun enkraūtun š
 Šisse zūrbrukes āupausisnas registerin ast waidīntan zemmais.",
 'filename-bad-prefix'         => "Enkraūtas zūrbrukes pabilisnā pagaūne si sen '''\"\$1\"'''. Sta ast nidekskriptīwa pabilisnā kawīda ast preipeisātan autōmatiskai pra digitālins kāmerans.
 Madli etrīnkais swajasmu zūrbrukin spārtais deskriptīwan pabilīsnan.",
+'upload-success-subj'         => 'Zūrbrukes enkraūsenis izpalla',
 
 'upload-proto-error'      => 'Nitikrōmiskan prōtokulin',
 'upload-proto-error-text' => 'Iztāliska enkraūsna izkinina, kāi URL adressi pagaūlai si sen <code>http://</code> anga <code>ftp://</code>.',
@@ -1440,7 +1441,7 @@ Pāusan ast laikātan per ainapreslinsnan pāusan ik tennan tērpaui šablōnin 
 'doubleredirects'            => 'Dwiggubai prawessenei',
 'doubleredirectstext'        => 'Zemmais ast listi wisēisan pāusan sen prawessenins en pāusans, kawīdai prawedda en kittan pāusan.
 Erainā rindā turri ēn sen autengīnsenins en pirman be āntran prawessenin, tīt dīgi autengīnsenin kwēi wedda āntars prawessenis. Jāuku panzdaums autengīnsenin wedda en pāusan, en kawīdan prawerru prawestun pirmasmu pāusan.
-<s>Praglaubātai</s> prawessenei ast reparītan.',
+<del>Praglaubātai</del> prawessenei ast reparītan.',
 'double-redirect-fixed-move' => 'pāusan [[$1]] pastāi praskajjintan.
 Teinū tennan prawedda prei [[$2]].',
 'double-redirect-fixer'      => 'Prawessenin tikrintajs',
@@ -2325,7 +2326,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Ēmpirssergīsenis:''' Šis zūrbrukes tīps mazzi turītun ēn sin wārgingiskan kōdan.
-Enskattintei din,  tū mazzi ārditun twajjan sistēman.<hr />",
+Enskattintei din,  tū mazzi ārditun twajjan sistēman.",
 'imagemaxsize'         => "Arāikinais bildin debban:<br />''(per zūrbrukes ebpeisāsenes pāusans)''",
 'thumbsize'            => 'Miniatūris debban:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|pāusan|pāusai}}',

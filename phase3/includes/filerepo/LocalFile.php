@@ -79,14 +79,12 @@ class LocalFile extends File {
 	 * Do not call this except from inside a repo class.
 	 */
 	static function newFromKey( $sha1, $repo, $timestamp = false ) {
-		# Polymorphic function name to distinguish foreign and local fetches
-		$fname = get_class( $this ) . '::' . __FUNCTION__;
-
 		$conds = array( 'img_sha1' => $sha1 );
 		if( $timestamp ) {
 			$conds['img_timestamp'] = $timestamp;
 		}
-		$row = $dbr->selectRow( 'image', $this->getCacheFields( 'img_' ), $conds, $fname );
+		$dbr = $repo->getSlaveDB();
+		$row = $dbr->selectRow( 'image', self::selectFields(), $conds, __METHOD__ );
 		if( $row ) {
 			return self::newFromRow( $row, $repo );
 		} else {
@@ -1127,7 +1125,7 @@ class LocalFile extends File {
 	 * Get the URL of the file description page.
 	 */
 	function getDescriptionUrl() {
-		return $this->title->getLocalUrl();
+		return $this->title->getLocalUrl( $this->getName() );
 	}
 
 	/**

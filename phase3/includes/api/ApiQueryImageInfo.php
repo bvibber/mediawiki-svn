@@ -222,7 +222,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 						$vals['thumbwidth'] = intval( $file->getWidth() );
 						$vals['thumbheight'] = intval( $file->getHeight() );
 					}
-					
+
 					if ( isset( $prop['thumbmime'] ) ) {
 						$thumbFile = UnregisteredLocalFile::newFromPath( $mto->getPath(), false );
 						$vals['thumbmime'] = $thumbFile->getMimeType();
@@ -272,6 +272,10 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		}
 		$result->setIndexedTagName( $retval, 'metadata' );
 		return $retval;
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	private function getContinueStr( $img ) {

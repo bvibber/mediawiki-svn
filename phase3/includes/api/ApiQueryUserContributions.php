@@ -39,7 +39,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		parent::__construct( $query, $moduleName, 'uc' );
 	}
 
-	private $params, $username;
+	private $params;
 	private $fld_ids = false, $fld_title = false, $fld_timestamp = false,
 			$fld_comment = false, $fld_parsedcomment = false, $fld_flags = false,
 			$fld_patrolled = false, $fld_tags = false;
@@ -61,7 +61,6 @@ class ApiQueryContributions extends ApiQueryBase {
 
 		// TODO: if the query is going only against the revision table, should this be done?
 		$this->selectNamedDB( 'contributions', DB_SLAVE, 'contributions' );
-		$db = $this->getDB();
 
 		if ( isset( $this->params['userprefix'] ) ) {
 			$this->prefixMode = true;
@@ -164,8 +163,6 @@ class ApiQueryContributions extends ApiQueryBase {
 			);
 		}
 
-		// Make sure private data (deleted revisions) isn't cached
-		$this->getMain()->setVaryCookie();
 		if ( !$wgUser->isAllowed( 'hideuser' ) ) {
 			$this->addWhere( $this->getDB()->bitAnd( 'rev_deleted', Revision::DELETED_USER ) . ' = 0' );
 		}
@@ -189,8 +186,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		if ( !is_null( $show ) ) {
 			$show = array_flip( $show );
 			if ( ( isset( $show['minor'] ) && isset( $show['!minor'] ) )
-			   		|| ( isset( $show['patrolled'] ) && isset( $show['!patrolled'] ) ) )
-			{
+			   		|| ( isset( $show['patrolled'] ) && isset( $show['!patrolled'] ) ) ) {
 				$this->dieUsageMsg( array( 'show' ) );
 			}
 
@@ -214,15 +210,11 @@ class ApiQueryContributions extends ApiQueryBase {
 		) );
 
 		if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ||
-				 $this->fld_patrolled )
-		{
-			global $wgUser;
-			// Don't cache private data
-			$this->getMain()->setVaryCookie();
+				 $this->fld_patrolled ) {
 			if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 			}
-			
+
 			// Use a redundant join condition on both
 			// timestamp and ID so we can use the timestamp
 			// index
@@ -321,7 +313,6 @@ class ApiQueryContributions extends ApiQueryBase {
 
 				if ( $this->fld_parsedcomment ) {
 					global $wgUser;
-					$this->getMain()->setVaryCookie();
 					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->rev_comment, $title );
 				}
 			}
@@ -351,6 +342,12 @@ class ApiQueryContributions extends ApiQueryBase {
 	private function continueStr( $row ) {
 		return $row->rev_user_text . '|' .
 			wfTimestamp( TS_ISO_8601, $row->rev_timestamp );
+	}
+
+	public function getCacheMode( $params ) {
+		// This module provides access to deleted revisions and patrol flags if
+		// the requester is logged in
+		return 'anon-public-user-private';
 	}
 
 	public function getAllowedParams() {

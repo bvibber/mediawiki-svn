@@ -176,7 +176,7 @@ class UsersPager extends AlphabeticPager {
 	}
 
 	function getPageHeader( ) {
-		global $wgScript, $wgRequest;
+		global $wgScript;
 		$self = $this->getTitle();
 
 		# Form tag
@@ -270,13 +270,13 @@ class UsersPager extends AlphabeticPager {
  * $par string (optional) A group to list users from
  */
 function wfSpecialListusers( $par = null ) {
-	global $wgRequest, $wgOut;
+	global $wgOut;
 
 	$up = new UsersPager($par);
 
 	# getBody() first to check, if empty
 	$usersbody = $up->getBody();
-	$s = XML::openElement( 'div', array('class' => 'mw-spcontent') );
+	$s = Xml::openElement( 'div', array('class' => 'mw-spcontent') );
 	$s .= $up->getPageHeader();
 	if( $usersbody ) {
 		$s .=	$up->getNavigationBar();
@@ -285,6 +285,6 @@ function wfSpecialListusers( $par = null ) {
 	} else {
 		$s .=	'<p>' . wfMsgHTML('listusers-noresult') . '</p>';
 	};
-	$s .= XML::closeElement( 'div' );
+	$s .= Xml::closeElement( 'div' );
 	$wgOut->addHTML( $s );
 }

@@ -182,7 +182,7 @@ class LoginForm {
 	 * @private
 	 */
 	function addNewAccount() {
-		global $wgUser, $wgEmailAuthentication;
+		global $wgUser, $wgEmailAuthentication, $wgOut;
 
 		# Create the account and abort if there's a problem doing so
 		$u = $this->addNewAccountInternal();
@@ -197,7 +197,6 @@ class LoginForm {
 
 		# Send out an email authentication message if needed
 		if( $wgEmailAuthentication && User::isValidEmailAddr( $u->getEmail() ) ) {
-			global $wgOut;
 			$error = $u->sendConfirmationMail();
 			if( WikiError::isError( $error ) ) {
 				$wgOut->addWikiMsg( 'confirmemail_sendfailed', $error->getMessage() );
@@ -224,7 +223,6 @@ class LoginForm {
 			}
 		} else {
 			# Confirm that the account was created
-			global $wgOut;
 			$self = SpecialPage::getTitleFor( 'Userlogin' );
 			$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
 			$wgOut->setArticleRelated( false );
@@ -431,7 +429,8 @@ class LoginForm {
 	 * creation.
 	 */
 	public function authenticateUserData() {
-		global $wgUser, $wgAuth;
+		global $wgUser, $wgAuth, $wgMemc;
+		
 		if ( $this->mName == '' ) {
 			return self::NO_NAME;
 		}
@@ -459,7 +458,6 @@ class LoginForm {
 			$count = $wgPasswordAttemptThrottle['count'];
 			$period = $wgPasswordAttemptThrottle['seconds'];
 			
-			global $wgMemc;
 			$throttleCount = $wgMemc->get( $throttleKey );
 			if ( !$throttleCount ) {
 				$wgMemc->add( $throttleKey, 1, $period ); // start counter
@@ -624,7 +622,7 @@ class LoginForm {
 	}
 
 	function processLogin() {
-		global $wgUser, $wgAuth;
+		global $wgUser;
 
 		switch ( $this->authenticateUserData() ) {
 			case self::SUCCESS:
@@ -862,8 +860,7 @@ class LoginForm {
 	 * @private
 	 */
 	function successfulCreation() {
-		global $wgUser, $wgOut;
-
+		global $wgUser;
 		# Run any hooks; display injected HTML
 		$injected_html = '';
 		wfRunHooks('UserLoginComplete', array(&$wgUser, &$injected_html));

@@ -28,7 +28,7 @@ $messages = array(
 'tog-editsection'             => "S't'vù l'abilitaziòn ad'cambié al seziòn cum e' link [mudèfica]",
 'tog-editsectiononrightclick' => "S't'vù l'abilitaziòn ad cambié al seziòn <br />scjazénd e tast a dèstra sora e titul (u j vò JavaScript)",
 'tog-showtoc'                 => "Fam avdé l'indiz (sol par al pàgin cun piò d'3 seziòn)",
-'tog-rememberpassword'        => "Arcurdam la parola d'ordin, par piasé (fèn a un masum d'$1 {{PLURAL:$1|dè|dè}})",
+'tog-rememberpassword'        => "Arcurdam la parola d'ordin, par piasé (fèn a un masum $1 {{PLURAL:$1|dè|dè}})",
 'tog-watchcreations'          => "Mett insèn al pàgin ch't'e' fat adès, intla lèsta da tní sot'occ",
 'tog-watchdefault'            => "Mett insèn al pàgin ch'a j ò lavurè sora int la lèsta dal pàgin da tnì sot'òcc",
 'tog-watchmoves'              => "Mett insèn al pàgin ch'a j ò spustè int la lèsta dal pàgin da tnì sot'òcc",
@@ -47,6 +47,8 @@ $messages = array(
 'tog-externaldiff'            => 'Drova sempar un prugràma comparator esteran (sol par j utent espert)',
 'tog-showjumplinks'           => "Fa' funzionè j leghèm d'acesibilitè tipo \"Va' a\"",
 'tog-uselivepreview'          => 'Drova la funziòn "Anteprèma dal viv" (u j vo Javascript; sperimentêl)',
+'tog-forceeditsummary'        => "Dam la vos quènd l'ugèt dla mudèfica l'è vut",
+'tog-watchlisthideown'        => "Nascond al mi mudèfic dala lèsta dal pàgin da tnì d'occ",
 
 # Dates
 'january'       => 'Znèr',
@@ -465,7 +467,7 @@ Guèrda $2 par avdé la lèsta daglj ultum scanzeladür.',
 'protect-text'                => "Cun ste mudèl u s'pò guardè e u s'pò cambié ê livèl d'pruteziòn dla pàgina '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "Oci! Ta n'ê miga i parmess par cambié i livel d'pruteziòn dla pàgina.
 S't'vù vdë in dô ch'j è i parmess, guèrda '''$1''':",
-'protect-cascadeon'           => "Sta pàgina pr'adès l'è bluchëda parchè l'è stra l'{{PLURAL:$1|la pàgina aquè sota, ch'l'à|al pàgin aquè sota, ch'j'à}} la pruteziòn ricursiva. 
+'protect-cascadeon'           => "Sta pàgina pr'adès l'è bluchëda parchè l'è stra l'{{PLURAL:$1|la pàgina aquè sota, ch'l'à|al pàgin aquè sota, ch'j'à}} la pruteziòn ricursiva.
 T'pù cambié ê livel d'pruteziòn d'sta pàgina, mo la pruteziòn ricursiva la resta a lè.",
 'protect-default'             => 'Dà ê parmess a tòt j navigadur',
 'protect-fallback'            => 'A què u j vô ê parmess "$1"',
@@ -647,7 +649,7 @@ Tot i culegamént ch'j ven dop, sora la stèsa riga, j conta cumpagna d'j ecezi�
 
 # Metadata
 'metadata'          => 'Dèd sora i dèd',
-'metadata-help'     => "Ste file l'à d'l'infurmaziòn in piò. Forsi parchè al figur j è stedi cjapèdi con la machina digitèla o cun e' scàner. 
+'metadata-help'     => "Ste file l'à d'l'infurmaziòn in piò. Forsi parchè al figur j è stedi cjapèdi con la machina digitèla o cun e' scàner.
 Se parò un qvelcadon à lavurè sora sta figura, zerti infurmaziòn j n' curespòn piò cun l'uriginel.",
 'metadata-expand'   => 'Fam avdé i particulèr',
 'metadata-collapse' => 'Nascond i particulèr',

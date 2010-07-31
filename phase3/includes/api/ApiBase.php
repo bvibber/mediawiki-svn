@@ -57,6 +57,7 @@ abstract class ApiBase {
 	const LIMIT_SML2 = 500; // Slow query, bot/sysop limit
 
 	private $mMainModule, $mModuleName, $mModulePrefix;
+	private $mParamCache = array();
 
 	/**
 	 * Constructor
@@ -329,7 +330,7 @@ abstract class ApiBase {
 						switch ( $type ) {
 							case 'namespace':
 								// Special handling because namespaces are type-limited, yet they are not given
-								$desc .= $paramPrefix . $prompt . implode( ', ', ApiBase::getValidNamespaces() );
+								$desc .= $paramPrefix . $prompt . implode( ', ', MWNamespace::getValidNamespaces() );
 								break;
 							case 'limit':
 								$desc .= $paramPrefix . "No more than {$paramSettings[self :: PARAM_MAX]} ({$paramSettings[self::PARAM_MAX2]} for bots) allowed";
@@ -479,16 +480,20 @@ abstract class ApiBase {
 	 * @return array
 	 */
 	public function extractRequestParams( $parseLimit = true ) {
-		$params = $this->getFinalParams();
-		$results = array();
+		// Cache parameters, for performance and to avoid bug 24564.
+		if ( !isset( $this->mParamCache[$parseLimit] ) ) {
+			$params = $this->getFinalParams();
+			$results = array();
 
-		if ( $params ) { // getFinalParams() can return false
-			foreach ( $params as $paramName => $paramSettings ) {
-				$results[$paramName] = $this->getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
+			if ( $params ) { // getFinalParams() can return false
+				foreach ( $params as $paramName => $paramSettings ) {
+					$results[$paramName] = $this->getParameterFromSettings( 
+						$paramName, $paramSettings, $parseLimit );
+				}
 			}
+			$this->mParamCache[$parseLimit] = $results;
 		}
-
-		return $results;
+		return $this->mParamCache[$parseLimit];
 	}
 
 	/**
@@ -522,31 +527,17 @@ abstract class ApiBase {
 	}
 
 	/**
-	 * Returns an array of the namespaces (by integer id) that exist on the
-	 * wiki. Used primarily in help documentation.
-	 * @return array
+	 * @deprecated use MWNamespace::getValidNamespaces()
 	 */
 	public static function getValidNamespaces() {
-		static $mValidNamespaces = null;
-
-		if ( is_null( $mValidNamespaces ) ) {
-			global $wgCanonicalNamespaceNames;
-			$mValidNamespaces = array( NS_MAIN ); // Doesn't appear in $wgCanonicalNamespaceNames for some reason
-			foreach ( array_keys( $wgCanonicalNamespaceNames ) as $ns ) {
-				if ( $ns > 0 ) {
-					$mValidNamespaces[] = $ns;
-				}
-			}
-		}
-
-		return $mValidNamespaces;
+		return MWNamespace::getValidNamespaces();
 	}
 
 	/**
 	 * Return true if we're to watch the page, false if not, null if no change.
 	 * @param $watchlist String Valid values: 'watch', 'unwatch', 'preferences', 'nochange'
 	 * @param $titleObj Title the page under consideration
-	 * @param $userOption The user option to consider when $watchlist=preferences. 
+	 * @param $userOption The user option to consider when $watchlist=preferences.
 	 * 	If not set will magically default to either watchdefault or watchcreations
 	 * @returns mixed
 	 */
@@ -647,7 +638,7 @@ abstract class ApiBase {
 			$value = $this->getMain()->getRequest()->getVal( $encParamName, $default );
 
 			if ( isset( $value ) && $type == 'namespace' ) {
-				$type = ApiBase::getValidNamespaces();
+				$type = MWNamespace::getValidNamespaces();
 			}
 		}
 
@@ -691,15 +682,16 @@ abstract class ApiBase {
 						$min = isset( $paramSettings[self::PARAM_MIN] ) ? $paramSettings[self::PARAM_MIN] : 0;
 						if ( $value == 'max' ) {
 							$value = $this->getMain()->canApiHighLimits() ? $paramSettings[self::PARAM_MAX2] : $paramSettings[self::PARAM_MAX];
-							$this->getResult()->addValue( 'limits', $this->getModuleName(), $value );
+							$this->getResult()->setParsedLimit( $this->getModuleName(), $value );
 						} else {
 							$value = intval( $value );
 							$this->validateLimit( $paramName, $value, $min, $paramSettings[self::PARAM_MAX], $paramSettings[self::PARAM_MAX2] );
 						}
 						break;
 					case 'boolean':
-						if ( $multi )
+						if ( $multi ) {
 							ApiBase::dieDebug( __METHOD__, "Multi-values not supported for $encParamName" );
+						}
 						break;
 					case 'timestamp':
 						if ( $multi ) {
@@ -723,7 +715,7 @@ abstract class ApiBase {
 							}
 							$value[$key] = $title->getText();
 						}
-						
+
 						if ( !$multi ) {
                             $value = $value[0];
                         }
@@ -842,7 +834,7 @@ abstract class ApiBase {
 	public static function truncateArray( &$arr, $limit ) {
 		$modified = false;
 		while ( count( $arr ) > $limit ) {
-			$junk = array_pop( $arr );
+			array_pop( $arr );
 			$modified = true;
 		}
 		return $modified;
@@ -1089,7 +1081,7 @@ abstract class ApiBase {
 
 	/**
 	* Gets the user for whom to get the watchlist
-	*  
+	*
 	* @returns User
 	*/
 	public function getWatchlistUser( $params ) {
@@ -1104,8 +1096,6 @@ abstract class ApiBase {
 				$this->dieUsage( 'Incorrect watchlist token provided -- please set a correct token in Special:Preferences', 'bad_wltoken' );
 			}
 		} else {
-			// User not determined by URL, so don't cache
-			$this->getMain()->setVaryCookie();
 			if ( !$wgUser->isLoggedIn() ) {
 				$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
 			}

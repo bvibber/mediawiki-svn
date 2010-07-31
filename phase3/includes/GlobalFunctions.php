@@ -25,6 +25,7 @@ if( !function_exists('iconv') ) {
 	# Assume will only ever use utf-8 and iso-8859-1.
 	# This will *not* work in all circumstances.
 	function iconv( $from, $to, $string ) {
+		if ( substr( $to, -8 ) == '//IGNORE' ) $to = substr( $to, 0, strlen( $to ) - 8 );
 		if(strcasecmp( $from, $to ) == 0) return $string;
 		if(strcasecmp( $from, 'utf-8' ) == 0) return utf8_decode( $string );
 		if(strcasecmp( $to, 'utf-8' ) == 0) return utf8_encode( $string );
@@ -407,6 +408,7 @@ function wfLogDBError( $text ) {
  */
 function wfErrorLog( $text, $file ) {
 	if ( substr( $file, 0, 4 ) == 'udp:' ) {
+		# Needs the sockets extension
 		if ( preg_match( '!^(tcp|udp):(?://)?\[([0-9a-fA-F:]+)\]:(\d+)(?:/(.*))?$!', $file, $m ) ) {
 			// IPv6 bracketed host
 			$protocol = $m[1];
@@ -704,7 +706,7 @@ function wfMsgWeirdKey( $key ) {
  * @return string
  */
 function wfMsgGetKey( $key, $useDB, $langCode = false, $transform = true ) {
-	global $wgContLang, $wgMessageCache;
+	global $wgMessageCache;
 
 	wfRunHooks('NormalizeMessageKey', array(&$key, &$useDB, &$langCode, &$transform));
 	
@@ -1415,14 +1417,19 @@ function wfEscapeShellArg( ) {
 			// Double the backslashes before any double quotes. Escape the double quotes.
 			$tokens = preg_split( '/(\\\\*")/', $arg, -1, PREG_SPLIT_DELIM_CAPTURE );
 			$arg = '';
-			$delim = false;
+			$iteration = 0;
 			foreach ( $tokens as $token ) {
-				if ( $delim ) {
+				if ( $iteration % 2 == 1 ) {
+					// Delimiter, a double quote preceded by zero or more slashes
 					$arg .= str_replace( '\\', '\\\\', substr( $token, 0, -1 ) ) . '\\"';
-				} else {
+				} else if ( $iteration % 4 == 2 ) {
+					// ^ in $token will be outside quotes, need to be escaped
+					$arg .= str_replace( '^', '^^', $token );
+				} else { // $iteration % 4 == 0
+					// ^ in $token will appear inside double quotes, so leave as is
 					$arg .= $token;
 				}
-				$delim = !$delim;
+				$iteration++;
 			}
 			// Double the backslashes before the end of the string, because
 			// we will soon add a quote
@@ -2055,7 +2062,7 @@ function wfGetNamespaceNotice() {
 }
 
 function wfGetSiteNotice() {
-	global $wgUser, $wgSiteNotice;
+	global $wgUser;
 	$fname = 'wfGetSiteNotice';
 	wfProfileIn( $fname );
 	$siteNotice = '';

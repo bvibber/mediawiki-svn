@@ -1275,7 +1275,7 @@ class OutputPage {
 		$cvCookies = $this->getCacheVaryCookies();
 		foreach ( $cvCookies as $cookieName ) {
 			# Check for a simple string match, like the way squid does it
-			if ( strpos( $cookieHeader, $cookieName ) ) {
+			if ( strpos( $cookieHeader, $cookieName ) !== false ) {
 				wfDebug( __METHOD__ . ": found $cookieName\n" );
 				return true;
 			}
@@ -1848,7 +1848,6 @@ class OutputPage {
 		if ( $action == null ) {
 			$text = wfMsgNoTrans( 'permissionserrorstext', count( $errors ) ) . "\n\n";
 		} else {
-			global $wgLang;
 			$action_desc = wfMsgNoTrans( "action-$action" );
 			$text = wfMsgNoTrans(
 				'permissionserrorstext-withaction',
@@ -2090,8 +2089,8 @@ class OutputPage {
 	 * @return String: The doctype, opening <html>, and head element.
 	 */
 	public function headElement( Skin $sk, $includeStyle = true ) {
-		global $wgContLanguageCode, $wgOutputEncoding, $wgMimeType;
-		global $wgContLang, $wgUseTrackbacks, $wgStyleVersion, $wgHtml5;
+		global $wgOutputEncoding, $wgMimeType;
+		global $wgUseTrackbacks, $wgHtml5;
 		global $wgUser, $wgRequest, $wgLang;
 
 		if ( $sk->commonPrintStylesheet() ) {

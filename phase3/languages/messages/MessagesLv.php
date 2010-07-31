@@ -42,7 +42,7 @@ $namespaceNames = array(
 	NS_CATEGORY         => 'Kategorija',
 	NS_CATEGORY_TALK    => 'Kategorijas_diskusija',
 );
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $messages = array(
 # User preference toggles
@@ -929,6 +929,7 @@ Ja tu izvēlies to norādīt, tas tiks izmantots, lai identificētu tavu darbu (
 'prefs-advancedrendering'       => 'Papildus uzstādījumi',
 'prefs-advancedsearchoptions'   => 'Papildus uzstādījumi',
 'prefs-advancedwatchlist'       => 'Papildus uzstādījumi',
+'prefs-displayrc'               => 'Pamatuzstādījumi',
 'prefs-diffs'                   => 'Izmaiņas',
 
 # User rights
@@ -1078,8 +1079,8 @@ Spied pogu '''Augšuplādēt''', lai pabeigtu augšupielādi.
 Tas var ieilgt, ja tavs interneta pieslēgums ir lēns.
 
 Ieteicamie formāti ir:
-* JPEG - ja tā ir fotogrāfija, 
-* PNG - ja tas ir zīmējums vai kāda ikona, un 
+* JPEG - ja tā ir fotogrāfija,
+* PNG - ja tas ir zīmējums vai kāda ikona, un
 * OGG - ja tas ir skaņas fails.
 
 Lūdzu, pārliecinies, ka faila nosaukums ir pietiekami aprakstošs, lai izvairītos no neskaidrībām. Lai attēlu pēc tam ievietotu kādā lapā, izmanto šādi noformētu linkus:
@@ -1122,7 +1123,6 @@ Izskatās, ka šis ir samazināts attēls ''(thumbnail)''.
 Ja tev ir šis pats attēls pilnā izmērā, augšuplādē to, ja nav, tad nomaini faila vārdu.",
 'fileexists-forbidden'   => 'Fails ar šādu nosaukumu jau eksistē un to nevar aizvietot ar jaunu.
 Ja tu joprojām gribi augšuplādēt šo failu, tad mēģini vēlreiz, ar citu faila vārdu. [[File:$1|thumb|center|$1]]',
-'successfulupload'       => 'Augšupielāde veiksmīga',
 'uploadwarning'          => 'Augšupielādes brīdinājums',
 'savefile'               => 'Saglabāt failu',
 'uploadedimage'          => 'augšupielādēju "$1"',
@@ -1146,6 +1146,7 @@ Apdomā labi, vai tiešām ir lietderīgi turpināt šī faila augšuplādi.
 Te var apskatīties dzēšanas reģistru, lai noskaidrotu kāpēc šo failu toreiz izdzēsa:",
 'filename-bad-prefix'    => "Faila vārds failam, kuru tu mēģini augšpulādēt, sākas ar '''\"\$1\"''', kas ir neaprakstošs vārds, kādu parasti uzģenerē digitālais fotoaparāts.
 Lūdzu izvēlies aprakstošāku vārdu šim failam.",
+'upload-success-subj'    => 'Augšupielāde veiksmīga',
 
 'license'            => 'Licence:',
 'license-header'     => 'Licence',
@@ -1259,7 +1260,7 @@ Lapu uzskata par nozīmju atdalīšanas lapu, ja tā satur veidni, uz kuru ir sa
 'doubleredirects'            => 'Divkāršas pāradresācijas lapas',
 'doubleredirectstext'        => 'Šajā lapā ir uzskaitītas pāradresācijas lapas, kuras pāradresē uz citām pāradresācijas lapām.
 Katrā rindiņā ir saites uz pirmo un otro pāradresācijas lapu, kā arī pirmā rindiņa no otrās pāradresācijas lapas teksta, kas parasti ir faktiskā "gala" lapa, uz kuru vajadzētu būt saitei pirmajā lapā.
-<s>Nosvītrotie</s> ieraksti jau ir tikuši salaboti.',
+<del>Nosvītrotie</del> ieraksti jau ir tikuši salaboti.',
 'double-redirect-fixed-move' => '[[$1]] bija ticis pārvietots, tas tagad ir pāradresācija uz [[$2]]',
 
 'brokenredirects'     => 'Kļūdainas pāradresācijas',
@@ -1565,8 +1566,8 @@ Lai atjaunotu tikai noteiktas versijas, ieķeksē vajadzīgās versijas un spied
 Ja pēc dzēšanas ir izveidota jauna lapa ar tādu pašu nosaukumu, atjaunotās versijas tiks ievietotas lapas hronoloģijā attiecīgā secībā un konkrētās lapas pašreizējā versija netiks automātiski nomainīta.',
 'undeleterevdel'           => 'Atjaunošana nenotiks, ja tas izraisīs jaunākās versijas izdzēšanu.
 Šādos gadījumos ir vai nu jāizņem ķeksis no jaunākās versijas, vai arī jāatslēpj jaunākā versija.',
-'undeletehistorynoadmin'   => 'Šī lapa ir tikusi izdzēsta. 
-Dzēšanas iemesls ir redzams apakšā, kopsavilkumā, kopā ar informāciju par lietotājiem, kas bija rediģējuši šo lapu pirs tās izdzēšanas. 
+'undeletehistorynoadmin'   => 'Šī lapa ir tikusi izdzēsta.
+Dzēšanas iemesls ir redzams apakšā, kopsavilkumā, kopā ar informāciju par lietotājiem, kas bija rediģējuši šo lapu pirs tās izdzēšanas.
 Šo izdzēsto versiju teksts ir pieejams tikai administratoriem.',
 'undelete-revision'        => 'Lapas $1 izdzēstā versija (kāda tā bija $4, $5) (autors $3):',
 'undeleterevision-missing' => 'Nederīga vai neeksistējoša versija.
@@ -1929,7 +1930,7 @@ To visticamāk izraisīja ārēja saite uz melnajā sarakstā esošu interneta v
 'nextdiff'     => 'Jaunāka versija →',
 
 # Media information
-'mediawarning'         => "'''Brīdinājums''': Šis fails var saturēt kaitīgu kodu, kuru izpildot tavā datorā var salīst vīrusi (un citas nejaucības).<hr />",
+'mediawarning'         => "'''Brīdinājums''': Šis faila tips var saturēt ļaunprātīgu kodu, kuru izpildot, tava datora darbība var tikt traucēta.",
 'imagemaxsize'         => 'Attēlu apraksta lapās parādāmo attēlu maksimālais izmērs:',
 'thumbsize'            => 'Sīkbildes izmērs:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|lapa|lapas}}',
@@ -1951,10 +1952,10 @@ To visticamāk izraisīja ārēja saite uz melnajā sarakstā esošu interneta v
 'sp-newimages-showfrom' => 'Rādīt jaunos attēlus sākot no $1, $2',
 
 # Bad image list
-'bad_image_list' => 'Formāts: 
+'bad_image_list' => 'Formāts:
 
-Tiek ņemti vērā tikai ieraksti rindiņā kas sākas ar * 
-Pirmajai saitei rindiņā ir jābūt uz attiecīgo failu 
+Tiek ņemti vērā tikai ieraksti rindiņā kas sākas ar *
+Pirmajai saitei rindiņā ir jābūt uz attiecīgo failu
 Jebkuras sekojošas saites tiks uzskatītas par izņēmumiem t.i. lapām kurās fails drīkt tikt izmantots',
 
 # Metadata
@@ -2033,9 +2034,9 @@ Pārējie lauki, pēc noklusējuma, būs paslēpti.
 # E-mail address confirmation
 'confirmemail'             => 'Apstiprini e-pasta adresi',
 'confirmemail_noemail'     => '[[Special:Preferences|Tavās izvēlēs]] nav norādīta derīga e-pasta adrese.',
-'confirmemail_text'        => 'Šajā wiki ir nepieciešams apstiprināt savu e-pasta adresi, lai izmantotu e-pasta funkcijas. 
-Spied uz zemāk esošās pogas, lai uz tavu e-pasta adresi nosūtītu apstiprināšanas e-pastu. 
-Tajā būs saite ar kodu; spied uz tās saites vai atver to savā interneta pārlūkā, 
+'confirmemail_text'        => 'Šajā wiki ir nepieciešams apstiprināt savu e-pasta adresi, lai izmantotu e-pasta funkcijas.
+Spied uz zemāk esošās pogas, lai uz tavu e-pasta adresi nosūtītu apstiprināšanas e-pastu.
+Tajā būs saite ar kodu; spied uz tās saites vai atver to savā interneta pārlūkā,
 lai apstiprinātu tavas e-pasta adreses derīgumu.',
 'confirmemail_pending'     => 'Apstiprināšanas kods jau tev tika nosūtīts pa e-pastu;
 ja tu nupat izveidoji savu kontu, varētu drusku pagaidīt, kamēr tas kods pienāk, pirms mēģināt dabūt jaunu.',

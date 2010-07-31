@@ -204,7 +204,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$limit = $params['limit'];
 		if ( $limit == 'max' ) {
 			$limit = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
-			$this->getResult()->addValue( 'limits', $this->getModuleName(), $limit );
+			$this->getResult()->setParsedLimit( $this->getModuleName(), $limit );
 		}
 
 		if ( $enumRevMode ) {
@@ -318,7 +318,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->addOption( 'LIMIT', $limit + 1 );
 		$this->addOption( 'USE INDEX', $index );
 
-		$data = array();
 		$count = 0;
 		$res = $this->select( __METHOD__ );
 
@@ -388,14 +387,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 				$vals['commenthidden'] = '';
 			} else {
 				$comment = $revision->getComment();
-				
+
 				if ( $this->fld_comment ) {
 					$vals['comment'] = $comment;
 				}
 
 				if ( $this->fld_parsedcomment ) {
 					global $wgUser;
-					$this->getMain()->setVaryCookie();
 					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $comment, $title );
 				}
 			}
@@ -412,9 +410,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 
 		if ( !is_null( $this->token ) ) {
-			// Don't cache tokens
-			$this->getMain()->setCachePrivate();
-			
 			$tokenFunctions = $this->getTokenFunctions();
 			foreach ( $this->token as $t ) {
 				$val = call_user_func( $tokenFunctions[$t], $title->getArticleID(), $title, $revision );
@@ -427,14 +422,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 
 		$text = null;
+		global $wgParser;
 		if ( $this->fld_content || !is_null( $this->difftotext ) ) {
 			$text = $revision->getText();
 			// Expand templates after getting section content because
 			// template-added sections don't count and Parser::preprocess()
 			// will have less input
 			if ( $this->section !== false ) {
-				global $wgParser;
-
 				$text = $wgParser->getSection( $text, $this->section, false );
 				if ( $text === false ) {
 					$this->dieUsage( "There is no section {$this->section} in r" . $revision->getId(), 'nosuchsection' );
@@ -443,7 +437,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 		}
 		if ( $this->fld_content && !$revision->isDeleted( Revision::DELETED_TEXT ) ) {
 			if ( $this->generateXML ) {
-				global $wgParser;
 				$wgParser->startExternalParse( $title, new ParserOptions(), OT_PREPROCESS );
 				$dom = $wgParser->preprocessToDom( $text );
 				if ( is_callable( array( $dom, 'saveXML' ) ) ) {
@@ -455,7 +448,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 			}
 			if ( $this->expandTemplates ) {
-				global $wgParser;
 				$text = $wgParser->preprocess( $text, $title, new ParserOptions() );
 			}
 			ApiResult::setContent( $vals, $text );
@@ -486,6 +478,17 @@ class ApiQueryRevisions extends ApiQueryBase {
 			}
 		}
 		return $vals;
+	}
+
+	public function getCacheMode( $params ) {
+		if ( isset( $params['token'] ) ) {
+			return 'private';
+		}
+		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
+			// formatComment() calls wfMsg() among other things
+			return 'anon-public-user-private';
+		}
+		return 'public';
 	}
 
 	public function getAllowedParams() {

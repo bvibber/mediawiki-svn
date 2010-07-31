@@ -74,7 +74,6 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 		} elseif ( $what == 'title' ) {
 			$matches = $search->searchTitle( $query );
 		} elseif ( $what == 'nearmatch' ) {
-			$query = str_replace( '_', ' ', $query );
 			$matches = SearchEngine::getNearMatchResultSet( $query );
 		} else {
 			// We default to title searches; this is a terrible legacy
@@ -163,6 +162,10 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 		} else {
 			$resultPageSet->populateFromTitles( $titles );
 		}
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

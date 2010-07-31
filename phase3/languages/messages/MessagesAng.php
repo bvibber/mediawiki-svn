@@ -29,34 +29,43 @@ $namespaceNames = array(
 
 $messages = array(
 # User preference toggles
-'tog-underline'              => 'Hlenċa undermearcian:',
-'tog-hideminor'              => 'Lytla ādihtunga hȳdan in nīƿliċum hƿeorfum',
-'tog-hidepatrolled'          => 'Ƿeardede ādihtas hȳdan ƿiþ nīƿe hƿearfas',
-'tog-newpageshidepatrolled'  => 'Ƿeardede sīdan hȳdan ƿiþ nīƿe hƿearfas',
-'tog-extendwatchlist'        => 'Ƿæccȝetale sprædan to scēaƿenne ealle hƿearfas, ne efne þā nīƿoste',
-'tog-numberheadings'         => 'Selffremmende-rīm hēafodingas',
-'tog-showtoolbar'            => 'Þone tōlstæf scēaƿian (þearf JavaScript)',
-'tog-editondblclick'         => 'Sīdan ādihtan bȳ tƿicnæppende (þearf JavaScript)',
-'tog-editsection'            => 'Dǣla ādihtende þafian bȳ [ādihtan] hlenċum',
-'tog-showtoc'                => 'Innunga tæfle sēon (for sīdum þe mā þonne 3 hēafodingas habbaþ)',
-'tog-rememberpassword'       => 'Mīne inmeldunge ȝemyndan on þissum spearcatelle',
-'tog-watchcreations'         => 'Sīdan þe iċ scieppe ēacian tō mīnre ƿæccȝetale',
-'tog-watchdefault'           => 'Sīdan þe iċ ādihte ēacian tō mīnre ƿæccȝetale',
-'tog-watchmoves'             => 'Sīdan þe iċ hƿeorfe ēacian tō mīnre ƿæccȝetale',
-'tog-watchdeletion'          => 'Sīdan þe iċ forlēose ēacian tō mīnre ƿæccȝetale',
-'tog-previewontop'           => 'Forescēaƿe sēon fore ādihtbox',
-'tog-previewonfirst'         => 'Forescēaƿe sēon on formestum ādihte',
-'tog-shownumberswatching'    => 'Hū mæniȝ ƿæccende brūcendas sēon',
-'tog-uselivepreview'         => 'Līfe forescēaƿe brūcan (þearf JavaScript) (oferfundenisc)',
-'tog-watchlisthideown'       => 'Mīna ādihtunga hȳdan ƿiþ þā ƿæccȝetale',
-'tog-watchlisthidebots'      => 'Searuþrala ādihtas hȳdan ƿiþ þā ƿæccȝetale',
-'tog-watchlisthideminor'     => 'Minliċa ādihtunga hȳdan ƿiþ þæt ƿæccbrede',
-'tog-watchlisthideliu'       => 'Ādihtas bȳ inmeldedum brūcendum hȳdan ƿiþ þā ƿæccȝetale',
-'tog-watchlisthideanons'     => 'Ādihtas bȳ uncūðum brūcendum hȳdan ƿiþ þā ƿæccȝetale',
-'tog-watchlisthidepatrolled' => 'Ƿeardede ādihtas hȳdan ƿiþ þā ƿæccȝetale',
-'tog-ccmeonemails'           => 'Mē tƿifealda sendan þāra e-ǣrenda þe iċ ōðrum brūcendum sende',
-'tog-diffonly'               => 'Ne scēaƿian sīdan innunge under scādungum',
-'tog-showhiddencats'         => 'Ȝehȳdede floccas scēaƿian',
+'tog-underline'               => 'Mearcian under hlencum:',
+'tog-highlightbroken'         => 'Settan unfulfylede hlencan <a href="" class="new">swā þis</a> (þīn ōðer cyre is tō habbenne hīe swā þis:<a href="" class="internal">?</a>)',
+'tog-justify'                 => 'Macian cwidfloccas riht',
+'tog-hideminor'               => 'Lytla ādihtunga hȳdan in getæle nīwlicra hweorfunga',
+'tog-hidepatrolled'           => 'Weardode ādihtas hȳdan in getæle nīwlicra hweorfunga',
+'tog-newpageshidepatrolled'   => 'Weardoda sīdan hȳdan in getæle nīwlicra trameta',
+'tog-extendwatchlist'         => 'Wæccgetæl ēacnian tō ēowienne ealla hweorfunga, ne synderlīce þā nīwostan',
+'tog-usenewrc'                => 'Benotian forðod getæl nīwra hweorfunga (mann þearf JavaScript tō dōnne swā)',
+'tog-numberheadings'          => 'Dōn selffremmendu hēafodcwida getalu',
+'tog-showtoolbar'             => 'Þone tōla earc ēowian (þis þearf JavaScript)',
+'tog-editondblclick'          => 'Sīdan ādihtan bȳ twifealdum swengum (þis þearf JavaScript)',
+'tog-editsection'             => 'Dǣla ādihtunge þurh hlencan ādihtunge þafian',
+'tog-editsectiononrightclick' => 'Dǣla ādihtunge þurh swengas þǣre swīðran healfe on dǣla titulum (þis þearf JavaScript)',
+'tog-showtoc'                 => 'Innunga gefēgednesse sēon (for sīdum þe mā þonne 3 hēafodcwidas habbaþ)',
+'tog-rememberpassword'        => 'Gemunan mīne inmedlunge on þissum spearctelle (under swā manigum swā $1 {{PLURAL:$1|dæge|dagum}})',
+'tog-watchcreations'          => 'Sīdan þe ic scieppe settan on mīn wæccgetæl',
+'tog-watchdefault'            => 'Sīdan þe ic ādihte settan on mīn wæccgetæl',
+'tog-watchmoves'              => 'Sīdan þe ic hweorfe settan on mīn ƿæccgetæl',
+'tog-watchdeletion'           => 'Sīdan þe ic forlēose settan on mīn wæccgetæl',
+'tog-previewontop'            => 'Forescēawunge sēon fore ādihtearce',
+'tog-previewonfirst'          => 'Forescēawunge sēon on formestum ādihte',
+'tog-nocache'                 => 'Ne þafian tramenta settunge',
+'tog-enotifwatchlistpages'    => 'Sendan mē spearccræftig ǣrend þǣr tramet on mīnum wæccgetæle wierþ andwended',
+'tog-enotifusertalkpages'     => 'Sendan mē spearccræftig ǣrend þǣr mīn brūcendtramet is andwended',
+'tog-enotifminoredits'        => 'Sendan mē spearccræftig ǣrend þǣr tramets sind efne lytellīce andwended',
+'tog-enotifrevealaddr'        => 'Ēowian mīn spearccræftigra ǣrenda naman on sprearccræftigum gecȳðendum ǣrendum',
+'tog-shownumberswatching'     => 'Hū mæniȝ ƿæccende brūcendas sēon',
+'tog-uselivepreview'          => 'Līfe forescēaƿe brūcan (þearf JavaScript) (oferfundenisc)',
+'tog-watchlisthideown'        => 'Mīna ādihtunga hȳdan ƿiþ þā ƿæccȝetale',
+'tog-watchlisthidebots'       => 'Searuþrala ādihtas hȳdan ƿiþ þā ƿæccȝetale',
+'tog-watchlisthideminor'      => 'Minliċa ādihtunga hȳdan ƿiþ þæt ƿæccbrede',
+'tog-watchlisthideliu'        => 'Ādihtas bȳ inmeldedum brūcendum hȳdan ƿiþ þā ƿæccȝetale',
+'tog-watchlisthideanons'      => 'Ādihtas bȳ uncūðum brūcendum hȳdan ƿiþ þā ƿæccȝetale',
+'tog-watchlisthidepatrolled'  => 'Ƿeardede ādihtas hȳdan ƿiþ þā ƿæccȝetale',
+'tog-ccmeonemails'            => 'Mē tƿifealda sendan þāra e-ǣrenda þe iċ ōðrum brūcendum sende',
+'tog-diffonly'                => 'Ne scēaƿian sīdan innunge under scādungum',
+'tog-showhiddencats'          => 'Ȝehȳdede floccas scēaƿian',
 
 'underline-always'  => 'Ǣfre',
 'underline-never'   => 'Nǣfre',
@@ -288,8 +297,12 @@ $1',
 'toc'                     => 'Innoþ',
 'showtoc'                 => 'sēon',
 'hidetoc'                 => 'hȳdan',
+'thisisdeleted'           => 'Wilt þū sēon oþþe nīwian $1?',
 'viewdeleted'             => '$1 sēon?',
+'restorelink'             => '{{PLURAL:$1|ān ahwītod ādihtung}$1 ahwītoda ādihtunga}}',
 'feedlinks'               => 'Flōd:',
+'feed-invalid'            => 'Ungenge underwrītunge inlāde gecynd.',
+'feed-unavailable'        => 'Fruman inlāda ne sind gearwa',
 'site-rss-feed'           => '$1 RSS strēam',
 'site-atom-feed'          => '$1 Atom strēam',
 'page-rss-feed'           => '$1 RSS strēam',
@@ -310,11 +323,23 @@ $1',
 
 # Main script and global functions
 'nosuchaction'      => 'Nǣniȝ dǣd',
+'nosuchactiontext'  => 'Þæt weorc þe se nettfrumfinded wile is ungenge.
+Þū meahtlīce miswrite þone nettfrumfindend, oþþe folgode unrihtne hlencan.
+Þis mæg ēac tācnian unrihtnesse on þǣre sōftware þe is gebrocen fram {{SITENAME}}.',
 'nosuchspecialpage' => 'Nǣniȝu syndriȝu sīde',
+'nospecialpagetext' => '<strong>Þū hafast abiden ungenges ānlices trametes.</strong>
+
+Getæl gengra ānlicra trameta cann mann findand be [[Special:SpecialPages|{{int:specialpages}}]].',
 
 # General errors
 'error'               => 'Ƿōh',
 'databaseerror'       => 'Cȳþþuhordes ƿōh',
+'dberrortext'         => 'Gewitnesshordes bēnes endebyrdnesse unrihtness hæfþ gelumpen.
+Þis mæg gelimpan unrihtnesse on þǣre sōftware.
+Sēo nīwoste gesōhte sōftware bēn wæs:
+<blockquote><tt>$1</tt></blockquote>
+fram innan weorce "<tt>$2</tt>".
+Gewitnesshord edwende unrihtnesse "<tt>$3: $4</tt>"',
 'laggedslavemode'     => "'''Ƿarnung:''' Sīde ne mihteliċ ne hæfþ nīƿa nīƿunga.",
 'enterlockreason'     => 'Wrīt race þǣre forwiernunge and apunsunge be þǣm tīman on þǣm bēo sēo forwiernung forlǣten',
 'missingarticle-rev'  => '(nīƿung#: $1)',
@@ -361,12 +386,12 @@ Bidde ōðer brūcendnama ċēosan.',
 'createaccounterror'         => 'Ne cūðe macian reccend: $1',
 'nocookiesnew'               => 'Se brūcendreccend wæs gemacod, ac þū neart inmedlod.
 {{SITENAME}} brȳcþ tācninclu tō inmeldienne brūcendas.
-Þū hafast forwierned tācninclu. 
+Þū hafast forwierned tācninclu.
 Bidde þē, lǣt hīe tō twyrcenne, and þǣræfter inmelda þurh þīnne nīwan brūcendnaman and gelēafnessword.',
 'loginsuccesstitle'          => 'Inmeldung gesǣlde',
 'loginsuccess'               => "'''Þu eart nū inmeldod tō {{SITENAME}} swā \"\$1\".'''",
 'nosuchuser'                 => 'Þǣr nis nān brūcere þe hæfþ þone naman "$1".
-Stafena micelnesse sind hefige and ānlica on brūcendnamum. 
+Stafena micelnesse sind hefige and ānlica on brūcendnamum.
 Scēawa þīne wrītunge eft, oþþe brūc þā cartan þe is hērunder tō [[Special:UserLogin/signup|settene nīwne brūcendreccend]].',
 'nosuchusershort'            => 'Þǣr is nān brūcend mid þǣm naman "<nowiki>$1</nowiki>".  Edscēawa on þīne wrītunge.',
 'passwordtooshort'           => 'Gelēafword sculon habban læst {{PLURAL:$1|1 stafan|$1 stafan}}.',
@@ -683,32 +708,53 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'uploadedimage'     => 'forþsendode "[[$1]]"',
 'sourcefilename'    => 'Fruman þrǣdnama:',
 
-'nolicense' => 'Nǣnne gecorenne',
+'license'           => 'Gelēaf:',
+'license-header'    => 'Gelēaf',
+'nolicense'         => 'Nǣnne gecorenne',
+'license-nopreview' => 'Þis gelēaf nis gearu.',
 
 # Special:ListFiles
+'listfiles-summary'     => 'Þes syngriga tramet ēowaþ ealle forþsendede fīlas.
+Æfter gewunelicum wīsum, þā nīwostan fīlas sind ēowod be hēafe þæs getæles.
+Swenge wiþ sweorhēafod andwendeþ þā endebyrdnessa.',
 'listfiles_search_for'  => 'Sēcan biliþnaman:',
+'imgfile'               => 'fīl',
 'listfiles'             => 'Biliþgetalu',
 'listfiles_date'        => 'Tælmearc',
 'listfiles_name'        => 'Nama',
 'listfiles_user'        => 'Brūcend',
+'listfiles_size'        => 'Micelness',
 'listfiles_description' => 'Tōƿritennes',
+'listfiles_count'       => 'Fadunga',
 
 # File description page
 'file-anchor-link'          => 'Fīl',
 'filehist'                  => 'Fīlanstǣr',
 'filehist-help'             => 'Cnæpp on dæȝe/tīde to sēonne þā fīlan sƿā ƿæs hēo on þǣre tīde.',
+'filehist-deleteall'        => 'afeorsian eall',
+'filehist-deleteone'        => 'afeorsian',
+'filehist-revert'           => 'undōn',
 'filehist-current'          => 'nū',
 'filehist-datetime'         => 'Dæȝ/Tīd',
 'filehist-thumb'            => 'Lȳtlbiliþ',
 'filehist-thumbtext'        => 'Lȳtlbiliþ for fadunge sƿā $1',
+'filehist-nothumb'          => 'Nān biliþincel',
 'filehist-user'             => 'Brūcend',
 'filehist-dimensions'       => 'Miċela',
+'filehist-filesize'         => 'Fīlmicelness',
 'filehist-comment'          => 'Ymbsprǣċ',
+'filehist-missing'          => 'Fīl lēas',
 'imagelinks'                => 'Fīlhlenċan',
 'linkstoimage'              => 'Þā folgendan {{PLURAL:$1|sīde hæfþ hlenċe|sīdan habbaþ hlenċan}} for þissum fīle:',
 'nolinkstoimage'            => 'Þǣr sind nāne trametas þe bindaþ tō þissum biliðe.',
+'morelinkstoimage'          => 'Seoh [[Special:WhatLinksHere/$1|mā hlencan]] tō þissum fīle.',
+'redirectstofile'           => '{{PLURAL:$1|Þes fīl edlǣdeþ|$1 Þās fīlas hēr edlǣdaþ}} tō þissum  fīle:',
+'duplicatesoffile'          => '{{PLURAL:$1|Þes fīl hēr is gelīcness|Þās fīlas hēr sind gelīcnessa}} þisses fīles (seoh [[Special:FileDuplicateSearch/$2|mā gewitnesse hērymb]]):',
 'sharedupload'              => 'Þēos fīl is fram $1 and man mæȝ hīe brūcan on ōðrum ƿeorcum.',
 'uploadnewversion-linktext' => 'Nīƿe fadunge þisse fīlan forþsendan',
+
+# File reversion
+'filerevert-legend' => 'Eftdōn fīl',
 
 # File deletion
 'filedelete-submit' => 'āfeorsian',
@@ -766,7 +812,7 @@ Bidde behycge þæt þu bricst þone tramet intō smalrum dǣlum.',
 'booksources'               => 'Bōcfruman',
 'booksources-search-legend' => 'Sēcan bōcfruman',
 'booksources-go'            => 'Gān',
-'booksources-text'          => 'Under is getalu benda tō ōðrum webstedum þe bebycgaþ nīwa and gebrocena bēc, and hæbben 
+'booksources-text'          => 'Under is getalu benda tō ōðrum webstedum þe bebycgaþ nīwa and gebrocena bēc, and hæbben
 ēac mā āscunga ymbe bēc þe þu sēcst:',
 
 # Special:Log

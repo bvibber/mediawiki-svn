@@ -44,7 +44,7 @@ class AddWiki extends Maintenance {
 	}
 
 	public function execute() {
-		global $IP, $wgDefaultExternalStore, $wgNoDBParam, $wgPasswordSender;
+		global $IP, $wgDefaultExternalStore, $wgNoDBParam;
 
 		$wgNoDBParam = true;
 		$lang = $this->getArg( 0 );
@@ -83,7 +83,7 @@ class AddWiki extends Maintenance {
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/ClickTracking/ClickTrackingEvents.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/ClickTracking/ClickTracking.sql" );
 		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/UserDailyContribs/UserDailyContribs.sql" );
-		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/Optin/OptIn.sql" );
+		$dbw->sourceFile( "$IP/extensions/UsabilityInitiative/OptIn/OptIn.sql" );
 
 		$dbw->query( "INSERT INTO site_stats(ss_row_id) VALUES (1)" );
 
@@ -149,16 +149,16 @@ class AddWiki extends Maintenance {
 		# Rebuild interwiki tables
 		# passthru( '/home/wikipedia/conf/interwiki/update' );
 		
-		$user = getenv( 'USER' );
 		$time = wfTimestamp( TS_RFC2822 );
-		UserMailer::send( new MailAddress( 'newprojects@list.wikimedia.org' ),
-			new MailAddress( $wgPasswordSender ), "New wiki: $dbName",
-			<<<EOT
-A new wiki was created by $user at $time for a $ucsite in $name ($lang).
-Once the wiki is fully set up, it'll be visible at http://$domain
-EOT;
-		);
-
+		// These arguments need to be escaped twice: once for echo and once for at
+		$escDbName = wfEscapeShellArg( wfEscapeShellArg( $dbName ) );
+		$escTime = wfEscapeShellArg( wfEscapeShellArg( $time ) );
+		$escUcsite = wfEscapeShellArg( wfEscapeShellArg( $ucsite ) );
+		$escName = wfEscapeShellArg( wfEscapeShellArg( $name ) );
+		$escLang = wfEscapeShellArg( wfEscapeShellArg( $lang ) );
+		$escDomain = wfEscapeShellArg( wfEscapeShellArg( $domain ) );
+		shell_exec( "echo notifyNewProjects $escDbName $escTime $escUcsite $escName $escLang $escDomain | at now + 15 minutes" );
+		
 		$this->output( "Script ended. You still have to:
 	* Add any required settings in InitialiseSettings.php
 	* Run sync-common-all

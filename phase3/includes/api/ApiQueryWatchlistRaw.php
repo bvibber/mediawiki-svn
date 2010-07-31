@@ -50,7 +50,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 
 	private function run( $resultPageSet = null ) {
 		$this->selectNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
-		
+
 		$params = $this->extractRequestParams();
 
 		$user = $this->getWatchlistUser( $params );
@@ -93,7 +93,6 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$res = $this->select( __METHOD__ );
 
-		$db = $this->getDB();
 		$titles = array();
 		$count = 0;
 		foreach ( $res as $row ) {

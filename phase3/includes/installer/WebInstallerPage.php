@@ -2,13 +2,27 @@
 
 /**
  * Abstract class to define pages for the web installer.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
  */
 abstract class WebInstallerPage {
 	
+	/**
+	 * The WebInstaller object this WebInstallerPage belongs to.
+	 * 
+	 * @var WebInstaller
+	 */
+	public $parent;
+	
 	public abstract function execute();
 	
-	public function __construct( $parent ) {
-		// TODO: This field is not defined??
+	/**
+	 * Constructor.
+	 * 
+	 * @param WebInstaller $parent
+	 */	
+	public function __construct( WebInstaller $parent ) {
 		$this->parent = $parent;
 	}
 
@@ -33,14 +47,17 @@ abstract class WebInstallerPage {
 		$this->parent->output->outputWarnings();
 		$s = "<div class=\"config-submit\">\n";
 		$id = $this->getId();
+		
 		if ( $id === false ) {
 			$s .= Xml::hidden( 'lastPage', $this->parent->request->getVal( 'lastPage' ) );
 		}
+		
 		if ( $continue ) {
 			// Fake submit button for enter keypress
 			$s .= Xml::submitButton( wfMsg( "config-$continue" ),
 				array( 'name' => "enter-$continue", 'style' => 'display:none' ) ) . "\n";
 		}
+		
 		if ( $id !== 0 ) {
 			$s .= Xml::submitButton( wfMsg( 'config-back' ),
 				array(
@@ -48,6 +65,7 @@ abstract class WebInstallerPage {
 					'tabindex' => $this->parent->nextTabIndex()
 				) ) . "\n";
 		}
+		
 		if ( $continue ) {
 			$s .= Xml::submitButton( wfMsg( "config-$continue" ),
 				array(
@@ -55,6 +73,7 @@ abstract class WebInstallerPage {
 					'tabindex' => $this->parent->nextTabIndex(),
 				) ) . "\n";
 		}
+		
 		$s .= "</div></form></div>\n";
 		$this->addHTML( $s );
 	}
@@ -579,14 +598,17 @@ class WebInstaller_Options extends WebInstallerPage {
 		);
 
 		$extensions = $this->parent->findExtensions();
+		
 		if( $extensions ) {
 			$extHtml = $this->parent->getFieldsetStart( 'config-extensions' );
-			foreach( array_keys($extensions) as $ext ) {
+			
+			foreach( $extensions as $ext ) {
 				$extHtml .= $this->parent->getCheckBox( array(
 					'var' => "ext-$ext",
 					'rawtext' => $ext,
 				) );
 			}
+			
 			$extHtml .= $this->parent->getHelpBox( 'config-extensions-help' ) .
 				$this->parent->getFieldsetEnd();
 			$this->addHTML( $extHtml );
@@ -827,7 +849,6 @@ class WebInstaller_Install extends WebInstallerPage {
 class WebInstaller_Complete extends WebInstallerPage {
 	
 	public function execute() {
-		global $IP;
 		$this->startForm();
 		$this->addHTML(
 			$this->parent->getInfoBox(

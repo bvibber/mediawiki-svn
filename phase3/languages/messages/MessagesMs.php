@@ -484,7 +484,7 @@ daripada fungsi "<tt>$2</tt>".
 Pangkalan data memulangkan ralat "<tt>$3: $4</tt>".',
 'dberrortextcl'        => 'Terdapat ralat sintaks pertanyaan pangkalan data.
 Pertanyaan terakhir ialah:
-"$1" 
+"$1"
 daripada fungsi "$2".
 Pangkalan data memulangkan ralat "$3: $4".',
 'laggedslavemode'      => 'Amaran: Laman ini mungkin bukan yang terkini.',
@@ -832,7 +832,7 @@ Anda boleh berundur dan menyunting laman yang sedia ada, atau [[Special:UserLogi
 
 Anda harus mempertimbangkan perlunya menyunting laman ini.
 Untuk rujukan, yang berikut ialah log penghapusan bagi laman ini:",
-'moveddeleted-notice'              => 'Laman ini telah dihapuskan. 
+'moveddeleted-notice'              => 'Laman ini telah dihapuskan.
 Log penghapusan bagi laman ini dilampirkan di bawah untuk rujukan.',
 'log-fulllog'                      => 'Lihat log lengkap',
 'edit-hook-aborted'                => 'Suntingan anda telah dibatalkan oleh penyangkuk. Tiada sebab diberikan.',
@@ -1218,6 +1218,7 @@ Di sini ada nilai yang dihasilkan secara rawak yang boleh anda guna: $1',
 'prefs-advancedrendering'       => 'Pilihan maju',
 'prefs-advancedsearchoptions'   => 'Pilihan maju',
 'prefs-advancedwatchlist'       => 'Pilihan maju',
+'prefs-displayrc'               => 'Papar pilihan',
 'prefs-diffs'                   => 'Beza',
 
 # User rights
@@ -1475,7 +1476,6 @@ Jika anda memiliki imej ini dalam leraian penuh, sila muat naik fail tersebut. S
 'fileexists-shared-forbidden' => 'Sebuah fail dengan nama ini telah pun wujud dalam gedung fail kongsi. Jika anda masih mahu memuat naik fail ini, sila kembali ke borang muat naik dan gunakan nama lain. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Fail ini adalah salinan bagi {{PLURAL:$1|fail|fail-fail}} berikut:',
 'file-deleted-duplicate'      => 'Sebuah fail yang serupa dengan fail ini ([[$1]]) telah pun dihapuskan sebelum ini. Anda seharusnya memeriksa sejarah penghapusan fail itu terlebih dahulu sebelum memuat naiknya sekali lagi.',
-'successfulupload'            => 'Muat naik berjaya',
 'uploadwarning'               => 'Amaran muat naik',
 'savefile'                    => 'Simpan fail',
 'uploadedimage'               => 'memuat naik "[[$1]]"',
@@ -1496,6 +1496,7 @@ Jika anda memiliki imej ini dalam leraian penuh, sila muat naik fail tersebut. S
 Anda harus mempertimbangkan perlunya memuat naik fail ini.
 Untuk rujukan, yang berikut ialah log penghapusan bagi fail ini:",
 'filename-bad-prefix'         => "Nama bagi fail yang dimuat naik bermula dengan '''\"\$1\"''', yang mana merupakan nama yang tidak deskriptif yang biasanya ditetapkan oleh kamera digital secara automatik. Sila berikan nama yang lebih deskriptif bagi fail tersebut.",
+'upload-success-subj'         => 'Muat naik berjaya',
 
 'upload-proto-error'      => 'Protokol salah',
 'upload-proto-error-text' => 'Muat naik jauh memerlukan URL yang dimulakan dengan <code>http://</code> atau <code>ftp://</code>.',
@@ -1646,7 +1647,7 @@ Penerangan pada [$2 laman penerangan failnya] di sana ditunjukkan di bawah.',
 
 'doubleredirects'            => 'Lencongan berganda',
 'doubleredirectstext'        => 'Yang berikut ialah senarai laman yang melencong ke laman lencongan lain. Setiap baris mengandungi pautan ke laman lencongan pertama dan kedua, serta baris pertama bagi teks lencongan kedua, lazimnya merupakan laman sasaran "sebenar", yang sepatutnya ditujui oleh lencongan pertama.
-Masukan yang <s>dipotong</s> telah diselesaikan.',
+Masukan yang <del>dipotong</del> telah diselesaikan.',
 'double-redirect-fixed-move' => '[[$1]] dilencongkan ke [[$2]]',
 'double-redirect-fixer'      => 'Pembaiki lencongan',
 
@@ -1713,7 +1714,7 @@ Masukan yang <s>dipotong</s> telah diselesaikan.',
 'ancientpages'            => 'Laman lapuk',
 'move'                    => 'Alih',
 'movethispage'            => 'Pindahkan laman ini',
-'unusedimagestext'        => 'Fail-fail berikut wujud tetapi tidak digunakan dalam mana-mana laman. 
+'unusedimagestext'        => 'Fail-fail berikut wujud tetapi tidak digunakan dalam mana-mana laman.
 Sila ambil perhatian bahawa mungkin terdapat tapak web lain yang memaut ke fail ini menggunakan URL langsung, dan masih disenaraikan di sini walapun berada dalam kegunaan aktif.',
 'unusedcategoriestext'    => 'Laman-laman kategori berikut wujud walaupun tiada laman atau kategori lain menggunakannya.',
 'notargettitle'           => 'Tiada sasaran',
@@ -2576,7 +2577,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Amaran''': Fail jenis ini mungkin mengandungi kod berbahaya.
-Dengan menjalankannya, komputer anda mungkin akan terjejas.<hr />",
+Dengan menjalankannya, komputer anda mungkin akan terjejas.",
 'imagemaxsize'         => "Had saiz imej:<br />''(untuk laman keterangan fail)''",
 'thumbsize'            => 'Saiz imej ringkas:',
 'widthheightpage'      => '$1×$2, $3 halaman',

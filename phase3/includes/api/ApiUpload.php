@@ -45,95 +45,105 @@ class ApiUpload extends ApiBase {
 			$this->dieUsageMsg( array( 'uploaddisabled' ) );
 		}
 
+		// Parameter handling
 		$this->mParams = $this->extractRequestParams();
 		$request = $this->getMain()->getRequest();
-
 		// Add the uploaded file to the params array
 		$this->mParams['file'] = $request->getFileName( 'file' );
 
+		// Select an upload module
+		$this->selectUploadModule();
+		if ( !isset( $this->mUpload ) ) {
+			$this->dieUsage( 'No upload module set', 'nomodule' );
+		}
+		
+		// First check permission to upload
+		$this->checkPermissions( $wgUser );
+		
+		// Fetch the file
+		$status = $this->mUpload->fetchFile();
+		if ( !$status->isGood() ) {
+			$errors = $status->getErrorsArray();
+			$error = array_shift( $errors[0] );
+			$this->dieUsage( 'Error fetching file from remote source', $error, 0, $errors[0] );
+		}
+
+		// Check if the uploaded file is sane
+		$this->verifyUpload();
+		
+		// Check permission to upload this file
+		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
+		if ( $permErrors !== true ) {
+			// Todo: stash the upload and allow choosing a new name
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
+		}
+
+		// Check warnings if necessary
+		$warnings = $this->checkForWarnings();
+		if ( $warnings ) {
+			$this->getResult()->addValue( null, $this->getModuleName(), $warnings );
+		} else {
+			// Perform the upload
+			$result = $this->performUpload();
+			$this->getResult()->addValue( null, $this->getModuleName(), $result );
+		}
+
+		// Cleanup any temporary mess
+		$this->mUpload->cleanupTempFile();
+	}
+	
+	/**
+	 * Select an upload module and set it to mUpload. Dies on failure.
+	 */
+	protected function selectUploadModule() {
+		$request = $this->getMain()->getRequest();
+		
 		// One and only one of the following parameters is needed
 		$this->requireOnlyOneParameter( $this->mParams,
 			'sessionkey', 'file', 'url' );
+		// And this one is needed
+		if ( !isset( $this->mParams['filename'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
+		}
 
 		if ( $this->mParams['sessionkey'] ) {
-			/**
-			 * Upload stashed in a previous request
-			 */
-			// Check the session key
-			if ( !isset( $_SESSION[UploadBase::getSessionKey()][$this->mParams['sessionkey']] ) ) {
+			// Upload stashed in a previous request
+			$sessionData = $request->getSessionData( UploadBase::getSessionKeyName() );
+			if ( !UploadFromStash::isValidSessionKey( $this->mParams['sessionkey'], $sessionData ) ) {
 				$this->dieUsageMsg( array( 'invalid-session-key' ) );
 			}
 
 			$this->mUpload = new UploadFromStash();
 			$this->mUpload->initialize( $this->mParams['filename'],
 				$this->mParams['sessionkey'],
-				$_SESSION[UploadBase::getSessionKey()][$this->mParams['sessionkey']] );
-		} elseif ( isset( $this->mParams['filename'] ) ) {
-			/**
-			 * Upload from URL, etc.
-			 * Parameter filename is required
-			 */
-			if ( isset( $this->mParams['file'] ) ) {
-				$this->mUpload = new UploadFromFile();
-				$this->mUpload->initialize(
-					$this->mParams['filename'],
-					$request->getFileTempName( 'file' ),
-					$request->getFileSize( 'file' )
-				);
-			} elseif ( isset( $this->mParams['url'] ) ) {
-				// make sure upload by URL is enabled:
-				if ( !$wgAllowCopyUploads ) {
-					$this->dieUsageMsg( array( 'copyuploaddisabled' ) );
-				}
-
-				// make sure the current user can upload
-				if ( !$wgUser->isAllowed( 'upload_by_url' ) ) {
-					$this->dieUsageMsg( array( 'badaccess-groups' ) );
-				}
-
-				$this->mUpload = new UploadFromUrl;
-				$async = $this->mParams['asyncdownload'] ? 'async' : null;
-
-				$result = $this->mUpload->initialize( $this->mParams['filename'],
-						$this->mParams['url'],
-						$this->mParams['comment'],
-						$this->mParams['watchlist'],
-						$this->mParams['ignorewarnings'],
-						$async );
-
-				$this->checkPermissions( $wgUser );
-				if ( $async ) {
-					$this->getResult()->addValue( null,
-												  $this->getModuleName(),
-												  array( 'queued' => $result ) );
-					return;
-				}
-
-				$status = $this->mUpload->retrieveFileFromUrl();
-				if ( !$status->isGood() ) {
-					$this->getResult()->addValue( null,
-												  $this->getModuleName(),
-												  array( 'error' => $status ) );
-					return;
+				$sessionData[$this->mParams['sessionkey']] );
+			
+			
+		} elseif ( isset( $this->mParams['file'] ) ) {
+			$this->mUpload = new UploadFromFile();
+			$this->mUpload->initialize(
+				$this->mParams['filename'],
+				$request->getUpload( 'file' )
+			);	
+		} elseif ( isset( $this->mParams['url'] ) ) {
+			// Make sure upload by URL is enabled:
+			if ( !UploadFromUrl::isEnabled() ) {
+				$this->dieUsageMsg( array( 'copyuploaddisabled' ) );
+			}
+			
+			$async = false;
+			if ( $this->mParams['asyncdownload'] ) {
+				if ( $this->mParams['leavemessage'] ) {
+					$async = 'async-leavemessage';
+				} else {
+					$async = 'async';
 				}
 			}
-		} else {
-			$this->dieUsageMsg( array( 'missingparam', 'filename' ) );
+			$this->mUpload = new UploadFromUrl;
+			$this->mUpload->initialize( $this->mParams['filename'],
+				$this->mParams['url'], $async );
+
 		}
-
-		$this->checkPermissions( $wgUser );
-
-		if ( !isset( $this->mUpload ) ) {
-			$this->dieUsage( 'No upload module set', 'nomodule' );
-		}
-
-		// Perform the upload
-		$result = $this->performUpload();
-
-		// Cleanup any temporary mess
-		$this->mUpload->cleanupTempFile();
-
-		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 
 	/**
@@ -156,26 +166,13 @@ class ApiUpload extends ApiBase {
 
 	/**
 	 * Performs file verification, dies on error.
-	 *
-	 * @param $flag integer passed to UploadBase::verifyUpload, set to
-	 * UploadBase::EMPTY_FILE to skip the empty file check.
 	 */
-	public function verifyUpload( $flag ) {
-		$verification = $this->mUpload->verifyUpload( $flag );
+	protected function verifyUpload( ) {
+		$verification = $this->mUpload->verifyUpload( );
 		if ( $verification['status'] === UploadBase::OK ) {
-			return $verification;
+			return;		
 		}
 
-		$this->getVerificationError( $verification );
-	}
-
-	/**
-	 * Produce the usage error
-	 *
-	 * @param $verification array an associative array with the status
-	 * key
-	 */
-	public function getVerificationError( $verification ) {
 		// TODO: Move them to ApiBase's message map
 		switch( $verification['status'] ) {
 			case UploadBase::EMPTY_FILE:
@@ -202,9 +199,6 @@ class ApiUpload extends ApiBase {
 				$this->dieUsage( 'The filename is not allowed', 'illegal-filename',
 						0, array( 'filename' => $verification['filtered'] ) );
 				break;
-			case UploadBase::OVERWRITE_EXISTING_FILE:
-				$this->dieUsage( 'Overwriting an existing file is not allowed', 'overwrite' );
-				break;
 			case UploadBase::VERIFICATION_ERROR:
 				$this->getResult()->setIndexedTagName( $verification['details'], 'detail' );
 				$this->dieUsage( 'This file did not pass file verification', 'verification-error',
@@ -221,6 +215,10 @@ class ApiUpload extends ApiBase {
 		}
 	}
 
+	/**
+	 * Check warnings if ignorewarnings is not set. 
+	 * Returns a suitable result array if there were warnings
+	 */
 	protected function checkForWarnings() {
 		$result = array();
 
@@ -260,18 +258,13 @@ class ApiUpload extends ApiBase {
 		return;
 	}
 
+	/**
+	 * Perform the actual upload. Returns a suitable result array on success;
+	 * dies on failure.
+	 */
 	protected function performUpload() {
 		global $wgUser;
-		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
-		if ( $permErrors !== true ) {
-			$this->dieUsageMsg( array( 'badaccess-groups' ) );
-		}
-
-		$this->verifyUpload();
-
-		$warnings = $this->checkForWarnings();
-		if ( isset( $warnings ) ) return $warnings;
-
+		
 		// Use comment as initial page text by default
 		if ( is_null( $this->mParams['text'] ) ) {
 			$this->mParams['text'] = $this->mParams['comment'];
@@ -291,9 +284,19 @@ class ApiUpload extends ApiBase {
 
 		if ( !$status->isGood() ) {
 			$error = $status->getErrorsArray();
-			$this->getResult()->setIndexedTagName( $result['details'], 'error' );
+			
+			if ( count( $error ) == 1 && $error[0][0] == 'async' ) {
+				// The upload can not be performed right now, because the user
+				// requested so
+				return array(
+					'result' => 'Queued',
+					'sessionkey' => $error[0][1],
+				);
+			} else {
+				$this->getResult()->setIndexedTagName( $error, 'error' );
 
-			$this->dieUsage( 'An internal error occurred', 'internal-error', 0, $error );
+				$this->dieUsage( 'An internal error occurred', 'internal-error', 0, $error );
+			}
 		}
 
 		$file = $this->mUpload->getLocalFile();
@@ -336,14 +339,22 @@ class ApiUpload extends ApiBase {
 			'ignorewarnings' => false,
 			'file' => null,
 			'url' => null,
-			'asyncdownload' => false,
+
 			'sessionkey' => null,
 		);
+		
+		global $wgAllowAsyncCopyUploads;
+		if ( $wgAllowAsyncCopyUploads ) {
+			$params += array(
+				'asyncdownload' => false,
+				'leavemessage' => false,			
+			);
+		}
 		return $params;
 	}
 
 	public function getParamDescription() {
-		return array(
+		$params = array(
 			'filename' => 'Target filename',
 			'token' => 'Edit token. You can get one of these through prop=info',
 			'comment' => 'Upload comment. Also used as the initial page text for new files if "text" is not specified',
@@ -353,11 +364,19 @@ class ApiUpload extends ApiBase {
 			'ignorewarnings' => 'Ignore any warnings',
 			'file' => 'File contents',
 			'url' => 'Url to fetch the file from',
-			'asyncdownload' => 'Make fetching a URL asyncronous',
-			'sessionkey' => array(
-				'Session key returned by a previous upload that failed due to warnings',
-			),
+			'sessionkey' => 'Session key returned by a previous upload that failed due to warnings',
 		);
+
+		global $wgAllowAsyncCopyUploads;
+		if ( $wgAllowAsyncCopyUploads ) {
+			$params += array(
+				'asyncdownload' => 'Make fetching a URL asynchronous',
+				'leavemessage' => 'If asyncdownload is used, leave a message on the user talk page if finished',			
+			);
+		}
+		
+		return $params;
+		
 	}
 
 	public function getDescription() {

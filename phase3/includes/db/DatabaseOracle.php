@@ -32,7 +32,6 @@ class ORAResult {
 	private $stmt;
 	private $nrows;
 
-	private $unique;
 	private function array_unique_md( $array_in ) {
 		$array_out = array();
 		$array_hashes = array();
@@ -457,7 +456,7 @@ class DatabaseOracle extends DatabaseBase {
 	}
 
 	private function insertOneRow( $table, $row, $fname ) {
-		global $wgLang;
+		global $wgContLang;
 
 		$table = $this->tableName( $table );
 		// "INSERT INTO tables (a, b, c)"
@@ -493,7 +492,7 @@ class DatabaseOracle extends DatabaseBase {
 					$val = '31-12-2030 12:00:00.000000';
 				}
 
-				$val = ( $wgLang != null ) ? $wgLang->checkTitleEncoding( $val ) : $val;
+				$val = ( $wgContLang != null ) ? $wgContLang->checkTitleEncoding( $val ) : $val;
 				if ( oci_bind_by_name( $stmt, ":$col", $val ) === false ) {
 					$this->reportQueryError( $this->lastErrno(), $this->lastError(), $sql, __METHOD__ );
 					return false;
@@ -992,8 +991,6 @@ class DatabaseOracle extends DatabaseBase {
 	}
 
 	function setup_database() {
-		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport, $wgDBuser;
-
 		$res = $this->sourceFile( "../maintenance/ora/tables.sql" );
 		if ($res === true) {
 			print " done.</li>\n";
@@ -1028,9 +1025,9 @@ class DatabaseOracle extends DatabaseBase {
 	}
 
 	function addQuotes( $s ) {
-		global $wgLang;
-		if ( isset( $wgLang->mLoaded ) && $wgLang->mLoaded ) {
-			$s = $wgLang->checkTitleEncoding( $s );
+		global $wgContLang;
+		if ( isset( $wgContLang->mLoaded ) && $wgContLang->mLoaded ) {
+			$s = $wgContLang->checkTitleEncoding( $s );
 		}
 		return "'" . $this->strencode( $s ) . "'";
 	}
@@ -1040,7 +1037,7 @@ class DatabaseOracle extends DatabaseBase {
 	}
 
 	function selectRow( $table, $vars, $conds, $fname = 'DatabaseOracle::selectRow', $options = array(), $join_conds = array() ) {
-		global $wgLang;
+		global $wgContLang;
 
 		$conds2 = array();
 		$conds = ($conds != null && !is_array($conds)) ? array($conds) : $conds;
@@ -1048,9 +1045,9 @@ class DatabaseOracle extends DatabaseBase {
 			$col_info = $this->fieldInfoMulti( $table, $col );
 			$col_type = $col_info != false ? $col_info->type() : 'CONSTANT';
 			if ( $col_type == 'CLOB' ) {
-				$conds2['TO_CHAR(' . $col . ')'] = $wgLang->checkTitleEncoding( $val );
+				$conds2['TO_CHAR(' . $col . ')'] = $wgContLang->checkTitleEncoding( $val );
 			} elseif ( $col_type == 'VARCHAR2' && !mb_check_encoding( $val ) ) {
-				$conds2[$col] = $wgLang->checkTitleEncoding( $val );
+				$conds2[$col] = $wgContLang->checkTitleEncoding( $val );
 			} else {
 				$conds2[$col] = $val;
 			}
@@ -1103,24 +1100,24 @@ class DatabaseOracle extends DatabaseBase {
 	}
 
 	public function delete( $table, $conds, $fname = 'DatabaseOracle::delete' ) {
-		global $wgLang;
+		global $wgContLang;
 
-		if ( $wgLang != null ) {
+		if ( $wgContLang != null ) {
 			$conds2 = array();
 			$conds = ($conds != null && !is_array($conds)) ? array($conds) : $conds;
 			foreach ( $conds as $col => $val ) {
 				$col_info = $this->fieldInfoMulti( $table, $col );
 				$col_type = $col_info != false ? $col_info->type() : 'CONSTANT';
 				if ( $col_type == 'CLOB' ) {
-					$conds2['TO_CHAR(' . $col . ')'] = $wgLang->checkTitleEncoding( $val );
+					$conds2['TO_CHAR(' . $col . ')'] = $wgContLang->checkTitleEncoding( $val );
 				} else {
 					if ( is_array( $val ) ) {
 						$conds2[$col] = $val;
 						foreach ( $conds2[$col] as &$val2 ) {
-							$val2 = $wgLang->checkTitleEncoding( $val2 );
+							$val2 = $wgContLang->checkTitleEncoding( $val2 );
 						}
 					} else {
-						$conds2[$col] = $wgLang->checkTitleEncoding( $val );
+						$conds2[$col] = $wgContLang->checkTitleEncoding( $val );
 					}
 				}
 			}

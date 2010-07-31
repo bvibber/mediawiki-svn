@@ -7,60 +7,75 @@
  * the interests of separation of concerns: if we used a subclass, there would be 
  * quite a lot of things you could do in OutputPage that would break the installer, 
  * that wouldn't be immediately obvious. 
+ * 
+ * @ingroup Deployment
+ * @since 1.17
  */
 class WebInstallerOutput {
-	var $parent;
-	var $contents = '';
-	var $warnings = '';
-	var $headerDone = false;
-	var $redirectTarget;
-	var $debug = true;
-	var $useShortHeader = false;
+	
+	/**
+	 * The WebInstaller object this WebInstallerOutput is used by.
+	 * 
+	 * @var WebInstaller
+	 */	
+	public $parent;
+	
+	public $contents = '';
+	public $warnings = '';
+	public $headerDone = false;
+	public $redirectTarget;
+	public $debug = true;
+	public $useShortHeader = false;
 
-	function __construct( $parent ) {
+	/**
+	 * Constructor.
+	 * 
+	 * @param WebInstaller $parent
+	 */
+	public function __construct( WebInstaller $parent ) {
 		$this->parent = $parent;
 	}
 
-	function addHTML( $html ) {
+	public function addHTML( $html ) {
 		$this->contents .= $html;
 		$this->flush();
 	}
 
-	function addWikiText( $text ) {
+	public function addWikiText( $text ) {
 		$this->addHTML( $this->parent->parse( $text ) );
 	}
 
-	function addHTMLNoFlush( $html ) {
+	public function addHTMLNoFlush( $html ) {
 		$this->contents .= $html;
 	}
 
-	function addWarning( $msg ) {
+	public function addWarning( $msg ) {
 		$this->warnings .= "<p>$msg</p>\n";
 	}
 	
-	function addWarningMsg( $msg /*, ... */ ) {
+	public function addWarningMsg( $msg /*, ... */ ) {
 		$params = func_get_args();
 		array_shift( $params );
 		$this->addWarning( wfMsg( $msg, $params ) );
 	}
 
-	function redirect( $url ) {
+	public function redirect( $url ) {
 		if ( $this->headerDone ) {
 			throw new MWException( __METHOD__ . ' called after sending headers' );
 		}
 		$this->redirectTarget = $url;
 	}
 
-	function output() {
+	public function output() {
 		$this->flush();
 		$this->outputFooter();
 	}
 
-	function useShortHeader( $use = true ) {
+	public function useShortHeader( $use = true ) {
 		$this->useShortHeader = $use;
 	}
 
-	function flush() {
+	public function flush() {
 		if ( !$this->headerDone ) {
 			$this->outputHeader();
 		}
@@ -72,7 +87,7 @@ class WebInstallerOutput {
 		}
 	}
 
-	function getDir() {
+	public function getDir() {
 		global $wgLang;
 		if( !is_object( $wgLang ) || !$wgLang->isRtl() )
 			return 'ltr';
@@ -80,7 +95,7 @@ class WebInstallerOutput {
 			return 'rtl';
 	}
 
-	function getLanguageCode() {
+	public function getLanguageCode() {
 		global $wgLang;
 		if( !is_object( $wgLang ) )
 			return 'en';
@@ -88,18 +103,18 @@ class WebInstallerOutput {
 			return $wgLang->getCode();
 	}
 
-	function getHeadAttribs() {
+	public function getHeadAttribs() {
 		return array(
 			'dir' => $this->getDir(),
 			'lang' => $this->getLanguageCode(),
 		);
 	}
 
-	function headerDone() {
+	public function headerDone() {
 		return $this->headerDone;
 	}
 
-	function outputHeader() {
+	public function outputHeader() {
 		$this->headerDone = true;
 		$dbTypes = $this->parent->getDBTypes();
 
@@ -144,7 +159,7 @@ class WebInstallerOutput {
 <?php
 	}
 
-	function outputFooter() {
+	public function outputFooter() {
 		$this->outputWarnings();
 
 		if ( $this->useShortHeader ) {
@@ -179,7 +194,7 @@ class WebInstallerOutput {
 <?php
 	}
 
-	function outputShortHeader() {
+	public function outputShortHeader() {
 ?>
 <?php echo Html::htmlHeader( $this->getHeadAttribs() ); ?>
 <head>
@@ -196,18 +211,19 @@ class WebInstallerOutput {
 <?php
 	}
 
-	function outputTitle() {
+	public function outputTitle() {
 		global $wgVersion;
 		echo htmlspecialchars( wfMsg( 'config-title', $wgVersion ) );
 	}
 
-	function outputJQuery() {
+	public function outputJQuery() {
 		global $wgJQueryVersion;
 		echo Html::linkedScript( "../skins/common/jquery-$wgJQueryVersion.min.js" );
 	}
 
-	function outputWarnings() {
+	public function outputWarnings() {
 		$this->addHTML( $this->warnings );
 		$this->warnings = '';
 	}
+	
 }

@@ -44,6 +44,10 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -83,7 +87,7 @@ class ApiQueryAllCategories extends ApiQueryGeneratorBase {
 		$res = $this->select( __METHOD__ );
 
 		$pages = array();
-		$categories = array();
+
 		$result = $this->getResult();
 		$count = 0;
 		foreach ( $res as $row ) {

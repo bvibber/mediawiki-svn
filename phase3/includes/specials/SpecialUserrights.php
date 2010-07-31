@@ -159,7 +159,7 @@ class UserrightsPage extends SpecialPage {
 	 * @return null
 	 */
 	function saveUserGroups( $username, $reason = '' ) {
-		global $wgRequest, $wgUser, $wgGroupsAddToSelf, $wgGroupsRemoveFromSelf;
+		global $wgRequest, $wgOut;
 
 		$status = $this->fetchUser( $username );
 		if( !$status->isOK() ) {
@@ -537,7 +537,7 @@ class UserrightsPage extends SpecialPage {
 		foreach( $columns as $name => $column ) {
 			if( $column === array() )
 				continue;
-			$ret .= xml::element( 'th', null, wfMsg( 'userrights-' . $name . '-col' ) );
+			$ret .= Xml::element( 'th', null, wfMsg( 'userrights-' . $name . '-col' ) );
 		}
 		$ret.= "</tr>\n<tr>\n";
 		foreach( $columns as $column ) {

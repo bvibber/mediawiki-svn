@@ -432,7 +432,7 @@ abstract class QueryPage extends SpecialPage {
 
 		$this->preprocessResults( $dbr, $res );
 
-		$wgOut->addHTML( XML::openElement( 'div', array('class' => 'mw-spcontent') ) );
+		$wgOut->addHTML( Xml::openElement( 'div', array('class' => 'mw-spcontent') ) );
 
 		# Top header and navigation
 		if( $this->shownavigation ) {
@@ -448,7 +448,7 @@ abstract class QueryPage extends SpecialPage {
 				# No results to show, so don't bother with "showing X of Y" etc.
 				# -- just let the user know and give up now
 				$wgOut->addHTML( '<p>' . wfMsgHtml( 'specialpage-empty' ) . '</p>' );
-				$wgOut->addHTML( XML::closeElement( 'div' ) );
+				$wgOut->addHTML( Xml::closeElement( 'div' ) );
 				return;
 			}
 		}
@@ -468,7 +468,7 @@ abstract class QueryPage extends SpecialPage {
 			$wgOut->addHTML( '<p>' . $paging . '</p>' );
 		}
 
-		$wgOut->addHTML( XML::closeElement( 'div' ) );
+		$wgOut->addHTML( Xml::closeElement( 'div' ) );
 
 		return $num;
 	}
@@ -678,7 +678,7 @@ abstract class WantedQueryPage extends QueryPage {
 		if( $title instanceof Title ) {
 			if( $this->isCached() ) {
 				$pageLink = $title->exists()
-					? '<s>' . $skin->link( $title ) . '</s>'
+					? '<del>' . $skin->link( $title ) . '</del>'
 					: $skin->link(
 						$title,
 						null,

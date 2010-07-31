@@ -1141,8 +1141,8 @@ $2',
 'revdelete-unsuppress'        => 'הסרת הגבלות בגרסאות המשוחזרות',
 'revdelete-log'               => 'סיבה:',
 'revdelete-submit'            => 'ביצוע על {{PLURAL:$1|הגרסה שנבחרה|הגרסאות שנבחרו}}',
-'revdelete-logentry'          => 'שינה את הסתרת הגרסה של [[$1]]',
-'logdelete-logentry'          => 'שינה את הסתרת פעולת היומן של [[$1]]',
+'revdelete-logentry'          => 'שינה את הסתרת הגרסה של "[[$1]]"',
+'logdelete-logentry'          => 'שינה את הסתרת פעולת היומן של "[[$1]]"',
 'revdelete-success'           => "'''מצב הסתרת הגרסה עודכן בהצלחה.'''",
 'revdelete-failure'           => "'''לא ניתן היה לעדכן את מצב הסתרת הגרסה:'''
 $1",
@@ -1720,7 +1720,6 @@ $1",
 [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'קובץ זה כפול ל{{PLURAL:$1|קובץ הבא|קבצים הבאים}}:',
 'file-deleted-duplicate'      => 'קובץ זהה לקובץ זה ([[$1]]) נמחק בעבר. אנא בדקו את היסטוריית המחיקה של הקובץ לפני שתעלו אותו מחדש.',
-'successfulupload'            => 'העלאת הקובץ הושלמה בהצלחה',
 'uploadwarning'               => 'אזהרת העלאת קבצים',
 'uploadwarning-text'          => 'אנא שנו את תיאור הקובץ שלמטה ונסו שוב.',
 'savefile'                    => 'שמירת קובץ',
@@ -1761,11 +1760,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # שונות
  #</pre> <!-- נא להשאיר שורה זו בדיוק כפי שהיא -->',
-'upload-successful-msg'       => 'הקובץ שהעלית זמין כאן: $1',
+'upload-success-subj'         => 'ההעלאה הושלמה בהצלחה',
+'upload-success-msg'          => 'ההעלאה מהכתובת [$2] הושלמה בהצלחה. הקובץ שהעליתם זמין כאן: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'בעיה בהעלאה',
-'upload-failure-msg'          => 'הייתה בעיה עם הקובץ שהעלית:
+'upload-failure-msg'          => 'הייתה בעיה עם הקובץ שהעליתם מהכתובת [$2]:
 
 $1',
+'upload-warning-subj'         => 'אזהרה בהעלאה',
+'upload-warning-msg'          => 'הייתה בעיה עם הקובץ שהעליתם מהכתובת [$2]. באפשרותכם לחזור ל[[Special:Upload/stash/$1|טופס ההעלאה]] כדי לתקן בעיה זו.',
 
 'upload-proto-error'        => 'פרוטוקול שגוי',
 'upload-proto-error-text'   => 'בהעלאה מרוחקת, יש להשתמש בכתובות URL המתחילות עם <code>http://</code> או <code>ftp://</code>.',
@@ -1958,7 +1960,7 @@ $1',
 'doubleredirects'            => 'הפניות כפולות',
 'doubleredirectstext'        => 'ההפניות הבאות מפנות לדפי הפניה אחרים.
 כל שורה מכילה קישור להפניות הראשונה והשנייה, וכן את היעד של ההפניה השנייה, שהיא לרוב היעד ה"אמיתי" של ההפניה, אליו אמורה ההפניה הראשונה להצביע.
-ערכים <s>מחוקים</s> כבר תוקנו.',
+ערכים <del>מחוקים</del> כבר תוקנו.',
 'double-redirect-fixed-move' => '[[$1]] הועבר. כעת הוא הפניה לדף [[$2]].',
 'double-redirect-fixer'      => 'מתקן הפניות',
 
@@ -2243,7 +2245,7 @@ $UNWATCHURL
 'deletepage'             => 'מחיקה',
 'confirm'                => 'אישור',
 'excontent'              => 'תוכן היה: "$1"',
-'excontentauthor'        => "תוכן היה: '$1' והתורם היחיד היה [[Special:Contributions/$2|$2]]",
+'excontentauthor'        => 'תוכן היה: "$1" (והתורם היחיד היה "[[Special:Contributions/$2|$2]]")',
 'exbeforeblank'          => 'תוכן לפני שרוקן היה: "$1"',
 'exblank'                => 'הדף היה ריק',
 'delete-confirm'         => 'מחיקת $1',
@@ -2663,6 +2665,7 @@ $1 כבר נחסם. האם ברצונכם לשנות את הגדרות החסי�
 'immobile-source-page'         => 'דף זה אינו ניתן להעברה.',
 'immobile-target-page'         => 'לא ניתן להעביר אל כותרת יעד זו.',
 'imagenocrossnamespace'        => 'לא ניתן להעביר קובץ למרחב שם אחר',
+'nonfile-cannot-move-to-file'  => 'לא ניתן להעביר דף שאינו קובץ למרחב קובץ',
 'imagetypemismatch'            => 'סיומת הקובץ החדשה אינה מתאימה לסוג הקובץ',
 'imageinvalidfilename'         => 'שם קובץ היעד אינו תקין',
 'fix-double-redirects'         => 'עדכון הפניות לכותרת הדף המקורית',
@@ -2963,7 +2966,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''אזהרה:''' סוג קובץ זה עלול להכיל קוד זדוני.
-הרצת הקוד עלולה לסכן את המערכת שלכם.<hr />",
+הרצת הקוד עלולה לסכן את המערכת שלכם.",
 'imagemaxsize'         => 'גודל תמונה מירבי:<br />(לדפי תיאור קובץ)',
 'thumbsize'            => 'הקטנה לגודל של:',
 'widthheightpage'      => '$1×$2, {{PLURAL:$3|דף אחד|$3 דפים}}',
@@ -3376,9 +3379,9 @@ $1',
 
 # Auto-summaries
 'autosumm-blank'   => 'הסרת כל התוכן מדף זה',
-'autosumm-replace' => "החלפת הדף עם '$1'",
+'autosumm-replace' => 'החלפת הדף בתוכן "$1"',
 'autoredircomment' => 'הפניה לדף [[$1]]',
-'autosumm-new'     => 'דף חדש: $1',
+'autosumm-new'     => 'יצירת דף עם התוכן "$1"',
 
 # Size units
 'size-bytes'     => '$1 בייט',

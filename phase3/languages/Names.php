@@ -19,6 +19,7 @@
 	'ar' => 'العربية',	# Arabic
 	'arc' => 'ܐܪܡܝܐ',	# Aramaic
 	'arn' => 'Mapudungun',	# Mapuche, Mapudungu, Araucanian (Araucano)
+	'ary' => 'Maġribi',	# Moroccan Spoken Arabic
 	'arz' => 'مصرى',	# Egyptian Spoken Arabic
 	'as' => 'অসমীয়া',	# Assamese
 	'ast' => 'Asturianu',	# Asturian
@@ -37,6 +38,7 @@
 	'bg' => 'Български',	# Bulgarian
 	'bh' => 'भोजपुरी',	# Bhojpuri
 	'bi' => 'Bislama',		# Bislama
+	'bjn' => 'Bahasa Banjar',	# Banjarese
 	'bm' => 'Bamanankan',	# Bambara
 	'bn' => 'বাংলা',	# Bengali
 	'bo' => 'བོད་ཡིག',	# Tibetan
@@ -152,10 +154,12 @@
 	'ka' => 'ქართული',	# Georgian
 	'kaa' => 'Qaraqalpaqsha',	# Karakalpak
 	'kab' => 'Taqbaylit',	# Kabyle
-	'kg' => 'Kongo',		# Kongo, (FIXME!) should probaly be KiKongo or KiKoongo
+	'kbd' => 'къэбэрдеибзэ/qabardjajəbza',	# Kabardian (falls back to kdb-cyrl)
+	'kbd-cyrl' => 'къэбэрдеибзэ',	# Kabardian (Cyrillic)
+	'kg' => 'Kongo',	# Kongo, (FIXME!) should probaly be KiKongo or KiKoongo
 	'ki' => 'Gĩkũyũ',	# Gikuyu
 	'kiu' => 'Kırmancki',	# Kirmanjki
-	'kj' => 'Kwanyama',		# Kwanyama
+	'kj' => 'Kwanyama',	# Kwanyama
 	'kk' => 'Қазақша',	# Kazakh
 	'kk-arab' => "\xE2\x80\xABقازاقشا (تٴوتە)\xE2\x80\xAC",	# Kazakh Arabic
 	'kk-cyrl' => "\xE2\x80\xAAҚазақша (кирил)\xE2\x80\xAC",	# Kazakh Cyrillic
@@ -174,7 +178,7 @@
 	'kri' => 'Krio', # Krio
 	'krj' => 'Kinaray-a', # Kinaray-a
 	'ks' => 'कश्मीरी - (كشميري)',	# Kashmiri
-	'ksh' => 'Ripoarisch',	# Ripuarian 
+	'ksh' => 'Ripoarisch',	# Ripuarian
 	'ku'  => 'Kurdî',	# Kurdish
 	'ku-latn' => "\xE2\x80\xAAKurdî (latînî)\xE2\x80\xAC",	# Northern Kurdish Latin script
 	'ku-arab' => "\xE2\x80\xABكوردي (عەرەبی)\xE2\x80\xAC",	# Northern Kurdish Arabic script
@@ -200,7 +204,7 @@
 	'lzh' => '文言',	# Literary Chinese -- (bug 8217) lzh instead of zh-classical, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=l
 	'lzz' => 'Lazuri',	# Laz
 	'mai' => 'मैथिली', # Maithili
-	'map-bms' => 'Basa Banyumasan', # Banyumasan 
+	'map-bms' => 'Basa Banyumasan', # Banyumasan
 	'mdf' => 'Мокшень',		# Moksha
 	'mg' => 'Malagasy',		# Malagasy
 	'mh' => 'Ebon',			# Marshallese
@@ -231,6 +235,7 @@
 	'ng' => 'Oshiwambo',		# Ndonga
 	'niu' => 'Niuē',	# Niuean
 	'nl' => 'Nederlands',	# Dutch
+	'nl-informal' => 'Nederlands (informeel)',	# Nederlands - informal address ("je")
 	'nn' => "\xE2\x80\xAANorsk (nynorsk)\xE2\x80\xAC",	# Norwegian (Nynorsk)
 	'no' => "\xE2\x80\xAANorsk (bokmål)\xE2\x80\xAC",		# Norwegian
 	'nov' => 'Novial',		# Novial
@@ -273,7 +278,7 @@
 	'rue' => 'русиньскый язык',	# Rusyn
 	'ruq' => 'Vlăheşte',	# Megleno-Romanian (falls back to ruq-latn)
 	'ruq-cyrl' => 'Влахесте',	# Megleno-Romanian (Cyrillic script)
-	#'ruq-grek' => 'Βλαεστε',	# Megleno-Romanian (Greek script)
+	# 'ruq-grek' => 'Βλαεστε',	# Megleno-Romanian (Greek script)
 	'ruq-latn' => 'Vlăheşte',	# Megleno-Romanian (Latin script)
 	'rw' => 'Kinyarwanda',	# Kinyarwanda, should possibly be Kinyarwandi
 	'sa' => 'संस्कृत',	# Sanskrit

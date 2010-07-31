@@ -38,7 +38,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
-	private $params, $rootTitle, $contRedirs, $contLevel, $contTitle, $contID, $redirID, $redirect;
+	private $params, $rootTitle, $contID, $redirID, $redirect;
 	private $bl_ns, $bl_from, $bl_table, $bl_code, $bl_title, $bl_sort, $bl_fields, $hasNS;
 	private $pageMap, $resultArr;
 
@@ -92,6 +92,10 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -102,7 +106,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		 * AND pl_title='Foo' AND pl_namespace=0
 		 * LIMIT 11 ORDER BY pl_from
 		 */
-		$db = $this->getDB();
 		$this->addTables( array( $this->bl_table, 'page' ) );
 		$this->addWhere( "{$this->bl_from}=page_id" );
 		if ( is_null( $resultPageSet ) ) {
@@ -200,13 +203,12 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$botMax  = ( $this->redirect ? ApiBase::LIMIT_BIG2 / 2 : ApiBase::LIMIT_BIG2 );
 		if ( $this->params['limit'] == 'max' ) {
 			$this->params['limit'] = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
-			$this->getResult()->addValue( 'limits', $this->getModuleName(), $this->params['limit'] );
+			$this->getResult()->setParsedLimit( $this->getModuleName(), $this->params['limit'] );
 		}
 
 		$this->processContinue();
 		$this->prepareFirstQuery( $resultPageSet );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ . '::firstQuery' );
 
 		$count = 0;

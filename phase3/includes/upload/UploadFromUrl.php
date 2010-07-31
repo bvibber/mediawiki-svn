@@ -9,15 +9,15 @@
  * @author Michael Dale
  */
 class UploadFromUrl extends UploadBase {
-	protected $mTempDownloadPath;
-	protected $comment, $watchList, $ignoreWarnings;
+	protected $mAsync, $mUrl;
+	protected $mIgnoreWarnings = true;
 
 	/**
 	 * Checks if the user is allowed to use the upload-by-URL feature. If the
 	 * user is allowed, pass on permissions checking to the parent.
 	 */
 	public static function isAllowed( $user ) {
-		if( !$user->isAllowed( 'upload_by_url' ) )
+		if ( !$user->isAllowed( 'upload_by_url' ) )
 			return 'upload_by_url';
 		return parent::isAllowed( $user );
 	}
@@ -33,55 +33,22 @@ class UploadFromUrl extends UploadBase {
 
 	/**
 	 * Entry point for API upload
-	 * @return bool true on success
+	 * 
+	 * @param $name string
+	 * @param $url string
+	 * @param $async mixed Whether the download should be performed 
+	 * asynchronous. False for synchronous, async or async-leavemessage for
+	 * asynchronous download.
 	 */
-	public function initialize( $name, $url, $comment, $watchList = null, $ignoreWarn = null, $async = 'async') {
-		global $wgUser;
-
-		if( !Http::isValidURI( $url ) ) {
-			return Status::newFatal( 'http-invalid-url' );
-		}
-		$params = array(
-			"userName" => $wgUser->getName(),
-			"userID" => $wgUser->getID(),
-			"url" => trim( $url ),
-			"timestamp" => wfTimestampNow(),
-			"comment" => $comment,
-			"watchlist" => $watchList,
-			"ignorewarnings" => $ignoreWarn);
-
-		$title = Title::newFromText( $name );
-
-		if ( $async == 'async' ) {
-			$job = new UploadFromUrlJob( $title, $params );
-			return $job->insert();
-		}
-		else {
-			$this->mUrl = trim( $url );
-			$this->comment = $comment;
-			$this->watchList = $watchList;
-			$this->ignoreWarnings = $ignoreWarn;
-			$this->mDesiredDestName = $title;
-			$this->getTitle();
-
-			return true;
-		}
-	}
-
-	/**
-	 * Initialize a queued download
-	 * @param $job Job
-	 */
-	public function initializeFromJob( $job ) {
-		global $wgTmpDirectory;
-
-		$this->mUrl = $job->params['url'];
-		$this->mTempPath = tempnam( $wgTmpDirectory, 'COPYUPLOAD' );
-		$this->mDesiredDestName = $job->title;
-		$this->comment = $job->params['comment'];
-		$this->watchList = $job->params['watchlist'];
-		$this->ignoreWarnings = $job->params['ignorewarnings'];
-		$this->getTitle();
+	public function initialize( $name, $url, $async = false ) {
+		global $wgAllowAsyncCopyUploads;
+		
+		$this->mUrl = $url;
+		$this->mAsync = $wgAllowAsyncCopyUploads ? $async : false;
+		
+		$tempPath = $this->mAsync ? null : $this->makeTemporaryFile();
+		# File size and removeTempFile will be filled in later
+		$this->initializePathInfo( $name, $tempPath, 0, false );
 	}
 
 	/**
@@ -90,22 +57,19 @@ class UploadFromUrl extends UploadBase {
 	 */
 	public function initializeFromRequest( &$request ) {
 		$desiredDestName = $request->getText( 'wpDestFile' );
-		if( !$desiredDestName )
+		if ( !$desiredDestName )
 			$desiredDestName = $request->getText( 'wpUploadFileURL' );
 		return $this->initialize(
 			$desiredDestName,
 			$request->getVal( 'wpUploadFileURL' ),
-			$request->getVal( 'wpUploadDescription' ),
-			$request->getVal( 'wpWatchThis' ),
-			$request->getVal( 'wpIgnoreWarnings' ),
-			'async'
+			false
 		);
 	}
 
 	/**
 	 * @param $request Object: WebRequest object
 	 */
-	public static function isValidRequest( $request ){
+	public static function isValidRequest( $request ) {
 		global $wgUser;
 
 		$url = $request->getVal( 'wpUploadFileURL' );
@@ -113,27 +77,53 @@ class UploadFromUrl extends UploadBase {
 			&& Http::isValidURI( $url )
 			&& $wgUser->isAllowed( 'upload_by_url' );
 	}
+	
 
+	public function fetchFile() {
+		if ( !Http::isValidURI( $this->mUrl ) ) {
+			return Status::newFatal( 'http-invalid-url' );
+		}
+		
+		if ( !$this->mAsync ) {
+			return $this->reallyFetchFile();
+		}
+		return Status::newGood();
+	}
+	/**
+	 * Create a new temporary file in the URL subdirectory of wfTempDir().
+	 * 
+	 * @return string Path to the file
+	 */
+	protected function makeTemporaryFile() {
+		return tempnam( wfTempDir(), 'URL' );
+	}
+	/**
+	 * Save the result of a HTTP request to the temporary file
+	 * 
+	 * @param $req HttpRequest 
+	 * @return Status
+	 */
 	private function saveTempFile( $req ) {
-		$filename = tempnam( wfTempDir(), 'URL' );
-		if ( $filename === false ) {
+		if ( $this->mTempPath === false ) {
 			return Status::newFatal( 'tmp-create-error' );
 		}
-		if ( file_put_contents( $filename, $req->getContent() ) === false ) {
+		if ( file_put_contents( $this->mTempPath, $req->getContent() ) === false ) {
 			return Status::newFatal( 'tmp-write-error' );
 		}
 
-		$this->mTempPath = $filename;
-		$this->mFileSize = filesize( $filename );
+		$this->mFileSize = filesize( $this->mTempPath );
 
 		return Status::newGood();
 	}
-
-	public function retrieveFileFromUrl() {
-		$req = HttpRequest::factory($this->mUrl);
+	/**
+	 * Download the file, save it to the temporary file and update the file
+	 * size and set $mRemoveTempFile to true.
+	 */
+	protected function reallyFetchFile() {
+		$req = HttpRequest::factory( $this->mUrl );
 		$status = $req->execute();
 
-		if( !$status->isOk() ) {
+		if ( !$status->isOk() ) {
 			return $status;
 		}
 
@@ -146,33 +136,72 @@ class UploadFromUrl extends UploadBase {
 		return $status;
 	}
 
-	public function doUpload() {
-		global $wgUser;
-
-		$status = $this->retrieveFileFromUrl();
-
-		if ( $status->isGood() ) {
-
-			$v = $this->verifyUpload();
-			if( $v['status'] !== UploadBase::OK ) {
-				return $this->convertVerifyErrorToStatus( $v['status'], $v['details'] );
-			}
-
-			$status = $this->getLocalFile()->upload( $this->mTempPath, $this->comment,
-				$this->comment, File::DELETE_SOURCE, $this->mFileProps, false, $wgUser );
+	/**
+	 * Wrapper around the parent function in order to defer verifying the 
+	 * upload until the file really has been fetched.
+	 */
+	public function verifyUpload() {
+		if ( $this->mAsync ) {
+			return array( 'status' => self::OK );
 		}
-
-		if ( $status->isGood() ) {
-			global $wgLocalFileRepo;
-			$file = $this->getLocalFile();
-
-			$wgUser->leaveUserMessage( wfMsg( 'successfulupload' ),
-				wfMsg( 'upload-success-msg', $file->getDescriptionUrl() ) );
-		} else {
-			$wgUser->leaveUserMessage( wfMsg( 'upload-failure-subj' ),
-				wfMsg( 'upload-failure-msg', $status->getWikiText() ) );
-		}
-
-		return $status;
+		return parent::verifyUpload();
 	}
+
+	/**
+	 * Wrapper around the parent function in order to defer checking warnings
+	 * until the file really has been fetched.
+	 */
+	public function checkWarnings() {
+		if ( $this->mAsync ) {
+			$this->mIgnoreWarnings = false;
+			return array();
+		}
+		return parent::checkWarnings();
+	}
+	
+	/**
+	 * Wrapper around the parent function in order to defer checking protection
+	 * until we are sure that the file can actually be uploaded
+	 */
+	public function verifyPermissions( $user ) {
+		if ( $this->mAsync ) {
+			return true;
+		}
+		return parent::verifyPermissions( $user );
+	}
+	
+	/**
+	 * Wrapper around the parent function in order to defer uploading to the
+	 * job queue for asynchronous uploads
+	 */
+	public function performUpload( $comment, $pageText, $watch, $user ) {
+		if ( $this->mAsync ) {
+			$sessionKey = $this->insertJob( $comment, $pageText, $watch, $user );
+			
+			$status = new Status;
+			$status->error( 'async', $sessionKey );
+			return $status;
+		}
+		
+		return parent::performUpload( $comment, $pageText, $watch, $user );
+	}
+
+	
+	protected function insertJob( $comment, $pageText, $watch, $user ) {
+		$sessionKey = $this->getSessionKey();
+		$job = new UploadFromUrlJob( $this->getTitle(), array(
+			'url' => $this->mUrl,
+			'comment' => $comment,
+			'pageText' => $pageText,
+			'watch' => $watch,
+			'userName' => $user->getName(),
+			'leaveMessage' => $this->mAsync == 'async-leavemessage',
+			'ignoreWarnings' => $this->mIgnoreWarnings,
+			'sessionKey' => $sessionKey,
+		) );
+		$job->insert();
+		return $sessionKey;
+	}
+	
+
 }

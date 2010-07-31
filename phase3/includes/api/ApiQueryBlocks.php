@@ -60,9 +60,6 @@ class ApiQueryBlocks extends ApiQueryBase {
 		$fld_flags = isset( $prop['flags'] );
 
 		$result = $this->getResult();
-		$pageSet = $this->getPageSet();
-		$titles = $pageSet->getTitles();
-		$data = array();
 
 		$this->addTables( 'ipblocks' );
 		$this->addFields( 'ipb_auto' );
@@ -127,9 +124,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 				'ipb_auto' => 0
 			) );
 		}
-		
-		// Make sure private data (deleted blocks) isn't cached
-		$this->getMain()->setVaryCookie();
+
 		if ( !$wgUser->isAllowed( 'hideuser' ) ) {
 			$this->addWhereFld( 'ipb_deleted', 0 );
 		}

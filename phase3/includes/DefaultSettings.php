@@ -425,6 +425,11 @@ $wgCacheSharedUploads = true;
 * The timeout for copy uploads is set by $wgHTTPTimeout.
 */
 $wgAllowCopyUploads = false;
+/**
+ * Allow asynchronous copy uploads.
+ * This feature is experimental.
+ */
+$wgAllowAsyncCopyUploads = false;
 
 /**
  * Max size for uploads, in bytes. Applies to all uploads.
@@ -436,11 +441,15 @@ $wgMaxUploadSize = 1024*1024*100; # 100MB
  * Useful if you want to use a shared repository by default
  * without disabling local uploads (use $wgEnableUploads = false for that)
  * e.g. $wgUploadNavigationUrl = 'http://commons.wikimedia.org/wiki/Special:Upload';
- *
- * This also affects images inline images that do not exist. In that case the URL will get
- * (?|&)wpDestFile=<filename> appended to it as appropriate.
  */
 $wgUploadNavigationUrl = false;
+
+/**
+ * Point the upload link for missing files to an external URL, as with
+ * $wgUploadNavigationUrl. The URL will get (?|&)wpDestFile=<filename> 
+ * appended to it as appropriate.
+ */
+$wgUploadMissingFileUrl = false;
 
 /**
  * Give a path here to use thumb.php for thumbnail generation on client request, instead of
@@ -1547,7 +1556,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '298';
+$wgStyleVersion = '299';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -2886,7 +2895,7 @@ $wgExternalAuthType = null;
  * info be provided.  Check the file where your auth mechanism is defined for
  * info on what to put here.
  */
-$wgExternalAuthConfig = array();
+$wgExternalAuthConf = array();
 
 /**
  * When should we automatically create local accounts when external accounts
@@ -3740,9 +3749,9 @@ $wgParserTestRemote = false;
  */
 $wgEnableSelenium = false;
 
-/** List of Selenium test classes. These must be registered with the autoloader. */
-$wgSeleniumTests = array(
-	'SimpleSeleniumTest'
+/** List of Selenium test suites. These must be registered with the autoloader. */
+$wgSeleniumTestSuites = array(
+	'SimpleSeleniumTestSuite'
 );
 
 
@@ -4187,6 +4196,11 @@ $wgRightsUrl = null;
 $wgRightsText = null;
 $wgRightsIcon = null;
 
+/**
+ * Set to an array of metadata terms. Else they will be loaded based on $wgRightsUrl
+ */
+$wgLicenseTerms = false;
+
 /** Set this to some HTML to override the rights icon with an arbitrary logo */
 $wgCopyrightIcon = null;
 
@@ -4457,6 +4471,24 @@ $wgCategoryPagingLimit = 200;
  * Run maintenance/refreshLinks.php after changing this.
  */
 $wgCategoryPrefixedDefaultSortkey = true;
+
+/**
+ * Enable experimental support for non-braindead collation on category pages.
+ * For this to work, you need to alter your categorylinks table by applying
+ * maintenance/archives/patch-categorylinks-better-collation.sql, then keep
+ * up-to-date with changes that are made to that file (they won't be
+ * automatically applied).  You should also set $wgUseDumbLinkUpdate = true and
+ * run maintenance/refreshLinks.php.
+ */
+$wgExperimentalCategorySort = false;
+
+/**
+ * A version indicator for collations that will be stored in cl_collation for
+ * all new rows.  Used when the collation algorithm changes: a script checks
+ * for all rows where cl_collation != $wgCollationVersion and regenerates
+ * cl_sortkey based on the page name and cl_sortkey_prefix.
+ */
+$wgCollationVersion = 1;
 
 /** @} */ # End categories }
 

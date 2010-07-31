@@ -69,7 +69,7 @@ class ProtectedTitlesForm {
 	 * Callback function to output a restriction
 	 */
 	function formatRow( $row ) {
-		global $wgUser, $wgLang, $wgContLang;
+		global $wgUser, $wgLang;
 
 		wfProfileIn( __METHOD__ );
 
@@ -177,7 +177,7 @@ class ProtectedTitlesForm {
  * @todo document
  * @ingroup Pager
  */
-class ProtectedtitlesPager extends AlphabeticPager {
+class ProtectedTitlesPager extends AlphabeticPager {
 	public $mForm, $mConds;
 
 	function __construct( $form, $conds = array(), $type, $level, $namespace, $sizetype='', $size=0 ) {

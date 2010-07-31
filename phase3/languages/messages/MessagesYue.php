@@ -87,8 +87,8 @@ $namespaceAliases = array(
 	"用戶 討論" 		=> NS_USER_TALK,
 	"用户 讨论" 		=> NS_USER_TALK,
 	# This has never worked so it's unlikely to annoy anyone if I disable it -- TS
-	#"{$wgMetaNamespace} 討論" => NS_PROJECT_TALK,
-	#"{$wgMetaNamespace} 讨论" => NS_PROJECT_TALK,
+	# "{$wgMetaNamespace} 討論" => NS_PROJECT_TALK,
+	# "{$wgMetaNamespace} 讨论" => NS_PROJECT_TALK,
 	"檔" 			=> NS_FILE,
 	"檔案" 			=> NS_FILE,
 	"档" 			=> NS_FILE,
@@ -134,9 +134,9 @@ $namespaceAliases = array(
 
 $linkTrail = '/^([a-z]+)(.*)$/sD';
 
-#-------------------------------------------------------------------
+# -------------------------------------------------------------------
 # Default messages
-#-------------------------------------------------------------------
+# -------------------------------------------------------------------
 # Allowed characters in keys are: A-Z, a-z, 0-9, underscore (_) and
 # hyphen (-). If you need more characters, you may be able to change
 # the regex in MagicWord::initRegex
@@ -1230,6 +1230,7 @@ $1",
 'prefs-advancedrendering'       => '進階選項',
 'prefs-advancedsearchoptions'   => '進階選項',
 'prefs-advancedwatchlist'       => '進階選項',
+'prefs-displayrc'               => '顯示選項',
 'prefs-diffs'                   => '差異',
 
 # User rights
@@ -1513,7 +1514,6 @@ $1",
 如果你仍然想去上載佢嘅話，麻煩返轉去用第二個名嚟上載呢個檔案。[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => '呢個檔案係同下面嘅{{PLURAL:$1|一|幾}}個檔案重覆:',
 'file-deleted-duplicate'      => '一個同名嘅檔案 ([[$1]]) 響之前刪除過。你應該響重新上載之前檢查一下嗰個檔案嘅刪除紀錄。',
-'successfulupload'            => '成功嘅上載',
 'uploadwarning'               => '上載警告',
 'uploadwarning-text'          => '請修改下面嘅檔案描述再重試。',
 'savefile'                    => '儲存檔案',
@@ -1541,7 +1541,8 @@ $1",
 你應該要考慮吓繼續上載呢個檔案係唔係適合嘅。
 為咗方便起見，呢個檔案嘅刪除記錄已經響下面提供:",
 'filename-bad-prefix'         => "你上載嘅檔名係以'''\"\$1\"'''做開頭，通常呢種無含意嘅檔名係響數碼相機度自動編排。請響你個檔案度揀過一個更加有意義嘅檔名。",
-'upload-successful-msg'       => '你嘅上載可以喺呢度搵到：$1。',
+'upload-success-subj'         => '成功嘅上載',
+'upload-success-msg'          => '你嘅上載可以喺呢度搵到：[[:{{ns:file}}:$1]]。',
 'upload-failure-subj'         => '上載出咗問題',
 'upload-failure-msg'          => '你嘅上載出現咗問題：
 
@@ -1731,7 +1732,7 @@ Template:搞清楚',
 
 'doubleredirects'            => '雙重跳轉',
 'doubleredirectstext'        => '每一行都順次序寫住第一頁名，佢嘅目的頁，同埋目的頁再指去邊度。改嘅時候，應該將第一個跳轉頁轉入第三頁。
-<s>劃咗</s>嘅項目係已經解決咗嘅。',
+<del>劃咗</del>嘅項目係已經解決咗嘅。',
 'double-redirect-fixed-move' => '[[$1]]已經搬好咗，佢而家跳轉過去[[$2]]。',
 'double-redirect-fixer'      => '跳轉修正器',
 
@@ -1798,7 +1799,7 @@ Template:搞清楚',
 'ancientpages'            => '舊頁面',
 'move'                    => '移動',
 'movethispage'            => '移動呢一頁',
-'unusedimagestext'        => '下面嘅檔案存在，但係未嵌入響任何嘅版度。 
+'unusedimagestext'        => '下面嘅檔案存在，但係未嵌入響任何嘅版度。
 請注意，第啲網站會用直接用URL連結到一個檔，所以呢度可能有啲用緊嘅檔。',
 'unusedcategoriestext'    => '呢啲類存在，但入面冇嘢亦都冇分類。',
 'notargettitle'           => '冇目標',
@@ -2718,7 +2719,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''警告'''：呢個檔案類型可能有一啲惡意嘅程式編碼。
-如果執行佢嘅話，你嘅系統可能會被波及。<hr />",
+如果執行佢嘅話，你嘅系統可能會被波及。",
 'imagemaxsize'         => "圖像大細限制:<br />''(用響檔案描述頁)''",
 'thumbsize'            => '縮圖大細：',
 'widthheightpage'      => '$1×$2, $3版',

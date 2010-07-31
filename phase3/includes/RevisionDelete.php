@@ -150,7 +150,7 @@ class RevisionDeleter {
 			$originalKey = $key = $paramArray[0];
 			// $paramArray[1] is a CSV of the IDs
 			$Ids = explode( ',', $paramArray[1] );
-			$query = $paramArray[1];
+
 			$revert = array();
 			
 			// For if undeleted revisions are found amidst deleted ones.
@@ -938,7 +938,7 @@ class RevDel_ArchiveList extends RevDel_RevisionList {
  */
 class RevDel_ArchiveItem extends RevDel_RevisionItem {
 	public function __construct( $list, $row ) {
-		RevDel_Item::__construct( $list, $row );
+		parent::__construct( $list, $row );
 		$this->revision = Revision::newFromArchiveRow( $row,
 			array( 'page' => $this->list->title->getArticleId() ) );
 	}
@@ -1246,7 +1246,7 @@ class RevDel_ArchivedFileList extends RevDel_FileList {
  */
 class RevDel_ArchivedFileItem extends RevDel_FileItem {
 	public function __construct( $list, $row ) {
-		RevDel_Item::__construct( $list, $row );
+		parent::__construct( $list, $row );
 		$this->file = ArchivedFile::newFromRow( $row );
 	}
 

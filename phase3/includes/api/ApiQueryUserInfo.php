@@ -40,7 +40,6 @@ class ApiQueryUserInfo extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$this->getMain()->setCachePrivate();
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 		$r = array();
@@ -78,7 +77,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 
 		if ( isset( $this->prop['groups'] ) ) {
 			$autolist = ApiQueryUsers::getAutoGroups( $wgUser );
-		
+
 			$vals['groups'] = array_merge( $autolist, $wgUser->getGroups() );
 			$result->setIndexedTagName( $vals['groups'], 'g' );	// even if empty
 		}
@@ -124,7 +123,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 				$vals['emailauthenticated'] = wfTimestamp( TS_ISO_8601, $auth );
 			}
 		}
-		
+
 		if ( isset( $this->prop['acceptlang'] ) ) {
 			$langs = $wgRequest->getAcceptLang();
 			$acceptLang = array();

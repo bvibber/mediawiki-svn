@@ -529,16 +529,7 @@ class Linker {
 				'title' => $fp['title'],
 				'valign' => isset( $fp['valign'] ) ? $fp['valign'] : false ,
 				'img-class' => isset( $fp['border'] ) ? 'thumbborder' : false );
-			if ( !empty( $fp['link-url'] ) ) {
-				$params['custom-url-link'] = $fp['link-url'];
-			} elseif ( !empty( $fp['link-title'] ) ) {
-				$params['custom-title-link'] = $fp['link-title'];
-			} elseif ( !empty( $fp['no-link'] ) ) {
-				// No link
-			} else {
-				$params['desc-link'] = true;
-				$params['desc-query'] = $query;
-			}
+			$params = $this->getImageLinkMTOParams( $fp, $query ) + $params;
 
 			$s = $thumb->toHtml( $params );
 		}
@@ -546,6 +537,27 @@ class Linker {
 			$s = "<div class=\"float{$fp['align']}\">{$s}</div>";
 		}
 		return str_replace("\n", ' ',$prefix.$s.$postfix);
+	}
+
+	/**
+	 * Get the link parameters for MediaTransformOutput::toHtml() from given 
+	 * frame parameters supplied by the Parser.
+	 * @param $frameParams The frame parameters
+	 * @param $query An optional query string to add to description page links
+	 */
+	function getImageLinkMTOParams( $frameParams, $query = '' ) {
+		$mtoParams = array();
+		if ( isset( $frameParams['link-url'] ) && $frameParams['link-url'] !== '' ) {
+			$mtoParams['custom-url-link'] = $frameParams['link-url'];
+		} elseif ( isset( $frameParams['link-title'] ) && $frameParams['link-title'] !== '' ) {
+			$mtoParams['custom-title-link'] = $frameParams['link-title'];
+		} elseif ( !empty( $frameParams['no-link'] ) ) {
+			// No link
+		} else {
+			$mtoParams['desc-link'] = true;
+			$mtoParams['desc-query'] = $query;
+		}
+		return $mtoParams;
 	}
 
 	/**
@@ -571,7 +583,7 @@ class Linker {
 	}
 
 	function makeThumbLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "" ) {
-		global $wgStylePath, $wgContLang;
+		global $wgStylePath;
 		$exists = $file && $file->exists();
 
 		# Shortcuts
@@ -632,32 +644,31 @@ class Linker {
 			$url = wfAppendQuery( $url, 'page=' . urlencode( $page ) );
 		}
 
-		$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
-
 		$s = "<div class=\"thumb t{$fp['align']}\"><div class=\"thumbinner\" style=\"width:{$outerWidth}px;\">";
 		if( !$exists ) {
 			$s .= $this->makeBrokenImageLinkObj( $title, $fp['title'], '', '', '', $time==true );
-			$zoomicon = '';
+			$zoomIcon = '';
 		} elseif ( !$thumb ) {
 			$s .= htmlspecialchars( wfMsg( 'thumbnail_error', '' ) );
-			$zoomicon = '';
+			$zoomIcon = '';
 		} else {
-			$s .= $thumb->toHtml( array(
+			$params = array(
 				'alt' => $fp['alt'],
 				'title' => $fp['title'],
-				'img-class' => 'thumbimage',
-				'desc-link' => true,
-				'desc-query' => $query ) );
+				'img-class' => 'thumbimage' );
+			$params = $this->getImageLinkMTOParams( $fp, $query ) + $params;
+			$s .= $thumb->toHtml( $params );
 			if ( isset( $fp['framed'] ) ) {
-				$zoomicon="";
+				$zoomIcon = "";
 			} else {
-				$zoomicon =  '<div class="magnify">'.
-					'<a href="'.$url.'" class="internal" title="'.$more.'">'.
-					'<img src="'.$wgStylePath.'/common/images/magnify-clip.png" ' .
-					'width="15" height="11" alt="" /></a></div>';
+				$zoomIcon =  '<div class="magnify">'.
+					'<a href="' . htmlspecialchars( $url ) . '" class="internal" ' .
+						'title="' . htmlspecialchars( wfMsg( 'thumbnail-more' ) ) . '">'.
+					'<img src="' . htmlspecialchars( $wgStylePath ) . '/common/images/magnify-clip.png" ' .
+						'width="15" height="11" alt="" /></a></div>';
 			}
 		}
-		$s .= '  <div class="thumbcaption">'.$zoomicon.$fp['caption']."</div></div></div>";
+		$s .= '  <div class="thumbcaption">' . $zoomIcon . $fp['caption'] . "</div></div></div>";
 		return str_replace("\n", ' ', $s);
 	}
 
@@ -673,11 +684,11 @@ class Linker {
 	 * @return String
 	 */
 	public function makeBrokenImageLinkObj( $title, $text = '', $query = '', $trail = '', $prefix = '', $time = false ) {
-		global $wgEnableUploads, $wgUploadNavigationUrl;
+		global $wgEnableUploads, $wgUploadMissingFileUrl;
 		if( $title instanceof Title ) {
 			wfProfileIn( __METHOD__ );
 			$currentExists = $time ? ( wfFindFile( $title ) != false ) : false;
-			if( ( $wgUploadNavigationUrl || $wgEnableUploads ) && !$currentExists ) {
+			if( ( $wgUploadMissingFileUrl || $wgEnableUploads ) && !$currentExists ) {
 				if( $text == '' )
 					$text = htmlspecialchars( $title->getPrefixedText() );
 
@@ -713,13 +724,13 @@ class Linker {
 	 * @return String: urlencoded URL
 	 */
 	protected function getUploadUrl( $destFile, $query = '' ) {
-		global $wgUploadNavigationUrl;
+		global $wgUploadMissingFileUrl;
 		$q = 'wpDestFile=' . $destFile->getPartialUrl();
 		if( $query != '' )
 			$q .= '&' . $query;
 
-		if( $wgUploadNavigationUrl ) {
-			return wfAppendQuery( $wgUploadNavigationUrl, $q );
+		if( $wgUploadMissingFileUrl ) {
+			return wfAppendQuery( $wgUploadMissingFileUrl, $q );
 		} else {
 			$upload = SpecialPage::getTitleFor( 'Upload' );
 			return $upload->getLocalUrl( $q );

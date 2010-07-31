@@ -211,7 +211,7 @@ $specialPageAliases = array(
 	'Invalidateemail'           => array( 'Rangt netfang' ),
 );
 
-$separatorTransformTable = array(',' => '.', '.' => ',' );
+$separatorTransformTable = array( ',' => '.', '.' => ',' );
 $linkPrefixExtension = true;
 $linkTrail = '/^([áðéíóúýþæöa-z-–]+)(.*)$/sDu';
 
@@ -1313,7 +1313,6 @@ Gjörðu svo vel og endurnefndu skrána og hladdu henni inn aftur.',
 'large-file'             => 'Það er mælt með að skrár séu ekki stærri en $1; þessi skrá er $2.',
 'fileexists'             => "Skrá með þessu nafni er þegar til, skoðaðu '''<tt>[[:$1]]</tt>''' ef þú ert óviss um hvort þú viljir breyta henni, ekki verður skrifað yfir gömlu skránna hlaðiru inn nýrri með sama nafni heldur verður núverandi útgáfa geymd í útgáfusögu.
 [[$1|thumb]]",
-'successfulupload'       => 'Innhlaðning tókst',
 'uploadwarning'          => 'Aðvörun',
 'savefile'               => 'Vista',
 'uploadedimage'          => 'hlóð inn „[[$1]]“',
@@ -1325,6 +1324,7 @@ Gjörðu svo vel og endurnefndu skrána og hladdu henni inn aftur.',
 'upload-maxfilesize'     => 'Hámarks skráarstærð: $1',
 'watchthisupload'        => 'Vakta þessa skrá',
 'filewasdeleted'         => 'Skrá af sama nafni hefur áður verið hlaðið inn og síðan eytt. Þú ættir að athuga $1 áður en þú hleður skránni inn.',
+'upload-success-subj'    => 'Innhlaðning tókst',
 
 'upload-proto-error'  => 'Vitlaus samskiptaregla',
 'upload-file-error'   => 'Innri villa',
@@ -2183,7 +2183,7 @@ Allir innflutningar eru skráð í [[Special:Log/import|innflutningsskránna]].'
 'nextdiff'     => 'Nýrri breyting →',
 
 # Media information
-'mediawarning'         => "'''AÐVÖRUN''': Þessi skrá kann að hafa meinfýsinn kóða, ef keyrður kann hann að stofna kerfinu þínu í hættu.<hr />",
+'mediawarning'         => "'''AÐVÖRUN''': Þessi skrá kann að hafa meinfýsinn kóða, ef keyrður kann hann að stofna kerfinu þínu í hættu.",
 'imagemaxsize'         => 'Takmarka myndir á skráarlýsingasíðum við:',
 'thumbsize'            => 'Stærð smámynda:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|síða|síður}}',

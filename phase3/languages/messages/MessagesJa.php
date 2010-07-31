@@ -1323,6 +1323,9 @@ $1",
 'prefs-advancedrendering'       => '詳細設定',
 'prefs-advancedsearchoptions'   => '詳細設定',
 'prefs-advancedwatchlist'       => '詳細設定',
+'prefs-displayrc'               => '表示の設定',
+'prefs-displaysearchoptions'    => '表示の設定',
+'prefs-displaywatchlist'        => '表示の設定',
 'prefs-diffs'                   => '差分',
 
 # User rights
@@ -1601,7 +1604,6 @@ $1",
 'fileexists-shared-forbidden' => 'この名前のファイルは共有ファイル・リポジトリに既に存在しています。アップロードを継続したい場合は、前のページに戻り、別のファイル名を使用してください。[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'このファイルは以下の{{PLURAL:$1|ファイル}}と重複しています:',
 'file-deleted-duplicate'      => 'このファイル ([[$1]]) と同一のファイルが以前に削除されています。再度アップロードをする前に、以前削除されたファイルの削除記録を確認してください。',
-'successfulupload'            => 'アップロード成功',
 'uploadwarning'               => 'アップロード警告',
 'uploadwarning-text'          => '下記のファイル解説を修正して再試行してください。',
 'savefile'                    => 'ファイルを保存',
@@ -1641,11 +1643,14 @@ JD # Jenoptik
 MGP # ペンタックス
 PICT # その他
  #</pre> <!-- この行はそのままにしておいてください -->',
-'upload-successful-msg'       => 'あなたのアップロードが利用可能です: $1',
+'upload-success-subj'         => 'アップロード成功',
+'upload-success-msg'          => '[$2] からのアップロードに成功しました。アップロードしたページはこちらです: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'アップロードで発生した問題',
 'upload-failure-msg'          => 'ファイルのアップロード中に問題が発生しました:
 
 $1',
+'upload-warning-subj'         => 'アップロードの警告',
+'upload-warning-msg'          => '[$2] からアップロードしようとしたデータに問題があります。 [[Special:Upload/stash/$1|アップロードのフォーム]]に戻って問題を修正してください。',
 
 'upload-proto-error'        => '不正なプロトコル',
 'upload-proto-error-text'   => 'アップロード元のURLは <code>http://</code> か <code>ftp://</code> で始まっている必要があります。',
@@ -1819,7 +1824,7 @@ $1',
 [[MediaWiki:Disambiguationspage]] からリンクされたテンプレートを使用しているページは曖昧さ回避ページと見なされます。",
 
 'doubleredirects'            => '二重リダイレクト',
-'doubleredirectstext'        => 'これは他のリダイレクトページにリダイレクトしているページの一覧です。各行は始点のリダイレクトとそのリダイレクト先ページ、および、そのまたリダイレクトしている先のページを含んでいます。3つ目のページがたいていは「真の」リダイレクト先であり、1つ目のリダイレクトはそこを直接指すべきです。<s>打ち消し線</s>のはいった項目は既に修正されています。',
+'doubleredirectstext'        => 'これは他のリダイレクトページにリダイレクトしているページの一覧です。各行は始点のリダイレクトとそのリダイレクト先ページ、および、そのまたリダイレクトしている先のページを含んでいます。3つ目のページがたいていは「真の」リダイレクト先であり、1つ目のリダイレクトはそこを直接指すべきです。<del>打ち消し線</del>のはいった項目は既に修正されています。',
 'double-redirect-fixed-move' => '[[$1]] が移動されているため、リダイレクト先を移動先の [[$2]] へ変更しました。',
 'double-redirect-fixer'      => 'リダイレクト修正係',
 
@@ -2488,6 +2493,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 'immobile-source-page'         => 'このページを移動させることはできません。',
 'immobile-target-page'         => '目的のページ名へは移動させることができません。',
 'imagenocrossnamespace'        => 'ファイル用の名前空間以外にはファイルを移動することはできません。',
+'nonfile-cannot-move-to-file'  => 'ファイルでないものを、ファイル名前空間に移動することはできません',
 'imagetypemismatch'            => '新しいファイルの拡張子がファイルのタイプと一致していません。',
 'imageinvalidfilename'         => '指定したファイル名が無効です',
 'fix-double-redirects'         => 'このページへのリダイレクトがあればそのリダイレクトを修正する',
@@ -2585,7 +2591,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 
 # Import log
 'importlogpage'                    => 'インポート記録',
-'importlogpagetext'                => '以下は管理者による他ウィキからのページデータの取り込み記録です。',
+'importlogpagetext'                => '以下は他ウィキからのページデータの取り込み記録です。',
 'import-logentry-upload'           => 'ファイルのアップロードにより [[$1]] をインポートしました',
 'import-logentry-upload-detail'    => '$1{{PLURAL:$1|版}}',
 'import-logentry-interwiki'        => '$1 をtranswikiしました',
@@ -2781,7 +2787,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 
 # Media information
 'mediawarning'         => "'''警告:''' このファイルは悪意のあるコードを含んでいる可能性があります。
-実行するとコンピューターが危害を被る場合があります。<hr />",
+実行するとコンピューターが危害を被る場合があります。",
 'imagemaxsize'         => "画像の最大サイズ:<br />''(ファイルページに適用)''",
 'thumbsize'            => 'サムネイルの大きさ:',
 'widthheightpage'      => '$1×$2, $3{{PLURAL:$3|ページ}}',

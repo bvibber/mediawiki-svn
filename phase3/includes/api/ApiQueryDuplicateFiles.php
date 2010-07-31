@@ -43,6 +43,10 @@ class ApiQueryDuplicateFiles extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -89,7 +93,6 @@ class ApiQueryDuplicateFiles extends ApiQueryGeneratorBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
 		$res = $this->select( __METHOD__ );
-		$db = $this->getDB();
 		$count = 0;
 		$titles = array();
 		foreach ( $res as $row ) {

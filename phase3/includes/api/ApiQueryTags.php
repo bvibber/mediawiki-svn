@@ -55,10 +55,6 @@ class ApiQueryTags extends ApiQueryBase {
 		$this->limit = $params['limit'];
 		$this->result = $this->getResult();
 
-		$pageSet = $this->getPageSet();
-		$titles = $pageSet->getTitles();
-		$data = array();
-
 		$this->addTables( 'change_tag' );
 		$this->addFields( 'ct_tag' );
 
@@ -131,6 +127,10 @@ class ApiQueryTags extends ApiQueryBase {
 		}
 
 		return true;
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

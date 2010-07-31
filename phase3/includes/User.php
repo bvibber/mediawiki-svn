@@ -859,7 +859,7 @@ class User {
 	 * @return \bool True if the user is logged in, false otherwise.
 	 */
 	private function loadFromSession() {
-		global $wgMemc, $wgCookiePrefix, $wgExternalAuthType, $wgAutocreatePolicy;
+		global $wgCookiePrefix, $wgExternalAuthType, $wgAutocreatePolicy;
 
 		$result = null;
 		wfRunHooks( 'UserLoadFromSession', array( $this, &$result ) );
@@ -2277,7 +2277,7 @@ class User {
 				$userSkin = $wgDefaultSkin;
 			}
 
-			$this->mSkin =& Skin::newFromKey( $userSkin );
+			$this->mSkin = Skin::newFromKey( $userSkin );
 			wfProfileOut( __METHOD__ );
 		}
 		if( $t || !$this->mSkin->getTitle() ) {
@@ -3767,7 +3767,7 @@ class User {
 			if ( !$template
 					|| $template->getNamespace() !== NS_TEMPLATE
 					|| !$template->exists() ) {
-				$text = "== $subject ==\n\n$text\n\n-- $signature";
+				$text = "\n== $subject ==\n\n$text\n\n-- $signature";
 			} else {
 				$text = '{{'. $template->getText()
 					. " | subject=$subject | body=$text | signature=$signature }}";
@@ -3812,7 +3812,7 @@ class User {
 		$flags = $article->checkFlags( $flags );
 
 		if ( $flags & EDIT_UPDATE ) {
-			$text .= $article->getContent();
+			$text = $article->getContent() . $text;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );

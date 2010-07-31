@@ -134,7 +134,7 @@ $specialPageAliases = array(
 	'Activeusers'               => array( 'Teguskasutajad' ),
 );
 
-#Lisasin eestimaised poed, aga võõramaiseid ei julenud kustutada.
+# Lisasin eestimaised poed, aga võõramaiseid ei julenud kustutada.
 $bookstoreList = array(
 	'Apollo' => 'http://www.apollo.ee/search.php?keyword=$1&search=OTSI',
 	'minu Raamat' => 'http://www.raamat.ee/advanced_search_result.php?keywords=$1',
@@ -238,7 +238,7 @@ $magicWords = array(
 	'formatdate'            => array( '0', 'kuupäevavormindus', 'formatdate', 'dateformat' ),
 );
 
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 $linkTrail = '/^([äöõšüža-z]+)(.*)$/sDu';
 
 $datePreferences = array(
@@ -753,7 +753,7 @@ Palun pea nüüd pisut vahet.',
 
 # Password reset dialog
 'resetpass'                 => 'Parooli muutmine',
-'resetpass_announce'        => 'Logisid sisse e-posti teel saadud ajutise koodiga. 
+'resetpass_announce'        => 'Logisid sisse e-posti teel saadud ajutise koodiga.
 Sisselogimise lõpetamiseks pead siia uue parooli sisestama:',
 'resetpass_text'            => '<!-- Lisa tekst siia -->',
 'resetpass_header'          => 'Konto parooli muutmine',
@@ -974,7 +974,7 @@ Mistõttu osasid malle ei näidata.",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Ei saa kontot luua',
-'cantcreateaccount-text' => "Kasutaja [[User:$3|$3]] on blokeerinud kasutajanime loomise sellelt IP-aadressilt ('''$1'''). 
+'cantcreateaccount-text' => "Kasutaja [[User:$3|$3]] on blokeerinud kasutajanime loomise sellelt IP-aadressilt ('''$1''').
 Kasutaja $3 märkis põhjuseks ''$2''",
 
 # History pages
@@ -1355,6 +1355,7 @@ See ei tohi olla pikem kui $1 {{PLURAL:$1|sümbol|sümbolit}}.',
 'prefs-advancedrendering'       => 'Täpsemad eelistused',
 'prefs-advancedsearchoptions'   => 'Täpsemad eelistused',
 'prefs-advancedwatchlist'       => 'Täpsemad eelistused',
+'prefs-displayrc'               => 'Kuvasätted',
 'prefs-diffs'                   => 'Erinevused',
 
 # User rights
@@ -1645,7 +1646,6 @@ Kui soovid siiski oma faili üles laadida, siis palun mine tagasi ja kasuta teis
 'file-exists-duplicate'       => 'See fail on {{PLURAL:$1|järgneva faili|järgnevate failide}} duplikaat:',
 'file-deleted-duplicate'      => 'Selle failiga ([[$1]]) identne fail on hiljuti kustutatud.
 Vaata selle faili kustutamise ajalugu enne jätkamist.',
-'successfulupload'            => 'Üleslaadimine õnnestus',
 'uploadwarning'               => 'Üleslaadimise hoiatus',
 'uploadwarning-text'          => 'Muuda allpool olevat faili kirjeldust ning proovi uuesti.',
 'savefile'                    => 'Salvesta fail',
@@ -1675,7 +1675,8 @@ Peaksid kaaluma, kas selle faili üleslaadimise jätkamine on sobilik.
 Selle faili kustutamislogi on toodud siinsamas:",
 'filename-bad-prefix'         => "Üleslaaditava faili nimi algab eesliitega '''\"\$1\"''', mis on omane digikaamera antud ebamäärastele nimedele.
 Palun vali oma failile kirjeldavam nimi.",
-'upload-successful-msg'       => 'Üleslaaditu on kättesaadav siin: $1',
+'upload-success-subj'         => 'Üleslaadimine õnnestus',
+'upload-success-msg'          => 'Üleslaaditu on kättesaadav siin: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Üleslaadimisprobleem',
 'upload-failure-msg'          => 'Üleslaadimisega oli probleem:
 
@@ -1684,7 +1685,7 @@ $1',
 'upload-proto-error'        => 'Vigane protokoll',
 'upload-proto-error-text'   => 'Teiselt saidilt üleslaadimiseks peab URL algama <code>http://</code> või <code>ftp://</code>.',
 'upload-file-error'         => 'Sisemine viga',
-'upload-file-error-text'    => 'Sisemine viga ilmnes, kui üritati luua ajutist faili serveris. 
+'upload-file-error-text'    => 'Sisemine viga ilmnes, kui üritati luua ajutist faili serveris.
 Palun kontakteeru [[Special:ListUsers/sysop|administraatoriga]].',
 'upload-misc-error'         => 'Tundmatu viga üleslaadimisel',
 'upload-misc-error-text'    => 'Üleslaadimisel ilmnes tundmatu tõrge.
@@ -1870,7 +1871,7 @@ Lehekülg loetakse täpsustusleheküljeks, kui see kasutab malli, millele viitab
 'doubleredirects'            => 'Kahekordsed ümbersuunamised',
 'doubleredirectstext'        => 'Käesolev leht esitab loendi lehtedest, mis sisaldavad ümbersuunamisi teistele ümbersuunamislehtedele.
 Igal real on ära toodud esimene ja teine ümbersuunamisleht ning samuti teise ümbersuunamislehe sihtmärk, mis tavaliselt on esialgse ümbersuunamise tegelik siht, millele see otse osutama peakski.
-<s>Läbikriipsutatud</s> kirjed on kohendatud.',
+<del>Läbikriipsutatud</del> kirjed on kohendatud.',
 'double-redirect-fixed-move' => '[[$1]] on teisaldatud, see suunab nüüd leheküljele [[$2]].',
 'double-redirect-fixer'      => 'Ümbersuunamiste parandaja',
 
@@ -2196,7 +2197,7 @@ Lehte muutis viimasena [[User:$3|$3]] ([[User talk:$3|arutelu]]{{int:pipe-separa
 'editcomment'       => "Redaktsiooni resümee oli: \"''\$1''\".",
 'revertpage'        => 'Tühistati kasutaja [[Special:Contributions/$2|$2]] ([[User talk:$2|arutelu]]) tehtud muudatused ning pöörduti tagasi viimasele muudatusele, mille tegi [[User:$1|$1]].',
 'revertpage-nouser' => 'Tühistati eemaldatud nimega kasutaja tehtud muudatused ja pöörduti tagasi viimasele muudatusele, mille tegi [[User:$1|$1]].',
-'rollback-success'  => 'Tühistati $1 muudatus; 
+'rollback-success'  => 'Tühistati $1 muudatus;
 pöörduti tagasi viimasele muudatusele, mille tegi $2.',
 
 # Edit tokens
@@ -2278,7 +2279,7 @@ Sa saad muuta selle lehekülje kaitse staatust, kuid see ei mõjuta kaskaadkaits
 Et taastada valikuliselt, tehke linnukesed kastidesse, mida soovite taastada ja vajutage '''''Taasta'''''.
 Nupu '''''Tühjenda''''' vajutamine tühjendab põhjusevälja ja eemaldab kõik linnukesed.",
 'undeleterevisions'            => '$1 arhiivitud {{PLURAL:$1|redaktsioon|redaktsiooni}}',
-'undeletehistory'              => 'Kui taastate lehekülje, taastuvad kõik versioonid artikli ajaloona. 
+'undeletehistory'              => 'Kui taastate lehekülje, taastuvad kõik versioonid artikli ajaloona.
 Kui vahepeal on loodud uus samanimeline lehekülg, ilmuvad taastatud versioonid varasema ajaloona.',
 'undeleterevdel'               => 'Lehekülge ei taastata, kui viimane redaktsioon või failiversioon kustub seeläbi osaliselt.
 Sellisel juhul tuleb uusima kustutatud redaktsiooni juurest linnuke eemaldada või see peitmata jätta.',
@@ -2474,7 +2475,7 @@ See kuulub aga blokeeritud IP-vahemikku $2, mille blokeeringut saab eemaldada.',
 'proxyblockreason'             => 'Teie IP aadress on blokeeritud, sest see on anonüümne proxy server. Palun kontakteeruga oma internetiteenuse pakkujaga või tehnilise toega ning informeerige neid sellest probleemist.',
 'proxyblocksuccess'            => 'Tehtud.',
 'sorbsreason'                  => 'Sinu IP-aadress on {{GRAMMAR:genitive|{{SITENAME}}}} kasutatavas DNS-põhises mustas nimekirjas märgitud kui avatud proksi.',
-'sorbs_create_account_reason'  => 'Sinu IP-aadress on {{GRAMMAR:genitive|{{SITENAME}}}} kasutatavas DNS-põhises mustas nimekirjas märgitud kui avatud proksi. 
+'sorbs_create_account_reason'  => 'Sinu IP-aadress on {{GRAMMAR:genitive|{{SITENAME}}}} kasutatavas DNS-põhises mustas nimekirjas märgitud kui avatud proksi.
 Sa ei saa kasutajakontot luua.',
 'cant-block-while-blocked'     => 'Teisi kasutajaid ei saa blokeerida, kui oled ise blokeeritud.',
 'cant-see-hidden-user'         => 'Kasutaja, keda blokeerida üritad, on juba blokeeritud ning peidetud. Kuna sul pole õigust blokeerida kasutajanimesid, peites need avalikkuse eest, ei saa sa selle kasutaja blokeeringut vaadata ega muuta.',
@@ -2742,7 +2743,7 @@ Palun ürita uuesti.',
 'tooltip-recreate'                => 'Taasta kustutatud lehekülg',
 'tooltip-upload'                  => 'Alusta üleslaadimist',
 'tooltip-rollback'                => 'Tühistab ühe klõpsuga viimase kaastöölise tehtud muudatused.',
-'tooltip-undo'                    => '"Eemalda" tühistab selle muudatuse ja avab teksti eelvaatega redigeerimisakna. 
+'tooltip-undo'                    => '"Eemalda" tühistab selle muudatuse ja avab teksti eelvaatega redigeerimisakna.
 Samuti võimaldab see resümee reale põhjenduse lisamist.',
 'tooltip-preferences-save'        => 'Salvesta eelistused',
 'tooltip-summary'                 => 'Kirjuta lühike kokkuvõte',
@@ -2851,7 +2852,7 @@ $1',
 
 # Media information
 'mediawarning'         => "'''Hoiatus''': See failitüüp võib sisaldada pahatahtlikku koodi.
-Selle avamine võib su arvutit kahjustada.<hr />",
+Selle avamine võib su arvutit kahjustada.",
 'imagemaxsize'         => "Pildi suuruse ülemmäär:<br />''(faili kirjeldusleheküljel)''",
 'thumbsize'            => 'Pisipildi suurus:',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|lehekülg|lehekülge}}',
@@ -3136,7 +3137,7 @@ Kui faili on rakendustarkvaraga töödeldud, võib osa andmeid olla muudetud võ
 'confirmemail_send'         => 'Saada kinnituskood',
 'confirmemail_sent'         => 'Kinnitus-e-kiri saadetud.',
 'confirmemail_oncreate'     => 'Kinnituskood saadeti e-posti aadressile. See kood ei ole vajalik sisselogimisel, kuid seda on vaja, et kasutada vikis e-postipõhiseid toiminguid.',
-'confirmemail_sendfailed'   => 'Kinnitus-e-kirja ei õnnestunud saata. 
+'confirmemail_sendfailed'   => 'Kinnitus-e-kirja ei õnnestunud saata.
 Kontrolli aadressi õigsust.
 
 Veateade e-kirja saatmisel: $1',

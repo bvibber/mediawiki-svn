@@ -87,15 +87,16 @@ class ListredirectsPage extends QueryPage {
 		# Make a link to the destination page
 		if( $target ) {
 			$arr = $wgContLang->getArrow() . $wgContLang->getDirMark();
-			if( !is_null ( $result->redirid ) )
+			if( !is_null ( $result->redirid ) ) {
 				$targetLink = $skin->makeKnownLinkObj( $target );
-			else if( !is_null( $result->rd_namespace ) )
+			} else if( !is_null( $result->rd_namespace ) ) {
 				$targetLink = $skin->makeBrokenLinkObj( $target );
-			else
+			} else {
 				$targetLink = $skin->link( $target );
+			}
 			return "$rd_link $arr $targetLink";
 		} else {
-			return "<s>$rd_link</s>";
+			return "<del>$rd_link</del>";
 		}
 	}
 }
