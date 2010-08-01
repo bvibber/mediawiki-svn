@@ -1,4 +1,4 @@
-/** 
+/**
  * The smil body also see: 
  * http://www.w3.org/TR/2008/REC-SMIL3-20081201/smil-structure.html#edef-body
  */
@@ -35,10 +35,13 @@ mw.SmilBody.prototype = {
 	// Constructor: 
 	init: function( smilObject ){
 		this.smil = smilObject;
-		this.$dom = this.smil.getDom().find( 'body' );
 		
 		// Assign ids to smil body elements
-		this.assignIds( this.$dom );
+		this.assignIds( this.getDom() );
+	},
+	
+	getDom: function(){
+		return this.smil.getDom().find('body');
 	},
 	
 	/**
@@ -52,7 +55,7 @@ mw.SmilBody.prototype = {
 		){
 			var idString = _this.getNodeSmilType( $node ) + '_' + _this.idIndex;
 			// Make sure the id does not already exist ( should be a rare case ) 
-			while( this.$dom.find( '#' + idString ).length != 0 ){
+			while( this.getDom().find( '#' + idString ).length != 0 ){
 				_this.idIndex++;
 				idString = _this.getNodeSmilType( $node ) + '_' + _this.idIndex;
 			}
@@ -161,7 +164,7 @@ mw.SmilBody.prototype = {
 			return smallIndex = i;
 		}
 		// Build an audio timeline starting from the top level node: 
-		this.getRefElementsRecurse( this.$dom, 0, function( $node ){
+		this.getRefElementsRecurse( this.getDom(), 0, function( $node ){
 			var nodeType = _this.smil.getRefType( $node ) ;
 			// Check if the node is audio ( first in wins / "audio" wins over video) 
 			if( nodeType == 'audio' || nodeType == 'video' ) {
@@ -237,7 +240,7 @@ mw.SmilBody.prototype = {
 			time =0;
 		}		
 		// Recurse on every ref element and run relevant callbacks
-		this.getRefElementsRecurse( this.$dom, 0, function( $node ){
+		this.getRefElementsRecurse( this.getDom(), 0, function( $node ){
 			var startOffset = $node.data( 'startOffset' );
 			var nodeDuration = _this.getClipDuration( $node );
 			
@@ -260,7 +263,7 @@ mw.SmilBody.prototype = {
 	 */
 	getSeqElements: function( $node ){
 		if( ! $node ){
-			$node = this.$dom;
+			$node = this.getDom();
 		}
 		return $node.find('seq');
 	},
@@ -321,7 +324,7 @@ mw.SmilBody.prototype = {
 	 * ( wraps getDurationRecurse to get top level node duration ) 
 	 */	
 	getDuration: function( forceRefresh ){		
-		this.duration = this.getClipDuration( this.$dom , forceRefresh);	
+		this.duration = this.getClipDuration( this.getDom() , forceRefresh);	
 		mw.log("smilBody:: getDuration: " + this.duration );
 		return this.duration;	
 	},
@@ -339,7 +342,7 @@ mw.SmilBody.prototype = {
 		}
 		if( forceRefresh ){
 			//clear out implictDuration
-			$node.data( 'implictDuration', false );
+			$node.data( 'implictDuration', 0);
 			$node.data( 'computedDuration', false );
 		}
 		
@@ -350,7 +353,7 @@ mw.SmilBody.prototype = {
 		var blockType = this.getNodeSmilType( $node );
 				
 		// Recurse on children
-		if( $node.children().length ){
+		if( $node.children().length ){			
 			$node.children().each( function( inx, childNode ){				
 				// If in a sequence add to duration 		
 				var childDuration = _this.getClipDuration( $j( childNode ), forceRefresh );							
@@ -363,7 +366,8 @@ mw.SmilBody.prototype = {
 						$node.data( 'implictDuration',  childDuration); 
 					}
 				}
-			});		
+			});
+			alert( 'getting duration for ' + $node.children().length + ' children ');
 		}
 						
 		// Check the explicit duration attribute: 
@@ -375,7 +379,7 @@ mw.SmilBody.prototype = {
 			}  
 			//mw.log(" return dur: " + mw.smil.parseTime( $node.attr('dur') ) );			
 			$node.data('computedDuration', computedDuration );
-		} else { 
+		} else {
 			// Else return use implictDuration ( built from its children )
 			if( $node.data( 'implictDuration' ) ){
 				//mw.log(" implictDuration:: " + $node.data( 'implictDuration' ) ); 

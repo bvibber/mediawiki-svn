@@ -98,10 +98,11 @@ mw.Sequencer.prototype = {
 	updateSmilXML: function( smilXML ){
 		mw.log("Sequencer::updateSmilXML" + smilXML);
 		var _this = this;
-		alert( 'before update seq len: ' + this.getSmil().$dom.find('seq').children().length )
+		alert( 'before Dur:' + this.getEmbedPlayer().getDuration( true ) + ' update seq len: ' + this.getSmil().$dom.find('seq').children().length )
 		// Update the embedPlayer smil: 
 		this.getSmil().updateFromString( smilXML );
-		alert( 'after update seq len: ' + this.getSmil().$dom.find('seq').children().length )
+		debugger;
+		alert( 'after Dur:' + this.getEmbedPlayer().getDuration( true ) + '  update seq len: ' + this.getSmil().$dom.find('seq').children().length )
 		// Get a duration ( forceRefresh to clear the cache ) 
 		var dur = this.getEmbedPlayer().getDuration( true );
 		alert( 'restored dur should be: ' + dur);
