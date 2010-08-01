@@ -367,7 +367,7 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'prefstats-xaxis' => 'درێژە (کاتژمێر)',
 	'prefstats-factor-hour' => 'کاتژمێر',
 	'prefstats-factor-sixhours' => 'شەش کاتژمێر',

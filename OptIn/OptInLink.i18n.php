@@ -203,7 +203,7 @@ $messages['ce'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'optin-try' => 'تاقی‌کردنەوەی بیتا',
 	'tooltip-pt-optin-try' => 'تاقیکردنەوەیەکی تایبەتمەندییە نوێکان',
 	'optin-leave' => 'دەرچوون لە بیتا',

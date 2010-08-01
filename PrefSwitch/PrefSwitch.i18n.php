@@ -771,7 +771,7 @@ Per ajudar-nos a millorar-les, si us plau ompliu el formulari opcional d'aquí s
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'prefswitch-survey-true' => 'بەڵێ',
 	'prefswitch-survey-false' => 'نا',
 	'prefswitch-survey-submit-off' => 'لەکارخستنی تایبەتمەندییە نوێکان',

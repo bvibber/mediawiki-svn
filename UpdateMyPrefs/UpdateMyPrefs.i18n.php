@@ -103,7 +103,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'prefs-updates' => 'نوێ کردنەوەکان',
 );
 

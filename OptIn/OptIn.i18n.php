@@ -970,7 +970,7 @@ $messages['ce'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'optin-title-optedout' => 'تاقی‌کردنەوەی بێتا',
 	'optin-title-optedin' => 'وازهێنان لە بێتا',
 	'optin-title-justoptedin' => 'بەخێرهاتی بۆ بێتا',

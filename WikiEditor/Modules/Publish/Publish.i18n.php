@@ -224,7 +224,7 @@ $messages['ce'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-publish-preference' => 'ڕێگە بدە بە بڵاوکردنەوەی ھەنگاوبەھەنگاو',
 	'wikieditor-publish-button-publish' => 'بڵاوی بکەوە',
 	'wikieditor-publish-button-cancel' => 'ھەڵوەشاندنەوە',

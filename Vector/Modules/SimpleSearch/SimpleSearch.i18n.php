@@ -116,7 +116,7 @@ $messages['ca'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'vector-simplesearch-search' => 'گەڕان',
 	'vector-simplesearch-containing' => 'بە لەبەرگرتنەوەی ...',
 );

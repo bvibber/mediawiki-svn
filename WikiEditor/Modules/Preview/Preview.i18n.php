@@ -156,7 +156,7 @@ $messages['ce'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-preview-preference' => 'ڕێگەپێدان بە پێشبینینی شانبەشان',
 	'wikieditor-preview-tab' => 'پێشبینین',
 	'wikieditor-preview-changes-tab' => 'گۆڕانکارییەکان',
