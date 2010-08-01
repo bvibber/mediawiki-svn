@@ -362,7 +362,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'todo-new-queue' => 'نوێ',
 	'todo-list-change' => 'گۆڕان',
 	'todo-list-cancel' => 'هەڵوەشاندنەوە',

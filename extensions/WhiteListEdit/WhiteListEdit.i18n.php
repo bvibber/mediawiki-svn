@@ -673,7 +673,7 @@ $messages['ch'] = array(
  * @author Marmzok
  * @author رزگار
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'whitelistedit-desc' => 'دەستکاری‌کردنی ڕێگەدان بۆ دەست‌پێ‌گەیشتنی بەکارهێنەرانی سنووردار کراو',
 	'mywhitelistpages' => 'پەڕەکانی من',
 	'whitelisttablemodify' => 'پێداچوونەوە',

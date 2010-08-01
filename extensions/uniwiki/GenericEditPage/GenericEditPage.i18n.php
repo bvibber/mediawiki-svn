@@ -285,7 +285,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'gep-emailsuccess' => 'سپاس بۆ پێشنیار کردنی هاوپۆلەکان: $1.',
 	'gep-addcategorybutton' => 'زیاد کردن',
 	'gep-suggestcategorybutton' => 'ناردن',

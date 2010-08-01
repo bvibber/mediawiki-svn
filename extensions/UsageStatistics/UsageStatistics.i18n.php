@@ -469,7 +469,7 @@ $messages['ca'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'specialuserstats' => 'ئامارەکانی بەکارھێنان',
 	'usagestatistics' => 'ئامارەکانی بەکارھێنان',
 	'usagestatisticsfor' => '<h2>ئامارەکانی بەکارھێنان بۆ [[User:$1|$1]]</h2>',

@@ -329,7 +329,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'vote-registered' => 'ده‌نگی تۆ تۆمار کرا.',
 	'vote-results' => 'ئه‌نجامه‌کانی ده‌نگ',
 	'vote-results-choice' => 'هه‌ڵبژێردراو',

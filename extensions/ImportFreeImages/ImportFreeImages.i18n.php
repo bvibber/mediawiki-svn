@@ -222,7 +222,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author رزگار
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'importfreeimages_owner' => 'نوسه‌ر',
 );
 

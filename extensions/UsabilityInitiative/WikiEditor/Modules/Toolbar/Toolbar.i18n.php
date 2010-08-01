@@ -2523,7 +2523,7 @@ $messages['ce'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-toolbar' => 'شریتامرازی دەستکاریکردن',
 	'wikieditor-toolbar-desc' => 'شریتامرازی پەڕەی دەستکاریکردن بە کارەمەیی پەرەپێدراو',
 	'wikieditor-toolbar-preference' => 'ڕێگە بدە بە شریتامرازی پەرەسندووی دەستکاری کردن',

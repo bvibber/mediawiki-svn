@@ -541,7 +541,7 @@ Si us plau, tingues paciència.",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'youtubeauthsub' => 'بارکردنی ڤیدیۆ لە یووتیوب',
 	'youtubeauthsub_info' => 'بۆ بارکردنی ڤیدیۆیەک بۆ سەر یووتیوب کە لە لاپەرەیەکدا پیشان بدرێت، ئەو زانیاریانەی خوارەوە پڕ کەوە:',
 	'youtubeauthsub_title' => 'سەردێڕ',

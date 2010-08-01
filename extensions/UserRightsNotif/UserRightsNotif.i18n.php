@@ -221,7 +221,7 @@ $2",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'userrightsnotifybody' => 'سڵاو $1.
 
 ئەمە بۆ ئاگادارکردنەوەتە کە هاوبەشیەکانی گرووپت لە $2 دا بەدەست $3 لە $4 دا گۆڕدرا.

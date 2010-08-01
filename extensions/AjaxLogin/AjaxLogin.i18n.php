@@ -145,7 +145,7 @@ Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Haval
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'ajaxlogin-desc' => 'سندوقێکی داینامیک رێ به‌به‌کارهێنه‌ران ده‌دات که‌ بچنه‌ ژوره‌وه‌ وه‌ وشه‌ی تێپه‌ربونیان به‌بیر بهێنرێته‌وه‌',
 	'ajaxLogin1' => 'بۆ ئه‌نجامدانی چونه‌ ژوره‌وه‌،ده‌بێت وشه‌یه‌کی نهینی نوێ بنوسیت.
 This will take you away from this edit page and you may lose your current edit.',

@@ -530,7 +530,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'inplace_access_disabled' => 'ئه‌و ڕاژه‌یه‌ بۆ هه‌موو ڕاژه‌خوازان له‌ کارخستراوه‌.',
 	'inplace_scaler_invalid_image' => 'له‌به‌ر شێوازی وێنه‌ی نه‌ناسراو، قه‌باره‌ ده‌رناکه‌وێت.',
 	'webstore_path_invalid' => 'نێوی په‌ڕگه‌ نه‌ناسراو بوو.',

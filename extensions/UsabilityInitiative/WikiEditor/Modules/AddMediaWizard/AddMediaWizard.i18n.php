@@ -74,7 +74,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-addMediaWizard-preference' => 'مۆڵەتدانی ئامرازۆکی "فێڵی زیادکردنی میدیا"',
 );
 

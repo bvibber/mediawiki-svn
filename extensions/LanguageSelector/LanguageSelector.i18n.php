@@ -175,7 +175,7 @@ $messages['ca'] = array(
  * @author Marmzok
  * @author رزگار
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'languageselector' => 'زمان',
 	'languageselector-desc' => 'ھەڵبژێری زمان لە ھەموو پەڕەکان، ھەروەھا بۆ بینەران',
 	'languageselector-setlang' => 'داینێ',

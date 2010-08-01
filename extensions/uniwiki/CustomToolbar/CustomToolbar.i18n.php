@@ -539,7 +539,7 @@ $wgCustomToolbarMessages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$wgCustomToolbarMessages['ckb-arab'] = array(
+$wgCustomToolbarMessages['ckb'] = array(
 	'ct_bold_sample' => 'دەقی تۆخ',
 	'ct_bold_tip_ins' => 'دەقی تۆخ دابنێ',
 	'ct_bold_tip_wrap' => 'ئەم دەقە تۆخ بکە',

@@ -201,7 +201,7 @@ Voleu editar la pàgina existent?',
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'createpage' => 'دروست‌کردنی لاپەڕەیەک',
 	'createpage_submitbutton' => 'ناردن',
 	'createpage_instructions' => 'سەڕدێڕی ئەو لاپەڕەی دەتەوێ دروستی‌بکەی بنووسە:',

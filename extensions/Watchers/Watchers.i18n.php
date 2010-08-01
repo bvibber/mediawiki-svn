@@ -254,7 +254,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'watchers' => 'چاودێران',
 	'watchers_link_title' => 'کێ چاو له ئه‌‌م لاپه‌ڕه‌ ده‌کات؟',
 	'watchers_error_article' => "'''هه‌ڵه‌:''' ئه‌و لاپه‌ڕه‌ بوونی نیه‌.",

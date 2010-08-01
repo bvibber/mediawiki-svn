@@ -320,7 +320,7 @@ $messages['ca'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'ct-start-date' => 'ڕێکەوتی دەستپێکردن (YYYYMMDD)',
 	'ct-end-date' => 'ڕێکەوتی دوایی‌ھاتن (YYYYMMDD)',
 	'ct-beginner' => 'دەستپێکەر',

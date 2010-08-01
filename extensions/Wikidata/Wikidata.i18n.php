@@ -2325,7 +2325,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'langman-desc' => 'به [[Special:Languages]] زمان زیاد بکە و هەڵبژاردەکانی بگۆڕە ‌',
 	'langman_title' => 'جێبەجێکەری زمان',
 	'langman_not_allowed' => 'ڕێگەت پێ‌نەدراوە بۆ گۆڕانی هەڵبژاردەکانی زمان.',

@@ -129,7 +129,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'usercontactlink-baduser' => 'ناوی بەکارهێنەری هەڵە',
 );
 

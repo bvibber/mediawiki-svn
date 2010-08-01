@@ -181,7 +181,7 @@ Per a marcar o desmarcar múltiples pàgines, si manteniu polsada la tecla de ma
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'watchsubpages-addedtowatchlist' => 'ئه‌مانه‌ی خواره‌وه‌ زیاد کرا سه‌ر‌ لیستی چاودێریه‌که‌ت.',
 	'watchsubpages-addtitles' => 'زیاد کردنی لاپه‌ڕه‌کان',
 	'watchsubpages-addtitlestowatchlist' => 'زیاد کردنی لاپه‌ڕه‌کان بۆ لیستی چاودێری',
