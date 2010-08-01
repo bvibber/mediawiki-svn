@@ -102,6 +102,8 @@ $wgExtensionMessagesFiles['PagedTiffHandler'] = $dir . 'PagedTiffHandler.i18n.ph
 $wgAutoloadClasses['PagedTiffImage'] = $dir . 'PagedTiffHandler.image.php';
 $wgAutoloadClasses['PagedTiffHandler'] = $dir . 'PagedTiffHandler_body.php';
 $wgAutoloadClasses['TiffReader'] = $dir . 'TiffReader.php';
+$wgAutoloadClasses['PagedTiffHandlerSeleniumTestSuite'] = $dir . 'selenium/PagedTiffHandlerTestSuite.php';
+
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
