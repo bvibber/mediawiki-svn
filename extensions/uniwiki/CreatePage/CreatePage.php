@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'CreatePage',
 	'author'         => array( 'Travis Derouin', 'Merrick Schaefer', 'Mark Johnston', 'Evan Wheeler', 'Adam Mckaig (at UNICEF)' ),
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Uniwiki_Generic_Edit_Page',
-	'descriptionmsg' => 'createpage-desc',
+	'descriptionmsg' => 'uwcreatepage-desc',
 );
 
 $dir = dirname(__FILE__) . '/';

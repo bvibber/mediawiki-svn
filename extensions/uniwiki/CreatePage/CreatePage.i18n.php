@@ -11,7 +11,7 @@ $messages = array();
 /** English */
 $messages['en'] = array(
 	'createpage'    => 'Create a page',
-	'createpage-desc' => 'Adds a [[Special:CreatePage|special page]] for creating new pages',
+	'uwcreatepage-desc' => 'Adds a [[Special:CreatePage|special page]] for creating new pages',
 	'createpage_submitbutton' => 'Submit',
 	'createpage_instructions' => 'Enter the title of the page you wish to create:',
 	'createpage_entertitle' => 'Please enter a title for your page.',
@@ -32,7 +32,7 @@ Would you like to edit the existing page?',
 $messages['qqq'] = array(
 	'createpage' => 'Name of special page [[Special:CreatePage]] in [[Special:SpecialPages]] and its title.
 {{Identical|Createpage}}',
-	'createpage-desc' => '{{desc}}',
+	'uwcreatepage-desc' => '{{desc}}',
 	'createpage_submitbutton' => '{{Identical|Submit}}',
 	'createpage-badtitle' => 'Error message displayed in CreatePage special page when is specified an invalid title. See for example [[Special:CreatePage/]]',
 );
@@ -50,7 +50,7 @@ $messages['af'] = array(
  */
 $messages['aln'] = array(
 	'createpage' => 'Krijo një faqe',
-	'createpage-desc' => 'Adds a [[Special:CreatePage|faqe speciale]] për të krijuar faqe të reja',
+	'uwcreatepage-desc' => 'Adds a [[Special:CreatePage|faqe speciale]] për të krijuar faqe të reja',
 	'createpage_submitbutton' => 'Submit',
 	'createpage_instructions' => 'Shkruani titullin e faqes që ju dëshironi për të krijuar:',
 	'createpage_entertitle' => 'Ju lutemi shkruani një titull për faqen tuaj.',
@@ -74,7 +74,7 @@ $messages['an'] = array(
  */
 $messages['ar'] = array(
 	'createpage' => 'أنشئ صفحة',
-	'createpage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
+	'uwcreatepage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
 	'createpage_submitbutton' => 'إرسال',
 	'createpage_instructions' => 'أدخل عنوان الصفحة التي تريد إنشاءها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
@@ -99,7 +99,7 @@ $messages['arc'] = array(
  */
 $messages['arz'] = array(
 	'createpage' => 'أنشئ صفحة',
-	'createpage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
+	'uwcreatepage-desc' => 'يضيف [[Special:CreatePage|صفحة خاصة]] لإنشاء صفحات جديدة',
 	'createpage_submitbutton' => 'تنفيذ',
 	'createpage_instructions' => 'أدخل عنوان الصفحة التى تريد إنشاءها',
 	'createpage_entertitle' => 'من فضلك أدخل عنوان لصفحتك',
@@ -116,7 +116,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'createpage' => 'Стварыць старонку',
-	'createpage-desc' => 'Дадае [[Special:CreatePage|спэцыяльную старонку]] для стварэньня новых старонак',
+	'uwcreatepage-desc' => 'Дадае [[Special:CreatePage|спэцыяльную старонку]] для стварэньня новых старонак',
 	'createpage_submitbutton' => 'Адправіць',
 	'createpage_instructions' => 'Увядзіце назву старонкі, якую Вы жадаеце стварыць:',
 	'createpage_entertitle' => 'Калі ласка, увядзіце назву Вашай старонкі.',
@@ -132,7 +132,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'createpage' => 'Създаване на страница',
-	'createpage-desc' => 'Добавя [[Special:CreatePage|специална страница]] за създаване на нови страници',
+	'uwcreatepage-desc' => 'Добавя [[Special:CreatePage|специална страница]] за създаване на нови страници',
 	'createpage_submitbutton' => 'Създаване',
 	'createpage_instructions' => 'Въведете заглавието на страницата, която желаете да създадете:',
 	'createpage_entertitle' => 'Въведете заглавието на страницата:',
@@ -154,7 +154,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'createpage' => 'Krouiñ ur bajenn',
-	'createpage-desc' => 'Ouzhpennañ a ra ur [[Special:CreatePage|bajenn dibar]] evit krouiñ pajennoù nevez',
+	'uwcreatepage-desc' => 'Ouzhpennañ a ra ur [[Special:CreatePage|bajenn dibar]] evit krouiñ pajennoù nevez',
 	'createpage_submitbutton' => 'Kas',
 	'createpage_instructions' => "Merkañ titl ar bajenn a fell deoc'h krouiñ :",
 	'createpage_entertitle' => 'Merkit un titl evit ar bajenn',
@@ -170,7 +170,7 @@ Ha fellout a ra deoc'h degas kemmoù war ar bajenn-se ?",
  */
 $messages['bs'] = array(
 	'createpage' => 'Napravi stranicu',
-	'createpage-desc' => 'Dodaje [[Special:CreatePage|posebnu stranicu]] za pravljenje novih stranica',
+	'uwcreatepage-desc' => 'Dodaje [[Special:CreatePage|posebnu stranicu]] za pravljenje novih stranica',
 	'createpage_submitbutton' => 'Pošalji',
 	'createpage_instructions' => 'Unesite naslov stranice koju želite napraviti:',
 	'createpage_entertitle' => 'Molimo unesite naslov za Vašu stranicu',
@@ -187,7 +187,7 @@ Da li želite uređivati postojeću stranicu?',
  */
 $messages['ca'] = array(
 	'createpage' => 'Crea una pàgina',
-	'createpage-desc' => 'Afegeix una [[Special:CreatePage|pàgina especial]] per a crear noves pàgines',
+	'uwcreatepage-desc' => 'Afegeix una [[Special:CreatePage|pàgina especial]] per a crear noves pàgines',
 	'createpage_submitbutton' => 'Envia',
 	'createpage_instructions' => 'Introduïu el títol de la pàgina que vulgueu crear:',
 	'createpage_entertitle' => 'Si us plau, introduïu el títol per a la pàgina.',
@@ -217,7 +217,7 @@ $messages['ckb'] = array(
  */
 $messages['cs'] = array(
 	'createpage' => 'Vytvořit stránku',
-	'createpage-desc' => 'Přidává [[Special:CreatePage|speciální stránku]] na vytváření nových stránek',
+	'uwcreatepage-desc' => 'Přidává [[Special:CreatePage|speciální stránku]] na vytváření nových stránek',
 	'createpage_submitbutton' => 'Poslat',
 	'createpage_instructions' => 'Zadejte název stránky, kterou si přejete vytvořit:',
 	'createpage_entertitle' => 'Prosím, zadejte název vaší stánky.',
@@ -242,7 +242,7 @@ $messages['cy'] = array(
  */
 $messages['de'] = array(
 	'createpage' => 'Neue Seite erstellen',
-	'createpage-desc' => 'Fügt eine [[Special:CreatePage|Spezialseite]] für das Erstellen von neuen Seiten hinzu',
+	'uwcreatepage-desc' => 'Fügt eine [[Special:CreatePage|Spezialseite]] für das Erstellen von neuen Seiten hinzu',
 	'createpage_submitbutton' => 'Senden',
 	'createpage_instructions' => 'Gib den Namen der neu zu erstellenden Seite ein:',
 	'createpage_entertitle' => 'Titel für deine Seite.',
@@ -269,7 +269,7 @@ Möchten Sie die existierende Seite bearbeiten?',
  */
 $messages['dsb'] = array(
 	'createpage' => 'Bok napóraś',
-	'createpage-desc' => 'Pśidawa [[Special:CreatePage|specialny bok]] za napóranje nowych bokow',
+	'uwcreatepage-desc' => 'Pśidawa [[Special:CreatePage|specialny bok]] za napóranje nowych bokow',
 	'createpage_submitbutton' => 'Pósłaś',
 	'createpage_instructions' => 'Zapódaj titel boka, kótaryž coš napóraś:',
 	'createpage_entertitle' => 'Pšosym zapódaj titel za swój bok.',
@@ -286,7 +286,7 @@ By ty rady eksistěrujucy bok wobźěłaś?',
  */
 $messages['el'] = array(
 	'createpage' => 'Δημιουργία μιας σελίδας',
-	'createpage-desc' => 'Προσθέτει μια [[Special:CreatePage|ειδική σελίδα]] για τη δημιουργία νέων σελίδων',
+	'uwcreatepage-desc' => 'Προσθέτει μια [[Special:CreatePage|ειδική σελίδα]] για τη δημιουργία νέων σελίδων',
 	'createpage_submitbutton' => 'Υποβολή',
 	'createpage_instructions' => 'Πληκτρολογείστε τον τίτλο της σελίδας που θέλετε να δημιουργήσετε:',
 	'createpage_entertitle' => 'Παρακαλώ πληκτρολογείστε έναν τίτλο για τη σελίδα σας.',
@@ -302,7 +302,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'createpage' => 'Krei paĝon',
-	'createpage-desc' => 'Aldonas [[Special:CreatePage|specialan paĝon]] por krei novajn paĝojn',
+	'uwcreatepage-desc' => 'Aldonas [[Special:CreatePage|specialan paĝon]] por krei novajn paĝojn',
 	'createpage_submitbutton' => 'Enmeti',
 	'createpage_instructions' => 'Enigu la titolon de la paĝo kiun vi volas krei:',
 	'createpage_entertitle' => 'Bonvolu enigi titolon por via paĝo.',
@@ -318,7 +318,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'createpage' => 'Crear una página',
-	'createpage-desc' => 'Agregar una [[Special:CreatePage|página especial]] para crear nuevas páginas',
+	'uwcreatepage-desc' => 'Agregar una [[Special:CreatePage|página especial]] para crear nuevas páginas',
 	'createpage_submitbutton' => 'Enviar',
 	'createpage_instructions' => 'Ingresa el título de la página que deseas crear:',
 	'createpage_entertitle' => 'Ingresa un título para tu página.',
@@ -347,7 +347,7 @@ Kas soovid redigeerida olemasolevat lehekülge?',
  */
 $messages['eu'] = array(
 	'createpage' => 'Orri bat sortu',
-	'createpage-desc' => '[[Special:CreatePage|Orri berezi bat]] gehitzen du orri berriak sortzeko',
+	'uwcreatepage-desc' => '[[Special:CreatePage|Orri berezi bat]] gehitzen du orri berriak sortzeko',
 	'createpage_submitbutton' => 'Bidali',
 	'createpage_instructions' => 'Idatzi sortu nahi duzun orriaren izenburua:',
 	'createpage_entertitle' => 'Zure orrirako izenburu bat sartu mesedez.',
@@ -373,7 +373,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'createpage' => 'Luo sivu',
-	'createpage-desc' => 'Lisää [[Special:CreatePage|toimintosivun]] uusien sivujen luomiseen.',
+	'uwcreatepage-desc' => 'Lisää [[Special:CreatePage|toimintosivun]] uusien sivujen luomiseen.',
 	'createpage_submitbutton' => 'Lähetä',
 	'createpage_instructions' => 'Syötä nimi sivulle, jonka haluat luoda:',
 	'createpage_entertitle' => 'Anna sivulle nimi.',
@@ -392,7 +392,7 @@ Haluatko muokata olemassa olevaa sivua?',
  */
 $messages['fr'] = array(
 	'createpage' => 'Créer une page',
-	'createpage-desc' => 'Ajoute une [[Special:CreatePage|page spéciale]] pour créer des nouvelles pages',
+	'uwcreatepage-desc' => 'Ajoute une [[Special:CreatePage|page spéciale]] pour créer des nouvelles pages',
 	'createpage_submitbutton' => 'Soumettre',
 	'createpage_instructions' => 'Entrez le titre de la page que vous souhaitez créer :',
 	'createpage_entertitle' => 'Veuillez entrer un titre pour votre page.',
@@ -416,7 +416,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'createpage' => 'Crear unha páxina',
-	'createpage-desc' => 'Engade unha [[Special:CreatePage|páxina especial]] para crear páxinas novas',
+	'uwcreatepage-desc' => 'Engade unha [[Special:CreatePage|páxina especial]] para crear páxinas novas',
 	'createpage_submitbutton' => 'Enviar',
 	'createpage_instructions' => 'Insira o título da páxina que queira crear:',
 	'createpage_entertitle' => 'Por favor, insira un título para a páxina.',
@@ -439,7 +439,7 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'createpage' => 'Neji Syte aalege',
-	'createpage-desc' => 'Fiegt e [[Special:CreatePage|Spezialsyte]] fir s Aalege vu neje Syte dezue',
+	'uwcreatepage-desc' => 'Fiegt e [[Special:CreatePage|Spezialsyte]] fir s Aalege vu neje Syte dezue',
 	'createpage_submitbutton' => 'Schicke',
 	'createpage_instructions' => 'Gib dr Name vu dr Syte yy, wu Du witt nej aalege:',
 	'createpage_entertitle' => 'Titel fir Dyyni Syte.',
@@ -456,7 +456,7 @@ Mechtsch die Syte, wu s scho het, bearbeite?',
  */
 $messages['he'] = array(
 	'createpage' => 'יצירת דף',
-	'createpage-desc' => 'הוספת [[Special:CreatePage|דף מיוחד]] ליצירת דפים חדשים',
+	'uwcreatepage-desc' => 'הוספת [[Special:CreatePage|דף מיוחד]] ליצירת דפים חדשים',
 	'createpage_submitbutton' => 'שליחה',
 	'createpage_instructions' => 'כתבו את כותרת הדף שברצונכם ליצור:',
 	'createpage_entertitle' => 'אנא כתבו כותרת עבור הדף שלכם.',
@@ -472,7 +472,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'createpage' => 'Stronu wutworić',
-	'createpage-desc' => 'Přidawa [[Special:CreatePage|specialnu stronu]] za wutworjenje nowych stronow',
+	'uwcreatepage-desc' => 'Přidawa [[Special:CreatePage|specialnu stronu]] za wutworjenje nowych stronow',
 	'createpage_submitbutton' => 'Pósłać',
 	'createpage_instructions' => 'Zapodaj titul strony, kotruž chceš wutworić:',
 	'createpage_entertitle' => 'Prošu zapodaj titul za swoju stronu.',
@@ -488,7 +488,7 @@ By rady eksistowacu stronu wobdźěłał?',
  */
 $messages['hu'] = array(
 	'createpage' => 'Lap létrehozása',
-	'createpage-desc' => '[[Special:CreatePage|Speciális lap]] új lapok létrehozásához',
+	'uwcreatepage-desc' => '[[Special:CreatePage|Speciális lap]] új lapok létrehozásához',
 	'createpage_submitbutton' => 'Elküldés',
 	'createpage_instructions' => 'Add meg a létrehozandó lap címét:',
 	'createpage_entertitle' => 'Adj címet a lapnak.',
@@ -504,7 +504,7 @@ Szeretnéd szerkeszteni ezt a lapot?',
  */
 $messages['ia'] = array(
 	'createpage' => 'Crear un pagina',
-	'createpage-desc' => 'Adde un [[Special:CreatePage|pagina special]] pro crear nove paginas',
+	'uwcreatepage-desc' => 'Adde un [[Special:CreatePage|pagina special]] pro crear nove paginas',
 	'createpage_submitbutton' => 'Submitter',
 	'createpage_instructions' => 'Entra le titulo del pagina que tu vole crear:',
 	'createpage_entertitle' => 'Per favor entra un titulo pro tu pagina.',
@@ -520,7 +520,7 @@ Vole tu modificar le pagina existente?',
  */
 $messages['id'] = array(
 	'createpage' => 'Buat halaman',
-	'createpage-desc' => 'Menambahkan sebuah [[Special:CreatePage|halaman istimewa]] untuk membuat halaman baru',
+	'uwcreatepage-desc' => 'Menambahkan sebuah [[Special:CreatePage|halaman istimewa]] untuk membuat halaman baru',
 	'createpage_submitbutton' => 'Kirim',
 	'createpage_instructions' => 'Masukkan judul halaman yang ingin Anda buat:',
 	'createpage_entertitle' => 'Masukkan sebuah judul untuk halaman Anda.',
@@ -553,7 +553,7 @@ $messages['io'] = array(
  */
 $messages['it'] = array(
 	'createpage' => 'Crea una pagina',
-	'createpage-desc' => 'Aggiunge una [[Special:CreatePage|pagina speciale]] per la creazione di nuove pagine',
+	'uwcreatepage-desc' => 'Aggiunge una [[Special:CreatePage|pagina speciale]] per la creazione di nuove pagine',
 	'createpage_submitbutton' => 'Invia',
 	'createpage_instructions' => 'Inserire il titolo della pagina che si desidera creare:',
 	'createpage_entertitle' => 'Inserire un titolo per la propria pagina.',
@@ -570,7 +570,7 @@ Si desidera modificare la pagina esistente?',
  */
 $messages['ja'] = array(
 	'createpage' => 'ページ作成',
-	'createpage-desc' => '新しいページを作成するための[[Special:CreatePage|特別ページ]]を追加する',
+	'uwcreatepage-desc' => '新しいページを作成するための[[Special:CreatePage|特別ページ]]を追加する',
 	'createpage_submitbutton' => '送信',
 	'createpage_instructions' => '作成したいページの名前を入力:',
 	'createpage_entertitle' => 'ページの名前を入力してください。',
@@ -585,7 +585,7 @@ $messages['ja'] = array(
  */
 $messages['jv'] = array(
 	'createpage' => 'Gawé kaca',
-	'createpage-desc' => 'Tambahaké [[Special:CreatePage|Gawékaca]] kanggo nggawé kaca anyar',
+	'uwcreatepage-desc' => 'Tambahaké [[Special:CreatePage|Gawékaca]] kanggo nggawé kaca anyar',
 	'createpage_submitbutton' => 'Kirim',
 	'createpage_instructions' => 'Isi irah-irahan (judhul) kaca sing arep digawé:',
 	'createpage_entertitle' => 'Supaya ngisi irah-irahan (judhul) kaca.',
@@ -600,7 +600,7 @@ Apa panjenengan arep nyunting kaca iki?',
  */
 $messages['km'] = array(
 	'createpage' => 'បង្កើត​ទំព័រ​មួយ',
-	'createpage-desc' => 'បន្ថែម [[ពិសេស:បង្កើត​ទំព័រ|ទំព័រ​ពិសេស]]​មួយ ដើម្បី​បង្កើត​ទំព័រ​ថ្មីៗ',
+	'uwcreatepage-desc' => 'បន្ថែម [[ពិសេស:បង្កើត​ទំព័រ|ទំព័រ​ពិសេស]]​មួយ ដើម្បី​បង្កើត​ទំព័រ​ថ្មីៗ',
 	'createpage_submitbutton' => 'ដាក់ស្នើ',
 	'createpage_instructions' => 'សូម​វាយ​បញ្ចូល​ចំណងជើង​ទំព័រ​ដែល​អ្នក​ចង់​បង្កើត​៖',
 	'createpage_entertitle' => 'សូម​ដាក់​ចំណងជើង​ទំព័រ​ឱ្យ​ទំព័រ​របស់​អ្នក​។',
@@ -617,7 +617,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'createpage' => 'En neu Sigg aanlääje',
-	'createpage-desc' => 'Brengk en [[Special:CreatePage|Söndersigg]] för Sigge aanzelääje en et Wiki.',
+	'uwcreatepage-desc' => 'Brengk en [[Special:CreatePage|Söndersigg]] för Sigge aanzelääje en et Wiki.',
 	'createpage_submitbutton' => 'Loß Jonn!',
 	'createpage_instructions' => 'Jif dä Tittel en, för di Sigg, di De aanlääje wells:',
 	'createpage_entertitle' => 'Jif ene Tittel för di Sigg en.',
@@ -640,7 +640,7 @@ $messages['la'] = array(
  */
 $messages['lb'] = array(
 	'createpage' => 'Eng Säit uleeën',
-	'createpage-desc' => 'Setzt eng [[Special:CreatePage|Spezialsäit]] derbäi fir Säiten unzeleeën',
+	'uwcreatepage-desc' => 'Setzt eng [[Special:CreatePage|Spezialsäit]] derbäi fir Säiten unzeleeën',
 	'createpage_submitbutton' => 'Schécken',
 	'createpage_instructions' => 'Gitt den titel vun däer Säit un déi Dir uleeë wëllt:',
 	'createpage_entertitle' => 'Gitt w.e.g. en Titel fir Är Säit un.',
@@ -670,7 +670,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'createpage' => 'Создај страница',
-	'createpage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за создавање на нови страници',
+	'uwcreatepage-desc' => 'Додава [[Special:CreatePage|специјална страница]] за создавање на нови страници',
 	'createpage_submitbutton' => 'Потврди',
 	'createpage_instructions' => 'Внесете наслов на страницата која сакате да ја создадете:',
 	'createpage_entertitle' => 'Внесете наслов на вашата страница.',
@@ -694,7 +694,7 @@ $messages['myv'] = array(
  */
 $messages['nds'] = array(
 	'createpage' => 'Ne’e Sied schrieven',
-	'createpage-desc' => 'Föögt en [[Special:CreatePage|Spezialsied]] to, mit de een ne’e Sieden anleggen kann',
+	'uwcreatepage-desc' => 'Föögt en [[Special:CreatePage|Spezialsied]] to, mit de een ne’e Sieden anleggen kann',
 	'createpage_submitbutton' => 'Trech',
 	'createpage_instructions' => 'Schriev hier den Naam vun’e ne’e Sied rin:',
 	'createpage_entertitle' => 'Segg, wo dien ne’e Sied heten schall.',
@@ -710,7 +710,7 @@ Wullt du de Sied, de dat al gifft, ännern?',
  */
 $messages['nl'] = array(
 	'createpage' => 'Pagina aanmaken',
-	'createpage-desc' => "Voegt een [[Special:CreatePage|speciale pagina]] toe voor het aanmaken van pagina's",
+	'uwcreatepage-desc' => "Voegt een [[Special:CreatePage|speciale pagina]] toe voor het aanmaken van pagina's",
 	'createpage_submitbutton' => 'OK',
 	'createpage_instructions' => 'Voer de naam in van de pagina die u wilt aanmaken:',
 	'createpage_entertitle' => 'Geef een naam voor uw pagina op.',
@@ -726,7 +726,7 @@ Wilt u de bestaande pagina bewerken?',
  */
 $messages['nn'] = array(
 	'createpage' => 'Opprett ei sida',
-	'createpage-desc' => 'Legg til ei [[Special:CreatePage|spesialsida]] for å oppretta nye sider',
+	'uwcreatepage-desc' => 'Legg til ei [[Special:CreatePage|spesialsida]] for å oppretta nye sider',
 	'createpage_submitbutton' => 'OK',
 	'createpage_instructions' => 'Skriv inn tittelen til sida du ynskjer å oppretta:',
 	'createpage_entertitle' => 'Skriv inn ein tittel for sida di.',
@@ -742,7 +742,7 @@ Vil du endra denne?',
  */
 $messages['no'] = array(
 	'createpage' => 'Opprett en side',
-	'createpage-desc' => 'Legg til en [[Special:CreatePage|spesialside]] for å opprettelse av nye sider',
+	'uwcreatepage-desc' => 'Legg til en [[Special:CreatePage|spesialside]] for å opprettelse av nye sider',
 	'createpage_submitbutton' => 'Send',
 	'createpage_instructions' => 'Skriv inn tittelen til siden du ønsker å opprette:',
 	'createpage_entertitle' => 'Vennligst skriv inn en tittel for siden din.',
@@ -758,7 +758,7 @@ Vil du redigere den eksisterende siden?',
  */
 $messages['oc'] = array(
 	'createpage' => 'Crear una pagina',
-	'createpage-desc' => 'Apondre una [[Special:CreatePage|pagina especiala]] per crear de paginas novèlas',
+	'uwcreatepage-desc' => 'Apondre una [[Special:CreatePage|pagina especiala]] per crear de paginas novèlas',
 	'createpage_submitbutton' => 'Sometre',
 	'createpage_instructions' => 'Picar lo títol de la pagina que volètz crear :',
 	'createpage_entertitle' => 'Picatz un títol per vòstra pagina.',
@@ -781,7 +781,7 @@ $messages['os'] = array(
  */
 $messages['pl'] = array(
 	'createpage' => 'Utwórz stronę',
-	'createpage-desc' => 'Dodaje [[Special:CreatePage|stronę specjalną]] do tworzenia nowych stron',
+	'uwcreatepage-desc' => 'Dodaje [[Special:CreatePage|stronę specjalną]] do tworzenia nowych stron',
 	'createpage_submitbutton' => 'OK',
 	'createpage_instructions' => 'Podaj tytuł strony, którą chcesz utworzyć:',
 	'createpage_entertitle' => 'Proszę podać tytuł dla swojej strony',
@@ -797,7 +797,7 @@ Czy chcesz edytować istniejącą stronę?',
  */
 $messages['pms'] = array(
 	'createpage' => 'Crea na pàgina',
-	'createpage-desc' => 'A gionta na [[Special:CreatePage|pàgina special]] për creé neuve pàgine',
+	'uwcreatepage-desc' => 'A gionta na [[Special:CreatePage|pàgina special]] për creé neuve pàgine',
 	'createpage_submitbutton' => 'Spediss',
 	'createpage_instructions' => "Anseriss ël tìtol ëd la pàgina ch'it veule creé:",
 	'createpage_entertitle' => 'Për piasì anseriss un tìtol për toa pàgina.',
@@ -831,7 +831,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'createpage' => 'Criar uma página',
-	'createpage-desc' => 'Adiciona uma [[Special:CreatePage|página especial]] para criar novas páginas',
+	'uwcreatepage-desc' => 'Adiciona uma [[Special:CreatePage|página especial]] para criar novas páginas',
 	'createpage_submitbutton' => 'Submeter',
 	'createpage_instructions' => 'Introduza o título da página que pretende criar:',
 	'createpage_entertitle' => 'Por favor, introduza um título para a sua página.',
@@ -847,7 +847,7 @@ Deseja editar a página existente?',
  */
 $messages['pt-br'] = array(
 	'createpage' => 'Criar uma página',
-	'createpage-desc' => 'Adiciona uma [[Special:CreatePage|página especial]] para criar novas páginas',
+	'uwcreatepage-desc' => 'Adiciona uma [[Special:CreatePage|página especial]] para criar novas páginas',
 	'createpage_submitbutton' => 'Criar',
 	'createpage_instructions' => 'Digite o título da página que você gostaria de criar:',
 	'createpage_entertitle' => 'Digite um título para sua página.',
@@ -877,7 +877,7 @@ Doriți să modificați pagina existentă?',
  */
 $messages['roa-tara'] = array(
 	'createpage' => "Ccreje 'na vôsce",
-	'createpage-desc' => "Aggiunge 'na [[Special:CreatePage|pàgena speciale]] pe ccrejà le pàggene nuève",
+	'uwcreatepage-desc' => "Aggiunge 'na [[Special:CreatePage|pàgena speciale]] pe ccrejà le pàggene nuève",
 	'createpage_submitbutton' => 'Conferme',
 	'createpage_instructions' => "Mitte 'u titele d'a pàgene ca vuè ccù ccreje:",
 	'createpage_entertitle' => "Pe piacere mitte 'u titele pà pàgena toje.",
@@ -894,7 +894,7 @@ No è ca vuè ccù cange 'a pàgena esistende?",
  */
 $messages['ru'] = array(
 	'createpage' => 'Создать страницу',
-	'createpage-desc' => 'Добавляет [[Special:CreatePage|служебную страницу]] для создания новых страниц',
+	'uwcreatepage-desc' => 'Добавляет [[Special:CreatePage|служебную страницу]] для создания новых страниц',
 	'createpage_submitbutton' => 'Отправить',
 	'createpage_instructions' => 'Введите название страницы, которую вы хотите создать:',
 	'createpage_entertitle' => 'Пожалуйста, введите название вашей страницы.',
@@ -918,7 +918,7 @@ $messages['sah'] = array(
  */
 $messages['si'] = array(
 	'createpage' => 'පිටුවක් නිර්මාණය කරන්න',
-	'createpage-desc' => 'නව පිටු නිර්මාණය කිරීම සඳහා [[Special:CreatePage|විශේෂ පිටුව]]ක් එකතු කරයි',
+	'uwcreatepage-desc' => 'නව පිටු නිර්මාණය කිරීම සඳහා [[Special:CreatePage|විශේෂ පිටුව]]ක් එකතු කරයි',
 	'createpage_submitbutton' => 'යොමන්න',
 	'createpage_instructions' => 'ඔබ නිර්මාණය කිරීමට කැමති පිටුවේ මාතෘකාව ඇතුල් කරන්න:',
 	'createpage_entertitle' => 'කරුණාකර ඔබේ පිටුවට මාතෘකාවක් ඇතුල් කරන්න.',
@@ -934,7 +934,7 @@ $messages['si'] = array(
  */
 $messages['sk'] = array(
 	'createpage' => 'Vytvoriť stránku',
-	'createpage-desc' => 'Pridáva [[Special:CreatePage|špeciálnu stránku]] na vytváranie nových stránok',
+	'uwcreatepage-desc' => 'Pridáva [[Special:CreatePage|špeciálnu stránku]] na vytváranie nových stránok',
 	'createpage_submitbutton' => 'Poslať',
 	'createpage_instructions' => 'Zadajte názov stránky, ktorú si želáte vytvoriť:',
 	'createpage_entertitle' => 'Prosím, zadajte názov vašej stránky.',
@@ -950,7 +950,7 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'createpage' => 'Ustvari stran',
-	'createpage-desc' => 'Doda [[Special:CreatePage|posebno stran]] za ustvarjanje novih strani',
+	'uwcreatepage-desc' => 'Doda [[Special:CreatePage|posebno stran]] za ustvarjanje novih strani',
 	'createpage_submitbutton' => 'Potrdi',
 	'createpage_instructions' => 'Vnesite naslov strani, ki jo želite ustvariti:',
 	'createpage_entertitle' => 'Prosimo, vnesite naslov vaše strani.',
@@ -966,7 +966,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'createpage' => 'Направи чланак',
-	'createpage-desc' => 'Додаје [[Special:CreatePage|специјалну страну]] за прављење нових страна',
+	'uwcreatepage-desc' => 'Додаје [[Special:CreatePage|специјалну страну]] за прављење нових страна',
 	'createpage_submitbutton' => 'Пошаљи',
 	'createpage_instructions' => 'Унеси наслов кога желиш да направиш:',
 	'createpage_entertitle' => 'Молимо Вас да унесете наслов за Ваш чланак.',
@@ -982,7 +982,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'createpage' => 'Napravi članak',
-	'createpage-desc' => 'Dodaje [[Special:CreatePage|specijalnu stranu]] za pravljenje novih strana',
+	'uwcreatepage-desc' => 'Dodaje [[Special:CreatePage|specijalnu stranu]] za pravljenje novih strana',
 	'createpage_submitbutton' => 'Pošalji',
 	'createpage_instructions' => 'Unesi naslov koga želiš da napraviš:',
 	'createpage_entertitle' => 'Molimo Vas da unesete naslov za Vaš članak.',
@@ -998,7 +998,7 @@ Da li biste želeli da izmenite postojeći članak?',
  */
 $messages['stq'] = array(
 	'createpage' => 'Näie Sieden moakje',
-	'createpage-desc' => 'Föiget ne [[Special:CreatePage|Spezioalsiede]] foar dät Moakjen fon näie Sieden bietou',
+	'uwcreatepage-desc' => 'Föiget ne [[Special:CreatePage|Spezioalsiede]] foar dät Moakjen fon näie Sieden bietou',
 	'createpage_submitbutton' => 'Seende',
 	'createpage_instructions' => 'Reek dän Noome fon dän tou moakjene Siede ien:',
 	'createpage_entertitle' => 'Tittel foar dien Siede',
@@ -1016,7 +1016,7 @@ Moatest Du ju bestoundene Siede beoarbaidje?',
  */
 $messages['sv'] = array(
 	'createpage' => 'Skapa en sida',
-	'createpage-desc' => 'Lägger till en [[Special:CreatePage|specialsida]] för att skapa nya sidor',
+	'uwcreatepage-desc' => 'Lägger till en [[Special:CreatePage|specialsida]] för att skapa nya sidor',
 	'createpage_submitbutton' => 'OK',
 	'createpage_instructions' => 'Skriv in titeln till sidan som du vill skapa:',
 	'createpage_entertitle' => 'Var god skriv in en titel för din sida.',
@@ -1032,7 +1032,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'createpage' => 'Anzisha ukurasa',
-	'createpage-desc' => 'Huongeza [[Special:CreatePage|ukurasa maalum]] kwa ajili ya kuanzisha kurasa mpya',
+	'uwcreatepage-desc' => 'Huongeza [[Special:CreatePage|ukurasa maalum]] kwa ajili ya kuanzisha kurasa mpya',
 	'createpage_submitbutton' => 'Wasilisha',
 	'createpage_instructions' => 'Andika jina la ukurasa unaotaka kuanzisha:',
 	'createpage_entertitle' => 'Andika jina la ukurasa wako.',
@@ -1047,7 +1047,7 @@ $messages['sw'] = array(
  */
 $messages['te'] = array(
 	'createpage' => 'ఓ పేజీని సృష్టించండి',
-	'createpage-desc' => 'కొత్త పేజీలు సృష్టించడానికి ఓ [[Special:CreatePage|ప్రత్యేక పేజీ]]ని చేరుస్తుంది',
+	'uwcreatepage-desc' => 'కొత్త పేజీలు సృష్టించడానికి ఓ [[Special:CreatePage|ప్రత్యేక పేజీ]]ని చేరుస్తుంది',
 	'createpage_submitbutton' => 'దాఖలుచెయ్యి',
 	'createpage_instructions' => 'మీరు సృష్టించాలనుకున్న పేజీ పేరు ఇవ్వండి:',
 	'createpage_entertitle' => 'మీ పేజీకి ఒక శీర్షిక ఇవ్వండి.',
@@ -1078,7 +1078,7 @@ $messages['tk'] = array(
  */
 $messages['tl'] = array(
 	'createpage' => 'Lumikha ng isang pahina',
-	'createpage-desc' => 'Nagdaragdag ng isang [[Special:CreatePage|natatanging pahina]] para sa paglikha ng bagong mga pahina',
+	'uwcreatepage-desc' => 'Nagdaragdag ng isang [[Special:CreatePage|natatanging pahina]] para sa paglikha ng bagong mga pahina',
 	'createpage_submitbutton' => 'Ipasa',
 	'createpage_instructions' => 'Ilagay ang pamagat ng pahinang naisa mong likhain:',
 	'createpage_entertitle' => 'Pakipasok lamang ang isang pamagat para sa iyong pahina.',
@@ -1095,7 +1095,7 @@ Nais mo bang baguhin ang umiiral na pahina?',
  */
 $messages['tr'] = array(
 	'createpage' => 'Bir sayfa oluştur',
-	'createpage-desc' => 'Yeni sayfa oluşturmak için bir [[Special:CreatePage|özel sayfa]] ekler',
+	'uwcreatepage-desc' => 'Yeni sayfa oluşturmak için bir [[Special:CreatePage|özel sayfa]] ekler',
 	'createpage_submitbutton' => 'Gönder',
 	'createpage_instructions' => 'Oluşturmak istediğiniz sayfanın başlığını girin:',
 	'createpage_entertitle' => 'Lütfen sayfanız için bir başlık girin.',
@@ -1120,7 +1120,7 @@ $messages['ug-arab'] = array(
  */
 $messages['uk'] = array(
 	'createpage' => 'Створити сторінку',
-	'createpage-desc' => 'Додає [[Special:CreatePage|службову сторінку]] для створення нових сторінок',
+	'uwcreatepage-desc' => 'Додає [[Special:CreatePage|службову сторінку]] для створення нових сторінок',
 	'createpage_submitbutton' => 'Відправити',
 	'createpage_instructions' => 'Введіть назву сторінки, яку ви хочете створити:',
 	'createpage_entertitle' => 'Будь ласка, введіть назву вашої сторінки.',
@@ -1144,7 +1144,7 @@ $messages['vec'] = array(
  */
 $messages['vep'] = array(
 	'createpage' => "Säta lehtpol'",
-	'createpage-desc' => 'Ližadab [[Special:CreatePage|specialižen lehtpolen]] uzid lehtpolid sätes',
+	'uwcreatepage-desc' => 'Ližadab [[Special:CreatePage|specialižen lehtpolen]] uzid lehtpolid sätes',
 	'createpage_submitbutton' => 'Oigeta',
 );
 
@@ -1154,7 +1154,7 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'createpage' => 'Tạo trang',
-	'createpage-desc' => 'Thêm một [[Special:CreatePage|trang đặc biệt]] để tạo trang mới',
+	'uwcreatepage-desc' => 'Thêm một [[Special:CreatePage|trang đặc biệt]] để tạo trang mới',
 	'createpage_submitbutton' => 'Lưu trang',
 	'createpage_instructions' => 'Nhập vào tựa đề của trang bạn muốn tạo:',
 	'createpage_entertitle' => 'Xin nhập vào tựa đề cho trang.',
@@ -1170,7 +1170,7 @@ Bạn có muốn sửa đổi trang hiện có?',
  */
 $messages['vo'] = array(
 	'createpage' => 'Jafön padi',
-	'createpage-desc' => 'Läükön [[Special:CreatePage|padi patik]] ad jafön padis nulik',
+	'uwcreatepage-desc' => 'Läükön [[Special:CreatePage|padi patik]] ad jafön padis nulik',
 	'createpage_submitbutton' => 'Sedön',
 	'createpage_instructions' => 'Penolös tiädi pada, keli vilol jafön:',
 	'createpage_entertitle' => 'Penolös tiädi pro pad olik.',
@@ -1186,7 +1186,7 @@ Vilol-li redakön padi dabinöl at?',
  */
 $messages['wo'] = array(
 	'createpage' => 'Sos aw xët',
-	'createpage-desc' => 'Yokk aw [[Special:CreatePage|xëtu jagleel]] ngir man a sos xët yu bees',
+	'uwcreatepage-desc' => 'Yokk aw [[Special:CreatePage|xëtu jagleel]] ngir man a sos xët yu bees',
 	'createpage_submitbutton' => 'Yónne',
 	'createpage_instructions' => 'Dugalal koju xët wi nga bëgg a sos :',
 	'createpage_entertitle' => 'Di-sakku nga duggal ab koj ngir sa xët wi:',
