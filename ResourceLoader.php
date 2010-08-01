@@ -878,6 +878,7 @@ class ResourceLoader {
 				$parenthesesDepth = 0;				
 				$ignorenext = false;
 				$inquote = false;
+				$inSingleQuote = false;
 				for ( $i = $startOfLogIndex; $i < strlen( $jsString ); $i++ ) {					
 					$char = $jsString[$i];
 					if ( $ignorenext ) {
@@ -886,23 +887,30 @@ class ResourceLoader {
 						// Search for a close ) that is not in quotes 
 						switch( $char ) {
 							case '"':
-								$inquote = !$inquote;
-								break;
+								if( !$inSingleQuote ){								
+									$inquote = !$inquote;
+								}
+							break;
+							case '\'':
+								if( !$inquote ){
+									$inSingleQuote = !$inSingleQuote;
+								}
+							break;
 							case '(':
-								if( ! $inquote){	
+								if( !$inquote && !$inSingleQuote ){	
 									$parenthesesDepth++;
 								}	
 							break;	
 							case ')':
-								if( ! $inquote ){						
+								if( ! $inquote  && !$inSingleQuote ){						
 									$parenthesesDepth--;									
 								}
 							break;
 							case '\\':
 								if ( $inquote ) $ignorenext = true;
-								break;
+							break;
 						}
-						// done with close parentheses search for next mw.log in outer loop:
+						// Done with close parentheses search for next mw.log in outer loop:
 						if( $parenthesesDepth === 0 ){
 							break;			
 						}						
