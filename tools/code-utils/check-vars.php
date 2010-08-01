@@ -7,8 +7,8 @@
  *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php \) -exec php tools/code-utils/check-vars.php \{\} +
  */
 
-require_once( dirname( dirname( dirname( __FILE__ ) ) ) . "/phase3/includes/Defines.php" ); # Faster than parsing
-require_once( dirname( dirname( dirname( __FILE__ ) ) ) . "/phase3/includes/AutoLoader.php" );
+require_once( dirname( __FILE__ ) . "/../../phase3/includes/Defines.php" ); # Faster than parsing
+require_once( dirname( __FILE__ ) . "/phase3/includes/AutoLoader.php" );
 
 if ( !extension_loaded( 'sockets' ) ) dl('sockets.so');
 if ( !extension_loaded( 'PDO' ) ) dl('pdo.so');
@@ -61,47 +61,47 @@ class CheckVars {
 			
 			if ( count( $this->mTokens ) > 0 ) {
 				$globals = array (
-								'$wgArticle', # Setup.php
-								'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers
-								'$wgBlobCache', # HistoryBlob.php
-								'$wgCaches', # ObjectCache.php
-								'$wgCanonicalNamespaceNames', # Namespace.phph-
-								'$wgContLang', # Setup.php
+					'$wgArticle', # Setup.php
+					'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers
+					'$wgBlobCache', # HistoryBlob.php
+					'$wgCaches', # ObjectCache.php
+					'$wgCanonicalNamespaceNames', # Namespace.php
+					'$wgContLang', # Setup.php
 
-								'$wgContLanguageCode', # Should probably be removed
-								'$wgDatabase', # For update scripts
-								'$wgDBcataloged', # http://www.mediawiki.org/wiki/Special:Code/MediaWiki/45755#c7954
-								'$wgDeferredUpdateList', # Setup.php
-								'$wgExternalBlobCache', # ExternalStoreDB.php
+					'$wgContLanguageCode', # Should probably be removed
+					'$wgDatabase', # For update scripts
+					'$wgDBcataloged', # http://www.mediawiki.org/wiki/Special:Code/MediaWiki/45755#c7954
+					'$wgDeferredUpdateList', # Setup.php
+					'$wgExternalBlobCache', # ExternalStoreDB.php
 
-								'$wgExtModifiedFields', '$wgExtNewFields', '$wgExtNewIndexes', '$wgExtNewTables', # Updates
+					'$wgExtModifiedFields', '$wgExtNewFields', '$wgExtNewIndexes', '$wgExtNewTables', # Updates
 
-								'$wgFeedClasses', # Defines.php, many uses
-								'$wgFullyInitialised', # Set by Setup.php, read by Exception
-								'$wgHtmlEntities', '$wgHtmlEntityAliases', # Sanitizer.php
-								'$wgIP', # Setup.php
-								'$wgLang', # Setup.php
-								'$wgLanguageNames', # Language.php, read by others
-								'$wgMemc', # Setup.php
-								'$wgMessageCache', # Setup.php
+					'$wgFeedClasses', # Defines.php, many uses
+					'$wgFullyInitialised', # Set by Setup.php, read by Exception
+					'$wgHtmlEntities', '$wgHtmlEntityAliases', # Sanitizer.php
+					'$wgIP', # Setup.php
+					'$wgLang', # Setup.php
+					'$wgLanguageNames', # Language.php, read by others
+					'$wgMemc', # Setup.php
+					'$wgMessageCache', # Setup.php
 
-								'$wgNoDBParam', # maintenance, serialized
-								'$wgOut', # Setup.php
-								'$wgParser', # Setup.php
-								'$wgPostCommitUpdateList', # Initialised in Setup.php, should be removed
-								'$wgProfiler', # StartProfiler.php
-								'$wgProfiling', # Profiler.php
-								'$wgQueryPages', # QueryPage.php
-								'$wgRequest', # Setup.php
-								'$wgRequestTime', # WebStart.php
-								'$wgRUstart', # WebStart.php, for Profiler stuff
-								'$wgTitle', # index.php
-								'$wgUpdates', # updaters
-								'$wgUseEnotif', # Setup.php
-								'$wgUseNormalUser', # maintenance
-								'$wgUser', # Setup.php
-								'$wgWikiFarm', # maintenance, to be removed
-							);
+					'$wgNoDBParam', # maintenance, serialized
+					'$wgOut', # Setup.php
+					'$wgParser', # Setup.php
+					'$wgPostCommitUpdateList', # Initialised in Setup.php, should be removed
+					'$wgProfiler', # StartProfiler.php
+					'$wgProfiling', # Profiler.php
+					'$wgQueryPages', # QueryPage.php
+					'$wgRequest', # Setup.php
+					'$wgRequestTime', # WebStart.php
+					'$wgRUstart', # WebStart.php, for Profiler stuff
+					'$wgTitle', # index.php
+					'$wgUpdates', # updaters
+					'$wgUseEnotif', # Setup.php
+					'$wgUseNormalUser', # maintenance
+					'$wgUser', # Setup.php
+					'$wgWikiFarm', # maintenance, to be removed
+				);
 
 				foreach ( $this->mTokens as $token ) {
 					if ( is_array( $token ) && ($token[0] == T_VARIABLE) && (substr($token[1], 0, 3) == '$wg') ) {
@@ -370,7 +370,7 @@ class CheckVars {
 	function shouldBeGlobal( $name ) {
 		static $specialGlobals = array( '$IP', '$parserMemc', '$messageMemc', '$hackwhere', '$haveProctitle' );
 		static $nonGlobals = array(	'$wgOptionalMessages', '$wgIgnoredMessages', '$wgEXIFMessages', # Used by Translate extension, read from maintenance/languages/messageTypes.inc
-									'$wgMessageStructure', '$wgBlockComments' ); # Used by Translate extension, read from maintenance/languages/messages.inc
+									'$wgMessageStructure', '$wgBlockComments' ); # Used by Translate extension and maintenance/language/writeMessagesArray.inc, read from maintenance/languages/messages.inc
 
 		return ( ( substr($name, 0, 3) == '$wg' ) || ( substr($name, 0, 3) == '$eg' ) || in_array( $name, $specialGlobals ) ) && !in_array($name, $nonGlobals);
 	}
