@@ -86,34 +86,38 @@ mw.Smil.prototype = {
 	 * @param {string}
 	 *            SmilXmlString Xml string of smil to be loaded
 	 */
-	loadFromString : function( smilXmlString ) {
+	loadFromString: function( smilXmlString ) {
 		// Load the parsed string into the local "dom"
 		this.$dom = $j( smilXmlString );
-
 		mw.log("Smil::loadFromString: loaded smil dom: " + this.$dom.length + "\n" + smilXmlString );
-		/*
-		// Clear out the layout
-		this.layout = null;
-
-		// Clear out the body
-		this.body = null;
-
-		// Clear out the top level duration
-		this.duration = null;
-
-		// Clear out the "buffer" object
-		this.buffer = null;
-		*/
 	},
 	updateFromString: function( smilXmlString ){
 		delete this.$dom; 
-		this.$dom = $j( smilXmlString ); 
+		// jQuery strips some html native tags when parsing xml passed into jQuery 
+		// since smil has html tags ( "body" "head" ) we need to first convert it to
+		// an xml object:: 
+		this.$dom = $j( this.getXMLDomObject( smilXmlString ) );		
 	},
+	// simple XML DOMParser object parser wrapper
+	// xxx Add error handling 
+	getXMLDomObject: function( smilXmlString ){
+		if (window.DOMParser){
+			parser=new DOMParser();
+			xmlDoc=parser.parseFromString(smilXmlString, "text/xml");
+		} else // Internet Explorer 
+		{
+			xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+			xmlDoc.async="false";
+			xmlDoc.loadXML( smilXmlString );
+		}
+		return xmlDoc;
+	},
+	
 	/**
 	 * Internal function to get the jQuery smil dom
 	 */
 	getDom : function() {
-		if (this.$dom) {
+		if ( this.$dom ) {
 			return this.$dom;
 		}
 		mw.log("Error SMIL Dom not available");
@@ -132,7 +136,7 @@ mw.Smil.prototype = {
 		this.getLayout().setupLayout(this.embedPlayer.getRenderTarget());
 
 		// Update the render target with bodyElements for the requested time
-		this.getBody().renderTime(time);
+		this.getBody().renderTime( time );
 
 		// Wait until buffer is ready and run the callback
 		this.getBuffer().addAssetsReadyCallback(callback);

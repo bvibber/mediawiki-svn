@@ -97,19 +97,14 @@ mw.Sequencer.prototype = {
 	 */
 	updateSmilXML: function( smilXML ){
 		mw.log("Sequencer::updateSmilXML" + smilXML);
-		var _this = this;
-		alert( 'before Dur:' + this.getEmbedPlayer().getDuration( true ) + ' update seq len: ' + this.getSmil().$dom.find('seq').children().length )
+		var _this = this;		
 		// Update the embedPlayer smil: 
-		this.getSmil().updateFromString( smilXML );
-		debugger;
-		alert( 'after Dur:' + this.getEmbedPlayer().getDuration( true ) + '  update seq len: ' + this.getSmil().$dom.find('seq').children().length )
+		this.getSmil().updateFromString( smilXML );			
 		// Get a duration ( forceRefresh to clear the cache ) 
-		var dur = this.getEmbedPlayer().getDuration( true );
-		alert( 'restored dur should be: ' + dur);
-		/*		
-		// redraw the timeline
-		this.getTimeline().drawTimeline();
-		*/
+		this.getEmbedPlayer().getDuration( true );		
+				
+		// Redraw the timeline
+		this.getTimeline().drawTimeline();		
 	},
 	
 	/**

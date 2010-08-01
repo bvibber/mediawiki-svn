@@ -366,8 +366,7 @@ mw.SmilBody.prototype = {
 						$node.data( 'implictDuration',  childDuration); 
 					}
 				}
-			});
-			alert( 'getting duration for ' + $node.children().length + ' children ');
+			});			
 		}
 						
 		// Check the explicit duration attribute: 

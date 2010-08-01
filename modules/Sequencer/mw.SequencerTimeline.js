@@ -27,9 +27,11 @@ mw.SequencerTimeline.prototype = {
 	getTimelineContainer: function(){
 		return this.sequencer.getContainer().find('.mwseq-timeline');
 	},
-	
-	getTracksContainer: function(){
-		if( ! this.$timelineTracksContainer ){
+	/**
+	 * xxx needs to support multiple tracks 
+	 */
+	getTracksContainer: function( trackId ){
+		if( this.getTimelineContainer().find( '.timelineTrackContainer' ).length == 0 ){
 			// getTimelineContainer 
 			this.getTimelineContainer().append( 
 				$j('<div />')
@@ -43,8 +45,7 @@ mw.SequencerTimeline.prototype = {
 				)
 			)
 			// Apply layout control to track name / clipTrackSet division  			
-			this.$timelineTracksContainer = this.getTimelineContainer().find( '.timelineTrackContainer');
-			this.trackLayout = this.$timelineTracksContainer
+			this.getTimelineContainer().find( '.timelineTrackContainer')
 				.layout( {
 					'applyDefaultStyles': true,		
 					'west__size' : 150,
@@ -52,56 +53,52 @@ mw.SequencerTimeline.prototype = {
 					'west__maxSize' : 300
 				} );
 		}
-		return this.$timelineTracksContainer;
+		return this.getTimelineContainer().find( '.timelineTrackContainer');
 	},
 	resizeTimeline: function(){
-		if( this.trackLayout ){
-			this.trackLayout.resizeAll();
-		}
+		this.getTimelineContainer().find( '.timelineTrackContainer').resizeAll();
 	},
 	
 	// Draw the timeline
 	drawTimeline: function(){		
 		// Empty the timeline container 
-		this.getTimelineContainer().empty();
+		//this.getTimelineContainer().empty();
 		
 		// Get the top level sequence tracks 
 		var seqTracks = this.sequencer.getSmil().getBody().getSeqElements();		
-		var trackType = 'video'; 
-		// For now just two tracks first is video second is audio 
-		for( var trackIndex=0; trackIndex < seqTracks.length; trackIndex++){
-			
-			if( trackType == 'audio' ){
-				mw.log("SequencerTimeline::Error only two tracks presently suppoted");
-				break;
-			}
-			// Draw the sequence track
-			this.drawSequenceTrack( trackIndex, seqTracks[ trackIndex ], trackType);
-			trackType = 'audio';	
-		}	
+		// For now just one video track: 
+		this.drawSequenceTrack( 0, seqTracks[ 0 ], 'video');
 	},
 	
 	drawSequenceTrack: function( trackIndex, sequenceNode, trackType ){	
 		var _this = this;
-		mw.log(" drawSequenceTrack: Track inx: " + trackIndex + ' trackType:' + trackType );
-		// Check if we already have a container for this track set				
+		mw.log("SequenceTimeline::drawSequenceTrack: Track inx: " + trackIndex + ' trackType:' + trackType );
+		// Check if we already have a container for this track set
 		
-		// Add a sequence track Name			
-		this.getTracksContainer().find('.trackNamesContainer').append( 
-			this.getTrackNameInterface( trackIndex, sequenceNode, trackType )
-		)
+		// Add / update the sequence track name if not present
+		// xxx check for specific sequenceTrack updates that require interface update		
+		if( this.getTracksContainer().find('.trackNamesContainer').children().length == 0 ){
+			this.getTracksContainer().find('.trackNamesContainer').append( 
+				this.getTrackNameInterface( trackIndex, sequenceNode, trackType )
+			)
+		};
 		
-		// Add Sequence clips
-		this.getTracksContainer().find('.clipTrackSetContainer').append( 
-			this.getTrackClipInterface( trackIndex ,sequenceNode , trackType )
-		).click( function(){
-			// xxx todo catch de-select clicks in clipTrackSetContainer that are not a click in the timeline
-			//_this.getTracksContainer().find('.timelineClip').removeClass( 'selectedClip' );
-		})
+		// Add Sequence track clips
+		// xxx check for specific sequenceTrack updates that require interface update
+		this.drawTrackClipsInterface( trackIndex ,sequenceNode , trackType )
+		/*if( this.getTracksContainer().find('.clipTrackSetContainer').childrend().length == 0 ){
+			this.getTracksContainer().find('.clipTrackSetContainer').append( 
+				
+			).click( function(){
+				// xxx todo catch de-select clicks in clipTrackSetContainer that are not a click in the timeline
+				//_this.getTracksContainer().find('.timelineClip').removeClass( 'selectedClip' );
+			})
+		}
+		*/
 		// Load and display all clip thumbnails 		
 		this.drawTrackThumbs(  trackIndex, sequenceNode, trackType );			
 	},
-	
+		
 	drawTrackThumbs: function( trackIndex, sequenceNode, trackType ){
 		var _this = this;
 		var smil = this.sequencer.getSmil();
@@ -121,67 +118,80 @@ mw.SequencerTimeline.prototype = {
 		});
 	},
 	/**
-	 * Get Track Clip Interface
+	 * add Track Clips and Interface binding
 	 */
-	getTrackClipInterface: function( trackIndex, sequenceNode, trackType ){
+	drawTrackClipsInterface: function( trackIndex, sequenceNode, trackType ){
 		var _this = this;
-		// setup a local pointer to the smil engine: 
+		// Setup a local pointer to the smil engine: 
 		var smil = this.sequencer.getSmil();
+		
 		// Get all the refs that are children of the sequenceNode with associated offsets and durations
 		// for now assume all tracks start at zero:
 		var startOffset = 0;
 		var clipTrackSetId = this.sequencer.getId() + '_clipTrackSet_' + trackIndex;			
         
-		var $clipTrackSet = 
-			$j('<ul />')
-			.attr('id',  clipTrackSetId)
-			.addClass('clipTrackSet ui-corner-all')
-			// Add "sortable
-			.sortable({ 
-			    placeholder: "clipSortTarget timelineClip ui-corner-all",
-			    opacity: 0.6,
-			    cursor: 'move',
-			    helper: function( event, helper ){						
-					// xxxx might need some fixes for multi-track
-					var $selected = _this.getTimelineContainer().find( '.selectedClip' )
-					if ( $selected.length === 0 ||  $selected.length == 1) { 
-						return $j( helper ); 
-					} 		
-					
-					return $j('<ul />')
-						.css({
-							'width' : (_this.timelineThumbSize.width + 16) * $selected.length
-						})
-						.append( $selected.clone() );  
-				},
-			    scroll: true,
-			    update: function( event, ui ) {
-					// Update the html dom 
-					_this.handleReorder( ui.item );									
-				}
-			})
-		
-		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){
-			// Draw the node onto the timeline:
-				
-			// xxx would be good to support both "storyboard" and "timeline" view modes. 
-			// for now just "storyboard"
-			
-			// add a clip float left box container
-			$clipTrackSet.append( 
-				$j('<li />')
-				.attr('id',  _this.getTimelineClipId( $node ) )	
-				.data( {
-					'smilId': $node.attr('id'),
-					'prevIndex' : $clipTrackSet.length
+		var $clipTrackSet = this.getTracksContainer().find('.clipTrackSetContainer').find( '.clipTrackSet' ); 
+		// Add the $clipTrackSet if not already in dom: 
+		if( $clipTrackSet.length == 0 ){
+			$clipTrackSet = this.getTracksContainer().find('.clipTrackSetContainer').append( 
+				$j('<ul />')
+				.attr('id',  clipTrackSetId)
+				.addClass('clipTrackSet ui-corner-all')
+				// Add "sortable
+				.sortable({ 
+				    placeholder: "clipSortTarget timelineClip ui-corner-all",
+				    opacity: 0.6,
+				    cursor: 'move',
+				    helper: function( event, helper ){						
+						// xxxx might need some fixes for multi-track
+						var $selected = _this.getTimelineContainer().find( '.selectedClip' )
+						if ( $selected.length === 0 ||  $selected.length == 1) { 
+							return $j( helper ); 
+						} 		
+						
+						return $j('<ul />')
+							.css({
+								'width' : (_this.timelineThumbSize.width + 16) * $selected.length
+							})
+							.append( $selected.clone() );  
+					},
+				    scroll: true,
+				    update: function( event, ui ) {
+						// Update the html dom 
+						_this.handleReorder( ui.item );									
+					}
 				})
-				.addClass('timelineClip ui-corner-all')
-				.loadingSpinner()				
-				.click(function(){
-					//Add clip to selection
-					_this.handleMultiSelect( this );
-				})				
-			);						
+			).find( '.clipTrackSet' )			
+		}
+		var $previusClip = null; 
+		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){			
+			// Draw the node onto the timeline if the clip is not already there:			
+			if( $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) ).length == 0 ){				
+				var $timelineClip = $j('<li />')
+					.attr('id',  _this.getTimelineClipId( $node ) )	
+					.data( {
+						'smilId': $node.attr('id'),
+						'prevIndex' : $clipTrackSet.length
+					})
+					.addClass('timelineClip ui-corner-all')
+					.loadingSpinner()				
+					.click(function(){
+						//Add clip to selection
+						_this.handleMultiSelect( this );
+					})									
+				if( $previusClip ){
+					$previusClip.after( 
+						$timelineClip 
+					)
+				} else { 
+					// Add to the start of the track set: 
+					$clipTrackSet.prepend( 
+						$timelineClip		
+					);					
+				}				
+			}	
+			// Update the $previusClip 
+			$previusClip = $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) );
 		})				
 		// Give the track set a width relative to the number of clips 
 		$clipTrackSet.css('width', ($clipTrackSet.find( '.timelineClip' ).length + 1) * 
@@ -197,8 +207,7 @@ mw.SequencerTimeline.prototype = {
 			'delete': function(){
 				_this.removeSelectedClips();
 			}
-		})
-		return $clipTrackSet;
+		})	
 	},
 	// calls the edit interface passing in the selected clip:
 	editClip: function( selectedClip ){
@@ -410,18 +419,24 @@ mw.SequencerTimeline.prototype = {
 			.css( {
 				'top': '0px',
 				'position' : 'absolute',
-				'opacity' : '.8',
+				'opacity' : '.9',
 				'left': '0px',
 				'height': _this.timelineThumbSize.height
 			})
 			.attr( 'src', smil.getAssetUrl( $node.attr('poster') ) )
-			.load( function(){
+			.load( function(){			
 				if( $thumbTarget.children().length == 0 ){
-					$thumbTarget.html(this);	
+					$thumbTarget.html( img );	
 				}
-			})				
+			});
+			
+			// Sometimes the load event does not fire force the fallback image after 5 seconds
+			setTimeout( function(){
+				if( $thumbTarget.children().length == 0 ){
+					$thumbTarget.html( img );	
+				}
+			}, 5000);
 		}			
-		
 		// Buffer the asset then render it into the layout target:
 		smil.getBuffer().bufferedSeek( $node, relativeTime, function(){			
 			// Add the seek, add to canvas and draw thumb request
