@@ -152,8 +152,8 @@ mw.SmilBuffer.prototype = {
 		if( $j( '#' + this.smil.getAssetId( smilElement ) ).length == 0 ){			
 			// Draw the element
 			_this.smil.getLayout().drawElement( smilElement );
-			// hide the element ( in most browsers this should not cause a flicker 
-			// because dom update are enforced at a given framerate
+			// Hide the element ( in modern browsers this should not cause a flicker 
+			// because DOM update are displayed at a given dom draw rate )
 			_this.smil.getLayout().hideElement( smilElement );
 			mw.log('loadElement::Add:' + this.smil.getAssetId( smilElement )+ ' len: ' +  $j( '#' + this.smil.getAssetId( smilElement ) ).length );
 		}		
@@ -296,7 +296,10 @@ mw.SmilBuffer.prototype = {
 	 * Clip ready for grabbing a frame such as a canvas thumb
 	 */
 	bufferedSeek: function( smilElement, relativeTime, callback ){
-		var absoluteTime = relativeTime;
+		mw.log("SmilBuffer::bufferedSeek:" + this.smil.getAssetId( smilElement ) +
+				' time:' + relativeTime );
+		
+		var absoluteTime = relativeTime;		
 		if( $j( smilElement ).attr('clipBegin') ){
 			absoluteTime += this.smil.parseTime( $j( smilElement ).attr('clipBegin') );
 		}
@@ -370,6 +373,7 @@ mw.SmilBuffer.prototype = {
 	 */
 	registerVideoSeekListener: function( assetId ){
 		var _this = this;
+		mw.log( 'SmilBuffer::registerVideoSeekListener: ' + assetId );
 		var vid = $j ( '#' +  assetId).get(0);
 		vid.addEventListener( 'seeked', function(){
 			// Run the callback
@@ -394,11 +398,13 @@ mw.SmilBuffer.prototype = {
 	
 	videoBufferSeek: function ( smilElement, seekTime, callback ){
 		var _this = this;
+		mw.log("SmilBuffer::videoBufferSeek: " + this.smil.getAssetId( smilElement ) +
+				' time:' + seekTime );
 		
 		// Get the asset target:		
 		var assetId = this.smil.getAssetId( smilElement );
 		
-		// make sure the target video is in the dom: 
+		// Make sure the target video is in the dom: 
 		this.loadElement( smilElement );		
 		
 		var $vid = $j ( '#' +  assetId);
@@ -413,20 +419,26 @@ mw.SmilBuffer.prototype = {
 				_this.videoSeekListeners[ assetId ]= {};
 			};
 			
-			if( !_this.videoSeekListeners[ assetId ].listen ){
+			if( ! _this.videoSeekListeners[ assetId ].listen ){
 				_this.videoSeekListeners[ assetId ].listen = true;
 				_this.registerVideoSeekListener( assetId );				
 			}
+			
 			// Update the current context callback
-			_this.videoSeekListeners[ assetId ].callback = function(){
-				// Fire the asset ready event : 
+			_this.videoSeekListeners[ assetId ].callback = function(){	
+				// Seek has completed open up seek Listeners for future seeks
+				_this.videoSeekListeners[ assetId ].listen = false;
+				
+				// Set this asset to ready ( asset ready set ) 
 				_this.assetReady( assetId );
+				
 				// Run the callback
 				if( callback ){
 					callback();
 				}
-			}			
-			// Issue the seek
+			}				
+			
+			// Issue the seek	
 			vid.currentTime = seekTime;
 		}
 		

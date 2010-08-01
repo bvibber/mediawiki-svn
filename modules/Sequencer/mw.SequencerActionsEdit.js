@@ -45,6 +45,7 @@ mw.SequencerActionsEdit.prototype = {
 	 * Apply a smil xml transform state ( to support undo / redo ) 
 	 */
 	registerEdit: function(){	
+		mw.log( 'ActionsEdit::registerEdit: ' + this.sequencer.getSmil().getXMLString() );
 		// Throw away any edit history after the current editIndex: 
 		if( this.editStack.length && this.editIndex > this.editStack.length ) {
 			this.editStack = this.editStack.splice(0, this.editIndex);

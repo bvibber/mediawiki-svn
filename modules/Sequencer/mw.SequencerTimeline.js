@@ -94,29 +94,9 @@ mw.SequencerTimeline.prototype = {
 				//_this.getTracksContainer().find('.timelineClip').removeClass( 'selectedClip' );
 			})
 		}
-		*/
-		// Load and display all clip thumbnails 		
-		this.drawTrackThumbs(  trackIndex, sequenceNode, trackType );			
+		*/		
 	},
-		
-	drawTrackThumbs: function( trackIndex, sequenceNode, trackType ){
-		var _this = this;
-		var smil = this.sequencer.getSmil();
-		
-		// Get all the refs that are children of the sequenceNode with associated offsets and durations
-		// for now assume all tracks start at zero:
-		var startOffset = 0;
-		
-		// For every ref node in this sequence draw its thumb: 		
-		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){
-			mw.log('SequenceTimeline::drawTrackThumbs:' + $node.attr('id') );
-			// Check Buffer for when the first frame of the smilNode can be grabbed: 		
-			smil.getBuffer().bufferedSeek( $node, 0, function(){
-				//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getAssetId( $node ));
-				_this.drawClipThumb( $node , 0);
-			});
-		});
-	},
+
 	/**
 	 * add Track Clips and Interface binding
 	 */
@@ -165,6 +145,7 @@ mw.SequencerTimeline.prototype = {
 		}
 		var $previusClip = null; 
 		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){			
+			var reRenderThumbFlag = false;
 			// Draw the node onto the timeline if the clip is not already there:			
 			if( $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) ).length == 0 ){				
 				var $timelineClip = $j('<li />')
@@ -188,8 +169,19 @@ mw.SequencerTimeline.prototype = {
 					$clipTrackSet.prepend( 
 						$timelineClip		
 					);					
-				}				
+				}
+				reRenderThumbFlag = true;
 			}	
+			// xxx Check if the start time was changed
+			
+			if ( reRenderThumbFlag ){
+				// issue a draw Thumb request ( since we reinserted into the dom )
+				// Check Buffer for when the first frame of the smilNode can be grabbed: 				
+				smil.getBuffer().bufferedSeek( $node, 0, function(){					
+					//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getAssetId( $node ));
+					_this.drawClipThumb( $node , 0);
+				});
+			}
 			// Update the $previusClip 
 			$previusClip = $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) );
 		})				
