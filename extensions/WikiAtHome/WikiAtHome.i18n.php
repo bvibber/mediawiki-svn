@@ -1419,6 +1419,9 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'wah-short-audio' => '$1 غږيزه دوتنه، $2',
 	'wah-short-video' => '$1 ويډيويي دوتنې، $2',
+	'wah-short-general' => '$1 رسنيزه دوتنه، $2',
+	'wah-long-audio' => '($1 غږيزه دوتنه، اوږدوالی $2، $3)',
+	'wah-long-video' => '($1 ويډيويي دوتنه، اوږدوالی $2، $4×$5 پېکسل، $3)',
 	'wah-menu-jobs' => 'دندې',
 	'wah-menu-pref' => 'غوره توبونه',
 );

@@ -183,6 +183,13 @@ $messages['id'] = array(
 	'interlanguage-desc' => 'Ambil pranala antarbahasa dari wiki lain',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'interlanguage-desc' => 'Na kpá jikodo MétúáríAsụsụ shí wiki ozor',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

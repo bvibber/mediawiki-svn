@@ -177,13 +177,13 @@ Zkontrolujte zda jste jméno napsali správně!',
  */
 $messages['cy'] = array(
 	'ajaxlogin-desc' => "Blwch dynamig sy'n rhoi cyfle i ddefnyddwyr fewngofnodi a chael gafael ar gyfrinair newydd",
-	'ajaxLogin1' => "I gwblhau mewngofnodi, mae'n rhaid ichi roi cyfrinair newydd.
-Bydd hwn yn mynd â chi i dudalen arall ac efallai byddwch yn colli'ch golygiadau cyfredol.",
+	'ajaxLogin1' => "I gwblhau'r mewngofnodi, mae'n rhaid ichi roi cyfrinair newydd.
+Bydd hyn yn mynd â chi i dudalen arall ac efallai byddwch yn colli'ch golygiadau cyfredol.",
 	'ajaxLogin2' => "Ydych chi'n siŵr?
-Efallai byddwch yn colli'ch newidiadau i'r dudalen hon os yr ydych yn gadael.",
+Efallai y collwch eich newidiadau os y gadewch y dudalen hon yn awr.",
 	'ajaxlogin-create' => 'Creu cyfrif',
 	'al-nosuchuser' => 'Nid oes dim defnyddiwr o\'r enw "$1".
-Ydych chi\'n defnyddio priflythrennau?
+Ydy\'r priflythrennau a\'r llythrennau bach yn gywir?
 Gwiriwch eich sillafu.',
 );
 

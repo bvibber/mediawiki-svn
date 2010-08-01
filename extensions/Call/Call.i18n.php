@@ -36,17 +36,6 @@ $messages['qqq'] = array(
 	'call-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Alamnirvana
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'call' => 'Kiauan',
-	'call-save' => "Kaluaran gasan kiauan ini pacang disimpan di sabuah tungkaran bangaran ''$1''.",
-	'call-save-success' => 'Teks berikut ini sudah disimpan ka tungkaran <big>[[$1]]</big>.',
-	'call-save-failed' => 'Teks berikut ini BALUM disimpan ka tungkaran <big>[[$1]]</big>  karana tungkaran itu sudah ada.',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -132,6 +121,17 @@ $messages['bg'] = array(
 	'call' => 'Извикване',
 	'call-save-success' => 'Следният текст беше съхранен на страницата <big>[[$1]]</big> .',
 	'call-save-failed' => 'Следният текст НЕ БЕШЕ съхранен на страницата <big>[[$1]]</big>, тъй като тя вече съществува.',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Alamnirvana
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'call' => 'Kiauan',
+	'call-save' => "Kaluaran gasan kiauan ini pacang disimpan di sabuah tungkaran bangaran ''$1''.",
+	'call-save-success' => 'Teks berikut ini sudah disimpan ka tungkaran <big>[[$1]]</big>.',
+	'call-save-failed' => 'Teks berikut ini BALUM disimpan ka tungkaran <big>[[$1]]</big>  karana tungkaran itu sudah ada.',
 );
 
 /** Bengali (বাংলা)
@@ -229,12 +229,13 @@ V případě problémů můžete zkusit <b>{{#special:call}}/DebuG</b>",
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'call' => 'Galw',
-	'call-desc' => "Creu hypergyswllt i nodyn (neu tudalen wici normal) sy'n osgoi paramedrau.
-Gellid ei ddefnyddio mewn gorchymyn y porydd neu o fewn testun wici",
+	'call-desc' => "Creu hypergyswllt i nodyn (neu dudalen wici normal) sy'n osgoi paramedrau.
+Gellid ei ddefnyddio ar linell gorchymyn y porydd neu o fewn testun wici.",
 	'call-text' => "Mae'r estyniad Galw yn disgwyl tudalen wici a pharamedrau dewisol ar gyfer y dudalen honno fel arg.<br /><br />
 
 Enghraifft 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />

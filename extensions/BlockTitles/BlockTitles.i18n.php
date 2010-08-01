@@ -150,11 +150,12 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'block_title_error_page_title' => 'Teitl a rwystrwyd',
-	'blocktitles-desc' => 'Darparu ffordd sylfaenol o rwystro tudalennau sydd â theitlau penodol rhag cael eu cadw neu greu',
+	'blocktitles-desc' => "Yn darparu ffordd syml o rwystro tudalennau sydd â theitlau penodol rhag cael eu cadw na'u creu",
 	'block_title_error' => "Mae'n ddrwg gennym, ond ni ellir cadw teitl y dudalen hon.",
 );
 

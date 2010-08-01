@@ -124,7 +124,7 @@ $messages['ia'] = array(
  * @author Farras
  */
 $messages['id'] = array(
-	'logofunctions-desc' => 'Menambahkan fungsi parser untuk mengatur logo wiki',
+	'logofunctions-desc' => 'Tambahkan fungsi parser untuk logo wiki',
 	'logofunctions-filenotexist' => 'Kesalahan: [[File:$1]] tidak ada',
 );
 

@@ -291,6 +291,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'categorystepper-desc' => 'Ne zí ébéonọr nke igbé nnèfé né kwé onye ótù Í gáwá na íhú na àzú nke íshí alfabet na ímé ébé ihü nọr na ihü ébéanọr.',
 	'categorystepper-end' => '(Ogwụcha nke ébánọr)',
 	'categorystepper-start' => '(Mbídó nke ébéanọr)',
 );

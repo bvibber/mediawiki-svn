@@ -1423,6 +1423,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'storyboard-unpublished' => 'ناخپاره',
 	'storyboard-published' => 'خپاره شوي',
 	'storyboard-hidden' => 'پټ',
 	'storyboard-publish' => 'خپرول',
@@ -1443,10 +1444,12 @@ $messages['ps'] = array(
 	'storyboard-email' => 'ستاسې برېښليک پته (اړينه برخه)',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|توری|توري}} پاتې دي)',
 	'storyboard-cannotbelonger' => 'ستاسې کيسه <b>$1</b> {{PLURAL:$1|توری|تورې}} ډېره اوږده ده!',
+	'storyboard-alreadyexists' => '"$1" له پخوا نه اخيستل شوی.',
 	'storyboard-changetitle' => 'سرليک بدلول.',
 	'storyboard-charactersleft' => '$1 توري پاتې دي',
 	'storyboard-deleteimage' => 'انځور ړنګول',
 	'storyboard-done' => 'ترسره شو',
+	'storyboard-imagedeleted' => 'انځور ړنګ شو',
 	'storyboard-showimage' => 'انځور ښکاره کول',
 	'storyboard-hideimage' => 'انځور پټول',
 );

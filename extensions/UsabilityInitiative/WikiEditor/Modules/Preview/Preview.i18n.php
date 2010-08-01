@@ -434,13 +434,14 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author IvanLanin
  */
 $messages['id'] = array(
 	'wikieditor-preview-preference' => 'Aktifkan pratayang bersisian',
 	'wikieditor-preview-tab' => 'Pratayang',
 	'wikieditor-preview-changes-tab' => 'Perubahan',
-	'wikieditor-preview-loading' => 'Memuat...',
+	'wikieditor-preview-loading' => 'Mengunggah...',
 );
 
 /** Igbo (Igbo)

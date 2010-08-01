@@ -179,6 +179,13 @@ $messages['id'] = array(
 	'ipauth-desc' => 'Log masuk otomatis dari alamat IP tertentu',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'ipauth-desc' => 'Í bátá na áká orunotu shí IP dị ike ébé ótù',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  */

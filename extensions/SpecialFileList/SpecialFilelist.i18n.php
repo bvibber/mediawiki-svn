@@ -35,6 +35,8 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'filelist' => 'Lêerlys',
+	'filelist-show-list' => 'Wys lys',
+	'filelist-show-gallery' => 'Wys galery',
 	'filelist-image-desc' => 'beskrywing',
 );
 

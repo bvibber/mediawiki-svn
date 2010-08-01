@@ -1083,6 +1083,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Kandar
  */
@@ -1123,9 +1124,12 @@ $messages['id'] = array(
 	'recordadmin-modified' => 'Dirubah',
 	'recordadmin-actions' => 'Tindakan',
 	'recordadmin-needscontent' => 'Menambah isi...',
-	'recordadmin-editwithform' => 'Sunting dengan formulir',
+	'recordadmin-editwithform' => 'Properti',
 	'recordadmin-typeinfo' => '$1 catatan',
 	'right-recordadmin' => 'Temukan dan sunting catatan halaman',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Tidak ada "$1"',
 );
 
 /** Igbo (Igbo) */

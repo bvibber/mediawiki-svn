@@ -286,6 +286,13 @@ $messages['id'] = array(
 	'doublewiki-desc' => 'Menampilkan suatu halaman dan terjemahannya dari wiki lain pada dua kolom pada halaman yang sama',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'doublewiki-desc' => 'Ne zí ihü na ihe kuwáría asụsụ na ozor shí wiki nke ozor na kwádọ abụọ nke ihü ótù',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

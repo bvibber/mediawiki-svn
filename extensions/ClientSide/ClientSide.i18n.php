@@ -196,6 +196,13 @@ $messages['id'] = array(
 	'clientside-desc' => 'Menyediakan fungsi untuk membuat kode seperti HTML, CSS dan JavaScript',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'clientside-desc' => 'Ne nyé ihe ȯmé í ké ókịkẹ ọgúgú màkà ihe orunotu nke ébé-onyé-jị nwèrè dí kà HTML, CSS na JavaScript',
+);
+
 /** Italian (Italiano)
  * @author HalphaZ
  */

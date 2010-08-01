@@ -116,6 +116,15 @@ $messages['ia'] = array(
 	'rss-empty' => 'Falleva de cargar le syndication RSS de $1!',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'rss-desc' => 'Menampilkan arus RSS di halaman wiki',
+	'rss-error' => 'Gagal memuat arus RSS dari $1: $2',
+	'rss-empty' => 'Gagal memuat arus RSS dari $1!',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

@@ -2159,6 +2159,9 @@ $wgCustomToolbarMessages['pnb'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $wgCustomToolbarMessages['ps'] = array(
+	'ct_bold_sample' => 'د روڼليک متن',
+	'ct_bold_caption' => 'روڼليک',
+	'ct_italic_sample' => 'د رېوندليک متن',
 	'ct_internal_sample' => 'دمخ-نوم',
 	'ct_internal_caption' => 'کورنۍ تړنه',
 	'ct_external_caption' => 'باندنۍ تړنه',
