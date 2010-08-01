@@ -381,7 +381,7 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'wikieditor-previewDialog-preference' => 'Izinkan kotak pratayang',
 	'wikieditor-previewDialog-tab' => 'Pratayang',
-	'wikieditor-previewDialog-loading' => 'Memuat...',
+	'wikieditor-previewDialog-loading' => 'Mengunggah...',
 );
 
 /** Italian (Italiano)

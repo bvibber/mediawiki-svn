@@ -1561,9 +1561,11 @@ $messages['ps'] = array(
 	'ct-event-name' => 'د پېښې نوم',
 	'ct-start-date' => 'د پيل نېټه (ک.ک.ک.ک.م.م.و.و)',
 	'ct-end-date' => 'د پای نېټه (ک.ک.ک.ک.م.م.و.و)',
+	'ct-change-graph' => 'ګراف بدلول',
 	'ct-anon-users' => 'ورکنومي کارنان',
 	'ct-user-contribs' => 'د کارن ټولټال ونډې',
 	'ct-and' => 'او',
+	'ct-update-table' => 'لښتيال اوسمهالول',
 );
 
 /** Portuguese (Português)
