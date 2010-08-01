@@ -649,6 +649,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-template-editor-dialog-title' => 'کينډۍ سمول',
 	'wikieditor-template-editor-dialog-submit' => 'اوسمهالول',
 	'wikieditor-template-editor-dialog-cancel' => 'ناګارل',
 );
@@ -831,6 +832,15 @@ $messages['th'] = array(
 	'wikieditor-template-editor-dialog-title' => 'แก้ไขแม่แบบ',
 	'wikieditor-template-editor-dialog-submit' => 'อัปเดต',
 	'wikieditor-template-editor-dialog-cancel' => 'ยกเลิก',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Şablony redaktirle',
+	'wikieditor-template-editor-dialog-submit' => 'Täzele',
+	'wikieditor-template-editor-dialog-cancel' => 'Goýbolsun et',
 );
 
 /** Tagalog (Tagalog)

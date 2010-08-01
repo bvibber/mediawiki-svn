@@ -70,8 +70,6 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 	function buildMainView() {
 		global $wgOut, $wgUser, $wgScript;
 
-		$sk = $wgUser->getSkin();
-
 		$groups = CentralAuthUser::availableGlobalGroups();
 
 		// Existing groups
@@ -112,7 +110,7 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 	}
 
 	function buildGroupView( $group ) {
-		global $wgOut, $wgUser, $wgScript;
+		global $wgOut, $wgUser;
 
 		$editable = $this->userCanEdit( $wgUser );
 
@@ -228,7 +226,7 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 	}
 
 	function doSubmit( $group ) {
-		global $wgRequest, $wgOut, $wgScript, $wgUser;
+		global $wgRequest, $wgOut, $wgUser;
 
 		// Paranoia -- the edit token shouldn't match anyway
 		if ( !$this->userCanEdit( $wgUser ) )
@@ -311,8 +309,6 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 	}
 
 	function addLogEntry( $group, $addRights, $removeRights, $reason ) {
-		global $wgRequest;
-
 		$log = new LogPage( 'gblrights' );
 
 		$log->addEntry( 'groupprms2',
@@ -341,8 +337,6 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 	}
 
 	function addLogEntry2( $group, $old, $new, $reason ) {
-		global $wgRequest;
-
 		$log = new LogPage( 'gblrights' );
 
 		$log->addEntry( 'groupprms3',
@@ -363,8 +357,6 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 	}
 
 	function invalidateRightsCache( $group ) {
-		global $wgMemc;
-
 		// Figure out all the users in this group.
 		$dbr = CentralAuthUser::getCentralDB();
 

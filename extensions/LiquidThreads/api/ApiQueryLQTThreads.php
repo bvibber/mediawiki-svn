@@ -85,7 +85,6 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 			);
 
 			$this->addFields( $allFields );
-			$this->getMain()->setVaryCookie();
 		}
 
 		$res = $this->select( __METHOD__ );
@@ -93,7 +92,6 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 		if ( $params['render'] ) {
 			$threads = Threads::loadFromResult( $res, $this->getDB() );
 		}
-		
 		
 		$ids = array();
 		$count = 0;
@@ -275,6 +273,15 @@ class ApiQueryLQTThreads extends ApiQueryBase {
 		} else if ( !is_array( $fields ) ) {
 			// Common case
 			return $this->addWhereFld( $fields, $value );
+		}
+	}
+
+	public function getCacheMode( $params ) {
+		if ( $params['render'] ) {
+			// Rendering uses $wgUser
+			return 'anon-public-user-private';
+		} else {
+			return 'public';
 		}
 	}
 

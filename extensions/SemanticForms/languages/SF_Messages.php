@@ -1247,7 +1247,7 @@ Für mehrere Optionen nutze bitte die Seite $1.',
 die URL sollte wie folgt aussehen: „Special:RunQuery/&lt;form name&gt;”',
 	'sf_runquery_title' => 'Ausgeführte Abfrage: $1',
 	'sf_runquery_additionalquery' => 'Ergänzende Abfrage',
-	'sf_formerrors_header' => 'Deine Eingabe ist fehlerhaft; weiteres siehe unten',
+	'sf_formerrors_header' => 'Deine Eingabe ist fehlerhaft oder unvollständig. Siehe hierzu die Hinweise unten neben dem Formularfeld.',
 	'sf_blank_error' => 'Darf nicht leer sein!',
 	'sf_bad_url_error' => 'muss ein gültiges URL-Format haben, beginnend mit „http://“',
 	'sf_bad_email_error' => 'muss ein gültiges E-Mail-Adressformat haben',
@@ -3161,9 +3161,12 @@ jika halaman dengan nama tersebut sudah ada, Anda akan diarahkan ke formulir unt
 	'right-editrestrictedfields' => 'Sunting kolom formulir terbatas',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'sf_createtemplate_deletefield' => 'Gbakashia',
+	'sf_createform_template' => 'Àtụ:',
 );
 
 /** Ido (Ido)
@@ -4744,6 +4747,7 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'templates' => 'Moddle',
 	'sf_createtemplate_deletefield' => 'Lösche',
+	'sf_createform_template' => 'Moddel:',
 	'sf_createform_add' => 'Dezu duh',
 	'sf_formstart_createoredit' => 'Dezu duh odder ennere',
 	'sf_formedit_createtitle' => 'Duh $1: $2 dezu',

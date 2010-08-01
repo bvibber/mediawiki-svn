@@ -37,7 +37,9 @@ class CodeDiffHighlighter {
 	 * @return string
 	 */
 	function colorLine( $line ) {
-		if ( $line == '' ) return ""; // don't create bogus spans
+		if ( $line == '' ) {
+			return ""; // don't create bogus spans
+		}
 		list( $element, $attribs ) = $this->tagForLine( $line );
 		return Xml::element( $element, $attribs, $line );
 	}

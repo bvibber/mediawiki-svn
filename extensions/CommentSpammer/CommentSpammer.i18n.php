@@ -373,6 +373,7 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fievarsty
  * @author JtFuruhata
  */
 $messages['ja'] = array(
@@ -381,7 +382,7 @@ $messages['ja'] = array(
 	'commentspammer-log-msg' => '利用者 [[Special:Contributions/$1|$1]] による [[:$2]] の編集',
 	'commentspammer-log-msg-info' => '最後のスパム行為は$1{{PLURAL:$1|日前}}に行われ、脅威レベルは$2、違反コードは$3です。 [http://www.projecthoneypot.org/search_ip.php?ip=$4 詳細を確認する]か[[Special:Blockip/$4|ブロック]]してください。',
 	'cspammerlogpagetext' => 'コメントスパマーとしての登録の有無によって判定された投稿の許可/拒否状況の記録',
-	'cspammer-log-page' => 'スパム投稿ログ',
+	'cspammer-log-page' => 'スパム投稿記録',
 );
 
 /** Javanese (Basa Jawa)

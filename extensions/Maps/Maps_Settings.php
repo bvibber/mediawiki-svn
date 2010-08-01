@@ -154,6 +154,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # Distance configuration
 	
 	# Array. A list of units (keys) and how many meters they represent (value).
+	# No spaces! If the unit consists out of multple words, just write them together.
 	$egMapsDistanceUnits = array(
 		'm' => 1,
 		'meter' => 1,
@@ -165,12 +166,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		'mile' => 1609.344,
 		'miles' => 1609.344,
 		'nm' => 1852,
-		'nautical mile' => 1852,
-		'nautical miles' => 1852,
+		'nauticalmile' => 1852,
+		'nauticalmiles' => 1852,
 	);
 	
 	# String. The default unit for distances.
-	$egMapsDistanceUnit = 'km';
+	$egMapsDistanceUnit = 'm';
 	
 	# Integer. The default limit of fractal digits in a distance.
 	$egMapsDistanceDecimals = 2;	

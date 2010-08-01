@@ -437,6 +437,7 @@ Alcun configurationes pote cambiar le version que es monstrate al lectores o lim
  */
 $messages['id'] = array(
 	'configuredpages' => 'Halaman dengan konfigurasi pratayang',
+	'configuredpages-list' => 'Berikut adalah daftar halaman yang dibuah agar pengaturan penyetujuannya berbeda dari pengaturan baku situs ini. Beberapa pengaturan mungkin berubah tergantung versi yang ditampilkan kepada pembaca atau membatasi siapa saja yang diperbolehkan menyunting tanpa ditinjau.',
 	'configuredpages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'configuredpages-config' => 'Pengaturan',
 	'configuredpages-precedence' => 'Diutamakan:',
@@ -720,11 +721,19 @@ $messages['ro'] = array(
 	'configuredpages-prec-quality' => 'ultima calitate',
 );
 
-/** Tarandíne (Tarandíne) */
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
 $messages['roa-tara'] = array(
+	'configuredpages' => 'Pàggene cu le configuraziune de le revisitaziune',
+	'configuredpages-none' => "Non ge stonne pàggene jndr'à sta liste.",
+	'configuredpages-config' => 'Configurazione',
+	'configuredpages-precedence' => 'Precedenze:',
 	'configuredpages-prec-none' => 'urtema verificate',
 	'configuredpages-prec-quality' => 'urteme de qualità',
 	'configuredpages-prec-pristine' => 'urteme repristinate',
+	'configuredpages-def-draft' => 'urtema versione',
+	'configuredpages-def-stable' => 'versiona secure',
 );
 
 /** Russian (Русский)

@@ -412,7 +412,7 @@ $2',
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'email-desc' => 'Deit extra, sellfs-enstellba Reije am Aanfang un am Engk en de <span lang="en">e-mails</span> zwesche de Metmaacher eren.',
+	'email-desc' => 'Määt et müjjelech, extra, sellfs-enstellba Reije am Aanfang un am Engk en de Metmaacher ier <i lang="en">e-mails</i> eren ze donn.',
 	'email_footer' => '----------------------------------------------------------------------------
 Di e-mail hee es fum $1 övver de {{SITENAME}} aan Desch jescheck woode.
 

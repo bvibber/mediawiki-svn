@@ -6378,7 +6378,7 @@ $messages['mk'] = array(
 	'configure-section-groups' => 'Групи',
 	'configure-section-block' => 'Блокирања',
 	'configure-section-rates' => 'Ограничувања на стапки',
-	'configure-section-proxy' => 'Проксија',
+	'configure-section-proxy' => 'Застапници',
 	'configure-section-cookie' => 'Колачиња',
 	'configure-section-performance' => 'Исполнување задачи',
 	'configure-section-upload' => 'Подигнување',
@@ -7955,6 +7955,7 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Crazymadlover
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -8081,7 +8082,7 @@ Para usar esta extensão crie-o ou altere-o, por favor.',
 	'configure-select-wiki-view-desc' => 'Seleccione uma wiki da qual deseja ver as versões de configuração.',
 	'configure-select-wiki-view-all' => 'Todas as wikis',
 	'configure-select-wiki-view-specific' => 'Wiki específica:',
-	'configure-select-wiki-submit' => 'Selecionar',
+	'configure-select-wiki-submit' => 'Seleccionar',
 	'configure-setting-not-available' => 'Este parâmetro não está disponível nesta versão do MediaWiki',
 	'configure-transwiki-not-in-range' => 'A wiki solicitada, $1, não faz parte {{PLURAL:$3|do valor permitido|dos valores permitidos}}: $2.',
 	'configure-view' => 'Ver',
@@ -10705,6 +10706,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Frankou
  * @author Liangent
  */
 $messages['zh-hant'] = array(
@@ -10717,12 +10719,12 @@ $messages['zh-hant'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => '擴充套件',
 	'configure-viewconfig-default-diff' => '相對於默認設置的改變',
-	'configure-ext-ext-dependencies' => "'''警告：'''這個擴展需要以下擴展被激活：$1。",
+	'configure-ext-ext-dependencies' => "'''警告：'''這個擴展需要{{PLURAL:$2|extension|extensions}}被激活：$1。",
 	'configure-ext-ext-dependency-err' => "'''錯誤：'''$1擴展需要$2擴展被激活。",
 	'configure-ext-doc' => '檢視線上文件',
-	'configure-ext-schemachange' => "'''警告：'''這個擴展需要一次數據庫更新以正常工作！",
+	'configure-ext-schemachange' => "'''警告：'''這個擴展需要[http://www.mediawiki.org/wiki/Manual:Update.php 更新數據庫]以正常工作！",
 	'configure-ext-settings' => '設置',
-	'configure-ext-settings-dep-errors' => '由於以下設置有不可接受的值，這個擴展不能被啟用。',
+	'configure-ext-settings-dep-errors' => '由於{{PLURAL:$1|setting has|設置}}了不被接受的值，這個擴展無法啟用。',
 	'configure-ext-settings-dep-error' => '$1：需要值：$2，當前值：$3',
 	'configure-ext-use-extension' => '使用這個擴展',
 	'configure-ext-use' => '使用',
@@ -10830,7 +10832,7 @@ $messages['zh-hant'] = array(
 	'configure-select-wiki-view-specific' => '指定wiki：',
 	'configure-select-wiki-submit' => '選擇',
 	'configure-setting-not-available' => '這個設置在這個版本的MediaWiki中不可用',
-	'configure-transwiki-not-in-range' => '請求的wiki，$1，不在允許的值中：$2。',
+	'configure-transwiki-not-in-range' => '請求的wiki，$1，不在允許的{{PLURAL:$3|value|值}}中：$2。',
 	'configure-view' => '查看',
 	'configure-view-all-versions' => '完整版本列表',
 	'configure-view-default' => '默認設置',

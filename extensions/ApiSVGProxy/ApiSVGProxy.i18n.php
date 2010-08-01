@@ -51,10 +51,11 @@ $messages['ca'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'apisvgproxy-desc' => "Ffeiliau SVG dirprwyon o ystorfa ffeil, sydd efallai'n bell, i'r parth lleol",
+	'apisvgproxy-desc' => "Yn dirprwyo ffeiliau SVG o ystorfa ffeiliau, sydd efallai'n bell, i'r parth lleol",
 );
 
 /** Danish (Dansk)
@@ -245,6 +246,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'apisvgproxy-desc' => 'Representa os ficheiros SVG de um repositório (possivelmente remoto) no domínio local',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'apisvgproxy-desc' => "Le file d'u proxy SVG da 'nu (possibbele remote) archivije de file a 'u dominie locale",
 );
 
 /** Russian (Русский)

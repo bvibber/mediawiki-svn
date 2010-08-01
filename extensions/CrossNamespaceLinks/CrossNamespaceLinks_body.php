@@ -10,7 +10,7 @@ class CrossNamespaceLinks extends SpecialPage {
 	 * Constructor
 	 */
 	function CrossNamespaceLinks() {
-		SpecialPage::SpecialPage( 'CrossNamespaceLinks' );
+		parent::SpecialPage( 'CrossNamespaceLinks' );
 	}
 
 	/**

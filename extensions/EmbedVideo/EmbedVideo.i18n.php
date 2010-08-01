@@ -177,6 +177,7 @@ $messages['lb'] = array(
 	'embedvideo-desc' => "Setzt eng Parser-Fonctioun fir d'Abanne vu Videoe vu populäre Quellen derbäi",
 	'embedvideo-missing-params' => 'Et feelt een obligatoresche Parameter fir EmbedVideo',
 	'embedvideo-bad-params' => 'EmbedVideo huet e falsche Parameter kritt.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo huet d\'Zeecheketten  "<code>$1</code>" kritt déi net konnt benotzt ginn.',
 );
 
 /** Macedonian (Македонски)

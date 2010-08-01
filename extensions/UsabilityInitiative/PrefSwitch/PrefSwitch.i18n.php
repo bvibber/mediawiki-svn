@@ -3323,47 +3323,23 @@ $messages['krc'] = array(
 	'prefswitch-success-feedback' => 'Сизни оюмугъуз ашырылды.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]ге къайт</span>.',
-	'prefswitch-main' => '{| border="0" align="right" style="margin-left:1em"
-| align="center" |
-{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;" 
-| [[Image:VectorNavigation-ru.png|401px|]]
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-krc.png|401px|]]
 |-
-| Википедияны навигациясыны джангы интерфейсини кёрюнюмю <small>[[Media:VectorNavigation-ru.png|(уллу эт)]]</small>
+| Википедияны навигациясыны джангы интерфейсини кёрюнюмю <small>[[Media:VectorNavigation-krc.png|(уллу эт)]]</small>
 |}
 |-
-| align="center" |
-{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;"
-| [[Image:VectorEditorBasic-ru.png|401px|]]
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-krc.png|401px|]]
 |-
 | Бетлени редакторлаўну баш интерфейсини кёрюнюмю <small>[[Media:VectorEditorBasic-ru.png|(уллу эт)]]</small>
 |}
 |-
-| align="center" |
-{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;"
-| [[Image:VectorLinkDialog-ru.png|401px|]]
-|-
-| Джибриўле къурагъан джангы диалогну кёрюнюмю
-|}
-|}
-«Викимедиа фондда» сайтны хайырланыўун анализ этген  группа ишлейди, вики-джамагъатха къатышханла бла бирге ала сизни Википедия бла эмда башха вики-проектле бла ишлеўюгюзню тынчыракъ этерге кюрешедиле. Талай джангы игилендириўню, аланы ичинде – джангы интерфейс эмда тынчыракъ этилген редакторлаў функцияла, сизге берген бизни къуўандыргъанды. Бу тюрлениўле джангы редакторланы ишлеўлерин тынчыракъ этерге деб этилгендиле, ала [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ётген джылда бардырыгъан юзабилити-тестлениўде тамалланадыла]. Бизни сайтларыбызгъа тынчыракъ интерфейс къураў «Викимедиа фондну» преоритетлеринден бириди, биз проектни энтда игилендиргенлей турлукъбуз. Толуракъ информация [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедияны блогунда] табарыкъсыз.
-
-{| border="0" align="right" style="margin-left:1em"
-| align="center" |
-{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;" 
-| [[Image:VectorNavigation-ru.png|401px|]]
-|-
-| Википедияны навигациясыны джангы интерфейсини кёрюнюмю <small>[[Media:VectorNavigation-ru.png|(уллу эт)]]</small>
-|}
-|-
-| align="center" |
-{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;"
-| [[Image:VectorEditorBasic-ru.png|401px|]]
-|-
-| Бетлени редакторлаўну баш интерфейсини кёрюнюмю <small>[[Media:VectorEditorBasic-ru.png|(уллу эт)]]</small>
-|}
-|-
-| align="center" |
-{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-ru.png|401px|]]
 |-
 | Джибриўле къурагъан джангы диалогну кёрюнюмю
@@ -3372,12 +3348,12 @@ $messages['krc'] = array(
 «Викимедиа фондда» сайтны хайырланыўун анализ этген  группа ишлейди, вики-джамагъатха къатышханла бла бирге ала сизни Википедия бла эмда башха вики-проектле бла ишлеўюгюзню тынчыракъ этерге кюрешедиле. Талай джангы игилендириўню, аланы ичинде – джангы интерфейс эмда тынчыракъ этилген редакторлаў функцияла, сизге берген бизни къуўандыргъанды. Бу тюрлениўле джангы редакторланы ишлеўлерин тынчыракъ этерге деб этилгендиле, ала [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ётген джылда бардырыгъан юзабилити-тестлениўде тамалланадыла]. Бизни сайтларыбызгъа тынчыракъ интерфейс къураў «Викимедиа фондну» преоритетлеринден бириди, биз проектни энтда игилендиргенлей турлукъбуз. Толуракъ информация [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедияны блогунда] табарыкъсыз.
 
 === Нени тюрлендиргенбиз === 
-* \'\'\'Навигация.\'\'\' Биз навигацияны игилендиргенбиз, окъургъа эмда бетлени редакторлагъа тынчыракъ этгенбиз. Энди хар бетни баш джанында вкладка бусагъатда не эте тургъаныгъызны тюзюрек ангылатады: бетгеми къарайсыз огъесе сюзюўюне, окъуй турамысыз огъесе редакторлагъанмы этесиз бетни.
-* \'\'\'Редакторлаў панель.\'\'\' Инструмент панелни джангыдан этгенбиз, хайырланыўун тынчыракъ этер ючюн. Энди бетлени форматлаў тынчыракъ эмда ангыралгъа ачыкъ болгъанды.
-* \'\'\'Джибериўлени мастери.\'\'\' Хайырланыўу тынч болгъан инструмент, башха вики-бетлеге элтген эмда тыш сайтлагъан элтген джибериўле къошаргъа мадар береди.
-* \'\'\'Излеў.\'\'\' Излеў юретиўлени игилендиргенбиз, сизни излеген бетигизни теркирек табар мадарыгъыз болурча.
-* \'\'\'Башха джангы функцияла.\'\'\' Таблицалагъа мастер этгенбиз, таблицала тынч къуралырча, дагъыда редакторлаўну тынчыракъ этген, излеў эмда алмашдырыў функция къурагъанбыз.
-* \'\'\'Логотип.\'\'\' Пазл-тобну кёрюнюмюн джангыртханбыз, толуракъ къарагъыз: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа фондну» блогу].',
+* '''Навигация.''' Биз навигацияны игилендиргенбиз, окъургъа эмда бетлени редакторлагъа тынчыракъ этгенбиз. Энди хар бетни баш джанында вкладка бусагъатда не эте тургъаныгъызны тюзюрек ангылатады: бетгеми къарайсыз огъесе сюзюўюне, окъуй турамысыз огъесе редакторлагъанмы этесиз бетни.
+* '''Редакторлаў панель.''' Инструмент панелни джангыдан этгенбиз, хайырланыўун тынчыракъ этер ючюн. Энди бетлени форматлаў тынчыракъ эмда ангыралгъа ачыкъ болгъанды.
+* '''Джибериўлени мастери.''' Хайырланыўу тынч болгъан инструмент, башха вики-бетлеге элтген эмда тыш сайтлагъан элтген джибериўле къошаргъа мадар береди.
+* '''Излеў.''' Излеў юретиўлени игилендиргенбиз, сизни излеген бетигизни теркирек табар мадарыгъыз болурча.
+* '''Башха джангы функцияла.''' Таблицалагъа мастер этгенбиз, таблицала тынч къуралырча, дагъыда редакторлаўну тынчыракъ этген, излеў эмда алмашдырыў функция къурагъанбыз.
+* '''Логотип.''' Пазл-тобну кёрюнюмюн джангыртханбыз, толуракъ къарагъыз: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа фондну» блогу].",
 	'prefswitch-main-logged-changes' => "* '''«{{int:watch}}» тиек''' энди джулдуз кюрюмю бла тиекди.
 * '''«{{int:move}}» тиек''' энди излеуню тизгинини къатында джайылыннган менюдады.",
 	'prefswitch-main-feedback' => '=== Бери билдириу ===
@@ -3672,11 +3648,28 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
+	'prefswitch-survey-submit-off' => '↓ नविन बीटा चेहरामोहरा बंद करा',
+	'prefswitch-survey-cancel-off' => '↓ जर आपणास नविन बीटा चेहरामोहरा वापराणे सुरू ठेवायचे असल्यास $1 कडे परत जा.',
 	'prefswitch-survey-submit-feedback' => 'प्रतिसाद पाठवा',
+	'prefswitch-survey-cancel-feedback' => '↓ जर आपणास प्रतिसाद (फिडबॅक) द्यावयाचा नसल्यास, आपण $1 कडे परत जाउ शकता.',
+	'prefswitch-survey-question-like' => '↓ नविन बीटा चेहरामोहर्‍याबद्दल आपणास काय आवडले?',
+	'prefswitch-survey-question-dislike' => '↓ नविन बीटा चेहरामोहर्‍याबद्दल आपणास काय नावडले?',
+	'prefswitch-survey-question-whyoff' => '↓ नविन चेहरामोहरा आपण कां बंद करीत आहात?
+खालील जे लागु असेल ते निवडा.',
+	'prefswitch-survey-answer-whyoff-hard' => '↓ हा चेहरामोहरा वापरावयास फार कठिण आहे',
+	'prefswitch-survey-answer-whyoff-didntwork' => '↓ नविन चेहरामोहरा चांगल्या तर्‍हेने काम करीत नाही.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => '↓ विचार केला होता तसे ते बदल काम करीत नाही.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => '↓ मला ते ज्या तर्‍हेने प्रदर्शित झालेत ते आवडले नाही',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => '↓ मला नविन उपकरणगट आवडला नाही',
+	'prefswitch-survey-answer-whyoff-other' => '↓ इतर कारणे:',
+	'prefswitch-survey-question-os' => '↓ आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
+	'prefswitch-survey-answer-os-other' => '↓ इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
+	'prefswitch-title-switched-on' => '↓ मजा करा!',
 );
 
 /** Malay (Bahasa Melayu)
@@ -4145,6 +4138,7 @@ For å hjelpe oss med å forbedre dem kan du fylle ut det valgfrie skjemaet unde
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-answer-whyoff-other' => 'Annerer Grund:',
 );
@@ -4413,7 +4407,7 @@ A Equipa de Experiência de Utilização (User Experience Team) da Wikimedia Fou
 * '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e uma funcionalidade de procura e substituição para simplificar a edição de páginas.
 * '''Logótipo da Wikipédia:''' Actualizámos o nosso logótipo. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue Wikimedia].",
 	'prefswitch-main-logged-changes' => "* O '''separador {{int:watch}}''' é agora uma estrela.
-* O '''separador {{int:move}}''' está agora na lista descendente ao lado da barra de pesquisa.",
+* O '''separador {{int:move}}''' está agora na lista descendente ao lado da caixa de pesquisa.",
 	'prefswitch-main-feedback' => '===O seu comentário?===
 Gostariamos de conhecer a sua opinião. Visite a nossa [[$1|página de comentários]], por favor. Se tiver interesse em acompanhar os esforços continuados de melhoria do software, visite a nossa [http://usability.wikimedia.org wiki da usabilidade] para mais informação.',
 	'prefswitch-main-anon' => '===Voltar atrás===
@@ -5039,6 +5033,7 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'prefswitch' => 'Saklar préferénsi Inisiatif Kamangpaatan',
 	'prefswitch-desc' => 'Ngawenangkeun pamaké pikeun gunta-ganti sababaraha setélan préferénsi',
 	'prefswitch-jswarning' => 'Sing émut yén ku ngarobah kulit, [[User:$1/$2.js|$2 JavaScript]] anjeun perlu disalin ka [[{{ns:user}}:$1/vector.js]] <!-- or [[{{ns:user}}:$1/common.js]]--> ngarah bisa tetep jalan.',
 	'prefswitch-csswarning' => '[[User:$1/$2.css|Gaya kumadinya $2]] anjeun geus moal dilarapkeun deui. Anjeun bisa nambahkeun CSS kumadinya pikeun véktor dina [[{{ns:user}}:$1/vector.css]].',
@@ -5056,6 +5051,8 @@ Mangga pilih sadaya anu cocog.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Teu resep tab jeung pidangan anyarna.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Teu resep tulbar anyarna.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alesan séjén:',
+	'prefswitch-survey-question-browser' => 'Panyungsi naon nu dipaké?',
+	'prefswitch-survey-answer-browser-other' => 'Panyungsi lianna:',
 	'prefswitch-survey-question-os' => 'Anjeun maké sistem operasi naon?',
 	'prefswitch-survey-answer-os-other' => 'Sistem operasi lianna:',
 	'prefswitch-survey-question-res' => 'Résolusi layar nu dipaké?',
@@ -5317,6 +5314,20 @@ $messages['th'] = array(
 	'prefswitch-title-switched-off' => 'ขอขอบคุณ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'prefswitch-survey-true' => 'Hawa',
+	'prefswitch-survey-false' => 'Ýok',
+	'prefswitch-survey-submit-feedback' => 'Seslenme iber',
+	'prefswitch-survey-answer-whyoff-other' => 'Başga sebäp:',
+	'prefswitch-survey-answer-browser-other' => 'Başga brauzer:',
+	'prefswitch-title-on' => 'Täze funksiýalar',
+	'prefswitch-title-switched-off' => 'Sag boluň',
+	'prefswitch-title-feedback' => 'Seslenme',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -5575,10 +5586,11 @@ $messages['ug-arab'] = array(
 
 /** Ukrainian (Українська)
  * @author AS
+ * @author Ahonc
  * @author Тест
  */
 $messages['uk'] = array(
-	'prefswitch-jswarning' => "Пам'ятайте, що аби ваш [[User:$1/$2.js|$2 JavaScript]] запрацював під новим оформленням треба скопіювати його до [[{{ns:user}}:$1/vector.js]].",
+	'prefswitch-jswarning' => "Пам'ятайте, що при зміні теми оформлення ваш [[User:$1/$2.js|$2 JavaScript]]  треба скопіювати до [[{{ns:user}}:$1/vector.js]] <!-- або [[{{ns:user}}:$1/common.js]]-->, щоб він продовжив працювати.",
 	'prefswitch-csswarning' => 'Ваші [[User:$1/$2.css|власні стилі для $2]] не працюватимуть під новим оформленням. Ви можете додати власні CSS для "векторного" оформлення на [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Так',
 	'prefswitch-survey-false' => 'Ні',
@@ -5604,6 +5616,8 @@ $messages['uk'] = array(
 	'prefswitch-title-on' => 'Нові можливості',
 	'prefswitch-title-switched-on' => 'Користуйтесь!',
 	'prefswitch-title-off' => 'Відключити нові можливості',
+	'prefswitch-title-switched-off' => 'Дякуємо',
+	'prefswitch-title-feedback' => "Зворотний зв'язок",
 	'prefswitch-success-feedback' => 'Ваш відгук відправлено.',
 	'prefswitch-return' => '<hr style="clear:both">
 Повернутися до <span class="plainlinks">[$1 $2]</span>.',

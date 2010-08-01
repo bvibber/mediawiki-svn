@@ -43,7 +43,6 @@ class SpecialCollection extends SpecialPage {
 		global $wgRequest;
 		global $wgUser;
 		global $wgContLang;
-		global $wgCommunityCollectionNamespace;
 		global $wgCollectionMaxArticles;
 		global $wgTitle;
 
@@ -663,7 +662,6 @@ EOS
 	}
 
 	static function addCategory( $title ) {
-		global $wgOut;
 		global $wgCollectionMaxArticles;
 		global $wgCollectionArticleNamespaces;
 
@@ -685,7 +683,7 @@ EOS
 			'cl_to' => $title->getDBkey(),
 		);
 		$res = $db->select( $tables, $fields, $where, __METHOD__, $options );
-		$members = array();
+
 		$count = 0;
 		$limitExceeded = false;
 		while ( $row = $db->fetchObject( $res ) ) {
@@ -1213,8 +1211,6 @@ EOS
 		global $wgScriptPath;
 		global $wgScriptExtension;
 		global $wgOut;
-
-		$json = new Services_JSON();
 
 		if ( !isset( $this->mPODPartners[$partner] ) ) {
 			$wgOut->showErrorPage( 'coll-invalid_podpartner_title', 'coll-invalid_podpartner_msg' );

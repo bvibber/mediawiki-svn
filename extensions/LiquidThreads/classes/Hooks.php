@@ -35,8 +35,6 @@ class LqtHooks {
 
 		// Custom display for new posts.
 		if ( $rc->mAttribs['rc_new'] ) {
-			global $wgOut;
-
 			// Article link, timestamp, user
 			$s = '';
 			$s .= $sk->link( $thread->getTitle() );
@@ -304,8 +302,7 @@ class LqtHooks {
 	}
 
 	public static function onLoadExtensionSchemaUpdates() {
-		global $wgExtNewTables, $wgExtNewFields, $wgExtPGNewFields,
-				$wgExtPGAlteredFields, $wgExtNewIndexes, $wgDBtype;
+		global $wgExtNewTables, $wgExtNewFields, $wgExtNewIndexes;
 
 		$dir = realpath( dirname( __FILE__ ) . '/..' );
 
@@ -405,11 +402,11 @@ class LqtHooks {
 	static function onPersonalUrls( &$personal_urls, &$title ) {
 		global $wgUser, $wgLang;
 
-		if ( $wgUser->isAnon() ) return true;
+		if ( $wgUser->isAnon() ) {
+			return true;
+		}
 
 		wfLoadExtensionMessages( 'LiquidThreads' );
-
-		$dbr = wfGetDB( DB_SLAVE );
 
 		$newMessagesCount = NewMessages::newMessageCount( $wgUser );
 

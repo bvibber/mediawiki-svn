@@ -859,7 +859,13 @@ $messages['id'] = array(
 
 Penyunting adalah para pengguna tetap yang dapat melakukan pemeriksaan perbaikan di setiap halaman.",
 	'validationstatistics-lastupdate' => "''Data berikut terakhir dimutakhirkan pada tanggal $1 pukul $2.''",
-	'validationstatistics-table' => "Statistik untuk setiap ruang nama ditampilkan di bawah ini, ''kecuali'' halaman pengalihan.",
+	'validationstatistics-pndtime' => "Suntingan yang telah diperiksa oleh pengguna terdaftar dipertimbangkan untuk ditinjau.
+
+Lama tunda rata-rata untuk [[Special:OldReviewedPages|halaman dengan suntingan tertunda yang belum ditinjau]] adalah '''$1'''.
+Halaman-halaman ini dianggap ''kadaluwarsa''. Demikian juga, halaman dianggap ''disinkronisasikan'' bila tidak ada suntingan yang menunggu tinjauan.",
+	'validationstatistics-revtime' => "Lama waktu rata-rata untuk suntingan oleh ''pengguna yang tidak masuk log'' agar ditinjau adalah '''$1'''; mediannya adalah '''$2'''.
+$3",
+	'validationstatistics-table' => "Statistik tinjauan halaman untuk setiap ruang nama ditampilkan di bawah ini, ''kecuali'' halaman pengalihan.",
 	'validationstatistics-ns' => 'Ruang nama',
 	'validationstatistics-total' => 'Halaman',
 	'validationstatistics-stable' => 'Telah ditinjau',
@@ -1074,6 +1080,10 @@ $messages['lb'] = array(
 
 Editeure si confirméiert Benotzer déi nogekuckte Versioune vu Säiten derbäisetze kënnen.",
 	'validationstatistics-lastupdate' => "''Dës Date goufe fir d'lescht den $1 ëm $2 Auer aktualiséiert.''",
+	'validationstatistics-pndtime' => "Ännerungen déi vun engem confirméierte Benotzer nogekuckt sinn ginn als nogekuckt betruecht.
+
+Den duerchschnëttlechen Delai fir [[Special:OldReviewedPages|Säite mat net nogekuckten Ännerungen am Suspens]] ass '''$1'''.
+Dës Säite ginn als '''vereelst'''betruecht. Ähnlech gi Säiten als aktuell betruecht wann et keng Ännerung gëtt déi soll nogekuckt ginn.",
 	'validationstatistics-revtime' => "Déi duerchschnëttlech Waardezäit fir Ännerunge vu ''Benotzer déi net ageloggt waren'' ier hier Ännerung nogekuckt ass ass '''$1'''; d'Median ass '''$2'''. 
 $3",
 	'validationstatistics-table' => "Statistike fir jiddwer Nummraum sinn hei drënner, Viruleedungssäite sinn ''net berücksichtegt''.",
@@ -1450,7 +1460,14 @@ $messages['roa-tara'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}''' jndr'à quiste mumende tène '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utende|utinde}} cu le deritte de [[{{MediaWiki:Validationpage}}|cangiatore]].
 
 Le cangiature sonde utinde stabbelite ca ponne fà verifiche a cambione de le revisiune a le pàggene.",
-	'validationstatistics-table' => "Le statisteche pe ogne namespace sonde mostrete aqquà sotte, 'scludenne le pàggene de redirezionaminde.",
+	'validationstatistics-lastupdate' => "''Le seguende date onne state cangiate l'urtema vote 'u $1 a le $2.''",
+	'validationstatistics-pndtime' => "Le cangiaminde onne state verificate da utinde stabbelite e sonde considerate pe essere reviste.
+
+'U ritarde medie pe [[Special:OldReviewedPages|le pàggene cu cangiaminde pendende none reviste]] jè '''$1'''.<br />
+Ste pàggene avènene considerate ''none aggiornate''. Comungue, le pàggene avènene considerate ''datate da'' ce non ge stonne cangiaminde in attese d'a revisione.",
+	'validationstatistics-revtime' => "'A medie de attese pe le cangiaminde da ''utinde ca non ge s'onne collegate'' pe esseere reviste jè '''$1'''; 'a mediane jè '''$2'''.
+$3",
+	'validationstatistics-table' => "Le statisteche de le pàggene reviste pe ogne namespace sonde fatte vedè aqquà sotte, ''<nowiki>'</nowiki>scludenne'' le pàggene de le redirezionaminde.",
 	'validationstatistics-ns' => 'Neimspeise',
 	'validationstatistics-total' => 'Pàggene',
 	'validationstatistics-stable' => 'Riviste',
@@ -1586,6 +1603,7 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  * @author Обрадовић Горан
  */
@@ -1594,7 +1612,11 @@ $messages['sr-ec'] = array(
 	'validationstatistics-ns' => 'Именски простор',
 	'validationstatistics-total' => 'Странице',
 	'validationstatistics-latest' => 'Синхронизовано',
+	'validationstatistics-synced' => 'Синхронизован/Прегледан',
 	'validationstatistics-old' => 'Застарело',
+	'validationstatistics-utable' => 'Испод се налази списак од топ 5 прегледача у последњих сат времена',
+	'validationstatistics-user' => 'Корисник',
+	'validationstatistics-reviews' => 'Прегледи',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

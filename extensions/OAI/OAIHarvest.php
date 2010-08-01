@@ -263,8 +263,6 @@ class OAIHarvester {
 	}
 }
 
-
-
 class OAIUpdateRecord {
 	var $_page = array();
 	
@@ -610,7 +608,7 @@ class OAIUpdateRecord {
 	/**
 	 * @param DomNode $node
 	 */
-	function newFromNode( $node ) {
+	static function newFromNode( $node ) {
 		$pageData = OAIUpdateRecord::readRecord( $node );
 		$record = new OAIUpdateRecord( $pageData );
 		return $record;

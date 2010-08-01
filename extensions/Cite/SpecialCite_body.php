@@ -10,11 +10,11 @@ $wgCiteDefaultText = file_get_contents( $file );
 
 class SpecialCite extends SpecialPage {
 	function SpecialCite() {
-		SpecialPage::SpecialPage( 'Cite' );
+		parent::SpecialPage( 'Cite' );
 	}
 
 	function execute( $par ) {
-		global $wgOut, $wgRequest, $wgUseTidy;
+		global $wgRequest, $wgUseTidy;
 		wfLoadExtensionMessages( 'SpecialCite' );
 
 		// Having tidy on causes whitespace and <pre> tags to
@@ -110,7 +110,7 @@ class CiteOutput {
 	}
 
 	function execute() {
-		global $wgOut, $wgUser, $wgParser, $wgHooks, $wgCiteDefaultText;
+		global $wgOut, $wgParser, $wgHooks, $wgCiteDefaultText;
 
 		$wgHooks['ParserGetVariableValueTs'][] = array( $this, 'timestamp' );
 

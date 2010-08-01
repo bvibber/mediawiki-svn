@@ -323,6 +323,8 @@ Dapat digunakan seperti [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{
  */
 $messages['ig'] = array(
 	'advancedrandom' => 'Nkowula nke nkápurú',
+	'advancedrandom-desc' => ' Nwèté ihü nkw ówulà shi ahaogbè, ókwú mà ókwúihü nke jìkodo na ihü ó nyèrè.
+O nwèríkí jí kà [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] Í nwéré okwu édémédé etiti ihü, ma ka [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] Í nwéré akwụkwọ GFDL',
 );
 
 /** Italian (Italiano)

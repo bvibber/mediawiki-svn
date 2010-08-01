@@ -387,7 +387,7 @@ class CategoryTree {
 			}
 		else {
 			if ( !$hideroot ) {
-				$html .= CategoryTree::renderNode( $title, $depth, $wgCategoryTreeDynamicTag );
+				$html .= $this->renderNode( $title, $depth, $wgCategoryTreeDynamicTag );
 			} else if ( !$wgCategoryTreeDynamicTag ) {
 				$html .= $this->renderChildren( $title, $depth );
 			} else {
@@ -792,8 +792,6 @@ class CategoryTree {
 	* Creates a Title object from a user provided (and thus unsafe) string
 	*/
 	static function makeTitle( $title ) {
-		global $wgContLang, $wgCanonicalNamespaceNames;
-
 		$title = trim( $title );
 
 		if ( $title === null || $title === '' || $title === false ) {

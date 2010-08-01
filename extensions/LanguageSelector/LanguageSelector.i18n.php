@@ -847,10 +847,12 @@ $messages['shi'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
  * @author නන්දිමිතුරු
  */
 $messages['si'] = array(
 	'languageselector' => 'භාෂාව',
+	'languageselector-setlang' => 'සකසන්න',
 );
 
 /** Slovak (Slovenčina)

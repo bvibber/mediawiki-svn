@@ -681,6 +681,7 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Hosiryuhosi
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -704,6 +705,7 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text-done-uploading' => 'アップロード完了',
 	'mwe-timedtext-back-btn' => '戻る',
 	'mwe-timedtext-choose-text' => 'テキストを選択',
+	'mwe-timedtext-layout' => 'レイアウト',
 	'mwe-timedtext-layout-ontop' => '動画の冒頭',
 	'mwe-timedtext-layout-below' => '以下の動画',
 	'mwe-timedtext-layout-off' => '字幕を隠す',
@@ -750,6 +752,7 @@ $messages['lb'] = array(
 	'mwe-timedtext-textcat-lrc' => 'Liddertext',
 	'mwe-timedtext-textcat-cue' => 'Referenz-Punkten',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Ënnertitele fir de Clip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Keng $1 Ënnertitele goufe fonnt fir de Clip: $2',
 );
 
 /** Macedonian (Македонски)
@@ -950,11 +953,29 @@ $messages['pt'] = array(
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'mwe-timedtext-editor' => 'Editor de legendas',
+	'mwe-timedtext-stage-transcribe' => 'Transcrever',
+	'mwe-timedtext-stage-sync' => 'Sincronizar',
 	'mwe-timedtext-stage-translate' => 'Traduzir',
+	'mwe-timedtext-stage-upload' => 'Carregar a partir de arquivo local',
 	'mwe-timedtext-select-language' => 'Selecionar língua',
+	'mwe-timedtext-file-language' => 'Língua do arquivo de legendas',
+	'mwe-timedtext-upload-text' => 'Carregar arquivo de texto',
 	'mwe-timedtext-uploading-text' => 'Carregando um arquivo de texto',
 	'mwe-timedtext-upload-text-desc-title' => 'Carregar um arquivo de texto',
+	'mwe-timedtext-upload-text-desc-help' => 'A interface de carregamento de arquivos de texto aceita arquivos .srt.',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Procure no seus arquivos locais o arquivo .srt que você pretende carregar',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Selecione a língua do arquivo',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Revise e edite o texto e carregue em upload para adicioná-lo',
+	'mwe-timedtext-upload-text-preview' => 'Revisar o texto',
+	'mwe-timedtext-upload-text-success' => 'Foi feito o carregamento das legendas com sucesso',
+	'mwe-timedtext-upload-text-done' => 'Carregamento terminado',
+	'mwe-timedtext-upload-text-fail-desc' => 'Não foi feito o carregamento',
+	'mwe-timedtext-upload-text-fail-title' => 'O carregamento falhou',
+	'mwe-timedtext-upload-text-another' => 'Carregar outro',
+	'mwe-timedtext-upload-text-done-uploading' => 'Carregamento feito',
 	'mwe-timedtext-back-btn' => 'Voltar',
+	'mwe-timedtext-choose-text' => 'Escolher texto',
 	'mwe-timedtext-add-timed-text' => 'Adicionar legendas',
 	'mwe-timedtext-loading-text-edit' => 'Carregando editor de legendas',
 	'mwe-timedtext-search' => 'Procurar clipe',
@@ -967,6 +988,15 @@ $messages['pt-br'] = array(
 	'mwe-timedtext-textcat-sub' => 'Legendas',
 	'mwe-timedtext-textcat-tad' => 'Descrição áudio',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Cotações',
+	'mwe-timedtext-textcat-ar' => 'Regiões ativas',
+	'mwe-timedtext-textcat-nb' => 'Anotação',
+	'mwe-timedtext-textcat-meta' => 'Metadados de sincronização',
+	'mwe-timedtext-textcat-trx' => 'Transcrição',
+	'mwe-timedtext-textcat-lrc' => 'Letra',
+	'mwe-timedtext-textcat-lin' => 'Marcação linguística',
+	'mwe-timedtext-textcat-cue' => 'Pontos de entrada',
+	'mwe-timedtext-language-subtitles-for-clip' => 'Legendas em $1 para o clipe: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Não foram encontradas legendas em $1 para o clipe: $2',
 );
 

@@ -13,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-define( 'TRANSLATE_VERSION', '2010-07-04' );
+define( 'TRANSLATE_VERSION', '2010-07-21' );
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
@@ -473,7 +473,6 @@ function efTranslateCheckPT() {
 	if ( $wgCommandLineMode ) return true;
 
 	$version = "3"; // Must be a string
-	global $wgMemc;
 	$memcKey = wfMemcKey( 'pt' );
 	$ok = $wgMemc->get( $memcKey );
 
@@ -534,7 +533,7 @@ if ( !defined( 'TRANSLATE_CLI' ) ) {
 function wfAddNamespace( $id, $name ) {
 	global $wgExtraNamespaces, $wgContentNamespaces,
 		$wgTranslateMessageNamespaces, $wgNamespaceProtection,
-		$wgNamespacesWithSubpages, $wgCapitalLinkOverrides;
+		$wgNamespacesWithSubpages, $wgNamespacesToBeSearchedDefault;
 
 	$constant = strtoupper( "NS_$name" );
 

@@ -1033,6 +1033,7 @@ $messages['ro'] = array(
 $messages['roa-tara'] = array(
 	'chemicalsources' => 'fonde chimiche',
 	'chemicalsource-desc' => "Aggiunge 'u tag <nowiki><chemform></nowiki>, pe le formule chimiche",
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pàgene speciale]] pe le resorse chimeche',
 	'chemFunctions_ListPage' => 'fonde chimiche',
 	'chemFunctions_DataList' => 'Sotte stè \'na liste de collegaminde ca ponne dà \'mbormaziune sus a le sostanze chimiche ca tu ste cirche.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Combosizione de $MIXCASNameFormula a \'u NIST</a><br />

@@ -38,10 +38,13 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Pinodd
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'fckeditor-desc' => '{{desc}}',
+	'textrichditor' => "questo dovrebbe essere solo il nome dell'estensione e quindi lo lascerei com'è",
+	'prefs-fckeditor' => "questo dovrebbe essere semplicemente il nome dell'estensione e a mio parere va lasciato così com'è",
 );
 
 /** Arabic (العربية)
@@ -664,6 +667,37 @@ $messages['id'] = array(
 	'tog-riched_use_popup' => 'Buka penyunting kaya lewat pop-up',
 	'tog-riched_use_toggle' => 'Gunakan tuas untuk mengganti antara wikiteks dan penyunting kaya (ganti textarea dengan penyunting kaya)',
 	'tog-riched_toggle_remember_state' => 'Ingat keadaan tuas terakhir',
+);
+
+/** Italian (Italiano)
+ * @author Pinodd
+ */
+$messages['it'] = array(
+	'fckeditor-desc' => "Consenti la modifica utilizzando l'editor WYSIWYG FCKeditor",
+	'textrichditor' => 'Rich Editor',
+	'prefs-fckeditor' => 'Rich Editor',
+	'tog-riched_disable' => 'Disabilita editor avanzato',
+	'tog-riched_disable_ns_main' => "Disattiva editor avanzato all'interno del namespace principale",
+	'tog-riched_disable_ns_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:project}}"',
+	'tog-riched_disable_ns_project_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Disattiva editor avanzato all\'interno del namespace "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Apri editor avanzato in una nuova finestra',
+	'tog-riched_start_disabled' => "Inizia con l'editor avanzato disabilitato",
+	'tog-riched_use_popup' => 'Apri editor avanzato in una finestra popup',
+	'tog-riched_use_toggle' => "Usa il pulsante per passare dal normale wikitext all'editor avanzato e viceversa (sostituisce la textarea con l'editor avanzato)",
+	'tog-riched_toggle_remember_state' => "Ricorda l'ultima modalità di editing utilizzata (avanzata o normale)",
 );
 
 /** Japanese (日本語)

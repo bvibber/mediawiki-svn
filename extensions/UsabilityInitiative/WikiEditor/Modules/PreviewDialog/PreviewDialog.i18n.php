@@ -215,12 +215,14 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author ArnoLagrange
  * @author Lucas
  * @author Marcos
  * @author Yekrats
  * @author Ziko
  */
 $messages['eo'] = array(
+	'wikieditor-previewDialog-preference' => 'Ebligi antaŭprezentan dialogon',
 	'wikieditor-previewDialog-tab' => 'Antaŭvido',
 	'wikieditor-previewDialog-loading' => 'Ŝargante...',
 );
@@ -616,6 +618,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'wikieditor-previewDialog-preference' => "Abbilete 'u dialoghe de l'andeprime",
 	'wikieditor-previewDialog-tab' => 'Andeprime',
 	'wikieditor-previewDialog-loading' => 'Carecamende...',
 );
@@ -655,8 +658,10 @@ $messages['sc'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author තඹරු විජේසේකර
  */
 $messages['si'] = array(
+	'wikieditor-previewDialog-preference' => 'පෙර-දැකුම් කවුළුව බලගන්වන්න.',
 	'wikieditor-previewDialog-tab' => 'පෙර දසුන',
 	'wikieditor-previewDialog-loading' => 'ප්‍රවේශනය වෙමින් පවතී...',
 );

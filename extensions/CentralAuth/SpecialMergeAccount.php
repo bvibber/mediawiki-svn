@@ -209,7 +209,7 @@ class SpecialMergeAccount extends SpecialPage {
 	}
 
 	function doInitialMerge() {
-		global $wgUser, $wgRequest, $wgOut, $wgCentralAuthDryRun;
+		global $wgUser, $wgCentralAuthDryRun;
 		$globalUser = new CentralAuthUser( $wgUser->getName() );
 
 		if ( $wgCentralAuthDryRun ) {
@@ -225,10 +225,7 @@ class SpecialMergeAccount extends SpecialPage {
 			throw new MWException( "Submission error -- invalid input" );
 		}
 
-		$home = false;
-		$attached = array();
-		$unattached = array();
-		$ok = $globalUser->storeAndMigrate( $passwords );
+		$globalUser->storeAndMigrate( $passwords );
 		$this->clearWorkingPasswords();
 
 		$this->showCleanupForm();
@@ -251,7 +248,6 @@ class SpecialMergeAccount extends SpecialPage {
 		}
 		$password = $wgRequest->getText( 'wpPassword' );
 
-		$home = false;
 		$attached = array();
 		$unattached = array();
 		$ok = $globalUser->attemptPasswordMigration( $password, $attached, $unattached );
@@ -297,7 +293,7 @@ class SpecialMergeAccount extends SpecialPage {
 	}
 
 	private function showWelcomeForm() {
-		global $wgOut, $wgUser, $wgCentralAuthDryRun;
+		global $wgOut, $wgCentralAuthDryRun;
 
 		if ( $wgCentralAuthDryRun ) {
 			$wgOut->addWikiText( wfMsg( 'centralauth-notice-dryrun' ) );

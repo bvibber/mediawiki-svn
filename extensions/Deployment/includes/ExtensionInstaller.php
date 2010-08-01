@@ -1,10 +1,10 @@
 <?php
 
 /**
- * File holding the DeployInstaller class.
+ * File holding the ExtensionInstaller class.
  * Based on the WordPress 3.0 class WP_Upgrader.
  *
- * @file Installer.php
+ * @file ExtensionInstaller.php
  * @ingroup Deployment
  * @ingroup Installer
  *
@@ -12,17 +12,12 @@
  */
 
 /**
- * This documenation group collects source code files with Installer related features.
- *
- * @defgroup Installer Installer
- */
-
-/**
- * Class for Installing or upgrading a local set of files via the Filesystem Abstraction classes from a Zip file.
+ * Class for Installing or upgrading MediaWiki extensions via the Filesystem Abstraction classes from a Zip file.
  * 
  * @author Jeroen De Dauw
  */
-abstract class DeployInstaller {
+class ExtensionInstaller extends Installer {
+	
 	
 	/**
 	 * Constructor
@@ -58,5 +53,19 @@ abstract class DeployInstaller {
 	protected function installPackage() {
 		
 	}
+
+	/**
+	 * @param unknown_type $msg
+	 */
+	public function showMessage($msg) {
+		
+	}
+
+	/**
+	 * @param unknown_type $status
+	 */
+	public function showStatusMessage($status) {
+		
+	}	
 	
 }

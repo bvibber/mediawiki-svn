@@ -830,6 +830,7 @@ $messages['mr'] = array(
 	'wikieditor-publish-button-publish' => 'प्रकाशित करा
 दाखवा',
 	'wikieditor-publish-button-cancel' => 'रद्द करा',
+	'wikieditor-publish-dialog-title' => '↓ {{संकेतस्थळनाव}} येथे प्रदर्शित करा',
 	'wikieditor-publish-dialog-summary' => 'संपादनाचा सारांश:(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
 	'wikieditor-publish-dialog-minor' => 'छोटा बदल',
 	'wikieditor-publish-dialog-goback' => '↓ परत फिरा
@@ -987,8 +988,11 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'wikieditor-publish-button-publish' => 'خپرول',
 	'wikieditor-publish-button-cancel' => 'ناګارل',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} کې خپرول',
+	'wikieditor-publish-dialog-minor' => 'وړوکی سمون',
 	'wikieditor-publish-dialog-watch' => 'همدا مخ کتل',
 	'wikieditor-publish-dialog-publish' => 'خپرول',
+	'wikieditor-publish-dialog-goback' => 'پر شا تلل',
 );
 
 /** Portuguese (Português)

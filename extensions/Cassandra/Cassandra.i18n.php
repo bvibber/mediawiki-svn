@@ -25,6 +25,13 @@ $messages['bjn'] = array(
 	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'cassandra-desc' => "Stoor teks van wysigings in 'n [http://cassandra.apache.org/ Apache Cassandra] databasis",
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -242,6 +249,13 @@ $messages['pt-br'] = array(
 	'cassandra-desc' => 'Armazenar os textos das revisões na base de dados [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'cassandra-desc' => "Reggistre 'u teste d'a revisione jndr'à l'archivije [http://cassandra.apache.org/ Apache Cassandra]",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -301,5 +315,12 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'cassandra-desc' => 'Lưu trữ văn bản phiên bản trong cơ sở dữ liệu [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
+ */
+$messages['zh-hant'] = array(
+	'cassandra-desc' => '在[http://cassandra.apache.org/ Apache Cassandra] 資料庫儲存調整後的文字',
 );
 

@@ -408,7 +408,7 @@ class TranslationHelpers {
 		global $wgMemc;
 
 		if ( self::checkTranslationServiceFailure( $serviceName ) ) {
-			//return null;
+			return null;
 		}
 
 		$page = $this->page;
@@ -585,7 +585,7 @@ class TranslationHelpers {
 	}
 
 	protected function getOtherLanguagesBox() {
-		global $wgLang, $wgUser;
+		global $wgLang;
 
 		$code = $this->targetLanguage;
 		$page = $this->page;
@@ -635,7 +635,7 @@ class TranslationHelpers {
 	}
 
 	public function getDocumentationBox() {
-		global $wgTranslateDocumentationLanguageCode, $wgUser, $wgOut;
+		global $wgTranslateDocumentationLanguageCode, $wgOut;
 
 		if ( !$wgTranslateDocumentationLanguageCode ) {
 			return null;
@@ -685,7 +685,6 @@ class TranslationHelpers {
 		}
 
 		// Shortcuts
-		$code = $this->targetLanguage;
 		$key = $this->page;
 
 		$definitionTitle = Title::makeTitleSafe( $this->title->getNamespace(), "$key/en" );
@@ -853,8 +852,6 @@ class TranslationHelpers {
 	}
 
 	public function getLazySuggestionBox() {
-		global $wgScript;
-
 		if ( $this->group === null || !$this->targetLanguage ) {
 			return null;
 		}

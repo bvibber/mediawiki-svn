@@ -7901,7 +7901,7 @@ $messages['ps'] = array(
 	'user-profile-picture-large' => 'لوی',
 	'user-profile-picture-small' => 'وړوکی',
 	'user-profile-picture-choosepicture' => 'خپل انځور مو وټاکۍ',
-	'user-profile-goback' => 'پر شا تګ',
+	'user-profile-goback' => 'پر شا تلل',
 	'user-page-link' => 'کارن مخ',
 	'givegift' => 'يوه ډالۍ ورکول',
 	'viewgifts' => 'ډالۍ کتل',
@@ -10754,6 +10754,7 @@ $messages['zh-cn'] = array(
  * @author Fantasticfears
  * @author Gzdavidwong
  * @author Liangent
+ * @author Onecountry
  * @author PhiLiP
  * @author Wrightbus
  */
@@ -10767,7 +10768,7 @@ $messages['zh-hans'] = array(
 	'user-edit-this' => '编辑这个',
 	'user-edit-profile' => '编辑个人资料',
 	'user-upload-avatar' => '上传头像',
-	'user-watchlist' => '我的监视列表',
+	'user-watchlist' => '监视列表',
 	'user-meet-people' => '会见人们',
 	'user-add-friend' => '加入成为朋友',
 	'user-add-foe' => '加入成为仇敌',

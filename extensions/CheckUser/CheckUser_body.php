@@ -16,6 +16,9 @@ class CheckUser extends SpecialPage {
 		} else {
 			parent::__construct( 'CheckUser', 'checkuser-log' );
 		}
+
+		$this->sk = $wgUser->getSkin();
+
 		wfLoadExtensionMessages( 'CheckUser' );
 	}
 
@@ -310,7 +313,7 @@ class CheckUser extends SpecialPage {
 	 * Shows first and last date and number of edits
 	 */
 	protected function doUserIPsRequest( $user , $reason = '', $period = 0 ) {
-		global $wgOut, $wgLang, $wgUser;
+		global $wgOut, $wgLang;
 
 		$userTitle = Title::newFromText( $user, NS_USER );
 		if ( !is_null( $userTitle ) ) {
@@ -450,7 +453,7 @@ class CheckUser extends SpecialPage {
 	 * Shows all edits in Recent Changes by this IP (or range) and who made them
 	 */
 	protected function doIPEditsRequest( $ip, $xfor = false, $reason = '', $period = 0 ) {
-		global $wgUser, $wgOut, $wgLang;
+		global $wgOut, $wgLang;
 		$dbr = wfGetDB( DB_SLAVE );
 		# Invalid IPs are passed in as a blank string
 		$ip_conds = $this->getIpConds( $dbr, $ip, $xfor );
@@ -587,7 +590,7 @@ class CheckUser extends SpecialPage {
 	 * Shows all edits in Recent Changes by this user
 	 */
 	protected function doUserEditsRequest( $user, $reason = '', $period = 0 ) {
-		global $wgUser, $wgOut, $wgLang;
+		global $wgOut;
 
 		$userTitle = Title::newFromText( $user, NS_USER );
 		if ( !is_null( $userTitle ) ) {
@@ -1063,6 +1066,7 @@ class CheckUser extends SpecialPage {
 	 */
 	protected function getLinksFromRow( $row ) {
 		// Log items (old format) and events to logs
+
 		if ( $row->cuc_type == RC_LOG && $row->cuc_namespace == NS_SPECIAL ) {
 			list( $specialName, $logtype ) = SpecialPage::resolveAliasWithSubpage( $row->cuc_title );
 			$logname = LogPage::logName( $logtype );

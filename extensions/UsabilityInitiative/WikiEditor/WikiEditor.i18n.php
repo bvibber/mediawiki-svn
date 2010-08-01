@@ -582,6 +582,13 @@ $messages['oc'] = array(
 	'wikieditor-loading' => 'Cargament',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'wikieditor-loading' => 'Laade',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich
@@ -783,6 +790,7 @@ $messages['tk'] = array(
 	'wikieditor' => 'Giňeldilen wikitekst redaktirleme interfeýsi',
 	'wikieditor-desc' => 'Giňeldilýän wikitekst redkatirleme interfeýsini we köp aýratynlykly modullary üpjün edýär',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Ýüklenilýär',
 );
 
 /** Tagalog (Tagalog)

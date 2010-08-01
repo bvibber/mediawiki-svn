@@ -17,7 +17,7 @@ if( !function_exists( 'wfTimestamp2ISO8601' ) ) {
 
 class SpecialOAIRepository extends UnlistedSpecialPage {
 	function __construct() {
-		UnlistedSpecialPage::UnlistedSpecialPage( 'OAIRepository' );
+		parent::UnlistedSpecialPage( 'OAIRepository' );
 	}
 
 	function setHeaders() {
@@ -565,11 +565,6 @@ class OAIRepo {
 			return new OAIDumpWriter;
 	}
 
-	function newSchema() {
-		global $wgVersion;
-		return version_compare( $wgVersion, '1.5alpha', 'ge' );
-	}
-
 	function fetchRecord( $pageid ) {
 		$db = $this->_db;
 		
@@ -874,11 +869,8 @@ class WikiOAIRecord extends OAIRecord {
 			array( 'img_name' => $this->_row->page_title ),
 			$fname );
 		if( $imageRow ) {
-			if( OAIRepo::newSchema() ) {
-				$url = Image::imageUrl( $imageRow->img_name );
-			} else {
-				$url = Image::wfImageUrl( $imageRow->img_name );
-			}
+			$url = Image::imageUrl( $imageRow->img_name );
+
 			if( $url{0} == '/' ) {
 				global $wgServer;
 				$url = $wgServer . $url;

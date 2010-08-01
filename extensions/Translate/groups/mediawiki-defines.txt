@@ -412,10 +412,10 @@ id = ext-flaggedrevs-configuredpages
 file = FlaggedRevs/language/ConfiguredPages.i18n.php
 descmsg = configuredpages
 
-Flagged Revisions - Old Reviewed Pages
-id = ext-flaggedrevs-oldreviewedpages
-file = FlaggedRevs/language/OldReviewedPages.i18n.php
-descmsg = oldreviewedpages-legend
+Flagged Revisions - Pending Changes
+id = ext-flaggedrevs-pendingchanges
+file = FlaggedRevs/language/PendingChanges.i18n.php
+descmsg = pendingchanges-legend
 
 Flagged Revisions - Problem Changes
 id = ext-flaggedrevs-problemchanges
@@ -933,6 +933,8 @@ optional = rightfunctions-rest1, rightfunctions-rest2, rightfunctions-rest3, rig
 
 RPED
 aliasfile = RPED/RPED.alias.php
+
+RSS
 
 RT
 

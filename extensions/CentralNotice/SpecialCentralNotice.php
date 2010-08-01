@@ -6,15 +6,17 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class CentralNotice extends SpecialPage {
-
+	var $centralNoticeDB;
 	/* Functions */
 
 	function CentralNotice() {
 		// Register special page
-		SpecialPage::SpecialPage( 'CentralNotice' );
+		parent::SpecialPage( 'CentralNotice' );
 
 		// Internationalization
 		wfLoadExtensionMessages( 'CentralNotice' );
+
+		$this->centralNoticeDB = new CentralNoticeDB();
 	}
 
 	function execute( $sub ) {
@@ -22,9 +24,6 @@ class CentralNotice extends SpecialPage {
 
 		// Begin output
 		$this->setHeaders();
-
-		// Get current skin
-		$sk = $wgUser->getSkin();
 
 		// Check permissions
 		$this->editable = $wgUser->isAllowed( 'centralnotice-admin' );
@@ -98,7 +97,7 @@ class CentralNotice extends SpecialPage {
 				// Set since this is a single display
 				if ( $method == 'listNoticeDetail' ) {
 					$notice = $wgRequest->getVal ( 'notice' );
-					CentralNoticeDB::updatePreferred( $notice, '1' );
+					$this->centralNoticeDB->updatePreferred( $notice, '1' );
 				}
 				else {
 					// Build list of notices to unset 
@@ -106,10 +105,10 @@ class CentralNotice extends SpecialPage {
 
 					// Set flag accordingly
 					foreach ( $preferredNotices as $notice ) {
-						CentralNoticeDB::updatePreferred( $notice, '1' );
+						$this->centralNoticeDB->updatePreferred( $notice, '1' );
 					}
 					foreach ( $unsetNotices as $notice ) {
-						CentralNoticeDB::updatePreferred( $notice, '0' );
+						$this->centralNoticeDB->updatePreferred( $notice, '0' );
 					}
 				}
 			}
@@ -161,11 +160,11 @@ class CentralNotice extends SpecialPage {
 			if ( !isset( $preferredNotices ) && $method !== 'addNotice' ) {
 				if ( $method == 'listNoticeDetail' ) {
 					$notice = $wgRequest->getVal ( 'notice' );
-						CentralNoticeDB::updatePreferred( $notice, 0 );
+						$this->centralNoticeDB->updatePreferred( $notice, 0 );
 				} else {
 					$allNotices = $this->getNoticesName();
 					foreach ( $allNotices as $notice ) {
-						CentralNoticeDB::updatePreferred( $notice, '0' );
+						$this->centralNoticeDB->updatePreferred( $notice, '0' );
 					}
 				}
 			}
@@ -351,8 +350,7 @@ class CentralNotice extends SpecialPage {
 	 */
 
 	function listNotices() {
-		global $wgOut, $wgRequest, $wgScript, $wgUser;
-		global $wgNoticeProject, $wgUserLang;
+		global $wgOut, $wgUser, $wgUserLang;
 
 		// Get connection
 		$dbr = wfGetDB( DB_SLAVE );
@@ -903,7 +901,6 @@ class CentralNotice extends SpecialPage {
 			$htmlOut  = Xml::fieldset( wfMsg( "centralnotice-available-templates" ) );
 			$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
 
-
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
 				 wfMsg ( "centralnotice-add" ) );
 			$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
@@ -1173,13 +1170,11 @@ class CentralNotice extends SpecialPage {
 	}
 
 	function removeTemplateFor( $noticeName, $templateName ) {
-		global $wgOut;
-
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 		$noticeId = $this->getNoticeId( $noticeName );
 		$templateId = $this->getTemplateId( $templateName );
-		$res = $dbw->delete( 'cn_assignments', array ( 'tmp_id' => $templateId, 'not_id' => $noticeId ) );
+		$dbw->delete( 'cn_assignments', array ( 'tmp_id' => $templateId, 'not_id' => $noticeId ) );
 		$dbw->commit();
 	}
 
@@ -1241,7 +1236,7 @@ class CentralNotice extends SpecialPage {
 		 $dbw->begin();
 		 $noticeId = $this->getNoticeId( $noticeName );
 		 $templateId = $this->getTemplateId( $templateName );
-		 $res = $dbw->update( 'cn_assignments',
+		 $dbw->update( 'cn_assignments',
 		 	array ( 'tmp_weight' => $weight ),
 		 	array(
 				'tmp_id' => $templateId,

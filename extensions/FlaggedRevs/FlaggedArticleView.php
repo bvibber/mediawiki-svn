@@ -401,7 +401,7 @@ class FlaggedArticleView {
 			$revsSince = $this->article->getPendingRevCount();
 			$tooltip = wfMsgHtml( 'revreview-draft-title' );
 			$pending = $prot;
-			if ( self::showRatingIcon() ) {
+			if ( $this->showRatingIcon() ) {
 				$pending .= FlaggedRevsXML::draftStatusIcon();
 			}
 			$pending .= wfMsgExt( 'revreview-edited',
@@ -992,8 +992,8 @@ class FlaggedArticleView {
 			);
 			# Add link to list of pages in this category with pending edits
 			$links[] = $wgUser->getSkin()->makeKnownLinkObj(
-				SpecialPage::getTitleFor( 'OldReviewedPages' ),
-				wfMsgHtml( 'oldreviewedpages' ),
+				SpecialPage::getTitleFor( 'PendingChanges' ),
+				wfMsgHtml( 'pendingchanges' ),
 				'category=' . urlencode( $category )
 			);
 			$quickLinks = implode( ' / ', $links );
@@ -1516,7 +1516,7 @@ class FlaggedArticleView {
 	protected function markDiffUnderReview( Revision $oldRev, Revision $newRev ) {
 		global $wgMemc;
 		$key = wfMemcKey( 'stableDiffs', 'underReview', $oldRev->getID(), $newRev->getID() );
-		$wgMemc->set( $key, '1', 10 * 60 ); // 10 min
+		$wgMemc->set( $key, '1', 6 * 60 );
 	}
 
 	/**

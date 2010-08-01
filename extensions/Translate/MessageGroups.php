@@ -548,7 +548,6 @@ class AliasMessageGroup extends ExtensionMessageGroup {
 		}
 
 		$lines = array_map( 'trim', explode( "\n", $data ) );
-		$array = array();
 		foreach ( $lines as $line ) {
 			if ( $line === '' || $line[0] === '#' || $line[0] === '<' ) {
 				continue;
@@ -722,8 +721,6 @@ class WikiMessageGroup extends MessageGroupOld {
 	 */
 	public function getMessage( $key, $code ) {
 		global $wgContLang;
-
-		$params = array();
 
 		if ( $code && $wgContLang->getCode() !== $code ) {
 			return TranslateUtils::getMessageContent( $key, $code );

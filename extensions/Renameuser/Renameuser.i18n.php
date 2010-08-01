@@ -616,6 +616,14 @@ $messages['cu'] = array(
 	'renameuserlogentry' => 'нарєчє $1 имєньмь ⁖ $2 ⁖',
 );
 
+/** Chuvash (Чӑвашла)
+ * @author FLAGELLVM DEI
+ */
+$messages['cv'] = array(
+	'renameuserconfirm' => 'Çапла, хутшăнакан ятне улăштармалла',
+	'renameuser-page-moved' => '$1 страницăн ятне $2 çине улăштарнă.',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -1975,6 +1983,8 @@ $messages['ko'] = array(
  */
 $messages['ksh'] = array(
 	'renameuser' => 'Metmaacher ömdäufe',
+	'renameuser-linkoncontribs' => 'Metmaacher ömnänne',
+	'renameuser-linkoncontribs-text' => 'Heh dä Metmaacher ömnänne',
 	'renameuser-desc' => '[[Special:Renameuser|Metmaacher ömdäufe]] — ävver do bruch mer et Rääsch „<i lang=en">renameuser</i>“ för.',
 	'renameuserold' => 'Dä ahle Metmaacher-Name',
 	'renameusernew' => 'Dä neue Metmaacher-Name',
@@ -2890,6 +2900,8 @@ Jurnalul redenumirilor este furnizat mai jos pentru referință.',
  */
 $messages['roa-tara'] = array(
 	'renameuser' => "Renomene l'utende",
+	'renameuser-linkoncontribs' => "renomene l'utende",
+	'renameuser-linkoncontribs-text' => 'Renomene quiste utende',
 	'renameuser-desc' => "Aggiunge 'na [[Special:Renameuser|pàgena speciale]] pe renomena 'n'utende (abbesogne de le deritte ''renameuser'')",
 	'renameuserold' => "Nome de l'utende de mò:",
 	'renameusernew' => "Nome de l'utende nuève:",

@@ -62,7 +62,7 @@ class CodeStatusChangeTablePager extends SvnTablePager {
 	}
 
 	function formatValue( $name, $value ) {
-		global $wgUser, $wgLang;
+		global $wgLang;
 		switch( $name ) {
 		case 'cpc_rev_id':
 			return $this->mView->mSkin->link(

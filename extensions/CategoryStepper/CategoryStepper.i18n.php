@@ -287,6 +287,14 @@ $messages['id'] = array(
 	'categorystepper-start' => '(Awal kategori)',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'categorystepper-end' => '(Ogwụcha nke ébánọr)',
+	'categorystepper-start' => '(Mbídó nke ébéanọr)',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

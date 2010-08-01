@@ -261,6 +261,13 @@ $messages['krc'] = array(
 	'wikieditor-templates-preference' => 'Шаблонланы джашырыу амалны джандыр',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor-templates-preference' => 'Donn et Schablone-Zosammefallde zohlohße',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -371,6 +378,13 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'wikieditor-templates-preference' => 'Activează ascunderea formatului',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikieditor-templates-preference' => "Abbilete 'a chiusure de le template",
 );
 
 /** Russian (Русский)

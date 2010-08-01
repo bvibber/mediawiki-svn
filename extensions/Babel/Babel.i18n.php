@@ -1332,7 +1332,7 @@ $messages['frp'] = array(
 $messages['frr'] = array(
 	'babel' => 'Babel brüker-informasjoon',
 	'babel-desc' => 'Fäiget jü <code>#babel</code>-Parserfunksjoon haanetu for dåt automaatisch måågen foon Babel-brükerbox-rae ma jü möölikhäid, äine forlååge önjtufäigen',
-	'babel-url' => 'Projäkt:Babel',
+	'babel-url' => 'Project:Babel',
 	'babel-autocreate-abort' => 'Di ütkiisde brükernoome as nüsi for dåt automaatisch måågen foon [[$1|Babel]]-kategoriie än koon ai registriird wårde.',
 	'babel-autocreate-reason' => 'Automaatisch mååged [[$1|Babel]]-kategorii.',
 	'babel-autocreate-text-levels' => 'Brükere in jüdeer kategorii heewe waasen aw stuufe $1 önj e spräke $2.',
@@ -1344,13 +1344,13 @@ $messages['frr'] = array(
 	'babel-4' => 'Dideere brüker reet ham ma [[$2|$3]] aw [[$1|mamenspräklike]] schuchte.',
 	'babel-5' => 'Dideere brüker reet ham ma [[$2|$3]] aw [[$1|profäsjonäle]] schuchte.',
 	'babel-N' => 'Dideere brüker snååket [[$2|$3]] as [[$1|mamenspräke]].',
-	'babel-0-n' => 'Dideere brüker reet ham [[$1|ai]] ma Friisk (unti ferstoont dåt mån ma duuchti swiirihäide).',
+	'babel-0-n' => 'Dideere brüker reet ham [[$1|ai]] ma [[$2|Friisk]] (unti ferstoont dåt mån ma duuchti swiirihäide).',
 	'babel-1-n' => 'Dideere brüker koon [[$1|lait]] [[$2|friisk]] snååke en leese.',
 	'babel-2-n' => 'Dideere brüker heet [[$1|ordi]] waasen foon [[$2|Friisk]].',
 	'babel-3-n' => 'Dideere brüker reet ham ma [[$2|Friisk]] aw [[$1|huuge]] schuchte.',
 	'babel-4-n' => 'Dideere brüker reet ham ma [[$2|Friisk]] aw [[$1|mamenspräklike]] schuchte.',
 	'babel-5-n' => 'Dideere brüker reet ham ma [[$2|Friisk]] aw [[$1|profäsjonäle]] schuchte.',
-	'babel-N-n' => 'Dideere brüker snååket Friisk as [[$1|mamenspräke]].',
+	'babel-N-n' => 'Dideere brüker snååket [[$2|Friisk]] as [[$1|mamenspräke]].',
 );
 
 /** Friulian (Furlan)
@@ -1940,6 +1940,7 @@ $messages['ig'] = array(
 	'babel-desc' => 'Nè tí <code>#babel</code> ihe ndotù Í nyé uzor maka okìké nke orúnotu nke ogologo  babel nweríkí tinyé ihü nka nke ékèrè eké',
 	'babel-url' => 'Project:Babul',
 	'babel-autocreate-reason' => 'Odạlạ né ké [[$1|Babel]] ébé ihü nọr.',
+	'babel-autocreate-text-levels' => 'Ndi na banife nọr na ébé nke sị há nwèrè ǹkà rúrú $1 màkà asụsụ $2.',
 	'babel-0' => 'Onyéá [[$1|enweghị]] ómárí maka [[$2|$3]] (mä o wu ó na gé yá nsogbu dikwa elú ya).',
 	'babel-1' => 'Onyéá nwere ómárí [[$1|ntakịrị]] maka [[$2|$3]].',
 	'babel-2' => 'Onyéá nwere ómárí [[$1|ditu mmá]] maka [[$2|$3]].',
@@ -3591,6 +3592,7 @@ $messages['sh'] = array(
 
 /** Sinhala (සිංහල)
  * @author Asiri wiki
+ * @author තඹරු විජේසේකර
  * @author නන්දිමිතුරු
  */
 $messages['si'] = array(
@@ -3598,7 +3600,9 @@ $messages['si'] = array(
 	'babel-url' => 'Project:බාබෙල්',
 	'babel-0' => 'මෙම පරිශීලකයා‍ට [[$2|$3]] පිළිබඳ දැනුමක් [[$1|නැත]].',
 	'babel-1' => 'මෙම පරිශීලකයා‍ට [[$2|$3]] පිළිබඳ [[$1|මූලික]] දැනුමක් ඇත.',
+	'babel-2' => 'මෙම පරිශීලකයා‍ට [[$1|මධ්‍යස්ත]] දැනුමක් ඇත.',
 	'babel-3' => 'මෙම පරිශීලකයා‍ට [[$2|$3]] පිළිබඳ [[$1|උසස්]] දැනුමක් ඇත.',
+	'babel-4' => 'මෙම පරිශීලකයා‍ට [[$1|ස්වදේශීය කථකයෙකුට සමීප]] දැනුමක් ඇත.',
 	'babel-5' => 'මෙම පරිශීලකයා‍ට [[$2|$3]] පිළිබඳ [[$1| ඉතා උසස්]] දැනුමක් ඇත.',
 	'babel-N' => 'මෙම පරිශීලකයාට [[$2|$3]] පිළිබඳ [[$1|ස්වදේශීය]] අවබෝධයක් ඇත.',
 	'babel-0-n' => 'මෙම පරිශීලකයා‍ට [[$2|සිංහල භාෂාව]] පිළිබඳ දැනුමක් [[$1|නැත]] (හෝ ඉතාමත් අපහසුවෙන් එය තේරුම් ගනියි).',
@@ -3855,7 +3859,7 @@ $messages['sv'] = array(
  * @author Malangali
  */
 $messages['sw'] = array(
-	'babel-autocreate-text-levels' => 'Watumiaji katika jamii hii wanadai kwamba wanaongea lugha ya $2 kwa kiwango cha $1.',
+	'babel-autocreate-text-levels' => 'Watumiaji katika jamii hii wanaonyesha kwamba wanaongea lugha ya $2 kwa kiwango cha $1.',
 	'babel-autocreate-text-main' => 'Watumiaji katika jamii hii wanadai kwamba wana ujuzi wa lugha ya $1.',
 	'babel-0' => 'Mtumiaji huyu [[$1|hajui]] [[$2|$3]] (au anaelewa kidogo sana).',
 	'babel-1' => 'Mtumiaji huyu ni mwongeaji wa [[$2|$3]] cha kiwango cha [[$1|Msingi]].',
@@ -4164,7 +4168,8 @@ $messages['tt-cyrl'] = array(
  * @author Sborsody
  */
 $messages['tyv'] = array(
-	'babel' => 'Ажыглакчы медээлери (Бабилон)',
+	'babel' => 'Бабилон aжыглакчы кырында медээлери',
+	'babel-url' => 'Project:Вавилон',
 	'babel-1' => 'Бо ажыглакчы [[$1|эге деңнелге]] [[$2|тывалай]] деткий ал.',
 );
 

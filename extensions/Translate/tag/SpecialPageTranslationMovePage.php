@@ -141,9 +141,9 @@ class SpecialPageTranslationMovePage extends UnlistedSpecialPage {
 	}
 
 	protected function doNormalMovePage() {
-		global $action, $wgRequest;
+		global $wgRequest;
 		$form = new MovePageForm( $this->oldTitle, $this->newTitle );
-		if ( $action === 'submit' && $this->checkToken() && $wgRequest->wasPosted() ) {
+		if ( 'submit' == $wgRequest->getVal( 'action' ) && $this->checkToken() && $wgRequest->wasPosted() ) {
 			$form->doSubmit();
 		} else {
 			$form->showForm( '' );
@@ -294,7 +294,6 @@ class SpecialPageTranslationMovePage extends UnlistedSpecialPage {
 
 	protected function performAction() {
 		$jobs = array();
-		$titles = array();
 
 		$target = $this->newTitle;
 		$base = $this->oldTitle->getPrefixedText();

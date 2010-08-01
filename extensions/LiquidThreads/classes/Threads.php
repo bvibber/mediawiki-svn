@@ -92,7 +92,6 @@ class Threads {
 	}
 
 	static function where( $where, $options = array(), $bulkLoad = true ) {
-		global $wgDBprefix;
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->select( 'thread', '*', $where, __METHOD__, $options );
@@ -323,12 +322,12 @@ class Threads {
 			$roundRowsAffected = 0;
 
 			// Fix wrong title.
-			$res = $dbw->update( 'thread', $titleCond, $fixTitleCond,
+			$dbw->update( 'thread', $titleCond, $fixTitleCond,
 						__METHOD__, $options );
 			$roundRowsAffected += $dbw->affectedRows();
 
 			// Fix wrong ID
-			$res = $dbw->update( 'thread', $idCond, $fixIdCond, __METHOD__, $options );
+			$dbw->update( 'thread', $idCond, $fixIdCond, __METHOD__, $options );
 			$roundRowsAffected += $dbw->affectedRows();
 
 			$rowsAffected += $roundRowsAffected;

@@ -45,7 +45,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	function showList( $conds = array( 'af_deleted' => 0 ), $optarray = array() ) {
 		global $wgOut, $wgUser;
 
-		$sk = $this->mSkin = $wgUser->getSkin();
+		$this->mSkin = $wgUser->getSkin();
 
 		$output = '';
 		$output .= Xml::element( 'h2', null,
@@ -145,8 +145,6 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	function getQueryInfo() {
-		$dbr = wfGetDB( DB_SLAVE );
-		$abuse_filter = $dbr->tableName( 'abuse_filter' );
 		return array(
 			'tables' => array( 'abuse_filter' ),
 			'fields' => array(

@@ -254,6 +254,13 @@ $messages['krc'] = array(
 	'wikieditor-addMediaWizard-preference' => '«Медиа къошууну мастери» гаджетни джукълат',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Donn et <i lang="en">Gadget</i> för der Medije-Assistänt aanschallde',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -351,6 +358,13 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activează gadgetul „Asistent pentru adăugarea fișierelor media”',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Abbilete \'u gadget "Aggiunge wizard media"',
 );
 
 /** Russian (Русский)

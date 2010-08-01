@@ -241,6 +241,14 @@ $messages['pt-br'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'nll-desc' => "Facile formattazione de le liste jndr'à le linguagge naturale",
+	'nll-lastseparator' => '&#32;and&#32;',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

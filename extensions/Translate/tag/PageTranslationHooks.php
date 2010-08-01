@@ -141,8 +141,7 @@ class PageTranslationHooks {
 
 	public static function addSidebar( $out, $tpl ) {
 		// TODO: fixme
-		return true;
-
+/*
 		global $wgLang;
 
 		// Sort by translation percentage
@@ -166,7 +165,7 @@ class PageTranslationHooks {
 		$sidebar['TRANSLATIONS'] = $items;
 
 		$tpl->set( 'sidebar', $sidebar );
-
+*/
 		return true;
 	}
 
@@ -369,8 +368,6 @@ FOO;
 
 	// TODO: fix the name
 	public static function test( &$article, &$outputDone, &$pcache ) {
-		global $wgOut;
-
 		if ( !$article->getOldID() ) {
 			self::header( $article->getTitle() );
 		}
@@ -379,8 +376,6 @@ FOO;
 	}
 
 	public static function header( Title $title ) {
-		global $wgLang, $wgUser;
-
 		$page = TranslatablePage::newFromTitle( $title );
 		$marked = $page->getMarkedTag();
 		$ready = $page->getReadyTag();

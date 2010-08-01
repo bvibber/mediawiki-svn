@@ -1898,12 +1898,15 @@ $messages['sr-el'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
+	'clicktracking' => 'Panglacak klik Inisiatif Kamangpaatan',
 	'ct-event-name' => 'Ngaran acara',
+	'ct-expert-header' => 'Klik "ahli"',
 	'ct-total-header' => 'Jumlah klik',
 	'ct-start-date' => 'Titimangsa Ngamimitian (YYYYMMDD)',
 	'ct-end-date' => 'Titimangsa Anggeusan (YYYYMMDD)',
 	'ct-change-graph' => 'Robah grafik',
 	'ct-expert' => 'Mahér',
+	'ct-editing' => 'Keur ngédit:',
 	'ct-anon-users' => 'Pamaké anonim',
 	'ct-user-contribs' => 'Sakabéh kontribusi pamaké',
 	'ct-user-span' => 'Kontribusi pamaké tina lilana',

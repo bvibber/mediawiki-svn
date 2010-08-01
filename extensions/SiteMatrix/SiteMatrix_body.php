@@ -289,7 +289,7 @@ class SiteMatrixPage extends SpecialPage {
 				if ( $matrix->exist( $lang, $site ) ) {
 					# Wiki exists
 					$closed = $matrix->isClosed( $lang, $site );
-					$s .= "<td>" . ($closed ? "<s>" : '') . "<a href=\"{$url}\">{$lang}</a>" . ($closed ? "</s>" : '') . '</td>';
+					$s .= "<td>" . ($closed ? "<del>" : '') . "<a href=\"{$url}\">{$lang}</a>" . ($closed ? "</del>" : '') . '</td>';
 				} else {
 					# Non-existent wiki
 					$s .= "<td><a href=\"{$url}\" class=\"new\">{$lang}</a></td>";
@@ -325,9 +325,9 @@ class SiteMatrixPage extends SpecialPage {
 			$flagsStr = implode( ', ', $flags );
 			if( $site != 'wiki' ) $langhost .= $site;
 			$closed = $matrix->isClosed( $lang, $site );
-			$s .= '<li>' . ( $closed ? '<s>' : '' ) .
+			$s .= '<li>' . ( $closed ? '<del>' : '' ) .
 				wfSpecialList( '<a href="' . $url . '/">' . $langhost . "</a>", $flagsStr ) .
-				( $closed ? '</s>' : '' ) . "</li>\n";
+				( $closed ? '</del>' : '' ) . "</li>\n";
 		}
 		$s .= '</ul>';
 		$wgOut->addHTML( $s );

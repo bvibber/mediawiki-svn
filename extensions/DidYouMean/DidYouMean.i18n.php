@@ -495,6 +495,13 @@ $messages['scn'] = array(
 	'didyoumean-desc' => 'Iunci liami a pàggini cu tituli "simili"',
 );
 
+/** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
+ */
+$messages['si'] = array(
+	'didyoumean-desc' => 'අනුරූපී මාතෘකා සහිත පිටු සඳහා බන්ධනය කරයි.',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

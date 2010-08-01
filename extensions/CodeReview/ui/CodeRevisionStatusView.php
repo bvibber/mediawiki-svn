@@ -10,7 +10,7 @@ class CodeRevisionStatusView extends CodeRevisionListView {
 	function getPager() {
 		return new SvnRevStatusTablePager( $this, $this->mStatus );
 	}
-	
+
 	function getSpecializedWhereClause( $dbr ) {
 		return array( 'cr_status' => $this->mStatus );
 	}

@@ -125,6 +125,13 @@ $messages['id'] = array(
 	'peoplecategories-desc' => 'Perubahan nama halaman dari "NamaDepan NamaBelakang" menjadi "NamaBelakang, Nama depan" pada halaman kategori tertentu',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'peoplecategories-desc' => 'Ihe gbánwè ne zí ihü nwèrè áhà shí "Áhàmbu Áhàázu" gá "Áhàázu, Áhàmbu" nke ébéanọr ihü ha kpàtàrà',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  */
@@ -207,6 +214,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'peoplecategories-desc' => 'Altera os nomes de página de "Nome Sobrenome" para "Sobrenome, Nome" nas páginas de categoria especificadas',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'peoplecategories-desc' => 'Cange le nome de le pàggene visualizzare da "Primenome Urtemenome" a "Urtemenome, Primenome" sus a categorije de pàggene specifeche',
 );
 
 /** Russian (Русский)

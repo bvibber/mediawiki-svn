@@ -148,8 +148,6 @@ class SpecialTranslationStats extends SpecialPage {
 	}
 
 	protected function eRadio( $name, FormOptions $opts, array $alts ) {
-		$value = $opts[$name];
-
 		$label = 'translate-statsf-' . $name;
 		$label = wfMsgExt( $label, array( 'parsemag', 'escapenoentities' ) );
 		$s = '<tr><td>' . $label . '</td><td>';
@@ -169,7 +167,6 @@ class SpecialTranslationStats extends SpecialPage {
 	}
 
 	protected function eLanguage( $name, FormOptions $opts ) {
-		global $wgLang;
 		$value = $opts[$name];
 
 		$select = $this->languageSelector();
@@ -206,7 +203,6 @@ class SpecialTranslationStats extends SpecialPage {
 	}
 
 	protected function eGroup( $name, FormOptions $opts ) {
-		global $wgLang;
 		$value = $opts[$name];
 
 		$select = $this->groupSelector();
@@ -527,7 +523,6 @@ class TranslatePerLanguageStats extends TranslationStatsBase {
 		if ( !$this->groups && !$this->codes ) return 'all';
 
 		// The key-building needs to be in sync with ::labels()
-		$keys = array();
 
 		list( $key, $code ) = TranslateUtils::figureMessage( $row->rc_title );
 

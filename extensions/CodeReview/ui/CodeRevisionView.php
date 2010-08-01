@@ -173,8 +173,6 @@ class CodeRevisionView extends CodeView {
 		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 			// Look for a posting...
 			$text = $wgRequest->getText( "wpReply{$this->mReplyTarget}" );
-			$parent = $wgRequest->getIntOrNull( 'wpParent' );
-			$review = $wgRequest->getInt( 'wpReview' );
 			$isPreview = $wgRequest->getCheck( 'wpPreview' );
 			if ( $isPreview ) {
 				// Save the text for reference on later comment display...
@@ -183,7 +181,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return false;
 	}
-	
+
 	protected function canPostComments() {
 		global $wgUser;
 		return $wgUser->isAllowed( 'codereview-post-comment' ) && !$wgUser->isBlocked();
@@ -262,8 +260,6 @@ class CodeRevisionView extends CodeView {
 	protected function statusForm() {
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'codereview-set-status' ) ) {
-			$repo = $this->mRepo->getName();
-			$rev = $this->mRev->getId();
 			return Xml::openElement( 'select', array( 'name' => 'wpStatus' ) ) .
 				self::buildStatusList( $this->mStatus, $this ) .
 				xml::closeElement( 'select' );
@@ -328,7 +324,7 @@ class CodeRevisionView extends CodeView {
 			return $hilite->render( $diff );
 		}
 	}
-	
+
 	protected function formatImgDiff() {
 		global $wgCodeReviewImgRegex;
 		// Get image diffs
@@ -360,7 +356,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return $html;
 	}
-	
+
 	protected function formatImgCell( $path, $rev, $message ) {
 		$viewvc = $this->mRepo->getViewVcBase();
 		$safePath = wfUrlEncode( $path );
@@ -416,7 +412,7 @@ class CodeRevisionView extends CodeView {
 		}
 		return "<ul class='mw-codereview-changes'>$changes</ul>";
 	}
-	
+
 	protected function formatReferences() {
 		$refs = implode( "\n",
 			array_map( array( $this, 'formatReferenceInline' ), $this->mRev->getReferences() )
@@ -476,7 +472,7 @@ class CodeRevisionView extends CodeView {
 		$line .= "]</i>";
 		return "<li>$line</li>";
 	}
-	
+
 	protected function formatReferenceInline( $row ) {
 		global $wgLang;
 		$rev = intval( $row->cr_id );
@@ -569,8 +565,7 @@ class CodeRevisionView extends CodeView {
 			$preview = '';
 			$text = $this->text;
 		}
-		$repo = $this->mRepo->getName();
-		$rev = $this->mRev->getId();
+
 		if ( !$this->canPostComments() ) {
 			return '';
 		}

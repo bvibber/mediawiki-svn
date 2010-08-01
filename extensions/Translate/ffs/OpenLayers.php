@@ -157,15 +157,14 @@ EOT;
 		// Get and write messages.
 		$lines = '';
 		foreach ( $collection as $message ) {
-			$key = Xml::escapeJsString( $message->key() );
 			$value = Xml::escapeJsString( $message->translation() );
 			if( $this->keyquote ) {
-				$lines .= "    '{$message->key()}': \"{$value}\",\n\n";
+				$key = Xml::escapeJsString( $message->key() );
+				$lines .= "    '{$key}': \"{$value}\",\n\n";
 			} else {
 				$lines .= "    {$message->key()}: \"{$value}\",\n\n";
 			}
 		}
-
 
 		// Strip last comma.
 		$lines = substr( $lines, 0, -3 );

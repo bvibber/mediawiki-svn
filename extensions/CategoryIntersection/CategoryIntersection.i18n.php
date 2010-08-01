@@ -612,6 +612,7 @@ $messages['roa-tara'] = array(
 	'categoryintersection-desc' => "Mandene 'na tavule cu le vlaore hash pe le [[Special:CategoryIntersection|interseziune 'mbrà categorije]] jndr'à 'na pàgene",
 	'categoryintersection-doit' => "Elenghe le pàggene jndr'à tutte ste categorije",
 	'categoryintersection-maxcategories' => "'U numere massime de categorije ca se 'ndurtigghiescene jè $1.",
+	'categoryintersection-mincategories' => 'Tu è abbesogne de sckaffà almene doje categorije.',
 	'categoryintersection-results' => "'A ricerche ha returnate $1 {{PLURAL:$1|resultate|resultate}}.",
 );
 

@@ -501,10 +501,13 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'plotters' => 'Plotteren',
+	'plotters-title' => 'Plotteren',
 	'plotters-uses' => 'Benotzt',
 	'plotters-missing-script' => 'Et gouf kee Script definéiert.',
 	'plotters-excessively-long-scriptname' => 'Den Numm vum Script ass ze laang.
 Leet w.e.g. e Script fest, den Numm vun deem däerf net méi laang si wéi 255 Zeechen.',
+	'plotters-no-data' => 'Et goufe keng Donnéeën uginn.',
 );
 
 /** Macedonian (Македонски)
@@ -578,7 +581,7 @@ $messages['no'] = array(
 	'plotters-title' => 'Plottere',
 	'plotters-pagetext' => 'Under er en liste over spesielle plottere brukere kan bruke i sine jsplot-merkelapper, som definert av [[MediaWiki:Plotters-definition]].
 Denne oversikten gir enkel tilgang til systemmeldingssider som definerer hver plotters beskrivelse og kode.',
-	'plotters-uses' => 'Brukere',
+	'plotters-uses' => 'Bruker',
 	'plotters-missing-script' => 'Ingen skript ble definert.',
 	'plotters-missing-arguments' => 'Ingen argument spesifisert.',
 	'plotters-excessively-long-scriptname' => 'Skriptnavnet er for langt.

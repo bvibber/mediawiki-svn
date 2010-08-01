@@ -15,7 +15,6 @@ class ApiClickTracking extends ApiBase {
 	public function execute() {
 		global $wgUser, $wgTitle, $wgClickTrackContribGranularity1, $wgClickTrackContribGranularity2, $wgClickTrackContribGranularity3;
 
-		$this->getMain()->setCachePrivate();
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];

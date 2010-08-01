@@ -19,7 +19,7 @@ class FlaggedRevsHooks {
 		}
 		$list['RevisionReview'] = $wgSpecialPages['RevisionReview'] = 'RevisionReview';
 		$list['ReviewedVersions'] = $wgSpecialPages['ReviewedVersions'] = 'ReviewedVersions';
-		$list['OldReviewedPages'] = $wgSpecialPages['OldReviewedPages'] = 'OldReviewedPages';
+		$list['PendingChanges'] = $wgSpecialPages['PendingChanges'] = 'PendingChanges';
 		// Show tag filtered pending edit page if there are tags
 		if ( $wgUseTagFilter && ChangeTags::listDefinedTags() ) {
 			$list['ProblemChanges'] = $wgSpecialPages['ProblemChanges'] = 'ProblemChanges';
@@ -134,7 +134,7 @@ class FlaggedRevsHooks {
 		if ( $title->getNamespace() !== NS_SPECIAL ) {
 			return true;
 		}
-		$spPages = array( 'UnreviewedPages', 'OldReviewedPages', 'ProblemChanges',
+		$spPages = array( 'UnreviewedPages', 'PendingChanges', 'ProblemChanges',
 			'Watchlist', 'Recentchanges', 'Contributions' );
 		foreach ( $spPages as $n => $key ) {
 			if ( $title->isSpecial( $key ) ) {
@@ -182,7 +182,7 @@ class FlaggedRevsHooks {
 		if ( $request->getInt( 'reviewing' ) || $request->getInt( 'rcid' ) ) {
 			if ( $fa->isReviewable() && $fa->getTitle()->userCan( 'review' ) ) {
 				$key = wfMemcKey( 'unreviewedPages', 'underReview', $fa->getId() );
-				$wgMemc->set( $key, '1', 20 * 60 ); // 20 min
+				$wgMemc->set( $key, '1', 20 * 60 );
 			}
 		}
 		return true;
@@ -960,7 +960,7 @@ class FlaggedRevsHooks {
 		# Mark when a user reverts another user, but not self-reverts
 		$badUserId = $badRev->getRawUser();
 		if ( $badUserId && $user->getId() != $badUserId ) {
-			$p = FRUserCounters::getUserParams( $badUserId );
+			$p = FRUserCounters::getUserParams( $badUserId, FR_FOR_UPDATE );
 			if ( !isset( $p['revertedEdits'] ) ) {
 				$p['revertedEdits'] = 0;
 			}
@@ -983,7 +983,7 @@ class FlaggedRevsHooks {
 			if ( $badRev && $badRev->getRawUser()
 				&& $badRev->getRawUser() != $rev->getRawUser() )
 			{
-				$p = FRUserCounters::getUserParams( $badRev->getRawUser() );
+				$p = FRUserCounters::getUserParams( $badRev->getRawUser(), FR_FOR_UPDATE );
 				if ( !isset( $p['revertedEdits'] ) ) {
 					$p['revertedEdits'] = 0;
 				}
@@ -1087,7 +1087,7 @@ class FlaggedRevsHooks {
 			$totalCheckedEditsNeeded = true;
 		}
 		# Check if user edited enough unique pages
-		$pages = explode( ',', trim( $p['uniqueContentPages'] ) ); // page IDs
+		$pages = $p['uniqueContentPages']; // page IDs
 		if ( $wgFlaggedRevsAutoconfirm['uniqueContentPages'] > count( $pages ) ) {
 			return true;
 		}
@@ -1178,7 +1178,7 @@ class FlaggedRevsHooks {
 		} elseif ( !$wgFlaggedRevsAutopromote && !$wgFlaggedRevsAutoconfirm ) {
 			return true;
 		}
-		$p = FRUserCounters::getUserParams( $user->getId() );
+		$p = FRUserCounters::getUserParams( $user->getId(), FR_FOR_UPDATE );
 		$changed = FRUserCounters::updateUserParams( $p, $article, $summary );
 		# Save any updates to user params
 		if ( $changed ) {
@@ -1210,7 +1210,7 @@ class FlaggedRevsHooks {
 			$totalCheckedEditsNeeded = true;
 		}
 		# Check if user edited enough unique pages
-		$pages = explode( ',', trim( $p['uniqueContentPages'] ) ); // page IDs
+		$pages = $p['uniqueContentPages']; // page IDs
 		if ( $wgFlaggedRevsAutopromote['uniqueContentPages'] > count( $pages ) ) {
 			return true;
 		}
@@ -1370,19 +1370,16 @@ class FlaggedRevsHooks {
    	/**
 	* Record demotion so that auto-promote will be disabled
 	*/
-	public static function recordDemote( $u, $addgroup, $removegroup ) {
+	public static function recordDemote( $user, array $addgroup, array $removegroup ) {
 		if ( $removegroup && in_array( 'editor', $removegroup ) ) {
-			// Cross-wiki rights change
-			if ( $u instanceof UserRightsProxy ) {
-				$params = FRUserCounters::getUserParams( $u->getId(), $u->getDBName() );
-				$params['demoted'] = 1;
-				FRUserCounters::saveUserParams( $u->getId(), $params, $u->getDBName() );
-			// On-wiki rights change
-			} else {
-				$params = FRUserCounters::getUserParams( $u->getId() );
-				$params['demoted'] = 1;
-				FRUserCounters::saveUserParams( $u->getId(), $params );
+			$dbName = false; // this wiki
+			// Cross-wiki rights changes...
+			if ( $user instanceof UserRightsProxy ) {
+				$dbName = $user->getDBName(); // use foreign DB of the user
 			}
+			$p = FRUserCounters::getUserParams( $user->getId(), FR_FOR_UPDATE, $dbName );
+			$p['demoted'] = 1;
+			FRUserCounters::saveUserParams( $user->getId(), $p, $dbName );
 		}
 		return true;
 	}
@@ -1802,8 +1799,11 @@ class FlaggedRevsHooks {
 	}
 
 	public static function injectPostEditURLParams( $article, &$sectionAnchor, &$extraQuery ) {
-		$view = FlaggedArticleView::singleton();
-		$view->injectPostEditURLParams( $sectionAnchor, $extraQuery );
+		// Note: $wgArticle sometimes not set here
+		if ( FlaggedArticleView::globalArticleInstance() != null ) {
+			$view = FlaggedArticleView::singleton();
+			$view->injectPostEditURLParams( $sectionAnchor, $extraQuery );
+		}
 		return true;
 	}
 
@@ -2060,6 +2060,12 @@ class FlaggedRevsHooks {
 				$errorMsg = wfMsg( $status ); // some error message
 			}
 		}
+		return true;
+	}
+
+	public static function getUnitTests( &$files ) {
+		$files[] = dirname( __FILE__ ) . '/maintenance/tests/FRInclusionManagerTest.php';
+		$files[] = dirname( __FILE__ ) . '/maintenance/tests/FRUserCountersTest.php';
 		return true;
 	}
 

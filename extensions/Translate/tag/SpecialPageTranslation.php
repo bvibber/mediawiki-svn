@@ -60,7 +60,7 @@ class SpecialPageTranslation extends SpecialPage {
 			$page = TranslatablePage::newFromTitle( $title );
 			$page->removeTags();
 			$page->getTitle()->invalidateCache();
-			global $wgUser;
+
 			$logger = new LogPage( 'pagetranslation' );
 			$params = array( 'user' => $wgUser->getName() );
 			$logger->addEntry( 'unmark', $page->getTitle(), null, array( serialize( $params ) ) );
@@ -337,7 +337,7 @@ class SpecialPageTranslation extends SpecialPage {
 
 	/** Displays the sections and changes for the user to review */
 	public function showPage( TranslatablePage $page, Array $sections ) {
-		global $wgOut, $wgScript, $wgLang;
+		global $wgOut;
 
 		$wgOut->setSubtitle( $this->user->getSkin()->link( $page->getTitle() ) );
 		TranslateUtils::injectCSS();
@@ -485,7 +485,7 @@ class SpecialPageTranslation extends SpecialPage {
 
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'translate_sections', array( 'trs_page' => $page->getTitle()->getArticleId() ), __METHOD__ );
-		$ok = $dbw->insert( 'translate_sections', $inserts, __METHOD__ );
+		$dbw->insert( 'translate_sections', $inserts, __METHOD__ );
 
 		/* Stores the names of changed sections in the database.
 		 * Used for calculating completion percentages for outdated messages */

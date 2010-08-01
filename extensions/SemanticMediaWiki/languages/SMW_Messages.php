@@ -2713,6 +2713,8 @@ Si el problema persiste después de pasado algún tiempo, solicita al administra
 	'smw_paramdesc_sep' => 'El separador para los valores',
 	'smw_paramdesc_template' => 'El nombre de la plantilla con la que se mostrará la vista de impresión',
 	'smw_paramdesc_columns' => 'El número de columnas donde se muestran los resultados (el predeterminado es $1)',
+	'smw_paramdesc_introtemplate' => 'El nombre de una plantilla a mostrar antes de los resultados de la consulta, si hay alguna',
+	'smw_paramdesc_outrotemplate' => 'El nombre de una plantilla a mostrar después de los resultados de la consulta, si hay alguna',
 	'smw_paramdesc_embedformat' => 'La etiqueta HTML usada para definir encabezados',
 	'smw_paramdesc_embedonly' => 'No mostrar encabezados',
 	'smw_paramdesc_rsstitle' => 'Texto a ser usado como título del canal',
@@ -4874,6 +4876,7 @@ Progresso estimate del actualisation currente:',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author IvanLanin
  * @author Rex
@@ -4919,6 +4922,9 @@ Jika masalah ini tidak hilang setelah beberapa waktu, mintalah pengelola situs u
 	'smw_paramdesc_sep' => 'Pemisah untuk nilai',
 	'smw_paramdesc_template' => 'Nama templat yang digunakan untuk menampilkan cetakan',
 	'smw_paramdesc_columns' => 'Jumlah kolom untuk menampilkan hasil (bawaannya adalah $1)',
+	'smw_paramdesc_userparam' => 'Sebuah nilai dimasukkan ke setiap pencarian templat, bila sebuah templat digunakan',
+	'smw_paramdesc_introtemplate' => 'Nama templat yang ditampilkan sebelum hasil pencarian, bila ada',
+	'smw_paramdesc_outrotemplate' => 'Nama templat yang ditampilkan setelah hasil pencarian, bila ada',
 	'smw_paramdesc_embedformat' => 'Tag HTML yang digunakan untuk menentukan judul',
 	'smw_paramdesc_embedonly' => 'Jangan tampilkan judul',
 	'smw_paramdesc_rsstitle' => 'Tulisan yang digunakan sebagai judul umpan',
@@ -4945,6 +4951,7 @@ Jika masalah ini tidak hilang setelah beberapa waktu, mintalah pengelola situs u
 	'smw_nofloat' => '"$1" bukan angka.',
 	'smw_infinite' => 'Angka sebesar "$1" tidak didukung.',
 	'smw_infinite_unit' => 'Konversi menjadi unit "$1" menghasilkan suatu angka yang terlalu besar.',
+	'smw_novalues' => 'Tidak ada nilai yang disebutkan.',
 	'smw_unsupportedprefix' => 'Awalan untuk angka ("$1") tidak didukung.',
 	'smw_unsupportedunit' => 'Konversi unit untuk unit "$1" tidak didukung.',
 	'smw_nodatetime' => 'Tanggal "$1" tidak dipahami.',
@@ -5118,7 +5125,7 @@ $messages['ig'] = array(
 	'smw_printername_count' => 'güó ihe futárá',
 	'smw_printername_list' => 'Ndetu',
 	'smw_printername_table' => 'Agada',
-	'smw_printername_template' => 'Nkpurụ ihü',
+	'smw_printername_template' => 'Àtụ',
 );
 
 /** Ido (Ido)
@@ -7546,6 +7553,7 @@ $messages['os'] = array(
 $messages['pdc'] = array(
 	'smw_finallistconjunct' => ' unn',
 	'smw_printername_list' => 'Lischt',
+	'smw_printername_template' => 'Moddel',
 	'smw_true_words' => 'ya,yes,true',
 	'smw_false_words' => 'nee,no,false',
 	'smw_nofloat' => '„$1“ iss ken Zehl.',
@@ -8255,6 +8263,7 @@ Progresso estimado da actualização em curso:",
  * @author 555
  * @author Eduardo.mps
  * @author GKnedo
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
@@ -8275,6 +8284,7 @@ $messages['pt-br'] = array(
 	'smw_no_concept_namespace' => 'Conceitos só podem ser definidos em páginas no domínio Conceito:.',
 	'smw_multiple_concepts' => 'Cada página de conceito pode ter apenas uma definição de conceito.',
 	'smw_concept_cache_miss' => 'O conceito "$1" não poderá ser utilizado neste momento, uma vez que a configuração deste wiki necessita ser refeita off-line. Caso o problema não seja resolvido automaticamente dentro de algum tempo, peça a um administrador deste wiki que este conceito seja disponibilizado.',
+	'smw_noinvannot' => 'Valores não podem ser atribuídos a propriedades inversas.',
 	'smw_baduri' => 'URIs na forma de "$1" não são permitidos.',
 	'smw_printername_auto' => 'Automático',
 	'smw_printername_count' => 'Contar resultados',
@@ -8289,6 +8299,24 @@ $messages['pt-br'] = array(
 	'smw_printername_table' => 'Tabela',
 	'smw_printername_broadtable' => 'Tabela ampla',
 	'smw_printername_template' => 'Predefinição',
+	'smw_paramdesc_limit' => 'O número máximo de resultados a devolver',
+	'smw_paramdesc_headers' => 'Apresentar os nomes dos cabeçalhos e propriedades',
+	'smw_paramdesc_mainlabel' => 'A etiqueta a atribuir ao nome da página principal',
+	'smw_paramdesc_link' => 'Apresentar os valores na forma de links',
+	'smw_paramdesc_intro' => 'O texto a apresentar antes dos resultados da consulta, caso existam',
+	'smw_paramdesc_outro' => 'O texto a apresentar após os resultados da consulta, caso existam',
+	'smw_paramdesc_default' => 'O texto a apresentar se a consulta não produzir resultados',
+	'smw_paramdesc_searchlabel' => 'O texto no link para os resultados',
+	'smw_paramdesc_sep' => 'O separador de valores',
+	'smw_paramdesc_template' => 'O nome da predefinição com a qual são apresentadas as impressões',
+	'smw_paramdesc_columns' => 'O número de colunas em que os resultados serão apresentados (por padrão, $1)',
+	'smw_paramdesc_userparam' => 'Um valor fornecido a cada chamada da predefinição, se for usada uma predefinição',
+	'smw_paramdesc_introtemplate' => 'O nome de uma predefinição para apresentar antes dos resultados da consulta, se existirem',
+	'smw_paramdesc_outrotemplate' => 'O nome de uma predefinição para apresentar após os resultados da consulta, se existirem',
+	'smw_paramdesc_embedformat' => 'O elemento HTML usado para definir cabeçalhos',
+	'smw_paramdesc_embedonly' => 'Não mostrar cabeçalhos',
+	'smw_paramdesc_rsstitle' => 'O texto que será usado como título do feed',
+	'smw_paramdesc_rssdescription' => 'O texto que será usado como descrição do feed',
 	'smw_iq_disabled' => 'Consultas semânticas foram desativadas neste wiki.',
 	'smw_iq_moreresults' => '… mais resultados',
 	'smw_iq_nojs' => 'Por favor, use um navegador com JavaScript ativado para visualizar este elemento.',
@@ -8311,6 +8339,7 @@ $messages['pt-br'] = array(
 	'smw_nofloat' => '“$1” não é um número.',
 	'smw_infinite' => 'Números tão grandes como "$1" não são suportados.',
 	'smw_infinite_unit' => 'A conversão para a unidade "$1" resultou num número grande demais.',
+	'smw_novalues' => 'Não foram especificados valores.',
 	'smw_unsupportedprefix' => 'Prefixos em números ("$1") não são suportados.',
 	'smw_unsupportedunit' => 'Conversão de unidade para unidade "$1" não suportada.',
 	'smw_nodatetime' => 'A data “$1” não foi compreendida.',
@@ -8327,6 +8356,8 @@ Os resultados podem não ser os esperados.',
 	'smw_badtitle' => 'Desculpe, mas "$1" não é um título de página válido.',
 	'smw_badqueryatom' => 'Alguma parte "<nowiki>[[…]]</nowiki>" da consulta não foi compreendida.',
 	'smw_propvalueproblem' => 'O valor da propriedade "$1" não foi compreendido.',
+	'smw_noqueryfeature' => 'Uma característica da consulta não é suportada nesta wiki e parte da consulta foi descartada ($1).',
+	'smw_noconjunctions' => 'Conjunções em consultas não são suportadas nesta wiki e parte da consulta foi descartada ($1).',
 	'smw_notemplategiven' => 'Providencie um valor para o parâmetro "template" para o formato desta consulta funcionar.',
 	'smw_type_header' => 'Propriedades do tipo "$1"',
 	'smw_typearticlecount' => 'Exibindo $1 {{PLURAL:$1|propriedade que usa|propriedades que usam}} este tipo.',
@@ -10772,6 +10803,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
  * @author Gzdavidwong
  * @author Sheepy
  * @author Wrightbus
@@ -10897,6 +10929,7 @@ $messages['zh-hant'] = array(
 	'smw_unusedproperty_template' => '類型為$2的屬性$1',
 	'wantedproperties' => '需要的屬性',
 	'smw_wantedproperties_docu' => '以下屬性已在本維基中使用，但是尚未創建描述頁面。',
+	'smw_wantedproperty_template' => '$1 ($2 {{PLURAL:$2|use|使用}})',
 	'tooltip-purge' => '點擊這裡更新頁面的所有查詢和模板',
 	'smw_purge' => '更新',
 	'types' => '類型',
@@ -10909,6 +10942,8 @@ $messages['zh-hant'] = array(
 	'smw_ask_ascorder' => '升序',
 	'smw_ask_descorder' => '降序',
 	'smw_ask_submit' => '搜索結果',
+	'smw_ask_editquery' => '[編輯查詢]',
+	'smw_add_sortcondition' => '[添加排序條件]',
 	'smw_ask_hidequery' => '隱藏查詢',
 	'smw_ask_help' => '查詢幫助',
 	'smw_ask_queryhead' => '查詢',

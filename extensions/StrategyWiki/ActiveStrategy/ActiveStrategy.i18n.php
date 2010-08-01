@@ -400,6 +400,13 @@ $messages['tr'] = array(
 	'nedits' => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'nedits' => '$1 {{PLURAL:$1|редагування|редагування|редагувань}}',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

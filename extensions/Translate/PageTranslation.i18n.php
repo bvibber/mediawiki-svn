@@ -1080,6 +1080,11 @@ Tekst wótrězka: <pre>$1</pre>',
 	'pt-movepage-action-check' => 'Kontrolěrowaś, lěc pśesunjenje jo móžno',
 	'pt-movepage-action-perform' => 'Pśesunuś',
 	'pt-movepage-action-other' => 'Cel změniś',
+	'pt-movepage-intro' => 'Toś ten specialny bok dowólujo śi boki pśesunuś, kótarež sz za pśełožk markěrowane.
+Pśesunjenje njebuźo se ned staś, dokulaž wjele bokow muse se pśesunuś.
+Cakański rěd buźo se wužywaś, aby se boki pśesunuli.
+Mjaztym až boki se pśesuwaju,  njejo móžno z wótpowědnymi bokami interagěrowaś.
+Zmólki budu se protokolěrowaś w pséłožowańskem protokolu a muse se manuelnje wótpóraś.',
 	'pt-movepage-logreason' => 'Źěl pśełožujobnego boka $1.',
 	'pt-movepage-started' => 'Zakładny bok jo něnto pśesunjony.
 Pšosym pśekontrolěruj pśełožowański protokol boka za zmólkami a pśewjeźeńsku powěźeńku.',
@@ -1230,6 +1235,7 @@ pero la última versión no puede ser marcada para traducción.',
 Esta página es una traducción de la página [[$1]] y la traducción puede ser actualizada usando [$2 la herramienta de traducción].',
 	'tpt-unknown-page' => 'Este espacio de nombre está reservado para traducciones de páginas de contenido.
 La página que estás tratando de editar no parece corresponder con alguna página marcada para traducción.',
+	'tpt-delete-impossible' => 'Borrado de páginas marcadas para traducción aún no es posible.',
 	'tpt-install' => 'Corra maintenance/update.php o instale desde la web para activar las funciones de traducción.',
 	'tpt-render-summary' => 'Actualizando para hallar una nueva versión de la página fuente',
 	'tpt-download-page' => 'Exportar página con traducciones',
@@ -1248,6 +1254,18 @@ Texto de sección: <pre>$1</pre>',
 	'pt-log-name' => 'Registro de traducción de página',
 	'pt-log-mark' => 'Revisión {{GENDER:$2|marcada}} $3 de página "[[:$1]]" para traducción',
 	'pt-log-unmark' => 'Revisión {{GENDER:$2|marcada}} de página "[[:$1]]" para traducción',
+	'pt-log-moveok' => '{{GENDER:$2|completado}} renombrado de página traducible $1 a un nuevo nombre',
+	'pt-log-movenok' => '{{GENDER:$2|encontrado}} un problema mientras se movía [[:$1]] a [[:$3]]',
+	'pt-movepage-title' => 'Mover página traducible $1',
+	'pt-movepage-blockers' => 'La página traducible no puede ser movida a un nuevo nombre por los siguientes {{PLURAL:$1|error|errores}}:',
+	'pt-movepage-block-base-exists' => 'La página base de destino [[:$1]] existe.',
+	'pt-movepage-block-base-invalid' => 'La página base de destino no es un título válido.',
+	'pt-movepage-block-tp-exists' => 'La página de traducción de destino [[:$2]] existe.',
+	'pt-movepage-block-tp-invalid' => 'El título de la página de traducción de destino para [[:$1]] sería inválido (demasiado largo?).',
+	'pt-movepage-block-section-exists' => 'La sección de página de destino [[:$2]] existe.',
+	'pt-movepage-block-section-invalid' => 'El título de sección de página de destino para [[:$1]] sería inválido (demasiado largo?).',
+	'pt-movepage-block-subpage-exists' => 'La subpágina de destino [[:$2]] existe.',
+	'pt-movepage-block-subpage-invalid' => 'El título de subpágina de destino para [[:$1]] sería inválido (demasiado largo?).',
 	'pt-movepage-list-pages' => 'Lista de páginas a mover',
 	'pt-movepage-list-translation' => 'Páginas de traducción',
 	'pt-movepage-list-section' => 'Páginas de sección',
@@ -1261,6 +1279,15 @@ Texto de sección: <pre>$1</pre>',
 	'pt-movepage-action-check' => 'Verificar si el movimiento es posible',
 	'pt-movepage-action-perform' => 'Hacer el movimiento',
 	'pt-movepage-action-other' => 'Cambiar destino',
+	'pt-movepage-intro' => 'Esta página especial te permite mover páginas que están marcadas para traducción.
+La acción de mover no será instantánea, porque muchas páginas necesitarán ser movidas.
+La cola de trabajo será usada para mover las páginas.
+Cuando la página está siendo movida, no esposible interactuar con la páginas en cuestión.
+Las fallas serán registradas en la página de registro de traducción y necesitarán ser reparadas manualmente.',
+	'pt-movepage-logreason' => 'Parte de la página traducible $1.',
+	'pt-movepage-started' => 'La página base está ahora movida.
+Por favor verifica el registro de traducción de página para errores y mensaje de conclusión.',
+	'pt-locked-page' => 'Esta página está bloqueada porque la página traducible está siendo movida actualmente.',
 );
 
 /** Estonian (Eesti)
@@ -2520,11 +2547,13 @@ Text vum Abschnitt: <pre>$1</pre>',
 	'pt-log-mark' => '{{GENDER:$2|huet}} d\'Versioun $3 vun der Säit "[[:$1]]" fir z\'iwwersetze markéiert',
 	'pt-log-unmark' => '{{GENDER:$2|huet}} d\'Säit "[[:$1]]" vun der Iwwersetzung ewechgeholl',
 	'pt-movepage-title' => 'Déi iwwersetzbar Säit $1 réckelen',
+	'pt-movepage-blockers' => 'déi iwwersetzbar Säit kann net op den neien Numm geréckelt gi wéinst {{PLURAL:$1|dësem|dëse}} Feeler:',
 	'pt-movepage-block-base-exists' => "D'Basiszilsäit [[:$1]] gëtt et schonn.",
 	'pt-movepage-block-base-invalid' => "D'Basiszilsäit huet kee valabelen Titel.",
 	'pt-movepage-block-tp-exists' => "D'Iwwersetzungszilsäit [[:$2]] gëtt et schonn.",
 	'pt-movepage-list-pages' => 'Lëscht vun de Säite fir ze réckelen',
 	'pt-movepage-list-translation' => 'Iwwersetzungssäiten',
+	'pt-movepage-list-section' => 'Abschnitter vu Säiten',
 	'pt-movepage-list-other' => 'Aner Ënnersäiten',
 	'pt-movepage-list-count' => 'Am ganzen $1 {{PLURAL:$1|Säit|Säite}} fir ze réckelen.',
 	'pt-movepage-legend' => 'Iwwersetzbar Säit réckelen',
@@ -3427,6 +3456,7 @@ $messages['rm'] = array(
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'pagetranslation' => 'Traducerea paginii',
@@ -3441,7 +3471,8 @@ Nume: $1',
 	'tpt-submit' => 'Marchează această versiune pentru traducere',
 	'tpt-sections-oldnew' => 'Unități de traducere noi și existente',
 	'tpt-sections-deleted' => 'Unități de traducere șterse',
-	'tpt-badsect' => '"$1" nu este un nume valid pentru unitatea de traducere $2.',
+	'tpt-nosuchpage' => 'Pagina $1 nu există',
+	'tpt-badsect' => '„$1” nu este un nume valid pentru unitatea de traducere $2.',
 	'tpt-mark-summary' => 'Marcat această versiune pentru traducere',
 	'tpt-already-marked' => 'Ultima versiune a acestei pagini a fost deja marcată pentru traducere.',
 	'tpt-list-nopages' => 'Nici o pagină nu este marcată pentru traducere sau gata să fie marcată pentru traducere.',
@@ -4320,8 +4351,8 @@ Phần văn bản: <pre>$1</pre>',
 	'pt-log-name' => 'Nhật trình dịch trang',
 	'pt-log-mark' => '{{GENDER:$2|}}đã đánh dấu phiên bản $3 của trang “[[:$1]]” là cần được dịch',
 	'pt-log-unmark' => '{{GENDER:$2|đã di chuyển}} trang "[[:$1]]" từ bản dịch',
-	'pt-log-moveok' => 'đã hoàn thành việc đổi tên của trang dịch được $1',
-	'pt-log-movenok' => 'đã gặp vấn đề trong khi di chuyển [[:$1]] đến [[:$3]]',
+	'pt-log-moveok' => '{{GENDER:$2|}}đã hoàn thành việc đổi tên của trang dịch được $1',
+	'pt-log-movenok' => '{{GENDER:$2|}}đã gặp vấn đề trong khi di chuyển [[:$1]] đến [[:$3]]',
 	'pt-movepage-title' => 'Di chuyển trang dịch được $1',
 	'pt-movepage-blockers' => 'Trang dịch được không thể được đổi tên vì {{PLURAL:$1|lỗi|các lỗi}} sau:',
 	'pt-movepage-list-pages' => 'Danh sách trang để di chuyển',

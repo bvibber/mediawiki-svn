@@ -298,7 +298,7 @@ class SMWSQLStore2 extends SMWStore {
 	 *
 	 * @param $id
 	 * @param $object
-	 * @param $proptable
+	 * @param SMWSQLStore2Table $proptable
 	 * @param boolean $issubject
 	 * @param SMWRequestOptions $requestoptions
 	 *
@@ -2261,7 +2261,11 @@ class SMWSQLStore2 extends SMWStore {
 		$fname = 'SMW::deleteSemanticData';
 		$id = $this->getSMWPageID( $subject->getDBkey(), $subject->getNamespace(), $subject->getInterwiki(), false );
 
-		if ( $id == 0 ) return; // not (directly) used anywhere yet, maybe a redirect but we do not care here
+		if ( $id == 0 ) {
+			// not (directly) used anywhere yet, may be a redirect but we do not care here
+			wfRunHooks( 'smwDeleteSemanticData', array( $subject ) );
+			return;
+		}
 
 		foreach ( self::getPropertyTables() as $proptable ) {
 			if ( $proptable->idsubject ) {

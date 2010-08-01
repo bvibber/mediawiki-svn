@@ -143,6 +143,13 @@ $messages['ja'] = array(
 	'wikimediamobile-desc' => 'ウィキメディア・モバイルプロジェクト用の MediaWiki サポート機能。http://github.com/hcatlin/wikimedia-mobile でホストされています。',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'wikimediamobile-desc' => 'De Funxiohne för et Wikimedia-Mobil-Projek ze öngershtöze, di op http://github.com/hcatlin/wikimedia-mobile lijje.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -214,6 +221,20 @@ $messages['pt-br'] = array(
 	'wikimediamobile-desc' => 'Funções de apoio do MediaWiki para o projeto Wikimedia-móvel disponível em http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'wikimediamobile-desc' => 'MediaWiki suportă funcții pentru proiectul Wikimedia mobilă găzduit la http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'wikimediamobile-desc' => "Le funziune de supporte de MediaUicchi pe 'u proggette UicchiMedia-mobile ospitate sus a http://github.com/hcatlin/wikimedia-mobile",
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -254,5 +275,12 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'wikimediamobile-desc' => 'Các hàm MediaWiki hỗ trợ dự án Wikimedia Di động được đăng cai tại http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
+ */
+$messages['zh-hant'] = array(
+	'wikimediamobile-desc' => 'MediaWiki支援Wikimedia-mobile職能計畫，請至http://github.com/hcatlin/wikimedia-mobile',
 );
 

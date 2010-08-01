@@ -38,10 +38,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Purodha
  */
 $messages['qqq'] = array(
-	'badimages' => '{{Identical|Bad image list}}',
+	'badimages' => "It appears that 'bad' refers to images on a blacklist - see the extension [http://www.mediawiki.org/wiki/Extension:Bad_Image_List Bad Image List].
+
+{{Identical|Bad image list}}",
 	'badimage-desc' => 'Shown in [[Special:Version]]',
 	'badimages-add-btn' => '{{Identical|Add}}',
 	'badimages-name' => '{{Identical|Name}}',
@@ -461,14 +464,15 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'badimages' => 'Rhestr o ddelweddi gwael',
-	'badimage-desc' => 'Ymestyn galluoedd y rhestr o ddelweddi gwael o MediaWiki',
+	'badimages' => 'Y rhestr o ddelweddau gwaharddedig',
+	'badimage-desc' => "Yn ymestyn y modd o ddefnyddio'r rhestr o ddelweddau gwaharddedig ar MediaWiki",
 	'badimages-add-btn' => 'Ychwanegu',
 	'badimages-added' => "Ychwanegwyd $1 i'r rhestr.",
-	'badimages-count' => "{{PLURAL:$1|Ceir|Ceir}} '''$1''' {{PLURAL:$1|delwedd|o ddelweddi}} ar y rhestr o ddelweddi gwael.",
+	'badimages-count' => "{{PLURAL:$1|Nid oes unrhyw ddelweddau|Mae '''$1''' ddelwedd|Mae '''$1''' ddelwedd|Mae '''$1''' delwedd|Mae '''$1''' o ddelweddau|Mae '''$1''' o ddelweddau}} ar y rhestr o ddelweddau gwaharddedig.",
 	'badimages-name' => 'Enw:',
 	'badimages-not-added' => "Nid oedd dim modd ychwanegu'r ddelwedd.",
 	'badimages-not-removed' => "Nid oedd dim modd tynnu'r ddelwedd.",

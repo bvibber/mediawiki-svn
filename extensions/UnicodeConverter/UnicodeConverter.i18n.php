@@ -700,9 +700,11 @@ $messages['ru'] = array(
 /** Sinhala (සිංහල)
  * @author Calcey
  * @author චතුනි අලහප්පෙරුම
+ * @author තඹරු විජේසේකර
  */
 $messages['si'] = array(
 	'unicodeconverter' => 'යුනිකේත පරිවර්තකය',
+	'unicodeconverter-desc' => 'විශේෂ පිටු මොඩියුලයකට සරල උදාහරණයකි. [[වි‍ශේෂ පිටු:යුනිකේතපරිවර්තකය|වචනය UTF-8]], එය HTML ඇතුළු කිරීම් ISO 8859-1 වෙබ් පිටුවක් සඳහා පරිවර්තනයට සුදුසු වේ.',
 	'unicodeconverter-ok' => 'හරි',
 	'unicodeconverter-oldtext' => 'මුල් පෙළ:',
 	'unicodeconverter-newtext' => 'පරිවර්ත්‍ය පෙළ:',

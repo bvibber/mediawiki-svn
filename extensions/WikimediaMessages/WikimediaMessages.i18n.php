@@ -2644,12 +2644,14 @@ $messages['eu'] = array(
 	'group-bigexport-member' => 'esportatzaile handia',
 	'group-confirmed-member' => 'egiaztatutako erabiltzailea',
 	'group-editprotected-member' => 'babestutako orrien editorea',
+	'group-filemover-member' => 'fitxategi mugitzaileak',
 	'group-flood-member' => 'bot erabiltzaileak',
 	'group-founder-member' => 'fundatzailea',
 	'group-import-member' => 'inportatzailea',
 	'group-interface_editors-member' => 'interfazeko editorea',
 	'group-ipblock-exempt-member' => 'IP blokeo salbuespena',
 	'group-patroller-member' => 'patruilaria',
+	'group-researcher-member' => 'ikertzailea',
 	'group-rollbacker-member' => 'desegin dezake',
 	'group-transwiki-member' => 'transwiki inportatzailea',
 	'group-trusted-member' => 'Konfiantzazko lankidea',
@@ -2661,11 +2663,13 @@ $messages['eu'] = array(
 	'grouppage-bigexport' => '{{ns:project}}:Esportatzaile handiak',
 	'grouppage-confirmed' => '{{ns:project}}:Egiaztatutako erabiltzaileak',
 	'grouppage-editprotected' => '{{ns:project}}:Babestutako orrien editoreak',
+	'grouppage-filemover' => '{{ns:project}}:Fitxategi mugitzaileak',
 	'grouppage-flood' => '{{ns:project}}:Bot lankideak',
 	'grouppage-founder' => '{{ns:project}}:Fundatzaileak',
 	'grouppage-import' => '{{ns:project}}:Inportatzaileak',
 	'grouppage-interface_editors' => '{{ns:project}}:Interfazeko editoreak',
 	'grouppage-ipblock-exempt' => '{{ns:project}}:IP blokeo salbuespenak',
+	'grouppage-researcher' => '{{ns:project}}:Ikertzaileak',
 	'grouppage-rollbacker' => '{{ns:project}}:Desegin dezakete',
 	'grouppage-transwiki' => '{{ns:project}}:Transwiki inportatzaileak',
 	'grouppage-trusted' => '{{ns:project}}:Konfiantzazko lankideak',
@@ -4365,6 +4369,13 @@ $messages['ig'] = array(
 	'group-patroller-member' => 'onye na léfuru ihe anyà',
 	'group-rollbacker-member' => 'onye-na-fifie-azú',
 	'group-Staff-member' => 'ndi na rüoru nga',
+	'wikimedia-copyright' => 'Édé nọr okpúrù <a href="http://creativecommons.org/licenses/by-sa/3.0/">Mmẹ Òkike Tu ụta Ñkịtị</a>; ihe ejị ẹ kwenye nọr kwa.
+Lé <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Nkwenye maka Í me ihe</a> maka ihe ozor Í gi má.',
+	'wikimedia-copyrightwarning' => 'Na Í donyé, Í kwè na Í gi nyé ihe Í mèrè na nke I nweriki wefụ na okpúrù [http://creativecommons.org/licenses/by-sa/3.0/ Mmẹ Òkike Tu ụta Ñkịtị/Gbásaa-Kà Édéíwu 3.0] na [http://www.gnu.org/copyleft/fdl.html GFDL].
+Í kwèrè na ndi madu na rürü gi nye gi kpó áhà gi, na nke ntà há gí me, shí njikodo intanet ma URL Í gi ga ihü Í rürü nà.
+Lé [http://wikimediafoundation.org/wiki/Terms_of_Use Nkwenye maka Í me ihe] maka ihe ozor Í gi má.',
+	'wikimedia-editpage-tos-summary' => 'Mà íchórị kà ha rü na élú na Í gbásaa ihe Í dèrè na mbgèowula, é tìkwàlà ya ngạ.
+Ó bú nà Í dégị ihe á na onwé gí, o gị dị na okpúrù ihe nkwenye di na ọma na [http://wikimediafoundation.org/wiki/Terms_of_Use Nkwenye maka Í me ihe], na Í kwèrè Í só akwụkwọ íwu nkeowulà di mkpà.',
 );
 
 /** Eastern Canadian (Unified Canadian Aboriginal Syllabics) (ᐃᓄᒃᑎᑐᑦ) */
@@ -5343,6 +5354,7 @@ $messages['li'] = array(
 	'group-confirmed' => 'Gekonférmeerde gebroekers',
 	'group-editprotected' => 'Beveiligingsómzeilers',
 	'group-filemover' => 'Bestandjsverplaatsers',
+	'group-flood' => 'Bots',
 	'group-founder' => 'Gróndlègkers',
 	'group-import' => 'Importäörs',
 	'group-ipblock-exempt' => 'Oetgezunjerde van IP-adresblokkades',
@@ -5357,6 +5369,7 @@ $messages['li'] = array(
 	'group-confirmed-member' => 'Gekonférmeerde gebroeker',
 	'group-editprotected-member' => 'beveiligingsómzeiler',
 	'group-filemover-member' => 'bestandjsverplaatser',
+	'group-flood-member' => 'bot',
 	'group-founder-member' => 'Gróndlègker',
 	'group-import-member' => 'Importäör',
 	'group-ipblock-exempt-member' => 'Oetgezunjerde van IP-adresblokkades',
@@ -5371,6 +5384,7 @@ $messages['li'] = array(
 	'grouppage-confirmed' => '{{ns:project}}:Gekonférmeerde gebroekers',
 	'grouppage-editprotected' => '{{ns:project}}:Beveiligingsómzeilers',
 	'grouppage-filemover' => '{{ns:project}}:Bestandjsverplaatsers',
+	'grouppage-flood' => '{{ns:project}}:Bots',
 	'grouppage-founder' => '{{ns:project}}:Gróndlègkers',
 	'grouppage-import' => '{{ns:project}}:Importäörs',
 	'grouppage-ipblock-exempt' => '{{ns:project}}:Oetgezunjerde van IP-adresblokkades',
@@ -5723,7 +5737,7 @@ $messages['mi'] = array(
  */
 $messages['mk'] = array(
 	'wikimediamessages-desc' => 'Пораки кои се однесуваат на Викимедија',
-	'sitesupport-url' => 'http://wikimediafoundation.org/wiki/Donate/Now/mk?utm_source=donate&utm_medium=sidebar&utm_campaign=spontaneous_donation',
+	'sitesupport-url' => 'http://wikimediafoundation.org/wiki/Donate/mk',
 	'sitesupport' => 'Донации',
 	'tooltip-n-sitesupport' => 'Поддржете нè',
 	'specialpages-group-contribution' => 'Придонеси/Обезб. средства',
@@ -5740,7 +5754,7 @@ $messages['mk'] = array(
 	'group-founder' => 'Основачи',
 	'group-import' => 'Увoзници',
 	'group-interface_editors' => 'Уредници на посредникот',
-	'group-ipblock-exempt' => 'IP блок исклучоци',
+	'group-ipblock-exempt' => 'Исклучоци од IP-блокирање',
 	'group-patroller' => 'Патролирачи',
 	'group-researcher' => 'Истражувачи',
 	'group-rollbacker' => 'Враќачи',
@@ -9990,10 +10004,14 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
+	'wikimediamessages-desc' => 'Àwọn ìránṣẹ́ Wikimedia nìkan',
 	'sitesupport' => 'Ṣe ìgbọ̀wọ́',
 	'tooltip-n-sitesupport' => 'Tíwálẹ́yìn',
 	'wikimedia-copyright' => 'Gbogbo ìkọ wà lábẹ́ <a href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution/Share-Alike License</a>; ó ṣe é ṣe kí àwọn ọ̀rọ̀ àdéhùn míràn tún wà.
 Ẹ wo <a href="http://wikimediafoundation.org/wiki/Terms_of_Use">Àwọn Ọ̀rọ̀ Àdéhùn Ìlò</a> fún ẹ̀kúnrẹ́rẹ́.',
+	'wikimedia-copyrightwarning' => 'Nípa mímúpamọ́, ẹ gbà láláìṣeédápadà láti fi àfikún yín sílẹ̀ lábẹ́ [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike License 3.0] àti [http://www.gnu.org/copyleft/fdl.html GFDL].
+Ẹ gbà kí àwọn olùtúnlò míràn, o kéréjù pelú ìjápò tàbí URL sí ojúewé tí ẹ ṣàfikún sí, pe kí wọn ó dárúkọ yín.
+Ẹ wo [http://wikimediafoundation.org/wiki/Terms_of_Use Àwọn Ọ̀rọ̀ Àdéhùn Ìlò] fún ẹ̀kúnrẹ́rẹ́.',
 );
 
 /** Cantonese (粵語)

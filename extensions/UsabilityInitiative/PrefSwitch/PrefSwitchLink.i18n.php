@@ -290,7 +290,7 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'prefswitch-link-anon' => 'Uudet ominaisuudet',
 	'tooltip-pt-prefswitch-link-anon' => 'Lisätietoja uusista ominaisuuksista',
-	'prefswitch-link-on' => 'Palaa takaisin',
+	'prefswitch-link-on' => 'Palaa vanhaan versioon',
 	'tooltip-pt-prefswitch-link-on' => 'Poista käytöstä uudet omaisuudet',
 	'prefswitch-link-off' => 'Uudet ominaisuudet',
 	'tooltip-pt-prefswitch-link-off' => 'Kokeile uusia ominaisuuksia',
@@ -531,9 +531,19 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'prefswitch-link-anon' => 'नवीन वैशीष्ट्ये',
+	'tooltip-pt-prefswitch-link-anon' => '↓ नविन चेहरामोहरा जाणुन घ्या',
+	'prefswitch-link-on' => '↓ परत फिरा 
+↓ माघारी जा',
+	'tooltip-pt-prefswitch-link-on' => '↓ नविन चेहरामोहरा अशक्य करा',
+	'prefswitch-link-off' => '↓ नविन चेहेरेपट्टी
+↓बीटा चेहेरेपट्टी',
+	'tooltip-pt-prefswitch-link-off' => '↓ आमचा नविन चेहरामोहरा वापरुन बघा
+
+↓ आमचा नविन बीटा चेहरामोहरा वापरुन बघा',
 );
 
 /** Maltese (Malti)
@@ -784,7 +794,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'prefswitch-link-anon' => 'Zana mpya',
-	'tooltip-pt-prefswitch-link-anon' => 'Soma juu ya mtindo na zana mpya',
+	'tooltip-pt-prefswitch-link-anon' => 'Jifunze kuhusu zana mpya',
 	'prefswitch-link-on' => 'Nirudishe',
 	'tooltip-pt-prefswitch-link-on' => 'Zima zana mpya',
 	'prefswitch-link-off' => 'Zana mpya',
@@ -813,6 +823,14 @@ $messages['th'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'ปิดใช้งานคุณลักษณะใหม่',
 	'prefswitch-link-off' => 'คุณลักษณะใหม่',
 	'tooltip-pt-prefswitch-link-off' => 'ลองใช้คุณลักษณะใหม่',
+);
+
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'prefswitch-link-anon' => 'Täze funksiýalar',
+	'prefswitch-link-off' => 'Täze funksiýalar',
 );
 
 /** Tagalog (Tagalog)

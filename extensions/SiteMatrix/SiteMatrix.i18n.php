@@ -590,12 +590,12 @@ $messages['frc'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'sitematrix' => 'Lista des vouiquis de la Fondacion Wikimedia',
-	'sitematrix-summary' => 'Ceta pâge spèciâla montre tôs los vouiquis de la Fondacion Wikimedia.',
-	'sitematrix-desc' => 'Montre una [[Special:SiteMatrix|lista des vouiquis de la Fondacion Wikimedia]].',
+	'sitematrix' => 'Lista des vouiquis de la Wikimedia Foundation',
+	'sitematrix-summary' => 'Ceta pâge spèciâla montre tôs los vouiquis de la Wikimedia Foundation.',
+	'sitematrix-desc' => 'Montre una [[Special:SiteMatrix|lista des vouiquis de la Wikimedia Foundation]].',
 	'sitematrix-language' => 'Lengoua',
 	'sitematrix-project' => 'Nom du projèt, lim entèrprojèt et lim entèrvouiqui',
-	'sitematrix-others' => 'Ôtros projèts de la Fondacion Wikimedia',
+	'sitematrix-others' => 'Ôtros projèts de la Wikimedia Foundation',
 	'sitematrix-total' => "'''Soma du compto : $1'''",
 	'sitematrix-sitetotal' => 'Soma',
 	'sitematrix-private' => 'privâ',

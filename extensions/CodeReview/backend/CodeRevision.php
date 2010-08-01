@@ -15,9 +15,9 @@ class CodeRevision {
 
 		$common = null;
 		if ( $rev->mPaths ) {
-			if ( count( $rev->mPaths ) == 1 )
+			if ( count( $rev->mPaths ) == 1 ) {
 				$common = $rev->mPaths[0]['path'];
-			else {
+			} else {
 				$first = array_shift( $rev->mPaths );
 
 				$common = explode( '/', $first['path'] );
@@ -30,9 +30,13 @@ class CodeRevision {
 						list( $compare, $common ) = array( $common, $compare );
 
 					$tmp = array();
-					foreach ( $common as $k => $v )
-						if ( $v == $compare[$k] ) $tmp[] = $v;
-						else break;
+					foreach ( $common as $k => $v ) {
+						if ( $v == $compare[$k] ) {
+							$tmp[] = $v;
+						} else {
+							break;
+						}
+					}
 					$common = $tmp;
 				}
 				$common = implode( '/', $common );
@@ -44,10 +48,12 @@ class CodeRevision {
 
 		// Check for ignored paths
 		global $wgCodeReviewDeferredPaths;
-		foreach ( $wgCodeReviewDeferredPaths as $defer ) {
-			if ( preg_match( $defer, $rev->mCommonPath ) ) {
-				$rev->mStatus = 'deferred';
-				break;
+		if ( isset( $wgCodeReviewDeferredPaths[ $repo->getName() ] ) ) {
+			foreach ( $wgCodeReviewDeferredPaths[ $repo->getName() ] as $defer ) {
+				if ( preg_match( $defer, $rev->mCommonPath ) ) {
+					$rev->mStatus = 'deferred';
+					break;
+				}
 			}
 		}
 		return $rev;
@@ -85,10 +91,10 @@ class CodeRevision {
 	}
 
 	/**
-	 * Like getIdString(), but if more than one repository is defined 
+	 * Like getIdString(), but if more than one repository is defined
 	 * on the wiki then it includes the repo name as a prefix to the revision ID
 	 * (separated with a period).
-	 * This ensures you get a unique reference, as the revision ID alone can be 
+	 * This ensures you get a unique reference, as the revision ID alone can be
 	 * confusing (e.g. in e-mails, page titles etc.).  If only one repository is
 	 * defined then this returns the same as getIdString() as there is no ambiguity.
 	 */
@@ -176,7 +182,7 @@ class CodeRevision {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Quickie protection against huuuuuuuuge batch inserts
 	 */
@@ -252,7 +258,10 @@ class CodeRevision {
 		$affectedRevs = array();
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
 			foreach ( $m[1] as $rev ) {
-				$affectedRevs[] = intval( $rev );
+				$affectedRev = intval( $rev );
+				if ( $affectedRev != $this->mId ) {
+					$affectedRevs[] = $affectedRev;
+				}
 			}
 		}
 		// Also, get previous revisions that have bugs in common...
@@ -310,7 +319,9 @@ class CodeRevision {
 			foreach ( $res as $row ) {
 				$user = $this->mRepo->authorWikiUser( $row->cr_author );
 				// User must exist on wiki and have a valid email addy
-				if ( !$user || !$user->canReceiveEmail() ) continue;
+				if ( !$user || !$user->canReceiveEmail() ) {
+					continue;
+				}
 				// Send message in receiver's language
 				$lang = array( 'language' => $user->getOption( 'language' ) );
 				$user->sendMail(
@@ -505,7 +516,7 @@ class CodeRevision {
 		}
 		return $users;
 	}
-	
+
 	public function getReferences() {
 		$refs = array();
 		$dbr = wfGetDB( DB_SLAVE );
@@ -521,7 +532,9 @@ class CodeRevision {
 			__METHOD__
 		);
 		while ( $row = $res->fetchObject() ) {
-			$refs[] = $row;
+			if ( $this->mId != intval( $row->cr_id ) ) {
+				$refs[] = $row;
+			}
 		}
 		return $refs;
 	}

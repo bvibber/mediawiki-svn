@@ -3094,13 +3094,16 @@ Dä Fähler wohr: „$1“',
 	'openidemail' => 'De e-mail Address',
 	'openidlanguage' => 'Sproch',
 	'openidtimezone' => 'Zickzohn',
+	'openidchooselegend' => 'Ußwahl vum Metmaacher singem Name',
 	'openidchooseinstructions' => 'Jede Metmaacher bruch enne Spetznam,
 Do kannß Der der Dinge unge druß üßsöke.',
+	'openidchoosenick' => 'Dinge Spezname ($1)',
 	'openidchoosefull' => 'Dinge komplätte Name ($1)',
 	'openidchooseurl' => 'Enne Name uß Dinge OpenID eruß jejreffe ($1)',
 	'openidchooseauto' => 'Enne automattesch zerääsch jemaate Name ($1)',
 	'openidchoosemanual' => 'Ene Name, dä De Der sellver ußjedaach un jejovve häs:',
-	'openidchooseexisting' => 'Ene Metmaachername, dä et alld jitt op däm Wiki hee:',
+	'openidchooseexisting' => 'Ene Metmaachername, dä et alld jitt heh em Wiki',
+	'openidchooseusername' => 'Metmaachername:',
 	'openidchoosepassword' => 'Paßwoot:',
 	'openidconvertinstructions' => 'He kanns De Ding Aanmeldung als ene Metmaacher esu aanpasse, dat De en <i lang="en">OpenID</i> <i lang="en">URL</i> bruche kanns.
 Do kanns och noch mieh <i lang="en">OpenID</i> <i lang="en">URLs</i> dobei donn.',
@@ -3133,11 +3136,14 @@ Et jitt en jruuße Zahl [http://wiki.openid.net/Public_OpenID_providers <span la
 ; [http://dev.aol.com/aol-and-63-million-openids AOL] : Wann de ene zohjang op [http://www.aol.com/ AOL] häß, esu jet wie ennen Zojang zom [http://www.aim.com/ AIM], do kanns de Desch hee op de {{SITENAME}} enlogge, indämm dat De de Ding <span lang="en">OpenID</span> bovve enjiß. De <span lang="en">OpenID URLs</span> fun AOL sen opjebout wi \'\'<nowiki>http://openid.aol.com/dingemetmaachername</nowiki>\'\'. Dinge Metmaacher-Name sullt uß luuter Kleinbochstave bestonn, kein Zwescheräum.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html Blogger], [http://faq.wordpress.com/2007/03/06/what-is-openid/ Wordpress.com], [http://www.livejournal.com/openid/about.bml LiveJournal], [http://bradfitz.vox.com/library/post/openid-for-vox.html Vox] : Wann de e <span lang="en">Blog</span> op einem fun dä Söövere häß, dann draach der Url fu Dingem <span lang="en">Blog</span> bovve en. Zem Beispöll: \'\'<nowiki>http://dingeblogname.blogspot.com/</nowiki>\'\', \'\'<nowiki>http://dingeblogname.wordpress.com/</nowiki>\'\', \'\'<nowiki>http://dingeblogname.livejournal.com/</nowiki>\'\', udder \'\'<nowiki>http://dingeblogname.vox.com/</nowiki>\'\'.
 <!-- -->',
-	'openidupdateuserinfo' => 'Donn ming päsöönlijje Enstellunge op der neuste Stand bränge',
+	'openidupdateuserinfo' => 'Donn ming päsöönlijje Enstellunge op der neuste Stand bränge:',
 	'openiddelete' => 'Donn de <i lang="en">OpenID</i> fott schmiiße',
 	'openiddelete-text' => 'Wann De op dä Knopp „{{int:openiddelete-button}}“ klecks, weed de <i lang="en">OpenID</i> „$1“ vun Dinge Aanmeldung heh fott jenumme.
 Dann kanns De met dä <i lang="en">OpenID</i> nit mieh heh enlogge.',
 	'openiddelete-button' => 'Lohß jonn!',
+	'openiddeleteerrornopassword' => 'Do kanns nit all Ding <i lang="en">OpenID</i>s fott schmieße, weil Dinge Zohjang kei Paßwoot hät.
+Ohne <i lang="en">OpenID</i> künnts De nit mieh enlogge.',
+	'openiddeleteerroropenidonly' => 'Do kanns nit all Ding <i lang="en">OpenID</i>s fott schmieße, weil De bloß met <i lang="en">OpenID</i>  enlogge darfß, un ohne <span i="en">OpenID</i> künnts De jaa nit mieh enlogge.',
 	'openiddelete-sucess' => 'Di <i lang="en">OpenID</i> es jäz nit mieh met Dinge Aanmeldung verbonge.',
 	'openiddelete-error' => 'Et es ene Fähler opjetrodde, wi mer di <i lang="en">OpenID</i> vun Dinge Aanmeldung fott nämme wullte.',
 	'openid-prefstext' => '[http://openid.net/ OpenID] Enstellunge',
@@ -5835,6 +5841,7 @@ OpenID可以让你不必使用不同的密码登录不同站点。
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
  * @author Gzdavidwong
  * @author Horacewai2
  * @author Liangent
@@ -5900,12 +5907,13 @@ $messages['zh-hant'] = array(
 	'openidloginlabel' => 'OpenID網址',
 	'openidlogininstructions' => '{{SITENAME}} 支持用於網站間單點登錄的[http://openid.net/ OpenID] 標準。
 OpenID可以讓你不必使用不同的密碼登錄不同站點。
-（詳情請參見[http://en.wikipedia.org/wiki/OpenID 維基百科關於 OpenID 的條目]。)
+(詳情請參見[http://zh.wikipedia.org/wiki/OpenID 維基百科關於 OpenID 的條目]。)
 
-If you already have an account on {{SITENAME}}, you can [[Special:UserLogin|log in]] with your username and password as usual.
-To use OpenID in the future, you can [[Special:OpenIDConvert|convert your account to OpenID]] after you have logged in normally.
+如果你已經在{{SITENAME}}有一個帳戶，你可以用你的帳號及密碼[[Special:UserLogin|登入]]。
 
-There are many [http://openid.net/get/ OpenID providers], and you may already have an OpenID-enabled account on another service.',
+要在未來使用OpenID，你可以在登入後[[Special:OpenIDConvert|轉換你的帳戶]]成為OpenID
+
+這裡有許多[http://openid.net/get/ OpenID提供者]，你可能已經有一個OpenID了。',
 	'openidupdateuserinfo' => '更新我的個人信息',
 	'openiddelete' => '刪除OpenID',
 	'openiddelete-text' => '當你按下"{{int:openiddelete-button}}"按鈕，你會將OpenID $1從你的戶口中移除。你以後都不可以再使用這個OpenID登入。',

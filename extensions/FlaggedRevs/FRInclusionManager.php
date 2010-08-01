@@ -12,9 +12,6 @@ class FRInclusionManager {
 
 	protected static $instance = null;
 
-	/*
-	* Get the FlaggedArticleView for this request
-	*/
 	public static function singleton() {
 		if ( self::$instance == null ) {
 			self::$instance = new self();
@@ -130,7 +127,7 @@ class FRInclusionManager {
 	/**
 	 * Get the stable version of a template
 	 * @param Title $title
-	 * @returns int (0 if none)
+	 * @returns int
 	 */
 	public function getStableTemplateVersion( Title $title ) {
 		$dbKey = $title->getDBkey();

@@ -52,8 +52,10 @@ $wgAutoloadClasses['CodeCommentLinker'] = $dir . 'backend/CodeCommentLinker.php'
 $wgAutoloadClasses['CodeCommentLinkerHtml'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodeCommentLinkerWiki'] = $dir . 'backend/CodeCommentLinker.php';
 $wgAutoloadClasses['CodePropChange'] = $dir . 'backend/CodePropChange.php';
+$wgAutoloadClasses['RepoStats'] = $dir . 'backend/RepoStats.php';
 
 $wgAutoloadClasses['CodeRepoListView'] = $dir . 'ui/CodeRepoListView.php';
+$wgAutoloadClasses['CodeRepoStatsView'] = $dir . 'ui/CodeRepoStatsView.php';
 $wgAutoloadClasses['CodeRevisionAuthorView'] = $dir . 'ui/CodeRevisionAuthorView.php';
 $wgAutoloadClasses['CodeRevisionAuthorLink'] = $dir . 'ui/CodeRevisionAuthorLink.php';
 $wgAutoloadClasses['CodeRevisionCommitter'] = $dir . 'ui/CodeRevisionCommitter.php';
@@ -145,7 +147,9 @@ $wgCodeReviewImgRegex = '/\.(png|jpg|jpeg|gif)$/i';
 $wgCodeReviewMaxDiffSize = 500000;
 
 /**
- * Any base paths matching regular expressions in this array will have their
+ * Key is repository name. Value is an array of regexes
+ *
+ * Any base paths matching regular expressions in these arrays will have their
  * default status set to deferred instead of new. Helpful if you've got a part
  * of the repository you don't care about.
  */
@@ -155,7 +159,7 @@ $wgCodeReviewDeferredPaths = array();
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efCodeReviewSchemaUpdates';
 
 function efCodeReviewSchemaUpdates() {
-	global $wgDBtype, $wgExtNewFields, $wgExtPGNewFields, $wgExtNewIndexes, $wgExtNewTables, $wgExtModifiedFields;
+	global $wgDBtype, $wgExtNewFields, /*$wgExtPGNewFields,*/ $wgExtNewIndexes, $wgExtNewTables, $wgExtModifiedFields;
 	$base = dirname( __FILE__ );
 	if ( $wgDBtype == 'mysql' ) {
 		$wgExtNewTables[] = array( 'code_rev', "$base/codereview.sql" ); // Initial install tables
@@ -177,3 +181,10 @@ function efCodeReviewSchemaUpdates() {
 	return true;
 }
 
+# Unit tests
+$wgHooks['UnitTestsList'][] = 'efCodeReviewUnitTests';
+
+function efCodeReviewUnitTests( &$files ) {
+	$files[] = dirname( __FILE__ ) . '/tests/CodeReviewTest.php';
+	return true;
+}

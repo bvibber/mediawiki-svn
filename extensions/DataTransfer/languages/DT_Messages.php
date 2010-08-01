@@ -30,6 +30,7 @@ $messages['en'] = array(
 	'importxml'                   => 'Import XML',
 	'dt_import_selectfile'        => 'Please select the $1 file to import:',
 	'dt_import_encodingtype'      => 'Encoding type',
+	'dt_import_summarydesc'       => 'Summary of import:',
 	'dt_import_editsummary'       => '$1 import',
 	'dt_import_importing'         => 'Importing...',
 	'dt_import_success'           => '$1 {{PLURAL:$1|page|pages}} will be created from the $2 file.',
@@ -243,6 +244,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'datatransfer-desc' => 'Дазваляе імпартаваць і экспартаваць зьвесткі, якія ўтрымліваюцца ў выкліках шаблёнах',
@@ -263,6 +265,7 @@ $messages['be-tarask'] = array(
 	'importxml' => 'Імпарт XML',
 	'dt_import_selectfile' => 'Калі ласка, выберыце файл у фармаце $1 для імпарту:',
 	'dt_import_encodingtype' => 'Тып кадыроўкі',
+	'dt_import_summarydesc' => 'Кароткае апісаньне імпарту:',
 	'dt_import_editsummary' => 'імпарт $1',
 	'dt_import_importing' => 'Імпартаваньне...',
 	'dt_import_success' => '$1 {{PLURAL:$1|старонка будзе|старонкі будуць|старонак будзе}} створана з файла ў фармаце $2.',
@@ -431,6 +434,7 @@ $messages['de'] = array(
 	'importxml' => 'XML importieren',
 	'dt_import_selectfile' => 'Bitte die zu importierende $1-Datei auswählen:',
 	'dt_import_encodingtype' => 'Encoding-Typ',
+	'dt_import_summarydesc' => 'Zusammenfassung zum Import:',
 	'dt_import_editsummary' => '$1-Import',
 	'dt_import_importing' => 'Importiere …',
 	'dt_import_success' => '$1 {{PLURAL:$1|Seite|Seiten}} werden aus der $2-Datei importiert.',
@@ -468,6 +472,7 @@ $messages['dsb'] = array(
 	'importxml' => 'XML importěrowaś',
 	'dt_import_selectfile' => 'Pšosym wubjeŕ dataju $1 za importěrowanje:',
 	'dt_import_encodingtype' => 'Typ znamuškowego koda',
+	'dt_import_summarydesc' => 'Zespominanje importa:',
 	'dt_import_editsummary' => 'Importěrowanje $1',
 	'dt_import_importing' => 'Importěrujo se...',
 	'dt_import_success' => '$1 {{PLURAL:$1|bok twóri|boka twóritej|boki twórje|bokow twóri}} se z dataje $2.',
@@ -537,6 +542,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Imre
+ * @author Locos epraix
  * @author Peter17
  * @author Sanbec
  * @author Translationista
@@ -560,6 +566,7 @@ $messages['es'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor seleccione el archivo $1 a importar:',
 	'dt_import_encodingtype' => 'Tipo de codificación',
+	'dt_import_summarydesc' => 'Resumen de importación:',
 	'dt_import_editsummary' => '$1 importación',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página|páginas}} serán creadas del archivo $2.',
@@ -640,6 +647,7 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Grondin
  * @author IAlex
+ * @author Peter17
  * @author PieRRoMaN
  * @author Zetud
  */
@@ -658,11 +666,12 @@ $messages['fr'] = array(
 	'dt_xml_name' => 'Nom',
 	'dt_xml_title' => 'Titre',
 	'dt_xml_id' => 'ID',
-	'dt_xml_freetext' => 'Texte Libre',
+	'dt_xml_freetext' => 'Texte libre',
 	'importxml' => 'Import en XML',
 	'dt_import_selectfile' => 'Veuillez sélectionner le fichier $1 à importer :',
 	'dt_import_encodingtype' => 'Type d’encodage',
-	'dt_import_editsummary' => 'Importation $1',
+	'dt_import_summarydesc' => 'Résumé de l’import :',
+	'dt_import_editsummary' => 'Import de $1',
 	'dt_import_importing' => 'Import en cours...',
 	'dt_import_success' => '$1 {{PLURAL:$1|page sera créée|pages seront créées}} depuis le fichier $2.',
 	'importcsv' => 'Import CSV',
@@ -721,6 +730,7 @@ $messages['gl'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor, seleccione o ficheiro $1 a importar:',
 	'dt_import_encodingtype' => 'Tipo de codificación',
+	'dt_import_summarydesc' => 'Resumo da importación:',
 	'dt_import_editsummary' => 'Importación en $1',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '{{PLURAL:$1|Unha páxina será creada|$1 páxinas serán creadas}} a partir do ficheiro $2.',
@@ -885,6 +895,7 @@ $messages['hsb'] = array(
 	'importxml' => 'XML importować',
 	'dt_import_selectfile' => 'Prošu wubjer dataju $1 za importowanje:',
 	'dt_import_encodingtype' => 'Typ znamješkoweho koda',
+	'dt_import_summarydesc' => 'Zjeće importa:',
 	'dt_import_editsummary' => 'Importowanje $1',
 	'dt_import_importing' => 'Importuje so...',
 	'dt_import_success' => '$1 {{PLURAL:$1|strona so z dataje $2 twori|stronje so z dataje $2 tworitej|strony so z dataje $2 tworja|stronow so z dataje $2 twori}}.',
@@ -946,6 +957,7 @@ $messages['ia'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Per favor selige le file $1 a importar:',
 	'dt_import_encodingtype' => 'Typo de codification',
+	'dt_import_summarydesc' => 'Summario de importation:',
 	'dt_import_editsummary' => 'Importation de $1',
 	'dt_import_importing' => 'Importation in curso…',
 	'dt_import_success' => '$1 {{PLURAL:$1|pagina|paginas}} essera create ex le file $2.',
@@ -984,6 +996,13 @@ $messages['id'] = array(
 	'importcsv' => 'Impor CSV',
 	'dt_importcsv_badheader' => "Kesalahan: kepala kolom $1, '$2', harus berupa '$3', '$4' atau bentuk 'template_name [field_name]'",
 	'right-datatransferimport' => 'Impor data',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'dt_xml_template' => 'Àtụ',
 );
 
 /** Ido (Ido)
@@ -1182,6 +1201,7 @@ $messages['lb'] = array(
 	'importxml' => 'XML importéieren',
 	'dt_import_selectfile' => "Sicht de(n) $1-Fichier eraus fir z'importéieren:",
 	'dt_import_encodingtype' => 'Encoding-Typ',
+	'dt_import_summarydesc' => 'Resumé vum Import:',
 	'dt_import_editsummary' => '$1 importéieren',
 	'dt_import_importing' => 'Import am gaang ...',
 	'dt_import_success' => '$1 {{PLURAL:$1|Säit gëtt|Säite ginn}} aus dem $2-Fichier ugeluecht.',
@@ -1235,6 +1255,7 @@ $messages['mk'] = array(
 	'importxml' => 'Увоз на XML',
 	'dt_import_selectfile' => 'Одберете ја $1 податотеката за увоз:',
 	'dt_import_encodingtype' => 'Тип на кодирање',
+	'dt_import_summarydesc' => 'Опис на увозот:',
 	'dt_import_editsummary' => 'Увоз на $1',
 	'dt_import_importing' => 'Увезувам...',
 	'dt_import_success' => '$1 {{PLURAL:$1|страница ќе биде создадена|страници ќе бидат создадени}} од $2 податотеката.',
@@ -1329,6 +1350,7 @@ $messages['nds'] = array(
 
 /** Dutch (Nederlands)
  * @author Siebrand
+ * @author Tvdm
  */
 $messages['nl'] = array(
 	'datatransfer-desc' => 'Maakt het importeren en exporteren van gestructureerde gegevens in sjabloonaanroepen mogelijk',
@@ -1349,6 +1371,7 @@ $messages['nl'] = array(
 	'importxml' => 'XML importeren',
 	'dt_import_selectfile' => 'Selecteer het te importeren bestand van het type $1:',
 	'dt_import_encodingtype' => 'Coderingstype',
+	'dt_import_summarydesc' => 'Samenvatting van de import:',
 	'dt_import_editsummary' => '$1-import',
 	'dt_import_importing' => 'Bezig met importeren…',
 	'dt_import_success' => "Uit het $2-bestand {{PLURAL:$1|wordt één pagina|worden $1 pagina's}} geïmporteerd.",
@@ -1412,6 +1435,7 @@ $messages['no'] = array(
 	'importxml' => 'Importer XML',
 	'dt_import_selectfile' => 'Vennligst velg $1-filen som skal importeres:',
 	'dt_import_encodingtype' => 'Tegnkodingstype',
+	'dt_import_summarydesc' => 'Importsammendrag:',
 	'dt_import_editsummary' => '$1-importering',
 	'dt_import_importing' => 'Importerer...',
 	'dt_import_success' => '{{PLURAL:$1|Én side|$1 sider}} vil bli importert fra $2-filen.',
@@ -1468,6 +1492,7 @@ $messages['pdc'] = array(
 	'dt_xml_namespace' => 'Blatznaame',
 	'dt_xml_pages' => 'Bledder',
 	'dt_xml_page' => 'Blatt',
+	'dt_xml_template' => 'Moddel',
 	'dt_xml_name' => 'Naame',
 	'dt_xml_title' => 'Titel',
 );
@@ -1519,6 +1544,7 @@ $messages['pms'] = array(
 	'importxml' => 'Ampòrta XML',
 	'dt_import_selectfile' => 'Për piasì selession-a ël file $1 da amporté:',
 	'dt_import_encodingtype' => 'Tipo ëd codìfica',
+	'dt_import_summarydesc' => "Somari dj'amportassion:",
 	'dt_import_editsummary' => '$1 ampòrta',
 	'dt_import_importing' => "An camin ch'as ampòrta...",
 	'dt_import_success' => "$1 {{PLURAL:$1|pàgina|pàgine}} a saran creà da l'archivi $2.",
@@ -1566,6 +1592,7 @@ $messages['pt'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor, selecione o ficheiro $1 a importar:',
 	'dt_import_encodingtype' => 'Tipo de codificação',
+	'dt_import_summarydesc' => 'Resumo da importação:',
 	'dt_import_editsummary' => 'Importação de $1',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '{{PLURAL:$1|A página será importada|As páginas serão importadas}} a partir do ficheiro $2.',
@@ -1576,6 +1603,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'datatransfer-desc' => 'Permite a importação e exportação de dados contidos em chamadas de predefinições',
@@ -1596,6 +1624,7 @@ $messages['pt-br'] = array(
 	'importxml' => 'Importar XML',
 	'dt_import_selectfile' => 'Por favor selecione o arquivo $1 para importar:',
 	'dt_import_encodingtype' => 'Codificação',
+	'dt_import_summarydesc' => 'Resumo da importação:',
 	'dt_import_editsummary' => 'Importação de $1',
 	'dt_import_importing' => 'Importando...',
 	'dt_import_success' => '$1 {{PLURAL:$1|página será importada|páginas serão importadas}} do arquivo $2.',
@@ -1671,6 +1700,7 @@ $messages['ru'] = array(
 	'importxml' => 'Импорт XML',
 	'dt_import_selectfile' => 'Пожалуйста, выберите файл $1 для импорта:',
 	'dt_import_encodingtype' => 'Тип кодировки',
+	'dt_import_summarydesc' => 'Описание импорта:',
 	'dt_import_editsummary' => 'импорт $1',
 	'dt_import_importing' => 'Импортирование...',
 	'dt_import_success' => '$1 {{PLURAL:$1|страница была|страницы были|страниц были}} созданы из файла $2.',

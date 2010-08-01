@@ -1707,7 +1707,7 @@ $messages['frp'] = array(
 	'contrib-hist-previous' => 'Dons ples novéls',
 	'contrib-hist-anonymous' => 'Anonimo',
 	'contributionstatistics' => 'Statistiques de les contribucions',
-	'contribstats-desc' => 'Montre les statistiques de les contribucions fêtes a la Fondacion Wikimedia.',
+	'contribstats-desc' => 'Montre les statistiques de les contribucions fêtes a la Wikimedia Foundation.',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Soma por houé|Somes de tôs los jorns por los $1 jorns passâs}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Soma por ceti mês|Somes du mês por los $1 mês passâs}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Soma por $1 mês|Somes du mês por $1 mês}}',
@@ -2356,6 +2356,13 @@ $messages['id'] = array(
 	'fundraiserstats-tab-averages' => 'Rata-rata (USD)',
 	'fundraiserstats-tab-maximums' => 'Tertinggi (USD)',
 	'fundraiserstats-tab-ytd' => 'Tahun berjalan (USD)',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'contribstats-template' => 'Àtụ',
 );
 
 /** Ido (Ido)
@@ -3517,6 +3524,7 @@ $messages['pdc'] = array(
 	'contribstats-month' => 'Munet',
 	'contribstats-value-under' => 'Wennicher als $1',
 	'contribstats-value-over' => 'Iwwer $1',
+	'contribstats-template' => 'Moddel',
 	'fundraiserstats-day' => 'Daag $1 vun $2',
 );
 

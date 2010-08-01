@@ -106,7 +106,7 @@ class SpecialTranslations extends SpecialAllpages {
 	}
 
 	function showTranslations( Title $title ) {
-		global $wgOut, $wgUser, $wgContLang, $wgLang;
+		global $wgOut, $wgUser;
 
 		$sk = $wgUser->getSkin();
 
@@ -228,7 +228,7 @@ class SpecialTranslations extends SpecialAllpages {
 	}
 
 	private static function includeAssets() {
-		global $wgOut, $wgScript;
+		global $wgOut;
 
 		TranslateUtils::injectCSS();
 		$wgOut->addScriptFile( TranslateUtils::assetPath( 'js/quickedit.js' ) );

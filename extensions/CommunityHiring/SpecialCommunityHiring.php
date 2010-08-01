@@ -200,9 +200,9 @@ class SpecialCommunityHiring extends SpecialPage {
 	}
 	
 	function submit( $info ) {
-		global $wgOut;
+		global $wgOut, $wgCommunityHiringDatabase;
 		
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER, array(), $wgCommunityHiringDatabase );
 		
 		$dbw->insert( 'community_hiring_application',
 				array( 'ch_data' => json_encode($info),

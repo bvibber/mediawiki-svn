@@ -201,6 +201,13 @@ $messages['pt-br'] = array(
 	'firefoggcu-desc' => 'Protocolo de Chunked Uploading do Firefogg',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'firefoggcu-desc' => 'Protocolle de carecamende Chunked Firefogg',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -246,5 +253,12 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'firefoggcu-desc' => "Firefogg'un Toplu Yükleme iletişim kuralı",
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Frankou
+ */
+$messages['zh-hant'] = array(
+	'firefoggcu-desc' => 'Firefogg的分塊上傳協議',
 );
 
