@@ -12,7 +12,7 @@ $messages = array();
  * @author Inez Korczyński <korczynski@gmail.com>
  */
 $messages['en'] = array(
-	'ajaxlogin-desc' => 'Dynamic box which allow users to login and remind password',
+	'ajaxlogin-desc' => 'Dynamic box which allows users to login and remind password',
 	'ajaxLogin1' => 'To complete your log in, you must enter a new password.
 This will take you away from this edit page and you may lose your current edit.',
 	'ajaxLogin2' => 'Are you sure?
