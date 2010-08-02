@@ -113,6 +113,7 @@ class ResourceLoader {
 	 * 		'locales' => [array: paths to scripts to include, keyed by locale name, optional],
 	 * 		'messages' => [array: message keys, optional],
 	 * 		'loader' => [string: path to file, optional],
+	 * 		'needs' => [array: names of modules this module needs, optional - ignored if loader is present],
 	 * 		'raw' => [boolean: include directly without any loading support, optional],
 	 * 		'debug' => [boolean: include in debug mode only, optional],
 	 * 	)
@@ -144,6 +145,7 @@ class ResourceLoader {
 			'locales' => array(),
 			'messages' => array(),
 			'loader' => null,
+			'needs' => array(),
 			'raw' => false,
 			'debug' => false,
 		), $options );
@@ -215,9 +217,11 @@ class ResourceLoader {
 		// Use output buffering
 		ob_start();
 		// Output raw modules first
+		$ready = array();
 		foreach ( $modules as $module ) {
 			if ( self::$modules[$module]['raw'] ) {
 				readfile( self::$modules[$module]['script'] );
+				$ready[] = $module;
 				echo "\n";
 			}
 		}
@@ -235,12 +239,19 @@ class ResourceLoader {
 			echo "mw.config.set( " . json_encode( $parameters ) . " );\n";
 			// Collect all loaders
 			$loaders = array();
-			$registers = array();
+			$registrations = array();
 			foreach ( self::$modules as $name => $options ) {
 				if ( $options['loader'] !== null ) {
 					$loaders[] = $options['loader'];
 				} else {
-					$registers[] = $name;
+					if ( empty( $options['needs'] ) && !in_array( $name, $ready ) ) {
+						$registrations[$name] = $name;
+					} else {
+						$registrations[$name] = array( $name, $options['needs'] );
+						if ( in_array( $name, $ready ) ) {
+							$registrations[$name][] = 'ready';
+						}
+					}
 				}
 			}
 			// Include loaders
@@ -249,7 +260,7 @@ class ResourceLoader {
 				echo "\n";
 			}
 			// Register modules without loaders
-			echo "mw.loader.register( " . json_encode( array_unique( $registers ) ) . " );\n";
+			echo "mw.loader.register( " . json_encode( array_values( $registrations ) ) . " );\n";
 		}
 		// Output non-raw modules
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );

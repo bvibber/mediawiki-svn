@@ -232,6 +232,24 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 		/* Private Methods */
 		
 		/**
+		 * Recursively resolves dependencies and detects circular references
+		 */
+		function recurse( module, resolved, unresolved ) {
+			unresolved[unresolved.length] = module;
+		    for ( var n = 0; n < registry[module].needs.length; n++ ) {
+		        if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
+		            if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
+		                throw new Error(
+		                	'Circular reference detected: ' + module + ' -> ' + registry[module].needs[n]
+		                );
+		            }
+		            recurse( registry[module].needs[n], resolved, unresolved );
+		        }
+		    }
+		    resolved[resolved.length] = module;
+		    unresolved.splice( unresolved.indexOf( module ), 1 );
+		}
+		/**
 		 * Gets a list of modules names that a module needs in their proper dependency order
 		 * 
 		 * @param mixed string module name or array of string module names
@@ -253,22 +271,6 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 				// Undefined modules have no needs
 				if ( !( module in registry ) ) {
 					return [];
-				}
-				// Recursively resolves dependencies and detects circular references
-				function recurse( module, resolved, unresolved ) {
-					unresolved[unresolved.length] = module;
-				    for ( var n = 0; n < registry[module].needs; n++ ) {
-				        if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
-				            if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
-				                throw new Error(
-				                	'Circular reference detected: ' + module + ' -> ' + registry[module].needs[n]
-				                );
-				            }
-				            recurse( registry[module].needs[n], resolved, unresolved );
-				        }
-				    }
-				    resolved[resolved.length] = module;
-				    unresolved.splice( unresolved.indexOf( module ), 1 );
 				}
 				var resolved = [];
 				recurse( module, resolved, [] );
@@ -465,47 +467,47 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 		 * Registers a module, letting the system know about it and it's dependencies. loader.js files contain calls
 		 * to this function.
 		 */
-		this.register = function( name, needs ) {
+		this.register = function( module, needs, status ) {
 			// Allow multiple registration
-			if ( typeof name === 'object' ) {
-				for ( var n = 0; n < name.length; n++ ) {
-					if ( typeof name[n] === 'string' ) {
-						that.register( name[n] );
-					} else if ( typeof name[n] === 'object' && name[n].length == 2 ) {
-						that.register( name[n][0], name[n][1] );
+			if ( typeof module === 'object' ) {
+				for ( var n = 0; n < module.length; n++ ) {
+					if ( typeof module[n] === 'string' ) {
+						that.register( module[n] );
+					} else if ( typeof module[n] === 'object' ) {
+						that.register.apply( that, module[n] );
 					}
 				}
 				return;
 			}
 			// Validate input
-			if ( typeof name !== 'string' ) {
-				throw new Error( 'name must be a string, not a ' + typeof name );
+			if ( typeof module !== 'string' ) {
+				throw new Error( 'module must be a string, not a ' + typeof module );
 			}
-			if ( typeof registry[name] !== 'undefined' ) {
-				throw new Error( 'module already implemeneted: ' + name );
+			if ( typeof registry[module] !== 'undefined' && typeof status === 'undefined' ) {
+				throw new Error( 'module already implemeneted: ' + module );
 			}
 			// List the module as registered
-			registry[name] = { 'state': 'registered', 'needs': [] };
+			registry[module] = { 'state': typeof status === 'string' ? status : 'registered', 'needs': [] };
 			// Allow needs to be given as a function which returns a string or array
 			if ( typeof needs === 'function' ) {
 				needs = needs();
 			}
 			if ( typeof needs === 'string' ) {
-				// Allow needs to be given as a single module name
-				registry[name].needs = [needs];
+				// Allow needs to be given as a single module module
+				registry[module].needs = [needs];
 			} else if ( typeof needs === 'object' ) {
-				// Allow needs to be given as an array of module names
-				registry[name].needs = needs;
+				// Allow needs to be given as an array of module modules
+				registry[module].needs = needs;
 			}
 		};
 		/**
 		 * Implements a module, giving the system a course of action to take upon loading. Results of a request for
 		 * one or more modules contain calls to this function.
 		 */
-		this.implement = function( name, script, style, localization ) {
+		this.implement = function( module, script, style, localization ) {
 			// Automaically register module
-			if ( typeof registry[name] === 'undefined' ) {
-				that.register( name );
+			if ( typeof registry[module] === 'undefined' ) {
+				that.register( module );
 			}
 			// Validate input
 			if ( typeof script !== 'function' ) {
@@ -517,24 +519,24 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 			if ( typeof localization !== 'undefined' && typeof localization !== 'object' ) {
 				throw new Error( 'localization must be an object, not a ' + typeof localization );
 			}
-			if ( typeof registry[name] !== 'undefined' && typeof registry[name].script !== 'undefined' ) {
-				throw new Error( 'module already implemeneted: ' + name );
+			if ( typeof registry[module] !== 'undefined' && typeof registry[module].script !== 'undefined' ) {
+				throw new Error( 'module already implemeneted: ' + module );
 			}
 			// Mark module as loaded
-			registry[name].state = 'loaded';
+			registry[module].state = 'loaded';
 			// Attach components
-			registry[name].script = script;
+			registry[module].script = script;
 			if ( typeof style === 'string' ) {
-				registry[name].style = style;
+				registry[module].style = style;
 			}
 			if ( typeof messages === 'object' ) {
-				registry[name].messages = messages;
+				registry[module].messages = messages;
 			}
 			// Execute or queue callback
-			if ( filter( ['ready'], registry[name].needs ).compare( registry[name].needs ) ) {
-				execute( name );
+			if ( filter( ['ready'], registry[module].needs ).compare( registry[module].needs ) ) {
+				execute( module );
 			} else {
-				request( name );
+				request( module );
 			}
 		};
 		/**
@@ -570,6 +572,34 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 			// Since some needs are not yet ready, queue up a request
 			else {
 				request( needs, ready, error );
+			}
+		};
+		/**
+		 * Loads one or more modules for future use
+		 */
+		this.load = function( modules ) {
+			// Validate input
+			if ( typeof modules !== 'object' && typeof modules !== 'string' ) {
+				throw new Error( 'needs must be a string or an array, not a ' + typeof needs )
+			}
+			// Allow calling with a single need as a string
+			if ( typeof modules === 'string' ) {
+				modules = [needs];
+			}
+			// Resolve entire dependency map
+			modules = resolve( modules );
+			// If all modules are ready, nothing need be done
+			if ( filter( ['ready'], modules ).compare( modules ) ) {
+				return true;
+			}
+			// If any modules have errors return false
+			else if ( filter( ['error'], modules ).length ) {
+				return false;
+			}
+			// Since some modules are not yet ready, queue up a request
+			else {
+				request( modules );
+				return true;
 			}
 		};
 		
