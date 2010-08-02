@@ -8,7 +8,7 @@
  */
 
 require_once( dirname( __FILE__ ) . "/../../phase3/includes/Defines.php" ); # Faster than parsing
-require_once( dirname( __FILE__ ) . "/phase3/includes/AutoLoader.php" );
+require_once( dirname( __FILE__ ) . "/../../phase3/includes/AutoLoader.php" );
 
 if ( !extension_loaded( 'sockets' ) ) dl('sockets.so');
 if ( !extension_loaded( 'PDO' ) ) dl('pdo.so');
