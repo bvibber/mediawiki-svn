@@ -189,11 +189,15 @@ class ResourceLoader {
 		global $wgUser, $wgLang, $wgDefaultSkin;
 		// Fallback on system settings
 		$parameters = array(
-			'user' => $request->getBool( 'user', $wgUser->isLoggedIn() ),
+			'user' => $request->getVal( 'user', $wgUser->isLoggedIn() ),
 			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
 			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
-			'debug' => $request->getBool( 'debug' ),
+			'debug' => $request->getVal( 'debug' ),
 		);
+		// Mediawiki's WebRequest::getBool is a bit on the annoying side - we need to allow 'true' and 'false' values
+		// to be converted to boolean true and false
+		$parameters['user'] = $parameters['user'] === 'true' || $parameters['user'] === true ? true : false;
+		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'] === true ? true : false;
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {
 			$lang = $wgLang->factory( $parameters['lang'] );
