@@ -16,7 +16,6 @@ ResourceLoader::register( array(
 	// Components
 	'jquery.ui.core' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.core.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.theme.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.theme.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.theme.css',
@@ -25,7 +24,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.accordion' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.accordion.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.accordion.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.accordion.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.accordion.css',
@@ -34,7 +32,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.autocomplete' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.autocomplete.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.autocomplete.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.autocomplete.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.autocomplete.css',
@@ -43,7 +40,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.button' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.button.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.button.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.button.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.button.css',
@@ -53,7 +49,6 @@ ResourceLoader::register( array(
 	'jquery.ui.datepicker' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.datepicker.js',
 		'needs' => array( 'jquery.ui.core' ),
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.datepicker.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.datepicker.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.datepicker.css',
@@ -115,7 +110,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.dialog' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.dialog.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.dialog.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.dialog.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.dialog.css',
@@ -140,7 +134,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.progressbar' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.progressbar.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.progressbar.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.progressbar.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.progressbar.css',
@@ -149,7 +142,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.resizable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.resizable.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.resizable.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.resizable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.resizable.css',
@@ -158,7 +150,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.selectable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.selectable.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.selectable.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.selectable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.selectable.css',
@@ -167,7 +158,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.slider' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.slider.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.slider.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.slider.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.slider.css',
@@ -180,7 +170,6 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.tabs' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.tabs.js',
-		'style' => 'resources/jquery/ui/themes/base/jquery.ui.tabs.css',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.tabs.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.tabs.css',
