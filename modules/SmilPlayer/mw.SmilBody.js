@@ -271,8 +271,9 @@ mw.SmilBody.prototype = {
 	
 	/**
 	 * Recurse over all body elements, issues a callback on all ref and smilText nodes
-	 * adds startOffset info for easy timeline checks.
 	 *  @param {Object} $node Node Starting point
+	 *  @param {Number} startOffset Stores startOffset for given node
+	 *  @param {Function} callback Function called for every ref node 
 	 */
 	getRefElementsRecurse: function( $node, startOffset, callback ){
 		var _this = this;
@@ -324,7 +325,7 @@ mw.SmilBody.prototype = {
 	 * ( wraps getDurationRecurse to get top level node duration ) 
 	 */	
 	getDuration: function( forceRefresh ){		
-		this.duration = this.getClipDuration( this.getDom() , forceRefresh);	
+		this.duration = this.getClipDuration( this.getDom() , forceRefresh );
 		mw.log("smilBody:: getDuration: " + this.duration );
 		return this.duration;	
 	},
@@ -374,7 +375,7 @@ mw.SmilBody.prototype = {
 			var computedDuration = this.smil.parseTime( $node.attr('dur') ) ;
 			// Check for "begin" that extends the duration by begin time
 			if( $node.attr( 'begin') ){
-				computedDuration+= this.smil.parseTime( $node.attr('begin') );
+				computedDuration += this.smil.parseTime( $node.attr('begin') );
 			}  
 			//mw.log(" return dur: " + mw.smil.parseTime( $node.attr('dur') ) );			
 			$node.data('computedDuration', computedDuration );

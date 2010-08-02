@@ -39,6 +39,8 @@ mw.SequencerActionsEdit.prototype = {
 		this.editStack = [];
 		// Set the initial edit state: 
 		this.editStack.push(  this.sequencer.getSmil().getXMLString() );
+		// Disable undo		
+		this.sequencer.getMenu().disableMenuItem( 'edit', 'undo' );
 	},
 	
 	/**
@@ -57,6 +59,9 @@ mw.SequencerActionsEdit.prototype = {
 		
 		// Update the editIndex
 		this.editIndex = this.editStack.length - 1;
+		
+		// Enable the undo option: 
+		this.sequencer.getMenu().enableMenuItem( 'edit', 'undo' );
 	},
 	
 	/**
@@ -64,11 +69,18 @@ mw.SequencerActionsEdit.prototype = {
 	 */
 	undo: function(){
 		this.editIndex--;
-		mw.log("SequenceActionsEdit:: undo stack index:" + this.editIndex);
-		// Change to previous state 
-		this.sequencer.updateSmilXML( this.editStack[ this.editIndex ] );		
-	},
-	
+		if( this.editStack[ this.editIndex ] ) {
+			this.sequencer.updateSmilXML( this.editStack[ this.editIndex ] );
+		} else {
+			// index out of range set to 0
+			this.editIndex = 0;
+			mw.log("Error: SequenceActionsEdit:: undo Already at oldest index:" + this.editIndex);
+		}
+		// if at oldest undo disable undo option 
+		if( this.editIndex - 1  == 0 ){
+			this.sequencer.getMenu().disableMenuItem( 'edit', 'undo' );
+		}
+	},	
 	/**
 	 * Redo an edit action
 	 */
@@ -77,7 +89,14 @@ mw.SequencerActionsEdit.prototype = {
 		if( this.editStack[ this.editIndex ] ) {
 			this.sequencer.updateSmilXML( this.editStack[ this.editIndex ] );
 		} else {
-			mw.log( 'SequencerActionsEdit::Redo: Already at most recent edit avaliable');
+			// index out of redo range set to last edit
+			this.editIndex == this.editStack.length - 1
+			mw.log( 'Error: SequencerActionsEdit::Redo: Already at most recent edit avaliable');
+		}
+		
+		// if at newest redo disable redo option 
+		if( this.editIndex == this.editStack.length - 1 ){
+			this.sequencer.getMenu().disableMenuItem( 'edit', 'redo' );
 		}
 	}
 }

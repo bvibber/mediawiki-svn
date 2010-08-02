@@ -295,7 +295,7 @@ function Menu(caller, options) {
 		
 		// aria roles & attributes
 		container.find( 'ul' ).attr('role', 'menu').eq(0).attr('aria-activedescendant','active-menuitem').attr('aria-labelledby', caller.attr('id'));
-		container.find( 'li:not(.divider)' ).attr('role', 'menuitem');
+		container.find( 'li' ).attr('role', 'menuitem');
 		container.find( 'li:has(ul)' ).attr('aria-haspopup', 'true').find('ul').attr('aria-expanded', 'false');
 		container.find( 'a' ).attr('tabindex', '-1');
 		
@@ -320,11 +320,16 @@ function Menu(caller, options) {
 			allLinks.hover(
 				function() {
 					var menuitem = $(this);
-					$('.'+options.linkHover).removeClass(options.linkHover).blur().parent().removeAttr('id');
-					$(this).addClass(options.linkHover).focus().parent().attr('id','active-menuitem');
+					var menuli = menuitem.parent();
+					if( !menuli.hasClass('divider') && !menuli.hasClass('disabled')  ){
+						$('.'+options.linkHover).removeClass(options.linkHover).blur().parent().removeAttr('id');
+						$(this).addClass(options.linkHover).focus().parent().attr('id','active-menuitem');
+					}
 				},
 				function() {
-					$(this).removeClass(options.linkHover).blur().parent().removeAttr('id');
+					if( !menuitem.hasClass('divider') && !menuitem.hasClass('disabled')  ){
+						$(this).removeClass(options.linkHover).blur().parent().removeAttr('id');
+					}
 				}
 			);
 		};

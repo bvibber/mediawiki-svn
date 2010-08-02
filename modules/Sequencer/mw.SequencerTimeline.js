@@ -60,11 +60,8 @@ mw.SequencerTimeline.prototype = {
 	},
 	
 	// Draw the timeline
-	drawTimeline: function(){		
-		// Empty the timeline container 
-		//this.getTimelineContainer().empty();
-		
-		// Get the top level sequence tracks 
+	drawTimeline: function(){			
+		// xxx TODO support multiple tracks ::: 
 		var seqTracks = this.sequencer.getSmil().getBody().getSeqElements();		
 		// For now just one video track: 
 		this.drawSequenceTrack( 0, seqTracks[ 0 ], 'video');
@@ -81,20 +78,10 @@ mw.SequencerTimeline.prototype = {
 			this.getTracksContainer().find('.trackNamesContainer').append( 
 				this.getTrackNameInterface( trackIndex, sequenceNode, trackType )
 			)
-		};
-		
+		};		
 		// Add Sequence track clips
 		// xxx check for specific sequenceTrack updates that require interface update
-		this.drawTrackClipsInterface( trackIndex ,sequenceNode , trackType )
-		/*if( this.getTracksContainer().find('.clipTrackSetContainer').childrend().length == 0 ){
-			this.getTracksContainer().find('.clipTrackSetContainer').append( 
-				
-			).click( function(){
-				// xxx todo catch de-select clicks in clipTrackSetContainer that are not a click in the timeline
-				//_this.getTracksContainer().find('.timelineClip').removeClass( 'selectedClip' );
-			})
-		}
-		*/		
+		this.drawTrackClipsInterface( trackIndex ,sequenceNode , trackType );			
 	},
 
 	/**
@@ -105,16 +92,99 @@ mw.SequencerTimeline.prototype = {
 		// Setup a local pointer to the smil engine: 
 		var smil = this.sequencer.getSmil();
 		
-		// Get all the refs that are children of the sequenceNode with associated offsets and durations
-		// for now assume all tracks start at zero:
-		var startOffset = 0;
-		var clipTrackSetId = this.sequencer.getId() + '_clipTrackSet_' + trackIndex;			
+
         
 		var $clipTrackSet = this.getTracksContainer().find('.clipTrackSetContainer').find( '.clipTrackSet' ); 
 		// Add the $clipTrackSet if not already in dom: 
 		if( $clipTrackSet.length == 0 ){
 			$clipTrackSet = this.getTracksContainer().find('.clipTrackSetContainer').append( 
-				$j('<ul />')
+				this.getClipTrackSet( trackIndex )
+			).find( '.clipTrackSet');
+		}
+		var $previusClip = null; 
+		
+		var seqOrder = 0;
+		var reOrderTimelineFlag = false;
+		
+		// Get all the refs that are children of the sequenceNode with associated offsets and durations
+		// for now assume all tracks start at zero time:
+		var startOffset = 0;		
+		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){			
+			var reRenderThumbFlag = false;
+			// Draw the node onto the timeline if the clip is not already there:
+			var $timelineClip = $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) )
+			if( $timelineClip.length == 0 ){			
+				
+				$timelineClip = _this.getTimelineClip( $clipTrackSet, $node ); 					
+				if( $previusClip ){
+					$previusClip.after( 
+						$timelineClip 
+					)
+				} else { 
+					// Add to the start of the track set: 
+					$clipTrackSet.prepend( 
+						$timelineClip		
+					);					
+				}
+				reRenderThumbFlag = true;
+			} else { 
+				// confirm order
+				mw.log( $timelineClip.attr('id') + ' found ');
+				if( $timelineClip.data('prevIndex') != seqOrder ){
+					reOrderTimelineFlag = true;
+				}			
+			}
+			// xxx Check if the start time was changed
+			
+			if ( reRenderThumbFlag ){
+				// issue a draw Thumb request ( since we reinserted into the dom )
+				// Check Buffer for when the first frame of the smilNode can be grabbed: 				
+				smil.getBuffer().bufferedSeek( $node, 0, function(){					
+					//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getAssetId( $node ));
+					_this.drawClipThumb( $node , 0);
+				});
+			}			
+			// Update the $previusClip 
+			$previusClip = $timelineClip;
+			// Update the natural order index 
+			seqOrder ++;			
+		});	
+		
+		// Check if we need to re-sort the list
+		if( reOrderTimelineFlag ){
+			alert(" reorder clips!");
+			// move every node in-order to the end. 
+			smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){		
+				var $timelineClip = $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) )				
+				$timelineClip.appendTo( $clipTrackSet );
+			});
+		}
+		
+		
+		// Give the track set a width relative to the number of clips 
+		$clipTrackSet.css('width', ($clipTrackSet.find( '.timelineClip' ).length + 1) * 
+			( this.timelineThumbSize.width + 12 ) 
+		);
+		
+		// Add global TrackClipInterface bindings:
+		var keyBindings = this.sequencer.getKeyBindings();		 
+		keyBindings.bindEvent({
+			'escape': function(){
+				_this.getTimelineContainer().find( '.selectedClip' ).removeClass( 'selectedClip' );
+			},
+			'delete': function(){
+				_this.removeSelectedClips();
+			}
+		})	
+	},
+	/**
+	 * get and add a clip track set to the dom: 
+	 */
+	getClipTrackSet: function( trackIndex ){
+		var _this = this;
+		var clipTrackSetId = this.sequencer.getId() + '_clipTrackSet_' + trackIndex;	
+		
+		return $j('<ul />')
 				.attr('id',  clipTrackSetId)
 				.addClass('clipTrackSet ui-corner-all')
 				// Add "sortable
@@ -141,65 +211,21 @@ mw.SequencerTimeline.prototype = {
 						_this.handleReorder( ui.item );									
 					}
 				})
-			).find( '.clipTrackSet' )			
-		}
-		var $previusClip = null; 
-		smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){			
-			var reRenderThumbFlag = false;
-			// Draw the node onto the timeline if the clip is not already there:			
-			if( $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) ).length == 0 ){				
-				var $timelineClip = $j('<li />')
-					.attr('id',  _this.getTimelineClipId( $node ) )	
-					.data( {
-						'smilId': $node.attr('id'),
-						'prevIndex' : $clipTrackSet.length
-					})
-					.addClass('timelineClip ui-corner-all')
-					.loadingSpinner()				
-					.click(function(){
-						//Add clip to selection
-						_this.handleMultiSelect( this );
-					})									
-				if( $previusClip ){
-					$previusClip.after( 
-						$timelineClip 
-					)
-				} else { 
-					// Add to the start of the track set: 
-					$clipTrackSet.prepend( 
-						$timelineClip		
-					);					
-				}
-				reRenderThumbFlag = true;
-			}	
-			// xxx Check if the start time was changed
-			
-			if ( reRenderThumbFlag ){
-				// issue a draw Thumb request ( since we reinserted into the dom )
-				// Check Buffer for when the first frame of the smilNode can be grabbed: 				
-				smil.getBuffer().bufferedSeek( $node, 0, function(){					
-					//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getAssetId( $node ));
-					_this.drawClipThumb( $node , 0);
-				});
-			}
-			// Update the $previusClip 
-			$previusClip = $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) );
-		})				
-		// Give the track set a width relative to the number of clips 
-		$clipTrackSet.css('width', ($clipTrackSet.find( '.timelineClip' ).length + 1) * 
-			( this.timelineThumbSize.width + 12 ) 
-		);
-		
-		// Add global TrackClipInterface bindings:
-		var keyBindings = this.sequencer.getKeyBindings();		 
-		keyBindings.bindEvent({
-			'escape': function(){
-				_this.getTimelineContainer().find( '.selectedClip' ).removeClass( 'selectedClip' );
-			},
-			'delete': function(){
-				_this.removeSelectedClips();
-			}
-		})	
+	},
+	getTimelineClip: function( $clipTrackSet, $node ){
+		var _this = this;
+		return $j('<li />')
+			.attr('id',  _this.getTimelineClipId( $node ) )	
+			.data( {
+				'smilId': $node.attr('id'),
+				'prevIndex' : $clipTrackSet.children().length
+			})
+			.addClass('timelineClip ui-corner-all')
+			.loadingSpinner()				
+			.click(function(){
+				//Add clip to selection
+				_this.handleMultiSelect( this );
+			})				
 	},
 	// calls the edit interface passing in the selected clip:
 	editClip: function( selectedClip ){
@@ -264,6 +290,7 @@ mw.SequencerTimeline.prototype = {
 				}
 			});	
 		}
+		
 		// Update the prevIndex for all clips
 		$seqParent.children().each(function (inx, clip){
 			$j( clip ).data('prevIndex', inx);
@@ -271,6 +298,9 @@ mw.SequencerTimeline.prototype = {
 		
 		// Invalidate / update embedPlayer duration / clip offsets 
 		_this.sequencer.getEmbedPlayer().getDuration( true );
+		
+		// Register the edit state for undo / redo 
+		_this.sequencer.getActionsEdit().registerEdit();
 	},
 	/**
 	 * Handle multiple selections based on what clips was just "cliked" 
@@ -449,12 +479,12 @@ mw.SequencerTimeline.prototype = {
 		if( trackType == 'video'){
 			$trackNameInterface.append( 				
 				$j('<span />').addClass( 'ui-icon ui-icon-video'),
-				$j('<span />').text( gM( 'mwe-sequenceedit-video-track' ) )
+				$j('<span />').text( gM( 'mwe-sequencer-video-track' ) )
 			)
 		} else {
 			$trackNameInterface.append( 				
 				$j('<span />').addClass( 'ui-icon ui-icon-volume-on'),
-				$j('<span />').text( gM( 'mwe-sequenceedit-audio-track' ) )
+				$j('<span />').text( gM( 'mwe-sequencer-audio-track' ) )
 			)
 		}
 		// Wrap the track name in a box that matches the trackNames 

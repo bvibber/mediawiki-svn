@@ -14,16 +14,16 @@ mw.SequencerTools.prototype = {
 	init: function(	sequencer ){
 		this.sequencer = sequencer;
 	},
-	defaultText : gM('mwe-sequenceedit-no_selected_resource'),
+	defaultText : gM('mwe-sequencer-no_selected_resource'),
 	tools:{
 		'trim':{
-			'title': gM('mwe-sequenceedit-cliptool-trim'),
+			'title': gM('mwe-sequencer-cliptool-trim'),
 			'editWidgets' : [ 'trimTimeline' ], 
 			'editableAttributes' : ['clipBegin','dur' ],			
 			'editActions' : ['preview', 'cancel']
 		},
 		'duration':{
-			'title': gM('mwe-sequenceedit-cliptool-duration'),			 
+			'title': gM('mwe-sequencer-cliptool-duration'),			 
 			'editableAttributes' : [ 'dur' ],
 			'editActions' : ['preview', 'cancel']
 		}
@@ -31,11 +31,11 @@ mw.SequencerTools.prototype = {
 	editableAttributes:{
 		'clipBegin':{
 			'type': 'time',
-			'title' : gM('mwe-sequenceedit-start-time' ),			
+			'title' : gM('mwe-sequencer-start-time' ),			
 		},
 		'dur' :{
 			'type': 'time',
-			'title' : gM('mwe-sequenceedit-clip-duration' ),			
+			'title' : gM('mwe-sequencer-clip-duration' ),			
 		}
 	},
 	editableTypes: {
@@ -65,7 +65,7 @@ mw.SequencerTools.prototype = {
 	editActions: {
 		'preview' : {
 			'icon' : 'play',
-			'title' : gM('mwe-sequenceedit-preview'),
+			'title' : gM('mwe-sequencer-preview'),
 			'action': function( _this, smilClip, toolId){				
 				_this.sequencer.getPlayer().previewClip( smilClip );
 			}

@@ -24,7 +24,7 @@ mw.SequencerPlayer.prototype = {
 		var smilSource =  this.sequencer.getSmilSource()
 		if( ! smilSource ){
 			$playerTarget.append( 
-				gM( 'mwe-sequenceedit-no-sequence-start-new', 
+				gM( 'mwe-sequencer-no-sequence-start-new', 
 					$j('<a />').click(function(){
 						alert( 'Browse for assets / start new sequence' );
 					})

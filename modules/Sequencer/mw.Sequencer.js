@@ -69,9 +69,9 @@ mw.Sequencer.prototype = {
 				this[optionName] = mw_sequenceedit_default_options[ optionName ]
 			}
 		}
-		// For style properties assign top level mwe-sequence-edit class
+		// For style properties assign top level mwe-sequencer class
 		this.getContainer()
-			.addClass('mwe-sequence-edit');
+			.addClass('mwe-sequencer');
 	},
 	
 	// Return the container id for the sequence
@@ -85,6 +85,7 @@ mw.Sequencer.prototype = {
 		}
 		return this.id;
 	},
+	
 	/**
 	 * @return smilSource url
 	 */
@@ -131,12 +132,12 @@ mw.Sequencer.prototype = {
 			// Add the timeline
 			_this.getTimeline().drawTimeline();	
 			
+			// Draw the top level menu
+			_this.getMenu().drawMenu();
+			
 			// initialize the edit stack to support undo / redo actions  
 			_this.getActionsEdit().setupEditStack();
-		});		
-		// Draw the top level menu
-		this.getMenu().drawMenu();
-		
+		});
 	},
 	getMenu: function(){
 		if( !this.menu){
@@ -245,7 +246,7 @@ mw.Sequencer.prototype = {
 				'left' : '0px',
 				'background' : '#fff'
 			})
-			.text('Menu')
+			.text( gM('mwe-sequencer-loading-menu') )
 			,		
 			
 			$j('<div />')
@@ -263,10 +264,10 @@ mw.Sequencer.prototype = {
 					.html( this.getEditTools().defaultText ),
 				$j('<div />')
 					.addClass( "ui-layout-east mwseq-player" )
-					.text( gM('mwe-sequenceedit-loading_player') ),	
+					.text( gM('mwe-sequencer-loading-player') ),	
 				$j('<div />')
 					.addClass( "ui-layout-south mwseq-timeline" )
-					.text( gM('mwe-sequenceedit-loading_timeline') )				
+					.text( gM('mwe-sequencer-loading-timeline') )				
 			)
 		).children();
 	},
@@ -279,8 +280,7 @@ mw.Sequencer.prototype = {
 	},
 	getContainer: function(){
 		return $j( this.interfaceContainer );
-	}
-	
+	}	
 }
 
 } )( window.mw );	

@@ -296,8 +296,7 @@ mw.SmilBuffer.prototype = {
 	 * Clip ready for grabbing a frame such as a canvas thumb
 	 */
 	bufferedSeek: function( smilElement, relativeTime, callback ){
-		mw.log("SmilBuffer::bufferedSeek:" + this.smil.getAssetId( smilElement ) +
-				' time:' + relativeTime );
+		//mw.log("SmilBuffer::bufferedSeek:" + this.smil.getAssetId( smilElement ) + ' time:' + relativeTime );
 		
 		var absoluteTime = relativeTime;		
 		if( $j( smilElement ).attr('clipBegin') ){
@@ -373,7 +372,7 @@ mw.SmilBuffer.prototype = {
 	 */
 	registerVideoSeekListener: function( assetId ){
 		var _this = this;
-		mw.log( 'SmilBuffer::registerVideoSeekListener: ' + assetId );
+		//mw.log( 'SmilBuffer::registerVideoSeekListener: ' + assetId );
 		var vid = $j ( '#' +  assetId).get(0);
 		vid.addEventListener( 'seeked', function(){
 			// Run the callback
@@ -398,8 +397,7 @@ mw.SmilBuffer.prototype = {
 	
 	videoBufferSeek: function ( smilElement, seekTime, callback ){
 		var _this = this;
-		mw.log("SmilBuffer::videoBufferSeek: " + this.smil.getAssetId( smilElement ) +
-				' time:' + seekTime );
+		//mw.log("SmilBuffer::videoBufferSeek: " + this.smil.getAssetId( smilElement ) +' time:' + seekTime );
 		
 		// Get the asset target:		
 		var assetId = this.smil.getAssetId( smilElement );

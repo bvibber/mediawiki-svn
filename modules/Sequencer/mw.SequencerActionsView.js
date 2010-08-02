@@ -21,7 +21,7 @@ mw.SequencerActionsView.prototype = {
 		var _this = this;
 		// For now just show the sequence output
 		$viewSmilXmlDialog = mw.addDialog({
-			'title' : gM('mwe-sequenceedit-menu-view-smilxml'),
+			'title' : gM('mwe-sequencer-menu-view-smilxml'),
 			'dragable': true,	
 			'height' : 480,
 			'width' : 640,

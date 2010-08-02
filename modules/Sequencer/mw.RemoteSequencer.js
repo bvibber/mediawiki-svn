@@ -6,8 +6,8 @@
 */
 
 mw.addMessageKeys( [
-	"mwe-sequenceedit-no-sequence-create",
-	"mwe-sequenceedit-create-sequence"
+	"mwe-sequencer-no-sequence-create",
+	"mwe-sequencer-create-sequence"
 ]);
 
 mw.RemoteSequencer = function( options ) {
@@ -38,10 +38,10 @@ mw.RemoteSequencer.prototype = {
 		var _this = this;
 		if( wgArticleId == 0 ) {
 			// Update create button 
-			$j('#ca-edit span').text( gM('mwe-sequenceedit-create-sequence' ));
+			$j('#ca-edit span').text( gM('mwe-sequencer-create-sequence' ));
 			
 			$j( this.target ).html(
-				gM("mwe-sequenceedit-no-sequence-create", 
+				gM("mwe-sequencer-no-sequence-create", 
 					$j('<a />').attr('href','#').click(function() {
 						_this.showEditor();
 					})
