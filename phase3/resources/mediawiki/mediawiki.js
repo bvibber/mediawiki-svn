@@ -406,7 +406,7 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 					var html = '';
 					for ( var r = 0; r < requests.length; r++ ) {
 						// Build out the HTML
-						var src = mw.config.get( 'wgScriptPath' ) + '/load.php?' + jQuery.param( requests[r] );
+						var src = mw.config.get( 'server' ) + '/load.php?' + jQuery.param( requests[r] );
 						html += '<script type="text/javascript" src="' + src + '"></script>';
 					}
 					// Append script to body
