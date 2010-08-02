@@ -985,8 +985,10 @@ $messages['vro'] = array(
  */
 $messages['zh-hans'] = array(
 	'filelist' => '文件列表',
+	'filelist-desc' => '在[[Special:Filelist|特殊页面]]列举上传的档案',
 	'filelist-show-list' => '显示列表',
 	'filelist-show-gallery' => '显示画廊',
+	'filelist-image-desc' => '递减',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -41,14 +41,6 @@ $messages['qqq'] = array(
 	'right-adminlinks' => '{{doc-right}}',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'adminlinks_users' => 'Pamuruk',
-	'adminlinks_createuser' => 'Ulah pamuruk',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -197,6 +189,14 @@ $messages['bg'] = array(
 	'adminlinks_browsesearch' => 'Разглеждане и търсене',
 	'adminlinks_importexport' => 'Внасяне и изнасяне',
 	'right-adminlinks' => 'Погледни връзката към [[Special:AdminLinks|Администраторски връзки]]',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'adminlinks_users' => 'Pamuruk',
+	'adminlinks_createuser' => 'Ulah pamuruk',
 );
 
 /** Breton (Brezhoneg)
@@ -670,7 +670,7 @@ $messages['ig'] = array(
 	'adminlinks_editsidebar' => 'Rüwá na ngwa di na ákùkù',
 	'adminlinks_editcss' => 'Rüwá na akwukwo orúnotu nke CSS',
 	'adminlinks_editmainpagename' => 'Rüwá na áhà ihü íshí',
-	'adminlinks_users' => 'Ndi na banife',
+	'adminlinks_users' => "Ọ'bànifé",
 	'adminlinks_createuser' => 'Ké onye na banife',
 	'adminlinks_browsesearch' => 'Nlearia na Í tú',
 	'adminlinks_importexport' => 'I tinyé na Í kpata',

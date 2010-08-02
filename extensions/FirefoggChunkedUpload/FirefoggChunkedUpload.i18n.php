@@ -262,6 +262,11 @@ $messages['uk'] = array(
 	'firefoggcu-desc' => 'Порційний протокол завантаження Firefogg',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'firefoggcu-desc' => 'Firefogg的分块上传协议',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
  */

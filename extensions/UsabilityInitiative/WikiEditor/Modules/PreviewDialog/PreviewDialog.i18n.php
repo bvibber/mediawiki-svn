@@ -230,10 +230,11 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author PerroVerd
+ * @author Platonides
  * @author Translationista
  */
 $messages['es'] = array(
-	'wikieditor-previewDialog-preference' => 'Habilitar vista previa de diálogo',
+	'wikieditor-previewDialog-preference' => 'Habilitar diálogo de vista previa',
 	'wikieditor-previewDialog-tab' => 'Previsualizar',
 	'wikieditor-previewDialog-loading' => 'Cargando...',
 );

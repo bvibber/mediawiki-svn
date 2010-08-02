@@ -324,6 +324,11 @@ $messages['vi'] = array(
 	'cassandra-desc' => 'Lưu trữ văn bản phiên bản trong cơ sở dữ liệu [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'cassandra-desc' => '在[http://cassandra.apache.org/ Apache Cassandra] 资料库储存调整后的文字',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
  */

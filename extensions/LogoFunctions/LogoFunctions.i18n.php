@@ -116,7 +116,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'logofunctions-desc' => 'Adde un function analysator pro definir le logotypo del wiki',
+	'logofunctions-desc' => 'Adde un function analysator concernente le logotypo del wiki',
 	'logofunctions-filenotexist' => 'Error: [[File:$1]] non existe',
 );
 

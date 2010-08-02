@@ -115,6 +115,7 @@ $messages['qqq'] = array(
 	'storyboard-hide' => '{{Identical|Hide}}',
 	'storyboard-language' => '{{Identical|Language}}',
 	'storyboard-alreadyexists' => '$1 is a story title',
+	'storyboard-done' => '{{Identical|Done}}',
 	'storyboard-deletestory' => '{{Identical|Remove}}',
 );
 

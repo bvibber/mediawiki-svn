@@ -211,6 +211,14 @@ $messages['id'] = array(
 Membuat versi halamannya, berguna terutama untuk Wikinews',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'categoryfeed-desc' => ' Nè jí bit shí ntá ihe-gbanwere-ohúrù.
+Ké nkè ímé-ihü, di kàrí mkpà màkà Wikiakíkóohúrù',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

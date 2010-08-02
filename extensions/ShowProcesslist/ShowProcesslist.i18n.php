@@ -504,7 +504,7 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'Onye ne ké',
+	'showprocesslist-user' => "Ọ'bànifé",
 	'showprocesslist-host' => 'Onye ji ímé a rü',
 	'showprocesslist-db' => 'Njikota Ómárí',
 	'showprocesslist-time' => 'Ogẹ',

@@ -1619,7 +1619,7 @@ $messages['zh-hans'] = array(
 	'countedits-ok' => '确定',
 	'countedits-nosuchuser' => '没有一位名叫$1的用户。',
 	'countedits-resultheader' => '$1的结果',
-	'countedits-resulttext' => '$1有$2次编辑',
+	'countedits-resulttext' => '$1做了$2次{{PLURAL:$2|edit|编辑}}',
 	'countedits-mostactive' => '最活跃的贡献者',
 	'countedits-nocontribs' => '在这个wiki中没有贡献。',
 );

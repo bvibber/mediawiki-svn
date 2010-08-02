@@ -22,13 +22,6 @@ $messages['qqq'] = array(
 	'conditionalshowsection-desc' => '{{desc}}',
 );
 
-/** Kabardian (Cyrillic) ()
- * @author Тамэ Балъкъэрхэ
- */
-$messages['kbd-cyrl'] = array(
-	'conditionalshowsection-desc' => 'Тег cshow хетхэ, викитхыгъэм и къудамэр гъэпщкIу/къэгъэлъагъуэ нэпцIым щхьа',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -181,6 +174,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'conditionalshowsection-desc' => 'ある部分のウィキテキストの表示・非表示を条件によって切り替えられる cshow タグを追加する',
+);
+
+/** Kabardian (Cyrillic) ()
+ * @author Тамэ Балъкъэрхэ
+ */
+$messages['kbd-cyrl'] = array(
+	'conditionalshowsection-desc' => 'Тег cshow хетхэ, викитхыгъэм и къудамэр гъэпщкIу/къэгъэлъагъуэ нэпцIым щхьа',
 );
 
 /** Colognian (Ripoarisch)
@@ -364,6 +364,11 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'conditionalshowsection-desc' => 'Thêm thẻ cshow để hiện/ẩn đoạn mã wiki tùy theo điều kiện',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'conditionalshowsection-desc' => '添加cshow标签有条件地 显示 /隐藏一段维基文本',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

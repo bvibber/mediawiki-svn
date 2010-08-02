@@ -975,7 +975,9 @@ $messages['zh-hant'] = array(
 	'communityvoice' => '社群之聲',
 	'communityvoice-desc' => '社群參與工具',
 	'communityvoice-ratings' => '評分',
+	'communityvoice-ratings-scale-status-sending' => '發送中...',
 	'communityvoice-ratings-scale-status-error' => '發送錯誤！',
 	'communityvoice-ratings-scale-status-thanks' => '感謝投票！',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 個投票)',
 );
 

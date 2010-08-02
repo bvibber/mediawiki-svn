@@ -523,7 +523,7 @@ $messages['hi'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'call' => 'Wołać',
+	'call' => 'Namołwa',
 	'call-desc' => 'Wotkaz k předłoze (abo k normalnej wikijowej stronje) z přepodaću parametrow wutworić. Da so w přikazowej lince wobhladowaka abo znutřka wikijoweho teksta wužiwać.',
 	'call-text' => "Rozšěrjenja Call wočakuje wiki-stronu a opcionalne parametry za tutu stronu jako argument.<br /><br />
 

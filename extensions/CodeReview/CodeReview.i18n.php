@@ -204,7 +204,8 @@ $messages['qqq'] = array(
 	'code-pathsearch-path' => '{{Identical|Path}}',
 	'code-revfilter-cr_status' => '{{Identical|Status}}',
 	'code-revfilter-cr_author' => '{{Identical|Author}}',
-	'code-rev-submit' => 'Caption of the button used to Save changes when viewing a revision.',
+	'code-rev-submit' => 'Caption of the button used to Save changes when viewing a revision.
+{{Identical|Save changes}}',
 	'code-rev-submit-next' => 'Caption of the button used when viewing a revision to Save changes moving to next unresolved revision.',
 	'codereview-batch-submit' => '{{Identical|Submit}}',
 	'codereview-subtitle' => '{{Identical|For $1}}
@@ -4130,6 +4131,7 @@ $messages['ia'] = array(
 	'code-author-unlink' => 'disligar?',
 	'code-author-unlinksuccess' => 'Le autor $1 ha essite disligate',
 	'code-author-badtoken' => 'Error de session durante le tentativa de executar iste action.',
+	'code-author-total' => 'Numero total de autores: $1',
 	'code-browsing-path' => "Navigation per versiones in '''$1'''",
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Autor',

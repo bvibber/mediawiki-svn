@@ -358,6 +358,7 @@ Kore salutas $2',
 
 /** Spanish (Español)
  * @author Antur
+ * @author Dferg
  */
 $messages['es'] = array(
 	'userrightsnotifysubject' => 'Grupo de usuario modificado en $1',
@@ -367,7 +368,7 @@ Por la presente le informo que sus derechos de usuario en $2 fueron modificados 
 
 Agregado: $5
 
-Removido: $6
+Retirado: $6
 
 Cordialmente,
 

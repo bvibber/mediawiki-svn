@@ -952,7 +952,7 @@ $messages['ia'] = array(
 	'wah-encoding' => 'Codification del file <i>$1%</i> complete',
 	'wah-encoding-fail' => 'Codification falleva. Per favor recarga iste pagina o reproba plus tarde.',
 	'wah-uploading' => 'Cargamento del file <i>$1%</i> complete',
-	'wah-uploadfail' => 'Cargamento falleva',
+	'wah-uploadfail' => 'Le incargamento ha fallite',
 	'wah-doneuploading' => 'Cargamento complete. Gratias pro tu contribution.',
 	'wah-needs-firefogg' => 'Pro participar in Wiki@Home tu debe installar <a href="http://firefogg.org">Firefogg</a>.',
 	'wah-api-error' => 'Il ha occurrite un error con le API. Per favor reproba plus tarde.',

@@ -474,6 +474,11 @@ $messages['vi'] = array(
 	'gnuplot-desc' => 'Thêm thẻ <code><nowiki><gnuplot></nowiki></code> để sử dụng Gnuplot',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'gnuplot-desc' => '使用Gnuplot增加<code><nowiki><gnuplot></nowiki></code>标签',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
  */

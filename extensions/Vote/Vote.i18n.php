@@ -934,6 +934,17 @@ riddler|Riddler',
 	'right-voteadmin' => 'Melihat hasil pemungutan suara',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'vote' => 'Votu',
+	'vote-caption' => 'Ihe Í kpàtàrà áká:',
+	'vote-submit' => 'Votu',
+	'vote-results' => 'Ihe fútárá votu',
+	'right-vote' => 'Votu',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author Cruccone

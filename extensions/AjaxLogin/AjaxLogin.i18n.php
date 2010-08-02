@@ -517,7 +517,7 @@ $messages['ig'] = array(
 Ihe á gi vúrú gi gáfè ihü á nà Í nwèríkí tọfù ihe Í na rü.',
 	'ajaxLogin2' => 'I chorí mé iheá?
 I nwèríkí lúfùu ihe í gbanwere na ihüá Í háfụ ihüá ubuá.',
-	'ajaxlogin-create' => 'Ké buwa',
+	'ajaxlogin-create' => 'ké otụ buwa',
 	'al-nosuchuser' => 'O díg.ʼonye né ji "$1".
 Orúnotu né lékwa I dé na ukwu na ntà.
 Lé otu I dètùrù ihe.',
@@ -1093,7 +1093,7 @@ $messages['zh-cn'] = array(
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */
 $messages['zh-hans'] = array(
-	'ajaxlogin-desc' => '使用动态视窗登录并记忆密码',
+	'ajaxlogin-desc' => '使用动态窗口登录并记忆密码',
 	'ajaxLogin1' => '为完成登录，您必须输入一组新密码。
 这会把您带离本编辑页面，您有可能会丢失现有的编辑。',
 	'ajaxLogin2' => '确定这样做吗？如果您现在离开本页面，您可能会丢失您对本页面作出的修改。',
