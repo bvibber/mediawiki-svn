@@ -20,7 +20,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.theme.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.theme.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.theme.css',
 		),
 		'needs' => array( 'jquery' ),
 	),
@@ -30,7 +29,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.accordion.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.accordion.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.accordion.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -40,7 +38,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.autocomplete.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.autocomplete.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.autocomplete.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -50,7 +47,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.button.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.button.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.button.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -61,7 +57,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.datepicker.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.datepicker.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.datepicker.css',
 		),
 		'locales' => array(
 			'af' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-af.js',
@@ -124,7 +119,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.dialog.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.dialog.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.dialog.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -150,7 +144,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.progressbar.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.progressbar.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.progressbar.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -160,7 +153,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.resizable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.resizable.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.resizable.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -170,7 +162,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.selectable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.selectable.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.selectable.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -180,7 +171,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.slider.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.slider.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.slider.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
@@ -194,7 +184,6 @@ ResourceLoader::register( array(
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.tabs.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.tabs.css',
-			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.tabs.css',
 		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
