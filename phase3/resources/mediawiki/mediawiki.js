@@ -287,7 +287,6 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 			if ( typeof registry[module].messages === 'object' ) {
 				mw.msg.set( registry[module].messages );
 			}
-			var state = 'ready';
 			// Execute script
 			try {
 				registry[module].script();
