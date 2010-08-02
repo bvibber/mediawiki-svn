@@ -3078,7 +3078,7 @@ $messages['ja'] = array(
 * '''ウィキペディアのロゴ''': ロゴを更新しました。詳細は [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog]（英語）をご覧ください。",
 	'prefswitch-main-logged-changes' => "* '''{{int:watch}}タブ'''は、星型のマークになっています。
 * '''{{int:move}}タブ'''は、検索窓の隣にあるドロップダウンの中にあります。",
-	'prefswitch-main-feedback' => '=== フィードバックは ===
+	'prefswitch-main-feedback' => '=== フィードバック ===
 私たちにあなたのご意見をぜひお聞かせください。[[$1|フィードバック用のページ]]を訪れるか、もし私たちがソフトウェアを改善するために現在行っている取り組みに興味がおありならば、[http://usability.wikimedia.org ユーザビリティ・ウィキ]を訪れていただければより詳しい情報が得られます。',
 	'prefswitch-main-anon' => '===以前の状態に戻す===
 新機能の数々を停止したい場合、[$1 こちらをクリック]してください。まずログインするかアカウントを作るか尋ねられます。',
