@@ -26,14 +26,32 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.accordion' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.accordion.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.accordion.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.accordion.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.accordion.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.accordion.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.autocomplete' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.autocomplete.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.autocomplete.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.autocomplete.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.autocomplete.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.autocomplete.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.button' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.button.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.button.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.button.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.button.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.button.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.datepicker' => array(
@@ -102,6 +120,12 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.dialog' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.dialog.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.dialog.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.dialog.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.dialog.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.dialog.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.draggable' => array(
@@ -122,18 +146,42 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.progressbar' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.progressbar.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.progressbar.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.progressbar.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.progressbar.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.progressbar.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.resizable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.resizable.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.resizable.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.resizable.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.resizable.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.resizable.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.selectable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.selectable.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.selectable.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.selectable.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.selectable.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.selectable.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.slider' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.slider.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.slider.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.slider.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.slider.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.slider.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.sortable' => array(
@@ -142,220 +190,17 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.tabs' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.tabs.js',
+		'style' => 'resources/jquery/ui/themes/base/jquery.ui.tabs.css',
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.tabs.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.tabs.css',
+			'monobook' => 'resources/jquery/ui/themes/monobook/jquery.ui.tabs.css',
+		),
 		'needs' => array( 'jquery.ui.core' ),
 	),
 	'jquery.ui.widget' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.widget.js',
 		'needs' => array( 'jquery.ui.core' ),
-	),
-	// i18n
-	'jquery.ui.datepicker-af' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-af.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ar' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ar.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-az' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-az.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-bg' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-bg.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-bs' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-bs.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ca' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ca.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-cs' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-cs.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-da' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-da.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-de' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-de.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-el' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-el.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-en-GB' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-en-GB.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-eo' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-eo.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-es' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-es.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-et' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-et.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-eu' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-eu.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-fa' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fa.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-fi' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fi.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-fo' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fo.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-fr-CH' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fr-CH.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-fr' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-fr.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-he' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-he.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-hr' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hr.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-hu' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hu.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-hy' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-hy.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-id' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-id.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-is' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-is.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-it' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-it.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ja' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ja.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ko' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ko.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-lt' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-lt.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-lv' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-lv.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ms' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ms.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-nl' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-nl.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-no' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-no.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-pl' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-pl.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-pt-BR' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-pt-BR.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ro' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ro.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ru' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ru.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-sk' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sk.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-sl' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sl.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-sq' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sq.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-sr-SR' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sr-SR.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-sr' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sr.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-sv' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-sv.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-ta' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-ta.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-th' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-th.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-tr' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-tr.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-uk' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-uk.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-vi' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-vi.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-zh-CN' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-CN.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-zh-HK' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-HK.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
-	),
-	'jquery.ui.datepicker-zh-TW' => array(
-		'script' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-TW.js',
-		'needs' => array( 'jquery.ui.datepicker' ),
 	),
 	// Effects
 	'jquery.effects.blind' => array(
