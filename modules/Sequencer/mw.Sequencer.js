@@ -97,7 +97,7 @@ mw.Sequencer.prototype = {
 	 * Update the smil xml and then update the interface
 	 */
 	updateSmilXML: function( smilXML ){
-		mw.log("Sequencer::updateSmilXML" + smilXML);
+		mw.log( "Sequencer::updateSmilXML" );
 		var _this = this;		
 		// Update the embedPlayer smil: 
 		this.getSmil().updateFromString( smilXML );			

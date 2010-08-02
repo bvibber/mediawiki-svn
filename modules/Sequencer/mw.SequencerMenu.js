@@ -97,46 +97,33 @@ mw.SequencerMenu.prototype = {
 		var $menuTarget = this.sequencer.getMenuTarget();	
 		$menuTarget.empty();
 
-		for( var topMenuKey in this.menuConfig ){				
-			// Create a function to preserve topMenuKey binding scope
-			function drawTopMenu( topMenuKey ){
+		for( var menuKey in this.menuConfig ){				
+			// Create a function to preserve menuKey binding scope
+			function drawTopMenu( menuKey ){				
 				// Add the menu target		
 				$menuTarget
 				.append( 
 					$j('<span />')
-					.html( gM('mwe-sequencer-menu-' + topMenuKey )  )
+					.html( gM('mwe-sequencer-menu-' + menuKey )  )
 					.css({
 						'padding': '7px',
 						'cursor' : 'default'
 					})
-					.attr( 'id', _this.sequencer.id + '_' + topMenuKey + '_topMenuItem')
+					.attr( 'id', _this.sequencer.id + '_' + menuKey + '_topMenuItem')
 					.addClass( 'ui-state-default' )
 					.buttonHover()
 			    	// Add menu binding: 
 			    	.menu({
-						content: _this.getMenuSet( _this.menuConfig, topMenuKey ),
-						showSpeed: 100 
-					})
-					// should fire post jquery.fn.menu() mousedown binding ::
-					.mousedown(function(){
-						// sync the disabled enabled state to menu
-						for( var menuItemKey in _this.menuConfig[ topMenuKey ] ){
-							var $menuItem = $j( '#' + _this.getMenuItemId( topMenuKey, menuItemKey ) );						
-							var isDisabled = _this.menuConfig[ topMenuKey ][menuItemKey].disabled;						
-							if( $menuItem.hasClass( 'disabled') ){
-								if( ! isDisabled ){
-									$menuItem.removeClass( 'disabled' )
-								}
-							} else {
-								if( isDisabled ){
-									$menuItem.addClass( 'disabled' );
-								}
-							}
-						}
-					})
+						content: _this.getMenuSet( menuKey ),
+						showSpeed: 100,
+						createMenuCallback: function(){
+			    			// Sync the disabled enabled state to menu
+			    			_this.syncMenuState( menuKey )
+			    		}
+					})					
 				)
 			}
-			drawTopMenu( topMenuKey );
+			drawTopMenu( menuKey );
 		}		
 		
 		// Check if we should include kaltura credits
@@ -156,9 +143,31 @@ mw.SequencerMenu.prototype = {
 			)
 		}
 	},
-	/* return a top menuItem with all its associated menuItems */
-	getMenuSet: function( menuConfig, menuKey ){
+	/**
+	 * Sync an in-dom menu with the menuConfig state 
+	 */
+	syncMenuState: function( menuKey ){
 		var _this = this;
+		var menuConfig = this.menuConfig;
+		for( var menuItemKey in _this.menuConfig[ menuKey ] ){
+			var $menuItem = $j( '#' + _this.getMenuItemId( menuKey, menuItemKey ) );			
+			var isDisabled = _this.menuConfig[ menuKey ][ menuItemKey ].disabled;
+			mw.log('sync: ' + menuItemKey + ' in-dom:' + $menuItem.length + ' isd:' + isDisabled);
+			if( $menuItem.hasClass( 'disabled') ){
+				if( ! isDisabled ){
+					$menuItem.removeClass( 'disabled' )
+				}
+			} else {
+				if( isDisabled ){
+					$menuItem.addClass( 'disabled' );
+				}
+			}
+		}
+	},
+	/* return a top menuItem with all its associated menuItems */
+	getMenuSet: function( menuKey ){
+		var _this = this;
+		var menuConfig = this.menuConfig;
 		// Build out the ul for the given menu
 		var $menu = $j( '<ul />' )
 			.attr({
@@ -199,6 +208,10 @@ mw.SequencerMenu.prototype = {
 			}
 		);
 		
+		if( menuItem.disabled === true ){
+			$li.addClass( 'disabled' );
+		}		
+		
 		// Set the ID for easy reference
 		$li.attr( 'id',  _this.getMenuItemId( menuKey, menuItemKey ) )
 		
@@ -210,42 +223,24 @@ mw.SequencerMenu.prototype = {
 		return $li;
 	},
 	
-	disableMenuItem: function( menuKey, menuItemKey ){
-		
+	disableMenuItem: function( menuKey, menuItemKey ){			
 		this.menuConfig[ menuKey ][ menuItemKey ].disabled = true;		
-		$menuItemTarget = $j('#' + this.getMenuItemId(menuKey, menuItemKey ) );		
+		$menuItemTarget = $j('#' + this.getMenuItemId( menuKey, menuItemKey ) );
+		
+		mw.log("SequencerMenu::disable:" + ' ' + menuKey + ' ' + menuItemKey + ' in-dom:' + $menuItemTarget.length );
 		if( $menuItemTarget.length && ! $menuItemTarget.hasClass( 'disabled' ) ){
 			$menuItemTarget.addClass( 'disabled' );
 		}
-
-		/*this.menuConfig[ menuKey ][ menuItemKey ].enabled = false;
-		
-		$j('#' + this.getMenuItemId(menuKey, menuItemKey ) )
-		// remove menu role
-		.attr( 'role', '')
-		// Set to faded out
-		.css({
-			'opacity' : .5
-		})*/
-		
 	},
 	
-	enableMenuItem: function( menuKey, menuItemKey ){
-		this.menuConfig[ menuKey ][ menuItemKey ].disabled = false;
-		alert( 'EnableMenuItem' + menuKey + ' key:' + menuItemKey );
+	enableMenuItem: function( menuKey, menuItemKey ){		
+		this.menuConfig[ menuKey ][ menuItemKey ].disabled = false;		
 		$menuItemTarget = $j('#' + this.getMenuItemId( menuKey, menuItemKey ) );
-		if( $menuItemTarget.hasClass( 'disabled' ) ){
-			$menuItemTarget.removeClass( 'disabled' );
-		}
 		
-		/*
-		$j('#' + this.getMenuItemId(menuKey, menuItemKey ) )
-		// remove menu role
-		.attr( 'role', 'menuitem')
-		// Set to faded out
-		.css({
-			'opacity' : 1
-		})*/
+		mw.log("SequencerMenu::enable:" + menuKey + ' ' + menuItemKey + ' in-dom:' + $menuItemTarget.length );
+		if( $menuItemTarget.length && $menuItemTarget.hasClass( 'disabled' ) ){
+			$menuItemTarget.removeClass( 'disabled' );
+		}		
 	},
 	
 	getMenuItemId: function( menuKey, menuItemKey ){

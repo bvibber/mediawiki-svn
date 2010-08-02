@@ -60,7 +60,7 @@ mw.SequencerTimeline.prototype = {
 	},
 	
 	// Draw the timeline
-	drawTimeline: function(){			
+	drawTimeline: function(){		
 		// xxx TODO support multiple tracks ::: 
 		var seqTracks = this.sequencer.getSmil().getBody().getSeqElements();		
 		// For now just one video track: 
@@ -91,9 +91,7 @@ mw.SequencerTimeline.prototype = {
 		var _this = this;
 		// Setup a local pointer to the smil engine: 
 		var smil = this.sequencer.getSmil();
-		
-
-        
+		        
 		var $clipTrackSet = this.getTracksContainer().find('.clipTrackSetContainer').find( '.clipTrackSet' ); 
 		// Add the $clipTrackSet if not already in dom: 
 		if( $clipTrackSet.length == 0 ){
@@ -113,8 +111,7 @@ mw.SequencerTimeline.prototype = {
 			var reRenderThumbFlag = false;
 			// Draw the node onto the timeline if the clip is not already there:
 			var $timelineClip = $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) )
-			if( $timelineClip.length == 0 ){			
-				
+			if( $timelineClip.length == 0 ){				
 				$timelineClip = _this.getTimelineClip( $clipTrackSet, $node ); 					
 				if( $previusClip ){
 					$previusClip.after( 
@@ -125,16 +122,18 @@ mw.SequencerTimeline.prototype = {
 					$clipTrackSet.prepend( 
 						$timelineClip		
 					);					
-				}
+				}			
 				reRenderThumbFlag = true;
 			} else { 
-				// confirm order
-				mw.log( $timelineClip.attr('id') + ' found ');
-				if( $timelineClip.data('prevIndex') != seqOrder ){
+				// Confirm clip is in the correct indexOrder
+				//mw.log( 'indexOrder::' +  $timelineClip.attr('id') + ' '+ $timelineClip.data('indexOrder') + ' == ' + $node.data('indexOrder'));
+				if( $timelineClip.data('indexOrder') != $node.data('indexOrder') ){
 					reOrderTimelineFlag = true;
-				}			
+				}							
 			}
-			// xxx Check if the start time was changed
+			
+			// xxx Check if the start time was changed to set reRenderThumbFlag 
+			
 			
 			if ( reRenderThumbFlag ){
 				// issue a draw Thumb request ( since we reinserted into the dom )
@@ -152,12 +151,15 @@ mw.SequencerTimeline.prototype = {
 		
 		// Check if we need to re-sort the list
 		if( reOrderTimelineFlag ){
-			alert(" reorder clips!");
 			// move every node in-order to the end. 
 			smil.getBody().getRefElementsRecurse( sequenceNode, startOffset, function( $node ){		
 				var $timelineClip = $clipTrackSet.find('#' + _this.getTimelineClipId( $node ) )				
 				$timelineClip.appendTo( $clipTrackSet );
 			});
+			// Update the order for all clips
+			$clipTrackSet.children().each(function (inx, clip){
+				$j( clip ).data('indexOrder', inx);
+			});	
 		}
 		
 		
@@ -218,7 +220,7 @@ mw.SequencerTimeline.prototype = {
 			.attr('id',  _this.getTimelineClipId( $node ) )	
 			.data( {
 				'smilId': $node.attr('id'),
-				'prevIndex' : $clipTrackSet.children().length
+				'indexOrder' : $clipTrackSet.children().length
 			})
 			.addClass('timelineClip ui-corner-all')
 			.loadingSpinner()				
@@ -269,7 +271,7 @@ mw.SequencerTimeline.prototype = {
 			$seqParent.append( $movedSmileNode.get(0) );
 		} else {
 			// see if the index was affected by our move position
-			if( clipIndex >= $movedSmileNode.data('prevIndex') ){
+			if( clipIndex >= $movedSmileNode.data('indexOrder') ){
 				$seqParent.children().eq( clipIndex ).after( $movedSmileNode.get(0) );
 			}else{
 				$seqParent.children().eq( clipIndex ).before( $movedSmileNode.get(0) );
@@ -291,9 +293,9 @@ mw.SequencerTimeline.prototype = {
 			});	
 		}
 		
-		// Update the prevIndex for all clips
+		// Update the order for all clips
 		$seqParent.children().each(function (inx, clip){
-			$j( clip ).data('prevIndex', inx);
+			$j( clip ).data('indexOrder', inx);
 		});
 		
 		// Invalidate / update embedPlayer duration / clip offsets 

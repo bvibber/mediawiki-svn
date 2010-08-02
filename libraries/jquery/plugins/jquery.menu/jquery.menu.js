@@ -126,6 +126,7 @@ function Menu(caller, options) {
 			linkToFront: false
 		},
 		showSpeed: 200, // show/hide speed in milliseconds
+		createMenuCallback: null,
 		callerOnState: 'ui-state-active', // class to change the appearance of the link/button when the menu is showing
 		loadingState: 'ui-state-loading', // class added to the link/button while the menu is created
 		linkHover: 'ui-state-hover', // class for menu option hover state
@@ -277,7 +278,7 @@ function Menu(caller, options) {
 					}; 
 					break;
 			};			
-		});
+		});	
 	};
 	
 	this.create = function() {
@@ -323,12 +324,12 @@ function Menu(caller, options) {
 					var menuli = menuitem.parent();
 					if( !menuli.hasClass('divider') && !menuli.hasClass('disabled')  ){
 						$('.'+options.linkHover).removeClass(options.linkHover).blur().parent().removeAttr('id');
-						$(this).addClass(options.linkHover).focus().parent().attr('id','active-menuitem');
+						$(this).addClass(options.linkHover).focus().parent().addClass('active-menuitem');
 					}
 				},
 				function() {
 					if( !menuitem.hasClass('divider') && !menuitem.hasClass('disabled')  ){
-						$(this).removeClass(options.linkHover).blur().parent().removeAttr('id');
+						$(this).removeClass(options.linkHover).blur().parent().removeClass('active-menuitem');
 					}
 				}
 			);
@@ -347,6 +348,10 @@ function Menu(caller, options) {
 		
 		menu.setPosition(container, caller, options);
 		menu.menuExists = true;
+				
+		if( typeof options.createMenuCallback == 'function' ){
+			options.createMenuCallback();
+		}
 	};
 	
 	this.chooseItem = function(item) {		

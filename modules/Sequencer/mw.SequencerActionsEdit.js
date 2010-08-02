@@ -47,7 +47,7 @@ mw.SequencerActionsEdit.prototype = {
 	 * Apply a smil xml transform state ( to support undo / redo ) 
 	 */
 	registerEdit: function(){	
-		mw.log( 'ActionsEdit::registerEdit: ' + this.sequencer.getSmil().getXMLString() );
+		mw.log( 'ActionsEdit::registerEdit: stacksize' + this.editStack.length + ' editIndex: ' + this.editIndex );
 		// Throw away any edit history after the current editIndex: 
 		if( this.editStack.length && this.editIndex > this.editStack.length ) {
 			this.editStack = this.editStack.splice(0, this.editIndex);
@@ -71,13 +71,15 @@ mw.SequencerActionsEdit.prototype = {
 		this.editIndex--;
 		if( this.editStack[ this.editIndex ] ) {
 			this.sequencer.updateSmilXML( this.editStack[ this.editIndex ] );
+			// Enable redo action 
+			this.sequencer.getMenu().enableMenuItem( 'edit', 'redo' );
 		} else {
 			// index out of range set to 0
 			this.editIndex = 0;
 			mw.log("Error: SequenceActionsEdit:: undo Already at oldest index:" + this.editIndex);
-		}
+		}		
 		// if at oldest undo disable undo option 
-		if( this.editIndex - 1  == 0 ){
+		if( ( this.editIndex - 1 )  < 0 ){
 			this.sequencer.getMenu().disableMenuItem( 'edit', 'undo' );
 		}
 	},	
@@ -87,15 +89,19 @@ mw.SequencerActionsEdit.prototype = {
 	redo: function(){
 		this.editIndex ++;
 		if( this.editStack[ this.editIndex ] ) {
+			mw.log("DO redo for editIndex::"  + this.editIndex + ' xml lenght' + this.editStack[ this.editIndex ].length ); 
 			this.sequencer.updateSmilXML( this.editStack[ this.editIndex ] );
+			// Enable undo action 
+			this.sequencer.getMenu().enableMenuItem( 'edit', 'undo' );
 		} else {
-			// index out of redo range set to last edit
+			// Index out of redo range set to last edit
 			this.editIndex == this.editStack.length - 1
 			mw.log( 'Error: SequencerActionsEdit::Redo: Already at most recent edit avaliable');
 		}
 		
 		// if at newest redo disable redo option 
-		if( this.editIndex == this.editStack.length - 1 ){
+		mw.log( this.editIndex + ' >= ' + ( this.editStack.length -1 ) );
+		if( this.editIndex >= this.editStack.length -1 ){
 			this.sequencer.getMenu().disableMenuItem( 'edit', 'redo' );
 		}
 	}
