@@ -84,10 +84,6 @@ class ResourceLoader {
 			case 'flip-css':
 				$result = CSSJanus::transform( $data, true, false );
 				break;
-			case 'strip-debug':
-				// FIXME: Fragile
-				$result = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $data );
-				break;
 			default:
 				// Don't cache anything, just pass right through
 				return $data;
@@ -147,7 +143,7 @@ class ResourceLoader {
 			'loader' => null,
 			'needs' => array(),
 			'raw' => false,
-			'debug' => false,
+			'debug' => null,
 		), $options );
 		// Validate script option
 		if ( !is_string( $options['script'] ) ) {
@@ -209,9 +205,7 @@ class ResourceLoader {
 		$modules = array();
 		foreach ( explode( '|', $request->getVal( 'modules' ) ) as $module ) {
 			if ( isset( self::$modules[$module] ) ) {
-				if ( !self::$modules[$module]['debug'] || $parameters['debug'] ) {
-					$modules[] = $module;
-				}
+				$modules[] = $module;
 			}
 		}
 		// Use output buffering
@@ -221,8 +215,12 @@ class ResourceLoader {
 		foreach ( $modules as $module ) {
 			if ( self::$modules[$module]['raw'] ) {
 				readfile( self::$modules[$module]['script'] );
-				$ready[] = $module;
 				echo "\n";
+				if ( $parameters['debug'] && self::$modules[$module]['debug'] ) {
+					readfile( self::$modules[$module]['debug'] );
+					echo "\n";
+				}
+				$ready[] = $module;
 			}
 		}
 		// Special meta-information for the 'mediawiki' module
@@ -268,13 +266,13 @@ class ResourceLoader {
 			if ( !self::$modules[$module]['raw'] ) {
 				// Script
 				$script = file_get_contents( self::$modules[$module]['script'] );
+				// Debug
+				if ( $parameters['debug'] && self::$modules[$module]['debug'] ) {
+					$script .= file_get_contents( self::$modules[$module]['debug'] );
+				}
 				// Locale
 				if ( isset( self::$modules[$module]['locales'][$parameters['lang']] ) ) {
 					$script .= file_get_contents( self::$modules[$module]['locales'][$parameters['lang']] );
-				}
-				// Debug stripping - scary and probably a bad idea
-				if ( !$parameters['debug'] ) {
-					$script = self::filter( 'strip-debug', $script );
 				}
 				// Style
 				$style = self::$modules[$module]['style'] ? file_get_contents( self::$modules[$module]['style'] ) : '';

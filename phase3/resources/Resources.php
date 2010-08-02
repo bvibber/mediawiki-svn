@@ -414,7 +414,10 @@ ResourceLoader::register( array(
 	/* MediaWiki */
 	
 	'mediawiki' => array(
-		'script' => 'resources/mediawiki/mediawiki.js', 'raw' => true ),
+		'script' => 'resources/mediawiki/mediawiki.js',
+		'debug' => 'resources/mediawiki/mediawiki.log.js',
+		'raw' => true,
+	),
 	
 	/* MediaWiki Legacy */
 	
