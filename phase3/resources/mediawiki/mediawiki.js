@@ -204,7 +204,6 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 		/* Private Members */
 		
 		var that = this;
-		var server = 'load.php';
 		/*
 		 * Mapping of registered modules
 		 * 
