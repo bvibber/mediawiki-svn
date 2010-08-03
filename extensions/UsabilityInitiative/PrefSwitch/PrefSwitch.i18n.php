@@ -2160,7 +2160,7 @@ Volyéd chouèsir tot cen que convint.',
 Tornar a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-logged-changes' => "* L’'''ongllèta « {{int:watch}} »''' est ora una ètêla.
 * L’'''ongllèta « {{int:move}} »''' est ora dens lo menu dèroulant a coutâ du champ de rechèrche.",
-	'prefswitch-main-feedback' => '===Avis ?===
+	'prefswitch-main-feedback' => '===Avis d’èxpèrience ?===
 Nos amerians cognetre voutros avis. Volyéd visitar la [[$1|pâge d’avis]] ou ben, se vos éte entèrèssiês per noutros èfôrts continus por mèlyorar la programeria, visitâd noutron [http://usability.wikimedia.org vouiqui utilisabilitât] por més d’enformacions.',
 	'prefswitch-main-anon' => '===O ére mielx devant===
 [$1 Clicâd ique por dèsactivar les novèles fonccionalitâts]. Vos serat demandâ de vos branchiér ou ben de vos fâre un compto.',

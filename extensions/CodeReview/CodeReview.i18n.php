@@ -4395,7 +4395,7 @@ $messages['ig'] = array(
 	'code-field-path' => 'Uzọr',
 	'code-status-new' => 'ohüru',
 	'code-status-ok' => 'Ngwanu',
-	'code-status-old' => 'óchié',
+	'code-status-old' => 'ichié',
 	'repoadmin-new-button' => 'Ké',
 	'repoadmin-edit-button' => 'Ngwanu',
 );

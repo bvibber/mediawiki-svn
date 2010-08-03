@@ -1262,6 +1262,19 @@ $messages['id'] = array(
 	'readerfeedback-tt-review' => 'Kirim tinjauan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'readerfeedback-overall' => 'Nà íshí níle',
+	'readerfeedback-level-0' => 'Ụbịàm',
+	'readerfeedback-level-3' => 'Élú ukwu',
+	'readerfeedback-submit' => 'Dànyé',
+	'readerfeedback-finished' => 'Daalụ!',
+	'readerfeedback-tier-high' => 'Élú ukwu',
+	'readerfeedback-tier-poor' => 'Ụbịàm',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

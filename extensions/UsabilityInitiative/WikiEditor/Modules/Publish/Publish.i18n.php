@@ -649,6 +649,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'wikieditor-publish-button-cancel' => 'Kàchá',
 	'wikieditor-publish-dialog-publish' => 'Wéfùtà',
 );
 

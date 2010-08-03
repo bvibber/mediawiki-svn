@@ -819,6 +819,13 @@ $messages['ie'] = array(
 	'passwordreset-newpass' => 'Nov passa-parol',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'passwordreset' => 'Nkuwaria okwúngáfè',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  * @author Wyvernoid

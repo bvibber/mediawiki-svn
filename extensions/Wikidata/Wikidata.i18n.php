@@ -395,7 +395,7 @@ $messages['niu'] = array(
  */
 $messages['ab'] = array(
 	'ow_history' => 'Аҭоурых',
-	'ow_User' => 'Иалахә',
+	'ow_User' => 'Алахәыла',
 );
 
 /** Afrikaans (Afrikaans)
@@ -3413,6 +3413,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Jagwar
  * @author Malafaya
  * @author Michawiki
@@ -3445,6 +3446,7 @@ $messages['eo'] = array(
 	'datasearch_search_text' => 'Serĉi tekston:',
 	'datasearch_within_words' => 'Inter vortojn:',
 	'datasearch_showing_only' => 'Montrante nur maksimumon de $1 {{PLURAL:$1|trafo|trafoj}} (el $2).',
+	'ow_importtsv_title1' => 'Importi TSV',
 	'ow_importtsv_title2' => 'Importi difinojn kaj tradukojn',
 	'ow_importtsv_import_failed' => 'Importado malsukcesis',
 	'ow_importtsv_file' => 'TSV-Dosiero:',
@@ -3454,6 +3456,7 @@ $messages['eo'] = array(
 	'ow_impexptsv_unknown_lang' => '<p>Nekonata aŭ malkorekta lingvo: $1.<br />
 Lingvoj devas esti ISO 639-3 lingvaj kodoj.</p>',
 	'ow_exporttsv_languages' => 'Lingvoj:',
+	'ow_exporttsv_export_failed' => 'Eksporto malsukcesis',
 	'ow_save' => 'Konservi',
 	'ow_history' => 'Historio',
 	'ow_datasets' => 'Datumara selekto',
@@ -6494,6 +6497,8 @@ $messages['ig'] = array(
 	'langman_field_optional' => '(ichóró)',
 	'langman_addlang' => 'Tinyé asụsụ',
 	'importlangnames_title' => 'Tinyé shi ébéozor áhạ asụsụ',
+	'ow_importtsv_file' => 'Ákwúkwó orunotu TSV:',
+	'ow_importtsv_nothing_added' => 'Ọ díghì ihe tìrì.',
 	'ow_save' => 'Donyéré',
 	'ow_dm_OK' => 'Ngwanu',
 	'ow_Time' => 'Ogẹ',

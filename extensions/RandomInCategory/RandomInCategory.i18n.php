@@ -473,6 +473,13 @@ $messages['id'] = array(
 	'randomincategory-submit' => 'Tuju ke',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'randomincategory-submit' => 'Gá',
+);
+
 /** Ido (Ido)
  * @author Wyvernoid
  */

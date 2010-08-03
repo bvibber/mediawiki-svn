@@ -928,7 +928,7 @@ $messages['ig'] = array(
 	'closewikis-page-close-wiki' => 'Wiki:',
 	'closewikis-page-close-submit' => 'Mèchié',
 	'closewikis-page-reopen-wiki' => 'Wiki:',
-	'closewikis-page-reopen-reason' => 'Mgbaghaputa:',
+	'closewikis-page-reopen-reason' => 'Mgbághapụtà:',
 	'closewikis-page-reopen-submit' => 'Mèpókwá',
 	'closewikis-list-header-wiki' => 'Wiki',
 );

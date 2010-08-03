@@ -568,11 +568,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'wah-loading' => 'ŝarĝante interfacon Wiki@Home ...',
+	'wah-menu-jobs' => 'Laboroj',
 	'wah-menu-stats' => 'Statistikoj',
 	'wah-menu-pref' => 'Agordoj',
 	'wah-lookingforjob' => 'Serĉante laboron ...',

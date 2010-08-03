@@ -80,7 +80,7 @@ $wgCustomToolbarMessages['qqq'] = array(
  * @author Temuri rajavi
  */
 $wgCustomToolbarMessages['ab'] = array(
-	'ct_user_user' => 'Иалахә',
+	'ct_user_user' => 'Алахәыла',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1449,7 +1449,13 @@ $wgCustomToolbarMessages['id'] = array(
  * @author Ukabia
  */
 $wgCustomToolbarMessages['ig'] = array(
+	'ct_bold_caption' => 'Shí íke',
+	'ct_external_caption' => 'Jikodo di ẹzí',
+	'ct_nowiki_caption' => 'Wiki àdíghị',
 	'ct_submit' => 'Gá!',
+	'ct_user_user' => "Ọ'bànifé",
+	'ct_user_caption' => "Jikodo ọ'bànifé",
+	'ct_user_sample' => "Áhà ọ'bànifé",
 );
 
 /** Italian (Italiano)

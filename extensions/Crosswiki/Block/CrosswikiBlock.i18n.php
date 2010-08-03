@@ -1297,10 +1297,12 @@ Kembali ke:
 	'right-crosswikiblock' => 'Blokir dan buka blokir pengguna di wiki lain',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'crosswikiblock-reason' => 'Mgbaghaputa:',
-	'crosswikiunblock-reason' => 'Mgbaghaputa:',
+	'crosswikiblock-reason' => 'Mgbághapụtà:',
+	'crosswikiunblock-reason' => 'Mgbághapụtà:',
 );
 
 /** Ido (Ido)

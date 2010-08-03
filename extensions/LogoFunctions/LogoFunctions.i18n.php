@@ -75,7 +75,7 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
-	'logofunctions-desc' => 'Funtzio analizatua gehitzen dio wikiko logoari',
+	'logofunctions-desc' => 'Funtzio analizatua gehitzen du wikiko logoaren inguruan',
 	'logofunctions-filenotexist' => 'Errorea: [[File:$1]] ez da existitzen',
 );
 
@@ -207,10 +207,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'logofunctions-desc' => 'Gionta funsion dël parser an sël sìmbol dla wiki',
+	'logofunctions-desc' => 'Gionta na funsion dël parser për definì ël sìmbol dla wiki',
 	'logofunctions-filenotexist' => 'Eror: [[File:$1]] a esist pa',
 );
 

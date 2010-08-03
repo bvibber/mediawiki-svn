@@ -2660,9 +2660,11 @@ Anda tidak akan dapat masuk log tanpa OpenID.',
 	'openid-provider-label-other-username' => 'Masukkan nama pengguna $1 Anda',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'openidchoosepassword' => 'Mkpurụ okwu ejị a gafẹ',
+	'openidchoosepassword' => 'Okwúngáfè:',
 	'openid-urls-delete' => 'Gbakashia',
 );
 

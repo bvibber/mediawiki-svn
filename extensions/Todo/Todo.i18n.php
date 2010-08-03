@@ -1015,10 +1015,12 @@ $4',
 	'right-todosubmit' => 'Membatasi hak daftar tugas pengguna',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'todo-list-change' => 'Gbanwere',
-	'todo-list-cancel' => 'Emekwàlà',
+	'todo-list-change' => 'Gbanwe',
+	'todo-list-cancel' => 'Kàchá',
 );
 
 /** Italian (Italiano)

@@ -4977,7 +4977,7 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
  */
 $messages['ig'] = array(
 	'configure-edit-core' => 'NkáWiki',
-	'configure-form-reason' => 'Mgbaghaputa:',
+	'configure-form-reason' => 'Mgbághapụtà:',
 	'configure-js-remove' => 'Gbakashia',
 	'configure-section-specialpages' => 'Ihü mkpà',
 	'configure-section-search' => 'Chöwá',

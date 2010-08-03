@@ -536,7 +536,7 @@ Apakah Anda ingin menyunting halaman tersebut?',
  */
 $messages['ig'] = array(
 	'createpage' => 'Ké ihü',
-	'createpage_submitbutton' => 'Nye fwuör',
+	'createpage_submitbutton' => 'Dànyé',
 	'createpage_instructions' => 'Tinyé íshí màkà ihü Í chorí ke:',
 	'createpage_tryagain' => 'Mba. M chorí ké ihü ohúrù nwere áhà di iche.',
 );
@@ -793,11 +793,12 @@ Czy chcesz edytować istniejącą stronę?',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'createpage' => 'Crea na pàgina',
-	'uwcreatepage-desc' => 'A gionta na [[Special:CreatePage|pàgina special]] për creé neuve pàgine',
+	'uwcreatepage-desc' => 'A gionta na [[Special:CreatePage|pàgina special]] për creé dle pàgine neuve',
 	'createpage_submitbutton' => 'Spediss',
 	'createpage_instructions' => "Anseriss ël tìtol ëd la pàgina ch'it veule creé:",
 	'createpage_entertitle' => 'Për piasì anseriss un tìtol për toa pàgina.',

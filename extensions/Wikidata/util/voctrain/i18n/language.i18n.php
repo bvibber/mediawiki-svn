@@ -2003,9 +2003,11 @@ $messages['id'] = array(
 	'voctrain_other' => 'lainnya',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'voctrain_Password' => 'Mkpurụ okwu ejị a gafẹ',
+	'voctrain_Password' => 'Okwúngáfè',
 	'voctrain_Login' => 'Banyé',
 	'voctrain_Log_in' => 'Banyé',
 );

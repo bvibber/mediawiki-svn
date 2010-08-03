@@ -934,7 +934,8 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'patrol-revert-reason' => 'Mgbaghaputa:',
+	'patrol-revert-reason' => 'Mgbághapụtà:',
+	'patrol-skip' => 'Gáfè',
 	'group-patroller-member' => 'onye na léfuru ihe anyà',
 );
 

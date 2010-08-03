@@ -680,6 +680,14 @@ $messages['id'] = array(
 	'scanset_prev' => '&lt; Sebelumnya',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'scanset_next' => 'Nà nke ozor &gt;',
+	'scanset_prev' => '&lt; Nke àzú',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

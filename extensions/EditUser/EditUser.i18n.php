@@ -350,10 +350,10 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'edituser-desc' => 'Pribilegiatutako erabiltzaileak beste erabiltzaileen hobespenak editatzea baimentzen du',
 	'edituser' => 'Erabiltzailea editatu',
-	'edituser-username' => 'Izena',
+	'edituser-username' => 'Erabiltzaile izena:',
 	'edituser-dosearch' => 'Bilatu',
-	'edituser-nouser' => 'Zehaztutako erabiltzailea ez da existitzen',
-	'edituser-exempt' => 'Zehaztutako erabiltzailea ezin da editatu',
+	'edituser-nouser' => '"$1" erabiltzailea ez da existitzen.',
+	'edituser-exempt' => '"$1" erabiltzailea ezin da editatu.',
 	'right-edituser' => 'Beste erabiltzaileen hobespenak editatu',
 	'right-edituser-exempt' => 'Besteek ezin dute erabiltzaile honen hobespenak editatu',
 );

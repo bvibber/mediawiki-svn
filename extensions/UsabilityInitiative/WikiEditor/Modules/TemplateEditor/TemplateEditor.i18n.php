@@ -418,9 +418,11 @@ $messages['id'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'wikieditor-template-editor-dialog-cancel' => 'Emekwàlà',
+	'wikieditor-template-editor-dialog-cancel' => 'Kàchá',
 );
 
 /** Ido (Ido)

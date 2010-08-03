@@ -1515,9 +1515,12 @@ Silakan menunggu.',
  */
 $messages['ig'] = array(
 	'youtubeauthsub_title' => 'Ishi edemede',
+	'youtubeauthsub_description' => 'Nkȯwá',
+	'youtubeauthsub_password' => 'Okwúngáfè YouTube',
+	'youtubeauthsub_username' => "Áhà ọ'bànifé YouTube",
 	'youtubeauthsub_keywords' => 'Mkpurụ edemede ngodi',
 	'youtubeauthsub_category' => 'Ébéonọr',
-	'youtubeauthsub_submit' => 'Nye fwuör',
+	'youtubeauthsub_submit' => 'Dànyé',
 	'youtubeauthsub_authsubinstructions' => 'I nweríkí tinyé enyónyó-na-jé gi na elú, I ga buzọr banyé ime YouTube.',
 	'youtubeauthsub_uploadhere' => 'Tinyé enyónyó-na-jé nke gi nélú shi nga:',
 	'youtubeauthsub_uploadbutton' => 'Tinyéelú',

@@ -305,6 +305,14 @@ $messages['id'] = array(
 	'icon-desc' => 'Memungkinkan Anda untuk menggunakan gambar sebagai ikon dan pranala ikon',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'icon-badimage' => 'Nhuunuch ojö',
+	'icon-badwidth' => 'Abadaba ojö',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

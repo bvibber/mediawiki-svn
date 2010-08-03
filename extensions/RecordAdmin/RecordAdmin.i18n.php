@@ -1132,8 +1132,12 @@ $messages['id'] = array(
 	'recordadmin-notset' => 'Tidak ada "$1"',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'recordadmin-createsuccess' => '$1 kèrè',
+	'recordadmin-badtitle' => 'Ishi edemede öjö!',
 	'recordadmin-buttonsearch' => 'Chöwá',
 	'recordadmin-buttoncreate' => 'Ké',
 	'recordadmin-buttonsave' => 'Donyéré',

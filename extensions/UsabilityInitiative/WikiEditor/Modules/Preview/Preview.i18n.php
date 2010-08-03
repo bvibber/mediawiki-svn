@@ -448,7 +448,8 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'wikieditor-preview-loading' => 'Ọ na biá...',
+	'wikieditor-preview-changes-tab' => 'Ihe gbanwere',
+	'wikieditor-preview-loading' => 'Ọ biágó...',
 );
 
 /** Ido (Ido)

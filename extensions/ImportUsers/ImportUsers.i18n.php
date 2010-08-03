@@ -927,9 +927,11 @@ Dilompati.',
 	'right-import_users' => 'Impor banyak pengguna',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'importusers-password' => 'mkpurụ okwu ejị a gafẹ',
+	'importusers-password' => 'okwúngáfè',
 );
 
 /** Icelandic (Íslenska)

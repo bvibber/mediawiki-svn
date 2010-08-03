@@ -10175,6 +10175,7 @@ $messages['ig'] = array(
 	'configure-setting-wgActionPaths-key' => 'Ọmé',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Íshí ihü',
 	'configure-setting-wgExtraLanguageNames-value' => 'Áhà',
+	'configure-setting-wgDebugLogGroups-value' => 'Ákwúkwó orunotu',
 );
 
 /** Italian (Italiano)

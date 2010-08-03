@@ -994,7 +994,7 @@ $messages['ig'] = array(
 	'ct-end-date' => 'Ubochi o na kushi (YYYYMMDD)',
 	'ct-beginner' => 'Onye mbídó',
 	'ct-intermediate' => 'Nke ditu mmá',
-	'ct-expert' => 'Dioka',
+	'ct-expert' => 'Díokà',
 	'ct-and' => 'na',
 );
 

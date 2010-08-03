@@ -2076,6 +2076,7 @@ $messages['en-gb'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Lucas
  * @author Yekrats
  */
@@ -2120,7 +2121,9 @@ $messages['eo'] = array(
 	'wikilog-no-comments' => 'neniuj komentoj',
 	'wikilog-has-comments' => '{{PLURAL:$1|unu komento|$1 komentoj}}',
 	'wikilog-summary-uncategorized' => 'Nekategoriiga',
+	'wikilog-summary-more' => '[[$3|→ Daŭre legi...]]',
 	'wikilog-edit-fieldset-legend' => 'Vikiblog-agordoj',
+	'wikilog-comment-note-edited' => 'laste ŝanĝita je la $1 je $2',
 	'wikilog-comment-anonsig' => '$3 (anonima)',
 	'wikilog-comment-pending' => 'Ĉi tiu komento atendas aprobadon.',
 	'wikilog-comment-deleted' => 'Ĉi tiu komento estis forigita.',
@@ -3602,7 +3605,7 @@ $messages['ig'] = array(
 	'wikilog-authors' => 'Ọdè ákwúkwó',
 	'wikilog-title' => 'Ishi edemede',
 	'wikilog-actions' => 'Mmèmé',
-	'wikilog-view-summary' => 'Mmẹkotá',
+	'wikilog-view-summary' => 'Mmẹkụwátá',
 	'wikilog-anonymous-mark' => '(onye amágị)',
 	'wikilog-pager-newest' => 'nke ohúrù',
 	'wikilog-pager-oldest' => 'nke ichíé',

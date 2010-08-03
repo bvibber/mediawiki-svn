@@ -442,6 +442,7 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Pi
  * @author Theklan
@@ -453,8 +454,8 @@ $messages['eu'] = array(
 	'authorprotect-confirm' => 'Aldatu babeste mailak',
 	'authorprotect-edit' => 'Mugatu editatzea egileei',
 	'authorprotect-move' => 'Mugatu mugitzea egileei',
-	'authorprotect-expiry' => 'Iraungitze epea',
-	'authorprotect-reason' => 'Arrazoia',
+	'authorprotect-expiry' => 'Iraungipena:',
+	'authorprotect-reason' => 'Arrazoia:',
 	'authorprotect-intro' => 'Erabili inprimaki hau orrialde hau ez-egileei blokeatzeko',
 	'authorprotect-success' => 'Behar bezala babestu da!',
 	'authorprotect-failure' => 'Babestea ez da behar bezala egin',

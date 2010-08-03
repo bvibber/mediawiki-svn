@@ -348,6 +348,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -356,8 +357,8 @@ $messages['eo'] = array(
 	'watchers_link_title' => 'Kiu atentas ĉi tiun paĝon?',
 	'watchers_error_article' => '<b>Eraro:</b> Paĝo ne ekzistas.',
 	'watchers_header' => '{{PLURAL:$2|Uzanto kiu|Uzantoj kiuj}} atentas "[[:$1]]"',
-	'watchers_noone_watches' => 'Neniu rigardas ĉi tiun paĝon',
-	'watchers_x_or_more' => '$1 aŭ pli {{PLURAL:$1|uzanto|uzantoj}} atentas ĉi tiun paĝon.',
+	'watchers_noone_watches' => 'Neniu prigardas la paĝon [[:$1]]',
+	'watchers_x_or_more' => '$1 Aŭ pli {{PLURAL:$1|uzantoj|uzantoj}} havas la paĝon [[:$2]] en sia atentaro.',
 	'watchers_less_than_x' => 'Malpli ol $1 {{PLURAL:$1|uzanto|uzantoj}} atentas ĉi tiun paĝon.',
 );
 

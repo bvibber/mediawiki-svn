@@ -3007,16 +3007,16 @@ $messages['ig'] = array(
 	'viewapc-ls-header-name' => 'Áhà',
 	'viewapc-ls-header-hits' => 'Kúrú',
 	'viewapc-ls-header-size' => 'Ívụ',
-	'viewapc-ls-header-created' => 'Kéré',
+	'viewapc-ls-header-created' => 'Kèrè',
 	'viewapc-ls-delete' => '[Gbakashia ubuwá]',
 	'viewapc-ls-scope-deleted' => 'Gbakashiala',
 	'viewapc-ls-scope-both' => 'Nké abụo',
-	'viewapc-ls-sort-size' => 'Ivụ',
+	'viewapc-ls-sort-size' => 'Ívụ',
 	'viewapc-ls-sort-name' => 'Áhà',
 	'viewapc-ls-sort-created' => 'Kèrè',
 	'viewapc-ls-sort-deleted' => 'Gbakashiala',
 	'viewapc-ls-sort-timeout' => 'Ogẹ afüolé',
-	'viewapc-ls-limit-none' => 'Nke níle',
+	'viewapc-ls-limit-none' => 'Haníle',
 );
 
 /** Ido (Ido)

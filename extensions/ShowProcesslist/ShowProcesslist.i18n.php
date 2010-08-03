@@ -37,7 +37,7 @@ $messages['qqq'] = array(
  * @author Temuri rajavi
  */
 $messages['ab'] = array(
-	'showprocesslist-user' => 'Иалоу',
+	'showprocesslist-user' => 'Алахәыла',
 );
 
 /** Afrikaans (Afrikaans)

@@ -1114,6 +1114,16 @@ Peringkatnya adalah sebagai berikut:
 	'right-feedback' => 'Gunakan formulir umpan balik untuk memberikan peringkat halaman',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'ratinghistory-3months' => 'önwa 3 nke gáráni',
+	'ratinghistory-year' => 'afọr gáráni',
+	'ratinghistory-3years' => 'afọr 3 nke gáráni',
+	'ratinghistory-table-votes' => 'Votu',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco

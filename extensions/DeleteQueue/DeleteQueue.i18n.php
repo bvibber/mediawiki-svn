@@ -3182,10 +3182,12 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
 	'deletequeue-case-needs-review' => 'Kasus ini membutuhkan [[$1|tinjauan]].',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'deletequeue-list-search' => 'Chöwá',
-	'deletequeue-case-reason' => 'Mgbaghaputa:',
+	'deletequeue-case-reason' => 'Mgbághapụtà:',
 );
 
 /** Ido (Ido)
