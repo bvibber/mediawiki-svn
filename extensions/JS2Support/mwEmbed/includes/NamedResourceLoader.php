@@ -17,7 +17,7 @@ class NamedResourceLoader {
 	private static $combinedLoadersJs = '';
 
 	// Reg Exp that supports extracting classes from loaders
-	private static $classReplaceExp = '/mw\.addResourcePaths\s*\(\s*{(.*)}\s*\)\s*\;/siU';
+	private static $classReplaceExp = '/mw\.addResourcePaths\s*\(\s*{(.*)}\s*\)\s*[\;\n]/siU';
 
 	// Flag to specify if the javascript resource paths have been loaded.
 	private static $classesLoaded = false;
@@ -265,11 +265,7 @@ class NamedResourceLoader {
 		$jClassSet = FormatJson::decode( '{' . $jsvar[1] . '}', true );
 		// Check for null json decode:
 		if( $jClassSet == NULL ){
-			$moduleName = ( self::$resourceParentModuleName [ $resourceName ] )
-				? self::$resourceParentModuleName [ $resourceName ]
-				: ' loader set in extension ';
-
-			throw new MWException( "Error could not decode javascript resource list for module:" . $moduleName ." \n" );
+			throw new MWException( "Error could not decode javascript resource list for module: " + self::$currentModuleName + "\n" );
 			return false;
 		}
 

@@ -28,7 +28,7 @@ $wgScriptPath = '';
 $wgUseFileCache = true;
 
 // Named paths for the script loader
-$wgScriptLoaderNamedPaths = array();
+$wgResourceLoaderNamedPaths = array();
 
 //If the scriptLoader should use relative css
 $wgScriptLoaderRelativeCss = false;
