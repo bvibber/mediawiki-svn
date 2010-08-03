@@ -17,27 +17,33 @@ ResourceLoader::register( array(
 	'jquery.ui.core' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.core.js',
 		'themes' => array(
-			'default' => 'resources/jquery/ui/themes/default/jquery.ui.theme.css',
-			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.theme.css',
+			'default' => array(
+				'resources/jquery/ui/themes/default/jquery.ui.core.css',
+				'resources/jquery/ui/themes/default/jquery.ui.theme.css',
+			),
+			'vector' => array(
+				'resources/jquery/ui/themes/vector/jquery.ui.core.css',
+				'resources/jquery/ui/themes/vector/jquery.ui.theme.css',
+			),
 		),
-		'needs' => array( 'jquery' ),
+		'needs' => 'jquery',
 	),
 	'jquery.ui.widget' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.widget.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 	),
 	'jquery.ui.mouse' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.mouse.js',
-		'needs' => array( 'jquery' ),
+		'needs' => 'jquery',
 	),
 	'jquery.ui.position' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.position.js',
-		'needs' => array( 'jquery' ),
+		'needs' => 'jquery',
 	),
 	// Interactions
 	'jquery.ui.draggable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.draggable.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 	),
 	'jquery.ui.droppable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.droppable.js',
@@ -49,7 +55,7 @@ ResourceLoader::register( array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.resizable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.resizable.css',
 		),
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 	),
 	'jquery.ui.selectable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.selectable.js',
@@ -57,16 +63,16 @@ ResourceLoader::register( array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.selectable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.selectable.css',
 		),
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 	),
 	'jquery.ui.sortable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.sortable.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 	),
 	// Widgets
 	'jquery.ui.accordion' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.accordion.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.accordion.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.accordion.css',
@@ -90,7 +96,7 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.datepicker' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.datepicker.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.datepicker.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.datepicker.css',
@@ -152,7 +158,7 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.dialog' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.dialog.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.dialog.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.dialog.css',
@@ -160,7 +166,7 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.progressbar' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.progressbar.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.progressbar.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.progressbar.css',
@@ -176,7 +182,7 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.tabs' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.tabs.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => 'jquery.ui.core',
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.tabs.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.tabs.css',
@@ -185,55 +191,55 @@ ResourceLoader::register( array(
 	// Effects
 	'jquery.effects.core' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.core.js',
-		'needs' => array( 'jquery' ),
+		'needs' => 'jquery',
 	),
 	'jquery.effects.blind' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.blind.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.bounce' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.bounce.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.clip' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.clip.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.drop' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.drop.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.explode' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.explode.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.fold' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.fold.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.highlight' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.highlight.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.pulsate' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.pulsate.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.scale' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.scale.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.shake' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.shake.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.slide' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.slide.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	'jquery.effects.transfer' => array(
 		'script' => 'resources/jquery/effects/jquery.effects.transfer.js',
-		'needs' => array( 'jquery.effects.core' ),
+		'needs' => 'jquery.effects.core',
 	),
 	
 	/* MediaWiki */
@@ -248,75 +254,75 @@ ResourceLoader::register( array(
 	
 	'mediawiki.legacy.ajax' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajax.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.ajaxwatch' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.ajaxwatch.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.block' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.block.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.changepassword' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.changepassword.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.edit' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.edit.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.enhancedchanges' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.enhancedchanges.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.history' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.history.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.htmlform' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.htmlform.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.IEFixes' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.IEFixes.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.metadata' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.metadata.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.mwsuggest' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.mwsuggest.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.prefs' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.prefs.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.preview' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.preview.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.protect' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.protect.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.rightclickedit' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.rightclickedit.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.search' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.search.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.upload' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.upload.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	'mediawiki.legacy.wikibits' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.wikibits.js',
-		'needs' => array( 'mediawiki' ),
+		'needs' => 'mediawiki',
 	),
 	
 	/* MediaWiki Utilities */
@@ -338,24 +344,24 @@ ResourceLoader::register( array(
 	
 	'test' => array(
 		'script' => 'resources/test/test.js',
-		'needs' => array( 'foo' ),
+		'needs' => 'foo',
 		'style' => 'resources/test/test.css',
 	),
 	'foo' => array(
 		'script' => 'resources/test/foo.js',
-		'needs' => array( 'bar' ),
+		'needs' => 'bar',
 		'style' => 'resources/test/foo.css',
 		'messages' => array( 'january', 'february', 'march', 'april', 'may', 'june' ),
 	),
 	'bar' => array(
 		'script' => 'resources/test/bar.js',
-		'needs' => array( 'buz' ),
+		'needs' => 'buz',
 		'style' => 'resources/test/bar.css',
 		'messages' => array( 'july', 'august', 'september', 'october', 'november', 'december' ),
 	),
 	'buz' => array(
 		'script' => 'resources/test/buz.js',
-		'needs' => array( 'baz' ),
+		'needs' => 'baz',
 		'style' => 'resources/test/buz.css',
 	),
 	'baz' => array(
