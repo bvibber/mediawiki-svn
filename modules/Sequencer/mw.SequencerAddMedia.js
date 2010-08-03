@@ -56,7 +56,12 @@ mw.SequencerAddMedia.prototype = {
 					'icon_id' : 'plus' 
 				})
 				.click(function(){
-					_this.proccessRequest();
+					// only do the search if the user has given the search input focus  
+					if( widgetFocus ){
+						_this.proccessRequest();
+					}
+					// don't follow the button link
+					return false;					
 				})
 			)
 	}, 
@@ -96,13 +101,28 @@ mw.SequencerAddMedia.prototype = {
 	 *  buttons include insert at end or insert after current
 	 */
 	insertResourceDialog: function( resource ){
+		var buttons = {};
+		// insert after last selected clip ( or at end ) 
+		buttons[ gM('mwe-sequencer-insert') ] = function() {
+			mw.log("insert resource into sequence");
+			var cat = resource;
+			debugger;
+		}		
+		// cancel
+		buttons[ gM('mwe-cancel') ] = function(){
+			$j( this ).dialog( 'close' );
+		};
+		        
 		mw.addDialog({
 			'title' : gM('mwe-sequencer-insert-resource'),
 			'dragable' : true,	
 			'height' : 480,
 			'width' : 640,
 			'resizable' : true,		
-			'content' : $j('<div />').text('import interface here')
+			'content' : function(){
+				// add the resource on-top and trim 
+			},
+			'buttons' : buttons
 		});
 	}
 }

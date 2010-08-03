@@ -185,12 +185,13 @@ mw.SequencerTools.prototype = {
 							change: function( event, ui ) {
 								if( sliderValues[0] != ui.values[0] ){
 									var attributeChanged = 'clipBegin';				
-									sliderIndex = 0;							
+									sliderIndex = 0;
+									var attributeValue = sliderToTime( ui.values[ 0 ] )
 								} else {
 									var attributeChanged = 'dur';
 									sliderIndex = 1;
-								}								
-								var attributeValue = sliderToTime( ui.values[ sliderIndex ] )
+									var attributeValue = sliderToTime( ui.values[ 1 ]- ui.values[0] )
+								}																
 								sliderValues[ sliderIndex ] = ui.values[ sliderIndex ];
 								
 								// update start and end time: 

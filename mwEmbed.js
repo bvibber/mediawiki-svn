@@ -1088,7 +1088,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			var buttonMsg = options.buttons;
 			buttons = { };
 			options.buttons[ buttonMsg ] = function() {
-				$j( '#mwTempLoaderDialog' ).dialog( 'close' );
+				$j( this ).dialog( 'close' );
 			}
 		}				
 		

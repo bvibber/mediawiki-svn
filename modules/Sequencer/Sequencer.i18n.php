@@ -54,6 +54,7 @@ $messages['en'] = array(
 	'mwe-sequencer-url-or-search' => 'URL or search term',
 	'mwe-sequencer-get-media' => 'Get media',
 	'mwe-sequencer-insert-resource' => 'Insert resource into sequence',
+	'mwe-sequencer-insert'=> 'Insert into sequence',
 
 	'mwe-sequencer-transition_in' => 'Transition in',
 	'mwe-sequencer-transition_out' => 'Transition out',
