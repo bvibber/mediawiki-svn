@@ -1,4 +1,5 @@
 /**
+*
 * Core "loader.js" for mwEmbed
 *
 * This loader along with all the enabled module loaders is combined with mwEmbed.js
@@ -19,7 +20,8 @@
 */
 var mwCoreComponentList = [
 	'mw.Parser',
-	'mw.Language'	
+	'mw.Language',
+	'mw.Api'
 ];
 
 
@@ -57,26 +59,7 @@ mw.setDefaultConfig ( {
 	'enabledModules' : mwEnabledModuleList, 
 	
 	// Default jquery ui skin name
-	'jQueryUISkin' : 'jqueryUiRedmond',	
-	
-	/**
-	* If jQuery / mwEmbed should be loaded.
-	*
-	* This flag is automatically set to true if: 
-	*  Any script calls mw.ready ( callback_function )
-	*  Page DOM includes any tags set in config.rewritePlayerTags at onDomReady 
-	*  ( embedPlayer module )
-	*
-	* This flag increases page performance on pages that do not use mwEmbed 
-	* and don't already load jQuery 
-	*
-	* For example when including the mwEmbed.js in your blog template 
-	* mwEmbed will only load extra js on blog posts that include the video tag.
-	*
-	* NOTE: Future architecture will probably do away with this flag and refactor it into 
-	* a smaller 'remotePageMwEmbed.js' script similar to ../remoteMwEmbed.js
-	*/ 
-	'runSetupMwEmbed' : false,	
+	'jQueryUISkin' : 'redmond',	
 
 	// The mediaWiki path of mwEmbed  
 	'mediaWikiEmbedPath' : 'js/mwEmbed/',
@@ -125,10 +108,11 @@ mw.addResourcePaths( {
 	"mwEmbed"				: "mwEmbed.js",
 	"window.jQuery"			: "libraries/jquery/jquery-1.4.2.js",		
 	
-	"mw.Language"			: "languages/mw.Language.js",
-	"mw.Parser"				: "languages/mw.Parser.js",
-
-	"JSON" : "libraries/json/json2.js",
+	"mw.Language"			: "components/mw.Language.js",
+	"mw.Parser"				: "components/mw.Parser.js",
+	"mw.Api"				: "components/mw.Api.js",
+	"Modernizr" 			: "libraries/jquery/plugins/modernizr.js",
+	"JSON" 					: "libraries/json/json2.js",
 
 	"$j.replaceText.js"		: "libraries/jquery/plugins/jquery.replaceText.js",
 	
@@ -143,16 +127,21 @@ mw.addResourcePaths( {
 	"$j.fn.datePicker"		: "libraries/jquery/plugins/jquery.datePicker.js",
 	"$j.ui"					: "libraries/jquery/jquery.ui/ui/ui.core.js",	
 	
-	"mw.style.jqueryUiRedmond" : "libraries/jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
-	"mw.style.jqueryUiSmoothness"	: "libraries/jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
-	"mw.style.mwCommon"		: "skins/common/common.css",		
+	"mw.style.ui_redmond" : "skins/jquery.ui.themes/redmond/jquery-ui-1.7.2.css",
+	"mw.style.ui_darkness" : "skins/jquery.ui.themes/darkness/jquery-ui-1.7.2.css",
+	"mw.style.ui_le-frog" : "skins/jquery.ui.themes/le-frog/jquery-ui-1.7.2.css",
+	"mw.style.ui_start" : "skins/jquery.ui.themes/start/jquery-ui-1.7.2.css",
+	"mw.style.ui_sunny" : "skins/jquery.ui.themes/sunny/jquery-ui-1.7.2.css",
+	
+	"mw.style.mwCommon"		: "skins/common/mw.style.mwCommon.css",	
 
 	"$j.cookie"				: "libraries/jquery/plugins/jquery.cookie.js",
 	
 	"$j.contextMenu"		: "libraries/jquery/plugins/jquery.contextMenu.js",
 	"$j.fn.suggestions"		: "libraries/jquery/plugins/jquery.suggestions.js",
 	"$j.fn.textSelection" 	: "libraries/jquery/plugins/jquery.textSelection.js",
-	"$j.browserTest"		: "libraries/jquery/plugins/jquery.browserTest.js",	
+	"$j.browserTest"		: "libraries/jquery/plugins/jquery.browserTest.js",
+	"$j.fn.jWizard"			: "libraries/jquery/plugins/jquery.jWizard.js",
 
 	"$j.effects.blind"		: "libraries/jquery/jquery.ui/ui/effects.blind.js",
 	"$j.effects.drop"		: "libraries/jquery/jquery.ui/ui/effects.drop.js",
@@ -172,7 +161,7 @@ mw.addResourcePaths( {
 	"$j.ui.dialog"			: "libraries/jquery/jquery.ui/ui/ui.dialog.js",
 	"$j.ui.resizable"		: "libraries/jquery/jquery.ui/ui/ui.resizable.js",
 	"$j.ui.tabs"			: "libraries/jquery/jquery.ui/ui/ui.tabs.js",
-	"$j.effects"			: "libraries/jquery/jquery.ui/ui/effects.core.js",
+	"$j.effects"		: "libraries/jquery/jquery.ui/ui/effects.core.js",
 	"$j.effects.highlight"	: "libraries/jquery/jquery.ui/ui/effects.highlight.js",
 	"$j.effects.slide"		: "libraries/jquery/jquery.ui/ui/effects.slide.js",
 	"$j.ui.accordion"		: "libraries/jquery/jquery.ui/ui/ui.accordion.js",
@@ -181,8 +170,8 @@ mw.addResourcePaths( {
 
 } );
 
-// Add a special css dependency for $j.ui 
+// Add a special css dependency for $j.ui
 mw.addStyleResourceDependency( {
-	'$j.ui' : ( 'mw.style.' + mw.getConfig( 'jQueryUISkin' ) )	
+	'$j.ui' : ( 'mw.style.ui_' + mw.getConfig( 'jQueryUISkin' ) )	
 } );
 

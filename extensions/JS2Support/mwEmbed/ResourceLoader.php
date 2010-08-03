@@ -27,6 +27,7 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 	$myResourceLoader->doResourceLoader();
 }
 
+
 class ResourceLoader {
 
 	// The list of named javascript & css files
@@ -101,7 +102,7 @@ class ResourceLoader {
 		try {
 			NamedResourceLoader::loadResourcePaths();
 		} catch( Exception $e ) {
-			$this->errorMsg .= $e->getMessage() ;
+			$this->errorMsg .= "loadResourcePaths:" . $e->getMessage() ;
 		}
 
 		// Reset the requestKey:
@@ -182,7 +183,7 @@ class ResourceLoader {
 		if ( $wgUseFileCache && !$this->debug ) {
 			$status = $this->sFileCache->saveToFileCache( $this->output );
 			if ( $status !== true ) {
-				$this->errorMsg .= $status;
+				$this->errorMsg .= "Could not save file to cache::" . $status;
 			}
 		}
 
@@ -190,7 +191,7 @@ class ResourceLoader {
 		if ( $this->errorMsg != '' ) {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
-			echo 'if(console.log)console.log(\'Error With ScriptLoader ::' .
+			echo 'if(console.log)console.log(\'Error With ResourceLoader ::' .
 					 str_replace( "\n", '\'+"\n"+' . "\n'",
 					 	xml::escapeJsString( $this->errorMsg )
 					 ) . '\');'."\n";
@@ -378,7 +379,7 @@ class ResourceLoader {
 			if( $fileContents ){
 				// Add the file name if debug is enabled
 				if ( $this->debug ){
-					$output .= "\n/**\n* File: " . xml::escapeJsString( $filePath ) . "\n*/\n";
+					$output .= "\n\n/**\n* File: " . xml::escapeJsString( $filePath ) . "\n*/\n";
 				}
 				// Transform the css output if the file is css
 				$output.= ( $ext == 'css' ) ?
@@ -728,7 +729,7 @@ class ResourceLoader {
 		try {
 			NamedResourceLoader::loadResourcePaths();
 		} catch( Exception $e ) {
-			$this->errorMsg .= $e->getMessage() ;
+			$this->errorMsg .= "getPathFromClass: " . $e->getMessage() ;
 		}
 
 		if ( isset( $wgResourceLoaderNamedPaths[ $reqClass ] ) ) {
@@ -811,7 +812,7 @@ class ResourceLoader {
 		global $wgEnableScriptLocalization;
 		// Strip out mw.log debug lines (if not in debug mode)
 		if( !$this->debug ){
-			$scriptText = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $scriptText );
+			$scriptText = $this->removeLogStatements( $scriptText );
 		}
 
 		// Do language swap by index:
@@ -853,6 +854,71 @@ class ResourceLoader {
 		}
 		// Return the javascript str unmodified if we did not transform with the localisation
 		return $scriptText;
+	}
+	/**
+	 * Remove all occurances of mw.log( 'some js string or expresion' );
+	 * @param {string} $jsString
+	 */
+	static function removeLogStatements( $jsString ){
+		$outputJs = '';
+		for ( $i = 0; $i < strlen( $jsString ); $i++ ) {
+			// find next occurance of
+			preg_match( '/[\n;]\s*mw\.log\s*/', $jsString, $matches, PREG_OFFSET_CAPTURE, $i );
+			// check if any matches are left: 
+			if( count( $matches ) == 0){
+				$outputJs .= substr( $jsString, $i );
+				break;
+			}
+			if( count( $matches ) > 0 ){	
+				$startOfLogIndex =  strlen( $matches[0][0] ) + $matches[0][1];
+				// append everytnig up to this point: 
+				$outputJs .= substr( $jsString, $i, ( $startOfLogIndex - strlen( $matches[0][0] ) )-$i );
+				
+				// Increment i to position of closing ) not inside quotes  
+				$parenthesesDepth = 0;				
+				$ignorenext = false;
+				$inquote = false;
+				$inSingleQuote = false;
+				for ( $i = $startOfLogIndex; $i < strlen( $jsString ); $i++ ) {					
+					$char = $jsString[$i];
+					if ( $ignorenext ) {
+						$ignorenext = false;
+					} else {
+						// Search for a close ) that is not in quotes 
+						switch( $char ) {
+							case '"':
+								if( !$inSingleQuote ){								
+									$inquote = !$inquote;
+								}
+							break;
+							case '\'':
+								if( !$inquote ){
+									$inSingleQuote = !$inSingleQuote;
+								}
+							break;
+							case '(':
+								if( !$inquote && !$inSingleQuote ){	
+									$parenthesesDepth++;
+								}	
+							break;	
+							case ')':
+								if( ! $inquote  && !$inSingleQuote ){						
+									$parenthesesDepth--;									
+								}
+							break;
+							case '\\':
+								if ( $inquote ) $ignorenext = true;
+							break;
+						}
+						// Done with close parentheses search for next mw.log in outer loop:
+						if( $parenthesesDepth === 0 ){
+							break;			
+						}						
+					}
+				}
+			}
+		}	
+		return $outputJs;
 	}
 	/* simple function to return addMessageJs without preg_replace back reference substitution */
 	private static function preg_addMessageJs(){
