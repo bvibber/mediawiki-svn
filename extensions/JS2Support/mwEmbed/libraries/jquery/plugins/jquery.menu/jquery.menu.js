@@ -5,11 +5,17 @@ Version: 3.0, 03.31.2009
 By: Maggie Costello Wachs (maggie@filamentgroup.com) and Scott Jehl (scott@filamentgroup.com)
 	http://www.filamentgroup.com
 	* reference articles: http://www.filamentgroup.com/lab/jquery_ipod_style_drilldown_menu/
+
+* modified by Michael Dale, ( michael.dale@kaltura.com ) 
 		
 Copyright (c) 2009 Filament Group
 Dual licensed under the MIT (filamentgroup.com/examples/mit-license.txt) and GPL (filamentgroup.com/examples/gpl-license.txt) licenses.
 
-NOTE: mvEmbed will switch to jquery ui menu once that is released
+NOTE: mwEmbed will switch to jquery ui menu once that is released
+NOTE: This menu contains several customizations for use in mwEmbed modules::
+
+* added getLineItem helper function 
+* added special class "divider" that is non selectable menu item horizontal hr 
 --------------------------------------------------------------------*/
 
 
@@ -120,6 +126,7 @@ function Menu(caller, options) {
 			linkToFront: false
 		},
 		showSpeed: 200, // show/hide speed in milliseconds
+		createMenuCallback: null,
 		callerOnState: 'ui-state-active', // class to change the appearance of the link/button when the menu is showing
 		loadingState: 'ui-state-loading', // class added to the link/button while the menu is created
 		linkHover: 'ui-state-hover', // class for menu option hover state
@@ -173,11 +180,11 @@ function Menu(caller, options) {
 	this.showMenu = function() {
 		mw.log('$j.menu:: show menu' );					
 		killAllMenus();
-		mw.log('done:: killAllMenus' );		
+		mw.log('jquery.menu:: killAllMenus' );		
 		if ( ! menu.menuExists) { 
 			menu.create() 
 		};		
-		mw.log('done:: menu.create' );		
+		mw.log('jquery.menu:: menu.create' );		
 		caller
 			.addClass('fg-menu-open')
 			.addClass(options.callerOnState);
@@ -185,7 +192,7 @@ function Menu(caller, options) {
 			menu.kill(); 
 			return false; 
 		});
-		mw.log('done:: menu. binding container' );
+		mw.log('jquery.menu:: menu. binding container' );
 		
 		container.hide().slideDown(options.showSpeed).find('.fg-menu:eq(0)');
 		menu.menuOpen = true;
@@ -271,7 +278,7 @@ function Menu(caller, options) {
 					}; 
 					break;
 			};			
-		});
+		});	
 	};
 	
 	this.create = function() {
@@ -314,11 +321,16 @@ function Menu(caller, options) {
 			allLinks.hover(
 				function() {
 					var menuitem = $(this);
-					$('.'+options.linkHover).removeClass(options.linkHover).blur().parent().removeAttr('id');
-					$(this).addClass(options.linkHover).focus().parent().attr('id','active-menuitem');
+					var menuli = menuitem.parent();
+					if( !menuli.hasClass('divider') && !menuli.hasClass('disabled')  ){
+						$('.'+options.linkHover).removeClass(options.linkHover).blur().parent().removeAttr('id');
+						$(this).addClass(options.linkHover).focus().parent().addClass('active-menuitem');
+					}
 				},
 				function() {
-					$(this).removeClass(options.linkHover).blur().parent().removeAttr('id');
+					if( !menuitem.hasClass('divider') && !menuitem.hasClass('disabled')  ){
+						$(this).removeClass(options.linkHover).blur().parent().removeClass('active-menuitem');
+					}
 				}
 			);
 		};
@@ -336,6 +348,10 @@ function Menu(caller, options) {
 		
 		menu.setPosition(container, caller, options);
 		menu.menuExists = true;
+				
+		if( typeof options.createMenuCallback == 'function' ){
+			options.createMenuCallback();
+		}
 	};
 	
 	this.chooseItem = function(item) {		
@@ -786,4 +802,3 @@ Number.prototype.pxToEm = String.prototype.pxToEm = function(settings) {
 };
 
 } )( jQuery );
-
