@@ -53,8 +53,9 @@ mw.SequencerActionsEdit.prototype = {
 			this.editStack = this.editStack.splice(0, this.editIndex);
 		}
 		
-		// @@TODO would be good to just compute the diff in JS and store that
-		// ( instead of the full xml text ) 
+		// @@TODO could save space to just compute the diff in JS and store that
+		// ie: http://code.google.com/p/google-diff-match-patch/
+		// ( instead of the full xml text with "key-pages" every 10 edits or something like that. 
 		this.editStack.push(  this.sequencer.getSmil().getXMLString() );
 		
 		// Update the editIndex

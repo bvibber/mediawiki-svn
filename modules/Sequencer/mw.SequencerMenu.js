@@ -103,12 +103,12 @@ mw.SequencerMenu.prototype = {
 		var $menuTarget = this.sequencer.getMenuTarget();	
 		$menuTarget.empty();
 
-		for( var menuKey in this.menuConfig ){			
+		for( var menuKey in this.menuConfig ){	
 			// Create a function to preserve menuKey binding scope
 			function drawTopMenu( menuKey ){				
 				// Add the menu target		
 				$menuTarget
-				.append( 
+				.append(
 					$j('<span />')
 					.html( gM('mwe-sequencer-menu-' + menuKey )  )
 					.css({

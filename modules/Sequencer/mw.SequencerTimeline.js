@@ -359,7 +359,9 @@ mw.SequencerTimeline.prototype = {
 					$j(curClip).addClass( 'selectedClip')
 				}
 			});	
-		}		
+		}
+		
+		// xxx check if selected clip has changed hide tool edit interface
 	},
 	
 	getTimelineClipId: function( $node ){

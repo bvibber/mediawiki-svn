@@ -109,7 +109,7 @@ mw.SequencerTools.prototype = {
 					mw.log("Should update trimStartThumb::" +  $j(smilClip).attr('clipBegin') );
 					// Render a thumbnail for relative start time = 0  
 					smil.getLayout().drawElementThumb( 
-						$j(target).find('.trimStartThumb'), 
+						$j( target ).find('.trimStartThumb'), 
 						smilClip, 
 						0
 					)
@@ -120,7 +120,7 @@ mw.SequencerTools.prototype = {
 					mw.log("Should update trimStartThumb::" +  $j(smilClip).attr('clipBegin') );
 					// Render a thumbnail for the updated duration  
 					smil.getLayout().drawElementThumb( 
-						$j(target).find('.trimEndThumb'),
+						$j( target ).find('.trimEndThumb'),
 						smilClip,
 						clipDur
 					);
@@ -183,14 +183,15 @@ mw.SequencerTools.prototype = {
 								);
 							},
 							change: function( event, ui ) {
+								var attributeValue = 0, sliderIndex  = 0;
 								if( sliderValues[0] != ui.values[0] ){
 									var attributeChanged = 'clipBegin';				
 									sliderIndex = 0;
-									var attributeValue = sliderToTime( ui.values[ 0 ] )
+									attributeValue = sliderToTime( ui.values[ 0 ] )
 								} else {
 									var attributeChanged = 'dur';
 									sliderIndex = 1;
-									var attributeValue = sliderToTime( ui.values[ 1 ]- ui.values[0] )
+									attributeValue = sliderToTime( ui.values[ 1 ]- ui.values[0] )
 								}																
 								sliderValues[ sliderIndex ] = ui.values[ sliderIndex ];
 								
@@ -199,6 +200,10 @@ mw.SequencerTools.prototype = {
 
 								// update the widget 
 								_this.editWidgets.trimTimeline.update( _this, target, smilClip);
+								
+								// Register the edit state for undo / redo 
+								_this.sequencer.getActionsEdit().registerEdit();
+								
 							}
 						})
 					);
