@@ -7,7 +7,7 @@
 $messages = array();
  
 /** English
- * @author Tisane
+ * @author Daniel Friesen
  */
 $messages['en'] = array(
 	'sidebardonatebox-desc' => 'Adds a custom donate box to the sidebar'
