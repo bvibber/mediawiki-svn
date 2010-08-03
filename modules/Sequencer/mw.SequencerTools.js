@@ -174,13 +174,12 @@ mw.SequencerTools.prototype = {
 							min: 0,
 							max: 1000,
 							values: sliderValues,
-							slide: function(event, ui) {
-								mw.log( 'slider1: ' +  ui.values[0] + ' - sldier two' + ui.values[1] + ' t: ' +  sliderToTime( ui.values[0] ) + ' t2: ' +  sliderToTime( ui.values[1]) );								
+							slide: function(event, ui) {															
 								$j('#editTool_trim_clipBegin').val( 
 									mw.seconds2npt( sliderToTime( ui.values[0] ), true ) 
 								);
 								$j('#editTool_trim_dur').val(  
-									mw.seconds2npt( sliderToTime( ui.values[1] ), true )
+									mw.seconds2npt( sliderToTime( ui.values[1] - ui.values[0] ), true )
 								);
 							},
 							change: function( event, ui ) {
@@ -300,7 +299,6 @@ mw.SequencerTools.prototype = {
 				'float': 'left',
 				'margin': '5px'
 			})
-			.buttonHover()		
 			.click( function(){
 				editAction.action( _this, smilClip, toolId );
 			})

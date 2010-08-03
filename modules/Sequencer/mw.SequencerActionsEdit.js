@@ -27,7 +27,7 @@ mw.SequencerActionsEdit.prototype = {
 	},	
 	
 	selectAll: function(){
-		//Select all the items in the timeline
+		// Select all the items in the timeline
 		$target = this.sequencer.getTimeline().getTimelineContainer();
 		$target.find( '.timelineClip' ).addClass( 'selectedClip' );
 	},

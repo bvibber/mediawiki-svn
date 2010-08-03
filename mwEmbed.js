@@ -2363,12 +2363,14 @@ if( typeof preMwEmbedConfig == 'undefined') {
 					$btn.addClass( options['class'] )
 				}	
 								
-				$btn.append(
-					$j('<span />').addClass( 'ui-icon ui-icon-' + options.icon_id ),
-					$j('<span />').addClass( 'btnText' )
-						.text( options.text )
-				);
-				return $btn;					
+				
+				// return the button: 
+				return $btn.append(
+						$j('<span />').addClass( 'ui-icon ui-icon-' + options.icon_id ),
+						$j('<span />').addClass( 'btnText' )
+							.text( options.text )
+					)
+					.buttonHover(); // add buttonHover binding;					
 			};
 			
 			// Shortcut to bind hover state

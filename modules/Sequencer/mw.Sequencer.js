@@ -198,7 +198,12 @@ mw.Sequencer.prototype = {
 		}
 		return this.editTools;
 	},
-	
+	getAddMedia: function(){
+		if( ! this.addMedia ){
+			this.addMedia = new mw.SequencerAddMedia( this );
+		}
+		return this.addMedia;
+	},
 	getKeyBindings:function(){
 		if( ! this.keyBindings ){
 			this.keyBindings = new mw.SequencerKeyBindings( this );
@@ -253,7 +258,7 @@ mw.Sequencer.prototype = {
 			.addClass('resizableLayout')
 			.css({
 				'position':'absolute',								
-				'top': '25px',
+				'top': '27px',
 				'left': '0px',
 				'right': '0px',
 				'bottom':'0px'

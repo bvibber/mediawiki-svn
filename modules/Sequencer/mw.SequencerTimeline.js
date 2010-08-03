@@ -461,8 +461,8 @@ mw.SequencerTimeline.prototype = {
 				}
 			}, 5000);
 		}			
-		// Buffer the asset then render it into the layout target:
-		smil.getBuffer().bufferedSeek( $node, relativeTime, function(){			
+		// Buffer the asset then render it into the layout target:		
+		smil.getBuffer().bufferedSeek( $node, relativeTime, function(){					
 			// Add the seek, add to canvas and draw thumb request
 			smil.getLayout().drawElementThumb( $thumbTarget, $node, relativeTime );
 		

@@ -11,11 +11,11 @@
 		"mw.Sequencer"	: "mw.Sequencer.js",		
 		"mw.style.Sequencer" : "mw.style.Sequencer.css",
 		
+		"mw.SequencerAddMedia" : "mw.SequencerAddMedia.js",
 		"mw.SequencerPlayer" : "mw.SequencerPlayer.js",
 		"mw.SequencerTimeline" : "mw.SequencerTimeline.js",
 		"mw.SequencerKeyBindings" : "mw.SequencerKeyBindings.js",
-		"mw.SequencerTools" : "mw.SequencerTools.js",
-		
+		"mw.SequencerTools" : "mw.SequencerTools.js",		
 		"mw.SequencerMenu" : "mw.SequencerMenu.js", 
 		
 		"mw.SequencerActionsSequence" : "mw.SequencerActionsSequence.js",
@@ -27,8 +27,7 @@
 		"mw.FirefoggRender"	: "mw.FirefoggRender.js",
 		"$j.fn.layout"		: "ui.layout/ui.layout-1.2.0.js",
 		
-		"mw.RemoteSequencer" : "mw.RemoteSequencer.js",
-		
+		"mw.RemoteSequencer" : "mw.RemoteSequencer.js",		
 		"mw.style.Sequencer" : "css/mw.style.Sequencer.css",
 		
 		"playlistEmbed" : "playlistEmbed.js"
@@ -64,7 +63,8 @@
 			],		
 			[										
 				'$j.contextMenu',
-						
+				
+				'mw.SequencerAddMedia',
 				'mw.SequencerPlayer',
 				'mw.SequencerRender',
 				

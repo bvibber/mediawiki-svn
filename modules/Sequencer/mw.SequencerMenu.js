@@ -83,10 +83,16 @@ mw.SequencerMenu.prototype = {
 			},
 			'history': {	
 				'icon' : 'clock',
+				'disabled': true,
 				'action':function( _this ){
 					mw.log("SequencerMenu::history");
 				}						
 			}
+		}
+	},
+	menuWidgets: {
+		'addmedia' : function( _this ){
+			return _this.sequencer.getAddMedia().getMenuWidget();
 		}
 	},
 	/**
@@ -97,7 +103,7 @@ mw.SequencerMenu.prototype = {
 		var $menuTarget = this.sequencer.getMenuTarget();	
 		$menuTarget.empty();
 
-		for( var menuKey in this.menuConfig ){				
+		for( var menuKey in this.menuConfig ){			
 			// Create a function to preserve menuKey binding scope
 			function drawTopMenu( menuKey ){				
 				// Add the menu target		
@@ -125,6 +131,12 @@ mw.SequencerMenu.prototype = {
 			}
 			drawTopMenu( menuKey );
 		}		
+		// Add any menuWidgets
+		for( var widgetKey in this.menuWidgets ){
+			$menuTarget.append( 
+				this.menuWidgets[widgetKey]( this )
+			);
+		}
 		
 		// Check if we should include kaltura credits
 		if( mw.getConfig( 'Sequencer.KalturaAttribution' ) ){

@@ -74,10 +74,17 @@
 }
 
 .sequencer-menu .disabled a {
-	cursor:default;
+	cursor: default;
 }
 .sequencer-menu .disabled a span{
-	cursor:default;
+	cursor: default;
 	opacity: .5;	
 }
 
+.mwe-sequencer input.searchMedia{
+	font-size: 11px;
+	width: 125px;
+	margin:0 0 0 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}

@@ -114,6 +114,7 @@ mw.SmilLayout.prototype = {
 	},
 	
 	drawElementThumb: function( $target, $node, relativeTime ){			
+		mw.log('SmilLayout::drawElementThumb: ' + relativeTime );
 		// parse the time incase it came in as human input
 		relativeTime = this.smil.parseTime( relativeTime );
 		switch ( this.smil.getRefType( $node )){
