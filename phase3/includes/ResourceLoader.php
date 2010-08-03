@@ -56,7 +56,7 @@
  * 	) );
  * @example
  * 	// Responds to a resource loading request
- * 	ResourceLoader::respond( $wgRequest );
+ * 	ResourceLoader::respond( $wgRequest, $wgServer . $wgScriptPath . '/load.php' );
  */
 class ResourceLoader {
 	
