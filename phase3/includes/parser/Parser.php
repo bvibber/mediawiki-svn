@@ -3123,7 +3123,7 @@ class Parser {
 			}
 			$title = Title::newFromText( $part1, $ns );
 			if ( $title ) {
-				if ( $piece['interwiki'] !== '' ) {
+				if ( !$title->isExternal() && $piece['interwiki'] !== '' ) {
 					$title->setInterwiki( $piece['interwiki'] );
 				}
 				$titleText = $title->getPrefixedText();
