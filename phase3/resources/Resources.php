@@ -28,11 +28,11 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.mouse' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.mouse.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => array( 'jquery' ),
 	),
 	'jquery.ui.position' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.position.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => array( 'jquery' ),
 	),
 	// Interactions
 	'jquery.ui.draggable' => array(
@@ -41,7 +41,7 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.droppable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.droppable.js',
-		'needs' => array( 'jquery.ui.core' ),
+		'needs' => array( 'jquery.ui.core', 'jquery.ui.draggable' ),
 	),
 	'jquery.ui.resizable' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.resizable.js',
@@ -66,7 +66,7 @@ ResourceLoader::register( array(
 	// Widgets
 	'jquery.ui.accordion' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.accordion.js',
-		'needs' => array( 'jquery.ui.widget' ),
+		'needs' => array( 'jquery.ui.core' ),
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.accordion.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.accordion.css',
@@ -74,7 +74,7 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.autocomplete' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.autocomplete.js',
-		'needs' => array( 'jquery.ui.widget' ),
+		'needs' => array( 'jquery.ui.core', 'jquery.ui.widget', 'jquery.ui.position' ),
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.autocomplete.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.autocomplete.css',
@@ -82,39 +82,15 @@ ResourceLoader::register( array(
 	),
 	'jquery.ui.button' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.button.js',
-		'needs' => array( 'jquery.ui.widget' ),
+		'needs' => array( 'jquery.ui.core', 'jquery.ui.widget' ),
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.button.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.button.css',
 		),
 	),
-	'jquery.ui.dialog' => array(
-		'script' => 'resources/jquery/ui/jquery.ui.dialog.js',
-		'needs' => array( 'jquery.ui.widget' ),
-		'themes' => array(
-			'default' => 'resources/jquery/ui/themes/default/jquery.ui.dialog.css',
-			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.dialog.css',
-		),
-	),
-	'jquery.ui.slider' => array(
-		'script' => 'resources/jquery/ui/jquery.ui.slider.js',
-		'needs' => array( 'jquery.ui.widget' ),
-		'themes' => array(
-			'default' => 'resources/jquery/ui/themes/default/jquery.ui.slider.css',
-			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.slider.css',
-		),
-	),
-	'jquery.ui.tabs' => array(
-		'script' => 'resources/jquery/ui/jquery.ui.tabs.js',
-		'needs' => array( 'jquery.ui.widget' ),
-		'themes' => array(
-			'default' => 'resources/jquery/ui/themes/default/jquery.ui.tabs.css',
-			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.tabs.css',
-		),
-	),
 	'jquery.ui.datepicker' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.datepicker.js',
-		'needs' => array( 'jquery.ui.widget' ),
+		'needs' => array( 'jquery.ui.core' ),
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.datepicker.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.datepicker.css',
@@ -174,12 +150,36 @@ ResourceLoader::register( array(
 			'zh-tw' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-TW.js'
 		),
 	),
+	'jquery.ui.dialog' => array(
+		'script' => 'resources/jquery/ui/jquery.ui.dialog.js',
+		'needs' => array( 'jquery.ui.core' ),
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.dialog.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.dialog.css',
+		),
+	),
 	'jquery.ui.progressbar' => array(
 		'script' => 'resources/jquery/ui/jquery.ui.progressbar.js',
-		'needs' => array( 'jquery.ui.widget' ),
+		'needs' => array( 'jquery.ui.core' ),
 		'themes' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.progressbar.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.progressbar.css',
+		),
+	),
+	'jquery.ui.slider' => array(
+		'script' => 'resources/jquery/ui/jquery.ui.slider.js',
+		'needs' => array( 'jquery.ui.core', 'jquery.ui.widget', 'jquery.ui.mouse' ),
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.slider.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.slider.css',
+		),
+	),
+	'jquery.ui.tabs' => array(
+		'script' => 'resources/jquery/ui/jquery.ui.tabs.js',
+		'needs' => array( 'jquery.ui.core' ),
+		'themes' => array(
+			'default' => 'resources/jquery/ui/themes/default/jquery.ui.tabs.css',
+			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.tabs.css',
 		),
 	),
 	// Effects
