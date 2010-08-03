@@ -10,6 +10,9 @@
 require_once( dirname( __FILE__ ) . "/../../phase3/includes/Defines.php" ); # Faster than parsing
 require_once( dirname( __FILE__ ) . "/../../phase3/includes/AutoLoader.php" );
 
+$mwDeprecatedFunctions = false;
+@include( dirname( __FILE__ ) . "/deprecated.functions" );
+
 if ( !extension_loaded( 'sockets' ) ) dl('sockets.so');
 if ( !extension_loaded( 'PDO' ) ) dl('pdo.so');
 
@@ -42,6 +45,7 @@ class CheckVars {
 	static $mDefaultSettingsGlobals = null;
 	
 	static $constantIgnorePrefixes = array( "PGSQL_", "OCI_", "SQLT_BLOB", "DB2_", "XMLREADER_" ); # Ignore constants with these prefixes
+	protected $generateDeprecatedList = false;
 
 	/* Values for status */
 	const WAITING_FUNCTION = 0;
@@ -54,6 +58,10 @@ class CheckVars {
 	const CLASS_NAME = -4;
 	const CLASS_MEMBER = -5;
 	const FUNCTION_NAME = -6;
+	const FUNCTION_DEFINITION = -7;
+	
+	/* Function attribute */
+	const FUNCTION_DEPRECATED = -8;
 	
 	function __construct() {
 		if ( self::$mDefaultSettingsGlobals == null ) {
@@ -113,6 +121,17 @@ class CheckVars {
 			}
 		}
 	}
+	
+	function setGenerateDeprecatedList( $bool = true ) {
+		$this->generateDeprecatedList = $bool;
+	}
+	function getGenerateDeprecatedList() {
+		return $this->generateDeprecatedList;
+	}
+	function saveDeprecatedList( $filename ) {
+		file_put_contents( $filename, "<?php\n\$mwDeprecatedFunctions = array( " . implode( ",\n\t", $this->mDeprecatedFunctionList ) . "\n);\n\n" );
+	}
+	
 	
 	function load($file, $shortcircuit = true) {
 		$this->mProblemCount = 0;
@@ -182,6 +201,11 @@ class CheckVars {
 					if ( $token == ';' )
 						$this->mFunctionQualifiers = array();
 					
+					if ( $token[0] == T_DOC_COMMENT ) {
+						if ( strpos( $token[1], '@deprecated' ) !== false ) {
+							$this->mFunctionQualifiers[] = self::FUNCTION_DEPRECATED;
+						}
+					}
 					if ( in_array( $token[0], self::$functionQualifiers ) ) {
 						$this->mFunctionQualifiers[] = $token[0];
 					}
@@ -191,6 +215,7 @@ class CheckVars {
 					
 					if ( ( $lastMeaningfulToken[0] == T_CLASS ) && ( $token[0] == T_STRING ) ) {
 						$this->mKnownFileClasses[] = $token[1];
+						$this->mClass = $token[1];
 					}
 										
 					if ($token[0] != T_FUNCTION)
@@ -206,6 +231,13 @@ class CheckVars {
 						$this->mStatus = self::IN_FUNCTION;
 						$this->mBraces = 0;
 						$this->mFunctionGlobals = array();
+						$currentToken[0] = self::FUNCTION_DEFINITION;
+						
+						if ( $this->generateDeprecatedList && in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) ) {
+							if ( ( substr( $this->mFunction, 0, 2 ) != "__" ) && $this->mClass != 'Image' ) {
+								$this->mDeprecatedFunctionList[] = "/*$this->mClass::*/'$this->mFunction'";
+							}
+						}
 						
 						$this->debug("Entering into function {$token[1]} at line {$token[2]} ");
 						continue;
@@ -267,7 +299,7 @@ class CheckVars {
 								# Bug of r69904
 								$this->warning("$lastMeaningfulToken[1]:: used in line $lastMeaningfulToken[2] It probably should have been " . substr( $lastMeaningfulToken[1], 1 ) . "::");
 							}
-						} elseif ( ( $token[0] == T_STRING ) && ( is_array($lastMeaningfulToken) 
+						} elseif ( ( $token[0] == T_STRING ) && ( is_array( $lastMeaningfulToken)  
 								&& in_array( $lastMeaningfulToken[0], array( T_OBJECT_OPERATOR, T_PAAMAYIM_NEKUDOTAYIM ) ) ) ) {
 							# Class member or class constant
 							$currentToken[0] = self::CLASS_MEMBER;
@@ -279,8 +311,13 @@ class CheckVars {
 						}
 					}
 					
-					if ( ( $token == '(' ) && is_array( $lastMeaningfulToken ) && ( $lastMeaningfulToken[0] == T_STRING ) ) {
-						$lastMeaningfulToken[0] = self::FUNCTION_NAME;
+					if ( ( $token == '(' ) && is_array( $lastMeaningfulToken ) ) {
+						if ( $lastMeaningfulToken[0] == T_STRING ) {
+							$lastMeaningfulToken[0] = self::FUNCTION_NAME;
+							$this->checkDeprecation($lastMeaningfulToken);
+						} else if ( $lastMeaningfulToken[0] == self::CLASS_MEMBER) {
+							$this->checkDeprecation($lastMeaningfulToken);
+						}
 					}
 					
 					/* Detect constants */
@@ -340,6 +377,13 @@ class CheckVars {
 		}
 		
 		$this->checkPendingClasses();
+	}
+	
+	function checkDeprecation( $token ) {
+		global $mwDeprecatedFunctions;
+		if ( $mwDeprecatedFunctions && !in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) && in_array( $token[1], $mwDeprecatedFunctions ) ) {
+			$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token[1]} in line {$token[2]}" );
+		}
 	}
 	
 	function error( $token ) {
@@ -458,7 +502,14 @@ $cv = new CheckVars();
 //$cv->mDebug = true;
 
 array_shift($argv);
+if ( $argv[0] == '--generate-deprecated-list' ) {
+	$cv->setGenerateDeprecatedList( true );
+	array_shift( $argv );
+}
 foreach ( $argv as $arg ) {
 	$cv->load( $arg );
 	$cv->execute();
+}
+if ( $cv->getGenerateDeprecatedList( ) ) {
+	$cv->saveDeprecatedList( dirname( __FILE__ ) . "/deprecated.functions" );
 }
