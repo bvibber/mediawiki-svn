@@ -50,7 +50,7 @@ if ( $wgRequest->isPathInfoBad() ) {
 // Include core resource list
 require_once "$IP/resources/Resources.php";
 // Respond to resource loading request
-ResourceLoader::respond( $wgRequest );
+ResourceLoader::respond( $wgRequest, $wgServer . $wgScriptPath . '/load.php' );
 
 wfProfileOut( 'load.php' );
 wfLogProfilingData();

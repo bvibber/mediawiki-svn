@@ -183,7 +183,7 @@ class ResourceLoader {
 	 * 		'debug' => [boolean: true to include debug-only scripts, optional, false by default],
 	 * 	)
 	 */
-	public static function respond( WebRequest $request ) {
+	public static function respond( WebRequest $request, $server ) {
 		global $wgUser, $wgLang, $wgDefaultSkin;
 		// Fallback on system settings
 		$parameters = array(
@@ -234,7 +234,7 @@ class ResourceLoader {
 			 * 
 			 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
 			 */
-			$parameters['server'] = dirname( $_SERVER['REQUEST_URI'] );
+			$parameters['server'] = $server;
 			echo "mw.config.set( " . json_encode( $parameters ) . " );\n";
 			// Collect all loaders
 			$loaders = array();
