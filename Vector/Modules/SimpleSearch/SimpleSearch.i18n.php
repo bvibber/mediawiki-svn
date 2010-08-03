@@ -377,6 +377,13 @@ $messages['id'] = array(
 	'vector-simplesearch-containing' => 'isian ...',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'vector-simplesearch-search' => 'Chöwá',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

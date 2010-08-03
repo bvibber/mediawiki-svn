@@ -860,7 +860,7 @@ $messages['frp'] = array(
 	'prefstats-list-intro' => 'Ora, cetes prèferences sont siuvues.
 Clicâd dessus yona d’entre-lor por vêre les statistiques a son propôs.',
 	'prefstats-noprefs' => 'Ora, niona prèference est siuvua.
-Configurar $wgPrefStatsTrackPrefs por siuvre des prèferences.',
+Configurâd $wgPrefStatsTrackPrefs por siuvre des prèferences.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|utilisator a|utilisators on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
 ** $2 {{PLURAL:$2|utilisator l’a|utilisators l’on}}t adés activâ
 ** $3 {{PLURAL:$3|utilisator l’a|utilisators l’on}}t dèsactivâ',
@@ -1192,6 +1192,17 @@ Klik pada salah satu untuk melihat statistiknya.',
 	'prefstats-factor-default' => 'kembali ke sekala awal',
 	'prefstats-legend-out' => 'Membatalkan',
 	'prefstats-legend-in' => 'Disertakan',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'prefstats-factor-sixhours' => 'àmànị ishíi',
+	'prefstats-factor-day' => 'chi',
+	'prefstats-factor-week' => 'izù',
+	'prefstats-factor-twoweeks' => 'izù abụọ',
+	'prefstats-factor-fourweeks' => 'izù ànȯ',
 );
 
 /** Ido (Ido)

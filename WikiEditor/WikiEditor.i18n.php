@@ -310,7 +310,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'wikieditor' => 'Entèrface de changement de vouiquitèxto avanciê',
+	'wikieditor' => 'Entèrface avanciê de changement de vouiquitèxto',
 	'wikieditor-desc' => 'Balye una entèrface de changement de vouiquitèxto èxtensibla et un mouél de fonccionalitâts.',
 	'wikieditor-wikitext-tab' => 'Vouiquitèxto',
 	'wikieditor-loading' => 'Chargement',

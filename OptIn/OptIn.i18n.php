@@ -3097,6 +3097,9 @@ Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [htt
  */
 $messages['ig'] = array(
 	'optin-title-optedout' => 'Nwàne Beta',
+	'optin-survey-yes' => 'Eeh',
+	'optin-survey-no' => 'Mbà',
+	'optin-survey-answer-whyoptout-other' => 'Mgbághàpụtá ozor:',
 	'optin-survey-answer-changes-other' => 'Nke ozor:',
 );
 

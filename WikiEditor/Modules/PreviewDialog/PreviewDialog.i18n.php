@@ -385,6 +385,13 @@ $messages['id'] = array(
 	'wikieditor-previewDialog-loading' => 'Mengunggah...',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-previewDialog-tab' => 'Lètú',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
