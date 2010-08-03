@@ -1,5 +1,5 @@
 /*
- * User-agent detection 
+ * Debug output logging
  */
 
 ( function( $, mw ) {
