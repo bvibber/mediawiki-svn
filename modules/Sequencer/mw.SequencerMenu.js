@@ -100,9 +100,11 @@ mw.SequencerMenu.prototype = {
 	 */
 	drawMenu:function(){
 		var _this = this;
-		var $menuTarget = this.sequencer.getMenuTarget();	
-		$menuTarget.empty();
+		var $menuTarget = this.sequencer.getMenuTarget();
+		// empty and disable select for menu items
+		$menuTarget.empty().disableSelection();
 
+		
 		for( var menuKey in this.menuConfig ){	
 			// Create a function to preserve menuKey binding scope
 			function drawTopMenu( menuKey ){				

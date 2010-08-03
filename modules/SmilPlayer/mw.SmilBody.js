@@ -154,8 +154,7 @@ mw.SmilBody.prototype = {
 				if( smallTime === null ){
 					smallTime = audioTimeline[i]['startTime'];
 					smallIndex = i;
-				}
-				
+				}				
 				if( audioTimeline[i]['startTime'] < smallTime ){
 					smallTime = audioTimeline[i]['startTime'];
 					smallIndex = i;
@@ -224,8 +223,7 @@ mw.SmilBody.prototype = {
 					return a.startTime - b.startTime;
 				});
 			}
-		});
-		
+		});		
 		return audioTimeline;
 	},
 	
@@ -258,7 +256,7 @@ mw.SmilBody.prototype = {
 	},
 	
 	/**
-	 * get the sequence elements from a given par node if no node is provied assume root
+	 * get the sequence elements from a given par node if no node is provided assume root
 	 * @param {element=} $parNode Optional parNode to list all sequence timelines 
 	 */
 	getSeqElements: function( $node ){
@@ -390,6 +388,7 @@ mw.SmilBody.prototype = {
 		}		
 		return $node.data('computedDuration');		
 	},
+	
 	/**
 	 * Get the asset duration for a clip
 	 * @param {element} $node the smil clip that we want to get duration for
@@ -399,7 +398,7 @@ mw.SmilBody.prototype = {
 		this.smil.getBuffer().loadElement( $node );
 		// xxx check if the type is "video or audio" else nothing to return 
 		
-		var vid = $j( '#' + this.smil.getAssetId( $node ) ).get(0);
+		var vid = $j( '#' + this.smil.getPageDomId( $node ) ).get(0);
 		if( vid.duration ){
 			callback( vid.duration );
 		}
@@ -411,6 +410,22 @@ mw.SmilBody.prototype = {
 		vid.removeEventListener( "loadedmetadata", durationReady, true );
 		vid.addEventListener( "loadedmetadata", durationReady, true );
 	},
+	
+	/**
+	 * Sync the in page assets with the smil dom
+	 */ 
+	syncPageDom: function(){
+		var _this = this;
+		//  Check that all top level layout items exist in the smil dom
+		$j.each( $j( this.smil.getEmbedPlayer() ).find('.smilRootLayout'), function(inx, pageNode){
+			// Check if the node is in the smil dom
+			if( _this.smil.$dom.find( '#' + _this.smil.getSmilDomId( pageNode ) ).length == 0 ){
+				// remove from pageDom
+				$j( pageNode ).remove();
+			}
+		});
+	},
+	
 	/**
 	 * Maps a few smil tags to smil types 
 	 * 
@@ -421,8 +436,6 @@ mw.SmilBody.prototype = {
 	 * animation, audio, img, text, textstream and video -> 'ref',  
 	 */
 	getNodeSmilType: function( $node ){
-		if( typeof wgMyCoolGlobal != 'undefined')
-			debugger;
 		var blockType = $j( $node ).get(0).nodeName;
 		
 		if( this.smilBlockTypeMap[ blockType ] ){

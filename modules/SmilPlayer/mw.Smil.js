@@ -96,7 +96,10 @@ mw.Smil.prototype = {
 		// jQuery strips some html native tags when parsing xml passed into jQuery 
 		// since smil has html tags ( "body" "head" ) we need to first convert it to
 		// an xml object:: 
-		this.$dom = $j( this.getXMLDomObject( smilXmlString ) );		
+		this.$dom = $j( this.getXMLDomObject( smilXmlString ) );
+		
+		// Remove any non-smil nodes that are in the page dom
+		this.getBody().syncPageDom();
 	},
 	// simple XML DOMParser object parser wrapper
 	// xxx Add error handling 
@@ -279,7 +282,7 @@ mw.Smil.prototype = {
 		var $smilElement =  this.$dom.find( '#' + smilElementId );
 
 		// Remove from layout
-		this.getLayout().getRootLayout().find( '#' + this.getAssetId( $smilElement ) )
+		this.getLayout().getRootLayout().find( '#' + this.getPageDomId( $smilElement ) )
 			.remove();
 		
 		// Remove from dom
@@ -299,18 +302,33 @@ mw.Smil.prototype = {
 	 * @param {Object}
 	 *            smilElement Element to get id for
 	 */
-	getAssetId : function(smilElement) {
-		if (!$j(smilElement).attr('id')) {
+	getPageDomId : function( smilNode ) {
+		if (! $j(smilNode).attr('id') ) {
 			mw.log("Error: getAssetId smilElement missing id ");
 			return false;
 		}
-		if (!this.embedPlayer || !this.embedPlayer.id) {
+		var embedPlayer = this.getEmbedPlayer();
+		if ( !embedPlayer || !embedPlayer.id ) {
 			mw.log("Error: getAssetId missing parent embedPlayer");
 			return false;
 		}
-		return this.embedPlayer.id + '_' + $j(smilElement).attr('id');
+		return embedPlayer.id + '_' + $j( smilNode ).attr('id');
 	},
 	
+	/**
+	 * Get the smil id for an pageNode 
+	 */
+	getSmilDomId: function ( pageNode ){
+		if( !$j( pageNode ).length ) {
+			mw.log("Error: getSmilDomId for pageNode that is not in dom");
+			return false;
+		}
+		return $j( pageNode ).attr('id').replace( '/' + this.getEmbedPlayer().id + '_/', '');
+	},
+	
+	/**
+	 * get the embed player
+	 */
 	getEmbedPlayer: function(){
 		return this.embedPlayer;
 	},

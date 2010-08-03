@@ -18,9 +18,9 @@
 		"mw.SequencerTools" : "mw.SequencerTools.js",		
 		"mw.SequencerMenu" : "mw.SequencerMenu.js", 
 		
-		"mw.SequencerActionsSequence" : "mw.SequencerActionsSequence.js",
-		"mw.SequencerActionsView" : "mw.SequencerActionsView.js",
-		"mw.SequencerActionsEdit" : "mw.SequencerActionsEdit.js",
+		"mw.SequencerActionsSequence" : "actions/mw.SequencerActionsSequence.js",
+		"mw.SequencerActionsView" : "actions/mw.SequencerActionsView.js",
+		"mw.SequencerActionsEdit" : "actions/mw.SequencerActionsEdit.js",
 		
 		"mw.SequencerRender" : "mw.SequencerRender.js",
 		
@@ -28,9 +28,8 @@
 		"$j.fn.layout"		: "ui.layout/ui.layout-1.2.0.js",
 		
 		"mw.RemoteSequencer" : "mw.RemoteSequencer.js",		
-		"mw.style.Sequencer" : "css/mw.style.Sequencer.css",
+		"mw.style.Sequencer" : "css/mw.style.Sequencer.css"
 		
-		"playlistEmbed" : "playlistEmbed.js"
 	} );
 	
 	mw.setDefaultConfig({
@@ -53,7 +52,7 @@
 		]
 	);
 	
-	// Sequenceror module loader
+	// Sequencer module loader
 	mw.addModuleLoader( 'Sequencer', function( ) {		
 		// Make sure we have the required mwEmbed libs:			
 		return [

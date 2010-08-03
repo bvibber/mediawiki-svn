@@ -73,7 +73,7 @@ mw.SequencerTools.prototype = {
 		'cancel':{
 			'icon': 'close',
 			'title' : gM('mwe-cancel'),
-			'action' : function( _this, smilClip, toolId){
+			'action' : function( _this, smilClip, toolId ){
 				var tool = _this.tools[toolId];
 				for( var i=0; i < tool.editableAttributes.length ; i++ ){
 					var attributeName = tool.editableAttributes[i]; 

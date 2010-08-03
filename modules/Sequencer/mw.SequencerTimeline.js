@@ -139,7 +139,7 @@ mw.SequencerTimeline.prototype = {
 				// issue a draw Thumb request ( since we reinserted into the dom )
 				// Check Buffer for when the first frame of the smilNode can be grabbed: 				
 				smil.getBuffer().bufferedSeek( $node, 0, function(){					
-					//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getAssetId( $node ));
+					//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getPageDomId( $node ));
 					_this.drawClipThumb( $node , 0);
 				});
 			}			
@@ -199,8 +199,7 @@ mw.SequencerTimeline.prototype = {
 						var $selected = _this.getTimelineContainer().find( '.selectedClip' )
 						if ( $selected.length === 0 ||  $selected.length == 1) { 
 							return $j( helper ); 
-						} 		
-						
+						} 								
 						return $j('<ul />')
 							.css({
 								'width' : (_this.timelineThumbSize.width + 16) * $selected.length
@@ -210,7 +209,7 @@ mw.SequencerTimeline.prototype = {
 				    scroll: true,
 				    update: function( event, ui ) {
 						// Update the html dom 
-						_this.handleReorder( ui.item );									
+						//_this.handleReorder( ui.item );									
 					}
 				})
 	},
@@ -365,7 +364,7 @@ mw.SequencerTimeline.prototype = {
 	},
 	
 	getTimelineClipId: function( $node ){
-		return this.sequencer.getSmil().getAssetId( $node ) + '_timelineClip';
+		return this.sequencer.getSmil().getPageDomId( $node ) + '_timelineClip';
 	},
 	
 	// Draw a clip thumb into the timeline clip target
@@ -377,6 +376,7 @@ mw.SequencerTimeline.prototype = {
 		var $timelineClip = $j( '#' + _this.getTimelineClipId( $node ) );
 		// Add Thumb target and remove loader
 		$timelineClip.empty().append(
+								
 			$j('<div />')					
 			.addClass("thumbTraget"),
 

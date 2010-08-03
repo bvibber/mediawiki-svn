@@ -35,15 +35,17 @@
 }
 
 .mwe-sequencer .timelineClip{
-	float: left;
-	position: relative;
+
 	margin: 5px;
 	background-color: #FFF;		
 	border: 2px solid #555;
 	overflow: hidden;
-	width:120px;
+	width:120px;	
 	height:90px;
-	list-style:circle outside none;
+	
+	display: inline-block;
+	position: relative;
+	list-style-type: none;
 }
 
 .mwe-sequencer .thumbTraget {	

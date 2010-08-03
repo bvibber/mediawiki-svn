@@ -86,14 +86,41 @@ mw.SequencerAddMedia.prototype = {
 					'resourceSelectionCallback' : function( resource ){ 
 						_this.insertResourceDialog( resource )
 						return false;
-					} 
+					},
+					'displaySearchResultsCallback' : function(){
+						_this.addSearchResultsDrag();
+					}
 				})
 				.createUI()
 			});
 		} else {
 			this.remoteSearchDriver.createUI()
 		}
-	}, 
+		
+	},
+	/**
+	 * add search results drab binding so they can be dragged into the sequencer
+	 */
+	addSearchResultsDrag: function(){
+		var _this = this;
+		// Bind all the clips: 
+		this.sequencer.getEditToolTarget()
+			.find(".rsd_res_item")
+			.draggable({
+				connectToSortable: '#' + _this.sequencer.getTimeline().getTracksContainer().find('.clipTrackSet').attr('id'),
+				helper: function() {					
+					// Append a li to the sortable list					
+					return $j( this )
+						.clone ()						
+						.appendTo( 'body' )
+						.css({ 
+							'z-index' : 99999 
+						})
+						.get( 0 );	
+				},
+				revert: 'invalid'
+			});
+	},
 	
 	/**
 	 * Create an insert resource dialog, expose basic in-out points or / duration 
