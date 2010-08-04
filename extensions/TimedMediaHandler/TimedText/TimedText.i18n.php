@@ -894,6 +894,9 @@ $messages['pdc'] = array(
  */
 $messages['ps'] = array(
 	'mwe-timedtext-stage-translate' => 'ژباړل',
+	'mwe-timedtext-select-language' => 'ژبه ټاکل',
+	'mwe-timedtext-choose-text' => 'متن ټاکل',
+	'mwe-timedtext-textcat-ktv' => 'کارااوکه',
 );
 
 /** Portuguese (Português)
@@ -1121,5 +1124,12 @@ $messages['sv'] = array(
 	'mwe-timedtext-textcat-ar' => 'Aktiva regioner',
 	'mwe-timedtext-textcat-nb' => 'Anmärkning',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertexter för klipp: $2',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'mwe-timedtext-layout' => 'అమరిక',
 );
 

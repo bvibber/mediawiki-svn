@@ -298,6 +298,13 @@ $messages['tr'] = array(
 	'minify-desc' => 'action=way kaynağından alınan CSS ve JavaScript çıktılarını küçültür',
 );
 
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'minify-desc' => 'Зменшує розмір виведення CSS і JavaScript з action=raw',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

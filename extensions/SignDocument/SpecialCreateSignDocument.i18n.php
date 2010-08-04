@@ -610,6 +610,7 @@ Tätä ei voi tehdä toista kertaa.',
  * @author Crochet.david
  * @author Grondin
  * @author IAlex
+ * @author Peter17
  * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
@@ -626,7 +627,7 @@ Pour cette raison, soyez absolument certain que le document soit suffisamment st
 ''Avant de soumettre ce formulaire'', vérifiez que vous en avez renseigné tous les champs exactement comme ils devraient l’être.",
 	'createsigndoc-pagename' => 'Page :',
 	'createsigndoc-allowedgroup' => 'Groupe autorisé :',
-	'createsigndoc-email' => 'Addresse de courriel :',
+	'createsigndoc-email' => 'Adresse électronique :',
 	'createsigndoc-address' => 'Adresse résidentielle :',
 	'createsigndoc-extaddress' => 'Ville, état (département ou province), pays :',
 	'createsigndoc-phone' => 'Numéro de téléphone :',

@@ -218,6 +218,13 @@ $messages['id'] = array(
 	'categorytests-desc' => 'Fungsi untuk menguji kategori',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'categorytests-desc' => 'Ihe nọr na ime nnwà nke màkà ébéonọr',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

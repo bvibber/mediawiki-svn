@@ -45,6 +45,15 @@ $messages['de'] = array(
 	'rss-empty' => 'Der RSS-Feed konnte nicht von $1 geladen werden!',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'rss-desc' => 'Zwobraznjujo RSS-kanal na wikiboku',
+	'rss-error' => 'RSS-kanal njejo dał se z $1 zacytaś: $2',
+	'rss-empty' => 'RSS-kanal njejo dał se z $1 zacytaś!',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */
@@ -80,6 +89,15 @@ $messages['gl'] = array(
 	'rss-empty' => 'Erro ao cargar a fonte de novas RSS de "$1"!',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'rss-desc' => 'Zeigt e RSS-Feed uf ere Wikisyte aa',
+	'rss-error' => 'Dr RSS-Feed het nit vu $1 chenne glade wäre: $2',
+	'rss-empty' => 'Dr RSS-Feed het nit vu $1 chenne glade wäre!',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -96,6 +114,24 @@ $messages['ia'] = array(
 	'rss-desc' => 'Monstra un syndication RSS in un pagina wiki',
 	'rss-error' => 'Falleva de cargar le syndication RSS de $1: $2',
 	'rss-empty' => 'Falleva de cargar le syndication RSS de $1!',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'rss-desc' => 'Menampilkan arus RSS di halaman wiki',
+	'rss-error' => 'Gagal memuat arus RSS dari $1: $2',
+	'rss-empty' => 'Gagal memuat arus RSS dari $1!',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'rss-desc' => 'ウィキページのRSSフィードを表示',
+	'rss-error' => '$1からのRSSフィードの読み込みに失敗しました：$2',
+	'rss-empty' => '$1からのRSSフィードの読み込みに失敗しました！',
 );
 
 /** Colognian (Ripoarisch)
@@ -151,12 +187,13 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'rss-desc' => 'A mosta un feed RSS su na pàgina wiki',
-	'rss-error' => 'Falì a carié un feed RSS da $1: $2',
-	'rss-empty' => 'Falì a carié un feed RSS da $1!',
+	'rss-desc' => 'A mostra un fluss RSS su na pàgina dla wiki',
+	'rss-error' => 'Falì a carié ël fluss RSS da $1: $2',
+	'rss-empty' => 'Falì a carié ël fluss RSS da $1!',
 );
 
 /** Portuguese (Português)
@@ -176,5 +213,32 @@ $messages['pt-br'] = array(
 	'rss-desc' => 'Mostra um feed RSS em uma página wiki',
 	'rss-error' => 'Falha ao carregar feed RSS de $1: $2',
 	'rss-empty' => 'Falha ao carregar feed RSS de $1!',
+);
+
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'rss-desc' => 'Afișează un flux RSS pe o pagină wiki',
+	'rss-error' => 'Eroare la încărcarea fluxului RSS de la $1: $2',
+	'rss-empty' => 'Eroare la încărcarea fluxului RSS de la $1!',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'rss-desc' => "Fà vedè 'nu feed RSS sus a 'na pàgene de uicchi",
+	'rss-error' => "Carecamende d'u feed RSS fallite da $1: $2",
+	'rss-empty' => "Carecamende d'u feed RSS fallite da $1!",
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'rss-desc' => 'Показывает RSS-канал на викистранице',
+	'rss-error' => 'Не удалось загрузить RSS-канал из $1: $2',
+	'rss-empty' => 'Не удалось загрузить RSS-канал из $1!',
 );
 

@@ -50,7 +50,7 @@ unset($dir);
 
 
 // Always include the browser stuff...
-foreach ( $wgPrefSwitchSurveys as &$survey ) {
+foreach ( $wgPrefSwitchSurveys as $survey ) {
 	$survey['questions']['browser'] = array(
 		'visibility' => "hidden",
 		'question' => 'prefswitch-survey-question-browser',

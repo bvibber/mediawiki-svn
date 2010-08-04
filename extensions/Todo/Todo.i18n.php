@@ -362,7 +362,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'todo-new-queue' => 'نوێ',
 	'todo-list-change' => 'گۆڕان',
 	'todo-list-cancel' => 'هەڵوەشاندنەوە',
@@ -1015,10 +1015,12 @@ $4',
 	'right-todosubmit' => 'Membatasi hak daftar tugas pengguna',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'todo-list-change' => 'Gbanwere',
-	'todo-list-cancel' => 'Emekwàlà',
+	'todo-list-change' => 'Gbanwe',
+	'todo-list-cancel' => 'Kàchá',
 );
 
 /** Italian (Italiano)
@@ -1568,6 +1570,7 @@ $messages['ps'] = array(
 	'todo-new-queue' => 'نوی',
 	'todo-list-change' => 'بدلول',
 	'todo-list-cancel' => 'ناګارل',
+	'todo-new-item' => 'نوی توکی',
 );
 
 /** Portuguese (Português)

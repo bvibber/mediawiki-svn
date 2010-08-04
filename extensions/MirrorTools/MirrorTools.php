@@ -43,5 +43,10 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiMirrorEditPage'] = $dir . 'APIMirrorTools.php';
 $wgAutoloadClasses['MirrorEditPage'] = $dir . 'MirrorTools.classes.php';
 $wgAPIModules['mirroredit'] = 'ApiMirrorEditPage';
-$wgExtensionMessagesFiles['MirrorTools'] = $dir . 'MirrorEdit.i18n.php';
+
+// Path to internationalization file
+$wgExtensionMessagesFiles['MirrorTools'] = $dir . 'MirrorTools.i18n.php';
+
+// New user rights
+$wgAvailableRights[] = 'mirroredit';
 $wgGroupPermissions['MirrorTools']['mirroredit'] = true;

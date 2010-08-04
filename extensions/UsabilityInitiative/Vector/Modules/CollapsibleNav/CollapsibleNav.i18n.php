@@ -93,7 +93,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'vector-collapsiblenav-more' => 'زمانەکانی دیکە',
 );
 
@@ -352,6 +352,13 @@ $messages['ko'] = array(
 $messages['krc'] = array(
 	'vector-collapsiblenav-preference' => 'Сол менюда «Вектор» темада блокла джашырыу амалны джандыр',
 	'vector-collapsiblenav-more' => 'Дагъыда тилле',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'vector-collapsiblenav-more' => 'Zêdetir ziman',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -652,7 +659,7 @@ $messages['yi'] = array(
  * @author Demmy
  */
 $messages['yo'] = array(
-	'vector-collapsiblenav-more' => 'Àwọn èdè pípọ̀si',
+	'vector-collapsiblenav-more' => 'Àwọn èdè lẹ́kùúnrẹ́rẹ́',
 );
 
 /** Cantonese (粵語)

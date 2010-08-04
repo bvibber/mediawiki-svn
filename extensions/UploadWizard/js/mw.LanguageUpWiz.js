@@ -26,8 +26,8 @@ mw.LanguageUpWiz = {
 		{ code: "ace",           text: "Ac\u00e8h" },
 		{ code: "af",            text: "Afrikaans" },
 		{ code: "ak",            text: "Akan" },
-		{ code: "als",           text: "Alemannisch" },   // } XXX someone fix this please
-		{ code: "gsw",           text: "Alemannisch" },   // } 
+		{ code: "als",           text: "Alemannisch" },   //  XXX someone fix this please
+		{ code: "gsw",           text: "Alemannisch" },   //  
 		{ code: "ang",           text: "Anglo-Saxon" },
 		{ code: "an",            text: "Aragon\u00e9s" },
 		{ code: "roa-rup",       text: "Arm\u00e3neashce" },
@@ -76,8 +76,8 @@ mw.LanguageUpWiz = {
 		{ code: "ext",           text: "Estreme\u00f1u" },
 		{ code: "eu",            text: "Euskara" },
 		{ code: "ee",            text: "E\u028begbe" },
-		{ code: "hif",           text: "Fiji Hindi" },   // } XXX fix this
-		{ code: "hif-latn",      text: "Fiji Hindi" },   // }
+		{ code: "hif",           text: "Fiji Hindi" },   //  XXX fix this
+		{ code: "hif-latn",      text: "Fiji Hindi" },   // 
 		{ code: "fr",            text: "Fran\u00e7ais" },
 		{ code: "frc",           text: "Fran\u00e7ais canadien" },
 		{ code: "fy",            text: "Frysk" },
@@ -349,14 +349,12 @@ mw.LanguageUpWiz = {
 		{ code: "kk-tr",         text: "\u202aQazaq\u015fa (T\u00fcrk\u00efya)\u202c" },
 		{ code: "kk-latn",       text: "\u202aQazaq\u015fa (lat\u0131n)\u202c" },
 		{ code: "crh-latn",      text: "\u202aQ\u0131r\u0131mtatarca (Latin)\u202c" },
-		{ code: "ckb-latn",      text: "\u202aSoran\u00ee (lat\u00een\u00ee)\u202c" },
 		{ code: "crh-cyrl",      text: "\u202a\u041a\u044a\u044b\u0440\u044b\u043c\u0442\u0430\u0442\u0430\u0440\u0434\u0436\u0430 (\u041a\u0438\u0440\u0438\u043b\u043b)\u202c" },
 		{ code: "kk-cyrl",       text: "\u202a\u049a\u0430\u0437\u0430\u049b\u0448\u0430 (\u043a\u0438\u0440\u0438\u043b)\u202c" },
 		{ code: "kk-kz",         text: "\u202a\u049a\u0430\u0437\u0430\u049b\u0448\u0430 (\u049a\u0430\u0437\u0430\u049b\u0441\u0442\u0430\u043d)\u202c" },
 		{ code: "kk-arab",       text: "\u202b\u0642\u0627\u0632\u0627\u0642\u0634\u0627 (\u062a\u0674\u0648\u062a\u06d5)\u202c" },
 		{ code: "kk-cn",         text: "\u202b\u0642\u0627\u0632\u0627\u0642\u0634\u0627 (\u062c\u06c7\u0646\u06af\u0648)\u202c" },
 		{ code: "ku-arab",       text: "\u202b\u0643\u0648\u0631\u062f\u064a (\u0639\u06d5\u0631\u06d5\u0628\u06cc)\u202c" },
-		{ code: "ckb-arab",      text: "\u202b\u06a9\u0648\u0631\u062f\u06cc (\u0639\u06d5\u0631\u06d5\u0628\u06cc)\u202c" },
 		{ code: "zh",            text: "\u4e2d\u6587" },
 		{ code: "zh-cn",         text: "\u4e2d\u6587(\u4e2d\u56fd\u5927\u9646)" },
 		{ code: "zh-tw",         text: "\u4e2d\u6587(\u53f0\u7063)" },
@@ -378,7 +376,7 @@ mw.LanguageUpWiz = {
 		{ code: "ii",            text: "\ua187\ua259" },
 		{ code: "ko",            text: "\ud55c\uad6d\uc5b4" },
 		{ code: "ko-kp",         text: "\ud55c\uad6d\uc5b4 (\uc870\uc120)" },
-		{ code: "got",           text: "\ud800\udf32\ud800\udf3f\ud800\udf44\ud800\udf39\ud800\udf43\ud800\udf3a" },
+		{ code: "got",           text: "\ud800\udf32\ud800\udf3f\ud800\udf44\ud800\udf39\ud800\udf43\ud800\udf3a" }
 	],
 
 	/**
@@ -449,7 +447,7 @@ mw.LanguageUpWiz = {
 			return code;					
 		} 
 		return mw.LanguageUpWiz.getClosest( code.substring( 0, code.indexOf( '-' )) );
-	},
+	}
 
 
 	// enhance a simple text input to be an autocompleting language menu
@@ -489,4 +487,4 @@ mw.LanguageUpWiz = {
 	// although other info such as Information boxes was recorded correctly.	
 	// This is presumed not to apply to the shiny new world of JS2, where i18n is handled in other ways.
 
-}
+};

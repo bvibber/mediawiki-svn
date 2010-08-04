@@ -116,7 +116,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'catboxattop-categories' => 'هاوپۆلەکان',
 );
 
@@ -279,6 +279,14 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'catboxattop-desc' => 'Menambahkan sebuah kotak kategori di kanan atas halaman',
 	'catboxattop-categories' => 'Kategori',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'catboxattop-desc' => 'Nè tí ngwa ébéonọr na élú áká ịkengạ ihü',
+	'catboxattop-categories' => 'Ébéanọr',
 );
 
 /** Italian (Italiano)

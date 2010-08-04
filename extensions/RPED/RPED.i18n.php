@@ -156,6 +156,8 @@ $messages['ja'] = array(
  * @author Universal Life
  */
 $messages['lad'] = array(
+	'rped' => 'Deteksyón de la egzistensya de hoja lexano',
+	'rped-desc' => 'Linkea los vikilinkes a la Vikipedya si la hoja no egzista en el viki local ma egziste en la Vikipedya',
 	'rped-wikipedia-url' => 'http://lad.wikipedia.org/wiki/$1',
 );
 
@@ -254,5 +256,12 @@ $messages['tl'] = array(
 	'rped' => 'Pangtuklas ng pag-iral ng malayong pahina',
 	'rped-desc' => 'Nagkakawing ng mga ng kawing na pangwika sa Wikipedia kapag hindi umiiral ang pahina sa katutubong wiki subalit umiiral sa Wikipedia',
 	'rped-wikipedia-url' => 'http://tl.wikipedia.org/wiki/$1',
+);
+
+/** Turkish (Türkçe)
+ * @author Universal Life
+ */
+$messages['tr'] = array(
+	'rped-wikipedia-url' => 'http://tr.wikipedia.org/wiki/$1',
 );
 

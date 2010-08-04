@@ -395,7 +395,7 @@ $messages['niu'] = array(
  */
 $messages['ab'] = array(
 	'ow_history' => 'Аҭоурых',
-	'ow_User' => 'Иалахә',
+	'ow_User' => 'Алахәыла',
 );
 
 /** Afrikaans (Afrikaans)
@@ -2325,7 +2325,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'langman-desc' => 'به [[Special:Languages]] زمان زیاد بکە و هەڵبژاردەکانی بگۆڕە ‌',
 	'langman_title' => 'جێبەجێکەری زمان',
 	'langman_not_allowed' => 'ڕێگەت پێ‌نەدراوە بۆ گۆڕانی هەڵبژاردەکانی زمان.',
@@ -3413,6 +3413,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Jagwar
  * @author Malafaya
  * @author Michawiki
@@ -3445,6 +3446,7 @@ $messages['eo'] = array(
 	'datasearch_search_text' => 'Serĉi tekston:',
 	'datasearch_within_words' => 'Inter vortojn:',
 	'datasearch_showing_only' => 'Montrante nur maksimumon de $1 {{PLURAL:$1|trafo|trafoj}} (el $2).',
+	'ow_importtsv_title1' => 'Importi TSV',
 	'ow_importtsv_title2' => 'Importi difinojn kaj tradukojn',
 	'ow_importtsv_import_failed' => 'Importado malsukcesis',
 	'ow_importtsv_file' => 'TSV-Dosiero:',
@@ -3454,6 +3456,7 @@ $messages['eo'] = array(
 	'ow_impexptsv_unknown_lang' => '<p>Nekonata aŭ malkorekta lingvo: $1.<br />
 Lingvoj devas esti ISO 639-3 lingvaj kodoj.</p>',
 	'ow_exporttsv_languages' => 'Lingvoj:',
+	'ow_exporttsv_export_failed' => 'Eksporto malsukcesis',
 	'ow_save' => 'Konservi',
 	'ow_history' => 'Historio',
 	'ow_datasets' => 'Datumara selekto',
@@ -5504,6 +5507,7 @@ $messages['he'] = array(
 	'ow_needs_xlation_source_lang' => 'שפת המקור:',
 	'ow_needs_xlation_dest_lang' => 'שפת היעד:',
 	'ow_needs_xlation_no_dest_lang' => 'אנא ציינו את שפת היעד.',
+	'ow_statistics' => 'ויקי־דאטא: סטטיסטיקה',
 	'ow_show' => 'הצגה',
 	'ow_upload' => 'העלאה',
 	'ow_create' => 'יצירה',
@@ -5559,6 +5563,7 @@ $messages['hil'] = array(
  * @author CERminator
  * @author Dalibor Bosits
  * @author Ex13
+ * @author Tivek
  */
 $messages['hr'] = array(
 	'langman_langname' => 'Naziv jezika:',
@@ -5568,6 +5573,7 @@ $messages['hr'] = array(
 	'langman_field_optional' => '(opcionalno)',
 	'langman_addlang' => 'Dodaj jezik',
 	'importlangnames' => 'Wikidata: Uvoz jezičnih naziva',
+	'datasearch' => 'Wikidata: Pretraživanje podataka',
 	'datasearch_language' => 'Jezik:',
 	'datasearch_found_word' => 'Pronađena riječ',
 	'datasearch_meaning' => 'Značenje',
@@ -6419,7 +6425,10 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_OptionAttributeOptions' => 'Pilihan',
 	'ow_OptionAttributeValues' => 'Nilai pilihan',
 	'ow_PopupAnnotation' => 'Anotasi',
+	'ow_Relations' => 'Hubungan',
+	'ow_RelationType' => 'Jenis hubungan',
 	'ow_Remove' => 'Hapus',
+	'ow_RemoveHint' => 'Tandai baris yang ingin dihapus',
 	'ow_Spelling' => 'Ejaan',
 	'ow_SuggestHint' => 'Klik untuk mengubah pilihan',
 	'ow_Synonyms' => 'Sinonim',
@@ -6448,6 +6457,7 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_meaningsofsubtitle' => '<em>Pranala wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Hak ases ditolak</h2>',
 	'copy' => 'Wikidata: Salin',
+	'ow_copy_no_action_specified' => 'Silakan tentukan tindakan',
 	'ow_copy_help' => 'Bantuan belum diberikan.',
 	'ow_copy_successful' => '<h2>Penyalinan berhasil</h2>
 Data Anda berhasil disalin.
@@ -6487,6 +6497,8 @@ $messages['ig'] = array(
 	'langman_field_optional' => '(ichóró)',
 	'langman_addlang' => 'Tinyé asụsụ',
 	'importlangnames_title' => 'Tinyé shi ébéozor áhạ asụsụ',
+	'ow_importtsv_file' => 'Ákwúkwó orunotu TSV:',
+	'ow_importtsv_nothing_added' => 'Ọ díghì ihe tìrì.',
 	'ow_save' => 'Donyéré',
 	'ow_dm_OK' => 'Ngwanu',
 	'ow_Time' => 'Ogẹ',

@@ -47,6 +47,13 @@ $messages['arz'] = array(
 	'uploadblacklist-desc' => 'يزود وظيفه بلاكليست للرفع',
 );
 
+/** Bavarian (Boarisch)
+ * @author Wikifan
+ */
+$messages['bar'] = array(
+	'uploadblacklist-desc' => 'fügt a schwoaze listn füa die Upload-fungtion hianzur',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

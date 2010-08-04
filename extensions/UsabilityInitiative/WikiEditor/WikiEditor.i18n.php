@@ -151,7 +151,7 @@ $messages['ce'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor' => 'ڕووکاری پێشکەوتووی دەستکاریکردنی ویکیدەق',
 	'wikieditor-wikitext-tab' => 'ویکیدەق',
 	'wikieditor-loading' => 'بارکردن',
@@ -310,7 +310,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'wikieditor' => 'Entèrface de changement de vouiquitèxto avanciê',
+	'wikieditor' => 'Entèrface avanciê de changement de vouiquitèxto',
 	'wikieditor-desc' => 'Balye una entèrface de changement de vouiquitèxto èxtensibla et un mouél de fonccionalitâts.',
 	'wikieditor-wikitext-tab' => 'Vouiquitèxto',
 	'wikieditor-loading' => 'Chargement',
@@ -399,6 +399,13 @@ $messages['id'] = array(
 	'wikieditor-loading' => 'Pembebanan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-loading' => 'Ọ na biá',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -459,6 +466,13 @@ $messages['ksh'] = array(
 	'wikieditor' => 'Fottjeschredde Eddiror för de WikiTäx',
 	'wikieditor-desc' => 'Brängk en Müjjeleschkeit för Wikitäx enzejävve un ze ändere en et Wiki, di mer ußboue kann, un noch allerhand Kröhmsches met dobei hät.',
 	'wikieditor-wikitext-tab' => 'Wikitäx',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-loading' => 'Bar dibe',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -609,6 +623,15 @@ $messages['pms'] = array(
 	'wikieditor-desc' => "A dà n'antërfacia ëd modìfica estendìbil ëd wikitext e motobin ëd modoj ch'a dan ëd fonsionalità",
 	'wikieditor-wikitext-tab' => 'Test Wiki',
 	'wikieditor-loading' => 'Cariament',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor' => 'د پرمختللی ويکي متن د سمون ليدنمخ',
+	'wikieditor-wikitext-tab' => 'ويکي متن',
+	'wikieditor-loading' => 'د برسېرېدو په حال کې',
 );
 
 /** Portuguese (Português)

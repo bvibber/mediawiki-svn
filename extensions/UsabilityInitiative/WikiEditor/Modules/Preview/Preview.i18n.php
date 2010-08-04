@@ -156,7 +156,7 @@ $messages['ce'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-preview-preference' => 'ڕێگەپێدان بە پێشبینینی شانبەشان',
 	'wikieditor-preview-tab' => 'پێشبینین',
 	'wikieditor-preview-changes-tab' => 'گۆڕانکارییەکان',
@@ -434,13 +434,22 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author IvanLanin
  */
 $messages['id'] = array(
 	'wikieditor-preview-preference' => 'Aktifkan pratayang bersisian',
 	'wikieditor-preview-tab' => 'Pratayang',
 	'wikieditor-preview-changes-tab' => 'Perubahan',
-	'wikieditor-preview-loading' => 'Memuat...',
+	'wikieditor-preview-loading' => 'Mengunggah...',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-preview-changes-tab' => 'Ihe gbanwere',
+	'wikieditor-preview-loading' => 'Ọ biágó...',
 );
 
 /** Ido (Ido)
@@ -520,6 +529,14 @@ $messages['ksh'] = array(
 	'wikieditor-preview-tab' => '{{int:preview}}',
 	'wikieditor-preview-changes-tab' => 'Änderunge',
 	'wikieditor-preview-loading' => 'Ben aam Laade{{int:ellipsis}}',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-preview-tab' => 'Pêşdîtin',
+	'wikieditor-preview-loading' => 'Bar dibe…',
 );
 
 /** Latin (Latina)
@@ -689,6 +706,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-preview-preference' => 'څنګ په څنګ مخليدنه چارنده کول',
 	'wikieditor-preview-tab' => 'مخليدنه',
 	'wikieditor-preview-changes-tab' => 'بدلونونه',
 	'wikieditor-preview-loading' => 'د برسېرېدلو په حال کې...',

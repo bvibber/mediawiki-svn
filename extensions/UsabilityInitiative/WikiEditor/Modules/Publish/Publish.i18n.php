@@ -224,7 +224,7 @@ $messages['ce'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-publish-preference' => 'ڕێگە بدە بە بڵاوکردنەوەی ھەنگاوبەھەنگاو',
 	'wikieditor-publish-button-publish' => 'بڵاوی بکەوە',
 	'wikieditor-publish-button-cancel' => 'ھەڵوەشاندنەوە',
@@ -645,6 +645,14 @@ $messages['id'] = array(
 	'wikieditor-publish-dialog-goback' => 'Kembali',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-publish-button-cancel' => 'Kàchá',
+	'wikieditor-publish-dialog-publish' => 'Wéfùtà',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -755,6 +763,16 @@ $messages['ksh'] = array(
 	'wikieditor-publish-dialog-watch' => '{{int:watchthis}}',
 	'wikieditor-publish-dialog-publish' => '{{int:wikieditor-publish-button-publish}}',
 	'wikieditor-publish-dialog-goback' => 'Jangk Retuur!',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-publish-button-publish' => 'Weşandin',
+	'wikieditor-publish-button-cancel' => 'Betal',
+	'wikieditor-publish-dialog-publish' => 'Weşandin',
+	'wikieditor-publish-dialog-goback' => 'Vegere',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -986,9 +1004,11 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'wikieditor-publish-preference' => 'ګام په ګام خپرېدنه چارنده کول',
 	'wikieditor-publish-button-publish' => 'خپرول',
 	'wikieditor-publish-button-cancel' => 'ناګارل',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} کې خپرول',
+	'wikieditor-publish-dialog-summary' => 'د سمون لنډيز (په لنډه توګه د خپلو بدلونونو څرګندونه وکړۍ):',
 	'wikieditor-publish-dialog-minor' => 'وړوکی سمون',
 	'wikieditor-publish-dialog-watch' => 'همدا مخ کتل',
 	'wikieditor-publish-dialog-publish' => 'خپرول',

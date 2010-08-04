@@ -25,18 +25,22 @@
 if ( !defined( 'MEDIAWIKI' ) ) die( "This is an extension to the MediaWiki package and cannot be run standalone." );
 
 $wgExtensionCredits['parserhook'][] = array (
+	'path' => __FILE__,
 	'name' => 'SidebarDonateBox',
 	'url' => 'http://mediawiki.org/wiki/Extension:SidebarDonateBox',
 	'version' => '1.1a',
 	'author' => "[http://mediawiki.org/wiki/User:Dantman Daniel Friesen]",
-	'description' => "Adds a custom donate box to the sidebar"
+	'descriptionmsg' => 'sidebardonatebox-desc',
 );
+// Internationalization file
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['SidebarDonateBox'] = $dir . 'SidebarDonateBox.i18n.php';
 
 $wgHooks['SkinBuildSidebar'][] = 'efSidebarDonateBox';
 
 function efSidebarDonateBox( $skin, &$bar ) {
 	global $egSidebarDonateBoxContent;
-	$bar['DONATE'] = $egSidebarDonateBoxContent;
+	$bar['donate'] = $egSidebarDonateBoxContent;
 	return true;
 }
 

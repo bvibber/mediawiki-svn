@@ -220,6 +220,13 @@ $messages['ksh'] = array(
 	'addmediawizard-desc' => 'Donn dä Assistänt för Medije en et Wiki eren, dä zosamme vun Kaltura und de Mediawiki Shteftong äntweckelt woode es.',
 );
 
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'addmediawizard-desc' => 'Ajusta el hechizero de medya, desvelepado con la jhaverança de Kaltura i la Fondasyón de Vikimedya',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -356,6 +363,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'addmediawizard-desc' => 'Ortam ekleme sihirbazı, Kaltura ve Vikimedya Kuruluşu ortaklığıyla geliştirilmiştir',
+);
+
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'addmediawizard-desc' => 'Майстер додавання медіа-даних, розроблений у партнерстві Kaltura та Фонду Вікімедіа',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -88,6 +88,13 @@ $messages['dsb'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maksimalnje 20 srjodkow',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'jsbreadcrumbs-leading-description' => 'Rastro de navegación',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -120,6 +127,11 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'jsbreadcrumbs-desc' => 'Fiegt e Spur vu Brogmoseme yy unter dr Menüleischte',
 	'jsbreadcrumbs-leading-description' => 'Navigationspfad',
+	'prefs-jsbreadcrumbs' => '„Brogmoseme“',
+	'prefs-jsbreadcrumbs-showsite' => 'Name vu dr Website in d Brogmosemenavigation ufneh (nitzli wänn s in mehre Wiki brucht wird)',
+	'prefs-jsbreadcrumbs-showcrumbs' => '„Brogmoseme“ aazeige',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Aazahl vu dr „Brogmoseme“',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximal 20 „Brogmoseme“',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

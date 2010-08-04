@@ -275,7 +275,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'spamdifftool_option_none' => 'هیچ‌شتێک',
 );
 
@@ -973,7 +973,7 @@ $messages['mg'] = array(
 	'spamdifftool_spam_link_text' => "ampiana amin'ny spam",
 	'spamdifftool_option_domain' => "rehetra avy amin'io sehatra io",
 	'spamdifftool_option_subdomain' => "rehetra avy amin'io zana-tsehatra io",
-	'spamdifftool_option_directory' => 'io zanan-tsehatra io sy io fametrahan-drakitra io',
+	'spamdifftool_option_directory' => 'io zanan-tsehatra io sy io petra-drakitra io',
 	'spamdifftool_option_none' => 'tsy misy',
 	'spamdifftool_block' => 'Hanakana :',
 	'spamdifftool_submit_buttom' => 'Alefa',

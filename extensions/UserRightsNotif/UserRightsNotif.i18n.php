@@ -221,7 +221,7 @@ $2",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'userrightsnotifybody' => 'سڵاو $1.
 
 ئەمە بۆ ئاگادارکردنەوەتە کە هاوبەشیەکانی گرووپت لە $2 دا بەدەست $3 لە $4 دا گۆڕدرا.
@@ -358,6 +358,7 @@ Kore salutas $2',
 
 /** Spanish (Español)
  * @author Antur
+ * @author Dferg
  */
 $messages['es'] = array(
 	'userrightsnotifysubject' => 'Grupo de usuario modificado en $1',
@@ -367,7 +368,7 @@ Por la presente le informo que sus derechos de usuario en $2 fueron modificados 
 
 Agregado: $5
 
-Removido: $6
+Retirado: $6
 
 Cordialmente,
 

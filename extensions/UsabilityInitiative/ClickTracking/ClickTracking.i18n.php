@@ -320,7 +320,7 @@ $messages['ca'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'ct-start-date' => 'ڕێکەوتی دەستپێکردن (YYYYMMDD)',
 	'ct-end-date' => 'ڕێکەوتی دوایی‌ھاتن (YYYYMMDD)',
 	'ct-beginner' => 'دەستپێکەر',
@@ -994,7 +994,7 @@ $messages['ig'] = array(
 	'ct-end-date' => 'Ubochi o na kushi (YYYYMMDD)',
 	'ct-beginner' => 'Onye mbídó',
 	'ct-intermediate' => 'Nke ditu mmá',
-	'ct-expert' => 'Dioka',
+	'ct-expert' => 'Díokà',
 	'ct-and' => 'na',
 );
 
@@ -1558,9 +1558,14 @@ $messages['pnb'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'ct-event-name' => 'د پېښې نوم',
 	'ct-start-date' => 'د پيل نېټه (ک.ک.ک.ک.م.م.و.و)',
 	'ct-end-date' => 'د پای نېټه (ک.ک.ک.ک.م.م.و.و)',
+	'ct-change-graph' => 'ګراف بدلول',
+	'ct-anon-users' => 'ورکنومي کارنان',
+	'ct-user-contribs' => 'د کارن ټولټال ونډې',
 	'ct-and' => 'او',
+	'ct-update-table' => 'لښتيال اوسمهالول',
 );
 
 /** Portuguese (Português)

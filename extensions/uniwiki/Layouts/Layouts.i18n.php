@@ -181,7 +181,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'layouts_title' => 'دروست‌کردنی لاپەڕەیەک',
 	'layouts_continue' => 'درێژەدان',
 	'layouts_choosecategory' => 'هاوپۆلێک هەڵبژێرە بۆ $1:',
@@ -932,8 +932,10 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'layouts_title' => 'Створити сторінку',
 	'layouts_continue' => 'Продовжити',
 );
 

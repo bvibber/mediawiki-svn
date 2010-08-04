@@ -130,6 +130,13 @@ $messages['ja'] = array(
 	'hidens-desc' => '指定された名前空間にページがあるか、<code><nowiki>{{#hidens:}}</nowiki></code> パーサー関数が使われた場合に、ヘッダーとタイトルにおける名前空間を隠して表示する',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'hidens-desc' => 'Verstich der Name vum Appachtemang em Siggetittel un dä Övverschref, wann en Sigg us enem beschtemmpte Appachtemang kütt udder wann de Paaserfunxjuhn <code><nowiki>{{#hidens:}}</nowiki></code> en dä Sigg dren opjeroofe weed.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -232,6 +239,13 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'hidens-desc' => 'Itinatago ang mga puwang na pampangalan sa loob ng pang-ulo at pamagat kapag ang pahina ay nasa loob ng tiyak na puwang na pampangalan o kapag tinawag ang tungkulin ng parser na <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'hidens-desc' => 'Приховує простір імен в заголовку і назві, якщо сторінка відноситься до певного простору імен або містить виклик функції парсера <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
 /** Vietnamese (Tiếng Việt)

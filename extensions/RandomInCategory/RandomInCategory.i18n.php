@@ -436,6 +436,18 @@ $messages['hu'] = array(
 	'randomincategory-submit' => 'Menj',
 );
 
+/** Armenian (Հայերեն)
+ * @author Pandukht
+ */
+$messages['hy'] = array(
+	'randomincategory' => 'Կատեգորիայի պատահական էջ',
+	'randomincategory-desc' => '[[Special:Randomincategory|Սպասարկող էջ]] կատեգորիայի պատահական էջի ստացման համար',
+	'randomincategory-toolbox' => 'Պատահական էջ',
+	'randomincategory-nocategory' => '$1 կատեգորիան գոյություն չունի կամ դատարկ է',
+	'randomincategory-label' => 'Կատեգորիա:',
+	'randomincategory-submit' => 'Անցնել',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -459,6 +471,13 @@ $messages['id'] = array(
 	'randomincategory-nocategory' => 'Kategori $1 tidak ada atau kosong',
 	'randomincategory-label' => 'Kategori:',
 	'randomincategory-submit' => 'Tuju ke',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'randomincategory-submit' => 'Gá',
 );
 
 /** Ido (Ido)

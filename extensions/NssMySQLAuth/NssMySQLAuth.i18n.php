@@ -41,6 +41,7 @@ $messages['qqq'] = array(
 	'nss-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
+	'nss-save-changes' => '{{Identical|Save changes}}',
 	'nss-create-account-header' => '{{Identical|Create account}}',
 	'nss-create-account' => '{{Identical|Create account}}',
 );
@@ -1078,9 +1079,11 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'am-email' => 'електронна пошта',
+	'nss-save-changes' => 'Зберегти зміни',
 	'nss-create-account-header' => 'Створити новий обліковий запис',
 	'nss-create-account' => 'Створити обліковий запис',
 );

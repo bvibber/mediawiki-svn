@@ -55,8 +55,11 @@ $messages['ary'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
+	'mp-userlevels-link' => 'Gebruikersvlakke',
 	'mp-welcome-upload' => 'Oplaai',
 	'mp-welcome-edit' => 'Wysig',
+	'mp-welcome-logged-in' => 'Hallo $1',
+	'mp-requests-title' => 'Versoeke',
 	'mp-request-new-message' => 'nuwe boodskap',
 );
 
@@ -261,7 +264,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'mp-userlevels-link' => 'ئاستەکانی بەکارهێنەر',
 	'mp-welcome-upload' => 'بارکردن',
 	'mp-welcome-edit' => 'دەستکاری کردن',

@@ -440,7 +440,7 @@ $messages['de'] = array(
 	'recordadmin-newcreated' => 'Neues $1 auf einem öffentlichen Formular erstellt',
 	'recordadmin-summary-typecreated' => 'Neues $1 erstellt',
 	'recordadmin-viewlink' => 'ansehen',
-	'recordadmin-editlink' => 'ändern',
+	'recordadmin-editlink' => 'bearbeiten',
 	'recordadmin-created' => 'Erstellt',
 	'recordadmin-modified' => 'Modifiziert',
 	'recordadmin-actions' => 'Aktionen',
@@ -1083,6 +1083,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Kandar
  */
@@ -1123,13 +1124,20 @@ $messages['id'] = array(
 	'recordadmin-modified' => 'Dirubah',
 	'recordadmin-actions' => 'Tindakan',
 	'recordadmin-needscontent' => 'Menambah isi...',
-	'recordadmin-editwithform' => 'Sunting dengan formulir',
+	'recordadmin-editwithform' => 'Properti',
 	'recordadmin-typeinfo' => '$1 catatan',
 	'right-recordadmin' => 'Temukan dan sunting catatan halaman',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Tidak ada "$1"',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'recordadmin-createsuccess' => '$1 kèrè',
+	'recordadmin-badtitle' => 'Ishi edemede öjö!',
 	'recordadmin-buttonsearch' => 'Chöwá',
 	'recordadmin-buttoncreate' => 'Ké',
 	'recordadmin-buttonsave' => 'Donyéré',

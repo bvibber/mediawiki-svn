@@ -354,17 +354,6 @@ $messages['niu'] = array(
 	'configure-section-search' => 'Kumi',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Alamnirvana
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'configure-desc-group' => 'Galambang',
-	'configure-desc-val' => 'Nilai',
-	'configure-edit-core' => 'MediaWiki',
-	'configure-section-pages' => 'Tungkaran',
-);
-
 /** Abkhazian (Аҧсуа)
  * @author Temuri rajavi
  */
@@ -1251,6 +1240,17 @@ $messages['bg'] = array(
 	'configure-condition-name-4' => 'В групи',
 	'configure-condition-name-5' => 'Потребителски IP адрес',
 	'configure-farmer-extensions' => '[[Special:Extensions|Конфигуриране на разширенията за това уики]].',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Alamnirvana
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'configure-desc-group' => 'Galambang',
+	'configure-desc-val' => 'Nilai',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-section-pages' => 'Tungkaran',
 );
 
 /** Breton (Brezhoneg)
@@ -4972,13 +4972,18 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Daftar ekstensi yang tersedia untuk wiki ini]].',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'configure-form-reason' => 'Mgbaghaputa:',
+	'configure-edit-core' => 'NkáWiki',
+	'configure-form-reason' => 'Mgbághapụtà:',
 	'configure-js-remove' => 'Gbakashia',
 	'configure-section-specialpages' => 'Ihü mkpà',
 	'configure-section-search' => 'Chöwá',
 	'configure-throttle-action-edit' => 'Rüwa',
+	'configure-throttle-action-move' => 'Páfụ',
+	'configure-condition-operator-or' => 'Mà',
 );
 
 /** Ido (Ido)
@@ -10530,7 +10535,7 @@ $messages['zh-hans'] = array(
 	'configure-ext-ext-dependencies' => "'''警告：'''这个扩展需要以下扩展被激活：$1。",
 	'configure-ext-ext-dependency-err' => "'''错误：'''$1扩展需要$2扩展被激活。",
 	'configure-ext-doc' => '检视线上文件',
-	'configure-ext-schemachange' => "'''警告：'''这个扩展需要一次数据库更新以正常工作！",
+	'configure-ext-schemachange' => "'''警告：'''这个扩展需要[http://www.mediawiki.org/wiki/Manual:Update.php 更新数据库]以正常工作！",
 	'configure-ext-settings' => '设置',
 	'configure-ext-settings-dep-errors' => '由于以下设置有不可接受的值，这个扩展不能被启用。',
 	'configure-ext-settings-dep-error' => '$1：需要值：$2，当前值：$3',

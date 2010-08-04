@@ -80,7 +80,7 @@ $wgCustomToolbarMessages['qqq'] = array(
  * @author Temuri rajavi
  */
 $wgCustomToolbarMessages['ab'] = array(
-	'ct_user_user' => 'Иалахә',
+	'ct_user_user' => 'Алахәыла',
 );
 
 /** Afrikaans (Afrikaans)
@@ -539,7 +539,7 @@ $wgCustomToolbarMessages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$wgCustomToolbarMessages['ckb-arab'] = array(
+$wgCustomToolbarMessages['ckb'] = array(
 	'ct_bold_sample' => 'دەقی تۆخ',
 	'ct_bold_tip_ins' => 'دەقی تۆخ دابنێ',
 	'ct_bold_tip_wrap' => 'ئەم دەقە تۆخ بکە',
@@ -1449,7 +1449,13 @@ $wgCustomToolbarMessages['id'] = array(
  * @author Ukabia
  */
 $wgCustomToolbarMessages['ig'] = array(
+	'ct_bold_caption' => 'Shí íke',
+	'ct_external_caption' => 'Jikodo di ẹzí',
+	'ct_nowiki_caption' => 'Wiki àdíghị',
 	'ct_submit' => 'Gá!',
+	'ct_user_user' => "Ọ'bànifé",
+	'ct_user_caption' => "Jikodo ọ'bànifé",
+	'ct_user_sample' => "Áhà ọ'bànifé",
 );
 
 /** Italian (Italiano)
@@ -2159,6 +2165,9 @@ $wgCustomToolbarMessages['pnb'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $wgCustomToolbarMessages['ps'] = array(
+	'ct_bold_sample' => 'د روڼليک متن',
+	'ct_bold_caption' => 'روڼليک',
+	'ct_italic_sample' => 'د رېوندليک متن',
 	'ct_internal_sample' => 'دمخ-نوم',
 	'ct_internal_caption' => 'کورنۍ تړنه',
 	'ct_external_caption' => 'باندنۍ تړنه',

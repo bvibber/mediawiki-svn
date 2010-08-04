@@ -3182,10 +3182,12 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
 	'deletequeue-case-needs-review' => 'Kasus ini membutuhkan [[$1|tinjauan]].',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'deletequeue-list-search' => 'Chöwá',
-	'deletequeue-case-reason' => 'Mgbaghaputa:',
+	'deletequeue-case-reason' => 'Mgbághapụtà:',
 );
 
 /** Ido (Ido)
@@ -3777,12 +3779,14 @@ $messages['lb'] = array(
 	'deletequeue-review-reason' => 'Bemierkungen:',
 	'deletequeue-review-newreason' => 'Neie Grond:',
 	'deletequeue-review-newextra' => 'Zousätzlech Informatioun:',
+	'deletequeue-review-submit' => 'Nokucke späicheren',
 	'deletequeue-review-original' => "Grond fir d'Nominatioun",
 	'deletequeue-review-badaction' => 'Dir hut eng Aktioun uginn déi net valabel ass',
 	'deletequeue-reviewspeedy-tab' => 'Séier läschen iwwerpréifen',
 	'deletequeue-reviewprod-tab' => 'Virgeschloe Läschung nokucken',
 	'deletequeue-reviewdeletediscuss-tab' => 'Läschen iwwerpréifen',
 	'deletequeue-reviewdeletediscuss-title' => 'Diskussioun iwwer d\'Läsche vu(n) "$1" nokucken',
+	'deletequeue-review-success' => "Dir hutt d'Läsche vun dëser Säit elo nogekuckt",
 	'deletequeue-discusscreate-text' => "D'Läsche gouf aus dësem Grond virgeschlo: $2",
 	'deletequeue-role-vote-endorse' => "Fir d'Läschen",
 	'deletequeue-role-vote-object' => "Géint d'Läschen",

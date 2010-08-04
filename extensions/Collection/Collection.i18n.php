@@ -292,11 +292,11 @@ $messages['gom-latn'] = array(
 	'coll-return_to' => '[[:$1]] ak patim vos',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author J Subhi
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
  */
-$messages['bjn'] = array(
-	'coll-show' => 'Tampilakan',
+$messages['ab'] = array(
+	'coll-rename' => 'Ахьӡ аҧсахра',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1032,6 +1032,13 @@ $messages['bg'] = array(
 	'coll-suggest_undo' => 'отмяна',
 	'right-collectionsaveasuserpage' => 'Запазване на книгата като потребителска страница',
 	'right-collectionsaveascommunitypage' => 'Запазване на книгата като страница на общността',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'coll-show' => 'Tampilakan',
 );
 
 /** Bengali (বাংলা)
@@ -3596,7 +3603,7 @@ $messages['frp'] = array(
 	'coll-desc' => 'Pèrmèt de [[Special:Book|fâre des lévros]].',
 	'coll-manage_your_book' => 'Administrar voutron lévro',
 	'coll-book_creator_help' => 'Vêde la [[{{MediaWiki:Coll-helppage}}|pâge d’éde sur los lévros]] por més d’enformacions.',
-	'coll-start_book_creator' => 'Dèmarrar lo crèator de lévros',
+	'coll-start_book_creator' => 'Emmodar lo crèator de lévros',
 	'coll-book_creator_continue' => 'Continuar en utilisent lo crèator de lévros',
 	'coll-book_creator_disable_text' => "Lo ''crèator de lévros'' serat dèsactivâ et pués los lévros sur losquints vos travalyéd seront suprimâs de la sèance de voutron navigator.",
 	'coll-book_creator_text_article' => '{{MediaWiki:Coll-helppage}}/Tèxto du crèator de lévros',
@@ -5109,10 +5116,13 @@ Daftar diperbaharui kapanpun anda clik tombol tambahkan atau hapus.',
 	'right-collectionsaveascommunitypage' => 'Menyimpan koleksi buku sebagai halaman komunitas',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'coll-show' => 'Zi',
-	'coll-cancel' => 'Emekwàlà',
+	'coll-title' => 'Íshí:',
+	'coll-cancel' => 'Kàchá',
 	'coll-about_pp' => 'Maka $1',
 	'coll-suggest_show' => 'zi',
 );
@@ -6567,7 +6577,7 @@ $messages['ml'] = array(
 	'coll-move_up' => 'മുകളിലേക്കു നീങ്ങുക',
 	'coll-move_down' => 'താഴേക്ക് നീങ്ങുക',
 	'coll-move_to_bottom' => 'ഏറ്റവും താഴേക്ക് നീങ്ങുക',
-	'coll-title' => 'ശീർഷകം:',
+	'coll-title' => 'തലക്കെട്ട്:',
 	'coll-subtitle' => 'ഉപശീർഷകം:',
 	'coll-contents' => 'ഉള്ളടക്കം',
 	'coll-drag_and_drop' => 'വിക്കി താളുകളും അദ്ധ്യായങ്ങളും ക്രമം മാറ്റാൻ വലിച്ചിടൽ ഉപയോഗിക്കുക',
@@ -11052,6 +11062,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Chenxiaoqino
  * @author Chenzw
  * @author Liangent
  * @author Wmr89502270
@@ -11151,6 +11162,8 @@ $messages['zh-hans'] = array(
 
 注释：
 * 对生成效果不满意？查看[[{{MediaWiki:Coll-helppage}}|帮助]]来学习如何改善它。',
+	'coll-finished_page_info_text_article' => ' {{MediaWiki:Coll-helppage}}/渲染收集信息文字',
+	'coll-finished_collection_info_text_article' => ' {{MediaWiki:Coll-helppage}}/渲染收集信息文字',
 	'coll-notfound_title' => '图书未找到',
 	'coll-notfound_text' => '未找到图书页面。',
 	'coll-download_notfound_title' => '找不到文件',
@@ -11188,6 +11201,7 @@ $messages['zh-hans'] = array(
 	'coll-suggest_article_remove' => '页面<strong>$1</strong>已经从您的图书中移除（$2）。',
 	'coll-suggest_undo_tooltip' => '撤销这个动作',
 	'coll-suggest_undo' => '撤销',
+	'coll-load_local_book' => '点击OK来继续操作你的书籍《%TITLE%》（共%NUMPAGES%页）。 点击Cancel清空并从零开始。',
 	'right-collectionsaveasuserpage' => '在用户页储存此书',
 	'right-collectionsaveascommunitypage' => '在社群页面储存此书',
 );
@@ -11295,6 +11309,8 @@ $messages['zh-hant'] = array(
 
 註釋：
 * 不滿意輸出成果？請參閱[[{{MediaWiki:Coll-helppage}}|幫助頁面]]以暸解如何改善它。',
+	'coll-finished_page_info_text_article' => ' {{MediaWiki:Coll-helppage}}/渲染收集信息文字',
+	'coll-finished_collection_info_text_article' => ' {{MediaWiki:Coll-helppage}}/渲染收集信息文字',
 	'coll-notfound_title' => '找不到圖書',
 	'coll-notfound_text' => '未找到。',
 	'coll-download_notfound_title' => '找不到文件',
@@ -11331,6 +11347,7 @@ $messages['zh-hant'] = array(
 	'coll-suggest_article_remove' => '頁面<strong>$1</strong>已經從您的圖書中移除（$2）。',
 	'coll-suggest_undo_tooltip' => '撤銷這個動作',
 	'coll-suggest_undo' => '撤銷',
+	'coll-load_local_book' => '點擊OK來繼續操作你的書籍《%TITLE%》（共%NUMPAGES%頁）。 點擊Cancel清空並從零開始。',
 	'right-collectionsaveasuserpage' => '在使用者頁面儲存此書',
 	'right-collectionsaveascommunitypage' => '在社群頁面儲存此書',
 );

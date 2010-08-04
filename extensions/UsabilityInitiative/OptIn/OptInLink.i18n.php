@@ -203,7 +203,7 @@ $messages['ce'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'optin-try' => 'تاقی‌کردنەوەی بیتا',
 	'tooltip-pt-optin-try' => 'تاقیکردنەوەیەکی تایبەتمەندییە نوێکان',
 	'optin-leave' => 'دەرچوون لە بیتا',
@@ -697,6 +697,16 @@ $messages['ksh'] = array(
 	'tooltip-pt-optin-feedback' => 'Jiff Röckmäldunge aff övver Ding Äfahrunge met dä neu Saache',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'optin-try' => 'Beta biceribîne',
+	'tooltip-pt-optin-try' => 'Taybetmendiyên nû biceribîne',
+	'optin-leave' => 'Ji betayê derkeve',
+	'tooltip-pt-optin-leave' => 'Taybetmendiyên nû bigire',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Purodha
  * @author Robby
@@ -777,6 +787,16 @@ $messages['ml'] = array(
 	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകൾ വേണ്ട',
 	'optin-feedback' => 'ബീറ്റയുടെ ഉപയോഗാനുഭവമറിയിക്കുക',
 	'tooltip-pt-optin-feedback' => 'പുതിയ സവിശേഷതകളുമായുള്ള താങ്കളുടെ അനുഭവം പങ്കു വെയ്ക്കുക',
+);
+
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'optin-try' => '↓ बीटा वापरुन बघा',
+	'optin-leave' => '↓ बीटा त्यागुन बाहेर
+↓ बीटा सोडा',
+	'tooltip-pt-optin-leave' => '↓ नविन चेहरामोहरा बंद करा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -910,6 +930,13 @@ $messages['pms'] = array(
 	'tooltip-pt-optin-feedback' => 'Dà dij feedback an sla toa esperiensa con le neuve funsionalità',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'optin-try' => 'آزمېښتي بڼه کارول',
+);
+
 /** Portuguese (Português)
  * @author Capmo
  * @author Giro720
@@ -948,8 +975,11 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'optin-try' => 'Beta nisqata llanchiy',
+	'tooltip-pt-optin-try' => 'Musuq kaqninkunata llanchiy',
 	'optin-leave' => 'Beta nisqamanta lluqsiy',
+	'tooltip-pt-optin-leave' => "Musuq kaqninkunata hark'ay",
 	'optin-feedback' => 'Beta nisqata rimanakuy',
+	'tooltip-pt-optin-feedback' => 'Musuq kaqninkunapi rikusqaykikunamanta willaspa rimanakuy',
 );
 
 /** Romanian (Română)

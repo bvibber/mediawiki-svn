@@ -93,4 +93,3 @@ class WebStoreMetadata extends WebStoreCommon {
 $obj = new WebStoreMetadata;
 $obj->executeCommon();
 
-?>

@@ -169,7 +169,7 @@ class FlatPhpFFS extends SimpleFFS {
 
 		# Authors first
 		$matches = array();
-		preg_match_all( '/^ * @author\s*(.*)\s*$/m', $data, $matches );
+		preg_match_all( '/^ \* @author\s+(.+)$/m', $data, $matches );
 		$authors = $matches[1];
 
 		# Then messages
@@ -211,6 +211,7 @@ class FlatPhpFFS extends SimpleFFS {
 			$key = stripcslashes( $key );
 
 			$value = $item->translation();
+			if ( $value === null ) continue;
 			$value = str_replace( TRANSLATE_FUZZY, '', $value );
 			$value = addcslashes( $value, "'" );
 
@@ -238,7 +239,7 @@ class FlatPhpFFS extends SimpleFFS {
 		$output = <<<PHP
 /** $name ($native)
  * $docu
- * To improve a translation please visit $wgSitename
+ * To improve a translation please visit http://$wgSitename
  *
  * @ingroup Language
  * @file
@@ -256,7 +257,7 @@ PHP;
 		$authors = $this->filterAuthors( $authors, $collection->code );
 
 		foreach ( $authors as $author ) {
-			$output .= "* @author $author\n";
+			$output .= " * @author $author\n";
 		}
 
 		return $output;

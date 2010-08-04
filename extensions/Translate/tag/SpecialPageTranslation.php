@@ -44,15 +44,14 @@ class SpecialPageTranslation extends SpecialPage {
 
 		// Check permissions
 		if ( $wgRequest->wasPosted() && !$this->user->matchEditToken( $wgRequest->getText( 'token' ) ) ) {
+			self::superDebug( __METHOD__, "token failure", $this->user );
 			$wgOut->permissionRequired( 'pagetranslation' );
-
 			return;
 		}
 
 		// We are processing some specific page
 		if ( !$title->exists() ) {
 			$wgOut->addWikiMsg( 'tpt-nosuchpage', $title->getPrefixedText() );
-
 			return;
 		}
 
@@ -65,7 +64,7 @@ class SpecialPageTranslation extends SpecialPage {
 			$params = array( 'user' => $wgUser->getName() );
 			$logger->addEntry( 'unmark', $page->getTitle(), null, array( serialize( $params ) ) );
 			$wgOut->addWikiMsg( 'tpt-unmarked', $title->getPrefixedText() );
-
+			self::superDebug( __METHOD__, "unmarked page", $this->user, $title );
 			return;
 		}
 
@@ -84,7 +83,7 @@ class SpecialPageTranslation extends SpecialPage {
 		if ( $revision !== intval($title->getLatestRevID()) ) {
 			// We do want to notify the reviewer if the underlying page changes during review
 			$wgOut->addWikiMsg( 'tpt-oldrevision', $title->getPrefixedText(), $revision );
-
+			self::superDebug( __METHOD__, "revision mismatch while marking", $this->user, $title, $revision, intval($title->getLatestRevID()) );
 			return;
 		}
 
@@ -113,6 +112,7 @@ class SpecialPageTranslation extends SpecialPage {
 			return;
 		}
 
+		self::superDebug( __METHOD__, "marking page", $this->user, $title, $revision );
 		$this->showPage( $page, $sections );
 	}
 
@@ -442,6 +442,7 @@ class SpecialPageTranslation extends SpecialPage {
 		);
 
 		if ( !$status->isOK() ) {
+			self::superDebug( __METHOD__, 'edit-fail', $this->user, $page->getTitle(), $status );
 			return array( 'tpt-edit-failed', $status->getWikiText() );
 		}
 
@@ -458,6 +459,8 @@ class SpecialPageTranslation extends SpecialPage {
 			// Get the latest revision manually
 			$newrevision = $page->getTitle()->getLatestRevId();
 		}
+
+		self::superDebug( __METHOD__, 'latestrev', $page->getTitle(), $newrevision );
 
 		$inserts = array();
 		$changed = array();
@@ -505,14 +508,15 @@ class SpecialPageTranslation extends SpecialPage {
 		$this->setupRenderJobs( $page );
 
 		// Re-generate caches
-		MessageIndexRebuilder::execute();
 		$page->getTranslationPercentages( /*re-generate*/ true );
-
+		ArrayMemoryCache::factory( 'groupstats' )->clearGroup( 'page|' . $page->getTitle()->getPrefixedText() );
+		MessageIndexRebuilder::execute();
 		return false;
 	}
 
 	public function addFuzzyTags( $page, $changed ) {
 		if ( !count( $changed ) ) {
+			self::superDebug( __METHOD__, 'nochanged', $page->getTitle() );
 			return;
 		}
 
@@ -523,7 +527,7 @@ class SpecialPageTranslation extends SpecialPage {
 		foreach ( $changed as $c ) {
 			$title = Title::makeTitleSafe( NS_TRANSLATIONS, "$prefix/$c" );
 			if ( $title ) {
-				$titles[] = 'page_title like \'' . $db->escapeLike( $title->getDBkey() ) . '/%\'';
+				$titles[] = 'page_title ' . $db->buildLike( $title->getDBkey() . '/', $db->anyString() );
 			}
 		}
 
@@ -546,6 +550,7 @@ class SpecialPageTranslation extends SpecialPage {
 		}
 
 		if ( count( $inserts ) ) {
+			self::superDebug( __METHOD__, 'inserts', $inserts );
 			$db->replace( 'revtag', array( 'rt_type_page_revision' ), $inserts, __METHOD__ );
 		}
 	}
@@ -555,16 +560,34 @@ class SpecialPageTranslation extends SpecialPage {
 		$jobs = array();
 
 		foreach ( $titles as $t ) {
+			self::superDebug( __METHOD__, 'renderjob', $t );
 			$jobs[] = RenderJob::newJob( $t );
 		}
 
 		if ( count( $jobs ) < 10 ) {
+			self::superDebug( __METHOD__, 'renderjob-immediate' );
 			foreach ( $jobs as $j ) {
 				$j->run();
 			}
 		} else {
 			// Use the job queue
+			self::superDebug( __METHOD__, 'renderjob-delayed' );
 			Job::batchInsert( $jobs );
 		}
+	}
+
+	public static function superDebug( $method, $msg /* varags */ ) {
+		$args = func_get_args();
+		$args = array_slice( $args, 2 );
+		foreach ( $args as &$arg ) {
+			if ( $arg instanceof User ) {
+				$arg = array( 'user' => $arg->getName(), 'id' => $arg->getId() );
+			} elseif ( $arg instanceof Title ) {
+				$arg = array( 'title' => $arg->getPrefixedText(), 'aid' => $arg->getArticleID() );
+			}
+			$arg = serialize( $arg );
+		}
+
+		wfDebugLog( 'pagetranslation', "$method: $msg [" . implode( " ", $args ) . "]\n" );
 	}
 }

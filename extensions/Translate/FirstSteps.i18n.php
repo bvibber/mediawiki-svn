@@ -266,15 +266,24 @@ $messages['bs'] = array(
 	'translate-fs-userpage-done' => 'Odlično urađeno! Sada imate korisničku stranicu.',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'firststeps' => 'První kroky',
+	'firststeps-desc' => '[[Special:FirstSteps|Speciální stránka]] pomáhající uživatelům začít pracovat na wiki s rozšířením Translate',
+);
+
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  * @author The Evil IP address
  */
 $messages['de'] = array(
 	'firststeps' => 'Erste Schritte',
 	'firststeps-desc' => '[[Special:FirstSteps|Spezialseite]] zur Starterleichterung auf Wikis mit der „Translate“-Extension',
 	'translate-fs-pagetitle-done' => '- erledigt!',
-	'translate-fs-pagetitle' => 'Startsassistent - $1',
+	'translate-fs-pagetitle' => 'Startassistent - $1',
 	'translate-fs-signup-title' => 'Registrieren',
 	'translate-fs-settings-title' => 'Deine Einstellungen anpassen',
 	'translate-fs-userpage-title' => 'Deine Benutzerseite erstellen',
@@ -665,6 +674,26 @@ Vous recevrez aussi un courrier d’informations au plus une fois par mois.
 Si vous ne souhaitez pas recevoir ce courrier d’informations, vous pouvez le désactiver dans l’onglet « {{int:prefs-personal}} » de vos [[Special:Preferences|préférences]].',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'firststeps' => 'Premiérs pâs',
+	'firststeps-desc' => '[[Special:FirstSteps|Pâge spèciâla]] por guidar los utilisators sur un vouiqui qu’utilise l’èxtension « Translate ».',
+	'translate-fs-pagetitle-done' => ' - fêt !',
+	'translate-fs-pagetitle' => 'Guido d’emmodâ - $1',
+	'translate-fs-signup-title' => 'Enscrîde-vos',
+	'translate-fs-settings-title' => 'Configurâd voutres prèferences',
+	'translate-fs-userpage-title' => 'Féte voutra pâge utilisator',
+	'translate-fs-permissions-title' => 'Demandâd les pèrmissions de traductor',
+	'translate-fs-target-title' => 'Comenciéd a traduire !',
+	'translate-fs-email-title' => 'Confirmâd voutra adrèce èlèctronica',
+	'translate-fs-settings-skip' => 'J’é chavonâ.
+Lèssiéd-mè continuar.',
+	'translate-fs-userpage-submit' => 'Fâre ma pâge utilisator',
+	'translate-fs-userpage-done' => 'Bien fêt ! Ora, vos avéd una pâge utilisator.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -947,13 +976,14 @@ Si tu non vole reciper bulletines de novas, tu pote disactivar los in le scheda 
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Irwangatot
  */
 $messages['id'] = array(
 	'firststeps' => 'Langkah pertama',
 	'firststeps-desc' => '[[Special:FirstSteps|Halaman istimewa]] untuk mendapatkan pengguna memulai di wiki menggunakan ekstensi Terjemahan',
 	'translate-fs-pagetitle-done' => '- Selesai!',
-	'translate-fs-pagetitle' => 'Persiapan wizard - $ 1',
+	'translate-fs-pagetitle' => 'Wisaya perkenalan - $ 1',
 	'translate-fs-signup-title' => 'Mendaftar',
 	'translate-fs-settings-title' => 'Mengkonfigurasi preferensi anda',
 	'translate-fs-userpage-title' => 'Buat halaman pengguna anda',
@@ -962,9 +992,17 @@ $messages['id'] = array(
 	'translate-fs-email-title' => 'Konfirmasikan alamat surel Anda',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'translate-fs-pagetitle-done' => '- ọméchá!',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'firststeps' => '開始手順',
@@ -1025,7 +1063,8 @@ $3登録$4',
 
 翻訳を始める前にもっと知らなければならないことがあると感じられたならば、[[FAQ]] のページを読むのもよいでしょう。残念なことにドキュメントの中には更新が途絶えてしまっているものもあります。もし、なにかやりたいことがあって、それをどうやって行えばよいのかわからない場合には、遠慮せず[[Support|サポートページ]]にて質問してください。
 
-また、同じ言語で作業している仲間の翻訳者とは[[Portal:$1|言語別のポータル]]で連絡することができます。ポータルへのリンクは現在の[[Special:Preferences|言語設定]]によります。必要ならば変更してください。",
+また、同じ言語で作業している仲間の翻訳者とは[[Portal:$1|言語別のポータル]]の[[Portal_talk:$1|トークページ]]で連絡することができます。
+まだ設定されていなければ、[[Special:Preferences|インターフェースの言語を、翻訳先としたい言語に変更]]すれば、ウィキ上では最も関連性のあるリンクが表示されます。",
 	'translate-fs-email-text' => 'あなたの電子メールアドレスを[[Special:Preferences|個人設定]]で入力し、送られてきたメールからそのメールアドレスの確認を行ってください。
 
 これにより、他の利用者があなたに電子メールを通じて連絡できるようになります。また、多くて月に1回ほどニュースレターが送られてきます。ニュースレターを受け取りたくない場合は、[[Special:Preferences|個人設定]]の「{{int:prefs-personal}}」タブで受信の中止を設定できます。',
@@ -1428,8 +1467,10 @@ $messages['ps'] = array(
 	'firststeps' => 'لومړي ګامونه',
 	'translate-fs-pagetitle-done' => ' - ترسره شو!',
 	'translate-fs-signup-title' => 'نومليکل',
+	'translate-fs-userpage-title' => 'ستاسې کارن مخ جوړول',
 	'translate-fs-permissions-title' => 'د ژباړې د اجازې غوښتنه',
 	'translate-fs-target-title' => 'په ژباړې پيل وکړۍ',
+	'translate-fs-userpage-submit' => 'خپل کارن مخ جوړول',
 );
 
 /** Portuguese (Português)
@@ -1849,6 +1890,13 @@ $messages['rue'] = array(
 <del>Перевірте ці наслїдуюча пожадавка є  правилно выповнена і стисните ґомбічку пожадавкы.</del>',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'translate-fs-pagetitle-done' => ' - හරි!',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
@@ -2050,6 +2098,37 @@ Du kommer också att få ett nyhetsbrev högst en gång i månaden.
 Om du inte vill få några nyhetsbrev så kan kan välja bort dem under fliken "{{int:prefs-personal}}" i dina [[Special:Preferences|inställningar]].',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'firststeps' => 'మొదటి అడుగులు',
+	'translate-fs-pagetitle-done' => ' - పూర్తయ్యింది!',
+	'translate-fs-signup-title' => 'నమోదు',
+	'translate-fs-settings-title' => 'మీ అభిరుచులను అమర్చుకోండి',
+	'translate-fs-userpage-title' => 'మీ వాడుకరి పుటని సృష్టించుకోండి',
+	'translate-fs-permissions-title' => 'అనువాద అనుమతులకై అభ్యర్థించండి',
+	'translate-fs-target-title' => 'అనువదించడం మొదలుపెట్టండి!',
+	'translate-fs-email-title' => 'మీ ఈమెయిలు చిరునామాని నిర్ధారించండి',
+	'translate-fs-userpage-submit' => 'నా వాడుకరి పుటని సృష్టించు',
+	'translate-fs-userpage-done' => 'భళా! మీకు ఇప్పుడు వాడుకరి పుట ఉంది.',
+);
+
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'translate-fs-pagetitle-done' => 'เรียบร้อย!',
+	'translate-fs-signup-title' => 'สมัครสมาชิก',
+	'translate-fs-settings-title' => 'ตั้งค่าการใช้งาน',
+	'translate-fs-userpage-title' => 'สร้างหน้าผู้ใช้ของคุณ',
+	'translate-fs-permissions-title' => 'ขออนุญาตแปล',
+	'translate-fs-target-title' => 'เริ่มต้นแปล!',
+	'translate-fs-email-title' => 'ยืนยันอีเมล',
+	'translate-fs-userpage-submit' => 'สร้างหน้าผู้ใช้ของฉัน',
+	'translate-fs-userpage-done' => 'ตอนนี้คุณมีหน้าผู้ใช้ของคุณเองแล้ว',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -2182,5 +2261,21 @@ Xin hãy thay đổi nếu cần.',
 Nó cho phép người khác liên hệ với bạn qua thư.
 Bạn cũng sẽ nhận được thư tin tức tối đa một bức một tháng.
 Nếu bạn không muốn nhận thư tin tức, bạn có thể bỏ nó ra khỏi thẻ "{{int:prefs-personal}}" trong [[Special:Preferences|tùy chọn cá nhân]].',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
+$messages['zh-hans'] = array(
+	'firststeps' => '第一步',
+	'translate-fs-pagetitle-done' => ' - 完成！',
+	'translate-fs-signup-title' => '注册',
+	'translate-fs-settings-title' => '设置你的选项',
+	'translate-fs-userpage-title' => '创建你的用户页面',
+	'translate-fs-permissions-title' => '请求翻译者权限',
+	'translate-fs-target-title' => '开始翻译！',
+	'translate-fs-email-title' => '确认您的邮箱地址',
+	'translate-fs-userpage-submit' => '创建我的用户页面',
+	'translate-fs-userpage-done' => '很好！现在你有了一个用户页面。',
 );
 

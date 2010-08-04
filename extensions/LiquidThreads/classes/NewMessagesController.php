@@ -123,7 +123,7 @@ class NewMessages {
 		$fields = array( 'wl_user', 'ums_user', 'ums_read_timestamp' );
 
 		global $wgVersion;
-		if ( version_compare( $wgVersion, '1.15.999', '<=' ) ) {
+		if ( version_compare( $wgVersion, '1.16', '<' ) ) {
 			$oldPrefCompat = true;
 
 			$tables[] = 'user';
@@ -175,7 +175,7 @@ class NewMessages {
 
 			global $wgVersion;
 
-			if ( version_compare( $wgVersion, '1.15.999', '<=' ) ) {
+			if ( version_compare( $wgVersion, '1.16', '<' ) ) {
 				$decodedOptions = self::decodeUserOptions( $row->user_options );
 
 				$wantsTalkNotification = !isset( $decodedOptions['lqtnotifytalk'] );
@@ -340,7 +340,9 @@ class NewMessages {
 			$time = $lang->time( $adjustedTimestamp );
 
 			$params = array( $u->getName(), $t->subjectWithoutIncrement(),
-							$date, $time, $talkPage, $permalink );
+						$date, $time, $talkPage,
+						$permalink,
+						$t->root()->getContent() );
 
 			// Get message in user's own language, bug 20645
 			$msg = wfMsgReal( $msgName, $params, true /* use DB */, $langCode,
@@ -392,8 +394,9 @@ class NewMessages {
 
 		$cval = $wgMemc->get( wfMemcKey( 'lqt-new-messages-count', $user->getId() ) );
 
-		if ( $cval )
+		if ( $cval ) {
 			return $cval;
+		}
 
 		$dbr = wfGetDB( DB_SLAVE );
 

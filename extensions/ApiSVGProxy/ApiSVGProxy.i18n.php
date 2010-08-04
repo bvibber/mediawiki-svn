@@ -309,6 +309,13 @@ $messages['tr'] = array(
 	'apisvgproxy-desc' => 'Bir dosya deposundan (muhtemelen uzaktaki) yerel alana SVG dosyaları vekil eder',
 );
 
+/** Ukrainian (Українська)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['uk'] = array(
+	'apisvgproxy-desc' => 'Заміщення SVG-файлів зі сховища файлів (можливо, віддаленого) на локальний домен',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

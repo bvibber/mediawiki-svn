@@ -795,9 +795,19 @@ $messages['la'] = array(
 
 /** Ladino (Ladino)
  * @author Remember the dot
+ * @author Universal Life
  */
 $messages['lad'] = array(
-	'player-goto-file' => 'archivo',
+	'player' => 'Jugador',
+	'player-title' => 'Jugador',
+	'player-playertitle' => 'Jugador: $1',
+	'player-file' => 'Nombre de dosya',
+	'player-play' => 'Juga',
+	'player-not-found' => 'dosya que no se topó',
+	'player-clicktoplay' => 'Juga $1',
+	'player-goto-player' => 'jugador',
+	'player-goto-page' => 'Hoja',
+	'player-goto-file' => 'dosya',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

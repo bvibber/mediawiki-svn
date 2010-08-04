@@ -9,22 +9,20 @@
  * @author Rob Church <robchur@gmail.com>
  */
  
-if( defined( 'MEDIAWIKI' ) ) {
-
-	$wgExtensionFunctions[] = 'efFileSearchSetup';
-	$wgAutoloadClasses['FileSearchIndexer'] = dirname( __FILE__ ) . '/FileSearchIndexer.php';
-	$wgAutoloadClasses['Extractor'] = dirname( __FILE__ ) . '/extract/Extractor.php';
-	$wgFileSearchExtractors['TextExtractor'] = dirname( __FILE__ ) . '/extract/TextExtractor.php';
-
-	function efFileSearchSetup() {
-		global $wgHooks;
-		$wgHooks['FileUpload'][] = 'FileSearchIndexer::upload';
-		$wgHooks['SearchUpdate'][] = 'FileSearchIndexer::index';
-		#FileSearchIndexer::initialise();
-	}
-
-} else {
+if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
+}
+
+$wgExtensionFunctions[] = 'efFileSearchSetup';
+$wgAutoloadClasses['FileSearchIndexer'] = dirname( __FILE__ ) . '/FileSearchIndexer.php';
+$wgAutoloadClasses['Extractor'] = dirname( __FILE__ ) . '/extract/Extractor.php';
+$wgFileSearchExtractors['TextExtractor'] = dirname( __FILE__ ) . '/extract/TextExtractor.php';
+
+function efFileSearchSetup() {
+	global $wgHooks;
+	$wgHooks['FileUpload'][] = 'FileSearchIndexer::upload';
+	$wgHooks['SearchUpdate'][] = 'FileSearchIndexer::index';
+	#FileSearchIndexer::initialise();
 }
 

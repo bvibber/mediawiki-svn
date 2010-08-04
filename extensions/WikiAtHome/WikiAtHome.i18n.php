@@ -568,11 +568,13 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Lucas
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'wah-loading' => 'ŝarĝante interfacon Wiki@Home ...',
+	'wah-menu-jobs' => 'Laboroj',
 	'wah-menu-stats' => 'Statistikoj',
 	'wah-menu-pref' => 'Agordoj',
 	'wah-lookingforjob' => 'Serĉante laboron ...',
@@ -952,7 +954,7 @@ $messages['ia'] = array(
 	'wah-encoding' => 'Codification del file <i>$1%</i> complete',
 	'wah-encoding-fail' => 'Codification falleva. Per favor recarga iste pagina o reproba plus tarde.',
 	'wah-uploading' => 'Cargamento del file <i>$1%</i> complete',
-	'wah-uploadfail' => 'Cargamento falleva',
+	'wah-uploadfail' => 'Le incargamento ha fallite',
 	'wah-doneuploading' => 'Cargamento complete. Gratias pro tu contribution.',
 	'wah-needs-firefogg' => 'Pro participar in Wiki@Home tu debe installar <a href="http://firefogg.org">Firefogg</a>.',
 	'wah-api-error' => 'Il ha occurrite un error con le API. Per favor reproba plus tarde.',
@@ -1419,6 +1421,9 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'wah-short-audio' => '$1 غږيزه دوتنه، $2',
 	'wah-short-video' => '$1 ويډيويي دوتنې، $2',
+	'wah-short-general' => '$1 رسنيزه دوتنه، $2',
+	'wah-long-audio' => '($1 غږيزه دوتنه، اوږدوالی $2، $3)',
+	'wah-long-video' => '($1 ويډيويي دوتنه، اوږدوالی $2، $4×$5 پېکسل، $3)',
 	'wah-menu-jobs' => 'دندې',
 	'wah-menu-pref' => 'غوره توبونه',
 );

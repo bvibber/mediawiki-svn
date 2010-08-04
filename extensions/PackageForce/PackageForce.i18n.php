@@ -611,6 +611,16 @@ $messages['sv'] = array(
 	'pf-header-approve' => 'Godkänn',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'pf-admin-menu-default' => 'అప్రమేయం',
+	'pf-header-type' => 'పుట యొక్క రకం',
+	'pf-header-page_title' => 'శీర్షిక',
+	'pf-header-approve' => 'అనుమతించు',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

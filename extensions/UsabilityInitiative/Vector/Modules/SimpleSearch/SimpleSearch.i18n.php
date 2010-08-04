@@ -116,7 +116,7 @@ $messages['ca'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'vector-simplesearch-search' => 'گەڕان',
 	'vector-simplesearch-containing' => 'بە لەبەرگرتنەوەی ...',
 );
@@ -377,6 +377,13 @@ $messages['id'] = array(
 	'vector-simplesearch-containing' => 'isian ...',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'vector-simplesearch-search' => 'Chöwá',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -457,6 +464,14 @@ $messages['krc'] = array(
 $messages['ksh'] = array(
 	'vector-simplesearch-search' => 'Söhke',
 	'vector-simplesearch-containing' => 'dren änthallde…',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'vector-simplesearch-search' => 'Lêgerîn',
+	'vector-simplesearch-containing' => 'dihundirîne...',
 );
 
 /** Latin (Latina)

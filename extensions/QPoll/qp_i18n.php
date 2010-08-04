@@ -1897,6 +1897,7 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -1910,20 +1911,57 @@ $messages['pt-br'] = array(
 	'qp_vote_again_button' => 'Alterar o seu voto',
 	'qp_polls_list' => 'Listar todas as enquetes',
 	'qp_users_list' => 'Listar todos os usuários',
+	'qp_browse_to_poll' => 'Navegar para $1',
+	'qp_browse_to_user' => 'Navegar para $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|voto|votos}}',
 	'qp_source_link' => 'Fonte',
 	'qp_stats_link' => 'Estatísticas',
 	'qp_users_link' => 'Usuários',
 	'qp_voice_link' => 'Voz do usuário',
 	'qp_voice_link_inv' => 'Voz do usuário?',
+	'qp_user_polls_link' => 'Participou {{PLURAL:$1|numa sondagem|em $1 sondagens}}',
+	'qp_user_missing_polls_link' => 'Nenhuma participação',
+	'qp_not_participated_link' => 'Não participada',
 	'qp_order_by_username' => 'Ordenar por nome de usuário',
+	'qp_order_by_polls_count' => 'Ordenar por contagem de sondagens',
+	'qp_results_line_qupl' => 'Página "$1" Sondagem "$2": $3',
+	'qp_results_line_qpl' => 'Página "$1" Sondagem "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Página "$2" Sondagem "$3" ]',
 	'qp_export_to_xls' => 'Exportar estatísticas para o formato XLS',
 	'qp_users_answered_questions' => '{{PLURAL:$1|Um usuário respondeu|$1 usuários responderam}} às questões',
+	'qp_func_no_such_poll' => 'Sondagem inexistente ($1)',
+	'qp_func_missing_question_id' => 'Por favor, especifique o número de uma pergunta existente (começando a partir de 1) para a sondagem $1',
+	'qp_func_invalid_question_id' => 'Número de pergunta=$2 é inválido (não é numérico) para a sondagem $1',
+	'qp_func_missing_proposal_id' => 'Por favor, especifique o número de uma proposta existente (começando a partir de 0) para a sondagem $1, pergunta $2',
+	'qp_func_invalid_proposal_id' => 'Número de proposta=$3 é inválido (não é numérico) para a sondagem $1, pergunta $2',
+	'qp_error_no_such_poll' => 'Sondagem inexistente ($1).
+Verifique que a sondagem foi declarada e gravada, certifique-se também de que foi usado o carácter delimitador #',
+	'qp_error_in_question_header' => 'Cabeçalho de pergunta inválido: $1',
+	'qp_error_id_in_stats_mode' => 'Não é possível declarar um identificador da sondagem em modo estatístico',
+	'qp_error_dependance_in_stats_mode' => 'Não é possível declarar uma cadeia de dependências da sondagem em modo estatístico',
+	'qp_error_no_stats' => 'Não estão disponíveis dados estatísticos, porque ainda ninguém votou nesta sondagem (endereço=$1)',
+	'qp_error_address_in_decl_mode' => 'Não é possível obter um endereço da sondagem em modo declarativo',
+	'qp_error_question_not_implemented' => 'Não estão implementadas perguntas do tipo: $1',
 	'qp_error_invalid_question_type' => 'Tipo de pergunta inválido: $1',
+	'qp_error_type_in_stats_mode' => 'Não é possível definir no modo de visualização estatística o tipo de pergunta: $1',
+	'qp_error_no_poll_id' => 'Não foi definido um atributo de identificação no marcador da sondagem',
+	'qp_error_invalid_poll_id' => 'Identificador de sondagem inválido (id=$1).
+O identificador só pode conter letras, números e espaços',
+	'qp_error_already_used_poll_id' => 'O identificador da sondagem (id=$1) já foi usado nesta página',
+	'qp_error_invalid_dependance_value' => 'A cadeia de dependências da sondagem (id=$1) tem um valor inválido no atributo da dependência (dependance="$2")',
+	'qp_error_missed_dependance_title' => 'A sondagem (id=$1) está dependente de outra sondagem (id=$3) da página [[$2]], mas o título [[$2]] não foi encontrado.
+Remova o atributo da dependência ou restaure a página [[$2]]',
+	'qp_error_missed_dependance_poll' => 'A sondagem (id=$1) está dependente de outra sondagem (id=$3) da página $2, mas essa sondagem não existe ou ainda não foi salva.
+Remova o atributo da dependência ou crie a sondagem com id=$3 na página $2 e salve-a.
+Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
+	'qp_error_vote_dependance_poll' => 'Por favor, vote na sondagem $1 antes.',
+	'qp_error_too_many_spans' => 'Demasiadas classes de categorias para as subcategorias definidas',
 	'qp_error_unanswered_span' => 'Subcategoria sem resposta',
+	'qp_error_non_unique_choice' => 'Esta pergunta requer resposta a uma única proposta',
 	'qp_error_category_name_empty' => 'O nome da categoria está vazio',
 	'qp_error_proposal_text_empty' => 'O texto da proposta está vazio',
 	'qp_error_too_few_categories' => 'Pelo menos duas categorias devem ser definidas',
+	'qp_error_too_few_spans' => 'Cada classe de categorias requer pelo menos duas respostas possíveis definidas',
 	'qp_error_no_answer' => 'Proposta sem resposta',
 );
 

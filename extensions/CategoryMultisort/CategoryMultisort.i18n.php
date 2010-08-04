@@ -187,6 +187,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'categorymultisort-desc' => 'Nè kwé kà ébéanọr Í gi zí na ùgòdì dí íchè',
 	'categorymultisort-defaultsortkey-name' => 'Nke éjị bịdó',
 	'categorymultisort-sortkey' => 'ÙgòdìPịa:',
 	'categorymultisort-go' => 'Gá',
@@ -208,9 +209,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Iwai.masaharu
+ * @author 青子守歌
  */
 $messages['ja'] = array(
+	'categorymultisort-desc' => '異なるソートキーでカテゴリーで表示することを許可する',
+	'categorymultisort-defaultsortkey-name' => '既定',
 	'categorymultisort-sortkey' => 'ソートキー:',
+	'categorymultisort-go' => '実行',
+	'categorymultisort-default-sortkey' => '既定のソートキー：',
 	'prefs-category' => 'カテゴリ',
 );
 
@@ -334,6 +340,18 @@ $messages['pt-br'] = array(
 	'prefs-category' => 'Categoria',
 );
 
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'categorymultisort-desc' => 'Permette a le categorije de essere viste cu diverse chiave de ordinamende',
+	'categorymultisort-defaultsortkey-name' => 'De base',
+	'categorymultisort-sortkey' => 'Chiave de ordenamende:',
+	'categorymultisort-go' => 'Veje',
+	'categorymultisort-default-sortkey' => 'Chiave de ordenamende de base:',
+	'prefs-category' => 'Categorije',
+);
+
 /** Russian (Русский)
  * @author G0rn
  */
@@ -395,6 +413,18 @@ $messages['tr'] = array(
 	'categorymultisort-go' => 'Git',
 	'categorymultisort-default-sortkey' => 'Varsayılan sıralama türü:',
 	'prefs-category' => 'Kategori',
+);
+
+/** Ukrainian (Українська)
+ * @author Apromix
+ */
+$messages['uk'] = array(
+	'categorymultisort-desc' => 'Дозволяє проглядати категорії з різними ключами сортування',
+	'categorymultisort-defaultsortkey-name' => 'За замовчуванням',
+	'categorymultisort-sortkey' => 'Ключ сортування:',
+	'categorymultisort-go' => 'Перейти',
+	'categorymultisort-default-sortkey' => 'Ключ сортування за замовчуванням:',
+	'prefs-category' => 'Категорія',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

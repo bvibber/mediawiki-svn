@@ -285,7 +285,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'gep-emailsuccess' => 'سپاس بۆ پێشنیار کردنی هاوپۆلەکان: $1.',
 	'gep-addcategorybutton' => 'زیاد کردن',
 	'gep-suggestcategorybutton' => 'ناردن',
@@ -760,7 +760,7 @@ $messages['ig'] = array(
 	'gep-emailfailure' => 'Ndo, ihe I choro I me ametaghị.',
 	'gep-categories' => 'Ébéanọr',
 	'gep-addcategorybutton' => 'Tinyé',
-	'gep-suggestcategorybutton' => 'Nye fwuör',
+	'gep-suggestcategorybutton' => 'Dànyé',
 	'gep-sections' => 'Nkeji',
 	'gep-addsection' => 'Tinyé nkeji',
 	'gep-addsectionbutton' => 'Tinyé',

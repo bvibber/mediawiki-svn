@@ -123,7 +123,7 @@ $messages['bs'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'formatchanges-anonymous' => 'نەناسراو',
 );
 

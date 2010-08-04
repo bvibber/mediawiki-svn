@@ -297,7 +297,7 @@ class WhiteListEdit extends SpecialPage
 
 	function DisplayContractorEditDetails( $contractorId )
 	{
-		global $wgOut, $wgUser, $wgWhiteListUsePrettyCalendar;
+		global $wgOut, $wgWhiteListUsePrettyCalendar;
 		$dbr = wfGetDB( DB_SLAVE );
 
 		$wgOut->addScript( <<<END

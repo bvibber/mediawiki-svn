@@ -203,13 +203,6 @@ $wgGoogleMapsMessages['niu'] = array(
 	'gm-search' => 'Kumi',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$wgGoogleMapsMessages['bjn'] = array(
-	'gm-back' => 'mantuk',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -657,6 +650,13 @@ $wgGoogleMapsMessages['bg'] = array(
 	'gm-earth' => 'Земя',
 	'gm-moon' => 'Луна',
 	'gm-mars' => 'Марс',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$wgGoogleMapsMessages['bjn'] = array(
+	'gm-back' => 'mantuk',
 );
 
 /** Bengali (বাংলা)
@@ -2707,15 +2707,15 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-remove' => 'wefu',
 	'gm-tab' => 'Ntabi',
 	'gm-searching' => 'ö na cha...',
-	'gm-width' => 'Ásá',
+	'gm-width' => 'Àsáa',
 	'gm-height' => 'Ógólógó',
 	'gm-zoom-control' => 'Otú Uzọr',
 	'gm-large' => 'Ukwu',
 	'gm-medium' => 'Di ntạ di ukwu',
 	'gm-small' => 'Ntakịrị',
-	'gm-no-zoom-control' => 'Odigi',
+	'gm-no-zoom-control' => 'Efù',
 	'gm-yes' => 'Eeh',
-	'gm-no' => 'Mba',
+	'gm-no' => 'Mbà',
 	'gm-search' => 'Chöwá',
 	'gm-save-path' => 'Donyéré',
 	'gm-back' => 'azú',
@@ -5782,13 +5782,22 @@ $wgGoogleMapsMessages['tr'] = array(
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ерней
+ * @author Ильнар
  */
 $wgGoogleMapsMessages['tt-cyrl'] = array(
+	'gm-desc' => 'Вики-билгеләр нигезендә карталар ясарга ярдәм итә',
+	'gm-incompatible-browser' => 'Картаны карау өчен <a href=\\"http://local.google.com/support/bin/answer.py?answer=16532&amp;topic=1499\\">браузерыгызга туры килүче</a> сылтаманы кулланыгыз',
 	'gm-incompatible-browser-link' => 'Ярашлы күзәтүчеләр исемлегене күрү өчен биредә чирттегез',
+	'gm-no-editor' => 'Кызганычка каршы сезнең браузерыгыз интерактив карталар ясауны күздә тотмый. Яңа юрамаларын тикшереп карагыз <a href=\\"http://www.microsoft.com/ie\\">Internet Explorer</a> (Windows өчен) яки <a href=\\"http://www.mozilla.org/products/firefox\\">Firefox</a> (Windows, Mac һәм Linux өчен) барузерларын карагыз',
 	'gm-balloon-title' => 'Башлам:',
 	'gm-balloon-link-article' => 'Бу биткә сылтама (өстәмә)',
+	'gm-make-marker' => 'Маркер (бәлки вики-сызым)',
 	'gm-remove' => 'бетерергә',
+	'gm-caption' => 'Маркер',
+	'gm-tab-title' => 'Урынның исеме',
+	'gm-tab' => 'Урын',
 	'gm-start-path' => 'юл төзүене башларга',
+	'gm-trace-area' => 'җирне билгеләргә',
 	'gm-save-point' => 'сакларга һәм ябарга',
 	'gm-load-map-from-article' => 'Чираттагы биттән хаританы йөкләргә:',
 	'gm-no-maps' => 'Бу биттә йөкләү өчен хариталар юк.',
@@ -5798,6 +5807,9 @@ $wgGoogleMapsMessages['tt-cyrl'] = array(
 	'gm-no-results' => 'Гафу итегез, нәтиҗәләр юк',
 	'gm-searching' => 'эзләү бара…',
 	'gm-map' => 'Харита',
+	'gm-note' => 'Игътибар: "Картаны йөкләгинчә", "Саклагынча" яки "Алдан карагынча" беренче иттереп кодның күчерелмәсен ясагыз!',
+	'gm-instructions' => 'Карта ясау өчен вики-сызым.',
+	'gm-are-you-sure' => 'Сез чыннан да бу гамәлне башкарырга телисезме?',
 	'gm-clear-all-points' => 'Барлык нокталарны бетерергә',
 	'gm-refresh-points' => 'Нокталарны яңартырга',
 	'gm-width' => 'Киңлек',
@@ -5829,6 +5841,7 @@ $wgGoogleMapsMessages['tt-cyrl'] = array(
 	'gm-remove-fill' => 'буяуны бетерергә',
 	'gm-fill-color' => 'Буяу төсе',
 	'gm-line-color' => 'Сызыкның төсе',
+	'gm-opacity' => 'Ачык булмау',
 	'gm-line-width' => 'Киңлек',
 	'gm-make-map' => 'хаританы ясарга',
 	'gm-hide-map' => 'хаританы яшерергә',

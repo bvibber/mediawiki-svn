@@ -191,6 +191,21 @@ abstract class MapsMappingService implements iMappingService {
 	}
 	
 	/**
+	 * @see iMappingService::getFeatureInstance
+	 * 
+	 * @since 0.6.6
+	 */
+	public function getFeatureInstance( $featureName ) {
+		$className = $this->getFeature( $featureName );
+		
+		if ( $className === false || !class_exists( $className ) ) {
+			// TODO: log/throw error, as this should not happen
+		}
+		
+		return new $className( $this );
+	}	
+	
+	/**
 	 * @see iMappingService::getAliases
 	 * 
 	 * @since 0.6.3

@@ -21,26 +21,31 @@ $wgExtensionMessagesFiles['Woopra'] = $dir . 'Woopra.i18n.php';
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
         'name' => 'Woopra Live Stats Tracking',
-        'author' => array( 'Shane'),
-        'version' => '1.0.0',
+        'author' => array( 'Shane' ),
+        'version' => '1.1.0',
         'url' => 'http://www.mediawiki.org/wiki/Extension:Woopra',
 	'descriptionmsg' => 'woopra-desc',
 );
  
 $wgHooks['BeforePageDisplay'][] = 'fnWoopraJavascript';
- 
+
+$wgWoopraSitekey = false;
+
 function fnWoopraJavascript($out)
 {
         global $wgUser, $wgWoopraSitekey;
  
+		if ( $wgWoopraSitekey === false )
+			return true;
+ 
         $html = "<script type=\"text/javascript\">\r\n";
-        $html .= "woopra_id = '" . $wgWoopraSitekey . "';\r\n";
+        $html .= "woopra_id = '" . Xml::escapeJsString( $wgWoopraSitekey ) . "';\r\n";
  
         if (!$wgUser->isAnon())
         {
                 $html .= "var woopra_array = new Array();\r\n";
-                $html .= "woopra_array['name'] = '" . $wgUser->getRealName() . "';\r\n";
-                $html .= "woopra_array['Email'] = '" . $wgUser->getEmail() . "';\r\n";
+                $html .= "woopra_array['name'] = '" .  Xml::escapeJsString( $wgUser->getRealName() ) . "';\r\n";
+                $html .= "woopra_array['Email'] = '" . Xml::escapeJsString( $wgUser->getEmail() ) . "';\r\n";
                 // Add custom tracking code here!
         }
         $html .= "</script>\r\n";

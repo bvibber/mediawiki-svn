@@ -1057,6 +1057,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author DoviJ
  * @author Nahum
  * @author Ori229
@@ -1094,6 +1095,7 @@ $messages['he'] = array(
 	'readerfeedback-tier-poor' => 'גרוע',
 	'tooltip-ca-ratinghist' => 'דירוג קוראים לדף זה',
 	'specialpages-group-feedback' => 'דעת הצופה',
+	'readerfeedback-tt-review' => 'שליחת ביקורת',
 );
 
 /** Croatian (Hrvatski)
@@ -1258,6 +1260,19 @@ $messages['id'] = array(
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca atas halaman ini:',
 	'specialpages-group-feedback' => 'Opini pembaca',
 	'readerfeedback-tt-review' => 'Kirim tinjauan',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'readerfeedback-overall' => 'Nà íshí níle',
+	'readerfeedback-level-0' => 'Ụbịàm',
+	'readerfeedback-level-3' => 'Élú ukwu',
+	'readerfeedback-submit' => 'Dànyé',
+	'readerfeedback-finished' => 'Daalụ!',
+	'readerfeedback-tier-high' => 'Élú ukwu',
+	'readerfeedback-tier-poor' => 'Ụbịàm',
 );
 
 /** Ido (Ido)

@@ -181,6 +181,13 @@ $messages['id'] = array(
 	'geolite-desc' => 'Pengalihan GeoIP Ringan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'geolite-desc' => 'Ọ-díghị-árü Núfù GeoIp',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  */

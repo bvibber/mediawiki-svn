@@ -136,7 +136,7 @@ $messages['ce'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-previewDialog-preference' => 'ڕێگە بدە بە پەنجەرەی پێشبینین',
 	'wikieditor-previewDialog-tab' => 'پێشبینین',
 	'wikieditor-previewDialog-loading' => 'باركردن‌ ...',
@@ -230,10 +230,11 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author PerroVerd
+ * @author Platonides
  * @author Translationista
  */
 $messages['es'] = array(
-	'wikieditor-previewDialog-preference' => 'Habilitar vista previa de diálogo',
+	'wikieditor-previewDialog-preference' => 'Habilitar diálogo de vista previa',
 	'wikieditor-previewDialog-tab' => 'Previsualizar',
 	'wikieditor-previewDialog-loading' => 'Cargando...',
 );
@@ -381,7 +382,14 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'wikieditor-previewDialog-preference' => 'Izinkan kotak pratayang',
 	'wikieditor-previewDialog-tab' => 'Pratayang',
-	'wikieditor-previewDialog-loading' => 'Memuat...',
+	'wikieditor-previewDialog-loading' => 'Mengunggah...',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-previewDialog-tab' => 'Lètú',
 );
 
 /** Italian (Italiano)
@@ -601,6 +609,7 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'wikieditor-previewDialog-preference' => 'Ñawpaq qhawana willanakuyta atichiy',
 	'wikieditor-previewDialog-tab' => 'Ñawpaqta qhawallay',
 	'wikieditor-previewDialog-loading' => 'Chaqnamuspa…',
 );
@@ -610,8 +619,9 @@ $messages['qu'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
+	'wikieditor-previewDialog-preference' => 'Activează caseta de dialog pentru previzualizare',
 	'wikieditor-previewDialog-tab' => 'Previzualizare',
-	'wikieditor-previewDialog-loading' => 'Încărcare...',
+	'wikieditor-previewDialog-loading' => 'Se încarcă...',
 );
 
 /** Tarandíne (Tarandíne)
@@ -756,8 +766,10 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'wikieditor-previewDialog-preference' => 'Увімкнути діалог попереднього перегляду',
 	'wikieditor-previewDialog-tab' => 'Попередній перегляд',
 	'wikieditor-previewDialog-loading' => 'Завантаження...',
 );

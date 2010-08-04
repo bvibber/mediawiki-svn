@@ -759,11 +759,12 @@ $messages['ie'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'cite_article_link' => 'Chápu ihe na ihüa',
-	'tooltip-cite-article' => 'Ùmà màkà otụ ha shi ạ chápụ ihe na ihüa',
-	'cite' => 'Nchápụ',
+	'cite_article_desc' => 'Nè tí [[Special:Cite|ndéputà]] ihü kárírí na jikodo ngwa orü',
+	'cite_article_link' => 'Députà ihüa',
+	'tooltip-cite-article' => 'Ùmà màkà otụ ha shi députà ihe na ihüa',
+	'cite' => 'Ndéputà',
 	'cite_page' => 'Ihü:',
-	'cite_submit' => 'Nchápụ',
+	'cite_submit' => 'Ndéputà',
 );
 
 /** Iloko (Ilokano) */
@@ -1862,6 +1863,7 @@ $messages['yue'] = array(
 $messages['zh-hans'] = array(
 	'cite_article_desc' => '增加[[Special:Cite|引用]]特殊页面以及工具箱链接',
 	'cite_article_link' => '引用此文',
+	'tooltip-cite-article' => '关于如何引用此页的资讯',
 	'cite' => '引用文章',
 	'cite_page' => '页面：',
 	'cite_submit' => '引用',

@@ -172,6 +172,13 @@ $messages['hil'] = array(
 	'wikitextloggedinout-desc' => "Duwa ka parser hooks, <code>&lt;loggedin&gt;</code> kag <code>&lt;loggedout&gt;</code> para makit-an ang sari-sari nga teksto depende sa mga users' login estado",
 );
 
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'wikitextloggedinout-desc' => 'Dvije kuke parsera, <code>&lt;loggedin&gt;</code> i <code>&lt;loggedout&gt;</code>, koje prikazuju različit tekst ovisno o tome je li suradnik prijavljen',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

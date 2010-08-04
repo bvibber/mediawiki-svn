@@ -1311,6 +1311,8 @@ S Umnännigs-Logbuech wird do unte ufgfiert as Quälle.',
  */
 $messages['he'] = array(
 	'renameuser' => 'שינוי שם משתמש',
+	'renameuser-linkoncontribs' => 'שינוי שם משתמש',
+	'renameuser-linkoncontribs-text' => 'שינוי שם המשתמש הזה',
 	'renameuser-desc' => "הוספת [[Special:Renameuser|דף מיוחד]] לשינוי שם משתמש (דרושה הרשאת ''renameuser'')",
 	'renameuserold' => 'שם משתמש נוכחי:',
 	'renameusernew' => 'שם משתמש חדש:',
@@ -1591,6 +1593,14 @@ Penggantian nama pengguna dengan lebih dari $3 {{PLURAL:$3|kontribusi|kontribusi
 	'right-renameuser' => 'Mengganti nama pengguna',
 	'renameuser-renamed-notice' => 'Penguna ini telah berganti nama.
 Log pergantian nama disediakan dibawah untuk referensi.',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'renameuserwarnings' => 'Ngéntị:',
+	'renameusersubmit' => 'Dànyé',
 );
 
 /** Ido (Ido)
@@ -2724,6 +2734,8 @@ Për piasì torna andré e preuva torna.",
  */
 $messages['ps'] = array(
 	'renameuser' => 'کارن-نوم بدلول',
+	'renameuser-linkoncontribs' => 'د کارن نوم بدلول',
+	'renameuser-linkoncontribs-text' => 'د دې کارن نوم بدلول',
 	'renameuserold' => 'اوسنی کارن-نوم:',
 	'renameusernew' => 'نوی کارن-نوم:',
 	'renameuserreason' => 'د نوم د بدلون سبب:',
@@ -3638,9 +3650,12 @@ Referans için ad değiştirme günlüğü aşağıda sağlanmıştır.',
  * @author Ahonc
  * @author EugeneZelenko
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'renameuser' => 'Перейменувати користувача',
+	'renameuser-linkoncontribs' => 'перейменувати користувача',
+	'renameuser-linkoncontribs-text' => 'Перейменувати цього користувача',
 	'renameuser-desc' => "Перейменування користувача (потрібні права ''renameuser'')",
 	'renameuserold' => "Поточне ім'я:",
 	'renameusernew' => "Нове ім'я:",

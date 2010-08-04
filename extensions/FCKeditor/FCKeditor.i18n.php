@@ -1256,6 +1256,17 @@ $messages['tr'] = array(
 	'tog-riched_use_popup' => 'Zengin editörü açılır pencerede aç',
 );
 
+/** Ukrainian (Українська)
+ * @author Apromix
+ */
+$messages['uk'] = array(
+	'fckeditor-desc' => 'Дозволяє редагувати за допомогою візуального редактора FCKeditor',
+	'textrichditor' => 'Візуальний редактор',
+	'prefs-fckeditor' => 'Візуальний редактор',
+	'tog-riched_disable' => 'Вимкнути візуальний редактор',
+	'tog-riched_disable_ns_main' => 'Вимкнути візуальний редактор, в головному просторі імен',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

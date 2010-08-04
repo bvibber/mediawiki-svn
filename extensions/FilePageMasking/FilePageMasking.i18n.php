@@ -350,6 +350,11 @@ $messages['vi'] = array(
 	'filepagemasking-desc' => 'Đổi các liên kết “.xxx” thành “_xxx” trong các trang miêu tả tập tin',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'filepagemasking-desc' => '在档案描述页连结中将 ".xxx" 重写为 "_xxx" 。',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Frankou
  */

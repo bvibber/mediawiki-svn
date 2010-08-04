@@ -88,10 +88,11 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'navigationpopups-desc' => 'Ŝarĝas la ekaperilaj skriptojn pri navigado de Lupin en MediaWiki',
+	'navigationpopups-desc' => 'Ŝargas la ekaperilajn skriptojn pri navigado de Lupin en MediaWiki',
 );
 
 /** Spanish (Español)

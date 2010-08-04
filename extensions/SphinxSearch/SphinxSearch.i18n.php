@@ -527,8 +527,10 @@ $messages['lb'] = array(
 	'sphinxMatchTitles' => 'nëmmen an den Titele sichen',
 	'sphinxLoading' => 'Lueden...',
 	'sphinxPowered' => 'Notzt $1',
+	'sphinxClientFailed' => 'De Sphinx Client konnt net initialiséiert ginn.',
 	'sphinxSearchFailed' => 'Ufro huet net fonctionnéiert: $1',
 	'sphinxSearchWarning' => 'Warnung: $1',
+	'sphinxPspellError' => "D'pspell-Erweiderung konnt net opgeruff ginn.",
 );
 
 /** Macedonian (Македонски)
@@ -829,6 +831,17 @@ $messages['sv'] = array(
 	'sphinxNextPage' => 'Nästa',
 	'sphinxLoading' => 'Laddar ...',
 	'sphinxSearchWarning' => 'Varning: $1',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'sphinxSearchInCategories' => 'వర్గాలలో వెతుకు:',
+	'sphinxExcludeCategories' => 'వదిలేయాల్సిన వర్గాలు',
+	'sphinxNextPage' => 'తదుపరి',
+	'sphinxSearchButton' => 'వెతుకు',
+	'sphinxSearchWarning' => 'హెచ్చరిక: $1',
 );
 
 /** Tagalog (Tagalog)

@@ -341,6 +341,7 @@ $messages['qqq'] = array(
 	'mv-desc' => '{{desc}}',
 	'mv_edit_strea_docu' => "\"'''Admin'''\" here means that you are editing the stream as an admin, allowing you to do more than as a regular user.",
 	'mv_duration_label' => '{{Identical|Duration}}',
+	'mv_save_changes' => '{{Identical|Save changes}}',
 	'mv_user_cant_edit' => '$1 is login link and $2 is a link with {{msg-mw|cancel}} as label.',
 	'mv_label_stream_name' => '{{Identical|Stream name}}',
 	'mv_remove_reason' => '{{Identical|Reason for deletion}}',
@@ -10036,8 +10037,10 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
+	'mv_save_changes' => 'Зберегти зміни',
 	'mv_remove' => 'вилучити',
 	'mv_existing_categories' => '{{PLURAL:$1|категорія|категорії|категорій}}:',
 	'mv_search_categories' => 'Категорії',

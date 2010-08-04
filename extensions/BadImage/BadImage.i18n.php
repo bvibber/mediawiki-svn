@@ -52,6 +52,8 @@ $messages['qqq'] = array(
 	'badimages-remove' => '{{Identical|Remove}}',
 	'badimages-remove-btn' => '{{Identical|Remove}}',
 	'badimages-log-name' => '{{Identical|Bad image list}}',
+	'badimages-log-add' => 'This looks like a section of a log entry. If so, the name of the user who performed this action appears immediately before this message.',
+	'badimages-log-remove' => 'This looks like a section of a log entry. If so, the name of the user who performed this action appears immediately before this message.',
 	'right-badimages' => '{{doc-right|badimages}}',
 );
 
@@ -483,12 +485,12 @@ $messages['cy'] = array(
 	'badimages-removed' => "Tynnwyd $1 o'r rhestr.",
 	'badimages-subheading' => 'Eitemau cyfredol',
 	'badimages-unprivileged' => "(Nid yw'r hawliau priodol i newid y rhestr gennych)",
-	'badimages-log-name' => 'Rhestr o ddelweddi gwael',
-	'badimages-log-header' => "Dyma log newidiadau i'r [[{{MediaWiki:Badimages-page}}|rhestr o ddelweddi gwael]].",
-	'badimages-log-add' => "ychwanegwyd [[$1]] i'r rhestr o ddelweddi gwael",
-	'badimages-log-remove' => "tynnwyd [[$1]] o'r rhestr o ddelweddi gwael",
-	'badimages-page' => '{{ns:help}}:Rhestr o ddelweddi gwael',
-	'right-badimages' => "Diweddaru'r rhestr o ddelweddi gwael",
+	'badimages-log-name' => 'Y rhestr o ddelweddau gwaharddedig',
+	'badimages-log-header' => "Dyma lòg y newidiadau i'r [[{{MediaWiki:Badimages-page}}|rhestr o ddelweddau gwaharddedig]].",
+	'badimages-log-add' => "wedi ychwanegu [[$1]] i'r rhestr o ddelweddau gwaharddedig",
+	'badimages-log-remove' => "wedi tynnu [[$1]] o'r rhestr o ddelweddau gwaharddedig",
+	'badimages-page' => '{{ns:help}}:Y rhestr o ddelweddau gwaharddedig',
+	'right-badimages' => "Diweddaru'r rhestr o ddelweddau gwaharddedig",
 );
 
 /** Danish (Dansk)
@@ -615,15 +617,16 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'badimages' => 'Nevalida bildo-listo',
-	'badimage-desc' => 'Etendu la kapablojn pri la malbona bildolisto de MediaWiki',
+	'badimages' => 'Listo de malbonaj bildoj',
+	'badimage-desc' => 'Plivastigu la kapablojn de MediaWiki pri la listo de malbonaj bildoj',
 	'badimages-add-btn' => 'Aldoni',
 	'badimages-added' => '$1 estis enlistigita.',
-	'badimages-count' => "Estas '''$1''' {{PLURAL:$1|bildo|bildoj}} en la listo de nevalidaj bildoj.",
+	'badimages-count' => "Estas '''$1''' {{PLURAL:$1|bildo|bildoj}} en la listo de malbonaj bildoj.",
 	'badimages-name' => 'Nomo:',
 	'badimages-not-added' => 'Ne eblas aldoni la bildon.',
 	'badimages-not-removed' => 'Ne eblas forigi la bildon.',
@@ -634,11 +637,11 @@ $messages['eo'] = array(
 	'badimages-removed' => '$1 estis forigita el la listo.',
 	'badimages-subheading' => 'Nunaj listanoj',
 	'badimages-unprivileged' => 'Vi ne sufiĉe rajtas ŝanĝi la liston.',
-	'badimages-log-name' => 'Nevalida bildo-listo',
-	'badimages-log-header' => 'Jen protokolo de ŝanĝoj por la [[{{MediaWiki:Badimages-page}}|listo de nevalidaj bildoj]].',
+	'badimages-log-name' => 'Listo de malbonaj bildoj',
+	'badimages-log-header' => 'Jen protokolo de ŝanĝoj por la [[{{MediaWiki:Badimages-page}}|listo de malbonaj bildoj]].',
 	'badimages-log-add' => 'Aldonis [[$1]] al la listo de nevalidaj bildoj',
 	'badimages-log-remove' => 'forigis [[$1]] el la listo de nevalidaj bildoj',
-	'badimages-page' => '{{ns:help}}:Listo de nevalidaj bildoj',
+	'badimages-page' => '{{ns:help}}:Listo de malbonaj bildoj',
 	'right-badimages' => 'Ĝisdatigi la liston de nebonvenaj bildoj',
 );
 
@@ -1170,12 +1173,13 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'badimages' => 'Ndetu nhunuuche di njọ',
+	'badimage-desc' => 'Dòró ihe ndetu nhuunuche njö nwèríkí me na nke NkáWiki',
 	'badimages-add-btn' => 'Tinyé',
 	'badimages-added' => '$1 banyèrè ndetu.',
 	'badimages-name' => 'Áhà:',
 	'badimages-not-added' => 'Enweghíkí tinyé nhunuuche',
 	'badimages-not-removed' => 'Enweghíkí puzie nhunuuche',
-	'badimages-reason' => 'Mgbaghaputa:',
+	'badimages-reason' => 'Mgbághapụtà:',
 	'badimages-remove' => '(wéfù)',
 	'badimages-remove-btn' => 'Wéfù',
 	'badimages-removed' => '$1 a püwola ndetu.',

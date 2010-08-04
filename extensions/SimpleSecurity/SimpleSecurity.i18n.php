@@ -542,6 +542,13 @@ $messages['id'] = array(
 	'security-restricttogroup' => 'Akses dibatasi untuk anggota "$1"',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'security-type-category' => 'ébéonọr',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Marco 27

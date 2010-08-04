@@ -10172,7 +10172,10 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'configure-setting-wgSitename' => 'Áhà ama',
+	'configure-setting-wgActionPaths-key' => 'Ọmé',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Íshí ihü',
 	'configure-setting-wgExtraLanguageNames-value' => 'Áhà',
+	'configure-setting-wgDebugLogGroups-value' => 'Ákwúkwó orunotu',
 );
 
 /** Italian (Italiano)
@@ -10484,6 +10487,7 @@ $messages['ja'] = array(
 	'configure-setting-wgExtensionFunctions' => '拡張機能の関数',
 	'configure-setting-wgExtensionMessagesFiles' => '拡張機能のメッセージファイル',
 	'configure-setting-wgExternalStores' => '外部ストレージの構成',
+	'configure-setting-wgSQLMode' => 'SQLモード',
 	'configure-setting-wgHooks' => 'フック',
 	'configure-setting-wgPagePropLinkInvalidations' => 'リンクテーブルを無効化するページプロパティ一覧',
 	'configure-setting-wgParserOutputHooks' => 'パーサ出力フック',
@@ -12155,7 +12159,7 @@ $messages['mk'] = array(
 	'configure-setting-wgSitemapNamespaces' => 'Именски простори за приказ на картата на мреж. место',
 	'configure-setting-wgCategoryMagicGallery' => 'Прикажувај галерија од минијатури во категориските страници',
 	'configure-setting-wgCategoryPagingLimit' => 'Ограничување на страници за ставки во категориите',
-	'configure-setting-wgCategoryPrefixedDefaultSortkey' => 'Вклучиименски простор во основно-зададениот клуч за сортирање категории',
+	'configure-setting-wgCategoryPrefixedDefaultSortkey' => 'Вклучи именски простор во основно-зададениот клуч за подредување на категории',
 	'configure-setting-wgUseCategoryBrowser' => 'Овозможи прелистувач на категории',
 	'configure-setting-wgHTCPMulticastAddress' => 'Користи HTCP повеќеемисиско чистење',
 	'configure-setting-wgHTCPMulticastTTL' => 'TTL за HTCP повеќеемисиско чистење',

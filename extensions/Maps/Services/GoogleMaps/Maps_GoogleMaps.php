@@ -26,13 +26,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class MapsGoogleMaps extends MapsMappingService {
 	
 	/**
-	 * Constructor
+	 * Constructor.
 	 * 
-	 * @since 0.6.3
+	 * @since 0.6.6
 	 */
-	function __construct() {
+	function __construct( $serviceName ) {
 		parent::__construct(
-			'googlemaps2',
+			$serviceName,
 			array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' )
 		);
 	}
@@ -43,7 +43,7 @@ class MapsGoogleMaps extends MapsMappingService {
 	 * @since 0.5
 	 */
 	protected function initParameterInfo( array &$parameters ) {
-		global $egMapsServices, $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
+		global $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
 		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );

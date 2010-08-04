@@ -970,7 +970,7 @@ $messages['ce'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'optin-title-optedout' => 'تاقی‌کردنەوەی بێتا',
 	'optin-title-optedin' => 'وازهێنان لە بێتا',
 	'optin-title-justoptedin' => 'بەخێرهاتی بۆ بێتا',
@@ -3097,6 +3097,10 @@ Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [htt
  */
 $messages['ig'] = array(
 	'optin-title-optedout' => 'Nwàne Beta',
+	'optin-survey-yes' => 'Eeh',
+	'optin-survey-no' => 'Mbà',
+	'optin-survey-answer-whyoptout-other' => 'Mgbághàpụtá ozor:',
+	'optin-survey-answer-changes-other' => 'Nke ozor:',
 );
 
 /** Ido (Ido)
@@ -3691,6 +3695,15 @@ Wat hät Der aam dä Verschöönerunge zom Ußprobeere nit jefalle?',
 	'optin-survey-answer-changes-other' => 'Söns jet:',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'optin-survey-yes' => 'Erê',
+	'optin-survey-no' => 'Na',
+	'optin-survey-answer-changes-other' => 'Wekî din:',
+);
+
 /** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
@@ -4109,6 +4122,12 @@ $messages['mn'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'optin-title-justoptedin' => '↓ बीटा चेहरामोहर्‍यात स्वागत',
+	'optin-title-justoptedout' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद
+↓ बीटा वापरुन बघण्याबद्दल आभार',
+	'optin-feedback-intro' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद.
+या नविन चेहरामोहर्‍याबद्दल आपणास काय वाटते हे आम्हास जाणुन घ्यायचे आहे,म्हणुन खालील ऎच्छीक सर्वेक्षण आपण भरुन दिल्यास आम्हाला आवडेल.',
+	'optin-feedback-back' => '↓ जर आपणास सर्वेक्षण भरावयाचे नसल्यास आपण  $1 ला परत जाउ शकता.',
 	'optin-survey-no' => 'नाही',
 	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
 	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
@@ -4956,14 +4975,18 @@ Për savèjne ëd pi an sl'Inissiativa për n'usagi belfé, për piasì ch'a vì
  */
 $messages['ps'] = array(
 	'optin-title-optedout' => 'آزمېښتي بڼه کارول',
+	'optin-title-optedin' => 'آزمېښتي بڼه پرېښودل',
+	'optin-title-justoptedin' => 'آزمېښتي بڼې ته ښه راغلاست',
 	'optin-accept-short' => 'راځه چې وې آزمويو!',
 	'optin-deny-short' => 'نه مننه',
 	'optin-survey-yes' => 'هو',
 	'optin-survey-no' => 'نه',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'زما نوې توکپټه خوښه نه شوه.',
 	'optin-survey-answer-whyoptout-other' => 'بل سبب:',
 	'optin-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
 	'optin-survey-answer-browser-other' => 'بل کتنمل:',
 	'optin-survey-question-os' => 'تاسې کوم چليز غونډال کاروۍ؟',
+	'optin-survey-answer-os-other' => 'بل چليز غونډال:',
 	'optin-survey-answer-changes-other' => 'بل:',
 );
 

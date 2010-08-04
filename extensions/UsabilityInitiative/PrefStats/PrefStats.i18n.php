@@ -367,7 +367,7 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'prefstats-xaxis' => 'درێژە (کاتژمێر)',
 	'prefstats-factor-hour' => 'کاتژمێر',
 	'prefstats-factor-sixhours' => 'شەش کاتژمێر',
@@ -860,7 +860,7 @@ $messages['frp'] = array(
 	'prefstats-list-intro' => 'Ora, cetes prèferences sont siuvues.
 Clicâd dessus yona d’entre-lor por vêre les statistiques a son propôs.',
 	'prefstats-noprefs' => 'Ora, niona prèference est siuvua.
-Configurar $wgPrefStatsTrackPrefs por siuvre des prèferences.',
+Configurâd $wgPrefStatsTrackPrefs por siuvre des prèferences.',
 	'prefstats-counters' => '* $1 {{PLURAL:$1|utilisator a|utilisators on}}t activâ ceta prèference dês que les statistiques de prèferences ont étâ activâs
 ** $2 {{PLURAL:$2|utilisator l’a|utilisators l’on}}t adés activâ
 ** $3 {{PLURAL:$3|utilisator l’a|utilisators l’on}}t dèsactivâ',
@@ -1194,6 +1194,17 @@ Klik pada salah satu untuk melihat statistiknya.',
 	'prefstats-legend-in' => 'Disertakan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'prefstats-factor-sixhours' => 'àmànị ishíi',
+	'prefstats-factor-day' => 'chi',
+	'prefstats-factor-week' => 'izù',
+	'prefstats-factor-twoweeks' => 'izù abụọ',
+	'prefstats-factor-fourweeks' => 'izù ànȯ',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1439,6 +1450,18 @@ Donn op ein dovun drop klecke, öm dä ier Shtatistik ze belooere.',
 	'prefstats-legend-in' => 'Aanjemelldt',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'prefstats-factor-hour' => 'demjimêr',
+	'prefstats-factor-sixhours' => 'şeş demjimêr',
+	'prefstats-factor-day' => 'roj',
+	'prefstats-factor-week' => 'hefte',
+	'prefstats-factor-twoweeks' => 'du hefte',
+	'prefstats-factor-fourweeks' => 'çar hefte',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  * @author UV
@@ -1603,14 +1626,18 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
+	'prefstats-xaxis' => '  ↓ कालावधी (तासात)',
 	'prefstats-factor-hour' => 'तास',
 	'prefstats-factor-sixhours' => 'सहा तास',
 	'prefstats-factor-day' => 'दिवस',
 	'prefstats-factor-week' => 'आठवडा',
 	'prefstats-factor-twoweeks' => 'दोन आठवडे',
 	'prefstats-factor-fourweeks' => 'चार आठवडे',
+	'prefstats-legend-out' => '↓ निवडीतुन बाहेर',
+	'prefstats-legend-in' => '↓ निवडुन आत',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1903,6 +1930,7 @@ Configura $wgPrefStatsTrackPrefs për trassé l epreferense.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'prefstats-xaxis' => 'موده (ساعتونه)',
 	'prefstats-factor-hour' => 'ساعت',
 	'prefstats-factor-sixhours' => 'شپږ ساعته',
 	'prefstats-factor-day' => 'ورځ',
@@ -1984,6 +2012,28 @@ $messages['qu'] = array(
 	'prefstats' => 'Munakusqa ranuy (kanchachani)',
 	'prefstats-desc' => "Kaypiqa rukunki, hayk'a ruraqkuna ima munakusqankunata allinkachina nisqapi akllarqan",
 	'prefstats-title' => 'Munakusqa ranuy (kanchachani)',
+	'prefstats-list-intro' => "Kunanqa kay qatiq allinkachinakunam qatipasqa kachkanku.
+Hukta ñit'ispa akllay paymanta ranuyta (kanchachanita) qhawanaykipaq.",
+	'prefstats-noprefs' => 'Kunanqa manam ima allinkachinakunapas qatipasqa kachkankuchu.
+$wgPrefStatsTrackPrefs nisqata allinchaykuy allinkachinakunata qatipanaykipaq.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|ruraqmi|ruraqmi}} kay allinkachinayuq kachkan, allinkachina ranuypa qallarisqanmantapacha
+** $2 {{PLURAL:$2|ruraqraqmi|ruraqraqmi}} kay allinkachinayuq
+** $3 {{PLURAL:$3|ruraqmi|ruraqmi}} mana kay allinkachinayuq',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|ruraqmi|ruraqmi}} kay allinkachinayuq kachkan, allinkachina ranuypa qallarisqanmantapacha
+** $2 {{PLURAL:$2|ruraqraqmi|ruraqraqmi}} kay allinkachinayuq
+** $3 {{PLURAL:$3|ruraqmi|ruraqmi}} mana kay allinkachinayuq 
+* Tukuymantaqa $4 {{PLURAL:$4|ruraqmi|ruraqmi}} kay allinkachinata hukcharqan',
+	'prefstats-xaxis' => "Mit'a (pacha/urakuna)",
+	'prefstats-factors' => 'Rikuy llapa: $1',
+	'prefstats-factor-hour' => 'ura',
+	'prefstats-factor-sixhours' => 'suqta ura',
+	'prefstats-factor-day' => "p'unchaw",
+	'prefstats-factor-week' => 'simana',
+	'prefstats-factor-twoweeks' => 'iskay simana',
+	'prefstats-factor-fourweeks' => 'tawa simana',
+	'prefstats-factor-default' => 'kikinmanta kaq iskalaman kutimuy',
+	'prefstats-legend-out' => 'Mana atichisqa',
+	'prefstats-legend-in' => 'Atichisqa',
 );
 
 /** Romanian (Română)

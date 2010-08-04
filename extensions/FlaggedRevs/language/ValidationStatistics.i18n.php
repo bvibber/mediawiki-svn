@@ -877,6 +877,13 @@ $3",
 	'validationstatistics-reviews' => 'Tinjauan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'validationstatistics-total' => 'Ihü',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -930,7 +937,13 @@ $messages['ja'] = array(
 
 編集者とはページの各版に対して抜き取り検査を行うことを認められた利用者です。",
 	'validationstatistics-lastupdate' => "''以下のデータは、$1の$2に最後に更新されました。''",
-	'validationstatistics-table' => '名前空間別の統計を以下に表示します。リダイレクトページは除いています。',
+	'validationstatistics-pndtime' => "認められた利用者により確認された編集は、査読されたとみなされます。
+
+[[Special:OldReviewedPages|未査読の編集が保留となっているページ]]の平均遅延時間は'''$1'''です。
+これらのページは''最新版未査読''とみなされます。同様に、編集の査読が1つも保留されていない場合は、''最新版査読済'''とみなされます。",
+	'validationstatistics-revtime' => "''非ログイン利用者''による編集が査読されるまでの平均待ち時間は'''$1'''で、中央値は'''$2'''です。
+$3",
+	'validationstatistics-table' => "名前空間別のページの査読に関する統計を以下に表示します（リダイレクトページは'''除外'''）。",
 	'validationstatistics-ns' => '名前空間',
 	'validationstatistics-total' => 'ページ数',
 	'validationstatistics-stable' => '査読済',
@@ -1627,7 +1640,11 @@ $messages['sr-el'] = array(
 	'validationstatistics-ns' => 'Imenski prostor',
 	'validationstatistics-total' => 'Stranice',
 	'validationstatistics-latest' => 'Sinhronizovano',
+	'validationstatistics-synced' => 'Sinhronizovan/Pregledan',
 	'validationstatistics-old' => 'Zastarelo',
+	'validationstatistics-utable' => 'Ispod se nalazi spisak od top 5 pregledača u poslednjih sat vremena',
+	'validationstatistics-user' => 'Korisnik',
+	'validationstatistics-reviews' => 'Pregledi',
 );
 
 /** Swedish (Svenska)
@@ -1894,6 +1911,11 @@ $messages['zh-hans'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}'''现时有'''[[Special:ListUsers/editor|$1]]'''{{PLURAL:$1|个|个}}用户具有[[{{MediaWiki:Validationpage}}|编辑]]的权限。
 
 编辑及审定皆为已确认的用户，并可以检查各页面的修定。",
+	'validationstatistics-lastupdate' => "''以下数据最后更新于$1在$2。''",
+	'validationstatistics-pndtime' => "已被用户被认为是审查的编辑。 
+
+平均延迟 [[Special:OldReviewedPages|页面编辑是未审核]]的等待时间是'''$1'''。 
+这些网页被认为是''过时''的。同样，网页被认为是''最新''，如果没有修改等待审核的话。",
 	'validationstatistics-table' => "各名称空间的统计信息显示如下，''不包含''转向页。",
 	'validationstatistics-ns' => '名字空间',
 	'validationstatistics-total' => '页',
@@ -1917,6 +1939,13 @@ $messages['zh-hant'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}'''現時有'''[[Special:ListUsers/editor|$1]]'''{{PLURAL:$1|個|個}}用戶具有[[{{MediaWiki:Validationpage}}|編輯]]的權限。
 
 編輯及審定皆為已確認的用戶，並可以檢查各頁面的修定。",
+	'validationstatistics-lastupdate' => "''以下數據最後更新於$1在$2。''",
+	'validationstatistics-pndtime' => "已被用戶被認為是審查的編輯。 
+
+平均延遲 [[Special:OldReviewedPages|頁面編輯是未審核]]的等待時間是'''$1'''。 
+這些網頁被認為是''過時''的。同樣，網頁被認為是''最新''，如果沒有修改等待審核的話。",
+	'validationstatistics-revtime' => "平均''未登錄用戶''的編輯審核等待時間為'''$1'''；中位數是'''$2 '''。 
+$3",
 	'validationstatistics-table' => "各名稱空間的統計資訊顯示如下，''不包含''轉向頁。",
 	'validationstatistics-ns' => '名稱空間',
 	'validationstatistics-total' => '頁面',

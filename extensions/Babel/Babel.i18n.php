@@ -156,13 +156,6 @@ $messages['ary'] = array(
 	'babel-N-n' => "Had l-mosṫeĥdim kayfhem l-loġa [[$2|l-Meġribiya]] bḫal [[$1|loġto l-'om]].",
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'babel-0' => 'Pamakay ini [[$1|kada]] mangarti [[$2|$3]] (atawa hanya lawan sangat ngalih).',
-);
-
 /** Achinese (Acèh)
  * @author Si Gam Acèh
  */
@@ -637,6 +630,13 @@ $messages['bh'] = array(
 	'babel' => 'बैबेल प्रयोगकर्ता जानकारी',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'babel-0' => 'Pamakay ini [[$1|kada]] mangarti [[$2|$3]] (atawa hanya lawan sangat ngalih).',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -758,17 +758,11 @@ $messages['ce'] = array(
 );
 
 /** Sorani (Soranî / کوردی)
+ * @author Asoxor
  * @author GerardM
  */
 $messages['ckb'] = array(
 	'babel-directionality' => 'rtl',
-);
-
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
- * @author Asoxor
- * @author GerardM
- */
-$messages['ckb-arab'] = array(
 	'babel' => 'زانیاریی بەکارھێنەریی بابل',
 	'babel-desc' => 'کرداری شیکەری <code>#babel</code> زیاد دەکات بۆ ڕێگا دان بە خۆکار دروست بوونی ستوونی سندوقی بەکارھێنەری بابل لەگەڵ توانایی بۆ لەخۆ گرتنی داڕێژە دڵخوازەکان',
 	'babel-url' => 'Project:بابل',
@@ -1848,6 +1842,7 @@ $messages['hu'] = array(
 );
 
 /** Armenian (Հայերեն)
+ * @author Pandukht
  * @author Teak
  * @author Togaed
  */
@@ -1939,8 +1934,10 @@ $messages['ig'] = array(
 	'babel' => 'Ihe Babul ejiá mari onyeá',
 	'babel-desc' => 'Nè tí <code>#babel</code> ihe ndotù Í nyé uzor maka okìké nke orúnotu nke ogologo  babel nweríkí tinyé ihü nka nke ékèrè eké',
 	'babel-url' => 'Project:Babul',
+	'babel-autocreate-abort' => "Ọ'bànifé Í kpàtàrà dị maka [[$1|Babel]] nké né ké  ébéanọr nà onwé yá, na o nwéghíkí bú nkẹ ọ'bànifé.",
 	'babel-autocreate-reason' => 'Odạlạ né ké [[$1|Babel]] ébé ihü nọr.',
 	'babel-autocreate-text-levels' => 'Ndi na banife nọr na ébé nke sị há nwèrè ǹkà rúrú $1 màkà asụsụ $2.',
+	'babel-autocreate-text-main' => "Ọ'bànifé nor na ébéanọr á sị hé nwèrè ómárí màkà asụsụ $1.",
 	'babel-0' => 'Onyéá [[$1|enweghị]] ómárí maka [[$2|$3]] (mä o wu ó na gé yá nsogbu dikwa elú ya).',
 	'babel-1' => 'Onyéá nwere ómárí [[$1|ntakịrị]] maka [[$2|$3]].',
 	'babel-2' => 'Onyéá nwere ómárí [[$1|ditu mmá]] maka [[$2|$3]].',
@@ -2287,15 +2284,30 @@ $messages['la'] = array(
 
 /** Ladino (Ladino)
  * @author Purodha
+ * @author Universal Life
  */
 $messages['lad'] = array(
+	'babel' => 'Enformasyón de usador de Babel',
+	'babel-desc' => 'Ajustar la <code>#babel</code> fonksyón analitika para dar lecencia a la generancia otomatika de un columna de caxa de usador babel con la abilidad de tener xabblones propios',
 	'babel-url' => 'Project:Babel',
-	'babel-0-n' => 'Este usuario [[$1|no entiende]] [[$2|djudeo-espanyol]] <small>(o lo entiende kon muncha difikultad)</small>.',
-	'babel-1-n' => 'Este usuario puede kontribuir kon un nivel [[$1|báziko]] de [[$2|djudeo-espanyol]].',
-	'babel-2-n' => 'Este usuario puede kontribuir kon un nivel [[$1|intermedio]] de [[$2|djudeo-espanyol]].',
-	'babel-3-n' => 'Este usuario puede kontribuir kon un nivel [[$1|avansado]] de [[$2|djudeo-espanyol]].',
-	'babel-4-n' => 'Este usuario puede kontribuir kon un nivel [[$1|xx]] de [[$2|djudeo-espanyol]].',
-	'babel-N-n' => 'Este usuario es avlante [[$1|nativo]] de [[$2|djudeo-espanyol]].',
+	'babel-autocreate-abort' => 'El nombre de usador que escogites se usa para la oto-criación de katēggorías [[$1|Babel]] i no puede ser rejistrado.',
+	'babel-autocreate-reason' => 'Criando otomatika mente, la hoja de katēggorías [[$1|Babel]].',
+	'babel-autocreate-text-levels' => 'Usadores en este katēggoría declaran que tienen un nivel de kapachidad $1 de la lingua $2.',
+	'babel-autocreate-text-main' => 'Usadores en este katēggoría declaran que saben la lingua $1.',
+	'babel-0' => 'Este usador [[$1|no entiende]] el [[$2|$3]] (o lo entiende con muncha dificultad).',
+	'babel-1' => 'Este usador tiene un nivel [[$1|elementario]] de [[$2|$3]].',
+	'babel-2' => 'Este usador tiene un nivel [[$1|medio]] de [[$2|$3]].',
+	'babel-3' => 'Este usador tiene un nivel [[$1|adelantado]] de [[$2|$3]].',
+	'babel-4' => 'Este usador tiene un nivel [[$1|kaji-nativo]] de [[$2|$3]].',
+	'babel-5' => 'Este usador tiene un nivel [[$1|profesyonal]] de [[$2|$3]].',
+	'babel-N' => 'Este usador es un hablante [[$1|nativo]] de [[$2|$3]].',
+	'babel-0-n' => 'Este usador [[$1|no entiende]] el [[$2|Judeo-Español]] <small>(o lo entiende con muncha dificultad)</small>.',
+	'babel-1-n' => 'Este usador tiene un nivel [[$1|elementario]] de [[$2|Judeo-Español]].',
+	'babel-2-n' => 'Este usador tiene un nivel [[$1|medio]] de [[$2|Judeo-Español]].',
+	'babel-3-n' => 'Este usador tiene un nivel [[$1|adelantado]] de [[$2|Judeo-Español]].',
+	'babel-4-n' => 'Este usador tiene un nivel [[$1|kaji-nativo]] de [[$2|Judeo-Español]].',
+	'babel-5-n' => 'Este usador tiene un nivel [[$1|profesyonal]] de [[$2|Judeo-Español]].',
+	'babel-N-n' => 'Este usador es un hablante [[$1|nativo]] de [[$2|Judeo-Español]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

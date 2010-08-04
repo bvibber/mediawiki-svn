@@ -103,7 +103,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'prefs-updates' => 'نوێ کردنەوەکان',
 );
 
@@ -358,6 +358,13 @@ $messages['krc'] = array(
 	'prefs-updates' => 'Джангыртыула',
 	'updatemyprefs-desc' => 'Джангы функцияла бар болгъанларына кёре интерфейсни периодика халда джангыртыргъа къойгъан джарашдырыу',
 	'updatemyprefs-label-message' => 'Джарашдырыуларымы, тынгылау бла болгъан джангы джарашдырыула бла эмда инструментле бла бар болгъанларына кёре, автомат халда джангырт',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'prefs-updates' => 'Rojanekirin',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

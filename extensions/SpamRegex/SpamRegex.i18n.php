@@ -314,7 +314,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'spamregex-text' => '(دەق)',
 	'spamregex-summary-log' => '(پوختە)',
 );

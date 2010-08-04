@@ -115,6 +115,7 @@ $messages['qqq'] = array(
 	'storyboard-hide' => '{{Identical|Hide}}',
 	'storyboard-language' => '{{Identical|Language}}',
 	'storyboard-alreadyexists' => '$1 is a story title',
+	'storyboard-done' => '{{Identical|Done}}',
 	'storyboard-deletestory' => '{{Identical|Remove}}',
 );
 
@@ -1134,6 +1135,9 @@ Firwat se net hei weisen?',
 Mir kucken se demnächst no.
 Dir kënnt [$1 publizéiert Anekdote liesen].',
 	'storyboard-emailtitle' => 'Anekdot ass elo ofgespäichert',
+	'storyboard-emailbody' => 'Är Anekdot mam Titel "$1" gouf iwwerdro.
+Mir kucken se geschwënn no.
+Dir kënnt [$2 déi publizéiert Anekdote liesen].',
 	'storyreview' => 'Anekdot nokucken',
 	'storyboard-deleteimage' => 'Bild läschen',
 	'storyboard-done' => 'Fäerdeg',
@@ -1420,6 +1424,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'storyboard-unpublished' => 'ناخپاره',
 	'storyboard-published' => 'خپاره شوي',
 	'storyboard-hidden' => 'پټ',
 	'storyboard-publish' => 'خپرول',
@@ -1440,10 +1445,12 @@ $messages['ps'] = array(
 	'storyboard-email' => 'ستاسې برېښليک پته (اړينه برخه)',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|توری|توري}} پاتې دي)',
 	'storyboard-cannotbelonger' => 'ستاسې کيسه <b>$1</b> {{PLURAL:$1|توری|تورې}} ډېره اوږده ده!',
+	'storyboard-alreadyexists' => '"$1" له پخوا نه اخيستل شوی.',
 	'storyboard-changetitle' => 'سرليک بدلول.',
 	'storyboard-charactersleft' => '$1 توري پاتې دي',
 	'storyboard-deleteimage' => 'انځور ړنګول',
 	'storyboard-done' => 'ترسره شو',
+	'storyboard-imagedeleted' => 'انځور ړنګ شو',
 	'storyboard-showimage' => 'انځور ښکاره کول',
 	'storyboard-hideimage' => 'انځور پټول',
 );

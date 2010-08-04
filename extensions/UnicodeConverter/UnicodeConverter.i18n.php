@@ -826,6 +826,14 @@ $messages['tr'] = array(
 	'unicodeconverter-newtext' => 'Dönüştürülmüş metin:',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'unicodeconverter' => 'Unicode конвертеры',
+	'unicodeconverter-ok' => 'ОК',
+);
+
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Alfredie
  */

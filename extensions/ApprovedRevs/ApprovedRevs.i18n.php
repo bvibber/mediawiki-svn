@@ -363,6 +363,7 @@ $messages['lb'] = array(
 	'approvedrevs-logname' => 'Logbuch vun den nogekuckt Säiten déi fräigi sinn',
 	'approvedrevs-logdesc' => "Dëst ass d'Logbuch vun de Versiounen déi nogekuckt sinn.",
 	'approvedrevs-approve' => 'zoustëmmen',
+	'approvedrevs-unapprove' => 'Zoustëmmung zréckzéien',
 	'approvedrevs-approvesuccess' => 'Dës Versioun vun der Säit gouf als nogekuckte Versioun fräiginn.',
 	'approvedrevs-unapprovesuccess' => 'Et gëtt vun dëser Säit  keng nogekuckte Versioun méi.
 Dofir gëtt déi rezentst Versioun gewisen.',
@@ -511,6 +512,15 @@ $messages['ru'] = array(
 	'approvedrevs-approvedpages-docu' => 'Ниже показан список вики-страниц, имеющих подтверждённые версии.',
 	'right-approverevisions' => 'отметка определённых версий вики-страниц как подтверждённых',
 	'right-viewlinktolatest' => 'просмотр пояснительного текста в верхней части страниц, имеющих утверждённые версии',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'approvedrevs-logname' => 'కూర్పుల అనుమతులు చిట్టా',
+	'approvedrevs-approve' => 'అనుమతించు',
+	'approvedpages' => 'అనుమతించిన పుటలు',
 );
 
 /** Turkish (Türkçe)

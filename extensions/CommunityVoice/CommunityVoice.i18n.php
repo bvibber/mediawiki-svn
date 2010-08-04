@@ -324,12 +324,13 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author IAlex
+ * @author Peter17
  */
 $messages['fr'] = array(
 	'communityvoice' => 'Voix de la communauté',
 	'communityvoice-desc' => 'Outils pour la participation de la communauté',
 	'communityvoice-ratings' => 'Notes',
-	'communityvoice-ratings-scale-status-sending' => 'Envoi en cours ...',
+	'communityvoice-ratings-scale-status-sending' => 'Envoi en cours...',
 	'communityvoice-ratings-scale-status-error' => "Erreur lors de l'envoi !",
 	'communityvoice-ratings-scale-status-thanks' => 'Merci de votre vote !',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 vote{{PLURAL:$2||s}})',
@@ -954,14 +955,17 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Liangent
  */
 $messages['zh-hans'] = array(
 	'communityvoice' => '社群之声',
 	'communityvoice-desc' => '社群参与工具',
 	'communityvoice-ratings' => '评分',
+	'communityvoice-ratings-scale-status-sending' => '发送中...',
 	'communityvoice-ratings-scale-status-error' => '发送错误！',
 	'communityvoice-ratings-scale-status-thanks' => '感谢投票！',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 个投票)',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -971,7 +975,9 @@ $messages['zh-hant'] = array(
 	'communityvoice' => '社群之聲',
 	'communityvoice-desc' => '社群參與工具',
 	'communityvoice-ratings' => '評分',
+	'communityvoice-ratings-scale-status-sending' => '發送中...',
 	'communityvoice-ratings-scale-status-error' => '發送錯誤！',
 	'communityvoice-ratings-scale-status-thanks' => '感謝投票！',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 個投票)',
 );
 

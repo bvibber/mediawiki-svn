@@ -1391,6 +1391,7 @@ $messages['fi'] = array(
 /** French (Français)
  * @author Crochet.david
  * @author Grondin
+ * @author Peter17
  * @author Sherbrooke
  * @author Urhixidur
  */
@@ -1409,7 +1410,7 @@ Lire le document au complet, et si vous souhaitez signifier votre appui, remplir
 	'sign-country' => 'Pays :',
 	'sign-phone' => 'Numéro de téléphone :',
 	'sign-bday' => 'Âge :',
-	'sign-email' => 'Adresse de courriel :',
+	'sign-email' => 'Adresse électronique :',
 	'sign-indicates-req' => '<small><i><font color="red">*</font> indique les champs obligatoires.</i></small>',
 	'sign-hide-note' => '<small><i><font color="red">**</font> Les informations non listées sont toujours visibles pour les modérateurs.</i></small>',
 	'sign-list-anonymous' => 'Lister de façon anonyme',

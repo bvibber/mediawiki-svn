@@ -9,10 +9,6 @@ descmsg = comboajaxlogin-desc
 
 Ajax Poll
 
-# Wrong format
-#ArticlesHome
-#file = ArticlesHome/ArticlesHome.i18n.php
-
 Auto Create Wiki
 optional = autocreatewiki-reminder-subject, autocreatewiki-language-top-list
 ignored = requestwiki-filter-language, autocreatewiki-tagline
@@ -20,9 +16,6 @@ ignored = requestwiki-filter-language, autocreatewiki-tagline
 Badges
 file = Badges/UserBadges.i18n.php
 optional = user-badge-left-align, user-badge-center-align, user-badge-right-align
-
-#BlogPage
-#file = BlogPage/Blog.i18n.php
 
 Blogs
 aliasfile = Blogs/Blogs.alias.php
@@ -33,11 +26,10 @@ Category Hubs
 
 Category Select
 
-#Comments
-#file = Comments/Comments.i18n.php
+Comments Forum
+file = CommentsForum/Forum.i18n.php
 
-#CommentsForum
-#file = CommentsForum/Forum.i18n.php
+Community Messages
 
 Contest Tool
 file = ContestTool/SpecialContestTool.i18n.php
@@ -48,8 +40,7 @@ file = ContestTool/SpecialContestTool.i18n.php
 #file = CreateAPage/MultiEdit.i18n.php
 #optional = createplate-Blank, createplate-list
 
-#Added 2010-02-01 -- tor
-CreatePage
+Create Page
 file = CreatePage/CreatePage.i18n.php
 ignored = createpage-newpagelayout
 
@@ -59,38 +50,15 @@ file = DaemonLoader/SpecialDaemonLoader.i18n.php
 Edit Account
 file = EditAccount/SpecialEditAccount.i18n.php
 
-# Conflicting keys from MediaWiki SVN's Editcount
-# Key 8:editcount already belongs to ext-editcount, conflict with wikia-editcount
-# Key 8:editcount_username already belongs to ext-editcount, conflict with wikia-editcount
-# Key 8:editcount_submit already belongs to ext-editcount, conflict with wikia-editcount
-# Key 8:editcount_total already belongs to ext-editcount, conflict with wikia-editcount
-#Editcount
-#file = Editcount/SpecialEditcount.i18n.php
-
 Editing Tips
 
 Edit Research
-
-# Conflicting keys from MediaWiki SVN's ImportFreeImages
-# Key 8:importfreeimages already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_description already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_noapikey already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_nophotosfound already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_owner already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_importthis already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_next already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_filefromflickr already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_promptuserforfilename already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-# Key 8:importfreeimages_returntoform already belongs to ext-importfreeimages, conflict with wikia-flickrimport
-#Flickr Import
-#var = wgFlickrImportMessages
 
 Follow
 aliasfile = Follow/Follow.alias.php
 
 Force Subject For New Section
 
-#Added 2010-04-23 -- tor
 Founder Emails
 
 Global Watchlist
@@ -101,18 +69,21 @@ file = GraceExpired/SpecialGraceExpired.i18n.php
 HA Welcome
 ignored = welcome-enabled, welcome-user
 
+Health Check
+file = SpecialHealthcheck/HealthCheck.i18n.php
+
+Helper Panel
+
 Image Placeholder
 
 Interstitial - Outbound Screen
 file = Interstitial/OutboundScreen.i18n.php
 
-Link Suggest
+Interwiki Dispatcher
+file = InterwikiDispatcher/SpecialInterwikiDispatcher.i18n.php
+aliasfile = InterwikiDispatcher/SpecialInterwikiDispatcher.alias.php
 
-# Conflicting keys from MediaWiki core
-# Key 8:listusers already belongs to core, conflict with wikia-listusers
-# Key 8:listusers-blocked already belongs to core, conflict with wikia-listusers
-#Listusers
-#file = Listusers/SpecialListusers.i18n.php
+Link Suggest
 
 Lookup Contribs
 file = LookupContribs/SpecialLookupContribs.i18n.php
@@ -149,13 +120,17 @@ Problem Reports
 
 Quick Create
 
-Search Rank Tracker
-file = SearchRankTracker/SpecialSearchRankTracker.i18n.php
+Recipes Tweaks
+
+RTE - Base
+file = RTE/i18n/RTE.i18n.php
+
+RTE - CK Wikia
+file = RTE/i18n/CK.wikia.i18n.php
 
 Search
 
-Send To A Friend
-aliasfile = SendToAFriend/SendToAFriend.alias.php
+Shared Help
 
 Share Feature
 
@@ -166,13 +141,22 @@ Site Wide Messages
 file = SiteWideMessages/SpecialSiteWideMessages.i18n.php
 ignored = swm-expire-options
 
+Slider Tag
+
 Special Interwiki Edit
+
+Special Mini Upload
 
 Special Multiple Lookup
 
 Special Private Domains
 
 Special Protect Site
+
+Special Sponsor Page
+descmsg = sponsorpage-desc
+file = SpecialSponsorPage/Sponsor.i18n.php
+optional = sponsor-template
 
 Special Widget Dashboard
 
@@ -187,15 +171,18 @@ file = TaskManager/SpecialTaskManager.i18n.php
 Text Regex
 aliasfile = TextRegex/TextRegex.alias.php
 
+Theory tab
+ignored = theorytab-subpage
+
 Title Edit
 
 Video Embed Tool
 
-Wikia Video Add
-file = VideoEmbedTool/WikiaVideoAdd.i18n.php
-
 Where Is Extension
 file = WhereIsExtension/SpecialWhereIsExtension.i18n.php
+
+Wikia Video Add
+file = VideoEmbedTool/WikiaVideoAdd.i18n.php
 
 Widget Special Page
 file = WidgetSpecialPage/WidgetsSpecialPage.i18n.php
@@ -205,8 +192,20 @@ ignored = ircgate-channellist
 
 Wikia Mini Upload
 
-#Added 2010-04-23 -- tor
 Wikia Photo Gallery
+
+Wikia Stats
+file = WikiaStats/SpecialWikiaStats.i18n.php
+optional = wikiastats_prev_rank, wikiastats_prev_rank_xls, wikiastats_xls_files_stats
+optional = wikiastats_history_mainstats_value1, wikiastats_history_mainstats_value2, wikiastats_history_mainstats_value3, wikiastats_history_mainstats_value4
+optional = wikiastats_creation_wikia_filename
+ignored = wikiastats_distrib_article_counting, wikiastats_filename_mainstats, wikiastats_filename_other1, wikiastats_filename_other2
+ignored = wikiastats_filename_other3, wikiastats_filename_other4, wikiastats_filename_other5, wikiastats_filename_other6
+ignored = wikiastats_filename_other7, wikiastats_filename_other8, wikiastats_filename_trend, wikiastats_filename_creation
+ignored = wikiastats_filename_column_A, wikiastats_filename_column_B, wikiastats_filename_column_C, wikiastats_filename_column_D
+ignored = wikiastats_filename_column_E, wikiastats_filename_column_F, wikiastats_filename_column_G, wikiastats_filename_column_H
+ignored = wikiastats_filename_column_I, wikiastats_filename_column_J, wikiastats_filename_column_K, wikiastats_filename_column_L
+ignored = wikiastats_filename_column_M, wikiastats_filename_column_N, wikiastats_filename_column_O
 
 Wikia Upload
 
@@ -225,38 +224,9 @@ file = WikiFactory/SpecialWikiFactory.i18n.php
 optional = wikifactory-label-eznamespace
 ignored = awc-metrics-language-top-list
 
-Helper Panel
+Wiki Stickies
+aliasfile = WikiStickies/SpecialWikiStickies.alias.php
 
-Interwiki Dispatcher
-file = InterwikiDispatcher/SpecialInterwikiDispatcher.i18n.php
-aliasfile = InterwikiDispatcher/SpecialInterwikiDispatcher.alias.php
-
-#i18n file needs to be well formed
-# all sections need to to separated with newlines
-# and no trailing ?>
-#MultiEdit
-#file = MultiEdit/MultiEdit.i18n.php
-
-# Conflicting keys with MediaWiki SVN RegexBlock extension
-# Key 8:regexblock already belongs to ext-regexblock, conflict with wikia-regexblock
-# Key 8:right-regexblock already belongs to ext-regexblock, conflict with wikia-regexblock
-#RegexBlock
-#file = RegexBlock/RegexBlock.i18n.php
-
-Special Mini Upload
-
-Theory tab
-ignored = theorytab-subpage
-
-Wikia Stats
-file = WikiaStats/SpecialWikiaStats.i18n.php
-optional = wikiastats_prev_rank, wikiastats_prev_rank_xls, wikiastats_xls_files_stats
-optional = wikiastats_history_mainstats_value1, wikiastats_history_mainstats_value2, wikiastats_history_mainstats_value3, wikiastats_history_mainstats_value4
-optional = wikiastats_creation_wikia_filename
-ignored = wikiastats_distrib_article_counting, wikiastats_filename_mainstats, wikiastats_filename_other1, wikiastats_filename_other2
-ignored = wikiastats_filename_other3, wikiastats_filename_other4, wikiastats_filename_other5, wikiastats_filename_other6
-ignored = wikiastats_filename_other7, wikiastats_filename_other8, wikiastats_filename_trend, wikiastats_filename_creation
-ignored = wikiastats_filename_column_A, wikiastats_filename_column_B, wikiastats_filename_column_C, wikiastats_filename_column_D
-ignored = wikiastats_filename_column_E, wikiastats_filename_column_F, wikiastats_filename_column_G, wikiastats_filename_column_H
-ignored = wikiastats_filename_column_I, wikiastats_filename_column_J, wikiastats_filename_column_K, wikiastats_filename_column_L
-ignored = wikiastats_filename_column_M, wikiastats_filename_column_N, wikiastats_filename_column_O
+Without images
+file = WikiStickies/SpecialWithoutimages.i18n.php
+aliasfile = WikiStickies/SpecialWithoutimages.alias.php

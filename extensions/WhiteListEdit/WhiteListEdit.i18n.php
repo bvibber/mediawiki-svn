@@ -673,7 +673,7 @@ $messages['ch'] = array(
  * @author Marmzok
  * @author رزگار
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'whitelistedit-desc' => 'دەستکاری‌کردنی ڕێگەدان بۆ دەست‌پێ‌گەیشتنی بەکارهێنەرانی سنووردار کراو',
 	'mywhitelistpages' => 'پەڕەکانی من',
 	'whitelisttablemodify' => 'پێداچوونەوە',
@@ -1043,6 +1043,7 @@ $2',
 
 /** Spanish (Español)
  * @author Antur
+ * @author Dferg
  * @author Imre
  * @author Piolinfax
  * @author Sanbec
@@ -1079,7 +1080,7 @@ Tienes que [[Special:UserRights|añadir usuarios al grupo]] antes de poder añad
 	'whitelistnewtablereview' => 'Revisión',
 	'whitelistselectrestricted' => '== Selecciona un nombre de usuario restringido ==',
 	'whitelistpagelist' => 'Páginas de {{SITENAME}} para $1',
-	'whitelistnocalendar' => "<font color='red' size=3>Aparentemente la [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], requisito necesario para esta extensión, no ha sido instalada correctamente!</font>",
+	'whitelistnocalendar' => "<font color='red' size=3>¡Aparentemente la [http://www.mediawiki.org/wiki/Extension:Usage_Statistics Extension:UsageStatistics], requisito necesario para esta extensión, no ha sido instalada correctamente!</font>",
 	'whitelistoverview' => '== Resumen de cambios para $1 ==',
 	'whitelistoverviewcd' => "* Cambiando la fecha a '''$1''' para [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Estableciendo acceso a '''$1''' para [[:$2|$2]]",
@@ -1542,9 +1543,18 @@ $messages['hil'] = array(
 
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
+ * @author Tivek
  */
 $messages['hr'] = array(
+	'whitelistedit-desc' => 'Uređivanje dozvola pristupa ograničenih korisnika',
+	'mywhitelistpages' => 'Moje stranice',
+	'whitelistfor' => '<center>Trenutačne informacije za <b>$1</b></center>',
+	'whitelisttablemodify' => 'Izmijeni',
 	'whitelisttablemodifyall' => 'Sve',
+	'whitelisttablemodifynone' => 'Nijedan',
+	'whitelisttablepage' => 'Wiki stranica',
+	'whitelisttabletype' => 'Tip pristupa',
+	'whitelisttableexpires' => 'Istječe',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnever' => 'nikad',
 );

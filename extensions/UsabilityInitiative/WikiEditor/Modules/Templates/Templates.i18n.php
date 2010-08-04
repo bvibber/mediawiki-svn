@@ -75,7 +75,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-templates-preference' => 'مۆڵەتدانی کۆکردنەوەی داڕێژە',
 );
 
@@ -350,6 +350,13 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'wikieditor-templates-preference' => 'Abilité lë sgnacament ëd jë stamp',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-templates-preference' => 'کينډۍ غځول چارنده کول',
 );
 
 /** Portuguese (Português)

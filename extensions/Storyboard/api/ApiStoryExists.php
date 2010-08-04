@@ -23,11 +23,6 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	// Eclipse helper - will be ignored in production
-	require_once ( "ApiBase.php" );
-}
-
 /**
  * This action returns the html for Stories to be displayed in a storyboard.
  *

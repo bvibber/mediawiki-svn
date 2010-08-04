@@ -635,7 +635,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'tasks_previous' => 'پێشوو',
 	'tasks_next' => 'دواتر',
 );
@@ -1894,10 +1894,12 @@ $messages['id'] = array(
 	'tasks-pref-showtaskcomments' => 'Transklusikan halaman komentar tugas.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'tasks_delete' => 'Gbakashia',
-	'tasks_more_like_it' => 'dikarírí',
+	'tasks_more_like_it' => 'nà nké ozór',
 	'tasks_search_form_title' => 'Chöwá',
 );
 
@@ -2281,6 +2283,8 @@ $messages['lb'] = array(
 	'tasks_existing_header' => 'Aufgaben déi et gëtt',
 	'tasks_existing_table_header' => "Aufgab|Datum|Ufank's-Bemierkung|Zouuerdnung/Aktiounen/Säit",
 	'tasks_noone' => 'keen',
+	'tasks_assign_me' => 'Mir selwer assignéieren',
+	'tasks_assign_to' => 'Assignéiert un',
 	'tasks_close' => 'Aufgab ofschléissen',
 	'tasks_wontfix' => 'Gëtt net verbessert',
 	'tasks_delete' => 'Läschen',
@@ -2314,6 +2318,7 @@ $messages['lb'] = array(
 	'tasks_sort' => 'Sortéieren',
 	'tasks_ascending' => "Déi eelst fir d'éischt",
 	'tasks_status_open' => 'Op',
+	'tasks_status_assigned' => 'Assignéiert',
 	'tasks_status_closed' => 'Zou',
 	'tasks_status_wontfix' => 'Gëtt net verbessert',
 	'tasks_action_open' => 'Aufgab "$1" opgemaach.',
@@ -2390,7 +2395,7 @@ $messages['mk'] = array(
 	'tasks_search_results' => 'Резултати од пребарувањето',
 	'tasks_previous' => 'Претходна',
 	'tasks_next' => 'Следна',
-	'tasks_sort' => 'Сортирај',
+	'tasks_sort' => 'Подреди',
 	'tasks_ascending' => 'Прво најстарите',
 	'tasks_status_open' => 'Отворена',
 	'tasks_status_assigned' => 'Доделена',

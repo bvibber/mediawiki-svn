@@ -32,11 +32,16 @@ class MapsYahooMaps extends MapsMappingService {
 		'normal' => 'YAHOO_MAP_REG',
 		'satellite' => 'YAHOO_MAP_SAT',
 		'hybrid' => 'YAHOO_MAP_HYB',
-	);	
+	);
 	
-	function __construct() {
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.6.6
+	 */
+	function __construct( $serviceName ) {
 		parent::__construct(
-			'yahoomaps',
+			$serviceName,
 			array( 'yahoo', 'yahoomap', 'ymap', 'ymaps' )
 		);
 	}		
@@ -47,7 +52,7 @@ class MapsYahooMaps extends MapsMappingService {
 	 * @since 0.5
 	 */		
 	protected function initParameterInfo( array &$parameters ) {
-		global $egMapsServices, $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
+		global $egMapsYahooAutozoom, $egMapsYahooMapsType, $egMapsYahooMapsTypes, $egMapsYahooMapsZoom, $egMapsYMapControls;
 		
 		Validator::addOutputFormat( 'ymaptype', array( __CLASS__, 'setYMapType' ) );
 		Validator::addOutputFormat( 'ymaptypes', array( __CLASS__, 'setYMapTypes' ) );		

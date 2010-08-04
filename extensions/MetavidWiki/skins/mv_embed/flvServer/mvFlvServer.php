@@ -113,4 +113,4 @@ function npt2seconds($str_time){
 	}
 	return ($hours*3600) + ($min*60) + $sec;
 }
-?>
+

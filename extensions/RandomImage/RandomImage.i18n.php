@@ -70,10 +70,11 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'randomimage-desc' => 'Darparu detholydd cyfryngau ar hap gan ddefnyddio <code>&lt;randomimage /&gt;></code>',
+	'randomimage-desc' => 'Yn darparu detholydd cyfryngau ar hap gan ddefnyddio <code>&lt;randomimage /&gt;</code>',
 );
 
 /** German (Deutsch)

@@ -1049,9 +1049,11 @@ Silakan tunggu tindakan yang ada untuk selesai.',
 	'tag-logpagetext' => 'Ini adalah log semua penambahan dan penghilangan tag gambar.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'imagetagging-tagcancel-button' => 'Emekwàlà',
+	'imagetagging-tagcancel-button' => 'Kàchá',
 );
 
 /** Italian (Italiano)

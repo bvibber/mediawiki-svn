@@ -124,7 +124,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'prefswitch-link-anon' => 'تایبەتمەندییە نوێکان',
 	'tooltip-pt-prefswitch-link-anon' => 'فێربوون سەبارەت بە تایبەتمەندییە نوێکان',
 	'prefswitch-link-on' => 'بمگەڕێنەوە',
@@ -639,6 +639,18 @@ $messages['pms'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Preuva le neuve funsionalità',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'prefswitch-link-anon' => 'نوې ځانګړنې',
+	'tooltip-pt-prefswitch-link-anon' => 'د نوؤ ځانګړنو په اړه مالومات',
+	'prefswitch-link-on' => 'بېرته پر شا ستنېدل',
+	'tooltip-pt-prefswitch-link-on' => 'نوې ځانګړنې ناچارنده کول',
+	'prefswitch-link-off' => 'نوې ځانګړنې',
+	'tooltip-pt-prefswitch-link-off' => 'نوې ځانګړنې آزمويل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -903,7 +915,7 @@ $messages['yo'] = array(
 	'prefswitch-link-on' => 'Dá mi padà',
 	'tooltip-pt-prefswitch-link-on' => 'Ìdẹ́kun àwọn ìní tuntun',
 	'prefswitch-link-off' => 'Àwọn ìní tuntun',
-	'tooltip-pt-prefswitch-link-off' => 'Ẹ ṣèdánwò àwọn ìní tuntun',
+	'tooltip-pt-prefswitch-link-off' => 'Ẹ ṣàdánwò àwọn ìní tuntun',
 );
 
 /** Cantonese (粵語)

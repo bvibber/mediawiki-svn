@@ -934,7 +934,8 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'patrol-revert-reason' => 'Mgbaghaputa:',
+	'patrol-revert-reason' => 'Mgbághapụtà:',
+	'patrol-skip' => 'Gáfè',
 	'group-patroller-member' => 'onye na léfuru ihe anyà',
 );
 
@@ -2112,6 +2113,7 @@ $messages['yue'] = array(
  */
 $messages['zh-hans'] = array(
 	'patrol' => '编辑巡逻',
+	'patrol-desc' => '分担工作量以增强巡逻界面',
 	'patrol-endorse' => '批注',
 	'patrol-revert' => '回退',
 	'patrol-revert-reason' => '原因：',

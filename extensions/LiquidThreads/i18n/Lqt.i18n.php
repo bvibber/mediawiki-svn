@@ -81,9 +81,8 @@ It may:
 	'lqt_protectedfromreply_link' => 'protected',
 	'lqt_subject' => 'Subject:',
 	'lqt_noreason' => 'No reason given.',
-	'lqt_move_placeholder' => 'This thread is a placeholder indicating that a thread, $1, was moved from this page.
-This move was made by $2 on $3 at $4.
-The thread is now located at $5.',
+	'lqt_move_placeholder' => 'A thread, $1, was moved from here to $5.
+This move was made by $2 on $3 at $4.',
 	'lqt_thread_deleted_for_sysops' => 'This thread has been \'\'\'deleted\'\'\' and is only visible to administrators.',
 	'lqt_thread_deleted' => 'This thread has been deleted.',
 	'lqt_summary_notice' => 'There have been no changes to this discussion for at least $2 {{PLURAL:$2|day|days}}.
@@ -229,7 +228,10 @@ You can see it at <$6>",
 This is a notification from {{SITENAME}} that a new reply to '$2' on $5,
 was created on $3 at $4.
 
-You can see it at <$6>",
+You can see it at <$6>
+
+The text of the reply is:
+$7",
 
 	// Quoting functionality
 	'lqt-quote-intro' => 'On $2 at $3, [[User:$1|$1]] wrote:',
@@ -694,7 +696,8 @@ Die onderwerp is deel van $2.',
 	'lqt-history-thread' => 'Onderwerp',
 	'lqt-thread-edited-author' => 'Gewysig deur outeur<br />
 Laaste wysiging $1',
-	'lqt-thread-edited-others' => 'Gewysig deur ander gebruikers',
+	'lqt-thread-edited-others' => "Deur {{PLURAL:$2|'n ander gebruiker|$2 ander gebruikers}} gewysig.<br />
+Laaste wysiging: $1",
 	'lqt-header-actions' => 'Aksies',
 	'lqt_summarize_link' => 'Som op',
 	'lqt-thread-split' => "Split af na 'n  nuwe onderwerp",
@@ -706,6 +709,7 @@ Laaste wysiging $1',
 	'lqt_split_badsubject' => 'Die onderwerp wat u verskaf het is ongeldig.',
 	'lqt-no-threads' => 'Daar is nog geen onderwerpe op hierdie bladsy nie.',
 	'lqt-delete-parent-deleted' => 'Boliggende bespreking is geskrap ($1)',
+	'lqt-delete-replies-done' => 'Al die antwoorde op hierdie draad is ook verwyder.',
 	'lqt-movethread' => 'Skuif',
 	'lqt-menu-trigger' => 'Meer',
 	'lqt-newmessages-from' => 'Van $1',
@@ -723,6 +727,10 @@ Laaste wysiging $1',
 	'lqt-merge-submit' => 'Versmelt',
 	'lqt-log-name' => 'Onderwerplogboek',
 	'lqt-log-action-move' => 'het [[$1]] geskuif van [[$2]] na [[$3]].',
+	'lqt-log-action-split' => 'het [[$1]] afgesplit van [[$3]] met nuwe onderwerp "$2".',
+	'lqt-log-action-merge-across' => 'is van [[$1]] uit [[$2]] na [[$3]] geskuif.',
+	'lqt-log-action-merge-down' => 'het [[$1]] na onder [[$3]] versmelt',
+	'lqt-log-action-subjectedit' => 'het die onderwerp vir [[$1]] van "$2" na "$3" verander',
 	'lqt-preference-notify-talk' => 'Stuur vir my e-pos as besprekings wat ek dophou beantwoord word',
 	'lqt-preference-watch-threads' => 'Hou besprekings wat ek begin of waaraan ek deelneem dop',
 	'prefs-lqt' => 'Gestruktureerde besprekings',
@@ -738,9 +746,13 @@ Hierdie is 'n kennisgewing vanaf {{SITENAME}}. Daar is 'n nuwe onderwerp '$2' op
 U kan dit sien by <$6>.",
 	'lqt-enotif-reply' => "Hallo $1,
 
-Hierdie is 'n kennisgewing vanaf {{SITENAME}}. Daar is 'n nuwe antwoord '$2' op $5 geplaas op $3 om $4.
+Hierdie is 'n kennisgewing vanaf {{SITENAME}}. Daar is 'n nuwe antwoord '$2' op $5
+wat op $3 om $4 geplaas is.
 
-U kan dit sien by <$6>.",
+U kan dit sien by <$6>.
+
+Die teks van die antwoord is:
+$7",
 	'lqt-quote-intro' => 'Op $2 om $3 skryf [[User:$1|$1]]:',
 	'lqt-quote' => 'Aanhaal',
 	'lqt-search-legend' => 'Deursoek besprekings op hierdie bladsy',
@@ -761,9 +773,11 @@ U kan dit sien by <$6>.",
 	'lqt-cancel-subject-edit' => 'Kanselleer',
 	'lqt-drag-activate' => 'Sleep na nuwe posisie',
 	'lqt-drag-drop-zone' => 'Plaas hier',
+	'lqt-drag-split' => 'Skuif na sy eie draad',
 	'lqt-drag-setsortkey' => 'Skuif boodskap na ander posisie op die bladsy',
 	'lqt-drag-bump' => 'Skuif boodskap tot bo aan besprekingsblad',
 	'lqt-drag-save' => 'Bevestig',
+	'lqt-drag-title' => 'Bevestig sleep',
 	'lqt-drag-reason' => 'Rede:',
 	'lqt-drag-subject' => 'Onderwerp:',
 	'lqt-edit-signature' => '(wysig handtekening)',
@@ -786,6 +800,7 @@ U kan dit sien by <$6>.",
 	'lqt-talkpage-history-tab' => 'Opskrif',
 	'restriction-reply' => 'Antwoorde',
 	'restriction-newthread' => 'Skep nuwe onderwerpe',
+	'lqt-protected-reply-thread' => 'U kan nie pos nie omdat die onderwerp sluit is.',
 	'lqt-edit-bump' => 'Aktiveer die bespreking',
 	'lqt-edit-bump-tooltip' => 'Skuif die onderwerp tot bo aan die besprekingsblad',
 	'lqt-reply-subpage' => 'antwoord',
@@ -1445,6 +1460,7 @@ $messages['bcc'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Mormegil
+ * @author Wizardist
  * @author Александр Сигачёв
  */
 $messages['be-tarask'] = array(
@@ -1644,11 +1660,14 @@ $messages['be-tarask'] = array(
 створаную $3 $4.
 
 Вы можаце паглядзець яе на <$6>",
-	'lqt-enotif-reply' => "Вітаем $1,
-Гэта паведамленьне з {{GRAMMAR:родны|{{SITENAME}}}} пра новы адказ $5, '$2', 
-створаны $3 $4.
+	'lqt-enotif-reply' => "Вітаем, $1!
+Гэта паведамленьне з {{GRAMMAR:родны|{{SITENAME}}}} пра новы адказ '$2' на старонцы $5, 
+створаны у $4 $3.
 
-Вы можаце паглядзець яго на <$6>",
+Вы можаце паглядзець яго на <$6>.
+
+Тэкст адказу:
+$7",
 	'lqt-quote-intro' => '$2 $3 [[User:$1|$1]] {{GENDER:$1|напісаў|напісала}}:',
 	'lqt-quote' => 'Цытаваць',
 	'lqt-search-legend' => 'Пошук абмеркаваньняў на гэтай старонцы',
@@ -3134,6 +3153,7 @@ Podpis se zobrazuje automaticky.',
 	'lqt-drag-setsortkey' => 'Změna pozice příspěvku na stránce',
 	'lqt-drag-bump' => 'Přesunutí příspěvku navrch diskusní stránky',
 	'lqt-drag-save' => 'Potvrdit',
+	'lqt-drag-title' => 'Potvrdit přetažení',
 	'lqt-drag-reason' => 'Důvod:',
 	'lqt-drag-subject' => 'Předmět nového vlákna:',
 	'lqt-edit-signature' => '(upravit podpis)',
@@ -3412,7 +3432,10 @@ Du kannst ihn auf <$6> einsehen.',
 	'lqt-enotif-reply' => 'Hallo $1,
 dies ist eine Benachrichtigung von {{SITENAME}}, dass am $3 um $4 Uhr auf der Seite „$5“ ein neue Antwort im Diskussionsstrang „$2“ geschrieben wurde.
 
-Du kannst sie auf <$6> einsehen.',
+Du kannst sie auf <$6> einsehen.
+
+Die Antwort lautet:
+$7',
 	'lqt-quote-intro' => 'Am $2 um $3 Uhr schrieb [[User:$1|$1]]:',
 	'lqt-quote' => 'Zitieren',
 	'lqt-search-legend' => 'Durchsuche die Diskussionsbeiträge auf dieser Seite',
@@ -6257,15 +6280,18 @@ Para evitar isto, sepáreas deste fío antes de borralo.',
 	'lqt-enotif-subject-reply' => 'Conversa {{SITENAME}} - Resposta: $1',
 	'lqt-enotif-subject-newthread' => 'Conversa {{SITENAME}} - Novo fío: $1',
 	'lqt-enotif-newthread' => 'Ola $1:
-Esta é unha notificación de {{SITENAME}} que informa de que un novo fío en $5, "$2",
-foi creado o $3 ás $4.
+Esta é unha notificación de {{SITENAME}} que informa de que se creou un novo fío en $5, "$2",
+o $3 ás $4.
 
 Pode velo en <$6>',
 	'lqt-enotif-reply' => 'Ola $1:
-Esta é unha notificación de {{SITENAME}} que informa de que unha nova resposta a "$2" en $5
-foi creada o $3 ás $4.
+Esta é unha notificación de {{SITENAME}} que informa de que se creou unha nova resposta a "$2" en $5
+o $3 ás $4.
 
-Pode vela en <$6>',
+Pode vela en <$6>
+
+O texto da resposta é:
+$7',
 	'lqt-quote-intro' => 'O $2 ás $3, o [[User:$1|usuario $1]] escribiu:',
 	'lqt-quote' => 'Citar',
 	'lqt-search-legend' => 'Procurar conversas nesta páxina',
@@ -6599,6 +6625,7 @@ D Signatur wird automatisch aazeigt.',
 	'lqt-drag-setsortkey' => 'Dr Platz vum Byytrag uf dr Syte aapasse',
 	'lqt-drag-bump' => 'Byytrag an dr Aafang vu dr Diskussionssyte setze',
 	'lqt-drag-save' => 'Bstetige',
+	'lqt-drag-title' => 'Zie bstetige',
 	'lqt-drag-reason' => 'Grund:',
 	'lqt-drag-subject' => 'Thema vum neje Diskussionsstrang:',
 	'lqt-edit-signature' => '(Unterschrift bearbeite)',
@@ -6939,6 +6966,7 @@ $messages['he'] = array(
 	'lqt-drag-setsortkey' => 'הגדרת מיקום ההודעה בדף',
 	'lqt-drag-bump' => 'העברה לראש דף הדיון',
 	'lqt-drag-save' => 'אישור',
+	'lqt-drag-title' => 'אישור גרירה',
 	'lqt-drag-reason' => 'סיבה:',
 	'lqt-drag-subject' => 'כותרת לשרשור חדש:',
 	'lqt-edit-signature' => '(עריכת החתימה)',
@@ -8186,6 +8214,7 @@ Tanda tangan akan dimunculkan secara otomatis.',
 	'lqt-drag-setsortkey' => 'Sesuaikan posisi kiriman pada halaman',
 	'lqt-drag-bump' => 'Pindahkan kiriman ke atas halaman diskusi',
 	'lqt-drag-save' => 'Konfirmasikan',
+	'lqt-drag-title' => 'Konfirmasi pemindahan',
 	'lqt-drag-reason' => 'Alasan:',
 	'lqt-drag-subject' => 'Subjek utas baru:',
 	'lqt-edit-signature' => '(sunting tanda tangan)',
@@ -8225,11 +8254,11 @@ $messages['ig'] = array(
 	'lqt_youhavenewmessages' => 'I nwere [[$1|ozi ohúrù]].',
 	'lqt-read-message-tooltip' => 'Wéfu ahiri nka na ozi ohúrù.
 Madu nwere I ki hü ya na ihü akíkó nke sinambu.',
-	'lqt-menu-trigger' => 'Dikarírí',
+	'lqt-menu-trigger' => 'Nà nké ozór',
 	'lqt-search-button' => 'Chöwá',
 	'lqt-save-subject' => 'Donyéré',
-	'lqt-cancel-subject-edit' => 'Emekwàlà',
-	'lqt-drag-reason' => 'Mgbaghaputa:',
+	'lqt-cancel-subject-edit' => 'Kàchá',
+	'lqt-drag-reason' => 'Mgbághapụtà:',
 	'lqt-newmessages-n' => 'Ozi ohúrù ($1)',
 	'lqt_newmessages' => 'Ozi ohúrù',
 	'lqt_newmessages-title' => 'Ozi ohúrù',
@@ -8851,6 +8880,7 @@ $messages['ja'] = array(
 	'lqt-drag-setsortkey' => '投稿のページ上の位置を修正',
 	'lqt-drag-bump' => '投稿を議論ページの先頭に移動',
 	'lqt-drag-save' => '確定',
+	'lqt-drag-title' => 'ドラッグを確認',
 	'lqt-drag-reason' => '理由:',
 	'lqt-drag-subject' => '新しいスレッドの表題:',
 	'lqt-edit-signature' => '(署名の編集)',
@@ -9269,8 +9299,8 @@ $messages['kn'] = array(
  * @author Ryuch
  */
 $messages['ko'] = array(
-	'lqt-desc' => '토론 문서에서 스레드를 이용하는 토론을 이용',
-	'lqt_movethread' => '스레드를 다른 페이지로 이동',
+	'lqt-desc' => '토론 문서의 스레드 토론 확장기능을 추가',
+	'lqt_movethread' => '스레드를 다른 문서로 이동',
 	'lqt_deletethread' => '스레드 삭제/복구',
 	'lqt_contents_title' => '목차',
 	'lqt_toc_thread_title' => '스레드 제목',
@@ -9279,14 +9309,14 @@ $messages['ko'] = array(
 	'lqt_toc_thread_modified' => '마지막으로 수정된 시각',
 	'lqt_add_header' => '머리말 추가',
 	'lqt_new_thread' => '새 토론 시작하기',
-	'lqt_invalid_subject' => '당신이 입력한 주제가 잘못되었습니다.
-* 주제가 너무 길거나
-* 인터위키나 이름공간 이름의 충돌로 문제가 발생할 수 있습니다.',
+	'lqt_invalid_subject' => '주제가 잘못되었습니다.
+* 주제가 너무 길거나,
+* 인터위키나 다른 네임스페이스와의 충돌이 발생했을 수 있습니다.',
 	'lqt_empty_subject' => '주제를 반드시 입력해야 합니다.',
 	'lqt_reply' => '답변',
 	'lqt-parent' => '상위 스레드',
 	'lqt_delete' => '삭제',
-	'lqt_undelete' => '되살리기',
+	'lqt_undelete' => '복구',
 	'lqt_permalink' => '링크',
 	'lqt_fragment' => '$2 문서에서의 $1의 일부',
 	'lqt_discussion_link' => '토론',
@@ -9397,7 +9427,7 @@ $2를 누르면 새 토론을 시작할 수 있습니다.',
 	'lqt-email-undo' => '취소',
 	'lqt-messages-sent' => '당신에게 직접 전달된 메시지:',
 	'lqt-other-messages' => '다른 토론 문서의 메시지:',
-	'lqt-no-new-messages' => '당신에게 남겨진 메시지가 없습니다.',
+	'lqt-no-new-messages' => '새로운 메시지가 없습니다.',
 	'lqt-new-messages' => '✒ 당신에게 새 메시지가 도착했습니다.',
 	'lqt-email-info-undo' => '당신이 방금 없앤 스레드를 복구합니다.',
 	'lqt-date-info' => '당신이 모든 날짜에 대해 스레드를 보고 있기 때문에 이 링크가 비활성화되었습니다.',
@@ -9502,6 +9532,7 @@ $2를 누르면 새 토론을 시작할 수 있습니다.',
 	'lqt-drag-setsortkey' => '이 문서에서 글의 위치를 조정하기',
 	'lqt-drag-bump' => '토론 문서의 맨 위로 옮기기',
 	'lqt-drag-save' => '확인',
+	'lqt-drag-title' => '드래그 확인',
 	'lqt-drag-reason' => '이유:',
 	'lqt-drag-subject' => '새 스레드의 주제:',
 	'lqt-edit-signature' => '(서명 편집하기)',
@@ -10024,7 +10055,10 @@ Dir kënnt se op <$6> gesinn.",
 Dëst ass eng Notifikatioun vu(n) {{SITENAME}} datt eng nei Äntwert op '$2' op $5,
 den $3 ëm $4 ugeluecht gouf.
 
-Dir kënnt se op <$6> gesinn.",
+Dir kënnt se op <$6> gesinn.
+
+Den Text vun der Äntwert ass:
+$7",
 	'lqt-quote-intro' => 'De(n) $2 ëm $3 Auer, huet de(n) [[User:$1|$1]] geschriwwen:',
 	'lqt-quote' => 'Zitéieren',
 	'lqt-search-legend' => 'Diskussiounen zu dëser Säit sichen',
@@ -10272,7 +10306,7 @@ $messages['mk'] = array(
 Наместо ова, можете да $2.',
 	'lqt_header_warning_bold' => 'наслов на страницата за разговор',
 	'lqt_header_warning_new_discussion' => 'започнете нов разговор',
-	'lqt_sorting_order' => 'Редослед на сортирање:',
+	'lqt_sorting_order' => 'Редослед на подредување:',
 	'lqt_sort_newest_changes' => 'прво најскоро променети',
 	'lqt_sort_newest_threads' => 'прво најнови нишки',
 	'lqt_sort_oldest_threads' => 'прво најстари нишки',
@@ -10348,7 +10382,7 @@ $messages['mk'] = array(
 	'lqt-log-action-merge-across' => 'преместена [[$1]] од под [[$2]]. Сега е под [[$3]].',
 	'lqt-log-action-merge-down' => '[[$1]] ставена (споена) под [[$3]]',
 	'lqt-log-action-subjectedit' => 'изменет насловот на [[$1]] од „$2“ на „$3“',
-	'lqt-log-action-resort' => 'изменет редоследот на сортирање на [[$1]]. Клучот за сортирање изменет од $2 на $3.',
+	'lqt-log-action-resort' => 'изменет редоследот на подредување на [[$1]]. Клучот за подредување изменет од $2 на $3.',
 	'lqt-preference-notify-talk' => 'Испрати ми е-пошта кога некој ќе одговори на нишка што ја набљудувам',
 	'lqt-preference-watch-threads' => 'Набљудувај ги нишките кои ги создавам или на кои одговарам',
 	'prefs-lqt' => 'Нанижан разговор',
@@ -10362,10 +10396,13 @@ $messages['mk'] = array(
 
 Можете да ја погледате на <$6>',
 	'lqt-enotif-reply' => 'Здраво $1,
-Ве известуваме дека на {{SITENAME}} е даден нов одговор на „$2“ на страницата $5,
-на $3 во $4.
+Ве известуваме дека на {{SITENAME}} има нов одговор на „$2“ за $5,
+даден на $3 во $4 ч.
 
-You can see it at <$6>',
+Можете да го погледате на <$6>
+
+Текстот на одговорот гласи:
+$7',
 	'lqt-quote-intro' => 'На $2 во $3, [[User:$1|$1]] напиша:',
 	'lqt-quote' => 'Цитирај',
 	'lqt-search-legend' => 'Пребарување разговори на страницава',
@@ -10508,9 +10545,9 @@ $messages['ml'] = array(
 	'lqt_thread_deleted' => 'ഈ ചരട് ഒഴിവാക്കി.',
 	'lqt_summary_notice' => 'ഈ ചർച്ചയിൽ കഴിഞ്ഞ {{PLURAL:$2|ദിവസം|$2 ദിവസങ്ങളിൽ}} യാതൊരു മാറ്റവും ഉണ്ടായിട്ടില്ല.
 അത് പരിസമാപ്തിയിലെത്തിയെങ്കിൽ, താങ്കൾക്ക് $1 ഉപയോഗിക്കാവുന്നതാണ്.',
-	'lqt_summary_notice_link' => 'സംഗ്രഹം എഴുതുക',
-	'lqt_summary_label' => 'ചരടിന്റെ സംഗ്രഹം:',
-	'lqt_summary_subtitle' => '"$1" എന്നതിന്റെ സംഗ്രഹം.',
+	'lqt_summary_notice_link' => 'ചുരുക്കം എഴുതുക',
+	'lqt_summary_label' => 'ചരടിന്റെ ചുരുക്കം:',
+	'lqt_summary_subtitle' => '"$1" എന്നതിന്റെ ചുരുക്കം.',
 	'lqt_nosuchrevision' => 'ഈ ചരടിനു അങ്ങനെയൊരു പതിപ്പില്ല.',
 	'lqt_nosuchthread' => 'താങ്കൾ ആവശ്യപ്പെട്ട ചരട് നിലവിലില്ല.',
 	'lqt_nosuchthread_title' => 'അങ്ങനെ ചരടില്ല',
@@ -10580,7 +10617,7 @@ $messages['ml'] = array(
 	'lqt-thread-edited-others' => '{{PLURAL:$2|മറ്റൊരുപയോക്താവ്|മറ്റ് $2 ഉപയോക്താക്കൾ}} തിരുത്തിയിരിക്കുന്നു.<br />
 അവസാന തിരുത്തൽ: $1',
 	'lqt-header-actions' => 'പ്രവർത്തനങ്ങൾ',
-	'lqt_summarize_link' => 'സംഗ്രഹിക്കുക',
+	'lqt_summarize_link' => 'ചുരുക്കിക്കുക',
 	'lqt-summarize-intro' => 'ചരടിനു താഴെ തിരുത്തുവാനുള്ള പെട്ടിയിൽ ദയവായി ചുരുക്കരൂപം നൽകുക.
 താങ്കൾ നൽകുന്ന ചുരുക്കത്തിൽ വിക്കിഎഴുത്തുകൾ ഉപയോഗിക്കാവുന്നതാണ്.
 പൂർണ്ണമായാൽ, "{{int:savearticle}}" ഞെക്കുക.',
@@ -11088,11 +11125,14 @@ Splits dit overleg alvorens het te verwijderen om dit te voorkomen.',
 Dit is een kennisgeving van {{SITENAME}}. Er is een nieuw onderwerp '$2' op $5 geplaatst op $3 om $4.
 
 U kunt het bekijken op <$6>.",
-	'lqt-enotif-reply' => "Hallo $1,
+	'lqt-enotif-reply' => 'Hallo $1,
 
-Dit is een kennisgeving van {{SITENAME}}. Er is een nieuw antwoord op '$2' op $5 gekomen op $3 om $4.
+Dit is een kennisgeving van {{SITENAME}}. Er is een nieuwe reactie op "$2" op $5 gekomen op $3 om $4.
 
-U kunt het bekijken op <$6>.",
+U kunt het bekijken op <$6>.
+
+Hieronder staat de reactie:
+$7',
 	'lqt-quote-intro' => 'Op $2 om $3 schreef [[User:$1|$1]]:',
 	'lqt-quote' => 'Citeren',
 	'lqt-search-legend' => 'Overleg op deze pagina doorzoeken',
@@ -12211,6 +12251,7 @@ Podpis jest wyświetlany automatycznie.',
 	'lqt-drag-setsortkey' => 'Zmień kolejność wiadomości na stronie',
 	'lqt-drag-bump' => 'Przenieś wiadomość na samą górę strony dyskusji',
 	'lqt-drag-save' => 'Potwierdź',
+	'lqt-drag-title' => 'Zatwierdzenie przeciągnięcia',
 	'lqt-drag-reason' => 'Powód',
 	'lqt-drag-subject' => 'Temat nowego wątku',
 	'lqt-edit-signature' => '(edytuj podpis)',
@@ -12450,7 +12491,10 @@ A peul vëddla su <$6>",
 Costa a l'é na notìfica da {{SITENAME}} che n'arspòsta neuva a '$2' su $5,
 a l'é stàita creà ël $3 a $4.
 
-A peul vëddla su <$6>",
+A peul vëddla su <$6>
+
+Ël test ëd l'arspòsta a l'é:
+$7",
 	'lqt-quote-intro' => "Ël $2 a $3, [[User:$1|$1]] a l'ha scrivù:",
 	'lqt-quote' => 'Sité',
 	'lqt-search-legend' => 'Sërché dle discussion dzora a sta pàgina-sì',
@@ -12483,7 +12527,7 @@ La firma a l'é mostrà automaticament.",
 	'lqt-drag-setsortkey' => 'Rangé la posission dël mëssagi ant la pàgina',
 	'lqt-drag-bump' => 'Tramudé ël mëssagi an cò dla pàgina ëd discussion',
 	'lqt-drag-save' => 'Conferma',
-	'lqt-drag-title' => 'Conferma la còpia',
+	'lqt-drag-title' => 'Confermé ël rabasté',
 	'lqt-drag-reason' => 'Rason:',
 	'lqt-drag-subject' => 'Soget ëd la neuva discussion:',
 	'lqt-edit-signature' => '(modifiché la firma)',
@@ -13199,7 +13243,7 @@ Threadul este acum localizat la $5.',
 	'lqt_thread_deleted_for_sysops' => "Acest thread a fost '''șters''' și este vizibil doar administratorilor.",
 	'lqt_thread_deleted' => 'Acest thread a fost șters.',
 	'lqt_summary_notice_link' => 'scrieți un rezumat',
-	'lqt_summary_label' => 'Acest thread a fost rezumat ca următoarele:',
+	'lqt_summary_label' => 'Rezumatul discuției:',
 	'lqt_summary_subtitle' => 'Rezumatul lui „$1”',
 	'lqt_nosuchrevision' => 'Nu există nicio astfel de revizie a acestui thread.',
 	'lqt_threadrequired' => 'Trebuie să specificați un thread în URL.',
@@ -13812,7 +13856,10 @@ $messages['ru'] = array(
 Это уведомление с сайта {{SITENAME}} о том, что $3 $4 на страницу $5
 был добавлен новый ответ на ветку «$2».
 
-Вы можете увидеть её по адресу <$6>',
+Вы можете увидеть её по адресу <$6>
+
+Текст ответа:
+$7',
 	'lqt-quote-intro' => '$2 $3, [[User:$1|$1]] написал:',
 	'lqt-quote' => 'Цитировать',
 	'lqt-search-legend' => 'Поиск обсуждений на этой странице',
@@ -16337,16 +16384,26 @@ Bunu <$6> adresinde görebilirsin.",
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Ерней
+ * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
 	'lqt_subject' => 'Тема:',
 	'lqt_delete_return' => '$1 битенә кайтырга.',
+	'lqt_newmessages-title' => 'Яңа хатлар',
+	'lqt-newpost-summary' => 'Яңа элемтә: $1',
+	'lqt-reply-summary' => '[[$2|$1]]гә җавап',
+	'lqt-talkpage-history-title' => 'Аралашу битенең тарихы',
+	'lqt-talkpage-history-subtitle' => '$1 өчен',
+	'lqt-talkpage-history-tab' => 'Баш өлеш',
+	'restriction-reply' => 'җавап бирергә',
+	'restriction-newthread' => 'яңа элемтәләр ясау',
 );
 
 /** Ukrainian (Українська)
  * @author AS
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'lqt-desc' => 'Додає на сторінки обговорень гілки обговорень',
@@ -16549,7 +16606,10 @@ $messages['uk'] = array(
 Це повідомлення з {{SITENAME}} про те, що нова відповідь у гілці '$2' на $5
 була створена $3 о $4.
 
-Ви можете переглянути її: <$6>",
+Ви можете переглянути її: <$6>
+
+Текст відповіді:
+$7",
 	'lqt-quote-intro' => '$2 о $3, [[User:$1|$1]] написав:',
 	'lqt-quote' => 'Цитувати',
 	'lqt-search-legend' => 'Пошук обговорень на цій сторінці',
@@ -16582,6 +16642,7 @@ $messages['uk'] = array(
 	'lqt-drag-setsortkey' => 'Змінити позицію розташування запису на сторінці',
 	'lqt-drag-bump' => 'Перемістити запис на початок сторінки обговорення',
 	'lqt-drag-save' => 'Підтвердити',
+	'lqt-drag-title' => 'Підтвердити перенос',
 	'lqt-drag-reason' => 'Причина:',
 	'lqt-drag-subject' => 'Тема для нової гілки:',
 	'lqt-edit-signature' => '(редагувати підпис)',
@@ -16920,6 +16981,7 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -17027,7 +17089,7 @@ Nếu nó đã đi đến kết thúc, có thể bạn sẽ muốn $1.{{PLURAL:$
 	'lqt_header_warning_after_big' => 'Đầu đề dùng để thông báo và mở đầu.
 Thay vào đó bạn có thể muốn $2.',
 	'lqt_header_warning_bold' => 'tiêu đề trang thảo luận',
-	'lqt_header_warning_new_discussion' => 'bắ đầu cuộc thảo luận mới',
+	'lqt_header_warning_new_discussion' => 'bắt đầu cuộc thảo luận mới',
 	'lqt_sorting_order' => 'Thứ tự xếp:',
 	'lqt_sort_newest_changes' => 'xem lần cuối sửa đổi trước',
 	'lqt_sort_newest_threads' => 'xem các luồng mới nhất trước',
@@ -17541,6 +17603,7 @@ $messages['zh-hans'] = array(
 	'lqt-drag-setsortkey' => '调整发言在页面中的位置',
 	'lqt-drag-bump' => '将发言移动到讨论页的顶部',
 	'lqt-drag-save' => '确认',
+	'lqt-drag-title' => '确认',
 	'lqt-drag-reason' => '原因：',
 	'lqt-drag-subject' => '新话题的主题：',
 	'lqt-edit-signature' => '（编辑签名）',
@@ -17807,6 +17870,7 @@ $messages['zh-hant'] = array(
 	'lqt-drag-setsortkey' => '調整髮言在頁面中的位置',
 	'lqt-drag-bump' => '將發言移動到討論頁的頂部',
 	'lqt-drag-save' => '確認',
+	'lqt-drag-title' => '確認',
 	'lqt-drag-reason' => '原因：',
 	'lqt-drag-subject' => '新話題的主題：',
 	'lqt-edit-signature' => '（編輯簽名檔）',

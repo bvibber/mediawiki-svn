@@ -401,9 +401,11 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Ahonc
  * @author Тест
  */
 $messages['uk'] = array(
+	'activestrategy' => 'Активна стратегія',
 	'nedits' => '$1 {{PLURAL:$1|редагування|редагування|редагувань}}',
 );
 

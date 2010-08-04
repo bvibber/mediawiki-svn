@@ -329,7 +329,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'vote-registered' => 'ده‌نگی تۆ تۆمار کرا.',
 	'vote-results' => 'ئه‌نجامه‌کانی ده‌نگ',
 	'vote-results-choice' => 'هه‌ڵبژێردراو',
@@ -932,6 +932,17 @@ riddler|Riddler',
 	'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 	'right-vote' => 'Memberikan suara',
 	'right-voteadmin' => 'Melihat hasil pemungutan suara',
+);
+
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'vote' => 'Votu',
+	'vote-caption' => 'Ihe Í kpàtàrà áká:',
+	'vote-submit' => 'Votu',
+	'vote-results' => 'Ihe fútárá votu',
+	'right-vote' => 'Votu',
 );
 
 /** Italian (Italiano)

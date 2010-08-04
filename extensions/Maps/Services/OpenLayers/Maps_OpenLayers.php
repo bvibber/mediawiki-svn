@@ -26,13 +26,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class MapsOpenLayers extends MapsMappingService {
 	
 	/**
-	 * Constructor
+	 * Constructor.
 	 * 
-	 * @since 0.6.3
+	 * @since 0.6.6
 	 */	
-	function __construct() {
+	function __construct( $serviceName ) {
 		parent::__construct(
-			'openlayers',
+			$serviceName,
 			array( 'layers', 'openlayer' )
 		);
 		
@@ -46,7 +46,7 @@ class MapsOpenLayers extends MapsMappingService {
 	 * @since 0.5
 	 */	
 	protected function initParameterInfo( array &$parameters ) {
-		global $egMapsServices, $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
+		global $egMapsOLLayers, $egMapsOLControls, $egMapsOpenLayersZoom;
 		
 		Validator::addOutputFormat( 'olgroups', array( __CLASS__, 'unpackLayerGroups' ) );
 		

@@ -12,7 +12,7 @@ $messages = array();
  * @author Inez Korczyński <korczynski@gmail.com>
  */
 $messages['en'] = array(
-	'ajaxlogin-desc' => 'Dynamic box which allow users to login and remind password',
+	'ajaxlogin-desc' => 'Dynamic box which allows users to login and remind password',
 	'ajaxLogin1' => 'To complete your log in, you must enter a new password.
 This will take you away from this edit page and you may lose your current edit.',
 	'ajaxLogin2' => 'Are you sure?
@@ -29,19 +29,6 @@ Check your spelling.',
  */
 $messages['qqq'] = array(
 	'ajaxlogin-desc' => '{{desc}}',
-);
-
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- * @author J Subhi
- */
-$messages['bjn'] = array(
-	'ajaxLogin2' => 'Piyan yakin kah?
-Piyan kawa kahilangan ubahan nang tuntung piyan ulah di tungkaran ini munnya piyan tulak kaluar tungkaran ini daminian.',
-	'ajaxlogin-create' => 'Ulah sabuah akun',
-	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
-Ngaran pamakay sifatnya sansitip.
-Pariksa hijaan piyan.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -91,6 +78,19 @@ $messages['bg'] = array(
 	'al-nosuchuser' => 'Не съществува потребител с име „$1“.
 Потребителските имена са чувствителни към малки и главни букви.
 Проверете изписването.',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'ajaxLogin2' => 'Piyan yakin kah?
+Piyan kawa kahilangan ubahan nang tuntung piyan ulah di tungkaran ini munnya piyan tulak kaluar tungkaran ini daminian.',
+	'ajaxlogin-create' => 'Ulah sabuah akun',
+	'al-nosuchuser' => 'Kadada pamakay bangaran "$1".
+Ngaran pamakay sifatnya sansitip.
+Pariksa hijaan piyan.',
 );
 
 /** Bengali (বাংলা)
@@ -145,7 +145,7 @@ Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Haval
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'ajaxlogin-desc' => 'سندوقێکی داینامیک رێ به‌به‌کارهێنه‌ران ده‌دات که‌ بچنه‌ ژوره‌وه‌ وه‌ وشه‌ی تێپه‌ربونیان به‌بیر بهێنرێته‌وه‌',
 	'ajaxLogin1' => 'بۆ ئه‌نجامدانی چونه‌ ژوره‌وه‌،ده‌بێت وشه‌یه‌کی نهینی نوێ بنوسیت.
 This will take you away from this edit page and you may lose your current edit.',
@@ -172,17 +172,18 @@ Zkontrolujte zda jste jméno napsali správně!',
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'ajaxlogin-desc' => "Blwch dynamig sy'n caniatáu defnyddwyr i fewngofnodi ac atgoffa cyfrinair",
-	'ajaxLogin1' => "I gwblhau mewngofnodi, mae'n rhaid ichi roi cyfrinair newydd.
-Bydd hwn yn mynd â chi i dudalen arall ac efallai byddwch yn colli'ch golygiadau cyfredol.",
+	'ajaxlogin-desc' => "Blwch dynamig sy'n rhoi cyfle i ddefnyddwyr fewngofnodi a chael gafael ar gyfrinair newydd",
+	'ajaxLogin1' => "I gwblhau'r mewngofnodi, mae'n rhaid ichi roi cyfrinair newydd.
+Bydd hyn yn mynd â chi i dudalen arall ac efallai byddwch yn colli'ch golygiadau cyfredol.",
 	'ajaxLogin2' => "Ydych chi'n siŵr?
-Efallai byddwch yn colli'ch newidiadau i'r dudalen hon os yr ydych yn gadael.",
+Efallai y collwch eich newidiadau os y gadewch y dudalen hon yn awr.",
 	'ajaxlogin-create' => 'Creu cyfrif',
 	'al-nosuchuser' => 'Nid oes dim defnyddiwr o\'r enw "$1".
-Ydych chi\'n defnyddio priflythrennau?
+Ydy\'r priflythrennau a\'r llythrennau bach yn gywir?
 Gwiriwch eich sillafu.',
 );
 
@@ -512,9 +513,11 @@ Periksa ejaan anda.',
  */
 $messages['ig'] = array(
 	'ajaxlogin-desc' => 'Ngwa di ichiche nké né nyé uzor ndi na banife Í bàtá na Í chétá édémédé hé shì a batá',
+	'ajaxLogin1' => 'Í chȯrí méfụchà Í bàtá, Í gi nyé mkpụrụ édé cédọlu.
+Ihe á gi vúrú gi gáfè ihü á nà Í nwèríkí tọfù ihe Í na rü.',
 	'ajaxLogin2' => 'I chorí mé iheá?
 I nwèríkí lúfùu ihe í gbanwere na ihüá Í háfụ ihüá ubuá.',
-	'ajaxlogin-create' => 'Ké buwa',
+	'ajaxlogin-create' => 'ké otụ buwa',
 	'al-nosuchuser' => 'O díg.ʼonye né ji "$1".
 Orúnotu né lékwa I dé na ukwu na ntà.
 Lé otu I dètùrù ihe.',
@@ -1090,7 +1093,7 @@ $messages['zh-cn'] = array(
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */
 $messages['zh-hans'] = array(
-	'ajaxlogin-desc' => '使用动态视窗登录并记忆密码',
+	'ajaxlogin-desc' => '使用动态窗口登录并记忆密码',
 	'ajaxLogin1' => '为完成登录，您必须输入一组新密码。
 这会把您带离本编辑页面，您有可能会丢失现有的编辑。',
 	'ajaxLogin2' => '确定这样做吗？如果您现在离开本页面，您可能会丢失您对本页面作出的修改。',

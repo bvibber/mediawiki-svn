@@ -10,12 +10,6 @@
  * @author Jeroen De Dauw
  */
 
-/**
- * This documenation group collects source code files belonging to Deployment.
- *
- * @defgroup Deployment Deployment
- */
-
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }

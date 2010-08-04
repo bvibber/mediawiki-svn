@@ -121,7 +121,7 @@ Category Watch
 
 Central Auth
 aliasfile = CentralAuth/CentralAuth.alias.php
-optional = centralauth-editset-grouplink, centralauth-admin-notblocked
+optional = centralauth-editset-grouplink, centralauth-admin-notblocked, centralauth-listusers-item
 ignored = centralauth-editset-item-ro
 
 Central Notice
@@ -565,6 +565,10 @@ Input Box
 Inspect Cache
 aliasfile = InspectCache/InspectCache.alias.php
 
+# Create a symbolic link "Installer" to phase3/includes/installer in extensions/ before enabling this.
+#Installer
+#descmsg = config-desc
+
 Interlanguage
 magicfile = Interlanguage/Interlanguage.i18n.magic.php
 
@@ -691,6 +695,8 @@ Minimum Name Length
 descmsg = minnamelength-desc
 
 Mini Preview
+
+Mirror Tools
 
 Most Revisors
 aliasfile = MostRevisors/MostRevisors.alias.php
@@ -1005,6 +1011,8 @@ descmsg = gblrights-desc
 Show Processlist
 aliasfile = ShowProcesslist/ShowProcesslist.alias.php
 
+Sidebar Donate Box
+
 Sign Document
 aliasfile = SignDocument/SignDocument.alias.php
 descmsg = signature-desc
@@ -1148,7 +1156,8 @@ file = TidyTab/Tidy.i18n.php
 descmsg = tidy-desc
 
 Timed Media Handler
-magicfile = TimedMediaHandler/TimedMediaHandler.i18n.magic.php
+# Siebrand 201005-13: conflicting magic words with Ogghandler
+#magicfile = TimedMediaHandler/TimedMediaHandler.i18n.magic.php
 descmsg = timedmedia-desc
 
 Timed Media Handler - Timed Text
@@ -1232,7 +1241,7 @@ Uniwiki - Create Page
 id = ext-uniwiki-createpage
 file = uniwiki/CreatePage/CreatePage.i18n.php
 aliasfile = uniwiki/CreatePage/CreatePage.alias.php
-descmsg = createpage-desc
+descmsg = uwcreatepage-desc
 
 Uniwiki - Css Hooks
 id = ext-uniwiki-csshooks
@@ -1474,8 +1483,9 @@ Wikihiero
 file = wikihiero/wikihiero.i18n.php
 
 Wikilog
-aliasfile = Wikilog/Wikilog.i18n.alias.php
-aliasvar = specialPageAliases
+# FIXME: broken
+#aliasfile = Wikilog/Wikilog.i18n.alias.php
+#aliasvar = specialPageAliases
 magicfile = Wikilog/Wikilog.i18n.magic.php
 optional = wikilog-entry-footer, wikilog-title-item-full, wikilog-feed-title
 optional = wikilog-comment-footer, wikilog-simple-signature

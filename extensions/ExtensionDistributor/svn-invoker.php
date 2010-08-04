@@ -71,36 +71,58 @@ function svnExecute() {
 	}
 	$version = $command->version;
 	$extension = $command->extension;
-
-	// svn up
 	$dir = "$wgExtDistWorkingCopy/$version/extensions/$extension";
-	$cmd = "svn up --non-interactive " . escapeshellarg( $dir ) . " 2>&1";
-	$retval = - 1;
-	$result = svnShellExec( $cmd, $retval );
-	if ( $retval ) {
-		svnError( 'extdist-svn-error', $result );
+
+	// Determine last changed revision in the checkout
+	$localRev = svnGetRev( $dir, &$remoteDir );
+	if ( !$localRev ) {
 		return;
 	}
+		
+	// Determine last changed revision in the repo
+	$remoteRev = svnGetRev( $remoteDir );
+	if ( !$remoteRev ) {
+		return;
+	}
+	
+	if ( $remoteRev != $localRev ) {
+		// Bad luck, we need to svn up
+		$cmd = "svn up --non-interactive " . escapeshellarg( $dir ) . " 2>&1";
+		$retval = - 1;
+		$result = svnShellExec( $cmd, $retval );
+		if ( $retval ) {
+			svnError( 'extdist-svn-error', $result );
+			return;
+		}
+	}
+	
+	echo json_encode( array( 'revision' => $remoteRev ) );
+}
 
-	// Determine last changed revision
+// Returns the last changed revision or false
+// @param $dir Path or url of the folder
+// Output param $url Remote location of the folder
+function svnGetRev( $dir, &$url = null ) {
+	
 	$cmd = "svn info --non-interactive --xml " . escapeshellarg( $dir );
 	$retval = - 1;
 	$result = svnShellExec( $cmd, $retval );
 	if ( $retval ) {
 		svnError( 'extdist-svn-error', $result );
-		return;
+		return false;
 	}
 
 	try {
 		$sx = new SimpleXMLElement( $result );
 		$rev = strval( $sx->entry->commit['revision'] );
+		$url = $sx->entry->url;
 	} catch ( Exception $e ) {
 		$rev = false;
 	}
 	if ( !$rev || strpos( $rev, '/' ) !== false || strpos( $rev, "\000" ) !== false ) {
 		svnError( 'extdist-svn-parse-error', $result );
-		return;
+		return false;
 	}
-
-	echo json_encode( array( 'revision' => $rev ) );
+	
+	return $rev;
 }

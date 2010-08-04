@@ -728,9 +728,11 @@ $messages['id'] = array(
 	'amazonplus-less' => 'kurang',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'amazonplus-more' => 'dikarírí',
+	'amazonplus-more' => 'nà nké ozór',
 );
 
 /** Italian (Italiano)

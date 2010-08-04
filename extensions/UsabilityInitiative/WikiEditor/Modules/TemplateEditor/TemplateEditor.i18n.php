@@ -154,7 +154,7 @@ $messages['ce'] = array(
  * @author Asoxor
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wikieditor-template-editor-preference' => 'ڕێگە بدە بە دەستکاریکردنی وەک فۆرم بۆ داڕێژەکانی ویکی',
 	'wikieditor-template-editor-dialog-title' => 'دەستکاریکردنی دارێژە',
 	'wikieditor-template-editor-dialog-submit' => 'نوێ کردنەوە',
@@ -418,9 +418,11 @@ $messages['id'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'wikieditor-template-editor-dialog-cancel' => 'Emekwàlà',
+	'wikieditor-template-editor-dialog-cancel' => 'Kàchá',
 );
 
 /** Ido (Ido)
@@ -489,6 +491,14 @@ $messages['krc'] = array(
  */
 $messages['ksh'] = array(
 	'wikieditor-template-editor-preference' => 'Schablone em Wiki övver Fommulaare ändere',
+);
+
+/** Kurdish (Latin) (Kurdî (Latin))
+ * @author Erdal Ronahi
+ */
+$messages['ku-latn'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'Rojanekirin',
+	'wikieditor-template-editor-dialog-cancel' => 'Betal',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

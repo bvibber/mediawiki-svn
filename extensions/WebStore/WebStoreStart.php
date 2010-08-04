@@ -5,7 +5,7 @@
  */
 
 
-$IP = dirname( realpath( __FILE__ ) ) . '/../..';
+$IP = dirname( __FILE__ ) . '/../..';
 chdir( $IP );
 require( './includes/WebStart.php' );
 

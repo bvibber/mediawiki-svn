@@ -841,13 +841,15 @@ Donn ene Metmaache nit doh de Aanzahl fun singe Änderunge aam Wiki enstufe!",
 
 /** Kurdish (Latin) (Kurdî (Latin))
  * @author Bangin
+ * @author Erdal Ronahi
  */
 $messages['ku-latn'] = array(
 	'countedits' => 'Guherandinan bihesbîne',
 	'countedits-username' => 'Navî bikarhêner:',
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Li vê derê ne bikarhênerek bi navê $1 heye.',
-	'countedits-resulttext' => '$1 $2 guherandinan çêkirîye',
+	'countedits-resultheader' => 'Encamên ji bo $1',
+	'countedits-resulttext' => '$1 {{PLURAL:$2|guherandin|guherandin}} çêkirîye',
 	'countedits-mostactive' => 'Bikarhênerên tewrî çalak',
 	'countedits-nocontribs' => 'Di vê wîkîyê da guherandin tune ne.',
 );
@@ -1617,7 +1619,7 @@ $messages['zh-hans'] = array(
 	'countedits-ok' => '确定',
 	'countedits-nosuchuser' => '没有一位名叫$1的用户。',
 	'countedits-resultheader' => '$1的结果',
-	'countedits-resulttext' => '$1有$2次编辑',
+	'countedits-resulttext' => '$1做了$2次{{PLURAL:$2|edit|编辑}}',
 	'countedits-mostactive' => '最活跃的贡献者',
 	'countedits-nocontribs' => '在这个wiki中没有贡献。',
 );

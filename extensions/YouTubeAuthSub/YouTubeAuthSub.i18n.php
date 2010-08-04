@@ -67,15 +67,6 @@ $messages['ady-cyrl'] = array(
 	'youtubeauthsub_title' => 'Тхылъышъхьэ',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author Ezagren
- */
-$messages['bjn'] = array(
-	'youtubeauthsub_submit' => 'Kirim',
-	'youtubeauthsub_clickhere' => 'Klik di sia gasan masuk log ka YouTube',
-	'youtubeauthsub_uploadbutton' => 'Unggah',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
@@ -391,6 +382,15 @@ $messages['bg'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'Необходимо е да се въведе описание на видеото.',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'youtubeauthsub_submit' => 'Kirim',
+	'youtubeauthsub_clickhere' => 'Klik di sia gasan masuk log ka YouTube',
+	'youtubeauthsub_uploadbutton' => 'Unggah',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -541,7 +541,7 @@ Si us plau, tingues paciència.",
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'youtubeauthsub' => 'بارکردنی ڤیدیۆ لە یووتیوب',
 	'youtubeauthsub_info' => 'بۆ بارکردنی ڤیدیۆیەک بۆ سەر یووتیوب کە لە لاپەرەیەکدا پیشان بدرێت، ئەو زانیاریانەی خوارەوە پڕ کەوە:',
 	'youtubeauthsub_title' => 'سەردێڕ',
@@ -1318,8 +1318,12 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Mvrban
+ * @author Tivek
  */
 $messages['hr'] = array(
+	'youtubeauthsub' => 'Postavi YouTube video',
+	'youtubeauthsub-desc' => 'Omogući suradnicima izravno [[Special:YouTubeAuthSub|postavljanje videa]] na YouTube',
+	'youtubeauthsub_info' => 'Da biste postavili YouTube video na stranicu, popunite sljedeće podatke:',
 	'youtubeauthsub_title' => 'Naslov',
 	'youtubeauthsub_description' => 'Opis',
 	'youtubeauthsub_password' => 'YouTube lozinka',
@@ -1327,6 +1331,28 @@ $messages['hr'] = array(
 	'youtubeauthsub_keywords' => 'Ključne riječi',
 	'youtubeauthsub_category' => 'Kategorija',
 	'youtubeauthsub_submit' => 'Pošalji',
+	'youtubeauthsub_clickhere' => 'Kliknite ovdje za prijavu na YouTube',
+	'youtubeauthsub_tokenerror' => 'Greška u stvaranju autorizacijskog tokena, pokušajte osvježiti stranicu.',
+	'youtubeauthsub_success' => "Čestitke!
+Vaš video je postavljen.
+<a href='http://www.youtube.com/watch?v=$1'>Pogledajte Vaš video</a>.
+YouTubeu treba određeno vrijeme da procesira Vaš video, pa video možda još nije spreman.
+
+Ako želite umetnuti video u stranicu na wikiju, umetnite sljedeći kôd u stranicu:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Da biste postavili video, prvo ćete se morati prijaviti na YouTube.',
+	'youtubeauthsub_uploadhere' => 'Postavite svoj video odavde:',
+	'youtubeauthsub_uploadbutton' => 'Postavljanje',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Pogledajte ovaj video]',
+	'youtubeauthsub_summary' => 'Postavljam YouTube video',
+	'youtubeauthsub_uploading' => 'Vaš video se postavlja.
+Budite strpljivi.',
+	'youtubeauthsub_viewpage' => 'Inače, možete [[$1|pogledati Vaš video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Unesite 1 ili više ključnih riječi.',
+	'youtubeauthsub_jserror_notitle' => 'Unesite naslov videa.',
+	'youtubeauthsub_jserror_nodesc' => 'Unesite opis za video.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1489,8 +1515,12 @@ Silakan menunggu.',
  */
 $messages['ig'] = array(
 	'youtubeauthsub_title' => 'Ishi edemede',
+	'youtubeauthsub_description' => 'Nkȯwá',
+	'youtubeauthsub_password' => 'Okwúngáfè YouTube',
+	'youtubeauthsub_username' => "Áhà ọ'bànifé YouTube",
 	'youtubeauthsub_keywords' => 'Mkpurụ edemede ngodi',
-	'youtubeauthsub_submit' => 'Nye fwuör',
+	'youtubeauthsub_category' => 'Ébéonọr',
+	'youtubeauthsub_submit' => 'Dànyé',
 	'youtubeauthsub_authsubinstructions' => 'I nweríkí tinyé enyónyó-na-jé gi na elú, I ga buzọr banyé ime YouTube.',
 	'youtubeauthsub_uploadhere' => 'Tinyé enyónyó-na-jé nke gi nélú shi nga:',
 	'youtubeauthsub_uploadbutton' => 'Tinyéelú',
@@ -1889,7 +1919,12 @@ $messages['kw'] = array(
  * @author Universal Life
  */
 $messages['lad'] = array(
+	'youtubeauthsub_title' => 'Títůlo',
+	'youtubeauthsub_password' => 'YouTube Kóddiche',
+	'youtubeauthsub_username' => 'YouTube Nombre de Usador',
 	'youtubeauthsub_category' => 'Categoría',
+	'youtubeauthsub_uploadbutton' => 'Cargar dosya',
+	'youtubeauthsub_viewpage' => 'I también, puedes [[$1|ver tu viddeo aquí]].',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -3754,6 +3789,7 @@ YouTube可能需要一些时间处理您的视频，所以可能不会立即出�
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'youtubeauthsub' => '上传YouTube视频',
@@ -3763,10 +3799,10 @@ $messages['zh-hans'] = array(
 	'youtubeauthsub_description' => '描述',
 	'youtubeauthsub_password' => 'YouTube密码',
 	'youtubeauthsub_username' => 'YouTube用户名',
-	'youtubeauthsub_keywords' => '关键字',
+	'youtubeauthsub_keywords' => '关键词',
 	'youtubeauthsub_category' => '分类',
 	'youtubeauthsub_submit' => '提交',
-	'youtubeauthsub_clickhere' => '点击这里登陆YouTube',
+	'youtubeauthsub_clickhere' => '点击这里登录YouTube',
 	'youtubeauthsub_tokenerror' => '认证用户信息时出错，请刷新。',
 	'youtubeauthsub_success' => "成功！
 您的视频已经上传。
@@ -3786,8 +3822,8 @@ YouTube可能需要一些时间处理您的视频，所以可能不会立即出�
 请稍等。',
 	'youtubeauthsub_viewpage' => '或者，您可以[[$1|观看该视频]]。',
 	'youtubeauthsub_jserror_nokeywords' => '请输入关键字。',
-	'youtubeauthsub_jserror_notitle' => '请输入视频的名称。',
-	'youtubeauthsub_jserror_nodesc' => '请输入视频的描述。',
+	'youtubeauthsub_jserror_notitle' => '请输入视频名称。',
+	'youtubeauthsub_jserror_nodesc' => '请输入视频描述。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

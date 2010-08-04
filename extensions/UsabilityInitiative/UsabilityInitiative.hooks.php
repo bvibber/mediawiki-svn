@@ -54,7 +54,7 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				// Common UsabilityInitiative funtions
-				array( 'src' => 'js/usability.js', 'version' => 5 ),
+				array( 'src' => 'js/usability.js', 'version' => 6 ),
 				
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
@@ -83,10 +83,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 455 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 456 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 476 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 477 ),
 			),
 		),
 	);

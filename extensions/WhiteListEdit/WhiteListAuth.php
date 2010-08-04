@@ -42,20 +42,20 @@ class WhiteListExec
 {
 
 	/* $result value:
-	 *   true=Access Granted
-	 *   false=Access Denied
-	 *   null=Don't know/don't care (not 'allowed' or 'denied')
+	 *   true  = Access Granted
+	 *   false = Access Denied
+	 *   null  = Don't know/don't care (not 'allowed' or 'denied')
 	 * Return value:
-	 *   true=Later functions can override.
-	 *   false=Later functions not consulted.
+	 *   true  = Later functions can override.
+	 *   false = Later functions not consulted.
 	 */
-	static function CheckWhiteList(&$title, &$wgUser, $action, &$result) {
+	static function CheckWhiteList(&$title, &$user, $action, &$result) {
 
 		$override = WHITELIST_NOACTION;
 
 
 		/* Bail if the user isn't restricted.... */
-		if( !in_array('restricttowhitelist', $wgUser->getRights()) ) {
+		if( !in_array('restricttowhitelist', $user->getRights()) ) {
 			$result = null; /* don't care */
 			return true; /* Later functions can override */
 		}
@@ -71,17 +71,17 @@ class WhiteListExec
 		/* Check global allow/deny lists */
 		$override = self::GetOverride($true_title, $action);
                 
-                /* Check if page is on whitelist */
-                if( WHITELIST_NOACTION == $override )
-                        $override = self::IsAllowedNamespace( $true_title, $wgUser, $action );
+		/* Check if page is on whitelist */
+		if( WHITELIST_NOACTION == $override )
+			$override = self::IsAllowedNamespace( $true_title, $user, $action );
 
 		/* Check if page is on whitelist */
 		if( WHITELIST_NOACTION == $override )
-			$override = self::IsAllowed( $true_title, $wgUser, $action );
+			$override = self::IsAllowed( $true_title, $user, $action );
 
 		/* Check if user page */
 		if( WHITELIST_NOACTION == $override )
-			$override = self::IsUserPage( $true_title->GetPrefixedText(), $wgUser );
+			$override = self::IsUserPage( $true_title->GetPrefixedText(), $user );
 
 		switch( $override )
 		{
@@ -103,41 +103,41 @@ class WhiteListExec
 	{
 		global $wgWhiteListOverride;
 
-                $allowView = $allowEdit = $denyView = $denyEdit = false;
+		$allowView = $allowEdit = $denyView = $denyEdit = false;
  
-                foreach( $wgWhiteListOverride['always']['read'] as $value )
-                {
-                        if( self::RegexCompare($title, $value) )
-                        {
-                                $allowView = true;
-                        }
-                }
+		foreach( $wgWhiteListOverride['always']['read'] as $value )
+		{
+			if( self::RegexCompare($title, $value) )
+			{
+				$allowView = true;
+			}
+		}
  
-                foreach( $wgWhiteListOverride['always']['edit'] as $value )
-                {
-                        if( self::RegexCompare($title, $value) )
-                        {
-                                $allowEdit = true;
-                        }
-                }
+		foreach( $wgWhiteListOverride['always']['edit'] as $value )
+		{
+			if ( self::RegexCompare($title, $value) )
+			{
+				$allowEdit = true;
+			}
+		}
 
 		unset($override);
 
 		foreach( $wgWhiteListOverride['never']['read'] as $value )
-                {
-                        if( self::RegexCompare($title, $value) )
-                        {
-                                $denyView = true;
-                        }
-                }
+		{
+			if ( self::RegexCompare($title, $value) )
+			{
+				$denyView = true;
+			}
+		}
  
-                foreach( $wgWhiteListOverride['never']['edit'] as $value )
-                {
-                        if( self::RegexCompare($title, $value) )
-                        {
-                                $denyEdit = true;
-                        }
-                }
+		foreach( $wgWhiteListOverride['never']['edit'] as $value )
+		{
+			if ( self::RegexCompare($title, $value) )
+			{
+				$denyEdit = true;
+			}
+		}
 
 		if( $action == 'edit' )
 		{
@@ -163,12 +163,12 @@ class WhiteListExec
 
 	/* Allow access to user pages (unless disabled)
 	 */
-	static function IsUserPage( $title_text, &$wgUser )
+	static function IsUserPage( $title_text, &$user )
 	{
 		global $wgWhiteListAllowUserPages;
 
-		$userPage = $wgUser->getUserPage()->getPrefixedText();
-		$userTalkPage = $wgUser->getTalkPage()->getPrefixedText();
+		$userPage = $user->getUserPage()->getPrefixedText();
+		$userTalkPage = $user->getTalkPage()->getPrefixedText();
 
 		if( ($wgWhiteListAllowUserPages == true) &&
 			($title_text == $userPage) || ($title_text == $userTalkPage) )
@@ -177,25 +177,24 @@ class WhiteListExec
 			return WHITELIST_NOACTION;
 	}
 
-        static function IsAllowedNamespace( &$title, &$wgUser, $action)
-        {
+	static function IsAllowedNamespace( &$title, &$user, $action)
+	{
+		$page_ns = $title->getNamespace();
+		if ( ( $page_ns == NS_MEDIAWIKI ) ||
+				 ( $page_ns == NS_FILE ) || 
+				 ( $page_ns == NS_HELP ) )
+		{
+			return WHITELIST_GRANT;
+		}
 
-                $page_ns = $title->getNsText();
-                if(     ($page_ns == 'Mediawiki' ) ||
-                        ($page_ns == 'Image' ) || 
-                        ($page_ns == 'Help' ) )
-                {
-                        return WHITELIST_GRANT;
-                }
-
-                return WHITELIST_NOACTION;
-        }
+		return WHITELIST_NOACTION;
+	}
 
 
 	/* Check whether the page is whitelisted.
 	 * returns true if page is on whitelist, false if it is not.
 	 */
-	static function IsAllowed( &$title, &$wgUser, $action )
+	static function IsAllowed( &$title, &$user, $action )
 	{
 		$expired = false;
 
@@ -209,47 +208,47 @@ class WhiteListExec
 		$current_date = date("Y-m-d H:i:s");
 		$sql = "SELECT wl_page_title 
 			FROM " . $wl_table_name . "
-			WHERE wl_user_id = "     . $dbr->addQuotes($wgUser->getId()) . "
+			WHERE wl_user_id = "     . $dbr->addQuotes($user->getId()) . "
 			AND ( (wl_expires_on >= " . $dbr->addQuotes($current_date)  . ") 
 			 OR ( wl_expires_on = "  . $dbr->addQuotes('') . "))";
 		if( $action == 'edit' ) {
 			$sql .= "
                         AND wl_allow_edit = " . $dbr->addQuotes('1');
 		}
-//wfDebug($sql);
 
-                // We should also check that $title is not a redirect to a whitelisted page
-                $redirecttitle = null;
-                $article = new Article($title);
-                if (is_object($article))
-                {
-                        $pagetext = $article->getContent();
-                        $redirecttitle = Title::newFromRedirect($pagetext);
-                }
+		// We should also check that $title is not a redirect to a whitelisted page
+		$redirecttitle = null;
+		$article = new Article($title);
+		if (is_object($article))
+		{
+			$pagetext = $article->getContent();
+			$redirecttitle = Title::newFromRedirect($pagetext);
+		}
                         
 		/* Loop through each result returned and
 		 * check for matches.
 		 */
-                $dbr->begin();
+		$dbr->begin();
 		$db_results = $dbr->query( $sql , __METHOD__, true);
-                $dbr->commit();
+		$dbr->commit();
 		while( $db_result = $dbr->fetchObject($db_results) )
 		{
 			if( self::RegexCompare($title, $db_result->wl_page_title) )
 			{
 				$dbr->freeResult($db_results);
-//wfDebug("\n\nAccess granted based on PAGE [" . $db_result->wl_page_title . "]\n\n");
+				//wfDebug("\n\nAccess granted based on PAGE [" . $db_result->wl_page_title . "]\n\n");
 				return WHITELIST_GRANT;
 			}
-                        if ($redirecttitle)
-                        {
-                                if( self::RegexCompare($redirecttitle, $db_result->wl_page_title) )
-                                {
-                                        $dbr->freeResult($db_results);
-//wfDebug("\n\nAccess granted based on REDIRECT to PAGE [" . $db_result->wl_page_title . "]\n\n");
-                                        return WHITELIST_GRANT;
-                                }
-                        }
+
+			if ($redirecttitle)
+			{
+				if ( self::RegexCompare($redirecttitle, $db_result->wl_page_title) )
+				{
+					$dbr->freeResult($db_results);
+					//wfDebug("\n\nAccess granted based on REDIRECT to PAGE [" . $db_result->wl_page_title . "]\n\n");
+					return WHITELIST_GRANT;
+				}
+			}
 		}
 		$dbr->freeResult($db_results);
 
@@ -259,7 +258,7 @@ class WhiteListExec
 	/* Returns true if hit, false otherwise */
 	static function RegexCompare(&$title, $sql_regex)
 	{
-                global $wgWhiteListWildCardInsensitive;
+		global $wgWhiteListWildCardInsensitive;
                 
 		$ret_val = false;
                 
@@ -348,3 +347,4 @@ class WhiteListHooks {
 		return true;
 	}
 } /* End class */
+

@@ -50,6 +50,13 @@ $messages['ce'] = array(
 	'wikimediamobile-desc' => 'Гlодарца йолу хийцамашца MediaWiki оцу лерагlирсан кхоллам Викимедийа, хlокху чохь ю http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Welsh (Cymraeg)
+ * @author Xxglennxx
+ */
+$messages['cy'] = array(
+	'wikimediamobile-desc' => 'Swyddogaethau cymorth MediaWici ar gyfer prosiect Wicimedia-symudol a gedwir at http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** Danish (Dansk)
  * @author Froztbyte
  */
@@ -106,6 +113,21 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'wikimediamobile-desc' => 'MediaWiki unterstitzt Funktione fir s Wikimedia-mobile Projäkt, wu s do git: http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Hebrew (עברית)
+ * @author Amire80
+ * @author Rotemliss
+ */
+$messages['he'] = array(
+	'wikimediamobile-desc' => 'פונקציות תמיכה של מדיה־ויקי עבור מיזם ויקימדיה למכשירים ניידים המתארח בכתובת http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Croatian (Hrvatski)
+ * @author Tivek
+ */
+$messages['hr'] = array(
+	'wikimediamobile-desc' => 'MediaWiki podržava funkcije za projekt Wikimedia-mobile koji se nalazi na http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -275,6 +297,11 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'wikimediamobile-desc' => 'Các hàm MediaWiki hỗ trợ dự án Wikimedia Di động được đăng cai tại http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'wikimediamobile-desc' => 'MediaWiki支援Wikimedia-mobile职能计画，请至http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

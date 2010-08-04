@@ -566,6 +566,19 @@ $messages['id'] = array(
 	'ajax-se-usernotfound' => 'Kesalahan: pengguna tidak ditemukan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'ajaxshoweditors-desc' => "Nè zí ndi ọ'bànifé na rü nke na rü na ótù ihü",
+	'ajax-se-title' => 'Nà rü:',
+	'ajax-se-pending' => 'nè ché ógè Í tụnye ndụ... (kpàtá igbé nke mà rüwá)',
+	'ajax-se-idling' => '(mgbè $1 gárání)',
+	'ajax-se-pagedoesnotexist' => 'ihü a di gì',
+	'ajax-se-userinvalid' => 'Nsógbu: ọ díghì ézíbóté',
+	'ajax-se-usernotfound' => "Nsógbu: ọ'bànifé à díghì",
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

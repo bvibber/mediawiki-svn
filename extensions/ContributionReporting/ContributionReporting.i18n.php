@@ -4966,6 +4966,7 @@ $messages['vi'] = array(
 	'contribstats-average' => 'Trung bình',
 	'contribstats-paypal-donations' => 'Quyên góp dùng PayPal',
 	'contribstats-credit-card' => 'Thẻ tín dụng',
+	'contribstats-unaudited' => 'Các tổng số này chưa được kiểm toán.',
 	'fundraiserstatistics' => 'Thống kê về vận động gây quỹ',
 	'fundraiserstats-date' => 'Ngày',
 	'fundraiserstats-day' => 'Ngày $1 trong $2',
@@ -5016,6 +5017,7 @@ $messages['yi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Chenzw
  * @author Liangent
  * @author Wmr89502270
@@ -5051,9 +5053,11 @@ $messages['zh-hans'] = array(
 	'contribstats-conversion' => '转换率（%）',
 	'contribstats-template' => '模板',
 	'contribstats-nodata' => '没有提供数据',
+	'contribstats-donatepage' => '捐助页面',
 	'contribstats-average' => '平均',
 	'contribstats-paypal-donations' => 'PayPal捐赠',
 	'contribstats-credit-card' => '信用卡',
+	'contribstats-fraud-note' => '有虚假的捐助存在。',
 	'fundraiserstatistics' => '募捐者统计',
 	'fundraiserstats-date' => '日期',
 	'fundraiserstats-day' => '$2的第$1日',
@@ -5101,9 +5105,11 @@ $messages['zh-hant'] = array(
 	'contribstats-conversion' => '轉換率（%）',
 	'contribstats-template' => '模板',
 	'contribstats-nodata' => '沒有提供數據',
+	'contribstats-donatepage' => '捐助頁面',
 	'contribstats-average' => '平均',
 	'contribstats-paypal-donations' => 'PayPal捐贈',
 	'contribstats-credit-card' => '信用卡',
+	'contribstats-fraud-note' => '有虛假的捐助存在。',
 	'fundraiserstatistics' => '募捐者統計',
 	'fundraiserstats-date' => '日期',
 	'fundraiserstats-day' => '$2的第$1日',

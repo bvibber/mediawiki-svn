@@ -1761,10 +1761,12 @@ Kemungkinan karena prefiks ini tidak ada.',
 	'action-interwiki' => 'Ubah masukan untuk interwiki ini',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'interwiki_edit' => 'Rüwa',
-	'interwiki_reasonfield' => 'Mgbaghaputa:',
+	'interwiki_reasonfield' => 'Mgbághapụtà:',
 );
 
 /** Ido (Ido)
@@ -3603,6 +3605,14 @@ $messages['tr'] = array(
 	'interwiki_addbutton' => 'Ekle',
 	'right-interwiki' => 'İnterviki verilerini düzenler',
 	'action-interwiki' => 'bu interviki girdisini değiştir',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'interwiki_1' => 'әйе',
+	'interwiki_0' => 'юк',
 );
 
 /** Ukrainian (Українська)

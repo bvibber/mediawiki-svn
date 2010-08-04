@@ -28,11 +28,11 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	/**
 	 * Constructor.
 	 * 
-	 * @since 0.6.3
+	 * @since 0.6.6
 	 */	
-	function __construct() {
+	function __construct( $serviceName ) {
 		parent::__construct(
-			'googlemaps3',
+			$serviceName,
 			array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' )
 		);
 	}
@@ -43,7 +43,7 @@ class MapsGoogleMaps3 extends MapsMappingService {
 	 * @since 0.5
 	 */	
 	protected function initParameterInfo( array &$parameters ) {
-		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
+		global $egMapsGMaps3Type, $egMapsGMaps3Types;
 		
 		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );		

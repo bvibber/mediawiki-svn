@@ -1564,9 +1564,16 @@ Mungkin tidak ada pengguna seperti itu.',
 	'right-regexblock' => 'Memblokir pengguna untuk menyunting pada semua wiki di kebun wiki',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'regexblock-form-reason' => 'Mgbaghaputa:',
+	'regexblock-form-reason' => 'Mgbághapụtà:',
+	'regexblock-form-expiry' => 'Gbá okà:',
+	'regexblock-view-all' => 'Haníle',
+	'regexblock-view-go' => 'Gá',
+	'regexblock-view-reason' => 'mgbáhàpụtá: $1',
+	'regexblock-view-time' => 'na $1',
 );
 
 /** Ido (Ido)

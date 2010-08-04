@@ -274,6 +274,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'categoryonupload-desc' => "Gwá ọ'bànifé Í chọwá ébéonọr mgbe ȯ nè tí akwukwo orunotu na élú",
 	'categoryonupload-label' => 'Ébéonọr:',
 );
 

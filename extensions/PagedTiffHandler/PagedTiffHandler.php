@@ -88,7 +88,7 @@ $wgTiffUseVips = false;
 // Maximum number of embedded files in tiff image
 $wgTiffMaxEmbedFiles = 10000;
 // Maximum resolution of embedded images (product of width x height pixels)
-$wgTiffMaxEmbedFileResolution = 1600*1600; // max. Resolution 1600 x 1600 pixels
+$wgMaxImageAreaForVips = 1600*1600; // max. Resolution 1600 x 1600 pixels
 // Maximum size of metadata
 $wgTiffMaxMetaSize = 64*1024; 
 // TTL of cache entries for errors
@@ -102,6 +102,8 @@ $wgExtensionMessagesFiles['PagedTiffHandler'] = $dir . 'PagedTiffHandler.i18n.ph
 $wgAutoloadClasses['PagedTiffImage'] = $dir . 'PagedTiffHandler.image.php';
 $wgAutoloadClasses['PagedTiffHandler'] = $dir . 'PagedTiffHandler_body.php';
 $wgAutoloadClasses['TiffReader'] = $dir . 'TiffReader.php';
+$wgAutoloadClasses['PagedTiffHandlerSeleniumTestSuite'] = $dir . 'selenium/PagedTiffHandlerTestSuite.php';
+
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';

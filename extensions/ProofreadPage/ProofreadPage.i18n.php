@@ -2840,7 +2840,7 @@ $messages['mk'] = array(
 	'proofreadpage_prevpage' => 'Претходна страница',
 	'proofreadpage_header' => 'Заглавие (без вклучување):',
 	'proofreadpage_body' => 'Содржина на страница (се трансклудира):',
-	'proofreadpage_footer' => 'Долна колон цифра (noinclude):',
+	'proofreadpage_footer' => 'Подножје (не се вклучува):',
 	'proofreadpage_toggleheaders' => 'превклучи ја видливоста на noinclude пасусите',
 	'proofreadpage_quality0_category' => 'Без текст',
 	'proofreadpage_quality1_category' => 'Непрегледана',
@@ -3452,6 +3452,7 @@ Nòte||10',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'indexpages' => 'د ليکلړ مخونو لړليک',
 	'proofreadpage_namespace' => 'مخ',
 	'proofreadpage_index_namespace' => 'ليکلړ',
 	'proofreadpage_image' => 'انځور',
@@ -3470,6 +3471,8 @@ $messages['ps'] = array(
 انځور|د پښتۍ انځور
 مخونه||20
 تبصرې||10',
+	'proofreadpage_pages' => '{{PLURAL:$1|مخ|مخونه}}',
+	'proofreadpage_specialpage_legend' => 'ليکلړ مخونه پلټل',
 	'proofreadpage_source' => 'سرچينه',
 );
 
@@ -3630,7 +3633,7 @@ Willapusqakuna||10",
  */
 $messages['ro'] = array(
 	'indexpages' => 'Lista paginilor index',
-	'proofreadpage_desc' => 'Permiteți compararea cu ușurință a textului față de scanarea originală',
+	'proofreadpage_desc' => 'Permite compararea facilă a textului față de scanarea originală',
 	'proofreadpage_namespace' => 'Pagină',
 	'proofreadpage_index_namespace' => 'Index',
 	'proofreadpage_image' => 'Imagine',
@@ -3676,6 +3679,7 @@ Sursă
 Imagine|Imagine copertă
 Pagini||20
 Comentarii||10',
+	'proofreadpage_pages' => '{{PLURAL:$1|pagină|pagini}}',
 	'proofreadpage_specialpage_legend' => 'Căutați paginile de index',
 	'proofreadpage_source' => 'Sursă',
 );

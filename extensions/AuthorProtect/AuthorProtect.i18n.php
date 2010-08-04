@@ -442,6 +442,7 @@ $messages['et'] = array(
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  * @author Pi
  * @author Theklan
@@ -453,8 +454,8 @@ $messages['eu'] = array(
 	'authorprotect-confirm' => 'Aldatu babeste mailak',
 	'authorprotect-edit' => 'Mugatu editatzea egileei',
 	'authorprotect-move' => 'Mugatu mugitzea egileei',
-	'authorprotect-expiry' => 'Iraungitze epea',
-	'authorprotect-reason' => 'Arrazoia',
+	'authorprotect-expiry' => 'Iraungipena:',
+	'authorprotect-reason' => 'Arrazoia:',
 	'authorprotect-intro' => 'Erabili inprimaki hau orrialde hau ez-egileei blokeatzeko',
 	'authorprotect-success' => 'Behar bezala babestu da!',
 	'authorprotect-failure' => 'Babestea ez da behar bezala egin',
@@ -752,9 +753,11 @@ $messages['id'] = array(
 	'right-authorprotect' => 'Lindungi halaman dengan penulis pertama',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
-	'authorprotect-reason' => 'Mgbaghaputa',
+	'authorprotect-reason' => 'Mgbaghaputa:',
 );
 
 /** Ido (Ido)
@@ -915,7 +918,7 @@ $messages['ksh'] = array(
 	'authorprotect-edit' => 'Don et Ändere op de Schriiver fun dä Sigg beschränke',
 	'authorprotect-move' => 'Donn et Ömnenne op Schriiver aan dä Sigg beschränke',
 	'authorprotect-expiry' => 'Sperre beß en',
-	'authorprotect-reason' => 'Jrond',
+	'authorprotect-reason' => 'Jrond:',
 	'authorprotect-intro' => 'Hee met kanns de di Sigg jäje annder Metmaacher schötze, die kein Schriiver ann er sin',
 	'authorprotect-success' => 'Et Schötze es jelonge!',
 	'authorprotect-failure' => 'Di Sigg kunnt nit jeschötz wäde',
@@ -1649,8 +1652,8 @@ $messages['zh-hans'] = array(
 	'authorprotect-confirm' => '更改保护级别',
 	'authorprotect-edit' => '禁止除作者以外人士编辑',
 	'authorprotect-move' => '禁止除作者以外人士移动',
-	'authorprotect-expiry' => '终止时间',
-	'authorprotect-reason' => '原因',
+	'authorprotect-expiry' => '到期日:',
+	'authorprotect-reason' => '原因：',
 	'authorprotect-intro' => '使用此表格禁止除作者以外人士编辑',
 	'authorprotect-success' => '保护成功！',
 	'authorprotect-failure' => '保护失败',

@@ -267,6 +267,13 @@ $messages['id'] = array(
 	'breadcrumbs-desc' => 'Tampilkan jalan yang ditempuh pengguna di wiki',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'breadcrumbs-desc' => "Zí uzọr ọ'bànifé nke na gáfè wiki",
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

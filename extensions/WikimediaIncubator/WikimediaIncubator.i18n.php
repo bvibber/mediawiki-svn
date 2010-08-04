@@ -322,7 +322,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'wminc-viewuserlang-user' => 'ناوی بەکارهێنەری:',
 	'wminc-viewuserlang-go' => 'بڕۆ',
 	'wminc-testwiki' => 'تاقی‌کردنه‌وه‌ی ویکی:',
@@ -1295,6 +1295,7 @@ $messages['ps'] = array(
 	'wminc-viewuserlang-go' => 'ورځه',
 	'wminc-testwiki' => 'د آزمېښت ويکي:',
 	'wminc-testwiki-none' => 'هېڅ/ټول',
+	'wminc-warning-suggest' => 'تاسې په [[$1]] کې يو مخ جوړولای شی.',
 );
 
 /** Portuguese (Português)

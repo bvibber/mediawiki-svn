@@ -95,66 +95,12 @@ final class MapsMapper {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
 		}
 	}
-
+	
 	/**
-	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
-	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName.
-	 *
-	 * @param string $service
-	 * @param string $feature
-	 *
-	 * @return string
+	 * @deprecated Method moved to MapsMappingServices. Will be removed in 0.7.
 	 */
 	public static function getValidService( $service, $feature ) {
-		global $egMapsServices, $egMapsDefaultService, $egMapsDefaultServices, $shouldChange;
-
-		// Get rid of any aliases.
-		$service = self::getMainServiceName( $service );
-		
-		// If the service is not loaded into maps, it should be changed.
-		$shouldChange = !array_key_exists( $service, $egMapsServices );
-
-		// If it should not be changed, ensure the service supports this feature.
-		if ( ! $shouldChange ) {
-			$shouldChange = $egMapsServices[$service]->getFeature( $feature ) === false;
-		}
-
-		// Change the service to the most specific default value available.
-		// Note: the default services should support their corresponding features.
-		// If they don't, a fatal error will occur later on.
-		if ( $shouldChange ) {
-			if ( array_key_exists( $feature, $egMapsDefaultServices ) ) {
-				$service = $egMapsDefaultServices[$feature];
-			}
-			else {
-				$service = $egMapsDefaultService;
-			}
-		}
-
-		return $service;
-	}
-
-	/**
-	 * Checks if the service name is an alias for an actual service,
-	 * and changes it into the main service name if this is the case.
-	 *
-	 * @param string $service
-	 * 
-	 * @return string
-	 */
-	private static function getMainServiceName( $service ) {
-		global $egMapsServices;
-
-		if ( !array_key_exists( $service, $egMapsServices ) ) {
-			foreach ( $egMapsServices as $serviceObject ) {
-				if ( $serviceObject->hasAlias( $service ) ) {
-					 $service = $serviceObject->getName();
-					 break;
-				}
-			}
-		}
-
-		return $service;
+		MapsMappingServices::getValidServiceInstance( $service, $feature );
 	}
 
 	/**
@@ -244,24 +190,6 @@ final class MapsMapper {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
 	}
-
-	/**
-	 * Returns an array containing all the possible values for the service parameter, including aliases.
-	 *
-	 * @return array
-	 */
-	public static function getAllServiceValues() {
-		global $egMapsAvailableServices, $egMapsServices;
-
-		$allServiceValues = array();
-
-		foreach ( $egMapsAvailableServices as $availableService ) {
-			$allServiceValues[] = $availableService;
-			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]->getAliases() );
-		}
-
-		return $allServiceValues;
-	}
 	
 	/**
 	 * Add a JavaScript file out of skins/common, or a given relative path.
@@ -293,7 +221,7 @@ final class MapsMapper {
 		return array(
 			'mappingservice' => array(
 				'criteria' => array(
-					'in_array' => self::getAllServiceValues()
+					'in_array' => MapsMappingServices::getAllServiceValues()
 				),
 				'aliases' => array( 'service' )
 			),

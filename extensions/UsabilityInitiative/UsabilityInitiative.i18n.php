@@ -138,7 +138,7 @@ $messages['ca'] = array(
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Asoxor
  */
-$messages['ckb-arab'] = array(
+$messages['ckb'] = array(
 	'prefs-beta' => 'کەرەسەکانی بیتا',
 	'prefs-labs' => 'کەرەسەکانی تاقیگەکان',
 );
@@ -612,6 +612,13 @@ $messages['pms'] = array(
 	'prefs-labs' => 'Caraterìstiche dël laboratòri',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'prefs-beta' => 'د آزمېښتي بڼې ځانګړنې',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Lijealso
@@ -871,6 +878,7 @@ $messages['yi'] = array(
 $messages['yo'] = array(
 	'usabilityinitiative' => 'Ìṣeémúlò Abẹ̀rẹ̀fúnraẹni',
 	'prefs-beta' => 'Àwọn ìní Beta',
+	'prefs-labs' => 'Àwọn ìní ibiàdánwò',
 );
 
 /** Cantonese (粵語)

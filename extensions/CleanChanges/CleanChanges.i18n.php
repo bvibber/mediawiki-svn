@@ -499,6 +499,18 @@ $messages['id'] = array(
 	'cleanchanges-showuserlinks' => 'Tunjukkan pranala pengguna',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'cleanchanges-changerightslink' => 'gbánwe ọtú',
+	'cleanchanges-desc' => 'Nke ílé gí dí ntà nke [[Special:RecentChanges|ndétu ihe gbanwere na ógè nso]]',
+	'cleanchanges-language' => 'Asụsụ:',
+	'cleanchanges-language-na' => 'Haníle',
+	'cleanchanges-users' => "Ọ'bànifé (Sep: |):",
+	'cleanchanges-showuserlinks' => "Zí jikodo ọ'bànifé",
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  * @author Darth Kule
@@ -826,10 +838,11 @@ $messages['rif'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'cleanchanges-language' => 'Limbă:',
-	'cleanchanges-users' => 'Utilizatori (Sep: |):',
+	'cleanchanges-users' => 'Utilizatori (sep. prin |):',
 );
 
 /** Tarandíne (Tarandíne)

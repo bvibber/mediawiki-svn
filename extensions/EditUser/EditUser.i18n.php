@@ -350,10 +350,10 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'edituser-desc' => 'Pribilegiatutako erabiltzaileak beste erabiltzaileen hobespenak editatzea baimentzen du',
 	'edituser' => 'Erabiltzailea editatu',
-	'edituser-username' => 'Izena',
+	'edituser-username' => 'Erabiltzaile izena:',
 	'edituser-dosearch' => 'Bilatu',
-	'edituser-nouser' => 'Zehaztutako erabiltzailea ez da existitzen',
-	'edituser-exempt' => 'Zehaztutako erabiltzailea ezin da editatu',
+	'edituser-nouser' => '"$1" erabiltzailea ez da existitzen.',
+	'edituser-exempt' => '"$1" erabiltzailea ezin da editatu.',
 	'right-edituser' => 'Beste erabiltzaileen hobespenak editatu',
 	'right-edituser-exempt' => 'Besteek ezin dute erabiltzaile honen hobespenak editatu',
 );
@@ -432,10 +432,10 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'edituser-desc' => 'Erlaubt berächtigte Benutzer, d Yystellige vu andere Benutzer z verändere',
 	'edituser' => 'Benutzeryystelligen ändere',
-	'edituser-username' => 'Name',
+	'edituser-username' => 'Benutzername:',
 	'edituser-dosearch' => 'Sueche',
-	'edituser-nouser' => 'Dr Benutzer, wu aagee woren isch, git s nit',
-	'edituser-exempt' => 'Dr Benutzer, wu aagee woren isch, cha nit bearbeitet wäre',
+	'edituser-nouser' => 'Dr Benutzer „$1“ git s nit.',
+	'edituser-exempt' => 'Dr Benutzer „$1“ cha nit bearbeitet wäre.',
 	'right-edituser' => 'D Yystellige vu andere Benutzer bearbeite',
 	'right-edituser-exempt' => 'D Yystellige vu däm Benutzer chenne nit dur anderi gänderet wäre',
 );
@@ -604,6 +604,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Pinodd
  */
@@ -612,8 +613,8 @@ $messages['it'] = array(
 	'edituser' => 'Modifica utente',
 	'edituser-username' => 'Nome utente:',
 	'edituser-dosearch' => 'Ricerca',
-	'edituser-nouser' => 'L\'utente "$ 1" non esiste.',
-	'edituser-exempt' => 'L\'utente "$ 1" non può essere modificato.',
+	'edituser-nouser' => 'L\'utente "$1" non esiste.',
+	'edituser-exempt' => 'L\'utente "$1" non può essere modificato.',
 	'right-edituser' => 'Modifica le preferenze degli altri utenti',
 	'right-edituser-exempt' => 'Le sue preferenze non possono essere modificate da altri',
 );

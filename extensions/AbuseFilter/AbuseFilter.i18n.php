@@ -474,6 +474,7 @@ Copy from the textbox that appears, and paste it into this textbox, then click "
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Hamilton Abreu
  * @author Iwan Novirion
  * @author Jon Harald Søby
  * @author Kwj2772
@@ -606,17 +607,17 @@ Functional explanation: rmdoubles removes repeated characters in the argument, a
 	'abusefilter-edit-builder-funcs-rcount' => '{{doc-important|Do not translate "rcount"}}',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => "{{doc-important|Do not translate \"'''(rmwhitespace)'''\"}}",
 	'abusefilter-edit-builder-funcs-rmspecials' => "{{doc-important|Do not translate \"'''(rmspecials)'''\"}}",
-	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Jangan terjemahkan \"'''(ip_in_range)'''\"}}",
-	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Jangan terjemahkan \"'''(contains_any)'''\"}}",
-	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Jangan terjemahkan \"'''(substr)'''\"}}",
-	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Jangan terjemahkan \"'''(strpos)'''\"}}",
+	'abusefilter-edit-builder-funcs-ip_in_range' => "{{doc-important|Do not translate \"'''(ip_in_range)'''\"}}",
+	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Do not translate \"'''(contains_any)'''\"}}",
+	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Do not translate \"'''(substr)'''\"}}",
+	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Do not translate \"'''(strpos)'''\"}}",
 	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''(str_replace)'''\"}}",
-	'abusefilter-edit-builder-group-vars' => '{{Identical|Variabel}}',
+	'abusefilter-edit-builder-group-vars' => '{{Identical|Variable}}',
 	'abusefilter-edit-builder-vars-accountname' => 'This variable is used only during account creation and contains the username of the newly created account',
 	'abusefilter-edit-builder-vars-action' => '{{Identical|Action}}',
 	'abusefilter-edit-builder-vars-newsize' => 'New size of the page',
 	'abusefilter-edit-builder-vars-oldsize' => 'Old size of the page',
-	'abusefilter-edit-builder-vars-article-ns' => '&lt;abusefilter-edit-builder-vars-article-ns&gt;',
+	'abusefilter-edit-builder-vars-article-ns' => 'The namespace that the page for the trigger is supposed to be in.',
 	'abusefilter-edit-builder-vars-movedfrom-id' => 'Paraphrase: The page ID of the page to be moved',
 	'abusefilter-edit-builder-vars-movedfrom-ns' => 'Paraphrase: Namespace of the page that is to be moved',
 	'abusefilter-edit-builder-vars-movedfrom-text' => 'Paraphrase: Name of the page that is to be moved',
@@ -1772,6 +1773,38 @@ $messages['arz'] = array(
  */
 $messages['as'] = array(
 	'abusefilter-log-search-submit' => 'সন্ধান',
+);
+
+/** Bashkir (Башҡорт)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'abusefilter-desc' => 'Төҙәтеүҙәргә эвристик фильтрҙар ҡуйырға мөмкинлек бирә.',
+	'abusefilter' => 'Урынһыҙ файҙаланыу фильтрын көйләү',
+	'abuselog' => 'Урынһыҙ файҙаланыу яҙмалары',
+	'abusefilter-intro' => 'Урынһыҙ файҙаланыу фильтрын көйләү битенә рәхим итегеҙ! 
+Урынһыҙ файҙаланыу фильтры ҡатнашыусыларҙың ҡулланыуына яраҡлаштырылған автоматик механизм булып тора. Исемлектә бөтә ҡуйылған фильтрҙар, һәм улаҙы уҙгәртеү мөмкинлеге бирелгән.',
+	'abusefilter-mustbeeditor' => 'Интерфейс именлеген һаҡлау өсөн, урынһыҙ файҙаланыу фильтрын хоҡуғы булған ҡулланыусылар ғына үҙгәртә ала.',
+	'abusefilter-warning' => "'''Иғтибар!''' Был алым автоматик рәүештә кәрәкһеҙ тип билдәленде. Эшлекһеҙ төҙәтеүҙәр юйыласаҡ, тупаҫ төҙәтеүҙәр һәм  эшлекһеҙ төҙәтеүҙәр ҡабатланһа, һеҙҙең иҫәп яҙмаһы йәки IP-адрес бикләнәсәк.
+Әгәр был төҙәтеү эшлекле тип уйлаһағыҙ \"Яҙҙырып ҡуйырға\" төмәһенә тағы баҫығыҙ.
+Кәрәкһеҙ тип билдәленгән ғәмәлегеҙ:  \$1",
+	'abusefilter-disallowed' => 'Был алым автоматик рәүештә кәрәкһеҙ тип билдәленде, шуның өсөн уны эшләргә рөхсәт ителмәй.
+Әгәр был төҙәтеү эшлекле тип уйлаһағыҙ, хәкимгә мәрәжәғәт итегеҙ һәм алымдарығыҙҙы тасуирлағыҙ.
+Кәрәкһеҙ тип билдәленгән ғәмәлегеҙ:  $1.',
+	'abusefilter-blocked-display' => 'Был алым автоматик рәүештә кәрәкһеҙ тип билдәленде, шуның өсөн уны эшлә алмайһығыҙ.
+Бынан тыш, {{SITENAME}} проектының именлеген һаҡлау өсөн һеҙҙең иҫәп яҙыуығыҙ һәм уға кергән IP-адрестар блокланды.
+Әгәр төҙәтеү эшлекле ә блоклауығыҙ хаталы тип уйлаһағыҙ, хәкимгә мәрәжәғәт итегеҙ.
+Кәрәкһеҙ тип билдәленгән ғәмәлегеҙ:  $1.',
+	'abusefilter-blocker' => 'Урынһыҙ файҙаланыу фильтры',
+	'abusefilter-blockreason' => 'Урынһыҙ файҙаланыу фильтры тарафынан блокланған.
+Сәбәбе: $1',
+	'abusefilter-log' => 'Урынһыҙ файҙаланыу яҙмалары',
+	'abusefilter-log-search-user' => 'Ҡатнашыусы:',
+	'abusefilter-log-search-filter' => 'Фильтр идентификаторы:',
+	'abusefilter-log-hide-reason' => 'Сәбәп:',
+	'abusefilter-list-edit' => 'Үҙгәртергә',
+	'abusefilter-deleted' => 'Юйылған',
+	'abusefilter-tools-reautoconfirm-user' => 'Ҡатнашыусы:',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -8424,7 +8457,7 @@ Les balises dêvont étre côrtes et pués pas avêr de caractèros spèciâls.'
 	'abusefilter-edit-builder-funcs-rmwhitespace' => 'Suprimar los èspâços (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => 'Suprimar los caractèros spèciâls (rmspecials)',
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'L’adrèce IP est-el dens la plage d’adrèces IP ? (ip_in_range)',
-	'abusefilter-edit-builder-funcs-contains-any' => 'Rechèrchiér des sot-chênes multiples dens una chêna (contains_any)',
+	'abusefilter-edit-builder-funcs-contains-any' => 'Rechèrchiér un mouél de sot-chênes dens una chêna (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => 'Sot-chêna (substr)',
 	'abusefilter-edit-builder-funcs-strpos' => 'Posicion de la sot-chêna dens la chêna (strpos)',
 	'abusefilter-edit-builder-funcs-str_replace' => 'Remplaciér la sot-chêna per la chêna (str_replace)',
@@ -11840,13 +11873,16 @@ Salin dari kotak teks yang muncul, dan tempelkan di kotak teks ini, lalu klik "{
 	'abusefilter-import-submit' => 'Impor data',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
 	'abusefilter-log-search-submit' => 'Chöwá',
 	'abusefilter-list-edit' => 'Rüwa',
 	'abusefilter-edit-warn-actions' => 'Mmèmé:',
 	'abusefilter-history-actions' => 'Mmèmé',
 	'abusefilter-examine-submit' => 'Chöwá',
+	'abusefilter-diff-item' => 'Ihnye',
 );
 
 /** Ido (Ido)
@@ -13667,6 +13703,7 @@ Name',
 	'abusefilter-log-details-diff' => 'De Änderunge',
 	'abusefilter-log-linkoncontribs' => 'Logbooch vum Meßbruchsfelter',
 	'abusefilter-log-linkoncontribs-text' => 'Logbooch fum Meßbruchsfelter för dä Metmaacher',
+	'abusefilter-log-hide-reason' => 'Jrond:',
 	'abusefilter-management' => 'Meßbruchsfellter Verwallde',
 	'abusefilter-list' => 'All Feltere',
 	'abusefilter-list-id' => 'Felter-Räjel',
@@ -14045,6 +14082,7 @@ $messages['la'] = array(
 $messages['lad'] = array(
 	'abusefilter-desc' => 'A los trocamientos, aplica maneras topadores (eurísticas)',
 	'abusefilter' => 'Konfiggurasyón del filtro contra-abusos',
+	'abuselog' => 'Rējistro del filtro antiabusos',
 	'abusefilter-intro' => 'Buenas venidas a la interfaz de administrasyón de filtros de trocamientos.
 El filtro de trocamientos es un mekanismo de software otomatizado que aplica maneras topaderas (eurísticas) a todas las aksyones.
 Esta interfaz mostra una lista de filtros dēfinidos i da permisyón de trocarlos.',
@@ -14052,6 +14090,8 @@ Esta interfaz mostra una lista de filtros dēfinidos i da permisyón de trocarlo
 	'abusefilter-blockreason' => 'Bloqueado de sí para sí, de la parte del filtro contra-abusos.
 Deskripsyón del filtro alcançado: $1',
 	'abusefilter-accountreserved' => 'El nombre de este cuento está reservado para el uso de la parte del filtro contra-abusos',
+	'abusefilter-log-details-val' => 'Valor',
+	'abusefilter-log-hide-reason' => 'Razón:',
 	'abusefilter-list' => 'Todos los filtros',
 	'abusefilter-list-id' => 'Número de filtro',
 	'abusefilter-list-consequences' => 'Consegüenças',
@@ -14064,23 +14104,30 @@ Deskripsyón del filtro alcançado: $1',
 	'abusefilter-disabled' => 'Desactivado',
 	'abusefilter-hitcount' => '$1 {{PLURAL:$1|alcanço|alcanços}}',
 	'abusefilter-links' => 'Linkes provechosos',
+	'abusefilter-status-global' => 'Globbal',
 	'abusefilter-list-options' => 'Opsyones',
 	'abusefilter-list-options-deleted' => 'Los filtros efassados:',
+	'abusefilter-tools-reautoconfirm-user' => 'Usador:',
+	'abusefilter-edit-new' => 'Nuevo filtro',
 	'abusefilter-edit-id' => 'Número de filtro:',
 	'abusefilter-edit-hitcount' => 'Los filtros alcançados:',
 	'abusefilter-edit-action-warn' => 'Lança el filtro dospués de dar un aviso al empleador',
 	'abusefilter-edit-action-flag' => 'Marca el trocamiento, en los rejjistros de filtro de contra-abusos',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|sêgondo|sêgondos}}',
+	'abusefilter-edit-history' => 'Istoria',
 	'abusefilter-edit-export' => 'Taxirea este filtro a un otro viki',
 	'abusefilter-edit-notallowed' => 'No se te da permisyón de criar o de trocar los filtros contra-abusos',
+	'abusefilter-history-select-user' => 'Usador:',
 	'abusefilter-action-tag' => 'Marca',
 	'abusefilter-action-warn' => 'Avisa',
 	'abusefilter-action-block' => 'Bloquea',
 	'abusefilter-action-degroup' => 'Quita de los grupos',
 	'abusefilter-action-rangeblock' => 'Bloqueo de rango',
 	'abusefilter-action-disallow' => 'No des permisyón',
+	'abusefilter-test-load' => 'Cargar',
 	'abusefilter-changeslist-examine' => 'Egzamina',
 	'abusefilter-examine-noresults' => 'No se topó dingún rêsultado por lo que buscates.',
+	'abusefilter-topnav-log' => 'Rējistro de abusos',
 	'abusefilter-diff-pattern' => 'Kondisyones del filtro',
 	'abusefilter-diff-invalid' => 'Las versiones demandadas, no se las está puediendo traer',
 );
@@ -16723,8 +16770,7 @@ De uitvoer van de parser was: <pre>$1</pre>',
 	'abusefilter-edit-restricted' => 'U kunt dit filter niet bewerken omdat die één of meerdere beperkte handelingen bevat.
 Vraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de wijziging voor u te maken.',
 	'abusefilter-edit-viewhistory' => 'Geschiedenis van het filter bekijken',
-	'abusefilter-edit-history' => 'Geschiedenis
-:',
+	'abusefilter-edit-history' => 'Geschiedenis:',
 	'abusefilter-edit-check' => 'Syntaxis controleren',
 	'abusefilter-edit-badfilter' => 'De aangegeven filter bestaat niet',
 	'abusefilter-edit-revert' => 'De door dit filter genomen maatregelen terugdraaien',
@@ -19516,7 +19562,7 @@ $messages['rif'] = array(
  */
 $messages['ro'] = array(
 	'abusefilter-desc' => 'Aplică euristici automate modificărilor.',
-	'abusefilter' => 'Configurează filtrul de abuz',
+	'abusefilter' => 'Configurare filtru de abuz',
 	'abuselog' => 'Jurnal abuz',
 	'abusefilter-mustbeeditor' => 'Din motive de securitate, doar utilizatorii cu dreptul de a modifica filtrele de abuzare pot utiliza această interfață.',
 	'abusefilter-warning' => "'''Atenție''': Această acțiune a fost identificată automat ca fiind periculoasă.
@@ -24310,6 +24356,7 @@ Mô tả bộ lọc: $7 ($8)',
 	'abusefilter-log-hide' => 'hiện hay ẩn',
 	'abusefilter-log-details-hidden' => 'Bạn không có quyền xem chi tiết mục ẩn này.',
 	'abusefilter-log-hide-id' => 'ID của mục nhật trình:',
+	'abusefilter-log-hide-hidden' => 'Ẩn mục này khỏi công cộng',
 	'abusefilter-log-hide-reason' => 'Lý do:',
 	'abusefilter-log-hide-forbidden' => 'Bạn không có quyền ẩn mục trong nhật ký lạm dụng.',
 	'abusefilter-management' => 'Quản lý bộ lọc sai phạm',
@@ -25109,6 +25156,7 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bbqyee
  * @author Bencmq
+ * @author Chenxiaoqino
  * @author Chenzw
  * @author Fantasticfears
  * @author FireJackey
@@ -25147,6 +25195,8 @@ $messages['zh-hans'] = array(
 	'right-abusefilter-modify-restricted' => '受限修改防滥用过滤器',
 	'right-abusefilter-revert' => '撤销指定防滥用过滤器作出的所有更改',
 	'right-abusefilter-view-private' => '查看被标记为隐藏的过滤器',
+	'right-abusefilter-hide-log' => '将条目在记录中隐藏',
+	'right-abusefilter-hidden-log' => '查看隐藏的滥用记录条目',
 	'action-abusefilter-modify' => '修改防滥用过滤器',
 	'action-abusefilter-view' => '查看防滥用过滤器',
 	'action-abusefilter-log' => '查看过滤日志',
@@ -25161,12 +25211,14 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-search-user' => '用户：',
 	'abusefilter-log-search-filter' => '过滤器编号：',
 	'abusefilter-log-search-title' => '标题：',
+	'abusefilter-log-show-deleted' => '显示隐藏的条目',
 	'abusefilter-log-search-submit' => '搜索',
 	'abusefilter-log-entry' => '$1：$2在$4上进行了“$3”的操作，触发了过滤器。采取的行动：$5；过滤器描述：$6',
 	'abusefilter-log-detailedentry-meta' => '$1：$2在$5上进行了“$4”的操作，触发了$3。采取的行动：$6；过滤器描述：$7（$8）',
 	'abusefilter-log-detailedentry-global' => '全域过滤器$1',
 	'abusefilter-log-detailedentry-local' => '过滤器$1',
 	'abusefilter-log-detailslink' => '详情',
+	'abusefilter-log-hidelink' => '调整可见度',
 	'abusefilter-log-details-legend' => '日志详情：$1',
 	'abusefilter-log-details-var' => '变量',
 	'abusefilter-log-details-val' => '值',
@@ -25177,6 +25229,13 @@ $messages['zh-hans'] = array(
 	'abusefilter-log-details-diff' => '修订版本间差异',
 	'abusefilter-log-linkoncontribs' => '防滥用过滤器日志',
 	'abusefilter-log-linkoncontribs-text' => '此用户的过滤器日志',
+	'abusefilter-log-hidden' => '（条目已被隐藏）',
+	'abusefilter-log-hide' => '隐藏或取消隐藏',
+	'abusefilter-log-details-hidden' => '你无法获取详细信息，因为此条目已被从公共范围隐藏。',
+	'abusefilter-log-hide-id' => '日志记录ID:',
+	'abusefilter-log-hide-hidden' => '将此条目从公众视野隐藏',
+	'abusefilter-log-hide-reason' => '理由：',
+	'abusefilter-log-hide-forbidden' => '你没有权限去隐藏此滥用记录条目',
 	'abusefilter-management' => '管理防滥用过滤器',
 	'abusefilter-list' => '所有过滤器',
 	'abusefilter-list-id' => '过滤器编号',
@@ -25523,6 +25582,8 @@ $messages['zh-hant'] = array(
 	'right-abusefilter-modify-restricted' => '以有限的操作修改防濫用過濾器',
 	'right-abusefilter-revert' => '還原指定防濫用過濾器作出的所有更改',
 	'right-abusefilter-view-private' => '查看被標記為隱藏的過濾器',
+	'right-abusefilter-hide-log' => '在過濾日誌隱藏此日誌',
+	'right-abusefilter-hidden-log' => '檢視已被隱藏的過濾日誌',
 	'action-abusefilter-modify' => '修改防濫用過濾器',
 	'action-abusefilter-view' => '檢閱防濫用過濾器',
 	'action-abusefilter-log' => '查閱過濾日誌',
@@ -25537,6 +25598,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-search-user' => '使用者：',
 	'abusefilter-log-search-filter' => '過濾器編號：',
 	'abusefilter-log-search-title' => '標題：',
+	'abusefilter-log-show-deleted' => '顯示隱藏的項目',
 	'abusefilter-log-search-submit' => '搜尋',
 	'abusefilter-log-entry' => '$2於$1觸發防濫用過濾器，於$4執行$3操作。
 採取的行動：$5；
@@ -25547,6 +25609,7 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-detailedentry-global' => '全域過濾器 $1',
 	'abusefilter-log-detailedentry-local' => '過濾器 $1',
 	'abusefilter-log-detailslink' => '詳情',
+	'abusefilter-log-hidelink' => '調整可見度',
 	'abusefilter-log-details-legend' => '紀錄詳情$1',
 	'abusefilter-log-details-var' => '變數',
 	'abusefilter-log-details-val' => '值',
@@ -25557,6 +25620,14 @@ $messages['zh-hant'] = array(
 	'abusefilter-log-details-diff' => '修訂版本間差異',
 	'abusefilter-log-linkoncontribs' => '防濫用過濾器日誌',
 	'abusefilter-log-linkoncontribs-text' => '此用户的过滤器日志',
+	'abusefilter-log-hidden' => '(記錄隱藏)',
+	'abusefilter-log-hide' => '隱藏或取消隱藏',
+	'abusefilter-log-details-hidden' => '因為這是不公開的，你不可以參閱此記錄的詳情。',
+	'abusefilter-log-hide-id' => '日誌記錄ID:',
+	'abusefilter-log-hide-hidden' => '對公眾隱藏此日誌項目',
+	'abusefilter-log-hide-reason' => '原因：',
+	'abusefilter-log-hide-forbidden' => '你沒有權限去隱藏
+過濾日誌的記錄',
 	'abusefilter-management' => '防濫用過濾器管理',
 	'abusefilter-list' => '所有過濾器',
 	'abusefilter-list-id' => '過濾器編號',
