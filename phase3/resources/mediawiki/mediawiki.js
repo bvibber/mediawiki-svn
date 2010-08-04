@@ -84,7 +84,7 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 		this.get = function( keys, fallback ) {
 			if ( typeof keys === 'object' ) {
 				var result = {};
-				for ( var k  in keys ) {
+				for ( var k = 0; k < keys.length; k++ ) {
 					if ( typeof values[keys[k]] !== 'undefined' ) {
 						result[keys[k]] = values[keys[k]];
 					}
@@ -101,7 +101,7 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 		 */
 		this.exists = function( keys ) {
 			if ( typeof keys === 'object' ) {
-				for ( var k in keys ) {
+				for ( var k = 0; k < keys.length; k++ ) {
 					if ( !( keys[k] in values ) ) {
 						return false;
 					}
