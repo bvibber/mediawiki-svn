@@ -35,7 +35,14 @@ function makeContentCollector( browser, domInterface ) {
 			return n.tagName;
 		},
 		nodeValue : function(n) {
-			return n.nodeValue;
+			try {
+				return n.nodeValue;
+			} catch ( err ) {
+				return '';
+			}
+		},
+		nodeName : function(n) {
+			return n.nodeName;
 		},
 		nodeNumChildren : function(n) {
 			return n.childNodes.length;
@@ -264,6 +271,7 @@ function makeContentCollector( browser, domInterface ) {
 			}
 			
 		} else {
+			var cls = dom.nodeProp(node, "className");
 			var tname = (dom.nodeTagName(node) || "").toLowerCase();
 			if (tname == "br") {
 				_startNewLine(state);
@@ -271,8 +279,7 @@ function makeContentCollector( browser, domInterface ) {
 				// ignore
 			} else if (!isEmpty) {
 				var styl = dom.nodeAttr(node, "style");
-				var cls = dom.nodeProp(node, "className");
-
+				
 				var isPre = (tname == "pre");
 				if ((!isPre) && browser.safari) {
 					isPre = (styl && /\bwhite-space:\s*pre\b/i.exec(styl));
@@ -284,6 +291,11 @@ function makeContentCollector( browser, domInterface ) {
 				var nc = dom.nodeNumChildren(node);
 				for ( var i = 0; i < nc; i++) {
 					var c = dom.nodeChild(node, i);
+					//very specific IE case where it inserts <span lang="en"> which we want to ginore.
+					//to reproduce copy content from wordpad andpaste into the middle of a line in IE
+					if ( browser.msie && cls.indexOf('wikiEditor') >= 0 && dom.nodeName(c) == 'SPAN' && dom.nodeAttr(c, 'lang') == "" ) {
+						continue;
+					}
 					cc.collectContent(c, state);
 				}
 
@@ -347,7 +359,9 @@ function makeContentCollector( browser, domInterface ) {
 		lines.flush();
 		var lineStrings = cc.getLines();
 
-		lineStrings.length--;
+		if ( lineStrings.length > 0 && !lineStrings[lineStrings.length - 1] ) {
+			lineStrings.length--;
+		}
 
 		var ss = getSelectionStart();
 		var se = getSelectionEnd();
