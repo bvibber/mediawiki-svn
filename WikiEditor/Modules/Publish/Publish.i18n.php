@@ -649,8 +649,11 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'wikieditor-publish-button-publish' => 'Bìpụta',
 	'wikieditor-publish-button-cancel' => 'Kàchá',
-	'wikieditor-publish-dialog-publish' => 'Wéfùtà',
+	'wikieditor-publish-dialog-minor' => 'Orü ntà',
+	'wikieditor-publish-dialog-publish' => 'Bìpụta',
+	'wikieditor-publish-dialog-goback' => 'Gá na àzú',
 );
 
 /** Ido (Ido)

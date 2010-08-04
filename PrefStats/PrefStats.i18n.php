@@ -1198,6 +1198,7 @@ Klik pada salah satu untuk melihat statistiknya.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'prefstats-factor-hour' => 'àmànì',
 	'prefstats-factor-sixhours' => 'àmànị ishíi',
 	'prefstats-factor-day' => 'chi',
 	'prefstats-factor-week' => 'izù',
