@@ -272,8 +272,8 @@ class ResourceLoader {
 		);
 		// Mediawiki's WebRequest::getBool is a bit on the annoying side - we need to allow 'true' and 'false' values
 		// to be converted to boolean true and false
-		$parameters['user'] = $parameters['user'] === 'true' || $parameters['user'] === true ? true : false;
-		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'] === true ? true : false;
+		$parameters['user'] = $parameters['user'] === 'true' || $parameters['user'] === true;
+		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'] === true;
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {
 			$lang = $wgLang->factory( $parameters['lang'] );
