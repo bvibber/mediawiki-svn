@@ -330,4 +330,4 @@ $( document ).ready( function() {
 	mw.legacy.wgUploadSetup();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

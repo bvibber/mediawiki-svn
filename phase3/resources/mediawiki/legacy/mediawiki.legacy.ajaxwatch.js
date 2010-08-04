@@ -133,4 +133,4 @@ $( document ).ready( function() {
 	mw.legacy.wgAjaxWatch.$links = $links;
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

@@ -230,4 +230,4 @@ $( document ).ready( function() {
 	mw.legacy.tabbedprefs();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

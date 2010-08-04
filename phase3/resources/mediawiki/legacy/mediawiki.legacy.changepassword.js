@@ -26,4 +26,4 @@ $( document ).ready( function() {
 	mw.legacy.onNameChangeHook();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

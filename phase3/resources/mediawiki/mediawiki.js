@@ -36,7 +36,8 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 /*
  * Core MediaWiki JavaScript Library
  */
-( function( $ ) {
+// Attach to window
+window.mediaWiki = new ( function( $ ) {
 	
 	/* Constants */
 	
@@ -90,10 +91,14 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 					}
 				}
 				return result;
-			} else if ( typeof values[keys] === 'undefined' ) {
-				return typeof fallback !== 'undefined' ? fallback : null;
+			} else if ( typeof keys === 'string' ) {
+				if ( typeof values[keys] === 'undefined' ) {
+					return typeof fallback !== 'undefined' ? fallback : null;
+				} else {
+					return values[keys];
+				}
 			} else {
-				return values[keys];
+				return values;
 			}
 		};
 		/**
@@ -285,7 +290,7 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 			}
 			// Add localizations to message system
 			if ( typeof registry[module].messages === 'object' ) {
-				mw.msg.set( registry[module].messages );
+				mediaWiki.msg.set( registry[module].messages );
 			}
 			// Execute script
 			try {
@@ -310,7 +315,7 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 					}
 				}
 			} catch ( e ) {
-				mw.log( 'Exception thrown by ' + module + ': ' + e.message );
+				mediaWiki.log( 'Exception thrown by ' + module + ': ' + e.message );
 				registry[module].state = 'error';				
 				// Run error callbacks of jobs affected by this condition
 				for ( var j = 0; j < jobs.length; j++ ) {
@@ -387,7 +392,12 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 				// Always order modules alphabetically to help reduce cache misses for otherwise identical content
 				batch.sort();
 				// Build a list of request parameters
-				var base = mw.config.get( [ 'user', 'skin', 'lang', 'debug' ] );
+				var base = {
+					'user': mediaWiki.config.get( 'wgUserName' ) !== null,
+					'skin': mediaWiki.config.get( 'skin' ),
+					'lang': mediaWiki.config.get( 'wgUserLanguage' ),
+					'skin': mediaWiki.config.get( 'debug' ),
+				};
 				// Extend request parameters with a list of modules in the batch
 				var requests = [];
 				if ( base.debug == '1' ) {
@@ -406,7 +416,7 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 					var html = '';
 					for ( var r = 0; r < requests.length; r++ ) {
 						// Build out the HTML
-						var src = mw.config.get( 'server' ) + '/load.php?' + jQuery.param( requests[r] );
+						var src = mediaWiki.config.get( 'server' ) + '/load.php?' + jQuery.param( requests[r] );
 						html += '<script type="text/javascript" src="' + src + '"></script>';
 					}
 					// Append script to body
@@ -535,7 +545,7 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 			}
 			// Allow calling with a single need as a string
 			if ( typeof modules === 'string' ) {
-				modules = [needs];
+				modules = [modules];
 			}
 			// Resolve entire dependency map
 			modules = resolve( modules );
@@ -565,7 +575,4 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 	/* Extension points */
 	
 	this.utilities = {};
-	
-	// Attach to window
-	window.MediaWiki = window.mw = this;
 } )( jQuery );

@@ -2176,7 +2176,18 @@ class OutputPage {
 
 		return $ret;
 	}
-
+	
+	static function makeResourceLoaderLinkedScript( $skin, $modules ) {
+		global $wgUser, $wgLang, $wgRequest, $wgScriptPath;
+		$query = array(
+			'modules' => implode( '|', $modules ),
+			'user' => $wgUser->isLoggedIn(),
+			'lang' => $wgLang->getCode(),
+			'debug' => ( $wgRequest->getVal( 'debug' ) === 'true' ),
+		);
+		return Html::linkedScript( "{$wgScriptPath}/load.php?" . http_build_query( $query ) );
+	}
+	
 	/**
 	 * Gets the global variables and mScripts; also adds userjs to the end if
 	 * enabled
@@ -2187,10 +2198,14 @@ class OutputPage {
 	function getHeadScripts( Skin $sk ) {
 		global $wgUser, $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 		global $wgStylePath, $wgStyleVersion;
-
-		$scripts = Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-		$scripts .= Html::linkedScript( "{$wgStylePath}/common/wikibits.js?$wgStyleVersion" );
-
+		
+		// Include base modules
+		$scripts = self::makeResourceLoaderLinkedScript( $sk, array( 'jquery', 'mediawiki' ) );
+		// Configure page
+		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
+		// Wikibits legacy code
+		$scripts .= self::makeResourceLoaderLinkedScript( $sk, array( 'mediawiki.legacy.wikibits' ) );
+		
 		// add site JS if enabled
 		if( $wgUseSiteJs ) {
 			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';

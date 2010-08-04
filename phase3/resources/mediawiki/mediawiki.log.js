@@ -60,4 +60,4 @@ $.extend( mw, {
 	}
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

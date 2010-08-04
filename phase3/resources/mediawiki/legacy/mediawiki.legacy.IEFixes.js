@@ -138,4 +138,4 @@ $( document ).ready( function() {
 	mw.legacy.hookit();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

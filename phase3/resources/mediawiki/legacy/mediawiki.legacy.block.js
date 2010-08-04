@@ -41,4 +41,4 @@ $( document ).ready( function() {
 	mw.legacy.considerChangingExpiryFocus();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

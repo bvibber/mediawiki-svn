@@ -118,4 +118,4 @@ $( document ).ready( function() {
 	$j('#wpPreview').click( doLivePreview );
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

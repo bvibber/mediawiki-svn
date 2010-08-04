@@ -339,16 +339,10 @@ class Skin extends Linker {
 		$out->out( "\n</body></html>" );
 		wfProfileOut( __METHOD__ );
 	}
-
+	
 	static function makeVariablesScript( $data ) {
 		if( $data ) {
-			$r = array();
-			foreach ( $data as $name => $value ) {
-				$encValue = Xml::encodeJsVar( $value );
-				$r[] = "$name=$encValue";
-			}
-			$js = 'var ' . implode( ",\n", $r ) . ';';
-			return Html::inlineScript( "\n$js\n" );
+			return Html::inlineScript( 'mediaWiki.config.set(' . json_encode( $data ) . ');' );
 		} else {
 			return '';
 		}

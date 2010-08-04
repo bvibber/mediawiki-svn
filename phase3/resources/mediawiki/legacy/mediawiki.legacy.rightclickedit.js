@@ -62,4 +62,4 @@ $( document ).ready( function() {
 	mw.legacy.setupRightClickEdit();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

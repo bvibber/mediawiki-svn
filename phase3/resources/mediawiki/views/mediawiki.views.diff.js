@@ -27,4 +27,4 @@ $( document ).ready( function() {
 	}
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

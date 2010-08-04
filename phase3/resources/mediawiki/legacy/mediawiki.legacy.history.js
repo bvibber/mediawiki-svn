@@ -112,4 +112,4 @@ $( document ).ready( function() {
 	mw.legacy.histrowinit();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

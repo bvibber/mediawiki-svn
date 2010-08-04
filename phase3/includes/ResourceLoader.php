@@ -82,19 +82,23 @@ class ResourceLoader {
 		if ( $cached !== false && $cached !== null ) {
 			return $cached;
 		}
-		switch ( $filter ) {
-			case 'minify-js':
-				$result = JSMin::minify( $data );
-				break;
-			case 'minify-css':
-				$result = Minify_CSS::minify( $data, array( 'currentDir' => dirname( $file ), 'docRoot' => '.' ) );
-				break;
-			case 'flip-css':
-				$result = CSSJanus::transform( $data, true, false );
-				break;
-			default:
-				// Don't cache anything, just pass right through
-				return $data;
+		try {
+			switch ( $filter ) {
+				case 'minify-js':
+					$result = JSMin::minify( $data );
+					break;
+				case 'minify-css':
+					$result = Minify_CSS::minify( $data, array( 'currentDir' => dirname( $file ), 'docRoot' => '.' ) );
+					break;
+				case 'flip-css':
+					$result = CSSJanus::transform( $data, true, false );
+					break;
+				default:
+					// Don't cache anything, just pass right through
+					return $data;
+			}
+		} catch ( Exception $exception ) {
+			throw new MWException( 'Filter threw an exception: ' . $exception->getMessage() );
 		}
 		$wgMemc->set( $key, $result );
 		return $result;
@@ -272,8 +276,8 @@ class ResourceLoader {
 		);
 		// Mediawiki's WebRequest::getBool is a bit on the annoying side - we need to allow 'true' and 'false' values
 		// to be converted to boolean true and false
-		$parameters['user'] = $parameters['user'] === 'true' || $parameters['user'] === true;
-		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'] === true;
+		$parameters['user'] = $parameters['user'] === 'true';
+		$parameters['debug'] = $parameters['debug'] === 'true';
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {
 			$lang = $wgLang->factory( $parameters['lang'] );
@@ -305,16 +309,7 @@ class ResourceLoader {
 		}
 		// Special meta-information for the 'mediawiki' module
 		if ( in_array( 'mediawiki', $modules ) ) {
-			/*
-			 * Skin::makeGlobalVariablesScript needs to be modified so that we still output the globals for now, but
-			 * also put them into the initial payload like this:
-			 * 
-			 * // Sets the inital configuration
-			 * mw.config.set( { 'name': 'value', ... } );
-			 * 
-			 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
-			 */
-			echo "mw.config.set( " . json_encode( $parameters ) . " );\n";
+			echo "mediaWiki.config.set( 'debug', " . ( $parameters['debug'] ? 'true' : 'false' ) . " );\n";
 			// Generate list of registrations and collect all loader scripts
 			$loaders = array();
 			$registrations = array();
@@ -337,7 +332,7 @@ class ResourceLoader {
 			// Include loaders
 			self::read( $loaders, true );
 			// Register modules without loaders
-			echo "mw.loader.register( " . json_encode( array_values( $registrations ) ) . " );\n";
+			echo "mediaWiki.loader.register( " . json_encode( array_values( $registrations ) ) . " );\n";
 		}
 		// Output non-raw modules
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
@@ -373,7 +368,7 @@ class ResourceLoader {
 				// Messages
 				$messages = isset( $blobs[$module] ) ? $blobs[$module] : '{}';
 				// Output
-				echo "mw.loader.implement( '{$module}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
+				echo "mediaWiki.loader.implement( '{$module}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
 			}
 		}
 		// Set headers -- when we support CSS only mode, this might change!
