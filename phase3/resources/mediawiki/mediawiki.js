@@ -16,20 +16,20 @@ if ( typeof Array.prototype.indexOf === 'undefined' ) {
 // Add array comparison functionality
 if ( typeof Array.prototype.compare === 'undefined' ) { 
 	Array.prototype.compare = function( against ) {
-	    if ( this.length != against.length ) {
-	    	return false;
-	    }
-	    for ( var i = 0; i < against.length; i++ ) {
-	        if ( this[i].compare ) { 
-	            if ( !this[i].compare( against[i] ) ) {
-	            	return false;
-	            }
-	        }
-	        if ( this[i] !== against[i] ) {
-	        	return false;
-	        }
-	    }
-	    return true;
+		if ( this.length != against.length ) {
+			return false;
+		}
+		for ( var i = 0; i < against.length; i++ ) {
+			if ( this[i].compare ) { 
+				if ( !this[i].compare( against[i] ) ) {
+					return false;
+				}
+			}
+			if ( this[i] !== against[i] ) {
+				return false;
+			}
+		}
+		return true;
 	};
 }
 
@@ -188,18 +188,18 @@ if ( typeof Array.prototype.compare === 'undefined' ) {
 		 */
 		function recurse( module, resolved, unresolved ) {
 			unresolved[unresolved.length] = module;
-		    for ( var n = 0; n < registry[module].needs.length; n++ ) {
-		        if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
-		            if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
-		                throw new Error(
-		                	'Circular reference detected: ' + module + ' -> ' + registry[module].needs[n]
-		                );
-		            }
-		            recurse( registry[module].needs[n], resolved, unresolved );
-		        }
-		    }
-		    resolved[resolved.length] = module;
-		    unresolved.splice( unresolved.indexOf( module ), 1 );
+			for ( var n = 0; n < registry[module].needs.length; n++ ) {
+				if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
+					if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
+						throw new Error(
+							'Circular reference detected: ' + module + ' -> ' + registry[module].needs[n]
+						);
+					}
+					recurse( registry[module].needs[n], resolved, unresolved );
+				}
+			}
+			resolved[resolved.length] = module;
+			unresolved.splice( unresolved.indexOf( module ), 1 );
 		}
 		/**
 		 * Gets a list of modules names that a module needs in their proper dependency order
