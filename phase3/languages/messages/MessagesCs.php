@@ -120,7 +120,7 @@ $dateFormats = array(
  * Hledání knihy podle ISBN
  */
 $bookstoreList = array(
-	'Národní knihovna'          => 'http://sigma.nkp.cz/F/?func=find-a&find_code=ISN&request=$1',
+	'Národní knihovna'          => 'http://aleph.nkp.cz/F/?func=find-a&find_code=ISN&request=$1',
 	'Státní technická knihovna' => 'http://www.stk.cz/cgi-bin/dflex/CZE/STK/BROWSE?A=01&V=$1',
 	'inherit' => true,
 );
@@ -365,7 +365,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Přidávat stránky, které smažu, mezi sledované',
 'tog-previewontop'            => 'Zobrazovat náhled před editačním oknem (ne za ním)',
 'tog-previewonfirst'          => 'Zobrazit při první editaci náhled',
-'tog-nocache'                 => 'Nepoužívat cache',
+'tog-nocache'                 => 'Vypnout cachování v prohlížeči',
 'tog-enotifwatchlistpages'    => 'Poslat e-mail při změně sledované stránky',
 'tog-enotifusertalkpages'     => 'Poslat e-mail při změně mé diskusní stránky',
 'tog-enotifminoredits'        => 'Poslat e-mail i pro menší editace (které jinak nezpůsobují odeslání e-mailu)',
@@ -768,6 +768,7 @@ Nezapomeňte si upravit své [[Special:Preferences|nastavení {{grammar:2sg|{{SI
 'gotaccount'                 => "Už jste registrováni? '''$1'''.",
 'gotaccountlink'             => 'Přihlaste se',
 'createaccountmail'          => 'pomocí e-mailu',
+'createaccountreason'        => 'Důvod:',
 'badretype'                  => 'Vámi napsaná hesla nesouhlasí.',
 'userexists'                 => 'Uživatel se stejným jménem je už registrován. Zvolte jiné jméno.',
 'loginerror'                 => 'Chyba při přihlašování',

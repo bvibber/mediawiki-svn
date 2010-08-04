@@ -120,7 +120,7 @@ class SpecialPage {
 		'CreateAccount'             => array( 'SpecialRedirectToSpecial', 'CreateAccount', 'Userlogin', 'signup', array( 'uselang' ) ),
 
 		# Users and rights
-		'Blockip'                   => array( 'SpecialPage', 'Blockip', 'block' ),
+		'Blockip'                   => 'IPBlockForm',
 		'Ipblocklist'               => 'IPUnblockForm',
 		'Unblock'                   => array( 'SpecialRedirectToSpecial', 'Unblock', 'Ipblocklist', false, array( 'uselang', 'ip', 'id' ), array( 'action' => 'unblock' ) ),
 		'Resetpass'                 => 'SpecialResetpass',
@@ -129,6 +129,8 @@ class SpecialPage {
 		'Contributions'             => 'SpecialContributions',
 		'Listgrouprights'           => 'SpecialListGroupRights',
 		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),
+		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
+		'Listbots'                  => array( 'SpecialRedirectToSpecial', 'Listbots', 'Listusers', 'bot' ),
 		'Activeusers'               => 'SpecialActiveUsers',
 		'Userrights'                => 'UserrightsPage',
 
@@ -183,8 +185,6 @@ class SpecialPage {
 		'Blankpage'                 => 'SpecialBlankpage',
 		'Blockme'                   => 'SpecialBlockme',
 		'Emailuser'                 => 'SpecialEmailUser',
-		'Listadmins'                => array( 'SpecialRedirectToSpecial', 'Listadmins', 'Listusers', 'sysop' ),
-		'Listbots'                  => array( 'SpecialRedirectToSpecial', 'Listbots', 'Listusers', 'bot' ),
 		'Movepage'                  => array( 'UnlistedSpecialPage', 'Movepage' ),
 		'Mycontributions'           => 'SpecialMycontributions',
 		'Mypage'                    => 'SpecialMypage',

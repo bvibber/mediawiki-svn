@@ -260,7 +260,6 @@ class Article {
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
 				# If this is a system message, get the default text.
 				list( $message, $lang ) = $wgMessageCache->figureMessage( $wgContLang->lcfirst( $this->mTitle->getText() ) );
-				$wgMessageCache->loadAllMessages( $lang );
 				$text = wfMsgGetKey( $message, false, $lang, false );
 
 				if ( wfEmptyMsg( $message, $text ) )
@@ -892,7 +891,7 @@ class Article {
 		# Should the parser cache be used?
 		$useParserCache = $this->useParserCache( $oldid );
 		wfDebug( 'Article::view using parser cache: ' . ( $useParserCache ? 'yes' : 'no' ) . "\n" );
-		if ( $wgUser->getOption( 'stubthreshold' ) ) {
+		if ( $wgUser->getStubThreshold() ) {
 			wfIncrStats( 'pcache_miss_stub' );
 		}
 
@@ -1090,19 +1089,6 @@ class Article {
 			$wgOut->addHTML( htmlspecialchars( $this->mContent ) );
 			$wgOut->addHTML( "\n</pre>\n" );
 		}
-	}
-
-	/**
-	 * Get the robot policy to be used for the current action=view request.
-	 * @return String the policy that should be set
-	 * @deprecated use getRobotPolicy() instead, which returns an associative
-	 *    array
-	 */
-	public function getRobotPolicyForView() {
-		wfDeprecated( __METHOD__ );
-		$policy = $this->getRobotPolicy( 'view' );
-
-		return $policy['index'] . ',' . $policy['follow'];
 	}
 
 	/**
@@ -1316,6 +1302,7 @@ class Article {
 		}
 
 		$sk = $wgUser->getSkin();
+		$token = $wgUser->editToken( $rcid );
 
 		$wgOut->addHTML(
 			"<div class='patrollink'>" .
@@ -1327,7 +1314,8 @@ class Article {
 						array(),
 						array(
 							'action' => 'markpatrolled',
-							'rcid' => $rcid
+							'rcid' => $rcid,
+							'token' => $token,
 						),
 						array( 'known', 'noclasses' )
 					)
@@ -1462,7 +1450,7 @@ class Article {
 		global $wgUser, $wgEnableParserCache;
 
 		return $wgEnableParserCache
-			&& intval( $wgUser->getOption( 'stubthreshold' ) ) == 0
+			&& $wgUser->getStubThreshold() == 0
 			&& $this->exists()
 			&& empty( $oldid )
 			&& !$this->mTitle->isCssOrJsPage()
@@ -2358,12 +2346,18 @@ class Article {
 	 * Mark this particular edit/page as patrolled
 	 */
 	public function markpatrolled() {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgUser, $wgRequest;
 
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		# If we haven't been given an rc_id value, we can't do anything
 		$rcid = (int) $wgRequest->getVal( 'rcid' );
+
+		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), $rcid ) ) {
+			$wgOut->showErrorPage( 'sessionfailure-title', 'sessionfailure' );
+			return;
+		}
+
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( is_null( $rc ) ) {
@@ -4595,13 +4589,13 @@ class Article {
 
 		// Should the parser cache be used?
 		$useParserCache = $wgEnableParserCache &&
-			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
+			$wgUser->getStubThreshold() == 0 &&
 			$this->exists() &&
 			$oldid === null;
 
 		wfDebug( __METHOD__ . ': using parser cache: ' . ( $useParserCache ? 'yes' : 'no' ) . "\n" );
 
-		if ( $wgUser->getOption( 'stubthreshold' ) ) {
+		if ( $wgUser->getStubThreshold() ) {
 			wfIncrStats( 'pcache_miss_stub' );
 		}
 

@@ -655,6 +655,7 @@ $1 is a filename, I think.',
 
 {{Identical|Log in}}',
 'createaccountmail'          => 'Button text for creating a new account and sending the new password to the specified e-mail address directly, as used on [[Special:UserLogin/signup]] if creating accounts by e-mail is allowed.',
+'createaccountreason'        => '{{Identical|Reason}}',
 'createaccounterror'         => 'Parameters:
 * $1 is an error message',
 'nocookiesnew'               => "This message is displayed when a new account was successfully created, but the browser doesn't accept cookies.",
@@ -1288,7 +1289,8 @@ This is a search result (and I guess search engine) dependent messages. I do not
 {{Identical|Save}}',
 'resetprefs'                    => 'Button for resetting changes in the preferences page.',
 'restoreprefs'                  => 'Used in [[Special:Preferences]]',
-'prefs-editing'                 => 'Title of a tab in [[Special:Preferences]].',
+'prefs-editing'                 => 'Title of a tab in [[Special:Preferences]].
+When changing this message, please also update {{msg-mw|vector-editwarning-warning}} which references to this message.',
 'rows'                          => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
 'columns'                       => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
 'searchresultshead'             => 'This is the label of the tab in [[Special:Preferences|my preferences]] which contains options for searching the wiki.
@@ -2660,6 +2662,7 @@ See also {{msg-mw|Blocklistline}}.',
 'ipb-otherblocks-header'       => '[[File:Special.Block with other blocks from GlobalBlocking and TorBlocks.png|thumb|Example]]
 Used on [[Special:Block]] as header for other blocks, i.e. from GlobalBlocking or TorBlocks',
 'blockme'                      => 'The page title of [[Special:Blockme]], a feature which is disabled by default.',
+'proxyblocksuccess'            => '{{Identical|Done}}',
 'sorbs'                        => '{{optional}}',
 'cant-see-hidden-user'         => 'Used as (red) error message on Special:Block when you try to change (as sysop w/o the hideuser right) the block of a hidden user.',
 'ipbblocked'                   => 'Error message shown when a user tries to alter block settings when they are themselves blocked.',

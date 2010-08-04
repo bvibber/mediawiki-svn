@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Jarmanj Turtash
  * @author Khazar II
  * @author Kranch
  * @author Numulunj pilgae
@@ -526,7 +527,7 @@ $2',
 'yourname'                   => 'Тиить лемоц:',
 'yourpassword'               => 'Сувама валце:',
 'yourpasswordagain'          => 'Сёрматк сувама валце омбоцекс:',
-'remembermypassword'         => 'Ванфтомс монь сувама лемозе тя содама машинаса',
+'remembermypassword'         => 'Ванфтомс монь сувама лемозе тя содам машинаса (максимум $1 {{PLURAL:$1|шис|шис}})',
 'yourdomainname'             => 'Тонь доменце:',
 'externaldberror'            => 'Лиссь эльбятькс ушеширень датабазонь вельде кемокстакшнембачк эли тондейть аф мярьгови полафнемс тонь ушеширень сёрматфтомацень.',
 'login'                      => 'Сувама',

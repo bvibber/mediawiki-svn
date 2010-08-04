@@ -335,7 +335,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Pagina’s die ik verwijder automatisch volgen',
 'tog-previewontop'            => 'Voorvertoning boven bewerkingsveld weergeven',
 'tog-previewonfirst'          => 'Voorvertoning bij eerste bewerking weergeven',
-'tog-nocache'                 => 'Geen caching gebruiken',
+'tog-nocache'                 => "Cachen van pagina's door de browser uitschakelen",
 'tog-enotifwatchlistpages'    => 'Mij e-mailen bij bewerkingen van pagina’s op mijn volglijst',
 'tog-enotifusertalkpages'     => 'Mij e-mailen als iemand mijn overlegpagina wijzigt',
 'tog-enotifminoredits'        => 'Mij e-mailen bij kleine bewerkingen van pagina’s op mijn volglijst',
@@ -748,6 +748,7 @@ Vergeet niet uw [[Special:Preferences|voorkeuren voor {{SITENAME}}]] aan te pass
 'gotaccount'                 => "Hebt u al een gebruikersnaam? '''$1'''.",
 'gotaccountlink'             => 'Aanmelden',
 'createaccountmail'          => 'Per e-mail',
+'createaccountreason'        => 'Reden:',
 'badretype'                  => 'De ingevoerde wachtwoorden verschillen van elkaar.',
 'userexists'                 => 'De gekozen gebruikersnaam is al in gebruik.
 Kies een andere naam.',

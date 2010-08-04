@@ -73,7 +73,7 @@ class SpecialWhatLinksHere extends SpecialPage {
 			return;
 		}
 
-		$this->selfTitle = SpecialPage::getTitleFor( 'Whatlinkshere', $this->target->getPrefixedDBkey() );
+		$this->selfTitle = $this->getTitle( $this->target->getPrefixedDBkey() );
 
 		$wgOut->setPageTitle( wfMsg( 'whatlinkshere-title', $this->target->getPrefixedText() ) );
 		$wgOut->setSubtitle( wfMsg( 'whatlinkshere-backlink', $this->skin->link( $this->target, $this->target->getPrefixedText(), array(), array( 'redirect' => 'no'  ) ) ) );
@@ -262,11 +262,13 @@ class SpecialWhatLinksHere extends SpecialPage {
 	}
 
 	protected function listItem( $row, $nt, $notClose = false ) {
+		global $wgLang;
+
 		# local message cache
 		static $msgcache = null;
 		if ( $msgcache === null ) {
 			static $msgs = array( 'isredirect', 'istemplate', 'semicolon-separator',
-				'whatlinkshere-links', 'isimage' );
+				'whatlinkshere-links', 'isimage', 'hist' );
 			$msgcache = array();
 			foreach ( $msgs as $msg ) {
 				$msgcache[$msg] = wfMsgExt( $msg, array( 'escapenoentities' ) );
@@ -301,8 +303,10 @@ class SpecialWhatLinksHere extends SpecialPage {
 		}
 
 		# Space for utilities links, with a what-links-here link provided
-		$wlhLink = $this->wlhLink( $nt, $msgcache['whatlinkshere-links'] );
-		$wlh = Xml::wrapClass( "($wlhLink)", 'mw-whatlinkshere-tools' );
+		$tools = array();
+		$tools[] = $this->wlhLink( $nt, $msgcache['whatlinkshere-links'] );
+		$tools[] = $this->skin->linkKnown( $nt, $msgcache['hist'], array(), array( 'action' => 'history' ) );
+		$wlh = Xml::wrapClass( '(' . $wgLang->pipeList( $tools ) . ')', 'mw-whatlinkshere-tools' );
 
 		return $notClose ?
 			Xml::openElement( 'li' ) . "$link $propsText $wlh\n" :
@@ -316,7 +320,7 @@ class SpecialWhatLinksHere extends SpecialPage {
 	protected function wlhLink( Title $target, $text ) {
 		static $title = null;
 		if ( $title === null )
-			$title = SpecialPage::getTitleFor( 'Whatlinkshere' );
+			$title = $this->getTitle();
 
 		return $this->skin->linkKnown(
 			$title,
@@ -381,7 +385,7 @@ class SpecialWhatLinksHere extends SpecialPage {
 		$f = Xml::openElement( 'form', array( 'action' => $wgScript ) );
 		
 		# Values that should not be forgotten
-		$f .= Xml::hidden( 'title', SpecialPage::getTitleFor( 'Whatlinkshere' )->getPrefixedText() );
+		$f .= Xml::hidden( 'title', $this->getTitle()->getPrefixedText() );
 		foreach ( $this->opts->getUnconsumedValues() as $name => $value ) {
 			$f .= Xml::hidden( $name, $value );
 		}

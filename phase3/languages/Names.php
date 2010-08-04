@@ -57,9 +57,7 @@
 	'cho' => 'Choctaw',		# Choctaw
 	'chr' => 'ᏣᎳᎩ', # Cherokee
 	'chy' => 'Tsetsêhestâhese',	# Cheyenne
-	'ckb' => 'Soranî / کوردی',	# Sorani
-	'ckb-latn' => "\xE2\x80\xAASoranî (latînî)\xE2\x80\xAC", # Central Kurdish Latin script
-	'ckb-arab' => "\xE2\x80\xABکوردی (عەرەبی)\xE2\x80\xAC", # Central Kurdish Arabic script
+	'ckb' => 'کوردی',	# Sorani
 	'co' => 'Corsu',		# Corsican
 	'cps' => 'Capiceño', # Capiznon
 	'cr' => 'Nēhiyawēwin / ᓀᐦᐃᔭᐍᐏᐣ',		# Cree

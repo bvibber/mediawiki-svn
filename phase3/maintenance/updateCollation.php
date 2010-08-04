@@ -30,14 +30,18 @@ TEXT;
 		global $wgCollationVersion, $wgContLang;
 
 		$dbw = wfGetDB( DB_MASTER );
-		$count = $dbw->estimateRowCount(
+		$count = $dbw->selectField(
 			'categorylinks',
-			array( 'cl_from', 'cl_to', 'cl_sortkey_prefix' ),
+			'COUNT(*)',
 			'cl_collation != ' . $dbw->addQuotes( $wgCollationVersion ),
 			__METHOD__
 		);
 
-		$this->output( "Fixing around $count rows (estimate might be wrong).\n" );
+		if ( $count == 0 ) {
+			$this->output( "Collations up-to-date.\n" );
+			return;
+		}
+		$this->output( "Fixing collation for $count rows.\n" );
 
 		$count = 0;
 		do {
@@ -60,7 +64,8 @@ TEXT;
 				if ( $row->cl_collation == 0 ) {
 					# This is an old-style row, so the sortkey needs to be
 					# converted.
-					if ( $row->cl_sortkey == $title->getCategorySortkey() ) {
+					if ( $row->cl_sortkey == $title->getText()
+					|| $row->cl_sortkey == $title->getPrefixedText() ) {
 						$prefix = '';
 					} else {
 						# Custom sortkey, use it as a prefix
@@ -86,6 +91,7 @@ TEXT;
 						'cl_sortkey_prefix' => $prefix,
 						'cl_collation' => $wgCollationVersion,
 						'cl_type' => $type,
+						'cl_timestamp = cl_timestamp',
 					),
 					array( 'cl_from' => $row->cl_from, 'cl_to' => $row->cl_to ),
 					__METHOD__

@@ -180,7 +180,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Dodaj strani, ki jih izbrišem, na moj spisek nadzorov',
 'tog-previewontop'            => 'Prikaži predogled pred urejevalnim poljem in ne za njim',
 'tog-previewonfirst'          => 'Ob začetku urejanja prikaži predogled',
-'tog-nocache'                 => 'Onemogoči predpomnenje strani',
+'tog-nocache'                 => 'Onemogoči predpomnenje strani v brskalniku',
 'tog-enotifwatchlistpages'    => 'Ob spremembah strani mi pošlji e-pošto',
 'tog-enotifusertalkpages'     => 'Pošlji e-pošto ob spremembah moje pogovorne strani',
 'tog-enotifminoredits'        => 'Pošlji e-pošto tudi za manjše spremembe strani',
@@ -581,6 +581,7 @@ Ne pozabite si prilagoditi vaših [[Special:Preferences|nastavitev {{GRAMMAR:rod
 'gotaccount'                 => 'Račun že imate? $1.',
 'gotaccountlink'             => 'Prijavite se',
 'createaccountmail'          => 'Po e-pošti',
+'createaccountreason'        => 'Razlog:',
 'badretype'                  => 'Gesli, ki ste ju vnesli, se ne ujemata.',
 'userexists'                 => 'Uporabniško ime, ki ste ga vnesli, je že zasedeno.
 Prosimo, izberite si drugo.',

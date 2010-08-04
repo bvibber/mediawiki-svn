@@ -32,8 +32,8 @@ $namespaceNames = array(
 	NS_MEDIA            => 'Aŭdvidaĵo',
 	NS_SPECIAL          => 'Speciala',
 	NS_TALK             => 'Diskuto',
-	NS_USER             => 'Vikipediisto',
-	NS_USER_TALK        => 'Vikipediista_diskuto',
+	NS_USER             => 'Uzanto',
+	NS_USER_TALK        => 'Uzanta_diskuto',
 	NS_PROJECT_TALK     => '$1_diskuto',
 	NS_FILE             => 'Dosiero',
 	NS_FILE_TALK        => 'Dosiera_diskuto',
@@ -45,6 +45,11 @@ $namespaceNames = array(
 	NS_HELP_TALK        => 'Helpa_diskuto',
 	NS_CATEGORY         => 'Kategorio',
 	NS_CATEGORY_TALK    => 'Kategoria_diskuto',
+);
+
+$namespaceAliases = array(
+	'Vikipediisto' => NS_USER,
+	'Vikipediista_diskuto' => NS_USER_TALK,
 );
 
 $specialPageAliases = array(
@@ -285,7 +290,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Aldoni paĝojn, kiujn mi forigas, al mia atentaro',
 'tog-previewontop'            => 'Montri antaŭrigardon antaŭ redaktilo',
 'tog-previewonfirst'          => 'Montri antaŭrigardon je unua redakto',
-'tog-nocache'                 => 'Malŝalti kaŝmemorigon de paĝoj',
+'tog-nocache'                 => 'Malŝalti retumilan kaŝmemoron de paĝoj',
 'tog-enotifwatchlistpages'    => 'Sendi al mi retmesaĝon kiam tiu paĝo estas ŝanĝita',
 'tog-enotifusertalkpages'     => 'Sendi al mi retmesaĝon kiam mia diskutpaĝo estas ŝanĝita',
 'tog-enotifminoredits'        => 'Sendi al mi ankaŭ retmesaĝojn por malgrandaj redaktoj de paĝoj',
@@ -695,6 +700,7 @@ Ne forgesu fari viajn [[Special:Preferences|{{SITENAME}}-preferojn]].',
 'gotaccount'                 => "Ĉu vi jam havas konton? '''$1'''.",
 'gotaccountlink'             => 'Ensaluti',
 'createaccountmail'          => 'retpoŝte',
+'createaccountreason'        => 'Kialo:',
 'badretype'                  => 'La pasvortojn kiujn vi tajpis ne egalas.',
 'userexists'                 => 'Salutnomo enigita jam estas uzata.
 Bonvolu elekti alian nomon.',
@@ -808,7 +814,7 @@ Vi eble jam ŝanĝis vian pasvorton aŭ petis novan provizoran pasvorton.',
 'showdiff'                         => 'Montri ŝanĝojn',
 'anoneditwarning'                  => 'Vi ne estas ensalutinta. Via IP-adreso enregistriĝos en la ŝango-historio de tiu ĉi paĝo.',
 'anonpreviewwarning'               => "''Vi ne estas ensalutita. La konservo de la paĝo registros vian IP-adreson en kronologio de ĉi tiu paĝo.''",
-'missingsummary'                   => "'''Rememorigilo:''' Vi ne provizis redaktan resumon. Se vi alklakos denove la savan butonon, via redaktaĵo estos storata sen resumo.",
+'missingsummary'                   => "'''Rememorigilo:''' Vi ne provizis redaktan resumon. Se vi alklakos denove la konservan butonon, via redaktaĵo estos konservita sen resumo.",
 'missingcommenttext'               => 'Bonvolu entajpi komenton malsupre.',
 'missingcommentheader'             => "'''Atenton:''' Vi ne provizis temon aŭ subtitolon por ĉi tiu komento.
 Se vi klakos \"Konservi\" denove, via redakto estos konservita sen ĝi.",
@@ -925,7 +931,7 @@ Vi ankaŭ promesu al ni ke vi verkis tion mem aŭ kopiis el publika domajno aŭ 
 'longpagewarning'                  => "'''AVERTO: Tiu ĉi paĝo longas $1 kilobitokojn; kelkaj retumiloj
 povas fuŝi redaktante paĝojn je longo proksime aŭ preter 32 kb.
 Se eble, bonvolu disigi la paĝon al malpli grandajn paĝerojn.'''",
-'longpageerror'                    => "'''Eraro: La teksto, kiun vi prezentis, longas $1 kilobajtojn, kio estas pli longa ol la maksimumo de $2 kilobajtoj. Ĝi ne povas esti storata.'''",
+'longpageerror'                    => "'''Eraro: La teksto, kiun vi prezentis, longas $1 kilobajtojn, kio estas pli longa ol la maksimumo de $2 kilobajtoj. Ĝi ne povas esti konservita.'''",
 'readonlywarning'                  => "'''AVERTO: La datumbazo estas ŝlosita por teknika laboro, do vi ne povas konservi viajn redaktojn ĉi-momente.
 Vi eble volus elkopii kaj englui la tekston al tekstdosiero por konservi ĝin por posta uzo.'''
 
@@ -1212,7 +1218,7 @@ Certigu ke ĉi tiu ŝanĝo tenos kontinuecon de la historia paĝo.',
 'shown-title'                      => 'Montri {{PLURAL:$1|$1 rezulton|$1 rezultojn}} en paĝo',
 'viewprevnext'                     => 'Montri ($1 {{int:pipe-separator}} $2) ($3).',
 'searchmenu-legend'                => 'Serĉaj opcioj',
-'searchmenu-exists'                => "* Paĝo '''[[$1]]'''",
+'searchmenu-exists'                => "'''Estas paĝo nomita \"[[:\$1]]\" en ĉi tiu vikio'''",
 'searchmenu-new'                   => "'''Krei la paĝon \"[[:\$1]]\" en ĉi tiu vikio!'''",
 'searchhelp-url'                   => 'Help:Enhavo',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Traserĉi paĝojn kun ĉi tiu prefikso]]',
@@ -1376,6 +1382,8 @@ Vi povas ankaŭ elekti permesigi aliaj uzantoj kontakti vin per via uzanto-paĝo
 'prefs-advancedsearchoptions'   => 'Progresaj opcioj',
 'prefs-advancedwatchlist'       => 'Progresaj opcioj',
 'prefs-displayrc'               => 'Montraj opcioj',
+'prefs-displaysearchoptions'    => 'Montraj opcioj',
+'prefs-displaywatchlist'        => 'Montraj opcioj',
 'prefs-diffs'                   => 'Diferencoj',
 
 # User rights
@@ -1693,11 +1701,13 @@ Vi konsideru ĉu taŭgas alŝuti ĉi tiu dosiero.
 jen la protokolo pri forigado por ĉi tiu dosiero por via oportuneco:",
 'filename-bad-prefix'         => "La nomo de la dosiero kiun vi alŝutas komencas kun '''\"\$1\"''', kiu estas nepriskriba nomo ofte aŭtomate donata de ciferecaj fotiloj. Bonvolu elekti pli priskriban nomon por via bildo.",
 'upload-success-subj'         => 'Alŝuto sukcesis!',
-'upload-success-msg'          => 'Via alŝuto el [$2] sukcesis. La rezulto estas ĉi tie: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'Via alŝuto el [$2] sukcesis. Ĝi disponeblas ĉi tie [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Alŝuta problemo',
 'upload-failure-msg'          => 'Estis problemo kun via alŝuto:
 
 $1',
+'upload-warning-subj'         => 'Averto pri alŝutado',
+'upload-warning-msg'          => 'Okazis problemo pro via alŝuto el [$2]. Vi povas reveni al la [[Special:Upload/stash/$1|alŝutan formularon]] por korektigi ĉi tiun problemon.',
 
 'upload-proto-error'        => 'Malvalida protokolo',
 'upload-proto-error-text'   => 'Fora alŝuto devas URL-on komence de <code>http://</code> aŭ <code>ftp://</code>.',
@@ -2592,6 +2602,7 @@ La celartikolo "[[:$1]]" jam ekzistas. Ĉu vi volas forigi ĝin por krei spacon 
 'immobile-source-page'         => 'Ĉi tiu paĝo ne estas movebla.',
 'immobile-target-page'         => 'Ne povas movi al tiu destina titolo.',
 'imagenocrossnamespace'        => 'Ne povas movi dosieron al nedosiera nomspaco',
+'nonfile-cannot-move-to-file'  => 'Ne povas movi ne-dosieron al dosiera nomspaco',
 'imagetypemismatch'            => 'La nova dosierfinaĵo ne kongruas ĝian dosiertipon.',
 'imageinvalidfilename'         => 'La cela dosiernomo estas nevalida',
 'fix-double-redirects'         => 'Ĝisdatigi iujn alidirektilojn kiuj direktas al la originala titolo',

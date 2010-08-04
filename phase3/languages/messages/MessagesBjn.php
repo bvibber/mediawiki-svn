@@ -50,15 +50,16 @@ $messages = array(
 'sat'           => 'Sap',
 'january'       => 'Januari',
 'february'      => 'Pibuari',
-'march'         => 'Marit',
+'march'         => 'Maret',
 'april'         => 'April',
 'may_long'      => 'Mai',
 'june'          => 'Juni',
 'july'          => 'Juli',
 'august'        => 'Agustus',
-'october'       => 'Oktober',
-'november'      => 'Nopember',
-'december'      => 'Desember',
+'september'     => 'Siptimbir',
+'october'       => 'Uktubir',
+'november'      => 'Nupimbir',
+'december'      => 'Disimbir',
 'january-gen'   => 'Januari',
 'february-gen'  => 'Pibuari',
 'march-gen'     => 'Marit',
@@ -68,6 +69,9 @@ $messages = array(
 'july-gen'      => 'Juli',
 'august-gen'    => 'Agustus',
 'september-gen' => 'Siptimbir',
+'october-gen'   => 'Oktober',
+'november-gen'  => 'Nopember',
+'december-gen'  => 'Desember',
 'jan'           => 'Jan',
 'feb'           => 'Pib',
 'mar'           => 'Mar',
@@ -294,6 +298,9 @@ atawa [{{fullurl:{{FULLPAGENAME}}|action=edit}} mambabak tungkaran ini]</span>.'
 'editing'                          => 'Mambabak $1',
 'editingsection'                   => 'Mambabak $1 (hapat)',
 'editingcomment'                   => 'Mambaiki $1 (hapat hanyar)',
+'copyrightwarning'                 => "Muhun dicatat bahwasanya samunyaan sumbangan ka {{SITENAME}} adalah sudah dipartimbangkan diedarakan di bawah $2 (lihati $1 gasan rincian). Amun Pian kada handak tulisan Pian dibabak wan diedarakan, laluai kada usah mangirim ini ka sia. <br />
+Pian jua bajanji ka kami amun Pian manulis ini saurangan, atawa manjumput ini matan sabuah asal mula milik umum atawa asal mula lainnya nang samacam.
+'''Jangan kirimkan gawian bahak cipta kada baijin!'''",
 'templatesused'                    => '{{PLURAL:$1|Citakan|Citakan}} nang digunakan di tungkaran ini:',
 'templatesusedpreview'             => '{{PLURAL:$1|Citakan|Citakan}} nang digunakan di titilikan ini:',
 'template-protected'               => '(dilindungi)',
@@ -337,8 +344,8 @@ atawa [{{fullurl:{{FULLPAGENAME}}|action=edit}} mambabak tungkaran ini]</span>.'
 'editundo'                => 'walangi',
 
 # Search results
-'searchresults'             => 'Ulihan panggagaian',
-'searchresults-title'       => 'Ulihan gagai gasan "$1"',
+'searchresults'             => 'Kulihan panggagaian',
+'searchresults-title'       => 'Kulihan gagai gasan "$1"',
 'searchresulttext'          => 'Gasan habar labih lanjut pasal panggagaian pintangan {{SITENAME}}, tiringi [[{{MediaWiki:Helppage}}|tungkaran patulung]].',
 'searchsubtitle'            => 'Pian manggagai \'\'\'[[:$1]]\'\'\' ([[Special:Prefixindex/$1|samunyaan tungkaran bamula wan "$1"]]{{int:pipe-separator}}[[Special:WhatLinksHere/$1|samunyaan tungkaran nang bataut ka "$1"]])',
 'searchsubtitleinvalid'     => "Pian manggagai '''$1'''",
@@ -354,7 +361,7 @@ atawa [{{fullurl:{{FULLPAGENAME}}|action=edit}} mambabak tungkaran ini]</span>.'
 'search-section'            => '(hapat $1)',
 'search-suggest'            => 'Inikah maksud Pian: $1',
 'search-interwiki-caption'  => 'Rangka gawian lain',
-'search-interwiki-default'  => 'Ulihan $1',
+'search-interwiki-default'  => 'Kulihan $1',
 'search-interwiki-more'     => '(lagi)',
 'search-mwsuggest-enabled'  => 'awan saran',
 'search-mwsuggest-disabled' => 'kadada saran',
@@ -538,6 +545,9 @@ Tungkaran-tungkaran dalam [[Special:Watchlist|your watchlist]] ditandai '''citak
 'newuserlogpage'          => 'Log pamuruk hanyar',
 'newuserlog-create-entry' => 'Akun pamuruk hanyar',
 
+# E-mail user
+'emailuser' => 'Surel pamuruk',
+
 # Watchlist
 'watchlist'         => 'Daptar itihan ulun',
 'mywatchlist'       => 'Daptar itihan ulun',
@@ -575,6 +585,7 @@ Muhun mamastiakan amun Pian handak manggawi ini, bahwasa Pian paham akibatnya, w
 # Protect
 'protectlogpage'              => 'Log parlindungan',
 'protectedarticle'            => "dilindungi ''[[$1]]''",
+'modifiedarticleprotection'   => 'maubah tingkat perlindungan "[[$1]]"',
 'protectcomment'              => 'Alasan:',
 'protectexpiry'               => 'Kadaluwarsa:',
 'protect_expiry_invalid'      => 'Waktu kadaluwarsa kada sah.',
@@ -609,6 +620,7 @@ Muhun mamastiakan amun Pian handak manggawi ini, bahwasa Pian paham akibatnya, w
 'year'                => 'Matan tahun (wan sabalumnya):',
 
 'sp-contributions-newbies'  => 'Tunjukakan sumbangan hanya matan pamuruk-pamuruk hanyar',
+'sp-contributions-blocklog' => 'Log blukir',
 'sp-contributions-talk'     => 'pandir',
 'sp-contributions-search'   => 'Gagai gasan andil/sumbangan',
 'sp-contributions-username' => 'Alamat IP atawa ngaran pamuruk:',
@@ -640,6 +652,7 @@ Muhun mamastiakan amun Pian handak manggawi ini, bahwasa Pian paham akibatnya, w
 'change-blocklink'         => 'ubah blukir',
 'contribslink'             => 'andil',
 'blocklogpage'             => 'Log blukir',
+'blocklogentry'            => 'diblukir [[$1]] sampai wayah $2 $3',
 'unblocklogentry'          => 'Mahilangakan blukir "$1"',
 'block-log-flags-nocreate' => 'Paulahan akun dipajahkan',
 
@@ -655,6 +668,7 @@ Muhun mamastiakan amun Pian handak manggawi ini, bahwasa Pian paham akibatnya, w
 'movetalk'         => 'Pindahakan tungkaran pamandiran nang tarait',
 '1movedto2'        => 'dipindahakan [[$1]] ka [[$2]]',
 '1movedto2_redir'  => 'mamindahakan [[$1]] ka [[$2]] malalui paugahan',
+'movelogpage'      => 'Log pamindahan',
 'movereason'       => 'Alasan:',
 'revertmove'       => 'bulikakan',
 
@@ -750,7 +764,8 @@ Muhun mamastiakan amun Pian handak manggawi ini, bahwasa Pian paham akibatnya, w
 'exif-jpeginterchangeformat' => 'Ofset ka JPEG SOI',
 
 # External editor support
-'edit-externally' => 'Babak barakas ini puruk sabuah aplikasi luar',
+'edit-externally'      => 'Babak barakas ini puruk sabuah aplikasi luar',
+'edit-externally-help' => '(Lihati [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions] untuk pambaritahuan labih)',
 
 # 'all' in various places, this might be different for inflected languages
 'watchlistall2' => 'samunyaan',

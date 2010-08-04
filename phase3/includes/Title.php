@@ -3026,6 +3026,8 @@ class Title {
 	 * @return \type{\mixed} true on success, getUserPermissionsErrors()-like array on failure
 	 */
 	public function moveTo( &$nt, $auth = true, $reason = '', $createRedirect = true ) {
+		global $wgContLang;
+
 		$err = $this->isValidMoveOperation( $nt, $auth, $reason );
 		if ( is_array( $err ) ) {
 			return $err;
@@ -3058,24 +3060,19 @@ class Title {
 		}
 		$redirid = $this->getArticleID();
 
-		// Category memberships include a sort key which may be customized.
-		// If it's left as the default (the page title), we need to update
-		// the sort key to match the new title.
-		//
-		// Be careful to avoid resetting cl_timestamp, which may disturb
-		// time-based lists on some sites.
-		//
-		// Warning -- if the sort key is *explicitly* set to the old title,
-		// we can't actually distinguish it from a default here, and it'll
-		// be set to the new title even though it really shouldn't.
-		// It'll get corrected on the next edit, but resetting cl_timestamp.
+		// Refresh the sortkey for this row.  Be careful to avoid resetting
+		// cl_timestamp, which may disturb time-based lists on some sites.
+		$prefix = $dbw->selectField(
+			'categorylinks',
+			'cl_sortkey_prefix',
+			array( 'cl_from' => $pageid ),
+			__METHOD__
+		);
 		$dbw->update( 'categorylinks',
 			array(
-				'cl_sortkey' => $nt->getPrefixedText(),
+				'cl_sortkey' => $wgContLang->convertToSortkey( $nt->getCategorySortkey( $prefix ) ),
 				'cl_timestamp=cl_timestamp' ),
-			array(
-				'cl_from' => $pageid,
-				'cl_sortkey' => $this->getPrefixedText() ),
+			array( 'cl_from' => $pageid ),
 			__METHOD__ );
 
 		if ( $protected ) {
@@ -4149,13 +4146,7 @@ class Title {
 	 * @return string
 	 */
 	public function getCategorySortkey( $prefix = '' ) {
-		global $wgCategoryPrefixedDefaultSortkey;
-		if ( $this->getNamespace() == NS_CATEGORY
-		|| !$wgCategoryPrefixedDefaultSortkey ) {
-			$unprefixed = $this->getText();
-		} else {
-			$unprefixed = $this->getPrefixedText();
-		}
+		$unprefixed = $this->getText();
 		if ( $prefix !== '' ) {
 			# Separate with a null byte, so the unprefixed part is only used as
 			# a tiebreaker when two pages have the exact same prefix -- null

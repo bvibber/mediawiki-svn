@@ -2079,6 +2079,20 @@ class User {
 	}
 
 	/**
+	 * Get the user preferred stub threshold
+	 */
+	function getStubThreshold() {
+		global $wgMaxArticleSize; # Maximum article size, in Kb
+		$threshold = intval( $this->getOption( 'stubthreshold' ) );
+		if ( $threshold > $wgMaxArticleSize * 1024 ) {
+			# If they have set an impossible value, disable the preference 
+			# so we can use the parser cache again.
+			$threshold = 0;
+		}
+		return $threshold;
+	}
+
+	/**
 	 * Get the permissions this user has.
 	 * @return \type{\arrayof{\string}} Array of permission names
 	 */
@@ -2686,10 +2700,11 @@ class User {
 		}
 
 		// stubthreshold is only included below for completeness,
-		// it will always be 0 when this function is called by parsercache.
+		// since it disables the parser cache, its value will always 
+		// be 0 when this function is called by parsercache.
 
 		$confstr =        $this->getOption( 'math' );
-		$confstr .= '!' . $this->getOption( 'stubthreshold' );
+		$confstr .= '!' . $this->getStubThreshold();
 		if ( $wgUseDynamicDates ) {
 			$confstr .= '!' . $this->getDatePreference();
 		}
@@ -2699,6 +2714,9 @@ class User {
 		// add in language specific options, if any
 		$extra = $wgContLang->getExtraHashOptions();
 		$confstr .= $extra;
+
+		// Since the skin could be overloading link(), it should be
+		// included here but in practice, none of our skins do that.
 
 		$confstr .= $wgRenderHashAppend;
 
@@ -3200,8 +3218,6 @@ class User {
 	 * @return \string Localized descriptive group name
 	 */
 	static function getGroupName( $group ) {
-		global $wgMessageCache;
-		$wgMessageCache->loadAllMessages();
 		$key = "group-$group";
 		$name = wfMsg( $key );
 		return $name == '' || wfEmptyMsg( $key, $name )
@@ -3216,8 +3232,6 @@ class User {
 	 * @return \string Localized name for group member
 	 */
 	static function getGroupMember( $group ) {
-		global $wgMessageCache;
-		$wgMessageCache->loadAllMessages();
 		$key = "group-$group-member";
 		$name = wfMsg( $key );
 		return $name == '' || wfEmptyMsg( $key, $name )
@@ -3274,8 +3288,6 @@ class User {
 	 * @return \types{\type{Title},\bool} Title of the page if it exists, false otherwise
 	 */
 	static function getGroupPage( $group ) {
-		global $wgMessageCache;
-		$wgMessageCache->loadAllMessages();
 		$page = wfMsgForContent( 'grouppage-' . $group );
 		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
 			$title = Title::newFromText( $page );
@@ -3488,8 +3500,6 @@ class User {
 	 * @return \string Localized description of the right
 	 */
 	static function getRightDescription( $right ) {
-		global $wgMessageCache;
-		$wgMessageCache->loadAllMessages();
 		$key = "right-$right";
 		$name = wfMsg( $key );
 		return $name == '' || wfEmptyMsg( $key, $name )
@@ -3571,28 +3581,34 @@ class User {
 
 	/**
 	 * Add a newuser log entry for this user
+	 *
 	 * @param $byEmail Boolean: account made by email?
+	 * @param $reason String: user supplied reason
 	 */
-	public function addNewUserLogEntry( $byEmail = false ) {
-		global $wgUser, $wgNewUserLog;
+	public function addNewUserLogEntry( $byEmail = false, $reason = '' ) {
+		global $wgUser, $wgContLang, $wgNewUserLog;
 		if( empty( $wgNewUserLog ) ) {
 			return true; // disabled
 		}
 
 		if( $this->getName() == $wgUser->getName() ) {
 			$action = 'create';
-			$message = '';
 		} else {
 			$action = 'create2';
-			$message = $byEmail
-				? wfMsgForContent( 'newuserlog-byemail' )
-				: '';
+			if ( $byEmail ) {
+				if ( $reason === '' ) {
+					$reason = wfMsgForContent( 'newuserlog-byemail' );
+				} else {
+					$reason = $wgContLang->commaList( array(
+						$reason, wfMsgForContent( 'newuserlog-byemail' ) ) );
+				}
+			}
 		}
 		$log = new LogPage( 'newusers' );
 		$log->addEntry(
 			$action,
 			$this->getUserPage(),
-			$message,
+			$reason,
 			array( $this->getId() )
 		);
 		return true;

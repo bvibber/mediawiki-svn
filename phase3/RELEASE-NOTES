@@ -48,6 +48,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   normal $wgDBport.
 * The upload link for missing files can now be set separately from the 
   navigation link with $wgUploadMissingFileUrl.
+* $wgCategoryPrefixedDefaultSortkey was removed and is now always false.  This
+  provides more sensible sorting behavior for categories.
 
 === New features in 1.17 ===
 * (bug 10183) Users can now add personal styles and scripts to all skins via
@@ -120,6 +122,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   easily replicated by custom user scripts for those who really want it.
 * Non-file pages can no longer be moved to the file namespace, nor vice versa.
 * (bug 671) The <dfn> element has been whitelisted in user input.
+* (bug 24563) Entries on Special:WhatLinksHere now have a link to their history
+* (bug 21503) There's now a "reason" field when creating account for other users
+* (bug 24418) action=markpatrolled now requires a token
+* A variety of category sort-related fixes, including:
+** (bug 164) In English, lowercase and uppercase letters now sort the same.
+   (This should be expanded to proper sorting for other languages before the
+   1.17 release.)
+** (bug 1211) Subcategories, ordinary pages, and files now page separately.
+** When several pages are given the same sort key, they sort by their names
+   instead of randomly.
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -303,6 +315,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 24485) Make iwbacklinks a generator, optionally display iwprefix and iwtitle
 * (bug 24564) Fix fatal errors when using list=deletedrevs, prop=revisions or 
   one of the backlinks generators with limit=max.
+* (bug 24656) API's parse module needs option to disable PP report
 
 === Languages updated in 1.17 ===
 
@@ -322,6 +335,8 @@ changes to languages because of MediaZilla reports.
   (Taraškievica)
 * (bug 23283) Native name for Old English -> Ænglisc
 * (bug 23364) Native name for Azerbaijani -> Azərbaycanca
+* (bug 24593) Native name for Sorani now uses only Arabic script
+* (bug 24628) Generic translations for NS_USER/NS_USER_TALK for Esperanto
 
 == Compatibility ==
 

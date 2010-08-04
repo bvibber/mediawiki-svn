@@ -1,10 +1,10 @@
 <?php
 /**
- * This script is the IBM DB2 database abstraction layer
- *
+ * This is the IBM DB2 database abstraction layer.
  * See maintenance/ibm_db2/README for development notes and other specific information
- * @ingroup Database
+ *
  * @file
+ * @ingroup Database
  * @author leo.petr+mediawiki@gmail.com
  */
 
@@ -214,6 +214,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	 * getSlavePos
 	 * getMasterPos
 	 * getLag
+	 * setFakeMaster
 	 * 
 	 * Generation: (9)
 	 * tableNames
@@ -287,8 +288,7 @@ class DatabaseIbm_db2 extends DatabaseBase {
 	 * select [Done]
 	 * 
 	 * Slave/master: 2 / 2
-	 * setFakeSlaveLag [Done]
-	 * setFakeMaster [Done]
+	 * setFakeSlaveLag [Done] - Where??
 	 * 
 	 * Reflection: 5 / 5
 	 * indexInfo [Done]
@@ -1500,11 +1500,6 @@ EOF;
 	 * @deprecated
 	 */
 	public function getStatus( $which="%" ) { $this->installPrint('Not implemented for DB2: getStatus()'); return ''; }
-	/**
-	 * Not implemented
-	 * @deprecated
-	 */
-	public function setFakeMaster( $enabled = true ) { $this->installPrint('Not implemented for DB2: setFakeMaster()'); }
 	/**
 	 * Not implemented
 	 * @return string $sql
