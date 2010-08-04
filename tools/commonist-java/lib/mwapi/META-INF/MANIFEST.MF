@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Ant-Version: Apache Ant 1.7.1
-Created-By: 14.3-b01 (Sun Microsystems Inc.)
-Application: an API for access to MediaWiki sites written in Java
-Version: 0.7.31
-Creator: daniel wunsch
-License: LGPL
-
