@@ -393,6 +393,15 @@ $messages['sv'] = array(
 	'tspoll-id-error' => 'Inget ID är angivet!',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'tspoll-desc' => 'รวม [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] เป็น HTML-tag',
+	'tspoll-fetch-error' => 'มีข้อผิดพลาดขณะกำลังโหลด',
+	'tspoll-id-error' => 'ต้องระบุไอดี',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -421,9 +430,12 @@ $messages['vi'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Liangent
  */
 $messages['zh-hans'] = array(
+	'tspoll-desc' => '将[http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript]包括为HTML标签',
+	'tspoll-fetch-error' => '获取URL时发生错误！',
 	'tspoll-id-error' => '没有提供ID！',
 );
 

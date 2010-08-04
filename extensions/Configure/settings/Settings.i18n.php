@@ -4387,7 +4387,7 @@ $messages['de'] = array(
 	'configure-setting-wgExtraNamespaces' => 'Zusätzliche Namensräume',
 	'configure-setting-wgExtraNamespaces-key' => 'Namensraum-ID',
 	'configure-setting-wgExtraNamespaces-value' => 'Namensraum-Name',
-	'configure-setting-wgMetaNamespace' => 'Name das Projektnamensraums',
+	'configure-setting-wgMetaNamespace' => 'Name des Projektnamensraums',
 	'configure-setting-wgMetaNamespaceTalk' => 'Name des Projektdiskussionsnamensraums',
 	'configure-setting-wgNamespaceAliases' => 'Namensraumweiterleitungen',
 	'configure-setting-wgNamespaceAliases-key' => 'Alias-Name',
@@ -16900,6 +16900,22 @@ $messages['sk'] = array(
 	'configure-setting-wgProfileToDatabase' => 'Zaznamenávať súčty z profilovania do profilovacej tabuľky v databáze',
 	'configure-setting-wgUDPProfilerHost' => 'Hostiteľ UDP profilovacieho nástroja',
 	'configure-setting-wgUDPProfilerPort' => 'Port UDP profilovacieho nástroja',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'configure-setting-wgSitename' => 'Ime strani',
+	'configure-setting-wgActionPaths-key' => 'Dejanje',
+	'configure-setting-wgActionPaths-value' => 'Predloga URL',
+	'configure-setting-wgMediaHandlers-key' => 'Vrsta MIME',
+	'configure-setting-wgUseGzip' => 'Uporabi kodiranje GZIP',
+	'configure-setting-wgParserConf' => 'Konfiguracija razčlenjevalnika',
+	'configure-setting-wgInputEncoding' => 'Kodiranje vhodnega besedila',
+	'configure-setting-wgLanguageCode' => 'Koda jezika strani',
+	'configure-setting-wgArticleRobotPolicies-key' => 'Naslov strani',
+	'configure-setting-wgArticleRobotPolicies-value' => 'Pravilnik robotov',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

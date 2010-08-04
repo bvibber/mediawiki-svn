@@ -451,6 +451,13 @@ $messages['sk'] = array(
 	'oai-desc' => 'Poskytuje rozhranie k úložisku [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'oai-desc' => 'Zagotavlja vmesnik hrambe [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH]',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */

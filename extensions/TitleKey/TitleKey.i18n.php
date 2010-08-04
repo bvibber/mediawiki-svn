@@ -448,6 +448,13 @@ $messages['sk'] = array(
 	'titlekey-desc' => 'Backend pre návrh prefixového vyhľadávania názvu stránky',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'titlekey-desc' => 'Podpora predlogom iskanja strani po korenu',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  */

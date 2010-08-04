@@ -342,3 +342,11 @@ $messages['vi'] = array(
 	'templateinfo-header' => 'Định nghĩa XML của bản mẫu này là:',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
+$messages['zh-hans'] = array(
+	'templateinfo-desc' => '支持的模版已将其数据结构用XML代码声明。',
+	'templateinfo-header' => '此模版的XML定义是：',
+);
+

@@ -1371,6 +1371,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author ArnoLagrange
  * @author Lucas
  * @author Michawiki
  * @author Yekrats
@@ -1439,7 +1440,7 @@ Se ne, klaku la butonon "Continue" (Daŭri).',
 	'openiddelete-sucess' => 'La OpenID estis sukcese forigita de via konto.',
 	'openiddelete-error' => 'Eraro okazis dum forigado de la OpenID de via konto.',
 	'openid-prefstext' => '[http://openid.net/ OpenID]-agordoj',
-	'openid-pref-hide' => 'Kaŝi viajn identigon OpenID en via uzula paĝo, se vi ensalutas kun OpenID.',
+	'openid-pref-hide' => 'Kaŝi viajn identigon OpenID en via uzantopaĝo, se vi ensalutas kun OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Ĝisdatigi mian informon de OpenID-konto ĉiam, kiam mi ensalutos:',
 	'openid-urls-desc' => 'Indentigoj OpenID asociigita kun via konto:',
 	'openid-urls-action' => 'Ago',
@@ -4767,6 +4768,15 @@ $messages['sl'] = array(
 	'openidlogin' => 'Prijavite se z OpenID',
 	'openidserver' => 'Strežnik OpenID',
 	'openidxrds' => 'Datoteka Yadis',
+	'openidconvert' => 'Pretvornik OpenID',
+	'openiderror' => 'Napaka med preverjanjem',
+	'openidconfigerror' => 'Napaka konfiguracije OpenID',
+	'openidcancel' => 'Preverjanje je bilo preklicano',
+	'openidcanceltext' => 'Preverjanje URL OpenID je bilo preklicano.',
+	'openidfailure' => 'Preverjanje ni uspelo',
+	'openidfailuretext' => 'Preverjanje URL OpenID ni uspelo. Sporočilo o napaki: »$1«',
+	'openidsuccess' => 'Preverjanje je uspelo',
+	'openidsuccesstext' => 'Preverjanje URL OpenID je uspelo.',
 	'openidusernameprefix' => 'UporabnikOpenID',
 	'openidoptional' => 'Izbirno',
 	'openidrequired' => 'Zahtevano',
@@ -4774,13 +4784,25 @@ $messages['sl'] = array(
 	'openidfullname' => 'Polno ime',
 	'openidemail' => 'E-poštni naslov',
 	'openidlanguage' => 'Jezik',
+	'openidtimezone' => 'Časovni pas',
+	'openidchooselegend' => 'Izbira uporabniškega imena',
 	'openidchoosenick' => 'Vaš vzdevek ($1)',
 	'openidchoosefull' => 'Vaše polno ime ($1)',
+	'openidchooseauto' => 'Samodejno ustvarjeno ime ($1)',
+	'openidchoosemanual' => 'Ime po vaši izbiri:',
 	'openidchooseusername' => 'Uporabniško ime:',
 	'openidchoosepassword' => 'Geslo:',
 	'openidloginlabel' => 'URL OpenID',
 	'openiddelete' => 'Izbriši OpenID',
 	'openiddelete-button' => 'Potrdi',
+	'openid-urls-action' => 'Dejanje',
+	'openid-urls-delete' => 'Izbriši',
+	'openid-add-url' => 'Dodaj nov OpenID',
+	'openidsigninorcreateaccount' => 'Prijavite se ali ustvarite nov račun',
+	'openid-provider-label-openid' => 'Vnesite svoj URL OpenID',
+	'openid-provider-label-google' => 'Prijavite se s svojim računom Google',
+	'openid-provider-label-yahoo' => 'Prijavite se s svojim računom Yahoo',
+	'openid-provider-label-other-username' => 'Vnesite svoje uporabniško ime $1',
 );
 
 /** Lower Silesian (Schläsch)

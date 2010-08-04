@@ -811,9 +811,15 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'communityvoice' => 'Glas skupnosti',
+	'communityvoice-desc' => 'Orodja sodelovanja skupnosti',
+	'communityvoice-ratings' => 'Ocene',
 	'communityvoice-ratings-scale-status-sending' => 'Pošiljanje ...',
 	'communityvoice-ratings-scale-status-error' => 'Napaka pri pošiljanju!',
 	'communityvoice-ratings-scale-status-thanks' => 'Hvala za glasovanje!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|oddan glas|oddana glasova|oddani glasovi|oddanih glasovov}})',
+	'communityvoice-ratings-error-no-category' => 'Atribut kategorije manjka v oznaki glasova.',
+	'communityvoice-ratings-error-no-title' => 'Atribut naslova manjka v oznaki glasova.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

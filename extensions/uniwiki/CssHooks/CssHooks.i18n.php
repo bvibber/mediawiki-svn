@@ -379,6 +379,13 @@ $messages['te'] = array(
 	'csshooks-desc' => 'ఇంకా మంచి స్టైలింగ్ కోసము  పేజీల హెచ్టిఏమెల్ ఔట్పుట్ కి సీఎసేస్ ని కలుపుతుంది',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'csshooks-desc' => 'ใช้ CSS เพื่อจัดรูปแบบหน้าให้สวยงามขึ้น',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

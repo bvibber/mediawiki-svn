@@ -481,7 +481,7 @@ $messages['id'] = array(
 $messages['ig'] = array(
 	'layouts_title' => 'Ké ihü',
 	'layouts_continue' => 'Gawákwa',
-	'layouts_unknown' => 'Nke amaghị',
+	'layouts_unknown' => 'Nke námaghị',
 );
 
 /** Italian (Italiano)

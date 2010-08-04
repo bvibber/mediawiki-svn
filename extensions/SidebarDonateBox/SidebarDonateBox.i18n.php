@@ -21,10 +21,11 @@ $messages['qqq'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'sidebardonatebox-desc' => 'Дадае дадатковае паведамленьне пра ахвяраваньні ў бакавую панэль',
+	'sidebardonatebox-desc' => 'Дадае нестандартнае паведамленьне пра ахвяраваньні ў бакавую панэль',
 );
 
 /** German (Deutsch)
@@ -84,6 +85,13 @@ $messages['ia'] = array(
 	'sidebardonatebox-desc' => 'Adde un quadro personalisate de donation al barra lateral',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'sidebardonatebox-desc' => 'Tambahkan sebuah kotak donasi kustom ke sidebar',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -106,10 +114,11 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'sidebardonatebox-desc' => 'A gionta na box ëd donassion përsonalisà a la bara lateral',
+	'sidebardonatebox-desc' => 'A gionta na casela ëd donassion përsonalisà a la bara lateral',
 );
 
 /** Portuguese (Português)

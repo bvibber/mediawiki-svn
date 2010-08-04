@@ -780,6 +780,7 @@ $wgCustomToolbarMessages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author ArnoLagrange
  * @author Melancholie
  * @author Michawiki
  * @author Yekrats
@@ -825,7 +826,7 @@ $wgCustomToolbarMessages['eo'] = array(
 	'ct_popupblocked' => 'La alŝuta ŝprucfenestro estis preventita de malfermi.
 Bonvolu kontroli vian ŝprucfenestran barilon.',
 	'ct_user_user' => 'Uzanto',
-	'ct_user_tip' => 'Enmeti ligilon al uzula paĝo',
+	'ct_user_tip' => 'Enmeti ligilon al uzantopaĝo',
 	'ct_user_caption' => 'uzanto ligilo',
 	'ct_user_sample' => 'Salutnomo',
 );

@@ -1957,6 +1957,29 @@ $messages['sk'] = array(
 	'right-feedback' => 'Hodnotenie stránok prostredníctvom formulára',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ratinghistory' => 'Zgodovina ocen strani',
+	'ratinghistory-leg' => 'Podatki zgodovine ocen za [[:$1|$1]]',
+	'ratinghistory-tab' => 'ocenjevanje',
+	'ratinghistory-link' => 'Ocenjevanje strani',
+	'ratinghistory-period' => 'Časovno obdobje:',
+	'ratinghistory-month' => 'zadnji mesec',
+	'ratinghistory-3months' => 'zadnje tri mesece',
+	'ratinghistory-year' => 'zadnje leto',
+	'ratinghistory-3years' => 'zadnja tri leta',
+	'ratinghistory-ave' => 'Povp.: $1',
+	'ratinghistory-chart' => 'Ocene bralcev skozi čas',
+	'ratinghistory-users' => 'Uporabniki, ki so ocenili',
+	'ratinghistory-graph' => '$2 »$3« ($1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}})',
+	'ratinghistory-svg' => 'Prikaži kot SVG',
+	'ratinghistory-table-rating' => 'Ocena',
+	'ratinghistory-table-votes' => 'Glasovi',
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' – Slabo; '''(2)''' – Nizko; '''(3)''' – Pošteno; '''(4)''' – Visoko; '''(5)''' – Izvrstno;",
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

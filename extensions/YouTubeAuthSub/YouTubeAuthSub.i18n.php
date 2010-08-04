@@ -1523,7 +1523,7 @@ $messages['ig'] = array(
 	'youtubeauthsub_submit' => 'Dànyé',
 	'youtubeauthsub_authsubinstructions' => 'I nweríkí tinyé enyónyó-na-jé gi na elú, I ga buzọr banyé ime YouTube.',
 	'youtubeauthsub_uploadhere' => 'Tinyé enyónyó-na-jé nke gi nélú shi nga:',
-	'youtubeauthsub_uploadbutton' => 'Tinyéelú',
+	'youtubeauthsub_uploadbutton' => 'Tinyénélú',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Le enyónyó-na-jé nka]',

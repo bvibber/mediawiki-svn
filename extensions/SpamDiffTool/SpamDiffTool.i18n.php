@@ -907,6 +907,7 @@ $messages['ksh'] = array(
 	'spamdifftool' => 'De „schwazze Leß“ för SPAM beärbeide',
 	'spamdifftool-desc' => 'Ene Wääsch för neu Enndräsch en de „schwazze Leß“ för SPAM ze krijje, fun de Sigge met de Ongerscheede zwesche Versijohne uß.',
 	'spamdifftool_cantedit' => 'Schadt — Do häß nit dat Rääsch, de „schwazze Leß“ jäje der <i lang="en">SPAM</i> ze ändere.',
+	'spamdifftool-no-title' => "'''Fähler:''' heh es keine Siggetittel aanjejovve.",
 	'spamdifftool_notext' => 'Mer han keine Tex för en de „schwazze Leß“ jäje der <i lang="en">SPAM</i> eren ze donn.
 
 <a href="$1">Wigger maache!</a>',
@@ -1432,6 +1433,15 @@ Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľský
 	'spamdifftool_option_none' => 'nič',
 	'spamdifftool_block' => 'Blokovať:',
 	'spamdifftool_submit_buttom' => 'Odoslať',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'spamdifftool_option_none' => 'nič',
+	'spamdifftool_block' => 'Blokiraj:',
+	'spamdifftool_submit_buttom' => 'Pošlji',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

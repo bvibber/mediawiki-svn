@@ -737,6 +737,12 @@ $messages['ksh'] = array(
 	'importfreeimages_owner' => 'Dä Maacher',
 	'importfreeimages_importthis' => 'Donn et empotteere!',
 	'importfreeimages_next' => 'Näx $1',
+	'importfreeimages_size_square' => 'Quadrat',
+	'importfreeimages_size_thumbnail' => 'Minnibelldsche',
+	'importfreeimages_size_small' => 'Klei',
+	'importfreeimages_size_medium' => 'Meddel',
+	'importfreeimages_size_large' => 'Jruß',
+	'importfreeimages_size_original' => 'Ojinahl',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

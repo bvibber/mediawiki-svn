@@ -298,6 +298,13 @@ $messages['sk'] = array(
 	'redirect-desc' => 'Umožňuje jednoduché nastavenie presmerovaní pri [[MediaWiki:Redirect-addnewaccount|tvorbe účtu]] a [[MediaWiki:Redirect-userlogoutcomplete|odhlásení]]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'redirect-desc' => 'Omogoča preprosto konfiguracijo preusmeritev pri [[MediaWiki:Redirect-addnewaccount|ustvarjanju računa]] in [[MediaWiki:Redirect-userlogoutcomplete|odjavi]]',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

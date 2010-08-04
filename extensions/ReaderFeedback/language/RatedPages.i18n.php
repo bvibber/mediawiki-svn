@@ -658,6 +658,15 @@ $messages['sk'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|hodnotenie|hodnotenia|hodnotení}}',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ratedpages-none' => 'Na tem seznamu ni strani.',
+	'ratedpages-graphs' => 'podatki ocenjevanja',
+	'ratedpages-count' => '$1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}}',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Михајло Анђелковић

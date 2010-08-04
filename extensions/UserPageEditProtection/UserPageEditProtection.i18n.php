@@ -321,6 +321,14 @@ $messages['sv'] = array(
 	'right-editalluserpages' => 'Redigera användarsidor',
 );
 
+/** Thai (ไทย)
+ * @author Passawuth
+ */
+$messages['th'] = array(
+	'userpageeditprotection-desc' => 'จำกัดการแก้ไขหน้าผู้ใช้ ให้เฉพาะผู้ใช้และผู้ได้รับอนุญาตเท่านั้น',
+	'right-editalluserpages' => 'แก้ไขหน้าผู้ใช้',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

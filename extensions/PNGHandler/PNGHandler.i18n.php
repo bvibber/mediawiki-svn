@@ -345,6 +345,13 @@ $messages['sk'] = array(
 	'pnghandler-desc' => 'Zmeniť veľkosť obrázkov PNG pomocou pngds',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'pnghandler-desc' => 'Spremeni velikost PNG-jev z uporabo pngds',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */

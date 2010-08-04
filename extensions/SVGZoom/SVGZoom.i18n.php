@@ -302,3 +302,10 @@ $messages['vi'] = array(
 	'svgzoom-desc' => 'Bổ sung chức năng chuyển động và thu phóng tập tin SVG trong MediaWiki',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
+$messages['zh-hans'] = array(
+	'svgzoom-desc' => '让MediaWiki查看SVG文件时具有移动和缩放功能',
+);
+

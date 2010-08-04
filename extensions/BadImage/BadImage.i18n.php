@@ -1176,6 +1176,7 @@ $messages['ig'] = array(
 	'badimage-desc' => 'Dòró ihe ndetu nhuunuche njö nwèríkí me na nke NkáWiki',
 	'badimages-add-btn' => 'Tinyé',
 	'badimages-added' => '$1 banyèrè ndetu.',
+	'badimages-count' => "Ọ {{PLURAL:$1|di|di}} {{PLURAL:$1|nhuunuche|nhuunuche}} '''$1''' nọr na ndétu nhuunuche ojö.",
 	'badimages-name' => 'Áhà:',
 	'badimages-not-added' => 'Enweghíkí tinyé nhunuuche',
 	'badimages-not-removed' => 'Enweghíkí puzie nhunuuche',

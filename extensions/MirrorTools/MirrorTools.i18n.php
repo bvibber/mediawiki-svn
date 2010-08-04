@@ -19,20 +19,25 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author McDutchie
  * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'mirrortools' => "http://www.mediawiki.org/wiki/Extension:MirrorTools
+
+This extension extends various API classes to allow revisions to be added with arbitrary user names (and, in a later version, timestamps). This aids in mirroring of another wiki's content.",
 	'mirrortools-desc' => '{{desc}}',
 	'right-mirroredit' => '{{doc-right|mirroredit}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'mirrortools' => 'MirrorTools',
 	'mirrortools-desc' => 'Дазваляе рэдагаваньні праз API ад імя любога ўдзельніка',
-	'right-mirroredit' => 'рэдагаваць праз API ад імя любога ўдзельніка',
+	'right-mirroredit' => 'рэдагаваньне праз API ад імя любога ўдзельніка',
 	'group-MirrorTools' => 'Карыстальнікі Mirror tool',
 	'group-MirrorTools-member' => 'карыстальнік Mirror tool',
 	'grouppage-MirrorTools' => '{{ns:project}}:Карыстальнікі Mirror tool',
@@ -57,6 +62,30 @@ $messages['eu'] = array(
 	'mirrortools' => 'MirrorTools',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'mirrortools' => 'OutilsMiroir',
+	'mirrortools-desc' => 'Autorise les modifications via l’API à être faites sous n’importe quel nom d’utilisateur',
+	'right-mirroredit' => 'Modifier via l’API sous n’importe quel nom d’utilisateur',
+	'group-MirrorTools' => 'Utilisateurs de l’outil miroir',
+	'group-MirrorTools-member' => 'utilisateur de l’outil miroir',
+	'grouppage-MirrorTools' => '{{ns:project}}:Utilisateurs de l’outil miroir',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'mirrortools' => 'Ferramentas de espello',
+	'mirrortools-desc' => 'Permite que calquera usuario realice edicións a través da API',
+	'right-mirroredit' => 'Editar baixo calquera nome de usuario a través da API',
+	'group-MirrorTools' => 'Usuarios das ferramentas de espello',
+	'group-MirrorTools-member' => 'Usuario das ferramentas de espello',
+	'grouppage-MirrorTools' => '{{ns:project}}:Usuarios das ferramentas de espello',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -67,6 +96,18 @@ $messages['hsb'] = array(
 	'group-MirrorTools' => 'Wužiwarjo špiheloweho nastroja',
 	'group-MirrorTools-member' => 'wužiwar špiheloweho nastroja',
 	'grouppage-MirrorTools' => '{{ns:project}}:Wužiwarjo špiheloweho nastroja',
+);
+
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'mirrortools' => 'Instrumentos pro duplication',
+	'mirrortools-desc' => 'Permitte facer modificationes via API sub qualcunque nomine de usator',
+	'right-mirroredit' => 'Modificar via API sub qualcunque nomine de usator',
+	'group-MirrorTools' => 'Usatores del instrumentos pro duplication',
+	'group-MirrorTools-member' => 'usator del instrumentos pro duplication',
+	'grouppage-MirrorTools' => '{{ns:project}}:Usatores del instrumentos pro duplication',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -105,12 +146,13 @@ $messages['nl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'mirrortools' => 'MirrorTools',
-	'mirrortools-desc' => 'A përmëtt ëd fé modìfiche via API sota minca nòm utent',
-	'right-mirroredit' => 'Modìfica via API sota minca nòm utent',
+	'mirrortools-desc' => 'A përmët ëd fé dle modìfiche via API con qualsëssìa nòm utent',
+	'right-mirroredit' => 'Modìfica via API sota qualsëssìa nòm utent',
 	'group-MirrorTools' => "Utent ëd l'utiss Mirror",
 	'group-MirrorTools-member' => "Utent ëd l'utiss mirror",
 	'grouppage-MirrorTools' => "{{ns:project}}:Utent ëd l'utiss Mirror",

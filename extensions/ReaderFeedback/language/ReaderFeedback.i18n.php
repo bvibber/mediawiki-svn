@@ -2177,6 +2177,36 @@ $messages['sk'] = array(
 	'readerfeedback-tt-review' => 'Odoslať kontrolu',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'readerfeedback' => 'Kaj menite o tej strani?',
+	'readerfeedback-text' => "''Prosimo, vzemite si trenutek za ocenitev te strani spodaj. Vaša povratna informacija je dragocena in nam bo pomagala izboljšati našo spletno stran.''",
+	'readerfeedback-reliability' => 'Zanesljivost',
+	'readerfeedback-completeness' => 'Celovitost',
+	'readerfeedback-npov' => 'Nevtralnost',
+	'readerfeedback-presentation' => 'Predstavitev',
+	'readerfeedback-overall' => 'Celotno',
+	'readerfeedback-level-none' => '(negotovo)',
+	'readerfeedback-level-0' => 'Slabo',
+	'readerfeedback-level-1' => 'Nizko',
+	'readerfeedback-level-2' => 'Pošteno',
+	'readerfeedback-level-3' => 'Visoko',
+	'readerfeedback-level-4' => 'Izvrstno',
+	'readerfeedback-submit' => 'Potrdi',
+	'readerfeedback-main' => 'Ocenjevati je mogoče samo vsebinske strani.',
+	'readerfeedback-submitting' => 'Potrjevanje …',
+	'readerfeedback-finished' => 'Hvala!',
+	'readerfeedback-tagfilter' => 'Oznaka:',
+	'readerfeedback-tierfilter' => 'Ocena:',
+	'readerfeedback-tier-high' => 'Visoko',
+	'readerfeedback-tier-medium' => 'Zmerno',
+	'readerfeedback-tier-poor' => 'Slabo',
+	'specialpages-group-feedback' => 'Mnenje obiskovalca',
+	'readerfeedback-tt-review' => 'Pošlji pregled',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic

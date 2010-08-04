@@ -837,6 +837,15 @@ $messages['id'] = array(
 	'sitematrix-fishbowl' => 'penyuntingan tidak diperbolehkan',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'sitematrix-total' => "'''Ọgụgụ nílé: $1'''",
+	'sitematrix-sitetotal' => 'Òlé níle',
+	'sitematrix-private' => 'zonàrì ñkịtị',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

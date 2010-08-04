@@ -876,7 +876,10 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'contributiontracking-desc' => 'Sledenje prispevkov za zbiralca sredstev Wikimedie',
+	'contributiontracking' => 'Sledenje prispevkov',
 	'contrib-tracking-error' => 'Napaka',
+	'contrib-tracking-error-text' => 'Neveljavni oddan obrazec',
 	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek pri PayPal.',
 	'contrib-tracking-button' => 'Nadaljuj',
 );
