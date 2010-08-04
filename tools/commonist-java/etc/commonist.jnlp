@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="@codebase@" href="@jnlp@">
+	<information>
+		<title>@title@</title>
+	  	<vendor>@vendor@</vendor>
+		<homepage href="@homepage@"/>
+		<description>@description@</description>
+		<description kind="short">@shortdesc@</description>
+		<icon href="@icon@"/>
+		<icon href="@splash@" kind="splash"/>
+		<offline-allowed/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security> 
+	<resources>
+		<j2se version="1.5+" max-heap-size="192m"/>
+		<jar href="commonist.jar" main="true"/>
+		<jar href="bsh-2.0b2-fixed.jar"/>
+		<jar href="lib-util.jar"/>
+		<jar href="minibpp.jar"/>
+		<jar href="mwapi.jar"/>
+		<jar href="commons-logging-1.1.jar"/>
+		<jar href="commons-codec-1.3.jar"/>
+		<jar href="commons-httpclient-3.1.jar"/>
+		<jar href="jericho-html-3.1.jar"/>
+	</resources>
+	<application-desc main-class="net.psammead.commonist.Commonist">
+		<!-- <argument>class:///test.bsh</argument> -->
+  </application-desc>
+</jnlp>

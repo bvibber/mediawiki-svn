@@ -1,0 +1,22 @@
+#// encoding: UTF-8
+#// in: Upload upload
+#
+== description ==
+$(upload.individualDescription)
+
+== batch ==
+$(upload.commonDescription)
+
+== source ==
+$(upload.source)
+
+== date ==
+$(upload.date)
+
+== author ==
+$(upload.author)
+
+== permission ==
+$(upload.license.template)
+
+$(upload.categories)

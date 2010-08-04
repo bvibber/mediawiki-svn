@@ -1,0 +1,20 @@
+#// encoding: UTF-8
+#// in: List/*Upload*/ uploads, List/*Upload*/ successes, List/*Upload*/ failures 
+#
+#static import net.psammead.commonist.util.TextUtil2.*; 
+#	
+== $(new Date().toString()) ==
+#if (failures.size() != 0) {
+=== errors ===
+#for (var upload : failures) {
+*[[:$(upload.location.title)]] $(shortError(upload.error))
+#}
+
+#}
+#if (uploads.size() != 0) {
+<gallery>
+#for (var upload : uploads) {
+$(upload.location.title)|$(feedToSpace(upload.individualDescription))
+#}
+</gallery>
+#}

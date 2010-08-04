@@ -1,0 +1,40 @@
+//# encoding: UTF-8
+
+// copy this file to $HOME/.commonist/startup.bsh, 
+// then uncomment paragraphs below and change these as needed
+
+// for wikis with http basic authentication
+/*
+mw.httpCredentials("wikipedia:en", "user", "password");
+*/
+
+// allow untrusted SSL-certificates
+/*
+import org.apache.commons.httpclient.contrib.ssl.EasySSLProtocolSocketFactory;
+import org.apache.commons.httpclient.protocol.Protocol;
+Protocol.registerProtocol("https", new Protocol("https", new EasySSLProtocolSocketFactory(), 443));
+*/
+
+// auto login
+/*
+var	success		= mw.login("wikipedia:en", "user", "password", false); 
+if (!success)	throw new RuntimeException("cannot login");
+*/
+
+// use a different proxy server
+/*
+mw.configureProxy(
+	"proxy.test.de",		// host
+	8080,					// port
+	null,					// proxy user (string)
+	null,					// proxy password (string)
+	"localhost|127.0.0.1"	// bypass proxy for some hosts. * wildcard and | for alternatives
+);
+*/
+
+// load an additional family
+// no longer necessary, just copy *.family and *.site to $HOME/.commonist
+/*
+String	wiki	= mw.loadFamily(new File(".../fooBar.family").toURL());
+wikiList   		= new Vector(mw.supportedWikis());
+*/

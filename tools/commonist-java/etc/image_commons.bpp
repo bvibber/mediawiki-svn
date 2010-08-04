@@ -1,0 +1,20 @@
+#// encoding: UTF-8
+#// in: Upload upload
+#
+#// HACK: prevent nested information-templates
+#if (upload.individualDescription.trim().startsWith("{{Information")) {
+$(upload.individualDescription)	
+#} else {
+{{Information
+|Description=$(upload.description)
+|Source=$(upload.source)
+|Date=$(upload.date)
+|Author=$(upload.author)
+|Permission=$(upload.license.wikiText)
+|other_versions=
+}}
+
+$(upload.license.template)
+
+$(upload.categories)
+#}

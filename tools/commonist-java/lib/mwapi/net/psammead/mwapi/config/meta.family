@@ -1,0 +1,8 @@
+## configuration for a whole wiki family
+
+# identification
+name	meta
+shortcut	m
+
+# languages
+multilingual	false
