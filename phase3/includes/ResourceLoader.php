@@ -140,8 +140,7 @@ class ResourceLoader {
 	 * Reads a file or list of files and returns them as a string or outputs them into the current output buffer
 	 * 
 	 * @param {mixed} $files string file name or array of any depth containing string file names as leaf nodes
-	 * @param {array} $read list of files which have already been read
-	 * @param
+	 * @param {bool} $passthrough whether to return read data as a string or to output it directly to the current buffer
 	 * @return {mixed} string of read data or null if $passthrough is true
 	 */
 	protected static function read( $files, $passthrough = false ) {
