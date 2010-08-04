@@ -29,8 +29,6 @@ class XMPReader {
 
 	private $xmlParser;
 
-	protected $items; // Contains an array of all properties we try to extract.
-
 	/*
 	* These are various mode constants.
 	* they are used to figure out what to do
@@ -43,6 +41,7 @@ class XMPReader {
 	const MODE_INITIAL = 0;
 	const MODE_IGNORE  = 1;
 	const MODE_LI      = 2;
+	const MODE_QDESC   = 9;
 
 	// The following MODE constants are also used in the
 	// $items array to denote what type of property the item is.
@@ -58,186 +57,9 @@ class XMPReader {
 
 	/** Constructor.
 	*
-	* Primary job is to intialize the items array
-	* which is used to determine which props to extract.
+	* Primary job is to intialize the XMLParser
 	*/
 	function __construct() {
-
-		/*
-		* $this->items keeps a list of all the items
-		* we are interested to extract, as well as
-		* information about the item like what type
-		* it is.
-		*
-		* Format is an array of namespaces,
-		* each containing an array of tags
-		* each tag is an array of information about the
-		* tag, including:
-		* 	* map_group - what group (used for precedence during conflicts)
-		*	* mode - What type of item (self::MODE_SIMPLE usually, see above for all values)
-		*	* validate - method to validate input. Could also post-process the input. (TODO: implement this)
-		*	* choices  - array of potential values (format of 'value' => true )
-		*	* children - for MODE_STRUCT items, allowed children.
-		*
-		* currently this just has a bunch of exif values as this class is only half-done
-		*/
-
-		$this->items = array(
-			'http://ns.adobe.com/exif/1.0/' => array(
-				'ApertureValue' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'BrightnessValue' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'CompressedBitsPerPixel' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'DigitalZoomRatio' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'ExposureBiasValue' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'ExposureIndex' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'ExposureTime' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'FlashEnergy' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'FNumber' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'FocalLength' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'FocalPlaneXResolution' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'FocalPlaneYResolution' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				/* FIXME GPSAltitude */
-				'GPSDestBearing' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'GPSDestDistance' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'GPSDOP' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'GPSImgDirection' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'GPSSpeed' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'GPSTrack' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'MaxApertureValue'  => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'ShutterSpeedValue' => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-				'SubjectDistance'   => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SIMPLE,
-					'validate'  => 'validateRational'
-				),
-
-				/* Flash */
-				'Flash'             => array(
-					'mode'      => self::MODE_STRUCT,
-					'children'  => array( 
-						'Fired'      => true,
-						'Function'   => true,
-						'Mode'       => true,
-						'RedEyeMode' => true,
-						'Return'     => true,
-					),
-				),
-				'Fired'             => array(
-					'map_group' => 'exif',
-					'validate'  => 'validateBoolean',
-					'mode'      => self::MODE_SIMPLE
-				),
-				'Function'          => array(
-					'map_group' => 'exif',
-					'validate'  => 'validateBoolean',
-					'mode'      => self::MODE_SIMPLE,
-				),
-				'Mode'              => array(
-					'map_group' => 'exif',
-					'validate'  => 'validateClosed',
-					'mode'      => self::MODE_SIMPLE,
-					'choices'   => array( '0' => true, '1' => true,
-							'2' => true, '3' => true ),
-				),
-				'Return'            => array(
-					'map_group' => 'exif',
-					'validate'  => 'validateClosed',
-					'mode'      => self::MODE_SIMPLE,
-					'choices'   => array( '0' => true,
-							'2' => true, '3' => true ),
-				),
-				'RedEyeMode'        => array(
-					'map_group' => 'exif',
-					'validate'  => 'validateBoolean',
-					'mode'      => self::MODE_SIMPLE,
-				),
-				/* End Flash */
-				'ISOSpeedRatings'    => array(
-					'map_group' => 'exif',
-					'mode'      => self::MODE_SEQ,
-				),
-			),
-		);
 
 		if ( !function_exists('xml_parser_create_ns') ) {
 			// this should already be checked by this point
@@ -328,7 +150,9 @@ class XMPReader {
 
 		if ( $this->mode[0] === self::MODE_IGNORE ) return;
 
-		if ( $this->mode[0] !== self::MODE_SIMPLE ) {
+		if ( $this->mode[0] !== self::MODE_SIMPLE 
+			&& $this->mode[0] !== self::MODE_QDESC
+		) {
 			throw new MWException('character data where not expected. (mode ' . $this->mode[0] . ')');
 		}
 
@@ -395,7 +219,13 @@ class XMPReader {
 	* @param $elm String namespace . space . tag name.
 	*/
 	private function endElementNested( $elm ) {
-		if ( $this->curItem[0] !== $elm ) {
+
+		/* cur item must be the same as $elm, unless if in MODE_STRUCT
+		   in which case it could also be rdf:Description */
+		if ( $this->curItem[0] !== $elm
+			&& !( $elm === self::NS_RDF . ' Description'
+				&& $this->mode[0] === self::MODE_STRUCT )
+		 ) {
 			throw new MWException("nesting mismatch. got a </$elm> but expected a </" . $this->curItem[0] . '>');
 		}
 		array_shift( $this->curItem );
@@ -417,8 +247,27 @@ class XMPReader {
 		} elseif ( $elm === self::NS_RDF . ' Bag' ) {
 			array_shift( $this->mode );
 		} else {
-			throw new MWException( __METHOD__ . " expected <rdf:seq> or <rdf:bag> but instead got $elm." );
+			throw new MWException( __METHOD__ . " expected </rdf:seq> or </rdf:bag> but instead got $elm." );
 		}
+	}
+	/** end element while in MODE_QDESC
+	* mostly when ending an element when we have a simple value
+	* that has qualifiers
+	*
+	* @param $elm String namespace and element
+	*/
+	private function endElementModeQDesc( $elm ) {
+
+		if ( $elm === self::NS_RDF . ' value' ) {
+			list( $ns, $tag ) = explode( ' ', $this->curItem[0], 2 );
+			$this->saveValue( $ns, $tag, $this->charContent );
+			return;
+		} else {
+			array_shift( $this->mode );
+			array_shift( $this->curItem );
+		}
+
+
 	}
 	/** Handler for hitting a closing element.
 	*
@@ -433,6 +282,11 @@ class XMPReader {
 		{
 			//ignore these.
 			return;
+		}
+
+		if ( $elm === self::NS_RDF . ' type' ) {
+			//these aren't really supported properly yet.
+			wfDebugLog('XMP', __METHOD__ . ' encoutered <rdf:type>');
 		}
 
 		switch( $this->mode[0] ) {
@@ -456,6 +310,9 @@ class XMPReader {
 				break;
 			case self::MODE_LI:
 				$this->endElementModeLi( $elm );
+				break;
+			case self::MODE_QDESC:
+				$this->endElementModeQDesc( $elm );
 				break;
 			default:
 				wfDebugLog( 'XMP', __METHOD__ ." no mode (elm = $elm)");
@@ -507,24 +364,48 @@ class XMPReader {
 	/** Handle an opening element when in MODE_SIMPLE
 	* This should not happen often. This is for if a simple element
 	* already opened has a child element. Could happen for a
-	* qualified element, or if using overly verbose syntax.
+	* qualified element.
 	*
 	* @param $elm String namespace and tag names seperated by space.
 	*/
-	private function startElementModeSimple( $elm ) {
-		if ( $elm === self::NS_RDF . ' Description' 
-			|| $elm === self::NS_RDF . ' value')
-		{
-			//fixme, better handling of value
-			array_unshift( $this->mode, self::MODE_SIMPLE );
+	private function startElementModeSimple( $elm, $attribs ) {
+		if ( $elm === self::NS_RDF . ' Description' ) {
+			//If this value has qualifiers
+			array_unshift( $this->mode, self::MODE_QDESC );
 			array_unshift( $this->curItem, $this->curItem[0] );
+
+			if ( isset( $attribs[self::NS_RDF . ' value'] ) ) {
+				list( $ns, $tag ) = explode( ' ', $this->curItem[0], 2 );
+				$this->saveValue( $ns, $tag, $attribs[self::NS_RDF . ' value']);
+			}
+		} elseif ( $elm === self::NS_RDF . ' value' ) {
+			//This should not be here.
+			throw new MWException(__METHOD__ . ' Encountered <rdf:value> where it was unexpected.');
+
 		} else {
 			//something else we don't recognize, like a qualifier maybe.
+			wfDebugLog( 'XMP', __METHOD__ . " Encoutered element <$elm> where only expecting character data.");
 			array_unshift( $this->mode, self::MODE_IGNORE );
 			array_unshift( $this->curItem, $elm );
 
 		}
 
+	}
+	/** Start an element when in MODE_QDESC.
+	* This generally happens when a simple element has an inner
+	* rdf:Description to hold qualifier elements.
+	*
+	* @param $elm String namespace and tag name separated by a space.
+	*
+	*/
+	private function startElementModeQDesc( $elm ) {
+		if ( $elm === self::NS_RDF . ' value' ) {
+			return; //do nothing
+		} else {
+			//otherwise its a qualifier, which we ignore
+			array_unshift( $this->mode, self::MODE_IGNORE );
+			array_unshift( $this->curItem, $elm );
+		}
 	}
 	/** Starting an element when in MODE_INITIAL
 	* This usually happens when we hit an element inside
@@ -539,13 +420,13 @@ class XMPReader {
 	private function startElementModeInitial( $ns, $tag, $attribs ) {
 		if ($ns !== self::NS_RDF) {
 
-			if ( isset( $this->items[$ns][$tag] ) ) {
-				$mode = $this->items[$ns][$tag]['mode'];
+			if ( isset( XMPInfo::$items[$ns][$tag] ) ) {
+				$mode = XMPInfo::$items[$ns][$tag]['mode'];
 				array_unshift( $this->mode, $mode );
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
 				if ( $mode === self::MODE_STRUCT ) {
-					$this->ancestorStruct = isset( $this->items[$ns][$tag]['map_name'] )
-						? $this->items[$ns][$tag]['map_name'] : $tag;	
+					$this->ancestorStruct = isset( XMPInfo::$items[$ns][$tag]['map_name'] )
+						? XMPInfo::$items[$ns][$tag]['map_name'] : $tag;	
 				}
 				if ( $this->charContent !== false ) {
 					// Something weird.
@@ -572,16 +453,16 @@ class XMPReader {
 	private function startElementModeStruct( $ns, $tag, $attribs ) {
 		if ($ns !== self::NS_RDF) {
 
-			if ( isset( $this->items[$ns][$tag] ) ) {
-				if ( isset( $this->items[$ns][$this->ancestorStruct]['children'] )
-					&& !isset($this->items[$ns][$this->ancestorStruct]['children'][$tag]) )
+			if ( isset( XMPInfo::$items[$ns][$tag] ) ) {
+				if ( isset( XMPInfo::$items[$ns][$this->ancestorStruct]['children'] )
+					&& !isset(XMPInfo::$items[$ns][$this->ancestorStruct]['children'][$tag]) )
 				{
 					//This assumes that we don't have inter-namespace nesting
 					//which we don't in all the properties we're interested in.
 					throw new MWException(" <$tag> appeared nested in <" . $this->ancestorStruct
 						. "> where it is not allowed.");
 				}
-				array_unshift( $this->mode, $this->items[$ns][$tag]['mode'] );
+				array_unshift( $this->mode, XMPInfo::$items[$ns][$tag]['mode'] );
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
 				if ( $this->charContent !== false ) {
 					// Something weird.
@@ -598,6 +479,8 @@ class XMPReader {
 
 		if ( $ns === self::NS_RDF && $tag === 'Description' ) {
 			$this->doAttribs( $attribs );
+			array_unshift( $this->mode, self::MODE_STRUCT );
+			array_unshift( $this->curItem, $this->curItem[0] );
 		}
 	}
 	/** opening element in MODE_LI
@@ -627,25 +510,24 @@ class XMPReader {
 	*/
 	function startElement( $parser, $elm, $attribs ) {
 
-
 		if ($elm === self::NS_RDF . ' RDF'
 			|| $elm === 'adobe:ns:meta/ xmpmeta' )
 		{
 			/* ignore */
 			return;	
-		}
-
-		if ( $elm === self::NS_RDF . ' Description' ) {
+		} elseif ( $elm === self::NS_RDF . ' Description' ) {
 			if ( count( $this->mode ) === 0 ) {
 				//outer rdf:desc
 				array_unshift( $this->mode, self::MODE_INITIAL );
-			} else {
-				//inner rdf:desc
-				// fixme this doesn't handle qualifiers right.
-				$this->doAttribs( $attribs );
-				return;
 			}
+		} elseif ( $elm === self::NS_RDF . ' type' ) {
+			// This doesn't support rdf:type properly.
+			// In practise I have yet to see a file that
+			// uses this element, however it is mentioned
+			// on page 25 of part 1 of the xmp standard.
+			wfDebugLog( 'XMP', __METHOD__ . ' Encoutered <rdf:type> which isn\'t currently supported' );
 		}
+
 
 		list($ns, $tag) = explode( ' ', $elm, 2 );
 
@@ -654,7 +536,7 @@ class XMPReader {
 				$this->startElementModeIgnore( $elm );
 				break;
 			case self::MODE_SIMPLE:
-				$this->startElementModeSimple( $elm );
+				$this->startElementModeSimple( $elm, $attribs );
 				break;
 			case self::MODE_INITIAL:
 				$this->startElementModeInitial( $ns, $tag, $attribs );
@@ -671,6 +553,9 @@ class XMPReader {
 			case self::MODE_LI:
 				$this->startElementModeLi( $elm );
 				break;
+			case self::MODE_QDESC:
+				$this->startElementModeQDesc( $elm );
+				break;
 			default:
 				throw new MWException('StartElement in unknown mode: ' . $this->mode[0] );
 				break;
@@ -686,14 +571,26 @@ class XMPReader {
 	*/
 	private function doAttribs( $attribs ) {
 		foreach( $attribs as $name => $val ) {
+
+			// first check for rdf:parseType attribute, as that can change
+			// how the attributes are interperted.
+
+			if ( $name === self::NS_RDF . ' parseType'
+				&& $val === 'Resource'
+				&& $this->mode[0] === self::MODE_SIMPLE )
+			{
+				//this is equivelent to having an inner rdf:Description
+				$this->mode[0] = self::MODE_QDESC;
+			}
+
 			list($ns, $tag) = explode(' ', $name, 2);
 			if ( $ns === self::NS_RDF ) {
 				if ( $tag === 'value' || $tag === 'resource' ) {
-					//resource is for url.
+					// resource is for url.
 					// value attribute is a weird way of just putting the contents.
 					$this->char( $val );
 				}
-			} elseif ( isset( $this->items[$ns][$tag] ) ) {
+			} elseif ( isset( XMPInfo::$items[$ns][$tag] ) ) {
 				if ( $this->mode[0] === self::MODE_SIMPLE ) {
 					throw new MWException( __METHOD__ 
 						. " $ns:$tag found as attribute where not allowed" );
@@ -714,7 +611,7 @@ class XMPReader {
 	*/
 	private function saveValue( $ns, $tag, $val ) {
 
-		$info =& $this->items[$ns][$tag];
+		$info =& XMPInfo::$items[$ns][$tag];
 		$finalName = isset( $info['map_name'] )
 			? $info['map_name'] : $tag;
 		if ( isset( $info['validate'] ) ) {

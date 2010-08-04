@@ -461,6 +461,7 @@ $wgAutoloadLocalClasses = array(
 	'TiffHandler' => 'includes/media/Tiff.php',
 	'TransformParameterError' => 'includes/media/MediaTransformOutput.php',
 	'XMPReader' => 'includes/media/XMP.php',
+	'XMPInfo' => 'includes/media/XMPInfo.php',
 
 	# includes/normal
 	'UtfNormal' => 'includes/normal/UtfNormal.php',
