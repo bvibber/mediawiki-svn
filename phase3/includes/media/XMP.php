@@ -61,9 +61,9 @@ class XMPReader {
 	*/
 	function __construct() {
 
-		if ( !function_exists('xml_parser_create_ns') ) {
+		if ( !function_exists( 'xml_parser_create_ns' ) ) {
 			// this should already be checked by this point
-			throw new MWException('XMP support requires XML Parser');
+			throw new MWException( 'XMP support requires XML Parser' );
 		}
 
 		$this->xmlParser = xml_parser_create_ns( 'UTF-8', ' ' );
@@ -108,17 +108,17 @@ class XMPReader {
 	public function parse( $content ) {
 		try {
 			$ok = xml_parse( $this->xmlParser, $content, true );
-			if (!$ok) {
+			if ( !$ok ) {
 				$error = xml_error_string( xml_get_error_code( $this->xmlParser ) );
 				$where = 'line: ' . xml_get_current_line_number( $this->xmlParser )
 					. ' column: ' . xml_get_current_column_number( $this->xmlParser )
 					. ' byte offset: ' . xml_get_current_byte_index( $this->xmlParser );
 
-				wfDebugLog( 'XMP', "XMPReader::parse : Error reading XMP content: $error ($where)");
-				$this->results = array(); //blank if error.
+				wfDebugLog( 'XMP', "XMPReader::parse : Error reading XMP content: $error ($where)" );
+				$this->results = array(); // blank if error.
 				return false;
 			}
-		} catch (MWException $e) {
+		} catch ( MWException $e ) {
 			wfDebugLog( 'XMP', 'XMP parse error: ' . $e );
 			$this->results = array();
 			return false;
@@ -139,32 +139,32 @@ class XMPReader {
 	*/
 	function char( $parser, $data ) {
 
-		$data = trim( $data ); 
-		if ( trim($data) === "" ) {
+		$data = trim( $data );
+		if ( trim( $data ) === "" ) {
 			return;
 		}
 
 		if ( !isset( $this->mode[0] ) ) {
-			throw new MWException('Unexpected character data before first rdf:Description element');
+			throw new MWException( 'Unexpected character data before first rdf:Description element' );
 		}
 
 		if ( $this->mode[0] === self::MODE_IGNORE ) return;
 
-		if ( $this->mode[0] !== self::MODE_SIMPLE 
+		if ( $this->mode[0] !== self::MODE_SIMPLE
 			&& $this->mode[0] !== self::MODE_QDESC
 		) {
-			throw new MWException('character data where not expected. (mode ' . $this->mode[0] . ')');
+			throw new MWException( 'character data where not expected. (mode ' . $this->mode[0] . ')' );
 		}
 
-		//to check, how does this handle w.s.
+		// to check, how does this handle w.s.
 		if ( $this->charContent === false ) {
 			$this->charContent = $data;
 		} else {
 			// I don't think this should happen,
 			// but just in case.
 			$this->charContent .= $data;
-			//FIXME
-			wfDebugLog( 'XMP', 'XMP: Consecuitive CDATA');
+			// FIXME
+			wfDebugLog( 'XMP', 'XMP: Consecuitive CDATA' );
 		}
 
 	}
@@ -177,13 +177,13 @@ class XMPReader {
 	private function endElementModeIgnore ( $elm ) {
 		if ( count( $this->curItem ) == 0 ) {
 			// just to be paranoid.
-			throw new MWException(' In ignore mode with no curItem');
+			throw new MWException( ' In ignore mode with no curItem' );
 		}
 		if ( $this->curItem[0] === $elm ) {
 			array_shift( $this->curItem );
 			array_shift( $this->mode );
 		}
-		return;	
+		return;
 
 	}
 	/** Hit a closing element when in MODE_SIMPLE.
@@ -198,13 +198,13 @@ class XMPReader {
 			if ( $this->processingArray ) {
 				// if we're processing an array, use the original element
 				// name instead of rdf:li.
-				list($ns, $tag) = explode(' ', $this->curItem[0], 2);
+				list( $ns, $tag ) = explode( ' ', $this->curItem[0], 2 );
 			} else {
-				list($ns, $tag) = explode(' ', $elm, 2);
+				list( $ns, $tag ) = explode( ' ', $elm, 2 );
 			}
 			$this->saveValue( $ns, $tag, $this->charContent );
 
-			$this->charContent = false; //reset
+			$this->charContent = false; // reset
 		}
 		array_shift( $this->curItem );
 		array_shift( $this->mode );
@@ -226,7 +226,7 @@ class XMPReader {
 			&& !( $elm === self::NS_RDF . ' Description'
 				&& $this->mode[0] === self::MODE_STRUCT )
 		 ) {
-			throw new MWException("nesting mismatch. got a </$elm> but expected a </" . $this->curItem[0] . '>');
+			throw new MWException( "nesting mismatch. got a </$elm> but expected a </" . $this->curItem[0] . '>' );
 		}
 		array_shift( $this->curItem );
 		array_shift( $this->mode );
@@ -277,16 +277,16 @@ class XMPReader {
 	* @param $elm String namespace . ' ' . element name
 	*/
 	function endElement( $parser, $elm ) {
-		if ( $elm === (self::NS_RDF . ' RDF')
+		if ( $elm === ( self::NS_RDF . ' RDF' )
 			|| $elm === 'adobe:ns:meta/ xmpmeta' )
 		{
-			//ignore these.
+			// ignore these.
 			return;
 		}
 
 		if ( $elm === self::NS_RDF . ' type' ) {
-			//these aren't really supported properly yet.
-			wfDebugLog('XMP', __METHOD__ . ' encoutered <rdf:type>');
+			// these aren't really supported properly yet.
+			wfDebugLog( 'XMP', __METHOD__ . ' encoutered <rdf:type>' );
 		}
 
 		switch( $this->mode[0] ) {
@@ -305,7 +305,7 @@ class XMPReader {
 				if ( $elm === self::NS_RDF . ' Description' ) {
 					array_shift( $this->mode );
 				} else {
-					throw new MWException('Element ended unexpected while in MODE_INITIAL');
+					throw new MWException( 'Element ended unexpected while in MODE_INITIAL' );
 				}
 				break;
 			case self::MODE_LI:
@@ -315,7 +315,7 @@ class XMPReader {
 				$this->endElementModeQDesc( $elm );
 				break;
 			default:
-				wfDebugLog( 'XMP', __METHOD__ ." no mode (elm = $elm)");
+				wfDebugLog( 'XMP', __METHOD__ . " no mode (elm = $elm)" );
 				break;
 		}
 	}
@@ -343,7 +343,7 @@ class XMPReader {
 		if ( $elm === self::NS_RDF . ' Bag' ) {
 			array_unshift( $this->mode, self::MODE_LI );
 		} else {
-			throw new MWException("Expected <rdf:Bag> but got $elm.");
+			throw new MWException( "Expected <rdf:Bag> but got $elm." );
 		}
 
 	}
@@ -357,7 +357,7 @@ class XMPReader {
 		if ( $elm === self::NS_RDF . ' Seq' ) {
 			array_unshift( $this->mode, self::MODE_LI );
 		} else {
-			throw new MWException("Expected <rdf:Seq> but got $elm.");
+			throw new MWException( "Expected <rdf:Seq> but got $elm." );
 		}
 
 	}
@@ -370,21 +370,21 @@ class XMPReader {
 	*/
 	private function startElementModeSimple( $elm, $attribs ) {
 		if ( $elm === self::NS_RDF . ' Description' ) {
-			//If this value has qualifiers
+			// If this value has qualifiers
 			array_unshift( $this->mode, self::MODE_QDESC );
 			array_unshift( $this->curItem, $this->curItem[0] );
 
 			if ( isset( $attribs[self::NS_RDF . ' value'] ) ) {
 				list( $ns, $tag ) = explode( ' ', $this->curItem[0], 2 );
-				$this->saveValue( $ns, $tag, $attribs[self::NS_RDF . ' value']);
+				$this->saveValue( $ns, $tag, $attribs[self::NS_RDF . ' value'] );
 			}
 		} elseif ( $elm === self::NS_RDF . ' value' ) {
-			//This should not be here.
-			throw new MWException(__METHOD__ . ' Encountered <rdf:value> where it was unexpected.');
+			// This should not be here.
+			throw new MWException( __METHOD__ . ' Encountered <rdf:value> where it was unexpected.' );
 
 		} else {
-			//something else we don't recognize, like a qualifier maybe.
-			wfDebugLog( 'XMP', __METHOD__ . " Encoutered element <$elm> where only expecting character data.");
+			// something else we don't recognize, like a qualifier maybe.
+			wfDebugLog( 'XMP', __METHOD__ . " Encoutered element <$elm> where only expecting character data." );
 			array_unshift( $this->mode, self::MODE_IGNORE );
 			array_unshift( $this->curItem, $elm );
 
@@ -400,9 +400,9 @@ class XMPReader {
 	*/
 	private function startElementModeQDesc( $elm ) {
 		if ( $elm === self::NS_RDF . ' value' ) {
-			return; //do nothing
+			return; // do nothing
 		} else {
-			//otherwise its a qualifier, which we ignore
+			// otherwise its a qualifier, which we ignore
 			array_unshift( $this->mode, self::MODE_IGNORE );
 			array_unshift( $this->curItem, $elm );
 		}
@@ -418,7 +418,7 @@ class XMPReader {
 	* @param $attribs Array array of attributes
 	*/
 	private function startElementModeInitial( $ns, $tag, $attribs ) {
-		if ($ns !== self::NS_RDF) {
+		if ( $ns !== self::NS_RDF ) {
 
 			if ( isset( XMPInfo::$items[$ns][$tag] ) ) {
 				$mode = XMPInfo::$items[$ns][$tag]['mode'];
@@ -426,12 +426,12 @@ class XMPReader {
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
 				if ( $mode === self::MODE_STRUCT ) {
 					$this->ancestorStruct = isset( XMPInfo::$items[$ns][$tag]['map_name'] )
-						? XMPInfo::$items[$ns][$tag]['map_name'] : $tag;	
+						? XMPInfo::$items[$ns][$tag]['map_name'] : $tag;
 				}
 				if ( $this->charContent !== false ) {
 					// Something weird.
 					// Should not happen in valid XMP.
-					throw new MWException('tag nested in non-whitespace characters.');
+					throw new MWException( 'tag nested in non-whitespace characters.' );
 				}
 			} else {
 				array_unshift( $this->mode, self::MODE_IGNORE );
@@ -440,7 +440,7 @@ class XMPReader {
 			}
 
 		}
-		//process attributes
+		// process attributes
 		$this->doAttribs( $attribs );
 	}
 	/** Hit an opening element when in a Struct (MODE_STRUCT)
@@ -451,23 +451,23 @@ class XMPReader {
 	* @param $attribs Array array of attribs w/ values.
 	*/
 	private function startElementModeStruct( $ns, $tag, $attribs ) {
-		if ($ns !== self::NS_RDF) {
+		if ( $ns !== self::NS_RDF ) {
 
 			if ( isset( XMPInfo::$items[$ns][$tag] ) ) {
 				if ( isset( XMPInfo::$items[$ns][$this->ancestorStruct]['children'] )
-					&& !isset(XMPInfo::$items[$ns][$this->ancestorStruct]['children'][$tag]) )
+					&& !isset( XMPInfo::$items[$ns][$this->ancestorStruct]['children'][$tag] ) )
 				{
-					//This assumes that we don't have inter-namespace nesting
-					//which we don't in all the properties we're interested in.
-					throw new MWException(" <$tag> appeared nested in <" . $this->ancestorStruct
-						. "> where it is not allowed.");
+					// This assumes that we don't have inter-namespace nesting
+					// which we don't in all the properties we're interested in.
+					throw new MWException( " <$tag> appeared nested in <" . $this->ancestorStruct
+						. "> where it is not allowed." );
 				}
 				array_unshift( $this->mode, XMPInfo::$items[$ns][$tag]['mode'] );
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
 				if ( $this->charContent !== false ) {
 					// Something weird.
 					// Should not happen in valid XMP.
-					throw new MWException("tag <$tag> nested in non-whitespace characters (" . $this->charContent . ").");
+					throw new MWException( "tag <$tag> nested in non-whitespace characters (" . $this->charContent . ")." );
 				}
 			} else {
 				array_unshift( $this->mode, self::MODE_IGNORE );
@@ -491,10 +491,10 @@ class XMPReader {
 	*/
 	private function startElementModeLi( $elm ) {
 		if ( $elm !== self::NS_RDF . ' li' ) {
-			throw new MWException("<rdf:li> expected but got $elm.");
+			throw new MWException( "<rdf:li> expected but got $elm." );
 		}
 		array_unshift( $this->mode, self::MODE_SIMPLE );
-		//need to add curItem[0] on again since one is for the specific item
+		// need to add curItem[0] on again since one is for the specific item
 		// and one is for the entire group.
 		array_unshift( $this->curItem, $this->curItem[0] );
 		$this->processingArray = true;
@@ -510,14 +510,14 @@ class XMPReader {
 	*/
 	function startElement( $parser, $elm, $attribs ) {
 
-		if ($elm === self::NS_RDF . ' RDF'
+		if ( $elm === self::NS_RDF . ' RDF'
 			|| $elm === 'adobe:ns:meta/ xmpmeta' )
 		{
 			/* ignore */
-			return;	
+			return;
 		} elseif ( $elm === self::NS_RDF . ' Description' ) {
 			if ( count( $this->mode ) === 0 ) {
-				//outer rdf:desc
+				// outer rdf:desc
 				array_unshift( $this->mode, self::MODE_INITIAL );
 			}
 		} elseif ( $elm === self::NS_RDF . ' type' ) {
@@ -529,7 +529,7 @@ class XMPReader {
 		}
 
 
-		list($ns, $tag) = explode( ' ', $elm, 2 );
+		list( $ns, $tag ) = explode( ' ', $elm, 2 );
 
 		switch( $this->mode[0] ) {
 			case self::MODE_IGNORE:
@@ -557,7 +557,7 @@ class XMPReader {
 				$this->startElementModeQDesc( $elm );
 				break;
 			default:
-				throw new MWException('StartElement in unknown mode: ' . $this->mode[0] );
+				throw new MWException( 'StartElement in unknown mode: ' . $this->mode[0] );
 				break;
 		}
 
@@ -570,7 +570,7 @@ class XMPReader {
 	* @param $attribs Array attribute=>value array.
 	*/
 	private function doAttribs( $attribs ) {
-		foreach( $attribs as $name => $val ) {
+		foreach ( $attribs as $name => $val ) {
 
 			// first check for rdf:parseType attribute, as that can change
 			// how the attributes are interperted.
@@ -579,11 +579,11 @@ class XMPReader {
 				&& $val === 'Resource'
 				&& $this->mode[0] === self::MODE_SIMPLE )
 			{
-				//this is equivelent to having an inner rdf:Description
+				// this is equivelent to having an inner rdf:Description
 				$this->mode[0] = self::MODE_QDESC;
 			}
 
-			list($ns, $tag) = explode(' ', $name, 2);
+			list( $ns, $tag ) = explode( ' ', $name, 2 );
 			if ( $ns === self::NS_RDF ) {
 				if ( $tag === 'value' || $tag === 'resource' ) {
 					// resource is for url.
@@ -592,7 +592,7 @@ class XMPReader {
 				}
 			} elseif ( isset( XMPInfo::$items[$ns][$tag] ) ) {
 				if ( $this->mode[0] === self::MODE_SIMPLE ) {
-					throw new MWException( __METHOD__ 
+					throw new MWException( __METHOD__
 						. " $ns:$tag found as attribute where not allowed" );
 				}
 				$this->saveValue( $ns, $tag, $val );
@@ -615,13 +615,13 @@ class XMPReader {
 		$finalName = isset( $info['map_name'] )
 			? $info['map_name'] : $tag;
 		if ( isset( $info['validate'] ) ) {
-			//FIXME
+			// FIXME
 		}
 
 		if ( $this->ancestorStruct ) {
 			$this->results['xmp-' . $info['map_group']][$this->ancestorStruct][$finalName] = $val;
 		} elseif ( $this->processingArray ) {
-			$this->results['xmp-' . $info['map_group']][$finalName][] = $val;	
+			$this->results['xmp-' . $info['map_group']][$finalName][] = $val;
 		} else {
 			$this->results['xmp-' . $info['map_group']][$finalName] = $val;
 		}
