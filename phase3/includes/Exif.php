@@ -649,7 +649,7 @@ class Exif {
 
 	private function isSrational( $in ) {
 		$m = array();
-		if ( !is_array( $in ) && preg_match( '/^(\d+)\/(\d+[1-9]|[1-9]\d*)$/', $in, $m ) ) { # Avoid division by zero
+		if ( !is_array( $in ) && preg_match( '/^(-?\d+)\/(\d+[1-9]|[1-9]\d*)$/', $in, $m ) ) { # Avoid division by zero
 			return $this->isSlong( $m[0] ) && $this->isSlong( $m[1] );
 		} else {
 			$this->debug( $in, __FUNCTION__, 'fed a non-fraction value' );
@@ -1396,7 +1396,7 @@ class FormatExif {
 						$val = htmlspecialchars( $val );
 					}
 					break;
-				
+
 				default:
 					$val = $this->formatNum( $val );
 					break;
@@ -1500,7 +1500,7 @@ class FormatExif {
 			}
 			return $wgLang->commaList( $out );
 		}
-		if ( preg_match( '/^(\d+)\/(\d+)$/', $num, $m ) )
+		if ( preg_match( '/^(-?\d+)\/(\d+)$/', $num, $m ) )
 			return $wgLang->formatNum( $m[2] != 0 ? $m[1] / $m[2] : $num );
 		else
 			return $wgLang->formatNum( $num );
@@ -1516,10 +1516,10 @@ class FormatExif {
 	 */
 	function formatFraction( $num ) {
 		$m = array();
-		if ( preg_match( '/^(\d+)\/(\d+)$/', $num, $m ) ) {
+		if ( preg_match( '/^(-?\d+)\/(\d+)$/', $num, $m ) ) {
 			$numerator = intval( $m[1] );
 			$denominator = intval( $m[2] );
-			$gcd = $this->gcd( $numerator, $denominator );
+			$gcd = $this->gcd( abs( $numerator ), $denominator );
 			if( $gcd != 0 ) {
 				// 0 shouldn't happen! ;)
 				return $this->formatNum( $numerator / $gcd ) . '/' . $this->formatNum( $denominator / $gcd );

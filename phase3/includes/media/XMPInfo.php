@@ -6,6 +6,13 @@
 */
 class XMPInfo {
 
+	/** get the items array
+	 * @return Array XMP item configuration array.
+	*/
+	public static function getItems ( ) {
+		return self::$items;
+	}
+
 	/**
 	* XMPInfo::$items keeps a list of all the items
 	* we are interested to extract, as well as
@@ -25,7 +32,7 @@ class XMPInfo {
 	* currently this just has a bunch of exif values as this class is only half-done
 	*/
 
-	static public $items = array(
+	static private $items = array(
 		'http://ns.adobe.com/exif/1.0/' => array(
 			'ApertureValue' => array(
 				'map_group' => 'exif',
@@ -143,6 +150,8 @@ class XMPInfo {
 					'RedEyeMode' => true,
 					'Return'     => true,
 				),
+				'validate'  => 'validateFlash',
+				'map_group' => 'exif',
 			),
 			'Fired'             => array(
 				'map_group' => 'exif',
@@ -174,10 +183,23 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SIMPLE,
 			),
 			/* End Flash */
-			'ISOSpeedRatings'    => array(
+			'ISOSpeedRatings'   => array(
 				'map_group' => 'exif',
 				'mode'      => XMPReader::MODE_SEQ,
 			),
+		),
+		'http://purl.org/dc/elements/1.1/' => array(
+			'title'             => array(
+				'map_group' => 'general',
+				'map_name'  => 'Headline',
+				'mode'      => XMPReader::MODE_LANG
+			),
+			'description'             => array(
+				'map_group' => 'general',
+				'map_name'  => 'ImageDescription',
+				'mode'      => XMPReader::MODE_LANG
+			),
+
 		),
 	);
 }

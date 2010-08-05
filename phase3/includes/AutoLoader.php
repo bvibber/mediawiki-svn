@@ -462,6 +462,7 @@ $wgAutoloadLocalClasses = array(
 	'TransformParameterError' => 'includes/media/MediaTransformOutput.php',
 	'XMPReader' => 'includes/media/XMP.php',
 	'XMPInfo' => 'includes/media/XMPInfo.php',
+	'XMPValidate' => 'includes/media/XMPValidate.php',
 
 	# includes/normal
 	'UtfNormal' => 'includes/normal/UtfNormal.php',

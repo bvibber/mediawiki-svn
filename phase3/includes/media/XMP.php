@@ -20,14 +20,17 @@
 */
 class XMPReader {
 
-	private $curItem = array();
-	private $ancestorStruct = false;
-	private $charContent = false;
-	private $mode = array();
-	private $results = array();
-	private $processingArray = false;
+	private $curItem = array();        // array to hold the current element (and previous element, and so on)
+	private $ancestorStruct = false;   // the structure name when processing nested structures.
+	private $charContent = false;      // temporary holder for character data that appears in xmp doc.
+	private $mode = array();           // stores the state the xmpreader is in (see MODE_FOO constants)
+	private $results = array();        // array to hold results
+	private $processingArray = false;  // if we're doing a seq or bag.
+	private $itemLang = false;         // used for lang alts only
 
 	private $xmlParser;
+
+	protected $items;
 
 	/*
 	* These are various mode constants.
@@ -41,18 +44,20 @@ class XMPReader {
 	const MODE_INITIAL = 0;
 	const MODE_IGNORE  = 1;
 	const MODE_LI      = 2;
-	const MODE_QDESC   = 9;
+	const MODE_LI_LANG = 3;
+	const MODE_QDESC   = 4;
 
 	// The following MODE constants are also used in the
 	// $items array to denote what type of property the item is.
-	const MODE_SIMPLE = 3;
-	const MODE_STRUCT = 4; // structure (associative array)
-	const MODE_SEQ    = 5; // orderd list
-	const MODE_BAG    = 6; // unordered list
-	const MODE_LANG   = 7; // lang alt. TODO: implement
-	const MODE_ALT    = 8; // non-language alt. Currently unused
+	const MODE_SIMPLE = 10;
+	const MODE_STRUCT = 11; // structure (associative array)
+	const MODE_SEQ    = 12; // orderd list
+	const MODE_BAG    = 13; // unordered list
+	const MODE_LANG   = 14; // lang alt. TODO: implement
+	const MODE_ALT    = 15; // non-language alt. Currently not implemented, and not needed atm.
 
 	const NS_RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#';
+	const NS_XML = 'http://www.w3.org/XML/1998/namespace';
 
 
 	/** Constructor.
@@ -65,6 +70,8 @@ class XMPReader {
 			// this should already be checked by this point
 			throw new MWException( 'XMP support requires XML Parser' );
 		}
+
+		$this->items = XMPInfo::getItems();
 
 		$this->xmlParser = xml_parser_create_ns( 'UTF-8', ' ' );
 		xml_parser_set_option( $this->xmlParser, XML_OPTION_CASE_FOLDING, 0 );
@@ -228,10 +235,38 @@ class XMPReader {
 		 ) {
 			throw new MWException( "nesting mismatch. got a </$elm> but expected a </" . $this->curItem[0] . '>' );
 		}
+
+		// Validate structures.
+		list( $ns, $tag ) = explode( ' ', $elm, 2 );
+		if ( isset( $this->items[$ns][$tag]['validate'] ) ) {
+
+			$info =& $this->items[$ns][$tag];
+			$finalName = isset( $info['map_name'] )
+				? $info['map_name'] : $tag;
+
+			$validate = is_array( $info['validate'] ) ? $info['validate']
+				: array( 'XMPValidate', $info['validate'] );
+
+			if ( is_callable( $validate ) ) {
+				$val =& $this->results['xmp-' . $info['map_group']][$finalName];
+				call_user_func_array( $validate, array( $info, &$val, false ) );
+				if ( is_null( $val ) ) {
+					// the idea being the validation function will unset the variable if
+					// its invalid.
+					wfDebugLog( 'XMP', __METHOD__ . " <$ns:$tag> failed validation." );
+					unset( $this->results['xmp-' . $info['map_group']][$finalName] );
+				}
+			} else {
+				wfDebugLog( 'XMP', __METHOD__ . " Validation function for $finalName ("
+					. $validate[0] . '::' . $validate[1] . '()) is not callable.' );
+			}
+		}
+
 		array_shift( $this->curItem );
 		array_shift( $this->mode );
 		$this->ancestorStruct = false;
 		$this->processingArray = false;
+		$this->itemLang = false;
 	}
 	/** Hit a closing element in MODE_LI (either rdf:Seq, or rdf:Bag )
 	* Just resets some private variables
@@ -241,11 +276,25 @@ class XMPReader {
 	* @param $elm String namespace . ' ' . element name
 	*/
 	private function endElementModeLi( $elm ) {
+
+		list( $ns, $tag ) = explode( ' ', $this->curItem[0], 2 );
+		$info = $this->items[$ns][$tag];
+		$finalName = isset( $info['map_name'] )
+			? $info['map_name'] : $tag;
+
 		if ( $elm === self::NS_RDF . ' Seq' ) {
-			/* fixme, record _format*/
 			array_shift( $this->mode );
+			$this->results['xmp-' . $info['map_group']][$finalName]['_format'] = 'ol';
 		} elseif ( $elm === self::NS_RDF . ' Bag' ) {
 			array_shift( $this->mode );
+			$this->results['xmp-' . $info['map_group']][$finalName]['_format'] = 'ul';
+		} elseif ( $elm === self::NS_RDF . ' Alt' ) {
+			array_shift( $this->mode );
+			// extra if needed as you could theoretically have a non-language alt.
+			if ( $info['mode'] === self::MODE_LANG ) {
+				$this->results['xmp-' . $info['map_group']][$finalName]['_format'] = 'lang';
+			}
+
 		} else {
 			throw new MWException( __METHOD__ . " expected </rdf:seq> or </rdf:bag> but instead got $elm." );
 		}
@@ -299,6 +348,7 @@ class XMPReader {
 			case self::MODE_STRUCT:
 			case self::MODE_SEQ:
 			case self::MODE_BAG:
+			case self::MODE_LANG:
 				$this->endElementNested( $elm );
 				break;
 			case self::MODE_INITIAL:
@@ -309,6 +359,7 @@ class XMPReader {
 				}
 				break;
 			case self::MODE_LI:
+			case self::MODE_LI_LANG:
 				$this->endElementModeLi( $elm );
 				break;
 			case self::MODE_QDESC:
@@ -356,6 +407,20 @@ class XMPReader {
 	private function startElementModeSeq( $elm ) {
 		if ( $elm === self::NS_RDF . ' Seq' ) {
 			array_unshift( $this->mode, self::MODE_LI );
+		} else {
+			throw new MWException( "Expected <rdf:Seq> but got $elm." );
+		}
+
+	}
+	/* Start element in MODE_LANG (language alternative)
+	* this should always be <rdf:Alt>
+	*
+	* @param $elm String namespace . ' ' . tag
+	* @throws MWException if we have an element thats not <rdf:Alt>
+	*/
+	private function startElementModeLang( $elm ) {
+		if ( $elm === self::NS_RDF . ' Alt' ) {
+			array_unshift( $this->mode, self::MODE_LI_LANG );
 		} else {
 			throw new MWException( "Expected <rdf:Seq> but got $elm." );
 		}
@@ -420,13 +485,13 @@ class XMPReader {
 	private function startElementModeInitial( $ns, $tag, $attribs ) {
 		if ( $ns !== self::NS_RDF ) {
 
-			if ( isset( XMPInfo::$items[$ns][$tag] ) ) {
-				$mode = XMPInfo::$items[$ns][$tag]['mode'];
+			if ( isset( $this->items[$ns][$tag] ) ) {
+				$mode = $this->items[$ns][$tag]['mode'];
 				array_unshift( $this->mode, $mode );
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
 				if ( $mode === self::MODE_STRUCT ) {
-					$this->ancestorStruct = isset( XMPInfo::$items[$ns][$tag]['map_name'] )
-						? XMPInfo::$items[$ns][$tag]['map_name'] : $tag;
+					$this->ancestorStruct = isset( $this->items[$ns][$tag]['map_name'] )
+						? $this->items[$ns][$tag]['map_name'] : $tag;
 				}
 				if ( $this->charContent !== false ) {
 					// Something weird.
@@ -453,16 +518,16 @@ class XMPReader {
 	private function startElementModeStruct( $ns, $tag, $attribs ) {
 		if ( $ns !== self::NS_RDF ) {
 
-			if ( isset( XMPInfo::$items[$ns][$tag] ) ) {
-				if ( isset( XMPInfo::$items[$ns][$this->ancestorStruct]['children'] )
-					&& !isset( XMPInfo::$items[$ns][$this->ancestorStruct]['children'][$tag] ) )
+			if ( isset( $this->items[$ns][$tag] ) ) {
+				if ( isset( $this->items[$ns][$this->ancestorStruct]['children'] )
+					&& !isset( $this->items[$ns][$this->ancestorStruct]['children'][$tag] ) )
 				{
 					// This assumes that we don't have inter-namespace nesting
 					// which we don't in all the properties we're interested in.
 					throw new MWException( " <$tag> appeared nested in <" . $this->ancestorStruct
 						. "> where it is not allowed." );
 				}
-				array_unshift( $this->mode, XMPInfo::$items[$ns][$tag]['mode'] );
+				array_unshift( $this->mode, $this->items[$ns][$tag]['mode'] );
 				array_unshift( $this->curItem, $ns . ' ' . $tag );
 				if ( $this->charContent !== false ) {
 					// Something weird.
@@ -484,7 +549,7 @@ class XMPReader {
 		}
 	}
 	/** opening element in MODE_LI
-	* process elements of array's
+	* process elements of arrays
 	*
 	* @param $elm String namespace . ' ' . tag
 	* @throws MWException if gets a tag other than <rdf:li>
@@ -497,6 +562,32 @@ class XMPReader {
 		// need to add curItem[0] on again since one is for the specific item
 		// and one is for the entire group.
 		array_unshift( $this->curItem, $this->curItem[0] );
+		$this->processingArray = true;
+	}
+	/** opening element in MODE_LI_LANG
+	* process elements of language alternatives
+	*
+	* @param $elm String namespace . ' ' . tag
+	* @param $attribs array array of elements (most importantly xml:lang)
+	* @throws MWException if gets a tag other than <rdf:li> or if no xml:lang
+	*/
+	private function startElementModeLiLang( $elm, $attribs ) {
+		if ( $elm !== self::NS_RDF . ' li' ) {
+			throw new MWException( __METHOD__ . " <rdf:li> expected but got $elm." );
+		}
+		if ( !isset( $attribs[ self::NS_XML . ' lang'] )
+			|| !preg_match( '/^[-A-Za-z0-9]{2,}$/D', $attribs[ self::NS_XML . ' lang' ] ) )
+		{
+			throw new MWException( __METHOD__
+				. " <rdf:li> did not contain, or has invalid xml:lang attribute in lang alternative" );
+		}
+
+		$this->itemLang = $attribs[ self::NS_XML . ' lang' ];
+
+		// need to add curItem[0] on again since one is for the specific item
+		// and one is for the entire group.
+		array_unshift( $this->curItem, $this->curItem[0] );
+		array_unshift( $this->mode, self::MODE_SIMPLE );
 		$this->processingArray = true;
 	}
 
@@ -550,6 +641,12 @@ class XMPReader {
 			case self::MODE_SEQ:
 				$this->startElementModeSeq( $elm );
 				break;
+			case self::MODE_LANG:
+				$this->startElementModeLang( $elm );
+				break;
+			case self::MODE_LI_LANG:
+				$this->startElementModeLiLang( $elm, $attribs );
+				break;
 			case self::MODE_LI:
 				$this->startElementModeLi( $elm );
 				break;
@@ -590,7 +687,7 @@ class XMPReader {
 					// value attribute is a weird way of just putting the contents.
 					$this->char( $val );
 				}
-			} elseif ( isset( XMPInfo::$items[$ns][$tag] ) ) {
+			} elseif ( isset( $this->items[$ns][$tag] ) ) {
 				if ( $this->mode[0] === self::MODE_SIMPLE ) {
 					throw new MWException( __METHOD__
 						. " $ns:$tag found as attribute where not allowed" );
@@ -611,17 +708,37 @@ class XMPReader {
 	*/
 	private function saveValue( $ns, $tag, $val ) {
 
-		$info =& XMPInfo::$items[$ns][$tag];
+		$info =& $this->items[$ns][$tag];
 		$finalName = isset( $info['map_name'] )
 			? $info['map_name'] : $tag;
 		if ( isset( $info['validate'] ) ) {
-			// FIXME
+			$validate = is_array( $info['validate'] ) ? $info['validate']
+				: array( 'XMPValidate', $info['validate'] );
+
+			if ( is_callable( $validate ) ) {
+				call_user_func_array( $validate, array( $info, &$val, true ) );
+				// the resoning behind using &$val instead of using the return value
+				// is to be consistant between here and validating structures.
+				if ( is_null( $val ) ) {
+					wfDebugLog( 'XMP', __METHOD__ . " <$ns:$tag> failed validation." );
+					return;
+				}
+			} else {
+				wfDebugLog( 'XMP', __METHOD__ . " Validation function for $finalName ("
+					. $validate[0] . '::' . $validate[1] . '()) is not callable.' );
+			}
 		}
 
 		if ( $this->ancestorStruct ) {
 			$this->results['xmp-' . $info['map_group']][$this->ancestorStruct][$finalName] = $val;
 		} elseif ( $this->processingArray ) {
-			$this->results['xmp-' . $info['map_group']][$finalName][] = $val;
+			if ( $this->itemLang === false ) {
+				// normal array
+				$this->results['xmp-' . $info['map_group']][$finalName][] = $val;
+			} else {
+				// lang array.
+				$this->results['xmp-' . $info['map_group']][$finalName][$this->itemLang] = $val;
+			}
 		} else {
 			$this->results['xmp-' . $info['map_group']][$finalName] = $val;
 		}
