@@ -216,10 +216,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'prefs-updates' => 'Mises à jour',
-	'updatemyprefs-desc' => "Préférence pour les utilisateurs pour spécifier s'ils souhaitent avoir des mises à jour périodiques de l'interface utilisateur quand elles sont disponibles",
+	'updatemyprefs-desc' => "Préférence permettant aux utilisateurs de spécifier s'ils souhaitent avoir des mises à jour périodiques de l'interface utilisateur (au fur et à mesure de leur mise en disponibilité)",
 	'updatemyprefs-label-message' => 'Mettre à jour automatiquement mes préférences avec les nouvelles valeurs par défaut et outils quand ils sont disponibles',
 );
 

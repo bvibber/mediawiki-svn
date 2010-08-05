@@ -444,6 +444,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'wikieditor-previewDialog-preference' => 'Donn de Frooch noh ene Aansish vöraf aanschallde',
 	'wikieditor-previewDialog-tab' => '{{int:preview}}',
 	'wikieditor-previewDialog-loading' => 'Ben aam Laade{{int:ellipsis}}',
 );

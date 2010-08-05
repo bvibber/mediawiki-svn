@@ -182,9 +182,10 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Urhixidur
  */
 $messages['fr'] = array(
-	'wikieditor-highlight-preference' => 'Activer la coloration syntaxique lors dans la fenêtre de modification',
+	'wikieditor-highlight-preference' => 'Activer la coloration syntaxique de la fenêtre de modification',
 );
 
 /** Franco-Provençal (Arpetan)

@@ -361,6 +361,14 @@ $messages['id'] = array(
 	'wikieditor-toc-hide' => 'Sembunyikan isi',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'wikieditor-toc-show' => 'Zí ihe di ímé',
+	'wikieditor-toc-hide' => 'Zonari ihe di ímé',
+);
+
 /** Italian (Italiano)
  * @author Gliu
  * @author PaoloRomano
