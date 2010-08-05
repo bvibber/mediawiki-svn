@@ -26,7 +26,7 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => "HideNamespace",
 	'description'    => "Hides namespace in the header and title when a page is in specified namespace or when the <code><nowiki>{{#hidens:}}</nowiki></code> parser function is called.",
 	'descriptionmsg' => "hidens-desc",
-	'version'        => "1.3",
+	'version'        => "1.4",
 	'author'         => 'Matěj Grabovský',
 	'url'            => "http://www.mediawiki.org/wiki/Extension:HideNamespace",
 );
@@ -39,18 +39,7 @@ function wfHideNamespaceSetup() {
 	// Register hooks
 	$wgHooks['ArticleViewHeader'][] = array( $extHidensObj, 'onArticleViewHeader' );
 	$wgHooks['BeforePageDisplay'][] = array( $extHidensObj, 'onBeforePageDisplay' );
-
-	// If we support ParserFirstCallInit, hook our function to register PF hooks with it
-	if( defined('MW_SUPPORTS_PARSERFIRSTCALLINIT') ) {
-		$wgHooks['ParserFirstCallInit'][] = array( $extHidensObj, 'RegisterParser' );
-
-	// Else manualy unstub Parser and call our function
-	} else {
-		if( class_exists( 'StubObject' ) && !StubObject::isRealObject( $wgParser ) ) {
-			$wgParser->_unstub();
-		}
-		$extHidensObj->RegisterParser( $wgParser );
-	}
+	$wgHooks['ParserFirstCallInit'][] = array( $extHidensObj, 'RegisterParser' );
 }
 
 class ExtensionHideNamespace {

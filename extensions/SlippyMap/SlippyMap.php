@@ -47,12 +47,7 @@ $wgAutoloadClasses['WorldWind']					= $dir . 'SlippyMap.worldwind.php';
 $wgParserTestFiles[]							= $dir . '/slippyMapParserTests.txt';
 
 /* Parser hook */
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfSlippyMapHook';
-} else {
-	// Legacy support
-	$wgExtensionFunctions[] = 'wfSlippyMapHook';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfSlippyMapHook';
 
 function wfSlippyMapHook() {
 	new SlippyMapHook;
@@ -156,4 +151,3 @@ $wgSlippyMapSizeRestrictions = array(
  * see see the static map and nothing else.
  */
 $wgSlippyMapAutoLoadMaps = false;
-

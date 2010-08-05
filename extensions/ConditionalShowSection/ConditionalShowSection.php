@@ -32,11 +32,7 @@ $wgExtensionCredits['parserhook'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ConditionalShowSection'] = $dir . 'ConditionalShowSection.i18n.php';
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'wfConditionalShowSection';
-} else { // Otherwise do things the old fashioned way
-	$wgExtensionFunctions[] = 'wfConditionalShowSection';
-}
+$wgHooks['ParserFirstCallInit'][] = 'wfConditionalShowSection';
 
 function wfConditionalShowSection() {
     global $wgParser;

@@ -66,12 +66,7 @@ $wgExtensionCredits['other'][] = array(
 
 $wgExtensionMessagesFiles['AmazonPlus'] = dirname( __FILE__ ) . '/AmazonPlus.i18n.php';
 
-if ( defined( 'MW_SUPPORTS_PARSERFIRSTCALLINIT' ) ) {
-	$wgHooks['ParserFirstCallInit'][] = 'efAmazonPlusSetup';
-} else {
-	$wgExtensionFunctions[] = 'efAmazonPlusSetup';
-}
-
+$wgHooks['ParserFirstCallInit'][] = 'efAmazonPlusSetup';
 $wgHooks['BeforePageDisplay'][] = 'efAmazonPlusJavascript';
 
 $wgAmazonPlusJSVersion = 1; # Bump the version number every time you change AmazonPlus.js
