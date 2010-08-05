@@ -59,7 +59,7 @@ $namespaceAliases = array(
 	'Imatge_Discussió' => NS_FILE_TALK,
 );
 
-$separatorTransformTable = array(',' => '.', '.' => ',' );
+$separatorTransformTable = array( ',' => '.', '.' => ',' );
 
 $dateFormats = array(
 	'mdy time' => 'H:i',
@@ -580,11 +580,11 @@ Els seus motius han estat: «''$2''».",
 # Login and logout pages
 'logouttext'                 => "'''Heu finalitzat la vostra sessió.'''
 
-Podeu continuar utilitzant {{SITENAME}} de forma anònima, o podeu [[Special:UserLogin|iniciar una sessió una altra vegada]] amb el mateix o un altre usuari. 
+Podeu continuar utilitzant {{SITENAME}} de forma anònima, o podeu [[Special:UserLogin|iniciar una sessió una altra vegada]] amb el mateix o un altre usuari.
 Tingueu en compte que algunes pàgines poden continuar mostrant-se com si encara estiguéssiu en una sessió, fins que buideu la memòria cau del vostre navegador.",
 'welcomecreation'            => "== Us donem la benvinguda, $1! ==
 
-S'ha creat el vostre compte. 
+S'ha creat el vostre compte.
 No oblideu de canviar les vostres [[Special:Preferences|preferències de {{SITENAME}}]].",
 'yourname'                   => "Nom d'usuari",
 'yourpassword'               => 'Contrasenya',
@@ -732,7 +732,7 @@ Podeu contactar amb $1 o un dels [[{{MediaWiki:Grouppage-sysop}}|administradors]
 
 Tingueu en compte que no podeu fer servir el formulari d'enviament de missatges de correu electrònic a cap usuari, a menys que tingueu una adreça de correu vàlida registrada a les vostres [[Special:Preferences|preferències d'usuari]] i no ho tingueu tampoc blocat.
 
-La vostra adreça IP actual és $3, i el número d'identificació del blocatge és #$5. 
+La vostra adreça IP actual és $3, i el número d'identificació del blocatge és #$5.
 Si us plau, incloeu aquestes dades en totes les consultes que feu.",
 'autoblockedtext'                  => "La vostra adreça IP ha estat blocada automàticament perquè va ser usada per un usuari actualment bloquejat. Aquest usuari va ser blocat per l'administrador $1. El motiu donat per al bloqueig ha estat:
 
@@ -1558,7 +1558,6 @@ Si us plau, torneu enrere i carregueu aquest fitxer sota un altre nom. [[File:$1
 Si us plau, si encara desitgeu carregar el vostre fitxer, torneu enrera i carregueu-ne una còpia amb un altre nom. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Aquest fitxer és un duplicat {{PLURAL:$1|del fitxer |dels següents fitxers:}}',
 'file-deleted-duplicate'      => "Un fitxer idèntic a aquest ([[$1]]) ha estat esborrat amb anterioritat. Hauríeu de comprovar el registre d'esborrat del fitxer abans de tornar-lo a carregar.",
-'successfulupload'            => "El fitxer s'ha carregat amb èxit",
 'uploadwarning'               => 'Avís de càrrega',
 'uploadwarning-text'          => 'Modifiqueu la descripció de la imatge i torneu a intentar-ho.',
 'savefile'                    => 'Desa el fitxer',
@@ -1585,7 +1584,8 @@ Si us plau, si encara desitgeu carregar el vostre fitxer, torneu enrera i carreg
 Hauríeu de considerar si és realment adequat continuar carregant aquest fitxer, perquè potser també acaba eliminat.
 A continuació teniu el registre d'eliminació per a que pugueu comprovar els motius que van portar a la seua eliminació:",
 'filename-bad-prefix'         => "El nom del fitxer que esteu penjant comença amb '''«$1»''', que és un nom no descriptiu que les càmeres digitals normalment assignen de forma automàtica. Trieu un de més descriptiu per al vostre fitxer.",
-'upload-successful-msg'       => 'El material carregat està disponible ací: $1',
+'upload-success-subj'         => "El fitxer s'ha carregat amb èxit",
+'upload-success-msg'          => 'El material carregat està disponible ací: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problema en la càrrega',
 'upload-failure-msg'          => 'Hi ha hagut un problema amb la vostra càrrega:
 
@@ -2052,7 +2052,7 @@ No rebreu més notificacions de futurs canvis si no visiteu la pàgina. També p
              El servei de notificacions del projecte {{SITENAME}}
 
 --
-Per a canviar les opcions de la vostra llista de seguiment aneu a 
+Per a canviar les opcions de la vostra llista de seguiment aneu a
 {{fullurl:{{#special:Watchlist}}/edit}}
 
 Per eliminar la pàgina de la vostra llista de seguiment aneu a
@@ -2254,7 +2254,7 @@ $1",
 'sp-contributions-userrights'          => "gestió de drets d'usuari",
 'sp-contributions-blocked-notice'      => "En aquests moments, aquest compte d'usuari es troba blocat.
 Per més detalls, la última entrada del registre es mostra a continuació:",
-'sp-contributions-blocked-notice-anon' => 'En aquests moments, aquesta adreça IP es troba blocada. 
+'sp-contributions-blocked-notice-anon' => 'En aquests moments, aquesta adreça IP es troba blocada.
 Per més detalls, la última entrada del registre es mostra a continuació:',
 'sp-contributions-search'              => 'Cerca les contribucions',
 'sp-contributions-username'            => "Adreça IP o nom d'usuari:",
@@ -2567,7 +2567,7 @@ Totes les accions d'importació interwiki es conserven al [[Special:Log/import|r
 'import-interwiki-namespace' => 'Espai de noms de destinació:',
 'import-upload-filename'     => 'Nom de fitxer:',
 'import-comment'             => 'Comentari:',
-'importtext'                 => "Exporteu el fitxer des del wiki d'origen utilitzant l'[[Special:Export|eina d'exportació]]. 
+'importtext'                 => "Exporteu el fitxer des del wiki d'origen utilitzant l'[[Special:Export|eina d'exportació]].
 Deseu-lo al vostre ordinador i carregueu-ne una còpia ací.",
 'importstart'                => "S'estan important pàgines...",
 'import-revision-count'      => '$1 {{PLURAL:$1|revisió|revisions}}',
@@ -3219,14 +3219,14 @@ Proveu-ho amb la previsualització normal.',
 'watchlistedit-noitems'        => 'La vostra llista de seguiment no té cap títol.',
 'watchlistedit-normal-title'   => 'Edita la llista de seguiment',
 'watchlistedit-normal-legend'  => 'Esborra els títols de la llista de seguiment',
-'watchlistedit-normal-explain' => 'Els títols de les pàgines que estan en la vostra llista de seguiment es mostren a continuació. 
+'watchlistedit-normal-explain' => 'Els títols de les pàgines que estan en la vostra llista de seguiment es mostren a continuació.
 Per a eliminar algun element, marqueu el quadre del seu costat, i feu clic al botó «{{int:Watchlistedit-normal-submit}}». També podeu [[Special:Watchlist/raw|editar-ne la llista en text pla]].',
 'watchlistedit-normal-submit'  => 'Elimina entrades',
 'watchlistedit-normal-done'    => "{{PLURAL:$1|1 títol s'ha|$1 títols s'han}} eliminat de la vostra llista de seguiment:",
 'watchlistedit-raw-title'      => 'Edita la llista de seguiment crua',
 'watchlistedit-raw-legend'     => 'Edita la llista de seguiment crua',
-'watchlistedit-raw-explain'    => "Els títols de la vostra llista de seguiment es mostren a continuació, i poden modificar-se afegint-los o suprimint-los de la llista; 
-un títol per línia. 
+'watchlistedit-raw-explain'    => "Els títols de la vostra llista de seguiment es mostren a continuació, i poden modificar-se afegint-los o suprimint-los de la llista;
+un títol per línia.
 En acabar, feu clic a «{{int:Watchlistedit-raw-submit}}».
 També podeu [[Special:Watchlist/edit|utilitzar l'editor estàndard]].",
 'watchlistedit-raw-titles'     => 'Títols:',

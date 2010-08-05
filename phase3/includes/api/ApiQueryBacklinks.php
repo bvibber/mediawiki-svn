@@ -203,7 +203,7 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$botMax  = ( $this->redirect ? ApiBase::LIMIT_BIG2 / 2 : ApiBase::LIMIT_BIG2 );
 		if ( $this->params['limit'] == 'max' ) {
 			$this->params['limit'] = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
-			$this->getResult()->addValue( 'limits', $this->getModuleName(), $this->params['limit'] );
+			$this->getResult()->setParsedLimit( $this->getModuleName(), $this->params['limit'] );
 		}
 
 		$this->processContinue();
@@ -345,8 +345,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 				} else {
 					$this->rootTitle = $title;
 				}
-			} else {
-				$this->dieUsageMsg( array( 'missingparam', 'title' ) );
 			}
 		}
 
@@ -404,7 +402,10 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		$retval = array(
-			'title' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'continue' => null,
 			'namespace' => array(
 				ApiBase::PARAM_ISMULTI => true,
@@ -468,7 +469,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'invalidtitle', 'title' ),
-			array( 'missingparam', 'title' ),
 			array( 'code' => 'bad_image_title', 'info' => "The title for {$this->getModuleName()} query must be an image" ),
 			array( 'code' => '_badcontinue', 'info' => 'Invalid continue param. You should pass the original value returned by the previous query' ),
 		) );

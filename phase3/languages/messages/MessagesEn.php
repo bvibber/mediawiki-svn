@@ -268,7 +268,7 @@ $magicWords = array(
 	'safesubst'              => array( 0,    'SAFESUBST:'             ),
 	'msgnw'                  => array( 0,    'MSGNW:'                 ),
 	'img_thumbnail'          => array( 1,    'thumbnail', 'thumb'     ),
-	'img_manualthumb'        => array( 1,    'thumbnail=$1', 'thumb=$1'),
+	'img_manualthumb'        => array( 1,    'thumbnail=$1', 'thumb=$1' ),
 	'img_right'              => array( 1,    'right'                  ),
 	'img_left'               => array( 1,    'left'                   ),
 	'img_none'               => array( 1,    'none'                   ),
@@ -301,8 +301,8 @@ $magicWords = array(
 	'stylepath'              => array( 0,    'STYLEPATH'              ),
 	'grammar'                => array( 0,    'GRAMMAR:'               ),
 	'gender'                 => array( 0,    'GENDER:'                ),
-	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__', '__NOTC__'),
-	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__', '__NOCC__'),
+	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__', '__NOTC__' ),
+	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__', '__NOCC__' ),
 	'currentweek'            => array( 1,    'CURRENTWEEK'            ),
 	'currentdow'             => array( 1,    'CURRENTDOW'             ),
 	'localweek'              => array( 1,    'LOCALWEEK'              ),
@@ -589,9 +589,9 @@ $preloadedMessages = array(
 	'whatlinkshere',
 );
 
-#-------------------------------------------------------------------
+# -------------------------------------------------------------------
 # Default messages
-#-------------------------------------------------------------------
+# -------------------------------------------------------------------
 # Allowed characters in keys are: A-Z, a-z, 0-9, underscore (_) and
 # hyphen (-). If you need more characters, you may be able to change
 # the regex in MagicWord::initRegex
@@ -639,7 +639,7 @@ XHTML id names.
 'tog-watchdeletion'           => 'Add pages I delete to my watchlist',
 'tog-previewontop'            => 'Show preview before edit box',
 'tog-previewonfirst'          => 'Show preview on first edit',
-'tog-nocache'                 => 'Disable page caching',
+'tog-nocache'                 => 'Disable browser page caching',
 'tog-enotifwatchlistpages'    => 'E-mail me when a page on my watchlist is changed',
 'tog-enotifusertalkpages'     => 'E-mail me when my user talk page is changed',
 'tog-enotifminoredits'        => 'E-mail me also for minor edits of pages',
@@ -1015,9 +1015,9 @@ Query: $2',
 'actionthrottled'      => 'Action throttled',
 'actionthrottledtext'  => 'As an anti-spam measure, you are limited from performing this action too many times in a short space of time, and you have exceeded this limit.
 Please try again in a few minutes.',
-'protectedpagetext'    => 'This page has been locked to prevent editing.',
+'protectedpagetext'    => 'This page has been protected to prevent editing.',
 'viewsourcetext'       => 'You can view and copy the source of this page:',
-'protectedinterface'   => 'This page provides interface text for the software, and is locked to prevent abuse.',
+'protectedinterface'   => 'This page provides interface text for the software, and is protected to prevent abuse.',
 'editinginterface'     => "'''Warning:''' You are editing a page which is used to provide interface text for the software.
 Changes to this page will affect the appearance of the user interface for other users.
 For translations, please consider using [http://translatewiki.net/wiki/Main_Page?setlang=en translatewiki.net], the MediaWiki localisation project.",
@@ -1063,6 +1063,7 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'gotaccount'                 => 'Already have an account? $1.',
 'gotaccountlink'             => 'Log in',
 'createaccountmail'          => 'By e-mail',
+'createaccountreason'        => 'Reason:',
 'badretype'                  => 'The passwords you entered do not match.',
 'userexists'                 => 'Username entered already in use.
 Please choose a different name.',
@@ -1339,12 +1340,12 @@ It cannot be saved.",
 You may wish to cut-n-paste the text into a text file and save it for later.
 
 The administrator who locked it offered this explanation: $1",
-'protectedpagewarning'             => "'''Warning: This page has been locked so that only users with administrator privileges can edit it.'''
+'protectedpagewarning'             => "'''Warning: This page has been protected so that only users with administrator privileges can edit it.'''
 The latest log entry is provided below for reference:",
-'semiprotectedpagewarning'         => "'''Note:''' This page has been locked so that only registered users can edit it.
+'semiprotectedpagewarning'         => "'''Note:''' This page has been protected so that only registered users can edit it.
 The latest log entry is provided below for reference:",
-'cascadeprotectedwarning'          => "'''Warning:''' This page has been locked so that only users with administrator privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
-'titleprotectedwarning'            => "'''Warning: This page has been locked so that [[Special:ListGroupRights|specific rights]] are needed to create it.'''
+'cascadeprotectedwarning'          => "'''Warning:''' This page has been protected so that only users with administrator privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
+'titleprotectedwarning'            => "'''Warning: This page has been protected so that [[Special:ListGroupRights|specific rights]] are needed to create it.'''
 The latest log entry is provided below for reference:",
 'templatesused'                    => '{{PLURAL:$1|Template|Templates}} used on this page:',
 'templatesusedpreview'             => '{{PLURAL:$1|Template|Templates}} used in this preview:',
@@ -1750,6 +1751,7 @@ Note that their indexes of {{SITENAME}} content may be out of date.',
 'contextlines'                  => 'Lines per hit:',
 'contextchars'                  => 'Context per line:',
 'stub-threshold'                => 'Threshold for <a href="#" class="stub">stub link</a> formatting (bytes):',
+'stub-threshold-disabled'       => 'Disabled',
 'recentchangesdays'             => 'Days to show in recent changes:',
 'recentchangesdays-max'         => 'Maximum $1 {{PLURAL:$1|day|days}}',
 'recentchangescount'            => 'Number of edits to show by default:',
@@ -2135,7 +2137,6 @@ If you still want to upload your file, please go back and use a new name.
 'file-exists-duplicate'       => 'This file is a duplicate of the following {{PLURAL:$1|file|files}}:',
 'file-deleted-duplicate'      => "A file identical to this file ([[$1]]) has previously been deleted.
 You should check that file's deletion history before proceeding to re-upload it.",
-'successfulupload'            => 'Successful upload',
 'uploadwarning'               => 'Upload warning',
 'uploadwarning-text'          => 'Please modify the file description below and try again.',
 'savefile'                    => 'Save file',
@@ -2180,11 +2181,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- leave this line exactly as it is -->', # only translate this message to other languages if you have to change it
-'upload-successful-msg'       => 'Your upload is available here: $1',
+'upload-success-subj'         => 'Successful upload',
+'upload-success-msg'          => 'Your upload from [$2] was successful. It is available here: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Upload problem',
-'upload-failure-msg'          => 'There was a problem with your upload:
+'upload-failure-msg'          => 'There was a problem with your upload from [$2]:
 
 $1',
+'upload-warning-subj'         => 'Upload warning',
+'upload-warning-msg'          => 'There was a problem with your upload from [$2]. You may return to the [[Special:Upload/stash/$1|upload form]] to correct this problem.',
 
 'upload-proto-error'        => 'Incorrect protocol',
 'upload-proto-error-text'   => 'Remote upload requires URLs beginning with <code>http://</code> or <code>ftp://</code>.',
@@ -2720,9 +2724,9 @@ Feedback and further assistance:
 # Delete
 'deletepage'             => 'Delete page',
 'confirm'                => 'Confirm',
-'excontent'              => "content was: '$1'",
-'excontentauthor'        => "content was: '$1' (and the only contributor was '[[Special:Contributions/$2|$2]]')",
-'exbeforeblank'          => "content before blanking was: '$1'",
+'excontent'              => 'content was: "$1"',
+'excontentauthor'        => 'content was: "$1" (and the only contributor was "[[Special:Contributions/$2|$2]]")',
+'exbeforeblank'          => 'content before blanking was: "$1"',
 'exblank'                => 'page was empty',
 'delete-confirm'         => 'Delete "$1"',
 'delete-backlink'        => '← $1', # only translate this message to other languages if you have to change it
@@ -2779,7 +2783,7 @@ Go back to the previous page, reload that page and then try again.',
 
 # Protect
 'protectlogpage'              => 'Protection log',
-'protectlogtext'              => 'Below is a list of page locks and unlocks.
+'protectlogtext'              => 'Below is a list of page protections and page unprotections.
 See the [[Special:ProtectedPages|protected pages list]] for the list of currently operational page protections.',
 'protectedarticle'            => 'protected "[[$1]]"',
 'modifiedarticleprotection'   => 'changed protection level for "[[$1]]"',
@@ -3174,9 +3178,9 @@ cannot move a page over itself.',
 'imageinvalidfilename'         => 'The target file name is invalid',
 'fix-double-redirects'         => 'Update any redirects that point to the original title',
 'move-leave-redirect'          => 'Leave a redirect behind',
-'protectedpagemovewarning'     => "'''Warning:''' This page has been locked so that only users with administrator privileges can move it.
+'protectedpagemovewarning'     => "'''Warning:''' This page has been protected so that only users with administrator privileges can move it.
 The latest log entry is provided below for reference:",
-'semiprotectedpagemovewarning' => "'''Note:''' This page has been locked so that only registered users can move it.
+'semiprotectedpagemovewarning' => "'''Note:''' This page has been protected so that only registered users can move it.
 The latest log entry is provided below for reference:",
 'move-over-sharedrepo'         => '== File exists ==
 [[:$1]] exists on a shared repository. Moving a file to this title will override the shared file.',
@@ -3464,7 +3468,7 @@ You can view its source',
 
 # Spam protection
 'spamprotectiontitle' => 'Spam protection filter',
-'spamprotectiontext'  => 'The page you wanted to save was blocked by the spam filter.
+'spamprotectiontext'  => 'The text you wanted to save was blocked by the spam filter.
 This is probably caused by a link to a blacklisted external site.',
 'spamprotectionmatch' => 'The following text is what triggered our spam filter: $1',
 'spambot_username'    => 'MediaWiki spam cleanup',
@@ -4070,9 +4074,9 @@ Please confirm that you really want to recreate this page.",
 
 # Auto-summaries
 'autosumm-blank'   => 'Blanked the page',
-'autosumm-replace' => "Replaced content with '$1'",
+'autosumm-replace' => 'Replaced content with "$1"',
 'autoredircomment' => 'Redirected page to [[$1]]',
-'autosumm-new'     => "Created page with '$1'",
+'autosumm-new'     => 'Created page with "$1"',
 
 # Autoblock whitelist
 'autoblock_whitelist' => 'AOL http://webmaster.info.aol.com/proxyinfo.html

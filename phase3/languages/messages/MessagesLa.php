@@ -1156,7 +1156,6 @@ Vide etiam [[Special:NewFiles|pinacothecam fasciculorum recentissimorum imposito
 'badfilename'         => 'Nomen fasciculi ad "$1" mutatum est.',
 'filetype-missing'    => 'Fasciculus extensionem non habet (sicut e.&nbsp;g. ".jpg").',
 'large-file'          => 'Suasum est ut fasciculi $1 magnitudine non excedant; magnitudo huius fasciculi est $2.',
-'successfulupload'    => 'Impositum est perfectum',
 'uploadwarning'       => 'Monitus imponendi',
 'savefile'            => 'Servare fasciculum',
 'uploadedimage'       => 'imposuit "[[$1]]"',
@@ -1171,6 +1170,7 @@ Vide etiam [[Special:NewFiles|pinacothecam fasciculorum recentissimorum imposito
 
 Tibi oportet meditari utrum hunc fasciculum iterum imponere tamen convenit.
 Commodule notatio fasciculorum deletorum hic datur:",
+'upload-success-subj' => 'Impositum est perfectum',
 
 'upload-proto-error'  => 'Protocollum incorrectum',
 'upload-file-error'   => 'Erratum internum',
@@ -1725,7 +1725,7 @@ Si pagina nova cum ipso nomine post deletionem creata est, emendationes restitut
 ** Ob textum remotum
 ** Ob nexus externos multiplicatos
 ** Ob scripta sensu sive et Latinitate carentia
-** Ob scripta inurbana 
+** Ob scripta inurbana
 ** Ob rationes perniciose multiplicatas
 ** Ob nomen inurbanum sive inconveniens',
 'ipbanononly'                  => 'Solum usores anonymi obstruere',

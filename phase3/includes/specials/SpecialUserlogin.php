@@ -76,6 +76,7 @@ class LoginForm {
 		$this->mPassword = $request->getText( 'wpPassword' );
 		$this->mRetype = $request->getText( 'wpRetype' );
 		$this->mDomain = $request->getText( 'wpDomain' );
+		$this->mReason = $request->getText( 'wpReason' );
 		$this->mReturnTo = $request->getVal( 'returnto' );
 		$this->mReturnToQuery = $request->getVal( 'returntoquery' );
 		$this->mCookieCheck = $request->getVal( 'wpCookieCheck' );
@@ -162,7 +163,7 @@ class LoginForm {
 		$result = $this->mailPasswordInternal( $u, false, 'createaccount-title', 'createaccount-text' );
 
 		wfRunHooks( 'AddNewAccount', array( $u, true ) );
-		$u->addNewUserLogEntry();
+		$u->addNewUserLogEntry( true, $this->mReason );
 
 		$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
@@ -182,7 +183,7 @@ class LoginForm {
 	 * @private
 	 */
 	function addNewAccount() {
-		global $wgUser, $wgEmailAuthentication;
+		global $wgUser, $wgEmailAuthentication, $wgOut;
 
 		# Create the account and abort if there's a problem doing so
 		$u = $this->addNewAccountInternal();
@@ -197,7 +198,6 @@ class LoginForm {
 
 		# Send out an email authentication message if needed
 		if( $wgEmailAuthentication && User::isValidEmailAddr( $u->getEmail() ) ) {
-			global $wgOut;
 			$error = $u->sendConfirmationMail();
 			if( WikiError::isError( $error ) ) {
 				$wgOut->addWikiMsg( 'confirmemail_sendfailed', $error->getMessage() );
@@ -224,7 +224,6 @@ class LoginForm {
 			}
 		} else {
 			# Confirm that the account was created
-			global $wgOut;
 			$self = SpecialPage::getTitleFor( 'Userlogin' );
 			$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
 			$wgOut->setArticleRelated( false );
@@ -232,7 +231,7 @@ class LoginForm {
 			$wgOut->addHTML( wfMsgWikiHtml( 'accountcreatedtext', $u->getName() ) );
 			$wgOut->returnToMain( false, $self );
 			wfRunHooks( 'AddNewAccount', array( $u, false ) );
-			$u->addNewUserLogEntry();
+			$u->addNewUserLogEntry( false, $this->mReason );
 			return true;
 		}
 	}
@@ -431,7 +430,8 @@ class LoginForm {
 	 * creation.
 	 */
 	public function authenticateUserData() {
-		global $wgUser, $wgAuth;
+		global $wgUser, $wgAuth, $wgMemc;
+		
 		if ( $this->mName == '' ) {
 			return self::NO_NAME;
 		}
@@ -459,7 +459,6 @@ class LoginForm {
 			$count = $wgPasswordAttemptThrottle['count'];
 			$period = $wgPasswordAttemptThrottle['seconds'];
 			
-			global $wgMemc;
 			$throttleCount = $wgMemc->get( $throttleKey );
 			if ( !$throttleCount ) {
 				$wgMemc->add( $throttleKey, 1, $period ); // start counter
@@ -624,7 +623,7 @@ class LoginForm {
 	}
 
 	function processLogin() {
-		global $wgUser, $wgAuth;
+		global $wgUser;
 
 		switch ( $this->authenticateUserData() ) {
 			case self::SUCCESS:
@@ -862,8 +861,7 @@ class LoginForm {
 	 * @private
 	 */
 	function successfulCreation() {
-		global $wgUser, $wgOut;
-
+		global $wgUser;
 		# Run any hooks; display injected HTML
 		$injected_html = '';
 		wfRunHooks('UserLoginComplete', array(&$wgUser, &$injected_html));
@@ -1011,6 +1009,7 @@ class LoginForm {
 		$template->set( 'email', $this->mEmail );
 		$template->set( 'realname', $this->mRealName );
 		$template->set( 'domain', $this->mDomain );
+		$template->set( 'reason', $this->mReason );
 
 		$template->set( 'action', $titleObj->getLocalUrl( $q ) );
 		$template->set( 'message', $msg );
@@ -1021,6 +1020,7 @@ class LoginForm {
 		$template->set( 'emailrequired', $wgEmailConfirmToEdit );
 		$template->set( 'canreset', $wgAuth->allowPasswordChange() );
 		$template->set( 'canremember', ( $wgCookieExpiration > 0 ) );
+		$template->set( 'usereason', $wgUser->isLoggedIn() );
 		$template->set( 'remember', $wgUser->getOption( 'rememberpassword' ) or $this->mRemember  );
 
 		if ( $this->mType == 'signup' ) {

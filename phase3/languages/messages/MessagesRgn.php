@@ -35,7 +35,7 @@ $messages = array(
 'tog-watchdeletion'           => "Mett insèn al pàgin ch'a j ò scanzlè int la lèsta dal pàgin da tnì d'occ",
 'tog-previewontop'            => "Fam avdé l'anteprèma sora casèla d'mudèfica invezi che dciotta",
 'tog-previewonfirst'          => "Fa' avdé l'anteprèma dop c'u's fa la prèma mudèfica",
-'tog-nocache'                 => "T'an stêga a tní in memoria al pàgin",
+'tog-nocache'                 => "↓ T'an stêga a tní in tla memoria al pàgin",
 'tog-enotifwatchlistpages'    => "Fam' save' par e-mail quènd una pàgina dal mij l'è steda modifichèda",
 'tog-enotifusertalkpages'     => "Fam' save' par e-mail quènd la mi pàgina dal discusiòn l'è steda modifichèda",
 'tog-enotifminoredits'        => "Fam' save' par e-mail tòt al mudefchi, neca al znini",
@@ -49,6 +49,7 @@ $messages = array(
 'tog-uselivepreview'          => 'Drova la funziòn "Anteprèma dal viv" (u j vo Javascript; sperimentêl)',
 'tog-forceeditsummary'        => "Dam la vos quènd l'ugèt dla mudèfica l'è vut",
 'tog-watchlisthideown'        => "Nascond al mi mudèfic dala lèsta dal pàgin da tnì d'occ",
+'tog-watchlisthidebots'       => "↓ Nascond al mi mudèfic dala lèsta dal pàgin da tnì d'occ",
 
 # Dates
 'january'       => 'Znèr',
@@ -467,7 +468,7 @@ Guèrda $2 par avdé la lèsta daglj ultum scanzeladür.',
 'protect-text'                => "Cun ste mudèl u s'pò guardè e u s'pò cambié ê livèl d'pruteziòn dla pàgina '''<nowiki>$1</nowiki>'''.",
 'protect-locked-access'       => "Oci! Ta n'ê miga i parmess par cambié i livel d'pruteziòn dla pàgina.
 S't'vù vdë in dô ch'j è i parmess, guèrda '''$1''':",
-'protect-cascadeon'           => "Sta pàgina pr'adès l'è bluchëda parchè l'è stra l'{{PLURAL:$1|la pàgina aquè sota, ch'l'à|al pàgin aquè sota, ch'j'à}} la pruteziòn ricursiva. 
+'protect-cascadeon'           => "Sta pàgina pr'adès l'è bluchëda parchè l'è stra l'{{PLURAL:$1|la pàgina aquè sota, ch'l'à|al pàgin aquè sota, ch'j'à}} la pruteziòn ricursiva.
 T'pù cambié ê livel d'pruteziòn d'sta pàgina, mo la pruteziòn ricursiva la resta a lè.",
 'protect-default'             => 'Dà ê parmess a tòt j navigadur',
 'protect-fallback'            => 'A què u j vô ê parmess "$1"',
@@ -649,7 +650,7 @@ Tot i culegamént ch'j ven dop, sora la stèsa riga, j conta cumpagna d'j ecezi�
 
 # Metadata
 'metadata'          => 'Dèd sora i dèd',
-'metadata-help'     => "Ste file l'à d'l'infurmaziòn in piò. Forsi parchè al figur j è stedi cjapèdi con la machina digitèla o cun e' scàner. 
+'metadata-help'     => "Ste file l'à d'l'infurmaziòn in piò. Forsi parchè al figur j è stedi cjapèdi con la machina digitèla o cun e' scàner.
 Se parò un qvelcadon à lavurè sora sta figura, zerti infurmaziòn j n' curespòn piò cun l'uriginel.",
 'metadata-expand'   => 'Fam avdé i particulèr',
 'metadata-collapse' => 'Nascond i particulèr',

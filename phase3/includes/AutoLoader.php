@@ -228,6 +228,7 @@ $wgAutoloadLocalClasses = array(
 	'WatchedItem' => 'includes/WatchedItem.php',
 	'WatchlistEditor' => 'includes/WatchlistEditor.php',
 	'WebRequest' => 'includes/WebRequest.php',
+	'WebRequestUpload' => 'includes/WebRequest.php',
 	'WebResponse' => 'includes/WebResponse.php',
 	'WikiError' => 'includes/WikiError.php',
 	'WikiErrorMsg' => 'includes/WikiError.php',
@@ -427,7 +428,7 @@ $wgAutoloadLocalClasses = array(
 	'MysqlUpdater' => 'includes/installer/MysqlUpdater.php',
 	'PostgresInstaller' => 'includes/installer/PostgresInstaller.php',
 	'SqliteInstaller' => 'includes/installer/SqliteInstaller.php',
-	'SqliteUpdater' => 'includes/installer/SqliteUpdate.php',
+	'SqliteUpdater' => 'includes/installer/SqliteUpdater.php',
 	'OracleInstaller' => 'includes/installer/OracleInstaller.php',
 	'OracleUpdater' => 'includes/installer/DatabaseUpdater.php',
 	'Update' => 'includes/installer/Update.php',
@@ -673,7 +674,7 @@ $wgAutoloadLocalClasses = array(
 	'UploadFromUrlTest' => 'maintenance/tests/UploadFromUrlTest.php',
 
 	# maintenance/tests/selenium
-	'SimpleSeleniumTest' => 'maintenance/tests/selenium/SimpleSeleniumTest.php',
+	'SimpleSeleniumTestSuite' => 'maintenance/tests/selenium/SimpleSeleniumTestSuite.php',
 	'Selenium' => 'maintenance/tests/selenium/Selenium.php',
 	'SeleniumLoader' => 'maintenance/tests/selenium/SeleniumLoader.php',
 	'SeleniumTestCase' => 'maintenance/tests/selenium/SeleniumTestCase.php',
@@ -681,7 +682,6 @@ $wgAutoloadLocalClasses = array(
 	'SeleniumTestHTMLLogger' => 'maintenance/tests/selenium/SeleniumTestHTMLLogger.php',
 	'SeleniumTestListener' => 'maintenance/tests/selenium/SeleniumTestListener.php',
 	'SeleniumTestSuite' => 'maintenance/tests/selenium/SeleniumTestSuite.php',
-	'SimpleSeleniumTest' => 'maintenance/tests/selenium/SimpleSeleniumTest.php',
 
 	# maintenance/language
 	'csvStatsOutput' => 'maintenance/language/StatOutputs.php',

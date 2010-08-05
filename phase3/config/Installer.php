@@ -1,23 +1,27 @@
 <?php
-
-# MediaWiki web-based config/installation
-# Copyright (C) 2004 Brion Vibber <brion@pobox.com>, 2006 Rob Church <robchur@gmail.com>
-# http://www.mediawiki.org/
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-# http://www.gnu.org/copyleft/gpl.html
+/**
+ * MediaWiki web-based config/installation
+ *
+ * Copyright © 2004 Brion Vibber <brion@pobox.com>, 2006 Rob Church <robchur@gmail.com>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ */
 
 if( !defined( 'MEDIAWIKI_INSTALL' ) ) {
 	die( 'Not an entry point.' );
@@ -1033,10 +1037,9 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			## Possible connect as a superuser
 			// Changed !mysql to postgres check since it seems to only apply to postgres
 			if( $useRoot && $conf->DBtype == 'postgres' ) {
-				$wgDBsuperuser = $conf->RootUser;
 				echo( "<li>Attempting to connect to database \"postgres\" as superuser \"" .
-					htmlspecialchars( $wgDBsuperuser ) . "\"..." );
-				$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBsuperuser, $conf->RootPW, "postgres", 1);
+					htmlspecialchars( $conf->RootUser ) . "\"..." );
+				$wgDatabase = $dbc->newFromParams($wgDBserver, $conf->RootUser, $conf->RootPW, "postgres", 1);
 				if (!$wgDatabase->isOpen()) {
 					print " error: " . htmlspecialchars( $wgDatabase->lastError() ) . "</li>\n";
 					$errs["DBserver"] = "Could not connect to database as superuser";
@@ -1044,7 +1047,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 					$errs["RootPW"] = "and password";
 					continue;
 				}
-				$wgDatabase->initial_setup($conf->RootPW, 'postgres');
+				$wgDatabase->initial_setup($conf->RootUser, $conf->RootPW, 'postgres');
 			}
 			echo( "<li>Attempting to connect to database \"" . htmlspecialchars( $wgDBname ) .
 				"\" as \"" . htmlspecialchars( $wgDBuser ) . "\"..." );
@@ -1860,7 +1863,7 @@ function writeLocalSettings( $conf ) {
 	} elseif( $conf->DBtype == 'ibm_db2' ) {
 		$dbsettings =
 "# DB2 specific settings
-\$wgDBport_db2       = \"{$slconf['DBport_db2']}\";
+\$wgDBport       = \"{$slconf['DBport_db2']}\";
 \$wgDBmwschema       = \"{$slconf['DBdb2schema']}\";
 \$wgDBcataloged      = \"{$slconf['DBcataloged']}\";";
 	} elseif( $conf->DBtype == 'oracle' ) {

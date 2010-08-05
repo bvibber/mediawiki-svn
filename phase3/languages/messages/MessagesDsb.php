@@ -174,7 +174,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Boki, kótarež som wulašował, awtomatiski wobglědowaś',
 'tog-previewontop'            => 'Zespominanje wušej wobźěłowańskego póla pokazaś',
 'tog-previewonfirst'          => 'Pśi prědnem wobźěłanju pśecej zespominanje pokazaś',
-'tog-nocache'                 => 'Cache bokow znjemóžniś',
+'tog-nocache'                 => 'Cache bokow wobglědowaka znjemóžniś',
 'tog-enotifwatchlistpages'    => 'E-mail pósłaś, jolic se wobglědowany bok změnja',
 'tog-enotifusertalkpages'     => 'E-mail pósłaś, změnijo-lic se mój diskusijny bok',
 'tog-enotifminoredits'        => 'E-mail teke małych změnow dla pósłaś',
@@ -471,21 +471,21 @@ $1',
 Sy se snaź zapisał pśi zapódaśu URL abo sy slědował wopacnemu wótkazoju.
 To by mógło teke programěrowańska zmólka w {{GRAMMAR:lokatiw|{{SITENAME}}}} byś.',
 'nosuchspecialpage' => 'Toś ten specialny bok njeeksistěrujo',
-'nospecialpagetext' => '<strong>Toś ten specialny bok w toś tom wikiju njeeksistěrujo</strong>
+'nospecialpagetext' => '<strong>Toś ten specialny bok njeeksistěrujo</strong>
 
-Lisćina płaśecych specialnych bokow namakajo se pód [[Special:SpecialPages|{{int:specialpages}}]].',
+Płaśece specialne boki namakaju se pód [[Special:SpecialPages|lisćinu specialnych bokow]].',
 
 # General errors
 'error'                => 'Zmólka',
 'databaseerror'        => 'Zmólka w datowej bance',
 'dberrortext'          => 'Syntaktiska zmólka pśi wótpšašowanju datoweje banki nastata.
 To by mógło zmólki w softwarje byś.
-Slědne wótpšašowanje jo było: 
-<blockquote><tt>$1</tt></blockquote> 
+Slědne wótpšašowanje jo było:
+<blockquote><tt>$1</tt></blockquote>
 z funkcije "<tt>$2</tt>".
 Datowa banka jo zmólku "<tt>$3: $4</tt>" wrośiła.',
 'dberrortextcl'        => 'Syntaktiska zmólka pśi wótpšašowanju datoweje banki nastata.
-Slědne wopytane wótpšašowanje jo było: 
+Slědne wopytane wótpšašowanje jo było:
 "$1"
 z funkcije "$2".
 Datowa banka jo zmólku "$3: $4" wrośiła',
@@ -574,6 +574,7 @@ Twójo konto jo se załožyło. Njezabydni změniś swóje [[Special:Preferences
 'gotaccount'                 => "Maš južo wužywarske konto? '''$1'''.",
 'gotaccountlink'             => 'Pśizjawiś se',
 'createaccountmail'          => 'z e-mailku',
+'createaccountreason'        => 'Pśicyna:',
 'badretype'                  => 'Šćitnej gronidle, kótarejž sy zapódał, se njemakajotej.',
 'userexists'                 => 'Toś to wužywarske mě słuša južo drugemu wužywarjeju, pšosym wuzwól se druge.',
 'loginerror'                 => 'Zmólka pśi pśizjawjenju',
@@ -686,7 +687,7 @@ Sy snaź swójo gronidło južo wuspěšnje změnił abo nowe nachylne gronidło
 'blockedtitle'                     => 'Wužywaŕ jo se blokěrował',
 'blockedtext'                      => "'''Twójo wužywarske mě abo IP-adresa stej se blokěrowałej.'''
 
-Blokěrowanje pśez $1. 
+Blokěrowanje pśez $1.
 Pódana pśicyna: ''$2''.
 
 * Zachopjeńk blokěrowanja: $8
@@ -695,7 +696,7 @@ Pódana pśicyna: ''$2''.
 
 Móžoš $1 abo drugego [[{{MediaWiki:Grouppage-sysop}}|administratora]] kontaktěrowaś, aby wó blokěrowanju diskutěrował.
 Njamóžoš funkciju 'Toś tomu wužywarjeju e-mail pósłaś' wužywaś, snaźkuli płaśiwa e-mailowa adresa jo pódana w swójich kontowych [[Special:Preferences|nastajenjach]] a njeblokěrujos se ju wužywaś.
-Twója IP-adresa jo $3, a ID blokěrowanja jo #$5. 
+Twója IP-adresa jo $3, a ID blokěrowanja jo #$5.
 Pšosym zapśimjej wše górjejcne drobonosći do napšašowanjo, kótarež cyniš.",
 'autoblockedtext'                  => 'Twója IP-adresa jo se awtomatiski blokěrowała, dokulaž jo se wót drugego wužywarja wužywała, kótaryž jo był wót $1 blokěrowany.
 Pśicyna:
@@ -738,7 +739,7 @@ Móžoš [[Special:Search/{{PAGENAME}}|toś ten bokowy titel]] na drugich bokach
 abo <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} wótpowědne protokole pytaś]</span>.',
 'userpage-userdoesnotexist'        => 'Wužywarske konto "$1" njejo zregistrěrowane. Pšosym pśeglědaj, lěc coš toś ten bok wopšawdu napóraś/wobźěłaś.',
 'userpage-userdoesnotexist-view'   => 'Wužywarske konto "$1" njejo zregistrowane.',
-'blocked-notice-logextract'        => 'Toś ten wužywaŕ jo tuchylu blokěrowany. 
+'blocked-notice-logextract'        => 'Toś ten wužywaŕ jo tuchylu blokěrowany.
 Nejnowšy zapisk blokěrowańskego protokola pódawa se dołojce ako referenca:',
 'clearyourcache'                   => "'''Pokazka: Jo móžno, až dejš wuprozniś cache wobglědowaka, aby změny wiźeł.'''
 '''Mozilla/Firefox/Safari:''' Źarź ''Umsch'' tłocony, mjaztym až kliknjoš ''Znowego'' abo tłoc pak ''Strg-F5'' pak ''Strg-R'' (''Command-R'' na Makintošu); '''Konqueror: '''Klikni ''' na ''Aktualisieren'' abo tłoc ''F5;'' '''Opera:''' wuprozni cache w ''Extras -> Eisntellungen;'' '''Internet Explorer:''' źarź ''Strg'' tłocony, mjaztym až kliknjoš na ''Aktualisieren'' abo tłoc ''Strg-F5.''",
@@ -1473,9 +1474,9 @@ Glědaj [[Special:NewFiles|galeriju nowych datajow]] za wizuelny pśeglěd.',
 'filetype-mime-mismatch'      => 'Datajowy sufiks njewótpowědujo MIME-typoju.',
 'filetype-badmime'            => 'Dataje z MIME-typom „$1“ njesměju se nagraś.',
 'filetype-bad-ie-mime'        => 'Toś ta dataja njedajo se nagraś, dokulaž Internet Explorer by ju ako "$1" interpretěrował, kótaryž jo njedowólony a potencielnje tšachotny datajowy typ.',
-'filetype-unwanted-type'      => "'''„.$1“''' jo njewitany datajowy typ. 
+'filetype-unwanted-type'      => "'''„.$1“''' jo njewitany datajowy typ.
 {{PLURAL:$3|Dowólony datajowy typ jo|Dowólonej datajowej typa stej|Dowólene datajowe typy su}}: $2.",
-'filetype-banned-type'        => "'''„.$1“''' jo njedowólony datajowy typ. 
+'filetype-banned-type'        => "'''„.$1“''' jo njedowólony datajowy typ.
 {{PLURAL:$3|Dowólony datajowy typ jo|Dowólenej datajowej typa stej|Dowólone datajowe typy su}} $2.",
 'filetype-missing'            => 'Dataja njama žedno rozšyrjenje (na pś. „.jpg“).',
 'empty-file'                  => 'Dataja, kótaruž sy wótpósłał, jo prozna była.',
@@ -1512,7 +1513,6 @@ Jolic maš toś ten wobraz w połnem rozeznaśu, nagraj jen, howac změń pšosy
 [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Toś ta dataja jo duplikat {{PLURAL:$1|slědujuceje dataje|slědujuceju datajow|slědujucych datajow|slědujucych datajow}}:',
 'file-deleted-duplicate'      => 'Dataja, kótaraž jo identiska z toś teju dataju ([[$1]]) jo se pjerwjej wulašowała. Ty měł stawizny wulašowanja toś teje dataje pśeglědaś, pjerwjej až pokšacujoš z jeje zasejnagrawanjom.',
-'successfulupload'            => 'Nagraśe jo było wuspěšne.',
 'uploadwarning'               => 'Warnowanje',
 'uploadwarning-text'          => 'Pšosym změń slědujuce datajowe wopisanje a wopytaj hyšći raz.',
 'savefile'                    => 'Dataju składowaś',
@@ -1553,11 +1553,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- Njezměń nic na toś tej rědce! -->',
-'upload-successful-msg'       => 'Twójo nagraśe stoj how k dispoziciji: $1',
+'upload-success-subj'         => 'Nagraśe jo było wuspěšne.',
+'upload-success-msg'          => 'Twójo nagraśe z [$2] jo wuspěšne było. Stoj how k dispoziciji: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Nagrawański problem',
 'upload-failure-msg'          => 'Jo był problem z twójim nagraśim:
 
 $1',
+'upload-warning-subj'         => 'Nagrawańske warnowanje',
+'upload-warning-msg'          => 'Jo był problem z twójim nagraśim z [$2]. Wroś k [[Special:Upload/stash/$1|nagrawańskemu formularoju]], aby wótpórał toś ten problem.',
 
 'upload-proto-error'        => 'Njekorektny protokol',
 'upload-proto-error-text'   => 'URL musy zachopiś z <code>http://</code> abo <code>ftp://</code>.',
@@ -1738,7 +1741,7 @@ Wótkazujśo lubjej na pótrjefjony bok.<br />
 Bok wobjadnawa se ako bok wujasnjenja zapśimjeśa, gaž wótkazujo na nju [[MediaWiki:Disambiguationspage]].',
 
 'doubleredirects'            => 'Dwójne dalejpósrědnjenja',
-'doubleredirectstext'        => 'Toś ten bok nalicujo boki, kótarež dalej pósrědnjaju na druge dalejpósrědnjenja. 
+'doubleredirectstext'        => 'Toś ten bok nalicujo boki, kótarež dalej pósrědnjaju na druge dalejpósrědnjenja.
 Kužda smužka wopśimjejo wótkaze na prědne a druge dalejpósrědnjenje a teke na cel drugego dalejpósrědnjenja, což jo w normalnem paźe "napšawdny" celowy bok, na kótaryž by mógło prědne dalejpósrědnjenje pokazaś. <del>Pśešmarnjone</del> zapiski su južo wobstarane.',
 'double-redirect-fixed-move' => '[[$1]] jo se pśesunuł, jo něnto dalejposrědnjenje do [[$2]]',
 'double-redirect-fixer'      => 'Pórěźaŕ dalejpósrědnjenjow',
@@ -2143,7 +2146,7 @@ Kliknjenje na '''''Pśetergnuś''''' wuprozni komentarne pólo a wšykne kontrol
 'undeleterevisions'            => '$1 {{PLURAL:$1|wersija archiwěrowana|wersiji archiwěrowanej|wersije archiwěrowane}}',
 'undeletehistory'              => 'Jolic nawrośijoš bok, nawrośiju se wšykne wersije stawiznow.
 Joli až jo se wutwórił nowy bok ze samskim mjenim wót casa wulašowanja, nawrośone wersije zjawiju se w  pjerwješnych stawiznach.',
-'undeleterevdel'               => 'Nawrośenje njejo móžne, gaž wjeźo k nejwušemu bokoju abo datajowej wersiji, kótaraž se pó źělach lašujo. 
+'undeleterevdel'               => 'Nawrośenje njejo móžne, gaž wjeźo k nejwušemu bokoju abo datajowej wersiji, kótaraž se pó źělach lašujo.
 W takich padach dejš nejnowše wulašowane wersije markěroanje abo schowanje wótpóraś.',
 'undeletehistorynoadmin'       => 'Toś ten bok jo se wulašował. Pśicyna wulašowanja pokazujo se w zespominanju. Tam stoje teke nadrobnosći wó wužywarjach, kótarež su bok pśed wulašowanim wobźěłali. Aktualny tekst toś tych wulašowanych wersijow jo jano administratoram pśistupny.',
 'undelete-revision'            => 'Wulašowana wersija boka $1 (wót $4, $5) wót $3:',
@@ -2242,7 +2245,7 @@ Nejnowšy zapisk protokola blokěrowanjow pódawa se dołojce ako referenca:',
 'ipbreason-dropdown'              => '*powšykne pśicyny blokěrowanja
 ** pódawanje njepšawych informacijow
 ** wulašowanje wopśimjeśa bokow
-** pódawanje spamowych eksternych wótkazow  
+** pódawanje spamowych eksternych wótkazow
 ** pisanje głuposćow na bokach
 ** pśestupjenje zasady "žedne wósobinske atakěrowanja"
 ** złowólne wužywanje wjele wužywarskich kontow
@@ -2425,6 +2428,7 @@ Bok „[[:$1]]“ južo eksistěrujo. Coš jen wulašowaś, aby mógał toś ten
 'immobile-source-page'         => 'Toś ten bok njedajo se pśesunuś.',
 'immobile-target-page'         => 'Njejo móžno na toś ten celowy bok pśesunuś.',
 'imagenocrossnamespace'        => 'Dataja njedajo se pśesunuś do mjenjowego ruma, kótarež njejo za dataje.',
+'nonfile-cannot-move-to-file'  => 'Njedataje njedaje se do datajowego mjenjowego ruma pśesunuś',
 'imagetypemismatch'            => 'Nowy datajowy sufiks swójomu typoju njewótpowědujo',
 'imageinvalidfilename'         => 'Mě celoweje dataje jo njepłaśiwe',
 'fix-double-redirects'         => 'Dalejpósrědnjenja, kótarež wótkazuju na originalny titel, aktualizěrowaś',
@@ -3054,7 +3058,7 @@ Aby wobkšuśił, až toś to konto napšawdu śi słuša a aby e-mailowe funkci
 
 $3
 
-Jolic až *njejsy* toś to konto zregistrěrował, slěduj toś tomu wótkazoju, aby wobkśuśenje e-mejloweje adresy anulował: 
+Jolic až *njejsy* toś to konto zregistrěrował, slěduj toś tomu wótkazoju, aby wobkśuśenje e-mejloweje adresy anulował:
 
 $5
 
@@ -3065,7 +3069,7 @@ Aby wobkšuśił, až toś to konto napšawdu śi słuša a aby e-mailowe funkci
 
 $3
 
-Jolic toś to konto śi *nje*słuša, slěduj toś tomu wótkazoju, aby wobkśuśenje e-mejloweje adrese anulěrował:  
+Jolic toś to konto śi *nje*słuša, slěduj toś tomu wótkazoju, aby wobkśuśenje e-mejloweje adrese anulěrował:
 
 $5
 

@@ -18,7 +18,7 @@ class CategoryPage extends Article {
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
 
 		if ( isset( $diff ) && $diffOnly )
-			return Article::view();
+			return parent::view();
 
 		if ( !wfRunHooks( 'CategoryPageView', array( &$this ) ) )
 			return;
@@ -27,7 +27,7 @@ class CategoryPage extends Article {
 			$this->openShowCategory();
 		}
 
-		Article::view();
+		parent::view();
 
 		if ( NS_CATEGORY == $this->mTitle->getNamespace() ) {
 			$this->closeShowCategory();
@@ -52,10 +52,17 @@ class CategoryPage extends Article {
 
 	function closeShowCategory() {
 		global $wgOut, $wgRequest;
-		$from = $wgRequest->getVal( 'from' );
-		$until = $wgRequest->getVal( 'until' );
 
-		$viewer = new CategoryViewer( $this->mTitle, $from, $until );
+		$from = $until = array();
+		foreach ( array( 'page', 'subcat', 'file' ) as $type ) {
+			# Use $_GET instead of $wgRequest, because the latter helpfully
+			# normalizes Unicode, which removes nulls.  TODO: do something
+			# smarter than passing nulls in URLs.  :/
+			$from[$type] = isset( $_GET["{$type}from"] ) ? $_GET["{$type}from"] : null;
+			$until[$type] = isset( $_GET["{$type}until"] ) ? $_GET["{$type}until"] : null;
+		}
+
+		$viewer = new CategoryViewer( $this->mTitle, $from, $until, $_GET );
 		$wgOut->addHTML( $viewer->getHTML() );
 	}
 }
@@ -66,16 +73,20 @@ class CategoryViewer {
 		$children, $children_start_char,
 		$showGallery, $gallery,
 		$skin;
-	/** Category object for this page */
+	# Category object for this page
 	private $cat;
+	# The original query array, to be used in generating paging links.
+	private $query;
 
-	function __construct( $title, $from = '', $until = '' ) {
+	function __construct( $title, $from = '', $until = '', $query = array() ) {
 		global $wgCategoryPagingLimit;
 		$this->title = $title;
 		$this->from = $from;
 		$this->until = $until;
 		$this->limit = $wgCategoryPagingLimit;
 		$this->cat = Category::newFromTitle( $title );
+		$this->query = $query;
+		unset( $this->query['title'] );
 	}
 
 	/**
@@ -85,7 +96,7 @@ class CategoryViewer {
 	 * @private
 	 */
 	function getHTML() {
-		global $wgOut, $wgCategoryMagicGallery, $wgCategoryPagingLimit, $wgContLang;
+		global $wgOut, $wgCategoryMagicGallery, $wgContLang;
 		wfProfileIn( __METHOD__ );
 
 		$this->showGallery = $wgCategoryMagicGallery && !$wgOut->mNoGallery;
@@ -172,7 +183,7 @@ class CategoryViewer {
 	* else use sortkey...
 	*/
 	function getSubcategorySortChar( $title, $sortkey ) {
-		global $wgContLang, $wgExperimentalCategorySort;
+		global $wgContLang;
 
 		if ( $title->getPrefixedText() == $sortkey ) {
 			$word = $title->getDBkey();
@@ -180,11 +191,7 @@ class CategoryViewer {
 			$word = $sortkey;
 		}
 
-		if ( $wgExperimentalCategorySort ) {
-			$firstChar = $wgContLang->firstLetterForLists( $word );
-		} else {
-			$firstChar = $wgContLang->firstChar( $word );
-		}
+		$firstChar = $wgContLang->firstLetterForLists( $word );
 
 		return $wgContLang->convert( $firstChar );
 	}
@@ -194,7 +201,8 @@ class CategoryViewer {
 	 */
 	function addImage( Title $title, $sortkey, $pageLength, $isRedirect = false ) {
 		if ( $this->showGallery ) {
-			if ( $this->flip ) {
+			$flip = $this->flip['file'];
+			if ( $flip ) {
 				$this->gallery->insert( $title );
 			} else {
 				$this->gallery->add( $title );
@@ -208,7 +216,7 @@ class CategoryViewer {
 	 * Add a miscellaneous page
 	 */
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
-		global $wgContLang, $wgExperimentalCategorySort;
+		global $wgContLang;
 		$this->articles[] = $isRedirect
 			? '<span class="redirect-in-category">' .
 				$this->getSkin()->link(
@@ -218,120 +226,86 @@ class CategoryViewer {
 					array(),
 					array( 'known', 'noclasses' )
 				) . '</span>'
-			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
+			: $this->getSkin()->link( $title );
 
-		if ( $wgExperimentalCategorySort ) {
-			$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstLetterForLists( $sortkey ) );
-		} else {
-			$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
-		}
+		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstLetterForLists( $sortkey ) );
 	}
 
 	function finaliseCategoryState() {
-		if ( $this->flip ) {
+		if ( $this->flip['subcat'] ) {
 			$this->children            = array_reverse( $this->children );
 			$this->children_start_char = array_reverse( $this->children_start_char );
+		}
+		if ( $this->flip['page'] ) {
 			$this->articles            = array_reverse( $this->articles );
 			$this->articles_start_char = array_reverse( $this->articles_start_char );
 		}
 	}
 
 	function doCategoryQuery() {
-		global $wgExperimentalCategorySort;
+		global $wgContLang;
 
 		$dbr = wfGetDB( DB_SLAVE, 'category' );
-		if ( $this->from != '' ) {
-			$pageCondition = 'cl_sortkey >= ' . $dbr->addQuotes( $this->from );
-			$this->flip = false;
-		} elseif ( $this->until != '' ) {
-			$pageCondition = 'cl_sortkey < ' . $dbr->addQuotes( $this->until );
-			$this->flip = true;
-		} else {
-			$pageCondition = '1 = 1';
-			$this->flip = false;
-		}
 
-		$tables = array( 'page', 'categorylinks', 'category' );
-		$fields = array( 'page_title', 'page_namespace', 'page_len',
-			'page_is_redirect', 'cl_sortkey', 'cat_id', 'cat_title',
-			'cat_subcats', 'cat_pages', 'cat_files' );
-		$conds = array( 'cl_to' => $this->title->getDBkey() );
-		$opts = array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' :
-			'cl_sortkey', 'USE INDEX' => array( 'categorylinks' => 'cl_sortkey' ) );
-		$joins = array( 'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
-			'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY ) );
-
-		if ( $wgExperimentalCategorySort ) {
-			# Copy-pasted from below, but that's okay, because the stuff below
-			# will be deleted when this becomes the default.
-			$count = 0;
-			$this->nextPage = null;
-
-			foreach ( array( 'page', 'subcat', 'file' ) as $type ) {
-				$res = $dbr->select(
-					$tables,
-					array_merge( $fields, array( 'cl_raw_sortkey' ) ),
-					$conds + array( 'cl_type' => $type ) + ( $type == 'page' ? array( $pageCondition ) : array() ),
-					__METHOD__,
-					$opts + ( $type == 'page' ? array( 'LIMIT' => $this->limit + 1 ) : array() ),
-					$joins
-				);
-
-				foreach ( $res as $row ) {
-					if ( $type == 'page' && ++$count > $this->limit ) {
-						# We've reached the one extra which shows that there
-						# are additional pages to be had. Stop here...
-						$this->nextPage = $row->cl_sortkey;
-						break;
-					}
-
-					$title = Title::newFromRow( $row );
-
-					if ( $title->getNamespace() == NS_CATEGORY ) {
-						$cat = Category::newFromRow( $row, $title );
-						$this->addSubcategoryObject( $cat, $row->cl_raw_sortkey, $row->page_len );
-					} elseif ( $this->showGallery && $title->getNamespace() == NS_FILE ) {
-						$this->addImage( $title, $row->cl_raw_sortkey, $row->page_len, $row->page_is_redirect );
-					} else {
-						$this->addPage( $title, $row->cl_raw_sortkey, $row->page_len, $row->page_is_redirect );
-					}
-				}
-			}
-
-			return;
-		}
-
-		# Non-$wgExperimentalCategorySort stuff
-
-		$res = $dbr->select(
-			$tables,
-			$fields,
-			$conds + array( $pageCondition ),
-			__METHOD__,
-			$opts + array( 'LIMIT' => $this->limit + 1 ),
-			$joins
+		$this->nextPage = array(
+			'page' => null,
+			'subcat' => null,
+			'file' => null,
 		);
+		$this->flip = array( 'page' => false, 'subcat' => false, 'file' => false );
 
-		$count = 0;
-		$this->nextPage = null;
-
-		foreach ( $res as $row ) {
-			if ( ++$count > $this->limit ) {
-				// We've reached the one extra which shows that there are
-				// additional pages to be had. Stop here...
-				$this->nextPage = $row->cl_sortkey;
-				break;
+		foreach ( array( 'page', 'subcat', 'file' ) as $type ) {
+			# Get the sortkeys for start/end, if applicable.  Note that if
+			# the collation in the database differs from the one
+			# $wgContLang is using, pagination might go totally haywire.
+			$extraConds = array( 'cl_type' => $type );
+			if ( $this->from[$type] !== null ) {
+				$extraConds[] = 'cl_sortkey >= '
+					. $dbr->addQuotes( $wgContLang->convertToSortkey( $this->from[$type] ) );
+			} elseif ( $this->until[$type] !== null ) {
+				$extraConds[] = 'cl_sortkey < '
+					. $dbr->addQuotes( $wgContLang->convertToSortkey( $this->until[$type] ) );
+				$this->flip[$type] = true;
 			}
 
-			$title = Title::newFromRow( $row );
+			$res = $dbr->select(
+				array( 'page', 'categorylinks', 'category' ),
+				array( 'page_title', 'page_namespace', 'page_len',
+					'page_is_redirect', 'cl_sortkey', 'cat_id', 'cat_title',
+					'cat_subcats', 'cat_pages', 'cat_files', 'cl_sortkey_prefix' ),
+				array( 'cl_to' => $this->title->getDBkey() ) + $extraConds,
+				__METHOD__,
+				array(
+					'USE INDEX' => array( 'categorylinks' => 'cl_sortkey' ),
+					'LIMIT' => $this->limit + 1,
+					'ORDER BY' => $this->flip[$type] ? 'cl_sortkey DESC' : 'cl_sortkey',
+				),
+				array(
+					'categorylinks'  => array( 'INNER JOIN', 'cl_from = page_id' ),
+					'category' => array( 'LEFT JOIN', 'cat_title = page_title AND page_namespace = ' . NS_CATEGORY )
+				)
+			);
 
-			if ( $title->getNamespace() == NS_CATEGORY ) {
-				$cat = Category::newFromRow( $row, $title );
-				$this->addSubcategoryObject( $cat, $row->cl_sortkey, $row->page_len );
-			} elseif ( $this->showGallery && $title->getNamespace() == NS_FILE ) {
-				$this->addImage( $title, $row->cl_sortkey, $row->page_len, $row->page_is_redirect );
-			} else {
-				$this->addPage( $title, $row->cl_sortkey, $row->page_len, $row->page_is_redirect );
+			$count = 0;
+			foreach ( $res as $row ) {
+				$title = Title::newFromRow( $row );
+				$rawSortkey = $title->getCategorySortkey( $row->cl_sortkey_prefix );
+
+				if ( ++$count > $this->limit ) {
+					# We've reached the one extra which shows that there
+					# are additional pages to be had. Stop here...
+					$this->nextPage[$type] = $rawSortkey;
+					break;
+				}
+
+				if ( $title->getNamespace() == NS_CATEGORY ) {
+					$cat = Category::newFromRow( $row, $title );
+					$this->addSubcategoryObject( $cat, $rawSortkey, $row->page_len );
+				} elseif ( $this->showGallery && $title->getNamespace() == NS_FILE ) {
+					$this->addImage( $title, $rawSortkey, $row->page_len, $row->page_is_redirect );
+				} else {
+					$this->addPage( $title, $rawSortkey, $row->page_len, $row->page_is_redirect );
+				}
 			}
 		}
 	}
@@ -355,7 +329,9 @@ class CategoryViewer {
 			$r .= "<div id=\"mw-subcategories\">\n";
 			$r .= '<h2>' . wfMsg( 'subcategories' ) . "</h2>\n";
 			$r .= $countmsg;
+			$r .= $this->getSectionPagingLinks( 'subcat' );
 			$r .= $this->formatList( $this->children, $this->children_start_char );
+			$r .= $this->getSectionPagingLinks( 'subcat' );
 			$r .= "\n</div>";
 		}
 		return $r;
@@ -379,34 +355,51 @@ class CategoryViewer {
 			$r = "<div id=\"mw-pages\">\n";
 			$r .= '<h2>' . wfMsg( 'category_header', $ti ) . "</h2>\n";
 			$r .= $countmsg;
+			$r .= $this->getSectionPagingLinks( 'page' );
 			$r .= $this->formatList( $this->articles, $this->articles_start_char );
+			$r .= $this->getSectionPagingLinks( 'page' );
 			$r .= "\n</div>";
 		}
 		return $r;
 	}
 
 	function getImageSection() {
+		$r = '';
 		if ( $this->showGallery && ! $this->gallery->isEmpty() ) {
 			$dbcnt = $this->cat->getFileCount();
 			$rescnt = $this->gallery->count();
 			$countmsg = $this->getCountMessage( $rescnt, $dbcnt, 'file' );
 
-			return "<div id=\"mw-category-media\">\n" .
-			'<h2>' . wfMsg( 'category-media-header', htmlspecialchars( $this->title->getText() ) ) . "</h2>\n" .
-			$countmsg . $this->gallery->toHTML() . "\n</div>";
+			$r .= "<div id=\"mw-category-media\">\n";
+			$r .= '<h2>' . wfMsg( 'category-media-header', htmlspecialchars( $this->title->getText() ) ) . "</h2>\n";
+			$r .= $countmsg;
+			$r .= $this->getSectionPagingLinks( 'file' );
+			$r .= $this->gallery->toHTML();
+			$r .= $this->getSectionPagingLinks( 'file' );
+			$r .= "\n</div>";
+		}
+		return $r;
+	}
+
+	/**
+	 * Get the paging links for a section (subcats/pages/files), to go at the top and bottom
+	 * of the output.
+	 *
+	 * @param $type String: 'page', 'subcat', or 'file'
+	 * @return String: HTML output, possibly empty if there are no other pages
+	 */
+	private function getSectionPagingLinks( $type ) {
+		if ( $this->until[$type] !== null ) {
+			return $this->pagingLinks( $this->nextPage[$type], $this->until[$type], $type );
+		} elseif ( $this->nextPage[$type] !== null || $this->from[$type] !== null ) {
+			return $this->pagingLinks( $this->from[$type], $this->nextPage[$type], $type );
 		} else {
 			return '';
 		}
 	}
 
 	function getCategoryBottom() {
-		if ( $this->until != '' ) {
-			return $this->pagingLinks( $this->title, $this->nextPage, $this->until, $this->limit );
-		} elseif ( $this->nextPage != '' || $this->from != '' ) {
-			return $this->pagingLinks( $this->title, $this->from, $this->nextPage, $this->limit );
-		} else {
-			return '';
-		}
+		return '';
 	}
 
 	/**
@@ -513,26 +506,27 @@ class CategoryViewer {
 	}
 
 	/**
-	 * @param $title Title object
-	 * @param $first String
-	 * @param $last String
-	 * @param $limit Int
-	 * @param $query Array: additional query options to pass
-	 * @return String
-	 * @private
+	 * Create paging links, as a helper method to getSectionPagingLinks().
+	 *
+	 * @param $first String The 'until' parameter for the generated URL
+	 * @param $last String The 'from' parameter for the genererated URL
+	 * @param $type String A prefix for parameters, 'page' or 'subcat' or
+	 *     'file'
+	 * @return String HTML
 	 */
-	function pagingLinks( $title, $first, $last, $limit, $query = array() ) {
+	private function pagingLinks( $first, $last, $type = '' ) {
 		global $wgLang;
 		$sk = $this->getSkin();
-		$limitText = $wgLang->formatNum( $limit );
+		$limitText = $wgLang->formatNum( $this->limit );
 
 		$prevLink = wfMsgExt( 'prevn', array( 'escape', 'parsemag' ), $limitText );
 
 		if ( $first != '' ) {
-			$prevQuery = $query;
-			$prevQuery['until'] = $first;
+			$prevQuery = $this->query;
+			$prevQuery["{$type}until"] = $first;
+			unset( $prevQuery["{$type}from"] );
 			$prevLink = $sk->linkKnown(
-				$title,
+				$this->title,
 				$prevLink,
 				array(),
 				$prevQuery
@@ -542,10 +536,11 @@ class CategoryViewer {
 		$nextLink = wfMsgExt( 'nextn', array( 'escape', 'parsemag' ), $limitText );
 
 		if ( $last != '' ) {
-			$lastQuery = $query;
-			$lastQuery['from'] = $last;
+			$lastQuery = $this->query;
+			$lastQuery["{$type}from"] = $last;
+			unset( $lastQuery["{$type}until"] );
 			$nextLink = $sk->linkKnown(
-				$title,
+				$this->title,
 				$nextLink,
 				array(),
 				$lastQuery

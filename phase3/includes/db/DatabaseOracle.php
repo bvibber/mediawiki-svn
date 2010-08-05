@@ -1,11 +1,12 @@
 <?php
 /**
- * @ingroup Database
+ * This is the Oracle database abstraction layer.
+ *
  * @file
+ * @ingroup Database
  */
 
 /**
- * This is the Oracle database abstraction layer.
  * @ingroup Database
  */
 class ORABlob {
@@ -32,7 +33,6 @@ class ORAResult {
 	private $stmt;
 	private $nrows;
 
-	private $unique;
 	private function array_unique_md( $array_in ) {
 		$array_out = array();
 		$array_hashes = array();
@@ -992,8 +992,6 @@ class DatabaseOracle extends DatabaseBase {
 	}
 
 	function setup_database() {
-		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport, $wgDBuser;
-
 		$res = $this->sourceFile( "../maintenance/ora/tables.sql" );
 		if ($res === true) {
 			print " done.</li>\n";

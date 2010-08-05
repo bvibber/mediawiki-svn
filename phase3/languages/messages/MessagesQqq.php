@@ -475,13 +475,13 @@ Do '''not''' replace SITENAME with a translation of Wikipedia or some encycopedi
 'retrievedfrom'           => 'Message which appears in the source of every page, but it is hidden. It is shown when printing. $1 is a link back to the current page: {{FULLURL:{{FULLPAGENAME}}}}.',
 'youhavenewmessages'      => 'The orange message appearing when someone edited your user talk page.
 The format is: "{{int:youhavenewmessages| [[MediaWiki:Newmessageslink/{{SUBPAGENAME}}|{{int:newmessageslink}}]] |[[MediaWiki:Newmessagesdifflink/{{SUBPAGENAME}}|{{int:newmessagesdifflink}}]]}}"',
-'newmessageslink'         => 'Ini adalah pranala pertama yang tampak pada pita oranye saat pengguna mendapat pesan pada pembicaraan_penggunanya. Tampak pada pesan {{msg-mw|youhavenewmessages}} (sebagai parameter $1).
+'newmessageslink'         => 'This is the first link displayed in an orange rectangle when a user gets a message on his talk page. Used in message {{msg-mw|youhavenewmessages}} (as parameter $1).
 
 {{Identical|New messages}}',
-'newmessagesdifflink'     => 'Ini adalah pranala kedua yang tampak pada pita oranye saat pengguna mendapat pesan pada pembicaraan_penggunanya. Tampak pada pesan {{msg-mw|youhavenewmessages}} (sebagai parameter $2).',
-'youhavenewmessagesmulti' => 'Alternatif dari {{msg|youhavenewmessages}} yang di pakai pada wikis dengan konfigurasi khusus sehingga dapat menerima pemberitahuan "pesan baru" pada wikis yang lain dengan baik. Digunakan pada [http://www.wikia.com/ Wikia].
-Format penggunaannya adalah : "{{int:youhavenewmessagesmulti| [[MediaWiki:Newmessageslink/{{SUBPAGENAME}}|{{int:newmessageslink}}]]}}"',
-'editsection'             => 'Menunjukkan nama dari pranala untuk menyunting bagian dari isi halaman. Contoh: [{{MediaWiki:Editsection}}].
+'newmessagesdifflink'     => 'This is the second link displayed in an orange rectangle when a user gets a message on his talk page. Used in message {{msg-mw|youhavenewmessages}} (as parameter $2).',
+'youhavenewmessagesmulti' => 'The alternative of {{msg|youhavenewmessages}} as used on wikis with a special setup so they can receive the "new message" notice on other wikis as well. Used on [http://www.wikia.com/ Wikia].
+The format is: "{{int:youhavenewmessagesmulti| [[MediaWiki:Newmessageslink/{{SUBPAGENAME}}|{{int:newmessageslink}}]]}}"',
+'editsection'             => 'Display name of link to edit a section on a content page. Example: [{{MediaWiki:Editsection}}].
 
 {{Identical|Edit}}',
 'editsection-brackets'    => '{{optional}}',
@@ -655,6 +655,7 @@ $1 is a filename, I think.',
 
 {{Identical|Log in}}',
 'createaccountmail'          => 'Button text for creating a new account and sending the new password to the specified e-mail address directly, as used on [[Special:UserLogin/signup]] if creating accounts by e-mail is allowed.',
+'createaccountreason'        => '{{Identical|Reason}}',
 'createaccounterror'         => 'Parameters:
 * $1 is an error message',
 'nocookiesnew'               => "This message is displayed when a new account was successfully created, but the browser doesn't accept cookies.",
@@ -783,8 +784,7 @@ Tip for internal links',
 'missingsummary'                   => 'The text "sdit summary" is in {{msg-mw|summary}}.
 The text "Save" is in {{msg-mw|savearticle}}.',
 'missingcommenttext'               => 'This message is shown, when the textbox by a new-section is empty.',
-'missingcommentheader'             => '
-The text "Save" is in {{msg-mw|savearticle}}.',
+'missingcommentheader'             => 'Edit summary that is shown if you enable "Prompt me when entering a blank summary" and add a new section without headline to a talk page.',
 'summary-preview'                  => 'Preview of the edit summary, shown under the edit summary itself.
 Should match: {{msg-mw|summary}}.',
 'subject-preview'                  => 'Should match {{msg-mw|subject}}',
@@ -919,6 +919,9 @@ Please report at [[Support]] if you are unable to properly translate this messag
 {{Identical|Last}}",
 'histlegend'             => 'Text in history page. Refers to {{msg-mw|cur}}, {{msg-mw|last}}, and {{msg-mw|minoreditletter}}.',
 'history-fieldset-title' => 'Fieldset label in the edit history pages.',
+'history-show-deleted'   => 'CheckBox to show only per [[mw:Manual:RevisionDelete|RevisonDelete]] deleted versions.
+
+Used in History and [[Special:Contributions]].',
 'histfirst'              => 'Used in page history.',
 'histlast'               => 'Used in page history.',
 'historyempty'           => 'Text in page history for empty page revisions
@@ -1289,7 +1292,8 @@ This is a search result (and I guess search engine) dependent messages. I do not
 {{Identical|Save}}',
 'resetprefs'                    => 'Button for resetting changes in the preferences page.',
 'restoreprefs'                  => 'Used in [[Special:Preferences]]',
-'prefs-editing'                 => 'Title of a tab in [[Special:Preferences]].',
+'prefs-editing'                 => 'Title of a tab in [[Special:Preferences]].
+When changing this message, please also update {{msg-mw|vector-editwarning-warning}} which references to this message.',
 'rows'                          => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
 'columns'                       => 'Used on [[Special:Preferences]], "Editing" section in the "Size of editing window" fieldset',
 'searchresultshead'             => 'This is the label of the tab in [[Special:Preferences|my preferences]] which contains options for searching the wiki.
@@ -1299,6 +1303,7 @@ This is a search result (and I guess search engine) dependent messages. I do not
 'contextlines'                  => "Option on the 'Search options' tab of [[Special:Preferences]]",
 'contextchars'                  => 'Used in Preferences/Search tab',
 'stub-threshold'                => 'Used in [[Special:Preferences]], tab "Misc".',
+'stub-threshold-disabled'       => 'Used in [[Special:Preferences]].',
 'recentchangesdays'             => 'Used in [[Special:Preferences]], tab "Recent changes".',
 'recentchangesdays-max'         => 'Shown as hint in [[Special:Preferences]], tab "Recent changes"',
 'recentchangescount'            => 'Used in [[Special:Preferences]], tab "Recent changes".',
@@ -1783,7 +1788,7 @@ Extensions making use of it:
 Siebrand think this has to do with allowing MediaWiki to fetch remote URLs, and in that not allowing anything but "http://" request. So if this for example is "irc://" or "https://", $1 would be "irc" or "https" respectively.
 
 If \'scheme\' is difficult to translate, then you could use \'prefix\' instead.',
-'http-bad-status'     => '$1 ini adalah kode kesalahan HTTP (contoh 404), $2 ini adalah pesan kesalahan HTTP (contoh File Not Found)',
+'http-bad-status'     => '$1 is an HTTP error code (e.g. 404), $2 is the HTTP error message (e.g. File Not Found)',
 
 'license'           => 'This appears in the upload form for the license drop-down. The header in the file description page is now at {{msg-mw|License-header}}.',
 'nolicense'         => '{{Identical|None selected}}',
@@ -2297,10 +2302,10 @@ Possible alternatives to the word 'content' are 'subject matter' or 'wiki subjec
 
 'changed'        => 'Possible value for $CHANGEDORCREATED in {{msg|enotif_subject}} and {{msg|enotif_body}}.',
 'created'        => 'Possible value for $CHANGEDORCREATED in {{msg|enotif_subject}} and {{msg|enotif_body}}.',
-'enotif_subject' => '$CHANGEDORCREATED can be one of {{msg|changed}} and {{msg|created}}.',
+'enotif_subject' => '$CHANGEDORCREATED can be one of {{msg|changed}} and {{msg|created}}. Can also be {{msg-mw|blog-added}} or {{msg-mw|blog-edited}} from Wikia.',
 'enotif_body'    => 'Text of a notification e-mail sent when a watched page has been edited or deleted.
 
-* <tt>$CHANGEDORCREATED</tt> can be one of {{msg-mw|changed}}, {{msg-mw|created}}, or {{msg-mw|deleted}}.',
+* <tt>$CHANGEDORCREATED</tt> can be one of {{msg-mw|changed}}, {{msg-mw|created}}, or {{msg-mw|deleted}}. Can also be {{msg-mw|blog-added}} or {{msg-mw|blog-edited}} from Wikia.',
 
 # Delete
 'confirm'                => 'Submit button text for protection confirmation
@@ -2661,6 +2666,7 @@ See also {{msg-mw|Blocklistline}}.',
 'ipb-otherblocks-header'       => '[[File:Special.Block with other blocks from GlobalBlocking and TorBlocks.png|thumb|Example]]
 Used on [[Special:Block]] as header for other blocks, i.e. from GlobalBlocking or TorBlocks',
 'blockme'                      => 'The page title of [[Special:Blockme]], a feature which is disabled by default.',
+'proxyblocksuccess'            => '{{Identical|Done}}',
 'sorbs'                        => '{{optional}}',
 'cant-see-hidden-user'         => 'Used as (red) error message on Special:Block when you try to change (as sysop w/o the hideuser right) the block of a hidden user.',
 'ipbblocked'                   => 'Error message shown when a user tries to alter block settings when they are themselves blocked.',

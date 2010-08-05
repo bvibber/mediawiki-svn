@@ -50,6 +50,7 @@ abstract class ApiBase {
 	const PARAM_MIN = 5; // Lowest value allowed for a parameter. Only applies if TYPE='integer'
 	const PARAM_ALLOW_DUPLICATES = 6; // Boolean, do we allow the same value to be set more than once when ISMULTI=true
 	const PARAM_DEPRECATED = 7; // Boolean, is the parameter deprecated (will show a warning)
+	const PARAM_REQUIRED = 8; // Boolean, is the parameter required?
 
 	const LIMIT_BIG1 = 500; // Fast query, std user limit
 	const LIMIT_BIG2 = 5000; // Fast query, bot/sysop limit
@@ -57,6 +58,7 @@ abstract class ApiBase {
 	const LIMIT_SML2 = 500; // Slow query, bot/sysop limit
 
 	private $mMainModule, $mModuleName, $mModulePrefix;
+	private $mParamCache = array();
 
 	/**
 	 * Constructor
@@ -306,6 +308,12 @@ abstract class ApiBase {
 					$desc = "DEPRECATED! $desc";
 				}
 
+				$required = isset( $paramSettings[self::PARAM_REQUIRED] ) ?
+					$paramSettings[self::PARAM_REQUIRED] : false;
+				if ( $required ) {
+					$desc .= $paramPrefix . "This parameter is required";
+				}
+
 				$type = isset( $paramSettings[self::PARAM_TYPE] ) ? $paramSettings[self::PARAM_TYPE] : null;
 				if ( isset( $type ) ) {
 					if ( isset( $paramSettings[self::PARAM_ISMULTI] ) ) {
@@ -329,7 +337,7 @@ abstract class ApiBase {
 						switch ( $type ) {
 							case 'namespace':
 								// Special handling because namespaces are type-limited, yet they are not given
-								$desc .= $paramPrefix . $prompt . implode( ', ', ApiBase::getValidNamespaces() );
+								$desc .= $paramPrefix . $prompt . implode( ', ', MWNamespace::getValidNamespaces() );
 								break;
 							case 'limit':
 								$desc .= $paramPrefix . "No more than {$paramSettings[self :: PARAM_MAX]} ({$paramSettings[self::PARAM_MAX2]} for bots) allowed";
@@ -479,18 +487,20 @@ abstract class ApiBase {
 	 * @return array
 	 */
 	public function extractRequestParams( $parseLimit = true ) {
-		if ( !isset( $this->mCachedRequestParams ) ) {
+		// Cache parameters, for performance and to avoid bug 24564.
+		if ( !isset( $this->mParamCache[$parseLimit] ) ) {
 			$params = $this->getFinalParams();
-			$this->mCachedRequestParams = array();
+			$results = array();
 
 			if ( $params ) { // getFinalParams() can return false
 				foreach ( $params as $paramName => $paramSettings ) {
-					$this->mCachedRequestParams[$paramName] = $this->getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
+					$results[$paramName] = $this->getParameterFromSettings(
+						$paramName, $paramSettings, $parseLimit );
 				}
 			}
+			$this->mParamCache[$parseLimit] = $results;
 		}
-
-		return $this->mCachedRequestParams;
+		return $this->mParamCache[$parseLimit];
 	}
 
 	/**
@@ -524,24 +534,10 @@ abstract class ApiBase {
 	}
 
 	/**
-	 * Returns an array of the namespaces (by integer id) that exist on the
-	 * wiki. Used primarily in help documentation.
-	 * @return array
+	 * @deprecated use MWNamespace::getValidNamespaces()
 	 */
 	public static function getValidNamespaces() {
-		static $mValidNamespaces = null;
-
-		if ( is_null( $mValidNamespaces ) ) {
-			global $wgCanonicalNamespaceNames;
-			$mValidNamespaces = array( NS_MAIN ); // Doesn't appear in $wgCanonicalNamespaceNames for some reason
-			foreach ( array_keys( $wgCanonicalNamespaceNames ) as $ns ) {
-				if ( $ns > 0 ) {
-					$mValidNamespaces[] = $ns;
-				}
-			}
-		}
-
-		return $mValidNamespaces;
+		return MWNamespace::getValidNamespaces();
 	}
 
 	/**
@@ -621,12 +617,14 @@ abstract class ApiBase {
 			$type = gettype( $paramSettings );
 			$dupes = false;
 			$deprecated = false;
+			$required = false;
 		} else {
 			$default = isset( $paramSettings[self::PARAM_DFLT] ) ? $paramSettings[self::PARAM_DFLT] : null;
 			$multi = isset( $paramSettings[self::PARAM_ISMULTI] ) ? $paramSettings[self::PARAM_ISMULTI] : false;
 			$type = isset( $paramSettings[self::PARAM_TYPE] ) ? $paramSettings[self::PARAM_TYPE] : null;
 			$dupes = isset( $paramSettings[self::PARAM_ALLOW_DUPLICATES] ) ? $paramSettings[self::PARAM_ALLOW_DUPLICATES] : false;
 			$deprecated = isset( $paramSettings[self::PARAM_DEPRECATED] ) ? $paramSettings[self::PARAM_DEPRECATED] : false;
+			$required = isset( $paramSettings[self::PARAM_REQUIRED] ) ? $paramSettings[self::PARAM_REQUIRED] : false;
 
 			// When type is not given, and no choices, the type is the same as $default
 			if ( !isset( $type ) ) {
@@ -649,7 +647,7 @@ abstract class ApiBase {
 			$value = $this->getMain()->getRequest()->getVal( $encParamName, $default );
 
 			if ( isset( $value ) && $type == 'namespace' ) {
-				$type = ApiBase::getValidNamespaces();
+				$type = MWNamespace::getValidNamespaces();
 			}
 		}
 
@@ -664,7 +662,11 @@ abstract class ApiBase {
 				switch ( $type ) {
 					case 'NULL': // nothing to do
 						break;
-					case 'string': // nothing to do
+					case 'string':
+						if ( $value === '' ) {
+							$this->dieUsageMsg( array( 'missingparam', $paramName ) );
+						}
+
 						break;
 					case 'integer': // Force everything using intval() and optionally validate limits
 
@@ -693,7 +695,7 @@ abstract class ApiBase {
 						$min = isset( $paramSettings[self::PARAM_MIN] ) ? $paramSettings[self::PARAM_MIN] : 0;
 						if ( $value == 'max' ) {
 							$value = $this->getMain()->canApiHighLimits() ? $paramSettings[self::PARAM_MAX2] : $paramSettings[self::PARAM_MAX];
-							$this->getResult()->addValue( 'limits', $this->getModuleName(), $value );
+							$this->getResult()->setParsedLimit( $this->getModuleName(), $value );
 						} else {
 							$value = intval( $value );
 							$this->validateLimit( $paramName, $value, $min, $paramSettings[self::PARAM_MAX], $paramSettings[self::PARAM_MAX2] );
@@ -716,8 +718,8 @@ abstract class ApiBase {
 						break;
 					case 'user':
 						if ( !is_array( $value ) ) {
-                            $value = array( $value );
-                        }
+							$value = array( $value );
+						}
 
 						foreach ( $value as $key => $val ) {
 							$title = Title::makeTitleSafe( NS_USER, $val );
@@ -728,9 +730,9 @@ abstract class ApiBase {
 						}
 
 						if ( !$multi ) {
-                            $value = $value[0];
-                        }
-                        break;
+							$value = $value[0];
+						}
+						break;
 					default:
 						ApiBase::dieDebug( __METHOD__, "Param $encParamName's type is unknown - $type" );
 				}
@@ -745,6 +747,8 @@ abstract class ApiBase {
 			if ( $deprecated && $value !== false ) {
 				$this->setWarning( "The $encParamName parameter has been deprecated." );
 			}
+		} else if ( $required ) {
+			$this->dieUsageMsg( array( 'missingparam', $paramName ) );
 		}
 
 		return $value;
@@ -1121,6 +1125,15 @@ abstract class ApiBase {
 	 */
 	public function getPossibleErrors() {
 		$ret = array();
+
+		$params = $this->getFinalParams();
+		if ( $params ) {
+			foreach ( $params as $paramName => $paramSettings ) {
+				if ( isset( $paramSettings[ApiBase::PARAM_REQUIRED] ) ) {
+					$ret[] = array( 'missingparam', $paramName );
+				}
+			}
+		}
 
 		if ( $this->mustBePosted() ) {
 			$ret[] = array( 'mustbeposted', $this->getModuleName() );

@@ -1,9 +1,13 @@
 <?php
 
 /**
- * Mysql update list and mysql-specific update functions
+ * Mysql update list and mysql-specific update functions.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
  */
 class MysqlUpdater extends DatabaseUpdater {
+	
 	protected function getCoreUpdateList() {
 		return array(
 			'1.2' => array(
@@ -154,6 +158,8 @@ class MysqlUpdater extends DatabaseUpdater {
 				array( 'add_field', 'interwiki',     'iw_api',           'patch-iw_api_and_wikiid.sql' ),
 				array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix',  'patch-kill-iwl_prefix.sql' ),
 				array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix_from_title', 'patch-kill-iwl_pft.sql' ),
+				array( 'add_field', 'categorylinks', 'cl_collation', 'patch-categorylinks-better-collation.sql' ),
+				array( 'do_collation_update' ),
 			),
 		);
 	}

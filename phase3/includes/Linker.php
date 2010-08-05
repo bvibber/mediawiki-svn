@@ -112,7 +112,7 @@ class Linker {
 			$colour = 'mw-redirect';
 		} elseif ( $threshold > 0 &&
 			   $t->exists() && $t->getLength() < $threshold &&
-			   MWNamespace::isContent( $t->getNamespace() ) ) {
+			   $t->isContentPage() ) {
 			# Page is a stub
 			$colour = 'stub';
 		}
@@ -266,14 +266,10 @@ class Linker {
 				$classes[] = 'extiw';
 			}
 
-			# Note that redirects never count as stubs here.
-			if ( !in_array( 'broken', $options ) && $target->isRedirect() ) {
-				$classes[] = 'mw-redirect';
-			} elseif( $target->isContentPage() ) {
-				# Check for stub.
-				$threshold = $wgUser->getOption( 'stubthreshold' );
-				if( $threshold > 0 and $target->exists() and $target->getLength() < $threshold ) {
-					$classes[] = 'stub';
+			if ( !in_array( 'broken', $options ) ) { # Avoid useless calls to LinkCache (see r50387)
+				$colour = $this->getLinkColour( $target, $wgUser->getStubThreshold() );
+				if ( $colour !== '' ) {
+					$classes[] = $colour; # mw-redirect or stub
 				}
 			}
 			if( $classes != array() ) {
@@ -335,10 +331,13 @@ class Linker {
  	 * @param $trail String
  	 * @param $prefix String
  	 * @return string HTML of link
+ 	 * @deprecated
 	 */
 	function makeSizeLinkObj( $size, $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		global $wgUser;
-		$threshold = intval( $wgUser->getOption( 'stubthreshold' ) );
+		wfDeprecated( __METHOD__ );
+		
+		$threshold = $wgUser->getStubThreshold();
 		$colour = ( $size < $threshold ) ? 'stub' : '';
 		// FIXME: replace deprecated makeColouredLinkObj by link()
 		return $this->makeColouredLinkObj( $nt, $colour, $text, $query, $trail, $prefix );
@@ -583,7 +582,7 @@ class Linker {
 	}
 
 	function makeThumbLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "" ) {
-		global $wgStylePath, $wgContLang;
+		global $wgStylePath;
 		$exists = $file && $file->exists();
 
 		# Shortcuts
@@ -684,11 +683,11 @@ class Linker {
 	 * @return String
 	 */
 	public function makeBrokenImageLinkObj( $title, $text = '', $query = '', $trail = '', $prefix = '', $time = false ) {
-		global $wgEnableUploads, $wgUploadNavigationUrl;
+		global $wgEnableUploads, $wgUploadMissingFileUrl;
 		if( $title instanceof Title ) {
 			wfProfileIn( __METHOD__ );
 			$currentExists = $time ? ( wfFindFile( $title ) != false ) : false;
-			if( ( $wgUploadNavigationUrl || $wgEnableUploads ) && !$currentExists ) {
+			if( ( $wgUploadMissingFileUrl || $wgEnableUploads ) && !$currentExists ) {
 				if( $text == '' )
 					$text = htmlspecialchars( $title->getPrefixedText() );
 
@@ -724,13 +723,13 @@ class Linker {
 	 * @return String: urlencoded URL
 	 */
 	protected function getUploadUrl( $destFile, $query = '' ) {
-		global $wgUploadNavigationUrl;
+		global $wgUploadMissingFileUrl;
 		$q = 'wpDestFile=' . $destFile->getPartialUrl();
 		if( $query != '' )
 			$q .= '&' . $query;
 
-		if( $wgUploadNavigationUrl ) {
-			return wfAppendQuery( $wgUploadNavigationUrl, $q );
+		if( $wgUploadMissingFileUrl ) {
+			return wfAppendQuery( $wgUploadMissingFileUrl, $q );
 		} else {
 			$upload = SpecialPage::getTitleFor( 'Upload' );
 			return $upload->getLocalUrl( $q );
@@ -1931,7 +1930,7 @@ class Linker {
 	 * @param $prefix String: Optional prefix
 	 */
 	function makeStubLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		wfDeprecated( __METHOD__ );
+		//wfDeprecated( __METHOD__ );
 		return $this->makeColouredLinkObj( $nt, 'stub', $text, $query, $trail, $prefix );
 	}
 
@@ -1950,6 +1949,7 @@ class Linker {
 	 * @param $prefix String: Optional prefix
 	 */
 	function makeColouredLinkObj( $nt, $colour, $text = '', $query = '', $trail = '', $prefix = '' ) {
+		//wfDeprecated( __METHOD__ );
 		if($colour != ''){
 			$style = $this->getInternalLinkAttributesObj( $nt, $text, $colour );
 		} else $style = '';

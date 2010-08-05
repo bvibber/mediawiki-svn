@@ -2,6 +2,9 @@
 
 /**
  * Base class for DBMS-specific installation helper classes.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
  */
 abstract class DatabaseInstaller {
 	
@@ -395,8 +398,9 @@ abstract class DatabaseInstaller {
 		foreach( $rows as $row ) {
 			$row = preg_replace( '/^\s*([^#]*?)\s*(#.*)?$/', '\\1', $row ); // strip comments - whee
 			if ( $row == "" ) continue;
+			$row .= "||";
 			$interwikis[] = array_combine(
-				array( 'iw_prefix', 'iw_url', 'iw_local' ),
+				array( 'iw_prefix', 'iw_url', 'iw_local', 'iw_api', 'iw_wikiid' ),
 				explode( '|', $row )
 			);
 		}

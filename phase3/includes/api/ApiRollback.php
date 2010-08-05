@@ -77,8 +77,14 @@ class ApiRollback extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'title' => null,
-			'user' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'token' => null,
 			'summary' => null,
 			'markbot' => false,
@@ -114,8 +120,6 @@ class ApiRollback extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'title' ),
-			array( 'missingparam', 'user' ),
 			array( 'invalidtitle', 'title' ),
 			array( 'notanarticle' ),
 			array( 'invaliduser', 'user' ),
@@ -132,10 +136,6 @@ class ApiRollback extends ApiBase {
 		}
 
 		$params = $this->extractRequestParams();
-
-		if ( !isset( $params['user'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
-		}
 
 		// We need to be able to revert IPs, but getCanonicalName rejects them
 		$this->mUser = User::isIP( $params['user'] )
@@ -154,9 +154,6 @@ class ApiRollback extends ApiBase {
 		}
 
 		$params = $this->extractRequestParams();
-		if ( !isset( $params['title'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'title' ) );
-		}
 
 		$this->mTitleObj = Title::newFromText( $params['title'] );
 

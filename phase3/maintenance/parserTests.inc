@@ -61,9 +61,7 @@ class ParserTest {
 	 * Sets terminal colorization and diff/quick modes depending on OS and
 	 * command-line options (--color and --quick).
 	 */
-	public function ParserTest() {
-		global $options;
-
+	public function ParserTest( $options = array() ) {
 		# Only colorize output if stdout is a terminal.
 		$this->color = !wfIsWindows() && posix_isatty( 1 );
 
@@ -103,7 +101,7 @@ class ParserTest {
 			$this->regex = '';
 		}
 
-		$this->setupRecorder();
+		$this->setupRecorder( $options );
 		$this->keepUploads = isset( $options['keep-uploads'] );
 
 		if ( isset( $options['seed'] ) ) {
@@ -116,10 +114,11 @@ class ParserTest {
 		$this->functionHooks = array();
 	}
 
-	public function setupRecorder() {
-		global $options;
+	public function setupRecorder ( $options ) {
 		if ( isset( $options['record'] ) ) {
 			$this->recorder = new DbTestRecorder( $this );
+			$this->recorder->version = isset( $options['setversion'] ) ?	
+					$options['setversion'] : SpecialVersion::getVersion();
 		} elseif ( isset( $options['compare'] ) ) {
 			$this->recorder = new DbTestPreviewer( $this );
 		} elseif ( isset( $options['upload'] ) ) {
@@ -673,21 +672,33 @@ class ParserTest {
 		$db->insert( 'interwiki', array(
 			array( 'iw_prefix' => 'wikipedia',
 				   'iw_url'    => 'http://en.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 0 ),
 			array( 'iw_prefix' => 'meatball',
 				   'iw_url'    => 'http://www.usemod.com/cgi-bin/mb.pl?$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 0 ),
 			array( 'iw_prefix' => 'zh',
 				   'iw_url'    => 'http://zh.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			array( 'iw_prefix' => 'es',
 				   'iw_url'    => 'http://es.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			array( 'iw_prefix' => 'fr',
 				   'iw_url'    => 'http://fr.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			array( 'iw_prefix' => 'ru',
 				   'iw_url'    => 'http://ru.wikipedia.org/wiki/$1',
+				   'iw_api'    => '',
+				   'iw_wikiid' => '',
 				   'iw_local'  => 1 ),
 			) );
 
@@ -1259,7 +1270,6 @@ class DbTestPreviewer extends TestRecorder  {
 	 * and all that fun stuff
 	 */
 	function start() {
-		global $wgDBtype;
 		parent::start();
 
 		if ( ! $this->db->tableExists( 'testrun' )
@@ -1427,12 +1437,14 @@ class DbTestPreviewer extends TestRecorder  {
 }
 
 class DbTestRecorder extends DbTestPreviewer  {
+	var $version;
+
 	/**
 	 * Set up result recording; insert a record for the run with the date
 	 * and all that fun stuff
 	 */
 	function start() {
-		global $wgDBtype, $options;
+		global $wgDBtype;
 		$this->db->begin();
 
 		if ( ! $this->db->tableExists( 'testrun' )
@@ -1453,8 +1465,7 @@ class DbTestRecorder extends DbTestPreviewer  {
 		$this->db->insert( 'testrun',
 			array(
 				'tr_date'        => $this->db->timestamp(),
-				'tr_mw_version'  => isset( $options['setversion'] ) ?
-					$options['setversion'] : SpecialVersion::getVersion(),
+				'tr_mw_version'  => $this->version,
 				'tr_php_version' => phpversion(),
 				'tr_db_version'  => $this->db->getServerVersion(),
 				'tr_uname'       => php_uname()

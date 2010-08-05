@@ -68,9 +68,12 @@ class ApiLogin extends ApiBase {
 		}
 
 		$loginForm = new LoginForm( $req );
+
+		global $wgCookiePrefix;
+
 		switch ( $authRes = $loginForm->authenticateUserData() ) {
 			case LoginForm::SUCCESS:
-				global $wgUser, $wgCookiePrefix;
+				global $wgUser;
 
 				$wgUser->setOption( 'rememberpassword', 1 );
 				$wgUser->setCookies();
@@ -89,7 +92,6 @@ class ApiLogin extends ApiBase {
 				break;
 
 			case LoginForm::NEED_TOKEN:
-				global $wgCookiePrefix;
 				$result['result'] = 'NeedToken';
 				$result['token'] = $loginForm->getLoginToken();
 				$result['cookieprefix'] = $wgCookiePrefix;

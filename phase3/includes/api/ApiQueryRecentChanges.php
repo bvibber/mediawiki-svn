@@ -108,6 +108,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 	 * Generates and outputs the result of this query based upon the provided parameters.
 	 */
 	public function execute() {
+		global $wgUser;
 		/* Get the parameters of the request. */
 		$params = $this->extractRequestParams();
 
@@ -141,7 +142,6 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			}
 
 			// Check permissions
-			global $wgUser;
 			if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ) {
 				if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 					$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
@@ -197,9 +197,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			/* Set up internal members based upon params. */
 			$this->initProperties( $prop );
 
-			global $wgUser;
-			if ( $this->fld_patrolled && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() )
-			{
+			if ( $this->fld_patrolled && !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 			}
 
@@ -220,8 +218,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->addFieldsIf( 'rc_log_type', $this->fld_loginfo );
 			$this->addFieldsIf( 'rc_log_action', $this->fld_loginfo );
 			$this->addFieldsIf( 'rc_params', $this->fld_loginfo );
-			if ( $this->fld_redirect || isset( $show['redirect'] ) || isset( $show['!redirect'] ) )
-			{
+			if ( $this->fld_redirect || isset( $show['redirect'] ) || isset( $show['!redirect'] ) ) {
 				$this->addTables( 'page' );
 				$this->addJoinConds( array( 'page' => array( 'LEFT JOIN', array( 'rc_namespace=page_namespace', 'rc_title=page_title' ) ) ) );
 				$this->addFields( 'page_is_redirect' );

@@ -620,7 +620,7 @@ $1',
 'dberrortextcl'        => '데이터베이스 쿼리 구문 오류가 발생했습니다.
 마지막으로 요청한 데이터베이스 쿼리는 "$2" 함수에서 쓰인
 "$1"
-입니다. 
+입니다.
 데이터베이스는 "$3: $4" 오류를 일으켰습니다.',
 'laggedslavemode'      => "'''주의:''' 문서가 최근에 바뀐 내용이 아닐 수도 있습니다.",
 'readonly'             => '데이터베이스 잠김',
@@ -1451,7 +1451,7 @@ $1",
 'right-blockemail'            => '다른 사용자가 이메일을 보내지 못하도록 차단',
 'right-hideuser'              => '사용자 이름을 차단하고 숨김',
 'right-ipblock-exempt'        => 'IP 차단, 자동 차단, 광역 차단을 무시',
-'right-proxyunbannable'       => '프록시 자동 차단을 우회',
+'right-proxyunbannable'       => '프록시 자동 차단을 적용하지 않음',
 'right-unblockself'           => '자기 자신을 차단 해제하기',
 'right-protect'               => '보호 수준 변경 및 보호된 문서 편집',
 'right-editprotected'         => '보호된 문서 편집 (연쇄적 보호 제외)',
@@ -1656,7 +1656,6 @@ $1",
 파일을 업로드하길 원하신다면 뒤로 돌아가서 다른 이름으로 시도해 주시기 바랍니다. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => '{{PLURAL:$1}}현재 올리고 있는 파일이 아래 파일과 중복됩니다:',
 'file-deleted-duplicate'      => '이 파일과 같은 파일 ([[$1]])이 이전에 삭제된 적이 있습니다. 파일을 다시 올리기 전에 문서의 삭제 기록을 확인해 주시기 바랍니다.',
-'successfulupload'            => '올리기 성공',
 'uploadwarning'               => '올리기 경고',
 'uploadwarning-text'          => '아래의 파일 설명을 수정하고 다시 시도해 주세요.',
 'savefile'                    => '파일 저장',
@@ -1699,11 +1698,14 @@ JD # 제놉틱
 MGP # 펜탁스
 PICT # 기타
  #</pre> <!-- 이 줄은 그대로 두십시오. -->',
-'upload-successful-msg'       => '당신이 올린 파일이 여기 있습니다: $1',
+'upload-success-subj'         => '올리기 성공',
+'upload-success-msg'          => '파일을 [$2]에서 성공적으로 올렸습니다. 당신이 올린 파일이 여기 있습니다: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => '올리기 실패',
 'upload-failure-msg'          => '파일을 올리는 중 문제가 발생했습니다:
 
 $1',
+'upload-warning-subj'         => '파일 올리기 경고',
+'upload-warning-msg'          => '[$2]에서 파일을 올리는 데 문제가 있습니다. 이 문제를 해결하려면 [[Special:Upload/stash/$1|올리기 양식]]으로 되돌아가십시오.',
 
 'upload-proto-error'        => '잘못된 프로토콜',
 'upload-proto-error-text'   => '파일을 URL로 올리려면 <code>http://</code>이나 <code>ftp://</code>로 시작해야 합니다.',
@@ -1789,7 +1791,7 @@ URL이 맞고 해당 웹사이트가 작동하는지 확인해주세요.',
 'imagelinks'                        => '파일 링크',
 'linkstoimage'                      => '다음 $1개의 문서가 이 파일을 사용하고 있습니다:',
 'linkstoimage-more'                 => '$1개 이상의 문서가 이 파일을 가리키고 있습니다.
-다음 목록은 이 파일을 가리키는 처음 $1개 문서만 보여주고 있습니다. 
+다음 목록은 이 파일을 가리키는 처음 $1개 문서만 보여주고 있습니다.
 이 파일을 가리키는 모든 문서를 보려면 [[Special:WhatLinksHere/$2|여기]]를 참고해 주십시오.',
 'nolinkstoimage'                    => '이 파일을 사용하는 문서가 없습니다.',
 'morelinkstoimage'                  => '이 파일이 쓰이고 있는 문서 목록 [[Special:WhatLinksHere/$1|더 보기]].',
@@ -2274,7 +2276,7 @@ $UNWATCHURL
 # Restrictions (nouns)
 'restriction-edit'   => '편집',
 'restriction-move'   => '이동',
-'restriction-create' => '만들기',
+'restriction-create' => '생성',
 'restriction-upload' => '올리기',
 
 # Restriction levels
@@ -2589,6 +2591,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'immobile-source-page'         => '이 문서는 이동할 수 없습니다.',
 'immobile-target-page'         => '새 이름으로 옮길 수 없습니다.',
 'imagenocrossnamespace'        => '파일을 파일이 아닌 이름공간으로 옮길 수 없습니다.',
+'nonfile-cannot-move-to-file'  => '파일이 아닌 문서를 파일 이름공간으로 옮길 수 없습니다.',
 'imagetypemismatch'            => '새 파일의 확장자가 원래의 확장자와 일치하지 않습니다.',
 'imageinvalidfilename'         => '새 파일 이름이 잘못되었습니다.',
 'fix-double-redirects'         => '기존 이름을 가리키는 넘겨주기를 갱신',
@@ -2761,7 +2764,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'tooltip-recreate'                => '문서를 편집하는 중 삭제되어도 새로 만들기',
 'tooltip-upload'                  => '파일 올리기 시작',
 'tooltip-rollback'                => '"되돌리기" 기능을 사용하면 이 문서에 대한 마지막 기여자의 편집을 모두 되돌릴 수 있습니다.',
-'tooltip-undo'                    => '"편집 취소" 기능을 사용하면 이 편집이 되돌려지고, 차이보기 기능이 미리보기 형식으로 나타납니다. 
+'tooltip-undo'                    => '"편집 취소" 기능을 사용하면 이 편집이 되돌려지고, 차이보기 기능이 미리보기 형식으로 나타납니다.
 편집 요약에 이 편집을 왜 되돌리는지에 대한 이유를 쓸 수 있습니다.',
 'tooltip-preferences-save'        => '환경 설정 저장하기',
 'tooltip-summary'                 => '짧은 편집 요약을 적어주세요',
@@ -2856,7 +2859,7 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'patrol-log-header'    => '이 기록은 검토된 문서에 대한 기록입니다.',
 'patrol-log-line'      => '$2 문서의 $1을 검토함 $3',
 'patrol-log-auto'      => '(자동)',
-'patrol-log-diff'      => '$1판',
+'patrol-log-diff'      => '제 $1번 판',
 'log-show-hide-patrol' => '검토 기록을 $1',
 
 # Image deletion

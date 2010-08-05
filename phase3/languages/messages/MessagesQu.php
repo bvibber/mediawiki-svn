@@ -748,7 +748,7 @@ Kay willay pantasqa kaptinqa, qhawarparillay.',
 'resetpass-no-info'         => "Yaykunaykim tiyan kay p'anqata chiqalla aypanaykipaq.",
 'resetpass-submit-loggedin' => 'Yaykuna rimata hukchay',
 'resetpass-submit-cancel'   => 'Tatiy',
-'resetpass-wrong-oldpass'   => "Mit'alla icha kunan yaykuna rimaqa manam allinchu. 
+'resetpass-wrong-oldpass'   => "Mit'alla icha kunan yaykuna rimaqa manam allinchu.
 Yaykuna rimaykitaqa aypalla hukcharqunkiñachá icha huk mit'alla yaykuna rimata mañakurqunkiñachá.",
 'resetpass-temp-password'   => "Mit'alla yaykuna rima:",
 
@@ -1330,6 +1330,8 @@ Huk ruraqkunata ruraqpa p'anqaykimanta icha rimachinaykimanta qamman qillqamusun
 'prefs-advancedsearchoptions'   => 'Ñawparikusqa akllanakuna',
 'prefs-advancedwatchlist'       => 'Ñawparikusqa akllanakuna',
 'prefs-displayrc'               => 'Akllanakunata rikuchiy',
+'prefs-displaysearchoptions'    => 'Akllanakunata rikuchiy',
+'prefs-displaywatchlist'        => 'Akllanakunata rikuchiy',
 'prefs-diffs'                   => 'Wakin kaykuna',
 
 # User rights
@@ -1440,6 +1442,7 @@ Huk ruraqkunata ruraqpa p'anqaykimanta icha rimachinaykimanta qamman qillqamusun
 'right-override-export-depth' => "P'anqakunata hawaman quy, t'inkisqa p'anqakunatapas pichqa ñiqin t'inkipayasqakama",
 'right-sendemail'             => 'Huk ruraqkunaman e-chaskita kachay',
 'right-revisionmove'          => 'Musuqchasqakunata astay',
+'right-selenium'              => 'Silinyu llanchiykunata purichiy',
 
 # User rights log
 'rightslog'      => 'Ruraqpa hayñinkunap hukyasqankuna',
@@ -1609,7 +1612,6 @@ Kay churkunayki rikcha hunt'a chhikan kayniyuq kaptinqa, chay hunt'atam churkuy,
 'fileexists-shared-forbidden' => "Kay sutiyuq willañiqiqa kachkañam rakinakusqa willañiqi qullqapi. Ama hina kaspa, churkuyta munaspaykiraq, ñawpaq p'anqaman kutispa willañiqiykita huk sutiwan churkuy. [[File:$1|thumb|center|$1]]",
 'file-exists-duplicate'       => 'Kay willañiqiqa kay qatiq {{PLURAL:$1|willañiqip|willañiqikunap}} iskaychasqanmi:',
 'file-deleted-duplicate'      => 'Kay hinalla ([[$1]]) willañiqiña qullusqam karqa. Qhawariy imarayku qullusqa karqa, manaraq musuqmanta churkuykachaspa.',
-'successfulupload'            => 'Aypalla churkusqañam',
 'uploadwarning'               => 'Willañiqi churkuymanta paqtataq niy',
 'uploadwarning-text'          => 'Ama hina kaspa, kay qatiqpi kaq willañiqimanta willaykunata hukchaspa musuqmanta ruraykachay.',
 'savefile'                    => 'Willañiqita waqaychay',
@@ -1636,11 +1638,14 @@ Kay churkunayki rikcha hunt'a chhikan kayniyuq kaptinqa, chay hunt'atam churkuy,
 Hamut'arinaykim tiyanman, kay willañiqita musuqmanta churkuyqa allinchu mana allinchu chaylla.
 Kay qatiqpiqa willañiqimanta qulluy hallch'atam rikunki:",
 'filename-bad-prefix'         => "Churkunayasqayki willañiqip sutinqa '''\"\$1\"''' nisqawanmi qallarin. Chay sutinqa iliktruniku rikcha hap'inap kamasqanmanmi rikch'akun. Ama hina kaspa, willañiqiykita astawan t'iktuq sutinta akllay.",
-'upload-successful-msg'       => 'Churkusqaykiqa kaypim tarinalla: $1',
+'upload-success-subj'         => 'Aypalla churkusqañam',
+'upload-success-msg'          => '[$2]-manta churkusqaykiqa aypasqam. Kaypim tarinalla: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Churkuy sasachakuy',
 'upload-failure-msg'          => 'Churkuyniykiwanqa sasachakuymi karqan:
 
 $1',
+'upload-warning-subj'         => 'Willañiqi churkuymanta paqtataq niy',
+'upload-warning-msg'          => "[$2]-manta churkuyniykiwanqa sasachakuymi karqan. [[Special:Upload/stash/$1|Churkunapaq hunt'ana p'anqaman]] kutimuykiman kay sasachakuyta allinchanaykipaq.",
 
 'upload-proto-error'        => 'Tantari qillqaqa manam allinchu',
 'upload-proto-error-text'   => "Huk p'anqamanta willañiqita churkunapaqqa URL tiyaypa <code>http://</code> icha <code>ftp://</code> nisqawan qallarinanmi.",
@@ -2507,6 +2512,7 @@ Tukuna p\'anqaqa ("[[:$1]]") kachkañam. Astanapaq qulluyta munankichu?',
 'immobile-source-page'         => "Kay p'anqaqa manam astanallachu.",
 'immobile-target-page'         => 'Manam atinichu chay taripana sutiman astayta.',
 'imagenocrossnamespace'        => "Manam atinichu p'anqata astayta mana willañiqipaq suti k'itiman",
+'nonfile-cannot-move-to-file'  => "Manam atinichu mana willañiqi kaqta astayta willañiqipaq suti k'itiman",
 'imagetypemismatch'            => "Willañiqip musuq mast'arinanqa kay layapaq manam allinchu",
 'imageinvalidfilename'         => 'Taripana willañiqip sutinqa manam allinchu',
 'fix-double-redirects'         => 'Qallariy sutiman astamuq tukuy pusapunakunata musuqchay',

@@ -66,7 +66,7 @@ $namespaceAliases = array(
 	'Bildediskusjon' => NS_FILE_TALK,
 );
 
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 $linkTrail = '/^([æøåa-z]+)(.*)$/sDu';
 
 $dateFormats = array(
@@ -249,7 +249,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Overvåk sider jeg sletter',
 'tog-previewontop'            => 'Flytt forhåndsvisningen foran redigeringsboksen',
 'tog-previewonfirst'          => 'Vis forhåndsvisning ved første redigering av en side',
-'tog-nocache'                 => 'Skru av mellomlagring av sider («caching»)',
+'tog-nocache'                 => 'Deaktiver nettlesermellomlagring av sider («caching»)',
 'tog-enotifwatchlistpages'    => 'Send meg en e-post når sider på overvåkningslisten blir endret',
 'tog-enotifusertalkpages'     => 'Send meg en e-post ved endringer av brukerdiskusjonssiden min',
 'tog-enotifminoredits'        => 'Send meg en e-post også ved mindre sideendringer',
@@ -649,6 +649,7 @@ Ikke glem å endre [[Special:Preferences|innstillingene]] dine.',
 'gotaccount'                 => "Har du allerede et brukernavn? '''$1'''.",
 'gotaccountlink'             => 'Logg inn',
 'createaccountmail'          => 'per e-post',
+'createaccountreason'        => 'Årsak:',
 'badretype'                  => 'Passordene samsvarte ikke.',
 'userexists'                 => 'Brukernavnet er allerede i bruk. Velg et nytt.',
 'loginerror'                 => 'Innloggingsfeil',
@@ -899,9 +900,9 @@ Det siste loggelementet er oppgitt under som referanse:",
 'permissionserrorstext-withaction' => 'Du har ikke tillatelse til å $2 {{PLURAL:$1|på grunn av|av følgende grunner}}:',
 'recreate-moveddeleted-warn'       => "Advarsel: Du gjenskaper en side som tidligere har blitt slettet.'''
 
-Du burde vurdere hvorvidt det er passende å fortsette å redigere denne siden. 
+Du burde vurdere hvorvidt det er passende å fortsette å redigere denne siden.
 Slette- og flytteloggen for denne siden gjengis her:",
-'moveddeleted-notice'              => 'Denne siden har blitt slettet. 
+'moveddeleted-notice'              => 'Denne siden har blitt slettet.
 Slette- og flytteloggen vises nedenfor.',
 'log-fulllog'                      => 'Vis fullstendig logg',
 'edit-hook-aborted'                => 'Redigering avbrutt av en funksjon, uten forklaring.',
@@ -972,7 +973,7 @@ Forklaring: '''({{int:cur}})''' = forskjell fra nåværende revisjon, '''({{int:
 'rev-deleted-user'            => '(brukernavn fjernet)',
 'rev-deleted-event'           => '(fjernet loggoppføring)',
 'rev-deleted-user-contribs'   => '[brukernavn eller IP-adresse fjernet – redigeringen vises ikke blant bidragene]',
-'rev-deleted-text-permission' => "Denne revisjonen har blitt '''slettet'''. 
+'rev-deleted-text-permission' => "Denne revisjonen har blitt '''slettet'''.
 Det kan være detaljer i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} slettingsloggen].",
 'rev-deleted-text-unhide'     => "Denne sideversjonen har blitt '''slettet'''.
 Det kan være detaljer i [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} slettingsloggen].
@@ -1173,7 +1174,7 @@ Forsikre deg om at denne endringen vil opprettholde historisk sidekontinuitet.',
 'search-section'                   => '(avsnitt $1)',
 'search-suggest'                   => 'Mente du: $1',
 'search-interwiki-caption'         => 'Søsterprosjekt',
-'search-interwiki-default'         => '$1 resultat:',
+'search-interwiki-default'         => '$1-resultat:',
 'search-interwiki-more'            => '(mer)',
 'search-mwsuggest-enabled'         => 'med forslag',
 'search-mwsuggest-disabled'        => 'ingen forslag',
@@ -1243,6 +1244,7 @@ For å søke i alle, bruk prefikset ''all:'' (inkluderer diskusjonssider, maler,
 'contextlines'                  => 'Linjer per resultat',
 'contextchars'                  => 'Tegn per linje i resultatet',
 'stub-threshold'                => 'Grense for <span class="mw-stub-example">stubblenkeformatering</span>:',
+'stub-threshold-disabled'       => 'Deaktivert',
 'recentchangesdays'             => 'Antall dager som skal vises i siste endringer:',
 'recentchangesdays-max'         => '(maksimum $1 {{PLURAL:$1|dag|dager}})',
 'recentchangescount'            => 'Antall redigeringer som skal vises som standard:',
@@ -1604,7 +1606,6 @@ Om du fortsatt ønsker å laste opp fila, gå tilbake og last den opp under et n
 Om du fortsatt ønsker å laste opp fila, gå tilbake og last den opp under et nytt navn. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Denne filen er en dublett av følgende {{PLURAL:$1|fil|filer}}:',
 'file-deleted-duplicate'      => 'En fil identisk med denne filen ([[$1]]) har tidligere blitt slettet. Du bør sjekke denne filens slettehistorikk før du prøver å laste den opp på nytt.',
-'successfulupload'            => 'Opplastingen er gjennomført',
 'uploadwarning'               => 'Opplastingsadvarsel',
 'uploadwarning-text'          => 'Vennligst endre filbeskrivelsen nedenfor og prøv igjen.',
 'savefile'                    => 'Lagre fil',
@@ -1644,11 +1645,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # div.
  #</pre> <!-- leave this line exactly as it is -->',
-'upload-successful-msg'       => 'Din opplasting er tilgjengelig her: $1',
+'upload-success-subj'         => 'Opplastingen er gjennomført',
+'upload-success-msg'          => 'Din opplasting fra [$2] var vellykket. Den er tilgjengelig her: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Opplastingsproblem',
 'upload-failure-msg'          => 'Det oppsto et problem med opplastingen din:
 
 $1',
+'upload-warning-subj'         => 'Opplastingsadvarsel',
+'upload-warning-msg'          => 'Det oppsto et problem med opplastingen din fra [$2]. Du kan gå tilbake til [[Special:Upload/stash/$1|opplastingsskjemaet]] for å løse dette problemet.',
 
 'upload-proto-error'        => 'Gal protokoll',
 'upload-proto-error-text'   => 'Fjernopplasting behøver adresser som begynner med <code>http://</code> eller <code>ftp://</code>.',
@@ -2530,6 +2534,7 @@ Målsiden «[[:$1]]» finnes allerede. Vil du slette den så denne siden kan fly
 'immobile-source-page'         => 'Denne siden kan ikke flyttes.',
 'immobile-target-page'         => 'Kan ikke flytte til det navnet.',
 'imagenocrossnamespace'        => 'Kan ikke flytte filer til andre navnerom enn filnavnerommet',
+'nonfile-cannot-move-to-file'  => 'Kan ikke flytte ikke-filer til filnavnerom',
 'imagetypemismatch'            => 'Den nye filendelsen tilsvarer ikke filtypen',
 'imageinvalidfilename'         => 'Målnavnet er ugyldig',
 'fix-double-redirects'         => 'Oppdater omdirigeringer som fører til den gamle tittelen',

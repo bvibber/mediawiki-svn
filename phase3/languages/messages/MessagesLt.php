@@ -156,7 +156,7 @@ $magicWords = array(
 );
 
 $fallback8bitEncoding = 'windows-1257';
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $dateFormats = array(
 	'ymd time' => 'H:i',
@@ -605,7 +605,7 @@ Prašome pasirinkti kitą vardą.',
 'noname'                     => 'Jūs nesate nurodęs teisingo naudotojo vardo.',
 'loginsuccesstitle'          => 'Sėkmingai prisijungėte',
 'loginsuccess'               => "'''Dabar jūs prisijungęs prie {{SITENAME}} kaip „$1“.'''",
-'nosuchuser'                 => 'Nėra jokio naudotojo, turinčio vardą „$1“. 
+'nosuchuser'                 => 'Nėra jokio naudotojo, turinčio vardą „$1“.
 Naudotojų varduose skiriamos didžiosios ir mažosios raidės.
 Patikrinkite rašybą, arba [[Special:UserLogin/signup|sukurkite naują paskyrą]].',
 'nosuchusershort'            => 'Nėra jokio naudotojo, pavadinto „<nowiki>$1</nowiki>“. Patikrinkite rašybą.',
@@ -1541,7 +1541,7 @@ Prašome pasirinkti kitą vardą.",
 'fileexists-thumbnail-yes'    => "Failas turbūt yra sumažinto dydžio failas ''(miniatiūra)''. [[$1|thumb]]
 Prašome peržiūrėti failą '''<tt>[[:$1]]</tt>'''.
 Jeigu tai yra toks pats pradinio dydžio paveikslėlis, tai įkelti papildomos miniatūros nereikia.",
-'file-thumbnail-no'           => "Failo pavadinimas prasideda  '''<tt>$1</tt>'''. 
+'file-thumbnail-no'           => "Failo pavadinimas prasideda  '''<tt>$1</tt>'''.
 Atrodo, kad yra sumažinto dydžio paveikslėlis ''(miniatiūra)''.
 Jei jūs turite šį paveisklėlį pilna raiška, įkelkite šitą, priešingu atveju prašome pakeisti failo pavadinimą.",
 'fileexists-forbidden'        => 'Failas tokiu pačiu vardu jau egzistuoja ir negali būti perrašytas;
@@ -1550,7 +1550,6 @@ prašome eiti atgal ir įkelti šį failą kitu vardu. [[File:$1|thumb|center|$1
 Jei visvien norite įkelti savo failą, prašome eiti atgal ir įkelti šį failą kitu vardu. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Šis failas yra {{PLURAL:$1|šio failo|šių failų}} dublikatas:',
 'file-deleted-duplicate'      => 'Failas, identiškas šiam failui ([[$1]]), seniau buvo ištrintas. Prieš įkeldami jį vėl patikrinkite šio failo ištrynimo istoriją.',
-'successfulupload'            => 'Įkelta sėkmingai',
 'uploadwarning'               => 'Dėmesio',
 'uploadwarning-text'          => 'Prašome pakeisti failo aprašymą ir bandykite dar kartą.',
 'savefile'                    => 'Išsaugoti failą',
@@ -1578,7 +1577,8 @@ Patikrinkite ''file_uploads'' nustatą.",
 Jūs turėtumėte nuspręsti, ar verta toliau įkeldinėti šį failą.
 Šio failo šalinimų istorija yra pateikta dėl patogumo:",
 'filename-bad-prefix'         => "Jūsų įkeliamas failas prasideda su '''„$1“''', bet tai yra neapibūdinantis pavadinimas, dažniausiai priskirtas skaitmeninių kamerų. Prašome suteikti labiau apibūdinantį pavadinimą savo failui.",
-'upload-successful-msg'       => 'Jūsų įkėlimą galima rasti čia: $1',
+'upload-success-subj'         => 'Įkelta sėkmingai',
+'upload-success-msg'          => 'Jūsų įkėlimą galima rasti čia: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Įkėlimo problema',
 'upload-failure-msg'          => 'Įvyko įkėlimo problema:
 
@@ -3210,8 +3210,8 @@ Prašome patvirtinti, kad tikrai norite iš naujo sukurti puslapį.",
 'watchlistedit-noitems'        => 'Jūsų stebimųjų sąraše nėra jokių puslapių.',
 'watchlistedit-normal-title'   => 'Redaguoti stebimųjų sąrašą',
 'watchlistedit-normal-legend'  => 'Šalinti puslapius iš stebimųjų sąrašo',
-'watchlistedit-normal-explain' => 'Žemiau yra rodomi puslapiai jūsų stebimųjų sąraše. 
-Norėdami pašalinti puslapį, prie jo uždėkite varnelė ir paspauskite „{{int:Watchlistedit-normal-submit}}“. 
+'watchlistedit-normal-explain' => 'Žemiau yra rodomi puslapiai jūsų stebimųjų sąraše.
+Norėdami pašalinti puslapį, prie jo uždėkite varnelė ir paspauskite „{{int:Watchlistedit-normal-submit}}“.
 Jūs taip pat galite [[Special:Watchlist/raw|redaguoti grynąjį stebimųjų sąrašą]].',
 'watchlistedit-normal-submit'  => 'Šalinti puslapius',
 'watchlistedit-normal-done'    => '$1 {{PLURAL:$1|puslapis buvo pašalintas|puslapiai buvo pašalinti|puslapių buvo pašalinta}} iš jūsų stebimųjų sąrašo:',

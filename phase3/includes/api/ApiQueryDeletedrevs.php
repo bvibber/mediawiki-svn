@@ -113,7 +113,7 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 
 		if ( $limit == 'max' ) {
 			$limit = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
-			$this->getResult()->addValue( 'limits', $this->getModuleName(), $limit );
+			$this->getResult()->setParsedLimit( $this->getModuleName(), $limit );
 		}
 
 		$this->validateLimit( 'limit', $limit, 1, $userMax, $botMax );
@@ -208,7 +208,6 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			$title = Title::makeTitle( $row->ar_namespace, $row->ar_title );
 
 			if ( $fld_parsedcomment ) {
-				global $wgUser;
 				$rev['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->ar_comment, $title );
 			}
 			if ( $fld_minor && $row->ar_minor_edit == 1 ) {

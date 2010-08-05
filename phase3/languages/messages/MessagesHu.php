@@ -57,7 +57,7 @@ $namespaceAliases = array(
 );
 
 $fallback8bitEncoding = "iso8859-2";
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'Kettős átirányítások', 'Dupla átirányítások' ),
@@ -624,7 +624,7 @@ Ez szoftverhiba miatt történhetett.
 Az utolsó adatbázis-lekérdezés a(z) „<tt>$2</tt>” függvényből történt, és a következő volt:
 <blockquote><tt>$1</tt></blockquote>
 Az adatbázis ezzel a hibával tért vissza: „<tt>$3: $4</tt>”.',
-'dberrortextcl'        => 'Szintaktikai hiba található az adatbázis-lekérdezésben. 
+'dberrortextcl'        => 'Szintaktikai hiba található az adatbázis-lekérdezésben.
 Az utolsó adatbázis-lekérdezés a(z) „$2” függvényből történt, és a következő volt:
 „$1”
 Az adatbázis ezzel a hibával tért vissza: „$3: $4”.',
@@ -1643,7 +1643,7 @@ Lásd még az [[Special:NewFiles|új fáljlok galériáját]]',
 'filetype-bad-ie-mime'        => 'A fájlt nem lehet feltölteni, mert az Internet Explorer „$1” típusúnak tekintené, ami tiltott és potenciálisan veszélyes fájltípus.',
 'filetype-unwanted-type'      => "A(z) '''„.$1”''' nem javasolt fájltípus.
 Az ajánlott {{PLURAL:$3|típus|típusok}}: $2.",
-'filetype-banned-type'        => "A(z) '''„.$1”''' nem megengedett fájltípus. 
+'filetype-banned-type'        => "A(z) '''„.$1”''' nem megengedett fájltípus.
 Az engedélyezett {{PLURAL:$3|típus|típusok}}: $2.",
 'filetype-missing'            => 'A fájlnak nincs kiterjesztése (pl. „.jpg”).',
 'empty-file'                  => 'Az elküldött fájl üres volt.',
@@ -1684,7 +1684,6 @@ Ha még mindig fel szeretnéd tölteni a fájlt, menj vissza, és adj meg egy ú
 'fileexists-shared-forbidden' => 'Egy ugyanilyen nevű fájl már létezik a közös fájlmegosztóban; kérlek menj vissza és válassz egy másik nevet a fájlnak, ha még mindig fel akarod tölteni! [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Ez a következő {{PLURAL:$1|fájl|fájlok}} duplikátuma:',
 'file-deleted-duplicate'      => 'Egy ehhez hasonló fájlt ([[$1]]) korábban már töröltek. Ellenőrizd a fájl törlési naplóját, mielőtt újra feltöltenéd.',
-'successfulupload'            => 'A feltöltés sikerült',
 'uploadwarning'               => 'Feltöltési figyelmeztetés',
 'uploadwarning-text'          => 'Kérlek módosítsd a fájl leírását alább, majd próbáld újra.',
 'savefile'                    => 'Fájl mentése',
@@ -1724,7 +1723,8 @@ JD # Jenoptik
 MGP # Pentax
 PICT # ált.
  #</pre> <!-- ezt a sort hagyd így -->',
-'upload-successful-msg'       => 'A feltöltésed itt érhető el: $1',
+'upload-success-subj'         => 'A feltöltés sikerült',
+'upload-success-msg'          => 'A feltöltésed itt érhető el: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Feltöltési hiba',
 'upload-failure-msg'          => 'Probléma történt a feltöltéseddel:
 

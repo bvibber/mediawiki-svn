@@ -143,7 +143,6 @@ class EditPage {
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
 				# If this is a system message, get the default text.
 				list( $message, $lang ) = $wgMessageCache->figureMessage( $wgContLang->lcfirst( $this->mTitle->getText() ) );
-				$wgMessageCache->loadAllMessages( $lang );
 				$text = wfMsgGetKey( $message, false, $lang, false );
 				if( wfEmptyMsg( $message, $text ) )
 					$text = $this->getPreloadedText( $preload );
@@ -765,7 +764,7 @@ class EditPage {
 	 * @return one of the constants describing the result
 	 */
 	function internalAttemptSave( &$result, $bot = false ) {
-		global $wgFilterCallback, $wgUser, $wgOut, $wgParser;
+		global $wgFilterCallback, $wgUser, $wgParser;
 		global $wgMaxArticleSize;
 
 		wfProfileIn( __METHOD__  );
@@ -1848,7 +1847,7 @@ INPUTS
 	 * @return string
 	 */
 	function getPreviewText() {
-		global $wgOut, $wgUser, $wgTitle, $wgParser, $wgLang, $wgContLang, $wgMessageCache;
+		global $wgOut, $wgUser, $wgParser, $wgMessageCache;
 
 		wfProfileIn( __METHOD__ );
 
@@ -2022,7 +2021,7 @@ INPUTS
 	 *
 	 * @param $match Text which triggered one or more filters
 	 */
-	function spamPage( $match = false ) {
+	static function spamPage( $match = false ) {
 		global $wgOut, $wgTitle;
 
 		$wgOut->setPageTitle( wfMsg( 'spamprotectiontitle' ) );
@@ -2031,8 +2030,9 @@ INPUTS
 
 		$wgOut->addHTML( '<div id="spamprotected">' );
 		$wgOut->addWikiMsg( 'spamprotectiontext' );
-		if ( $match )
+		if ( $match ) {
 			$wgOut->addWikiMsg( 'spamprotectionmatch', wfEscapeWikiText( $match ) );
+		}
 		$wgOut->addHTML( '</div>' );
 
 		$wgOut->returnToMain( false, $wgTitle );
@@ -2603,7 +2603,7 @@ INPUTS
 				return false;
 
 			case self::AS_SPAM_ERROR:
-				$this->spamPage( $resultDetails['spam'] );
+				self::spamPage( $resultDetails['spam'] );
 				return false;
 
 			case self::AS_BLOCKED_PAGE_FOR_USER:

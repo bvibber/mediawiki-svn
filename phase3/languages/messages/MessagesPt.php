@@ -78,7 +78,7 @@ $dateFormats = array(
 	'dmy both' => 'H\hi\m\i\n \d\e j \d\e F \d\e Y',
 );
 
-$separatorTransformTable = array(',' => ' ', '.' => ',' );
+$separatorTransformTable = array( ',' => ' ', '.' => ',' );
 $linkTrail = '/^([áâãàéêçíóôõúüa-z]+)(.*)$/sDu'; # Bug 21168
 
 $specialPageAliases = array(
@@ -310,7 +310,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Adicionar as páginas que eu eliminar às minhas páginas vigiadas',
 'tog-previewontop'            => 'Mostrar a antevisão antes da caixa de edição',
 'tog-previewonfirst'          => 'Mostrar a antevisão na primeira edição',
-'tog-nocache'                 => 'Desactivar cache de páginas',
+'tog-nocache'                 => 'Desactivar a cache de páginas do browser',
 'tog-enotifwatchlistpages'    => 'Notificar-me por correio electrónico quando uma página vigiada é alterada',
 'tog-enotifusertalkpages'     => 'Notificar-me por correio electrónico quando a minha página de discussão é editada',
 'tog-enotifminoredits'        => 'Notificar-me por correio electrónico também quando as edições forem menores',
@@ -717,6 +717,7 @@ Não se esqueça de personalizar as suas [[Special:Preferences|preferências na 
 'gotaccount'                 => "Já possui uma conta? '''$1'''.",
 'gotaccountlink'             => 'Autentique-se',
 'createaccountmail'          => 'por correio electrónico',
+'createaccountreason'        => 'Motivo:',
 'badretype'                  => 'As palavras-chave que introduziu não são iguais.',
 'userexists'                 => 'O nome de utilizador que introduziu já existe.
 Escolha um nome diferente.',
@@ -797,7 +798,7 @@ Para prosseguir, será necessário definir uma nova palavra-chave.',
 'resetpass-no-info'         => 'Precisa estar autenticado para aceder directamente a esta página.',
 'resetpass-submit-loggedin' => 'Alterar palavra-chave',
 'resetpass-submit-cancel'   => 'Cancelar',
-'resetpass-wrong-oldpass'   => 'Palavra-chave temporária ou actual inválida. 
+'resetpass-wrong-oldpass'   => 'Palavra-chave temporária ou actual inválida.
 Pode ter já alterado com sucesso a sua palavra-chave ou solicitado uma nova palavra-chave temporária.',
 'resetpass-temp-password'   => 'Palavra-chave temporária:',
 
@@ -1352,6 +1353,7 @@ Note, no entanto, que a indexação da {{SITENAME}} neste motor de busca pode es
 'contextlines'                  => 'Linhas por resultado:',
 'contextchars'                  => 'Contexto por linha:',
 'stub-threshold'                => 'Links para páginas provisórias \'\'(stubs)\'\' terão <a href="#" class="stub">este formato</a> se elas ocuparem menos de (bytes):',
+'stub-threshold-disabled'       => 'Desactivado',
 'recentchangesdays'             => 'Dias a apresentar nas mudanças recentes:',
 'recentchangesdays-max'         => '(máximo: $1 {{PLURAL:$1|dia|dias}})',
 'recentchangescount'            => 'Número de edições a apresentar por omissão:',
@@ -1718,12 +1720,11 @@ Parece ser uma imagem de tamanho reduzido (uma ''miniatura'' ou ''thumbnail)''.
 Se tiver a imagem original de maior dimensão, envie-a em vez desta. Se não, altere o nome do ficheiro, por favor.",
 'fileexists-forbidden'        => 'Já existe um ficheiro com este nome, e não pode ser reescrito.
 Se ainda pretende carregar o seu ficheiro volte atrás e use outro nome, por favor. [[File:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'Já existe um ficheiro com este nome no repositório de ficheiros partilhados. 
+'fileexists-shared-forbidden' => 'Já existe um ficheiro com este nome no repositório de ficheiros partilhados.
 Caso deseje, mesmo assim, carregar o seu ficheiro, volte atrás e envie-o com um novo nome. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Este ficheiro é um duplicado {{PLURAL:$1|do seguinte|dos seguintes}}:',
 'file-deleted-duplicate'      => 'Um ficheiro idêntico a este ([[$1]]) foi eliminado anteriormente.
 Verifique o motivo da eliminação do ficheiro antes de prosseguir com o re-envio.',
-'successfulupload'            => 'Envio efectuado com sucesso',
 'uploadwarning'               => 'Aviso de envio',
 'uploadwarning-text'          => 'Modifique a descrição do ficheiro abaixo e tente novamente, por favor.',
 'savefile'                    => 'Gravar ficheiro',
@@ -1766,11 +1767,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- deixe esta linha exactamente como está -->',
-'upload-successful-msg'       => 'O ficheiro carregado está disponível aqui: $1',
+'upload-success-subj'         => 'Envio efectuado com sucesso',
+'upload-success-msg'          => 'O seu upload desde [$2] foi bem sucedido. Está disponível aqui: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problema no upload',
 'upload-failure-msg'          => 'Ocorreu um problema com o seu upload:
 
 $1',
+'upload-warning-subj'         => 'Aviso de upload',
+'upload-warning-msg'          => 'Ocorreu um problema no seu upload de [$2]. Pode voltar ao [[Special:Upload/stash/$1|formulário de upload]] para resolver o problema.',
 
 'upload-proto-error'        => 'Protocolo incorrecto',
 'upload-proto-error-text'   => 'O carregamento remoto de ficheiros requer endereços URL começados por <code>http://</code> ou <code>ftp://</code>.',
@@ -1955,7 +1959,7 @@ A descrição na [$2 página de descrição] é mostrada abaixo.',
 'disambiguations'      => 'Desambiguações',
 'disambiguationspage'  => 'Template:disambig',
 'disambiguations-text' => 'As páginas abaixo contêm links para uma página de desambiguação.
-Estes links deviam ser desambiguados, apontando-os para a página apropriada.<br /> 
+Estes links deviam ser desambiguados, apontando-os para a página apropriada.<br />
 Considera-se que uma página é de desambiguação se nela for utilizada uma predefinição que esteja definida em [[MediaWiki:Disambiguationspage]].',
 
 'doubleredirects'            => 'Redireccionamentos duplos',
@@ -2247,9 +2251,9 @@ Contacto e assistência:
 # Delete
 'deletepage'             => 'Eliminar página',
 'confirm'                => 'Confirmar',
-'excontent'              => "o conteúdo era: '$1'",
-'excontentauthor'        => "o conteúdo era: '$1' (e o único editor era '[[Special:Contributions/$2|$2]]')",
-'exbeforeblank'          => "o conteúdo antes de esvaziar era: '$1'",
+'excontent'              => 'o conteúdo era: "$1"',
+'excontentauthor'        => 'o conteúdo era: "$1" (e o único editor era "[[Special:Contributions/$2|$2]]")',
+'exbeforeblank'          => 'o conteúdo antes de esvaziar era: "$1"',
 'exblank'                => 'página esvaziada',
 'delete-confirm'         => 'Eliminar "$1"',
 'delete-legend'          => 'Eliminar',
@@ -2662,7 +2666,7 @@ Faça a fusão manual das páginas de discussão, por favor.'''",
 A página de destino ("[[:$1]]") já existe. Deseja eliminá-la de modo a poder mover?',
 'delete_and_move_confirm'      => 'Sim, eliminar a página',
 'delete_and_move_reason'       => 'Eliminada para poder mover outra página para este título',
-'selfmove'                     => 'O título de origem e de destinato são os mesmos; 
+'selfmove'                     => 'O título de origem e de destinato são os mesmos;
 não é possível mover uma página para ela mesma.',
 'immobile-source-namespace'    => 'Não é possível mover páginas no espaço nominal "$1"',
 'immobile-target-namespace'    => 'Não é possível mover páginas para o espaço nominal "$1"',
@@ -2670,6 +2674,7 @@ não é possível mover uma página para ela mesma.',
 'immobile-source-page'         => 'Esta página não pode ser movida.',
 'immobile-target-page'         => 'Não é possível mover para esse título de destino.',
 'imagenocrossnamespace'        => 'Não é possível mover imagem para espaço nominal que não de imagens',
+'nonfile-cannot-move-to-file'  => 'Não é possível mover algo que não é um ficheiro para o espaço nominal de ficheiros',
 'imagetypemismatch'            => 'A extensão do novo ficheiro não corresponde ao seu tipo',
 'imageinvalidfilename'         => 'O nome do ficheiro alvo é inválido',
 'fix-double-redirects'         => 'Actualizar todos os redireccionamentos que apontem para o título original',
@@ -3515,7 +3520,7 @@ Introduza o nome do ficheiro sem o prefixo \"{{ns:file}}:\".",
 'intentionallyblankpage' => 'Esta página foi intencionalmente deixada em branco',
 
 # External image whitelist
-'external_image_whitelist' => ' # Deixe esta linha exatamente como ela está<pre> 
+'external_image_whitelist' => ' # Deixe esta linha exatamente como ela está<pre>
 # Coloque fragmentos de expressões regulares (apenas a parte entre //) abaixo
 # Estas serão comparadas com as URLs das imagens externas (com link directo)
 # As que corresponderem serão apresentadas como imagens, caso contrário apenas será apresentado um link para a imagem

@@ -3,6 +3,7 @@
 /**
  * Class for the core installer web interface.
  * 
+ * @ingroup Deployment
  * @since 1.17
  */
 class WebInstaller extends CoreInstaller {
@@ -443,28 +444,14 @@ class WebInstaller extends CoreInstaller {
 	 * @return string
 	 */
 	public function getAcceptLanguage() {
-		global $wgLanguageCode;
+		global $wgLanguageCode, $wgRequest;
 
 		$mwLanguages = Language::getLanguageNames();
-		$langs = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+		$headerLanguages = array_keys( $wgRequest->getAcceptLang() );
 		
-		foreach ( explode( ';', $langs ) as $splitted ) {
-			foreach ( explode( ',', $splitted ) as $lang ) {
-				$lang = trim( strtolower( $lang ) );
-				
-				if ( $lang == '' || $lang[0] == 'q' ) {
-					continue;
-				}
-				
-				if ( isset( $mwLanguages[$lang] ) ) {
-					return $lang;
-				}
-				
-				$lang = preg_replace( '/^(.*?)(?=-[^-]*)$/', '\\1', $lang );
-				
-				if ( $lang != '' && isset( $mwLanguages[$lang] ) ) {
-					return $lang;
-				}
+		foreach ( $headerLanguages as $lang ) {
+			if ( isset( $mwLanguages[$lang] ) ) {
+				return $lang;
 			}
 		}
 		
@@ -653,6 +640,8 @@ class WebInstaller extends CoreInstaller {
 	/**
 	 * Show a short informational message.
 	 * Output looks like a list.
+	 * 
+	 * @param srting $msg
 	 */
 	public function showMessage( $msg /*, ... */ ) {
 		$args = func_get_args();
@@ -661,6 +650,18 @@ class WebInstaller extends CoreInstaller {
 			$this->parse( wfMsgReal( $msg, $args, false, false, false ) ) .
 			"</div>\n";
 		$this->output->addHTML( $html );
+	}
+	
+	/**
+	 * @param Status $status
+	 */
+	public function showStatusMessage( Status $status ) {
+		$text = $status->getWikiText();
+		$this->output->addWikiText(
+			"<div class=\"config-message\">\n" .
+			$text .
+			"</div>"
+		);
 	}
 
 	/**
@@ -882,15 +883,6 @@ class WebInstaller extends CoreInstaller {
 			
 			$this->output->addHTML( $box );
 		}
-	}
-
-	public function showStatusMessage( $status ) {
-		$text = $status->getWikiText();
-		$this->output->addWikiText(
-			"<div class=\"config-message\">\n" .
-			$text .
-			"</div>"
-		);
 	}
 
 	/**

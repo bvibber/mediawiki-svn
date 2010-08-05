@@ -7,7 +7,8 @@
 /**
  * The interwiki class
  * All information is loaded on creation when called by Interwiki::fetch( $prefix ).
- * All work is done on slave, because this should *never* change (except during schema updates etc, which arent wiki-related)
+ * All work is done on slave, because this should *never* change (except during
+ * schema updates etc, which aren't wiki-related)
  */
 class Interwiki {
 
@@ -17,11 +18,11 @@ class Interwiki {
 
 	protected $mPrefix, $mURL, $mAPI, $mWikiID, $mLocal, $mTrans;
 
-	public function __construct( $prefix = null, $url = '', $api = '', $wikiid = '', $local = 0, $trans = 0 ) {
+	public function __construct( $prefix = null, $url = '', $api = '', $wikiId = '', $local = 0, $trans = 0 ) {
 		$this->mPrefix = $prefix;
 		$this->mURL = $url;
 		$this->mAPI = $api;
-		$this->mWikiID = $wikiid;
+		$this->mWikiID = $wikiId;
 		$this->mLocal = $local;
 		$this->mTrans = $trans;
 	}
@@ -109,7 +110,7 @@ class Interwiki {
 			$db = CdbReader::open( $wgInterwikiCache );
 		}
 		/* Resolve site name */
-		if( $wgInterwikiScopes>=3 && !$site ) {
+		if( $wgInterwikiScopes >= 3 && !$site ) {
 			$site = $db->get( '__sites:' . wfWikiID() );
 			if ( $site == '' ) {
 				$site = $wgInterwikiFallbackSite;
@@ -125,8 +126,9 @@ class Interwiki {
 		if ( $value == '' && $wgInterwikiScopes >= 2 ) {
 			$value = $db->get( "__global:{$prefix}" );
 		}
-		if ( $value == 'undef' )
+		if ( $value == 'undef' ) {
 			$value = '';
+		}
 
 		return $value;
 	}
@@ -181,7 +183,6 @@ class Interwiki {
 			$iw->mTrans = $mc['iw_trans'];
 			$iw->mAPI = isset( $mc['iw_api'] ) ? $mc['iw_api'] : '';
 			$iw->mWikiID = isset( $mc['iw_wikiid'] ) ? $mc['iw_wikiid'] : '';
-			
 			return $iw;
 		}
 		return false;
@@ -189,7 +190,7 @@ class Interwiki {
 
 	/**
 	 * Get the URL for a particular title (or with $1 if no title given)
-	 * 
+	 *
 	 * @param $title String: what text to put for the article name
 	 * @return String: the URL
 	 */
@@ -203,7 +204,7 @@ class Interwiki {
 
 	/**
 	 * Get the API URL for this wiki
-	 * 
+	 *
 	 * @return String: the URL
 	 */
 	public function getAPI( ) {
@@ -212,7 +213,7 @@ class Interwiki {
 
 	/**
 	 * Get the DB name for this wiki
-	 * 
+	 *
 	 * @return String: the DB name
 	 */
 	public function getWikiID( ) {

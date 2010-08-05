@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class for setting up the MediaWiki database using SQLLite.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
+ */
 class SqliteInstaller extends DatabaseInstaller {
 	
 	protected $globalNames = array(
@@ -36,7 +42,6 @@ class SqliteInstaller extends DatabaseInstaller {
 	}
 
 	public function submitConnectForm() {
-		global $wgSQLiteDataDir;
 		$this->setVarsFromRequest( array( 'wgSQLiteDataDir', 'wgDBname' ) );
 
 		$dir = realpath( $this->getVar( 'wgSQLiteDataDir' ) );

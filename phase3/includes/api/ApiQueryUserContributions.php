@@ -186,8 +186,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		if ( !is_null( $show ) ) {
 			$show = array_flip( $show );
 			if ( ( isset( $show['minor'] ) && isset( $show['!minor'] ) )
-			   		|| ( isset( $show['patrolled'] ) && isset( $show['!patrolled'] ) ) )
-			{
+			   		|| ( isset( $show['patrolled'] ) && isset( $show['!patrolled'] ) ) ) {
 				$this->dieUsageMsg( array( 'show' ) );
 			}
 
@@ -211,9 +210,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		) );
 
 		if ( isset( $show['patrolled'] ) || isset( $show['!patrolled'] ) ||
-				 $this->fld_patrolled )
-		{
-			global $wgUser;
+				 $this->fld_patrolled ) {
 			if ( !$wgUser->useRCPatrol() && !$wgUser->useNPPatrol() ) {
 				$this->dieUsage( 'You need the patrol right to request the patrolled flag', 'permissiondenied' );
 			}

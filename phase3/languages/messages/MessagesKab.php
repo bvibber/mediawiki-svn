@@ -783,7 +783,6 @@ Ma llant kif-kif ur tt-taznepd ara.",
 Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.",
 'fileexists-forbidden'        => 'Tugna s yisem kif-kif tewǧed yagi; g leɛnayek uɣal u beddel isem-is. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Tugna s yisem kif-kif tewǧed yagi; g leɛnayek uɣal u beddel isem-is. [[File:$1|thumb|center|$1]]',
-'successfulupload'            => 'Azen yekfa',
 'uploadwarning'               => 'Aɣtal deg wazan n ufayluwen',
 'savefile'                    => 'Smekti afaylu',
 'uploadedimage'               => '"[[$1]]" yettwazen',
@@ -795,6 +794,7 @@ Ma tesɛiḍ tugna-nni s resolution tameqqrant, azen-it, ma ulac beddel isem-is.
 'destfilename'                => 'Anda iruḥ afaylu',
 'watchthisupload'             => 'Ɛass asebter-agi',
 'filewasdeleted'              => 'Afaylu s yisem-agi yettwazen umbeɛd yettumḥa. Ssenqed $1 qbel ad tazniḍ tikelt nniḍen.',
+'upload-success-subj'         => 'Azen yekfa',
 
 'upload-proto-error'      => 'Agul deg protokol',
 'upload-proto-error-text' => 'Assekcam yenṭerr URL i yebdan s <code>http://</code> neɣ <code>ftp://</code>.',
@@ -1184,7 +1184,7 @@ iwakken ad tesmimḍeḍ asebter.',
 'move-watch'              => 'Ɛass asebter-agi',
 'movepagebtn'             => 'Smimeḍ asebter',
 'pagemovedsub'            => 'Asemmimeḍ yekfa',
-'articleexists'           => 'Yella yagi yisem am wagi, neɣ 
+'articleexists'           => 'Yella yagi yisem am wagi, neɣ
 isem ayen textareḍ mačči d ṣaḥiḥ.
 Xtar yiwen nniḍen.',
 'talkexists'              => "'''Asemmimeḍ n usebter yekfa, meɛna asebter n umyannan ines ur yettusemmimeḍ ara axaṭer yella yagi yiwen s yisem kif-kif. G leɛnayek, xdem-it weḥd-ek.'''",

@@ -2,6 +2,9 @@
 
 /**
  * Abstract class to define pages for the web installer.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
  */
 abstract class WebInstallerPage {
 	
@@ -846,7 +849,6 @@ class WebInstaller_Install extends WebInstallerPage {
 class WebInstaller_Complete extends WebInstallerPage {
 	
 	public function execute() {
-		global $IP;
 		$this->startForm();
 		$this->addHTML(
 			$this->parent->getInfoBox(

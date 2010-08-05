@@ -66,7 +66,7 @@ class ImagePage extends Article {
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
 
 		if ( $this->mTitle->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) ) {
-			return Article::view();
+			return parent::view();
 		}
 			
 		$this->loadFile();
@@ -76,7 +76,7 @@ class ImagePage extends Article {
 				// mTitle is the same as the redirect target so ask Article
 				// to perform the redirect for us.
 				$wgRequest->setVal( 'diffonly', 'true' );
-				return Article::view();
+				return parent::view();
 			} else {
 				// mTitle is not the same as the redirect target so it is 
 				// probably the redirect page itself. Fake the redirect symbol
@@ -106,7 +106,7 @@ class ImagePage extends Article {
 
 		# No need to display noarticletext, we use our own message, output in openShowImage()
 		if ( $this->getID() ) {
-			Article::view();
+			parent::view();
 		} else {
 			# Just need to set the right headers
 			$wgOut->setArticleFlag( true );
@@ -143,7 +143,6 @@ class ImagePage extends Article {
 			$wgOut->addHTML( $html );
 
 		if ( $showmeta ) {
-			global $wgStylePath, $wgStyleVersion;
 			$expand = htmlspecialchars( Xml::escapeJsString( wfMsg( 'metadata-expand' ) ) );
 			$collapse = htmlspecialchars( Xml::escapeJsString( wfMsg( 'metadata-collapse' ) ) );
 			$wgOut->addHTML( Xml::element( 'h2', array( 'id' => 'metadata' ), wfMsg( 'metadata' ) ) . "\n" );
@@ -761,7 +760,7 @@ EOT
 		$this->loadFile();
 		if ( !$this->img->exists() || !$this->img->isLocal() || $this->img->getRedirected() ) {
 			// Standard article deletion
-			Article::delete();
+			parent::delete();
 			return;
 		}
 		$deleter = new FileDeleteForm( $this->img );
@@ -880,7 +879,7 @@ class ImageHistoryList {
 	}
 
 	public function imageHistoryLine( $iscur, $file ) {
-		global $wgUser, $wgLang, $wgContLang;
+		global $wgUser, $wgLang;
 
 		$timestamp = wfTimestamp( TS_MW, $file->getTimestamp() );
 		$img = $iscur ? $file->getName() : $file->getArchiveName();

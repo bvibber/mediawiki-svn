@@ -45,10 +45,6 @@ class ApiEditPage extends ApiBase {
 		global $wgUser;
 		$params = $this->extractRequestParams();
 
-		if ( is_null( $params['title'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'title' ) );
-		}
-
 		if ( is_null( $params['text'] ) && is_null( $params['appendtext'] ) &&
 				is_null( $params['prependtext'] ) &&
 				$params['undo'] == 0 )
@@ -354,7 +350,6 @@ class ApiEditPage extends ApiBase {
 		global $wgMaxArticleSize;
 
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'title' ),
 			array( 'missingtext' ),
 			array( 'invalidtitle', 'title' ),
 			array( 'createonly-exists' ),
@@ -388,7 +383,10 @@ class ApiEditPage extends ApiBase {
 
 	protected function getAllowedParams() {
 		return array(
-			'title' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'section' => null,
 			'text' => null,
 			'token' => null,

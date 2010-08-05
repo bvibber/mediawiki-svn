@@ -1,10 +1,11 @@
 <?php
 /**
- * @ingroup Database
- * @file
  * This is the Postgres database abstraction layer.
  *
+ * @file
+ * @ingroup Database
  */
+
 class PostgresField {
 	private $name, $tablename, $type, $nullable, $max_length, $deferred, $deferrable, $conname;
 
@@ -227,9 +228,9 @@ class DatabasePostgres extends DatabaseBase {
 	}
 
 
-	function initial_setup($password, $dbName) {
+	function initial_setup($superuser, $password, $dbName) {
 		// If this is the initial connection, setup the schema stuff and possibly create the user
-		global $wgDBname, $wgDBuser, $wgDBpassword, $wgDBsuperuser, $wgDBmwschema, $wgDBts2schema;
+		global $wgDBname, $wgDBuser, $wgDBpassword, $wgDBmwschema, $wgDBts2schema;
 
 		print "<li>Checking the version of Postgres...";
 		$version = $this->getServerVersion();
@@ -242,17 +243,17 @@ class DatabasePostgres extends DatabaseBase {
 
 		$safeuser = $this->quote_ident($wgDBuser);
 		// Are we connecting as a superuser for the first time?
-		if ($wgDBsuperuser) {
+		if ($superuser) {
 			// Are we really a superuser? Check out our rights
 			$SQL = "SELECT
                       CASE WHEN usesuper IS TRUE THEN
                       CASE WHEN usecreatedb IS TRUE THEN 3 ELSE 1 END
                       ELSE CASE WHEN usecreatedb IS TRUE THEN 2 ELSE 0 END
                     END AS rights
-                    FROM pg_catalog.pg_user WHERE usename = " . $this->addQuotes($wgDBsuperuser);
+                    FROM pg_catalog.pg_user WHERE usename = " . $this->addQuotes($superuser);
 			$rows = $this->numRows($res = $this->doQuery($SQL));
 			if (!$rows) {
-				print "<li>ERROR: Could not read permissions for user \"" . htmlspecialchars( $wgDBsuperuser ) . "\"</li>\n";
+				print "<li>ERROR: Could not read permissions for user \"" . htmlspecialchars( $superuser ) . "\"</li>\n";
 				dieout('</ul>');
 			}
 			$perms = pg_fetch_result($res, 0, 0);
@@ -264,7 +265,7 @@ class DatabasePostgres extends DatabaseBase {
 			}
 			else {
 				if ($perms != 1 and $perms != 3) {
-					print "<li>ERROR: the user \"" . htmlspecialchars( $wgDBsuperuser ) . "\" cannot create other users. ";
+					print "<li>ERROR: the user \"" . htmlspecialchars( $superuser ) . "\" cannot create other users. ";
 					print 'Please use a different Postgres user.</li>';
 					dieout('</ul>');
 				}
@@ -283,7 +284,7 @@ class DatabasePostgres extends DatabaseBase {
 				}
 				else {
 					if ($perms < 1) {
-						print "<li>ERROR: the user \"" . htmlspecialchars( $wgDBsuperuser ) . "\" cannot create databases. ";
+						print "<li>ERROR: the user \"" . htmlspecialchars( $superuser ) . "\" cannot create databases. ";
 						print 'Please use a different Postgres user.</li>';
 						dieout('</ul>');
 					}
@@ -297,7 +298,7 @@ class DatabasePostgres extends DatabaseBase {
 
 				// Reconnect to check out tsearch2 rights for this user
 				print "<li>Connecting to \"" . htmlspecialchars( $wgDBname ) . "\" as superuser \"" .
-					htmlspecialchars( $wgDBsuperuser ) . "\" to check rights...";
+					htmlspecialchars( $superuser ) . "\" to check rights...";
 
 				$connectVars = array();
 				if ($this->mServer!=false && $this->mServer!="") {
@@ -307,7 +308,7 @@ class DatabasePostgres extends DatabaseBase {
 					$connectVars['port'] = $this->mPort;
 				}
 				$connectVars['dbname'] = $wgDBname;
-				$connectVars['user'] = $wgDBsuperuser;
+				$connectVars['user'] = $superuser;
 				$connectVars['password'] = $password;
 
 				@$this->mConn = pg_connect( $this->makeConnectionString( $connectVars ) );
@@ -380,7 +381,7 @@ class DatabasePostgres extends DatabaseBase {
 			// Install plpgsql if needed
 			$this->setup_plpgsql();
 
-			$wgDBsuperuser = '';
+			$superuser = '';
 			return true; // Reconnect as regular user
 
 		} // end superuser
@@ -555,12 +556,12 @@ class DatabasePostgres extends DatabaseBase {
 
 
 	function setup_plpgsql() {
-		print "<li>Checking for Pl/Pgsql ...";
+		print "<li>Checking for PL/pgSQL ...";
 		$SQL = "SELECT 1 FROM pg_catalog.pg_language WHERE lanname = 'plpgsql'";
 		$rows = $this->numRows($this->doQuery($SQL));
 		if ($rows < 1) {
 			// plpgsql is not installed, but if we have a pg_pltemplate table, we should be able to create it
-			print "not installed. Attempting to install Pl/Pgsql ...";
+			print "not installed. Attempting to install PL/pgSQL ...";
 			$SQL = "SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON (n.oid = c.relnamespace) ".
 				"WHERE relname = 'pg_pltemplate' AND nspname='pg_catalog'";
 			$rows = $this->numRows($this->doQuery($SQL));
@@ -571,13 +572,13 @@ class DatabasePostgres extends DatabaseBase {
 				$result = $this->doQuery("CREATE LANGUAGE plpgsql");
 				error_reporting($olde);
 				if (!$result) {
-					print "<b>FAILED</b>. You need to install the language plpgsql in the database <tt>" . 
+					print "<b>FAILED</b>. You need to install the language PL/pgSQL in the database <tt>" . 
 						htmlspecialchars( $wgDBname ) . "</tt></li>";
 					dieout("</ul>");
 				}
 			}
 			else {
-				print "<b>FAILED</b>. You need to install the language plpgsql in the database <tt>" . 
+				print "<b>FAILED</b>. You need to install the language PL/pgSQL in the database <tt>" . 
 					htmlspecialchars( $wgDBname ) . "</tt></li>";
 				dieout("</ul>");
 			}
@@ -777,15 +778,13 @@ class DatabasePostgres extends DatabaseBase {
 	 * @return bool Success of insert operation. IGNORE always returns true.
 	 */
 	function insert( $table, $args, $fname = 'DatabasePostgres::insert', $options = array() ) {
-		global $wgDBversion;
-
 		if ( !count( $args ) ) {
 			return true;
 		}
 
 		$table = $this->tableName( $table );
-		if (! isset( $wgDBversion ) ) {
-			$wgDBversion = $this->getServerVersion();
+		if (! isset( $this->numeric_version ) ) {
+			$this->getServerVersion();
 		}
 
 		if ( !is_array( $options ) )
@@ -819,7 +818,7 @@ class DatabasePostgres extends DatabaseBase {
 		$sql = "INSERT INTO $table (" . implode( ',', $keys ) . ') VALUES ';
 
 		if ( $multi ) {
-			if ( $wgDBversion >= 8.2 && !$ignore ) {
+			if ( $this->numeric_version >= 8.2 && !$ignore ) {
 				$first = true;
 				foreach ( $args as $row ) {
 					if ( $first ) {
@@ -1156,16 +1155,18 @@ class DatabasePostgres extends DatabaseBase {
 	 * @return string Version information from the database
 	 */
 	function getServerVersion() {
-		$versionInfo = pg_version( $this->mConn );
-		if ( version_compare( $versionInfo['client'], '7.4.0', 'lt' ) ) {
-			// Old client, abort install
-			$this->numeric_version = '7.3 or earlier';
-		} elseif ( isset( $versionInfo['server'] ) ) {
-			// Normal client
-			$this->numeric_version = $versionInfo['server'];
-		} else {
-			// Bug 16937: broken pgsql extension from PHP<5.3
-			$this->numeric_version = pg_parameter_status( $this->mConn, 'server_version' );
+		if ( !isset( $this->numeric_version ) ) {
+			$versionInfo = pg_version( $this->mConn );
+			if ( version_compare( $versionInfo['client'], '7.4.0', 'lt' ) ) {
+				// Old client, abort install
+				$this->numeric_version = '7.3 or earlier';
+			} elseif ( isset( $versionInfo['server'] ) ) {
+				// Normal client
+				$this->numeric_version = $versionInfo['server'];
+			} else {
+				// Bug 16937: broken pgsql extension from PHP<5.3
+				$this->numeric_version = pg_parameter_status( $this->mConn, 'server_version' );
+			}
 		}
 		return $this->numeric_version;
 	}

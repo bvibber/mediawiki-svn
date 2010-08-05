@@ -491,7 +491,7 @@ class Parser {
 	 * @private
 	 * @static
 	 */
-	function getRandomString() {
+	static function getRandomString() {
 		return dechex( mt_rand( 0, 0x7fffffff ) ) . dechex( mt_rand( 0, 0x7fffffff ) );
 	}
 
@@ -945,7 +945,7 @@ class Parser {
 					$last_tag = array_pop( $last_tag_history );
 
 					if ( array_pop( $td_history ) ) {
-						$previous = "</{$last_tag}>{$previous}";
+						$previous = "</{$last_tag}>\n{$previous}";
 					}
 
 					if ( $first_character === '|' ) {
@@ -3450,8 +3450,6 @@ class Parser {
 	 * @param $frame PPFrame
 	 */
 	function extensionSubstitution( $params, $frame ) {
-		global $wgRawHtml, $wgContLang;
-
 		$name = $frame->expand( $params['name'] );
 		$attrText = !isset( $params['attr'] ) ? null : $frame->expand( $params['attr'] );
 		$content = !isset( $params['inner'] ) ? null : $frame->expand( $params['inner'] );
@@ -5009,15 +5007,10 @@ class Parser {
 	 * @return string
 	 */
 	public function getDefaultSort() {
-		global $wgCategoryPrefixedDefaultSortkey;
 		if ( $this->mDefaultSort !== false ) {
 			return $this->mDefaultSort;
-		} elseif ( $this->mTitle->getNamespace() == NS_CATEGORY ||
-			!$wgCategoryPrefixedDefaultSortkey )
-		{
-			return $this->mTitle->getText();
 		} else {
-			return $this->mTitle->getPrefixedText();
+			return $this->mTitle->getCategorySortkey();
 		}
 	}
 

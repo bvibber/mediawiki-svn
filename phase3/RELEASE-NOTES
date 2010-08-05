@@ -41,9 +41,15 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added $wgSQLMode for setting database SQL modes - either performance (null)
   or other reasons (such as enabling stricter checks)
 * $wgFileStore has been deprecated. The only usage $wgFileStore['deleted'] has
-  been turned into $wgDeletedDirectory
+  been turned into $wgDeletedDirectory.
 * $wgDeletedDirectory has been added to specify what directory to place deleted
-  uploads in
+  uploads in.
+* IBM DB2 database no longer uses the db specific $wgDBport_db2 variable but the
+  normal $wgDBport.
+* The upload link for missing files can now be set separately from the 
+  navigation link with $wgUploadMissingFileUrl.
+* $wgCategoryPrefixedDefaultSortkey was removed and is now always false.  This
+  provides more sensible sorting behavior for categories.
 
 === New features in 1.17 ===
 * (bug 10183) Users can now add personal styles and scripts to all skins via
@@ -115,6 +121,17 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   because it encourages edits to be marked minor accidentally and it can be
   easily replicated by custom user scripts for those who really want it.
 * Non-file pages can no longer be moved to the file namespace, nor vice versa.
+* (bug 671) The <dfn> element has been whitelisted in user input.
+* (bug 24563) Entries on Special:WhatLinksHere now have a link to their history
+* (bug 21503) There's now a "reason" field when creating account for other users
+* (bug 24418) action=markpatrolled now requires a token
+* A variety of category sort-related fixes, including:
+** (bug 164) In English, lowercase and uppercase letters now sort the same.
+   (This should be expanded to proper sorting for other languages before the
+   1.17 release.)
+** (bug 1211) Subcategories, ordinary pages, and files now page separately.
+** When several pages are given the same sort key, they sort by their names
+   instead of randomly.
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -247,6 +264,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 23293) Do not show change tags when special:recentchanges(linked)
   or special:newpages is transcluded into another page as it messes up the
   page.
+* (bug 24517) LocalFile::newFromKey() and OldLocalFile::newFromKey() no longer
+  throw fatal errors
+* (bug 23380) Uploaded files that are larger than allowed by PHP now show a
+  useful error message.
+* Uploading to a protected title will allow the user to choose a new name 
+  instead of showing an error page
+* (bug 24425) Use Database::replace instead of delete/insert in SqlBagOStuff::set
+  to avoid query errors about duplicate keynames.
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
@@ -288,6 +313,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Fixed "link" parameter in image links with "thumb" parameter.
 * (bug 23936) Add "displaytitle" to query/info API
 * (bug 24485) Make iwbacklinks a generator, optionally display iwprefix and iwtitle
+* (bug 24564) Fix fatal errors when using list=deletedrevs, prop=revisions or 
+  one of the backlinks generators with limit=max.
+* (bug 24656) API's parse module needs option to disable PP report
+* PARAM_REQUIRED parameter flag added. If this flag is set, and the end user does not set 
+  the parameter, the API will automatically throw an error.
 
 === Languages updated in 1.17 ===
 
@@ -295,13 +325,20 @@ MediaWiki supports over 330 languages. Many localisations are updated
 regularly. Below only new and removed languages are listed, as well as
 changes to languages because of MediaZilla reports.
 
+* Moroccan Spoken Arabic (ary) (new)
+* Banjar (bjn) (new)
+* Kabardian (kdb) (new, dummy)
+* Kabardian (Cyrillic) (kbd-cyrl) (new)
 * Latgalian (ltg) (new)
+* Dutch (informal) (nl-informal) (new)
 * Rusyn (rue) (new)
 
 * (bug 23156) Commafy and search normalization updated for Belarusian
   (Taraškievica)
 * (bug 23283) Native name for Old English -> Ænglisc
 * (bug 23364) Native name for Azerbaijani -> Azərbaycanca
+* (bug 24593) Native name for Sorani now uses only Arabic script
+* (bug 24628) Generic translations for NS_USER/NS_USER_TALK for Esperanto
 
 == Compatibility ==
 

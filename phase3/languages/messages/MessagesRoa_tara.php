@@ -485,7 +485,7 @@ Mitta n'otra vota.",
 'password-name-match'        => "'A password toje adda essere diverse da 'u nome utende tue.",
 'mailmypassword'             => 'Passuord nova pe e-mail',
 'passwordremindertitle'      => 'Passuord temboranea nova pe {{SITENAME}}',
-'passwordremindertext'       => "Quacchedune (pò essere tu, da quiste indirizze IP \$1) ha cerchete 'na nova password pe {{SITENAME}} (\$4). 
+'passwordremindertext'       => "Quacchedune (pò essere tu, da quiste indirizze IP \$1) ha cerchete 'na nova password pe {{SITENAME}} (\$4).
 'Na password temboranea pe l'utende \"\$2\" ha state ccrejete e ha state 'mbostete a \"\$3\".
 Ce quiste ere quidde ca vulive, mo vide ce te colleghe e te scacchie 'na password nova.
 'A password temboranea adda murè 'mbrà {{PLURAL:\$5|'nu giurne|\$5 giurne}}.
@@ -581,7 +581,7 @@ L'indirizze IP tue avène reggistrete jndr'à le cangiaminde de sta pàgene.",
 Ce tu cazze Reggistre 'n'otra vote, 'u cangiamende tue avène memorizzete senze une.",
 'missingcommenttext'               => "Pe piacere mitte 'nu commende aqquà sotte.",
 'missingcommentheader'             => "'''Arrecuèrdete:''' Tu non g'è provvedute a 'nu soggette/testate pe stu commende.
-Ce tu cazze Reggistre 'n'otra vote, 'u cangiamende tue avène memorizzete senze une.",
+Ce tu cazze \"{{int:savearticle}}\" 'n'otra vote, 'u cangiamende tune avène memorizzate senze jidde.",
 'summary-preview'                  => "Andeprime d'u riepileghe:",
 'subject-preview'                  => "Andeprime de l'Oggette/Testete:",
 'blockedtitle'                     => "L'utende è blocchete",
@@ -595,7 +595,7 @@ Ce tu cazze Reggistre 'n'otra vote, 'u cangiamende tue avène memorizzete senze 
 * Tipe de blocche: $7
 
 Tu puè condatta $1 o n'otre [[{{MediaWiki:Grouppage-sysop}}|amministratore]] pe 'ngazzarte sus a 'u blocche.
-Tu non ge puè ausà 'u strumende 'manne 'na mail a stu utende' senza ca mitte n'indirizze e-mail valide jndr'à le 
+Tu non ge puè ausà 'u strumende 'manne 'na mail a stu utende' senza ca mitte n'indirizze e-mail valide jndr'à le
 [[Special:Preferences|preferenze tue]] e ce è state blocchete sus 'a l'use sue.
 L'IP ca tine mò jè $3 e 'u codece d'u blocche jè #$5.
 Pe piacere mitte ste doje 'mbormaziune ce manne 'na richieste de sblocche.",
@@ -654,8 +654,8 @@ L'urteme archivije de le bloccaminde se iacche aqquà sotte pe referimende:",
 *'''Konqueror: '''cazze ''Aggiorna'' o cazze ''F5'';
 *'''Opera:''' pulizze 'a cache da ''Tools → Preferences'' (in inglese) (Struminde - Preferenze in tagliàne);
 *'''Internet Explorer:''' cazze ''Ctrl'' e condemboraneamende cazze ''Aggiorna,'' o cazze ''Ctrl-F5''.",
-'usercssyoucanpreview'             => "'''Conziglie:''' Ause 'u buttone 'Vide l'andeprime' pe condrollà 'u CSS nuève apprime de reggistrà.",
-'userjsyoucanpreview'              => "'''Conziglie:''' Ause 'u buttone 'Vide l'andeprime' pe condrollà 'u JS nuève apprime de reggistrà.",
+'usercssyoucanpreview'             => "'''Conziglie:''' Ause 'u buttone \"{{int:showpreview}}\" pe condrollà 'u CSS nuève apprime de reggistrà.",
+'userjsyoucanpreview'              => "'''Conziglie:''' Ause 'u buttone \"{{int:showpreview}}\" pe condrollà 'u JavaScript nuève apprime de reggistrà.",
 'usercsspreview'                   => "'''Arrecuerdete ca tu ste vide sulamende in andeprime 'u CSS tue.'''
 '''Non g'à state angore reggistrete ninde!'''",
 'userjspreview'                    => "'''Arrecuerdete ca tu ste vide/teste sulamende in andeprime 'u JavaScript tue.'''
@@ -919,6 +919,9 @@ Pe piacere condrolle l'archivije.",
 'suppressionlogtext' => "Sotte stè 'na liste de scangellaminde e blocche sus a le condenute scunnute da l'amministrature.
 Vide 'a [[Special:IPBlockList|liste de le IP bloccate]] pa liste de le operazziune corrende de espulsione e blocche.",
 
+# Revision move
+'revmove-reasonfield' => 'Mutive:',
+
 # History merging
 'mergehistory'                     => "Scuagghie 'a storie de le pàggene",
 'mergehistory-header'              => "Sta pàgene te face squagghia le revisiune d'a storie de 'na pàgena sorgende jndr'à 'na pàgena nove.
@@ -1142,6 +1145,8 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'prefs-advancedsearchoptions'   => 'Opzione avanzate',
 'prefs-advancedwatchlist'       => 'Opzione avanzate',
 'prefs-displayrc'               => "Fà vedè l'opzione",
+'prefs-displaysearchoptions'    => "Fà vedè l'opzione",
+'prefs-displaywatchlist'        => "Fà vedè l'opzione",
 'prefs-diffs'                   => 'Diff',
 
 # User rights
@@ -1252,6 +1257,7 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'right-reset-passwords'       => "Azzere l'otre password de l'utinde",
 'right-override-export-depth' => "L'esportazione de pàggene inglude pàggene collegate 'mbonde a 'na profonnetà de 5",
 'right-sendemail'             => "Manne 'a mail a otre utinde",
+'right-revisionmove'          => 'Spuèste le revisiune',
 
 # User rights log
 'rightslog'      => "Archivie de le diritte de l'utende",
@@ -1421,7 +1427,6 @@ ce tu vuè angore carecà stu file, pe piacere tuèrne rrete e ause 'nu nome nu�
 'file-exists-duplicate'       => "Stu file jè 'na copie {{PLURAL:$1|d'u seguende file|de le seguende file}}:",
 'file-deleted-duplicate'      => "'Nu file uguale a stu file ([[$1]]) ha state scangellate precedendemende.<br />
 Avissa verificà 'a storie d'a scangellazzione d'u file apprime de condinuà a carecarle.",
-'successfulupload'            => 'Carecamende sciute apposte',
 'uploadwarning'               => 'Avvise de carecamende',
 'uploadwarning-text'          => "Pe piacere cange 'a descrizione d'u file sotte e pruève 'notra vote.",
 'savefile'                    => "Reggistre 'u file",
@@ -1449,6 +1454,8 @@ Tu avissa considerà ce è  proprie utile carecà stu file.
 L'archivije de le scangellaminde pe stu file 'u iacchije aqquà pe convenienze:",
 'filename-bad-prefix'         => "'U nome d'u file ca tu ste careche accumenze pe '''\"\$1\"''', ca normalmende jè 'u nome ca assegne a machena fotografeche e non 'nu nome descrittive d'u file ca vuè ccu careche.
 Pe piacere scacchie 'n'otre nome ca jè cchiù descrittive.",
+'upload-success-subj'         => 'Carecamende sciute apposte',
+'upload-failure-subj'         => 'Careche le probbleme',
 
 'upload-proto-error'        => 'Protocolle scorrette',
 'upload-proto-error-text'   => "Le carecaminde remote onne abbesogne de le URL ca accumenzene cu 'a parole <code>http://</code> o <code>ftp://</code>.",
@@ -3078,16 +3085,16 @@ Prueve l\'andeprima normele.',
 'watchlistedit-noitems'        => "'A lista de le pàggene condrollete toja no tène 'na vosce.",
 'watchlistedit-normal-title'   => 'Vide le pàggene condrollete',
 'watchlistedit-normal-legend'  => "Live le titele da 'a liste de le pàggene condrollete",
-'watchlistedit-normal-explain' => "Le titele sus a liste de le pàggene condrollate sonde fatte vedè aqquà sotte. <br />
-Pe luà 'nu titele, smarche 'a scatele affianghe a jidde e cazze \"Live 'le titele\".<br />
+'watchlistedit-normal-explain' => "Le titele sus a 'a liste de le pàggene condrollate avènene fatte vedè aqquà sotte. <br />
+Pe luà 'nu titele, smarche 'a sckatele affianghe a jidde e cazze \"{{int:Watchlistedit-normal-submit}}\".<br />
 Tu puè pure [[Special:Watchlist/raw|cangià 'a liste a mane]].",
 'watchlistedit-normal-submit'  => 'Live le titele',
 'watchlistedit-normal-done'    => "{{PLURAL:$1|1 titele ha state|$1 titele onne state}} scangellete da 'a liste de le pàggene condrollete toje:",
 'watchlistedit-raw-title'      => "Cange 'a liste de le pàggene condrollete grezze",
 'watchlistedit-raw-legend'     => "Cange 'a liste de le pàggene condrollete grezze",
-'watchlistedit-raw-explain'    => "Le titele sus a liste de le pàggene condrollate sonde fatte vedè aqquà sotte e ponne essere cangiate aggiunggenne o luannele da 'a liste; <br />
+'watchlistedit-raw-explain'    => "Le titele sus a liste de le pàggene condrollate avènene fatte vedè aqquà sotte e ponne essere cangiate aggiunggenne o luannele da 'a liste; <br />
 'nu titele pe linèe.<br />
-Quanne è spicciate, cazze sus a \"Aggiorne a Liste de le pàggene condrollate\".<br />
+Quanne è spicciate, cazze sus a \"{{int:Watchlistedit-raw-submit}}\".<br />
 Tu puè pure [[Special:Watchlist/edit|ausà 'u cangiatore standàrd]].",
 'watchlistedit-raw-titles'     => 'Titele:',
 'watchlistedit-raw-submit'     => "Aggiorne 'a liste de le pàggene condrollete",
@@ -3190,6 +3197,13 @@ Mitte 'u nome d'u file senze 'u \"{{ns:file}}:\" prefisse.",
 'tags-hitcount-header'    => 'Cangiaminde taggate',
 'tags-edit'               => 'cange',
 'tags-hitcount'           => '$1 {{PLURAL:$1|cangiamende|cangiaminde}}',
+
+# Special:ComparePages
+'compare-page1'  => 'Pàgene 1',
+'compare-page2'  => 'Pàgene 2',
+'compare-rev1'   => 'Revisione 1',
+'compare-rev2'   => 'Revisione 2',
+'compare-submit' => 'Combronde',
 
 # Database error messages
 'dberr-header'      => "Sta Uicchi tène 'nu probbleme",
