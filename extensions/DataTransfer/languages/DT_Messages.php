@@ -1168,6 +1168,7 @@ $messages['ksh'] = array(
 	'importxml' => '<i lang="en">XML</i> Empotteere',
 	'dt_import_selectfile' => 'Söhk de <i lang="en">$1</i>-Dattei för zem Empotteere uß:',
 	'dt_import_encodingtype' => 'Zoot Kodeerung för de Bohchshtahbe un Zeishe',
+	'dt_import_summarydesc' => 'Zesammefassung vun däm Empoot:',
 	'dt_import_editsummary' => 'uss ene <i lang="en">$1</i>-Datei empotteet',
 	'dt_import_importing' => 'Ben aam Empotteere{{int:Ellipsis}}',
 	'dt_import_success' => '{{PLURAL:$1|Ein Sigg weed_uß|$1 Sigge weede uß|Kein einzelne Sigg weed_uß}} dä <i lang="en">$2</i>-Dattei empotteet.',

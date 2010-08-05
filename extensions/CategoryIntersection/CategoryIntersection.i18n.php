@@ -420,6 +420,7 @@ $messages['ksh'] = array(
 	'categoryintersection-desc' => 'Hälld_en Tabäll met <i lang="en">hashes</i> för [[Special:CategoryIntersection|Övverschneidonge fun Saachrjoppe]] en en Sigg faßzehallde.',
 	'categoryintersection-doit' => 'Donn de Sigge en all dä SaachJroppe op_leßte',
 	'categoryintersection-maxcategories' => 'Nit mieh wie {{PLURAL:$1|ein Saachjrupp|$1 Saachjruppe|kein Saachjrupp}} künne för de Jeimeinsamkeite eraanjetrocke wääde.',
+	'categoryintersection-mincategories' => 'Do moß winnishsdens zwei {{int:Categories}} anjävve.',
 	'categoryintersection-results' => '{{PLURAL:$1|Eine|$1|Keine}} Treffer jefonge beim Söke.',
 );
 

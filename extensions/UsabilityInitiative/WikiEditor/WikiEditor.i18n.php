@@ -466,6 +466,7 @@ $messages['ksh'] = array(
 	'wikieditor' => 'Fottjeschredde Eddiror för de WikiTäx',
 	'wikieditor-desc' => 'Brängk en Müjjeleschkeit för Wikitäx enzejävve un ze ändere en et Wiki, di mer ußboue kann, un noch allerhand Kröhmsches met dobei hät.',
 	'wikieditor-wikitext-tab' => 'Wikitäx',
+	'wikieditor-loading' => 'Am Lade',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))

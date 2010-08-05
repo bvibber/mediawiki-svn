@@ -959,7 +959,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'ajaxshoweditors-desc' => 'Mostra utilizadores que estão a editar a mesma página',
-	'ajax-se-title' => 'Editando no momento:',
+	'ajax-se-title' => 'Neste momento está a editar:',
 	'ajax-se-pending' => 'actualização pendente... (clique esta caixa ou comece a editar)',
 	'ajax-se-idling' => '($1 segundos atrás)',
 	'ajax-se-pagedoesnotexist' => 'página não existe',

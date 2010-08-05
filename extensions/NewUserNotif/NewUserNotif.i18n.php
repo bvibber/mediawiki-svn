@@ -759,13 +759,14 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'newusernotifsubj' => '$1的新用户通知',
-	'newusernotif-desc' => '当用户创建时，发送邮件确认电子邮件地址',
-	'newusernotifbody' => '你好 $1，
+	'newusernotif-desc' => '当用户账户创建时发送电子邮件通知',
+	'newusernotifbody' => '你好$1，
 
-一个新的用户账号$2，已经在$4于$3创建。',
+一个新账户$2已于$4在$3创建。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

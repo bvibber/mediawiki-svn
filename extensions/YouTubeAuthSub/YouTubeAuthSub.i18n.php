@@ -1514,6 +1514,7 @@ Silakan menunggu.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'youtubeauthsub' => 'Bo nlènlé YouTube na élu',
 	'youtubeauthsub_title' => 'Ishi edemede',
 	'youtubeauthsub_description' => 'Nkȯwá',
 	'youtubeauthsub_password' => 'Okwúngáfè YouTube',
@@ -1527,6 +1528,7 @@ $messages['ig'] = array(
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Le enyónyó-na-jé nka]',
+	'youtubeauthsub_summary' => 'Nè bo nlènlé YouTube na élu',
 	'youtubeauthsub_uploading' => 'Enyónyó-na-jé gi na nyiri elú.
 Biko nweré nkásị obi.',
 );

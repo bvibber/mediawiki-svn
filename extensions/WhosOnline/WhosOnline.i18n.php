@@ -619,10 +619,12 @@ $messages['yue'] = array(
 	'whosonline-desc' => '顯示而家在線嘅登入同匿名用戶嘅[[Special:WhosOnline一覽]]',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Xiaomingyan
+ */
 $messages['zh-hans'] = array(
-	'whosonline' => '谁正联机',
-	'whosonline-desc' => '显示现时联机的登入与匿名用户的[[Special:WhosOnline列表]]',
+	'whosonline' => '在线用户',
+	'whosonline-desc' => '显示实时在线的登录用户和匿名用户的[[Special:WhosOnline|列表]]。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

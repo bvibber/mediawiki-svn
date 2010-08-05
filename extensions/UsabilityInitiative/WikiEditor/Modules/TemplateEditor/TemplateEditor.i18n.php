@@ -422,6 +422,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Rüwa àtụ',
 	'wikieditor-template-editor-dialog-submit' => 'Dịnwanye mmā',
 	'wikieditor-template-editor-dialog-cancel' => 'Kàchá',
 );

@@ -704,6 +704,13 @@ $messages['sah'] = array(
 	'prefs-labs' => 'Тургутуллар туруоруулар',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'usabilityinitiative' => "Initziativa pro s'impreu",
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  * @author බිඟුවා

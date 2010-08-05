@@ -1268,6 +1268,8 @@ $messages['id'] = array(
 $messages['ig'] = array(
 	'readerfeedback-overall' => 'Nà íshí níle',
 	'readerfeedback-level-0' => 'Ụbịàm',
+	'readerfeedback-level-1' => 'Dì ànị',
+	'readerfeedback-level-2' => 'Dị asọ anya',
 	'readerfeedback-level-3' => 'Élú ukwu',
 	'readerfeedback-submit' => 'Dànyé',
 	'readerfeedback-finished' => 'Daalụ!',
@@ -1881,7 +1883,9 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'readerfeedback-completeness' => 'بشپړتابه',
 	'readerfeedback-overall' => 'ټولټال',
+	'readerfeedback-level-none' => '(ناډاډه)',
 	'readerfeedback-submit' => 'سپارل',
 	'readerfeedback-submitting' => 'د سپارلو په حال کې ...',
 	'readerfeedback-finished' => 'مننه!',

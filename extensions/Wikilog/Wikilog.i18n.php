@@ -2552,7 +2552,7 @@ Kommentti näkyy vasta kun moderaattori on tarkistanut sen.',
  * @author Yekrats
  */
 $messages['fr'] = array(
-	'wikilog-desc' => 'Ajoute des fonctionnalités de blogue, créant un wiki-blog hybride',
+	'wikilog-desc' => 'Ajoute des fonctionnalités de blogue, créant un hybride wiki-blogue',
 	'wikilog-auto' => 'Vikilogo Auto',
 	'wikilog-help' => '{{ns:Help}}:Wikilog',
 	'right-wl-postcomment' => 'Poster des commentaires sur les articles de wikilog',

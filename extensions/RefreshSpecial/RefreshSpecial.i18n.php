@@ -1087,6 +1087,15 @@ Quand it l'has sërnù tute le pàgine ch'it veule agiorné, sgnaca ël boton \"
 	'right-refreshspecial' => 'Agiorna pàgine speciaj',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'refreshspecial-select-all-pages' => 'ټول مخونه ټاکل',
+	'refreshspecial-link-back' => 'بېرته ځانګړي مخ ته ورستنېدل',
+	'right-refreshspecial' => 'ځانګړي مخونه تاندول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

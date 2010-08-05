@@ -598,6 +598,7 @@ $messages['ksh'] = array(
 	'inspectcache-delete' => 'Fottschmieße!',
 	'inspectcache-deleted' => 'Fottjeschmeße <i lang="en">cache</i>',
 	'inspectcache-list' => 'Opleßte!',
+	'right-inspectcache' => 'Enndrääsch em <i lang="en">cache</i> beluure udder fott schmieße',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

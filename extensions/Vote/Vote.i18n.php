@@ -2088,26 +2088,27 @@ riddler|謎人',
  * @author Gzdavidwong
  * @author Liangent
  * @author Shinjiman
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'vote' => '投票',
-	'vote-desc' => '提供简单的投票能力',
-	'vote-header' => "您可以在这里投下'''在这个世界中至高无尚'''的一票！",
-	'vote-current' => "您现正为'''$1'''投票。",
-	'vote-legend' => '放下或更改投票',
-	'vote-caption' => '您的选择:',
+	'vote-desc' => '提供简单的投票功能',
+	'vote-header' => "你可以在这里为'''世界霸主'''投票！",
+	'vote-current' => "你正在为'''$1'''投票。",
+	'vote-legend' => '设置或修改投票',
+	'vote-caption' => '你的选择：',
 	'vote-choices' => 'joker|小丑
 penguin|企鹅
-riddler|谜人',
+riddler|谜题先生',
 	'vote-submit' => '投票',
-	'vote-registered' => '您的一票已经记录。',
-	'vote-view-results' => '看结果',
+	'vote-registered' => '已记录你的投票。',
+	'vote-view-results' => '查看结果',
 	'vote-results' => '投票结果',
-	'vote-results-choice' => '选择',
-	'vote-results-count' => '数量',
-	'vote-results-none' => '在这个时间无放任何投票。',
+	'vote-results-choice' => '选项',
+	'vote-results-count' => '总数',
+	'vote-results-none' => '现在没有投票。',
 	'vote-login' => '你必须[$1 登录]以投票。',
-	'vote-invalid-choice' => '您一定要在可以选择的选项中选择一个。',
+	'vote-invalid-choice' => '你必须选择一个可选选项。',
 	'right-vote' => '投票',
 	'right-voteadmin' => '查看投票结果',
 );

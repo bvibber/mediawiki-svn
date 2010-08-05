@@ -225,6 +225,13 @@ $messages['pms'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'nll-lastseparator' => '&#32;او&#32;',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

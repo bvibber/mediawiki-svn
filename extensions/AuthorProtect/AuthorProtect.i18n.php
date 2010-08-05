@@ -342,7 +342,7 @@ $messages['de-formal'] = array(
  * @author Mirzali
  */
 $messages['diq'] = array(
-	'authorprotect-reason' => 'Sebeb',
+	'authorprotect-reason' => 'Sebeb:',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -917,7 +917,7 @@ $messages['ksh'] = array(
 	'authorprotect-confirm' => 'Schötze',
 	'authorprotect-edit' => 'Don et Ändere op de Schriiver fun dä Sigg beschränke',
 	'authorprotect-move' => 'Donn et Ömnenne op Schriiver aan dä Sigg beschränke',
-	'authorprotect-expiry' => 'Sperre beß en',
+	'authorprotect-expiry' => 'Sperre beß en:',
 	'authorprotect-reason' => 'Jrond:',
 	'authorprotect-intro' => 'Hee met kanns de di Sigg jäje annder Metmaacher schötze, die kein Schriiver ann er sin',
 	'authorprotect-success' => 'Et Schötze es jelonge!',

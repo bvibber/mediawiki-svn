@@ -317,13 +317,16 @@ $messages['ja'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] は最低でも$1文字の長さが必要です。',
 );
 
-/** Colognian (Ripoarisch) */
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
 $messages['ksh'] = array(
 	'transliterator-desc' => 'Deiht en ennstellbaa Paaserfunxjuhn en et Wiki, di Boochshtabe tuusche kann.',
 	'transliterator-error-ambiguous' => 'En unkloh Rejel <code>$1</code> es en [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'En kappodde Syntax <code>$1</code> es en [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Et {{PLURAL:$1|es mieh wi ein Rejel|sinn_er mieh wi $1 Rejelle|es kei Rejel}} en [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'En de Rejel <code>$1</code> {{PLURAL:$3|es|sinn_er}} mieh wi $3 Zeische op de lengke Sigg, en [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] moß winnishsdens {{PLURAL:$1|ei|$1}} Zeiche lang sin.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

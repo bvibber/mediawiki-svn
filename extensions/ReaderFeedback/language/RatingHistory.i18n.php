@@ -1118,6 +1118,8 @@ Peringkatnya adalah sebagai berikut:
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'ratinghistory-period' => 'Ótù ógẹ:',
+	'ratinghistory-month' => 'önwa gárá',
 	'ratinghistory-3months' => 'önwa 3 nke gáráni',
 	'ratinghistory-year' => 'afọr gáráni',
 	'ratinghistory-3years' => 'afọr 3 nke gáráni',

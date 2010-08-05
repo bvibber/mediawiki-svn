@@ -2205,7 +2205,7 @@ Nous aimerions savoir ce que vous pensez de notre nouvelle interface, nous appr�
 [[File:UsabilityToolbar.png|left|link=|Capture d’écran de la barre d’outils d’édition améliorée]]
 [[File:UsabilityDialogs.png|left|link=|Capture d’écran du dialogue de génération de contenu]]
 ;Barre d’outils améliorée
-Avec la barre d’outils améliorée, il est plus facile de modifier des articles. Les icônes ont été améliorées et de nouvelles ont été créées pour rendre plus clair l’action que chaque outil effectue. Les sections déroulantes réduisent l’encombrement tout en conservant les outils que vous utilisez rarement à portée de clic.
+Avec la barre d’outils améliorée, il est plus facile de modifier des articles. Les icônes ont été améliorées et de nouvelles ont été créées pour rendre plus claire l’action que chaque outil effectue. Les sections déroulantes réduisent l’encombrement tout en conservant les outils que vous utilisez rarement à portée de clic.
 ; Dialogues
 Lors de la création de liens ou de tableaux, cliquez sur l’icône et une boîte de dialogue s’ouvrira pour vous aider à créer des liens et des tables en remplissant un simple formulaire.
 ; Et plus
@@ -3097,6 +3097,10 @@ Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [htt
  */
 $messages['ig'] = array(
 	'optin-title-optedout' => 'Nwàne Beta',
+	'optin-accept-long' => 'Nwàné cha Beta',
+	'optin-deny-short' => 'Biko mbà',
+	'optin-deny-long' => 'Gá na ihü àzú',
+	'optin-submit-out' => 'Háfu Beta',
 	'optin-survey-yes' => 'Eeh',
 	'optin-survey-no' => 'Mbà',
 	'optin-survey-answer-whyoptout-other' => 'Mgbághàpụtá ozor:',

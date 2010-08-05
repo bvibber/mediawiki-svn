@@ -67,9 +67,10 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Purodha
  */
 $messages['de'] = array(
-	'apisvgproxy-desc' => 'Überträgt SVG-Dateien per Proxy von einem möglicherweise entfernt liegenden Dateienrepositorium zur eigenen Domain.',
+	'apisvgproxy-desc' => 'Bietet SVG-Dateien als Proxy für ein möglicherweise entfernt liegendes Dateienrepositorium unter der eigenen Domain an.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -168,6 +169,13 @@ $messages['ja'] = array(
  */
 $messages['ko'] = array(
 	'apisvgproxy-desc' => '(원격) 파일 저장소에서 로컬 도메인으로 SVG 파일을 프록시 전송',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'apisvgproxy-desc' => 'Deiht Datteije em SVG Fommaat als ene <i lang="en">proxy</i>-əööver onger de eije Domain aanbeede.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

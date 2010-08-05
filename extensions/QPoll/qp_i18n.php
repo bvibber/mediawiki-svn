@@ -1824,6 +1824,8 @@ Për salvé un sondagi, ch'a lo spedissa sensa arsponde a gnun-e custion ëd pro
  */
 $messages['ps'] = array(
 	'qp_vote_button' => 'رايه ورکول',
+	'qp_users_list' => 'د ټولو کارنانو لړليک جوړول',
+	'qp_votes_count' => '$1 {{PLURAL:$1|رايه|رايې}}',
 	'qp_source_link' => 'سرچينه',
 	'qp_users_link' => 'کارنان',
 );

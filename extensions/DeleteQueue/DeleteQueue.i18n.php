@@ -4879,6 +4879,7 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  */
 $messages['ps'] = array(
 	'deletequeue-delnom-otherreason' => 'بل سبب',
+	'deletequeue-queue-speedy' => 'چټکه ړنګېدنه',
 	'deletequeue-review-delete' => 'دا مخ ړنګول.',
 	'deletequeue-review-newreason' => 'نوی سبب:',
 	'deletequeue-vote-reason' => 'تبصرې:',

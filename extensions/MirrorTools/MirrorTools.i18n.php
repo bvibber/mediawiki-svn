@@ -43,6 +43,18 @@ $messages['be-tarask'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Карыстальнікі Mirror tool',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'mirrortools' => 'OstilhMelezour',
+	'mirrortools-desc' => "Aotreañ ar c'hemmoù dre an API da vezañ graet dindan forzh peseurt anv implijer",
+	'right-mirroredit' => 'Kemmañ dre an API dindan forzh peseurt anv implijer',
+	'group-MirrorTools' => 'Implijerien an ostilh melezour',
+	'group-MirrorTools-member' => 'implijer an ostilh melezour',
+	'grouppage-MirrorTools' => '{{ns:project}}: Implijerien an ostilh melezour',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -174,6 +186,11 @@ $messages['pt'] = array(
  * @author Eleferen
  */
 $messages['ru'] = array(
+	'mirrortools' => 'Инструмент Зеркалирования',
+	'mirrortools-desc' => 'Позволяет вносить изменения через API, под любым именем пользователя',
 	'right-mirroredit' => 'Править через API под любым именем пользователя',
+	'group-MirrorTools' => 'Пользователи инструмента зеркалирования',
+	'group-MirrorTools-member' => 'пользователь инструмента зеркалирования',
+	'grouppage-MirrorTools' => '{{ns:project}}: Пользователи инструмента зеркалирования',
 );
 

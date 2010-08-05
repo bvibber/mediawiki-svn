@@ -28,6 +28,13 @@ $messages['be-tarask'] = array(
 	'sidebardonatebox-desc' => 'Дадае нестандартнае паведамленьне пра ахвяраваньні ў бакавую панэль',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'sidebardonatebox-desc' => 'Ouzhpennañ ur voest evit ar roadennoù personelaet er barenn kostez',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author The Evil IP address
@@ -90,6 +97,13 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'sidebardonatebox-desc' => 'Tambahkan sebuah kotak donasi kustom ke sidebar',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'sidebardonatebox-desc' => 'Määt e eije Käßje met enem Shpende_Oproof aan de Sigg.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

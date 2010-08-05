@@ -641,6 +641,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'discussionthreading-replysection' => 'స్పందించండి',
+	'discussionthreading-threadnewsection' => 'కొత్తది',
 );
 
 /** Thai (ไทย)

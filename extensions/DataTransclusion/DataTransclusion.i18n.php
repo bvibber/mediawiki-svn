@@ -96,6 +96,20 @@ $1 — невядомая.',
  * @author Y-M D
  */
 $messages['br'] = array(
+	'datatransclusion-desc' => 'Enporzhiañ ha furmaozañ ar roadennoù o tont eus ar vammenn diavaez',
+	'datatransclusion-missing-source' => 'N\'eo spisaet mammenn roadennoù ebet.
+An eil arguzenn pe "mammenn" a zo ret.',
+	'datatransclusion-unknown-source' => 'Direizh eo ar vammenn roadennoù spisaet.
+Dianav eo $1.',
+	'datatransclusion-missing-key' => "N'eo spisaet alc'hwez ebet.
+$2 a zo an alc'hwezioù reizh evit ar vammenn rodennoù $1.",
+	'datatransclusion-bad-argument-by' => 'Direizh eo an alc\'hwez maezienn spisaet.
+N\'eo ket "$2" un alc\'hwez maezienn er vammenn roadennoù "$1".
+An {{PLURAL:$4|alc\'hwez|alc\'hwezioù|}} a zo : $3.',
+	'datatransclusion-missing-argument-key' => "N'eo spisaet talvoudenn alc'hwez ebet.
+An eil arguzenn pe \"alc'hwez\" a zo ret.",
+	'datatransclusion-missing-argument-template' => 'N\'eo spisaet patrom ebet.
+An arguzenn gentañ pe "patrom" a zo ret.',
 	'datatransclusion-record-not-found' => 'Enrolladenn ebet o wiriañ $2 = $3 a zo bet kavet e danvez ar roadennoù $1.',
 	'datatransclusion-bad-template-name' => 'Anv patrom direizh : $1.',
 	'datatransclusion-unknown-template' => "N'eus ket eus <nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>.",

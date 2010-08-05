@@ -684,6 +684,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mostrevisors-limitlinks' => 'تر $1 پورې مخونه ښکاره کړی',
 	'mostrevisors-namespace' => 'نوم-تشيال:',
 	'mostrevisors-submit' => 'ورځه',
 );

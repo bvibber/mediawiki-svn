@@ -2033,6 +2033,7 @@ Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely ennen k
  * @author Jean-Frédéric
  * @author Kropotkine 113
  * @author Peter17
+ * @author Urhixidur
  */
 $messages['fr'] = array(
 	'prefswitch' => "Commutateur de préférences de l'initiative d'utilisabilité",
@@ -2049,10 +2050,10 @@ $messages['fr'] = array(
 	'prefswitch-survey-question-dislike' => "Qu'est-ce que vous n'avez pas apprécié dans les fonctionnalités ?",
 	'prefswitch-survey-question-whyoff' => 'Pourquoi voulez-vous désactiver les nouvelles fonctionnalités ?
 Veuillez choisir tout ce qui convient.',
-	'prefswitch-survey-answer-whyoff-hard' => 'Il était trop difficile de l’utiliser.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Il était trop difficile de les utiliser.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Ça ne fonctionne pas correctement.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Cela ne s’est pas passé comme prévu.',
-	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Je n’ai pas aimé son apparence.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Je n’ai pas aimé leur apparence.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Je n’ai pas aimé les nouveaux onglets et la nouvelle disposition.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Je n’ai pas aimé la nouvelle barre d’outils.',
 	'prefswitch-survey-answer-whyoff-other' => 'Autre raison :',
@@ -2066,8 +2067,8 @@ Veuillez choisir tout ce qui convient.',
 	'prefswitch-title-off' => 'Désactiver les nouvelles fonctionnalités',
 	'prefswitch-title-switched-off' => 'Merci',
 	'prefswitch-title-feedback' => 'Réaction',
-	'prefswitch-success-on' => 'Les nouvelles fonctionnalités sont maintenant activées. Nous espérons que vous apprécierez les nouvelles fonctionnalités. Vous pouvez toujours faire marche arrière en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]] » en haut de la page.',
-	'prefswitch-success-off' => "Les nouvelles fonctionnalités sont maintenant désactivées. Merci d'avoir essayé les nouvelles fonctionnalités. Vous pouvez toujours les remettre sur en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]] » en haut de la page.",
+	'prefswitch-success-on' => 'Les nouvelles fonctionnalités sont maintenant activées. Nous espérons que vous les apprécierez. Vous pouvez toujours faire marche arrière en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]] » en haut de la page.',
+	'prefswitch-success-off' => 'Les nouvelles fonctionnalités sont maintenant désactivées. Merci de les avoir essayées. Vous pouvez toujours les ré-activer en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]] » en haut de la page.',
 	'prefswitch-success-feedback' => 'Vos commentaires ont été envoyés.',
 	'prefswitch-return' => '<hr style="clear:both">
 Revenir à <span class="plainlinks">[$1 $2]</span>.',
@@ -2093,16 +2094,16 @@ Revenir à <span class="plainlinks">[$1 $2]</span>.',
 | Capture d’écran de la nouvelle boîte de dialogue pour insérer des liens
 |}
 |}
-L’équipe Expérience utilisateur de la Fondation Wikimedia (''User Experience Team'') a travaillé en collaboration avec des volontaires de la communauté pour vous rendre les choses plus simples. Nous sommes heureux de nous partageons avec vous ces améliorations, notamment une nouvelle apparence et une simplification des fonctions de modification. Ces changements sont effectués pour que les nouveaux contributeurs puissent débuter plus facilement, et ils sont basés sur notre [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study tests utilisateurs menés sur l’année passée]. Améliorer l’utilisabilité de nos projets est une priorité de la Fondation Wikimédia, et nous vous ferons part de nos futures avancées. Pour plus de détails, veuillez consulter le [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia billet de blog Wikimédia]. 
+L’équipe Expérience utilisateur de la Fondation Wikimedia (''User Experience Team'') a travaillé en collaboration avec des volontaires de la communauté pour vous rendre les choses plus simples. Nous sommes heureux de partager avec vous ces améliorations, notamment une nouvelle apparence et une simplification des fonctions de modification. Ces changements sont effectués pour que les nouveaux contributeurs puissent débuter plus facilement, et ils sont basés sur nos [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study tests utilisateurs menés l’année passée]. Améliorer l’utilisabilité de nos projets est une priorité de la Fondation Wikimédia, et nous vous ferons part de nos futures avancées. Pour plus de détails, veuillez consulter le [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia billet de blogue Wikimédia].
 
 === Les nouveautés ===
 
 * '''Navigation :''' nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page définissent plus clairement si vous voyez la page ou la page de discussion, et si vous consultez ou modifiez une page.
 * '''Améliorations de la barre d’outils de modification :''' nous avons réorganisé la barre d’outils de modification pour la rendre plus facile à utiliser. Maintenant, la mise en page est plus simple et plus intuitive.
-* '''Assistant de liens :''' un outil simple pour vous permettre d’ajouter des liens vers d’autres pages de Wikipédia ainsi que des liens vers des sites externes.
+* '''Assistant de liens :''' un outil simple pour vous permettre d’ajouter des liens vers d’autres pages de wikis ainsi que des liens vers des sites externes.
 * '''Amélioration de la recherche :''' nous avons amélioré les suggestions de recherche pour vous aider à trouver la page que vous recherchez plus rapidement.
 * '''Autres fonctionnalités nouvelles :''' nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.
-* '''Logo Wikipédia''': nous avons mis à jour notre logo. Pour en savoir plus, consultez le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].",
+* '''Logo Wikipédia''': nous avons mis à jour notre logo. Pour en savoir plus, consultez le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue de Wikimedia].",
 	'prefswitch-main-logged-changes' => "* L’'''onglet {{int:watch}}''' est à présent une étoile.
 * L’'''onglet {{int:move}}''' est à présent dans le menu déroulant à côté du champ de recherche.",
 	'prefswitch-main-feedback' => '=== Retours d’expérience ===
@@ -2112,7 +2113,7 @@ Si vous souhaitez désactiver les nouvelles fonctionnalités, [$1 cliquez ici]. 
 	'prefswitch-main-on' => '=== Sortez-moi de là ! ===
 [$2 Cliquez ici pour désactiver les nouvelles fonctionnalités].',
 	'prefswitch-main-off' => '=== Essayez-les ! ===
-Si vous souhaitez activer les nouvelles  fonctionnalités, veuillez [$1 cliquer ici].',
+Si vous souhaitez activer les nouvelles fonctionnalités, veuillez [$1 cliquer ici].',
 	'prefswitch-survey-intro-feedback' => 'Nous aimerions connaître vos impressions.
 Si vous le désirez, vous pouvez remplir le sondage ci-dessous avant de cliquer sur « [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]] ».',
 	'prefswitch-survey-intro-off' => "Merci d'avoir essayé nos nouvelles fonctionnalités.
@@ -2896,6 +2897,7 @@ Untuk membantu kami memperbaikinya, silakan isi survei opsional di bawah ini seb
 $messages['ig'] = array(
 	'prefswitch-survey-true' => 'Eeh',
 	'prefswitch-survey-false' => 'Mbà',
+	'prefswitch-title-switched-on' => 'Na nke ómá!',
 	'prefswitch-title-switched-off' => 'Imẹẹla',
 );
 

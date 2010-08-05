@@ -995,6 +995,7 @@ $messages['ig'] = array(
 	'ct-beginner' => 'Onye mbídó',
 	'ct-intermediate' => 'Nke ditu mmá',
 	'ct-expert' => 'Díokà',
+	'ct-anon-users' => "Ọ'bànifé ézíghị ihu",
 	'ct-and' => 'na',
 );
 

@@ -497,6 +497,7 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'pf-admin-menu-default' => 'تلواليز',
 	'pf-admin-link-editlink-page' => 'مخ سمول',
+	'pf-header-type' => 'د مخ ډول',
 	'pf-header-page_title' => 'سرليک',
 );
 

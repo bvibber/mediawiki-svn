@@ -36,6 +36,15 @@ $messages['be-tarask'] = array(
 	'rss-empty' => 'Памылка загрузкі RSS-стужкі з $1!',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'rss-desc' => 'Diskouez ur gwazh RSS war ur bajenn eus ar wiki',
+	'rss-error' => 'Dibosupl eo kargañ ar gwazh RSS eus $1 : $2',
+	'rss-empty' => 'Dibosupl eo kargañ gwazh RSS eus $1 !',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

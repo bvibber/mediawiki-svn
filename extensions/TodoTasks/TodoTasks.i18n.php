@@ -1632,32 +1632,34 @@ $messages['zh-cn'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'tasklist' => '任务列表',
-	'tasklist-parser-desc' => '增加了<nowiki>{{#todo:}}</nowiki>语句，用来分配任务',
-	'tasklist-special-desc' => '增加了一个特殊页面，用以查看[[Special:TaskList|分配到的任务]]',
+	'tasklist-parser-desc' => '添加<nowiki>{{#todo:}}</nowiki>分析器功能以分配任务',
+	'tasklist-special-desc' => '添加特殊页面以查看[[Special:TaskList|任务分配]]',
 	'tasklistbyproject' => '项目任务列表',
-	'tasklistunknownproject' => '未知的项目',
-	'tasklistunspecuser' => '未认证用户',
-	'tasklistincorrectuser' => '用户名不正确',
-	'tasklistemail' => '亲爱的 %s',
-	'tasklistemailsubject' => '[%s] 任务列表有变化',
+	'tasklistunknownproject' => '未知项目',
+	'tasklistunspecuser' => '未指定用户',
+	'tasklistincorrectuser' => '错误用户名',
+	'tasklistemail' => '亲爱的%s',
+	'tasklistemailsubject' => '[%s]任务列表更改',
 	'tasklistmytasks' => '我的任务',
-	'tasklistbyprojectbad' => "任务 '''%s''' 无法识别。
-如要查看可执行的任务，请见[[MediaWiki:TodoTasksValidProjects]]。",
-	'tasklistbyprojname' => "'''%s'''的指定任务",
+	'tasklistbyprojectbad' => "无法识别'''%s'''项目。
+如要查看有效项目列表，请见[[MediaWiki:TodoTasksValidProjects]]。",
+	'tasklistbyprojname' => "'''%s'''的分配任务",
 	'tasklistchooseproj' => '选择项目：',
 	'tasklistprojdisp' => '显示',
-	'tasklistbyname' => '== %s 的任务列表 ==',
-	'tasklistnoprojects' => "错误：您启动了'''\$wgUseProjects'''，但是没有创建[[MediaWiki:TodoTasksValidProjects]]。参见[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Installation Instructions]以获得更多信息。",
+	'tasklistbyname' => '== %s的工作备忘 ==',
+	'tasklistnowguseprojects' => '你已把$wgUseProjects设为"停用"，不能使用本页面。',
+	'tasklistnoprojects' => "错误：你启用了'''\$wgUseProjects'''，但没有创建[[MediaWiki:TodoTasksValidProjects]]。详情请见[http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 安装说明]。",
 	'tasklistemailbody' => '，
 
-某人在 %s 上给您指定了新的任务。
+某人在%s上给你分配了新任务。
 
-如要查看您的完整任务列表，请到 %s。
+如要查看你的完整任务列表，请至%s。
 
-%s 提示系统敬上',
+%s通知系统敬上',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

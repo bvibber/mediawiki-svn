@@ -443,6 +443,13 @@ $messages['pms'] = array(
 	'logentry-invalidtoken' => 'Token pa bon',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'logentry-invalidpage' => 'ناسم مخ',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

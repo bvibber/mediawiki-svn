@@ -142,6 +142,13 @@ $messages['gsw'] = array(
 	'nedits' => '$1 {{PLURAL:$1|Bearbeitig|Bearbeitige}}',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'nedits' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}}',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

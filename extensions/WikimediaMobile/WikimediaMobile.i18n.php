@@ -299,9 +299,11 @@ $messages['vi'] = array(
 	'wikimediamobile-desc' => 'Các hàm MediaWiki hỗ trợ dự án Wikimedia Di động được đăng cai tại http://github.com/hcatlin/wikimedia-mobile',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Xiaomingyan
+ */
 $messages['zh-hans'] = array(
-	'wikimediamobile-desc' => 'MediaWiki支援Wikimedia-mobile职能计画，请至http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'MediaWiki对Wikimedia-mobile项目的支持功能存放在http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

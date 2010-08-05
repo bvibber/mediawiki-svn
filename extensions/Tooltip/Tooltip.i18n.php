@@ -239,6 +239,13 @@ $messages['id'] = array(
 	'tooltip-desc' => 'Menambahkan tag <code>&lt;tooltip&gt;</code> dan <code>{{#tooltip:}}</code>',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'tooltip-desc' => 'Nè tí ọdụ <code>&lt;tooltip&gt;</code> na <code>{{#tooltip:}}</code>',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

@@ -1005,7 +1005,7 @@ $messages['diq'] = array(
 	'contribstats-clicks' => 'Klikan',
 	'contribstats-donations' => 'Yardimê pere',
 	'contribstats-conversion' => 'Reytinê vurnayîşî (%)',
-	'contribstats-template' => 'Template',
+	'contribstats-template' => 'Şablon',
 	'contribstats-nodata' => 'Data çini yo',
 	'contribstats-landingpage' => 'Pelê erdi',
 	'contribstats-donatepage' => 'Pelê bexşi',
@@ -1940,6 +1940,7 @@ $messages['gsw'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Amire80
  * @author Rotem Liss
  * @author Rotemliss
  * @author YaronSh
@@ -1979,7 +1980,7 @@ $messages['he'] = array(
 	'contribstats-value-from' => 'בין $1 ל־$2',
 	'contribstats-value-over' => 'יותר מ־$1',
 	'contributiontrackingstatistics' => 'סטטיסטיקות מעקב אחרי תרומות',
-	'contribstats-day-totals' => 'סך הכול להיום',
+	'contribstats-day-totals' => 'סך הכול ליום',
 	'contribstats-week' => 'שבוע',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|סיכום לשבוע זה|סיכומים שבועיים עבור $1 השבועות האחרונים כולל}}',
 	'contribstats-payment-type' => 'אופן התשלום',

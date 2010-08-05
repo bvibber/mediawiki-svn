@@ -1037,7 +1037,7 @@ $messages['br'] = array(
 	'code-author-unlink' => 'diliammañ ?',
 	'code-author-unlinksuccess' => 'Diliammet eo bet an aozer $1',
 	'code-author-badtoken' => "Fazi en dalc'h e-ser seveniñ an ober-mañ.",
-	'code-author-total' => 'Niver hollek a oberer',
+	'code-author-total' => 'Niver hollek a oberourien : $1',
 	'code-browsing-path' => "Hentad an adweladennoù a-benn '''$1'''",
 	'code-field-id' => 'Adweladenn',
 	'code-field-author' => 'Aozer',
@@ -1117,9 +1117,9 @@ URL klok : $3
 Diverrañ eus ar c\'hemmoù :
 
 $4',
-	'code-stats' => 'Stadegoù',
+	'code-stats' => 'stadegoù',
 	'code-stats-staus-breakdown' => 'Niver a azgweladur hervez ar stad',
-	'code-stats-count' => 'Niver a azgweladur',
+	'code-stats-count' => 'Niver a adweladennoù',
 	'repoadmin' => "Melestradurezh an dastumlec'hioù",
 	'repoadmin-new-legend' => 'Krouiñ ur sanailh nevez',
 	'repoadmin-new-label' => 'Anv ar sanailh :',
@@ -9265,6 +9265,7 @@ $4',
 Опис змін:
 
 $4',
+	'code-stats' => 'статистика',
 	'repoadmin' => 'Управління сховищем програмного коду',
 	'repoadmin-new-legend' => 'Створити нове сховище',
 	'repoadmin-new-label' => 'Назва сховища:',
@@ -9808,6 +9809,7 @@ $4',
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
 	'code' => '查看代码',

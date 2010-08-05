@@ -1745,6 +1745,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'recordadmin-select' => 'ټاکل',
+	'recordadmin-newsearch' => 'د $1 نوې پلټنه',
 	'recordadmin-submit' => 'سپارل',
 	'recordadmin-createsuccess' => '$1 جوړ شو',
 	'recordadmin-buttonsearch' => 'پلټنه',
@@ -1757,6 +1758,7 @@ $messages['ps'] = array(
 	'recordadmin-created' => 'جوړ شوي',
 	'recordadmin-modified' => 'بدلېدلي',
 	'recordadmin-actions' => 'کړنې',
+	'recordadmin-needscontent' => 'مېنځپانګه ورګډول ...',
 	'recordadmin-editwithform' => 'ځانتياوې',
 );
 

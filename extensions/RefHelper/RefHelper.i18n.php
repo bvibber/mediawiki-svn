@@ -892,6 +892,8 @@ A peul [[Special:RefHelper|gionté l'arferiment a man]] o [[Special:RefSearch|s�
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'refhelper-refcreate_success' => 'د [[$1]] په نوم مخ نه ؤ خو اوس جوړ شوی.',
+	'refhelper-refcreate_failure' => 'د [[$1]] په نوم يو مخ د پخوا نه شته!',
 	'refhelper-label_authorsurname' => 'تخلص:',
 	'refhelper-title' => 'سرليک:',
 	'refhelper-pages' => 'مخونه:',

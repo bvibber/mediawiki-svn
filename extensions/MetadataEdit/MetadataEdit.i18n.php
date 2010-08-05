@@ -644,6 +644,7 @@ $messages['krc'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
+	'metadataedit-desc' => 'Deiht beim Sigge_Ändere de Saachjruppe, de Lenks op Sigge en ander Shproche, un de zohjelohße Schablone en en extra Feld.',
 	'metadata_help' => 'Metta-Daate:',
 );
 

@@ -2704,7 +2704,7 @@ $wgGoogleMapsMessages['id'] = array(
  */
 $wgGoogleMapsMessages['ig'] = array(
 	'gm-balloon-title' => 'Ishi:',
-	'gm-remove' => 'wefu',
+	'gm-remove' => 'wéfù',
 	'gm-tab' => 'Ntabi',
 	'gm-searching' => 'ö na cha...',
 	'gm-width' => 'Àsáa',

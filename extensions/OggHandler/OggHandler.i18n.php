@@ -1535,9 +1535,15 @@ Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-oggThumb-failed' => 'oggThumb gagal membuat miniatur gambar.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'ogg-play' => 'Dọ',
+	'ogg-pause' => "Zùy'íké",
+	'ogg-stop' => 'Kwùshí',
 	'ogg-more' => 'Ozókwá...',
+	'ogg-dismiss' => 'Mèchié',
 );
 
 /** Ido (Ido)

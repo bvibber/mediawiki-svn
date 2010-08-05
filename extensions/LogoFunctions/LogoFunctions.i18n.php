@@ -43,7 +43,7 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'logofunctions-desc' => "Ouzhpenn un arc'hwel d'ar parser a-benn termeniñ logo ar wiki",
+	'logofunctions-desc' => "Ouzhpennañ un arc'hwel d'ar parser a-benn termeniñ logo ar wiki",
 	'logofunctions-filenotexist' => "Fazi : N'eus ket eus [[File:$1]]",
 );
 

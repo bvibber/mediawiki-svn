@@ -1451,7 +1451,7 @@ $wgCustomToolbarMessages['id'] = array(
  */
 $wgCustomToolbarMessages['ig'] = array(
 	'ct_bold_caption' => 'Shí íke',
-	'ct_external_caption' => 'Jikodo di ẹzí',
+	'ct_external_caption' => 'Jikodo di èzí',
 	'ct_nowiki_caption' => 'Wiki àdíghị',
 	'ct_submit' => 'Gá!',
 	'ct_user_user' => "Ọ'bànifé",

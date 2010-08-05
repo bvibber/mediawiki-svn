@@ -715,9 +715,10 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Xiaomingyan
  */
 $messages['zh-hans'] = array(
-	'newusermessage-desc' => '在新用户的讨论页上添加一条信息',
+	'newusermessage-desc' => '在新用户的讨论页上添加信息',
 	'newuseredit-summary' => '在新用户的讨论页上添加[[{{int:newusermessage-template}}|欢迎信息]]',
 );
 

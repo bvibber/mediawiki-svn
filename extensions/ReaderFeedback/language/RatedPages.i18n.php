@@ -569,6 +569,14 @@ $messages['pms'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|revision|revision}}',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'ratedpages-none' => 'په همدې لړليک کې هېڅ کوم مخ نشته',
+	'ratedpages-count' => '$1 {{PLURAL:$1|مخليدنه|مخليدنې}}',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Hamilton Abreu

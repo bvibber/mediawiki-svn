@@ -800,6 +800,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'profiling-ok' => 'ښه',
+	'profiling-data-process' => 'پروسه',
 	'profiling-data-count' => 'شمېرل',
 	'profiling-data-time' => 'وخت (ټول)',
 );

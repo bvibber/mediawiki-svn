@@ -841,6 +841,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'sitematrix-language' => 'Asụsụ',
 	'sitematrix-total' => "'''Ọgụgụ nílé: $1'''",
 	'sitematrix-sitetotal' => 'Òlé níle',
 	'sitematrix-private' => 'zonàrì ñkịtị',
