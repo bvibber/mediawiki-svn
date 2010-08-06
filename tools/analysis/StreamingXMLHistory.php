@@ -206,7 +206,7 @@ class StreamingXMLHistoryParser{
 						$logitem->id,
 						strtotime($logitem->timestamp),
 						$logitem->contributor->username,
-						"",
+						$logitem->params,
 						"",
 						"",
 						"",
