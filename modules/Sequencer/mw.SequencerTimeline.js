@@ -179,27 +179,32 @@ mw.SequencerTimeline.prototype = {
 			}
 		})	
 	},
+	
+	getTrackSetId:function( trackIndex ){
+		return this.sequencer.getId() + '_clipTrackSet_' + trackIndex;	
+	},
 	/**
 	 * get and add a clip track set to the dom: 
 	 */
 	getClipTrackSet: function( trackIndex ){
 		var _this = this;
-		var clipTrackSetId = this.sequencer.getId() + '_clipTrackSet_' + trackIndex;	
 		
 		return $j('<ul />')
-				.attr('id',  clipTrackSetId)
+				.attr('id',  this.getTrackSetId( trackIndex ))
+				.data('trackIndex', trackIndex)
 				.addClass('clipTrackSet ui-corner-all')
 				// Add "sortable
 				.sortable({ 
 				    placeholder: "clipSortTarget timelineClip ui-corner-all",
 				    opacity: 0.6,
+				    tolerance: 'pointer',
 				    cursor: 'move',
 				    helper: function( event, helper ){						
 						// xxxx might need some fixes for multi-track
 						var $selected = _this.getTimelineContainer().find( '.selectedClip' )
 						if ( $selected.length === 0 ||  $selected.length == 1) { 
 							return $j( helper ); 
-						} 								
+						} 			
 						return $j('<ul />')
 							.css({
 								'width' : (_this.timelineThumbSize.width + 16) * $selected.length
@@ -208,10 +213,31 @@ mw.SequencerTimeline.prototype = {
 					},
 				    scroll: true,
 				    update: function( event, ui ) {
-						// Update the html dom 
-						//_this.handleReorder( ui.item );									
+						// Check if the movedClip was a timeline clip ( else generate timeline clip )  
+						if( ! $j(  ui.item ).hasClass( 'timelineClip' ) ){
+							// likely an asset dragged from add-media-wizard 
+							// ( future would be cool to support desktop file drag and drop )
+							_this.handleDropAsset( ui.item );
+						} else {											
+							// Update the html dom 
+							_this.handleReorder( ui.item );
+						}
 					}
 				})
+	},
+	// expand the track size by clip length + 1
+	expandTrackSetSize: function ( trackIndex ){
+		var trackClipCount = this.getTimelineContainer().find( '.clipTrackSet' ).children().length;		
+		//mw.log("SequencerTimeline::expandTrackSetSize: " + this.timelineThumbSize.width + ' tcc: ' + trackClipCount + ' ::' +  ( ( this.timelineThumbSize.width + 16) * (trackClipCount + 2) ) );		
+		this.getTracksContainer().find('.clipTrackSet').css({ 
+			'width' : ( (this.timelineThumbSize.width + 16) * (trackClipCount + 2 ) ) + 'px'
+		});
+	},
+	restoreTrackSetSize: function ( trackIndex ){
+		var trackClipCount = this.getTimelineContainer().find( '.clipTrackSet' ).children().length;
+		this.getTracksContainer().find('.clipTrackSet').css({ 
+			'width' : ( ( this.timelineThumbSize.width + 16) * trackClipCount) + 'px'
+		});
 	},
 	getTimelineClip: function( $clipTrackSet, $node ){
 		var _this = this;
@@ -232,9 +258,10 @@ mw.SequencerTimeline.prototype = {
 	editClip: function( selectedClip ){
 		var smil = this.sequencer.getSmil();
 		// get the smil element for the edit tool:
-		var smilClip = smil.$dom.find('#' + $j( selectedClip ).data('smilId') );		
-		this.sequencer.getEditTools().drawClipEditTool( smilClip );
-	},
+		var smilClip = smil.$dom.find('#' + $j( selectedClip ).data('smilId') );	
+		var toolTarget = this.sequencer.getEditToolTarget();
+		this.sequencer.getEditTools().drawClipEditTools( toolTarget, previewTarget, smilClip );
+	},	
 	
 	/**
 	 * Remove selected clips and update the smil player
@@ -257,11 +284,21 @@ mw.SequencerTimeline.prototype = {
 		this.sequencer.getActionsEdit().registerEdit();
 	},
 	
+	/**
+	 * handles assets dropped into the timeline
+	 */
+	handleDropAsset: function( asset ){
+		// Get the newAsset resource object
+		var clipIndex = $j( asset ).index();
+		var trackIndex = $j( asset ).parent().data('trackIndex);
+		this.sequencer.getAddMedia().insertAssetDialog( asset, trackIndex, clipIndex );
+	},
+	
 	handleReorder: function ( movedClip ){
 		var _this = this;
 		var smil = this.sequencer.getSmil();
-		var movedIndex = null;
-		
+		var movedIndex = null;				
+				
 		var clipIndex = $j( movedClip ).index();
 		var $movedSmileNode = smil.$dom.find( '#' + $j( movedClip ).data('smilId') );
 		var $seqParent = $movedSmileNode.parent();		

@@ -66,7 +66,7 @@ mw.SequencerTools.prototype = {
 		'preview' : {
 			'icon' : 'play',
 			'title' : gM('mwe-sequencer-preview'),
-			'action': function( _this, smilClip, toolId){				
+			'action': function( _this, smilClip, toolId ){				
 				_this.sequencer.getPlayer().previewClip( smilClip );
 			}
 		},
@@ -218,9 +218,10 @@ mw.SequencerTools.prototype = {
 	getEditToolId: function( toolId, attributeName){
 		return 'editTool_' + toolId + '_' + attributeName;
 	},
-	drawClipEditTool: function( smilClip ){
-		$target = this.sequencer.getEditToolTarget();
- 
+	
+	
+	drawClipEditTools: function( $target, smilClip){
+	
 		var toolId = '';
 		// get the toolId based on what "ref type" smilClip is:
 		switch( this.sequencer.getSmil().getRefType( smilClip ) ){

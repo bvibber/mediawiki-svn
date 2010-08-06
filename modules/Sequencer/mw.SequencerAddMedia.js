@@ -77,7 +77,7 @@ mw.SequencerAddMedia.prototype = {
 		if( ! this.remoteSearchDriver ){
 			// set the tool target to loading
 			mw.load( 'AddMedia.addMediaWizard', function(){
-				this.remoteSearchDriver = new mw.RemoteSearchDriver({
+				_this.remoteSearchDriver = new mw.RemoteSearchDriver({
 					'target_container' : _this.sequencer.getEditToolTarget(),
 					'target_search_input' : _this.sequencer.getMenuTarget().find('input.searchMedia'),					
 					'displaySearchInput': false,
@@ -95,11 +95,22 @@ mw.SequencerAddMedia.prototype = {
 			});
 		} else {
 			this.remoteSearchDriver.createUI()
-		}
-		
-	},
+		}		
+	},	
 	/**
-	 * add search results drab binding so they can be dragged into the sequencer
+	 * Get the resource object from a provided asset
+	 */
+	getResourceFromAsset: function( asset ){
+		var _this = this;
+		if( ! $j( asset ).attr('id') ){
+			mw.log( "Error getResourceFromAsset:: missing asset id" +  $j( asset ).attr('id') );
+			return false;
+		}
+		return _this.remoteSearchDriver.getResourceFromId( $j( asset ).attr('id') );
+	},	
+	
+	/**
+	 * Add search results drab binding so they can be dragged into the sequencer
 	 */
 	addSearchResultsDrag: function(){
 		var _this = this;
@@ -107,7 +118,11 @@ mw.SequencerAddMedia.prototype = {
 		this.sequencer.getEditToolTarget()
 			.find(".rsd_res_item")
 			.draggable({
-				connectToSortable: '#' + _this.sequencer.getTimeline().getTracksContainer().find('.clipTrackSet').attr('id'),
+				connectToSortable: $j( _this.sequencer.getTimeline().getTracksContainer().find('.clipTrackSet') ),
+				start: function( event, ui ){
+					// give the target timeline some extra space: 
+					_this.sequencer.getTimeline().expandTrackSetSize();
+				},
 				helper: function() {					
 					// Append a li to the sortable list					
 					return $j( this )
@@ -118,22 +133,61 @@ mw.SequencerAddMedia.prototype = {
 						})
 						.get( 0 );	
 				},
-				revert: 'invalid'
+				revert: 'invalid'		
 			});
 	},
-	
+	insertAssetDialog: function( assetElement, sequenceTrack, order ){
+		this.insertResourceDialog( 
+			this.getResourceFromAsset( assetElement ),
+			sequenceTrack,
+			order
+		);
+	},
 	/**
 	 * Create an insert resource dialog, expose basic in-out points or / duration 
-	 * 
+	 * xxx todo if resource needs to be imported run import dialog from remoteResourceDrive
 	 *  buttons include insert at end or insert after current
 	 */
-	insertResourceDialog: function( resource ){
+	insertResourceDialog: function( resource, sequenceTrack, order ){
 		var buttons = {};
-		// insert after last selected clip ( or at end ) 
+		var cat = resource;
+		debugger;
+		// Get an xml smil ref pointer: ( per the supplied content type )
+		var smilRef = this.getSmilRefFromResource( resource );
+
+		// Build out the resource dialog content: 
+		var $content = 
+			$j('<div />').append( 
+				$j('<div />')
+				.addClass( 'sequencerEditTools' )
+				.css({				
+					'width' : '50%',
+					'height' : '100%',
+					'overflow': 'auto',
+					'position' : 'absolute',
+					'top' : '0px',
+					'left': '0px'
+				}),
+				
+				$j('<div />')
+				.css({
+					'position' : 'absolute'
+					'top' : '0px',
+					'right': '0px',
+					'width' : '50%',
+					'height' : '100%'
+				})
+				.append(
+					// the div 
+				)
+			)
+		// Build out the edit tools 
+		$content.find( '.sequencerEditTools' )
+		
+		// Insert after last selected clip ( or at end ) 
 		buttons[ gM('mwe-sequencer-insert') ] = function() {
-			mw.log("insert resource into sequence");
-			var cat = resource;
-			debugger;
+			// call a function that inserts into smil and timeline ( getTimeline() )
+			alert(' insert resource')
 		}		
 		// cancel
 		buttons[ gM('mwe-cancel') ] = function(){
@@ -144,13 +198,15 @@ mw.SequencerAddMedia.prototype = {
 			'title' : gM('mwe-sequencer-insert-resource'),
 			'dragable' : true,	
 			'height' : 480,
-			'width' : 640,
+			'width' : 800,
 			'resizable' : true,		
-			'content' : function(){
-				// add the resource on-top and trim 
-			},
+			'content' : resourceEdit.getUi()
 			'buttons' : buttons
 		});
+	},
+	
+	getSmilRefFromResource: function( resource ){
+			
 	}
 }
 

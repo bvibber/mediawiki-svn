@@ -436,11 +436,10 @@ EmbedPlayerManager.prototype = {
 		// Update the list of dependent libraries for the player 
 		// ( allows extensions to add to the dependency list )
 		mw.embedPlayerUpdateLibraryRequest( playerElement, playerDependencyRequest );
-				
+		
 		// Load any skins we need then swap in the interface
-		mw.load( playerDependencyRequest, function() {
-			var waitForMeta = true;
-			
+		mw.load( playerDependencyRequest, function() {								
+			var waitForMeta = true;								
 			// Be sure to "stop" the target ( sometimes firefox keeps playing the video even 
 			// though its been removed from the DOM )					
 			if( playerElement.pause ){
@@ -498,7 +497,7 @@ EmbedPlayerManager.prototype = {
 				playerElement.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 				playerElement.addEventListener( "loadedmetadata", runPlayerSwap, true );
 			
-				// Time-out of 5 seconds ( maybe still playable but no timely metadata )
+				// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
 				setTimeout( runPlayerSwap, 5000 );
 				return ;
 			} else { 
@@ -1033,7 +1032,6 @@ mediaElement.prototype = {
 		if ( $j( videoElement ).attr( "src" ) ) {
 			_this.tryAddSource( videoElement );
 		}
-		
 		// Process elements source children
 		$j( videoElement ).find( 'source,track' ).each( function( ) {			
 			_this.tryAddSource( this );
@@ -1128,7 +1126,7 @@ mediaElement.prototype = {
 	* Selects the default source via cookie preference, default marked, or by id order
 	*/
 	autoSelectSource: function() {
-		mw.log( 'EmbedPlayer::mediaElement::autoSelectSource:' + this.id);
+		mw.log( 'EmbedPlayer::mediaElement::autoSelectSource:' );
 		// Select the default source
 		var playableSources = this.getPlayableSources();
 		var flash_flag = ogg_flag = false;
@@ -1614,7 +1612,7 @@ mw.EmbedPlayer.prototype = {
 		// Scope the end of check for player sources so it can be called in a callback  
 		var finishCheckPlayerSources = function(){
 			// Run embedPlayer sources hook		
-			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){				
+			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){							
 				_this.checkForTimedText();
 			})			
 		}
