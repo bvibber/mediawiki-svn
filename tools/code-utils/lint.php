@@ -2,7 +2,7 @@
 
 /**
  * Recursive directory crawling PHP syntax checker
- * Uses parsekit, which is much faster than php -l for lots of files due to the 
+ * Uses parsekit, which is much faster than php -l for lots of files due to the
  * PHP startup overhead.
  */
 
@@ -15,7 +15,7 @@ if ( isset( $argv[1] ) ) {
 } else {
 	$dir = '.';
 }
-	
+
 if ( !check_dir( $dir ) ) {
 	exit( 1 );
 } else {

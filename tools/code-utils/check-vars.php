@@ -3,7 +3,7 @@
 /*
  * Checks a number of syntax conventions on variables from a valid PHP file.
  *
- * Run as: 
+ * Run as:
  *  find phase3/ \( -name \*.php -or -name \*.inc \) -not \( -name importUseModWiki.php -o -name diffLanguage.php \) -exec php tools/code-utils/check-vars.php \{\} +
  */
 
@@ -13,8 +13,8 @@ require_once( dirname( __FILE__ ) . "/../../phase3/includes/AutoLoader.php" );
 $mwDeprecatedFunctions = false;
 @include( dirname( __FILE__ ) . "/deprecated.functions" );
 
-if ( !extension_loaded( 'sockets' ) ) dl('sockets.so');
-if ( !extension_loaded( 'PDO' ) ) dl('pdo.so');
+if ( !extension_loaded( 'sockets' ) ) dl( 'sockets.so' );
+if ( !extension_loaded( 'PDO' ) ) dl( 'pdo.so' );
 
 $wgAutoloadLocalClasses += array(
 		'DBAccessError' => 'LBFactory',
@@ -24,12 +24,12 @@ $wgAutoloadLocalClasses += array(
 		'PremadeMediawikiExtensionGroups' => 'Translate extension',
 		'languages' => 'maintenance/language/languages.inc',
 		'extensionLanguages' => 'maintenance/language/languages.inc',
-		 'MessageWriter' => 'maintenance/language/writeMessagesArray.inc',
+		'MessageWriter' => 'maintenance/language/writeMessagesArray.inc',
 		'tidy' => 'pecl tidy',
 		'PEAR' => 'pear',
 		'Normalizer' => 'pecl intl',
 		'Mail' => 'pear Mail',
-		
+
 		'UserDupes' => 'maintenance/userDupes.inc',
 		'DeleteDefaultMessages' => 'maintenance/deleteDefaultMessages.php',
 		'PopulateCategory' => 'maintenance/populateCategory.php',
@@ -43,7 +43,7 @@ $wgAutoloadLocalClasses += array(
 class CheckVars {
 	var $mDebug = false;
 	static $mDefaultSettingsGlobals = null;
-	
+
 	static $constantIgnorePrefixes = array( "PGSQL_", "OCI_", "SQLT_BLOB", "DB2_", "XMLREADER_" ); # Ignore constants with these prefixes
 	protected $generateDeprecatedList = false;
 
@@ -53,20 +53,20 @@ class CheckVars {
 	const IN_FUNCTION = 2;
 	const IN_GLOBAL = 3;
 	const IN_INTERFACE = 4;
-	
+
 	/* Token specializations */
 	const CLASS_NAME = -4;
 	const CLASS_MEMBER = -5;
 	const FUNCTION_NAME = -6;
 	const FUNCTION_DEFINITION = -7;
-	
+
 	/* Function attribute */
 	const FUNCTION_DEPRECATED = -8;
-	
+
 	function __construct() {
 		if ( self::$mDefaultSettingsGlobals == null ) {
 			$this->load( dirname( dirname( dirname( __FILE__ ) ) ) . "/phase3/includes/DefaultSettings.php", false );
-			
+
 			if ( count( $this->mTokens ) > 0 ) {
 				$globals = array (
 					'$wgArticle', # Setup.php
@@ -112,7 +112,7 @@ class CheckVars {
 				);
 
 				foreach ( $this->mTokens as $token ) {
-					if ( is_array( $token ) && ($token[0] == T_VARIABLE) && (substr($token[1], 0, 3) == '$wg') ) {
+					if ( is_array( $token ) && ( $token[0] == T_VARIABLE ) && ( substr( $token[1], 0, 3 ) == '$wg' ) ) {
 						$globals[] = $token[1];
 					}
 				}
@@ -121,7 +121,7 @@ class CheckVars {
 			}
 		}
 	}
-	
+
 	function setGenerateDeprecatedList( $bool = true ) {
 		$this->generateDeprecatedList = $bool;
 	}
@@ -131,18 +131,18 @@ class CheckVars {
 	function saveDeprecatedList( $filename ) {
 		file_put_contents( $filename, "<?php\n\$mwDeprecatedFunctions = array( " . implode( ",\n\t", $this->mDeprecatedFunctionList ) . "\n);\n\n" );
 	}
-	
-	
-	function load($file, $shortcircuit = true) {
+
+
+	function load( $file, $shortcircuit = true ) {
 		$this->mProblemCount = 0;
 		$this->mFilename = $file;
 		$source = file_get_contents( $file );
 		if ( substr( $source, 0, 3 ) == "\xEF\xBB\xBF" ) {
-			$this->warning( "$file has an UTF-8 BOM");
+			$this->warning( "$file has an UTF-8 BOM" );
 		}
 		$source = rtrim( $source );
 		if ( substr( $source, -2 ) == '?>' ) {
-			$this->warning( "?> at end of file is deprecated in MediaWiki code");
+			$this->warning( "?> at end of file is deprecated in MediaWiki code" );
 		}
 		if ( $shortcircuit && !preg_match( "/^[^'\"#*]*function [^\"']*\$/m", $source ) ) {
 			$this->mTokens = array();
@@ -151,20 +151,20 @@ class CheckVars {
 		$this->mTokens = token_get_all( $source );
 		$this->mStatus = self::WAITING_FUNCTION;
 		$this->mFunctionQualifiers = array();
-		$this->mKnownFileClasses = array();		
+		$this->mKnownFileClasses = array();
 		$this->mUnknownClasses = array();
-		
-		
+
+
 		$this->mConstants = array( 'PARSEKIT_SIMPLE', 'UNORM_NFC', # Extensions
 			/* Defined in Title.php and GlobalFunctions.php */
-			'GAID_FOR_UPDATE', 'TC_MYSQL', 'TS_UNIX', 'TS_MW', 'TS_DB', 'TS_RFC2822', 'TS_ISO_8601', 'TS_EXIF', 'TS_ORACLE', 'TS_POSTGRES', 'TS_DB2') ;
+			'GAID_FOR_UPDATE', 'TC_MYSQL', 'TS_UNIX', 'TS_MW', 'TS_DB', 'TS_RFC2822', 'TS_ISO_8601', 'TS_EXIF', 'TS_ORACLE', 'TS_POSTGRES', 'TS_DB2' ) ;
 	}
-	
+
 	static $functionQualifiers = array( T_ABSTRACT, T_PRIVATE, T_PUBLIC, T_PROTECTED, T_STATIC );
-	
+
 	function execute() {
 		$currentToken = null;
-		
+
 		foreach ( $this->mTokens as $token ) {
 			if ( self::isMeaningfulToken( $currentToken ) )
 				$lastMeaningfulToken = $currentToken;
@@ -174,33 +174,33 @@ class CheckVars {
 				# See r69767
 				$this->warning( "$token[1] in line $token[2] after $lastMeaningfulToken[1] in line $lastMeaningfulToken[2]" );
 			}
-			
+
 			if ( $lastMeaningfulToken[0] == T_DECLARE && $token[0] == T_STRING ) {
 				$currentToken[0] = T_WHITESPACE; # Ignore the ticks or encoding
 				continue;
 			}
 
-			if ( is_array( $token ) && ( $token[0] == T_CONSTANT_ENCAPSED_STRING ) && is_array( $lastMeaningfulToken ) 
-				&& ( ( $lastMeaningfulToken[0] == T_STRING ) || ( $lastMeaningfulToken[0] == self::FUNCTION_NAME ) ) 
+			if ( is_array( $token ) && ( $token[0] == T_CONSTANT_ENCAPSED_STRING ) && is_array( $lastMeaningfulToken )
+				&& ( ( $lastMeaningfulToken[0] == T_STRING ) || ( $lastMeaningfulToken[0] == self::FUNCTION_NAME ) )
 				&& ( $lastMeaningfulToken[1] == 'define' ) ) {
-					
+
 				// Mark as defined
 				$this->mConstants[] = trim( $token[1], "'\"" );
 			}
-			
-			if ( is_array( $token ) && ( $token[0] == T_CONSTANT_ENCAPSED_STRING ) && is_array( $lastMeaningfulToken ) 
-				&& ( ( $lastMeaningfulToken[0] == T_STRING ) || ( $lastMeaningfulToken[0] == self::FUNCTION_NAME ) ) 
+
+			if ( is_array( $token ) && ( $token[0] == T_CONSTANT_ENCAPSED_STRING ) && is_array( $lastMeaningfulToken )
+				&& ( ( $lastMeaningfulToken[0] == T_STRING ) || ( $lastMeaningfulToken[0] == self::FUNCTION_NAME ) )
 				&& ( $lastMeaningfulToken[1] == 'defined' ) ) {
-					
+
 				// FIXME: Should be marked as defined only inside this T_IF
 				$this->mConstants[] = trim( $token[1], "'\"" );
 			}
-			
+
 			switch ( $this->mStatus ) {
 				case self::WAITING_FUNCTION:
 					if ( $token == ';' )
 						$this->mFunctionQualifiers = array();
-					
+
 					if ( $token[0] == T_DOC_COMMENT ) {
 						if ( strpos( $token[1], '@deprecated' ) !== false ) {
 							$this->mFunctionQualifiers[] = self::FUNCTION_DEPRECATED;
@@ -209,48 +209,48 @@ class CheckVars {
 					if ( in_array( $token[0], self::$functionQualifiers ) ) {
 						$this->mFunctionQualifiers[] = $token[0];
 					}
-					if ($token[0] == T_INTERFACE) {
+					if ( $token[0] == T_INTERFACE ) {
 						$this->mStatus = self::IN_INTERFACE;
 					}
-					
+
 					if ( ( $lastMeaningfulToken[0] == T_CLASS ) && ( $token[0] == T_STRING ) ) {
 						$this->mKnownFileClasses[] = $token[1];
 						$this->mClass = $token[1];
 					}
-										
-					if ($token[0] != T_FUNCTION)
+
+					if ( $token[0] != T_FUNCTION )
 						continue;
 					$this->mStatus = self::IN_FUNCTION_NAME;
 					break;
-				
+
 				case self::IN_FUNCTION_NAME:
 					if ( ( $token == '&' ) || ( $token[0] == T_WHITESPACE ) )
 						continue;
-					if ($token[0] == T_STRING) {
+					if ( $token[0] == T_STRING ) {
 						$this->mFunction = $token[1];
 						$this->mStatus = self::IN_FUNCTION;
 						$this->mBraces = 0;
 						$this->mFunctionGlobals = array();
 						$currentToken[0] = self::FUNCTION_DEFINITION;
-						
+
 						if ( $this->generateDeprecatedList && in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) ) {
 							if ( ( substr( $this->mFunction, 0, 2 ) != "__" ) && $this->mClass != 'Image' ) {
 								$this->mDeprecatedFunctionList[] = "/*$this->mClass::*/'$this->mFunction'";
 							}
 						}
-						
-						$this->debug("Entering into function {$token[1]} at line {$token[2]} ");
+
+						$this->debug( "Entering into function {$token[1]} at line {$token[2]} " );
 						continue;
 					}
-					
+
 					$this->error( $token );
-				
+
 				case self::IN_FUNCTION:
 					if ( ( $token == ';' ) && ( $this->mBraces == 0 ) ) {
 						if ( !in_array( T_ABSTRACT, $this->mFunctionQualifiers ) ) {
 							$this->error( $token );
 						}
-						//abstract function
+						// abstract function
 						$this->mStatus = self::WAITING_FUNCTION;
 						continue;
 					}
@@ -259,7 +259,7 @@ class CheckVars {
 					} elseif ( $token == '}' ) {
 						$this->mBraces--;
 						$this->purgeGlobals();
-						if (! $this->mBraces ) {
+						if ( ! $this->mBraces ) {
 							$this->mStatus = self::WAITING_FUNCTION;
 							$this->mFunctionQualifiers = array();
 						}
@@ -277,11 +277,11 @@ class CheckVars {
 						}
 						if ( $token[0] == T_VARIABLE ) {
 							# $this->debug( "Found variable $token[1]" );
-							
+
 							if ( ( $token[1] == '$this' ) && in_array( T_STATIC, $this->mFunctionQualifiers ) ) {
 								$this->warning( "Use of \$this in static method function {$this->mFunction} in line $token[2]" );
 							}
-							
+
 							if ( $lastMeaningfulToken[0] == T_PAAMAYIM_NEKUDOTAYIM ) {
 								/* Class variable. No check for now */
 							} else {
@@ -297,54 +297,54 @@ class CheckVars {
 						} elseif ( ( $token[0] == T_PAAMAYIM_NEKUDOTAYIM ) && is_array( $lastMeaningfulToken ) && ( $lastMeaningfulToken[0] == T_VARIABLE ) ) {
 							if ( ( $lastMeaningfulToken[1] == '$self' ) || ( $lastMeaningfulToken[1] == '$parent' ) ) {
 								# Bug of r69904
-								$this->warning("$lastMeaningfulToken[1]:: used in line $lastMeaningfulToken[2] It probably should have been " . substr( $lastMeaningfulToken[1], 1 ) . "::");
+								$this->warning( "$lastMeaningfulToken[1]:: used in line $lastMeaningfulToken[2] It probably should have been " . substr( $lastMeaningfulToken[1], 1 ) . "::" );
 							}
-						} elseif ( ( $token[0] == T_STRING ) && ( is_array( $lastMeaningfulToken)  
+						} elseif ( ( $token[0] == T_STRING ) && ( is_array( $lastMeaningfulToken )
 								&& in_array( $lastMeaningfulToken[0], array( T_OBJECT_OPERATOR, T_PAAMAYIM_NEKUDOTAYIM ) ) ) ) {
 							# Class member or class constant
 							$currentToken[0] = self::CLASS_MEMBER;
-						} elseif ( $token[0] == T_STRING && is_array( $lastMeaningfulToken ) && 
+						} elseif ( $token[0] == T_STRING && is_array( $lastMeaningfulToken ) &&
 							( in_array( $lastMeaningfulToken[0], array( T_INSTANCEOF, T_NEW ) ) ) ) {
-							
+
 							$this->checkClassName( $token );
 							$currentToken[0] = self::CLASS_NAME;
 						}
 					}
-					
+
 					if ( ( $token == '(' ) && is_array( $lastMeaningfulToken ) ) {
 						if ( $lastMeaningfulToken[0] == T_STRING ) {
 							$lastMeaningfulToken[0] = self::FUNCTION_NAME;
-							$this->checkDeprecation($lastMeaningfulToken);
-						} else if ( $lastMeaningfulToken[0] == self::CLASS_MEMBER) {
-							$this->checkDeprecation($lastMeaningfulToken);
+							$this->checkDeprecation( $lastMeaningfulToken );
+						} else if ( $lastMeaningfulToken[0] == self::CLASS_MEMBER ) {
+							$this->checkDeprecation( $lastMeaningfulToken );
 						}
 					}
-					
+
 					/* Detect constants */
-					if ( self::isMeaningfulToken( $token ) && is_array( $lastMeaningfulToken ) && 
-							( $lastMeaningfulToken[0] == T_STRING ) && !self::isPhpConstant($lastMeaningfulToken[1]) ) {
-						
+					if ( self::isMeaningfulToken( $token ) && is_array( $lastMeaningfulToken ) &&
+							( $lastMeaningfulToken[0] == T_STRING ) && !self::isPhpConstant( $lastMeaningfulToken[1] ) ) {
+
 						if ( in_array( $token[0], array( T_PAAMAYIM_NEKUDOTAYIM, T_VARIABLE, T_INSTANCEOF ) ) ) {
 							$this->checkClassName( $lastMeaningfulToken );
-						} else {						
-							
+						} else {
+
 							if ( !defined( $lastMeaningfulToken[1] ) && !in_array( $lastMeaningfulToken[1], $this->mConstants ) && !self::isIgnoreConstant( $lastMeaningfulToken[1] ) ) {
 								$this->warning( "Use of undefined constant $lastMeaningfulToken[1] in line $lastMeaningfulToken[2]" );
 							}
 						}
 					}
 					continue;
-				
+
 				case self::IN_GLOBAL:
-					if ($token == ',')
+					if ( $token == ',' )
 						continue;
-					if ($token == ';') {
+					if ( $token == ';' ) {
 						$this->mStatus = self::IN_FUNCTION;
 						continue;
 					}
-					if (!self::isMeaningfulToken( $token ) )
+					if ( !self::isMeaningfulToken( $token ) )
 						continue;
-					
+
 					if ( is_array( $token ) ) {
 						if ( $token[0] == T_VARIABLE ) {
 							if ( !$this->shouldBeGlobal( $token[1] ) && !$this->canBeGlobal( $token[1] ) ) {
@@ -360,32 +360,32 @@ class CheckVars {
 						}
 					}
 					$this->error( $token );
-					
+
 				case self::IN_INTERFACE:
 					if ( $lastMeaningfulToken[0] == T_INTERFACE )
 						$this->mKnownFileClasses[] = $token[1];
-					
+
 					if ( $token == '{' ) {
 						$this->mBraces++;
 					} elseif ( $token == '}' ) {
 						$this->mBraces--;
-						if (!$this->mBraces)
+						if ( !$this->mBraces )
 							$this->mStatus = self::WAITING_FUNCTION;
 					}
 					continue;
 			}
 		}
-		
+
 		$this->checkPendingClasses();
 	}
-	
+
 	function checkDeprecation( $token ) {
 		global $mwDeprecatedFunctions;
 		if ( $mwDeprecatedFunctions && !in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) && in_array( $token[1], $mwDeprecatedFunctions ) ) {
 			$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token[1]} in line {$token[2]}" );
 		}
 	}
-	
+
 	function error( $token ) {
 		$msg = "Unexpected token " . ( is_string( $token ) ? $token : token_name( $token[0] ) ) ;
 		if ( is_array( $token ) && isset( $token[2] ) ) {
@@ -393,9 +393,9 @@ class CheckVars {
 		}
 		$msg .= "\n";
 		$this->warning( $msg );
-		die(1);
+		die( 1 );
 	}
-	
+
 	function warning( $msg ) {
 		if ( !$this->mProblemCount ) {
 			echo "Problems in {$this->mFilename}:\n";
@@ -403,53 +403,53 @@ class CheckVars {
 		$this->mProblemCount++;
 		echo " $msg\n";
 	}
-	
+
 	function debug( $msg ) {
 		if ( $this->mDebug ) {
 			echo "$msg\n";
 		}
 	}
-	
+
 	# Is this the name of a global variable?
 	function shouldBeGlobal( $name ) {
 		static $specialGlobals = array( '$IP', '$parserMemc', '$messageMemc', '$hackwhere', '$haveProctitle' );
 		static $nonGlobals = array(	'$wgOptionalMessages', '$wgIgnoredMessages', '$wgEXIFMessages', # Used by Translate extension, read from maintenance/languages/messageTypes.inc
 									'$wgMessageStructure', '$wgBlockComments' ); # Used by Translate extension and maintenance/language/writeMessagesArray.inc, read from maintenance/languages/messages.inc
 
-		return ( ( substr($name, 0, 3) == '$wg' ) || ( substr($name, 0, 3) == '$eg' ) || in_array( $name, $specialGlobals ) ) && !in_array($name, $nonGlobals);
+		return ( ( substr( $name, 0, 3 ) == '$wg' ) || ( substr( $name, 0, 3 ) == '$eg' ) || in_array( $name, $specialGlobals ) ) && !in_array( $name, $nonGlobals );
 	}
-	
+
 	# Variables that can be used as global, but also as locals
 	function canBeGlobal( $name ) {
 		return  $name == '$argv'; /* Used as global by maintenance scripts, but also common as function var */
 	}
-	
+
 	private function purgeGlobals() {
 		foreach ( $this->mFunctionGlobals as $globalName => $globalData ) {
-			if ( $globalData[1] <= $this->mBraces)
+			if ( $globalData[1] <= $this->mBraces )
 				continue; # In scope
-			
-			#  global $x  still affects the variable after the endo of the 
+
+			#  global $x  still affects the variable after the endo of the
 			# conditional, but only if the condition was true.
-			#  We keep in the safe side and only consider it defined inside 
+			#  We keep in the safe side and only consider it defined inside
 			# the if block (see r69883).
-			
-			if ( $globalData[0] == 0) {
-				$this->warning("Unused global $globalName in function {$this->mFunction} line $globalData[2]");
+
+			if ( $globalData[0] == 0 ) {
+				$this->warning( "Unused global $globalName in function {$this->mFunction} line $globalData[2]" );
 			}
 			unset( $this->mFunctionGlobals[$globalName] );
 		}
 	}
-	
+
 	# Look for typos in the globals names
 	protected function checkGlobalName( $name ) {
-		if ( substr( $name, 0, 3) == '$wg' ) {
+		if ( substr( $name, 0, 3 ) == '$wg' ) {
 			if ( ( self::$mDefaultSettingsGlobals != null ) && !in_array( $name, self::$mDefaultSettingsGlobals ) ) {
-				$this->warning("Global variable $name is not present in DefaultSettings");
+				$this->warning( "Global variable $name is not present in DefaultSettings" );
 			}
 		}
 	}
-	
+
 	static function isMeaningfulToken( $token ) {
 		if ( is_array( $token ) ) {
 			return ( $token[0] != T_WHITESPACE && $token[0] != T_COMMENT );
@@ -457,38 +457,38 @@ class CheckVars {
 			return strpos( '(&', $token ) === false ;
 		}
 	}
-	
+
 	# Constants defined by php
 	static function isPhpConstant( $name ) {
 		return in_array( $name, array( 'false', 'true', 'self', 'parent', 'null' ) );
 	}
-	
+
 	function checkClassName( $token, $warn = false ) {
 		global $wgAutoloadLocalClasses;
-		
+
 		if ( ( $token[1] == 'self' ) || ( $token[1] == 'parent' ) )
 			return;
-			
+
 		if ( class_exists( $token[1], false ) ) return; # Provided by an extension
-		if ( substr( $token[1], 0, 8 ) == "PHPUnit_") return;
-		if ( substr( $token[1], 0, 12 ) == "Net_Gearman_") return; # phase3/maintenance/gearman/gearman.inc
-		
-		if ( !isset( $wgAutoloadLocalClasses[$token[1]] ) && !in_array( $token[1], $this->mKnownFileClasses ) ) {			
+		if ( substr( $token[1], 0, 8 ) == "PHPUnit_" ) return;
+		if ( substr( $token[1], 0, 12 ) == "Net_Gearman_" ) return; # phase3/maintenance/gearman/gearman.inc
+
+		if ( !isset( $wgAutoloadLocalClasses[$token[1]] ) && !in_array( $token[1], $this->mKnownFileClasses ) ) {
 			if ( $warn ) {
-				$this->warning("Use of unknown class $token[1] in line $token[2]");
+				$this->warning( "Use of unknown class $token[1] in line $token[2]" );
 			} else {
 				// Defer to the end of the file
 				$this->mUnknownClasses[] = $token;
 			}
 		}
 	}
-	
+
 	function checkPendingClasses() {
-		foreach( $this->mUnknownClasses as $classToken ) {
+		foreach ( $this->mUnknownClasses as $classToken ) {
 			$this->checkClassName( $classToken, true );
 		}
 	}
-	
+
 	static function isIgnoreConstant( $name ) {
 		foreach ( self::$constantIgnorePrefixes as $prefix ) {
 			if ( substr( $name, 0, strlen( $prefix ) ) == $prefix )
@@ -499,9 +499,9 @@ class CheckVars {
 }
 
 $cv = new CheckVars();
-//$cv->mDebug = true;
+// $cv->mDebug = true;
 
-array_shift($argv);
+array_shift( $argv );
 if ( $argv[0] == '--generate-deprecated-list' ) {
 	$cv->setGenerateDeprecatedList( true );
 	array_shift( $argv );
