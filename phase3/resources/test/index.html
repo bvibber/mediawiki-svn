@@ -10,15 +10,6 @@
 				font-family: sans-serif;
 			}
 		</style>
-		<script type="text/javascript" src="../../load.php?modules=jquery|mediawiki&amp;debug=true&amp;skin=vector&amp;lang=ja"></script>
-		<script>
-			// Mimic what Skin::makeGlobalVariablesScript would have done
-			mediaWiki.config.set( {
-				'skin': 'vector',
-				'wgUserLanguage': 'en',
-				'wgUserName': null
-			} );
-		</script>
 	</head>
 	<body>
 		<h1>Resource Loader Tests</h1>
@@ -29,8 +20,17 @@
 			<strong>Datepicker....</strong>
 			<input type="text" id="datepicker" />
 		</p>
+		<script type="text/javascript" src="../../load.php?modules=jquery|mediawiki&amp;debug=true&amp;skin=vector&amp;lang=ja"></script>
+		<script>
+			// Mimic what Skin::makeGlobalVariablesScript would have done
+			mediaWiki.config.set( {
+				'skin': 'vector',
+				'wgUserLanguage': 'en',
+				'wgUserName': null
+			} );
+		</script>
 		<script type="text/javascript" >
-			mediaWiki.loader.load( ['test', 'jquery.ui.core', 'jquery.ui.datepicker'] );
+			mediaWiki.loader.load( ['test', 'jquery.ui.core', 'jquery.ui.datepicker', 'mediawiki.legacy.wikibits'] );
 		</script>
 		<script type="text/javascript">
 			mediaWiki.loader.using( 'test', function() {
@@ -40,6 +40,7 @@
 				$( '#datepicker' ).datepicker();
 				mediaWiki.log( 'datepicker (dynamic)' );
 			} );
+			$(document).ready( function() { mediaWiki.log( 'TEST' ); } );
 		</script>
 	</body>
 </html>
