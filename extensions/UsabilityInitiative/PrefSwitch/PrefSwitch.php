@@ -29,7 +29,7 @@ $wgPrefSwitchPrefs = array(
 	'off' => array(
 	    'skin' => 'monobook',
 	    'usebetatoolbar' => 0,
-	    'usebetatoolbar-cgd'=> 0,
+	    'usebetatoolbar-cgd' => 0,
 	),
 	'on' =>  array(
 	    'skin' => 'vector',
