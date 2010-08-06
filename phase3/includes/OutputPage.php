@@ -2183,9 +2183,12 @@ class OutputPage {
 			'modules' => implode( '|', $modules ),
 			'user' => $wgUser->isLoggedIn(),
 			'lang' => $wgLang->getCode(),
-			'debug' => ( $wgRequest->getVal( 'debug' ) === 'true' ),
+			'debug' => (
+				$wgRequest->getVal( 'debug' ) === 'true' ||
+				( $wgRequest->getVal( 'debug' ) !== 'false' && $wgRequest->getBool( 'debug' ) )
+			),
 		);
-		return Html::linkedScript( "{$wgScriptPath}/load.php?" . http_build_query( $query ) );
+		return Html::linkedScript( wfAppendQuery( $wgScriptPath . 'load.php', $query );
 	}
 	
 	/**
