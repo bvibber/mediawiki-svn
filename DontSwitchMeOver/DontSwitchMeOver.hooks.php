@@ -1,22 +1,16 @@
 <?php
 
 /**
- * Hooks for "Update My Prefs" extension
+ * Hooks for DontSwitchMeOver extension
  *
  * @file
  * @ingroup Extensions
  */
 
-class UpdateMyPrefsHooks {
+class DontSwitchMeOverHooks {
 	
 	public static function addPreferences( $user, &$defaultPreferences ) {
-		wfLoadExtensionMessages( 'UpdateMyPrefs' );
-		$ui = array(
-			'type' => 'toggle',
-			'label-message' => 'updatemyprefs-label-message',
-			'section' => 'personal/updates',
-		);
-		$defaultPreferences['updatemyprefs'] = $ui;
+		// TODO
 		return true;
 	}
 		
