@@ -219,7 +219,7 @@ class ResourceLoader {
 			'script' => null,
 			'locales' => null,
 			'raw' => false,
-			// An empty array is used for needs to make json_encode output [] instead of null which is shorted and
+			// An empty array is used for needs to make FormatJson::encode output [] instead of null which is shorted and
 			// results in easier to work with data on the client
 			'needs' => array(),
 			'loader' => null,
@@ -272,12 +272,11 @@ class ResourceLoader {
 			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
 			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
 			'debug' => $request->getVal( 'debug' ),
-			'server' => $server,
 		);
 		// Mediawiki's WebRequest::getBool is a bit on the annoying side - we need to allow 'true' and 'false' values
 		// to be converted to boolean true and false
-		$parameters['user'] = $parameters['user'] === 'true';
-		$parameters['debug'] = $parameters['debug'] === 'true';
+		$parameters['user'] = $parameters['user'] === 'true' || $parameters['user'];
+		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'];
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {
 			$lang = $wgLang->factory( $parameters['lang'] );
@@ -309,7 +308,8 @@ class ResourceLoader {
 		}
 		// Special meta-information for the 'mediawiki' module
 		if ( in_array( 'mediawiki', $modules ) ) {
-			echo "mediaWiki.config.set( 'debug', " . ( $parameters['debug'] ? 'true' : 'false' ) . " );\n";
+			$config = array( 'server' => $server, 'debug', 'debug' => $parameters['debug'] );
+			echo "mediaWiki.config.set( " . FormatJson::encode( $config ) . " );\n";
 			// Generate list of registrations and collect all loader scripts
 			$loaders = array();
 			$registrations = array();
@@ -332,7 +332,7 @@ class ResourceLoader {
 			// Include loaders
 			self::read( $loaders, true );
 			// Register modules without loaders
-			echo "mediaWiki.loader.register( " . json_encode( array_values( $registrations ) ) . " );\n";
+			echo "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
 		}
 		// Output non-raw modules
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
