@@ -677,6 +677,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'wikieditor-preview-changes-tab' => 'Enneringe',
 	'wikieditor-preview-loading' => 'am laade…',
 );
 

@@ -4858,7 +4858,7 @@ $messages['et'] = array(
 	'wikieditor-toolbar-tool-replace-title' => 'Otsimine ja asendus',
 	'wikieditor-toolbar-tool-replace-search' => 'Otsitav:',
 	'wikieditor-toolbar-tool-replace-replace' => 'Asendaja:',
-	'wikieditor-toolbar-tool-replace-case' => 'Erista suurtähti',
+	'wikieditor-toolbar-tool-replace-case' => 'Tõstutundlik',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Otsi järgmine',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Asenda järgmine',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Asenda kõik',
@@ -4907,9 +4907,6 @@ $messages['et'] = array(
 	'wikieditor-toolbar-help-content-xlink-description' => 'Välislink',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.näide.ee Lingi silt]<br />[http://www.näide.ee]<br />http://www.näide.ee',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Lingi silt</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.näide.ee</a>",
-	'wikieditor-toolbar-help-content-heading1-description' => '1. taseme pealkiri',
-	'wikieditor-toolbar-help-content-heading1-syntax' => '=Pealkirjatekst=',
-	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Pealkirjatekst</h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => '2. taseme pealkiri',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '==Pealkirjatekst==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>Pealkirjatekst</h2>',
@@ -6787,6 +6784,19 @@ $messages['gv'] = array(
 	'wikieditor-toolbar-help-content-bolditalic-result' => '<strong><em>Teks trome &amp; iddaalagh</em></strong>',
 	'wikieditor-toolbar-help-content-ilink-description' => 'Kiangley yn-veanagh',
 	'wikieditor-toolbar-help-content-xlink-description' => 'Kiangley mooie',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'wikieditor-toolbar-tool-bold-example' => 'Rubutu mai gwaɓi',
+	'wikieditor-toolbar-tool-italic-example' => 'Rubutun tsutsa',
+	'wikieditor-toolbar-tool-ilink' => 'Mahaɗin ciki',
+	'wikieditor-toolbar-tool-ilink-example' => 'Sunan mahaɗi',
+	'wikieditor-toolbar-tool-xlink' => 'Mahaɗi mai zuwa waje (a tuna da zagin http://)',
+	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com sunan mahaɗi',
+	'wikieditor-toolbar-tool-link-cancel' => 'Soke',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Soke',
+	'wikieditor-toolbar-tool-table-cancel' => 'Soke',
 );
 
 /** Hebrew (עברית)
@@ -12748,6 +12758,7 @@ $messages['pdc'] = array(
 	'wikieditor-toolbar-help-content-heading4-result' => '<h4>Iwwerschrift</h4>',
 	'wikieditor-toolbar-help-content-heading5-syntax' => '===== Iwwerschrift =====',
 	'wikieditor-toolbar-help-content-heading5-result' => '<h5>Iwwerschrift</h5>',
+	'wikieditor-toolbar-help-content-signature-description' => 'Unnerschrift',
 );
 
 /** Polish (Polski)
@@ -13175,8 +13186,8 @@ $messages['pnt'] = array(
 $messages['ps'] = array(
 	'wikieditor-toolbar' => 'د سمون توکپټه',
 	'wikieditor-toolbar-loading' => 'د برسېرېدلو په حال کې...',
-	'wikieditor-toolbar-tool-bold' => 'روڼليک',
-	'wikieditor-toolbar-tool-bold-example' => 'د روڼليک متن',
+	'wikieditor-toolbar-tool-bold' => 'زغرد',
+	'wikieditor-toolbar-tool-bold-example' => 'زغرد متن',
 	'wikieditor-toolbar-tool-italic' => 'رېوند',
 	'wikieditor-toolbar-tool-italic-example' => 'د رېوندليک متن',
 	'wikieditor-toolbar-tool-ilink' => 'کورنۍ تړنه',
@@ -13243,8 +13254,13 @@ $messages['ps'] = array(
 	'wikieditor-toolbar-tool-table-preview' => 'مخليدنه',
 	'wikieditor-toolbar-tool-table-insert' => 'ورټومبل',
 	'wikieditor-toolbar-tool-table-cancel' => 'ناګارل',
+	'wikieditor-toolbar-tool-replace' => 'پلټل او ځايناستول',
+	'wikieditor-toolbar-tool-replace-title' => 'پلټل او ځايناستول',
 	'wikieditor-toolbar-tool-replace-search' => 'پلټنه د:',
+	'wikieditor-toolbar-tool-replace-replace' => 'ځايناستول سره د:',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'بل موندل',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => 'راتلونکی ځايناستول',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => 'ټول ځايناستول',
 	'wikieditor-toolbar-tool-replace-close' => 'تړل',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'ستاسې پلټنه د هېڅ کوم شي سره اړونده نه وه.',
 	'wikieditor-toolbar-section-characters' => 'ځانګړي توري',
@@ -13276,11 +13292,11 @@ $messages['ps'] = array(
 	'wikieditor-toolbar-help-page-discussion' => 'خبرې اترې',
 	'wikieditor-toolbar-help-content-italic-description' => 'رېوند',
 	'wikieditor-toolbar-help-content-italic-syntax' => 'د رېوندليک متن',
-	'wikieditor-toolbar-help-content-bold-description' => 'روڼليک',
-	'wikieditor-toolbar-help-content-bold-syntax' => "'''د روڼليک متن'''",
-	'wikieditor-toolbar-help-content-bold-result' => '<strong>د روڼليک متن</strong>',
-	'wikieditor-toolbar-help-content-bolditalic-description' => 'روڼليک او رېوندليک',
-	'wikieditor-toolbar-help-content-bolditalic-syntax' => "'''''د روڼليک او رېوندليک متن'''''",
+	'wikieditor-toolbar-help-content-bold-description' => 'زغرد',
+	'wikieditor-toolbar-help-content-bold-syntax' => "'''زغرد متن'''",
+	'wikieditor-toolbar-help-content-bold-result' => '<strong>زغرد متن</strong>',
+	'wikieditor-toolbar-help-content-bolditalic-description' => 'زغرد او رېوندليک',
+	'wikieditor-toolbar-help-content-bolditalic-syntax' => "'''''زغرد او رېوند متن'''''",
 	'wikieditor-toolbar-help-content-ilink-description' => 'کورنۍ تړنه',
 	'wikieditor-toolbar-help-content-ilink-syntax' => '[[د مخ سرليک|د تړنې نوم]]<br />[[د مخ سرليک]]',
 	'wikieditor-toolbar-help-content-xlink-description' => 'باندنۍ تړنه',
@@ -13296,6 +13312,7 @@ $messages['ps'] = array(
 	'wikieditor-toolbar-help-content-heading5-description' => 'د پينځمې کچې سرليک',
 	'wikieditor-toolbar-help-content-heading5-syntax' => '===== د سرليک متن =====',
 	'wikieditor-toolbar-help-content-heading5-result' => '<h5>د سرليک متن</h5>',
+	'wikieditor-toolbar-help-content-ulist-description' => 'ګولۍ داره لړليک',
 	'wikieditor-toolbar-help-content-ulist-syntax' => '* د لړليک توکی<br />* د لړليک توکی',
 	'wikieditor-toolbar-help-content-ulist-result' => '<ul><li>د لړليک توکی</li><li>د لړليک توکی</li></ul>',
 	'wikieditor-toolbar-help-content-olist-description' => 'شمېر لرونکی لړليک',
@@ -13308,7 +13325,12 @@ $messages['ps'] = array(
 	'wikieditor-toolbar-help-content-rereference-result' => "د مخ متن.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'سرچينې ښکاره کول',
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'لاسليک د وخت د ټاپې سره',
+	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>کارن نوم</a> (<a href='#' title='{{#special:mytalk}}'>خبرې اترې</a>) 15:54, 10 June 2009 (UTC)",
 	'wikieditor-toolbar-help-content-signature-description' => 'لاسليک',
+	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>کارن نوم</a> (<a href='#' title='{{#special:mytalk}}'>خبرې اترې</a>)",
+	'wikieditor-toolbar-help-content-indent-description' => 'سرتشه',
+	'wikieditor-toolbar-help-content-indent-syntax' => 'عادي متن<br />:سرتشېدلی متن<br />::سرتشېدلی متن',
+	'wikieditor-toolbar-help-content-indent-result' => 'عادي  متن<dl><dd>سرتشېدلی متن<dl><dd>سرتشېدلی متن</dd></dl></dd></dl>',
 );
 
 /** Portuguese (Português)
@@ -16867,7 +16889,7 @@ $messages['te'] = array(
 	'wikieditor-toolbar-tool-heading-4' => '4వ స్థాయి',
 	'wikieditor-toolbar-tool-heading-5' => '5వ స్థాయి',
 	'wikieditor-toolbar-tool-heading-example' => 'శీర్షిక పాఠ్యం',
-	'wikieditor-toolbar-group-format' => 'జాబితా',
+	'wikieditor-toolbar-group-format' => 'ఫార్మాటు',
 	'wikieditor-toolbar-tool-ulist' => 'బిందు జాబితా',
 	'wikieditor-toolbar-tool-ulist-example' => 'బిందు జాబితా అంశం',
 	'wikieditor-toolbar-tool-olist' => 'సంఖ్యా జాబితా',

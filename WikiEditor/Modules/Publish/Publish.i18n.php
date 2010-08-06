@@ -969,6 +969,8 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'wikieditor-publish-dialog-minor' => 'Nur Gleenigkeete sinn gennert',
+	'wikieditor-publish-dialog-watch' => 'Des Blatt watsche',
+	'wikieditor-publish-dialog-goback' => 'Zerrick',
 );
 
 /** Polish (Polski)

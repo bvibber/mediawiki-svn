@@ -366,6 +366,11 @@ $messages['gsw'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Abbräche',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Soke',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author YaronSh

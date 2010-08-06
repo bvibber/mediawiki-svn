@@ -601,6 +601,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Laade',
 );
 
