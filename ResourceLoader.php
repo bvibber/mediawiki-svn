@@ -862,32 +862,32 @@ class ResourceLoader {
 	static function removeLogStatements( $jsString ){
 		$outputJs = '';
 		for ( $i = 0; $i < strlen( $jsString ); $i++ ) {
-			// find next occurance of
-			preg_match( '/[\n;]\s*mw\.log\s*/', $jsString, $matches, PREG_OFFSET_CAPTURE, $i );
-			// check if any matches are left: 
+			// find next occurrence of
+			preg_match( '/([\n;]\s*mw\.log\s*)\(/', $jsString, $matches, PREG_OFFSET_CAPTURE, $i );
+			// check if any matches are left:
 			if( count( $matches ) == 0){
 				$outputJs .= substr( $jsString, $i );
 				break;
 			}
-			if( count( $matches ) > 0 ){	
-				$startOfLogIndex =  strlen( $matches[0][0] ) + $matches[0][1];
-				// append everytnig up to this point: 
-				$outputJs .= substr( $jsString, $i, ( $startOfLogIndex - strlen( $matches[0][0] ) )-$i );
-				
-				// Increment i to position of closing ) not inside quotes  
-				$parenthesesDepth = 0;				
+			if( count( $matches ) > 0 ){
+				$startOfLogIndex =  strlen( $matches[1][0] ) + $matches[1][1];
+				// append everything up to this point:
+				$outputJs .= substr( $jsString, $i, ( $startOfLogIndex - strlen( $matches[1][0] ) )-$i );
+
+				// Increment i to position of closing ) not inside quotes
+				$parenthesesDepth = 0;
 				$ignorenext = false;
 				$inquote = false;
 				$inSingleQuote = false;
-				for ( $i = $startOfLogIndex; $i < strlen( $jsString ); $i++ ) {					
+				for ( $i = $startOfLogIndex; $i < strlen( $jsString ); $i++ ) {
 					$char = $jsString[$i];
 					if ( $ignorenext ) {
 						$ignorenext = false;
 					} else {
-						// Search for a close ) that is not in quotes 
+						// Search for a close ) that is not in quotes
 						switch( $char ) {
 							case '"':
-								if( !$inSingleQuote ){								
+								if( !$inSingleQuote ){
 									$inquote = !$inquote;
 								}
 							break;
@@ -897,13 +897,13 @@ class ResourceLoader {
 								}
 							break;
 							case '(':
-								if( !$inquote && !$inSingleQuote ){	
+								if( !$inquote && !$inSingleQuote ){
 									$parenthesesDepth++;
-								}	
-							break;	
+								}
+							break;
 							case ')':
-								if( ! $inquote  && !$inSingleQuote ){						
-									$parenthesesDepth--;									
+								if( ! $inquote  && !$inSingleQuote ){
+									$parenthesesDepth--;
 								}
 							break;
 							case '\\':
@@ -912,18 +912,19 @@ class ResourceLoader {
 						}
 						// Done with close parentheses search for next mw.log in outer loop:
 						if( $parenthesesDepth === 0 ){
-							break;			
-						}						
+							break;
+						}
 					}
 				}
 			}
-		}	
+		}
 		return $outputJs;
 	}
 	/* simple function to return addMessageJs without preg_replace back reference substitution */
 	private static function preg_addMessageJs(){
 		return self::$addMessageJs;
 	}
+
 	/**
 	 * Get the "addMesseges" function index ( for replacing msg text with localized json )
 	 *
