@@ -231,19 +231,14 @@ class StreamingXMLHistoryParser{
 		$textSize = strlen($revision->text);
 		
 		$md5 = md5($revision->text);
-		$isNew = "no";
 		
 		$revertIndex = array_search($md5, $this->md5History);
+		
+		$isNew = "no";
+		
 	    if($revertIndex === FALSE ){
-			$isNew = 'yes';
-			$this->revTypes[] = new Edit(true);
+			$isNew = "yes";
 		}
-		else{
-			$revert = new Revert(count($this->revTypes), $this->revTypes, true, $revertIndex);
-			$this->revTypes[] = $revert;
-			$revert->updateHistory();
-		}
-		$this->md5History[] = $md5;
 	
 		$csvData = array(
 			$revision->id,
@@ -270,10 +265,18 @@ class StreamingXMLHistoryParser{
 			    $this->nextLog = $this->getNextLogDataLine();
 			  }
 		}
-		fputcsv($this->outputFile, $csvData);	
+		fputcsv($this->outputFile, $csvData);
+		
+		if($revertIndex === FALSE ){
+			$this->revTypes[] = new Edit(true);
+		}
+		else{
+			$revert = new Revert(count($this->revTypes), $this->revTypes, true, $revertIndex);
+			$this->revTypes[] = $revert;
+			$revert->updateHistory();
+		}
+		$this->md5History[] = $md5;	
 	}
-	
-	
 }
 
 
