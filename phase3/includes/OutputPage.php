@@ -2188,7 +2188,7 @@ class OutputPage {
 				( $wgRequest->getVal( 'debug' ) !== 'false' && $wgRequest->getBool( 'debug' ) )
 			),
 		);
-		return Html::linkedScript( wfAppendQuery( $wgScriptPath . 'load.php', $query );
+		return Html::linkedScript( wfAppendQuery( $wgScriptPath . 'load.php', $query ) );
 	}
 	
 	/**
