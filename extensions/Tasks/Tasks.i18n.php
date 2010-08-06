@@ -1515,6 +1515,14 @@ Wänn Du in e paar Sekunden imfall nit wytergleitet wirsch, no druck $1.',
 	'tasks-pref-showtaskcomments' => 'Ufgabe-Diskussionssyte yybinde.',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'tasks_form_comment' => 'Bahasi',
+	'tasks_delete' => 'Soke',
+	'tasks_table_header_page' => 'Shafi',
+	'tasks_search_form_title' => 'Nema',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */

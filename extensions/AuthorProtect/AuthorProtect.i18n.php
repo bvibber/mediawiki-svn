@@ -608,6 +608,12 @@ $messages['gv'] = array(
 	'right-authorprotect' => 'Coadee duillagyn ughtarit',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'authorprotect-expiry' => "Wa'adi:",
+	'authorprotect-reason' => 'Dalili:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author StuB

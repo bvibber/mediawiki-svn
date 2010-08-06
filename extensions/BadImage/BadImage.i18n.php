@@ -940,6 +940,11 @@ $messages['gv'] = array(
 	'badimages-reason' => 'Fa:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'badimages-reason' => 'Dalili:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

@@ -2280,6 +2280,11 @@ Di nejer Version $2 chasch uf http://pecl.php.net/package/APC/$2 abelade.',
 	'viewapc-usercache-cleared' => "'''''Aawändigs-Cache gläärt.'''''",
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'viewapc-ls-limit-none' => 'Duka',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity

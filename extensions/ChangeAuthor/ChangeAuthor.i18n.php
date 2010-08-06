@@ -876,6 +876,11 @@ $messages['gv'] = array(
 	'changeauthor-comment' => 'Cohaggloo:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'changeauthor-comment' => 'Bahasi:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

@@ -2037,6 +2037,11 @@ $messages['gv'] = array(
 	'openidchoosepassword' => 'fockle yn arrey:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'openid-urls-delete' => 'Soke',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */

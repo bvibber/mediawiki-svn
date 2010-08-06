@@ -1844,10 +1844,6 @@ $messages['el'] = array(
 	'fogg-copyright-title' => 'Πνευματικά δικαιώματα',
 	'fogg-license-title' => 'Άδεια',
 	'fogg-contact-title' => 'Επαφή',
-	'mwe-stream_title' => '$1 $2 σε $3',
-	'rsd-media-filter-videos' => 'Βίντεο',
-	'rsd-media-filter-images' => 'Εικόνες',
-	'rsd-provider-filter-title' => 'Πάροχοι',
 	'mwe-select_file' => 'Επιλογή αρχείου',
 	'mwe-license_cc-by-sa' => 'Creative Commons Share Alike (3.0)',
 	'mwe-upload' => 'Φόρτωση αρχείου',
@@ -1856,6 +1852,7 @@ $messages['el'] = array(
 	'mwe-date-of-work' => 'Ημερομηνία της εργασίας',
 	'mwe-link-login' => 'σύνδεση',
 	'mwe-uploaded-status' => 'Επιφορτωμένο',
+	'mwe-transcoded-status' => 'Διακωδικοποιημένο',
 	'mwe-media_search' => 'Αναζήτηση μέσων',
 	'rsd_box_layout' => 'Διαρρύθμιση κυτίου',
 	'rsd_list_layout' => 'Διαρρύθμιση λίστας',
@@ -1863,10 +1860,11 @@ $messages['el'] = array(
 	'rsd_results_next' => 'επομ',
 	'rsd_results_prev' => 'Προηγούμενος',
 	'rsd_no_results' => 'Κανένα αποτέλεσμα για <b>$1</b>',
-	'mwe-upload_tab' => 'Φόρτωση',
+	'mwe-upload_tab' => 'Φόρτωση αρχείου',
 	'rsd_layout' => 'Διαρρύθμιση:',
 	'rsd_resource_edit' => 'Επεξεργασία πόρου: $1',
 	'mwe-resource_description_page' => 'Σελίδα περιγραφής πόρου',
+	'mwe-link' => 'σύνδεσμος',
 	'rsd_do_insert' => 'Εισάγετε',
 	'mwe-cc_by_title' => 'Απόδοση',
 	'mwe-cc_nc_title' => 'Μηεμπορικό',
@@ -1874,6 +1872,7 @@ $messages['el'] = array(
 	'mwe-cc_sa_title' => 'Όμοιο Μοίρασμα',
 	'mwe-cc_pd_title' => 'Δημόσιο Domain',
 	'mwe-unknown_license' => 'Άγνωστη άδεια',
+	'mwe-try-again-link' => 'δοκιμάστε ξανά',
 	'mwe-resource_page_desc' => 'Περιγραφή σελίδα πόρου:',
 	'mwe-local_resource_title' => 'Τοπικός τίτλος πόρου:',
 	'mwe-watch_this_page' => 'Παρακολούθηση σελίδας',
@@ -2883,6 +2882,12 @@ $messages['gsw'] = array(
 	'fogg-warning-firebug' => '<b>Firebug</b> cha Konflikt mit <i>Firefogg</i> verursache. Bitte deaktivier <b>Firebug</b> uf däre Syte.',
 	'mwe-upload-multi' => '{{PLURAL:$1|Datei|Dateie}} uffelade',
 	'mwe-review-upload' => '{{PLURAL:$1|Datei-Uffeladig|Datei-Uffeadige}} priefe',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'mwe-filedesc' => 'Taƙaici',
+	'mwe-summary' => 'Taƙaici',
 );
 
 /** Hebrew (עברית)

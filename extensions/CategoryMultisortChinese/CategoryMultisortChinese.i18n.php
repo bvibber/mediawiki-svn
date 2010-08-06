@@ -318,6 +318,25 @@ $messages['pl'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Klucz – Tradycyjny',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'categorymultisortchinese-desc' => "A përmëtt a le categorìe d'esse vëddùe con ciav d'ordinament diferente specìfiche a la scritura cinèisa",
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade–Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Cantonese: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Stroke',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Stroke: Semplificà',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Stroke: Tradissional',
+	'categorymultisort-sortkey-name-radical' => 'Radical',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radical: Semplificà',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Tradissional',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu

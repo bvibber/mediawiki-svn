@@ -1010,6 +1010,7 @@ $messages['ig'] = array(
 /** Japanese (日本語)
  * @author Aotake
  * @author Joe Elkins
+ * @author Kanon und wikipedia
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -1058,6 +1059,7 @@ $messages['ja'] = array(
 	'storyboard-submissioncomplete' => '投稿完了',
 	'storyboard-submissionincomplete' => '投稿失敗',
 	'storyboard-alreadyexists' => '"$1"は既に使用されています。',
+	'storyboard-alreadyexistschange' => '「{0}」は既に利用されています。別のタイトルを選択して下さい。',
 	'storyboard-changetitle' => 'タイトルを変更。',
 	'storyboard-notsubmitted' => '認証に失敗したため、ストーリーは保存されませんでした。',
 	'storyboard-charstomany' => '$1 文字が多すぎます！',

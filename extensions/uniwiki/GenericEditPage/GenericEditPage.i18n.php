@@ -1489,6 +1489,24 @@ Lägg till några med verktygen i menyn.',
 	'gep-nocategories' => 'Välj minst en kategori innan du sparar.',
 );
 
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'gep-emailsubject' => '[$1] பகுப்பு பரிந்துறை: $2',
+	'gep-emailbody' => '"$3" தளத்துக்கு பகுப்பு "$2" ஐ பயனர் "$1" பரிந்துரைக்கிறார்.',
+	'gep-emailfailure' => 'மன்னிக்கவும், உங்களது பரிந்துரை செயல்படுத்தப்படவில்லை.',
+	'gep-emailsuccess' => 'பகுப்பு $1ஐ பரிந்துரைத்தற்கு நன்றி.',
+	'gep-categories' => 'பகுப்புகள்',
+	'gep-addcategory' => 'ஒரு பகுப்பை சேர்க்கவும்',
+	'gep-addcategorybutton' => 'சேர்',
+	'gep-suggestcategory' => 'ஒரு பகுப்பை பரிந்துரைக்கவும்',
+	'gep-suggestcategorybutton' => 'சமர்ப்பி',
+	'gep-sections' => 'பிரிவுகள்',
+	'gep-addsection' => 'பிரிவு ஒன்றை சேர்க்கவும்',
+	'gep-addsectionbutton' => 'சேர்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

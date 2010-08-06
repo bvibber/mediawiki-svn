@@ -555,6 +555,11 @@ $messages['gv'] = array(
 	'editmsg-new-search' => 'Ronsaght noa',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'editmsg-search' => 'Nema',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

@@ -754,6 +754,12 @@ Bsuech bitte [{{fullurl:{{#Special:SignDocument}}|doc=$2}} die Syte] go s uuspro
 Zweimol goht nit.',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'createsigndoc-pagename' => 'Shafi:',
+	'createsigndoc-create' => 'Ƙirƙira',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

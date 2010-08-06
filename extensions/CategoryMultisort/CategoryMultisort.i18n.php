@@ -147,6 +147,11 @@ $messages['gsw'] = array(
 	'prefs-category' => 'Kategorii',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'prefs-category' => 'Rukuni',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

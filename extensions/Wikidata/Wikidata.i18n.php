@@ -5259,6 +5259,13 @@ $messages['gv'] = array(
 	'ow_LinkAttributeValues' => 'Kianglaghyn',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'ow_transaction_summary' => 'Taƙaici',
+	'ow_show' => 'Nuna',
+	'ow_create' => 'Ƙirƙira',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */
@@ -10210,14 +10217,17 @@ $messages['ps'] = array(
 	'datasearch_language' => 'ژبه:',
 	'datasearch_meaning' => 'مانا',
 	'datasearch_search_text' => 'متن پلټل:',
+	'ow_importtsv_file' => 'TSV دوتنه:',
 	'ow_exporttsv_languages' => 'ژبې:',
 	'ow_save' => 'خوندي کول',
 	'ow_history' => 'پېښليک',
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
+	'ow_transaction_count' => 'شمېر:',
 	'ow_transaction_user' => 'د کارن نوم:',
 	'ow_transaction_no_action' => 'هېڅ مه کوۍ',
 	'ow_transaction_restore' => 'بېرته پرځای کول',
+	'ow_transaction_class_member' => 'د ټولګي غړی',
 	'ow_transaction_summary' => 'لنډيز',
 	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
@@ -10253,6 +10263,7 @@ $messages['ps'] = array(
 	'ow_TranslatedText' => 'ژباړل شوی متن',
 	'ow_TranslatedTextAttributeValue' => 'متن',
 	'ow_TranslatedTextAttributeValues' => 'د ژباړلو وړ متن',
+	'ow_Label' => 'نښکه',
 	'ow_Link' => 'تړنه',
 	'ow_LinkAttribute' => 'ځانتيا',
 	'ow_LinkAttributeValues' => 'تړنې',
@@ -10261,6 +10272,7 @@ $messages['ps'] = array(
 	'ow_Value' => 'ارزښت',
 	'ow_added' => 'ورګډ شو',
 	'ow_meaningsoftitle' => 'د "$1" ماناګانې',
+	'ow_meaningsofsubtitle' => '<em>ويکي تړنه:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>د اجازې غوښتنه مو رد شوه</h2>',
 	'ow_copy_no_action_specified' => 'لطفاً يوه کړنه ځانګړې کړی',
 	'ow_copy_help' => 'Help is not implemented yet.',

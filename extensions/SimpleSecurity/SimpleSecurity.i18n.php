@@ -430,6 +430,12 @@ $messages['gsw'] = array(
 	'security-restricttogroup' => 'Zuegriff uf Inhalt bschränkt uf Mitgliider vu „$1“',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'security-type-category' => 'rukuni',
+	'security-type-namespace' => 'sararin suna',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

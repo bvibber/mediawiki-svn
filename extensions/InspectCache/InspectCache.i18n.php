@@ -382,6 +382,11 @@ $messages['gv'] = array(
 	'inspectcache-list' => 'Rolley',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'inspectcache-delete' => 'Soke',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

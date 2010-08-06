@@ -1155,6 +1155,12 @@ $messages['gv'] = array(
 	'regexblock-view-reason' => 'fa: $1',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'regexblock-form-reason' => 'Dalili:',
+	'regexblock-view-all' => 'Duka',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity

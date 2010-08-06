@@ -811,6 +811,11 @@ $4',
 	'right-todosubmit' => 'S Rächt vum e Benutzer yyschränke, e Ufgabe-Lischt z haa',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'todo-list-cancel' => 'Soke',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -1484,6 +1489,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'todo-new-queue' => 'Nei',
+	'todo-list-change' => 'Ennere',
 );
 
 /** Polish (Polski)

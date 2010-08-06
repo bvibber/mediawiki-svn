@@ -880,6 +880,7 @@ $messages['sl'] = array(
 	'contributiontracking' => 'Sledenje prispevkov',
 	'contrib-tracking-error' => 'Napaka',
 	'contrib-tracking-error-text' => 'Neveljavni oddan obrazec',
+	'contrib-tracking-submitting' => 'Pošiljanje predelovalcu plačil ...',
 	'contrib-tracking-continue' => 'Če niste samodejno preusmerjeni, kliknite gumb, da dokončate svoj prispevek pri PayPal.',
 	'contrib-tracking-button' => 'Nadaljuj',
 );

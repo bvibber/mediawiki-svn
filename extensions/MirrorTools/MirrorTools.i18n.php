@@ -67,6 +67,18 @@ $messages['de'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Bearbeiter',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mirrortools' => 'MirrorTools',
+	'mirrortools-desc' => 'Zmóžnja změny pśez API pód wužywarskim mjenim',
+	'right-mirroredit' => 'Pśez API pód wužywarskim mjenim wobźěłaś',
+	'group-MirrorTools' => 'Wužywarje głědałkowego rěda',
+	'group-MirrorTools-member' => 'Wužywaŕ głědałkowego rěda',
+	'grouppage-MirrorTools' => '{{ns:project}}:Wužywarje głědałkowego rěda',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */
@@ -122,11 +134,25 @@ $messages['ia'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Usatores del instrumentos pro duplication',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'mirrortools' => 'ミラーツール',
+	'mirrortools-desc' => 'API経由の編集を、任意の利用者名で行なうことを許可する',
+	'right-mirroredit' => 'API経由で任意の利用者名で編集',
+	'group-MirrorTools' => 'ミラーツール利用者',
+	'group-MirrorTools-member' => 'ミラーツール利用者',
+	'grouppage-MirrorTools' => '{{ns:project}}:ミラーツール利用者',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'mirrortools' => 'Mirror-Fonctiounen',
+	'mirrortools-desc' => 'Erlaabt et Ännerungen iwwer API ënner all Benotzernumm ze maachen',
+	'right-mirroredit' => 'Iwwer API ënner all Benotzernumm änneren',
 	'group-MirrorTools' => 'Mirror-Fonctiouns Benotzer',
 	'group-MirrorTools-member' => 'Mirror-Fonctiouns Benotzer',
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Fonctiouns Benotzer',

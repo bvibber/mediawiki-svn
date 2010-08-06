@@ -1442,6 +1442,11 @@ Die Syte giltet nume fir bschränkti Bentzer.",
 	'group-manager-member' => 'Verwalter',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'whitelisttablemodifyall' => 'Duka',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

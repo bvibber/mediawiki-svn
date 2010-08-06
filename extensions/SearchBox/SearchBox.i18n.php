@@ -332,6 +332,11 @@ $messages['gv'] = array(
 	'searchbox-go' => 'Gow',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'searchbox-search' => 'Nema',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */

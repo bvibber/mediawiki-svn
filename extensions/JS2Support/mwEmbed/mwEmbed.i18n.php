@@ -282,6 +282,11 @@ $messages['gsw'] = array(
 	'mwe-test-plural' => '{{PLURAL:$1|$1 Tescht|$1 Tescht}} uusgfiert',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'mwe-cancel' => 'Soke',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  */

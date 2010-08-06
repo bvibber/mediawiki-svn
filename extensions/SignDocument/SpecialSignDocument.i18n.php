@@ -1722,6 +1722,12 @@ $messages['gu'] = array(
 	'sign-email' => 'ઇ મેલ:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'sign-viewfield-reviewcomment' => 'Bahasi',
+	'sign-review-comment' => 'Bahasi',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

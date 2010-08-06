@@ -749,6 +749,11 @@ $messages['gsw'] = array(
 	'right-closewikis' => 'Wiki zuemache',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'closewikis-page-reopen-reason' => 'Dalili:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

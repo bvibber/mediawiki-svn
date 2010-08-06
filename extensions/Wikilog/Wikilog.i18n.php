@@ -2979,6 +2979,15 @@ Dr Kommentar erschynt ärscht, wänn er dur e Moderator zuegloo isch.',
 	'wikilog-doc-import-comment' => 'Importierti Wikilog-Dokumäntation',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'wikilog-new-item-go' => 'Ƙirƙira',
+	'wikilog-view-summary' => 'Taƙaici',
+	'wikilog-form-category' => 'Rukuni:',
+	'wikilog-delete-lc' => 'soke',
+	'wikilog-page-lc' => 'shafi',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -5209,6 +5218,7 @@ $messages['ps'] = array(
 	'wikilog-pager-first' => 'لومړني',
 	'wikilog-pager-last' => 'وروستني',
 	'wikilog-has-comments' => '{{PLURAL:$1|يوه تبصره|$1 تبصرې}}',
+	'wikilog-summary-uncategorized' => 'ناوېشلي',
 	'wikilog-edit-fieldset-legend' => 'د ويکي يادښت خوښنې:',
 	'wikilog-comment-anonsig' => '$3 (ورکنومی)',
 	'wikilog-comment-deleted' => 'دا تبصره ړنګه شوې.',

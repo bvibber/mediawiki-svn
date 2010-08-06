@@ -196,6 +196,11 @@ Introduza o nome do usuario ou enderezo IP para obter unha lista das páxinas pa
 	'right-massblank' => 'Baleirar páxinas en masa',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'massblank-blankcomment' => 'Dalili:',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

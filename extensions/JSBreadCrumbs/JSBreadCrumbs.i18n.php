@@ -160,6 +160,18 @@ $messages['ia'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Al plus 20 micas de pan',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'jsbreadcrumbs-desc' => 'パンくずリストをタブバーの下に追加する',
+	'prefs-jsbreadcrumbs' => 'パンくずリスト',
+	'prefs-jsbreadcrumbs-showsite' => 'サイト名をパンくずリストに含める（ウィキを横断的に利用する場合に便利）',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'パンくずリストを表示',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'パンくずリストの数',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => '最大20個のパンくずリスト',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -449,6 +449,11 @@ $messages['gv'] = array(
 	'edituser-dosearch' => 'Ronsaghey',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'edituser-dosearch' => 'Nema',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

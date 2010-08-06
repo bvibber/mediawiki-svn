@@ -251,6 +251,15 @@ $messages['hi'] = array(
 	'categorystepper-start' => '(श्रेणी की शुरुवात)',
 );
 
+/** Croatian (Hrvatski)
+ * @author Ante portas
+ */
+$messages['hr'] = array(
+	'categorystepper-desc' => 'Prikazuje okvir preskoka kategorija koji omogućava prelazak naprijed ili nazad kroz jednu ili više kategorija u kojima se stranica nalazi i to po abecednom redu.',
+	'categorystepper-end' => 'Kraj kategorije',
+	'categorystepper-start' => 'Početak kategorije',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

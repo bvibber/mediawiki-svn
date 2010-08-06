@@ -1014,6 +1014,12 @@ $messages['gv'] = array(
 	'crosswikiunblock-reason' => 'Fa:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'crosswikiblock-reason' => 'Dalili:',
+	'crosswikiunblock-reason' => 'Dalili:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

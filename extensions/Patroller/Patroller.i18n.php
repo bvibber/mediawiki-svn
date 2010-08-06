@@ -738,6 +738,11 @@ $messages['gv'] = array(
 	'patrol-revert-reason' => 'Fa:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'patrol-revert-reason' => 'Dalili:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

@@ -572,6 +572,11 @@ D Datei, wu soll uffeglade wäre, sott pro Zyyle ei Sytetitel haa un s cha optio
 	'right-deletebatch' => 'E Zyylete vu Syte lesche',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'deletebatch-delete' => 'Soke',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

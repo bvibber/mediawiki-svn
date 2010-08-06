@@ -711,6 +711,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'layouts_title' => 'يو مخ جوړول',
+	'layouts_nolayout' => 'اډانه نشته',
 	'layouts_choosecategory' => 'د $1 لپاره يوه وېشنيزه وټاکۍ:',
 	'layouts_unknown' => 'ناجوت',
 );
@@ -875,6 +876,18 @@ $messages['sv'] = array(
 	'layouts_continue' => 'Fortsätt',
 	'layouts_choosecategory' => 'Välj en kategori för $1:',
 	'layouts_unknown' => 'Okänd',
+);
+
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'layouts_title' => 'ஒரு பக்கத்தை உருவாக்குக',
+	'layouts_chooselayout' => '$1 க்கான ஒரு இடைமுகப்பை தேர்ந்தெடுக்கவும்',
+	'layouts_nolayout' => 'இடைமுகப்பு இல்லை',
+	'layouts_continue' => 'தொடரவும்',
+	'layouts_choosecategory' => '$1 க்கான ஒரு பகுப்பை தேர்ந்தெடுக்கவும்',
+	'layouts_unknown' => 'தெரியாது',
 );
 
 /** Telugu (తెలుగు)

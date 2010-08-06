@@ -2532,6 +2532,7 @@ $messages['el'] = array(
 	'configure-condition-operator-not' => 'Όχι',
 	'configure-condition-name' => 'Προϋπόθεση',
 	'configure-condition-requirement' => 'Απαίτηση',
+	'configure-condition-name-2' => 'Ελάχιστη ηλικία',
 	'configure-condition-name-4' => 'Μέσα στις ομάδες',
 	'configure-autopromote-noconds' => 'Κανένα προαπαιτούμενο',
 	'configure-condition-description-3' => 'Η ηλεκτρονική διεύθυνση επιβεβαιώθηκε',
@@ -3807,6 +3808,14 @@ Bitte leg si aa fier configure.sql drin uus oder korrigier ihre Name.',
  */
 $messages['gv'] = array(
 	'configure-edit-core' => 'MediaWiki',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'configure-form-reason' => 'Dalili:',
+	'configure-js-remove' => 'Soke',
+	'configure-section-search' => 'Binciko',
+	'configure-throttle-action-move' => 'Gusarwa',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -7519,6 +7528,7 @@ $messages['pdc'] = array(
 	'configure-ext-use' => 'Yuuse',
 	'configure-form-reason' => 'Grund:',
 	'configure-js-remove' => 'Lösche',
+	'configure-old-changes' => 'Enneringe',
 	'configure-old-summary' => '$1 vun $2 $4 $3',
 	'configure-section-pages' => 'Bledder',
 	'configure-section-paths' => 'Paade',

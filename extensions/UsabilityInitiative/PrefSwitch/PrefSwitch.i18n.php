@@ -2443,6 +2443,11 @@ Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus, voreb Du uf
 	'prefswitch-feedbackpage' => 'Project:Benutzerfrejndligkeits-Initiative/Ruckmäldig',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'prefswitch-survey-answer-whyoff-other' => 'Wani dalili:',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotemliss
@@ -3492,6 +3497,7 @@ Wann Dir déi nei Fonctiounen ausprobéiere wëllt, da <span  class="plainlinks"
 Fëllt w.e.g. déi fakultativ Ëmfro hei ënnendrënner aus éier Dir op "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" klickt.',
 	'prefswitch-survey-intro-off' => 'Merci datt dir déi nei Fonctiounen ausprobéiert hutt.
 Fir eis ze hëllefen besser ze ginn, fëllt w.e.g. déi fakultativ Ëmfro hei ënnendrënner aus éier dir op "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" klickt.',
+	'prefswitch-feedbackpage' => 'Project:Benotzer Erfarung Feedback',
 );
 
 /** Latvian (Latviešu)
@@ -4178,6 +4184,9 @@ $messages['pdc'] = array(
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-answer-whyoff-other' => 'Annerer Grund:',
+	'prefswitch-title-on' => 'Neie Features',
+	'prefswitch-title-switched-on' => 'Viel Schpass!',
+	'prefswitch-title-switched-off' => 'Danke',
 );
 
 /** Polish (Polski)

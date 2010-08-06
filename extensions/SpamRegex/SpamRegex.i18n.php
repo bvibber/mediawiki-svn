@@ -673,6 +673,11 @@ Bii aber vorsichtig, Phrase sotte nit z churz oder zue allgmein syy.',
 	'right-spamregex' => 'Sperr nit gwinschti Phrase iber [[Special:SpamRegex]]',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'spamregex-summary-log' => '(Taƙaici)',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

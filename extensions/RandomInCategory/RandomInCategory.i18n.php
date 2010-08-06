@@ -360,6 +360,11 @@ $messages['gv'] = array(
 	'randomincategory-submit' => 'Gow',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'randomincategory-label' => 'Rukuni:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

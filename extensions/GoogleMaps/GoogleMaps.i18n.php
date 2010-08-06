@@ -2201,6 +2201,11 @@ $wgGoogleMapsMessages['gv'] = array(
 	'gm-save-path' => 'Sauail',
 );
 
+/** Hausa (هَوُسَ) */
+$wgGoogleMapsMessages['ha'] = array(
+	'gm-search' => 'Nema',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

@@ -252,7 +252,7 @@ Mae'r <i>estyniad Galw</i> yn ddefnyddiol wrth adeiladu rhaglenni rhyngweithiol 
 Am enghraifft, gweler <a href='http://semeb.com/dpldemo/Template:Catlist'>y rhyngwyneb defnyddio graffigol DPL</a> ..<br />
 Os oes problemau, rhowch gynnig ar <b>{{#special:call}}/DebuG</b>",
 	'call-save' => "Cedwir allbwn o'r galwad hon mewn tudalen o'r enw ''$1''.",
-	'call-save-success' => 'Cadwyd y testun yma i dudalen <big>[[$1]]</big>.',
+	'call-save-success' => 'Rhoddwyd y testun yma ar gadw yn y dudalen <big>[[$1]]</big>.',
 	'call-save-failed' => "NI chadwyd y testun yma i dudalen <big>[[$1]]</big> am fod y dudalen yn bodoli'n barod.",
 );
 

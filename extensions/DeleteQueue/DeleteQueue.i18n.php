@@ -2489,6 +2489,15 @@ $messages['gv'] = array(
 	'deletequeue-list-header-discusspage' => 'Duillag resoonaght',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'deletequeue-delnom-otherreason' => 'Wani dalili',
+	'deletequeue-list-search' => 'Nema',
+	'deletequeue-list-header-page' => 'Shafi',
+	'deletequeue-case-page' => 'Shafi:',
+	'deletequeue-case-reason' => 'Dalili:',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */

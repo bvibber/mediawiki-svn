@@ -357,6 +357,11 @@ $messages['gsw'] = array(
 	'mostrevisors-viewcontributors' => 'Hauptbyyträger zeige',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'mostrevisors-namespace' => 'Sararin suna:',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

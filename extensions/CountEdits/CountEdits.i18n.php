@@ -664,8 +664,12 @@ Jangan menilai seorang kontributor berdasarkan jumlah suntingannya.",
 	'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 );
 
-/** Igbo (Igbo) */
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
 $messages['ig'] = array(
+	'countedits' => 'Güó orü',
+	'countedits-username' => "Áhà ọ'bànifé:",
 	'countedits-ok' => 'Ngwanu',
 );
 

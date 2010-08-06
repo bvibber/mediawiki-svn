@@ -2564,6 +2564,11 @@ $messages['gv'] = array(
 	'optin-survey-no' => 'Cha derrym',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'optin-survey-answer-whyoptout-other' => 'Wani dalili:',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotemliss

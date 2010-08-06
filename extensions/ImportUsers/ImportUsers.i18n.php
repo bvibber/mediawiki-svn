@@ -702,6 +702,12 @@ $messages['gv'] = array(
 	'importusers-realname' => 'feer-ennym',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'importusers-log-summary' => 'Taƙaici',
+	'importusers-log-summary-all' => 'Duka',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

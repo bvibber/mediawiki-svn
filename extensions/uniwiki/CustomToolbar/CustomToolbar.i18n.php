@@ -2166,17 +2166,19 @@ $wgCustomToolbarMessages['pnb'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $wgCustomToolbarMessages['ps'] = array(
-	'ct_bold_sample' => 'د روڼليک متن',
-	'ct_bold_caption' => 'روڼليک',
+	'ct_bold_sample' => 'زغرد متن',
+	'ct_bold_caption' => 'زغرد',
 	'ct_italic_sample' => 'د رېوندليک متن',
 	'ct_internal_sample' => 'دمخ-نوم',
 	'ct_internal_caption' => 'کورنۍ تړنه',
 	'ct_external_caption' => 'باندنۍ تړنه',
 	'ct_image_caption' => 'انځور ورګډول',
 	'ct_math_caption' => 'فورمول',
+	'ct_nowiki_caption' => 'ويکي نشته',
 	'ct_submit' => 'ورځه!',
 	'ct_close' => 'کړکۍ تړل',
 	'ct_user_user' => 'کارن',
+	'ct_user_caption' => 'د کارن تړنه',
 	'ct_user_sample' => 'کارن-نوم',
 );
 
@@ -2804,6 +2806,23 @@ $wgCustomToolbarMessages['sv'] = array(
  */
 $wgCustomToolbarMessages['szl'] = array(
 	'ct_internal_sample' => 'MjanoZajty',
+);
+
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$wgCustomToolbarMessages['ta'] = array(
+	'ct_bold_sample' => 'தடித்த எழுத்து',
+	'ct_bold_tip_ins' => 'தடித்த எழுத்தை உள்ளிடு',
+	'ct_bold_tip_wrap' => 'இந்த வார்த்தையை தடிமனாக்கு',
+	'ct_bold_caption' => 'தடிமன்',
+	'ct_italic_sample' => 'சாய்வெழுத்து',
+	'ct_italic_tip_ins' => 'சாய்வெழுத்தை உள்ளிடு',
+	'ct_italic_tip_wrap' => 'இந்த எழுத்தை சாய்வாக்குக',
+	'ct_italic_caption' => 'சாய்வு',
+	'ct_internal_sample' => 'PageName',
+	'ct_internal_caption' => 'உள்ளிணைப்பு',
+	'ct_external_tip_ins' => 'வெளியிணைப்பு ஒன்றை உள்ளிடு',
 );
 
 /** Telugu (తెలుగు)

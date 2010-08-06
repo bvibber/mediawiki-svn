@@ -7779,6 +7779,11 @@ n',
 	'configure-setting-wgUDPProfilerPort' => 'Port fir dr UDP-Profiler',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'configure-setting-wgXhtmlNamespaces-key' => 'Sararin suna',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -11527,6 +11532,7 @@ $messages['lb'] = array(
 	'configure-setting-wgAllowImageTag' => "D'<nowiki><img></nowiki>-Taggen am Wikitext zouloossen.",
 	'configure-setting-wgExternalLinkTarget' => 'Viragestallten "Target-Attribut" fir extern Linken',
 	'configure-setting-wgCleanSignatures' => 'Schablounen an den Ënnerschrëften ersetzen',
+	'configure-setting-wgGalleryOptions' => 'Stnadard Parameter fir den Tag <nowiki><gallery></nowiki>',
 	'configure-setting-wgGrammarForms' => "Grammatikalesch Forme fir d'Parser-Fonctioun GRAMMAR",
 	'configure-setting-wgMaxTocLevel' => 'Maximalen Aréckelungsniveau vun den Inhaltsverzeechnesser',
 	'configure-setting-wgParserConf' => 'Parserastellungen',

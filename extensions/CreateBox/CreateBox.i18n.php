@@ -327,6 +327,11 @@ $messages['gu'] = array(
 <createbox>break=no</createbox>",
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'createbox-create' => 'Ƙirƙira',
+);
+
 /** Hakka (Hak-kâ-fa)
  * @author Hakka
  */

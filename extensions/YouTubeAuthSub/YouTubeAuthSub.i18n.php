@@ -1254,6 +1254,11 @@ $messages['gv'] = array(
 	'youtubeauthsub' => 'Laadey neese feeshan YouTube',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'youtubeauthsub_category' => 'Rukuni',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity
@@ -2562,6 +2567,7 @@ $messages['ps'] = array(
 	'youtubeauthsub_description' => 'څرګندونه',
 	'youtubeauthsub_password' => 'د يوټيوب پټنوم',
 	'youtubeauthsub_username' => 'د يوټيوب کارن-نوم',
+	'youtubeauthsub_keywords' => 'آروييونه',
 	'youtubeauthsub_category' => 'وېشنيزه',
 	'youtubeauthsub_submit' => 'سپارل',
 	'youtubeauthsub_clickhere' => 'يوټيوب کې د ننوتلو لپاره دلته وټوکۍ',
@@ -2584,6 +2590,7 @@ $messages['ps'] = array(
 
 لطفاً لږ صبر وکړی.',
 	'youtubeauthsub_viewpage' => 'په اختياري توګه، تاسې [[$1|خپله ويډيو کتلای شی]].',
+	'youtubeauthsub_jserror_nokeywords' => 'لطفاً يوه او يا څو آروييونه وليکۍ.',
 	'youtubeauthsub_jserror_notitle' => 'لطفاً د ويډيو لپاره مو يو سرليک ورکړی.',
 	'youtubeauthsub_jserror_nodesc' => 'مهرباني وکړۍ د ويډيو څرګندونه مو وکړۍ.',
 );

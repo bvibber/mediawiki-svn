@@ -121,10 +121,11 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'antibot-desc' => 'Einfaches Framework für Spambot-Prüfungen',
+	'antibot-desc' => 'Stellt ein einfaches System zum Schutz vor Spambots und Payloads bereit',
 );
 
 /** Zazaki (Zazaki)

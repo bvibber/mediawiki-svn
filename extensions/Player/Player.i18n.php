@@ -511,6 +511,11 @@ $messages['gv'] = array(
 	'player-goto-file' => 'coadan',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'player-goto-page' => 'Shafi',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

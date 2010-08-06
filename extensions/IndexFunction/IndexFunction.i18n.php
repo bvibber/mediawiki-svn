@@ -514,6 +514,11 @@ Tipp di erschte paar Buehcstabe yy un druck dr „Abschicke“-Chnopf go Sytetit
 Druck uf dr Boge go alli Syte aazeige, wu unter däm Titel ufglischtet sin.',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'index-search' => 'Nema',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

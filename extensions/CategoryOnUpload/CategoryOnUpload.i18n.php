@@ -221,6 +221,11 @@ $messages['gv'] = array(
 	'categoryonupload-label' => 'Ronney:',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'categoryonupload-label' => 'Rukuni:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

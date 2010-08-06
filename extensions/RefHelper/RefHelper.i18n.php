@@ -509,6 +509,12 @@ $messages['gsw'] = array(
 Du chasch [[Special:RefHelper|die Quälle vu Hand zuefiege]] oder [[Special:RefSearch|noch eme Zitat suech, wu Du chasch zuefiege]].',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'refhelper-create' => 'Ƙirƙira',
+	'refhelper-search' => 'Nema',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

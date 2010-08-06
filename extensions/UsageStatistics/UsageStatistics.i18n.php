@@ -992,6 +992,11 @@ $messages['gu'] = array(
 	'right-viewsystemstats' => 'જુઓ [[Special:UserStats|વિકિ વપરાશના આંકડા]]',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'usagestatisticsnamespace' => 'Sararin suna:',
+);
+
 /** Hebrew (עברית)
  * @author Agbad
  * @author Rotemliss

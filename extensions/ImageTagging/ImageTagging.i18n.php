@@ -837,6 +837,12 @@ $messages['gu'] = array(
 	'tag-logpagetext' => 'આ ઉમેરાયેલ કે દુર કરાયેલ તમામ ચિત્ર અંકિતકનીં નોંધ છે.',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'imagetagging-article' => 'Shafi:',
+	'imagetagging-tagcancel-button' => 'Soke',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  * @author Singularity

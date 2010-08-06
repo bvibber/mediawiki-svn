@@ -1426,6 +1426,7 @@ $messages['ps'] = array(
 	'wah-long-video' => '($1 ويډيويي دوتنه، اوږدوالی $2، $4×$5 پېکسل، $3)',
 	'wah-menu-jobs' => 'دندې',
 	'wah-menu-pref' => 'غوره توبونه',
+	'wah-lookingforjob' => 'د يو کار په لټه کې ياست ...',
 );
 
 /** Portuguese (Português)

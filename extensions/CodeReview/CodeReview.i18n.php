@@ -2104,6 +2104,7 @@ $messages['el'] = array(
 	'code-status-ok' => 'εντάξει',
 	'code-status-verified' => 'επιβεβαιωμένο',
 	'code-status-deferred' => 'αναβλήθηκε',
+	'code-status-old' => 'παλαιά',
 	'code-pathsearch-legend' => 'Αναζήτηση αναθεωρήσεων σε αυτό το αποθηκευτήριο κατά διαδρομή',
 	'code-pathsearch-path' => 'Διαδρομή:',
 	'code-revfilter-cr_status' => 'Κατάσταση = $1',
@@ -2137,6 +2138,7 @@ $4',
 Υποβολή περίληψης:
 
 $4',
+	'code-stats' => 'στατιστικές',
 	'repoadmin' => 'Διαχείριση του αποθηκευτηρίου',
 	'repoadmin-new-legend' => 'Δημιουργία νέου αποθηκευτηρίου',
 	'repoadmin-new-label' => 'Όνομα αποθηκευτηρίου:',
@@ -3561,6 +3563,12 @@ $4',
 	'right-codereview-set-status' => 'Revisionsstatus ändere',
 	'right-codereview-link-user' => 'Autore uf Wiki-Benutzer vergleiche',
 	'specialpages-group-developer' => 'Entwicklerwärchzyyg',
+);
+
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'code-rev-message' => 'Bahasi:',
+	'repoadmin-new-button' => 'Ƙirƙira',
 );
 
 /** Hakka (Hak-kâ-fa)
@@ -5299,6 +5307,7 @@ $messages['lb'] = array(
 	'code-author-link' => 'verlinken?',
 	'code-author-unlink' => 'Link ophiewen?',
 	'code-author-unlinksuccess' => 'Den Auteur $1 ass net méi verlinkt',
+	'code-author-total' => 'Total vun der Zuel vun Auteuren: $1',
 	'code-field-id' => 'Revisioun',
 	'code-field-author' => 'Auteur',
 	'code-field-user' => 'Commentateur',
@@ -5376,6 +5385,7 @@ Resumé vun der Ännerung:
 
 $4',
 	'code-stats' => 'Statistiken',
+	'code-stats-count' => 'Zuel vun de Versiounen',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-bug' => 'Bugzilla Pad:',
 	'repoadmin-edit-view' => 'Pad op ViewVC:',

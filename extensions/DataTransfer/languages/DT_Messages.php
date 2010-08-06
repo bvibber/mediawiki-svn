@@ -807,6 +807,12 @@ $messages['gv'] = array(
 	'dt_xml_freetext' => 'Teks seyr',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'dt_xml_namespace' => 'Sararin suna',
+	'dt_xml_page' => 'Shafi',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Singularity
  */

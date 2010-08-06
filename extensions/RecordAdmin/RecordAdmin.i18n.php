@@ -884,6 +884,12 @@ $messages['gsw'] = array(
 	'recordadmin-notset' => 'Kei „$1“',
 );
 
+/** Hausa (هَوُسَ) */
+$messages['ha'] = array(
+	'recordadmin-buttonsearch' => 'Nema',
+	'recordadmin-buttoncreate' => 'Ƙirƙira',
+);
+
 /** Hawaiian (Hawai`i)
  * @author Kalani
  */
