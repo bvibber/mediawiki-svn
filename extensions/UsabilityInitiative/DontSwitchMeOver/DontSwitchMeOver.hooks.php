@@ -8,10 +8,12 @@
  */
 
 class DontSwitchMeOverHooks {
-	
 	public static function addPreferences( $user, &$defaultPreferences ) {
-		// TODO
+		$defaultPreferences['dontswitchmeover'] = array(
+			'type' => 'toggle',
+			'label-message' => 'dontswitchmeover-pref',
+			'section' => 'rendering/skin', // May move after discussion
+		);
 		return true;
 	}
-		
 }
