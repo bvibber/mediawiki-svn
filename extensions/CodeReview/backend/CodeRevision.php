@@ -399,14 +399,17 @@ class CodeRevision {
 			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
 			$title->setFragment( "#c{$commentId}" );
 			$url = $title->getFullUrl();
+
 			foreach ( $users as $userId => $user ) {
 				// No sense in notifying this commenter
 				if ( $wgUser->getId() == $user->getId() ) {
 					continue;
 				}
-				// Send message in receiver's language
-				$lang = array( 'language' => $user->getOption( 'language' ) );
+
 				if ( $user->canReceiveEmail() ) {
+					// Send message in receiver's language
+					$lang = array( 'language' => $user->getOption( 'language' ) );
+				
 					$user->sendMail(
 						wfMsgExt( 'codereview-email-subj', $lang, $this->mRepo->getName(), $this->getIdString() ),
 						wfMsgExt( 'codereview-email-body', $lang, $wgUser->getName(), $url, $this->getIdStringUnique(), $text )
