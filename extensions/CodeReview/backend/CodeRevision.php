@@ -504,7 +504,6 @@ class CodeRevision {
 		foreach ( $result as $row ) {
 			$comments[] = CodeComment::newFromRow( $this, $row );
 		}
-		$result->free();
 		return $comments;
 	}
 
@@ -531,8 +530,24 @@ class CodeRevision {
 		foreach ( $result as $row ) {
 			$changes[] = CodePropChange::newFromRow( $this, $row );
 		}
-		$result->free();
 		return $changes;
+	}
+	
+	public function getPropChangeUsers() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$result = $dbr->select( 'code_prop_changes',
+			'DISTINCT(cpc_user)',
+			array(
+				'cpc_repo_id' => $this->mRepoId,
+				'cpc_rev_id' => $this->mId,
+			),
+			__METHOD__
+		);
+		$users = array();
+		foreach ( $result as $row ) {
+			$users[$row->cpc_user] = User::newFromId( $row->cpc_user );
+		}
+		return $users;
 	}
 
 	protected function getCommentingUsers() {
