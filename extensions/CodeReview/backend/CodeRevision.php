@@ -301,15 +301,23 @@ class CodeRevision {
 			$dbw->insert( 'code_relations', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 
-		global $wgEnableEmail;
+		global $wgEnableEmail, $wgUser;
 		// Email the authors of revisions that this follows up on
 		if ( $wgEnableEmail && $newRevision && count( $affectedRevs ) > 0 ) {
 			// Get committer wiki user name, or repo name at least
-			$user = $this->mRepo->authorWikiUser( $this->mAuthor );
+			$user = $this->getWikiUser();
 			$committer = $user ? $user->getName() : htmlspecialchars( $this->mAuthor );
 			// Get the authors of these revisions
 			$res = $dbw->select( 'code_rev',
-				array( 'cr_author', 'cr_id' ),
+				array( 
+					'cr_repo_id',
+					'cr_id',
+					'cr_author',
+					'cr_timestamp',
+					'cr_message',
+					'cr_status',
+					'cr_path',
+				),
 				array(
 					'cr_repo_id' => $this->mRepoId,
 					'cr_id'      => $affectedRevs,
@@ -326,18 +334,30 @@ class CodeRevision {
 			$url = $title->getFullUrl();
 
 			foreach ( $res as $row ) {
-				$user = $this->mRepo->authorWikiUser( $row->cr_author );
-				// User must exist on wiki and have a valid email addy
-				if ( !$user || !$user->canReceiveEmail() ) {
-					continue;
+				$revision = CodeRevision::newFromRow( $row );
+				$users = $revision->getCommentingUsers();
+				
+				//Add the revision author if they have not already been added as a commentor (they won't want dupe emails!)
+				if ( !array_key_exists( $user->getId(), $users ) {
+					$users[$user->getId()] = $user;
 				}
 
-				// Send message in receiver's language
-				$lang = array( 'language' => $user->getOption( 'language' ) );
-				$user->sendMail(
-					wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $this->getIdString( $row->cr_id ) ),
-					wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage )
-				);
+				//Notify commenters and revision author of followup revision
+				foreach ( $users as $userId => $user ) {
+					// No sense in notifying the author if they are a commenter on the target rev
+					if ( $wgUser->getId() == $user->getId() ) {
+						continue;
+					}	
+
+					if ( $user->canReceiveEmail() ) {
+						// Send message in receiver's language
+						$lang = array( 'language' => $user->getOption( 'language' ) );
+						$user->sendMail(
+							wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $this->getIdString( $row->cr_id ) ),
+							wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage )
+						);
+					}
+				}
 			}
 		}
 		$dbw->commit();
