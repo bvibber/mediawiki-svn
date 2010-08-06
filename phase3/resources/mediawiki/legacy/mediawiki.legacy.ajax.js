@@ -173,4 +173,4 @@ $.extend( true, mw.legacy, {
 	}
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

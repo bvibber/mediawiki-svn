@@ -1028,4 +1028,4 @@ $( document ).ready( function() {
 	mw.legacy.os_MWSuggestInit();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );

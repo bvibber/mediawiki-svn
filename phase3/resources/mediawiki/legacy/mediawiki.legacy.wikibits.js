@@ -1087,4 +1087,4 @@ $( document ).ready( function() {
 	runOnloadHook();
 } );
 
-} )( jQuery, MediaWiki );
+} )( jQuery, mediaWiki );
