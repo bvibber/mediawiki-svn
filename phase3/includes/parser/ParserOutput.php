@@ -16,6 +16,8 @@ class ParserOutput
 		$mLinks = array(),            # 2-D map of NS/DBK to ID for the links in the document. ID=zero for broken.
 		$mTemplates = array(),        # 2-D map of NS/DBK to ID for the template references. ID=zero for broken.
 		$mTemplateIds = array(),      # 2-D map of NS/DBK to rev ID for the template references. ID=zero for broken.
+		$mDistantTemplates = array(),   # 3-D map of WIKIID/NS/DBK to ID for the template references. ID=zero for broken.
+		$mDistantTemplateIds = array(), # 3-D map of WIKIID/NS/DBK to rev ID for the template references. ID=zero for broken.
 		$mImages = array(),           # DB keys of the images used, in the array key only
 		$mExternalLinks = array(),    # External link URLs, in the key only
 		$mInterwikiLinks = array(),   # 2-D map of prefix/DBK (in keys only) for the inline interwiki links in the document.
@@ -50,6 +52,8 @@ class ParserOutput
 	function getSections()               { return $this->mSections; }
 	function &getLinks()                 { return $this->mLinks; }
 	function &getTemplates()             { return $this->mTemplates; }
+	function &getDistantTemplates()      { return $this->mDistantTemplates; }
+	function &getDistantTemplateIds()    { return $this->mDistantTemplateIds; }
 	function &getImages()                { return $this->mImages; }
 	function &getExternalLinks()         { return $this->mExternalLinks; }
 	function getNoGallery()              { return $this->mNoGallery; }
@@ -202,6 +206,25 @@ class ParserOutput
 			$this->mTemplateIds[$ns] = array();
 		}
 		$this->mTemplateIds[$ns][$dbk] = $rev_id; // For versioning
+	}
+	
+	function addDistantTemplate( $title, $page_id, $rev_id ) {
+		$wikiid = $title->getTransWikiID();
+		if ( $wikiid !=='' ) {
+			$ns = $title->getNamespace();
+			$dbk = $title->getDBkey();
+			if ( !isset( $this->mDistantTemplates[$wikiid] ) ) {
+				$this->mDistantTemplates[$wikiid] = array();
+			}
+			if ( !isset( $this->mDistantTemplates[$wikiid][$ns] ) ) {
+				$this->mDistantTemplates[$wikiid][$ns] = array();
+			}
+			$this->mDistantTemplates[$wikiid][$ns][$dbk] = $page_id;
+			if ( !isset( $this->mDistantTemplateIds[$wikiid][$ns] ) ) {
+				$this->mDistantTemplateIds[$wikiid][$ns] = array();
+			}
+			$this->mDistantTemplateIds[$wikiid][$ns][$dbk] = $rev_id; // For versioning
+		}
 	}
 	
 	/**

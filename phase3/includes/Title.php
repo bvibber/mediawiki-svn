@@ -3057,7 +3057,7 @@ class Title {
 	 * @return \type{\mixed} true on success, getUserPermissionsErrors()-like array on failure
 	 */
 	public function moveTo( &$nt, $auth = true, $reason = '', $createRedirect = true ) {
-		global $wgContLang;
+		global $wgContLang, $wgGlobalDB, $wgWikiID;
 
 		$err = $this->isValidMoveOperation( $nt, $auth, $reason );
 		if ( is_array( $err ) ) {
@@ -3105,6 +3105,15 @@ class Title {
 				'cl_timestamp=cl_timestamp' ),
 			array( 'cl_from' => $pageid ),
 			__METHOD__ );
+			
+		if ( $wgGlobalDB ) {
+			$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDB );
+			$dbw2->update( 'globaltemplatelinks',
+						array(  'gtl_from_namespace' => $nt->getNsText(),
+								'gtl_from_title' => $nt->getText() ),
+						array ( 'gtl_from_page' => $pageid ),
+						__METHOD__ );
+		}
 
 		if ( $protected ) {
 			# Protect the redirect title as the title used to be...
@@ -3198,7 +3207,7 @@ class Title {
 	 *  Ignored if the user doesn't have the suppressredirect right
 	 */
 	private function moveOverExistingRedirect( &$nt, $reason = '', $createRedirect = true ) {
-		global $wgUseSquid, $wgUser, $wgContLang;
+		global $wgUseSquid, $wgUser, $wgContLang, $wgWikiID, $wgGlobalDB;
 
 		$comment = wfMsgForContent( '1movedto2_redir', $this->getPrefixedText(), $nt->getPrefixedText() );
 
@@ -3237,6 +3246,14 @@ class Title {
 			$dbw->delete( 'externallinks', array( 'el_from' => $newid ), __METHOD__ );
 			$dbw->delete( 'langlinks', array( 'll_from' => $newid ), __METHOD__ );
 			$dbw->delete( 'redirect', array( 'rd_from' => $newid ), __METHOD__ );
+			
+			if ( $wgGlobalDB ) {
+				$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDB );
+				$dbw2->delete( 'globaltemplatelinks',
+							array(  'gtl_from_wiki' => $wgWikiID,
+									'gtl_from_page' => $newid ),
+							__METHOD__ );
+			}
 		}
 		// If the redirect was recently created, it may have an entry in recentchanges still
 		$dbw->delete( 'recentchanges',

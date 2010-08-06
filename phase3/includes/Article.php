@@ -3172,7 +3172,7 @@ class Article {
 	 * @return boolean true if successful
 	 */
 	public function doDeleteArticle( $reason, $suppress = false, $id = 0, $commit = true ) {
-		global $wgDeferredUpdateList, $wgUseTrackbacks;
+		global $wgDeferredUpdateList, $wgUseTrackbacks, $wgGlobalDB, $wgWikiID;
 
 		wfDebug( __METHOD__ . "\n" );
 
@@ -3270,6 +3270,14 @@ class Article {
 			$dbw->delete( 'externallinks', array( 'el_from' => $id ) );
 			$dbw->delete( 'langlinks', array( 'll_from' => $id ) );
 			$dbw->delete( 'redirect', array( 'rd_from' => $id ) );
+			
+			if ( $wgGlobalDB ) {
+				$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDB );
+				$dbw2->delete( 'globaltemplatelinks',
+							array(  'gtl_from_wiki' => $wgWikiID,
+									'gtl_from_page' => $id )
+							);
+			}
 		}
 
 		# If using cleanup triggers, we can skip some manual deletes
