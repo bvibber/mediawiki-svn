@@ -96,7 +96,7 @@ class ApiQueryExtensions extends ApiQueryBase {
 	 * @since 0.1
 	 */
 	public function getVersion() {
-		return __CLASS__ . '';
+		return __CLASS__ . ': $Id$';
 	}
 	
 }
