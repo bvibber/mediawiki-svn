@@ -10,9 +10,8 @@ $messages = array();
  */
 $messages['en'] = array(
 	'mwreleases-desc' => 'Adds a [[Mediawiki:Mwreleases-list|list]] of supported releases, accessible via the API',
-	'mwreleases-list' => '# List the current and other active supported MediaWiki releases like this:
-# current:1.15.1
-# supported:1.14.1'
+	'releasemanager' => 'Release manager',
+	'releasemanager-header' => 'Manage the MediaWiki release list. Create a new release or manage the current ones',
 );
 
 /** Message documentation (Message documentation)
