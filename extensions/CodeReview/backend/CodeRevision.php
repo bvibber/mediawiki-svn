@@ -324,7 +324,7 @@ class CodeRevision {
 			// Get repo and build comment title (for url)
 			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
 			$url = $title->getFullUrl();
-			wfLoadExtensionMessages( 'CodeReview' );
+
 			foreach ( $res as $row ) {
 				$user = $this->mRepo->authorWikiUser( $row->cr_author );
 				// User must exist on wiki and have a valid email addy
