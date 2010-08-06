@@ -62,11 +62,9 @@ class SpecialCountEdits extends SpecialPage {
 	}
 
 	function countEditsReal( $id, $text = false ) {
-		global $wgVersion;
 		$dbr = wfGetDB( DB_SLAVE );
-		# MediaWiki 1.9.x has a user.user_editcount column we can use,
-		# but this is not useful for older versions or anon. checks
-		if( $text === false && version_compare( $wgVersion, '1.9alpha', '>=' ) ) {
+
+		if( $text === false ) {
 			$conds = array( 'user_id' => $id );
 			return $dbr->selectField( 'user', 'user_editcount', $conds, 'CountEdits::countEditsReal' );
 		} else {

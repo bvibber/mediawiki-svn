@@ -195,11 +195,8 @@ class SmoothGallery {
 				continue;
 			}
 
-			if ( version_compare( $wgVersion, "1.11", '<' ) ) {
-				$plain_gallery->add( $image["image_object"], $image["description"] ); // TODO: use text
-			} else {
-				$plain_gallery->add( $image["image_object"]->getTitle(), $image["description"] ); // TODO: use text
-			}
+			$plain_gallery->add( $image["image_object"]->getTitle(), $image["description"] ); // TODO: use text
+
 			$i++;
 		}
 

@@ -37,15 +37,9 @@ class NewsChannel extends SpecialPage
 	 * @param string $par Custom parameters.
 	 */
 	function execute( $par ) {
-		global $wgRequest, $wgVersion, $wgOut, $wgNewsChannelCategory, $wgNewsChannelDefaultItems;
+		global $wgRequest, $wgOut, $wgNewsChannelCategory, $wgNewsChannelDefaultItems;
 
 		wfLoadExtensionMessages( 'NewsChannel' );
-
-		if( version_compare( $wgVersion, '1.8', '<' ) === true ) {
-			$wgOut->showErrorPage( "Error: Upgrade required", "The News Channel extension can't work " .
-				"on MediaWiki older than 1.8. Please, upgrade." );
-			return;
-		}
 
 		if( $wgNewsChannelCategory == '' || $wgNewsChannelCategory == null ) {
 			$wgOut->showErrorPage( "Error: Misconfiguration", "Main category containing news articles " .

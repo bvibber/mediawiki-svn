@@ -178,10 +178,8 @@ class SpecialContributors extends IncludableSpecialPage {
 	 * @return array
 	 */
 	protected static function getConditions($title) {
-		global $wgVersion;
 		$conds['rev_page'] = $title->getArticleId();
-		if( version_compare( $wgVersion, '1.11alpha', '>=' ) )
-			$conds[] = 'rev_deleted & ' . Revision::DELETED_USER . ' = 0';
+		$conds[] = 'rev_deleted & ' . Revision::DELETED_USER . ' = 0';
 		return $conds;
 	}
 	

@@ -433,28 +433,7 @@ function mvfInitUserLanguage( $langcode ) {
  * Function based on version in ContributionScores extension
  */
 function mvfInitMessages() {
-	global $wgVersion, $wgExtensionFunctions;
-	if ( version_compare( $wgVersion, '1.11', '>=' ) ) {
-		wfLoadExtensionMessages( 'MetavidWiki' );
-	} else {
-		$wgExtensionFunctions[] = 'sffLoadMessagesManually';
-	}
-}
-
-/**
- * Setting of message cache for versions of MediaWiki that do not support
- * wgExtensionFunctions - based on ceContributionScores() in
- * ContributionScores extension
- */
-function sffLoadMessagesManually() {
-	global $mvgIP, $wgMessageCache;
-
-	# add messages
-	require( $mvgIP . '/languages/MV_Messages.php' );
-	global $messages;
-	foreach ( $messages as $key => $value ) {
-		$wgMessageCache->addMessages( $messages[$key], $key );
-	}
+	wfLoadExtensionMessages( 'MetavidWiki' );
 }
 
 /*

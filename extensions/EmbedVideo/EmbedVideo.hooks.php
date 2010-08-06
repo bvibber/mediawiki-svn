@@ -15,9 +15,7 @@ abstract class EmbedVideo {
 	public static function setup() {
 		# Setup parser hooks. ev is the primary hook, evp is supported for
 		# legacy purposes
-		global $wgVersion;
-
-		$prefix = version_compare( $wgVersion, '1.7', '<' ) ? '#' : '';
+		$prefix = '';
 		EmbedVideo::addMagicWord( $prefix, "ev", "EmbedVideo::parserFunction_ev" );
 		EmbedVideo::addMagicWord( $prefix, "evp", "EmbedVideo::parserFunction_evp" );
 
