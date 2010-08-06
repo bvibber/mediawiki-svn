@@ -487,7 +487,6 @@ class CodeRevision {
 			array(
 				'cc_id',
 				'cc_text',
-				'cc_parent',
 				'cc_user',
 				'cc_user_text',
 				'cc_timestamp',
