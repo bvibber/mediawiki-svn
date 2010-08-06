@@ -42,18 +42,6 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
-
-$wgAutoloadClasses['MWReleases'] = $dir . 'MWReleases_body.php';
 $wgAutoloadClasses['ApiMWReleases'] = $dir . 'ApiMWReleases.php';
-$wgAutoloadClasses['SpecialMediawikiReleases'] = $dir . 'SpecialMediawikiReleases.php';
-$wgAutoloadClasses['SpecialReleaseManager'] = $dir . 'SpecialReleaseManager.php';
-$wgAutoloadClasses['MWReleasesHooks'] = $dir . 'MWReleases.hooks.php';
 $wgExtensionMessagesFiles['MWReleases'] = $dir . 'MWReleases.i18n.php';
-$wgExtensionAliasesFiles['MWReleases'] = $dir . 'MWReleases.alias.php';
-
-$wgSpecialPages['MediawikiReleases'] = 'SpecialMediawikiReleases';
-$wgSpecialPages['ReleaseManager'] = 'SpecialReleaseManager';
 $wgAPIModules['mwreleases'] = 'ApiMWReleases';
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'MWReleasesHooks::onLoadExtensionSchemaUpdates';
-$wgHooks['ParserFirstCallInit'][] = 'MWReleasesHooks::onParserFirstCallInit';
-$wgAvailableRights[] = 'releasemanager';
