@@ -548,6 +548,13 @@ class CodeRevision {
 		}
 		return $users;
 	}
+	
+	/**
+	* "Review" being revision commenters, and people who set/removed tags and changed the status
+	*/
+	public function getReviewContributingUsers() {
+		return array_merge( $this->getCommentingUsers(), $this->getPropChangeUsers() );
+	}
 
 	protected function getCommentingUsers() {
 		$dbr = wfGetDB( DB_SLAVE );
