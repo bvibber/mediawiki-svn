@@ -228,9 +228,9 @@ $.extend( true, mw.legacy, {
 				mw.legacy.clientPC.indexOf( 'konqueror' ) != -1
 			)
 		) {
-			return = 'ctrl-';
+			return 'ctrl-';
 		} else if ( mw.legacy.is_ff2 ) {
-			return = 'alt-shift-';
+			return 'alt-shift-';
 		}
 		return 'alt-';
 	} )(),
@@ -754,7 +754,7 @@ $.extend( true, mw.legacy, {
 	 */
 	
 	/* Functions */
-		
+	
 	'changeText': function( el, newText ) {
 		// Safari work around
 		if ( el.innerText ) {
@@ -765,7 +765,7 @@ $.extend( true, mw.legacy, {
 	},
 	'escapeQuotes': function( text ) {
 		var re = new RegExp( '\'', 'g' );
-		text = text.replace( re, '\\'' );
+		text = text.replace( re, '\\\'' );
 		re = new RegExp( '\\n', 'g' );
 		text = text.replace( re, '\\n' );
 		return escapeQuotesHTML( text );
