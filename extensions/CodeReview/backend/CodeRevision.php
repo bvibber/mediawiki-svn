@@ -301,12 +301,13 @@ class CodeRevision {
 			$dbw->insert( 'code_relations', $data, __METHOD__, array( 'IGNORE' ) );
 		}
 
-		global $wgEnableEmail, $wgUser;
+		global $wgEnableEmail;
 		// Email the authors of revisions that this follows up on
 		if ( $wgEnableEmail && $newRevision && count( $affectedRevs ) > 0 ) {
 			// Get committer wiki user name, or repo name at least
-			$user = $this->getWikiUser();
-			$committer = $user ? $user->getName() : htmlspecialchars( $this->mAuthor );
+			$commitAuthor = $this->getWikiUser();
+			$commitAuthorId = $commitAuthor->getId()
+			$committer = $commitAuthor ? $commitAuthor->getName() : htmlspecialchars( $this->mAuthor );
 			// Get the authors of these revisions
 			$res = $dbw->select( 'code_rev',
 				array( 
@@ -337,15 +338,17 @@ class CodeRevision {
 				$revision = CodeRevision::newFromRow( $row );
 				$users = $revision->getCommentingUsers();
 				
-				//Add the revision author if they have not already been added as a commentor (they won't want dupe emails!)
-				if ( !array_key_exists( $user->getId(), $users ) {
-					$users[$user->getId()] = $user;
+				$revisionAuthor = $revision->getWikiUser();
+				
+				//Add the followup revision author if they have not already been added as a commentor (they won't want dupe emails!)
+				if ( !array_key_exists( $revisionAuthor->getId(), $users ) {
+					$users[$revisionAuthor->getId()] = $revisionAuthor;
 				}
 
 				//Notify commenters and revision author of followup revision
 				foreach ( $users as $userId => $user ) {
-					// No sense in notifying the author if they are a commenter on the target rev
-					if ( $wgUser->getId() == $user->getId() ) {
+					// No sense in notifying the author of this rev if they are a commenter/the author on the target rev
+					if ( $commitAuthorId == $user->getId() ) {
 						continue;
 					}	
 
