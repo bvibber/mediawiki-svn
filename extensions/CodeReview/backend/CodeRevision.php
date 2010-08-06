@@ -213,6 +213,7 @@ class CodeRevision {
 			__METHOD__,
 			array( 'IGNORE' )
 		);
+
 		// Already exists? Update the row!
 		$newRevision = $dbw->affectedRows() > 0;
 		if ( !$newRevision ) {
@@ -228,6 +229,7 @@ class CodeRevision {
 				__METHOD__
 			);
 		}
+
 		// Update path tracking used for output and searching
 		if ( $this->mPaths ) {
 			$data = array();
@@ -240,6 +242,7 @@ class CodeRevision {
 			}
 			$this->insertChunks( $dbw, 'code_paths', $data, __METHOD__, array( 'IGNORE' ) );
 		}
+
 		// Update bug references table...
 		$affectedBugs = array();
 		if ( preg_match_all( '/\bbug (\d+)\b/', $this->mMessage, $m ) ) {
@@ -254,6 +257,7 @@ class CodeRevision {
 			}
 			$dbw->insert( 'code_bugs', $data, __METHOD__, array( 'IGNORE' ) );
 		}
+
 		// Get the revisions this commit references...
 		$affectedRevs = array();
 		if ( preg_match_all( '/\br(\d{2,})\b/', $this->mMessage, $m ) ) {
@@ -264,6 +268,7 @@ class CodeRevision {
 				}
 			}
 		}
+
 		// Also, get previous revisions that have bugs in common...
 		if ( count( $affectedBugs ) ) {
 			$res = $dbw->select( 'code_bugs',
@@ -280,6 +285,7 @@ class CodeRevision {
 				$affectedRevs[] = intval( $row->cb_from );
 			}
 		}
+
 		// Filter any duplicate revisions
 		if ( count( $affectedRevs ) ) {
 			$data = array();
@@ -294,8 +300,10 @@ class CodeRevision {
 			}
 			$dbw->insert( 'code_relations', $data, __METHOD__, array( 'IGNORE' ) );
 		}
+
+		global $wgEnableEmail;
 		// Email the authors of revisions that this follows up on
-		if ( $newRevision && count( $affectedRevs ) > 0 ) {
+		if ( $wgEnableEmail && $newRevision && count( $affectedRevs ) > 0 ) {
 			// Get committer wiki user name, or repo name at least
 			$user = $this->mRepo->authorWikiUser( $this->mAuthor );
 			$committer = $user ? $user->getName() : htmlspecialchars( $this->mAuthor );
@@ -312,6 +320,7 @@ class CodeRevision {
 				__METHOD__,
 				array( 'USE INDEX' => 'PRIMARY' )
 			);
+
 			// Get repo and build comment title (for url)
 			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
 			$url = $title->getFullUrl();
@@ -322,6 +331,7 @@ class CodeRevision {
 				if ( !$user || !$user->canReceiveEmail() ) {
 					continue;
 				}
+
 				// Send message in receiver's language
 				$lang = array( 'language' => $user->getOption( 'language' ) );
 				$user->sendMail(
