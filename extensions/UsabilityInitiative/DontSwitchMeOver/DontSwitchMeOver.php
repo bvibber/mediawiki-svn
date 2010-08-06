@@ -19,7 +19,15 @@
  */
 
 /* Configuration */
- 
+
+// Preferences to switch back to. This has to be set because the old default
+// skin isn't remembered after a switchover.
+// You can also add more preferences here, and on wikis with PrefSwitch setting
+// $wgDontSwitchMeOverPrefs = $wgPrefSwitchPrefs['off']; is probably wise
+$wgDontSwitchMeOverPrefs = array(
+	'skin' => 'monobook'
+);
+
 // Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
