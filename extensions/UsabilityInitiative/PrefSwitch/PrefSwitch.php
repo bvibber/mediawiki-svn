@@ -38,6 +38,9 @@ $wgPrefSwitchPrefs = array(
 	),
 );
 
+// Allow global opt-outs. Depends on CentralAuth
+$wgPrefSwitchGlobalOptOut = false;
+
 // Survey questions to ask when users switch prefs
 // array(
 //		survey-id => array(
@@ -62,6 +65,7 @@ $wgPrefSwitchSurveys = array();
 $wgPrefSwitchSurveys['feedback'] = array(
 	'submit-msg' => 'prefswitch-survey-submit-feedback',
 	'updatable' => true,
+	'global' => false,
 	'questions' => array(
 		'like' => array(
 			'question' => 'prefswitch-survey-question-like',
@@ -76,6 +80,8 @@ $wgPrefSwitchSurveys['feedback'] = array(
 $wgPrefSwitchSurveys['off'] = array(
 	'submit-msg' => 'prefswitch-survey-submit-off',
 	'updatable' => false,
+	'global' => true,
+	'submit-global-msg' => 'prefswitch-survey-submit-global-off',
 	'questions' => array_merge(
 		$wgPrefSwitchSurveys['feedback']['questions'],
 		array(

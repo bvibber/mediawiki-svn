@@ -67,10 +67,30 @@ class SpecialPrefSwitch extends SpecialPage {
 		$user->saveSettings();
 	}
 	/**
-	 * Switches a user's prefernces off
+	 * Switches a user's preferences off
 	 * @param $user User object to set preferences for
+	 * @param $global bool Whether to apply this change on all wikis in $wgPrefSwitchWikis
 	 */
-	public static function switchOff( $user ) {
+	public static function switchOff( $user, $global = false ) {
+		self::switchOffUser( $user );
+		if ( $global ) {
+			$globalUser = new CentralAuthUser( $user->getName() );
+			if ( !$globalUser->exists() ) {
+				return;
+			}
+			$accounts = $globalUser->queryAttached();
+			foreach ( $accounts as $account ) {
+				$remoteUser = UserRightsProxy::newFromName(
+					$account['wiki'],
+					$globalUser->getName(),
+					true
+				);
+				self::switchOffUser( $remoteUser );
+			}
+		}
+	}
+	
+	private static function switchOffUser( $user ) {
 		global $wgPrefSwitchPrefs;
 		foreach ( $wgPrefSwitchPrefs['off'] as $pref => $value ) {
 			$user->setOption( $pref, $value );
@@ -85,7 +105,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		wfLoadExtensionMessages( 'PrefSwitch' );
 	}
 	public function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion;
+		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion, $wgPrefSwitchGlobalOptOut;
 		// Get the origin from the request
 		$par = $wgRequest->getVal( 'from', $par );
 		$this->originTitle = Title::newFromText( $par );
@@ -126,7 +146,7 @@ class SpecialPrefSwitch extends SpecialPage {
 				case 'off':
 					// Switch off
 					if ( self::checkToken() && self::isSwitchedOn( $wgUser ) && $wgRequest->wasPosted() ) {
-						self::switchOff( $wgUser );
+						self::switchOff( $wgUser, $wgRequest->getCheck( 'global' ) && $wgPrefSwitchGlobalOptOut );
 						PrefSwitchSurvey::save( 'off', $wgPrefSwitchSurveys['feedback'] );
 						$wgOut->addWikiMsg( 'prefswitch-success-off' );
 					} else if ( !self::isSwitchedOn( $wgUser ) ) {
@@ -199,7 +219,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	/* Private Functions */
 	
 	private function render( $mode = null ) {
-		global $wgUser, $wgOut, $wgPrefSwitchSurveys, $wgAllowUserCss, $wgAllowUserJs;
+		global $wgUser, $wgOut, $wgPrefSwitchSurveys, $wgPrefSwitchGlobalOptOut, $wgAllowUserCss, $wgAllowUserJs;
 		// Make sure links will retain the origin
 		$query = array(	'from' => $this->origin, 'fromquery' => $this->originQuery );
 		if ( isset( $wgPrefSwitchSurveys[$mode] ) ) {
@@ -229,6 +249,15 @@ class SpecialPrefSwitch extends SpecialPage {
 				wfMsg( $wgPrefSwitchSurveys[$mode]['submit-msg'] ),
 				array( 'id' => "prefswitch-survey-submit-{$mode}", 'class' => 'prefswitch-survey-submit' )
 			);
+			if ( $wgPrefSwitchSurveys[$mode]['global'] && $wgPrefSwitchGlobalOptOut ) {
+				$html .= Xml::submitButton(
+					wfMsg( $wgPrefSwitchSurveys[$mode]['submit-global-msg'] ),
+					array(	'id' => "prefswitch-survey-submit-global-{$mode}",
+						'class' => 'prefswitch-survey-submit',
+						'name' => 'global',
+					)
+				);
+			}
 			$html .= Xml::closeElement( 'dt' );
 			$html .= Xml::closeElement( 'form' );
 			$wgOut->addHtml( $html );
