@@ -718,6 +718,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'wikieditor-previewDialog-preference' => 'Wezesha kisanduku cha kudhibiti hakikisho',
 	'wikieditor-previewDialog-tab' => 'Hakiki',
 	'wikieditor-previewDialog-loading' => 'Inapakiwa...',
 );
