@@ -2,7 +2,7 @@
 
 $messages = array();
 $messages['en'] = array(
-	'activestrategy' => 'Active Strategy',
+	'activestrategy' => 'Active strategy',
 	'active-strategy-desc' => 'Shows number of edits to strategic planning pages',
 	'active-strategy-intro' => 'Number of edits to task force pages in the last {{PLURAL:$1|$1 day|$1 days}}.',
 	'nedits' => '$1 {{PLURAL:$1|edit|edits}}',
