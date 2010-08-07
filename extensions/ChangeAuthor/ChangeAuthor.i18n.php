@@ -467,6 +467,11 @@ $messages['ch'] = array(
 	'changeauthor-pagenameform-go' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'changeauthor-pagenameform-go' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

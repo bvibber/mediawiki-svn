@@ -1352,6 +1352,11 @@ $4',
 	'specialpages-group-developer' => 'Eines de desenvolupador',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'codereview-batch-submit' => 'ناردن',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Matěj Grabovský
@@ -4343,7 +4348,7 @@ $messages['id'] = array(
 	'code-batch-tags' => 'Ubah tag:',
 	'codereview-batch-title' => 'Ubah semua revisi terpilih',
 	'codereview-batch-submit' => 'Kirim',
-	'code-releasenotes' => 'Catatan pelepasan',
+	'code-releasenotes' => 'catatan pelepasan',
 	'code-release-legend' => 'Buat catatan rilis',
 	'code-release-startrev' => 'Memulai rev:',
 	'code-release-endrev' => 'Akhir rev:',

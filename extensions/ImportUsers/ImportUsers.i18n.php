@@ -332,6 +332,11 @@ $messages['ch'] = array(
 	'importusers-uploadfile' => "Na'kåtga hulu' i atkibu",
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'importusers-log-summary' => 'پوختە',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

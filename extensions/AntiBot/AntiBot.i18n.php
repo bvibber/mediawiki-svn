@@ -500,10 +500,11 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'antibot-desc' => 'Једноставни фрејмворк за спамбот-провере и реаговање на одређене квоте активности',
+	'antibot-desc' => 'Једноставан оквир за провере о непожељним роботима и реаговање на одређене квоте активности',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

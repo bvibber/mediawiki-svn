@@ -805,9 +805,10 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
-	'sitenotice_close' => 'откажи',
+	'sitenotice_close' => 'одбаци',
 	'sitenotice-desc' => 'омогући корисницима да искључе обавештење на сајту',
 );
 

@@ -220,6 +220,11 @@ $messages['bs'] = array(
 Možete [[Special:RefHelper|dodati referencu ručno]] ili [[Special:RefSearch|tražiti citat za dodavanje]].',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'refhelper-search' => 'گەڕان',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -606,11 +611,40 @@ Tu pote [[Special:RefHelper|adder le referentia manualmente]] o [[Special:RefSea
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'refhelper' => 'Pembantu referensi',
+	'refsearch' => 'Pencarian referensi',
+	'refhelper-desc' => 'Bantu buat halaman untuk referensi',
+	'refhelper-refsearch' => 'Pencarian referensi',
+	'refhelper-refcreate_legend' => 'Buat referensi baru',
+	'refhelper-refsearch_legend' => 'Cari referensi di PubMed',
+	'refhelper-refcreate_another' => 'Buat referensi lain',
+	'refhelper-refcreate_autocomment' => 'Pembuatan halaman otomatis.',
+	'refhelper-refcreate_success' => 'Halaman [[$1]] tidak ada dan telah dibuat.',
+	'refhelper-refcreate_failure' => 'Halaman [[$1]] sudah ada!',
+	'refhelper-label_workspace' => 'Ruang kerja (daerah salin dan tempel):',
+	'refhelper-label_authorforename' => 'Nama depan penulis $1:',
+	'refhelper-label_authorsurname' => 'Nama belakang:',
+	'refhelper-title' => 'Judul:',
+	'refhelper-journal' => 'Jurnal:',
+	'refhelper-volume' => 'Volume:',
+	'refhelper-pages' => 'Halaman:',
 	'refhelper-year' => 'Tahun:',
+	'refhelper-refname' => 'Nama rujukan:',
+	'refhelper-category' => 'Kategori $1:',
+	'refhelper-create' => 'Buat',
 	'refhelper-search' => 'Cari',
+	'refhelper-toolbox_link_create' => 'Buat referensi',
+	'refhelper-toolbox_link_search' => 'Buat referensi dari pencarian',
+	'refhelper-newarticle_nocitation' => 'Saat ini tidak ada rujukan dengan nama ini.',
+	'refhelper-newarticle_suggestions' => 'Bila ada rujukan yang sesuai di bawah, Anda dapat membuat halaman ini dengan mengklik tombol "Buat".
+
+<h2>Saran</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Sayangnya, saya tidak mampu menyarankan referensi apa pun.
+Anda dapat [[Special:RefHelper|menambahkan referensi secara manual]] atau [[Special:RefSearch|cari rujukan untuk ditambahkan]]',
 );
 
 /** Igbo (Igbo)

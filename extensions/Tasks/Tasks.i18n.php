@@ -632,10 +632,12 @@ $messages['ca'] = array(
 	'tasks_status_closed' => 'Tancat',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
+	'tasks_delete' => 'سڕینەوە',
+	'tasks_search_form_title' => 'گەڕان',
 	'tasks_previous' => 'پێشوو',
 	'tasks_next' => 'دواتر',
 );

@@ -272,11 +272,12 @@ $messages['ca'] = array(
 	'spamdifftool_submit_buttom' => 'Envia',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
 	'spamdifftool_option_none' => 'هیچ‌شتێک',
+	'spamdifftool_submit_buttom' => 'ناردن',
 );
 
 /** Czech (Česky)

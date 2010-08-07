@@ -115,6 +115,11 @@ $messages['ca'] = array(
 	'categoryonupload-label' => 'Categoria:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'categoryonupload-label' => 'پۆل:',
+);
+
 /** German (Deutsch)
  * @author Raimond Spekking
  */

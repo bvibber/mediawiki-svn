@@ -175,7 +175,7 @@ $messages['ko'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'apisvgproxy-desc' => 'Deiht Datteije em SVG Fommaat als ene <i lang="en">proxy</i>-əööver onger de eije Domain aanbeede.',
+	'apisvgproxy-desc' => 'Deiht Datteije em SVG Fommaat als ene <i lang="en">proxy</i>-ẞööver onger de eije Domain aanbeede.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

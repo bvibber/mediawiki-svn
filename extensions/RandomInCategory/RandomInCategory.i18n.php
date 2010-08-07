@@ -168,6 +168,12 @@ $messages['ch'] = array(
 	'randomincategory-submit' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'randomincategory-label' => 'پۆل:',
+	'randomincategory-submit' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

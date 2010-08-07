@@ -259,6 +259,12 @@ $messages['ce'] = array(
 	'authorprotect-reason' => 'Бахьан',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'authorprotect-expiry' => 'ھەتا:',
+	'authorprotect-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Reaperman

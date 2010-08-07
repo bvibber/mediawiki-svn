@@ -2571,6 +2571,7 @@ $messages['eo'] = array(
  * @author Imre
  * @author Jatrobat
  * @author Locos epraix
+ * @author McDutchie
  * @author Pertile
  * @author Sanbec
  * @author Translationista
@@ -2706,7 +2707,7 @@ Saltar a visualización de flujo: $2',
 	'mv_adjust_default_reason' => 'Ajuste de interface de MetaVid',
 	'mv_adjust_old_title_missing' => 'La página que estás tratando de mover de ($1) no existe',
 	'mv_adjust_ok_move' => 'Éxito, ajustando...',
-	'mv_start_desc' => 'Empezar tiempo',
+	'mv_start_desc' => 'Tiempo de inicio',
 	'mv_end_desc' => 'Terminar tiempo',
 	'mv_edit_metadata' => 'Editar metadatos',
 	'mv_advanced_edit' => 'Edición avanzada',
@@ -5011,6 +5012,7 @@ atau Anda mungkin ingin <a href="$3">Tambahkan aliran</a>.',
 	'mv_tool_navigate_title' => 'Jelajahi aliran penuh',
 	'mv_tool_export' => 'Ekspor',
 	'mv_tool_export_title' => 'Ekspor metadata aliran',
+	'mv_tool_embed' => 'Tanam',
 	'mv_results_found' => 'Hasil video <b>$1</b> hingga <b>$2</b> dari <b>$3</b>',
 	'mv_tool_mang_layers' => 'Kelola lapisan',
 	'mv_update_layers' => 'Perbarui lapisan',

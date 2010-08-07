@@ -289,6 +289,21 @@ $messages['ia'] = array(
 	'tablemod-error-missingid' => 'Le attributo "ident" manca in le etiquetta.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Manipulasi tabel wiki',
+	'tablemod-msg-remove' => 'Hapus',
+	'tablemod-error-format' => 'Tag ini hanya mendukung satu tabel sederhana per tag, tanpa teks apa pun sebelum dan sesudahnya.',
+	'tablemod-error-colcount' => 'Tag ini hanya mendukung tabel dengan jumlah kolom yang sama per baris ketika menghapus.',
+	'tablemod-error-headcount' => 'Tag ini hanya mendukung tabel dengan kepala kolom tunggal ketika mengurutkan.',
+	'tablemod-error-invalidsort' => 'Parameter urut tidak sah.',
+	'tablemod-error-invalidaction' => 'Tindakan tidak sah.',
+	'tablemod-error-missingid' => 'Atribut ident tag hilang.',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  */

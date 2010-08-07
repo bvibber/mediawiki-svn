@@ -885,6 +885,12 @@ podeu triar-ne un de les opcions a continuació.',
 	'openid-provider-label-other-username' => "Introduïu el vostre $1 nom d'usuari",
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'openiddelete-button' => 'پشتدار بکەرەوە',
+	'openid-urls-delete' => 'سڕینەوە',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Matěj Grabovský

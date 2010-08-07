@@ -160,6 +160,12 @@ $messages['ca'] = array(
 	'searchbox-go' => 'Vés-hi',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'searchbox-search' => 'گەڕان',
+	'searchbox-go' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */

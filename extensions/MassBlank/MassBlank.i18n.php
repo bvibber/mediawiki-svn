@@ -94,6 +94,11 @@ $messages['ce'] = array(
 	'massblank-blankcomment' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'massblank-blankcomment' => 'هۆکار:',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -234,6 +239,24 @@ Entra le nomine de usator o adresse IP pro obtener un lista de paginas a vacuar.
 	'massblank-submit-blank' => 'Vacuar le paginas seligite',
 	'massblank-blankcomment' => 'Motivo:',
 	'right-massblank' => 'Vacuar paginas in massa',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'massblank' => 'Kosong massal',
+	'massblank-desc' => 'Memberikan pengurus kemampuan untuk [[Special:MassBlank|mengosongkan massal]] halaman',
+	'massblank-nopages' => 'Tidak ada halaman baru yang dirintis oleh [[Special:Contributions/$1|$1]] pada perubahan terbaru.',
+	'massblank-list' => 'Halaman berikut baru dibuat oleh [[Special:Contributions/$1|$1]];
+berikan komentar dan tekan tombol untuk mengosongkannya.',
+	'massblank-defaultreason' => 'Pengosongan massal halaman dibuat oleh $1',
+	'massblank-tools' => 'Peralatan ini memungkinkan pengosongan massal halaman yang baru dirintis oleh seorang pengguna terdaftar atau alamat IP.
+Masukkan nama pengguna atau alamat IP untuk memeroleh daftar halaman yang ingin dikosongkan.',
+	'massblank-submit-user' => 'Tuju ke',
+	'massblank-submit-blank' => 'Kosong dipilih',
+	'massblank-blankcomment' => 'Alasan:',
+	'right-massblank' => 'Halaman kosong massal',
 );
 
 /** Japanese (日本語)

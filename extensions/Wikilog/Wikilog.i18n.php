@@ -1451,6 +1451,14 @@ $messages['ca'] = array(
 	'wikilog-history-lc' => 'historial',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'wikilog-view-summary' => 'پوختە',
+	'wikilog-form-category' => 'پۆل:',
+	'wikilog-submit' => 'ناردن',
+	'wikilog-delete-lc' => 'سڕینەوە',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

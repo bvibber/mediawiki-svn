@@ -1142,6 +1142,7 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Verlor
  * @author Михајло Анђелковић
  */
@@ -1150,6 +1151,8 @@ $messages['sr-ec'] = array(
 	'importfreeimages_owner' => 'Аутор',
 	'importfreeimages_importthis' => 'увези ово',
 	'importfreeimages_next' => 'Следеће $1',
+	'importfreeimages_size_square' => 'Квадрат',
+	'importfreeimages_size_thumbnail' => 'Умањени приказ',
 	'importfreeimages_size_small' => 'Мала',
 	'importfreeimages_size_medium' => 'Средња',
 	'importfreeimages_size_large' => 'Велика',

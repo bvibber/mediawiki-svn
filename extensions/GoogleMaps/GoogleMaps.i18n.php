@@ -900,6 +900,12 @@ $wgGoogleMapsMessages['ch'] = array(
 	'gm-search' => 'Aligao',
 );
 
+/** Sorani (کوردی) */
+$wgGoogleMapsMessages['ckb'] = array(
+	'gm-search' => 'گەڕان',
+	'gm-save-path' => 'پاشەکەوت',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský
@@ -5004,21 +5010,22 @@ $wgGoogleMapsMessages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $wgGoogleMapsMessages['sr-ec'] = array(
 	'gm-desc' => 'Лако прави мапе, помоћу Викифицираних маркера',
 	'gm-incompatible-browser' => 'Како би видели мапу која се приказује овде, морате да користите компатибилан веб браузер.',
-	'gm-incompatible-browser-link' => 'Кликните овде да видите списак компатибилних браузера.',
-	'gm-no-editor' => 'Жао нам је, ваш браузер не подржава интерактивне мапе. Пробајте последњу верзију <a href="http://www.microsoft.com/ie">Интернет Експлорера</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Фајерфокса</a> (Windows, Mac, and Linux).',
+	'gm-incompatible-browser-link' => 'Кликните овде да погледате списак сагласних прегледача.',
+	'gm-no-editor' => 'Жао нам је, али Ваш прегледач не подржава интерактивне мапе. Пробајте последње издање <a href="http://www.microsoft.com/ie">интернет експлорера</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">фајерфокса</a> (Windows, Mac и Linux).',
 	'gm-balloon-title' => 'Наслов:',
-	'gm-balloon-link-article' => 'Веза ка овој страници (опционо):',
-	'gm-make-marker' => 'Наслов (вики код):',
+	'gm-balloon-link-article' => 'Веза ка овој страници (необавезно):',
+	'gm-make-marker' => 'Наслов (вики кôд):',
 	'gm-remove' => 'уклони',
 	'gm-caption' => 'Назив',
-	'gm-tab-title' => 'Наслов таба',
-	'gm-tab' => 'Таб',
+	'gm-tab-title' => 'Наслов језичка',
+	'gm-tab' => 'Језичак',
 	'gm-start-path' => 'започни путању',
 	'gm-trace-area' => 'прати неки површину',
 	'gm-save-point' => 'Сними &amp; затвори',

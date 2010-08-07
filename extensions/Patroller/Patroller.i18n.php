@@ -336,6 +336,11 @@ $messages['ce'] = array(
 	'patrol-revert-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'patrol-revert-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

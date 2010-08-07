@@ -160,6 +160,19 @@ $messages['ia'] = array(
 	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Al plus 20 micas de pan',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'jsbreadcrumbs-desc' => 'Menambahkan jejak remahroti di bawah kotak tab',
+	'jsbreadcrumbs-leading-description' => 'Jejak navigasi',
+	'prefs-jsbreadcrumbs' => 'Remah Roti',
+	'prefs-jsbreadcrumbs-showsite' => 'Masukkan nama situs di remah roti (berguna ketika digunakan lintas wiki)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Tampilkan remah roti',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Jumlah remah roti',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maksimum 20 remah roti',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

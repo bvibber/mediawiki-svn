@@ -176,6 +176,11 @@ $messages['ca'] = array(
 	'emergencydesysop-nogroups' => 'Cap',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'emergencydesysop-submit' => 'ناردن',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Metalhead64

@@ -173,6 +173,11 @@ $messages['ca'] = array(
 	'inspectcache-list' => 'Llista',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'inspectcache-delete' => 'سڕینەوە',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

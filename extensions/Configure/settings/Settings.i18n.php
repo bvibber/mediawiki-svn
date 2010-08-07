@@ -11135,7 +11135,7 @@ $messages['ksh'] = array(
 	'configure-setting-wgInvalidRedirectTargets' => 'En Leß met Tittelle vun Sigge, woh kei Ömleidunge drop aanjelaat wähde dörve',
 	'configure-setting-wgMaximumMovedPages' => 'De hühßte Zahl Sigge, di op eine Rötsch ömjenannt wäde künne, wam_mer en Sigg met ier Ungersigge zosamme ömnänne well',
 	'configure-setting-wgMiserMode' => 'Donn e paa „düüre“ Saache afschallde, öm däm ßööver Laß ze shpaare',
-	'configure-setting-wgShowHostnames' => 'Donn däm ßöver singe Räschnername övver et <i lang="en">API</i> un Kommäntaare em <i lang="en">HTML</i> noh druße jävve',
+	'configure-setting-wgShowHostnames' => 'Donn däm ẞööver singe Räschnername övver et <i lang="en">API</i> un Kommäntaare em <i lang="en">HTML</i> noh druße jävve',
 	'configure-setting-wgUseDumbLinkUpdate' => 'Donn <span lang="en" style="text-transform:uppercase"><code>delete</code>/<code>insert</code></span> nämme för Lengks en de Datebangk ze ändere, shtatt schrettscheswies',
 	'configure-setting-wgCacheVaryCookies' => 'En Leß met <i lang="en">cookies</i>, di för ene extra Zwescheschpeischer sorrje donn',
 	'configure-setting-wgCookieDomain' => 'De shpezjäll faßjelaate <i lang="en">domain</i> för de <i lang="en">cookies</i> vum Enlogge',

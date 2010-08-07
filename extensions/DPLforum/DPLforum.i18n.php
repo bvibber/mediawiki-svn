@@ -747,12 +747,16 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Verlor
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'dplforum-by' => 'од $1',
+	'dplforum-edited' => '— последњи пут измењено',
 	'dplforum-never' => 'Никад',
+	'dplforum-toofew' => 'DPL форум: премало категорија!',
+	'dplforum-toomany' => 'DPL форум: превише категорија!',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

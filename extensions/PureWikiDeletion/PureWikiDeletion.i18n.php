@@ -365,6 +365,36 @@ Vide $2 pro un registro de vacuationes recente.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Plenar]] le tabella de paginas vacuate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'purewikideletion' => 'Penghapusan wiki murni',
+	'randomexcludeblank' => 'Halaman acak (tidak termasuk kosong)',
+	'populateblankedpagestable' => 'Isi tabel halaman yang dikosongkan',
+	'purewikideletion-desc' => 'Antara lain, menyebabkan halaman yang dikosongkan menjadi pranala merah',
+	'purewikideletion-pref-watchblank' => 'Tambahkan halaman yang saya kosongkan ke daftar pantauan',
+	'purewikideletion-pref-watchunblank' => 'Tambahkan halaman yang saya takjadi kosongkan ke daftar pantauan',
+	'purewikideletion-blanked' => "Versi sebelumnya dari halaman ini dikosongkan oleh [[User:$1|$1]] ([[User talk:$1|bicara]]) ([[Special:Contributions/$1|kontrib]]) pada tanggal $5 pukul $6.
+
+Alasan pengosongan adalah: ''<nowiki>$3</nowiki>''.
+
+Anda dapat [{{fullurl:{{FULLPAGENAMEE}}|action=history}} melihat versi terdahulu halaman ini], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} menyunting versi terakhir], atau menyunting halaman baru menggunakan kotak putih di bawah.",
+	'blank-log' => 'kosong',
+	'blank-log-name' => 'Log pengosongan',
+	'blank-log-header' => 'Berikut adalah daftar pengosongan dan takjadi pengosongan halaman.',
+	'blank-log-entry-blank' => 'dikosongkan $1',
+	'blank-log-entry-unblank' => 'tidak dikosongkan $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|log pengosongan]]',
+	'purewikideletion-blanknologin' => 'Belum masuk log',
+	'purewikideletion-blanknologintext' => 'Anda harus menjadi pengguna terdaftar dan telah [[Special:UserLogin|masuk log]] untuk mengosongkan suatu halaman.',
+	'purewikideletion-unblanknologintext' => 'Anda harus menjadi pengguna terdaftar dan telah [[Special:UserLogin|masuk log]] untuk takjadi kosongkan suatu halaman.',
+	'purewikideletion-blankedtext' => '[[$1]] telah dikosongkan.
+Lihat $2 untuk catatan pengosongan terkini.',
+	'purewikideletion-population-done' => 'Berhasil mengisi tabel blanked_page.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Isi]] tabel halaman yang dikosongkan',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

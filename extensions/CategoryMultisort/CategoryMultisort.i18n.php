@@ -56,6 +56,12 @@ $messages['br'] = array(
 	'prefs-category' => 'Rummad',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'categorymultisort-go' => 'بڕۆ',
+	'prefs-category' => 'پۆل',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

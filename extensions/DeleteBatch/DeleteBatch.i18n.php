@@ -271,6 +271,11 @@ $messages['ce'] = array(
 	'deletebatch-delete' => 'Дlадайá',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'deletebatch-delete' => 'سڕینەوە',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK

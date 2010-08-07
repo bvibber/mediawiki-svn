@@ -248,6 +248,11 @@ $messages['ch'] = array(
 	'editmsg-search' => 'Aligao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'editmsg-search' => 'گەڕان',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

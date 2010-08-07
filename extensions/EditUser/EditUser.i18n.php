@@ -242,6 +242,11 @@ $messages['ch'] = array(
 	'edituser-dosearch' => 'Aligao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'edituser-dosearch' => 'گەڕان',
+);
+
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
  * @author ОйЛ
  */

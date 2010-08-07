@@ -1004,6 +1004,11 @@ $messages['ce'] = array(
 	'viewapc-ls-delete' => '[Дlадайá]',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'viewapc-ls-submit' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

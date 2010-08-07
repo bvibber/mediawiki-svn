@@ -320,13 +320,21 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
+	'pf-desc' => '[[Special:PackageForce|Paket unduhan]] templat berguna, dll.',
+	'pf-only-admins-allowed' => "Halaman ini hanya untuk pengguna dengan hak 'packageforce-admin'.",
 	'pf-admin-menu-default' => 'Setelan baku',
+	'pf-admin-menu-unsortedtemplates' => 'Templat belum diurutkan',
+	'pf-admin-link-view-documentation' => 'Lihat dokumentasi yang berhubungan dengan halaman ini.',
 	'pf-admin-link-editlink-page' => 'Sunting halaman',
 	'pf-admin-link-approve' => 'Setujui halaman',
 	'pf-header-documentation' => 'Dokumentasi',
+	'pf-header-in_packages' => 'Paket',
 	'pf-header-edit' => 'Sunting pranala',
 	'pf-header-type' => 'Jenis halaman',
 	'pf-header-page_title' => 'Judul',

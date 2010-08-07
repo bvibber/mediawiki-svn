@@ -459,6 +459,12 @@ $messages['ce'] = array(
 	'crosswikiunblock-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'crosswikiblock-reason' => 'هۆکار:',
+	'crosswikiunblock-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

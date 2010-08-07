@@ -35,6 +35,7 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'passwordreset-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'passwordreset-nopassmatch' => '{{Identical|Passwords do not match}}',
 	'passwordreset-badtoken' => '{{Identical|Invalid edit token}}',
 	'passwordreset-username' => '{{Identical|Username}}',
 	'passwordreset-newpass' => '{{Identical|New password}}',
@@ -789,6 +790,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Rex
  */
@@ -797,7 +799,7 @@ $messages['id'] = array(
 	'passwordreset-desc' => "[[Special:PasswordReset|Wiki pengaturan ulang kunci pengguna]] - diperlukan hak 'passwordreset'",
 	'passwordreset-invalidusername' => 'Nama pengguna tidak sah',
 	'passwordreset-emptyusername' => 'Nama pengguna tidak diisi',
-	'passwordreset-nopassmatch' => 'Sandi tidak sesuai',
+	'passwordreset-nopassmatch' => 'Sandi tidak cocok',
 	'passwordreset-badtoken' => 'Token penyuntingan tidak sah',
 	'passwordreset-username' => 'Nama pengguna:',
 	'passwordreset-newpass' => 'Kata sandi baru:',

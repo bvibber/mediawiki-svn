@@ -1020,6 +1020,14 @@ $messages['ce'] = array(
 	'deletequeue-case-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'deletequeue-delnom-otherreason' => 'هۆکاری دیکە',
+	'deletequeue-vote-submit' => 'ناردن',
+	'deletequeue-list-search' => 'گەڕان',
+	'deletequeue-case-reason' => 'هۆکار:',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */

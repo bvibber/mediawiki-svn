@@ -221,6 +221,12 @@ $messages['ca'] = array(
 	'index-hide-detail' => 'Oculta la llista de pàgines',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'index-search' => 'گەڕان:',
+	'index-submit' => 'ناردن',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author MF-Warburg

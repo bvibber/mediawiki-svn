@@ -164,6 +164,11 @@ $messages['ca'] = array(
 	'showprocesslist-info' => 'Info',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'showprocesslist-user' => 'بەکارهێنەر',
+);
+
 /** Corsican (Corsu) */
 $messages['co'] = array(
 	'showprocesslist-user' => 'Utilizatore',

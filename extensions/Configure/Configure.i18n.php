@@ -1615,6 +1615,14 @@ $messages['ch'] = array(
 	'configure-section-specialpages' => 'Manespesiat na påhina',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'configure-form-reason' => 'هۆکار:',
+	'configure-js-remove' => 'سڕینەوە',
+	'configure-section-search' => 'گەڕان',
+	'configure-throttle-action-move' => 'گواستنەوە',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Kuvaly

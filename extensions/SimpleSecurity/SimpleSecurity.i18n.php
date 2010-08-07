@@ -206,6 +206,11 @@ $messages['ca'] = array(
 	'security-type-namespace' => 'espai de noms',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'security-type-category' => 'پۆل',
+);
+
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Kghbln

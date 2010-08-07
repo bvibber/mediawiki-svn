@@ -1128,6 +1128,7 @@ $messages['sv'] = array(
 $messages['sw'] = array(
 	'ajaxshoweditors-desc' => 'Inaonyesha majina ya watumiaji wengine wanaohariri ukurasa uleule kwa wakati mmoja',
 	'ajax-se-title' => 'Wanaohariri sasa hivi:',
+	'ajax-se-pending' => 'ili kusasisha... (bonyeza kisanduku hiki au anza kuhariri)',
 	'ajax-se-idling' => '($1s zilizopita)',
 	'ajax-se-pagedoesnotexist' => 'ukurasa haupatikani',
 	'ajax-se-userinvalid' => 'Hitilafu: mtumiaji batili',

@@ -276,6 +276,11 @@ $messages['ca'] = array(
 	'formsaveerror' => 'Error desant el formulari',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'formsave' => 'پاشەکەوت',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung

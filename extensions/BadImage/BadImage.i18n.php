@@ -435,6 +435,11 @@ $messages['ce'] = array(
 	'badimages-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'badimages-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

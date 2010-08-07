@@ -566,6 +566,12 @@ $messages['ch'] = array(
 	'regexblock-view-go' => 'Hånao',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'regexblock-form-reason' => 'هۆکار:',
+	'regexblock-view-go' => 'بڕۆ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -2478,6 +2484,9 @@ A peul esse che a-i sia pa col utent.',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'regexblock-already-blocked' => 'پر $1 د پخوا نه بنديز لګېدلی.',
+	'regexblock-block-log' => "په کارن نوم او يا د '''$1''' په IP پتې بنديز لګېدلی.",
+	'regexblock-expire-duration' => '1 ساعت،2 ساعتونه،4 ساعتونه،6 ساعتونه،1 ورځ3 ورځې،1 اونۍ،2 اونۍ،1 مياشت،3 مياشتې،6 مياشتې،1 کال، لامحدوده',
 	'regexblock-form-username' => 'IP پته يا کارن-نوم:',
 	'regexblock-form-reason' => 'سبب:',
 	'regexblock-form-expiry' => 'د پای نېټه:',

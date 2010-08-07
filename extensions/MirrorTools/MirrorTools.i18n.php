@@ -134,6 +134,18 @@ $messages['ia'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Usatores del instrumentos pro duplication',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'mirrortools' => 'MirrorTools',
+	'mirrortools-desc' => 'Memungkinkan suntingan melalui API menggunakan nama pengguna apa pun',
+	'right-mirroredit' => 'Sunting melalui API menggunakan nama pengguna apa pun',
+	'group-MirrorTools' => 'Pengguna peralatan cermin',
+	'group-MirrorTools-member' => 'pengguna peralatan cermin',
+	'grouppage-MirrorTools' => '{{ns:project}}:Pengguna peralatan cermin',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

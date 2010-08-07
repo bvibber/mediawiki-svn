@@ -154,6 +154,11 @@ $messages['ca'] = array(
 	'mostrevisors-viewcontributors' => 'Mostra els editors principals',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'mostrevisors-submit' => 'بڕۆ',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  */

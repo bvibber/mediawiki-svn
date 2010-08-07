@@ -1128,6 +1128,12 @@ $messages['ca'] = array(
 	'mwe-review-upload' => 'Reviseu {{PLURAL:$1|la càrrega|les càrregues}} de fitxer',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'mwe-filedesc' => 'پوختە',
+	'mwe-summary' => 'پوختە',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

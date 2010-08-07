@@ -148,6 +148,7 @@ It is not in used at the referred page, as of 16 May 2010.
 It is not in used at the referred page, as of 16 May 2010.
 
 {{Identical|No}}',
+	'prefswitch-survey-submit-global-off' => 'This message may still change',
 	'prefswitch-survey-cancel-feedback' => '$1 is a link to the main page of the wiki in question.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Should be generic enough to be used as an option for questions:
 *{{msg-mw|Optin-survey-question-whyoptout}}
@@ -162,7 +163,6 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-main-feedback' => 'Entry asking for feedback in a local page.',
 	'prefswitch-main-anon' => 'Is used on Special:UsabilityInitiativePrefSwitch at Wikimedia.org.',
 	'prefswitch-feedbackpage' => '{{doc-important|The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now. Do not translate "Project:"}}',
-	'prefswitch-survey-submit-global-off' => 'This message may still change',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1085,6 +1085,7 @@ For at hjælpe os med at forbedre dem, udfyld venligst det valgfrie undersøgels
  * @author Als-Holder
  * @author Kghbln
  * @author Merlissimo
+ * @author Metalhead64
  * @author The Evil IP address
  */
 $messages['de'] = array(
@@ -1095,6 +1096,7 @@ $messages['de'] = array(
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nein',
 	'prefswitch-survey-submit-off' => 'Neue Features abschalten',
+	'prefswitch-survey-submit-global-off' => 'Neue Features auf allen Wikis deaktivieren',
 	'prefswitch-survey-cancel-off' => 'Wenn du die neuen Features weiter verwenden willst, kannst du zu $1 zurückkehren.',
 	'prefswitch-survey-submit-feedback' => 'Feedback geben',
 	'prefswitch-survey-cancel-feedback' => 'Wenn du kein Feedback geben möchtest, kannst du zu $1 zurückkehren.',
@@ -3612,6 +3614,7 @@ $messages['ml'] = array(
 	'prefswitch-survey-true' => 'അതെ',
 	'prefswitch-survey-false' => 'വേണ്ട',
 	'prefswitch-survey-submit-off' => 'പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക',
+	'prefswitch-survey-submit-global-off' => 'പുതിയ സവിശേഷതകൾ എല്ലാ വിക്കികളിലും പ്രവർത്തനരഹിതമാക്കുക',
 	'prefswitch-survey-cancel-off' => 'പുതിയ സവിശേഷതകൾ തുടർന്നും ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നെങ്കിൽ, $1 എന്ന താളിലേയ്ക്ക് മടങ്ങാം.',
 	'prefswitch-survey-submit-feedback' => 'അഭിപ്രായം അറിയിക്കുക',
 	'prefswitch-survey-cancel-feedback' => 'അഭിപ്രായങ്ങൾ പങ്ക് വെയ്ക്കാനാഗ്രഹമില്ലെങ്കിൽ, താങ്കൾക്ക് $1 എന്ന താളിലേയ്ക്ക് മടങ്ങാം.',
@@ -4293,6 +4296,7 @@ $messages['pms'] = array(
 	'prefswitch-survey-true' => 'É',
 	'prefswitch-survey-false' => 'Nò',
 	'prefswitch-survey-submit-off' => 'Disativa le funsionalità neuve',
+	'prefswitch-survey-submit-global-off' => 'Gava le funsionalità neuve da dzora a tute le wiki',
 	'prefswitch-survey-cancel-off' => "S'a veul continué a dovré le possibilità neuve, a peul torné a $1.",
 	'prefswitch-survey-submit-feedback' => 'Mandé dij sugeriment',
 	'prefswitch-survey-cancel-feedback' => "S'a veul pa dé ëd sugeriment, a peul torné a $1.",

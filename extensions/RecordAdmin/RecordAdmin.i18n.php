@@ -398,6 +398,13 @@ $messages['ca'] = array(
 	'recordadmin-editlink' => 'modifica',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'recordadmin-submit' => 'ناردن',
+	'recordadmin-buttonsearch' => 'گەڕان',
+	'recordadmin-buttonsave' => 'پاشەکەوت',
+);
+
 /** German (Deutsch)
  * @author Imre
  * @author Kghbln

@@ -344,6 +344,11 @@ $messages['ce'] = array(
 	'closewikis-page-reopen-reason' => 'Бахьан:',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'closewikis-page-reopen-reason' => 'هۆکار:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung

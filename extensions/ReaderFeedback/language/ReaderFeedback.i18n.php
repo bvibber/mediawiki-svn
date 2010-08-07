@@ -438,6 +438,11 @@ $messages['ca'] = array(
 	'readerfeedback-tier-poor' => 'Pobre',
 );
 
+/** Sorani (کوردی) */
+$messages['ckb'] = array(
+	'readerfeedback-submit' => 'ناردن',
+);
+
 /** Czech (Česky)
  * @author Beren
  * @author Danny B.
