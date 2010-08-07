@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'prefswitch-survey-true' => 'Yes',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Turn new features off',
+	'prefswitch-survey-submit-global-off' => 'Turn new features off on all wikis',
 	'prefswitch-survey-cancel-off' => 'If you would like to continue using the new features, you can return to $1.',
 	'prefswitch-survey-submit-feedback' => 'Send feedback',
 	'prefswitch-survey-cancel-feedback' => 'If you do not want to provide feedback, you can return to $1.',
@@ -161,6 +162,7 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-main-feedback' => 'Entry asking for feedback in a local page.',
 	'prefswitch-main-anon' => 'Is used on Special:UsabilityInitiativePrefSwitch at Wikimedia.org.',
 	'prefswitch-feedbackpage' => '{{doc-important|The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now. Do not translate "Project:"}}',
+	'prefswitch-survey-submit-global-off' => 'This message may still change',
 );
 
 /** Afrikaans (Afrikaans)
