@@ -341,7 +341,7 @@ class CodeRevision {
 				$revisionAuthor = $revision->getWikiUser();
 				
 				//Add the followup revision author if they have not already been added as a commentor (they won't want dupe emails!)
-				if ( !array_key_exists( $revisionAuthor->getId(), $users ) {
+				if ( !array_key_exists( $revisionAuthor->getId(), $users ) ) {
 					$users[$revisionAuthor->getId()] = $revisionAuthor;
 				}
 
