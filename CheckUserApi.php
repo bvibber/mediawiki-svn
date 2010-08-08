@@ -4,6 +4,8 @@ class CheckUserApi extends ApiQueryBase {
 
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'cu' );
+		
+		##FIXME: Support $this->setWarning()
 	} 
 	
 	public function execute() {
@@ -123,6 +125,91 @@ class CheckUserApi extends ApiQueryBase {
 
 		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'checkuser' );
 	}
+	
+	public function doIP2User( &$cuClass, $params, $prop, $limit ) {
+		$dbParams = $cuClass->doIP2User( $params, $prop, $limit );
+		
+		if( isset( $dbParams['error'] ) ) {
+			$this->dieUsageMsg( array( $dbParams['error'] ) );
+		}
+
+		$this->addTables( $dbParams[0][0] );
+		$this->addFields( $dbParams[0][1] );
+		
+		foreach( $dbParams[0][2] as $id => $cond ) {
+			$this->addWhereFld( $id, $cond );
+		}
+		
+		if( $params['dir'] == "ascending" ) {
+			$params['dir'] = 'newer';
+		}
+		else {
+			$params['dir'] = 'older';
+		}
+		
+		$this->addWhereRange( 'cuc_user_text', $params['dir'], $params['start'], $params['end'] );
+		
+		foreach( $dbParams[0][4] as $id => $opt ) {
+			$this->addOption( $id, $opt );
+		}
+		
+		$this->addOption( 'LIMIT', $params['limit'] + 1);
+		
+		$res = $this->select( __METHOD__ );
+		var_dump($dbParams[0]);
+		
+		$logEntries = array();
+		
+		foreach( $res as $row ) {
+			if ( count( $logEntries ) > $params['limit'] ) {
+				break;
+			}
+			
+			$logEntries[$row->cuc_user_text] = array();
+			
+			if( in_array( 'first', $prop ) || is_null( $prop ) ) $logEntries[$row->cuc_user_text]['first'] = $row->first;
+			if( in_array( 'last', $prop ) || is_null( $prop ) ) $logEntries[$row->cuc_user_text]['last'] = $row->last;
+			if( in_array( 'agent', $prop ) || is_null( $prop ) ) $logEntries[$row->cuc_user_text]['agent'] = $row->cuc_agent;
+			if( in_array( 'blockinfo', $prop ) || is_null( $prop ) ) {
+				$blockinfo = CheckUser::checkBlockInfo( $row->cuc_user_text );
+				if( $blockinfo ) {
+					$logEntries[$row->cuc_user_text]['blockinfo'] = array();
+					$logEntries[$row->cuc_user_text]['blockinfo']['by'] = $blockinfo->ipb_by_text;
+					$logEntries[$row->cuc_user_text]['blockinfo']['reason'] = $blockinfo->ipb_reason;
+					$logEntries[$row->cuc_user_text]['blockinfo']['timestamp'] = $blockinfo->ipb_timestamp;
+					$logEntries[$row->cuc_user_text]['blockinfo']['expiry'] = $blockinfo->ipb_expiry;
+				}
+			}
+			if( ( in_array( 'xff', $prop ) || is_null( $prop ) ) && !empty( $row->cuc_xff ) ) {
+				$xff = $row->cuc_xff;
+				
+				$xff_ip_combo = array( $row->cuc_ip, $xff );
+				# Add this IP/XFF combo for this username if it's not already there
+				if ( !in_array( $xff_ip_combo, $logEntries[$row->cuc_user_text]['xff'] ) ) {
+					$logEntries[$row->cuc_user_text]['xff'][] = $xff_ip_combo;
+				}
+			}
+		}
+		
+		$count = 0;
+		foreach( $logEntries as $user => $row ) {
+			if ( ++$count > $params['limit'] ) {
+				// We've had enough
+				$this->setContinueEnumParameter( 'start', $row->cuc_user_text );
+				break;
+			}
+			
+			
+			
+			$fit = $this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, array( $user => $row ) );
+			if ( !$fit ) {
+				$this->setContinueEnumParameter( 'start', $row->cuc_user_text );
+				break;
+			}
+		}
+
+		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'checkuser' );
+	}
 
 	
 	/*public function mustBePosted() {
@@ -161,7 +248,7 @@ class CheckUserApi extends ApiQueryBase {
 			),
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_DFLT => 'count|first|last|blockinfo|alledits|agent|rdns',
+				ApiBase::PARAM_DFLT => 'count|first|last|blockinfo|alledits|agent|rdns|xff',
 				ApiBase::PARAM_TYPE => array(
 					'count',
 					'first',
@@ -171,6 +258,7 @@ class CheckUserApi extends ApiQueryBase {
 					'alledits',
 					'agent',
 					'rdns',
+					'xff',
 				)
 			), 
 			'limit' => array(

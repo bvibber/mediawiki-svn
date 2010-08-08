@@ -234,6 +234,10 @@ HTML;
 			'period' => $period
 		) );
 		
+		if( isset( $result['warn'] ) ) {
+			$wgOut->addHTML( '<p>' . $result['warn'] . '</p>' );
+		}
+		
 		$pager = new CUTablePagerUser2IP( $result );
 		
 		$output =

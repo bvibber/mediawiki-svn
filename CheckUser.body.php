@@ -8,6 +8,11 @@ class CheckUser {
 	function __construct( $target, $api = false ) {
 		$this->target = CheckUser::parseTarget( $target );
 		$this->api = $api;
+		
+		##FIXME: Support ranges and xff
+		##FIXME: IPv6?
+		##FIXME: PostgreSQL, etc?
+		##FIXME: Support for renames
 	}
 	
 	function doUser2IP( $params, $prop = array(), $limit = '' ) {
@@ -34,11 +39,6 @@ class CheckUser {
 		# If user is not IP or nonexistent
 		if ( !$user_id ) {
 			return array( 'error' => 'nosuchusershort' );
-		}
-
-		# Record check...
-		if ( !$this->addLogEntry( 'userips', 'user', $user, $params['reason'], $user_id ) ) {
-			$retArray['warn'] = 'checkuser-log-fail';
 		}
 		
 		$dbr = wfGetDB( DB_SLAVE );
@@ -78,14 +78,103 @@ class CheckUser {
 			$opts
 		);
 		
-		return array( $ret, $time_conds );
+		$retArray = array( $ret, $time_conds );
+		
+		# Record check...
+		if ( !$this->addLogEntry( 'userips', 'user', $user, $params['reason'], $user_id ) ) {
+			$retArray['warn'] = 'checkuser-log-fail';
+		}
+		
+		return $retArray;
 		
 	}
 	
 	function doUser2Edits() {
 	}
 	
-	function doIP2User() {
+	function doIP2User( $params, $prop, $limit ) {
+		
+		if ( !isset( $this->target['ip'] ) ) {
+			return array( 'error' => 'badipaddress' );
+		}
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		
+		$ip_conds = $this->getIpConds( $dbr, $this->target['ip'], $params['xff'] );
+		if ( $ip_conds === false ) {
+			return array( 'error' => 'badipaddress' );
+		}
+		
+		$logType = 'ipusers';
+		if ( $params['xff'] ) {
+			$logType .= '-xff';
+		}
+		
+		$ip_conds = $dbr->makeList( $ip_conds, LIST_AND );
+		$time_conds = $this->getTimeConds( $period );
+		$cu_changes = $dbr->tableName( 'cu_changes' );
+		$index = $params['xff'] ? 'cuc_xff_hex_time' : 'cuc_ip_hex_time';
+		
+		# Ordered in descent by timestamp. Can cause large filesorts on range scans.
+		# Check how many rows will need sorting ahead of time to see if this is too big.
+		if ( strpos( $this->target['ip'], '/' ) !== false ) {
+			# Quick index check only OK if no time constraint
+			if ( $period ) {
+				$rangecount = $dbr->selectField( 'cu_changes', 'COUNT(*)',
+					array( $ip_conds, $time_conds ),
+					__METHOD__,
+					array( 'USE INDEX' => $index ) );
+			} else {
+				$rangecount = $dbr->estimateRowCount( 'cu_changes', '*',
+					array( $ip_conds ),
+					__METHOD__,
+					array( 'USE INDEX' => $index ) );
+			}
+			// Sorting might take some time...make sure it is there
+			wfSuppressWarnings();
+			set_time_limit( 120 );
+			wfRestoreWarnings();
+		}
+		
+		$use_index = $dbr->useIndexClause( $index );
+	
+		
+		$select = array(
+			'cuc_user',
+			'cuc_user_text',
+			'cuc_agent',
+			'cuc_timestamp',
+			'MIN(cuc_timestamp) AS first', 
+			'MAX(cuc_timestamp) AS last',
+			'cuc_agent',
+			'cuc_ip',
+			'cuc_xff',
+		);
+			
+		$opts = array(
+			'ORDER BY' => 'cuc_timestamp ASC',
+			'USE INDEX' => $index
+		);
+		
+		$ret = array(
+			$cu_changes,
+			$select,
+			array(
+				$ip_conds,
+				$time_conds
+			), 
+			__METHOD__,
+			$opts
+		);
+		
+		$retArray = array( $ret, $time_conds );
+		
+		# Record check...
+		if ( !$this->addLogEntry( $logType, 'ip', $this->target['ip'], $params['reason'] ) ) {
+			$retArray['warn'] = 'checkuser-log-fail';
+		}
+		
+		return $retArray;
 	}
 	
 	function doIP2Edits() {
@@ -124,7 +213,39 @@ class CheckUser {
 		return true;
 	}
 	
-	function getIPType() {
+	/**
+	 * @param Database $db
+	 * @param string $ip
+	 * @param string $xfor
+	 * @return mixed array/false conditions
+	 */
+	protected function getIpConds( $db, $ip, $xfor = false ) {
+		$type = ( $xfor ) ? 'xff' : 'ip';
+		// IPv4 CIDR, 16-32 bits
+		if ( preg_match( '#^(\d+\.\d+\.\d+\.\d+)/(\d+)$#', $ip, $matches ) ) {
+			if ( $matches[2] < 16 || $matches[2] > 32 ) {
+				return false; // invalid
+			}
+			list( $start, $end ) = IP::parseRange( $ip );
+			return array( 'cuc_' . $type . '_hex BETWEEN ' . $db->addQuotes( $start ) . ' AND ' . $db->addQuotes( $end ) );
+		} elseif ( preg_match( '#^\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}/(\d+)$#', $ip, $matches ) ) {
+			// IPv6 CIDR, 96-128 bits
+			if ( $matches[1] < 96 || $matches[1] > 128 ) {
+				return false; // invalid
+			}
+			list( $start, $end ) = IP::parseRange6( $ip );
+			return array( 'cuc_' . $type . '_hex BETWEEN ' . $db->addQuotes( $start ) . ' AND ' . $db->addQuotes( $end ) );
+		} elseif ( preg_match( '#^(\d+)\.(\d+)\.(\d+)\.(\d+)$#', $ip ) ) {
+			// 32 bit IPv4
+			$ip_hex = IP::toHex( $ip );
+			return array( 'cuc_' . $type . '_hex' => $ip_hex );
+		} elseif ( preg_match( '#^\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}:\w{1,4}$#', $ip ) ) {
+			// 128 bit IPv6
+			$ip_hex = IP::toHex( $ip );
+			return array( 'cuc_' . $type . '_hex' => $ip_hex );
+		}
+		// throw away this query, incomplete IP, these don't get through the entry point anyway
+		return false; // invalid
 	}
 	
 	public static function checkBlockInfo( $name ) {
