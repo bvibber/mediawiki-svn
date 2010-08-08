@@ -16,12 +16,13 @@
  *
  * You should have received a copy of the GNU General Public License along
  * with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  */
 
 /**
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Juliano F. Ravasi < dev juliano info >
  */
 
@@ -34,12 +35,20 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Wikilog',
-	'version'        => '1.0.99.1dev',
+	'version'        => '1.1.0',
 	'author'         => 'Juliano F. Ravasi',
-	'description'    => 'Adds blogging features, creating a wiki-blog hybrid.',
 	'descriptionmsg' => 'wikilog-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikilog',
 );
+
+/*
+ * Constant definitions.
+ */
+// For source-code readability. This ought to be defined by MediaWiki (and
+// there is actually such a definition in DifferenceEngine.php, but it is
+// not global). So, it is easier to have our own until MediaWiki provides
+// one globally. It also allows us to keep compatibility.
+define( 'WL_NBSP', '&#160;' );
 
 /*
  * Dependencies.
@@ -124,6 +133,7 @@ $wgHooks['BeforePageDisplay'][] = 'Wikilog::BeforePageDisplay';
 $wgHooks['LinkBegin'][] = 'Wikilog::LinkBegin';
 $wgHooks['SkinTemplateTabAction'][] = 'Wikilog::SkinTemplateTabAction';
 $wgHooks['SkinTemplateTabs'][] = 'Wikilog::SkinTemplateTabs';
+$wgHooks['SkinTemplateNavigation'][] = 'Wikilog::SkinTemplateNavigation';
 
 // General Wikilog hooks
 $wgHooks['ArticleEditUpdates'][] = 'WikilogHooks::ArticleEditUpdates';
@@ -349,25 +359,47 @@ class Wikilog
 	 * Suppresses the "add section" tab in comments pages.
 	 */
 	static function SkinTemplateTabs( $skin, &$contentActions ) {
-		global $wgRequest, $wgWikilogEnableComments;
-
 		$wi = self::getWikilogInfo( $skin->mTitle );
 		if ( $wi ) {
-			$action = $wgRequest->getText( 'action' );
-			if ( $wi->isMain() && $skin->mTitle->quickUserCan( 'edit' ) ) {
-				$contentActions['wikilog'] = array(
-					'class' => ( $action == 'wikilog' ) ? 'selected' : false,
-					'text' => wfMsg( 'wikilog-tab' ),
-					'href' => $skin->mTitle->getLocalUrl( 'action=wikilog' )
-				);
-			}
-			if ( $wgWikilogEnableComments && $wi->isTalk() ) {
-				if ( isset( $contentActions['addsection'] ) ) {
-					unset( $contentActions['addsection'] );
-				}
-			}
+			self::skinConfigViewsLinks( $wi, $skin, $contentActions );
 		}
 		return true;
+	}
+
+	/**
+	 * SkinTemplateNavigation hook handler function.
+	 * Adds a wikilog action to articles in Wikilog namespaces.
+	 * This is used with newer skins, like Vector.
+	 */
+	static function SkinTemplateNavigation( $skin, &$links ) {
+		$wi = self::getWikilogInfo( $skin->mTitle );
+		if ( $wi ) {
+			self::skinConfigViewsLinks( $wi, $skin, $links['views'] );
+		}
+		return true;
+	}
+
+	/**
+	 * Configure wikilog views links.
+	 * Helper function for SkinTemplateTabs and SkinTemplateNavigation hooks
+	 * to configure views links in wikilog pages.
+	 */
+	private static function skinConfigViewsLinks( WikilogInfo &$wi, $skin, &$views ) {
+		global $wgRequest, $wgWikilogEnableComments;
+
+		$action = $wgRequest->getText( 'action' );
+		if ( $wi->isMain() && $skin->mTitle->quickUserCan( 'edit' ) ) {
+			$views['wikilog'] = array(
+				'class' => ( $action == 'wikilog' ) ? 'selected' : false,
+				'text' => wfMsg( 'wikilog-tab' ),
+				'href' => $skin->mTitle->getLocalUrl( 'action=wikilog' )
+			);
+		}
+		if ( $wgWikilogEnableComments && $wi->isTalk() ) {
+			if ( isset( $views['addsection'] ) ) {
+				unset( $views['addsection'] );
+			}
+		}
 	}
 
 	# ##

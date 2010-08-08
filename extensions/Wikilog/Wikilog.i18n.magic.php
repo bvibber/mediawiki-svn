@@ -1,7 +1,9 @@
 <?php
 /**
  * Magic words used by Wikilog extension.
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  */
 
 $magicWords = array();
@@ -52,6 +54,25 @@ $magicWords['arz'] = array(
 	'wlk-more'       => array( '0', 'مزيد', 'more' ),
 );
 
+$magicWords['br'] = array(
+	'wl-settings'    => array( '0', 'wl-arventennoù', 'wl-settings' ),
+	'wl-publish'     => array( '0', 'wl-embann', 'wl-publish' ),
+	'wl-author'      => array( '0', 'wl-aozer', 'wl-author' ),
+	'wl-tags'        => array( '0', 'wl-balizennoù', 'wl-tags' ),
+	'wl-info'        => array( '0', 'wl-keleier', 'wl-info' ),
+	'wlk-subtitle'   => array( '0', 'istitl', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'diverrañ', 'summary' ),
+	'wlk-hidden'     => array( '0', 'kuzh', 'hidden' ),
+	'wlk-more'       => array( '0', 'muioc\'h', 'more' ),
+);
+
+$magicWords['eo'] = array(
+	'wlk-icon'       => array( '0', 'piktogramo', 'icon' ),
+	'wlk-logo'       => array( '0', 'emblemo', 'logo' ),
+	'wlk-hidden'     => array( '0', 'kaŝi', 'hidden' ),
+	'wlk-more'       => array( '0', 'pli', 'more' ),
+);
+
 $magicWords['es'] = array(
 	'wl-settings'    => array( '0', 'configuracion-wl', 'configuración-wl', 'wl-settings' ),
 	'wl-publish'     => array( '0', 'publicar-wl', 'wl-publish' ),
@@ -68,6 +89,8 @@ $magicWords['ja'] = array(
 	'wlk-logo'       => array( '0', 'ロゴ', 'logo' ),
 	'wlk-subtitle'   => array( '0', 'サブタイトル', '副タイトル', 'subtitle' ),
 	'wlk-summary'    => array( '1', '要約', 'summary' ),
+	'wlk-hidden'     => array( '0', '隠す', 'hidden' ),
+	'wlk-more'       => array( '0', '詳細', 'more' ),
 );
 
 $magicWords['mg'] = array(
@@ -127,4 +150,8 @@ $magicWords['pt-br'] = array(
 	'wlk-summary'    => array( '1', 'resumo', 'summary' ),
 	'wlk-hidden'     => array( '0', 'oculto', 'hidden' ),
 	'wlk-more'       => array( '0', 'mais', 'more' ),
+);
+
+$magicWords['tt-cyrl'] = array(
+	'wlk-more'       => array( '0', 'күбрәк', 'more' ),
 );
