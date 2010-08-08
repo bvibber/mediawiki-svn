@@ -180,6 +180,9 @@ class CodeRevision {
 				__METHOD__
 			);
 		}
+
+		$this->sendStatusToUDP( $status, $oldStatus );
+
 		return true;
 	}
 
@@ -440,6 +443,8 @@ class CodeRevision {
 				}
 			}
 		}
+
+		$this->sendCommentToUDP( $commentId, $text, $url );
 
 		return $commentId;
 	}
@@ -778,6 +783,42 @@ class CodeRevision {
 			return intval( $row->cr_id );
 		} else {
 			return false;
+		}
+	}
+
+	protected function sendCommentToUDP( $commentId, $text, $url = null ) {
+		global $wgCodeReviewUDPAddress, $wgCodeReviewUDPPort, $wgCodeReviewUDPPrefix, $wgLang, $wgUser;
+
+		if( $wgCodeReviewUDPAddress ) {
+			if( is_null( $url ) ) {
+				$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
+				$title->setFragment( "#c{$commentId}" );
+				$url = $title->getFullUrl();
+			}
+
+			$line = wfMsg( 'code-rev-message' ) . " \00314(" . $this->mRepo->getName() .
+					")\003 \0037" . $this->getIdString() . "\003 \00303" . RecentChange::cleanupForIRC( $wgUser->getName() ) .
+					"\003: \00310" . RecentChange::cleanupForIRC( $wgLang->truncate( $text, 100 ) ) . "\003 " . $url;
+			
+			RecentChange::sendToUDP( $line, $wgCodeReviewUDPAddress, $wgCodeReviewUDPPrefix, $wgCodeReviewUDPPort );
+		}
+	}
+
+	protected function sendStatusToUDP( $status, $oldStatus ) {
+		global $wgCodeReviewUDPAddress, $wgCodeReviewUDPPort, $wgCodeReviewUDPPrefix, $wgUser;
+		
+		if( $wgCodeReviewUDPAddress ) {
+			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->getId() );
+			$url = $title->getFullUrl();
+
+			$line = wfMsg( 'code-rev-status' ) . " \00314(" . $this->mRepo->getName() .
+					")\00303 " . RecentChange::cleanupForIRC( $wgUser->getName() ) . "\003 " .
+					/* Remove three apostrophes as they are intended for the parser  */
+					str_replace( "'''", '', wfMsg( 'code-change-status', "\0037" . $this->getIdString() . "\003" ) ) .
+					": \00315" . wfMsg( 'code-status-' . $oldStatus ) . "\003 -> \00310" .
+					wfMsg( 'code-status-' . $status ) . "\003 " . $url;
+
+			RecentChange::sendToUDP( $line, $wgCodeReviewUDPAddress, $wgCodeReviewUDPPrefix, $wgCodeReviewUDPPort );
 		}
 	}
 }
