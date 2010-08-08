@@ -259,8 +259,10 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
+	'wikieditor-previewDialog-preference' => 'فعال کردن پنجره‌های تعاملی پیش‌نمایش',
 	'wikieditor-previewDialog-tab' => 'پیش‌نمایش',
 	'wikieditor-previewDialog-loading' => 'در حال بارگذاری...',
 );
