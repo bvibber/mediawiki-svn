@@ -2,6 +2,9 @@
 
 /**
  * Abstract class to define pages for the web installer.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
  */
 abstract class WebInstallerPage {
 	
@@ -595,14 +598,17 @@ class WebInstaller_Options extends WebInstallerPage {
 		);
 
 		$extensions = $this->parent->findExtensions();
+		
 		if( $extensions ) {
 			$extHtml = $this->parent->getFieldsetStart( 'config-extensions' );
-			foreach( array_keys($extensions) as $ext ) {
+			
+			foreach( $extensions as $ext ) {
 				$extHtml .= $this->parent->getCheckBox( array(
 					'var' => "ext-$ext",
 					'rawtext' => $ext,
 				) );
 			}
+			
 			$extHtml .= $this->parent->getHelpBox( 'config-extensions-help' ) .
 				$this->parent->getFieldsetEnd();
 			$this->addHTML( $extHtml );
@@ -843,7 +849,6 @@ class WebInstaller_Install extends WebInstallerPage {
 class WebInstaller_Complete extends WebInstallerPage {
 	
 	public function execute() {
-		global $IP;
 		$this->startForm();
 		$this->addHTML(
 			$this->parent->getInfoBox(

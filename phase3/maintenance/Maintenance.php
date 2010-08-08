@@ -11,11 +11,10 @@ $maintClass = false;
 
 // Make sure we're on PHP5 or better
 if ( version_compare( PHP_VERSION, '5.0.0' ) < 0 ) {
-	echo( "Sorry! This version of MediaWiki requires PHP 5; you are running " .
+	die ( "Sorry! This version of MediaWiki requires PHP 5; you are running " .
 		PHP_VERSION . ".\n\n" .
 		"If you are sure you already have PHP 5 installed, it may be installed\n" .
 		"in a different path from PHP 4. Check with your system administrator.\n" );
-	die();
 }
 
 /**
@@ -642,7 +641,7 @@ abstract class Maintenance {
 	 */
 	public function finalSetup() {
 		global $wgCommandLineMode, $wgShowSQLErrors;
-		global $wgProfiling, $IP, $wgDBadminuser, $wgDBadminpassword;
+		global $wgProfiling, $wgDBadminuser, $wgDBadminpassword;
 		global $wgDBuser, $wgDBpassword, $wgDBservers, $wgLBFactoryConf;
 
 		# Turn off output buffering again, it might have been turned on in the settings files
@@ -740,7 +739,6 @@ abstract class Maintenance {
 
 		putenv( 'wikilang=' . $lang );
 
-		$DP = $IP;
 		ini_set( 'include_path', ".:$IP:$IP/includes:$IP/languages:$IP/maintenance" );
 
 		if ( $lang == 'test' && $site == 'wikipedia' ) {
@@ -753,7 +751,7 @@ abstract class Maintenance {
 	 * @return String
 	 */
 	public function loadSettings() {
-		global $wgWikiFarm, $wgCommandLineMode, $IP, $DP;
+		global $wgWikiFarm, $wgCommandLineMode, $IP;
 
 		$wgWikiFarm = false;
 		if ( isset( $this->mOptions['conf'] ) ) {
@@ -775,7 +773,6 @@ abstract class Maintenance {
 			  			"must exist and be readable in the source directory.", true );
 		}
 		$wgCommandLineMode = true;
-		$DP = $IP;
 		return $settingsFile;
 	}
 

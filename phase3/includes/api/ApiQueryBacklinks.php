@@ -1,11 +1,10 @@
 <?php
-
-/*
- * Created on Oct 16, 2006
- *
+/**
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Created on Oct 16, 2006
+ *
+ * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -38,7 +39,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
-	private $params, $rootTitle, $contRedirs, $contLevel, $contTitle, $contID, $redirID, $redirect;
+	private $params, $rootTitle, $contID, $redirID, $redirect;
 	private $bl_ns, $bl_from, $bl_table, $bl_code, $bl_title, $bl_sort, $bl_fields, $hasNS;
 	private $pageMap, $resultArr;
 
@@ -92,6 +93,10 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -102,7 +107,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		 * AND pl_title='Foo' AND pl_namespace=0
 		 * LIMIT 11 ORDER BY pl_from
 		 */
-		$db = $this->getDB();
 		$this->addTables( array( $this->bl_table, 'page' ) );
 		$this->addWhere( "{$this->bl_from}=page_id" );
 		if ( is_null( $resultPageSet ) ) {
@@ -200,13 +204,12 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 		$botMax  = ( $this->redirect ? ApiBase::LIMIT_BIG2 / 2 : ApiBase::LIMIT_BIG2 );
 		if ( $this->params['limit'] == 'max' ) {
 			$this->params['limit'] = $this->getMain()->canApiHighLimits() ? $botMax : $userMax;
-			$this->getResult()->addValue( 'limits', $this->getModuleName(), $this->params['limit'] );
+			$this->getResult()->setParsedLimit( $this->getModuleName(), $this->params['limit'] );
 		}
 
 		$this->processContinue();
 		$this->prepareFirstQuery( $resultPageSet );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ . '::firstQuery' );
 
 		$count = 0;
@@ -343,8 +346,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 				} else {
 					$this->rootTitle = $title;
 				}
-			} else {
-				$this->dieUsageMsg( array( 'missingparam', 'title' ) );
 			}
 		}
 
@@ -402,7 +403,10 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		$retval = array(
-			'title' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'continue' => null,
 			'namespace' => array(
 				ApiBase::PARAM_ISMULTI => true,
@@ -466,7 +470,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'invalidtitle', 'title' ),
-			array( 'missingparam', 'title' ),
 			array( 'code' => 'bad_image_title', 'info' => "The title for {$this->getModuleName()} query must be an image" ),
 			array( 'code' => '_badcontinue', 'info' => 'Invalid continue param. You should pass the original value returned by the previous query' ),
 		) );

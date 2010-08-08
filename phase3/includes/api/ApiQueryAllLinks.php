@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on July 7, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on July 7, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -41,6 +42,10 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 
 	public function execute() {
 		$this->run();
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function executeGenerator( $resultPageSet ) {
@@ -87,6 +92,9 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 
 		if ( !is_null( $params['from'] ) ) {
 			$this->addWhere( 'pl_title>=' . $db->addQuotes( $this->titlePartToKey( $params['from'] ) ) );
+		}
+		if ( !is_null( $params['to'] ) ) {
+			$this->addWhere( 'pl_title<=' . $db->addQuotes( $this->titlePartToKey( $params['to'] ) ) );
 		}
 		if ( isset( $params['prefix'] ) ) {
 			$this->addWhere( 'pl_title' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
@@ -157,6 +165,7 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		return array(
 			'continue' => null,
 			'from' => null,
+			'to' => null,
 			'prefix' => null,
 			'unique' => false,
 			'prop' => array(
@@ -185,6 +194,7 @@ class ApiQueryAllLinks extends ApiQueryGeneratorBase {
 		$p = $this->getModulePrefix();
 		return array(
 			'from' => 'The page title to start enumerating from',
+			'to' => 'The page title to stop enumerating at',
 			'prefix' => 'Search for all page titles that begin with this value',
 			'unique' => "Only show unique links. Cannot be used with generator or {$p}prop=ids",
 			'prop' => array(

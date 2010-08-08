@@ -270,7 +270,6 @@ function do_watchlist_update() {
 
 function do_copy_newtalk_to_watchlist() {
 	global $wgDatabase;
-	global $wgCommandLineMode; # this needs to be saved while getID() and getName() are called
 
 	$res = $wgDatabase->safeQuery( 'SELECT user_id, user_ip FROM !',
 		$wgDatabase->tableName( 'user_newtalk' ) );
@@ -761,7 +760,7 @@ function do_page_random_update() {
 }
 
 function do_templatelinks_update() {
-	global $wgDatabase, $wgLoadBalancer;
+	global $wgDatabase;
 	$fname = 'do_templatelinks_update';
 
 	if ( $wgDatabase->tableExists( 'templatelinks' ) ) {
@@ -771,7 +770,7 @@ function do_templatelinks_update() {
 	wfOut( "Creating templatelinks table...\n" );
 	$wgDatabase->sourceFile( archive( 'patch-templatelinks.sql' ) );
 	wfOut( "Populating...\n" );
-	if ( isset( $wgLoadBalancer ) && $wgLoadBalancer->getServerCount() > 1 ) {
+	if ( wfGetLB()->getServerCount() > 1 ) {
 		// Slow, replication-friendly update
 		$res = $wgDatabase->select( 'pagelinks', array( 'pl_from', 'pl_namespace', 'pl_title' ),
 			array( 'pl_namespace' => NS_TEMPLATE ), $fname );
@@ -937,7 +936,7 @@ function purge_cache() {
 }
 
 function do_all_updates( $shared = false, $purge = true ) {
-	global $wgNewTables, $wgExtModifiedFields, $wgNewFields, $wgRenamedTables, $wgSharedDB, $wgSharedTables, $wgDatabase, $wgDBtype, $IP;
+	global $wgSharedDB, $wgSharedTables, $wgDatabase, $wgDBtype;
 
 	wfRunHooks( 'LoadExtensionSchemaUpdates' );
 
@@ -948,7 +947,6 @@ function do_all_updates( $shared = false, $purge = true ) {
 		return;
 	}
 
-	global $wgDatabase;
 	$up = DatabaseUpdater::newForDb( $wgDatabase );
 	$up->doUpdates();
 
@@ -1088,6 +1086,22 @@ function do_populate_rev_len() {
 	$task->execute();
 }
 
+function do_collation_update() {
+	global $wgDatabase, $wgCollationVersion;
+	if ( $wgDatabase->selectField(
+		'categorylinks',
+		'COUNT(*)',
+		'cl_collation != ' . $wgDatabase->addQuotes( $wgCollationVersion ),
+		__FUNCTION__
+	) == 0 ) {
+		wfOut( "...collations up-to-date.\n" );
+		return;
+	}
+	require_once( 'updateCollation.php' );
+	$task = new UpdateCollation();
+	$task->execute();
+}
+
 function sqlite_initial_indexes() {
 	global $wgDatabase;
 	// initial-indexes.sql fails if the indexes are already present, so we perform a quick check if our database is newer.
@@ -1130,7 +1144,6 @@ function do_unique_pl_tl_il() {
 }
 
 function do_log_search_population() {
-	global $wgDatabase;
 	if ( update_row_exists( 'populate log_search' ) ) {
 		wfOut( "...log_search table already populated.\n" );
 		return;
@@ -1308,7 +1321,7 @@ END;
 }
 
 function do_postgres_updates() {
-	global $wgDatabase, $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgShowExceptionDetails, $wgDBuser;
+	global $wgDatabase, $wgDBmwschema, $wgDBts2schema, $wgShowExceptionDetails, $wgDBuser;
 
 	# # Gather version numbers in case we need them
 	$version = $wgDatabase->getServerVersion(); # # long string
@@ -1499,15 +1512,17 @@ function do_postgres_updates() {
 	);
 
 	$newindexes = array(
-		array( "archive",       "archive_user_text",  "(ar_user_text)" ),
-		array( "image",         "img_sha1",           "(img_sha1)" ),
-		array( "oldimage",      "oi_sha1",            "(oi_sha1)" ),
-		array( "revision",      "rev_text_id_idx",    "(rev_text_id)" ),
-		array( "recentchanges", "rc_timestamp_bot",   "(rc_timestamp) WHERE rc_bot = 0" ),
-		array( "templatelinks", "templatelinks_from", "(tl_from)" ),
-		array( "watchlist",     "wl_user",            "(wl_user)" ),
+		array( "archive",       "archive_user_text",      "(ar_user_text)" ),
+		array( "image",         "img_sha1",               "(img_sha1)" ),
+		array( "oldimage",      "oi_sha1",                "(oi_sha1)" ),
+		array( "page",          "page_mediawiki_title",   "(page_title) WHERE page_namespace = 8" ),
+		array( "revision",      "rev_text_id_idx",        "(rev_text_id)" ),
+		array( "recentchanges", "rc_timestamp_bot",       "(rc_timestamp) WHERE rc_bot = 0" ),
+		array( "templatelinks", "templatelinks_from",     "(tl_from)" ),
+		array( "watchlist",     "wl_user",                "(wl_user)" ),
 		array( "logging",       "logging_user_type_time", "(log_user, log_type, log_timestamp)" ),
 		array( "logging",       "logging_page_id_time",   "(log_page,log_timestamp)" ),
+		array( "iwlinks",       "iwl_prefix_title_from",  "(iwl_prefix, iwl_title, iwl_from)" ),
 	);
 
 	$newrules = array(

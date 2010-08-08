@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Jan 4, 2008
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Jan 4, 2008
  *
  * Copyright © 2008 Yuri Astrakhan <Firstname><Lastname>@gmail.com,
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -41,7 +42,6 @@ class ApiWatch extends ApiBase {
 
 	public function execute() {
 		global $wgUser;
-		$this->getMain()->setCachePrivate();
 		if ( !$wgUser->isLoggedIn() ) {
 			$this->dieUsage( 'You must be logged-in to have a watchlist', 'notloggedin' );
 		}
@@ -77,7 +77,11 @@ class ApiWatch extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'title' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
+
 			'unwatch' => false,
 		);
 	}

@@ -79,14 +79,12 @@ class LocalFile extends File {
 	 * Do not call this except from inside a repo class.
 	 */
 	static function newFromKey( $sha1, $repo, $timestamp = false ) {
-		# Polymorphic function name to distinguish foreign and local fetches
-		$fname = get_class( $this ) . '::' . __FUNCTION__;
-
 		$conds = array( 'img_sha1' => $sha1 );
 		if( $timestamp ) {
 			$conds['img_timestamp'] = $timestamp;
 		}
-		$row = $dbr->selectRow( 'image', $this->getCacheFields( 'img_' ), $conds, $fname );
+		$dbr = $repo->getSlaveDB();
+		$row = $dbr->selectRow( 'image', self::selectFields(), $conds, __METHOD__ );
 		if( $row ) {
 			return self::newFromRow( $row, $repo );
 		} else {
@@ -1123,27 +1121,8 @@ class LocalFile extends File {
 	/** scaleHeight inherited */
 	/** getImageSize inherited */
 
-	/**
-	 * Get the URL of the file description page.
-	 */
-	function getDescriptionUrl() {
-		return $this->title->getLocalUrl();
-	}
-
-	/**
-	 * Get the HTML text of the description page
-	 * This is not used by ImagePage for local files, since (among other things)
-	 * it skips the parser cache.
-	 */
-	function getDescriptionText() {
-		global $wgParser;
-		$revision = Revision::newFromTitle( $this->title );
-		if ( !$revision ) return false;
-		$text = $revision->getText();
-		if ( !$text ) return false;
-		$pout = $wgParser->parse( $text, $this->title, new ParserOptions() );
-		return $pout->getText();
-	}
+	/** getDescriptionUrl inherited */
+	/** getDescriptionText inherited */
 
 	function getDescription() {
 		$this->load();

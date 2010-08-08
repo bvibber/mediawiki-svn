@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on May 13, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on May 13, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -41,6 +42,10 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 	public function execute() {
 		$this->run();
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function executeGenerator( $resultPageSet ) {
@@ -125,7 +130,6 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 			$this->addOption( 'ORDER BY', "cl_from, cl_to" );
 		}
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		if ( is_null( $resultPageSet ) ) {
@@ -225,7 +229,7 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 	public function getDescription() {
 		return 'List all categories the page(s) belong to';
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'show' ),

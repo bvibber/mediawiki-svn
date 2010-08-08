@@ -104,12 +104,13 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 			$join_conds['page'] = array('LEFT JOIN', 'rc_cur_id=page_id');
 			$select[] = 'page_latest';
 		}
+		if ( !$this->including() ) { // bug 23293
+			ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds,
+				$query_options, $opts['tagfilter'] );
+		}
 
-		ChangeTags::modifyDisplayQuery( $tables, $select, $conds, $join_conds,
-			$query_options, $opts['tagfilter'] );
-
-		// XXX: parent class does this, should we too?
-		// wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
+		if ( !wfRunHooks( 'SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts, &$query_options ) ) )
+			return false;
 
 		if( $ns == NS_CATEGORY && !$showlinkedto ) {
 			// special handling for categories

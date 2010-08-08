@@ -1,8 +1,8 @@
 <?php
-
 /**
- * Created on Jun 30, 2007
  * API for MediaWiki 1.8+
+ *
+ * Created on Jun 30, 2007
  *
  * Copyright © 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -20,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -47,8 +49,6 @@ class ApiDelete extends ApiBase {
 	 * result object.
 	 */
 	public function execute() {
-		global $wgUser;
-
 		$params = $this->extractRequestParams();
 
 		$this->requireOnlyOneParameter( $params, 'title', 'pageid' );
@@ -143,7 +143,7 @@ class ApiDelete extends ApiBase {
 
 		$error = '';
 		if ( !wfRunHooks( 'ArticleDelete', array( &$article, &$wgUser, &$reason, $error ) ) ) {
-			$this->dieUsageMsg( array( 'hookaborted', $error ) );
+			return array( array( 'hookaborted', $error ) );
 		}
 
 		// Luckily, Article.php provides a reusable delete function that does the hard work for us

@@ -250,7 +250,7 @@ class Article {
 	 * @return Return the text of this revision
 	 */
 	public function getContent() {
-		global $wgUser, $wgContLang, $wgOut, $wgMessageCache;
+		global $wgUser, $wgContLang, $wgMessageCache;
 
 		wfProfileIn( __METHOD__ );
 
@@ -260,7 +260,6 @@ class Article {
 			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
 				# If this is a system message, get the default text.
 				list( $message, $lang ) = $wgMessageCache->figureMessage( $wgContLang->lcfirst( $this->mTitle->getText() ) );
-				$wgMessageCache->loadAllMessages( $lang );
 				$text = wfMsgGetKey( $message, false, $lang, false );
 
 				if ( wfEmptyMsg( $message, $text ) )
@@ -826,9 +825,8 @@ class Article {
 	 * page of the given title.
 	 */
 	public function view() {
-		global $wgUser, $wgOut, $wgRequest, $wgContLang;
-		global $wgEnableParserCache, $wgStylePath, $wgParser;
-		global $wgUseTrackbacks, $wgUseFileCache;
+		global $wgUser, $wgOut, $wgRequest, $wgParser;
+		global $wgUseFileCache, $wgUseETag;
 
 		wfProfileIn( __METHOD__ );
 
@@ -840,12 +838,13 @@ class Article {
 		# Render printable version, use printable version cache
 		if ( $wgOut->isPrintable() ) {
 			$parserOptions->setIsPrintable( true );
+			$parserOptions->setEditSection( false );
+		} else if ( $wgUseETag && !$this->mTitle->quickUserCan( 'edit' ) ) {
+			$parserOptions->setEditSection( false );
 		}
 
 		# Try client and file cache
 		if ( $oldid === 0 && $this->checkTouched() ) {
-			global $wgUseETag;
-
 			if ( $wgUseETag ) {
 				$wgOut->setETag( $parserCache->getETag( $this, $parserOptions ) );
 			}
@@ -890,10 +889,14 @@ class Article {
 			return;
 		}
 
+		if ( !$wgUseETag && !$this->mTitle->quickUserCan( 'edit' ) ) {
+			$parserOptions->setEditSection( false );
+		}
+
 		# Should the parser cache be used?
 		$useParserCache = $this->useParserCache( $oldid );
 		wfDebug( 'Article::view using parser cache: ' . ( $useParserCache ? 'yes' : 'no' ) . "\n" );
-		if ( $wgUser->getOption( 'stubthreshold' ) ) {
+		if ( $wgUser->getStubThreshold() ) {
 			wfIncrStats( 'pcache_miss_stub' );
 		}
 
@@ -1048,7 +1051,7 @@ class Article {
 	 * Article::view() only, other callers should use the DifferenceEngine class.
 	 */
 	public function showDiffPage() {
-		global $wgOut, $wgRequest, $wgUser;
+		global $wgRequest, $wgUser;
 
 		$diff = $wgRequest->getVal( 'diff' );
 		$rcid = $wgRequest->getVal( 'rcid' );
@@ -1077,7 +1080,7 @@ class Article {
 	 * This is hooked by SyntaxHighlight_GeSHi to do syntax highlighting of these
 	 * page views.
 	 */
-	public function showCssOrJsPage() {
+	protected function showCssOrJsPage() {
 		global $wgOut;
 
 		$wgOut->wrapWikiMsg( "<div id='mw-clearyourcache'>\n$1\n</div>", 'clearyourcache' );
@@ -1091,19 +1094,6 @@ class Article {
 			$wgOut->addHTML( htmlspecialchars( $this->mContent ) );
 			$wgOut->addHTML( "\n</pre>\n" );
 		}
-	}
-
-	/**
-	 * Get the robot policy to be used for the current action=view request.
-	 * @return String the policy that should be set
-	 * @deprecated use getRobotPolicy() instead, which returns an associative
-	 *    array
-	 */
-	public function getRobotPolicyForView() {
-		wfDeprecated( __METHOD__ );
-		$policy = $this->getRobotPolicy( 'view' );
-
-		return $policy['index'] . ',' . $policy['follow'];
 	}
 
 	/**
@@ -1285,7 +1275,7 @@ class Article {
 	 * Show the footer section of an ordinary page view
 	 */
 	public function showViewFooter() {
-		global $wgOut, $wgUseTrackbacks, $wgRequest;
+		global $wgOut, $wgUseTrackbacks;
 
 		# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
 		if ( $this->mTitle->getNamespace() == NS_USER_TALK && IP::isValid( $this->mTitle->getText() ) ) {
@@ -1317,6 +1307,7 @@ class Article {
 		}
 
 		$sk = $wgUser->getSkin();
+		$token = $wgUser->editToken();
 
 		$wgOut->addHTML(
 			"<div class='patrollink'>" .
@@ -1328,7 +1319,8 @@ class Article {
 						array(),
 						array(
 							'action' => 'markpatrolled',
-							'rcid' => $rcid
+							'rcid' => $rcid,
+							'token' => $token,
 						),
 						array( 'known', 'noclasses' )
 					)
@@ -1463,7 +1455,7 @@ class Article {
 		global $wgUser, $wgEnableParserCache;
 
 		return $wgEnableParserCache
-			&& intval( $wgUser->getOption( 'stubthreshold' ) ) == 0
+			&& $wgUser->getStubThreshold() == 0
 			&& $this->exists()
 			&& empty( $oldid )
 			&& !$this->mTitle->isCssOrJsPage()
@@ -1484,7 +1476,10 @@ class Article {
 		$parserOptions->setIsPrintable( $wgOut->isPrintable() );
 
 		# Don't show section-edit links on old revisions... this way lies madness.
-		$parserOptions->setEditSection( $this->isCurrent() );
+		if ( !$this->isCurrent() || $wgOut->isPrintable() ) {
+			$parserOptions->setEditSection( false );
+		}
+		
 		$useParserCache = $this->useParserCache( $oldid );
 		$this->outputWikiText( $this->getContent(), $useParserCache, $parserOptions );
 	}
@@ -1502,7 +1497,12 @@ class Article {
 		global $wgOut;
 		$parserCache = ParserCache::singleton();
 		$options = $this->getParserOptions();
-		$options->setIsPrintable( $wgOut->isPrintable() );
+		
+		if ( $wgOut->isPrintable() ) {
+			$options->setIsPrintable( true );
+			$parserOptions->setEditSection( false );
+		}
+		
 		$output = $parserCache->getDirty( $this, $options );
 
 		if ( $output ) {
@@ -2359,12 +2359,18 @@ class Article {
 	 * Mark this particular edit/page as patrolled
 	 */
 	public function markpatrolled() {
-		global $wgOut, $wgRequest, $wgUseRCPatrol, $wgUseNPPatrol, $wgUser;
+		global $wgOut, $wgUser, $wgRequest;
 
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		# If we haven't been given an rc_id value, we can't do anything
 		$rcid = (int) $wgRequest->getVal( 'rcid' );
+
+		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
+			$wgOut->showErrorPage( 'sessionfailure-title', 'sessionfailure' );
+			return;
+		}
+
 		$rc = RecentChange::newFromId( $rcid );
 
 		if ( is_null( $rc ) ) {
@@ -2376,7 +2382,6 @@ class Article {
 		$returnto = $rc->getAttribute( 'rc_type' ) == RC_NEW ? 'Newpages' : 'Recentchanges';
 		$return = SpecialPage::getTitleFor( $returnto );
 
-		$dbw = wfGetDB( DB_MASTER );
 		$errors = $rc->doMarkPatrolled();
 
 		if ( in_array( array( 'rcpatroldisabled' ), $errors ) ) {
@@ -2928,7 +2933,6 @@ class Article {
 
 			if ( $bigHistory ) {
 				global $wgDeleteRevisionsLimit;
-
 				$wgOut->wrapWikiMsg( "<div class='error'>\n$1\n</div>\n",
 					array( 'delete-warning-toobig', $wgLang->formatNum( $wgDeleteRevisionsLimit ) ) );
 			}
@@ -3181,8 +3185,7 @@ class Article {
 	 * @return boolean true if successful
 	 */
 	public function doDeleteArticle( $reason, $suppress = false, $id = 0, $commit = true ) {
-		global $wgUseSquid, $wgDeferredUpdateList;
-		global $wgUseTrackbacks;
+		global $wgDeferredUpdateList, $wgUseTrackbacks;
 
 		wfDebug( __METHOD__ . "\n" );
 
@@ -3414,7 +3417,7 @@ class Article {
 		if ( $s === false ) {
 			# No one else ever edited this page
 			return array( array( 'cantrollback' ) );
-		} else if ( $s->rev_deleted & REVISION::DELETED_TEXT || $s->rev_deleted & REVISION::DELETED_USER ) {
+		} else if ( $s->rev_deleted & Revision::DELETED_TEXT || $s->rev_deleted & Revision::DELETED_USER ) {
 			# Only admins can see this text
 			return array( array( 'notvisiblerev' ) );
 		}
@@ -3493,7 +3496,7 @@ class Article {
 	 * User interface for rollback operations
 	 */
 	public function rollback() {
-		global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol;
+		global $wgUser, $wgOut, $wgRequest;
 
 		$details = null;
 
@@ -4006,6 +4009,7 @@ class Article {
 		$revision->insertOn( $dbw );
 		$this->updateRevisionOn( $dbw, $revision );
 
+		global $wgUser;
 		wfRunHooks( 'NewRevisionFromEditComplete', array( $this, $revision, false, $wgUser ) );
 
 		wfProfileOut( __METHOD__ );
@@ -4352,6 +4356,8 @@ class Article {
 	* @return string An appropriate autosummary, or an empty string.
 	*/
 	public static function getAutosummary( $oldtext, $newtext, $flags ) {
+		global $wgContLang;
+		
 		# Decide what kind of autosummary is needed.
 
 		# Redirect autosummaries
@@ -4365,7 +4371,6 @@ class Article {
 		# New page autosummaries
 		if ( $flags & EDIT_NEW && strlen( $newtext ) ) {
 			# If they're making a new article, give its text, truncated, in the summary.
-			global $wgContLang;
 
 			$truncatedtext = $wgContLang->truncate(
 				str_replace( "\n", ' ', $newtext ),
@@ -4379,7 +4384,6 @@ class Article {
 			return wfMsgForContent( 'autosumm-blank' );
 		} elseif ( strlen( $oldtext ) > 10 * strlen( $newtext ) && strlen( $newtext ) < 500 ) {
 			# Removing more than 90% of the article
-			global $wgContLang;
 
 			$truncatedtext = $wgContLang->truncate(
 				$newtext,
@@ -4420,7 +4424,7 @@ class Article {
 	 * @return string containing parsed output
 	 */
 	public function getOutputFromWikitext( $text, $cache = true, $parserOptions = false ) {
-		global $wgParser, $wgOut, $wgEnableParserCache, $wgUseFileCache;
+		global $wgParser, $wgEnableParserCache, $wgUseFileCache;
 
 		if ( !$parserOptions ) {
 			$parserOptions = $this->getParserOptions();
@@ -4499,8 +4503,6 @@ class Article {
 			array( 'tl_from' => $id ),
 			__METHOD__
 		);
-
-		global $wgContLang;
 
 		foreach ( $res as $row ) {
 			$tlTemplates["{$row->tl_namespace}:{$row->tl_title}"] = true;
@@ -4593,20 +4595,22 @@ class Article {
 	 * and so on. Doesn't consider most of the stuff that Article::view is forced to
 	 * consider, so it's not appropriate to use there.
 	 *
+	 * @since 1.16 (r52326) for LiquidThreads
+	 * 
 	 * @param $oldid mixed integer Revision ID or null
 	 */
 	public function getParserOutput( $oldid = null ) {
-		global $wgEnableParserCache, $wgUser, $wgOut;
+		global $wgEnableParserCache, $wgUser;
 
 		// Should the parser cache be used?
 		$useParserCache = $wgEnableParserCache &&
-			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
+			$wgUser->getStubThreshold() == 0 &&
 			$this->exists() &&
 			$oldid === null;
 
 		wfDebug( __METHOD__ . ': using parser cache: ' . ( $useParserCache ? 'yes' : 'no' ) . "\n" );
 
-		if ( $wgUser->getOption( 'stubthreshold' ) ) {
+		if ( $wgUser->getStubThreshold() ) {
 			wfIncrStats( 'pcache_miss_stub' );
 		}
 

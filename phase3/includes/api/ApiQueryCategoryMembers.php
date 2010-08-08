@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on June 14, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on June 14, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -43,6 +44,10 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -50,9 +55,6 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 	private function run( $resultPageSet = null ) {
 		$params = $this->extractRequestParams();
 
-		if ( !isset( $params['title'] ) || is_null( $params['title'] ) ) {
-			$this->dieUsage( 'The cmtitle parameter is required', 'notitle' );
-		}
 		$categoryTitle = Title::newFromText( $params['title'] );
 
 		if ( is_null( $categoryTitle ) || $categoryTitle->getNamespace() != NS_CATEGORY ) {
@@ -104,9 +106,6 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$limit = $params['limit'];
 		$this->addOption( 'LIMIT', $limit + 1 );
 
-		$db = $this->getDB();
-
-		$data = array();
 		$count = 0;
 		$lastSortKey = null;
 		$res = $this->select( __METHOD__ );
@@ -207,7 +206,10 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		return array(
-			'title' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'prop' => array(
 				ApiBase::PARAM_DFLT => 'ids|title',
 				ApiBase::PARAM_ISMULTI => true,

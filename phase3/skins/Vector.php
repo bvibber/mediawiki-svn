@@ -59,7 +59,7 @@ class SkinVector extends SkinTemplate {
 		// THIS IS ONLY USEFUL FOR EXPERIMENTING WITH DIFFERNT STYLE OPTIONS! THIS WILL BE REMOVED IN THE NEAR FUTURE.
 		if ( is_array( $wgVectorExtraStyles ) ) {
 			foreach ( $wgVectorExtraStyles as $style ) {
-				$out->addStyle( "{$this->stylename}/$style", 'screen' );
+				$out->addStyle( "vector/$style", 'screen' );
 			}
 		}
 	}
@@ -103,7 +103,6 @@ class SkinVector extends SkinTemplate {
 			} else {
 				$talkId = "{$subjectId}_talk";
 			}
-			$currentId = $isTalk ? $talkId : $subjectId;
 
 			// Adds namespace links
 			$links['namespaces'][$subjectId] = $this->tabAction(
@@ -367,7 +366,7 @@ class VectorTemplate extends QuickTemplate {
 	 * Outputs the entire contents of the XHTML page
 	 */
 	public function execute() {
-		global $wgRequest, $wgOut, $wgContLang;
+		global $wgRequest, $wgContLang;
 
 		$this->skin = $this->data['skin'];
 		$action = $wgRequest->getText( 'action' );
@@ -675,7 +674,7 @@ class VectorTemplate extends QuickTemplate {
 	 * when UI is in RTL mode
 	 */
 	private function renderNavigation( $elements ) {
-		global $wgContLang, $wgVectorUseSimpleSearch, $wgVectorShowVariantName, $wgUser;
+		global $wgVectorUseSimpleSearch, $wgVectorShowVariantName, $wgUser;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments

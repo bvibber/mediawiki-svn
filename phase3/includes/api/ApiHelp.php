@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 6, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 6, 2006
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -45,13 +46,13 @@ class ApiHelp extends ApiBase {
 	public function execute() {
 		// Get parameters
 		$params = $this->extractRequestParams();
-		
+
 		if ( !isset( $params['modules'] ) && !isset( $params['querymodules'] ) ) {
 			$this->dieUsage( '', 'help' );
 		}
-		
+
 		$this->getMain()->setHelp();
-		
+
 		$result = $this->getResult();
 		$queryObj = new ApiQuery( $this->getMain(), 'query' );
 		$r = array();
@@ -79,27 +80,27 @@ class ApiHelp extends ApiBase {
 				}
 				$module = new $qmodArr[$qm]( $this, $qm );
 				$type = $queryObj->getModuleType( $qm );
-				
+
 				if ( $type === null ) {
 					$r[] = array( 'name' => $qm, 'missing' => '' );
 					continue;
 				}
-				
+
 				$r[] = $this->buildModuleHelp( $module, $type );
 			}
 		}
 		$result->setIndexedTagName( $r, 'module' );
 		$result->addValue( null, $this->getModuleName(), $r );
 	}
-	
+
 	private function buildModuleHelp( $module, $type ) {
 		$msg = ApiMain::makeHelpMsgHeader( $module, $type );
-		
+
 		$msg2 = $module->makeHelpMsg();
 		if ( $msg2 !== false ) {
 			$msg .= $msg2;
 		}
-		
+
 		return $msg;
 	}
 
@@ -110,7 +111,7 @@ class ApiHelp extends ApiBase {
 	public function isReadMode() {
 		return false;
 	}
-	
+
 	public function getAllowedParams() {
 		return array(
 			'modules' => array(
@@ -132,7 +133,7 @@ class ApiHelp extends ApiBase {
 	public function getDescription() {
 		return 'Display this help screen. Or the help screen for the specified module';
 	}
-	
+
 	protected function getExamples() {
 		return array(
 			'Whole help page:',

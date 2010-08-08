@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 4, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 4, 2006
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -141,13 +142,14 @@ class ApiResult extends ApiBase {
 	 * @param $arr array to add $value to
 	 * @param $name string Index of $arr to add $value at
 	 * @param $value mixed
+	 * @param $overwrite bool Whether overwriting an existing element is allowed
 	 */
-	public static function setElement( &$arr, $name, $value ) {
+	public static function setElement( &$arr, $name, $value, $overwrite = false ) {
 		if ( $arr === null || $name === null || $value === null || !is_array( $arr ) || is_array( $name ) ) {
 			ApiBase::dieDebug( __METHOD__, 'Bad parameter' );
 		}
 
-		if ( !isset ( $arr[$name] ) ) {
+		if ( !isset ( $arr[$name] ) || $overwrite ) {
 			$arr[$name] = $value;
 		} elseif ( is_array( $arr[$name] ) && is_array( $value ) ) {
 			$merged = array_intersect_key( $arr[$name], $value );
@@ -250,7 +252,7 @@ class ApiResult extends ApiBase {
 	 * If $name is empty, the $value is added as a next list element data[] = $value
 	 * @return bool True if $value fits in the result, false if not
 	 */
-	public function addValue( $path, $name, $value ) {
+	public function addValue( $path, $name, $value, $overwrite = false ) {
 		global $wgAPIMaxResultSize;
 		$data = &$this->mData;
 		if ( $this->mCheckingSize ) {
@@ -280,9 +282,20 @@ class ApiResult extends ApiBase {
 		if ( !$name ) {
 			$data[] = $value; // Add list element
 		} else {
-			ApiResult::setElement( $data, $name, $value ); // Add named element
+			self::setElement( $data, $name, $value, $overwrite ); // Add named element
 		}
 		return true;
+	}
+
+	/**
+	 * Add a parsed limit=max to the result.
+	 *
+	 * @param $moduleName string
+	 * @param $limit int
+	 */
+	public function setParsedLimit( $moduleName, $limit ) {
+		// Add value, allowing overwriting
+		$this->addValue( 'limits', $moduleName, $limit, true );
 	}
 
 	/**

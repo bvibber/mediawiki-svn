@@ -155,7 +155,7 @@ $dateFormats = array(
 );
 
 $fallback8bitEncoding = "iso-8859-2";
-$separatorTransformTable = array(',' => '.', '.' => ',' );
+$separatorTransformTable = array( ',' => '.', '.' => ',' );
 
 $messages = array(
 # User preference toggles
@@ -180,7 +180,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Dodaj strani, ki jih izbrišem, na moj spisek nadzorov',
 'tog-previewontop'            => 'Prikaži predogled pred urejevalnim poljem in ne za njim',
 'tog-previewonfirst'          => 'Ob začetku urejanja prikaži predogled',
-'tog-nocache'                 => 'Onemogoči predpomnenje strani',
+'tog-nocache'                 => 'Onemogoči predpomnenje strani v brskalniku',
 'tog-enotifwatchlistpages'    => 'Ob spremembah strani mi pošlji e-pošto',
 'tog-enotifusertalkpages'     => 'Pošlji e-pošto ob spremembah moje pogovorne strani',
 'tog-enotifminoredits'        => 'Pošlji e-pošto tudi za manjše spremembe strani',
@@ -581,6 +581,7 @@ Ne pozabite si prilagoditi vaših [[Special:Preferences|nastavitev {{GRAMMAR:rod
 'gotaccount'                 => 'Račun že imate? $1.',
 'gotaccountlink'             => 'Prijavite se',
 'createaccountmail'          => 'Po e-pošti',
+'createaccountreason'        => 'Razlog:',
 'badretype'                  => 'Gesli, ki ste ju vnesli, se ne ujemata.',
 'userexists'                 => 'Uporabniško ime, ki ste ga vnesli, je že zasedeno.
 Prosimo, izberite si drugo.',
@@ -650,9 +651,18 @@ Prosimo počakajte, preden poskusite znova.',
 'loginlanguagelabel'         => 'Jezik: $1',
 'suspicious-userlogout'      => 'Vaša zahteva za odjavo je bila zavrnjena, saj kaže, da je bila poslana iz pokvarjenega brskalnika ali proxyja s predpomnilnikom.',
 
+# JavaScript password checks
+'password-strength'            => 'Ocenjena moč gesla: $1',
+'password-strength-bad'        => 'SLABO',
+'password-strength-mediocre'   => 'povprečno',
+'password-strength-acceptable' => 'sprejemljivo',
+'password-strength-good'       => 'dobro',
+'password-retype'              => 'Ponovno vpišite geslo tukaj',
+'password-retype-mismatch'     => 'Gesli se ne ujemata',
+
 # Password reset dialog
 'resetpass'                 => 'Spremeni geslo',
-'resetpass_announce'        => 'Trenutno ste prijavljeni z začasno e-poštno kodo. 
+'resetpass_announce'        => 'Trenutno ste prijavljeni z začasno e-poštno kodo.
 Za zaključitev prijave, morate tukaj nastaviti novo geslo:',
 'resetpass_text'            => '<!-- Namesto te vrstice vstavite besedilo -->',
 'resetpass_header'          => 'Spremeni geslo',
@@ -721,7 +731,7 @@ Podan razlog je ''$2''.
 
 O blokiranju se lahko pogovorite z $1 ali katerim drugim [[{{MediaWiki:Grouppage-sysop}}|administratorjem]].
 
-Vedite, da lahko ukaz »Pošlji uporabniku e-pismo« uporabite le, če ste v [[Special:Preferences|nastavitvah]] vpisali in potrdili svoj elektronski naslov ter le ta ni bil blokiran. 
+Vedite, da lahko ukaz »Pošlji uporabniku e-pismo« uporabite le, če ste v [[Special:Preferences|nastavitvah]] vpisali in potrdili svoj elektronski naslov ter le ta ni bil blokiran.
 
 Vaš IP-naslov je $3, številka blokade pa #$5. Prosimo, vključite ga v vse morebitne poizvedbe.",
 'autoblockedtext'                  => "Vaš IP-naslov je bil samodejno blokiran, saj je bil uporabljen s strani drugega uporabnika, ki ga je blokiral $1.
@@ -1203,6 +1213,7 @@ Upoštevajte, da so njihovi podatki vsebine {{GRAMMAR:rodilnik|{{SITENAME}}}} mo
 'contextlines'                  => 'Vrstic na zadetek:',
 'contextchars'                  => 'Znakov na vrstico:',
 'stub-threshold'                => 'Prag označevanja <a href="#" class="stub">škrbin</a> (v bajtih):',
+'stub-threshold-disabled'       => 'Onemogočeno',
 'recentchangesdays'             => 'Število dni prikazanih v zadnjih spremembah:',
 'recentchangesdays-max'         => 'Največ $1 {{PLURAL:$1|dan|dneva|dnevi|dni}}',
 'recentchangescount'            => 'Privzeto število prikazanih urejanj:',
@@ -1262,7 +1273,7 @@ Ne sme biti daljši od $1 {{PLURAL:$1|znaka|znakov}}.',
 'prefs-help-gender'             => 'Podatek ni obvezen, uporablja pa se ga izključno za pravilno obliko naslavljanja programja glede na spol.
 Podatek bo javno prikazan.',
 'email'                         => 'E-pošta',
-'prefs-help-realname'           => 'Pravo ime je neobvezno. 
+'prefs-help-realname'           => 'Pravo ime je neobvezno.
 Če se ga odločite navesti, bo uporabljeno za priznavanje vašega dela.',
 'prefs-help-email'              => 'E-poštni naslov ni obvezen, vendar vam omogoča, da vam v primeru pozabljenega gesla pošljemo novo.
 Poleg tega vpisan e-poštni naslov omogoča drugim, da vam lahko pošiljajo elektronsko pošto brez razkritja vaše identitete.',
@@ -1293,7 +1304,7 @@ Poleg tega vpisan e-poštni naslov omogoča drugim, da vam lahko pošiljajo elek
 'userrights-groupsmember'      => 'Član skupine:',
 'userrights-groupsmember-auto' => 'Posreden član:',
 'userrights-groups-help'       => 'Spreminjate lahko skupine uporabnika:
-* Obkljukano polje pomeni uporabnika, ki je v skupini 
+* Obkljukano polje pomeni uporabnika, ki je v skupini
 * Odkljukano polje pomeni uporabnika, ki ni v skupini
 * Zvezdica (*) kaže, da uporabnika ne boste mogli odstraniti iz skupine, ko ga vanjo dodate oz. obratno.',
 'userrights-reason'            => 'Razlog:',
@@ -1568,12 +1579,11 @@ Izgleda, da je to pomanjšana slika ''(thumbnail)''.
 Če še vedno želite naložiti vašo datoteko, se prosimo vrnite nazaj in uporabite novo ime.
 [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Datoteka s tem imenom že obstaja v skupnem skladišču datotek.
-Prosimo, vrnite se in naložite svojo datoteko pod drugim imenom. 
+Prosimo, vrnite se in naložite svojo datoteko pod drugim imenom.
 [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Ta datoteka je dvojnik {{PLURAL:$1|naslednje datoteke|naslednjih datotek}}:',
 'file-deleted-duplicate'      => 'Datoteka je identična tej ([[$1]]), ki je bila predhodno izbrisana.
 Preverite zgodovino brisanja datoteke, preden jo ponovno naložite.',
-'successfulupload'            => 'Datoteka je bila uspešno naložena',
 'uploadwarning'               => 'Opozorilo!',
 'uploadwarning-text'          => 'Prosimo, spremenite opis datoteke spodaj in poskusite ponovno.',
 'savefile'                    => 'Shrani datoteko',
@@ -1617,11 +1627,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # mešano
  #</pre> <!-- pustite to vrstico takšno, kot je -->',
-'upload-successful-msg'       => 'Vaša naložena datoteka je na voljo tukaj: $1',
+'upload-success-subj'         => 'Datoteka je bila uspešno naložena',
+'upload-success-msg'          => 'Vaša datoteka iz [$2] je bila uspešno naložena. Na voljo je tukaj: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Težava pri nalaganju',
 'upload-failure-msg'          => 'Prišlo je do težave z vašo naloženo datoteko:
 
 $1',
+'upload-warning-subj'         => 'Opozorilo pri nalaganju',
+'upload-warning-msg'          => 'Prišlo je do težave pri nalaganju datoteke iz [$2]. Lahko se vrnete na [[Special:Upload/stash/$1|obrazec za nalaganje]], da odpravite težavo.',
 
 'upload-proto-error'        => 'Nepravilni protokol',
 'upload-proto-error-text'   => 'Oddaljeno nalaganje zahteva, da se URL začenja s <code>http://</code> ali <code>ftp://</code>.',
@@ -1817,8 +1830,8 @@ Stran se obravnava kot razločitvena, če uporablja predloge povezane iz [[Media
 'doubleredirects'            => 'Dvojne preusmeritve',
 'doubleredirectstext'        => 'Ta stran navaja strani, ki se preusmerjajo na druge preusmeritvene strani.
 Vsaka vrstica vsebuje povezavo do prve in druge preusmeritve, kakor tudi do cilja druge preusmeritve, ki je po navadi »prava« ciljna stran, na katero naj bi kazala prva preusmeritev.
-<s>Prečrtani</s> vnosi so bili razrešeni.',
-'double-redirect-fixed-move' => 'Stran [[$1]] je bil premaknjen. 
+<del>Prečrtani</del> vnosi so bili razrešeni.',
+'double-redirect-fixed-move' => 'Stran [[$1]] je bil premaknjen.
 Sedaj je preusmeritev na [[$2]].',
 'double-redirect-fixer'      => 'Popravljalec preusmeritev',
 
@@ -2110,11 +2123,11 @@ Povratna sporočila in pomoč:
 'delete-confirm'         => 'Brisanje »$1«',
 'delete-legend'          => 'Izbriši',
 'historywarning'         => "'''Opozorilo:''' Stran, ki jo želite izbrisati, ima zgodovino s približno $1 {{PLURAL:$1|redakcijo|redakcijama|redakcijami}}:",
-'confirmdeletetext'      => "Iz zbirke podatkov boste izbrisali stran ali sliko skupaj z vso njeno zgodovino. 
+'confirmdeletetext'      => "Iz zbirke podatkov boste izbrisali stran ali sliko skupaj z vso njeno zgodovino.
 Prosimo, '''potrdite''', da to resnično želite, da razumete posledice dejanja in da se ravnate po [[{{MediaWiki:Policy-url}}|pravilih]].",
 'actioncomplete'         => 'Poseg je končan',
 'actionfailed'           => 'Dejanje spodletelo',
-'deletedtext'            => 'Stran »<nowiki>$1</nowiki>« je bila izbrisana. 
+'deletedtext'            => 'Stran »<nowiki>$1</nowiki>« je bila izbrisana.
 Za zapise nedavnih brisanj glej $2.',
 'deletedarticle'         => 'je izbrisal(-a) »[[$1]]«',
 'suppressedarticle'      => 'skril »[[$1]]«',
@@ -2176,9 +2189,9 @@ Oglejte si [[Special:ProtectedPages|seznam zaščitenih strani]] za seznam trenu
 To so trenutne nastavitve za stran '''$1''':",
 'protect-locked-dblock'       => "Stopnje zaščite ni mogoče spremeniti zaradi aktivnega zaklepa zbirke podatkov.
 To so trenutne nastavitve za stran '''$1''':",
-'protect-locked-access'       => "Vaš uporabniški račun nima dovoljenja za spreminjanje stopnje zaščite strani. 
+'protect-locked-access'       => "Vaš uporabniški račun nima dovoljenja za spreminjanje stopnje zaščite strani.
 Trenutne nastavitve za stran '''$1''' so:",
-'protect-cascadeon'           => 'Ta stran je trenutno uaščitena, ker je vključena v {{PLURAL:$1|naslednjo stran, ki ima|naslednji strani, ki imata|naslednje strani, ki imajo|naslednjih strani, ki imajo}} vključeno kaskadno zaščito. 
+'protect-cascadeon'           => 'Ta stran je trenutno uaščitena, ker je vključena v {{PLURAL:$1|naslednjo stran, ki ima|naslednji strani, ki imata|naslednje strani, ki imajo|naslednjih strani, ki imajo}} vključeno kaskadno zaščito.
 Stopnjo zaščite te strani lahko spremenite, vendar to ne bo vplivalo na kaskadno zaščito.',
 'protect-default'             => 'Dovoli vsem uporabnikom',
 'protect-fallback'            => 'Potrebujete pravice »$1«',
@@ -2464,20 +2477,22 @@ Za zaklepanje in odklepanje zbirke podatkov mora biti ta datoteka zapisljiva s s
 # Move page
 'move-page'                    => 'Prestavi $1',
 'move-page-legend'             => 'Prestavitev strani',
-'movepagetext'                 => "Z naslednjim obrazcem lahko stran preimenujete in hkrati prestavite tudi vso njeno zgodovino. Dosedanja stran se bo spremenila v preusmeritev na prihodnje mesto. 
+'movepagetext'                 => "Z naslednjim obrazcem lahko stran preimenujete in hkrati prestavite tudi vso njeno zgodovino.
+Dosedanja stran se bo spremenila v preusmeritev na prihodnje mesto.
+Samodejno lahko posodobite preusmeritve, ki kažejo na dosedanji naslov.
+Če se za to ne odločite, ne pozabite preveriti vseh [[Special:DoubleRedirects|dvojnih]] ali [[Special:BrokenRedirects|pretrganih preusmeritev]].
+Odgovorni ste, da bodo povezave še naprej kazale na prava mesta.
 
-'''Povezave na dosedanji naslov strani se ne bodo spremenile, zato vas prosimo, da po prestavitvi strani z uporabo pripomočka »Kaj se povezuje sem« popravite vse dvojne preusmeritve, ki bodo morda nastale.''' Odgovorni ste, da bodo povezave še naprej kazale na prava mesta.
+Kjer stran z izbranim novim imenom že obstaja, dejanje '''ne''' bo izvedeno, razen če je sedanja stran prazna ali preusmeritvena in brez zgodovine urejanj.
+To pomeni, da lahko, če se zmotite, strani vrnete prvotno ime, ne morete pa prepisati že obstoječe strani.
 
-Kjer stran z izbranim novim imenom že obstaja, dejanje '''ne''' bo izvedeno, razen če je sedanja stran prazna ali preusmeritvena in brez zgodovine urejanj. To pomeni, da lahko, če se zmotite, strani vrnete prvotno ime, ne morete pa prepisati že obstoječe strani.
-
-<b>OPOZORILO!</b>
+'''Opozorilo!'''
 Prestavitev strani je lahko za priljubljeno stran velika in nepričakovana sprememba, zato pred izbiro ukaza dobro premislite.",
 'movepagetalktext'             => "Če obstaja, bo samodejno prestavljena tudi pripadajoča pogovorna stran, '''razen kadar'''
-*stran prestavljate prek imenskih prostorov,
 *pod novim imenom že obstaja neprazna pogovorna stran ali
 *ste odkljukali spodnji okvirček.
 
-Če je tako, boste morali pogovorno stran, če želite, prestaviti ali povezati ročno. Če tega ne morete storiti, predlagajte prestavitev na strani [[Project:Želene prestavitve]], vsekakor pa tega '''''ne''''' počnite s preprostim izrezanjem in prilepljenjem vsebine, saj bi tako pokvarili zgodovino urejanja strani.",
+Če je tako, boste morali pogovorno stran, če želite, prestaviti ali povezati ročno.",
 'movearticle'                  => 'Prestavi stran:',
 'moveuserpage-warning'         => "'''Opozorilo:''' Premikate uporabniško stran. To pomeni, da bo premaknjena samo stran in uporabnik ''ne'' bo preimenovan.",
 'movenologin'                  => 'Niste prijavljeni',
@@ -2493,7 +2508,7 @@ Prestavitev strani je lahko za priljubljeno stran velika in nepričakovana sprem
 'movepage-moved'               => "Stran '''»$1«''' je prestavljena na naslov '''»$2«'''.",
 'movepage-moved-redirect'      => 'Preusmeritev je bila ustvarjena.',
 'movepage-moved-noredirect'    => 'Izdelava preusmeritve je bila zatrta.',
-'articleexists'                => 'Izbrano ime je že zasedeno ali pa ni veljavno. 
+'articleexists'                => 'Izbrano ime je že zasedeno ali pa ni veljavno.
 Prosimo, izberite drugo ime.',
 'cantmove-titleprotected'      => 'Strani ne morete premakniti na slednjo lokacijo, saj je nov naslov zaščiten pred ustvarjanjem',
 'talkexists'                   => "'''Sama stran je bila uspešno prestavljena, pripadajoča pogovorna stran pa ne, ker že obstaja na novem naslovu.
@@ -2530,6 +2545,7 @@ strani ni mogoče prestaviti samo vaše.',
 'immobile-source-page'         => 'Te strani ni mogoče prestaviti.',
 'immobile-target-page'         => 'Ne morem premakniti na ta ciljni naslov.',
 'imagenocrossnamespace'        => 'Ne morem premakniti datoteke izven imenskega prostora datotek',
+'nonfile-cannot-move-to-file'  => 'Ne morem premakniti nedatoteko v imenski prostor datotek',
 'imagetypemismatch'            => 'Nova končnica datoteke se ne ujema z njeno vrsto',
 'imageinvalidfilename'         => 'Ciljno ime datoteke je neveljavno',
 'fix-double-redirects'         => 'Posodobi vse preusmeritve, ki kažejo na prvotni naslov',
@@ -2550,7 +2566,7 @@ To je mogoče uvoziti v drug wiki z uporabo MediaWiki preko [[Special:Import|str
 
 Če želite izvoziti strani, v spodnje polje vpišite naslove (enega v vsako vrstico) in označite, ali želite vse prejšnje različice z vrsticami o zgodovini strani ali le trenutno različico s podatki o trenutnem urejanju.
 
-Če gre za slednje, lahko uporabite tudi povezavo, npr. [[{{#Special:Export}}/{{MediaWiki:Mainpage}}]] za 
+Če gre za slednje, lahko uporabite tudi povezavo, npr. [[{{#Special:Export}}/{{MediaWiki:Mainpage}}]] za
 stran »[[{{MediaWiki:Mainpage}}]]«.',
 'exportcuronly'     => 'Vključi le trenutno redakcijo, ne pa celotne zgodovine.',
 'exportnohistory'   => "----
@@ -2848,9 +2864,9 @@ Druga bodo po privzetem skrita.
 * make
 * model
 * datetimeoriginal
-* exposuretime 
+* exposuretime
 * fnumber
-* isospeedratings 
+* isospeedratings
 * focallength',
 
 # EXIF tags
@@ -3156,7 +3172,7 @@ Posrednik e-pošte je vrnil: $1',
 je v {{GRAMMAR:dajalnik|{{SITENAME}}}} ustvaril račun »$2« in zanj vpisal ta elektronski naslov.
 
 Da bi potrdili, da ta račun resnično pripada vam in s tem
-lahko začeli uporabljati e-poštne storitve {{GRAMMAR:rodilnik|{{SITENAME}}}}, odprite naslednjo povezavo: 
+lahko začeli uporabljati e-poštne storitve {{GRAMMAR:rodilnik|{{SITENAME}}}}, odprite naslednjo povezavo:
 
 $3
 
@@ -3197,8 +3213,8 @@ $1',
 
 # Delete conflict
 'deletedwhileediting' => "'''Opozorilo''': Med vašim urejanjem je bila stran izbrisana!",
-'confirmrecreate'     => "Medtem ko ste stran urejali, jo je uporabnik [[User:$1|$1]] ([[User talk:$1|pogovor]]) izbrisal z razlogom: 
-:''$2'' 
+'confirmrecreate'     => "Medtem ko ste stran urejali, jo je uporabnik [[User:$1|$1]] ([[User talk:$1|pogovor]]) izbrisal z razlogom:
+:''$2''
 Prosimo, potrdite, da jo resnično želite znova ustvariti.",
 'recreate'            => 'Ponovno ustvari',
 

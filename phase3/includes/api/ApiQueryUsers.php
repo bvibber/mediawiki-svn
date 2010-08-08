@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on July 30, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on July 30, 2007
  *
  * Copyright © 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -73,7 +74,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
-		$r = array();
 
 		if ( !is_null( $params['prop'] ) ) {
 			$this->prop = array_flip( $params['prop'] );
@@ -104,7 +104,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		}
 
 		if ( count( $goodNames ) ) {
-			$db = $this->getDb();
 			$this->addTables( 'user', 'u1' );
 			$this->addFields( 'u1.*' );
 			$this->addWhereFld( 'u1.user_name', $goodNames );
@@ -162,9 +161,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 				}
 
 				if ( !is_null( $params['token'] ) ) {
-					// Don't cache tokens
-					$this->getMain()->setCachePrivate();
-					
 					$tokenFunctions = $this->getTokenFunctions();
 					foreach ( $params['token'] as $t ) {
 						$val = call_user_func( $tokenFunctions[$t], $user );
@@ -205,9 +201,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			} else {
 				if ( isset( $this->prop['groups'] ) && isset( $data[$u]['groups'] ) ) {
 					$autolist = ApiQueryUsers::getAutoGroups( User::newFromName( $u ) );
-					
+
 					$data[$u]['groups'] = array_merge( $autolist, $data[$u]['groups'] );
-				
+
 					$this->getResult()->setIndexedTagName( $data[$u]['groups'], 'g' );
 				}
 			}
@@ -222,7 +218,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		}
 		return $this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'user' );
 	}
-	
+
 	/**
 	* Gets all the groups that a user is automatically a member of
 	* @return array
@@ -235,6 +231,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		}
 
 		return array_merge( $groups, Autopromote::getAutopromoteGroups( $user ) );
+	}
+
+	public function getCacheMode( $params ) {
+		if ( isset( $params['token'] ) ) {
+			return 'private';
+		} else {
+			return 'public';
+		}
 	}
 
 	public function getAllowedParams() {

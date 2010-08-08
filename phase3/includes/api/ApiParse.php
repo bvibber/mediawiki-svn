@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Dec 01, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Dec 01, 2007
  *
  * Copyright © 2007 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -38,6 +39,9 @@ class ApiParse extends ApiBase {
 	}
 
 	public function execute() {
+		// The data is hot but user-dependent, like page views, so we set vary cookies
+		$this->getMain()->setCacheMode( 'anon-public-user-private' );
+
 		// Get parameters
 		$params = $this->extractRequestParams();
 		$text = $params['text'];
@@ -50,7 +54,6 @@ class ApiParse extends ApiBase {
 			$this->dieUsage( 'The page parameter cannot be used together with the text and title parameters', 'params' );
 		}
 		$prop = array_flip( $params['prop'] );
-		$revid = false;
 
 		if ( isset( $params['section'] ) ) {
 			$this->section = $params['section'];
@@ -71,7 +74,7 @@ class ApiParse extends ApiBase {
 
 		$popts = new ParserOptions();
 		$popts->setTidy( true );
-		$popts->enableLimitReport();
+		$popts->enableLimitReport( !$params['disablepp'] );
 		$redirValues = null;
 		if ( !is_null( $oldid ) || !is_null( $pageid ) || !is_null( $page ) ) {
 			if ( !is_null( $oldid ) ) {
@@ -162,7 +165,6 @@ class ApiParse extends ApiBase {
 
 			if ( $params['pst'] || $params['onlypst'] ) {
 				$text = $wgParser->preSaveTransform( $text, $titleObj, $wgUser, $popts );
-				$this->getMain()->setVaryCookie();
 			}
 			if ( $params['onlypst'] ) {
 				// Build a result and bail out
@@ -188,7 +190,6 @@ class ApiParse extends ApiBase {
 
 		if ( !is_null( $params['summary'] ) ) {
 			$result_array['parsedsummary'] = array();
-			$this->getMain()->setVaryCookie();
 			$result->setContent( $result_array['parsedsummary'], $wgUser->getSkin()->formatComment( $params['summary'], $titleObj ) );
 		}
 
@@ -223,7 +224,6 @@ class ApiParse extends ApiBase {
 		if ( isset( $prop['headitems'] ) || isset( $prop['headhtml'] ) ) {
 			$out = new OutputPage;
 			$out->addParserOutputNoText( $p_result );
-			$this->getMain()->setVaryCookie();
 			$userSkin = $wgUser->getSkin();
 		}
 
@@ -242,7 +242,7 @@ class ApiParse extends ApiBase {
 			$result_array['headhtml'] = array();
 			$result->setContent( $result_array['headhtml'], $out->headElement( $userSkin ) );
 		}
-		
+
 		if ( isset( $prop['iwlinks'] ) ) {
 			$result_array['iwlinks'] = $this->formatIWLinks( $p_result->getInterwikiLinks() );
 		}
@@ -325,12 +325,12 @@ class ApiParse extends ApiBase {
 			foreach ( $titles as $title => $id ) {
 				$entry = array();
 				$entry['prefix'] = $prefix;
-				
+
 				$title = Title::newFromText( "{$prefix}:{$title}" );
 				if ( $title ) {
 					$entry['url'] = $title->getFullURL();
 				}
-				
+
 				$this->getResult()->setContent( $entry, $title->getFullText() );
 				$result[] = $entry;
 			}
@@ -402,6 +402,7 @@ class ApiParse extends ApiBase {
 			'onlypst' => false,
 			'uselang' => null,
 			'section' => null,
+			'disablepp' => false,
 		);
 	}
 
@@ -442,6 +443,7 @@ class ApiParse extends ApiBase {
 			),
 			'uselang' => 'Which language to parse the request in',
 			'section' => 'Only retrieve the content of this section number',
+			'disablepp' => 'Disable the PP Report from the parser output',
 		);
 	}
 

@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on July 7, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on July 7, 2007
  *
  * Copyright © 2007 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -60,6 +61,9 @@ class ApiQueryAllUsers extends ApiQueryBase {
 
 		if ( !is_null( $params['from'] ) ) {
 			$this->addWhere( 'u1.user_name >= ' . $db->addQuotes( $this->keyToTitle( $params['from'] ) ) );
+		}
+		if ( !is_null( $params['to'] ) ) {
+			$this->addWhere( 'u1.user_name <= ' . $db->addQuotes( $this->keyToTitle( $params['to'] ) ) );
 		}
 
 		if ( !is_null( $params['prefix'] ) ) {
@@ -116,7 +120,6 @@ class ApiQueryAllUsers extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$data = array();
 		$count = 0;
 		$lastUserData = false;
 		$lastUser = false;
@@ -185,9 +188,14 @@ class ApiQueryAllUsers extends ApiQueryBase {
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'u' );
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function getAllowedParams() {
 		return array(
 			'from' => null,
+			'to' => null,
 			'prefix' => null,
 			'group' => array(
 				ApiBase::PARAM_TYPE => User::getAllGroups()
@@ -215,6 +223,7 @@ class ApiQueryAllUsers extends ApiQueryBase {
 	public function getParamDescription() {
 		return array(
 			'from' => 'The user name to start enumerating from',
+			'to' => 'The user name to stop enumerating at',
 			'prefix' => 'Search for all page titles that begin with this value',
 			'group' => 'Limit users to a given group name',
 			'prop' => array(

@@ -1,8 +1,13 @@
 <?php
+
 /**
- * Sqlite
+ * Class for handling updates to Sqlite databases.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
  */
 class SqliteUpdater extends DatabaseUpdater {
+	
 	protected function getCoreUpdateList() {
 		return array(
 			'1.14' => array(
@@ -31,10 +36,12 @@ class SqliteUpdater extends DatabaseUpdater {
 			),
 			'1.17' => array(
 				array( 'add_table', 'iwlinks',                            'patch-iwlinks.sql' ),
-				array( 'add_index', 'iwlinks',   'iwl_prefix_from_title', 'patch-rename-iwl_prefix.sql' ),
+				array( 'add_index', 'iwlinks',   'iwl_prefix_title_from', 'patch-rename-iwl_prefix.sql' ),
 				array( 'add_field', 'updatelog', 'ul_value',              'patch-ul_value.sql' ),
 				array( 'add_field', 'interwiki',     'iw_api',           'patch-iw_api_and_wikiid.sql' ),
 				array( 'add_table', 'msg_resource',                      'patch-msg_resource.sql' ),
+				array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix',  'patch-kill-iwl_prefix.sql' ),
+				array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix_from_title', 'patch-kill-iwl_pft.sql' ),
 			),
 		);
 	}

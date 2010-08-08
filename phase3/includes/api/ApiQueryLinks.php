@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on May 12, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on May 12, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -65,6 +66,10 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		$this->run( $resultPageSet );
 	}
@@ -85,7 +90,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		$this->addTables( $this->table );
 		$this->addWhereFld( $this->prefix . '_from', array_keys( $this->getPageSet()->getGoodTitles() ) );
 		$this->addWhereFld( $this->prefix . '_namespace', $params['namespace'] );
-		
+
 		if ( !is_null( $params[$this->titlesParam] ) ) {
 			$lb = new LinkBatch;
 			foreach ( $params[$this->titlesParam] as $t ) {
@@ -138,7 +143,6 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		$this->addOption( 'USE INDEX', "{$this->prefix}_from" );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		if ( is_null( $resultPageSet ) ) {

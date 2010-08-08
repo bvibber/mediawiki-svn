@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Feb 13, 2009
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Feb 13, 2009
  *
  * Copyright © 2009 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -48,7 +49,6 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 	}
 
 	private function run( $resultPageSet = null ) {
-		$db = $this->getDB();
 		$params = $this->extractRequestParams();
 
 		$this->addTables( 'protected_titles' );
@@ -102,7 +102,6 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 
 				if ( isset( $prop['parsedcomment'] ) ) {
 					global $wgUser;
-					$this->getMain()->setVaryCookie();
 					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->pt_reason, $title );
 				}
 
@@ -129,6 +128,15 @@ class ApiQueryProtectedTitles extends ApiQueryGeneratorBase {
 			$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), $this->getModulePrefix() );
 		} else {
 			$resultPageSet->populateFromTitles( $titles );
+		}
+	}
+
+	public function getCacheMode( $params ) {
+		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
+			// formatComment() calls wfMsg() among other things
+			return 'anon-public-user-private';
+		} else {
+			return 'public';
 		}
 	}
 

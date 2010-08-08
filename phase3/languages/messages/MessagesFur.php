@@ -113,7 +113,7 @@ $dateFormats = array(
 	'dmy both' => 'j "di" M Y "a lis" H:i',
 );
 
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $messages = array(
 # User preference toggles
@@ -875,7 +875,6 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'badfilename'           => 'File non gambiât in "$1".',
 'filetype-missing'      => 'Il file nol à une estension (par esempli ".jpg").',
 'file-exists-duplicate' => 'Chest file al è un duplicât {{PLURAL:$1|dal file |dai files ca sot:}}',
-'successfulupload'      => 'Cjamât sù cun sucès',
 'savefile'              => 'Salve file',
 'uploadedimage'         => 'cjamât sù "$1"',
 'overwroteimage'        => 'al à cjamât une gnove version di «[[$1]]»',
@@ -884,6 +883,7 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'sourcefilename'        => 'Non dal file origjinâl:',
 'destfilename'          => 'Non dal file di destinazion:',
 'watchthisupload'       => 'Ten di voli',
+'upload-success-subj'   => 'Cjamât sù cun sucès',
 
 'upload-unknown-size' => 'Dimension no cognossude',
 
@@ -1511,7 +1511,7 @@ Sielç par plasê un altri non.',
 # Bad image list
 'bad_image_list' => 'Il formât al è cussi:
 
-a vegnin considerâts dome i elements des listis (riis che a scomencin cul catatar *). 
+a vegnin considerâts dome i elements des listis (riis che a scomencin cul catatar *).
 Il prin leam intune rie al à di jessi un leam aun file indesiderâtI.
 I leams sucessîfs, su la stesse rie, a son considerâts come ecezions (ven a stâi pagjinis dulà che il file al pues jessi inserît normalmentri).',
 

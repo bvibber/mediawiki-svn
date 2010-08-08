@@ -72,7 +72,7 @@ $datePreferences =  array(
 );
 
 /**
- * Default date format to be used 
+ * Default date format to be used
  */
 $defaultDateFormat = 'ČSN basic dt';
 
@@ -120,7 +120,7 @@ $dateFormats = array(
  * Hledání knihy podle ISBN
  */
 $bookstoreList = array(
-	'Národní knihovna'          => 'http://sigma.nkp.cz/F/?func=find-a&find_code=ISN&request=$1',
+	'Národní knihovna'          => 'http://aleph.nkp.cz/F/?func=find-a&find_code=ISN&request=$1',
 	'Státní technická knihovna' => 'http://www.stk.cz/cgi-bin/dflex/CZE/STK/BROWSE?A=01&V=$1',
 	'inherit' => true,
 );
@@ -250,7 +250,7 @@ $magicWords = array(
 # Písmena, která se mají objevit jako část odkazu ve formě '[[jazyk]]y' atd:
 $linkTrail = '/^([a-záčďéěíňóřšťúůýž]+)(.*)$/sDu';
 
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'Dvojitá přesměrování', 'Dvojita presmerovani' ),
@@ -365,7 +365,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Přidávat stránky, které smažu, mezi sledované',
 'tog-previewontop'            => 'Zobrazovat náhled před editačním oknem (ne za ním)',
 'tog-previewonfirst'          => 'Zobrazit při první editaci náhled',
-'tog-nocache'                 => 'Nepoužívat cache',
+'tog-nocache'                 => 'Vypnout cachování v prohlížeči',
 'tog-enotifwatchlistpages'    => 'Poslat e-mail při změně sledované stránky',
 'tog-enotifusertalkpages'     => 'Poslat e-mail při změně mé diskusní stránky',
 'tog-enotifminoredits'        => 'Poslat e-mail i pro menší editace (které jinak nezpůsobují odeslání e-mailu)',
@@ -768,6 +768,7 @@ Nezapomeňte si upravit své [[Special:Preferences|nastavení {{grammar:2sg|{{SI
 'gotaccount'                 => "Už jste registrováni? '''$1'''.",
 'gotaccountlink'             => 'Přihlaste se',
 'createaccountmail'          => 'pomocí e-mailu',
+'createaccountreason'        => 'Důvod:',
 'badretype'                  => 'Vámi napsaná hesla nesouhlasí.',
 'userexists'                 => 'Uživatel se stejným jménem je už registrován. Zvolte jiné jméno.',
 'loginerror'                 => 'Chyba při přihlašování',
@@ -1360,6 +1361,7 @@ Pokud na začátek dotazu přidáte ''all:'', bude se hledat všude (včetně di
 'contextlines'                  => 'Počet řádek zobrazených z každé nalezené stránky',
 'contextchars'                  => 'Počet znaků kontextu na každé řádce',
 'stub-threshold'                => 'Limit pro formátování odkazu jako <a href="#" class="stub">pahýl</a> (v bajtech):',
+'stub-threshold-disabled'       => 'Vypnuto',
 'recentchangesdays'             => 'Počet dní zobrazených v posledních změnách:',
 'recentchangesdays-max'         => '(maximálně $1 {{PLURAL:$1|den|dny|dní}})',
 'recentchangescount'            => 'Počet implicitně zobrazovaných záznamů:',
@@ -1716,8 +1718,7 @@ Pokud chcete přesto soubor načíst, vraťte se a zvolte jiný název.
 'fileexists-shared-forbidden' => 'Soubor s tímto názvem již existuje ve sdíleném úložišti. Pokud přesto chcete váš soubor načíst, vraťte se a zvolte jiný název. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Tento soubor je duplikát {{PLURAL:$1|následujícího souboru|následujících souborů}}:',
 'file-deleted-duplicate'      => 'Identický soubor k tomuto ([[$1]]) byl již dříve smazán. Před tím, než soubor znovu nahrajete, byste měli zkontrolovat záznamy o předchozím smazání.',
-'successfulupload'            => 'Načtení úspěšně provedeno!',
-'uploadwarning'               => 'Varování',
+'uploadwarning'               => 'Upozornění k načítání',
 'uploadwarning-text'          => 'Prosíme, upravte popis souboru níže a zkuste to znovu.',
 'savefile'                    => 'Uložit soubor',
 'uploadedimage'               => 'načítá „[[$1]]“',
@@ -1757,11 +1758,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # různé
  #</pre> <!-- tuto řádku ponechte beze změny -->',
-'upload-successful-msg'       => 'Vámi načtený soubor je dostupný na $1',
+'upload-success-subj'         => 'Načtení úspěšně provedeno!',
+'upload-success-msg'          => 'Soubor vámi načtený z [$2] je dostupný na [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problém s načítaným souborem',
 'upload-failure-msg'          => 'U vámi načítaného souboru se vyskytl problém:
 
 $1',
+'upload-warning-subj'         => 'Upozornění k načítání',
+'upload-warning-msg'          => 'Při vašem načítání souboru z [$2] nastal problém. Pokud ho chcete vyřešit, můžete se vrátit do [[Special:Upload/stash/$1|načítacího formuláře]].',
 
 'upload-proto-error'        => 'Neplatný protokol',
 'upload-proto-error-text'   => 'Nahrání vzdáleného souboru vyžaduje zadání URLs začínající na <code>http://</code> nebo <code>ftp://</code>.',
@@ -1948,7 +1952,7 @@ Vstup: <code>typ obsahu/podtyp</code>, např. <code>image/jpeg</code>.',
 'doubleredirects'            => 'Dvojitá přesměrování',
 'doubleredirectstext'        => 'Na této stránce je seznam přesměrování vedoucích na další přesměrování.
 Každý řádek obsahuje odkaz na první a druhé přesměrování a k tomu cíl druhého přesměrování, který obvykle ukazuje jméno „skutečné“ cílové stránky, na kterou by mělo první přesměrování odkazovat.
-<s>Přeškrtnuté</s> položky již byly vyřešeny.',
+<del>Přeškrtnuté</del> položky již byly vyřešeny.',
 'double-redirect-fixed-move' => 'Stránka [[$1]] byla přesunuta, nyní přesměrovává na [[$2]]',
 'double-redirect-fixer'      => 'Opravář přesměrování',
 
@@ -2632,6 +2636,7 @@ Cílová stránka „[[:$1]]“ již existuje. Přejete si ji smazat pro uvolně
 'immobile-source-page'         => 'Tuto stránku nelze přesouvat.',
 'immobile-target-page'         => 'Stránku nelze přesunout na zadaný název.',
 'imagenocrossnamespace'        => 'Nelze přesunout mimo jmenný prostor Soubor:',
+'nonfile-cannot-move-to-file'  => 'Do jmenného prostoru {{ns:file}} nelze přesouvat stránky nepřináležející k souboru',
 'imagetypemismatch'            => 'Nová přípona souboru neodpovídá jeho typu',
 'imageinvalidfilename'         => 'Název cílového souboru není platný',
 'fix-double-redirects'         => 'Opravit všechna přesměrování směřující na původní název',

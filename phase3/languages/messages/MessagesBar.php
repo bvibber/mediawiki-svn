@@ -11,6 +11,8 @@
  * @author Man77
  * @author Merlissimo
  * @author Metalhead64
+ * @author The Evil IP address
+ * @author Wikifan
  * @author bar.wikipedia.org administrators
  */
 
@@ -27,7 +29,7 @@ $messages = array(
 'tog-extendwatchlist'        => 'Erweiterte Beobachtungslistn',
 'tog-usenewrc'               => 'Eaweitade Dåastellung vu de letztn Ändarungen (JavaScript wiad braucht)',
 'tog-numberheadings'         => 'Üwaschriftn automatisch nummarian',
-'tog-showtoolbar'            => 'Bearbatn-Werkzeugleiste oozoang',
+'tog-showtoolbar'            => 'Bearbatn-Werkzeugleiste oozoang (JavaScript wiad braucht)',
 'tog-editondblclick'         => 'Seitn mid am Doppiklick beåaweitn (JavaScript wiad braucht)',
 'tog-editsection'            => 'Links zum Beåaweitn vu de anzlnen Åbschnitte ãnzoang',
 'tog-watchcreations'         => 'Vu mia söiwa nei eigstöide Seitn automatisch beobåchtn',
@@ -58,48 +60,49 @@ $messages = array(
 'underline-default' => 'åbhängig vu da Browser-Eistellung',
 
 # Dates
-'sunday'      => 'Sunntåg',
-'monday'      => 'Montåg',
-'tuesday'     => 'Ertig',
-'wednesday'   => 'Mittwoch',
-'thursday'    => 'Pfinstig',
-'friday'      => 'Freitåg',
-'saturday'    => 'Sãmståg',
-'sun'         => 'Su',
-'mon'         => 'Mo',
-'tue'         => 'Er',
-'wed'         => 'Mi',
-'thu'         => 'Pf',
-'fri'         => 'Fr',
-'sat'         => 'Sa',
-'january'     => 'Jänna',
-'february'    => 'Februa',
-'march'       => 'Mäaz',
-'april'       => 'Aprüi',
-'may_long'    => 'Mai',
-'june'        => 'Juni',
-'july'        => 'Juli',
-'august'      => 'August',
-'september'   => 'Septemba',
-'october'     => 'Oktowa',
-'november'    => 'Novemba',
-'december'    => 'Dezemba',
-'january-gen' => 'Jänner',
-'jan'         => 'Jän.',
-'feb'         => 'Feb.',
-'mar'         => 'Mär.',
-'apr'         => 'Apr.',
-'may'         => 'Mai',
-'jun'         => 'Jun.',
-'jul'         => 'Jul.',
-'aug'         => 'Aug.',
-'sep'         => 'Sep.',
-'oct'         => 'Okt.',
-'nov'         => 'Nov.',
-'dec'         => 'Dez.',
+'sunday'       => 'Sunntåg',
+'monday'       => 'Montåg',
+'tuesday'      => 'Ertig',
+'wednesday'    => 'Mittwoch',
+'thursday'     => 'Pfinstig',
+'friday'       => 'Freitåg',
+'saturday'     => 'Sãmståg',
+'sun'          => 'Su',
+'mon'          => 'Mo',
+'tue'          => 'Er',
+'wed'          => 'Mi',
+'thu'          => 'Pf',
+'fri'          => 'Fr',
+'sat'          => 'Sa',
+'january'      => 'Jänna',
+'february'     => 'Februa',
+'march'        => 'Mäaz',
+'april'        => 'Aprüi',
+'may_long'     => 'Mai',
+'june'         => 'Juni',
+'july'         => 'Juli',
+'august'       => 'August',
+'september'    => 'Septemba',
+'october'      => 'Oktowa',
+'november'     => 'Novemba',
+'december'     => 'Dezemba',
+'january-gen'  => 'Jänner',
+'february-gen' => 'Februa',
+'march-gen'    => 'Mäaz',
+'jan'          => 'Jän.',
+'feb'          => 'Feb.',
+'mar'          => 'Mär.',
+'apr'          => 'Apr.',
+'may'          => 'Mai',
+'jun'          => 'Jun.',
+'jul'          => 'Jul.',
+'aug'          => 'Aug.',
+'sep'          => 'Sep.',
+'oct'          => 'Okt.',
+'nov'          => 'Nov.',
+'dec'          => 'Dez.',
 
 # Categories related messages
-'pagecategories'                 => '{{PLURAL:$1|Kategorie|Kategorien}}',
 'category_header'                => 'Seitn in da Kategorie „$1“',
 'subcategories'                  => 'Untakategorien',
 'category-media-header'          => 'Medien in da Kategorie „$1“',
@@ -127,14 +130,12 @@ $messages = array(
 'mytalk'        => 'Eigne Diskussion',
 'anontalk'      => 'Diskussionsseitn vo dera IP',
 'navigation'    => 'Navigazion',
-'and'           => '&#32;und',
 
 # Cologne Blue skin
 'qbfind'         => 'Findn',
 'qbedit'         => 'werkln',
 'qbmyoptions'    => 'Meine Seitn',
 'qbspecialpages' => 'Spezialseitn',
-'faq'            => 'FAQ',
 
 # Vector skin
 'vector-action-delete'    => 'Löschn',
@@ -146,12 +147,10 @@ $messages = array(
 
 'errorpagetitle'    => 'Fehla',
 'returnto'          => 'Zruck zur Seitn $1.',
-'tagline'           => 'Aus {{SITENAME}}',
 'help'              => 'Fragen?',
 'search'            => 'Suach',
 'searchbutton'      => 'Suach',
 'searcharticle'     => 'Artikl',
-'history'           => 'Versionen',
 'history_short'     => 'Veasionen/Autorn',
 'updatedmarker'     => '(gändat)',
 'printableversion'  => 'Version zum Ausdruckn',
@@ -193,8 +192,6 @@ $messages = array(
 'aboutpage'            => 'Project:Üba_{{SITENAME}}',
 'copyright'            => 'Da Inhåit is unta da $1 vafügbåa.',
 'copyrightpage'        => '{{ns:project}}:Uahebarechte',
-'disclaimers'          => 'Impressum',
-'disclaimerpage'       => 'Project:Impressum',
 'edithelp'             => 'Bearbeitungshuifn',
 'edithelppage'         => 'Help:Bearbeitungshuifn',
 'helppage'             => 'Help:Inhåitsvazeichnis',
@@ -240,11 +237,25 @@ $messages = array(
 # General errors
 'error'                => 'Fehla',
 'databaseerror'        => 'Fehla in da Datenbank',
+'dberrortextcl'        => 'Tschüdigung, do is a Föhla in da Datnbaunk.
+Die lezde Aunfrog wor:
+"$1"
+vo da Funktsion "$2".
+Fölanumma: $3 ($4)',
+'laggedslavemode'      => "'''Ochtung:''' Di auzagte Seitn kundat unta Umständn nimma di lezde Beourbeitung enthoitn.",
+'readonly'             => 'Datnbaunk gschpert',
+'enterlockreason'      => 'Bitte gib an Grund au, warum d Datnbaunk gschpert wern soi und wi laungs dauan wiad',
+'readonlytext'         => 'D Datnbaunk is momentan fia Ändarungen und neiche Einträg gschpert. Bitte prowiers schpeda nuamoi.',
+'missing-article'      => 'Da Tekst fia "$1" $2 is ned in da Datnbaunk gfundn woan. Di Seitn kuntat glöscht oda vaschom worn sei. Fois des ned da Foi is, kunntast a Föhla in da Softwer gfundn hom. Bitte nen die Intanetadress an [[Special:ListUsers/sysop|Administrator]].',
 'missingarticle-rev'   => '(Veasionsnumma: $1)',
 'missingarticle-diff'  => '(Untaschiad zwischn Veasionen: $1, $2)',
+'readonly_lag'         => 'Di Datnbaunk is momentan automatisch gschpert, damit si die Seava syncronisian kinan.',
 'internalerror'        => 'Inteana Fehla',
 'internalerror_info'   => 'Inteana Fehla: $1',
+'fileappenderrorread'  => '"$1" kau werendn hinzufügn ned glesn wearn.',
+'fileappenderror'      => 'De Datei „$1“ håd ned nåch „$2“ kopiad wean kina.',
 'filecopyerror'        => 'De Datei „$1“ håd ned nåch „$2“ kopiad wean kina.',
+'filerenameerror'      => 'De Datei „$1“ håd ned nåch „$2“ umbenaunt wean kina.',
 'filedeleteerror'      => 'De Datei „$1“ håt net glöscht wern kinna.',
 'directorycreateerror' => "S'Vazeichnis „$1“ håd ned ãnglegt wean kina.",
 'filenotfound'         => 'De Datei „$1“ is net gfundn worn.',
@@ -294,7 +305,7 @@ Vagiss bittschee ned, deine [[Special:Preferences|{{SITENAME}}-Eistellungen]] ã
 'nocookieslogin'             => "{{SITENAME}} nimmt Cookies zum Eiloggen vo de Benutzer her. Sie ham Cookies deaktiviert, bittschee aktiviern Sie de und versuchan's nomoi.",
 'loginsuccesstitle'          => 'Omeidung is erfolgreich gwen',
 'loginsuccess'               => 'Sie san  iatzat ois „$1“ bei {{SITENAME}} oogmeidt.',
-'wrongpassword'              => "Des Passwort is falsch (oda fehlt). Bitte probier's no amoi.",
+'wrongpassword'              => "Des Passwort is falsch. Bitte probier's no amoi.",
 'wrongpasswordempty'         => 'Des eigemne Passwort is laar gwen. Bitte no amoi probiern.',
 'mailmypassword'             => 'Neis Passwort zuasendn',
 'passwordremindertitle'      => 'Neis Passwort fia a {{SITENAME}}-Benutzerkonto',
@@ -312,9 +323,7 @@ Vagiss bittschee ned, deine [[Special:Preferences|{{SITENAME}}-Eistellungen]] ã
 'bold_tip'        => 'Fetta Text',
 'italic_sample'   => 'Kuasiva Text',
 'italic_tip'      => 'Kuasiva Text',
-'link_sample'     => 'Link-Text',
 'link_tip'        => 'Inteana Link',
-'extlink_sample'  => 'http://www.example.com Link-Text',
 'extlink_tip'     => "Exteana Link (pass auf's http:// auf)",
 'headline_sample' => 'Üwaschrift auf da zweitn Ebene',
 'headline_tip'    => 'Üwaschrift auf da 2. Emn',
@@ -322,14 +331,12 @@ Vagiss bittschee ned, deine [[Special:Preferences|{{SITENAME}}-Eistellungen]] ã
 'math_tip'        => 'Mathematische Foaml (LaTeX)',
 'nowiki_sample'   => 'Ned foamatiadn Text då eifüng',
 'nowiki_tip'      => 'Unfoamatiada Text',
-'image_tip'       => 'Dateilink',
 'media_tip'       => 'Datei-Link',
 'sig_tip'         => 'Dei Signatur mit Zeitstempe',
 'hr_tip'          => 'Wåågrechte Linie (spåasãm vawendn)',
 
 # Edit pages
 'summary'                          => 'Zsammafassung',
-'subject'                          => 'Betreff:',
 'minoredit'                        => 'Nur Kloanigkeitn san verändert worn',
 'watchthis'                        => 'De Seitn beobachtn',
 'savearticle'                      => 'Seitn speichern',
@@ -358,12 +365,11 @@ Wennst a anonymer Benutzer bist und dengst, daß irrelevante Kommentare an di gr
 Du kãnnst in Titl vu dea Seitn auf de ãndan Seitn [[Special:Search/{{PAGENAME}}|suacha]],
 <span class="plainlinks"> in de dazuaghearadn [{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} Logbiache suachn] oda de Seitn [{{fullurl:{{FULLPAGENAME}}|action=edit}} beåabeitn]</span>.',
 'updated'                          => '(Gändat)',
-'note'                             => "'''Hinweis:'''",
 'previewnote'                      => "'''Des is netta a Voaschau, d'Seitn is nu ned gspeichat woan!'''",
 'previewconflict'                  => "De Vorschau gibt an Inhalt vom obern Textfeld wieda; so werd de Seite ausschaun, wenn S' iatzat speichern.",
-'session_fail_preview'             => '<strong>Dei Bearbeitung is net gspeichert worn, wei deine Sitzungsdaten valorn ganga san.
+'session_fail_preview'             => 'Dei Bearbeitung is net gspeichert worn, wei deine Sitzungsdaten valorn ganga san.
 Bitte versuachs no amoi, indem du unta da foigendn Textvorschau nochmois auf „Seitn speichern“ klickst.
-Sollt des Problem bestehn bleim, meld di ab und danach wieda oo.</strong>',
+Sollt des Problem bestehn bleim, [[Special:UserLogout|meld di ab]] und danach wieda oo.',
 'editing'                          => 'Bearbatn vo $1',
 'editingsection'                   => 'Werkln bei $1 (Åbschnitt)',
 'editconflict'                     => 'Konflikt beim Bearbatn: $1',
@@ -373,10 +379,10 @@ Des untere Textfeld enthoit deine Änderungen.
 Bitte füg deine Änderungen in des obere Textfeld ei.
 '''Nur''' da Inhalt vom obern Textfeld werd gspeichert, wenn du auf „Seitn speichern“ klickst!",
 'yourtext'                         => 'Eana Text',
-'editingold'                       => "<strong>ACHTUNG: Sie arbatn an a oidn Version vo dera Seit.
-Wenn S' speichern, wern alle neiern Versionen übaschriem.</strong>",
-'longpagewarning'                  => "<strong>WARNUNG: De Seitn is $1 kB groaß; net jeda Browser konn Seitn bearbatn, di größer als 32 kB san.
-Überlegen S' bitte, ob a Aufteilung vo da Seitn in kloanere Abschnitte möglich is.</strong>",
+'editingold'                       => "'''Achtung: Sie arbatn an a oidn Version vo dera Seit.'''
+Wenn S' speichern, wern alle neiern Versionen übaschriem.",
+'longpagewarning'                  => "'''Warnung:''' De Seitn is $1 kB groaß; net jeda Browser konn Seitn bearbatn, di größer als 32 kB san.
+Überlegen S' bitte, ob a Aufteilung vo da Seitn in kloanere Abschnitte möglich is.",
 'semiprotectedpagewarning'         => "'''Hoibsperrung:''' De Seitn is so gsperrt worn, daß nur registrierte Benutzer de ändern kinnan.",
 'titleprotectedwarning'            => "'''ACHTUNG: Die Seitenerstellung wurde gesperrt. Nur bestimmte Benutzergruppen können die Seite erstellen.'''",
 'templatesused'                    => "{{PLURAL:$1|D'foignde Voalåg wiad|D'foigndn Voalång wean}} auf dea Seitn vawendt:",
@@ -493,17 +499,11 @@ Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 
 
 'group-user-member'          => 'Benutza',
 'group-autoconfirmed-member' => 'Bestätigta Benutza',
-'group-bot-member'           => 'Bot',
-'group-sysop-member'         => 'Administrator',
-'group-bureaucrat-member'    => 'Bürokrat',
-'group-suppress-member'      => 'Oversighter',
 
 'grouppage-user'          => '{{ns:project}}:Benutza',
 'grouppage-autoconfirmed' => '{{ns:project}}:Bestätigte Benutza',
-'grouppage-bot'           => '{{ns:project}}:Bots',
 'grouppage-sysop'         => '{{ns:project}}:Administratoan',
 'grouppage-bureaucrat'    => '{{ns:project}}:Bürokratn',
-'grouppage-suppress'      => '{{ns:project}}:Oversighter',
 
 # Rights
 'right-read'  => 'Seitn lesn',
@@ -548,26 +548,26 @@ Details stehen im [{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 
 'recentchangeslinked-page'    => 'Seitn:',
 
 # Upload
-'upload'            => 'Aufelådn',
-'uploadnologin'     => 'Net ogmeidt',
-'uploadnologintext' => "Sie miassn [[Special:UserLogin|ogmeidt sei]], wenn S' Dateien hoachladn wolln.",
-'uploadlog'         => 'Datei-Logbuach',
-'uploadlogpage'     => 'Datei-Logbuach',
-'uploadlogpagetext' => 'Des is des Logbuach vo de hoachgladna Dateien, schaug aa unta [[Special:NewFiles|neie Dateien]].',
-'uploadedfiles'     => 'Hoachgladene Dateien',
-'badfilename'       => "Da Dateinam is in „$1“ g'ändat won.",
-'large-file'        => 'De Dateigreß sollat nach Möglichkeit $1 net überschreitn. De Datei is $2 groaß.',
-'emptyfile'         => "De hochgladene Datei is laar. Da Grund konn a Tippfehler im Dateinam sei. Bitte kontrollieren'S, ob Sie de Datei wirklich hochladn woin.",
-'successfulupload'  => 'Erfolgreich hoachgladn',
-'uploadwarning'     => 'Obacht',
-'uploadedimage'     => 'håd „[[$1]]“ aufeglådn',
-'uploaddisabled'    => "'tschuldigung, as Hochladn is deaktiviert.",
-'uploadscripted'    => 'De Datei enthalt HTML- oda Scriptcode, der irrtümlichaweis von am Webbrowser ausgführt wern kinnat.',
-'watchthisupload'   => 'De Seitn beobachtn',
-'filewasdeleted'    => 'A Datei mit dem Nama is scho oamoi hochgladn worn und zwischenzeitlich wieda glöscht worn. Bitte schaug erscht den Eintrag im $1 oo, bevor du de Datei wirklich speicherst.',
-'upload-wasdeleted' => "'''Obacht: Du ladst aa Datei hoach, de scho friara glöscht worn is.'''
+'upload'              => 'Aufelådn',
+'uploadnologin'       => 'Net ogmeidt',
+'uploadnologintext'   => "Sie miassn [[Special:UserLogin|ogmeidt sei]], wenn S' Dateien hoachladn wolln.",
+'uploadlog'           => 'Datei-Logbuach',
+'uploadlogpage'       => 'Datei-Logbuach',
+'uploadlogpagetext'   => 'Des is des Logbuach vo de hoachgladna Dateien, schaug aa unta [[Special:NewFiles|neie Dateien]].',
+'uploadedfiles'       => 'Hoachgladene Dateien',
+'badfilename'         => "Da Dateinam is in „$1“ g'ändat won.",
+'large-file'          => 'De Dateigreß sollat nach Möglichkeit $1 net überschreitn. De Datei is $2 groaß.',
+'emptyfile'           => "De hochgladene Datei is laar. Da Grund konn a Tippfehler im Dateinam sei. Bitte kontrollieren'S, ob Sie de Datei wirklich hochladn woin.",
+'uploadwarning'       => 'Obacht',
+'uploadedimage'       => 'håd „[[$1]]“ aufeglådn',
+'uploaddisabled'      => "'tschuldigung, as Hochladn is deaktiviert.",
+'uploadscripted'      => 'De Datei enthalt HTML- oda Scriptcode, der irrtümlichaweis von am Webbrowser ausgführt wern kinnat.',
+'watchthisupload'     => 'De Seitn beobachtn',
+'filewasdeleted'      => 'A Datei mit dem Nama is scho oamoi hochgladn worn und zwischenzeitlich wieda glöscht worn. Bitte schaug erscht den Eintrag im $1 oo, bevor du de Datei wirklich speicherst.',
+'upload-wasdeleted'   => "'''Obacht: Du ladst aa Datei hoach, de scho friara glöscht worn is.'''
 Bittschee prüf gnau, ob as erneite Hoachladn de Richtlinien entspricht.
 Zu deina Information folgt des Lösch-Logbuach mit da Begründung fia de vorherige Löschung:",
+'upload-success-subj' => 'Erfolgreich hoachgladn',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6' => 'URL is net erreichbar',
@@ -576,16 +576,13 @@ Zu deina Information folgt des Lösch-Logbuach mit da Begründung fia de vorheri
 'upload_source_file' => ' (a Datei auf deim Computa)',
 
 # File description page
-'file-anchor-link'          => 'Datei',
 'filehist'                  => 'Dateiveasionen',
 'filehist-help'             => 'Klick auf an Zeitpunkt, damid de Veasion glånd wiad.',
-'filehist-current'          => 'aktuell',
 'filehist-datetime'         => 'Version vum',
 'filehist-thumb'            => 'Voaschaubüidl',
 'filehist-thumbtext'        => "Vorschaubüidl fia'd Veasion vum $1",
 'filehist-user'             => 'Benutza',
 'filehist-dimensions'       => 'Måße',
-'filehist-comment'          => 'Kommentar',
 'imagelinks'                => 'Dateivawendungen',
 'linkstoimage'              => "{{PLURAL:$1|D'foignde Seitn vawendt|De foigndn $1 Seitn vawendn}} de Datei:",
 'linkstoimage-more'         => "Es {{PLURAL:$1|valinkt|valinkn}} mea wia {{PLURAL:$1|oa Seitn |$1 Seitn}} auf de Datei.
@@ -621,7 +618,6 @@ A [[Special:WhatLinksHere/$2|voiständige Listn]] gibt's aa.",
 'statistics'             => 'Statistik',
 'statistics-mostpopular' => 'Am meistn bsuachte Seitn',
 
-'disambiguationspage'  => 'Template:Begriffsklärung',
 'disambiguations-text' => 'De folgenden Seitn valinkn auf a Seitn zur Begriffsklärung.
 Sie solltn stattdessn auf de eigentlich gemoante Seitn valinkn.<br />A Seitn werd ois Begriffsklärungsseitn behandelt, wenn [[MediaWiki:Disambiguationspage]] auf sie valinkt.<br />
 Links aus Namensräume wern da net aufglistet.',
@@ -659,7 +655,6 @@ Links aus Namensräume wern da net aufglistet.',
 
 # Special:AllPages
 'allpages'          => 'Alle Seitn',
-'alphaindexline'    => '$1 bis $2',
 'prevpage'          => 'Voaherige Seitn ($1)',
 'allpagesfrom'      => 'Seitn zoang ab:',
 'allpagesto'        => 'Seitn ãnzoang bis:',
@@ -706,7 +701,7 @@ Links aus Namensräume wern da net aufglistet.',
 'addedwatch'        => 'Zua Beobachtungslistn dazuado',
 'addedwatchtext'    => 'De Seitn „[[:$1]]“ is zua deina [[Special:Watchlist|Beobachtungslistn]] dazuado worn.
 Änderunga an dera Seitn und vo da Diskussionsseitn wern da glistet und
-in da Übasicht vo de [[Special:RecentChanges|letztn Änderungen]] in Fettschrift ozoagt. 
+in da Übasicht vo de [[Special:RecentChanges|letztn Änderungen]] in Fettschrift ozoagt.
 Wennst de Seitn wieder vo deina Beobachtungslistn wegdoa mechtn, klickst auf da jeweiligen Seitn auf „nimma beobachten“.',
 'removedwatch'      => 'vu da Beobåchtungslistn weg nemma',
 'removedwatchtext'  => "D'Seitn „[[:$1]]“ is vu deina [[Special:Watchlist|Beobåchtungslistn]] weg gnumma woan.",
@@ -733,7 +728,7 @@ de {{SITENAME}} Seitn "$PAGETITLE" is vo $PAGEEDITOR am $PAGEEDITDATE $CHANGEDOR
 Zusammenfassung vom Bearbeiter: $PAGESUMMARY $PAGEMINOREDIT
 Es wern solang koae weitern Benachrichtigungsmails gsendt, bis Sie de Seitn wieder besuacht ham. Auf Eanana Beobachtungsseitn kinnans S\' alle Benachrichtigungsmarker zsamm zrucksetzen.
              Eana {{SITENAME}} Benachrichtigungssystem
--- 
+--
 Um die Einstellungen Ihrer Beobachtungslistn anzupassen bsuachans bitte: {{fullurl:Special:Watchlist/edit}}',
 
 # Delete
@@ -762,7 +757,6 @@ und dass Sie in Übaeinstimmung mit de [[{{MediaWiki:Policy-url}}|Richtlinien]] 
 'protectedarticle'            => 'håd „[[$1]]“ gschützt',
 'modifiedarticleprotection'   => 'håd in Schutz vu „[[$1]]“ gändat',
 'prot_1movedto2'              => 'håt [[$1]] nåch [[$2]] verschom',
-'protectcomment'              => 'Grund:',
 'protectexpiry'               => 'Sperrdaua:',
 'protect_expiry_invalid'      => "D'eigemne Daua is ungüitig.",
 'protect_expiry_old'          => "D'Sperrzeid liegt in da Vagãngnheid",
@@ -775,7 +769,6 @@ und dass Sie in Übaeinstimmung mit de [[{{MediaWiki:Policy-url}}|Richtlinien]] 
 'protect-expiring'            => 'bis zum $2 um $3 Uhr (UTC)',
 'protect-cascade'             => 'Kaskadiarade Sperr – ålle Voalång, de in dea Seitn eibundn han, wean emfåis gspead.',
 'protect-cantedit'            => "Du kãnnst de Spea vu dea Seitn ned ändan, weu'st dafia ned de passnde Berechtigung håst.",
-'restriction-type'            => 'Schutzstatus:',
 'restriction-level'           => 'Schutzhechn:',
 
 # Restrictions (nouns)
@@ -804,8 +797,6 @@ Da aktuelle Text vo da glöschtn Seitn is nur fia Administratoren zum seng.',
 'contributions-title' => 'Benutzabeiträg vu „$1“',
 'mycontris'           => 'Eigene Beiträg',
 'contribsub2'         => 'Fia $1 ($2)',
-'uctop'               => '(aktuell)',
-'month'               => 'und Monat:',
 'year'                => 'bis zum Joa:',
 
 'sp-contributions-newbies'     => 'Netta de Beiträg vu de neichn Benutza ãnzoang',
@@ -822,13 +813,11 @@ Da aktuelle Text vo da glöschtn Seitn is nur fia Administratoren zum seng.',
 'whatlinkshere-page'       => 'Seitn:',
 'isredirect'               => 'Weiterleitungsseitn',
 'istemplate'               => 'Voalãngeibindung',
-'isimage'                  => 'Dateilink',
 'whatlinkshere-prev'       => "{{PLURAL:$1|vorige|d'voring $1}}",
 'whatlinkshere-next'       => "{{PLURAL:$1|nexde|d'nexdn $1}}",
 'whatlinkshere-links'      => '← Vaweise',
 'whatlinkshere-hideredirs' => 'Weidaleitungen $1',
 'whatlinkshere-hidetrans'  => 'Voalãngeibindungen $1',
-'whatlinkshere-hidelinks'  => 'Links $1',
 'whatlinkshere-filters'    => 'Füita',
 
 # Block/unblock

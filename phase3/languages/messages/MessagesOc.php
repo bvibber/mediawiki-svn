@@ -628,7 +628,7 @@ La banca de donadas a renviat l’error « $3 : $4 ».',
 'laggedslavemode'      => 'Atencion : Aquesta pagina pòt conténer pas totes los darrièrs cambiaments efectuats.',
 'readonly'             => 'Mesas a jorn blocadas sus la banca de donadas',
 'enterlockreason'      => 'Indicatz la rason del blocatge, e mai una estimacion de sa durada',
-'readonlytext'         => "Los ajustons e mesas a jorn de la banca de donadas son actualament blocats, probablament per permetre la mantenença de la banca, aprèp aquò, tot dintrarà dins l'òrdre. 
+'readonlytext'         => "Los ajustons e mesas a jorn de la banca de donadas son actualament blocats, probablament per permetre la mantenença de la banca, aprèp aquò, tot dintrarà dins l'òrdre.
 
 L’administrator qu'a varrolhat la banca de donadas a balhat l’explicacion seguenta : $1",
 'missing-article'      => "La banca de donada a pas trobat lo tèxte d’una pagina qu’auriá degut trobar, intitolada « $1 » $2.
@@ -735,14 +735,14 @@ Verificatz qu'avètz plan ortografiat lo nom, o [[Special:UserLogin/signup|creat
 'password-name-match'        => 'Vòstre senhal deu èsser diferent de vòstre nom d’utilizaire.',
 'mailmypassword'             => 'Mandar un senhal novèl per corrièr electronic',
 'passwordremindertitle'      => 'Senhal temporari novèl sus {{SITENAME}}',
-'passwordremindertext'       => "Qualqu'un (probablament vos, amb l'adreça IP $1) a demandat un senhal novèl 
+'passwordremindertext'       => "Qualqu'un (probablament vos, amb l'adreça IP $1) a demandat un senhal novèl
 per {{SITENAME}} ($4). Un senhal temporari es estat creat per
 l’utilizaire « $2 » e es « $3 ». S'aquò èra vòstra intencion, vos caldrà
 vos connectar e causir un senhal novèl.
 Vòstre senhal temporari expirarà dins $5 {{PLURAL:$5|jorn|jorns}}.
 
 Se sètz pas l’autor d'aquesta demanda, o se vos remembratz ara
-de vòstre senhal ancian e que desiratz pas mai ne cambiar, 
+de vòstre senhal ancian e que desiratz pas mai ne cambiar,
 podètz ignorar aqueste messatge e contunhar d'utilizar vòstre senhal ancian.",
 'noemail'                    => "Cap d'adreça electronica es pas estada enregistrada per l'utilizaire « $1 ».",
 'noemailcreate'              => 'Vos cal provesir una adreça de corrièl valida',
@@ -903,7 +903,7 @@ La darrièra entrada del jornal dels blocatges es indicada çaijós a títol d�
 'note'                             => "'''Nòta :'''",
 'previewnote'                      => "'''Atencion, aqueste tèxte es sonque una previsualizacion e es pas encara estat salvat !'''",
 'previewconflict'                  => 'Aquesta previsualizacion fa veire lo tèxte de la bóstia de modificacion superiora coma apareisserà se causissètz de lo salvar.',
-'session_fail_preview'             => "'''Podèm pas enregistrar vòstra modificacion a causa d’una pèrda d’informacions concernent vòstra sesilha. 
+'session_fail_preview'             => "'''Podèm pas enregistrar vòstra modificacion a causa d’una pèrda d’informacions concernent vòstra sesilha.
 Ensajatz tornarmai.
 S'aquò fracassa encara, [[Special:UserLogout|desconnectatz-vos]], puèi connectatz-vos tornamai.'''",
 'session_fail_preview_html'        => "'''Podèm pas enregistrar vòstra modificacion a causa d’una pèrda d’informacions que concernís vòstra sesilha.'''
@@ -959,7 +959,7 @@ Podètz tonar en rèire e modificar una pagina existenta, [[Special:UserLogin|vo
 'permissionserrorstext-withaction' => 'Sètz pas autorizat(ada) a $2, per {{PLURAL:$1|la rason seguenta|las rasons seguentas}} :',
 'recreate-moveddeleted-warn'       => "'''Atencion : sètz a tornar crear una pagina qu'es estada suprimida precedentament.'''
 
-Demandatz-vos s'es vertadièrament apropriat de contunhar de l’editar. 
+Demandatz-vos s'es vertadièrament apropriat de contunhar de l’editar.
 L’istoric de las supressions e dels cambiaments de nom es afichat çaijós :",
 'moveddeleted-notice'              => "Aquesta pagina es estat suprimida.
 L'istoric de las supressions e dels cambiaments de nom es afichat çaijós coma referéncia.",
@@ -1128,7 +1128,7 @@ I avètz pas accès.",
 'revdelete-concurrent-change' => "Error al moment de la modificacion de l'element datat del $1 a $2 : son estatut es estat cambiat per qualqu'un mai pendent qu'o modificatz.
 Verificatz los jornals.",
 'revdelete-only-restricted'   => "Error al moment de la supression de l'entrada datada del $1 a $2 : podètz pas suprimir aqueles elements als administrators sens seleccionar tanben d'opcions de supression mai.",
-'revdelete-reason-dropdown'   => "* Rasons correntas de supression 
+'revdelete-reason-dropdown'   => "* Rasons correntas de supression
 ** Violacion dels dreches d'autors
 ** Entresenhas personalas inapropriadas",
 'revdelete-otherreason'       => 'Autra rason / rason suplementària :',
@@ -1645,7 +1645,6 @@ Se volètz totjorn importar aquel fichièr, mercé de tornar en arrièr e d'util
 S'o volètz importar tornamai, tornatz en rèire e importatz-lo jos un autre nom. [[File:$1|thumb|center|$1]]",
 'file-exists-duplicate'       => 'Aqueste fichièr es un doble {{PLURAL:$1|del fichièr seguent|dels fichièrs seguents}} :',
 'file-deleted-duplicate'      => "Un fichièr identic a aqueste ([[$1]]) ja es estat suprimit. Vos caldriá verificar lo jornal de las supressions d'aqueste fichièr abans de la tornar telecargar.",
-'successfulupload'            => 'Importacion capitada',
 'uploadwarning'               => 'Atencion !',
 'uploadwarning-text'          => 'Modificatz la descripcion del fichièr e ensajatz tornarmai.',
 'savefile'                    => 'Salvar lo fichièr',
@@ -1685,7 +1684,8 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- daissatz aquesta linha coma es -->',
-'upload-successful-msg'       => 'Çò mandat es disponible aicí : $1',
+'upload-success-subj'         => 'Importacion capitada',
+'upload-success-msg'          => 'Çò mandat es disponible aicí : [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problèma de mandadís',
 'upload-failure-msg'          => 'I a agut un problèma amb vòstre mandadís :$1',
 
@@ -1875,7 +1875,7 @@ Una pagina es tractada coma una pagina d’omonimia s'utiliza un modèl qu'es li
 'doubleredirects'            => 'Redireccions doblas',
 'doubleredirectstext'        => 'Vaquí una lista de las paginas que redirigisson cap a de paginas que son elas-meteissas de paginas de redireccion.
 Cada entrada conten de ligams cap a la primièra e la segonda redireccions, e mai la primièra linha de tèxte de la segonda pagina, çò que provesís, de costuma, la « vertadièra » pagina cibla, cap a la quala la primièra redireccion deuriá redirigir.
-Las entradas <s>barradas</s> son estadas resolgudas.',
+Las entradas <del>barradas</del> son estadas resolgudas.',
 'double-redirect-fixed-move' => '[[$1]] es estat renomenat, aquò es ara una redireccion cap a [[$2]]',
 'double-redirect-fixer'      => 'Corrector de redireccion',
 
@@ -3392,7 +3392,7 @@ Picatz lo nom del fichièr sens lo prefix « {{ns:file}}: ».',
 # Special:SpecialPages
 'specialpages'                   => 'Paginas especialas',
 'specialpages-note'              => '----
-* Las paginas especialas 
+* Las paginas especialas
 * <strong class="mw-specialpagerestricted">en gras</strong> son restrenhudas.',
 'specialpages-group-maintenance' => 'Rapòrts de mantenença',
 'specialpages-group-other'       => 'Autras paginas especialas',
@@ -3414,7 +3414,7 @@ Picatz lo nom del fichièr sens lo prefix « {{ns:file}}: ».',
 # External image whitelist
 'external_image_whitelist' => " #Daissatz aquesta linha exactament coma es<pre>
 #Indicatz los fragments d’expression regularas (sonque la partida indicada entre los //) çaijós
-#Correspondràn amb las URLs dels imatges (fòrt ligadas) extèrnes 
+#Correspondràn amb las URLs dels imatges (fòrt ligadas) extèrnes
 #Las que correspondon s'aficharàn coma d'imatges, siquenon solament un ligam cap a l'imatge serà afichat
 #Las linhas que començan amb # seràn consideradas coma de comentaris
 #Aquesta linha es pas sensibla a la cassa

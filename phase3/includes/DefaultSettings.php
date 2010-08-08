@@ -425,6 +425,11 @@ $wgCacheSharedUploads = true;
 * The timeout for copy uploads is set by $wgHTTPTimeout.
 */
 $wgAllowCopyUploads = false;
+/**
+ * Allow asynchronous copy uploads.
+ * This feature is experimental.
+ */
+$wgAllowAsyncCopyUploads = false;
 
 /**
  * Max size for uploads, in bytes. Applies to all uploads.
@@ -436,11 +441,15 @@ $wgMaxUploadSize = 1024*1024*100; # 100MB
  * Useful if you want to use a shared repository by default
  * without disabling local uploads (use $wgEnableUploads = false for that)
  * e.g. $wgUploadNavigationUrl = 'http://commons.wikimedia.org/wiki/Special:Upload';
- *
- * This also affects images inline images that do not exist. In that case the URL will get
- * (?|&)wpDestFile=<filename> appended to it as appropriate.
  */
 $wgUploadNavigationUrl = false;
+
+/**
+ * Point the upload link for missing files to an external URL, as with
+ * $wgUploadNavigationUrl. The URL will get (?|&)wpDestFile=<filename> 
+ * appended to it as appropriate.
+ */
+$wgUploadMissingFileUrl = false;
 
 /**
  * Give a path here to use thumb.php for thumbnail generation on client request, instead of
@@ -1547,7 +1556,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '299';
+$wgStyleVersion = '300';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -2042,10 +2051,9 @@ $wgDTD = 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd';
 $wgXhtmlDefaultNamespace = 'http://www.w3.org/1999/xhtml';
 
 /**
- * Should we output an HTML5 doctype?  This mode is still experimental, but
- * all indications are that it should be usable, so it's enabled by default.
- * If all goes well, it will be removed and become always true before the 1.16
- * release.
+ * Should we output an HTML5 doctype?  If false, use XHTML 1.0 Transitional
+ * instead, and disable HTML5 features.  This may eventually be removed and set
+ * to always true.
  */
 $wgHtml5 = true;
 
@@ -2248,7 +2256,7 @@ $wgDisableOutputCompression = false;
  * and 8, and Opera 10.50, but it fails in Opera 10.10: Unicode IDs don't seem
  * to work as anchors.  So not quite ready for general use yet.
  */
-$wgExperimentalHtmlIds = false;
+$wgExperimentalHtmlIds = true;
 
 /**
  * Search form behavior for Vector skin only
@@ -2886,7 +2894,7 @@ $wgExternalAuthType = null;
  * info be provided.  Check the file where your auth mechanism is defined for
  * info on what to put here.
  */
-$wgExternalAuthConfig = array();
+$wgExternalAuthConf = array();
 
 /**
  * When should we automatically create local accounts when external accounts
@@ -3740,9 +3748,9 @@ $wgParserTestRemote = false;
  */
 $wgEnableSelenium = false;
 
-/** List of Selenium test classes. These must be registered with the autoloader. */
-$wgSeleniumTests = array(
-	'SimpleSeleniumTest'
+/** List of Selenium test suites. These must be registered with the autoloader. */
+$wgSeleniumTestSuites = array(
+	'SimpleSeleniumTestSuite'
 );
 
 
@@ -4187,6 +4195,11 @@ $wgRightsUrl = null;
 $wgRightsText = null;
 $wgRightsIcon = null;
 
+/**
+ * Set to an array of metadata terms. Else they will be loaded based on $wgRightsUrl
+ */
+$wgLicenseTerms = false;
+
 /** Set this to some HTML to override the rights icon with an arbitrary logo */
 $wgCopyrightIcon = null;
 
@@ -4419,6 +4432,15 @@ $wgSpecialPageCacheUpdates = array(
 $wgExceptionHooks = array();
 
 /**
+ * List of page property names and descriptions of what they are. 
+ * This is used for the API prop=pageprops module to know which 
+ * page props to search for.
+ */
+$wgPageProps = array( 
+	'hiddencat' => 'Whether or not the page has a category with the __HIDDENCAT__ magic word',
+);
+
+/**
  * Page property link table invalidation lists. When a page property
  * changes, this may require other link tables to be updated (eg
  * adding __HIDDENCAT__ means the hiddencat tracking category will
@@ -4453,10 +4475,12 @@ $wgCategoryMagicGallery = true;
 $wgCategoryPagingLimit = 200;
 
 /**
- * Should the default category sortkey be the prefixed title?
- * Run maintenance/refreshLinks.php after changing this.
+ * A version indicator for collations that will be stored in cl_collation for
+ * all new rows.  Used when the collation algorithm changes: a script checks
+ * for all rows where cl_collation != $wgCollationVersion and regenerates
+ * cl_sortkey based on the page name and cl_sortkey_prefix.
  */
-$wgCategoryPrefixedDefaultSortkey = true;
+$wgCollationVersion = 1;
 
 /** @} */ # End categories }
 
@@ -5098,6 +5122,11 @@ $wgPoolCounterConf = null;
  */
 $wgUploadMaintenance = false;
 
+/**
+ * Enabes or disables JavaScript-based suggestions of password strength
+ */
+$wgLivePasswordStrengthChecks = true;
+ 
 /**
  * For really cool vim folding this needs to be at the end:
  * vim: foldmarker=@{,@} foldmethod=marker

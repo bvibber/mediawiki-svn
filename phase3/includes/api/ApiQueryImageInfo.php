@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on July 6, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on July 6, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -222,7 +223,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 						$vals['thumbwidth'] = intval( $file->getWidth() );
 						$vals['thumbheight'] = intval( $file->getHeight() );
 					}
-					
+
 					if ( isset( $prop['thumbmime'] ) ) {
 						$thumbFile = UnregisteredLocalFile::newFromPath( $mto->getPath(), false );
 						$vals['thumbmime'] = $thumbFile->getMimeType();
@@ -272,6 +273,10 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		}
 		$result->setIndexedTagName( $retval, 'metadata' );
 		return $retval;
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	private function getContinueStr( $img ) {

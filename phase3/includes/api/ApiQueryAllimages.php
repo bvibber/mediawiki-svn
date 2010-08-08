@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Created on Mar 16, 2008
- *
  * API for MediaWiki 1.12+
+ *
+ * Created on Mar 16, 2008
  *
  * Copyright © 2008 Vasiliev Victor vasilvv@gmail.com,
  * based on ApiQueryAllpages.php
@@ -22,6 +22,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -55,6 +57,10 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		$this->run();
 	}
 
+	public function getCacheMode( $params ) {
+		return 'public';
+	}
+
 	public function executeGenerator( $resultPageSet ) {
 		if ( $resultPageSet->isResolvingRedirects() ) {
 			$this->dieUsage( 'Use "gaifilterredir=nonredirects" option instead of "redirects" when using allimages as a generator', 'params' );
@@ -76,7 +82,9 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 		// Image filters
 		$dir = ( $params['dir'] == 'descending' ? 'older' : 'newer' );
 		$from = ( is_null( $params['from'] ) ? null : $this->titlePartToKey( $params['from'] ) );
-		$this->addWhereRange( 'img_name', $dir, $from, null );
+		$to = ( is_null( $params['to'] ) ? null : $this->titlePartToKey( $params['to'] ) );
+		$this->addWhereRange( 'img_name', $dir, $from, $to );
+
 		if ( isset( $params['prefix'] ) )
 			$this->addWhere( 'img_name' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
 
@@ -145,6 +153,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 	public function getAllowedParams() {
 		return array (
 			'from' => null,
+			'to' => null,
 			'prefix' => null,
 			'minsize' => array(
 				ApiBase::PARAM_TYPE => 'integer',
@@ -179,6 +188,7 @@ class ApiQueryAllimages extends ApiQueryGeneratorBase {
 	public function getParamDescription() {
 		return array(
 			'from' => 'The image title to start enumerating from',
+			'to' => 'The image title to stop enumerating at',
 			'prefix' => 'Search for all image titles that begin with this value',
 			'dir' => 'The direction in which to list',
 			'minsize' => 'Limit to images with at least this many bytes',

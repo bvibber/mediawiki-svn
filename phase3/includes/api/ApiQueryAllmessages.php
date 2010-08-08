@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Dec 1, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Dec 1, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -43,14 +44,11 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		$params = $this->extractRequestParams();
 
 		global $wgLang;
-		
+
 		$oldLang = null;
-		if ( !is_null( $params['lang'] ) && $params['lang'] != $wgLang->getCode() ) {
+		if ( !is_null( $params['lang'] ) ) {
 			$oldLang = $wgLang; // Keep $wgLang for restore later
 			$wgLang = Language::factory( $params['lang'] );
-		} else if ( is_null( $params['lang'] ) ) {
-			// Language not determined by URL but by user preferences, so don't cache
-			$this->getMain()->setVaryCookie();
 		}
 
 		$prop = array_flip( (array)$params['prop'] );
@@ -78,13 +76,17 @@ class ApiQueryAllmessages extends ApiQueryBase {
 		}
 
 		// Get all requested messages and print the result
-		$messages = array();
 		$skip = !is_null( $params['from'] );
+		$useto = !is_null( $params['to'] );
 		$result = $this->getResult();
 		foreach ( $messages_target as $message ) {
 			// Skip all messages up to $params['from']
 			if ( $skip && $message === $params['from'] ) {
 				$skip = false;
+			}
+			
+			if( $useto && $message > $params['to'] ) {
+				break;
 			}
 
 			if ( !$skip ) {
@@ -126,9 +128,22 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			}
 		}
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'message' );
-		
+
 		if ( !is_null( $oldLang ) ) {
 			$wgLang = $oldLang; // Restore $oldLang
+		}
+	}
+
+	public function getCacheMode( $params ) {
+		if ( is_null( $params['lang'] ) ) {
+			// Language not specified, will be fetched from preferences
+			return 'anon-public-user-private';
+		} elseif ( $params['enableparser'] ) {
+			// User-specific parser options will be used
+			return 'anon-public-user-private';
+		} else {
+			// OK to cache
+			return 'public';
 		}
 	}
 
@@ -151,6 +166,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			'filter' => array(),
 			'lang' => null,
 			'from' => null,
+			'to' => null,
 		);
 	}
 
@@ -164,6 +180,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			'filter' => 'Return only messages that contain this string',
 			'lang' => 'Return messages in this language',
 			'from' => 'Return messages starting at this message',
+			'to' => 'Return messages ending at this message',
 		);
 	}
 

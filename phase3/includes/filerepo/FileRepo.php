@@ -258,7 +258,6 @@ abstract class FileRepo {
 	 * Get the name of an image from its title object
 	 */
 	function getNameFromTitle( $title ) {
-		global $wgCapitalLinks;
 		if ( $this->initialCapital != MWNamespace::isCapitalized( NS_FILE ) ) {
 			global $wgContLang;
 			$name = $title->getUserCaseDBKey();
@@ -308,7 +307,7 @@ abstract class FileRepo {
 	 */
 	function makeUrl( $query = '', $entry = 'index' ) {
 		$ext = isset( $this->scriptExtension ) ? $this->scriptExtension : '.php';
-		return wfAppendQuery( "{$this->scriptDirUrl}/{$entry}{$ext}?", $query ); 
+		return wfAppendQuery( "{$this->scriptDirUrl}/{$entry}{$ext}", $query ); 
 	} 
 
 	/**
@@ -379,7 +378,7 @@ abstract class FileRepo {
 	 */
 	function getDescriptionStylesheetUrl() {
 		if ( $this->scriptDirUrl ) {
-			return self::makeUrl( 'title=MediaWiki:Filepage.css&' .
+			return $this->makeUrl( 'title=MediaWiki:Filepage.css&' .
 				wfArrayToCGI( Skin::getDynamicStylesheetQuery() ) );
 		}
 	}

@@ -554,7 +554,6 @@ abstract class DatabaseBase {
 	 * @param $tempIgnore Boolean
 	 */
 	function reportQueryError( $error, $errno, $sql, $fname, $tempIgnore = false ) {
-		global $wgCommandLineMode;
 		# Ignore errors during error handling to avoid infinite recursion
 		$ignore = $this->ignoreErrors( true );
 		++$this->mErrorCount;
@@ -1508,8 +1507,14 @@ abstract class DatabaseBase {
 	 * Escape string for safe LIKE usage.
 	 * WARNING: you should almost never use this function directly,
 	 * instead use buildLike() that escapes everything automatically
+	 * Deprecated in 1.17, warnings in 1.17, removed in ???
 	 */
-	function escapeLike( $s ) {
+	public function escapeLike( $s ) {
+		wfDeprecated( __METHOD__ );
+		return $this->escapeLikeInternal( $s );
+	}
+
+	protected function escapeLikeInternal( $s ) {
 		$s = str_replace( '\\', '\\\\', $s );
 		$s = $this->strencode( $s );
 		$s = str_replace( array( '%', '_' ), array( '\%', '\_' ), $s );
@@ -1525,7 +1530,8 @@ abstract class DatabaseBase {
 	 * for subpages of 'My page title'.
 	 * Alternatively: $pattern = array( 'My_page_title/', $dbr->anyString() ); $query .= $dbr->buildLike( $pattern );
 	 *
-	 * @ return String: fully built LIKE statement
+	 * @since 1.16
+	 * @return String: fully built LIKE statement
 	 */
 	function buildLike() {
 		$params = func_get_args();
@@ -1538,7 +1544,7 @@ abstract class DatabaseBase {
 			if( $value instanceof LikeMatch ) {
 				$s .= $value->toString();
 			} else {
-				$s .= $this->escapeLike( $value );
+				$s .= $this->escapeLikeInternal( $value );
 			}
 		}
 		return " LIKE '" . $s . "' ";
@@ -1872,11 +1878,11 @@ abstract class DatabaseBase {
 		} while( $this->wasDeadlock() && --$tries > 0 );
 		$this->ignoreErrors( $oldIgnore );
 		if ( $tries <= 0 ) {
-			$this->query( 'ROLLBACK', $myFname );
+			$this->rollback( $myFname );
 			$this->reportQueryError( $error, $errno, $sql, $fname );
 			return false;
 		} else {
-			$this->query( 'COMMIT', $myFname );
+			$this->commit( $myFname );
 			return $retVal;
 		}
 	}
@@ -1976,8 +1982,10 @@ abstract class DatabaseBase {
 	 * End a transaction
 	 */
 	function commit( $fname = 'Database::commit' ) {
-		$this->query( 'COMMIT', $fname );
-		$this->mTrxLevel = 0;
+		if( $this->mTrxLevel ) {
+			$this->query( 'COMMIT', $fname );
+			$this->mTrxLevel = 0;
+		}
 	}
 
 	/**
@@ -1985,8 +1993,10 @@ abstract class DatabaseBase {
 	 * No-op on non-transactional databases.
 	 */
 	function rollback( $fname = 'Database::rollback' ) {
-		$this->query( 'ROLLBACK', $fname, true );
-		$this->mTrxLevel = 0;
+		if( $this->mTrxLevel ) {
+			$this->query( 'ROLLBACK', $fname, true );
+			$this->mTrxLevel = 0;
+		}
 	}
 
 	/**
@@ -2354,12 +2364,14 @@ abstract class DatabaseBase {
 	}
 
 	/**
-	 * Get search engine class. Subclasses that don't support a search engine
-	 * should return 'SearchEngineDummy'.
+	 * Get search engine class. All subclasses of this need to implement this
+	 * if they wish to use searching.
 	 *
 	 * @return String
 	 */
-	public abstract function getSearchEngine();
+	public function getSearchEngine() {
+		return 'SearchEngineDummy';
+	}
 
 	/**
 	 * Allow or deny "big selects" for this session only. This is done by setting

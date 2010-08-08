@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on May 10, 2010
- *
  * API for MediaWiki 1.12+
+ *
+ * Created on May 10, 2010
  *
  * Copyright © 2010 Sam Reed
  * Copyright © 2008 Vasiliev Victor vasilvv@gmail.com,
@@ -23,6 +22,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -43,18 +44,16 @@ class ApiQueryFilearchive extends ApiQueryBase {
 
 	public function execute() {
 		global $wgUser;
-		$this->getMain()->setVaryCookie();
 		// Before doing anything at all, let's check permissions
 		if ( !$wgUser->isAllowed( 'deletedhistory' ) ) {
 			$this->dieUsage( 'You don\'t have permission to view deleted file information', 'permissiondenied' );
 		}
-	
+
 		$db = $this->getDB();
 
 		$params = $this->extractRequestParams();
-		
+
 		$prop = array_flip( $params['prop'] );
-		$fld_id = isset( $prop['id'] );
 		$fld_sha1 = isset( $prop['sha1'] );
 		$fld_timestamp = isset( $prop['timestamp'] );
 		$fld_user = isset( $prop['user'] );
@@ -64,9 +63,9 @@ class ApiQueryFilearchive extends ApiQueryBase {
 		$fld_mime = isset( $prop['mime'] );
 		$fld_metadata = isset( $prop['metadata'] );
 		$fld_bitdepth = isset( $prop['bitdepth'] );
-		
+
 		$this->addTables( 'filearchive' );
-		
+
 		$this->addFields( 'fa_name' );
 		$this->addFieldsIf( 'fa_storage_key', $fld_sha1 );
 		$this->addFieldsIf( 'fa_timestamp', $fld_timestamp );
@@ -118,7 +117,6 @@ class ApiQueryFilearchive extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$titles = array();
 		$count = 0;
 		$result = $this->getResult();
 		foreach ( $res as $row ) {
@@ -128,7 +126,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->fa_name ) );
 				break;
 			}
-			
+
 			$file = array();
 			$file['name'] = $row->fa_name;
 
@@ -160,7 +158,7 @@ class ApiQueryFilearchive extends ApiQueryBase {
 			if ( $fld_mime ) {
 				$file['mime'] = "$row->fa_major_mime/$row->fa_minor_mime";
 			}
-			
+
 			$fit = $result->addValue( array( 'query', $this->getModuleName() ), null, $file );
 			if ( !$fit ) {
 				$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->fa_name ) );

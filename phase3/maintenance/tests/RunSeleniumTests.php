@@ -43,12 +43,12 @@ if ( isset( $options['port'] ) ) {
 SeleniumLoader::load();
 
 $result = new PHPUnit_Framework_TestResult;
-$logger = new SeleniumTestConsoleLogger;
-$result->addListener( new SeleniumTestListener( $logger ) );
+$wgSeleniumLogger = new SeleniumTestConsoleLogger;
+$result->addListener( new SeleniumTestListener( $wgSeleniumLogger ) );
 
-$suite = new SeleniumTestSuite;
-foreach ( $wgSeleniumTests as $testClass ) {
-	$suite->addTest( new $testClass );
+foreach ( $wgSeleniumTestSuites as $testSuiteName ) {
+	$suite = new $testSuiteName;
+	$suite->addTests();
+	$suite->run( $result );
 }
-$suite->run( $result );
 

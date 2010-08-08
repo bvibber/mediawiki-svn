@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 19, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 19, 2006
  *
  * Copyright © 2006-2007 Yuri Astrakhan <Firstname><Lastname>@gmail.com,
  * Daniel Cannon (cannon dot danielc at gmail dot com)
@@ -22,6 +21,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -68,9 +69,12 @@ class ApiLogin extends ApiBase {
 		}
 
 		$loginForm = new LoginForm( $req );
+
+		global $wgCookiePrefix;
+
 		switch ( $authRes = $loginForm->authenticateUserData() ) {
 			case LoginForm::SUCCESS:
-				global $wgUser, $wgCookiePrefix;
+				global $wgUser;
 
 				$wgUser->setOption( 'rememberpassword', 1 );
 				$wgUser->setCookies();
@@ -87,15 +91,14 @@ class ApiLogin extends ApiBase {
 				$result['cookieprefix'] = $wgCookiePrefix;
 				$result['sessionid'] = session_id();
 				break;
-			
+
 			case LoginForm::NEED_TOKEN:
-				global $wgCookiePrefix;
 				$result['result'] = 'NeedToken';
 				$result['token'] = $loginForm->getLoginToken();
 				$result['cookieprefix'] = $wgCookiePrefix;
 				$result['sessionid'] = session_id();
 				break;
-			
+
 			case LoginForm::WRONG_TOKEN:
 				$result['result'] = 'WrongToken';
 				break;

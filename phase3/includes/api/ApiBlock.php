@@ -1,8 +1,8 @@
 <?php
-
 /**
- * Created on Sep 4, 2007
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 4, 2007
  *
  * Copyright © 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -20,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -58,9 +60,6 @@ class ApiBlock extends ApiBase {
 			return;
 		}
 
-		if ( is_null( $params['user'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
-		}
 		if ( !$wgUser->isAllowed( 'block' ) ) {
 			$this->dieUsageMsg( array( 'cantblock' ) );
 		}
@@ -135,7 +134,10 @@ class ApiBlock extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'user' => null,
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'token' => null,
 			'gettoken' => false,
 			'expiry' => 'never',
@@ -170,10 +172,9 @@ class ApiBlock extends ApiBase {
 	public function getDescription() {
 		return 'Block a user';
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'user' ),
 			array( 'cantblock' ),
 			array( 'canthide' ),
 			array( 'cantblock-email' ),
@@ -181,7 +182,7 @@ class ApiBlock extends ApiBase {
 			array( 'ipbnounblockself' ),
 		) );
 	}
-	
+
 	public function getTokenSalt() {
 		return '';
 	}

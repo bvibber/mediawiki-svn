@@ -105,7 +105,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 	 * @return String
 	 */
 	public function execute( $par ) {
-		global $wgLang, $wgOut;
+		global $wgOut;
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -295,9 +295,13 @@ class SpecialNewpages extends IncludableSpecialPage {
 		if ( $this->patrollable( $result ) )
 			$classes[] = 'not-patrolled';
 
-		# Tags, if any.
-		list( $tagDisplay, $newClasses ) = ChangeTags::formatSummaryRow( $result->ts_tags, 'newpages' );
-		$classes = array_merge( $classes, $newClasses );
+		# Tags, if any. check for including due to bug 23293
+		if ( !$this->including() ) {
+			list( $tagDisplay, $newClasses ) = ChangeTags::formatSummaryRow( $result->ts_tags, 'newpages' );
+			$classes = array_merge( $classes, $newClasses );
+		} else {
+			$tagDisplay = '';
+		}
 
 		$css = count($classes) ? ' class="'.implode( " ", $classes).'"' : '';
 
@@ -321,16 +325,14 @@ class SpecialNewpages extends IncludableSpecialPage {
 	 * @param $type String
 	 */
 	protected function feed( $type ) {
-		global $wgFeed, $wgFeedClasses, $wgFeedLimit;
+		global $wgFeed, $wgFeedClasses, $wgFeedLimit, $wgOut;
 
 		if ( !$wgFeed ) {
-			global $wgOut;
 			$wgOut->addWikiMsg( 'feed-unavailable' );
 			return;
 		}
 
 		if( !isset( $wgFeedClasses[$type] ) ) {
-			global $wgOut;
 			$wgOut->addWikiMsg( 'feed-invalid' );
 			return;
 		}

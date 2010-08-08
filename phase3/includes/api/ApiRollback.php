@@ -1,10 +1,10 @@
 <?php
-
-/*
- * Created on Jun 20, 2007
+/**
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
+ * Created on Jun 20, 2007
+ *
+ * Copyright © 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -77,8 +79,14 @@ class ApiRollback extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'title' => null,
-			'user' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'token' => null,
 			'summary' => null,
 			'markbot' => false,
@@ -114,8 +122,6 @@ class ApiRollback extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'title' ),
-			array( 'missingparam', 'user' ),
 			array( 'invalidtitle', 'title' ),
 			array( 'notanarticle' ),
 			array( 'invaliduser', 'user' ),
@@ -133,10 +139,6 @@ class ApiRollback extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		if ( !isset( $params['user'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
-		}
-		
 		// We need to be able to revert IPs, but getCanonicalName rejects them
 		$this->mUser = User::isIP( $params['user'] )
 			? $params['user']
@@ -154,9 +156,6 @@ class ApiRollback extends ApiBase {
 		}
 
 		$params = $this->extractRequestParams();
-		if ( !isset( $params['title'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'title' ) );
-		}
 
 		$this->mTitleObj = Title::newFromText( $params['title'] );
 
@@ -166,7 +165,7 @@ class ApiRollback extends ApiBase {
 		if ( !$this->mTitleObj->exists() ) {
 			$this->dieUsageMsg( array( 'notanarticle' ) );
 		}
-		
+
 		return $this->mTitleObj;
 	}
 

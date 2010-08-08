@@ -112,7 +112,7 @@ class Linker {
 			$colour = 'mw-redirect';
 		} elseif ( $threshold > 0 &&
 			   $t->exists() && $t->getLength() < $threshold &&
-			   MWNamespace::isContent( $t->getNamespace() ) ) {
+			   $t->isContentPage() ) {
 			# Page is a stub
 			$colour = 'stub';
 		}
@@ -266,14 +266,10 @@ class Linker {
 				$classes[] = 'extiw';
 			}
 
-			# Note that redirects never count as stubs here.
-			if ( !in_array( 'broken', $options ) && $target->isRedirect() ) {
-				$classes[] = 'mw-redirect';
-			} elseif( $target->isContentPage() ) {
-				# Check for stub.
-				$threshold = $wgUser->getOption( 'stubthreshold' );
-				if( $threshold > 0 and $target->exists() and $target->getLength() < $threshold ) {
-					$classes[] = 'stub';
+			if ( !in_array( 'broken', $options ) ) { # Avoid useless calls to LinkCache (see r50387)
+				$colour = $this->getLinkColour( $target, $wgUser->getStubThreshold() );
+				if ( $colour !== '' ) {
+					$classes[] = $colour; # mw-redirect or stub
 				}
 			}
 			if( $classes != array() ) {
@@ -335,10 +331,13 @@ class Linker {
  	 * @param $trail String
  	 * @param $prefix String
  	 * @return string HTML of link
+ 	 * @deprecated
 	 */
 	function makeSizeLinkObj( $size, $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		global $wgUser;
-		$threshold = intval( $wgUser->getOption( 'stubthreshold' ) );
+		wfDeprecated( __METHOD__ );
+		
+		$threshold = $wgUser->getStubThreshold();
 		$colour = ( $size < $threshold ) ? 'stub' : '';
 		// FIXME: replace deprecated makeColouredLinkObj by link()
 		return $this->makeColouredLinkObj( $nt, $colour, $text, $query, $trail, $prefix );
@@ -434,7 +433,7 @@ class Linker {
 	 * @param $query String: query params for desc url
 	 * @return String: HTML for an image, with links, wrappers, etc.
 	 */
-	function makeImageLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "" ) {
+	function makeImageLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "", $widthOption = null ) {
 		$res = null;
 		if( !wfRunHooks( 'ImageBeforeProduceHTML', array( &$this, &$title,
 		&$file, &$frameParams, &$handlerParams, &$time, &$res ) ) ) {
@@ -468,10 +467,8 @@ class Linker {
 			$hp['width'] = $file->getWidth( $page );
 
 			if( isset( $fp['thumbnail'] ) || isset( $fp['framed'] ) || isset( $fp['frameless'] ) || !$hp['width'] ) {
-				$wopt = $wgUser->getOption( 'thumbsize' );
-
-				if( !isset( $wgThumbLimits[$wopt] ) ) {
-					 $wopt = User::getDefaultOption( 'thumbsize' );
+				if( !isset( $widthOption ) || !isset( $wgThumbLimits[$widthOption] ) ) {
+					 $widthOption = User::getDefaultOption( 'thumbsize' );
 				}
 
 				// Reduce width for upright images when parameter 'upright' is used
@@ -481,8 +478,8 @@ class Linker {
 				// Use width which is smaller: real image width or user preference width
 				// For caching health: If width scaled down due to upright parameter, round to full __0 pixel to avoid the creation of a lot of odd thumbs
 				$prefWidth = isset( $fp['upright'] ) ?
-					round( $wgThumbLimits[$wopt] * $fp['upright'], -1 ) :
-					$wgThumbLimits[$wopt];
+					round( $wgThumbLimits[$widthOption] * $fp['upright'], -1 ) :
+					$wgThumbLimits[$widthOption];
 				if ( $hp['width'] <= 0 || $prefWidth < $hp['width'] ) {
 					if( !isset( $hp['height'] ) ) {
 						$hp['width'] = $prefWidth;
@@ -583,7 +580,7 @@ class Linker {
 	}
 
 	function makeThumbLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "" ) {
-		global $wgStylePath, $wgContLang;
+		global $wgStylePath;
 		$exists = $file && $file->exists();
 
 		# Shortcuts
@@ -684,11 +681,11 @@ class Linker {
 	 * @return String
 	 */
 	public function makeBrokenImageLinkObj( $title, $text = '', $query = '', $trail = '', $prefix = '', $time = false ) {
-		global $wgEnableUploads, $wgUploadNavigationUrl;
+		global $wgEnableUploads, $wgUploadMissingFileUrl;
 		if( $title instanceof Title ) {
 			wfProfileIn( __METHOD__ );
 			$currentExists = $time ? ( wfFindFile( $title ) != false ) : false;
-			if( ( $wgUploadNavigationUrl || $wgEnableUploads ) && !$currentExists ) {
+			if( ( $wgUploadMissingFileUrl || $wgEnableUploads ) && !$currentExists ) {
 				if( $text == '' )
 					$text = htmlspecialchars( $title->getPrefixedText() );
 
@@ -724,13 +721,13 @@ class Linker {
 	 * @return String: urlencoded URL
 	 */
 	protected function getUploadUrl( $destFile, $query = '' ) {
-		global $wgUploadNavigationUrl;
+		global $wgUploadMissingFileUrl;
 		$q = 'wpDestFile=' . $destFile->getPartialUrl();
 		if( $query != '' )
 			$q .= '&' . $query;
 
-		if( $wgUploadNavigationUrl ) {
-			return wfAppendQuery( $wgUploadNavigationUrl, $q );
+		if( $wgUploadMissingFileUrl ) {
+			return wfAppendQuery( $wgUploadMissingFileUrl, $q );
 		} else {
 			$upload = SpecialPage::getTitleFor( 'Upload' );
 			return $upload->getLocalUrl( $q );
@@ -1629,13 +1626,16 @@ class Linker {
 	public function titleAttrib( $name, $options = null ) {
 		wfProfileIn( __METHOD__ );
 
-		$tooltip = wfMsg( "tooltip-$name" );
-		# Compatibility: formerly some tooltips had [alt-.] hardcoded
-		$tooltip = preg_replace( "/ ?\[alt-.\]$/", '', $tooltip );
-
-		# Message equal to '-' means suppress it.
-		if ( wfEmptyMsg( "tooltip-$name", $tooltip ) || $tooltip == '-' ) {
+		if ( wfEmptyMsg( "tooltip-$name" ) ) {
 			$tooltip = false;
+		} else {
+			$tooltip = wfMsg( "tooltip-$name" );
+			# Compatibility: formerly some tooltips had [alt-.] hardcoded
+			$tooltip = preg_replace( "/ ?\[alt-.\]$/", '', $tooltip );
+			# Message equal to '-' means suppress it.
+			if (  $tooltip == '-' ) {
+				$tooltip = false;
+			}
 		}
 
 		if ( $options == 'withaccess' ) {
@@ -1666,18 +1666,20 @@ class Linker {
 	public function accesskey( $name ) {
 		wfProfileIn( __METHOD__ );
 
-		$accesskey = wfMsg( "accesskey-$name" );
-
-		# FIXME: Per standard MW behavior, a value of '-' means to suppress the
-		# attribute, but this is broken for accesskey: that might be a useful
-		# value.
-		if( $accesskey != '' && $accesskey != '-' && !wfEmptyMsg( "accesskey-$name", $accesskey ) ) {
-			wfProfileOut( __METHOD__ );
-			return $accesskey;
+		if ( wfEmptyMsg( "accesskey-$name" ) ) {
+			$accesskey = false;
+		} else {
+			$accesskey = wfMsg( "accesskey-$name" );
+			if ( $accesskey === '' || $accesskey === '-' ) {
+				# FIXME: Per standard MW behavior, a value of '-' means to suppress the
+				# attribute, but this is broken for accesskey: that might be a useful
+				# value.
+				$accesskey = false;
+			}
 		}
 
 		wfProfileOut( __METHOD__ );
-		return false;
+		return $accesskey;
 	}
 
 	/**
@@ -1931,7 +1933,7 @@ class Linker {
 	 * @param $prefix String: Optional prefix
 	 */
 	function makeStubLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		wfDeprecated( __METHOD__ );
+		//wfDeprecated( __METHOD__ );
 		return $this->makeColouredLinkObj( $nt, 'stub', $text, $query, $trail, $prefix );
 	}
 
@@ -1950,6 +1952,7 @@ class Linker {
 	 * @param $prefix String: Optional prefix
 	 */
 	function makeColouredLinkObj( $nt, $colour, $text = '', $query = '', $trail = '', $prefix = '' ) {
+		//wfDeprecated( __METHOD__ );
 		if($colour != ''){
 			$style = $this->getInternalLinkAttributesObj( $nt, $text, $colour );
 		} else $style = '';
@@ -2038,7 +2041,7 @@ class Linker {
 	}
 
 	/**
-	 * Returns the attributes for the tooltip and access key
+	 * Returns the attributes for the tooltip and access key.
 	 */
 	public function tooltipAndAccesskeyAttribs( $name ) {
 		global $wgEnableTooltipsAndAccesskeys;

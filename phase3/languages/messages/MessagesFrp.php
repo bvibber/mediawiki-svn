@@ -322,7 +322,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Apondre les pâges que suprimo a ma lista de survelyence',
 'tog-previewontop'            => 'Montrar la prèvisualisacion en-dessus de la bouèta d’èdicion',
 'tog-previewonfirst'          => 'Montrar la prèvisualisacion pendent la premiére èdicion',
-'tog-nocache'                 => 'Dèsactivar lo cache de les pâges',
+'tog-nocache'                 => 'Dèsactivar lo cache de les pâges per lo navigator',
 'tog-enotifwatchlistpages'    => 'M’avèrtir per mèssageria èlèctronica quand una pâge de ma lista de survelyence est changiê',
 'tog-enotifusertalkpages'     => 'M’avèrtir per mèssageria èlèctronica quand ma pâge de discussion est changiê',
 'tog-enotifminoredits'        => 'M’avèrtir per mèssageria èlèctronica mémo en câs de petiôts changements',
@@ -354,7 +354,7 @@ $messages = array(
 
 # Font style option in Special:Preferences
 'editfont-style'     => 'Stilo de la police de la bouèta d’èdicion :',
-'editfont-default'   => 'Celi per dèfôt du navigator',
+'editfont-default'   => 'Celi du navigator per dèfôt',
 'editfont-monospace' => 'Police monoèspâciê',
 'editfont-sansserif' => 'Police sen empiotament',
 'editfont-serif'     => 'Police avouéc empiotaments',
@@ -432,7 +432,7 @@ $messages = array(
 'mainpagetext'      => "'''MediaWiki at étâ enstalâ avouéc reusséta.'''",
 'mainpagedocfooter' => 'Vêde lo [http://meta.wikimedia.org/wiki/Aide:Contenu guido d’utilisator] por més d’enformacions sur l’usâjo de la programeria vouiqui.
 
-== Dèmarrar avouéc MediaWiki ==
+== Emmodar avouéc MediaWiki ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista des paramètres de configuracion]
 * [http://www.mediawiki.org/wiki/Manual:FAQ/fr FDQ sur MediaWiki]
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de discussion sur les distribucions de MediaWiki]',
@@ -731,6 +731,7 @@ Oubliâd pas de pèrsonalisar voutres [[Special:Preferences|prèferences dessus 
 'gotaccount'                 => "Vos avéd ja un compto ? '''$1'''.",
 'gotaccountlink'             => 'Branchiéd-vos',
 'createaccountmail'          => 'per mèssageria èlèctronica',
+'createaccountreason'        => 'Rêson :',
 'badretype'                  => 'Los mots de pâssa que vos éd buchiês sont pas pariérs.',
 'userexists'                 => 'Lo nom d’utilisator que vos éd buchiê est ja utilisâ.
 Nen volyéd chouèsir un ôtro.',
@@ -1405,7 +1406,7 @@ Vê-que una valor fêta per hasârd que vos pouede utilisar : $1',
 'prefs-custom-css'              => 'CSS pèrsonalisâ',
 'prefs-custom-js'               => 'JavaScript pèrsonalisâ',
 'prefs-common-css-js'           => 'CSS / JS partagiê por tôs los habelyâjos :',
-'prefs-reset-intro'             => 'Vos pouede utilisar ceta pâge por rètablir voutres prèferences a les valors per dèfôt du seto.
+'prefs-reset-intro'             => 'Vos pouede utilisar ceta pâge por rètablir voutres prèferences a les valors du seto per dèfôt.
 Cen pôt pas étre dèfêt.',
 'prefs-emailconfirm-label'      => 'Confirmacion de la mèssageria èlèctronica :',
 'prefs-textboxsize'             => 'Talye de la fenétra d’èdicion',
@@ -1727,7 +1728,7 @@ Por cen fâre vos devréd changiér la pâge a la man.
 [[$1|thumb]]",
 'fileexists-extension'        => "Un fichiér avouéc un nom d’ense ègziste ja : [[$2|thumb]]
 * Nom du fichiér a tèlèchargiér : '''<tt>[[:$1]]</tt>'''
-* Nom du fichiér ègzistent : '''<tt>[[:$2]]</tt>'''  
+* Nom du fichiér ègzistent : '''<tt>[[:$2]]</tt>'''
 Volyéd chouèsir un ôtro nom.",
 'fileexists-thumbnail-yes'    => "Lo fichiér semble étre una émâge en talye rèduita ''(figura)''.
 [[$1|thumb]]
@@ -1745,7 +1746,6 @@ Se vos voléd adés tèlèchargiér voutron fichiér, volyéd tornar arriér et 
 'file-exists-duplicate'       => 'Cél fichiér est un doblo {{PLURAL:$1|de ceti fichiér|de cetos fichiérs}} :',
 'file-deleted-duplicate'      => 'Un fichiér pariér a ceti ([[$1]]) at ja étâ suprimâ.
 Vos devriâd controlar lo jornal de les suprèssions de cél fichiér devant que lo tornar tèlèchargiér.',
-'successfulupload'            => 'Tèlèchargement fêt avouéc reusséta',
 'uploadwarning'               => 'Atencion !',
 'uploadwarning-text'          => 'Changiéd la dèscripcion du fichiér et pués tornâd èprovar.',
 'savefile'                    => 'Sôvar lo fichiér',
@@ -1789,11 +1789,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # de totes sôrtes
   #</pre> <!-- lèssiéd ceta legne justo d’ense -->',
-'upload-successful-msg'       => 'Voutron tèlèchargement est disponiblo ique : $1',
+'upload-success-subj'         => 'Tèlèchargement fêt avouéc reusséta',
+'upload-success-msg'          => 'Voutron tèlèchargement dês [$2] at reussi. Il est disponiblo ique : [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problèmo de tèlèchargement',
 'upload-failure-msg'          => 'Y at avu un problèmo avouéc voutron tèlèchargement :
 
 $1',
+'upload-warning-subj'         => 'Avèrtissement pendent lo tèlèchargement',
+'upload-warning-msg'          => 'Un problèmo est arrevâ pendent voutron tèlèchargement dês [$2]. Vos pouede tornar u [[Special:Upload/stash/$1|formulèro de tèlèchargement]] por trovar la solucion.',
 
 'upload-proto-error'        => 'Protocolo fôx',
 'upload-proto-error-text'   => 'Lo tèlèchargement a distance at fôta des URLs que començont per <code>http://</code> ou ben <code>ftp://</code>.',
@@ -1989,7 +1992,7 @@ Una pâge est trètâ coment una pâge d’homonimia s’encllut (tot drêt ou b
 'doubleredirects'            => 'Redirèccions dobles',
 'doubleredirectstext'        => 'Vê-que la lista de les pâges que redirijont vers des pâges que sont lor-mémes des pâges de redirèccion.
 Châque entrâ contint des lims de vers la premiére et la seconda redirèccion, et pués la premiére legne de tèxto de la seconda pâge, cen que balye habituèlament la « veré » pâge ciba, de vers laquinta la premiére redirèccion devrêt redirigiér.
-Les entrâs <s>barrâs</s> ont étâ solucionâs.',
+Les entrâs <del>barrâs</del> ont étâ solucionâs.',
 'double-redirect-fixed-move' => 'Cela redirèccion, que la ciba [[$1]] at étâ renomâ, mène ora vers [[$2]].',
 'double-redirect-fixer'      => 'Corrèctor de redirèccion',
 
@@ -2030,7 +2033,7 @@ Les entrâs <s>barrâs</s> ont étâ solucionâs.',
 'mostlinked'              => 'Pâges les ples liyês',
 'mostlinkedcategories'    => 'Catègories les ples utilisâs',
 'mostlinkedtemplates'     => 'Modèlos los ples utilisâs',
-'mostcategories'          => 'Pâges utilisent lo més de catègories',
+'mostcategories'          => 'Pâges qu’utilisont lo més de catègories',
 'mostimages'              => 'Fichiérs los ples utilisâs',
 'mostrevisions'           => 'Pâges les ples changiês',
 'prefixindex'             => 'Totes les pâges que començont per...',
@@ -2093,13 +2096,13 @@ Vos pouede rètrendre la vua en chouèséssent un tipo de jornal, un nom d’uti
 'allpagesfrom'      => 'Fâre vêre les pâges dês :',
 'allpagesto'        => 'Fâre vêre les pâges tant qu’a :',
 'allarticles'       => 'Totes les pâges',
-'allinnamespace'    => 'Totes les pâges (dens l’èspâço de noms $1)',
-'allnotinnamespace' => 'Totes les pâges (en defôr de l’èspâço de noms $1)',
+'allinnamespace'    => 'Totes les pâges (dens l’èspâço de noms « $1 »)',
+'allnotinnamespace' => 'Totes les pâges (en defôr de l’èspâço de noms « $1 »)',
 'allpagesprev'      => 'Devant',
 'allpagesnext'      => 'Aprés',
 'allpagessubmit'    => 'Listar',
 'allpagesprefix'    => 'Fâre vêre les pâges que començont per lo prèfixo :',
-'allpagesbadtitle'  => 'Lo titro de la pâge balyê est fôx ou ben at un prèfixo entèrlengoua ou entèrvouiqui resèrvâ.
+'allpagesbadtitle'  => 'Lo titro de la pâge balyê est fôx ou ben il at un prèfixo entèrlengoua ou entèrvouiqui resèrvâ.
 Contint sûrement yon ou ben un mouél de caractèros que pôvont pas étre utilisâs dens los titros.',
 'allpages-bad-ns'   => '{{SITENAME}} at gins d’èspâço de noms « $1 ».',
 
@@ -2520,7 +2523,7 @@ Balyéd ce-desot una rêson justa (per ègzemplo en citent les pâges qu’ont �
 ** Entrebetâ rèpètâ de lims de defôr publicitèros (spame)
 ** Entrebetâ de contegnu sen gins de significacion et d’ècovelyes dens les pâges
 ** Tentativa d’entimidacion ou ben de torment
-** Abus d’usâjo de comptos multiplos
+** Abus d’usâjo d’un mouél de comptos
 ** Nom d’utilisator pas accèptâblo, ofensent ou ben difament',
 'ipbanononly'                     => 'Blocar ren que los utilisators pas encartâs',
 'ipbcreateaccount'                => 'Empachiér la crèacion de compto',
@@ -2714,7 +2717,8 @@ empossiblo de renomar una pâge sur lyé-méma.',
 'immobile-target-namespace-iw' => 'Los lims entèrvouiquis sont pas una ciba valida por los changements de nom.',
 'immobile-source-page'         => 'Cela pâge est pas renomâbla.',
 'immobile-target-page'         => 'Empossiblo de renomar la pâge vers cél titro.',
-'imagenocrossnamespace'        => 'Empossiblo de renomar un fichiér vers un èspâço de noms ôtro que fichiér.',
+'imagenocrossnamespace'        => 'Empossiblo de renomar un fichiér vers un èspâço de noms ôtro que « {{ns:file}} ».',
+'nonfile-cannot-move-to-file'  => 'Empossiblo de renomar quârque-ren d’ôtro qu’un fichiér vers l’èspâço de noms « {{ns:file}} ».',
 'imagetypemismatch'            => 'La novèla èxtension de cél fichiér corrèspond pas a son tipo.',
 'imageinvalidfilename'         => 'Lo nom du fichiér ciba est fôx',
 'fix-double-redirects'         => 'Betar a jorn les redirèccions que pouentont vers lo titro originâl',
@@ -2891,7 +2895,7 @@ Portant, vos en pouede vêre lo tèxto sôrsa.',
 'tooltip-compareselectedversions' => 'Fâre ressortir les difèrences entre doves vèrsions de ceta pâge',
 'tooltip-watch'                   => 'Apondre ceta pâge a voutra lista de survelyence',
 'tooltip-recreate'                => 'Refâre la pâge mémo se ceta at étâ suprimâ',
-'tooltip-upload'                  => 'Dèmarrar lo tèlèchargement',
+'tooltip-upload'                  => 'Emmodar lo tèlèchargement',
 'tooltip-rollback'                => '« Rèvocar » anule en yon clic lo ou ben los changement(s) de ceta pâge per son dèrriér contributor.',
 'tooltip-undo'                    => '« Dèfâre » rèvoque ceti changement et ôvre la fenétra d’èdicion en fôrma de prèvisualisacion.
 Pèrmèt de rètablir la vèrsion devant et pués d’apondre una rêson dens la bouèta de rèsumâ.',
@@ -2944,7 +2948,7 @@ Pèrmèt de rètablir la vèrsion devant et pués d’apondre una rêson dens la
 # Spam protection
 'spamprotectiontitle' => 'Pâge protègiê ôtomaticament a côsa de spame',
 'spamprotectiontext'  => 'La pâge que vos éd tâchiê de sôvar at étâ blocâ per lo filtro anti-spame.
-Cen est probâblament côsâ per un lim dessus lista nêre que pouente vers un seto de defôr.',
+O est probâblament diu a un lim de vers un seto de defôr qu’aparêt sur la lista nêre.',
 'spamprotectionmatch' => "La chêna de caractèros « '''$1''' » at dècllenchiê lo dècelior de spame.",
 'spambot_username'    => 'Neteyâjo de spame per MediaWiki',
 'spam_reverting'      => 'Rètablissement de la dèrriére vèrsion que contint gins de lim de vers $1',

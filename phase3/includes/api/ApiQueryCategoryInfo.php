@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on May 13, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on May 13, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -74,7 +75,6 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 		}
 		$this->addOption( 'ORDER BY', 'cat_title' );
 
-		$db = $this->getDB();
 		$res = $this->select( __METHOD__ );
 
 		$catids = array_flip( $cattitles );
@@ -93,6 +93,10 @@ class ApiQueryCategoryInfo extends ApiQueryBase {
 				break;
 			}
 		}
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

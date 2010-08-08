@@ -1,23 +1,25 @@
 <?php
-# Copyright (C) 2006-2007 Greg Sabino Mullane <greg@turnstep.com>
-# http://www.mediawiki.org/
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-# http://www.gnu.org/copyleft/gpl.html
-
 /**
+ * PostgreSQL search engine
+ *
+ * Copyright © 2006-2007 Greg Sabino Mullane <greg@turnstep.com>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
  * @file
  * @ingroup Search
  */
@@ -134,13 +136,9 @@ class SearchPostgres extends SearchEngine {
 	 * @param $colname
 	 */
 	function searchQuery( $term, $fulltext, $colname ) {
-		global $wgDBversion;
+		$postgresVersion = $this->db->getServerVersion();
 
-		if ( !isset( $wgDBversion ) ) {
-			$this->db->getServerVersion();
-			$wgDBversion = $this->db->numeric_version;
-		}
-		$prefix = $wgDBversion < 8.3 ? "'default'," : '';
+		$prefix = $postgresVersion < 8.3 ? "'default'," : '';
 
 		# Get the SQL fragment for the given term
 		$searchstring = $this->parseQuery( $term );
@@ -167,8 +165,8 @@ class SearchPostgres extends SearchEngine {
 				}
 			}
 
-			$rankscore = $wgDBversion > 8.2 ? 5 : 1;
-			$rank = $wgDBversion < 8.3 ? 'rank' : 'ts_rank';
+			$rankscore = $postgresVersion > 8.2 ? 5 : 1;
+			$rank = $postgresVersion < 8.3 ? 'rank' : 'ts_rank';
 			$query = "SELECT page_id, page_namespace, page_title, ".
 			"$rank($fulltext, to_tsquery($prefix $searchstring), $rankscore) AS score ".
 			"FROM page p, revision r, pagecontent c WHERE p.page_latest = r.rev_id " .

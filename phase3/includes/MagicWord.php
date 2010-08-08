@@ -60,6 +60,7 @@ class MagicWord {
 		'numberofarticles',
 		'numberoffiles',
 		'numberofedits',
+		'articlepath',
 		'sitename',
 		'server',
 		'servername',
@@ -514,7 +515,6 @@ class MagicWordArray {
 	 * Add a magic word by name
 	 */
 	public function add( $name ) {
-		global $wgContLang;
 		$this->names[] = $name;
 		$this->hash = $this->baseRegex = $this->regex = null;
 	}
@@ -657,7 +657,6 @@ class MagicWordArray {
 	 * Both elements are false if there was no match.
 	 */
 	public function matchVariableStartToEnd( $text ) {
-		global $wgContLang;
 		$regexes = $this->getVariableStartToEndRegex();
 		foreach ( $regexes as $regex ) {
 			if ( $regex !== '' ) {

@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on May 14, 2010
- *
  * API for MediaWiki 1.17+
+ *
+ * Created on May 14, 2010
  *
  * Copyright © 2010 Sam Reed
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
@@ -22,6 +21,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -83,7 +84,6 @@ class ApiQueryIWLinks extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 
 		$count = 0;
-		$db = $this->getDB();
 		foreach ( $res as $row ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
@@ -107,6 +107,10 @@ class ApiQueryIWLinks extends ApiQueryBase {
 				break;
 			}
 		}
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function getAllowedParams() {

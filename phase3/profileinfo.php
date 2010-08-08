@@ -1,4 +1,30 @@
 <?php
+/**
+ * Show profiling data.
+ *
+ * Copyright 2005 Kate Turner.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ *
+ * @file
+ */
+
 ini_set( 'zlib.output_compression', 'off' );
 
 $wgEnableProfileInfo = $wgProfileToDatabase = false;
@@ -6,30 +32,6 @@ $wgEnableProfileInfo = $wgProfileToDatabase = false;
 require_once( './includes/WebStart.php' );
 
 ?>
-<!--
-     Show profiling data.
-
-     Copyright 2005 Kate Turner.
-
-     Permission is hereby granted, free of charge, to any person obtaining a copy
-     of this software and associated documentation files (the "Software"), to deal
-     in the Software without restriction, including without limitation the rights
-     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     copies of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
-
-     The above copyright notice and this permission notice shall be included in
-     all copies or substantial portions of the Software.
-
-     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-     SOFTWARE.
-
--->
 <html>
 <head>
 <title>Profiling data</title>
@@ -65,7 +67,8 @@ require_once( './includes/WebStart.php' );
 <?php
 
 if ( !$wgEnableProfileInfo ) {
-	echo "disabled\n";
+	echo "<p>Disabled</p>\n";
+	echo "</body></html>";
 	exit( 1 );
 }
 
@@ -102,7 +105,7 @@ class profile_point {
 		else	$ex = false;
 		if ( !$ex ) {
 			if ( count( $this->children ) ) {
-				$url = makeurl( false, false, $expand + array( $this->name() => true ) );
+				$url = getEscapedProfileUrl( false, false, $expand + array( $this->name() => true ) );
 				$extet = " <a href=\"$url\">[+]</a>";
 			} else $extet = '';
 		} else {
@@ -111,7 +114,7 @@ class profile_point {
 				if ( $name != $this->name() )
 					$e += array( $name => $ep );
 
-			$extet = " <a href=\"" . makeurl( false, false, $e ) . "\">[–]</a>";
+			$extet = " <a href=\"" . getEscapedProfileUrl( false, false, $e ) . "\">[–]</a>";
 		}
 		?>
 		<tr>
@@ -230,31 +233,35 @@ else
 
 <table cellspacing="0" border="1">
 <tr id="top">
-<th><a href="<?php echo makeurl( false, 'name' ) ?>">Name</a></th>
-<th><a href="<?php echo makeurl( false, 'time' ) ?>">Time (%)</a></th>
-<th><a href="<?php echo makeurl( false, 'memory' ) ?>">Memory (%)</a></th>
-<th><a href="<?php echo makeurl( false, 'count' ) ?>">Count</a></th>
-<th><a href="<?php echo makeurl( false, 'calls_per_req' ) ?>">Calls/req</a></th>
-<th><a href="<?php echo makeurl( false, 'time_per_call' ) ?>">ms/call</a></th>
-<th><a href="<?php echo makeurl( false, 'memory_per_call' ) ?>">kb/call</a></th>
-<th><a href="<?php echo makeurl( false, 'time_per_req' ) ?>">ms/req</a></th>
-<th><a href="<?php echo makeurl( false, 'memory_per_req' ) ?>">kb/req</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'name' ) ?>">Name</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'time' ) ?>">Time (%)</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'memory' ) ?>">Memory (%)</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'count' ) ?>">Count</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'calls_per_req' ) ?>">Calls/req</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'time_per_call' ) ?>">ms/call</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'memory_per_call' ) ?>">kb/call</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'time_per_req' ) ?>">ms/req</a></th>
+<th><a href="<?php echo getEscapedProfileUrl( false, 'memory_per_req' ) ?>">kb/req</a></th>
 </tr>
 <?php
 $totaltime = 0.0;
 $totalcount = 0;
 $totalmemory = 0.0;
 
-function makeurl( $_filter = false, $_sort = false, $_expand = false ) {
+function getEscapedProfileUrl( $_filter = false, $_sort = false, $_expand = false ) {
 	global $filter, $sort, $expand;
 
 	if ( $_expand === false )
 		$_expand = $expand;
 
-	$nfilter = $_filter ? $_filter : $filter;
-	$nsort = $_sort ? $_sort : $sort;
-	$exp = urlencode( implode( ',', array_keys( $_expand ) ) );
-	return "?filter=$nfilter&amp;sort=$nsort&amp;expand=$exp";
+	return htmlspecialchars(
+		'?' . 
+		wfArrayToCGI( array(
+			'filter' => $_filter ? $_filter : $filter,
+			'sort' => $_sort ? $_sort : $sort,
+			'expand' => implode( ',', array_keys( $_expand ) ) 
+		) )
+	);
 }
 
 $points = array();

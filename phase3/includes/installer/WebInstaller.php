@@ -1,6 +1,17 @@
 <?php
 
-class WebInstaller extends Installer {
+/**
+ * Class for the core installer web interface.
+ * 
+ * @ingroup Deployment
+ * @since 1.17
+ */
+class WebInstaller extends CoreInstaller {
+	
+	/**
+	 * @var WebInstallerOutput
+	 */
+	public $output;	
 	
 	/**
 	 * WebRequest object.
@@ -16,7 +27,8 @@ class WebInstaller extends Installer {
 	 */
 	public $session;
 
-	/** Captured PHP error text. Temporary.
+	/** 
+	 * Captured PHP error text. Temporary.
 	 */
 	public $phpErrors;
 
@@ -432,28 +444,14 @@ class WebInstaller extends Installer {
 	 * @return string
 	 */
 	public function getAcceptLanguage() {
-		global $wgLanguageCode;
+		global $wgLanguageCode, $wgRequest;
 
 		$mwLanguages = Language::getLanguageNames();
-		$langs = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+		$headerLanguages = array_keys( $wgRequest->getAcceptLang() );
 		
-		foreach ( explode( ';', $langs ) as $splitted ) {
-			foreach ( explode( ',', $splitted ) as $lang ) {
-				$lang = trim( strtolower( $lang ) );
-				
-				if ( $lang == '' || $lang[0] == 'q' ) {
-					continue;
-				}
-				
-				if ( isset( $mwLanguages[$lang] ) ) {
-					return $lang;
-				}
-				
-				$lang = preg_replace( '/^(.*?)(?=-[^-]*)$/', '\\1', $lang );
-				
-				if ( $lang != '' && isset( $mwLanguages[$lang] ) ) {
-					return $lang;
-				}
+		foreach ( $headerLanguages as $lang ) {
+			if ( isset( $mwLanguages[$lang] ) ) {
+				return $lang;
 			}
 		}
 		
@@ -472,8 +470,11 @@ class WebInstaller extends Installer {
 		
 		foreach ( $this->pageSequence as $id => $pageName ) {
 			$happy = !empty( $this->happyPages[$id] );
-			$s .= $this->getPageListItem( $pageName,
-				$happy || $lastHappy == $id - 1, $currentPageName );
+			$s .= $this->getPageListItem( 
+				$pageName,
+				$happy || $lastHappy == $id - 1,
+				$currentPageName
+			);
 				
 			if ( $happy ) {
 				$lastHappy = $id;
@@ -639,6 +640,8 @@ class WebInstaller extends Installer {
 	/**
 	 * Show a short informational message.
 	 * Output looks like a list.
+	 * 
+	 * @param srting $msg
 	 */
 	public function showMessage( $msg /*, ... */ ) {
 		$args = func_get_args();
@@ -647,6 +650,18 @@ class WebInstaller extends Installer {
 			$this->parse( wfMsgReal( $msg, $args, false, false, false ) ) .
 			"</div>\n";
 		$this->output->addHTML( $html );
+	}
+	
+	/**
+	 * @param Status $status
+	 */
+	public function showStatusMessage( Status $status ) {
+		$text = $status->getWikiText();
+		$this->output->addWikiText(
+			"<div class=\"config-message\">\n" .
+			$text .
+			"</div>"
+		);
 	}
 
 	/**
@@ -870,15 +885,6 @@ class WebInstaller extends Installer {
 		}
 	}
 
-	public function showStatusMessage( $status ) {
-		$text = $status->getWikiText();
-		$this->output->addWikiText(
-			"<div class=\"config-message\">\n" .
-			$text .
-			"</div>"
-		);
-	}
-
 	/**
 	 * Convenience function to set variables based on form data.
 	 * Assumes that variables containing "password" in the name are (potentially
@@ -930,9 +936,11 @@ class WebInstaller extends Installer {
 	 */
 	public function getDocUrl( $page ) {
 		$url = "{$_SERVER['PHP_SELF']}?page=" . urlencode( $page );
+		
 		if ( in_array( $this->currentPageName, $this->pageSequence ) ) {
 			$url .= '&lastPage=' . urlencode( $this->currentPageName );
 		}
+		
 		return $url;
 	}
 	

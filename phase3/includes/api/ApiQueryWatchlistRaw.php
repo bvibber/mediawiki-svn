@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Oct 4, 2008
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Oct 4, 2008
  *
  * Copyright © 2008 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -50,7 +51,7 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 
 	private function run( $resultPageSet = null ) {
 		$this->selectNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
-		
+
 		$params = $this->extractRequestParams();
 
 		$user = $this->getWatchlistUser( $params );
@@ -93,7 +94,6 @@ class ApiQueryWatchlistRaw extends ApiQueryGeneratorBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$res = $this->select( __METHOD__ );
 
-		$db = $this->getDB();
 		$titles = array();
 		$count = 0;
 		foreach ( $res as $row ) {

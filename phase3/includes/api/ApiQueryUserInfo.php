@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on July 30, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on July 30, 2007
  *
  * Copyright © 2007 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -40,7 +41,6 @@ class ApiQueryUserInfo extends ApiQueryBase {
 	}
 
 	public function execute() {
-		$this->getMain()->setCachePrivate();
 		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 		$r = array();
@@ -78,7 +78,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 
 		if ( isset( $this->prop['groups'] ) ) {
 			$autolist = ApiQueryUsers::getAutoGroups( $wgUser );
-		
+
 			$vals['groups'] = array_merge( $autolist, $wgUser->getGroups() );
 			$result->setIndexedTagName( $vals['groups'], 'g' );	// even if empty
 		}
@@ -124,7 +124,7 @@ class ApiQueryUserInfo extends ApiQueryBase {
 				$vals['emailauthenticated'] = wfTimestamp( TS_ISO_8601, $auth );
 			}
 		}
-		
+
 		if ( isset( $this->prop['acceptlang'] ) ) {
 			$langs = $wgRequest->getAcceptLang();
 			$acceptLang = array();

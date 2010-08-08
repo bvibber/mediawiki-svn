@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 27, 2008
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 27, 2008
  *
  * Copyright © 2008 Roan Kattow <Firstname>,<Lastname>@home.nl
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -41,6 +42,10 @@ class ApiQueryDuplicateFiles extends ApiQueryGeneratorBase {
 
 	public function execute() {
 		$this->run();
+	}
+
+	public function getCacheMode( $params ) {
+		return 'public';
 	}
 
 	public function executeGenerator( $resultPageSet ) {
@@ -89,7 +94,6 @@ class ApiQueryDuplicateFiles extends ApiQueryGeneratorBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
 		$res = $this->select( __METHOD__ );
-		$db = $this->getDB();
 		$count = 0;
 		$titles = array();
 		foreach ( $res as $row ) {

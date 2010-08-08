@@ -13,7 +13,7 @@
  * @author לערי ריינהארט
  */
 
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+$separatorTransformTable = array( ',' => "\xc2\xa0", '.' => ',' );
 
 $namespaceNames = array(
 	NS_MEDIA            => 'Multimedia',
@@ -152,7 +152,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Adder le paginas que io dele a mi observatorio',
 'tog-previewontop'            => 'Monstrar previsualisation ante le quadro de modification',
 'tog-previewonfirst'          => 'Monstrar previsualisation al prime modification',
-'tog-nocache'                 => "Disactivar le ''cache'' de paginas",
+'tog-nocache'                 => "Disactivar le ''cache'' de paginas in le navigator",
 'tog-enotifwatchlistpages'    => 'Notificar me via e-mail quando un pagina in mi observatorio es modificate',
 'tog-enotifusertalkpages'     => 'Notificar me via e-mail quando mi pagina de discussion es modificate',
 'tog-enotifminoredits'        => 'Notificar me etiam de modificationes minor de paginas',
@@ -560,6 +560,7 @@ Non oblida personalisar tu [[Special:Preferences|preferentias in {{SITENAME}}]].
 'gotaccount'                 => "Tu jam ha un conto? '''$1'''.",
 'gotaccountlink'             => 'Aperi un session',
 'createaccountmail'          => 'per e-mail',
+'createaccountreason'        => 'Motivo:',
 'badretype'                  => 'Le duo contrasignos que tu scribeva non es identic.',
 'userexists'                 => 'Le nomine de usator que tu entrava es ja in uso.
 Selige un altere nomine.',
@@ -630,6 +631,15 @@ Per favor attende ante de probar lo novemente.',
 'loginlanguagelabel'         => 'Lingua: $1',
 'suspicious-userlogout'      => 'Le requesta de clauder le session ha essite refusate proque illo pare haber essite inviate per un navigator o proxy de cache defectuose.',
 
+# JavaScript password checks
+'password-strength'            => 'Estimation del securitate del contrasigno: $1',
+'password-strength-bad'        => 'MAL',
+'password-strength-mediocre'   => 'mediocre',
+'password-strength-acceptable' => 'acceptabile',
+'password-strength-good'       => 'bon',
+'password-retype'              => 'Repete contrasigno hic',
+'password-retype-mismatch'     => 'Le contrasignos non es identic',
+
 # Password reset dialog
 'resetpass'                 => 'Cambiar contrasigno',
 'resetpass_announce'        => 'Tu ha aperite un session con un codice temporari que tu recipeva in e-mail.
@@ -645,7 +655,7 @@ Pro completar le accesso, tu debe definir un nove contrasigno hic:',
 'resetpass-no-info'         => 'Tu debe aperir un session pro poter acceder directemente a iste pagina.',
 'resetpass-submit-loggedin' => 'Cambiar contrasigno',
 'resetpass-submit-cancel'   => 'Cancellar',
-'resetpass-wrong-oldpass'   => 'Le contrasigno temporari o actual es invalide. 
+'resetpass-wrong-oldpass'   => 'Le contrasigno temporari o actual es invalide.
 Es possibile que tu ha ja cambiate tu contrasigno o requestate un nove contrasigno temporari.',
 'resetpass-temp-password'   => 'Contrasigno temporari:',
 
@@ -950,7 +960,7 @@ Como administrator tu pote vider iste diff; il pote haber detalios in le [{{full
 'rev-showdeleted'             => 'monstrar',
 'revisiondelete'              => 'Deler/restaurar versiones',
 'revdelete-nooldid-title'     => 'Le version de destination es invalide',
-'revdelete-nooldid-text'      => 'O tu non ha specificate alcun version(es) de destination pro executar iste 
+'revdelete-nooldid-text'      => 'O tu non ha specificate alcun version(es) de destination pro executar iste
 function, o le version specificate non existe, o tu essaya celar le version actual.',
 'revdelete-nologtype-title'   => 'Typo de registro non specificate',
 'revdelete-nologtype-text'    => 'Tu non ha specificate un typo de registro super le qual iste action debe esser executate.',
@@ -1197,6 +1207,7 @@ Nota que lor indices del contento de {{SITENAME}} pote esser obsolete.',
 'contextlines'                  => 'Lineas per resultato:',
 'contextchars'                  => 'Characteres de contexto per linea:',
 'stub-threshold'                => 'Limite pro formatar le ligamines in <a href="#" class="stub">stilo de peciettas</a> (bytes):',
+'stub-threshold-disabled'       => 'Disactivate',
 'recentchangesdays'             => 'Numero de dies a monstrar in modificationes recente:',
 'recentchangesdays-max'         => '(non plus de $1 {{PLURAL:$1|die|dies}})',
 'recentchangescount'            => 'Numero de modificationes a monstrar per predefinition:',
@@ -1564,7 +1575,6 @@ Si tu vole ancora incargar iste file, per favor retorna e usa un nove nomine. [[
 Si tu vole totevia incargar iste file, per favor retorna e usa un nove nomine. [[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Iste file es un duplicato del sequente {{PLURAL:$1|file|files}}:',
 'file-deleted-duplicate'      => 'Un file identic a iste file ([[$1]]) esseva ja delite anteriormente. Tu deberea verificar le registro de deletiones concernente iste file ante de re-incargar lo.',
-'successfulupload'            => 'Incargamento succedite',
 'uploadwarning'               => 'Advertimento de incargamento',
 'uploadwarning-text'          => 'Per favor modifica le description del file ci infra e reproba.',
 'savefile'                    => 'Salveguardar file',
@@ -1607,11 +1617,14 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- non modificar de alcun modo iste linea -->',
-'upload-successful-msg'       => 'Tu file incargate es disponibile a: $1',
+'upload-success-subj'         => 'Incargamento succedite',
+'upload-success-msg'          => 'Le incargamento de [$2] ha succedite. Illo es disponibile hic: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problema de incargamento',
 'upload-failure-msg'          => 'Il ha occurrite un problema con tu incargamento:
 
 $1',
+'upload-warning-subj'         => 'Advertimento de incargamento',
+'upload-warning-msg'          => 'Occurreva un problema con le incargamento de [$2]. Tu pote retornar al [[Special:Upload/stash/$1|formulario de incargamento]] pro corriger iste problema.',
 
 'upload-proto-error'        => 'Protocollo incorrecte',
 'upload-proto-error-text'   => 'Le incargamento remote require que le adresses URL comencia con <code>http://</code> o <code>ftp://</code>.',
@@ -1806,7 +1819,7 @@ Un pagina se tracta como pagina de disambiguation si illo usa un patrono al qual
 'doubleredirects'            => 'Redirectiones duple',
 'doubleredirectstext'        => 'Iste pagina lista paginas de redirection verso altere paginas de redirection.
 Cata linea contine ligamines al prime e al secunde redirection, con le destination del secunde redirection. Iste es normalmente le "ver" pagina de destination, al qual le prime redirection tamben deberea punctar.
-Le entratas <s>cancellate</s> ha essite resolvite.',
+Le entratas <del>cancellate</del> ha essite resolvite.',
 'double-redirect-fixed-move' => '[[$1]] ha essite renominate, illo es ora un redirection verso [[$2]]',
 'double-redirect-fixer'      => 'Corrector de redirectiones',
 
@@ -2541,7 +2554,8 @@ non pote renominar un pagina al mesme titulo.',
 'immobile-target-namespace-iw' => 'Un ligamine interwiki non es un destination valide pro le renomination de un pagina.',
 'immobile-source-page'         => 'Iste pagina non es renominabile.',
 'immobile-target-page'         => 'Non pote renominar a iste titulo de destination.',
-'imagenocrossnamespace'        => 'Non pote renominar file verso un spatio de nomines non-file',
+'imagenocrossnamespace'        => 'Impossibile renominar un file verso un spatio de nomines non-file',
+'nonfile-cannot-move-to-file'  => 'Impossibile renominar un non-file verso le spatio de nomines file',
 'imagetypemismatch'            => 'Le nove extension del nomine del file non corresponde al typo del file',
 'imageinvalidfilename'         => 'Le nomine del file de destination es invalide',
 'fix-double-redirects'         => 'Actualisar tote le redirectiones que puncta verso le titulo original',

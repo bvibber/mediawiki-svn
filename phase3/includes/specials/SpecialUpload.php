@@ -135,7 +135,7 @@ class SpecialUpload extends SpecialPage {
 	 * Special page entry point
 	 */
 	public function execute( $par ) {
-		global $wgUser, $wgOut, $wgRequest;
+		global $wgUser, $wgOut;
 
 		$this->setHeaders();
 		$this->outputHeader();
@@ -193,6 +193,7 @@ class SpecialUpload extends SpecialPage {
 				wfDebug( "Hook 'UploadForm:initial' broke output of the upload form" );
 				return;
 			}
+			
 
 			$this->showUploadForm( $this->getUploadForm() );
 		}
@@ -415,17 +416,6 @@ class SpecialUpload extends SpecialPage {
 	protected function processUpload() {
 		global $wgUser, $wgOut;
 
-		// Verify permissions
-		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
-		if( $permErrors !== true ) {
-			$wgOut->showPermissionsErrorPage( $permErrors );
-			return;
-		}
-
-		if( $this->mUpload instanceOf UploadFromUrl ) {
-			return $this->showUploadError( wfMsg( 'uploadfromurl-queued' ) );
-		}
-
 		// Fetch the file if required
 		$status = $this->mUpload->fetchFile();
 		if( !$status->isOK() ) {
@@ -436,7 +426,10 @@ class SpecialUpload extends SpecialPage {
 		// Deprecated backwards compatibility hook
 		if( !wfRunHooks( 'UploadForm:BeforeProcessing', array( &$this ) ) ) {
 			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file.\n" );
-			return array( 'status' => UploadBase::BEFORE_PROCESSING );
+			// Return without notifying the user of an error. This sucks, but 
+			// this was the previous behaviour as well, and as this hook is
+			// deprecated we're not going to do anything about it.
+			return;
 		}
 
 
@@ -444,6 +437,15 @@ class SpecialUpload extends SpecialPage {
 		$details = $this->mUpload->verifyUpload();
 		if ( $details['status'] != UploadBase::OK ) {
 			$this->processVerificationError( $details );
+			return;
+		}
+		
+		// Verify permissions for this title
+		$permErrors = $this->mUpload->verifyPermissions( $wgUser );
+		if( $permErrors !== true ) {
+			$code = array_shift( $permErrors[0] );
+			$this->showRecoverableUploadError( wfMsgExt( $code,
+					'parseinline', $permErrors[0] ) );
 			return;
 		}
 
@@ -550,10 +552,6 @@ class SpecialUpload extends SpecialPage {
 				$this->showRecoverableUploadError( wfMsgExt( 'illegalfilename',
 					'parseinline', $details['filtered'] ) );
 				break;
-			case UploadBase::OVERWRITE_EXISTING_FILE:
-				$this->showRecoverableUploadError( wfMsgExt( $details['overwrite'],
-					'parseinline' ) );
-				break;
 			case UploadBase::FILETYPE_MISSING:
 				$this->showRecoverableUploadError( wfMsgExt( 'filetype-missing',
 					'parseinline' ) );
@@ -630,7 +628,7 @@ class SpecialUpload extends SpecialPage {
 	 * @return String: empty string if there is no warning or an HTML fragment
 	 */
 	public static function getExistsWarning( $exists ) {
-		global $wgUser, $wgContLang;
+		global $wgUser;
 
 		if ( !$exists ) {
 			return '';
@@ -878,7 +876,6 @@ class UploadForm extends HTMLForm {
 		global $wgLang, $wgCheckFileExtensions, $wgStrictFileExtensions,
 		$wgFileExtensions, $wgFileBlacklist;
 
-		$allowedExtensions = '';
 		if( $wgCheckFileExtensions ) {
 			if( $wgStrictFileExtensions ) {
 				# Everything not permitted is banned
@@ -1059,6 +1056,7 @@ class UploadForm extends HTMLForm {
 				$this->mDestFile === '',
 			'wgUploadSourceIds' => $this->mSourceIds,
 			'wgStrictFileExtensions' => $wgStrictFileExtensions,
+			'wgCapitalizeUploads' => MWNamespace::isCapitalized( NS_FILE ),
 		);
 
 		$wgOut->addScript( Skin::makeVariablesScript( $scriptVars ) );

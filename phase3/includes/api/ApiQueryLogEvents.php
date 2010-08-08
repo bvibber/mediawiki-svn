@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Oct 16, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Oct 16, 2006
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -55,8 +56,6 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 		$this->fld_details = isset( $prop['details'] );
 		$this->fld_tags = isset( $prop['tags'] );
-
-		list( $tbl_logging, $tbl_page, $tbl_user ) = $db->tableNamesN( 'logging', 'page', 'user' );
 
 		$hideLogs = LogEventsList::getExcludeClause( $db );
 		if ( $hideLogs !== false ) {
@@ -206,7 +205,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 			case 'block':
 				$vals2 = array();
 				list( $vals2['duration'], $vals2['flags'] ) = $params;
-				
+
 				// Indefinite blocks have no expiry time
 				if ( Block::parseExpiryInput( $params[0] ) !== Block::infinity() ) {
 					$vals2['expiry'] = wfTimestamp( TS_ISO_8601,
@@ -242,7 +241,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 				ApiQueryBase::addTitleInfo( $vals, $title );
 			}
 		}
-		
+
 		if ( $this->fld_type || $this->fld_action ) {
 			$vals['type'] = $row->log_type;
 			$vals['action'] = $row->log_action;
@@ -284,7 +283,6 @@ class ApiQueryLogEvents extends ApiQueryBase {
 
 				if ( $this->fld_parsedcomment ) {
 					global $wgUser;
-					$this->getMain()->setVaryCookie();
 					$vals['parsedcomment'] = $wgUser->getSkin()->formatComment( $row->log_comment, $title );
 				}
 			}
@@ -301,6 +299,15 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		}
 
 		return $vals;
+	}
+
+	public function getCacheMode( $params ) {
+		if ( !is_null( $params['prop'] ) && in_array( 'parsedcomment', $params['prop'] ) ) {
+			// formatComment() calls wfMsg() among other things
+			return 'anon-public-user-private';
+		} else {
+			return 'public';
+		}
 	}
 
 	public function getAllowedParams() {

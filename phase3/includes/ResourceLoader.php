@@ -19,6 +19,8 @@
  * @author Trevor Parscal
  */
 
+// FIXME: filesystem access calls in this class need to prepend $IP/ to all paths
+
 /*
  * Dynamic JavaScript and CSS resource loading system
  * 
@@ -249,6 +251,24 @@ class ResourceLoader {
 	public static function getModules() {
 		return self::$modules;
 	}
+	/**
+	 * Get the timestamp at which the module was last modified. This is the
+	 * maximum of the last modification timestamps of its constituent files
+	 * @param $module string Module name
+	 * @return int UNIX timestamp
+	 */
+	public static function getModuleTimestamp( $module ) {
+		$m = self::$modules[$module];
+		$mtime = filemtime( $m['script'] );
+		if ( !is_null( $m['style'] ) ) {
+			$mtime = max( $mtime, filemtime( $m['style'] ) );
+		}
+		if( !is_null( $m['loader'] ) ) {
+			$mtime = max( $mtime, filemtime( $m['loader'] ) );
+		}
+		return $mtime;
+	}
+	
 	/*
 	 * Outputs a response to a resource load-request, including a content-type header
 	 * 

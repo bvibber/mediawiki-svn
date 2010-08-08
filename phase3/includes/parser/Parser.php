@@ -369,7 +369,7 @@ class Parser {
 
 		$text = Sanitizer::normalizeCharReferences( $text );
 
-		if ( ( $wgUseTidy && $this->mOptions->mTidy ) || $wgAlwaysUseTidy ) {
+		if ( ( $wgUseTidy && $this->mOptions->getTidy() ) || $wgAlwaysUseTidy ) {
 			$text = MWTidy::tidy( $text );
 		} else {
 			# attempt to sanitize at least some nesting problems
@@ -411,7 +411,7 @@ class Parser {
 			$PFreport = "Expensive parser function count: {$this->mExpensiveFunctionCount}/$wgExpensiveParserFunctionLimit\n";
 			$limitReport =
 				"NewPP limit report\n" .
-				"Preprocessor node count: {$this->mPPNodeCount}/{$this->mOptions->mMaxPPNodeCount}\n" .
+				"Preprocessor node count: {$this->mPPNodeCount}/{$this->mOptions->getMaxPPNodeCount()}\n" .
 				"Post-expand include size: {$this->mIncludeSizes['post-expand']}/$max bytes\n" .
 				"Template argument size: {$this->mIncludeSizes['arg']}/$max bytes\n".
 				$PFreport;
@@ -491,7 +491,7 @@ class Parser {
 	 * @private
 	 * @static
 	 */
-	function getRandomString() {
+	static function getRandomString() {
 		return dechex( mt_rand( 0, 0x7fffffff ) ) . dechex( mt_rand( 0, 0x7fffffff ) );
 	}
 
@@ -945,7 +945,7 @@ class Parser {
 					$last_tag = array_pop( $last_tag_history );
 
 					if ( array_pop( $td_history ) ) {
-						$previous = "</{$last_tag}>{$previous}";
+						$previous = "</{$last_tag}>\n{$previous}";
 					}
 
 					if ( $first_character === '|' ) {
@@ -2497,7 +2497,7 @@ class Parser {
 	 */
 	function getVariableValue( $index, $frame=false ) {
 		global $wgContLang, $wgSitename, $wgServer, $wgServerName;
-		global $wgScriptPath, $wgStylePath;
+		global $wgArticlePath, $wgScriptPath, $wgStylePath;
 
 		/**
 		 * Some of these require message or data lookups and can be
@@ -2771,6 +2771,8 @@ class Parser {
 			case 'currentversion':
 				$value = SpecialVersion::getVersion();
 				break;
+			case 'articlepath':
+				return $wgArticlePath;
 			case 'sitename':
 				return $wgSitename;
 			case 'server':
@@ -3496,8 +3498,6 @@ class Parser {
 	 * @param $frame PPFrame
 	 */
 	function extensionSubstitution( $params, $frame ) {
-		global $wgRawHtml, $wgContLang;
-
 		$name = $frame->expand( $params['name'] );
 		$attrText = !isset( $params['attr'] ) ? null : $frame->expand( $params['attr'] );
 		$content = !isset( $params['inner'] ) ? null : $frame->expand( $params['inner'] );
@@ -3702,16 +3702,12 @@ class Parser {
 		global $wgMaxTocLevel, $wgContLang, $wgHtml5, $wgExperimentalHtmlIds;
 
 		$doNumberHeadings = $this->mOptions->getNumberHeadings();
-		$showEditLink = $this->mOptions->getEditSection();
-
-		# Do not call quickUserCan unless necessary
-		if ( $showEditLink && !$this->mTitle->quickUserCan( 'edit' ) ) {
-			$showEditLink = 0;
-		}
-
+		
 		# Inhibit editsection links if requested in the page
-		if ( isset( $this->mDoubleUnderscores['noeditsection'] )  || $this->mOptions->getIsPrintable() ) {
+		if ( isset( $this->mDoubleUnderscores['noeditsection'] ) ) {
 			$showEditLink = 0;
+		} else {
+			$showEditLink = $this->mOptions->getEditSection();
 		}
 
 		# Get all headlines for numbering them and adding funky stuff like [edit]
@@ -4781,7 +4777,7 @@ class Parser {
 		wfRunHooks( 'ParserMakeImageParams', array( $title, $file, &$params ) );
 
 		# Linker does the rest
-		$ret = $sk->makeImageLink2( $title, $file, $params['frame'], $params['handler'], $time, $descQuery );
+		$ret = $sk->makeImageLink2( $title, $file, $params['frame'], $params['handler'], $time, $descQuery, $this->mOptions->getThumbSize() );
 
 		# Give the handler a chance to modify the parser object
 		if ( $handler ) {
@@ -5055,15 +5051,10 @@ class Parser {
 	 * @return string
 	 */
 	public function getDefaultSort() {
-		global $wgCategoryPrefixedDefaultSortkey;
 		if ( $this->mDefaultSort !== false ) {
 			return $this->mDefaultSort;
-		} elseif ( $this->mTitle->getNamespace() == NS_CATEGORY ||
-			!$wgCategoryPrefixedDefaultSortkey )
-		{
-			return $this->mTitle->getText();
 		} else {
-			return $this->mTitle->getPrefixedText();
+			return $this->mTitle->getCategorySortkey();
 		}
 	}
 
@@ -5087,6 +5078,21 @@ class Parser {
 		$text = $this->stripSectionName( $text );
 		$text = Sanitizer::normalizeSectionNameWhitespace( $text );
 		return '#' . Sanitizer::escapeId( $text, 'noninitial' );
+	}
+
+	/**
+	 * Same as guessSectionNameFromWikiText(), but produces legacy anchors
+	 * instead.  For use in redirects, since IE6 interprets Redirect: headers
+	 * as something other than UTF-8 (apparently?), resulting in breakage.
+	 *
+	 * @param $text String: The section name
+	 * @return string An anchor
+	 */
+	public function guessLegacySectionNameFromWikiText( $text ) {
+		# Strip out wikitext links(they break the anchor)
+		$text = $this->stripSectionName( $text );
+		$text = Sanitizer::normalizeSectionNameWhitespace( $text );
+		return '#' . Sanitizer::escapeId( $text, array( 'noninitial', 'legacy' ) );
 	}
 
 	/**

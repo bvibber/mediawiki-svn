@@ -1,6 +1,6 @@
 <?php
+
 /**
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -44,36 +44,32 @@ class SpecialVersion extends SpecialPage {
 	 * main()
 	 */
 	function execute( $par ) {
-		global $wgOut, $wgMessageCache, $wgSpecialVersionShowHooks, $wgContLang;
-		$wgMessageCache->loadAllMessages();
-
+		global $wgOut, $wgSpecialVersionShowHooks, $wgContLang;
+		
 		$this->setHeaders();
 		$this->outputHeader();
 
 		$wgOut->addHTML( Xml::openElement( 'div',
 			array( 'dir' => $wgContLang->getDir() ) ) );
 		$text = 
-			$this->MediaWikiCredits() .
+			$this->getMediaWikiCredits() .
 			$this->softwareInformation() .
-			$this->extensionCredits();
+			$this->getExtensionCredits();
 		if ( $wgSpecialVersionShowHooks ) {
-			$text .= $this->wgHooks();
+			$text .= $this->getWgHooks();
 		}
+		
 		$wgOut->addWikiText( $text );
 		$wgOut->addHTML( $this->IPInfo() );
 		$wgOut->addHTML( '</div>' );
 	}
 
-	/**#@+
-	 * @private
-	 */
-
 	/**
-	 * @return wiki text showing the license information
+	 * Returns wiki text showing the license information.
+	 * 
+	 * @return string
 	 */
-	static function MediaWikiCredits() {
-		global $wgContLang;
-
+	private static function getMediaWikiCredits() {
 		$ret = Xml::element( 'h2', array( 'id' => 'mw-version-license' ), wfMsg( 'version-license' ) );
 
 		// This text is always left-to-right.
@@ -107,20 +103,22 @@ class SpecialVersion extends SpecialPage {
 	}
 
 	/**
-	 * @return wiki text showing the third party software versions (apache, php, mysql).
+	 * Returns wiki text showing the third party software versions (apache, php, mysql).
+	 * 
+	 * @return string
 	 */
 	static function softwareInformation() {
 		$dbr = wfGetDB( DB_SLAVE );
 
 		// Put the software in an array of form 'name' => 'version'. All messages should
 		// be loaded here, so feel free to use wfMsg*() in the 'name'. Raw HTML or wikimarkup
-		// can be used
+		// can be used.
 		$software = array();
 		$software['[http://www.mediawiki.org/ MediaWiki]'] = self::getVersionLinked();
 		$software['[http://www.php.net/ PHP]'] = phpversion() . " (" . php_sapi_name() . ")";
 		$software[$dbr->getSoftwareLink()] = $dbr->getServerVersion();
 
-		// Allow a hook to add/remove items
+		// Allow a hook to add/remove items.
 		wfRunHooks( 'SoftwareInfo', array( &$software ) );
 
 		$out = Xml::element( 'h2', array( 'id' => 'mw-version-software' ), wfMsg( 'version-software' ) ) .
@@ -129,17 +127,19 @@ class SpecialVersion extends SpecialPage {
 					<th>" . wfMsg( 'version-software-product' ) . "</th>
 					<th>" . wfMsg( 'version-software-version' ) . "</th>
 				</tr>\n";
+			   
 		foreach( $software as $name => $version ) {
 			$out .= "<tr>
 					<td>" . $name . "</td>
 					<td>" . $version . "</td>
 				</tr>\n";
-		}		
+		}
+		
 		return $out . Xml::closeElement( 'table' );
 	}
 
 	/**
-	 * Return a string of the MediaWiki version with SVN revision if available
+	 * Return a string of the MediaWiki version with SVN revision if available.
 	 *
 	 * @return mixed
 	 */
@@ -167,20 +167,23 @@ class SpecialVersion extends SpecialPage {
 	
 	/**
 	 * Return a wikitext-formatted string of the MediaWiki version with a link to
-	 * the SVN revision if available
+	 * the SVN revision if available.
 	 *
 	 * @return mixed
 	 */
 	public static function getVersionLinked() {
 		global $wgVersion, $IP;
 		wfProfileIn( __METHOD__ );
+		
 		$info = self::getSvnInfo( $IP );
+		
 		if ( isset(  $info['checkout-rev'] ) ) {
 			$linkText = wfMsg(
 				'version-svn-revision',
 				isset( $info['directory-rev'] ) ? $info['directory-rev'] : '',
 				$info['checkout-rev']
 			);
+			
 			if ( isset( $info['viewvc-url'] ) ) {
 				$version = "$wgVersion [{$info['viewvc-url']} $linkText]";
 			} else {
@@ -189,20 +192,22 @@ class SpecialVersion extends SpecialPage {
 		} else {
 			$version = $wgVersion;
 		}
+		
 		wfProfileOut( __METHOD__ );
 		return $version;
 	}
 
 	/**
-	 * Generate wikitext showing extensions name, URL, author and description
+	 * Generate wikitext showing extensions name, URL, author and description.
 	 *
 	 * @return String: Wikitext
 	 */
-	function extensionCredits() {
+	function getExtensionCredits() {
 		global $wgExtensionCredits, $wgExtensionFunctions, $wgParser, $wgSkinExtensionFunctions;
 
-		if ( ! count( $wgExtensionCredits ) && ! count( $wgExtensionFunctions ) && ! count( $wgSkinExtensionFunctions ) )
+		if ( !count( $wgExtensionCredits ) && !count( $wgExtensionFunctions ) && !count( $wgSkinExtensionFunctions ) ) {
 			return '';
+		}
 
 		$extensionTypes = array(
 			'specialpage' => wfMsg( 'version-specialpages' ),
@@ -211,6 +216,7 @@ class SpecialVersion extends SpecialPage {
 			'media' => wfMsg( 'version-mediahandlers' ),
 			'other' => wfMsg( 'version-other' ),
 		);
+		
 		wfRunHooks( 'SpecialVersionExtensionTypes', array( &$this, &$extensionTypes ) );
 
 		$out = Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) ) .
@@ -223,7 +229,7 @@ class SpecialVersion extends SpecialPage {
 				usort( $wgExtensionCredits[$type], array( $this, 'compare' ) );
 
 				foreach ( $wgExtensionCredits[$type] as $extension ) {
-					$out .= $this->formatCredits( $extension );
+					$out .= $this->getCreditsForExtension( $extension );
 				}
 			}
 		}
@@ -249,11 +255,15 @@ class SpecialVersion extends SpecialPage {
 			$out .= $this->openExtType( wfMsg( 'version-skin-extension-functions' ), 'skin-extension-functions' );
 			$out .= '<tr><td colspan="4">' . $this->listToText( $wgSkinExtensionFunctions ) . "</td></tr>\n";
 		}
+		
 		$out .= Xml::closeElement( 'table' );
+		
 		return $out;
 	}
 
-	/** Callback to sort extensions by type */
+	/**
+	 * Callback to sort extensions by type.
+	 */
 	function compare( $a, $b ) {
 		global $wgLang;
 		if( $a['name'] === $b['name'] ) {
@@ -265,8 +275,16 @@ class SpecialVersion extends SpecialPage {
 		}
 	}
 
-	function formatCredits( $extension ) {
+	/**
+	 * Creates and formats the creidts for a single extension and returns this.
+	 * 
+	 * @param $extension Array
+	 * 
+	 * @return string
+	 */
+	function getCreditsForExtension( array $extension ) {
 		$name = isset( $extension['name'] ) ? $extension['name'] : '[no name]';
+		
 		if ( isset( $extension['path'] ) ) {
 			$svnInfo = self::getSvnInfo( dirname($extension['path']) );
 			$directoryRev = isset( $svnInfo['directory-rev'] ) ? $svnInfo['directory-rev'] : null;
@@ -278,12 +296,13 @@ class SpecialVersion extends SpecialPage {
 			$viewvcUrl = null;
 		}
 
-		# Make main link (or just the name if there is no URL)
+		# Make main link (or just the name if there is no URL).
 		if ( isset( $extension['url'] ) ) {
 			$mainLink = "[{$extension['url']} $name]";
 		} else {
 			$mainLink = $name;
 		}
+		
 		if ( isset( $extension['version'] ) ) {
 			$versionText = '<span class="mw-version-ext-version">' . 
 				wfMsg( 'version-version', $extension['version'] ) . 
@@ -292,7 +311,7 @@ class SpecialVersion extends SpecialPage {
 			$versionText = '';
 		}
 
-		# Make subversion text/link
+		# Make subversion text/link.
 		if ( $checkoutRev ) {
 			$svnText = wfMsg( 'version-svn-revision', $directoryRev, $checkoutRev );
 			$svnText = isset( $viewvcUrl ) ? "[$viewvcUrl $svnText]" : $svnText;
@@ -300,11 +319,13 @@ class SpecialVersion extends SpecialPage {
 			$svnText = false;
 		}
 
-		# Make description text
+		# Make description text.
 		$description = isset ( $extension['description'] ) ? $extension['description'] : '';
+		
 		if( isset ( $extension['descriptionmsg'] ) ) {
-			# Look for a localized description
+			# Look for a localized description.
 			$descriptionMsg = $extension['descriptionmsg'];
+			
 			if( is_array( $descriptionMsg ) ) {
 				$descriptionMsgKey = $descriptionMsg[0]; // Get the message key
 				array_shift( $descriptionMsg ); // Shift out the message key to get the parameters only
@@ -326,19 +347,21 @@ class SpecialVersion extends SpecialPage {
 			$extNameVer = "<tr>
 				<td colspan=\"2\"><em>$mainLink $versionText</em></td>";
 		}
+		
 		$author = isset ( $extension['author'] ) ? $extension['author'] : array();
 		$extDescAuthor = "<td>$description</td>
 			<td>" . $this->listToText( (array)$author, false ) . "</td>
 			</tr>\n";
+		
 		return $extNameVer . $extDescAuthor;
 	}
 
 	/**
-	 * Generate wikitext showing hooks in $wgHooks
+	 * Generate wikitext showing hooks in $wgHooks.
 	 *
 	 * @return String: wikitext
 	 */
-	function wgHooks() {
+	private function getWgHooks() {
 		global $wgHooks;
 
 		if ( count( $wgHooks ) ) {
@@ -371,32 +394,35 @@ class SpecialVersion extends SpecialPage {
 		if( !$this->firstExtOpened ) {
 			// Insert a spacing line
 			$out .= '<tr class="sv-space">' . Html::element( 'td', $opt ) . "</tr>\n";
+			$this->firstExtOpened = true;
 		}
-		$this->firstExtOpened = false;
 
-		if( $name )
+		if( $name ) {
 			$opt['id'] = "sv-$name";
+		}
 
 		$out .= "<tr>" . Xml::element( 'th', $opt, $text ) . "</tr>\n";
+		
 		return $out;
 	}
 
 	/**
-	 * Get information about client's IP address
+	 * Get information about client's IP address.
 	 *
 	 * @return String: HTML fragment
 	 */
-	function IPInfo() {
+	private function IPInfo() {
 		$ip =  str_replace( '--', ' - ', htmlspecialchars( wfGetIP() ) );
 		return "<!-- visited from $ip -->\n" .
 			"<span style='display:none'>visited from $ip</span>";
 	}
 
 	/**
-	 * Convert an array of items into a list for display
+	 * Convert an array of items into a list for display.
 	 *
 	 * @param $list Array of elements to display
 	 * @param $sort Boolean: whether to sort the items in $list
+	 * 
 	 * @return String
 	 */
 	function listToText( $list, $sort = true ) {
@@ -417,10 +443,11 @@ class SpecialVersion extends SpecialPage {
 	}
 
 	/**
-	 * Convert an array or object to a string for display
+	 * Convert an array or object to a string for display.
 	 *
 	 * @param $list Mixed: will convert an array to string if given and return
 	 *              the paramater unaltered otherwise
+	 *              
 	 * @return Mixed
 	 */
 	static function arrayToString( $list ) {
@@ -490,30 +517,35 @@ class SpecialVersion extends SpecialPage {
 					}
 				}
 			}
+			
 			return false;
 		}
 
-		// subversion is release 1.4 or above
+		// Subversion is release 1.4 or above.
 		if ( count( $lines ) < 11 ) {
 			return false;
 		}
+		
 		$info = array(
 			'checkout-rev' => intval( trim( $lines[3] ) ),
 			'url' => trim( $lines[4] ),
 			'repo-url' => trim( $lines[5] ),
 			'directory-rev' => intval( trim( $lines[10] ) )
 		);
+		
 		if ( isset( self::$viewvcUrls[$info['repo-url']] ) ) {
 			$viewvc = str_replace( 
 				$info['repo-url'], 
 				self::$viewvcUrls[$info['repo-url']],
 				$info['url']
 			);
+			
 			$pathRelativeToRepo = substr( $info['url'], strlen( $info['repo-url'] ) );
 			$viewvc .= '/?pathrev=';
 			$viewvc .= urlencode( $info['checkout-rev'] );
 			$info['viewvc-url'] = $viewvc;
 		}
+		
 		return $info;
 	}
 
@@ -521,10 +553,12 @@ class SpecialVersion extends SpecialPage {
 	 * Retrieve the revision number of a Subversion working directory.
 	 *
 	 * @param $dir String: directory of the svn checkout
+	 * 
 	 * @return Integer: revision number as int
 	 */
 	public static function getSvnRevision( $dir ) {
 		$info = self::getSvnInfo( $dir );
+		
 		if ( $info === false ) {
 			return false;
 		} elseif ( isset( $info['checkout-rev'] ) ) {
@@ -534,5 +568,4 @@ class SpecialVersion extends SpecialPage {
 		}
 	}
 
-	/**#@-*/
 }

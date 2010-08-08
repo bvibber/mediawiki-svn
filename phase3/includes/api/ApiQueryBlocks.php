@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 10, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 10, 2007
  *
  * Copyright © 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -60,9 +61,6 @@ class ApiQueryBlocks extends ApiQueryBase {
 		$fld_flags = isset( $prop['flags'] );
 
 		$result = $this->getResult();
-		$pageSet = $this->getPageSet();
-		$titles = $pageSet->getTitles();
-		$data = array();
 
 		$this->addTables( 'ipblocks' );
 		$this->addFields( 'ipb_auto' );
@@ -127,9 +125,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 				'ipb_auto' => 0
 			) );
 		}
-		
-		// Make sure private data (deleted blocks) isn't cached
-		$this->getMain()->setVaryCookie();
+
 		if ( !$wgUser->isAllowed( 'hideuser' ) ) {
 			$this->addWhereFld( 'ipb_deleted', 0 );
 		}
