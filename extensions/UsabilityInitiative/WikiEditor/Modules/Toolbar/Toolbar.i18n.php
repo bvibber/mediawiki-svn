@@ -44,7 +44,8 @@ $messages['en'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'External link',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Checking page existence...',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'The title you specified is invalid.',
-	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'The URL you specified looks like it was intended as a link to another wiki page. Do you want to make it an internal link?',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'The URL you specified looks like it was intended as a link to another wiki page.
+Do you want to make it an internal link?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Internal link',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'External link',
 	'wikieditor-toolbar-tool-link-empty' => "You did not enter anything to link to.",
