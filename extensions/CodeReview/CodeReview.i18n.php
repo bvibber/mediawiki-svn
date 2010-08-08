@@ -9934,6 +9934,7 @@ URL链接：$3
 提交摘要：
 
 $4',
+	'code-stats' => '统计',
 	'repoadmin' => '储存库管理',
 	'repoadmin-new-legend' => '建立新的储存库',
 	'repoadmin-new-label' => '储存库名称：',

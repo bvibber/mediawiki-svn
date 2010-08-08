@@ -391,7 +391,7 @@ $messages['ksh'] = array(
 	'multiboilerplate-submit' => 'Donn et Enndraare!',
 	'boilerplates' => 'Müjjelesche Vörlare',
 	'multiboilerplate-special-pagetext' => 'Di Vörlare künne beim neu Sigge Aanlääje en di Sigg jetrocke wäde (<span class=plainlinks>[{{fullurl:Jung, di Sigg jidd_et noch jaa nit!|action=edit}} e Beishpell]</span>)',
-	'multiboilerplate-special-define-in-localsettings' => 'De Vörlare wäde en dä Dattei <code lang="en">LocalSettings.php</code> om ßööver enjeschtallt.',
+	'multiboilerplate-special-define-in-localsettings' => 'De Vörlare wäde en dä Dattei <code lang="en">LocalSettings.php</code> om ẞööver enjeschtallt.',
 	'multiboilerplate-special-define-in-interface' => 'De Vörlare wäde op dä Sigg [[MediaWiki:Multiboilerplate]] enjeschtallt.',
 );
 

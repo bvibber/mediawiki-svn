@@ -2678,6 +2678,7 @@ Anda tidak akan dapat masuk log tanpa OpenID.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'openidoptional' => 'I cho, ka I chogị',
 	'openidchoosepassword' => 'Okwúngáfè:',
 	'openid-urls-delete' => 'Gbakashia',
 );
@@ -3179,6 +3180,12 @@ Ohne <i lang="en">OpenID</i> künnts De nit mieh enlogge.',
 	'openid-provider-label-other-username' => 'Donn Dinge Metmaachername vun $1 aanjevve',
 );
 
+/** Kurdish (Latin) (Kurdî (Latin)) */
+$messages['ku-latn'] = array(
+	'openidlanguage' => 'Ziman',
+	'openidtimezone' => 'Navçeya demê',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Les Meloures
  * @author Robby
@@ -3473,6 +3480,7 @@ $messages['mr'] = array(
 	'openidfullname' => 'पूर्णनाव',
 	'openidemail' => 'इमेल पत्ता',
 	'openidlanguage' => 'भाषा',
+	'openidtimezone' => 'वेळक्षेत्र',
 	'openidchooseinstructions' => 'सर्व सदस्यांना टोपणनाव असणे आवश्यक आहे;
 तुम्ही खाली दिलेल्या नावांमधून एक निवडू शकता.',
 	'openidchoosefull' => 'तुमचे पूर्ण नाव ($1)',
@@ -3480,6 +3488,7 @@ $messages['mr'] = array(
 	'openidchooseauto' => 'एक आपोआप तयार झालेले नाव ($1)',
 	'openidchoosemanual' => 'तुमच्या आवडीचे नाव:',
 	'openidchooseexisting' => 'या विकिवरील अस्तित्वात असलेले सदस्य खाते:',
+	'openidchooseusername' => 'सदस्यनाम:',
 	'openidchoosepassword' => 'परवलीचा शब्द:',
 	'openidconvertinstructions' => 'हा अर्ज तुम्हाला ओपनID URL वापरण्यासाठी तुमचे सदस्यनाव बदलण्याची परवानगी देतो.',
 	'openidconvertsuccess' => 'ओपनID मध्ये बदल पूर्ण झालेले आहेत',
@@ -3507,7 +3516,9 @@ $messages['mr'] = array(
 ; [http://openid.yahoo.com/ याहू!] : जर तुमच्याकडे याहू! चे खाते असेल, तर तुम्ही वरील पृष्ठपेटीमध्ये याहू! ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. याहू! ओपनID URL ची रुपरेषा ''<nowiki>https://me.yahoo.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे.
 ; [http://dev.aol.com/aol-and-63-million-openids एओएल] : जर तुमच्याकडे [http://www.aol.com/ एओएल]चे खाते असेल, जसे की [http://www.aim.com/ एम] खाते, तुम्ही {{SITENAME}} वर वरील पृष्ठपेटीमध्ये एओएल ने दिलेल्या ओपनID चा वापर करून प्रवेश करू शकता. एओएल ओपनID URL ची रुपरेषा ''<nowiki>http://openid.aol.com/तुमचेसदस्यनाव</nowiki>'' अशी आहे. तुमच्या सदस्यनावात अंतर (space) चालणार नाही.
 ; [http://bloggerindraft.blogspot.com/2008/01/new-feature-blogger-as-openid-provider.html ब्लॉगर], [http://faq.wordpress.com/2007/03/06/what-is-openid/ वर्डप्रेस.कॉम], [http://www.livejournal.com/openid/about.bml लाईव्ह जर्नल], [http://bradfitz.vox.com/library/post/openid-for-vox.html वॉक्स] : जर यापैकी कुठेही तुमचा ब्लॉग असेल, तर वरील पृष्ठपेटीमध्ये तुमच्या ब्लॉगची URL भरा. उदाहरणार्थ, ''<nowiki>http://yourusername.blogspot.com/</nowiki>'', ''<nowiki>http://yourusername.wordpress.com/</nowiki>'', ''<nowiki>http://yourusername.livejournal.com/</nowiki>'', किंवा ''<nowiki>http://yourusername.vox.com/</nowiki>''.",
+	'openiddelete-button' => 'खात्री करा',
 	'openid-pref-hide' => 'जर तुम्ही ओपनID वापरून प्रवेश केला, तर तुमच्या सदस्यपानावरील तुमचा ओपनID लपवा.',
+	'openid-urls-delete' => 'वगळा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -3583,6 +3594,13 @@ $messages['nah'] = array(
 	'openidemail' => 'E-mailcān',
 	'openidlanguage' => 'Tlahtōlli',
 	'openidchoosepassword' => 'tlahtōlichtacāyōtl:',
+);
+
+/** Nepali (नेपाली) */
+$messages['ne'] = array(
+	'openidemail' => 'इमेल ठेगाना',
+	'openidlanguage' => 'भाषा',
+	'openidtimezone' => 'समय क्षेत्र',
 );
 
 /** Dutch (Nederlands)
@@ -4189,6 +4207,8 @@ $messages['ps'] = array(
 	'openidchoosepassword' => 'پټنوم:',
 	'openidnousername' => 'هېڅ يو کارن-نوم نه دی ځانګړی شوی.',
 	'openidbadusername' => 'يو ناسم کارن-نوم مو ځانګړی کړی.',
+	'openiddelete-button' => 'تاييد',
+	'openid-urls-action' => 'چاره',
 	'openid-urls-delete' => 'ړنګول',
 	'openidsigninorcreateaccount' => 'ننوتل او يا نوی کارن-حساب جوړول',
 	'openid-provider-label-google' => 'د Google د کارن-حساب په مرسته ننوتل',
@@ -5125,6 +5145,11 @@ Du skulle inte kunna logga in utan ett OpenID.',
 	'openid-provider-label-yahoo' => 'Logga in genom att använda ditt Yahoo-konto',
 	'openid-provider-label-aol' => 'Skriv in ditt AOL-skärmnamn',
 	'openid-provider-label-other-username' => 'Skriv in ditt $1-användarnamn',
+);
+
+/** Tamil (தமிழ்) */
+$messages['ta'] = array(
+	'openidrequired' => 'தேவைபடுகிறது',
 );
 
 /** Telugu (తెలుగు)

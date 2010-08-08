@@ -2097,6 +2097,11 @@ $messages['ug-latn'] = array(
 	'imagetagging-article' => 'Bet:',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'imagetagging-tagcancel-button' => 'منسوخ',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

@@ -48,11 +48,14 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Dre ziouer',
+	'categorymultisort-sortkey' => "Alc'hwez didoueziañ:",
 	'categorymultisort-go' => 'Mont',
+	'categorymultisort-default-sortkey' => "Alc'hwez didouezañ dre ziouer:",
 	'prefs-category' => 'Rummad',
 );
 

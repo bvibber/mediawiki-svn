@@ -300,6 +300,7 @@ $messages['bg'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -321,6 +322,7 @@ $messages['br'] = array(
 	'importxml' => 'Enporzhiañ  XML',
 	'dt_import_selectfile' => 'Dibabit ar restr $1 da enporzhiañ :',
 	'dt_import_encodingtype' => 'Seurt enkodadur',
+	'dt_import_summarydesc' => 'Diverradenn an enporzh:',
 	'dt_import_editsummary' => 'Enporzhiadur $1',
 	'dt_import_importing' => "Oc'h enporzhiañ...",
 	'dt_import_success' => '$1 {{PLURAL:$1|bajenn|pajenn}} a vo krouet diwar ar restr $2.',

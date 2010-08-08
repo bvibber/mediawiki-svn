@@ -673,6 +673,11 @@ $messages['tr'] = array(
 	'mwe-cancel' => 'İptal',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'mwe-cancel' => 'منسوخ',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

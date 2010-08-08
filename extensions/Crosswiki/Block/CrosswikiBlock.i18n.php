@@ -2168,7 +2168,7 @@ Artorna a:
 $messages['ps'] = array(
 	'crosswikiblock-expiry' => 'د پای نېټه:',
 	'crosswikiblock-reason' => 'سبب:',
-	'crosswikiblock-submit' => 'پدې کارن بنديز لګول',
+	'crosswikiblock-submit' => 'په دې کارن بنديز لګول',
 	'crosswikiunblock-reason' => 'سبب:',
 );
 
@@ -2849,6 +2849,12 @@ $messages['uk'] = array(
 	'crosswikiblock-reason' => 'Причина:',
 	'crosswikiblock-submit' => 'Заблокувати цього користувача',
 	'crosswikiunblock-reason' => 'Причина:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'crosswikiblock-reason' => 'وجہ:',
+	'crosswikiunblock-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

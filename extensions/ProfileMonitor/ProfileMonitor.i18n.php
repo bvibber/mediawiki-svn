@@ -803,6 +803,7 @@ $messages['ps'] = array(
 	'profiling-data-process' => 'پروسه',
 	'profiling-data-count' => 'شمېرل',
 	'profiling-data-time' => 'وخت (ټول)',
+	'profiling-data-average' => 'وخت (منځالی)',
 );
 
 /** Portuguese (Português)

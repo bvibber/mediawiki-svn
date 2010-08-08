@@ -417,6 +417,7 @@ $messages['be-tarask'] = array(
 	'prefswitch-survey-true' => 'Так',
 	'prefswitch-survey-false' => 'Не',
 	'prefswitch-survey-submit-off' => 'Выключыць новыя магчымасьці',
+	'prefswitch-survey-submit-global-off' => 'Выключыць новыя магчымасьці ва ўсіх разьдзелах',
 	'prefswitch-survey-cancel-off' => 'Калі Вы жадаеце працягваць выкарыстаньне новых магчымасьцяў, Вы можаце вярнуцца да $1.',
 	'prefswitch-survey-submit-feedback' => 'Даслаць водгук',
 	'prefswitch-survey-cancel-feedback' => 'Калі Вы не жадаеце дасылаць водгук, Вы можаце вярнуцца да $1.',
@@ -604,13 +605,14 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Gwendal
  * @author Kouign-amann
  * @author Y-M D
  */
 $messages['br'] = array(
 	'prefswitch' => 'Cheñch dibaboù an intrudu implijadusted',
 	'prefswitch-desc' => "Talvezout a ra d'an implijerien da cheñch an holl benndibaboù",
-	'prefswitch-jswarning' => "Da-heul ar c'hemm neuz, ho [[User:$1/$2.js|JavaScript $2]] a rank bezañ kopiet davet [[User:$1/vector.js]] <!-- pe [[User:$1/common.js]]--> evit gellout kenderc'hel da vont en-dro.",
+	'prefswitch-jswarning' => "Da-heul ar c'hemm neuz, ho [[User:$1/$2.js|$2 JavaScript]] a rank bezañ kopiet davet [[{{ns:user}}:$1/vector.js]] <!-- pe [[{{ns:user}}:$1/common.js]]--> evit gellout kenderc'hel da vont en-dro.",
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nann',
 	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
@@ -1337,6 +1339,7 @@ $messages['dsb'] = array(
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Ně',
 	'prefswitch-survey-submit-off' => 'Nowe funkcije wótšaltowaś',
+	'prefswitch-survey-submit-global-off' => 'Nowe funkcije na wšych wikijach znjemóžniś',
 	'prefswitch-survey-cancel-off' => 'Jolic coš nowe funkcije dalej wužywaś, móžoš se k $1 wrośiś.',
 	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłaś',
 	'prefswitch-survey-cancel-feedback' => 'Jolic njocoš měnjenje pósłaś, móžoš se do $1 wrośiś.',
@@ -1621,6 +1624,7 @@ $messages['es'] = array(
 	'prefswitch-survey-true' => 'Sí',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Desactivar las nuevas características',
+	'prefswitch-survey-submit-global-off' => 'Deshabilitar nuevas características en todos los wikis',
 	'prefswitch-survey-cancel-off' => 'Si desea continuar utilizando las nuevas características puede volver a $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentario',
 	'prefswitch-survey-cancel-feedback' => 'Si no desea enviar sus comentarios puede volver a $1.',
@@ -2554,6 +2558,7 @@ $messages['hsb'] = array(
 	'prefswitch-survey-true' => 'Haj',
 	'prefswitch-survey-false' => 'Ně',
 	'prefswitch-survey-submit-off' => 'Nowe funkcije wupinyć',
+	'prefswitch-survey-submit-global-off' => 'Nowe funkcije na wšěch wikijach znjemóžnić',
 	'prefswitch-survey-cancel-off' => 'Jeli by rady nowe funkcije dale wužiwał, móžeš so k $1 wróćić.',
 	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłać',
 	'prefswitch-survey-cancel-feedback' => 'Jeli nochceš měnjenje dodać, móžeš so do $1 wróćić.',
@@ -2734,6 +2739,7 @@ $messages['ia'] = array(
 	'prefswitch-survey-true' => 'Si',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disactivar le nove functiones',
+	'prefswitch-survey-submit-global-off' => 'Disactivar nove functionalitate in tote le wikis',
 	'prefswitch-survey-cancel-off' => 'Si tu vole continuar a usar le nove functiones, tu pote retornar a $1.',
 	'prefswitch-survey-submit-feedback' => 'Dar nos tu opinion',
 	'prefswitch-survey-cancel-feedback' => 'Si tu non vole dar nos tu opinion, tu pote retornar a $1.',
@@ -2926,6 +2932,7 @@ $messages['io'] = array(
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Blaisorblade
  * @author Nemo bis
  * @author Una giornata uggiosa '94
  */
@@ -2937,6 +2944,7 @@ $messages['it'] = array(
 	'prefswitch-survey-true' => 'Sì',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Disattiva le nuove funzioni',
+	'prefswitch-survey-submit-global-off' => 'Attiva nuove caratteristiche su tutti i wiki',
 	'prefswitch-survey-cancel-off' => 'Se vuoi continuare ad usare le nuove funzioni, puoi tornare a $1.',
 	'prefswitch-survey-submit-feedback' => 'Invia feedback',
 	'prefswitch-survey-cancel-feedback' => 'Se non vuoi fornire un feedback, puoi tornare a $1.',
@@ -3426,6 +3434,7 @@ $messages['lb'] = array(
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Neen',
 	'prefswitch-survey-submit-off' => 'Déi nei Fonctiounen ausschalten',
+	'prefswitch-survey-submit-global-off' => 'Nei Fonctiounen op alle Wikien ausschalten',
 	'prefswitch-survey-cancel-off' => 'Wann Dir déi nei Fonctioune weiderbenotze wëllt, kënnt Dir op $1 zeréckgoen.',
 	'prefswitch-survey-submit-feedback' => 'Schéckt eis Är Meenung',
 	'prefswitch-survey-cancel-feedback' => 'Wann Dir Är Reaktioun net wëllt matdeelen da kënnt dir op $1 zeréckgoen.',
@@ -3524,6 +3533,7 @@ $messages['mk'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
 	'prefswitch-survey-submit-off' => 'Исклучи нови функции',
+	'prefswitch-survey-submit-global-off' => 'Исклучи нови можности на сите викија',
 	'prefswitch-survey-cancel-off' => 'Ако сакате да продолжите со користење на новите функции, можете да се вратите на $1.',
 	'prefswitch-survey-submit-feedback' => 'Ваши примедби',
 	'prefswitch-survey-cancel-feedback' => 'Ако не сакате да искажете примедби, можете да се вратите на $1.',
@@ -3927,6 +3937,7 @@ U kunt de CSS-stijlen voor Vector aanpassen in de pagina [[{{ns:user}}:$1/vector
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-submit-off' => 'Nieuwe mogelijkheden uitschakelen',
+	'prefswitch-survey-submit-global-off' => "Nieuwe mogelijkheden in alle wiki's uitschakelen",
 	'prefswitch-survey-cancel-off' => 'Als u de nieuwe mogelijkheden wilt blijven gebruiken, kunt u terugkeren naar $1',
 	'prefswitch-survey-submit-feedback' => 'Terugkoppeling geven',
 	'prefswitch-survey-cancel-feedback' => 'Als u geen terugkoppeling wilt geven, kunt u teruggaan naar $1.',
@@ -4095,6 +4106,7 @@ For å hjelpa oss med å betra dei, fyll gjerne ut den valfrie undersøkinga und
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Laaknor
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -4105,6 +4117,7 @@ $messages['no'] = array(
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nei',
 	'prefswitch-survey-submit-off' => 'Slå av nye funksjoner',
+	'prefswitch-survey-submit-global-off' => 'Slå av nye funksjoner på alle wikier',
 	'prefswitch-survey-cancel-off' => 'Om du vil fortsette å bruke de nye funksjonene kan du gå tilbake til $1.',
 	'prefswitch-survey-submit-feedback' => 'Send tilbakemelding',
 	'prefswitch-survey-cancel-feedback' => 'Hvis du ikke ønsker å gi tilbakemelding kan du gå tilbake til $1.',
@@ -4195,6 +4208,7 @@ $messages['pdc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Leinad
  * @author Nux
  * @author Saper
  * @author Sp5uhe
@@ -4207,6 +4221,7 @@ $messages['pl'] = array(
 	'prefswitch-survey-true' => 'Tak',
 	'prefswitch-survey-false' => 'Nie',
 	'prefswitch-survey-submit-off' => 'Wyłącz nowe funkcje',
+	'prefswitch-survey-submit-global-off' => 'Wyłącz nowe funkcje we wszystkich projektach wiki',
 	'prefswitch-survey-cancel-off' => 'Jeśli chcesz nadal korzystać z nowych funkcji, możesz powrócić do $1.',
 	'prefswitch-survey-submit-feedback' => 'Wyślij opinię',
 	'prefswitch-survey-cancel-feedback' => 'Jeśli nie chcesz przesłać swojej opinii, możesz powrócić do $1.',
@@ -4406,6 +4421,7 @@ $messages['pt'] = array(
 	'prefswitch-survey-true' => 'Sim',
 	'prefswitch-survey-false' => 'Não',
 	'prefswitch-survey-submit-off' => 'Desligar as funcionalidades novas',
+	'prefswitch-survey-submit-global-off' => 'Desligar as funcionalidades novas em todas as wikis',
 	'prefswitch-survey-cancel-off' => 'Se quiser continuar a usar as funcionalidades novas, pode voltar à $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentário',
 	'prefswitch-survey-cancel-feedback' => 'Se não quiser fazer um comentário, pode voltar à $1.',
@@ -4722,6 +4738,7 @@ Pentru a ne ajuta să le perfecționăm vă rugăm să răspundeți la sondajul 
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author G0rn
  * @author Kaganer
  * @author Александр Сигачёв
@@ -4734,6 +4751,7 @@ $messages['ru'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Нет',
 	'prefswitch-survey-submit-off' => 'Выключить новые возможности',
+	'prefswitch-survey-submit-global-off' => 'Выключить новые возможности во всех вики',
 	'prefswitch-survey-cancel-off' => 'Если вы хотите продолжить использовать новые возможности, вы можете вернуться к $1.',
 	'prefswitch-survey-submit-feedback' => 'Отправить отзыв',
 	'prefswitch-survey-cancel-feedback' => 'Если вы не хотите оставить отзыв о прототипе, вы можете вернуться к $1.',

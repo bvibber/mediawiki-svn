@@ -2012,6 +2012,11 @@ $messages['uk'] = array(
 	'group-patroller-member' => 'патрульний',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'patrol-revert-reason' => 'وجہ:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

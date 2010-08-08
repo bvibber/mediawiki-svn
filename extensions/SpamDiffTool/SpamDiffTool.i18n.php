@@ -88,13 +88,20 @@ $messages['an'] = array(
 	'spamdifftool_submit_buttom' => 'Ninviar',
 );
 
+/** Old English (Ænglisc) */
+$messages['ang'] = array(
+	'spamdifftool_submit_buttom' => 'Forþsendan',
+);
+
 /** Arabic (العربية)
  * @author Meno25
+ * @author Samer
  */
 $messages['ar'] = array(
 	'spamdifftool' => 'التحكم في قائمة السبام السوداء',
 	'spamdifftool-desc' => 'يوفر طريقة أساسية لإضافة مدخلات جديدة للقائمة السوداء للسبام من صفحات الفرق',
 	'spamdifftool_cantedit' => 'عذرا - أنت لا تمتلك الصلاحية لتعديل قائمة السبام السوداء.',
+	'spamdifftool-no-title' => "'''خطأ:''' لم يحدد عنوان صفحة.",
 	'spamdifftool_notext' => "لا يوجد نص لإضافته إلى قائمة السبام السوداء.
 اضغط <a href='$1'>هنا</a> للمتابعة.",
 	'spamdifftool_confirm' => "أكد أنك تريد إضافة هذه المدخلات إلى قائمة السبام السوداء.
@@ -798,6 +805,11 @@ Klik <a href='$1'>di sini</a> untuk kembali.",
 	'spamdifftool_option_none' => 'tidak ada',
 	'spamdifftool_block' => 'Blokir:',
 	'spamdifftool_submit_buttom' => 'Kirim',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'spamdifftool_submit_buttom' => 'Dànyé',
 );
 
 /** Ido (Ido)
@@ -1529,6 +1541,12 @@ Undvik att helt blockera domäner som är värd för många olika användare, s�
 	'spamdifftool_option_none' => 'ingenting',
 	'spamdifftool_block' => 'Blockera:',
 	'spamdifftool_submit_buttom' => 'Lägg till',
+);
+
+/** Tamil (தமிழ்) */
+$messages['ta'] = array(
+	'spamdifftool_option_none' => 'ஒன்றுமில்லை',
+	'spamdifftool_submit_buttom' => 'சமர்ப்பி',
 );
 
 /** Telugu (తెలుగు)

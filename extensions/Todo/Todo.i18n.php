@@ -2020,6 +2020,11 @@ $messages['tr'] = array(
 	'right-todosubmit' => 'Kullanıcının yapılacaklar listesi haklarını kısıtla',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'todo-list-cancel' => 'منسوخ',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

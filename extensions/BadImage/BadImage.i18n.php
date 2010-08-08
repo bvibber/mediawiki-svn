@@ -2628,6 +2628,11 @@ $messages['uk'] = array(
 	'right-badimages' => 'Оновити список небажаних зображень',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'badimages-reason' => 'وجہ:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

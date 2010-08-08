@@ -384,6 +384,13 @@ $messages['pms'] = array(
 	'rightfunctions-ns' => '(da protession namespace)',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'rightfunctions-local' => '(له سيمه ايز مخ نه)',
+);
+
 /** Portuguese (Português)
  * @author Malafaya
  */

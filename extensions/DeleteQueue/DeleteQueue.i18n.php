@@ -6376,6 +6376,11 @@ $messages['uk'] = array(
 	'deletequeue-case-reason' => 'Причина:',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'deletequeue-case-reason' => 'وجہ:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

@@ -1568,6 +1568,11 @@ $messages['uk'] = array(
 	'right-authorprotect' => 'Захист авторських сторінок',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'authorprotect-reason' => 'وجہ:',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

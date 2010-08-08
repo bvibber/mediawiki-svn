@@ -1766,6 +1766,7 @@ $messages['ps'] = array(
 	'recordadmin-searchresult' => 'د پلټنې پايلې',
 	'recordadmin-buttonsave' => 'خوندي کول',
 	'recordadmin-createlink' => 'يو جوړول',
+	'recordadmin-summary-typecreated' => 'نوی $1 جوړ شو',
 	'recordadmin-viewlink' => 'کتل',
 	'recordadmin-editlink' => 'سمول',
 	'recordadmin-created' => 'جوړ شوي',

@@ -49,6 +49,14 @@ $messages['dsb'] = array(
 	'dontswitchmeover-pref' => 'Změnjanje suknje njedowóliś, gaž se standardna suknja změnja',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'dontswitchmeover-desc' => 'Preferencias para usuarios para especificar si desean preservar su configuración de piel cuando la piel por defecto es cambiada.',
+	'dontswitchmeover-pref' => 'No permitir a mi piel ser cambiada cuando la piel por defecto cambie',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -80,6 +88,14 @@ $messages['id'] = array(
 	'dontswitchmeover-pref' => 'Jangan izinkan kulit saya diubah ketika kulit baku berubah',
 );
 
+/** Italian (Italiano)
+ * @author Blaisorblade
+ */
+$messages['it'] = array(
+	'dontswitchmeover-desc' => 'Impostazione che permette a un utente di specificare se vuole conservare la skin impostata quando la skin di default viene cambiata.',
+	'dontswitchmeover-pref' => 'Non permettere che la mia skin venga cambiata quando cambia la skin di default.',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
@@ -87,11 +103,19 @@ $messages['ja'] = array(
 	'dontswitchmeover-desc' => '既定の外装が変更されたときに、自身の外装の設定を保持するかどうかを指定する設定',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'dontswitchmeover-pref' => '기본 스킨이 바뀔 때 내 스킨은 바뀌지 않게 하기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
 	'dontswitchmeover-desc' => "Astellung fir Benotzer fir unzeginn ob se dÂstellung vun horem Ausgesinn (skin) behale wëlle wann d'Standardastellung geännet gëtt.",
+	'dontswitchmeover-pref' => "Et net zouloossen datt mäin Ausgesi geännert gëtt wann d'Standard-Ausgesinn ännert",
 );
 
 /** Macedonian (Македонски)
@@ -117,6 +141,22 @@ $messages['ml'] = array(
 $messages['nl'] = array(
 	'dontswitchmeover-desc' => 'Voorkeur voor gebruikers om aan te geven of voorkeuren behouden moeten worden als de standaardvoorkeuren wijzigen',
 	'dontswitchmeover-pref' => 'Mijn uiterlijk niet wijzigen als het standaarduiterlijk gewijzigd wordt',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'dontswitchmeover-desc' => 'Preferanse for brukere for å spesifisere om de vil beholde utseende-innstillingen sin når standardutseende endres.',
+	'dontswitchmeover-pref' => 'Ikke bytt utseende mitt når standardutseende endres',
+);
+
+/** Polish (Polski)
+ * @author Leinad
+ */
+$messages['pl'] = array(
+	'dontswitchmeover-desc' => 'Umożliwia określenie w preferencjach użytkownika, czy chce się zachować ustawioną skórkę, gdy domyślna skórka zostanie zmieniona.',
+	'dontswitchmeover-pref' => 'Nie dopuszczaj do zmiany mojej skórki, kiedy zostanie zmieniona domyślna skórka',
 );
 
 /** Piedmontese (Piemontèis)

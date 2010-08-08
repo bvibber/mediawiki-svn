@@ -893,6 +893,11 @@ $messages['uk'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Скасувати',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'منسوخ',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -5962,6 +5962,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-performance' => 'Leeschtung',
 	'configure-section-upload' => 'Eroplueden',
 	'configure-section-sharedupload' => 'Gemeinsamt Eroplueden',
+	'configure-section-mime' => 'MIME-Typen',
 	'configure-section-images' => 'Biller',
 	'configure-section-antivirus' => 'Antivirus',
 	'configure-section-parser' => 'Parser',
@@ -5974,6 +5975,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-extension' => 'Erweiderungen',
 	'configure-section-search' => 'Sich',
 	'configure-section-copyright' => 'Copyright',
+	'configure-section-htcp' => 'HTCP multicast',
 	'configure-section-misc' => 'Verschiddenes',
 	'configure-section-filter' => 'Filter',
 	'configure-section-mw-extensions' => 'MediaWiki-Erweiderungen',
@@ -6577,7 +6579,7 @@ $messages['mr'] = array(
 	'configure-desc' => 'वेब वर आधारित इंटरफेस वापरून नोंदणी केलेल्या सदस्यांना विकि कॉन्फिगर करण्याची परवानगी द्या',
 	'configure-desc-group' => 'गट',
 	'configure-desc-key' => 'चावी',
-	'configure-desc-ns' => 'नामविश्वे',
+	'configure-desc-ns' => 'नामविश्व',
 	'configure-desc-val' => 'किंमत',
 	'configure-summary' => 'हे विशेष पृष्ठ तुम्हाला हा विकि कॉन्फिगर करायची संधी देते, अधिक माहितीसाठी [http://www.mediawiki.org/wiki/Manual:Configuration_settings कॉन्फिगरेशन सेटिंग] पहा.',
 	'configure-btn-save' => 'सेटिंग्स जतन करा',
@@ -10200,6 +10202,11 @@ $messages['uk'] = array(
 	'configure-throttle-action-edit' => 'Змінити',
 	'configure-condition-operator-xor' => 'Виключне АБО',
 	'configure-farmer-settings' => '[[Special:Configure|Конфігурувати цю вікі]].',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'configure-form-reason' => 'وجہ:',
 );
 
 /** Vèneto (Vèneto)

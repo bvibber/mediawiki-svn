@@ -813,6 +813,11 @@ $messages['mr'] = array(
 	'importfreeimages_owner' => 'लेखक',
 	'importfreeimages_importthis' => 'हे घ्या',
 	'importfreeimages_next' => 'पुढील $1',
+	'importfreeimages_size_thumbnail' => 'प्रारुप',
+	'importfreeimages_size_small' => 'छोटा',
+	'importfreeimages_size_medium' => 'मध्यम',
+	'importfreeimages_size_large' => 'मोठा',
+	'importfreeimages_size_original' => 'मूळ',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1141,6 +1146,11 @@ $messages['sk'] = array(
 	'importfreeimages_next' => 'Ďalších $1',
 );
 
+/** Slovenian (Slovenščina) */
+$messages['sl'] = array(
+	'importfreeimages_owner' => 'Avtor',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Rancher
  * @author Verlor
@@ -1386,6 +1396,12 @@ $messages['zh-hans'] = array(
 	'importfreeimages_owner' => '作者',
 	'importfreeimages_importthis' => '汇入这个',
 	'importfreeimages_next' => '下一个 $1',
+	'importfreeimages_size_square' => '方点',
+	'importfreeimages_size_thumbnail' => '缩图',
+	'importfreeimages_size_small' => '小',
+	'importfreeimages_size_medium' => '中',
+	'importfreeimages_size_large' => '大',
+	'importfreeimages_size_original' => '原始消息',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1401,5 +1417,10 @@ $messages['zh-hant'] = array(
 	'importfreeimages_owner' => '作者',
 	'importfreeimages_importthis' => '匯入這個',
 	'importfreeimages_next' => '下一個 $1',
+	'importfreeimages_size_thumbnail' => '縮圖',
+	'importfreeimages_size_small' => '小',
+	'importfreeimages_size_medium' => '中',
+	'importfreeimages_size_large' => '大',
+	'importfreeimages_size_original' => '原始訊息',
 );
 

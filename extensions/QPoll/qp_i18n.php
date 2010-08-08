@@ -1823,11 +1823,19 @@ Për salvé un sondagi, ch'a lo spedissa sensa arsponde a gnun-e custion ëd pro
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'qp_result_NA' => 'بې ځوابه',
 	'qp_vote_button' => 'رايه ورکول',
+	'qp_vote_again_button' => 'خپله رايه بدلول',
 	'qp_users_list' => 'د ټولو کارنانو لړليک جوړول',
 	'qp_votes_count' => '$1 {{PLURAL:$1|رايه|رايې}}',
 	'qp_source_link' => 'سرچينه',
 	'qp_users_link' => 'کارنان',
+	'qp_order_by_username' => 'د کارن-نوم له مخې اوډل',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|کارن|کارنانو}} پوښتنې ځواب کړې',
+	'qp_error_invalid_question_type' => 'د ناسمې پوښتنې ډول: $1',
+	'qp_error_unanswered_span' => 'بې ځوابه څېرمه وېشنيزه',
+	'qp_error_category_name_empty' => 'د وېشنيزې نوم تش دی',
+	'qp_error_no_answer' => 'بې ځوابه وړانديز',
 );
 
 /** Portuguese (Português)

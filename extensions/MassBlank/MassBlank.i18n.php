@@ -85,7 +85,7 @@ merkañ un tamm notenn ha klikañ war ar bouton d'o gwennañ.",
 Merkañ ar c'homlec'h IP pe anv an implijer a-benn kaout roll ar pajennoù da wennañ :",
 	'massblank-submit-user' => 'Mont',
 	'massblank-submit-blank' => "N'eo bet diuzet tra ebet",
-	'massblank-blankcomment' => 'Abeg ar stankañ :',
+	'massblank-blankcomment' => 'Abeg :',
 	'right-massblank' => 'Gwennañ pajennoù a-vras',
 );
 
@@ -159,7 +159,7 @@ añade un comentario y haz clic sobre el botón para vaciarlas.',
 Introduce el nombre de usuario o la dirección de IP para obtener un listado de las páginas a vaciar.',
 	'massblank-submit-user' => 'Ir',
 	'massblank-submit-blank' => 'Vaciar la selección',
-	'massblank-blankcomment' => 'Razón para dejar en blanco:',
+	'massblank-blankcomment' => 'Motivo:',
 	'right-massblank' => 'Vaciar páginas en masa',
 );
 
@@ -179,7 +179,7 @@ entrez un commentaire puis cliquez sur le bouton pour les blanchir.',
 Entrez le nom d'utilisateur ou l'adresse IP pour obtenir une liste de pages à blanchir.",
 	'massblank-submit-user' => 'Aller',
 	'massblank-submit-blank' => 'Blanchir les pages sélectionnées',
-	'massblank-blankcomment' => 'Raison du blanchissage :',
+	'massblank-blankcomment' => 'Motif :',
 	'right-massblank' => 'Blanchir en masse des pages',
 );
 
@@ -219,7 +219,7 @@ $messages['hsb'] = array(
 Zapodaj wužiwarske mjeno abo IP-adresu, zo by lisćinu stronow dóstak, kotrež maja so wuprózdnić.',
 	'massblank-submit-user' => 'Start',
 	'massblank-submit-blank' => 'Wubrane strony wuprózdnić',
-	'massblank-blankcomment' => 'Přičina za wuprózdnjenje:',
+	'massblank-blankcomment' => 'Přičina:',
 	'right-massblank' => 'Masowe wuprózdnjenje stronow',
 );
 
@@ -313,7 +313,7 @@ $messages['mk'] = array(
 Внесете корисничко име или IP-адреса за да добиете список на страници за празнење.',
 	'massblank-submit-user' => 'Оди',
 	'massblank-submit-blank' => 'Испразни одбрани',
-	'massblank-blankcomment' => 'Причина за празнење:',
+	'massblank-blankcomment' => 'Причина:',
 	'right-massblank' => 'Масовно празнење на страници',
 );
 
@@ -428,7 +428,7 @@ $messages['ru'] = array(
 Введите имя участника или IP, чтобы получить список страниц для очистки.',
 	'massblank-submit-user' => 'Выполнить',
 	'massblank-submit-blank' => 'Очистка выбрана',
-	'massblank-blankcomment' => 'Причина очистки:',
+	'massblank-blankcomment' => 'Причина:',
 	'right-massblank' => 'массовая очистка страниц',
 );
 
@@ -475,7 +475,7 @@ maglagay ng isang puna at pindutin ang pindutan upang mabura ang mga ito.',
 Ipasok ang pangalan ng tagagamit o adres ng IP upang makakuha ng isang talaan ng mga pahinang buburahin.',
 	'massblank-submit-user' => 'Tuparin',
 	'massblank-submit-blank' => 'Napili na ang pagpapatlang',
-	'massblank-blankcomment' => 'Dahilan ng pagpapatlang:',
+	'massblank-blankcomment' => 'Dahilan:',
 	'right-massblank' => 'Malawakang tanggalan ng laman ang mga pahina',
 );
 
@@ -484,6 +484,11 @@ Ipasok ang pangalan ng tagagamit o adres ng IP upang makakuha ng isang talaan ng
  */
 $messages['uk'] = array(
 	'massblank-blankcomment' => 'Причина:',
+);
+
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'massblank-blankcomment' => 'وجہ:',
 );
 
 /** Wu (吴语) */

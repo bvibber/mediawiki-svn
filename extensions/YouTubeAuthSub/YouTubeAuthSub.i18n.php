@@ -1247,6 +1247,12 @@ Bitte ha e chly Geduld.',
 	'youtubeauthsub_jserror_nodesc' => 'Bitte gib e Bschryybig für s Video aa.',
 );
 
+/** Gujarati (ગુજરાતી) */
+$messages['gu'] = array(
+	'youtubeauthsub_title' => 'શિર્ષક',
+	'youtubeauthsub_category' => 'શ્રેણી',
+);
+
 /** Manx (Gaelg)
  * @author MacTire02
  */
@@ -3304,6 +3310,7 @@ $messages['ta'] = array(
 	'youtubeauthsub_category' => 'வகைபாடு',
 	'youtubeauthsub_submit' => 'சமர்ப்பி',
 	'youtubeauthsub_clickhere' => 'யூடியூபில் நுழைவதற்கு இங்கே சொடுக்கவும்',
+	'youtubeauthsub_uploadbutton' => 'பதிவேற்றம்',
 );
 
 /** Telugu (తెలుగు)
@@ -3738,6 +3745,13 @@ $messages['war'] = array(
 	'youtubeauthsub_category' => 'Kaarangay',
 );
 
+/** Wu (吴语) */
+$messages['wuu'] = array(
+	'youtubeauthsub_title' => '标题',
+	'youtubeauthsub_description' => '描述',
+	'youtubeauthsub_category' => '分类',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */
@@ -3771,6 +3785,15 @@ $messages['yo'] = array(
 	'youtubeauthsub_username' => 'Orúkọ oníṣe Youtube',
 	'youtubeauthsub_category' => 'Ẹ̀ka',
 	'youtubeauthsub_uploadbutton' => 'Ìrùsókè',
+);
+
+/** Cantonese (粵語) */
+$messages['yue'] = array(
+	'youtubeauthsub_title' => '標題',
+	'youtubeauthsub_description' => '描述',
+	'youtubeauthsub_category' => '分類',
+	'youtubeauthsub_submit' => '遞交',
+	'youtubeauthsub_uploadbutton' => '上載',
 );
 
 /** Zhuang (Vahcuengh)
@@ -3872,5 +3895,11 @@ YouTube需要一些時間去處理閣下的影片，因此或未能即時觀看�
 	'youtubeauthsub_jserror_nokeywords' => '請輸入一個或以上的關鍵詞。',
 	'youtubeauthsub_jserror_notitle' => '請輸入影片標題',
 	'youtubeauthsub_jserror_nodesc' => '請輸入影片描述。',
+);
+
+/** Zulu (isiZulu) */
+$messages['zu'] = array(
+	'youtubeauthsub_category' => 'Uhlobo',
+	'youtubeauthsub_submit' => 'Yisa',
 );
 

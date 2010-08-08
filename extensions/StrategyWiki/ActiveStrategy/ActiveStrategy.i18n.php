@@ -25,10 +25,11 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'activestrategy' => 'Актыўныя працоўныя групы',
-	'active-strategy-desc' => 'Паказаць колькасьць рэдагаваньняў для старонак спэцыяльнай групы',
+	'activestrategy' => 'Актыўная стратэгія',
+	'active-strategy-desc' => 'Паказвае колькасьць рэдагаваньняў на старонках стратэгічнага плянаваньня',
 	'active-strategy-intro' => 'Колькасьць рэдагаваньняў старонак працоўнай групай за $1 {{PLURAL:$1|апошні дзень|апошнія дні|апошніх дзён}}.',
 	'nedits' => '$1 {{PLURAL:$1|рэдагаваньне|рэдагаваньні|рэдагаваньняў}}',
 );
@@ -42,10 +43,11 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
-	'activestrategy' => 'Strolladoù labour oberient',
+	'activestrategy' => 'Strolladoù labour oberiant',
 	'active-strategy-desc' => 'Diskwel a ra an niver a wezhioù eo bet kemmet pajennoù ar strollad labour',
 	'active-strategy-intro' => 'Niver a gemm pajennoù evit ar strollad labour e-kerzh an {{PLURAL:$1|devezh ziwezhañ|$1 zevezh ziwezhañ}}.',
 	'nedits' => '$1 {{PLURAL:$1|kemm|kemm}}',
@@ -62,10 +64,11 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author The Evil IP address
  */
 $messages['de'] = array(
-	'activestrategy' => 'Aktive Arbeitsgruppen',
-	'active-strategy-desc' => 'Zeigt die Anzahl Bearbeitungen an Seiten von Arbeitsgruppen an',
+	'activestrategy' => 'Aktive Strategie',
+	'active-strategy-desc' => 'Zeigt die Anzahl der Bearbeitungen an strategischen Planungsseiten',
 	'active-strategy-intro' => 'Anzahl der Bearbeitungen auf den Seiten der Arbeitsgruppen während {{PLURAL:$1|des letzten Tages|der letzten $1 Tage}}.',
 	'nedits' => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}}',
 );
@@ -84,8 +87,8 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'activestrategy' => 'Aktiwne źěłowe kupki',
-	'active-strategy-desc' => 'Pokazujo licbu změnow na bokach źěłowych kupkow',
+	'activestrategy' => 'Aktiwna strategija',
+	'active-strategy-desc' => 'Pokazujo licbu změnow na bokach strategiskego planowanja',
 	'active-strategy-intro' => 'Licba změnow na źěłowych kupkach za {{PLURAL:$1|zachadny $1 źeń|zachadnej $1 dnja|zachadne $1 dny|zachadnych $1 dnjow}}.',
 	'nedits' => '$1 {{PLURAL:$1|změna|změnje|změny|změnow}}',
 );
@@ -104,8 +107,8 @@ $messages['eo'] = array(
  * @author Diego Grez
  */
 $messages['es'] = array(
-	'activestrategy' => 'Fuerzas de trabajo activas',
-	'active-strategy-desc' => 'Muestra el número de ediciones a las páginas de grupo de trabajo',
+	'activestrategy' => 'Estrategia activa',
+	'active-strategy-desc' => 'Muestra el número de ediciones a las páginas de planeamiento estratégico',
 	'active-strategy-intro' => 'Número de ediciones a las páginas del grupo de trabajo en los últimos {{PLURAL:$1|$1 día|$1 días}}.',
 	'nedits' => '$1 {{PLURAL:$1|edición|ediciones}}',
 );
@@ -153,8 +156,8 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'activestrategy' => 'Aktiwne dźěłarnički',
-	'active-strategy-desc' => 'Pokazuje ličbu změnow na stronach dźěłarničkow',
+	'activestrategy' => 'Aktiwna strategija',
+	'active-strategy-desc' => 'Pokazuje ličbu změnow na stronach strategiskeho planowanja',
 	'active-strategy-intro' => 'Ličba změnow na stronach dźěłarničkow za {{PLURAL:$1|zańdźeny $1 dźeń|zańdźenej $1 dnjej|zańdźene $1 dny|zańdźenych $1 dnjow}}.',
 	'nedits' => '$1 {{PLURAL:$1|změna|změnje|změny|změnow}}',
 );
@@ -174,8 +177,8 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'activestrategy' => 'Gruppos de labor active',
-	'active-strategy-desc' => 'Monstra le numero de modificationes de paginas de gruppo de labor',
+	'activestrategy' => 'Strategia active',
+	'active-strategy-desc' => 'Monstra le numero de modificationes a paginas de planification strategic',
 	'active-strategy-intro' => 'Numero de modificationes in paginas de gruppos de labor in le ultime {{PLURAL:$1|die|$1 dies}}.',
 	'nedits' => '$1 {{PLURAL:$1|modification|modificationes}}',
 );
@@ -240,8 +243,8 @@ $messages['ko'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'activestrategy' => 'Aktiv Aarbechtsgruppen',
-	'active-strategy-desc' => "Weist d'Zuel vun den Ännerungen op Säite vun der Task Force",
+	'activestrategy' => 'Aktiv Strategie',
+	'active-strategy-desc' => "Weist d'Zuel vun den Ännerungen op de Säite vun der strategischer Planung",
 	'active-strategy-intro' => 'Zuel vun den Ännerungen op Säite vum Aarbechtsgrupp {{PLURAL:$1|de leschten Dag|an de leschten $1 Deeg}}.',
 	'nedits' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}}',
 );
@@ -250,8 +253,8 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'activestrategy' => 'Активни работни групи',
-	'active-strategy-desc' => 'Прикажува број на уредувања на страници на работната група',
+	'activestrategy' => 'Активна стратегија',
+	'active-strategy-desc' => 'Прикажува број на уредувања на страниците за стратешко планирање',
 	'active-strategy-intro' => 'Број на уредувања на страници на работни групи во {{PLURAL:$1|изминатиот $1 ден|изминатите $1 дена}}.',
 	'nedits' => '$1 {{PLURAL:$1|уредување|уредувања}}',
 );
@@ -260,8 +263,8 @@ $messages['mk'] = array(
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'activestrategy' => 'സജീവ കർത്തവ്യ സേനകൾ',
-	'active-strategy-desc' => 'കർത്തവ്യ സേനയുടെ താളുകളിലെ തിരുത്തലുകളുടെ എണ്ണം കാട്ടുക',
+	'activestrategy' => 'സജീവ പ്രവർത്തനതന്ത്രം',
+	'active-strategy-desc' => 'പ്രവർത്തനതന്ത്രം പദ്ധതിയിടുന്ന താളുകളിലെ തിരുത്തലുകളുടെ എണ്ണം കാട്ടുക',
 	'active-strategy-intro' => 'കർത്തവ്യ സേനയുടെ താളുകളിൽ കഴിഞ്ഞ {{PLURAL:$1|ഒരു ദിവസം|$1 ദിവസങ്ങൾക്കുള്ളിൽ}} നടന്ന തിരുത്തലുകളുടെ എണ്ണം.',
 	'nedits' => '{{PLURAL:$1|ഒരു തിരുത്തൽ|$1 തിരുത്തലുകൾ}}',
 );
@@ -270,8 +273,8 @@ $messages['ml'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'activestrategy' => 'Actieve taskforces',
-	'active-strategy-desc' => "Geeft het aantal bewerkingen aan taskforcepagina's weer",
+	'activestrategy' => 'Actieve strategie',
+	'active-strategy-desc' => "Geeft het aantal bewerkingen aan pagina's voor strategische planning weer",
 	'active-strategy-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
 	'nedits' => '$1 {{PLURAL:$1|bewerking|bewerkingen}}',
 );
@@ -281,7 +284,7 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'activestrategy' => 'Aktive arbeidsgrupper',
+	'activestrategy' => 'Aktiv strategi',
 	'active-strategy-desc' => 'Viser antall redigeringer på arbeidsgruppesider',
 	'active-strategy-intro' => 'Antall redigeringer på arbeidsgruppesider {{PLURAL:$1|den siste $1 dag|de siste $1 dager}}.',
 	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringer}}',
@@ -299,7 +302,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'activestrategy' => 'Aktywne plany strategiczne',
+	'activestrategy' => 'Aktywna strategia',
 	'active-strategy-desc' => 'Pokazuje liczbę edycji stron planowania strategicznego',
 	'active-strategy-intro' => 'Liczba edycji stron realizacji zadań w czasie {{PLURAL:$1|ostatniej doby|ostatnich $1 dni}}.',
 	'nedits' => '$1 {{PLURAL:$1|edycja|edycje|edycji}}',
@@ -328,8 +331,8 @@ $messages['ps'] = array(
  * @author Lijealso
  */
 $messages['pt'] = array(
-	'activestrategy' => 'Grupos de trabalho activos',
-	'active-strategy-desc' => 'Mostra o número de edições das páginas da equipa de trabalho',
+	'activestrategy' => 'Estratégia activa',
+	'active-strategy-desc' => 'Mostra o número de edições das páginas de planeamento estratégico',
 	'active-strategy-intro' => 'Número de edições às páginas dos grupos de trabalho {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
 	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
 );
@@ -352,10 +355,11 @@ $messages['ro'] = array(
 );
 
 /** Russian (Русский)
+ * @author Eleferen
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'activestrategy' => 'Активные комиссии',
+	'activestrategy' => 'Активная стратегия',
 	'active-strategy-desc' => 'Показывает число правок на страницах целевых групп',
 	'active-strategy-intro' => 'Количество правок страниц комиссий за {{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}}.',
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',

@@ -22,8 +22,8 @@ $messages['en'] = array (
  */
 $messages['qqq'] = array(
 	'nll-desc' => '{{desc}}',
-	'nll-separator' => '{{Optional}}<br/>Please include any necessary spacing: <code>,&amp;#32;</code>',
-	'nll-lastseparator' => '{{Identical/And}}<br/>Please include any necessary spacing: <code>&amp;#32;and&amp;#32;</code>',
+	'nll-separator' => '{{Optional}}<br />Please include any necessary spacing: <code>,&amp;#32;</code>',
+	'nll-lastseparator' => '{{Identical/And}}<br />Please include any necessary spacing: <code>&amp;#32;and&amp;#32;</code>',
 );
 
 /** Afrikaans (Afrikaans)

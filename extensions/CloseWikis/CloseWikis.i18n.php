@@ -1982,6 +1982,11 @@ $messages['uk'] = array(
 	'closewikis-page-reopen-reason' => 'Причина:',
 );
 
+/** Urdu (اردو) */
+$messages['ur'] = array(
+	'closewikis-page-reopen-reason' => 'وجہ:',
+);
+
 /** Veps (Vepsan kel')
  * @author Игорь Бродский
  */

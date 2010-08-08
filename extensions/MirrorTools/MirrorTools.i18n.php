@@ -79,6 +79,14 @@ $messages['dsb'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Wužywarje głědałkowego rěda',
 );
 
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'mirrortools-desc' => 'Permite editar a través de API a ser hechas bajo cualquier nombre de usuario',
+	'right-mirroredit' => 'Editar a través de API bajo cualquier nombre de usuario',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  */

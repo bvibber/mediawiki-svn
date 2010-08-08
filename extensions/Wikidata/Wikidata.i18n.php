@@ -557,7 +557,7 @@ $messages['aln'] = array(
 	'ow_exporttsv_export_failed' => 'Eksporti dështuar',
 	'addcollection' => 'Wikidata: Shto mbledhjes',
 	'ow_searchnoresult' => "<p> Ju mund të: <br />
-*'''Krijo shprehjen \"[[Expression:\$1]]\"''' (dhe shtoni një përkufizim)<br/>
+*'''Krijo shprehjen \"[[Expression:\$1]]\"''' (dhe shtoni një përkufizim)<br />
 *'''Krijo faqe \"[[:\$1]]\"''' (një faqe standarde wiki) </p>",
 	'ow_save' => 'Ruaj',
 	'ow_history' => 'Histori',
@@ -7713,7 +7713,7 @@ Kein Kopie es jemaat woode.',
 Velleisch bes De tiräk op di Sigg hee jespronge?
 Nomaal sullt me hee nit hen kumme.',
 	'ow_db_consistency_not_found' => '<h2>Fähler</h2>
-Wi et ußsüht, es de Datebangk nit mieh konsistent. Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en faßjelaate un explizeete Bedüggdeniß zosamme passe däte. Se künnt verloore jejange sin. Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm ßööver.',
+Wi et ußsüht, es de Datebangk nit mieh konsistent. Wikidata kunnt kein jöltije Date fenge, di met dä Nommer för en faßjelaate un explizeete Bedüggdeniß zosamme passe däte. Se künnt verloore jejange sin. Bes esu joot, un saach dat enem Wiki-Köbes, udder ennem Administrator fun däm ẞööver.',
 	'ow_history_transaction' => 'Transakßjuhn:',
 	'ow_history_show_life_span' => 'Zeisch däm Datesatz sing Levvensduur:',
 	'ow_class_attr_type_dm' => 'Faßjelaate un explizeete Bedüggdeniß',

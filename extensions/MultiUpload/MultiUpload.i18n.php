@@ -1478,6 +1478,7 @@ Nevhodné súbory budú okamžite zmazané, pozri [[{{MediaWiki:Multipleupload-p
 $messages['sl'] = array(
 	'multipleupload' => 'Naložite več datotek',
 	'multipleupload-saveallfiles' => 'Shrani vse datoteke',
+	'multiupload-toolbox' => 'Naložite več datotek',
 );
 
 /** Albanian (Shqip)
