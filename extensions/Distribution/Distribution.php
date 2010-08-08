@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-define( 'Distribution_VERSION', '0.0.0' );
+define( 'Distribution_VERSION', '0.1 alpha' );
 
 // Register the initialization function.
 $wgExtensionFunctions[] = 'efDistributionSetup';
