@@ -205,8 +205,8 @@ class TaggedImages extends SpecialPage {
 				continue;
 			}
 
-			// TODO
-			// $ul = $sk->makeLink( $wgContLang->getNsText( Namespace::getUser() ) . ":{$ut}", $ut );
+			// TODO - getUser() doesn't exist, do you mean NS_USER?
+			// $ul = $sk->makeLink( $wgContLang->getNsText( MWNamespace::getUser() ) . ":{$ut}", $ut );
 
 			$nb = '';
 			$textlink = $this->mShowFilename ?
