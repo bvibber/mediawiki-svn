@@ -18,7 +18,12 @@ $messages['en'] = array(
 	// General
 	'deployment-desc' => 'Provides a way to install extensions via GUI and update them and the wiki itself via another GUI',
 
-	// Filesystem: Direct
+	// Special pages
+	'specialpages-group-administration' => 'Wiki administration',
+	'dashboard' => 'Administration dashboard',
+	'extensions' => 'Manage extensions',
+	'update' => 'Update wiki and extensions',
+	'install' => 'Install extensions',
 
 	// Filesystem: FTP
 	'deploy-ftp-not-loaded' => 'The FTP PHP extension is not available',
@@ -38,5 +43,4 @@ $messages['en'] = array(
 	'deploy-ssh2-key-authentication-failed' => 'Public and private keys are incorrect for username $1',
 	'deploy-ssh2-password-authentication-failed' => 'Username or password incorrect for username $1',
 	'deploy-ssh2-command-failed' => 'Unable to perform command: $1',
-	
 );

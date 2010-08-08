@@ -21,12 +21,233 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class SpecialExtensions extends SpecialPage {
 
+	protected $firstExtOpened = true;
+	
+	protected static $viewvcUrls = array(
+		'svn+ssh://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
+		'http://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
+		# Doesn't work at the time of writing but maybe some day: 
+		'https://svn.wikimedia.org/viewvc/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
+	);	
+	
 	public function __construct() {
 		parent::__construct( 'Extensions' );
 	}
 
 	public function execute( $arg ) {
-		
+		global $wgOut;
+		$wgOut->addWikiText( $this->getExtensionList() );
 	}
+	
+	protected function getExtensionList() {
+		global $wgExtensionCredits;
+		
+		$out = Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) ) .
+			Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
+		
+		foreach ( $wgExtensionCredits as $type => $extensions ) {
+			if ( count( $wgExtensionCredits[$type] ) > 0 ) {
+				$out .= $this->getExtensionTypeHeader( $type, 'credits-' . $type );
+
+				usort( $wgExtensionCredits[$type], array( $this, 'compare' ) );
+
+				foreach ( $wgExtensionCredits[$type] as $extension ) {
+					$out .= $this->getExtensionForList( $extension );
+				}
+			}
+		}
+		
+		return $out;
+	}
+	
+	protected function getExtensionTypeHeader( $text, $name ) {
+		$opt = array( 'colspan' => 4 );
+		$out = '';
+
+		if( !$this->firstExtOpened ) {
+			// Insert a spacing line
+			$out .= '<tr class="sv-space">' . Html::element( 'td', $opt ) . "</tr>\n";
+			$this->firstExtOpened = true;
+		}
+
+		if( $name ) {
+			$opt['id'] = "sv-$name";
+		}
+
+		$out .= "<tr>" . Xml::element( 'th', $opt, $text ) . "</tr>\n";
+		return $out;
+	}	
+	
+	protected function getExtensionForList( array $extension ) {
+		global $wgLang;
+		
+		$name = isset( $extension['name'] ) ? $extension['name'] : '[no name]';
+		
+		if ( isset( $extension['path'] ) ) {
+			$svnInfo = self::getSvnInfo( dirname($extension['path']) );
+			$directoryRev = isset( $svnInfo['directory-rev'] ) ? $svnInfo['directory-rev'] : null;
+			$checkoutRev = isset( $svnInfo['checkout-rev'] ) ? $svnInfo['checkout-rev'] : null;
+			$viewvcUrl = isset( $svnInfo['viewvc-url'] ) ? $svnInfo['viewvc-url'] : null;
+		} else {
+			$directoryRev = null;
+			$checkoutRev = null;
+			$viewvcUrl = null;
+		}
+
+		# Make main link (or just the name if there is no URL).
+		if ( isset( $extension['url'] ) ) {
+			$mainLink = "[{$extension['url']} $name]";
+		} else {
+			$mainLink = $name;
+		}
+		
+		if ( isset( $extension['version'] ) ) {
+			$versionText = '<span class="mw-version-ext-version">' . 
+				wfMsg( 'version-version', $extension['version'] ) . 
+				'</span>';
+		} else {
+			$versionText = '';
+		}
+
+		# Make subversion text/link.
+		if ( $checkoutRev ) {
+			$svnText = wfMsg( 'version-svn-revision', $directoryRev, $checkoutRev );
+			$svnText = isset( $viewvcUrl ) ? "[$viewvcUrl $svnText]" : $svnText;
+		} else {
+			$svnText = false;
+		}
+
+		# Make description text.
+		$description = isset ( $extension['description'] ) ? $extension['description'] : '';
+		
+		if( isset ( $extension['descriptionmsg'] ) ) {
+			# Look for a localized description.
+			$descriptionMsg = $extension['descriptionmsg'];
+			
+			if( is_array( $descriptionMsg ) ) {
+				$descriptionMsgKey = $descriptionMsg[0]; // Get the message key
+				array_shift( $descriptionMsg ); // Shift out the message key to get the parameters only
+				array_map( "htmlspecialchars", $descriptionMsg ); // For sanity
+				$msg = wfMsg( $descriptionMsgKey, $descriptionMsg );
+			} else {
+				$msg = wfMsg( $descriptionMsg );
+			}
+ 			if ( !wfEmptyMsg( $descriptionMsg, $msg ) && $msg != '' ) {
+ 				$description = $msg;
+ 			}
+		}
+
+		if ( $svnText !== false ) {
+			$extNameVer = "<tr>
+				<td><em>$mainLink $versionText</em></td>
+				<td><em>$svnText</em></td>";
+		} else {
+			$extNameVer = "<tr>
+				<td colspan=\"2\"><em>$mainLink $versionText</em></td>";
+		}
+		
+		$author = isset ( $extension['author'] ) ? $extension['author'] : array();
+		$extDescAuthor = "<td>$description</td>
+			<td>" . $wgLang->listToText( (array)$author ) . "</td>
+			</tr>\n";
+		
+		return $extNameVer . $extDescAuthor;		
+	}
+	
+	/**
+	 * Callback to sort extensions by type.
+	 */
+	public function compare( $a, $b ) {
+		global $wgLang;
+		if( $a['name'] === $b['name'] ) {
+			return 0;
+		} else {
+			return $wgLang->lc( $a['name'] ) > $wgLang->lc( $b['name'] )
+				? 1
+				: -1;
+		}
+	}
+	
+	/**
+	 * Get an associative array of information about a given path, from its .svn 
+	 * subdirectory. Returns false on error, such as if the directory was not 
+	 * checked out with subversion.
+	 *
+	 * Returned keys are:
+	 *    Required:
+	 *        checkout-rev          The revision which was checked out
+	 *    Optional:
+	 *        directory-rev         The revision when the directory was last modified
+	 *        url                   The subversion URL of the directory
+	 *        repo-url              The base URL of the repository
+	 *        viewvc-url            A ViewVC URL pointing to the checked-out revision
+	 */
+	public static function getSvnInfo( $dir ) {
+		// http://svnbook.red-bean.com/nightly/en/svn.developer.insidewc.html
+		$entries = $dir . '/.svn/entries';
+
+		if( !file_exists( $entries ) ) {
+			return false;
+		}
+
+		$lines = file( $entries );
+		if ( !count( $lines ) ) {
+			return false;
+		}
+
+		// check if file is xml (subversion release <= 1.3) or not (subversion release = 1.4)
+		if( preg_match( '/^<\?xml/', $lines[0] ) ) {
+			// subversion is release <= 1.3
+			if( !function_exists( 'simplexml_load_file' ) ) {
+				// We could fall back to expat... YUCK
+				return false;
+			}
+
+			// SimpleXml whines about the xmlns...
+			wfSuppressWarnings();
+			$xml = simplexml_load_file( $entries );
+			wfRestoreWarnings();
+
+			if( $xml ) {
+				foreach( $xml->entry as $entry ) {
+					if( $xml->entry[0]['name'] == '' ) {
+						// The directory entry should always have a revision marker.
+						if( $entry['revision'] ) {
+							return array( 'checkout-rev' => intval( $entry['revision'] ) );
+						}
+					}
+				}
+			}
+			
+			return false;
+		}
+
+		// Subversion is release 1.4 or above.
+		if ( count( $lines ) < 11 ) {
+			return false;
+		}
+		
+		$info = array(
+			'checkout-rev' => intval( trim( $lines[3] ) ),
+			'url' => trim( $lines[4] ),
+			'repo-url' => trim( $lines[5] ),
+			'directory-rev' => intval( trim( $lines[10] ) )
+		);
+		
+		if ( isset( self::$viewvcUrls[$info['repo-url']] ) ) {
+			$viewvc = str_replace( 
+				$info['repo-url'], 
+				self::$viewvcUrls[$info['repo-url']],
+				$info['url']
+			);
+			
+			$pathRelativeToRepo = substr( $info['url'], strlen( $info['repo-url'] ) );
+			$viewvc .= '/?pathrev=';
+			$viewvc .= urlencode( $info['checkout-rev'] );
+			$info['viewvc-url'] = $viewvc;
+		}
+		
+		return $info;
+	}	
 	
 }
