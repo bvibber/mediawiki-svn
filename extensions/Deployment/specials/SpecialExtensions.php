@@ -40,7 +40,7 @@ class SpecialExtensions extends SpecialPage {
 	 * Constructor.
 	 */
 	public function __construct() {
-		parent::__construct( 'Extensions' );
+		parent::__construct( 'Extensions', 'siteadmin' );	
 	}
 
 	/**
@@ -51,8 +51,16 @@ class SpecialExtensions extends SpecialPage {
 	 * @param $arg String
 	 */
 	public function execute( $arg ) {
-		global $wgOut;
-		$wgOut->addWikiText( $this->getExtensionList() );
+		global $wgOut, $wgUser;
+		
+		//$wgOut->setPageTitle( wfMsg( 'extensions' ) );		
+		
+		// If the user is authorized, display the page, if not, show an error.
+		if ( $this->userCanExecute( $wgUser ) ) {
+			$wgOut->addWikiText( $this->getExtensionList() );
+		} else {
+			$this->displayRestrictionError();
+		}	
 	}
 	
 	/**

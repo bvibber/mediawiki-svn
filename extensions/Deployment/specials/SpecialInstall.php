@@ -27,7 +27,7 @@ class SpecialInstall extends SpecialPage {
 	 * @since 0.1
 	 */	
 	public function __construct() {
-		parent::__construct( 'Install' );
+		parent::__construct( 'Install', 'siteadmin' );
 	}
 
 	/**
@@ -38,7 +38,14 @@ class SpecialInstall extends SpecialPage {
 	 * @param $arg String
 	 */	
 	public function execute( $arg ) {
+		global $wgOut, $wgUser;
 		
+		// If the user is authorized, display the page, if not, show an error.
+		if ( $this->userCanExecute( $wgUser ) ) {
+			$wgOut->addWikiText( $this->getExtensionList() );
+		} else {
+			$this->displayRestrictionError();
+		}			
 	}
 	
 }
