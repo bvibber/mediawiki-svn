@@ -35,7 +35,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'SmoothGallery parser extension',
-	'version'        => '1.1g',
+	'version'        => '1.1h',
 	'author'         => 'Ryan Lane',
 	'descriptionmsg' => 'smoothgallery-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery',
