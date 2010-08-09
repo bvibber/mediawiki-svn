@@ -31,8 +31,8 @@ char	**av;
 int	 f, i, len;
 char	*d, *r;
 	len = av[1] ? atoi(av[1]) : DEFLEN;
-	if (len < 1 || len > 16) {
-		fprintf(stderr, "length must be between 1 and 16\n");
+	if ( len < 1 ) {
+		fprintf(stderr, "length must be at least 1\n");
 		return 1;
 	}
 	if ((f = open("/dev/random", O_RDONLY)) == -1) {
@@ -47,10 +47,11 @@ char	*d, *r;
 	}
 	close(f);
 	r = malloc(len + 1);
-	bzero(r, len + 1);
 	for (i = 0; i < len; ++i)
 		r[i] = pwchars[d[i] % (sizeof(pwchars) - 1)];
+	r[i] = '\0';
 	fputs(r, stdout);
+	bzero(r, len + 1);
 	fputs("\n", stdout);
 	return 0;
 }
