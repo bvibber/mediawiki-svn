@@ -19,7 +19,8 @@ class BitmapMetadataHandler {
 		20 => Array( 'other' ),
 		40 => Array( 'file-comment' ),
 		60 => Array( 'iptc-bad-hash' ),
-		80 => Array( 'xmp' ),
+		80 => Array( 'xmp-general' ),
+		90 => Array( 'xmp-exif' ),
 		100 => Array( 'iptc-good-hash', 'iptc-no-hash' ),
 		120 => Array( 'exif' ),
 	);
@@ -85,7 +86,7 @@ class BitmapMetadataHandler {
 
 				// check what type of app segment this is.
 				if ( substr( $temp, 0, 29 ) === "http://ns.adobe.com/xap/1.0/\x00" ) {
-					$segments["XMP"] = $temp;
+					$segments["XMP"] = substr( $temp, 29 );
 				} elseif ( substr( $temp, 0, 35 ) === "http://ns.adobe.com/xmp/extension/\x00" ) {
 					$segments["XMP_ext"][] = $temp;
 				}
@@ -311,6 +312,18 @@ class BitmapMetadataHandler {
 		}
 		if ( isset( $seg['PSIR'] ) ) {
 			$meta->doApp13( $seg['PSIR'] );
+		}
+		if ( isset( $seg['XMP'] ) ) {
+			$xmp = new XMPReader();
+			$xmp->parse( $seg['XMP'] );
+			if ( isset( $seg['XMP_ext'] ) ) {
+				/* FIXME!! */
+
+			}
+			$res = $xmp->getResults();
+			foreach( $res as $type => $array ) {
+				$meta->addMetadata( $array, $type ); 
+			}
 		}
 		return $meta;
 	}

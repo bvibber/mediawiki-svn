@@ -29,6 +29,7 @@ class XMPReader {
 	private $itemLang = false;         // used for lang alts only
 
 	private $xmlParser;
+	private $charset = false;
 
 	protected $items;
 
@@ -114,6 +115,46 @@ class XMPReader {
 	*/
 	public function parse( $content ) {
 		try {
+
+			// detect encoding by looking for BOM
+			// see page 12 of http://www.adobe.com/devnet/xmp/pdfs/XMPSpecificationPart3.pdf
+			if ( !$this->charset ) {
+				$bom = array();
+				if ( preg_match( '/\xEF\xBB\xBF|\xFE\xFF|\x00\x00\xFE\xFF|\xFF\xFE\x00\x00|\xFF\xFE/',
+					 $content, $bom ) 
+				) {
+					switch ( $bom[0] ) {
+						case "\xFE\xFF":
+							$this->charset = 'UTF-16BE';
+							break;
+						case "\xFF\xFE":
+							$this->charset = 'UTF-16LE';
+							break;
+						case "\x00\x00\xFE\xFF":
+							$this->charset = 'UTF-32BE';
+							break;
+						case "\xFF\xFE\x00\x00":
+							$this->charset = 'UTF-32LE';
+							break;
+						case "\xEF\xBB\xBF":
+							$this->charset = 'UTF-8';
+							break;
+						default:
+							//this should be impossible to get to
+							throw new MWException("Invalid BOM");
+							break;
+
+					}
+
+				} else {
+					$this->charset = 'UTF-8';
+				}
+			}
+			if ( $this->charset !== 'UTF-8' ) {
+				//don't convert if already utf-8
+				$content = iconv( $this->charset, 'UTF-8//IGNORE', $content );
+			}
+
 			$ok = xml_parse( $this->xmlParser, $content, true );
 			if ( !$ok ) {
 				$error = xml_error_string( xml_get_error_code( $this->xmlParser ) );
@@ -284,15 +325,15 @@ class XMPReader {
 
 		if ( $elm === self::NS_RDF . ' Seq' ) {
 			array_shift( $this->mode );
-			$this->results['xmp-' . $info['map_group']][$finalName]['_format'] = 'ol';
+			$this->results['xmp-' . $info['map_group']][$finalName]['_type'] = 'ol';
 		} elseif ( $elm === self::NS_RDF . ' Bag' ) {
 			array_shift( $this->mode );
-			$this->results['xmp-' . $info['map_group']][$finalName]['_format'] = 'ul';
+			$this->results['xmp-' . $info['map_group']][$finalName]['_type'] = 'ul';
 		} elseif ( $elm === self::NS_RDF . ' Alt' ) {
 			array_shift( $this->mode );
 			// extra if needed as you could theoretically have a non-language alt.
 			if ( $info['mode'] === self::MODE_LANG ) {
-				$this->results['xmp-' . $info['map_group']][$finalName]['_format'] = 'lang';
+				$this->results['xmp-' . $info['map_group']][$finalName]['_type'] = 'lang';
 			}
 
 		} else {

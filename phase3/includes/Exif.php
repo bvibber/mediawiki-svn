@@ -1438,6 +1438,10 @@ class FormatExif {
 			return ""; // paranoia. This should never happen
 			wfDebug( __METHOD__ . ' metadata array with 0 elements!' );
 		}
+		/* Fixme: This should hide some of the list entries if there are
+		* say more than four. Especially if a field is translated into 20
+		* languages, we don't want to show them all by default
+		*/
 		else {
 			switch( $type ) {
 			case 'lang':
@@ -1450,16 +1454,17 @@ class FormatExif {
 					$content .= "\n*" . $vals['x-default'];
 					unset( $vals['x-default'] );
 				}
-				foreach ( $vals as $lang => $content ) {
-					$content = "\n*<span lang=\"$lang\">"
-						. "'''$lang''' $content</span>";
+				foreach ( $vals as $lang => $item ) {
+					global $wgContLang;
+					$content .= "\n*<span lang=\"$lang\">"
+						. "'''$lang''' $item</span>";
 				}
 				return $content;
 			case 'ol':
-				return "\n#" . implode( "\n#", $vals );
+				return "<ol><li>" . implode( "</li>\n<li>", $vals ) . '</li></ol>';
 			case 'ul':
 			default:
-				return "\n*" . implode( "\n*", $vals );
+				return "<ul><li>" . implode( "</li>\n<li>", $vals ) . '</li></ul>';
 			}
 		}
 	}
