@@ -552,6 +552,13 @@ $messages['sah'] = array(
 	'vector-collapsiblenav-more' => 'Өссө тыллар',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'vector-collapsiblenav-more' => 'තවත් භාෂාවන්',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

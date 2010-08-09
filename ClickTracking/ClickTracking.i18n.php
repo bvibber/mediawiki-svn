@@ -1785,8 +1785,10 @@ $messages['sc'] = array(
 
 /** Sinhala (සිංහල)
  * @author චතුනි අලහප්පෙරුම
+ * @author බිඟුවා
  */
 $messages['si'] = array(
+	'ct-total-header' => 'මුළු ක්ලික් ගණන',
 	'ct-start-date' => 'ඇරඹුම් දිනය (YYYYMMDD)',
 	'ct-end-date' => 'අවසන් දිනය (YYYYMMDD)',
 	'ct-increment-by' => 'එක් එක් දත්ත ලක්ෂ්‍යය නිරූපණය කරන දින සංඛ්‍යාව',
