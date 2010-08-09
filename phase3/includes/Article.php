@@ -3172,7 +3172,7 @@ class Article {
 	 * @return boolean true if successful
 	 */
 	public function doDeleteArticle( $reason, $suppress = false, $id = 0, $commit = true ) {
-		global $wgDeferredUpdateList, $wgUseTrackbacks, $wgGlobalDB, $wgWikiID;
+		global $wgDeferredUpdateList, $wgUseTrackbacks, $wgEnableInterwikiTemplatesTracking, $wgGlobalDatabase;
 
 		wfDebug( __METHOD__ . "\n" );
 
@@ -3271,11 +3271,11 @@ class Article {
 			$dbw->delete( 'langlinks', array( 'll_from' => $id ) );
 			$dbw->delete( 'redirect', array( 'rd_from' => $id ) );
 			
-			if ( $wgGlobalDB ) {
-				$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDB );
+			if ( $wgEnableInterwikiTemplatesTracking && $wgGlobalDatabase ) {
+				$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDatabase );
 				$dbw2->delete( 'globaltemplatelinks',
-							array(  'gtl_from_wiki' => $wgWikiID,
-									'gtl_from_page' => $id )
+							array(  'gtl_from_wiki' => wfWikiID( ),
+							        'gtl_from_page' => $id )
 							);
 			}
 		}
@@ -4311,6 +4311,42 @@ class Article {
 		return $result;
 	}
 
+	/**
+	 * Return a list of distant templates used by this article.
+	 * Uses the globaltemplatelinks table
+	 *
+	 * @return Array of Title objects
+	 */
+	public function getUsedDistantTemplates() {
+		global $wgGlobalDatabase;
+		
+		$result = array();
+		
+		if ( $wgGlobalDatabase ) {
+			$id = $this->mTitle->getArticleID();
+
+			if ( $id == 0 ) {
+				return array();
+			}
+	
+			$dbr = wfGetDB( DB_SLAVE, array(), $wgGlobalDatabase );
+			$res = $dbr->select( array( 'globaltemplatelinks' ),
+				array( 'gtl_to_prefix', 'gtl_to_namespace', 'gtl_to_title' ),
+				array( 'gtl_from_wiki' => wfWikiID( ), 'gtl_from_page' => $id ),
+				__METHOD__ );
+	
+			if ( $res !== false ) {
+				foreach ( $res as $row ) {
+					$result[] = Title::makeTitle( $row->gtl_to_namespace, $row->gtl_to_title, null, $row->gtl_to_prefix );
+				}
+			}
+	
+			$dbr->freeResult( $res );
+		}
+
+		return $result;
+	}
+	
 	/**
 	 * Returns a list of hidden categories this page is a member of.
 	 * Uses the page_props and categorylinks tables.

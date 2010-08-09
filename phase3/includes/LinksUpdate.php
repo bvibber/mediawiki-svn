@@ -128,8 +128,8 @@ class LinksUpdate {
 			$this->getTemplateInsertions( $existing ) );
 			
 		# Distant template links
-		global $wgGlobalDB;
-		if ( $wgGlobalDB ) {
+		global $wgEnableInterwikiTemplatesTracking, $wgGlobalDatabase;
+		if ( $wgEnableInterwikiTemplatesTracking && $wgGlobalDatabase ) {
 			$existing = $this->getDistantExistingTemplates();
 			$this->incrSharedTableUpdate( 'globaltemplatelinks', 'gtl',
 				$this->getDistantTemplateDeletions( $existing ),
@@ -358,16 +358,14 @@ class LinksUpdate {
 	 * @private
 	 */
 	function incrSharedTableUpdate( $table, $prefix, $deletions, $insertions ) {
-
-		global $wgWikiID;
-		global $wgGlobalDB;
+		global $wgEnableInterwikiTemplatesTracking, $wgGlobalDatabase;
 		
-		if ( $wgGlobalDB ) {
-			$dbw = wfGetDB( DB_MASTER, array(), $wgGlobalDB );
-			$where = array( "{$prefix}_from_wiki" => $wgWikiID,
+		if ( $wgEnableInterwikiTemplatesTracking && $wgGlobalDatabase ) {
+			$dbw = wfGetDB( DB_MASTER, array(), $wgGlobalDatabase );
+			$where = array( "{$prefix}_from_wiki" => wfWikiID( ),
 							"{$prefix}_from_page" => $this->mId
 					);
-			$baseKey = "{$prefix}_to_wiki";
+			$baseKey = "{$prefix}_to_prefix";
 			$middleKey = "{$prefix}_to_namespace";
 			
 			$clause = $dbw->makeWhereFrom3d( $deletions, $baseKey, $middleKey, "{$prefix}_to_title" );
@@ -432,18 +430,18 @@ class LinksUpdate {
 	 * @private
 	 */
 	function getDistantTemplateInsertions( $existing = array() ) {
-		global $wgWikiID;
+
 		$arr = array();
-		foreach( $this->mDistantTemplates as $wikiid => $templatesToNS ) {
+		foreach( $this->mDistantTemplates as $prefix => $templatesToNS ) {
 			foreach( $templatesToNS as $ns => $dbkeys ) {
-				$diffs = isset( $existing[$wikiid] ) && isset( $existing[$wikiid][$ns] ) ? array_diff_key( $dbkeys, $existing[$wikiid][$ns] ) : $dbkeys;
+				$diffs = isset( $existing[$prefix] ) && isset( $existing[$prefix][$ns] ) ? array_diff_key( $dbkeys, $existing[$prefix][$ns] ) : $dbkeys;
 				foreach ( $diffs as $dbk => $id ) {
 					$arr[] = array(
-						'gtl_from_wiki'      => $wgWikiID,
+						'gtl_from_wiki'      => wfWikiID( ),
 						'gtl_from_page'      => $this->mId,
 						'gtl_from_namespace' => $this->mTitle->getNsText(),
 						'gtl_from_title'     => $this->mTitle->getText(),
-						'gtl_to_wiki'        => $wikiid,
+						'gtl_to_prefix'      => $prefix,
 						'gtl_to_namespace'   => $ns,
 						'gtl_to_title'       => $dbk
 					);
@@ -641,17 +639,17 @@ class LinksUpdate {
 	 */
 	function getDistantTemplateDeletions( $existing ) {
 		$del = array();
-		foreach ( $existing as $wikiid => $templatesForNS ) {
-			if ( isset( $this->mDistantTemplates[$wikiid] ) ) {
-				$del[$wikiid] = array_diff_key( $existing[$wikiid], $this->mDistantTemplates[$wikiid] );
+		foreach ( $existing as $prefix => $templatesForNS ) {
+			if ( isset( $this->mDistantTemplates[$prefix] ) ) {
+				$del[$prefix] = array_diff_key( $existing[$prefix], $this->mDistantTemplates[$prefix] );
 			} else {
-				$del[$wikiid] = $existing[$wikiid];
+				$del[$prefix] = $existing[$prefix];
 			}
 			foreach ( $templatesForNS as $ns => $dbkeys ) {
-				if ( isset( $this->mDistantTemplates[$wikiid][$ns] ) ) {
-					$del[$wikiid][$ns] = array_diff_key( $existing[$wikiid][$ns], $this->mDistantTemplates[$wikiid][$ns] );
+				if ( isset( $this->mDistantTemplates[$prefix][$ns] ) ) {
+					$del[$prefix][$ns] = array_diff_key( $existing[$prefix][$ns], $this->mDistantTemplates[$prefix][$ns] );
 				} else {
-					$del[$wikiid][$ns] = $existing[$wikiid][$ns];
+					$del[$prefix][$ns] = $existing[$prefix][$ns];
 				}
 			}
 		}
@@ -760,24 +758,22 @@ class LinksUpdate {
 	 * @private
 	 */
 	function getDistantExistingTemplates() {
-		global $wgWikiID;
-		global $wgGlobalDB;
+		global $wgEnableInterwikiTemplatesTracking, $wgGlobalDatabase;
 		
 		$arr = array();
-		if ( $wgGlobalDB ) {
-			$dbr = wfGetDB( DB_SLAVE, array(), $wgGlobalDB );
-			$res = $dbr->select( 'globaltemplatelinks', array( 'gtl_to_wiki', 'gtl_to_namespace', 'gtl_to_title' ),
-				array( 'gtl_from_wiki' => $wgWikiID, 'gtl_from_page' => $this->mId ), __METHOD__, $this->mOptions );
-			while ( $row = $dbr->fetchObject( $res ) ) {
-				if ( !isset( $arr[$row->gtl_to_wiki] ) ) {
-					$arr[$row->gtl_to_wiki] = array();
+		if ( $wgGlobalDatabase ) {
+			$dbr = wfGetDB( DB_SLAVE, array(), $wgGlobalDatabase );
+			$res = $dbr->select( 'globaltemplatelinks', array( 'gtl_to_prefix', 'gtl_to_namespace', 'gtl_to_title' ),
+				array( 'gtl_from_wiki' => wfWikiID( ), 'gtl_from_page' => $this->mId ), __METHOD__, $this->mOptions );
+			foreach ( $res as $row ) {
+				if ( !isset( $arr[$row->gtl_to_prefix] ) ) {
+					$arr[$row->gtl_to_prefix] = array();
 				}
-				if ( !isset( $arr[$row->gtl_to_wiki][$row->gtl_to_namespace] ) ) {
-					$arr[$row->gtl_to_wiki][$row->gtl_to_namespace] = array();
+				if ( !isset( $arr[$row->gtl_to_prefix][$row->gtl_to_namespace] ) ) {
+					$arr[$row->gtl_to_prefix][$row->gtl_to_namespace] = array();
 				}
-				$arr[$row->gtl_to_wiki][$row->gtl_to_namespace][$row->gtl_to_title] = 1;
+				$arr[$row->gtl_to_prefix][$row->gtl_to_namespace][$row->gtl_to_title] = 1;
 			}
-			$dbr->freeResult( $res );
 		}
 		return $arr;
 	}

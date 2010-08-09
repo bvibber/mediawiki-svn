@@ -3057,7 +3057,7 @@ class Title {
 	 * @return \type{\mixed} true on success, getUserPermissionsErrors()-like array on failure
 	 */
 	public function moveTo( &$nt, $auth = true, $reason = '', $createRedirect = true ) {
-		global $wgContLang, $wgGlobalDB, $wgWikiID;
+		global $wgContLang, $wgEnableInterwikiTemplatesTracking, $wgGlobalDatabase;
 
 		$err = $this->isValidMoveOperation( $nt, $auth, $reason );
 		if ( is_array( $err ) ) {
@@ -3106,8 +3106,8 @@ class Title {
 			array( 'cl_from' => $pageid ),
 			__METHOD__ );
 			
-		if ( $wgGlobalDB ) {
-			$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDB );
+		if ( $wgEnableInterwikiTemplatesTracking && $wgGlobalDatabase ) {
+			$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDatabase );
 			$dbw2->update( 'globaltemplatelinks',
 						array(  'gtl_from_namespace' => $nt->getNsText(),
 								'gtl_from_title' => $nt->getText() ),
@@ -3207,7 +3207,7 @@ class Title {
 	 *  Ignored if the user doesn't have the suppressredirect right
 	 */
 	private function moveOverExistingRedirect( &$nt, $reason = '', $createRedirect = true ) {
-		global $wgUseSquid, $wgUser, $wgContLang, $wgWikiID, $wgGlobalDB;
+		global $wgUseSquid, $wgUser, $wgContLang, $wgEnableInterwikiTemplatesTracking, $wgGlobalDatabase;
 
 		$comment = wfMsgForContent( '1movedto2_redir', $this->getPrefixedText(), $nt->getPrefixedText() );
 
@@ -3247,10 +3247,10 @@ class Title {
 			$dbw->delete( 'langlinks', array( 'll_from' => $newid ), __METHOD__ );
 			$dbw->delete( 'redirect', array( 'rd_from' => $newid ), __METHOD__ );
 			
-			if ( $wgGlobalDB ) {
-				$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDB );
+			if ( $wgEnableInterwikiTemplatesTracking && $wgGlobalDatabase ) {
+				$dbw2 = wfGetDB( DB_MASTER, array(), $wgGlobalDatabase );
 				$dbw2->delete( 'globaltemplatelinks',
-							array(  'gtl_from_wiki' => $wgWikiID,
+							array(  'gtl_from_wiki' => wfWikiID( ),
 									'gtl_from_page' => $newid ),
 							__METHOD__ );
 			}

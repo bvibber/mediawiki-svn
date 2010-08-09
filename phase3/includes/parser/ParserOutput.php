@@ -209,21 +209,27 @@ class ParserOutput
 	}
 	
 	function addDistantTemplate( $title, $page_id, $rev_id ) {
-		$wikiid = $title->getTransWikiID();
-		if ( $wikiid !=='' ) {
+		$prefix = $title->getInterwiki();
+		if ( $prefix !=='' ) {
 			$ns = $title->getNamespace();
 			$dbk = $title->getDBkey();
-			if ( !isset( $this->mDistantTemplates[$wikiid] ) ) {
-				$this->mDistantTemplates[$wikiid] = array();
+			
+			if ( !isset( $this->mDistantTemplates[$prefix] ) ) {
+				$this->mDistantTemplates[$prefix] = array();
 			}
-			if ( !isset( $this->mDistantTemplates[$wikiid][$ns] ) ) {
-				$this->mDistantTemplates[$wikiid][$ns] = array();
+			if ( !isset( $this->mDistantTemplates[$prefix][$ns] ) ) {
+				$this->mDistantTemplates[$prefix][$ns] = array();
 			}
-			$this->mDistantTemplates[$wikiid][$ns][$dbk] = $page_id;
-			if ( !isset( $this->mDistantTemplateIds[$wikiid][$ns] ) ) {
-				$this->mDistantTemplateIds[$wikiid][$ns] = array();
+			$this->mDistantTemplates[$prefix][$ns][$dbk] = $page_id;
+
+			// For versioning
+			if ( !isset( $this->mDistantTemplateIds[$prefix] ) ) {
+				$this->mDistantTemplateIds[$prefix] = array();
 			}
-			$this->mDistantTemplateIds[$wikiid][$ns][$dbk] = $rev_id; // For versioning
+			if ( !isset( $this->mDistantTemplateIds[$prefix][$ns] ) ) {
+				$this->mDistantTemplateIds[$prefix][$ns] = array();
+			}
+			$this->mDistantTemplateIds[$prefix][$ns][$dbk] = $rev_id;
 		}
 	}
 	

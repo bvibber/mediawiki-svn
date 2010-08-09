@@ -1287,7 +1287,7 @@ abstract class DatabaseBase {
 	 * The keys on each level may be either integers or strings.
 	 *
 	 * @param $data Array: organized as 3-d array(baseKeyVal => array(middleKeyVal => array(subKeyVal => <ignored>, ...), ...), ...)
-	 * @param $baseKey String: field name to match the base-level keys to (eg 'gtl_to_wikiid')
+	 * @param $baseKey String: field name to match the base-level keys to (eg 'gtl_to_prefix')
 	 * @param $middleKey String: field name to match the middle-level keys to (eg 'gtl_to_namespace')
 	 * @param $subKey String: field name to match the sub-level keys to (eg 'gtl_to_title')
 	 * @return Mixed: string SQL fragment, or false if no items in array.
@@ -1297,9 +1297,12 @@ abstract class DatabaseBase {
 		foreach ( $data as $base => $subdata ) {
 			foreach ( $subdata as $middle => $sub ) {
 				if ( count( $sub ) ) {
-				$conds[] = $this->makeList(
-					array( $baseKey => $base, $middleKey => $middle, $subKey => array_keys( $sub ) ),
-					LIST_AND);
+					$conds[] = $this->makeList(
+						array( $baseKey => $base,
+							$middleKey => $middle,
+							$subKey => array_keys( $sub ) ),
+						LIST_AND
+					);
 				}
 			}
 		}
