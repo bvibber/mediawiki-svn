@@ -27,14 +27,27 @@
 /**
  * API class for the querieng of extensions in the repository.
  *
+ * @since 0.1
+ *
  * @ingroup Distribution
  */
 class ApiQueryExtensions extends ApiQueryBase {
+	
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $main
+	 * @param $action
+	 */
 	public function __construct( $main, $action ) {
 		parent :: __construct( $main, $action, 'dst' );
 	}
 
 	/**
+	 * Main method.
+	 * 
 	 * @since 0.1
 	 */
 	public function execute() {

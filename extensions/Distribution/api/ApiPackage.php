@@ -26,9 +26,26 @@
 
 /**
  * 
+ * @since 0.1
  *
  * @ingroup Distribution
  */
-class ApiPackage extends ApiQueryBase {
+class ApiPackage extends ApiBase {
+	
+	/**
+	 * Main method.
+	 * 
+	 * @since 0.1
+	 */
+	public function execute() {
+		
+	}	
+	
+	/**
+	 * @since 0.1
+	 */
+	public function getVersion() {
+		return __CLASS__ . ': $Id$';
+	}	
 	
 }
