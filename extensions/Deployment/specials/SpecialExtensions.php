@@ -57,6 +57,17 @@ class SpecialExtensions extends SpecialPage {
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
+			$wgOut->addHTML( 
+				Html::element(
+					'button',
+					array(
+						'type' => 'button',
+						'onclick' => 'window.location="' . Xml::escapeJsString( SpecialPage::getTitleFor( 'install' )->getFullURL() ) . '"'
+					),
+					wfMsg( 'add-new-extensions' )
+				)
+			);
+			
 			$wgOut->addWikiText( $this->getExtensionList() );
 		} else {
 			$this->displayRestrictionError();

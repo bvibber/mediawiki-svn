@@ -31,6 +31,9 @@ $messages['en'] = array(
 	'update-title' => 'MediaWiki updates',
 	'install-title' => 'Install extensions',
 
+	// Special:Extensions
+	'add-new-extensions' => 'Add new',
+
 	// Filesystem: FTP
 	'deploy-ftp-not-loaded' => 'The FTP PHP extension is not available',
 	'deploy-ftp-ssl-not-loaded' => 'The loaded FTP PHP extension does not support SSL',
