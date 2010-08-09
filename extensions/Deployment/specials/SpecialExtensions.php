@@ -16,12 +16,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * A special page that allows browing and searching through installed extensions.
+ * Based on Special:Version.
+ * 
+ * @since 0.1
  * 
  * @author Jeroen De Dauw
  */
 class SpecialExtensions extends SpecialPage {
 
-	protected $firstExtOpened = true;
+	/**
+	 * @var boolean
+	 */
+	protected $openedFirstExtension = false;
 	
 	protected static $viewvcUrls = array(
 		'svn+ssh://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
@@ -30,54 +36,131 @@ class SpecialExtensions extends SpecialPage {
 		'https://svn.wikimedia.org/viewvc/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 	);	
 	
+	/**
+	 * Constructor.
+	 */
 	public function __construct() {
 		parent::__construct( 'Extensions' );
 	}
 
+	/**
+	 * Main method.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $arg String
+	 */
 	public function execute( $arg ) {
 		global $wgOut;
 		$wgOut->addWikiText( $this->getExtensionList() );
 	}
 	
+	/**
+	 * Creates and returns the HTML for the extension list.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return string
+	 */
 	protected function getExtensionList() {
 		global $wgExtensionCredits;
 		
 		$out = Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) ) .
 			Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
 		
+		$extensionTypes = SpecialVersion::getExtensionTypes();
+		
+		// Make sure the 'other' type is set to an array. 
+		if ( !array_key_exists( 'other', $wgExtensionCredits ) ) {
+			$wgExtensionCredits['other'] = array();
+		}
+		
+		// Find all extensions that do not have a valid type and give them the type 'other'.
 		foreach ( $wgExtensionCredits as $type => $extensions ) {
-			if ( count( $wgExtensionCredits[$type] ) > 0 ) {
-				$out .= $this->getExtensionTypeHeader( $type, 'credits-' . $type );
-
-				usort( $wgExtensionCredits[$type], array( $this, 'compare' ) );
-
-				foreach ( $wgExtensionCredits[$type] as $extension ) {
-					$out .= $this->getExtensionForList( $extension );
-				}
+			if ( !array_key_exists( $type, $extensionTypes ) ) {
+				$wgExtensionCredits['other'] = array_merge( $wgExtensionCredits['other'], $extensions );
 			}
 		}
+		
+		// Loop through the extension categories to display their extensions in the list.
+		foreach ( $extensionTypes as $type => $message ) {
+			if ( $type != 'other' ) {
+				$out .= $this->getExtensionCategory( $type, $message );
+			}
+		}
+		
+		// We want the 'other' type to be last in the list.
+		$out .= $this->getExtensionCategory( 'other', $extensionTypes['other'] );
 		
 		return $out;
 	}
 	
+	/**
+	 * Creates and returns the HTML for a single extension category.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $type String
+	 * @param $message String
+	 * 
+	 * @return string
+	 */
+	protected function getExtensionCategory( $type, $message ) {
+		global $wgExtensionCredits; 
+		
+		$out = '';
+		
+		if ( array_key_exists( $type, $wgExtensionCredits ) && count( $wgExtensionCredits[$type] ) > 0 ) {
+			$out .= $this->getExtensionTypeHeader( $message, 'credits-' . $type );
+
+			usort( $wgExtensionCredits[$type], array( $this, 'compare' ) );
+
+			foreach ( $wgExtensionCredits[$type] as $extension ) {
+				$out .= $this->getExtensionForList( $extension );
+			}
+		}
+
+		return $out;
+	}
+	
+	/**
+	 * Gets the HTML for an extension type header.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $text String
+	 * @param $name String
+	 * 
+	 * @return string
+	 */
 	protected function getExtensionTypeHeader( $text, $name ) {
 		$opt = array( 'colspan' => 4 );
 		$out = '';
 
-		if( !$this->firstExtOpened ) {
+		if( $this->openedFirstExtension ) {
 			// Insert a spacing line
 			$out .= '<tr class="sv-space">' . Html::element( 'td', $opt ) . "</tr>\n";
-			$this->firstExtOpened = true;
 		}
+		$this->openedFirstExtension = true;
 
 		if( $name ) {
 			$opt['id'] = "sv-$name";
 		}
 
 		$out .= "<tr>" . Xml::element( 'th', $opt, $text ) . "</tr>\n";
+		
 		return $out;
 	}	
 	
+	/**
+	 * Gets the HTML for a single extension for the extension list.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $extension Array
+	 * 
+	 * @return string
+	 */
 	protected function getExtensionForList( array $extension ) {
 		global $wgLang;
 		
@@ -156,6 +239,8 @@ class SpecialExtensions extends SpecialPage {
 	
 	/**
 	 * Callback to sort extensions by type.
+	 * 
+	 * @since 0.1
 	 */
 	public function compare( $a, $b ) {
 		global $wgLang;
@@ -181,6 +266,10 @@ class SpecialExtensions extends SpecialPage {
 	 *        url                   The subversion URL of the directory
 	 *        repo-url              The base URL of the repository
 	 *        viewvc-url            A ViewVC URL pointing to the checked-out revision
+	 *        
+	 * @since 0.1
+	 * 
+	 * @return array
 	 */
 	public static function getSvnInfo( $dir ) {
 		// http://svnbook.red-bean.com/nightly/en/svn.developer.insidewc.html
