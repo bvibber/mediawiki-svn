@@ -56,7 +56,7 @@ class SmoothGallery {
 		$this->galleriesArray = $galleriesArray;
 	}
 
-	function setParser( &$parser ) {
+	function setParser( $parser ) {
 		$this->parser = $parser;
 	}
 
@@ -274,7 +274,7 @@ class SmoothGallery {
 		return $output;
 	}
 
-	static function setGalleryHeaders(  &$outputPage ) {
+	static function setGalleryHeaders(  $outputPage ) {
 		global $wgSmoothGalleryExtensionPath;
 
 		$extensionpath = $wgSmoothGalleryExtensionPath;
@@ -304,7 +304,7 @@ class SmoothGallery {
 		return true;
 	}
 
-	static function setGallerySetHeaders(  &$outputPage ) {
+	static function setGallerySetHeaders(  $outputPage ) {
 		global $wgSmoothGalleryExtensionPath;
 
 		$extensionpath = $wgSmoothGalleryExtensionPath;

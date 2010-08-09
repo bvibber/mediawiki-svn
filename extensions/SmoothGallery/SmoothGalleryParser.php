@@ -89,7 +89,7 @@ class SmoothGalleryParser {
 			// collect the fallback output
 			$i = 0;
 			foreach ( $galleries as $galleryInput ) {
-				// TOFIX:
+				// FIXME:
 				// This couldn't possibly be right... If these are different
 				// galleries in a gallery set, shouldn't they have unique names?
 				$name = "MediaWikiSGallery" . $i;
@@ -241,16 +241,6 @@ class SmoothGalleryParser {
 				// Get the text from the image page's description, if it exists
 				$description = $img_obj->getDescriptionText();
 			}
-
-			// convert wikitext to HTML
-			// TODO: find out why this doesn't work with special pages
-			if ( $parser ) {
-				$pout = $parser->recursiveTagParse( $description, $title, $parser->mOptions, true );
-				$description =  strip_tags( $pout );
-				# $fulldesc =  strip_tags( $pout->getText() );
-			} else { // fall back to HTML-escaping
-				$description = htmlspecialchars( $description );
-			}
 		}
 
 		$skin = $wgUser->getSkin();
@@ -258,7 +248,7 @@ class SmoothGalleryParser {
 		// Everything is checked, and converted; add to the array and return
 		$imageArray["title"] = $title;
 
-		# We need the following for the image's div
+		// We need the following for the image's div
 		$imageArray["heading"] = $skin->makeKnownLinkObj( $img_obj->getTitle(), $img_obj->getName() );
 		$imageArray["description"] = $description;
 		$imageArray["full_url"] = $title->getFullURL();
@@ -266,7 +256,7 @@ class SmoothGalleryParser {
 		$imageArray["full_thumb_url"] = $full_thumb;
 		$imageArray["icon_thumb_url"] = $icon_thumb;
 
-		# We need the image object for plain galleries
+		// We need the image object for plain galleries
 		$imageArray["image_object"] = $img_obj;
 
 		$galleryArray["images"][] = $imageArray;

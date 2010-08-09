@@ -65,14 +65,14 @@ $wgSmoothGalleryThumbWidth = "100px";
 function efSmoothGallery() {
 	global $wgParser;
 
-	$wgParser->setHook( 'sgallery', 'initSmoothGallery' );
-	$wgParser->setHook( 'sgalleryset', 'initSmoothGallerySet' );
+	$wgParser->setHook( 'sgallery', 'initSmoothGalleryTag' );
+	$wgParser->setHook( 'sgalleryset', 'initSmoothGalleryTagSet' );
 
 	$wgParser->setFunctionHook( 'sgallery', 'initSmoothGalleryPF' );
 }
 
 // FIXME: split off to a hook file and use $wgHooks['ParserFirstCallInit'] to init tags
-function initSmoothGalleryPF( &$parser ) {
+function initSmoothGalleryPF( $parser ) {
 	global $wgSmoothGalleryDelimiter;
 
 	$numargs = func_num_args();
@@ -109,7 +109,13 @@ function initSmoothGalleryPF( &$parser ) {
 	return array( $output, 'noparse' => true, 'isHTML' => true );
 }
 
-function initSmoothGallery( $input, $argv, &$parser, $calledAsSet = false ) {
+function initSmoothGalleryTag( $input, $argv, $parser ) {
+	$output = initSmoothGallery( $input, $args, $parser );
+
+	return $output;
+}
+
+function initSmoothGallery( $input, $argv, $parser, $calledAsSet = false ) {
 	$sgParser = new SmoothGalleryParser( $input, $argv, $parser, $calledAsSet );
 	$sgGallery = new SmoothGallery();
 
@@ -126,7 +132,7 @@ function initSmoothGallery( $input, $argv, &$parser, $calledAsSet = false ) {
 	}
 }
 
-function initSmoothGallerySet( $input, $args, &$parser ) {
+function initSmoothGalleryTagSet( $input, $args, $parser ) {
 	$output = initSmoothGallery( $input, $args, $parser, true );
 
 	return $output;
@@ -136,7 +142,7 @@ function initSmoothGallerySet( $input, $args, &$parser ) {
  * Hook callback that injects messages and things into the <head> tag
  * Does nothing if $parserOutput->mSmoothGalleryTag is not set
  */
-function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
+function smoothGalleryParserOutput( $outputPage, $parserOutput )  {
 	if ( !empty( $parserOutput->mSmoothGalleryTag ) ) {
 		SmoothGallery::setGalleryHeaders( $outputPage );
 	}
@@ -150,7 +156,7 @@ function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
  * We ignore langCode - parser function names can be translated but
  * we are not using this feature
  */
-function smoothGalleryLanguageGetMagic( &$magicWords, $langCode ) {
+function smoothGalleryLanguageGetMagic( $magicWords, $langCode ) {
 	$magicWords['sgallery']  = array( 0, 'sgallery' );
 	return true;
 }
