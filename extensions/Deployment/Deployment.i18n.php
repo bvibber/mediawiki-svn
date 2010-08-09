@@ -20,10 +20,16 @@ $messages['en'] = array(
 
 	// Special pages
 	'specialpages-group-administration' => 'Wiki administration',
+
 	'dashboard' => 'Administration dashboard',
 	'extensions' => 'Manage extensions',
 	'update' => 'Update wiki and extensions',
 	'install' => 'Install extensions',
+
+	'dashboard-title' => 'Dashboard',
+	'extensions-title' => 'Extensions',
+	'update-title' => 'MediaWiki updates',
+	'install-title' => 'Install extensions',
 
 	// Filesystem: FTP
 	'deploy-ftp-not-loaded' => 'The FTP PHP extension is not available',

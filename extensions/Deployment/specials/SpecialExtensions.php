@@ -53,7 +53,7 @@ class SpecialExtensions extends SpecialPage {
 	public function execute( $arg ) {
 		global $wgOut, $wgUser;
 		
-		//$wgOut->setPageTitle( wfMsg( 'extensions' ) );		
+		$wgOut->setPageTitle( wfMsg( 'extensions-title' ) );		
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {

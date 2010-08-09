@@ -40,6 +40,8 @@ class SpecialDashboard extends SpecialPage {
 	public function execute( $arg ) {
 		global $wgOut, $wgUser;
 		
+		$wgOut->setPageTitle( wfMsg( 'dashboard-title' ) );
+		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
 			
