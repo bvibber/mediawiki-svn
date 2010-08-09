@@ -3,6 +3,8 @@
  * Created on 24.6.2009
  *
  * Author: ning
+ * 
+ * FIXME: extension fails miserably for custom extension paths
  */
 if ( !defined( 'MEDIAWIKI' ) ) die;
 
