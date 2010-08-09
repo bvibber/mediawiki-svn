@@ -21,10 +21,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class SpecialUpdate extends SpecialPage {
 
+	/**
+	 * Constructor.
+	 * 
+	 * @since 0.1
+	 */	
 	public function __construct() {
 		parent::__construct( 'Update' );
 	}
 
+	/**
+	 * Main method.
+	 * 
+	 * @since 0.1 
+	 * 
+	 * @param $arg String
+	 */	
 	public function execute( $arg ) {
 		
 	}
