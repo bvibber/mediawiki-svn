@@ -42,6 +42,11 @@ $wgAutoloadClasses['SpecialUpdate'] = dirname( __FILE__ ) . '/specials/SpecialUp
 $wgSpecialPages['Update'] = 'SpecialUpdate';
 $wgSpecialPageGroups['Update'] = 'administration';
 
+/**
+ * The siteadmin permission is needed to access the administration special pages.
+ * By default only sysops have this permission.
+ */
+$wgGroupPermissions['sysop']['siteadmin'] = true;
 
 /**
  * Initialization function for the Deployment extension.

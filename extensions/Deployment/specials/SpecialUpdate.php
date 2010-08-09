@@ -42,7 +42,7 @@ class SpecialUpdate extends SpecialPage {
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
-			$wgOut->addWikiText( $this->getExtensionList() );
+			
 		} else {
 			$this->displayRestrictionError();
 		}			
