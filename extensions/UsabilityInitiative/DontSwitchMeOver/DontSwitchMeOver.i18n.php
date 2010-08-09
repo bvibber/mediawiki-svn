@@ -24,6 +24,14 @@ $messages['qqq'] = array(
 	'dontswitchmeover-pref' => 'The wording of this message may change',
 );
 
+/** Arabic (العربية)
+ * @author Samer
+ */
+$messages['ar'] = array(
+	'dontswitchmeover-desc' => 'الخيار الذي يسمح للمستخدمين بتحديد ما إذا كانوا يريدون الاحتفاظ بضبطهم للواجهة عند تغير الواجهة المبدئية.',
+	'dontswitchmeover-pref' => 'لا تسمح لواجهتي أن تتغيّر حين تتغيرُ الواجهة المبدئية',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Wizardist
@@ -55,6 +63,14 @@ $messages['dsb'] = array(
 $messages['es'] = array(
 	'dontswitchmeover-desc' => 'Preferencias para usuarios para especificar si desean preservar su configuración de piel cuando la piel por defecto es cambiada.',
 	'dontswitchmeover-pref' => 'No permitir a mi piel ser cambiada cuando la piel por defecto cambie',
+);
+
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'dontswitchmeover-desc' => 'Préférence permettant aux utilisateurs de décider s’ils veulent ou non conserver leur choix d’apparence lorsque l’apparence par défaut est changée.',
+	'dontswitchmeover-pref' => 'Ne pas autoriser le changement de mon apparence lorsque l’apparence par défaut change',
 );
 
 /** Galician (Galego)
@@ -160,11 +176,12 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'dontswitchmeover-desc' => "Gust ëd jutent për specifiché se a veulo conservé l'ampostassion ëd sò skin qund lë skin ëd default a l'é cangià.",
-	'dontswitchmeover-pref' => "Përmëtt pa a mè skin d'esse cangià qund lë skin ëd default a cangia",
+	'dontswitchmeover-desc' => "Gust ëd j'utent për specifiché se a veulo conservé l'ampostassion ëd soa pel cand la pel dë stàndard a l'é cangià.",
+	'dontswitchmeover-pref' => "Përmët pa a mia pel d'esse cangià cand la pel dë stàndard a cangia",
 );
 
 /** Portuguese (Português)

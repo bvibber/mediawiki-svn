@@ -191,6 +191,11 @@ $messages['ja'] = array(
 $messages['lb'] = array(
 	'jsbreadcrumbs-desc' => "Setzt eng Lëscht vun Navigatiounslinken ënnert d'Läischt vun den Navigatiounsongleten derbäi",
 	'jsbreadcrumbs-leading-description' => 'Navigatiounspad',
+	'prefs-jsbreadcrumbs' => 'Navigatiounslinken (bread crumbs)',
+	'prefs-jsbreadcrumbs-showsite' => 'Den Numm vum Site an den Navigatiounslinken drasetzen (nëtzlech wann et tëschent verschidde Wikie benotzt gëtt)',
+	'prefs-jsbreadcrumbs-showcrumbs' => 'Navigatiounslinken (bread crumbs) weisen',
+	'prefs-jsbreadcrumbs-numberofcrumbs' => 'Zuel vun den Navigatiounslinken (bread crumbs)',
+	'prefs-jsbreadcrumbs-numberofcrumbs-max' => 'Maximal 20 Navigatiounslinken',
 );
 
 /** Macedonian (Македонски)

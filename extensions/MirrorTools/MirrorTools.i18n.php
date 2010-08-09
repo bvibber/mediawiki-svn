@@ -83,8 +83,12 @@ $messages['dsb'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'mirrortools' => 'MirrorTools',
 	'mirrortools-desc' => 'Permite editar a través de API a ser hechas bajo cualquier nombre de usuario',
 	'right-mirroredit' => 'Editar a través de API bajo cualquier nombre de usuario',
+	'group-MirrorTools' => 'Usuario de Mirror tool',
+	'group-MirrorTools-member' => 'usuario de mirror tool',
+	'grouppage-MirrorTools' => '{{ns:project}}:Usuario de Mirror tool',
 );
 
 /** Basque (Euskara)

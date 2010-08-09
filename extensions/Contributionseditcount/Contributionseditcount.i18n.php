@@ -501,7 +501,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'contributionseditcount' => "St'utent-sì a l'ha fait $1 modìfiche.",
+	'contributionseditcount' => "St'utent-sì a l'ha fait {{PLURAL:$1|na modìfica|$1 modìfiche}}.",
 	'contributionseditcount-desc' => "A fa vëdde an contator ëd modìfiche an sla [[Special:Contributions|pàgina dle contribussion ëd l'utent]]",
 );
 
@@ -513,10 +513,11 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'contributionseditcount' => 'Este utilizador tem $1 edições.',
+	'contributionseditcount' => 'Este utilizador fez {{PLURAL:$1|uma edição|$1 edições}}.',
 	'contributionseditcount-desc' => 'Mostra uma contagem de edições na [[Special:Contributions|página de contribuições do utilizador]]',
 );
 

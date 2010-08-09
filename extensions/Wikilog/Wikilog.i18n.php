@@ -2086,6 +2086,7 @@ $messages['en-gb'] = array(
 /** Esperanto (Esperanto)
  * @author Airon90
  * @author Lucas
+ * @author LyzTyphone
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -2131,6 +2132,7 @@ $messages['eo'] = array(
 	'wikilog-summary-uncategorized' => 'Nekategoriiga',
 	'wikilog-summary-more' => '[[$3|→ Daŭre legi...]]',
 	'wikilog-edit-fieldset-legend' => 'Vikiblog-agordoj',
+	'wikilog-comment-permalink' => '$1 ĉe $2',
 	'wikilog-comment-note-edited' => 'laste ŝanĝita je la $1 je $2',
 	'wikilog-comment-anonsig' => '$3 (anonima)',
 	'wikilog-comment-pending' => 'Ĉi tiu komento atendas aprobadon.',
@@ -2150,7 +2152,7 @@ $messages['eo'] = array(
 	'wikilog-invalid-param' => 'Malvalida parametro: $1.',
 	'wikilog-invalid-author' => 'Malvalida aŭtoro: $1.',
 	'wikilog-invalid-date' => 'Nevalida dato: $1.',
-	'wikilog-invalid-tag' => 'Malvalida etikedo: $1',
+	'wikilog-invalid-tag' => 'Malvalida markilo: $1',
 	'wikilog-invalid-file' => 'Malvalida dosiero: $1.',
 	'wikilog-file-not-found' => 'Mankanta dosiero: $1.',
 	'wikilog-not-an-image' => 'Dosiero ne estas bildo: $1.',
@@ -4123,6 +4125,7 @@ $messages['lb'] = array(
 	'wikilog-comment-approve' => 'Dës Bemierkung approuvéieren (gëtt direkt gemaach)',
 	'wikilog-newtalk-text' => '<!-- eidel Säit déi vu Wikilog ugeluecht gouf-->',
 	'wikilog-newtalk-summary' => 'automatesch ugeluecht vu Wikilog',
+	'wikilog-feed-ns-title' => '$1 Wikilog-Artikelen',
 	'wikilog-comment-feed-title1' => 'Bemierkung vum $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Bemierkung vum $2 zu $3 (#$1)',
 	'wikilog-title-comments' => 'Bemierkungen - $1',

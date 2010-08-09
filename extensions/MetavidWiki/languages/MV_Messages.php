@@ -6361,6 +6361,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 );
 
 /** Malayalam (മലയാളം)
+ * @author Praveenp
  * @author Shijualex
  */
 $messages['ml'] = array(
@@ -6373,7 +6374,7 @@ $messages['ml'] = array(
 	'mv_upload_file' => 'പ്രമാണം അപ്‌ലോഡ് ചെയ്യുക',
 	'mv_external_file' => 'ബാഹ്യ പ്രമാണം',
 	'mv_tool_search' => 'തിരയൂ',
-	'mv_tool_export' => 'എക്സ്പോർട്ട്',
+	'mv_tool_export' => 'കയറ്റുമതി ചെയ്യുക',
 	'mv_watch_clip' => 'ക്ലിപ്പ് കാണുക',
 	'mv_time_separator' => '$1 മുതൽ $2 വരെ',
 	'mv_play' => 'പ്രവർത്തിപ്പിക്കുക',

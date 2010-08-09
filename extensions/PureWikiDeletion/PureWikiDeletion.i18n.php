@@ -515,6 +515,36 @@ Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
 	'right-purewikideletion' => "[[Special:PopulateBlankedPagesTable|De tabel met leggemaakte pagina's vullen]]",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'purewikideletion' => 'Pura scanselassion ëd wiki',
+	'randomexcludeblank' => 'Pàgina a cas (ma pa veuida)',
+	'populateblankedpagestable' => 'Pòpola na tabela ëd pàgine veuide',
+	'purewikideletion-desc' => "Tra j'àutre còse, le pàgine dësvoidà a son colegà an ross",
+	'purewikideletion-pref-watchblank' => "Gionta le pàgine che i dësveuido a lòn ch'i ten-o sot euj",
+	'purewikideletion-pref-watchunblank' => "Gionta le pàgine che i torno vempì a lòn ch'i ten-o sot euj",
+	'purewikideletion-blanked' => "Na vërsin prima dë sta pàgina-sì a l'é stàita dësvoidà da [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) ël $5 a $6.
+
+La rason dàita për dësvoidé a l'era: ''<nowiki>$3</nowiki>''.
+
+It peule [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vardé la stòria dla pàgina], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} modifiché l'ùltima vërsion], o ansërì na pàgina neuva ant lë spassi bianch sì sota.",
+	'blank-log' => 'dësveuida',
+	'blank-log-name' => 'Registr dij dësvoidament',
+	'blank-log-header' => 'Sota a-i é na lista ëd pàgine dësvoidà e torna vempìe.',
+	'blank-log-entry-blank' => 'dësvoidà $1',
+	'blank-log-entry-unblank' => 'torna vempì $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|registr ëd dësveuid]]',
+	'purewikideletion-blanknologin' => 'Nen rintrà ant ël sistema',
+	'purewikideletion-blanknologintext' => "It deuve esse n'utent registrà e [[Special:UserLogin|intrà]] për dësvoidé na pàgina.",
+	'purewikideletion-unblanknologintext' => "It deuve esse n'utent registrà e [[Special:UserLogin|intrà]] për torna vempe na pàgina.",
+	'purewikideletion-blankedtext' => "[[$1]] a l'é stàita dësvoidà.
+Varda $2 për na lista dij dësvoidament recent.",
+	'purewikideletion-population-done' => 'Fàit popolé la tabela blanked_page.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Pòpola]] la tabela dle pàgine dësvoidà',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

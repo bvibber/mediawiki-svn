@@ -119,8 +119,8 @@ $messages['es'] = array(
  * @author Peter17
  */
 $messages['fr'] = array(
-	'activestrategy' => 'Groupes de travail actifs',
-	'active-strategy-desc' => 'Affiche le nombre de modifications des pages du groupe de travail',
+	'activestrategy' => 'Stratégie active',
+	'active-strategy-desc' => 'Affiche le nombre de modifications apportées aux pages de planification stratégique',
 	'active-strategy-intro' => 'Nombre de modifications des pages du groupe de travail au cours {{PLURAL:$1|du dernier jour|des $1 derniers jours}}.',
 	'nedits' => '$1 {{PLURAL:$1|modification|modifications}}',
 );
@@ -313,8 +313,8 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'activestrategy' => 'Echip ëd travaj ative',
-	'active-strategy-desc' => 'Mostra ël nùmer ëd modìfiche a le pàgine dla partìa ëd travaj',
+	'activestrategy' => 'Ativa strategìa',
+	'active-strategy-desc' => 'A mosta ël nùmer ëd modìfiche a le pàgine ëd pianificassion stratégica',
 	'active-strategy-intro' => "Nùmer ëd modìfiche a le pàgine dl'echip ëd travaj ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}.",
 	'nedits' => '$1 {{PLURAL:$1|modìfica|modìfiche}}',
 );
@@ -360,7 +360,7 @@ $messages['ro'] = array(
  */
 $messages['ru'] = array(
 	'activestrategy' => 'Активная стратегия',
-	'active-strategy-desc' => 'Показывает число правок на страницах целевых групп',
+	'active-strategy-desc' => 'Показывает число правок на страницах стратегического планирования',
 	'active-strategy-intro' => 'Количество правок страниц комиссий за {{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}}.',
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
 );

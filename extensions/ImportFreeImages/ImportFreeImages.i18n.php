@@ -344,6 +344,12 @@ $messages['eo'] = array(
 	'importfreeimages_owner' => 'Aŭtoro',
 	'importfreeimages_importthis' => 'importi ĉi tiun',
 	'importfreeimages_next' => 'Sekvaj $1',
+	'importfreeimages_size_square' => 'Kvadrataĵo',
+	'importfreeimages_size_thumbnail' => 'Bildeto',
+	'importfreeimages_size_small' => 'Malgranda',
+	'importfreeimages_size_medium' => 'Meza',
+	'importfreeimages_size_large' => 'Granda',
+	'importfreeimages_size_original' => 'Originalo',
 );
 
 /** Spanish (Español)

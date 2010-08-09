@@ -315,6 +315,7 @@ $messages['an'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author Samer
  * @author عمرو
  */
 $messages['ar'] = array(
@@ -325,6 +326,7 @@ $messages['ar'] = array(
 	'prefswitch-survey-true' => 'نعم',
 	'prefswitch-survey-false' => 'لا',
 	'prefswitch-survey-submit-off' => 'عطّل المزايا الجديدة',
+	'prefswitch-survey-submit-global-off' => 'عطل الخصائص الجديدة عن جميع الويكيات',
 	'prefswitch-survey-cancel-off' => 'إذا أردت الاستمرار في استخدام المزايا الجديدة، فإمكانك الرجوع إلى $1.',
 	'prefswitch-survey-submit-feedback' => 'أرسل ملاحظات',
 	'prefswitch-survey-cancel-feedback' => 'إذا لم ترغب في تقديم الملاحظات، فبإمكانك الرجوع إلى $1.',
@@ -2051,6 +2053,7 @@ $messages['fr'] = array(
 	'prefswitch-survey-true' => 'Oui',
 	'prefswitch-survey-false' => 'Non',
 	'prefswitch-survey-submit-off' => 'Désactiver les nouvelles fonctionnalités',
+	'prefswitch-survey-submit-global-off' => 'Désactiver les nouvelles fonctionnalités sur tous les wikis',
 	'prefswitch-survey-cancel-off' => 'Si vous voulez continuer à utiliser les nouvelles fonctionnalités, vous pouvez revenir à $1',
 	'prefswitch-survey-submit-feedback' => 'Envoyer des commentaires',
 	'prefswitch-survey-cancel-feedback' => 'Si vous ne voulez pas faire de commentaires, vous pouvez revenir à $1.',
@@ -5017,9 +5020,13 @@ $messages['sc'] = array(
 $messages['si'] = array(
 	'prefswitch-survey-true' => 'ඔව්',
 	'prefswitch-survey-false' => 'නැත',
+	'prefswitch-survey-submit-feedback' => 'බීටා අනුවාදය පිලිබඳ ප්‍රතිපෝෂණය',
 	'prefswitch-survey-answer-whyoff-other' => 'වෙනත් හේතුවක්:',
 	'prefswitch-survey-question-browser' => 'ඔබ භාවිතා කරන්නේ කුමන බ්‍රවුසරයද?',
 	'prefswitch-survey-answer-browser-other' => 'අනෙක් බ්‍රවුසරය:',
+	'prefswitch-survey-question-os' => 'ඔබ භාවිතා කරනු ලබන්නේ කුමන මෙහෙයුම් පද්ධතිය ද?',
+	'prefswitch-survey-answer-os-other' => 'අනෙක් මෙහෙයුම් පද්ධතිය:',
+	'prefswitch-title-on' => 'බීටා අනුවාදයේ ලක්ෂණ',
 	'prefswitch-title-switched-on' => 'ප්‍රීති වන්න!',
 	'prefswitch-title-switched-off' => 'ස්තුතියි',
 );

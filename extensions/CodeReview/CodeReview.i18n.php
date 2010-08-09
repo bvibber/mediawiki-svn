@@ -2279,6 +2279,7 @@ Plena URL: $3
 Resumo de ŝanĝoj:
 
 $4',
+	'code-stats' => 'statistiko',
 	'repoadmin' => 'Administrado de Kodujo',
 	'repoadmin-new-legend' => 'Krei novan kodujon',
 	'repoadmin-new-label' => 'Nomo de dosierujo:',

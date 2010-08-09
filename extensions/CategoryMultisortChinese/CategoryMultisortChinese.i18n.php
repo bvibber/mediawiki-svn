@@ -319,19 +319,20 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'categorymultisortchinese-desc' => "A përmëtt a le categorìe d'esse vëddùe con ciav d'ordinament diferente specìfiche a la scritura cinèisa",
+	'categorymultisortchinese-desc' => "A përmët a le categorìe d'esse mostrà con ciav d'ordinament diferente specìfiche a le scriture cinèise",
 	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
 	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Bopomofo',
 	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade–Giles',
 	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
 	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong',
-	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Cantonese: Jyutping',
-	'categorymultisort-sortkey-name-stroke' => 'Stroke',
-	'categorymultisort-sortkey-name-stroke-simplified' => 'Stroke: Semplificà',
-	'categorymultisort-sortkey-name-stroke-traditional' => 'Stroke: Tradissional',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Cantonèis: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Bara',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Bara: Semplificà',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Bara: Tradissional',
 	'categorymultisort-sortkey-name-radical' => 'Radical',
 	'categorymultisort-sortkey-name-radical-simplified' => 'Radical: Semplificà',
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: Tradissional',

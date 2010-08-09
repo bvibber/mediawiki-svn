@@ -3413,6 +3413,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author AVRS
  * @author Airon90
  * @author Jagwar
  * @author Malafaya
@@ -3467,7 +3468,10 @@ Bonvolu legi [[{{MediaWiki:Ow editing policy url}}|nian redaktadan regularon]].'
 	'ow_uiprefs' => 'Vikidatenoj',
 	'ow_none_selected' => 'Nenio elektita',
 	'ow_transaction_from_transaction' => 'el transakcio:',
+	'ow_transaction_count' => 'Nombro:',
 	'ow_transaction_user' => 'Salutnomo:',
+	'ow_transaction_rollback_button' => 'Malfaregi',
+	'ow_transaction_rollback_header' => 'Malfaregi',
 	'ow_transaction_no_action' => 'Fari nenion',
 	'ow_transaction_previous_version' => 'Antaŭa versio',
 	'ow_transaction_restore' => 'ripari',
@@ -6606,6 +6610,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author Annayram
  * @author Aushulz
+ * @author Blaisorblade
  * @author Darth Kule
  * @author HalphaZ
  * @author Melos
@@ -6638,6 +6643,7 @@ $messages['it'] = array(
 	'datasearch_meaning' => 'Significato',
 	'datasearch_ext_identifier' => 'Identificatore esterno',
 	'datasearch_search_text' => 'Cerca testo:',
+	'datasearch_showing_only' => 'Mostrate solo un massimo di $1 {{PLURAL:$1|corrispondenza|corrispondenze}} (di $2).',
 	'datasearch_match_ext_ids' => 'Identificatori esterni di corrispondenza <i>$1</i>',
 	'importtsv' => 'Wikidata: Importa TSV',
 	'ow_importtsv_title1' => 'Importa TSV',
@@ -6735,6 +6741,7 @@ Non è stata eseguita l'operazione di copia.",
 	'ow_suggest_previous' => 'Precedente',
 	'ow_suggest_next' => 'Successivo',
 	'ow_suggest_clear' => 'Pulisci',
+	'ow_nstab_edit_copy' => 'modifica copia',
 );
 
 /** Japanese (日本語)

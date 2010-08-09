@@ -747,8 +747,8 @@ A doni ta bërë atë një lidhje të brendshme?',
 	'wikieditor-toolbar-help-content-bolditalic-syntax' => "'''''Bold &amp; tekst kursiv'''''",
 	'wikieditor-toolbar-help-content-bolditalic-result' => '<strong><em>Bold & italic text</em></strong>',
 	'wikieditor-toolbar-help-content-ilink-description' => 'Lidhje të Brendshme',
-	'wikieditor-toolbar-help-content-ilink-syntax' => '[[Page title|Link emërtim]]<br/>[[Page title]]',
-	'wikieditor-toolbar-help-content-ilink-result' => "<a href='#'>Etiketa Link</a><br/><a href='#'>Titulli i faqes</a>",
+	'wikieditor-toolbar-help-content-ilink-syntax' => '[[Page title|Link emërtim]]<br />[[Page title]]',
+	'wikieditor-toolbar-help-content-ilink-result' => "<a href='#'>Etiketa Link</a><br /><a href='#'>Titulli i faqes</a>",
 	'wikieditor-toolbar-help-content-xlink-description' => 'Lidhje e jashtme',
 	'wikieditor-toolbar-help-content-xlink-syntax' => 'Etiketa [http://www.example.org Link] <br /> [Http://www.example.org] <br /> http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Etiketa Link</a> <br /> <a href='#' class='external autonumber'>[1]</a> <br /> <a href='#' class='external'>http://www.example.org</a>",
@@ -853,6 +853,7 @@ $messages['ang'] = array(
  * @author Meno25
  * @author Orango
  * @author OsamaK
+ * @author Samer
  */
 $messages['ar'] = array(
 	'wikieditor-toolbar' => 'شريط أدوات التحرير',
@@ -987,6 +988,9 @@ $messages['ar'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'تيلوجو',
 	'wikieditor-toolbar-characters-page-sinhala' => 'سنهالا',
 	'wikieditor-toolbar-characters-page-gujarati' => 'جوجاراتي',
+	'wikieditor-toolbar-characters-page-thai' => 'التايلاندية',
+	'wikieditor-toolbar-characters-page-lao' => 'اللاوية',
+	'wikieditor-toolbar-characters-page-khmer' => 'الخميرية (الكمبودية)',
 	'wikieditor-toolbar-section-help' => 'مساعدة',
 	'wikieditor-toolbar-help-heading-description' => 'الوصف',
 	'wikieditor-toolbar-help-heading-syntax' => 'ما تكتبه',
@@ -1013,9 +1017,6 @@ $messages['ar'] = array(
 	'wikieditor-toolbar-help-content-xlink-description' => 'وصلة خارجية',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org اسم الوصلة]<br />[http://www.example.org]<br />http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>اسم الوصلة</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
-	'wikieditor-toolbar-help-content-heading1-description' => 'ترويسة المستوى الأول',
-	'wikieditor-toolbar-help-content-heading1-syntax' => '= نص الترويسة =',
-	'wikieditor-toolbar-help-content-heading1-result' => '<h1>نص الترويسة</h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => 'ترويسة المستوى الثاني',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== نص الترويسة ==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>نص الترويسة</h2>',
@@ -1370,7 +1371,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Вонкавая спасылка',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Праверка існаваньня старонкі…',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'Пазначаная няслушная назва.',
-	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Пададзены URL верагодна зьяўляецца спасылкай на іншую вікі-старонку.
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Пададзены URL-адрас верагодна зьяўляецца спасылкай на іншую вікі-старонку.
 Ці жадаеце зрабіць яе ўнутранай спасылкай?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Унутраная спасылка',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Вонкавая спасылка',
@@ -15825,6 +15826,7 @@ $messages['sq'] = array(
 	'wikieditor-toolbar-tool-heading-5' => 'Niveli 5',
 	'wikieditor-toolbar-tool-heading-example' => 'Kryeradhe',
 	'wikieditor-toolbar-group-format' => 'Formati',
+	'wikieditor-toolbar-tool-nowiki' => 'Pa formatim wiki',
 	'wikieditor-toolbar-tool-big' => 'Te madh',
 	'wikieditor-toolbar-tool-big-example' => 'Tekst te madhe',
 	'wikieditor-toolbar-tool-small' => 'Te vogël',
@@ -15853,7 +15855,12 @@ $messages['sq'] = array(
 	'wikieditor-toolbar-tool-table-preview' => 'Parapamje',
 	'wikieditor-toolbar-tool-table-insert' => 'Shto',
 	'wikieditor-toolbar-tool-table-cancel' => 'Anulo',
+	'wikieditor-toolbar-tool-replace' => 'Kërkoni dhe zhvendosni',
+	'wikieditor-toolbar-tool-replace-title' => 'Kërkoni dhe zhvendosni',
 	'wikieditor-toolbar-tool-replace-search' => 'Kërko për:',
+	'wikieditor-toolbar-tool-replace-replace' => 'zhvendosni me:',
+	'wikieditor-toolbar-tool-replace-button-findnext' => 'Kërko tjëter',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Zëvendëse tjëter',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Zëvendësojnë të gjitha',
 	'wikieditor-toolbar-tool-replace-close' => 'Mbylle',
 	'wikieditor-toolbar-section-characters' => 'Karaktere të veçanta',

@@ -1447,6 +1447,25 @@ $messages['rue'] = array(
 	'passwordreset-newpass' => 'Нове гесло:',
 );
 
+/** Sinhala (සිංහල)
+ * @author තඹරු විජේසේකර
+ */
+$messages['si'] = array(
+	'passwordreset' => 'මුරපදය වෙනස් කරන්න',
+	'passwordreset-invalidusername' => 'පරිශීලක නාමය වලංගු නොවේ.',
+	'passwordreset-emptyusername' => 'පරිශීලක නාමය හිස් කරන්න',
+	'passwordreset-nopassmatch' => 'මුරපදයන් සමාන නොවේ.',
+	'passwordreset-badtoken' => 'වලංගු නොවන සංස්කරණ සංඥාව',
+	'passwordreset-username' => 'පරිශීලක නාමය:',
+	'passwordreset-newpass' => 'නව මුර-පදය:',
+	'passwordreset-confirmpass' => 'මුර-පදය සනාථ කිරීම:',
+	'passwordreset-submit' => 'මුර-පදය යළි පිහිටුවන්න',
+	'passwordreset-success' => '$1 ලෙස මුර-පදය යළි පිහිටුවිණි.',
+	'passwordreset-disableuser' => 'පරිශීලක ගිණුම අක්‍රිය කරන්න ද?',
+	'passwordreset-accountdisabled' => 'ගිණුම අක්‍රීය කෙරිණි.',
+	'disabledusers' => 'අක්‍රීය පරිශීලකයන්',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

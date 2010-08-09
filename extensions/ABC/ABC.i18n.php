@@ -594,11 +594,12 @@ $messages['mk'] = array(
 
 /** Malayalam (മലയാളം)
  * @author Abhishek Jacob
+ * @author Praveenp
  * @author Sadik Khalid
  */
 $messages['ml'] = array(
 	'abc-desc' => '<code>&lt;abc&gt;</code> അനുബന്ധം എ.ബി.സി. സംഗീതത്തിനു ചേര്‍ക്കുന്നു',
-	'abcdownload' => 'ഡൌൺലോഡ്',
+	'abcdownload' => 'ഡൗൺലോഡ്:',
 );
 
 /** Mongolian (Монгол)
