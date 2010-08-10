@@ -57,18 +57,26 @@ class GetSvnMetadata extends Maintenance {
 	public function execute() {
 		global $wgExtDistWorkingCopy;
 		
+		$this->output( "Extension metadata import started...\n" );
+		
 		$extensionGroups = $this->getExtensionList();
+		
+		$extensionAmount = 0;
 		
 		// TODO: after initial version, make this more generic to also work with branches
 		
 		foreach ( $extensionGroups as $group => $extensions ) {
+			$extensionAmount += count( $extensions );
+			
 			foreach( $extensions as $extension ) {
 				$extensionDir = "$wgExtDistWorkingCopy/trunk/$extension";
+				$this->output( "Starting work on $extension..." );
 				$this->saveExtensionMetadata( $this->getExtensionMetadata( $extension, $extensionDir ) );
+				$this->output( " done.\n" );
 			}			
 		}
 		
-		$this->output( "..." );
+		$this->output( "Finished importing metadata from $extensionAmount extensions." );
 	}
 	
 	/**
@@ -127,6 +135,16 @@ class GetSvnMetadata extends Maintenance {
 	 */
 	protected function getExtensionMetadata( $extensionName, $extensionDir ) {
 		
+		// TODO: implement method (currently returning dummy data)
+		$extension = array(
+			'name' => $extensionName,
+			'description' => 'Awesome extension will be awesome when fully implemented.',
+			'version' => 4.2,
+			'authors' => 'James T. Kirk, Luke Skywalker',
+			'url' => 'http://www.mediawiki.org/wiki/Special:ExtensionDistributor/' . $extensionName
+		);
+		
+		return $extension;
 	}
 	
 	/**
@@ -137,9 +155,42 @@ class GetSvnMetadata extends Maintenance {
 	 * @param array $metaData
 	 */
 	protected function saveExtensionMetadata( array $metaData ) {
-		
+		// Get the database connections.
+		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
+
+		// Query for existing units with the same name.
+		$extension = $dbr->selectRow(
+			'distribution_units',
+			array( 'unit_id' ),
+			array( 'unit_name' => $metaData['name'] )
+		);		
 		
+		// Map the values to the db schema.
+		$values = array(
+			'unit_name' => $metaData['name'],
+			'current_version_nr' => $metaData['version'],
+			'current_desc' => $metaData['description'],
+			'current_authors' => $metaData['authors'],
+			'current_url' => $metaData['url'],
+		);
+		
+		// Insert or update depending on if it already exists.
+		if ( $extension == false ) {
+			$dbw->insert(
+				'distribution_units',
+				$values
+			);			
+		}
+		else {
+			$dbw->update(
+				'distribution_units',
+				$values,
+				array( 'unit_name' => $metaData['name'] )
+			);
+		}
+		
+		// TODO: distribution_unit_versions
 	}
 	
 }
