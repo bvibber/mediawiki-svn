@@ -99,6 +99,7 @@ class XMLRC {
     #wfDebug( "XMLRC: got attribute row: " . preg_replace('/\s+/', ' ', var_export($row, true)) . "\n" );
 
     $info = $query->extractRowInfo( $row );
+    $info['wikiid'] = wfWikiID();
 
     #wfDebug( "XMLRC: got info: " . preg_replace('/\s+/', ' ', var_export($info, true)) . "\n" );
 
