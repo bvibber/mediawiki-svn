@@ -27,7 +27,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
 
 // API modules registration.
 $wgAutoloadClasses['ApiQueryExtensions'] = dirname( __FILE__ ) . '/api/ApiQueryExtensions.php';
-$wgAPIModules['queryextensions'] = 'ApiQueryExtensions';
+$wgAPIListModules['extensions'] = 'ApiQueryExtensions';
 
 $wgAutoloadClasses['ApiExtension'] = dirname( __FILE__ ) . '/api/ApiExtension.php';
 $wgAPIModules['extension'] = 'ApiExtension';
