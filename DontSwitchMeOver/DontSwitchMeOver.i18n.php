@@ -41,6 +41,13 @@ $messages['be-tarask'] = array(
 	'dontswitchmeover-pref' => 'Пакінуць цяперашняе афармленьне пасьля пераключэньня стандартнага афармленьня',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'dontswitchmeover-pref' => "Peidio â newid y wedd yr wy'n ei defnyddio, pan fydd y wedd diofyn yn newid",
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -71,6 +78,14 @@ $messages['es'] = array(
 $messages['fr'] = array(
 	'dontswitchmeover-desc' => 'Préférence permettant aux utilisateurs de décider s’ils veulent ou non conserver leur choix d’apparence lorsque l’apparence par défaut est changée.',
 	'dontswitchmeover-pref' => 'Ne pas autoriser le changement de mon apparence lorsque l’apparence par défaut change',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'dontswitchmeover-desc' => 'Prèference que pèrmèt ux utilisators de spècefiar se vôlont consèrvar lor chouèx d’habelyâjo quand l’habelyâjo per dèfôt est changiê.',
+	'dontswitchmeover-pref' => 'Pas ôtorisar lo changement de mon habelyâjo quand l’habelyâjo per dèfôt change',
 );
 
 /** Galician (Galego)
@@ -123,7 +138,16 @@ $messages['ja'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'dontswitchmeover-desc' => '기본 스킨이 바뀔 때 기존의 스킨을 유지하도록 하는 설정을 추가',
 	'dontswitchmeover-pref' => '기본 스킨이 바뀔 때 내 스킨은 바뀌지 않게 하기',
+);
+
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'dontswitchmeover-desc' => 'Enställung, för ene Metmaacher et Ußsinn vum Wiki nit ze ändere, wann der Stanndatt vum Ußsinn vum Wiki verändert weet.',
+	'dontswitchmeover-pref' => 'Donn för mesch et Ußsinn vum Wiki nit ändere, wann der Stanndatt vum Ußsinn vum Wiki verändert weet',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -198,5 +222,13 @@ $messages['pt'] = array(
 $messages['ru'] = array(
 	'dontswitchmeover-desc' => 'Даёт пользователям возможность указать в настройках, что они хотят сохранить текущую тему оформления при смене темы по умолчанию.',
 	'dontswitchmeover-pref' => 'Не менять мою тему оформления при смене темы по умолчанию',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'dontswitchmeover-desc' => 'Cho phép người dùng chọn có muốn để yên thiết lập bề ngoài khi bề ngoài mặc định được thay đổi.',
+	'dontswitchmeover-pref' => 'Để yên bề ngoài của tôi khi bề ngoài mặc định được thay đổi',
 );
 

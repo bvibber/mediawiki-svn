@@ -113,6 +113,14 @@ $messages['cu'] = array(
 	'vector-collapsiblenav-more' => 'дроу́ꙃи ѩꙁꙑци́',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'vector-collapsiblenav-preference' => "Galluogi crebachu'r ddewislen lywio yn y wedd Vector",
+	'vector-collapsiblenav-more' => 'Rhagor o ieithoedd',
+);
+
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Sir48
