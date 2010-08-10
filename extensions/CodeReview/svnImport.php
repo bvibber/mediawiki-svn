@@ -4,7 +4,7 @@ $IP = getenv( 'MW_INSTALL_PATH' );
 if ( $IP === false ) {
 	$IP = dirname( __FILE__ ) . '/../..';
 }
-require( "$IP/maintenance/Maintenance.php" );
+require( "$IP/phase3/maintenance/Maintenance.php" );
 
 class SvnImport extends Maintenance {
 
