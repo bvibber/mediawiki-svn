@@ -46,6 +46,16 @@ class HTMLCacheUpdate
 			return;
 		}
 
+		if ( $this->mTable === 'globaltemplatelinks' ) {
+			global $wgEnableInterwikiTemplatesTracking;
+			
+			if ( $wgEnableInterwikiTemplatesTracking ) {
+				$distantPageArray = $this->mCache->getDistantTemplateLinks( 'globaltemplatelinks' );
+				$this->invalidateDistantTitles( $distantPageArray );
+			}
+			return;
+		}
+
 		# Get an estimate of the number of rows from the BacklinkCache
 		$numRows = $this->mCache->getNumLinks( $this->mTable );
 		if ( $numRows > $this->mRowsPerJob * 2 ) {
@@ -63,6 +73,7 @@ class HTMLCacheUpdate
 				$this->invalidateTitles( $titleArray );
 			}
 		}
+		
 		wfRunHooks( 'HTMLCacheUpdate::doUpdate', array($this->mTitle) );
 	}
 
@@ -200,7 +211,35 @@ class HTMLCacheUpdate
 			}
 		}
 	}
-
+	
+	/**
+	 * Invalidate an array of distant pages, given the wiki ID and page ID of those pages
+	 */
+	protected function invalidateDistantTitles( $distantPageArray ) {
+		global $wgUseFileCache, $wgUseSquid, $wgLocalInterwiki;
+		
+		$pagesByWiki = array();
+		foreach ( $distantPageArray as $row ) {
+			$wikiid = $row->gtl_from_wiki;
+			if( !isset( $pagesByWiki[$wikiid] ) ) {
+				$pagesByWiki[$wikiid] = array();
+			}
+			$pagesByWiki[$wikiid][] = $row->gtl_from_page;
+		}
+		
+		foreach ( $pagesByWiki as $wikiid => $pages ) {
+			$dbw = wfGetDB( DB_MASTER, array( ), $wikiid );
+			$timestamp = $dbw->timestamp();
+			$batches = array_chunk( $pages, $this->mRowsPerQuery );
+			foreach ( $batches as $batch ) {
+				$dbw->update( 'page',
+					array( 'page_touched' => $timestamp ),
+					array( 'page_id IN (' . $dbw->makeList( $batch ) . ')' ),
+					__METHOD__
+				);
+			}
+		}
+	}
 }
 
 /**

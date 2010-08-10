@@ -9,6 +9,7 @@
  * All information is loaded on creation when called by Interwiki::fetch( $prefix ).
  * All work is done on slave, because this should *never* change (except during
  * schema updates etc, which aren't wiki-related)
+ * This class also contains the functions that allow interwiki templates transclusion.
  */
 class Interwiki {
 
