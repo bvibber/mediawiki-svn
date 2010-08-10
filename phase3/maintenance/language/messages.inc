@@ -2733,6 +2733,7 @@ $wgMessageStructure = array(
 		'exif-datetimeexpires',
 		'exif-datetimereleased',
 		'exif-originaltransmissionref',
+		'exif-identifier',
 	),
 	'exif-values' => array(
 		'exif-make-value',
@@ -2956,6 +2957,17 @@ $wgMessageStructure = array(
 		'exif-ycbcrpositioning-1',
 		'exif-ycbcrpositioning-2',
 	),
+	'exif-dc' => array(
+		'exif-dc-contributor',
+		'exif-dc-coverage',
+		'exif-dc-date',
+		'exif-dc-publisher',
+		'exif-dc-relation',
+		'exif-dc-rights',
+		'exif-dc-source',
+		'exif-dc-type',
+	),
+
 	'edit-externally' => array(
 		'edit-externally',
 		'edit-externally-help',

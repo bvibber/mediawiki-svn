@@ -972,6 +972,7 @@ class FormatExif {
 				case 'DateTimeReleased':
 				case 'DateTimeExpires':
 				case 'GPSDateStamp':
+				case 'dc-date':
 					if ( $val == '0000:00:00 00:00:00' || $val == '    :  :     :  :  ' ) {
 						$val = wfMsg( 'exif-unknowndate' );
 					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d) (?:\d\d):(?:\d\d):(?:\d\d)$/', $val ) ) {
@@ -1373,6 +1374,14 @@ class FormatExif {
 				case 'iimCategory':
 				case 'iimSupplementalCategory':
 				case 'OriginalTransmissionRef':
+				case 'Identifier':
+				case 'dc-contributor':
+				case 'dc-coverage':
+				case 'dc-publisher':
+				case 'dc-relation':
+				case 'dc-rights':
+				case 'dc-source':
+				case 'dc-type':
 
 					$val = htmlspecialchars( $val );
 					break;

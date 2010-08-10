@@ -19,6 +19,7 @@ class BitmapMetadataHandler {
 		20 => Array( 'other' ),
 		40 => Array( 'file-comment' ),
 		60 => Array( 'iptc-bad-hash' ),
+		70 => Array( 'xmp-deprected' ),
 		80 => Array( 'xmp-general' ),
 		90 => Array( 'xmp-exif' ),
 		100 => Array( 'iptc-good-hash', 'iptc-no-hash' ),
@@ -277,6 +278,19 @@ class BitmapMetadataHandler {
 		foreach ( $this->metaPriority as $pri ) {
 			foreach ( $pri as $type ) {
 				if ( isset( $this->metadata[$type] ) ) {
+					//Do some special casing for multilingual values.
+					// Don't discard translations if also as a simple value.
+					foreach ( $this->metadata[$type] as $itemName => $item ) {
+						if ( is_array($item) && isset($item['_type']) && $item['_type'] === 'lang' ) {
+							if ( isset($temp[$itemName]) && !is_array($temp[$itemName]) ) {
+								$default = $temp[$itemName];
+								$temp[$itemName] = $item;
+								$temp[$itemName]['x-default'] = $default;
+								unset( $this->metadata[$type][$itemName] );
+							}
+						}
+					}
+
 					$temp = $temp + $this->metadata[$type];
 				}
 			}

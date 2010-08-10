@@ -194,12 +194,82 @@ class XMPInfo {
 				'map_name'  => 'Headline',
 				'mode'      => XMPReader::MODE_LANG
 			),
-			'description'             => array(
+			'description'       => array(
 				'map_group' => 'general',
 				'map_name'  => 'ImageDescription',
 				'mode'      => XMPReader::MODE_LANG
 			),
-
+			'contributor'       => array(
+				'map_group' => 'general',
+				'map_name'  => 'dc-contributor',
+				'mode'      => XMPReader::MODE_BAG
+			),
+			'coverage'          => array(
+				'map_group' => 'general',
+				'map_name'  => 'dc-coverage',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'creator'           => array(
+				'map_group' => 'general',
+				'map_name'  => 'Artist', //map with exif Artist, iptc bylin (2:80)
+				'mode'      => XMPReader::MODE_SEQ,
+			),
+			'date'              => array(
+				'map_group' => 'general',
+				// Note, not mapped with other date properties, as this type of date is
+				// non-specific: "A point or period of time associated with an event in
+				//  the lifecycle of the resource"
+				'map_name'  => 'dc-date',
+				'mode'      => XMPReader::MODE_SEQ,
+				'validate'  => 'validateDate',
+			),
+			/* Do not extract dc:format, as we've got better ways to determine mimetype */
+			'identifier'         => array(
+				'map_group' => 'deprected',
+				'map_name'  => 'Identifier',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'language'          => array(
+				'map_group' => 'general',
+				'map_name'  => 'LanguageCode', /* mapped with iptc 2:135 */
+				'mode'      => XMPReader::MODE_BAG,
+				'validate'  => 'validateLangCode',
+			),
+			'publisher'         => array(
+				'map_group' => 'general',
+				'map_name'  => 'dc-publisher',
+				'mode'      => XMPReader::MODE_BAG,
+			),
+			// for related images/resources
+			'relation'          => array(
+				'map_group' => 'general',
+				'map_name'  => 'dc-relation',
+				'mode'      => XMPReader::MODE_BAG,
+			),
+			'rights'            => array(
+				'map_group' => 'general',
+				'map_name'  => 'dc-rights',
+				'mode'      => XMPReader::MODE_LANG,
+			),
+			// Note: source is not mapped with iptc source, since iptc
+			// source describes the source of the image in terms of a person
+			// who provided the image, where this is to describe an image that the
+			// current one is based on.
+			'source'            => array(
+				'map_group' => 'general',
+				'map_name'  => 'dc-source',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'subject'           => array(
+				'map_group' => 'general',
+				'map_name'  => 'Keywords', /* maps to iptc 2:25 */
+				'mode'      => XMPReader::MODE_BAG,
+			),
+			'type'              => array(
+				'map_group' => 'general',
+				'map_name'  => 'dc-type',
+				'mode'      => XMPReader::MODE_BAG,
+			),
 		),
 		//Note, this property affects how jpeg metadata is extracted.
 		'http://ns.adobe.com/xmp/note/' => array(

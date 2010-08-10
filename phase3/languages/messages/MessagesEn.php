@@ -3998,6 +3998,18 @@ Others will be hidden by default.
 'exif-ycbcrpositioning-1' => 'Centered',
 'exif-ycbcrpositioning-2' => 'Co-sited',
 
+'exif-identifier' => 'Identifier',
+# dc stuff
+
+'exif-dc-contributor' => 'Contributors',
+'exif-dc-coverage'    => 'Spatial or temporal scope of media',
+'exif-dc-date'        => 'Date(s)',
+'exif-dc-publisher'   => 'Publisher',
+'exif-dc-relation'    => 'Related media',
+'exif-dc-rights'      => 'Rights',
+'exif-dc-source'      => 'Source media',
+'exif-dc-type'        => 'Type of media',
+
 # External editor support
 'edit-externally'      => 'Edit this file using an external application',
 'edit-externally-help' => '(See the [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions] for more information)',

@@ -638,4 +638,13 @@ $wgEXIFMessages = array(
 	'exif-datetimeexpires',
 	'exif-datetimereleased',
 	'exif-originaltransmissionref',
+	'exif-identifier',
+	'exif-dc-contributor',
+	'exif-dc-coverage',
+	'exif-dc-date',
+	'exif-dc-publisher',
+	'exif-dc-relation',
+	'exif-dc-rights',
+	'exif-dc-source',
+	'exif-dc-type',
 );
