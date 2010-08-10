@@ -16,5 +16,5 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'distribution-desc' => 'Extension that serves as a package distribution system for MediaWiki and extensions.',
+	'distribution-desc' => 'Extension that serves as a package distribution system for MediaWiki and extensions',
 );
