@@ -23,12 +23,12 @@ $wgExtensionMessagesFiles['HideNamespaceMagic'] = $dir . 'HideNamespace.i18n.mag
 $wgExtensionFunctions[] = 'wfHideNamespaceSetup';
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
-	'name'           => "HideNamespace",
-	'description'    => "Hides namespace in the header and title when a page is in specified namespace or when the <code><nowiki>{{#hidens:}}</nowiki></code> parser function is called.",
-	'descriptionmsg' => "hidens-desc",
-	'version'        => "1.4",
+	'name'           => 'HideNamespace',
+	'description'    => 'Hides namespace in the header and title when a page is in specified namespace or when the <code><nowiki>{{#hidens:}}</nowiki></code> parser function is called.',
+	'descriptionmsg' => 'hidens-desc',
+	'version'        => '1.4.2',
 	'author'         => 'Matěj Grabovský',
-	'url'            => "http://www.mediawiki.org/wiki/Extension:HideNamespace",
+	'url'            => 'http://www.mediawiki.org/wiki/Extension:HideNamespace',
 );
 
 function wfHideNamespaceSetup() {
@@ -37,9 +37,9 @@ function wfHideNamespaceSetup() {
 	$extHidensObj = new ExtensionHideNamespace;
 
 	// Register hooks
-	$wgHooks['ArticleViewHeader'][] = array( $extHidensObj, 'onArticleViewHeader' );
-	$wgHooks['BeforePageDisplay'][] = array( $extHidensObj, 'onBeforePageDisplay' );
-	$wgHooks['ParserFirstCallInit'][] = array( $extHidensObj, 'RegisterParser' );
+	$wgHooks['ArticleViewHeader'][] = array( &$extHidensObj, 'onArticleViewHeader' );
+	$wgHooks['BeforePageDisplay'][] = array( &$extHidensObj, 'onBeforePageDisplay' );
+	$wgHooks['ParserFirstCallInit'][] = array( &$extHidensObj, 'registerParser' );
 }
 
 class ExtensionHideNamespace {
@@ -49,9 +49,9 @@ class ExtensionHideNamespace {
 	/**
 	 * Register our parser functions.
 	 */
-	function RegisterParser( &$parser ) {
-		$parser->setFunctionHook( 'hidens', array( $this, 'hideNs' ) );
-		$parser->setFunctionHook( 'showns', array( $this, 'showNs' ) );
+	function registerParser( &$parser ) {
+		$parser->setFunctionHook( 'hidens', array( &$this, 'hideNs' ) );
+		$parser->setFunctionHook( 'showns', array( &$this, 'showNs' ) );
 
 		return true;
 	}
@@ -86,7 +86,8 @@ class ExtensionHideNamespace {
 		if( self::$namespace === NS_MAIN ) {
 			self::$namespaceL10n = '';
 		} else {
-			self::$namespaceL10n = substr( $article->mTitle->getPrefixedText(), 0, strpos($article->mTitle->getPrefixedText(),':') );
+			self::$namespaceL10n = substr( $article->mTitle->getPrefixedText(), 0,
+				strpos( $article->mTitle->getPrefixedText(),':' ) );
 		}
 
 		return true;
@@ -102,16 +103,17 @@ class ExtensionHideNamespace {
 
 		global $wgHideNsNamespaces;
 
-		// Hide the namespace if:
-		// * The page's namespace is contained in the $wgHideNsNamespaces array
-		//  or
-		// * The {{#hidens:}} function was called
-		// BUT *not* when the {{#showns:}} function was called
+		/**
+		 * Hide the namespace if:
+		 *   the page's namespace is contained in the $wgHideNsNamespaces array or
+		 *   the {{#hidens:}} function was called
+		 * but not when the {{#showns:}} function was called
+		 */
 
 		if( ( (isset($wgHideNsNamespaces) && in_array(self::$namespace, $wgHideNsNamespaces)) || self::$forceHide ) &&
 		    !self::$forceShow )
 		{
-			$out->setPageTitle( substr( $out->getPageTitle(), strlen(self::$namespaceL10n)+1 ) );
+			$out->setPageTitle( substr( $out->getPageTitle(), strlen( self::$namespaceL10n ) + 1 ) );
 		}
 
 		return true;
