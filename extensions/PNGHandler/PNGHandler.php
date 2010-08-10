@@ -7,9 +7,8 @@ $wgExtensionMessagesFiles['PNGHandler'] = $dir . 'PNGHandler.i18n.php';
 $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'PNGHandler',
-	'author' => 'Bryan Tong Minh', 
-	'url' => 'http://www.mediawiki.org/wiki/Extension:PNGHandler', 
-	'description' => 'Resize PNGs using pngds',
+	'author' => 'Bryan Tong Minh',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:PNGHandler',
 	'descriptionmsg' => 'pnghandler-desc',
 );
 

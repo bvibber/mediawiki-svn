@@ -36,7 +36,6 @@ $wgExtensionCredits['parserhook'][] = array(
 	),
 	'version' => '1.7',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RSS',
-	'description' => 'Displays an RSS feed on a wiki page',
 	'descriptionmsg' => 'rss-desc',
 );
 

@@ -10,7 +10,6 @@ $wgExtensionCredits['other'][] = array(
 	'version' => 0.1,
 	'author' => 'Max Semenik',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Cassandra',
-	'description' => 'Allows to store revision text in [http://cassandra.apache.org/ Apache Cassandra] database.',
 	'descriptionmsg' => 'cassandra-desc',
 );
 $dir = dirname( __FILE__ ) . '/';

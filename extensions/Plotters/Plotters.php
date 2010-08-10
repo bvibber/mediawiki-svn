@@ -29,7 +29,6 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'Plotter parser extension',
 	'version'        => '0.6c',
 	'author'         => 'Ryan Lane',
-	'description'    => 'Allows users to create client side graphs and plots',
 	'descriptionmsg' => 'plotters-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Plotters',
 );

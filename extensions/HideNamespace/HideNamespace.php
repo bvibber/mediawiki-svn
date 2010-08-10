@@ -24,7 +24,6 @@ $wgExtensionFunctions[] = 'wfHideNamespaceSetup';
 $wgExtensionCredits['other'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'HideNamespace',
-	'description'    => 'Hides namespace in the header and title when a page is in specified namespace or when the <code><nowiki>{{#hidens:}}</nowiki></code> parser function is called.',
 	'descriptionmsg' => 'hidens-desc',
 	'version'        => '1.4.2',
 	'author'         => 'Matěj Grabovský',
