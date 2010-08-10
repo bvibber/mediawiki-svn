@@ -25,20 +25,17 @@ import sys, os, time, select, socket
 import xmpp # using the xmpppy library <http://xmpppy.sourceforge.net/>, GPL
 import simplexml # using simplexml library <http://pypi.python.org/pypi/simplexml/0.6.1>, GPL
 
+RC_EDIT= 0
+RC_NEW= 1
+RC_MOVE= 2
+RC_LOG= 3
+RC_MOVE_OVER_REDIRECT= 4
+
+################################################################################
 class Relay:
-    def __init__( self, jabber, message_type = 'message', console_encoding = 'utf-8', message_encoding = 'utf-8', udp_buffsize = 8192 ):
-        self.jabber = jabber
-	self.message_type = message_type
+    def __init__( self, console_encoding = 'utf-8' ):
 	self.console_encoding = console_encoding
-	self.message_encoding = message_encoding
-	self.udp_buffsize = udp_buffsize
-
-	self.targets = {}
-
-	self.udp_socket = None
-
-    def register_handlers(self):
-        self.jabber.RegisterHandler( 'message', self.process_message )
+	self.channels = {}
 
     def warn(self, message):
 	sys.stderr.write( "WARNING: %s\n" % ( message.encode( self.console_encoding ) ) )
@@ -49,68 +46,20 @@ class Relay:
     def debug(self, message):
 	sys.stderr.write( "DEBUG: %s\n" % ( message.encode( self.console_encoding ) ) )
 
-    def get_all_targets(self):
-	return self.targets.keys()
+    def get_all_channels(self):
+	return self.targets.values()
 
-    def get_target( self, stream_name ):
-	return self.get( stream_name )
+    def get_channel( self, name ):
+	return self.channels.get( name )
 
-    def add_target( self, stream_name, target_jid ):
-	return self.targets[ stream_name ] = target_jid
+    def add_channel( self, name, channel ):
+	return self.channels[ name ] = channel
 
-    def process_message(self, con, message):
-        type = message.getType()
-        fromjid = message.getFrom().getStripped()
-
-        if (message.getError()):
-            self.warn("received %s error from <%s>: %s\n" % (type, message.getError(), message.getFrom() ))
-	elif message.getBody():
-	    self.debug("discarding %s message from <%s>: %s\n" % (type, message.getFrom(), message.getBody() ))
-
-    def process_rc_packet(self, data):
-	dom = simplexml.simplexml( data )
-	
-	s = self.get_stream_name( dom )
-	t = self.get_target( s )
-	
-	if not t:
-	    self.warn( "no target addres known for %s, discarding message " % s )
-	else:
-	    m = self.get_rc_text( dom )
-	    self.send_message_to( m, t, dom )
-
-    def compose_message( self, message, xml = None, mtype = None ):
-	if type( message ) == unicode:
-	    message = message.encode( self.message_encoding )
-
-	if type( message ) == str:
-	    if mtype is None:
-		mtype = self.message_type
-
-	    message = xmpp.protocol.Message( to, body= message, type= mtype )
-
-	    if xml:
-		message.addChild( node = xml )
-	else:
-	    if xml:
-		raise Exception("Message already composed, can't attach XML!")
-
-	    if mtype is not None and mtype != message.getType():
-		raise Exception("Message already composed with incompatible type! ( %s != %s )" % (mtype, message.getType()) )
-
-	return message
-
-    def send_message_to( self, message, to, xml = None, mtype = None ):
-	message = self.compose_message( message, mtype = mtype, xml = xml )
-
-        return self.jabber.send( message )
-
-    def broadcast_message( self, message, xml = None, mtype = None ):
-	message = self.compose_message( message, mtype = mtype, xml = xml )
-        targets = self.get_all_targets()
+    def broadcast_message( self, message, xml = None ):
+        targets = self.get_all_channels()
 
 	for t in targets:
-	    self.send_message_to( message, t )
+	    t.send_message( message, xml = xml )
 
     def process_command(self, command):
         if ( command == 'quit' ):
@@ -118,12 +67,147 @@ class Relay:
         elif ( command.startswith( '/' ) ):
     	    self.broadcast_message( command )
 
-    def udp_connect( self, port, host = '0.0.0.0' ):
-	self.udp_socket = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
-	self.udp_socket.setsockopt( socket.SOL_SOCKET, socket.SO_REUSEADDR, 1 )
-	self.udp_socket.bind( (host, port) )
+    def get_rc_text( self, rc ):
+	for k, v in rc.items():
+	    locals[k] = v
 
-    def xmpp_connect( self, jid, password ):
+	if rc_type == RC_LOG:
+	    target = "Special:Log/" + rc_log_type;
+	    url = ''
+	else:
+	    target = title;
+
+	    if rc_type == RC_NEW:
+		url = "oldid=" + rc_this_oldid
+	    else:
+		url = "diff=" + rc_this_oldid + "&oldid=" + rc_last_oldid
+		url += "&rcid=" + rc_id
+
+	url = self.get_wiki_url( wikiid, target );
+
+	if locals.get('oldlen') && locals.get('newlen') ) {
+		szdiff = newlen - oldlen;
+		if szdiff >= 0:
+			szdiff = '+' + szdiff
+		
+		szdiff = '(' + $szdiff + ')' 
+	else:
+		szdiff = ''
+
+	if rc_type == RC_LOG:
+		targetText = title
+		flag = logaction
+	else:
+		flag = ''
+		
+		if type == 'new':
+		    flage += 'N';
+
+		if minor:
+		    flage += 'M';
+
+		if bot:
+		    flage += 'B';
+
+		if anon:
+		    flage += 'A';
+
+	fullString = "%s %s %s * %s * %s %s" % ( title, flag, url, user, szdiff, comment );
+
+	return $fullString;
+
+    def get_wiki_url( self, wikiid, page ):
+	raise Exception("oops!") !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    def relay_rc_message( self, rc ):
+	w = rc['wikiid']
+	t = self.get_channel( w )
+	
+	if not t:
+	    self.warn( "no channel found for %s, discarding message " % s )
+	    return False
+	else:
+	    m = self.get_rc_text( rc )
+	    return t.send_message( m, rc )
+
+    def service_loop( self, connections* ):
+	socketlist = {}
+	for con in connections:
+	    socketlist[ con.get_socket() ] = con
+
+	self.online = 1
+
+	while self.online:
+	    (i , o, e) = select.select(socketlist.keys(),[],[],1)
+
+	    for sock in i:
+		con = socketlist[ sock ]
+		if con:
+		    con.process()
+		else:
+		    raise Exception("Unknown socket: %s" % repr(sock))
+
+	    # FIXME: error recovery (especially when send failed)
+
+	    for sock in e:
+		    raise Exception("Error in socket: %s" % repr(sock))
+
+	self.info("service loop terminated, disconnecting")
+
+	for con in connections:
+	    con.close()
+
+	self.info("done.")
+
+################################################################################
+class Connection:
+    def __init__( self, relay ):
+	self.relay = relay
+
+    def warn(self, message):
+	self.relay.warn( message )
+
+    def info(self, message):
+	self.relay.info( message )
+
+    def debug(self, message):
+	self.relay.debug( message )
+
+class XmppConnection (Connection):
+    def __init__( self, relay, jabber, message_encoding = 'utf-8' ):
+        super( XmppConnection, self ).__init__( relay )
+        self.jabber = jabber
+	self.message_encoding = message_encoding
+
+    def process( self ):
+	self.jabber.Process(1)
+
+	if not self.jabber.isConnected(): 
+	    self.warn("connection lost, reconnecting...")
+	    
+	    if self.jabber.reconnectAndReauth():
+		self.warn("re-connect successful.")
+		self.on_connect()
+
+    def close( self ):
+	self.jabber.disconnect()
+
+    def make_jabber_channel( self, jid ):
+	return JabberChannel( self, jid )
+
+    def make_muc_channel( self, jid, nick ):
+	return MucChannel( self, jid, nick )
+
+    def process_message(self, con, message):
+        if (message.getError()):
+            self.warn("received %s error from <%s>: %s\n" % (message.getType(), message.getError(), message.getFrom() ))
+	elif message.getBody():
+	    self.debug("discarding %s message from <%s>: %s\n" % (message.getType(), message.getFrom(), message.getBody() ))
+
+    def register_handlers(self):
+        self.jabber.RegisterHandler( 'message', self.process_message )
+
+    def connect( self, jid, password ):
         con= self.jabber.connect()
 
         if not con:
@@ -144,77 +228,116 @@ class Relay:
 
         self.info( 'connected %s' % ( jid ) )
 
-	self.on_xmpp_connect()
+	self.on_connect()
 
         return con
 
-    def on_xmpp_connect( self ):
+    def on_connect( self ):
         self.jabber.sendInitPresence(self)
         self.roster = self.jabber.getRoster()
 
-    def service_loop( self ):
-	udp_socket = self.udp_socket
-	xml_socket = self.jabber.Connection._sock
-	stdin_socket = sys.stdin
+    def get_socket( self ):
+	return self.jabber.Connection._sock
 
-	self.online = 1
+class CommandConnection (Connection):
+    def __init__( self, relay, socket ):
+        super( CommandConnection, self ).__init__( relay )
+	self.socket = socket
 
-	while self.online:
-	    (i , o, e) = select.select(socketlist.keys(),[],[],1)
-	    for sock in i:
-		if sock == xmpp_socket:
-		    self.jabber.Process(1)
+    def close( self ):
+	if self.socket != sys.stdin:
+	    self.socket.close()
 
-		    if not cl.isConnected(): 
-			self.warn("connection lost, reconnecting...")
-			self.jabber.reconnectAndReauth()
-			self.warn("re-connect successful.")
-			self.on_xmpp_connect()
+    def process(self):
+	msg = self.socket.readline().sub('^\\s+|\\s+$', '')
 
-		elif sock == udp_socket:
-		    msg = socket.recvfrom( self.udp_buffsize )
+	if (msg.startswith('/')):
+	    self.process_command( msg )
+	else:
+	    self.relay.broadcast_message( msg )
 
-		    bot.process_rc_packet( msg )
+    def process_command(self, command):
+        self.relay.process_command( command )
 
-		elif sock == stdio_socket:
-		    msg = sys.stdin.readline().rstrip('\r\n')
+    def get_socket( self ):
+	return self.socket
 
-		    if (msg.startswith('/')):
-			bot.process_command( msg )
-		    else:
-			bot.broadcast_message( msg )
+class UdpConnection (Connection):
+    def __init__( self, relay, buffsize = 8192 ):
+        super( UdpConnection, self ).__init__( relay )
+	self.buffsize = buffsize
+	self.socket = None
 
-		else:
-		    raise Exception("Unknown socket: %s" % repr(sock))
+    def close( self ):
+	self.socket.close()
 
-	   # FIXME: error recovery (especially when send failed)
+    def process(self):
+	msg = socket.recvfrom( self.buffsize )
 
-	    for sock in e:
-		    raise Exception("Error in socket: %s" % repr(sock))
+	self.process_rc_packet( msg )
 
-	self.info("service loop terminated, disconnecting")
-	self.jabber.disconnect()
-	self.udp_socket.close()
-	self.info("done.")
+    def process_rc_packet(self, data):
+	dom = simplexml.simplexml( data )
+	self.relay.relay_rc_message( dom.item[0] )
 
-class ChatRelay ( Relay ):
-    def __init__( self, jabber, args** ):
-	super( ChatRelay, self ).__init__( jabber, **args )
+	#FIXME: error recovery (xml parser error, etc)
 
+    def connect( self, port, host = '0.0.0.0' ):
+	self.socket = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
+	self.socket.setsockopt( socket.SOL_SOCKET, socket.SO_REUSEADDR, 1 )
+	self.socket.bind( (host, port) )
 
-class GroupChatRelay (ChatRelay):
-    def __init__( self, jabber, group_nick, args** ):
-	super( ChatRelay, self ).__init__( jabber, room_jid, **args )
+    def get_socket( self ):
+	return self.socket
 
-	self.group_nick = group_nick;
+##################################################################################
 
-    def add_target( self, stream_name, target_jid ):
-	super(ChatRelay, self).add_target(stream_name, target_jid)
-	self.join_muc( target_jid, self.group_nick )
+class Channel:
+    def __init__( self, connection ):
+	self.connection = connection
 
-    def join_muc(self, room, nick):
+class JabberChannel (Channel):
+    def __init__( self, connection, jid ):
+	super( JabberChannel, self ).__init__( connection )
+	self.connection = connection
+        self.jid = jid
+	self.message_type = 'chat'
+
+    def compose_message( self, message, xml = None, mtype = None ):
+	if type( message ) == unicode:
+	    message = message.encode( self.message_encoding )
+
+	if type( message ) == str:
+	    if mtype is None:
+		mtype = self.message_type
+
+	    message = xmpp.protocol.Message( jid, body= message, type= mtype )
+
+	    if xml:
+		message.addChild( node = xml )
+	else:
+	    if xml:
+		raise Exception("Message already composed, can't attach XML!")
+
+	    if mtype is not None and mtype != message.getType():
+		raise Exception("Message already composed with incompatible type! ( %s != %s )" % (mtype, message.getType()) )
+
+	return message
+
+    def send_message( self, message, xml = None, mtype = None ):
+	message = self.compose_message( message, mtype = mtype, xml = xml )
+
+        return self.connection.jabber.send( message )
+
+class MucChannel (JabberChannel):
+    def __init__( self, connection, room_jid, room_nick ):
+	super( MucChannel, self ).__init__( connection, jid )
+        self.nick = room_nick
+	self.message_type = 'groupchat'
+
+    def join_muc(self):
 	# use our own desired nickname as resource part of the group's JID
-	jid = room.__str__( wresource= 0 ) + "/" + nick; 
+	jid = self.jid.__str__( wresource= 0 ) + "/" + self.nick; 
 
 	#create presence stanza
 	join = xmpp.Presence( to= jid )
@@ -222,11 +345,13 @@ class GroupChatRelay (ChatRelay):
 	#announce full MUC support
 	join.addChild( name = 'x', namespace = 'http://jabber.org/protocol/muc' ) 
 
-	self.jabber.send( join )
+	self.connection.jabber.send( join )
 
 	self.info('joined room %s' % room)
 
 	return True
+
+##################################################################################
 
 if __name__ == '__main__':
 
