@@ -44,15 +44,16 @@ class WikiInfo(object):
 	self.config = config
 
     def get_wikis( self ):
-	self.sections()
+	return self.config.sections()
 
     def get_wiki_property( self, wiki, prop ):
-	opt = self.config.options( wiki )
+	if not self.config.has_section( wiki ): 
+	    return None
 
-	if opt is None: 
-	    return False
+	if not self.config.has_option( wiki, prop ): 
+	    return None
 
-	return opt.get( prop )
+	return self.config.get( wiki, prop )
 
     def get_wiki_page_url( self, wiki ):
 	return self.get_wiki_property( wiki, 'page-url' )
@@ -70,6 +71,8 @@ class Relay(object):
 	self.loglevel = LOG_VERBOSE
 	self.wiki_info = wiki_info;
 
+    #FIXME: test unicode! 
+
     def warn(self, message):
 	if self.loglevel >= LOG_QUIET:
 	    sys.stderr.write( "WARNING: %s\n" % ( message.encode( self.console_encoding ) ) )
@@ -83,7 +86,7 @@ class Relay(object):
 	    sys.stderr.write( "DEBUG: %s\n" % ( message.encode( self.console_encoding ) ) )
 
     def get_all_channels(self):
-	return self.targets.values()
+	return self.channels.values()
 
     def get_channel( self, name ):
 	return self.channels.get( name )
@@ -94,15 +97,15 @@ class Relay(object):
 
     def create_channels( self, names, factories ):
 	for wiki in names:
-	    t = self.wiki_info.get_wiki_channel_type( name )
-	    x = self.wiki_info.get_wiki_channel_spec( name )
+	    t = self.wiki_info.get_wiki_channel_type( wiki )
+	    x = self.wiki_info.get_wiki_channel_spec( wiki )
 
 	    f = factories[ t ]
 	    channel = f( x )
 
 	    channel.join() #FIXME: error detection / recovery!
 
-	    self.add_channel( name, channel )
+	    self.add_channel( wiki, channel )
 
     def broadcast_message( self, message, xml = None ):
         targets = self.get_all_channels()
@@ -112,8 +115,10 @@ class Relay(object):
 
     def process_command(self, line):
 	args = line.split()
-	command = args[0]
+	command = args[0][1:]
 	args = args[1:]
+
+	self.debug( "processing command: %s" % command )
 
         if ( command == 'quit' ):
     	    self.online = False
@@ -127,6 +132,8 @@ class Relay(object):
     	    self.loglevel = LOG_VERBOSE
         elif ( command == 'quiet' ):
     	    self.loglevel = LOG_QUIET
+	else:
+	    self.warn( "unknwon command: %s" % command )
 
     def get_rc_text( self, rc ):
 	for k, v in rc.items():
@@ -182,7 +189,7 @@ class Relay(object):
 	u = self.wiki_info.get_wiki_page_url( wikiid )
 	if not u: return False
 
-	return u.sub( '$1', urllib.quote( page ) )
+	return u.replace( '$1', urllib.quote( page ) )
 
     def relay_rc_message( self, rc ):
 	w = rc['wikiid']
@@ -242,6 +249,7 @@ class XmppConnection (Connection):
     def __init__( self, relay, message_encoding = 'utf-8' ):
         super( XmppConnection, self ).__init__( relay )
 	self.message_encoding = message_encoding
+	self.jid = None
 
     def process( self ):
 	self.jabber.Process(1)
@@ -260,20 +268,22 @@ class XmppConnection (Connection):
 	return JabberChannel( self, jid )
 
     def make_muc_channel( self, room_jid, room_nick = None ):
+	if type(room_jid) != object:
+	    room_jid = xmpp.protocol.JID( room_jid )
 
 	if not room_nick:
 	    room_nick = room_jid.getResource()
 
 	if not room_nick:
-	    room_nick = connection.jid.getNode()
+	    room_nick = self.jid.getNode()
 
 	return MucChannel( self, room_jid, room_nick )
 
     def process_message(self, con, message):
         if (message.getError()):
-            self.warn("received %s error from <%s>: %s\n" % (message.getType(), message.getError(), message.getFrom() ))
+            self.warn("received %s error from <%s>: %s" % (message.getType(), message.getError(), message.getFrom() ))
 	elif message.getBody():
-	    self.debug("discarding %s message from <%s>: %s\n" % (message.getType(), message.getFrom(), message.getBody() ))
+	    self.debug("discarding %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
 
     def register_handlers(self):
         self.jabber.RegisterHandler( 'message', self.process_message )
@@ -334,7 +344,7 @@ class CommandConnection (Connection):
 	    self.socket.close()
 
     def process(self):
-	msg = self.socket.readline().sub('^\\s+|\\s+$', '')
+	msg = self.socket.readline().strip()
 
 	if (msg.startswith('/')):
 	    self.process_command( msg )
@@ -373,10 +383,12 @@ class UdpConnection (Connection):
     def connect( self, port, interface = '0.0.0.0' ):
 	self.socket = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
 	self.socket.setsockopt( socket.SOL_SOCKET, socket.SO_REUSEADDR, 1 )
+	self.socket.setblocking( 0 )
 
 	self.debug( "binding to UDP %s:%d" % (interface, port) )
+	self.socket.bind( (interface, port) )
 
-	if not self.socket.bind( (interface, port) ):
+	if not self.socket.fileno():
 	    self.warn( "failed to bind to UDP %s:%d" % (interface, port) )
 	    return False
 
@@ -398,6 +410,10 @@ class Channel(object):
 class JabberChannel (Channel):
     def __init__( self, connection, jid ):
 	super( JabberChannel, self ).__init__( connection )
+
+	if type( jid ) != object:
+	    jid = xmpp.protocol.JID( jid )
+
 	self.connection = connection
         self.jid = jid
 	self.message_type = 'chat'
@@ -410,7 +426,7 @@ class JabberChannel (Channel):
 	    if mtype is None:
 		mtype = self.message_type
 
-	    message = xmpp.protocol.Message( jid, body= message, type= mtype )
+	    message = xmpp.protocol.Message( self.jid, body= message, typ= mtype )
 
 	    if xml:
 		message.addChild( node = xml )
@@ -430,6 +446,9 @@ class JabberChannel (Channel):
 
 class MucChannel (JabberChannel):
     def __init__( self, connection, room_jid, room_nick ):
+	if type( room_jid ) != object:
+	    room_jid = xmpp.protocol.JID( room_jid )
+
 	super( MucChannel, self ).__init__( connection, room_jid.getStripped() )
 
         self.nick = room_nick
@@ -437,7 +456,7 @@ class MucChannel (JabberChannel):
 
     def join(self):
 	# use our own desired nickname as resource part of the group's JID
-	jid = self.jid.__str__( wresource= 0 ) + "/" + self.nick; 
+	jid = self.jid.getStripped() + "/" + self.nick; 
 
 	#create presence stanza
 	join = xmpp.Presence( to= jid )
@@ -447,7 +466,7 @@ class MucChannel (JabberChannel):
 
 	self.connection.jabber.send( join )
 
-	self.info('joined room %s' % room)
+	self.connection.info( 'joined room %s' % self.jid.getStripped() )
 
 	return True
 
