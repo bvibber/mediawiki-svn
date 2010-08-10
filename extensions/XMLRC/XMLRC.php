@@ -17,7 +17,6 @@ $wgExtensionCredits['other'][] = array(
 # Internationalisation file
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['XMLRC'] = $dir . 'XMLRC.i18n.php';
-#$wgExtensionAliasesFiles['XMLRC'] = $dir . 'XMLRC.alias.php';
 
 $wgXMLRCTransport = array(
   'class' => 'XMLRC_File',
