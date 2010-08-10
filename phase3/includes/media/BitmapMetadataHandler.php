@@ -88,7 +88,7 @@ class BitmapMetadataHandler {
 				if ( substr( $temp, 0, 29 ) === "http://ns.adobe.com/xap/1.0/\x00" ) {
 					$segments["XMP"] = substr( $temp, 29 );
 				} elseif ( substr( $temp, 0, 35 ) === "http://ns.adobe.com/xmp/extension/\x00" ) {
-					$segments["XMP_ext"][] = $temp;
+					$segments["XMP_ext"][] = substr( $temp, 35 );
 				}
 			} elseif ( $buffer === "\xED" ) {
 				// APP13 - PSIR. IPTC and some photoshop stuff
@@ -316,8 +316,11 @@ class BitmapMetadataHandler {
 		if ( isset( $seg['XMP'] ) ) {
 			$xmp = new XMPReader();
 			$xmp->parse( $seg['XMP'] );
-			if ( isset( $seg['XMP_ext'] ) ) {
-				/* FIXME!! */
+			foreach( $seg['XMP_ext'] as $xmpExt ) {
+				/* Support for extended xmp in jpeg files
+				 * is not well tested and a bit fragile.
+				 */
+				$xmp->parseExtended( $xmpExt );
 
 			}
 			$res = $xmp->getResults();

@@ -201,5 +201,12 @@ class XMPInfo {
 			),
 
 		),
+		//Note, this property affects how jpeg metadata is extracted.
+		'http://ns.adobe.com/xmp/note/' => array(
+			'HasExtendedXMP' => array(
+				'map_group' => 'special',
+				'mode'    => XMPReader::MODE_SIMPLE,
+			),
+		),
 	);
 }

@@ -30,6 +30,7 @@ class XMPReader {
 
 	private $xmlParser;
 	private $charset = false;
+	private $extendedXMPOffset = 0;
 
 	protected $items;
 
@@ -74,6 +75,20 @@ class XMPReader {
 
 		$this->items = XMPInfo::getItems();
 
+		$this->resetXMLParser();
+
+	}
+	/**
+	* Main use is if a single item has multiple xmp documents describing it.
+	* For example in jpeg's with extendedXMP
+	*/
+	private function resetXMLParser() {
+
+		if ($this->xmlParser) {
+			//is this needed?
+			xml_parser_free( $this->xmlParser );
+		}
+
 		$this->xmlParser = xml_parser_create_ns( 'UTF-8', ' ' );
 		xml_parser_set_option( $this->xmlParser, XML_OPTION_CASE_FOLDING, 0 );
 		xml_parser_set_option( $this->xmlParser, XML_OPTION_SKIP_WHITE, 1 );
@@ -83,6 +98,8 @@ class XMPReader {
 			array( $this, 'endElement' ) );
 
 		xml_set_character_data_handler( $this->xmlParser, array( $this, 'char' ) );
+
+
 	}
 
 	/** Destroy the xml parser
@@ -99,6 +116,9 @@ class XMPReader {
 	*	FormatExif.
 	*/
 	public function getResults() {
+		// xmp-special is for metadata that affects how stuff
+		// is extracted. For example xmpNote:HasExtendedXMP
+		unset( $this->results['xmp-special'] );
 		return $this->results;
 	}
 
@@ -110,13 +130,17 @@ class XMPReader {
 	* debug log, blanks result array and returns false.
 	*
 	* @param String: $content XMP data
+	* @param Boolean: $allOfIt If this is all the data (true) or if its split up (false). Default true
+	* @param Boolean: $reset - does xml parser need to be reset. Default false
 	* @return Boolean success.
-	* @todo charset detection (usually UTF-8, but UTF-16 or 32 is allowed).
 	*/
-	public function parse( $content ) {
+	public function parse( $content, $allOfIt = true, $reset = false ) {
+		if ( $reset ) {
+			$this->resetXMLParser();
+		}
 		try {
 
-			// detect encoding by looking for BOM
+			// detect encoding by looking for BOM which is supposed to be in processing instruction.
 			// see page 12 of http://www.adobe.com/devnet/xmp/pdfs/XMPSpecificationPart3.pdf
 			if ( !$this->charset ) {
 				$bom = array();
@@ -147,6 +171,7 @@ class XMPReader {
 					}
 
 				} else {
+					// standard specificly says, if no bom assume utf-8
 					$this->charset = 'UTF-8';
 				}
 			}
@@ -155,7 +180,7 @@ class XMPReader {
 				$content = iconv( $this->charset, 'UTF-8//IGNORE', $content );
 			}
 
-			$ok = xml_parse( $this->xmlParser, $content, true );
+			$ok = xml_parse( $this->xmlParser, $content, $allOfIt );
 			if ( !$ok ) {
 				$error = xml_error_string( xml_get_error_code( $this->xmlParser ) );
 				$where = 'line: ' . xml_get_current_line_number( $this->xmlParser )
@@ -172,6 +197,66 @@ class XMPReader {
 			return false;
 		}
 		return true;
+	}
+
+	/** Entry point for XMPExtended blocks in jpeg files
+	 *
+	 * @todo In serious need of testing
+	 * @see http://www.adobe.ge/devnet/xmp/pdfs/XMPSpecificationPart3.pdf XMP spec part 3 page 20
+	 * @param String $content XMPExtended block minus the namespace signature
+	 * @return Boolean If it succeded.
+	 */
+	public function parseExtended( $content ) {
+		// FIXME: This is untested. Hard to find example files
+		// or programs that make such files..
+		$guid = substr( $content, 0, 32 );
+		if ( !isset( $this->results['xmp-special']['HasExtendedXMP'] )
+			|| $this->results['xmp-special']['HasExtendedXMP'] !== $guid )
+		{
+			wfDebugLog('XMP', __METHOD__ . " Ignoring XMPExtended block due to wrong guid (guid= '$guid' )");
+			return;
+		}
+		$len  = unpack( 'Nlength/Noffset', substr( $content, 32, 8 ) );
+
+		if (!$len || $len['length'] < 4 || $len['offset'] < 0 || $len['offset'] > $len['length'] ) {
+			wfDebugLog('XMP', __METHOD__ . 'Error reading extended XMP block, invalid length or offset.');
+			return false;
+		}
+
+
+		// we're not very robust here. we should accept it in the wrong order. To quote
+		// the xmp standard:
+		// "A JPEG writer should write the ExtendedXMP marker segments in order, immediately following the
+		// StandardXMP. However, the JPEG standard does not require preservation of marker segment order. A
+		// robust JPEG reader should tolerate the marker segments in any order."
+		//
+		// otoh the probability that an image will have more than 128k of metadata is rather low...
+		// so the probability that it will have > 128k, and be in the wrong order is very low...
+
+		if ( $len['offset'] !== $this->extendedXMPOffset ) {
+			wfDebugLog('XMP', __METHOD__ . 'Ignoring XMPExtended block due to wrong order. (Offset was '
+				. $len['offset'] . ' but expected ' . $this->extendedXMPOffset . ')');
+			return false;
+		}
+
+		if ( $len['offset'] === 0 ) {
+			// if we're starting the extended block, we've probably already
+			// done the XMPStandard block, so reset.
+			$this->resetXMLParser();
+		}
+
+		$this->extendedXMPOffset += $len['length'];
+
+		$actualContent = substr( $content, 40 );
+
+		if ( $this->extendedXMPOffset === strlen( $actualContent ) ) {
+			$atEnd = true;
+		} else {
+			$atEnd = false;
+		}
+
+		wfDebugLog('XMP', __METHOD__ . 'Parsing a XMPExtended block');
+		return $this->parse( $actualContent, $atEnd );
 	}
 
 	/** Character data handler
@@ -657,6 +742,9 @@ class XMPReader {
 			// In practise I have yet to see a file that
 			// uses this element, however it is mentioned
 			// on page 25 of part 1 of the xmp standard.
+			//
+			// also it seems as if exiv2 and exiftool do not support
+			// this either (That or I misunderstand the standard)
 			wfDebugLog( 'XMP', __METHOD__ . ' Encoutered <rdf:type> which isn\'t currently supported' );
 		}
 
