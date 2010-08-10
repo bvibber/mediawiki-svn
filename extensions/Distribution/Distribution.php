@@ -22,10 +22,23 @@ $wgExtensionFunctions[] = 'efDistributionSetup';
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution.i18n.php';
 
+// Hook registration.
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
+
+// API modules registration.
+$wgAutoloadClasses['ApiQueryExtensions'] = dirname( __FILE__ ) . '/api/ApiQueryExtensions.php';
+$wgAPIModules['queryextensions'] = 'ApiQueryExtensions';
+
+$wgAutoloadClasses['ApiExtension'] = dirname( __FILE__ ) . '/api/ApiExtension.php';
+$wgAPIModules['extension'] = 'ApiExtension';
+
+$wgAutoloadClasses['ApiPackage'] = dirname( __FILE__ ) . '/api/ApiPackage.php';
+$wgAPIModules['package'] = 'ApiPackage';
 
 /**
  * Initialization function for the Distribution extension.
+ * 
+ * @since 0.1
  */
 function efDistributionSetup() {
 	global $wgExtensionCredits;
@@ -41,6 +54,13 @@ function efDistributionSetup() {
 	
 }
 
+/**
+ * LoadExtensionSchemaUpdates hook.
+ * 
+ * @since 0.1
+ * 
+ * @return true
+ */
 function efDistributionSchemaUpdate() {
 	global $wgExtNewTables;
 
