@@ -29,7 +29,7 @@
  * @ingroup Maintenance
  */
 
-require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
+require_once( dirname( __FILE__ ) . '/../../../phase3/maintenance/Maintenance.php' );
 
 class GetSvnMetadata extends Maintenance {
 	
@@ -55,9 +55,18 @@ class GetSvnMetadata extends Maintenance {
 	 * @since 0.1
 	 */
 	public function execute() {
-		$dbr = wfGetDB( DB_SLAVE );
+		global $wgExtDistWorkingCopy;
 		
-		$extensions = $this->getExtensionList();
+		$extensionGroups = $this->getExtensionList();
+		
+		// TODO: after initial version, make this more generic to also work with branches
+		
+		foreach ( $extensionGroups as $group => $extensions ) {
+			foreach( $extensions as $extension ) {
+				$extensionDir = "$wgExtDistWorkingCopy/trunk/$extension";
+				$this->saveExtensionMetadata( $this->getExtensionMetadata( $extension, $extensionDir ) );
+			}			
+		}
 		
 		$this->output( "..." );
 	}
@@ -103,7 +112,35 @@ class GetSvnMetadata extends Maintenance {
 		}
 		
 		return $this->extensionList;
-	}	
+	}
+	
+	/**
+	 * Gets the metadata for a single extension from the checked out
+	 * extension directory and returns it as an array.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $extensionName String
+	 * @param $extensionDir String
+	 * 
+	 * @return array
+	 */
+	protected function getExtensionMetadata( $extensionName, $extensionDir ) {
+		
+	}
+	
+	/**
+	 * Saves the metadata of a single extension version into the db.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param array $metaData
+	 */
+	protected function saveExtensionMetadata( array $metaData ) {
+		
+		$dbw = wfGetDB( DB_MASTER );
+		
+	}
 	
 }
 
