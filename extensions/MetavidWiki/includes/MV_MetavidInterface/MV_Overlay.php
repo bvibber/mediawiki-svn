@@ -290,13 +290,16 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 
 		/*try to pull from cache: separate out cache for internal links vs external links cache*/
 		if( $wgEnableParserCache ) {
-			$MvParserCache = & MV_ParserCache::singleton();
-			$add_opt = ( $absolute_links ) ? 'a':'';
-			// add the dbKey since I don't know how to easy purge the cache and we are getting cache missmatch
-			$add_opt .= $mvdTitle->getDBkey();
-			$MvParserCache->addToKey( $add_opt );
+			$MvParserCache = ParserCache::singleton();
+			$popts = ParserOptions::newFromUser( $wgUser );
+			if ( $absolute_links ) {
+				$popts->addExtraKey( 'Metavid-absolutelinks' );
+			}
 
-			$parserOutput = $MvParserCache->get( $mvdArticle, $wgUser );
+			// FIXME: add the dbKey since I don't know how to easy purge the cache and we are getting cache missmatch
+			$popts->addExtraKey( $mvdTitle->getDBkey() );
+
+			$parserOutput = $MvParserCache->get( $mvdArticle, $popts );
 		}else{
 			$parserOutput=false;
 		}
@@ -330,7 +333,9 @@ $smwgShowFactbox = SMW_FACTBOX_HIDDEN;
 			}
 			// output the page and save to cache
 			$wgOut->addParserOutput( $parserOutput );
-			$MvParserCache->save( $parserOutput, $mvdArticle, $wgUser );
+			if( $wgEnableParserCache ) {
+				$MvParserCache->save( $parserOutput, $mvdArticle, $popts );
+			}
 		}
 	}
 	function parse_format_text( &$text, &$mvdTile, &$mvd_page = '', $absolute_links = false ) {

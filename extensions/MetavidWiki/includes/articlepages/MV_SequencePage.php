@@ -34,13 +34,16 @@ class MV_SequencePage extends Article {
 		//temporally stop cache:
 		$wgEnableParserCache = $parserOutput =false;
 
-		if($wgEnableParserCache){
-			$mvParserCache = & MV_ParserCache::singleton();
-			$mvParserCache->addToKey( 'seq-xml' ); //differentiate the articles xml from article
-			$parserOutput = $mvParserCache->get( $this, $wgUser );
+		if( $wgEnableParserCache ) {
+			$parserOptions = ParserOptions::newFromUser( $wgUser );
+			$mvParserCache = ParserCache::singleton();
+			$parserOptions->addExtraKey( 'mv:seq-xml' ); //differentiate the articles xml from article
+			$parserOutput = $mvParserCache->get( $this, $parserOptions );
+			
+			if( $parserOutput != false )
+				return $parserOutput->getText();
 		}
-		if(isset($parserOutput) && $parserOutput != false)
-			return $parserOutput->getText();
+		
 		//get the high level sequence description:
 		$this->getSequenceHLRD();
 		$this->parseHLRD_DOM();

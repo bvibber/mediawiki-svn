@@ -139,7 +139,6 @@ function mvSetupExtension() {
 	$wgAutoloadClasses['MV_StreamFile']			= dirname( __FILE__ )  . '/MV_StreamFile.php';
 
 	$wgAutoloadClasses['MV_StreamImage'] 		= dirname( __FILE__ )  . '/MV_StreamImage.php';
-	$wgAutoloadClasses['MV_ParserCache'] 		= dirname( __FILE__ ) . '/MV_ParserCache.php';
 	$wgAutoloadClasses['MV_MagicWords'] 		= dirname( __FILE__ ) . '/MV_MagicWords.php';
 
 	/**********************************************/
