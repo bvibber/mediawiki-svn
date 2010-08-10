@@ -995,3 +995,14 @@ $messages['yi'] = array(
 	'commentbox-name' => 'נאָמען',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Sweeite012f
+ */
+$messages['zh-hans'] = array(
+	'commentbox-intro' => '添加评论
+是否对此页内容有意见？请将意见添加在此或
+直接修改此页',
+	'commentbox-name' => '名称',
+	'commentbox-log' => '新评论',
+);
+

@@ -161,6 +161,7 @@ $messages['csb'] = array(
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'wikieditor-previewDialog-preference' => 'Galluogi blwch deialog rhagolygon',
 	'wikieditor-previewDialog-tab' => 'Rhagolwg',
 	'wikieditor-previewDialog-loading' => "Wrthi'n llwytho...",
 );

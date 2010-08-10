@@ -3211,6 +3211,9 @@ Ydych chi am ei osod ar ffurf cyswllt mewnol?",
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Gwjarati',
+	'wikieditor-toolbar-characters-page-thai' => 'Thai',
+	'wikieditor-toolbar-characters-page-lao' => 'Laoseg',
+	'wikieditor-toolbar-characters-page-khmer' => 'Chmereg',
 	'wikieditor-toolbar-section-help' => 'Cymorth',
 	'wikieditor-toolbar-help-heading-description' => 'Disgrifiad',
 	'wikieditor-toolbar-help-heading-syntax' => 'Pan deipiwch hyn',
@@ -9142,7 +9145,7 @@ $messages['ko'] = array(
 	'wikieditor-toolbar-tool-italic-example' => '기울인 글씨',
 	'wikieditor-toolbar-tool-ilink' => '내부 링크',
 	'wikieditor-toolbar-tool-ilink-example' => '문서 제목',
-	'wikieditor-toolbar-tool-xlink' => '외부 링크 ( http:// 를 붙여 주세요. )',
+	'wikieditor-toolbar-tool-xlink' => '외부 사이트 링크 (주소 앞에 http://가 있어야 합니다.)',
 	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com 링크 이름',
 	'wikieditor-toolbar-tool-link' => '링크',
 	'wikieditor-toolbar-tool-link-title' => '링크 추가',
@@ -9160,14 +9163,14 @@ $messages['ko'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => '문서가 존재하지 않습니다.',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => '제목이 잘못되었습니다.',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => '외부 링크',
-	'wikieditor-toolbar-tool-link-int-target-status-loading' => '문서가 존재하는 지 확인 중...',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => '문서가 존재하는 지 확인 중…',
 	'wikieditor-toolbar-tool-link-int-invalid' => '입력한 제목이 잘못되었습니다.',
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => '당신이 입력한 URL은 다른 내부 문서일 수 있습니다. 내부 링크로 바꾸시겠습니까?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => '내부 링크',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => '외부 링크',
 	'wikieditor-toolbar-tool-link-empty' => '링크할 대상을 입력하지 않았습니다.',
 	'wikieditor-toolbar-tool-file' => '파일 넣기',
-	'wikieditor-toolbar-tool-file-example' => 'Exemple.jpg',
+	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => '출처',
 	'wikieditor-toolbar-tool-reference-example' => '여기에 출처 내용을 적어 주세요',
 	'wikieditor-toolbar-tool-reference-cancel' => '취소',
@@ -16837,6 +16840,27 @@ Idadi ya mistari au ya safu si halali.',
 	'wikieditor-toolbar-help-content-indent-description' => 'Jongeza ndani',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Maandiko ya kawaida<br />:Yaliyojongezwa ndani<br />::Yaliyojongezwa ndani',
 	'wikieditor-toolbar-help-content-indent-result' => 'Maandiko ya kawaida<dl><dd>Yaliyojongezwa ndani<dl><dd>Yaliyojongezwa ndani</dd></dl></dd></dl>',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'wikieditor-toolbar-tool-bold' => 'தடித்த',
+	'wikieditor-toolbar-tool-bold-example' => 'தடித்த எழுத்துக்கள்',
+	'wikieditor-toolbar-tool-italic' => 'சாய்ந்த',
+	'wikieditor-toolbar-tool-italic-example' => 'சாய்ந்த எழுத்துக்கள்',
+	'wikieditor-toolbar-tool-heading' => 'தலைப்பு',
+	'wikieditor-toolbar-tool-heading-1' => '# முதற் கட்டம்
+# நிலை ஒன்று',
+	'wikieditor-toolbar-tool-heading-2' => '# இரண்டாம் கட்டம் 
+# நிலை இரண்டு',
+	'wikieditor-toolbar-tool-heading-3' => '# மூன்றாம் கட்டம்
+# நிலை மூன்று',
+	'wikieditor-toolbar-tool-heading-4' => '# நான்காம் கட்டம்
+# நிலை நான்கு',
+	'wikieditor-toolbar-tool-heading-5' => '# ஐந்தாம் கட்டம்
+# நிலை ஐந்து',
 );
 
 /** Telugu (తెలుగు)

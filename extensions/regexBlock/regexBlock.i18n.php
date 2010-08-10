@@ -572,6 +572,13 @@ $messages['ckb'] = array(
 	'regexblock-view-go' => 'بڕۆ',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'regexblock-form-username' => 'IP число или по́льꙃєватєлꙗ и́мѧ :',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */

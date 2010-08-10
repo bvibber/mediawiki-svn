@@ -185,6 +185,16 @@ $messages['csb'] = array(
 	'searchbox-go' => 'Biéj',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'searchbox-desc' => 'Yn galluogi cynnwys ffurflenni chwilio',
+	'searchbox-search' => 'Chwilier',
+	'searchbox-go' => 'Eler',
+	'searchbox-namespaces' => 'Parthau:',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'searchbox-desc' => 'Ermöglicht das Einbinden eines Suchformulares',

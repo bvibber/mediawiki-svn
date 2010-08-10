@@ -965,11 +965,12 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'abc-desc' => 'Thêm thẻ <code>&lt;abc&gt;</code> để định dạng nhạc ABC',
-	'abcdownload' => 'Tải xuống:',
+	'abcdownload' => 'Tải về:',
 );
 
 /** Volapük (Volapük)

@@ -516,33 +516,34 @@ Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'purewikideletion' => 'Pura scanselassion ëd wiki',
+	'purewikideletion' => 'Pura scancelassion wiki',
 	'randomexcludeblank' => 'Pàgina a cas (ma pa veuida)',
-	'populateblankedpagestable' => 'Pòpola na tabela ëd pàgine veuide',
-	'purewikideletion-desc' => "Tra j'àutre còse, le pàgine dësvoidà a son colegà an ross",
+	'populateblankedpagestable' => 'Ampinì la tàula dle pàgine vujdà',
+	'purewikideletion-desc' => "Tra j'àutre còse, le pàgine dësvuidà a son colegà an ross",
 	'purewikideletion-pref-watchblank' => "Gionta le pàgine che i dësveuido a lòn ch'i ten-o sot euj",
-	'purewikideletion-pref-watchunblank' => "Gionta le pàgine che i torno vempì a lòn ch'i ten-o sot euj",
-	'purewikideletion-blanked' => "Na vërsin prima dë sta pàgina-sì a l'é stàita dësvoidà da [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) ël $5 a $6.
+	'purewikideletion-pref-watchunblank' => "Gionté le pàgine andoa i gavo ël dësvujdament a lòn ch'i ten-o sot-euj",
+	'purewikideletion-blanked' => "Na version veja dë sta pàgina-sì a l'é stàita dësvuidà da [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) ël $5 a $6.
 
-La rason dàita për dësvoidé a l'era: ''<nowiki>$3</nowiki>''.
+La rason dàita për dësvuidé a l'era: ''<nowiki>$3</nowiki>''.
 
-It peule [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vardé la stòria dla pàgina], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} modifiché l'ùltima vërsion], o ansërì na pàgina neuva ant lë spassi bianch sì sota.",
+A peul [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vardé la stòria dla pàgina], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} modifiché l'ùltima version], o anserì na pàgina neuva ant lë spassi bianch sì-sota.",
 	'blank-log' => 'dësveuida',
-	'blank-log-name' => 'Registr dij dësvoidament',
-	'blank-log-header' => 'Sota a-i é na lista ëd pàgine dësvoidà e torna vempìe.',
-	'blank-log-entry-blank' => 'dësvoidà $1',
-	'blank-log-entry-unblank' => 'torna vempì $1',
-	'blank-log-link' => '[[{{#Special:Log}}/blank|registr ëd dësveuid]]',
+	'blank-log-name' => 'Registr dij dësvuidament',
+	'blank-log-header' => 'Sota a-i é na lista ëd pàgine dësvuidà e torna ampinìe.',
+	'blank-log-entry-blank' => 'dësvuidà $1',
+	'blank-log-entry-unblank' => "a l'ha gavà ël dësvujdament $1",
+	'blank-log-link' => '[[{{#Special:Log}}/blank|registr dij dësvuidament]]',
 	'purewikideletion-blanknologin' => 'Nen rintrà ant ël sistema',
-	'purewikideletion-blanknologintext' => "It deuve esse n'utent registrà e [[Special:UserLogin|intrà]] për dësvoidé na pàgina.",
-	'purewikideletion-unblanknologintext' => "It deuve esse n'utent registrà e [[Special:UserLogin|intrà]] për torna vempe na pàgina.",
-	'purewikideletion-blankedtext' => "[[$1]] a l'é stàita dësvoidà.
-Varda $2 për na lista dij dësvoidament recent.",
-	'purewikideletion-population-done' => 'Fàit popolé la tabela blanked_page.',
-	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Pòpola]] la tabela dle pàgine dësvoidà',
+	'purewikideletion-blanknologintext' => "A dev esse n'utent registrà e [[Special:UserLogin|intrà ant ël sistema]] për dësvuidé na pàgina.",
+	'purewikideletion-unblanknologintext' => "A dev esse n'utent registrà e [[Special:UserLogin|intrà ant ël sistema]] për gavé ël dësvujdament ëd na pàgina.",
+	'purewikideletion-blankedtext' => "[[$1]] a l'é stàita dësvuidà.
+Vardé $2 për na lista dij dësvuidament recent.",
+	'purewikideletion-population-done' => 'Ampiniment ëd la tàula blanked_page fàit.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Ampinì]] la tàula dle pàgine dësvuidà',
 );
 
 /** Pashto (پښتو)

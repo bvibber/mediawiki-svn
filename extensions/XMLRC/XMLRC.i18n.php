@@ -28,3 +28,17 @@ $messages['de'] = array(
 	'xmlrc-desc' => 'Verschickt Benachrichtigungen über Änderungen als XML, über UDP, Jabber oder andere Protokolle',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'xmlrc-desc' => 'A manda notìfiche an sij cambi com XML, via UDP, Jabber o àutri mojen',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'xmlrc-desc' => 'Envia as notificações sobre mudanças em formato XML, através de UDP, Jabber ou outros meios',
+);
+

@@ -286,7 +286,7 @@ Si vous êtes connecté avec votre compte, vous pouvez retirer cet avertissement
  */
 $messages['frp'] = array(
 	'vector-editwarning-warning' => 'Quitar ceta pâge vos farat pèrdre tôs los changements que vos éd fêts.
-Se vos éte branchiê avouéc voutron compto, vos pouede enlevar ceti avèrtissement dens la sèccion « Fenétra d’èdicion » de voutres prèferences.',
+Se vos éte branchiê, vos pouede enlevar ceti avèrtissement dens la sèccion « Fenétra d’èdicion » de voutres prèferences.',
 	'vector-editwarning-preference' => 'M’avèrtir quand quito una pâge de changement sen sôvar los changements',
 );
 

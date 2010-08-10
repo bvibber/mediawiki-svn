@@ -857,10 +857,10 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'usagestatisticsinterval' => 'Entèrvalo',
+	'usagestatisticsinterval' => 'Entèrvalo :',
 	'usagestatisticstype' => 'Tipo',
-	'usagestatisticsstart' => 'Dâta de comencement',
-	'usagestatisticsend' => 'Dâta de fin',
+	'usagestatisticsstart' => 'Dâta de comencement :',
+	'usagestatisticsend' => 'Dâta de fin :',
 	'usagestatisticssubmit' => 'Fâre les statistiques',
 	'usagestatisticsintervalday' => 'Jorn',
 	'usagestatisticsintervalweek' => 'Semana',

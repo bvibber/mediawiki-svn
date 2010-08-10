@@ -379,7 +379,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'contributionseditcount' => 'Dëse Benotzer huet $1 Kontributiounen.',
+	'contributionseditcount' => 'Dëse Benotzer huet {{PLURAL:$1|eng Kontributioun|$1 Kontributiounen}}.',
 	'contributionseditcount-desc' => 'Weist e Compteur vun den [[Special:Contributions|Ännerungen vun de Benotzer]]',
 );
 
@@ -497,11 +497,12 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'contributionseditcount' => "St'utent-sì a l'ha fait {{PLURAL:$1|na modìfica|$1 modìfiche}}.",
+	'contributionseditcount' => "St'utent-sì a l'ha fàit {{PLURAL:$1|na modìfica|$1 modìfiche}}.",
 	'contributionseditcount-desc' => "A fa vëdde an contator ëd modìfiche an sla [[Special:Contributions|pàgina dle contribussion ëd l'utent]]",
 );
 
