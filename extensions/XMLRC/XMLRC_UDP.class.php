@@ -9,7 +9,7 @@ class XMLRC_UDP extends XMLRC_Transport {
     $this->conn = null;
 
     $this->address = $config['address'];
-    $this->port = $config['port'];
+    $this->port = isset( $config['port'] ) ? $config['port'] : 4455;
   }
 
   public function connect() {
