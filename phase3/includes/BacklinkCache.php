@@ -109,10 +109,7 @@ class BacklinkCache {
 
 	/**
 	 * Get the distant backtemplatelinks for the table globaltemplatelinks. Cached in process memory only.
-	 * @param $table String
-	 * @param $startId Integer or false
-	 * @param $endId Integer or false
-	 * @return TitleArray
+	 * @return ResultWrapper list of distant pages that use the local title
 	 */
 	public function getDistantTemplateLinks( ) {
 		global $wgGlobalDatabase, $wgLocalInterwiki;
@@ -122,8 +119,7 @@ class BacklinkCache {
 			array( 'globaltemplatelinks' ),
 			array( 'gtl_from_wiki', 'gtl_from_page' ),
 			array( 'gtl_to_prefix' => $wgLocalInterwiki, 'gtl_to_title' => $this->title->getDBkey( ) ),
-			__METHOD__,
-			'GROUP BY gtl_from_wiki'
+			__METHOD__
 		);
 		return $res;
 	}

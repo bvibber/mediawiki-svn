@@ -4161,7 +4161,6 @@ class Article {
 		
 		// Invalidate caches of distant articles which transclude this page
 		$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'globaltemplatelinks' );
-		wfDoUpdates();
 
 		// Invalidate the caches of all pages which redirect here
 		$wgDeferredUpdateList[] = new HTMLCacheUpdate( $title, 'redirect' );
