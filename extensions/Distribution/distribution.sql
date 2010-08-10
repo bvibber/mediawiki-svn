@@ -13,8 +13,13 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/distribution_packages (
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/distribution_units (
   unit_id                 INT(8) unsigned   NOT NULL auto_increment PRIMARY KEY,
   unit_name               VARCHAR(255)      NOT NULL,
-  -- Latest stable release.
-  unit_current            INT(8) unsigned   NOT NULL
+  -- Latest stable release id.
+  unit_current            INT(8) unsigned   NOT NULL,
+  -- Select info of the latest release to avoid extra lookups.
+  current_version_nr      VARCHAR(20)       NOT NULL,
+  current_desc            BLOB              NOT NULL,
+  current_authors         BLOB              NOT NULL,
+  current_url             VARCHAR(255)      NULL
   -- early adoptor stuff can be here
 ) /*$wgDBTableOptions*/;
 
