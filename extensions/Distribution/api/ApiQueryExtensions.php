@@ -42,7 +42,7 @@ class ApiQueryExtensions extends ApiQueryBase {
 	 * @param $action
 	 */
 	public function __construct( $main, $action ) {
-		parent :: __construct( $main, $action, 'dst' );
+		parent::__construct( $main, $action, 'dst' );
 	}
 
 	/**
@@ -65,11 +65,11 @@ class ApiQueryExtensions extends ApiQueryBase {
 	public function getAllowedParams() {
 		return array (
 			'limit' => array(
-				ApiBase :: PARAM_DFLT => 10,
-				ApiBase :: PARAM_TYPE => 'limit',
-				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
-				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
+				ApiBase::PARAM_DFLT => 10,
+				ApiBase::PARAM_TYPE => 'limit',
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
+				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'continue' => null,		
 		);
@@ -82,8 +82,8 @@ class ApiQueryExtensions extends ApiQueryBase {
 	 */
 	public function getParamDescription() {
 		return array (
-			'continue' => 'Number of the first story to return',
-			'limit'   => 'Amount of stories to return',		
+			'continue' => 'Number of the first extension to return',
+			'limit'   => 'Amount of extensions to return',		
 		);
 	}
 
