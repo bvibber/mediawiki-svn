@@ -54,7 +54,46 @@ class ApiQueryExtensions extends ApiQueryBase {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
-		// TODO
+		$this->addTables( 'distribution_units' );
+		
+		$this->addFields( array(
+			'unit_id',
+			'unit_name',
+			'unit_current',
+			'current_version_nr',
+			'current_desc',
+			'current_authors',
+			'current_url'
+		) );
+		
+		$this->addOption( 'LIMIT', $params['limit'] + 1 );
+		$this->addOption( 'ORDER BY', 'unit_id' );		
+		
+		// Handle the continue parameter when it's provided.
+		if ( !is_null( $params['continue'] ) ) {
+			// TODO
+		}	
+
+		$count = 0;
+		$extensions = $this->select( __METHOD__ );
+		
+		while ( $extension = $extensions->fetchObject() ) {
+			if ( ++$count > $params['limit'] ) {
+				// We've reached the one extra which shows that
+				// there are additional pages to be had. Stop here...
+				// TODO
+				//$this->setContinueEnumParameter( 'continue', '' );
+				break;
+			}
+
+			$result = array(
+				//TODO
+			);
+			
+			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $result );			
+		}
+		
+		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'extension' );
 	}
 	
 	/**
