@@ -1,0 +1,34 @@
+# Wiki info for udp2xmpp bridge. Make sure
+# wiki-info-file in udp2xmpp.ini points here.
+
+# Create one section per wiki.
+# The secion names must be the wiki IDs as returned by wfWikiID(). 
+# A wiki's ID is the name of the database it uses ( $wgDBname ) plus,
+# if applicable, the table prefix ( $wgDBname-$wgDBprefix ).
+
+# Alternatively, for a single wiki, you can put
+# the channel config directly into udp2xmpp.ini,
+# using the wiki-info-section option
+
+# each section must specify the following parametrs:
+#
+# page-url: the URL of pages in your wiki, with $1 as a placeholder
+#           for the page name.
+#
+# channel-type: type of the notification channel. can be 'jabber' 
+#               or 'muc'.
+#
+# channel: the channle's name/address. The meaning depends on the 
+#          channel type, but for both 'jabber' and 'muc' this is
+#          the XMPP JID, of the target user or chat group respectively.
+
+# Adopt the below to your own wiki's parameters.
+[acme]
+page-url: http://acme.com/wiki/$1
+channel-type: muc
+channel: acme-rc@conference.jabber.example.com
+
+#[bcme]
+#page-url: http://bcme.com/wiki/$1
+#channel-type: jabber
+#channel: john@jabber.example.com
