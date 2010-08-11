@@ -53,10 +53,6 @@ class ApiQueryExtensions extends ApiQueryBase {
 	public function execute() {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
-
-		if ( !isset( $params['value'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'value' ) );
-		}
 		
 		$this->addTables( 'distribution_units' );
 		
@@ -137,6 +133,7 @@ class ApiQueryExtensions extends ApiQueryBase {
 			),
 			'value' => array(
 				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
 			),			
 		);
 	}
