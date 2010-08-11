@@ -31,8 +31,22 @@ $messages['en'] = array(
 	'update-title' => 'MediaWiki updates',
 	'install-title' => 'Install extensions',
 
+	// Special:Dashboard
+
 	// Special:Extensions
 	'add-new-extensions' => 'Add new',
+
+	// Special:Update
+	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki.',
+	'mediawiki-up-to-date-long' => 'You have the latest version of MediaWiki. You do not need to upgrade.',
+	'extensions-up-to-date' => 'Your extensions are all up to date.',
+	
+	// Special:Install
+	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki. You can browse and search extensions that are in the [http://www.mediawiki.org/wiki/Special:Repository MediaWiki Extension Repository] to install via this page.',
+	'search-extensions' => 'Search',
+	'search-extensions-long' => 'Search for extensions by keyword, author, or tag.',
+	'popular-extension-tags' => 'Popular tags',
+	'popular-extension-tags-long' => 'You may also browse based on the most popular tags in the Extension Repository:',
 
 	// Filesystem: FTP
 	'deploy-ftp-not-loaded' => 'The FTP PHP extension is not available',
