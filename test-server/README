@@ -6,8 +6,8 @@ directions here:
 http://phpundercontrol.org/documentation/installation.html
 
 After that, the projects/connectfour sample directory is erased and
-the config.xml, cruisecontrol.sh, and projects/mw directories from
-this configuration are put into place.
+the contents of the cc-home directory (e.g.  config.xml,
+cruisecontrol.sh, etc) should be copied to your cruisecontrol installation.
 
 Finally, add the cruisecontrol user:
 
@@ -16,6 +16,9 @@ Finally, add the cruisecontrol user:
 and put cruisecontrol-init.d in /etc/init.d/cruisecontrol:
 
     cp cruisecontrol-init.d /etc/init.d/cruisecontrol
+
+Make sure CCDIR in the init.d script points to your cruisecontrol
+installation.
 
 make it executable
 
