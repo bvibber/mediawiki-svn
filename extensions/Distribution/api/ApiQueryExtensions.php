@@ -76,7 +76,7 @@ class ApiQueryExtensions extends ApiQueryBase {
 				break;
 			case 'author' :
 				// TODO
-				$this->addWhere( "'current_authors = '$params[value]'" );
+				$this->addWhereFld( 'current_authors', $params['value'] );
 				break;
 			case 'tag' :
 				// TODO
