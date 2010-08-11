@@ -25,6 +25,10 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 /**
  * Allows the querying of extension metadata, including the different versions.
  * 

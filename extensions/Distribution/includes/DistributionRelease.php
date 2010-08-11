@@ -1,9 +1,24 @@
 <?php
 
 /**
+ * File holding the DistributionRelease class.
+ * 
+ * @file DistributionRelease.php
+ * @ingroup Distribution
+ * 
+ * @author Jeroen De Dauw
+ */
+
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
+/**
  * Static class for handling release data.
  * 
  * @since 0.1
+ * 
+ * @ingroup Distribution
  * 
  * @author Jeroen De Dauw
  */

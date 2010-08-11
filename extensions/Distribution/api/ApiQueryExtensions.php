@@ -24,6 +24,10 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 /**
  * API class for the querieng of extensions in the repository.
  *
