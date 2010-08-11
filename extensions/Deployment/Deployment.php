@@ -16,6 +16,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 define( 'Deployment_VERSION', '0.1 alpha' );
 
+include_once 'Deployment_Settings.php';
+
 // Register the initialization function.
 $wgExtensionFunctions[] = 'efDeploymentSetup';
 
