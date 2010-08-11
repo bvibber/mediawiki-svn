@@ -44,7 +44,7 @@ class CheckVars {
 	var $mDebug = false;
 	static $mDefaultSettingsGlobals = null;
 
-	static $constantIgnorePrefixes = array( "PGSQL_", "OCI_", "SQLT_BLOB", "DB2_", "XMLREADER_" ); # Ignore constants with these prefixes
+	static $constantIgnorePrefixes = array( "PGSQL_", "OCI_", "SQLT_BLOB", "DB2_", "XMLREADER_", "SQLSRV_" ); # Ignore constants with these prefixes
 	protected $generateDeprecatedList = false;
 
 	/* Values for status */
