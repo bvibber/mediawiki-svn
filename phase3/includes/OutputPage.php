@@ -229,7 +229,7 @@ class OutputPage {
 	 * @return array of module names
 	 */
 	public function getResources() {
-		return array_keys( $this->mResources );
+		return $this->mResources;
 	}
 
 	/**
@@ -239,7 +239,7 @@ class OutputPage {
 	 * @param $module mixed Module name (string) or array of module names
 	 */
 	public function addResources( $modules ) {
-		$this->mResources += array_flip( (array)$modules );
+		$this->mResources = array_merge( $this->mResources, (array)$modules );
 	}
 
 	/**
@@ -1113,6 +1113,7 @@ class OutputPage {
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
 		$this->mHeadItems = array_merge( $this->mHeadItems, $parserOutput->getHeadItems() );
+		$this->addResources( $parserOutput->getResources() );
 		// Versioning...
 		foreach ( (array)$parserOutput->mTemplateIds as $ns => $dbks ) {
 			if ( isset( $this->mTemplateIds[$ns] ) ) {
@@ -2215,7 +2216,7 @@ class OutputPage {
 		global $wgUser, $wgLang, $wgRequest, $wgScriptPath;
 		// TODO: Should this be a static function of ResourceLoader instead?
 		$query = array(
-			'modules' => implode( '|', $modules ),
+			'modules' => implode( '|', array_unique( $modules ) ),
 			'user' => $wgUser->isLoggedIn(),
 			'lang' => $wgLang->getCode(),
 			'debug' => (
@@ -2666,20 +2667,11 @@ class OutputPage {
 	 * @param $modules Array: list of jQuery modules which should be loaded
 	 * @return Array: the list of modules which were not loaded.
 	 * @since 1.16
+	 * @deprecated No longer needed as of 1.17
 	 */
 	public function includeJQuery( $modules = array() ) {
-		global $wgStylePath, $wgStyleVersion, $wgJQueryVersion, $wgJQueryMinified;
-
-		$supportedModules = array( /** TODO: add things here */ );
-		$unsupported = array_diff( $modules, $supportedModules );
-
-		$min = $wgJQueryMinified ? '.min' : '';
-		$url = "$wgStylePath/common/jquery-$wgJQueryVersion$min.js?$wgStyleVersion";
-		if ( !$this->mJQueryDone ) {
-			$this->mJQueryDone = true;
-			$this->mScripts = Html::linkedScript( $url ) . "\n" . $this->mScripts;
-		}
-		return $unsupported;
+		wfDeprecated( __METHOD__ );
+		return array();
 	}
 
 }
