@@ -9,6 +9,10 @@
  * @author Jeroen De Dauw
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 /**
  * Repository class for interaction with repositories provided by
  * the Distirbution extension and the MediaWiki API.

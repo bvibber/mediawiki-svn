@@ -17,6 +17,10 @@
  * @defgroup Filesystem Filesystem
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 define( 'FS_CHMOD_DIR', 0755 );
 define( 'FS_CHMOD_FILE', 0644 );
 

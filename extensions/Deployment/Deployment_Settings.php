@@ -10,6 +10,10 @@
  * @author Jeroen De Dauw
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 $wgRepositoryLocation = 'http://www.mediawiki.org/wiki/Special:Repository';
 $wgRepositoryApiLocation = 'http://www.mediawiki.org/w/api.php';
 

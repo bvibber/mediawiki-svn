@@ -9,6 +9,10 @@
  * @author Jeroen De Dauw
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 /**
  * Base repository class. Deriving classes handle interaction with
  * package repositories of the type they support.

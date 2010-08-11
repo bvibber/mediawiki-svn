@@ -11,6 +11,10 @@
  * @author Jeroen De Dauw
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
+
 /**
  * Class for Installing or upgrading MediaWiki extensions via the Filesystem Abstraction classes from a Zip file.
  * 

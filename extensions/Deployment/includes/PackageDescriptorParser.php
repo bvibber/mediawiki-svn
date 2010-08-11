@@ -8,8 +8,11 @@
  * @ingroup Deployment
  *
  * @author Jeroen De Dauw
- * @author Kai Kühn
  */
+
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'Not an entry point.' );
+}
 
 /**
  * Base package description parsing class. Deriving classes
