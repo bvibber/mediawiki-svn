@@ -386,7 +386,6 @@ $wgEXIFMessages = array(
 	'exif-stripbytecounts',
 	'exif-jpeginterchangeformat',
 	'exif-jpeginterchangeformatlength',
-	'exif-transferfunction',
 	'exif-whitepoint',
 	'exif-primarychromaticities',
 	'exif-ycbcrcoefficients',
@@ -647,4 +646,7 @@ $wgEXIFMessages = array(
 	'exif-dc-rights',
 	'exif-dc-source',
 	'exif-dc-type',
+	'exif-lens',
+	'exif-serialnumber',
+
 );

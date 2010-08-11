@@ -455,6 +455,7 @@ $wgAutoloadLocalClasses = array(
 	'PNGMetadataExtractor' => 'includes/media/PNGMetadataExtractor.php',
 	'SvgHandler' => 'includes/media/SVG.php',
 	'JpegHandler' => 'includes/media/Jpeg.php',
+	'JpegMetadataExtractor' => 'includes/media/JpegMetadataExtractor.php',
 	'BitmapMetadataHandler' => 'includes/media/BitmapMetadataHandler.php',
 	'IPTC' => 'includes/media/IPTC.php',
 	'ThumbnailImage' => 'includes/media/MediaTransformOutput.php',

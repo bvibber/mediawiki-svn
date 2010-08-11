@@ -266,6 +266,37 @@ abstract class MediaHandler {
 		return false;
 	}
 
+	/** sorts the visible/invisible field.
+	 * Split off from ImageHandler::formatMetadata, as used by more than
+	 * one type of handler.
+	 *
+	 * This is used by the media handlers that use the FormatExif class
+	 *
+	 * @param $metadataArray Array metadata array
+	 * @return array for use displaying metadata.
+	 */
+	function formatMetadataHelper( $metadataArray ) {
+		 $result = array(
+			'visible' => array(),
+			'collapsed' => array()
+		);
+		$format = new FormatExif( $metadataArray );
+
+		$formatted = $format->getFormattedData();
+		// Sort fields into visible and collapsed
+		$visibleFields = $this->visibleMetadataFields();
+		foreach ( $formatted as $name => $value ) {
+			$tag = strtolower( $name );
+			self::addMeta( $result,
+				in_array( $tag, $visibleFields ) ? 'visible' : 'collapsed',
+				'exif',
+				$tag,
+				$value
+			);
+		}
+		return $result;
+	}
+
 	/**
 	 * @todo Fixme: document this!
 	 * 'value' thingy goes into a wikitext table; it used to be escaped but

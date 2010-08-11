@@ -3674,7 +3674,6 @@ Others will be hidden by default.
 'exif-stripbytecounts'             => 'Bytes per compressed strip',
 'exif-jpeginterchangeformat'       => 'Offset to JPEG SOI',
 'exif-jpeginterchangeformatlength' => 'Bytes of JPEG data',
-'exif-transferfunction'            => 'Transfer function',
 'exif-whitepoint'                  => 'White point chromaticity',
 'exif-primarychromaticities'       => 'Chromaticities of primarities',
 'exif-ycbcrcoefficients'           => 'Color space transformation matrix coefficients',
@@ -3804,6 +3803,8 @@ Others will be hidden by default.
 'exif-datetimeexpires'             => 'Do not use after',
 'exif-datetimereleased'            => 'Released on',
 'exif-originaltransmissionref'     => 'Original transmission location code',
+'exif-lens'                        => 'Lens used',
+'exif-serialnumber'                => 'Serial number of camera',
 
 # Make & model, can be wikified in order to link to the camera and model name
 'exif-make-value'             => '$1', # do not translate or duplicate this message to other languages

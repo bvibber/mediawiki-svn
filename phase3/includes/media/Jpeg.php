@@ -12,12 +12,13 @@ class JpegHandler extends BitmapHandler {
 
 	function getMetadata ( $image, $filename ) {
 		try {
-			$meta = BitmapMetadataHandler::newForJpeg( $filename );
-			$temp = $meta->getMetadataArray();
-			if ( $temp ) {
-				$temp['MEDIAWIKI_EXIF_VERSION'] = Exif::version();
-				return serialize( $temp );
+			$meta = BitmapMetadataHandler::Jpeg( $filename );
+			if ( $meta ) {
+				$meta['MEDIAWIKI_EXIF_VERSION'] = Exif::version();
+				return serialize( $meta );
 			} else {
+				/* FIXME, this should probably be something else to do versioning
+				 with older files that say have no exif, but have xmp */
 				return '0';
 			}
 		}

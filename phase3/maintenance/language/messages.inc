@@ -2604,7 +2604,6 @@ $wgMessageStructure = array(
 		'exif-stripbytecounts',
 		'exif-jpeginterchangeformat',
 		'exif-jpeginterchangeformatlength',
-		'exif-transferfunction',
 		'exif-whitepoint',
 		'exif-primarychromaticities',
 		'exif-ycbcrcoefficients',
@@ -2734,6 +2733,9 @@ $wgMessageStructure = array(
 		'exif-datetimereleased',
 		'exif-originaltransmissionref',
 		'exif-identifier',
+		'exif-lens',
+		'exif-serialnumber',
+
 	),
 	'exif-values' => array(
 		'exif-make-value',

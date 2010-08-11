@@ -49,8 +49,26 @@ class XMPValidate {
 			// this only validates standalone properties, not arrays, etc
 			return;
 		}
-		if ( !preg_match( '/^(-?\d+)\/(\d+[1-9]|[1-9]\d*)$/', $val ) ) {
+		if ( !preg_match( '/^(?:-?\d+)\/(?:\d+[1-9]|[1-9]\d*)$/D', $val ) ) {
 			wfDebugLog( 'XMP', __METHOD__ . " Expected rational but got $val" );
+			$val = null;
+		}
+
+	}
+	/**
+	* function to validate integers
+	*
+	* @param $info Array information about current property
+	* @param &$val Mixed current value to validate
+	* @param $standalone Boolean if this is a simple property or array
+	*/
+	public static function validateInteger( $info, &$val, $standalone ) {
+		if ( !$standalone ) {
+			// this only validates standalone properties, not arrays, etc
+			return;
+		}
+		if ( !preg_match( '/^[-+]?\d+$/D', $val ) ) {
+			wfDebugLog( 'XMP', __METHOD__ . " Expected integer but got $val" );
 			$val = null;
 		}
 

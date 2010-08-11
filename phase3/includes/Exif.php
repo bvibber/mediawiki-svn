@@ -139,7 +139,7 @@ class Exif {
 				'JPEGInterchangeFormatLength' => Exif::SHORT.','.Exif::LONG,	# Bytes of JPEG data
 
 				# Tags relating to image data characteristics
-				'TransferFunction' => Exif::SHORT,			# Transfer function
+				'TransferFunction' => Exif::IGNORE,			# Transfer function
 				'WhitePoint' => array( Exif::RATIONAL, 2),		# White point chromaticity
 				'PrimaryChromaticities' => array( Exif::RATIONAL, 6),	# Chromaticities of primarities
 				'YCbCrCoefficients' => array( Exif::RATIONAL, 3),	# Color space transformation matrix coefficients #p27
@@ -1382,6 +1382,8 @@ class FormatExif {
 				case 'dc-rights':
 				case 'dc-source':
 				case 'dc-type':
+				case 'Lens':
+				case 'SerialNumber':
 
 					$val = htmlspecialchars( $val );
 					break;

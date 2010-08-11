@@ -17,6 +17,8 @@ class PNGMetadataExtractor {
 		$frameCount = 0;
 		$loopCount = 1;
 		$duration = 0.0;
+		$xmp = '';
+		$meta = array();
 
 		if (!$filename)
 			throw new Exception( __METHOD__ . ": No file name specified" );
@@ -61,9 +63,23 @@ class PNGMetadataExtractor {
 				if( $fctldur['delay_num'] ) {
 					$duration += $fctldur['delay_num'] / $fctldur['delay_den'];
 				}
-			} elseif ( ( $chunk_type == "IDAT" || $chunk_type == "IEND" ) && $frameCount == 0 ) {
-				// Not a valid animated image. No point in continuing.
-				break;
+			} elseif ( $chunk_type == "iTXt"  ) {
+				// At the moment this only does XMP iText chunks,
+				// but in the future might extract other metadata chunks.
+				if( $chunk_size <= 22 ) {
+					// something weird, so skip
+					fseek( $fh, $chunk_size, SEEK_CUR );
+					continue;
+				}
+				$itxtHeader = fread( $fh, 22 );
+				if( !$itxtHeader ) { throw new Exception( __METHOD__ . ": Read error" ); return; }
+				if( $itxtHeader !== "XML:com.adobe.xmp\x00\x00\x00\x00\x00" ) {
+					// some other iTXt chunk.
+					fseek( $fh, $chunk_size - 22, SEEK_CUR );
+					continue;
+				}
+				$xmp = fread( $fh, $chunk_size - 22 );
+				if( !$xmp ) { throw new Exception( __METHOD__ . ": Read error" ); return; }
 			} elseif ( $chunk_type == "IEND" ) {
 				break;
 			} else {
@@ -80,7 +96,8 @@ class PNGMetadataExtractor {
 		return array(
 			'frameCount' => $frameCount,
 			'loopCount' => $loopCount,
-			'duration' => $duration
+			'duration' => $duration,
+			'xmp' => $xmp,
 		);
 		
 	}

@@ -413,10 +413,6 @@ class BitmapHandler extends ImageHandler {
 	}
 
 	function formatMetadata( $image ) {
-		$result = array(
-			'visible' => array(),
-			'collapsed' => array()
-		);
 		$metadata = $image->getMetadata();
 		if ( !$metadata ) {
 			return false;
@@ -426,20 +422,7 @@ class BitmapHandler extends ImageHandler {
 			return false;
 		}
 		unset( $exif['MEDIAWIKI_EXIF_VERSION'] );
-		$format = new FormatExif( $exif );
-
-		$formatted = $format->getFormattedData();
-		// Sort fields into visible and collapsed
-		$visibleFields = $this->visibleMetadataFields();
-		foreach ( $formatted as $name => $value ) {
-			$tag = strtolower( $name );
-			self::addMeta( $result,
-				in_array( $tag, $visibleFields ) ? 'visible' : 'collapsed',
-				'exif',
-				$tag,
-				$value
-			);
-		}
-		return $result;
+		return $this->formatMetadataHelper( $exif );
 	}
+
 }

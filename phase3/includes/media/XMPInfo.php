@@ -188,6 +188,142 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SEQ,
 			),
 		),
+		'http://ns.adobe.com/tiff/1.0/' => array(
+			'Artist'            => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'BitsPerSample'     => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SEQ,
+				'validate'  => 'validateInteger',
+			),
+			'Compression'       => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateClosed',
+				'choices'   => array( '1' => true, '6' => true ),
+			),
+			/* this prop should not be used in XMP. dc:rights is the correct prop */
+			'Copyright'         => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_LANG,
+			),
+			'DateTime'          => array(  /* proper prop is xmp:ModifyDate */
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateDate',
+			),
+			'ImageDescription'  => array(  /* proper one is dc:description */
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_LANG,
+			),
+			'ImageLength'       => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateInteger',
+			),
+			'ImageWidth'        => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateInteger',
+			),
+			'Make'              => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'Model'             => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'Orientation'       => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateClosed',
+				'choices'   => array( '1' => true, '2' => true, '3' => true, '4' => true, 5 => true,
+						'6' => true, '7' => true, '8' => true ),
+			),
+			'PhotometricInterpretation' => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateClosed',
+				'choices'   => array( '2' => true, '6' => true ),
+			),
+			'PlanerConfiguration' => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateClosed',
+				'choices'   => array( '1' => true, '2' => true ),
+			),
+			'PrimaryChromaticities' => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SEQ,
+				'validate'  => 'validateRational',
+			),
+			'ReferenceBlackWhite' => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SEQ,
+				'validate'  => 'validateRational',
+			),
+			'ResolutionUnit'    => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateClosed',
+				'choices'   => array( '2' => true, '3' => true ),
+			),
+			'SamplesPerPixel'   => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateInteger',
+			),
+			'Software'          => array(  /* see xmp:CreatorTool */
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			/* ignore TransferFunction */
+			'WhitePoint'        => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SEQ,
+				'validate'  => 'validateRational',
+			),
+			'XResolution'       => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateRational',
+			),
+			'YResolution'       => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateRational',
+			),
+			'YCbCrCoefficients' => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SEQ,
+				'validate'  => 'validateRational',
+			),
+			'YCbCrPositioning'  => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateClosed',
+				'choices'   => array( '1' => true, '2' => true ),
+			),
+			'YCbCrSubSampling'  => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SEQ,
+				'validate'  => 'validateClosed',
+				'choices'   => array( '1' => true, '2' => true ),
+			),
+		),
+		'http://ns.adobe.com/exif/1.0/aux/' => array(
+			'Lens'              => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+			'SerialNumber'      => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+			),
+		),
 		'http://purl.org/dc/elements/1.1/' => array(
 			'title'             => array(
 				'map_group' => 'general',
