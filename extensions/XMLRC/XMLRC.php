@@ -31,36 +31,12 @@ $wgXMLRCTransport = null;
 #  'address' => '127.0.0.1',
 #);
 
-$wgXMLRCProperties = 'user|comment|flags|timestamp|title|ids|sizes|redirect|loginfo'; # sensible default
+$wgXMLRCProperties = 'user|comment|flags|timestamp|title|ids|sizes|redirect|loginfo|tags'; # sensible default
 # $wgXMLRCProperties = 'title|timestamp|ids'; # default as per the API
 # $wgXMLRCProperties = 'user|comment|parsedcomment|flags|timestamp|title|ids|sizes|redirect|loginfo|tags'; # everything except "patrolled", which is verboten
 
-/*
-$wgXMLRCTransport = array(
-  'class' => 'XMLRC_XMPP',
-  'channel' => 'recentchanges',
-  'nickname' => $wgSitename,
-  'host' => 'localhost',
-  'port' => 5222,
-  'user' => 'mediawiki',
-  'server' => 'localhost',
-  'resource' => 'recentchanges',
-  'password' => 'yourpassword',
-  'include_path' => './xmpphp',
-);
-*/
-
-/*
-$wgXMLRCTransport = array(
-  'class' => 'XMLRC_UDP',
-  'address' => 'localhost',
-  'port' => 12345,
-);
-*/
-
 $wgAutoloadClasses[ 'XMLRC' ] = "$dir/XMLRC.class.php";
 $wgAutoloadClasses[ 'XMLRC_Transport' ] = "$dir/XMLRC.class.php";
-$wgAutoloadClasses[ 'XMLRC_XMPP' ] = "$dir/XMLRC_XMPP.class.php";
 $wgAutoloadClasses[ 'XMLRC_UDP' ] = "$dir/XMLRC_UDP.class.php";
 $wgAutoloadClasses[ 'XMLRC_File' ] = "$dir/XMLRC_File.class.php";
 

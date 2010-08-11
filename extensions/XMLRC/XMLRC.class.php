@@ -20,7 +20,7 @@ class XMLRC {
   public static function RecentChange_save( $rc ) {
     global $wgXMLRCTransport, $wgXMLRCProperties;
 
-    if ( !empty( $GLOBALS['wgXMLRCTransport'] ) ) {
+    if ( $wgXMLRCTransport ) {
 	$xmlrc = new XMLRC( $wgXMLRCTransport, $wgXMLRCProperties );
 	$xmlrc->processRecentChange( $rc );
     }
@@ -71,7 +71,7 @@ class XMLRC {
 	if ( !$prop ) $prop = "title|timestamp|ids"; //default taken from the API 
 	
 	if ( is_string( $prop ) ) {
-	    $prop = preg_split( '\\s*[,;/|+]\\s*', $prop );
+	    $prop = preg_split( '!\\s*[,;/|+]\\s*!', $prop );
 	}
 
 	foreach ( $prop as $k => $v ) {
@@ -106,12 +106,12 @@ class XMLRC {
     $row = $rc->getAttributes();
     $row = XMLRC::array2object( $row );
 
-    #wfDebug( "XMLRC: got attribute row: " . preg_replace('/\s+/', ' ', var_export($row, true)) . "\n" );
+    #wfDebugLog( "XMLRC", "got attribute row: " . preg_replace('/\s+/', ' ', var_export($row, true)) . "\n" );
 
     $info = $query->extractRowInfo( $row );
     $info['wikiid'] = wfWikiID();
 
-    #wfDebug( "XMLRC: got info: " . preg_replace('/\s+/', ' ', var_export($info, true)) . "\n" );
+    #wfDebugLog( "XMLRC", "got info: " . preg_replace('/\s+/', ' ', var_export($info, true)) . "\n" );
 
     $xml = $format->recXmlPrint( "rc", $info, "" );
     $xml = trim( $xml );
@@ -120,8 +120,7 @@ class XMLRC {
   }
 
   public function sendRecentChangeXML( $xml ) {
-    if ( !is_string( $xml ) ) wfDebugDieBacktrace( "XMLRC: parameter xml must be a string\n" );
-    else wfDebug( "XMLRC: sending xml\n" );
+    wfDebugLog( "XMLRC", "sending xml\n" );
 
     $transport = $this->getTransport();
     $transport->send( $xml ); 

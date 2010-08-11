@@ -15,8 +15,8 @@ class XMLRC_File extends XMLRC_Transport {
     if ( $this->handle ) return;
 
     $this->handle = fopen( $this->file, 'a' );
-    if ( !$this->handle ) wfDebug("XMLRC_File: failed to open {$this->file}\n");
-    else wfDebug("XMLRC_File: opened {$this->file}\n");
+    if ( !$this->handle ) wfDebugLog("XMLRC", "failed to open {$this->file}\n");
+    else wfDebugLog("XMLRC", "opened {$this->file}\n");
   }
 
   public function close() {
@@ -25,7 +25,7 @@ class XMLRC_File extends XMLRC_Transport {
     fclose( $this->handle );
     $this->handle = null;
 
-    wfDebug("XMLRC_File: closed {$this->file}\n");
+    wfDebugLog("XMLRC", "closed {$this->file}\n");
   }
 
   public function send( $xml ) {
@@ -34,7 +34,7 @@ class XMLRC_File extends XMLRC_Transport {
     
     $ok = fwrite( $this->handle, $xml . "\n" );
     if ( $ok ) $ok = fflush( $this->handle );
-    if ( !$ok ) wfDebug("XMLRC_File: failed to write to {$this->file}\n");
+    if ( !$ok ) wfDebugLog("XMLRC", "failed to write to {$this->file}\n");
 
     if ( $do_close ) $this->close();
   }
