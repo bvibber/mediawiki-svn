@@ -144,8 +144,8 @@ class ApiQueryExtensions extends ApiQueryBase {
 			),	
 			'state' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => array( 'dev', 'alpha', 'beta', 'rc', 'stable', 'deprecated' ),
-				ApiBase::PARAM_DFLT => 'stable',
+				ApiBase::PARAM_TYPE => DistributionRelease::getStates(),
+				ApiBase::PARAM_DFLT => DistributionRelease::getDefaultState(),
 			),						
 		);
 	}

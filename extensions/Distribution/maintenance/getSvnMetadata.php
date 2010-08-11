@@ -176,7 +176,7 @@ class GetSvnMetadata extends Maintenance {
 		
 		// Map the version values to the db schema.
 		$versionValues = array(
-			'version_status' => 0, // TODO
+			'version_status' => DistributionRelease::mapState( DistributionRelease::getDefaultState() ), // TODO
 			'version_desc' => $metaData['description'],
 			'version_authors' => $metaData['authors'],
 			'version_url' => $metaData['url'],			

@@ -22,6 +22,9 @@ $wgExtensionFunctions[] = 'efDistributionSetup';
 // Register the internationalization file.
 $wgExtensionMessagesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution.i18n.php';
 
+// Load classes.
+$wgAutoloadClasses['DistributionRelease'] = dirname( __FILE__ ) . '/includes/DistributionRelease.php';
+
 // Hook registration.
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
 
