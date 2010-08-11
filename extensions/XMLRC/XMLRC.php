@@ -18,10 +18,22 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['XMLRC'] = $dir . 'XMLRC.i18n.php';
 
-$wgXMLRCTransport = array(
-  'class' => 'XMLRC_File',
-  'file' => '/tmp/rc.xml',
-);
+$wgXMLRCTransport = null;
+
+#$wgXMLRCTransport = array(
+#  'class' => 'XMLRC_File',
+#  'file' => '/tmp/rc.xml',
+#);
+
+#$wgXMLRCTransport = array(
+#  'class' => 'XMLRC_UDP',
+#  'port' => 4455,
+#  'address' => '127.0.0.1',
+#);
+
+$wgXMLRCProperties = 'user|comment|flags|timestamp|title|ids|sizes|redirect|loginfo'; # sensible default
+# $wgXMLRCProperties = 'title|timestamp|ids'; # default as per the API
+# $wgXMLRCProperties = 'user|comment|parsedcomment|flags|timestamp|title|ids|sizes|redirect|loginfo|tags'; # everything except "patrolled", which is verboten
 
 /*
 $wgXMLRCTransport = array(

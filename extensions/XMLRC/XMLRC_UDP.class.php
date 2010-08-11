@@ -8,7 +8,7 @@ class XMLRC_UDP extends XMLRC_Transport {
   function __construct( $config ) {
     $this->conn = null;
 
-    $this->address = $config['address'];
+    $this->address = isset( $config['address'] ) ? $config['address'] : '127.0.0.1';
     $this->port = isset( $config['port'] ) ? $config['port'] : 4455;
   }
 

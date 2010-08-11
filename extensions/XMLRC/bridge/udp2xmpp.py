@@ -71,8 +71,6 @@ class Relay(object):
 	self.loglevel = LOG_VERBOSE
 	self.wiki_info = wiki_info;
 
-    #FIXME: test unicode! 
-
     def warn(self, message):
 	if self.loglevel >= LOG_QUIET:
 	    sys.stderr.write( "WARNING: %s\n" % ( message.encode( self.console_encoding ) ) )
