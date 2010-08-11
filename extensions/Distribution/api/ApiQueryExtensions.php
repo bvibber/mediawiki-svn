@@ -102,8 +102,15 @@ class ApiQueryExtensions extends ApiQueryBase {
 				break;
 			}
 
+			// This is based on
+			// http://search.cpan.org/~dagolden/CPAN-Meta-2.101670/lib/CPAN/Meta/Spec.pm
 			$result = array(
-				//TODO
+				'name' => $extension->unit_name,
+				'description' => $extension->current_desc,
+				'version' => $extension->current_version_nr,
+				'authors' => $extension->current_authors,
+				'url' => $extension->current_url,
+				//'licence' => $extension->current_licence
 			);
 			
 			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $result );			
