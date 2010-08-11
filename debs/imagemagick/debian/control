@@ -1,0 +1,155 @@
+Source: imagemagick
+Section: graphics
+Priority: optional
+Maintainer: ImageMagick Packaging Team <pkg-gmagick-im-team@lists.alioth.debian.org>
+Uploaders: Luciano Bello <luciano@debian.org>,
+ Daniel Kobras <kobras@debian.org>, Nelson A. de Oliveira <naoliv@debian.org>,
+ Bastien Roucariès <roucaries.bastien+debian@gmail.com>
+Standards-Version: 3.8.4
+Build-Depends: chrpath, debhelper (>= 7), ghostscript, libbz2-dev,
+ libdjvulibre-dev, libexif-dev, libfreetype6-dev, libgraphviz-dev,
+ libjasper-dev, libjpeg-dev, liblcms-dev, liblqr-1-0-dev, libltdl-dev,
+ libopenexr-dev, libperl-dev, libpng-dev, librsvg2-dev, libtiff-dev,
+ libwmf-dev, libx11-dev, libxext-dev, libxml2-dev, libxt-dev, pkg-config,
+ zlib1g-dev
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-gmagick/
+Vcs-Svn: svn://svn.debian.org/svn/pkg-gmagick/
+Homepage: http://www.imagemagick.org/
+
+Package: imagemagick
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: libmagickcore3-extra, ghostscript, netpbm, ufraw-batch
+Suggests: imagemagick-doc, autotrace, cups-bsd | lpr | lprng, curl, enscript,
+ ffmpeg, gimp, gnuplot, grads, groff-base, hp2xx, html2ps, libwmf-bin, mplayer,
+ povray, radiance, sane-utils, texlive-base-bin, transfig, xdg-utils
+Description: image manipulation programs
+ ImageMagick is a software suite to create, edit, and compose bitmap images.
+ It can read, convert and write images in a variety of formats (over 100)
+ including DPX, EXR, GIF, JPEG, JPEG-2000, PDF, PhotoCD, PNG, Postscript,
+ SVG, and TIFF. Use ImageMagick to translate, flip, mirror, rotate, scale,
+ shear and transform images, adjust image colors, apply various special
+ effects, or draw text, lines, polygons, ellipses and Bézier curves. 
+ All manipulations can be achieved through shell commands as well as through
+ an X11 graphical interface (display).
+
+Package: imagemagick-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: imagemagick (= ${binary:Version}), libmagick++3 (= ${binary:Version}),
+ libmagickcore3-extra (= ${binary:Version}), perlmagick (= ${binary:Version}),
+ ${misc:Depends}
+Description: debugging symbols for ImageMagick
+ This package contains the debugging symbols for ImageMagick, a software suite
+ to create, edit, and compose bitmap images.
+ 
+Package: imagemagick-doc
+Architecture: all
+Section: doc
+Depends: ${misc:Depends}
+Recommends: www-browser
+Suggests: imagemagick
+Conflicts: imagemagick (<= 7:6.4.0)
+Description: document files of ImageMagick
+ This package contains the document files shipped with ImageMagick, a software
+ suite to create, edit, and compose bitmap images.
+
+Package: libmagickcore3
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: ghostscript, gsfonts
+Suggests: libmagickcore3-extra
+Description: low-level image manipulation library
+ The MagickCore API is a low-level interface between the C programming language
+ and the ImageMagick image processing libraries and is recommended for
+ wizard-level programmers only. Unlike the MagickWand C API which uses only a
+ few opaque types and accessors, with MagickCore you almost exlusively access
+ the structure members directly.
+ .
+ This package contains the C libraries needed to run executables that make
+ use of MagickCore.
+
+Package: libmagickcore3-extra
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Provides: libmagickcore-extra
+Conflicts: libmagickcore2 (<= 7:6.5.5.3-1)
+Enhances: libmagickcore3
+Description: low-level image manipulation library - extra codecs
+ This package adds support for SVG, WMF, OpenEXR, DjVu and Graphviz to
+ MagickCore.
+
+Package: libmagickcore-dev
+Architecture: any
+Section: libdevel
+Depends: libmagickcore3 (= ${binary:Version}),
+ libmagickcore3-extra (= ${binary:Version}), libbz2-dev, libdjvulibre-dev,
+ libexif-dev, libfreetype6-dev, libgraphviz-dev, libjasper-dev, libjpeg-dev,
+ liblcms-dev, liblqr-1-0-dev, libltdl-dev, libopenexr-dev, libpng-dev,
+ librsvg2-dev, libtiff-dev, libwmf-dev, libx11-dev, libxext-dev, libxml2-dev,
+ libxt-dev, zlib1g-dev, ${misc:Depends}
+Description: low-level image manipulation library - development files
+ This package includes header files and static libraries needed to compile
+ programs using MagickCore.
+
+Package: libmagickwand3
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: image manipulation library 
+ The MagickWand API is the recommended interface between the C programming
+ language and the ImageMagick image processing libraries. Unlike the
+ MagickCore C API, MagickWand uses only a few opaque types. Accessors are
+ available to set or get important wand properties.
+ .
+ This package contains the C libraries needed to run executables that make
+ use of MagickWand.
+
+Package: libmagickwand-dev
+Architecture: any
+Section: libdevel
+Depends: libmagickwand3 (= ${binary:Version}),
+ libmagickcore3-extra (= ${binary:Version}),
+ libmagickcore-dev (= ${binary:Version}), ${misc:Depends}
+Provides: libmagick9-dev
+Conflicts: libmagick9-dev
+Description: image manipulation library - development files
+ This package includes header files and static libraries needed to compile
+ programs using MagickWand.
+
+Package: libmagick++3
+Architecture: any
+Section: libs
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: object-oriented C++ interface to ImageMagick
+ The Magick++ library is a set of C++ wrapper classes that provides access
+ to the ImageMagick package functionality from within a C++ application.
+ .
+ This package contains the C++ libraries needed to run executables that make
+ use of libMagick++.
+
+Package: libmagick++-dev
+Architecture: any
+Section: libdevel
+Depends: libmagick++3 (= ${binary:Version}),
+ libmagickcore-dev (= ${binary:Version}),
+ libmagickwand-dev (= ${binary:Version}), ${misc:Depends}
+Provides: libmagick++9-dev
+Conflicts: libmagick++9-dev
+Description: object-oriented C++ interface to ImageMagick - development files
+ This package includes header files and static libraries needed to compile
+ programs using Magick++.
+
+Package: perlmagick
+Architecture: any
+Section: perl
+Depends: ${perl:Depends}, ${shlibs:Depends}, ${misc:Depends}
+Provides: libimage-magick-perl
+Suggests: imagemagick-doc
+Description: Perl interface to the ImageMagick graphics routines
+ PerlMagick is an objected-oriented Perl interface to ImageMagick.
+ Use the module to read, manipulate, or write an image or image sequence from
+ within a Perl script. This makes it very suitable for Web CGI scripts.
