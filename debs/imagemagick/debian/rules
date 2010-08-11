@@ -38,7 +38,9 @@ build-stamp: $(QUILT_STAMPFN)
 	--x-includes=/usr/include/X11 \
 	--x-libraries=/usr/lib/X11 \
 	--with-quantum-depth=8 \
-	--without-lqr
+	--without-lqr \
+	--without-threads \
+	--disable-openmp
 
 	cd "$(CURDIR)/PerlMagick" && \
 		perl Makefile.PL
