@@ -371,7 +371,7 @@ $.extend( true, mw.legacy, {
 			toggleLink.className = 'internal';
 			toggleLink.href = '#';
 			addClickHandler( toggleLink, function( evt ) { toggleToc(); return killEvt( evt ); } );
-			toggleLink.appendChild( document.createTextNode( tocHideText ) );
+			toggleLink.appendChild( document.createTextNode( mw.msg.get( 'hidetoc' ) ) );
 			outerSpan.appendChild( document.createTextNode( '[' ) );
 			outerSpan.appendChild( toggleLink );
 			outerSpan.appendChild( document.createTextNode( ']' ) );
@@ -389,12 +389,12 @@ $.extend( true, mw.legacy, {
 		var toggleLink = document.getElementById( 'togglelink' );
 
 		if ( toc && toggleLink && toc.style.display == 'none' ) {
-			changeText( toggleLink, tocHideText );
+			changeText( toggleLink, mw.msg.get( 'hidetoc' ) );
 			toc.style.display = 'block';
 			document.cookie = 'hidetoc=0';
 			tocmain.className = 'toc';
 		} else {
-			changeText( toggleLink, tocShowText );
+			changeText( toggleLink, mw.msg.get( 'showtoc' ) );
 			toc.style.display = 'none';
 			document.cookie = 'hidetoc=1';
 			tocmain.className = 'toc tochidden';
@@ -1082,8 +1082,10 @@ $( document ).ready( function() {
 	if ( mw.legacy.ie6_bugs ) {
 		importScriptURI( mw.legacy.stylepath + '/common/IEFixes.js' );
 	}
-	// NOTE: All skins should call runOnloadHook() at the end of html output, so this should be redundant - it's here
-	// just in case
+	
+	showTocToggle();
+	
+	// NOTE: This replaces the runOnloadHook() call formerly placed at the end of the HTML output
 	runOnloadHook();
 } );
 

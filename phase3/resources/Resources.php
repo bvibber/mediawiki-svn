@@ -323,6 +323,7 @@ ResourceLoader::register( array(
 	'mediawiki.legacy.wikibits' => array(
 		'script' => 'resources/mediawiki/legacy/mediawiki.legacy.wikibits.js',
 		'needs' => 'mediawiki',
+		'messages' => array( 'showtoc', 'hidetoc' ),
 	),
 	
 	/* MediaWiki Utilities */
