@@ -36,7 +36,9 @@ build-stamp: $(QUILT_STAMPFN)
 	--without-fpx \
 	--with-perl-options='INSTALLDIRS=vendor' \
 	--x-includes=/usr/include/X11 \
-	--x-libraries=/usr/lib/X11
+	--x-libraries=/usr/lib/X11 \
+	--with-quantum-depth=8 \
+	--without-lqr
 
 	cd "$(CURDIR)/PerlMagick" && \
 		perl Makefile.PL
@@ -94,7 +96,7 @@ clean:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_prep
+	dh_clean -k
 	dh_installdirs
 
 	$(MAKE) install \
@@ -138,7 +140,7 @@ binary-arch: build check install
 	dh_testroot
 	dh_installdocs
 	dh_installexamples
-	dh_install
+	dh_install --sourcedir=$(CURDIR)/debian/tmp
 	# Remove extra coders
 	while read FILE; do \
 		rm -f debian/libmagickcore3/$$FILE; \
