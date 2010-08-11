@@ -22,8 +22,8 @@ class JpegMetadataExtractor {
 	* @return Array of interesting segments.
 	* @throws MWException if given invalid file.
 	*/
-	static function segmentSplitter ($filename) {
-		global $wgShowXMP;
+	static function segmentSplitter ( $filename ) {
+		$showXMP = function_exists( 'xml_parser_create_ns' );
 
 		$segmentCount = 0;
 
@@ -43,7 +43,7 @@ class JpegMetadataExtractor {
 			$segmentCount++;
 			if ( $segmentCount > self::MAX_JPEG_SEGMENTS ) {
 				// this is just a sanity check
-				throw new MWException('Too many jpeg segments. Aborting');
+				throw new MWException( 'Too many jpeg segments. Aborting' );
 			}
 			if ( $buffer !== "\xFF" ) {
 				throw new MWException( "Error reading jpeg file marker" );
@@ -57,15 +57,15 @@ class JpegMetadataExtractor {
 				// if not try to convert it to windows-1252.
 				$com = $oldCom = trim( self::jpegExtractMarker( $fh ) );
 
-				UtfNormal::quickIsNFCVerify( $com ); 
-				//turns $com to valid utf-8.
-				//thus if no change, its utf-8, otherwise its something else.
+				UtfNormal::quickIsNFCVerify( $com );
+				// turns $com to valid utf-8.
+				// thus if no change, its utf-8, otherwise its something else.
 				if ( $com !== $oldCom ) {
 					$oldCom = iconv( 'windows-1252', 'UTF-8//IGNORE', $oldCom );
 				}
 				$segments["COM"][] = $oldCom;
 
-			} elseif ( $buffer === "\xE1" && $wgShowXMP ) {
+			} elseif ( $buffer === "\xE1" && $showXMP ) {
 				// APP1 section (Exif, XMP, and XMP extended)
 				// only extract if XMP is enabled.
 				$temp = self::jpegExtractMarker( $fh );
@@ -152,7 +152,7 @@ class JpegMetadataExtractor {
 			// the piece of info this record contains.
 
 			$offset += 2;
-			
+
 			// some record types can contain a name, which
 			// is a pascal string 0-padded to be an even
 			// number of bytes. Most times (and any time
@@ -189,7 +189,7 @@ class JpegMetadataExtractor {
 			// null pad byte.
 			if ( $lenData['len'] % 2 == 1 ) $lenData['len']++;
 			$offset += $lenData['len'];
-		
+
 		}
 
 		if ( !$realHash || !$recordedHash ) {

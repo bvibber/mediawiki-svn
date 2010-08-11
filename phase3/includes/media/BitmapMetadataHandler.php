@@ -9,10 +9,6 @@ and the various metadata extractors.
 @todo other image formats.
 */
 class BitmapMetadataHandler {
-	const MAX_JPEG_SEGMENTS = 200;
-	// the max segment is a sanity check.
-	// A jpeg file should never even remotely have
-	// that many segments. Your average file has about 10.
 	private $filename;
 	private $metadata = Array();
 	private $metaPriority = Array(
@@ -62,7 +58,7 @@ class BitmapMetadataHandler {
 	* @param Array $metaArray array of metadata values
 	* @param string $type type. defaults to other. if two things have the same type they're merged
 	*/
-	function addMetadata( $metaArray, $type = 'other' ) {
+	function addMetadata ( $metaArray, $type = 'other' ) {
 		if ( isset( $this->metadata[$type] ) ) {
 			/* merge with old data */
 			$metaArray = $metaArray + $this->metadata[$type];
@@ -80,7 +76,7 @@ class BitmapMetadataHandler {
 	*
 	* @return Array metadata array
 	*/
-	function getMetadataArray() {
+	function getMetadataArray () {
 		// this seems a bit ugly... This is all so its merged in right order
 		// based on the MWG recomendation.
 		$temp = Array();
@@ -88,11 +84,11 @@ class BitmapMetadataHandler {
 		foreach ( $this->metaPriority as $pri ) {
 			foreach ( $pri as $type ) {
 				if ( isset( $this->metadata[$type] ) ) {
-					//Do some special casing for multilingual values.
+					// Do some special casing for multilingual values.
 					// Don't discard translations if also as a simple value.
 					foreach ( $this->metadata[$type] as $itemName => $item ) {
-						if ( is_array($item) && isset($item['_type']) && $item['_type'] === 'lang' ) {
-							if ( isset($temp[$itemName]) && !is_array($temp[$itemName]) ) {
+						if ( is_array( $item ) && isset( $item['_type'] ) && $item['_type'] === 'lang' ) {
+							if ( isset( $temp[$itemName] ) && !is_array( $temp[$itemName] ) ) {
 								$default = $temp[$itemName];
 								$temp[$itemName] = $item;
 								$temp[$itemName]['x-default'] = $default;
@@ -123,22 +119,22 @@ class BitmapMetadataHandler {
 	* @return metadata result array.
 	* @throws MWException on invalid file.
 	*/
-	static function Jpeg ( $file ) {
-		global $wgShowXMP;
-		$meta = new self( $file );
+	static function Jpeg ( $filename ) {
+		$showXMP = function_exists( 'xml_parser_create_ns' );
+		$meta = new self( $filename );
 		$meta->getExif();
 		$seg = Array();
-		$seg = JpegMetadataExtractor::segmentSplitter( $file );
+		$seg = JpegMetadataExtractor::segmentSplitter( $filename );
 		if ( isset( $seg['COM'] ) && isset( $seg['COM'][0] ) ) {
 			$meta->addMetadata( Array( 'JPEGFileComment' => $seg['COM'] ), 'file-comment' );
 		}
 		if ( isset( $seg['PSIR'] ) ) {
 			$meta->doApp13( $seg['PSIR'] );
 		}
-		if ( isset( $seg['XMP'] ) && $wgShowXMP ) {
+		if ( isset( $seg['XMP'] ) && $showXMP ) {
 			$xmp = new XMPReader();
 			$xmp->parse( $seg['XMP'] );
-			foreach( $seg['XMP_ext'] as $xmpExt ) {
+			foreach ( $seg['XMP_ext'] as $xmpExt ) {
 				/* Support for extended xmp in jpeg files
 				 * is not well tested and a bit fragile.
 				 */
@@ -146,8 +142,8 @@ class BitmapMetadataHandler {
 
 			}
 			$res = $xmp->getResults();
-			foreach( $res as $type => $array ) {
-				$meta->addMetadata( $array, $type ); 
+			foreach ( $res as $type => $array ) {
+				$meta->addMetadata( $array, $type );
 			}
 		}
 		return $meta->getMetadataArray();
@@ -160,16 +156,16 @@ class BitmapMetadataHandler {
 	* @param $filename String full path to file
 	* @return Array Array for storage in img_metadata.
 	*/
-	static public function PNG( $filename ) {
-		global $wgShowXMP;
+	static public function PNG ( $filename ) {
+		$showXMP = function_exists( 'xml_parser_create_ns' );
 
 		$meta = new self( $filename );
 		$array = PNGMetadataExtractor::getMetadata( $filename );
-		if ( isset( $array['xmp'] ) && $array['xmp'] !== '' && $wgShowXMP) {
+		if ( isset( $array['xmp'] ) && $array['xmp'] !== '' && $showXMP ) {
 			$xmp = new XMPReader();
-			$xmp->parse($array['xmp']);
+			$xmp->parse( $array['xmp'] );
 			$xmpRes = $xmp->getResults();
-			foreach( $xmpRes as $type => $xmpSection ) {
+			foreach ( $xmpRes as $type => $xmpSection ) {
 				$meta->addMetadata( $xmpSection, $type );
 			}
 		}

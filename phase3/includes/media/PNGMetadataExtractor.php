@@ -13,6 +13,8 @@ class PNGMetadataExtractor {
 	static function getMetadata( $filename ) {
 		self::$png_sig = pack( "C8", 137, 80, 78, 71, 13, 10, 26, 10 );
 		self::$CRC_size = 4;
+
+		$showXMP = function_exists( 'xml_parser_create_ns' );
 		
 		$frameCount = 0;
 		$loopCount = 1;
@@ -63,7 +65,7 @@ class PNGMetadataExtractor {
 				if( $fctldur['delay_num'] ) {
 					$duration += $fctldur['delay_num'] / $fctldur['delay_den'];
 				}
-			} elseif ( $chunk_type == "iTXt"  ) {
+			} elseif ( $chunk_type == "iTXt" && $showXMP ) {
 				// At the moment this only does XMP iText chunks,
 				// but in the future might extract other metadata chunks.
 				if( $chunk_size <= 22 ) {

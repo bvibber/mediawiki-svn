@@ -388,11 +388,6 @@ $wgUseInstantCommons = false;
 $wgShowEXIF = function_exists( 'exif_read_data' );
 
 /**
- * Show/extract XMP metadata (similar to above exif setting)
- */
-$wgShowXMP = function_exists( 'xml_parser_create_ns' );
-
-/**
  * If to automatically update the img_metadata field
  * if the metadata field is outdated but compatible with the current version.
  * Defaults to false.
