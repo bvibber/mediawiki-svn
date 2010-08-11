@@ -24,6 +24,7 @@ class OutputPage {
 	var $mCategoryLinks = array(), $mCategories = array(), $mLanguageLinks = array();
 
 	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
+	var $mResources = array();
 	var $mInlineMsg = array();
 
 	var $mTemplateIds = array();
@@ -221,6 +222,24 @@ class OutputPage {
 	 */
 	function getScript() {
 		return $this->mScripts . $this->getHeadItems();
+	}
+
+	/**
+	 * Get the list of resources to include on this page
+	 * @return array of module names
+	 */
+	public function getResources() {
+		return array_keys( $this->mResources );
+	}
+
+	/**
+	 * Add a module recognized by the resource loader. Modules added
+	 * through this function will be loaded by the resource loader when the
+	 * page loads.
+	 * @param $module mixed Module name (string) or array of module names
+	 */
+	public function addResources( $modules ) {
+		$this->mResources += array_flip( (array)$modules );
 	}
 
 	/**
@@ -1527,24 +1546,27 @@ class OutputPage {
 		}
 
 		$sk = $wgUser->getSkin();
+		
+		// Add base resources
+		$this->addResources( array( 'jquery', 'mediawiki', 'mediawiki.legacy.wikibits' ) );
 
+		// Add various resources if required
 		if ( $wgUseAjax ) {
-			$this->addScriptFile( 'ajax.js' );
+			$this->addResources( 'mediawiki.legacy.ajax' );
 
 			wfRunHooks( 'AjaxAddScript', array( &$this ) );
 
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
-				$this->includeJQuery();
-				$this->addScriptFile( 'ajaxwatch.js' );
+				$this->addResources( 'mediawiki.legacy.ajaxwatch' );
 			}
 
 			if ( $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ) {
-				$this->addScriptFile( 'mwsuggest.js' );
+				$this->addResources( 'mediawiki.legacy.mwsuggest' );
 			}
 		}
 
 		if( $wgUser->getBoolOption( 'editsectiononrightclick' ) ) {
-			$this->addScriptFile( 'rightclickedit.js' );
+			$this->addResources( 'mediawiki.legacy.rightclickedit' );
 		}
 
 		if( $wgUniversalEditButton ) {
@@ -1567,9 +1589,6 @@ class OutputPage {
 			}
 		}
 
-		if ( $wgJQueryOnEveryPage ) {
-			$this->includeJQuery();
-		}
 
 		# Buffer output; final headers may depend on later processing
 		ob_start();
@@ -2194,6 +2213,7 @@ class OutputPage {
 	
 	static function makeResourceLoaderLinkedScript( $skin, $modules ) {
 		global $wgUser, $wgLang, $wgRequest, $wgScriptPath;
+		// TODO: Should this be a static function of ResourceLoader instead?
 		$query = array(
 			'modules' => implode( '|', $modules ),
 			'user' => $wgUser->isLoggedIn(),
@@ -2219,7 +2239,7 @@ class OutputPage {
 		global $wgStylePath, $wgStyleVersion;
 		
 		// Include base modules and wikibits legacy code
-		$scripts = self::makeResourceLoaderLinkedScript( $sk, array( 'jquery', 'mediawiki', 'mediawiki.legacy.wikibits' ) );
+		$scripts = self::makeResourceLoaderLinkedScript( $sk, $this->getResources() );
 		// Configure page
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 		
