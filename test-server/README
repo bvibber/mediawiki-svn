@@ -9,3 +9,22 @@ After that, the projects/connectfour sample directory is erased and
 the config.xml, cruisecontrol.sh, and projects/mw directories from
 this configuration are put into place.
 
+Finally, add the cruisecontrol user:
+
+    useradd ci
+
+and put cruisecontrol-init.d in /etc/init.d/cruisecontrol:
+
+    cp cruisecontrol-init.d /etc/init.d/cruisecontrol
+
+make it executable
+
+    chmod +x /etc/init.d/cruisecontrol
+
+and make the symlinks:
+
+    update-rc.d cruisecontrol defaults
+
+Finally, start cruisecontrol:
+
+    /etc/init.d/cruisecontrol start
