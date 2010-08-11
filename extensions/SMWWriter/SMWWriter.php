@@ -20,7 +20,7 @@ include_once( "$smwwgIP/api/SMWWriter_API.php" );
 
 global $wgExtensionCredits;
 
-$wgExtensionCredits['other'][]= array(
+$wgExtensionCredits[defined( 'SEMANTIC_EXTENSION_TYPE' ) ? 'semantic' : 'other'][]= array(
 	'path' => __FILE__,
 	'name' => 'SMWWriter',
 	'version' => SMWWRITER_VERSION,
