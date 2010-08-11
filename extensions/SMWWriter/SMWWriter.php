@@ -13,7 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 define( 'SMWWRITER_VERSION', '1.5.0 beta' );
 
-$smwwgIP = $IP . '/extensions/SMWWriter';
+$smwwgIP = dirname( __FILE__ );
 
 include_once( "$smwwgIP/api/SMWWriter.php" );
 include_once( "$smwwgIP/api/SMWWriter_API.php" );
