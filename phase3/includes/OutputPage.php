@@ -2670,7 +2670,6 @@ class OutputPage {
 	 * @deprecated No longer needed as of 1.17
 	 */
 	public function includeJQuery( $modules = array() ) {
-		wfDeprecated( __METHOD__ );
 		return array();
 	}
 
