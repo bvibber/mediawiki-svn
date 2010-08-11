@@ -1,8 +1,0 @@
-usr/lib/libMagick.so.*
-usr/lib/libMagick-*.so
-usr/lib/libMagick-*.so.*
-usr/lib/libWand.so.*
-usr/lib/libWand-*.so
-usr/lib/libWand-*.so.*
-usr/lib/ImageMagick-6.3.7/*
-usr/share/ImageMagick-6.3.7/config/*
