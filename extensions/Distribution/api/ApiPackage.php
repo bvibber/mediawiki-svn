@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ * API extension for Distribution that allows the querying of package metadata.
  * 
  * @file ApiPackage.php
  * @ingroup Distribution
@@ -25,6 +25,7 @@
  */
 
 /**
+ * Allows the querying of package metadata.
  * 
  * @since 0.1
  *

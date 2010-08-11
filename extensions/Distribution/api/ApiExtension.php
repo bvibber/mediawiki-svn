@@ -1,7 +1,8 @@
 <?php
 
 /**
- * 
+ * API extension for Distribution that allows the querying of extension metadata.
+ * This includes the different versions of the extension.
  * 
  * @file ApiExtensions.php
  * @ingroup Distribution
@@ -25,6 +26,7 @@
  */
 
 /**
+ * Allows the querying of extension metadata, including the different versions.
  * 
  * @since 0.1
  *
