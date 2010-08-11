@@ -53,6 +53,10 @@ class ApiQueryExtensions extends ApiQueryBase {
 	public function execute() {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
+
+		if ( !isset( $params['value'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'value' ) );
+		}
 		
 		$this->addTables( 'distribution_units' );
 		
@@ -67,7 +71,23 @@ class ApiQueryExtensions extends ApiQueryBase {
 		) );
 		
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		$this->addOption( 'ORDER BY', 'unit_id' );		
+		$this->addOption( 'ORDER BY', 'unit_id' );			
+		
+		switch ( $params['filter'] ) {
+			case 'term' :
+				// TODO
+				$this->addWhere( "unit_name = '$params[value]'" );
+				break;
+			case 'author' :
+				// TODO
+				$this->addWhere( "'current_authors = '$params[value]'" );
+				break;
+			case 'tag' :
+				// TODO
+				break;
+		}
+		
+		// TODO: filter on state
 		
 		// Handle the continue parameter when it's provided.
 		if ( !is_null( $params['continue'] ) ) {
@@ -110,7 +130,14 @@ class ApiQueryExtensions extends ApiQueryBase {
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
-			'continue' => null,		
+			'continue' => null,
+			'filter' => array(
+				ApiBase::PARAM_TYPE => array( 'term', 'author', 'tag' ),
+				ApiBase::PARAM_DFLT => 'term',
+			),
+			'value' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),			
 		);
 	}
 
@@ -122,7 +149,9 @@ class ApiQueryExtensions extends ApiQueryBase {
 	public function getParamDescription() {
 		return array (
 			'continue' => 'Number of the first extension to return',
-			'limit'   => 'Amount of extensions to return',		
+			'limit'    => 'Amount of extensions to return',	
+			'filter'   => 'What information should be filtered on',
+			'value'    => 'The value to filter on'	
 		);
 	}
 
@@ -142,6 +171,7 @@ class ApiQueryExtensions extends ApiQueryBase {
 	 */
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
+			array( 'missingparam', 'value' ),
 		) );
 	}	
 	
@@ -152,8 +182,8 @@ class ApiQueryExtensions extends ApiQueryBase {
 	 */
 	protected function getExamples() {
 		return array (
-			'api.php?action=query&list=extensions',
-			'api.php?action=query&list=extensions&dstlimit=42',
+			'api.php?action=query&list=extensions&dstvalue=semantic',
+			'api.php?action=query&list=extensions&dstfilter=tag&dstvalue=semantic&dstlimit=42',
 		);
 	}
 
