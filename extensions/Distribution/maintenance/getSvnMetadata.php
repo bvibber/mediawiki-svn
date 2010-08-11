@@ -222,22 +222,22 @@ class GetSvnMetadata extends Maintenance {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param $unit Array
+	 * @param $unit
 	 * @param $unitValues Array
 	 * @param $versionValues Array
 	 * @param $dbr DatabaseBase
 	 */
-	protected function updateUnit( array $unit, array $unitValues, array $versionValues, DatabaseBase $dbr ) {
+	protected function updateUnit( $unit, array $unitValues, array $versionValues, DatabaseBase $dbr ) {
 		$dbw = wfGetDB( DB_MASTER );
 		
-		$versionValues['unit_id'] = $unit['unit_id'];
+		$versionValues['unit_id'] = $unit->unit_id;
 		
 		// Query for existing versions of this unit with the same version number.
 		$version = $dbr->selectRow(
 			'distribution_unit_versions',
 			array( 'version_id' ),
 			array( 
-				'unit_id' => $unit['unit_id'],
+				'unit_id' => $unit->unit_id,
 				'version_nr' => $unitValues['current_version_nr']
 			)
 		);
@@ -256,16 +256,16 @@ class GetSvnMetadata extends Maintenance {
 			$dbw->update(
 				'distribution_unit_versions',
 				$versionValues,
-				array( 'version_id' => $version['version_id'] )
+				array( 'version_id' => $version->version_id )
 			);	
 
-			$unitValues['current_version_nr'] = $version['version_id'];
+			$unitValues['current_version_nr'] = $version->version_id;
 		}
 		
 		$dbw->update(
 			'distribution_units',
 			$unitValues,
-			array( 'unit_id' => $unit['unit_id'] )
+			array( 'unit_id' => $unit->unit_id )
 		);		
 	}	
 	
