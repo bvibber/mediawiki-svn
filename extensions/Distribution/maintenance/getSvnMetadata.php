@@ -152,22 +152,21 @@ class GetSvnMetadata extends Maintenance {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param array $metaData
+	 * @param $metaData Array
 	 */
 	protected function saveExtensionMetadata( array $metaData ) {
 		// Get the database connections.
 		$dbr = wfGetDB( DB_SLAVE );
-		$dbw = wfGetDB( DB_MASTER );
 
 		// Query for existing units with the same name.
-		$extension = $dbr->selectRow(
+		$unit = $dbr->selectRow(
 			'distribution_units',
 			array( 'unit_id' ),
 			array( 'unit_name' => $metaData['name'] )
 		);		
 		
-		// Map the values to the db schema.
-		$values = array(
+		// Map the unit values to the db schema.
+		$unitValues = array(
 			'unit_name' => $metaData['name'],
 			'current_version_nr' => $metaData['version'],
 			'current_desc' => $metaData['description'],
@@ -175,23 +174,100 @@ class GetSvnMetadata extends Maintenance {
 			'current_url' => $metaData['url'],
 		);
 		
-		// Insert or update depending on if it already exists.
-		if ( $extension == false ) {
+		// Map the version values to the db schema.
+		$versionValues = array(
+			'version_status' => 0, // TODO
+			'version_desc' => $metaData['description'],
+			'version_authors' => $metaData['authors'],
+			'version_url' => $metaData['url'],			
+		);		
+		
+		// Insert or update the unit.
+		if ( $unit == false ) {
+			$this->insertUnit( $unitValues, $versionValues );
+		}
+		else {
+			$this->updateUnit( $unit, $unitValues, $versionValues, $dbr );
+		}
+	}
+	
+	/**
+	 * Inserts a new unit and creates a new version for this unit.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $unitValues Array
+	 * @param $versionValues Array
+	 */
+	protected function insertUnit( array $unitValues, array $versionValues ) {
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$dbw->insert(
+			'distribution_units',
+			$unitValues
+		);
+		
+		$versionValues['version_nr'] = $unitValues['current_version_nr'];
+		$versionValues['unit_id'] = $dbw->insertId();
+		
+		$dbw->insert(
+			'distribution_unit_versions',
+			$versionValues
+		);		
+	}
+	
+	/**
+	 * Updates an existing unit. If the unit already had a version for the current number,
+	 * it will be updated, otherwise a new one will be created.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $unit Array
+	 * @param $unitValues Array
+	 * @param $versionValues Array
+	 * @param $dbr DatabaseBase
+	 */
+	protected function updateUnit( array $unit, array $unitValues, array $versionValues, DatabaseBase $dbr ) {
+		$dbw = wfGetDB( DB_MASTER );
+		
+		$versionValues['unit_id'] = $unit['unit_id'];
+		
+		// Query for existing versions of this unit with the same version number.
+		$version = $dbr->selectRow(
+			'distribution_unit_versions',
+			array( 'version_id' ),
+			array( 
+				'unit_id' => $unit['unit_id'],
+				'version_nr' => $unitValues['current_version_nr']
+			)
+		);
+		
+		if ( $version == false ) {
+			$versionValues['version_nr'] = $unitValues['current_version_nr'];
+			
 			$dbw->insert(
-				'distribution_units',
-				$values
-			);			
+				'distribution_unit_versions',
+				$versionValues
+			);
+			
+			$unitValues['current_version_nr'] = $dbw->insertId();			
 		}
 		else {
 			$dbw->update(
-				'distribution_units',
-				$values,
-				array( 'unit_name' => $metaData['name'] )
-			);
+				'distribution_unit_versions',
+				$versionValues,
+				array( 'version_id' => $version['version_id'] )
+			);	
+
+			$unitValues['current_version_nr'] = $version['version_id'];
 		}
 		
-		// TODO: distribution_unit_versions
-	}
+		$dbw->update(
+			'distribution_units',
+			$unitValues,
+			array( 'unit_id' => $unit['unit_id'] )
+		);		
+	}	
 	
 }
 
