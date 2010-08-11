@@ -134,7 +134,12 @@ class ApiQueryExtensions extends ApiQueryBase {
 			'value' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true,
-			),			
+			),	
+			'state' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => array( 'dev', 'alpha', 'beta', 'rc', 'stable', 'deprecated' ),
+				ApiBase::PARAM_DFLT => 'stable',
+			),						
 		);
 	}
 
@@ -148,7 +153,8 @@ class ApiQueryExtensions extends ApiQueryBase {
 			'continue' => 'Number of the first extension to return',
 			'limit'    => 'Amount of extensions to return',	
 			'filter'   => 'What information should be filtered on',
-			'value'    => 'The value to filter on'	
+			'value'    => 'The value to filter on',
+			'state'    => 'A list of allowed release states'
 		);
 	}
 
