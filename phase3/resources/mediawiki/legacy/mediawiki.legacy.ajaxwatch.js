@@ -79,7 +79,7 @@ $.extend( true, mw.legacy, {
 				$j( '#wpWatchthis' ).removeAttr( 'checked' );
 			}
 		}
-	} );
+	}
 } );
 
 /* Initialization */
