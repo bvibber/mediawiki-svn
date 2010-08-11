@@ -220,7 +220,7 @@ $messages['fr'] = array(
  * @author Xosé
  */
 $messages['gl'] = array(
-	'contributionseditcount' => 'Este usuario ten $1 edicións.',
+	'contributionseditcount' => 'Este usuario fixo {{PLURAL:$1|unha edición|$1 edicións}}.',
 	'contributionseditcount-desc' => 'Mostra a conta de edicións na [[Special:Contributions|páxina de contribucións dun usuario]]',
 );
 

@@ -1394,6 +1394,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -1485,7 +1486,8 @@ Pe bezañ aotreet da <a href="$3">Ouzhpennañ ar froud</a>.',
 	'mvd_default_mismatch' => 'Fazi er restr arventennoù',
 	'mv_data_page_title' => '$1 evit $2 adal $3',
 	'mv_time_separator' => '$1 da $2',
-	'mv_list_streams' => 'Roll gwazhioù metavid',
+	'mv_list_streams' => 'Roll froudadoù MetaVid',
+	'mv_list_streams_page' => 'Roll froudadoù MetaVid',
 	'mv_list_streams_docu' => 'Ar froudadoù-mañ zo anezho :',
 	'mv_list_streams_none' => "N'eus froudad ebet",
 	'video_feed_cat' => 'Bouetañ ar video evit ar rummad :',

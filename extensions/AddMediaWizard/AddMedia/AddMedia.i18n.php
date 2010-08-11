@@ -636,7 +636,7 @@ $messages['be-tarask'] = array(
 	'mwe-cc_nc_title' => 'Некамэрцыйнае',
 	'mwe-cc_nd_title' => 'Вытворныя працы не дазваляюцца',
 	'mwe-cc_sa_title' => 'З захаваньнем умоваў',
-	'mwe-cc_pd_title' => 'Грамадзкая ўласнасьць',
+	'mwe-cc_pd_title' => 'Грамадзкі набытак',
 	'mwe-unknown_license' => 'Невядомая ліцэнзія',
 	'mwe-no-import-by-url' => "Гэты ўдзельнік альбо {{SITENAME}} <b>ня можа</b> імпартаваць аб'екты з вонкавых URL-адрасоў. <p>Вам неабходна ўвайсьці ў сыстэму?</p><p>Вы маеце правы upload_by_url?<br />Ці дазволеная ў {{GRAMMAR:месны|{{SITENAME}}}} $1?</p>",
 	'mwe-results_from' => 'Вынікі з $1',
@@ -1897,6 +1897,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Lucas
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1917,13 +1918,13 @@ $messages['eo'] = array(
 	'mwe-summary' => 'Resumo',
 	'rsd_results_next' => 'sekva',
 	'rsd_results_prev' => 'antaŭa',
-	'mwe-upload_tab' => 'Alŝuti',
+	'mwe-upload_tab' => 'Alŝuti dosieron',
 	'mwe-cc_pd_title' => 'Publika Domajno',
 	'mwe-watch_this_page' => 'Atenti tiun ĉi paĝon',
 	'fogg-select_file' => 'Elekti dosieron',
 	'fogg-select_new_file' => 'Elekti novan dosieron',
 	'fogg-select_url' => 'Elekti URL-on',
-	'fogg-installed' => 'Instalis Firefogg',
+	'fogg-installed' => 'Firefogg estas instalita.',
 	'fogg-use_latest_firefox' => 'Bonvolu antaŭe instali <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox (Fajrvulpo) 3.5</a> (or later). <i>Poste revenu al ĉi tiu paĝo por instali la  kromprogramon <b>Firefogg</b>.</i>',
 	'fogg-hidepreview' => 'Kaŝi antaŭvidon',
 );

@@ -1721,6 +1721,13 @@ $messages['ug-latn'] = array(
 	'passwordreset-username' => 'Ishletkuchi ismi:',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'passwordreset-nopassmatch' => 'Паролі не співпадають',
+);
+
 /** Urdu (اردو)
  * @author محبوب عالم
  */

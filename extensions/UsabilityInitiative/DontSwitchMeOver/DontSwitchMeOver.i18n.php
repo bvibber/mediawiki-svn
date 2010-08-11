@@ -41,6 +41,13 @@ $messages['be-tarask'] = array(
 	'dontswitchmeover-pref' => 'Пакінуць цяперашняе афармленьне пасьля пераключэньня стандартнага афармленьня',
 );
 
+/** Breton (Brezhoneg)
+ * @author Gwendal
+ */
+$messages['br'] = array(
+	'dontswitchmeover-pref' => 'Chom hep aotren cheñchamant ma zres pa cheñch an tres dre ziouer',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -93,6 +100,7 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'dontswitchmeover-desc' => 'Preferencia para que os usuarios especifiquen se queren preservar a súa configuración da aparencia ao cambiar a aparencia por defecto.',
+	'dontswitchmeover-pref' => 'Non permitir que cambie a miña aparencia cando a aparencia por defecto troque',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -132,6 +140,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'dontswitchmeover-desc' => '既定の外装が変更されたときに、自身の外装の設定を保持するかどうかを指定する設定',
+	'dontswitchmeover-pref' => '既定の外装が変更されても、自分の外装が変更されることを許可しない',
 );
 
 /** Korean (한국어)
@@ -213,6 +222,13 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'dontswitchmeover-desc' => 'Preferência para os utilizadores especificarem que desejam preservar a sua configuração de tema se o tema padrão for alterado.',
+	'dontswitchmeover-pref' => 'Não permitir que o meu tema seja alterado se o tema padrão passar a ser outro',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author GoEThe
+ */
+$messages['pt-br'] = array(
 	'dontswitchmeover-pref' => 'Não permitir que o meu tema seja alterado se o tema padrão passar a ser outro',
 );
 

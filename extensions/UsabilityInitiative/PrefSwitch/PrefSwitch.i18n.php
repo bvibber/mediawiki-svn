@@ -618,6 +618,7 @@ $messages['br'] = array(
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nann',
 	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
+	'prefswitch-survey-submit-global-off' => "Diweredekaat an arc'hweladurioù nevez evit an holl wiki",
 	'prefswitch-survey-cancel-off' => "Mar fell deoc'h kenderc'hel d'ober gant ar perzhioù nevez e c'hallit distreiñ da $1.",
 	'prefswitch-survey-submit-feedback' => 'Roit ho soñj',
 	'prefswitch-survey-cancel-feedback' => "Mar ne fell ket deoc'h reiñ ho soñj e c'hallit distreiñ da $1.",
@@ -914,6 +915,7 @@ $messages['cu'] = array(
 	'prefswitch-survey-true' => 'да',
 	'prefswitch-survey-false' => 'нѣ́тъ',
 	'prefswitch-survey-answer-browser-other' => 'ино съмотри́ло :',
+	'prefswitch-title-switched-off' => 'благода́рьщвлѭ',
 );
 
 /** Welsh (Cymraeg)
@@ -2289,6 +2291,7 @@ $messages['gl'] = array(
 	'prefswitch-survey-true' => 'Si',
 	'prefswitch-survey-false' => 'Non',
 	'prefswitch-survey-submit-off' => 'Desactivar as novas características',
+	'prefswitch-survey-submit-global-off' => 'Desactivar as novas características en todos os wikis',
 	'prefswitch-survey-cancel-off' => 'Se quere seguir usando as novas características, pode volver a "$1".',
 	'prefswitch-survey-submit-feedback' => 'Dea a súa opinión',
 	'prefswitch-survey-cancel-feedback' => 'Se non quere dar a súa opinión, pode volver a "$1".',
@@ -3042,6 +3045,7 @@ $messages['ja'] = array(
 	'prefswitch-survey-true' => 'はい',
 	'prefswitch-survey-false' => 'いいえ',
 	'prefswitch-survey-submit-off' => '新機能を停止する',
+	'prefswitch-survey-submit-global-off' => '全てのウィキで新機能を停止する',
 	'prefswitch-survey-cancel-off' => '新機能の使用を継続したい場合は、$1に戻ってください。',
 	'prefswitch-survey-submit-feedback' => 'フィードバックを送る',
 	'prefswitch-survey-cancel-feedback' => 'フィードバックを提供したくない場合は、$1に戻ってください。',

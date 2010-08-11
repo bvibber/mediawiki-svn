@@ -317,10 +317,12 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'edituser-desc' => 'Rajtigas privilegiitaj uzantoj redakti preferojn de aliaj uzantoj',
 	'edituser' => 'Redakti Uzanton',
-	'edituser-username' => 'Nomo',
+	'edituser-username' => 'Salutnomo:',
 	'edituser-dosearch' => 'Serĉi',
-	'edituser-nouser' => 'La specifita uzanto ne ekzistas',
-	'edituser-exempt' => 'La specifita uzanto ne estas redaktebla',
+	'edituser-nouser' => 'La uzanto "$1" ne ekzistas.',
+	'edituser-exempt' => 'La uzanto "$1" ne estas redaktebla.',
+	'right-edituser' => 'Redakti la preferojn de aliaj uzantoj',
+	'right-edituser-exempt' => 'Aliaj ne povas redakti la preferojn de ĉi tiu uzanto',
 );
 
 /** Spanish (Español)

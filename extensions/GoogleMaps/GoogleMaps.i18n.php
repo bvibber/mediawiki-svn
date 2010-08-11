@@ -312,6 +312,7 @@ $wgGoogleMapsMessages['am'] = array(
  */
 $wgGoogleMapsMessages['an'] = array(
 	'gm-zoom-control' => 'Navego',
+	'gm-small' => 'Chicota',
 	'gm-no-zoom-control' => 'Garra',
 	'gm-yes' => 'Sí',
 	'gm-no' => 'No',
@@ -985,6 +986,7 @@ $wgGoogleMapsMessages['cs'] = array(
  * @author ОйЛ
  */
 $wgGoogleMapsMessages['cu'] = array(
+	'gm-no' => 'нѣ́тъ',
 	'gm-search' => 'ищи́',
 );
 

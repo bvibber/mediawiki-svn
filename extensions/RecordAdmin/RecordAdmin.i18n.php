@@ -589,7 +589,7 @@ $messages['eo'] = array(
 	'recordadmin-modified' => 'Modifita',
 	'recordadmin-actions' => 'Agoj',
 	'recordadmin-needscontent' => 'Aldoni enhavon...',
-	'recordadmin-editwithform' => 'Redakti per formularo',
+	'recordadmin-editwithform' => 'Ecoj',
 	'recordadmin-typeinfo' => '$1 rekordo',
 );
 

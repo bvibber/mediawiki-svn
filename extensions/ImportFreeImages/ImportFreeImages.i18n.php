@@ -78,6 +78,13 @@ $messages['aln'] = array(
 	'importfreeimages_size_original' => 'Origjinal',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'importfreeimages_size_small' => 'Chicot',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

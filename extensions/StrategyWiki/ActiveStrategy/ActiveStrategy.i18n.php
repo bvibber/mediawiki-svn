@@ -94,10 +94,11 @@ $messages['dsb'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Michawiki
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'activestrategy' => 'Aktiva Strategio',
+	'activestrategy' => 'Aktiva strategio',
 	'nedits' => '$1 {{PLURAL:$1|redakto|redaktoj}}',
 );
 
@@ -129,8 +130,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'activestrategy' => 'Grupos de traballo activos',
-	'active-strategy-desc' => 'Mostra o número de edicións nas páxinas do grupo de traballo',
+	'activestrategy' => 'Estratexia activa',
+	'active-strategy-desc' => 'Mostra o número de edicións nas páxinas da planificación estratéxica',
 	'active-strategy-intro' => 'Número de edicións das páxinas do grupo de traballo {{PLURAL:$1|no último día|nos últimos $1 días}}.',
 	'nedits' => '$1 {{PLURAL:$1|edición|edicións}}',
 );
@@ -213,8 +214,8 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'activestrategy' => '活動中の特別チーム',
-	'active-strategy-desc' => 'タスクフォースのページ数を表示',
+	'activestrategy' => '活動中の戦略',
+	'active-strategy-desc' => '戦略計画ページの編集回数を表示',
 	'active-strategy-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
 	'nedits' => '$1{{PLURAL:$1|回の編集}}',
 );
