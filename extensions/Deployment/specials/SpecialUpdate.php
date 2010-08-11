@@ -53,10 +53,14 @@ class SpecialUpdate extends SpecialPage {
 	
 	protected function showCoreStatus() {
 		$repository = wfGetRepository();
+		
+		// TODO
 	}
 	
 	protected function showExtensionStatuses() {
 		$repository = wfGetRepository();
+		
+		// TODO
 	}
 	
 }
