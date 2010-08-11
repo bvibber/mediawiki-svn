@@ -132,7 +132,7 @@ window.mediaWiki = new ( function( $ ) {
 		
 		this.set = function( keys, value ) {
 			if ( typeof keys === 'object' ) {
-				for ( var k = 0; k < keys.length; k++ ) {
+				for ( var k in keys ) {
 					messages[k] = keys[k];
 				}
 			} else if ( typeof keys === 'string' && typeof value !== 'undefined' ) {
@@ -490,8 +490,8 @@ window.mediaWiki = new ( function( $ ) {
 			if ( typeof style === 'string' ) {
 				registry[module].style = style;
 			}
-			if ( typeof messages === 'object' ) {
-				registry[module].messages = messages;
+			if ( typeof localization === 'object' ) {
+				registry[module].messages = localization;
 			}
 			// Execute or queue callback
 			if ( filter( ['ready'], registry[module].needs ).compare( registry[module].needs ) ) {
