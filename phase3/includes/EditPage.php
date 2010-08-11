@@ -2123,7 +2123,7 @@ INPUTS
 	 * @return string
 	 */
 	static function getEditToolbar() {
-		global $wgStylePath, $wgContLang, $wgLang;
+		global $wgStylePath, $wgContLang, $wgLang, $wgOut;
 
 		/**
 
@@ -2259,7 +2259,8 @@ INPUTS
 				array_map( array( 'Xml', 'encodeJsVar' ), $params ) );
 			$script .= "addButton($paramList);\n";
 		}
-		$toolbar .= Html::inlineScript( "\n$script\n" );
+		
+		$wgOut->addScript( Html::inlineScript( "\n$script\n" ) );
 
 		$toolbar .= "\n</div>";
 

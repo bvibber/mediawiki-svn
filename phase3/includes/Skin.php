@@ -332,7 +332,7 @@ class Skin extends Linker {
 
 		$out->out( $afterContent );
 
-		$out->out( $this->bottomScripts() );
+		$out->out( $this->bottomScripts( $out ) );
 
 		$out->out( wfReportTime() );
 
@@ -986,10 +986,11 @@ CSS;
 
 	/**
 	 * This gets called shortly before the </body> tag.
+	 * @param $out OutputPage object
 	 * @return String HTML-wrapped JS code to be put before </body>
 	 */
-	function bottomScripts() {
-		$bottomScriptText = "\n" . Html::inlineScript( 'if (window.runOnloadHook) runOnloadHook();' ) . "\n";
+	function bottomScripts( $out ) {
+		$bottomScriptText = "\n" . $out->getHeadScripts( $this );
 		wfRunHooks( 'SkinAfterBottomScripts', array( $this, &$bottomScriptText ) );
 		return $bottomScriptText;
 	}

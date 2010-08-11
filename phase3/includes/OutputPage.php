@@ -2139,7 +2139,7 @@ class OutputPage {
 		$ret .= implode( "\n", array(
 			$this->getHeadLinks(),
 			$this->buildCssLinks(),
-			$this->getHeadScripts( $sk ) . $this->getHeadItems(),
+			$this->getHeadItems(),
 		) );
 		if ( $sk->usercss ) {
 			$ret .= Html::inlineStyle( $sk->usercss );
@@ -2208,7 +2208,8 @@ class OutputPage {
 	
 	/**
 	 * Gets the global variables and mScripts; also adds userjs to the end if
-	 * enabled
+	 * enabled. Despite the name, these scripts are no longer put in the
+	 * <head> but at the bottom of the <body>
 	 *
 	 * @param $sk Skin object to use
 	 * @return String: HTML fragment
@@ -2217,12 +2218,10 @@ class OutputPage {
 		global $wgUser, $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 		global $wgStylePath, $wgStyleVersion;
 		
-		// Include base modules
-		$scripts = self::makeResourceLoaderLinkedScript( $sk, array( 'jquery', 'mediawiki' ) );
+		// Include base modules and wikibits legacy code
+		$scripts = self::makeResourceLoaderLinkedScript( $sk, array( 'jquery', 'mediawiki', 'mediawiki.legacy.wikibits' ) );
 		// Configure page
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-		// Wikibits legacy code
-		$scripts .= self::makeResourceLoaderLinkedScript( $sk, array( 'mediawiki.legacy.wikibits' ) );
 		
 		// add site JS if enabled
 		if( $wgUseSiteJs ) {
