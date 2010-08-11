@@ -21,17 +21,12 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##############################################################################
 
-import sys, os, os.path, time
+import sys, os, os.path, traceback
 import ConfigParser, optparse
 import select, socket, urllib
-import xmpp # using the xmpppy library <http://xmpppy.sourceforge.net/>, GPL
-#import simplexml # using simplexml library <http://pypi.python.org/pypi/simplexml/0.6.1>, GPL
+import xmpp, xmpp.simplexml # using the xmpppy library <http://xmpppy.sourceforge.net/>, GPL
 
-RC_EDIT= 0
-RC_NEW= 1
-RC_MOVE= 2
-RC_LOG= 3
-RC_MOVE_OVER_REDIRECT= 4
+from xml.parsers.expat import ExpatError
 
 LOG_MUTE = 0
 LOG_QUIET = 10
@@ -55,8 +50,26 @@ class WikiInfo(object):
 
 	return self.config.get( wiki, prop )
 
+    def get_wiki_url( self, wiki, prop, suffix ):
+	u = self.get_wiki_property( wiki, prop )
+	if u is None:
+	    u = self.get_wiki_base_url( wiki )
+	    if not u is None:
+		u = u + suffix
+
+	return u
+
+    def get_wiki_base_url( self, wiki ):
+	return self.get_wiki_property( wiki, 'base-url' )
+
     def get_wiki_page_url( self, wiki ):
-	return self.get_wiki_property( wiki, 'page-url' )
+	return self.get_wiki_url( wiki, 'page-url', 'index.php/$1' )
+
+    def get_wiki_script_url( self, wiki ):
+	return self.get_wiki_url( wiki, 'script-url', 'index.php' )
+
+    def get_wiki_api_url( self, wiki ):
+	return self.get_wiki_url( wiki, 'api-url', 'api.php' )
 
     def get_wiki_channel_type( self, wiki ):
 	return self.get_wiki_property( wiki, 'channel-type' )
@@ -134,71 +147,141 @@ class Relay(object):
 	    self.warn( "unknwon command: %s" % command )
 
     def get_rc_text( self, rc ):
-	for k, v in rc.items():
-	    locals[k] = v
+	rc_id = rc.getAttr( 'rcid' )
+	rc_type = rc.getAttr( 'type' )
 
-	if rc_type == RC_LOG:
-	    target = "Special:Log/" + rc_log_type;
-	    url = ''
+	if rc_id is None or rc_type is None:
+	    return False
+
+	rc_title = rc.getAttr( 'title' )
+	rc_user = rc.getAttr( 'user' )
+	rc_comment = rc.getAttr( 'comment' )
+	rc_timestamp = rc.getAttr( 'timestamp' )
+
+	rc_logtype = rc.getAttr( 'logtype' )
+	rc_logaction = rc.getAttr( 'logaction' )
+
+	rc_oldlen = rc.getAttr( 'oldlen' )
+	rc_newlen = rc.getAttr( 'newlen' )
+	rc_revid = rc.getAttr( 'revid' )
+	rc_old_revid = rc.getAttr( 'old_revid' )
+
+	rc_anon = rc.getAttr( 'anon' ) is not None
+	rc_bot = rc.getAttr( 'bot' ) is not None
+	rc_minor = rc.getAttr( 'minor' ) is not None
+
+	if not rc_oldlen is None: rc_oldlen = int( rc_oldlen )
+	if not rc_newlen is None: rc_newlen = int( rc_newlen )
+	if not rc_revid is None: rc_revid = int( rc_revid )
+	if not rc_old_revid is None: rc_old_revid = int( rc_old_revid )
+	if not rc_id is None: rc_id = int( rc_id )
+
+	if rc_comment is None: rc_comment = ''
+
+	target = None
+	target_params = {}
+
+	if rc_type == 'log':
+	    target = "Special:Log/" + rc_logtype;
+	    target_params['page'] = rc_title
 	else:
-	    target = title;
+	    target = rc_title;
 
-	    if rc_type == RC_NEW:
-		url = "oldid=" + rc_this_oldid
-	    else:
-		url = "diff=" + rc_this_oldid + "&oldid=" + rc_last_oldid
-		url += "&rcid=" + rc_id
+	    if rc_revid is not None:
+		if rc_type != 'new':
+		    target_params['diff'] = rc_revid
+		    target_params['rcid'] = rc_id
 
-	url = self.get_wiki_url( wikiid, target );
+		    if rc_old_revid is not None:
+			target_params['oldid'] = rc_old_revid
+		else:
+		    target_params['oldid'] = rc_revid
+
+	url = self.get_wiki_url( wikiid, target, **target_params );
 	if not url: url = ''
 
-	if locals.get('oldlen') and locals.get('newlen'):
-		szdiff = newlen - oldlen;
-		if szdiff >= 0:
-			szdiff = '+' + szdiff
-		
-		szdiff = '(' + szdiff + ')' 
+	if rc_oldlen is not None and rc_newlen is not None and rc_type != 'log':
+		d = ( rc_newlen - rc_oldlen )
+		if d >= 0:
+			szdiff = '(+%d)' % d
+		else: 
+			szdiff = '(%d)' % d
 	else:
 		szdiff = ''
 
-	if rc_type == RC_LOG:
-		targetText = title
-		flag = logaction
+	flag = ''
+
+	if rc_type == 'log':
+		targetText = rc_title
+		flag = rc_logaction
 	else:
 		flag = ''
 		
-		if type == 'new':
-		    flage += 'N';
+		if rc_type == 'new':
+		    flag += 'N';
 
-		if minor:
-		    flage += 'M';
+		if rc_minor:
+		    flag += 'M';
 
-		if bot:
-		    flage += 'B';
+		if rc_bot:
+		    flag += 'B';
 
-		if anon:
-		    flage += 'A';
+		if rc_anon:
+		    flag += 'A';
 
-	fullString = "%s %s %s * %s * %s %s" % ( title, flag, url, user, szdiff, comment );
+		# TODO: flag as ! for patrolling events, once we can receive them
+
+	if target is None or rc_user is None:
+	    return False
+
+	fullString = "[[%s]] %s %s * %s * %s %s" % ( target, flag, url, rc_user, szdiff, rc_comment );
 
 	return fullString;
 
-    def get_wiki_url( self, wikiid, page ):
-	u = self.wiki_info.get_wiki_page_url( wikiid )
-	if not u: return False
+    def get_wiki_url( self, wikiid, pagename, **params ):
+	if type(pagename) == unicode:
+	    pagename = pagename.encode('utf-8')
 
-	return u.replace( '$1', urllib.quote( page ) )
+	if len(params) > 0 or pagename is None:
+	    u = self.wiki_info.get_wiki_script_url( wikiid )
+	    print "script url for %s: %s" % (wikiid, u)
+	    if not u: return False
+
+	    if not pagename is None:
+		params[ 'title' ] = pagename
+
+	    for k, v in params.items():
+		if type(v) == unicode:
+		    params[k] = v.encode('utf-8')
+
+	    return u + "?" + urllib.urlencode( params )
+	else:
+	    u = self.wiki_info.get_wiki_page_url( wikiid )
+	    print "page url for %s: %s" % (wikiid, u)
+	    if not u: return False
+
+	    return u.replace( '$1', urllib.quote( pagename ) )
 
     def relay_rc_message( self, rc ):
-	w = rc['wikiid']
+	w = rc.getAttr('wikiid')
+	
+	if not w:
+	    self.warn( "missing attribute wikiid, can't determin channel. discarding message.")
+	    return False
+
 	t = self.get_channel( w )
 	
 	if not t:
-	    self.warn( "no channel found for %s, discarding message " % s )
+	    self.warn( "no channel found for %s, discarding message " % w )
 	    return False
+
 	else:
 	    m = self.get_rc_text( rc )
-	    return t.send_message( m, rc )
+
+	    if m is None or m == False:
+		self.warn( "insufficient information in RC packet (rcid: %s), discarding message" % rc.getAttr('rcid') )
+	    else:
+		return t.send_message( m, rc )
 
     def service_loop( self, *connections ):
 	socketlist = {}
@@ -208,19 +291,23 @@ class Relay(object):
 	self.online = 1
 
 	while self.online:
-	    (i , o, e) = select.select(socketlist.keys(),[],[],1)
+	    (in_socks , out_socks, err_socks) = select.select(socketlist.keys(),[],socketlist.keys(),1)
 
-	    for sock in i:
+	    for sock in in_socks:
 		con = socketlist[ sock ]
+
 		if con:
-		    con.process()
+		    try:
+			con.process()
+		    except Exception, e:
+			error_type, error_value, trbk = sys.exc_info()
+			self.warn( "Error while processing! %s" % "  ".join( traceback.format_exception( error_type, error_value, trbk ) ) )
+			# TODO: detect when we should kill the loop because a connection failed
 		else:
-		    raise Exception("Unknown socket: %s" % repr(sock))
+		    raise Exception( "Unknown socket: %s" % repr(sock) )
 
-	    # FIXME: error recovery (especially when send failed)
-
-	    for sock in e:
-		    raise Exception("Error in socket: %s" % repr(sock))
+	    for sock in err_socks:
+		    raise Exception( "Error in socket: %s" % repr(sock) )
 
 	self.info("service loop terminated, disconnecting")
 
@@ -365,18 +452,29 @@ class UdpConnection (Connection):
 	self.socket.close()
 
     def process(self):
-	msg = socket.recvfrom( self.buffer_size )
+	packet = self.socket.recvfrom( self.buffer_size )
 
-	self.process_rc_packet( msg )
+	body = packet[0]
+	addr = packet[1] #TODO: optionally filter...
+
+	self.debug( "received packet from %s:%s" % addr )
+	self.process_rc_packet( body )
 
     def process_rc_packet(self, data):
 	try:
-	    dom = xmpp.simplexml.simplexml( data )
-	except Exception, e:
-	    self.warn( "failed to parse RC packet: " + e )
-	    return False
+	    dom = xmpp.simplexml.XML2Node( data )
+	    self.debug( "parsed rc packet" )
 
-	self.relay.relay_rc_message( dom.item[0] )
+	    if dom.getName() != "rc":
+		self.warn( "expected <rc> element, found <%s>; sklipping unknown XML" % dom.getName() )
+		return False
+
+	except ExpatError, e:
+	    self.warn( "failed to parse RC XML: " + e.args[0] + "; data: " + data[:128].strip() )
+	    return False
+	
+	#TODO: optionally filter...
+	self.relay.relay_rc_message( dom )
 
     def connect( self, port, interface = '0.0.0.0' ):
 	self.socket = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
@@ -418,7 +516,7 @@ class JabberChannel (Channel):
 
     def compose_message( self, message, xml = None, mtype = None ):
 	if type( message ) == unicode:
-	    message = message.encode( self.message_encoding )
+	    message = message.encode( self.connection.message_encoding )
 
 	if type( message ) == str:
 	    if mtype is None:
