@@ -793,7 +793,97 @@ A doni ta bërë atë një lidhje të brendshme?',
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'wikieditor-toolbar' => "Barra de ferramientas d'edición",
+	'wikieditor-toolbar-desc' => "Barra de ferramientas d'edición con usabilidat amillorada",
+	'wikieditor-toolbar-preference' => "Activar a barra de ferramientas d'edición amillorada",
+	'wikieditor-toolbar-dialogs-preference' => 'Activar as caixas de dialogos ta ficar vinclos, tablas y atros',
+	'wikieditor-toolbar-loading' => 'Cargando...',
+	'wikieditor-toolbar-tool-bold' => 'Negreta',
+	'wikieditor-toolbar-tool-bold-example' => 'Texto en negreta',
+	'wikieditor-toolbar-tool-italic' => 'Cursiva',
+	'wikieditor-toolbar-tool-italic-example' => 'Texto en cursiva',
+	'wikieditor-toolbar-tool-ilink' => 'Vinclo interno',
+	'wikieditor-toolbar-tool-ilink-example' => "Títol d'o vinclo",
+	'wikieditor-toolbar-tool-xlink' => "Vinclo externo (recorde-se-ne d'o prefixo http://)",
+	'wikieditor-toolbar-tool-xlink-example' => "http://www.example.com títol d'o vinclo",
+	'wikieditor-toolbar-tool-link' => 'Vinclo',
+	'wikieditor-toolbar-tool-link-title' => 'Fique un vinclo',
+	'wikieditor-toolbar-tool-link-int' => 'Enta una pachina wiki',
+	'wikieditor-toolbar-tool-link-int-target' => 'Pachina u URL de destino:',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => "Títol d'a pachina u URL",
+	'wikieditor-toolbar-tool-link-int-text' => "Texto d'o vinclo:",
+	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Texto a amostrar',
+	'wikieditor-toolbar-tool-link-ext' => 'Enta una pachina web externa',
+	'wikieditor-toolbar-tool-link-ext-target' => "URL d'o vinclo:",
+	'wikieditor-toolbar-tool-link-ext-text' => "Texto d'o vinclo:",
+	'wikieditor-toolbar-tool-link-insert' => 'Fique un vinclo',
+	'wikieditor-toolbar-tool-link-cancel' => 'Cancelar',
+	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'A pachina existe',
+	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'A pachina no existe',
+	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Títol invalido',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Vinclo externo',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => "Comprebando a existencia d'a pachina...",
+	'wikieditor-toolbar-tool-link-int-invalid' => 'O títol que ha especificato no ye valido.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => "O URL que ha especificato pareix que enlazaba con un atra pachina d'o wiki. Quiere tornar-lo en un vinclo interno?",
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Vinclo interno',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Vinclo externo',
+	'wikieditor-toolbar-tool-link-empty' => 'No ha escrito garra cosa ta enlazar.',
+	'wikieditor-toolbar-tool-file' => 'Imachen incorporada',
+	'wikieditor-toolbar-tool-file-example' => 'Exemplo.jpg',
+	'wikieditor-toolbar-tool-reference' => 'Referencia',
+	'wikieditor-toolbar-tool-reference-example' => 'Ficar aquí una nota a lo piet',
 	'wikieditor-toolbar-tool-reference-cancel' => 'Cancelar',
+	'wikieditor-toolbar-tool-reference-title' => 'Ficar referencia',
+	'wikieditor-toolbar-tool-reference-insert' => 'Insertar',
+	'wikieditor-toolbar-tool-reference-text' => "Texto d'a referencia",
+	'wikieditor-toolbar-tool-signature' => 'Sinyatura, calendata y hora',
+	'wikieditor-toolbar-section-advanced' => 'Avanzato',
+	'wikieditor-toolbar-tool-heading' => 'Títol',
+	'wikieditor-toolbar-tool-heading-1' => 'Livel 1',
+	'wikieditor-toolbar-tool-heading-2' => 'Livel 2',
+	'wikieditor-toolbar-tool-heading-3' => 'Livel 3',
+	'wikieditor-toolbar-tool-heading-4' => 'Livel 4',
+	'wikieditor-toolbar-tool-heading-5' => 'Livel 5',
+	'wikieditor-toolbar-tool-heading-example' => 'Texto de títol',
+	'wikieditor-toolbar-group-format' => 'Formato',
+	'wikieditor-toolbar-tool-ulist' => 'Lista con puntos',
+	'wikieditor-toolbar-tool-ulist-example' => "Elemento d'a lista con puntos",
+	'wikieditor-toolbar-tool-olist' => 'Lista numerata',
+	'wikieditor-toolbar-tool-olist-example' => "Elemento d'a lista numerata",
+	'wikieditor-toolbar-tool-indent' => 'Indentación',
+	'wikieditor-toolbar-tool-indent-example' => 'Linia indentada',
+	'wikieditor-toolbar-tool-nowiki' => 'Sin formato wiki',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Escriba aquí texto sin formateyar',
+	'wikieditor-toolbar-tool-redirect' => 'Reendrecera',
+	'wikieditor-toolbar-tool-redirect-example' => "Nombre d'a pachina de destino",
+	'wikieditor-toolbar-tool-big' => 'Gran',
+	'wikieditor-toolbar-tool-big-example' => 'Texto gran',
+	'wikieditor-toolbar-tool-small' => 'Chicot',
+	'wikieditor-toolbar-tool-small-example' => 'Texto chicot',
+	'wikieditor-toolbar-tool-superscript' => 'Superéndiz',
+	'wikieditor-toolbar-tool-superscript-example' => 'Texto en superéndiz',
+	'wikieditor-toolbar-tool-subscript' => 'Subéndiz',
+	'wikieditor-toolbar-tool-subscript-example' => 'Texto en subéndiz',
+	'wikieditor-toolbar-group-insert' => 'Insertar',
+	'wikieditor-toolbar-tool-gallery' => "Galería d'imachens",
+	'wikieditor-toolbar-tool-newline' => 'Nueva linia',
+	'wikieditor-toolbar-tool-table' => 'Tabla',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! encabezau 1
+! encabezau 2
+! encabezau 3
+|-
+| ringlera 1, celda 1 
+| ringlera 1, celda 2 
+| ringlera 1, celda 3 
+|- 
+| ringlera 2, celda 1 
+| ringlera 2, celda 2 
+| ringlera 2, celda 3',
+	'wikieditor-toolbar-tool-table-example-header' => 'Texto de títol',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Ringleras',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Columnas',
+	'wikieditor-toolbar-tool-table-preview' => 'Visualización previa',
 );
 
 /** Old English (Ænglisc)
@@ -3051,9 +3141,12 @@ $messages['cu'] = array(
 	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com съвѧ́ꙁи и́мѧ',
 	'wikieditor-toolbar-tool-link' => 'съвѧ́ꙁь',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'страни́цѧ нѣ́стъ',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'вънѣщьнꙗ съвѧꙁь',
+	'wikieditor-toolbar-tool-file-example' => 'Прикладъ.jpg',
 	'wikieditor-toolbar-tool-signature' => 'аѵто́графъ и нꙑ́нѣшьна врѣ́мѧ и дьнь',
 	'wikieditor-toolbar-tool-redirect' => 'прѣнаправлѥ́ниѥ',
 	'wikieditor-toolbar-tool-table' => 'та́влїѥ',
+	'wikieditor-toolbar-tool-table-example' => 'прикладъ',
 	'wikieditor-toolbar-section-characters' => 'допльнитєл҄ьнꙑ сѷмволи',
 	'wikieditor-toolbar-characters-page-latin' => 'лати́ньска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-characters-page-latinextended' => 'лати́ньскꙑ а́ꙁъбоукьвє доложє́ниѥ',
@@ -16850,6 +16943,21 @@ $messages['ta'] = array(
 	'wikieditor-toolbar-tool-bold-example' => 'தடித்த எழுத்துக்கள்',
 	'wikieditor-toolbar-tool-italic' => 'சாய்ந்த',
 	'wikieditor-toolbar-tool-italic-example' => 'சாய்ந்த எழுத்துக்கள்',
+	'wikieditor-toolbar-tool-ilink' => 'உள்ளிணைப்பு',
+	'wikieditor-toolbar-tool-ilink-example' => '# இணைப்புத் தலைப்பு
+# தலைப்பை இணை',
+	'wikieditor-toolbar-tool-link' => '# இணைப்பு
+# இணை',
+	'wikieditor-toolbar-tool-link-title' => 'இணைப்பையிடு',
+	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'இப்பக்கம் உள்ளது',
+	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'இப்பக்கம் இல்லை',
+	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'தவறான தலைப்பு',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => 'வெளி இணைப்பு',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'பக்கம் உள்ளதா என்று சோதனை செய்யப்படுகிறது',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'உள்ளிணைப்பு',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'வெளி இணைப்பு',
+	'wikieditor-toolbar-tool-reference' => '# மேற்கோள்
+# முன்மாதிரி',
 	'wikieditor-toolbar-tool-heading' => 'தலைப்பு',
 	'wikieditor-toolbar-tool-heading-1' => '# முதற் கட்டம்
 # நிலை ஒன்று',
@@ -16861,6 +16969,67 @@ $messages['ta'] = array(
 # நிலை நான்கு',
 	'wikieditor-toolbar-tool-heading-5' => '# ஐந்தாம் கட்டம்
 # நிலை ஐந்து',
+	'wikieditor-toolbar-tool-big' => 'பெரிய',
+	'wikieditor-toolbar-tool-big-example' => 'பெரிய எழுத்துக்கள்',
+	'wikieditor-toolbar-tool-small' => 'சிறிய',
+	'wikieditor-toolbar-tool-small-example' => 'சிறிய எழுத்துக்கள்',
+	'wikieditor-toolbar-tool-newline' => 'புதிய வரி',
+	'wikieditor-toolbar-tool-table' => 'பட்டியல்',
+	'wikieditor-toolbar-tool-table-example-old' => ';-
+;! குறுந்தலைப்பு 1
+;! குறுந்தலைப்பு 2
+;! குறுந்தலைப்பு 3
+;|-
+;| கிடைவரிசை 1, செங்குத்து வரிசை 1
+;| கிடைவரிசை 1, செங்குத்து வரிசை 2
+;| கிடைவரிசை 1, செங்குத்து வரிசை 3
+;|-
+;| கிடைவரிசை 2, செங்குத்து வரிசை 1
+;| கிடைவரிசை 2, செங்குத்து வரிசை 2
+;| கிடைவரிசை 2, செங்குத்து வரிசை 3',
+	'wikieditor-toolbar-tool-table-example-header' => 'தலைப்பு எழுத்துக்கள்',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'கிடை வரிசைகள்',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => 'செங்குத்து வரிசைகள்',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'புதிய தலைப்புக் கிடை வரிசையை உருவாக்கவும்',
+	'wikieditor-toolbar-tool-table-example' => '# ஒரு எடுத்துக்காட்டு
+# ஒரு உதாரணம்',
+	'wikieditor-toolbar-section-help' => 'உதவி',
+	'wikieditor-toolbar-help-heading-description' => '# விளக்கம்
+# விவரம்',
+	'wikieditor-toolbar-help-heading-syntax' => 'தாங்கள் தட்டச்சு செய்தது',
+	'wikieditor-toolbar-help-heading-result' => 'தங்களுக்குக் கிடைப்பது',
+	'wikieditor-toolbar-help-page-link' => 'இணைப்புக்கள்',
+	'wikieditor-toolbar-help-page-heading' => 'தலைப்புக்கள்',
+	'wikieditor-toolbar-help-page-list' => '# பட்டியல்கள்
+# வரிசைகள்',
+	'wikieditor-toolbar-help-page-file' => 'கோப்புக்கள்',
+	'wikieditor-toolbar-help-page-reference' => '# மேற்கோள்கள்
+# முன்மாதிரிகள்',
+	'wikieditor-toolbar-help-page-discussion' => 'உரையாடல்',
+	'wikieditor-toolbar-help-content-italic-description' => 'சாய்ந்த',
+	'wikieditor-toolbar-help-content-italic-syntax' => '"சாய்ந்த எழுத்துக்கள்"',
+	'wikieditor-toolbar-help-content-bold-description' => 'தடித்த',
+	'wikieditor-toolbar-help-content-bold-syntax' => '"தடித்த எழுத்துக்கள்"',
+	'wikieditor-toolbar-help-content-ilink-description' => 'உள்ளிணைப்பு',
+	'wikieditor-toolbar-help-content-xlink-description' => 'வெளி இணைப்பு',
+	'wikieditor-toolbar-help-content-heading2-description' => 'இரண்டாம் நிலைத் தலைப்பு',
+	'wikieditor-toolbar-help-content-heading2-syntax' => ' == தலைப்பு ==',
+	'wikieditor-toolbar-help-content-heading2-result' => '<h2>இரண்டாம் நிலைத் தலைப்பு</h2>',
+	'wikieditor-toolbar-help-content-heading3-description' => 'மூன்றாம் நிலைத் தலைப்பு',
+	'wikieditor-toolbar-help-content-heading3-syntax' => ' === தலைப்பு ===',
+	'wikieditor-toolbar-help-content-heading4-description' => 'நான்காம் நிலைத் தலைப்பு',
+	'wikieditor-toolbar-help-content-heading4-syntax' => ' ==== தலைப்பு ====',
+	'wikieditor-toolbar-help-content-heading5-description' => 'ஐந்தாம் நிலைத் தலைப்பு',
+	'wikieditor-toolbar-help-content-heading5-syntax' => ' ===== தலைப்பு =====',
+	'wikieditor-toolbar-help-content-ulist-description' => 'குண்டுக்குறியிட்ட வரிசை',
+	'wikieditor-toolbar-help-content-olist-description' => 'எண்களுடன் வரிசை',
+	'wikieditor-toolbar-help-content-reference-description' => '# மேற்கோள்
+# முன்மாதிரி',
+	'wikieditor-toolbar-help-content-showreferences-description' => '# மேற்கோள்களைக் காட்டு
+# முன்மாதிரிகளைக் காட்டு',
+	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'நேர முத்திரையுடன் கையொப்பம்',
+	'wikieditor-toolbar-help-content-signature-description' => '# கையெழுத்து
+# கையொப்பம்',
 );
 
 /** Telugu (తెలుగు)

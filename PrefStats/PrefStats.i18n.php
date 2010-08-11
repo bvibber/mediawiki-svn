@@ -413,6 +413,7 @@ Kliknutím zobrazíte příslušné statistiky.',
  */
 $messages['cu'] = array(
 	'prefstats-factor-hour' => 'часъ',
+	'prefstats-factor-sixhours' => 'шєсть часъ',
 	'prefstats-factor-day' => 'дьнь',
 	'prefstats-factor-week' => 'сєдми́ца',
 	'prefstats-factor-twoweeks' => 'двѣ сєдми́ци',
