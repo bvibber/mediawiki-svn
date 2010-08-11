@@ -1,0 +1,11 @@
+These are the configuration files and the layout currently in use at
+http://ci.tesla.usability.wikimedia.org/
+
+The installation of CruiseControl and phpUnderControl follows the
+directions here:
+http://phpundercontrol.org/documentation/installation.html
+
+After that, the projects/connectfour sample directory is erased and
+the config.xml, cruisecontrol.sh, and projects/mw directories from
+this configuration are put into place.
+

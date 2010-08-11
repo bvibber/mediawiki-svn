@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<cruisecontrol>
+  <project name="mw">
+    <plugin name="svnbootstrapper" classname="net.sourceforge.cruisecontrol.bootstrappers.SVNBootstrapper"/>
+    <plugin name="svn" classname="net.sourceforge.cruisecontrol.sourcecontrols.SVN"/>
+    <listeners>
+      <currentbuildstatuslistener file="logs/${project.name}/status.txt"/>
+    </listeners>
+    <bootstrappers>
+      <antbootstrapper anthome="apache-ant-1.7.0" buildfile="projects/${project.name}/build.xml" target="clean"/>
+    </bootstrappers>
+    <modificationset quietperiod="60">
+      <!-- touch any file in connectfour project to trigger a build -->
+      <filesystem folder="projects/${project.name}/touchme"/>
+      <svn RepositoryLocation="http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3"/>
+    </modificationset>
+    <schedule interval="300">
+      <ant anthome="apache-ant-1.7.0" buildfile="projects/${project.name}/build.xml"/>
+    </schedule>
+    <log>
+      <merge dir="projects/${project.name}/build/logs"/>
+    </log>
+    <publishers>
+      <artifactspublisher dir="projects/${project.name}/build/api" dest="artifacts/${project.name}" subdirectory="api"/>
+      <artifactspublisher dir="projects/${project.name}/build/coverage" dest="artifacts/${project.name}" subdirectory="coverage"/>
+      <execute command="phpcb --log projects/${project.name}/build/logs --source projects/${project.name}/source --output projects/${project.name}/build/${project.name}"/>
+      <!-- <artifactspublisher dir="projects/${project.name}/build/php-code-browser" dest="artifacts/${project.name}" subdirectory="php-code-browser"/> -->
+      <execute command="/usr/bin/phpuc graph logs/${project.name} artifacts/${project.name}"/>
+      <!--
+              Sends simple text emails after a project build. For nicer html emails,
+              checkout the original CruiseControl documentation.
+
+* http://cruisecontrol.sourceforge.net/main/configxml.html#email
+* http://cruisecontrol.sourceforge.net/main/configxml.html#htmlemail
+          -->
+      <email mailhost="localhost"
+             returnaddress="cruise@phpundercontrol.org"
+             buildresultsurl="http://ci.tessla.usability.wikimedia.org:8080/cruisecontrol/buildresults/${project.name}"
+             skipusers="true" spamwhilebroken="true">
+        <failure address="mah@everybody.org"/>
+      </email>
+    </publishers>
+  </project>
+</cruisecontrol>

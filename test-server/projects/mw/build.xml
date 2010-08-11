@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="phpundercontrol.org" default="build" basedir=".">
+  <target name="build" depends="uptodate,init,test-static,apidoc,phpunit" />
+  <property file="build.properties"/>
+
+  <!--
+      Prepares the temporary build environment.
+  -->
+  <target name="prepare" depends="clean,init" />
+
+  <!--
+      Create the required build directories
+  -->
+  <target name="clean">
+    <delete file="${builddir}/data/my_wiki.sqlite"/>
+    <delete file="${sourcedir}/LocalSettings.php"/>
+  </target>
+
+  <available file="${sourcedir}" property="checkout.exists"/>
+  <target name="checkout" unless="checkout.exists">
+    <exec executable="svn">
+      <arg line="checkout http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3 ${sourcedir}" />
+    </exec>
+  </target>
+
+  <available file="${builddir}/data/phpuc.zip" property="phpuc.exists"/>
+  <target name="fetchphpuc" unless="phpuc.exists">
+    <mkdir dir="${builddir}/data" />
+    <get src="http://github.com/phpundercontrol/phpUnderControl/zipball/0.6.1beta1"
+         dest="${builddir}/data/phpuc.zip"
+         verbose="on"/>
+  </target>
+
+  <available file="${builddir}/data/phpdoc" property="phpdoc.exists"/>
+  <target name="phpdoctemplates" unless="phpdoc.exists" depends="fetchphpuc">
+    <unzip src="${builddir}/data/phpuc.zip"
+           dest="${builddir}/data/">
+      <patternset>
+        <include name="**/data/phpdoc/**"/>
+      </patternset>
+      <mapper type="regexp" from="^p.*/data/phpdoc/(.*)$" to="phpdoc/\1"/>
+    </unzip>
+  </target>
+
+  <target name="init" depends="clean,checkout">
+    <mkdir dir="${builddir}" />
+    <mkdir dir="${builddir}/api" />
+    <mkdir dir="${builddir}/data" />
+    <mkdir dir="${builddir}/charts" />
+    <mkdir dir="${builddir}/coverage" />
+    <mkdir dir="${builddir}/dist" />
+    <mkdir dir="${builddir}/logs" />
+    <mkdir dir="${builddir}/php-code-browser" />
+    <exec executable="php" dir="${sourcedir}/" failonerror="true">
+      <arg line="maintenance/install.php --dbtype=sqlite --dbpath=${builddir}/data --pass=testpass test test"/>
+    </exec>
+  </target>
+
+  <target name="test-static" depends="prepare">
+    <parallel>
+      <antcall target="lint" />
+      <antcall target="phpmd" />
+      <antcall target="checkstyle" />
+    </parallel>
+    <!-- Do not run phpmd and pdepend parallel, there is a concurrency problem -->
+    <antcall target="pdepend" />
+  </target>
+
+  <!--
+      Performs a simple syntax check against the project's source code.
+  -->
+  <target name="lint">
+    <apply executable="php" logerror="true" failonerror="true">
+      <arg value="-l" />
+      <fileset dir="${basedir}">
+        <include name="**/*.php" />
+      </fileset>
+    </apply>
+  </target>
+
+  <target name="uptodate" depends="checkout">
+    <exec executable="svn" dir="${sourcedir}">
+      <arg line="up" />
+    </exec>
+  </target>
+
+  <target name="apidoc" depends="phpdoctemplates">
+    <exec executable="phpdoc" dir="${sourcedir}">
+      <arg line="--undocumentedelements on
+                 --target ${builddir}/api
+                 --templatebase ${builddir}/data/phpdoc
+                 --output HTML:Phpuc:phpuc
+                 --directory ${sourcepart}
+                 --ignore-tags @file
+                 --customtags ingroup,defgroup,maintainers,note,addtogroup,showinitializer,protected
+                 --ignore 'Messages*.php'"/>
+    </exec>
+  </target>
+
+  <target name="checkstyle">
+    <exec executable="phpcs" dir="${sourcedir}" output="${builddir}/logs/checkstyle.xml">
+      <arg line="--report=checkstyle --standard=PEAR --ignore='Messages*.php,*.css,*.js' ${sourcepart}"/>
+    </exec>
+  </target>
+
+  <target name="phpmd">
+    <exec executable="phpmd" dir="${sourcedir}" output="${builddir}/logs/phpmd.xml">
+      <arg line="${sourcepart} xml codesize,unusedcode,naming"/>
+    </exec>
+  </target>
+
+  <!--
+      Checks several software metrics for the project source
+  -->
+  <target name="pdepend" depends="init">
+    <exec executable="pdepend" dir="${sourcedir}" failonerror="false">
+      <arg line="--summary-xml=${builddir}/logs/pdepend.xml
+                 --jdepend-xml=${builddir}/logs/jdepend.xml
+                 --jdepend-chart=${builddir}/charts/jdepend.svg
+                 --overview-pyramid=${builddir}/charts/overview-pyramid.svg
+                 --coderank-mode=inheritance,property,method
+                 ${sourcepart}" />
+    </exec>
+  </target>
+
+  <target name="phpunit" depends="prepare">
+    <exec executable="./phpunit" dir="${sourcedir}/maintenance/tests">
+      <arg line="--log-junit ${builddir}/logs/junit.xml --coverage-clover ${builddir}/logs/phpunit.coverage.xml --coverage-html ${builddir}/coverage" />
+    </exec>
+  </target>
+
+  <target name="phpcb">
+    <exec executable="phpcb" dir="${sourcedir}">
+      <arg line="--log ${builddir}/logs --output ${builddir}/php-code-browser"/>
+    </exec>
+  </target>
+
+</project>

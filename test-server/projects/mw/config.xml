@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="phpundercontrol.org" buildafterfailed="false">
+  <plugin name="svn" classname="net.sourceforge.cruisecontrol.sourcecontrols.SVN" />
+  <modificationset quietperiod="60">
+    <svn localWorkingCopy="projects/${project.name}/source/"/>
+  </modificationset>
+  <!-- put the build.xml under version control at a later point-->
+  <!-- <bootstrappers> -->
+  <!--   <svnbootstrapper localWorkingCopy="projects/${project.name}/source/" file="build.xml"/> -->
+  <!-- </bootstrappers>  -->
+  <schedule interval="120">
+    <ant anthome="apache-ant-1.7.0" buildfile="projects/${project.name}/build.xml"/>
+  </schedule>
+  <log dir="logs/${project.name}">
+    <merge dir="projects/${project.name}/build/logs/"/>
+  </log>
+</project>
