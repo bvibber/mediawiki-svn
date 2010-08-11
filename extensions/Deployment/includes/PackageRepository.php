@@ -13,39 +13,79 @@
  * Base repository class. Deriving classes handle interaction with
  * package repositories of the type they support.
  * 
+ * @since 0.1
+ * 
+ * @ingroup Deployment
+ * 
  * @author Jeroen De Dauw
  */
 abstract class PackageRepository {
 	
 	/**
-	 * Constructor.
+	 * Base location of the repository.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @var string
 	 */
-	public function __construct() {
-		// TODO
+	protected $location;	
+	
+	/**
+	 * Returns a list of extensions matching the search criteria.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */
+	public abstract function findExtenions();
+	
+	/**
+	 * Constructor.
+	 * 
+	 * @param $location String
+	 * 
+	 * @since 0.1
+	 */
+	public function __construct( $location ) {
+		$this->location = $location;
 	}		
 	
 }
 
 /**
- * Class for interaction with the Ontoprise repository.
- * @see PackageRepository
+ * Repository class for interaction with repositories provided by
+ * the Distirbution extension and the MediaWiki API.
+ * 
+ * @since 0.1
+ * 
+ * @ingroup Deployment
  * 
  * @author Jeroen De Dauw
- * 
- * TODO: move to it's own file
  */
-class OntopriseRepository extends PackageRepository {
+class DistributionRepository extends PackageRepository {
 	
 	/**
 	 * Constructor.
+	 * 
+	 * @param $location String: path to the api of the MediaWiki install providing the repository.
+	 * 
+	 * @since 0.1
 	 */
-	public function __construct() {
-		parent::__construct();
+	public function __construct( $location ) {
+		parent::__construct( $location );
+	}
+	
+	/**
+	 * @see PackageRepository::findExtenions
+	 * 
+	 * @since 0.1
+	 * 
+	 * @return array
+	 */	
+	public function findExtenions() {
+		global $wgRepositoryPackageStates;
 		
 		// TODO
-	}		
+	}
 	
 }
-
-// TODO: if the ontoprise repository structure is acceptable for general use, rename the class,
-// if it's not, design a more general repository structure and create a new PackageRepository class to handle.

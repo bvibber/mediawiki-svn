@@ -42,7 +42,7 @@ $messages['en'] = array(
 	'extensions-up-to-date' => 'Your extensions are all up to date.',
 	
 	// Special:Install
-	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki. You can browse and search extensions that are in the [http://www.mediawiki.org/wiki/Special:Repository MediaWiki Extension Repository] to install via this page.',
+	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki. You can browse and search extensions that are in the [$1 MediaWiki Extension Repository] to install via this page.',
 	'search-extensions' => 'Search',
 	'search-extensions-long' => 'Search for extensions by keyword, author, or tag.',
 	'popular-extension-tags' => 'Popular tags',

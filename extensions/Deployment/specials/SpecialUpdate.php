@@ -44,10 +44,19 @@ class SpecialUpdate extends SpecialPage {
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
-			
+			$this->showCoreStatus();
+			$this->showExtensionStatuses();
 		} else {
 			$this->displayRestrictionError();
 		}			
+	}
+	
+	protected function showCoreStatus() {
+		$repository = wfGetRepository();
+	}
+	
+	protected function showExtensionStatuses() {
+		$repository = wfGetRepository();
 	}
 	
 }
