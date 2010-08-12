@@ -230,6 +230,7 @@ class CheckVars {
 						$this->mFunction = $token[1];
 						$this->mStatus = self::IN_FUNCTION;
 						$this->mBraces = 0;
+						$this->mInSwitch = 0;
 						$this->mFunctionGlobals = array();
 						$currentToken[0] = self::FUNCTION_DEFINITION;
 
@@ -258,6 +259,9 @@ class CheckVars {
 						$this->mBraces++;
 					} elseif ( $token == '}' ) {
 						$this->mBraces--;
+						if ( $this->mInSwitch <= $this->mBraces )
+							$this->mInSwitch = 0;
+						
 						$this->purgeGlobals();
 						if ( ! $this->mBraces ) {
 							$this->mStatus = self::WAITING_FUNCTION;
@@ -266,6 +270,9 @@ class CheckVars {
 					} elseif ( is_array ( $token ) ) {
 						if ( $token[0] == T_GLOBAL ) {
 							$this->mStatus = self::IN_GLOBAL;
+							if ( $this->mInSwitch ) {
+								$this->warning( "Defining global variables inside a switch in line $token[2], function {$this->mFunction}" );
+							}
 						} elseif ( ( $token[0] == T_CURLY_OPEN ) || ( $token[0] == T_DOLLAR_OPEN_CURLY_BRACES ) ) {
 							// {$ and ${ and  All these three end in }, so we need to open an extra brace to balance
 							// T_STRING_VARNAME is documented as ${a but it's the text inside the braces
@@ -294,6 +301,9 @@ class CheckVars {
 						} elseif ( $token[0] == T_FUNCTION ) {
 							$this->warning( "Uh? Function inside function? A lamda function?" );
 							$this->error( $token );
+						} elseif ( $token[0] == T_SWITCH ) {
+							if ( !$this->mInSwitch )
+								$this->mInSwitch = $this->mBraces;
 						} elseif ( ( $token[0] == T_PAAMAYIM_NEKUDOTAYIM ) && is_array( $lastMeaningfulToken ) && ( $lastMeaningfulToken[0] == T_VARIABLE ) ) {
 							if ( ( $lastMeaningfulToken[1] == '$self' ) || ( $lastMeaningfulToken[1] == '$parent' ) ) {
 								# Bug of r69904
@@ -351,7 +361,9 @@ class CheckVars {
 								$this->warning( "Global variable {$token[1]} in line $token[2], function {$this->mFunction} does not follow coding conventions" );
 							}
 							if ( isset( $this->mFunctionGlobals[ $token[1] ] ) ) {
-								$this->warning( $token[1] . " marked as global again in line $token[2], function {$this->mFunction}" );
+								if ( !$this->mInSwitch ) {
+									$this->warning( $token[1] . " marked as global again in line $token[2], function {$this->mFunction}" );
+								}
 							} else {
 								$this->checkGlobalName( $token[1] );
 								$this->mFunctionGlobals[ $token[1] ] = array( 0, $this->mBraces, $token[2] );
