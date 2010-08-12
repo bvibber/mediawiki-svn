@@ -173,6 +173,7 @@ class SpecialPage {
 		# Page tools
 		'ComparePages'              => 'SpecialComparePages',
 		'Export'                    => 'SpecialExport',
+		'GlobalTemplateUsage'       => 'SpecialGlobalTemplateUsage',
 		'Import'                    => 'SpecialImport',
 		'Undelete'                  => 'UndeleteForm',
 		'Whatlinkshere'             => 'SpecialWhatlinkshere',

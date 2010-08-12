@@ -4315,6 +4315,18 @@ Enter the filename without the "{{ns:file}}:" prefix.',
 'compare-rev2'     => 'Revision 2',
 'compare-submit'   => 'Compare',
 
+# Special:GlobalTemplateUsage
+'globaltemplateusage'      => 'Global template usage',
+'globaltemplateusage-for'  => 'Global template usage for "$1"',
+'globaltemplateusage-desc' => '[[Special:GlobalTemplateUsage|Special page]] to view global template usage',
+'globaltemplateusage-ok'   => 'Search',
+'globaltemplateusage-text' => 'Search global template usage',
+'globaltemplateusage-no-results' => '[[$1]] is not used on other wikis.',
+'globaltemplateusage-on-wiki' => 'Usage on $2',
+'globaltemplateusage-of-file' => 'The following other wikis use this template:',
+'globaltemplateusage-more' => 'View [[{{#Special:GlobalUsage}}/$1|more global usage]] of this template.',
+'globaltemplateusage-filterlocal' => 'Do not show local usage',
+
 # Database error messages
 'dberr-header'      => 'This wiki has a problem',
 'dberr-problems'    => 'Sorry!
