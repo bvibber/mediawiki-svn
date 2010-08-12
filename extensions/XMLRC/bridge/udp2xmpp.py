@@ -347,7 +347,13 @@ class XmppConnection (Connection):
 		self.on_connect()
 
     def close( self ):
-	self.jabber.disconnect()
+	# self.jabber.disconnect() #wha??
+	# XXX: leave chat rooms, etc?
+
+	sock = self.get_socket()
+	if sock: sock.close()
+
+	self.debug("closed xmpp socket")
 
     def make_jabber_channel( self, jid ):
 	return JabberChannel( self, jid )
@@ -427,6 +433,9 @@ class CommandConnection (Connection):
     def close( self ):
 	if self.socket != sys.stdin:
 	    self.socket.close()
+	    self.debug("closed command socket")
+	else:
+	    self.debug("not closing stdin")
 
     def process(self):
 	msg = self.socket.readline().strip()
@@ -450,6 +459,7 @@ class UdpConnection (Connection):
 
     def close( self ):
 	self.socket.close()
+	self.debug("closed UDP socket")
 
     def process(self):
 	packet = self.socket.recvfrom( self.buffer_size )
