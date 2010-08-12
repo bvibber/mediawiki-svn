@@ -16,6 +16,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 define( 'Distribution_VERSION', '0.1 alpha' );
 
+include_once 'Distribution_Settings.php';
+
 // Register the initialization function.
 $wgExtensionFunctions[] = 'efDistributionSetup';
 

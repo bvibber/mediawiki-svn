@@ -55,6 +55,8 @@ class ApiQueryExtensions extends ApiQueryBase {
 	 * @since 0.1
 	 */
 	public function execute() {
+		global $wgDistributionDownloads;
+		
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
@@ -114,6 +116,7 @@ class ApiQueryExtensions extends ApiQueryBase {
 				'version' => $extension->current_version_nr,
 				'authors' => $extension->current_authors,
 				'url' => $extension->current_url,
+				'download' => $wgDistributionDownloads . '/' . $extension->unit_name,
 				//'licence' => $extension->current_licence
 			);
 			
