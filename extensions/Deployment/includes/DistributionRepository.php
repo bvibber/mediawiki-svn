@@ -57,7 +57,14 @@ class DistributionRepository extends PackageRepository {
 			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
 		);
 		
-		// TODO: parse and return result 
+		$extensions = array();
+		
+		if ( $response !== false ) {
+			$extensions = FormatJson::decode( $response );
+		}
+		// TODO
+		var_dump($extensions);exit;
+		return $extensions;
 	}
 	
 }

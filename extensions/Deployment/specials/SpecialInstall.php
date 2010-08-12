@@ -44,10 +44,17 @@ class SpecialInstall extends SpecialPage {
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
-			if ( $wgRequest->wasPosted() ) {
+			if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
 				$this->showCompactSearchOptions();
-				// TODO
-				$this->findExtenions();
+				
+				$extensions = $this->findExtenions( $wgRequest->getText( 'filtertype' ), $wgRequest->getText( 'filtervalue' ) );
+				
+				if ( count( $extensions ) > 0 ) {
+					$this->showExtensionList();
+				}
+				else {
+					// TODO
+				}
 			}
 			else {
 				$this->showFullSearchOptions();
@@ -57,22 +64,96 @@ class SpecialInstall extends SpecialPage {
 		}			
 	}
 	
+	/**
+	 * Created the HTML for the full set of search options controls and adds it to $wgOut.
+	 * 
+	 * @since 0.1
+	 */
 	protected function showFullSearchOptions() {
-		// TODO
+		global $wgOut, $wgUser, $wgRepositoryLocation;
+		
+		$wgOut->addWikiMsgArray( 'extensions-description', $wgRepositoryLocation );
+		
+		$searchHtml = Html::element( 'h2', array(), wfMsg( 'search-extensions' ) );
+		$searchHtml .= wfMsg( 'search-extensions-long' );
+		
+		$searchHtml .= Html::openElement(
+			'form',
+			array(
+				'id' => 'searchform',
+				'name' => 'searchform',
+				'method' => 'post',
+				'action' => $this->getTitle()->getLocalURL(),				
+			)
+		);
+		
+		$searchHtml .= Html::rawElement(
+			'select',
+			array(
+				'name' => 'filtertype',
+				'id' => 'filtertype'
+			),
+			'<option value="term">' . htmlspecialchars( wfMsg( 'search-term' ) ) . '</option>' .
+			'<option value="author">' . htmlspecialchars( wfMsg( 'search-author' ) ) . '</option>' .
+			'<option value="tag">' . htmlspecialchars( wfMsg( 'search-tag' ) ) . '</option>'
+		);
+		
+		$searchHtml .= '&nbsp;&nbsp;';
+		
+		$searchHtml .= Html::input( 'filtervalue' );
+		
+		$searchHtml .= '&nbsp;&nbsp;';
+		
+		$searchHtml .= Html::input(
+			'',
+			wfMsg( 'search-extensions-button' ),
+			'submit',
+			array( 'id' => 'searchform-button' )
+		);
+		
+		$searchHtml .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
+		
+		$searchHtml .= Html::closeElement( 'form' );
+		
+		$wgOut->addHTML( $searchHtml );
+		
+		$tagHtml = Html::element( 'h2', array(), wfMsg( 'popular-extension-tags' ) );
+		$tagHtml .= wfMsg( 'popular-extension-tags-long' );
+		
+		$wgOut->addHTML( $tagHtml );
 	}
 	
+	/**
+	 * Created the HTML for the compact search options and adds it to $wgOut.
+	 * 
+	 * @since 0.1
+	 */	
 	protected function showCompactSearchOptions() {
+		global $wgOut;
 		// TODO
 	}
 	
+	/**
+	 * Queries the repository for a list of extensions matching the search criteria
+	 * and returns these.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $filterType String
+	 * @param $filterValue String
+	 * 
+	 * @return arrau
+	 */
 	protected function findExtenions( $filterType, $filterValue ) {
 		$repository = wfGetRepository();
 		
-		$repository->findExtenions( $filterType, $filterValue );
+		return $repository->findExtenions( $filterType, $filterValue );
 	}
 	
 	/**
 	 * Show the extensions that where found in a list.
+	 * 
+	 * @since 0.1
 	 * 
 	 * @param $extensions Array
 	 */

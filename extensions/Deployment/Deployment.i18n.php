@@ -45,6 +45,10 @@ $messages['en'] = array(
 	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki. You can browse and search extensions that are in the [$1 MediaWiki Extension Repository] to install via this page.',
 	'search-extensions' => 'Search',
 	'search-extensions-long' => 'Search for extensions by keyword, author, or tag.',
+	'search-term' => 'Term',
+	'search-author' => 'Author',
+	'search-tag' => 'Tag',
+	'search-extensions-button' => 'Search extensions',
 	'popular-extension-tags' => 'Popular tags',
 	'popular-extension-tags-long' => 'You may also browse based on the most popular tags in the Extension Repository:',
 
