@@ -78,7 +78,7 @@ class ApiQueryExtensions extends ApiQueryBase {
 		switch ( $params['filter'] ) {
 			case 'term' :
 				// TODO
-				$this->addWhere( "unit_name = '$params[value]'" );
+				$this->addWhere( "unit_name LIKE '%$params[value]%'" );
 				break;
 			case 'author' :
 				// TODO
