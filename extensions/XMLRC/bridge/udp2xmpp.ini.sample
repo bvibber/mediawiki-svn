@@ -21,6 +21,6 @@ port: 4455
 [XMPP]
 # NOTE: please put your XMPP login info
 # WARNING: make sure this file is not readable from the web!
-jid: mediawiki@yourhost.jabber.com
+jid: mediawiki@jabber.yourhost.com
 password: snoopy64
 # message-encoding: utf-8

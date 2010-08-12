@@ -114,9 +114,13 @@ class Relay(object):
 	    f = factories[ t ]
 	    channel = f( x )
 
-	    channel.join() #FIXME: error detection / recovery!
-
 	    self.add_channel( wiki, channel )
+
+	self.join_channels()
+
+    def join_channels( self ):
+	for name, channel in self.channels.items():
+	    channel.join() #FIXME: error detection / recovery!
 
     def broadcast_message( self, message, xml = None ):
         targets = self.get_all_channels()
@@ -244,7 +248,6 @@ class Relay(object):
 
 	if len(params) > 0 or pagename is None:
 	    u = self.wiki_info.get_wiki_script_url( wikiid )
-	    print "script url for %s: %s" % (wikiid, u)
 	    if not u: return False
 
 	    if not pagename is None:
@@ -257,7 +260,6 @@ class Relay(object):
 	    return u + "?" + urllib.urlencode( params )
 	else:
 	    u = self.wiki_info.get_wiki_page_url( wikiid )
-	    print "page url for %s: %s" % (wikiid, u)
 	    if not u: return False
 
 	    return u.replace( '$1', urllib.quote( pagename ) )
@@ -376,9 +378,6 @@ class XmppConnection (Connection):
 	elif message.getBody():
 	    self.debug("discarding %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
 
-    def register_handlers(self):
-        self.jabber.RegisterHandler( 'message', self.process_message )
-
     def guess_local_resource(self):
 	resource = "%s-%d" % ( socket.gethostname(), os.getpid() ) 
 	
@@ -409,7 +408,7 @@ class XmppConnection (Connection):
 
         self.debug('authenticated using %s as %s' % ( auth, jid ) )
 
-        self.register_handlers()
+        self.jabber.RegisterHandler( 'message', self.process_message )
 
 	self.jid = jid;
         self.info( 'connected as %s' % ( jid ) )
@@ -421,6 +420,8 @@ class XmppConnection (Connection):
     def on_connect( self ):
         self.jabber.sendInitPresence(self)
         self.roster = self.jabber.getRoster()
+
+	self.relay.join_channels()
 
     def get_socket( self ):
 	return self.jabber.Connection._sock
