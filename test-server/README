@@ -9,7 +9,11 @@ After that, the projects/connectfour sample directory is erased and
 the contents of the cc-home directory (e.g.  config.xml,
 cruisecontrol.sh, etc) should be copied to your cruisecontrol installation.
 
-Finally, add the cruisecontrol user:
+You'll also want to install the Saxon-B XSLT parser:
+
+    aptitude install libsaxonb-java
+
+Add the cruisecontrol user:
 
     useradd ci
 

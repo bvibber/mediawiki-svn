@@ -24,7 +24,8 @@
     </log>
     <publishers>
       <antpublisher anthome="apache-ant-1.7.0"
-                    buildfile="projects/${project.name}/irc-publisher.xml"/>
+                    buildfile="projects/${project.name}/build.xml"
+                    target="irc-publish"/>
       <artifactspublisher dir="projects/${project.name}/build/api"
                           dest="artifacts/${project.name}" subdirectory="api"/>
       <artifactspublisher dir="projects/${project.name}/build/coverage"

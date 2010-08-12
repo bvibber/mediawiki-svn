@@ -135,4 +135,29 @@
     </exec>
   </target>
 
+  <available file="${builddir}/data/userinfo" property="userinfo.exists"/>
+  <target name="userinfo" unless="userinfo.exists">
+    <exec executable="svn">
+      <arg line="checkout http://svn.wikimedia.org/svnroot/mediawiki/USERINFO ${builddir}/data/userinfo"/>
+    </exec>
+  </target>
+
+  <target name="userinfo-up" depends="userinfo">
+    <exec executable="svn" dir="${builddir}/data/userinfo">
+      <arg line="up"/>
+    </exec>
+    <exec executable="php" dir="${builddir}/data/userinfo" output="${builddir}/data/userinfo.xml">
+      <arg line="${basedir}/userinfo-to-xml.php ${builddir}/data/userinfo"/>
+    </exec>
+  </target>
+
+  <target name="irc-publish" unless="${thisbuildsuccessful}" depends="userinfo-up">
+    <!-- $logfile is the file -->
+
+    <xslt in="${logfile}" out="${apache.root}/irc-publish.txt"
+          style="${basedir}/irc-publisher.xsl">
+      <param name="userinfo" expression="file://${builddir}/data/userinfo.xml"/>
+    </xslt>
+  </target>
+
 </project>
