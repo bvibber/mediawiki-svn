@@ -54,13 +54,13 @@ class TitleBlacklistHooks {
 	}
 
 	/** AbortNewAccount hook */
-	public static function abortNewAccount($user, &$message) {
+	public static function abortNewAccount($user, &$err) {
 		global $wgTitleBlacklist, $wgUser;
 		if ( $wgUser->isAllowed( 'tboverride' ) )
 			return true;
 
 		efInitTitleBlacklist();
-		$title = Title::newFromText( $user->getName() );
+		$title = Title::makeTitleSafe( NS_USER, $user->getName() );
 		$blacklisted = $wgTitleBlacklist->isBlacklisted( $title, 'new-account' );
 		if( !( $blacklisted instanceof TitleBlacklistEntry ) )
 			$blacklisted = $wgTitleBlacklist->isBlacklisted( $title, 'create' );
@@ -68,12 +68,8 @@ class TitleBlacklistHooks {
 			wfLoadExtensionMessages( 'TitleBlacklist' );
 			$message = $blacklisted->getCustomMessage();
 			if( is_null( $message ) )
-				$message = wfMsgWikiHtml( 'titleblacklist-forbidden-new-account',
-							  $blacklisted->getRaw(),
-							  $user->getName() );
-			$result = array( $message,
-				htmlspecialchars( $blacklisted->getRaw() ),
-				$title->getFullText() );
+				$message = 'titleblacklist-forbidden-new-account';
+			$err = wfMsgWikiHtml( $message, $blacklisted->getRaw(), $user->getName() );
 			return false;
 		}
 		return true;
