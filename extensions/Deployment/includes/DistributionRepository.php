@@ -60,10 +60,9 @@ class DistributionRepository extends PackageRepository {
 		$extensions = array();
 		
 		if ( $response !== false ) {
-			$extensions = FormatJson::decode( $response );
+			$extensions = FormatJson::decode( $response )->query->extensions;
 		}
-		// TODO
-		var_dump($extensions);exit;
+
 		return $extensions;
 	}
 	

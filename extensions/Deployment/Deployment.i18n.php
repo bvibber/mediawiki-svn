@@ -60,6 +60,7 @@ $messages['en'] = array(
 	'extensionlist-details' => 'Details',
 	'extensionlist-download' => 'Download',
 	'extensionlist-installnow' => 'Install now',
+	'extensionlist-createdby' => 'By $1',
 
 	'stability-alpha' => 'Alpha',
 	'stability-beta' => 'Beta',

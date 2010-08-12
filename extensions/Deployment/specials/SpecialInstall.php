@@ -50,7 +50,7 @@ class SpecialInstall extends SpecialPage {
 				$extensions = $this->findExtenions( $wgRequest->getText( 'filtertype' ), $wgRequest->getText( 'filtervalue' ) );
 				
 				if ( count( $extensions ) > 0 ) {
-					$this->showExtensionList();
+					$this->showExtensionList( $extensions );
 				}
 				else {
 					// TODO
@@ -152,6 +152,7 @@ class SpecialInstall extends SpecialPage {
 	
 	/**
 	 * Show the extensions that where found in a list.
+	 * This method assumes it gets only called when there are more then 0 extensions.
 	 * 
 	 * @since 0.1
 	 * 
@@ -160,15 +161,63 @@ class SpecialInstall extends SpecialPage {
 	protected function showExtensionList( array $extensions ) {
 		global $wgOut;
 		
-		// TODO: this is just a debug mockup
+		$listHtml = Html::openElement(
+			'table',
+			array( 'class' => 'wikitable' )
+		);
 		
-		$list = array();
+		$listHtml .= '<tr>' . 
+			Html::element( 'th', array(), wfMsg( 'extensionlist-name' ) ) .
+			Html::element( 'th', array(), wfMsg( 'extensionlist-version' ) ) .
+			Html::element( 'th', array(), wfMsg( 'extensionlist-stability' ) ) .
+			Html::element( 'th', array(), wfMsg( 'extensionlist-description' ) )
+			.  '</tr>';
 		
 		foreach ( $extensions as $extension ) {
-			$list[] = $extension['name'];
-		}
+			$listHtml .= $this->getExtensionForList( $extension );
+		}			
+			
+		$listHtml .= Html::closeElement( 'table' );
 		
-		$wgOut->addHTML( implode( ',', $list ) );
+		$wgOut->addHTML( $listHtml );
+	}
+	
+	/**
+	 * Creates and returns the html for a single extension in the list.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $extensions Object
+	 * 
+	 * @return string
+	 */	
+	protected function getExtensionForList( $extension ) {
+		$html = '<tr>';
+		
+		$html .= Html::rawElement(
+			'td',
+			array(),
+			Html::element(
+				'a',
+				array(
+					'href' => $extension->url,
+					'class' => 'external text'
+				),
+				$extension->name
+			)
+		);
+		
+		$html .= Html::element( 'td', array(), $extension->version );
+		$html .= Html::element( 'td', array(), 'Stable' ); // TODO
+		
+		$html .= Html::element(
+			'td',
+			array(),
+			$extension->description . ' ' . 
+				wfMsgExt( 'extensionlist-createdby', 'parsemag', $extension->authors )
+		);
+		
+		return $html . '</tr>';
 	}
 	
 }

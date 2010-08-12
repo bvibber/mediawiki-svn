@@ -84,8 +84,8 @@ class SpecialExtensions extends SpecialPage {
 	protected function getExtensionList() {
 		global $wgExtensionCredits;
 		
-		$out = Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) ) .
-			Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
+		$out = Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) );
+		$out .= Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
 		
 		$extensionTypes = SpecialVersion::getExtensionTypes();
 		
