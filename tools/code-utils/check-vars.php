@@ -70,29 +70,19 @@ class CheckVars {
 			if ( count( $this->mTokens ) > 0 ) {
 				$globals = array (
 					'$wgArticle', # Setup.php
-					'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers
-					'$wgBlobCache', # HistoryBlob.php
-					'$wgCaches', # ObjectCache.php
+					'$wgAutoloadLocalClasses', # AutoLoader.php, a couple of readers					
 					'$wgCanonicalNamespaceNames', # Namespace.php
 					'$wgContLang', # Setup.php
-
-					'$wgContLanguageCode', # Should probably be removed
-					'$wgDatabase', # For update scripts
+					'$wgContLanguageCode', # Should probably be removed					
 					'$wgDBcataloged', # http://www.mediawiki.org/wiki/Special:Code/MediaWiki/45755#c7954
 					'$wgDeferredUpdateList', # Setup.php
-					'$wgExternalBlobCache', # ExternalStoreDB.php
-
 					'$wgExtModifiedFields', '$wgExtNewFields', '$wgExtNewIndexes', '$wgExtNewTables', # Updates
-
-					'$wgFeedClasses', # Defines.php, many uses
-					'$wgFullyInitialised', # Set by Setup.php, read by Exception
-					'$wgHtmlEntities', '$wgHtmlEntityAliases', # Sanitizer.php
+					'$wgFeedClasses', # Defines.php, many uses					
 					'$wgIP', # Setup.php
 					'$wgLang', # Setup.php
 					'$wgLanguageNames', # Language.php, read by others
 					'$wgMemc', # Setup.php
 					'$wgMessageCache', # Setup.php
-
 					'$wgNoDBParam', # maintenance, serialized
 					'$wgOut', # Setup.php
 					'$wgParser', # Setup.php
@@ -121,6 +111,25 @@ class CheckVars {
 			}
 		}
 	}
+
+	protected static $mGlobalsPerFile = array( # Variables which are OK, but only on a few files
+			'$wgCaches' => array( 'ObjectCache.php', 'phpunit', 'ForkController.php' ),
+			'$wgDatabase' => array( 'updaters.inc', 'Installer.php', 'install-utils.inc', 'update.php', 'SqliteInstaller.php' ), # For update scripts
+			'$wgHtmlEntities' => array( 'Sanitizer.php' ),
+			'$wgHtmlEntityAliases' => array( 'Sanitizer.php' ),
+			'$wgFullyInitialised' => array( /* Set */ 'Setup.php', /* read */ 'Exception.php' ),
+			'$wgUseLatin1' => array( 'FiveUpgrade.inc' ), # If you upgrade from MW < 1.5 it will be there
+			'$errs' => array( 'Installer.php' ),
+			'$mainListOpened' => array( 'Installer.php' ),
+			'$optionsWithArgs' => array( 'commandLine.inc' ),
+			'$args' => array( 'commandLine.inc' ),
+			'$options' => array( 'commandLine.inc', 'FiveUpgrade.inc' ),
+			'$canonicalDecomp' => array( 'UtfNormalGenerate.php' ),
+			'$compatibilityDecomp' => array( 'UtfNormalGenerate.php' ),
+			'$mmfl' => array( 'mergeMessageFileList.php' ),
+			'$checkBlacklist' => array( 'checkLanguage.inc' ),
+			'$stderr' => array( 'serialize.php' ),
+		);
 
 	function setGenerateDeprecatedList( $bool = true ) {
 		$this->generateDeprecatedList = $bool;
@@ -433,7 +442,15 @@ class CheckVars {
 
 	# Variables that can be used as global, but also as locals
 	function canBeGlobal( $name ) {
-		return  $name == '$argv'; /* Used as global by maintenance scripts, but also common as function var */
+		if ( $name == '$argv' ) {
+			/* Used as global by maintenance scripts, but also common as function var */
+			return true;
+		}
+		if ( isset( self::$mGlobalsPerFile[$name] ) && in_array( basename( $this->mFilename ) , self::$mGlobalsPerFile[$name] ) ) {
+			return true;
+		}
+		
+		return false;
 	}
 
 	private function purgeGlobals() {
@@ -457,7 +474,9 @@ class CheckVars {
 	protected function checkGlobalName( $name ) {
 		if ( substr( $name, 0, 3 ) == '$wg' ) {
 			if ( ( self::$mDefaultSettingsGlobals != null ) && !in_array( $name, self::$mDefaultSettingsGlobals ) ) {
-				$this->warning( "Global variable $name is not present in DefaultSettings" );
+				if ( !isset( self::$mGlobalsPerFile[$name] ) || !in_array( basename( $this->mFilename ) , self::$mGlobalsPerFile[$name] ) ) {
+					$this->warning( "Global variable $name is not present in DefaultSettings" );
+				}
 			}
 		}
 	}
