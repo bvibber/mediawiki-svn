@@ -158,7 +158,7 @@ window.mediaWiki = new ( function( $ ) {
 	 * Client-side module loader which integrates with the MediaWiki ResourceLoader
 	 */
 	this.loader = new ( function() {
-
+		
 		/* Private Members */
 		
 		var that = this;
@@ -168,7 +168,7 @@ window.mediaWiki = new ( function( $ ) {
 		 * Format:
 		 * 	{
 		 * 		'moduleName': {
-		 * 			'needs': ['required module', 'required module', ...],
+		 * 			'needs': ['required module', 'required module', ...], (or) function() {}
 		 * 			'state': 'registered', 'loading', 'loaded', 'ready', or 'error'
 		 * 			'script': function() {},
 		 * 			'style': 'css code string',
@@ -193,6 +193,15 @@ window.mediaWiki = new ( function( $ ) {
 		 */
 		function recurse( module, resolved, unresolved ) {
 			unresolved[unresolved.length] = module;
+			// Resolves dynamic loader function and replaces it with it's own results
+			if ( typeof registry[module].needs === 'function' ) {
+				registry[module].needs = registry[module].needs();
+				// Gaurantees the module's needs are always in an array 
+				if ( typeof registry[module].needs !== 'object' ) {
+					registry[module].needs = [registry[module].needs];
+				}
+			}
+			// Tracks down needs
 			for ( var n = 0; n < registry[module].needs.length; n++ ) {
 				if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
 					if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
@@ -449,15 +458,11 @@ window.mediaWiki = new ( function( $ ) {
 			}
 			// List the module as registered
 			registry[module] = { 'state': typeof status === 'string' ? status : 'registered', 'needs': [] };
-			// Allow needs to be given as a function which returns a string or array
-			if ( typeof needs === 'function' ) {
-				needs = needs();
-			}
 			if ( typeof needs === 'string' ) {
-				// Allow needs to be given as a single module module
+				// Allow needs to be given as a single module name
 				registry[module].needs = [needs];
-			} else if ( typeof needs === 'object' ) {
-				// Allow needs to be given as an array of module modules
+			} else if ( typeof needs === 'object' || typeof needs === 'function' ) {
+				// Allow needs to be given as an array of module names or a function which returns an array
 				registry[module].needs = needs;
 			}
 		};
