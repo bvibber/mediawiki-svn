@@ -37,7 +37,7 @@ class RecentChange(object):
 	using item syntax (e.g. rc['revid']) or attribute syntax (e.g. rc.revid). 
 	Well known attributes are converted to the appropriate type automatically. """
 
-    flags = set( ( 'anon', 'bot', 'minor', ) )
+    flags = set( ( 'anon', 'bot', 'minor', 'redirect', 'patrolled' ) )
     numerics = set( ( 'rcid', 'pageid', 'revid', 'old_revid', 'newlen', 'oldlen', 'ns', ) )
     times = set( ( 'timestamp', ) )
 
@@ -98,7 +98,7 @@ class RCEcho(RCHandler):
 
     props = ( 'rcid', 'timestamp', 'type', 'ns', 'title', 'pageid', 'revid', 'old_revid', 
 	      'user', 'oldlen', 'newlen', 'comment', 'logid', 'logtype', 'logaction',
-	      'anon', 'bot', 'minor' )
+	      'anon', 'bot', 'minor', 'redirect', 'patrolled' )
 
     def process(self, rc):
 	print "-----------------------------------------------"
@@ -195,7 +195,10 @@ class RCClient(object):
 
     def dispatch_rc(self, rc):
 	for h in self.handlers:
-	    h.process( rc )
+	    if callable( h ):
+		h( rc )
+	    else:
+		h.process( rc )
 
     def add_handler(self, handler):
 	self.handlers.append( handler )
