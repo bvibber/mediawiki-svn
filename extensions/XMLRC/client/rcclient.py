@@ -21,7 +21,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##############################################################################
 
-import sys, os, os.path, traceback, datetime
+import sys, os, os.path, traceback, datetime, re
 import ConfigParser, optparse
 import select, xmpp # using the xmpppy library <http://xmpppy.sourceforge.net/>, GPL
 
@@ -34,17 +34,21 @@ LOG_DEBUG = 30
 ##################################################################################
 class RecentChange(object):
     """ Represence a RecentChanges-Record. Properties of a change can be accessed
-	using item syntax (e.g. rc['revid']) or attribute syntax (e.g. rc.revid). """
+	using item syntax (e.g. rc['revid']) or attribute syntax (e.g. rc.revid). 
+	Well known attributes are converted to the appropriate type automatically. """
 
-    flags = set( ( 'anon', 'bot', 'minor' ) )
-    numerics = set( ( 'rcid', 'pageid', 'revid', 'old_revid', 'newlen', 'oldlen', 'ns' ) )
-    times = set( ( 'timestamp' ) )
+    flags = set( ( 'anon', 'bot', 'minor', ) )
+    numerics = set( ( 'rcid', 'pageid', 'revid', 'old_revid', 'newlen', 'oldlen', 'ns', ) )
+    times = set( ( 'timestamp', ) )
 
     def __init__(self, dom):
 	self.dom = dom
 
     def get_property(self, prop):
 	a = self.dom.getAttr(prop)
+
+	if type(prop) == unicode:
+	    prop = prop.encode("ascii")
 
 	if prop in RecentChange.flags:
 	    if a is None or a is False:
@@ -54,10 +58,23 @@ class RecentChange(object):
 	elif a is None:
 	    a = self.dom.getTag(prop)
 	    # TODO: wrap for conversion. known tags: <tags>, <param>, <block>
-	elif a in RecentChange.numerics:
-	    a = int( a )
-	elif a in RecentChange.times:
-	    a = datetime.strptime( a, '%Y-%m-%dT%H:%M:%S%Z' ) # 2010-10-12T08:57:03Z
+	elif prop in RecentChange.numerics:
+	    if a == "": 
+		a = None
+	    else: 
+		a = int( a )
+	elif prop in RecentChange.times:
+	    if a == "": 
+		a = None
+	    else: 
+		# Using ISO 8601: 2010-10-12T08:57:03Z
+		# XXX: python apparently does not support time zone offsets (%z) when parsing the date time??
+		# a = datetime.datetime.strptime( a, '%Y-%m-%dT%H:%M:%S%z' ) 
+
+		a = re.sub( r'[A-Z]+$|[-+][0-9]+$', r'', a ) # strip time zone
+		a = datetime.datetime.strptime( a, '%Y-%m-%dT%H:%M:%S' ) # naive time. This sucks, but MW should use UTC anyway
+	else:
+	    pass
 
         return a
 
@@ -76,22 +93,32 @@ class RCHandler(object):
 	pass
 
 class RCEcho(RCHandler):
+    """ Implementation of RCHandler that will print the RecentChanges-
+	record to the shell. """
+
     props = ( 'rcid', 'timestamp', 'type', 'ns', 'title', 'pageid', 'revid', 'old_revid', 
-	      'user', 'oldlen', 'newlen', 'comment', 'logid', 'logtype', 'logaction' )
+	      'user', 'oldlen', 'newlen', 'comment', 'logid', 'logtype', 'logaction',
+	      'anon', 'bot', 'minor' )
 
     def process(self, rc):
+	print "-----------------------------------------------"
 	for p in RCEcho.props:
 	    self.print_prop(rc, p)
+	print "-----------------------------------------------"
 
     def print_prop(self, rc, prop):
 	v = rc[prop]
 	if v is None: v = ''
 
-	print "%s: %s" % (prop, v) # XXX: check encoding crap
+	print "%s: %s" % (prop, v)
 
 ##################################################################################
 
 class RCClient(object):
+    """ XMPP client listeneing for RecentChanges-messages, and passing them
+	to any instances of RCHandler that have been registered using 
+	RCClient.add_handler(). """
+
     def __init__( self, console_encoding = 'utf-8' ):
 	self.console_encoding = console_encoding
 	self.handlers = []
@@ -100,7 +127,7 @@ class RCClient(object):
 	self.xmpp = None
 	self.jid = None
 
-        self.group = None
+        self.room = None
         self.nick = None
 
     def warn(self, message):
@@ -120,32 +147,37 @@ class RCClient(object):
 
 	self.online = 1
 
-	while self.online:
-	    (in_socks , out_socks, err_socks) = select.select(sockets, [], sockets, 1)
+	try:
+	    while self.online:
+		(in_socks , out_socks, err_socks) = select.select(sockets, [], sockets, 1)
 
-	    for sock in in_socks:
-		try:
-		    self.xmpp.Process(1)
+		for sock in in_socks:
+		    try:
+			self.xmpp.Process(1)
 
-		    if not self.xmpp.isConnected(): 
-			self.warn("connection lost, reconnecting...")
-			
-			if self.xmpp.reconnectAndReauth():
-			    self.warn("re-connect successful.")
-			    self.on_connect()
+			if not self.xmpp.isConnected(): 
+			    self.warn("connection lost, reconnecting...")
+			    
+			    if self.xmpp.reconnectAndReauth():
+				self.warn("re-connect successful.")
+				self.on_connect()
 
-		except Exception, e:
-		    error_type, error_value, trbk = sys.exc_info()
-		    self.warn( "Error while processing! %s" % "  ".join( traceback.format_exception( error_type, error_value, trbk ) ) )
-		    # TODO: detect when we should kill the loop because a connection failed
+		    except Exception, e:
+			error_type, error_value, trbk = sys.exc_info()
+			self.warn( "Error while processing! %s" % "  ".join( traceback.format_exception( error_type, error_value, trbk ) ) )
+			# TODO: detect when we should kill the loop because a connection failed
 
-	    for sock in err_socks:
-		    raise Exception( "Error in socket: %s" % repr(sock) )
+		for sock in err_socks:
+			raise Exception( "Error in socket: %s" % repr(sock) )
+	except KeyboardInterrupt:
+		pass
 
 	self.info("service loop terminated, disconnecting")
 
 	for sock in sockets:
-	    con.close()
+	    sock.close()
+
+	# TODO: how to leave chat room cleanly ?
 
 	self.info("done.")
 
@@ -214,18 +246,18 @@ class RCClient(object):
         self.xmpp.sendInitPresence(self)
         self.roster = self.xmpp.getRoster()
 
-	if self.group:
-		self.join( self.group )
+	if self.room:
+		self.join( self.room )
 
-    def join(self, group, nick = None):
+    def join(self, room, nick = None):
 	if not nick:
 	    nick = self.jid.getNode()
 
-	if type( group ) != object:
-	    group = xmpp.protocol.JID( group )
+	if type( room ) != object:
+	    room = xmpp.protocol.JID( room )
 
-	# use our own desired nickname as resource part of the group's JID
-	gjid = group.getStripped() + "/" + nick; 
+	# use our own desired nickname as resource part of the room's JID
+	gjid = room.getStripped() + "/" + nick; 
 
 	#create presence stanza
 	join = xmpp.Presence( to= gjid )
@@ -237,7 +269,7 @@ class RCClient(object):
 
 	self.info( 'joined room %s' % self.jid.getStripped() )
 
-	self.group = group
+	self.room = room
 	self.nick = nick
 
 	return True
@@ -246,12 +278,15 @@ class RCClient(object):
 
 if __name__ == '__main__':
 
+    # -- CONFIG & COMMAND LINE ----------------------------------------------------------------------
+
     # find the location of this script
     bindir=  os.path.dirname( os.path.realpath( sys.argv[0] ) )
     extdir=  os.path.dirname( bindir )
 
     # set up command line options........
     option_parser = optparse.OptionParser()
+    option_parser.set_usage( "usage: %prog [options] [room]" )
     option_parser.add_option("--config", dest="config_file", 
 				help="read config from FILE", metavar="FILE")
 
@@ -261,11 +296,8 @@ if __name__ == '__main__':
     option_parser.add_option("--debug", action="store_const", dest="loglevel", const=LOG_DEBUG, 
 				help="print debug messages")
 
-    option_parser.add_option("--group", "--muc", dest="group", default=None,
-				help="join MUC chat group")
-
     option_parser.add_option("--nick", dest="nick", metavar="NICKNAME", default=None,
-				help="use NICKNAME in the MUC group")
+				help="use NICKNAME in the MUC room")
 
     (options, args) = option_parser.parse_args()
 
@@ -285,7 +317,7 @@ if __name__ == '__main__':
     config = ConfigParser.SafeConfigParser()
 
     config.add_section( 'XMPP' )
-    config.set( 'XMPP', 'group', '' )
+    config.set( 'XMPP', 'room', '' )
     config.set( 'XMPP', 'nick', '' )
 
     # read config file........
@@ -296,33 +328,36 @@ if __name__ == '__main__':
     jid = config.get( 'XMPP', 'jid' )
     password = config.get( 'XMPP', 'password' )
 
-    if options.group is None:
-	group = config.get( 'XMPP', 'group' )
+    if len(args) >= 1:
+	room = args[0]
     else:
-	group = options.group
+	room = config.get( 'XMPP', 'room' )
 
     if options.nick is None:
 	nick = config.get( 'XMPP', 'nick' )
     else:
 	nick = options.nick
 
-    if group == '': group = None
+    if room == '': room = None
     if nick == '': nick = None
+
+    # -- DO STUFF -----------------------------------------------------------------------------------
 
     # create rc client instance
     client = RCClient( )
     client.loglevel = options.loglevel
 
-    # -- DO STUFF -----------------------------------------------------------------------------------
+    # add an echo handler that prints the RC info to the shell
+    client.add_handler( RCEcho() ) 
 
     # connect................
-    if not client.connect( jid = jid, password = password ):
+    if not client.connect( jid, password ):
 	sys.exit(1)
 
-    if group:
-	client.join( group, nick )
+    if room:
+	client.join( room, nick )
 
-    # run relay loop................
+    # run listener loop................
     client.service_loop( )
 
     print "done."

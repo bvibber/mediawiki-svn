@@ -8,6 +8,6 @@ jid: example@jabber.org
 password: snoopy64
 
 # If you want to join a group chat, use the lines below
-# or use --group and optionally --nick on the command line
+# or specify the group's JID on the command line
 #group: recentchanges@conference.jabber.yourhost.com
 #nick: john
