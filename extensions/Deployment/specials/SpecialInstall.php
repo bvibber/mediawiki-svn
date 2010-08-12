@@ -163,7 +163,7 @@ class SpecialInstall extends SpecialPage {
 		
 		$listHtml = Html::openElement(
 			'table',
-			array( 'class' => 'wikitable' )
+			array( 'class' => 'wikitable', 'style' => 'width:100%' )
 		);
 		
 		$listHtml .= '<tr>' . 
@@ -176,7 +176,7 @@ class SpecialInstall extends SpecialPage {
 		foreach ( $extensions as $extension ) {
 			$listHtml .= $this->getExtensionForList( $extension );
 		}			
-			
+		
 		$listHtml .= Html::closeElement( 'table' );
 		
 		$wgOut->addHTML( $listHtml );
@@ -197,14 +197,25 @@ class SpecialInstall extends SpecialPage {
 		$html .= Html::rawElement(
 			'td',
 			array(),
+			Html::element( 'b', array(), $extension->name ) .
+			'<br />' .
 			Html::element(
 				'a',
 				array(
 					'href' => $extension->url,
 					'class' => 'external text'
 				),
-				$extension->name
-			)
+				wfMsg( 'extensionlist-details' )		
+			) .
+			' | ' .
+			Html::element(
+				'a',
+				array(
+					'href' => $extension->download,
+					'class' => 'external text'
+				),
+				wfMsg( 'extensionlist-download' )		
+			)			
 		);
 		
 		$html .= Html::element( 'td', array(), $extension->version );
