@@ -2,8 +2,8 @@
 
 ResourceLoader::register( array(
 
-	/* Special resources (callbacks) */
-	'sitejs' => array( 'callback' => array( 'ResourceLoader', 'siteJSCallback' ) ),
+	/* Special resources who have their own classes */
+	'sitejs' => array( 'class' =>  'ResourceLoaderSiteJSModule' ),
 	
 	/* jQuery */
 	

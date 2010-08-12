@@ -93,8 +93,8 @@ class MessageBlobStore {
 			} else {
 				// Update msg_resource_links
 				$rows = array();
-				$allModules = ResourceLoader::getModules();
-				foreach ( $allModules[$module]['messages'] as $key ) {
+				$mod = ResourceLoader::getModule( $module );
+				foreach ( $mod->getMessages() as $key ) {
 					$rows[] = array(
 						'mrl_resource' => $module,
 						'mrl_message' => $key
@@ -292,12 +292,9 @@ class MessageBlobStore {
 	 * @return string JSON object
 	 */
 	private static function generateMessageBlob( $module, $lang ) {
-		$allModules = ResourceLoader::getModules();
-		if ( !isset ( $allModules[$module]['messages'] ) ) {
-			return false;
-		}
+		$mod = ResourceLoader::getModule( $module );
 		$messages = array();
-		foreach ( $allModules[$module]['messages'] as $key ) {
+		foreach ( $mod->getMessages() as $key ) {
 			$messages[$key] = wfMsgExt( $key, array( 'language' => $lang ) );
 		}
 		return FormatJson::encode( $messages );

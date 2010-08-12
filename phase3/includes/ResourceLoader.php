@@ -55,6 +55,8 @@
  *		),
  * 		// List of keys of messages to include
  * 		'messages' => array( 'foo-hello', 'foo-goodbye' ),
+ * 		// Subclass of ResourceLoaderModule to use for custom modules
+ *		'class' => 'ResourceLoaderSiteJSModule',
  * 	) );
  * @example
  * 	// Responds to a resource loading request
@@ -64,7 +66,7 @@ class ResourceLoader {
 	
 	/* Protected Static Members */
 	
-	// List of modules and their options
+	// array ( modulename => ResourceLoaderModule )
 	protected static $modules = array();
 	
 	/* Protected Static Methods */
@@ -78,6 +80,7 @@ class ResourceLoader {
 	 * @return {string} filtered data
 	 */
 	protected static function filter( $filter, $data, $file = null ) {
+		// FIXME: $file is not used by any callers as path rewriting is currently kinda broken
 		global $wgMemc;
 		$key = wfMemcKey( 'resourceloader', $filter, md5( $data ) );
 		$cached = $wgMemc->get( $key );
@@ -105,69 +108,7 @@ class ResourceLoader {
 		$wgMemc->set( $key, $result );
 		return $result;
 	}
-	/**
-	 * Converts a multi-level array into a flat array containing the unique values of all leaf nodes
-	 * 
-	 * @param {array} $deep mutli-level array to flatten
-	 * @param {array} $flat array to append flattened values to (used internally)
-	 * @return {array} flattened array of leaf nodes
-	 */
-	protected static function flatten( $deep, $flat = array() ) {
-		foreach ( $deep as $value ) {
-			if ( is_array( $value ) ) {
-				$flat = self::flatten( $value, $flat );
-			} else {
-				if ( $value ) {
-					$flat[] = $value;
-				}
-			}
-		}
-		return array_unique( $flat );
-	}
-	/**
-	 * Validates a file or list of files as existing
-	 * 
-	 * @param {mixed} string file name or array of any depth containing string file names as leaf nodes
-	 * @throws {MWException} if one or more files do not exist
-	 */
-	protected static function validate( $files ) {
-		if ( is_array( $files ) ) {
-			$files = self::flatten( $files );
-			foreach ( $files as $file ) {
-				self::validate( $file );
-			}
-		} else {
-			if ( !file_exists( $files ) ) {
-				throw new MWException( 'File does not exist: ' . $files );
-			}
-		}
-	}
-	/**
-	 * Reads a file or list of files and returns them as a string or outputs them into the current output buffer
-	 * 
-	 * @param {mixed} $files string file name or array of any depth containing string file names as leaf nodes
-	 * @param {bool} $passthrough whether to return read data as a string or to output it directly to the current buffer
-	 * @return {mixed} string of read data or null if $passthrough is true
-	 */
-	protected static function read( $files, $passthrough = false ) {
-		if ( is_array( $files ) ) {
-			$files = self::flatten( $files );
-			$contents = '';
-			foreach ( $files as $file ) {
-				$contents .= self::read( $file );
-			}
-			return $contents;
-		} else {
-			if ( $passthrough ) {
-				readfile( $files );
-				echo "\n";
-				return null;
-			} else {
-				return file_get_contents( $files ) . "\n";
-			}
-		}
-	}
-	
+
 	/* Static Methods */
 	
 	/**
@@ -199,6 +140,7 @@ class ResourceLoader {
 	 * 			...
 	 * 		),
 	 * 		'messages' => array( 'message1', 'message2' ... ),
+	 * 		'class' => 'classname', // Optional, defaults to ResourceLoaderModule
 	 * 	)
 	 * 
 	 * @todo We need much more clever error reporting, not just in detailing what happened, but in bringing errors to
@@ -217,67 +159,29 @@ class ResourceLoader {
 			// A module has already been registered by this name
 			throw new MWException( 'Another module has already been registered as ' . $module );
 		}
-		// Always include a set of default options in each registration so we need not exaustively mark all options for
-		// all modules when registering and also don't need to worry if the options are set or not later on
-		$options = array_merge( array(
-			'script' => null,
-			'locales' => null,
-			'raw' => false,
-			// An empty array is used for needs to make FormatJson::encode output [] instead of null which is shorted and
-			// results in easier to work with data on the client
-			'needs' => array(),
-			'loader' => null,
-			'debug' => null,
-			'style' => null,
-			'themes' => null,
-			'messages' => null,
-			'callback' => null,
-		), $options );
-		// Validate script option - which is required and must reference files that exist
-		if ( !is_string( $options['script'] ) && is_null( $options['callback'] ) ) {
-			throw new MWException( 'Module does not include a script or a callback: ' . $module );
-		}
-		if ( is_string( $options['script'] ) && !is_null( $options['callback'] ) ) {
-			throw new MWException( 'Module has both a script and a callback: ' . $module );
-		}
-		// Validate options that reference files
-		foreach ( array( 'script', 'locales', 'loader', 'debug', 'style', 'themes' ) as $option ) {
-			if ( $options[$option] !== null ) {
-				self::validate( $options[$option] );
-			}
-		}
+		
+		// Determine class
+		$class = isset( $options['class'] ) ? $options['class'] : 'ResourceLoaderModule';
+		
 		// Attach module
-		self::$modules[$module] = $options;
+		self::$modules[$module] = new $class( $options );
 	}
 	/**
 	 * Gets a map of all modules and their options
 	 * 
-	 * @return {array} list of modules and their options
+	 * @return {array} array( modulename => ResourceLoaderModule )
 	 */
 	public static function getModules() {
 		return self::$modules;
 	}
-	/**
-	 * Get the timestamp at which the module was last modified. This is the
-	 * maximum of the last modification timestamps of its constituent files
-	 * @param $module string Module name
-	 * @return int UNIX timestamp
-	 */
-	public static function getModuleTimestamp( $module ) {
-		$m = self::$modules[$module];
-		$mtime = filemtime( $m['script'] );
-		if ( !is_null( $m['style'] ) ) {
-			$mtime = max( $mtime, filemtime( $m['style'] ) );
-		}
-		if( !is_null( $m['loader'] ) ) {
-			$mtime = max( $mtime, filemtime( $m['loader'] ) );
-		}
-		return $mtime;
-	}
 	
-	public static function siteJSCallback( $parameters ) {
-		// FIXME: Does this belong in this class?
-		return Skin::newFromKey( $parameters['skin'] )->generateUserJs();
+	/**
+	 * Get the ResourceLoaderModule object for a given module name
+	 * @param $name string Module name
+	 * @return mixed ResourceLoaderModule or null if not registered
+	 */
+	public static function getModule( $name ) {
+		return isset( self::$modules[$name] ) ? self::$modules[$name] : null;
 	}
 	
 	/*
@@ -298,6 +202,7 @@ class ResourceLoader {
 	public static function respond( WebRequest $request, $server ) {
 		global $wgUser, $wgLang, $wgDefaultSkin;
 		// Fallback on system settings
+		// FIXME: Unnecessary unstubbing going on here, work around that
 		$parameters = array(
 			'user' => $request->getVal( 'user', $wgUser->isLoggedIn() ),
 			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
@@ -310,31 +215,39 @@ class ResourceLoader {
 		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'];
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {
-			$lang = $wgLang->factory( $parameters['lang'] );
+			$lang = Language::factory( $parameters['lang'] );
 			$parameters['dir'] = $lang->getDir();
 		}
+		
+		// Set parameters on all modules
+		// FIXME: This sucks
+		foreach ( self::$modules as $module ) {
+			$module->setParameters( $parameters );
+		}
+		
 		// Build a list of requested modules excluding unrecognized ones which are collected into a list used to
 		// register the unrecognized modules with error status later on
 		$modules = array();
 		$missing = array();
-		foreach ( explode( '|', $request->getVal( 'modules' ) ) as $module ) {
-			if ( isset( self::$modules[$module] ) ) {
-				$modules[] = $module;
+		foreach ( explode( '|', $request->getVal( 'modules' ) ) as $name ) {
+			if ( self::getModule( $name ) ) {
+				$modules[] = $name;
 			} else {
-				$missing[] = $module;
+				$missing[] = $name;
 			}
 		}
 		// Use output buffering
 		ob_start();
 		// Output raw modules first and build a list of raw modules to be registered with ready status later on
 		$ready = array();
-		foreach ( $modules as $module ) {
-			if ( self::$modules[$module]['raw'] ) {
-				self::read( self::$modules[$module]['script'], true );
-				if ( $parameters['debug'] && self::$modules[$module]['debug'] ) {
-					self::read( self::$modules[$module]['debug'], true );
+		foreach ( $modules as $name ) {
+			$module = self::getModule( $name );
+			if ( $module->isRaw() ) {
+				echo $module->getScript();
+				if ( $parameters['debug'] ) {
+					echo $module->getDebugScript();
 				}
-				$ready[] = $module;
+				$ready[] = $name;
 			}
 		}
 		// Special meta-information for the 'mediawiki' module
@@ -344,14 +257,16 @@ class ResourceLoader {
 			// Generate list of registrations and collect all loader scripts
 			$loaders = array();
 			$registrations = array();
-			foreach ( self::$modules as $name => $options ) {
-				if ( $options['loader'] ) {
-					$loaders[] = $options['loader'];
+			foreach ( self::$modules as $name => $module ) {
+				$loader = $module->getLoaderScript();
+				if ( $loader !== false ) {
+					echo $loader;
 				} else {
-					if ( empty( $options['needs'] ) && !in_array( $name, $ready ) && !in_array( $name, $missing ) ) {
+					if ( !count( $module->getDependencies() ) &&
+							!in_array( $name, $ready ) && !in_array( $name, $missing ) ) {
 						$registrations[$name] = $name;
 					} else {
-						$registrations[$name] = array( $name, $options['needs'] );
+						$registrations[$name] = array( $name, $module->getDependencies() );
 						if ( in_array( $name, $ready ) ) {
 							$registrations[$name][] = 'ready';
 						} else if ( in_array( $name, $missing ) ) {
@@ -360,44 +275,34 @@ class ResourceLoader {
 					}
 				}
 			}
-			// Include loaders
-			self::read( $loaders, true );
 			// Register modules without loaders
 			echo "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
 		}
 		// Output non-raw modules
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
-		foreach ( $modules as $module ) {
-			if ( !self::$modules[$module]['raw'] ) {
+		foreach ( $modules as $name ) {
+			$module = self::getModule( $name );
+			if ( !$module->isRaw() ) {
 				// Script
-				if ( !is_null( self::$modules[$module]['callback'] ) ) {
-					$script = call_user_func( self::$modules[$module]['callback'], $parameters );
-				} else {
-					$script = self::read( self::$modules[$module]['script'] );
-				}
+				$script = $module->getScript();
 				// Debug
-				if ( $parameters['debug'] && self::$modules[$module]['debug'] ) {
-					$script .= self::read( self::$modules[$module]['debug'] );
+				if ( $parameters['debug'] ) {
+					$script .= $module->getDebugScript();
 				}
-				// Locale
-				if ( isset( self::$modules[$module]['locales'][$parameters['lang']] ) ) {
-					$script .= self::read( self::$modules[$module]['locales'][$parameters['lang']] );
-				}
+				// Language-specific scripts
+				$script .= $module->getLanguageScript( $parameters['lang'] );
 				// Style
-				$style = self::$modules[$module]['style'] ? self::read( self::$modules[$module]['style'] ) : '';
-				// Theme
-				if ( isset( self::$modules[$module]['themes'][$parameters['skin']] ) ) {
-					$style .= self::read( self::$modules[$module]['themes'][$parameters['skin']] );
-				} else if ( isset( self::$modules[$module]['themes']['default'] ) ) {
-					$style .= self::read( self::$modules[$module]['themes']['default'] );
-				}
+				$style = $module->getStyle();
+				// Skin-specific styles
+				$style .= $module->getSkinStyle( $parameters['skin'] );
+				
 				if ( $style !== '' ) {
 					if ( $parameters['dir'] == 'rtl' ) {
 						$style = self::filter( 'flip-css', $style );
 					}
 					$style = Xml::escapeJsString(
 						$parameters['debug'] ?
-							$style : self::filter( 'minify-css', $style, self::$modules[$module]['style'] )
+							$style : self::filter( 'minify-css', $style )
 					);
 				}
 				// Messages
