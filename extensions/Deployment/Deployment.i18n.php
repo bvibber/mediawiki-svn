@@ -54,7 +54,7 @@ $messages['en'] = array(
 
 	'extensionlist-name' => 'Name',
 	'extensionlist-version' => 'Version',
-	'extensionlist-name' => 'Stability',
+	'extensionlist-stability' => 'Stability',
 	'extensionlist-rating' => 'Rating',
 	'extensionlist-description' => 'Description',
 	'extensionlist-details' => 'Details',
