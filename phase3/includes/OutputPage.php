@@ -1550,6 +1550,12 @@ class OutputPage {
 		
 		// Add base resources
 		$this->addResources( array( 'jquery', 'mediawiki', 'mediawiki.legacy.wikibits' ) );
+		
+		// Add site JS if enabled
+		global $wgUseSiteJs;
+		if ( $wgUseSiteJs ) {
+			$this->addResources( 'sitejs' );
+		}
 
 		// Add various resources if required
 		if ( $wgUseAjax ) {
@@ -2223,6 +2229,7 @@ class OutputPage {
 				$wgRequest->getVal( 'debug' ) === 'true' ||
 				( $wgRequest->getVal( 'debug' ) !== 'false' && $wgRequest->getBool( 'debug' ) )
 			),
+			'skin' => $wgUser->getSkin()->getSkinName(),
 		);
 		return Html::linkedScript( wfAppendQuery( $wgScriptPath . '/load.php', $query ) );
 	}
@@ -2236,7 +2243,7 @@ class OutputPage {
 	 * @return String: HTML fragment
 	 */
 	function getHeadScripts( Skin $sk ) {
-		global $wgUser, $wgRequest, $wgJsMimeType, $wgUseSiteJs;
+		global $wgUser, $wgRequest, $wgJsMimeType;
 		global $wgStylePath, $wgStyleVersion;
 		
 		// Include base modules and wikibits legacy code
@@ -2244,18 +2251,6 @@ class OutputPage {
 		// Configure page
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 		
-		// add site JS if enabled
-		if( $wgUseSiteJs ) {
-			$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
-			$this->addScriptFile(
-				Skin::makeUrl(
-					'-',
-					"action=raw$jsCache&gen=js&useskin=" .
-					urlencode( $sk->getSkinName() )
-				)
-			);
-		}
-
 		// add user JS if enabled
 		if( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
 			$action = $wgRequest->getVal( 'action', 'view' );

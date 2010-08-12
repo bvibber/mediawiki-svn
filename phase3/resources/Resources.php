@@ -1,6 +1,9 @@
 <?php
 
 ResourceLoader::register( array(
+
+	/* Special resources (callbacks) */
+	'sitejs' => array( 'callback' => array( 'ResourceLoader', 'siteJSCallback' ) ),
 	
 	/* jQuery */
 	

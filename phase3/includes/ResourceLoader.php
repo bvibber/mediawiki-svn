@@ -181,6 +181,8 @@ class ResourceLoader {
 	 * 	array(
 	 * 		// Required module options
 	 * 		'script' => 'dir/script.js' | array( 'dir/script1.js', 'dir/script2.js' ... ),
+	 * 		'callback' => callback, // Either 'script' or 'callback' (not both) must be set
+	 *
 	 * 		// Optional module options
 	 * 		'locales' => array(
 	 * 			'[locale name]' => 'dir/locale.js' | '[locale name]' => array( 'dir/locale1.js', 'dir/locale2.js' ... )
@@ -229,10 +231,14 @@ class ResourceLoader {
 			'style' => null,
 			'themes' => null,
 			'messages' => null,
+			'callback' => null,
 		), $options );
 		// Validate script option - which is required and must reference files that exist
-		if ( !is_string( $options['script'] ) ) {
-			throw new MWException( 'Module does not include a script: ' . $module );
+		if ( !is_string( $options['script'] ) && is_null( $options['callback'] ) ) {
+			throw new MWException( 'Module does not include a script or a callback: ' . $module );
+		}
+		if ( is_string( $options['script'] ) && !is_null( $options['callback'] ) ) {
+			throw new MWException( 'Module has both a script and a callback: ' . $module );
 		}
 		// Validate options that reference files
 		foreach ( array( 'script', 'locales', 'loader', 'debug', 'style', 'themes' ) as $option ) {
@@ -267,6 +273,11 @@ class ResourceLoader {
 			$mtime = max( $mtime, filemtime( $m['loader'] ) );
 		}
 		return $mtime;
+	}
+	
+	public static function siteJSCallback( $parameters ) {
+		// FIXME: Does this belong in this class?
+		return Skin::newFromKey( $parameters['skin'] )->generateUserJs();
 	}
 	
 	/*
@@ -359,7 +370,11 @@ class ResourceLoader {
 		foreach ( $modules as $module ) {
 			if ( !self::$modules[$module]['raw'] ) {
 				// Script
-				$script = self::read( self::$modules[$module]['script'] );
+				if ( !is_null( self::$modules[$module]['callback'] ) ) {
+					$script = call_user_func( self::$modules[$module]['callback'], $parameters );
+				} else {
+					$script = self::read( self::$modules[$module]['script'] );
+				}
 				// Debug
 				if ( $parameters['debug'] && self::$modules[$module]['debug'] ) {
 					$script .= self::read( self::$modules[$module]['debug'] );
