@@ -52,6 +52,22 @@ $messages['en'] = array(
 	'popular-extension-tags' => 'Popular tags',
 	'popular-extension-tags-long' => 'You may also browse based on the most popular tags in the Extension Repository:',
 
+	'extensionlist-name' => 'Name',
+	'extensionlist-version' => 'Version',
+	'extensionlist-name' => 'Stability',
+	'extensionlist-rating' => 'Rating',
+	'extensionlist-description' => 'Description',
+	'extensionlist-details' => 'Details',
+	'extensionlist-download' => 'Download',
+	'extensionlist-installnow' => 'Install now',
+
+	'stability-alpha' => 'Alpha',
+	'stability-beta' => 'Beta',
+	'stability-dev' => 'Experimental',
+	'stability-rc' => 'Release candidate',
+	'stability-stable' => 'Stable',
+	'stability-deprecated' => 'Deprecated',
+
 	// Filesystem: FTP
 	'deploy-ftp-not-loaded' => 'The FTP PHP extension is not available',
 	'deploy-ftp-ssl-not-loaded' => 'The loaded FTP PHP extension does not support SSL',
