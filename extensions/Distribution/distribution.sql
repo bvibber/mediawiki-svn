@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/distribution_unit_versions (
   --enum with release status (alpha, beta, rc, supported, deprecated, ...)
   version_status           TINYINT unsigned  NOT NULL,
   
-  version_release_date     CHAR(14) binary   NOT NULL default ''
+  version_release_date     CHAR(14) binary   NOT NULL default '',
   
   version_directory        VARCHAR(255)      NOT NULL, 
   version_entrypoint       VARCHAR(255)      NOT NULL,  
