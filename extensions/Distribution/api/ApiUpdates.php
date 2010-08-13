@@ -69,6 +69,17 @@ class ApiUpdates extends ApiBase {
 	 */	
 	public function getAllowedParams() {
 		return array(
+			'mediawiki' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'extensions' => array(
+				ApiBase::PARAM_TYPE => 'string',
+			),
+			'state' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_TYPE => DistributionRelease::getStates(),
+				ApiBase::PARAM_DFLT => DistributionRelease::getDefaultState(),
+			),
 		);
 	}
 	
@@ -79,6 +90,9 @@ class ApiUpdates extends ApiBase {
 	 */	
 	public function getParamDescription() {
 		return array(
+			'mediawiki'  => 'The installed version of MediaWiki',
+			'extensions' => 'A |-seperated list of extensions and their version, seperated by a semicolon',
+			'state'      => 'A list of allowed release states'
 		);
 	}
 	
