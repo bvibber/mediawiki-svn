@@ -128,20 +128,22 @@ class GetSvnMetadata extends Maintenance {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param $extensionName String
+	 * @param $extensionPath String
 	 * @param $extensionDir String
 	 * 
 	 * @return array
 	 */
-	protected function getExtensionMetadata( $extensionName, $extensionDir ) {
+	protected function getExtensionMetadata( $extensionPath, $extensionDir ) {
 		
 		// TODO: implement method (currently returning dummy data)
 		$extension = array(
-			'name' => $extensionName,
+			'name' => $extensionPath,
+			'directory' => $extensionPath,
+			'entrypoint' => "$extensionPath.php",
 			'description' => 'Awesome extension will be awesome when fully implemented.',
 			'version' => 4.2,
-			'authors' => 'James T. Kirk, Luke Skywalker',
-			'url' => 'http://www.mediawiki.org/wiki/Extension:' . $extensionName
+			'authors' => 'James T. Kirk and Luke Skywalker',
+			'url' => 'http://www.mediawiki.org/wiki/Extension:' . $extensionPath
 		);
 		
 		return $extension;
@@ -179,7 +181,9 @@ class GetSvnMetadata extends Maintenance {
 			'version_status' => DistributionRelease::mapState( DistributionRelease::getDefaultState() ), // TODO
 			'version_desc' => $metaData['description'],
 			'version_authors' => $metaData['authors'],
-			'version_url' => $metaData['url'],			
+			'version_url' => $metaData['url'],
+			'version_directory' => $metaData['directory'],
+			'version_entrypoint' => $metaData['entrypoint'],
 		);		
 		
 		// Insert or update the unit.

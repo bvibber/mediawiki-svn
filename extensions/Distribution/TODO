@@ -1,1 +1,0 @@
-* Distinguise between actual name and svn path. The name var now contains svn path everywhere, so it should be renamed, and a new var should be introduced.
