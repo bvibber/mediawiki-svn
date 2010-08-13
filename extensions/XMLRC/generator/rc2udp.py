@@ -56,6 +56,8 @@ class RCPoller(object):
 	self.rcprops = rcprops
 	self.rclimit = rclimit
 
+	self.wikiid = None
+
     def warn(self, message):
 	if self.loglevel >= LOG_QUIET:
 	    sys.stderr.write( "WARNING: %s\n" % ( message.encode( self.console_encoding ) ) )
@@ -75,9 +77,13 @@ class RCPoller(object):
 	last_id = 0
 	last_timestamp = False
 
+	if not self.wikiid:
+	    self.wikiid = self.fetch_wiki_id()
+	    self.info( "wikiid is %s" % self.wikiid )
+
 	try:
 	    while self.online:
-		self.debug( "fetching RCs from ID %s" % last_id )
+		self.debug( "fetching RCs since %s (from #%d)" % (last_timestamp, last_id) )
 
 		try:
 		    rcs = self.fetch_recent_changes( last_id, last_timestamp, limit )
@@ -93,13 +99,14 @@ class RCPoller(object):
 		for rc in rcs:
 			self.debug( "dispatching RC #%s (%s)" % (rc['rcid'], rc['timestamp']) )
 
-			#FIXME: inject wikiid. fetch once from API.
+			rc.setAttr( 'wikiid', self.wikiid )
 
 			self.dispatch_rc( rc )
 
 			last_id = int( rc['rcid'] )
 			last_timestamp = rc['timestamp']
 
+		self.debug( "sleeping for %d sec" % self.interval )
 		time.sleep( self.interval )
 		
 
@@ -122,7 +129,6 @@ class RCPoller(object):
 	if last_timestamp:
 	    u += "rcstart=%s" % ( last_timestamp, )
 
-	print u
 	x = urllib.urlopen( u )
 	xml = x.read( self.rclimit * MAX_RC_XML_SIZE )
 
@@ -146,7 +152,26 @@ class RCPoller(object):
 
 	except ExpatError, e:
 	    error_type, error_value, trbk = sys.exc_info()
-	    raise IOError( "Failed to parse changes: <%s> %s; data: %s" % ( error_type, error_value, xml[:128] ) )
+	    raise IOError( "Failed to parse site info: <%s> %s; data: %s" % ( error_type, error_value, xml[:128] ) )
+
+    def fetch_wiki_id( self ):
+	u = self.api_url + "?format=xml&action=query&meta=siteinfo&siprop=general"
+
+	x = urllib.urlopen( u )
+	xml = x.read( MAX_RC_XML_SIZE )
+
+	try:
+	    dom = xmpp.simplexml.XML2Node( xml )
+	    if dom is None:
+		raise IOError( "Failed to parse site info. data: %s" % xml[:128] )
+
+	    info = dom.T.query.T.general
+
+	    return info['wikiid']
+
+	except ExpatError, e:
+	    error_type, error_value, trbk = sys.exc_info()
+	    raise IOError( "Failed to parse site info: <%s> %s; data: %s" % ( error_type, error_value, xml[:128] ) )
 	
     def dispatch_rc(self, rc):
 	for h in self.handlers:
@@ -250,6 +275,14 @@ if __name__ == '__main__':
 	port = config.getint( 'rc2udp', 'port' )
 
     # -- DO STUFF -----------------------------------------------------------------------------------
+
+    # tell python to send a meaningful UAS string
+    class URLopener(urllib.FancyURLopener):
+        version = "rc2udp.py (+http://www.mediawiki.org/wiki/Extension:XMLRC) " + urllib.FancyURLopener.version
+
+    urllib._urlopener = URLopener()
+
+    print "HTTP User-Agent: " + urllib._urlopener.version
 
     # create poller
     poller = RCPoller( api, interval = config.getint( 'rc2udp', 'poll-interval' ), 
