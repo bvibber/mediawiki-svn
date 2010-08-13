@@ -2,7 +2,9 @@
 
 /**
  * This script scrapes the WMF SVN repo for package meta-data and stores it
- * so it can be queried via the API.
+ * so it can be queried via the API. It uses settings of ExtensionDistributor,
+ * so you need to have that extension installed and running in order to use
+ * this maintenance script.
  *
  * Usage:
  *  no parameters
@@ -26,6 +28,7 @@
  *
  * @author Jeroen De Dauw
  * 
+ * @ingroup Distribution
  * @ingroup Maintenance
  */
 
@@ -149,8 +152,6 @@ class GetSvnMetadata extends Maintenance {
 		
 		return $extension;
 	}
-	
-
 	
 }
 
