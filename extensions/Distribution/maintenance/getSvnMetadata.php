@@ -143,7 +143,8 @@ class GetSvnMetadata extends Maintenance {
 			'description' => 'Awesome extension will be awesome when fully implemented.',
 			'version' => 4.2,
 			'authors' => 'James T. Kirk and Luke Skywalker',
-			'url' => 'http://www.mediawiki.org/wiki/Extension:' . $extensionPath
+			'url' => 'http://www.mediawiki.org/wiki/Extension:' . $extensionPath,
+			'date' => time()
 		);
 		
 		return $extension;
@@ -184,6 +185,7 @@ class GetSvnMetadata extends Maintenance {
 			'version_url' => $metaData['url'],
 			'version_directory' => $metaData['directory'],
 			'version_entrypoint' => $metaData['entrypoint'],
+			'version_release_date' => $metaData['date']
 		);		
 		
 		// Insert or update the unit.

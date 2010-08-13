@@ -60,6 +60,10 @@ class ApiUpdates extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		
+		foreach( $params['state'] as $state ) {
+			$state = DistributionRelease::mapState( $state );
+		}
+		
 		if ( array_key_exists( 'mediawiki', $params ) ) {
 			$this->checkForCoreUpdates( $params['mediawiki'], $params['state'] );
 		}
@@ -116,14 +120,36 @@ class ApiUpdates extends ApiBase {
 	protected function checkForExtensionUpdates( $extensionName, $extensionVersion, array $states ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$dbr->select(
+		$extension = $dbr->selectRow(
 			'distribution_units',
 			array(
-				'current_version_nr',
-				'current_url',
+				'unit_id'
 			),
 			array( 'unit_name' => $extensionName )
 		);
+		
+		if ( $extension !== false ) {
+			$version = $dbr->selectRow(
+				'distribution_unit_versions',
+				array(
+					'version_id',
+					'version_nr',
+					'version_status',
+					'version_url'
+				),
+				array(
+					'unit_id' => $extension->unit_id,
+					'version_status' => $states
+				),
+				'Database::selectRow',
+				array( 'ORDER BY version_release_date DESC' )
+			);
+			
+			if ( $version !== false && version_compare( $version->version_nr, $extensionVersion, '>' ) ) {
+				// TODO
+				//$this->getResult()->addValue( 'extensions', $this->getModuleName(), $version );				
+			}
+		}
 	}
 	
 	/**
