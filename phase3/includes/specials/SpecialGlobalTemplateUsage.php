@@ -4,11 +4,14 @@
  * to show the usage of a template instead of a file.
  * Special page to show global template usage. Also contains hook functions for
  * showing usage on an template page.
+ * 
+ * @author Bryan Tong Minh <bryan.tongminh@gmail.com>
+ * @author Peter Potrowl <peter017@gmail.com>
  */
 
 class SpecialGlobalTemplateUsage extends SpecialPage {
 	public function __construct() {
-		parent::__construct( 'GlobalTemplateUsage', 'globaltemplateusage' );
+		parent::__construct( 'GlobalTemplateUsage' );
 	}
 
 	/**
@@ -206,6 +209,9 @@ class SpecialGlobalTemplateUsage extends SpecialPage {
  * This class has been copied from Extension:GlobalUsage / GlobalUsageQuery.php
  * Extension:GlobalUsage should be built-in and the GlobalUsageQuery adapted
  * to be able to fetch the global usage of templates as well as files.
+ * 
+ * @author Bryan Tong Minh <bryan.tongminh@gmail.com>
+ * @author Peter Potrowl <peter017@gmail.com>
  */
 class GlobalTemplateUsageQuery {
 	private $limit = 50;

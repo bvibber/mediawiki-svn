@@ -4759,6 +4759,7 @@ $wgSpecialPageGroups = array(
 	'Export'                    => 'pagetools',
 	'Import'                    => 'pagetools',
 	'Whatlinkshere'             => 'pagetools',
+	'GlobalTemplateUsage'       => 'pagetools',
 
 	'Statistics'                => 'wiki',
 	'Version'                   => 'wiki',
