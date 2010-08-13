@@ -104,6 +104,16 @@ $messages['bn'] = array(
 	'prefs-labs' => 'পরীক্ষাগার বৈশিষ্টসমূহ',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'usabilityinitiative' => 'ইউজাবিলিটি ইনিসিয়েটিভ',
+	'usabilityinitiative-desc' => 'মিডিয়াউইকির আতা-পিতা বপকরানিত উইকিপিডিয়া ইউজাবিলিটি ইনিসিয়েটিভের বৈশিষ্ট্যহানি উন্নয়ন করানি অর',
+	'prefs-beta' => 'বেটার বৈশিষ্টহানি',
+	'prefs-labs' => 'পরীক্ষাগারর বৈশিষ্টহানি',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -135,7 +145,7 @@ $messages['ca'] = array(
 	'prefs-labs' => 'Característiques de laboratori',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
@@ -809,6 +819,8 @@ $messages['th'] = array(
 $messages['tk'] = array(
 	'usabilityinitiative' => 'Oňaýlylyk Başlangyjy',
 	'usabilityinitiative-desc' => 'MediaWikiniň oňaýlylygyny güýçlendirmek maksady bilen Oňaýlylyk Başlangyjy tarapyndan taýýarlanylan funksiýalar',
+	'prefs-beta' => 'Beta funksiýalar',
+	'prefs-labs' => 'Synag funksiýalar',
 );
 
 /** Tagalog (Tagalog)

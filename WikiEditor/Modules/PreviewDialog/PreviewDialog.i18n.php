@@ -133,7 +133,7 @@ $messages['ce'] = array(
 	'wikieditor-previewDialog-loading' => 'Чуйолуш…',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
@@ -698,9 +698,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Helios13
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor-previewDialog-tab' => 'Претпреглед',
 	'wikieditor-previewDialog-loading' => 'Учитавање...',
 );
 

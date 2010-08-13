@@ -95,6 +95,18 @@ $messages['bn'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'prefswitch-link-anon' => 'নুৱা বৈশিষ্টহানি',
+	'tooltip-pt-prefswitch-link-anon' => 'নুৱা বৈশিষ্ট্যার বারে হারপা',
+	'prefswitch-link-on' => 'আগর অঙতাত আলকর',
+	'tooltip-pt-prefswitch-link-on' => 'নুৱা বৈশিষ্টহানি থা নাদি',
+	'prefswitch-link-off' => 'নুৱা বৈশিষ্টহানি',
+	'tooltip-pt-prefswitch-link-off' => 'নুৱা বৈশিষ্ট্যহানি চা',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -121,7 +133,7 @@ $messages['ca'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Proveu les noves funcions',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -546,6 +558,18 @@ $messages['mr'] = array(
 ↓ आमचा नविन बीटा चेहरामोहरा वापरुन बघा',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'prefswitch-link-anon' => 'Ciri-ciri baru',
+	'tooltip-pt-prefswitch-link-anon' => '↓ Ketahui lebih lanjut tentang ciri-ciri baru',
+	'prefswitch-link-on' => '↓ Kembali',
+	'tooltip-pt-prefswitch-link-on' => '↓ Padamkan ciri-ciri baru',
+	'prefswitch-link-off' => '↓ Ciri-ciri baru',
+	'tooltip-pt-prefswitch-link-off' => '↓ Cuba ciri-ciri baru',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -611,6 +635,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Ensajatz las foncionalitats novèlas',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'prefswitch-link-on' => 'Zerrick bringe',
 );
 
 /** Polish (Polski)
@@ -763,7 +794,9 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'prefswitch-link-anon' => 'Нове функције',
+	'tooltip-pt-prefswitch-link-anon' => 'Сазнај о новим могућностима',
 	'tooltip-pt-prefswitch-link-on' => 'Онемогући нове функције',
+	'prefswitch-link-off' => 'Нове могућности',
 	'tooltip-pt-prefswitch-link-off' => 'Пробај нове функције',
 );
 
@@ -843,7 +876,11 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'prefswitch-link-anon' => 'Täze funksiýalar',
+	'tooltip-pt-prefswitch-link-anon' => 'Täze funksiýalary öwren',
+	'prefswitch-link-on' => 'Meni yzyma äkit',
+	'tooltip-pt-prefswitch-link-on' => 'Täze funksiýalary ýap',
 	'prefswitch-link-off' => 'Täze funksiýalar',
+	'tooltip-pt-prefswitch-link-off' => 'Täze funksiýalary synap gör',
 );
 
 /** Tagalog (Tagalog)

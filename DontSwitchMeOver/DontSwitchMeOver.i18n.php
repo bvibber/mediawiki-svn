@@ -41,11 +41,27 @@ $messages['be-tarask'] = array(
 	'dontswitchmeover-pref' => 'Пакінуць цяперашняе афармленьне пасьля пераключэньня стандартнага афармленьня',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'dontswitchmeover-desc' => 'আতাকুরারা পছনর মাতুঙে ডিফল্ট স্কিন হান বদালানির ক্ষেন্তামে তানুর পছনর স্কিনহান থনা না নাথনা।',
+	'dontswitchmeover-pref' => 'ডিফল্ট স্কিনহান সিলুইতই অহাত মর পছনর স্কিন এহান সিলনা থা নাদি',
+);
+
 /** Breton (Brezhoneg)
  * @author Gwendal
  */
 $messages['br'] = array(
 	'dontswitchmeover-pref' => 'Chom hep aotren cheñchamant ma zres pa cheñch an tres dre ziouer',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'dontswitchmeover-desc' => 'Nastavení pro uživatele umožňující jim určit, jestli chtějí zachovat nastavení vzhledu při přechodu na jiný implicitní vzhled.',
+	'dontswitchmeover-pref' => 'Neměnit můj zvolený vzhled při přechodu na jiný implicitní vzhled',
 );
 
 /** Welsh (Cymraeg)
@@ -101,6 +117,14 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'dontswitchmeover-desc' => 'Preferencia para que os usuarios especifiquen se queren preservar a súa configuración da aparencia ao cambiar a aparencia por defecto.',
 	'dontswitchmeover-pref' => 'Non permitir que cambie a miña aparencia cando a aparencia por defecto troque',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'dontswitchmeover-desc' => 'Yystellig fir Benutzer, wu s megli macht, s Design vu dr Benutzeroberflechi byyzbhalte bin ere Änderig vum Standarddesign.',
+	'dontswitchmeover-pref' => 'Änderig vu myym Benutzeroberflechinedesign nit erlaube, wänn s Standarddesign gänderet wird',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -238,6 +262,14 @@ $messages['pt-br'] = array(
 $messages['ru'] = array(
 	'dontswitchmeover-desc' => 'Даёт пользователям возможность указать в настройках, что они хотят сохранить текущую тему оформления при смене темы по умолчанию.',
 	'dontswitchmeover-pref' => 'Не менять мою тему оформления при смене темы по умолчанию',
+);
+
+/** Ukrainian (Українська)
+ * @author Riwnodennyk
+ */
+$messages['uk'] = array(
+	'dontswitchmeover-desc' => 'Можливість для користувачів визначитись, чи вони бажають зберігати вибраний вигляд віки у випадку зміни вигляду за замовчуванням.',
+	'dontswitchmeover-pref' => 'Не змінювати вибраний вигляд при зміні вигляду за замовчуванням',
 );
 
 /** Vietnamese (Tiếng Việt)

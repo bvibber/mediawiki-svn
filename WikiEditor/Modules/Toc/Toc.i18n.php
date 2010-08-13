@@ -95,6 +95,15 @@ $messages['bn'] = array(
 	'wikieditor-toc-hide' => 'বিষয়বস্তু আড়াল করো',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor-toc-preference' => 'দিশাধরুনি সূচী ফঙকর',
+	'wikieditor-toc-show' => 'বিষয়বস্তু দেখাদে',
+	'wikieditor-toc-hide' => 'বিষয়বস্তু আরুম কর',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -123,7 +132,7 @@ $messages['ca'] = array(
 	'wikieditor-toc-hide' => 'Amaga el contingut',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
