@@ -60,7 +60,7 @@ class ApiUpdates extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		
-		foreach( $params['state'] as $state ) {
+		foreach( $params['state'] as &$state ) {
 			$state = DistributionRelease::mapState( $state );
 		}
 		
@@ -127,7 +127,7 @@ class ApiUpdates extends ApiBase {
 			),
 			array( 'unit_name' => $extensionName )
 		);
-		
+
 		if ( $extension !== false ) {
 			$version = $dbr->selectRow(
 				'distribution_unit_versions',
@@ -144,10 +144,9 @@ class ApiUpdates extends ApiBase {
 				'Database::selectRow',
 				array( 'ORDER BY version_release_date DESC' )
 			);
-			
+
 			if ( $version !== false && version_compare( $version->version_nr, $extensionVersion, '>' ) ) {
-				// TODO
-				//$this->getResult()->addValue( 'extensions', $this->getModuleName(), $version );				
+				$this->getResult()->addValue( 'extensions', $this->getModuleName(), $version );				
 			}
 		}
 	}
