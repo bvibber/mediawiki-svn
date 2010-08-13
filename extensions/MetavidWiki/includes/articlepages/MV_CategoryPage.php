@@ -16,13 +16,7 @@
 if ( !defined( 'MEDIAWIKI' ) )  die( 1 );
 
 class MV_CategoryPage extends CategoryPage {
- 	function closeShowCategory() {
-		global $wgOut, $wgRequest;
-		$from = $wgRequest->getVal( 'from' );
-		$until = $wgRequest->getVal( 'until' );
-		$viewer = new MvCategoryViewer( $this->mTitle, $from, $until );
-		$wgOut->addHTML( $viewer->getHTML() );
-	}
+	protected $mCategoryViewerClass = 'MvCategoryViewer';
 }
 class MvCategoryViewer extends CategoryViewer {
 	var $show_mv_links = false;

@@ -8,6 +8,8 @@
  */
 
 class PeopleCategoriesPage extends CategoryPage {
+	protected $mCategoryViewerClass = 'PeopleCategoriesViewer';
+
 	function view() {
 		// From CategoryPage::view()
 		if( NS_CATEGORY == $this->mTitle->getNamespace() ) {
@@ -20,19 +22,6 @@ class PeopleCategoriesPage extends CategoryPage {
 		if( NS_CATEGORY == $this->mTitle->getNamespace() ) {
 			$this->closeShowCategory();
 		}
-	}
-
-	function closeShowCategory() {
-		// From CategoryPage::view();
-		global $wgOut, $wgRequest;
-		$from = $wgRequest->getVal( 'from' );
-		$until = $wgRequest->getVal( 'until' );
-
-		// Customization.
-		$viewer = new PeopleCategoriesViewer( $this->mTitle, $from, $until );
-
-		// From CategoryPage::view();
-		$wgOut->addHTML( $viewer->getHTML() );
 	}
 }
 
