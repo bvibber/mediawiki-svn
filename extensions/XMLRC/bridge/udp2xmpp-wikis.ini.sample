@@ -10,8 +10,8 @@
 # the channel config directly into udp2xmpp.ini,
 # using the wiki-info-section option
 
-# Each section must specify the channel and channel type parametrs.
-# In addition, base-url must or both of page-url and script-url have
+# Each section must specify the channel and channel-type options.
+# In addition, base-url or both of page-url and script-url have
 # to be defined.
 #
 # base-url: the base URL of your wiki, equivalent to $wgScriptPath.
