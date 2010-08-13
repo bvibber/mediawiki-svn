@@ -153,8 +153,9 @@ class Relay(object):
     def get_rc_text( self, rc ):
 	rc_id = rc.getAttr( 'rcid' )
 	rc_type = rc.getAttr( 'type' )
+	rc_wikiid = rc.getAttr( 'wikiid' )
 
-	if rc_id is None or rc_type is None:
+	if rc_id is None or rc_type is None or rc_wikiid is None:
 	    return False
 
 	rc_title = rc.getAttr( 'title' )
@@ -201,7 +202,7 @@ class Relay(object):
 		else:
 		    target_params['oldid'] = rc_revid
 
-	url = self.get_wiki_url( wikiid, target, **target_params );
+	url = self.get_wiki_url( rc_wikiid, target, **target_params );
 	if not url: url = ''
 
 	if rc_oldlen is not None and rc_newlen is not None and rc_type != 'log':
@@ -292,24 +293,27 @@ class Relay(object):
 
 	self.online = 1
 
-	while self.online:
-	    (in_socks , out_socks, err_socks) = select.select(socketlist.keys(),[],socketlist.keys(),1)
+	try:
+	    while self.online:
+		(in_socks , out_socks, err_socks) = select.select(socketlist.keys(),[],socketlist.keys(),1)
 
-	    for sock in in_socks:
-		con = socketlist[ sock ]
+		for sock in in_socks:
+		    con = socketlist[ sock ]
 
-		if con:
-		    try:
-			con.process()
-		    except Exception, e:
-			error_type, error_value, trbk = sys.exc_info()
-			self.warn( "Error while processing! %s" % "  ".join( traceback.format_exception( error_type, error_value, trbk ) ) )
-			# TODO: detect when we should kill the loop because a connection failed
-		else:
-		    raise Exception( "Unknown socket: %s" % repr(sock) )
+		    if con:
+			try:
+			    con.process()
+			except Exception, e:
+			    error_type, error_value, trbk = sys.exc_info()
+			    self.warn( "Error while processing! %s" % "  ".join( traceback.format_exception( error_type, error_value, trbk ) ) )
+			    # TODO: detect when we should kill the loop because a connection failed
+		    else:
+			raise Exception( "Unknown socket: %s" % repr(sock) )
 
-	    for sock in err_socks:
-		    raise Exception( "Error in socket: %s" % repr(sock) )
+		for sock in err_socks:
+			raise Exception( "Error in socket: %s" % repr(sock) )
+	except KeyboardInterrupt:
+	    self.online= 0
 
 	self.info("service loop terminated, disconnecting")
 
@@ -654,6 +658,9 @@ if __name__ == '__main__':
 
     elif config.has_option( 'udp2xmpp', 'wiki-info-file' ):
 	w = config.get( 'udp2xmpp', 'wiki-info-file' ) # config file says where to find the wiki info file
+
+	if not os.path.isabs( w ):
+	    w = os.path.dirname( cfg ) + os.sep + w
 
     else:
         w = extdir + "/../../udp2xmpp-wikis.ini" #installation root
