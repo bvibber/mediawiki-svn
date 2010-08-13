@@ -92,13 +92,13 @@ class DistributionRepository extends PackageRepository {
 			return false;
 		}
 		
-		$extensionsWithUpdates = FormatJson::decode( $response )->extensions;
+		$response = FormatJson::decode( $response );
 		
-		if ( !property_exists( $extensionsWithUpdates, $extensionName ) ) {
-			return false;
+		if ( property_exists( $response, 'extensions' ) && property_exists( $response->extensions, $extensionName ) ) {
+			return $response->extensions->$extensionName;
 		}
 		
-		return $extensionsWithUpdates->$extensionName;
+		return false;
 	}
 	
 	/**
@@ -107,7 +107,28 @@ class DistributionRepository extends PackageRepository {
 	 * @since 0.1
 	 */			
 	public function coreHasUpdate( $currentVersion ) {
-		// TODO
+		global $wgRepositoryPackageStates;
+		
+		// TODO: use $wgRepositoryPackageStates
+		
+		$currentVersion = urlencode( $currentVersion );		
+		
+		$response = Http::get(
+			"$this->location?format=json&action=updates&mediawiki=$currentVersion",
+			'default',
+			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
+		);
+		
+		if ( $response === false ) {
+			return false;
+		}
+		
+		$response = FormatJson::decode( $response );
+		
+		if ( property_exists( $response, 'mediawiki' ) ) {
+			return $response->mediawiki;
+		}
+		
 		return false;
 	}
 	
@@ -117,8 +138,47 @@ class DistributionRepository extends PackageRepository {
 	 * @since 0.1
 	 */			
 	public function installationHasUpdates( $coreVersion, array $extensions ) {
-		// TODO
-		return false;
+		global $wgRepositoryPackageStates;
+		
+		// TODO: use $wgRepositoryPackageStates
+		
+		$coreVersion = urlencode( $coreVersion );
+		
+		$extensionParams = array();
+		
+		foreach ( $extensions as $extensionName => $extensionVersion ) {
+			$extensionParams[] = urlencode( $extensionName ) . ';' . urlencode( $extensionVersion );
+		}
+		
+		$extensionParams = implode( '|', $extensionParams );
+		
+		$response = Http::get(
+			"$this->location?format=json&action=updates&mediawiki=$coreVersion&extensions=",
+			'default',
+			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
+		);
+		
+		if ( $response === false ) {
+			return false;
+		}
+		
+		$response = FormatJson::decode( $response );
+		
+		$updates = array();
+		
+		if ( property_exists( $response, 'mediawiki' ) ) {
+			$updates['MediaWiki'] = $response->mediawiki;
+		}		
+		
+		if ( property_exists( $response, 'extensions' ) ) {
+			foreach ( $extensions as $extensionName => $extensionVersion ) {
+				if ( property_exists( $response->extensions, $extensionName ) ) {
+					$updates[$extensionName] = $response->extensions->$extensionName;
+				}				
+			}
+		}
+		
+		return count( $updates ) > 0 ? $updates : false;
 	}
 	
 }
