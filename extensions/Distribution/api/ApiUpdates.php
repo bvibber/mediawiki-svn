@@ -146,7 +146,8 @@ class ApiUpdates extends ApiBase {
 			);
 
 			if ( $version !== false && version_compare( $version->version_nr, $extensionVersion, '>' ) ) {
-				$this->getResult()->addValue( 'extensions', $this->getModuleName(), $version );				
+				$version->version_status = DistributionRelease::unmapState( $version->version_status );
+				$this->getResult()->addValue( 'extensions', $extensionName, $version );				
 			}
 		}
 	}

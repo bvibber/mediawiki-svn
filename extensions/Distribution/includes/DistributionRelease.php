@@ -63,7 +63,9 @@ class DistributionRelease {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param $stateName Integer
+	 * @param $stateName String
+	 * 
+	 * @return integer
 	 */
 	public static function mapState( $stateName ) {
 		if ( !array_key_exists( $stateName, self::$states ) ) {
@@ -73,6 +75,30 @@ class DistributionRelease {
 		}
 
 		return self::$states[$stateName];
+	}
+	
+	/**
+	 * Returns the state name for the provided internal state representation,
+	 * or false when there is no such value.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $number Integer
+	 * 
+	 * @return mixed String or false
+	 */	
+	public static function unmapState( $number ) {
+		$number = (int)$number;
+		$name = false;
+		
+		foreach( self::$states as $stateName => $stateValue ) {
+			if ( $stateValue === $number ) {
+				$name = $stateName;
+				break;
+			}
+		}
+		
+		return $name;
 	}
 	
 }
