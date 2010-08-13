@@ -31,6 +31,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * Provides information about MediaWiki and extension updates.
+ * Poviding invalid extension names will not raise any errors.
  * 
  * @since 0.1
  *
@@ -78,7 +79,7 @@ class ApiUpdates extends ApiBase {
 	 * @param $states Array: a list of allowed release states.
 	 */
 	protected function checkForCoreUpdates( $mwVersion, array $states ) {
-		
+		// TODO: merge with MWReleases here?
 	}
 	
 	/**
@@ -91,7 +92,15 @@ class ApiUpdates extends ApiBase {
 	 * @param $states Array: a list of allowed release states.
 	 */	
 	protected function checkForAllExtensionUpdates( $extensions, array $states ) {
+		$extensions = explode( '|', $extensions );
 		
+		foreach( $extensions as $extension ) {
+			 $parts = explode( ';', $extension, 2 );
+			 
+			 if ( count( $parts ) == 2 ) {
+			 	$this->checkForExtensionUpdates( $parts[0], $parts[1], $states );
+			 }
+		}
 	}
 	
 	/**
@@ -105,7 +114,16 @@ class ApiUpdates extends ApiBase {
 	 * @param $states Array: a list of allowed release states.
 	 */
 	protected function checkForExtensionUpdates( $extensionName, $extensionVersion, array $states ) {
+		$dbr = wfGetDB( DB_SLAVE );
 		
+		$dbr->select(
+			'distribution_units',
+			array(
+				'current_version_nr',
+				'current_url',
+			),
+			array( 'unit_name' => $extensionName )
+		);
 	}
 	
 	/**
