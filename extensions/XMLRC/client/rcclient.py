@@ -270,7 +270,7 @@ class RCClient(object):
 
 	self.xmpp.send( join )
 
-	self.info( 'joined room %s' % self.jid.getStripped() )
+	self.info( 'joined room %s' % room.getStripped() )
 
 	self.room = room
 	self.nick = nick
