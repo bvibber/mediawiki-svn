@@ -112,6 +112,13 @@ class RCEcho(RCHandler):
 
 	print "%s: %s" % (prop, v)
 
+class XMLEcho(RCHandler):
+    """ Implementation of RCHandler that will print the XML representation
+	of the RecentChanges-record to the shell. """
+
+    def process(self, rc):
+	print rc.dom.__str__(1)
+
 ##################################################################################
 
 class RCClient(object):
@@ -129,6 +136,8 @@ class RCClient(object):
 
         self.room = None
         self.nick = None
+
+	self.echo_stanzas = False
 
     def warn(self, message):
 	if self.loglevel >= LOG_QUIET:
@@ -182,6 +191,9 @@ class RCClient(object):
 	self.info("done.")
 
     def process_message(self, con, message):
+	if self.echo_stanzas:
+	    print message.__str__(1)
+
         if (message.getError()):
             self.warn("received %s error from <%s>: %s" % (message.getType(), message.getError(), message.getFrom() ))
 	elif message.getBody():
@@ -302,6 +314,12 @@ if __name__ == '__main__':
     option_parser.add_option("--nick", dest="nick", metavar="NICKNAME", default=None,
 				help="use NICKNAME in the MUC room")
 
+    option_parser.add_option("--xml", action="store_true", dest="xml",
+				help="echo XML <rc> tags, not interpreted RC info")
+
+    option_parser.add_option("--stanzas", action="store_true", dest="stanzas",
+				help="echo raw XMPP stanzas only")
+
     (options, args) = option_parser.parse_args()
 
     # find config file........
@@ -351,7 +369,12 @@ if __name__ == '__main__':
     client.loglevel = options.loglevel
 
     # add an echo handler that prints the RC info to the shell
-    client.add_handler( RCEcho() ) 
+    if options.stanzas:
+	client.echo_stanzas = True
+    elif options.xml:
+	client.add_handler( XMLEcho() ) 
+    else:
+	client.add_handler( RCEcho() ) 
 
     # connect................
     if not client.connect( jid, password ):
