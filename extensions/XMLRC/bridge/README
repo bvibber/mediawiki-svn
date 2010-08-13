@@ -1,5 +1,5 @@
 This directory contains the UDP-to-XMPP bridge, implemented by udp2xmpp.py.
-This runs standalone as a python program, and does not interact wit hthe web
+This runs standalone as a python program, and does not interact wit the web
 server. 
 
 You can place this directory anywhere on your system. In fact, for security
