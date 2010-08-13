@@ -25,7 +25,8 @@ $wgExtensionFunctions[] = 'efDistributionSetup';
 $wgExtensionMessagesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution.i18n.php';
 
 // Load classes.
-$wgAutoloadClasses['DistributionRelease'] = dirname( __FILE__ ) . '/includes/DistributionRelease.php';
+$wgAutoloadClasses['DistributionRelease'] = dirname( __FILE__ ) . '/includes/DistributionRelease.php'; 
+$wgAutoloadClasses['ExtensionDataImporter'] = dirname( __FILE__ ) . '/includes/ExtensionDataImporter.php';
 
 // Hook registration.
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
