@@ -202,6 +202,7 @@ class GetSvnMetadata extends Maintenance {
 	protected function insertUnit( array $unitValues, array $versionValues ) {
 		$dbw = wfGetDB( DB_MASTER );
 		
+		// Create the unit.
 		$dbw->insert(
 			'distribution_units',
 			$unitValues
@@ -210,10 +211,18 @@ class GetSvnMetadata extends Maintenance {
 		$versionValues['version_nr'] = $unitValues['current_version_nr'];
 		$versionValues['unit_id'] = $dbw->insertId();
 		
+		// Create the version for the unit.
 		$dbw->insert(
 			'distribution_unit_versions',
 			$versionValues
-		);		
+		);
+		
+		// Update the unit to point to the just created version.
+		$dbw->update(
+			'distribution_units',
+			array( 'unit_current' => $dbw->insertId() ),
+			array( 'unit_id' => $versionValues['unit_id'] )
+		);
 	}
 	
 	/**
@@ -242,6 +251,7 @@ class GetSvnMetadata extends Maintenance {
 			)
 		);
 		
+		// If this version does not exist yet, create it.
 		if ( $version == false ) {
 			$versionValues['version_nr'] = $unitValues['current_version_nr'];
 			
@@ -250,18 +260,20 @@ class GetSvnMetadata extends Maintenance {
 				$versionValues
 			);
 			
-			$unitValues['current_version_nr'] = $dbw->insertId();			
+			$unitValues['unit_current'] = $dbw->insertId();			
 		}
 		else {
+			// If the version already exists, update it.
 			$dbw->update(
 				'distribution_unit_versions',
 				$versionValues,
 				array( 'version_id' => $version->version_id )
 			);	
 
-			$unitValues['current_version_nr'] = $version->version_id;
+			$unitValues['unit_current'] = $version->version_id;
 		}
 		
+		// Update the unit so it points to the correct version.
 		$dbw->update(
 			'distribution_units',
 			$unitValues,
