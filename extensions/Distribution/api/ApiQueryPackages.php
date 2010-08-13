@@ -1,11 +1,11 @@
 <?php
 
 /**
- * API extension for Distribution that allows the querying of extension metadata.
- * This includes the different versions of the extension.
+ * API extension for Distribution that allows the querieng of packages in the repository.
  * 
- * @file ApiExtensions.php
+ * @file ApiQueryPackages.php
  * @ingroup Distribution
+ * @ingroup API
  * 
  * @author Jeroen De Dauw
  *
@@ -30,13 +30,14 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Allows the querying of extension metadata, including the different versions.
+ * API class for the querieng of packages in the repository.
  * 
  * @since 0.1
  *
  * @ingroup Distribution
+ * @ingroup API
  */
-class ApiExtension extends ApiBase {
+class ApiQueryPackages extends ApiQueryBase {
 	
 	/**
 	 * Main method.
@@ -48,6 +49,8 @@ class ApiExtension extends ApiBase {
 	}	
 	
 	/**
+	 * @see ApiBase::getVersion
+	 * 
 	 * @since 0.1
 	 */
 	public function getVersion() {

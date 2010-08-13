@@ -34,11 +34,14 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
 $wgAutoloadClasses['ApiQueryExtensions'] = dirname( __FILE__ ) . '/api/ApiQueryExtensions.php';
 $wgAPIListModules['extensions'] = 'ApiQueryExtensions';
 
-$wgAutoloadClasses['ApiExtension'] = dirname( __FILE__ ) . '/api/ApiExtension.php';
-$wgAPIModules['extension'] = 'ApiExtension';
+$wgAutoloadClasses['ApiQueryPackages'] = dirname( __FILE__ ) . '/api/ApiQueryPackages.php';
+$wgAPIModules['packages'] = 'ApiQueryPackages';
 
-$wgAutoloadClasses['ApiPackage'] = dirname( __FILE__ ) . '/api/ApiPackage.php';
-$wgAPIModules['package'] = 'ApiPackage';
+$wgAutoloadClasses['ApiExtensionVersions'] = dirname( __FILE__ ) . '/api/ApiExtensionVersions.php';
+$wgAPIModules['extensionversions'] = 'ApiExtensionVersions';
+
+$wgAutoloadClasses['ApiUpdates'] = dirname( __FILE__ ) . '/api/ApiUpdates.php';
+$wgAPIModules['updates'] = 'ApiUpdates';
 
 /**
  * Initialization function for the Distribution extension.

@@ -5,6 +5,7 @@
  * 
  * @file ApiQueryExtensions.php
  * @ingroup Distribution
+ * @ingroup API
  * 
  * @author Jeroen De Dauw
  *
@@ -34,6 +35,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @since 0.1
  *
  * @ingroup Distribution
+ * @ingroup API
  */
 class ApiQueryExtensions extends ApiQueryBase {
 	
