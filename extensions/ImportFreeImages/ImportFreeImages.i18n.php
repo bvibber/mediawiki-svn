@@ -226,7 +226,7 @@ $messages['ca'] = array(
 	'importfreeimages_next' => 'Següent $1',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author رزگار
  */
 $messages['ckb'] = array(

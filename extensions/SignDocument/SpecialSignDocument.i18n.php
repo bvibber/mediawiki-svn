@@ -4776,7 +4776,7 @@ $messages['ug-arab'] = array(
 	'sign-viewfield-email' => 'ئېلخەت',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

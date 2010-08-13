@@ -78,6 +78,13 @@ $messages['gl'] = array(
 	'sidebardonatebox-desc' => 'Engade unha caixa personalizada para as doazóns na barra lateral',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'sidebardonatebox-desc' => 'Fiegt e Spändebchäschtli in d Syteleischte yy',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -97,6 +104,13 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'sidebardonatebox-desc' => 'Tambahkan sebuah kotak donasi kustom ke sidebar',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'sidebardonatebox-desc' => 'サイドバーに、カスタムな寄付ボックスを追加する',
 );
 
 /** Colognian (Ripoarisch)
@@ -140,6 +154,13 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'sidebardonatebox-desc' => 'Adiciona à barra lateral uma caixa personalizada para donativos',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'sidebardonatebox-desc' => "Aggiunge 'na sckatole personalizzate de donazziune a 'a barre orizzondale",
 );
 
 /** Russian (Русский)

@@ -697,7 +697,7 @@ $messages['gl'] = array(
  * @author Jocke Pirat
  */
 $messages['got'] = array(
-	'patrol-revert-reason' => 'Faírina',
+	'patrol-revert-reason' => 'Faírina:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

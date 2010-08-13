@@ -823,6 +823,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'contrib-tracking-error' => 'Errore',
+	'contrib-tracking-error-text' => 'Module de sottomissione invalide',
 	'contrib-tracking-button' => 'Condinue',
 );
 

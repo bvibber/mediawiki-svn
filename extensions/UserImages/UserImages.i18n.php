@@ -154,7 +154,7 @@ $messages['ca'] = array(
 	'userimages-noimages' => '$1 no ha carregat imatges.',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

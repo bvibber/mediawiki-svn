@@ -235,7 +235,7 @@ $messages['pt-br'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'logofunctions-desc' => "Aggiunge 'a funzione de analizzatore pe 'mbostà 'u loghe de Uicchi",
+	'logofunctions-desc' => "Aggiunge 'a funzione de analizzatore pu loghe de Uicchi",
 	'logofunctions-filenotexist' => "Errore: [[File:$1]] non g'esiste.",
 );
 

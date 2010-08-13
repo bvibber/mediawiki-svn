@@ -282,7 +282,7 @@ $messages['ca'] = array(
 	'gep-genericmode' => 'Mode genèric',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

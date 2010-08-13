@@ -1111,13 +1111,13 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'ogg-desc' => 'Assistance por los fichiérs Ogg Theora et Vorbis, avouéc un liésor JavaScript.',
-	'ogg-short-audio' => 'Fichiér son Ogg $1, $2',
-	'ogg-short-video' => 'Fichiér vidèô Ogg $1, $2',
-	'ogg-short-general' => 'Fichiér multimèdia Ogg $1, $2',
-	'ogg-long-audio' => '(Fichiér son Ogg $1, temps $2, $3)',
-	'ogg-long-video' => '(Fichiér vidèô Ogg $1, temps $2, $4×$5 pixèls, $3)',
-	'ogg-long-multiplexed' => '(Fichiér multiplèxo ôdiô / vidèô Ogg, $1, temps $2, $4×$5 pixèls, $3)',
-	'ogg-long-general' => '(Fichiér multimèdia Ogg, temps $2, $3)',
+	'ogg-short-audio' => 'fichiér son Ogg $1, $2',
+	'ogg-short-video' => 'fichiér vidèô Ogg $1, $2',
+	'ogg-short-general' => 'fichiér multimèdia Ogg $1, $2',
+	'ogg-long-audio' => '(fichiér son Ogg $1, temps $2, $3)',
+	'ogg-long-video' => '(fichiér vidèô Ogg $1, temps $2, $4×$5 pixèls, $3)',
+	'ogg-long-multiplexed' => '(fichiér multiplèxo ôdiô / vidèô Ogg, $1, temps $2, $4×$5 pixèls, en tot $3)',
+	'ogg-long-general' => '(fichiér multimèdia Ogg, temps $2, $3)',
 	'ogg-long-error' => '(Fichiér Ogg envalido : $1)',
 	'ogg-play' => 'Liére',
 	'ogg-pause' => 'Pousa',
@@ -2482,6 +2482,7 @@ $messages['pa'] = array(
  */
 $messages['pdc'] = array(
 	'ogg-more' => 'Mehr…',
+	'ogg-dismiss' => 'Zumache',
 	'ogg-download' => 'Feil runnerlaade',
 );
 

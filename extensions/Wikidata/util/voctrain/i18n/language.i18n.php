@@ -2338,11 +2338,13 @@ $messages['lb'] = array(
 	'voctrain_Languages' => 'Sproochen',
 	'voctrain_Please_specify_the_languages_you_want_to_test_in' => 'Gitt w.e.g. déi Sprooch un an däer Dir den Test maache wëllt',
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => '(z. Bsp., eng fir Englesch, deu fir Däitsch).',
+	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'Je no Ärem Test-Set kënne verschidde Kombinatioune besser fonctionnéiere wéi anerer.',
 	'voctrain_Questions' => 'Froen',
 	'voctrain_Answers' => 'Äntwerten',
 	'voctrain_start_exercise' => 'Exercice ufänken',
 	'voctrain_collection' => 'Sammlung',
 	'voctrain_ISO_639_3_format' => 'ISO-639-3 Format',
+	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => 'Et sinn nach %questions_remaining Froen iwwreg, vun %questions_total am Ganzen.',
 	'voctrain_Definition' => 'Definitioun',
 	'voctrain_Dictionary_definition_to_help_you' => 'Dictionnaires-Definitioune fir Iech ze hëllefen',
 	'voctrain_Word' => 'Wuert',
@@ -2376,6 +2378,7 @@ $messages['lb'] = array(
 	'voctrain_Definitions' => 'Definitiounen',
 	'voctrain_Could_not_create_new_user' => 'Neie Benotzer konnt net ugeluecht ginn',
 	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Tippt e Benotzernumm an e fakultatiivt Passwuert an, (oder versicht et mat engem anere Benotzernumm)',
+	'voctrain_Vocview' => 'Applicatioun fir Vokabelen ze kucken',
 	'voctrain_Dictionary_definitions' => 'dictionnaire_definitiounen',
 	'voctrain_Translation' => 'Iwwersetzung',
 	'voctrain_unhide_definition' => 'Definitioun nees weisen',
@@ -3806,7 +3809,7 @@ $messages['tr'] = array(
 	'voctrain_other' => 'diğer',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

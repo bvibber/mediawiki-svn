@@ -465,7 +465,7 @@ $messages['ca'] = array(
 	'right-viewsystemstats' => "Veure [[Special:UserStats|estadístiques d'ús de la wiki]]",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */
@@ -858,7 +858,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'usagestatisticsinterval' => 'Entèrvalo :',
-	'usagestatisticstype' => 'Tipo',
+	'usagestatisticstype' => 'Tipo :',
 	'usagestatisticsstart' => 'Dâta de comencement :',
 	'usagestatisticsend' => 'Dâta de fin :',
 	'usagestatisticssubmit' => 'Fâre les statistiques',
@@ -1594,7 +1594,7 @@ $messages['nl'] = array(
 	'usagestatisticsexcluderedirects' => 'Doorverwijzingen uitsluiten',
 	'usagestatistics-namespace' => 'Dit zijn statistieken over de naamruimte [[Special:Allpages/$1|$2]].',
 	'usagestatistics-noredirects' => 'Over [[Special:ListRedirects|doorverwijzingen]] wordt niet gerapporteerd.',
-	'usagestatisticstype' => 'Type',
+	'usagestatisticstype' => 'Type:',
 	'usagestatisticsstart' => 'Begindatum:',
 	'usagestatisticsend' => 'Einddatum:',
 	'usagestatisticssubmit' => 'Statistieken weergeven',

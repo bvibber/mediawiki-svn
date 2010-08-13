@@ -161,7 +161,7 @@ $messages['ca'] = array(
 	'uos-other' => '*Altres',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

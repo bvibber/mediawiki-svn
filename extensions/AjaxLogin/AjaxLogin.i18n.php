@@ -142,7 +142,7 @@ Podeu perdre els vostres canvis en aquesta pàgina si ara en sortiu.",
 	'ajaxlogin-create' => 'Crea un compte',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Haval
  */
 $messages['ckb'] = array(

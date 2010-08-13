@@ -111,6 +111,16 @@ $messages['bn'] = array(
 	'wikieditor-preview-loading' => 'লোডিং...',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'wikieditor-preview-preference' => 'কাদাহাত আকচা দেখাদে',
+	'wikieditor-preview-tab' => 'আগচা',
+	'wikieditor-preview-changes-tab' => 'বদালাসিতা',
+	'wikieditor-preview-loading' => 'লোডিং…',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -153,7 +163,7 @@ $messages['ce'] = array(
 	'wikieditor-preview-loading' => 'Чуйолуш…',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  */
 $messages['ckb'] = array(
@@ -459,6 +469,14 @@ $messages['io'] = array(
 	'wikieditor-preview-changes-tab' => 'Chanji',
 );
 
+/** Icelandic (Íslenska)
+ * @author Krun
+ */
+$messages['is'] = array(
+	'wikieditor-preview-tab' => 'Forskoða',
+	'wikieditor-preview-changes-tab' => 'Breytingar',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author F. Cosoleto
@@ -677,6 +695,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'wikieditor-preview-tab' => 'Aagucke',
 	'wikieditor-preview-changes-tab' => 'Enneringe',
 	'wikieditor-preview-loading' => 'am laade…',
 );
@@ -834,6 +853,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'wikieditor-preview-tab' => 'Претпреглед',
+	'wikieditor-preview-changes-tab' => 'Измене',
 	'wikieditor-preview-loading' => 'Учитавање...',
 );
 

@@ -140,8 +140,8 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'activestrategy' => 'Aktivi Arbetsgruppe',
-	'active-strategy-desc' => 'Zeigt d Aazahl vu Bearbeitige an Syte vu Arbetsgruppe aa',
+	'activestrategy' => 'Aktivi Strategii',
+	'active-strategy-desc' => 'Zeigt d Aazahl vu dr Bearbeitige an strategische Planigssyte',
 	'active-strategy-intro' => 'Aazahl vu Bearbeitige an Arbetsgruppesyte {{PLURAL:$1|am letschte Tag|in dr letschte $1 Täg}}.',
 	'nedits' => '$1 {{PLURAL:$1|Bearbeitig|Bearbeitige}}',
 );

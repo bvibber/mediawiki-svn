@@ -326,7 +326,7 @@ $messages['ca'] = array(
 	'vote-view-results' => 'Visualitza resultats',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

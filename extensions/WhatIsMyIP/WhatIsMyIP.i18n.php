@@ -158,7 +158,7 @@ $messages['ca'] = array(
 	'right-whatismyip' => 'Mostra [[Special:WhatIsMyIP|la pròpia adreça IP]]',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -303,6 +303,16 @@ $messages['fr'] = array(
 	'whatismyip-desc' => 'Affiche [[Special:WhatIsMyIP|l’adresse IP]] courante de l’utilisateur',
 	'whatismyip-out' => 'Votre adresse IP :',
 	'right-whatismyip' => 'Voir sa [[Special:WhatIsMyIP|propre adresse IP]]',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'whatismyip' => 'Quinta est ma adrèce IP',
+	'whatismyip-desc' => 'Montre [[Special:WhatIsMyIP|l’adrèce IP]] d’ora a l’utilisator.',
+	'whatismyip-out' => 'Voutra adrèce IP :',
+	'right-whatismyip' => 'Vêre sa [[Special:WhatIsMyIP|prôpra adrèce IP]]',
 );
 
 /** Irish (Gaeilge)

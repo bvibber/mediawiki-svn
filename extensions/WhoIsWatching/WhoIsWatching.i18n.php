@@ -308,6 +308,17 @@ Veuillez utiliser la page [[MediaWiki:Number_of_watching_users_pageview]] pour d
 	'specialwhoiswatchingaddbtn' => 'Ajouter les utilisateurs sélectionnés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'whoiswatching' => 'Qui siut una pâge vouiqui',
+	'whoiswatching-desc' => 'Balye una lista ux utilisators que siuvont una pâge vouiqui.',
+	'specialwhoiswatchingthepage' => 'Qui siut %s',
+	'specialwhoiswatchingaddusers' => 'Apondre los utilisators por siuvre la pâge',
+	'specialwhoiswatchingaddbtn' => 'Apondre los utilisators chouèsis',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

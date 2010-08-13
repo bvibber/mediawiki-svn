@@ -238,6 +238,13 @@ $messages['fr'] = array(
 	'whosonline-desc' => 'Affiche [[Special:WhosOnline|une liste]] des utilisateurs connectés ou anonymes actuellement en ligne',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'whosonline' => 'Qui est en legne',
+);
+
 /** Irish (Gaeilge)
  * @author D.de.loinsigh
  */

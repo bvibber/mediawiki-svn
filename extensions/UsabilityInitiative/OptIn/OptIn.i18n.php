@@ -727,6 +727,68 @@ $messages['bn'] = array(
 <div style="clear:both"></div>',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'optin' => 'ইউজাবিলিটি ইনিশিয়েটিভ থা কর',
+	'optin-desc' => 'আতাকুরারে বেটা ব্যবহারর সুযোগ দিয়াদে, ইউজাবিলিটি ইনিসিয়াটিভহান ইলতাই আতানিহান বপকরানি।',
+	'optin-title-optedout' => 'বেটা চা',
+	'optin-title-optedin' => 'বেটা বেলা',
+	'optin-title-justoptedin' => 'বেটাত সাম্ভাষা',
+	'optin-title-justoptedout' => 'বেটা চানার সারুকে থাকাত',
+	'optin-title-feedback' => 'বেটা প্রতিক্রিয়া',
+	'optin-needlogin' => 'বেটা চানার কা তরতা [$1 লগইন] করানি লাগতই।',
+	'optin-intro' => 'উইকিপিডিয়ার আতা-পিতা বপকরানির কা উইকিপিডিয়া ইউজাবিলিটি ইনিসিয়েটিভ য়্যাম প্ররিশ্রম করতারা।
+তি বেটার চাঙহান চানা মনারথাং?',
+	'optin-feedback-intro' => 'বেটা ব্যবহারর কা থাকাত।
+নুৱা ইন্টারফেসর বারে তি কিহান নিঙকরর অহানা আমি হারপানি মনারাঙ, তলর ঐচ্ছিক জরিপ ফরমহান পূরণ করলে আমি বপ পেলইতাঙাই।',
+	'optin-feedback-back' => 'জরিপ ফরমহান পূরণ করানি না চারাঙ, অহান ইলে $1 এহানাত আলকরে যানা পাররাই।',
+	'optin-success-in' => 'এপাগা বেটা ব্যবহার কররাই।
+তুমি যে-কোনো সময় পাতার গজর "{{int:optin-leave}}" লিংকহানাত ক্লিক করিয়া আগাকার অঙতাত যানা পাররাই।',
+	'optin-success-feedback' => 'তর ফিডব্যাকর কা থাকাত!',
+	'optin-accept-short' => 'হাতেই এপাগাই অকরিক!',
+	'optin-accept-long' => 'বেটার চাঙহান চা',
+	'optin-accept-long-anon' => 'লগইন কর বারো বেটার চাঙহান চা',
+	'optin-deny-short' => 'থাকাত দেনা নাইল',
+	'optin-deny-long' => 'আগর পাতাহাত আলথকে যাগা',
+	'optin-submit-out' => 'বেটা বেলা',
+	'optin-submit-feedback' => 'ফিডব্যাক দিয়াদে',
+	'optin-survey-yes' => 'হায়',
+	'optin-survey-no' => 'না',
+	'optin-survey-question-likedislike' => 'বেটাত কিহান পছন করলে? বেটাত কিহান পছন না করলে?',
+	'optin-survey-question-whyoptout' => 'বেটা কিদিয়া বেলারাইতা? (যেহান থক অহান মাতেদই)।',
+	'optin-survey-answer-whyoptout-hard' => 'এহান্ন কাম করানি চিলুইসে।',
+	'optin-survey-answer-whyoptout-didntwork' => 'এহান হবা ইয়া কাম নাকরের।',
+	'optin-survey-answer-whyoptout-notpredictable' => 'মা খাল করিসিলু অসারে কাম না করের।',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'এহানর অঙতাহান চেইতে হবা নাইসে।',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'নুৱা ট্যাব বারো অঙতা মর পছন নাইল।',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'নুৱা টুলবারগ মর পছন নাইল।',
+	'optin-survey-answer-whyoptout-other' => 'আর আর কারন:',
+	'optin-survey-question-explain' => 'গজে মাতলে অতা ফুকিয়া মাত:',
+	'optin-survey-question-techfail' => 'বেটা আতিলে অহাত কারিগরি লাল পেইলেথাঙ?',
+	'optin-survey-question-techfail-ifyes' => 'হায় বুল্লেতে ফুকিয়া মাত:',
+	'optin-survey-question-usedtoolbar' => 'তি পাতা পতানির অহান মেলানি একরের নুৱা টুলবার আতা-পিতা করিয়া চেইলেগ?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'হায় বুল্লে, কিহান পছন করলে বারো কিহান পছন নাকরলেতা?',
+	'optin-survey-question-usedtoolbar-ifno' => 'না বুলিয়া থাইলে, কিদিয়া না বুল্লেতা? পিছেদে আতিতেই? ফুকিয়া মাত।',
+	'optin-survey-question-different' => 'আমি কিহান করলে বেটা আতানিত থনা পাররাঙতা?',
+	'optin-survey-question-feedback' => 'আমার কা আরাকউ মাতানির থাইলে মাতিক, হাব্বি পরামর্শ বারো মত আমারতা উপকারে আহিতই।',
+	'optin-survey-question-browser' => 'তুমি কিসাদে ব্রাউজার ব্যবহার কররাইগ?',
+	'optin-survey-answer-browser-other' => 'আরাক ব্রাউজার আগ:',
+	'optin-survey-question-os' => 'তুমি কিসাদে অপারেটিং সিস্টেম ব্যবহার কররাইগ?',
+	'optin-survey-answer-os-other' => 'আরাক অপারেটিং সিস্টেম আহান:',
+	'optin-survey-question-res' => 'তুমার পর্দাহানর রেজ্যুলেশন কতি?',
+	'optin-survey-question-changes' => 'পিছেদে বেটার মা কিহান কিহান সিলপা আনানি মনারতা (যেহান থক অহান বাছ)?',
+	'optin-survey-answer-changes-nav' => 'সাইটহার হাব্বি নেভিগেশন নুঙি করেদে।',
+	'optin-survey-answer-changes-edittools' => 'পতানির টুল বারেই বারো চাঙখল করেই।',
+	'optin-survey-answer-changes-upload' => 'কন্টেন্ট বারো মিডিয়া আপলোড সিজিলর উন্নয়ন করানি।',
+	'optin-survey-answer-changes-richtext' => 'পতানির কা আসে টুল অতারে মাকাক-ফাইসে-মেয়েক পতানির সিজিলে সিলকর।',
+	'optin-survey-answer-changes-lookfeel' => 'সাইটর "লুক এন্ড ফিল" সিজিল বদালা।',
+	'optin-survey-answer-changes-predictability' => 'আন্দাজ করানির সিজিল মাকাক ফাকর।',
+	'optin-survey-answer-changes-custom' => 'আরাকউ বপকর আতাকুরার সিজিল।',
+	'optin-survey-answer-changes-other' => 'হের:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -966,7 +1028,7 @@ $messages['ce'] = array(
 	'optin-accept-long-anon' => 'Дlавазлой хьажа муха ю жим гlоле-тайпанар юкъардакъанга',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */
@@ -3135,12 +3197,22 @@ $messages['io'] = array(
 );
 
 /** Icelandic (Íslenska)
+ * @author Krun
  * @author Spacebirdy
  */
 $messages['is'] = array(
 	'optin-title-optedout' => 'Prófa beta-útgáfu',
 	'optin-accept-long' => 'Prófa beta-útgáfu',
 	'optin-deny-short' => 'Nei takk',
+	'optin-survey-intro' => 'Takk fyrir að prófa betuna. 
+Við viljum gjarnan vita hvað þér finnst um nýja viðmótið okkar og bjóðum þér að taka þátt í stuttri könnun hér fyrir neðan áður en þú smellir á „[[#leave|{{int:optin-submit-out}}]]“.',
+	'optin-survey-question-browser' => 'Hvaða vafra notarðu?',
+	'optin-survey-answer-browser-other' => 'Annan vafra:',
+	'optin-survey-question-os' => 'Hvaða stýrikerfi notarðu?',
+	'optin-survey-answer-os-other' => 'Annað stýrikerfi:',
+	'optin-survey-question-res' => 'Hver er upplausnin á skjánum þínum?',
+	'optin-survey-question-changes' => 'Hvaða breytingar viltu sjá í betunni í framtíðinni (vinsamlegast veldu allt sem við á)?',
+	'optin-survey-answer-changes-edittools' => 'Aukin og bætt breytingartól.',
 );
 
 /** Italian (Italiano)
@@ -4785,7 +4857,9 @@ $messages['pdc'] = array(
 	'optin-title-optedout' => 'Beta prowiere',
 	'optin-title-optedin' => 'Beta verlosse',
 	'optin-title-justoptedin' => 'Wilkum zu Beta',
+	'optin-accept-short' => 'Aafange!',
 	'optin-accept-long' => 'Beta prowiere',
+	'optin-accept-long-anon' => 'Nei kumme unn Beta prowiere',
 	'optin-deny-short' => 'Nee, ken Interest',
 	'optin-deny-long' => 'Zerick zum letscht Blatt',
 	'optin-submit-out' => 'Beta verlosse',
@@ -6367,9 +6441,9 @@ Täze interfeýsimiz baradaky pikiriňizi bilesimiz gelýär, şonuň üçinem "
 	'optin-survey-question-usedtoolbar-ifno' => 'Eger ýok bolsa, näme üçin? Geljekde ulanjakmysyňyz? Düşündiriň.',
 	'optin-survey-question-different' => 'Betamyzy ulanmaga dowam etmegiňiz üçin nämeler edip bileris?',
 	'optin-survey-question-feedback' => 'Ähli beýleki teswirleriňizi we pikirleriňizi aýdyň. Ähli seslenme peýdalydyr:',
-	'optin-survey-question-browser' => 'Haýsy brauzeri ulanýarsyňyz?',
+	'optin-survey-question-browser' => 'Nähili brauzer ulanýarsyňyz?',
 	'optin-survey-answer-browser-other' => 'Başga brauzer:',
-	'optin-survey-question-os' => 'Haýsy operasion ulgamy ulanýarsyňyz?',
+	'optin-survey-question-os' => 'Nähili operasion ulgam ulanýarsyňyz?',
 	'optin-survey-answer-os-other' => 'Başga operasion ulgam:',
 	'optin-survey-question-res' => 'Ekran çözgüdiňiz näçe?',
 	'optin-survey-question-changes' => 'Betada geljekde näme göresiňiz gelýär (laýyklaryň ählisini saýlaň)?',
@@ -6377,6 +6451,7 @@ Täze interfeýsimiz baradaky pikiriňizi bilesimiz gelýär, şonuň üçinem "
 	'optin-survey-answer-changes-edittools' => 'Redaktirleme gurallaryny köpeldiň we güýçlendiriň.',
 	'optin-survey-answer-changes-upload' => 'Mazmuny we media ýüklemelerini gowulandyryň.',
 	'optin-survey-answer-changes-richtext' => 'Baý tekst redaktorlaryna meňzeş ösdürme gurallaryny taýýarlaň.',
+	'optin-survey-answer-changes-predictability' => 'Işleýşiň öňünden çaklanyjylygyny gowulandyr',
 	'optin-survey-answer-changes-other' => 'Başga:',
 );
 

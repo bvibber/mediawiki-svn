@@ -200,7 +200,7 @@ $messages['ch'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬) */
+/** Sorani (کوردی) */
 $messages['ckb'] = array(
 	'metadata_help' => 'دراوه‌ی مێتا:',
 );

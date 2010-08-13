@@ -798,8 +798,10 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
+	'searchbox-desc' => 'தேடும் படிவங்களை இத்துடன் சேர்த்துக்கொள்ளவும்',
 	'searchbox-search' => 'தேடுக',
 	'searchbox-go' => 'செல்க',
 	'searchbox-namespaces' => 'பெயர்வெளி:',
@@ -859,7 +861,7 @@ $messages['ug-arab'] = array(
 	'searchbox-go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

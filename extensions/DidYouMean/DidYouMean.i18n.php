@@ -20,13 +20,6 @@ $messages['qqq'] = array(
 	'didyoumean-desc' => 'Extension description displayed on [[Special:Version]].',
 );
 
-/** Bahasa Banjar (Bahasa Banjar)
- * @author J Subhi
- */
-$messages['bjn'] = array(
-	'didyoumean-desc' => 'Tambahi tautan ka tungkaran-tungkaran nang bajudul "mahirip"',
-);
-
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -74,6 +67,13 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'didyoumean-desc' => 'Добавя препратки към страници със „подобни” заглавия',
+);
+
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'didyoumean-desc' => 'Tambahi tautan ka tungkaran-tungkaran nang bajudul "mahirip"',
 );
 
 /** Bengali (বাংলা)

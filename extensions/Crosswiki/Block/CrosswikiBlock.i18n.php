@@ -526,6 +526,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -538,7 +539,7 @@ Bitte prüfe, ob du die Befugnis hast, in diesem anderen Wiki zu sperren und ob 
 	'crosswikiblock-expiry' => 'Sperrdauer:',
 	'crosswikiblock-reason' => 'Grund:',
 	'crosswikiblock-submit' => 'IP-Adresse/Benutzer sperren',
-	'crosswikiblock-anononly' => 'Sperre nur anonyme Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
+	'crosswikiblock-anononly' => 'Sperre nur unangemeldete Benutzer (angemeldete Benutzer mit dieser IP-Adresse werden nicht gesperrt). In vielen Fällen empfehlenswert.',
 	'crosswikiblock-nocreate' => 'Erstellung von Benutzerkonten verhindern',
 	'crosswikiblock-autoblock' => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht.',
 	'crosswikiblock-noemail' => 'E-Mail-Versand sperren',

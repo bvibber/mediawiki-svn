@@ -1524,6 +1524,7 @@ $messages['pdc'] = array(
 	'expand_templates_output' => 'Result',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Anmaerrickinge lösche',
+	'expand_templates_preview' => 'Aagucke',
 );
 
 /** Polish (Polski)
@@ -2078,7 +2079,7 @@ $messages['ug-arab'] = array(
 	'expand_templates_ok' => 'ماقۇل',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

@@ -25,9 +25,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Fryed-peach
+ * @author Nike
  */
 $messages['qqq'] = array(
 	'mwe-loading_txt' => '{{Identical|Loading}}',
+	'mwe-size-gigabytes' => 'Size (of a file, typically) in gibibytes (1 gibibyte = 1024×1024×1024 bytes).',
 	'mwe-error_load_lib' => 'Parameters:
 * $1 Corresponds to the JavaScript file that was not retrievable or does not define its class name.
 * $2 Is the class name that was associated with the JavaScript file that was not found or could not be retrieved.',

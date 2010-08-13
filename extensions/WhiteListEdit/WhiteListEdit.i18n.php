@@ -247,10 +247,10 @@ $messages['an'] = array(
 	'whitelisttablemodifyall' => 'Tot',
 	'whitelisttablemodifynone' => 'Garra',
 	'whitelisttableedit' => 'Editar',
-	'whitelisttablenewdate' => 'Nueba calendata:',
-	'whitelisttablechangedate' => 'Cambiar a calendata de zircunduzión',
-	'whitelistnewtabledate' => 'Data de zircunduzión:',
-	'whitelistoverviewna' => "* Adibindo [[:$1|$1]] t'a lista blanca con azeso '''$2''' y data de zircunduzión '''$3'''",
+	'whitelisttablenewdate' => 'Nueva calendata:',
+	'whitelisttablechangedate' => 'Cambiar a calendata de circunducción',
+	'whitelistnewtabledate' => 'Data de circunducción:',
+	'whitelistoverviewna' => "* Adhibindo [[:$1|$1]] t'a lista blanca con acceso '''$2''' y data de circunducción '''$3'''",
 );
 
 /** Arabic (العربية)
@@ -669,7 +669,7 @@ $messages['ch'] = array(
 	'whitelisttableedit' => 'Tulaika',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  * @author رزگار
  */
@@ -1266,12 +1266,53 @@ Cette page ne s’applique qu’aux utilisateurs disposant de droits restreints.
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'whitelistedit-desc' => 'Change les pèrmissions d’accès ux utilisators a accès rètrent.',
+	'whitelistedit' => 'Changior de la lista blanche des accès',
+	'whitelist' => 'Pâges de la lista blanche',
 	'mywhitelistpages' => 'Mes pâges',
+	'whitelistfor' => '<center>Enformacions d’ora por <b>$1</b></center>',
 	'whitelisttablemodify' => 'Changiér',
 	'whitelisttablemodifyall' => 'Tot',
 	'whitelisttablemodifynone' => 'Ren',
+	'whitelisttablepage' => 'Pâge vouiqui',
+	'whitelisttabletype' => 'Tipo d’accès',
+	'whitelisttableexpires' => 'Èxpire lo',
+	'whitelisttablemodby' => 'Changiê en dèrriér per',
+	'whitelisttablemodon' => 'Changiê en dèrriér lo',
 	'whitelisttableedit' => 'Changiér',
 	'whitelisttableview' => 'Fâre vêre',
+	'whitelisttablenewdate' => 'Dâta novèla :',
+	'whitelisttablechangedate' => 'Changiér la dâta d’èxpiracion',
+	'whitelisttablesetedit' => 'Activar changement',
+	'whitelisttablesetview' => 'Activar visualisacion',
+	'whitelisttableremove' => 'Enlevar',
+	'whitelistnewtabledate' => 'Dâta d’èxpiracion :',
+	'whitelistnewtableedit' => 'Activar changement',
+	'whitelistnewtableview' => 'Activar visualisacion',
+	'whitelistnewtableprocess' => 'Trètar',
+	'whitelistnewtablereview' => 'Revêre',
+	'whitelistselectrestricted' => '== Chouèsir un nom d’utilisator a accès rètrent ==',
+	'whitelistpagelist' => 'Pâges de {{SITENAME}} por $1',
+	'whitelistoverview' => '== Apèrçu des changements por $1 ==',
+	'whitelistoverviewcd' => "* Changement de la dâta de '''$1''' por [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Configuracion de l’accès a '''$1''' por [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Retrèt de l’accès a [[:$1|$1]]',
+	'whitelistoverviewna' => "* Aponsa de [[:$1|$1]] a la lista blanche avouéc los drêts de '''$2''' et pués coment dâta d’èxpiracion lo '''$3'''",
+	'whitelistrequest' => 'Demandar un accès a més de pâges',
+	'whitelistrequestmsg' => '$1 at demandâ l’accès a {{PLURAL:$3|ceta pâge|cetes pâges}} :
+
+$2',
+	'whitelistrequestconf' => 'Una demanda d’accès por de pâges novèles at étâ mandâ a $1',
+	'whitelistnever' => 'jamés',
+	'whitelistnummatches' => ' - {{PLURAL:$1|yona corrèspondance|$1 corrèspondances}}',
+	'right-editwhitelist' => 'Changiér la lista blanche por los utilisators ègzistents',
+	'right-restricttowhitelist' => 'Changiér et vêre les pâges que figuront ren que sur la lista blanche',
+	'action-editwhitelist' => 'changiér la lista blanche por los utilisators ègzistents',
+	'action-restricttowhitelist' => 'changiér et vêre les pâges que figuront ren que sur la lista blanche',
+	'group-restricted' => 'Utilisators a accès rètrent',
+	'group-restricted-member' => 'Utilisator a accès rètrent',
+	'group-manager' => 'Administrators',
+	'group-manager-member' => 'Administrator',
 );
 
 /** Western Frisian (Frysk)

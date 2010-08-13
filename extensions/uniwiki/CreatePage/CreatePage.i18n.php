@@ -198,7 +198,7 @@ Voleu editar la pàgina existent?',
 	'createpage-badtitle' => '«$1» no es pot utilitzar com a títol de pàgina',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

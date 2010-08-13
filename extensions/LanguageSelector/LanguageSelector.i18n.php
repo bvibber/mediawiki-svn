@@ -171,7 +171,7 @@ $messages['ca'] = array(
 	'languageselector-setlang' => 'selecciona',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  * @author رزگار
  */
@@ -998,7 +998,7 @@ $messages['tr'] = array(
 	'languageselector-setlang' => 'ayar',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

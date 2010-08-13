@@ -178,7 +178,7 @@ $messages['ca'] = array(
 	'layouts_tagline' => "Aquesta pàgina va ser generada pel format '''$1'''.",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

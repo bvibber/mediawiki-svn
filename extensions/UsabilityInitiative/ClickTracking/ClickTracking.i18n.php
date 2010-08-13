@@ -229,6 +229,34 @@ $messages['bn'] = array(
 	'ct-update-table' => 'ছক হালনাগাদ',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'clicktracking' => 'ইউজাবিলিটি ইনিশিয়েটিভ ক্লিক ট্র্যাকিং',
+	'clicktracking-desc' => 'ট্রাকিং ইভেন্টর কা ট্রাকিংর মা ক্লিক কর যেহানে পাতাহান রিফ্রেস না করব',
+	'ct-title' => 'আতাকুরা হাবির ক্লিকহানি',
+	'ct-event-name' => 'ইভেন্টর নাঙ',
+	'ct-expert-header' => '"দক্ষ" ক্লিকহানি',
+	'ct-intermediate-header' => '"বুকগর" ক্লিকহানি',
+	'ct-beginner-header' => '"অকরার" ক্লিকহানি',
+	'ct-total-header' => 'পুল্লাপ ক্লিক',
+	'ct-start-date' => 'অকরার তারিখ (YYYYMMDD)',
+	'ct-end-date' => 'লমনির তারিখ  (YYYYMMDD)',
+	'ct-increment-by' => 'হারি ডাটা পয়েন্ট দিনর সংখ্যাহান থাকরের',
+	'ct-change-graph' => 'লেখচিত্র সিলকরানি',
+	'ct-beginner' => 'নুৱাতা',
+	'ct-intermediate' => 'বুকগরতা',
+	'ct-expert' => 'দক্ষ',
+	'ct-date-range' => 'তারিখর বের',
+	'ct-editing' => 'হাদাএহান পতানি অরতা',
+	'ct-anon-users' => 'হারানাপাসি আতাকুরাগি',
+	'ct-user-contribs' => 'পুল্লাপ আতাকুরার অবদানহানি',
+	'ct-user-span' => 'আতাকুরার অবদান ক্ষেন্তাম ইলয়া',
+	'ct-and' => 'বারো',
+	'ct-update-table' => 'ছক আপডেট',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -316,7 +344,7 @@ $messages['ca'] = array(
 	'ct-update-table' => 'Actualitza taula',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */
@@ -404,6 +432,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Metalhead64
  * @author Umherirrender
  */
@@ -425,7 +454,7 @@ $messages['de'] = array(
 	'ct-expert' => 'Experte',
 	'ct-date-range' => 'Datumsbereich',
 	'ct-editing' => 'Derzeit bearbeitet von:',
-	'ct-anon-users' => 'Anonyme Benutzer',
+	'ct-anon-users' => 'Unangemeldete Benutzer',
 	'ct-user-contribs' => 'Gesamte Benutzerbeiträge',
 	'ct-user-span' => 'Benutzerbeiträge in Zeitspanne',
 	'ct-and' => 'und',

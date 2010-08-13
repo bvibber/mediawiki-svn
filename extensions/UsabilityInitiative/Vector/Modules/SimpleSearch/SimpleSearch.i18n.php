@@ -87,6 +87,14 @@ $messages['bn'] = array(
 	'vector-simplesearch-containing' => 'যা আছে...',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'vector-simplesearch-search' => 'বিসারা',
+	'vector-simplesearch-containing' => 'আসেতা...',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -112,7 +120,7 @@ $messages['ca'] = array(
 	'vector-simplesearch-containing' => 'que conté ...',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */

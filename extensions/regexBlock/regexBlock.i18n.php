@@ -1083,7 +1083,7 @@ Cree un nome de usuario diferente ou [[$1|contacte con nós]] para falar sobre o
  * @author Jocke Pirat
  */
 $messages['got'] = array(
-	'regexblock-form-reason' => 'Faírina',
+	'regexblock-form-reason' => 'Faírina:',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1879,6 +1879,7 @@ Warscheinlech gëtt et esou e Benotzer net.',
 );
 
 /** Moksha (Мокшень)
+ * @author Jarmanj Turtash
  * @author Khazar II
  */
 $messages['mdf'] = array(
@@ -3185,7 +3186,7 @@ $messages['ug-arab'] = array(
 	'regexblock-view-go' => 'كۆچۈش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

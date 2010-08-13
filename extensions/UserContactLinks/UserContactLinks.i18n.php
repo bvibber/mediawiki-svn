@@ -126,7 +126,7 @@ $messages['ca'] = array(
 	'usercontactlinks-desc' => "Permet la capacitat d'afegir simplement i amb consistència altres noms d'usuari utilitzant la sintaxi ^^^user^^^",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

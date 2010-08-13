@@ -538,7 +538,7 @@ Si us plau, tingues paciència.",
 	'youtubeauthsub_jserror_nodesc' => 'Si us plau, introdueixi una descripció per al vídeo.',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -1121,12 +1121,31 @@ Veuillez patienter.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'youtubeauthsub' => 'Tèlèchargiér una vidèô YouTube',
+	'youtubeauthsub-desc' => 'Pèrmèt ux utilisators de [[Special:YouTubeAuthSub|tèlèchargiér des vidèôs]] tot drêt dessus YouTube.',
+	'youtubeauthsub_info' => 'Por tèlèchargiér una vidèô dessus YouTube por l’apondre a una pâge, rensègnéd cetes enformacions :',
 	'youtubeauthsub_title' => 'Titro',
 	'youtubeauthsub_description' => 'Dèscripcion',
 	'youtubeauthsub_password' => 'Mot de pâssa dessus YouTube',
+	'youtubeauthsub_username' => 'Nom d’utilisator dessus YouTube',
+	'youtubeauthsub_keywords' => 'Mots cllâfs',
 	'youtubeauthsub_category' => 'Catègorie',
 	'youtubeauthsub_submit' => 'Sometre',
+	'youtubeauthsub_clickhere' => 'Clicâd ique por vos branchiér dessus YouTube',
+	'youtubeauthsub_tokenerror' => 'Èrror pendent la demanda d’ôtorisacion, tâchiéd de rafrèchir la pâge.',
+	'youtubeauthsub_authsubinstructions' => 'Por tèlèchargiér una vidèô, vos vos devréd d’abôrd branchiér dessus YouTube.',
+	'youtubeauthsub_uploadhere' => 'Tèlèchargiér voutra vidèô dês ique :',
 	'youtubeauthsub_uploadbutton' => 'Tèlèchargiér',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Vêde cela vidèô]',
+	'youtubeauthsub_summary' => 'Tèlèchargiér una vidèô YouTube',
+	'youtubeauthsub_uploading' => 'Voutra vidèô est aprés étre tèlèchargiê.
+Volyéd pacientar.',
+	'youtubeauthsub_viewpage' => 'Ôtrament, vos pouede [[$1|vêre voutra vidèô]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Volyéd buchiér yon ou ben un mouél de mots cllâfs.',
+	'youtubeauthsub_jserror_notitle' => 'Volyéd buchiér un titro por la vidèô.',
+	'youtubeauthsub_jserror_nodesc' => 'Volyéd buchiér una dèscripcion por la vidèô.',
 );
 
 /** Western Frisian (Frysk)

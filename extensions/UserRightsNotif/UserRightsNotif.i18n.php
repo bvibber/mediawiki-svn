@@ -218,7 +218,7 @@ $2",
 	'userrightsnotif-desc' => 'Envia una notificació als usuaris per correu electrònic quan es canvien els seus drets',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

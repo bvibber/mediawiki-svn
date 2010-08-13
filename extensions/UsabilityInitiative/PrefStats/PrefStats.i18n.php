@@ -270,6 +270,37 @@ $messages['bn'] = array(
 	'prefstats-legend-in' => 'চেষ্টা করুন',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'prefstats' => 'পছনর পরিসংখ্যান',
+	'prefstats-desc' => 'পরিসংখ্যান চা দিক, কুইগ আতাকুরা এরে পছনহানি থা করিসিতা',
+	'prefstats-title' => 'পছনর পরিসংখ্যান',
+	'prefstats-list-intro' => 'এপাগা তলর পছনহানি অনুসরন করানি অর।
+লেপ্পা পরিসংখ্যান হারপিতে যে-কোনো আহানর গজে ক্লিক করিক।',
+	'prefstats-noprefs' => 'এপাগা পছন অনুসরণ না কররাঙ।
+পছন অনুসরণ করানির কা $wgPrefStatsTrackPrefs কনফিগার করিক।',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|গ আতাকুরা|গ আতাকুরা}} এবাকা পেয়া পছনর পরিসংখ্যান কামে থানার পিসে থা করানি অসে।
+** $2 {{PLURAL:$2|গ আতাকুরার|গ আতাকুরার}} এবাকউ এহানই চলের হানে
+** $3 {{PLURAL:$3|গ আতাকুরা|গ আতাকুরা}} কামে থানার পিসে থা নাকরিসি',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|গ আতাকুরা|গ আতাকুরা}} এবাকা পেয়া পছনর পরিসংখ্যান কামে থানার পিসে থা করানি অসে।
+** $2 {{PLURAL:$2|গ আতাকুরার|গ আতাকুরার}} এবাকউ এহানই চলের হানে
+** $3 {{PLURAL:$3|গ আতাকুরা|গ আতাকুরা}} কামে থানার পিসে থা নাকরিসি
+* সর্বমোট, $4 {{PLURAL:$4|গ আতাকুরা|গ আতাকুরা}} এরে পছনর সেট ব্যবহার করতারা',
+	'prefstats-xaxis' => 'সময় (ঘন্টা)',
+	'prefstats-factors' => 'দেখাদে: $1হান',
+	'prefstats-factor-hour' => 'ঘন্টা',
+	'prefstats-factor-sixhours' => 'ছয় ঘন্টা',
+	'prefstats-factor-day' => 'দিন',
+	'prefstats-factor-week' => 'হাপ্তা',
+	'prefstats-factor-twoweeks' => 'দুই হাপ্তা',
+	'prefstats-factor-fourweeks' => 'চারি হাপ্তা',
+	'prefstats-factor-default' => 'আগেত্ত লেপকরিসি মাপহাত আল',
+	'prefstats-legend-out' => 'বেলা',
+	'prefstats-legend-in' => 'হতনা কর',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -364,7 +395,7 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 	'prefstats-legend-in' => 'Activat',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -1859,6 +1890,7 @@ Clicatz sus una d'entre elas per veire las estatisticas a son prepaus.",
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'prefstats-xaxis' => 'Dauer (Schtunde)',
 	'prefstats-factor-hour' => 'Schtund',
 	'prefstats-factor-sixhours' => 'sex Schtund',
 	'prefstats-factor-day' => 'Daag',

@@ -154,6 +154,18 @@ $messages['bn'] = array(
 	'tooltip-pt-optin-feedback' => 'নতুন বৈশিষ্ট্যগুলোতে আপনার অভিজ্ঞতার কথা ফিডব্যাকে পাঠান',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'optin-try' => 'বেটা চা',
+	'tooltip-pt-optin-try' => 'নুৱা বৈশিষ্ট্যহানি চা',
+	'optin-leave' => 'বেটা বেলা',
+	'tooltip-pt-optin-leave' => 'নুৱা বৈশিষ্টহানি ঝিপা',
+	'optin-feedback' => 'বেটা প্রতিক্রিয়া',
+	'tooltip-pt-optin-feedback' => 'নুৱা বৈশিষ্ট্যহানির গজে তর অভিজ্ঞতার কথা ফিডব্যাকল দিয়া পেঠাদে',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -199,7 +211,7 @@ $messages['ce'] = array(
 	'optin-try' => 'Хьажа жим гlоле-тайпанара муха ю',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */

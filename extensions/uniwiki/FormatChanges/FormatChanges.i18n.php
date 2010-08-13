@@ -120,7 +120,7 @@ $messages['bs'] = array(
 	'formatchanges-editedby' => '$1 - {{GENDER:$2|uredio korisnik|uredila korisnica}} $2 ($3)',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -586,8 +586,10 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
+	'formatchanges-desc' => '[[Special:RecentChanges|அண்மைய மாற்றங்கள்]] புதிய வடிவமைப்பில்',
 	'formatchanges-anonymous' => 'அநாமநேயர்',
 	'formatchanges-createdby' => '$1 - $2 ($3) என்பவரால் உருவாக்கப்பட்டது',
 	'formatchanges-editedby' => '$1 - $2 ($3) ஆல் தொகுக்கப்பட்டது',

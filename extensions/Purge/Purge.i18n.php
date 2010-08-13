@@ -95,11 +95,12 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'purge' => 'Cache leeren',
-	'purge-desc' => 'Ergänzt einen „Purge“-Reiter für alle normalen Seiten zur schnellen Cache-Löschung und umgeht die Purge-Prüfung für anonyme Benutzer',
+	'purge-desc' => 'Ergänzt einen „Purge“-Reiter zur schnellen Cache-Löschung für alle normalen Seiten und umgeht so die Purge-Prüfung für unangemeldete Benutzer',
 );
 
 /** Lower Sorbian (Dolnoserbski)

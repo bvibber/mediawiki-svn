@@ -1402,6 +1402,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'closewikis-page-close-submit' => 'Zumache',
 	'closewikis-page-reopen-reason' => 'Grund:',
 );
 

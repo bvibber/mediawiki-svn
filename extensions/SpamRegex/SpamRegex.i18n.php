@@ -311,7 +311,7 @@ $messages['ca'] = array(
 	'spamregex-already-blocked' => '«$1» ja està blocat',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -1052,6 +1052,7 @@ $messages['lb'] = array(
 );
 
 /** Moksha (Мокшень)
+ * @author Jarmanj Turtash
  * @author Khazar II
  */
 $messages['mdf'] = array(

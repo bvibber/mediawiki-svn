@@ -42,6 +42,13 @@ $messages['dsb'] = array(
 	'xmlrc-desc' => 'Sćele powěźeńki wó změnach ako XML, pśez UDP, Jabber abo druge srědki',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'xmlrc-desc' => 'Envoie des notifications sur les changements au format XML, via UDP, Jabber ou par d’autres moyens',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -49,11 +56,25 @@ $messages['gl'] = array(
 	'xmlrc-desc' => 'Envía notificacións sobre cambios en formato XML, a través do UDP, Jabber ou outros medios',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'xmlrc-desc' => 'Verschickt Benochrichtigunge iber Änderige as XML, iber UDP, Jabber oder anderi Protokoll',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'xmlrc-desc' => 'Sćele zdźělenja wo změnach jako XML, přez UDP, Jabber  abo druhe srědki',
+);
+
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'xmlrc-desc' => '変更通知をXML形式で、UDPやJabberやその他の手段を用いて送る',
 );
 
 /** Colognian (Ripoarisch)
@@ -84,6 +105,13 @@ $messages['nl'] = array(
 	'xmlrc-desc' => 'Stuurt berichten over wijzigingen als XML via UDP, Jabber of op andere manieren',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'xmlrc-desc' => 'Sender varsler om endringer som XML, via UDP, Jabber eller på andre måter',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -97,6 +125,13 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'xmlrc-desc' => 'Envia as notificações sobre mudanças em formato XML, através de UDP, Jabber ou outros meios',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'xmlrc-desc' => 'Manne le notifiche sus a le cangiaminde cumme XML, via UDP, Jabber o otre significate',
 );
 
 /** Russian (Русский)

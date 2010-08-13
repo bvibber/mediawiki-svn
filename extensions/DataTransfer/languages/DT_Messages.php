@@ -2033,7 +2033,7 @@ $messages['tr'] = array(
 	'right-datatransferimport' => 'Verileri içe aktarır',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(
@@ -2169,7 +2169,7 @@ $messages['zh-tw'] = array(
 	'dt_import_importing' => '匯入中...',
 	'dt_import_success' => '將從該$2檔匯入$1{{PLURAL:$1|頁面頁面}}。',
 	'importcsv' => '匯入CSV檔',
-	'dt_importcsv_badheader' => "錯誤：$1欄位的標題「$2」或必須為「$3」，「$4」或表單「模板名稱[欄位名稱]」<br>
+	'dt_importcsv_badheader' => "錯誤：$1欄位的標題「$2」或必須為「$3」，「$4」或表單「模板名稱[欄位名稱]」<br />
 Error: the column $1 header, '$2', must be either '$3', '$4' or of the form 'template_name[field_name]'",
 );
 

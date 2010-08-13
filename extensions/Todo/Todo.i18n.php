@@ -359,7 +359,7 @@ $messages['ca'] = array(
 	'todo-form-submit' => 'Tramet una consulta',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

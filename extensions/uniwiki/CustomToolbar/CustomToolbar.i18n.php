@@ -536,7 +536,7 @@ $wgCustomToolbarMessages['ca'] = array(
 	'ct_user_sample' => "Nom d'usuari",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $wgCustomToolbarMessages['ckb'] = array(
@@ -3018,7 +3018,7 @@ $wgCustomToolbarMessages['ug-arab'] = array(
 	'ct_user_sample' => 'ئىشلەتكۇچى ئىسمى',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $wgCustomToolbarMessages['ug-latn'] = array(

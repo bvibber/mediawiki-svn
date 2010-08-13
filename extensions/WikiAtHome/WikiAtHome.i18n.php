@@ -727,6 +727,31 @@ $messages['fr'] = array(
 	'wah-api-error' => 'Il y a eu une erreur avec l’API. Veuillez ressayer plus tard.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wah-short-audio' => 'fichiér son $1, $2',
+	'wah-short-video' => 'fichiér vidèô $1, $2',
+	'wah-short-general' => 'fichiér multimèdia $1, $2',
+	'wah-long-audio' => '(fichiér son $1, temps $2, $3)',
+	'wah-long-video' => '(fichiér vidèô $1, temps $2, $4×$5 pixèls, $3)',
+	'wah-long-multiplexed' => '(fichiér multiplèxo ôdiô / vidèô $1, temps $2, $4×$5 pixèls, en tot $3)',
+	'wah-long-general' => '(fichiér multimèdia, temps $2, $3)',
+	'wah-long-error' => '(ffmpeg at pas possu liére ceti fichiér : $1)',
+	'wah-loading' => 'chargement de l’entèrface Wiki@Home ...',
+	'wah-menu-jobs' => 'Travâlys',
+	'wah-menu-stats' => 'Statistiques',
+	'wah-menu-pref' => 'Prèferences',
+	'wah-lookingforjob' => 'Rechèrche de travâly ...',
+	'wah-doing-job' => 'Travâly : <i>$1</i> dessus : <i>$2</i>',
+	'wah-downloading' => 'Tèlèchargement du fichiér <i>$1 %</i> chavonâ',
+	'wah-encoding' => 'Encodâjo du fichiér <i>$1 %</i> chavonâ',
+	'wah-encoding-fail' => 'L’encodâjo at pas reussi. Volyéd rechargiér ceta pâge ou ben tornar èprovar pués aprés.',
+	'wah-uploading' => 'Tèlèchargement du fichiér <i>$1</i> chavonâ',
+	'wah-uploadfail' => 'Lo tèlèchargement at pas reussi',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -1812,6 +1837,14 @@ $messages['tr'] = array(
 	'wah-menu-pref' => 'Tercihler',
 	'wah-uploadfail' => 'Yükleme başarısız oldu',
 	'wah-doneuploading' => 'Yükleme tamamlandı. Katkınız için teşekkür ederiz.',
+);
+
+/** Ukrainian (Українська)
+ * @author Olvin
+ */
+$messages['uk'] = array(
+	'wah-long-video' => '$1-відео, $4х$5, тривалість - $2, бітрейт - $3,',
+	'wah-transcode-working' => 'Це відео обробляється, будь ласка, повторіть спробу пізніше',
 );
 
 /** Yiddish (ייִדיש)

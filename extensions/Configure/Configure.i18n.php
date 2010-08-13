@@ -10118,7 +10118,7 @@ $messages['ug-arab'] = array(
 	'configure-section-externalauth' => 'سىرتقى دەلىللەش',
 );
 
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
+/** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */
 $messages['ug-latn'] = array(

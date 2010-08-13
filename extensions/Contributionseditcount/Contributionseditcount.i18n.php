@@ -465,9 +465,10 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
+	'contributionseditcount' => 'Denne brukeren har gjort {{PLURAL:$1|én redigering|$1 redigeringer}}.',
 	'contributionseditcount-desc' => 'Viser en redigeringsteller på [[Special:Contributions|bidragsoversikten]]',
 );
 
@@ -627,11 +628,12 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'contributionseditcount' => 'இப்பயன்ர் $1 தொகுப்புக்களைச் செய்துள்ளார்.',
-	'contributionseditcount-desc' => '[[Special:Contributions|பயனர் பங்களிப்புகள்]] பக்கத்தில் தொகுப்பு எண்ணிக்கையைக் காட்டும்',
+	'contributionseditcount-desc' => '[[Special:Contributions|சிறப்பு:பயனர் பங்களிப்புகளின் பக்கம்]] பற்றிய தொகுப்பு எண்ணிக்கையைக் காட்டுகிறது',
 );
 
 /** Telugu (తెలుగు)

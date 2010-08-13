@@ -170,7 +170,7 @@ $messages['ca'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(
@@ -842,11 +842,12 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'filelist' => 'கோப்புப் பட்டியல்',
-	'filelist-desc' => 'பதிவேற்றப்பட்ட கோப்புகளைக் காட்டுவதற்கான சிறப்புப் பக்கம்',
+	'filelist-desc' => '[[Special:Filelist|சிறப்புப் பக்கம்:]] பதிவேற்றப்பட்ட கோப்புகளைக் காட்டுவதற்கான சிறப்புப் பக்கம்',
 	'filelist-show-list' => 'பட்டியலைக் காட்டு',
 	'filelist-show-gallery' => 'படத்தொகுப்பைக் காட்டு',
 	'filelist-image-desc' => 'விபரம்',

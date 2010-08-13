@@ -293,6 +293,13 @@ $messages['tl'] = array(
 	'nll-lastseparator' => '&#32;at&#32;',
 );
 
+/** Ukrainian (Українська)
+ * @author Riwnodennyk
+ */
+$messages['uk'] = array(
+	'nll-lastseparator' => '&#32;і&#32;',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

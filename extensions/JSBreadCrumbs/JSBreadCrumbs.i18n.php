@@ -178,6 +178,7 @@ $messages['id'] = array(
  */
 $messages['ja'] = array(
 	'jsbreadcrumbs-desc' => 'パンくずリストをタブバーの下に追加する',
+	'jsbreadcrumbs-leading-description' => '案内追跡',
 	'prefs-jsbreadcrumbs' => 'パンくずリスト',
 	'prefs-jsbreadcrumbs-showsite' => 'サイト名をパンくずリストに含める（ウィキを横断的に利用する場合に便利）',
 	'prefs-jsbreadcrumbs-showcrumbs' => 'パンくずリストを表示',

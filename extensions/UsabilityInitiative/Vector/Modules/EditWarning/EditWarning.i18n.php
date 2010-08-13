@@ -91,6 +91,15 @@ $messages['bn'] = array(
 	'vector-editwarning-preference' => 'অসংরক্ষিত পরিবর্তন সহ কোনো পাতা ত্যাগের সময় সাবধান করো',
 );
 
+/** Bishnupria Manipuri (ইমার ঠার/বিষ্ণুপ্রিয়া মণিপুরী)
+ * @author Usingha
+ */
+$messages['bpy'] = array(
+	'vector-editwarning-warning' => 'পাতা এহান বেলিয়া গেলেগা তি সিলকরিসত অতা মাঙুইতে পারে।
+তি লগইন করিসতগ ইলে, এরে সিঙকরানির পৌ এহান তর "পতানি" থাকেত্ত আরুম করানি পারর।',
+	'vector-editwarning-preference' => 'পতানির সময় ইতু নাকরিয়া বেলিয়া গেলেগা মরে সিঙকরেদিস',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -120,7 +129,7 @@ Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «Caixa d'
 	'vector-editwarning-preference' => "Avisa'm quan surti d'una pàgina d'edició amb canvis sense desar",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Asoxor
  * @author Marmzok
  */

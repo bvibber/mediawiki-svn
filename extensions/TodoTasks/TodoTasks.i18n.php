@@ -266,7 +266,7 @@ $messages['ca'] = array(
 	'tasklistincorrectuser' => "Nom d'usuari incorrecte",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

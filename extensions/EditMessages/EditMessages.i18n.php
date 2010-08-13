@@ -926,6 +926,18 @@ $messages['lv'] = array(
 	'editmsg-search' => 'Meklēt',
 );
 
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'editmessages' => 'Hanova hafatra',
+	'editmsg-target' => 'Hafatra tanjona:',
+	'editmsg-search' => 'Hikaroka',
+	'editmsg-show-list' => "Fanehoana ny sanda ho an'ny anaran-kafatra « $1 »",
+	'editmsg-get-patch' => 'Hamorona patch',
+	'editmsg-new-search' => 'Karoka vaovao',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

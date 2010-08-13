@@ -178,7 +178,7 @@ Per afegir una pàgina, marqueu la casella de selecció del costat i feu clic a 
 Per a marcar o desmarcar múltiples pàgines, si manteniu polsada la tecla de majúscules podreu seleccionar caselles consecutives clicant a l'última del rang a ser marcat.",
 );
 
-/** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
+/** Sorani (کوردی)
  * @author Marmzok
  */
 $messages['ckb'] = array(

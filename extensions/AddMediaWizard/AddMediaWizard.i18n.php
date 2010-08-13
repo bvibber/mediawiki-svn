@@ -93,6 +93,13 @@ $messages['dsb'] = array(
 	'addmediawizard-desc' => 'Medijowy asistent pśidaś, wuwity w zgromadnem źěle wót Laltury a załožby Wikimedia Foundation',
 );
 
+/** British English (British English)
+ * @author Ytsukeng Fyvaprol
+ */
+$messages['en-gb'] = array(
+	'addmediawizard-desc' => 'Add-media wizard developed in partnership by Kaltura and Wikimedia Foundation',
+);
+
 /** Esperanto (Esperanto)
  * @author Airon90
  */
