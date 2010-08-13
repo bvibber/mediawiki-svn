@@ -59,8 +59,54 @@ class ApiUpdates extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		
-		// TODO
-	}	
+		if ( array_key_exists( 'mediawiki', $params ) ) {
+			$this->checkForCoreUpdates( $params['mediawiki'], $params['state'] );
+		}
+		
+		if ( array_key_exists( 'extensions', $params ) ) {
+			$this->checkForAllExtensionUpdates( $params['extensions'], $params['state'] );
+		}		
+	}
+	
+	/**
+	 * Checks if there are any updates for MediaWiki core.
+	 * Found updates are added to the API call result.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $mwVersion String
+	 * @param $states Array: a list of allowed release states.
+	 */
+	protected function checkForCoreUpdates( $mwVersion, array $states ) {
+		
+	}
+	
+	/**
+	 * Checks if there are any updates for the provided extensions.
+	 * Found updates are added to the API call result.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $extensions String: list of extensions, |-seperated, each element being extensionName;versionNumber.
+	 * @param $states Array: a list of allowed release states.
+	 */	
+	protected function checkForAllExtensionUpdates( $extensions, array $states ) {
+		
+	}
+	
+	/**
+	 * Checks if there are any updates for the provided extensions.
+	 * Found updates are added to the API call result.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $extensionName String
+	 * @param $extensionVersion String
+	 * @param $states Array: a list of allowed release states.
+	 */
+	protected function checkForExtensionUpdates( $extensionName, $extensionVersion, array $states ) {
+		
+	}
 	
 	/**
 	 * @see ApiBase::getAllowedParams
@@ -124,6 +170,10 @@ class ApiUpdates extends ApiBase {
 	 */
 	protected function getExamples() {
 		return array(
+			'api.php?action=updates&mediawiki=1.16',
+			'api.php?action=updates&extensions=Maps;0.6',
+			'api.php?action=updates&mediawiki=1.16&extensions=Maps;0.6|Validator;0.3',
+			'api.php?action=updates&mediawiki=1.16&extensions=Maps;0.6|Validator;0.3&state=stable|beta|rc',
 		);
 	}	
 	
