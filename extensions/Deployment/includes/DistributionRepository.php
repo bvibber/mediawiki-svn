@@ -51,6 +51,9 @@ class DistributionRepository extends PackageRepository {
 		
 		// TODO: use $wgRepositoryPackageStates
 		
+		$filterType = urlencode( $filterType );
+		$filterValue = urlencode( $filterValue );
+		
 		$response = Http::get(
 			"$this->location?format=json&action=query&list=extensions&dstfilter=$filterType&dstvalue=$filterValue",
 			'default',
@@ -64,6 +67,58 @@ class DistributionRepository extends PackageRepository {
 		}
 
 		return $extensions;
+	}
+	
+	/**
+	 * @see PackageRepository::extensionHasUpdate
+	 * 
+	 * @since 0.1
+	 */		
+	public function extensionHasUpdate( $extensionName, $currentVersion ) {
+		global $wgRepositoryPackageStates;
+		
+		// TODO: use $wgRepositoryPackageStates
+		
+		$extensionName = urlencode( $extensionName );
+		$currentVersion = urlencode( $currentVersion );		
+		
+		$response = Http::get(
+			"$this->location?format=json&action=updates&extensions=$extensionName;$currentVersion",
+			'default',
+			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
+		);
+		
+		if ( $response === false ) {
+			return false;
+		}
+		
+		$extensionsWithUpdates = FormatJson::decode( $response )->extensions;
+		
+		if ( !property_exists( $extensionsWithUpdates, $extensionName ) ) {
+			return false;
+		}
+		
+		return $extensionsWithUpdates->$extensionName;
+	}
+	
+	/**
+	 * @see PackageRepository::coreHasUpdate
+	 * 
+	 * @since 0.1
+	 */			
+	public function coreHasUpdate( $currentVersion ) {
+		// TODO
+		return false;
+	}
+	
+	/**
+	 * @see PackageRepository::installationHasUpdates
+	 * 
+	 * @since 0.1
+	 */			
+	public function installationHasUpdates( $coreVersion, array $extensions ) {
+		// TODO
+		return false;
 	}
 	
 }

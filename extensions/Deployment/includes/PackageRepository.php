@@ -47,6 +47,41 @@ abstract class PackageRepository {
 	public abstract function findExtenions( $filterType, $filterValue );
 	
 	/**
+	 * Checks if newer versions of an extension are available.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $extensionName String
+	 * @param $currentVersion String
+	 * 
+	 * @return Mixed: false when there is no update, object with info when there is.
+	 */	
+	public abstract function extensionHasUpdate( $extensionName, $currentVersion );
+	
+	/**
+	 * Checks if newer versions of MediaWiki is available.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $currentVersion String
+	 * 
+	 * @return Mixed: false when there is no update, object with info when there is.
+	 */		
+	public abstract function coreHasUpdate( $currentVersion );
+	
+	/**
+	 * Checks if there are any updates for this MediaWiki installation and extensions.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $coreVersion String
+	 * @param $extensions Array
+	 * 
+	 * @return Mixed: false when there is are updates, array with obecjts with info when there are.
+	 */		
+	public abstract function installationHasUpdates( $coreVersion, array $extensions );
+	
+	/**
 	 * Constructor.
 	 * 
 	 * @param $location String

@@ -2,7 +2,6 @@
 
 /**
  * File holding the PackageDescriptorProcessor class.
- * Partly based on DeployDescriptorProcessor from Ontoprises Deployment Framework.
  *
  * @file PackageDescriptorProcessor.php
  * @ingroup Deployment
