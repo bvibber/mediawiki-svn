@@ -62,13 +62,13 @@ class ApiQueryExtensions extends ApiQueryBase {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
-		$this->addTables( array( 'distribution_units', 'distribution_unit_versions' ) );
+		$this->addTables( 'distribution_units' );
+		$this->addTables( 'distribution_unit_versions', 'unit_versions' );
 		
-		// TODO: an explicit inner join might be nicer, but can't figure out how not to get an ambiguity error.
 		$this->addJoinConds( array(
 			'distribution_units' => array(
-				'NATURAL JOIN',
-				//'unit_id=distribution_unit_versions.unit_id'
+				'INNER JOIN',
+				'unit_id=unit_versions.version_unit_id'
 			)
 		) );
 		

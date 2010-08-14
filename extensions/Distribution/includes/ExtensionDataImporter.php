@@ -88,7 +88,7 @@ class ExtensionDataImporter {
 		);
 		
 		$versionValues['version_nr'] = $unitValues['current_version_nr'];
-		$versionValues['unit_id'] = $dbw->insertId();
+		$versionValues['version_unit_id'] = $dbw->insertId();
 		
 		// Create the version for the unit.
 		$dbw->insert(
@@ -100,7 +100,7 @@ class ExtensionDataImporter {
 		$dbw->update(
 			'distribution_units',
 			array( 'unit_current' => $dbw->insertId() ),
-			array( 'unit_id' => $versionValues['unit_id'] )
+			array( 'unit_id' => $versionValues['version_unit_id'] )
 		);
 	}
 	
@@ -118,7 +118,7 @@ class ExtensionDataImporter {
 	protected static function updateUnit( $unit, array $unitValues, array $versionValues, DatabaseBase $dbr ) {
 		$dbw = wfGetDB( DB_MASTER );
 		
-		$versionValues['unit_id'] = $unit->unit_id;
+		$versionValues['version_unit_id'] = $unit->unit_id;
 		
 		// Query for existing versions of this unit with the same version number.
 		$version = $dbr->selectRow(
