@@ -52,7 +52,7 @@ class SpecialReleaseManager extends SpecialPage {
 		$this->out->addWikiMsg( 'releasemanager-header' );
 		$h = Html::openElement( 'div', array( 'style' => 'text-align:center' ) ) .
 			$this->skin->link(
-				$this->getTitleFor( 'ReleaseManager', 'create' ),
+				$this->getTitleFor( 'ReleaseManager', 'add' ),
 				wfMsg( 'releasemanager-add' ),
 				array( 'style' => 'font-size:175%' )
 			) . Html::element( 'hr' ) . Html::closeElement( 'div' ) .
