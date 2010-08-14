@@ -34,7 +34,9 @@ class SpecialExtensions extends SpecialPage {
 		'http://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 		# Doesn't work at the time of writing but maybe some day: 
 		'https://svn.wikimedia.org/viewvc/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
-	);	
+	);
+	
+	protected $typeFilter;
 	
 	/**
 	 * Constructor.
@@ -52,6 +54,8 @@ class SpecialExtensions extends SpecialPage {
 	 */
 	public function execute( $arg ) {
 		global $wgOut, $wgUser;
+
+		$this->typeFilter = is_null( $arg ) ? 'all' : $arg;
 		
 		$wgOut->setPageTitle( wfMsg( 'extensions-title' ) );		
 		
@@ -105,19 +109,52 @@ class SpecialExtensions extends SpecialPage {
 		$extensionAmount = 0;
 		$filterSegments = array();
 		
-		// TODO: links
+		$extensionTypes = SpecialVersion::getExtensionTypes();
 		
-		foreach ( $wgExtensionCredits as $type => $extensions ) {
-			$amount = count( $extensions );
-			$name = SpecialVersion::getExtensionTypeName( $type );
+		foreach ( $extensionTypes as $type => $message ) {
+			if ( !array_key_exists( $type, $wgExtensionCredits ) ) {
+				continue;
+			}
 			
-			$filterSegments[] = "$name ($amount)";
-			$extensionAmount += $amount;
+			$amount = count( $wgExtensionCredits[$type] );
+			
+			if ( $amount > 0 ) {
+				$filterSegments[] = $this->getTypeLink( $type, $message, $amount ); 
+				$extensionAmount += $amount;					
+			}
 		}
 		
-		$filterSegments = array_merge( array( "All ($extensionAmount)" ), $filterSegments );
+		$all = array( $this->getTypeLink( 'all', wfMsg( 'extension-type-all' ), $extensionAmount ) );
 		
-		$wgOut->addHTML( implode( ' | ', $filterSegments ) );
+		$wgOut->addHTML( implode( ' | ', array_merge( $all, $filterSegments ) ) );
+	}
+	
+	/**
+	 * Builds and returns the HTML for a single item in the filter control.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $type String
+	 * @param $message String
+	 * @param $amount Integer
+	 * 
+	 * @return string
+	 */
+	protected function getTypeLink( $type, $message, $amount ) {
+		if ( $this->typeFilter == $type ) {
+			$name = Html::element( 'b', array(), $message );
+		}
+		else {
+			$name = Html::element(
+				'a',
+				array(
+					'href' => self::getTitle( $type )->getFullURL()
+				),
+				$message
+			);			
+		}
+			
+		return "$name ($amount)";
 	}
 	
 	/**

@@ -35,6 +35,7 @@ $messages['en'] = array(
 
 	// Special:Extensions
 	'add-new-extensions' => 'Add new',
+	'extension-type-all' => 'All',
 
 	// Special:Update
 	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki.',
