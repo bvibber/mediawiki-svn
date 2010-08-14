@@ -217,7 +217,7 @@ class SpecialExtensions extends SpecialPage {
 					.  '</tr>';
 				
 				foreach ( $extensions as $extension ) {
-					$listHtml .= $this->getExtensionForList( $extension );
+					$listHtml .= $this->getExtensionForList( ExtensionInfo::newFromArray( $extension ) );
 				}			
 				
 				$listHtml .= Html::closeElement( 'table' );
@@ -232,11 +232,11 @@ class SpecialExtensions extends SpecialPage {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param $extensions Array
+	 * @param $extensions ExtensionInfo
 	 * 
 	 * @return string
 	 */	
-	protected function getExtensionForList( array $extension ) {
+	protected function getExtensionForList( ExtensionInfo $extension ) {
 		$html = '<tr>';
 		
 		$html .= Html::rawElement(
@@ -245,14 +245,12 @@ class SpecialExtensions extends SpecialPage {
 			$this->getItemNameTdContents( $extension )
 		);
 		
-		$description = self::getExtensionDescription( $extension );
-		$authors = self::getExtensionAuthors( $extension );
-		$version = wfMsgExt( 'extensionlist-version-number', 'parsemag', self::getExtensionVersion( $extension ) );
+		$version = wfMsgExt( 'extensionlist-version-number', 'parsemag', $extension->getVersion() );
 		
 		$html .= Html::rawElement(
 			'td',
 			array(),
-			$description . '<br />' . $version . ' | ' . $authors
+			$extension->getDescription() . '<br />' . $version . ' | ' . $extension->getCreatedByMessage()
 		);
 		
 		return $html . '</tr>';
@@ -264,25 +262,27 @@ class SpecialExtensions extends SpecialPage {
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param $extension Array
+	 * @param $extension ExtensionInfo
 	 * 
 	 * @return string
 	 */	
-	protected function getItemNameTdContents( array $extension ) {
+	protected function getItemNameTdContents( ExtensionInfo $extension ) {
 		global $wgUser;
 		
-		$name = Html::element( 'b', array(), $extension['name'] );
+		$html = Html::element( 'b', array(), $extension->getName() );
 		
 		$controls = array();
 		
-		$controls[] = Html::element(
-			'a',
-			array(
-				'href' => $extension['url'],
-				'class' => 'external text'
-			),
-			wfMsg( 'extensionlist-details' )		
-		);
+		if ( $extension->getDocumentationUrl() ) {
+			$controls[] = Html::element(
+				'a',
+				array(
+					'href' => $extension->getDocumentationUrl(),
+					'class' => 'external text'
+				),
+				wfMsg( 'extensionlist-details' )		
+			);			
+		}
 		
 		if ( $wgUser->isAllowed( 'siteadmin' ) ) {
 			$controls[] = Html::element(
@@ -294,72 +294,11 @@ class SpecialExtensions extends SpecialPage {
 			);
 		}
 	
-		return $name . '<br />' . implode( ' | ', $controls );
-	}
-	
-	/**
-	 * Returns the decription for an extension.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param $extension Array
-	 * 
-	 * @return string
-	 */
-	public static function getExtensionDescription( array $extension ) {
-		$description = array_key_exists( 'description', $extension ) ? $extension['description'] : '';
-		
-		if ( array_key_exists( 'descriptionmsg', $extension ) ) {
-			if( is_array( $extension['descriptionmsg'] ) ) {
-				$descriptionMsgKey = $extension['descriptionmsg'][0];
-				
-				array_shift( $extension['descriptionmsg'] );
-				array_map( 'htmlspecialchars', $extension['descriptionmsg'] );
-				
-				$msg = wfMsg( $descriptionMsgKey, $extension['descriptionmsg'] );
-			} else {
-				$msg = wfMsg( $extension['descriptionmsg'] );
-			}
-			
- 			if ( !wfEmptyMsg( $extension['descriptionmsg'], $msg ) && $msg != '' ) {
- 				$description = $msg;
- 			}
-		}
-
-		return $description;
-	}
-	
-	/**
-	 * Returns "created by [authors]" or an empty string when there are none.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param $extension Array
-	 * 
-	 * @return string
-	 */	
-	public static function getExtensionAuthors( array $extension ) {
-		global $wgLang; 
-		
-		if ( !array_key_exists( 'author', $extension ) ) {
-			return '';
+		if ( count( $controls ) > 0 ) {
+			$html .= '<br />' . implode( ' | ', $controls );
 		}
 		
-		// TODO: resolve wikitext
-		return wfMsgExt( 'extensionlist-createdby', 'parsemag', $wgLang->listToText( (array)$extension['author'] ) );
-	}
-	
-	/**
-	 * Returns version of an extension or an empty string when not available.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param $extension Array
-	 * 
-	 * @return string
-	 */		
-	public static function getExtensionVersion( array $extension ) {
-		return array_key_exists( 'version', $extension ) ? $extension['version'] : wfMsg( 'extensionlist-version-unknown' );
+		return $html;
 	}
 	
 }

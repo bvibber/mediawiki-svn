@@ -18,6 +18,8 @@ $messages['en'] = array(
 	// General
 	'deployment-desc' => 'Provides a way to install extensions via GUI and update them and the wiki itself via another GUI',
 	'extension' => 'Extension',
+	'extension-name-missing' => '[no name]',
+	'version-unknown' => 'unknown',
 	
 	// Special pages
 	'specialpages-group-administration' => 'Wiki administration',
@@ -36,7 +38,6 @@ $messages['en'] = array(
 	'extensionlist-name' => 'Name',
 	'extensionlist-version' => 'Version',
 	'extensionlist-version-number' => 'Version $1',
-	'extensionlist-version-unknown' => 'unknown',
 	'extensionlist-stability' => 'Stability',
 	'extensionlist-rating' => 'Rating',
 	'extensionlist-description' => 'Description',

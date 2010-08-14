@@ -26,7 +26,8 @@ $wgExtensionMessagesFiles['Deployment'] = dirname( __FILE__ ) . '/Deployment.i18
 
 // Load classes.
 $wgAutoloadClasses['PackageRepository'] = dirname( __FILE__ ) . '/includes/PackageRepository.php';
-$wgAutoloadClasses['DistributionRepository'] = dirname( __FILE__ ) . '/includes/DistributionRepository.php';
+$wgAutoloadClasses['DistributionRepository'] = dirname( __FILE__ ) . '/includes/DistributionRepository.php'; 
+$wgAutoloadClasses['ExtensionInfo'] = dirname( __FILE__ ) . '/includes/ExtensionInfo.php';
 
 // Load and register Special:Dashboard.
 $wgAutoloadClasses['SpecialDashboard'] = dirname( __FILE__ ) . '/specials/SpecialDashboard.php';
