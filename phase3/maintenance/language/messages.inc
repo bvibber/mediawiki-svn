@@ -2735,7 +2735,21 @@ $wgMessageStructure = array(
 		'exif-identifier',
 		'exif-lens',
 		'exif-serialnumber',
-
+		'exif-cameraownername',
+		'exif-label',
+		'exif-datetimemetadata',
+		'exif-nickname',
+		'exif-rating',
+		'exif-rightscertificate',
+		'exif-copyrighted',
+		'exif-copyrightowner',
+		'exif-usageterms',
+		'exif-webstatement',
+		'exif-originaldocumentid',
+		'exif-licenseurl',
+		'exif-morepermissionsurl',
+		'exif-attributionurl',
+		'exif-preferredattributionname',
 	),
 	'exif-values' => array(
 		'exif-make-value',
@@ -2746,6 +2760,10 @@ $wgMessageStructure = array(
 	'exif-compression' => array(
 		'exif-compression-1',
 		'exif-compression-6',
+	),
+	'exif-copyrighted' => array(
+		'exif-copyrighted-true',
+		'exif-copyrighted-false',
 	),
 	'exif-photometricinterpretation' => array(
 		'exif-photometricinterpretation-2',
@@ -2969,7 +2987,9 @@ $wgMessageStructure = array(
 		'exif-dc-source',
 		'exif-dc-type',
 	),
-
+	'exif-rating' => array(
+		'exif-rating-rejected',
+	),
 	'edit-externally' => array(
 		'edit-externally',
 		'edit-externally-help',

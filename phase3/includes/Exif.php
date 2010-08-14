@@ -931,7 +931,7 @@ class FormatExif {
 							$val = $this->msg( 'XYResolution', 'i', $this->formatNum( $val ) );
 							break;
 						case 3:
-							$this->msg( 'XYResolution', 'c', $this->formatNum( $val ) );
+							$val = $this->msg( 'XYResolution', 'c', $this->formatNum( $val ) );
 							break;
 						default:
 							$val = $val;
@@ -973,6 +973,7 @@ class FormatExif {
 				case 'DateTimeExpires':
 				case 'GPSDateStamp':
 				case 'dc-date':
+				case 'DateTimeMetadata':
 					if ( $val == '0000:00:00 00:00:00' || $val == '    :  :     :  :  ' ) {
 						$val = wfMsg( 'exif-unknowndate' );
 					} elseif ( preg_match( '/^(?:\d{4}):(?:\d\d):(?:\d\d) (?:\d\d):(?:\d\d):(?:\d\d)$/', $val ) ) {
@@ -1351,7 +1352,12 @@ class FormatExif {
 				case 'ImageDescription':
 				case 'Artist':
 				case 'Copyright':
+				case 'RelatedSoundFile':
+				case 'ImageUniqueID':
+				case 'SpectralSensitivity':
+				case 'GPSSatellites':
 				case 'GPSVersionID':
+				case 'GPSMapDatum':
 				case 'Keywords':
 				case 'CountryDest':
 				case 'CountryDestCode':
@@ -1384,7 +1390,19 @@ class FormatExif {
 				case 'dc-type':
 				case 'Lens':
 				case 'SerialNumber':
-
+				case 'CameraOwnerName':
+				case 'Label':
+				case 'Nickname':
+				case 'RightsCertificate':
+				case 'CopyrightOwner':
+				case 'UsageTerms':
+				case 'WebStatement':
+				case 'OriginalDocumentID':
+				case 'LicenseUrl':
+				case 'MorePermissionsUrl':
+				case 'AttributionUrl':
+				case 'PreferredAttributionName':
+	
 					$val = htmlspecialchars( $val );
 					break;
 
@@ -1396,6 +1414,20 @@ class FormatExif {
 					default:
 						$val = htmlspecialchars( $val );
 						break;
+					}
+					break;
+				case 'Copyrighted':
+					switch( $val ) {
+					case 'True': case 'False':
+						$val = $this->msg( $tag, $val );
+						break;
+					}
+					break;
+				case 'Rating':
+					if ( $val == '-1' ) {
+						$val = $this->msg( $tag, 'rejected' );
+					} else {
+						$val = $this->formatNum( $val );
 					}
 					break;
 

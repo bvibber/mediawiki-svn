@@ -3668,7 +3668,6 @@ Others will be hidden by default.
 'exif-ycbcrpositioning'            => 'Y and C positioning',
 'exif-xresolution'                 => 'Horizontal resolution',
 'exif-yresolution'                 => 'Vertical resolution',
-'exif-resolutionunit'              => 'Unit of X and Y resolution',
 'exif-stripoffsets'                => 'Image data location',
 'exif-rowsperstrip'                => 'Number of rows per strip',
 'exif-stripbytecounts'             => 'Bytes per compressed strip',
@@ -3708,10 +3707,10 @@ Others will be hidden by default.
 'exif-spectralsensitivity'         => 'Spectral sensitivity',
 'exif-isospeedratings'             => 'ISO speed rating',
 'exif-oecf'                        => 'Optoelectronic conversion factor',
-'exif-shutterspeedvalue'           => 'Shutter speed',
-'exif-aperturevalue'               => 'Aperture',
-'exif-brightnessvalue'             => 'Brightness',
-'exif-exposurebiasvalue'           => 'Exposure bias',
+'exif-shutterspeedvalue'           => 'APEX shutter speed',
+'exif-aperturevalue'               => 'APEX aperture',
+'exif-brightnessvalue'             => 'APEX brightness',
+'exif-exposurebiasvalue'           => 'APEX exposure bias',
 'exif-maxaperturevalue'            => 'Maximum land aperture',
 'exif-subjectdistance'             => 'Subject distance',
 'exif-meteringmode'                => 'Metering mode',
@@ -3805,6 +3804,22 @@ Others will be hidden by default.
 'exif-originaltransmissionref'     => 'Original transmission location code',
 'exif-lens'                        => 'Lens used',
 'exif-serialnumber'                => 'Serial number of camera',
+'exif-cameraownername'             => 'Owner of camera',
+'exif-label'                       => 'Label',
+'exif-datetimemetadata'            => 'Date metadata was last modified',
+'exif-nickname'                    => 'Informal name of image',
+'exif-rating'                      => 'Rating (out of 5)',
+'exif-rightscertificate'           => 'Rights management certificate',
+'exif-copyrighted'                 => 'Copyright status',
+'exif-copyrightowner'              => 'Copyright owner',
+'exif-usageterms'                  => 'Usage terms',
+'exif-webstatement'                => 'Online copyright statement',
+'exif-originaldocumentid'          => 'Unique ID of original document',
+'exif-licenseurl'                  => 'URL for copyright license',
+'exif-morepermissionsurl'          => 'Alternative licensing information',
+'exif-attributionurl'              => 'When re-using this work, please link to',
+'exif-preferredattributionname'    => 'When re-using this work, please credit',
+
 
 # Make & model, can be wikified in order to link to the camera and model name
 'exif-make-value'             => '$1', # do not translate or duplicate this message to other languages
@@ -3861,9 +3876,9 @@ Others will be hidden by default.
 
 'exif-meteringmode-0'   => 'Unknown',
 'exif-meteringmode-1'   => 'Average',
-'exif-meteringmode-2'   => 'CenterWeightedAverage',
+'exif-meteringmode-2'   => 'Center weighted average',
 'exif-meteringmode-3'   => 'Spot',
-'exif-meteringmode-4'   => 'MultiSpot',
+'exif-meteringmode-4'   => 'Multi-Spot',
 'exif-meteringmode-5'   => 'Pattern',
 'exif-meteringmode-6'   => 'Partial',
 'exif-meteringmode-255' => 'Other',
@@ -3912,7 +3927,7 @@ Others will be hidden by default.
 'exif-sensingmethod-7' => 'Trilinear sensor',
 'exif-sensingmethod-8' => 'Color sequential linear sensor',
 
-'exif-filesource-3' => 'DSC', # only translate this message to other languages if you have to change it
+'exif-filesource-3' => 'Digital still camera', # only translate this message to other languages if you have to change it
 
 'exif-scenetype-1' => 'A directly photographed image',
 
@@ -4010,6 +4025,11 @@ Others will be hidden by default.
 'exif-dc-rights'      => 'Rights',
 'exif-dc-source'      => 'Source media',
 'exif-dc-type'        => 'Type of media',
+
+'exif-copyrighted-true'  => 'Copyrighted',
+'exif-copyrighted-false' => 'Public domain',
+
+'exif-rating-rejected' => 'Rejected',
 
 # External editor support
 'edit-externally'      => 'Edit this file using an external application',

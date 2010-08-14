@@ -56,6 +56,44 @@ class XMPValidate {
 
 	}
 	/**
+	* function to validate rating properties -1, 0-5
+	*
+	* if its outside of range put it into range.
+	*
+	* @see MWG spec
+	* @param $info Array information about current property
+	* @param &$val Mixed current value to validate
+	* @param $standalone Boolean if this is a simple property or array
+	*/
+	public static function validateRating( $info, &$val, $standalone ) {
+		if ( !$standalone ) {
+			// this only validates standalone properties, not arrays, etc
+			return;
+		}
+		if ( !preg_match( '/^[-+]?\d*(?:\.?\d*)$/D', $val )
+			|| !is_numeric($val)
+		 ) {
+			wfDebugLog( 'XMP', __METHOD__ . " Expected rating but got $val" );
+			$val = null;
+			return;
+		} else {
+			$nVal = (float) $val;
+			if ( $nVal < 0 ) {
+				// We do < 0 here instead of < -1 here, since
+				// the values between 0 and -1 are also illegal
+				// as -1 is meant as a special reject rating.
+				wfDebugLog( 'XMP', __METHOD__ . " Rating to low, setting to -1 (Rejected)");
+				$val = '-1';
+				return;
+			}
+			if ( $nVal > 5 ) {
+				wfDebugLog( 'XMP', __METHOD__ . " Rating to high, setting to 5");
+				$val = '5';
+				return;
+			}
+		}
+	}
+	/**
 	* function to validate integers
 	*
 	* @param $info Array information about current property
@@ -86,7 +124,19 @@ class XMPValidate {
 			// this only validates standalone properties, not arrays, etc
 			return;
 		}
-		if ( !isset( $info['choices'][$val] ) ) {
+
+		//check if its in a numeric range
+		$inRange = false;
+		if ( isset( $info['rangeLow'] ) 
+			&& isset( $info['rangeHigh'] )
+			&& is_numeric( $val )
+			&& ( intval( $val ) <= $info['rangeHigh'] )
+			&& ( intval( $val ) >= $info['rangeLow'] )
+		) {
+			$inRange = true;
+		}
+
+		if ( !isset( $info['choices'][$val] ) && !$inRange ) {
 			wfDebugLog( 'XMP', __METHOD__ . " Expected closed choice, but got $val" );
 			$val = null;
 		}

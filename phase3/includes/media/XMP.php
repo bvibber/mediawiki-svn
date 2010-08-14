@@ -814,7 +814,7 @@ class XMPReader {
 				if ( $tag === 'value' || $tag === 'resource' ) {
 					// resource is for url.
 					// value attribute is a weird way of just putting the contents.
-					$this->char( $val );
+					$this->char( $this->xmlParser, $val );
 				}
 			} elseif ( isset( $this->items[$ns][$tag] ) ) {
 				if ( $this->mode[0] === self::MODE_SIMPLE ) {
