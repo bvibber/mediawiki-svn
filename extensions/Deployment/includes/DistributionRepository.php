@@ -49,13 +49,12 @@ class DistributionRepository extends PackageRepository {
 	public function findExtenions( $filterType, $filterValue ) {
 		global $wgRepositoryPackageStates;
 		
-		// TODO: use $wgRepositoryPackageStates
-		
 		$filterType = urlencode( $filterType );
 		$filterValue = urlencode( $filterValue );
+		$states = urlencode( implode( '|', $wgRepositoryPackageStates ) );
 		
 		$response = Http::get(
-			"$this->location?format=json&action=query&list=extensions&dstfilter=$filterType&dstvalue=$filterValue",
+			"$this->location?format=json&action=query&list=extensions&dstfilter=$filterType&dstvalue=$filterValue&dststate=$states",
 			'default',
 			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
 		);
@@ -77,13 +76,12 @@ class DistributionRepository extends PackageRepository {
 	public function extensionHasUpdate( $extensionName, $currentVersion ) {
 		global $wgRepositoryPackageStates;
 		
-		// TODO: use $wgRepositoryPackageStates
-		
 		$extensionName = urlencode( $extensionName );
-		$currentVersion = urlencode( $currentVersion );		
+		$currentVersion = urlencode( $currentVersion );
+		$states = urlencode( implode( '|', $wgRepositoryPackageStates ) );
 		
 		$response = Http::get(
-			"$this->location?format=json&action=updates&extensions=$extensionName;$currentVersion",
+			"$this->location?format=json&action=updates&extensions=$extensionName;$currentVersion&state=$states",
 			'default',
 			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
 		);
@@ -109,12 +107,11 @@ class DistributionRepository extends PackageRepository {
 	public function coreHasUpdate( $currentVersion ) {
 		global $wgRepositoryPackageStates;
 		
-		// TODO: use $wgRepositoryPackageStates
-		
-		$currentVersion = urlencode( $currentVersion );		
+		$currentVersion = urlencode( $currentVersion );	
+		$states = urlencode( implode( '|', $wgRepositoryPackageStates ) );	
 		
 		$response = Http::get(
-			"$this->location?format=json&action=updates&mediawiki=$currentVersion",
+			"$this->location?format=json&action=updates&mediawiki=$currentVersion&state=$states",
 			'default',
 			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
 		);
@@ -140,9 +137,8 @@ class DistributionRepository extends PackageRepository {
 	public function installationHasUpdates( $coreVersion, array $extensions ) {
 		global $wgRepositoryPackageStates;
 		
-		// TODO: use $wgRepositoryPackageStates
-		
 		$coreVersion = urlencode( $coreVersion );
+		$states = urlencode( implode( '|', $wgRepositoryPackageStates ) );
 		
 		$extensionParams = array();
 		
@@ -150,10 +146,10 @@ class DistributionRepository extends PackageRepository {
 			$extensionParams[] = urlencode( $extensionName ) . ';' . urlencode( $extensionVersion );
 		}
 		
-		$extensionParams = implode( '|', $extensionParams );
+		$extensionParams = urlencode( implode( '|', $extensionParams ) );
 		
 		$response = Http::get(
-			"$this->location?format=json&action=updates&mediawiki=$coreVersion&extensions=",
+			"$this->location?format=json&action=updates&mediawiki=$coreVersion&extensions=$extensionParams&state=$states",
 			'default',
 			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
 		);

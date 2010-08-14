@@ -51,6 +51,7 @@ class SpecialInstall extends SpecialPage {
 				
 				if ( count( $extensions ) > 0 ) {
 					$this->showExtensionList( $extensions );
+					// TODO: detect further results and have some sort of paging
 				}
 				else {
 					// TODO
