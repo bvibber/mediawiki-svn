@@ -78,45 +78,7 @@ class SpecialInstall extends SpecialPage {
 		$searchHtml = Html::element( 'h2', array(), wfMsg( 'search-extensions' ) );
 		$searchHtml .= wfMsg( 'search-extensions-long' );
 		
-		$searchHtml .= Html::openElement(
-			'form',
-			array(
-				'id' => 'searchform',
-				'name' => 'searchform',
-				'method' => 'post',
-				'action' => $this->getTitle()->getLocalURL(),				
-			)
-		);
-		
-		$searchHtml .= Html::rawElement(
-			'select',
-			array(
-				'name' => 'filtertype',
-				'id' => 'filtertype'
-			),
-			'<option value="term">' . htmlspecialchars( wfMsg( 'search-term' ) ) . '</option>' .
-			'<option value="author">' . htmlspecialchars( wfMsg( 'search-author' ) ) . '</option>' .
-			'<option value="tag">' . htmlspecialchars( wfMsg( 'search-tag' ) ) . '</option>'
-		);
-		
-		$searchHtml .= '&nbsp;&nbsp;';
-		
-		$searchHtml .= Html::input( 'filtervalue' );
-		
-		$searchHtml .= '&nbsp;&nbsp;';
-		
-		$searchHtml .= Html::input(
-			'',
-			wfMsg( 'search-extensions-button' ),
-			'submit',
-			array( 'id' => 'searchform-button' )
-		);
-		
-		$searchHtml .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
-		
-		$searchHtml .= Html::closeElement( 'form' );
-		
-		$wgOut->addHTML( $searchHtml );
+		$wgOut->addHTML( $this->getPluginSearcher() );
 		
 		$tagHtml = Html::element( 'h2', array(), wfMsg( 'popular-extension-tags' ) );
 		$tagHtml .= wfMsg( 'popular-extension-tags-long' );
@@ -130,8 +92,73 @@ class SpecialInstall extends SpecialPage {
 	 * @since 0.1
 	 */	
 	protected function showCompactSearchOptions() {
-		global $wgOut;
-		// TODO
+		global $wgOut, $wgRequest;
+		
+		$wgOut->addHTML(
+			$this->getPluginSearcher(
+				$wgRequest->getText( 'filtertype' ),
+				$wgRequest->getText( 'filtervalue' )
+			)
+		);
+	}
+	
+	/**
+	 * Creates and returns the HTML for the plugin search control.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $selectedType String
+	 * @param $value String
+	 * 
+	 * @return string
+	 */
+	protected function getPluginSearcher( $selectedType = 'term', $value = '' ) {
+		global $wgUser;
+		
+		$searchHtml = Html::openElement(
+			'form',
+			array(
+				'id' => 'searchform',
+				'name' => 'searchform',
+				'method' => 'post',
+				'action' => $this->getTitle()->getLocalURL(),				
+			)
+		);
+		
+		// TODO: It might be nice to build the dropdown with a more generic function.
+		$termSelected = $selectedType == 'term' ? ' selected' : '';
+		$authroSelected = $selectedType == 'author' ? ' selected' : '';
+		$tagSelected = $selectedType == 'tag' ? ' selected' : '';
+		
+		$searchHtml .= Html::rawElement(
+			'select',
+			array(
+				'name' => 'filtertype',
+				'id' => 'filtertype'
+			),
+			"<option value='term'$termSelected>" . htmlspecialchars( wfMsg( 'search-term' ) ) . '</option>' .
+			"<option value='author'$authroSelected>" . htmlspecialchars( wfMsg( 'search-author' ) ) . '</option>' .
+			"<option value='tag'$tagSelected>" . htmlspecialchars( wfMsg( 'search-tag' ) ) . '</option>'
+		);
+		
+		$searchHtml .= '&nbsp;&nbsp;';
+		
+		$searchHtml .= Html::input( 'filtervalue', $value );
+		
+		$searchHtml .= '&nbsp;&nbsp;';
+		
+		$searchHtml .= Html::input(
+			'',
+			wfMsg( 'search-extensions-button' ),
+			'submit',
+			array( 'id' => 'searchform-button' )
+		);
+		
+		$searchHtml .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
+		
+		$searchHtml .= Html::closeElement( 'form' );
+
+		return $searchHtml;
 	}
 	
 	/**
