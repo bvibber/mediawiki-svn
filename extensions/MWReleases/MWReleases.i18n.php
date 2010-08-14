@@ -34,15 +34,3 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'mwreleases-desc' => '{{desc}}',
 );
-
-/**
- * Special pages aliases
- */
-$specialPagesAliases = array();
-
-/**
- * English
- */
-$specialPagesAliases['en'] = array(
-	'ReleaseManager' => array( 'ReleaseManager' ),
-);
