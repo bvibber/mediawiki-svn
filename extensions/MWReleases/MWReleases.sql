@@ -9,5 +9,5 @@ CREATE TABLE /*_*/mwreleases (
  mwr_branch varchar(32) NOT NULL,
  mwr_tag varchar(32) NOT NULL,
  mwr_announcement varchar(255) DEFAULT NULL,
- mwr_supported int(1) NOT NULL,
+ mwr_supported int(1) NOT NULL
 ) /*$wgDBTableOptions*/;
