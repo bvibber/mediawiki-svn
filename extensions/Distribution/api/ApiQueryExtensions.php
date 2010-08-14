@@ -62,25 +62,39 @@ class ApiQueryExtensions extends ApiQueryBase {
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
-		$this->addTables( 'distribution_units' );
+		$this->addTables( array( 'distribution_units', 'distribution_unit_versions' ) );
+		
+		// TODO: an explicit inner join might be nicer, but can't figure out how not to get an ambiguity error.
+		$this->addJoinConds( array(
+			'distribution_units' => array(
+				'NATURAL JOIN',
+				//'unit_id=distribution_unit_versions.unit_id'
+			)
+		) );
 		
 		$this->addFields( array(
 			'unit_id',
 			'unit_name',
-			'unit_current',
-			'current_version_nr',
-			'current_desc',
-			'current_authors',
-			'current_url'
+			'unit_url',
+			'version_nr',
+			'version_status',
+			'version_release_date',
+			'version_directory',
+			'version_entrypoint',
+			'version_desc',
+			'version_authors'
 		) );
 		
-		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		$this->addOption( 'ORDER BY', 'unit_id' );			
+		foreach( $params['state'] as &$state ) {
+			$state = DistributionRelease::mapState( $state );
+		}
+		
+		$this->addWhereFld( 'version_status', $params['state'] );		
 		
 		switch ( $params['filter'] ) {
 			case 'term' :
 				// TODO
-				$this->addWhere( "unit_name LIKE '%$params[value]%'" );
+				$this->addWhere( "unit_name LIKE '%$params[value]%' OR current_desc LIKE '%$params[value]%'" );
 				break;
 			case 'author' :
 				// TODO
@@ -91,7 +105,8 @@ class ApiQueryExtensions extends ApiQueryBase {
 				break;
 		}
 		
-		// TODO: filter on state
+		$this->addOption( 'LIMIT', $params['limit'] + 1 );
+		$this->addOption( 'ORDER BY', 'unit_id' );				
 		
 		// Handle the continue parameter when it's provided.
 		if ( !is_null( $params['continue'] ) ) {
@@ -114,11 +129,11 @@ class ApiQueryExtensions extends ApiQueryBase {
 			// http://search.cpan.org/~dagolden/CPAN-Meta-2.101670/lib/CPAN/Meta/Spec.pm
 			$result = array(
 				'name' => $extension->unit_name,
-				'description' => $extension->current_desc,
-				'version' => $extension->current_version_nr,
-				'authors' => $extension->current_authors,
-				'url' => $extension->current_url,
-				'download' => $wgDistributionDownloads . '/' . $extension->unit_name,
+				'url' => $extension->unit_url,
+				'download' => $wgDistributionDownloads . '/' . $extension->unit_name,			
+				'description' => $extension->version_desc,
+				'version' => $extension->version_nr,
+				'authors' => $extension->version_authors,
 				//'licence' => $extension->current_licence
 			);
 			

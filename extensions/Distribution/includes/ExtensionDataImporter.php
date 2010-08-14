@@ -45,10 +45,10 @@ class ExtensionDataImporter {
 		// Map the unit values to the db schema.
 		$unitValues = array(
 			'unit_name' => $metaData['name'],
+			'unit_url' => $metaData['url'],		
 			'current_version_nr' => $metaData['version'],
 			'current_desc' => $metaData['description'],
 			'current_authors' => $metaData['authors'],
-			'current_url' => $metaData['url'],
 		);
 		
 		// Map the version values to the db schema.
@@ -56,7 +56,6 @@ class ExtensionDataImporter {
 			'version_status' => DistributionRelease::mapState( DistributionRelease::getDefaultState() ), // TODO
 			'version_desc' => $metaData['description'],
 			'version_authors' => $metaData['authors'],
-			'version_url' => $metaData['url'],
 			'version_directory' => $metaData['directory'],
 			'version_entrypoint' => $metaData['entrypoint'],
 			'version_release_date' => $metaData['date']
