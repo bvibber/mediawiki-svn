@@ -57,21 +57,76 @@ class SpecialExtensions extends SpecialPage {
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
-			$wgOut->addHTML( 
-				Html::element(
-					'button',
-					array(
-						'type' => 'button',
-						'onclick' => 'window.location="' . Xml::escapeJsString( SpecialPage::getTitleFor( 'install' )->getFullURL() ) . '"'
-					),
-					wfMsg( 'add-new-extensions' )
-				)
-			);
-			
-			$wgOut->addWikiText( $this->getExtensionList() );
+			$this->displayPage();
 		} else {
 			$this->displayRestrictionError();
 		}	
+	}
+	
+	/**
+	 * Creates and outputs the page contents.
+	 * 
+	 * @since 0.1
+	 */
+	protected function displayPage() {
+		global $wgOut;
+		
+		// Shows an "add new" button linking to the Special:Install page. 
+		$wgOut->addHTML( 
+			Html::element(
+				'button',
+				array(
+					'type' => 'button',
+					'onclick' => 'window.location="' . Xml::escapeJsString( SpecialPage::getTitleFor( 'install' )->getFullURL() ) . '"'
+				),
+				wfMsg( 'add-new-extensions' )
+			)
+		);
+		
+		$wgOut->addWikiText(
+			Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) )
+		);
+		
+		$this->displayFilterControl();
+		
+		$this->displayBulkActions();
+		
+		$wgOut->addWikiText( $this->getExtensionList() );		
+	}
+
+	/**
+	 * Creates and outputs the filter control.
+	 * 
+	 * @since 0.1
+	 */	
+	protected function displayFilterControl() {
+		global $wgOut, $wgExtensionCredits;
+		
+		$extensionAmount = 0;
+		$filterSegments = array();
+		
+		// TODO: links
+		
+		foreach ( $wgExtensionCredits as $type => $extensions ) {
+			$amount = count( $extensions );
+			$name = SpecialVersion::getExtensionTypeName( $type );
+			
+			$filterSegments[] = "$name ($amount)";
+			$extensionAmount += $amount;
+		}
+		
+		$filterSegments = array_merge( array( "All ($extensionAmount)" ), $filterSegments );
+		
+		$wgOut->addHTML( implode( ' | ', $filterSegments ) );
+	}
+	
+	/**
+	 * Creates and outputs the bilk actions control.
+	 * 
+	 * @since 0.1
+	 */		
+	protected function displayBulkActions() {
+		// TODO
 	}
 	
 	/**
@@ -84,8 +139,7 @@ class SpecialExtensions extends SpecialPage {
 	protected function getExtensionList() {
 		global $wgExtensionCredits;
 		
-		$out = Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) );
-		$out .= Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
+		$out = Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
 		
 		$extensionTypes = SpecialVersion::getExtensionTypes();
 		
