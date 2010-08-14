@@ -17,7 +17,8 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'deployment-desc' => 'Provides a way to install extensions via GUI and update them and the wiki itself via another GUI',
-
+	'extension' => 'Extension',
+	
 	// Special pages
 	'specialpages-group-administration' => 'Wiki administration',
 
@@ -53,6 +54,7 @@ $messages['en'] = array(
 	'add-new-extensions' => 'Add new',
 	'extension-type-all' => 'All',
 	'extension-bulk-actions' => 'Bulk Actions',
+	'extension-page-explanation' => 'This page lists the installed extensions on this wiki. For more info about this wiki installation, see [$1 Special:Version].',
 
 	// Special:Update
 	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki.',

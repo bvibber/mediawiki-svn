@@ -42,7 +42,7 @@ class SpecialExtensions extends SpecialPage {
 	 * Constructor.
 	 */
 	public function __construct() {
-		parent::__construct( 'Extensions', 'siteadmin' );	
+		parent::__construct( 'Extensions' );	
 	}
 
 	/**
@@ -53,18 +53,13 @@ class SpecialExtensions extends SpecialPage {
 	 * @param $arg String
 	 */
 	public function execute( $arg ) {
-		global $wgOut, $wgUser;
+		global $wgOut;
 
 		$this->typeFilter = is_null( $arg ) ? 'all' : $arg;
 		
 		$wgOut->setPageTitle( wfMsg( 'extensions-title' ) );		
 		
-		// If the user is authorized, display the page, if not, show an error.
-		if ( $this->userCanExecute( $wgUser ) ) {
-			$this->displayPage();
-		} else {
-			$this->displayRestrictionError();
-		}	
+		$this->displayPage();	
 	}
 	
 	/**
@@ -73,9 +68,35 @@ class SpecialExtensions extends SpecialPage {
 	 * @since 0.1
 	 */
 	protected function displayPage() {
+		global $wgOut, $wgUser;
+		
+		if ( $wgUser->isAllowed( 'siteadmin' ) ) {
+			$this->displayAddNewButton();
+		}
+		else {
+			// TODO: fix url
+			$wgOut->addWikiMsgArray( 'extension-page-explanation', '' );
+		}
+		
+		$wgOut->addHTML(
+			Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) )
+		);
+		
+		$this->displayFilterControl();
+		
+		$this->displayBulkActions();
+		
+		$this->displayExtensionList();		
+	}
+	
+	/**
+	 * Created and outputs an "add new" button linking to the Special:Install page. 
+	 * 
+	 * @since 0.1
+	 */		
+	protected function displayAddNewButton() {
 		global $wgOut;
 		
-		// Shows an "add new" button linking to the Special:Install page. 
 		$wgOut->addHTML( 
 			Html::element(
 				'button',
@@ -85,17 +106,7 @@ class SpecialExtensions extends SpecialPage {
 				),
 				wfMsg( 'add-new-extensions' )
 			)
-		);
-		
-		$wgOut->addWikiText(
-			Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) )
-		);
-		
-		$this->displayFilterControl();
-		
-		$this->displayBulkActions();
-		
-		$this->displayExtensionList();		
+		);		
 	}
 
 	/**
@@ -258,6 +269,8 @@ class SpecialExtensions extends SpecialPage {
 	 * @return string
 	 */	
 	protected function getItemNameTdContents( array $extension ) {
+		global $wgUser;
+		
 		$name = Html::element( 'b', array(), $extension['name'] );
 		
 		$controls = array();
@@ -271,8 +284,7 @@ class SpecialExtensions extends SpecialPage {
 			wfMsg( 'extensionlist-details' )		
 		);
 		
-		// TODO: permission check
-		if ( true ) {
+		if ( $wgUser->isAllowed( 'siteadmin' ) ) {
 			$controls[] = Html::element(
 				'a',
 				array(
