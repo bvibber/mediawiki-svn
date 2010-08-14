@@ -95,7 +95,7 @@ class SpecialExtensions extends SpecialPage {
 		
 		$this->displayBulkActions();
 		
-		$wgOut->addWikiText( $this->getExtensionList() );		
+		$this->displayExtensionList();		
 	}
 
 	/**
@@ -167,103 +167,106 @@ class SpecialExtensions extends SpecialPage {
 	}
 	
 	/**
-	 * Creates and returns the HTML for the extension list.
+	 * Displays the installed extensions (of the selected type).
 	 * 
 	 * @since 0.1
 	 * 
 	 * @return string
 	 */
-	protected function getExtensionList() {
-		global $wgExtensionCredits;
+	protected function displayExtensionList() {
+		global $wgOut, $wgExtensionCredits;
 		
-		$out = Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
-		
-		$extensionTypes = SpecialVersion::getExtensionTypes();
-		
-		// Make sure the 'other' type is set to an array. 
-		if ( !array_key_exists( 'other', $wgExtensionCredits ) ) {
-			$wgExtensionCredits['other'] = array();
+		if ( !array_key_exists( $this->typeFilter, $wgExtensionCredits ) && $this->typeFilter != 'all' ) {
+			// TODO
 		}
-		
-		// Find all extensions that do not have a valid type and give them the type 'other'.
-		foreach ( $wgExtensionCredits as $type => $extensions ) {
-			if ( !array_key_exists( $type, $extensionTypes ) ) {
-				$wgExtensionCredits['other'] = array_merge( $wgExtensionCredits['other'], $extensions );
+		else {
+			$extensions = array();
+			
+			if ( $this->typeFilter == 'all' ) {
+				foreach ( $wgExtensionCredits as $type => $exts ) {
+					$extensions = array_merge( $extensions, $exts );
+				}
+			}
+			else {
+				$extensions = $wgExtensionCredits[$this->typeFilter];
+			}
+			
+			if ( count( $extensions ) == 0 ) {
+				// TODO
+			}
+			else {
+				$listHtml = Html::openElement(
+					'table',
+					array( 'class' => 'wikitable', 'style' => 'width:100%' )
+				);
+				
+				$listHtml .= '<tr>' . 
+					Html::element( 'th', array(), wfMsg( 'extensionlist-name' ) ) .
+					Html::element( 'th', array(), wfMsg( 'extensionlist-description' ) )
+					.  '</tr>';
+				
+				foreach ( $extensions as $extension ) {
+					$listHtml .= $this->getExtensionForList( $extension );
+				}			
+				
+				$listHtml .= Html::closeElement( 'table' );
+				
+				$wgOut->addHTML( $listHtml );				
 			}
 		}
-		
-		// Loop through the extension categories to display their extensions in the list.
-		foreach ( $extensionTypes as $type => $message ) {
-			if ( $type != 'other' ) {
-				$out .= $this->getExtensionCategory( $type, $message );
-			}
-		}
-		
-		// We want the 'other' type to be last in the list.
-		$out .= $this->getExtensionCategory( 'other', $extensionTypes['other'] );
-		
-		return $out;
 	}
 	
 	/**
-	 * Creates and returns the HTML for a single extension category.
+	 * Creates and returns the html for a single extension in the list.
 	 * 
 	 * @since 0.1
 	 * 
-	 * @param $type String
-	 * @param $message String
+	 * @param $extensions Array
 	 * 
 	 * @return string
-	 */
-	protected function getExtensionCategory( $type, $message ) {
-		global $wgExtensionCredits; 
+	 */	
+	protected function getExtensionForList( array $extension ) {
+		$html = '<tr>';
 		
-		$out = '';
+		$html .= Html::rawElement(
+			'td',
+			array(),
+			Html::element( 'b', array(), $extension['name'] ) .
+			'<br />' .
+			Html::element(
+				'a',
+				array(
+					'href' => $extension['url'],
+					'class' => 'external text'
+				),
+				wfMsg( 'extensionlist-details' )		
+			) .
+			' | ' .
+			Html::element(
+				'a',
+				array(
+					'href' => '',
+					'class' => 'external text'
+				),
+				wfMsg( 'extensionlist-download' )		
+			)			
+		);
 		
-		if ( array_key_exists( $type, $wgExtensionCredits ) && count( $wgExtensionCredits[$type] ) > 0 ) {
-			$out .= $this->getExtensionTypeHeader( $message, 'credits-' . $type );
-
-			usort( $wgExtensionCredits[$type], array( $this, 'compare' ) );
-
-			foreach ( $wgExtensionCredits[$type] as $extension ) {
-				$out .= $this->getExtensionForList( $extension );
-			}
-		}
-
-		return $out;
+		$description = self::getExtensionDescription( $extension );
+		$authors = self::getExtensionAuthors( $extension );
+		$version = self::getExtensionVersion( $extension );
+		
+		$html .= Html::rawElement(
+			'td',
+			array(),
+			$description . '<br />' . $version . ' | ' . $authors
+		);
+		
+		return $html . '</tr>';
 	}
 	
 	/**
-	 * Gets the HTML for an extension type header.
-	 * 
-	 * @since 0.1
-	 * 
-	 * @param $text String
-	 * @param $name String
-	 * 
-	 * @return string
-	 */
-	protected function getExtensionTypeHeader( $text, $name ) {
-		$opt = array( 'colspan' => 4 );
-		$out = '';
-
-		if( $this->openedFirstExtension ) {
-			// Insert a spacing line
-			$out .= '<tr class="sv-space">' . Html::element( 'td', $opt ) . "</tr>\n";
-		}
-		$this->openedFirstExtension = true;
-
-		if( $name ) {
-			$opt['id'] = "sv-$name";
-		}
-
-		$out .= "<tr>" . Xml::element( 'th', $opt, $text ) . "</tr>\n";
-		
-		return $out;
-	}	
-	
-	/**
-	 * Gets the HTML for a single extension for the extension list.
+	 * Returns the decription for an extension.
 	 * 
 	 * @since 0.1
 	 * 
@@ -271,182 +274,61 @@ class SpecialExtensions extends SpecialPage {
 	 * 
 	 * @return string
 	 */
-	protected function getExtensionForList( array $extension ) {
-		global $wgLang;
+	public static function getExtensionDescription( array $extension ) {
+		$description = array_key_exists( 'description', $extension ) ? $extension['description'] : '';
 		
-		$name = isset( $extension['name'] ) ? $extension['name'] : '[no name]';
-		
-		if ( isset( $extension['path'] ) ) {
-			$svnInfo = self::getSvnInfo( dirname($extension['path']) );
-			$directoryRev = isset( $svnInfo['directory-rev'] ) ? $svnInfo['directory-rev'] : null;
-			$checkoutRev = isset( $svnInfo['checkout-rev'] ) ? $svnInfo['checkout-rev'] : null;
-			$viewvcUrl = isset( $svnInfo['viewvc-url'] ) ? $svnInfo['viewvc-url'] : null;
-		} else {
-			$directoryRev = null;
-			$checkoutRev = null;
-			$viewvcUrl = null;
-		}
-
-		# Make main link (or just the name if there is no URL).
-		if ( isset( $extension['url'] ) ) {
-			$mainLink = "[{$extension['url']} $name]";
-		} else {
-			$mainLink = $name;
-		}
-		
-		if ( isset( $extension['version'] ) ) {
-			$versionText = '<span class="mw-version-ext-version">' . 
-				wfMsg( 'version-version', $extension['version'] ) . 
-				'</span>';
-		} else {
-			$versionText = '';
-		}
-
-		# Make subversion text/link.
-		if ( $checkoutRev ) {
-			$svnText = wfMsg( 'version-svn-revision', $directoryRev, $checkoutRev );
-			$svnText = isset( $viewvcUrl ) ? "[$viewvcUrl $svnText]" : $svnText;
-		} else {
-			$svnText = false;
-		}
-
-		# Make description text.
-		$description = isset ( $extension['description'] ) ? $extension['description'] : '';
-		
-		if( isset ( $extension['descriptionmsg'] ) ) {
-			# Look for a localized description.
-			$descriptionMsg = $extension['descriptionmsg'];
-			
-			if( is_array( $descriptionMsg ) ) {
-				$descriptionMsgKey = $descriptionMsg[0]; // Get the message key
-				array_shift( $descriptionMsg ); // Shift out the message key to get the parameters only
-				array_map( "htmlspecialchars", $descriptionMsg ); // For sanity
-				$msg = wfMsg( $descriptionMsgKey, $descriptionMsg );
+		if ( array_key_exists( 'descriptionmsg', $extension ) ) {
+			if( is_array( $extension['descriptionmsg'] ) ) {
+				$descriptionMsgKey = $extension['descriptionmsg'][0];
+				
+				array_shift( $extension['descriptionmsg'] );
+				array_map( 'htmlspecialchars', $extension['descriptionmsg'] );
+				
+				$msg = wfMsg( $descriptionMsgKey, $extension['descriptionmsg'] );
 			} else {
-				$msg = wfMsg( $descriptionMsg );
+				$msg = wfMsg( $extension['descriptionmsg'] );
 			}
- 			if ( !wfEmptyMsg( $descriptionMsg, $msg ) && $msg != '' ) {
+			
+ 			if ( !wfEmptyMsg( $extension['descriptionmsg'], $msg ) && $msg != '' ) {
  				$description = $msg;
  			}
 		}
 
-		if ( $svnText !== false ) {
-			$extNameVer = "<tr>
-				<td><em>$mainLink $versionText</em></td>
-				<td><em>$svnText</em></td>";
-		} else {
-			$extNameVer = "<tr>
-				<td colspan=\"2\"><em>$mainLink $versionText</em></td>";
-		}
-		
-		$author = isset ( $extension['author'] ) ? $extension['author'] : array();
-		$extDescAuthor = "<td>$description</td>
-			<td>" . $wgLang->listToText( (array)$author ) . "</td>
-			</tr>\n";
-		
-		return $extNameVer . $extDescAuthor;		
+		return $description;
 	}
 	
 	/**
-	 * Callback to sort extensions by type.
+	 * Returns "created by [authors]" or an empty string when there are none.
 	 * 
 	 * @since 0.1
-	 */
-	public function compare( $a, $b ) {
-		global $wgLang;
-		if( $a['name'] === $b['name'] ) {
-			return 0;
-		} else {
-			return $wgLang->lc( $a['name'] ) > $wgLang->lc( $b['name'] )
-				? 1
-				: -1;
+	 * 
+	 * @param $extension Array
+	 * 
+	 * @return string
+	 */	
+	public static function getExtensionAuthors( array $extension ) {
+		global $wgLang; 
+		
+		if ( !array_key_exists( 'author', $extension ) ) {
+			return '';
 		}
+		
+		// TODO: resolve wikitext
+		return wfMsgExt( 'extensionlist-createdby', 'parsemag', $wgLang->listToText( (array)$extension['author'] ) );
 	}
 	
 	/**
-	 * Get an associative array of information about a given path, from its .svn 
-	 * subdirectory. Returns false on error, such as if the directory was not 
-	 * checked out with subversion.
-	 *
-	 * Returned keys are:
-	 *    Required:
-	 *        checkout-rev          The revision which was checked out
-	 *    Optional:
-	 *        directory-rev         The revision when the directory was last modified
-	 *        url                   The subversion URL of the directory
-	 *        repo-url              The base URL of the repository
-	 *        viewvc-url            A ViewVC URL pointing to the checked-out revision
-	 *        
+	 * Returns version of an extension or an empty string when not available.
+	 * 
 	 * @since 0.1
 	 * 
-	 * @return array
-	 */
-	public static function getSvnInfo( $dir ) {
-		// http://svnbook.red-bean.com/nightly/en/svn.developer.insidewc.html
-		$entries = $dir . '/.svn/entries';
-
-		if( !file_exists( $entries ) ) {
-			return false;
-		}
-
-		$lines = file( $entries );
-		if ( !count( $lines ) ) {
-			return false;
-		}
-
-		// check if file is xml (subversion release <= 1.3) or not (subversion release = 1.4)
-		if( preg_match( '/^<\?xml/', $lines[0] ) ) {
-			// subversion is release <= 1.3
-			if( !function_exists( 'simplexml_load_file' ) ) {
-				// We could fall back to expat... YUCK
-				return false;
-			}
-
-			// SimpleXml whines about the xmlns...
-			wfSuppressWarnings();
-			$xml = simplexml_load_file( $entries );
-			wfRestoreWarnings();
-
-			if( $xml ) {
-				foreach( $xml->entry as $entry ) {
-					if( $xml->entry[0]['name'] == '' ) {
-						// The directory entry should always have a revision marker.
-						if( $entry['revision'] ) {
-							return array( 'checkout-rev' => intval( $entry['revision'] ) );
-						}
-					}
-				}
-			}
-			
-			return false;
-		}
-
-		// Subversion is release 1.4 or above.
-		if ( count( $lines ) < 11 ) {
-			return false;
-		}
-		
-		$info = array(
-			'checkout-rev' => intval( trim( $lines[3] ) ),
-			'url' => trim( $lines[4] ),
-			'repo-url' => trim( $lines[5] ),
-			'directory-rev' => intval( trim( $lines[10] ) )
-		);
-		
-		if ( isset( self::$viewvcUrls[$info['repo-url']] ) ) {
-			$viewvc = str_replace( 
-				$info['repo-url'], 
-				self::$viewvcUrls[$info['repo-url']],
-				$info['url']
-			);
-			
-			$pathRelativeToRepo = substr( $info['url'], strlen( $info['repo-url'] ) );
-			$viewvc .= '/?pathrev=';
-			$viewvc .= urlencode( $info['checkout-rev'] );
-			$info['viewvc-url'] = $viewvc;
-		}
-		
-		return $info;
-	}	
+	 * @param $extension Array
+	 * 
+	 * @return string
+	 */		
+	public static function getExtensionVersion( array $extension ) {
+		// TODO: add "version " i18n stuff and escape
+		return array_key_exists( 'version', $extension ) ? $extension['version'] : '';
+	}
 	
 }
