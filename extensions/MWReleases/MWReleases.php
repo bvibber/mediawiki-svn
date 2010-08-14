@@ -1,7 +1,7 @@
 <?php
 /**
  * MWReleases - lets us maintain a list of releases that we support
- * on Mediawiki.org, to be queried by the API. Goal is to have the
+ * on MediaWiki.org, to be queried by the API. Goal is to have the
  * installer and updater check MW.org for latest versions :)
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,10 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die( 'This is not a valid entry point.' );
+}
+
 define( 'MWRELEASES_VERSION', '2.0' );
 
 $wgExtensionCredits['other'][] = array(
@@ -40,8 +44,8 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiMWReleases'] = $dir . 'api/ApiMWReleases.php';
 $wgAutoloadClasses['ReleaseRepo'] = $dir . 'backend/ReleaseRepo.php';
 $wgAutoloadClasses['Release'] = $dir . 'backend/Release.php';
-$wgAutoloadClasses['MediawikiRelease'] = $dir . 'backend/Release.php';
-$wgAutoloadClasses['SpecialDownloadMediawiki'] = $dir . 'ui/SpecialDownloadMediawiki.php';
+$wgAutoloadClasses['MediaWikiRelease'] = $dir . 'backend/Release.php';
+$wgAutoloadClasses['SpecialDownloadMediaWiki'] = $dir . 'ui/SpecialDownloadMediawiki.php';
 $wgAutoloadClasses['SpecialReleaseManager'] = $dir . 'ui/SpecialReleaseManager.php';
 
 // i18n
@@ -52,7 +56,7 @@ $wgExtensionAliasesFiles['MWReleases'] = $dir . 'MWReleases.alias.php';
 $wgAPIModules['mwreleases'] = 'ApiMWReleases';
 
 // Special pages
-$wgSpecialPages['DownloadMediawiki'] = 'SpecialDownloadMediawiki';
+$wgSpecialPages['DownloadMediaWiki'] = 'SpecialDownloadMediaWiki';
 $wgSpecialPages['ReleaseManager'] = 'SpecialReleaseManager';
 
 // Hooks
@@ -70,6 +74,6 @@ $wgMWRDownloadUrl = 'http://download.wikimedia.org/mediawiki/';
 function wfMWReleaseSchemaUpdates() {
 	global $wgExtNewTables;
 	$wgExtNewTables['mwreleases'] = dirname(__FILE__) . '/MWReleases.sql';
-	
+
 	return true;
 }

@@ -25,7 +25,9 @@ class SpecialReleaseManager extends SpecialPage {
 		switch( $params[0] ) {
 			case 'edit':
 				if( isset( $params[1] ) ) {
-					if( $wgRequest->wasPosted() ) $this->postEdit( $params[1], $wgRequest );
+					if( $wgRequest->wasPosted() ) {
+						$this->postEdit( $params[1], $wgRequest );
+					}
 					$this->showEdit( $params[1] );
 				}
 				break;
@@ -39,7 +41,9 @@ class SpecialReleaseManager extends SpecialPage {
 					}
 				}
 			case 'add':
-				if( $wgRequest->wasPosted() ) $this->postAdd( $wgRequest );
+				if( $wgRequest->wasPosted() ) {
+					$this->postAdd( $wgRequest );
+				}
 				$this->showAdd();
 				break;
 			default:
@@ -58,8 +62,10 @@ class SpecialReleaseManager extends SpecialPage {
 			) . Html::element( 'hr' ) . Html::closeElement( 'div' ) .
 			Html::openElement( 'table', array( 'class' => 'wikitable plainlinks sortable' ) ) .
 			Html::openElement( 'tr' );
-		foreach( MediawikiRelease::getFieldNames() as $field ) {
-			if( $field == 'id' ) continue;
+		foreach( MediaWikiRelease::getFieldNames() as $field ) {
+			if( $field == 'id' ) {
+				continue;
+			}
 			$h .= Html::element( 'th', array(), wfMsg( "mwr-field-$field" ) );
 		}
 		$h .= Html::element( 'th', array(), 'edit/del' ) . Html::closeElement( 'tr' );
@@ -70,7 +76,7 @@ class SpecialReleaseManager extends SpecialPage {
 		$this->out->addHTML( $h );
 	}
 
-	private function formatReleaseForTable( MediawikiRelease $rel ) {
+	private function formatReleaseForTable( MediaWikiRelease $rel ) {
 		global $wgLang;
 		$branchUrl = $this->skin->makeExternalLink( $rel->getBranchUrl(), $rel->getBranch () );
 		$tagUrl = $this->skin->makeExternalLink( $rel->getTagUrl(), $rel->getTag() );
@@ -106,7 +112,7 @@ class SpecialReleaseManager extends SpecialPage {
 	}
 
 	private function showEdit( $versionId ) {
-		
+
 	}
 
 	private function postEdit( $versionId, $wgRequest ) {
@@ -117,10 +123,10 @@ class SpecialReleaseManager extends SpecialPage {
 			$this->out->addWikiMsg( 'releasemanager-doesnotexist' );
 			return;
 		} else {
-			$submitUrl = $this->getTitleFor( 'ReleaseManager', "delete/$versionId" )->getFullUrl();
+			$submitUrl = $this->getTitleFor( 'ReleaseManager', "delete/$versionId" )->getFullURL();
 			$this->out->addWikiMsg( 'releasemanager-delete-confirm' );
 			$h = Html::openElement( 'form', array( 'action' => $submitUrl,
-				'method' => 'POST' ) ) .
+				'method' => 'post' ) ) .
 				Html::input( 'submit', wfMsg( 'submit' ), 'submit' ) .
 				Html::closeElement( 'form' );
 			$this->out->addHTML( $h );

@@ -6,7 +6,7 @@ interface Release {
 	const SUPPORTED = 2;
 }
 
-class MediawikiRelease implements Release {
+class MediaWikiRelease implements Release {
 
 	private $id, $name, $number, $reldate, $eoldate, $branch, $tag,
 		$announcement, $supported = null;

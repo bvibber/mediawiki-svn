@@ -1,6 +1,6 @@
 <?php
 /**
- * Aliases for MWReleases
+ * Special page aliases for MWReleases extension.
  *
  * @file
  * @ingroup Extensions
@@ -8,10 +8,10 @@
 
 $aliases = array();
 
-/**
- * English
+/** English
+ * @author Chad Horohoe
  */
 $aliases['en'] = array(
 	'ReleaseManager' => array( 'ReleaseManager' ),
-	'DownloadMediawiki' => array( 'DownloadMediawiki' ),
+	'DownloadMediaWiki' => array( 'DownloadMediaWiki' ),
 );

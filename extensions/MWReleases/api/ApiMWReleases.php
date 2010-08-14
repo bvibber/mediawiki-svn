@@ -5,8 +5,8 @@
  */
 
 class ApiMWReleases extends ApiBase {
-	public function __construct($main, $action) {
-		parent :: __construct($main, $action);
+	public function __construct( $main, $action ) {
+		parent::__construct( $main, $action );
 	}
 
 	public function execute() {
@@ -55,15 +55,15 @@ class ApiMWReleases extends ApiBase {
 			}
 			$results[] = $r;
 		}
-		$this->getResult()->setIndexedTagName($results, 'release');
-		$this->getResult()->addValue(null, $this->getModuleName(), $results);
+		$this->getResult()->setIndexedTagName( $results, 'release' );
+		$this->getResult()->addValue( null, $this->getModuleName(), $results );
 	}
 
 	public function getAllowedParams() {
 		return array(
 			'prop' => array(
 				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => array (
+				ApiBase::PARAM_TYPE => array(
 					'name',
 					'number',
 					'reldate',
@@ -87,8 +87,8 @@ class ApiMWReleases extends ApiBase {
 	}
 
 	public function getDescription() {
-		return array (
-			'Get the list of current Mediawiki releases'
+		return array(
+			'Get the list of current MediaWiki releases'
 		);
 	}
 
@@ -98,6 +98,7 @@ class ApiMWReleases extends ApiBase {
 			'api.php?action=mwreleases&&allreleases=1&prop=name|reldate|eoldate'
 		);
 	}
+
 	public function getVersion() {
 		return __CLASS__ . ': ' . MWRELEASES_VERSION;
 	}

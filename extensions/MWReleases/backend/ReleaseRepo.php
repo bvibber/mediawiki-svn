@@ -43,12 +43,12 @@ class ReleaseRepo {
 
 	public function releaseExists( $id ) {
 		$this->load();
-		return isset( $this->releases[ $id ] );
+		return isset( $this->releases[$id] );
 	}
 
 	public function getReleaseForId( $id ) {
 		if( $this->releaseExists( $id ) ) {
-			return $this->releases[ $id ];
+			return $this->releases[$id];
 		}
 		return null;
 	}
@@ -71,9 +71,9 @@ class ReleaseRepo {
 				$this->releases = array();
 				$res = $dbr->select( 'mwreleases', '*', array(), __METHOD__ );
 				foreach( $res as $row ) {
-					if( !isset( $this->releases[ $row->mwr_id ] ) ) {
-						$mw = MediawikiRelease::newFromRow( $row );
-						$this->releases[ $mw->getId() ] = $mw;
+					if( !isset( $this->releases[$row->mwr_id] ) ) {
+						$mw = MediaWikiRelease::newFromRow( $row );
+						$this->releases[$mw->getId()] = $mw;
 					}
 				}
 				uasort( $this->releases, array( $this, 'sortReleasesDesc' ) );

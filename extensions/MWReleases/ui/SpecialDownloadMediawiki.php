@@ -1,9 +1,9 @@
 <?php
 
-class SpecialDownloadMediawiki extends SpecialPage {
+class SpecialDownloadMediaWiki extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'DownloadMediawiki' );
+		parent::__construct( 'DownloadMediaWiki' );
 	}
 
 	public function execute( $par ) {
