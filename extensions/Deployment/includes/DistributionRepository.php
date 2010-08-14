@@ -62,7 +62,11 @@ class DistributionRepository extends PackageRepository {
 		$extensions = array();
 		
 		if ( $response !== false ) {
-			$extensions = FormatJson::decode( $response )->query->extensions;
+			$response = FormatJson::decode( $response );
+
+			if ( property_exists( $response, 'query' ) && property_exists( $response->query, 'extensions' ) ) {
+				$extensions = $response->query->extensions;
+			}
 		}
 
 		return $extensions;
@@ -164,7 +168,7 @@ class DistributionRepository extends PackageRepository {
 		
 		if ( property_exists( $response, 'mediawiki' ) ) {
 			$updates['MediaWiki'] = $response->mediawiki;
-		}		
+		}
 		
 		if ( property_exists( $response, 'extensions' ) ) {
 			foreach ( $extensions as $extensionName => $extensionVersion ) {
