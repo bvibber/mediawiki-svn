@@ -206,54 +206,62 @@ class SpecialExtensions extends SpecialPage {
 				// TODO
 			}
 			else {
-				$listHtml = Html::openElement(
+				$extensionObjects = array();
+				
+				foreach( $extensions as $extension ) {
+					$infoObject = ExtensionInfo::newFromArray( $extension );
+					$extensionObjects[$infoObject->getName()] = $infoObject;
+				}
+				
+				$extensionNames = array_keys( $extensionObjects );
+				
+				natcasesort( $extensionNames );
+				
+				$wgOut->addHTML( Html::openElement(
 					'table',
 					array( 'class' => 'wikitable', 'style' => 'width:100%' )
-				);
+				) );
 				
-				$listHtml .= '<tr>' . 
+				$wgOut->addHTML(
+					'<tr>' . 
 					Html::element( 'th', array(), wfMsg( 'extension' ) ) .
 					Html::element( 'th', array(), wfMsg( 'extensionlist-description' ) )
-					.  '</tr>';
+					. '</tr>'
+				);
 				
-				foreach ( $extensions as $extension ) {
-					$listHtml .= $this->getExtensionForList( ExtensionInfo::newFromArray( $extension ) );
+				foreach ( $extensionNames as $extensionName ) {
+					$this->displayExtensionRow( $extensionObjects[$extensionName] );
 				}			
 				
-				$listHtml .= Html::closeElement( 'table' );
-				
-				$wgOut->addHTML( $listHtml );				
+				$wgOut->addHTML( Html::closeElement( 'table' ) );
 			}
 		}
 	}
 	
 	/**
-	 * Creates and returns the html for a single extension in the list.
+	 * Displays a single extension in the list.
 	 * 
 	 * @since 0.1
 	 * 
 	 * @param $extensions ExtensionInfo
-	 * 
-	 * @return string
 	 */	
-	protected function getExtensionForList( ExtensionInfo $extension ) {
-		$html = '<tr>';
+	protected function displayExtensionRow( ExtensionInfo $extension ) {
+		global $wgOut;
 		
-		$html .= Html::rawElement(
-			'td',
-			array(),
-			$this->getItemNameTdContents( $extension )
-		);
+		$wgOut->addHTML( '<tr><td>' );
+		
+		$wgOut->addHTML( $this->getItemNameTdContents( $extension ) );
+		
+		$wgOut->addHTML( '</td><td>' );
 		
 		$version = wfMsgExt( 'extensionlist-version-number', 'parsemag', $extension->getVersion() );
 		
-		$html .= Html::rawElement(
-			'td',
-			array(),
-			$extension->getDescription() . '<br />' . $version . ' | ' . $extension->getCreatedByMessage()
+		$wgOut->addWikiText(
+			$extension->getDescription() . '<br />'  .
+				$version . ' | ' . $extension->getCreatedByMessage()
 		);
 		
-		return $html . '</tr>';
+		$wgOut->addHTML( '</td></tr>' );
 	}
 	
 	/**
