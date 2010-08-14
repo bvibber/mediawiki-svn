@@ -148,7 +148,7 @@ class SpecialExtensions extends SpecialPage {
 			$name = Html::element(
 				'a',
 				array(
-					'href' => self::getTitle( $type )->getFullURL()
+					'href' => self::getTitle( $type == 'all' ? null : $type )->getFullURL()
 				),
 				$message
 			);			
@@ -201,7 +201,7 @@ class SpecialExtensions extends SpecialPage {
 				);
 				
 				$listHtml .= '<tr>' . 
-					Html::element( 'th', array(), wfMsg( 'extensionlist-name' ) ) .
+					Html::element( 'th', array(), wfMsg( 'extension' ) ) .
 					Html::element( 'th', array(), wfMsg( 'extensionlist-description' ) )
 					.  '</tr>';
 				
@@ -231,30 +231,12 @@ class SpecialExtensions extends SpecialPage {
 		$html .= Html::rawElement(
 			'td',
 			array(),
-			Html::element( 'b', array(), $extension['name'] ) .
-			'<br />' .
-			Html::element(
-				'a',
-				array(
-					'href' => $extension['url'],
-					'class' => 'external text'
-				),
-				wfMsg( 'extensionlist-details' )		
-			) .
-			' | ' .
-			Html::element(
-				'a',
-				array(
-					'href' => '',
-					'class' => 'external text'
-				),
-				wfMsg( 'extensionlist-download' )		
-			)			
+			$this->getItemNameTdContents( $extension )
 		);
 		
 		$description = self::getExtensionDescription( $extension );
 		$authors = self::getExtensionAuthors( $extension );
-		$version = self::getExtensionVersion( $extension );
+		$version = wfMsgExt( 'extensionlist-version-number', 'parsemag', self::getExtensionVersion( $extension ) );
 		
 		$html .= Html::rawElement(
 			'td',
@@ -263,6 +245,44 @@ class SpecialExtensions extends SpecialPage {
 		);
 		
 		return $html . '</tr>';
+	}
+	
+	/**
+	 * Returns the contents for the first field in an extension row.
+	 * If the user has the required permissions, controls will be shown.
+	 * 
+	 * @since 0.1
+	 * 
+	 * @param $extension Array
+	 * 
+	 * @return string
+	 */	
+	protected function getItemNameTdContents( array $extension ) {
+		$name = Html::element( 'b', array(), $extension['name'] );
+		
+		$controls = array();
+		
+		$controls[] = Html::element(
+			'a',
+			array(
+				'href' => $extension['url'],
+				'class' => 'external text'
+			),
+			wfMsg( 'extensionlist-details' )		
+		);
+		
+		// TODO: permission check
+		if ( true ) {
+			$controls[] = Html::element(
+				'a',
+				array(
+					'href' => '',
+				),
+				wfMsg( 'extensionlist-deactivate' )		
+			);
+		}
+	
+		return $name . '<br />' . implode( ' | ', $controls );
 	}
 	
 	/**
@@ -327,8 +347,7 @@ class SpecialExtensions extends SpecialPage {
 	 * @return string
 	 */		
 	public static function getExtensionVersion( array $extension ) {
-		// TODO: add "version " i18n stuff and escape
-		return array_key_exists( 'version', $extension ) ? $extension['version'] : '';
+		return array_key_exists( 'version', $extension ) ? $extension['version'] : wfMsg( 'extensionlist-version-unknown' );
 	}
 	
 }

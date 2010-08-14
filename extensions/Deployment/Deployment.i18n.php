@@ -31,11 +31,28 @@ $messages['en'] = array(
 	'update-title' => 'MediaWiki updates',
 	'install-title' => 'Install extensions',
 
+	// Special:Extensions and Special:Install extension lists
+	'extensionlist-name' => 'Name',
+	'extensionlist-version' => 'Version',
+	'extensionlist-version-number' => 'Version $1',
+	'extensionlist-version-unknown' => 'unknown',
+	'extensionlist-stability' => 'Stability',
+	'extensionlist-rating' => 'Rating',
+	'extensionlist-description' => 'Description',
+	'extensionlist-details' => 'Details',
+	'extensionlist-download' => 'Download',
+	'extensionlist-installnow' => 'Install now',
+	'extensionlist-createdby' => 'By $1',
+	'extensionlist-deactivate' => 'Deactivate',
+	'extensionlist-activate' => 'Activate',
+	'extensionlist-delete' => 'Delete',
+
 	// Special:Dashboard
 
 	// Special:Extensions
 	'add-new-extensions' => 'Add new',
 	'extension-type-all' => 'All',
+	'extension-bulk-actions' => 'Bulk Actions',
 
 	// Special:Update
 	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki.',
@@ -52,16 +69,6 @@ $messages['en'] = array(
 	'search-extensions-button' => 'Search extensions',
 	'popular-extension-tags' => 'Popular tags',
 	'popular-extension-tags-long' => 'You may also browse based on the most popular tags in the Extension Repository:',
-
-	'extensionlist-name' => 'Name',
-	'extensionlist-version' => 'Version',
-	'extensionlist-stability' => 'Stability',
-	'extensionlist-rating' => 'Rating',
-	'extensionlist-description' => 'Description',
-	'extensionlist-details' => 'Details',
-	'extensionlist-download' => 'Download',
-	'extensionlist-installnow' => 'Install now',
-	'extensionlist-createdby' => 'By $1.',
 
 	'stability-alpha' => 'Alpha',
 	'stability-beta' => 'Beta',
