@@ -30,7 +30,7 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-define( 'MWRELEASES_VERSION', '1.1' );
+define( 'MWRELEASES_VERSION', '2.0' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
@@ -42,6 +42,39 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiMWReleases'] = $dir . 'ApiMWReleases.php';
+
+// Classes
+$wgAutoloadClasses['ApiMWReleases'] = $dir . 'api/ApiMWReleases.php';
+$wgAutoloadClasses['ReleaseRepo'] = $dir . 'backend/ReleaseRepo.php';
+$wgAutoloadClasses['Release'] = $dir . 'backend/Release.php';
+$wgAutoloadClasses['MediawikiRelease'] = $dir . 'backend/Release.php';
+$wgAutoloadClasses['SpecialDownloadMediawiki'] = $dir . 'ui/SpecialDownloadMediawiki.php';
+$wgAutoloadClasses['SpecialReleaseManager'] = $dir . 'ui/SpecialReleaseManager.php';
+
+// i18n
 $wgExtensionMessagesFiles['MWReleases'] = $dir . 'MWReleases.i18n.php';
+$wgExtensionAliasesFiles['MWReleases'] = $dir . 'MWReleases.alias.php';
+
+// API
 $wgAPIModules['mwreleases'] = 'ApiMWReleases';
+
+// Special pages
+$wgSpecialPages['DownloadMediawiki'] = 'SpecialDownloadMediawiki';
+$wgSpecialPages['ReleaseManager'] = 'SpecialReleaseManager';
+
+// Hooks
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'wfMWReleaseSchemaUpdates';
+
+/**
+ * Base SVN url
+ */
+$wgMWRSvnUrl = 'http://svn.wikimedia.org/svnroot/mediawiki/';
+$wgMWRDownloadUrl = 'http://download.wikimedia.org/mediawiki/';
+
+/**
+ * Schema hook
+ */
+function wfMWReleaseSchemaUpdates() {
+	global $wgExtNewTables;
+	$wgExtNewTables['mwreleases'] = dirname(__FILE__) . '/MWReleases.sql';
+}
