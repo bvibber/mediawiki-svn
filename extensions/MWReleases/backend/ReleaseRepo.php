@@ -76,7 +76,7 @@ class ReleaseRepo {
 						$this->releases[ $mw->getId() ] = $mw;
 					}
 				}
-				usort( $this->releases, array( $this, 'sortReleasesDesc' ) );
+				uasort( $this->releases, array( $this, 'sortReleasesDesc' ) );
 				// cache for 30 days. This doesn't change often so we'll explicity
 				// flush when we've changed something
 				$wgMemc->set( self::CACHE_KEY, $this->releases, 60 * 60 * 24 * 30 );
