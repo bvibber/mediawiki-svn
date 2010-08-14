@@ -70,4 +70,6 @@ $wgMWRDownloadUrl = 'http://download.wikimedia.org/mediawiki/';
 function wfMWReleaseSchemaUpdates() {
 	global $wgExtNewTables;
 	$wgExtNewTables['mwreleases'] = dirname(__FILE__) . '/MWReleases.sql';
+	
+	return true;
 }
