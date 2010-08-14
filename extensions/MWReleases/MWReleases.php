@@ -4,13 +4,6 @@
  * on Mediawiki.org, to be queried by the API. Goal is to have the
  * installer and updater check MW.org for latest versions :)
  *
- * EXAMPLE MWRELEASES-LIST:
- * <code>
- * current:1.15.1
- * supported:1.14.1
- * supported:1.6.12
- * </code>
- *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
