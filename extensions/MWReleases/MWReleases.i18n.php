@@ -32,5 +32,5 @@ $messages['en'] = array(
  * @author Fryed-peach
  */
 $messages['qqq'] = array(
-	'mwreleases-desc' => '{{desc}}',
+	'mwr-desc' => '{{desc}}',
 );

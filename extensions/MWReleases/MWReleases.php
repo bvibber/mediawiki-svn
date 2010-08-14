@@ -30,7 +30,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'MWReleases',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MWReleases',
 	'author' => 'Chad Horohoe',
-	'descriptionmsg' => 'mwreleases-desc',
+	'descriptionmsg' => 'mwr-desc',
 	'version' => MWRELEASES_VERSION,
 );
 
