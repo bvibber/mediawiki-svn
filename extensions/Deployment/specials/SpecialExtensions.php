@@ -188,53 +188,58 @@ class SpecialExtensions extends SpecialPage {
 		global $wgOut, $wgExtensionCredits;
 		
 		if ( !array_key_exists( $this->typeFilter, $wgExtensionCredits ) && $this->typeFilter != 'all' ) {
-			// TODO
+			$wgOut->addWikiMsgArray( 'extension-invalid-category', $this->typeFilter );
+			$this->typeFilter = 'all';
+		}
+		
+		$extensions = array();
+		
+		if ( $this->typeFilter == 'all' ) {
+			foreach ( $wgExtensionCredits as $type => $exts ) {
+				$extensions = array_merge( $extensions, $exts );
+			}
 		}
 		else {
-			$extensions = array();
-			
+			$extensions = $wgExtensionCredits[$this->typeFilter];
+		}
+		
+		if ( count( $extensions ) == 0 ) {
 			if ( $this->typeFilter == 'all' ) {
-				foreach ( $wgExtensionCredits as $type => $exts ) {
-					$extensions = array_merge( $extensions, $exts );
-				}
+				$wgOut->addWikiMsgArray( 'extension-none-installed', 'Special:Install' );
 			}
 			else {
-				$extensions = $wgExtensionCredits[$this->typeFilter];
+				$wgOut->addWikiMsgArray( 'extension-empty-category', $this->typeFilter );
+			}
+		}
+		else {
+			$extensionObjects = array();
+			
+			foreach( $extensions as $extension ) {
+				$infoObject = ExtensionInfo::newFromArray( $extension );
+				$extensionObjects[$infoObject->getName()] = $infoObject;
 			}
 			
-			if ( count( $extensions ) == 0 ) {
-				// TODO
-			}
-			else {
-				$extensionObjects = array();
-				
-				foreach( $extensions as $extension ) {
-					$infoObject = ExtensionInfo::newFromArray( $extension );
-					$extensionObjects[$infoObject->getName()] = $infoObject;
-				}
-				
-				$extensionNames = array_keys( $extensionObjects );
-				
-				natcasesort( $extensionNames );
-				
-				$wgOut->addHTML( Html::openElement(
-					'table',
-					array( 'class' => 'wikitable', 'style' => 'width:100%' )
-				) );
-				
-				$wgOut->addHTML(
-					'<tr>' . 
-					Html::element( 'th', array(), wfMsg( 'extension' ) ) .
-					Html::element( 'th', array(), wfMsg( 'extensionlist-description' ) )
-					. '</tr>'
-				);
-				
-				foreach ( $extensionNames as $extensionName ) {
-					$this->displayExtensionRow( $extensionObjects[$extensionName] );
-				}			
-				
-				$wgOut->addHTML( Html::closeElement( 'table' ) );
-			}
+			$extensionNames = array_keys( $extensionObjects );
+			
+			natcasesort( $extensionNames );
+			
+			$wgOut->addHTML( Html::openElement(
+				'table',
+				array( 'class' => 'wikitable', 'style' => 'width:100%' )
+			) );
+			
+			$wgOut->addHTML(
+				'<tr>' . 
+				Html::element( 'th', array(), wfMsg( 'extension' ) ) .
+				Html::element( 'th', array(), wfMsg( 'extensionlist-description' ) )
+				. '</tr>'
+			);
+			
+			foreach ( $extensionNames as $extensionName ) {
+				$this->displayExtensionRow( $extensionObjects[$extensionName] );
+			}			
+			
+			$wgOut->addHTML( Html::closeElement( 'table' ) );
 		}
 	}
 	

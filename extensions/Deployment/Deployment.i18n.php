@@ -56,6 +56,9 @@ $messages['en'] = array(
 	'extension-type-all' => 'All',
 	'extension-bulk-actions' => 'Bulk Actions',
 	'extension-page-explanation' => 'This page lists the installed extensions on this wiki. For more info about this wiki installation, see [$1 Special:Version].',
+	'extension-none-installed' => 'There are currently no extensions installed. You can [[$1|add new ones]].',
+	'extension-empty-category' => 'There are no extensions of type \'\'$1\'\' installed.',
+	'extension-invalid-category' => 'Could not filter on extension type \'\'$1\'\', all extenions are shown instead.',
 
 	// Special:Update
 	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki.',
