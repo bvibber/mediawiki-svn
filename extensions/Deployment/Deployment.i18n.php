@@ -74,6 +74,8 @@ You do not need to update.',
 	'extensions-updates-available' => 'The following extensions have new versions available.
 Check the ones you want to update and then click “Update Extensions”.',
 	'special-update-extensions' => 'Extensions',
+	'update-extensions-button' => 'Extensions',
+	'select-all-extensions' => 'Select all',
 
 	// Special:Install
 	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki.

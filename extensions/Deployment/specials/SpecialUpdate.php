@@ -117,13 +117,35 @@ class SpecialUpdate extends SpecialPage {
 		if ( count( $extensions ) > 0 ) {
 			$wgOut->addWikiMsg( 'extensions-updates-available' );
 			
-			// TODO
+			$wgOut->addHTML( Html::element( 'button', array(), wfMsg( 'update-extensions-button' ) ) );
+			
+			$wgOut->addHTML( '<table>' );
+			
+			// TODO: select all magic
+			
+			$wgOut->addHTML(
+				'<tr><th>' .
+				Html::element( 'input', array( 'type' => 'checkbox', 'id' => 'select-all-extensions' ) ) .
+				'</th><th>' .
+				Html::element( 'label', array( 'for' => 'select-all-extensions' ), wfMsg( 'select-all-extensions' ) ) .
+				'</th></tr>'
+			);
 			
 			foreach ( $extensions as $extension ) {
 				$this->displayExtensionStatus( $extension );
 			}
 			
-			// TODO
+			$wgOut->addHTML(
+				'<tr><th>' .
+				Html::element( 'input', array( 'type' => 'checkbox', 'id' => 'select-all-extensions-2' ) ) .
+				'</th><th>' .
+				Html::element( 'label', array( 'for' => 'select-all-extensions-2' ), wfMsg( 'select-all-extensions' ) ) .
+				'</th></tr>'
+			);			
+			
+			$wgOut->addHTML( '</table>' );
+			
+			$wgOut->addHTML( Html::element( 'button', array(), wfMsg( 'update-extensions-button' ) ) );
 		}
 		else {
 			$wgOut->addWikiMsg( 'extensions-up-to-date' );
