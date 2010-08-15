@@ -64,6 +64,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
  * 
  * @since 0.1
  */
+// FIXME: no need to put these extension credits in a hook. 
 function efDistributionSetup() {
 	global $wgExtensionCredits;
 	
