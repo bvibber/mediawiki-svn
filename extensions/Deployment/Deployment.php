@@ -21,8 +21,9 @@ include_once 'Deployment_Settings.php';
 // Register the initialization function.
 $wgExtensionFunctions[] = 'efDeploymentSetup';
 
-// Register the internationalization file.
+// Register the internationalization and aliasing files.
 $wgExtensionMessagesFiles['Deployment'] = dirname( __FILE__ ) . '/Deployment.i18n.php';
+$wgExtensionAliasesFiles['Deployment'] = dirname( __FILE__ ) . '/Deployment.alias.php';
 
 // Load classes.
 $wgAutoloadClasses['ExtensionInfo'] = dirname( __FILE__ ) . '/includes/ExtensionInfo.php';

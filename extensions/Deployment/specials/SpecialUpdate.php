@@ -38,14 +38,24 @@ class SpecialUpdate extends SpecialPage {
 	 * @param $arg String
 	 */	
 	public function execute( $arg ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgVersion, $wgExtensionCredits;
 		
 		$wgOut->setPageTitle( wfMsg( 'update-title' ) );
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
+			$allExtensions = array();
+			
+			foreach ( $wgExtensionCredits as $type => $extensions ) {
+				foreach ( $extensions as $extension ) {
+					if ( array_key_exists( 'name', $extension ) && array_key_exists( 'version', $extension ) ) {
+						$allExtensions[$extension['name']] = $extension['version']; 
+					}
+				}
+			}
+			
 			$repository = wfGetRepository();
-			$updates = $repository->installationHasUpdates();
+			$updates = $repository->installationHasUpdates( $wgVersion, $allExtensions );
 			
 			if ( $updates === false ) {
 				$this->showCoreStatus( false );
