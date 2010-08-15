@@ -44,21 +44,56 @@ class SpecialUpdate extends SpecialPage {
 		
 		// If the user is authorized, display the page, if not, show an error.
 		if ( $this->userCanExecute( $wgUser ) ) {
-			$this->showCoreStatus();
-			$this->showExtensionStatuses();
+			$repository = wfGetRepository();
+			$updates = $repository->installationHasUpdates();
+			
+			if ( $updates === false ) {
+				$this->showCoreStatus( false );
+				$this->showExtensionStatuses( false );				
+			}
+			else {
+				// Check if there is a MediaWiki update.
+				if ( array_key_exists( 'MediaWiki', $updates ) ) {
+					$this->showCoreStatus( $updates['MediaWiki'] );
+					unset( $updates['MediaWiki'] );
+				}
+				else {
+					$this->showCoreStatus( false );
+				}
+				
+				$this->showExtensionStatuses( count( $updates ) > 0 ? $updates : false );	
+			}
+
 		} else {
 			$this->displayRestrictionError();
 		}			
 	}
 	
-	protected function showCoreStatus() {
-		$repository = wfGetRepository();
+	/**
+	 * Displays messages indicating if the MediaWiki install is up
+	 * to date or not, and if not, which updates are available.
+	 * 
+	 * @since 0.1 
+	 * 
+	 * @param $status
+	 */
+	protected function showCoreStatus( $status ) {
+		global $wgVersion;
 		
-		// TODO
+		
 	}
 	
+	/**
+	 * Shows a list of extensions that have updates avialable,
+	 * or a message indicating they are all up to date.
+	 * 
+	 * @since 0.1 
+	 * 
+	 * @param $status
+	 */	
 	protected function showExtensionStatuses() {
-		$repository = wfGetRepository();
+		global $wgExtensionCredits;
+		
 		
 		// TODO
 	}
