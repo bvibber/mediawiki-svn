@@ -1,6 +1,6 @@
 <?php
 /**
- * Aliases for extension CodeReview
+ * Aliases for extension ExtensionDistributor
  *
  * @file
  * @ingroup Extensions
