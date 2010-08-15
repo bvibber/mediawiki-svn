@@ -95,7 +95,11 @@ class XMPInfo {
 				'mode'      => XMPReader::MODE_SIMPLE,
 				'validate'  => 'validateRational'
 			),
-			/* FIXME GPSAltitude */
+			'GPSAltitude' => array(
+				'map_group' => 'exif',
+				'mode'      => XMPReader::MODE_SIMPLE,
+				'validate'  => 'validateRational',
+			),
 			'GPSDestBearing' => array(
 				'map_group' => 'exif',
 				'mode'      => XMPReader::MODE_SIMPLE,

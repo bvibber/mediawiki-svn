@@ -11,9 +11,12 @@
 * feature. If it comes across properties it doesn't recognize, it should
 * ignore them.
 *
-* The main methods one would call in this class are
+* The public methods one would call in this class are
 * - parse( $content )
 *	Reads in xmp content.
+*	Can potentially be called multiple times with partial data each time.
+* - parseExtended( $content )
+*	Reads XMPExtended blocks (jpeg files only).
 * - getResults
 *	Outputs a results array.
 *
@@ -111,15 +114,29 @@ class XMPReader {
 		xml_parser_free( $this->xmlParser );
 	}
 
-	/** Get the result array
+	/** Get the result array. Do some post-processing before returning
+	* the array.
+	*
 	* @return Array array of results as an array of arrays suitable for
-	*	FormatExif.
+	*	FormatMetadata::getFormattedData().
 	*/
 	public function getResults() {
 		// xmp-special is for metadata that affects how stuff
-		// is extracted. For example xmpNote:HasExtendedXMP
-		unset( $this->results['xmp-special'] );
-		return $this->results;
+		// is extracted. For example xmpNote:HasExtendedXMP.
+		$data = $this->results;
+		unset( $data['xmp-special'] );
+
+		// Convert GPSAltitude to negative if below sea level.
+		if ( isset( $data['xmp-exif']['GPSAltitudeRef'] ) ) {
+			if ( $data['xmp-exif']['GPSAltitudeRef'] == '1'
+				&& isset( $data['xmp-exif']['GPSAltitude'] )
+			) {
+				$data['xmp-exif']['GPSAltitude'] *= -1;
+			}
+			unset( $data['xmp-exif']['GPSAltitudeRef'] );
+		}
+
+		return $data;
 	}
 
 	/**
@@ -293,11 +310,7 @@ class XMPReader {
 		if ( $this->charContent === false ) {
 			$this->charContent = $data;
 		} else {
-			// I don't think this should happen,
-			// but just in case.
 			$this->charContent .= $data;
-			// FIXME
-			wfDebugLog( 'XMP', 'XMP: Consecuitive CDATA' );
 		}
 
 	}

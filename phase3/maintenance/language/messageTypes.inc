@@ -364,6 +364,8 @@ $wgOptionalMessages = array(
 	'usermessage-template',
 	'revisionmove-backlink',
 	'filepage.css',
+	'metadata-langitem',
+	'metadata-langitem-default',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

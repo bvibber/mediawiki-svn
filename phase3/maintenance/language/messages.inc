@@ -2584,6 +2584,8 @@ $wgMessageStructure = array(
 		'metadata-expand',
 		'metadata-collapse',
 		'metadata-fields',
+		'metadata-langitem',
+		'metadata-langitem-default',
 	),
 	'exif' => array(
 		'exif-imagewidth',

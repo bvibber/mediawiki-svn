@@ -278,6 +278,7 @@ class IPTC {
 				case '2#070':
 				case '2#060':
 				case '2#063':
+				case '2#085':
 					//ignore. Handled elsewhere.
 					break;
 

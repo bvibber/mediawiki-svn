@@ -3634,12 +3634,14 @@ Variants for Chinese language
 'variantname-tg'      => 'tg', # only translate this message to other languages if you have to change it
 
 # Metadata
-'metadata'          => 'Metadata',
-'metadata-help'     => 'This file contains additional information, probably added from the digital camera or scanner used to create or digitize it.
+'metadata'                  => 'Metadata',
+'metadata-help'             => 'This file contains additional information, probably added from the digital camera or scanner used to create or digitize it.
 If the file has been modified from its original state, some details may not fully reflect the modified file.',
-'metadata-expand'   => 'Show extended details',
-'metadata-collapse' => 'Hide extended details',
-'metadata-fields'   => 'EXIF metadata fields listed in this message will be included on image page display when the metadata table is collapsed.
+'metadata-expand'           => 'Show extended details',
+'metadata-collapse'         => 'Hide extended details',
+'metadata-langitem'         => '\'\'\'$2:\'\'\' $1',
+'metadata-langitem-default' => '$1',
+'metadata-fields'           => 'EXIF metadata fields listed in this message will be included on image page display when the metadata table is collapsed.
 Others will be hidden by default.
 * make
 * model

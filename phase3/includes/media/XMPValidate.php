@@ -254,5 +254,55 @@ class XMPValidate {
 		}
 
 	}
+	/** function to validate, and more importantly
+	 * translate the XMP DMS form of gps coords to
+	 * the decimal form we use.
+	 *
+	 * @see http://www.adobe.com/devnet/xmp/pdfs/XMPSpecificationPart2.pdf
+	 *        section 1.2.7.4 on page 23
+	 *
+	 * @param $info Array unused (info about prop)
+	 * @param &$val String GPS string in either DDD,MM,SSk or
+	 *           or DDD,MM.mmk form
+	 * @param $standalone Boolean if its a simple prop (should always be true)
+	 */
+	public static function validateGPS ( $info, &$val, $standalone ) {
+		if ( !$standalone ) {
+			return;
+		}
+
+		$m = array();
+		if ( preg_match( 
+			'/(\d{1,3}),(\d{1,2}),(\d{1,2})([NWSE])/D',
+			$val, $m )
+		) {
+			$coord = intval( $m[1] );
+			$coord += intval( $m[2] ) * (1/60);
+			$coord += intval( $m[3] ) * (1/3600);
+			if ( $m[4] === 'S' || $m[4] === 'W' ) {
+				$coord = -$coord;
+			}
+			$val = $coord;
+			return;
+		} elseif ( preg_match( 
+			'/(\d{1,3}),(\d{1,2}(?:.\d*)?)([NWSE])/D',
+			$val, $m )
+		) {
+			$coord = intval( $m[1] );
+			$coord += floatval( $m[2] ) * (1/60);
+			if ( $m[3] === 'S' || $m[3] === 'W' ) {
+				$coord = -$coord;
+			}
+			$val = $coord;
+			return;
+
+		} else {
+			wfDebugLog( 'XMP', __METHOD__ 
+				. " Expected GPSCoordinate, but got $val." );
+			$val = null;
+			return;
+		}
+
+	}
 
 }

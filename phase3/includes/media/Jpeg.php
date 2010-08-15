@@ -58,7 +58,7 @@ class JpegHandler extends BitmapHandler {
 
 		foreach ( $metadata as &$val ) {
 			if ( is_array( $val ) ) {
-				$val = formatExif::flattenArray( $val );
+				$val = FormatMetadata::flattenArray( $val );
 			}
 		}
 		$metadata['MEDIAWIKI_EXIF_VERSION'] = 1;

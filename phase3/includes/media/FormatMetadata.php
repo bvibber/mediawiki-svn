@@ -738,21 +738,61 @@ class FormatMetadata {
 		else {
 			switch( $type ) {
 			case 'lang':
-				// fixme incomplete
-				// should place x-default, content language, user language
-				// first. then the others, hidden by defualt.
-				// also should use much better markup.
-				$content = "";
-				if ( $vals['x-default'] ) {
-					$content .= "\n*" . $vals['x-default'];
+				global $wgContLang;
+				// Display default, followed by ContLang,
+				// followed by the rest in no paticular
+				// order.
+
+				// Todo: hide some items if really long list.
+
+				$content = '';
+
+				$cLang = $wgContLang->getCode();
+				$default = false;
+				$defaultLang = false;
+
+				// If default is set, save it for later,
+				// as we don't know if it's equal to
+				// one of the lang codes. (In xmp
+				// you specify the language for a 
+				// default property by having both
+				// a default prop, and one in the language
+				// that are identical)
+				if ( isset( $vals['x-default'] ) ) {
+					$defaultItem = $vals['x-default'];
 					unset( $vals['x-default'] );
 				}
-				foreach ( $vals as $lang => $item ) {
-					global $wgContLang;
-					$content .= "\n*<span lang=\"$lang\">"
-						. "'''$lang''' $item</span>";
+				// Do contentLanguage.
+				if ( isset( $vals[$cLang] ) ) {
+					$isDefault = false;
+					if ( $vals[$cLang] === $defaultItem ) {
+						$defaultItem = false;
+						$isDefault = true;
+					}
+					$content .= self::langItem(
+						$vals[$cLang], $cLang,
+						 $isDefault );
+
+					unset( $vals[$cLang] );
 				}
-				return $content;
+
+				// Now do the rest.
+				foreach ( $vals as $lang => $item ) {
+					if ( $item === $defaultItem ) {
+						$defaultLang = $lang;
+						continue;
+					}
+					$content .= self::langItem( $item,
+						$lang );
+				}
+				if ( $defaultItem !== false ) {
+					$content = self::langItem( $defaultItem,
+						$defaultLang, true )
+						 . $content;
+				}
+				return '<ul class="metadata-langlist">' .
+					$content .
+					'</ul>';
 			case 'ol':
 				return "<ol><li>" . implode( "</li>\n<li>", $vals ) . '</li></ol>';
 			case 'ul':
@@ -760,6 +800,53 @@ class FormatMetadata {
 				return "<ul><li>" . implode( "</li>\n<li>", $vals ) . '</li></ul>';
 			}
 		}
+	}
+	/** Helper function for creating lists of translations.
+	 *
+	 * @param $value String value (this is not escaped)
+	 * @param $lang String lang code of item or false
+	 * @param $default if it is default value.
+	 * @return language item (Note: despite how this looks,
+	 * 	this is treated as wikitext not html).
+	 */
+	private static function langItem( $value, $lang, $default = false ) {
+		global $wgContLang;
+		if ( $lang === false && $default === false) {
+			throw new MWException('$lang and $default cannot both '
+				. 'be false.');
+		}
+
+		$wrappedValue = '<span class="mw-metadata-lang-value">'
+			. $value . '</span>';
+
+		if ( $lang === false ) {
+			return '<li class="mw-metadata-lang-default">'
+				. wfMsg( 'metadata-langitem-default',
+					$wrappedValue )
+				. "</li>\n";
+		}
+		$langName = $wgContLang->getLanguageName( strtolower( $lang ) );
+		if ( $langName === '' ) {
+			//try just the base language name. (aka en-US -> en ).
+			list( $langPrefix ) = explode( '-', strtolower( $lang ),
+				2 );
+			$langName = $wgContLang->getLanguageName( $langPrefix );
+			if ( $langName === '' ) {
+				// give up.
+				$langName = $lang;
+			}
+		}
+		// else we have a language specified
+		$item = '<li class="mw-metadata-lang-code-'
+			. $lang;
+		if ( $default ) {
+			$item .= ' mw-metadata-lang-default';
+		}
+		$item .= '" lang="' . $lang . '">';
+		$item .= wfMsg( 'metadata-langitem',
+			$wrappedValue, $langName, $lang );
+		$item .= "</li>\n";
+		return $item;
 	}
 	/**
 	 * Convenience function for getFormattedData()
