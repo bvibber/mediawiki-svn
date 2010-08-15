@@ -85,7 +85,11 @@ class ApiUpdates extends ApiBase {
 	 * @param $states Array: a list of allowed release states.
 	 */
 	protected function checkForCoreUpdates( $mwVersion, array $states ) {
-		// TODO: merge with MWReleases here?
+		$coreVersion = ReleaseRepo::singleton()->getLatestStableRelease()->getNumber();
+
+		if ( version_compare( $coreVersion, $mwVersion, '>' ) ) {
+			$this->getResult()->addValue( null, 'mediawiki', $coreVersion );	
+		}
 	}
 	
 	/**
