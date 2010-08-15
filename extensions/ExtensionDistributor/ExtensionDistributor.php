@@ -37,6 +37,7 @@ $wgSpecialPages['ExtensionDistributor'] = 'ExtensionDistributorPage';
 $wgSpecialPageGroups['ExtensionDistributor'] = 'developer';
 $wgAutoloadClasses['ExtensionDistributorPage'] = $dir . 'ExtensionDistributor_body.php';
 $wgExtensionMessagesFiles['ExtensionDistributor'] = $dir . 'ExtensionDistributor.i18n.php';
+$wgExtensionAliasesFiles['ExtensionDistributor'] = $dir . 'ExtensionDistributor.alias.php';
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
