@@ -56,8 +56,8 @@ class SpecialReleaseManager extends SpecialPage {
 		$this->out->addWikiMsg( 'releasemanager-header' );
 		$h = Html::openElement( 'div', array( 'style' => 'text-align:center' ) ) .
 			$this->skin->link(
-				$this->getTitleFor( 'ReleaseManager', 'add' ),
-				wfMsg( 'releasemanager-add' ),
+				$this->getTitle( 'add' ),
+				wfMsgHtml( 'releasemanager-add' ),
 				array( 'style' => 'font-size:175%' )
 			) . Html::element( 'hr' ) . Html::closeElement( 'div' ) .
 			Html::openElement( 'table', array( 'class' => 'wikitable plainlinks sortable' ) ) .
@@ -86,11 +86,11 @@ class SpecialReleaseManager extends SpecialPage {
 			wfMsg( 'releasemanager-supported-overriden', $supported ) :
 			wfMsg( 'releasemanager-supported-til-eol', $supported );
 		$editDel = $this->skin->link(
-			$this->getTitleFor( 'ReleaseManager', 'edit/' . $rel->getId() ),
-			wfMsg( 'edit' )
+			$this->getTitle( 'edit/' . $rel->getId() ),
+			wfMsgHtml( 'edit' )
 		) . ' / ' . $this->skin->link(
-			$this->getTitleFor( 'ReleaseManager', 'delete/' . $rel->getId() ),
-			wfMsg( 'delete' )
+			$this->getTitle( 'delete/' . $rel->getId() ),
+			wfMsgHtml( 'delete' )
 		);
 		return Html::openElement( 'tr' ) .
 			Html::element( 'td', array(), $rel->getName() ) .
@@ -123,7 +123,7 @@ class SpecialReleaseManager extends SpecialPage {
 			$this->out->addWikiMsg( 'releasemanager-doesnotexist' );
 			return;
 		} else {
-			$submitUrl = $this->getTitleFor( 'ReleaseManager', "delete/$versionId" )->getFullURL();
+			$submitUrl = $this->getTitle( "delete/$versionId" )->getFullURL();
 			$this->out->addWikiMsg( 'releasemanager-delete-confirm' );
 			$h = Html::openElement( 'form', array( 'action' => $submitUrl,
 				'method' => 'post' ) ) .
