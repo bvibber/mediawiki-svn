@@ -22,7 +22,7 @@ include_once 'Distribution_Settings.php';
 // Register the initialization function.
 $wgExtensionFunctions[] = 'efDistributionSetup';
 
-// Register the internationalization file.
+// Register the internationalization and aliasing files.
 $wgExtensionMessagesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution.i18n.php';
 $wgExtensionAliasesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution.alias.php';
 
