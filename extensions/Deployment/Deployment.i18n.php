@@ -65,12 +65,15 @@ All extensions are shown instead.',
 
 	// Special:Update
 	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki installed.',
-	'mediawiki-up-to-date-long' => 'You have the latest version of MediaWiki [[[Special:Version|installed]].
+	'mediawiki-up-to-date-long' => 'You have the latest version of MediaWiki [[Special:Version|installed]].
 You do not need to update.',
 	'mediawiki-update-available' => 'A new version of MediaWiki is available!',
 	'mediawiki-update-available-long' => 'MediaWiki version $1 is available.
 [$2 Update now] to keep your wiki secure and get the new features in this release.',
-	'extensions-up-to-date' => 'Your extensions are all up to date.',
+	'extensions-up-to-date' => '[[Special:Extensions|Your extensions]] are all up to date.',
+	'extensions-updates-available' => 'The following extensions have new versions available.
+Check the ones you want to update and then click “Update Extensions”.',
+	'special-update-extensions' => 'Extensions',
 
 	// Special:Install
 	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki.

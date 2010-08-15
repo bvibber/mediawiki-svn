@@ -90,7 +90,7 @@ class SpecialUpdate extends SpecialPage {
 	protected function showCoreStatus( $status ) {
 		global $wgOut, $wgVersion;
 		
-		if ( $status !== false ) {
+		if ( $status === false ) {
 			$wgOut->addHTML( '<h3>' . wfMsg( 'mediawiki-up-to-date' ) . '</h3>' );
 			$wgOut->addWikiMsg( 'mediawiki-up-to-date-long' );
 		}
@@ -110,9 +110,36 @@ class SpecialUpdate extends SpecialPage {
 	 * @param $extensions Array: the extensions that have updates and their version numbers.
 	 */	
 	protected function showExtensionStatuses( array $extensions ) {
+		global $wgOut;
+		
+		$wgOut->addHTML( '<h3>' . wfMsg( 'special-update-extensions' ) . '</h3>' );
+		
+		if ( count( $extensions ) > 0 ) {
+			$wgOut->addWikiMsg( 'extensions-updates-available' );
+			
+			// TODO
+			
+			foreach ( $extensions as $extension ) {
+				$this->displayExtensionStatus( $extension );
+			}
+			
+			// TODO
+		}
+		else {
+			$wgOut->addWikiMsg( 'extensions-up-to-date' );
+		}
+	}
+	
+	/**
+	 * Displays a single row in the update list.
+	 * 
+	 * @since 0.1 
+	 * 
+	 * @param $extension Array
+	 */		
+	protected function displayExtensionStatus( $extension ) {
 		global $wgOut, $wgExtensionCredits;
 		
-		//$wgOut->addHTML( var_dump($extensions) );
 		// TODO
 	}
 	
