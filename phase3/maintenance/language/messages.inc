@@ -2752,6 +2752,9 @@ $wgMessageStructure = array(
 		'exif-morepermissionsurl',
 		'exif-attributionurl',
 		'exif-preferredattributionname',
+		'exif-pngfilecomment',
+		'exif-disclaimer',
+		'exif-contentwarning',
 	),
 	'exif-values' => array(
 		'exif-make-value',

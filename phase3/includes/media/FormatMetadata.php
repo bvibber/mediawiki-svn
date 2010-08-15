@@ -652,7 +652,10 @@ class FormatMetadata {
 				case 'MorePermissionsUrl':
 				case 'AttributionUrl':
 				case 'PreferredAttributionName':
-	
+				case 'PNGFileComment':
+				case 'Disclaimer':
+				case 'ContentWarning':
+
 					$val = htmlspecialchars( $val );
 					break;
 
@@ -748,7 +751,7 @@ class FormatMetadata {
 				$content = '';
 
 				$cLang = $wgContLang->getCode();
-				$default = false;
+				$defaultItem = false;
 				$defaultLang = false;
 
 				// If default is set, save it for later,

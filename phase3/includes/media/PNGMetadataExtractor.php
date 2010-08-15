@@ -9,18 +9,39 @@
 class PNGMetadataExtractor {
 	static $png_sig;
 	static $CRC_size;
+	static $text_chunks;
 
 	static function getMetadata( $filename ) {
 		self::$png_sig = pack( "C8", 137, 80, 78, 71, 13, 10, 26, 10 );
 		self::$CRC_size = 4;
+		/* based on list at http://owl.phy.queensu.ca/~phil/exiftool/TagNames/PNG.html#TextualData 
+		 * and http://www.w3.org/TR/PNG/#11keywords
+		 */
+		self::$text_chunks = array(
+			'XML:com.adobe.xmp' => 'xmp',
+			'Artist'      => 'Artist', # this is unofficial, compared to Author, which is
+			'Model'       => 'Model',
+			'Make'        => 'Make',
+			'Author'      => 'Artist',
+			'Comment'     => 'PNGFileComment',
+			'Description' => 'ImageDescription',
+			'Title'       => 'ObjectName',
+			'Copyright'   => 'Copyright',
+			'Source'      => 'Model',  # Source as in original device used to make image
+			'Software'    => 'Software',
+			'Disclaimer'  => 'Disclaimer',
+			'Warning'     => 'ContentWarning',
+			'URL'         => 'Identifer', # Not sure if this is best mapping. Maybe WebStatement.
+			'Label'       => 'Label',
+			/* Other potentially useful things - Creation Time, Document */
+		);
 
 		$showXMP = function_exists( 'xml_parser_create_ns' );
 		
 		$frameCount = 0;
 		$loopCount = 1;
 		$duration = 0.0;
-		$xmp = '';
-		$meta = array();
+		$text = array();
 
 		if (!$filename)
 			throw new Exception( __METHOD__ . ": No file name specified" );
@@ -65,23 +86,136 @@ class PNGMetadataExtractor {
 				if( $fctldur['delay_num'] ) {
 					$duration += $fctldur['delay_num'] / $fctldur['delay_den'];
 				}
-			} elseif ( $chunk_type == "iTXt" && $showXMP ) {
-				// At the moment this only does XMP iText chunks,
-				// but in the future might extract other metadata chunks.
-				if( $chunk_size <= 22 ) {
-					// something weird, so skip
+			} elseif ( $chunk_type == "iTXt" ) {
+				// Extracts iTXt chunks, uncompressing if neccesary.
+				$buf = fread( $fh, $chunk_size );
+				$items = array();
+				if ( preg_match( 
+					'/^([^\x00]{1,79})\x00(\x00|\x01)\x00([^\x00]*)(.)[^\x00]*\x00(.*)$/Ds',
+					$buf, $items )
+				) {
+					/* $items[1] = text chunk name, $items[2] = compressed flag,
+					 * $items[3] = lang code (or ""), $items[4]= compression type.
+					 * $items[5] = content
+					 */
+
+					if ( !isset( self::$text_chunks[$items[1]] ) ) {
+						// Only extract textual chunks on our list.
+						fseek( $fh, self::$CRC_size, SEEK_CUR );
+						continue;
+					}
+
+					if ( $items[3] == '' ) {
+						// if no lang specified use x-default like in xmp.
+						$items[3] = 'x-default';
+					}
+					
+					// if compressed
+					if ( $items[2] == "\x01" ) {
+						if ( function_exists( 'gzuncompress' ) && $items[4] === "\x00" ) {
+							wfSuppressWarnings();
+							$items[5] = gzuncompress( $items[5] );
+							wfRestoreWarnings();
+
+							if ( $items[5] === false ) {
+								//decompression failed
+								wfDebug( __METHOD__ . ' Error decompressing iTxt chunk - ' . $items[1] );
+								fseek( $fh, self::$CRC_size, SEEK_CUR );
+								continue;
+							}
+
+						} else {
+							wfDebug( __METHOD__ . ' Skipping compressed png iTXt chunk due to lack of zlib,'
+								. ' or potentially invalid compression method' );
+							fseek( $fh, self::$CRC_size, SEEK_CUR );
+							continue;
+						}
+					}
+					$finalKeyword = self::$text_chunks[ $items[1] ];
+					$text[ $finalKeyword ][ $items[3] ] = $items[5];
+					$text[ $finalKeyword ]['_type'] = 'lang';
+
+				} else {
+					//Error reading iTXt chunk
+					throw new Exception( __METHOD__ . ": Read error on iTXt chunk" );
+					return;
+				}
+
+			} elseif ( $chunk_type == 'tEXt' ) {
+				$buf = fread( $fh, $chunk_size );
+				$keyword = '';
+				$content = '';
+
+				list( $keyword, $content ) = explode( "\x00", $buf, 2 );
+				if ( $keyword === '' || $content === '' ) {
+					throw new Exception( __METHOD__ . ": Read error on tEXt chunk" );
+					return;
+				}
+				if ( !isset( self::$text_chunks[ $keyword ] ) ) {
+					// Don't recognize chunk, so skip.
+					fseek( $fh, self::$CRC_size, SEEK_CUR );
+					continue;
+				}
+				$content = iconv( 'ISO-8859-1', 'UTF-8', $content);
+				if ( $content === false ) {
+					throw new Exception( __METHOD__ . ": Read error (error with iconv)" );
+					return;
+				}
+
+				$finalKeyword = self::$text_chunks[ $keyword ];
+				$text[ $finalKeyword ][ 'x-default' ] = $content;
+				$text[ $finalKeyword ]['_type'] = 'lang';
+
+			} elseif ( $chunk_type == 'zTXt' ) {
+				if ( function_exists( 'gzuncompress' ) ) {
+					$buf = fread( $fh, $chunk_size );
+					$keyword = '';
+					$postKeyword = '';
+
+					list( $keyword, $postKeyword ) = explode( "\x00", $buf, 2 );
+					if ( $keyword === '' || $postKeyword === '' ) {
+						throw new Exception( __METHOD__ . ": Read error on zTXt chunk" );
+						return;
+					}
+					if ( !isset( self::$text_chunks[ $keyword ] ) ) {
+						// Don't recognize chunk, so skip.
+						fseek( $fh, self::$CRC_size, SEEK_CUR );
+						continue;
+					}
+					$compression = substr( $postKeyword, 0, 1 );
+					$content = substr( $postKeyword, 1 );
+					if ( $compression !== "\x00" ) {
+						wfDebug( __METHOD__ . " Unrecognized compression method in zTXt ($keyword). Skipping." );
+						fseek( $fh, self::$CRC_size, SEEK_CUR );
+						continue;
+					}
+
+					wfSuppressWarnings();
+					$content = gzuncompress( $content );
+					wfRestoreWarnings();
+
+					if ( $content === false ) {
+						//decompression failed
+						wfDebug( __METHOD__ . ' Error decompressing zTXt chunk - ' . $keyword );
+						fseek( $fh, self::$CRC_size, SEEK_CUR );
+						continue;
+					}
+
+					$content = iconv( 'ISO-8859-1', 'UTF-8', $content);
+					if ( $content === false ) {
+						throw new Exception( __METHOD__ . ": Read error (error with iconv)" );
+						return;
+					}
+
+					$finalKeyword = self::$text_chunks[ $keyword ];
+					$text[ $finalKeyword ][ 'x-default' ] = $content;
+					$text[ $finalKeyword ]['_type'] = 'lang';
+
+				} else {
+					wfDebug( __METHOD__ . " Cannot decompress zTXt chunk due to lack of zlib. Skipping." );
 					fseek( $fh, $chunk_size, SEEK_CUR );
-					continue;
 				}
-				$itxtHeader = fread( $fh, 22 );
-				if( !$itxtHeader ) { throw new Exception( __METHOD__ . ": Read error" ); return; }
-				if( $itxtHeader !== "XML:com.adobe.xmp\x00\x00\x00\x00\x00" ) {
-					// some other iTXt chunk.
-					fseek( $fh, $chunk_size - 22, SEEK_CUR );
-					continue;
-				}
-				$xmp = fread( $fh, $chunk_size - 22 );
-				if( !$xmp ) { throw new Exception( __METHOD__ . ": Read error" ); return; }
+
 			} elseif ( $chunk_type == "IEND" ) {
 				break;
 			} else {
@@ -99,7 +233,7 @@ class PNGMetadataExtractor {
 			'frameCount' => $frameCount,
 			'loopCount' => $loopCount,
 			'duration' => $duration,
-			'xmp' => $xmp,
+			'text' => $text,
 		);
 		
 	}

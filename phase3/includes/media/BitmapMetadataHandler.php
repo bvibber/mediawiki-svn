@@ -13,7 +13,7 @@ class BitmapMetadataHandler {
 	private $metadata = Array();
 	private $metaPriority = Array(
 		20 => Array( 'other' ),
-		40 => Array( 'file-comment' ),
+		40 => Array( 'file-comment', 'native-png' ),
 		60 => Array( 'iptc-good-hash', 'iptc-no-hash' ),
 		70 => Array( 'xmp-deprected' ),
 		80 => Array( 'xmp-general' ),
@@ -161,15 +161,17 @@ class BitmapMetadataHandler {
 
 		$meta = new self( $filename );
 		$array = PNGMetadataExtractor::getMetadata( $filename );
-		if ( isset( $array['xmp'] ) && $array['xmp'] !== '' && $showXMP ) {
+		if ( isset( $array['text']['xmp']['x-default'] ) && $array['text']['xmp']['x-default'] !== '' && $showXMP ) {
 			$xmp = new XMPReader();
-			$xmp->parse( $array['xmp'] );
+			$xmp->parse( $array['text']['xmp']['x-default'] );
 			$xmpRes = $xmp->getResults();
 			foreach ( $xmpRes as $type => $xmpSection ) {
 				$meta->addMetadata( $xmpSection, $type );
 			}
 		}
-		unset( $array['xmp'] );
+		unset( $array['text']['xmp'] );
+		$meta->addMetadata( $array['text'], 'native-png' );
+		unset( $array['text'] );
 		$array['metadata'] = $meta->getMetadataArray();
 		$array['metadata']['_MW_PNG_VERSION'] = '1';
 		return $array;

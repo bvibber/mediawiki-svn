@@ -669,4 +669,7 @@ $wgEXIFMessages = array(
 	'exif-copyrighted-false',
 	'exif-rating-rejected',
 	'exif-isospeedratings-overflow',
+	'exif-pngfilecomment',
+	'exif-disclaimer',
+	'exif-contentwarning',
 );

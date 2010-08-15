@@ -3821,6 +3821,9 @@ Others will be hidden by default.
 'exif-morepermissionsurl'          => 'Alternative licensing information',
 'exif-attributionurl'              => 'When re-using this work, please link to',
 'exif-preferredattributionname'    => 'When re-using this work, please credit',
+'exif-pngfilecomment'              => 'PNG file comment',
+'exif-disclaimer'                  => 'Disclaimer',
+'exif-contentwarning'              => 'Content warning',
 
 
 # Make & model, can be wikified in order to link to the camera and model name
