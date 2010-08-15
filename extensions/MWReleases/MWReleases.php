@@ -1,8 +1,15 @@
 <?php
 /**
  * MWReleases - lets us maintain a list of releases that we support
- * on MediaWiki.org, to be queried by the API. Goal is to have the
+ * on Mediawiki.org, to be queried by the API. Goal is to have the
  * installer and updater check MW.org for latest versions :)
+ *
+ * EXAMPLE MWRELEASES-LIST:
+ * <code>
+ * current:1.15.1
+ * supported:1.14.1
+ * supported:1.6.12
+ * </code>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,57 +30,18 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'This is not a valid entry point.' );
-}
-
-define( 'MWRELEASES_VERSION', '2.0' );
+define( 'MWRELEASES_VERSION', '1.1' );
 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'MWReleases',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MWReleases',
 	'author' => 'Chad Horohoe',
-	'descriptionmsg' => 'mwr-desc',
+	'descriptionmsg' => 'mwreleases-desc',
 	'version' => MWRELEASES_VERSION,
 );
 
 $dir = dirname( __FILE__ ) . '/';
-
-// Classes
-$wgAutoloadClasses['ApiMWReleases'] = $dir . 'api/ApiMWReleases.php';
-$wgAutoloadClasses['ReleaseRepo'] = $dir . 'backend/ReleaseRepo.php';
-$wgAutoloadClasses['Release'] = $dir . 'backend/Release.php';
-$wgAutoloadClasses['MediaWikiRelease'] = $dir . 'backend/Release.php';
-$wgAutoloadClasses['SpecialDownloadMediaWiki'] = $dir . 'ui/SpecialDownloadMediawiki.php';
-$wgAutoloadClasses['SpecialReleaseManager'] = $dir . 'ui/SpecialReleaseManager.php';
-
-// i18n
+$wgAutoloadClasses['ApiMWReleases'] = $dir . 'ApiMWReleases.php';
 $wgExtensionMessagesFiles['MWReleases'] = $dir . 'MWReleases.i18n.php';
-$wgExtensionAliasesFiles['MWReleases'] = $dir . 'MWReleases.alias.php';
-
-// API
 $wgAPIModules['mwreleases'] = 'ApiMWReleases';
-
-// Special pages
-$wgSpecialPages['DownloadMediaWiki'] = 'SpecialDownloadMediaWiki';
-$wgSpecialPages['ReleaseManager'] = 'SpecialReleaseManager';
-
-// Hooks
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'wfMWReleaseSchemaUpdates';
-
-/**
- * Base SVN url
- */
-$wgMWRSvnUrl = 'http://svn.wikimedia.org/svnroot/mediawiki/';
-$wgMWRDownloadUrl = 'http://download.wikimedia.org/mediawiki/';
-
-/**
- * Schema hook
- */
-function wfMWReleaseSchemaUpdates() {
-	global $wgExtNewTables;
-	$wgExtNewTables[] = array( 'mwreleases', dirname(__FILE__) . '/MWReleases.sql' );;
-
-	return true;
-}
