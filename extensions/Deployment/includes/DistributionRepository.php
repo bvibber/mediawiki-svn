@@ -146,14 +146,16 @@ class DistributionRepository extends PackageRepository {
 		
 		$extensionParams = array();
 		
-		foreach ( $extensions as $extensionName => $extensionVersion ) {
-			$extensionParams[] = urlencode( $extensionName ) . ';' . urlencode( $extensionVersion );
+		if ( count( $extensions ) > 0 ) {
+			foreach ( $extensions as $extensionName => $extensionVersion ) {
+				$extensionParams[] = urlencode( $extensionName ) . ';' . urlencode( $extensionVersion );
+			}
+			
+			$extensionParams = '&extensions=' . urlencode( implode( '|', $extensionParams ) );			
 		}
-		
-		$extensionParams = urlencode( implode( '|', $extensionParams ) );
-		
+
 		$response = Http::get(
-			"$this->location?format=json&action=updates&mediawiki=$coreVersion&extensions=$extensionParams&state=$states",
+			"$this->location?format=json&action=updates&mediawiki=$coreVersion{$extensionParams}&state=$states",
 			'default',
 			array( 'sslVerifyHost' => true, 'sslVerifyCert' => true )
 		);
