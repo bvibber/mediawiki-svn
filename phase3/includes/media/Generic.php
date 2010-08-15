@@ -270,7 +270,7 @@ abstract class MediaHandler {
 	 * Split off from ImageHandler::formatMetadata, as used by more than
 	 * one type of handler.
 	 *
-	 * This is used by the media handlers that use the FormatExif class
+	 * This is used by the media handlers that use the FormatMetadata class
 	 *
 	 * @param $metadataArray Array metadata array
 	 * @return array for use displaying metadata.
@@ -280,9 +280,8 @@ abstract class MediaHandler {
 			'visible' => array(),
 			'collapsed' => array()
 		);
-		$format = new FormatExif( $metadataArray );
 
-		$formatted = $format->getFormattedData();
+		$formatted = FormatMetadata::getFormattedData( $metadataArray );
 		// Sort fields into visible and collapsed
 		$visibleFields = $this->visibleMetadataFields();
 		foreach ( $formatted as $name => $value ) {

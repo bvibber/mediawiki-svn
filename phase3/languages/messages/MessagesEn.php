@@ -4031,6 +4031,8 @@ Others will be hidden by default.
 
 'exif-rating-rejected' => 'Rejected',
 
+'exif-isospeedratings-overflow' => 'Greater than 65535',
+
 # External editor support
 'edit-externally'      => 'Edit this file using an external application',
 'edit-externally-help' => '(See the [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions] for more information)',

@@ -666,4 +666,5 @@ $wgEXIFMessages = array(
 	'exif-copyrighted-true',
 	'exif-copyrighted-false',
 	'exif-rating-rejected',
+	'exif-isospeedratings-overflow',
 );

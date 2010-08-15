@@ -2990,6 +2990,9 @@ $wgMessageStructure = array(
 	'exif-rating' => array(
 		'exif-rating-rejected',
 	),
+	'exif-isospeedratings' => array(
+		'exif-isospeedratings-overflow',
+	),
 	'edit-externally' => array(
 		'edit-externally',
 		'edit-externally-help',
