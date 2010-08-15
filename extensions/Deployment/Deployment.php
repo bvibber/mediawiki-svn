@@ -69,18 +69,3 @@ function efDeploymentSetup() {
 	);	
 	
 }
-
-/**
- * Returns the PackageRepository object for interaction with the package repository.
- * 
- * @return PackageRepository
- */
-function wfGetRepository() {
-	global $wgRepository, $wgRepositoryApiLocation;
-	
-	if ( !isset( $wgRepository ) ) {
-		$wgRepository = new DistributionRepository( $wgRepositoryApiLocation );
-	}
-	
-	return $wgRepository;
-} 
