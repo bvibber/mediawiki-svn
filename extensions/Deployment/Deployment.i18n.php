@@ -62,7 +62,9 @@ $messages['en'] = array(
 
 	// Special:Update
 	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki.',
-	'mediawiki-up-to-date-long' => 'You have the latest version of MediaWiki. You do not need to upgrade.',
+	'mediawiki-up-to-date-long' => 'You have the latest version of MediaWiki ([[Special:Version|view version]]). You do not need to upgrade.',
+	'mediawiki-update-available' => 'A new version of MediaWiki is available!',
+	'mediawiki-update-available-long' => 'MediaWiki version $1 is available. [$2 Upgrade now] to keep your wiki secure and get the new awesome features in this release.',
 	'extensions-up-to-date' => 'Your extensions are all up to date.',
 	
 	// Special:Install

@@ -71,7 +71,7 @@ class SpecialUpdate extends SpecialPage {
 					$this->showCoreStatus( false );
 				}
 				
-				$this->showExtensionStatuses( count( $updates ) > 0 ? $updates : false );	
+				$this->showExtensionStatuses($updates );	
 			}
 
 		} else {
@@ -85,12 +85,20 @@ class SpecialUpdate extends SpecialPage {
 	 * 
 	 * @since 0.1 
 	 * 
-	 * @param $status
+	 * @param $status Mixed: false when there are no updates or a version number (string) when there is. 
 	 */
 	protected function showCoreStatus( $status ) {
-		global $wgVersion;
+		global $wgOut, $wgVersion;
 		
-		
+		if ( $status !== false ) {
+			$wgOut->addHTML( '<h3>' . wfMsg( 'mediawiki-up-to-date' ) . '</h3>' );
+			$wgOut->addWikiMsg( 'mediawiki-up-to-date-long' );
+		}
+		else {
+			$wgOut->addHTML( '<h3>' . wfMsg( 'mediawiki-update-available' ) . '</h3>' );
+			// TODO: link
+			$wgOut->addWikiMsgArray( 'mediawiki-update-available-long', array( $status, '' ) );
+		}
 	}
 	
 	/**
@@ -99,12 +107,12 @@ class SpecialUpdate extends SpecialPage {
 	 * 
 	 * @since 0.1 
 	 * 
-	 * @param $status
+	 * @param $extensions Array: the extensions that have updates and their version numbers.
 	 */	
-	protected function showExtensionStatuses() {
-		global $wgExtensionCredits;
+	protected function showExtensionStatuses( array $extensions ) {
+		global $wgOut, $wgExtensionCredits;
 		
-		
+		//$wgOut->addHTML( var_dump($extensions) );
 		// TODO
 	}
 	
