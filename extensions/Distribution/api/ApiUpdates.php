@@ -140,11 +140,10 @@ class ApiUpdates extends ApiBase {
 				array(
 					'version_id',
 					'version_nr',
-					'version_status',
-					'version_url'
+					'version_status'
 				),
 				array(
-					'unit_id' => $extension->unit_id,
+					'version_unit_id' => $extension->unit_id,
 					'version_status' => $states
 				),
 				'Database::selectRow',
