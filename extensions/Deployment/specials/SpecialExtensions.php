@@ -253,6 +253,10 @@ class SpecialExtensions extends SpecialPage {
 	protected function displayExtensionRow( ExtensionInfo $extension ) {
 		global $wgOut;
 		
+		// TODO: use seperate rows for title + desc and controls + links
+		
+		// TODO: add row that shows with update info when an update is detected
+		
 		$wgOut->addHTML( '<tr><td>' );
 		
 		$wgOut->addHTML( $this->getItemNameTdContents( $extension ) );
