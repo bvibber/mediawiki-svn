@@ -37,6 +37,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @ingroup Distribution
  * @ingroup API
+ * 
+ * @author Jeroen De Dauw
  */
 class ApiUpdates extends ApiBase {
 	

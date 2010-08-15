@@ -8,6 +8,7 @@
  * @ingroup Distribution
  *
  * @author Jeroen De Dauw
+ * @author Chad Horohoe
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -27,11 +28,21 @@ $wgExtensionMessagesFiles['Distribution'] = dirname( __FILE__ ) . '/Distribution
 // Load classes.
 $wgAutoloadClasses['DistributionRelease'] = dirname( __FILE__ ) . '/includes/DistributionRelease.php'; 
 $wgAutoloadClasses['ExtensionDataImporter'] = dirname( __FILE__ ) . '/includes/ExtensionDataImporter.php';
+$wgAutoloadClasses['ReleaseRepo'] = dirname( __FILE__ ) . '/includes/ReleaseRepo.php';
+// $wgAutoloadClasses['Release'] = dirname( __FILE__ ) . '/includes/Release.php';
+$wgAutoloadClasses['MediaWikiRelease'] = dirname( __FILE__ ) . '/includes/Release.php';
 
-// Hook registration.
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
+// Special pages.
+$wgAutoloadClasses['SpecialDownloadMediaWiki'] = dirname( __FILE__ ) . '/specials/SpecialDownloadMediawiki.php';
+$wgSpecialPages['DownloadMediaWiki'] = 'SpecialDownloadMediaWiki';
+
+$wgAutoloadClasses['SpecialReleaseManager'] = dirname( __FILE__ ) . '/specials/SpecialReleaseManager.php';
+$wgSpecialPages['ReleaseManager'] = 'SpecialReleaseManager';
 
 // API modules registration.
+$wgAutoloadClasses['ApiMWReleases'] = dirname( __FILE__ ) . '/api/ApiMWReleases.php';
+$wgAPIModules['mwreleases'] = 'ApiMWReleases';
+
 $wgAutoloadClasses['ApiQueryExtensions'] = dirname( __FILE__ ) . '/api/ApiQueryExtensions.php';
 $wgAPIListModules['extensions'] = 'ApiQueryExtensions';
 
@@ -43,6 +54,9 @@ $wgAPIModules['extensionversions'] = 'ApiExtensionVersions';
 
 $wgAutoloadClasses['ApiUpdates'] = dirname( __FILE__ ) . '/api/ApiUpdates.php';
 $wgAPIModules['updates'] = 'ApiUpdates';
+
+// Hook registration.
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'efDistributionSchemaUpdate';
 
 /**
  * Initialization function for the Distribution extension.
@@ -56,10 +70,10 @@ function efDistributionSetup() {
 		'path' => __FILE__,
 		'name' => 'Distribution',
 		'version' => Distribution_VERSION,
-		'author' => '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]',
+		'author' => '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw], Chad Horohoe',
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Distribution',
 		'descriptionmsg' => 'distribution-desc',
-	);	
+	);
 	
 }
 
@@ -85,6 +99,11 @@ function efDistributionSchemaUpdate() {
 	
 	$wgExtNewTables[] = array(
 		'distribution_unit_versions',
+		dirname( __FILE__ ) . '/distribution.sql'
+	);
+
+	$wgExtNewTables[] = array(
+		'distribution_mwreleases',
 		dirname( __FILE__ ) . '/distribution.sql'
 	);		
 

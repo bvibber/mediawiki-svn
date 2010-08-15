@@ -8,6 +8,7 @@
  * @ingroup Deployment
  *
  * @author Jeroen De Dauw
+ * @author Chad Horohoe
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -15,3 +16,5 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgDistributionDownloads = 'http://www.mediawiki.org/wiki/Special:ExtensionDistributor';
+$wgMWRSvnUrl = 'http://svn.wikimedia.org/svnroot/mediawiki/';
+$wgMWRDownloadUrl = 'http://download.wikimedia.org/mediawiki/';
