@@ -16,11 +16,11 @@ $messages = array();
  */
 $messages['en'] = array(
 	// General
-	'deployment-desc' => 'Provides a way to install extensions via GUI and update them and the wiki itself via another GUI',
+	'deployment-desc' => 'Provides a way to [[Special:Install|install MediaWiki extensions]] and [[Special:Update|update MediaWiki and MediaWiki extensions]]',
 	'extension' => 'Extension',
 	'extension-name-missing' => '[no name]',
 	'version-unknown' => 'unknown',
-	
+
 	// Special pages
 	'specialpages-group-administration' => 'Wiki administration',
 
@@ -55,28 +55,34 @@ $messages['en'] = array(
 	'add-new-extensions' => 'Add new',
 	'extension-type-all' => 'All',
 	'extension-bulk-actions' => 'Bulk Actions',
-	'extension-page-explanation' => 'This page lists the installed extensions on this wiki. For more info about this wiki installation, see [[Special:Version]].',
-	'extension-none-installed' => 'There are currently no extensions installed. You can [[$1|add new ones]].',
+	'extension-page-explanation' => 'This page lists the installed extensions on this wiki.
+For more info about this wiki installation, see [[Special:Version]].',
+	'extension-none-installed' => 'There are currently no extensions installed.
+You can [[$1|add new ones]].',
 	'extension-empty-category' => 'There are no extensions of type \'\'$1\'\' installed.',
-	'extension-invalid-category' => 'Could not filter on extension type \'\'$1\'\', all extenions are shown instead.',
+	'extension-invalid-category' => 'Could not filter on extension type \'\'$1\'\'. 
+All extensions are shown instead.',
 
 	// Special:Update
-	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki.',
-	'mediawiki-up-to-date-long' => 'You have the latest version of MediaWiki ([[Special:Version|view version]]). You do not need to upgrade.',
+	'mediawiki-up-to-date' => 'You have the latest version of MediaWiki installed.',
+	'mediawiki-up-to-date-long' => 'You have the latest version of MediaWiki [[[Special:Version|installed]].
+You do not need to update.',
 	'mediawiki-update-available' => 'A new version of MediaWiki is available!',
-	'mediawiki-update-available-long' => 'MediaWiki version $1 is available. [$2 Upgrade now] to keep your wiki secure and get the new awesome features in this release.',
+	'mediawiki-update-available-long' => 'MediaWiki version $1 is available.
+[$2 Update now] to keep your wiki secure and get the new features in this release.',
 	'extensions-up-to-date' => 'Your extensions are all up to date.',
-	
+
 	// Special:Install
-	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki. You can browse and search extensions that are in the [$1 MediaWiki Extension Repository] to install via this page.',
+	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki.
+You can browse and search extensions that are in the [$1 MediaWiki Extension Repository] to install via this page.',
 	'search-extensions' => 'Search',
-	'search-extensions-long' => 'Search for extensions by keyword, author, or tag.',
+	'search-extensions-long' => 'Search for extensions by keyword, author or tag.',
 	'search-term' => 'Term',
 	'search-author' => 'Author',
 	'search-tag' => 'Tag',
 	'search-extensions-button' => 'Search extensions',
 	'popular-extension-tags' => 'Popular tags',
-	'popular-extension-tags-long' => 'You may also browse based on the most popular tags in the Extension Repository:',
+	'popular-extension-tags-long' => 'You may also browse based on the most popular tags in the MediaWiki Extension Repository:',
 
 	'stability-alpha' => 'Alpha',
 	'stability-beta' => 'Beta',
@@ -91,16 +97,16 @@ $messages['en'] = array(
 	'deploy-ftp-username-required' => 'FTP username is required',
 	'deploy-ftp-password-required' => 'FTP password is required',
 	'deploy-ftp-hostname-required' => 'FTP hostname is required',
-	'deploy-ftp-connect-failed' => 'Failed to connect to FTP server $1:$2',
-	
+	'deploy-ftp-connect-failed' => 'Failed to connect to FTP server $1:$2.',
+
 	// Filesystem: FTP
 	'deploy-ssh-not-loaded' => 'The FTP SSH2 extension is not available',
 	'deploy-ssh2-no-stream-get-contents'  => 'The SSH2 PHP extension is available, however, the PHP5 function stream_get_contents() is also required',
 	'deploy-ssh2-username-required' => 'SSH username is required',
 	'deploy-ssh2-password-required' => 'SSH password or private key is required',
 	'deploy-ssh2-hostname-required' => 'SSH hostname is required',
-	'deploy-ssh2-connect-failed' => 'Failed to connect to SSH2 server $1:$2',
-	'deploy-ssh2-key-authentication-failed' => 'Public and private keys are incorrect for username $1',
-	'deploy-ssh2-password-authentication-failed' => 'Username or password incorrect for username $1',
+	'deploy-ssh2-connect-failed' => 'Failed to connect to SSH2 server $1:$2.',
+	'deploy-ssh2-key-authentication-failed' => 'Public and private keys are incorrect for username "$1".',
+	'deploy-ssh2-password-authentication-failed' => 'Username or password incorrect for username "$1".',
 	'deploy-ssh2-command-failed' => 'Unable to perform command: $1',
 );

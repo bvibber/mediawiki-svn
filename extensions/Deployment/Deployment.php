@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Initialization file for the Deployment extension.
  * Extension documentation: http://www.mediawiki.org/wiki/Extension:Deployment
@@ -68,5 +67,4 @@ function efDeploymentSetup() {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Deployment',
 		'descriptionmsg' => 'deployment-desc',
 	);	
-	
 }
