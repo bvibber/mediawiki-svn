@@ -341,8 +341,19 @@ class BitmapHandler extends ImageHandler {
 		imagejpeg( $dst_image, $thumbPath, 95 );
 	}
 
-
+	/**
+	 * Its unclear if anything still uses this
+	 * as jpeg is now in its own subclass.
+	 *
+	 * And really each media handler should use a
+	 * different getMetadata, as the formats aren't
+	 * all that similar and usually have different
+	 * metadata needs.
+	 *
+	 * @deprected
+	 */
 	function getMetadata( $image, $filename ) {
+		wfDeprected( __METHOD__ );
 		global $wgShowEXIF;
 		if( $wgShowEXIF && file_exists( $filename ) ) {
 			$exif = new Exif( $filename );
@@ -362,6 +373,11 @@ class BitmapHandler extends ImageHandler {
 		return 'exif';
 	}
 
+	/**
+	 * In practise this is only used by jpegs...
+	 *
+	 * It should perhaps be moved to Jpeg.php.
+	 */
 	function isMetadataValid( $image, $metadata ) {
 		global $wgShowEXIF;
 		if ( !$wgShowEXIF ) {
@@ -369,7 +385,12 @@ class BitmapHandler extends ImageHandler {
 			return self::METADATA_GOOD;
 		}
 		if ( $metadata === '0' ) {
-			# Special value indicating that there is no EXIF data in the file
+			# Old special value indicating that there is no EXIF data in the file.
+			# or that there was an error well extracting the metadata.
+			wfDebug( __METHOD__ . ": back-compat version\n");
+			return self::METADATA_COMPATIBLE;
+		}
+		if ( $metadata === '-1' ) {
 			return self::METADATA_GOOD;
 		}
 		wfSuppressWarnings();
@@ -414,7 +435,7 @@ class BitmapHandler extends ImageHandler {
 
 	function formatMetadata( $image ) {
 		$metadata = $image->getMetadata();
-		if ( !$metadata ) {
+		if ( !$metadata || $metadata == '-1' ) {
 			return false;
 		}
 		$exif = unserialize( $metadata );
@@ -422,6 +443,9 @@ class BitmapHandler extends ImageHandler {
 			return false;
 		}
 		unset( $exif['MEDIAWIKI_EXIF_VERSION'] );
+		if ( count( $exif ) == 0 ) {
+			return false;
+		}
 		return $this->formatMetadataHelper( $exif );
 	}
 
