@@ -24,10 +24,10 @@ $messages['en'] = array(
 	// Special pages
 	'specialpages-group-administration' => 'Wiki administration',
 
-	'dashboard' => 'Administration dashboard',
-	'extensions' => 'Manage extensions',
-	'update' => 'Update wiki and extensions',
-	'install' => 'Install extensions',
+	'special-dashboard' => 'Administration dashboard',
+	'special-extensions' => 'Manage extensions',
+	'special-update' => 'Update wiki and extensions',
+	'special-install' => 'Install extensions',
 
 	'dashboard-title' => 'Dashboard',
 	'extensions-title' => 'Extensions',

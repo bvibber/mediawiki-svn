@@ -29,6 +29,13 @@ class SpecialUpdate extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'Update', 'siteadmin' );
 	}
+	
+	/**
+	 * @see SpecialPage::getDescription
+	 */
+	public function getDescription() {
+		return wfMsg( 'special-' . strtolower( $this->mName ) );
+	}	
 
 	/**
 	 * Main method.

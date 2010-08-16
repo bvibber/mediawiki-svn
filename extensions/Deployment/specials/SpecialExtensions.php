@@ -44,6 +44,13 @@ class SpecialExtensions extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'Extensions' );	
 	}
+	
+	/**
+	 * @see SpecialPage::getDescription
+	 */
+	public function getDescription() {
+		return wfMsg( 'special-' . strtolower( $this->mName ) );
+	}	
 
 	/**
 	 * Main method.

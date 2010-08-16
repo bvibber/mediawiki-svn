@@ -29,6 +29,13 @@ class SpecialDashboard extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'Dashboard', 'siteadmin' );
 	}
+	
+	/**
+	 * @see SpecialPage::getDescription
+	 */
+	public function getDescription() {
+		return wfMsg( 'special-' . strtolower( $this->mName ) );
+	}	
 
 	/**
 	 * Main method.
