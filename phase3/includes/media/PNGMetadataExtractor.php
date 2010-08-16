@@ -19,7 +19,10 @@ class PNGMetadataExtractor {
 		 */
 		self::$text_chunks = array(
 			'XML:com.adobe.xmp' => 'xmp',
-			'Artist'      => 'Artist', # this is unofficial, compared to Author, which is
+			# Artist is unofficial. Author is the recommended
+			# keyword in the PNG spec. However some people output
+			# Artist so support both.
+			'Artist'      => 'Artist',
 			'Model'       => 'Model',
 			'Make'        => 'Make',
 			'Author'      => 'Artist',
@@ -27,11 +30,13 @@ class PNGMetadataExtractor {
 			'Description' => 'ImageDescription',
 			'Title'       => 'ObjectName',
 			'Copyright'   => 'Copyright',
-			'Source'      => 'Model',  # Source as in original device used to make image
+			# Source as in original device used to make image
+			# not as in who gave you the image
+			'Source'      => 'Model',
 			'Software'    => 'Software',
 			'Disclaimer'  => 'Disclaimer',
 			'Warning'     => 'ContentWarning',
-			'URL'         => 'Identifer', # Not sure if this is best mapping. Maybe WebStatement.
+			'URL'         => 'Identifier', # Not sure if this is best mapping. Maybe WebStatement.
 			'Label'       => 'Label',
 			/* Other potentially useful things - Creation Time, Document */
 		);
@@ -156,7 +161,10 @@ class PNGMetadataExtractor {
 					fseek( $fh, self::$CRC_size, SEEK_CUR );
 					continue;
 				}
+				wfSuppressWarnings();
 				$content = iconv( 'ISO-8859-1', 'UTF-8', $content);
+				wfRestoreWarnings();
+
 				if ( $content === false ) {
 					throw new Exception( __METHOD__ . ": Read error (error with iconv)" );
 					return;
@@ -201,7 +209,10 @@ class PNGMetadataExtractor {
 						continue;
 					}
 
+					wfSuppressWarnings();
 					$content = iconv( 'ISO-8859-1', 'UTF-8', $content);
+					wfRestoreWarnings();
+
 					if ( $content === false ) {
 						throw new Exception( __METHOD__ . ": Read error (error with iconv)" );
 						return;
