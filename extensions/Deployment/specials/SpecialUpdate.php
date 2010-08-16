@@ -59,7 +59,7 @@ class SpecialUpdate extends SpecialPage {
 			
 			if ( $updates === false ) {
 				$this->showCoreStatus( false );
-				$this->showExtensionStatuses( false );				
+				$this->showExtensionStatuses();				
 			}
 			else {
 				// Check if there is a MediaWiki update.
@@ -70,8 +70,8 @@ class SpecialUpdate extends SpecialPage {
 				else {
 					$this->showCoreStatus( false );
 				}
-				
-				$this->showExtensionStatuses($updates );	
+
+				$this->showExtensionStatuses( $updates );	
 			}
 
 		} else {
@@ -109,7 +109,7 @@ class SpecialUpdate extends SpecialPage {
 	 * 
 	 * @param $extensions Array: the extensions that have updates and their version numbers.
 	 */	
-	protected function showExtensionStatuses( array $extensions ) {
+	protected function showExtensionStatuses( array $extensions = array() ) {
 		global $wgOut;
 		
 		$wgOut->addHTML( '<h3>' . wfMsg( 'special-update-extensions' ) . '</h3>' );
