@@ -68,6 +68,7 @@ mw.SequencerTools.prototype = {
 			'title' : gM('mwe-sequencer-preview'),
 			'action': function( _this, smilClip, toolId ){				
 				_this.sequencer.getPlayer().previewClip( smilClip );
+				// xxx todo  update preview button to "pause" / "play" 
 			}
 		},
 		'cancel':{

@@ -6,7 +6,7 @@
 	top: 4px;	
 	left:4px;
 	right: 4px;
-	bottom: 4px;
+
 }
 
 .mwe-sequencer .trackNameContainer{
@@ -28,7 +28,6 @@
 }
 
 .mwe-sequencer .trackNames{
-	height: 100px;
 	background-color: #EEE;	
 	border: solid thin #999;
 	padding:4px
@@ -56,14 +55,18 @@
 	background-color:#6F6;
 	border:2px dashed #000;			
 }
-.mwe-sequencer .timelineClip:hover{
+.mwe-sequencer .timelineClip:hover{	
 	border: 2px solid #66F;
 }
 .mwe-sequencer .selectedClip{
-	border: 2px solid #F66;
+	margin-top: 1px;
+	margin-left: 1px;
+	border: 4px solid #F66;
 }
 .mwe-sequencer .selectedClip:hover{
-	border: 2px solid #F22;
+	margin-top: 1px;
+	margin-left: 1px;
+	border: 4px solid #F22;
 }
 
 .mwe-sequencer .trimStartThumb, .trimEndThumb {

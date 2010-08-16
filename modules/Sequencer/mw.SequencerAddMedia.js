@@ -10,10 +10,12 @@ mw.SequencerAddMedia = function( sequencer ) {
 };
 
 // Set up the mvSequencer object
-mw.SequencerAddMedia.prototype = {		
+mw.SequencerAddMedia.prototype = {
+	
 	init: function( sequencer ){
 		this.sequencer = sequencer;
 	},
+	
 	// Get the menu widget that drives the search and upload tab selection
 	getMenuWidget: function(){
 		var _this = this;
@@ -48,7 +50,7 @@ mw.SequencerAddMedia.prototype = {
 					return false;
 				}),
 				
-				//input button
+				// Input button
 				$j.button({				
 					// The text of the button link
 					'text' : gM('mwe-sequencer-get-media'),				
@@ -74,7 +76,7 @@ mw.SequencerAddMedia.prototype = {
 			.empty()
 			.loadingSpinner();
 		
-		if( ! this.remoteSearchDriver ){
+		if( ! _this.remoteSearchDriver ){
 			// set the tool target to loading
 			mw.load( 'AddMedia.addMediaWizard', function(){
 				_this.remoteSearchDriver = new mw.RemoteSearchDriver({
@@ -83,19 +85,26 @@ mw.SequencerAddMedia.prototype = {
 					'displaySearchInput': false,
 					'default_query' : inputValue,
 					'displayResourceInfoIcons' : false,
-					'resourceSelectionCallback' : function( resource ){ 
-						_this.insertResourceDialog( resource )
+					'resourceSelectionCallback' : function( resource ){
+						mw.addLoaderDialog( gM( 'mwe-sequencer-loading-asset' ) );
+						// Get convert resource to smilClip and insert into the timeline
+						_this.getSmilClipFromResource( resource, function( smilClip ) {
+							_this.sequencer.getTimeline().insertSmilClipEdit( smilClip );
+							mw.closeLoaderDialog();
+						});						
 						return false;
 					},
 					'displaySearchResultsCallback' : function(){
 						_this.addSearchResultsDrag();
 					}
-				})
-				.createUI()
+				});
+				// Create the search user interface: 
+				_this.remoteSearchDriver.createUI();		
 			});
 		} else {
 			this.remoteSearchDriver.createUI()
 		}		
+	
 	},	
 	/**
 	 * Get the resource object from a provided asset
@@ -136,77 +145,82 @@ mw.SequencerAddMedia.prototype = {
 				revert: 'invalid'		
 			});
 	},
-	insertAssetDialog: function( assetElement, sequenceTrack, order ){
-		this.insertResourceDialog( 
-			this.getResourceFromAsset( assetElement ),
-			sequenceTrack,
-			order
-		);
+	
+	/** 
+	 * Take a dom element asset from search results and
+	 *  convert to a smil ref node that can be inserted into 
+	 *  a smil xml tree
+	 */
+	getSmilClipFromAsset: function( assetElement, callback ){
+		var resource = this.getResourceFromAsset( assetElement )
+		this.getSmilClipFromResource ( resource, callback );
 	},
 	/**
-	 * Create an insert resource dialog, expose basic in-out points or / duration 
-	 * xxx todo if resource needs to be imported run import dialog from remoteResourceDrive
-	 *  buttons include insert at end or insert after current
+	 * Take an addMedia 'resource' and convert to a smil 
+	 *  ref node that can be inserted into a smil xml tree
 	 */
-	insertResourceDialog: function( resource, sequenceTrack, order ){
-		var buttons = {};
-		var cat = resource;
-		debugger;
-		// Get an xml smil ref pointer: ( per the supplied content type )
-		var smilRef = this.getSmilRefFromResource( resource );
-
-		// Build out the resource dialog content: 
-		var $content = 
-			$j('<div />').append( 
-				$j('<div />')
-				.addClass( 'sequencerEditTools' )
-				.css({				
-					'width' : '50%',
-					'height' : '100%',
-					'overflow': 'auto',
-					'position' : 'absolute',
-					'top' : '0px',
-					'left': '0px'
-				}),
-				
-				$j('<div />')
-				.css({
-					'position' : 'absolute'
-					'top' : '0px',
-					'right': '0px',
-					'width' : '50%',
-					'height' : '100%'
-				})
-				.append(
-					// the div 
-				)
-			)
-		// Build out the edit tools 
-		$content.find( '.sequencerEditTools' )
+	getSmilClipFromResource: function( resource, callback ){
+		var tagType = 'ref';
+		if( resource.mime.indexOf( 'image/' ) != -1 ){
+			tagType = 'img';		
+		}
+		if( resource.mime.indexOf( 'video/') != -1 ){
+			tagType = 'video';
+		}
+		if( resource.mime.indexOf( 'audio/') != -1 ){
+			tagType = 'audio';
+		}
+		var $smilRef = $j( '<' + tagType + ' />')	
 		
-		// Insert after last selected clip ( or at end ) 
-		buttons[ gM('mwe-sequencer-insert') ] = function() {
-			// call a function that inserts into smil and timeline ( getTimeline() )
-			alert(' insert resource')
+		// Set the default duration 
+		if( tagType == 'img' ){
+			$smilRef.attr( 'dur', mw.getConfig( 'Sequencer.AddMediaImageDuration' ) );
 		}		
-		// cancel
-		buttons[ gM('mwe-cancel') ] = function(){
-			$j( this ).dialog( 'close' );
-		};
-		        
-		mw.addDialog({
-			'title' : gM('mwe-sequencer-insert-resource'),
-			'dragable' : true,	
-			'height' : 480,
-			'width' : 800,
-			'resizable' : true,		
-			'content' : resourceEdit.getUi()
-			'buttons' : buttons
-		});
-	},
-	
-	getSmilRefFromResource: function( resource ){
-			
+		
+		// Set all available params
+		var resourceAttributeMap = {
+			'type' :  'mime',
+			'title' : 'title',
+			'src' : 'src',
+			'poster' : 'poster'
+		}
+		for( var i in resourceAttributeMap ){
+			if( resource[i] ){
+				$smilRef.attr( resourceAttributeMap[i], resource[i] );
+			}
+		}		
+		var resourceParamMap = {
+			'content_provider_id' :  'apiProvider',
+			'id' : 'apiTitleKey'
+		}
+		for( var i in resourceParamMap ){
+			if( resource[i] ){
+				$smilRef.append(
+					$j( '<param />')
+					.attr({
+						'name' : resourceParamMap[i],
+						'value' : resource[i]
+					})
+				)
+			}
+		}
+		// Make sure we have source for the asset.   
+		if( $smilRef.attr('src') ){		
+			callback( $smilRef.get(0) )
+		} else {
+			// the resource includes a pointer to its parent search object
+			// from the search object grab the image object for the target resolution 
+			resource.pSobj.getImageObj( 
+				resource, 
+				{
+					'width' : mw.getConfig( 'Sequencer.AddMediaImageWidth' )
+				},
+				function( imageObj ){
+					$smilRef.attr('src', imageObj.url )
+					callback( $smilRef.get(0) );
+				}
+			)			
+		}
 	}
 }
 

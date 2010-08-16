@@ -11,6 +11,7 @@ $messages['en'] = array(
 	'mwe-sequencer-loading-timeline' => 'Loading timeline ...',
 	'mwe-sequencer-loading-player' => 'Loading player ...',
 	'mwe-sequencer-loading-menu' => 'Loading menu ...',
+	'mwe-sequencer-loading-asset' => 'Loading asset ...',
 
 	'mwe-sequencer-no_selected_resource' => '<h3>No resource selected</h3> Select a clip to enable editing.',
 	'mwe-sequencer-no-sequence-start-new' => 'Empty sequence, [$1 browser for assets] to create a new sequence',

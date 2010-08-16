@@ -5,11 +5,11 @@
 // Wrap in mw to not pollute global namespace
 ( function( mw ) {
 	
-	mw.addResourcePaths( {
-		"mw.Sequencer"	: "mw.Sequencer.js",
-		
+	mw.addResourcePaths( {				
 		"mw.Sequencer"	: "mw.Sequencer.js",		
 		"mw.style.Sequencer" : "mw.style.Sequencer.css",
+		
+		"mw.SequencerConfig" : "mw.SequencerConfig.js",
 		
 		"mw.SequencerAddMedia" : "mw.SequencerAddMedia.js",
 		"mw.SequencerPlayer" : "mw.SequencerPlayer.js",
@@ -32,15 +32,6 @@
 		
 	} );
 	
-	mw.setDefaultConfig({
-		// If the sequencer should attribute kaltura
-		"Sequencer.KalturaAttribution" : true,
-
-		// The size of the undo stack 
-		"Sequencer.numberOfUndos" : 100
-	})
-	
-	
 	/**
 	 * The FirefoggRender sub module 
 	 */
@@ -57,8 +48,9 @@
 		// Make sure we have the required mwEmbed libs:			
 		return [
 			[	// Load the EmbedPlayer Module ( includes lots of dependent classes )   
-				'EmbedPlayer',
-				'mw.Sequencer'
+				'EmbedPlayer',				
+				'mw.Sequencer',
+				'mw.SequencerConfig'
 			],		
 			[										
 				'$j.contextMenu',

@@ -1038,22 +1038,15 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	}
 	
 	/**
-	 * Mobile Safari has special properties for html5 video::
-	 * 
-	 * NOTE: should be moved to browser detection script
+	 * Close the loader dialog created with addLoaderDialog
 	 */
-	mw.isMobileSafari = function() {		
-		// check mobile safari foce ( for debug )
-		if( mw.getConfig( 'forceMobileSafari' ) ){
-			return true;
+	mw.closeLoaderDialog = function() {
+		// Make sure the dialog resource is present
+		if( !mw.isset( '$j.ui.dialog' ) ) {
+			return false;
 		}
-		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
-			(navigator.userAgent.indexOf('iPod') != -1) || 
-			(navigator.userAgent.indexOf('iPad') != -1)) {
-			return true;
-		}
-		return false;
-	}
+		$j( '#mwTempLoaderDialog' ).dialog( 'destroy' ).remove();
+	}	
 	
 	/**
 	 * Add a (temporary) dialog window:
@@ -1127,19 +1120,25 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			$j( '#mwTempLoaderDialog' ).dialog( options );
 		} );
 		return $j( '#mwTempLoaderDialog' );
-	}
+	}	
 	
 	/**
-	 * Close the loader dialog created with addLoaderDialog
+	 * Mobile Safari has special properties for html5 video::
+	 * 
+	 * NOTE: should be moved to browser detection script
 	 */
-	mw.closeLoaderDialog = function() {
-		// Make sure the dialog resource is present
-		if( !mw.isset( '$j.ui.dialog' ) ) {
-			return false;
+	mw.isMobileSafari = function() {		
+		// check mobile safari foce ( for debug )
+		if( mw.getConfig( 'forceMobileSafari' ) ){
+			return true;
 		}
-		$j( '#mwTempLoaderDialog' ).dialog( 'destroy' ).remove();
+		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
+			(navigator.userAgent.indexOf('iPod') != -1) || 
+			(navigator.userAgent.indexOf('iPad') != -1)) {
+			return true;
+		}
+		return false;
 	}
-	
 	
 	/**
 	 * Similar to php isset function checks if the variable exists. Does a safe
@@ -1796,13 +1795,15 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	
 	/**
 	 * getAbsoluteUrl takes a src and returns the absolute location given the
-	 * document.URL
+	 * document.URL or a contextUrl param
 	 * 
-	 * @param {String}
-	 *            src path or url
+	 * @param {String} src path or url
+	 * @param {String} contextUrl The domain / context for creating an absolute url 
+	 * 	from a relative path
 	 * @return {String} absolute url
 	 */
 	mw.absoluteUrl = function( src, contextUrl ) {
+		
 		var parsedSrc =  mw.parseUri( src );		
 		// Source is already absolute return:
 		if( parsedSrc.protocol != '') {
@@ -1810,7 +1811,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		}
 		
 		// Get parent Url location the context URL
-		if( contextUrl) {	
+		if( contextUrl ) {	
 			var parsedUrl = mw.parseUri( contextUrl );			
 		} else {
 			var parsedUrl = mw.parseUri( document.URL );
