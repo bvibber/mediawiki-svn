@@ -21,7 +21,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##############################################################################
 
-import sys, os, os.path, traceback
+import sys, os, os.path, traceback, random
 import ConfigParser, optparse
 import select, socket, urllib
 import xmpp, xmpp.simplexml # using the xmpppy library <http://xmpppy.sourceforge.net/>, GPL
@@ -84,8 +84,13 @@ class Relay(object):
 	self.loglevel = LOG_VERBOSE
 	self.wiki_info = wiki_info;
 
-    def warn(self, message):
+    def warn(self, message, error_type = None, error_value = None, trbk = None):
 	if self.loglevel >= LOG_QUIET:
+	    if trbk and not error_type:
+		message = message + "\n" + "  ".join( traceback.format_tb( trbk ) )
+	    elif error_type:
+		message = message + " * " + "  ".join( traceback.format_exception( error_type, error_value, trbk ) ) 
+
 	    sys.stderr.write( "WARNING: %s\n" % ( message.encode( self.console_encoding ) ) )
 
     def info(self, message):
@@ -284,34 +289,103 @@ class Relay(object):
 	    if m is None or m == False:
 		self.warn( "insufficient information in RC packet (rcid: %s), discarding message" % rc.getAttr('rcid') )
 	    else:
+		self.debug( "relying RC message: %s" % m )
 		return t.send_message( m, rc )
 
-    def service_loop( self, *connections ):
-	socketlist = {}
-	for con in connections:
-	    socketlist[ con.get_socket() ] = con
+    def select_connections( self, connection_sockets, broken, timeout = 1 ):
+	waiting = []
 
+	try:
+	    (in_socks , out_socks, err_socks) = select.select(connection_sockets.keys(),[],connection_sockets.keys(),1)
+
+	    for sock in err_socks:
+		con = connection_sockets[ sock ]
+		self.warn("exception in socket %s, connection %s" % (repr(sock), repr(con)));
+
+		broken.append( con )
+		del connection_sockets[ sock ]
+
+	    for sock in in_socks:
+		con = connection_sockets[ sock ]
+		waiting.append( con )
+
+	except socket.error, e:
+	    error_type, error_value, trbk = sys.exc_info()
+	    found = False
+
+	    for sock, conn in connection_sockets.items():
+		if not conn.test_connection():
+		    self.warn("test_connection for connection %s failed after exception" % repr(con), error_type, error_value, trbk);
+		    found = True
+
+		    broken.append(conn)
+		    del connection_sockets[ sock ]
+
+	    if not found:
+		    self.warn("exception ocurred, but all connections seem valid!", error_type, error_value, trbk);
+
+	except IOError, e:
+	    error_type, error_value, trbk = sys.exc_info()
+	    found = False
+
+	    for sock, conn in connection_sockets.items():
+		if not conn.test_connection():
+		    self.warn("test_connection for connection %s failed after exception" % repr(con), error_type, error_value, trbk);
+		    found = True
+
+		    broken.append(conn)
+		    del connection_sockets[ sock ]
+
+	    if not found:
+		    self.warn("exception ocurred, but all connections seem valid!", error_type, error_value, trbk);
+
+	return waiting
+
+    def service_loop( self, *connections ):
 	self.online = 1
+
+	connection_sockets = {}
+	for conn in connections:
+	    connection_sockets[ conn.get_socket() ] = conn
+
+	broken = set()
 
 	try:
 	    while self.online:
-		(in_socks , out_socks, err_socks) = select.select(socketlist.keys(),[],socketlist.keys(),1)
+		waiting = self.select_connections( connection_sockets, broken, timeout = 1 )
 
-		for sock in in_socks:
-		    con = socketlist[ sock ]
+		if broken:
+		    self.debug( "currently broken: %s" % repr(broken) )
 
-		    if con:
-			try:
-			    con.process()
-			except Exception, e:
-			    error_type, error_value, trbk = sys.exc_info()
-			    self.warn( "Error while processing! %s" % "  ".join( traceback.format_exception( error_type, error_value, trbk ) ) )
-			    # TODO: detect when we should kill the loop because a connection failed
-		    else:
-			raise Exception( "Unknown socket: %s" % repr(sock) )
+		for conn in broken:
+		    if conn.reconnect_backoff():
+			self.debug( "skipping attempt to reconnected for %s!" % repr(conn) )
+			continue
 
-		for sock in err_socks:
-			raise Exception( "Error in socket: %s" % repr(sock) )
+		    try:
+			conn.reconnect()
+
+			broken.remove( conn )
+			connection_sockets[ conn.get_socket() ] = conn
+			self.info( "reconnected %s!" % repr(conn) )
+
+		    except Exception, e:
+			error_type, error_value, trbk = sys.exc_info()
+			self.warn( "Error during reconnect for connection %s!" % repr(conn), error_type, error_value, trbk )
+
+		for conn in waiting:
+		    try:
+			conn.process()
+		    except Exception, e:
+			error_type, error_value, trbk = sys.exc_info()
+			
+			if not conn.test_connection():
+			    self.warn("test_connection for connection %s failed after exception in process()" % repr(conn), error_type, error_value, trbk);
+			    broken.append(conn)
+			    del connection_sockets[ conn.get_socket() ]
+			else:
+			    self.info("connection %s seems to be valid after exception in process()" % repr(conn), error_type, error_value, trbk);
+
 	except KeyboardInterrupt:
 	    self.online= 0
 
@@ -337,20 +411,28 @@ class Connection(object):
 	self.relay.debug( message )
 
 class XmppConnection (Connection):
-    def __init__( self, relay, message_encoding = 'utf-8' ):
+    def __init__( self, relay, message_encoding = 'utf-8', backoff_factor = 5, backoff_max_tock = 6, xmpp_debug = [], connection_security = None ):
         super( XmppConnection, self ).__init__( relay )
 	self.message_encoding = message_encoding
 	self.jid = None
 
+	if connection_security == '0' or connection_security == 0 or connection_security == 'off':
+	    self.connection_security = 0
+	elif connection_security == '1' or connection_security == 1 or connection_security == 'on':
+	    self.connection_security = 1
+	else:
+	    self.connection_security = None
+
+	self.xmpp_debug = xmpp_debug
+	self.last_iq = None
+
+	self.backoff_tick = 0
+	self.backoff_tock = 0
+	self.backoff_factor = backoff_factor 
+	self.backoff_max_tock = backoff_max_tock
+
     def process( self ):
 	self.jabber.Process(1)
-
-	if not self.jabber.isConnected(): 
-	    self.warn("connection lost, reconnecting...")
-	    
-	    if self.jabber.reconnectAndReauth():
-		self.warn("re-connect successful.")
-		self.on_connect()
 
     def close( self ):
 	# self.jabber.disconnect() #wha??
@@ -380,7 +462,12 @@ class XmppConnection (Connection):
         if (message.getError()):
             self.warn("received %s error from <%s>: %s" % (message.getType(), message.getError(), message.getFrom() ))
 	elif message.getBody():
-	    self.debug("discarding %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
+	    if message.getFrom().getResource() != self.jid.getNode(): #FIXME: this inly works if no different nick was specified when joining the channel
+		self.debug("discarding %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
+
+    def process_iq(self, con, iq):
+	self.debug("received iq: %s" % repr(iq))  
+	self.last_iq = iq
 
     def guess_local_resource(self):
 	resource = "%s-%d" % ( socket.gethostname(), os.getpid() ) 
@@ -393,10 +480,10 @@ class XmppConnection (Connection):
 	    jid = xmpp.protocol.JID( jid )
 
 	if jid.getResource() is None:
-	    jid = xmpp.protocol.JID( host= jid.getHost(), node= jid.getNode(), resource = self.guess_local_resource() )
+	    jid = xmpp.protocol.JID( host= jid.getDomain(), node= jid.getNode(), resource = self.guess_local_resource() )
 
-	self.jabber = xmpp.Client(jid.getDomain(),debug=[])
-        con= self.jabber.connect()
+	self.jabber = xmpp.Client(jid.getDomain(),debug=self.xmpp_debug)
+        con= self.jabber.connect( secure = self.connection_security )
 
         if not con:
             self.warn( 'could not connect to %s!' % jid.getDomain() )
@@ -413,9 +500,15 @@ class XmppConnection (Connection):
         self.debug('authenticated using %s as %s' % ( auth, jid ) )
 
         self.jabber.RegisterHandler( 'message', self.process_message )
+        self.jabber.RegisterHandler( 'iq', self.process_iq )
 
 	self.jid = jid;
         self.info( 'connected as %s' % ( jid ) )
+
+	if self.ping():
+	    self.info( 'ping ok!' )
+	else:
+	    self.warn( 'ping failed!' )
 
 	self.on_connect()
 
@@ -423,17 +516,93 @@ class XmppConnection (Connection):
 
     def on_connect( self ):
         self.jabber.sendInitPresence(self)
+
+	self.backoff_tick = 0
+	self.backoff_tock = 0
+
         self.roster = self.jabber.getRoster()
 
-	self.relay.join_channels()
+	self.relay.join_channels() #FIXME: this re-joins *all* channels. not just the ones for this connection!
 
     def get_socket( self ):
 	return self.jabber.Connection._sock
+
+    def is_connected( self ):
+	return self.jabber.isConnected()
+
+    def test_connection( self ):
+	if not self.is_connected():
+	    return False
+
+	ok = True
+
+	try:
+	    ok = self.get_socket().fileno() >= 0
+	except:
+	    ok = False
+
+	if not ok: return False
+
+	try:
+	    ok = self.ping()
+	except:
+	    ok = False
+
+	self.jabber.connected = None #XXX: ugly
+	return ok
+
+    def ping( self ):
+	ping_id = "ping-%s" % random.randint(1000000, 9999999)
+
+	ping = xmpp.Iq( typ='get', attrs={ 'id': ping_id }, to= self.jid.getDomain(), frm= self.jid.getStripped() )
+	ping.addChild( name= "ping", namespace = "urn:xmpp:ping" )
+	self.jabber.send( ping )
+	self.debug('XMPP ping sent')
+
+	ping_stanzas = 10
+
+	while self.last_iq is None or self.last_iq.getAttr('id') != ping_id:
+	    n = self.jabber.Process(1)
+	    if n == 0 or n is None or not self.jabber.isConnected():
+		raise IOError("connection lost!")
+
+	    self.debug('waiting for XMPP pong, received %s bytes of other data; %s tries remaining' % (n, ping_stanzas)  )
+  
+	    ping_stanzas -= 1
+	    if ping_stanzas <= 0:
+		raise IOError("ping got no response in time!")
+
+	    if not self.jabber.isConnected():
+		raise IOError("connection lost!")
+
+	return self.last_iq
+
+    def reconnect_backoff( self ):
+	self.debug( "reconnect_backoff: tick = %d, tock = %d" )
+
+	if self.backoff_tick <= 0:
+	    self.backoff_tock = min( self.backoff_tock + 1, self.backoff_max_tock )
+	    self.backoff_tick = self.backoff_tock * self.backoff_factor
+	    return False
+	else: 
+	    self.backoff_tick -= 1
+	    return True
+
+    def reconnect( self ):
+	try:
+	    if self.jabber:
+		self.close()
+	except:
+	    pass
+
+	self.jabber.reconnectAndReauth(self)
+	self.on_connect()
 
 class CommandConnection (Connection):
     def __init__( self, relay, socket ):
         super( CommandConnection, self ).__init__( relay )
 	self.socket = socket
+	self.connected = None
 
     def close( self ):
 	if self.socket != sys.stdin:
@@ -453,14 +622,38 @@ class CommandConnection (Connection):
     def process_command(self, command):
         self.relay.process_command( command )
 
+    def is_connected( self ):
+	if self.connected is None:
+	    self.connected = self.test_connection()
+
+	return self.connected
+
     def get_socket( self ):
 	return self.socket
+
+    def test_connection( self ):
+	try:
+	    self.socket.fileno()
+	    self.connected = True
+	except:
+	    self.connected = False
+
+	return self.connected
+
+    def reconnect_backoff( self ):
+	return False
+
+    def reconnect( self ):
+	raise IOException("can't reconnect command socket!")
+
 
 class UdpConnection (Connection):
     def __init__( self, relay, buffer_size = 8192 ):
         super( UdpConnection, self ).__init__( relay )
 	self.buffer_size = buffer_size
 	self.socket = None
+	self.address = None
+	self.connected = None
 
     def close( self ):
 	self.socket.close()
@@ -478,7 +671,6 @@ class UdpConnection (Connection):
     def process_rc_packet(self, data):
 	try:
 	    dom = xmpp.simplexml.XML2Node( data )
-	    self.debug( "parsed rc packet" )
 
 	    if dom.getName() != "rc":
 		self.warn( "expected <rc> element, found <%s>; sklipping unknown XML" % dom.getName() )
@@ -503,11 +695,44 @@ class UdpConnection (Connection):
 	    self.warn( "failed to bind to UDP %s:%d" % (interface, port) )
 	    return False
 
+	self.address = (interface, port)
+
 	self.info( "listening to UDP %s:%d" % (interface, port) )
+	self.connected = True
+
 	return True
 
     def get_socket( self ):
 	return self.socket
+
+    def is_connected( self ):
+	return self.connected
+
+    def test_connection( self ):
+	try:
+	    self.socket.fileno()
+	    #TODO: try more stuff!
+	    return True
+	except:
+	    pass
+
+	self.connected = False
+	return False
+
+    def reconnect_backoff( self ):
+	return False
+
+    def reconnect( self ):
+	try:
+	    if self.socket:
+		self.close()
+	except:
+	    pass
+
+	if self.address:
+	    return self.connect( self.address[1], self.address[0] ) 
+	else:
+	    return None
 
 ##################################################################################
 
@@ -551,6 +776,10 @@ class JabberChannel (Channel):
 	return message
 
     def send_message( self, message, xml = None, mtype = None ):
+	if not self.connection.is_connected():
+	    self.connection.warn( "not connected XMPP server, discarding message %s" % message )
+	    return False
+
 	message = self.compose_message( message, mtype = mtype, xml = xml )
 
         return self.connection.jabber.send( message )
@@ -597,11 +826,17 @@ if __name__ == '__main__':
     option_parser.add_option("--wiki-info", dest="wiki_info_file", 
 				help="read wiki info from FILE", metavar="FILE")
 
+    option_parser.add_option("--xmpp-security", dest="xmpp_security", 
+				help="SSL/TSL security. 'on', 'off' or 'auto'.")
+
     option_parser.add_option("--quiet", action="store_const", dest="loglevel", const=LOG_QUIET, default=LOG_VERBOSE, 
 				help="suppress informational messages, only print warnings and errors")
 
     option_parser.add_option("--debug", action="store_const", dest="loglevel", const=LOG_DEBUG, 
 				help="print debug messages")
+
+    option_parser.add_option("--xmpp-debug", action="store_true", dest="xmpp_debug", 
+				help="""enable debugging in the xmpppy library. Flags are set in the [XMPP] section configuration, using the key 'debug-flags'. Flags are separated by pipe characters.""")
 
     (options, args) = option_parser.parse_args()
 
@@ -627,6 +862,8 @@ if __name__ == '__main__':
 
     config.add_section( 'XMPP' )
     config.set( 'XMPP', 'message-encoding', 'utf-8' )
+    config.set( 'XMPP', 'debug-flags', 'client|component|got' )
+    config.set( 'XMPP', 'security', 'auto' )
 
     # read config file........
     if not config.read( cfg ):
@@ -684,10 +921,19 @@ if __name__ == '__main__':
 
     relay.loglevel = options.loglevel
 
+    xmpp_debug = []
+    if options.xmpp_debug:
+	xmpp_debug = config.get( 'XMPP', 'debug-flags' ).split("|")
+
+    if options.xmpp_security:
+	connection_security = options.xmpp_security
+    else: 
+	connection_security = config.get( 'XMPP', 'security' )
+
     # create connections............
     commands_con = CommandConnection( relay, sys.stdin )
     udp_con = UdpConnection( relay, buffer_size = config.getint( 'UDP', 'buffer-size' ) )    
-    xmpp_con = XmppConnection( relay, message_encoding = config.get( 'XMPP', 'message-encoding' ) )
+    xmpp_con = XmppConnection( relay, message_encoding = config.get( 'XMPP', 'message-encoding' ), xmpp_debug = xmpp_debug, connection_security = connection_security )
 
     # -- DO STUFF -----------------------------------------------------------------------------------
 
