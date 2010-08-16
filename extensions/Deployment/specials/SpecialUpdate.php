@@ -114,12 +114,24 @@ class SpecialUpdate extends SpecialPage {
 		
 		$wgOut->addHTML( '<h3>' . wfMsg( 'special-update-extensions' ) . '</h3>' );
 		
-		if ( count( $extensions ) > 0 ) {
+		if ( count( $extensions ) == 0 ) {// TODO: >
+			// TODO: Remove debug
+			$extensions = array(
+				'foobar' => (object)array(
+					'version_id' => '42',
+					'version_nr' => '4.2',
+					'version_status' => 'stable' 
+				)
+			);
+		
 			$wgOut->addWikiMsg( 'extensions-updates-available' );
 			
 			$wgOut->addHTML( Html::element( 'button', array(), wfMsg( 'update-extensions-button' ) ) );
 			
-			$wgOut->addHTML( '<table>' );
+			$wgOut->addHTML( Html::openElement(
+				'table',
+				array( 'class' => 'wikitable', 'style' => 'width:100%' )
+			) );
 			
 			// TODO: select all magic
 			
@@ -131,8 +143,8 @@ class SpecialUpdate extends SpecialPage {
 				'</th></tr>'
 			);
 			
-			foreach ( $extensions as $extension ) {
-				$this->displayExtensionStatus( $extension );
+			foreach ( $extensions as $extensionName => $extensionData ) {
+				$this->displayExtensionStatus( $extensionName, $extensionData );
 			}
 			
 			$wgOut->addHTML(
@@ -157,12 +169,23 @@ class SpecialUpdate extends SpecialPage {
 	 * 
 	 * @since 0.1 
 	 * 
+	 * @param $extensionName String
 	 * @param $extension Array
 	 */		
-	protected function displayExtensionStatus( $extension ) {
+	protected function displayExtensionStatus( $extensionName, $extension ) {
 		global $wgOut, $wgExtensionCredits;
 		
-		// TODO
+		$wgOut->addHTML( '' );
+		
+		$wgOut->addHTML(
+			'<tr><th class="check-column">' .
+				Html::element( 'input', array( 'type' => 'checkbox', 'id' => 'select-all-extensions' ) ) .
+			'</th><td>' .
+				Html::element( 'b', array(), $extensionName ) . '<br />' .
+				wfMsg( 'extension-update-text', '', $extension->version_nr ) . //'<br />' . // TODO
+				//wfMsg( 'extension-update-compatibility', '' ) .
+			'</td></tr>'
+		);
 	}
 	
 }

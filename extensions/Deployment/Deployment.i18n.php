@@ -76,6 +76,8 @@ Check the ones you want to update and then click “Update Extensions”.',
 	'special-update-extensions' => 'Extensions',
 	'update-extensions-button' => 'Extensions',
 	'select-all-extensions' => 'Select all',
+	'extension-update-text' => 'You have version $1 installed. Update to $2.',
+	'extension-update-compatibility' => 'Compatibility with your current installation: $1 (according to its author)',
 
 	// Special:Install
 	'extensions-description' => 'Extensions extend and expand the functionality of MediaWiki.
