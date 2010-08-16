@@ -23,7 +23,7 @@
 
 /*
  * Dynamic JavaScript and CSS resource loading system
- * 
+ *
  * @example
  * 	// Registers a module with the resource loading system
  * 	ResourceLoader::register( 'foo', array(
@@ -73,7 +73,7 @@ class ResourceLoader {
 	
 	/**
 	 * Runs text through a filter, caching the filtered result for future calls
-	 * 
+	 *
 	 * @param {string} $filter name of filter to run
 	 * @param {string} $data text to filter, such as JavaScript or CSS text
 	 * @param {string} $file path to file being filtered, (optional: only required for CSS to resolve paths)
@@ -113,11 +113,11 @@ class ResourceLoader {
 	
 	/**
 	 * Registers a module with the ResourceLoader system
-	 * 
+	 *
 	 * @param {mixed} $module string of name of module or array of name/options pairs
 	 * @param {array} $options module options (optional when using multiple-registration calling style)
 	 * @return {boolean} false if there were any errors, in which case one or more modules were not registered
-	 * 
+	 *
 	 * $options format:
 	 * 	array(
 	 * 		// Required module options
@@ -142,7 +142,7 @@ class ResourceLoader {
 	 * 		'messages' => array( 'message1', 'message2' ... ),
 	 * 		'class' => 'classname', // Optional, defaults to ResourceLoaderModule
 	 * 	)
-	 * 
+	 *
 	 * @todo We need much more clever error reporting, not just in detailing what happened, but in bringing errors to
 	 * the client in a way that they can easily see them if they want to, such as by using FireBug
 	 */
@@ -168,7 +168,7 @@ class ResourceLoader {
 	}
 	/**
 	 * Gets a map of all modules and their options
-	 * 
+	 *
 	 * @return {array} array( modulename => ResourceLoaderModule )
 	 */
 	public static function getModules() {
@@ -186,10 +186,10 @@ class ResourceLoader {
 	
 	/*
 	 * Outputs a response to a resource load-request, including a content-type header
-	 * 
+	 *
 	 * @param {WebRequest} $request web request object to respond to
 	 * @param {string} $server web-accessible path to script server
-	 * 
+	 *
 	 * $options format:
 	 * 	array(
 	 * 		'user' => [boolean: true for logged in, false for anon, optional, state of current user by default],
@@ -306,9 +306,9 @@ class ResourceLoader {
 					);
 				}
 				// Messages
-				$messages = isset( $blobs[$module] ) ? $blobs[$module] : '{}';
+				$messages = isset( $blobs[$name] ) ? $blobs[$name] : '{}';
 				// Output
-				echo "mediaWiki.loader.implement( '{$module}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
+				echo "mediaWiki.loader.implement( '{$name}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
 			}
 		}
 		// Set headers -- when we support CSS only mode, this might change!

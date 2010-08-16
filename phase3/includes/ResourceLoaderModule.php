@@ -267,7 +267,7 @@ class ResourceLoaderModule {
 		} else if ( isset( $this->skinStyles['default'] ) ) {
 			$styles = $this->skinStyles['default'];
 		}
-		return self::concatFiles( $this->skinStyles[$skin] );
+		return self::concatFiles( $styles );
 	}
 	
 	/**
@@ -276,10 +276,10 @@ class ResourceLoaderModule {
 	 * @return mixed Loader JS (string) or false if no custom loader set
 	 */
 	public function getLoaderScript() {
-		if ( count( $this->loaderScripts ) == 0 ) {
+		if ( count( $this->loaders ) == 0 ) {
 			return false;
 		}
-		return self::concatFiles( $this->loaderScripts );
+		return self::concatFiles( $this->loaders );
 	}
 	
 	/**
@@ -297,7 +297,7 @@ class ResourceLoaderModule {
 	 * @return mixed Parameter value or null if not set
 	 */
 	public function getParameter( $param ) {
-		return isset( $this->parameters[$param] ? $this->parameters[$param] : null;
+		return isset( $this->parameters[$param] ) ? $this->parameters[$param] : null;
 	}
 	
 	/**
@@ -313,7 +313,7 @@ class ResourceLoaderModule {
 }
 
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
-	public function getScript( $skin ) {
+	public function getScript() {
 		return Skin::newFromKey( $this->getParameter( 'skin' ) )->generateUserJs();
 	}
 	
