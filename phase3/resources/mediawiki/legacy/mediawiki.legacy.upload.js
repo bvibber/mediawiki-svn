@@ -92,7 +92,7 @@ $.extend( true, mw.legacy, {
 			}
 		}
 	},
-	var wgUploadLicenseObj = {
+	'wgUploadLicenseObj': {
 		
 		/* Global Variables */
 		
