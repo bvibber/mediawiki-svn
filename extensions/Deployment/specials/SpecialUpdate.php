@@ -71,7 +71,7 @@ class SpecialUpdate extends SpecialPage {
 					$this->showCoreStatus( false );
 				}
 
-				$this->showExtensionStatuses( $updates );	
+				$this->showExtensionStatuses( $updates, $allExtensions );	
 			}
 
 		} else {
@@ -108,21 +108,22 @@ class SpecialUpdate extends SpecialPage {
 	 * @since 0.1 
 	 * 
 	 * @param $extensions Array: the extensions that have updates and their version numbers.
+	 * @param $allExtensions Array
 	 */	
-	protected function showExtensionStatuses( array $extensions = array() ) {
+	protected function showExtensionStatuses( array $extensions = array(), array $allExtensions = array() ) {
 		global $wgOut;
 		
 		$wgOut->addHTML( '<h3>' . wfMsg( 'special-update-extensions' ) . '</h3>' );
 		
-		if ( count( $extensions ) == 0 ) {// TODO: >
-			// TODO: Remove debug
+		if ( count( $extensions ) > 0 ) {
+			/* TODO: Remove debug
 			$extensions = array(
 				'foobar' => (object)array(
 					'version_id' => '42',
 					'version_nr' => '4.2',
 					'version_status' => 'stable' 
 				)
-			);
+			); $allExtensions['foobar'] = '0.42'; */
 		
 			$wgOut->addWikiMsg( 'extensions-updates-available' );
 			
@@ -138,17 +139,17 @@ class SpecialUpdate extends SpecialPage {
 			$wgOut->addHTML(
 				'<tr><th>' .
 				Html::element( 'input', array( 'type' => 'checkbox', 'id' => 'select-all-extensions' ) ) .
-				'</th><th>' .
+				'</th><th style="text-align:left">' .
 				Html::element( 'label', array( 'for' => 'select-all-extensions' ), wfMsg( 'select-all-extensions' ) ) .
 				'</th></tr>'
 			);
 			
 			foreach ( $extensions as $extensionName => $extensionData ) {
-				$this->displayExtensionStatus( $extensionName, $extensionData );
+				$this->displayExtensionStatus( $extensionName, $allExtensions[$extensionName], $extensionData->version_nr  );
 			}
 			
 			$wgOut->addHTML(
-				'<tr><th>' .
+				'<tr><th style="text-align:left">' .
 				Html::element( 'input', array( 'type' => 'checkbox', 'id' => 'select-all-extensions-2' ) ) .
 				'</th><th>' .
 				Html::element( 'label', array( 'for' => 'select-all-extensions-2' ), wfMsg( 'select-all-extensions' ) ) .
@@ -170,19 +171,18 @@ class SpecialUpdate extends SpecialPage {
 	 * @since 0.1 
 	 * 
 	 * @param $extensionName String
-	 * @param $extension Array
+	 * @param $currentVersion String
+	 * @param $newVersion String
 	 */		
-	protected function displayExtensionStatus( $extensionName, $extension ) {
+	protected function displayExtensionStatus( $extensionName, $currentVersion, $newVersion ) {
 		global $wgOut, $wgExtensionCredits;
-		
-		$wgOut->addHTML( '' );
 		
 		$wgOut->addHTML(
 			'<tr><th class="check-column">' .
 				Html::element( 'input', array( 'type' => 'checkbox', 'id' => 'select-all-extensions' ) ) .
 			'</th><td>' .
 				Html::element( 'b', array(), $extensionName ) . '<br />' .
-				wfMsg( 'extension-update-text', '', $extension->version_nr ) . //'<br />' . // TODO
+				wfMsg( 'extension-update-text', $currentVersion, $newVersion ) . //'<br />' . // TODO
 				//wfMsg( 'extension-update-compatibility', '' ) .
 			'</td></tr>'
 		);
