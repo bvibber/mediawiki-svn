@@ -9,11 +9,12 @@ and the various metadata extractors.
 @todo other image formats.
 */
 class BitmapMetadataHandler {
+
 	private $filename;
 	private $metadata = Array();
 	private $metaPriority = Array(
 		20 => Array( 'other' ),
-		40 => Array( 'file-comment', 'native-png' ),
+		40 => Array( 'native' ),
 		60 => Array( 'iptc-good-hash', 'iptc-no-hash' ),
 		70 => Array( 'xmp-deprected' ),
 		80 => Array( 'xmp-general' ),
@@ -126,7 +127,7 @@ class BitmapMetadataHandler {
 		$seg = Array();
 		$seg = JpegMetadataExtractor::segmentSplitter( $filename );
 		if ( isset( $seg['COM'] ) && isset( $seg['COM'][0] ) ) {
-			$meta->addMetadata( Array( 'JPEGFileComment' => $seg['COM'] ), 'file-comment' );
+			$meta->addMetadata( Array( 'JPEGFileComment' => $seg['COM'] ), 'native' );
 		}
 		if ( isset( $seg['PSIR'] ) ) {
 			$meta->doApp13( $seg['PSIR'] );
@@ -170,11 +171,46 @@ class BitmapMetadataHandler {
 			}
 		}
 		unset( $array['text']['xmp'] );
-		$meta->addMetadata( $array['text'], 'native-png' );
+		$meta->addMetadata( $array['text'], 'native' );
 		unset( $array['text'] );
 		$array['metadata'] = $meta->getMetadataArray();
-		$array['metadata']['_MW_PNG_VERSION'] = '1';
+		$array['metadata']['_MW_PNG_VERSION'] = PNGMetadataExtractor::VERSION;
 		return $array;
+	}
+
+	/** function for gif images.
+	 *
+	 * They don't really have native metadata, so just merges together
+	 * XMP and image comment.
+	 *
+	 * @param $filename full path to file
+	 * @return Array metadata array
+	 */
+	static public function GIF ( $filename ) {
+
+		$meta = new self( $filename );
+		$baseArray = GIFMetadataExtractor::getMetadata( $filename );
+
+		if ( count( $baseArray['comment'] ) > 0 ) {
+			$meta->addMetadata( array( 'GIFFileComment' => $baseArray['comment'] ), 'native' );
+		}
+
+		if ( $baseArray['xmp'] !== '' && function_exists( 'xml_parser_create_ns' ) ) {
+			$xmp = new XMPReader();
+			$xmp->parse( $baseArray['xmp'] );
+			$xmpRes = $xmp->getResults();
+			foreach ( $xmpRes as $type => $xmpSection ) {
+				$meta->addMetadata( $xmpSection, $type );
+			}
+
+		}
+
+		unset( $baseArray['comment'] );
+		unset( $baseArray['xmp'] );
+	
+		$baseArray['metadata'] = $meta->getMetadataArray();
+		$baseArray['metadata']['_MW_GIF_VERSION'] = GIFMetadataExtractor::VERSION;
+		return $baseArray;
 	}
 
 }

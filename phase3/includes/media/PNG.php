@@ -54,19 +54,23 @@ class PNGHandler extends BitmapHandler {
 	}
 	
 	function isMetadataValid( $image, $metadata ) {
-		wfSuppressWarnings();
-		$data = unserialize( $metadata );
-		wfRestoreWarnings();
-		if ( $data === '0' ) {
+
+		if ( $metadata === '0' ) {
 			// Do not repetitivly regenerate metadata on broken file.
 			return self::METADATA_GOOD;
 		}
+
+		wfSuppressWarnings();
+		$data = unserialize( $metadata );
+		wfRestoreWarnings();
+
 		if ( !$data || !is_array( $data ) ) {
 			wfDebug(__METHOD__ . ' invalid png metadata' );
 			return self::METADATA_BAD;
 		}
 
-		if ( !isset( $data['metadata']['_MW_PNG_VERSION'] ) ) {
+		if ( !isset( $data['metadata']['_MW_PNG_VERSION'] )
+			|| $data['metadata']['_MW_PNG_VERSION'] != PNGMetadataExtractor::VERSION ) {
 			wfDebug(__METHOD__ . ' old but compatible png metadata' );
 			return self::METADATA_COMPATIBLE;
 		}

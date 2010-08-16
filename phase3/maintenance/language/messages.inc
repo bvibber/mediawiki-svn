@@ -2755,6 +2755,7 @@ $wgMessageStructure = array(
 		'exif-pngfilecomment',
 		'exif-disclaimer',
 		'exif-contentwarning',
+		'exif-giffilecomment',
 	),
 	'exif-values' => array(
 		'exif-make-value',

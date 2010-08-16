@@ -3824,6 +3824,7 @@ Others will be hidden by default.
 'exif-pngfilecomment'              => 'PNG file comment',
 'exif-disclaimer'                  => 'Disclaimer',
 'exif-contentwarning'              => 'Content warning',
+'exif-giffilecomment'              => 'GIF file comment',
 
 
 # Make & model, can be wikified in order to link to the camera and model name

@@ -672,4 +672,5 @@ $wgEXIFMessages = array(
 	'exif-pngfilecomment',
 	'exif-disclaimer',
 	'exif-contentwarning',
+	'exif-giffilecomment',
 );

@@ -655,6 +655,7 @@ class FormatMetadata {
 				case 'PNGFileComment':
 				case 'Disclaimer':
 				case 'ContentWarning':
+				case 'GIFFileComment':
 
 					$val = htmlspecialchars( $val );
 					break;

@@ -11,6 +11,8 @@ class PNGMetadataExtractor {
 	static $CRC_size;
 	static $text_chunks;
 
+	const VERSION = 1;
+
 	static function getMetadata( $filename ) {
 		self::$png_sig = pack( "C8", 137, 80, 78, 71, 13, 10, 26, 10 );
 		self::$CRC_size = 4;
