@@ -535,6 +535,15 @@ $messages['lb'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Annulléieren',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Bewèrk veurlaag',
+	'wikieditor-template-editor-dialog-submit' => 'Wèrk bie',
+	'wikieditor-template-editor-dialog-cancel' => 'Braek aaf',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Garas
  * @author Vpovilaitis

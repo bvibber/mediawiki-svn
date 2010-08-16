@@ -815,6 +815,21 @@ $messages['lb'] = array(
 	'wikieditor-publish-dialog-goback' => 'Zréck goen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-publish-preference' => 'Zèt oetbringe ein veur ein aan',
+	'wikieditor-publish-button-publish' => 'Bring oet',
+	'wikieditor-publish-button-cancel' => 'Braek aaf',
+	'wikieditor-publish-dialog-title' => 'Bring oet nao {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Bewerkingssamevatting (besjrief kórt de gemaakdje verangeringe):',
+	'wikieditor-publish-dialog-minor' => 'Klein bewèrking',
+	'wikieditor-publish-dialog-watch' => 'Volg dees pazjena',
+	'wikieditor-publish-dialog-publish' => 'Bring oet',
+	'wikieditor-publish-dialog-goback' => 'Trök',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Garas
  */
@@ -1225,11 +1240,14 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Helios13
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor-publish-preference' => 'Омогући постепено објављивање',
 	'wikieditor-publish-button-publish' => 'Објави',
 	'wikieditor-publish-button-cancel' => 'Поништи',
+	'wikieditor-publish-dialog-title' => 'Објави на {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Опис измене (укратко опишите шта сте изменили):',
 	'wikieditor-publish-dialog-minor' => 'Мала измена',
 	'wikieditor-publish-dialog-watch' => 'Надгледај ову страницу',

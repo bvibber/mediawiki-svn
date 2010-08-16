@@ -94,6 +94,13 @@ $messages['ca'] = array(
 	'wikieditor-highlight-preference' => "Activa el ressaltat de sintaxi durant l'edició",
 );
 
+/** Sorani (کوردی)
+ * @author Marmzok
+ */
+$messages['ckb'] = array(
+	'wikieditor-highlight-preference' => 'خستنەکاری داریکردنی ڕستەنووسە لەکاتی دەستکاریدا',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

@@ -406,6 +406,7 @@ $messages['ckb'] = array(
 	'prefstats-factor-week' => 'حەوتوو',
 	'prefstats-factor-twoweeks' => 'دوو حەوتوو',
 	'prefstats-factor-fourweeks' => 'چوار حەوتوو',
+	'prefstats-factor-default' => 'بگەڕێوە بۆ پێوەری بنەڕەت',
 );
 
 /** Czech (Česky)
@@ -799,17 +800,22 @@ Konfiguratu $wgPrefStatsTrackPrefs hobespenak jarraitzeko.',
  * @author Ebraminio
  * @author Ladsgroup
  * @author Mardetanha
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'prefstats' => 'آمار ترجیحات',
 	'prefstats-title' => 'آمار ترجیحات',
 	'prefstats-xaxis' => 'مدت زمان (ساعت)',
+	'prefstats-factors' => 'نمایش برای هر: $1',
 	'prefstats-factor-hour' => 'ساعت',
 	'prefstats-factor-sixhours' => 'شش ساعت',
 	'prefstats-factor-day' => 'روز',
 	'prefstats-factor-week' => 'هفته',
 	'prefstats-factor-twoweeks' => 'دو هفته',
 	'prefstats-factor-fourweeks' => 'چهار هفته',
+	'prefstats-factor-default' => 'بازگشت به مقیاس پیش‌فرض',
+	'prefstats-legend-out' => 'تصمیم گرفتند از',
+	'prefstats-legend-in' => 'برگزیده در',
 );
 
 /** Finnish (Suomi)
@@ -2332,6 +2338,7 @@ Omogočite spremljanje nastavitev v $wgPrefStatsTrackPrefs.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
@@ -2343,6 +2350,7 @@ $messages['sr-ec'] = array(
 	'prefstats-factor-week' => 'недеља',
 	'prefstats-factor-twoweeks' => 'две недеље',
 	'prefstats-factor-fourweeks' => '4 недеље',
+	'prefstats-factor-default' => 'врати се на подразумевану скалу',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

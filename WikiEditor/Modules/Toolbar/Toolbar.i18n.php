@@ -10547,6 +10547,7 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'wikieditor-toolbar' => 'Bewèrkingswèrkbalk',
 	'wikieditor-toolbar-loading' => 'Laje…',
 	'wikieditor-toolbar-tool-bold' => 'Vèt',
 	'wikieditor-toolbar-tool-bold-example' => 'Vètten teks',
@@ -10595,11 +10596,42 @@ $messages['li'] = array(
 	'wikieditor-toolbar-tool-heading-5' => 'Huuegdje 5',
 	'wikieditor-toolbar-tool-heading-example' => 'Kopteks',
 	'wikieditor-toolbar-group-format' => 'Ópmaak',
+	'wikieditor-toolbar-tool-ulist' => 'Óngenómmerdje lies',
+	'wikieditor-toolbar-tool-ulist-example' => 'Regel in óngenómmerdje lies',
+	'wikieditor-toolbar-tool-olist' => 'Genómmerdje lies',
+	'wikieditor-toolbar-tool-olist-example' => 'Regel in genómmerdje lies',
+	'wikieditor-toolbar-tool-indent' => 'Spring in',
+	'wikieditor-toolbar-tool-indent-example' => 'Ingesprónge regel',
+	'wikieditor-toolbar-tool-nowiki' => 'Verloup wiki-opmaak',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Veur hiej de neet op te make teks in',
 	'wikieditor-toolbar-tool-redirect' => 'Dórchverwiezing',
+	'wikieditor-toolbar-tool-redirect-example' => 'Doelpagina',
 	'wikieditor-toolbar-tool-big' => 'Groeat',
+	'wikieditor-toolbar-tool-big-example' => 'Groeate teks',
+	'wikieditor-toolbar-tool-small' => 'Klein',
+	'wikieditor-toolbar-tool-small-example' => 'Klein teks',
+	'wikieditor-toolbar-tool-superscript' => 'Euversjrif',
+	'wikieditor-toolbar-tool-superscript-example' => 'Euversjrifteks',
+	'wikieditor-toolbar-tool-subscript' => 'Óngersjrif',
+	'wikieditor-toolbar-tool-subscript-example' => 'Óngersjrifteks',
 	'wikieditor-toolbar-group-insert' => 'Voog in',
+	'wikieditor-toolbar-tool-gallery' => 'Beeljegalerie',
 	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Veurbeildj1|Biesjrif1
 {{ns:file}}:Veurbeildj2|Biesjrif2',
+	'wikieditor-toolbar-tool-newline' => 'Nuuje regel',
+	'wikieditor-toolbar-tool-table' => 'Tabel',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! kóp 1
+! kóp 2
+! kóp 3
+|-
+| rie 1, cel 1
+| rie 1, cel 2
+| rie 1, cel 3
+|-
+| rie 2, cel 1
+| rie 2, cel 2
+| rie 2, cel 3',
 	'wikieditor-toolbar-tool-table-example' => 'Veurbeildj',
 	'wikieditor-toolbar-tool-table-preview' => 'Betrach',
 	'wikieditor-toolbar-tool-table-insert' => 'Voog in',
@@ -16285,10 +16317,13 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Helios13
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor-toolbar' => 'Уређивање алатнице',
+	'wikieditor-toolbar-preference' => 'Омогући проширено уређивање алатнице',
 	'wikieditor-toolbar-loading' => 'Учитавање...',
 	'wikieditor-toolbar-tool-bold' => 'Подебљан',
 	'wikieditor-toolbar-tool-bold-example' => 'Подебљан текст',
@@ -16319,6 +16354,7 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Спољашња веза коју сте унели изгледа као веза према другој вики страници. Да ли желите да је промените у унутрашњу везу?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Унутрашња веза',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Спољашња веза',
+	'wikieditor-toolbar-tool-link-empty' => 'Ниста унели ништа за повезивање.',
 	'wikieditor-toolbar-tool-file' => 'Слика',
 	'wikieditor-toolbar-tool-file-example' => 'Primer.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Референца',
@@ -16337,12 +16373,23 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-tool-heading-5' => 'Ниво 5',
 	'wikieditor-toolbar-tool-heading-example' => 'Текст одељка',
 	'wikieditor-toolbar-group-format' => 'Списак',
+	'wikieditor-toolbar-tool-ulist' => 'Попис с ознакама',
+	'wikieditor-toolbar-tool-ulist-example' => 'Ставка пописа с ознакама',
 	'wikieditor-toolbar-tool-olist' => 'Нумерисана листа',
+	'wikieditor-toolbar-tool-olist-example' => 'Ставка нумерисаног пописа',
+	'wikieditor-toolbar-tool-indent' => 'Увучени ред',
+	'wikieditor-toolbar-tool-indent-example' => 'Увучена линија',
+	'wikieditor-toolbar-tool-nowiki' => 'Без вики обликовања',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Унеси необликован текст овде',
 	'wikieditor-toolbar-tool-redirect' => 'Преусмерење',
 	'wikieditor-toolbar-tool-big' => 'Велик',
 	'wikieditor-toolbar-tool-big-example' => 'Велик текст',
 	'wikieditor-toolbar-tool-small' => 'Мали',
 	'wikieditor-toolbar-tool-small-example' => 'Мали текст',
+	'wikieditor-toolbar-tool-superscript' => 'Натпис',
+	'wikieditor-toolbar-tool-superscript-example' => 'Текст натписа',
+	'wikieditor-toolbar-tool-subscript' => 'Натпис',
+	'wikieditor-toolbar-tool-subscript-example' => 'Текст натписа',
 	'wikieditor-toolbar-group-insert' => 'Убаци',
 	'wikieditor-toolbar-tool-gallery' => 'Галерија слика',
 	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:пример1.jpg|Наслов1
@@ -16366,6 +16413,7 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-tool-table-title' => 'Убаци табелу',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Редови',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Колона',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'Додај ред заглавља',
 	'wikieditor-toolbar-tool-table-wikitable' => 'Стил са оквирима',
 	'wikieditor-toolbar-tool-table-sortable' => 'Могућност сортирања табеле',
 	'wikieditor-toolbar-tool-table-example' => 'Пример',
@@ -16379,12 +16427,15 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-tool-replace-search' => 'Тражи:',
 	'wikieditor-toolbar-tool-replace-replace' => 'Замени са:',
 	'wikieditor-toolbar-tool-replace-case' => 'Пази на величину слова',
+	'wikieditor-toolbar-tool-replace-regex' => 'Поступи с нитима за претрагу као с обичним изразима',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Нађи следеће',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Замени следеће',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Замени све',
 	'wikieditor-toolbar-tool-replace-close' => 'Затвори',
+	'wikieditor-toolbar-tool-replace-nomatch' => 'Претрага није пронашла резултате.',
 	'wikieditor-toolbar-tool-replace-success' => 'Направљених замена: $1.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Нисте унели ништа за претрагу.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => 'Израз који сте унели није исправан: $1',
 	'wikieditor-toolbar-section-characters' => 'Посебни карактери',
 	'wikieditor-toolbar-characters-page-latin' => 'латиница',
 	'wikieditor-toolbar-characters-page-latinextended' => 'проширена латиница',
@@ -16397,7 +16448,11 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-characters-page-hebrew' => 'јеврејско',
 	'wikieditor-toolbar-characters-page-bangla' => 'Бангла',
 	'wikieditor-toolbar-characters-page-telugu' => 'телугу',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Синхала',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Гуџарати',
+	'wikieditor-toolbar-characters-page-thai' => 'Тајландски',
+	'wikieditor-toolbar-characters-page-lao' => 'Лаошки',
+	'wikieditor-toolbar-characters-page-khmer' => 'Кмерски',
 	'wikieditor-toolbar-section-help' => 'Помоћ',
 	'wikieditor-toolbar-help-heading-description' => 'Опис',
 	'wikieditor-toolbar-help-heading-syntax' => 'Шта куцате',
@@ -16419,6 +16474,7 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-help-content-bolditalic-syntax' => "'''''Подебљани &amp; искошени текст'''''",
 	'wikieditor-toolbar-help-content-bolditalic-result' => '<strong><em>Подебљан &amp; искошен текст</em></strong>',
 	'wikieditor-toolbar-help-content-ilink-description' => 'Унутрашња веза',
+	'wikieditor-toolbar-help-content-ilink-result' => "<a href='#'>Ознака везе</a><br /><a href='#'>Наслов странице</a>",
 	'wikieditor-toolbar-help-content-xlink-description' => 'Спољашња веза',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.пример.org Наслов везе]<br />[http://www.пример.org]<br />http://www.пример.org',
 	'wikieditor-toolbar-help-content-heading2-description' => 'Одељак другог нивоа',
@@ -16433,15 +16489,21 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-help-content-heading5-description' => 'Одељак петог нивоа',
 	'wikieditor-toolbar-help-content-heading5-syntax' => '===== Наслов одељка =====',
 	'wikieditor-toolbar-help-content-heading5-result' => '<h5>Наслов одељка</h5>',
+	'wikieditor-toolbar-help-content-ulist-description' => 'Попис с ознакама',
 	'wikieditor-toolbar-help-content-olist-description' => 'Нумерисана листа',
 	'wikieditor-toolbar-help-content-file-description' => 'Слика',
 	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Примјер.png|мини|Назив слике]]',
 	'wikieditor-toolbar-help-content-reference-description' => 'Референце',
+	'wikieditor-toolbar-help-content-reference-result' => "Текст странице.<sup><a href='#'>[1]</a></sup>",
+	'wikieditor-toolbar-help-content-rereference-description' => 'Додатна употреба исте референце',
+	'wikieditor-toolbar-help-content-rereference-result' => "Текст странице.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'Прикажи референце',
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Потпис са тренутним временом',
 	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Корисник</a> (<a href='#' title='{{#special:mytalk}}'>разговор</a>) 15:54, 10. јун 2009. (UTC)",
 	'wikieditor-toolbar-help-content-signature-description' => 'Потпис',
+	'wikieditor-toolbar-help-content-indent-description' => 'Урез',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Нормалан текст<br />:Увучен текст<br />::Увучен текст',
+	'wikieditor-toolbar-help-content-indent-result' => 'Обичан текст<dl><dd>Увучени текст<dl><dd>Увучени текст</dd></dl></dd></dl>',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -18280,6 +18342,8 @@ $messages['tr'] = array(
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
 	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
+	'wikieditor-toolbar-characters-page-thai' => 'Tay',
+	'wikieditor-toolbar-characters-page-lao' => 'Lao',
 	'wikieditor-toolbar-section-help' => 'Yardım',
 	'wikieditor-toolbar-help-heading-description' => 'Açıklama',
 	'wikieditor-toolbar-help-heading-syntax' => 'Yazdığınız',
@@ -18341,6 +18405,19 @@ $messages['tr'] = array(
 	'wikieditor-toolbar-help-content-indent-description' => 'Girinti',
 	'wikieditor-toolbar-help-content-indent-syntax' => 'Normal metin<br />:Girintili metin<br />::Girintili metin',
 	'wikieditor-toolbar-help-content-indent-result' => 'Normal metin<dl><dd>Girintili metin<dl><dd>Girintili metin</dd></dl></dd></dl>',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Рашат Якупов
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-toolbar' => 'Төзәтү панеле',
+	'wikieditor-toolbar-loading' => 'Йөкләү...',
+	'wikieditor-toolbar-tool-bold-example' => 'Калын язылыш',
+	'wikieditor-toolbar-tool-italic' => 'Авышлы',
+	'wikieditor-toolbar-tool-italic-example' => 'Курсив язылыш',
+	'wikieditor-toolbar-tool-ilink' => 'Эчке сылтама',
+	'wikieditor-toolbar-tool-ilink-example' => 'Сылтама исеме',
 );
 
 /** Ukrainian (Українська)

@@ -564,7 +564,7 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'prefswitch-link-anon' => 'Ciri-ciri baru',
 	'tooltip-pt-prefswitch-link-anon' => '↓ Ketahui lebih lanjut tentang ciri-ciri baru',
-	'prefswitch-link-on' => '↓ Kembali',
+	'prefswitch-link-on' => 'Kembali',
 	'tooltip-pt-prefswitch-link-on' => '↓ Padamkan ciri-ciri baru',
 	'prefswitch-link-off' => '↓ Ciri-ciri baru',
 	'tooltip-pt-prefswitch-link-off' => '↓ Cuba ciri-ciri baru',
@@ -791,10 +791,12 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Helios13
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'prefswitch-link-anon' => 'Нове функције',
 	'tooltip-pt-prefswitch-link-anon' => 'Сазнај о новим могућностима',
+	'prefswitch-link-on' => 'Врати ме назад',
 	'tooltip-pt-prefswitch-link-on' => 'Онемогући нове функције',
 	'prefswitch-link-off' => 'Нове могућности',
 	'tooltip-pt-prefswitch-link-off' => 'Пробај нове функције',

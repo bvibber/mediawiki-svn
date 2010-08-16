@@ -157,6 +157,13 @@ $messages['eu'] = array(
 	'userdailycontribs-desc' => 'Lankidearen eguneko ekarpenak klikatze jarraipen luzapenerako',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'userdailycontribs-desc' => 'مشارکت‌های روزانهٔ کاربر برای افزونهٔ ردیاب کلیک',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  */

@@ -636,9 +636,11 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Horus
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'vector-collapsiblenav-preference' => 'ใช้งานการย่อรายการของเมนูนำทางในสกินเวกเตอร์',
 	'vector-collapsiblenav-more' => 'ภาษาอื่นๆ',
 );
 
