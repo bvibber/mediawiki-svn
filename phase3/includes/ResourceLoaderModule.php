@@ -307,7 +307,7 @@ class ResourceLoaderModule {
 	 * @return string Concatenated contents of $files
 	 */
 	protected static function concatFiles( $files ) {
-		return implode( "\n", array_map( 'file_get_contents', array_unique( $files ) ) );
+		return implode( "\n", array_map( 'file_get_contents', array_unique( (array) $files ) ) );
 	}
 
 }
