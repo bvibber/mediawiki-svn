@@ -44,7 +44,7 @@ $.extend( true, mw.legacy, {
 	/**
 	 * Fixes PNG alpha transparency
 	 */
-	function fixalpha( logoId ) {
+	'fixalpha': ( logoId ) {
 		// bg
 		if ( isMSIE55 && !doneIEAlphaFix ) {
 			var plogo = document.getElementById( logoId || 'p-logo' );
