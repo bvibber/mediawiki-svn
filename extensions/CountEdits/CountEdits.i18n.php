@@ -1223,10 +1223,13 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
+	'countedits' => 'Cunde le cangiaminde',
 	'countedits-username' => "Nome de l'utende:",
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => "Non ge stè nisciune utende cu 'u nome $1.",
 	'countedits-resultheader' => 'Resultate pe $1',
+	'countedits-mostactive' => 'Le condrebbuture cchiù attive',
+	'countedits-nocontribs' => 'Non ge stonne condrebbute sus a sta Uicchi.',
 );
 
 /** Russian (Русский)

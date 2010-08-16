@@ -196,6 +196,15 @@ $messages['et'] = array(
 	'externalpages-no-page' => 'Lehte ei märgitud',
 );
 
+/** Persian (فارسی)
+ * @author Wayiran
+ */
+$messages['fa'] = array(
+	'externalpages' => 'صفحات خارجی',
+	'externalpages-bad-page' => 'صفحهٔ بد مشخص‌شده',
+	'externalpages-no-page' => 'هیچ صفحه‌ای مشخص نشده',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author ZeiP

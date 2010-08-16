@@ -1491,8 +1491,10 @@ $messages['ext'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Komeil 4life
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'contributionreporting-desc' => 'گزارش زنده از جذب سرمایهٔ ویکی‌مدیا',
@@ -1528,6 +1530,21 @@ $messages['fa'] = array(
 	'contribstats-value-under' => 'کمتر از $1',
 	'contribstats-value-from' => 'از $1 تا $2',
 	'contribstats-value-over' => 'بیش از $1',
+	'contribstats-day-totals' => 'سرجمع برای روز',
+	'contribstats-week' => 'هفته',
+	'contribstats-payment-type' => 'شیوهٔ پرداخت',
+	'contribstats-banner' => 'پرچم',
+	'contribstats-clicks' => 'کلیک‌ها',
+	'contribstats-donations' => 'کمک‌های مالی',
+	'contribstats-conversion' => 'نرخ تبدیل (%)',
+	'contribstats-template' => 'الگو',
+	'contribstats-nodata' => 'هیچ اطلاعاتی ارائه نشده',
+	'contribstats-landingpage' => 'صفحهٔ فرود',
+	'contribstats-donatepage' => 'صفحهٔ کمک مالی',
+	'contribstats-average' => 'میانگین',
+	'contribstats-paypal-donations' => 'کمک‌های مالی PayPal',
+	'contribstats-credit-card' => 'کارت اعتباری',
+	'contribstats-fraud-note' => 'برخی از کمک‌های مالی تقلبی موجود هستند.',
 	'fundraiserstatistics' => 'آمار جذب سرمایه',
 	'fundraiserstats-date' => 'تاریخ',
 	'fundraiserstats-day' => 'روز $1 از $2',
@@ -2922,6 +2939,9 @@ $messages['li'] = array(
 	'contribstats-value-under' => 'Minder es $1',
 	'contribstats-value-from' => 'Tösje $1 en $2',
 	'contribstats-value-over' => 'Meer es $1',
+	'contribstats-week' => 'Waek',
+	'contribstats-banner' => 'Vaan',
+	'contribstats-average' => 'Gemiddeldj',
 	'fundraiserstatistics' => 'Fónswèrvindstattistieker',
 	'fundraiserstats-date' => 'Datum',
 	'fundraiserstats-day' => 'Daag $1 ven $2',

@@ -180,10 +180,12 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Aleator
  * @author Paucabot
+ * @author Solde
  */
 $messages['ca'] = array(
 	'ajaxshoweditors-desc' => 'Mostra els editors que estan editant la mateixa pàgina',
 	'ajax-se-title' => 'Actualment editant:',
+	'ajax-se-pending' => 'actualització pendent... (clic aquesta caixa o comenci a editar)',
 	'ajax-se-idling' => '(fa $1s)',
 	'ajax-se-pagedoesnotexist' => 'la pàgina no existeix',
 	'ajax-se-userinvalid' => 'Error: usuari no vàlid',

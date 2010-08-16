@@ -189,8 +189,11 @@ $messages['no'] = array(
 	'rss-empty' => 'Kunne ikke laste RSS-mating fra $1.',
 );
 
-/** Polish (Polski) */
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
 $messages['pl'] = array(
+	'rss-desc' => 'Wyświetla kanał RSS na stronie wiki',
 	'rss-error' => 'Nie udało się odczytać kanału $1: $2',
 	'rss-empty' => 'Nie udało się odczytać kanału $1!',
 );
@@ -249,5 +252,14 @@ $messages['ru'] = array(
 	'rss-desc' => 'Показывает RSS-канал на викистранице',
 	'rss-error' => 'Не удалось загрузить RSS-канал из $1: $2',
 	'rss-empty' => 'Не удалось загрузить RSS-канал из $1!',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'rss-desc' => 'RSS-тасманы викибиттә ачу',
+	'rss-error' => '$1: $2 битләреннән RSS-тасманы ачып булмады',
+	'rss-empty' => '$1: битеннән  RSS-тасманы ачып булмады',
 );
 

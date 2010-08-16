@@ -1278,21 +1278,22 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'amazonplus-desc' => 'Широко подесива екстензија за приказ информација са Амазона',
-	'amazonplus-nores' => 'Грешка: Нема нађених резултата!',
-	'amazonplus-noidres' => 'Грешка: Није нађен ID производа!',
-	'amazonplus-fgcerr' => 'Грешка: Подаци са Амазона су недоступни!',
-	'amazonplus-slserr' => 'Грешка: Подаци са Амазона нису могли бити парсирани!',
-	'amazonplus-used' => 'половно',
-	'amazonplus-german' => 'Немачки језик',
-	'amazonplus-french' => 'Француски језик',
-	'amazonplus-japanese' => 'Јапански језик',
-	'amazonplus-amazon' => 'цена на Амазону',
+	'amazonplus-desc' => 'Додатак за приказ информација с Амазона',
+	'amazonplus-nores' => 'Грешка: Нема пронађених резултата!',
+	'amazonplus-noidres' => 'Грешка: Није пронађена идентификација производа!',
+	'amazonplus-fgcerr' => 'Грешка: Подаци с Амазона су недоступни!',
+	'amazonplus-slserr' => 'Грешка: Подаци с Амазона нису рашчлањени!',
+	'amazonplus-used' => 'коришћено',
+	'amazonplus-german' => 'Немачки',
+	'amazonplus-french' => 'Француски',
+	'amazonplus-japanese' => 'Јапански',
+	'amazonplus-amazon' => 'Цена на Амазону',
 	'amazonplus-new' => 'ново',
-	'amazonplus-none' => 'Нема више расположивих примерака овог поизвода',
+	'amazonplus-none' => 'Нема више расположивих примерака овог производа.',
 	'amazonplus-cp-none' => 'Ништа',
 	'amazonplus-more' => 'више',
 	'amazonplus-less' => 'мање',

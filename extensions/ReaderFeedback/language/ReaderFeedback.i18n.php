@@ -817,10 +817,13 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Mardetanha
+ * @author Wayiran
  */
 $messages['fa'] = array(
+	'readerfeedback-desc' => 'اعتباردهی به صفحه، به خوانندگان اجازه می‌دهد تا بازخورد را در شکل درجه‌های رده‌بندی‌شده ارائه کنند.',
 	'readerfeedback' => 'دربارهٔ این صفحه چه فکر می‌کنید؟',
 	'readerfeedback-text' => "''لطفاً چند لحظه صرف ارزیابی صفحهٔ زیر کنید. بازخورد شما ارزشمند است و به ما در بهبود وبگاهمان کمک می‌کند.''",
 	'readerfeedback-reliability' => 'اعتمادپذیری',
@@ -828,7 +831,7 @@ $messages['fa'] = array(
 	'readerfeedback-npov' => 'بی‌طرفانه بودن',
 	'readerfeedback-presentation' => 'نمایش',
 	'readerfeedback-overall' => 'روی هم رفته',
-	'readerfeedback-level-none' => '(برگزینید)',
+	'readerfeedback-level-none' => '(نامطمئن)',
 	'readerfeedback-level-0' => 'پست',
 	'readerfeedback-level-1' => 'پایین',
 	'readerfeedback-level-2' => 'متوسط',
@@ -836,11 +839,18 @@ $messages['fa'] = array(
 	'readerfeedback-level-4' => 'ممتاز',
 	'readerfeedback-submit' => 'ارسال',
 	'readerfeedback-main' => 'فقط صفحه‌های محتوایی قابل ارزیابی هستند.',
-	'readerfeedback-success' => "از این که این صفحه را ارزیابی کردید ممنونیم!''' ([$3 نظرها و سوال‌ها]).",
-	'readerfeedback-voted' => "به نظر می‌رسد که شما پیش از این این صفحه را ارزیابی کرده‌اید''' ([$3 نظرها و سوال‌ها]).",
+	'readerfeedback-success' => "'''با سپاس از شما برای بازبینی این صفحه!''' ([$2 نتایج را ببینید]) ([$3 نظر و پرسش]).",
+	'readerfeedback-voted' => "'''به نظر می‌رسد که شما پیش از این، این صفحه را بازبینی کرده‌اید''' ([$2 نتیجه را ببین]) ([$3 نظر و سوال]).",
 	'readerfeedback-submitting' => 'در حال ارسال...',
 	'readerfeedback-finished' => 'متشکریم!',
+	'readerfeedback-tagfilter' => 'برچسپ:',
+	'readerfeedback-tierfilter' => 'ارزش:',
+	'readerfeedback-tier-high' => 'زياد',
+	'readerfeedback-tier-medium' => 'متوسط',
+	'readerfeedback-tier-poor' => 'ضعیف',
 	'tooltip-ca-ratinghist' => 'نمره خوانندگان به این صفحه',
+	'specialpages-group-feedback' => 'نظر خوانندگان',
+	'readerfeedback-tt-review' => 'ارسال بازبینی',
 );
 
 /** Finnish (Suomi)
@@ -1525,6 +1535,24 @@ $messages['lb'] = array(
 	'tooltip-ca-ratinghist' => 'Lieserbewertunge vun dëser Säit',
 	'specialpages-group-feedback' => 'Meenung vun deem dee kuckt',
 	'readerfeedback-tt-review' => 'Bewäertung fortschécken',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'readerfeedback-reliability' => 'Betroewberhed',
+	'readerfeedback-completeness' => 'Vólledighed',
+	'readerfeedback-npov' => 'Neutraliteit',
+	'readerfeedback-presentation' => 'Presentatie',
+	'readerfeedback-overall' => 'Algemein',
+	'readerfeedback-level-none' => '(ónwis)',
+	'readerfeedback-level-0' => 'Wórd',
+	'readerfeedback-level-1' => 'Lieëg',
+	'readerfeedback-level-2' => 'Good',
+	'readerfeedback-level-3' => 'Hoeag',
+	'readerfeedback-level-4' => 'Perfèk',
+	'readerfeedback-submit' => 'Slaon óp',
 );
 
 /** Lumbaart (Lumbaart)

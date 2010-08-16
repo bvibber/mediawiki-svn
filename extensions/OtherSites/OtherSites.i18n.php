@@ -476,6 +476,14 @@ $messages['tr'] = array(
 	'othersites-desc' => 'Dil bağlantıları dışındaki interviki bağlantılarını kendi portletine taşır',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'othersites' => 'Башка сәхифәләр',
+	'othersites-desc' => 'Интервики-сылтамаларны башка блокка күчерә',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

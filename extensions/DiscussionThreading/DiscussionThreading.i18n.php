@@ -233,6 +233,16 @@ $messages['eu'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Kategoria berria hasi',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'discussionthreading-replysection' => 'پاسخ',
+	'discussionthreading-replysectionhint' => 'به این پیام پاسخ دهید',
+	'discussionthreading-threadnewsection' => 'تازه',
+	'discussionthreading-threadnewsectionhint' => 'شروع کردن یک موضوع جدید',
+);
+
 /** Finnish (Suomi)
  * @author Vililikku
  */

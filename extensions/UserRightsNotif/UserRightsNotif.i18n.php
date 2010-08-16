@@ -416,6 +416,13 @@ $2',
 	'userrightsnotif-desc' => 'Envoie un courriel de notification aux utilisateurs dont les droits ont été modifiés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'userrightsnotifysubject' => 'Changement d’apartegnence a des tropes d’utilisators dessus $1',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

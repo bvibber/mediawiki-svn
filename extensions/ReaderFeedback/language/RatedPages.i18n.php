@@ -230,11 +230,15 @@ $messages['et'] = array(
 
 /** Persian (فارسی)
  * @author Huji
+ * @author Wayiran
  */
 $messages['fa'] = array(
+	'ratedpages' => 'صفحه‌های درجه‌بندی‌شدهٔ خوانندگان',
+	'ratedpages-leg' => 'صفحه‌های درجه‌بندی‌شده با تعداد قابل‌ملاحظه‌ای از درجه‌بندی‌ها را پیدا کن',
 	'ratedpages-list' => 'در زیر فهرستی از صفحه‌ها که طبق نمره خوانندگان آن‌ها مرتب شده‌است قرار دارد.',
 	'ratedpages-none' => 'صفحه‌ای در این فهرست وجود ندارد',
 	'ratedpages-graphs' => 'داده‌های ارزیابی',
+	'ratedpages-count' => '$1 بازبینی',
 );
 
 /** Finnish (Suomi)

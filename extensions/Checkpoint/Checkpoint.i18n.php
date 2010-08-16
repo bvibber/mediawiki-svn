@@ -378,3 +378,10 @@ $messages['tr'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Kontrol noktası|kontrol noktası kayıt]])',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'checkpoint' => '保存并继续编辑',
+);
+

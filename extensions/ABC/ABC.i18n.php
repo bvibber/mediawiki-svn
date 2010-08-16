@@ -852,11 +852,12 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'abc-desc' => 'Додаје <code>&lt;abc&gt;</code> таг за форматирање ABC музике',
-	'abcdownload' => 'Сними:',
+	'abc-desc' => 'Додаје <code>&lt;abc&gt;</code> ознаку за обликовање ABC музике',
+	'abcdownload' => 'Преузимање:',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

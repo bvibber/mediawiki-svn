@@ -303,6 +303,17 @@ $messages['eu'] = array(
 	'communityvoice-ratings-error-no-category' => 'Kategoria falta da balorazio etiketan.',
 );
 
+/** Persian (فارسی)
+ * @author Wayiran
+ */
+$messages['fa'] = array(
+	'communityvoice' => 'صدای جامعه',
+	'communityvoice-ratings' => 'ارزش‌دهی‌ها',
+	'communityvoice-ratings-scale-status-sending' => 'در حال ارسال...',
+	'communityvoice-ratings-scale-status-error' => 'ارسال خطا!',
+	'communityvoice-ratings-scale-status-thanks' => 'سپاس از رای‌دادنتان!',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
@@ -573,6 +584,13 @@ $messages['lb'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|Stëmm|Stëmmen}} ofginn)',
 	'communityvoice-ratings-error-no-category' => 'Am Bewäertungstag feelt den Attribut Kategorie.',
 	'communityvoice-ratings-error-no-title' => 'Den Titel-Attribut feelt an der Bewäertungs-Markéierung.',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'communityvoice' => 'Gemeinsjapsstöm',
 );
 
 /** Lithuanian (Lietuvių)

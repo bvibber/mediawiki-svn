@@ -767,9 +767,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'wikieditor' => 'Напредно сучеље уређивања викитекста',
 	'wikieditor-wikitext-tab' => 'Викитекст',
 	'wikieditor-loading' => 'Учитавање',
 );

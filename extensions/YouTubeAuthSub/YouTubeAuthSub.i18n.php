@@ -2920,12 +2920,13 @@ $messages['sh'] = array(
  * @author Asiri wiki
  * @author Calcey
  * @author චතුනි අලහප්පෙරුම
+ * @author රොමානිස් සැමුවෙල්
  */
 $messages['si'] = array(
 	'youtubeauthsub' => 'YouTube වීඩියෝව උඩුගතකරන්න',
 	'youtubeauthsub-desc' => 'පරිශීලකයින්ට ඍජුවම YouTube වෙත  [[Special:YouTubeAuthSub|වීඩියෝ උඩුගත කිරීම]]ට ඉඩ හරියි.',
 	'youtubeauthsub_info' => 'පිටුවකට කිරීම සඳහා YouTube වෙත වීඩියෝවක් උඩුගත කිරීමට,පහත තොරතුරු පුරවන්න:',
-	'youtubeauthsub_title' => 'සිරස',
+	'youtubeauthsub_title' => 'ශීර්ෂය',
 	'youtubeauthsub_description' => 'විස්තරය',
 	'youtubeauthsub_password' => 'YouTube මුරපදය',
 	'youtubeauthsub_username' => 'YouTube පරිශීලක නාමය',
@@ -2950,7 +2951,7 @@ $messages['si'] = array(
 	'youtubeauthsub_uploading' => 'ඔබගේ වීඩියෝව උඩුගත වෙමින් පවතී,මඳක් ඉවසන්න.',
 	'youtubeauthsub_viewpage' => 'විකල්ප ලෙසින්, ඔබට [[$1|ඔබගේ වීඩියෝව නැරඹුම]] කල හැක.',
 	'youtubeauthsub_jserror_nokeywords' => 'කරුණාකර 1 හෝ ඊට වඩා මූලපද ගනනක් ඇතුලත් කරන්න.',
-	'youtubeauthsub_jserror_notitle' => 'කරුණාකර විඩියාව සඳහා සිරසක් සපයන්න.',
+	'youtubeauthsub_jserror_notitle' => 'කරුණාකර විඩියාව සඳහා ශීර්ෂයක් සපයන්න.',
 	'youtubeauthsub_jserror_nodesc' => 'කරුණාකර විඩියෝව සඳහා විස්තරයක් සපයන්න.',
 );
 
@@ -3273,6 +3274,44 @@ Var tålmodig.',
 	'youtubeauthsub_jserror_nokeywords' => 'Var god välj 1 eller fler nyckelord.',
 	'youtubeauthsub_jserror_notitle' => 'Var god välj en titel för videon.',
 	'youtubeauthsub_jserror_nodesc' => 'Var god välj en beskrivning för videon.',
+);
+
+/** Swahili (Kiswahili)
+ * @author Muddyb Blast Producer
+ */
+$messages['sw'] = array(
+	'youtubeauthsub' => 'Pakia video YouTube',
+	'youtubeauthsub-desc' => 'Inaruhusu watumiaji [[Special:YouTubeAuthSub|kupakia video]] zao moja kwa moja katika YouTube',
+	'youtubeauthsub_info' => 'Kupakia video katika YouTube na kuiweka kwenye ukurasa, jaza maelezo yafuatayo:',
+	'youtubeauthsub_title' => 'Jina',
+	'youtubeauthsub_description' => 'Maelezo',
+	'youtubeauthsub_password' => 'Neno la siri la YouTube',
+	'youtubeauthsub_username' => 'Jina la mtumiaji la YouTube',
+	'youtubeauthsub_keywords' => 'Maneno msingi',
+	'youtubeauthsub_category' => 'Jamii',
+	'youtubeauthsub_submit' => 'Wasilisha',
+	'youtubeauthsub_clickhere' => 'Bonyeza hapa kwa kuingia kwenye YouTube',
+	'youtubeauthsub_tokenerror' => 'Dalili za hitilafu ya kutengeza idhinisho, jaribu kufanya upya.',
+	'youtubeauthsub_success' => "Hongera!
+Video yako imepakiwa.
+<a href='http://www.youtube.com/watch?v=$1'>Tazama video yako</a>.
+YouTube inaweza kuhitaji muda kidogo wa kuchakata video yako, hivyo basi inaweza isiwe tayari kwa sasa.
+
+Kuingiza video yako kwenye ukurasa wa wiki, ingiza kodi zifuatazo kwenye ukurasa:
+<code>{{&#35;ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Ili kupakia video, utahitajika uingie kwenye YouTube kwanza.',
+	'youtubeauthsub_uploadhere' => 'Pakia video yako kutoka hapa:',
+	'youtubeauthsub_uploadbutton' => 'Pakia',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Tazama video hii]',
+	'youtubeauthsub_summary' => 'Inapakia video YouTube',
+	'youtubeauthsub_uploading' => 'Video yako inapakiwa.
+Tafadhali kuwa na subira.',
+	'youtubeauthsub_viewpage' => 'Njia nyingine, unaweza [[$1|kutazama video yako]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Tafadhali ingiza neno la msingi 1 au zaidi.',
+	'youtubeauthsub_jserror_notitle' => 'Tafadhali ingiza jina la ukurasa wako.',
+	'youtubeauthsub_jserror_nodesc' => 'Tafadhali ingiza maelezo kwa ajili ya video.',
 );
 
 /** Silesian (Ślůnski)

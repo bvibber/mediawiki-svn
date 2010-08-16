@@ -1387,6 +1387,7 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1402,7 +1403,7 @@ $messages['sr-ec'] = array(
 	'gep-suggestcategorybutton' => 'Пошаљи',
 	'gep-sections' => 'Одељци',
 	'gep-sectionnotdisabled' => 'Овај одељак не може бити онемогућен',
-	'gep-addsection' => 'Додај секцију',
+	'gep-addsection' => 'Додај одељак',
 	'gep-addsectionbutton' => 'Додај',
 	'gep-classicmode' => 'Класичан мод',
 	'gep-genericmode' => 'Генерички мод',

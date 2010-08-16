@@ -490,10 +490,11 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Maikking
+ * @author Sp5uhe
  * @author Wpedzich
  */
 $messages['pl'] = array(
-	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
+	'contributionseditcount' => 'Ten użytkownik wykonał {{PLURAL:$1|jedną edycję|$1 edycje|$1 edycji}}.',
 	'contributionseditcount-desc' => 'Wyświetla liczbę edycji na [[Special:Contribution|stronie wkładu użytkownika]]',
 );
 

@@ -430,6 +430,7 @@ $messages['lb'] = array(
 	'mwe-cancel' => 'Ofbriechen',
 	'mwe-enable-gadget' => 'Multimedia-Beta-Gadget (mwEmbed) fir all Säiten aktivéieren',
 	'mwe-enable-gadget-done' => 'De Multimedia-Beta-Gadget gouf aktivéiert',
+	'mwe-must-login-gadget' => 'Fir de Gadget aktivéieren ze kënne musst Dir Iech <a target="_new" href="$1">aloggen</a>',
 	'mwe-test-plural' => 'Ech hunn {{PLURAL:$1|$1 Test|$1 Tester}} gemaach',
 );
 

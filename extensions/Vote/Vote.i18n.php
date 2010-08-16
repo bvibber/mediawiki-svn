@@ -681,8 +681,26 @@ sphinx|Sphinx',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'vote' => 'Votar',
+	'vote-desc' => 'Pèrmèt de betar en place des sondâjos simplos.',
+	'vote-header' => "Vos pouede votar por lo '''mêtre de l’Univèrs''' ique !",
+	'vote-current' => "Voutron voto d’ora est por '''$1'''.",
+	'vote-legend' => 'Betar ou ben changiér un voto',
+	'vote-caption' => 'Voutron chouèx :',
+	'vote-choices' => 'j·oquère|Lo J·oquère
+pingoin|Lo Pingoin
+sfinxe|Sfinxe',
+	'vote-submit' => 'Votar',
+	'vote-registered' => 'Voutron voto at étâ encartâ.',
+	'vote-view-results' => 'Vêde los rèsultats',
+	'vote-results' => 'Rèsultats du voto',
 	'vote-results-choice' => 'Chouèx',
 	'vote-results-count' => 'Vouèx',
+	'vote-results-none' => 'Por lo moment, nion voto at étâ betâ.',
+	'vote-login' => 'Vos vos dête [$1 branchiér] por votar.',
+	'vote-invalid-choice' => 'Vos dête chouèsir yon des chouèx disponiblos.',
+	'right-vote' => 'Votar',
+	'right-voteadmin' => 'Vêde los rèsultats du voto',
 );
 
 /** Western Frisian (Frysk)

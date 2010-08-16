@@ -251,9 +251,19 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author GoEThe
+ * @author Heldergeovane
  */
 $messages['pt-br'] = array(
+	'dontswitchmeover-desc' => 'Preferência para os usuários especificarem se desejam preservar a sua configuração de tema se o tema padrão for alterado.',
 	'dontswitchmeover-pref' => 'Não permitir que o meu tema seja alterado se o tema padrão passar a ser outro',
+);
+
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'dontswitchmeover-desc' => 'Opțiune pentru utilizatorii care doresc să păstreze propriile setări ale interfeței atunci când interfața implicită este modificată.',
+	'dontswitchmeover-pref' => 'Nu permite schimbarea interfeței mele atunci când interfața implicită este modificată',
 );
 
 /** Russian (Русский)
@@ -264,12 +274,21 @@ $messages['ru'] = array(
 	'dontswitchmeover-pref' => 'Не менять мою тему оформления при смене темы по умолчанию',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'dontswitchmeover-desc' => 'Nastavitev za uporabnike, ki določa, ali želijo ohraniti nastavitev kože, ko se spremeni privzeta koža.',
+	'dontswitchmeover-pref' => 'Ne dovoli spremembe moje kože, ko se spremeni privzeta koža',
+);
+
 /** Ukrainian (Українська)
+ * @author NickK
  * @author Riwnodennyk
  */
 $messages['uk'] = array(
-	'dontswitchmeover-desc' => 'Можливість для користувачів визначитись, чи вони бажають зберігати вибраний вигляд віки у випадку зміни вигляду за замовчуванням.',
-	'dontswitchmeover-pref' => 'Не змінювати вибраний вигляд при зміні вигляду за замовчуванням',
+	'dontswitchmeover-desc' => 'Можливість для користувачів визначитись, чи вони бажають зберігати вибране оформлення вікі у випадку зміни оформлення за замовчуванням.',
+	'dontswitchmeover-pref' => 'Не змінювати вибране оформлення при зміні оформлення за замовчуванням',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -278,5 +297,13 @@ $messages['uk'] = array(
 $messages['vi'] = array(
 	'dontswitchmeover-desc' => 'Cho phép người dùng chọn có muốn để yên thiết lập bề ngoài khi bề ngoài mặc định được thay đổi.',
 	'dontswitchmeover-pref' => 'Để yên bề ngoài của tôi khi bề ngoài mặc định được thay đổi',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'dontswitchmeover-desc' => '关于在默认皮肤改动后，用户皮肤是否也进行相应改动的设置。',
+	'dontswitchmeover-pref' => '党默认皮肤改动时，不要让我所使用的皮肤也进行相应的改动',
 );
 

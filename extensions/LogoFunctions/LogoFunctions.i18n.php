@@ -227,7 +227,7 @@ $messages['pt'] = array(
  * @author Giro720
  */
 $messages['pt-br'] = array(
-	'logofunctions-desc' => 'Adiciona uma função ao analisador sintático para definir o logotipo da wiki',
+	'logofunctions-desc' => 'Adiciona ao analisador sintático uma função relacionada com o logotipo da wiki',
 	'logofunctions-filenotexist' => 'Erro: o arquivo [[File:$1]] não existe',
 );
 
@@ -260,5 +260,13 @@ $messages['sl'] = array(
  */
 $messages['te'] = array(
 	'logofunctions-filenotexist' => 'పొరపాటు: [[File:$1]] ఉనికిలో లేదు',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'logofunctions-desc' => 'Bổ sung hàm cú pháp nhúng biểu trưng wiki',
+	'logofunctions-filenotexist' => 'Lỗi: [[File:$1]] không tồn tại',
 );
 

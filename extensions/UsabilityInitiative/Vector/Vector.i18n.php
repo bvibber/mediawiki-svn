@@ -524,6 +524,13 @@ $messages['sl'] = array(
 	'vector-desc' => 'Izboljšave elementov uporabniškega vmesnika kože Vector.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'vector' => 'Побољшања корисничког сучеља за Вектор',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -537,6 +544,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'vector' => 'వెక్టర్ కొరకు ముఖాంతరపు మెరుగులు',
+);
+
+/** Thai (ไทย)
+ * @author Horus
+ */
+$messages['th'] = array(
+	'vector-desc' => 'ข้อปรับปรุงองค์ประกอบอินเตอร์เฟซผู้ใช้ของสกินเวกเตอร์',
 );
 
 /** Turkmen (Türkmençe)

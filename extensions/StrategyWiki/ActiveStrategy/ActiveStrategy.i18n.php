@@ -114,6 +114,14 @@ $messages['es'] = array(
 	'nedits' => '$1 {{PLURAL:$1|edición|ediciones}}',
 );
 
+/** Persian (فارسی)
+ * @author Wayiran
+ */
+$messages['fa'] = array(
+	'activestrategy' => 'راهبرد فعال',
+	'active-strategy-desc' => 'تعداد ویرایش‌ها را به صفحات برنامه‌ریزی راهبردی نشان می‌دهد.',
+);
+
 /** French (Français)
  * @author IAlex
  * @author Jean-Frédéric
@@ -342,8 +350,8 @@ $messages['pt'] = array(
  * @author Giro720
  */
 $messages['pt-br'] = array(
-	'activestrategy' => 'Grupos de trabalho ativos',
-	'active-strategy-desc' => 'Mostra o número de edições das páginas da equipe de trabalho',
+	'activestrategy' => 'Estratégia ativa',
+	'active-strategy-desc' => 'Mostra o número de edições das páginas de planejamento estratégico',
 	'active-strategy-intro' => 'Número de edições às páginas dos grupos de trabalho {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
 	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
 );
@@ -405,10 +413,11 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Srhat
  */
 $messages['tr'] = array(
-	'activestrategy' => 'Etkin Strateji',
+	'activestrategy' => 'Etkin strateji',
 	'nedits' => '$1 {{PLURAL:$1|değişiklik|değişiklik}}',
 );
 

@@ -824,6 +824,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $messages['fa'] = array(
@@ -850,6 +851,7 @@ $messages['fa'] = array(
 	'extdist-svn-error' => 'ساب‌ورژن دچار یک خطا شد: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'امکان پردازش اکس‌ام‌ال دریافتی از «svn info» وجود ندارد: <pre>$1</pre>',
 	'extdist-tar-error' => 'تار خطای خروج $1 برگرداند:',
+	'extdist-want-more' => 'دریافت در قالبی دیگر',
 );
 
 /** Finnish (Suomi)

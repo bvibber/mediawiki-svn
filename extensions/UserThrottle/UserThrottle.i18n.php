@@ -171,6 +171,13 @@ $messages['fr'] = array(
 	'acct_creation_global_hard_throttle_hit' => 'La création a été automatiquement suspendue pendant quelques secondes afin de limiter les attaques informatiques par enregistrement en masse de nouveaux comptes. Patientez un moment et cliquez sur « recharger » ou « actualiser » dans votre navigateur pour soumettre, une nouvelle fois, la demande.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'userthrottle-desc' => 'Limite la crèacion d’utilisators.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

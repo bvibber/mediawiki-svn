@@ -352,10 +352,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'tab0-desc' => 'Додаје језичак "0", повезујући ка форми за измену прве секције странице',
+	'tab0-desc' => 'Додаје језичак „0“, повезујући ка форми за измену првог одељка странице',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

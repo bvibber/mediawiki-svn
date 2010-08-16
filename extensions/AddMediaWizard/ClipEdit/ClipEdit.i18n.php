@@ -927,6 +927,41 @@ $messages['pl'] = array(
 	'mwe-clipedit-layout_left' => 'Układ z ilustracjami sformatowanymi do lewej',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mwe-clipedit-crop' => 'Tajé le bordure a la plancia',
+	'mwe-clipedit-apply_crop' => 'Apliché ij taj a la figura',
+	'mwe-clipedit-reset_crop' => 'Amposté torna ij taj',
+	'mwe-clipedit-insert_image_page' => 'Anserì ant la pàgina',
+	'mwe-clipedit-insert_into_sequence' => 'Anserì ant la sequensa',
+	'mwe-clipedit-preview_insert' => "Prové l'anseriment",
+	'mwe-clipedit-cancel_image_insert' => "Scancelé l'anseriment",
+	'mwe-clipedit-sc_attributes' => 'Modifiché ij detaj dël filmà',
+	'mwe-clipedit-sc_inoutpoints' => "Definì dij pont d'intrada e surtìa",
+	'mwe-clipedit-sc_overlays' => 'Arvestiment',
+	'mwe-clipedit-sc_audio' => 'Contròl àudio',
+	'mwe-clipedit-sc_duration' => 'Durà',
+	'mwe-clipedit-template_properties' => 'Proprietà ëd lë stamp',
+	'mwe-clipedit-custom_title' => 'Tìtol përsonalisà',
+	'mwe-clipedit-edit_properties' => 'Modifiché le proprietà',
+	'mwe-clipedit-other_properties' => 'Àutre proprietà',
+	'mwe-clipedit-resource_page' => "Pàgina dl'arsorsa:",
+	'mwe-clipedit-set_in_out_points' => "Definì dij pont d'intrada e surtìa",
+	'mwe-clipedit-start_time' => "Ora d'inissi",
+	'mwe-clipedit-end_time' => 'Ora ëd fin',
+	'mwe-clipedit-preview_inout' => "Previsualisé ij pont d'intrada e surtìa",
+	'mwe-clipedit-edit-tools' => 'Utiss ëd modìfica',
+	'mwe-clipedit-inline-description' => 'Legenda',
+	'mwe-clipedit-edit-video-tools' => 'Utiss ëd modìfica dij filmà:',
+	'mwe-clipedit-duration' => 'Durà:',
+	'mwe-clipedit-layout' => 'Presentassion',
+	'mwe-clipedit-layout_right' => 'Disposission ëd la plancia a drita',
+	'mwe-clipedit-layout_left' => 'Disposission ëd la plancia a snista',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

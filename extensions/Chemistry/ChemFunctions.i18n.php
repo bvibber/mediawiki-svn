@@ -1371,3 +1371,12 @@ $messages['yo'] = array(
 	'chemFunctions_Name' => 'Orúkọ IUPAC',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'chemFunctions_CAS' => 'CAS号',
+	'chemFunctions_Formula' => '化学式',
+	'chemFunctions_Name' => 'IUPAC名',
+);
+

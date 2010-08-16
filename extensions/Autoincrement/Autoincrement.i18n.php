@@ -317,10 +317,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'autoincrement-desc' => 'Закачка (hook) која додаље самоувећавајућу променљиву <nowiki>{{AUTOINCREMENT}}</nowiki>',
+	'autoincrement-desc' => 'Закачка која додаје самоувећавајућу променљиву <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

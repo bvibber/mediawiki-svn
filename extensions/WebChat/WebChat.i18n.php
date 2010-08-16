@@ -254,6 +254,14 @@ Pour les utilisateurs anonymes, un pseudonyme est créé automatiquement, mais c
 	'right-webchat' => 'Peut utiliser le [[Special:WebChat|clavardage web]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'webchat' => 'Cllavardâjo vouèbe',
+	'right-webchat' => 'Pôt utilisar lo [[Special:WebChat|cllavardâjo vouèbe]]',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -623,6 +631,14 @@ Anonymní používatelia dostanú automaticky vytvorenú prezývku, ale možno j
 	'right-webchat' => 'Povolené používať [[Special:WebChat|webový chat]]',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'webchat' => 'Интернет ћаскање',
+	'webchat-desc' => 'Додаје [[Special:WebChat|посебну страницу]] преко које можете да ћаскате с другим вики корисницима',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
@@ -715,9 +731,14 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'webchat' => '网上聊天',
+	'webchat-header' => '该特殊页面允许您与其他维基人进行实时的协同合作。
+点击“连接”继续。
+如果您已登录，那么您的昵称将被自动输入。
+如果您是匿名用户，系统将自动生成一个昵称，不过登录后可以进行修改。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

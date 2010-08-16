@@ -690,6 +690,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Ladsgroup
  * @author Mardetanha
@@ -706,7 +707,9 @@ $messages['fa'] = array(
 	'ratinghistory-3months' => '۳ ماه اخیر',
 	'ratinghistory-year' => 'سال پیش',
 	'ratinghistory-3years' => 'سه سال پیش',
+	'ratinghistory-ave' => 'میانگین: $1',
 	'ratinghistory-chart' => 'ارزش‌دهی خوانندگان در طول زمان',
+	'ratinghistory-purge' => 'خالی‌کردن میانگیر',
 	'ratinghistory-table' => 'بررسی اجمالی ارزش‌دهی خوانندگان',
 	'ratinghistory-users' => 'کاربرانی که درجه‌بندی کرده‌اند',
 	'ratinghistory-graph' => '$3 از $2($1 {{PLURAL:$1|خواننده|خواننده}})',
@@ -714,6 +717,7 @@ $messages['fa'] = array(
 	'ratinghistory-table-rating' => 'ارزش‌دهی',
 	'ratinghistory-table-votes' => 'آرا',
 	'ratinghistory-none' => 'در حال حاضر بازخورد کافی از خوانندگان برای نمایش نمودار وجود ندارد.',
+	'ratinghistory-ratings' => "'''شرح:''' '''(1)''' - ضعیف; '''(2)''' - پایین; '''(3)''' - متوسط; '''(4)''' - بالا; '''(5)''' - ممتاز;",
 	'ratinghistory-legend' => "نمره متوسط روزانه <font color=\"blue\">''(آبی)''</font> و نمره متوسط برای بازهٔ زمانی انتخاب شده <font color=\"green\">''(سبز)''</font> در نمودار زیر، بر حسب تاریخ نشان داده شده‌اند. مقدار نمره‌ها به صورت زیر تعبیر می‌شود:
 
 '''[۰]''' - ضعیف؛ '''[۱]''' - پایین؛ '''[۲]''' - متوسط؛ '''[۳]''' - بالا؛ '''[۴]''' - ممتاز؛",

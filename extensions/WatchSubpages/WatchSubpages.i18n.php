@@ -349,6 +349,16 @@ Pour ajouter une page, cocher la case correspondante, et cliquez sur « {{int:wa
 Pour cocher ou décocher plusieurs pages, maintenir enfoncée la touche « Majuscule » vous permet de sélectionner des cases à cocher adjacentes en cliquant à chaque extrémité du groupe à cocher.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'watchsubpages' => 'Siuvre les sot-pâges',
+	'watchsubpages-addedtowatchlist' => 'Cen que siut at étâ apondu a voutra lista de survelyence.',
+	'watchsubpages-addtitles' => 'Apondre des pâges',
+	'watchsubpages-addtitlestowatchlist' => 'Apondre des pâges a la lista de survelyence',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

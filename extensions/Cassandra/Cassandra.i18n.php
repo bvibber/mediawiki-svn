@@ -277,6 +277,13 @@ $messages['ru'] = array(
 	'cassandra-desc' => 'Хранение текста версии страницы в базе данных [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'cassandra-desc' => 'Shrani redakcije besedil v zbirko podatkov [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Charmed94
  */

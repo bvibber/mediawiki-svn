@@ -1284,6 +1284,8 @@ $messages['id'] = array(
 	'qp_vote_again_button' => 'Ubah pilihan Anda',
 	'qp_polls_list' => 'Daftar semua pemilihan',
 	'qp_users_list' => 'Daftar semua pengguna',
+	'qp_browse_to_poll' => 'Cari ke $1',
+	'qp_browse_to_user' => 'Tamban ke $1',
 	'qp_votes_count' => '$1 {{PLURAL:$1|suara|suara}}',
 	'qp_source_link' => 'Sumber',
 	'qp_stats_link' => 'Statistik',
@@ -1303,6 +1305,7 @@ $messages['id'] = array(
 	'qp_func_no_such_poll' => 'Tidak ada pemilihan ($1)',
 	'qp_func_invalid_question_id' => 'Pertanyaan salah id=$2 (bukan angka) untuk pemilihan $1',
 	'qp_func_invalid_proposal_id' => 'Proposal salah id=$3 (bukan angka) untuk pemilihan $1, pertanyaan $2',
+	'qp_error_in_question_header' => 'Kepala pertanyaan tidak sah: $1',
 	'qp_error_id_in_stats_mode' => 'Tidak dapat menetapkan ID pemilihan dalam mode statistik',
 	'qp_error_no_stats' => 'Tidak ada data statistik tersedia, karena belum ada yang memilih pada pemilihan ini (address=$1)',
 	'qp_error_question_not_implemented' => 'Pertanyaan dengan jenis itu belum diberlakukan: $1',
@@ -1973,6 +1976,7 @@ Para gravar uma sondagem, submeta-a sem ter respondido a nenhuma pergunta.',
 	'qp_error_too_few_categories' => 'Pelo menos duas categorias devem ser definidas',
 	'qp_error_too_few_spans' => 'Cada classe de categorias requer pelo menos duas respostas possíveis definidas',
 	'qp_error_no_answer' => 'Proposta sem resposta',
+	'qp_error_unique' => 'Pergunta do tipo unique() tem mais propostas definidas do que respostas possíveis: impossível de completar',
 );
 
 /** Romanian (Română)

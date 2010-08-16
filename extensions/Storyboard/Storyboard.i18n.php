@@ -316,6 +316,7 @@ Gellout a rit [$2 lenn an istorioù embannet].',
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'storyboard-name' => 'Schwarzes Brett für Botschaften',
@@ -353,7 +354,7 @@ $messages['de'] = array(
 	'storyboard-location' => 'Dein Standort',
 	'storyboard-occupation' => 'Dein Beruf',
 	'storyboard-story' => 'Deine Botschaft',
-	'storyboard-photo' => 'Gibt es ein Foto von Dir? Was spricht dagegen es zu veröffentlichen?',
+	'storyboard-photo' => 'Gibt es ein Foto von dir? Was spricht dagegen es zu veröffentlichen?',
 	'storyboard-email' => 'Deine E-Mail-Adresse (erforderlich)',
 	'storyboard-storytitle' => 'Ein kurzer, aussagekräftiger Titel (erforderlich)',
 	'storyboard-agreement' => 'Ich stimme der Veröffentlichung und Nutzung dieser Botschaft unter den Bedingungen der Lizenz [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Namensnennung-Weitergabe unter gleichen Bedingungen] zu.',
@@ -996,10 +997,48 @@ Tu pote [$2 leger le historias ja publicate].',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Farras
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'storyboard-name' => 'Papan cerita',
+	'storyboard-desc' => 'Menyediakan sebuah [[Special:Story|halaman utama untuk penyumbang]], yaitu halaman tempat cerita dapat [[Special:StorySubmission|dikirim]] dan sebuah [[Special:StoryReview|antarmuka moderasi cerita]]',
+	'right-storyreview' => 'Tinjau, sunting, terbitkan, dan sembunyikan cerita',
+	'storyboard-anerroroccured' => 'Kesalahan terjadi: $1.',
+	'storyboard-unpublished' => 'Belum Diterbitkan',
+	'storyboard-published' => 'Diterbitkan',
+	'storyboard-hidden' => 'Tersembunyi',
+	'storyboard-unpublish' => 'Jangan terbitkan',
+	'storyboard-publish' => 'Terbitkan',
 	'storyboard-hide' => 'Sembunyikan',
+	'storyboard-option-unpublished' => 'belum diterbitkan',
+	'storyboard-option-published' => 'diterbitkan',
+	'storyboard-option-hidden' => 'tersembunyi',
+	'story' => 'Cerita',
+	'storyboard-submittedbyon' => 'Dikirim oleh $1 pada $2, $3.',
+	'storyboard-viewstories' => 'Lihat cerita',
+	'storyboard-nosuchstory' => 'Cerita yang Anda minta tidak ditemukan.
+Cerita itu mungkin telah dihapus.',
+	'storyboard-storyunpublished' => 'Cerita yang Anda minta belum diterbitkan.',
+	'storyboard-nostorytitle' => 'Anda perlu menyebutkan judul atau ID cerita yang ingin Anda lihat.',
+	'storyboard-cantedit' => 'Anda tidak diizinkan untuk menyunting cerita.',
+	'storyboard-canedit' => 'Anda dapat [$1 menyunting] dan menerbitkan cerita ini.',
+	'storyboard-createdandmodified' => 'Dibuat pada $1, $2 dan terakhir diubah pada $3, $4',
+	'storyboard-authorname' => 'Nama penulis',
+	'storyboard-authorlocation' => 'Lokasi penulis',
+	'storyboard-authoroccupation' => 'Pekerjaan penulis',
+	'storyboard-authoremail' => 'Alamat surel penulis',
+	'storyboard-thestory' => 'Cerita',
+	'storyboard-storystate' => 'Keadaan',
+	'storyboard-language' => 'Bahasa',
+	'storyboard-storymetadata' => 'Dikirim oleh $1 pada $2, $3.',
+	'storyboard-storymetadatafrom' => 'Dikirim oleh $1 dari $2 pada $3, $4.',
+	'storyboard-yourname' => 'Nama Anda (dibutuhkan)',
+	'storyboard-location' => 'Lokasi Anda',
+	'storyboard-occupation' => 'Pekerjaan Anda',
+	'storyboard-story' => 'Cerita Anda',
+	'storyboard-photo' => 'Punya foto pribadi?
+Berbagilah dengan kami.',
 );
 
 /** Igbo (Igbo) */
@@ -1715,6 +1754,8 @@ $messages['sr-ec'] = array(
 	'story' => 'Прича',
 	'storyboard-submittedbyon' => 'Послато од $1, на $2, $3.',
 	'storyboard-viewstories' => 'Види приче',
+	'storyboard-cantedit' => 'Немате дозволу да мењате приче.',
+	'storyboard-canedit' => 'Можете да [$1 измените] и објавите ову причу.',
 	'storyboard-authorname' => 'Име аутора',
 	'storyboard-authorlocation' => 'Локација аутора',
 	'storyboard-authoroccupation' => 'Занимање аутора',
@@ -1731,6 +1772,7 @@ $messages['sr-ec'] = array(
 Зашто је не бисте показали?',
 	'storyboard-email' => 'Адреса Ваше електронске поште (потребно)',
 	'storyboard-storytitle' => 'Кратак, дескриптиван наслов (потребно)',
+	'storyboard-charsneeded' => '({{PLURAL:$1|потребан је још $1 карактер|потребна су још $1 карактера|потребна су још $1 карактера|потребна су још $1 карактера|потребно је још $1 карактера}})',
 	'storyboard-submissioncomplete' => 'Слање комплетирано',
 	'storyboard-submissionincomplete' => 'Слање није успело',
 	'storyboard-changetitle' => 'Промените наслов.',

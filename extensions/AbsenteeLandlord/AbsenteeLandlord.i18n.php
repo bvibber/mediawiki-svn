@@ -623,6 +623,14 @@ $messages['sk'] = array(
 	'absenteelandlord-desc' => 'Automaticky zamyká wiki databázu ak sú všetci správcovia po určitú dobu neaktívni',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'absenteelandlord-reason' => 'Zbirka podatkov je bila samodejno zaklenjena zaradi neaktivnosti administratorjev.',
+	'absenteelandlord-desc' => 'Samodejno zaklene zbirke podatkov wikija, če so vsi administratorji nekaj časa neaktivni',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

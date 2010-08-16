@@ -207,6 +207,18 @@ $messages['nl'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Mirrortool-gebruikers',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'mirrortools' => 'MirrorTools',
+	'mirrortools-desc' => 'Umożliwia edycję poprzez API z użyciem dowolnej nazwy użytkownika',
+	'right-mirroredit' => 'Edycja poprzez API z użyciem dowolnej nazwy użytkownika',
+	'group-MirrorTools' => 'Użytkownicy MirrorTools',
+	'group-MirrorTools-member' => 'użytkownik MirrorTools',
+	'grouppage-MirrorTools' => '{{ns:project}}:Użytkownicy MirrorTools',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

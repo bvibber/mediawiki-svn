@@ -238,6 +238,7 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Melancholie
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -247,7 +248,7 @@ $messages['de'] = array(
 	'createpage_instructions' => 'Gib den Namen der neu zu erstellenden Seite ein:',
 	'createpage_entertitle' => 'Titel für deine Seite.',
 	'createpage_titleexists' => 'Eine Seite mit dem Namen [[$1]] existiert bereits.
-Möchtest Du die existierende Seite bearbeiten?',
+Möchtest du die existierende Seite bearbeiten?',
 	'createpage_tryagain' => 'Nein – Ich möchte eine neue Seite mit einem anderen Titel anlegen.',
 	'createpage_editexisting' => 'Ja – Ich möchte die existierende Seite bearbeiten.',
 	'createpage-badtitle' => '„$1“ kann nicht als Seitentitel genutzt werden',

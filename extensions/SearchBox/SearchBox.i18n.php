@@ -758,6 +758,15 @@ $messages['sk'] = array(
 	'searchbox-namespaces' => 'Menné priestory:',
 );
 
+/** Albanian (Shqip)
+ * @author Mikullovci11
+ */
+$messages['sq'] = array(
+	'searchbox-search' => 'Kërko',
+	'searchbox-go' => 'Shko',
+	'searchbox-namespaces' => 'Hapësira:',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

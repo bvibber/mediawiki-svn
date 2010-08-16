@@ -393,6 +393,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author MF-Warburg
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'importusers' => 'Benutzer importieren',
@@ -414,7 +415,7 @@ $messages['de'] = array(
 	'importusers-login-name' => 'Benutzername',
 	'importusers-password' => 'Passwort',
 	'importusers-email' => 'E-Mail',
-	'importusers-realname' => 'Echter Name',
+	'importusers-realname' => 'Bürgerlicher Name',
 	'right-import_users' => 'Benutzerdaten in großem Umfang importieren',
 );
 

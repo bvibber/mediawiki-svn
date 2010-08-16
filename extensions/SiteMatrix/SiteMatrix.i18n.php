@@ -335,6 +335,7 @@ $messages['cs'] = array(
 $messages['cu'] = array(
 	'sitematrix' => 'Викимє́дїѩ опꙑтьствова́нии ката́логъ',
 	'sitematrix-language' => 'ѩꙁꙑ́къ',
+	'sitematrix-others' => 'дроу́ꙃи Викимє́дїѩ опꙑтьствова́ниꙗ',
 );
 
 /** Welsh (Cymraeg)
@@ -1560,6 +1561,7 @@ $messages['sc'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author දසනැබළයෝ
  * @author නන්දිමිතුරු
  */
 $messages['si'] = array(
@@ -1569,7 +1571,7 @@ $messages['si'] = array(
 	'sitematrix-language' => 'භාෂාව',
 	'sitematrix-project' => 'ව්‍යාපෘතිය, අන්තර්-ව්‍යාපෘති සබැඳිය හා අන්තර්විකි සබැඳිය හි නම',
 	'sitematrix-others' => 'විකිමාධ්‍යහි අනෙකුත් ව්‍යාපෘති',
-	'sitematrix-total' => "'''ම්‍රළු ගණනය: $1'''",
+	'sitematrix-total' => "'''මුළු ගණනය: $1'''",
 	'sitematrix-sitetotal' => 'මුළු',
 	'sitematrix-private' => 'පෞද්ගලික',
 	'sitematrix-fishbowl' => 'සංස්කරණය කෙරුම පරිසීමාකෙරිණි',

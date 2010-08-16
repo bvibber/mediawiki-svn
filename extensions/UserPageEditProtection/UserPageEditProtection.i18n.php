@@ -115,6 +115,13 @@ $messages['fr'] = array(
 	'right-editalluserpages' => 'Modifier les pages utilisateurs',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'right-editalluserpages' => 'Changiér les pâges utilisator',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

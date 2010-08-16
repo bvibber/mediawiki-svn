@@ -355,6 +355,23 @@ $messages['ext'] = array(
 	'fundraiserportal-tourmaline-close' => "A partil d'agora queal estu açonchau",
 );
 
+/** Persian (فارسی)
+ * @author Bersam
+ * @author Wayiran
+ */
+$messages['fa'] = array(
+	'fundraiserportal' => 'درگاه افزایش دارایی',
+	'fundraiserportal-plain-button' => 'از ویکی‌پدیا حمایت کنید!',
+	'fundraiserportal-ruby-button' => '↓ هم‌اکنون کمک کنید.',
+	'fundraiserportal-rubytext-button' => '↓ هم‌اکنون کمک کنید',
+	'fundraiserportal-rubytext-message' => 'هر کمک مالی به ما در آزاد نگه‌داشتن ویکی‌پدیا برای همه کمک می‌کند.',
+	'fundraiserportal-rubytext-close' => 'این فرم را از حالا به بعد پنهان کن',
+	'fundraiserportal-sapphire-button' => 'هم‌اکنون کمک کنید',
+	'fundraiserportal-tourmaline-button' => 'هم‌اکنون کمک کنید',
+	'fundraiserportal-tourmaline-message' => 'هر کمک مالی به ما در آزاد نگه‌داشتن ویکی‌پدیا برای همه کمک می‌کند.',
+	'fundraiserportal-tourmaline-close' => 'این فرم را از حالا به بعد پنهان کن.',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt
@@ -721,6 +738,16 @@ $messages['lb'] = array(
 	'fundraiserportal-tourmaline-button' => 'Maacht elo en Don',
 	'fundraiserportal-tourmaline-message' => 'All Don hëlleft eis fir Wikipedia fir jidferee fräi zougänglech ze maachen.',
 	'fundraiserportal-tourmaline-close' => 'Dëst vun elo u verstoppen',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'fundraiserportal-ruby-button' => 'Gaef noe',
+	'fundraiserportal-rubytext-button' => 'Gaef noe',
+	'fundraiserportal-sapphire-button' => 'Gaef noe',
+	'fundraiserportal-tourmaline-button' => 'Gaef noe',
 );
 
 /** Macedonian (Македонски)

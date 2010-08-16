@@ -2649,24 +2649,32 @@ $4',
 );
 
 /** Persian (فارسی)
+ * @author Bersam
  * @author Huji
  * @author Komeil 4life
  * @author Mardetanha
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'code' => 'مرور کد',
+	'code-rev-title' => 'بازبینی کد - $1',
 	'code-comments' => 'توضیحات',
-	'code-change-status' => "'''وضعیت''' این نسخه را تغییر داد",
-	'code-change-tags' => "'''برچسب‌های''' این نسخه را تغییر داد",
+	'code-change-status' => "'''وضعیت''' $1 را تغییر داد",
+	'code-change-tags' => '↓ برچسب های $1 را تغییر داد',
 	'code-change-removed' => 'حذف:',
 	'code-change-added' => 'اضافه:',
+	'code-old-status' => 'وضعیت قدیمی',
+	'code-new-status' => 'وضعیت جدید',
 	'code-prop-changes' => 'سیاههٔ وضعیت و برچسب‌دهی',
 	'codereview-desc' => '[[Special:Code|ابزار بازبینی کد]] با [[Special:RepoAdmin|پشتیبانی از Subversion]]',
 	'code-no-repo' => 'هیچ مخزنی تنظیم نشده‌است!',
+	'code-repo-not-found' => '  منبع ذخيره داده‌های <b>$1</b> وجود ندارد!',
 	'code-load-diff' => 'در حال بارگیری تفاوت...',
 	'code-notes' => 'توضیحات تازه',
+	'code-statuschanges' => 'تغییرات وضعیت',
+	'code-mycommits' => 'تعهدات من',
 	'code-authors' => 'مولفان',
-	'code-status' => 'وضعیت',
+	'code-status' => 'وضعیت‌ها',
 	'code-tags' => 'برچسب‌ها',
 	'code-authors-text' => 'در زیر فهرست مولفان مخزن به ترتیب سپردن‌ها وجود دارد',
 	'code-author-haslink' => 'این مولف با کاربر $1 در ویکی پیوند دارد',
@@ -2679,6 +2687,7 @@ $messages['fa'] = array(
 	'code-author-link' => 'پیوند؟',
 	'code-author-unlink' => 'برداشتن پیوند؟',
 	'code-author-unlinksuccess' => 'پیوند مولف $1 برداشته شد',
+	'code-author-total' => 'تعداد کل نویسندگان: $1',
 	'code-field-id' => 'نسخه',
 	'code-field-author' => 'مولف',
 	'code-field-user' => 'نظر دهنده',
@@ -2688,6 +2697,7 @@ $messages['fa'] = array(
 	'code-field-comments' => 'توضیحات',
 	'code-field-path' => 'مسیر',
 	'code-field-text' => 'نکته',
+	'code-field-select' => 'انتخاب',
 	'code-rev-author' => 'مولف:',
 	'code-rev-date' => 'تاریخ:',
 	'code-rev-message' => 'توضیح:',
@@ -2699,6 +2709,7 @@ $messages['fa'] = array(
 	'code-rev-modified-r' => 'جایگزین شد',
 	'code-rev-modified-d' => 'حذف شد',
 	'code-rev-modified-m' => 'تغییر یافت',
+	'code-rev-imagediff' => 'تغییرات تصویر',
 	'code-rev-status' => 'وضعیت:',
 	'code-rev-status-set' => 'تغییر وضعیت',
 	'code-rev-tags' => 'برچسب‌ها:',
@@ -2706,19 +2717,33 @@ $messages['fa'] = array(
 	'code-rev-tag-remove' => 'برداشته برچسب‌ها:',
 	'code-rev-comment-by' => 'توضیحات توسط $1',
 	'code-rev-comment-preview' => 'پیش‌نمایش',
+	'code-rev-inline-preview' => 'پیش‌نمایش:',
 	'code-rev-diff' => 'تفاوت',
 	'code-rev-diff-link' => 'تفاوت',
+	'code-rev-diff-too-large' => 'تفاوت برای نمایش‌دادن خیلی بزرگ است.',
 	'code-rev-purge-link' => 'خالی کردن',
+	'code-rev-total' => 'تعداد کل نتایج: $1',
 	'code-status-new' => 'تازه',
 	'code-status-fixme' => 'درستم کن',
 	'code-status-reverted' => 'واگردانی شده',
 	'code-status-resolved' => 'حل شده',
 	'code-status-ok' => 'مورد تایید',
+	'code-status-verified' => 'تاییدشده',
 	'code-status-deferred' => 'معوق',
+	'code-status-old' => 'قدیمی',
 	'code-pathsearch-legend' => 'جستجوی نسخه‌ها در این مخزن بر اساس مسیر',
 	'code-pathsearch-path' => 'مسیر:',
+	'code-pathsearch-filter' => 'پالایهٔ اعمال‌شده:',
+	'code-revfilter-cr_status' => 'وضعیت = $1',
+	'code-revfilter-cr_author' => 'نویسنده = $1',
 	'code-rev-submit' => 'ذخیرهٔ تغییرات',
 	'code-rev-submit-next' => 'ذخیره و حرکت به مورد حل نشدهٔ بعدی',
+	'code-batch-status' => 'تغییر وضعیت:',
+	'code-batch-tags' => 'تغییر برچسب‌ها:',
+	'codereview-batch-submit' => 'ارسال',
+	'code-releasenotes' => 'نکات انتشار',
+	'code-release-legend' => 'ایجاد نکات انتشار',
+	'code-release-badrange' => 'محدوده خیلی بزرگ است!',
 	'codereview-subtitle' => 'برای $1',
 	'codereview-reply-link' => 'پاسخ',
 	'codereview-email-subj' => '[$1] [$2]: نظر جدید اضافه شد',
@@ -2729,6 +2754,9 @@ $messages['fa'] = array(
 نظر:
 
 $4',
+	'code-stats' => 'آمار',
+	'code-stats-staus-breakdown' => 'تعداد بازبینی‌ها در هر وضعیت',
+	'code-stats-count' => 'تعداد بازبینی‌ها',
 	'repoadmin' => 'مدیریت مخزن',
 	'repoadmin-new-legend' => 'ایجاد یک مخزن جدید',
 	'repoadmin-new-label' => 'نام محزن:',
@@ -2740,6 +2768,7 @@ $4',
 	'repoadmin-edit-button' => 'مورد تایید',
 	'repoadmin-edit-sucess' => 'مخزن «[[Special:Code/$1|$1]]» با موفقیت تغییر داده شد.',
 	'right-repoadmin' => 'مدیریت مخازن کد',
+	'right-codereview-use' => 'استفاده از ویژه:کد',
 	'right-codereview-add-tag' => 'افزودن برچسب‌های جدید به نسخه‌ها',
 	'right-codereview-remove-tag' => 'برداشتن برچسب از نسخه‌ها',
 	'right-codereview-post-comment' => 'افزودن توضیحات به نسخه‌ها',
@@ -5489,6 +5518,7 @@ $messages['li'] = array(
 	'code-status-ok' => 'gaon',
 	'code-status-verified' => 'geverifieerd',
 	'code-status-deferred' => 'aangehaaje',
+	'code-status-old' => 'aad',
 	'code-pathsearch-legend' => 'Óp paadversjes in dees repositoir zeuke',
 	'code-pathsearch-path' => 'Paad:',
 	'code-rev-submit' => 'Wieziginge ópslaon:',
@@ -6510,6 +6540,7 @@ Sammendrag:
 
 $4',
 	'code-stats' => 'statistikk',
+	'code-stats-header' => 'Statistikk for oppbevaringssted $1',
 	'code-stats-fixme-breakdown' => 'Fordeling av fiksmeg-er per forfatter',
 	'code-stats-count' => 'Antall revisjoner',
 	'repoadmin' => 'Databaseadministrasjon',
@@ -8027,6 +8058,7 @@ $4',
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Јованвб
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -8112,7 +8144,7 @@ $messages['sr-ec'] = array(
 	'right-codereview-remove-tag' => 'Бришите тагове са ревизија',
 	'right-codereview-post-comment' => 'Додајте коментаре ревизијама',
 	'right-codereview-set-status' => 'Промени статус ревизије',
-	'specialpages-group-developer' => 'Девлоперски алати',
+	'specialpages-group-developer' => 'Програмерски алати',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

@@ -141,6 +141,13 @@ $messages['nl'] = array(
 	'sidebardonatebox-desc' => 'Voegt een aangepast venster voor donaties toe in de menubalk',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'sidebardonatebox-desc' => 'Dodaje na pasku bocznym ramkę donacji',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -153,6 +160,13 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'sidebardonatebox-desc' => 'Adiciona à barra lateral uma caixa personalizada para donativos',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
 	'sidebardonatebox-desc' => 'Adiciona à barra lateral uma caixa personalizada para donativos',
 );
 

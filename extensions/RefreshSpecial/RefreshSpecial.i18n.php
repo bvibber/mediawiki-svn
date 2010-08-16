@@ -464,6 +464,13 @@ $messages['eu'] = array(
 	'refreshspecial-reconnected' => 'Birkonektaturik.',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'refreshspecial' => 'تازه‌کردن صفحه‌های ویژه',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix <jack@countervandalism.net>

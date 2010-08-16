@@ -1699,7 +1699,7 @@ $messages['de'] = array(
 	'wikilog-log-cmt-rejdel' => 'Abgelehnter Wikilog-Kommentar von [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Wikilog Aktionen',
-	'wikilog-missing-wikilog' => 'Dies ist die [[{{int:wikilog-help}}|Wikilog]]-Seite für [[{{FULLPAGENAME}}]].
+	'wikilog-missing-wikilog' => 'Dies ist die [[{{int:wikilog-help}}|Wikilog]]-Seite von [[{{FULLPAGENAME}}]].
 
 Dieses Wikilog existiert noch nicht.
 Um Artikel zu veröffentlichen und andere Wikilog-Funktionen freizuschalten muss sie erst erstellt werden.
@@ -6086,7 +6086,9 @@ $messages['sc'] = array(
  * @author Calcey
  * @author Jiro Ono
  * @author චතුනි අලහප්පෙරුම
+ * @author දසනැබළයෝ
  * @author බිඟුවා
+ * @author රොමානිස් සැමුවෙල්
  */
 $messages['si'] = array(
 	'wikilog-desc' => 'බ්ලොග් විශේෂාංග එකතු කිරීම,විකි-බ්ලොග් මුහුම නිර්මාණය',
@@ -6137,7 +6139,8 @@ $messages['si'] = array(
 	'wikilog-summary-uncategorized' => 'ප්‍රවර්ග නොකරන ලද',
 	'wikilog-summary-categories' => '$2 යටතේ ගොනු කරන ලදී',
 	'wikilog-summary-more' => '[[$3|→දිගටම කියැවීම...]]',
-	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|කථාව]])',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|සාකච්ඡාව]])',
+	'wikilog-edit-hint' => 'විකිලඝුව සංස්කරණය කරන්න ලිපිය: $1',
 	'wikilog-edit-fieldset-legend' => 'විකි ලඝු තෝරාගැනීම්:',
 	'wikilog-edit-signpub' => 'අත්සන් කර මෙම ලිපිය ප්‍රකාශනය කරන්න',
 	'wikilog-edit-signpub-tooltip' => 'සුරකින විට මෙම ලිපිය එහි විකි ලඝූ සටහනෙහි අත්සන් කරනු ලැබීමට හා ප්‍රකාශනය කරනු ලැබීමට හේතුවේ.

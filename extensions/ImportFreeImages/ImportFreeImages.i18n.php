@@ -1087,6 +1087,12 @@ $messages['roa-tara'] = array(
 	'importfreeimages_owner' => 'Autore',
 	'importfreeimages_importthis' => "'mborte quiste",
 	'importfreeimages_next' => 'Prossime $1',
+	'importfreeimages_size_square' => "'U doppie",
+	'importfreeimages_size_thumbnail' => 'Miniature',
+	'importfreeimages_size_small' => 'Piccenne',
+	'importfreeimages_size_medium' => 'Medie',
+	'importfreeimages_size_large' => 'Larie',
+	'importfreeimages_size_original' => 'Origgenale',
 );
 
 /** Russian (Русский)

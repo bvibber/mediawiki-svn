@@ -2254,29 +2254,30 @@ $messages['sr'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'badimages' => 'Списак лоших слика',
-	'badimage-desc' => 'Проширује могућности списка лоших слика МедијаВикија',
-	'badimages-add-btn' => 'додај',
+	'badimage-desc' => 'Проширује могућности списка лоших слика Медијавикија',
+	'badimages-add-btn' => 'Додај',
 	'badimages-added' => '$1 је додата у списак.',
 	'badimages-count' => "Тренутно {{PLURAL:$1|је|су}} '''$1''' {{PLURAL:$1|слика|слике|слика}} на списку лоших слика.",
 	'badimages-name' => 'Име:',
-	'badimages-not-added' => 'Ову слику је немогуће додати.',
-	'badimages-not-removed' => 'Ову слику је немогуће уклонити.',
+	'badimages-not-added' => 'Додавање слике није могуће.',
+	'badimages-not-removed' => 'Уклањање слике није могуће.',
 	'badimages-reason' => 'Разлог:',
 	'badimages-remove' => '(уклони)',
 	'badimages-remove-btn' => 'Уклони',
-	'badimages-remove-confirm' => 'Молимо вас потврдите да желите да уклоните $1 са списка:',
+	'badimages-remove-confirm' => 'Молимо вас, потврдите да желите да уклоните $1 са списка:',
 	'badimages-removed' => '$1 је уклоњена са списка.',
-	'badimages-subheading' => 'Тренутно у списку',
-	'badimages-unprivileged' => '(Немате овлашћења за мењање списка)',
+	'badimages-subheading' => 'Тренутне ставке',
+	'badimages-unprivileged' => '(Немате овлашћења да промените списак)',
 	'badimages-log-name' => 'Списак лоших слика',
-	'badimages-log-header' => 'Ово је историја промена за [[{{MediaWiki:Badimages-page}}|списак лоших слика]].',
-	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
-	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
+	'badimages-log-header' => 'Ово је извештај о променама [[{{MediaWiki:Badimages-page}}|списка лоших слика]].',
+	'badimages-log-add' => '[[$1]] је додато у списак лоших слика',
+	'badimages-log-remove' => '[[$1]] је уклоњено са списка лоших слика',
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
 	'right-badimages' => 'Ажурирање списка лоших слика',
 );

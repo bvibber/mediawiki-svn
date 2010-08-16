@@ -974,6 +974,39 @@ $messages['pl'] = array(
 	'slippymap_clicktoactivate' => 'Kliknij, aby aktywować mapę',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'slippymap_desc' => "A gionta na tichëtta <tt>&lt;slippymap&gt;</tt> che a përmët d'anserì dle carte stàtiche e dinàmiche. A peul rese vàire servissi ëd carte, comprèis [http://openstreetmap.org OpenStreetMap] e Worldwind dla NASA",
+	'slippymap_error' => '$1 eror: $2',
+	'slippymap_errors' => '$1 eror:',
+	'slippymap_error_tag_content_given' => "La tichëtta <tt>&lt;$1&gt;</tt> a pija mach dj'argoment d'atribut (&lt;$1 [...]/&gt;), pa ëd test d'anseriment (&lt;$1&gt; ... &lt;/$1&gt;)",
+	'slippymap_error_missing_arguments' => "A l'ha pa butà d'atribut a la tichëtta &lt;$1&gt;, vëdde j'[http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax anformasssion d'utilisassion] për savèj 'me ciamela.",
+	'slippymap_error_missing_attribute_lat' => 'Atribut <tt>lat</tt> mancant (për la latitùdin).',
+	'slippymap_error_missing_attribute_lon' => 'Atribut <tt>lon</tt> mancant (për la longitùdin).',
+	'slippymap_error_missing_attribute_zoom' => 'Atribut <tt>zom</tt> mancant (për ël livel dë scala).',
+	'slippymap_error_invalid_attribute_lat_value_nan' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>lat</tt> (latitùdin), ël valor dàit a deuv esse un nùmer bon.",
+	'slippymap_error_invalid_attribute_lon_value_nan' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>lon</tt> (longitùdin), ël valor dàit a deuv esse un nùmer bon.",
+	'slippymap_error_invalid_attribute_zoom_value_nan' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>zoom</tt>, ël valor dàit a deuv esse un nùmer bon.",
+	'slippymap_error_invalid_attribute_width_value_nan' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>width</tt>, ël valor dàit a deuv esse un nùmer bon.",
+	'slippymap_error_invalid_attribute_height_value_nan' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>height</tt>, ël valor dàit a deuv esse un nùmer bon.",
+	'slippymap_error_invalid_attribute_mode_value_not_a_mode' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>mode</tt>, coj bon a son $2.",
+	'slippymap_error_invalid_attribute_layer_value_not_a_layer' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>layer</tt>, coj bon a son $2.",
+	'slippymap_error_invalid_attribute_marker_value_not_a_marker' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>marker</tt>, dij marcador bon a son $2.",
+	'slippymap_error_unknown_attribute' => "L'atribut <tt>$1</tt> a l'é dësconossù.",
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>lat</tt> (latitùdin). La latitùdin a dev esse tra -90 e 90 gré.",
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>lon</tt> (longitùdin). La longitùdin a dev esse tra -180 e 180 gré.",
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>zoom</tt>. In livej dë scala a devo esse tra $2 e $3.",
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>widht</tt>. La larghëssa a dev esse tra $2 e $3.",
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => "Ël valor <tt>$1</tt> a l'é pa bon për l'atribut <tt>height</tt>. L'autëssa a dev esse tra $2 e $3.",
+	'slippymap_code' => 'Wikicode për la visualisassion ëd costa carta:',
+	'slippymap_button_code' => 'Oten-e ël còdes wiki',
+	'slippymap_resetview' => 'Riamposté la visualisassion',
+	'slippymap_clicktoactivate' => 'Sgnaca për ativé la carta',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

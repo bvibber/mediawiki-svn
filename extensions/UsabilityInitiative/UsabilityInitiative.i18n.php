@@ -752,9 +752,11 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Helios13
+ * @author Rancher
  */
 $messages['sr-ec'] = array(
 	'prefs-beta' => 'Бета функције',
+	'prefs-labs' => 'Лабораторијске функције',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */

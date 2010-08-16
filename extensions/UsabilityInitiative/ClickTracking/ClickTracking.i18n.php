@@ -668,20 +668,28 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Ladsgroup
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'ct-event-name' => 'نام رویداد',
+	'ct-expert-header' => 'کلیک‌های «متخصص»',
+	'ct-intermediate-header' => 'کلیک‌های «متوسط»',
+	'ct-beginner-header' => 'کلیک‌های «تازه‌کار»',
 	'ct-total-header' => 'مجموع کلیک‌ها',
 	'ct-start-date' => 'تاریخ شروع (YYYYMMDD)',
 	'ct-end-date' => 'تاریخ پایان (YYYYMMDD)',
+	'ct-increment-by' => 'تعداد روزهایی که هر نقطهٔ داده نشان می‌دهد',
 	'ct-change-graph' => 'نمودار تغییرات',
 	'ct-beginner' => 'مبتدی',
 	'ct-intermediate' => 'متوسط',
 	'ct-expert' => 'پیشرفته',
 	'ct-date-range' => 'بازه زمانی',
+	'ct-editing' => 'ویرایش‌های در حال حاضر:',
 	'ct-anon-users' => 'کاربران گمنام',
 	'ct-user-contribs' => 'مجموع مشارکت‌های کاربر',
+	'ct-user-span' => 'مشارکت‌های کاربر در محدودهٔ زمانی',
 	'ct-and' => 'و',
 	'ct-update-table' => 'جدول بروزرسانی',
 );
@@ -1892,15 +1900,18 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'ct-event-name' => 'Назив догађаја',
 	'ct-expert-header' => 'Кликови "експерата"',
 	'ct-intermediate-header' => 'Кликови "напредних"',
 	'ct-beginner-header' => 'Кликови "почетника"',
 	'ct-total-header' => 'Укупно кликова',
 	'ct-start-date' => 'Почетни датум (YYYYMMDD)',
 	'ct-end-date' => 'Крајњи датум (YYYYMMDD)',
+	'ct-change-graph' => 'Промени графикон',
 	'ct-beginner' => 'Почетник',
 	'ct-intermediate' => 'Напредни',
 	'ct-expert' => 'Експерт',

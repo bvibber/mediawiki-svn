@@ -2695,6 +2695,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Ferrer
  * @author Innv
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(

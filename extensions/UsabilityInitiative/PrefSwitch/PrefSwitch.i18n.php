@@ -871,13 +871,17 @@ $messages['ckb'] = array(
 	'prefswitch-survey-true' => 'بەڵێ',
 	'prefswitch-survey-false' => 'نا',
 	'prefswitch-survey-submit-off' => 'لەکارخستنی تایبەتمەندییە نوێکان',
+	'prefswitch-survey-submit-global-off' => 'داخستنی تایبەتمەندییە نوێکان لەسەر ھەموو ویکییەکان',
 	'prefswitch-survey-cancel-off' => 'ئەگەر دەتەوێ لە بەکارھێنانی تایبەتمەندییە نوێکان بەردەوام ببیت، دەتوانی بگەڕێیەوە بۆ $1.',
 	'prefswitch-survey-submit-feedback' => 'پێڕاگەیاندنەوە',
 	'prefswitch-survey-cancel-feedback' => 'ئەگەر ناتەوێ پێڕاگەیاندنەوە سازبکەیت، دەتوانی بگەڕێیەوە بۆ $1.',
 	'prefswitch-survey-question-like' => 'سەبارەت بە تایبەتمەندییە نوێکان چیت بەدڵ بوو؟',
 	'prefswitch-survey-question-dislike' => 'سەبارەت بە تایبەتمەندییە نوێکان چیت بەدڵ نەبوو؟',
+	'prefswitch-survey-question-whyoff' => 'بۆچی تایبەتمەندییە نوێکان لەکاردەخەی؟
+تکایە ھەموو ئەوانەی دەگونجێ دایانبنێ.',
 	'prefswitch-survey-answer-whyoff-hard' => 'تایبەتمەندییەکان زۆر بۆ بەکارھێنان دژواربوون.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'تایبەتمەندییەکان بەباشی کاریان نەکرد.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'تایبەتمەندییەکان بە شێوەیەکی دیاریکراو کار ناکەن.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'ڕواڵەتی تایبەتمەندییەکان بەدڵم نەبوو.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'تاب و نەخشە نوێکانم بەدڵ نەبوو.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'شریتامرازە نوێکە بەدڵم نەبوو.',
@@ -1916,6 +1920,7 @@ Et saaksime neid täiustada, täida palun alljärgnev vabatahtlik küsitlus, enn
 /** Basque (Euskara)
  * @author An13sa
  * @author Joxemai
+ * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
 	'prefswitch' => 'Erabilgarritasun Iniziatibako hobespen aldaketa',
@@ -1925,6 +1930,7 @@ $messages['eu'] = array(
 	'prefswitch-survey-true' => 'Bai',
 	'prefswitch-survey-false' => 'Ez',
 	'prefswitch-survey-submit-off' => 'Ezaugarri berriak kendu',
+	'prefswitch-survey-submit-global-off' => 'Wiki guztietan ezaugarri berriak kendu.',
 	'prefswitch-survey-cancel-off' => 'Ezaugarri berriak erabiltzen jarraitu nahi baduzu, $1-(e)ra itzul zaitezke.',
 	'prefswitch-survey-submit-feedback' => 'Feedbacka bidali',
 	'prefswitch-survey-cancel-feedback' => 'Ez baduzu feedbacka eman nahi, $1-(e)ra itzul zaitezke.',
@@ -2003,19 +2009,28 @@ Hobetzen laguntzeko, bete aukerako inkesta "[[#prefswitch-survey-submit-off|{{in
 );
 
 /** Persian (فارسی)
+ * @author Bersam
  * @author Ebraminio
  * @author Huji
  * @author Ladsgroup
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'prefswitch-survey-true' => 'بله',
 	'prefswitch-survey-false' => 'خیر',
 	'prefswitch-survey-submit-off' => 'غیرفعال کردن ویژگی های جدید',
+	'prefswitch-survey-submit-global-off' => 'ویژگی‌های جدید را در همهٔ ویکی‌ها غیرفعال کن',
 	'prefswitch-survey-cancel-off' => 'اگر مایل به ادامه استفاده از ویژگی‌های جدید هستید;می‌توانید به $1 بازگردید.',
 	'prefswitch-survey-submit-feedback' => 'ارسال بازخورد',
+	'prefswitch-survey-cancel-feedback' => 'اگر به ارائهٔ بازخورد تمایلی ندارید، می‌توانید به $1 بازگردید.',
+	'prefswitch-survey-question-like' => 'از چه چیزی از ویژگی‌های جدید خوشتان آمد؟',
+	'prefswitch-survey-question-dislike' => 'از چه چیزی از ویژگی‌های جدید خوشتان نیامد؟',
+	'prefswitch-survey-question-whyoff' => 'چرا ویژگی‌های جدید را غیرفعال کردید؟
+لطفاً همهٔ مورادی را که صدق می‌کنند، انتخاب کنید.',
 	'prefswitch-survey-answer-whyoff-hard' => 'ویژگی‌ها برای استفاده خیلی سخت است.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'ویژگی فعالیت‌های لازم را انجام نمی‌دهد.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'ویژگی آن‌طور که انتظار می‌رفت نیست.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'از ظاهر ویژگی‌ها خوشم نیامد.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'من از طرح‌بندی و زبانه‌های جدید خوشم نمی‌آید.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'من از نوار ابزار جدید خوشم نمی‌آید.',
 	'prefswitch-survey-answer-whyoff-other' => 'دلیل دیگر:',
@@ -2023,6 +2038,7 @@ $messages['fa'] = array(
 	'prefswitch-survey-answer-browser-other' => 'مرورگر دیگر:',
 	'prefswitch-survey-question-os' => 'از کدام سیستم عامل استفاده می‌کنید؟',
 	'prefswitch-survey-answer-os-other' => 'سیستم عامل دیگر:',
+	'prefswitch-survey-question-res' => 'وضوح صفحهٔ نمایش‌تان چیست؟',
 	'prefswitch-title-on' => 'ویژگی‌های جدید',
 	'prefswitch-title-switched-on' => 'لذت ببرید!',
 	'prefswitch-title-off' => 'غیرفعال کردن ویژگی‌های جدید',
@@ -2065,6 +2081,13 @@ $messages['fa'] = array(
 * '''لوگوی بنیاد:'''ما نماد بنیاد را نیز بروز کرده‌ایم برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.",
 	'prefswitch-main-feedback' => '===بازخورد؟===
 ما خوشحال می‌شویم نظر شما را بشنویم. لطفا در [[$1|صفحهٔ بازخورد]] نظرتان را بیان کنید یا اگر علاقه‌مندید تا ابزار را بهبود ببخشید لطفاً در [http://usability.wikimedia.org ویکی استفاده‌پذیری] بیان کنید.',
+	'prefswitch-main-on' => '===من را بازگردان !===
+[$2 در این جا کلیک کنید تا ویژگی های جدید را برگردانید].',
+	'prefswitch-main-off' => '===امتحانشان کنید!===
+[برای فعال کردن ویژگی‌های جدید اینجا را کلیک کنید $1].',
+	'prefswitch-survey-intro-off' => 'به خاطر امتحان کردن ویژگی های جدید سیستم ما از شما تشکر می کنیم
+برای کمک به ما در جهت بهبود‌سازی آن‌ها, لطفا قبل از کلیک روی  "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" نظر سنجی اختیاری زیر را پر کنید .',
+	'prefswitch-feedbackpage' => 'پروژه:بازخورد تجربهٔ کاربر',
 );
 
 /** Finnish (Suomi)
@@ -3645,6 +3668,19 @@ Fir eis ze hëllefen besser ze ginn, fëllt w.e.g. déi fakultativ Ëmfro hei ë
 	'prefswitch-feedbackpage' => 'Project:Benotzer Erfarung Feedback',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'prefswitch-survey-true' => 'Jao',
+	'prefswitch-survey-false' => 'Nein',
+	'prefswitch-title-on' => 'Nuuj meugelikhede',
+	'prefswitch-title-switched-on' => 'Geneet!',
+	'prefswitch-title-off' => 'Zèt nuuj meugelikhede oet',
+	'prefswitch-title-switched-off' => 'Danke',
+	'prefswitch-title-feedback' => 'Feedback',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */
@@ -3860,8 +3896,8 @@ $messages['mr'] = array(
 	'prefswitch-title-switched-on' => '↓ मजा करा!',
 	'prefswitch-title-switched-off' => '↓ धन्यवाद
 ↓ आभारी आहे',
-	'prefswitch-title-feedback' => '↓ उलट टपाल
-↓ संदेश परतावा',
+	'prefswitch-title-feedback' => 'उलट टपाल
+संदेश परतावा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -3870,8 +3906,8 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'prefswitch' => 'Keutamaan Peralihan Inisiatif Kepenggunaan',
 	'prefswitch-desc' => 'Membenarkan pengguna untuk beralih ke set pilihan',
-	'prefswitch-jswarning' => '↓ Perubahan pada muka laman anda [[User:$1/$2.js|$2 JavaScript]] perlu diserta dan disimpan pada [[{{ns:user}}:$1/vector.js]] <!-- atau [[{{ns:user}}:$1/common.js]]--> untuk langkah seterusnya',
-	'prefswitch-csswarning' => '↓ Fungsi  [[User:$1/$2.css|vector  $2 pilihan]] tidak akan digunakan. Anda boleh menggunakkan CSS pilihan anda untuk vector di [[{{ns:user}}:$1/vector.css]].',
+	'prefswitch-jswarning' => 'Perubahan pada muka laman anda [[User:$1/$2.js|$2 JavaScript]] perlu diserta dan disimpan pada [[{{ns:user}}:$1/vector.js]] <!-- atau [[{{ns:user}}:$1/common.js]]--> untuk langkah seterusnya',
+	'prefswitch-csswarning' => 'Fungsi  [[User:$1/$2.css|vector  $2 pilihan]] tidak akan digunakan. Anda boleh menggunakkan CSS pilihan anda untuk vector di [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Tidak',
 	'prefswitch-survey-submit-off' => 'Padamkan ciri-ciri baru',
@@ -3902,9 +3938,9 @@ $messages['ms'] = array(
 	'prefswitch-success-on' => 'Ciri-ciri baru telah diaktifkan. Kami berharap ciri-ciri baru yang diperbaharui mudah digunakan. Anda tetap boleh memadamkan ciri-ciri beta dengan menekan  "[[Special: UsabilityInitiativePrefSwitch | ((int: prefswitch-link-link }}]]" pada bahagian atas laman.',
 	'prefswitch-success-off' => 'Ciri-ciri baru telah dimatikan. Terima kasih kerana cuba menggunakan versi Beta. Anda boleh mengaktifkan semula versi ini dengan menekan "[[Special: UsabilityInitiativePrefSwitch | ((int: prefswitch }}]]" pada bahagian atas laman.',
 	'prefswitch-success-feedback' => 'Maklum balas anda telah dihantar.',
-	'prefswitch-return' => '↓ <hr style="clear:both">
- Kembali ke <span class="plainlinks">[$ 1 $ 2].</span>',
-	'prefswitch-main' => "↓ {| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+	'prefswitch-return' => '<hr style="clear:both">
+Kembali ke <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
 | [[Image:VectorNavigation-en.png|401px|]]
@@ -3935,13 +3971,13 @@ $messages['ms'] = array(
 * '''Pembaikan carian:''' Kami telah mempertingkatkan enjin carian berdasarkan cadangan untuk memudahkan anda mencari laman yang anda ingin layari. 
 * '''Ciri-ciri baru:''' Kami turut memperkenalkan wizard jadual untuk memudahkan penyediaan jadual dan memudahkan penyuntingan laman.
 * '''Logo Wikipedia:''' Kami telah mengemaskinikan logo Wikiepdia. Untuk maklumat lanjut, sila baca [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Blog Wikimedia]",
-	'prefswitch-main-logged-changes' => " * Bahagian '''tab {{int:watch}} ''' kini berbentuk bintang.
-*  Bahagian '''tab {{int:move}}''' kini terletak bersebelahan dengan bar carian.",
+	'prefswitch-main-logged-changes' => "* Bahagian '''tab {{int:watch}} ''' kini berbentuk bintang.
+* Bahagian '''tab {{int:move}}''' kini terletak bersebelahan dengan bar carian.",
 	'prefswitch-main-feedback' => '===Cadangaan?===
 Kami ingin mendengar cadangan anda. Sila kemukakan [[Wikipedia:Pendapat_dan_cadangan_pengguna |pandangan, pendapat dan cadangan]] kepada kami. Sekiranya anda ingin menyumbang kepakaran anda untuk meningkatkan mutu perisian dan Wikipedia, sila layari [http://usability.wikimedia.org Usability wiki] untuk maklumat lebih lanjut.',
 	'prefswitch-main-anon' => '===Kembali===
 [$1 Klik sini untuk mematikan ciri-ciri baru]. Anda perlu log masuk atau membuat akuan baru terlebih dahulu.',
-	'prefswitch-main-on' => '↓ ===Kembali kepada asal===
+	'prefswitch-main-on' => '===Kembali kepada asal===
 [$2 Klik di sini untuk memadamkan ciri-ciri baru].',
 	'prefswitch-main-off' => '==Cubalah!===
 Klik [$ 1 di sini untuk mengaktifkan] ciri-ciri baru',
@@ -4637,6 +4673,7 @@ Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional aba
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
  * @author Giro720
+ * @author Heldergeovane
  * @author Raylton P. Sousa
  */
 $messages['pt-br'] = array(
@@ -4647,6 +4684,7 @@ $messages['pt-br'] = array(
 	'prefswitch-survey-true' => 'Sim',
 	'prefswitch-survey-false' => 'Não',
 	'prefswitch-survey-submit-off' => 'Desligar as funcionalidades novas',
+	'prefswitch-survey-submit-global-off' => 'Desabilitar as novas funcionalidades em todas as wikis',
 	'prefswitch-survey-cancel-off' => 'Se quiser continuar usando as novas funcionalidades, você pode voltar à $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentário',
 	'prefswitch-survey-cancel-feedback' => 'Se não quiser fazer um comentário, pode voltar à $1.',
@@ -4795,6 +4833,7 @@ $messages['ro'] = array(
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Nu',
 	'prefswitch-survey-submit-off' => 'Dezactivează noile funcționalități',
+	'prefswitch-survey-submit-global-off' => 'Dezactivează noile funcționalități pentru toate proiectele wiki',
 	'prefswitch-survey-cancel-off' => 'Dacă doriți să continuați folosirea noilor funcționalități, puteți să reveniți la $1.',
 	'prefswitch-survey-submit-feedback' => 'Trimite feedback',
 	'prefswitch-survey-cancel-feedback' => 'Dacă nu doriți să comentați vă puteți întoarce la $1.',
@@ -5182,6 +5221,7 @@ $messages['sl'] = array(
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Izklopi nove funkcije',
+	'prefswitch-survey-submit-global-off' => 'Izklopi nove funkcije na vseh wikijih',
 	'prefswitch-survey-cancel-off' => 'Če bi radi še naprej uporabljali nove funkcije, se lahko vrnete na $1.',
 	'prefswitch-survey-submit-feedback' => 'Pošlji povratne informacije',
 	'prefswitch-survey-cancel-feedback' => 'Če ne želite podati povratnih informacij, se lahko vrnete na $1.',
@@ -5261,19 +5301,28 @@ Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj, pred
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Helios13
+ * @author Rancher
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'prefswitch-desc' => 'Дозволи корисницима да измене читаве поставке',
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
 	'prefswitch-survey-submit-off' => 'Искључи нове могућности',
 	'prefswitch-survey-submit-global-off' => 'Искључи нове могућности на свим викијима',
 	'prefswitch-survey-cancel-off' => 'Ако бисте желели да продужите са коришћењем бета-верзије, можете се вратити на $1.',
 	'prefswitch-survey-submit-feedback' => 'Пошаљи повратне информације',
+	'prefswitch-survey-cancel-feedback' => 'Ако не желите да пошаљете повратну информацију, можете се вратити на $1.',
 	'prefswitch-survey-question-like' => 'Шта вам се свидело у вези са бета верзијом?',
 	'prefswitch-survey-question-dislike' => 'Шта вам се није свидело у вези са бета верзијом?',
 	'prefswitch-survey-question-whyoff' => 'Зашто напуштате бета-верзију?
 Молимо Вас, означите све што је на то утицало.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Опције су биле претешке за коришћење.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Опције нису функционисале како треба.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Опције нису радиле како се очекивало.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Није ми се свидео изглед опција.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Нису ми се свидели нови језичци и изглед.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Није ми се свидела нова алатница.',
 	'prefswitch-survey-answer-whyoff-other' => 'Други разлог:',
 	'prefswitch-survey-question-browser' => 'Који браузер користите?',
 	'prefswitch-survey-answer-browser-other' => 'Други браузер:',
@@ -5558,12 +5607,15 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Horus
  * @author Octahedron80
  */
 $messages['th'] = array(
+	'prefswitch-jswarning' => 'พึงระลึกว่าเมื่อเปลี่ยนสกิน  [[User:$1/$2.js|จาวาสคริปต์ $2]] ของคุณจะต้องถูกคัดลอกไปยัง [[{{ns:user}}:$1/vector.js]] <!-- หรือ [[{{ns:user}}:$1/common.js]]--> เพื่อให้สคริปต์ทำงานต่อไป',
 	'prefswitch-survey-true' => 'ใช่',
 	'prefswitch-survey-false' => 'ไม่ใช่',
 	'prefswitch-survey-submit-off' => 'ปิดคุณลักษณะใหม่',
+	'prefswitch-survey-submit-global-off' => 'ปิดคุณลักษณะใหม่บนวิกิทั้งหมด',
 	'prefswitch-survey-cancel-off' => 'หากคุณต้องการใช้คุณลักษณะใหม่ต่อไป คุณสามารถกลับไปที่ $1',
 	'prefswitch-survey-submit-feedback' => 'ส่งผลตอบรับ',
 	'prefswitch-survey-cancel-feedback' => 'หากคุณไม่ต้องการแจ้งผลตอบรับ คุณสามารถกลับไปที่ $1',
@@ -5587,6 +5639,39 @@ $messages['th'] = array(
 	'prefswitch-title-switched-on' => 'ขอให้สำราญใจ!',
 	'prefswitch-title-off' => 'ปิดคุณลักษณะใหม่',
 	'prefswitch-title-switched-off' => 'ขอขอบคุณ',
+	'prefswitch-title-feedback' => 'ผลตอบรับ',
+	'prefswitch-success-feedback' => 'ความคิดเห็นของคุณได้ถูกส่งออกไปแล้ว',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| สกรีนช็อตของอินเตอร์เฟซนำทางใหม่ของวิกิพีเดีย <small>[[Media:VectorNavigation-en.png|(ขยาย)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| สกรีนช็อตของอินเตอร์เฟซแก้ไขหน้าพื้นฐาน <small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| สกรีนช็อตของกล่องข้อความใหม่สำหรับการเพิ่มลิงก์
+|}
+|}
+ทีมประสบกรณ์ผู้ใช้ของมูลนิธิวิกิมีเดียได้ทำงานร่วมกับอาสาสมัครจากประชาคมเพื่อที่จะเปลี่ยนแปลงสิ่งต่าง ๆ ให้ง่ายขึ้นสำหรับคุณ เรารู้สึกตื่นเต้นอย่างยิ่งที่จะได้แลกเปลี่ยนพัฒนาการบางอย่าง รวมไปถึงภาพลักษณ์และสัมผัสใหม่ ตลอดจนถึงคุณลักษณะการแก้ไขที่ถูกทำให้ง่ายขึ้น การเปลี่ยนแปลงเหล่านี้มีจุดประสงค์เพื่อที่จะทำให้อาสาสมัครหน้าใหม่สามารถเริ่มต้นใช้งานง่ายขึ้น และตั้งอยู่บน[http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study การทดสอบการใช้งานซึ่งได้ดำเนินการมาตั้งแต่ปีที่แล้ว]ของเรา มูลนิธิวิกิมีเดียถือการปรับปรุงการใช้งานของโครงการของเราเป็นสำคัญ และเราจะแลกเปลี่ยนการอัปเดตมากขึ้นอีกในอนาคต สำหรับรายละเอียดเพิ่มเติม ดูที่ [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia บล็อก]ของวิกิมีเดียที่เกี่ยวข้อง
+
+=== นี่คือสิ่งที่เราได้เปลี่ยนแปลง ===
+* '''การนำทาง:''' เราได้พัฒนาการนำทางสำหรับการอ่านและการแก้ไขหน้า ตอนนี้ แท็บที่อยู่ด้านบนของแต่ละหน้าจะมีการจำกัดความชัดเจนยิ่งขึ้นว่าคุณกำลังดูหน้าหรือหน้าอภิปราย หรือว่าคุณกำลังอ่านหรือแก้ไขหน้า
+* '''การพัฒนาแถบเครื่องมือแก้ไข:''' เราได้จัดระเบียบแถบเครื่องมือแก้ไขเพื่อให้การใช้งานง่ายขึ้น ตอนนี้ การจัดหน้าง่ายขึ้นและเป็นธรรมชาติมากขึ้น
+* '''วิซาร์ดลิงก์:''' เครื่องมือที่ง่ายต่อการใช้ทำให้คุณสามารถเพิ่มลิงก์ไปยังหน้าวิกิอื่นเช่นเดียวกับลิงก์ไปยังไซต์ภายนอก
+* '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
+* '''Other new features:''' We have also introduced a table wizard to make creating tables easier and a find and replace feature to simplify page editing.
+* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
 );
 
 /** Turkmen (Türkmençe)
@@ -5728,6 +5813,7 @@ $messages['tr'] = array(
 	'prefswitch-survey-true' => 'Evet',
 	'prefswitch-survey-false' => 'Hayır',
 	'prefswitch-survey-submit-off' => 'Yeni özellikleri kapat',
+	'prefswitch-survey-submit-global-off' => 'Yeni özellikleri tüm vikilerde kapat',
 	'prefswitch-survey-cancel-off' => 'Yeni özellikleri kullanmaya devam etmek isterseniz, $1 sayfasına geri dönebilirsiniz.',
 	'prefswitch-survey-submit-feedback' => 'Geribildirim verin',
 	'prefswitch-survey-cancel-feedback' => 'Eğer geribildirim vermek istemiyorsanız, $1 sayfasına geri dönebilirsiniz.',
@@ -5888,6 +5974,7 @@ $messages['ug-arab'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author NickK
  * @author Olvin
  * @author Riwnodennyk
  * @author Тест
@@ -5900,7 +5987,7 @@ $messages['uk'] = array(
 	'prefswitch-survey-true' => 'Так',
 	'prefswitch-survey-false' => 'Ні',
 	'prefswitch-survey-submit-off' => 'Вимкнути нові можливості',
-	'prefswitch-survey-submit-global-off' => 'Відімкнути нові можливості на всіх віках',
+	'prefswitch-survey-submit-global-off' => 'Вимкнути нові можливості на всіх вікі',
 	'prefswitch-survey-cancel-off' => 'Якщо ви бажаєте продовжити користуватися новими можливостями, ви можете повернутися до $1.',
 	'prefswitch-survey-submit-feedback' => 'Надіслати відгук',
 	'prefswitch-survey-cancel-feedback' => 'Якщо ви бажаєте надіслати відгук, ви можете повернутися до $1.',
@@ -5935,7 +6022,7 @@ $messages['uk'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
 | [[Image:VectorNavigation-uk.png|401px|]]
 |-
-| Вигляд вікна Вікіпедії в новій оболонці <small>[[Media:VectorNavigation-uk.png|(збільшити)]]</small>
+| Вигляд вікна Вікіпедії в новому оформленні <small>[[Media:VectorNavigation-uk.png|(збільшити)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -5952,30 +6039,30 @@ $messages['uk'] = array(
 | Вигляд нового інтерфейсу вставлення посилань
 |}
 |}
-Команда користувацького досвіду з фонду Вкіпедія працювала разом із добровольцями на тим, як зробити Ваше користивування простішим. Ми раді запропонувати Вам деякі поліпшення, зокрема новий вигляд, відчуття та спрощення інтерфейсу редагування. Ці зміну мають за мету полегшити перші кроки новоприбулим користувачам, і ґрунтуються на нашому [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study випробуваннях практичності протягом останнього року]. Покращення практичність наших проєктів — один із пріоритетів фонду Вікімедія, і ми впроваджуватимемо оновлення й у майбутньому. Для більш докладної інформації відвідайте наш [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia запис у блодзі].
+Команда користувацького досвіду з фонду Вікімедіа працювала разом із добровольцями над тим, щоб зробити Ваше користування проектом простішим. Ми раді запропонувати Вам деякі поліпшення, зокрема новий вигляд та спрощення інтерфейсу редагування. Ці зміни мають на меті полегшити перші кроки нових користувачів і ґрунтуються на наших [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study випробуваннях практичності протягом останнього року]. Покращення інтерфейсу наших проектів — один із пріоритетів фонду Вікімедіа, і ми впроваджуватимемо оновлення й у майбутньому. Для більш докладної інформації відвідайте [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia блог Вікімедіа].
 
-=== Деякі нововпроваджені зміни ===
-* '''Навігація:''' Ми покращили навігацію в читанні та редагуванні сторінок. Відтепер вкладки вгорі докладніше дають зрозуміти, чи Ви переглядаєте статтю, або ж її сторінку обговорення, а також чи Ви переглядаєте, або ж редагуєте сторінку.
-* '''Поліпшена панель редагувань:''' Ми переробили панель редагувань, аби полегшити користування нею. Відтепер, оформлення сторінок простіше та зрозуміліше.
-* '''Інтерфейс посилань:''' Простий у використанні пристрій надає можливість як додавати посилання на інші вікі-сторінки, так і на зовнішні сайти.
-* '''Поліпшений пошук:''' Ми поліпшили пошукові пропонови, аби Ви могли швидше відшукати потрібне.
-* '''Інші новинки:''' Ми впровадили майстер таблиць, щоби полегшити створення таблиць та замінити можливість спрощувати редагування сторінки.
-* '''Логотип Вікіпедії:''' Ми оновили наш логотип. Довідайтесь більше на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блодзі Вікіпедії].",
-	'prefswitch-main-logged-changes' => "* '''{{int:watch}}''' відтепер у формі зірки.
-* '''{{int:move}} tab''' знаходиться у випадалці поруч із коміркою пошуку.",
+=== Впроваджені зміни ===
+* '''Навігація.''' Ми покращили навігацію в читанні та редагуванні сторінок. Відтепер вкладки вгорі чіткіше пояснюють, Ви переглядаєте статтю або її сторінку обговорення, а також чи Ви переглядаєте, або ж редагуєте сторінку.
+* '''Поліпшена панель редагування:''' Ми переробили панель редагування, аби полегшити користування нею. Відтепер, форматування сторінок стало простішим та зрозумілішим.
+* '''Майстер посилань:''' Простий у використанні інструмент надає можливість додавати посилання як на інші вікі-сторінки, так і на зовнішні сайти.
+* '''Поліпшений пошук:''' Ми вдосконалили пошукові підказки, аби Ви могли швидше відшукати потрібне.
+* '''Інші новинки:''' Ми впровадили майстер таблиць, щоб полегшити створення таблиць, та інструмент автозаміни для поліпшення редагування сторінки.
+* '''Логотип Вікіпедії:''' Ми оновили наш логотип. Довідайтесь більше у [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блозі Вікімедіа].",
+	'prefswitch-main-logged-changes' => "* '''Вкладка «{{int:watch}}»''' відтепер у формі зірки.
+* '''Вкладка «{{int:move}}»''' відтепер знаходиться у випадному меню поруч з рядком пошуку.",
 	'prefswitch-main-feedback' => '=== Відгуки ===
 Ми раді чути їх від Вас. Будь ласка, перейдіть на [[$1|сторінку відгуків]], або ж, якщо Ви зацікавленні у покращенні програмного забезпечення, відвідайте наш [http://usability.wikimedia.org вікі-проект «usability»] для подальшої інформації.',
-	'prefswitch-main-anon' => '===Повернутися до колишньої облонки===
-Натисніть[$1 тут, аби вимкнути нові можливості]. Для цього Вам потрібно увійти або зареєструватися.',
+	'prefswitch-main-anon' => '===Зробити як було===
+[$1 Натисніть тут, аби вимкнути нові можливості]. Для цього Вам потрібно ввійти або зареєструватися.',
 	'prefswitch-main-on' => '===Повернути назад===
 [$2 Натисніть тут, якщо бажаєте вимкнути нові можливості].',
 	'prefswitch-main-off' => '===Спробуйте!=== 
- [$1 Клацніть тут для увімкнення нової оболонки].',
+ [$1 Клацніть тут для увімкнення нових можливостей].',
 	'prefswitch-survey-intro-feedback' => 'Нам важлива Ваша думка.
 Чи не могли б Ви пройти необов\'язкове опитування, перш ніж натиснете "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Дякуємо за випробування наших нових можливостей.
 Аби їх удосконалити, будь ласка, заповніть форму "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Project:Користувацькі відгуки щодо нової оболонки',
+	'prefswitch-feedbackpage' => 'Project:Відгуки щодо нового оформлення',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -6343,6 +6430,7 @@ Wikimedia Foundation嘅可用性小組同社群嘅志願者一齊係列努力令
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  * @author Onecountry
+ * @author Wilsonmess
  * @author Xiaomingyan
  * @author Yfdyh000
  */
@@ -6354,6 +6442,7 @@ $messages['zh-hans'] = array(
 	'prefswitch-survey-true' => '是',
 	'prefswitch-survey-false' => '否',
 	'prefswitch-survey-submit-off' => '关闭新功能',
+	'prefswitch-survey-submit-global-off' => '在所有维基站点上关闭新功能',
 	'prefswitch-survey-cancel-off' => '如果您想继续使用新功能，您可以返回$1。',
 	'prefswitch-survey-submit-feedback' => '发送反馈',
 	'prefswitch-survey-cancel-feedback' => '如果你不想提供反馈，你可以回到$1继续。',

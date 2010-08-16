@@ -150,6 +150,14 @@ $messages['fr'] = array(
 	'wikiarticlefeeds_combined_description' => 'Ceci est un flux combiné qui contient des éléments issus de plusieurs sources.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'wikiarticlefeeds-desc' => 'Fât des flux dês des pâges MediaWiki.',
+	'wikiarticlefeeds_combined_description' => 'O est un flux combinâ que contint des èlèments que vegnont d’un mouél de sôrses.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -395,5 +403,13 @@ $messages['tr'] = array(
 $messages['vi'] = array(
 	'wikiarticlefeeds-desc' => 'Tạo ra các bản tin do các trang MediaWiki tạo ra',
 	'wikiarticlefeeds_combined_description' => 'Đây là bản tin phối hợp, chứa các mẩu tin từ nhiều nguồn tin khác nhau.',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'wikiarticlefeeds-desc' => '为MediaWiki页面生成源',
+	'wikiarticlefeeds_combined_description' => '这是一个包含多个源来源的复合源。',
 );
 

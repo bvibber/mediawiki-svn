@@ -739,17 +739,22 @@ $messages['frp'] = array(
 	'wah-long-multiplexed' => '(fichiér multiplèxo ôdiô / vidèô $1, temps $2, $4×$5 pixèls, en tot $3)',
 	'wah-long-general' => '(fichiér multimèdia, temps $2, $3)',
 	'wah-long-error' => '(ffmpeg at pas possu liére ceti fichiér : $1)',
+	'wah-transcode-fail' => 'Ceti fichiér at pas possu étre transcodâ.',
+	'wah-javascript-off' => 'Vos dête activar JavaScript por participar a Wiki@Home',
 	'wah-loading' => 'chargement de l’entèrface Wiki@Home ...',
 	'wah-menu-jobs' => 'Travâlys',
 	'wah-menu-stats' => 'Statistiques',
 	'wah-menu-pref' => 'Prèferences',
 	'wah-lookingforjob' => 'Rechèrche de travâly ...',
+	'wah-start-on-visit' => 'Emmodar Wiki@Home a châque côp que visito ceti seto.',
 	'wah-doing-job' => 'Travâly : <i>$1</i> dessus : <i>$2</i>',
 	'wah-downloading' => 'Tèlèchargement du fichiér <i>$1 %</i> chavonâ',
 	'wah-encoding' => 'Encodâjo du fichiér <i>$1 %</i> chavonâ',
 	'wah-encoding-fail' => 'L’encodâjo at pas reussi. Volyéd rechargiér ceta pâge ou ben tornar èprovar pués aprés.',
 	'wah-uploading' => 'Tèlèchargement du fichiér <i>$1</i> chavonâ',
 	'wah-uploadfail' => 'Lo tèlèchargement at pas reussi',
+	'wah-needs-firefogg' => 'Por participar a Wiki@Home vos dête enstalar <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Y at avu una èrror avouéc l’API. Volyéd tornar èprovar pués aprés.',
 );
 
 /** Galician (Galego)

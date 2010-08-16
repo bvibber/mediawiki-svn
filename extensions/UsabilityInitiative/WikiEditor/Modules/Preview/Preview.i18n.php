@@ -576,6 +576,16 @@ $messages['lb'] = array(
 	'wikieditor-preview-loading' => 'Lueden...',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-preview-preference' => 'Bewèrke en besjoewe naeveneinanger',
+	'wikieditor-preview-tab' => 'Veurbesjouwing',
+	'wikieditor-preview-changes-tab' => 'Bewèrkinger',
+	'wikieditor-preview-loading' => 'Laje...',
+);
+
 /** Latvian (Latviešu)
  * @author Marozols
  * @author Papuass

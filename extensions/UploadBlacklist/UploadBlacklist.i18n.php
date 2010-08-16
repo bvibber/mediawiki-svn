@@ -151,6 +151,13 @@ $messages['eu'] = array(
 	'uploadblacklist-desc' => 'Igoerako zerrenda beltza funtzionalitatea gehitzen du',
 );
 
+/** Persian (فارسی)
+ * @author Wayiran
+ */
+$messages['fa'] = array(
+	'uploadblacklist-desc' => 'قابلیت بارگذاری لیست سیاه را می‌افزاید',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -443,6 +450,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'uploadblacklist-desc' => 'Bir yükleme karalistesi işlevselliği ekler',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'uploadblacklist-desc' => 'Кертелгән йөкләмәләрне кара исемлеккә кертә',
 );
 
 /** Ukrainian (Українська)

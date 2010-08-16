@@ -251,6 +251,7 @@ $messages['ckb'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'edituser-username' => 'по́льꙃєватєлꙗ и́мѧ :',
 	'edituser-dosearch' => 'ищи́',
 );
 
@@ -956,8 +957,8 @@ $messages['pl'] = array(
 	'edituser' => 'Edytuj użytkownika',
 	'edituser-username' => 'Nazwa użytkownika',
 	'edituser-dosearch' => 'Szukaj',
-	'edituser-nouser' => 'Taki użytkownik nie istnieje',
-	'edituser-exempt' => 'Nie możesz edytować tego użytkownika',
+	'edituser-nouser' => 'Użytkownik „$1” nie istnieje.',
+	'edituser-exempt' => 'Nie możesz edytować użytkownika „$1”.',
 	'right-edituser' => 'Edytowanie preferencji innych użytkowników',
 	'right-edituser-exempt' => 'Inni nie mogą edytować preferencji tego użytkownika',
 );
@@ -1086,14 +1087,16 @@ $messages['scn'] = array(
 
 /** Sinhala (සිංහල)
  * @author තඹරු විජේසේකර
+ * @author දසනැබළයෝ
  * @author නන්දිමිතුරු
  */
 $messages['si'] = array(
+	'edituser-desc' => 'වරප්‍රසාදිත පරිශීලකයන්හට අනෙක් පරිශීලකයන්ගේ අභිරුචි සංස්කරණය කිරීමට ඉඩදෙනු ලැබේ',
 	'edituser' => 'පරිශීලකයා සංස්කරණය කරන්න',
-	'edituser-username' => 'නම',
+	'edituser-username' => 'පරිශීලක නාමය:',
 	'edituser-dosearch' => 'ගවේෂණය',
-	'edituser-nouser' => 'නම් කරන ලද පරිශීලකයා නොපවතියි',
-	'edituser-exempt' => 'නම් කරන ලද පරිශීලකයා සංස්කරණය කල නොහැක',
+	'edituser-nouser' => '"$1"  පරිශීලකයා නොපවතියි',
+	'edituser-exempt' => '"$1"පරිශීලකයා සංස්කරණය කල නොහැක',
 	'right-edituser' => 'අනිකුත් පරිශීලකයන්ගේ රුචිකත්‍වයන් වෙනස් කරන්න.',
 	'right-edituser-exempt' => 'අනිකුත් පරිශීලකයන්ට මෙම අභිරුචීන් වෙනස් කළ නොහැකිය.',
 );
@@ -1368,15 +1371,16 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
  * @author Gzdavidwong
+ * @author Wilsonmess
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
 	'edituser-desc' => '允许特许用户改变其他用户的个人偏好',
 	'edituser' => '编辑用户',
-	'edituser-username' => '用户名',
+	'edituser-username' => '用户名：',
 	'edituser-dosearch' => '搜索',
-	'edituser-nouser' => '指定的用户不存在',
-	'edituser-exempt' => '指定的用户无法被编辑',
+	'edituser-nouser' => '用户 $1 不存在。',
+	'edituser-exempt' => '用户 $1 不能被编辑。',
 	'right-edituser' => '编辑其他用户的参数设置',
 	'right-edituser-exempt' => '他人无法编辑这个用户的参数设置',
 );

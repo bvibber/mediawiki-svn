@@ -916,9 +916,14 @@ $messages['tr'] = array(
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
+ * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
+	'filelist' => 'Сүрәтләр исемлеге',
+	'filelist-desc' => 'Сүрәтләр исемлегенчыгаручы [[Special:Filelist|хезмәт бите] ]',
 	'filelist-show-list' => 'Исемлекне күрсәтергә',
+	'filelist-show-gallery' => 'Рәсемнәрне күрсәтү',
+	'filelist-image-desc' => 'кимүгә таба',
 );
 
 /** Ukrainian (Українська)

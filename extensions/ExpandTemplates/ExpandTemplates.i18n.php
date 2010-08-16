@@ -583,6 +583,7 @@ $messages['ext'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'expandtemplates' => 'بسط‌دادن الگوها',
@@ -594,6 +595,7 @@ $messages['fa'] = array(
 	'expand_templates_xml_output' => 'خروجی XML',
 	'expand_templates_ok' => 'تایید',
 	'expand_templates_remove_comments' => 'حذف ملاحظات',
+	'expand_templates_remove_nowiki' => 'خنثی کردن تگ‌های <nowiki> در نتیجه',
 	'expand_templates_generate_xml' => 'نمایش درخت تجزیهٔ XML',
 	'expand_templates_preview' => 'پیش‌نمایش',
 );

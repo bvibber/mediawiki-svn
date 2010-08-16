@@ -1018,12 +1018,41 @@ $1',
 $messages['frp'] = array(
 	'inplace_access_disabled' => 'L’accès a ceti sèrviço est dèsactivâ por tôs los cliants.',
 	'inplace_scaler_not_enough_params' => 'Pas prod de paramètres.',
+	'inplace_scaler_invalid_image' => 'Émâge fôssa, empossiblo de dètèrmenar sa talye.',
+	'webstore_path_invalid' => 'Lo nom de fichiér est pas justo.',
+	'webstore_dest_open' => 'Empossiblo d’uvrir lo fichiér de dèstinacion « $1 ».',
+	'webstore_dest_mkdir' => 'Empossiblo de fâre lo rèpèrtouèro de dèstinacion « $1 ».',
+	'webstore_archive_mkdir' => 'Empossiblo de fâre lo rèpèrtouèro d’arch·ivâjo « $1 ».',
+	'webstore_src_open' => 'Empossiblo d’uvrir lo fichiér sôrsa « $1 ».',
+	'webstore_src_close' => 'Èrror de cllotura du fichiér sôrsa « $1 ».',
+	'webstore_src_delete' => 'Èrror de suprèssion du fichiér sôrsa « $1 ».',
+	'webstore_rename' => 'Èrror de changement de nom du fichiér « $1 » en « $2 ».',
+	'webstore_lock_open' => 'Èrror d’uvèrtura du fichiér vèrrolyê « $1 ».',
+	'webstore_lock_close' => 'Èrror de cllotura du fichiér vèrrolyê « $1 ».',
+	'webstore_dest_exists' => 'Èrror, lo fichiér de dèstinacion « $1 » ègziste.',
+	'webstore_temp_open' => 'Èrror d’uvèrtura du fichiér temporèro « $1 ».',
+	'webstore_temp_copy' => 'Èrror de copia du fichiér temporèro « $1 » de vers lo fichiér de dèstinacion « $2 ».',
+	'webstore_temp_close' => 'Èrror de cllotura du fichiér temporèro « $1 ».',
+	'webstore_temp_lock' => 'Èrror de vèrrolyâjo du fichiér temporèro « $1 ».',
+	'webstore_no_archive' => 'Lo fichiér de dèstinacion ègziste et pués niones arch·ives ont étâ balyês.',
+	'webstore_no_file' => 'Nion fichiér at étâ tèlèchargiê.',
+	'webstore_move_uploaded' => 'Èrror de dèplacement du fichiér tèlèchargiê « $1 » de vers l’emplacement temporèro « $2 ».',
 	'webstore_invalid_zone' => 'Zona « $1 » envalida.',
+	'webstore_no_deleted' => 'Nion rèpèrtouèro d’arch·ivâjo por los fichiérs suprimâs at étâ dèfeni.',
 	'webstore_curl' => 'Èrror dês cURL : $1',
 	'webstore_404' => 'Fichiér entrovâblo.',
 	'webstore_php_warning' => 'Avèrtissement PHP : $1',
 	'webstore_metadata_not_found' => 'Fichiér entrovâblo : $1',
 	'webstore_postfile_not_found' => 'Fichiér a encartar entrovâblo.',
+	'webstore_invalid_response' => 'Rèponsa envalida de la pârt du sèrvor :
+
+$1',
+	'webstore_no_response' => 'Lo sèrvor rèpond pas',
+	'webstore_backend_error' => 'Èrror dês lo sèrvor de stocâjo :
+
+$1',
+	'webstore_php_error' => 'Cetes èrrors PHP sont arrevâs :',
+	'webstore_no_handler' => 'Nion administrator prend en charge ceti tipo MIME.',
 );
 
 /** Irish (Gaeilge)

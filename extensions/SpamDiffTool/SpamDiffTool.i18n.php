@@ -338,12 +338,13 @@ Klik <a href='$1'>her</a> for at gå tilbage.",
  * @author Consta
  * @author LWChris
  * @author Michawiki
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'spamdifftool' => 'Spam-Blacklist bearbeiten',
 	'spamdifftool-desc' => 'Ermöglicht das Hinzufügen neuer Einträge zur Spamblacklist aus Versionsunterschieden',
-	'spamdifftool_cantedit' => 'Du hast keine Berechtigung zur Bearbeitung der Spam-Blacklist.',
+	'spamdifftool_cantedit' => 'Du hast nicht die Berechtigung, die Spam-Blacklist zu bearbeiten.',
 	'spamdifftool-no-title' => "'''Fehler:''' es wurde kein Seitentitel angegeben.",
 	'spamdifftool_notext' => "Es gibt keinen Text, welcher der Spam-Blacklist hinzugefügt werden könnte. Klicke <a href='$1'>hier</a>, um fortzufahren.",
 	'spamdifftool_confirm' => "Bestätige, dass du diese Einträge der Spam-Blacklist hinzufügen möchtest.
@@ -1355,6 +1356,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'spamdifftool' => "Gestisce 'a blacklist d'u spam",
+	'spamdifftool_spam_link_text' => "aggiunge a 'u spam",
 	'spamdifftool_option_none' => 'ninde',
 	'spamdifftool_block' => 'Blocche:',
 	'spamdifftool_submit_buttom' => 'Conferme',

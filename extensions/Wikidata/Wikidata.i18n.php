@@ -2721,6 +2721,7 @@ $messages['da'] = array(
  * @author Ortografix
  * @author Purodha
  * @author Revolus
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -2741,7 +2742,7 @@ $messages['de'] = array(
 	'langman_addlang' => 'Sprache hinzufügen',
 	'importlangnames' => 'Wikidata: Sprachennamen importieren',
 	'importlangnames_title' => 'Sprachennamen importieren',
-	'importlangnames_not_allowed' => 'Du hast keine Berechtigung um Sprachennamen zu importieren.',
+	'importlangnames_not_allowed' => 'Du hast nicht die Berechtigung, Sprachennamen zu importieren.',
 	'importlangnames_added' => 'Sprachennamen für „$1“ wurde hinzugefügt.',
 	'importlangnames_not_found' => '<strong>Keinen Spracheneintrag für „$1“ gefunden!</strong>',
 	'datasearch' => 'Wikidata: Datensuche',
@@ -4626,6 +4627,7 @@ Veuillez contacter l’opérateur ou l’administrateur du serveur.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'wikidata-desc' => 'Apond una bâsa de balyês de tipo vouiqui por difèrents tipos de contegnu.',
 	'languages' => 'Wikidata : administrator de lengoues',
 	'langman-desc' => 'Apondre et changiér los paramètres de lengoues avouéc [[Special:Languages]].',
 	'langman_title' => 'Administrator de lengoues',
@@ -4652,6 +4654,7 @@ $messages['frp'] = array(
 	'datasearch_search_text' => 'Tèxto a rechèrchiér :',
 	'datasearch_within_words' => 'Dens los mots :',
 	'datasearch_within_ext_ids' => 'Dens los identifiquiors de defôr :',
+	'datasearch_showing_only' => 'Visualisacion d’u més {{PLURAL:$1|yona corrèspondance|$1 corrèspondances}} (en tot $2).',
 	'datasearch_match_ext_ids' => 'Identifiquiors de defôr que corrèspondont a <i>$1</i>',
 	'datasearch_match_words' => 'Mots que corrèspondont a <i>$1</i> et lor significacion associyê',
 	'datasearch_match_words_lang' => 'Mots en <i>$1</i> que corrèspondont a <i>$2</i> et lor significacion associyê',
@@ -4663,6 +4666,7 @@ $messages['frp'] = array(
 	'ow_importtsv_import_failed' => 'L’importacion at pas reussia',
 	'ow_importtsv_file' => 'Fichiér TSV :',
 	'ow_importtsv_test_run' => 'Èprôva d’importacion :',
+	'ow_importtsv_not_tsv' => '<p>Cen semble pas étre un fichiér TSV valido.</p>',
 	'ow_importtsv_test_run_title' => 'Èprôva d’importacion de balyês TSV',
 	'ow_importtsv_nothing_added' => 'Ren at étâ apondu.',
 	'ow_importtsv_nothing_added_test' => 'Ren at étâ apondu (vos éd fêt una èprôva d’importacion).',
@@ -4670,6 +4674,7 @@ $messages['frp'] = array(
 	'exporttsv' => 'Wikidata : èxportacion de balyês TSV',
 	'ow_exporttsv_title' => 'Èxportar una colèccion en TSV',
 	'ow_exporttsv_languages' => 'Lengoues :',
+	'ow_exporttsv_not_allowed' => 'Vos avéd pas la pèrmission de fâre una èxportacion de balyês TSV.',
 	'ow_exporttsv_export_failed' => 'L’èxportacion at pas reussia',
 	'addcollection' => 'Wikidata : apondre una colèccion',
 	'ow_searchnoresult' => "<p>Vos pouede :<br />
@@ -6655,6 +6660,7 @@ Jangan lupa cek kembali untuk memastikan!',
 	'ow_copy_unsuccessful' => '<h3>Penyalinan gagal</h3>
 Tidak ada penyalinan yang dilakukan.',
 	'ow_history_transaction' => 'Transaksi:',
+	'ow_history_show_life_span' => 'Tampilkan rentang hidup catatan:',
 	'ow_class_attr_type_xlate' => 'Teks yang bisa diterjemahkan',
 	'ow_class_attr_type_plain' => 'Teks polos',
 	'ow_class_attr_type_link' => 'Pranala',
@@ -6674,6 +6680,7 @@ Tidak ada penyalinan yang dilakukan.',
 	'ow_suggest_clear' => 'Kosongkan',
 	'ow_nstab_edit_copy' => 'sunting salinan',
 	'right-addlanguage' => 'Tambah dan rubah setelan bahasa',
+	'ow_shown_datasets' => 'Kumpulan data yang ditampilkan',
 );
 
 /** Igbo (Igbo)
@@ -11734,6 +11741,7 @@ $messages['sh'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author රොමානිස් සැමුවෙල්
  */
 $messages['si'] = array(
 	'wikidata-desc' => 'විවධ වර්ගයේ අන්තර්ගතයන්ට විකි-ආකාරයේ දත්ත සමුදායන් එක් කරයි',
@@ -11950,6 +11958,7 @@ $messages['si'] = array(
 	'ow_needs_xlation_source_lang' => 'මූලාශ්‍ර භාෂාව',
 	'ow_needs_xlation_dest_lang' => 'ගමනාන්ත භාෂාව',
 	'ow_needs_xlation_no_dest_lang' => 'කරුණාකර ගමනාන්ත භාෂාවක් සඳහන් කරන්න.',
+	'ow_statistics' => 'විකිදත්ත: සංඛ්‍යාන',
 	'ow_show' => 'පෙන්වන්න',
 	'ow_upload' => 'උඩුගත කරන්න',
 	'ow_create' => 'නිර්මාණය කරන්න',

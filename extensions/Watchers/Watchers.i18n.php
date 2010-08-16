@@ -434,6 +434,23 @@ $messages['fr'] = array(
 	'right-watchers-list' => '[[Special:Watchers|Lister les utilisateurs qui suivent une page spécifique]]',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'watchers' => 'Siuvors',
+	'watchers-desc' => 'Montre [[Special:Watchers|quints utilisators ont una pâge dens lor lista de survelyence]].',
+	'watchers_link_title' => 'Qui siut ceta pâge ?',
+	'watchers_error_article' => "'''Èrror :''' la pâge ègziste pas.",
+	'watchers-error-invalid-page' => "'''Èrror :''' « $1 » est un titro de pâge envalido.",
+	'watchers_header' => '{{PLURAL:$2|Utilisator que siut|Utilisators que siuvont}} « [[:$1]] »',
+	'watchers_noone_watches' => 'Nion siut la pâge [[:$1]].',
+	'watchers_x_or_more' => '$1 utilisator{{PLURAL:$1||s}} ou ben més ont la pâge [[:$2]] dens lor lista de survelyence.',
+	'watchers_less_than_x' => 'Muens {{PLURAL:$1|de yon utilisator a|de $1 utilisators on}}t la pâge [[:$2]] dens lor lista de survelyence.',
+	'watchers-num' => '$1 {{PLURAL:$1|utilisator a|utilisators on}}t la pâge [[:$2]] dens {{PLURAL:$1|sa lista|lors listes}} de survelyence.',
+	'right-watchers-list' => '[[Special:Watchers|Listar los utilisators que siuvont una pâge spècefica]]',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

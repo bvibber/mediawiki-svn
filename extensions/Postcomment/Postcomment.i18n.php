@@ -893,6 +893,7 @@ $messages['roa-tara'] = array(
 	'postcomment_on' => "'U",
 	'postcomment_said' => 'ha ditte',
 	'postcomment_invalidrequest' => 'Richieste invalide.',
+	'postcomment_replyto' => 'Respunne a $1',
 );
 
 /** Russian (Русский)

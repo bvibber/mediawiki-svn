@@ -991,6 +991,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'ogg-desc' => 'به دست گیرندهٔ پرونده‌های Ogg Theora و Vorbis، با پخش‌کنندهٔ مبتنی بر JavaScript',
@@ -1019,6 +1020,7 @@ $messages['fa'] = array(
 	'ogg-dismiss' => 'بستن',
 	'ogg-download' => 'بارگیری پرونده',
 	'ogg-desc-link' => 'دربارهٔ این پرونده',
+	'ogg-oggThumb-failed' => 'oggThumb موفق به ایجاد بندانگشتی نشد.',
 );
 
 /** Finnish (Suomi)
@@ -2888,6 +2890,8 @@ $messages['sl'] = array(
 	'ogg-short-audio' => 'Zvočna datoteka Ogg $1, $2',
 	'ogg-short-video' => 'Videodatoteka Ogg $1, $2',
 	'ogg-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
+	'ogg-long-audio' => '(zvočna datoteka ogg $1, dolžine $2, $3)',
+	'ogg-long-video' => '(videodatoteka ogg $1, dolžine $2, $4 × $5 pik, $3)',
 	'ogg-long-general' => '(Predstavnostna datoteka ogg, dolžina $2, $3)',
 	'ogg-long-error' => '(Neveljavna datoteka ogg: $1)',
 	'ogg-play' => 'Predvajaj',

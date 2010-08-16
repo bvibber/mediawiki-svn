@@ -817,6 +817,7 @@ $messages['fi'] = array(
  * @author Crochet.david
  * @author Grondin
  * @author IAlex
+ * @author Peter17
  * @author PieRRoMaN
  * @author Sherbrooke
  * @author Urhixidur
@@ -832,7 +833,7 @@ $messages['fr'] = array(
 	'usagestatisticsexcluderedirects' => 'Exclure les redirections',
 	'usagestatistics-namespace' => 'Ces statistiques sont sur l’espace de noms [[Special:Allpages/$1|$2]].',
 	'usagestatistics-noredirects' => 'Les [[Special:ListRedirects|redirections]] ne sont pas prises en compte.',
-	'usagestatisticstype' => 'Type',
+	'usagestatisticstype' => 'Type :',
 	'usagestatisticsstart' => 'Date de début :',
 	'usagestatisticsend' => 'Date de fin :',
 	'usagestatisticssubmit' => 'Générer les statistiques',
