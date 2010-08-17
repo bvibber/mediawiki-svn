@@ -334,15 +334,13 @@ class CodeRevision {
 			);
 
 			// Get repo and build comment title (for url)
-			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
-			$url = $title->getFullUrl();
+			$url = $this->getFullUrl();
 
 			foreach ( $res as $row ) {
 				$revision = CodeRevision::newFromRow( $row );
 				$users = $revision->getCommentingUsers();
 				
-				$rowTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $row->mId );
-				$rowUrl = $rowTitle->getFullUrl();
+				$rowUrl = $revision->getFullUrl();
 				
 				$revisionAuthor = $revision->getWikiUser();
 				
@@ -787,6 +785,11 @@ class CodeRevision {
 		} else {
 			return false;
 		}
+	}
+	
+	public function getFullUrl() {
+		$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
+		return $title->getFullUrl();
 	}
 
 	protected function sendCommentToUDP( $commentId, $text, $url = null ) {
