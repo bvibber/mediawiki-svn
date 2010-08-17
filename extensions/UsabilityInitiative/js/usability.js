@@ -2,6 +2,9 @@
  * Common version-independent functions
  */
 
+if ( typeof $j == 'undefined' ) {
+	$j = $;
+}
 if ( typeof mw == 'undefined' ) {
 	mw = {};
 }
