@@ -304,9 +304,9 @@ class Relay(object):
 	for sock, conn in connection_sockets.items():
 	    if ( not test and not conn.is_connected() ) or ( test and not conn.test_connection() ):
 		if test: 
-		    self.warn( "is_connected for connection %s returned false (%s)" % (repr(conn), context), *exec_info );
+		    self.warn( "test_connection for connection %s returned false (%s)" % (repr(conn), context), *exec_info );
 		else: 
-		    self.warn( "test_connection for connection %s failed (%s)" % (repr(conn), context), *exec_info ); 
+		    self.warn( "is_connected for connection %s failed (%s)" % (repr(conn), context), *exec_info ); 
 
 		broken.add(conn)
 		remove.add(sock)

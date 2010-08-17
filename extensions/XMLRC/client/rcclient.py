@@ -168,7 +168,8 @@ class RCClient(object):
 			    self.warn("connection lost, reconnecting...")
 			    
 			    if self.xmpp.reconnectAndReauth():
-				self.warn("re-connect successful.")
+				sockets = ( self.xmpp.Connection._sock, )
+				self.info("re-connect successful.")
 				self.on_connect()
 
 		    except Exception, e:
