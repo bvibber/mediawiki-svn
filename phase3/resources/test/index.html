@@ -30,7 +30,34 @@
 			} );
 		</script>
 		<script type="text/javascript" >
-			mediaWiki.loader.load( ['test', 'jquery.ui.core', 'jquery.ui.datepicker', 'mediawiki.legacy.wikibits'] );
+		mediaWiki.loader.load( ['test', 'jquery.ui.core', 'jquery.ui.datepicker'] );
+		mediaWiki.loader.using(
+			[
+				//'mediawiki.legacy.ajax',
+				//'mediawiki.legacy.ajaxwatch',
+				//'mediawiki.legacy.block',
+				//'mediawiki.legacy.changepassword',
+				//'mediawiki.legacy.edit',
+				//'mediawiki.legacy.enhancedchanges',
+				//'mediawiki.legacy.history',
+				//'mediawiki.legacy.htmlform',
+				//'mediawiki.legacy.IEFixes',
+				//'mediawiki.legacy.metadata',
+				//'mediawiki.legacy.mwsuggest',
+				//'mediawiki.legacy.prefs',
+				//'mediawiki.legacy.preview',
+				//'mediawiki.legacy.protect',
+				//'mediawiki.legacy.rightclickedit',
+				//'mediawiki.legacy.search',
+				//'mediawiki.legacy.upload',
+				'mediawiki.legacy.wikibits'
+			],
+			function() {
+				for ( key in mediaWiki.legacy ) {
+					mediaWiki.log( key + ' || ' + typeof mediaWiki.legacy[key] )
+				}
+			}
+		);
 		</script>
 		<script type="text/javascript">
 			mediaWiki.loader.using( 'test', function() {
