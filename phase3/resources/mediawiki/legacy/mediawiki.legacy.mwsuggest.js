@@ -96,12 +96,12 @@ $.extend( true, mw.legacy, {
 	'os_AnimationTimer': function( r, target ) {
 		this.r = r;
 		var current = document.getElementById(r.container).offsetWidth;
-		this.inc = Math.round( ( target - current ) / os_animation_steps );
-		if( this.inc < os_animation_min_step && this.inc >=0 ) {
-			this.inc = os_animation_min_step; // minimal animation step
+		this.inc = Math.round( ( target - current ) / mw.legacy.os_animation_steps );
+		if( this.inc < mw.legacy.os_animation_min_step && this.inc >=0 ) {
+			this.inc = mw.legacy.os_animation_min_step; // minimal animation step
 		}
-		if( this.inc > -os_animation_min_step && this.inc < 0 ) {
-			this.inc = -os_animation_min_step;
+		if( this.inc > -mw.legacy.os_animation_min_step && this.inc < 0 ) {
+			this.inc = -mw.legacy.os_animation_min_step;
 		}
 		this.target = target;
 	},
@@ -112,12 +112,12 @@ $.extend( true, mw.legacy, {
 	 * Initialization, call upon page onload 
 	 */
 	'os_MWSuggestInit': function() {
-		for( i = 0; i < os_autoload_inputs.length; i++ ) {
-			var id = os_autoload_inputs[i];
-			var form = os_autoload_forms[i];
+		for( i = 0; i < mw.legacy.os_autoload_inputs.length; i++ ) {
+			var id = mw.legacy.os_autoload_inputs[i];
+			var form = mw.legacy.os_autoload_forms[i];
 			element = document.getElementById( id );
 			if( element != null ) {
-				os_initHandlers( id, form, element );
+				mw.legacy.os_initHandlers( id, form, element );
 			}
 		}
 	},
@@ -125,39 +125,39 @@ $.extend( true, mw.legacy, {
 	 * Init Result objects and event handlers
 	 */
 	'os_initHandlers': function( name, formname, element ) {
-		var r = new os_Results( name, formname );
+		var r = new mw.legacy.os_Results( name, formname );
 		var formElement = document.getElementById( formname );
 		if( !formElement ) {
 			// Older browsers (Opera 8) cannot get form elements
 			return;
 		}
 		// event handler
-		os_hookEvent( element, 'keyup', function( event ) { os_eventKeyup( event ); } );
-		os_hookEvent( element, 'keydown', function( event ) { os_eventKeydown( event ); } );
-		os_hookEvent( element, 'keypress', function( event ) { os_eventKeypress( event ); } );
-		if ( !os_use_datalist ) {
+		mw.legacy.os_hookEvent( element, 'keyup', function( event ) { mw.legacy.os_eventKeyup( event ); } );
+		mw.legacy.os_hookEvent( element, 'keydown', function( event ) { mw.legacy.os_eventKeydown( event ); } );
+		mw.legacy.os_hookEvent( element, 'keypress', function( event ) { mw.legacy.os_eventKeypress( event ); } );
+		if ( !mw.legacy.os_use_datalist ) {
 			// These are needed for the div hack to hide it if the user blurs.
-			os_hookEvent( element, 'blur', function( event ) { os_eventBlur( event ); } );
-			os_hookEvent( element, 'focus', function( event ) { os_eventFocus( event ); } );
+			mw.legacy.os_hookEvent( element, 'blur', function( event ) { mw.legacy.os_eventBlur( event ); } );
+			mw.legacy.os_hookEvent( element, 'focus', function( event ) { mw.legacy.os_eventFocus( event ); } );
 			// We don't want browser auto-suggestions interfering with our div, but
 			// autocomplete must be on for datalist to work (at least in Opera
 			// 10.10).
 			element.setAttribute( 'autocomplete', 'off' );
 		}
 		// stopping handler
-		os_hookEvent( formElement, 'submit', function( event ) { return os_eventOnsubmit( event ); } );
-		os_map[name] = r;
+		mw.legacy.os_hookEvent( formElement, 'submit', function( event ) { return mw.legacy.os_eventOnsubmit( event ); } );
+		mw.legacy.os_map[name] = r;
 		// toggle link
 		if( document.getElementById( r.toggle ) == null ) {
 			// TODO: disable this while we figure out a way for this to work in all browsers
 			/* if( name == 'searchInput' ) {
 				// special case: place above the main search box
-				var t = os_createToggle( r, 'os-suggest-toggle' );
+				var t = mw.legacy.os_createToggle( r, 'os-suggest-toggle' );
 				var searchBody = document.getElementById( 'searchBody' );
 				var first = searchBody.parentNode.firstChild.nextSibling.appendChild(t);
 			} else {
 				// default: place below search box to the right
-				var t = os_createToggle( r, 'os-suggest-toggle-def' );
+				var t = mw.legacy.os_createToggle( r, 'os-suggest-toggle-def' );
 				var top = element.offsetTop + element.offsetHeight;
 				var left = element.offsetLeft + element.offsetWidth;
 				t.style.position = 'absolute';
@@ -185,64 +185,64 @@ $.extend( true, mw.legacy, {
 	 * Event handler that will fetch results on keyup
 	 */
 	'os_eventKeyup': function( e ) {
-		var targ = os_getTarget( e );
-		var r = os_map[targ.id];
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[targ.id];
 		if( r == null ) {
 			return; // not our event
 		}
 
 		// some browsers won't generate keypressed for arrow keys, catch it
-		if( os_keypressed_count == 0 ) {
-			os_processKey( r, os_cur_keypressed, targ );
+		if( mw.legacy.os_keypressed_count == 0 ) {
+			mw.legacy.os_processKey( r, mw.legacy.os_cur_keypressed, targ );
 		}
 		var query = targ.value;
-		os_fetchResults( r, query, os_search_timeout );
+		mw.legacy.os_fetchResults( r, query, mw.legacy.os_search_timeout );
 	},
 	/**
 	 * Catch arrows up/down and escape to hide the suggestions
 	 */
 	'os_processKey': function( r, keypressed, targ ) {
-		if ( keypressed == 40 && !r.visible && os_timer == null ) {
+		if ( keypressed == 40 && !r.visible && mw.legacy.os_timer == null ) {
 			// If the user hits the down arrow, fetch results immediately if none
 			// are already displayed.
 			r.query = '';
-			os_fetchResults( r, targ.value, 0 );
+			mw.legacy.os_fetchResults( r, targ.value, 0 );
 		}
 		// Otherwise, if we're not using datalist, we need to handle scrolling and
 		// so on.
-		if ( os_use_datalist ) {
+		if ( mw.legacy.os_use_datalist ) {
 			return;
 		}
 		if ( keypressed == 40 ) { // Arrow Down
 			if ( r.visible ) {
-				os_changeHighlight( r, r.selected, r.selected + 1, true );
+				mw.legacy.os_changeHighlight( r, r.selected, r.selected + 1, true );
 			}
 		} else if ( keypressed == 38 ) { // Arrow Up
 			if ( r.visible ) {
-				os_changeHighlight( r, r.selected, r.selected - 1, true );
+				mw.legacy.os_changeHighlight( r, r.selected, r.selected - 1, true );
 			}
 		} else if( keypressed == 27 ) { // Escape
 			document.getElementById( r.searchbox ).value = r.original;
 			r.query = r.original;
-			os_hideResults( r );
+			mw.legacy.os_hideResults( r );
 		} else if( r.query != document.getElementById( r.searchbox ).value ) {
-			// os_hideResults( r ); // don't show old suggestions
+			// mw.legacy.os_hideResults( r ); // don't show old suggestions
 		}
 	},
 	/**
 	 * When keys is held down use a timer to output regular events
 	 */
 	'os_eventKeypress': function( e ) {
-		var targ = os_getTarget( e );
-		var r = os_map[targ.id];
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[targ.id];
 		if( r == null ) {
 			return; // not our event
 		}
 
-		var keypressed = os_cur_keypressed;
+		var keypressed = mw.legacy.os_cur_keypressed;
 
-		os_keypressed_count++;
-		os_processKey( r, keypressed, targ );
+		mw.legacy.os_keypressed_count++;
+		mw.legacy.os_processKey( r, keypressed, targ );
 	},
 	/**
 	 * Catch the key code (Firefox bug)
@@ -251,39 +251,39 @@ $.extend( true, mw.legacy, {
 		if ( !e ) {
 			e = window.event;
 		}
-		var targ = os_getTarget( e );
-		var r = os_map[targ.id];
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[targ.id];
 		if( r == null ) {
 			return; // not our event
 		}
 
-		os_mouse_moved = false;
+		mw.legacy.os_mouse_moved = false;
 
-		os_cur_keypressed = ( e.keyCode == undefined ) ? e.which : e.keyCode;
-		os_keypressed_count = 0;
+		mw.legacy.os_cur_keypressed = ( e.keyCode == undefined ) ? e.which : e.keyCode;
+		mw.legacy.os_keypressed_count = 0;
 	},
 	/**
 	 * When the form is submitted hide everything, cancel updates...
 	 */
 	'os_eventOnsubmit': function( e ) {
-		var targ = os_getTarget( e );
+		var targ = mw.legacy.os_getTarget( e );
 
-		os_is_stopped = true;
+		mw.legacy.os_is_stopped = true;
 		// kill timed requests
-		if( os_timer != null && os_timer.id != null ) {
-			clearTimeout( os_timer.id );
-			os_timer = null;
+		if( mw.legacy.os_timer != null && mw.legacy.os_timer.id != null ) {
+			clearTimeout( mw.legacy.os_timer.id );
+			mw.legacy.os_timer = null;
 		}
 		// Hide all suggestions
-		for( i = 0; i < os_autoload_inputs.length; i++ ) {
-			var r = os_map[os_autoload_inputs[i]];
+		for( i = 0; i < mw.legacy.os_autoload_inputs.length; i++ ) {
+			var r = mw.legacy.os_map[mw.legacy.os_autoload_inputs[i]];
 			if( r != null ) {
 				var b = document.getElementById( r.searchform );
 				if( b != null && b == targ ) {
 					// set query value so the handler won't try to fetch additional results
 					r.query = document.getElementById( r.searchbox ).value;
 				}
-				os_hideResults( r );
+				mw.legacy.os_hideResults( r );
 			}
 		}
 		return true;
@@ -292,7 +292,7 @@ $.extend( true, mw.legacy, {
 	 * Hide results from the user, either making the div visibility=hidden or detaching the datalist from the input.
 	 */
 	'os_hideResults': function( r ) {
-		if ( os_use_datalist ) {
+		if ( mw.legacy.os_use_datalist ) {
 			document.getElementById( r.searchbox ).setAttribute( 'list', '' );
 		} else {
 			var c = document.getElementById( r.container );
@@ -325,38 +325,38 @@ $.extend( true, mw.legacy, {
 	 * Handles data from XMLHttpRequest, and updates the suggest results
 	 */
 	'os_updateResults': function( r, query, text, cacheKey ) {
-		os_cache[cacheKey] = text;
+		mw.legacy.os_cache[cacheKey] = text;
 		r.query = query;
 		r.original = query;
 		if( text == '' ) {
 			r.results = null;
 			r.resultCount = 0;
-			os_hideResults( r );
+			mw.legacy.os_hideResults( r );
 		} else {
 			try {
 				var p = eval( '(' + text + ')' ); // simple json parse, could do a safer one
 				if( p.length < 2 || p[1].length == 0 ) {
 					r.results = null;
 					r.resultCount = 0;
-					os_hideResults( r );
+					mw.legacy.os_hideResults( r );
 					return;
 				}
-				if ( os_use_datalist ) {
-					os_setupDatalist( r, p[1] );
+				if ( mw.legacy.os_use_datalist ) {
+					mw.legacy.os_setupDatalist( r, p[1] );
 				} else {
-					os_setupDiv( r, p[1] );
+					mw.legacy.os_setupDiv( r, p[1] );
 				}
 			} catch( e ) {
 				// bad response from server or such
-				os_hideResults( r );
-				os_cache[cacheKey] = null;
+				mw.legacy.os_hideResults( r );
+				mw.legacy.os_cache[cacheKey] = null;
 			}
 		}
 	},
 	/**
 	 * Create and populate a <datalist>.
 	 *
-	 * @param r       os_Result object
+	 * @param r       mw.legacy.os_Result object
 	 * @param results Array of the new results to replace existing ones
 	 */
 	'os_setupDatalist': function( r, results ) {
@@ -375,7 +375,7 @@ $.extend( true, mw.legacy, {
 		r.resultCount = results.length;
 		r.visible = true;
 		for ( i = 0; i < results.length; i++ ) {
-			var title = os_decodeValue( results[i] );
+			var title = mw.legacy.os_decodeValue( results[i] );
 			var opt = document.createElement( 'option' );
 			opt.value = title;
 			r.results[i] = title;
@@ -414,7 +414,7 @@ $.extend( true, mw.legacy, {
 	'os_updateIfRelevant': function( r, query, text, cacheKey ) {
 		var t = document.getElementById( r.searchbox );
 		if( t != null && t.value == query ) { // check if response is still relevant
-			os_updateResults( r, query, text, cacheKey );
+			mw.legacy.os_updateResults( r, query, text, cacheKey );
 		}
 		r.query = query;
 	},
@@ -422,27 +422,27 @@ $.extend( true, mw.legacy, {
 	 * Fetch results after some timeout
 	 */
 	'os_delayedFetch': function() {
-		if( os_timer == null ) {
+		if( mw.legacy.os_timer == null ) {
 			return;
 		}
-		var r = os_timer.r;
-		var query = os_timer.query;
-		os_timer = null;
-		var path = wgMWSuggestTemplate.replace( '{namespaces}', os_getNamespaces( r ) )
+		var r = mw.legacy.os_timer.r;
+		var query = mw.legacy.os_timer.query;
+		mw.legacy.os_timer = null;
+		var path = wgMWSuggestTemplate.replace( '{namespaces}', mw.legacy.os_getNamespaces( r ) )
 										.replace( '{dbname}', wgDBname )
-										.replace( '{searchTerms}', os_encodeQuery( query ) );
+										.replace( '{searchTerms}', mw.legacy.os_encodeQuery( query ) );
 		// try to get from cache, if not fetch using ajax
-		var cached = os_cache[path];
+		var cached = mw.legacy.os_cache[path];
 		if( cached != null && cached != undefined ) {
-			os_updateIfRelevant( r, query, cached, path );
+			mw.legacy.os_updateIfRelevant( r, query, cached, path );
 		} else {
 			var xmlhttp = sajax_init_object();
 			if( xmlhttp ) {
 				try {
 					xmlhttp.open( 'GET', path, true );
 					xmlhttp.onreadystatechange = function() {
-						if ( xmlhttp.readyState == 4 && typeof os_updateIfRelevant == 'function' ) {
-							os_updateIfRelevant( r, query, xmlhttp.responseText, path );
+						if ( xmlhttp.readyState == 4 && typeof mw.legacy.os_updateIfRelevant == 'function' ) {
+							mw.legacy.os_updateIfRelevant( r, query, xmlhttp.responseText, path );
 						}
 					};
 					xmlhttp.send( null );
@@ -456,29 +456,29 @@ $.extend( true, mw.legacy, {
 		}
 	},
 	/**
-	 * Init timed update via os_delayedUpdate()
+	 * Init timed update via mw.legacy.os_delayedUpdate()
 	 */
 	'os_fetchResults': function( r, query, timeout ) {
 		if( query == '' ) {
 			r.query = '';
-			os_hideResults( r );
+			mw.legacy.os_hideResults( r );
 			return;
 		} else if( query == r.query ) {
 			return; // no change
 		}
 
-		os_is_stopped = false; // make sure we're running
+		mw.legacy.os_is_stopped = false; // make sure we're running
 
 		// cancel any pending fetches
-		if( os_timer != null && os_timer.id != null ) {
-			clearTimeout( os_timer.id );
+		if( mw.legacy.os_timer != null && mw.legacy.os_timer.id != null ) {
+			clearTimeout( mw.legacy.os_timer.id );
 		}
 		// schedule delayed fetching of results
 		if( timeout != 0 ) {
-			os_timer = new os_Timer( setTimeout( 'os_delayedFetch()', timeout ), r, query );
+			mw.legacy.os_timer = new mw.legacy.os_Timer( setTimeout( 'mw.legacy.os_delayedFetch()', timeout ), r, query );
 		} else {
-			os_timer = new os_Timer( null, r, query );
-			os_delayedFetch(); // do it now!
+			mw.legacy.os_timer = new mw.legacy.os_Timer( null, r, query );
+			mw.legacy.os_delayedFetch(); // do it now!
 		}
 	},
 	/**
@@ -515,27 +515,27 @@ $.extend( true, mw.legacy, {
 	 * Call this to enable suggestions on input (id=inputId), on a form (name=formName)
 	 */
 	'os_enableSuggestionsOn': function( inputId, formName ) {
-		os_initHandlers( inputId, formName, document.getElementById( inputId ) );
+		mw.legacy.os_initHandlers( inputId, formName, document.getElementById( inputId ) );
 	},
 	/**
 	 * Call this to disable suggestios on input box (id=inputId)
 	 */
 	'os_disableSuggestionsOn': function( inputId ) {
-		r = os_map[inputId];
+		r = mw.legacy.os_map[inputId];
 		if( r != null ) {
 			// cancel/hide results
-			os_timer = null;
-			os_hideResults( r );
+			mw.legacy.os_timer = null;
+			mw.legacy.os_hideResults( r );
 			// turn autocomplete on !
 			document.getElementById( inputId ).setAttribute( 'autocomplete', 'on' );
 			// remove descriptor
-			os_map[inputId] = null;
+			mw.legacy.os_map[inputId] = null;
 		}
 
-		// Remove the element from the os_autoload_* arrays
-		var index = os_autoload_inputs.indexOf( inputId );
+		// Remove the element from the mw.legacy.os_autoload_* arrays
+		var index = mw.legacy.os_autoload_inputs.indexOf( inputId );
 		if ( index >= 0 ) {
-			os_autoload_inputs[index] = os_autoload_forms[index] = '';
+			mw.legacy.os_autoload_inputs[index] = mw.legacy.os_autoload_forms[index] = '';
 		}
 	},
 	
@@ -545,28 +545,28 @@ $.extend( true, mw.legacy, {
 	 * Event: loss of focus of input box
 	 */
 	'os_eventBlur': function( e ) {
-		var targ = os_getTarget( e );
-		var r = os_map[targ.id];
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[targ.id];
 		if( r == null ) {
 			return; // not our event
 		}
-		if( !os_mouse_pressed ) {
-			os_hideResults( r );
+		if( !mw.legacy.os_mouse_pressed ) {
+			mw.legacy.os_hideResults( r );
 			// force canvas to stay hidden
 			r.stayHidden = true;
 			// cancel any pending fetches
-			if( os_timer != null && os_timer.id != null ) {
-				clearTimeout( os_timer.id );
+			if( mw.legacy.os_timer != null && mw.legacy.os_timer.id != null ) {
+				clearTimeout( mw.legacy.os_timer.id );
 			}
-			os_timer = null;
+			mw.legacy.os_timer = null;
 		}
 	},
 	/**
 	 * Event: focus (catch only when stopped)
 	 */
 	'os_eventFocus': function( e ) {
-		var targ = os_getTarget( e );
-		var r = os_map[targ.id];
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[targ.id];
 		if( r == null ) {
 			return; // not our event
 		}
@@ -575,34 +575,34 @@ $.extend( true, mw.legacy, {
 	/**
 	 * Create and populate a <div>, for non-<datalist>-supporting browsers.
 	 *
-	 * @param r       os_Result object
+	 * @param r       mw.legacy.os_Result object
 	 * @param results Array of the new results to replace existing ones
 	 */
 	'os_setupDiv': function( r, results ) {
 		var c = document.getElementById( r.container );
 		if ( c == null ) {
-			c = os_createContainer( r );
+			c = mw.legacy.os_createContainer( r );
 		}
-		c.innerHTML = os_createResultTable( r, results );
+		c.innerHTML = mw.legacy.os_createResultTable( r, results );
 		// init container table sizes
 		var t = document.getElementById( r.resultTable );
 		r.containerTotal = t.offsetHeight;
 		r.containerRow = t.offsetHeight / r.resultCount;
-		os_fitContainer( r );
-		os_trimResultText( r );
-		os_showResults( r );
+		mw.legacy.os_fitContainer( r );
+		mw.legacy.os_trimResultText( r );
+		mw.legacy.os_showResults( r );
 	},
 	/**
 	 * Create the result table to be placed in the container div
 	 */
 	'os_createResultTable': function( r, results ) {
 		var c = document.getElementById( r.container );
-		var width = c.offsetWidth - os_operaWidthFix( c.offsetWidth );
+		var width = c.offsetWidth - mw.legacy.os_operaWidthFix( c.offsetWidth );
 		var html = '<table class="os-suggest-results" id="' + r.resultTable + '" style="width: ' + width + 'px;">';
 		r.results = new Array();
 		r.resultCount = results.length;
 		for( i = 0; i < results.length; i++ ) {
-			var title = os_decodeValue( results[i] );
+			var title = mw.legacy.os_decodeValue( results[i] );
 			r.results[i] = title;
 			html += '<tr><td class="os-suggest-result" id="' + r.resultTable + i + '"><span id="' + r.resultText + i + '">' + title + '</span></td></tr>';
 		}
@@ -613,13 +613,13 @@ $.extend( true, mw.legacy, {
 	 * Show results div
 	 */
 	'os_showResults': function( r ) {
-		if( os_is_stopped ) {
+		if( mw.legacy.os_is_stopped ) {
 			return;
 		}
 		if( r.stayHidden ) {
 			return;
 		}
-		os_fitContainer( r );
+		mw.legacy.os_fitContainer( r );
 		var c = document.getElementById( r.container );
 		r.selected = -1;
 		if( c != null ) {
@@ -708,7 +708,7 @@ $.extend( true, mw.legacy, {
 	'os_createContainer': function( r ) {
 		var c = document.createElement( 'div' );
 		var s = document.getElementById( r.searchbox );
-		var pos = os_getElementPosition( r.searchbox );
+		var pos = mw.legacy.os_getElementPosition( r.searchbox );
 		var left = pos.left;
 		var top = pos.top + s.offsetHeight;
 		c.className = 'os-suggest';
@@ -723,10 +723,10 @@ $.extend( true, mw.legacy, {
 		c.style.width = s.offsetWidth + 'px';
 
 		// mouse event handlers
-		c.onmouseover = function( event ) { os_eventMouseover( r.searchbox, event ); };
-		c.onmousemove = function( event ) { os_eventMousemove( r.searchbox, event ); };
-		c.onmousedown = function( event ) { return os_eventMousedown( r.searchbox, event ); };
-		c.onmouseup = function( event ) { os_eventMouseup( r.searchbox, event ); };
+		c.onmouseover = function( event ) { mw.legacy.os_eventMouseover( r.searchbox, event ); };
+		c.onmousemove = function( event ) { mw.legacy.os_eventMousemove( r.searchbox, event ); };
+		c.onmousedown = function( event ) { return mw.legacy.os_eventMousedown( r.searchbox, event ); };
+		c.onmouseup = function( event ) { mw.legacy.os_eventMouseup( r.searchbox, event ); };
 		return c;
 	},
 	/**
@@ -734,14 +734,14 @@ $.extend( true, mw.legacy, {
 	 */
 	'os_fitContainer': function( r ) {
 		var c = document.getElementById( r.container );
-		var h = os_availableHeight( r ) - 20;
+		var h = mw.legacy.os_availableHeight( r ) - 20;
 		var inc = r.containerRow;
 		h = parseInt( h / inc ) * inc;
 		if( h < ( 2 * inc ) && r.resultCount > 1 ) { // min: two results
 			h = 2 * inc;
 		}
-		if( ( h / inc ) > os_max_lines_per_suggest ) {
-			h = inc * os_max_lines_per_suggest;
+		if( ( h / inc ) > mw.legacy.os_max_lines_per_suggest ) {
+			h = inc * mw.legacy.os_max_lines_per_suggest;
 		}
 		if( h < r.containerTotal ) {
 			c.style.height = h + 'px';
@@ -768,7 +768,7 @@ $.extend( true, mw.legacy, {
 		if( r.containerCount < r.resultCount ) {
 			fix = 20; // give 20px for scrollbar
 		} else {
-			fix = os_operaWidthFix( w );
+			fix = mw.legacy.os_operaWidthFix( w );
 		}
 		if( fix < 4 ) {
 			fix = 4; // basic padding
@@ -778,19 +778,19 @@ $.extend( true, mw.legacy, {
 		// resize container to fit more data if permitted
 		var normW = document.getElementById( r.searchbox ).offsetWidth;
 		var prop = maxW / normW;
-		if( prop > os_container_max_width ) {
-			prop = os_container_max_width;
+		if( prop > mw.legacy.os_container_max_width ) {
+			prop = mw.legacy.os_container_max_width;
 		} else if( prop < 1 ) {
 			prop = 1;
 		}
 		var newW = Math.round( normW * prop );
 		if( w != newW ) {
 			w = newW;
-			if( os_animation_timer != null ) {
-				clearInterval( os_animation_timer.id );
+			if( mw.legacy.os_animation_timer != null ) {
+				clearInterval( mw.legacy.os_animation_timer.id );
 			}
-			os_animation_timer = new os_AnimationTimer( r, w );
-			os_animation_timer.id = setInterval( 'os_animateChangeWidth()', os_animation_delay );
+			mw.legacy.os_animation_timer = new mw.legacy.os_AnimationTimer( r, w );
+			mw.legacy.os_animation_timer.id = setInterval( 'mw.legacy.os_animateChangeWidth()', mw.legacy.os_animation_delay );
 			w -= fix; // this much is reserved
 		}
 
@@ -822,24 +822,24 @@ $.extend( true, mw.legacy, {
 	 * Invoked on timer to animate change in container width
 	 */
 	'os_animateChangeWidth': function() {
-		var r = os_animation_timer.r;
+		var r = mw.legacy.os_animation_timer.r;
 		var c = document.getElementById( r.container );
 		var w = c.offsetWidth;
 		var normW = document.getElementById( r.searchbox ).offsetWidth;
-		var normL = os_getElementPosition( r.searchbox ).left;
-		var inc = os_animation_timer.inc;
-		var target = os_animation_timer.target;
+		var normL = mw.legacy.os_getElementPosition( r.searchbox ).left;
+		var inc = mw.legacy.os_animation_timer.inc;
+		var target = mw.legacy.os_animation_timer.target;
 		var nw = w + inc;
 		if( ( inc > 0 && nw >= target ) || ( inc <= 0 && nw <= target ) ) {
 			// finished !
 			c.style.width = target + 'px';
-			clearInterval( os_animation_timer.id );
-			os_animation_timer = null;
+			clearInterval( mw.legacy.os_animation_timer.id );
+			mw.legacy.os_animation_timer = null;
 		} else {
 			// in-progress
 			c.style.width = nw + 'px';
 			if( document.documentElement.dir == 'rtl' ) {
-				c.style.left = ( normL + normW + ( target - nw ) - os_animation_timer.target - 1 ) + 'px';
+				c.style.left = ( normL + normW + ( target - nw ) - mw.legacy.os_animation_timer.target - 1 ) + 'px';
 			}
 		}
 	},
@@ -868,7 +868,7 @@ $.extend( true, mw.legacy, {
 		if( next >= 0 ) {
 			var nextRow = document.getElementById( r.resultTable + next );
 			if( nextRow != null ) {
-				nextRow.className = os_HighlightClass();
+				nextRow.className = mw.legacy.os_HighlightClass();
 			}
 			newText = r.results[next];
 		} else {
@@ -889,7 +889,7 @@ $.extend( true, mw.legacy, {
 
 		// update the contents of the search box
 		if( updateSearchBox ) {
-			os_updateSearchQuery( r, newText );
+			mw.legacy.os_updateSearchQuery( r, newText );
 		}
 	},
 	'os_HighlightClass': function() {
@@ -916,14 +916,14 @@ $.extend( true, mw.legacy, {
 	 * Mouse over the container
 	 */
 	'os_eventMouseover': function( srcId, e ) {
-		var targ = os_getTarget( e );
-		var r = os_map[srcId];
-		if( r == null || !os_mouse_moved ) {
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[srcId];
+		if( r == null || !mw.legacy.os_mouse_moved ) {
 			return; // not our event
 		}
-		var num = os_getNumberSuffix( targ.id );
+		var num = mw.legacy.os_getNumberSuffix( targ.id );
 		if( num >= 0 ) {
-			os_changeHighlight( r, r.selected, num, false );
+			mw.legacy.os_changeHighlight( r, r.selected, num, false );
 		}
 	},
 	/**
@@ -934,7 +934,7 @@ $.extend( true, mw.legacy, {
 		if( !( num.charAt( 0 ) >= '0' && num.charAt( 0 ) <= '9' ) ) {
 			num = num.substring( 1 );
 		}
-		if( os_isNumber( num ) ) {
+		if( mw.legacy.os_isNumber( num ) ) {
 			return parseInt( num );
 		} else {
 			return -1;
@@ -944,23 +944,23 @@ $.extend( true, mw.legacy, {
 	 * Save mouse move as last action
 	 */
 	'os_eventMousemove': function( srcId, e ) {
-		os_mouse_moved = true;
+		mw.legacy.os_mouse_moved = true;
 	},
 	/**
 	 * Mouse button held down, register possible click
 	 */
 	'os_eventMousedown': function( srcId, e ) {
-		var targ = os_getTarget( e );
-		var r = os_map[srcId];
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[srcId];
 		if( r == null ) {
 			return; // not our event
 		}
-		var num = os_getNumberSuffix( targ.id );
+		var num = mw.legacy.os_getNumberSuffix( targ.id );
 
-		os_mouse_pressed = true;
+		mw.legacy.os_mouse_pressed = true;
 		if( num >= 0 ) {
-			os_mouse_num = num;
-			// os_updateSearchQuery( r, r.results[num] );
+			mw.legacy.os_mouse_num = num;
+			// mw.legacy.os_updateSearchQuery( r, r.results[num] );
 		}
 		// keep the focus on the search field
 		document.getElementById( r.searchbox ).focus();
@@ -971,19 +971,19 @@ $.extend( true, mw.legacy, {
 	 * Mouse button released, check for click on some row
 	 */
 	'os_eventMouseup': function( srcId, e ) {
-		var targ = os_getTarget( e );
-		var r = os_map[srcId];
+		var targ = mw.legacy.os_getTarget( e );
+		var r = mw.legacy.os_map[srcId];
 		if( r == null ) {
 			return; // not our event
 		}
-		var num = os_getNumberSuffix( targ.id );
+		var num = mw.legacy.os_getNumberSuffix( targ.id );
 
-		if( num >= 0 && os_mouse_num == num ) {
-			os_updateSearchQuery( r, r.results[num] );
-			os_hideResults( r );
+		if( num >= 0 && mw.legacy.os_mouse_num == num ) {
+			mw.legacy.os_updateSearchQuery( r, r.results[num] );
+			mw.legacy.os_hideResults( r );
 			document.getElementById( r.searchform ).submit();
 		}
-		os_mouse_pressed = false;
+		mw.legacy.os_mouse_pressed = false;
 		// keep the focus on the search field
 		document.getElementById( r.searchbox ).focus();
 	},
@@ -996,7 +996,7 @@ $.extend( true, mw.legacy, {
 		t.setAttribute( 'id', r.toggle );
 		var link = document.createElement( 'a' );
 		link.setAttribute( 'href', 'javascript:void(0);' );
-		link.onclick = function() { os_toggle( r.searchbox, r.searchform ); };
+		link.onclick = function() { mw.legacy.os_toggle( r.searchbox, r.searchform ); };
 		var msg = document.createTextNode( wgMWSuggestMessages[0] );
 		link.appendChild( msg );
 		t.appendChild( link );
@@ -1006,14 +1006,14 @@ $.extend( true, mw.legacy, {
 	 * Call when user clicks on some of the toggle links (dead code?)
 	 */
 	'os_toggle': function( inputId, formName ) {
-		r = os_map[inputId];
+		r = mw.legacy.os_map[inputId];
 		var msg = '';
 		if( r == null ) {
-			os_enableSuggestionsOn( inputId, formName );
-			r = os_map[inputId];
+			mw.legacy.os_enableSuggestionsOn( inputId, formName );
+			r = mw.legacy.os_map[inputId];
 			msg = wgMWSuggestMessages[0];
 		} else{
-			os_disableSuggestionsOn( inputId, formName );
+			mw.legacy.os_disableSuggestionsOn( inputId, formName );
 			msg = wgMWSuggestMessages[1];
 		}
 		// change message

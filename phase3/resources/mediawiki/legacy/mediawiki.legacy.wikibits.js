@@ -149,9 +149,9 @@ $.extend( true, mw.legacy, {
 		// set this before running any hooks, since any errors below
 		// might cause the function to terminate prematurely
 		mw.legacy.doneOnloadHook = true;
-		updateTooltipAccessKeys( null );
-		setupCheckboxShiftClick();
-		sortables_init();
+		mw.legacy.updateTooltipAccessKeys( null );
+		mw.legacy.setupCheckboxShiftClick();
+		mw.legacy.sortables_init();
 		// Run any added-on functions
 		for ( var i = 0; i < mw.legacy.onloadFuncts.length; i++ ) {
 			mw.legacy.onloadFuncts[i]();
@@ -260,12 +260,12 @@ $.extend( true, mw.legacy, {
 			for ( var i in linkContainers ) {
 				var linkContainer = document.getElementById( linkContainers[i] );
 				if ( linkContainer ) {
-					updateTooltipAccessKeys( linkContainer.getElementsByTagName( 'a' ) );
+					mw.legacy.updateTooltipAccessKeys( linkContainer.getElementsByTagName( 'a' ) );
 				}
 			}
 			// these are rare enough that no such optimization is needed
-			updateTooltipAccessKeys( document.getElementsByTagName( 'input' ) );
-			updateTooltipAccessKeys( document.getElementsByTagName( 'label' ) );
+			mw.legacy.updateTooltipAccessKeys( document.getElementsByTagName( 'input' ) );
+			mw.legacy.updateTooltipAccessKeys( document.getElementsByTagName( 'label' ) );
 			return;
 		}
 		for ( var i = 0; i < nodeList.length; i++ ) {
@@ -296,7 +296,7 @@ $.extend( true, mw.legacy, {
 		mw.legacy.checkboxes = [];
 		mw.legacy.lastCheckbox = null;
 		var inputs = document.getElementsByTagName( 'input' );
-		addCheckboxClickHandlers( inputs );
+		mw.legacy.addCheckboxClickHandlers( inputs );
 	},
 	'addCheckboxClickHandlers': function( inputs, start ) {
 		if ( !start ) {
@@ -314,11 +314,11 @@ $.extend( true, mw.legacy, {
 			var end = mw.legacy.checkboxes.length;
 			mw.legacy.checkboxes[end] = cb;
 			cb.index = end;
-			addClickHandler( cb, checkboxClickHandler );
+			mw.legacy.addClickHandler( cb, checkboxClickHandler );
 		}
 		if ( finish < inputs.length ) {
 			setTimeout( function() {
-				addCheckboxClickHandlers( inputs, finish );
+				mw.legacy.addCheckboxClickHandlers( inputs, finish );
 			}, 200 );
 		}
 	},
@@ -431,7 +431,7 @@ $.extend( true, mw.legacy, {
 	'sortables_init': function() {
 		var idnum = 0;
 		// Find all tables with class sortable and make them sortable
-		var tables = getElementsByClassName( document, 'table', 'sortable' );
+		var tables = mw.legacy.getElementsByClassName( document, 'table', 'sortable' );
 		for ( var ti = 0; ti < tables.length ; ti++ ) {
 			if ( !tables[ti].id ) {
 				tables[ti].setAttribute( 'id', 'sortable_table_id_' + idnum );
@@ -1061,7 +1061,7 @@ $.extend( true, mw.legacy, {
 /* Initialization */
 
 $( document ).ready( function() {
-	if ( wgBreakFrames ) {
+	if ( typeof wgBreakFrames !== 'undefined' && wgBreakFrames ) {
 		// Un-trap us from framesets
 		if ( window.top != window ) {
 			window.top.location = window.location;
@@ -1070,23 +1070,23 @@ $( document ).ready( function() {
 	// Special stylesheet links for Monobook only (see bug 14717)
 	if ( typeof stylepath != 'undefined' && skin == 'monobook' ) {
 		if ( mw.legacy.opera6_bugs ) {
-			importStylesheetURI( stylepath + '/' + skin + '/Opera6Fixes.css' );
+			mw.legacy.importStylesheetURI( stylepath + '/' + skin + '/Opera6Fixes.css' );
 		} else if ( mw.legacy.opera7_bugs ) {
-			importStylesheetURI( stylepath + '/' + skin + '/Opera7Fixes.css' );
+			mw.legacy.importStylesheetURI( stylepath + '/' + skin + '/Opera7Fixes.css' );
 		} else if ( mw.legacy.opera95_bugs ) {
-			importStylesheetURI( stylepath + '/' + skin + '/Opera9Fixes.css' );
+			mw.legacy.importStylesheetURI( stylepath + '/' + skin + '/Opera9Fixes.css' );
 		} else if ( mw.legacy.ff2_bugs ) {
-			importStylesheetURI( stylepath + '/' + skin + '/FF2Fixes.css' );
+			mw.legacy.importStylesheetURI( stylepath + '/' + skin + '/FF2Fixes.css' );
 		}
 	}
 	if ( mw.legacy.ie6_bugs ) {
-		importScriptURI( mw.legacy.stylepath + '/common/IEFixes.js' );
+		mw.legacy.importScriptURI( mw.legacy.stylepath + '/common/IEFixes.js' );
 	}
 	
-	showTocToggle();
+	mw.legacy.showTocToggle();
 	
 	// NOTE: This replaces the runOnloadHook() call formerly placed at the end of the HTML output
-	runOnloadHook();
+	mw.legacy.runOnloadHook();
 } );
 
 } )( jQuery, mediaWiki );

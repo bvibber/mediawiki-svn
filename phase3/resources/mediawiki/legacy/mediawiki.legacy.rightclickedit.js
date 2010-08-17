@@ -20,7 +20,7 @@ $.extend( true, mw.legacy, {
 				}
 			}
 		}
-	}
+	},
 	'addRightClickEditHandler': function(el) {
 		for (var i = 0; i < el.childNodes.length; i++) {
 			var link = el.childNodes[i];

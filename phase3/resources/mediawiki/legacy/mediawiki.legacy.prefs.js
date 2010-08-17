@@ -62,7 +62,7 @@ $.extend( true, mw.legacy, {
 			}
 			var a = document.createElement( 'a' );
 			a.href = '#' + sections[i].secid;
-			a.onmousedown = a.onclick = uncoversection;
+			a.onmousedown = a.onclick = mw.legacy.uncoversection;
 			a.appendChild( document.createTextNode( sections[i].text ) );
 			a.secid = sections[i].secid;
 			li.appendChild( a );
@@ -107,11 +107,11 @@ $.extend( true, mw.legacy, {
 		var tzTextbox = document.getElementById( 'mw-input-timecorrection-other' );
 
 		if ( tzSelect && tzTextbox ) {
-			addHandler( tzSelect, 'change', function( e ) { updateTimezoneSelection( false ); } );
-			addHandler( tzTextbox, 'blur', function( e ) { updateTimezoneSelection( true ); } );
+			addHandler( tzSelect, 'change', function( e ) { mw.legacy.updateTimezoneSelection( false ); } );
+			addHandler( tzTextbox, 'blur', function( e ) { mw.legacy.updateTimezoneSelection( true ); } );
 		}
 
-		updateTimezoneSelection( false );
+		mw.legacy.updateTimezoneSelection( false );
 	},
 	/**
 	 * Timezone stuff tz in format [-]HH:MM - won't yet work with non-even tzs
@@ -132,15 +132,15 @@ $.extend( true, mw.legacy, {
 		var selector = document.getElementById( 'mw-input-timecorrection' );
 
 		selector.value = 'other';
-		textbox.value = fetchTimezone();
+		textbox.value = mw.legacy.fetchTimezone();
 		textbox.disabled = false; // The changed handler doesn't trip, obviously.
-		updateTimezoneSelection( true );
+		mw.legacy.updateTimezoneSelection( true );
 	},
 	'updateTimezoneSelection': function( force_offset ) {
 		var selector = document.getElementById( 'mw-input-timecorrection' );
 
 		if ( selector.value == 'guess' ) {
-			return guessTimezone();
+			return mw.legacy.guessTimezone();
 		}
 
 		var textbox = document.getElementById( 'mw-input-timecorrection-other' );

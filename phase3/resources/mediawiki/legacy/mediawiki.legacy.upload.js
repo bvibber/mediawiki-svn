@@ -41,7 +41,7 @@ $.extend( true, mw.legacy, {
 					return;
 				}
 			}
-			this.timeoutID = window.setTimeout( 'wgUploadWarningObj.timeout()', this.delay );
+			this.timeoutID = window.setTimeout( 'mw.legacy.wgUploadWarningObj.timeout()', this.delay );
 		},
 		'checkNow': function ( fname ) {
 			if ( !wgAjaxUploadDestCheck || !sajax_init_object() ) return;
@@ -118,7 +118,7 @@ $.extend( true, mw.legacy, {
 			var req = sajax_init_object();
 			req.onreadystatechange = function() {
 				if ( req.readyState == 4 && req.status == 200 )
-					wgUploadLicenseObj.processResult( eval( '( ' + req.responseText + ' )' ), license );
+					mw.legacy.wgUploadLicenseObj.processResult( eval( '( ' + req.responseText + ' )' ), license );
 			};
 			req.open( 'GET', url, true );
 			req.send( '' );
@@ -147,7 +147,7 @@ $.extend( true, mw.legacy, {
 			}
 		}
 		// We might show a preview
-		wgUploadLicenseObj.fetchPreview( selection );
+		mw.legacy.wgUploadLicenseObj.fetchPreview( selection );
 	},
 	'wgUploadSetup': function() {
 		// Disable URL box if the URL copy upload source type is not selected
@@ -174,14 +174,14 @@ $.extend( true, mw.legacy, {
 		// Toggle source type
 		var sourceTypeCheckboxes = document.getElementsByName( 'wpSourceType' );
 		for ( var i = 0; i < sourceTypeCheckboxes.length; i++ ) {
-			sourceTypeCheckboxes[i].onchange = toggleUploadInputs;
+			sourceTypeCheckboxes[i].onchange = mw.legacy.toggleUploadInputs;
 		}
 		// AJAX wpDestFile warnings
-		if ( wgAjaxUploadDestCheck ) {
+		if ( typeof wgAjaxUploadDestCheck !== 'undefined' && wgAjaxUploadDestCheck ) {
 			// Insert an event handler that fetches upload warnings when wpDestFile
 			// has been changed
 			document.getElementById( 'wpDestFile' ).onchange = function ( e ) { 
-				wgUploadWarningObj.checkNow( this.value );
+				mw.legacy.wgUploadWarningObj.checkNow( this.value );
 			};
 			// Insert a row where the warnings will be displayed just below the
 			// wpDestFile row
@@ -192,9 +192,9 @@ $.extend( true, mw.legacy, {
 			td.colSpan = 2;
 			row.appendChild( td );
 		}
-		if ( wgAjaxLicensePreview ) {
+		if ( typeof wgAjaxLicensePreview !== 'undefined' && wgAjaxLicensePreview ) {
 			// License selector check
-			document.getElementById( 'wpLicense' ).onchange = licenseSelectorCheck;
+			document.getElementById( 'wpLicense' ).onchange = mw.legacy.licenseSelectorCheck;
 			// License selector table row
 			var wpLicense = document.getElementById( 'wpLicense' );
 			var wpLicenseRow = wpLicense.parentNode.parentNode;
@@ -208,9 +208,10 @@ $.extend( true, mw.legacy, {
 			wpLicenseTbody.insertBefore( row, wpLicenseRow.nextSibling );
 		}
 		// fillDestFile setup
+		if ( typeof wgUploadSourceIds !== 'undefined' && wgUploadSourceIds )
 		for ( var i = 0; i < wgUploadSourceIds.length; i++ )
 			document.getElementById( wgUploadSourceIds[i] ).onchange = function ( e ) {
-				fillDestFilename( this.id );
+				mw.legacy.fillDestFilename( this.id );
 			};
 	},
 	/**
@@ -309,7 +310,7 @@ $.extend( true, mw.legacy, {
 		var destFile = document.getElementById( 'wpDestFile' );
 		if ( destFile ) {
 			destFile.value = fname;
-			wgUploadWarningObj.checkNow( fname ) ;
+			mw.legacy.wgUploadWarningObj.checkNow( fname ) ;
 		}
 	},
 	'toggleFilenameFiller': function() {
