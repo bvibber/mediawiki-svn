@@ -341,6 +341,9 @@ class CodeRevision {
 				$revision = CodeRevision::newFromRow( $row );
 				$users = $revision->getCommentingUsers();
 				
+				$rowTitle = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $row->mId );
+				$rowUrl = $rowTitle->getFullUrl();
+				
 				$revisionAuthor = $revision->getWikiUser();
 				
 				//Add the followup revision author if they have not already been added as a commentor (they won't want dupe emails!)
@@ -360,7 +363,7 @@ class CodeRevision {
 						$lang = array( 'language' => $user->getOption( 'language' ) );
 						$user->sendMail(
 							wfMsgExt( 'codereview-email-subj2', $lang, $this->mRepo->getName(), $this->getIdString( $row->cr_id ) ),
-							wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage )
+							wfMsgExt( 'codereview-email-body2', $lang, $committer, $this->getIdStringUnique( $row->cr_id ), $url, $this->mMessage, $rowUrl )
 						);
 					}
 				}
