@@ -405,7 +405,7 @@ window.mediaWiki = new ( function( $ ) {
 					'user': mediaWiki.config.get( 'wgUserName' ) !== null,
 					'skin': mediaWiki.config.get( 'skin' ),
 					'lang': mediaWiki.config.get( 'wgUserLanguage' ),
-					'skin': mediaWiki.config.get( 'debug' ),
+					'debug': mediaWiki.config.get( 'debug' ),
 				};
 				// Extend request parameters with a list of modules in the batch
 				var requests = [];
@@ -580,4 +580,5 @@ window.mediaWiki = new ( function( $ ) {
 	/* Extension points */
 	
 	this.utilities = {};
+	this.legacy = {};
 } )( jQuery );
