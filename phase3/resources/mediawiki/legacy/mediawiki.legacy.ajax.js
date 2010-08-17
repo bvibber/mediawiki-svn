@@ -9,7 +9,6 @@
 ( function( $, mw ) {
 
 /* Extension */
-
 $.extend( true, mw.legacy, {
 
 	/* Global Variables */

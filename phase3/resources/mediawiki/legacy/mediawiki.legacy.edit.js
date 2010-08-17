@@ -39,8 +39,8 @@ $.extend( true, mw.legacy, {
 				'width': 23,
 				'height': 22,
 				'class': 'mw-toolbar-editbutton',
-				'id': item.imageId ? item.imageId : null,
-				'src': = item.imageFile,
+				'id': ( item.imageId ? item.imageId : null ),
+				'src': item.imageFile,
 				'border': 0,
 				'alt': item.speedTip,
 				'title': item.speedTip
@@ -102,13 +102,13 @@ $.extend( true, mw.legacy, {
 			typeof $.fn.textSelection != 'undefined' &&
 			( $currentFocused.name().toLowerCase() == 'iframe' || $currentFocused.attr( 'id' ) == 'wpTextbox1' )
 		) {
-			$j( '#wpTextbox1' ).textSelection(
+			$( '#wpTextbox1' ).textSelection(
 				'encapsulateSelection', { 'pre': tagOpen, 'peri': sampleText, 'post': tagClose }
 			);
 			return;
 		}
 		var $textarea;
-		if ( $( 'form[name=editform]' ) {
+		if ( $( 'form[name=editform]' ) ) {
 			$textarea = $currentFocused;
 		} else {
 			// Some alternate form? take the first one we can find
@@ -220,9 +220,9 @@ $( document ).ready( function() {
 	} );
 	// HACK: make currentFocused work with the usability iframe - with proper focus detection support (HTML 5!) this'll
 	// be much cleaner
-	var $iframe = $j( '.wikiEditor-ui-text iframe' );
+	var $iframe = $( '.wikiEditor-ui-text iframe' );
 	if ( $iframe.length > 0 ) {
-		$j( $iframe.get( 0 ).contentWindow.document )
+		$( $iframe.get( 0 ).contentWindow.document )
 			// For IE
 			.add( $iframe.get( 0 ).contentWindow.document.body )
 			.focus( function() { mw.legacy.currentFocused = $iframe.get( 0 ); } );
