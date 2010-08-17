@@ -266,7 +266,7 @@ mw.Sequencer.prototype = {
 			.append( 			
 				$j('<div />')
 					.addClass( "ui-layout-center mwseq-edit" )
-					.html( this.getEditTools().defaultText ),
+					.html(  gM('mwe-sequencer-no_selected_resource') ),
 				$j('<div />')
 					.addClass( "ui-layout-east mwseq-player" )
 					.text( gM('mwe-sequencer-loading-player') ),	

@@ -69,13 +69,17 @@ mw.SequencerTimeline.prototype = {
 		var timelineHeight = mw.getConfig( 'Sequencer.TimelineTrackHeight' );
 		var smilSequenceTracks = this.sequencer.getSmil().getBody().getSeqElements();
 		$j.each(smilSequenceTracks, function( trackIndex, smilSequenceTrack ){
-			if( $j( smilSequenceTrack).attr('tracktype') == 'audio' ){
-				timelineHeight+= mw.getConfig( 'Sequencer.TimelineColapsedTrackSize') 
-			}else{
-				timelineHeight+= mw.getConfig( 'Sequencer.TimelineTrackHeight' ) 
-			}			 
+			timelineHeight+= _this.getSequenceTrackHeight( smilSequenceTrack )
 		})
 		return timelineHeight;
+	},
+	// xxx may need to refactor to store collapsed expanded state info 
+	getSequenceTrackHeight: function( smilSequenceTrack ){
+		if( $j( smilSequenceTrack).attr('tracktype') == 'audio' ){
+			return mw.getConfig( 'Sequencer.TimelineColapsedTrackSize') 
+		}else{
+			return mw.getConfig( 'Sequencer.TimelineTrackHeight' ) 
+		}			 
 	},
 	// Get the selected sequence track index ( for now its always zero )  
 	getSelectedTrackIndex: function(){
@@ -148,8 +152,10 @@ mw.SequencerTimeline.prototype = {
 			mw.log("ADD: " + _this.getTimelineClipId( $node ) + ' to ' + $clipTrackSet.attr('id') );
 			// Draw the node onto the timeline if the clip is not already there:
 			var $timelineClip = $clipTrackSet.find( '#' + _this.getTimelineClipId( $node ) )
-			if( $timelineClip.length == 0 ){				
-				$timelineClip = _this.getTimelineClip( $clipTrackSet, $node ); 					
+			if( $timelineClip.length == 0 ){								
+				$timelineClip = _this.getTimelineClip( smilSequenceTrack, $node );
+				// Set the index order on the clip
+				$timelineClip.data( 'indexOrder', $clipTrackSet.children().length );
 				if( $previusClip ){
 					$previusClip.after( 
 						$timelineClip 
@@ -225,19 +231,16 @@ mw.SequencerTimeline.prototype = {
 	 */
 	getClipTrackSet: function( trackIndex, smilSequenceTrack ){
 		var _this = this;
-	 
-		var trackHeight = ( $j( smilSequenceTrack).attr('tracktype') == 'audio' )? 
-				mw.getConfig( 'Sequencer.TimelineColapsedTrackSize') :
-				mw.getConfig( 'Sequencer.TimelineTrackHeight' )
-				
+	 			
 		return $j('<ul />')
 				.attr( 'id',  this.getTrackSetId( trackIndex ))
 				.data( 'trackIndex', trackIndex )
 				.addClass( 'clipTrackSet ui-corner-all' )
-				.css( 'height', trackHeight )
+				.css( 'height', _this.getSequenceTrackHeight( smilSequenceTrack ) )
 				// Add "sortable
 				.sortable({ 
 				    placeholder: "clipSortTarget timelineClip ui-corner-all",
+				    forcePlaceholderSize: true,
 				    opacity: 0.6,	
 				    tolerance: 'pointer',
 				    cursor: 'move',
@@ -281,15 +284,16 @@ mw.SequencerTimeline.prototype = {
 			'width' : ( ( this.timelineThumbSize.width + 16) * trackClipCount) + 'px'
 		});
 	},
-	getTimelineClip: function( $clipTrackSet, $node ){
+	getTimelineClip: function( smilSequenceTrack, $node ){
 		var _this = this;
+				
 		return $j('<li />')
 			.attr('id',  _this.getTimelineClipId( $node ) )	
 			.data( {
-				'smilId': $node.attr('id'),
-				'indexOrder' : $clipTrackSet.children().length
+				'smilId': $node.attr('id'),				
 			})
-			.addClass('timelineClip ui-corner-all')
+			.css( 'height', this.getSequenceTrackHeight( smilSequenceTrack) - 10 )
+			.addClass( 'timelineClip ui-corner-all' )
 			.loadingSpinner()				
 			.click(function(){
 				//Add clip to selection
@@ -451,6 +455,7 @@ mw.SequencerTimeline.prototype = {
 	 * Handle multiple selections based on what clips was just "cliked" 
 	 */
 	handleMultiSelect: function( clickClip ){
+		var _this = this;
 		var keyBindings = this.sequencer.getKeyBindings();
 		var $target = this.getTimelineContainer();
 		var smil = this.sequencer.getSmil();
@@ -508,7 +513,32 @@ mw.SequencerTimeline.prototype = {
 			});	
 		}
 		
-		// xxx check if selected clip has changed hide tool edit interface
+		// Update the edit Tools window
+		var $selectedClips =  _this.getTimelineContainer().find('.selectedClip');
+		// zero clips selected
+		var $toolTarget = _this.sequencer.getEditToolTarget();
+		
+		//( on an edit screen update the edit screen per selection )
+		if( $toolTarget.find( '.editToolsContainer' ).length != 0 ){			
+			// multiple clips selected
+			if( $selectedClips.length == 0 ){
+				// Update edit window to no selected clips
+				$toolTarget.empty().append( 
+					gM( 'mwe-sequencer-no_selected_resource'  ),
+					$j('<div />').addClass('editToolsContainer')
+				)
+			} else if( $selectedClips.length > 1 ){
+				$toolTarget.empty().append( 
+					gM( 'mwe-sequencer-error_edit_multiple' ),
+					$j('<div />').addClass('editToolsContainer')
+				)
+			} else {
+				// A single clip is selected edit that clip   
+				_this.editClip( clickClip );
+			}
+			// Register the edit tools update for undo
+			_this.sequencer.getActionsEdit().registerEdit();
+		}
 	},
 	
 	/**
@@ -534,6 +564,12 @@ mw.SequencerTimeline.prototype = {
 		var _this = this;
 		var smil = this.sequencer.getSmil();	
 		
+		var clipButtonCss = {
+			'position' : 'absolute',
+			'bottom' : '2px',
+			'padding' : '2px',
+			'cursor' : 'pointer'
+		};
 		
 		var $timelineClip = $j( '#' + _this.getTimelineClipId( $node ) );
 		// Add Thumb target and remove loader
@@ -544,12 +580,9 @@ mw.SequencerTimeline.prototype = {
 
 			// Edit clip button: 
 			$j('<div />')
-			.css({
-				'position' : 'absolute',
-				'right' : '32px',
-				'bottom' : '5px',
-				'padding' : '2px',
-				'cursor' : 'pointer'
+			.css( clipButtonCss )
+			.css({				
+				'right' : '32px'			
 			})
 			.addClass( 'clipEditLink ui-state-default ui-corner-all' )
 			.append( 
@@ -564,12 +597,9 @@ mw.SequencerTimeline.prototype = {
 			
 			// Remove clip button: 
 			$j('<div />')
-			.css({
-				'position' : 'absolute',
-				'right' : '5px',
-				'bottom' : '5px',
-				'padding' : '2px',
-				'cursor' : 'pointer'
+			.css( clipButtonCss )
+			.css({			
+				'right' : '5px'				
 			})
 			.addClass( 'clipRemoveLink ui-state-default ui-corner-all' )
 			.append( 
@@ -580,7 +610,7 @@ mw.SequencerTimeline.prototype = {
 			.buttonHover()
 			.click( function(){				
 				// Remove the associated clip:				
-				_this.getTimelineContainer().removeClass( 'selectedClip' );				
+				_this.getTimelineContainer().find('.selectedClip').removeClass( 'selectedClip' );				
 				$timelineClip.addClass( 'selectedClip' );
 				_this.removeSelectedClips();
 			})
@@ -624,6 +654,7 @@ mw.SequencerTimeline.prototype = {
 				}
 			}, 5000);
 		}			
+		
 		// Buffer the asset then render it into the layout target:		
 		smil.getBuffer().bufferedSeek( $node, relativeTime, function(){					
 			// Add the seek, add to canvas and draw thumb request
@@ -653,19 +684,17 @@ mw.SequencerTimeline.prototype = {
 					$j('<span />').addClass( 'ui-icon ui-icon-volume-on'),
 					$j('<span />').text( gM( 'mwe-sequencer-audio-track' ) )
 				)
-			$trackNameContainer.css({
-				'height' : mw.getConfig( 'Sequencer.TimelineColapsedTrackSize') 
-			});
 		} else {
 			// for now default to "video" tracktype
 			$trackNameTitle.append( 				
 					$j('<span />').addClass( 'ui-icon ui-icon-video'),
 					$j('<span />').text( gM( 'mwe-sequencer-video-track' ) )
 				)			
-			$trackNameContainer.css({
-				'height' : mw.getConfig( 'Sequencer.TimelineTrackHeight' ) 
-			});
 		}
+		// Set track name height
+		$trackNameContainer.css({
+			'height' : this.getSequenceTrackHeight( smilSequenceTrack )
+		});
 		
 		// Add the track title as a title attribute 
 		if ( $j( smilSequenceTrack ).attr('title') ){

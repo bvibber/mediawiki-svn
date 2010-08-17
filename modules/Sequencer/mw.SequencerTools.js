@@ -14,7 +14,6 @@ mw.SequencerTools.prototype = {
 	init: function(	sequencer ){
 		this.sequencer = sequencer;
 	},
-	defaultText : gM('mwe-sequencer-no_selected_resource'),
 	tools:{
 		'trim':{
 			'title': gM('mwe-sequencer-cliptool-trim'),
@@ -132,14 +131,16 @@ mw.SequencerTools.prototype = {
 			// Return the trimTimeline edit widget
 			'draw': function( _this, target, smilClip ){
 				var smil = _this.sequencer.getSmil();
-				// For now just have a thumbnail and a slider 
-				$j(target).append(
-					$j('<div />')					
-					.addClass( 'trimStartThumb ui-corner-all' ),					
-					$j('<div />')					
-					.addClass( 'trimEndThumb ui-corner-all' ),
-					$j('<div />').addClass('ui-helper-clearfix') 
-				)			
+				// check if thumbs are supported 
+				if( _this.sequencer.getSmil().getRefType( smilClip ) == 'video' ){ 
+					$j(target).append(
+						$j('<div />')					
+						.addClass( 'trimStartThumb ui-corner-all' ),					
+						$j('<div />')					
+						.addClass( 'trimEndThumb ui-corner-all' ),
+						$j('<div />').addClass('ui-helper-clearfix') 
+					)			
+				}
 				
 				// Add a trim binding: 
 				$j('#editTool_trim_clipBegin,#editTool_trim_dur').change(function(){
@@ -148,7 +149,7 @@ mw.SequencerTools.prototype = {
 				// Update the thumbnails:
 				_this.editWidgets.trimTimeline.update( _this, target, smilClip);
 				
-				// get the clip full duration to build out the timeline selector
+				// Get the clip full duration to build out the timeline selector
 				smil.getBody().getClipAssetDuration( smilClip, function( fullClipDuration ) {
 					
 					var sliderToTime = function( sliderval ){
@@ -227,6 +228,7 @@ mw.SequencerTools.prototype = {
 		// get the toolId based on what "ref type" smilClip is:
 		switch( this.sequencer.getSmil().getRefType( smilClip ) ){
 			case 'video':
+			case 'audio':
 				toolId = 'trim';
 			break;
 			default:
@@ -243,7 +245,9 @@ mw.SequencerTools.prototype = {
 		var tool = this.tools[ toolId ];
 		
 		// Append the title: 
-		$target.empty().append( 
+		$target.empty().append(
+			$j('<div />').addClass( 'editToolsContainer' )
+			,
 			$j('<h3 />' ).append( 
 				tool.title 
 			)

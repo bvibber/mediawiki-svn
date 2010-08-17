@@ -14,6 +14,7 @@ $messages['en'] = array(
 	'mwe-sequencer-loading-asset' => 'Loading asset ...',
 
 	'mwe-sequencer-no_selected_resource' => '<h3>No resource selected</h3> Select a clip to enable editing.',
+	'mwe-sequencer-error_edit_multiple' => '<h3>Multiple resources selected</h3> Select a single clip to edit it.',
 	'mwe-sequencer-no-sequence-start-new' => 'Empty sequence, [$1 browser for assets] to create a new sequence',
 	'mwe-sequencer-video-track' => 'Video track',
 	'mwe-sequencer-audio-track' => 'Audio track',
@@ -86,8 +87,7 @@ $messages['en'] = array(
 	'mwe-sequencer-pixle2sec' => 'pixels to seconds',
 	'mwe-sequencer-rmclip' => 'Remove clip',
 	'mwe-sequencer-clip_in' => 'clip in',
-	'mwe-sequencer-clip_out' => 'clip out',
-	'mwe-sequencer-error_edit_multiple' => '<h3>Multiple resources selected</h3> Select a single clip to edit it.',
+	'mwe-sequencer-clip_out' => 'clip out',	
 	'mwe-sequencer-editor_options' => 'Editor options',
 	'mwe-sequencer-editor_mode' => 'Editor mode',
 	'mwe-sequencer-simple_editor_desc' => 'simple editor (iMovie style)',

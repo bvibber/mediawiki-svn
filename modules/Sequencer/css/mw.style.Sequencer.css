@@ -22,14 +22,16 @@
 	list-style-position: inside;  
 	cursor: hand; 
 	cursor: pointer;
-	margin:0px;
+	margin-top:4px;
+	margin-bottom: 0px;
 	padding: 4px;
 }
 
 .mwe-sequencer .trackNames{
 	background-color: #EEE;	
 	border: solid thin #999;
-	padding:4px
+	padding:4px;
+	margin-top: 4px;
 }
 
 .mwe-sequencer .timelineClip{
@@ -39,7 +41,6 @@
 	border: 2px solid #555;
 	overflow: hidden;
 	width:120px;	
-	height:90px;
 	
 	display: inline-block;
 	position: relative;

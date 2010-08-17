@@ -47,7 +47,14 @@ mw.SequencerActionsEdit.prototype = {
 	 * Apply a smil xml transform state ( to support undo / redo ) 
 	 */
 	registerEdit: function(){	
-		mw.log( 'ActionsEdit::registerEdit: stacksize' + this.editStack.length + ' editIndex: ' + this.editIndex );
+		//mw.log( 'ActionsEdit::registerEdit: stacksize' + this.editStack.length + ' editIndex: ' + this.editIndex );
+		// Make sure the edit is distinct from the latest in the stack:
+		var currentXML = this.sequencer.getSmil().getXMLString();
+		if( currentXML == this.editStack[ this.editStack-1 ] ){
+			mw.log("ActionsEdit::registerEdit on identical smil xml state ( no edit stack modification ) ")
+			return ;
+		}
+		
 		// Throw away any edit history after the current editIndex: 
 		if( this.editStack.length && this.editIndex > this.editStack.length ) {
 			this.editStack = this.editStack.splice(0, this.editIndex);
@@ -56,7 +63,7 @@ mw.SequencerActionsEdit.prototype = {
 		// @@TODO could save space to just compute the diff in JS and store that
 		// ie: http://code.google.com/p/google-diff-match-patch/
 		// ( instead of the full xml text with "key-pages" every 10 edits or something like that. 
-		this.editStack.push(  this.sequencer.getSmil().getXMLString() );
+		this.editStack.push( currentXML );
 		
 		// Update the editIndex
 		this.editIndex = this.editStack.length - 1;

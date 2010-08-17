@@ -27,6 +27,6 @@ mw.setDefaultConfig({
 	"Sequencer.TimelineTrackHeight" : 100,
 	
 	// Default timeline "audio / collapsed" size 
-	"Sequencer.TimelineColapsedTrackSize" : 30
+	"Sequencer.TimelineColapsedTrackSize" : 35
 })
 	

@@ -17,6 +17,8 @@
  * 
  */
 
+mw.includeAllModuleMessages();
+
 /* Add the hooks needed for playback */
 mw.Smil = function(options) {
 	return this.init(options);
