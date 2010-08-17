@@ -423,9 +423,7 @@ class CodeRevision {
 				$users[0] = $watcher; // We don't have any anons, so using 0 is safe
 			}
 			// Get repo and build comment title (for url)
-			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
-			$title->setFragment( "#c{$commentId}" );
-			$url = $title->getFullUrl();
+			$url = $this->getFullUrl( $commentId );
 
 			foreach ( $users as $userId => $user ) {
 				// No sense in notifying this commenter
@@ -787,8 +785,13 @@ class CodeRevision {
 		}
 	}
 	
-	public function getFullUrl() {
+	public function getFullUrl( $commentId = '' ) {
 		$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
+		
+		if ( $commentId !== '' ) {
+			$title->setFragment( "#c{$commentId}" );
+		}
+		
 		return $title->getFullUrl();
 	}
 
@@ -797,9 +800,7 @@ class CodeRevision {
 
 		if( $wgCodeReviewUDPAddress ) {
 			if( is_null( $url ) ) {
-				$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->mId );
-				$title->setFragment( "#c{$commentId}" );
-				$url = $title->getFullUrl();
+				$url = $this->getFullUrl( $commentId );
 			}
 
 			$line = wfMsg( 'code-rev-message' ) . " \00314(" . $this->mRepo->getName() .
@@ -814,8 +815,7 @@ class CodeRevision {
 		global $wgCodeReviewUDPAddress, $wgCodeReviewUDPPort, $wgCodeReviewUDPPrefix, $wgUser;
 		
 		if( $wgCodeReviewUDPAddress ) {
-			$title = SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() . '/' . $this->getId() );
-			$url = $title->getFullUrl();
+			$url = $this->getFullUrl();
 
 			$line = wfMsg( 'code-rev-status' ) . " \00314(" . $this->mRepo->getName() .
 					")\00303 " . RecentChange::cleanupForIRC( $wgUser->getName() ) . "\003 " .
