@@ -2260,7 +2260,9 @@ INPUTS
 			$script .= "addButton($paramList);\n";
 		}
 		
-		$wgOut->addScript( Html::inlineScript( "\n$script\n" ) );
+		$wgOut->addScript( Html::inlineScript(
+			"\nmediaWiki.loader.using( 'mediawiki.legacy.edit', function() { $script } );\n"
+		) );
 
 		$toolbar .= "\n</div>";
 
