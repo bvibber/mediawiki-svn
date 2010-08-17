@@ -2260,7 +2260,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		$j( targetObject ).trigger( triggerName, function() {		
 			callInx++;
 			if( callInx == callbackCount ){				
-				mw.log(" callbackCountReached run:: " + callback);
+				//mw.log(" callbackCountReached run:: " + callback);
 				// Run callback
 				callback();
 			}

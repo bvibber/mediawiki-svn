@@ -24,9 +24,9 @@ mw.setDefaultConfig({
 	"Sequencer.AddMediaImageWidth" : 640,
 	
 	// Default timeline "video / image" clip thumb size
-	"Sequencer.TimelineVideoThumbSize" : 100,
+	"Sequencer.TimelineTrackHeight" : 100,
 	
 	// Default timeline "audio / collapsed" size 
-	"Sequencer.TimelineVideoThumbSize" : 30
+	"Sequencer.TimelineColapsedTrackSize" : 30
 })
 	

@@ -20,6 +20,9 @@ mw.SequencerTimeline.prototype = {
 		'width' : 120
 	},
 	
+	// Store the max track length
+	maxTrackLength: 0,
+	
 	init: function( sequencer ){
 		this.sequencer = sequencer;
 	},
@@ -29,15 +32,15 @@ mw.SequencerTimeline.prototype = {
 	},
 	
 	/**
-	 * xxx needs to support multiple tracks 
+	 * Get the timelineTracksContainer
 	 */
-	getTracksContainer: function( trackId ){
+	getTracksContainer: function( ){
 		if( this.getTimelineContainer().find( '.timelineTrackContainer' ).length == 0 ){
 			// getTimelineContainer 
 			this.getTimelineContainer().append( 
 				$j('<div />')
 				.addClass('timelineTrackContainer')		
-				.append( 
+				.append(
 					$j('<div />')
 					.addClass( 'ui-layout-west trackNamesContainer'),
 					
@@ -61,11 +64,18 @@ mw.SequencerTimeline.prototype = {
 		this.trackLayout.resizeAll();
 	},
 	getTimelineContainerHeight: function(){
-		var timelineHeight = 0;
+		var _this = this;
+		// Start with vertical space for one more track
+		var timelineHeight = mw.getConfig( 'Sequencer.TimelineTrackHeight' );
 		var smilSequenceTracks = this.sequencer.getSmil().getBody().getSeqElements();
 		$j.each(smilSequenceTracks, function( trackIndex, smilSequenceTrack ){
-			_this.drawSequenceTrack( trackIndex, smilSequenceTrack );
+			if( $j( smilSequenceTrack).attr('tracktype') == 'audio' ){
+				timelineHeight+= mw.getConfig( 'Sequencer.TimelineColapsedTrackSize') 
+			}else{
+				timelineHeight+= mw.getConfig( 'Sequencer.TimelineTrackHeight' ) 
+			}			 
 		})
+		return timelineHeight;
 	},
 	// Get the selected sequence track index ( for now its always zero )  
 	getSelectedTrackIndex: function(){
@@ -86,38 +96,42 @@ mw.SequencerTimeline.prototype = {
 	
 	drawSequenceTrack: function( trackIndex, smilSequenceTrack ){	
 		var _this = this;
-		// Tracks by default are video tracks
-		var trackType = ( $j( smilSequenceTrack ).attr('tracktype') ) ? $j ( smilSequenceTrack ).attr('tracktype') : 'video' 
-		mw.log("SequenceTimeline::drawSequenceTrack: Track inx: " + trackIndex + ' trackType:' + trackType );
+		// Tracks by default are video tracks		
+		mw.log("SequenceTimeline::drawSequenceTrack: Track inx: " + 
+				trackIndex + ' trackType:' + $j ( smilSequenceTrack ).attr('tracktype') );
 		// Check if we already have a container for this track set
 		
 		// Add sequence track name if not present	
 		var $clipTrackName = $j( '#' + this.getTrackNameInterfaceId( trackIndex ) );
 		if( $clipTrackName.length == 0 ) {
-			$clipTrackName = this.getTracksContainer().find('.trackNamesContainer').append( 
-				this.getTrackNameInterface( trackIndex, smilSequenceTrack, trackType )
+			this.getTracksContainer().find('.trackNamesContainer').append( 
+					this.getTrackNameInterface( trackIndex, smilSequenceTrack )
 			)
+			$clipTrackName = $j( '#' + this.getTrackNameInterfaceId( trackIndex ) );
 		}
 		// xxx check for specific smilSequenceTrack updates that require TrackNameInterface update
 		
 		
 		// Add Sequence track container if not present 
 		var $clipTrackSet = $j( '#' + this.getTrackSetId( trackIndex ))
-		if(  $clipTrackSet.length == 0 ) {
-			$clipTrackSet =  this.getTracksContainer().find('.clipTrackSetContainer').append( 
-				this.getClipTrackSet( trackIndex )
-			).find( '.clipTrackSet');
-		}
+		mw.log( "SequenceTimeline::drawSequenceTrack: id: " +   $clipTrackSet.length );
+		if(  $clipTrackSet.length == 0 ) {			
+			this.getTracksContainer().find('.clipTrackSetContainer').append( 
+				this.getClipTrackSet( trackIndex , smilSequenceTrack)
+			)
+			$clipTrackSet = $j( '#' + this.getTrackSetId( trackIndex ));
+		}			
 		// Draw sequence track clips ( checks for dom updates to smilSequenceTrack )
-		this.drawTrackClipsInterface( $clipTrackSet, smilSequenceTrack , trackType );
+		this.drawTrackClipsInterface( $clipTrackSet, smilSequenceTrack );
 	},
 
 	/**
 	 * add Track Clips and Interface binding
 	 */
-	drawTrackClipsInterface: function( $clipTrackSet, smilSequenceTrack, trackType ){
+	drawTrackClipsInterface: function( $clipTrackSet, smilSequenceTrack ){
 		var _this = this;
-		mw.log( '')
+		mw.log( 'drawTrackClipsInterface:: existing lenght: ' + 
+				$clipTrackSet.children() + ' id: ' + $clipTrackSet.attr('id') );
 		// Setup a local pointer to the smil engine: 
 		var smil = this.sequencer.getSmil();
 		        		
@@ -149,14 +163,13 @@ mw.SequencerTimeline.prototype = {
 				reRenderThumbFlag = true;
 			} else { 
 				// Confirm clip is in the correct indexOrder
-				//mw.log( 'indexOrder::' +  $timelineClip.attr('id') + ' '+ $timelineClip.data('indexOrder') + ' == ' + $node.data('indexOrder'));
+				// mw.log( 'indexOrder::' +  $timelineClip.attr('id') + ' '+ $timelineClip.data('indexOrder') + ' == ' + $node.data('indexOrder'));
 				if( $timelineClip.data('indexOrder') != $node.data('indexOrder') ){
 					reOrderTimelineFlag = true;
 				}							
 			}
 			
 			// xxx Check if the start time was changed to set reRenderThumbFlag 
-			
 			
 			if ( reRenderThumbFlag ){
 				// issue a draw Thumb request ( since we reinserted into the dom )
@@ -165,7 +178,8 @@ mw.SequencerTimeline.prototype = {
 					//mw.log("getTrackClipInterface::bufferedSeek for " + smil.getPageDomId( $node ));
 					_this.drawClipThumb( $node , 0);
 				});
-			}			
+			}
+			
 			// Update the $previusClip 
 			$previusClip = $timelineClip;
 			// Update the natural order index 
@@ -183,7 +197,7 @@ mw.SequencerTimeline.prototype = {
 			$clipTrackSet.children().each(function (inx, clip){
 				$j( clip ).data('indexOrder', inx);
 			});	
-		}		
+		}	
 		
 		// Give the track set a width relative to the number of clips 
 		$clipTrackSet.css('width', ($clipTrackSet.find( '.timelineClip' ).length + 1) * 
@@ -205,24 +219,30 @@ mw.SequencerTimeline.prototype = {
 	getTrackSetId:function( trackIndex ){
 		return this.sequencer.getId() + '_clipTrackSet_' + trackIndex;	
 	},
+	
 	/**
 	 * get and add a clip track set to the dom: 
 	 */
-	getClipTrackSet: function( trackIndex ){
+	getClipTrackSet: function( trackIndex, smilSequenceTrack ){
 		var _this = this;
-		
+	 
+		var trackHeight = ( $j( smilSequenceTrack).attr('tracktype') == 'audio' )? 
+				mw.getConfig( 'Sequencer.TimelineColapsedTrackSize') :
+				mw.getConfig( 'Sequencer.TimelineTrackHeight' )
+				
 		return $j('<ul />')
-				.attr('id',  this.getTrackSetId( trackIndex ))
-				.data('trackIndex', trackIndex)
-				.addClass('clipTrackSet ui-corner-all')
+				.attr( 'id',  this.getTrackSetId( trackIndex ))
+				.data( 'trackIndex', trackIndex )
+				.addClass( 'clipTrackSet ui-corner-all' )
+				.css( 'height', trackHeight )
 				// Add "sortable
 				.sortable({ 
 				    placeholder: "clipSortTarget timelineClip ui-corner-all",
-				    opacity: 0.6,
+				    opacity: 0.6,	
 				    tolerance: 'pointer',
 				    cursor: 'move',
 				    helper: function( event, helper ){						
-						// xxxx might need some fixes for multi-track
+						// xxx might need some fixes for multi-track
 						var $selected = _this.getTimelineContainer().find( '.selectedClip' )
 						if ( $selected.length === 0 ||  $selected.length == 1) { 
 							return $j( helper ); 
@@ -617,6 +637,8 @@ mw.SequencerTimeline.prototype = {
 	 * 	for now just audio or video with icon 
 	 */
 	getTrackNameInterface: function( trackIndex,  smilSequenceTrack ){
+		mw.log( 'SequencerTimeline:: getTrackNameInterface : ' + trackIndex);
+		
 		var $trackNameContainer = $j('<div />')
 			.attr('id', this.getTrackNameInterfaceId( trackIndex ) )
 			.addClass('trackNames ui-corner-all')
@@ -625,28 +647,34 @@ mw.SequencerTimeline.prototype = {
 			$j('<a />')
 			.attr('href','#')
 			.addClass( "ui-icon_link" );		
+			
 		if( $j( smilSequenceTrack).attr('tracktype') == 'audio' ){
 			$trackNameTitle.append( 				
 					$j('<span />').addClass( 'ui-icon ui-icon-volume-on'),
 					$j('<span />').text( gM( 'mwe-sequencer-audio-track' ) )
 				)
-			$trackNameContainer.css( 'height' , '30px' );
+			$trackNameContainer.css({
+				'height' : mw.getConfig( 'Sequencer.TimelineColapsedTrackSize') 
+			});
 		} else {
 			// for now default to "video" tracktype
 			$trackNameTitle.append( 				
 					$j('<span />').addClass( 'ui-icon ui-icon-video'),
 					$j('<span />').text( gM( 'mwe-sequencer-video-track' ) )
 				)			
-			$trackNameContainer.css( 'height' , '100px' );
+			$trackNameContainer.css({
+				'height' : mw.getConfig( 'Sequencer.TimelineTrackHeight' ) 
+			});
 		}
-		// Add the track title as a tool tip
+		
+		// Add the track title as a title attribute 
 		if ( $j( smilSequenceTrack ).attr('title') ){
 			$trackNameTitle.find('span').attr('title', $j( smilSequenceTrack ).attr('title') );
 		} 
 		
 		$trackNameContainer.append( $trackNameTitle )
 		// Wrap the track name in a box that matches the trackNames 
-		return 
+		return $trackNameContainer;
 	},
 	getTrackNameInterfaceId: function(trackIndex ){
 		return this.sequencer.getId() + '_trackName_' + trackIndex;

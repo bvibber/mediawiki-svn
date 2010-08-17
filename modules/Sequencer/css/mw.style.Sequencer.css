@@ -16,8 +16,7 @@
 	overflow-x: scroll;	
 }
 
-.mwe-sequencer .clipTrackSet{
-	height: 100px;
+.mwe-sequencer .clipTrackSet{	
 	background-color: #EEE;	
 	border: solid thin #999;
 	list-style-position: inside;  
