@@ -464,7 +464,7 @@ abstract class File {
 			return null;
 		}
 		$extension = $this->getExtension();
-		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType() );
+		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType(), $params );
 		$thumbName = $this->handler->makeParamString( $params ) . '-' . $this->getName();
 		if ( $thumbExt != $extension ) {
 			$thumbName .= ".$thumbExt";
