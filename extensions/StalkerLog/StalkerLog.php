@@ -34,12 +34,6 @@ $wgLogNames['stalkerlog'] = 'stalkerlog-log-type';
 $wgLogRestrictions['stalkerlog'] = 'stalkerlog-view-log';
 $wgLogActions['stalkerlog/login'] = 'stalkerlog-log-login';
 
-# 1.13+ setup only
-if ( version_compare( $wgVersion, '1.13', '>=' ) ) {
-	$wgHooks['UserLogoutComplete'][] = 'wfStalkerLogout';
-	$wgLogActions['stalkerlog/logout'] = 'stalkerlog-log-logout';
-}
-
 # Login hook function
 function wfStalkerLogin( &$user ) {
 	wfLoadExtensionMessages('stalkerlog');
