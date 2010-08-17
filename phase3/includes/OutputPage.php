@@ -2222,7 +2222,7 @@ class OutputPage {
 		global $wgUser, $wgLang, $wgRequest, $wgScriptPath;
 		// TODO: Should this be a static function of ResourceLoader instead?
 		$query = array(
-			'modules' => implode( '|', array_unique( $modules ) ),
+			'modules' => implode( '|', array_unique( (array) $modules ) ),
 			'user' => $wgUser->isLoggedIn(),
 			'lang' => $wgLang->getCode(),
 			'debug' => (
@@ -2246,8 +2246,15 @@ class OutputPage {
 		global $wgUser, $wgRequest, $wgJsMimeType;
 		global $wgStylePath, $wgStyleVersion;
 		
+		$scripts = '';
 		// Include base modules and wikibits legacy code
-		$scripts = self::makeResourceLoaderLinkedScript( $sk, $this->getResources() );
+		if ( $wgRequest->getVal( 'debug' ) === 'true' || $wgRequest->getBool( 'debug' ) ) {
+			foreach ( $this->getResources() as $resource ) {
+				$scripts .= self::makeResourceLoaderLinkedScript( $sk, $resource );
+			}
+		} else {
+			$scripts .= self::makeResourceLoaderLinkedScript( $sk, $this->getResources() );
+		}
 		// Configure page
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 		
