@@ -70,6 +70,10 @@ class PagedTiffImage {
 		return false;
 	}
 
+	public function resetMetaData() {
+		$this->_meta = null;
+	}
+
 	/**
 	 * Reads metadata of the tiff file via shell command and returns an associative array.
 	 * layout:
@@ -81,13 +85,34 @@ class PagedTiffImage {
 	 */
 	public function retrieveMetaData() {
 		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv;
+		global $wgTiffUseTiffinfo, $wgTiffTiffinfoCommand;
 
 		if ( $this->_meta === null ) {
-			if ( $wgImageMagickIdentifyCommand ) {
+			wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
 
-				wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
-				
-				// ImageMagick is used to get the basic metadata of individual pages
+			//fetch base info: number of pages, size and alpha for each page.
+			//run hooks first, then optionally tiffinfo or, per default, ImageMagic's identify command
+			if ( !wfRunHooks( 'PagedTiffHandlerTiffData', array( $this->mFilename, &$this->_meta ) ) ) {
+				wfDebug( __METHOD__ . ": hook PagedTiffHandlerTiffData overrides TIFF data extraction\n" );
+			} else if ( $wgTiffUseTiffinfo ) {
+				// read TIFF directories using libtiff's tiffinfo, see 
+				// http://www.libtiff.org/man/tiffinfo.1.html
+				$cmd = wfEscapeShellArg( $wgTiffTiffinfoCommand ) .
+					' ' . wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
+
+				wfProfileIn( 'tiffinfo' );
+				wfDebug( __METHOD__ . ": $cmd\n" );
+				$dump = wfShellExec( $cmd, $retval );
+				wfProfileOut( 'tiffinfo' );
+
+				if ( $retval ) {
+					$data['errors'][] = "tiffinfo command failed: $cmd";
+					wfDebug( __METHOD__ . ": tiffinfo command failed: $cmd\n" );
+					return $data; // fail. we *need* that info
+				}
+
+				$this->_meta = $this->parseTiffinfoOutput( $dump );
+			} else {
 				$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 					' -format "[BEGIN]page=%p\nalpha=%A\nalpha2=%r\nheight=%h\nwidth=%w\ndepth=%z[END]" ' .
 					wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
@@ -96,65 +121,179 @@ class PagedTiffImage {
 				wfDebug( __METHOD__ . ": $cmd\n" );
 				$dump = wfShellExec( $cmd, $retval );
 				wfProfileOut( 'identify' );
+
 				if ( $retval ) {
 					$data['errors'][] = "identify command failed: $cmd";
 					wfDebug( __METHOD__ . ": identify command failed: $cmd\n" );
 					return $data; // fail. we *need* that info
 				}
-				$this->_meta = $this->convertDumpToArray( $dump );
-				$this->_meta['exif'] = array();
 
-				if ( $wgTiffUseExiv ) {
-					// read EXIF, XMP, IPTC as name-tag => interpreted data 
-					// -ignore unknown fields
-					// see exiv2-doc @link http://www.exiv2.org/sample.html
-					// NOTE: the linux version of exiv2 has a bug: it can only 
-					// read one type of meta-data at a time, not all at once.
-					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
-						' -u -psix -Pnt ' . wfEscapeShellArg( $this->mFilename );
+				$this->_meta = $this->parseIdentifyOutput( $dump );
+			} 
 
-					wfRunHooks( 'PagedTiffHandlerExivCommand', array( &$cmd, $this->mFilename ) );
+			$this->_meta['exif'] = array();
 
-					wfProfileIn( 'exiv2' );
-					wfDebug( __METHOD__ . ": $cmd\n" );
-					$dump = wfShellExec( $cmd, $retval );
-					wfProfileOut( 'exiv2' );
+			//fetch extended info: EXIF/IPTC/XMP
+			//run hooks first, then optionally Exiv2 or, per default, the internal EXIF class
+			if ( !empty( $this->_meta['errors'] ) ) {
+				wfDebug( __METHOD__ . ": found errors, skipping EXIF extraction\n" );
+			} else if ( !wfRunHooks( 'PagedTiffHandlerExifData', array( $this->mFilename, &$this->_meta['exif'] ) ) ) {
+				wfDebug( __METHOD__ . ": hook PagedTiffHandlerExifData overrides EXIF extraction\n" );
+			} else if ( $wgTiffUseExiv ) {
+				// read EXIF, XMP, IPTC as name-tag => interpreted data 
+				// -ignore unknown fields
+				// see exiv2-doc @link http://www.exiv2.org/sample.html
+				// NOTE: the linux version of exiv2 has a bug: it can only 
+				// read one type of meta-data at a time, not all at once.
+				$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
+					' -u -psix -Pnt ' . wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
 
-					if ( $retval ) {
-						$data['errors'][] = "exiv command failed: $cmd";
-						wfDebug( __METHOD__ . ": exiv command failed: $cmd\n" );
-						// don't fail - we are missing info, just report
-					}
+				wfProfileIn( 'exiv2' );
+				wfDebug( __METHOD__ . ": $cmd\n" );
+				$dump = wfShellExec( $cmd, $retval );
+				wfProfileOut( 'exiv2' );
 
-					$result = array();
-					preg_match_all( '/(\w+)\s+(.+)/', $dump, $result, PREG_SET_ORDER );
-
-					foreach ( $result as $data ) {
-						$this->_meta['exif'][$data[1]] = $data[2];
-					}
-				} else {
-					wfDebug( __METHOD__ . ": using internal Exif( {$this->mFilename} )\n" );
-					$exif = new Exif( $this->mFilename );
-					$data = $exif->getFilteredData();
-					if ( $data ) {
-						$data['MEDIAWIKI_EXIF_VERSION'] = Exif::version();
-						$this->_meta['exif'] = $data;
-					} 
+				if ( $retval ) {
+					$data['errors'][] = "exiv command failed: $cmd";
+					wfDebug( __METHOD__ . ": exiv command failed: $cmd\n" );
+					// don't fail - we are missing info, just report
 				}
-				wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
+
+				$data = $this->parseExiv2Output( $dump );
+
+				$this->_meta['exif'] = $data;
+			} else {
+				wfDebug( __METHOD__ . ": using internal Exif( {$this->mFilename} )\n" );
+				$exif = new Exif( $this->mFilename );
+				$data = $exif->getFilteredData();
+				if ( $data ) {
+					$data['MEDIAWIKI_EXIF_VERSION'] = Exif::version();
+					$this->_meta['exif'] = $data;
+				} 
 			}
+			wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
 		}
 		unset( $this->_meta['exif']['Image'] );
 		unset( $this->_meta['exif']['filename'] );
 		unset( $this->_meta['exif']['Base filename'] );
+		unset( $this->_meta['exif']['XMLPacket'] );
+		unset( $this->_meta['exif']['ImageResources'] );
 		return $this->_meta;
+	}
+
+	/**
+	 * helper function of retrieveMetaData().
+	 * parses shell return from tiffinfo-command into an array.
+	 */
+	protected function parseTiffinfoOutput( $dump ) {
+		global $wgTiffTiffinfoRejectMessages, $wgTiffTiffinfoBypassMessages;
+
+		$dump = preg_replace( '/ Image Length:/', "\n  Image Length:", $dump ); #HACK: width and length are given on a single line...
+		$rows = preg_split('/[\r\n]+\s*/', $dump);
+
+		$data = array();
+		$data['page_data'] = array();
+
+		$entry = array();
+
+		foreach ( $rows as $row ) {
+			$row = trim( $row );
+
+			if ( preg_match('/^<|^$/', $row) ) {
+				continue;
+			}
+
+			$error = false;
+
+			foreach ( $wgTiffTiffinfoRejectMessages as $pattern ) {
+				if ( preg_match( $pattern, trim( $row ) ) ) {
+					$data['errors'][] = $row;
+					$error = true;
+					break;
+				}
+			}
+
+			if ( $error ) continue;
+
+			if ( preg_match('/^TIFF Directory at/', $row) ) {
+				if ( isset( $entry['page'] ) ) {
+					$entry['pixels'] = $entry['height'] * $entry['width'];
+					$data['page_data'][$entry['page'] +1] = $entry;
+
+					$entry = array();
+					$entry['alpha'] = 'false';
+				}
+			} else if ( preg_match('#^(TIFF.*?Directory): (.*?/.*?): (.*)#i', $row, $m) ) {
+				$bypass = false; 
+				$msg = $m[3];
+
+				foreach ( $wgTiffTiffinfoBypassMessages as $pattern ) {
+					if ( preg_match( $pattern, trim( $row ) ) ) {
+						$bypass = true;
+						break;
+					}
+				}
+
+				if ( !$bypass ) {
+					$data['warnings'][] = $msg;
+					break;
+				}
+			} else if ( preg_match('/^\s*(.*?)\s*:\s*(.*?)\s*$/', $row, $m) ) {
+				$key = $m[1];
+				$value = $m[2];
+
+				if ( $key == 'Page Number' && preg_match('/(\d+)-(\d+)/', $value, $m) ) {
+					$data['page_amount'] = (int)$m[2];
+					$entry['page'] = (int)$m[1];
+				} else if ( $key == 'Samples/Pixel' ) {
+					if ($value == '4') $entry['alpha'] = 'true';
+					else $entry['alpha'] = 'false';
+				} else if ( $key == 'Extra samples' ) {
+					if (preg_match('.*alpha.*', $value)) $entry['alpha'] = 'true';
+				} else if ( $key == 'Image Width' || $key == 'PixelXDimension' ) {
+					$entry['width'] = (int)$value;
+				} else if ( $key == 'Image Length' || $key == 'PixelYDimension' ) {
+					$entry['height'] = (int)$value;
+				}
+			} else {
+				// strange line
+			}
+		}
+
+		if ( !empty( $entry['page'] ) ) {
+			$entry['pixels'] = $entry['height'] * $entry['width'];
+			$data['page_data'][$entry['page'] +1] = $entry;
+		}
+
+		if ( !isset( $data['page_amount'] ) ) {
+			$data['page_amount'] = count( $data['page_data'] );
+		}
+
+		return $data;
+	}
+
+	/**
+	 * helper function of retrieveMetaData().
+	 * parses shell return from exiv2-command into an array.
+	 */
+	protected function parseExiv2Output( $dump ) {
+		$result = array();
+		preg_match_all( '/^(\w+)\s+(.+)$/m', $dump, $result, PREG_SET_ORDER );
+
+		$data = array();
+
+		foreach ( $result as $row ) {
+			$data[$row[1]] = $row[2];
+		}
+
+		return $data;
 	}
 
 	/**
 	 * helper function of retrieveMetaData().
 	 * parses shell return from identify-command into an array.
 	 */
-	protected function convertDumpToArray( $dump ) {
+	protected function parseIdentifyOutput( $dump ) {
 		global $wgTiffIdentifyRejectMessages, $wgTiffIdentifyBypassMessages;
 
 		$data = array();

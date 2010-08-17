@@ -213,7 +213,9 @@ class PagedTiffHandler extends ImageHandler {
 				$params['lossy'] = 'lossless';
 			}
 		} else {
-			if ( ( strtolower( $data['page_data'][$params['page']]['alpha'] ) == 'true' ) ) {
+			$page = $params['page'];
+
+			if ( ( strtolower( $data['page_data'][$page]['alpha'] ) == 'true' ) ) {
 				$params['lossy'] = 'lossless';
 			} else {
 				$params['lossy'] = 'lossy';
@@ -436,7 +438,15 @@ class PagedTiffHandler extends ImageHandler {
 	 * @return string
 	 */
 	function getMetadata( $image, $path ) {
-		return serialize( $this->getTiffImage( $image, $path )->retrieveMetaData() );
+		if ( !$image ) {
+			return serialize( $this->getTiffImage( $image, $path )->retrieveMetaData() );
+		} else {
+			if ( !isset( $image->tiffMetaArray ) ) {
+				$image->tiffMetaArray = $this->getTiffImage( $image, $path )->retrieveMetaData();
+			}
+
+			return serialize( $image->tiffMetaArray );
+		}
 	}
 
 	/**
@@ -480,7 +490,7 @@ class PagedTiffHandler extends ImageHandler {
 				// don't try to re-render until the error is resolved!
 				return true; 
 			}
-			if ( isset( $meta['page_amount'] ) && isset( $meta['page_data'] ) ) {
+			if ( !empty( $meta['page_amount'] ) && !empty( $meta['page_data'] ) ) {
 				return true;
 			}
 		}

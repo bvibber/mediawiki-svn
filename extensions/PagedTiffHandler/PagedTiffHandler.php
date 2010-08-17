@@ -69,6 +69,18 @@ $wgTiffIdentifyBypassMessages = array(
 	'/^identify: .+?: unknown field with tag .+? encountered/'
 );
 
+$wgTiffTiffinfoRejectMessages = array(
+	'/.*: Cannot read TIFF header\.$/',
+	'/.*: Not a TIFF or MDI file, bad magic number .+\.$/',
+	'/.*: Error fetching data for field .+\.$/',
+	'/TIFFReadDirectory: .*: Can not read TIFF directory count\.$/',
+);
+
+$wgTiffTiffinfoBypassMessages = array(
+	'/^TIFFReadCustomDirectory: .+: unknown field with tag .+? encountered\./',
+	'/^TIFFReadCustomDirectory: .+: wrong data type .*; tag ignored\./',
+);
+
 // Use PHP-TiffReader
 // This is still experimental
 $wgTiffUseTiffReader = false;
@@ -79,11 +91,15 @@ $wgTiffReaderCheckEofForJS = 4; // check the last 4MB for JS
 $wgImageMagickIdentifyCommand = '/usr/bin/identify';
 // Path to exiv2
 $wgTiffExivCommand = '/usr/bin/exiv2';
-// Use exiv2?
+// Use exiv2? if false, MediaWiki's internal EXIF parser will be used
 $wgTiffUseExiv = false;
+//path to tiffinfo
+$wgTiffTiffinfoCommand = '/usr/bin/tiffinfo';
+// Use tiffinfo? if false, ImageMagick's identify command will be used
+$wgTiffUseTiffinfo = false;
 // Path to vips
 $wgTiffVipsCommand = '/usr/bin/vips';
-// Use vips
+// Use vips? if false, ImageMagick's convert command will be used
 $wgTiffUseVips = false;
 // Maximum number of embedded files in tiff image
 $wgTiffMaxEmbedFiles = 10000;
@@ -107,5 +123,7 @@ $wgAutoloadClasses['PagedTiffHandlerSeleniumTestSuite'] = $dir . 'selenium/Paged
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
+
 //$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
-//$wgHooks['PagedTiffHandlerExivCommand'][] = 'PagedTiffImage::exivCommand';
+//$wgHooks['PagedTiffHandlerTiffData'][] = 'PagedTiffImage::tiffData';
+//$wgHooks['PagedTiffHandlerExifData'][] = 'PagedTiffImage::exifData';
