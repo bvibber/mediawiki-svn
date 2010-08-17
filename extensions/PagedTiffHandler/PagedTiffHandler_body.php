@@ -305,7 +305,7 @@ class PagedTiffHandler extends ImageHandler {
 			return new ThumbnailImage( $image, $dstUrl, $width, $height, $dstPath, $page );
 		}
 
-		if ( !$this->extCheck( $meta, $error, $dstPath ) ) {
+		if ( !self::extCheck( $meta, $error, $dstPath ) ) {
 			return $this->doThumbError( $params, $error );
 		}
 
@@ -412,14 +412,14 @@ class PagedTiffHandler extends ImageHandler {
 			// thumbnail size seems sane.
 			$sz = $wgUser->getOption( 'thumbsize' );
 			$width = $wgThumbLimits[ $sz ];
-			$height = $width; // we don't have a hight or aspect ratio. make it square.
+			$height = $width; // we don't have a height or aspect ratio. make it square.
 		} else {
 			$width = intval( $params['width'] );
 
 			if ( !empty( $params['height'] ) ) {
 				$height = intval( $params['height'] );
 			} else {
-				$height = $width; // we don't have a hight or aspect ratio. make it square.
+				$height = $width; // we don't have a height or aspect ratio. make it square.
 			}
 		}
 
