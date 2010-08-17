@@ -2249,8 +2249,16 @@ class OutputPage {
 		$scripts = '';
 		// Include base modules and wikibits legacy code
 		if ( $wgRequest->getVal( 'debug' ) === 'true' || $wgRequest->getBool( 'debug' ) ) {
-			foreach ( $this->getResources() as $resource ) {
-				$scripts .= self::makeResourceLoaderLinkedScript( $sk, $resource );
+			$skipped = array();
+			foreach ( $this->getResources() as $name ) {
+				$module = ResourceLoader::getModule( $name );
+				if ( $module->isRaw() ) {
+					$scripts .= self::makeResourceLoaderLinkedScript( $sk, $name );
+					$skipped[] = $name;
+				}
+			}
+			foreach ( $skipped as $name ) {
+				$scripts .= self::makeResourceLoaderLinkedScript( $sk, $name );
 			}
 		} else {
 			$scripts .= self::makeResourceLoaderLinkedScript( $sk, $this->getResources() );
