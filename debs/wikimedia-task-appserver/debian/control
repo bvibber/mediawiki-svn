@@ -7,7 +7,7 @@ Build-Depends: debhelper (>= 4.0.0)
 
 Package: wikimedia-task-appserver
 Architecture: all
-Depends: nfs-common, wikimedia-lvs-realserver, apache2-mpm-prefork, librsvg2-bin, dvipng, tetex-bin, tetex-extra, gsfonts, ocaml, ploticus, php5-mysql, php5-curl, php5-xmlrpc, php5-cli, php5-apc, php5-wikidiff2, php5-fss, php5-geoip, libapache2-mod-php5, file, djvulibre-bin, tidy (>= 20070821), libtidy-0.99-0 (>= 20070821), php-pear, rsync, make,xpdf-utils
+Depends: nfs-common, wikimedia-lvs-realserver, apache2-mpm-prefork, librsvg2-bin, dvipng, tetex-bin, tetex-extra, gsfonts, ocaml, ploticus, php5-mysql, php5-curl, php5-xmlrpc, php5-cli, php5-apc, php5-wikidiff2, php5-fss, php5-geoip, libapache2-mod-php5, file, djvulibre-bin, tidy (>= 20070821), libtidy-0.99-0 (>= 20070821), php-pear, rsync, make,xpdf-utils, libtiff-tools
 Description: Wikimedia application server
  This package depends on all packages needed to setup a standard
  application server.

@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.43) hardy; urgency=low
+
+  * Add libtiff-tools dependency to support PagedTiffHandler
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 17 Aug 2010 13:42:06 +1000
+
 wikimedia-task-appserver (1.42) hardy; urgency=low
 
   * In sync-common, exclude .svn/lock files, which are usually mode 000
@@ -33,7 +39,7 @@ wikimedia-task-appserver (1.38) hardy; urgency=low
 
 wikimedia-task-appserver (1.37) hardy; urgency=low
 
-  * Added dependency for xpdf-utils to satisfy pfd extension requirements.
+  * Added dependency for xpdf-utils to satisfy pdf extension requirements.
 
  -- Fred Vassard <fvassard@wikimedia.org>  Fri, 15 May 2009 18:36:14 +0000
 
