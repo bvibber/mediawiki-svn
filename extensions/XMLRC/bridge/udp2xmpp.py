@@ -21,7 +21,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ##############################################################################
 
-import sys, os, os.path, traceback, random
+import sys, os, os.path, traceback, random, time
 import ConfigParser, optparse
 import select, socket, urllib
 import xmpp, xmpp.simplexml # using the xmpppy library <http://xmpppy.sourceforge.net/>, GPL
@@ -358,6 +358,7 @@ class Relay(object):
 	    connection_sockets[ conn.get_socket() ] = conn
 
 	broken = set()
+	last_tick = 0
 
 	try:
 	    while self.online:
@@ -397,6 +398,13 @@ class Relay(object):
 			else:
 			    self.info("connection %s seems to be valid after exception in process()" % repr(conn), error_type, error_value, trbk);
 
+		t = int( time.time() )
+		if t != last_tick:
+		    for conn in connections:
+			conn.tick()
+
+		last_tick = t
+
 	except KeyboardInterrupt:
 	    self.online= 0
 
@@ -421,6 +429,84 @@ class Connection(object):
     def debug(self, message):
 	self.relay.debug( message )
 
+    def tick(self):
+	pass
+
+class XmppCallback (object):
+    def __init__( self, stanza_name, timeout = 10, stanza_type = '', stanza_id = None, stanza_child_namespace = '', permanent = False, on_timeout = None, on_match = None ):
+	self.stanza_name = stanza_name
+	self.stanza_type = stanza_type
+	self.stanza_id = stanza_id
+	self.stanza_child_namespace = stanza_child_namespace
+
+	self.timeout = timeout
+	self.permanent = permanent
+
+	self.connection = None
+
+	if on_timeout:
+	    self.on_timeout = on_timeout
+
+	if on_match:
+	    self.on_match = on_match
+
+    def on_match(self, stanza):
+	pass
+
+    def on_timeout(self):
+	self.connection.warn("callback for %s timed out! %s" % (self.stanza_name, repr(self)))
+
+    def handle_tick(self):
+	if self.timeout is None or self.permanent:
+	    return # callback is permanent
+
+	self.timeout -= 1
+	if self.timeout <= 0:
+	    try:
+		self.on_timeout()
+	    finally:
+		self.unregister()
+
+    def handle_stanza(self, conn, stanza):
+	if self.matches_stanza( stanza ):
+	    try:
+		self.on_match( stanza )
+	    finally:
+		if not self.permanent:
+		    self.unregister()
+
+    def matches_stanza(self, stanza):
+	# NOTE: stanza_name, stanza_type and stanza_child_namespace are already checked by the dispatcher!
+
+	if self.stanza_id is not None:
+	    if self.stanza_id != stanza.getAttr( 'id' ):
+		return False
+
+	return True
+
+    def attach(self, connection):
+	if self.connection is not None:
+	    raise Exception('callback is already attached!')
+
+	self.connection = connection
+
+    def detach(self, connection):
+	if self.connection is None:
+	    return
+
+	if connection != self.connection:
+	    raise Exception("trying to detach from the wrong connection object!")
+
+	self.connection = None
+
+    def unregister(self):
+	if not self.connection:
+	    return
+
+	self.connection.remove_callback(self)
+
+	self.connection = None
+
 class XmppConnection (Connection):
     def __init__( self, relay, message_encoding = 'utf-8', backoff_factor = 5, backoff_max_tock = 6, xmpp_debug = [], connection_security = None ):
         super( XmppConnection, self ).__init__( relay )
@@ -435,7 +521,6 @@ class XmppConnection (Connection):
 	    self.connection_security = None
 
 	self.xmpp_debug = xmpp_debug
-	self.last_iq = None
 
 	self.backoff_tick = 0
 	self.backoff_tock = 0
@@ -443,6 +528,24 @@ class XmppConnection (Connection):
 	self.backoff_max_tock = backoff_max_tock
 
 	self.connect_info = None
+
+	self.callbacks = []
+
+    def add_callback(self, callback):
+	self.jabber.RegisterHandler( callback.stanza_name, callback.handle_stanza, typ = callback.stanza_type, ns = callback.stanza_child_namespace )
+	self.callbacks.append( callback )
+	callback.attach( self )
+	self.debug( "registered callback for %s: %s" % (callback.stanza_name, callback) )
+
+    def remove_callback(self, callback):
+	self.jabber.UnregisterHandler( callback.stanza_name, callback.handle_stanza, typ = callback.stanza_type, ns = callback.stanza_child_namespace )
+	self.callbacks.remove( callback )
+	callback.detach( self )
+	self.debug( "unregistered callback for %s: %s" % (callback.stanza_name, callback) )
+
+    def tick(self):
+	for c in self.callbacks:
+	    c.handle_tick()
 
     def process( self ):
 	self.jabber.Process(1)
@@ -471,6 +574,29 @@ class XmppConnection (Connection):
 
 	return MucChannel( self, room_jid, room_nick )
 
+    def log_server_error(self, stanza):
+	error = stanza.getTag('error')
+
+	if error:
+	    name = None
+	    ns = None
+
+	    for node in error.kids:
+		if node and node.getNamespace(): 
+		    name = node.getName()
+		    ns = node.getNamespace()
+		    break
+	    
+	    if name and ns:
+		self.warn( 'SERVER ERROR: %s: %s %s' % ( error['type'], name, ns ) )
+	    else:
+		self.warn( 'SERVER ERROR: %s' % repr(error) )
+
+	    return True
+	else:
+	    return False
+	    
+
     def process_message(self, conn, message):
         if (message.getError()):
             self.warn("received %s error from <%s>: %s" % (message.getType(), message.getError(), message.getFrom() ))
@@ -479,8 +605,26 @@ class XmppConnection (Connection):
 		self.debug("discarding %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
 
     def process_iq(self, conn, iq):
-	self.debug("received iq: %s" % repr(iq))  
-	self.last_iq = iq
+	self.debug("received iq: %s" % iq)  
+	self.log_server_error( iq )
+
+    def process_presence(self, conn, presence):
+	self.debug("received presence: %s" % presence)  
+
+	if self.log_server_error( presence ):
+	    return
+
+	x = presence.getTag('x')
+	if not x:
+	    return
+
+	ns = x.getNamespace()
+
+	if ns == 'http://jabber.org/protocol/muc#user':
+	    self.process_presence_muc_user( conn, x )
+
+    def process_presence_muc_user(self, conn, x):
+	self.info( 'MUC USER: ' + repr(x) ) #FIXME: better info!
 
     def guess_local_resource(self):
 	resource = "%s-%d" % ( socket.gethostname(), os.getpid() ) 
@@ -519,15 +663,12 @@ class XmppConnection (Connection):
 
         self.jabber.RegisterHandler( 'message', self.process_message )
         self.jabber.RegisterHandler( 'iq', self.process_iq )
+        self.jabber.RegisterHandler( 'presence', self.process_presence )
 
 	self.jid = jid;
         self.info( 'connected as %s' % ( jid ) )
 
-	if self.ping():
-	    self.info( 'ping ok!' )
-	else:
-	    self.warn( 'ping failed!' )
-
+	self.ping()
 	self.on_connect()
 
         return conn
@@ -567,7 +708,7 @@ class XmppConnection (Connection):
 	if not ok: return False
 
 	try:
-	    ok = self.ping()
+	    self.ping() #XXX: would be nice to *wait* for a response here...
 	except:
 	    ok = False
 
@@ -582,23 +723,12 @@ class XmppConnection (Connection):
 	self.jabber.send( ping )
 	self.debug('XMPP ping sent')
 
-	ping_stanzas = 10
+	callback = XmppCallback('iq', stanza_id = ping_id, stanza_child_namespace = 'urn:xmpp:ping', 
+				timeout = 10,
+				on_match = lambda cb, stanza: self.info('response received to ping!')
+				)
 
-	while self.last_iq is None or self.last_iq.getAttr('id') != ping_id:
-	    n = self.jabber.Process(1)
-	    if n == 0 or n is None or not self.jabber.isConnected():
-		raise IOError("connection lost!")
-
-	    self.debug('waiting for XMPP pong, received %s bytes of other data; %s tries remaining' % (n, ping_stanzas)  )
-  
-	    ping_stanzas -= 1
-	    if ping_stanzas <= 0:
-		raise IOError("ping got no response in time!")
-
-	    if not self.jabber.isConnected():
-		raise IOError("connection lost!")
-
-	return self.last_iq
+	self.add_callback( callback )
 
     def reconnect_backoff( self ):
 	self.debug( "reconnect_backoff: tick = %d, tock = %d" % (self.backoff_tick, self.backoff_tock) )
