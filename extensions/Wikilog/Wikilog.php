@@ -35,7 +35,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Wikilog',
-	'version'        => '1.1.0',
+	'version'        => '1.1.99.1dev',
 	'author'         => 'Juliano F. Ravasi',
 	'descriptionmsg' => 'wikilog-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Wikilog',
