@@ -101,6 +101,14 @@ $messages['bg'] = array(
 	'wikieditor-preview-loading' => 'Зареждане...',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'wikieditor-preview-tab' => 'Tilik',
+	'wikieditor-preview-changes-tab' => 'Parubahan',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

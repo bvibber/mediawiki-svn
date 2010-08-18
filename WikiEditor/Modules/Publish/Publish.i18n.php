@@ -150,6 +150,16 @@ $messages['bg'] = array(
 	'wikieditor-publish-dialog-goback' => 'Назад',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'wikieditor-publish-button-cancel' => 'Walangi',
+	'wikieditor-publish-dialog-minor' => 'Babakan sapalih',
+	'wikieditor-publish-dialog-watch' => 'Itihi tungkaran ini',
+	'wikieditor-publish-dialog-goback' => 'Mantuk',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Wikitanvir
@@ -557,6 +567,13 @@ $messages['gsw'] = array(
 	'wikieditor-publish-dialog-watch' => 'Die Syte beobachte',
 	'wikieditor-publish-dialog-publish' => 'Publiziere',
 	'wikieditor-publish-dialog-goback' => 'Zruck',
+);
+
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-publish-dialog-watch' => 'Freill arrey er y duillag shoh',
 );
 
 /** Hebrew (עברית)

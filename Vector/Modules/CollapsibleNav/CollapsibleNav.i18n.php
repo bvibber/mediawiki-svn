@@ -63,6 +63,13 @@ $messages['bg'] = array(
 	'vector-collapsiblenav-preference' => 'Включване на сгъваемо/разгъваемо меню за навигация вляво',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'vector-collapsiblenav-more' => 'Labih banyak bahasa',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Wikitanvir
@@ -102,6 +109,7 @@ $messages['ca'] = array(
  * @author Marmzok
  */
 $messages['ckb'] = array(
+	'vector-collapsiblenav-preference' => 'خستنەکاری کرانەوەی بڕگەکانی لە پێرستی ڕێدۆزیدا لە بەرگی وێکتۆردا.',
 	'vector-collapsiblenav-more' => 'زمانەکانی دیکە',
 );
 
@@ -265,6 +273,13 @@ $messages['gl'] = array(
 $messages['gsw'] = array(
 	'vector-collapsiblenav-preference' => 'Yyklappbar Navgationsmenü yyschalte bi dr Verwändig vu Vector',
 	'vector-collapsiblenav-more' => 'Meh Sproche',
+);
+
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'vector-collapsiblenav-more' => 'Tooilley çhengaghyn',
 );
 
 /** Hebrew (עברית)

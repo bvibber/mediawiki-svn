@@ -82,6 +82,14 @@ $messages['be-tarask'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Паспрабуйце новыя магчымасьці',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'prefswitch-link-on' => 'Anggung ulun mantuk',
+	'tooltip-pt-prefswitch-link-off' => 'Tarai muha hanyar',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Wikitanvir

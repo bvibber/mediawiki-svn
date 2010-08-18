@@ -86,6 +86,15 @@ $messages['bg'] = array(
 	'wikieditor-toc-hide' => 'Скриване на съдържанието',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'wikieditor-toc-preference' => 'Daptar isi nang hingkat dinapigasi',
+	'wikieditor-toc-show' => 'Tampaiakan isi',
+	'wikieditor-toc-hide' => 'Sungkupakan isi',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -134,8 +143,10 @@ $messages['ca'] = array(
 
 /** Sorani (کوردی)
  * @author Asoxor
+ * @author Marmzok
  */
 $messages['ckb'] = array(
+	'wikieditor-toc-preference' => 'خستنەکاری خشتە ڕێدۆزەکانی ناوەڕۆک',
 	'wikieditor-toc-show' => 'نیشاندانی ناوەڕۆک',
 	'wikieditor-toc-hide' => 'شاردنەوەی ناوەڕۆک',
 );

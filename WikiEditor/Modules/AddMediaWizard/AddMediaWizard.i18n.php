@@ -430,6 +430,13 @@ $messages['tr'] = array(
 	'wikieditor-addMediaWizard-preference' => '"Ortam ekleme sihirbazı" gadget\'ını etkinleştir',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Гаджетны ачарга',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

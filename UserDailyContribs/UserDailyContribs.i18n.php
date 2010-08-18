@@ -59,6 +59,13 @@ $messages['be-tarask'] = array(
 	'userdailycontribs-desc' => 'Штодзённы ўнёсак удзельнікаў для пашырэньня сачэньня за націскамі мышшу',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'userdailycontribs-desc' => 'Sumbangan harian pamuruk gasan pangaya palacak klik',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
