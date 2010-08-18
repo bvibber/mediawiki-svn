@@ -183,8 +183,8 @@ $.extend( true, mw.legacy, {
 		var $scrollTop = $( '#wpScrolltop' );
 		var $editForm = $( '#editform' );
 		if ( $editForm.length && $textbox.length && $scrollTop.length ) {
-			if ( scrollTop.val() ) {
-				$textbox.scrollTop = $scrollTop.val();
+			if ( $scrollTop.val() ) {
+				$textbox.scrollTop( $scrollTop.val() );
 			}
 			$editForm.submit( function() {
 				$scrollTop.val( $textbox.scrollTop );
