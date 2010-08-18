@@ -41,8 +41,9 @@ class CodeRevisionView extends CodeView {
 			$view->execute();
 			return;
 		}
-		if ( $this->mStatus == '' )
+		if ( $this->mStatus == '' ) {
 			$this->mStatus = $this->mRev->getStatus();
+		}
 
 		$redirectOnPost = $this->checkPostings();
 		if ( $redirectOnPost ) {
@@ -252,8 +253,9 @@ class CodeRevisionView extends CodeView {
 	}
 
 	static function listTags( $tags ) {
-		if ( empty( $tags ) )
+		if ( empty( $tags ) ) {
 			return "";
+		}
 		return implode( ",", $tags );
 	}
 
