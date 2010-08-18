@@ -406,10 +406,17 @@ Désirez-vous modifier la page existante ?',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'createpage' => 'Fâre una pâge',
+	'uwcreatepage-desc' => 'Apond una [[Special:CreatePage|pâge spèciâla]] por fâre des pâges novèles.',
 	'createpage_submitbutton' => 'Sometre',
+	'createpage_instructions' => 'Buchiéd lo titro de la pâge que vos souhètâd fâre :',
+	'createpage_entertitle' => 'Volyéd buchiér un titro por voutra pâge.',
+	'createpage_tryagain' => 'Nan. Vuel fâre una pâge novèla avouéc un titro difèrent.',
+	'createpage_editexisting' => 'Ouè. Vuel contribuar a la pâge ègzistenta.',
+	'createpage-badtitle' => '« $1 » pôt pas étre utilisâ coment nom de pâge',
 );
 
 /** Galician (Galego)
@@ -964,11 +971,12 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'createpage' => 'Направи чланак',
-	'uwcreatepage-desc' => 'Додаје [[Special:CreatePage|специјалну страну]] за прављење нових страна',
+	'uwcreatepage-desc' => 'Додаје [[Special:CreatePage|специјалну страницу]] за прављење нових страница',
 	'createpage_submitbutton' => 'Пошаљи',
 	'createpage_instructions' => 'Унеси наслов кога желиш да направиш:',
 	'createpage_entertitle' => 'Молимо Вас да унесете наслов за Ваш чланак.',

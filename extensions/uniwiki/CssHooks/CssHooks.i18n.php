@@ -146,6 +146,13 @@ $messages['fr'] = array(
 	'csshooks-desc' => 'Ajoute du CSS au rendu HTML des pages pour un meilleur style',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'csshooks-desc' => 'Apond de CSS u rendu HTML de les pâges por un stilo ples bon.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

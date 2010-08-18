@@ -51,6 +51,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-templates-preference' => 'Уключыць згортваньне шаблёнаў',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'wikieditor-templates-preference' => 'Aktipakan gawian manuhup citakan',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -481,6 +488,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'wikieditor-templates-preference' => 'Şablon daraltmayı etkinleştir',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-templates-preference' => 'Үрнәкләрнең яшерергә',
 );
 
 /** Ukrainian (Українська)

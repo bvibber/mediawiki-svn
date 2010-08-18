@@ -547,15 +547,27 @@ Ajoutez-en en utilisant les outils dans la barre de menu.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'gep-emailsubject' => '[$1] Consèly de catègorie : $2',
+	'gep-emailbody' => 'L’utilisator « $1 » at conselyê la catègorie « $2 » por lo seto « $3 ».',
+	'gep-emailfailure' => 'Dèsolâ, voutron consèly at pas possu étre fêt.',
+	'gep-emailsuccess' => 'Grant-marci d’avêr conselyê la catègorie : $1.',
 	'gep-categories' => 'Catègories',
 	'gep-addcategory' => 'Apondre una catègorie',
 	'gep-addcategorybutton' => 'Apondre',
+	'gep-suggestcategory' => 'Conselyér una catègorie',
 	'gep-suggestcategorybutton' => 'Sometre',
 	'gep-sections' => 'Sèccions',
+	'gep-sectionnotdisabled' => 'Ceta sèccion pôt pas étre dèsactivâ',
 	'gep-addsection' => 'Apondre una sèccion',
 	'gep-addsectionbutton' => 'Apondre',
+	'gep-classicmode' => 'Fôrma classica',
+	'gep-genericmode' => 'Fôrma g·ènèrica',
+	'gep-nosectioninstructions' => 'Y at gins de sèccion dens ceta pâge.
+Apondéd-nen en utilisent los outils dens la bârra de menu.',
+	'gep-nocategories' => 'Volyéd chouèsir u muens yona catègorie devant que sôvar la pâge',
 );
 
 /** Galician (Galego)

@@ -3791,6 +3791,13 @@ $messages['tr'] = array(
 	'group-manager-member' => 'Yönetici',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'whitelistnewtablereview' => 'Карау',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Тест

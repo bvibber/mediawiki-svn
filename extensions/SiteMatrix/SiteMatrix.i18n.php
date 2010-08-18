@@ -1627,11 +1627,12 @@ $messages['sq'] = array(
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author לערי ריינהארט
  */
 $messages['sr-ec'] = array(
 	'sitematrix' => 'Табела свих викија',
-	'sitematrix-summary' => 'Ова посебна страна листа све Викимедијине викије.',
+	'sitematrix-summary' => 'Ова посебна страница листа све Викимедијине викије.',
 	'sitematrix-desc' => 'Приказује [[Special:SiteMatrix|списак Викимедијиних викија]].',
 	'sitematrix-language' => 'Језик',
 	'sitematrix-project' => 'Име пројекта, међупројекатска веза и међувики веза.',

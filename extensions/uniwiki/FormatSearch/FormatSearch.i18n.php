@@ -157,6 +157,13 @@ $messages['fr'] = array(
 	'formatsearch-desc' => 'Nettoie la page de résultats des recherches',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'formatsearch-desc' => 'Neteye la pâge de rèsultats de les rechèrches.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

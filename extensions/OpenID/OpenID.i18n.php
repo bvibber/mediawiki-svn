@@ -1287,6 +1287,7 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Crazymadlover
+ * @author Kiriakos
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -1361,6 +1362,10 @@ $messages['el'] = array(
 	'openiddelete-text' => 'Κάνωντας κλικ στο κουμπί "{{int:openiddelete-button}}", θα αφαιρέσετε το OpenID $1 από το λογαριασμό σας.
 Δεν θα είστε πλέον σε θέση να συνδεθείτε με αυτό το OpenID.',
 	'openiddelete-button' => 'Επιβεβαίωση',
+	'openiddeleteerrornopassword' => 'Δεν μπορείτε να διαγράψετε όλα τα OpenIDs σας, διότι ο λογαριασμός σας δεν έχει κωδικό πρόσβασης. 
+ Δεν θα μπορέσετε να συνδεθείτε  χωρίς ένα OpenID.',
+	'openiddeleteerroropenidonly' => 'Δεν μπορείτε να διαγράψετε όλα τα OpenIDs σας, διότι σας επιτρέπεται  να συνδεθείτε μόνο με OpenID. 
+ Δεν θα μπορέσετε να συνδεθείτε χωρίς ένα OpenID.',
 	'openiddelete-sucess' => 'Το OpenID αφαιρέθηκε επιτυχώς από τον λογαριασμό σας.',
 	'openiddelete-error' => 'Ένα σφάλμα προέκυψε κατά την αφαίρεση του OpenID από το λογαριασμό σας.',
 	'openid-prefstext' => 'Προτιμήσεις [http://openid.net/ OpenID]',

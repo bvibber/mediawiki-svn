@@ -90,6 +90,13 @@ $messages['fr'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Un ou plusieurs codes postaux n’ont pas pu être géolocalisés et ont été omis de la carte.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'ukgeocoding_name' => 'G·eocodâjo du Royômo-Uni por les mapes',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

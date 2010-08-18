@@ -263,3 +263,12 @@ $messages['tt-cyrl'] = array(
 	'rss-empty' => '$1: битеннән  RSS-тасманы ачып булмады',
 );
 
+/** Ukrainian (Українська)
+ * @author Arturyatsko
+ */
+$messages['uk'] = array(
+	'rss-desc' => 'Відображає канал RSS на сторінці вікі',
+	'rss-error' => 'Не вдалося завантажити RSS-канал від $1: $2',
+	'rss-empty' => 'Не вдалося завантажити RSS-канал від $1!',
+);
+

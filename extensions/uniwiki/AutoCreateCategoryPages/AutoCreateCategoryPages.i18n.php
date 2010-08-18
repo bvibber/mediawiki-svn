@@ -219,6 +219,15 @@ Elle liste toutes les pages comprises dans la catégorie « $1 » ainsi que tout
 	'autocreatecategorypages-editor' => 'Créateur automatique de catégorie',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'autocreatecategorypages-desc' => 'Fât ôtomaticament les pâges de catègorie manquentes pendent l’encartâjo.',
+	'autocreatecategorypages-createdby' => 'Fêta ôtomaticament per l’èxtension AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Crèator ôtomatico de catègorie',
+);
+
 /** Irish (Gaeilge)
  * @author Alison
  */

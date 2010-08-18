@@ -742,7 +742,7 @@ $messages['rue'] = array(
  * @author බිඟුවා
  */
 $messages['si'] = array(
-	'searchbox-desc' => 'සෙවුම් ෆෝරම(form)යන්හි  ඇතුලත්කිරීම් සඳහා ඉඩදෙන්න',
+	'searchbox-desc' => 'සෙවුම් පත්‍රිකාවල ඇතුලත්කිරීම් සඳහා ඉඩදෙන්න',
 	'searchbox-search' => 'සොයන්න',
 	'searchbox-go' => 'යන්න',
 	'searchbox-namespaces' => 'නාමඅවකාශ:',

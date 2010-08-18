@@ -2451,6 +2451,7 @@ $messages['tk'] = array(
 	'readerfeedback-tier-poor' => 'Ýaramaz',
 	'tooltip-ca-ratinghist' => 'Bu sahypanyň okyjy derejelendirmeleri',
 	'specialpages-group-feedback' => 'Synlaýjy garaýşy',
+	'readerfeedback-tt-review' => 'Gözden geçirmäni tabşyr',
 );
 
 /** Tagalog (Tagalog)

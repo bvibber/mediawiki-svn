@@ -346,11 +346,16 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'layouts_title' => 'Fâre una pâge',
+	'layouts_chooselayout' => 'Chouèsir una misa en pâge por $1 :',
+	'layouts_nolayout' => 'Gins de misa en pâge',
 	'layouts_continue' => 'Continuar',
+	'layouts_choosecategory' => 'Chouèsir una catègorie por $1 :',
 	'layouts_unknown' => 'Encognu',
+	'layouts_tagline' => "Ceta pâge at étâ fêta avouéc la misa en pâge '''$1'''.",
 );
 
 /** Irish (Gaeilge)

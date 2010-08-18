@@ -82,6 +82,13 @@ $messages['bg'] = array(
 	'vector-editwarning-preference' => 'Предупреждаване при опит за напускане на страница, отворена в режим на редактиране, без да са запазени промените',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'vector-editwarning-preference' => 'Ingatakan ulun pabila maninggalakan tungkaran pambabakan sabalum manyimpan parubahan',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

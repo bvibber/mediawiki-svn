@@ -546,10 +546,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'commentpages-desc' => 'Коментарисање страна главног именског простора',
+	'commentpages-desc' => 'Коментарисање страница главног именског простора',
 	'nstab-comments' => 'Коментари',
 );
 

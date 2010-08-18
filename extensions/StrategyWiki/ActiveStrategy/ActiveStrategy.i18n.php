@@ -38,7 +38,7 @@ $messages['be-tarask'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'activestrategy' => 'স্বক্রিয়া স্ট্রেটেজি',
+	'activestrategy' => 'সক্রিয় কৌশল',
 );
 
 /** Breton (Brezhoneg)
@@ -115,11 +115,13 @@ $messages['es'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ladsgroup
  * @author Wayiran
  */
 $messages['fa'] = array(
 	'activestrategy' => 'راهبرد فعال',
 	'active-strategy-desc' => 'تعداد ویرایش‌ها را به صفحات برنامه‌ریزی راهبردی نشان می‌دهد.',
+	'nedits' => '$1 {{PLURAL:$1|ویرایش|ویرایش}}',
 );
 
 /** French (Français)

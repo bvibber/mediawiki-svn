@@ -457,7 +457,14 @@ $messages['ba'] = array(
 	'optin-title-optedout' => 'Бета-версияны һынау',
 	'optin-title-optedin' => 'Бета-версиянан сығырға',
 	'optin-title-justoptedin' => 'Бета-версияға рәхим итегеҙ',
+	'optin-title-justoptedout' => 'Бета-версияны һынауҙа ҡатнашыуығыҙ өсөн рәхмәт',
 	'optin-title-feedback' => 'Баһалама ебәрергә',
+	'optin-needlogin' => 'Бета-версияны һынау өсөн һеҙгә [$1 танылыу] үтергә кәрәк',
+	'optin-intro' => 'Юзабилити Инициативаһы сиктәрендә Википедины ҡулланыуҙы еңелләштереү буйынса эш үткәрелде.
+Һеҙ бета-версияны һынап ҡарарға теләйһегеҙме?',
+	'optin-feedback-intro' => 'Бета-версияны һынарға риза булыуығыҙ өсөн өсөн рәхмәт.
+Һеҙ яңы интерфейс тураһында нимә уйлауығыҙҙы беҙҙең белгебеҙ килер ине, шуға күрә әгәр һиҙ түбәндә килтерелгән һорауҙарға яуап бирһәгеҙ, беҙ рәхмәтле булыр инек.',
+	'optin-feedback-back' => 'Әгәр һорауҙарға яуап бирергә теләмәһәгеҙ, һеҙ $1 битенә ҡайта алаһығыҙ.',
 );
 
 /** Samogitian (Žemaitėška)
@@ -1351,6 +1358,7 @@ For at finde mere om Brugeroplevelsen, besøg [http://usability.wikimedia.org/wi
  * @author Als-Holder
  * @author Benzen
  * @author Imre
+ * @author Kghbln
  * @author Metalhead64
  * @author Pill
  * @author Umherirrender
@@ -1374,7 +1382,7 @@ Du kannst es jederzeit verlassen, indem du den Link „{{int:optin-leave}}“ ob
 	'optin-leave-cancel' => 'Wenn du Beta weiter verwenden willst, kannst du zu $1 zurückkehren.',
 	'optin-success-out' => 'Du hast Beta erfolgreich verlassen.
 Du kannst es jederzeit wieder ausprobieren, indem du den Link „{{int:optin-try}}“ oben rechts anklickst.',
-	'optin-success-feedback' => 'Danke für dein Feedback!',
+	'optin-success-feedback' => 'Vielen Dank für deine Rückmeldung!',
 	'optin-accept-short' => 'Los!',
 	'optin-accept-long' => 'Beta ausprobieren',
 	'optin-accept-long-anon' => 'Anmelden und Beta ausprobieren',
@@ -2150,7 +2158,7 @@ $messages['fa'] = array(
 	'optin-survey-question-changes' => 'دوست دارید در نسخهٔ بتا در آینده شاهد چه تغییراتی باشید (لطفاً همهٔ موارد مرتبط را انتخاب کنید)؟',
 	'optin-survey-answer-changes-edittools' => 'ابزارهای ویرایشی را افزایش و بهبود بده',
 	'optin-survey-answer-changes-upload' => 'بارگذاری‌های محتوایی و رسانه‌ای را بهبود بخشید',
-	'optin-survey-answer-changes-richtext' => 'ابزارهای ویرایش مانند ویرایشگرهای متون‌غنی/ابرمتن بسازید/توسعه دهید.',
+	'optin-survey-answer-changes-richtext' => 'توسعهٔ دادن ابزارهای ویرایشی شبیه به ویرایش‌گرهای متون‌عنی.',
 	'optin-survey-answer-changes-lookfeel' => 'به روز رسانی ظاهر وب‌گاه.',
 	'optin-survey-answer-changes-predictability' => 'پیش‌بینی‌پذیری کارایی را بهبود دهید.',
 	'optin-survey-answer-changes-custom' => 'اجازهٔ سفارشی‌سازی بیش‌تر را به کاربر بده.',
@@ -6145,6 +6153,9 @@ $messages['su'] = array(
 	'optin-survey-question-os' => 'Sistem operasi naon nu dipaké ku anjeun?',
 	'optin-survey-answer-os-other' => 'Sistem operasi lianna:',
 	'optin-survey-question-res' => 'Résolusi layar nu dipaké?',
+	'optin-survey-question-changes' => 'Numutkeun salira, naon baé anu kudu robah dina Béta jaga (pilihan anu cocog)?',
+	'optin-survey-answer-changes-edittools' => 'Ronjatkeun parabot ngéditna.',
+	'optin-survey-answer-changes-upload' => 'Ronjatkeun muatan kontén jeung média.',
 	'optin-survey-answer-changes-richtext' => 'Ngembangkeun alat ngédit anu sarupa jeung éditor téks euyeub.',
 	'optin-survey-answer-changes-other' => 'Lianna:',
 );
@@ -6676,14 +6687,79 @@ Kullanışlılığı geliştirme çalışmalarına katılma hakkında bilgi içi
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
+ * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
+	'optin' => 'Юзабилити да катнашу',
+	'optin-desc' => 'Кулланучылар тарафыннан интерфейсның  Beta-юрамасын тикшереп карау.',
 	'optin-title-optedout' => 'Интерфейсның бета-версиясен карау',
 	'optin-title-optedin' => 'Beta-версиядән чыгарга',
+	'optin-title-justoptedin' => 'Beta га рәхим итегез',
+	'optin-title-justoptedout' => 'Beta-юраманы тикшереп карауда зур рәхмәтебезне белдерәбез',
+	'optin-title-feedback' => 'Фикерләрегезне җибәрү',
+	'optin-needlogin' => 'Beta-юраманы карау өчен Сезгә сәхифәгә [$1 керергә] кирәк.',
+	'optin-intro' => 'Юзабилити соравы буенча Википедияне куллану эше җиңеләйтелде. Сез бета-версияне эшләтеп карарга телисезме?',
+	'optin-feedback-intro' => 'Beta-юраманы тикшереп карауда зур рәхмәтебезне белдерәбез. Шуңа да сезгә аста урнаштырылган сорауларгә җавап бирергә тәкъдим итәбез.',
+	'optin-feedback-back' => 'Әгәрдә Сез сораштыруда катнашасыгыз килми икән, Сез $1 кайта аласыз.',
+	'optin-success-in' => 'Хәзер Сез интерфейсның Beta-версияне әшләтеп карауда катнашасыз. Сез моны «{{int:optin-leave}}» бите аша сүндерә аласыз.',
+	'optin-leave-cancel' => 'Сез алга таба Beta-юраманы кулланырга теләсәгез, Сез $1 кайта аласыз.',
+	'optin-success-out' => 'Сез Beta-юраманы эшләтеп караудан чыктыгыз. Кире Beta-юрамага кайтасыгыз килсә, Сез «{{int:optin-try}}» төймәсенә баса аласыз.',
+	'optin-success-feedback' => 'Фикерегез өчен рәхмәт!',
+	'optin-accept-short' => 'Киттек!',
+	'optin-accept-long' => 'Бета-версияне эшләтеп карау',
+	'optin-accept-long-anon' => 'Бета-версияне эшләтеп карау өчен керегез.',
+	'optin-deny-short' => 'Юк, кирәкми!',
+	'optin-deny-long' => 'Үткән биткә кире кайту',
+	'optin-submit-out' => 'Beta-версиядән чыгарга',
+	'optin-submit-feedback' => 'Сезнең фикер',
 	'optin-survey-yes' => 'Әйе',
 	'optin-survey-no' => 'Юк',
+	'optin-survey-intro' => 'Beta-версияне кулланганыгыз өчен бик зур рәхмәт.
+Сезнең безнең яңа интерфейс турында нәрсәләр уйлаганыгызны беләсебез килә. «[[#leave|{{int:optin-submit-out}}]]» төймәсенә басыр алдынна бирелгән сорауларга җавап бирсәгез иде.',
+	'optin-survey-question-likedislike' => 'Сезгә Beta-юрамада нәрсә ошады? Нинди яклары ошамады?',
+	'optin-survey-question-whyoptout' => 'Нигә Сез Beta-юраманы ташларга булдыгыз? (туры килгән җавапларны сайлагыз)',
+	'optin-survey-answer-whyoptout-hard' => 'Ул эшләүдә бик авыр.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Ул дөрес итеп эшләми.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Ул бик начар эшли.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Миңа аның тышкы кыяфәте ошамый.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Миңа аның яңа тәрәзәләре һәм төзелеше ошамады.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Миңа яңа төзәтү панеле ошамады.',
 	'optin-survey-answer-whyoptout-other' => 'Башка сәбәп:',
+	'optin-survey-question-explain' => 'Зинһар, бирелгән сорауларга тулырак җавап бирегез:',
+	'optin-survey-question-techfail' => 'Сез Beta-юраманы кулланганда нинди дә булса техник хаталарга юлыктыгызмы?',
+	'optin-survey-question-techfail-ifyes' => 'Әгәрдә шулай икән зинһар, тулырак җавап бирегез:',
+	'optin-survey-question-usedtoolbar' => 'Сез яңа җиһазлар панелен кулландыгызмы?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Әгәрдә шулай икән сезгә аның кайсы яклары ошады? Кайсылары ошамады?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Нигә?Киләчәктә кулланырга торасызмы?',
+	'optin-survey-question-different' => 'Сез Beta-юраманың нинди якларын үзгәртергә теләр идегез?',
+	'optin-survey-question-feedback' => 'Зинһар, безгә үзегезнең фикерегезне юллагыз:',
+	'optin-survey-question-browser' => 'Сез кайсы браузерны кулланасыз?',
 	'optin-survey-answer-browser-other' => 'Башка браузер:',
+	'optin-survey-question-os' => 'Сез кайсы операцион системасын кулланасыз?',
+	'optin-survey-answer-os-other' => 'Башка операцион система:',
+	'optin-survey-question-res' => 'Экраныгызның киңәйтелмәсе нинди?',
+	'optin-survey-question-changes' => 'Яңа Beta-юрамаларда сез нинди үзгәрешләр күрергә телисез?',
+	'optin-survey-answer-changes-nav' => 'Сәхифә буенча навигацияне кулайрак ясау.',
+	'optin-survey-answer-changes-edittools' => 'Үзгәртү җиһазларын җиңелрәк ясарга.',
+	'optin-survey-answer-changes-upload' => 'Йөкләү битен җиңелрәк  һәм матуррак ясарга.',
+	'optin-survey-answer-changes-richtext' => 'Текс редакторына охшаш үзгәрту җиһазларын ясарга.',
+	'optin-survey-answer-changes-lookfeel' => 'Сәхиһәнең «тышкы кыяфәтен» яңартырга',
+	'optin-survey-answer-changes-predictability' => 'Эшнең барышын яхшыртырга.',
+	'optin-survey-answer-changes-custom' => 'Шәхси үзгәртүләр җайланмаларын киңәйтергә.',
+	'optin-survey-answer-changes-other' => 'Башкалар:',
+	'optin-improvements2' => '== Нәрсәләр эшләнде? ==
+[[File:UsabilityToolbar.png|left|link=|Яңартылган панель]]
+[[File:UsabilityDialogs.png|left|link=|Яңа күчерү бите]]
+; Яңартылган панель
+Яңартылган панель текстны үзгәртү өчен яңа мөмкинлекләр ача.  Яңа төймәләр һәм яңа бизәлеш эшне тагын да җиңеләйтер дип өметләнәбез.
+; Диалог тәрәзәсе
+Сез хәзер таблицаларны гади формалар ярдәмендә дә ясый аласыз.
+; Шулай ук
+Без яңа эзләү системасы, яңарак интерфей һәм башка бик күп әйберләр эшләдек.
+
+== Ничек керергә ==
+Бу яңалыклар турында күбрәк белер өчен [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative  безнең битне ] карагыз.
+<div style="clear:both"></div>',
 );
 
 /** Udmurt (Удмурт)

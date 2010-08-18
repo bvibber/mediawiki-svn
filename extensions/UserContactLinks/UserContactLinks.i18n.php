@@ -217,6 +217,14 @@ $messages['fr'] = array(
 	'usercontactlinks-desc' => 'Permet d’ajouter simplement et avec consistance d’autres noms d’utilisateurs en utilisant la syntaxe ^^^user^^^',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'usercontactlink-baduser' => 'nom d’utilisator fôx',
+	'usercontactlinks-desc' => 'Pèrmèt d’apondre simplament et avouéc consistence d’ôtros noms d’utilisators en utilisent la sintaxa ^^^user^^^.',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

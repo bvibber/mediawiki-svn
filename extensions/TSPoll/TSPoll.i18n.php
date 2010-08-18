@@ -137,6 +137,15 @@ $messages['fr'] = array(
 	'tspoll-id-error' => 'Aucun identifiant n’a été donné !',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'tspoll-desc' => 'Encllut lo [http://www.toolserver.org/~jan/poll/index.php scripte de sondâjo du Toolserver] avouéc una balisa HTML.',
+	'tspoll-fetch-error' => 'Èrror pendent la rechèrche de l’URL !',
+	'tspoll-id-error' => 'Nion numerô at étâ balyê !',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

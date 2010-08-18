@@ -207,6 +207,18 @@ $messages['fr'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] doit avoir au moins $1 caractères.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'transliterator-desc' => 'Balye una fonccion du parsor configurâbla por la translitèracion.',
+	'transliterator-error-ambiguous' => 'Règlla pas cllâra <code>$1</code> dens [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Sintaxa fôssa <code>$1</code> dens [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Més de $1 règll{{PLURAL:$1|a|es}} dens [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'La règlla <code>$1</code> at més de $3 caractèro{{PLURAL:$3||s}} sur la gôche dens [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] dêt avêr u muens $1 caractèro{{PLURAL:$1||s}}.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

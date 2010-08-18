@@ -221,6 +221,7 @@ $messages['ckb'] = array(
 	'optin-leave' => 'دەرچوون لە بیتا',
 	'tooltip-pt-optin-leave' => 'لەکارخستنی تایبەتمەندییە نوێکان',
 	'optin-feedback' => 'پێڕاگەیاندنەوەی بێتا',
+	'tooltip-pt-optin-feedback' => 'تکایە پێڕاگەیاندنەوەەیەک بکە سەپارەت بە چۆنیەتیی تایبەتمەندییە نوێکان',
 );
 
 /** Czech (Česky)

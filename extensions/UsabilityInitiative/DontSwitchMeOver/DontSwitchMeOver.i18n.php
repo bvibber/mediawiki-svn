@@ -95,6 +95,14 @@ $messages['es'] = array(
 	'dontswitchmeover-pref' => 'No permitir a mi piel ser cambiada cuando la piel por defecto cambie',
 );
 
+/** Basque (Euskara)
+ * @author Unai Fdz. de Betoño
+ */
+$messages['eu'] = array(
+	'dontswitchmeover-desc' => 'Erabiltzaileentzako lehentasuna zehazteko ea haien itxura-konfigurazioa mantendu nahi duten lehenetsitakoa aldatzen dutenean.',
+	'dontswitchmeover-pref' => 'Ez utzi nire itxura-konfigurazioa aldatzen lehenetsitakoa aldatzen dutenean',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -280,6 +288,13 @@ $messages['ru'] = array(
 $messages['sl'] = array(
 	'dontswitchmeover-desc' => 'Nastavitev za uporabnike, ki določa, ali želijo ohraniti nastavitev kože, ko se spremeni privzeta koža.',
 	'dontswitchmeover-pref' => 'Ne dovoli spremembe moje kože, ko se spremeni privzeta koža',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'dontswitchmeover-pref' => 'Lamun kulit ti dituna robah, setélan kulit kuring ulah milu robah',
 );
 
 /** Ukrainian (Українська)

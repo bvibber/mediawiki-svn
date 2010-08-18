@@ -3339,6 +3339,7 @@ $messages['ts'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Arturyatsko
  * @author NickK
  * @author Prima klasy4na
  */
@@ -3371,6 +3372,8 @@ QuickTime не може відтворювати ogg-файли без цьог�
 	'ogg-dismiss' => 'Закрити',
 	'ogg-download' => 'Завантажити файл',
 	'ogg-desc-link' => 'Інформація про цей файл',
+	'ogg-oggThumb-version' => 'OggHandler вимагає oggThumb версії $1 або більш пізньої.',
+	'ogg-oggThumb-failed' => 'oggThumb не вдалося створити мініатюру.',
 );
 
 /** Vèneto (Vèneto)

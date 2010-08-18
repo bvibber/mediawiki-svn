@@ -99,6 +99,16 @@ $messages['bg'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Отказване',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'wikieditor-template-editor-preference' => 'Aktipakan pambabakan babasis form matan citakan wiki',
+	'wikieditor-template-editor-dialog-title' => 'Babak citakan',
+	'wikieditor-template-editor-dialog-submit' => 'Hanyarakan',
+	'wikieditor-template-editor-dialog-cancel' => 'Walangi',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

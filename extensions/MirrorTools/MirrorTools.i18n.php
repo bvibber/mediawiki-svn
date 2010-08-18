@@ -244,6 +244,18 @@ $messages['pt'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Utilizadores da ferramenta espelho',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'mirrortools' => 'FerramentasEspelho',
+	'mirrortools-desc' => 'Permite que as edições através da API sejam feitas em nome de qualquer usuário',
+	'right-mirroredit' => 'Edição pela API em nome de qualquer usuário',
+	'group-MirrorTools' => 'Usuários da ferramenta espelho',
+	'group-MirrorTools-member' => 'usuário da ferramenta espelho',
+	'grouppage-MirrorTools' => '{{ns:project}}:Usuários da ferramenta espelho',
+);
+
 /** Russian (Русский)
  * @author Eleferen
  */

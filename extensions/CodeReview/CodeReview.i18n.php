@@ -825,7 +825,9 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Наступныя зьмены',
 	'codereview-email-body2' => 'Карыстальнік «$1» зрабіў наступныя зьмены ў $2.
 
-Поўны URL-адрас: $3
+Поўны URL папярэдняй рэвізіі: $5
+
+Поўны URL: $3
 
 Кароткае апісаньне зьменаў:
 
@@ -1465,6 +1467,8 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Reagující změna',
 	'codereview-email-body2' => 'Uživatel „$1“ svou změnou reagoval na $2.
 
+Úplné URL původní revize: $5
+
 Úplné URL: $3
 
 Komentář ke změně:
@@ -1704,6 +1708,8 @@ Kommentar:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Darauffolgende Änderungen',
 	'codereview-email-body2' => 'Benutzer „$1“ machte darauffolgende Änderungen zu $2.
+
+Volle URL der darauffolgenden Version: $5
 
 Volle URL: $3
 
@@ -2654,6 +2660,7 @@ $4',
  * @author Bersam
  * @author Huji
  * @author Komeil 4life
+ * @author Ladsgroup
  * @author Mardetanha
  * @author Wayiran
  */
@@ -2662,7 +2669,7 @@ $messages['fa'] = array(
 	'code-rev-title' => 'بازبینی کد - $1',
 	'code-comments' => 'توضیحات',
 	'code-change-status' => "'''وضعیت''' $1 را تغییر داد",
-	'code-change-tags' => '↓ برچسب های $1 را تغییر داد',
+	'code-change-tags' => 'برچسب های $1 را تغییر داد',
 	'code-change-removed' => 'حذف:',
 	'code-change-added' => 'اضافه:',
 	'code-old-status' => 'وضعیت قدیمی',
@@ -2742,6 +2749,7 @@ $messages['fa'] = array(
 	'code-rev-submit-next' => 'ذخیره و حرکت به مورد حل نشدهٔ بعدی',
 	'code-batch-status' => 'تغییر وضعیت:',
 	'code-batch-tags' => 'تغییر برچسب‌ها:',
+	'codereview-batch-title' => 'تغییر تمام بازبینی‌های انتخاب شده',
 	'codereview-batch-submit' => 'ارسال',
 	'code-releasenotes' => 'نکات انتشار',
 	'code-release-legend' => 'ایجاد نکات انتشار',
@@ -3317,6 +3325,8 @@ Comentario:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: seguimento de cambios',
 	'codereview-email-body2' => 'O usuario "$1" fixo un seguimento dos cambios feitos na versión $2.
+
+URL da versión seguida: $5
 
 Enderezo URL: $3
 
@@ -4241,11 +4251,13 @@ Commento:
 
 $4',
 	'codereview-email-subj2' => '[$1] [v$2]: Modificationes subsequente',
-	'codereview-email-body2' => 'Le usator "$1" faceva un modification subsequente al v$2.
+	'codereview-email-body2' => 'Le usator "$1" faceva cambios subsequente a $2.
+
+URL complete del version subsequente: $5
 
 URL complete: $3
 
-Summario del modification:
+Summario del commit:
 
 $4',
 	'code-stats' => 'statisticas',
@@ -4388,9 +4400,11 @@ Komentar:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]:Menindaklanjuti perubahan',
-	'codereview-email-body2' => 'Pengguna "$1" menindak lanjuti perubahan ke $2.
+	'codereview-email-body2' => 'Pengguna "$1" membbuat perubahan lanjutan terhadap $2.
 
-URL lengkap: $3
+URL penuh untuk revisi lanjutan: $5
+
+URL penuh: $3
 
 Ringkasan:
 
@@ -4715,11 +4729,13 @@ $messages['ja'] = array(
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: 追補の変更',
-	'codereview-email-body2' => '利用者 $1 が $2 に追補の変更を加えました。
+	'codereview-email-body2' => '利用者$1が$2に追補の変更を加えました。
 
-フルURL: $3
+追補版の全URL：$5
 
-コミットの要約:
+全URL：$3
+
+コミットの要約：
 
 $4',
 	'code-stats' => '統計',
@@ -5408,6 +5424,8 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Ännerungen doropshinn',
 	'codereview-email-body2' => 'De Benotzer "$1" huet Ännerungen zu der Versioun $2 gemaach.
 
+Komplett URL vun der Ännerung: $5
+
 Komplett URL: $3
 
 Resumé vun der Ännerung:
@@ -5843,6 +5861,8 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: പിന്തുടർച്ചാ മാറ്റങ്ങൾ',
 	'codereview-email-body2' => 'ഉപയോക്താവ് "$1" $2 എന്നതിനു പിന്തുടർച്ചാ മാറ്റങ്ങൾ നടത്തിയിരിക്കുന്നു.
 
+പിന്തുടർച്ചാ നാൾപ്പതിപ്പിന്റെ പൂർണ്ണ യൂ.ആർ.എൽ.: $5
+
 പൂർണ്ണ യു.ആർ.എൽ.: $3
 
 ചുരുക്കം അംഗീകരിക്കുക:
@@ -6266,6 +6286,8 @@ Opmerking:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: wijzigingen met correcties',
 	'codereview-email-body2' => 'Gebruiker "$1" heeft wijzigingen met correcties voor $2 gemaakt.
+
+Volledige URL naar de gecorrigeerde versie: $5
 
 Volledige URL: $3
 
@@ -6986,6 +7008,8 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Cangiament suplementar',
 	'codereview-email-body2' => 'L\'utent "$1" a l\'ha fàit dij cangiament suplementar a $2.
 
+Adrëssa dl\'aragnà completa apress la revision: $5
+
 Adrëssa dl\'aragnà completa: $3
 
 Resumé dël coment:
@@ -7179,6 +7203,8 @@ Comentário:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Mudanças de seguimento',
 	'codereview-email-body2' => 'O utilizador "$1" fez alterações de seguimento à $2.
+
+URL completa para a revisão de seguimento: $5
 
 URL completa: $3
 
@@ -7615,11 +7641,13 @@ $messages['ru'] = array(
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Последующие изменения',
-	'codereview-email-body2' => 'Пользователь «$1» внёс изменения в r$2.
+	'codereview-email-body2' => 'Пользователь «$1» внёс изменения, относящиеся к $2.
 
-Полный  URL: $3
+Полный URL для предыдущей версии: $5
 
-Описание изменения:
+Полный URL: $3
+
+Описание изменений:
 
 $4',
 	'code-stats' => 'статистика',

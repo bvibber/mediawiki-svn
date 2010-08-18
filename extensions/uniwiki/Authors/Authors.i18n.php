@@ -215,9 +215,12 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'authors-desc' => 'Apond una lista ux contributors dens les pâges.',
 	'authors_authors' => 'Ôtors',
+	'authors_anonymous' => 'Anonimo',
 );
 
 /** Irish (Gaeilge)

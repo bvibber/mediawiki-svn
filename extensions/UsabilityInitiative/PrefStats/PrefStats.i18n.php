@@ -400,6 +400,7 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
  */
 $messages['ckb'] = array(
 	'prefstats-xaxis' => 'درێژە (کاتژمێر)',
+	'prefstats-factors' => 'دیتن ھەر: $1',
 	'prefstats-factor-hour' => 'کاتژمێر',
 	'prefstats-factor-sixhours' => 'شەش کاتژمێر',
 	'prefstats-factor-day' => 'ڕۆژ',
@@ -805,6 +806,8 @@ Konfiguratu $wgPrefStatsTrackPrefs hobespenak jarraitzeko.',
 $messages['fa'] = array(
 	'prefstats' => 'آمار ترجیحات',
 	'prefstats-title' => 'آمار ترجیحات',
+	'prefstats-noprefs' => '‏‫در حال حال حاضر ترجیحات ردگیری نمی‌شوند.
+$wgPrefStatsTrackPrefs را تنظیم کنید تا ترجیحات ردگیری شوند.',
 	'prefstats-xaxis' => 'مدت زمان (ساعت)',
 	'prefstats-factors' => 'نمایش برای هر: $1',
 	'prefstats-factor-hour' => 'ساعت',

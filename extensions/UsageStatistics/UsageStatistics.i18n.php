@@ -858,11 +858,23 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'specialuserstats' => 'Statistiques d’usâjo',
+	'usagestatistics' => 'Statistiques d’usâjo',
+	'usagestatistics-desc' => 'Montre les statistiques d’usâjo per utilisator et por l’ensemblo du vouiqui.',
+	'usagestatisticsfor' => '<h2>Statistiques d’usâjo por [[User:$1|$1]]</h2>',
+	'usagestatisticsforallusers' => '<h2>Statistiques d’usâjo por tôs los utilisators</h2>',
 	'usagestatisticsinterval' => 'Entèrvalo :',
+	'usagestatisticsnamespace' => 'Èspâço de noms :',
+	'usagestatisticsexcluderedirects' => 'Èxcllure les redirèccions',
+	'usagestatistics-namespace' => 'Cetes statistiques sont sur l’èspâço de noms [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => 'Les [[Special:ListRedirects|redirèccions]] sont pas prêses en compto.',
 	'usagestatisticstype' => 'Tipo :',
 	'usagestatisticsstart' => 'Dâta de comencement :',
 	'usagestatisticsend' => 'Dâta de fin :',
 	'usagestatisticssubmit' => 'Fâre les statistiques',
+	'usagestatisticsnostart' => 'Volyéd spècefiar una dâta de comencement',
+	'usagestatisticsnoend' => 'Volyéd spècefiar una dâta de fin',
+	'usagestatisticsbadstartend' => '<b>Crouyo format de dâta de <i>comencement</i> ou ben de <i>fin</i> !</b>',
 	'usagestatisticsintervalday' => 'Jorn',
 	'usagestatisticsintervalweek' => 'Semana',
 	'usagestatisticsintervalmonth' => 'Mês',
@@ -870,6 +882,10 @@ $messages['frp'] = array(
 	'usagestatisticsincremental-text' => 'encrèmentâles',
 	'usagestatisticscumulative' => 'Cumulatif',
 	'usagestatisticscumulative-text' => 'cumulatives',
+	'usagestatisticscalselect' => 'Chouèsir',
+	'usagestatistics-editindividual' => 'Statistiques $1 des changements per utilisator',
+	'usagestatistics-editpages' => 'Statistiques $1 de les pâges per utilisator',
+	'right-viewsystemstats' => 'Vêre les [[Special:UserStats|statistiques d’usâjo du vouiqui]]',
 );
 
 /** Irish (Gaeilge)
@@ -2093,6 +2109,7 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -2120,7 +2137,7 @@ $messages['sr-ec'] = array(
 	'usagestatisticscumulative-text' => 'кумулативно',
 	'usagestatisticscalselect' => 'Изабери',
 	'usagestatistics-editindividual' => 'Статистике измена појединачног корисника $1',
-	'usagestatistics-editpages' => 'Статистике страна индивидуалних корисника $1',
+	'usagestatistics-editpages' => 'Статистике страница индивидуалних корисника $1',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

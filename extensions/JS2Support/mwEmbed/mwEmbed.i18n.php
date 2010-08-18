@@ -424,6 +424,7 @@ $messages['ksh'] = array(
  */
 $messages['lb'] = array(
 	'mwe-loading_txt' => 'lueden ...',
+	'mwe-error_load_lib' => 'Feeler: JavaScript $1 konnt net ofgeruf ginn oder definéiert $2 net',
 	'mwe-apiproxy-setup' => 'API-Proxy astellen',
 	'mwe-load-drag-item' => 'Den agebonnen Objet gëtt gelueden',
 	'mwe-ok' => 'OK',

@@ -147,8 +147,11 @@ $messages['ca'] = array(
 
 /** Sorani (کوردی)
  * @author Asoxor
+ * @author Marmzok
  */
 $messages['ckb'] = array(
+	'usabilityinitiative' => 'پێشھەنگاویی تواناکان',
+	'usabilityinitiative-desc' => 'ئەو تایبەتمەندییانەی لەلایەن پێشھەنگاویی تواناکانی ویکیپیدیاوە پێکھێنراوە بۆ پێشخستنی تواناکانی مێدیاویکی',
 	'prefs-beta' => 'کەرەسەکانی بیتا',
 	'prefs-labs' => 'کەرەسەکانی تاقیگەکان',
 );

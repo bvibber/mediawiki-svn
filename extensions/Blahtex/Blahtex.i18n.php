@@ -1136,7 +1136,8 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'math_noblahtex' => 'Pôt pas ègzécutar blahtex, que devrêt étre a $1.',
-	'math_AmbiguousInfix' => 'La posicion de « $1 » est pas cllâra (apondre des balises de ples « { ... } » la pôt rendre ples cllâra).',
+	'math_AmbiguousInfix' => 'La posicion de « $1 » est pas cllâra.
+Tâchiéd d’apondre des balises de ples « { ... } » por la rendre ples cllâra.',
 	'math_CannotChangeDirectory' => 'Pôt pas changiér de dossiér de travâly.',
 	'math_CannotCreateTexFile' => 'Pôt pas fâre un fichiér TeX.',
 	'math_CannotRunDvipng' => 'Pôt pas ègzécutar dvipng.',

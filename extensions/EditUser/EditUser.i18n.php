@@ -1296,15 +1296,18 @@ $messages['tr'] = array(
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
+	'edituser-desc' => 'Сайланган кулланучыларга башка кулланучылар битен үзгәртергә мөмкинчелек бирә',
 	'edituser' => 'Катнашучыны үзгәртү',
-	'edituser-username' => 'Исем',
+	'edituser-username' => 'Кулланучы исеме:',
 	'edituser-dosearch' => 'Эзләү',
-	'edituser-nouser' => 'Әлеге катнашучы теркәлмәгән.',
-	'edituser-exempt' => 'Әлеге катнашучы төзәтелә алмый',
+	'edituser-nouser' => 'Кулланучы «$1» әлегә  теркәлмәгән.',
+	'edituser-exempt' => 'Кулланучы  «$1» бите төзәтелә алмый',
 	'right-edituser' => 'Башка катнашучылар көйләүләрен төзәтү',
+	'right-edituser-exempt' => 'башкалар бу кулланучының көйләнмәләрен төзәтә алмый',
 );
 
 /** Urdu (اردو)

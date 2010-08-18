@@ -365,11 +365,12 @@ $messages['bs'] = array(
  * @author Jordi Roqué
  * @author SMP
  * @author Solde
+ * @author Toniher
  */
 $messages['ca'] = array(
 	'datatransfer-desc' => 'Permet importar i exportar les dades que contenen les crides de les plantilles',
-	'viewxml' => 'Veure XML',
-	'dt_viewxml_docu' => "Si us plau, seleccioneu d'entre les següents categories i espais de noms, per a veure-ho en format XML.",
+	'viewxml' => "Visualitza l'XML",
+	'dt_viewxml_docu' => "Seleccioneu d'entre les següents categories i espais de noms per a veure'l en format XML.",
 	'dt_viewxml_categories' => 'Categories',
 	'dt_viewxml_namespaces' => 'Espais de noms',
 	'dt_viewxml_simplifiedformat' => 'Format simplificat',
@@ -382,13 +383,16 @@ $messages['ca'] = array(
 	'dt_xml_title' => 'Títol',
 	'dt_xml_id' => 'ID',
 	'dt_xml_freetext' => 'Text lliure',
-	'importxml' => 'Importa XML',
-	'dt_import_selectfile' => 'Si us plau, seleccioneu el fitxer $1 per a importar:',
+	'importxml' => 'Importa un XML',
+	'dt_import_selectfile' => 'Seleccioneu el fitxer $1 per importar:',
+	'dt_import_encodingtype' => 'Joc de caràcters',
+	'dt_import_summarydesc' => 'Resum de la importació:',
 	'dt_import_editsummary' => 'Importació $1',
 	'dt_import_importing' => "S'està important...",
 	'dt_import_success' => '$1 {{PLURAL:$1|pàgina|pàgines}} es crearan des del fitxer $2.',
-	'importcsv' => 'Importa CSV',
-	'dt_importcsv_badheader' => "Error: la capçalera de la columna $1, '$2', ha de ser o bé '$3', '$4' o del formulari 'template_name[field_name]'",
+	'importcsv' => 'Importa un CSV',
+	'dt_importcsv_badheader' => "Error: la capçalera de la columna $1, '$2', ha de ser o bé '$3', '$4' o bé de la forma 'template_name[field_name]'",
+	'right-datatransferimport' => 'Importa les dades',
 );
 
 /** Czech (Česky)

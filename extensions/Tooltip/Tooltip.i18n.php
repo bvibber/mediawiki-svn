@@ -168,6 +168,13 @@ $messages['fr'] = array(
 	'tooltip-desc' => 'Ajoute une balise <nowiki><tooltip></nowiki> et un parseur <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'tooltip-desc' => 'Apond <nowiki><tooltip></nowiki> et una balisa <nowiki>{{#tooltip:}}</nowiki>.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

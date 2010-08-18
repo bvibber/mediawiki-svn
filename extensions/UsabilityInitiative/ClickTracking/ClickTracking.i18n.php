@@ -201,6 +201,17 @@ $messages['bg'] = array(
 	'ct-update-table' => 'Обновяване на таблицата',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'ct-end-date' => 'Tanggal tuntung (YYYYMMDD)',
+	'ct-change-graph' => 'Ubah grapik',
+	'ct-beginner' => 'Pamula',
+	'ct-anon-users' => 'Pamuruk kada bangaran',
+	'ct-and' => 'wan',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Wikitanvir
@@ -354,6 +365,7 @@ $messages['ckb'] = array(
 	'ct-beginner' => 'دەستپێکەر',
 	'ct-intermediate' => 'نێوەندی',
 	'ct-expert' => 'شارەزا',
+	'ct-anon-users' => 'بەکارھێنەری نەناسراو',
 	'ct-and' => 'و',
 	'ct-update-table' => 'نوێکردنەوەی خشتە',
 );
@@ -866,6 +878,13 @@ $messages['gsw'] = array(
 	'ct-update-table' => 'Tabälle aktualisiere',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'ct-and' => 'as',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotem Liss
@@ -1268,6 +1287,13 @@ $messages['lb'] = array(
 	'ct-update-table' => 'Tabell aktualiséieren',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'ct-and' => 'en',
+);
+
 /** Latvian (Latviešu)
  * @author Papuass
  */
@@ -1340,10 +1366,14 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'ct-expert' => 'तज्ज्ञ',
+	'ct-user-contribs' => ' ↓ सदस्याची एकुण संपादने',
+	'ct-user-span' => ' ↓ कालावधीतील सदस्याची संपादने',
 	'ct-and' => 'आणि',
+	'ct-update-table' => '↓ तक्ता अद्ययावत करा',
 );
 
 /** Malay (Bahasa Melayu)
@@ -1949,11 +1979,16 @@ $messages['su'] = array(
 	'clicktracking' => 'Panglacak klik Inisiatif Kamangpaatan',
 	'ct-event-name' => 'Ngaran acara',
 	'ct-expert-header' => 'Klik "ahli"',
+	'ct-intermediate-header' => 'Klik "menengah"',
+	'ct-beginner-header' => 'Klik "pemula"',
 	'ct-total-header' => 'Jumlah klik',
 	'ct-start-date' => 'Titimangsa Ngamimitian (YYYYMMDD)',
 	'ct-end-date' => 'Titimangsa Anggeusan (YYYYMMDD)',
 	'ct-change-graph' => 'Robah grafik',
+	'ct-beginner' => 'Pemula',
+	'ct-intermediate' => 'Menengah',
 	'ct-expert' => 'Mahér',
+	'ct-date-range' => 'Selang titimangsa',
 	'ct-editing' => 'Keur ngédit:',
 	'ct-anon-users' => 'Pamaké anonim',
 	'ct-user-contribs' => 'Sakabéh kontribusi pamaké',

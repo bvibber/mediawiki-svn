@@ -97,6 +97,13 @@ $messages['bg'] = array(
 	'wikieditor-loading' => 'Зареждане',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'wikieditor-wikitext-tab' => 'NaskahWiki',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -501,6 +508,14 @@ $messages['lb'] = array(
 	'wikieditor-desc' => "Liwwert en erweiderbaren Interface fir d'Ännere vu Wikitext a vill Module mat Fonctiounen",
 	'wikieditor-wikitext-tab' => 'WikiText',
 	'wikieditor-loading' => 'Lueden',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-wikitext-tab' => 'Wikiteks',
+	'wikieditor-loading' => 'Lajendj',
 );
 
 /** Lithuanian (Lietuvių)

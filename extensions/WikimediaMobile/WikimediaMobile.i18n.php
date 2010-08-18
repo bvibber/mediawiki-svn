@@ -285,6 +285,13 @@ $messages['su'] = array(
 	'wikimediamobile-desc' => 'MediaWiki ngadukung fungsi proyék Wikimédia-balawiri nyayang di http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Telugu (తెలుగు)
+ * @author RanjithSutari
+ */
+$messages['te'] = array(
+	'wikimediamobile-desc' => 'మీడియావికీ support functions for the వికీమీడియా-మొబైల్ ప్రాజెక్ట్ http://github.com/hcatlin/wikimedia-mobile యందు hosted',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

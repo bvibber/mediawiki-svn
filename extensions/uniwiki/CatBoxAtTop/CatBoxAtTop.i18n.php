@@ -204,8 +204,10 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'catboxattop-desc' => 'Apond una bouèta de catègorie d’amont a drêta de les pâges.',
 	'catboxattop-categories' => 'Catègories',
 );
 

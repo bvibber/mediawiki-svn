@@ -516,6 +516,37 @@ $messages['bg'] = array(
 	'prefswitch-success-off' => 'Новите функции са изключени.',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'prefswitch-desc' => 'Ijinakan pamuruk maubah aturan kakatujuan',
+	'prefswitch-survey-true' => 'Ya',
+	'prefswitch-survey-false' => 'Kada',
+	'prefswitch-survey-submit-off' => 'Pajahakan muha hanyar',
+	'prefswitch-survey-cancel-off' => 'Kalu Pian handak tarus mamakai muha hanyar ini, Pian hingkat mantuk ka $1.',
+	'prefswitch-survey-submit-feedback' => 'Kirim kitihan mantuk',
+	'prefswitch-survey-cancel-feedback' => 'Kalu Pian kada handak mambariakan kitihan mantuk, Pian hingkat mantuk ka $1.',
+	'prefswitch-survey-question-like' => 'Apa nang Pian katujui pasal muha hanyar ini?',
+	'prefswitch-survey-question-dislike' => 'Apa nang Pian kada katuju pasal muha hanyar ini?',
+	'prefswitch-survey-question-whyoff' => 'Mangapa Pian mamajahakan muha hanyar ini?
+Harap pilih samunyaan nang bujur.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Talalu ngalih gasan digunaakan',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Kada kawa bagawi lawan baik.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Ulun kada katuju tampaian muhanya.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Ulun kada katuju lawan tab hanyar wan tampaiannya.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ulun kada katuju kutak pakakas nang hanyar.',
+	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnya:',
+	'prefswitch-survey-question-res' => 'Barapa ganal ukuran layar Pian?',
+	'prefswitch-title-on' => 'Muha hanyar',
+	'prefswitch-title-off' => 'Pajahakan muha hanyar',
+	'prefswitch-title-switched-off' => 'Tarima kasih',
+	'prefswitch-title-feedback' => 'Kitihan mantuk',
+	'prefswitch-success-off' => 'Muha hanyar wayahini sudah dipajahakan. Tarima kasih sudah manarai muha hanyar. Pian hingkat manggunakannya pulang lawan manikin tautan "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" di atas tungkaran.',
+	'prefswitch-success-feedback' => 'Kitihan mantuk Pian sudah takirim.',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Wikitanvir
@@ -868,6 +899,9 @@ Per ajudar-nos a millorar-les, si us plau ompliu el formulari opcional d'aquí s
  * @author Marmzok
  */
 $messages['ckb'] = array(
+	'prefswitch' => 'سویچی ھەڵبژاردەکانی پێشھەنگاویی تواناکان',
+	'prefswitch-desc' => 'ڕێگەدان بە بەکارھێنەران بۆ گۆڕانی بەکۆمەڵی ھەڵبژاردەکان',
+	'prefswitch-jswarning' => 'لەیادت بێ، کاتێ بەرگت گۆڕی، پێویستە [[User:$1/$2.js|$2 جاڤاسکریپتەکات]] کۆپی بکرێ بۆ [[{{ns:user}}:$1/vector.js]] <!-- یا [[{{ns:user}}:$1/common.js]]--> بۆ ئەوەی درێژە بدات بە کارکردن.',
 	'prefswitch-survey-true' => 'بەڵێ',
 	'prefswitch-survey-false' => 'نا',
 	'prefswitch-survey-submit-off' => 'لەکارخستنی تایبەتمەندییە نوێکان',
@@ -896,7 +930,11 @@ $messages['ckb'] = array(
 	'prefswitch-title-off' => 'لەکارخستنی تایبەتمەندییە نوێکان',
 	'prefswitch-title-switched-off' => 'سوپاس',
 	'prefswitch-title-feedback' => 'پێڕاگەیاندنەوە',
+	'prefswitch-success-on' => 'ئێستا تایبەتمەندییە نوێکان چالاککراون. ھیوادارین لە بەکارھێنانیان سوودوەربگرن. ھەرکاتێ ویستتان دەتوانن بە کرتەکردنە سەر بەستەری "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]"، لەلای سەرەوەی پەڕەکە، بگەڕێنەوە بۆ شێوەی پێشوو.',
+	'prefswitch-success-off' => 'ئێستا تایبەتمەندییە نوێکان ناچالاککراون. سوپاستان دەکەین بۆ بەکارھێنانیان. ھەرکاتێ ویستتان دەتوانن بە کرتەکردنە سەر بەستەری "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]"، لەلای سەرەوەی پەڕەکە، بگەڕێنەوە بۆ شێوەی پێشوو.',
 	'prefswitch-success-feedback' => 'پەیامەکەت ناردرا.',
+	'prefswitch-return' => '<hr style="clear:both">
+بگەڕێوە بۆ <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-logged-changes' => "* ئێستا '''تابی {{int:watch}}''' ئەستێرەیەکە.
 * ئێستا '''تابی {{int:move}}''' بۆخوارەکراوەیەکە لەپاڵ شریتی گەڕان.",
 	'prefswitch-main-feedback' => '===پێڕاگەیاندنەوە؟===
@@ -909,6 +947,8 @@ $messages['ckb'] = array(
 [$1 بۆ خستنەکاری تایبەتمەندییەنوێکان کردتە بکە سەر ئێرە].',
 	'prefswitch-survey-intro-feedback' => 'پێمان خۆشە لە ئێوە ببیسین.<br />
 تکایە پێش کرتە کردنە سەر "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"، ئەو ھەڵسەنگاندنە دڵخوازانەی خوارەوە پڕکەنەوە.',
+	'prefswitch-survey-intro-off' => 'سوپاس بۆ تاقیکردنەوەی تایبەتمەندییە نوێکانمان.
+بۆ یارمەتیدانی باشترکردن، تکایە لەخوارەوە ھەڵسەنگاندنێکی دڵخواز بکە پێش ئەوەی کرتە بکەیتە سەر "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Czech (Česky)
@@ -2016,6 +2056,8 @@ Hobetzen laguntzeko, bete aukerako inkesta "[[#prefswitch-survey-submit-off|{{in
  * @author Wayiran
  */
 $messages['fa'] = array(
+	'prefswitch-desc' => 'به کاربران اجازهٔ تعویض مجموعه‌ای ترجیحات را بده',
+	'prefswitch-csswarning' => '[[User:$1/$2.css|تنظیمات $2 شخصی]] شما دیگر قابل استفاده نیست.شما می‌توانید تنظیمات شخصی خودتان را در پوسته وکتور در [[{{ns:user}}:$1/vector.css|این صفحه]] وارد کنید.',
 	'prefswitch-survey-true' => 'بله',
 	'prefswitch-survey-false' => 'خیر',
 	'prefswitch-survey-submit-off' => 'غیرفعال کردن ویژگی های جدید',
@@ -2079,15 +2121,19 @@ $messages['fa'] = array(
 * '''بهبود موتو جستجو:'''ما ابزار پیشنهاد برای جستجوهای شما را بهبود داده‌ایم.
 * '''امکانات دیگر:''' ما یک ابزار برای افزودن جداول نیز ایجاد کرده‌ایم.
 * '''لوگوی بنیاد:'''ما نماد بنیاد را نیز بروز کرده‌ایم برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.",
+	'prefswitch-main-logged-changes' => "* '''برگه {{int:watch}}''' اکنون یک ستاره است.
+* '''برگه {{int:move}}''' یک منوی کشویی در کنار دیگر برگه‌هاست.",
 	'prefswitch-main-feedback' => '===بازخورد؟===
 ما خوشحال می‌شویم نظر شما را بشنویم. لطفا در [[$1|صفحهٔ بازخورد]] نظرتان را بیان کنید یا اگر علاقه‌مندید تا ابزار را بهبود ببخشید لطفاً در [http://usability.wikimedia.org ویکی استفاده‌پذیری] بیان کنید.',
+	'prefswitch-main-anon' => '===مرا باز گردان===
+[$1 اینجا را کلیک کنید تا ویژگی‌های جدید را غیرفعال کنید].از شما خواسته خواهد شد که ابتدا یا وارد شوید یا حسابی بسازید.',
 	'prefswitch-main-on' => '===من را بازگردان !===
 [$2 در این جا کلیک کنید تا ویژگی های جدید را برگردانید].',
 	'prefswitch-main-off' => '===امتحانشان کنید!===
 [برای فعال کردن ویژگی‌های جدید اینجا را کلیک کنید $1].',
 	'prefswitch-survey-intro-off' => 'به خاطر امتحان کردن ویژگی های جدید سیستم ما از شما تشکر می کنیم
 برای کمک به ما در جهت بهبود‌سازی آن‌ها, لطفا قبل از کلیک روی  "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" نظر سنجی اختیاری زیر را پر کنید .',
-	'prefswitch-feedbackpage' => 'پروژه:بازخورد تجربهٔ کاربر',
+	'prefswitch-feedbackpage' => 'Project:بازخورد تجربه کاربر',
 );
 
 /** Finnish (Suomi)
@@ -3889,6 +3935,7 @@ $messages['mr'] = array(
 	'prefswitch-survey-answer-whyoff-didntwork' => '↓ नविन चेहरामोहरा चांगल्या तर्‍हेने काम करीत नाही.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '↓ विचार केला होता तसे ते बदल काम करीत नाही.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => '↓ मला ते ज्या तर्‍हेने प्रदर्शित झालेत ते आवडले नाही',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => ' मला नविन कळी व ठेवण्या आवडल्या नाहीत',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => '↓ मला नविन उपकरणगट आवडला नाही',
 	'prefswitch-survey-answer-whyoff-other' => '↓ इतर कारणे:',
 	'prefswitch-survey-question-os' => '↓ आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',

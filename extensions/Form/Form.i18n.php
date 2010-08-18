@@ -555,7 +555,7 @@ $messages['gl'] = array(
 	'formsave' => 'Gardar',
 	'formindexmismatch-title' => 'O nome do patrón e o modelo son incompatibles',
 	'formindexmismatch' => 'Este formulario ten nomes de patróns e modelos que non coinciden, comezando por $1.',
-	'formarticleexists' => 'A páxina Existe',
+	'formarticleexists' => 'A páxina existe',
 	'formarticleexiststext' => 'A páxina [[$1]] xa existe.',
 	'formbadpagename' => 'Nome de Páxina incorrecto',
 	'formbadrecaptcha' => 'Valores incorrectos na reCaptcha. Inténteo de novo.',
@@ -1387,6 +1387,7 @@ $messages['so'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1395,7 +1396,7 @@ $messages['sr-ec'] = array(
 	'formbadname' => 'Лоше име форме',
 	'formtitlepattern' => 'Додати нову $1',
 	'formsave' => 'Сачувај',
-	'formarticleexists' => 'Страна постоји',
+	'formarticleexists' => 'Страница постоји',
 	'formarticleexiststext' => 'Страна [[$1]] већ постоји.',
 	'formbadpagename' => 'Лоше име стране',
 	'formsavesummary' => 'Нова страна користи [[Special:Form/$1|страну $1]]',

@@ -79,6 +79,14 @@ $messages['bg'] = array(
 	'vector-simplesearch-search' => 'Търсене',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
+ */
+$messages['bjn'] = array(
+	'vector-simplesearch-search' => 'Gagai',
+	'vector-simplesearch-containing' => 'isian ...',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

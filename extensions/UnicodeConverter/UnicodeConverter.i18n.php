@@ -285,8 +285,10 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'unicodeconverter' => 'Convèrtissor Unicode',
 	'unicodeconverter-ok' => 'D’acôrd',
 	'unicodeconverter-oldtext' => 'Tèxto d’origina :',
+	'unicodeconverter-newtext' => 'Tèxto convèrti :',
 );
 
 /** Galician (Galego)
@@ -831,7 +833,10 @@ $messages['tr'] = array(
  */
 $messages['tt-cyrl'] = array(
 	'unicodeconverter' => 'Unicode конвертеры',
+	'unicodeconverter-desc' => 'Мәсәлән, [[Special:UnicodeConverter| UTF-8 кодировкасындагы]]  текст, ISO 8859-1 кодировка битендә эшләүгә яраклы HTML-биткә әйләнә.',
 	'unicodeconverter-ok' => 'ОК',
+	'unicodeconverter-oldtext' => 'Башлангыч текст:',
+	'unicodeconverter-newtext' => 'Үзгәртелгән текст:',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

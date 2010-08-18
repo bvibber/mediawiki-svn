@@ -231,6 +231,16 @@ $messages['fr'] = array(
 	'formatchanges-editedby' => '$1 - modifié par $2 ($3)',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'formatchanges-desc' => 'Tôrne formatar los [[Special:RecentChanges|dèrriérs changements]].',
+	'formatchanges-anonymous' => 'Anonimo',
+	'formatchanges-createdby' => '$1 - fêt per $2 ($3)',
+	'formatchanges-editedby' => '$1 - changiê per $2 ($3)',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

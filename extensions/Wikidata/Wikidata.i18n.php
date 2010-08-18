@@ -6528,6 +6528,8 @@ $messages['id'] = array(
 	'ow_importtsv_import_failed' => 'Gagal mengimpor',
 	'ow_importtsv_file' => 'Berkas TSV:',
 	'ow_importtsv_test_run' => 'Jalannya uji:',
+	'ow_importtsv_not_utf8' => '<p>Ini tidak terlihat seperti berkas terkodekan UTF-8. Berkas <i>harus</i> dikodekan UTF-8.
+Pastikan aplikasi Anda telah menyimpan atau mengekspor berkas dengan benar.</p>',
 	'ow_importtsv_not_tsv' => '<p>Tampaknya ini bukan berkas TSV yang benar.</p>',
 	'ow_importtsv_bad_columns' => "<p>Nama kolom '$1' salah.<br />
 Kolom harus dinamai 'definition_iso' atau 'translations_iso',
@@ -6608,6 +6610,7 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_ExpressionMeanings' => 'Arti ekspresi',
 	'ow_Expressions' => 'Ekspresi',
 	'ow_IdenticalMeaning' => 'Arti sama?',
+	'ow_IncomingRelations' => 'Hubungan tak diduga',
 	'ow_GotoSource' => 'Pergi ke sumber',
 	'ow_Language' => 'Bahasa',
 	'ow_LevelAnnotation' => 'Anotasi',
@@ -6659,6 +6662,8 @@ Data Anda berhasil disalin.
 Jangan lupa cek kembali untuk memastikan!',
 	'ow_copy_unsuccessful' => '<h3>Penyalinan gagal</h3>
 Tidak ada penyalinan yang dilakukan.',
+	'ow_no_action_specified' => '<h3>Tidak ada tindakan</h3>
+Mungkin Anda membuka halaman ini secara tidak sengaja. Anda tidak seharusnya berada di sini.',
 	'ow_history_transaction' => 'Transaksi:',
 	'ow_history_show_life_span' => 'Tampilkan rentang hidup catatan:',
 	'ow_class_attr_type_xlate' => 'Teks yang bisa diterjemahkan',
@@ -13999,6 +14004,8 @@ $messages['uk'] = array(
 	'importlangnames' => 'Вікідані: імпорт назв мов',
 	'importlangnames_title' => 'Імпорт назв мов',
 	'importlangnames_not_allowed' => 'У вас нема дозволу імпортувати назви мов.',
+	'importlangnames_added' => 'Назви мов для "$1" додано.',
+	'importlangnames_not_found' => '<strong>Мовних записів для "$1" не знайдено!</strong>',
 	'datasearch' => 'Вікідані: Пошук даних',
 	'datasearch_language' => 'Мова:',
 	'datasearch_found_word' => 'Знайдене слово',

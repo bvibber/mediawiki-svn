@@ -524,6 +524,13 @@ $messages['tr'] = array(
 	'wikieditor-highlight-preference' => 'Değişiklik esnasında söz diziminin vurgulanmasını etkinleştir',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-highlight-preference' => 'үзгәртү вакытында синтаксис билгеләүне яктыртырга',
+);
+
 /** Ukrainian (Українська)
  * @author Prima klasy4na
  */
