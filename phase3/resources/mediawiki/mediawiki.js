@@ -325,6 +325,7 @@ window.mediaWiki = new ( function( $ ) {
 				}
 			} catch ( e ) {
 				mediaWiki.log( 'Exception thrown by ' + module + ': ' + e.message );
+				mediaWiki.log( e );
 				registry[module].state = 'error';				
 				// Run error callbacks of jobs affected by this condition
 				for ( var j = 0; j < jobs.length; j++ ) {
