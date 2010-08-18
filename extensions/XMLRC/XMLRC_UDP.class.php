@@ -4,7 +4,17 @@ if (!defined('MEDIAWIKI')) {
 	exit(1);
 }
 
+/**
+** Implementation if XMLRC_Transport that sends messages via UDP.
+**/
 class XMLRC_UDP extends XMLRC_Transport {
+
+  /**
+  ** Creates a new instance of XMLRC_UDP. $config['address'] and $config['port'] determine
+  ** where to send the UDP packets to.
+  **
+  ** @param array $config the configuration array.
+  **/
   function __construct( $config ) {
     $this->socket = null;
 
@@ -12,6 +22,9 @@ class XMLRC_UDP extends XMLRC_Transport {
     $this->port = isset( $config['port'] ) ? $config['port'] : 4455;
   }
 
+  /**
+  ** Opens a UDP socket for sending data.
+  **/
   public function connect() {
     if ( $this->socket ) return;
 
@@ -20,6 +33,9 @@ class XMLRC_UDP extends XMLRC_Transport {
     else wfDebugLog("XMLRC", "created UDP socket\n");
   }
 
+  /**
+  ** Closes the underlying UDP socket.
+  **/
   public function disconnect() {
     if ( !$this->socket ) return;
 
@@ -28,6 +44,10 @@ class XMLRC_UDP extends XMLRC_Transport {
     wfDebugLog("XMLRC", "closed UDP socket\n");
   }
 
+  /**
+  ** Sends $xml via the underlying socket, to the address specified in the constructor by 
+  ** $config['address'] and $config['port']. The socket is automatically opened if necessary.
+  **/
   public function send( $xml ) {
     $do_disconnect = !$this->socket;
     $this->connect();

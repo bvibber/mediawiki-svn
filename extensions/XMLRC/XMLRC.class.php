@@ -4,6 +4,9 @@ if (!defined('MEDIAWIKI')) {
 	exit(1);
 }
 
+/**
+** Class for handling the RecentChange_save hook. This is the core of XMLRC.
+**/
 class XMLRC {
   var $main;
   var $query;
@@ -12,11 +15,32 @@ class XMLRC {
   var $filter;
   var $props;
 
+  /**
+  ** Creates a new instance of XMLRC.
+  **
+  ** @param array $transportConfig associative array containing the config/spec for the transport class
+  **              to use for sending notifications. The key 'class' in this array must refer to a class
+  **              that extends XMLRC_Transport. Other entries in the array are specific to the individual
+  **              transport implementations. The $transportConfig array will be passed to the transport 
+  **              instance of initialization.
+  **
+  ** @param array $params a list of RecentChange-parameters to include in the XML output. The flags used
+  **              in the list are the once accepted by the API for the rcparams attribute. This value
+  **              may also be given as a string, where the flags are separated by pipe characters ("|").
+  **/
   public function __construct( $transportConfig, $props = null ) {
       $this->transportConfig = $transportConfig;
       $this->props = $props;
   }
 
+  /**
+  ** Static handler for the RecentChange_save hook. Creates a new instance of XMLRC, using the 
+  ** $wgXMLRCTransport and $wgXMLRCProperties configuration variables. Once the instance is 
+  ** created, processRecentChange( $rc ) is called on it.
+  **
+  ** @param object $rc an instance of RecentChange representing an event that just occurred on
+  **               the wiki.
+  **/
   public static function RecentChange_save( $rc ) {
     global $wgXMLRCTransport, $wgXMLRCProperties;
 
@@ -28,11 +52,27 @@ class XMLRC {
     return true; //continue processing normally
   }
 
+  /**
+  ** Effective handler function for the RecentChange_save hook. It creates an XML representation
+  ** of $rc using the method formatRecentChange(), and then passes it to sendRecentChangeXML(),
+  ** so it may be send out.
+  **
+  ** @param object $rc an instance of RecentChange representing an event that just occurred on
+  **               the wiki.
+  **/
   public function processRecentChange( $rc ) {
     $xml = $this->formatRecentChange( $rc );
     $this->sendRecentChangeXML( $xml );
   }
 
+  /**
+  ** Returns the XMLRC_Transport instance for this XMLRC object. The transport is initialized
+  ** lazily using the config array passed to the constructor of XMLRC as $transportConfig: 
+  ** on the first call to this funtion, it creates a transport object of the type specified by
+  ** the 'class' key in the config array, and passes that array to the constructor of that class.
+  **
+  ** @return object An instance of XMLRC_Transport.
+  **/
   private function getTransport() {
 	if ( $this->transport != null ) return $this->transport;
 
@@ -42,6 +82,9 @@ class XMLRC {
 	return $this->transport;
   }
 
+  /**
+  ** Returns an instance of ApiMain.
+  **/
   private function getMainModule() {
 	if ( $this->main != null ) return $this->main;
 
@@ -51,6 +94,9 @@ class XMLRC {
 	return $this->main;
   }
 
+  /**
+  ** Returns an instance of ApiFormatXml.
+  **/
   private function getFormatModule() {
 	if ( $this->format != null ) return $this->format;
 
@@ -60,6 +106,10 @@ class XMLRC {
 	return $this->format;
   }
 
+  /**
+  ** Returns an instance of ApiQueryRecentChanges, configured to return the properties
+  ** specified in the $props argument to the constructor of XMLRC. 
+  **/
   private function getQueryModule() {
 	if ( $this->query != null ) return $this->query;
 
@@ -88,6 +138,9 @@ class XMLRC {
 	return $this->query;
   }
 
+  /**
+  ** Utility function for creating an anonymous object from an associative array.
+  **/
   public static function array2object($data) 
   {
       $obj = new stdClass();
@@ -99,6 +152,15 @@ class XMLRC {
       return $obj;
   }
 
+  /**
+  ** Generates an XML representation from the RecentChange object. It uses the API modules
+  ** returned by getQueryModule() and getFormatModule(), for extracting the appropriate data
+  ** and turning it into XML, respectively.
+  **
+  ** @param object $rc an instance of RecentChange
+  **
+  ** @return string an XML representation of $rc
+  **/
   public function formatRecentChange( $rc ) {
     $query = $this->getQueryModule();
     $format = $this->getFormatModule();
@@ -119,6 +181,11 @@ class XMLRC {
     return $xml;
   }
 
+  /**
+  ** Sends a chunk of XML using the transport object returned by getTransport().
+  **
+  ** @param string $xml the XML to send out
+  **/
   public function sendRecentChangeXML( $xml ) {
     wfDebugLog( "XMLRC", "sending xml\n" );
 
@@ -127,10 +194,15 @@ class XMLRC {
   }
 }
 
-abstract class XMLRC_Filter {
-  abstract function matches( $rc );
-}
-
+/**
+** Abstract base class for transport implementations.
+**/
 abstract class XMLRC_Transport {
+
+  /**
+  ** Implementations of this method shall send $xml somewhere.
+  **
+  ** @param string $xml the XML to send out
+  **/
   abstract function send( $xml );
 }

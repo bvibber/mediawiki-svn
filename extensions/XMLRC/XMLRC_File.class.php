@@ -4,13 +4,25 @@ if (!defined('MEDIAWIKI')) {
 	exit(1);
 }
 
+/**
+** Implementation if XMLRC_Transport that "sends" messages to a file.
+**/
 class XMLRC_File extends XMLRC_Transport {
+
+  /**
+  ** Creates a new instance of XMLRC_File. $config['file'] determines which file to write to.
+  **
+  ** @param array $config the configuration array.
+  **/
   function __construct( $config ) {
     $this->handle = null;
 
     $this->file = $config['file'];
   }
 
+  /**
+  ** Opens the file specified as $config['file'] in the constructur, in 'append' mode.
+  **/
   public function open() {
     if ( $this->handle ) return;
 
@@ -19,6 +31,9 @@ class XMLRC_File extends XMLRC_Transport {
     else wfDebugLog("XMLRC", "opened {$this->file}\n");
   }
 
+  /**
+  ** Closes the underlying file.
+  **/
   public function close() {
     if ( !$this->handle ) return;
 
@@ -28,6 +43,9 @@ class XMLRC_File extends XMLRC_Transport {
     wfDebugLog("XMLRC", "closed {$this->file}\n");
   }
 
+  /**
+  ** Writes $xml to the underlying file. The file is automatically opened if it is not yet o.
+  **/
   public function send( $xml ) {
     $do_close = !$this->handle;
     $this->open();
