@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Assele
  * @author Comp1089
  * @author Haqmar
  * @author Timming
@@ -52,7 +53,7 @@ $messages = array(
 'tog-editsection'             => 'Һәр бүлек өсөн «үҙгәртеү» һылтанмаһын күрһәтергә',
 'tog-editsectiononrightclick' => 'Бүлектәрҙе исемдәренә сысҡан менән сиртеп үҙгәртергә (JavaScript кәрәкле)',
 'tog-showtoc'                 => 'Эстәлек күрһәтелһен (3-тән күп башлығы булған биттәрҙә)',
-'tog-rememberpassword'        => 'Был компьютерҙа иҫәп яҙыуым хәтерленһен',
+'tog-rememberpassword'        => 'Был компьютерҙа (иң күбендә $1 {{PLURAL:$1|көнгә|көнгә}}) иҫәп яҙыуым хәтерләнһен',
 'tog-watchcreations'          => 'Мин төҙөгән биттәрҙе күҙәтеү исемлегенә яҙырға',
 'tog-watchdefault'            => 'Үҙгәрткән биттәрем күҙәтеү исемлегемә өҫтәлһен',
 'tog-watchmoves'              => 'Исемен үҙгәрткән биттәрем күҙәтеү исемлегемә өҫтәлһен',
@@ -1477,7 +1478,6 @@ $1",
 # Watchlist
 'watchlist'         => 'Күҙәтеү исемлеге',
 'mywatchlist'       => 'Күҙәтеү исемлеге',
-'watchlistfor'      => "('''$1''' өсөн)",
 'watchnologin'      => 'Үҙегеҙҙе танытырға кәрәк',
 'addedwatch'        => 'Күҙәтеү исемлегенә өҫтәлде',
 'addedwatchtext'    => "\"[[:\$1]]\" бите [[Special:Watchlist|күҙәтеү исемлегегеҙгә]] өҫтәлде.

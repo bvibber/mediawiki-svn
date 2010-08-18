@@ -324,7 +324,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Lägg till sidor jag raderar i min bevakningslista',
 'tog-previewontop'            => 'Visa förhandsgranskningen ovanför redigeringsrutan',
 'tog-previewonfirst'          => 'Visa förhandsgranskning när redigering påbörjas',
-'tog-nocache'                 => 'Stäng av cachning av sidor',
+'tog-nocache'                 => 'Stäng av cachelagring för sidor',
 'tog-enotifwatchlistpages'    => 'Skicka e-post till mig när en sida på min bevakningslista ändras',
 'tog-enotifusertalkpages'     => 'Skicka e-post till mig när något händer på min diskussionssida',
 'tog-enotifminoredits'        => 'Skicka mig e-post även för mindre ändringar',
@@ -2147,7 +2147,6 @@ Den e-postadress du har angivit i [[Special:Preferences|dina användarinställni
 # Watchlist
 'watchlist'            => 'Bevakningslista',
 'mywatchlist'          => 'Min bevakningslista',
-'watchlistfor'         => "(för '''$1''')",
 'nowatchlist'          => 'Du har inga sidor i din bevakningslista.',
 'watchlistanontext'    => 'Du måste $1 för att se eller redigera din bevakningslista.',
 'watchnologin'         => 'Inte inloggad',

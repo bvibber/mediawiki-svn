@@ -117,7 +117,7 @@ class ParserTest {
 	public function setupRecorder ( $options ) {
 		if ( isset( $options['record'] ) ) {
 			$this->recorder = new DbTestRecorder( $this );
-			$this->recorder->version = isset( $options['setversion'] ) ?	
+			$this->recorder->version = isset( $options['setversion'] ) ?
 					$options['setversion'] : SpecialVersion::getVersion();
 		} elseif ( isset( $options['compare'] ) ) {
 			$this->recorder = new DbTestPreviewer( $this );
@@ -145,6 +145,7 @@ class ParserTest {
 	 * Draw input from a set of test files
 	 */
 	function fuzzTest( $filenames ) {
+		$GLOBALS['wgContLang'] = Language::factory( 'en' );
 		$dict = $this->getFuzzInput( $filenames );
 		$dictSize = strlen( $dict );
 		$logMaxLength = log( $this->maxFuzzTestLength );
@@ -265,6 +266,7 @@ class ParserTest {
 	 * @return Boolean: true if passed all tests, false if any tests failed.
 	 */
 	public function runTestsFromFiles( $filenames ) {
+		$GLOBALS['wgContLang'] = Language::factory( 'en' );
 		$this->recorder->start();
 		$this->setupDatabase();
 		$ok = true;
@@ -333,7 +335,6 @@ class ParserTest {
 		$user = new User();
 		$options = ParserOptions::newFromUser( $user );
 
-		$m = array();
 		if ( isset( $opts['title'] ) ) {
 			$titleText = $opts['title'];
 		}
@@ -347,7 +348,6 @@ class ParserTest {
 		$parser = $this->getParser( $preprocessor );
 		$title = Title::newFromText( $titleText );
 
-		$matches = array();
 		if ( isset( $opts['pst'] ) ) {
 			$out = $parser->preSaveTransform( $input, $title, $user, $options );
 		} elseif ( isset( $opts['msg'] ) ) {
@@ -486,9 +486,6 @@ class ParserTest {
 	 */
 	private function setupGlobals( $opts = '', $config = '' ) {
 		global $wgDBtype;
-		if ( !isset( $this->uploadDir ) ) {
-			$this->uploadDir = $this->setupUploadDir();
-		}
 
 		# Find out values for some special options.
 		$lang =
@@ -597,16 +594,16 @@ class ParserTest {
 	 */
 	private function listTables() {
 		global $wgDBtype;
-		$tables = array( 'user', 'page', 'page_restrictions',
+		$tables = array( 'user', 'user_properties', 'page', 'page_restrictions',
 			'protected_titles', 'revision', 'text', 'pagelinks', 'imagelinks',
 			'categorylinks', 'templatelinks', 'externallinks', 'langlinks', 'iwlinks',
 			'site_stats', 'hitcounter',	'ipblocks', 'image', 'oldimage',
-			'recentchanges', 'watchlist', 'math', 'interwiki',
+			'recentchanges', 'watchlist', 'math', 'interwiki', 'logging',
 			'querycache', 'objectcache', 'job', 'l10n_cache', 'redirect', 'querycachetwo',
 			'archive', 'user_groups', 'page_props', 'category',
 		);
 
-		if ( $wgDBtype === 'mysql' )
+		if ( in_array( $wgDBtype, array( 'mysql', 'sqlite' ) ) )
 			array_push( $tables, 'searchindex' );
 
 		// Allow extensions to add to the list of tables to duplicate;
@@ -656,7 +653,14 @@ class ParserTest {
 			$this->changePrefix( $wgDBtype != 'oracle' ? 'parsertest_' : 'pt_' );
 			$newTableName = $db->tableName( $tbl );
 
-			if ( $db->tableExists( $tbl ) && $wgDBtype != 'postgres' && $wgDBtype != 'oracle' ) {
+			if ( $wgDBtype == 'mysql' ) {
+				$db->query( "DROP TABLE IF EXISTS $newTableName" );
+			} elseif ( in_array( $wgDBtype, array( 'postgres', 'oracle' ) ) ) {
+				/* DROPs wouldn't work due to Foreign Key Constraints (bug 14990, r58669)
+				 * Use "DROP TABLE IF EXISTS $newTableName CASCADE" for postgres? That 
+				 * syntax would also work for mysql.
+				 */
+			} elseif ( $db->tableExists( $tbl ) ) {
 				$db->query( "DROP TABLE $newTableName" );
 			}
 			# Create new table
@@ -704,52 +708,13 @@ class ParserTest {
 
 
 		if ( $wgDBtype == 'oracle' ) {
-			# Insert 0 and 1 user_ids to prevent FK violations
+			# Insert 0 user to prevent FK violations
 
 			# Anonymous user
 			$db->insert( 'user', array(
 				'user_id'         => 0,
 				'user_name'       => 'Anonymous' ) );
-
-			# Hack-on-Hack: Insert a test user to be able to insert an image
-			$db->insert( 'user', array(
-				'user_id'         => 1,
-				'user_name'       => 'Tester' ) );
 		}
-
-		# Hack: Insert an image to work with
-		$db->insert( 'image', array(
-			'img_name'        => 'Foobar.jpg',
-			'img_size'        => 12345,
-			'img_description' => 'Some lame file',
-			'img_user'        => 1,
-			'img_user_text'   => 'WikiSysop',
-			'img_timestamp'   => $db->timestamp( '20010115123500' ),
-			'img_width'       => 1941,
-			'img_height'      => 220,
-			'img_bits'        => 24,
-			'img_media_type'  => MEDIATYPE_BITMAP,
-			'img_major_mime'  => "image",
-			'img_minor_mime'  => "jpeg",
-			'img_metadata'    => serialize( array() ),
-			) );
-
-		# This image will be blacklisted in [[MediaWiki:Bad image list]]
-		$db->insert( 'image', array(
-			'img_name'        => 'Bad.jpg',
-			'img_size'        => 12345,
-			'img_description' => 'zomgnotcensored',
-			'img_user'        => 1,
-			'img_user_text'   => 'WikiSysop',
-			'img_timestamp'   => $db->timestamp( '20010115123500' ),
-			'img_width'       => 320,
-			'img_height'      => 240,
-			'img_bits'        => 24,
-			'img_media_type'  => MEDIATYPE_BITMAP,
-			'img_major_mime'  => "image",
-			'img_minor_mime'  => "jpeg",
-			'img_metadata'    => serialize( array() ),
-			) );
 
 		# Update certain things in site_stats
 		$db->insert( 'site_stats', array( 'ss_row_id' => 1, 'ss_images' => 2, 'ss_good_articles' => 1 ) );
@@ -759,7 +724,36 @@ class ParserTest {
 
 		# Make a new message cache
 		global $wgMessageCache, $wgMemc;
-		$wgMessageCache = new MessageCache( $wgMemc, true, 3600, '' );
+		$wgMessageCache = new MessageCache( $wgMemc, true, 3600 );
+
+		$this->uploadDir = $this->setupUploadDir();
+		$user = User::createNew( 'WikiSysop' );
+		$image = wfLocalFile( Title::makeTitle( NS_FILE, 'Foobar.jpg' ) );
+		$image->recordUpload2( '', 'Upload of some lame file', 'Some lame file', array(
+			'size'        => 12345,
+			'width'       => 1941,
+			'height'      => 220,
+			'bits'        => 24,
+			'media_type'  => MEDIATYPE_BITMAP,
+			'mime'        => 'image/jpeg',
+			'metadata'    => serialize( array() ),
+			'sha1'				=> sha1(''),
+			'fileExists'  => true
+			), $db->timestamp( '20010115123500' ), $user );
+
+		# This image will be blacklisted in [[MediaWiki:Bad image list]]
+		$image = wfLocalFile( Title::makeTitle( NS_FILE, 'Bad.jpg' ) );
+		$image->recordUpload2( '', 'zomgnotcensored', 'Borderline image', array(
+			'size'        => 12345,
+			'width'       => 320,
+			'height'      => 240,
+			'bits'        => 24,
+			'media_type'  => MEDIATYPE_BITMAP,
+			'mime'        => 'image/jpeg',
+			'metadata'    => serialize( array() ),
+			'sha1'				=> sha1(''),
+			'fileExists'  => true
+			), $db->timestamp( '20010115123500' ), $user );
 	}
 
 	/**
@@ -784,6 +778,8 @@ class ParserTest {
 		if ( !$this->databaseSetupDone ) {
 			return;
 		}
+		$this->teardownUploadDir( $this->uploadDir );
+
 		$this->changePrefix( $this->oldTablePrefix );
 		$this->databaseSetupDone = false;
 		if ( $this->useTemporaryTables ) {
@@ -818,14 +814,13 @@ class ParserTest {
 			$dir = wfTempDir() . "/mwParser-" . mt_rand() . "-images";
 		}
 
-		wfDebug( "Creating upload directory $dir\n" );
+		//wfDebug( "Creating upload directory $dir\n" );
 		if ( file_exists( $dir ) ) {
 			wfDebug( "Already exists!\n" );
 			return $dir;
 		}
 		wfMkdirParents( $dir . '/3/3a' );
 		copy( "$IP/skins/monobook/headbg.jpg", "$dir/3/3a/Foobar.jpg" );
-
 		wfMkdirParents( $dir . '/0/09' );
 		copy( "$IP/skins/monobook/headbg.jpg", "$dir/0/09/Bad.jpg" );
 		return $dir;
@@ -840,10 +835,6 @@ class ParserTest {
 		LinkCache::singleton()->clear();
 		foreach ( $this->savedGlobals as $var => $val ) {
 			$GLOBALS[$var] = $val;
-		}
-		if ( isset( $this->uploadDir ) ) {
-			$this->teardownUploadDir( $this->uploadDir );
-			unset( $this->uploadDir );
 		}
 	}
 
@@ -1015,7 +1006,7 @@ class ParserTest {
 		return preg_replace(
 			array( '/^(-.*)$/m', '/^(\+.*)$/m' ),
 			array( $this->term->color( 34 ) . '$1' . $this->term->reset(),
-			       $this->term->color( 31 ) . '$1' . $this->term->reset() ),
+				   $this->term->color( 31 ) . '$1' . $this->term->reset() ),
 			$text );
 	}
 
@@ -1038,7 +1029,6 @@ class ParserTest {
 	 * @param $line Integer: the input line number, for reporting errors
 	 */
 	public function addArticle( $name, $text, $line ) {
-		$this->setupGlobals();
 		$title = Title::newFromText( $name );
 		if ( is_null( $title ) ) {
 			wfDie( "invalid title at line $line\n" );
@@ -1050,10 +1040,7 @@ class ParserTest {
 		}
 
 		$art = new Article( $title );
-		$art->doEdit( $text, '', EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY,
-			false, null, false, false, '', true );
-
-		$this->teardownGlobals();
+		$art->insertNewArticle( $text, '', false, false );
 	}
 
 	/**
@@ -1376,8 +1363,8 @@ class DbTestPreviewer extends TestRecorder  {
 											 array( 'tr_id' => $changedRun ),
 											 __METHOD__ );
 			return "First recorded appearance: "
-			       . date( "d-M-Y H:i:s",  strtotime ( $appear->tr_date ) )
-			       .  ", " . $appear->tr_mw_version;
+				   . date( "d-M-Y H:i:s",  strtotime ( $appear->tr_date ) )
+				   .  ", " . $appear->tr_mw_version;
 		}
 
 		// Otherwise, this test has previous recorded results.
@@ -1582,11 +1569,11 @@ class RemoteTestRecorder extends TestRecorder {
 }
 
 class TestFileIterator implements Iterator {
-    private $file;
-    private $fh;
-    private $parser;
-    private $index = 0;
-    private $test;
+	private $file;
+	private $fh;
+	private $parser;
+	private $index = 0;
+	private $test;
 	private $lineNum;
 	private $eof;
 
@@ -1594,8 +1581,8 @@ class TestFileIterator implements Iterator {
 		global $IP;
 
 		$this->file = $file;
-    	$this->fh = fopen( $this->file, "rt" );
-        if ( !$this->fh ) {
+		$this->fh = fopen( $this->file, "rt" );
+		if ( !$this->fh ) {
 			wfDie( "Couldn't open file '$file'\n" );
 		}
 
@@ -1619,28 +1606,28 @@ class TestFileIterator implements Iterator {
 		$this->next();
 
 		return true;
-    }
+	}
 
-    function current() {
+	function current() {
 		return $this->test;
-    }
+	}
 
-    function key() {
+	function key() {
 		return $this->index;
-    }
+	}
 
-    function next() {
-        if ( $this->readNextTest() ) {
+	function next() {
+		if ( $this->readNextTest() ) {
 			$this->index++;
 			return true;
 		} else {
 			$this->eof = true;
 		}
-    }
+	}
 
-    function valid() {
+	function valid() {
 		return $this->eof != true;
-    }
+	}
 
 	function readNextTest() {
 		$data = array();
@@ -1722,8 +1709,9 @@ class TestFileIterator implements Iterator {
 						$section = null;
 						continue;
 					}
+					global $wgUseTeX;
 					if ( $this->parser &&
-						 preg_match( '/\\bmath\\b/i', $data['options'] ) && !$this->parser->savedGlobals['wgUseTeX'] ) {
+						 preg_match( '/\\bmath\\b/i', $data['options'] ) && !$wgUseTeX ) {
 						# don't run math tests if $wgUseTeX is set to false in LocalSettings
 						$data = array();
 						$section = null;

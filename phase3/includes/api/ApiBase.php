@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 5, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 5, 2006
  *
  * Copyright © 2006, 2010 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 /**
@@ -50,6 +51,7 @@ abstract class ApiBase {
 	const PARAM_MIN = 5; // Lowest value allowed for a parameter. Only applies if TYPE='integer'
 	const PARAM_ALLOW_DUPLICATES = 6; // Boolean, do we allow the same value to be set more than once when ISMULTI=true
 	const PARAM_DEPRECATED = 7; // Boolean, is the parameter deprecated (will show a warning)
+	const PARAM_REQUIRED = 8; // Boolean, is the parameter required?
 
 	const LIMIT_BIG1 = 500; // Fast query, std user limit
 	const LIMIT_BIG2 = 5000; // Fast query, bot/sysop limit
@@ -307,6 +309,12 @@ abstract class ApiBase {
 					$desc = "DEPRECATED! $desc";
 				}
 
+				$required = isset( $paramSettings[self::PARAM_REQUIRED] ) ?
+					$paramSettings[self::PARAM_REQUIRED] : false;
+				if ( $required ) {
+					$desc .= $paramPrefix . "This parameter is required";
+				}
+
 				$type = isset( $paramSettings[self::PARAM_TYPE] ) ? $paramSettings[self::PARAM_TYPE] : null;
 				if ( isset( $type ) ) {
 					if ( isset( $paramSettings[self::PARAM_ISMULTI] ) ) {
@@ -487,7 +495,7 @@ abstract class ApiBase {
 
 			if ( $params ) { // getFinalParams() can return false
 				foreach ( $params as $paramName => $paramSettings ) {
-					$results[$paramName] = $this->getParameterFromSettings( 
+					$results[$paramName] = $this->getParameterFromSettings(
 						$paramName, $paramSettings, $parseLimit );
 				}
 			}
@@ -542,6 +550,7 @@ abstract class ApiBase {
 	 * @returns mixed
 	 */
 	protected function getWatchlistValue ( $watchlist, $titleObj, $userOption = null ) {
+		global $wgUser;
 		switch ( $watchlist ) {
 			case 'watch':
 				return true;
@@ -550,7 +559,6 @@ abstract class ApiBase {
 				return false;
 
 			case 'preferences':
-				global $wgUser;
 				# If the user is already watching, don't bother checking
 				if ( $titleObj->userIsWatching() ) {
 					return null;
@@ -610,12 +618,14 @@ abstract class ApiBase {
 			$type = gettype( $paramSettings );
 			$dupes = false;
 			$deprecated = false;
+			$required = false;
 		} else {
 			$default = isset( $paramSettings[self::PARAM_DFLT] ) ? $paramSettings[self::PARAM_DFLT] : null;
 			$multi = isset( $paramSettings[self::PARAM_ISMULTI] ) ? $paramSettings[self::PARAM_ISMULTI] : false;
 			$type = isset( $paramSettings[self::PARAM_TYPE] ) ? $paramSettings[self::PARAM_TYPE] : null;
 			$dupes = isset( $paramSettings[self::PARAM_ALLOW_DUPLICATES] ) ? $paramSettings[self::PARAM_ALLOW_DUPLICATES] : false;
 			$deprecated = isset( $paramSettings[self::PARAM_DEPRECATED] ) ? $paramSettings[self::PARAM_DEPRECATED] : false;
+			$required = isset( $paramSettings[self::PARAM_REQUIRED] ) ? $paramSettings[self::PARAM_REQUIRED] : false;
 
 			// When type is not given, and no choices, the type is the same as $default
 			if ( !isset( $type ) ) {
@@ -653,7 +663,11 @@ abstract class ApiBase {
 				switch ( $type ) {
 					case 'NULL': // nothing to do
 						break;
-					case 'string': // nothing to do
+					case 'string':
+						if ( $value === '' ) {
+							$this->dieUsageMsg( array( 'missingparam', $paramName ) );
+						}
+
 						break;
 					case 'integer': // Force everything using intval() and optionally validate limits
 
@@ -705,8 +719,8 @@ abstract class ApiBase {
 						break;
 					case 'user':
 						if ( !is_array( $value ) ) {
-                            $value = array( $value );
-                        }
+							$value = array( $value );
+						}
 
 						foreach ( $value as $key => $val ) {
 							$title = Title::makeTitleSafe( NS_USER, $val );
@@ -717,9 +731,9 @@ abstract class ApiBase {
 						}
 
 						if ( !$multi ) {
-                            $value = $value[0];
-                        }
-                        break;
+							$value = $value[0];
+						}
+						break;
 					default:
 						ApiBase::dieDebug( __METHOD__, "Param $encParamName's type is unknown - $type" );
 				}
@@ -734,6 +748,8 @@ abstract class ApiBase {
 			if ( $deprecated && $value !== false ) {
 				$this->setWarning( "The $encParamName parameter has been deprecated." );
 			}
+		} else if ( $required ) {
+			$this->dieUsageMsg( array( 'missingparam', $paramName ) );
 		}
 
 		return $value;
@@ -1110,6 +1126,15 @@ abstract class ApiBase {
 	 */
 	public function getPossibleErrors() {
 		$ret = array();
+
+		$params = $this->getFinalParams();
+		if ( $params ) {
+			foreach ( $params as $paramName => $paramSettings ) {
+				if ( isset( $paramSettings[ApiBase::PARAM_REQUIRED] ) ) {
+					$ret[] = array( 'missingparam', $paramName );
+				}
+			}
+		}
 
 		if ( $this->mustBePosted() ) {
 			$ret[] = array( 'mustbeposted', $this->getModuleName() );

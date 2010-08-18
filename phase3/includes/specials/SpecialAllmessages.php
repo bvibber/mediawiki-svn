@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Allmessages
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
  * Use this special page to get a list of the MediaWiki system messages.
+ *
  * @file
  * @ingroup SpecialPage
  */
@@ -241,7 +246,6 @@ class AllmessagesTablePager extends TablePager {
 				$talkFlags[$s->page_title] = true;
 			}
 		}
-		$dbr->freeResult( $res );
 
 		wfProfileOut( __METHOD__ . '-db' );
 

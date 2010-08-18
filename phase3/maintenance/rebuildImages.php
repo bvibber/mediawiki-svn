@@ -112,7 +112,6 @@ class ImageBuilder extends FiveUpgrade {
 			}
 		}
 		$this->log( "Finished $table... $this->updated of $this->processed rows updated" );
-		$this->dbr->freeResult( $result );
 	}
 
 	function buildImage() {
@@ -172,8 +171,6 @@ class ImageBuilder extends FiveUpgrade {
 	}
 
 	function addMissingImage( $filename, $fullpath ) {
-		$fname = 'ImageBuilder::addMissingImage';
-
 		$timestamp = $this->dbw->timestamp( filemtime( $fullpath ) );
 
 		global $wgContLang;

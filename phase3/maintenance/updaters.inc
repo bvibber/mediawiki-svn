@@ -33,46 +33,14 @@ $wgExtModifiedFields = array(); // table, index, dir
 # Obviously, only use this for updates that occur after the updatelog table was
 # created!
 function update_row_exists( $key ) {
-	$dbr = wfGetDB( DB_SLAVE );
-	$row = $dbr->selectRow(
+	global $wgDatabase;
+	$row = $wgDatabase->selectRow(
 		'updatelog',
 		'1',
 		array( 'ul_key' => $key ),
 		__FUNCTION__
 	);
 	return (bool)$row;
-}
-
-function rename_table( $from, $to, $patch ) {
-	global $wgDatabase;
-	if ( $wgDatabase->tableExists( $from ) ) {
-		if ( $wgDatabase->tableExists( $to ) ) {
-			wfOut( "...can't move table $from to $to, $to already exists.\n" );
-		} else {
-			wfOut( "Moving table $from to $to..." );
-			$wgDatabase->sourceFile( archive( $patch ) );
-			wfOut( "ok\n" );
-		}
-	} else {
-		// Source table does not exist
-		// Renames are done before creations, so this is typical for a new installation
-		// Ignore silently
-	}
-}
-
-function add_table( $name, $patch, $fullpath = false ) {
-	global $wgDatabase;
-	if ( $wgDatabase->tableExists( $name ) ) {
-		wfOut( "...$name table already exists.\n" );
-	} else {
-		wfOut( "Creating $name table..." );
-		if ( $fullpath ) {
-			$wgDatabase->sourceFile( $patch );
-		} else {
-			$wgDatabase->sourceFile( archive( $patch ) );
-		}
-		wfOut( "ok\n" );
-	}
 }
 
 function modify_field( $table, $field, $patch, $fullpath = false ) {
@@ -83,38 +51,6 @@ function modify_field( $table, $field, $patch, $fullpath = false ) {
 		wfOut( "...$field field does not exist in $table table, skipping modify field patch\n" );
 	} else {
 		wfOut( "Modifying $field field of table $table..." );
-		if ( $fullpath ) {
-			$wgDatabase->sourceFile( $patch );
-		} else {
-			$wgDatabase->sourceFile( archive( $patch ) );
-		}
-		wfOut( "ok\n" );
-	}
-}
-
-function add_field( $table, $field, $patch, $fullpath = false ) {
-	global $wgDatabase;
-	if ( !$wgDatabase->tableExists( $table ) ) {
-		wfOut( "...$table table does not exist, skipping new field patch\n" );
-	} elseif ( $wgDatabase->fieldExists( $table, $field ) ) {
-		wfOut( "...have $field field in $table table.\n" );
-	} else {
-		wfOut( "Adding $field field to table $table..." );
-		if ( $fullpath ) {
-			$wgDatabase->sourceFile( $patch );
-		} else {
-			$wgDatabase->sourceFile( archive( $patch ) );
-		}
-		wfOut( "ok\n" );
-	}
-}
-
-function add_index( $table, $index, $patch, $fullpath = false ) {
-	global $wgDatabase;
-	if ( $wgDatabase->indexExists( $table, $index ) ) {
-		wfOut( "...$index key already set on $table table.\n" );
-	} else {
-		wfOut( "Adding $index key to table $table... " );
 		if ( $fullpath ) {
 			$wgDatabase->sourceFile( $patch );
 		} else {
@@ -327,7 +263,6 @@ function check_bin( $table, $field, $patchFile ) {
 	$tableName = $wgDatabase->tableName( $table );
 	$res = $wgDatabase->query( "SELECT $field FROM $tableName LIMIT 0" );
 	$flags = explode( ' ', mysql_field_flags( $res->result, 0 ) );
-	$wgDatabase->freeResult( $res );
 
 	if ( in_array( 'binary', $flags ) ) {
 		wfOut( "...$table table has correct $field encoding.\n" );
@@ -526,44 +461,6 @@ function do_text_id() {
 	}
 }
 
-function do_namespace_size() {
-	$tables = array(
-		'page'          => 'page',
-		'archive'       => 'ar',
-		'recentchanges' => 'rc',
-		'watchlist'     => 'wl',
-		'querycache'    => 'qc',
-		'logging'       => 'log',
-	);
-	foreach ( $tables as $table => $prefix ) {
-		do_namespace_size_on( $table, $prefix );
-		flush();
-	}
-}
-
-function do_namespace_size_on( $table, $prefix ) {
-	global $wgDatabase, $wgDBtype;
-	if ( $wgDBtype != 'mysql' )
-		return;
-	$field = $prefix . '_namespace';
-
-	$tablename = $wgDatabase->tableName( $table );
-	$result = $wgDatabase->query( "SHOW COLUMNS FROM $tablename LIKE '$field'" );
-	$info = $wgDatabase->fetchObject( $result );
-	$wgDatabase->freeResult( $result );
-
-	if ( substr( $info->Type, 0, 3 ) == 'int' ) {
-		wfOut( "...$field is already a full int ($info->Type).\n" );
-	} else {
-		wfOut( "Promoting $field from $info->Type to int... " );
-
-		$sql = "ALTER TABLE $tablename MODIFY $field int NOT NULL";
-		$wgDatabase->query( $sql );
-
-		wfOut( "ok\n" );
-	}
-}
-
 function do_pagelinks_update() {
 	global $wgDatabase;
 	if ( $wgDatabase->tableExists( 'pagelinks' ) ) {
@@ -698,7 +595,6 @@ function do_user_groups_update() {
 				$fname );
 		}
 	}
-	$wgDatabase->freeResult( $result );
 	wfOut( "ok\n" );
 }
 
@@ -793,7 +689,6 @@ function do_templatelinks_update() {
 			);
 
 		}
-		$wgDatabase->freeResult( $res );
 	} else {
 		// Fast update
 		$wgDatabase->insertSelect( 'templatelinks', 'pagelinks',
@@ -897,7 +792,7 @@ function maybe_do_profiling_memory_update() {
 function do_stats_init() {
 	// Sometimes site_stats table is not properly populated.
 	global $wgDatabase;
-	wfOut( "Checking site_stats row..." );
+	wfOut( "\nChecking site_stats row..." );
 	$row = $wgDatabase->selectRow( 'site_stats', '*', array( 'ss_row_id' => 1 ), __METHOD__ );
 	if ( $row === false ) {
 		wfOut( "data is missing! rebuilding...\n" );
@@ -936,27 +831,25 @@ function purge_cache() {
 }
 
 function do_all_updates( $shared = false, $purge = true ) {
-	global $wgSharedDB, $wgSharedTables, $wgDatabase, $wgDBtype;
+	global $wgDatabase, $wgDBtype;
 
-	wfRunHooks( 'LoadExtensionSchemaUpdates' );
+	$updater = DatabaseUpdater::newForDb( $wgDatabase, $shared );
 
-	$doUser = $shared ? $wgSharedDB && in_array( 'user', $wgSharedTables ) : !$wgSharedDB || !in_array( 'user', $wgSharedTables );
+	wfRunHooks( 'LoadExtensionSchemaUpdates', array( &$updater ) );
 
-	if ( $wgDBtype === 'postgres' ) {
-		do_postgres_updates();
-		return;
-	}
+	$updater->doUpdates();
 
-	$up = DatabaseUpdater::newForDb( $wgDatabase );
-	$up->doUpdates();
-
-	wfOut( "Deleting old default messages (this may take a long time!)..." );
 	if ( !defined( 'MW_NO_SETUP' ) ) {
 		define( 'MW_NO_SETUP', true );
 	}
-	require_once 'deleteDefaultMessages.php';
-	DeleteDefaultMessages::reallyExecute();
-	wfOut( "Done\n" );
+
+	foreach( $updater->getPostDatabaseUpdateMaintenance() as $maint ) {
+		call_user_func_array( array( new $maint, 'execute' ), array() );
+	}
+
+	if ( $wgDBtype === 'postgres' ) {
+		return;
+	}
 
 	do_stats_init();
 
@@ -1241,14 +1134,12 @@ END;
 		return null;
 	}
 	if ( !( $r = $wgDatabase->fetchRow( $res ) ) ) {
-		$wgDatabase->freeResult( $res );
 		return null;
 	}
 
 	$indkey = $r[0];
 	$relid = intval( $r[1] );
 	$indkeys = explode( " ", $indkey );
-	$wgDatabase->freeResult( $res );
 
 	$colnames = array();
 	foreach ( $indkeys as $rid ) {
@@ -1263,11 +1154,9 @@ END;
 			return null;
 		}
 		if ( !( $row2 = $wgDatabase->fetchRow( $r2 ) ) ) {
-			$wgDatabase->freeResult( $r2 );
 			return null;
 		}
 		$colnames[] = $row2[0];
-		$wgDatabase->freeResult( $r2 );
 	}
 
 	return $colnames;
@@ -1316,7 +1205,6 @@ END;
 		return null;
 	}
 	$d = $row[0];
-	$wgDatabase->freeResult( $r );
 	return $d;
 }
 
@@ -1326,8 +1214,6 @@ function do_postgres_updates() {
 	# # Gather version numbers in case we need them
 	$version = $wgDatabase->getServerVersion(); # # long string
 	$numver = $wgDatabase->numeric_version; # # X.Y e.g. 8.3
-
-	$wgShowExceptionDetails = 1;
 
 	# Just in case their LocalSettings.php does not have this:
 	if ( !isset( $wgDBmwschema ) ) {
@@ -1383,6 +1269,16 @@ function do_postgres_updates() {
 	$newsequences = array(
 		"logging_log_id_seq",
 		"page_restrictions_pr_id_seq",
+	);
+
+	$renamed_sequences = array(
+		array('ipblocks_ipb_id_val', 'ipblocks_ipb_id_seq'),
+		array('rev_rev_id_val', 'revision_rev_id_seq'),
+		array('text_old_id_val', 'text_old_id_seq'),
+		array('category_id_seq', 'category_cat_id_seq'),
+		array('rc_rc_id_seq', 'recentchanges_rc_id_seq'),
+		array('log_log_id_seq', 'logging_log_id_seq'),
+		array('pr_id_val', 'page_restrictions_pr_id_seq'),
 	);
 
 	$newtables = array(
@@ -1512,13 +1408,14 @@ function do_postgres_updates() {
 	);
 
 	$newindexes = array(
-		array( "archive",       "archive_user_text",  "(ar_user_text)" ),
-		array( "image",         "img_sha1",           "(img_sha1)" ),
-		array( "oldimage",      "oi_sha1",            "(oi_sha1)" ),
-		array( "revision",      "rev_text_id_idx",    "(rev_text_id)" ),
-		array( "recentchanges", "rc_timestamp_bot",   "(rc_timestamp) WHERE rc_bot = 0" ),
-		array( "templatelinks", "templatelinks_from", "(tl_from)" ),
-		array( "watchlist",     "wl_user",            "(wl_user)" ),
+		array( "archive",       "archive_user_text",      "(ar_user_text)" ),
+		array( "image",         "img_sha1",               "(img_sha1)" ),
+		array( "oldimage",      "oi_sha1",                "(oi_sha1)" ),
+		array( "page",          "page_mediawiki_title",   "(page_title) WHERE page_namespace = 8" ),
+		array( "revision",      "rev_text_id_idx",        "(rev_text_id)" ),
+		array( "recentchanges", "rc_timestamp_bot",       "(rc_timestamp) WHERE rc_bot = 0" ),
+		array( "templatelinks", "templatelinks_from",     "(tl_from)" ),
+		array( "watchlist",     "wl_user",                "(wl_user)" ),
 		array( "logging",       "logging_user_type_time", "(log_user, log_type, log_timestamp)" ),
 		array( "logging",       "logging_page_id_time",   "(log_page,log_timestamp)" ),
 		array( "iwlinks",       "iwl_prefix_title_from",  "(iwl_prefix, iwl_title, iwl_from)" ),
@@ -1559,21 +1456,23 @@ function do_postgres_updates() {
 		array( "watchlist",        "wl_user",         "mwuser(user_id) ON DELETE CASCADE" ),
 	);
 
-	# Check new sequences, rename if needed
+	# Create new sequences
 	foreach ( $newsequences as $ns ) {
-		if ( $wgDatabase->sequenceExists( 'pr_id_val' ) ) {
-			wfOut( "Updating sequence names\n" );
-			$wgDatabase->sourceFile( archive( 'patch-update_sequences.sql' ) );
-			continue;
-		} elseif ( $wgDatabase->sequenceExists( 'page_restrictions_pr_id_seq' ) ) {
-			wfOut( "... sequences already updated\n" );
-			continue;
-		} else {
-			wfOut( "Creating sequence \"$ns\"\n" );
+		if ( ! $wgDatabase->sequenceExists( $ns ) ) {
+			wfOut( "Creating sequence $ns\n" );
 			$wgDatabase->query( "CREATE SEQUENCE $ns" );
 		}
 	}
 
+	# Rename sequences
+	foreach ( $renamed_sequences as $ren ) {
+		if ( $wgDatabase->sequenceExists( $ren[0] ) ) {
+			wfOut( "Renaming sequence $ren[0] to $ren[1]\n" );
+			$wgDatabase->query( "ALTER SEQUENCE $ren[0] RENAME TO $ren[1]" );
+		}
+	}
+
+	# Create new tables
 	foreach ( $newtables as $nt ) {
 		if ( $wgDatabase->tableExists( $nt[0] ) ) {
 			wfOut( "... table \"$nt[0]\" already exists\n" );
@@ -1584,7 +1483,7 @@ function do_postgres_updates() {
 		$wgDatabase->sourceFile( archive( $nt[1] ) );
 	}
 
-	# # Needed before newcols
+	# Needed before newcols
 	if ( $wgDatabase->tableExists( "archive2" ) ) {
 		wfOut( "Converting \"archive2\" back to normal archive table\n" );
 		if ( $wgDatabase->ruleExists( "archive", "archive_insert" ) ) {

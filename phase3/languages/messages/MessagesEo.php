@@ -445,7 +445,7 @@ $messages = array(
 'vector-namespace-special'       => 'Speciala paĝo',
 'vector-namespace-talk'          => 'Diskuto',
 'vector-namespace-template'      => 'Ŝablono',
-'vector-namespace-user'          => 'Uzula paĝo',
+'vector-namespace-user'          => 'Uzantopaĝo',
 'vector-simplesearch-preference' => 'Ebligi plibonigitajn serĉajn sugestojn (nur Vektora etoso)',
 'vector-view-create'             => 'Krei',
 'vector-view-edit'               => 'Redakti',
@@ -762,6 +762,15 @@ Bonvolu ĝisatendi antaŭ retrovi.',
 'loginlanguagelabel'         => 'Lingvo: $1',
 'suspicious-userlogout'      => 'Via peto por elsaluti estis malpermesita ĉar verŝajne ĝi estis sendita de trompita retumilo aŭ kaŝiganta proksima servilo.',
 
+# JavaScript password checks
+'password-strength'            => 'Taksita pasvorta forteco: $1',
+'password-strength-bad'        => 'MALBONA',
+'password-strength-mediocre'   => 'mezbona',
+'password-strength-acceptable' => 'akceptinda',
+'password-strength-good'       => 'bona',
+'password-retype'              => 'Retajpu pasvorton',
+'password-retype-mismatch'     => 'Pasvortoj ne estas samaj',
+
 # Password reset dialog
 'resetpass'                 => 'Ŝanĝi pasvorton',
 'resetpass_announce'        => 'Vi ensalutis kun provizora retpoŝtita pasvorto. Por kompleti ensalutadon, vi devas fari novan pasvorton ĉi tien:',
@@ -878,7 +887,7 @@ aŭ [{{fullurl:{{FULLPAGENAME}}|action=edit}} redakti ĉi tiun paĝon]</span>.',
 'noarticletext-nopermission'       => 'Estas neniom da teksto en ĉi tiu paĝo.
 Vi povas [[Special:Search/{{PAGENAME}}|serĉi ĉi tiun paĝan titolon]] en aliaj paĝoj,
 aŭ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} serĉi la rilatajn protokolojn]</span>.',
-'userpage-userdoesnotexist'        => 'Uzula konto "$1" ne estas registrita. Bonvolu konfirmi se vi volas krei/redakti ĉi tiu paĝo.',
+'userpage-userdoesnotexist'        => 'Uzantokonto "$1" ne estas registrita. Bonvolu konfirmi se vi volas krei/redakti ĉi tiun paĝon.',
 'userpage-userdoesnotexist-view'   => 'Uzanto-konto "$1" ne estas registrita.',
 'blocked-notice-logextract'        => 'Ĉi tiu uzanto estas ĉi-momente forbarita.
 La lasta protokolero estas jene montrata por via referenco:',
@@ -895,8 +904,8 @@ La lasta protokolero estas jene montrata por via referenco:',
 'previewconflict'                  => 'La jena antaŭrigardo montras la tekston el la supra tekstujo,
 kiel ĝi aperos se vi elektos konservi la paĝon.',
 'session_fail_preview'             => "'''Ni ne povas procezi vian redakton pro perdo de seancaj datenoj.
-Bonvolu retrovi.
-Se ankoraŭ ne funkcios, trovu [[Special:UserLogout|elsaluti]] kaj reensaluti.'''",
+Bonvolu reprovi.
+Se ankoraŭ ne funkcios, provu [[Special:UserLogout|elsaluti]] kaj reensaluti.'''",
 'session_fail_preview_html'        => "'''Bedaŭrinde, ne povas trakti vian redakton pro manko de seancaj datenoj.'''
 
 ''Ĉar {{SITENAME}} ebligas krudan HTML-kodon, ĉi tiu antaŭrigardo estas kaŝita kiel prevento kontraŭ Javascript-atakoj.''
@@ -1310,6 +1319,7 @@ indekso pro troŝarĝita servilo. Intertempe, vi povas serĉi per <i>guglo</i> a
 'contextlines'                  => 'Montri liniojn el paĝoj po:',
 'contextchars'                  => 'Montri literojn el linioj ĝis po:',
 'stub-threshold'                => 'Ago-sojlo por formatigo de <a href="#" class="stub">ligil-ĝermo (anglalingve: "stub link")</a> (bitikoj):',
+'stub-threshold-disabled'       => 'Malebligita',
 'recentchangesdays'             => 'Tagoj montrendaj en lastaj ŝanĝoj:',
 'recentchangesdays-max'         => '(maksimume $1 {{PLURAL:$1|tago|tagoj}})',
 'recentchangescount'            => 'Nombro de redaktoj por montri defaŭlte:',
@@ -2111,7 +2121,7 @@ La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel
 # Watchlist
 'watchlist'            => 'Atentaro',
 'mywatchlist'          => 'Atentaro',
-'watchlistfor'         => '(por <b>$1</b>)',
+'watchlistfor2'        => 'Por $1 $2',
 'nowatchlist'          => 'Vi ne jam elektis priatenti iun ajn paĝon.',
 'watchlistanontext'    => 'Bonvolu $1 por vidi aŭ redakti erojn en via atentaro.',
 'watchnologin'         => 'Ne ensalutinta',
@@ -2193,7 +2203,7 @@ Por viaj reagoj kaj por obteni plian helpon:
 'actionfailed'           => 'Ago malsukcesis',
 'deletedtext'            => '"<nowiki>$1</nowiki>" estas forigita.
 Vidu la paĝon $2 por registro de lastatempaj forigoj.',
-'deletedarticle'         => 'forigis "$1"',
+'deletedarticle'         => 'forigis "[[$1]]"',
 'suppressedarticle'      => '"[[$1]]" estas subigita',
 'dellogpage'             => 'Protokolo pri forigoj',
 'dellogpagetext'         => 'Jen listo de la plej lastaj forigoj el la datumaro.
@@ -2557,7 +2567,7 @@ Tiujokaze, vi nepre permane kunigu la diskuto-paĝojn se vi tion deziras.",
 'movenotallowed'               => 'Vi ne rajtas movi paĝojn.',
 'movenotallowedfile'           => 'Vi ne havas rajton alinomigi dosierojn.',
 'cant-move-user-page'          => 'Vi ne rajtas movi radikajn uzanto-paĝojn.',
-'cant-move-to-user-page'       => 'Vi ne rajtas movi paĝon al uzula paĝo (krom al uzula subpaĝo).',
+'cant-move-to-user-page'       => 'Vi ne rajtas movi paĝon al uzantopaĝo (krom al uzantosubpaĝo).',
 'newtitle'                     => 'Al nova titolo',
 'move-watch'                   => 'Atenti ĉi tiun paĝon',
 'movepagebtn'                  => 'Alinomigi paĝon',

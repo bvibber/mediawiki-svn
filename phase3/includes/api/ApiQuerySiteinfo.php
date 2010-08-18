@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 25, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 25, 2006
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -262,7 +263,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			if ( $row->iw_local == '1' ) {
 				$val['local'] = '';
 			}
-			//$val['trans'] = intval( $row->iw_trans ); // should this be exposed?
+			// $val['trans'] = intval( $row->iw_trans ); // should this be exposed?
 			if ( isset( $langNames[$row->iw_prefix] ) ) {
 				$val['language'] = $langNames[$row->iw_prefix];
 			}
@@ -322,7 +323,8 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 	}
 
 	protected function appendUserGroups( $property, $numberInGroup ) {
-		global $wgGroupPermissions;
+		global $wgGroupPermissions, $wgAddGroups, $wgRemoveGroups, $wgGroupsAddToSelf, $wgGroupsRemoveFromSelf;
+		
 		$data = array();
 		foreach ( $wgGroupPermissions as $group => $permissions ) {
 			$arr = array(
@@ -332,11 +334,25 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 			if ( $numberInGroup ) {
 				$arr['number'] = SiteStats::numberInGroup( $group );
 			}
-
+			
+			$groupArr = array(
+				'add' => $wgAddGroups,
+				'remove' => $wgRemoveGroups,
+				'add-self' => $wgGroupsAddToSelf,
+				'remove-self' => $wgGroupsRemoveFromSelf
+			);
+			
+			foreach( $groupArr as $type => $rights ) {
+				if( isset( $rights[$group] ) ) {
+					$arr[$type] = $rights[$group];
+					$this->getResult()->setIndexedTagName( $arr[$type], 'group' );
+				}
+			}
+			
 			$this->getResult()->setIndexedTagName( $arr['rights'], 'permission' );
 			$data[] = $arr;
 		}
-
+		
 		$this->getResult()->setIndexedTagName( $data, 'group' );
 		return $this->getResult()->addValue( 'query', $property, $data );
 	}

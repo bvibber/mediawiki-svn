@@ -901,12 +901,12 @@ class PPFrame_DOM implements PPFrame {
 			return $root;
 		}
 
-		if ( ++$this->parser->mPPNodeCount > $this->parser->mOptions->mMaxPPNodeCount )
+		if ( ++$this->parser->mPPNodeCount > $this->parser->mOptions->getMaxPPNodeCount() )
 		{
 			return '<span class="error">Node-count limit exceeded</span>';
 		}
 
-		if ( $expansionDepth > $this->parser->mOptions->mMaxPPExpandDepth ) {
+		if ( $expansionDepth > $this->parser->mOptions->getMaxPPExpandDepth() ) {
 			return '<span class="error">Expansion depth limit exceeded</span>';
 		}
 		wfProfileIn( __METHOD__ );
@@ -1136,7 +1136,9 @@ class PPFrame_DOM implements PPFrame {
 		$first = true;
 		$s = '';
 		foreach ( $args as $root ) {
-			if ( $root instanceof PPNode_DOM ) $root = $root->node;
+			if ( $root instanceof PPNode_DOM ) {
+				$root = $root->node;
+			}
 			if ( !is_array( $root ) && !( $root instanceof DOMNodeList ) ) {
 				$root = array( $root );
 			}
@@ -1160,9 +1162,11 @@ class PPFrame_DOM implements PPFrame {
 		$args = array_slice( func_get_args(), 1 );
 		$out = array();
 		$first = true;
-		if ( $root instanceof PPNode_DOM ) $root = $root->node;
 
 		foreach ( $args as $root ) {
+			if ( $root instanceof PPNode_DOM ) {
+				$root = $root->node;
+			}
 			if ( !is_array( $root ) && !( $root instanceof DOMNodeList ) ) {
 				$root = array( $root );
 			}
@@ -1187,7 +1191,9 @@ class PPFrame_DOM implements PPFrame {
 		$first = true;
 
 		foreach ( $args as $root ) {
-			if ( $root instanceof PPNode_DOM ) $root = $root->node;
+			if ( $root instanceof PPNode_DOM ) {
+				$root = $root->node;
+			}
 			if ( !is_array( $root ) && !( $root instanceof DOMNodeList ) ) {
 				$root = array( $root );
 			}

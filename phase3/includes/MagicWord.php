@@ -1,6 +1,7 @@
 <?php
 /**
  * File for magic words
+ *
  * See docs/magicword.txt
  *
  * @file
@@ -60,6 +61,7 @@ class MagicWord {
 		'numberofarticles',
 		'numberoffiles',
 		'numberofedits',
+		'articlepath',
 		'sitename',
 		'server',
 		'servername',

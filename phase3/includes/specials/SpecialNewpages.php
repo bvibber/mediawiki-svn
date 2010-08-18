@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Newpages
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
- * implements Special:Newpages
+ * A special page that list newly created pages
+ *
  * @ingroup SpecialPage
  */
 class SpecialNewpages extends IncludableSpecialPage {
@@ -267,7 +272,9 @@ class SpecialNewpages extends IncludableSpecialPage {
 		$dm = $wgContLang->getDirMark();
 
 		$title = Title::makeTitleSafe( $result->rc_namespace, $result->rc_title );
-		$time = htmlspecialchars( $wgLang->timeAndDate( $result->rc_timestamp, true ) );
+		$time = Html::element( 'span', array( 'class' => 'mw-newpages-time' ),
+			$wgLang->timeAndDate( $result->rc_timestamp, true )
+		);
 
 		$query = array( 'redirect' => 'no' );
 
@@ -277,23 +284,34 @@ class SpecialNewpages extends IncludableSpecialPage {
 		$plink = $this->skin->linkKnown(
 			$title,
 			null,
-			array(),
-			$query
+			array( 'class' => 'mw-newpages-pagename' ),
+			$query,
+			array( 'known' ) // Set explicitly to avoid the default of 'known','noclasses'. This breaks the colouration for stubs
 		);
-		$hist = $this->skin->linkKnown(
+		$histLink = $this->skin->linkKnown(
 			$title,
 			wfMsgHtml( 'hist' ),
 			array(),
 			array( 'action' => 'history' )
 		);
-		$length = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ),
-			$wgLang->formatNum( $result->length ) );
+		$hist = Html::rawElement( 'span', array( 'class' => 'mw-newpages-history' ), wfMsg( 'parentheses', $histLink ) );
+
+		$length = Html::rawElement( 'span', array( 'class' => 'mw-newpages-length' ),
+				'[' . wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ), $wgLang->formatNum( $result->length ) ) .
+				']'
+		);
 		$ulink = $this->skin->userLink( $result->rc_user, $result->rc_user_text ) . ' ' .
 			$this->skin->userToolLinks( $result->rc_user, $result->rc_user_text );
 		$comment = $this->skin->commentBlock( $result->rc_comment );
 		
-		if ( $this->patrollable( $result ) )
+		if ( $this->patrollable( $result ) ) {
 			$classes[] = 'not-patrolled';
+		}
+
+		# Add a class for zero byte pages
+		if ( $result->length == 0 ) {
+			$classes[] = 'mw-newpages-zero-byte-page';
+		}
 
 		# Tags, if any. check for including due to bug 23293
 		if ( !$this->including() ) {
@@ -305,7 +323,7 @@ class SpecialNewpages extends IncludableSpecialPage {
 
 		$css = count($classes) ? ' class="'.implode( " ", $classes).'"' : '';
 
-		return "<li{$css}>{$time} {$dm}{$plink} ({$hist}) {$dm}[{$length}] {$dm}{$ulink} {$comment} {$tagDisplay}</li>\n";
+		return "<li{$css}>{$time} {$dm}{$plink} {$hist} {$dm}{$length} {$dm}{$ulink} {$comment} {$tagDisplay}</li>\n";
 	}
 
 	/**

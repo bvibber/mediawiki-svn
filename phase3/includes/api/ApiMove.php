@@ -1,8 +1,8 @@
 <?php
-
 /**
- * Created on Oct 31, 2007
  * API for MediaWiki 1.8+
+ *
+ * Created on Oct 31, 2007
  *
  * Copyright © 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -20,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -45,9 +47,6 @@ class ApiMove extends ApiBase {
 		}
 
 		$this->requireOnlyOneParameter( $params, 'from', 'fromid' );
-		if ( !isset( $params['to'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'to' ) );
-		}
 
 		if ( isset( $params['from'] ) ) {
 			$fromTitle = Title::newFromText( $params['from'] );
@@ -172,7 +171,10 @@ class ApiMove extends ApiBase {
 			'fromid' => array(
 				ApiBase::PARAM_TYPE => 'integer'
 			),
-			'to' => null,
+			'to' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'token' => null,
 			'reason' => null,
 			'movetalk' => false,
@@ -223,7 +225,6 @@ class ApiMove extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'to' ),
 			array( 'invalidtitle', 'from' ),
 			array( 'nosuchpageid', 'fromid' ),
 			array( 'notanarticle' ),

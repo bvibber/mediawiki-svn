@@ -18,23 +18,38 @@ define( 'MSG_CACHE_VERSION', 1 );
  * @ingroup Cache
  */
 class MessageCache {
-	// Holds loaded messages that are defined in MediaWiki namespace.
-	var $mCache;
+	/**
+	 * Process local cache of loaded messages that are defined in
+	 * MediaWiki namespace. First array level is a language code,
+	 * second level is message key and the values are either message
+	 * content prefixed with space, or !NONEXISTENT for negative
+	 * caching.
+	 */
+	protected $mCache;
 
-	var $mUseCache, $mDisable, $mExpiry;
-	var $mKeys, $mParserOptions, $mParser;
+	// Should  mean that database cannot be used, but check
+	protected $mDisable;
 
-	// Variable for tracking which variables are loaded
-	var $mLoadedLanguages = array();
+	/// Lifetime for cache, used by object caching
+	protected $mExpiry;
 
-	function __construct( &$memCached, $useDB, $expiry, /*ignored*/ $memcPrefix ) {
-		$this->mUseCache = !is_null( $memCached );
-		$this->mMemc = &$memCached;
+	/**
+	 * Message cache has it's own parser which it uses to transform
+	 * messages.
+	 */
+	protected $mParserOptions, $mParser;
+
+	/// Variable for tracking which variables are already loaded
+	protected $mLoadedLanguages = array();
+
+	function __construct( $memCached, $useDB, $expiry ) {
+		if ( !$memCached ) {
+			$memCached = wfGetCache( CACHE_NONE );
+		}
+
+		$this->mMemc = $memCached;
 		$this->mDisable = !$useDB;
 		$this->mExpiry = $expiry;
-		$this->mDisableTransform = false;
-		$this->mKeys = false; # initialised on demand
-		$this->mParser = null;
 	}
 
 
@@ -177,7 +192,7 @@ class MessageCache {
 	 * When succesfully loading from (2) or (3), all higher level caches are
 	 * updated for the newest version.
 	 *
-	 * Nothing is loaded if  member variable mDisabled is true, either manually
+	 * Nothing is loaded if member variable mDisable is true, either manually
 	 * set by calling code or if message loading fails (is this possible?).
 	 *
 	 * Returns true if cache is already populated or it was succesfully populated,
@@ -188,10 +203,6 @@ class MessageCache {
 	 */
 	function load( $code = false ) {
 		global $wgUseLocalMessageCache;
-
-		if ( !$this->mUseCache ) {
-			return true;
-		}
 
 		if( !is_string( $code ) ) {
 			# This isn't really nice, so at least make a note about it and try to
@@ -332,10 +343,9 @@ class MessageCache {
 
 		# Load titles for all oversized pages in the MediaWiki namespace
 		$res = $dbr->select( 'page', 'page_title', $bigConds, __METHOD__ . "($code)-big" );
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$cache[$row->page_title] = '!TOO BIG';
 		}
-		$dbr->freeResult( $res );
 
 		# Conditions to load the remaining pages with their contents
 		$smallConds = $conds;
@@ -347,10 +357,9 @@ class MessageCache {
 			array( 'page_title', 'old_text', 'old_flags' ),
 			$smallConds, __METHOD__ . "($code)-small" );
 
-		for ( $row = $dbr->fetchObject( $res ); $row; $row = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			$cache[$row->page_title] = ' ' . Revision::getRevisionText( $row );
 		}
-		$dbr->freeResult( $res );
 
 		$cache['VERSION'] = MSG_CACHE_VERSION;
 		wfProfileOut( __METHOD__ );
@@ -367,38 +376,38 @@ class MessageCache {
 		global $wgMaxMsgCacheEntrySize;
 		wfProfileIn( __METHOD__ );
 
+		if ( $this->mDisable ) {
+			return;
+		}
 
 		list( , $code ) = $this->figureMessage( $title );
 
 		$cacheKey = wfMemcKey( 'messages', $code );
-		$this->load($code);
-		$this->lock($cacheKey);
+		$this->load( $code );
+		$this->lock( $cacheKey );
 
-		if ( is_array($this->mCache[$code]) ) {
-			$titleKey = wfMemcKey( 'messages', 'individual', $title );
+		$titleKey = wfMemcKey( 'messages', 'individual', $title );
 
-			if ( $text === false ) {
-				# Article was deleted
-				unset( $this->mCache[$code][$title] );
-				$this->mMemc->delete( $titleKey );
+		if ( $text === false ) {
+			# Article was deleted
+			$this->mCache[$code][$title] = '!NONEXISTENT';
+			$this->mMemc->delete( $titleKey );
 
-			} elseif ( strlen( $text ) > $wgMaxMsgCacheEntrySize ) {
-				# Check for size
-				$this->mCache[$code][$title] = '!TOO BIG';
-				$this->mMemc->set( $titleKey, ' ' . $text, $this->mExpiry );
+		} elseif ( strlen( $text ) > $wgMaxMsgCacheEntrySize ) {
+			# Check for size
+			$this->mCache[$code][$title] = '!TOO BIG';
+			$this->mMemc->set( $titleKey, ' ' . $text, $this->mExpiry );
 
-			} else {
-				$this->mCache[$code][$title] = ' ' . $text;
-				$this->mMemc->delete( $titleKey );
-			}
-
-			# Update caches
-			$this->saveToCaches( $this->mCache[$code], true, $code );
+		} else {
+			$this->mCache[$code][$title] = ' ' . $text;
+			$this->mMemc->delete( $titleKey );
 		}
-		$this->unlock($cacheKey);
+
+		# Update caches
+		$this->saveToCaches( $this->mCache[$code], true, $code );
+		$this->unlock( $cacheKey );
 
 		// Also delete cached sidebar... just in case it is affected
-		global $parserMemc;
 		$codes = array( $code );
 		if ( $code === 'en'  ) {
 			// Delete all sidebars, like for example on action=purge on the
@@ -406,6 +415,7 @@ class MessageCache {
 			$codes = array_keys( Language::getLanguageNames() );
 		}
 
+		global $parserMemc;
 		foreach ( $codes as $code ) {
 			$sidebarKey = wfMemcKey( 'sidebar', $code );
 			$parserMemc->delete( $sidebarKey );
@@ -458,10 +468,6 @@ class MessageCache {
 	 * @return Boolean: success
 	 */
 	function lock($key) {
-		if ( !$this->mUseCache ) {
-			return true;
-		}
-
 		$lockKey = $key . ':lock';
 		for ($i=0; $i < MSG_WAIT_TIMEOUT && !$this->mMemc->add( $lockKey, 1, MSG_LOCK_TIMEOUT ); $i++ ) {
 			sleep(1);
@@ -471,10 +477,6 @@ class MessageCache {
 	}
 
 	function unlock($key) {
-		if ( !$this->mUseCache ) {
-			return;
-		}
-
 		$lockKey = $key . ':lock';
 		$this->mMemc->delete( $lockKey );
 	}
@@ -498,6 +500,10 @@ class MessageCache {
 	 */
 	function get( $key, $useDB = true, $langcode = true, $isFullKey = false ) {
 		global $wgContLanguageCode, $wgContLang;
+
+		if ( !is_string( $key ) ) {
+			throw new MWException( "Non-string key given" );
+		}
 
 		if ( strval( $key ) === '' ) {
 			# Shortcut: the empty key is always missing
@@ -586,14 +592,13 @@ class MessageCache {
 		$type = false;
 		$message = false;
 
-		if ( $this->mUseCache ) {
-			$this->load( $code );
-			if (isset( $this->mCache[$code][$title] ) ) {
-				$entry = $this->mCache[$code][$title];
-				$type = substr( $entry, 0, 1 );
-				if ( $type == ' ' ) {
-					return substr( $entry, 1 );
-				}
+		$this->load( $code );
+		if ( isset( $this->mCache[$code][$title] ) ) {
+			$entry = $this->mCache[$code][$title];
+			if ( substr( $entry, 0, 1 ) === ' ' ) {
+				return substr( $entry, 1 );
+			} elseif ( $entry === '!NONEXISTENT' ) {
+				return false;
 			}
 		}
 
@@ -603,48 +608,33 @@ class MessageCache {
 			return $message;
 		}
 
-		# If there is no cache entry and no placeholder, it doesn't exist
-		if ( $type !== '!' ) {
-			return false;
-		}
-
-		$titleKey = wfMemcKey( 'messages', 'individual', $title );
-
 		# Try the individual message cache
-		if ( $this->mUseCache ) {
-			$entry = $this->mMemc->get( $titleKey );
-			if ( $entry ) {
-				$type = substr( $entry, 0, 1 );
-
-				if ( $type === ' ' ) {
-					# Ok!
-					$message = substr( $entry, 1 );
-					$this->mCache[$code][$title] = $entry;
-					return $message;
-				} elseif ( $entry === '!NONEXISTENT' ) {
-					return false;
-				} else {
-					# Corrupt/obsolete entry, delete it
-					$this->mMemc->delete( $titleKey );
-				}
-
+		$titleKey = wfMemcKey( 'messages', 'individual', $title );
+		$entry = $this->mMemc->get( $titleKey );
+		if ( $entry ) {
+			if ( substr( $entry, 0, 1 ) === ' ' ) {
+				$this->mCache[$code][$title] = $entry;
+				return substr( $entry, 1 );
+			} elseif ( $entry === '!NONEXISTENT' ) {
+				$this->mCache[$code][$title] = '!NONEXISTENT';
+				return false;
+			} else {
+				# Corrupt/obsolete entry, delete it
+				$this->mMemc->delete( $titleKey );
 			}
 		}
 
-		# Try loading it from the DB
+		# Try loading it from the database
 		$revision = Revision::newFromTitle( Title::makeTitle( NS_MEDIAWIKI, $title ) );
-		if( $revision ) {
+		if ( $revision ) {
 			$message = $revision->getText();
-			if ($this->mUseCache) {
-				$this->mCache[$code][$title] = ' ' . $message;
-				$this->mMemc->set( $titleKey, ' ' . $message, $this->mExpiry );
-			}
+			$this->mCache[$code][$title] = ' ' . $message;
+			$this->mMemc->set( $titleKey, ' ' . $message, $this->mExpiry );
 		} else {
-			# Negative caching
-			# Use some special text instead of false, because false gets converted to '' somewhere
+			$this->mCache[$code][$title] = '!NONEXISTENT';
 			$this->mMemc->set( $titleKey, '!NONEXISTENT', $this->mExpiry );
-			$this->mCache[$code][$title] = false;
 		}
+
 		return $message;
 	}
 
@@ -699,14 +689,12 @@ class MessageCache {
 	 * Clear all stored messages. Mainly used after a mass rebuild.
 	 */
 	function clear() {
-		if( $this->mUseCache ) {
-			$langs = Language::getLanguageNames( false );
-			foreach ( array_keys($langs) as $code ) {
-				# Global cache
-				$this->mMemc->delete( wfMemcKey( 'messages', $code ) );
-				# Invalidate all local caches
-				$this->mMemc->delete( wfMemcKey( 'messages', $code, 'hash' ) );
-			}
+		$langs = Language::getLanguageNames( false );
+		foreach ( array_keys($langs) as $code ) {
+			# Global cache
+			$this->mMemc->delete( wfMemcKey( 'messages', $code ) );
+			# Invalidate all local caches
+			$this->mMemc->delete( wfMemcKey( 'messages', $code, 'hash' ) );
 		}
 	}
 

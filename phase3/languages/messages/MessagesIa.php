@@ -631,6 +631,15 @@ Per favor attende ante de probar lo novemente.',
 'loginlanguagelabel'         => 'Lingua: $1',
 'suspicious-userlogout'      => 'Le requesta de clauder le session ha essite refusate proque illo pare haber essite inviate per un navigator o proxy de cache defectuose.',
 
+# JavaScript password checks
+'password-strength'            => 'Estimation del securitate del contrasigno: $1',
+'password-strength-bad'        => 'MAL',
+'password-strength-mediocre'   => 'mediocre',
+'password-strength-acceptable' => 'acceptabile',
+'password-strength-good'       => 'bon',
+'password-retype'              => 'Repete contrasigno hic',
+'password-retype-mismatch'     => 'Le contrasignos non es identic',
+
 # Password reset dialog
 'resetpass'                 => 'Cambiar contrasigno',
 'resetpass_announce'        => 'Tu ha aperite un session con un codice temporari que tu recipeva in e-mail.
@@ -1198,6 +1207,7 @@ Nota que lor indices del contento de {{SITENAME}} pote esser obsolete.',
 'contextlines'                  => 'Lineas per resultato:',
 'contextchars'                  => 'Characteres de contexto per linea:',
 'stub-threshold'                => 'Limite pro formatar le ligamines in <a href="#" class="stub">stilo de peciettas</a> (bytes):',
+'stub-threshold-disabled'       => 'Disactivate',
 'recentchangesdays'             => 'Numero de dies a monstrar in modificationes recente:',
 'recentchangesdays-max'         => '(non plus de $1 {{PLURAL:$1|die|dies}})',
 'recentchangescount'            => 'Numero de modificationes a monstrar per predefinition:',
@@ -2026,7 +2036,7 @@ como le adresse del expeditor del e-mail, de modo que le destinatario pote respo
 # Watchlist
 'watchlist'            => 'Mi observatorio',
 'mywatchlist'          => 'Mi observatorio',
-'watchlistfor'         => "(pro '''$1''')",
+'watchlistfor2'        => 'De $1 $2',
 'nowatchlist'          => 'Tu non ha paginas sub observation.',
 'watchlistanontext'    => 'Tu debe $1 pro poter vider o modificar entratas in tu observatorio.',
 'watchnologin'         => 'Tu non ha aperite un session',

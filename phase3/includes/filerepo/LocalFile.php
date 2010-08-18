@@ -377,10 +377,12 @@ class LocalFile extends File {
 				$this->$field = $info[$field];
 			}
 		}
+
 		// Fix up mime fields
 		if ( isset( $info['major_mime'] ) ) {
 			$this->mime = "{$info['major_mime']}/{$info['minor_mime']}";
 		} elseif ( isset( $info['mime'] ) ) {
+			$this->mime = $info['mime'];
 			list( $this->major_mime, $this->minor_mime ) = self::splitMime( $this->mime );
 		}
 	}
@@ -697,12 +699,10 @@ class LocalFile extends File {
 				$fname
 			);
 			if ( 0 == $dbr->numRows( $this->historyRes ) ) {
-				$dbr->freeResult( $this->historyRes );
 				$this->historyRes = null;
 				return false;
 			}
 		} elseif ( $this->historyLine == 1 ) {
-			$dbr->freeResult( $this->historyRes );
 			$this->historyRes = $dbr->select( 'oldimage', '*',
 				array( 'oi_name' => $this->title->getDBkey() ),
 				$fname,
@@ -720,7 +720,6 @@ class LocalFile extends File {
 	public function resetHistory() {
 		$this->historyLine = 0;
 		if ( !is_null( $this->historyRes ) ) {
-			$this->repo->getSlaveDB()->freeResult( $this->historyRes );
 			$this->historyRes = null;
 		}
 	}
@@ -1827,7 +1826,6 @@ class LocalFileMoveBatch {
 				"{$archiveBase}/{$this->newHash}{$timestamp}!{$this->newName}"
 			);
 		}
-		$this->db->freeResult( $result );
 	}
 
 	/**

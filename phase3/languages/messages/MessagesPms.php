@@ -527,6 +527,15 @@ Për piasì speta prima ëd prové torna.",
 'loginlanguagelabel'         => 'Lenga: $1',
 'suspicious-userlogout'      => "Soa arcesta ëd seurte dal sistema a l'é stàita arfudà përchè a smija com s'a fussa stàita mandà da 'n navigador scolegà o da l'archiviassion an local d'un proxy.",
 
+# JavaScript password checks
+'password-strength'            => 'Fòrsa stimà dla ciav: $1',
+'password-strength-bad'        => 'GRAMA',
+'password-strength-mediocre'   => 'mediòcr',
+'password-strength-acceptable' => 'a peul andé',
+'password-strength-good'       => 'bon-a',
+'password-retype'              => 'Bat torna la ciav ambelessì',
+'password-retype-mismatch'     => 'Le ciav a son pa mideme',
+
 # Password reset dialog
 'resetpass'                 => 'Cambia la ciav',
 'resetpass_announce'        => "A l'é rintrà ant ël sistema con na ciav provisòria mandà via për pòsta eletrònica. Për podèj finì la procedura a l'ha da butesse na ciav neuva ambelessì:",
@@ -1075,6 +1084,7 @@ Ch'a preuva a gionté dnans a soa arserca ël prefiss ''all:'' për sërché an 
 'contextlines'                  => 'Righe ëd test për minca arzultà:',
 'contextchars'                  => 'Caràter për riga:',
 'stub-threshold'                => 'Valor mìnim për j\'<a href="#" class="stub">anliure a jë sbòss</a>:',
+'stub-threshold-disabled'       => 'Disabilità',
 'recentchangesdays'             => "Vàire dì smon-e ant j'ùltime modìfiche:",
 'recentchangesdays-max'         => '(al pì $1 {{PLURAL:$1|di|di}})',
 'recentchangescount'            => 'Nùmer ëd modìfiche da smon-e për stàndard:',
@@ -1356,51 +1366,50 @@ A peul ëdcò serne ëd lassé che j'àutri a lo contato an soa pàgina d'utent 
 'recentchangeslinked-summary'  => "Costa a l'é na lista ëd modìfiche fàite da pòch a pàgine colegà a cola spessificà (o a mèmber ëd na categorìa spessificà).
 Le pàgine dzora a [[Special:Watchlist|la lista ëd lòn ch'as ten sot-euj]] a resto marcà an '''grassèt'''.",
 'recentchangeslinked-page'     => 'Nòm ëd la pàgina:',
-'recentchangeslinked-to'       => 'Mosta mach jë modìfiche a le pàgine colegà a cola dàita',
+'recentchangeslinked-to'       => 'Mostré nopà le modìfiche a le pàgine colegà a cola dàita',
 
 # Upload
-'upload'                      => 'Carié',
-'uploadbtn'                   => 'Carié',
-'reuploaddesc'                => 'Torné al mòdulo ëd domanda për carié archivi',
-'upload-tryagain'             => 'Anseriss la descrission dël file modificà',
-'uploadnologin'               => 'Pa an drinta al sistema',
-'uploadnologintext'           => "A dev [[Special:UserLogin|rintré ant ël sistema]]
-për podej carié dj'archivi.",
-'upload_directory_missing'    => 'La directory ëd caria ($1) a-i é pa e a peul pa esse creà dal webserver.',
-'upload_directory_read_only'  => 'Ël programa webserver a-i la fa nen a scrive ansima a la diretriss ëd càrich ($1).',
+'upload'                      => "Carié n'archivi",
+'uploadbtn'                   => "Carié l'archivi",
+'reuploaddesc'                => "Chité e torné al formolari për carié dj'archivi",
+'upload-tryagain'             => "Mandé la descrission ëd l'archivi modificà",
+'uploadnologin'               => 'Nen rintrà ant ël sistema',
+'uploadnologintext'           => "A dev [[Special:UserLogin|rintré ant ël sistema]] për podèj carié dj'archivi.",
+'upload_directory_missing'    => 'Ël repertòri ëd caria ($1) a-i é nen e a peul pa esse creà dal servent.',
+'upload_directory_read_only'  => "Ël servent ëd l'aragnà a-i la fa nen a scrive ansima a la diretris ëd càrich ($1).",
 'uploaderror'                 => 'Eror dëmentré che as cariava',
 'upload-recreate-warning'     => "'''Atension: n'archivi con col nòm a l'é già stàit ëscancelà o tramudà.'''
 
 Ël registr dle scancelassion e dij tramud për sta pàgina a l'é butà ambelessì për comodità:",
-'uploadtext'                  => "Dovra la forma sota për carié ëd file.
-Për vardé ò sërché figure già carià, va an sla [[Special:FileList|lista dle figure]], ij (ri)càrich a son ëdcò registrà ant ël [[Special:Log/upload|registr dij càrich]], jë scanselament ant ël [[Special:Log/delete|registr dië scanselament]].
+'uploadtext'                  => "Dovra ël formolari sì-sota për carié dj'archivi.
+Për vardé ò sërché dle figure già carià, ch'a vada an sla [[Special:FileList|lista dle figure]], ij (ri)càrich a son ëdcò registrà ant ël [[Special:Log/upload|registr dij càrich]], jë scancelament ant ël [[Special:Log/delete|registr djë scancelament]].
 
 Për buté na figura ant n'artìcol, dovré n'anliura ant un-a dle forme sì sota:
-* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>''' për dovré la vërsion pien-a dla figura
-* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|200px|thumb|left|alt text]]</nowiki></tt>''' për dovré na dimension ëd 200 pixel ant un quàder al màrgin snist con 'alt text' com descrission
-* '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki></tt>''' për coleghé diretament la figura sensa fé vëdde ël file",
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.jpg]]</nowiki></tt>''' për dovré la version pien-a dla figura
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:File.png|200px|thumb|left|alt text]]</nowiki></tt>''' për dovré na dimension ëd 200 pontin ant un quàder a la bordura snistra con 'alt text' com descrission
+* '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki></tt>''' për coleghé diretament la figura sensa fé vëdde l'archivi",
 'upload-permitted'            => "Sòrt d'archivi consentìe: $1.",
 'upload-preferred'            => "Sòrt d'archivi preferìe: $1.",
 'upload-prohibited'           => "Sòrt d'archivi proibìe: $1.",
 'uploadlog'                   => 'Registr dij càrich',
 'uploadlogpage'               => 'Registr dij càrich',
-'uploadlogpagetext'           => "Ambelessì sota a-i é na lista dj'ùltim archivi carià.
-Varda l'[[Special:NewFiles|elench dij file neuv]] për na presentassion pì visual.",
+'uploadlogpagetext'           => "Ambelessì-sota a-i é na lista dj'ùltim archivi carià.
+Beiché la [[Special:NewFiles|galarìa dj'archivi neuv]] për na presentassion pì visual.",
 'filename'                    => "Nòm dl'archivi",
 'filedesc'                    => 'Oget',
 'fileuploadsummary'           => "Detaj dl'archivi:",
-'filereuploadsummary'         => 'Cambiament dël file:',
+'filereuploadsummary'         => "Modìfiche dl'archivi:",
 'filestatus'                  => "Situassion dij drit d'autor:",
 'filesource'                  => 'Sorgiss:',
-'uploadedfiles'               => 'Archivi carià ant la {{SITENAME}}',
-'ignorewarning'               => "Piantla-lì con j'avis e salva an tute le manere",
-'ignorewarnings'              => "Lassa sté j'avis",
-'minlength1'                  => "Ël nòm dl'archivi a dev esse longh almanch un caràter.",
-'illegalfilename'             => 'Ël nòm d\'archivi "$1" a l\'ha andrinta dij caràter che as peulo pa dovresse ant ij tìtoj dle pàgine. Për piasì che a-j cangia nòm e peui che a torna a carielo.',
+'uploadedfiles'               => 'Archivi carià',
+'ignorewarning'               => "Lassé perde j'avis e salvé an tute le manere",
+'ignorewarnings'              => "Lassé perde j'avis",
+'minlength1'                  => "Ij nòm ëd j'archivi a devo esse longh almanch un caràter.",
+'illegalfilename'             => 'Ël nòm d\'archivi "$1" a l\'ha andrinta dij caràter che as peulo pa dovresse ant ij tìtoj dle pàgine. Për piasì che a-j cangia \'d nòm e peui che a torna a carielo.',
 'badfilename'                 => 'Ël nòm dl\'archivi a l\'é stait cambià an "$1".',
 'filetype-mime-mismatch'      => "L'estension dl'archivi a rispeta pa la sòrt ëd MIME.",
-'filetype-badmime'            => 'J\'archivi dla sòrt MIME "$1" as peulo nen carié.',
-'filetype-bad-ie-mime'        => 'As peul pa carié sto file-sì përchè Internet Explorer a podrìa considerelo com "$1", che a l\'é na rasa ëd file vietà e potensialment pericolos.',
+'filetype-badmime'            => 'J\'archivi dla sòrt MIME "$1" as peulo pa carié.',
+'filetype-bad-ie-mime'        => 'As peul pa carié st\'archivi-sì përchè Internet Explorer a podrìa considerelo com "$1", che a l\'é na rassa d\'archivi vietà e potensialment pericolos.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' a l'é na sòrt d'archivi ch'as pija nen ëd bon-a veuja.
 {{PLURAL:\$3|La sòrt preferìa a l'é|Le sòrt preferìe a son}} \$2.",
 'filetype-banned-type'        => "'''\".\$1\"''' a l'é na sòrt d'archivi proibìa.
@@ -1897,7 +1906,7 @@ L'adrëssa e-mail ch'it l'has butà an [[Special:Preferences|Ij sò gust]] a sar
 # Watchlist
 'watchlist'            => 'Ròba che im ten-o sot euj',
 'mywatchlist'          => 'Ròba che im ten-o sot euj',
-'watchlistfor'         => "(për '''$1''')",
+'watchlistfor2'        => 'Për $1 $2',
 'nowatchlist'          => 'A l\'ha ancó pa marcà dj\'artìcoj coma "ròba da tnì sot euj".',
 'watchlistanontext'    => "Për piasì, $1 për ës-ciairé ò pura modifiché j'element ëd soa lista dla ròba che as ten sot euj.",
 'watchnologin'         => "A l'é ancó nen rintrà ant ël sistema",
@@ -2501,7 +2510,7 @@ Për piasì preuva torna.',
 # Import log
 'importlogpage'                    => "Registr dj'amportassion",
 'importlogpagetext'                => "Amportassion aministrative ëd pàgine e ëd soa stòria da dj'àutre wiki.",
-'import-logentry-upload'           => "amportà $1 con un càrich d'archivi",
+'import-logentry-upload'           => "amportà [[$1]] con un càrich d'archivi",
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|revision|revision}}',
 'import-logentry-interwiki'        => "Amportà da n'àutra wiki $1",
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|revision|revision}} da $2',

@@ -2,7 +2,7 @@
 /**
  * XHTML sanitizer for MediaWiki
  *
- * Copyright (C) 2002-2005 Brion Vibber <brion@pobox.com> et al
+ * Copyright © 2002-2005 Brion Vibber <brion@pobox.com> et al
  * http://www.mediawiki.org/
  *
  * This program is free software; you can redistribute it and/or modify
@@ -40,10 +40,11 @@ define( 'MW_CHAR_REFS_REGEX',
  * Allows some... latitude.
  * Used in Sanitizer::fixTagAttributes and Sanitizer::decodeTagAttributes
  */
-$attrib = '[A-Za-z0-9]';
+$attrib_first = '[:A-Z_a-z]';
+$attrib = '[:A-Z_a-z-.0-9]';
 $space = '[\x09\x0a\x0d\x20]';
 define( 'MW_ATTRIBS_REGEX',
-	"/(?:^|$space)((?:xml:|xmlns:)?$attrib+)
+	"/(?:^|$space)({$attrib_first}{$attrib}*)
 	  ($space*=$space*
 		(?:
 		 # The attribute value: quoted or alone
@@ -626,7 +627,7 @@ class Sanitizer {
 	 * @todo Check for unique id attribute :P
 	 */
 	static function validateAttributes( $attribs, $whitelist ) {
-		global $wgAllowRdfaAttributes, $wgAllowMicrodataAttributes;
+		global $wgAllowRdfaAttributes, $wgAllowMicrodataAttributes, $wgHtml5;
 
 		$whitelist = array_flip( $whitelist );
 		$hrefExp = '/^(' . wfUrlProtocols() . ')[^\s]+$/';
@@ -642,7 +643,8 @@ class Sanitizer {
 				continue;
 			}
 
-			if( !isset( $whitelist[$attribute] ) ) {
+			# Allow any attribute beginning with "data-", if in HTML5 mode
+			if ( !($wgHtml5 && preg_match( '/^data-/i', $attribute )) && !isset( $whitelist[$attribute] ) ) {
 				continue;
 			}
 
@@ -747,7 +749,7 @@ class Sanitizer {
 
 		// Decode escape sequences and line continuation
 		// See the grammar in the CSS 2 spec, appendix D.
-		static $decodeRegex, $reencodeTable;
+		static $decodeRegex;
 		if ( !$decodeRegex ) {
 			$space = '[\\x20\\t\\r\\n\\f]';
 			$nl = '(?:\\n|\\r\\n|\\r|\\f)';

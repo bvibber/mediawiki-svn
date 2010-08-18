@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Dec 1, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Dec 1, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -76,11 +77,16 @@ class ApiQueryAllmessages extends ApiQueryBase {
 
 		// Get all requested messages and print the result
 		$skip = !is_null( $params['from'] );
+		$useto = !is_null( $params['to'] );
 		$result = $this->getResult();
 		foreach ( $messages_target as $message ) {
 			// Skip all messages up to $params['from']
 			if ( $skip && $message === $params['from'] ) {
 				$skip = false;
+			}
+			
+			if( $useto && $message > $params['to'] ) {
+				break;
 			}
 
 			if ( !$skip ) {
@@ -160,6 +166,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			'filter' => array(),
 			'lang' => null,
 			'from' => null,
+			'to' => null,
 		);
 	}
 
@@ -173,6 +180,7 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			'filter' => 'Return only messages that contain this string',
 			'lang' => 'Return messages in this language',
 			'from' => 'Return messages starting at this message',
+			'to' => 'Return messages ending at this message',
 		);
 	}
 

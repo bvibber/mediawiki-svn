@@ -1,8 +1,8 @@
 <?php
-
 /**
- * Created on June 1, 2008
  * API for MediaWiki 1.8+
+ *
+ * Created on June 1, 2008
  *
  * Copyright © 2008 Bryan Tong Minh <Bryan.TongMinh@Gmail.com>
  *
@@ -20,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -41,13 +43,6 @@ class ApiEmailUser extends ApiBase {
 		global $wgUser;
 
 		$params = $this->extractRequestParams();
-		// Check required parameters
-		if ( !isset( $params['target'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'target' ) );
-		}
-		if ( !isset( $params['text'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'text' ) );
-		}
 
 		// Validate target
 		$targetUser = SpecialEmailUser::getTarget( $params['target'] );
@@ -90,9 +85,15 @@ class ApiEmailUser extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'target' => null,
+			'target' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'subject' => null,
-			'text' => null,
+			'text' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'token' => null,
 			'ccme' => false,
 		);
@@ -115,8 +116,6 @@ class ApiEmailUser extends ApiBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'usermaildisabled' ),
-			array( 'missingparam', 'target' ),
-			array( 'missingparam', 'text' ),
 		) );
 	}
 

@@ -446,6 +446,7 @@ Hesabınız yaradıldı.
 'gotaccount'                 => "Giriş hesabınız varsa '''$1'''.",
 'gotaccountlink'             => 'daxil olun',
 'createaccountmail'          => 'e-məktub ilə',
+'createaccountreason'        => 'Səbəb:',
 'badretype'                  => 'Daxil etdiyiniz parol uyğun gəlmir.',
 'userexists'                 => 'Daxil edilmiş ad istifadədədir.
 Lütfən ayrı ad seçin.',
@@ -486,6 +487,9 @@ Xahiş edirik düzgün formatlı ünvan daxil edin və ya bu sahəni boş qoyun.
 'login-throttled'            => 'Sistemə daxil olmaq üçün həddən artıq cəhd etmisiniz.
 Yeni cəhd etməzdən əvvəl bir qədər gözləyin.',
 'loginlanguagelabel'         => 'Dil: $1',
+
+# JavaScript password checks
+'password-retype' => 'Parolu təkrar yazın',
 
 # Password reset dialog
 'resetpass'                 => 'Parolu dəyiş',
@@ -1165,7 +1169,6 @@ Fərdi hüquqlar haqqında əlavə məlumatı [[{{MediaWiki:Listgrouprights-help
 # Watchlist
 'watchlist'            => 'İzlədiyim səhifələr',
 'mywatchlist'          => 'İzlədiyim səhifələr',
-'watchlistfor'         => "('''$1''' üçün)",
 'watchnologin'         => 'Daxil olmamısınız',
 'watchnologintext'     => 'İzləmə siyahınızda dəyişiklik aparmaq üçün [[Special:UserLogin|daxil olmalısınız]].',
 'addedwatch'           => 'İzləmə siyahısına əlavə edildi.',

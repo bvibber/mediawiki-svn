@@ -624,6 +624,15 @@ $2',
 'loginlanguagelabel'         => 'భాష: $1',
 'suspicious-userlogout'      => 'సరిగా పనిచేయని విహారిణి లేదా కాషింగ్ ప్రాక్సీ వల్ల పంపబడడం చేత, నిష్క్రమించాలనే మీ అభ్యర్థనని నిరాకరించారు.',
 
+# JavaScript password checks
+'password-strength'            => 'అంచనావేసిన సంకేతపదపు  బలం: $1',
+'password-strength-bad'        => 'బలహీనం',
+'password-strength-mediocre'   => 'పర్లేదు',
+'password-strength-acceptable' => 'ఆమోదయోగ్యం',
+'password-strength-good'       => 'పటిష్ఠం',
+'password-retype'              => 'సంకేతపదాన్ని మళ్ళీ ఇక్కడ ఇవ్వండి',
+'password-retype-mismatch'     => 'సంకేతపదాలు సరిపోలలేదు',
+
 # Password reset dialog
 'resetpass'                 => 'సంకేతపదాన్ని మార్చండి',
 'resetpass_announce'        => 'మీకు పంపిన తాత్కాలిక సంకేతంతో ప్రవేశించివున్నారు.
@@ -714,14 +723,14 @@ $2',
 'blockedoriginalsource'            => "'''$1''' యొక్క మూలాన్ని కింద ఇచ్చాం:",
 'blockededitsource'                => "'''$1''' లో '''మీ దిద్దుబాట్ల''' పూర్తి పాఠాన్ని కింద ఇచ్చాం:",
 'whitelistedittitle'               => 'మార్పులు చెయ్యడానికి ప్రవేశించివుండాలి',
-'whitelistedittext'                => 'పేజీలకి మార్పులు చెయ్యడానికి మీరు $1 అయి ఉండాలి.',
+'whitelistedittext'                => 'పుటలలో మార్పులు చెయ్యడానికి మీరు $1 ఉండాలి.',
 'confirmedittext'                  => 'పేజీల్లో మార్పులు చేసేముందు మీ ఈ-మెయిలు చిరునామా ధృవీకరించాలి. [[Special:Preferences|మీ అభిరుచుల]]లో మీ ఈ-మెయిలు చిరునామా రాసి, ధృవీకరించండి.',
 'nosuchsectiontitle'               => 'విభాగాన్ని కనగొనలేకపోయాం',
 'nosuchsectiontext'                => 'మీరు లేని విభాగాన్ని మార్చడానికి ప్రయత్నించారు.
 మీరు పేజీని చూస్తూన్నప్పుడు దాన్ని ఎవరైనా తరలించి లేదా తొలగించి ఉండవచ్చు.',
-'loginreqtitle'                    => 'లాగిన్‌ ఆవసరము',
-'loginreqlink'                     => 'ప్రవేశించండి',
-'loginreqpagetext'                 => 'ఇతర పేజీలు చూడడానికి మీరు $1 అయి ఉండాలి.',
+'loginreqtitle'                    => 'ప్రవేశము తప్పనిసరి',
+'loginreqlink'                     => 'ప్రవేశించి',
+'loginreqpagetext'                 => 'ఇతర పుటలను చూడడానికి మీరు $1 ఉండాలి.',
 'accmailtitle'                     => 'సంకేతపదం పంపించబడింది.',
 'accmailtext'                      => "[[User talk:$1|$1]] కొరకు ఒక యాదృచ్చిక సంకేతపదాన్ని $2కి పంపించాం.
 
@@ -1048,7 +1057,7 @@ $1",
 'lineno'                   => 'లైను $1:',
 'compareselectedversions'  => 'ఎంచుకున్న సంచికలను పోల్చిచూడు',
 'showhideselectedversions' => 'ఎంచుకున్న కూర్పులను చూపించు/దాచు',
-'editundo'                 => 'దిద్దుబాటు రద్దుచెయ్యి',
+'editundo'                 => 'మార్పుని రద్దుచెయ్యి',
 'diff-multi'               => '(మధ్యలో ఉన్న {{PLURAL:$1|ఒక కూర్పును|$1 కూర్పులను}} చూపించటం లేదు.)',
 
 # Search results
@@ -1159,6 +1168,7 @@ $1",
 'contextlines'                  => 'హిట్టుకు లైన్లు:',
 'contextchars'                  => 'లైనుకు సందర్భాలు:',
 'stub-threshold'                => '<a href="#" class="stub">మొలక లింకు</a> ఫార్మాటింగు కొరకు హద్దు (బైట్లు):',
+'stub-threshold-disabled'       => 'అచేతనం',
 'recentchangesdays'             => 'ఇటీవలి మార్పులు లో చూపించవలసిన రోజులు:',
 'recentchangesdays-max'         => '($1 {{PLURAL:$1|రోజు|రోజులు}} గరిష్ఠం)',
 'recentchangescount'            => 'అప్రమేయంగా చూపించాల్సిన దిద్దుబాట్ల సంఖ్య:',
@@ -1829,7 +1839,7 @@ http://www.mediawiki.org/wiki/Manual:Image_Authorization చూడండి.',
 'all-logs-page'        => 'అన్ని బహిరంగ చిట్టాలు',
 'alllogstext'          => '{{SITENAME}}  యొక్క అందుబాటులో ఉన్న అన్ని చిట్టాల సంయుక్త ప్రదర్శన.
 ప్రత్యేకించి ఒక చిట్టా రకాన్ని గానీ, ఓ సభ్యుని పేరు గానీ (case-sensitive), లేదా ప్రభావిత  పేజీని (ఇది కూడా case-sensitive) గాని ఎంచుకుని సంబంధిత చిట్టాను మాత్రమే చూడవచ్చు.',
-'logempty'             => 'దినచర్యలో సరిపోలిన అంశాలు లేవు.',
+'logempty'             => 'సరిపోలిన అంశాలేమీ చిట్టాలో లేవు.',
 'log-title-wildcard'   => 'ఈ పాఠ్యంతో మొదలయ్యే పుస్తకాల కొరకు వెతుకు',
 
 # Special:AllPages
@@ -1947,9 +1957,9 @@ http://www.mediawiki.org/wiki/Manual:Image_Authorization చూడండి.',
 # Watchlist
 'watchlist'            => 'నా వీక్షణ జాబితా',
 'mywatchlist'          => 'నా వీక్షణ జాబితా',
-'watchlistfor'         => "('''$1''' కొరకు)",
+'watchlistfor2'        => '$1 కొరకు $2',
 'nowatchlist'          => 'మీ వీక్షణ జాబితా ఖాళీగా ఉంది.',
-'watchlistanontext'    => 'మీ వీక్షణ జాబితా లోని అంశాలను చూసేందుకు, మార్చేందుకు $1 చెయ్యండి.',
+'watchlistanontext'    => 'మీ వీక్షణ జాబితా లోని అంశాలను చూసేందుకు లేదా మార్చేందుకు మీరు $1 ఉండాలి.',
 'watchnologin'         => 'లాగిన్‌ అయిలేరు',
 'watchnologintext'     => 'మీ వీక్షణ జాబితాను మార్చడానికి మీరు [[Special:UserLogin|లాగిన్‌]] అయి ఉండాలి.',
 'addedwatch'           => 'వీక్షణ జాబితాలో చేరింది',
@@ -2020,7 +2030,7 @@ $UNWATCHURL కి వెళ్ళండి.
 'deletepage'             => 'పేజీని తుడిచివేయి',
 'confirm'                => 'ధృవీకరించు',
 'excontent'              => "ఇదివరకు విషయ సంగ్రహం: '$1'",
-'excontentauthor'        => "ఇదివరకు విషయ సంగ్రహం: '$1' (మరియు దీని ఒకేఒక్క రచయిత '$2')",
+'excontentauthor'        => 'ఉన్న విషయ సంగ్రహం: "$1" (మరియు దీని ఒకే ఒక్క రచయిత "[[Special:Contributions/$2|$2]]")',
 'exbeforeblank'          => "ఖాళీ చెయ్యకముందు పేజీలో ఉన్న విషయ సంగ్రహం: '$1'",
 'exblank'                => 'పేజీ ఖాళీగా ఉంది',
 'delete-confirm'         => '"$1"ని తొలగించు',
@@ -2070,7 +2080,8 @@ $UNWATCHURL కి వెళ్ళండి.
 
 # Protect
 'protectlogpage'              => 'సంరక్షణల చిట్టా',
-'protectlogtext'              => 'పేజీ సంరక్షణ గురించిన వివరాల జాబితా క్రింద వున్నది.',
+'protectlogtext'              => 'ఈ క్రింద ఉన్నది పుటల యొక్క సంరక్షణ మరియు అసంరక్షణల యొక్క జాబితా.
+ప్రస్తుతం అమలులో ఉన్న సంరక్షణలకై [[Special:ProtectedPages|సంరక్షిత పుటల జాబితా]]ని చూడండి.',
 'protectedarticle'            => '"[[$1]]" సంరక్షించబడింది.',
 'modifiedarticleprotection'   => '"[[$1]]" సరక్షణ స్థాయిని మార్చాం',
 'unprotectedarticle'          => '"[[$1]]" ను సంరక్షణ నుండి తీసేసాం',
@@ -3045,7 +3056,7 @@ $1',
 
 మెయిలరు ఇలా చెప్పింది: $1',
 'confirmemail_invalid'      => 'ధృవీకరణ సంకేతం సరైనది కాదు. దానికి కాలం చెల్లి ఉండవచ్చు.',
-'confirmemail_needlogin'    => 'మీ ఈమెయిలు చిరునామాను దృవపరచటానికి $1.',
+'confirmemail_needlogin'    => 'మీ ఈమెయిలు చిరునామాని దృవపరచటానికి మీరు $1 ఉండాలి.',
 'confirmemail_success'      => 'మీ ఈ-మెయిలు చిరునామా ధృవీకరించబడింది.
 ఇక [[Special:UserLogin|లోనికి ప్రవేశించి]] వికీని అస్వాదించండి.',
 'confirmemail_loggedin'     => 'మీ ఈ-మెయిలు చిరునామా ఇప్పుడు రూఢి అయింది.',

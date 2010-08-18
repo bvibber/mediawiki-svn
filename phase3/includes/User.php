@@ -43,56 +43,6 @@ class PasswordError extends MWException {
 class User {
 
 	/**
-	 * \type{\arrayof{\string}} A list of default user toggles, i.e., boolean user
-	 * preferences that are displayed by Special:Preferences as checkboxes.
-	 * This list can be extended via the UserToggles hook or by
-	 * $wgContLang::getExtraUserToggles().
-	 * @showinitializer
-	 */
-	public static $mToggles = array(
-		'highlightbroken',
-		'justify',
-		'hideminor',
-		'extendwatchlist',
-		'usenewrc',
-		'numberheadings',
-		'showtoolbar',
-		'editondblclick',
-		'editsection',
-		'editsectiononrightclick',
-		'showtoc',
-		'rememberpassword',
-		'watchcreations',
-		'watchdefault',
-		'watchmoves',
-		'watchdeletion',
-		'previewontop',
-		'previewonfirst',
-		'nocache',
-		'enotifwatchlistpages',
-		'enotifusertalkpages',
-		'enotifminoredits',
-		'enotifrevealaddr',
-		'shownumberswatching',
-		'fancysig',
-		'externaleditor',
-		'externaldiff',
-		'showjumplinks',
-		'uselivepreview',
-		'forceeditsummary',
-		'watchlisthideminor',
-		'watchlisthidebots',
-		'watchlisthideown',
-		'watchlisthideanons',
-		'watchlisthideliu',
-		'ccmeonemails',
-		'diffonly',
-		'showhiddencats',
-		'noconvertlink',
-		'norollbackdiff',
-	);
-
-	/**
 	 * \type{\arrayof{\string}} List of member variables which are saved to the
 	 * shared cache (memcached). Any operation which changes the
 	 * corresponding database fields must call a cache-clearing function.
@@ -816,7 +766,7 @@ class User {
 	function loadDefaults( $name = false ) {
 		wfProfileIn( __METHOD__ );
 
-		global $wgCookiePrefix;
+		global $wgRequest;
 
 		$this->mId = 0;
 		$this->mName = $name;
@@ -827,8 +777,8 @@ class User {
 		$this->mOptionOverrides = null;
 		$this->mOptionsLoaded = false;
 
-		if ( isset( $_COOKIE[$wgCookiePrefix.'LoggedOut'] ) ) {
-			$this->mTouched = wfTimestamp( TS_MW, $_COOKIE[$wgCookiePrefix.'LoggedOut'] );
+		if( $wgRequest->getCookie( 'LoggedOut' ) !== null ) {
+			$this->mTouched = wfTimestamp( TS_MW, $wgRequest->getCookie( 'LoggedOut' ) );
 		} else {
 			$this->mTouched = '0'; # Allow any pages to be cached
 		}
@@ -859,7 +809,7 @@ class User {
 	 * @return \bool True if the user is logged in, false otherwise.
 	 */
 	private function loadFromSession() {
-		global $wgCookiePrefix, $wgExternalAuthType, $wgAutocreatePolicy;
+		global $wgRequest, $wgExternalAuthType, $wgAutocreatePolicy;
 
 		$result = null;
 		wfRunHooks( 'UserLoadFromSession', array( $this, &$result ) );
@@ -875,8 +825,8 @@ class User {
 			}
 		}
 
-		if ( isset( $_COOKIE["{$wgCookiePrefix}UserID"] ) ) {
-			$sId = intval( $_COOKIE["{$wgCookiePrefix}UserID"] );
+		if ( $wgRequest->getCookie( 'UserID' ) !== null ) {
+			$sId = intval( $wgRequest->getCookie( 'UserID' ) );
 			if( isset( $_SESSION['wsUserID'] ) && $sId != $_SESSION['wsUserID'] ) {
 				$this->loadDefaults(); // Possible collision!
 				wfDebugLog( 'loginSessions', "Session user ID ({$_SESSION['wsUserID']}) and
@@ -898,8 +848,8 @@ class User {
 
 		if ( isset( $_SESSION['wsUserName'] ) ) {
 			$sName = $_SESSION['wsUserName'];
-		} else if ( isset( $_COOKIE["{$wgCookiePrefix}UserName"] ) ) {
-			$sName = $_COOKIE["{$wgCookiePrefix}UserName"];
+		} else if ( $wgRequest->getCookie('UserName') !== null ) {
+			$sName = $wgRequest->getCookie('UserName');
 			$_SESSION['wsUserName'] = $sName;
 		} else {
 			$this->loadDefaults();
@@ -923,8 +873,8 @@ class User {
 		if ( isset( $_SESSION['wsToken'] ) ) {
 			$passwordCorrect = $_SESSION['wsToken'] == $this->mToken;
 			$from = 'session';
-		} else if ( isset( $_COOKIE["{$wgCookiePrefix}Token"] ) ) {
-			$passwordCorrect = $this->mToken == $_COOKIE["{$wgCookiePrefix}Token"];
+		} else if ( $wgRequest->getCookie( 'Token' ) !== null ) {
+			$passwordCorrect = $this->mToken == $wgRequest->getCookie( 'Token' );
 			$from = 'cookie';
 		} else {
 			# No session or persistent login cookie
@@ -1088,22 +1038,6 @@ class User {
 		} else {
 			return null;
 		}
-	}
-
-	/**
-	 * Get a list of user toggle names
-	 * @return \type{\arrayof{\string}} Array of user toggle names
-	 */
-	static function getToggles() {
-		global $wgContLang, $wgUseRCPatrol;
-		$extraToggles = array();
-		wfRunHooks( 'UserToggles', array( &$extraToggles ) );
-		if( $wgUseRCPatrol ) {
-			$extraToggles[] = 'hidepatrolled';
-			$extraToggles[] = 'newpageshidepatrolled';
-			$extraToggles[] = 'watchlisthidepatrolled';
-		}
-		return array_merge( self::$mToggles, $extraToggles, $wgContLang->getExtraUserToggles() );
 	}
 
 
@@ -2705,7 +2639,7 @@ class User {
 
 		$confstr =        $this->getOption( 'math' );
 		$confstr .= '!' . $this->getStubThreshold();
-		if ( $wgUseDynamicDates ) {
+		if ( $wgUseDynamicDates ) { # This is wrong (bug 24714)
 			$confstr .= '!' . $this->getDatePreference();
 		}
 		$confstr .= '!' . ( $this->getOption( 'numberheadings' ) ? '1' : '' );

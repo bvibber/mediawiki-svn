@@ -166,7 +166,6 @@ require_once( "$IP/includes/Namespace.php" );
 require_once( "$IP/includes/ProxyTools.php" );
 require_once( "$IP/includes/ObjectCache.php" );
 require_once( "$IP/includes/ImageFunctions.php" );
-require_once( "$IP/includes/StubObject.php" );
 wfProfileOut( $fname.'-includes' );
 wfProfileIn( $fname.'-misc1' );
 
@@ -323,14 +322,13 @@ $wgContLang = new StubContLang;
 
 // Now that variant lists may be available...
 $wgRequest->interpolateTitle();
-
-$wgUser = new StubUser;
+$wgUser = $wgCommandLineMode ? new User : User::newFromSession();
 $wgLang = new StubUserLang;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );
 $wgParser = new StubObject( 'wgParser', $wgParserConf['class'], array( $wgParserConf ) );
 
 $wgMessageCache = new StubObject( 'wgMessageCache', 'MessageCache',
-	array( $messageMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry, wfWikiID() ) );
+	array( $messageMemc, $wgUseDatabaseMessages, $wgMsgCacheExpiry ) );
 
 wfProfileOut( $fname.'-globals' );
 wfProfileIn( $fname.'-User' );

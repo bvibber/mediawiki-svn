@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Recentchangeslinked
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
  * This is to display changes made to all articles linked in an article.
+ *
  * @ingroup SpecialPage
  */
 class SpecialRecentchangeslinked extends SpecialRecentchanges {
@@ -109,8 +114,8 @@ class SpecialRecentchangeslinked extends SpecialRecentchanges {
 				$query_options, $opts['tagfilter'] );
 		}
 
-		// XXX: parent class does this, should we too?
-		// wfRunHooks('SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts ) );
+		if ( !wfRunHooks( 'SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts, &$query_options ) ) )
+			return false;
 
 		if( $ns == NS_CATEGORY && !$showlinkedto ) {
 			// special handling for categories

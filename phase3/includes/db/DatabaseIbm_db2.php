@@ -1005,7 +1005,6 @@ EOF;
 		$res = $this->query( "VALUES NEXTVAL FOR $safeseq" );
 		$row = $this->fetchRow( $res );
 		$this->mInsertId = $row[0];
-		$this->freeResult( $res );
 		return $this->mInsertId;
 		*/
 		return null;
@@ -1102,7 +1101,6 @@ EOF;
 		$this->begin();
 
 		if ( !$ignore ) {
-			$first = true;
 			foreach ( $args as $row ) {
 				// insert each row into the database
 				$res = $res & $this->execute($stmt, $row);
@@ -1123,7 +1121,7 @@ EOF;
 				$overhead = "SAVEPOINT $ignore ON ROLLBACK RETAIN CURSORS";
 				db2_exec($this->mConn, $overhead, $this->mStmtOptions);
 				
-				$res2 = $this->execute($stmt, $row);
+				$this->execute($stmt, $row);
 				// get the last inserted value into a generated column
 				$this->calcInsertId($table, $primaryKey, $stmt);
 				
@@ -1497,13 +1495,11 @@ EOF;
 	/**
 	 * Not implemented
 	 * @return string ''
-	 * @deprecated
 	 */
 	public function getStatus( $which="%" ) { $this->installPrint('Not implemented for DB2: getStatus()'); return ''; }
 	/**
 	 * Not implemented
 	 * @return string $sql
-	 * @deprecated
 	 */ 
 	public function limitResultForUpdate($sql, $num) { $this->installPrint('Not implemented for DB2: limitResultForUpdate()'); return $sql; }
 	
@@ -1606,7 +1602,6 @@ SQL;
 		$res = $this->query($sql);
 		$row = $this->fetchObject($res);
 		$size = $row->size;
-		$this->freeResult( $res );
 		return $size;
 	}
 	
@@ -1773,7 +1768,7 @@ SQL;
 	 */
 	function bitNot($field) {
 		//expecting bit-fields smaller than 4bytes
-		return 'BITNOT('.$bitField.')';
+		return 'BITNOT('.$field.')';
 	}
 
 	/**

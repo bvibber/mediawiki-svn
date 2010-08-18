@@ -48,6 +48,7 @@
  * @author Li-sung
  * @author Lloffiwr
  * @author Malafaya
+ * @author MaxSem
  * @author McDutchie
  * @author Meno25
  * @author MichaelFrey
@@ -706,6 +707,16 @@ Parameters:
 *Parameter $4 is a URL to the wiki',
 'login-throttled'            => 'Error message shown at [[Special:UserLogin]] after 5 wrong passwords. The hardcoded waiting time is 300 seconds.',
 
+# JavaScript password checks
+'password-strength'            => 'Indicator of [[w:Password strength|password strength]] shown when entering a new password (during user registration or password reset).
+
+<code>$1</code> is one of {{msg-mw|Password-strength-bad}}, {{msg-mw|Password-strength-mediocre}}, {{msg-mw|Password-strength-acceptable}}, {{msg-mw|Password-strength-good}}',
+'password-strength-bad'        => 'See {{msg-mw|password-strength}} for context',
+'password-strength-mediocre'   => 'See {{msg-mw|password-strength}} for context',
+'password-strength-acceptable' => 'See {{msg-mw|password-strength}} for context',
+'password-strength-good'       => 'See {{msg-mw|password-strength}} for context',
+'password-retype-mismatch'     => '{{Identical|Passwords do not match}}',
+
 # Password reset dialog
 'resetpass'                 => 'The caption of [[Special:Resetpass]]
 
@@ -919,6 +930,9 @@ Please report at [[Support]] if you are unable to properly translate this messag
 {{Identical|Last}}",
 'histlegend'             => 'Text in history page. Refers to {{msg-mw|cur}}, {{msg-mw|last}}, and {{msg-mw|minoreditletter}}.',
 'history-fieldset-title' => 'Fieldset label in the edit history pages.',
+'history-show-deleted'   => 'CheckBox to show only per [[mw:Manual:RevisionDelete|RevisonDelete]] deleted versions.
+
+Used in History and [[Special:Contributions]].',
 'histfirst'              => 'Used in page history.',
 'histlast'               => 'Used in page history.',
 'historyempty'           => 'Text in page history for empty page revisions
@@ -1300,6 +1314,7 @@ When changing this message, please also update {{msg-mw|vector-editwarning-warni
 'contextlines'                  => "Option on the 'Search options' tab of [[Special:Preferences]]",
 'contextchars'                  => 'Used in Preferences/Search tab',
 'stub-threshold'                => 'Used in [[Special:Preferences]], tab "Misc".',
+'stub-threshold-disabled'       => 'Used in [[Special:Preferences]].',
 'recentchangesdays'             => 'Used in [[Special:Preferences]], tab "Recent changes".',
 'recentchangesdays-max'         => 'Shown as hint in [[Special:Preferences]], tab "Recent changes"',
 'recentchangescount'            => 'Used in [[Special:Preferences]], tab "Recent changes".',
@@ -2268,9 +2283,10 @@ Special:EmailUser appears when you click on the link "E-mail this user" in the s
 'mywatchlist'          => 'Link at the upper right corner of the screen.
 
 {{Identical|My watchlist}}',
-'watchlistfor'         => 'Subtitle on [[Special:Watchlist]].
+'watchlistfor2'        => 'Subtitle on [[Special:Watchlist]].
 
 *$1: Username of current user
+*$2: Tool links (View relevant changes | View and edit watchlist | Edit raw watchlist)
 {{Identical|For $1}}',
 'nowatchlist'          => 'Displayed when there is no pages in the watchlist.',
 'watchlistanontext'    => '* $1 is a link to [[Special:UserLogin]] with {{msg-mw|loginreqlink}} as link description',
@@ -3396,7 +3412,8 @@ $1 is a message from the e-mail delivery system.',
 'confirmemail_needlogin'   => 'Used on [[Special:ConfirmEmail]] when you are logged out.
 * $1 is a link to [[Special:UserLogin]] with {{msg-mw|loginreqlink}} as link description',
 'confirmemail_loggedin'    => 'Explanation on [[Special:ConfirmEmail]] on completion of confirmation.',
-'confirmemail_subject'     => 'Text in subject box of e-mail sent to user during e-mail address confirmation',
+'confirmemail_subject'     => 'Text in subject box of e-mail sent to user during e-mail address confirmation
+{{Identical|SITENAME e-mail address confirmation}}',
 'confirmemail_body'        => 'This message is sent as an e-mail to users when they add or change their e-mail adress in [[Special:Preferences]].
 *$1 is the IP address of the user that changed the e-mail address
 *$2 is the name of the user

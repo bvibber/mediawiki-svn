@@ -251,7 +251,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Dodaj do obserwowanych strony, które usuwam',
 'tog-previewontop'            => 'Pokazuj podgląd powyżej obszaru edycji',
 'tog-previewonfirst'          => 'Pokazuj podgląd strony podczas pierwszej edycji',
-'tog-nocache'                 => 'Wyłącz pamięć podręczną',
+'tog-nocache'                 => 'Wyłącz pamięć podręczną przeglądarki',
 'tog-enotifwatchlistpages'    => 'Wyślij do mnie e‐mail, jeśli strona z listy moich obserwowanych zostanie zmodyfikowana',
 'tog-enotifusertalkpages'     => 'Wyślij do mnie e‐mail, jeśli moja strona dyskusji zostanie zmodyfikowana',
 'tog-enotifminoredits'        => 'Wyślij e‐mail także w przypadku drobnych zmian na stronach',
@@ -656,6 +656,7 @@ Nie zapomnij dostosować [[Special:Preferences|preferencji dla {{GRAMMAR:D.lp|{{
 'gotaccount'                 => "Masz już konto? '''$1'''.",
 'gotaccountlink'             => 'Zaloguj się',
 'createaccountmail'          => 'poprzez e‐mail',
+'createaccountreason'        => 'Powód',
 'badretype'                  => 'Wprowadzone hasła różnią się między sobą.',
 'userexists'                 => 'Wybrana przez Ciebie nazwa użytkownika jest już zajęta.
 Wybierz inną nazwę użytkownika.',
@@ -722,6 +723,15 @@ Możesz zignorować tę wiadomość, jeśli konto zostało utworzone przez pomy�
 Odczekaj chwilę zanim ponowisz próbę.',
 'loginlanguagelabel'         => 'Język: $1',
 'suspicious-userlogout'      => 'Żądanie wylogowania zostało odrzucone ponieważ wygląda na to, że zostało wysłane przez uszkodzoną przeglądarkę lub buforujący serwer proxy.',
+
+# JavaScript password checks
+'password-strength'            => 'Szacowane bezpieczeństwo hasła – $1',
+'password-strength-bad'        => 'ZŁE',
+'password-strength-mediocre'   => 'mierne',
+'password-strength-acceptable' => 'akceptowalne',
+'password-strength-good'       => 'dobre',
+'password-retype'              => 'Powtórz hasło',
+'password-retype-mismatch'     => 'Hasła nie są identyczne',
 
 # Password reset dialog
 'resetpass'                 => 'Zmień hasło',
@@ -1279,6 +1289,7 @@ Jednak informacje o treści {{GRAMMAR:D.lp|{{SITENAME}}}} mogą być w Google ni
 'contextlines'                  => 'Pierwsze wiersze stron',
 'contextchars'                  => 'Litery kontekstu w linijce',
 'stub-threshold'                => 'Maksymalny (w bajtach) rozmiar strony oznaczanej jako <a href="#" class="stub">zalążek (stub)</a>',
+'stub-threshold-disabled'       => 'Wyłączone',
 'recentchangesdays'             => 'Liczba dni prezentowanych w ostatnich zmianach',
 'recentchangesdays-max'         => '(maksymalnie $1 {{PLURAL:$1|dzień|dni}})',
 'recentchangescount'            => 'Domyślna liczba wyświetlanych edycji',
@@ -2097,7 +2108,7 @@ Adres e‐mailowy, który został przez Ciebie wprowadzony w [[Special:Preferenc
 # Watchlist
 'watchlist'            => 'Obserwowane',
 'mywatchlist'          => 'Obserwowane',
-'watchlistfor'         => "(raport dla użytkownika '''$1''')",
+'watchlistfor2'        => 'Dla $1 $2',
 'nowatchlist'          => 'Lista obserwowanych przez Ciebie stron jest pusta.',
 'watchlistanontext'    => '$1, aby obejrzeć lub edytować elementy listy obserwowanych.',
 'watchnologin'         => 'Nie jesteś zalogowany',

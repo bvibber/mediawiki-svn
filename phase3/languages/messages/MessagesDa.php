@@ -1986,7 +1986,6 @@ Den e-mail-adresse du har angivet i [[Special:Preferences|dine indstillinger]] v
 # Watchlist
 'watchlist'            => 'Overvågningsliste',
 'mywatchlist'          => 'Min overvågningsliste',
-'watchlistfor'         => "(for '''$1''')",
 'nowatchlist'          => 'Du har ingenting i din overvågningsliste.',
 'watchlistanontext'    => 'Du skal $1, for at se din overvågningsliste eller ændre indholdet af den.',
 'watchnologin'         => 'Ikke logget på',
@@ -3300,7 +3299,7 @@ Denne side oplister de tags som programmet kan mærke en redigering med, og dere
 # Database error messages
 'dberr-header'      => 'Wikien har et problem',
 'dberr-problems'    => 'Undskyld! Siden har tekniske problemer.',
-'dberr-again'       => 'Prøv at vente et par minutter og opdater Nyså siden igen.',
+'dberr-again'       => 'Prøv at vente et par minutter og opdater så siden igen.',
 'dberr-info'        => '(Kan ikke komme i kontakt med databaseserveren: $1)',
 'dberr-usegoogle'   => 'Du kan prøve at søge med Google imens.',
 'dberr-outofdate'   => 'Bemærk at deres indeks over vores sider kan være forældet.',

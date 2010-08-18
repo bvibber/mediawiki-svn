@@ -761,6 +761,15 @@ $2',
 'loginlanguagelabel'         => 'Јазик: $1',
 'suspicious-userlogout'      => 'Вашето барање за одјава е одбиено бидејќи се чини дека е испратено од расипан прелистувач или кеширачки застапник (proxy).',
 
+# JavaScript password checks
+'password-strength'            => 'Проценета отпорност на лозинката: $1',
+'password-strength-bad'        => 'ЛОША',
+'password-strength-mediocre'   => 'преодна',
+'password-strength-acceptable' => 'прифатлива',
+'password-strength-good'       => 'добра',
+'password-retype'              => 'Тука повторете ја лозинката',
+'password-retype-mismatch'     => 'Лозинките не се исти',
+
 # Password reset dialog
 'resetpass'                 => 'Промена на лозинка',
 'resetpass_announce'        => 'Најавени сте со привремена лозинка пратена по е-пошта.
@@ -1319,6 +1328,7 @@ $1",
 'contextlines'                  => 'Линии по резултат:',
 'contextchars'                  => 'Контекст по ред:',
 'stub-threshold'                => 'Праг за <a href="#" class="stub">никулци</a> (бајти):',
+'stub-threshold-disabled'       => 'Оневозможено',
 'recentchangesdays'             => 'Денови за приказ во скорешните промени:',
 'recentchangesdays-max'         => '(највеќе $1 {{PLURAL:$1|ден|дена}})',
 'recentchangescount'            => 'Број на уредувања кои ќе се прикажат по основно:',
@@ -2149,7 +2159,7 @@ $1',
 # Watchlist
 'watchlist'            => 'мои набљудувања',
 'mywatchlist'          => 'мои набљудувања',
-'watchlistfor'         => "(за '''$1''')",
+'watchlistfor2'        => 'За $1 $2',
 'nowatchlist'          => 'Немате ништо во списокот на набљудувања.',
 'watchlistanontext'    => 'Се бара $1 за да можете да го прегледувате и уредувате списокот на набљудувања.',
 'watchnologin'         => 'Не сте најавени',
@@ -3376,7 +3386,8 @@ Variants for Chinese language
 Вратена е следнава грешка: $1',
 'confirmemail_invalid'      => 'Неточен код за потврда. Кодот можеби е истечен.',
 'confirmemail_needlogin'    => 'Морате да $1 за да ја потврдите вашата е-поштенска адреса.',
-'confirmemail_success'      => 'Вашата е-поштенска адреса сега е потврдена. Можете да се најавите и да уживате во викито.',
+'confirmemail_success'      => 'Вашата е-поштенска адреса е потврдена.
+Сега можете да се [[Special:UserLogin|најавите]]. Ви посакуваме пријатни мигови на викито!',
 'confirmemail_loggedin'     => 'Вашата е-поштенска адреса сега е потврдена.',
 'confirmemail_error'        => 'Нешто тргна наопаку при снимањето на вашата потврда.',
 'confirmemail_subject'      => '{{SITENAME}} потврда за е-поштенска адреса',

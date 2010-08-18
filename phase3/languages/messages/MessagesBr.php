@@ -10,6 +10,7 @@
  * @author Als-Holder
  * @author Fohanno
  * @author Fulup
+ * @author Gwendal
  * @author Malafaya
  * @author Y-M D
  * @author לערי ריינהארט
@@ -136,7 +137,7 @@ $messages = array(
 'tog-watchdeletion'           => "Ouzhpennañ da'm roll evezhiañ ar pajennoù diverket ganin",
 'tog-previewontop'            => 'Rakwelet tres ar bajenn a-us ar prenestr skridaozañ',
 'tog-previewonfirst'          => 'Rakwelet tres ar bajenn kerkent hag an aozadenn gentañ',
-'tog-nocache'                 => 'Diweredekaat krubuilh ar pajennoù',
+'tog-nocache'                 => 'Diweredekaat krubuilh ar pajennoù gant ar merdeer',
 'tog-enotifwatchlistpages'    => 'Kas ur postel din pa vez degaset kemmoù war ur bajenn evezhiet ganin',
 'tog-enotifusertalkpages'     => 'Kas ur postel din pa vez degaset kemmoù war ma fajenn gaozeal',
 'tog-enotifminoredits'        => 'Kas ur postel din, ha pa vije evit kemenn kemmoù dister',
@@ -599,6 +600,15 @@ Na daolit ket evezh ouzh ar c\'hemenn-mañ m\'eo bet krouet ar gont dre fazi.',
 Gortozit a-raok klask en-dro.",
 'loginlanguagelabel'         => 'Yezh : $1',
 'suspicious-userlogout'      => 'Distaolet eo bet ho koulenn digevreañ rak kaset e oa bet gant ur merdeer direizhet pe krubuilhadenn ur proksi, evit doare.',
+
+# JavaScript password checks
+'password-strength'            => 'Live surentez ar ger-tremen : $1',
+'password-strength-bad'        => 'FALL',
+'password-strength-mediocre'   => 'dister',
+'password-strength-acceptable' => 'degemeradus',
+'password-strength-good'       => 'mat',
+'password-retype'              => 'Skrivit ho ker-tremen en-dro amañ',
+'password-retype-mismatch'     => 'Ne glot ket ar gerioù-tremen',
 
 # Password reset dialog
 'resetpass'                 => 'Cheñch ar ger-tremen',
@@ -1140,6 +1150,7 @@ Gwiriit ne vo ket torret red istor ar bajenn gant ar c'hemm-mañ.",
 'contextlines'                  => 'Niver a linennoù dre respont',
 'contextchars'                  => 'Niver a arouezennoù kendestenn dre linenn',
 'stub-threshold'                => 'Bevenn uhelañ evit al <a href="#" class="stub">liammoù war-du an danvez pennadoù</a> (okted) :',
+'stub-threshold-disabled'       => 'Diweredekaet',
 'recentchangesdays'             => "Niver a zevezhioù da ziskouez er c'hemmoù diwezhañ :",
 'recentchangesdays-max'         => "(d'ar muiañ $1 {{PLURAL:$1|deiz|deiz}})",
 'recentchangescount'            => 'Niver a gemmoù da ziskouez dre ziouer',
@@ -1177,7 +1188,7 @@ Setu aze un dalvoudenn ganet dre zegouezh hag a c'hallfec'h implijout : $1",
 'prefs-reset-intro'             => "Ober gant ar bajenn-mañ a c'hallit evit adlakaat ho penndibaboù dre ziouer evit al lec'hienn-mañ. Kement-se n'hallo ket bezañ disc'hraet da c'houde.",
 'prefs-emailconfirm-label'      => 'Kadarnaat ar postel :',
 'prefs-textboxsize'             => 'Ment ar prenestr skridaozañ',
-'youremail'                     => 'Postel *:',
+'youremail'                     => 'Postel :',
 'username'                      => 'Anv implijer :',
 'uid'                           => 'Niv. identelezh an implijer :',
 'prefs-memberingroups'          => 'Ezel eus {{PLURAL:$1|ar strollad|ar strolladoù}}:',
@@ -1550,6 +1561,7 @@ PICT # misc.
 
 $1",
 'upload-warning-subj'         => "Kemmen diwall e-pad ar c'hargañ",
+'upload-warning-msg'          => "Ur gudenn a zo bet e-kerzh ho ezporzhiadur eus [$2]. Galloud a c'heller distreiñ d'ar [[Special:Upload/stash/$1|furmskrid ezporzhiañ]] evit renkañ ar gudenn.",
 
 'upload-proto-error'        => 'Protokol direizh',
 'upload-proto-error-text'   => 'Rekis eo an URLoù a grog gant <code>http://</code> pe <code>ftp://</code> evit enporzhiañ.',
@@ -1955,7 +1967,7 @@ E maezienn \"Kaser\" ho postel e vo merket ar chomlec'h postel resisaet ganeoc'h
 # Watchlist
 'watchlist'            => 'Roll evezhiañ',
 'mywatchlist'          => 'Ma roll evezhiañ',
-'watchlistfor'         => "(evit '''$1''')",
+'watchlistfor2'        => 'Evit $1 $2',
 'nowatchlist'          => "N'eus pennad ebet en ho roll evezhiañ.",
 'watchlistanontext'    => "Ret eo deoc'h $1 evit gwelet pe kemmañ an elfennoù zo en ho roll evezhiañ.",
 'watchnologin'         => 'Digevreet',
@@ -2043,7 +2055,7 @@ Kadarnait, mar plij, eo mat an dra-se hoc'h eus c'hoant da ober, e komprenit mat
 'actionfailed'           => "Ober c'hwitet",
 'deletedtext'            => '"Diverket eo bet <nowiki>$1</nowiki>".
 Sellet ouzh $2 evit roll an diverkadennoù diwezhañ.',
-'deletedarticle'         => 'diverket "$1"',
+'deletedarticle'         => 'en deus dilamet "[[$1]]"',
 'suppressedarticle'      => 'diverket "[[$1]]"',
 'dellogpage'             => 'Roll ar pajennoù diverket',
 'dellogpagetext'         => 'Setu roll ar pajennnoù diwezhañ bet diverket.',
@@ -2445,6 +2457,7 @@ Diverkañ anezhañ a fell deoc'h ober evit reiñ lec'h d'an adkas ?",
 'immobile-source-page'         => "N'haller ket adenvel ar bajenn-mañ.",
 'immobile-target-page'         => "N'haller ket kas ar bajenn-mañ war-du an titl-se.",
 'imagenocrossnamespace'        => "N'haller ket dilec'hiañ ur skeudenn war-du un esaouenn anv n'eo ket hini ur skeudenn.",
+'nonfile-cannot-move-to-file'  => "N'haller ket dilec'hiañ un dra ha n'eo ket ur restr war-du an esaouenn anv restr",
 'imagetypemismatch'            => 'Ne glot ket astenn nevez ar restr gant ar furmad-mañ.',
 'imageinvalidfilename'         => 'Fall eo anv ar restr tal',
 'fix-double-redirects'         => 'Hizivaat an holl adkasoù a gas war-du an titl orin',
@@ -3324,7 +3337,7 @@ Merkañ anv ar restr hep ar rakger "{{ns:file}}:"',
 'compare-submit'   => 'Keñveriañ',
 
 # Database error messages
-'dberr-header'      => 'ur gudenn zo gant ar viki-mañ',
+'dberr-header'      => 'Ur gudenn zo gant ar wiki-mañ',
 'dberr-problems'    => "Ho tigarez ! Kudennoù teknikel zo gant al lec'hienn-mañ.",
 'dberr-again'       => 'Gortozit un nebeud munutennoù a-raok adkargañ.',
 'dberr-info'        => '(Dibosupl kevreañ ouzh servijer an diaz roadennoù: $1)',

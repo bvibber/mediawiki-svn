@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on July 30, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on July 30, 2007
  *
  * Copyright © 2007 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -57,10 +58,6 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 		$what = $params['what'];
 		$searchInfo = array_flip( $params['info'] );
 		$prop = array_flip( $params['prop'] );
-
-		if ( strval( $query ) === '' ) {
-			$this->dieUsage( 'empty search string is not allowed', 'param-search' );
-		}
 
 		// Create search engine instance and set options
 		$search = SearchEngine::create();
@@ -170,7 +167,10 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		return array(
-			'search' => null,
+			'search' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'namespace' => array(
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_TYPE => 'namespace',
@@ -239,7 +239,6 @@ class ApiQuerySearch extends ApiQueryGeneratorBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'code' => 'param-search', 'info' => 'empty search string is not allowed' ),
 			array( 'code' => 'search-text-disabled', 'info' => 'text search is disabled' ),
 			array( 'code' => 'search-title-disabled', 'info' => 'title search is disabled' ),
 		) );

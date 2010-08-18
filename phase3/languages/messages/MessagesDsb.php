@@ -627,6 +627,15 @@ Móžoš toś te zdźělenje ignorowaś, jolic toś te konto jo se jano zamólnj
 'loginlanguagelabel'         => 'Rěc: $1',
 'suspicious-userlogout'      => 'Twójo póžedanje za wótzjawjenim jo se wótpokazało, dokulaž zda se, až jo se pósłało pśez wobškóźony wobglědowak abo pufrowański proksy',
 
+# JavaScript password checks
+'password-strength'            => 'Pówoblicona gronidłowa wjelikosć: $1',
+'password-strength-bad'        => 'ŠPATNA',
+'password-strength-mediocre'   => 'wósrědna',
+'password-strength-acceptable' => 'akceptabelny',
+'password-strength-good'       => 'dobra',
+'password-retype'              => 'Šćitne gronidło wóspjetowaś:',
+'password-retype-mismatch'     => 'Gronidle se njemakatej',
+
 # Password reset dialog
 'resetpass'                 => 'Gronidło změniś',
 'resetpass_announce'        => 'Sy z nachylnym e-mailowym šćitnym gronidłom pśizjawjony. Aby pśizjawjenje zakóńcył, zapódaj how nowe šćitne gronidło:',
@@ -1154,6 +1163,7 @@ Zaruc, až historija wersijow nastawka jo njepśetergnjona.',
 'contextlines'                  => 'Rědki na wuslědk:',
 'contextchars'                  => 'Znamuška na rědku:',
 'stub-threshold'                => 'Formatěrowanje  <a href="#" class="stub">wótkaza na zarodk</a> (w bytach):',
+'stub-threshold-disabled'       => 'Znjemóžnjony',
 'recentchangesdays'             => 'Licba dnjow, kenž se pokazuju w "slědnych změnach":',
 'recentchangesdays-max'         => '(maksimalnje $1 {{PLURAL:$1|źeń|dnja|dny|dnjow}})',
 'recentchangescount'            => 'Licba změnow, kótaraž ma se pó standarźe pokazaś:',
@@ -1951,7 +1961,7 @@ E-mailowa adresa, kótaruž sy zapódał w [[Special:Preferences|swójich wužyw
 # Watchlist
 'watchlist'            => 'Wobglědowańka',
 'mywatchlist'          => 'mója wobglědowańka',
-'watchlistfor'         => "(za wužywarja '''$1''')",
+'watchlistfor2'        => 'Za wužywarja $1 $2',
 'nowatchlist'          => 'Žedne zapise w twójej wobglědowańce.',
 'watchlistanontext'    => 'Dejš $1, aby mógał swóju wobglědowańku wiźeś abo zapise w njej wobźěłaś.',
 'watchnologin'         => 'Njepśizjawjony(a)',
@@ -3048,7 +3058,8 @@ Slědujuce wótkaze w tej samej smužce se za wuwześa naglědaju, w kótarychž
 E-mailowy program jo wrośił: $1',
 'confirmemail_invalid'      => 'Njepłaśece wobkšuśeńske gronidło. Snaź jo kod mjaztym płaśiwosć zgubił.',
 'confirmemail_needlogin'    => 'Dejš $1 aby swóju e-mailowu adresu wobkšuśił.',
-'confirmemail_success'      => 'Twója e-mailowa adresa jo wobkšuśona, móžoš se pśizjawiś.',
+'confirmemail_success'      => 'Twója e-mailowa adresa jo wobkšuśona
+Móžoš se něnto [[Special:UserLogin|pśizjawiś]] a se wikiju wijaseliś.',
 'confirmemail_loggedin'     => 'Twója e-mailowa adresa jo něnto wobkšuśona.',
 'confirmemail_error'        => 'Zmólka pśi wobkšuśenju e-mailoweje adresy.',
 'confirmemail_subject'      => '{{SITENAME}} - Wobkšuśenje e-mailoweje adrese',

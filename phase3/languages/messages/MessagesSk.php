@@ -296,7 +296,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Pridávať stránky, ktoré zmažem, do môjho zoznamu sledovaných',
 'tog-previewontop'            => 'Zobrazovať náhľad pred textovým poľom úprav, nie až za ním',
 'tog-previewonfirst'          => 'Zobraziť náhľad pred prvou úpravou',
-'tog-nocache'                 => 'Zakázať priebežné ukladanie stránok do vyrovnávacej pamäte',
+'tog-nocache'                 => 'Zakázať ukladanie stránok do vyrovnávacej pamäte prehliadača',
 'tog-enotifwatchlistpages'    => 'Upozorniť ma emailom, keď sa zmení stránka z môjho zoznamu sledovaných',
 'tog-enotifusertalkpages'     => 'Upozorniť ma emailom po zmene mojej používateľskej diskusnej stránky',
 'tog-enotifminoredits'        => 'Upozorniť ma emailom aj na drobné úpravy stránok',
@@ -701,6 +701,7 @@ Nezabudnite si nastaviť svoje [[Special:Preferences|používateľské nastaveni
 'gotaccount'                 => "Máte už vytvorený účet? '''$1'''.",
 'gotaccountlink'             => 'Prihlásiť',
 'createaccountmail'          => 'e-mailom',
+'createaccountreason'        => 'Dôvod:',
 'badretype'                  => 'Zadané heslá nie sú rovnaké.',
 'userexists'                 => 'Zadané používateľské meno už používa niekto iný.
 Zadajte iné meno.',
@@ -761,6 +762,15 @@ Ak bol účet vytvorený omylom, túto správu môžete ignorovať.',
 Prosím, počkajte predtým, než to skúsite znova.',
 'loginlanguagelabel'         => 'Jazyk: $1',
 'suspicious-userlogout'      => 'Vaša požiadavka odhlásiť sa bola zamietnutá, pretože to vyzerá, že ju poslal pokazený prehliadač alebo proxy server.',
+
+# JavaScript password checks
+'password-strength'            => 'Odhadovaná sila hesla: $1',
+'password-strength-bad'        => 'VEĽMI SLABÉ',
+'password-strength-mediocre'   => 'slabé',
+'password-strength-acceptable' => 'prijateľné',
+'password-strength-good'       => 'dobré',
+'password-retype'              => 'Sem znova napíšte svoje heslo',
+'password-retype-mismatch'     => 'Heslá sa nezhodujú',
 
 # Password reset dialog
 'resetpass'                 => 'Zmeniť heslo',
@@ -1313,6 +1323,7 @@ Uistite sa, že táto zmena zachová historickú kontinuitu zmien stránky.',
 'contextlines'                  => 'Počet zobrazených riadkov z každej nájdenej stránky:',
 'contextchars'                  => 'Počet kontextových znakov v riadku',
 'stub-threshold'                => 'Prah formátovania <a href="#" class="stub">výhonkov</a> (v bajtoch):',
+'stub-threshold-disabled'       => 'Vypnuté',
 'recentchangesdays'             => 'Koľko dní zobrazovať v posledných úpravách:',
 'recentchangesdays-max'         => '(maximálne $1 {{PLURAL:$1|deň|dni|dní}})',
 'recentchangescount'            => 'Štandardne zobrazovaný počet úprav:',
@@ -1715,11 +1726,13 @@ MGP # Pentax
 PICT # rôzne
   #</pre> <!-- tento riadok ponechajte bez zmeny -->',
 'upload-success-subj'         => 'Nahranie bolo úspešné',
-'upload-success-msg'          => 'Váš súbor je dostupný tu: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'Nahranie súboru [$2]prebehlo úspešne. Je dostupný tu: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Problém s nahrávaním',
 'upload-failure-msg'          => 'Vyskytol sa problém s vašim nahrávaním:
 
 $1',
+'upload-warning-subj'         => 'Upozornenie pri nahrávaní',
+'upload-warning-msg'          => 'Nastal problém pri nahrávaní z [$2]. Môžete sa vrátiť na [[Special:Upload/stash/$1|nahrávací formulár]] a tento problém napraviť.',
 
 'upload-proto-error'        => 'Nesprávny protokol',
 'upload-proto-error-text'   => 'Vzdialené nahrávanie vyžaduje, aby URL začínali <code>http://</code> alebo <code>ftp://</code>.',
@@ -2121,7 +2134,7 @@ Emailová adresa, ktorú ste zadali vo svojich [[Special:Preferences|nastaveniac
 # Watchlist
 'watchlist'            => 'Sledované stránky',
 'mywatchlist'          => 'Sledované stránky',
-'watchlistfor'         => "(používateľa '''$1''')",
+'watchlistfor2'        => '$1 $2',
 'nowatchlist'          => 'V zozname sledovaných stránok nemáte žiadne položky.',
 'watchlistanontext'    => 'Prosím $1 pre prezeranie alebo úpravu vášho zoznamu sledovaných stránok.',
 'watchnologin'         => 'Nie ste prihlásený/á',
@@ -2722,7 +2735,7 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 # Import log
 'importlogpage'                    => 'Záznam importov',
 'importlogpagetext'                => 'Administratívny import stránok vrátane histórie úprav z iných wiki.',
-'import-logentry-upload'           => 'importovaný $1 pomocou nahrania súboru',
+'import-logentry-upload'           => 'importoval [[$1]] nahraním súboru',
 'import-logentry-upload-detail'    => '$1 {{PLURAL:$1|revízia|revízie|revízií}}',
 'import-logentry-interwiki'        => 'Transwiki import $1 úspešný',
 'import-logentry-interwiki-detail' => '$1 {{PLURAL:$1|revízia|revízie|revízií}} z $2',

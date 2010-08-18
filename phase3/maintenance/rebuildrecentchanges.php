@@ -66,6 +66,7 @@ class RebuildRecentchanges extends Maintenance {
 		$cutoff = time() - $wgRCMaxAge;
 		$dbw->insertSelect( 'recentchanges', array( 'page', 'revision' ),
 			array(
+				'rc_id'         => ( $dbw->nextSequenceValue( 'rc_rc_id_seq' ) > 0 ) ? $dbw->nextSequenceValue( 'rc_rc_id_seq' ) : 0,
 				'rc_timestamp'  => 'rev_timestamp',
 				'rc_cur_time'   => 'rev_timestamp',
 				'rc_user'       => 'rev_user',
@@ -128,7 +129,6 @@ class RebuildRecentchanges extends Maintenance {
 					$lastSize = 'NULL';
 					$new = 1; // probably true
 				}
-				$dbw->freeResult( $res2 );
 			}
 			if ( $lastCurId == 0 ) {
 				$this->output( "Uhhh, something wrong? No curid\n" );
@@ -146,7 +146,6 @@ class RebuildRecentchanges extends Maintenance {
 				$lastSize = $size;
 			}
 		}
-		$dbw->freeResult( $res );
 	}
 
 	/**
@@ -271,8 +270,6 @@ class RebuildRecentchanges extends Maintenance {
 				$dbw->query( $sql2 );
 			}
 		}
-	
-		$dbw->freeResult( $res );
 	}
 
 	/**

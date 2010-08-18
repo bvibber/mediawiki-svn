@@ -310,7 +310,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Lisää poistamani sivut tarkkailulistalle',
 'tog-previewontop'            => 'Näytä esikatselu muokkauskentän yläpuolella',
 'tog-previewonfirst'          => 'Näytä esikatselu heti, kun muokkaus aloitetaan',
-'tog-nocache'                 => 'Älä tallenna sivuja välimuistiin',
+'tog-nocache'                 => 'Älä tallenna sivuja selaimen välimuistiin',
 'tog-enotifwatchlistpages'    => 'Lähetä sähköpostiviesti tarkkailtujen sivujen muutoksista',
 'tog-enotifusertalkpages'     => 'Lähetä sähköpostiviesti, kun käyttäjäsivun keskustelusivu muuttuu',
 'tog-enotifminoredits'        => 'Lähetä sähköpostiviesti myös pienistä muokkauksista',
@@ -714,6 +714,7 @@ Käyttäjätunnuksesi on luotu.
 'gotaccount'                 => "Jos sinulla on jo tunnus, voit '''$1'''.",
 'gotaccountlink'             => 'kirjautua sisään',
 'createaccountmail'          => 'sähköpostitse',
+'createaccountreason'        => 'Syy',
 'badretype'                  => 'Syöttämäsi salasanat ovat erilaiset.',
 'userexists'                 => 'Pyytämäsi käyttäjänimi on jo käytössä. Valitse toinen käyttäjänimi.',
 'loginerror'                 => 'Sisäänkirjautumisvirhe',
@@ -762,6 +763,9 @@ Sinun ei tarvitse huomioida tätä viestiä, jos tunnus on luotu virheellisesti.
 Odota ennen kuin yrität uudelleen.',
 'loginlanguagelabel'         => 'Kieli: $1',
 'suspicious-userlogout'      => 'Pyyntösi kirjautua ulos evättiin, koska se näytti rikkinäisen selaimen tai välimuistipalvelimen lähettämältä.',
+
+# JavaScript password checks
+'password-strength-good' => 'hyvä',
 
 # Password reset dialog
 'resetpass'                 => 'Muuta salasana',
@@ -1286,6 +1290,7 @@ Kokeile lisätä haun alkuun ''all:'', niin haku kohdistuu kaikkeen sisältöön
 'contextlines'                  => 'Rivien määrä tulosta kohti',
 'contextchars'                  => 'Sisällön merkkien määrä riviä kohden',
 'stub-threshold'                => '<a href="#" class="stub">Tynkäsivun</a> osoituskynnys',
+'stub-threshold-disabled'       => 'Ei käytössä',
 'recentchangesdays'             => 'Näytettävien päivien määrä tuoreissa muutoksissa',
 'recentchangesdays-max'         => '(enintään $1 {{PLURAL:$1|päivä|päivää}})',
 'recentchangescount'            => 'Näytettävien muutoksien määrä oletuksena',
@@ -1355,7 +1360,8 @@ Tässä satunnaisesti tuotettu arvo, jota voit käyttää: $1',
 'prefs-advancedsearchoptions'   => 'Lisäasetukset',
 'prefs-advancedwatchlist'       => 'Lisäasetukset',
 'prefs-displayrc'               => 'Perusasetukset',
-'prefs-displaysearchoptions'    => 'Näyttö asetukset',
+'prefs-displaysearchoptions'    => 'Näyttöasetukset',
+'prefs-displaywatchlist'        => 'Näyttöasetukset',
 'prefs-diffs'                   => 'Erot',
 
 # User rights
@@ -1668,6 +1674,7 @@ Harkitse, haluatko jatkaa tämän tiedoston tallentamista. Tiedoston poistoloki 
 'upload-failure-msg'          => 'Tallennuksessasi esiintyi ongelma:
 
 $1',
+'upload-warning-subj'         => 'Tallennusvaroitus',
 
 'upload-proto-error'        => 'Virheellinen protokolla',
 'upload-proto-error-text'   => 'Etälähetys on mahdollista vain osoitteista, jotka alkavat merkkijonolla <code>http://</code> tai <code>ftp://</code>.',
@@ -2063,7 +2070,6 @@ Lisätietoa yksittäisistä käyttäjäoikeuksista saattaa löytyä [[{{MediaWik
 # Watchlist
 'watchlist'            => 'Tarkkailulista',
 'mywatchlist'          => 'Tarkkailulista',
-'watchlistfor'         => '$1',
 'nowatchlist'          => 'Tarkkailulistallasi ei ole sivuja.',
 'watchlistanontext'    => 'Sinun täytyy $1, jos haluat käyttää tarkkailulistaa.',
 'watchnologin'         => 'Et ole kirjautunut sisään',
@@ -2527,6 +2533,7 @@ $1 {{PLURAL:$1|sivu|sivua}} siirrettiin.',
 'immobile-source-page'         => 'Tämä sivu ei ole siirrettävissä.',
 'immobile-target-page'         => 'Kyseiselle kohdenimelle ei voi siirtää.',
 'imagenocrossnamespace'        => 'Tiedostoja ei voi siirtää pois tiedostonimiavaruudesta.',
+'nonfile-cannot-move-to-file'  => 'Sivuja ei voi siirtää tiedostonimiavaruuteen.',
 'imagetypemismatch'            => 'Uusi tiedostopääte ei vastaa tiedoston tyyppiä',
 'imageinvalidfilename'         => 'Kohdenimi on virheellinen',
 'fix-double-redirects'         => 'Päivitä kaikki tänne viittaavat ohjaukset ohjaamaan uudelle nimelle',

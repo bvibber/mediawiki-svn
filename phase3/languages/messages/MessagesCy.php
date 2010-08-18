@@ -592,6 +592,15 @@ Oedwch ychydig cyn mentro eto.',
 'loginlanguagelabel'         => 'Iaith: $1',
 'suspicious-userlogout'      => 'Gwrthodwyd eich cais i allgofnodi oherwydd ei fod yn ymddangos mai gweinydd wedi torri neu ddirprwy gelc a anfonodd y cais.',
 
+# JavaScript password checks
+'password-strength'            => 'Amcangyfrif o gryfder y cyfrinair: $1',
+'password-strength-bad'        => 'GWAEL',
+'password-strength-mediocre'   => 'tila',
+'password-strength-acceptable' => 'derbyniol',
+'password-strength-good'       => 'da',
+'password-retype'              => 'Ail-deipiwch y cyfrinair fan hyn',
+'password-retype-mismatch'     => 'Y cyfrineiriau yn wahanol',
+
 # Password reset dialog
 'resetpass'                 => 'Newid cyfrinair y cyfrif',
 'resetpass_announce'        => "Fe wnaethoch fewngofnodi gyda chôd dros dro oddi ar e-bost.
@@ -1134,6 +1143,7 @@ Cofiwch y gall mynegeion Google o gynnwys {{SITENAME}} fod ar ei hôl hi.",
 'contextlines'                  => "Nifer y llinellau i'w dangos ar gyfer pob hit:",
 'contextchars'                  => 'Nifer y llythrennau a nodau eraill i bob llinell:',
 'stub-threshold'                => 'Trothwy ar gyfer fformatio <a href="#" class="stub">cyswllt eginyn</a> (beitiau):',
+'stub-threshold-disabled'       => 'Analluogwyd',
 'recentchangesdays'             => "Nifer y diwrnodau i'w dangos yn 'newidiadau diweddar':",
 'recentchangesdays-max'         => '(hyd at $1 {{PLURAL:$1||diwrnod|ddiwrnod|diwrnod|diwrnod|diwrnod}})',
 'recentchangescount'            => "Nifer y golygiadau i'w dangos yn ddiofyn:",
@@ -1528,7 +1538,7 @@ Dyma'r lòg dileu ar gyfer y ffeil i chi gael gweld:",
 'upload-success-subj'         => 'Wedi llwyddo uwchlwytho',
 'upload-success-msg'          => "Llwyddwyd i uwchlwytho'r ffeil o [$2]. Mae ar gael yma: [[:{{ns:file}}:$1]]",
 'upload-failure-subj'         => 'Cafwyd problem wrth uwchlwytho',
-'upload-failure-msg'          => 'Cafwyd problem with uwchlwytho:
+'upload-failure-msg'          => 'Cafwyd problem wrth uwchlwytho o [$2]:
 
 $1',
 'upload-warning-subj'         => 'Rhybudd uwchlwytho',
@@ -1938,7 +1948,7 @@ Bydd y cyfeiriad e-bost a osodoch yn eich [[Special:Preferences|dewisiadau chith
 # Watchlist
 'watchlist'            => 'Fy rhestr wylio',
 'mywatchlist'          => 'Fy rhestr wylio',
-'watchlistfor'         => "(ar gyfer '''$1''')",
+'watchlistfor2'        => 'Yn ôl gofyn $1 $2',
 'nowatchlist'          => "Mae eich rhestr wylio'n wag.",
 'watchlistanontext'    => "Rhaid $1 er mwyn gweld neu ddiwygio'ch rhestr wylio.",
 'watchnologin'         => 'Nid ydych wedi mewngofnodi',
@@ -3048,7 +3058,8 @@ Nid oes rhaid wrth y côd wrth fewngofnodi, ond rhaid ei ddefnyddio er mwyn gall
 Dychwelodd yr ebostydd: $1",
 'confirmemail_invalid'      => 'Côd cadarnhau annilys. Efallai fod y côd wedi dod i ben.',
 'confirmemail_needlogin'    => 'Rhaid $1 er mwyn cadarnhau eich cyfeiriad e-bost.',
-'confirmemail_success'      => "Mae eich cyfeiriad e-bost wedi'i gadarnhau. Cewch fewngofnodi a mwynhau'r Wici.",
+'confirmemail_success'      => "Mae eich cyfeiriad e-bost wedi'i gadarnhau. 
+Cewch [[Special:UserLogin|fewngofnodi]] a mwynhau'r wici.",
 'confirmemail_loggedin'     => 'Cadarnhawyd eich cyfeiriad e-bost.',
 'confirmemail_error'        => 'Cafwyd gwall wrth ddanfon eich cadarnhad.',
 'confirmemail_subject'      => 'Cadarnhâd cyfeiriad e-bost ar {{SITENAME}}',

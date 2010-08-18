@@ -9,6 +9,7 @@
  *
  * @author Kaffi
  * @author Les Meloures
+ * @author Purodha
  * @author Robby
  * @author Urhixidur
  * @author לערי ריינהארט
@@ -642,6 +643,15 @@ Waart w.e.g. ier Dir et nach eng Kéier versicht.",
 'loginlanguagelabel'         => 'Sprooch: $1',
 'suspicious-userlogout'      => 'Är Ufro fir Iech auszeloggen gouf refuséiert well et esou ausgesäit wéi wann se vun engem Futtise Browser oder Proxy-Tëschespäicher kënnt.',
 
+# JavaScript password checks
+'password-strength'            => 'Geschate Stäerkt vum Passwuert: $1',
+'password-strength-bad'        => 'SCHLECHT',
+'password-strength-mediocre'   => 'mëttelméisseg',
+'password-strength-acceptable' => 'akzeptabel',
+'password-strength-good'       => 'gutt',
+'password-retype'              => 'Passwuert hei nach eemol antippen',
+'password-retype-mismatch'     => 'Déi Passwierder déi Dir aginn hutt sinn net identesch',
+
 # Password reset dialog
 'resetpass'                 => 'Passwuert änneren',
 'resetpass_announce'        => 'Dir sidd mat engem temporären , per E-Mail geschéckte Code ageloggt.
@@ -858,6 +868,7 @@ Et däerfen net méi wéi $2 {{PLURAL:$2|Ufro|Ufroe}} sinn, aktuell {{PLURAL:$2|
 'post-expand-template-argument-warning'   => "'''Warnung: Op dëser Säit ass mindestens een Argument an enger Schabloun dat eng ze grouss Expansiounsgréisst huet. Dës Argumenter goufen ewechgelooss.",
 'post-expand-template-argument-category'  => 'Säiten, op dene mindestens e Parameter vun enger Schabloun vergiess ginn ass',
 'parser-template-loop-warning'            => 'Endlos Schleef an der Schabloun: [[$1]] entdeckt',
+'parser-template-recursion-depth-warning' => "D'Limit vun der Zuel vun de Verschachtelunge vu Schabloune gouf iwwerschratt ($1)",
 'language-converter-depth-warning'        => "D'Limite vun der déift vun der Sproochëmwandlung gouf iwwerschratt ($1)",
 
 # "Undo" feature
@@ -1185,6 +1196,7 @@ Denkt w.e.g drunn datt d'Navigatiounslinken d'Wiel vun de Versiounen nees zréck
 'contextlines'                  => 'Zuel vun de Linnen:',
 'contextchars'                  => 'Kontextcharactère pro Linn:',
 'stub-threshold'                => 'Maximum (a Byte) bei deem e Link nach ëmmer am <a href="#" class="stub">Skizze-Format</a> gewise gëtt:',
+'stub-threshold-disabled'       => 'Desaktivéiert',
 'recentchangesdays'             => 'Deeg déi an de Rezenten Ännerungen ugewise ginn:',
 'recentchangesdays-max'         => '(Maximal $1 {{PLURAL:$1|Dag|Deeg}})',
 'recentchangescount'            => 'Zuel vun den Ännerungen déi als Standard gewise ginn:',
@@ -1516,7 +1528,7 @@ Erlaabt {{PLURAL:$3|ass|sinn}}: $2.",
 'file-too-large'              => 'De Fichier deen Dir geschéckt huet war ze grouss.',
 'filename-tooshort'           => 'Den Numm vum Fichier ass ze kuerz.',
 'filetype-banned'             => 'Dësen Typ vu Fichier kann net eropgeluede ginn.',
-'verification-error'          => "Dëse Fichier huet d'Iwwerpréifung net passéiert.",
+'verification-error'          => "Dëse Fichier huet d'Fichiers-Iwwerpréifung net passéiert.",
 'hookaborted'                 => "D'Ännerung déi Dir versicht hutt ze maachen ass duerch en 'extension-hook' ofgebrach ginn.",
 'illegal-filename'            => 'Den Numm vum Fichier ass net erlaabt.',
 'overwrite'                   => "D'Iwwerschreiwe vun engem Fichier ass net erlaabt.",
@@ -1982,7 +1994,7 @@ D\'E-Mailadress, déi Dir an [[Special:Preferences|Ären Astellungen]] aginn hut
 # Watchlist
 'watchlist'            => 'Meng Iwwerwaachungslëscht',
 'mywatchlist'          => 'Meng Iwwerwaachungslëscht',
-'watchlistfor'         => "(fir '''$1''')",
+'watchlistfor2'        => 'Vum $1 $2',
 'nowatchlist'          => 'Är Iwwerwaachungslëscht ass eidel.',
 'watchlistanontext'    => "Dir musst $1 fir Säiten op ärer Iwwerwaachungslëscht ze gesinn oder z'änneren.",
 'watchnologin'         => 'Net ageloggt',
@@ -2068,7 +2080,7 @@ W.e.g. confirméiert, datt Dir dëst wierklech wëllt, datt Dir d'Konsequenze ve
 'actioncomplete'         => 'Aktioun ofgeschloss',
 'actionfailed'           => 'Aktioun huet net fonctionnéiert',
 'deletedtext'            => '"<nowiki>$1</nowiki>" gouf geläscht. Kuckt $2 fir eng Lëscht vun de Säiten déi viru Kuerzem geläscht goufen.',
-'deletedarticle'         => '"$1" gouf geläscht',
+'deletedarticle'         => 'huet "[[$1]]" geläscht',
 'suppressedarticle'      => 'geläscht "$1"',
 'dellogpage'             => 'Läschlëscht',
 'dellogpagetext'         => 'Hei fannt dir eng Lëscht mat rezent geläschte Säiten. All Auerzäiten sinn déi vum Server.',

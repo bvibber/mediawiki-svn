@@ -1409,7 +1409,7 @@ Innota però li l-werreja tal-kontenut ta' {{SITENAME}} f'dawn is-siti, jistgħu
 # User rights log
 'rightslog'      => 'Drittijiet tal-utenti',
 'rightslogtext'  => "Dan huwa r-reġistru tal-modifiki ta' drittijiet tal-utenti.",
-'rightslogentry' => "ġie modifikat is-sħubija tal-grupp ta' $1 mill-grupp $2 għal grupp $3",
+'rightslogentry' => "biddel is-sħubija ta' $1 mill-grupp $2 għall-grupp $3",
 'rightsnone'     => '(xejn)',
 
 # Associated actions - in the sentence "You do not have permission to X"
@@ -1921,7 +1921,6 @@ Jista' jkun hemm [[{{MediaWiki:Listgrouprights-helppage}}|aktar informazzjoni]] 
 # Watchlist
 'watchlist'            => "Lista ta' osservazzjoni tiegħi",
 'mywatchlist'          => 'li qed insegwi',
-'watchlistfor'         => "(għal '''$1''')",
 'nowatchlist'          => "Il-lista ta' osservazzjoni tiegħek hija vojta.",
 'watchlistanontext'    => "Sabiex tara u timmodifika l-lista ta' osservazzjoni tiegħek, hemm bżonn li $1.",
 'watchnologin'         => 'Għadek ma dħaltx ġewwa',
@@ -2336,6 +2335,7 @@ F'dawn il-każi, inti trid iċaqlaq jew tagħqad il-paġna manwalment jekk dan h
 'movepagebtn'                  => 'Ċaqlaq il-paġna',
 'pagemovedsub'                 => 'Ċaqlieq irnexxa',
 'movepage-moved'               => '\'\'\'"$1" ġie mċaqlaq għal "$2"\'\'\'',
+'movepage-moved-noredirect'    => "Il-ħolqien ta' rindirizz ġie mrażżan.",
 'articleexists'                => "Diġà teżisti paġna b'dak l-isem, jew inkella l-isem li għażilt mhux validu.
 Jekk jogħġbok, agħżel isem ieħor.",
 'cantmove-titleprotected'      => 'Ma tistax iċċaqlaq paġna hemmhekk, minħabba li t-titlu l-ġdid ġie protett milli jiġi maħluq.',
@@ -2351,6 +2351,7 @@ Jekk jogħġbok, waħħad iż-żewġ paġni manwalment.'''",
 'movepage-max-pages'           => "Ġie mċaqlaq in-numru massimu ta' {{PLURAL:$1|paġna u ma jistax jiġi mċaqlaq aktar awtomatikament|$1 paġni u ma jistgħux jiġu mċaqilqa aktar awtomatikament.}}",
 '1movedto2'                    => '[[$1]] tmexxa lejn [[$2]]',
 '1movedto2_redir'              => "[[$1]] tmexxa lejn [[$2]] permezz ta' riindirizzament",
+'move-redirect-suppressed'     => 'rindirizz mrażżan',
 'movelogpage'                  => 'Ċaqlieq',
 'movelogpagetext'              => "Hawn taħt jinsab lista ta' paġni mċaqilqa.",
 'movesubpage'                  => '{{PLURAL:$1|Sottopaġna|Sottopaġna}}',

@@ -1,7 +1,6 @@
 <?php
 /**
- * @todo Use some variant of Pager or something; the pagination here is lousy.
- * @file
+ * Implements Special:Whatlinkshere
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,10 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @todo Use some variant of Pager or something; the pagination here is lousy.
  */
 
 /**
- * implements Special:Whatlinkshere
+ * Implements Special:Whatlinkshere
+ *
  * @ingroup SpecialPage
  */
 class SpecialWhatLinksHere extends SpecialPage {
@@ -189,8 +192,6 @@ class SpecialWhatLinksHere extends SpecialPage {
 				$row->is_image = 0;
 				$rows[$row->page_id] = $row;
 			}
-			$dbr->freeResult( $plRes );
-
 		}
 		if( !$hidetrans ) {
 			while ( $row = $dbr->fetchObject( $tlRes ) ) {
@@ -198,7 +199,6 @@ class SpecialWhatLinksHere extends SpecialPage {
 				$row->is_image = 0;
 				$rows[$row->page_id] = $row;
 			}
-			$dbr->freeResult( $tlRes );
 		}
 		if( !$hideimages ) {
 			while ( $row = $dbr->fetchObject( $ilRes ) ) {
@@ -206,7 +206,6 @@ class SpecialWhatLinksHere extends SpecialPage {
 				$row->is_image = 1;
 				$rows[$row->page_id] = $row;
 			}
-			$dbr->freeResult( $ilRes );
 		}
 
 		// Sort by key and then change the keys to 0-based indices

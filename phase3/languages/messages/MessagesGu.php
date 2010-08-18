@@ -11,6 +11,7 @@
  * @author Ashok modhvadia
  * @author Dineshjk
  * @author Dsvyas
+ * @author RaviC
  * @author לערי ריינהארט
  */
 
@@ -184,7 +185,8 @@ $messages = array(
 'underline-default' => 'બ્રાઉઝરના સેટીંગ્સ પ્રમાણે',
 
 # Font style option in Special:Preferences
-'editfont-style' => 'ક્ષેત્ર લિપિ શૈલીનું સંપાદન:',
+'editfont-style'   => 'ક્ષેત્ર લિપિ શૈલીનું સંપાદન:',
+'editfont-default' => 'બ્રાઉઝરના સેટીંગ્સ પ્રમાણે',
 
 # Dates
 'sunday'        => 'રવિવાર',
@@ -305,7 +307,7 @@ $messages = array(
 'vector-namespace-template'  => 'ઢાંચો',
 'vector-namespace-user'      => 'સભ્યનું પાનું',
 'vector-view-create'         => 'બનાવો',
-'vector-view-edit'           => 'સંપાદન કરો',
+'vector-view-edit'           => 'ફેરફાર કરો',
 'vector-view-history'        => 'ઈતિહાસ જુઓ',
 'vector-view-view'           => 'વાંચો',
 'vector-view-viewsource'     => 'સ્ત્રોત જુઓ',
@@ -496,7 +498,7 @@ $1',
 'viewsourcefor'        => '$1ને માટે',
 'actionthrottled'      => 'નિયંત્રિત ક્રિયા',
 'actionthrottledtext'  => 'સ્પામ નિયંત્રણ તકેદારી રૂપે આ ક્રિયા અમુક મર્યાદામાં જ કરી શકો છો, અને તમે તે મર્યાદા વટાવી દીધી છે. કૃપા કરી થોડાક સમય પછી ફરી પ્રયત્ન કરો.',
-'protectedpagetext'    => 'સંપાદન અટકાવવા માટે આ પાનું સ્થગિત કરાયેલ છે.',
+'protectedpagetext'    => 'ફેરફારો થતાં રોકવા માટે આ પાનું સુરક્ષિત કરવામાં આવ્યું છે.',
 'viewsourcetext'       => 'આપ આ પાનાંનો મૂળ સ્ત્રોત નિહાળી શકો છો અને તેની નકલ (copy) પણ કરી શકો છો:',
 'protectedinterface'   => 'આ પાનું સોફ્ટવેર માટે ઇન્ટરફેઇસ ટેક્સટ આપે છે, અને તેને દુરુપયોગ રોકવા માટે સ્થગિત કર્યું છે.',
 'editinginterface'     => "'''ચેતવણી:''' તમે જે પાનાંમાં ફેરફાર કરી રહ્યા છો તે પાનું સોફ્ટવેર માટે ઇન્ટરફેઇસ ટેક્સટ પુરી પાડે છે.
@@ -532,6 +534,7 @@ $1',
 'nav-login-createaccount' => 'પ્રવેશ કરો / નવું ખાતું ખોલો',
 'loginprompt'             => '{{SITENAME}}માં પ્રવેશ કરવા માટે તમારા બ્રાઉઝરમાં કુકીઝ એનેબલ કરેલી હોવી જોઇશે.',
 'userlogin'               => 'પ્રવેશ કરો / નવું ખાતું ખોલો',
+'userloginnocreate'       => 'પ્રવેશ કરો (લૉગ ઇન કરીને)',
 'logout'                  => 'બહાર નીકળો',
 'userlogout'              => 'બહાર નીકળો/લૉગ આઉટ',
 'notloggedin'             => 'પ્રવેશ કરેલ નથી',
@@ -541,6 +544,7 @@ $1',
 'gotaccount'              => "પહેલેથી ખાતું ખોલેલું છે? '''$1'''.",
 'gotaccountlink'          => 'પ્રવેશો (લૉગ ઇન કરો)',
 'createaccountmail'       => 'ઇ-મેઇલ દ્વારા',
+'createaccountreason'     => 'કારણ:',
 'badretype'               => 'તમે દાખલ કરેલ ગુપ્તસંજ્ઞા મળતી આવતી નથી.',
 'userexists'              => 'દાખલ કરેલું સભ્ય નામ વપરાશમાં છે.</br>
 કૃપયા અન્ય નામ પસંદ કરો.',
@@ -605,6 +609,9 @@ Please log in again after you receive it.
 કૃપા કરી ફરી પ્રયાસ પહેલાં થોડી રાહ જુઓ.',
 'loginlanguagelabel'      => 'ભાષા: $1',
 
+# JavaScript password checks
+'password-retype' => 'ગુપ્ત સંજ્ઞા (પાસવર્ડ) ફરી લખો',
+
 # Password reset dialog
 'resetpass'                 => 'ગુપ્તસંજ્ઞા બદલો',
 'resetpass_announce'        => 'તમે હંગામી ઇમેઇલ કોડ સાથે લોગ ઇન કર્યું.
@@ -618,6 +625,7 @@ Please log in again after you receive it.
 'resetpass_success'         => 'તમારી ગુપ્તસંજ્ઞા સફળતાપૂર્વક બદલાઇ ગઇ! હવે તમે ...માં પ્રવેશ કરી શકો છો',
 'resetpass_forbidden'       => 'ગુપ્તસંજ્ઞા બદલી શકાશે નહીં',
 'resetpass-submit-loggedin' => 'ગુપ્તસંજ્ઞા બદલો',
+'resetpass-submit-cancel'   => 'રદ કરો',
 'resetpass-temp-password'   => 'કામચલાવ ગુપ્તસંજ્ઞા:',
 
 # Edit page toolbar
@@ -695,8 +703,8 @@ Please log in again after you receive it.
 'previewconflict'                  => 'જો તમે આ પાનું સાચવશો તો આ પ્રિવ્યુમાં દેખાય છે તેવું સચવાશે.',
 'editing'                          => '$1નો ફેરફાર કરી રહ્યા છે',
 'editingsection'                   => '$1 (પરિચ્છેદ)નો ફેરફાર કરી રહ્યા છો',
-'editingcomment'                   => 'સંપાદન $1 (નવો વિભાગ )',
-'editconflict'                     => 'સંપાદન સંઘર્ષ: $1',
+'editingcomment'                   => '$1 (પરિચ્છેદ)નો ફેરફાર કરી રહ્યા છો',
+'editconflict'                     => 'ફેરફારમાં વિસંગતતા: $1',
 'yourtext'                         => 'તમારું લખાણ',
 'storedversion'                    => 'રક્ષિત પુનરાવર્તન',
 'yourdiff'                         => 'ભેદ',
@@ -739,8 +747,8 @@ Please log in again after you receive it.
 'last'                   => 'છેલ્લું',
 'page_first'             => 'પહેલું',
 'page_last'              => 'છેલ્લું',
-'histlegend'             => "વિવિધ પસંદગી:સરખામણી માટે સુધારેલી આવૃતિઓના રેડિયોબોક્ષોને ચિહ્નિત કરો અને એન્ટર અથવા તળીયાનું બટન દબાવો.<br />
-મુદ્રાલેખ:'''({{int:cur}})''' = વર્તમાન સુધારેલી આવૃતિઓનો તફાવત, '''({{int:last}})''' = પૂર્વવર્તી સુધારેલી આવૃતિઓનો તફાવત, '''{{int:minoreditletter}}''' = નાનું સંપાદન.",
+'histlegend'             => "વિવિધ પસંદગી:સરખામણી માટે સુધારેલી આવૃતિઓના રેડિયો ખાનાઓ પસંદ કરો અને એન્ટર મારો અથવા નીચે આવેલું બટન દબાવો.<br />
+સમજૂતી:'''({{int:cur}})''' = વર્તમાન અને સુધારેલી આવૃતિનો તફાવત, '''({{int:last}})''' = પૂર્વવર્તી ફેરફારનો તફાવત, '''{{int:minoreditletter}}''' = નાનો ફેરફાર.",
 'history-fieldset-title' => 'ઇતિહાસ ઉખેળો',
 'histfirst'              => 'સૌથી જુનું',
 'histlast'               => 'સૌથી નવું',
@@ -750,18 +758,21 @@ Please log in again after you receive it.
 'history-feed-item-nocomment' => '$1, $2 સમયે',
 
 # Revision deletion
-'rev-delundel'              => 'બતાવો/છુપાવો',
-'revdel-restore'            => 'વિઝિબિલિટિ બદલો',
-'pagehist'                  => 'પાનાનો ઇતિહાસ',
-'deletedhist'               => 'રદ કરેલનો ઇતિહાસ',
-'revdelete-content'         => 'સામગ્રી',
-'revdelete-summary'         => 'સંપાદનનો સંક્ષિપ્ત અહેવાલ',
-'revdelete-uname'           => 'સભ્યનામ',
-'revdelete-hid'             => 'છુપાવો $1',
-'revdelete-unhid'           => 'દર્શાવો $1',
-'revdelete-otherreason'     => 'અન્ય/વધારાનું કારણ:',
-'revdelete-reasonotherlist' => 'અન્ય કારણ',
-'revdelete-edit-reasonlist' => 'ભુંસવાનું કારણ બદલો.',
+'rev-delundel'               => 'બતાવો/છુપાવો',
+'revdelete-show-file-submit' => 'હા',
+'revdelete-radio-set'        => 'હા',
+'revdelete-radio-unset'      => 'ના',
+'revdel-restore'             => 'વિઝિબિલિટિ બદલો',
+'pagehist'                   => 'પાનાનો ઇતિહાસ',
+'deletedhist'                => 'રદ કરેલનો ઇતિહાસ',
+'revdelete-content'          => 'સામગ્રી',
+'revdelete-summary'          => 'સંપાદનનો સંક્ષિપ્ત અહેવાલ',
+'revdelete-uname'            => 'સભ્યનામ',
+'revdelete-hid'              => 'છુપાવો $1',
+'revdelete-unhid'            => 'દર્શાવો $1',
+'revdelete-otherreason'      => 'અન્ય/વધારાનું કારણ:',
+'revdelete-reasonotherlist'  => 'અન્ય કારણ',
+'revdelete-edit-reasonlist'  => 'ભુંસવાનું કારણ બદલો.',
 
 # Suppression log
 'suppressionlog' => 'દાબ નોંધ',
@@ -1103,7 +1114,6 @@ Please log in again after you receive it.
 # Watchlist
 'watchlist'         => 'મારી ધ્યાનસૂચી',
 'mywatchlist'       => 'મારી ધ્યાનસૂચિ',
-'watchlistfor'      => "('''$1'''ને માટે)",
 'addedwatch'        => 'ધ્યાનસૂચિમાં ઉમેરવામાં આવ્યું છે',
 'addedwatchtext'    => 'પાનું "[[:$1]]" તમારી [[Special:Watchlist|ધ્યાનસૂચિ]]માં ઉમેરાઈ ગયું છે.
 ભવિષ્યમાં આ પાનાં અને તેનાં સંલગ્ન ચર્ચાનાં પાનાંમાં થનારા ફેરફારોની યાદી ત્યાં આપવામાં આવશે અને આ પાનું [[Special:RecentChanges|તાજેતરમાં થયેલા ફેરફારોની યાદી]]માં ઘાટા અક્ષરે જોવા મળશે, જેથી આપ સહેલાઇથી તેને અલગ તારવી શકો.',
@@ -1280,9 +1290,10 @@ Please log in again after you receive it.
 'export-addcat' => 'ઉમેરો',
 
 # Namespace 8 related
-'allmessages'        => 'તંત્ર સંદેશાઓ',
-'allmessagesname'    => 'નામ',
-'allmessagescurrent' => 'વર્તમાન દસ્તાવેજ',
+'allmessages'          => 'તંત્ર સંદેશાઓ',
+'allmessagesname'      => 'નામ',
+'allmessagescurrent'   => 'વર્તમાન દસ્તાવેજ',
+'allmessages-language' => 'ભાષા:',
 
 # Thumbnails
 'thumbnail-more'  => 'વિસ્તૃત કરો',

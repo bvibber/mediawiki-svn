@@ -651,6 +651,15 @@ Prosimo počakajte, preden poskusite znova.',
 'loginlanguagelabel'         => 'Jezik: $1',
 'suspicious-userlogout'      => 'Vaša zahteva za odjavo je bila zavrnjena, saj kaže, da je bila poslana iz pokvarjenega brskalnika ali proxyja s predpomnilnikom.',
 
+# JavaScript password checks
+'password-strength'            => 'Ocenjena moč gesla: $1',
+'password-strength-bad'        => 'SLABO',
+'password-strength-mediocre'   => 'povprečno',
+'password-strength-acceptable' => 'sprejemljivo',
+'password-strength-good'       => 'dobro',
+'password-retype'              => 'Ponovno vpišite geslo tukaj',
+'password-retype-mismatch'     => 'Gesli se ne ujemata',
+
 # Password reset dialog
 'resetpass'                 => 'Spremeni geslo',
 'resetpass_announce'        => 'Trenutno ste prijavljeni z začasno e-poštno kodo.
@@ -1204,6 +1213,7 @@ Upoštevajte, da so njihovi podatki vsebine {{GRAMMAR:rodilnik|{{SITENAME}}}} mo
 'contextlines'                  => 'Vrstic na zadetek:',
 'contextchars'                  => 'Znakov na vrstico:',
 'stub-threshold'                => 'Prag označevanja <a href="#" class="stub">škrbin</a> (v bajtih):',
+'stub-threshold-disabled'       => 'Onemogočeno',
 'recentchangesdays'             => 'Število dni prikazanih v zadnjih spremembah:',
 'recentchangesdays-max'         => 'Največ $1 {{PLURAL:$1|dan|dneva|dnevi|dni}}',
 'recentchangescount'            => 'Privzeto število prikazanih urejanj:',
@@ -2033,7 +2043,7 @@ E-poštni naslov, ki ste ga vpisali v [[Special:Preferences|uporabniških nastav
 # Watchlist
 'watchlist'            => 'Spisek nadzorov',
 'mywatchlist'          => 'Spisek nadzorov',
-'watchlistfor'         => "(za '''$1''')",
+'watchlistfor2'        => 'Za $1 $2',
 'nowatchlist'          => 'Vaš spisek nadzorov je prazen.',
 'watchlistanontext'    => 'Prosimo, $1 za pregled ali urejanje vsebine vašega spiska nadzorov.',
 'watchnologin'         => 'Niste prijavljeni',
@@ -2576,7 +2586,7 @@ stran »[[{{MediaWiki:Mainpage}}]]«.',
 'allmessagesdefault'            => 'Prednastavljeno besedilo',
 'allmessagescurrent'            => 'Trenutno besedilo',
 'allmessagestext'               => 'Navedena so v imenskem prostoru MediaWiki dostopna sistemska sporočila.
-Za lokalizacijo in prevajanje obiščite [http://www.mediawiki.org/wiki/Localisation MediaWiki] in [http://translatewiki.net translatewiki.net] in tako prispevajte k splošnemu prevodu programja.',
+Za lokalizacijo in prevajanje obiščite [http://www.mediawiki.org/wiki/Localisation MediaWiki] in [http://translatewiki.net translatewiki.net] ter tako prispevajte k splošnemu prevodu programja.',
 'allmessagesnotsupportedDB'     => "Te strani ni mogoče uporabljati, ker je bilo '''\$wgUseDatabaseMessages''' izključeno.",
 'allmessages-filter-legend'     => 'Filter',
 'allmessages-filter'            => 'Filtriraj po prilagoditvenem stanju:',

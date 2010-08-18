@@ -904,20 +904,11 @@ class EditPage {
 
 			$isComment = ( $this->section == 'new' );
 
-			$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
-				( $this->minoredit ? EDIT_MINOR : 0 ) |
-				( $bot ? EDIT_FORCE_BOT : 0 );
-			$status = $this->mArticle->doEdit( $this->textbox1, $this->summary, $flags,
-				false, null, $this->watchthis, $isComment, '', true );
+			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
+				$this->minoredit, $this->watchthis, false, $isComment, $bot );
 
-			if ( $status->isOK() ) {
-				wfProfileOut( __METHOD__ );
-				return self::AS_SUCCESS_NEW_ARTICLE;
-			} else {
-				$result = $status->getErrorsArray();
-			}
 			wfProfileOut( __METHOD__ );
-			return self::AS_END;
+			return self::AS_SUCCESS_NEW_ARTICLE;
 		}
 
 		# Article exists. Check for edit conflict.
@@ -1025,7 +1016,7 @@ class EditPage {
 				return self::AS_TEXTBOX_EMPTY;
 			}
 			if ( $this->summary != '' ) {
-				$sectionanchor = $wgParser->guessSectionNameFromWikiText( $this->summary );
+				$sectionanchor = $wgParser->guessLegacySectionNameFromWikiText( $this->summary );
 				# This is a new section, so create a link to the new section
 				# in the revision summary.
 				$cleanSummary = $wgParser->stripSectionName( $this->summary );
@@ -1039,7 +1030,7 @@ class EditPage {
 			# we can't deal with anchors, includes, html etc in the header for now,
 			# headline would need to be parsed to improve this
 			if ( $hasmatch and strlen( $matches[2] ) > 0 ) {
-				$sectionanchor = $wgParser->guessSectionNameFromWikiText( $matches[2] );
+				$sectionanchor = $wgParser->guessLegacySectionNameFromWikiText( $matches[2] );
 			}
 		}
 		wfProfileOut( __METHOD__ . '-sectionanchor' );
@@ -1059,20 +1050,14 @@ class EditPage {
 			return self::AS_MAX_ARTICLE_SIZE_EXCEEDED;
 		}
 
-		// Update the article here
-		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
-			( $this->minoredit ? EDIT_MINOR : 0 ) |
-			( $bot ? EDIT_FORCE_BOT : 0 );
-		$status = $this->mArticle->doEdit( $text, $this->summary, $flags,
-			false, null, $this->watchthis, false, $sectionanchor, true );
-
-		if ( $status->isOK() )
+		# update the article here
+		if ( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
+			$this->watchthis, $bot, $sectionanchor ) )
 		{
 			wfProfileOut( __METHOD__ );
 			return self::AS_SUCCESS_UPDATE;
 		} else {
 			$this->isConflict = true;
-			$result = $status->getErrorsArray();
 		}
 		wfProfileOut( __METHOD__ );
 		return self::AS_END;
@@ -2294,7 +2279,7 @@ INPUTS
 			);
 			$checkboxes['minor'] =
 				Xml::check( 'wpMinoredit', $checked['minor'], $attribs ) .
-				"&#160;<label for='wpMinoredit'" . $skin->tooltip( 'minoredit', 'withaccess' ) . ">{$minorLabel}</label>";
+				"&#160;<label for='wpMinoredit' id='mw-editpage-minoredit'" . $skin->tooltip( 'minoredit', 'withaccess' ) . ">{$minorLabel}</label>";
 		}
 
 		$watchLabel = wfMsgExt( 'watchthis', array( 'parseinline' ) );
@@ -2307,7 +2292,7 @@ INPUTS
 			);
 			$checkboxes['watch'] =
 				Xml::check( 'wpWatchthis', $checked['watch'], $attribs ) .
-				"&#160;<label for='wpWatchthis'" . $skin->tooltip( 'watch', 'withaccess' ) . ">{$watchLabel}</label>";
+				"&#160;<label for='wpWatchthis' id='mw-editpage-watch'" . $skin->tooltip( 'watch', 'withaccess' ) . ">{$watchLabel}</label>";
 		}
 		wfRunHooks( 'EditPageBeforeEditChecks', array( &$this, &$checkboxes, &$tabindex ) );
 		return $checkboxes;

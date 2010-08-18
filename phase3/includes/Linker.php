@@ -433,14 +433,14 @@ class Linker {
 	 * @param $query String: query params for desc url
 	 * @return String: HTML for an image, with links, wrappers, etc.
 	 */
-	function makeImageLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "" ) {
+	function makeImageLink2( Title $title, $file, $frameParams = array(), $handlerParams = array(), $time = false, $query = "", $widthOption = null ) {
 		$res = null;
 		if( !wfRunHooks( 'ImageBeforeProduceHTML', array( &$this, &$title,
 		&$file, &$frameParams, &$handlerParams, &$time, &$res ) ) ) {
 			return $res;
 		}
 
-		global $wgContLang, $wgUser, $wgThumbLimits, $wgThumbUpright;
+		global $wgContLang, $wgThumbLimits, $wgThumbUpright;
 		if ( $file && !$file->allowInlineDisplay() ) {
 			wfDebug( __METHOD__.': '.$title->getPrefixedDBkey()." does not allow inline display\n" );
 			return $this->link( $title );
@@ -467,10 +467,8 @@ class Linker {
 			$hp['width'] = $file->getWidth( $page );
 
 			if( isset( $fp['thumbnail'] ) || isset( $fp['framed'] ) || isset( $fp['frameless'] ) || !$hp['width'] ) {
-				$wopt = $wgUser->getOption( 'thumbsize' );
-
-				if( !isset( $wgThumbLimits[$wopt] ) ) {
-					 $wopt = User::getDefaultOption( 'thumbsize' );
+				if( !isset( $widthOption ) || !isset( $wgThumbLimits[$widthOption] ) ) {
+					 $widthOption = User::getDefaultOption( 'thumbsize' );
 				}
 
 				// Reduce width for upright images when parameter 'upright' is used
@@ -480,8 +478,8 @@ class Linker {
 				// Use width which is smaller: real image width or user preference width
 				// For caching health: If width scaled down due to upright parameter, round to full __0 pixel to avoid the creation of a lot of odd thumbs
 				$prefWidth = isset( $fp['upright'] ) ?
-					round( $wgThumbLimits[$wopt] * $fp['upright'], -1 ) :
-					$wgThumbLimits[$wopt];
+					round( $wgThumbLimits[$widthOption] * $fp['upright'], -1 ) :
+					$wgThumbLimits[$widthOption];
 				if ( $hp['width'] <= 0 || $prefWidth < $hp['width'] ) {
 					if( !isset( $hp['height'] ) ) {
 						$hp['width'] = $prefWidth;
@@ -1377,16 +1375,17 @@ class Linker {
 	 *   to be included in the link, like "&section=$section"
 	 * @param $tooltip string The tooltip to use for the link: will be escaped
 	 *   and wrapped in the 'editsectionhint' message
+	 * @param $lang    string Language code
 	 * @return         string HTML to use for edit link
 	 */
-	public function doEditSectionLink( Title $nt, $section, $tooltip = null ) {
+	public function doEditSectionLink( Title $nt, $section, $tooltip = null, $lang = false ) {
 		// HTML generated here should probably have userlangattributes
 		// added to it for LTR text on RTL pages
 		$attribs = array();
 		if( !is_null( $tooltip ) ) {
-			$attribs['title'] = wfMsg( 'editsectionhint', $tooltip );
+			$attribs['title'] = wfMsgReal( 'editsectionhint', array( $tooltip ), true, $lang );
 		}
-		$link = $this->link( $nt, wfMsg('editsection'),
+		$link = $this->link( $nt, wfMsgExt( 'editsection', array( 'language'=> $lang ) ),
 			$attribs,
 			array( 'action' => 'edit', 'section' => $section ),
 			array( 'noclasses', 'known' )
@@ -1396,7 +1395,7 @@ class Linker {
 		# we can rid of it someday.
 		$attribs = '';
 		if( $tooltip ) {
-			$attribs = wfMsgHtml( 'editsectionhint', htmlspecialchars( $tooltip ) );
+			$attribs = htmlspecialchars( wfMsgReal( 'editsectionhint', array( $tooltip ), true, $lang ) );
 			$attribs = " title=\"$attribs\"";
 		}
 		$result = null;
@@ -1406,13 +1405,13 @@ class Linker {
 			# run, and even add them to hook-provided text.  (This is the main
 			# reason that the EditSectionLink hook is deprecated in favor of
 			# DoEditSectionLink: it can't change the brackets or the span.)
-			$result = wfMsgHtml( 'editsection-brackets', $result );
+			$result = wfMsgExt( 'editsection-brackets', array( 'escape', 'replaceafter', 'language'=>$lang ), $link );
 			return "<span class=\"editsection\">$result</span>";
 		}
 
 		# Add the brackets and the span, and *then* run the nice new hook, with
 		# clean and non-redundant arguments.
-		$result = wfMsgHtml( 'editsection-brackets', $link );
+		$result = wfMsgExt( 'editsection-brackets', array( 'escape', 'replaceafter', 'language'=>$lang ), $link );
 		$result = "<span class=\"editsection\">$result</span>";
 
 		wfRunHooks( 'DoEditSectionLink', array( $this, $nt, $section, $tooltip, &$result ) );
@@ -1440,7 +1439,7 @@ class Linker {
 			. " <span class=\"mw-headline\" id=\"$anchor\">$text</span>"
 			. "</h$level>";
 		if ( $legacyAnchor !== false ) {
-			$ret = "<a id=\"$legacyAnchor\"></a>$ret";
+			$ret = "<div id=\"$legacyAnchor\"></div>$ret";
 		}
 		return $ret;
 	}
@@ -1628,13 +1627,16 @@ class Linker {
 	public function titleAttrib( $name, $options = null ) {
 		wfProfileIn( __METHOD__ );
 
-		$tooltip = wfMsg( "tooltip-$name" );
-		# Compatibility: formerly some tooltips had [alt-.] hardcoded
-		$tooltip = preg_replace( "/ ?\[alt-.\]$/", '', $tooltip );
-
-		# Message equal to '-' means suppress it.
-		if ( wfEmptyMsg( "tooltip-$name", $tooltip ) || $tooltip == '-' ) {
+		if ( wfEmptyMsg( "tooltip-$name" ) ) {
 			$tooltip = false;
+		} else {
+			$tooltip = wfMsg( "tooltip-$name" );
+			# Compatibility: formerly some tooltips had [alt-.] hardcoded
+			$tooltip = preg_replace( "/ ?\[alt-.\]$/", '', $tooltip );
+			# Message equal to '-' means suppress it.
+			if (  $tooltip == '-' ) {
+				$tooltip = false;
+			}
 		}
 
 		if ( $options == 'withaccess' ) {
@@ -1665,18 +1667,20 @@ class Linker {
 	public function accesskey( $name ) {
 		wfProfileIn( __METHOD__ );
 
-		$accesskey = wfMsg( "accesskey-$name" );
-
-		# FIXME: Per standard MW behavior, a value of '-' means to suppress the
-		# attribute, but this is broken for accesskey: that might be a useful
-		# value.
-		if( $accesskey != '' && $accesskey != '-' && !wfEmptyMsg( "accesskey-$name", $accesskey ) ) {
-			wfProfileOut( __METHOD__ );
-			return $accesskey;
+		if ( wfEmptyMsg( "accesskey-$name" ) ) {
+			$accesskey = false;
+		} else {
+			$accesskey = wfMsg( "accesskey-$name" );
+			if ( $accesskey === '' || $accesskey === '-' ) {
+				# FIXME: Per standard MW behavior, a value of '-' means to suppress the
+				# attribute, but this is broken for accesskey: that might be a useful
+				# value.
+				$accesskey = false;
+			}
 		}
 
 		wfProfileOut( __METHOD__ );
-		return false;
+		return $accesskey;
 	}
 
 	/**
@@ -2038,7 +2042,7 @@ class Linker {
 	}
 
 	/**
-	 * Returns the attributes for the tooltip and access key
+	 * Returns the attributes for the tooltip and access key.
 	 */
 	public function tooltipAndAccesskeyAttribs( $name ) {
 		global $wgEnableTooltipsAndAccesskeys;

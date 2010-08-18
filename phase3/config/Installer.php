@@ -87,6 +87,15 @@ $ourdb['sqlite'] = array(
 	'serverless' =>  true
 );
 
+$ourdb['mssql'] = array(
+	'fullname'   => 'Microsoft SQL Server',
+	'havedriver' => 0,
+	'compile'    => 'sqlsrv',
+	'bgcolor'    => '#cccccc',
+	'rootuser'   => 'root',
+	'serverless' => false
+);
+
 $ourdb['ibm_db2'] = array(
 	'fullname'   => 'DB2',
 	'havedriver' => 0,
@@ -910,6 +919,42 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 
 			if( !$ok ) { continue; }
 		}
+		else if ( $conf->DBtype == 'mssql' ) {
+			error_reporting( E_ALL );
+			# Possible connect as a superuser
+			if ( $useRoot ) {
+				echo( "<li>Attempting to connect to database \"{$conf->DBtype}\" as superuser \"{$conf->RootUser}\"" );
+				$wgDatabase = $dbc->newFromParams(
+										$conf->DBserver,
+										$conf->RootUser,
+										$conf->RootPW,
+										false,
+										false,
+										1
+									);
+				if ( !$wgDatabase->isOpen() ) {
+					echo( " error: {$wgDatabase->lastError()}</li>\n" );
+					$errs['DBserver'] = 'Could not connect to database as superuser';
+					$errs['RootUser'] = 'Check username';
+					$errs['RootPW'] = 'and password';
+					continue;
+				}
+				$wgDatabase->initial_setup( $conf->RootPW, $conf->DBtype );
+			}
+			echo( "<li>Attempting to connect to database \"{$wgDBname}\" as \"{$wgDBuser}\"..." );
+			$wgDatabase = $dbc->newFromParams(
+									$conf->DBserver,
+									$conf->DBuser,
+									$conf->DBpassword,
+									$conf->DBname,
+									1
+								);
+			if ( !$wgDatabase->isOpen() ) {
+				echo( " error: {$wgDatabase->lastError()} </li>\n" );
+			} else {
+				$myver = $wgDatabase->getServerVersion();
+			}
+		}
 		else if( $conf->DBtype == 'ibm_db2' ) {
 			if( $useRoot ) {
 				$db_user = $conf->RootUser;
@@ -1033,7 +1078,6 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			}
 		} else { # not mysql
 			error_reporting( E_ALL | E_STRICT );
-			$wgSuperUser = '';
 			## Possible connect as a superuser
 			// Changed !mysql to postgres check since it seems to only apply to postgres
 			if( $useRoot && $conf->DBtype == 'postgres' ) {
@@ -1209,7 +1253,6 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 						break;
 					}
 				}
-				$wgDatabase->freeResult( $res );
 				if ( !$found && $conf->DBengine != 'MyISAM' ) {
 					echo "<li><strong>Warning:</strong> " . htmlspecialchars( $conf->DBengine ) .
 						" storage engine not available, " .
@@ -1659,6 +1702,13 @@ if( count( $errs ) ) {
 	</div>
 	</fieldset>
 
+	
+	<?php database_switcher( 'mssql' ); ?>
+	<div class="config-desc">
+		<p>No MS SQL Server specific options at this time.</p>
+	</div>
+	
+	
 	<?php database_switcher('ibm_db2'); ?>
 	<div class="config-input"><?php
 		aField( $conf, "DBport_db2", "Database port:" );

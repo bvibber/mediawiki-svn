@@ -827,6 +827,15 @@ Počkejte chvíli, než to zkusíte znovu.',
 'loginlanguagelabel'         => 'Jazyk: $1',
 'suspicious-userlogout'      => 'Váš požadavek na odhlášení byl odmítnut, neboť to vypadá, že ho poslal rozbitý prohlížeč nebo cachující proxy.',
 
+# JavaScript password checks
+'password-strength'            => 'Odhad síly hesla: $1',
+'password-strength-bad'        => 'ŠPATNÉ',
+'password-strength-mediocre'   => 'průměrné',
+'password-strength-acceptable' => 'přijatelné',
+'password-strength-good'       => 'dobré',
+'password-retype'              => 'Zde zopakujte heslo',
+'password-retype-mismatch'     => 'Hesla se neshodují',
+
 # Password reset dialog
 'resetpass'                 => 'Změna hesla',
 'resetpass_announce'        => 'Přihlašujete se dočasným heslem zaslaným e-mailem. Přihlášení lze dokončit po nastavení nového trvalého hesla.',
@@ -1361,6 +1370,7 @@ Pokud na začátek dotazu přidáte ''all:'', bude se hledat všude (včetně di
 'contextlines'                  => 'Počet řádek zobrazených z každé nalezené stránky',
 'contextchars'                  => 'Počet znaků kontextu na každé řádce',
 'stub-threshold'                => 'Limit pro formátování odkazu jako <a href="#" class="stub">pahýl</a> (v bajtech):',
+'stub-threshold-disabled'       => 'Vypnuto',
 'recentchangesdays'             => 'Počet dní zobrazených v posledních změnách:',
 'recentchangesdays-max'         => '(maximálně $1 {{PLURAL:$1|den|dny|dní}})',
 'recentchangescount'            => 'Počet implicitně zobrazovaných záznamů:',
@@ -2164,7 +2174,7 @@ E-mailová adresa, kterou máte uvedenu v [[Special:Preferences|nastavení]], se
 # Watchlist
 'watchlist'            => 'Sledované stránky',
 'mywatchlist'          => 'Sledované stránky',
-'watchlistfor'         => "(uživatele '''$1''')",
+'watchlistfor2'        => '{{GENDER:$1|Uživatele|Uživatelky|Uživatele}} $1 $2',
 'nowatchlist'          => 'Na svém seznamu sledovaných stránek nemáte žádné položky.',
 'watchlistanontext'    => 'Pro prohlížení či úpravu seznamu sledovaných stránek se musíte $1.',
 'watchnologin'         => 'Nejste přihlášen(a)',
@@ -3328,6 +3338,9 @@ Opravdu si přejete znovu tuto stránku založit?',
 'confirm_purge_button' => 'OK',
 'confirm-purge-top'    => 'Aktualizovat cachovanou verzi této stránky?',
 'confirm-purge-bottom' => 'Aktualizace stránky vymaže cache a vynutí zobrazení nejaktuálnější verze.',
+
+# Separators for various lists, etc.
+'percent' => '$1&nbsp;%',
 
 # Multipage image navigation
 'imgmultipageprev' => '← předchozí stránka',

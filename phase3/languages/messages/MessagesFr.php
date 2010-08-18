@@ -51,6 +51,7 @@
  * @author The Evil IP address
  * @author Urhixidur
  * @author Verdy p
+ * @author Yumeki
  * @author Zetud
  * @author Горан Анђелковић
  * @author לערי ריינהארט
@@ -825,6 +826,15 @@ Veuillez attendre avant d’essayer à nouveau.',
 'loginlanguagelabel'         => 'Langue : $1',
 'suspicious-userlogout'      => 'Votre demande de déconnexion a été refusée car il semble qu’elle a été envoyée par un navigateur cassé ou la mise en cache d’un proxy.',
 
+# JavaScript password checks
+'password-strength'            => 'Niveau de sécurité du mot de passe : $1',
+'password-strength-bad'        => 'faible',
+'password-strength-mediocre'   => 'médiocre',
+'password-strength-acceptable' => 'acceptable',
+'password-strength-good'       => 'élevé',
+'password-retype'              => 'Confirmez le mot de passe',
+'password-retype-mismatch'     => 'Les mots de passe ne correspondent pas',
+
 # Password reset dialog
 'resetpass'                 => 'Changer le mot de passe',
 'resetpass_announce'        => 'Vous vous êtes enregistré{{GENDER:||e|(e)}} avec un mot de passe temporaire envoyé par courriel. Pour terminer l’enregistrement, vous devez entrer un nouveau mot de passe ici :',
@@ -1201,7 +1211,7 @@ Voir la [[Special:IPBlockList|liste des adresses IP et utilisateurs bloqués]] p
 # Revision move
 'moverevlogentry'              => 'a déplacé {{PLURAL:$3|une révision|$3 révisions}} de $1 à $2',
 'revisionmove'                 => 'Déplacer des révisions depuis « $1 »',
-'revmove-explain'              => "Les révisions suivantes seront déplacés de $1 vers la page cible spécifiée. Si la cible n'existe pas, elle sera créée, sinon ces révisions seront fusionnées avec l'historique de la page.",
+'revmove-explain'              => 'Les révisions suivantes seront déplacés de $1 vers la page cible spécifiée. Si la cible n’existe pas, elle sera créée, sinon ces révisions seront fusionnées avec l’historique de la page.',
 'revmove-legend'               => 'Entrez la page cible et la raison',
 'revmove-submit'               => 'Déplacer les révisions vers la page sélectionnée',
 'revisionmoveselectedversions' => 'Déplacer les révisions sélectionnées',
@@ -1210,7 +1220,7 @@ Voir la [[Special:IPBlockList|liste des adresses IP et utilisateurs bloqués]] p
 'revmove-badparam-title'       => 'Mauvais paramètres',
 'revmove-badparam'             => 'Votre requête contient des paramètres insuffisants ou illégaux. Veuillez cliquer sur « précédent » et essayez à nouveau.',
 'revmove-norevisions-title'    => 'Révision cible invalide',
-'revmove-norevisions'          => "Vous n'avez pas spécifié un ou plusieurs révisions cibles pour effectuer cette fonctionnalité ou la révision spécifiée n'existe pas.",
+'revmove-norevisions'          => 'Vous n’avez pas spécifié un ou plusieurs révisions cibles pour effectuer cette fonctionnalité ou la révision spécifiée n’existe pas.',
 'revmove-nullmove-title'       => 'Mauvais titre',
 'revmove-nullmove'             => 'Les pages source et cible sont identiques. Veuillez cliquer sur « précédent » et entrez un nom de page différent de « $1 ».',
 'revmove-success-existing'     => '{{PLURAL:$1|Une révision de [[$2]] a été déplacée|$1 révisions de [[$2]] ont été déplacées}} vers la page existante [[$3]].',
@@ -1363,6 +1373,7 @@ Essayez en utilisant le préfixe ''all:'' pour rechercher dans tout le contenu (
 'contextlines'                  => 'Nombre de lignes par réponse :',
 'contextchars'                  => 'Nombre de caractères de contexte par ligne :',
 'stub-threshold'                => 'Limite supérieure pour les <a href="#" class="stub">liens vers les ébauches</a> (octets) :',
+'stub-threshold-disabled'       => 'Désactivé',
 'recentchangesdays'             => 'Nombre de jours à afficher dans les modifications récentes :',
 'recentchangesdays-max'         => '(maximum $1 jour{{PLURAL:$1||s}})',
 'recentchangescount'            => 'Nombre de modifications à afficher par défaut :',
@@ -1693,12 +1704,12 @@ Voyez la [[Special:NewFiles|galerie des nouvelles images]] pour une présentatio
 'filename-tooshort'           => 'Le nom du fichier est trop court.',
 'filetype-banned'             => 'Ce type de fichier est interdit.',
 'verification-error'          => 'Ce fichier ne passe pas la vérification des fichiers.',
-'hookaborted'                 => "La modification que vous avez essayé de faire a été arrêtée par un crochet d'une extension.",
-'illegal-filename'            => "Le nom du fichier n'est pas autorisé.",
-'overwrite'                   => "Écraser un fichier existant n'est pas autorisé.",
-'unknown-error'               => "Une erreur inconnue s'est produite.",
+'hookaborted'                 => 'La modification que vous avez essayé de faire a été arrêtée par un crochet d’une extension.',
+'illegal-filename'            => 'Le nom du fichier n’est pas autorisé.',
+'overwrite'                   => 'Écraser un fichier existant n’est pas autorisé.',
+'unknown-error'               => 'Une erreur inconnue s’est produite.',
 'tmp-create-error'            => 'Impossible de créer le fichier temporaire.',
-'tmp-write-error'             => "Erreur d'écriture du fichier temporaire.",
+'tmp-write-error'             => 'Erreur d’écriture du fichier temporaire.',
 'large-file'                  => 'Les fichiers téléversés ne devraient pas être plus gros que $1 ; ce fichier fait $2.',
 'largefileserver'             => 'La taille de ce fichier est supérieure au maximum autorisé.',
 'emptyfile'                   => 'Le fichier que vous voulez téléverser semble vide.
@@ -1733,7 +1744,7 @@ Si vous voulez toujours téléverser votre fichier, veuillez revenir en arrière
 'overwroteimage'              => 'a téléversé une nouvelle version de « [[$1]] »',
 'uploaddisabled'              => 'Désolé, le téléversement de fichiers est désactivé.',
 'copyuploaddisabled'          => 'Téléversement de fichier par URL désactivé.',
-'uploadfromurl-queued'        => "Votre téléversement a été mis dans la file d'attente.",
+'uploadfromurl-queued'        => 'Votre téléversement a été mis dans la file d’attente.',
 'uploaddisabledtext'          => 'Le téléversement de fichiers est désactivé sur ce wiki.',
 'php-uploaddisabledtext'      => 'Le téléversement de fichiers a été désactivé dans PHP. Vérifiez l’option de configuration file_uploads.',
 'uploadscripted'              => 'Ce fichier contient du code HTML ou un script qui pourrait être interprété de façon incorrecte par un navigateur web.',
@@ -2152,8 +2163,8 @@ Des [[{{MediaWiki:Listgrouprights-helppage}}|informations additionnelles]] peuve
 L’adresse électronique que vous avez indiquée dans [[Special:Preferences|vos préférences]] apparaîtra dans le champ « Expéditeur » de votre message ; ainsi, le destinataire pourra vous répondre directement.',
 'usermailererror'      => 'Erreur dans l’objet du courriel :',
 'defemailsubject'      => 'Courriel de {{SITENAME}}',
-'usermaildisabled'     => "L'envoi de courriels entre utilisateurs est désactivé",
-'usermaildisabledtext' => "Vous ne pouvez pas envoyer de courriels à d'autres utilisateurs sur ce wiki",
+'usermaildisabled'     => 'L’envoi de courriels entre utilisateurs est désactivé',
+'usermaildisabledtext' => 'Vous ne pouvez pas envoyer de courriels à d’autres utilisateurs sur ce wiki',
 'noemailtitle'         => 'Aucune adresse électronique',
 'noemailtext'          => 'Cet utilisateur n’a pas spécifié une adresse de courriel valide.',
 'nowikiemailtitle'     => 'Pas de courriel autorisé',
@@ -2177,7 +2188,7 @@ L’adresse électronique que vous avez indiquée dans [[Special:Preferences|vos
 # Watchlist
 'watchlist'            => 'Liste de suivi',
 'mywatchlist'          => 'Liste de suivi',
-'watchlistfor'         => "(pour '''$1''')",
+'watchlistfor2'        => 'Pour $1 $2',
 'nowatchlist'          => 'Votre liste de suivi ne référence aucune page.',
 'watchlistanontext'    => 'Veuillez vous $1 pour visualiser ou modifier les éléments de votre liste de suivi.',
 'watchnologin'         => 'Non connecté',
@@ -2584,8 +2595,8 @@ Veuillez contacter votre fournisseur d’accès Internet ou votre support techni
 Vous ne pouvez pas créer un compte.',
 'cant-block-while-blocked'        => 'Vous ne pouvez pas bloquer d’autres utilisateurs tant que vous êtes bloqué{{GENDER:||e|(e)}}.',
 'cant-see-hidden-user'            => "L’utilisateur que vous tentez de bloquer a déjà été bloqué et masqué. N’ayant pas le droit ''hideuser'', vous ne pouvez pas voir ou modifier le blocage de cet utilisateur.",
-'ipbblocked'                      => "Vous ne pouvez pas bloquer ou débloquer d'autres utilisateurs, parce que vous êtes vous-même bloqué",
-'ipbnounblockself'                => "Vous n'êtes pas autorisé à vous débloquer vous-même",
+'ipbblocked'                      => 'Vous ne pouvez pas bloquer ou débloquer d’autres utilisateurs, parce que vous êtes vous-même bloqué',
+'ipbnounblockself'                => 'Vous n’êtes pas autorisé à vous débloquer vous-même',
 
 # Developer tools
 'lockdb'              => 'Verrouiller la base de données',
@@ -2674,7 +2685,7 @@ impossible de renommer une page sur elle-même.',
 'immobile-source-page'         => 'Cette page n’est pas renommable.',
 'immobile-target-page'         => 'Il n’est pas possible de renommer la page vers ce titre.',
 'imagenocrossnamespace'        => 'Impossible de renommer un fichier vers un espace de noms autre que fichier.',
-'nonfile-cannot-move-to-file'  => "Impossible de renommer quelque chose d'autre qu'un fichier vers l'espace de noms fichier.",
+'nonfile-cannot-move-to-file'  => "Impossible de renommer quelque chose d’autre qu'un fichier vers l’espace de noms fichier.",
 'imagetypemismatch'            => 'La nouvelle extension de ce fichier ne correspond pas à son type.',
 'imageinvalidfilename'         => 'Le nom du fichier cible est incorrect',
 'fix-double-redirects'         => 'Mettre à jour les redirections pointant vers le titre original',
@@ -3515,7 +3526,7 @@ Entrez le nom du fichier sans le préfixe « {{ns:file}}: ».',
 'fileduplicatesearch-filename' => 'Nom du fichier :',
 'fileduplicatesearch-submit'   => 'Rechercher',
 'fileduplicatesearch-info'     => '$1 × $2 pixels<br />Taille du fichier : $3<br />Type MIME : $4',
-'fileduplicatesearch-result-1' => "Le fichier « $1 » n'a pas de doublon.",
+'fileduplicatesearch-result-1' => 'Le fichier « $1 » n’a pas de doublon.',
 'fileduplicatesearch-result-n' => 'Le fichier « $1 » a {{PLURAL:$2|1 doublon|$2 doublons}}.',
 
 # Special:SpecialPages

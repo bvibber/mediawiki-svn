@@ -216,7 +216,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Voeg bladsye wat ek verwyder by my dophoulys',
 'tog-previewontop'            => 'Wys voorskou bo wysigingsboks.',
 'tog-previewonfirst'          => 'Wys voorskou met eerste wysiging',
-'tog-nocache'                 => 'Deaktiveer bladsykasstelsel (Engels: caching)',
+'tog-nocache'                 => 'Deaktiveer blaaier se bladsykas',
 'tog-enotifwatchlistpages'    => 'Stuur vir my e-pos met bladsyveranderings',
 'tog-enotifusertalkpages'     => 'Stuur vir my e-pos as my eie besprekingsblad verander word',
 'tog-enotifminoredits'        => 'Stuur ook e-pos vir klein bladsywysigings',
@@ -681,6 +681,15 @@ Indien hierdie rekening foutief geskep is, kan u hierdie boodskap ignoreer.',
 Wag asseblief alvorens u weer probeer.",
 'loginlanguagelabel'         => 'Taal: $1',
 'suspicious-userlogout'      => "U versoek om af te teken is geïgnoreer omdat dit lyk asof dit deur 'n gebreekte webleser of instaanbediener gestuur is.",
+
+# JavaScript password checks
+'password-strength'            => 'Geskatte wagwoordsterkte: $1',
+'password-strength-bad'        => 'SLEG',
+'password-strength-mediocre'   => 'middelmatig',
+'password-strength-acceptable' => 'aanvaarbaar',
+'password-strength-good'       => 'goed',
+'password-retype'              => 'Verskaf die wagwoord weer hier',
+'password-retype-mismatch'     => 'Die wagwoorde kom nie ooreen nie',
 
 # Password reset dialog
 'resetpass'                 => 'Verander wagwoord',
@@ -1228,6 +1237,7 @@ U kan ook 'n naamruimte as voorvoegsel gebruik.",
 'contextlines'                  => 'Aantal lyne per resultaat',
 'contextchars'                  => 'Karakters konteks per lyn',
 'stub-threshold'                => 'Drempel vir merk as <a href="#" class="stub">saadjie</a> (grepe):',
+'stub-threshold-disabled'       => 'Afgeskakel',
 'recentchangesdays'             => 'Aantal dae wat in onlangse wysigings vertoon word:',
 'recentchangesdays-max'         => 'Maksimum $1 {{PLURAL:$1|dag|dae}}',
 'recentchangescount'            => 'Aantal wysigings om by verstek te vertoon:',
@@ -1469,7 +1479,7 @@ U kan ook besluit om e-pos te ontvang as ander gebruikers u gebruikers- of bespr
 'recentchanges-label-newpage'       => "Met die wysiging is 'n nuwe bladsy geskep",
 'recentchanges-legend-minor'        => '$1 - klein wysiging',
 'recentchanges-label-minor'         => "Hierdie is 'n klein wysiging",
-'recentchanges-legend-bot'          => '$1 - botbywerking',
+'recentchanges-legend-bot'          => '$1 - robotwysiging',
 'recentchanges-label-bot'           => "Hierdie wysiging was deur 'n bot uitgevoer",
 'recentchanges-legend-unpatrolled'  => '$1 - ongekontroleerde wysiging',
 'recentchanges-label-unpatrolled'   => 'Die wysiging is nog nie gekontroleer nie',
@@ -2048,7 +2058,7 @@ Daar kan [[{{MediaWiki:Listgrouprights-helppage}}|extra inligting]] oor individu
 # Watchlist
 'watchlist'            => 'My dophoulys',
 'mywatchlist'          => 'My dophoulys',
-'watchlistfor'         => "(vir '''$1''')",
+'watchlistfor2'        => 'Vir $1 $2',
 'nowatchlist'          => 'U het geen items in u dophoulys nie.',
 'watchlistanontext'    => '$1 is noodsaaklik om u dophoulys te sien of te wysig.',
 'watchnologin'         => 'Nie ingeteken nie',
@@ -2244,9 +2254,9 @@ Hier is die huidige verstellings vir bladsy '''$1''':",
 'undeletepagetitle'            => "'''Hier onder is die verwyderde weergawes van [[:$1]]'''.",
 'viewdeletedpage'              => 'Bekyk geskrapte bladsye',
 'undeletepagetext'             => 'Die volgende {{PLURAL:$1|bladsy|$1 bladsye}} is geskrap, maar is nog in die argief en kan teruggeplaas word. Die argief van geskrapte blaaie kan periodiek skoongemaak word.',
-'undelete-fieldset-title'      => 'Weergawes terugplaas',
-'undeleteextrahelp'            => "Om die hele bladsy, inklusief alle vroeër weergawes, terug te plaas: laat alle blokkies ongekies en kliek op '''''Terugplaas'''''.
-Om slegs bepaalde weergawes terug te sit: kies die weergawes om terug te plaas en kliek op '''''Terugplaas'''''.
+'undelete-fieldset-title'      => 'Plaas weergawes terug',
+'undeleteextrahelp'            => "Om die hele bladsy, inklusief alle vroeër weergawes, terug te plaas: laat alle blokkies gedeselekteer en kliek op '''''Plaas terug'''''.
+Om slegs bepaalde weergawes terug te sit: kies die weergawes om terug te plaas en kliek op '''''Plaas terug'''''.
 As u op '''''Herinstel''''' kliek word die kommentaarveld leeggemaak en word alle weergawes gedeselekteer.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|weergawe|weergawes}} in argief',
 'undeletehistory'              => "As u die bladsy herstel, sal alle weergawes herstel word.
@@ -2260,7 +2270,7 @@ Die verwyderde inhoud is slegs vir administrateurs sigbaar.',
 'undeleterevision-missing'     => "Ongeldige of vermiste weergawe.
 U mag moontlik 'n foutiewe skakel hê, of die weergawe is reeds herstel of uit die argief verwyder.",
 'undelete-nodiff'              => 'Geen vorige wysigings gevind.',
-'undeletebtn'                  => 'Terugplaas',
+'undeletebtn'                  => 'Plaas terug',
 'undeletelink'                 => 'bekyk/herstel',
 'undeleteviewlink'             => 'bekyk',
 'undeletereset'                => 'Herinstel',

@@ -11,6 +11,7 @@
  * @author Airon90
  * @author Andria
  * @author Beta16
+ * @author Blaisorblade
  * @author Broc
  * @author BrokenArrow
  * @author Brownout
@@ -721,6 +722,15 @@ Riprovare più tardi.',
 'loginlanguagelabel'         => 'Lingua: $1',
 'suspicious-userlogout'      => 'La tua richiesta di disconnessione è stata negata perché sembra inviata da un browser non funzionante o un proxy di caching.',
 
+# JavaScript password checks
+'password-strength'            => 'Robustezza stimata della password: $1',
+'password-strength-bad'        => 'DEBOLE',
+'password-strength-mediocre'   => 'mediocre',
+'password-strength-acceptable' => 'accettabile',
+'password-strength-good'       => 'buono',
+'password-retype'              => 'Ripeti la password',
+'password-retype-mismatch'     => 'Le password non corrispondono',
+
 # Password reset dialog
 'resetpass'                 => 'Cambia la password',
 'resetpass_announce'        => "L'accesso è stato effettuato con un codice temporaneo, inviato via e-mail. Per completare l'accesso è necessario impostare una nuova password:",
@@ -1242,6 +1252,7 @@ $1",
 'contextlines'                  => 'Righe di testo per ciascun risultato:',
 'contextchars'                  => 'Numero di caratteri di contesto:',
 'stub-threshold'                => 'Valore minimo per i <a href="#" class="stub">collegamenti agli stub</a>, in byte:',
+'stub-threshold-disabled'       => 'Disattivato',
 'recentchangesdays'             => 'Numero di giorni da mostrare nelle ultime modifiche:',
 'recentchangesdays-max'         => '(massimo $1 {{PLURAL:$1|giorno|giorni}})',
 'recentchangescount'            => 'Numero di modifiche da mostrare per default:',
@@ -1633,7 +1644,7 @@ MGP # Pentax
 PICT # misc.
  #</pre> <!-- lascia questa riga esattamente com\'è -->',
 'upload-success-subj'         => 'Caricamento completato',
-'upload-success-msg'          => "L'upload da [$ 2] è riuscito. Il file è disponibile qui: [[:{{ns:file)):$1]]",
+'upload-success-msg'          => "L'upload da [$2] è riuscito. Il file è disponibile qui: [[:{{ns:file}}:$1]]",
 'upload-failure-subj'         => "Problema nell'upload",
 'upload-failure-msg'          => 'Si è verificato un problema con il caricamento:
 
@@ -2036,7 +2047,7 @@ Potrebbero esserci [[{{MediaWiki:Listgrouprights-helppage}}|ulteriori informazio
 # Watchlist
 'watchlist'            => 'Osservati speciali',
 'mywatchlist'          => 'osservati speciali',
-'watchlistfor'         => "(dell'utente '''$1''')",
+'watchlistfor2'        => "Dell'utente $1 $2",
 'nowatchlist'          => 'La lista degli osservati speciali è vuota.',
 'watchlistanontext'    => "Per visualizzare e modificare l'elenco degli osservati speciali è necessario $1.",
 'watchnologin'         => 'Accesso non effettuato',

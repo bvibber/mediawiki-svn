@@ -493,12 +493,14 @@ abstract class DatabaseBase {
 		}
 
 		if ( $this->debug() ) {
+			static $cnt = 0;
+			$cnt++;
 			$sqlx = substr( $commentedSql, 0, 500 );
 			$sqlx = strtr( $sqlx, "\t\n", '  ' );
 			if ( $isMaster ) {
-				wfDebug( "SQL-master: $sqlx\n" );
+				wfDebug( "Query $cnt (master): $sqlx\n" );
 			} else {
-				wfDebug( "SQL: $sqlx\n" );
+				wfDebug( "Query $cnt (slave): $sqlx\n" );
 			}
 		}
 
@@ -786,7 +788,6 @@ abstract class DatabaseBase {
 		}
 		$row = $this->fetchRow( $res );
 		if ( $row !== false ) {
-			$this->freeResult( $res );
 			return reset( $row );
 		} else {
 			return false;
@@ -947,13 +948,10 @@ abstract class DatabaseBase {
 		if ( $res === false )
 			return false;
 		if ( !$this->numRows($res) ) {
-			$this->freeResult($res);
 			return false;
 		}
 		$obj = $this->fetchObject( $res );
-		$this->freeResult( $res );
 		return $obj;
-
 	}
 
 	/**
@@ -976,7 +974,6 @@ abstract class DatabaseBase {
 			$row = $this->fetchRow( $res );
 			$rows = ( isset( $row['rowcount'] ) ) ? $row['rowcount'] : 0;
 		}
-		$this->freeResult( $res );
 		return $rows;
 	}
 
@@ -1056,7 +1053,6 @@ abstract class DatabaseBase {
 				$result[] = $row;
 			}
 		}
-		$this->freeResult($res);
 
 		return empty($result) ? false : $result;
 	}
@@ -1069,12 +1065,7 @@ abstract class DatabaseBase {
 		$old = $this->ignoreErrors( true );
 		$res = $this->query( "SELECT 1 FROM $table LIMIT 1" );
 		$this->ignoreErrors( $old );
-		if( $res ) {
-			$this->freeResult( $res );
-			return true;
-		} else {
-			return false;
-		}
+		return (bool)$res;
 	}
 
 	/**
@@ -1287,7 +1278,7 @@ abstract class DatabaseBase {
 	 */
 
 	function bitNot($field) {
-		return "(~$bitField)";
+		return "(~$field)";
 	}
 
 	function bitAnd($fieldLeft, $fieldRight) {
@@ -1472,7 +1463,10 @@ abstract class DatabaseBase {
 			if ( isset($join_conds_safe[$alias]) && isset($use_index_safe[$alias]) ) {
 				$tableClause = $join_conds_safe[$alias][0] . ' ' . $this->tableNameWithAlias( $table, $alias );
 				$tableClause .= ' ' . $this->useIndexClause( implode( ',', (array)$use_index_safe[$alias] ) );
-				$tableClause .= ' ON (' . $this->makeList((array)$join_conds_safe[$alias][1], LIST_AND) . ')';
+				$on = $this->makeList((array)$join_conds_safe[$alias][1], LIST_AND);
+				if ( $on != '' ) {
+					$tableClause .= ' ON (' . $on . ')';
+				}
 				$retJOIN[] = $tableClause;
 			// Is there an INDEX clause?
 			} else if ( isset($use_index_safe[$alias]) ) {
@@ -1482,7 +1476,10 @@ abstract class DatabaseBase {
 			// Is there a JOIN clause?
 			} else if ( isset($join_conds_safe[$alias]) ) {
 				$tableClause = $join_conds_safe[$alias][0] . ' ' . $this->tableNameWithAlias( $table, $alias );
-				$tableClause .= ' ON (' . $this->makeList((array)$join_conds_safe[$alias][1], LIST_AND) . ')';
+				$on = $this->makeList((array)$join_conds_safe[$alias][1], LIST_AND);
+				if ( $on != '' ) {
+					$tableClause .= ' ON (' . $on . ')';
+				}				
 				$retJOIN[] = $tableClause;
 			} else {
 				$tableClause = $this->tableNameWithAlias( $table, $alias );
@@ -1691,7 +1688,6 @@ abstract class DatabaseBase {
 		$sql = "SHOW COLUMNS FROM $table LIKE \"$field\";";
 		$res = $this->query( $sql, 'Database::textFieldSize' );
 		$row = $this->fetchObject( $res );
-		$this->freeResult( $res );
 
 		$m = array();
 		if ( preg_match( '/\((.*)\)/', $row->Type, $m ) ) {
@@ -1911,11 +1907,11 @@ abstract class DatabaseBase {
 		} while( $this->wasDeadlock() && --$tries > 0 );
 		$this->ignoreErrors( $oldIgnore );
 		if ( $tries <= 0 ) {
-			$this->query( 'ROLLBACK', $myFname );
+			$this->rollback( $myFname );
 			$this->reportQueryError( $error, $errno, $sql, $fname );
 			return false;
 		} else {
-			$this->query( 'COMMIT', $myFname );
+			$this->commit( $myFname );
 			return $retVal;
 		}
 	}
@@ -1959,7 +1955,6 @@ abstract class DatabaseBase {
 		$sql = "SELECT MASTER_POS_WAIT($encFile, $encPos, $timeout)";
 		$res = $this->doQuery( $sql );
 		if ( $res && $row = $this->fetchRow( $res ) ) {
-			$this->freeResult( $res );
 			wfProfileOut( $fname );
 			return $row[0];
 		} else {
@@ -2015,8 +2010,10 @@ abstract class DatabaseBase {
 	 * End a transaction
 	 */
 	function commit( $fname = 'Database::commit' ) {
-		$this->query( 'COMMIT', $fname );
-		$this->mTrxLevel = 0;
+		if( $this->mTrxLevel ) {
+			$this->query( 'COMMIT', $fname );
+			$this->mTrxLevel = 0;
+		}
 	}
 
 	/**
@@ -2024,8 +2021,10 @@ abstract class DatabaseBase {
 	 * No-op on non-transactional databases.
 	 */
 	function rollback( $fname = 'Database::rollback' ) {
-		$this->query( 'ROLLBACK', $fname, true );
-		$this->mTrxLevel = 0;
+		if( $this->mTrxLevel ) {
+			$this->query( 'ROLLBACK', $fname, true );
+			$this->mTrxLevel = 0;
+		}
 	}
 
 	/**

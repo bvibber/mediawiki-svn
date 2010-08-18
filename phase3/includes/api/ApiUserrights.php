@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Created on Mar 24, 2009
  * API for MediaWiki 1.8+
+ *
+ * Created on Mar 24, 2009
  *
  * Copyright © 2009 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -20,6 +21,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -61,9 +64,6 @@ class ApiUserrights extends ApiBase {
 		}
 
 		$params = $this->extractRequestParams();
-		if ( is_null( $params['user'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
-		}
 
 		$form = new UserrightsPage;
 		$status = $form->fetchUser( $params['user'] );
@@ -88,7 +88,10 @@ class ApiUserrights extends ApiBase {
 
 	public function getAllowedParams() {
 		return array (
-			'user' => null,
+			'user' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'add' => array(
 				ApiBase::PARAM_TYPE => User::getAllGroups(),
 				ApiBase::PARAM_ISMULTI => true

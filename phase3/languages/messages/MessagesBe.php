@@ -11,8 +11,10 @@
  * @author Jim-by
  * @author Mienski
  * @author Prima klasy4na
+ * @author Riwnodennyk
  * @author Urhixidur
  * @author Yury Tarasievich
+ * @author Тест
  * @author לערי ריינהארט
  */
 
@@ -183,6 +185,7 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|У гэтай катэгорыі ёсць толькі адзін файл.|У гэтай катэгорыі ёсць наступн{{PLURAL:$1|ы файл|ыя $1 файлаў}} з агульнага ліку $2.}}',
 'category-file-count-limited'    => 'У гэтай катэгорыі ёсць наступны{{PLURAL:$1| файл|я $1 файлаў}}.',
 'listingcontinuesabbrev'         => 'працяг',
+'noindex-category'               => 'Неіндэксуемыя старонкі',
 
 'mainpagetext'      => "'''MediaWiki паспяхова ўсталяваная.'''",
 'mainpagedocfooter' => 'Гл. [http://meta.wikimedia.org/wiki/Help:Contents Дапаможнік карыстальніка (англ.)] па далейшыя звесткі аб карыстанні вікі-праграмамі.
@@ -432,7 +435,7 @@ $2',
 'yourname'                   => 'Імя ўдзельніка',
 'yourpassword'               => 'Пароль',
 'yourpasswordagain'          => 'Паўтарыце пароль',
-'remembermypassword'         => 'Памятаць мяне',
+'remembermypassword'         => 'Запамятаць мяне на гэтым кампутары (ня больш, чым на $1 {{PLURAL:$1|дзень|дзён}})',
 'yourdomainname'             => 'Ваш дамен',
 'externaldberror'            => 'Або памылка вонкавай аўтэнтыкацыі ў базе дадзеных, або вам не дазволена абнаўляць свой вонкавы рахунак.',
 'login'                      => 'Увайсці ў сістэму',
@@ -1413,7 +1416,7 @@ $2',
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|байт|байта|байтаў}}',
 'ncategories'             => '$1 {{PLURAL:$1|катэгорыя|катэгорыі|катэгорый}}',
-'nlinks'                  => '$1 {{PLURAL:$1|спасылка|спасылак}}',
+'nlinks'                  => '$1 {{PLURAL:$1|спасылка|спасылкі|спасылак}}',
 'nmembers'                => '$1 {{PLURAL:$1|складнік|складнікі|складнікаў}}',
 'nrevisions'              => '$1 {{PLURAL:$1|версія|версіі|версій}}',
 'nviews'                  => '$1 {{PLURAL:$1|паказ|паказаў}}',
@@ -1583,7 +1586,6 @@ $2',
 # Watchlist
 'watchlist'            => 'Мой спіс назіранага',
 'mywatchlist'          => 'Назіранае',
-'watchlistfor'         => "(для '''$1''')",
 'nowatchlist'          => 'Ваш спіс назіранага зараз пусты.',
 'watchlistanontext'    => 'Каб бачыць або правіць складнікі назіранага, трэба $1.',
 'watchnologin'         => 'Без прадстаўлення',
@@ -2156,6 +2158,7 @@ $1 ужо знаходзіцца пад блокам. Ці жадаеце змя
 'tooltip-search-fulltext'         => 'Знайсці гэты тэкст у тэкстах старонак',
 'tooltip-p-logo'                  => 'Першая старонка',
 'tooltip-n-mainpage'              => 'Адкрыць Першую старонку',
+'tooltip-n-mainpage-description'  => 'Наведайце галоўную старонку',
 'tooltip-n-portal'                => 'Аб гэтым праекце, чым можна заняцца, дзе што шукаць',
 'tooltip-n-currentevents'         => 'Атрымаць інфармацыю пра актуальныя падзеі',
 'tooltip-n-recentchanges'         => 'Пералік нядаўніх змяненняў у віксе.',

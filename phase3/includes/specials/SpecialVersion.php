@@ -1,6 +1,9 @@
 <?php
-
 /**
+ * Implements Special:Version
+ *
+ * Copyright © 2005 Ævar Arnfjörð Bjarmason
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -15,35 +18,37 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
  * Give information about the version of MediaWiki, PHP, the DB and extensions
  *
  * @ingroup SpecialPage
- *
- * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
- * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 class SpecialVersion extends SpecialPage {
-	private $firstExtOpened = true;
+	
+	protected $firstExtOpened = false;
 
-	static $viewvcUrls = array(
+	protected static $extensionTypes = false;
+	
+	protected static $viewvcUrls = array(
 		'svn+ssh://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 		'http://svn.wikimedia.org/svnroot/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 		# Doesn't work at the time of writing but maybe some day: 
 		'https://svn.wikimedia.org/viewvc/mediawiki' => 'http://svn.wikimedia.org/viewvc/mediawiki',
 	);
 
-	function __construct(){
+	public function __construct(){
 		parent::__construct( 'Version' );
 	}
 
 	/**
 	 * main()
 	 */
-	function execute( $par ) {
+	public function execute( $par ) {
 		global $wgOut, $wgSpecialVersionShowHooks, $wgContLang;
 		
 		$this->setHeaders();
@@ -198,6 +203,48 @@ class SpecialVersion extends SpecialPage {
 	}
 
 	/**
+	 * Returns an array with the base extension types.
+	 * Type is stored as array key, the message as array value.
+	 * 
+	 * TODO: ideally this would return all extension types, including
+	 * those added by SpecialVersionExtensionTypes. This is not possible
+	 * since this hook is passing along $this though.
+	 * 
+	 * @since 1.17
+	 * 
+	 * @return array
+	 */
+	public static function getExtensionTypes() {
+		if ( self::$extensionTypes === false ) {
+			self::$extensionTypes = array(
+				'specialpage' => wfMsg( 'version-specialpages' ),
+				'parserhook' => wfMsg( 'version-parserhooks' ),
+				'variable' => wfMsg( 'version-variables' ),
+				'media' => wfMsg( 'version-mediahandlers' ),
+				'other' => wfMsg( 'version-other' ),
+			);
+			
+			wfRunHooks( 'ExtensionTypes', array( &self::$extensionTypes ) );
+		}
+		
+		return self::$extensionTypes;
+	}
+	
+	/**
+	 * Returns the internationalized name for an extension type.
+	 * 
+	 * @since 1.17
+	 * 
+	 * @param $type String
+	 * 
+	 * @return string
+	 */
+	public static function getExtensionTypeName( $type ) {
+		$types = self::getExtensionTypes();
+		return $types[$type];
+	}
+	
+	/**
 	 * Generate wikitext showing extensions name, URL, author and description.
 	 *
 	 * @return String: Wikitext
@@ -209,30 +256,37 @@ class SpecialVersion extends SpecialPage {
 			return '';
 		}
 
-		$extensionTypes = array(
-			'specialpage' => wfMsg( 'version-specialpages' ),
-			'parserhook' => wfMsg( 'version-parserhooks' ),
-			'variable' => wfMsg( 'version-variables' ),
-			'media' => wfMsg( 'version-mediahandlers' ),
-			'other' => wfMsg( 'version-other' ),
-		);
+		$extensionTypes = self::getExtensionTypes();
 		
+		/**
+		 * @deprecated as of 1.17, use hook ExtensionTypes instead.
+		 */
 		wfRunHooks( 'SpecialVersionExtensionTypes', array( &$this, &$extensionTypes ) );
 
 		$out = Xml::element( 'h2', array( 'id' => 'mw-version-ext' ), wfMsg( 'version-extensions' ) ) .
 			Xml::openElement( 'table', array( 'class' => 'wikitable', 'id' => 'sv-ext' ) );
 
-		foreach ( $extensionTypes as $type => $text ) {
-			if ( isset ( $wgExtensionCredits[$type] ) && count ( $wgExtensionCredits[$type] ) ) {
-				$out .= $this->openExtType( $text, 'credits-' . $type );
-
-				usort( $wgExtensionCredits[$type], array( $this, 'compare' ) );
-
-				foreach ( $wgExtensionCredits[$type] as $extension ) {
-					$out .= $this->getCreditsForExtension( $extension );
-				}
+		// Make sure the 'other' type is set to an array. 
+		if ( !array_key_exists( 'other', $wgExtensionCredits ) ) {
+			$wgExtensionCredits['other'] = array();
+		}
+		
+		// Find all extensions that do not have a valid type and give them the type 'other'.
+		foreach ( $wgExtensionCredits as $type => $extensions ) {
+			if ( !array_key_exists( $type, $extensionTypes ) ) {
+				$wgExtensionCredits['other'] = array_merge( $wgExtensionCredits['other'], $extensions );
 			}
 		}
+		
+		// Loop through the extension categories to display their extensions in the list.
+		foreach ( $extensionTypes as $type => $message ) {
+			if ( $type != 'other' ) {
+				$out .= $this->getExtensionCategory( $type, $message );
+			}
+		}
+		
+		// We want the 'other' type to be last in the list.
+		$out .= $this->getExtensionCategory( 'other', $extensionTypes['other'] );
 
 		if ( count( $wgExtensionFunctions ) ) {
 			$out .= $this->openExtType( wfMsg( 'version-extension-functions' ), 'extension-functions' );
@@ -260,6 +314,34 @@ class SpecialVersion extends SpecialPage {
 		
 		return $out;
 	}
+	
+	/**
+	 * Creates and returns the HTML for a single extension category.
+	 * 
+	 * @since 1.17
+	 * 
+	 * @param $type String
+	 * @param $message String
+	 * 
+	 * @return string
+	 */
+	protected function getExtensionCategory( $type, $message ) {
+		global $wgExtensionCredits; 
+		
+		$out = '';
+		
+		if ( array_key_exists( $type, $wgExtensionCredits ) && count( $wgExtensionCredits[$type] ) > 0 ) {
+			$out .= $this->openExtType( $message, 'credits-' . $type );
+
+			usort( $wgExtensionCredits[$type], array( $this, 'compare' ) );
+
+			foreach ( $wgExtensionCredits[$type] as $extension ) {
+				$out .= $this->getCreditsForExtension( $extension );
+			}
+		}
+
+		return $out;
+	}	
 
 	/**
 	 * Callback to sort extensions by type.
@@ -278,11 +360,11 @@ class SpecialVersion extends SpecialPage {
 	/**
 	 * Creates and formats the creidts for a single extension and returns this.
 	 * 
-	 * @param $extension String
+	 * @param $extension Array
 	 * 
 	 * @return string
 	 */
-	function getCreditsForExtension( $extension ) {
+	function getCreditsForExtension( array $extension ) {
 		$name = isset( $extension['name'] ) ? $extension['name'] : '[no name]';
 		
 		if ( isset( $extension['path'] ) ) {
@@ -391,16 +473,18 @@ class SpecialVersion extends SpecialPage {
 		$opt = array( 'colspan' => 4 );
 		$out = '';
 
-		if( !$this->firstExtOpened ) {
+		if( $this->firstExtOpened ) {
 			// Insert a spacing line
 			$out .= '<tr class="sv-space">' . Html::element( 'td', $opt ) . "</tr>\n";
 		}
-		$this->firstExtOpened = false;
-
-		if( $name )
+		$this->firstExtOpened = true;
+		
+		if( $name ) {
 			$opt['id'] = "sv-$name";
+		}
 
 		$out .= "<tr>" . Xml::element( 'th', $opt, $text ) . "</tr>\n";
+		
 		return $out;
 	}
 

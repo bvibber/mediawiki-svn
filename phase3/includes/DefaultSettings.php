@@ -1478,9 +1478,6 @@ $wgSessionsInMemcached = false;
  */
 $wgSessionHandler = 'files';
 
-/** @deprecated Does nothing */
-$wgUseMemCached     = false;
-
 /** If enabled, will send MemCached debugging information to $wgDebugLogFile */
 $wgMemCachedDebug   = false;
 
@@ -1556,7 +1553,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '299';
+$wgStyleVersion = '300';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -1899,20 +1896,6 @@ $wgMsgCacheExpiry	= 86400;
  */
 $wgMaxMsgCacheEntrySize = 10000;
 
-/**
- * If true, serialized versions of the messages arrays will be
- * read from the 'serialized' subdirectory if they are present.
- * Set to false to always use the Messages files, regardless of
- * whether they are up to date or not.
- */
-$wgEnableSerializedMessages = true;
-
-/**
- * Set to false if you are thorough system admin who always remembers to keep
- * serialized files up to date to save few mtime calls.
- */
-$wgCheckSerialized = true;
-
 /** Whether to enable language variant conversion. */
 $wgDisableLangConversion = false;
 
@@ -1959,15 +1942,6 @@ $wgVariantArticlePath = false;
  * customise these.
  */
 $wgLoginLanguageSelector = false;
-
-/**
- * Whether to use zhdaemon to perform Chinese text processing
- * zhdaemon is under developement, so normally you don't want to
- * use it unless for testing.
- */
-$wgUseZhdaemon = false;
-$wgZhdaemonHost="localhost";
-$wgZhdaemonPort=2004;
 
 /**
  * When translating messages with wfMsg(), it is not always clear what should
@@ -2051,10 +2025,9 @@ $wgDTD = 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd';
 $wgXhtmlDefaultNamespace = 'http://www.w3.org/1999/xhtml';
 
 /**
- * Should we output an HTML5 doctype?  This mode is still experimental, but
- * all indications are that it should be usable, so it's enabled by default.
- * If all goes well, it will be removed and become always true before the 1.16
- * release.
+ * Should we output an HTML5 doctype?  If false, use XHTML 1.0 Transitional
+ * instead, and disable HTML5 features.  This may eventually be removed and set
+ * to always true.
  */
 $wgHtml5 = true;
 
@@ -2257,7 +2230,7 @@ $wgDisableOutputCompression = false;
  * and 8, and Opera 10.50, but it fails in Opera 10.10: Unicode IDs don't seem
  * to work as anchors.  So not quite ready for general use yet.
  */
-$wgExperimentalHtmlIds = false;
+$wgExperimentalHtmlIds = true;
 
 /**
  * Search form behavior for Vector skin only
@@ -3623,13 +3596,6 @@ $wgSpecialVersionShowHooks =  false;
 $wgShowSQLErrors        = false;
 
 /**
- * If true, some error messages will be colorized when running scripts on the
- * command line; this can aid picking important things out when debugging.
- * Ignored when running on Windows or when output is redirected to a file.
- */
-$wgColorErrors          = true;
-
-/**
  * If set to true, uncaught exceptions will print a complete stack trace
  * to output. This should only be used for debugging, as it may reveal
  * private information in function parameters due to PHP's backtrace
@@ -3798,12 +3764,6 @@ $wgSeleniumTestsUseBrowser = 'firefox';
  * Set this to true to disable the full text search feature.
  */
 $wgDisableTextSearch = false;
-
-/**
- * Set this to true to disable the context which appears on search result pages. 
- * Search context can cause a high DB load.
- */
-$wgDisableSearchContext = false;
 
 /**
  * Set to true to have nicer highligted text in search results,
@@ -4431,6 +4391,16 @@ $wgSpecialPageCacheUpdates = array(
  * Hooks should return strings or false
  */
 $wgExceptionHooks = array();
+
+/**
+ * List of page property names and descriptions of what they are. 
+ * This is used for the API prop=pageprops module to know which 
+ * page props to search for. The help message is only seen from 
+ * the API help page.
+ */
+$wgPageProps = array( 
+	'hiddencat' => 'Whether or not the page has a category with the __HIDDENCAT__ magic word',
+);
 
 /**
  * Page property link table invalidation lists. When a page property
@@ -5114,6 +5084,42 @@ $wgPoolCounterConf = null;
  */
 $wgUploadMaintenance = false;
 
+/**
+ * Enabes or disables JavaScript-based suggestions of password strength
+ */
+$wgLivePasswordStrengthChecks = false;
+
+/**
+ * The location of the MediaWiki package repository to use.
+ * 
+ * @since 1.17
+ * @var string
+ */
+$wgRepositoryApiLocation = 'http://www.mediawiki.org/w/api.php';
+
+/**
+ * The location of the remote web interface for the selected repository. 
+ * 
+ * @since 1.17
+ * @var string
+ */
+$wgRepositoryLocation = 'http://www.mediawiki.org/wiki/Special:Repository';
+
+/**
+ * List of package states to filter update detection and extension listing on. 
+ * 
+ * @since 1.17
+ * @var array
+ */
+$wgRepositoryPackageStates = array(
+	//'dev',
+	//'alpha',
+	'beta',
+	//'rc',
+	'stable',
+	//'deprecated',
+);
+ 
 /**
  * For really cool vim folding this needs to be at the end:
  * vim: foldmarker=@{,@} foldmethod=marker

@@ -826,7 +826,7 @@ class Article {
 	 */
 	public function view() {
 		global $wgUser, $wgOut, $wgRequest, $wgParser;
-		global $wgUseFileCache;
+		global $wgUseFileCache, $wgUseETag;
 
 		wfProfileIn( __METHOD__ );
 
@@ -834,16 +834,17 @@ class Article {
 		$oldid = $this->getOldID();
 		$parserCache = ParserCache::singleton();
 
-		$parserOptions = clone $this->getParserOptions();
+		$parserOptions = $this->getParserOptions();
 		# Render printable version, use printable version cache
 		if ( $wgOut->isPrintable() ) {
 			$parserOptions->setIsPrintable( true );
+			$parserOptions->setEditSection( false );
+		} else if ( $wgUseETag && !$this->mTitle->quickUserCan( 'edit' ) ) {
+			$parserOptions->setEditSection( false );
 		}
 
 		# Try client and file cache
 		if ( $oldid === 0 && $this->checkTouched() ) {
-			global $wgUseETag;
-
 			if ( $wgUseETag ) {
 				$wgOut->setETag( $parserCache->getETag( $this, $parserOptions ) );
 			}
@@ -886,6 +887,10 @@ class Article {
 			wfProfileOut( __METHOD__ );
 
 			return;
+		}
+
+		if ( !$wgUseETag && !$this->mTitle->quickUserCan( 'edit' ) ) {
+			$parserOptions->setEditSection( false );
 		}
 
 		# Should the parser cache be used?
@@ -991,6 +996,8 @@ class Article {
 				case 4:
 					# Run the parse, protected by a pool counter
 					wfDebug( __METHOD__ . ": doing uncached parse\n" );
+
+					$this->checkTouched();
 					$key = $parserCache->getKey( $this, $parserOptions );
 					$poolCounter = PoolCounter::factory( 'Article::view', $key );
 					$dirtyCallback = $useParserCache ? array( $this, 'tryDirtyCache' ) : false;
@@ -1075,7 +1082,7 @@ class Article {
 	 * This is hooked by SyntaxHighlight_GeSHi to do syntax highlighting of these
 	 * page views.
 	 */
-	public function showCssOrJsPage() {
+	protected function showCssOrJsPage() {
 		global $wgOut;
 
 		$wgOut->wrapWikiMsg( "<div id='mw-clearyourcache'>\n$1\n</div>", 'clearyourcache' );
@@ -1302,7 +1309,7 @@ class Article {
 		}
 
 		$sk = $wgUser->getSkin();
-		$token = $wgUser->editToken( $rcid );
+		$token = $wgUser->editToken();
 
 		$wgOut->addHTML(
 			"<div class='patrollink'>" .
@@ -1465,13 +1472,16 @@ class Article {
 
 		$oldid = $this->getOldID();
 		$useParserCache = $this->useParserCache( $oldid );
-		$parserOptions = clone $this->getParserOptions();
+		$parserOptions = $this->getParserOptions();
 
 		# Render printable version, use printable version cache
 		$parserOptions->setIsPrintable( $wgOut->isPrintable() );
 
 		# Don't show section-edit links on old revisions... this way lies madness.
-		$parserOptions->setEditSection( $this->isCurrent() );
+		if ( !$this->isCurrent() || $wgOut->isPrintable() ) {
+			$parserOptions->setEditSection( false );
+		}
+		
 		$useParserCache = $this->useParserCache( $oldid );
 		$this->outputWikiText( $this->getContent(), $useParserCache, $parserOptions );
 	}
@@ -1485,11 +1495,15 @@ class Article {
 	 * @return boolean
 	 */
 	public function tryDirtyCache() {
-
 		global $wgOut;
 		$parserCache = ParserCache::singleton();
-		$options = $this->getParserOptions();
-		$options->setIsPrintable( $wgOut->isPrintable() );
+		$options = clone $this->getParserOptions();
+		
+		if ( $wgOut->isPrintable() ) {
+			$options->setIsPrintable( true );
+			$options->setEditSection( false );
+		}
+		
 		$output = $parserCache->getDirty( $this, $options );
 
 		if ( $output ) {
@@ -1932,33 +1946,71 @@ class Article {
 	}
 
 	/**
-	 * @deprecated use Article::doEdit()
+	 * This function is not deprecated until somebody fixes the core not to use
+	 * it. Nevertheless, use Article::doEdit() instead.
 	 */
 	function insertNewArticle( $text, $summary, $isminor, $watchthis, $suppressRC = false, $comment = false, $bot = false ) {
-		wfDeprecated( __METHOD__ );
 		$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $isminor ? EDIT_MINOR : 0 ) |
 			( $suppressRC ? EDIT_SUPPRESS_RC : 0 ) |
 			( $bot ? EDIT_FORCE_BOT : 0 );
 
-		$this->doEdit( $text, $summary, $flags, false, null, $watchthis, $comment, '', true );
+		# If this is a comment, add the summary as headline
+		if ( $comment && $summary != "" ) {
+			$text = wfMsgForContent( 'newsectionheaderdefaultlevel', $summary ) . "\n\n" . $text;
+		}
+		$this->doEdit( $text, $summary, $flags );
+
+		$dbw = wfGetDB( DB_MASTER );
+		if ( $watchthis ) {
+			if ( !$this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doWatch();
+				$dbw->commit();
+			}
+		} else {
+			if ( $this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doUnwatch();
+				$dbw->commit();
+			}
+		}
+		$this->doRedirect( $this->isRedirect( $text ) );
 	}
 
 	/**
 	 * @deprecated use Article::doEdit()
 	 */
 	function updateArticle( $text, $summary, $minor, $watchthis, $forceBot = false, $sectionanchor = '' ) {
-		wfDeprecated( __METHOD__ );
 		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $minor ? EDIT_MINOR : 0 ) |
 			( $forceBot ? EDIT_FORCE_BOT : 0 );
 
-		$status = $this->doEdit( $text, $summary, $flags, false, null, $watchthis, false, $sectionanchor, true );
+		$status = $this->doEdit( $text, $summary, $flags );
 
 		if ( !$status->isOK() ) {
 			return false;
 		}
 
+		$dbw = wfGetDB( DB_MASTER );
+		if ( $watchthis ) {
+			if ( !$this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doWatch();
+				$dbw->commit();
+			}
+		} else {
+			if ( $this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doUnwatch();
+				$dbw->commit();
+			}
+		}
+
+		$extraQuery = ''; // Give extensions a chance to modify URL query on update
+		wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraQuery ) );
+
+		$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraQuery );
 		return true;
 	}
 
@@ -2013,11 +2065,6 @@ class Article {
 	 *
 	 * @param $baseRevId the revision ID this edit was based off, if any
 	 * @param $user Optional user object, $wgUser will be used if not passed
-	 * @param $watchthis Watch the page if true, unwatch the page if false, do nothing if null
-	 * @param $comment Boolean: whether the edit is a new section
-	 * @param $sectionanchor The section anchor for the page; used for redirecting the user back to the page
-	 *              after the edit is successfully committed
-	 * @param $redirect If true, redirect the user back to the page after the edit is successfully committed
 	 *
 	 * @return Status object. Possible errors:
 	 *     edit-hook-aborted:       The ArticleSave hook aborted the edit but didn't set the fatal flag of $status
@@ -2034,8 +2081,7 @@ class Article {
 	 *
 	 *  Compatibility note: this function previously returned a boolean value indicating success/failure
 	 */
-	public function doEdit( $text, $summary, $flags = 0, $baseRevId = false, $user = null , $watchthis = null,
-			$comment = false, $sectionanchor = '', $redirect = false) {
+	public function doEdit( $text, $summary, $flags = 0, $baseRevId = false, $user = null ) {
 		global $wgUser, $wgDBtransactions, $wgUseAutomaticEditSummaries;
 
 		# Low-level sanity check
@@ -2053,13 +2099,8 @@ class Article {
 
 		$flags = $this->checkFlags( $flags );
 
-		# If this is a comment, add the summary as headline
-		if ( $comment && $summary != "" ) {
-			$text = wfMsgForContent( 'newsectionheaderdefaultlevel', $summary ) . "\n\n" . $text;
-		}
-
 		if ( !wfRunHooks( 'ArticleSave', array( &$this, &$user, &$text, &$summary,
-			$flags & EDIT_MINOR, &$watchthis, null, &$flags, &$status) ) )
+			$flags & EDIT_MINOR, null, null, &$flags, &$status ) ) )
 		{
 			wfDebug( __METHOD__ . ": ArticleSave hook aborted save!\n" );
 			wfProfileOut( __METHOD__ );
@@ -2264,7 +2305,7 @@ class Article {
 			Article::onArticleCreate( $this->mTitle );
 
 			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$user, $text, $summary,
-				$flags & EDIT_MINOR, &$watchthis, null, &$flags, $revision ) );
+				$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 		}
 
 		# Do updates right now unless deferral was requested
@@ -2276,39 +2317,9 @@ class Article {
 		$status->value['revision'] = $revision;
 
 		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$user, $text, $summary,
-			$flags & EDIT_MINOR, &$watchthis, null, &$flags, $revision, &$status, $baseRevId,
-			&$redirect) );
-
-		# Watch or unwatch the page
-		if ( $watchthis === true ) {
-			if ( !$this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doWatch();
-				$dbw->commit();
-			}
-		} elseif ( $watchthis === false ) {
-			if ( $this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doUnwatch();
-				$dbw->commit();
-			}
-		}
-
-		# Give extensions a chance to modify URL query on update
-		$extraQuery = '';
-
-		wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraQuery ) );
-
-		if ( $redirect ) {
-			if ( $sectionanchor || $extraQuery ) {
-				$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraQuery );
-			} else {
-				$this->doRedirect( $this->isRedirect( $text ) );
-			}
-		}
+			$flags & EDIT_MINOR, null, null, &$flags, $revision, &$status, $baseRevId ) );
 
 		wfProfileOut( __METHOD__ );
-
 		return $status;
 	}
 
@@ -2353,7 +2364,7 @@ class Article {
 		# If we haven't been given an rc_id value, we can't do anything
 		$rcid = (int) $wgRequest->getVal( 'rcid' );
 
-		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), $rcid ) ) {
+		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
 			$wgOut->showErrorPage( 'sessionfailure-title', 'sessionfailure' );
 			return;
 		}
@@ -2774,8 +2785,6 @@ class Article {
 		} else {
 			$onlyAuthor = false;
 		}
-
-		$dbw->freeResult( $res );
 
 		// Generate the summary with a '$1' placeholder
 		if ( $blank ) {
@@ -3601,8 +3610,8 @@ class Article {
 		$edit->revid = $revid;
 		$edit->newText = $text;
 		$edit->pst = $this->preSaveTransform( $text );
-		$options = $this->getParserOptions();
-		$edit->output = $wgParser->parse( $edit->pst, $this->mTitle, $options, true, true, $revid );
+		$edit->popts = clone $this->getParserOptions();
+		$edit->output = $wgParser->parse( $edit->pst, $this->mTitle, $edit->popts, true, true, $revid );
 		$edit->oldText = $this->getContent();
 
 		$this->mPreparedEdit = $edit;
@@ -3641,9 +3650,8 @@ class Article {
 
 		# Save it to the parser cache
 		if ( $wgEnableParserCache ) {
-			$popts = $this->getParserOptions();
 			$parserCache = ParserCache::singleton();
-			$parserCache->save( $editInfo->output, $this, $popts );
+			$parserCache->save( $editInfo->output, $this, $editInfo->popts );
 		}
 
 		# Update the links tables
@@ -4298,8 +4306,6 @@ class Article {
 			}
 		}
 
-		$dbr->freeResult( $res );
-
 		return $result;
 	}
 
@@ -4329,8 +4335,6 @@ class Article {
 				$result[] = Title::makeTitle( NS_CATEGORY, $row->cl_to );
 			}
 		}
-
-		$dbr->freeResult( $res );
 
 		return $result;
 	}
@@ -4414,7 +4418,7 @@ class Article {
 		global $wgParser, $wgEnableParserCache, $wgUseFileCache;
 
 		if ( !$parserOptions ) {
-			$parserOptions = $this->getParserOptions();
+			$parserOptions = clone $this->getParserOptions();
 		}
 
 		$time = - wfTime();
@@ -4458,7 +4462,9 @@ class Article {
 			$this->mParserOptions->enableLimitReport();
 		}
 
-		return $this->mParserOptions;
+		// Clone to allow modifications of the return value without affecting 
+		// the cache
+		return clone $this->mParserOptions;
 	}
 
 	/**
@@ -4582,6 +4588,8 @@ class Article {
 	 * and so on. Doesn't consider most of the stuff that Article::view is forced to
 	 * consider, so it's not appropriate to use there.
 	 *
+	 * @since 1.16 (r52326) for LiquidThreads
+	 * 
 	 * @param $oldid mixed integer Revision ID or null
 	 */
 	public function getParserOutput( $oldid = null ) {

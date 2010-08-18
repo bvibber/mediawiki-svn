@@ -50,6 +50,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   navigation link with $wgUploadMissingFileUrl.
 * $wgCategoryPrefixedDefaultSortkey was removed and is now always false.  This
   provides more sensible sorting behavior for categories.
+* Removed unused globals: $wgEnableSerializedMessages, $wgCheckSerialized,
+  $wgUseMemCached, $wgDisableSearchContext, $wgColorErrors,
+  $wgUseZhdaemon, $wgZhdaemonHost and $wgZhdaemonPort.
+* (bug 24408) The include_path is not modified in the default LocalSettings.php
 
 === New features in 1.17 ===
 * (bug 10183) Users can now add personal styles and scripts to all skins via
@@ -132,6 +136,17 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 ** (bug 1211) Subcategories, ordinary pages, and files now page separately.
 ** When several pages are given the same sort key, they sort by their names
    instead of randomly.
+* (bug 23848) Add {{ARTICLEPATH}} Magic Word.
+* JavaScript-based password complexity checker on account creation and 
+  password change.
+* The HTML ID's generated for sections are now much prettier when they contain
+  punctuation or non-English letters, so a section named "Hello?" will now
+  result in a URL ending in "#Hello?" rather than "#Hello.3F".
+* (bug 8140) Add dedicated CSS classes to Special:Newpages elements
+* (bug 11005) Add CSS class to empty pages in Special:Newpages
+* The parser cache is now shared amongst users whose different settings aren't
+  used in the page.
+* Any attribute beginning with "data-" can now be used in wikitext, per HTML5.
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -272,6 +287,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   instead of showing an error page
 * (bug 24425) Use Database::replace instead of delete/insert in SqlBagOStuff::set
   to avoid query errors about duplicate keynames.
+* (bug 15470) First letters of filenames are always capitalized by upload JS.
+* (bug 21215) NoLocalSettings.php doesn't tolerate rewrite rules
+* (bug 21052) Fix link color for stubs in NewPages
+* (bug 24714) Usage of {{#dateformat: }} in wikis without $wgUseDynamicDates no 
+  longer pollutes the parser cache.
+* (bug 17031) Correct which characters the parser allows in tag attributes.
+* Save 200 useless queries on each category page view
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
@@ -316,12 +338,24 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 24564) Fix fatal errors when using list=deletedrevs, prop=revisions or 
   one of the backlinks generators with limit=max.
 * (bug 24656) API's parse module needs option to disable PP report
+* PARAM_REQUIRED parameter flag added. If this flag is set, and the end user does not set 
+  the parameter, the API will automatically throw an error.
+* (bug 24665) When starttimestamp is not specified, fake it by setting it to NOW, not to 
+  the timestamp of the last edit
+* (bug 24677) axto= parameters added to allcategories, allimages, alllinks, allmessages, 
+  allpages, and allusers
+* (bug 24236) Add add, remove, add-self, remove-self tags to meta=siteinfo&siprop=usergroups
+* (bug 24484) Add prop=pageprops module 
+* (bug 24330) Add &redirect parameter to ?action=edit 
+* (bug 24722) For list=allusers&auprop=blockinfo, only show blockedby and blockreason if 
+  the user is actually blocked.
+* Add format=dump and format=dumpfm, outputs results in PHP's var_dump() format. 
 
 === Languages updated in 1.17 ===
 
 MediaWiki supports over 330 languages. Many localisations are updated
 regularly. Below only new and removed languages are listed, as well as
-changes to languages because of MediaZilla reports.
+changes to languages because of Bugzilla reports.
 
 * Moroccan Spoken Arabic (ary) (new)
 * Banjar (bjn) (new)

@@ -824,6 +824,15 @@ Wacht even voordat u het opnieuw probeert.',
 'loginlanguagelabel'         => 'Taal: $1',
 'suspicious-userlogout'      => 'Uw verzoek om af te melden is genegeerd, omdat het lijkt alsof het verzoek is verzonden door een browser of cacheproxy die stuk is.',
 
+# JavaScript password checks
+'password-strength'            => 'Geschatte wachtwoordsterkte: $1',
+'password-strength-bad'        => 'LAAG',
+'password-strength-mediocre'   => 'middelmatig',
+'password-strength-acceptable' => 'aanvaardbaar',
+'password-strength-good'       => 'goed',
+'password-retype'              => 'Geef uw wachtwoord opnieuw in',
+'password-retype-mismatch'     => 'De wachtwoorden komen niet overeen',
+
 # Password reset dialog
 'resetpass'                 => 'Wachtwoord wijzigen',
 'resetpass_announce'        => 'U bent aangemeld met een tijdelijke code die u per e-mail is toegezonden.
@@ -1399,6 +1408,7 @@ De gegevens over {{SITENAME}} zijn mogelijk niet bijgewerkt.',
 'contextlines'                  => 'Regels per resultaat:',
 'contextchars'                  => 'Context per regel:',
 'stub-threshold'                => 'Drempel voor markering als <a href="#" class="stub">beginnetje</a>:',
+'stub-threshold-disabled'       => 'Uitgeschakeld',
 'recentchangesdays'             => 'Aantal dagen weer te geven in de recente wijzigingen:',
 'recentchangesdays-max'         => '(maximaal $1 {{PLURAL:$1|dag|dagen}})',
 'recentchangescount'            => 'Standaard aantal weer te geven bewerkingen:',
@@ -2239,7 +2249,7 @@ De ontvanger kan dus direct naar u reageren.',
 # Watchlist
 'watchlist'            => 'Volglijst',
 'mywatchlist'          => 'Mijn volglijst',
-'watchlistfor'         => "(voor '''$1''')",
+'watchlistfor2'        => 'Voor $1 $2',
 'nowatchlist'          => 'Uw volglijst is leeg.',
 'watchlistanontext'    => '$1 is noodzakelijk om uw volglijst in te zien of te wijzigen.',
 'watchnologin'         => 'U bent niet aangemeld',

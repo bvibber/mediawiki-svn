@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 2, 2008
- *
  * API for MediaWiki 1.14+
+ *
+ * Created on Sep 2, 2008
  *
  * Copyright © 2008 Soxred93 soxred93@gmail.com,
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -42,10 +43,6 @@ class ApiPatrol extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
-
-		if ( !isset( $params['rcid'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'rcid' ) );
-		}
 
 		$rc = RecentChange::newFromID( $params['rcid'] );
 		if ( !$rc instanceof RecentChange ) {
@@ -70,7 +67,8 @@ class ApiPatrol extends ApiBase {
 		return array(
 			'token' => null,
 			'rcid' => array(
-				ApiBase::PARAM_TYPE => 'integer'
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_REQUIRED => true
 			),
 		);
 	}
@@ -88,7 +86,6 @@ class ApiPatrol extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'rcid' ),
 			array( 'nosuchrcid', 'rcid' ),
 		) );
 	}

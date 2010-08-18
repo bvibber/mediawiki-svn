@@ -783,6 +783,15 @@ Aguarde antes de tentar novamente, por favor.',
 'loginlanguagelabel'         => 'Língua: $1',
 'suspicious-userlogout'      => 'O seu pedido para sair foi negado porque parece ter sido enviado por um browser danificado ou por um proxy com cache.',
 
+# JavaScript password checks
+'password-strength'            => 'Estimativa da segurança da palavra-chave: $1',
+'password-strength-bad'        => 'MÁ',
+'password-strength-mediocre'   => 'medíocre',
+'password-strength-acceptable' => 'aceitável',
+'password-strength-good'       => 'boa',
+'password-retype'              => 'Repita a palavra-chave aqui',
+'password-retype-mismatch'     => 'As palavras-chave não coincidem',
+
 # Password reset dialog
 'resetpass'                 => 'Alterar palavra-chave',
 'resetpass_announce'        => 'Autenticou-se usando uma palavra-chave temporária enviada por correio electrónico.
@@ -940,9 +949,9 @@ Caso continue a não funcionar, tente [[Special:UserLogout|sair]] e voltar a ent
 'token_suffix_mismatch'            => "'''A edição foi rejeitada porque o seu browser alterou os sinais de pontuação no editor.'''
 A edição foi rejeitada para evitar perdas no texto da página.
 Isso acontece ocasionalmente quando se usa um serviço de proxy anonimizador mal configurado.'''",
-'editing'                          => 'Editando $1',
-'editingsection'                   => 'Editando $1 (secção)',
-'editingcomment'                   => 'Editando $1 (nova secção)',
+'editing'                          => 'A editar $1',
+'editingsection'                   => 'A editar $1 (secção)',
+'editingcomment'                   => 'A editar $1 (nova secção)',
 'editconflict'                     => 'Conflito de edição: $1',
 'explainconflict'                  => "Alguém mudou a página enquanto você a editava.
 A caixa de texto acima mostra o texto existente, na forma como está neste momento.
@@ -953,7 +962,7 @@ Terá de reintegrar as suas mudanças no texto da caixa acima.
 'storedversion'                    => 'Versão guardada',
 'nonunicodebrowser'                => "'''Aviso: O seu browser não é compatível com as especificações Unicode.
 Foi activado um sistema de edição alternativo que lhe permite editar as páginas com segurança: os caracteres não-ASCII aparecerão na caixa de edição no formato de códigos hexadecimais.'''",
-'editingold'                       => "'''Aviso: Está editando uma revisão desactualizada desta página.'''
+'editingold'                       => "'''Aviso: Está a editar uma revisão desactualizada desta página.'''
 Se gravar, todas as mudanças feitas a partir desta revisão serão perdidas.",
 'yourdiff'                         => 'Diferenças',
 'copyrightwarning'                 => "Por favor, note que todas as suas contribuições na {{SITENAME}} são consideradas publicadas nos termos da licença $2 (veja $1 para detalhes). Se não deseja que o seu texto possa ser inexoravelmente editado e redistribuído desta forma, não o envie.
@@ -1353,6 +1362,7 @@ Note, no entanto, que a indexação da {{SITENAME}} neste motor de busca pode es
 'contextlines'                  => 'Linhas por resultado:',
 'contextchars'                  => 'Contexto por linha:',
 'stub-threshold'                => 'Links para páginas provisórias \'\'(stubs)\'\' terão <a href="#" class="stub">este formato</a> se elas ocuparem menos de (bytes):',
+'stub-threshold-disabled'       => 'Desactivado',
 'recentchangesdays'             => 'Dias a apresentar nas mudanças recentes:',
 'recentchangesdays-max'         => '(máximo: $1 {{PLURAL:$1|dia|dias}})',
 'recentchangescount'            => 'Número de edições a apresentar por omissão:',
@@ -2176,7 +2186,7 @@ O endereço de correio que introduziu nas suas [[Special:Preferences|preferênci
 # Watchlist
 'watchlist'            => 'Páginas vigiadas',
 'mywatchlist'          => 'Páginas vigiadas',
-'watchlistfor'         => "(para '''$1''')",
+'watchlistfor2'        => 'Para $1 $2',
 'nowatchlist'          => 'A sua lista de páginas vigiadas está vazia.',
 'watchlistanontext'    => '$1 para ver ou editar a sua lista de páginas vigiadas, por favor.',
 'watchnologin'         => 'Não está autenticado',
@@ -2458,7 +2468,7 @@ Para sua referência, encontra abaixo a entrada mais recente no registo de bloqu
 'nolinkshere-ns'           => "Não existem links para '''[[:$1]]''' no espaço nominal seleccionado.",
 'isredirect'               => 'página de redireccionamento',
 'istemplate'               => 'inclusão',
-'isimage'                  => 'link para imagem',
+'isimage'                  => 'link para a imagem',
 'whatlinkshere-prev'       => '{{PLURAL:$1|anterior|$1 anteriores}}',
 'whatlinkshere-next'       => '{{PLURAL:$1|próximo|próximos $1}}',
 'whatlinkshere-links'      => '← links',

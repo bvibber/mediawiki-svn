@@ -1,5 +1,7 @@
 <?php
 /**
+ * Advanced generator of database load balancing objects for wiki farms
+ *
  * @file
  * @ingroup Database
  */

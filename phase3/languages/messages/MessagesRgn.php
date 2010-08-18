@@ -49,6 +49,13 @@ $messages = array(
 'tog-uselivepreview'          => 'Drova la funziòn "Anteprèma dal viv" (u j vo Javascript; sperimentêl)',
 'tog-forceeditsummary'        => "Dam la vos quènd l'ugèt dla mudèfica l'è vut",
 'tog-watchlisthideown'        => "Nascond al mi mudèfic dala lèsta dal pàgin da tnì d'occ",
+'tog-watchlisthidebots'       => "↓ Nascond al mi mudèfic dala lèsta dal pàgin da tnì d'occ",
+'tog-watchlisthideminor'      => "↓ Nascond al mi mudèfic dala lèsta dal pàgin da tnì d'occ",
+'tog-watchlisthideliu'        => "↓ In tla lèsta da tnì d'occ, nascond al mudèfic d'j utent registrè",
+'tog-watchlisthideanons'      => " ↓ In tla lèsta da tnì d'occ, nascond al mudèfic d'j utent senza nom",
+'tog-watchlisthidepatrolled'  => "↓ Nascond tòt al mudèfic za cuntrulèdi in tla lèsta dal pàgin da tnì d'occ",
+'tog-ccmeonemails'            => "↓ Mènd'm una còpia d'j mesèg ch'a spedèss a j étar druvador",
+'tog-showhiddencats'          => "↓ Fa'm avdé al categurèj nascosti",
 
 # Dates
 'january'       => 'Znèr',
@@ -423,7 +430,6 @@ $1 {{PLURAL:$1|elemént|elemént}}',
 # Watchlist
 'watchlist'         => "Pàgin ch'a ten d'öcc",
 'mywatchlist'       => "Pàgin ch'a ten d'öcc",
-'watchlistfor'      => "(da '''$1''')",
 'addedwatch'        => "Mett insem a la lèsta d'pàgin sot öcc",
 'addedwatchtext'    => "La pàgina \"[[:\$1]]\" adès l'è int la lèsta dal [[Special:Watchlist|pàgin da tnì d'öcc]]. D'ôra inenz t'pù avdé tòt al mudèfic a sta pàgina e a la pàgina d'cunversaziòn int la [[Special:RecentChanges|lèsta d'j cambiamént rezent]], in '''gros''', acsè j 's'pò guardè mej.
 Se in un sgond temp t'vu cavé la pàgina dala lèsta da tnì d'öcc, s-cjaza un'ètra volta sora e' butòn \"ten d'öcc\".",

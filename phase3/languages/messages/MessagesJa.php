@@ -322,7 +322,7 @@ $messages = array(
 'tog-watchdeletion'           => '自分が削除したページをウォッチリストに追加する',
 'tog-previewontop'            => 'プレビューをテキストボックスの前に配置する',
 'tog-previewonfirst'          => '編集開始時にもプレビューを表示する',
-'tog-nocache'                 => 'ページをキャッシュしない',
+'tog-nocache'                 => 'ブラウザによるページのキャッシュを無効にする',
 'tog-enotifwatchlistpages'    => 'ウォッチリストにあるページが更新されたときにメールを受け取る',
 'tog-enotifusertalkpages'     => '自分のトークページが更新されたときにメールを受け取る',
 'tog-enotifminoredits'        => '細部の編集でもメールを受け取る',
@@ -719,6 +719,7 @@ $2',
 'gotaccount'                 => "すでにアカウントをお持ちですか？'''$1'''。",
 'gotaccountlink'             => 'ログイン',
 'createaccountmail'          => 'メールで送信',
+'createaccountreason'        => '理由：',
 'badretype'                  => '両方のパスワードが一致しません。',
 'userexists'                 => '入力された利用者名はすでに使われています。ほかの名前をお選びください。',
 'loginerror'                 => 'ログイン失敗',
@@ -764,6 +765,15 @@ $2',
 'login-throttled'            => 'ログインの失敗が制限回数を超えました。しばらく時間をおいてから再度お試しください。',
 'loginlanguagelabel'         => '言語: $1',
 'suspicious-userlogout'      => 'あなたのログアウトは拒否されました。送信されたリクエストが、壊れたブラウザもしくはキャッシュ・プロキシによって送信された可能性があるからです。',
+
+# JavaScript password checks
+'password-strength'            => 'パスワードの推定強度：$1',
+'password-strength-bad'        => '悪い',
+'password-strength-mediocre'   => 'あまり良くない',
+'password-strength-acceptable' => '許容範囲',
+'password-strength-good'       => '良い',
+'password-retype'              => 'パスワードを再入力',
+'password-retype-mismatch'     => 'パスワードが一致しません',
 
 # Password reset dialog
 'resetpass'                 => 'パスワードの変更',
@@ -1256,6 +1266,7 @@ $1",
 'contextlines'                  => '1件あたりの行数:',
 'contextchars'                  => '1行あたりの文字数:',
 'stub-threshold'                => '<a href="#" class="stub">スタブリンク</a>として表示する閾値:',
+'stub-threshold-disabled'       => '無効',
 'recentchangesdays'             => '最近の更新に表示する日数:',
 'recentchangesdays-max'         => '(最大$1 {{PLURAL:$1|日|日間}})',
 'recentchangescount'            => '既定で表示する件数:',
@@ -1644,7 +1655,7 @@ MGP # ペンタックス
 PICT # その他
  #</pre> <!-- この行はそのままにしておいてください -->',
 'upload-success-subj'         => 'アップロード成功',
-'upload-success-msg'          => '[$2] からのアップロードに成功しました。アップロードしたページはこちらです: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => '[$2]からのアップロードに成功しました。[[:{{ns:file}}:$1]]から利用可能です。',
 'upload-failure-subj'         => 'アップロードで発生した問題',
 'upload-failure-msg'          => 'ファイルのアップロード中に問題が発生しました:
 
@@ -2029,7 +2040,7 @@ $1',
 # Watchlist
 'watchlist'            => 'ウォッチリスト',
 'mywatchlist'          => 'ウォッチリスト',
-'watchlistfor'         => "(利用者: '''$1''')",
+'watchlistfor2'        => '利用者:$1 $2',
 'nowatchlist'          => 'あなたのウォッチリストは空です。',
 'watchlistanontext'    => 'ウォッチリストに入っている項目を表示・編集するには $1 してください。',
 'watchnologin'         => 'ログインしていません',
@@ -2591,7 +2602,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 
 # Import log
 'importlogpage'                    => 'インポート記録',
-'importlogpagetext'                => '以下は他ウィキからのページデータの取り込み記録です。',
+'importlogpagetext'                => '他のウィキからの、編集履歴のあるページの管理されたインポート。',
 'import-logentry-upload'           => 'ファイルのアップロードにより [[$1]] をインポートしました',
 'import-logentry-upload-detail'    => '$1{{PLURAL:$1|版}}',
 'import-logentry-interwiki'        => '$1 をtranswikiしました',

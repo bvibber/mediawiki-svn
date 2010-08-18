@@ -1,7 +1,10 @@
 <?php
 /**
- * Copyright (C) 2004 Gabriel Wicke <wicke@wikidev.net>
+ * Raw page text accessor
+ *
+ * Copyright © 2004 Gabriel Wicke <wicke@wikidev.net>
  * http://wikidev.net/
+ *
  * Based on HistoryPage and SpecialExport
  *
  * License: GPL (http://www.gnu.org/copyleft/gpl.html)
@@ -20,15 +23,15 @@ class RawPage {
 	var $mSmaxage, $mMaxage;
 	var $mContentType, $mExpandTemplates;
 
-	function __construct( &$article, $request = false ) {
+	function __construct( Article $article, $request = false ) {
 		global $wgRequest, $wgInputEncoding, $wgSquidMaxage, $wgJsMimeType, $wgGroupPermissions;
 
 		$allowedCTypes = array('text/x-wiki', $wgJsMimeType, 'text/css', 'application/x-zope-edit');
-		$this->mArticle =& $article;
-		$this->mTitle =& $article->mTitle;
+		$this->mArticle = $article;
+		$this->mTitle = $article->mTitle;
 
 		if( $request === false ) {
-			$this->mRequest =& $wgRequest;
+			$this->mRequest = $wgRequest;
 		} else {
 			$this->mRequest = $request;
 		}

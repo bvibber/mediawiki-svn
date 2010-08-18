@@ -1,6 +1,9 @@
 <?php
 /**
- * @defgroup DifferenceEngine DifferenceEngine
+ * User interface for the difference engine
+ *
+ * @file
+ * @ingroup DifferenceEngine
  */
  
 /**
@@ -236,7 +239,7 @@ CONTROL;
 			}
 			// Build the link
 			if( $rcid ) {
-				$token = $wgUser->editToken( $rcid );
+				$token = $wgUser->editToken();
 				$patrol = ' <span class="patrollink">[' . $sk->link(
 					$this->mTitle, 
 					wfMsgHtml( 'markaspatrolleddiff' ),
@@ -447,7 +450,7 @@ CONTROL;
 			}
 		} elseif( $pCache ) {
 			$article = new Article( $this->mTitle, 0 );
-			$pOutput = ParserCache::singleton()->get( $article, $wgUser );
+			$pOutput = ParserCache::singleton()->get( $article, $wgOut->parserOptions() );
 			if( $pOutput ) {
 				$wgOut->addParserOutput( $pOutput );
 			} else {
@@ -463,7 +466,7 @@ CONTROL;
 		# Add redundant patrol link on bottom...
 		if( $this->mRcidMarkPatrolled && $this->mTitle->quickUserCan('patrol') ) {
 			$sk = $wgUser->getSkin();
-			$token = $wgUser->editToken( $this->mRcidMarkPatrolled );
+			$token = $wgUser->editToken();
 			$wgOut->addHTML(
 				"<div class='patrollink'>[" . $sk->link(
 					$this->mTitle,

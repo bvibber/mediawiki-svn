@@ -1,11 +1,10 @@
 <?php
-
-/*
- * Created on Oct 16, 2006
- *
+/**
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
+ * Created on Oct 16, 2006
+ *
+ * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -345,8 +346,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 				} else {
 					$this->rootTitle = $title;
 				}
-			} else {
-				$this->dieUsageMsg( array( 'missingparam', 'title' ) );
 			}
 		}
 
@@ -404,7 +403,10 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 
 	public function getAllowedParams() {
 		$retval = array(
-			'title' => null,
+			'title' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true
+			),
 			'continue' => null,
 			'namespace' => array(
 				ApiBase::PARAM_ISMULTI => true,
@@ -468,7 +470,6 @@ class ApiQueryBacklinks extends ApiQueryGeneratorBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'invalidtitle', 'title' ),
-			array( 'missingparam', 'title' ),
 			array( 'code' => 'bad_image_title', 'info' => "The title for {$this->getModuleName()} query must be an image" ),
 			array( 'code' => '_badcontinue', 'info' => 'Invalid continue param. You should pass the original value returned by the previous query' ),
 		) );

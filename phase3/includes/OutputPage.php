@@ -517,7 +517,7 @@ class OutputPage {
 		if ( $this->mTitle instanceof Title ) {
 			return $this->mTitle;
 		} else {
-			wfDebug( __METHOD__ . ' called and $mTitle is null. Return $wgTitle for sanity' );
+			wfDebug( __METHOD__ . " called and \$mTitle is null. Return \$wgTitle for sanity\n" );
 			global $wgTitle;
 			return $wgTitle;
 		}
@@ -1061,7 +1061,7 @@ class OutputPage {
 			$popts, true, true, $this->mRevisionId
 		);
 		$popts->setTidy( false );
-		if ( $cache && $article && !$parserOutput->isCacheable() ) {
+		if ( $cache && $article && $parserOutput->isCacheable() ) {
 			$parserCache = ParserCache::singleton();
 			$parserCache->save( $parserOutput, $article, $popts );
 		}
@@ -1953,6 +1953,29 @@ class OutputPage {
 		if( $this->getTitle()->exists() ) {
 			$this->returnToMain( null, $this->getTitle() );
 		}
+	}
+
+	/**
+	 * Adds JS-based password security checker
+	 * @param $passwordId String ID of input box containing password
+	 * @param $retypeId String ID of input box containing retyped password
+	 * @return none
+	 */
+	public function addPasswordSecurity( $passwordId, $retypeId ) {
+		$this->includeJQuery();
+		$data = array(
+			'password' => '#' . $passwordId,
+			'retype' => '#' . $retypeId,
+			'messages' => array(),
+		);
+		foreach ( array( 'password-strength', 'password-strength-bad', 'password-strength-mediocre',
+				'password-strength-acceptable', 'password-strength-good', 'password-retype', 'password-retype-mismatch'
+			) as $message ) {
+			$data['messages'][$message] = wfMsg( $message );
+		}
+		$this->addScript( Html::inlineScript( 'var passwordSecurity=' . FormatJson::encode( $data ) ) );
+		$this->addScriptFile( 'password.js' );
+		$this->addStyle( 'common/password.css' );
 	}
 
 	/** @deprecated */

@@ -35,6 +35,7 @@
  * @author Ouda
  * @author Oxydo
  * @author Riadismet
+ * @author Samer
  * @author Sami Lab
  * @author Tarawneh
  * @author TheEgyptian
@@ -885,7 +886,7 @@ $2',
 'passwordtooshort'           => 'يجب أن تتكون كلمة السر على الأقل من {{PLURAL:$1|حرف واحد|حرفين|$1 حروف|$1 حرفا|$1 حرف}}.',
 'password-name-match'        => 'يجب أن تكون كلمة المرور مختلفة عن اسم المستخدم.',
 'mailmypassword'             => 'أرسل لي كلمة سر جديدة',
-'passwordremindertitle'      => 'كلمة سر مؤقتة جديدة ل {{SITENAME}}',
+'passwordremindertitle'      => 'كلمة سر مؤقتة جديدة ل{{SITENAME}}',
 'passwordremindertext'       => 'لقد طلب شخص ما (غالبا أنت، من عنوان الآيبي $1) كلمة سر جديدة ل{{SITENAME}} ($4).
 أنشئت كلمة سر مؤقتة للمستخدم "$2" وجعلت "$3".
 لو أن هذا ما تريده، فعليك أن تقوم بتسجيل الدخول واختيار كلمة سر جديدة الآن.
@@ -923,6 +924,12 @@ $2',
 من فضلك انتظر قبل المحاولة مرة أخرى.',
 'loginlanguagelabel'         => 'اللغة: $1',
 'suspicious-userlogout'      => 'رفض طلب خروجك لأنه يبدو كأنه أرسل عن طريق متصفح معطوب أو وسيط تخزين.',
+
+# JavaScript password checks
+'password-strength'            => 'قوة كلمة المرور المقدرة: $1',
+'password-strength-acceptable' => 'مقبولة',
+'password-retype'              => 'أعد كتابة كلمة المرور هنا',
+'password-retype-mismatch'     => 'كلمتا المرور لا تتطابقان',
 
 # Password reset dialog
 'resetpass'                 => 'تغيير كلمة السر',
@@ -1861,6 +1868,7 @@ $1",
 'overwroteimage'              => 'رفع نسخة جديدة من "[[$1]]"',
 'uploaddisabled'              => 'تم تعطيل الرفع',
 'copyuploaddisabled'          => 'الرفع من مسار معطل.',
+'uploadfromurl-queued'        => 'رفعك قد أضيف إلى الطابور',
 'uploaddisabledtext'          => 'رفع الملفات معطل.',
 'php-uploaddisabledtext'      => 'رفع ملفات PHP معطل. من فضلك تحقق من إعدادات رفع الملفات.',
 'uploadscripted'              => 'هذا الملف يضم كود HTML أو كود آخر يمكن أن يفسره متصفح الوب بطريقة خاطئة.',
@@ -1896,7 +1904,7 @@ MGP # بينتاكس
 PICT # متنوع
  #</pre> <!-- اترك هذا السطر تماما كما هو -->',
 'upload-success-subj'         => 'تم رفع الملف بنجاح',
-'upload-success-msg'          => 'مرفوعك متوفر هنا: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => '[[مرفوعك من [$2] قد نجح. إنه متوفر هنا: [[:{{ns:file}}:$1',
 'upload-failure-subj'         => 'مشكلة رفع',
 'upload-failure-msg'          => 'توجد مشكلة في رفعك:
 
@@ -2311,14 +2319,13 @@ $1',
 # Watchlist
 'watchlist'            => 'قائمة مراقبتي',
 'mywatchlist'          => 'قائمة مراقبتي',
-'watchlistfor'         => "(ل'''$1''')",
 'nowatchlist'          => 'لا توجد مدخلات في قائمة مراقبتك.',
 'watchlistanontext'    => 'الرجاء $1 لعرض أو تعديل الصفحات في قائمة مراقبتك.',
 'watchnologin'         => 'غير مسجل',
 'watchnologintext'     => 'يجب أن تكون [[Special:UserLogin|مسجلا الدخول]] لتعدل قائمة مراقبتك.',
 'addedwatch'           => 'تمت الإضافة لقائمة المراقبة',
-'addedwatchtext'       => "تمت إضافة الصفحة  \"\$1\" إلى [[Special:Watchlist|قائمة المراقبتك]].
-التغييرات القادمة على هذه الصفحة وصفحة النقاش الخاصة بها سيتم وضعها هناك، وسيتم إظهار اسم الصفحة بخط '''عريض''' في صفحة [[Special:RecentChanges|أحدث التغييرات]] لتسهيل تحديدها واكتشافها.",
+'addedwatchtext'       => "أضيفت الصفحة  \"[[:\$1]]\" إلى [[Special:Watchlist|قائمة مراقبتك]].
+التغييرات القادمة على هذه الصفحة وصفحة نقاشها سيتم وضعها هناك، وسيتم إظهار اسم الصفحة بخط '''عريض''' في صفحة [[Special:RecentChanges|أحدث التغييرات]] لتسهيل تحديدها واكتشافها.",
 'removedwatch'         => 'تمت الإزالة من قائمة المراقبة',
 'removedwatchtext'     => 'الصفحة "[[:$1]]" تمت إزالتها من [[Special:Watchlist|قائمة مراقبتك]].',
 'watch'                => 'راقب',
@@ -2822,6 +2829,7 @@ $1 ممنوع بالفعل. هل تريد تغيير الإعدادات؟',
 'immobile-source-page'         => 'هذه الصفحة غير قابلة للنقل.',
 'immobile-target-page'         => 'غير قادر على النقل إلى العنوان الوجهة هذا.',
 'imagenocrossnamespace'        => 'لا يمكن نقل الملف إلى نطاق غير نطاق الملفات',
+'nonfile-cannot-move-to-file'  => 'لا يمكن نقل غير الملفات إلى نطاق الملفات',
 'imagetypemismatch'            => 'امتداد الملف الجديد لا يطابق نوعه',
 'imageinvalidfilename'         => 'اسم الملف الهدف غير صحيح',
 'fix-double-redirects'         => 'حدث أي تحويلات تشير إلى العنوان الأصلي',

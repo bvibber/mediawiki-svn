@@ -319,7 +319,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Tambahkan halaman yang saya hapus ke daftar pantauan',
 'tog-previewontop'            => 'Perlihatkan pratayang sebelum kotak sunting dan tidak sesudahnya',
 'tog-previewonfirst'          => 'Perlihatkan pratayang pada suntingan pertama',
-'tog-nocache'                 => 'Matikan <em>cache</em> halaman',
+'tog-nocache'                 => 'Nonaktifkan pembuatan tembolok halaman peramban ini',
 'tog-enotifwatchlistpages'    => 'Kirimkan saya surel jika suatu halaman yang saya pantau berubah',
 'tog-enotifusertalkpages'     => 'Kirimkan saya surel jika halaman pembicaraan saya berubah',
 'tog-enotifminoredits'        => 'Kirimkan saya surel juga pada perubahan kecil',
@@ -716,6 +716,7 @@ Akun Anda telah dibuat. Jangan lupa mengatur konfigurasi [[Special:Preferences|p
 'gotaccount'                 => "Sudah terdaftar sebagai pengguna? '''$1'''.",
 'gotaccountlink'             => 'Masuk log',
 'createaccountmail'          => 'melalui surel',
+'createaccountreason'        => 'Alasan:',
 'badretype'                  => 'Kata sandi yang Anda masukkan salah.',
 'userexists'                 => 'Nama pengguna yang Anda masukkan sudah dipakai.
 Silakan pilih nama yang lain.',
@@ -771,6 +772,15 @@ Anda dapat mengabaikan pesan ini jika akun ini dibuat karena suatu kesalahan.',
 Silakan menunggu sebelum mencoba lagi.',
 'loginlanguagelabel'         => 'Bahasa: $1',
 'suspicious-userlogout'      => 'Permintaan Anda untuk keluar log ditolak karena tampaknya dikirim oleh penjelajah yang rusak atau proksi penyinggah.',
+
+# JavaScript password checks
+'password-strength'            => 'Kekuatan sandi: $1',
+'password-strength-bad'        => 'BURUK',
+'password-strength-mediocre'   => 'sedang',
+'password-strength-acceptable' => 'cukup',
+'password-strength-good'       => 'baik',
+'password-retype'              => 'Ulangi kata sandi di sini',
+'password-retype-mismatch'     => 'Sandi tidak cocok',
 
 # Password reset dialog
 'resetpass'                 => 'Ganti kata sandi',
@@ -1307,6 +1317,7 @@ Perlu diingat bahwa indeks Google untuk konten {{SITENAME}} mungkin belum mencak
 'contextlines'                  => 'Baris ditampilkan per hasil:',
 'contextchars'                  => 'Karakter untuk konteks per baris:',
 'stub-threshold'                => 'Ambang batas untuk format <a href="#" class="stub">pranala rintisan</a>:',
+'stub-threshold-disabled'       => 'Dinonaktifkan',
 'recentchangesdays'             => 'Jumlah hari yang ditampilkan di perubahan terbaru:',
 'recentchangesdays-max'         => '(maksimum $1 {{PLURAL:$1|hari|hari}})',
 'recentchangescount'            => 'Standar jumlah suntingan yang ditampilkan:',
@@ -1693,11 +1704,13 @@ Anda harus mempertimbangkan apakah perlu untuk melanjutkan pemuatan berkas ini.
 Log penghapusan berkas adalah sebagai berikut:",
 'filename-bad-prefix'         => "Nama berkas yang Anda muat diawali dengan '''\"\$1\"''', yang merupakan nama non-deskriptif yang biasanya diberikan secara otomatis oleh kamera digital. Harap pilih nama lain yang lebih deskriptif untuk berkas Anda.",
 'upload-success-subj'         => 'Berhasil dimuat',
-'upload-success-msg'          => 'Unggahan Anda tersedia di sini: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'Pengunggahan Anda dari [$2] berhasil. Hasilnya tersedia di sini: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Masalah pengunggahan',
 'upload-failure-msg'          => 'Ada masalah pada unggahan Anda:
 
 $1',
+'upload-warning-subj'         => 'Peringatan pemuatan',
+'upload-warning-msg'          => 'Terjadi masalah dengan unggahan Anda dari [$2]. Anda dapat kembali ke [[Special:Upload/stash/$1|formulir pengunggahan]] untuk memerbaiki masalah ini.',
 
 'upload-proto-error'        => 'Protokol tak tepat',
 'upload-proto-error-text'   => 'Pemuatan jarak jauh membutuhkan URL yang diawali dengan <code>http://</code> atau <code>ftp://</code>.',
@@ -2096,7 +2109,7 @@ Alamat surel yang Anda masukkan di [[Special:Preferences|preferensi akun Anda]] 
 # Watchlist
 'watchlist'            => 'Daftar pantauan saya',
 'mywatchlist'          => 'Daftar pantauan saya',
-'watchlistfor'         => "(untuk '''$1''')",
+'watchlistfor2'        => 'Untuk $1 $2',
 'nowatchlist'          => 'Daftar pantauan Anda kosong.',
 'watchlistanontext'    => 'Silakan $1 untuk melihat atau menyunting daftar pantauan Anda.',
 'watchnologin'         => 'Belum masuk log',
@@ -2570,6 +2583,7 @@ Artikel yang dituju, "[[:$1]]", telah mempunyai isi. Apakah Anda hendak menghapu
 'immobile-source-page'         => 'Halaman ini tidak dapat dipindahkan.',
 'immobile-target-page'         => 'Tidak dapat memindahkan ke judul tujuan tersebut.',
 'imagenocrossnamespace'        => 'Tidak dapat memindahkan berkas ke ruang nama non-berkas',
+'nonfile-cannot-move-to-file'  => 'Tidak dapat memindahkan non-berkas ke ruang nama berkas',
 'imagetypemismatch'            => 'Ekstensi yang diberikan tidak cocok dengan tipe berkas',
 'imageinvalidfilename'         => 'Nama berkas tujuan tidak sah',
 'fix-double-redirects'         => 'Perbaiki semua pengalihan ganda yang mungkin terjadi',
