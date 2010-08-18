@@ -2254,6 +2254,7 @@ class OutputPage {
 				$module = ResourceLoader::getModule( $name );
 				if ( $module->isRaw() ) {
 					$scripts .= self::makeResourceLoaderLinkedScript( $sk, $name );
+				} else {
 					$skipped[] = $name;
 				}
 			}
