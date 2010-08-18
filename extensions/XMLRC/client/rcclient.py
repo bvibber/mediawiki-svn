@@ -33,18 +33,29 @@ LOG_DEBUG = 30
 
 ##################################################################################
 class RecentChange(object):
-    """ Represence a RecentChanges-Record. Properties of a change can be accessed
+    """ Represents a RecentChanges-Record. Properties of a change can be accessed
 	using item syntax (e.g. rc['revid']) or attribute syntax (e.g. rc.revid). 
-	Well known attributes are converted to the appropriate type automatically. """
+	Well known attributes are converted to the appropriate type automatically. 
+	Nested tags become available as DOM nodes by their tag name, better
+	support for these is pending.
+    """
 
     flags = set( ( 'anon', 'bot', 'minor', 'redirect', 'patrolled' ) )
     numerics = set( ( 'rcid', 'pageid', 'revid', 'old_revid', 'newlen', 'oldlen', 'ns', ) )
     times = set( ( 'timestamp', ) )
 
     def __init__(self, dom):
+	""" create a RecentChange object from a DOM node """
+
 	self.dom = dom
 
     def get_property(self, prop):
+	""" get an RC property, as represented by an attribute in the <rc> tag, 
+	    or a tag nested in the <rc> tag. Nested tags can be accessed by their
+	    tag name, but only one instance of each tag name is supports.
+            Well known attributes are converted to the appropriate type automatically. 
+	"""
+
 	a = self.dom.getAttr(prop)
 
 	if type(prop) == unicode:
@@ -79,9 +90,11 @@ class RecentChange(object):
         return a
 
     def __getitem__(self, prop):
+	""" delegates to get_property( prop ) """
         return self.get_property(prop)
 
     def __getattr__(self, prop):
+	""" delegates to get_property( prop ) """
         return self.get_property(prop)
 
 class RCHandler(object):
@@ -90,7 +103,12 @@ class RCHandler(object):
 	method will then be called for every change record received. """
 
     def process(self, rc):
-	pass
+	""" called for each RC message received by RCClient.
+	    This implementation raises an Exception, please override it with 
+	    something meaningful.
+	""" 
+
+	raise Exception( "please override process(self, rc)" )
 
 class RCEcho(RCHandler):
     """ Implementation of RCHandler that will print the RecentChanges-
@@ -101,12 +119,26 @@ class RCEcho(RCHandler):
 	      'anon', 'bot', 'minor', 'redirect', 'patrolled' )
 
     def process(self, rc):
+	""" called for each RC message received by RCClient.
+	    This implementation outputs the values for a set of well known RC properties.
+	    
+	    Arguments:
+	    rc -- an instance of RecentChange that describes the change
+	""" 
+
 	print "-----------------------------------------------"
 	for p in RCEcho.props:
 	    self.print_prop(rc, p)
 	print "-----------------------------------------------"
 
     def print_prop(self, rc, prop):
+	""" Retrieves and prints a single property from an RecentChange instance.
+	    
+	    Arguments:
+	    rc -- an instance of RecentChange that describes the change
+	    prop -- name of the property to print
+	""" 
+
 	v = rc[prop]
 	if v is None: v = ''
 
@@ -117,6 +149,12 @@ class XMLEcho(RCHandler):
 	of the RecentChanges-record to the shell. """
 
     def process(self, rc):
+	""" Dumps the XML <rc> element that describes the event.
+	    
+	    Arguments:
+	    rc -- an instance of RecentChange that describes the change
+	""" 
+
 	print rc.dom.__str__(1)
 
 ##################################################################################
@@ -127,6 +165,12 @@ class RCClient(object):
 	RCClient.add_handler(). """
 
     def __init__( self, console_encoding = 'utf-8' ):
+	""" Creates a new RCClient.
+	    
+	    Arguments:
+	    console_encoding -- encoding to use for the console, default is utf-8
+	""" 
+
 	self.console_encoding = console_encoding
 	self.handlers = []
 	self.loglevel = LOG_VERBOSE
@@ -140,18 +184,25 @@ class RCClient(object):
 	self.echo_stanzas = False
 
     def warn(self, message):
+	""" Prints a warning to the console if self.loglevel >= LOG_QUIET """
 	if self.loglevel >= LOG_QUIET:
 	    sys.stderr.write( "WARNING: %s\n" % ( message.encode( self.console_encoding ) ) )
 
     def info(self, message):
+	""" Prints a message to the console if self.loglevel >= LOG_VERBOSE """
 	if self.loglevel >= LOG_VERBOSE:
 	    sys.stderr.write( "INFO: %s\n" % ( message.encode( self.console_encoding ) ) )
 
     def debug(self, message):
+	""" Prints a debug message to the console if self.loglevel >= LOG_DEBUG """
 	if self.loglevel >= LOG_DEBUG:
 	    sys.stderr.write( "DEBUG: %s\n" % ( message.encode( self.console_encoding ) ) )
 
     def service_loop( self ):
+	""" Application main loop for processing incomming XMPP messages. 
+	    Call only after connect() was successful.
+	""" 
+
 	sockets = ( self.xmpp.Connection._sock, )
 
 	self.online = 1
@@ -192,6 +243,12 @@ class RCClient(object):
 	self.info("done.")
 
     def process_message(self, con, message):
+	""" XMPP message handler, gets called automatically by the xmpppy framework. 
+	    Will analyze the message and look for <rc> tags attached to it.
+	    If such a tag is found, an instance of RecentChange is created for convenient access
+	    to the recent changes properties, and it is passed to self.dispatch_rc().
+	""" 
+
 	if self.echo_stanzas:
 	    print message.__str__(1)
 
@@ -207,6 +264,12 @@ class RCClient(object):
 		self.info("plain %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
 
     def dispatch_rc(self, rc):
+	""" Dispatch an instance of RecentChange to all handlers registered using add_handler().
+    
+	    Arguments:
+	    rc -- an instance of RecentChange that represents the event
+	""" 
+
 	for h in self.handlers:
 	    if callable( h ):
 		h( rc )
@@ -214,17 +277,38 @@ class RCClient(object):
 		h.process( rc )
 
     def add_handler(self, handler):
+	""" Adds a handler. The handler must either be callable or an instance of (a subclass of) RCHandler.
+	    The handler will be called by dispatch_rc() for each RecentChange-instance to be dispatched, until
+	    remove_handler() has been called on this handler at least as often as add_handler() had been called for it.
+	""" 
+
+	if not callable( handler ) and not isinstance( handler, RCHandler ):
+	    raise TypeError( "handler must be callable or an instance of RCHandler" )
+
 	self.handlers.append( handler )
 
     def remove_handler(self, handler):
+	""" Adds a handler that had previously been registered using add_handler(). After remove_handler() has been called
+	    at least as many times as add_handler() had been called for the same handler, the handler will no longer be 
+	    called by dispatch_rc().
+	""" 
+
 	self.handlers.remove( handler )
 
     def guess_local_resource(self):
+	""" Internal method for creating a resource ID for use when logging into an XMPP server.
+	    The automatic resource name is composed of the local hostname and the program's PID.
+	""" 
+
 	resource = "%s-%d" % ( socket.gethostname(), os.getpid() ) 
 	
 	return resource;
 
     def connect( self, jid, password ):
+	""" Connects this RCClient to an XMPP server using the given jid and password 
+	    for authentication. If the jid does nopt contain a resource id, one will
+	    be generated automatically using guess_local_resource()
+	""" 
 
 	if type( jid ) != object:
 	    jid = xmpp.protocol.JID( jid )
@@ -259,6 +343,12 @@ class RCClient(object):
         return con
 
     def on_connect( self ):
+	""" Hook called after a successfull run of connect(). This implementation sends 
+	    an initial presence notification to the server and retrieves the roster.
+	    If a chat room is known to this client, it will be joined (this is useful for
+	    re-connecting after an interruption).
+	""" 
+
         self.xmpp.sendInitPresence(self)
         self.roster = self.xmpp.getRoster()
 
@@ -266,6 +356,13 @@ class RCClient(object):
 		self.join( self.room )
 
     def join(self, room, nick = None):
+	""" Joins a MUC room. Only works after a successful connect().
+
+	    Arguments:
+	    room -- the JID of the room to join
+	    nick -- the nickname to join the room with. If not given, the node name from the jid passed to connect() will be used.
+	""" 
+
 	if not nick:
 	    nick = self.jid.getNode()
 
