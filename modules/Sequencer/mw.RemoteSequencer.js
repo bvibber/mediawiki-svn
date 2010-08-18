@@ -25,12 +25,12 @@ mw.RemoteSequencer.prototype = {
 	},
 	
 	drawUI: function() {		
-		// Check page type 
+		// Check page action 
 		if( this.action == 'view' ) {	
 			this.showViewUI();
 		}	
 	},
-	/*
+	/**
 	* Check page for sequence
 	* if not present give link to "create" one. 
 	*/
@@ -38,7 +38,11 @@ mw.RemoteSequencer.prototype = {
 		var _this = this;
 		if( wgArticleId == 0 ) {
 			// Update create button 
-			$j('#ca-edit span').text( gM('mwe-sequencer-create-sequence' ));
+			$j('#ca-edit span a')
+				.text( gM('mwe-sequencer-create-sequence' ))
+				.click(function(){
+					_this.showEditor();
+				})
 			
 			$j( this.target ).html(
 				gM("mwe-sequencer-no-sequence-create", 
@@ -47,25 +51,57 @@ mw.RemoteSequencer.prototype = {
 					})
 				)
 			);
-		}else{
-			// Get the article source?
-			
+		} else {
+			// Display embedding help			
 		}
 	},
 	showEditor: function(){
-		$j('body').append( '<div id="seqcontainer" style="position:absolute;top:5px;bottom:10px;left:10px;right:10px;" />' );
-		mw.load( 'Sequencer', function(){ 	 			
-			$j('#seqcontainer').sequencer({
-	    		'smilSource' : 'SampleEditorSequenceSmil.xml',
-	    		//set the add media wizard to only include commons:   
-	    		'AddMediaConf':{
-	    			 'enabled_providers':[ 'wiki_commons' ],
-	    			 'import_url_mode' : 'remote_link',
-	    			 'default_query' : 'fish'
+		var _this = this;
+		
+		$j('body').append( 
+			$j('<div />')
+			.attr('id',"edit_sequence_container")
+			.css({
+				'position' : 'absolute',
+				'font-size' : '.8em',
+				'top' : '5px',
+				'bottom' : '5px',
+				'left' : '5px',
+				'right' : '5px',	
+				'background': '#FFF'
+			})
+			.loadingSpinner()
+		)
+		
+		mw.load( 'Sequencer', function(){ 	 				
+			$j('#edit_sequence_container').sequencer({	
+				'title' : _this.getTitle(),
+				'newSequence' : ( wgArticleId == 0 ),
+				'server': {
+					'type' : 'mediaWiki',
+					'url' : _this.getApiUrl(),
+					'titleKey' : wgTitle,			
+				},
+	    		// Set the add media wizard to only include commons:   
+	    		'addMedia' : {
+	    			 'enabled_providers':[ 'wiki_commons' ],	    			 
+	    			 'default_query' : _this.getTitle()
 	    		}     		
 			});
 		});
 	},
+	
+	getApiTitleKey: function(){
+		return wgTitle;
+	},
+	getTitle: function(){
+		return wgTitle.replace( 'Sequence:', '').replace('_', ' ');
+	},
+	// Get the api url ( for now use whatever the page context is ) 
+	getApiUrl: function(){
+		return mw.absoluteUrl( wgScript.replace('index.php', 'api.php') );
+	},
+	
 	// Check page type 
 	
 	// "view" page 	

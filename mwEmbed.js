@@ -1859,7 +1859,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		}
 		return text;		
 	};
-		
+	
+	
 	// Array of setup functions
 	var mwSetupFunctions = [];
 	

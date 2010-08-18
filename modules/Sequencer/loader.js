@@ -71,6 +71,7 @@
 				'mw.style.Sequencer'
 			],
 			[
+			 	
 			 	'$j.fn.layout',
 				// UI components used in the sequencer interface: 
 				'$j.ui.accordion',

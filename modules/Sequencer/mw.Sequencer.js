@@ -31,7 +31,7 @@ mw.includeAllModuleMessages();
 		// Draw the sequencer UI
 		seqContainer['sequencer'].drawUI();
 		
-		//Return the sequence jquery object
+		// Return the sequence jquery object
 		return this;
 		
 	}
@@ -45,7 +45,11 @@ mw.includeAllModuleMessages();
  */
 var mw_sequenceedit_default_options = {
 	'interfaceContainer' : null,
+	'title': null,
 	'smilSource' : null,
+	'newSequence' : null,
+	'server' : null,
+	'addMedia': null,
 	'videoAspect' : '4:3'
 }
 mw.Sequencer = function( options ) {
@@ -55,7 +59,9 @@ mw.Sequencer = function( options ) {
 // Set up the mvSequencer object
 mw.Sequencer.prototype = {
 	// lazy init id for the sequencer instance. 
-	id: null, 
+	id: null,
+	// Holds sequencer configuration options 
+	options: {},
 	
 	init: function( options ){
 		if(!options){
@@ -64,14 +70,30 @@ mw.Sequencer.prototype = {
 		//	Validate and set default options :
 		for( var optionName in mw_sequenceedit_default_options ){
 			if( typeof options[ optionName] != 'undefined'){
-				this[optionName] =  options[ optionName] ;
+				this.options[optionName] =  options[ optionName] ;
 			} else {
-				this[optionName] = mw_sequenceedit_default_options[ optionName ]
+				this.options[optionName] = mw_sequenceedit_default_options[ optionName ]
 			}
 		}
+		
+		// Move specific options into core
+		if( this.options.smilSource ){
+			this.smilSource = options.smilSource;
+		}
+		if( this.options.interfaceContainer ){
+			this.interfaceContainer = this.options.interfaceContainer
+		}
+		
 		// For style properties assign top level mwe-sequencer class
 		this.getContainer()
 			.addClass('mwe-sequencer');
+	},
+	
+	getOption: function( optionName ){
+		if( this.options[ optionName ]){
+			return this.options[ optionName ]
+		}
+		return false;
 	},
 	
 	// Return the container id for the sequence
@@ -84,14 +106,7 @@ mw.Sequencer.prototype = {
 			this.id = this.getContainer().attr('id');
 		}
 		return this.id;
-	},
-	
-	/**
-	 * @return smilSource url
-	 */
-	getSmilSource: function(){
-		return this.smilSource;
-	},
+	},	
 	
 	/**
 	 * Update the smil xml and then update the interface
@@ -119,12 +134,12 @@ mw.Sequencer.prototype = {
 		this.getContainer().html(
 			this.getUiLayout()
 		)
+		
 		// Once the layout is in the dom setup resizableLayout "layout" options
 		this.applyLayoutBindings();			
-		
+				 		
 		// Add the smil player
-		//xxx deal with the case of an empty player~~
-		this.getPlayer().drawPlayer( function(){
+		_this.getPlayer().drawPlayer( function(){
 			// Once the player and smil is loaded ::
 			// start buffering
 			_this.getEmbedPlayer().load();
@@ -138,7 +153,60 @@ mw.Sequencer.prototype = {
 			// initialize the edit stack to support undo / redo actions  
 			_this.getActionsEdit().setupEditStack();
 		});
+			
 	},
+	
+	/**
+	 * Load a smil source if newSequence flag is set create new sequence source 
+	 * @param {function} callback Function called with smilSource 
+	 */
+	getSmilSource: function( callback ){		
+		if( !this.smilSource ){
+			if( this.getOption( 'newSequence' ) ){			
+				this.smilSource = this.getDataUrl( this.getNewSmilXML() );	
+			} else {
+				mw.log("Load smil source from server")
+				// Try to load from the server
+				this.getServer().getSmilXml(function( smilXml ){
+					this.smilSource = this.getDataUrl( smilXml );
+					callback( this.smilSource )	
+				})
+				// Wait for server to return smil source
+				return ;
+			}
+		}
+		// return the smilSource
+		callback( this.smilSource )		
+	},
+	getDataUrl: function( xmlString ){
+		return 'data:text/xml;charset=utf-8,' + escape( xmlString );
+	},
+	getNewSmilXML: function( ){
+		var title = ( this.getOption('title') ) ? 
+					this.getOption('title') :
+					gM('mwe-sequencer-untitled-sequence');
+		return '<?xml version="1.0" encoding="UTF-8"?>' +
+			"\n" + '<smil baseProfile="Language" version="3.0" xmlns="http://www.w3.org/ns/SMIL">' +
+			"\n\t" + '<head>' +
+			"\n\t\t" + '<meta name="title" content="' + mw.escapeQuotesHTML( title ) + '" />' +
+			"\n\t" + '</head>' + 
+			"\n\t" + '<body>' + 
+			"\n\t\t" + '<par>' +
+			"\n\t\t\t" + '<seq title="Video Track 1" tracktype="video">' + 
+			"\n\t\t\t" + '</seq>' +		
+			"\n\t\t\t" + '<seq title="Audio track 1" tracktype="audio">' +
+			"\n\t\t\t" + '</seq>' +	
+			"\n\t\t" + '</par>' +
+			"\n\t" + '</body>' + 
+			"\n" + '</smil>';	
+	},
+	getServer: function(){
+		if( !this.server ){
+			this.server = new mw.SequencerServer( this );
+		}
+		return this.server;
+	},
+	
 	getMenu: function(){
 		if( !this.menu){
 			this.menu = new mw.SequencerMenu( this ); 

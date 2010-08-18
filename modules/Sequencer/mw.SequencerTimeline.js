@@ -357,7 +357,7 @@ mw.SequencerTimeline.prototype = {
 	 */
 	insertSmilClipEdit: function( smilClip, trackIndex, clipIndex  ){				
 		// Handle optional arguments
-		if( typeof trackIndex != 'undefined' ){
+		if( typeof trackIndex == 'undefined' ){
 			trackIndex = this.getSelectedTrackIndex();
 		}
 		var $clipTrackSet = $j( '#' + this.getTrackSetId( trackIndex ) );

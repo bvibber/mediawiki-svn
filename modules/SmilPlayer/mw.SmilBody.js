@@ -52,7 +52,7 @@ mw.SmilBody.prototype = {
 		var _this = this;
 		if( !$node.attr('id')
 			&& !$node.attr( 'xml:id' )
-		){
+		){			
 			var idString = _this.getNodeSmilType( $node ) + '_' + _this.idIndex;
 			// Make sure the id does not already exist ( should be a rare case ) 
 			while( this.getDom().find( '#' + idString ).length != 0 ){
@@ -323,8 +323,7 @@ mw.SmilBody.prototype = {
 	 * ( wraps getDurationRecurse to get top level node duration ) 
 	 */	
 	getDuration: function( forceRefresh ){		
-		this.duration = this.getClipDuration( this.getDom() , forceRefresh );
-		mw.log("smilBody:: getDuration: " + this.duration );
+		this.duration = this.getClipDuration( this.getDom(), forceRefresh );		
 		return this.duration;	
 	},
 	
@@ -333,12 +332,18 @@ mw.SmilBody.prototype = {
 	 * @param {jQueryObject} $node 
 	 * @param {boolean} forceRefresh If a fresh duration should be calculated 
 	 */
-	getClipDuration: function( $node, forceRefresh ){		
+	getClipDuration: function( $node, forceRefresh ){			
+		/* 
+		 * mw.log( 'SmilBody::getClipDuration: node children::' + 
+		 *		$node.children().length + 'calle: ' + arguments.callee.toString() );
+		*/
+		
 		if( !forceRefresh && 
 			$node.data('computedDuration') != null
 		) {
 			return $node.data('computedDuration');
 		}
+		
 		if( forceRefresh ){
 			//clear out implictDuration
 			$node.data( 'implictDuration', 0);
@@ -437,7 +442,7 @@ mw.SmilBody.prototype = {
 	 */
 	getNodeSmilType: function( $node ){
 		var blockType = $j( $node ).get(0).nodeName;
-		
+		//mw.log( 'getNodeSmilType for: ' + blockType );
 		if( this.smilBlockTypeMap[ blockType ] ){
 			blockType = this.smilBlockTypeMap[ blockType ];
 		}

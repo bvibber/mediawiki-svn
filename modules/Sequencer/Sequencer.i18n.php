@@ -14,8 +14,9 @@ $messages['en'] = array(
 	'mwe-sequencer-loading-asset' => 'Loading asset ...',
 
 	'mwe-sequencer-no_selected_resource' => '<h3>No resource selected</h3> Select a clip to enable editing.',
+	'mwe-sequencer-untitled-sequence' => 'Untitled sequence',
 	'mwe-sequencer-error_edit_multiple' => '<h3>Multiple resources selected</h3> Select a single clip to edit it.',
-	'mwe-sequencer-no-sequence-start-new' => 'Empty sequence, [$1 browser for assets] to create a new sequence',
+	'mwe-sequencer-no-sequence-start-new' => 'Empty sequence, [$1 add assets] to create a new sequence',
 	'mwe-sequencer-video-track' => 'Video track',
 	'mwe-sequencer-audio-track' => 'Audio track',
 	'mwe-sequencer-sequencer_credit_line' => 'Developed by [$1 Kaltura, Inc] in partnership with the [$1 Wikimedia Foundation]',

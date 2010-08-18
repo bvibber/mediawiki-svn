@@ -114,7 +114,7 @@ mw.SmilLayout.prototype = {
 	},
 	
 	drawElementThumb: function( $target, $node, relativeTime ){			
-		mw.log('SmilLayout::drawElementThumb: ' + relativeTime );
+		mw.log('SmilLayout::drawElementThumb: ' + $node.attr('id') + ' relative time:' + relativeTime );	
 		if( $target.length == 0 ){
 			mw.log("Error drawElementThumb to empty target");
 			return ;
