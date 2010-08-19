@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   -- Foreign key to page.page_id
   aa_page_id integer unsigned NOT NULL,
   -- unique user identifier
-  aa_user varchar(255),
+  aa_user_text varchar(255),
   -- Foreign key to revision.rev_id
   aa_revision integer unsigned NOT NULL,
   -- MW Timestamp
