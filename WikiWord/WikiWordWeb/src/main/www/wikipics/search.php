@@ -253,7 +253,7 @@ if (!$error) {
   try {
       if ($lang && $conceptId) {
 	  $mode = "concept";
-	  $result = $thesaurus->getConceptInfo($conceptId, $lang, null, $allLanguages);
+	  $result = $thesaurus->getConceptInfo($conceptId, $allLanguages, null, $allLanguages);
 	  if ( $result ) $result = array( $result ); //hack
       } else if ($lang && $term) {
 		  $mode = "term";

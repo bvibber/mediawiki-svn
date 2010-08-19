@@ -28,8 +28,10 @@ function printConceptList($langs, $concepts, $class, $limit = false) {
     return $i < count($concepts);
 }
 
-function printConceptImageList($concept, $terse = false, $columns = 5, $limit = false ) {
-    global $utils, $wwThumbSize;
+function printConceptImageList($concept, $terse = false, $columns = 5, $limit = false, $thumbSize = false ) {
+    global $utils;
+
+    if ($thumbSize===false) $thumbSize = $_GLOBALS['wwThumbSize'];
 
     if (!$concept) return false;
 
@@ -42,7 +44,7 @@ function printConceptImageList($concept, $terse = false, $columns = 5, $limit = 
 
     $imgList = array_values($images);
 
-    $cw = $wwThumbSize + 32; //FIXME: magic number, use config!
+    $cw = $thumbSize + 32; //FIXME: magic number, use config!
 
     ?>
     <table class="imageTable <?php print $class; ?>" summary="images" width="<?php print $columns*$cw; ?>">
@@ -55,7 +57,7 @@ function printConceptImageList($concept, $terse = false, $columns = 5, $limit = 
 	if (!$limit || $limit > $c) $limit = $c;
 
 	while ($i < $limit) {
-	  $i = printConceptImageRow($imgList, $i, $terse, $columns, $limit);
+	  $i = printConceptImageRow($imgList, $i, $terse, $columns, $limit, $thumbSize);
 	}
       ?>
     </table>
@@ -64,10 +66,12 @@ function printConceptImageList($concept, $terse = false, $columns = 5, $limit = 
     return $i < $c;
 }
 
-function printConceptImageRow($images, $from, $terse, $columns = 5, $limit = false) {
-	global $wwThumbSize, $utils;
+function printConceptImageRow($images, $from, $terse, $columns = 5, $limit = false, $thumbSize = false) {
+	global $utils;
 
-	$cw = $wwThumbSize + 32; //FIXME: magic number, use config!
+	if ($thumbSize===false) $thumbSize = $_GLOBALS['wwThumbSize'];
+
+	$cw = $thumbSize + 32; //FIXME: magic number, use config!
 	$cwcss = $cw . "px";
 
 	$to = $from + $columns;
@@ -78,7 +82,7 @@ function printConceptImageRow($images, $from, $terse, $columns = 5, $limit = fal
 	for ($i = $from; $i<$to; $i += 1) {
 	  $img = $images[$i];
 	  print "\t\t<td class=\"imageCell\" width=\"$cw\" align=\"left\" valign=\"bottom\" nowrap=\"nowrap\" style=\"width: $cwcss\"><div class=\"clipBox\" style=\"width:$cwcss; max-width:$cwcss;\">";
-	  print $utils->getThumbnailHTML($img, $wwThumbSize, $wwThumbSize);
+	  print $utils->getThumbnailHTML($img, $thumbSize, $thumbSize);
 	  print "</div></td>\n";
 	}
 	
@@ -263,7 +267,7 @@ function printConcept($concept, $langs, $terse = true) {
       <td class="cell_images" colspan="2">
       <?php 
 	  if (!$gallery) print "<p class=\"notice\">No images found for concept <em>".htmlspecialchars($name)."</em>.</p>";
-	  else $more = printConceptImageList( $gallery, $terse, $wwGalleryColumns, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages ); 
+	  else $more = printConceptImageList( $gallery, $terse, $terse ? $wwPreviewColumns : $wwGalleryColumns, $terse ? $wwMaxPreviewImages : $wwMaxGalleryImages, $terse ? $wwPinkySize : $wwThumbSize ); 
       ?>
       </td>
     </tr>
