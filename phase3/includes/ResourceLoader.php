@@ -113,16 +113,16 @@ class ResourceLoader {
 	
 	/**
 	 * Registers a module with the ResourceLoader system
-	 *
+	 * 
 	 * @param {mixed} $module string of name of module or array of name/options pairs
 	 * @param {array} $options module options (optional when using multiple-registration calling style)
 	 * @return {boolean} false if there were any errors, in which case one or more modules were not registered
-	 *
+	 * 
 	 * $options format:
 	 * 	array(
-	 * 		// Required module options
+	 * 		// Required module options (mutually exclusive)
 	 * 		'script' => 'dir/script.js' | array( 'dir/script1.js', 'dir/script2.js' ... ),
-	 * 		'callback' => callback, // Either 'script' or 'callback' (not both) must be set
+	 * 		'callback' => callback,
 	 *
 	 * 		// Optional module options
 	 * 		'locales' => array(
@@ -140,9 +140,9 @@ class ResourceLoader {
 	 * 			...
 	 * 		),
 	 * 		'messages' => array( 'message1', 'message2' ... ),
-	 * 		'class' => 'classname', // Optional, defaults to ResourceLoaderModule
+	 * 		'class' => 'classname', // Defaults to ResourceLoaderModule if not given
 	 * 	)
-	 *
+	 * 
 	 * @todo We need much more clever error reporting, not just in detailing what happened, but in bringing errors to
 	 * the client in a way that they can easily see them if they want to, such as by using FireBug
 	 */
