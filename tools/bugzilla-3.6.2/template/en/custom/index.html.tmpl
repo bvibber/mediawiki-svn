@@ -1,0 +1,101 @@
+[%# 1.0@bugzilla.org %]
+[%# -*- mode: html -*- %]
+[%# The contents of this file are subject to the Mozilla Public
+  # License Version 1.1 (the "License"); you may not use this file
+  # except in compliance with the License. You may obtain a copy of
+  # the License at http://www.mozilla.org/MPL/
+  #
+  # Software distributed under the License is distributed on an "AS
+  # IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+  # implied. See the License for the specific language governing
+  # rights and limitations under the License.
+  #
+  # The Original Code is the Bugzilla Bug Tracking System.
+  #
+  # The Initial Developer of the Original Code is Netscape Communications
+  # Corporation. Portions created by Netscape are
+  # Copyright (C) 1998 Netscape Communications Corporation. All
+  # Rights Reserved.
+  #
+  # Contributor(s): Terry Weissman <terry@mozilla.org>
+  #                 Jacob Steenhagen <jake@bugzilla.org>
+  #                 Vitaly Harisov  <vitaly@rathedg.com>
+  #%]
+
+[%# INTERFACE:
+  # release: a hash containing data about new releases, if any.
+  #%]
+
+[% PROCESS global/variables.none.tmpl %]
+
+
+[% PROCESS global/header.html.tmpl
+   title = "$terms.Bugzilla Main Page"
+   header = "Main Page" 
+%]
+
+<link rel="stylesheet" href="skins/custom/index.css" media="screen" />
+
+<div id="page-index">
+  <div class="intro">
+    <img src="skins/custom/bugzilla-ayb.png" width="308" height="236" border="2" alt="bugzzz"/>
+  </div>
+
+  <p>This is the new bug tracker for <a
+href="http://www.mediawiki.org/">MediaWiki</a> and its extensions
+and site-specific problems on <a
+href="http://www.wikimedia.org/">Wikimedia's</a> wiki sites.</p>
+
+  <p>Welcome to [% terms.Bugzilla %]. To see what's new in this version
+    of [% terms.Bugzilla %], see the 
+    <a href="page.cgi?id=release-notes.html">release notes</a>!
+    You may also want to read the 
+    <a href="[% Param('docs_urlbase') FILTER html %]using.html">
+    [%- terms.Bugzilla %] User's Guide</a> to find out more about 
+    [%+ terms.Bugzilla %] and how to use it.</p>
+
+
+  <p>For help using this system, please see
+     <a
+href="http://www.mediawiki.org/wiki/Bugzilla">Mediawiki:Bugzilla</a>.</p>
+
+  <p><b>Not sure how to explain your problem clearly? Read
+     <a href="http://www.chiark.greenend.org.uk/~sgtatham/bugs.html"><i>How
+to Report Bugs Effectively</i></a> for some general pointers.</b></p>
+
+  <div style="clear:both;"></div>
+  <hr />
+
+  <p>But it all boils down to a choice of:</p>
+  <ul>
+    <li><a href="query.cgi">Search existing [% terms.bug %] reports</a></li>
+    <li><a href="enter_bug.cgi">Enter a new [% terms.bug %] report</a></li>
+    <li id="report"><a href="report.cgi">Summary reports and charts</a></li>
+    <li><a href="javascript:addSidebar()">Add to Sidebar</a> (requires a Mozilla browser like Mozilla Firefox)</li>
+    <li id="quick_search_plugin">
+      <a href="javascript:window.external.AddSearchProvider('[% Param('urlbase') %]search_plugin.cgi')">Install
+      the Quick Search plugin</a> (requires Firefox 2 or Internet Explorer 7)
+    </li>
+
+
+    [%# List items of links to more things users can do on this installation. %]
+    [% Hook.process("links") %]
+
+  </ul>
+
+  <form id="f" name="f" action="buglist.cgi" method="get"
+        onsubmit="if (this.quicksearch.value == '')
+                  { alert('Please enter one or more search terms first.');
+                    return false; } return true;">
+  <div>
+    <p>Enter [% terms.abug %] # or some search terms:</p>
+    <input id="quicksearch" type="text" name="quicksearch">
+    <input id="find" type="submit" value="Find">
+    <a href="page.cgi?id=quicksearch.html">[Help]</a>
+  </div>
+  </form>
+
+  <div class="outro"></div>
+</div>
+
+[% PROCESS global/footer.html.tmpl %]

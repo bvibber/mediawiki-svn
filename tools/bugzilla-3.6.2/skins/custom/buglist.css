@@ -1,0 +1,80 @@
+/* The contents of this file are subject to the Mozilla Public
+  * License Version 1.1 (the "License"); you may not use this file
+  * except in compliance with the License. You may obtain a copy of
+  * the License at http://www.mozilla.org/MPL/
+  *
+  * Software distributed under the License is distributed on an "AS
+  * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+  * implied. See the License for the specific language governing
+  * rights and limitations under the License.
+  *
+  * The Original Code is the Bugzilla Bug Tracking System.
+  *
+  * The Initial Developer of the Original Code is Mike Schrag.
+  * Portions created by Marc Schumann are Copyright (c) 2007 Mike Schrag.
+  * All rights reserved.
+  *
+  * Contributor(s): Mike Schrag <mschrag@pobox.com>
+  *                 Byron Jones <bugzilla@glob.com.au>
+  *                 Marc Schumann <wurblzap@gmail.com>
+  */
+
+table.bz_buglist td {
+	padding: 0.5em 0.25em;
+}
+tr.bz_bugitem:hover {
+    background-color: #f0f0f0;
+}
+/* Must go first because of issue with BugZilla wrongly assuming case sensitivity in CSS classes */
+.bz_normal {
+  color:#BB7700;
+}
+/* Otherwise, in order of severity */
+.bz_enhancement {
+  color:#106581;
+}
+.bz_trivial {
+  color:#009966;
+}
+.bz_minor {
+  color:#669900;
+}
+.bz_major {
+  color:#D30000;
+}
+.bz_critical {
+  color:#CC0000;
+  font-weight:bold;
+}
+tr.bz_secure_mode_implied td.first-child {
+}
+
+tr.bz_secure_mode_manual td.first-child {
+}
+
+td.bz_estimated_time_column,
+td.bz_remaining_time_column,
+td.bz_actual_time_column,
+td.bz_percentage_complete_column {
+    text-align: right;
+}
+
+td.bz_total_label {
+    font-weight: bold;
+}
+
+td.bz_total {
+    border-top-style: solid;
+    border-top-color: #929bb1;
+    border-top-width: 3px;
+    text-align: right;
+}
+
+#commit, #action {
+  margin-top: .25em;
+}
+
+.bz_query_explain {
+    text-align: left;
+}
+
