@@ -29,10 +29,14 @@ $messages['en'] = array(
 	'mwe-sequencer-clip-duration' => 'Clip duration',
 
 	'mwe-sequencer-save-sequence' => 'Save sequence',
+	'mwe-sequencer-loading_user_rights' => 'Loading user rights ...',
 	'mwe-sequencer-sequence-xml' => 'Sequence smil xml',
 	'mwe-sequencer-render-sequence' => 'Render sequence to file',
 	'mwe-sequencer-create-sequence' => 'Create sequence',
+	'mwe-sequencer-edit-sequence' => 'Edit sequence',
 
+	'mwe-sequencer-embed-sequence' => 'Embed Sequence into article',
+ 	'mwe-sequencer-embed-sequence-desc' => 'Copy the following code into an article to embed this sequence',
 
 	'mwe-sequencer-menu-sequence' => 'Sequence',
 	'mwe-sequencer-menu-sequence-new' => 'New',
@@ -44,6 +48,7 @@ $messages['en'] = array(
 	'mwe-sequencer-menu-sequence-save' => 'Save Sequence',
 	'mwe-sequencer-menu-sequence-publish' => 'Publish',
 	'mwe-sequencer-menu-sequence-renderdisk' => 'Render to disk',
+	'mwe-sequencer-menu-sequence-exit' => 'Exit',
 
 	'mwe-sequencer-menu-edit' => 'Edit',
 	'mwe-sequencer-menu-edit-undo' => 'Undo',
@@ -59,6 +64,20 @@ $messages['en'] = array(
 	'mwe-sequencer-insert-resource' => 'Insert resource into sequence',
 	'mwe-sequencer-insert'=> 'Insert into sequence',
 
+	'mwe-sequencer-no-server-defined' => 'No server has been defined for this sequence session. You will not be able to save sequences',
+	'mwe-sequencer-no_edit_permissions' => 'You do not have permissions to save changes to this sequence',
+	'mwe-sequencer-save-summary' => 'Please enter a short summary of changes:',
+	'mwe-sequencer-edit_cancel' => 'Cancel sequence edit',
+
+	'mwe-sequencer-edit_save' => 'Save sequence changes',
+	'mwe-sequencer-saving_wait' => 'Save in progress (please wait)',
+	'mwe-sequencer-save_done' => 'Save complete',
+
+
+	'mwe-sequencer-not-published' => 'This sequence has not yet been published. <i>Browser preview is shown</i>. [$1 Publish this sequence]',
+	'mwe-sequencer-published-out-of-date' =>'This sequence has not yet been published. <i>Version $1 is shown</i>. [$2 Publish update]',
+
+
 	'mwe-sequencer-transition_in' => 'Transition in',
 	'mwe-sequencer-transition_out' => 'Transition out',
 	'mwe-sequencer-effects' => 'Effects stack',
@@ -71,13 +90,10 @@ $messages['en'] = array(
 	'mwe-sequencer-menu_cliplib' => 'Add media',
 	'mwe-sequencer-menu_resource_overview' => 'Resource overview',
 	'mwe-sequencer-menu_options' => 'Options',
-	'mwe-sequencer-loading_user_rights' => 'Loading user rights ...',
-	'mwe-sequencer-no_edit_permissions' => 'You do not have permissions to save changes to this sequence',
+	
 
-	'mwe-sequencer-edit_save' => 'Save sequence changes',
-	'mwe-sequencer-saving_wait' => 'Save in progress (please wait)',
-	'mwe-sequencer-save_done' => 'Save complete',
-	'mwe-sequencer-edit_cancel' => 'Cancel sequence edit',
+
+
 	'mwe-sequencer-edit_cancel_confirm' => 'Are you sure you want to cancel your edit? Changes will be lost.',
 	'mwe-sequencer-zoom_in' => 'Zoom in',
 	'mwe-sequencer-zoom_out' => 'Zoom out',

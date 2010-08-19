@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r137';
+var mwRemoteVersion = 'r139';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -124,8 +124,8 @@ function doPageSpecificRewrite() {
 		//console.log( 'spl: ' + typeof mwSetPageToLoading );
 		// If on a view page set content to "loading" 
 		mwSetPageToLoading();
-		loadMwEmbed( [ 'mw.RemoteSequencer' ], function(){
-			var remote = new mw.RemoteSequencer({
+		loadMwEmbed( [ 'mw.MediaWikiRemoteSequencer' ], function(){
+			var remote = new mw.MediaWikiRemoteSequencer({
 				'action': wgAction,
 				'title' : wgTitle,
 				'target' : '#bodyContent'
@@ -274,9 +274,9 @@ function rewrite_for_OggHandler( vidIdList ) {
 			
 		tag_type = 'video';
 				
-		// Check type:
-		var pwidth = $j( '#' + vidId ).width();
+		// Check type:		
 		var $pimg = $j( '#' + vidId + ' img:first' );
+		var pwidth = $pimg.width();
 		var imgSring = $pimg.attr('src').split('/').pop();		
 		if(  $pimg.attr('src') &&  imgSring == 'play.png' || imgSring == 'fileicon-ogg.png' ){
 			tag_type = 'audio';
@@ -347,7 +347,6 @@ function rewrite_for_OggHandler( vidIdList ) {
 				'style="width:' + pwidth + 'px;height:' + pheight + 'px;">' +
 				'</video>';
 			}
-			
 					
 			// If the video is part of a "gallery box" use light-box linker instead
 			if( $j( '#' + vidId ).parents( '.gallerybox' ).length ){				

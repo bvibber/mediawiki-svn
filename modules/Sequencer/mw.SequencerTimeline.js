@@ -355,7 +355,8 @@ mw.SequencerTimeline.prototype = {
 	 * Insert a smilClip to the smil dom and sequencer and display the edit
 	 * 	interface with a 'cancel' insert button
 	 */
-	insertSmilClipEdit: function( smilClip, trackIndex, clipIndex  ){				
+	insertSmilClipEdit: function( smilClip, trackIndex, clipIndex  ){
+		var _this = this;
 		// Handle optional arguments
 		if( typeof trackIndex == 'undefined' ){
 			trackIndex = this.getSelectedTrackIndex();

@@ -50,8 +50,10 @@ mw.SmilBody.prototype = {
 	*/
 	assignIds: function( $node ) {
 		var _this = this;
+		// Don't give ids to nodes that have id's or are of type param
 		if( !$node.attr('id')
 			&& !$node.attr( 'xml:id' )
+			&& _this.getNodeSmilType( $node ).toLowerCase() != 'param'
 		){			
 			var idString = _this.getNodeSmilType( $node ) + '_' + _this.idIndex;
 			// Make sure the id does not already exist ( should be a rare case ) 

@@ -161,6 +161,7 @@ mw.Sequencer.prototype = {
 	 * @param {function} callback Function called with smilSource 
 	 */
 	getSmilSource: function( callback ){		
+		var _this = this;
 		if( !this.smilSource ){
 			if( this.getOption( 'newSequence' ) ){			
 				this.smilSource = this.getDataUrl( this.getNewSmilXML() );	
@@ -168,8 +169,8 @@ mw.Sequencer.prototype = {
 				mw.log("Load smil source from server")
 				// Try to load from the server
 				this.getServer().getSmilXml(function( smilXml ){
-					this.smilSource = this.getDataUrl( smilXml );
-					callback( this.smilSource )	
+					_this.smilSource = _this.getDataUrl( smilXml );
+					callback( _this.smilSource )	
 				})
 				// Wait for server to return smil source
 				return ;

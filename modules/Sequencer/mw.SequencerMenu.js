@@ -47,6 +47,14 @@ mw.SequencerMenu.prototype = {
 				'action' : function( _this ){
 					_this.sequencer.getRender().renderDialog();
 				}
+			},
+			'divider': true,
+			'exit' : {
+				'icon' : 'power',
+				'action' : function( _this ){
+					mw.log( 'check for save')
+					_this.sequencer.getContainer().fadeOut().remove();
+				}
 			}
 		},
 		'edit':{
@@ -195,12 +203,12 @@ mw.SequencerMenu.prototype = {
 					$j('<li />')
 					.addClass('divider')
 					.append( $j('<hr />').css('width', '80%') )
-				);
-				continue;
-			}			
-			$menu.append(				
-				_this.getMenuItem( menuKey, menuItemKey )
-			)
+				);				
+			} else {	
+				$menu.append(				
+					_this.getMenuItem( menuKey, menuItemKey )
+				)
+			}
 		}
 		return $menu;
 	},

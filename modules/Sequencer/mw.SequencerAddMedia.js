@@ -28,7 +28,7 @@ mw.SequencerAddMedia.prototype = {
 					.val(
 						gM( 'mwe-sequencer-url-or-search')
 					)
-					.css('color', '#888')
+					.css({'color': '#888', 'zindex': 2})
 					.focus( function(){
 						// on the first focus clear the input and update the color
 						if( !widgetFocus ){
@@ -37,6 +37,9 @@ mw.SequencerAddMedia.prototype = {
 							.val('');		
 						}
 						widgetFocus = true;
+					})
+					.click(function(){
+						$j(this).focus();						
 					})
 					// add the sequencer input binding
 					.sequencerInput(  _this.sequencer  )
@@ -188,10 +191,11 @@ mw.SequencerAddMedia.prototype = {
 			if( resource[i] ){
 				$smilRef.attr( resourceAttributeMap[i], resource[i] );
 			}
-		}		
+		}			
 		var resourceParamMap = {
 			'content_provider_id' :  'apiProvider',
-			'id' : 'apiTitleKey'
+			'id' : 'id',
+			'titleKey' : 'apiTitleKey'
 		}
 		for( var i in resourceParamMap ){
 			if( resource[i] ){
@@ -205,13 +209,13 @@ mw.SequencerAddMedia.prototype = {
 			}
 		}
 		// Make sure we have source for the asset.   
-		if( $smilRef.attr('src') ){		
+		if( $smilRef.attr('src') ){
 			callback( $smilRef.get(0) )
 		} else {
 			// the resource includes a pointer to its parent search object
 			// from the search object grab the image object for the target resolution 
 			resource.pSobj.getImageObj( 
-				resource, 
+				resource,
 				{
 					'width' : mw.getConfig( 'Sequencer.AddMediaImageWidth' )
 				},

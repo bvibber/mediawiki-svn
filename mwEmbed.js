@@ -1027,7 +1027,10 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 *            dialogHtml text Html of the loader msg
 	 */
 	mw.addLoaderDialog = function( dialogHtml ) {
-		$dialog = mw.addDialog( {
+		if( typeof dialogHtml == 'undefined'){
+			dialogHtml ='';
+		}
+		var $dialog = mw.addDialog( {
 			'title' : dialogHtml, 
 			'content' : dialogHtml + '<br>' + 
 				$j('<div />')
@@ -1045,7 +1048,12 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		if( !mw.isset( '$j.ui.dialog' ) ) {
 			return false;
 		}
-		$j( '#mwTempLoaderDialog' ).dialog( 'destroy' ).remove();
+		// Close with timeout since jquery ui binds with timeout: 
+		// ui dialog line 530
+		setTimeout( function(){
+			$j( '#mwTempLoaderDialog' )
+			.dialog( 'destroy' );
+		} , 10);			
 	}	
 	
 	/**

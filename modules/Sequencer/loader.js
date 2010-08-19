@@ -11,6 +11,7 @@
 		
 		"mw.SequencerConfig" : "mw.SequencerConfig.js",
 		
+		"mw.SequencerServer" : "mw.SequencerServer.js",
 		"mw.SequencerAddMedia" : "mw.SequencerAddMedia.js",
 		"mw.SequencerPlayer" : "mw.SequencerPlayer.js",
 		"mw.SequencerTimeline" : "mw.SequencerTimeline.js",
@@ -27,7 +28,7 @@
 		"mw.FirefoggRender"	: "mw.FirefoggRender.js",
 		"$j.fn.layout"		: "ui.layout/ui.layout-1.2.0.js",
 		
-		"mw.RemoteSequencer" : "mw.RemoteSequencer.js",		
+		"mw.MediaWikiRemoteSequencer" : "remotes/mw.MediaWikiRemoteSequencer.js",		
 		"mw.style.Sequencer" : "css/mw.style.Sequencer.css"
 		
 	} );
@@ -55,6 +56,7 @@
 			[										
 				'$j.contextMenu',
 				
+				'mw.SequencerServer',
 				'mw.SequencerAddMedia',
 				'mw.SequencerPlayer',
 				'mw.SequencerRender',
