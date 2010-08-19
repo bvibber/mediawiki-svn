@@ -56,9 +56,15 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	}
 
 	protected String getOutputFileEncoding() {
-		return args.getStringOption("outputencoding", "UTF-8");
+		return args.getStringOption("output-encoding", "UTF-8");
 	}
 
+	protected void declareOptions() {
+		super.declareOptions();
+		
+		args.declare("output-encoding", null, true, String.class, "Encoding to use for the poutput file");
+	}
+	
 	protected String inputPath;
 	protected File outputFile;
 	protected Writer outputWriter;
