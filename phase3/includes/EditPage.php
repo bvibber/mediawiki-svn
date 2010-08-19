@@ -318,11 +318,11 @@ class EditPage {
 			$this->preview = true;
 		}
 
-		$wgOut->addResources( 'mediawiki.legacy.edit' );
+		$wgOut->addModules( 'mediawiki.legacy.edit' );
 
 		if ( $wgUser->getOption( 'uselivepreview', false ) ) {
 			$wgOut->includeJQuery();
-			$wgOut->addResources( 'mediawiki.legacy.preview' );
+			$wgOut->addModules( 'mediawiki.legacy.preview' );
 		}
 		// Bug #19334: textarea jumps when editing articles in IE8
 		$wgOut->addStyle( 'common/IE80Fixes.css', 'screen', 'IE 8' );

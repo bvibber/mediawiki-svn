@@ -252,7 +252,7 @@ class ParserOutput
 		}
 	}
 	
-	function addResource( $module ) {
+	function addModule( $module ) {
 		$this->mResources[] = $module;
 	}
 

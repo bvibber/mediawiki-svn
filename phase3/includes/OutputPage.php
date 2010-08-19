@@ -238,7 +238,7 @@ class OutputPage {
 	 * page loads.
 	 * @param $module mixed Module name (string) or array of module names
 	 */
-	public function addResources( $modules ) {
+	public function addModules( $modules ) {
 		$this->mResources = array_merge( $this->mResources, (array)$modules );
 	}
 
@@ -1113,7 +1113,7 @@ class OutputPage {
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
 		$this->mHeadItems = array_merge( $this->mHeadItems, $parserOutput->getHeadItems() );
-		$this->addResources( $parserOutput->getResources() );
+		$this->addModules( $parserOutput->getResources() );
 		// Versioning...
 		foreach ( (array)$parserOutput->mTemplateIds as $ns => $dbks ) {
 			if ( isset( $this->mTemplateIds[$ns] ) ) {
@@ -1549,31 +1549,31 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 		
 		// Add base resources
-		$this->addResources( array( 'jquery', 'mediawiki', 'mediawiki.legacy.wikibits' ) );
+		$this->addModules( array( 'jquery', 'mediawiki', 'mediawiki.legacy.wikibits' ) );
 		
 		// Add site JS if enabled
 		global $wgUseSiteJs;
 		if ( $wgUseSiteJs ) {
-			$this->addResources( 'sitejs' );
+			$this->addModules( 'sitejs' );
 		}
 
 		// Add various resources if required
 		if ( $wgUseAjax ) {
-			$this->addResources( 'mediawiki.legacy.ajax' );
+			$this->addModules( 'mediawiki.legacy.ajax' );
 
 			wfRunHooks( 'AjaxAddScript', array( &$this ) );
 
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
-				$this->addResources( 'mediawiki.legacy.ajaxwatch' );
+				$this->addModules( 'mediawiki.legacy.ajaxwatch' );
 			}
 
 			if ( $wgEnableMWSuggest && !$wgUser->getOption( 'disablesuggest', false ) ) {
-				$this->addResources( 'mediawiki.legacy.mwsuggest' );
+				$this->addModules( 'mediawiki.legacy.mwsuggest' );
 			}
 		}
 
 		if( $wgUser->getBoolOption( 'editsectiononrightclick' ) ) {
-			$this->addResources( 'mediawiki.legacy.rightclickedit' );
+			$this->addModules( 'mediawiki.legacy.rightclickedit' );
 		}
 
 		if( $wgUniversalEditButton ) {
