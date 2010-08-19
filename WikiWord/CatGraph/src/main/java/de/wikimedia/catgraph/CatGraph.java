@@ -116,7 +116,12 @@ public class CatGraph extends ConsoleApp {
 		}
 
 		public void execute(ConsoleApp app) throws Exception {
-			listDescendants(start, out);
+		    Transaction tx = graphDb.beginTx(); // real transaction
+		    try {
+		    		listDescendants(start, out);
+		    } finally {
+		    		tx.finish();
+		    }
 		}
 	}
 
@@ -266,24 +271,36 @@ public class CatGraph extends ConsoleApp {
 	public Collection<Integer> getDescendants(Node startNode) {
 		List<Integer> descendants = new ArrayList<Integer>();
 		
-		Traverser traverser = startNode.traverse( Traverser.Order.BREADTH_FIRST , StopEvaluator.END_OF_GRAPH, ReturnableEvaluator.ALL, CategoryRelationships.CONTAINS, Direction.OUTGOING   );
-		for ( Node node : traverser )
-		{
-			if ( node.hasProperty("page_id") ) 
-				descendants.add((Integer)node.getProperty("page_id"));
+		Transaction tx = graphDb.beginTx();	
+		
+		try {
+			Traverser traverser = startNode.traverse( Traverser.Order.BREADTH_FIRST , StopEvaluator.END_OF_GRAPH, ReturnableEvaluator.ALL, CategoryRelationships.CONTAINS, Direction.OUTGOING   );
+			for ( Node node : traverser )
+			{
+				if ( node.hasProperty("page_id") ) 
+					descendants.add((Integer)node.getProperty("page_id"));
+			}
+		} finally {
+			tx.finish();
 		}
 		
 		return descendants;
 	}
 
 	public void traverseAndDump(Node startNode) {
-		Traverser traverser = startNode.traverse( Traverser.Order.BREADTH_FIRST , StopEvaluator.END_OF_GRAPH, ReturnableEvaluator.ALL, CategoryRelationships.CONTAINS, Direction.OUTGOING   );
-		for ( Node node : traverser )
-		{
-			if ( node.hasProperty("page_id") ) 
-					System.out.println( "page #" + node.getProperty("page_id") );
-			else
-				System.out.println( node.toString() );
+		Transaction tx = graphDb.beginTx();	
+		
+		try {
+			Traverser traverser = startNode.traverse( Traverser.Order.BREADTH_FIRST , StopEvaluator.END_OF_GRAPH, ReturnableEvaluator.ALL, CategoryRelationships.CONTAINS, Direction.OUTGOING   );
+			for ( Node node : traverser )
+			{
+				if ( node.hasProperty("page_id") ) 
+						System.out.println( "page #" + node.getProperty("page_id") );
+				else
+					System.out.println( node.toString() );
+			}
+		} finally {
+			tx.finish();
 		}
 	}
 	
@@ -296,11 +313,13 @@ public class CatGraph extends ConsoleApp {
 		out.println("finding descendants of "+start+"....");
 		long t = System.currentTimeMillis();
 		Collection<Integer> descendants = getDescendants(start);
-		out.println("finding descendants of "+start+" took "+(System.currentTimeMillis() - t)+"ms.");
+		out.println("finding "+descendants.size()+" descendants of "+start+" took "+(System.currentTimeMillis() - t)+"ms.");
 
+		/*
 		out.println("-----------------------------");
 		DebugUtil.dump("", descendants, out);
 		out.println("-----------------------------");
+		*/
 	}
 
 	protected Command newCommand(String cmd, List<Object> args) {
