@@ -1,5 +1,11 @@
 <?php
 
+//settings
+
+//number of reviews
+$wgArticleAssessmentRevisionCutoff = 5;
+
+
 //Auto-load files
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'ApiArticleAssessment.php';

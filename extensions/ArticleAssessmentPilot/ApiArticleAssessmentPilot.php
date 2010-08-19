@@ -16,9 +16,20 @@ class ApiArticleAssessment extends ApiBase {
 		$params = $this->extractRequestParams();
 		$this->validateParams( $params );
 		
-		if(isset($params['getResults'])){
-		
+		if( isset( $params['getCumulativeResults'] )  ){
+			//get cumulative results
+			
+			//query to add 'n' reviews together
+			
 		}
+		else if (  isset( $params['setUserVals'] ) ){
+			//set user values
+			
+			//validate authid
+			
+			//insert
+		}
+		
 	}
 
 	/**
@@ -26,19 +37,37 @@ class ApiArticleAssessment extends ApiBase {
 	 * @param $params params extracted from the POST
 	 */
  	protected function validateParams( $params ) {
-		$required = array( );
-		foreach ( $required as $arg ) {
-			if ( !isset( $params[$arg] ) ) {
-				$this->dieUsageMsg( array( 'missingparam', $arg ) );
+		
+ 		if( isset( $params['getCumulativeResults'] )  ){
+ 			//get cumulative results	
+			$required = array('pageId', 'revId');
+ 			foreach ( $required as $arg ) {
+				if ( !isset( $params[$arg] ) ) {
+					$this->dieUsageMsg( array( 'missingparam', $arg ) );
+				}
 			}
-		}
+ 		}
+ 		else if (  isset( $params['setUserVals'] ) ){
+ 			//set user values
+ 			$required = array('userId', 'authId', 'pageId', 'revId', 'review');
+ 			foreach ( $required as $arg ) {
+				if ( !isset( $params[$arg] ) ) {
+					$this->dieUsageMsg( array( 'missingparam', $arg ) );
+				}
+			}
+ 		}
+ 		else{
+ 			//FIXME: better usage message
+ 			$this->dieUsageMsg( array('missingparam', "mode")  );
+ 		}
 	}
 
+	/*
 	public function getParamDescription() {
 		return array(
 			'getResults' => 'set if you want to get results',
 		);
-	}
+	}*/
 
 	public function getDescription() {
 		return array(
@@ -46,17 +75,6 @@ class ApiArticleAssessment extends ApiBase {
 		);
 	}
 	
-	public function getPossibleErrors() {
-		return array_merge( parent::getPossibleErrors(), array(
-			array( 'missingparam', 'mode' ),
-		) );
-	}
-
-	public function getAllowedParams() {
-		return array(
-			'getResults' => null,
-		);
-	}
 
 	public function getVersion() {
 		return __CLASS__ . ':0';

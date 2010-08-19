@@ -37,6 +37,8 @@ class ArticleAssessmentPilotHooks {
 		
 		//write the form
 		
+		//if user has no cookie, set cookie
+		
 		return true;
 	}
 
