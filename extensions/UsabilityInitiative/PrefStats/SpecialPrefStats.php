@@ -13,7 +13,7 @@ class SpecialPrefStats extends SpecialPage {
 	}
 
 	function execute( $par ) {
-		global $wgRequest, $wgOut, $wgUser, $wgPrefStatsTrackPrefs;
+		global $wgOut, $wgUser, $wgPrefStatsTrackPrefs;
 		$this->setHeaders();
 
 		// Check permissions

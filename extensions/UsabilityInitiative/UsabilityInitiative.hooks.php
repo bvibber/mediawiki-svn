@@ -13,7 +13,6 @@ class UsabilityInitiativeHooks {
 	private static $doOutput = false;
 	private static $messages = array();
 	private static $variables = array();
-	private static $literalVariables = array();
 	private static $styles = array();
 	private static $styleFiles = array(
 		'base_sets' => array(

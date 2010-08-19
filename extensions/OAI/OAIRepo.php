@@ -128,7 +128,6 @@ function oaiTestTables( &$tables ) {
 }
 
 function oaiUpdateUndelete( $title, $isnewid ) {
-	global $wgDBname;
 	$article = new Article($title);
 	$id = $article->getID();
 	oaiUpdatePage( $id, 'modify' );

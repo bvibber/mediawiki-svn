@@ -58,7 +58,7 @@ class HideRevisionForm extends SpecialPage {
 	 * If no revisions are specified, prompt for a revision id
 	 */
 	function showEmpty() {
-		global $wgOut, $wgUser;
+		global $wgOut;
 		$special = SpecialPage::getTitleFor( 'HideRevision' );
 
 		$wgOut->addHTML(
@@ -130,8 +130,6 @@ class HideRevisionForm extends SpecialPage {
 		global $IP, $wgUser;
 		require_once( "$IP/includes/ChangesList.php" );
 		$changes = ChangesList::newFromUser( $wgUser );
-
-		$skin = $wgUser->getSkin();
 
 		$out = $changes->beginRecentChangesList();
 		while( $row = $resultSet->fetchObject() ) {
@@ -244,8 +242,6 @@ class HideRevisionForm extends SpecialPage {
 	 * @return message key string for success or failure message
 	 */
 	function hideRevision( $dbw, $id ) {
-		global $wgUser;
-
 		$dbw->begin();
 
 		$rev = Revision::newFromId( $id );

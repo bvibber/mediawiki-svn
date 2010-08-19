@@ -164,7 +164,7 @@ class SpecialOptIn extends SpecialPage {
 	/* Private Functions */
 
 	private function showForm( $opt ) {
-		global $wgUser, $wgOut, $wgOptInSurvey, $wgOptInFeedBackSurvey;
+		global $wgOut, $wgOptInSurvey, $wgOptInFeedBackSurvey;
 
 		if ( $opt == 'out' ) {
 			$wgOut->addWikiMsg( 'optin-survey-intro' );

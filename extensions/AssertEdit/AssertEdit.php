@@ -70,7 +70,7 @@ function efAssertEditHook( $editpage ) {
 }
 
 function efAssertApiEditHook( $editPage, $textBox, &$result ) {
-	global $wgOut, $wgRequest;
+	global $wgRequest;
 
 	$assertName = $wgRequest->getVal( 'assert' );
 	$pass = true;

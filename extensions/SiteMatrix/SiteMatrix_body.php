@@ -16,7 +16,7 @@ class SiteMatrix {
 
 	public function __construct(){
 		global $wgSiteMatrixFile, $wgSiteMatrixSites;
-		global $wgLocalDatabases, $IP, $wgConf;
+		global $wgLocalDatabases, $wgConf;
 
 		$wgConf->loadFullData();
 
@@ -347,7 +347,6 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 
 	public function execute() {
 		global $wgLanguageNames;
-		$params = $this->extractRequestParams();
 		$result = $this->getResult();
 		$matrix = new SiteMatrix();
 

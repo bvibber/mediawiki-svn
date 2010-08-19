@@ -25,7 +25,7 @@ class PrefSwitchSurvey {
 	 * @return string HTML
 	 */
 	public static function render( $name, $questions, $loadFromDB = false ) {
-		global $wgUser, $wgOut;
+		global $wgUser;
 		// Load existing data from the database - allowing the user to change their answers
 		$loaded = array();
 		if ( $loadFromDB ) {

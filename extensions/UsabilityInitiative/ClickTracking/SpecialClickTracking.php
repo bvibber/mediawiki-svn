@@ -10,10 +10,8 @@ class SpecialClickTracking extends SpecialPage {
 	
 	private static $minimum_date = '20091009'; // YYYYMMDD (+1 for today)
 
-	private static $userTypes = array( "basic" => 0, "intermediate" => 1, "expert" => 2 );
 	private $user_defs = array();
-	
-	
+
 	function __construct() {
 		parent::__construct( 'ClickTracking' , 'clicktrack' );
 		wfLoadExtensionMessages( 'ClickTracking' );
