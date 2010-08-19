@@ -180,6 +180,9 @@ div#docslinks {
 
 .bz_comment_text {
      width: 60em;
+     font-family: monospace;
+     white-space: pre-wrap;
+     font-size: 115%
 }
 
 .bz_comment_user, .bz_comment_time, .bz_comment_number, 
