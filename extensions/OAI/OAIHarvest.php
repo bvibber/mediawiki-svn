@@ -39,7 +39,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Need shared code...
 require_once( 'OAIFunctions.php' );
-require_once( "$IP/maintenance/refreshLinks.inc" );
+require_once( "$IP/maintenance/refreshLinks.php" );
 
 global $oaiSourceRepository;
 global $oaiAgentExtra;
@@ -361,7 +361,7 @@ class OAIUpdateRecord {
 			$id = $this->applyRevision( $revision );
 		}
 	
-		fixLinksFromArticle( $id );
+		RefreshLinks::fixLinksFromArticle( $id );
 	
 		if( isset( $this->_page['uploads'] ) ) {
 			foreach( $this->_page['uploads'] as $upload ) {
