@@ -126,8 +126,9 @@ mw.MediaWikiRemoteSequencer.prototype = {
 						.attr({							
 							'poster' : imageinfo.thumburl,
 							'durationHint' : duration,
-							'apiTitleKey' : page.title
+							'apiTitleKey' : page.title.replace('File:',''),							
 						})
+						.addClass('kskin')
 						.css({
 							'width': imageinfo.thumbwidth,
 							'height' : imageinfo.thumbheight
@@ -152,16 +153,19 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			.addClass( 'sequencer-player')
 			.css( {
 				'float' : 'left',
-				'width' : '69%'
+				'width' : '420px'
 			})
-			.append( $embedPlayer )
+			.append( 
+				$embedPlayer,
+				$j('<div />').css({'clear': 'both'})
+			)
 			,
 			
 			// Embed player
 			$j('<div />')
 			.addClass( 'sequencer-embed-helper')
 			.css({
-				'margin-left': '70%' 
+				'margin-left': '420px' 
 			})
 			
 			// Text embed code
@@ -185,6 +189,9 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				)
 			)
 		)
+		mw.load('EmbedPlayer', function(){
+			$j( _this.target ).find('video').embedPlayer();
+		})		
 	},
 	getSequenceEmbedCode: function(){
 		return 'embed code here';

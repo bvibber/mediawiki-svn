@@ -111,6 +111,12 @@
 	* mwEmbed player is setup before any other mw.ready calls
 	*/
 	mw.addSetupHook( function( callback ) {
+		mw.rewritePagePlayerTags();
+		// Run the setupFlag to continue setup		
+		callback();
+	});
+	
+	mw.rewritePagePlayerTags = function() {
 		mw.log( 'EmbedPlayer:: Document::' + mw.documentHasPlayerTags() );
 		if( mw.documentHasPlayerTags() ) {
 			var  rewriteElementCount = 0;
@@ -137,9 +143,7 @@
 				$j( mw.getConfig( 'EmbedPlayer.RewriteTags' ) ).embedPlayer();				
 			})
 		}
-		// Run the setupFlag to continue setup		
-		callback();
-	});
+	}
 
 	/**
 	* Add the module loader function:

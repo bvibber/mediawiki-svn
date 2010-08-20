@@ -162,7 +162,7 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;		
 		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
-			mw.load( mwEmbedHostPath + '/remotes/apiProxyPage.js?' + mwGetReqArgs() );
+			mw.load( mwEmbedHostPath + '/modules/ApiProxy/ApiProxyPage.js?' + mwGetReqArgs() );
 		} );
 		return ;
 	}
