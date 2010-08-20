@@ -23,13 +23,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Jeroen De Dauw
  */
 class DistributionRelease {
-
-	const ST_DEV = 0;
-	const ST_ALPHA = 1;
-	const ST_BETA = 2;
-	const ST_RC = 3;
-	const ST_STABLE = 4;
-	const ST_DEPRECATED = 5;
 	
 	/**
 	 * Mapping between the state names and internal representation.
