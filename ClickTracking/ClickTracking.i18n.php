@@ -682,9 +682,13 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Ladsgroup
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
+	'clicktracking' => 'قابلیت ردیابی طرح را کلیک کنید',
+	'clicktracking-desc' => 'برای ردیابی کلیک کنید و برای دنبال کردن رویداد هایی که برای تازه کردن صفحه به کار نمی‌رود.',
+	'ct-title' => 'جمع کلیک‌های کاربر',
 	'ct-event-name' => 'نام رویداد',
 	'ct-expert-header' => 'کلیک‌های «متخصص»',
 	'ct-intermediate-header' => 'کلیک‌های «متوسط»',
@@ -1291,7 +1295,26 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'ct-title' => 'Samegevoogdje gebroekerskliks',
+	'ct-event-name' => 'Gebeurtenis',
+	'ct-expert-header' => '"Expert"-kliks',
+	'ct-intermediate-header' => '"Gemiddeld"-kliks',
+	'ct-beginner-header' => '"Beginner"-kliks',
+	'ct-total-header' => 'Kliktotaal',
+	'ct-start-date' => 'Startdatum (JJJJMMDD)',
+	'ct-end-date' => 'Einddatum (JJJJMMDD)',
+	'ct-increment-by' => 'Aantal daag det eder puntj representeert',
+	'ct-change-graph' => 'Wiezig grafiek',
+	'ct-beginner' => 'Beginner',
+	'ct-intermediate' => 'Gemiddeld',
+	'ct-expert' => 'Expert',
+	'ct-date-range' => 'Periode',
+	'ct-editing' => 'Noe bewèrkendje:',
+	'ct-anon-users' => 'Anoniem gebroekers',
+	'ct-user-contribs' => 'Totaal aantal gebroekersbiedraag',
+	'ct-user-span' => 'Gebroekersbiedraag in periode',
 	'ct-and' => 'en',
+	'ct-update-table' => 'Wèrk tabel bie',
 );
 
 /** Latvian (Latviešu)
@@ -2150,6 +2173,15 @@ $messages['tr'] = array(
 	'ct-user-span' => 'Zaman içerisindeki kullanıcı katkıları',
 	'ct-and' => 've',
 	'ct-update-table' => 'Tabloyu güncelle',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'clicktracking' => 'Яңа юзабилитины сайлаучыларны күзәтү',
+	'clicktracking-desc' => 'Караулар төймәсе. Бу битне яңартмыйча башкарылган эшләрне карау өчен бирелгән',
+	'ct-title' => 'Кабатланган төймә басулары',
 );
 
 /** Ukrainian (Українська)

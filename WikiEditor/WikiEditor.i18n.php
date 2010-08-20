@@ -363,6 +363,14 @@ $messages['gsw'] = array(
 	'wikieditor-loading' => 'Am Lade',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-wikitext-tab' => 'Teks wiki',
+	'wikieditor-loading' => 'Laadey',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh

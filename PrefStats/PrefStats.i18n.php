@@ -241,6 +241,15 @@ $messages['bg'] = array(
 	'prefstats-factor-default' => 'връщане към подразбиращия се мащаб',
 );
 
+/** Bahasa Banjar (Bahasa Banjar)
+ * @author J Subhi
+ */
+$messages['bjn'] = array(
+	'prefstats-factor-hour' => 'jam',
+	'prefstats-factor-sixhours' => 'anam jam',
+	'prefstats-factor-day' => 'hari',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  * @author Wikitanvir
@@ -801,10 +810,12 @@ Konfiguratu $wgPrefStatsTrackPrefs hobespenak jarraitzeko.',
  * @author Ebraminio
  * @author Ladsgroup
  * @author Mardetanha
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
 	'prefstats' => 'آمار ترجیحات',
+	'prefstats-desc' => 'درباره چگونگی بدست آوردن آمار ردپاهای کاربران که مطمئنا باید تنظیمات خاصی انجام شود.',
 	'prefstats-title' => 'آمار ترجیحات',
 	'prefstats-noprefs' => '‏‫در حال حال حاضر ترجیحات ردگیری نمی‌شوند.
 $wgPrefStatsTrackPrefs را تنظیم کنید تا ترجیحات ردگیری شوند.',

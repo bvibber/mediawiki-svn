@@ -573,7 +573,15 @@ $messages['gsw'] = array(
  * @author Shimmin Beg
  */
 $messages['gv'] = array(
+	'wikieditor-publish-preference' => 'Lhiggey da soilshaghey magh beggan er veggan',
+	'wikieditor-publish-button-publish' => 'Soilshaghey magh',
+	'wikieditor-publish-button-cancel' => 'Dolley magh',
+	'wikieditor-publish-dialog-title' => 'Soilshaghey magh myr {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Giare-choontey (insh dooin dy giare ny ren uss caghlaa):',
+	'wikieditor-publish-dialog-minor' => 'Myn-arraghey',
 	'wikieditor-publish-dialog-watch' => 'Freill arrey er y duillag shoh',
+	'wikieditor-publish-dialog-publish' => 'Soilshaghey magh',
+	'wikieditor-publish-dialog-goback' => 'Erash',
 );
 
 /** Hebrew (עברית)

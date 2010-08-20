@@ -400,6 +400,16 @@ $messages['gsw'] = array(
 	'wikieditor-preview-loading' => 'Am Lade ...',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-preview-preference' => 'Lhiggey da roie-haishbynys çheu-ry-heu',
+	'wikieditor-preview-tab' => 'Roie-haishbynys',
+	'wikieditor-preview-changes-tab' => 'Caghlaaghyn',
+	'wikieditor-preview-loading' => 'Laadey...',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author YaronSh

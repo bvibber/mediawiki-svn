@@ -87,6 +87,14 @@ $messages['dsb'] = array(
 	'dontswitchmeover-pref' => 'Změnjanje suknje njedowóliś, gaž se standardna suknja změnja',
 );
 
+/** Greek (Ελληνικά)
+ * @author Flyax
+ */
+$messages['el'] = array(
+	'dontswitchmeover-desc' => 'Προτίμηση για τους χρήστες να διευκρινίσουν εάν θέλουν να διατηρήσουν το επιλεγμένο από αυτούς σύνολο οπτικής οργάνωσης (skin), όταν αλλάζει το προεπιλεγμένο σύνολο οπτικής οργάνωσης (skin)',
+	'dontswitchmeover-pref' => 'Να μην επιτρέπεται αλλαγή του επιλεγμένου από μένα συνόλου οπτικής οργάνωσης (skin), όταν αλλάζει το προεπιλεγμένο σύνολο οπτικής οργάνωσης (skin)',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -101,6 +109,14 @@ $messages['es'] = array(
 $messages['eu'] = array(
 	'dontswitchmeover-desc' => 'Erabiltzaileentzako lehentasuna zehazteko ea haien itxura-konfigurazioa mantendu nahi duten lehenetsitakoa aldatzen dutenean.',
 	'dontswitchmeover-pref' => 'Ez utzi nire itxura-konfigurazioa aldatzen lehenetsitakoa aldatzen dutenean',
+);
+
+/** Persian (فارسی)
+ * @author Wayiran
+ */
+$messages['fa'] = array(
+	'dontswitchmeover-desc' => ' برای کاربران به صورت سلیقه‌ای مشخص می‌شود که آیا آنها می خواهند برای حفظ تنظیمات پوسته نمایشگر خود در ویکی هنگامی که پوسته به طور پیش فرض تغییر یافته است تغییر کند.',
+	'dontswitchmeover-pref' => 'اجازه نده پوستهٔ من با تغییر پوستهٔ پیش‌فرض تغییر کند',
 );
 
 /** French (Français)
@@ -290,11 +306,26 @@ $messages['sl'] = array(
 	'dontswitchmeover-pref' => 'Ne dovoli spremembe moje kože, ko se spremeni privzeta koža',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Rancher
+ */
+$messages['sr-ec'] = array(
+	'dontswitchmeover-pref' => 'Не дозволи да се моја тема промени када се промени подразумевана тема',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
 $messages['su'] = array(
 	'dontswitchmeover-pref' => 'Lamun kulit ti dituna robah, setélan kulit kuring ulah milu robah',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'dontswitchmeover-desc' => 'бу сезгә үзегез сайлаган интерфейсна сакларга ярдәм итә',
+	'dontswitchmeover-pref' => 'Яңа бирелгән бизәлешне саклап кала',
 );
 
 /** Ukrainian (Українська)

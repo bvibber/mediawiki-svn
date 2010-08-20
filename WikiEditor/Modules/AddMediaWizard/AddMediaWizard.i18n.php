@@ -190,6 +190,13 @@ $messages['gsw'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Dr „Medienassischtänt“ aktiviere, as Hilfsprogramm zum Yyfiege vu Mediedateie',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Lhiggey da gliggyr "cooneyder cur stiagh meanyn"',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotemliss
