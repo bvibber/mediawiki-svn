@@ -571,10 +571,11 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'authors-desc' => 'Допуњује списак доприносиоца страна',
+	'authors-desc' => 'Допуњује списак доприносиоца страница',
 	'authors_authors' => 'Аутори',
 	'authors_anonymous' => 'Анонимно',
 );

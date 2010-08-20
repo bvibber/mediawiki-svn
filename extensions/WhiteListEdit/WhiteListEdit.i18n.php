@@ -3281,6 +3281,7 @@ Táto stránka sa týka iba obmedzneých používateľov.",
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -3303,11 +3304,11 @@ $messages['sr-ec'] = array(
 	'whitelistoverviewcd' => "* Мењање датума на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Постављање приступа на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Уклањање приступа за [[:$1|$1]]',
-	'whitelistrequest' => 'Захтевање приступа за више страна',
+	'whitelistrequest' => 'Захтевање приступа за више страница',
 	'whitelistrequestmsg' => '$1 је захтевао приступ {{PLURAL:$3|следећој страни|следећим странама}}:
 
 $2',
-	'whitelistrequestconf' => 'Захтев за новим странама је послат $1',
+	'whitelistrequestconf' => 'Захтев за новим страницама је послат $1',
 	'whitelistnever' => 'никад',
 	'group-manager' => 'Менаџери',
 	'group-manager-member' => 'Менаџер',

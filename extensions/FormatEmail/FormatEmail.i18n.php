@@ -102,10 +102,15 @@ $2',
 );
 
 /** Catalan (Català)
+ * @author Davidpar
  * @author Paucabot
  */
 $messages['ca'] = array(
 	'email-desc' => 'Permet afegir encapçalaments/peus de pàgina personalitzats als correus electrònics dels usuaris',
+	'email_footer' => "----------------------------------------------------------------------------
+Aquest correu electrònic t'ha estat enviat a través del sistema de correu electrònic de {{SITENAME}} per $1.
+
+$2",
 );
 
 /** Czech (Česky)

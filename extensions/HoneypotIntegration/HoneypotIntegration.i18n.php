@@ -131,6 +131,13 @@ $messages['es'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Número de eventos recientes que la dirección IP ha desencadenado en relación con el proyecto Honey Pot',
 );
 
+/** Persian (فارسی)
+ * @author Sahim
+ */
+$messages['fa'] = array(
+	'honeypot-desc' => 'فراهم کردن یکپارچگی بوسیله [http://projecthoneypot.org/ پروژه دیگ عسل] برای وب‌گاه مدیا‌ویکی',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */

@@ -1325,6 +1325,7 @@ $messages['ru'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1343,7 +1344,7 @@ $messages['sr-ec'] = array(
 	'masseditregex-hint-headreplace' => 'Замени',
 	'masseditregex-hint-headeffect' => 'Ефекат',
 	'masseditregex-listtype-intro' => 'Ово је списак од:',
-	'masseditregex-listtype-pagenames' => 'Имена страна (измени ове стране)',
+	'masseditregex-listtype-pagenames' => 'Називи страница (измени ове странице)',
 	'masseditregex-exprnomatch' => 'Израз "$1" се не налази ни на једној страни.',
 	'masseditregex-badregex' => 'Неисправан regex:',
 	'masseditregex-editfailed' => 'Измена није снимљена:',

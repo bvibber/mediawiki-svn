@@ -2131,6 +2131,8 @@ $messages['fa'] = array(
 [$2 در این جا کلیک کنید تا ویژگی های جدید را برگردانید].',
 	'prefswitch-main-off' => '===امتحانشان کنید!===
 [برای فعال کردن ویژگی‌های جدید اینجا را کلیک کنید $1].',
+	'prefswitch-survey-intro-feedback' => 'مشتاق شنیدن دیدگاه‌های شما هستیم.
+لطفاً تحقیق اختیاری زیر را پیش از کلیک بر "[[#سوئیچ‌ترجیح-پیمایشی-ثبت-بازخورد|{{int:Prefswitch-survey-submit-feedback}}]]" پر کنید.',
 	'prefswitch-survey-intro-off' => 'به خاطر امتحان کردن ویژگی های جدید سیستم ما از شما تشکر می کنیم
 برای کمک به ما در جهت بهبود‌سازی آن‌ها, لطفا قبل از کلیک روی  "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" نظر سنجی اختیاری زیر را پر کنید .',
 	'prefswitch-feedbackpage' => 'Project:بازخورد تجربه کاربر',
@@ -2647,6 +2649,13 @@ Bitte fill di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-
 	'prefswitch-survey-intro-off' => 'Dankschen fir s Uusprobiere vu unsre neje Funktione.
 Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ drucksch.',
 	'prefswitch-feedbackpage' => 'Project:Benutzerfrejndligkeits-Initiative/Ruckmäldig',
+);
+
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'prefswitch' => 'Corrag tosheeaght Shalee Yn-ymmydaght',
 );
 
 /** Hausa (هَوُسَ) */
@@ -3725,6 +3734,7 @@ $messages['li'] = array(
 	'prefswitch-title-off' => 'Zèt nuuj meugelikhede oet',
 	'prefswitch-title-switched-off' => 'Danke',
 	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-feedback' => 'Diee feedback is verzónje.',
 );
 
 /** Latvian (Latviešu)
@@ -5939,6 +5949,7 @@ Bunları geliştirmemize yardımcı olmak için, lütfen "[[#prefswitch-survey-s
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
@@ -5949,7 +5960,7 @@ $messages['tt-cyrl'] = array(
 	'prefswitch-survey-submit-off' => 'Яңа мөмкинчелекләрне сүндерергә',
 	'prefswitch-survey-cancel-off' => 'Сез алга таба да яңа мөмкинчелекләрне кулланырга теләсәгез, Сез $1 кайта аласыз.',
 	'prefswitch-survey-submit-feedback' => 'Фикерләрегезне җибәрү',
-	'prefswitch-survey-cancel-feedback' => 'Сез прототиа турында фикерләрегезне җибәрә алмасагыз, $1 кайта аласыз.',
+	'prefswitch-survey-cancel-feedback' => 'Сез прототип турында фикерләрегезне җибәрә алмасагыз, $1 кайта аласыз.',
 	'prefswitch-survey-question-like' => 'Сезгә яңа мөмкинчелекләрдә нәрсә ошады?',
 	'prefswitch-survey-question-dislike' => 'Сезгә яңа мөмкинчелекләрдә нәрсә ошамады?',
 	'prefswitch-survey-question-whyoff' => 'Сез яңа мөмкинчелекләрне нишләп сүндерәсез?

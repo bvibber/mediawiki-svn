@@ -157,10 +157,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Davidpar
  * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
+	'contributiontracking-desc' => 'Contribució de seguiment per a la recaptació de fons de Wikimedia',
 	'contributiontracking' => 'Rastreig de contribucions',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Enviament de formulari no vàlid',

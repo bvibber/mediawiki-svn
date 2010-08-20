@@ -460,6 +460,14 @@ $messages['lb'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|Bewäertung|Bewäertungen}}',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'ratedpages-graphs' => 'waarderingsgegaeves',
+	'ratedpages-count' => '$1 {{PLURAL:$1|waardering|waarderinge}}',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -681,11 +689,12 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'ratedpages-list' => 'Испод се налази списак сортиран по оценама читалаца.',
-	'ratedpages-none' => 'Нема страна у овом списку.',
+	'ratedpages-none' => 'Нема страница у овом списку',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

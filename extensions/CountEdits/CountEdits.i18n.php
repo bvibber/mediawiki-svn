@@ -1321,11 +1321,12 @@ $messages['sr'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'countedits' => 'Бројач измена',
-	'countedits-desc' => '[[Special:CountEdits|Посебна страна]] која израчунава измене корисника и пружа списак десет најактивнијих аутора',
+	'countedits-desc' => '[[Special:CountEdits|Посебна страница]] која израчунава измене корисника и пружа списак десет најактивнијих аутора',
 	'countedits-warning' => "'''Упозорење:''' Не судите о књизи по њеном омоту. Не судите о кориснику по његовом броју измена.",
 	'countedits-username' => 'Корисник:',
 	'countedits-ok' => 'У реду',

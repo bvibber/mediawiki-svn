@@ -1128,15 +1128,16 @@ Po kliknutí na šípku sa zobrazia všetky stránky indexované pod daným náz
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'indexfunc-badtitle' => 'Неисправан наслов: "$1"',
 	'index-search' => 'Претрага:',
 	'index-submit' => 'Пошаљи',
-	'index-emptylist' => 'Нема страна повезаних са "$1"',
+	'index-emptylist' => 'Нема страница повезаних са „$1“',
 	'index-expand-detail' => 'Покажи стране индексиране под овим насловом',
-	'index-hide-detail' => 'Сакриј списак страна',
+	'index-hide-detail' => 'Сакриј списак страница',
 	'index-no-results' => 'Претрага није дала никакве резултате',
 );
 

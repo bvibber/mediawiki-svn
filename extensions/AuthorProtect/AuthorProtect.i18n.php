@@ -1384,6 +1384,7 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1400,7 +1401,7 @@ $messages['sr-ec'] = array(
 	'authorprotect-failure' => 'Заштита неуспешна',
 	'protect-level-author' => 'Заштити од не-аутора',
 	'restriction-level-author' => 'Кориснички заштићено',
-	'right-authorprotect' => 'Заштита страна од стране аутора',
+	'right-authorprotect' => 'заштита страница од стране аутора',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

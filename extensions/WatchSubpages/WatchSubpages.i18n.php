@@ -157,7 +157,7 @@ $messages['bs'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Dodaj stranice na spisak praćenja',
 	'watchsubpages-desc' => 'Brzo [[Special:WatchSubpages|dodavanje svih podstranica]] neke stranice na spisak praćenja',
 	'watchsubpages-form' => "Odaberite stranice za dodavanje na Vaš spisak praćenja ispod.
-Da dodate stranicu, označite kutijicu pored naziva i kliknite \"Dodaj stranice\".
+Da dodate stranicu, označite kutijicu pored naziva i kliknite \"{{int:watchsubpages-addtitles}}\".
 
 Kada označujete ili uklanjate više stranica, možete držati tipku ''shift'' da bi označili kutijice jedne ispod druge tako da možete kliknuti od početka do kraja spiska klikajući prvu i zadnju kutijicu držeći shift.",
 );

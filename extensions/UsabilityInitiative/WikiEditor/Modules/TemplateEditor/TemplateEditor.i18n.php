@@ -386,6 +386,16 @@ $messages['gsw'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Abbräche',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-template-editor-preference' => 'Lhiggey dhyt reaghey clowanyn liorish formyn',
+	'wikieditor-template-editor-dialog-title' => 'Reaghey clowan',
+	'wikieditor-template-editor-dialog-submit' => 'Jannoo ass y noa',
+	'wikieditor-template-editor-dialog-cancel' => 'Dolley magh',
+);
+
 /** Hausa (هَوُسَ) */
 $messages['ha'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Soke',

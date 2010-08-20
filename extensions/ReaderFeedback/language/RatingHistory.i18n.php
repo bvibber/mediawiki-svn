@@ -1358,9 +1358,25 @@ D'Bewäertung gouf esu gemaach:
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'ratinghistory' => 'Geschiedenis paginawaardering',
+	'ratinghistory-leg' => 'Historische waarderingsgegaeves voor [[:$1|$1]]',
+	'ratinghistory-tab' => 'waardering',
+	'ratinghistory-link' => 'Paginawaardering',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Danke veure muite die se dich genomme haes dees paasj te waardere!</font>''",
+	'ratinghistory-period' => 'Tiedsperiode:',
+	'ratinghistory-month' => 'lèste maondj',
+	'ratinghistory-3months' => 'lèste 3 maondj',
+	'ratinghistory-year' => 'aafgeloupe jaor',
 	'ratinghistory-3years' => 'aafgeloupe 3 jaor',
+	'ratinghistory-ave' => 'Gemiddeld: $1',
+	'ratinghistory-chart' => 'Laezerswaardering doren tied',
+	'ratinghistory-purge' => 'laeg cache',
+	'ratinghistory-table' => 'Euverzich van laezerswarderinge',
+	'ratinghistory-users' => "Gebroekers die 'n waardering höbbe gegaeve",
 	'ratinghistory-graph' => '$2 van "$3" ($1 {{PLURAL:$1|waardering|waarderinge}})',
 	'ratinghistory-svg' => 'Bekiek es SVG',
+	'ratinghistory-table-rating' => 'Waardering',
+	'ratinghistory-table-votes' => 'Stömme',
 );
 
 /** Macedonian (Македонски)
@@ -2079,6 +2095,7 @@ Betygsskalan är enligt följande:
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
 	'ratinghistory' => 'பக்க படிநிலை வரலாறு',
@@ -2093,6 +2110,7 @@ $messages['ta'] = array(
 	'ratinghistory-3years' => 'கடந்த 3 ஆண்டுகள்',
 	'ratinghistory-ave' => 'சராசரி: $1',
 	'ratinghistory-chart' => 'கால ஓட்டத்தில் வாசகர் அளவீடு',
+	'ratinghistory-purge' => 'மிகவேக சேமிப்புமீள்ப்பகத்தை மீதமில்லாமல் நீக்கு',
 	'ratinghistory-users' => 'அளவீடு செய்த பயனர்கள்',
 	'ratinghistory-graph' => '"$3" உடைய $2 ($1 {{PLURAL:$1|review|reviews}})',
 	'ratinghistory-svg' => 'SVGயாக பார்க்க',

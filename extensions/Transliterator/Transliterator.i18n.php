@@ -267,6 +267,13 @@ $messages['hsb'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] dyrbi znajmjeńša $1 {{PLURAL:$1|znamješko|znamješce|znamješka|znamješkow}} dołho być.',
 );
 
+/** Haitian (Kreyòl ayisyen)
+ * @author Internoob
+ */
+$messages['ht'] = array(
+	'transliterator-error-rulecount' => 'Plis pase $1 règ nan [[MedyaWiki:$2]]',
+);
+
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */

@@ -1214,6 +1214,7 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1228,7 +1229,7 @@ $messages['sr-ec'] = array(
 	'player-invalid-title' => 'погрешан наслов',
 	'player-clicktoplay' => 'Пусти $1',
 	'player-goto-player' => 'плејер',
-	'player-goto-page' => 'Страна',
+	'player-goto-page' => 'Страница',
 	'player-goto-file' => 'фајл',
 );
 

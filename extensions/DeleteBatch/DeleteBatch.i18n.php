@@ -1301,6 +1301,7 @@ Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne 
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1310,8 +1311,8 @@ $messages['sr-ec'] = array(
 	'deletebatch-or' => '<b>или</b>',
 	'deletebatch-delete' => 'Обриши',
 	'deletebatch-page' => 'Стране за брисање:',
-	'deletebatch-processing-from-file' => 'у току је брисање страна са списка',
-	'deletebatch-processing-from-form' => 'брисање страна из форме',
+	'deletebatch-processing-from-file' => 'у току је брисање страница са списка',
+	'deletebatch-processing-from-form' => 'брисање страница из форме',
 	'deletebatch-omitting-nonexistant' => 'Сакривање непостојеће стране $1.',
 	'deletebatch-omitting-invalid' => 'Сакривање неисправне стране $1.',
 	'deletebatch-file-bad-format' => 'Фајл би требало да буде обичан текст',

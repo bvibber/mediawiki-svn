@@ -201,10 +201,10 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'edituser-desc' => 'Omogućuje korisnicima sa privilegijama da uređuju postavke drugih korisnika',
 	'edituser' => 'Uređivanje korisnika',
-	'edituser-username' => 'Ime',
+	'edituser-username' => 'Korisničko ime:',
 	'edituser-dosearch' => 'Traži',
-	'edituser-nouser' => 'Navedeni korisnik ne postoji',
-	'edituser-exempt' => 'Navedeni korisnik ne može biti uređivan',
+	'edituser-nouser' => 'Korisnik "$1" ne postoji.',
+	'edituser-exempt' => 'Korisnik "$1" ne može biti uređivan.',
 	'right-edituser' => 'Uređivanje postavki drugih korisnika',
 	'right-edituser-exempt' => 'Drugi ne mogu uređivati postavke ovog korisnika',
 );

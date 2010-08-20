@@ -825,9 +825,9 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Наступныя зьмены',
 	'codereview-email-body2' => 'Карыстальнік «$1» зрабіў наступныя зьмены ў $2.
 
-Поўны URL папярэдняй рэвізіі: $5
+Поўны URL-адрас папярэдняй вэрсіі: $5
 
-Поўны URL: $3
+Поўны URL-адрас: $3
 
 Кароткае апісаньне зьменаў:
 
@@ -1239,6 +1239,8 @@ Komentar:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Slijedeće izmjene',
 	'codereview-email-body2' => 'Korisnik "$1" je izvršio povezane izmjene na $2.
+
+Puni URL za povezane revizije: $5
 
 Puni URL: $3
 
@@ -2244,6 +2246,7 @@ $messages['eo'] = array(
 	'code-status-ok' => 'Ek!',
 	'code-status-verified' => 'kontrolita',
 	'code-status-deferred' => 'prokrastita',
+	'code-status-old' => 'malnova',
 	'code-pathsearch-legend' => 'Serĉi versiojn en ĉi tiu kodujo laŭ vojo',
 	'code-pathsearch-path' => 'Vojo:',
 	'code-pathsearch-filter' => 'Filtrilo uzata:',
@@ -2280,6 +2283,7 @@ Resumo de ŝanĝoj:
 
 $4',
 	'code-stats' => 'statistiko',
+	'code-stats-count' => 'Nombro de revizioj',
 	'repoadmin' => 'Administrado de Kodujo',
 	'repoadmin-new-legend' => 'Krei novan kodujon',
 	'repoadmin-new-label' => 'Nomo de dosierujo:',
@@ -2753,6 +2757,8 @@ $messages['fa'] = array(
 	'codereview-batch-submit' => 'ارسال',
 	'code-releasenotes' => 'نکات انتشار',
 	'code-release-legend' => 'ایجاد نکات انتشار',
+	'code-release-startrev' => 'شروع بازبینی:',
+	'code-release-endrev' => 'آخرین بازبینی:',
 	'code-release-badrange' => 'محدوده خیلی بزرگ است!',
 	'codereview-subtitle' => 'برای $1',
 	'codereview-reply-link' => 'پاسخ',
@@ -3039,7 +3045,9 @@ Commentaire :
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2] : suivi de la modification',
-	'codereview-email-body2' => 'L’utilisateur « $1 » a fait des modifications reliées à $2.
+	'codereview-email-body2' => 'L’utilisateur « $1 » a fait des modifications sur $2.
+
+URL complète de la révision suivie : $5
 
 URL complète : $3
 
@@ -3572,6 +3580,8 @@ Kommentar:
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Änderige wu derno chemme',
 	'codereview-email-body2' => 'Benutzer „$1“ het zue $2 Änderige wu derno chemme gmacht.
+
+Volli URL fir Änderige wu derno chemme: $5
 
 Volli URL: $3
 
@@ -5718,9 +5728,11 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: Подоцнежни измени',
 	'codereview-email-body2' => 'Корисникот „$1“ направи подоцнежни промени на $2.
 
+Полна URL-адреса за подоцнежната ревизија: $5
+
 Полна URL-адреса: $3
 
-Опис:
+Опис на измените:
 
 $4',
 	'code-stats' => 'статистики',

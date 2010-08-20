@@ -114,6 +114,7 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Davidpar
  * @author SMP
  */
 $messages['ca'] = array(
@@ -121,6 +122,7 @@ $messages['ca'] = array(
 	'categoryintersection-desc' => "Manté una taula amb els valors de la [[Special:CategoryIntersection|intersecció de categories]] dins d'una pàgina",
 	'categoryintersection-doit' => 'Mostra pàgines en totes aquestes categories',
 	'categoryintersection-maxcategories' => 'El nombre màxim permès de categories intersecant-se és de $1.',
+	'categoryintersection-mincategories' => "Has d'incloure com a mínim dues categories.",
 	'categoryintersection-results' => 'La cerca demanada ha donat {{PLURAL:$1|un resultat|$1 resultats}}.',
 );
 

@@ -317,6 +317,7 @@ Ovo se uradi putem poziva relevantnog parserskog nivoa iz same MediaWiki.',
 );
 
 /** Catalan (Català)
+ * @author Davidpar
  * @author SMP
  * @author Solde
  * @author Toniher
@@ -334,6 +335,7 @@ Ho fa cridant el nivell sintàctic pertinent del mateix MediaWiki.",
 	'expand_templates_xml_output' => 'Sortida XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Elimina els comentaris',
+	'expand_templates_remove_nowiki' => "Suprimeix l'etiqueta <nowiki> en el resultat",
 	'expand_templates_generate_xml' => "Mostra l'arbre XML",
 	'expand_templates_preview' => 'Previsualitza',
 );

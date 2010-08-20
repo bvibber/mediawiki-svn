@@ -53,6 +53,13 @@ $messages['bs'] = array(
 	'cassandra-desc' => 'Čuva ispravljeni tekst u [http://cassandra.apache.org/ Apache Cassandra] bazi podataka',
 );
 
+/** Catalan (Català)
+ * @author Davidpar
+ */
+$messages['ca'] = array(
+	'cassandra-desc' => 'Revisió de text a la base de dades [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Welsh (Cymraeg)
  * @author Xxglennxx
  */

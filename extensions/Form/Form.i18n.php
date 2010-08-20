@@ -1397,9 +1397,9 @@ $messages['sr-ec'] = array(
 	'formtitlepattern' => 'Додати нову $1',
 	'formsave' => 'Сачувај',
 	'formarticleexists' => 'Страница постоји',
-	'formarticleexiststext' => 'Страна [[$1]] већ постоји.',
+	'formarticleexiststext' => 'Страница [[$1]] већ постоји.',
 	'formbadpagename' => 'Лоше име стране',
-	'formsavesummary' => 'Нова страна користи [[Special:Form/$1|страну $1]]',
+	'formsavesummary' => 'Нова страница користи [[Special:Form/$1|форму $1]]',
 	'formsaveerror' => 'Грешка приликом снимања форме',
 );
 

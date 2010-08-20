@@ -84,9 +84,14 @@ $messages['be-tarask'] = array(
 
 /** Bahasa Banjar (Bahasa Banjar)
  * @author Ezagren
+ * @author J Subhi
  */
 $messages['bjn'] = array(
+	'prefswitch-link-anon' => 'Muha hanyar',
+	'tooltip-pt-prefswitch-link-anon' => 'Balajar muha hanyar',
 	'prefswitch-link-on' => 'Anggung ulun mantuk',
+	'tooltip-pt-prefswitch-link-on' => 'Pajahakan muha hanyar',
+	'prefswitch-link-off' => 'Muha hanyar',
 	'tooltip-pt-prefswitch-link-off' => 'Tarai muha hanyar',
 );
 
@@ -375,6 +380,18 @@ $messages['gsw'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Di neje Funktione abschalte',
 	'prefswitch-link-off' => 'Neji Funktione',
 	'tooltip-pt-prefswitch-link-off' => 'Di neje Funktione uusprobiere',
+);
+
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'prefswitch-link-anon' => 'Troyn as greieyn noa',
+	'tooltip-pt-prefswitch-link-anon' => 'Geddyn fys bentyn rish troyn noa',
+	'prefswitch-link-on' => 'Cur lesh mee erash',
+	'tooltip-pt-prefswitch-link-on' => 'Lhiettal troyn noa',
+	'prefswitch-link-off' => 'Troyn as greieyn noa',
+	'tooltip-pt-prefswitch-link-off' => 'Prowal troyn as greieyn noa',
 );
 
 /** Hebrew (עברית)

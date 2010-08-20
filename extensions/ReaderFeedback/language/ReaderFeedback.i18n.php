@@ -820,6 +820,7 @@ $messages['eu'] = array(
  * @author Ebraminio
  * @author Huji
  * @author Mardetanha
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
@@ -841,6 +842,7 @@ $messages['fa'] = array(
 	'readerfeedback-main' => 'فقط صفحه‌های محتوایی قابل ارزیابی هستند.',
 	'readerfeedback-success' => "'''با سپاس از شما برای بازبینی این صفحه!''' ([$2 نتایج را ببینید]) ([$3 نظر و پرسش]).",
 	'readerfeedback-voted' => "'''به نظر می‌رسد که شما پیش از این، این صفحه را بازبینی کرده‌اید''' ([$2 نتیجه را ببین]) ([$3 نظر و سوال]).",
+	'readerfeedback-error' => "''' خطا رخ داده است در حالی که رتبه این صفحه ''' ([2 \$ مشاهده نتایج]) ([\$ 3 نظر یا سوال؟]).",
 	'readerfeedback-submitting' => 'در حال ارسال...',
 	'readerfeedback-finished' => 'متشکریم!',
 	'readerfeedback-tagfilter' => 'برچسپ:',
@@ -1553,6 +1555,16 @@ $messages['li'] = array(
 	'readerfeedback-level-3' => 'Hoeag',
 	'readerfeedback-level-4' => 'Perfèk',
 	'readerfeedback-submit' => 'Slaon óp',
+	'readerfeedback-submitting' => 'Ópslaondje...',
+	'readerfeedback-finished' => 'Danke!',
+	'readerfeedback-tagfilter' => 'Label:',
+	'readerfeedback-tierfilter' => 'Waardering:',
+	'readerfeedback-tier-high' => 'Hoeag',
+	'readerfeedback-tier-medium' => 'Middelmaotig',
+	'readerfeedback-tier-poor' => 'Wórd',
+	'tooltip-ca-ratinghist' => 'Waardering van dees pagina door laezers',
+	'specialpages-group-feedback' => 'Meining van de laezer',
+	'readerfeedback-tt-review' => 'Slaon beoeardeiling óp',
 );
 
 /** Lumbaart (Lumbaart)
@@ -2247,10 +2259,11 @@ $messages['sl'] = array(
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'readerfeedback' => 'Како Вам се свидела ова страна?',
+	'readerfeedback' => 'Како Вам се свидела ова страница?',
 	'readerfeedback-text' => "''Молим те, посвети мало пажње и оцени страну испод. Твоје мишљење је вредно и помаже нам у унапређивању сајта.''",
 	'readerfeedback-reliability' => 'поузданост',
 	'readerfeedback-completeness' => 'потпуност',

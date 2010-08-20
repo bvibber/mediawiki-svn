@@ -897,11 +897,12 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'randomincategory' => 'Случајна страна из категорије',
-	'randomincategory-desc' => '[[Special:Randomincategory|Специјална страна]] за преузимање случајне стране из категорије',
+	'randomincategory' => 'Случајна страница из категорије',
+	'randomincategory-desc' => '[[Special:Randomincategory|Посебна страница]] за преузимање случајне странице из категорије',
 	'randomincategory-toolbox' => 'Случајна страна',
 	'randomincategory-nocategory' => 'Категорија $1 не постоји или је празна',
 	'randomincategory-label' => 'Категорија:',

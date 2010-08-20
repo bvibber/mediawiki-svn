@@ -1779,6 +1779,7 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -1788,7 +1789,7 @@ $messages['sr-ec'] = array(
 	'dt_viewxml_simplifiedformat' => 'Поједностављени формат',
 	'dt_xml_namespace' => 'Именски простор',
 	'dt_xml_pages' => 'Чланци',
-	'dt_xml_page' => 'Страна',
+	'dt_xml_page' => 'Страница',
 	'dt_xml_template' => 'Шаблон',
 	'dt_xml_field' => 'Поље',
 	'dt_xml_name' => 'Име',

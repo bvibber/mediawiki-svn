@@ -991,6 +991,7 @@ $messages['eu'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
@@ -1020,6 +1021,7 @@ $messages['fa'] = array(
 	'ogg-dismiss' => 'بستن',
 	'ogg-download' => 'بارگیری پرونده',
 	'ogg-desc-link' => 'دربارهٔ این پرونده',
+	'ogg-oggThumb-version' => 'OggHandler لازم دارد oggThumb نسخه $1 یا بعد از آن.',
 	'ogg-oggThumb-failed' => 'oggThumb موفق به ایجاد بندانگشتی نشد.',
 );
 

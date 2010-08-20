@@ -230,6 +230,13 @@ $messages['gsw'] = array(
 	'wikieditor-highlight-preference' => 'Syntaxmarkierig bim Bearbeite meglig mache',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-highlight-preference' => "Lhiggey da soilshaghey co-ordrail tra t'ou reaghey",
+);
+
 /** Hebrew (עברית)
  * @author YaronSh
  */

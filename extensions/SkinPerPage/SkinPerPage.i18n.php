@@ -454,9 +454,10 @@ $messages['sq'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
+ * @author Жељко Тодоровић
  */
 $messages['sr-ec'] = array(
-	'skinperpage-desc' => 'Додаје ознаку <code>&lt;skin&gt;</code> за коришћење различитих кожа на различитим странама.',
+	'skinperpage-desc' => 'Додаје ознаку <code>&lt;skin&gt;</code> за коришћење различитих кожа на различитим страницама',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

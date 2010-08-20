@@ -597,12 +597,13 @@ Je možné ho použiť na získanie náhodného odporúčaného článku v tvare
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'advancedrandom' => 'Напредно бирање случајног чланка',
-	'advancedrandom-desc' => 'Изабире случајну страну из било ког именског простора, из садржаја или разговора о њему, на коју линкује.
-Може да се користи као [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] да би се добила страна која укључује наведени шаблон, или слично [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], итд.',
+	'advancedrandom-desc' => 'Изабире случајну страницу из било ког именског простора, из садржаја или разговора о њему, на коју линкује.
+Може да се користи као [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] да би се добила страница која укључује наведени шаблон, или слично [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], итд.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

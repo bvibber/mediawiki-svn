@@ -205,6 +205,13 @@ $messages['gsw'] = array(
 	'wikieditor-templates-preference' => 'Aktivierig vum Yy- un Uusblände vu Vorlage',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-templates-preference' => 'Lhiggey da clowanyn filley',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  */

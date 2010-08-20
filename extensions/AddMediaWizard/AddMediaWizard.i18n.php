@@ -57,6 +57,13 @@ $messages['bs'] = array(
 	'addmediawizard-desc' => 'Dodavanje čarobnjaka za mediju, razvijenog u saradnji Kaltura i Wikimedia Fondacije',
 );
 
+/** Catalan (Català)
+ * @author Davidpar
+ */
+$messages['ca'] = array(
+	'addmediawizard-desc' => 'Afegeix assistent pels mitjans de comunicació (Media Wizard), desenvolupat en col·laboració de Kaltura i Wikimedia Foundation.',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

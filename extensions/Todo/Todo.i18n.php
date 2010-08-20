@@ -1446,6 +1446,13 @@ $4',
 	'right-todosubmit' => 'Begrens en brukers å gjøre-listerettigheter',
 );
 
+/** Northern Sotho (Sesotho sa Leboa)
+ * @author Mohau
+ */
+$messages['nso'] = array(
+	'todo-list-change' => 'Fetloa',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

@@ -1243,9 +1243,15 @@ $messages['tr'] = array(
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Timming
+ * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
 	'optin-try' => 'Бета-версияне эшләтеп карау',
+	'tooltip-pt-optin-try' => 'Яңа мөмкинчелекләрне исбатлап карагыз',
+	'optin-leave' => 'Beta-версиядән чыгарга',
+	'tooltip-pt-optin-leave' => 'Яңа мөмкинчелекләрдән баш тарту',
+	'optin-feedback' => 'Фикерләрегезне җибәрү',
+	'tooltip-pt-optin-feedback' => 'Яңа мөмкинчелекләр турында фикер калдыру',
 );
 
 /** Udmurt (Удмурт)

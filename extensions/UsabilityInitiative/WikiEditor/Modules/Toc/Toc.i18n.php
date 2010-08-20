@@ -324,6 +324,15 @@ $messages['gsw'] = array(
 	'wikieditor-toc-hide' => 'Inhalt uusblände',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'wikieditor-toc-preference' => 'Lhiggey da claare chooid yn-stiurey',
+	'wikieditor-toc-show' => 'Taishbyney',
+	'wikieditor-toc-hide' => 'Follaghey',
+);
+
 /** Hebrew (עברית)
  * @author Rotem Liss
  * @author YaronSh
@@ -454,6 +463,14 @@ $messages['lb'] = array(
 	'wikieditor-toc-preference' => 'Inhaltsverzeechnes fir ze navigéieren aschalten',
 	'wikieditor-toc-show' => 'Inhalt weisen',
 	'wikieditor-toc-hide' => 'Inhalt verstoppen',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-toc-show' => 'Tuun inhawd',
+	'wikieditor-toc-hide' => 'Verbegr inhawd',
 );
 
 /** Lithuanian (Lietuvių)

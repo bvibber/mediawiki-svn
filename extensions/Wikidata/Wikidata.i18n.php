@@ -9637,7 +9637,7 @@ $messages['nso'] = array(
 	'ow_meaningsofsubtitle' => '<em>Hlomaganyo ya Wiki:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>TUMELLO E LATOTŠWE</h2>',
 	'ow_copy_no_action_specified' => 'Ka kgopela kgetha seo o nyakago gose phetha',
-	'ow_copy_help' => 'Ka tšatši le lengwe, re ka go thuša.',
+	'ow_copy_help' => 'Thušo ga e gona ka se sebaka.',
 );
 
 /** Occitan (Occitan)
@@ -12257,6 +12257,7 @@ $messages['sq'] = array(
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -12329,8 +12330,8 @@ $messages['sr-ec'] = array(
 	'ow_available_contexts' => 'Могући контексти',
 	'ow_add_concept_link' => 'Додај линк у друге концепте',
 	'ow_concept_panel' => 'Табла концепата',
-	'ow_dm_badtitle' => 'Ова страна не показује на ДефинисаноЗначење (концепт). Провери веб адресу.',
-	'ow_dm_missing' => 'Ова страна показује на непостојеће ДефинисаноЗначење (концепт). Провери веб адресу.',
+	'ow_dm_badtitle' => 'Ова страница не показује на ДефинисаноЗначење (концепт). Провери веб адресу.',
+	'ow_dm_missing' => 'Ова страница показује на непостојеће ДефинисаноЗначење (концепт). Провери веб адресу.',
 	'ow_AddHint' => 'Унесите нове редове за додавање',
 	'ow_AlternativeDefinition' => 'Алтернативна дефиниција',
 	'ow_AlternativeDefinitions' => 'Алтернативне дефиниције',
@@ -14359,12 +14360,16 @@ $messages['vi'] = array(
 $messages['vo'] = array(
 	'datasearch' => 'Wikidata: Nünodisuk',
 	'datasearch_language' => 'Pük:',
+	'ow_exporttsv_languages' => 'Püks:',
 	'ow_save' => 'Dakipolöd',
 	'ow_history' => 'Jenotem',
 	'ow_noedit_title' => 'Däl nonik ad redakön',
 	'ow_uipref_datasets' => 'Logam kösömik:',
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nos pevälon',
+	'ow_transaction_user' => 'Gebananem:',
+	'ow_transaction_remove' => 'Moükön',
+	'ow_transaction_is_latest' => 'Lätikün',
 	'ow_conceptmapping_no_action_specified' => 'Dun: „$1“ no mögon.',
 	'ow_add_concept_link' => 'Läükön yümi tikädes votik',
 	'ow_concept_panel' => 'Tikädafremül',
@@ -14389,23 +14394,33 @@ $messages['vo'] = array(
 	'ow_OptionAttributeOption' => 'Välot',
 	'ow_OptionAttributeOptions' => 'Välots',
 	'ow_PopupAnnotation' => 'Penet',
+	'ow_Remove' => 'Moükön',
 	'ow_Spelling' => 'Tonatam',
 	'ow_Source' => 'Fonät',
 	'ow_Text' => 'Vödem',
 	'ow_TextAttribute' => 'Patöf',
+	'ow_Time' => 'Tim',
 	'ow_TranslatedTextAttribute' => 'Patöf',
 	'ow_TranslatedText' => 'Vödem petradutöl',
 	'ow_TranslatedTextAttributeValue' => 'Vödem',
 	'ow_TranslatedTextAttributeValues' => 'Vödems tradutovik',
 	'ow_LinkAttribute' => 'Patöf',
 	'ow_LinkAttributeValues' => 'Liuds',
+	'ow_User' => 'Geban',
 	'ow_Property' => 'Patöf',
 	'ow_Value' => 'Völad',
+	'ow_added' => 'Peluüköl',
+	'ow_removed' => 'Pemoüköl',
 	'ow_meaningsoftitle' => 'Sinifs ela „$1“',
 	'ow_meaningsofsubtitle' => '<em>Vükayüm:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Däl no pegevon</h2>',
 	'ow_copy_help' => 'Yuf no nog gebidon.',
 	'ow_show' => 'Jonolöd',
+	'ow_upload' => 'Löpükön',
+	'ow_create' => 'Jafön',
+	'ow_suggest_previous' => 'Büik',
+	'ow_suggest_next' => 'Sököl',
+	'ow_suggest_clear' => 'Kulön',
 );
 
 /** Yiddish (ייִדיש)

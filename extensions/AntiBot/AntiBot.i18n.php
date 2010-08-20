@@ -92,6 +92,13 @@ $messages['bs'] = array(
 	'antibot-desc' => 'Jednostavni radni okvir za provjeru spam botova',
 );
 
+/** Catalan (Català)
+ * @author Davidpar
+ */
+$messages['ca'] = array(
+	'antibot-desc' => "Simple framework per als controls i les càrregues útils d'activació d'spam.",
+);
+
 /** Capiznon (Capiceño)
  * @author Oxyzen
  */

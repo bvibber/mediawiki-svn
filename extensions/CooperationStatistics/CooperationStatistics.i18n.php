@@ -717,10 +717,11 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'cooperationstatistics-tablearticle' => 'Број страна',
+	'cooperationstatistics-tablearticle' => 'Број страница',
 	'cooperationstatistics-tablevalue' => 'Број уредника',
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|страна|стране|стране|стране|страна}}',
 	'cooperationstatistics-nbusers' => '{{PLURAL:$2|има}} $1 {{PLURAL:$1|уредника}}',

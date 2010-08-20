@@ -123,9 +123,11 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Davidpar
  * @author Solde
  */
 $messages['ca'] = array(
+	'categorywatch-desc' => "Amplia la funcionalitat de les alertes per tal d'incloure la notificació sobre els canvis de membres de les categories visitades.",
 	'categorywatch-emailsubject' => 'Activitat en relació amb la categoria vigilada "$1"',
 	'categorywatch-catmovein' => "$1 s'ha mogut a $2 des de $3",
 	'categorywatch-catmoveout' => "$1 s'ha mogut fora de $2 i dins de $3",

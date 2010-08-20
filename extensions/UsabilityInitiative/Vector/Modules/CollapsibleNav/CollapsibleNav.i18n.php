@@ -106,10 +106,11 @@ $messages['ca'] = array(
 );
 
 /** Sorani (کوردی)
+ * @author Asoxor
  * @author Marmzok
  */
 $messages['ckb'] = array(
-	'vector-collapsiblenav-preference' => 'خستنەکاری کرانەوەی بڕگەکانی لە پێرستی ڕێدۆزیدا لە بەرگی وێکتۆردا.',
+	'vector-collapsiblenav-preference' => 'ڕێگە بدە بە کرانەوەی بڕگەکانی پێرستی ڕێدۆزی لە بەرگی ڤێکتۆردا.',
 	'vector-collapsiblenav-more' => 'زمانەکانی دیکە',
 );
 

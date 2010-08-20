@@ -5591,6 +5591,7 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -5599,7 +5600,7 @@ $messages['sr-ec'] = array(
 ** Спам
 ** Одржавање
 ** Није за пројекат',
-	'deletequeue-nom-alreadyqueued' => 'Ова страна се већ налази у реду за брисање.',
+	'deletequeue-nom-alreadyqueued' => 'Ова страница се већ налази у реду за брисање.',
 	'deletequeue-speedy-title' => 'Означи "$1" за брзо брисање',
 	'deletequeue-delnom-reason' => 'Разлог за предлог:',
 	'deletequeue-delnom-otherreason' => 'Други разлог',
@@ -5615,16 +5616,16 @@ $messages['sr-ec'] = array(
 	'deletequeue-queue-speedy' => 'Брзо брисање',
 	'deletequeue-queue-prod' => 'Предложено брисање',
 	'deletequeue-queue-deletediscuss' => 'Дискусија о брисању',
-	'deletequeue-page-speedy' => "Ова страна је била означена за брзо брисање.
+	'deletequeue-page-speedy' => "Ова страница је била означена за брзо брисање.
 Разлог дат за ово брисање је ''$1''.",
-	'deletequeue-page-prod' => "Ова страна је предложена за брисање.
+	'deletequeue-page-prod' => "Ова страница је предложена за брисање.
 Дати разлог је ''$1''.
-Ако овај разлог не буде доведен у питање до ''$2'', ова страна ће бити обрисана.
-Можете спречити брисање ове стране [{{fullurl:{{FULLPAGENAME}}|action=delvote}} изношењем противних аргумената].",
-	'deletequeue-page-deletediscuss' => "Ова страна је предложена за брисање, и предлог је био доведен у питање.
+Ако овај разлог не буде доведен у питање до ''$2'', ова страница ће бити обрисана.
+Можете спречити брисање ове странице [{{fullurl:{{FULLPAGENAME}}|action=delvote}} изношењем противних аргумената].",
+	'deletequeue-page-deletediscuss' => "Ова страница је предложена за брисање, и предлог је био доведен у питање.
 Дати разлог је био ''$1''.
 Дискусија се води на [[$5]], и завршиће се на ''$2''.",
-	'deletequeue-notqueued' => 'Страна коју сте изабрали тренутно није у реду за брисање',
+	'deletequeue-notqueued' => 'Страница коју сте изабрали тренутно није у реду за брисање',
 	'deletequeue-review-action' => 'Акција за извршавање:',
 	'deletequeue-review-delete' => 'Брисање стране.',
 	'deletequeue-review-change' => 'Обриши ово страну, али са другим образложењем.',
@@ -5651,8 +5652,8 @@ $messages['sr-ec'] = array(
 	'deletequeue-vote-reason' => 'Коментари:',
 	'deletequeue-vote-submit' => 'Пошаљи',
 	'deletequeue-vote-success-endorse' => 'Успешно сте подржали брисање ове стране.',
-	'deletequeue-vote-requeued' => 'Успешно сте се успротивили брисању ове стране.
-Због Вашег противљења, страна је премештена у следећи ред: $1.',
+	'deletequeue-vote-requeued' => 'Успешно сте се успротивили брисању ове странице.
+Због Вашег противљења, страница је премештена у следећи ред: $1.',
 	'deletequeue-showvotes' => 'Подршка и противљење брисању "$1".',
 	'deletequeue-showvotes-restrict-endorse' => 'Прикажи само подршке',
 	'deletequeue-showvotes-restrict-object' => 'Прикажи само противљења',

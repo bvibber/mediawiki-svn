@@ -349,6 +349,15 @@ $messages['gsw'] = array(
 	'prefs-labs' => 'Alphafunktione',
 );
 
+/** Manx (Gaelg)
+ * @author Shimmin Beg
+ */
+$messages['gv'] = array(
+	'usabilityinitiative' => 'Shalee Yn-ymmydaght',
+	'prefs-beta' => 'Troyn as greieyn beta',
+	'prefs-labs' => 'Troyn as greieyn prowaltagh',
+);
+
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotem Liss

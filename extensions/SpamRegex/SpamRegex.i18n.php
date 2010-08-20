@@ -1601,11 +1601,12 @@ $messages['sma'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'spamregex' => 'Регуларни изрази за спам',
-	'spamregex-desc' => '[[Special:SpamRegex|Филтрирајте]] нежељене фразе у измењеним странама, помоћу регуларних израза',
+	'spamregex-desc' => '[[Special:SpamRegex|Филтрирајте]] нежељене фразе у измењеним страницама, помоћу регуларних израза',
 	'spamregex-error-unblocking' => 'Грешка приликом одблокирања "$1". Вероватно та фраза и није блокирана.',
 	'spamregex-summary' => 'Текст се нашао у опису странице.',
 	'spamregex-currently-blocked' => "'''Тренутно блокиране фразе:'''",

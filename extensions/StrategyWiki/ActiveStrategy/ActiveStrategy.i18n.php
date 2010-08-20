@@ -116,11 +116,13 @@ $messages['es'] = array(
 
 /** Persian (فارسی)
  * @author Ladsgroup
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
 	'activestrategy' => 'راهبرد فعال',
 	'active-strategy-desc' => 'تعداد ویرایش‌ها را به صفحات برنامه‌ریزی راهبردی نشان می‌دهد.',
+	'active-strategy-intro' => 'تعداد ویرایشها به صفحات گروه ضربت در آخرین ((جمع : $ 1 | روز $ 1 | $ 1 روز)).',
 	'nedits' => '$1 {{PLURAL:$1|ویرایش|ویرایش}}',
 );
 
@@ -258,6 +260,13 @@ $messages['lb'] = array(
 	'active-strategy-desc' => "Weist d'Zuel vun den Ännerungen op de Säite vun der strategischer Planung",
 	'active-strategy-intro' => 'Zuel vun den Ännerungen op Säite vum Aarbechtsgrupp {{PLURAL:$1|de leschten Dag|an de leschten $1 Deeg}}.',
 	'nedits' => '$1 {{PLURAL:$1|Ännerung|Ännerungen}}',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'nedits' => '$1 {{PLURAL:$1|bewèrking|bewèrkinge}}',
 );
 
 /** Macedonian (Македонски)

@@ -1718,10 +1718,11 @@ Túto operáciu nie je možné druhýkrát vrátiť.',
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'createsigndoc-pagename' => 'Страна:',
+	'createsigndoc-pagename' => 'Страница:',
 	'createsigndoc-allowedgroup' => 'Дозвољена група:',
 	'createsigndoc-email' => 'Е-пошта:',
 	'createsigndoc-address' => 'Кућна адреса:',

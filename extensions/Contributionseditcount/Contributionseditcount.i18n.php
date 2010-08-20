@@ -122,13 +122,14 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'contributionseditcount' => '{{GENDER:$2|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} hat {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}}.',
-	'contributionseditcount-desc' => 'Zeigt einen Beitragszähler auf der [[Special:Contributions|Beitragsseite des Benutzers]] an',
+	'contributionseditcount' => '{{GENDER:$2|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} hat {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}} gemacht.',
+	'contributionseditcount-desc' => 'Zeigt einen Beitragszähler auf der Seite [[Special:Contributions|Benutzerbeiträge]] des Benutzers an',
 );
 
 /** Lower Sorbian (Dolnoserbski)

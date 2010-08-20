@@ -110,6 +110,13 @@ $messages['es'] = array(
 	'geolite-desc' => 'Redirección ligera de GeoIp',
 );
 
+/** Persian (فارسی)
+ * @author Sahim
+ */
+$messages['fa'] = array(
+	'geolite-desc' => 'راهنمایی سبک و خفیف به روش  GeoIp',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */
