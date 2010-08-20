@@ -58,7 +58,7 @@ public abstract class DatabaseWikiWordConceptStoreBuilder<T extends WikiWordConc
 		linkInserter =     configureTable("link", 8*1024, 64);
 		langlinkInserter = configureTable("langlink", 2*1024, 64);
 		
-		langlinkInserter.setLenient(true);
+		langlinkInserter.setOnDuplicateKey("IGNORE");
 	
 		conceptTable = (EntityTable)conceptInserter.getTable();
 		broaderTable = (RelationTable)broaderInserter.getTable();

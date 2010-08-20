@@ -131,7 +131,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		definitionInserter = configureTable("definition", 1024, 256);
 		resourceInserter = configureTable("resource", 256, 32);
 		aliasInserter =    configureTable("alias", 1024, 64);
-		aliasInserter.setLenient(true);
+		aliasInserter.setOnDuplicateKey("IGNORE");
 		meaningInserter =  configureTable("meaning", 8*1024, 64);
 	
 		resourceTable = (EntityTable)resourceInserter.getTable(); 

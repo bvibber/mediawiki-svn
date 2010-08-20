@@ -54,7 +54,7 @@ public class DatabaseLocalPropertyStoreBuilder extends DatabaseIncrementalStoreB
 		
 		this.propertyInserter = configureTable("property", 128, 3*32);
 		this.propertyTable =  (RelationTable)propertyInserter.getTable();
-		propertyInserter.setLenient(true); //skip dupes
+		propertyInserter.setOnDuplicateKey("IGNORE"); //skip dupes
 		
 		this.conceptStoreSchema = conceptStoreSchema;
 		this.idManager = idManager;
