@@ -12,6 +12,7 @@ import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.db.DatabaseDataSet;
+import de.brightbyte.db.DatabaseTable;
 import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.QueryDataSet;
@@ -236,8 +237,8 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				@Override
 				public Cursor<ConceptFeatures<T, Integer>> cursor() throws PersistenceException {
 					try {
-						String n = database.createTemporaryTable("id integer not null, name varchar(255) default null, primary key (id)");
-						String sql = "INSERT IGNORE INTO "+n+" (id) ";
+						DatabaseTable tmp = database.createTemporaryTable("id integer not null, name varchar(255) default null, primary key (id)");
+						String sql = "INSERT IGNORE INTO "+tmp.getSQLName()+" (id) ";
 						sql += " SELECT N.feature as id ";
 						sql += " FROM "+featureTable.getSQLName()+" AS F ";
 						sql += " JOIN "+featureTable.getSQLName()+" AS N ON F.feature = N.concept ";
@@ -245,18 +246,18 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 						
 						database.executeUpdate("getNeighbourhoodFeatures#neighbours", sql);
 						
-						sql = "UPDATE "+n+" as N ";
+						sql = "UPDATE "+tmp.getSQLName()+" as N ";
 						sql+= " JOIN "+conceptTable.getSQLName()+" AS C ON C.id = N.id ";
 						sql+= " SET N.name = C.name ";
 							
 						database.executeUpdate("getNeighbourhoodFeatures#names", sql);
 
 						sql = "SELECT N.id as concept, N.name as name, X.feature as feature, X.normal_weight as value ";
-						sql+= " FROM "+n+" AS N ";
+						sql+= " FROM "+tmp.getSQLName()+" AS N ";
 						sql+= " JOIN "+featureTable.getSQLName()+" as X ON X.concept = N.id ";
 							
 						ResultSet rs = database.executeQuery("getNeighbourhoodFeatures#features", sql);
-						return new TemporaryTableDataSet.Cursor<ConceptFeatures<T, Integer>>(rs, factory, database, new String[] { n }, database.getLogOutput() );
+						return new TemporaryTableDataSet.Cursor<ConceptFeatures<T, Integer>>(rs, factory, database, new String[] { tmp.getSQLName() }, database.getLogOutput() );
 					} catch (SQLException e) {
 						throw new PersistenceException(e);
 					}

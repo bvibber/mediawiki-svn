@@ -266,14 +266,14 @@ public class DatabaseProximityStoreBuilder
 					}
 
 					if (beginTask("buildProximityAround", "buildFeatures(join)")) {
-						String t = database.createTemporaryTable("id INT, PRIMARY KEY (id)");
+						DatabaseTable tmp = database.createTemporaryTable("id INT, PRIMARY KEY (id)");
 						
-						String sql = "INSERT INTO "+t+" SELECT id FROM "+featureTable.getSQLName()+" WHERE concept = "+concept;
+						String sql = "INSERT INTO "+tmp.getSQLName()+" SELECT id FROM "+featureTable.getSQLName()+" WHERE concept = "+concept;
 						database.executeUpdate("buildProximityAround::getFirstLevelConceptIds", sql);
 
-						buildFeatures(new ConceptSetRestriction("JOIN "+t+" ON {concept} = "+t+".id "+concept, false, false));
+						buildFeatures(new ConceptSetRestriction("JOIN "+tmp.getSQLName()+" ON {concept} = "+tmp.getSQLName()+".id "+concept, false, false));
 
-						database.executeUpdate("buildProximityAround::dropFirstLevelConceptIds", "DROP TEMPORARY TABLE "+t);
+						database.executeUpdate("buildProximityAround::dropFirstLevelConceptIds", "DROP TEMPORARY TABLE "+tmp.getSQLName());
 						endTask("buildProximityAround", "buildFeatures(join)", "ok");
 					}
 					
