@@ -10,6 +10,8 @@
  * @ingroup Media
  */
 class PNGHandler extends BitmapHandler {
+
+	const BROKEN_FILE = '0';
 	
 	function getMetadata( $image, $filename ) {
 		try {
@@ -17,7 +19,7 @@ class PNGHandler extends BitmapHandler {
 		} catch( Exception $e ) {
 			// Broken file?
 			wfDebug( __METHOD__ . ': ' . $e->getMessage() . "\n" );
-			return '0';
+			return self::BROKEN_FILE;
 		}
 
 		return serialize($metadata);
@@ -55,7 +57,7 @@ class PNGHandler extends BitmapHandler {
 	
 	function isMetadataValid( $image, $metadata ) {
 
-		if ( $metadata === '0' ) {
+		if ( $metadata === self::BROKEN_FILE ) {
 			// Do not repetitivly regenerate metadata on broken file.
 			return self::METADATA_GOOD;
 		}

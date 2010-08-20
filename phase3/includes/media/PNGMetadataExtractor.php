@@ -20,26 +20,26 @@ class PNGMetadataExtractor {
 		 * and http://www.w3.org/TR/PNG/#11keywords
 		 */
 		self::$text_chunks = array(
-			'XML:com.adobe.xmp' => 'xmp',
+			'xml:com.adobe.xmp' => 'xmp',
 			# Artist is unofficial. Author is the recommended
 			# keyword in the PNG spec. However some people output
 			# Artist so support both.
-			'Artist'      => 'Artist',
-			'Model'       => 'Model',
-			'Make'        => 'Make',
-			'Author'      => 'Artist',
-			'Comment'     => 'PNGFileComment',
-			'Description' => 'ImageDescription',
-			'Title'       => 'ObjectName',
-			'Copyright'   => 'Copyright',
+			'artist'      => 'Artist',
+			'model'       => 'Model',
+			'make'        => 'Make',
+			'author'      => 'Artist',
+			'comment'     => 'PNGFileComment',
+			'description' => 'ImageDescription',
+			'title'       => 'ObjectName',
+			'copyright'   => 'Copyright',
 			# Source as in original device used to make image
 			# not as in who gave you the image
-			'Source'      => 'Model',
-			'Software'    => 'Software',
-			'Disclaimer'  => 'Disclaimer',
-			'Warning'     => 'ContentWarning',
-			'URL'         => 'Identifier', # Not sure if this is best mapping. Maybe WebStatement.
-			'Label'       => 'Label',
+			'source'      => 'Model',
+			'software'    => 'Software',
+			'disclaimer'  => 'Disclaimer',
+			'warning'     => 'ContentWarning',
+			'url'         => 'Identifier', # Not sure if this is best mapping. Maybe WebStatement.
+			'label'       => 'Label',
 			/* Other potentially useful things - Creation Time, Document */
 		);
 
@@ -106,6 +106,8 @@ class PNGMetadataExtractor {
 					 * $items[5] = content
 					 */
 
+					// Theoretically should be case-sensitive, but in practise...
+					$items[1] = strtolower( $items[1] );
 					if ( !isset( self::$text_chunks[$items[1]] ) ) {
 						// Only extract textual chunks on our list.
 						fseek( $fh, self::$CRC_size, SEEK_CUR );
@@ -158,6 +160,9 @@ class PNGMetadataExtractor {
 					throw new Exception( __METHOD__ . ": Read error on tEXt chunk" );
 					return;
 				}
+
+				// Theoretically should be case-sensitive, but in practise...
+				$keyword = strtolower( $keyword );
 				if ( !isset( self::$text_chunks[ $keyword ] ) ) {
 					// Don't recognize chunk, so skip.
 					fseek( $fh, self::$CRC_size, SEEK_CUR );
@@ -187,6 +192,9 @@ class PNGMetadataExtractor {
 						throw new Exception( __METHOD__ . ": Read error on zTXt chunk" );
 						return;
 					}
+					// Theoretically should be case-sensitive, but in practise...
+					$keyword = strtolower( $keyword );
+
 					if ( !isset( self::$text_chunks[ $keyword ] ) ) {
 						// Don't recognize chunk, so skip.
 						fseek( $fh, self::$CRC_size, SEEK_CUR );

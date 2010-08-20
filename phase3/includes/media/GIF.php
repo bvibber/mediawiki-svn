@@ -10,6 +10,8 @@
  * @ingroup Media
  */
 class GIFHandler extends BitmapHandler {
+
+	const BROKEN_FILE = '0'; // value to store in img_metadata if error extracting metadata.
 	
 	function getMetadata( $image, $filename ) {
 		try {
@@ -17,7 +19,7 @@ class GIFHandler extends BitmapHandler {
 		} catch( Exception $e ) {
 			// Broken file?
 			wfDebug( __METHOD__ . ': ' . $e->getMessage() . "\n" );
-			return '0';
+			return self::BROKEN_FILE;
 		}
 
 		return serialize($parsedGIFMetadata);
@@ -64,7 +66,7 @@ class GIFHandler extends BitmapHandler {
 	}
 	
 	function isMetadataValid( $image, $metadata ) {
-		if ( $metadata === '0' ) {
+		if ( $metadata === self::BROKEN_FILE ) {
 			// Do not repetitivly regenerate metadata on broken file.
 			return self::METADATA_GOOD;
 		}

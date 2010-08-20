@@ -321,10 +321,7 @@ class XMPReader {
 	* @param $elm String Namespace of element followed by a space and then tag name of element.
 	*/
 	private function endElementModeIgnore ( $elm ) {
-		if ( count( $this->curItem ) == 0 ) {
-			// just to be paranoid.
-			throw new MWException( ' In ignore mode with no curItem' );
-		}
+
 		if ( $this->curItem[0] === $elm ) {
 			array_shift( $this->curItem );
 			array_shift( $this->mode );
@@ -466,7 +463,8 @@ class XMPReader {
 	*/
 	function endElement( $parser, $elm ) {
 		if ( $elm === ( self::NS_RDF . ' RDF' )
-			|| $elm === 'adobe:ns:meta/ xmpmeta' )
+			|| $elm === 'adobe:ns:meta/ xmpmeta'
+			|| $elm === 'adobe:ns:meta/ xapmeta' )
 		{
 			// ignore these.
 			return;
@@ -475,6 +473,23 @@ class XMPReader {
 		if ( $elm === self::NS_RDF . ' type' ) {
 			// these aren't really supported properly yet.
 			wfDebugLog( 'XMP', __METHOD__ . ' encoutered <rdf:type>' );
+		}
+
+		if ( strpos( $elm, ' ' ) === false ) {
+			// This probably shouldn't happen.
+			wfDebugLog( 'XMP', __METHOD__ . " Encountered </$elm> which has no namespace. Skipping." );
+			return;
+		}
+
+		if ( count( $this->mode[0] ) === 0 ) {
+			// This should never ever happen.
+			throw new MWException( 'Encountered end element with no mode' );
+		}
+
+		if ( count( $this->curItem ) == 0 && $this->mode[0] !== self::MODE_INITIAL ) {
+			// just to be paranoid. Should always have a curItem, except for initially
+			// (aka during MODE_INITAL).
+			throw new MWException( "Hit end element </$elm> but no curItem" );
 		}
 
 		switch( $this->mode[0] ) {
@@ -721,7 +736,8 @@ class XMPReader {
 				. " <rdf:li> did not contain, or has invalid xml:lang attribute in lang alternative" );
 		}
 
-		$this->itemLang = $attribs[ self::NS_XML . ' lang' ];
+		// Lang is case-insensitive.
+		$this->itemLang = strtolower( $attribs[ self::NS_XML . ' lang' ] );
 
 		// need to add curItem[0] on again since one is for the specific item
 		// and one is for the entire group.
@@ -741,9 +757,10 @@ class XMPReader {
 	function startElement( $parser, $elm, $attribs ) {
 
 		if ( $elm === self::NS_RDF . ' RDF'
-			|| $elm === 'adobe:ns:meta/ xmpmeta' )
+			|| $elm === 'adobe:ns:meta/ xmpmeta' 
+			|| $elm === 'adobe:ns:meta/ xapmeta')
 		{
-			/* ignore */
+			/* ignore. */
 			return;
 		} elseif ( $elm === self::NS_RDF . ' Description' ) {
 			if ( count( $this->mode ) === 0 ) {
@@ -761,8 +778,19 @@ class XMPReader {
 			wfDebugLog( 'XMP', __METHOD__ . ' Encoutered <rdf:type> which isn\'t currently supported' );
 		}
 
+		if ( strpos( $elm, ' ' ) === false ) {
+			// This probably shouldn't happen.
+			wfDebugLog( 'XMP', __METHOD__ . " Encountered <$elm> which has no namespace. Skipping." );
+			return;
+		}
 
 		list( $ns, $tag ) = explode( ' ', $elm, 2 );
+
+		if ( count( $this->mode ) === 0 ) {
+			// This should not happen.
+			throw new MWException('Error extracting XMP, '
+				. "encountered <$elm> with no mode" );
+		}
 
 		switch( $this->mode[0] ) {
 			case self::MODE_IGNORE:
@@ -822,6 +850,13 @@ class XMPReader {
 				$this->mode[0] = self::MODE_QDESC;
 			}
 
+			if ( strpos( $name, ' ' ) === false ) {
+				// This shouldn't happen, but so far some old software forgets namespace
+				// on rdf:about.
+				wfDebugLog( 'XMP', __METHOD__ . ' Encoutered non-namespaced attribute: '
+					. " $name=\"$val\". Skipping. " );
+				continue;
+			}
 			list( $ns, $tag ) = explode( ' ', $name, 2 );
 			if ( $ns === self::NS_RDF ) {
 				if ( $tag === 'value' || $tag === 'resource' ) {

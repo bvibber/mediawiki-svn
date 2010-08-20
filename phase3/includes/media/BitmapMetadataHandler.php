@@ -10,7 +10,6 @@ and the various metadata extractors.
 */
 class BitmapMetadataHandler {
 
-	private $filename;
 	private $metadata = Array();
 	private $metaPriority = Array(
 		20 => Array( 'other' ),
@@ -44,9 +43,9 @@ class BitmapMetadataHandler {
 	* Basically what used to be in BitmapHandler::getMetadata().
 	* Just calls stuff in the Exif class.
 	*/
-	function getExif () {
-		if ( file_exists( $this->filename ) ) {
-			$exif = new Exif( $this->filename );
+	function getExif ( $filename ) {
+		if ( file_exists( $filename ) ) {
+			$exif = new Exif( $filename );
 			$data = $exif->getFilteredData();
 			if ( $data ) {
 				$this->addMetadata( $data, 'exif' );
@@ -105,15 +104,6 @@ class BitmapMetadataHandler {
 		return $temp;
 	}
 
-	/** constructor.
-	* This generally shouldn't be called directly
-	* instead one of the static methods should be used
-	*
-	* @param string $file - full path to file
-	*/
-	function __construct ( $file ) {
-		$this->filename = $file;
-	}
 	/** Main entry point for jpeg's.
 	*
 	* @param string $file filename (with full path)
@@ -122,8 +112,8 @@ class BitmapMetadataHandler {
 	*/
 	static function Jpeg ( $filename ) {
 		$showXMP = function_exists( 'xml_parser_create_ns' );
-		$meta = new self( $filename );
-		$meta->getExif();
+		$meta = new self();
+		$meta->getExif( $filename );
 		$seg = Array();
 		$seg = JpegMetadataExtractor::segmentSplitter( $filename );
 		if ( isset( $seg['COM'] ) && isset( $seg['COM'][0] ) ) {
@@ -160,7 +150,7 @@ class BitmapMetadataHandler {
 	static public function PNG ( $filename ) {
 		$showXMP = function_exists( 'xml_parser_create_ns' );
 
-		$meta = new self( $filename );
+		$meta = new self();
 		$array = PNGMetadataExtractor::getMetadata( $filename );
 		if ( isset( $array['text']['xmp']['x-default'] ) && $array['text']['xmp']['x-default'] !== '' && $showXMP ) {
 			$xmp = new XMPReader();
@@ -188,7 +178,7 @@ class BitmapMetadataHandler {
 	 */
 	static public function GIF ( $filename ) {
 
-		$meta = new self( $filename );
+		$meta = new self();
 		$baseArray = GIFMetadataExtractor::getMetadata( $filename );
 
 		if ( count( $baseArray['comment'] ) > 0 ) {

@@ -297,6 +297,27 @@ abstract class MediaHandler {
 	}
 
 	/**
+	 * Get a list of metadata items which should be displayed when
+	 * the metadata table is collapsed.
+	 *
+	 * @return array of strings
+	 * @access private
+	 */
+	function visibleMetadataFields() {
+		$fields = array();
+		$lines = explode( "\n", wfMsgForContent( 'metadata-fields' ) );
+		foreach( $lines as $line ) {
+			$matches = array();
+			if( preg_match( '/^\\*\s*(.*?)\s*$/', $line, $matches ) ) {
+				$fields[] = $matches[1];
+			}
+		}
+		$fields = array_map( 'strtolower', $fields );
+		return $fields;
+	}
+
+
+	/**
 	 * @todo Fixme: document this!
 	 * 'value' thingy goes into a wikitext table; it used to be escaped but
 	 * that was incompatible with previous practice of customized display

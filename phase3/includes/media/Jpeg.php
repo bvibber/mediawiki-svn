@@ -10,6 +10,9 @@
  */
 class JpegHandler extends BitmapHandler {
 
+	const BROKEN_FILE = '-1'; // error extracting metadata
+	const OLD_BROKEN_FILE = '0'; // outdated error extracting metadata.
+
 	function getMetadata ( $image, $filename ) {
 		try {
 			$meta = BitmapMetadataHandler::Jpeg( $filename );
@@ -24,7 +27,7 @@ class JpegHandler extends BitmapHandler {
 			// BitmapMetadataHandler throws an exception in certain exceptional cases like if file does not exist.
 			wfDebug( __METHOD__ . ': ' . $e->getMessage() . "\n" );
 
-			/* This used to use 0 for the cases
+			/* This used to use 0 (self::OLD_BROKEN_FILE) for the cases
 			 * 	* No metadata in the file
 			 * 	* Something is broken in the file.
 			 * However, if the metadata support gets expanded then you can't tell if the 0 is from
@@ -33,7 +36,7 @@ class JpegHandler extends BitmapHandler {
 			 * Thus switch to using -1 to denote only a broken file, and use an array with only
 			 * MEDIAWIKI_EXIF_VERSION to denote no props.
 			 */
-			return '-1';
+			return self::BROKEN_FILE;
 		}
 	}
 
@@ -72,4 +75,57 @@ class JpegHandler extends BitmapHandler {
 		$metadata['MEDIAWIKI_EXIF_VERSION'] = 1;
 		return $metadata;
 	}
+
+	function isMetadataValid( $image, $metadata ) {
+		global $wgShowEXIF;
+		if ( !$wgShowEXIF ) {
+			# Metadata disabled and so an empty field is expected
+			return self::METADATA_GOOD;
+		}
+		if ( $metadata === self::OLD_BROKEN_FILE ) {
+			# Old special value indicating that there is no EXIF data in the file.
+			# or that there was an error well extracting the metadata.
+			wfDebug( __METHOD__ . ": back-compat version\n");
+			return self::METADATA_COMPATIBLE;
+		}
+		if ( $metadata === self::BROKEN_FILE ) {
+			return self::METADATA_GOOD;
+		}
+		wfSuppressWarnings();
+		$exif = unserialize( $metadata );
+		wfRestoreWarnings();
+		if ( !isset( $exif['MEDIAWIKI_EXIF_VERSION'] ) ||
+			$exif['MEDIAWIKI_EXIF_VERSION'] != Exif::version() )
+		{
+			if ( isset( $exif['MEDIAWIKI_EXIF_VERSION'] ) &&
+				$exif['MEDIAWIKI_EXIF_VERSION'] == 1 )
+			{
+				//back-compatible but old
+				wfDebug( __METHOD__.": back-compat version\n" );
+				return self::METADATA_COMPATIBLE;
+			}
+			# Wrong (non-compatible) version
+			wfDebug( __METHOD__.": wrong version\n" );
+			return self::METADATA_BAD;
+		}
+		return self::METADATA_GOOD;
+	}
+
+	function formatMetadata( $image ) {
+		$metadata = $image->getMetadata();
+		if ( !$metadata || $metadata == self::BROKEN_FILE ) {
+			return false;
+		}
+		$exif = unserialize( $metadata );
+		if ( !$exif ) {
+			return false;
+		}
+		unset( $exif['MEDIAWIKI_EXIF_VERSION'] );
+		if ( count( $exif ) == 0 ) {
+			return false;
+		}
+		return $this->formatMetadataHelper( $exif );
+	}
+
+
 }
