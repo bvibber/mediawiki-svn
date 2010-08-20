@@ -35,6 +35,7 @@ MediaWiki extensions since MediaWiki 1.16.
 * RandomInCategory needs to be installed using RandomInCategory.php.
 * Renameuser needs to be installed using Renameuser.php.
 * rss was renamed to RSSNews. Install using RSSNews.php.
+* SMWWriter needs to be installed using SMWWriter.php.
 * SpecialForm was renamed to Form. Install using Form.php.
 * Throttle was renamed to UserThrottle. Install using UserThrottle.php.
 * Todo needs to be installed using Todo.php.
@@ -46,25 +47,63 @@ MediaWiki extensions since MediaWiki 1.16.
 * WiktionaryInflection needs to be installed using WiktionaryInflection.php.
 
 == New extensions ==
+* ActiveStrategy
+* AddMediaWizard
+* ApprovedRevs
+* ArticleAssessmentPilot
+* Awesomeness
+* Cassandra
+* CategoryMultisort
+* CategoryMultisortChinese
+* CommunityApplications
+* CommunityHiring
+* DataTransclusion
+* Deployment
+* DontSwitchMeOVer
+* Distribution
 * DynamicSidebar
+* EmbedVideo
+* FBConnect
 * FirefoggChunkedUploading
+* FrontBackMatterForcedWikilinks
+* HideNamespace
 * InlineScripts
+* InterwikiIntegration
 * JS2Support
+* JSBreadCrumbs
+* LogoFunctions
+* MassBlank
+* MirrorTools
+* mw-editcount
 * NaturalLanguageList
 * PackageForce
-* ParseEngine
+* ParserWiki
 * PeopleCategories
+* PoolCounter
 * PureWikiDeletion
+* Reflect
 * RPED
+* SimpleSurvey
 * SMWWriter
 * SphinxSearch
+* TemplateAdventures
 * UKGeocodingForMaps
+* UploadWizard
 * UsabilityInitiative/PrefSwitch
 * UsabilityInitiative/UpdateMyPrefs
+* WikimediaMobile
+
+== Obsolete extensions ==
+* Oversight. Functionality availably in core.
+* SemanticGallery. Replaced by extension SemanticResultFormats.
 
 == Removed extensions ==
 * BoardVote. Replaced by extension SecurePoll.
+* Cache404. Unmaintained and not working.
+* Data. Unmaintained for 5 years, not working and insecure.
+* experimental. Unmaintained and not working.
 * freenodeChat. Functionality covered by extension WebChat.
+* GroupPermissionsManager. Unmaintained and outdated.
 * Lockout. Functionality availably in core.
 * Makebot. Functionality availably in core.
 * Makesysop. Functionality availably in core.
@@ -72,5 +111,8 @@ MediaWiki extensions since MediaWiki 1.16.
 * Mollum was removed. No functionality.
 * OpenLibrary was removed. No functionality.
 * Review. Functionality covered by FlaggedRevs.
+* SocialProfile/YUI. Dependency was removed.
+* TimedText. Supported via extension TimedMediaHandler.
+* UpdateMyPrefs. Reworked to DontSwitchMeOVer.
 * UsernameBlacklist. Functionality covered by extension TitleBlacklist.
 * wikiwyg. Very outdated. Functionality covered by extension FCKeditor.
