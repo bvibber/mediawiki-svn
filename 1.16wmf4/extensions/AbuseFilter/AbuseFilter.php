@@ -78,15 +78,11 @@ $wgAvailableRights[] = 'abusefilter-private';
 $wgAvailableRights[] = 'abusefilter-modify-restricted';
 $wgAvailableRights[] = 'abusefilter-revert';
 $wgAvailableRights[] = 'abusefilter-view-private';
-$wgAvailableRights[] = 'abusefilter-hidden-log';
-$wgAvailableRights[] = 'abusefilter-hide-log';
 
 $wgLogTypes[] = 'abusefilter';
 $wgLogNames['abusefilter']          = 'abusefilter-log-name';
 $wgLogHeaders['abusefilter']        = 'abusefilter-log-header';
 $wgLogActionsHandlers['abusefilter/modify'] = array( 'AbuseFilter', 'modifyActionText' );
-$wgLogActions['suppress/hide-afl'] = 'abusefilter-logentry-suppress';
-$wgLogActions['suppress/unhide-afl'] = 'abusefilter-logentry-unsuppress';
 
 $wgAbuseFilterAvailableActions = array( 'flag', 'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'degroup', 'tag' );
 
