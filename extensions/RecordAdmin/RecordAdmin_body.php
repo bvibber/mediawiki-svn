@@ -41,6 +41,9 @@ class SpecialRecordAdmin extends SpecialPage {
 		# (so that record tables don't execute when run from the job-queue - looking for a better way to do this)
 		$wgHooks['BeforePageDisplay'][] = $this;
 
+		# If this is not a request for the current page, don't run record-admin queries
+		$this->done = ( $wgRequest->getText( 'oldid' ) > 0 );
+
 		# Get the current title accounting for redirect
 		$title = Title::newFromText( $wgRequest->getText( 'title' ) );
 		if ( is_object( $title ) && $title->isRedirect() ) {
