@@ -421,6 +421,15 @@ $messages['he'] = array(
 	'wikieditor-preview-loading' => 'נטען...',
 );
 
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'wikieditor-preview-tab' => 'Pregled',
+	'wikieditor-preview-changes-tab' => 'Promjene',
+	'wikieditor-preview-loading' => 'Učitavam…',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -845,6 +854,13 @@ $messages['sah'] = array(
 	'wikieditor-preview-loading' => 'Хачайдана турар...',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'wikieditor-preview-tab' => 'Antiprima',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */
@@ -970,6 +986,16 @@ $messages['tr'] = array(
 	'wikieditor-preview-tab' => 'Önizleme',
 	'wikieditor-preview-changes-tab' => 'Değişiklikler',
 	'wikieditor-preview-loading' => 'Yükleniyor...',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-preview-preference' => 'Алдан карауны ачу',
+	'wikieditor-preview-tab' => 'Алдан карау',
+	'wikieditor-preview-changes-tab' => 'Үзгәртүләр',
+	'wikieditor-preview-loading' => 'Йөкләү...',
 );
 
 /** Ukrainian (Українська)

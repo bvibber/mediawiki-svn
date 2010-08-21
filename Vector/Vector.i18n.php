@@ -352,6 +352,14 @@ $messages['lb'] = array(
 	'vector-desc' => "Verbessert am Benotzer-Interface Elementer vum Ausgesinn ''Vector''.",
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'vector' => 'Vectorgebroekersinterfaceverbaeteringe',
+	'vector-desc' => 'Verbaetertj de vectorgebroekersinterface-illemente',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
@@ -374,6 +382,13 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'vector' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിന്റെ സമ്പർക്കമുഖ മെച്ചപ്പെടുത്തലുകൾ',
 	'vector-desc' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിൽ ഉപയോക്തൃ സമ്പർക്കമുഖ ഘടകങ്ങളിലെ മെച്ചപ്പെടുത്തലുകൾ.',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'vector' => 'समदिश परिधानाच्या उपयोगकर्ता-आंतरपृष्ठातील(UI) सुधारणा',
 );
 
 /** Malay (Bahasa Melayu)

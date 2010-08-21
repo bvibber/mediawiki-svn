@@ -141,7 +141,8 @@ Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «Caixa d'
  * @author Marmzok
  */
 $messages['ckb'] = array(
-	'vector-editwarning-warning' => 'بەجێ‌هێشتنی ئەم لاپەڕەیە دەبێتە هۆی لە‌دەست چوونی هەموو ئەو گۆڕانکاریانەی کردووتە.',
+	'vector-editwarning-warning' => 'بەجێ‌هێشتنی ئەم لاپەڕەیە دەبێتە هۆی لە‌دەست چوونی هەموو ئەو گۆڕانکاریانەی کردووتە.<br />
+ئەگەر لەژوورەوەی، دەتوانی ئەم ئاگادارییە لە بەشی "دەستکاریی" لە ھەڵبژاردەکانی، لەکاربخەی.',
 	'vector-editwarning-preference' => 'ھۆشیارم بکەوە کاتێک لە پەڕەیەکی دەستکاری بە گۆڕانکاریی پاشەکەوت‌نەکراو دەردەچم',
 );
 
@@ -483,6 +484,15 @@ $messages['lb'] = array(
 	'vector-editwarning-warning' => 'Wann Dir dës Säit verloosst kann dat dozou féieren datt Dir all Ännerungen, déi Dir gemaach hutt, verléiert.
 Wann Dir ageloggt sidd, kënnt Dir dës Warnung an der Sektioun "Änneren" vun Ären Astellungen ausschalten.',
 	'vector-editwarning-preference' => "Mech warne wann ech d'Ännerung vun enger Säit verloosen, ouni Ännerunge gespäichert ze hunn",
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'vector-editwarning-warning' => "Es se dees pagina verleets verluus se meugelik wieziginge die se haes gemaak.
+Es se bös aangemeld, kins se dees waorsjoewing oetzètten in 't bewerkingstabblaad in dien veurkäöre.",
+	'vector-editwarning-preference' => "Waorssjoew mich es ich 'n bewerkdje pagina die nag neet is opgeslage wil verlaote",
 );
 
 /** Lithuanian (Lietuvių)

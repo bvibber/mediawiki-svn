@@ -1683,12 +1683,14 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'prefstats-xaxis' => '  ↓ कालावधी (तासात)',
+	'prefstats-factors' => 'दृष्ये प्रती: $1',
 	'prefstats-factor-hour' => 'तास',
 	'prefstats-factor-sixhours' => 'सहा तास',
 	'prefstats-factor-day' => 'दिवस',
 	'prefstats-factor-week' => 'आठवडा',
 	'prefstats-factor-twoweeks' => 'दोन आठवडे',
 	'prefstats-factor-fourweeks' => 'चार आठवडे',
+	'prefstats-factor-default' => 'अविचल मापनाकडे परत',
 	'prefstats-legend-out' => '↓ निवडीतुन बाहेर',
 	'prefstats-legend-in' => '↓ निवडुन आत',
 );
@@ -2255,6 +2257,7 @@ $messages['sah'] = array(
  */
 $messages['sc'] = array(
 	'prefstats-xaxis' => 'Durada (oras)',
+	'prefstats-factors' => 'Abbista pro: $1',
 	'prefstats-factor-hour' => 'ora',
 	'prefstats-factor-sixhours' => 'ses oras',
 	'prefstats-factor-day' => 'die',

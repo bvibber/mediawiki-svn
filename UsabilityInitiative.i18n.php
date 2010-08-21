@@ -279,9 +279,11 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'usabilityinitiative' => 'گام مقدماتی قابلیت استفاده',
+	'usabilityinitiative-desc' => 'ویژگی‌های توسعه‌یافته توسط بهبود کاربردپذیری ویکی‌پدیا به منظور افزایش کاربردپذیری مدیاویکی',
 	'prefs-beta' => 'امکانات بتا',
 	'prefs-labs' => 'امکانات آزمایشگاهی',
 );
@@ -497,6 +499,16 @@ $messages['lb'] = array(
 	'prefs-labs' => '"Labs"-Fonctiounen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'usabilityinitiative' => 'Broekberheidsinitiatief',
+	'usabilityinitiative-desc' => "Functionaliteit die door 't Wikipedia Broekbaarheidsinitiatief is ontwikkeld ter verbaetering van de broekbaarheid van MediaWiki",
+	'prefs-beta' => 'Bètadeil',
+	'prefs-labs' => 'Alfadeil',
+);
+
 /** Lithuanian (Lietuvių)
  * @author Garas
  * @author Matasg
@@ -529,10 +541,13 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'usabilityinitiative' => 'ऊपयोगसुलभता उपक्रम',
 	'prefs-beta' => '↓ बीटा चेहेरेपट्टी',
+	'prefs-labs' => 'प्रायोगिक वैशिष्ट्ये',
 );
 
 /** Malay (Bahasa Melayu)

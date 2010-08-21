@@ -683,6 +683,13 @@ $messages['bg'] = array(
 $messages['bjn'] = array(
 	'optin-title-optedout' => 'Cubai Beta',
 	'optin-title-optedin' => 'Tinggalakan Beta',
+	'optin-accept-long-anon' => 'Babuat wan cubai Beta',
+	'optin-deny-short' => 'Kada, tarima kasih',
+	'optin-deny-long' => 'Babulik ka tungkaran sabalumnya',
+	'optin-submit-out' => 'Tinggalakan Beta',
+	'optin-submit-feedback' => 'Bari kitihanbalik',
+	'optin-survey-yes' => 'Iya',
+	'optin-survey-no' => 'Kada',
 );
 
 /** Bengali (বাংলা)
@@ -3989,6 +3996,8 @@ $messages['li'] = array(
 	'optin-submit-feedback' => 'Trökkoppeling gaeve',
 	'optin-survey-yes' => 'Jao',
 	'optin-survey-no' => 'Nei',
+	'optin-survey-answer-whyoptout-other' => 'Anger reeje:',
+	'optin-survey-answer-browser-other' => 'Angere browser:',
 	'optin-survey-answer-changes-other' => 'Euverig:',
 );
 
@@ -4294,9 +4303,13 @@ $messages['mr'] = array(
 	'optin-feedback-intro' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद.
 या नविन चेहरामोहर्‍याबद्दल आपणास काय वाटते हे आम्हास जाणुन घ्यायचे आहे,म्हणुन खालील ऎच्छीक सर्वेक्षण आपण भरुन दिल्यास आम्हाला आवडेल.',
 	'optin-feedback-back' => '↓ जर आपणास सर्वेक्षण भरावयाचे नसल्यास आपण  $1 ला परत जाउ शकता.',
+	'optin-accept-short' => 'चला करून पाहू',
+	'optin-deny-short' => 'नको धन्य्वाद',
+	'optin-submit-feedback' => 'प्रतिक्रिया द्या',
 	'optin-survey-yes' => 'हो',
 	'optin-survey-no' => 'नाही',
 	'optin-survey-answer-whyoptout-hard' => 'अवघड होते',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'मला नविन साधनपट्टी(टूलबार) आवडली नाही.',
 	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
 	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
 	'optin-survey-question-techfail' => '↓ बीटा वापरतांना आपण काही तांत्रिक अडचणी अनुभवल्या काय?',

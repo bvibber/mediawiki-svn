@@ -435,10 +435,11 @@ $messages['kn'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author IRTC1015
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'wikieditor-previewDialog-preference' => '미리보기 활성화',
+	'wikieditor-previewDialog-preference' => '미리보기 대화 상자 사용하기',
 	'wikieditor-previewDialog-tab' => '미리 보기',
 	'wikieditor-previewDialog-loading' => '불러오는 중...',
 );

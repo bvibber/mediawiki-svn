@@ -601,12 +601,18 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author Excaliboor
  */
 $messages['hr'] = array(
+	'wikieditor-publish-preference' => 'Omogućiti korak-po-korak izdavanje',
+	'wikieditor-publish-button-publish' => 'Objaviti',
+	'wikieditor-publish-button-cancel' => 'Odustani',
 	'wikieditor-publish-dialog-title' => 'Objavi na {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Uredi sažetak (kratko opišite promjene koje ste učinili):',
 	'wikieditor-publish-dialog-minor' => 'Manja promjena',
 	'wikieditor-publish-dialog-watch' => 'Prati ovu stranicu',
+	'wikieditor-publish-dialog-publish' => 'Objaviti',
+	'wikieditor-publish-dialog-goback' => 'Idi natrag',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -916,6 +922,8 @@ $messages['mr'] = array(
 	'wikieditor-publish-dialog-title' => '↓ {{संकेतस्थळनाव}} येथे प्रदर्शित करा',
 	'wikieditor-publish-dialog-summary' => 'संपादनाचा सारांश:(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
 	'wikieditor-publish-dialog-minor' => 'छोटा बदल',
+	'wikieditor-publish-dialog-watch' => 'या पानावर बदलांसाठी लक्ष ठेवा',
+	'wikieditor-publish-dialog-publish' => 'प्रकाशित करा',
 	'wikieditor-publish-dialog-goback' => '↓ परत फिरा
 ↓ मागे जा',
 );
@@ -1214,6 +1222,7 @@ $messages['sah'] = array(
  * @author Andria
  */
 $messages['sc'] = array(
+	'wikieditor-publish-button-publish' => 'Pùblica',
 	'wikieditor-publish-dialog-minor' => 'Acontzu minore',
 	'wikieditor-publish-dialog-watch' => 'Pone custa pàgina in sa watchlist mea',
 );
@@ -1409,6 +1418,21 @@ $messages['tr'] = array(
 	'wikieditor-publish-dialog-watch' => 'Bu sayfayı izle',
 	'wikieditor-publish-dialog-publish' => 'Yayınla',
 	'wikieditor-publish-dialog-goback' => 'Geri git',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-publish-preference' => 'Баскычлы куюны ачу',
+	'wikieditor-publish-button-publish' => 'Чыгарырга',
+	'wikieditor-publish-button-cancel' => 'Кире кагу',
+	'wikieditor-publish-dialog-title' => ' {{SITENAME}} проектына кертергә',
+	'wikieditor-publish-dialog-summary' => 'Үзгәртүләр тасвирламасы (барлык үзгәртүләрне кыска гына иттереп языгыз):',
+	'wikieditor-publish-dialog-minor' => 'Кече үзгәртү',
+	'wikieditor-publish-dialog-watch' => 'Бу битне күзәтү',
+	'wikieditor-publish-dialog-publish' => 'Чыгарырга',
+	'wikieditor-publish-dialog-goback' => 'Артка',
 );
 
 /** Ukrainian (Українська)

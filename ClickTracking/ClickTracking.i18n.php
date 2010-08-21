@@ -1392,7 +1392,21 @@ $messages['ml'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'clicktracking' => 'ऊपयोगसुलभता उपक्रम टिचकीवेध',
+	'ct-title' => 'एकुण उपयोगकर्ता टिचक्या',
+	'ct-expert-header' => '"कुशलांच्या" टिचक्या',
+	'ct-intermediate-header' => '"मध्यमकौशल्य" टिचक्या',
+	'ct-beginner-header' => '"नवशिक्यांच्या" टिचक्या',
+	'ct-total-header' => 'एकुण टिचक्या',
+	'ct-start-date' => 'सुरवात दिनांक (YYYYMMDD)',
+	'ct-end-date' => 'अंतीम दिनांक (YYYYMMDD)',
+	'ct-change-graph' => 'आलेख बदला',
+	'ct-beginner' => 'नवशिका',
+	'ct-intermediate' => 'मध्यम',
 	'ct-expert' => 'तज्ज्ञ',
+	'ct-date-range' => 'तारीख सीमा',
+	'ct-editing' => 'सध्या संपादत आहे:',
+	'ct-anon-users' => 'अनामिक उपयोगकर्ता',
 	'ct-user-contribs' => ' ↓ सदस्याची एकुण संपादने',
 	'ct-user-span' => ' ↓ कालावधीतील सदस्याची संपादने',
 	'ct-and' => 'आणि',

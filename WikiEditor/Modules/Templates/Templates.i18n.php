@@ -296,6 +296,13 @@ $messages['lb'] = array(
 	'wikieditor-templates-preference' => 'Zesummeklappe vu Schablounen aschalten',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-templates-preference' => 'Zèt inklapbaar sjablone aan',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -308,6 +315,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-templates-preference' => 'ഫലകം ചുരുക്കൽ സജ്ജമാക്കുക',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'wikieditor-templates-preference' => 'साचांची घडीक्षमता सक्षम करा',
 );
 
 /** Malay (Bahasa Melayu)

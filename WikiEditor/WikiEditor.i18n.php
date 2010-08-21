@@ -382,6 +382,15 @@ $messages['he'] = array(
 	'wikieditor-loading' => 'בטעינה',
 );
 
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'wikieditor' => 'Napredno sučelje uređivanja wikiteksta',
+	'wikieditor-wikitext-tab' => 'Wikitekst',
+	'wikieditor-loading' => 'Učitavanje',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -522,6 +531,8 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'wikieditor' => 'Oetgebrèdje teksverwèrker veur wikiteks',
+	'wikieditor-desc' => "Voeg 'nen oetbreidbare teksverwerker veur wikiteks toe en modules mit extra meugelikheje",
 	'wikieditor-wikitext-tab' => 'Wikiteks',
 	'wikieditor-loading' => 'Lajendj',
 );
@@ -562,6 +573,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'wikieditor' => 'विकिमजकूर संपादनाची विकसित सुविधा',
+	'wikieditor-desc' => 'विस्तारणीय विकिमजकुर संपादन आंतरपृष्ठ(इंटरफेस) आणि बर्‍याच वैशिष्ट्यपूर्ण निश्चयिका(मॊड्यूल्स) पुरवते',
 	'wikieditor-wikitext-tab' => 'विकिमजकूर',
 	'wikieditor-loading' => 'चढवत आहे…',
 );
@@ -879,6 +891,16 @@ $messages['tr'] = array(
 	'wikieditor-desc' => 'Genişletilebilir bir viki metni düzenleme arayüzü ve birçok özellik sağlayan modüller sağlar',
 	'wikieditor-wikitext-tab' => 'Vikimetin',
 	'wikieditor-loading' => 'Yükleniyor',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor' => 'Викитекстны үзгәртү буенча киңәйтелгән интерфейс',
+	'wikieditor-desc' => 'Викитекстны үзгәртү буенча киңәйтелгән интефейс (модулляр тарафынна бирелә)',
+	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Йөкләү',
 );
 
 /** Ukrainian (Українська)
