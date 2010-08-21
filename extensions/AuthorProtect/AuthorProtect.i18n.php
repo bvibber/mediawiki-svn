@@ -79,6 +79,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Alnokta
+ * @author Majid Al-Dharrab
  * @author Meno25
  */
 $messages['ar'] = array(
@@ -88,8 +89,8 @@ $messages['ar'] = array(
 	'authorprotect-confirm' => 'تغيير مستويات الحماية',
 	'authorprotect-edit' => 'احصر التعديل للمؤلفين',
 	'authorprotect-move' => 'احصر النقل للمؤلفين',
-	'authorprotect-expiry' => 'تاريخ الانتهاء',
-	'authorprotect-reason' => 'السبب',
+	'authorprotect-expiry' => 'تاريخ الانتهاء:',
+	'authorprotect-reason' => 'السبب:',
 	'authorprotect-intro' => 'استخدم هذه الاستمارة لتقفل هذه الصفحة عن غير المؤلفين',
 	'authorprotect-success' => 'نجحت الحماية!',
 	'authorprotect-failure' => 'فشلت الحماية',
@@ -311,8 +312,19 @@ $messages['cy'] = array(
  * @author Sarrus
  */
 $messages['da'] = array(
-	'authorprotect-expiry' => 'Udløbstid',
-	'authorprotect-reason' => 'Begrundelse',
+	'authorprotect' => 'Beskyt side fra ikke-forfattere',
+	'authorprotect-desc' => 'Tillader forfatteren af en side til at beskytte den fra andre brugere',
+	'authorprotect-notauthor' => 'Du er ikke forfatteren af denne side',
+	'authorprotect-confirm' => 'Skift beskyttelsesniveauer',
+	'authorprotect-edit' => 'Begræns redigering til forfattere',
+	'authorprotect-move' => 'Begræns flytning til forfattere',
+	'authorprotect-expiry' => 'Udløber:',
+	'authorprotect-reason' => 'Begrundelse:',
+	'authorprotect-intro' => 'Brug denne formular til at låse denne side fra ikke-forfattere',
+	'authorprotect-success' => 'Siden er beskyttet!',
+	'authorprotect-failure' => 'Det lykkedes ikke at beskytte siden',
+	'protect-level-author' => 'Beskyt mod ikke-forfattere',
+	'restriction-level-author' => 'Forfatterbeskyttet',
 );
 
 /** German (Deutsch)
@@ -1381,6 +1393,13 @@ $messages['sk'] = array(
 	'protect-level-author' => 'Ochrániť pred neautorskými úpravami',
 	'restriction-level-author' => 'Len pre autorov',
 	'right-authorprotect' => 'Chrániť autorské stránky',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'authorprotect-reason' => 'Razlog:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

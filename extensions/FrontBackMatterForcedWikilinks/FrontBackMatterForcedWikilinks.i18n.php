@@ -37,9 +37,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'frontbackforced-desc' => "Ouzhpennañ a ra rannadoù krec'h ha traoñ d'ar pajennoù hag emplementañ a ra wikiliammoù dre heg",
 	'frontbackforced-front' => '_(tennad_deroù)',
 	'frontbackforced-back' => '_(tennad_fin)',
 	'frontbackforced-forced' => '_(wikiliammoù_ret)',

@@ -34,11 +34,10 @@ $messages['en'] = array(
  * @author Bennylin
  * @author Purodha
  * @author SPQRobin
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'emergencydesysop-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+	'emergencydesysop-desc' => '{{desc}}',
 	'emergencydesysop-submit' => '{{Identical|Submit}}',
 	'emergencydesysop-nogroups' => '{{Identical|None}}',
 	'right-emergencydesysop' => 'This is a user right description, as shown on [[Special:ListGroupRights]], e.g.',

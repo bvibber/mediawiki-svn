@@ -38,10 +38,11 @@ Your friendly %s notification system",
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'tasklist-parser-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'tasklist-special-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'tasklist-parser-desc' => '{{desc}}',
+	'tasklist-special-desc' => '{{desc}}',
 	'tasklistincorrectuser' => '{{Identical|Incorrect username}}',
 	'tasklistbyname' => '{{Identical|Todo list for}}',
 	'tasklistemailbody' => "* 1st %s is the URL of the page a task is created for
@@ -534,6 +535,37 @@ Quelqu’un vous a assigné une nouvelle tâche sur %s.
 Pour voir la liste complète de vos tâches, allez sur %s.
 
 Votre bien aimable système de notification de %s',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'tasklist' => 'Lista de travâlys',
+	'tasklist-parser-desc' => 'Apond <nowiki>{{#todo:}}</nowiki> una fonccion du parsor por assignér des travâlys.',
+	'tasklist-special-desc' => 'Apond una pâge spèciâla por revêre los [[Special:TaskList|travâlys assignês]].',
+	'tasklistbyproject' => 'Lista de travâlys per projèt',
+	'tasklistunknownproject' => 'Projèt encognu',
+	'tasklistunspecuser' => 'Utilisator pas spècefiâ',
+	'tasklistincorrectuser' => 'Nom d’utilisator fôx',
+	'tasklistemail' => 'Chier %s',
+	'tasklistemailsubject' => '[%s] Changement dens la lista de travâlys',
+	'tasklistmytasks' => 'Mos travâlys',
+	'tasklistbyprojectbad' => "Lo projèt '''%s''' est pas un projèt valido.
+Por una lista des projèts validos, vêde [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojname' => "Travâlys assignês por '''%s'''",
+	'tasklistchooseproj' => 'Chouèsir un projèt :',
+	'tasklistprojdisp' => 'Fâre vêre',
+	'tasklistbyname' => '== Lista de travâlys por %s ==',
+	'tasklistnowguseprojects' => 'Vos éd dèfeni $wgUseProjects a « fôx » et pués pouede vêr pas utilisar ceta pâge.',
+	'tasklistnoprojects' => "Èrror : semble que vos èyâd activâ '''\$wgUseProjects''', mas sen avêr fêt [[MediaWiki:TodoTasksValidProjects]]. Vêde les [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 enstruccions d’enstalacion] por més de dètalys.",
+	'tasklistemailbody' => ',
+
+Quârqu’un vos at assignê un travâly novél dessus %s.
+
+Por vêre la lista complèta de voutros travâlys, alâd dessus %s.
+
+Voutron bien amâblo sistèmo de notificacion de %s',
 );
 
 /** Galician (Galego)

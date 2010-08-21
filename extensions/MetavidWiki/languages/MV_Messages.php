@@ -335,6 +335,7 @@ Jump to stream view: $2',
  * @author McDutchie
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
@@ -349,8 +350,8 @@ $messages['qqq'] = array(
 	'mv_tool_search' => '{{Identical|Search}}',
 	'mv_tool_export' => '{{Identical|Export}}',
 	'mv_update_layers' => 'Button caption',
-	'anno_en_desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'thomas_en_desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'anno_en_desc' => '{{desc}}',
+	'thomas_en_desc' => '{{desc}}',
 	'mv_time_separator' => "Shown as header for a video fragment. Example: ''1:23:26 to 1:23:44''
 * $1 is the start time of the fragment
 * $2 is the end time of the fragment",

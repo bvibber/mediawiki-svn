@@ -695,6 +695,7 @@ $messages['eu'] = array(
  * @author Ladsgroup
  * @author Mardetanha
  * @author Momeni
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'ratinghistory' => 'تاریخچهٔ ارزیابی صفحه',
@@ -718,9 +719,11 @@ $messages['fa'] = array(
 	'ratinghistory-table-votes' => 'آرا',
 	'ratinghistory-none' => 'در حال حاضر بازخورد کافی از خوانندگان برای نمایش نمودار وجود ندارد.',
 	'ratinghistory-ratings' => "'''شرح:''' '''(1)''' - ضعیف; '''(2)''' - پایین; '''(3)''' - متوسط; '''(4)''' - بالا; '''(5)''' - ممتاز;",
-	'ratinghistory-legend' => "نمره متوسط روزانه <font color=\"blue\">''(آبی)''</font> و نمره متوسط برای بازهٔ زمانی انتخاب شده <font color=\"green\">''(سبز)''</font> در نمودار زیر، بر حسب تاریخ نشان داده شده‌اند. مقدار نمره‌ها به صورت زیر تعبیر می‌شود:
+	'ratinghistory-legend' => "'''تعداد روزانهٔ بازبینی‌ها''' <font color=\"red\">''(قرمز)''</font>، '''میانگین امتیازدهی روزانه''' <font color=\"blue\">''(آبی)''</font>، و '''میانگین امتیازدهی جاری''' <font color=\"green\">''(سبز)''</font> در زیر، همراه با تاریخ، گراف شده است.
 
-'''[۰]''' - ضعیف؛ '''[۱]''' - پایین؛ '''[۲]''' - متوسط؛ '''[۳]''' - بالا؛ '''[۴]''' - ممتاز؛",
+'''میانگین امتیازدهی جاری''' میانگین همهٔ امتیازدهی‌های روزانه در درون این چارچوبهٔ زمانی برای هر روز است.
+امتیازدهی‌ها به شرح زیر می‌باشند:
+'''(۱)''' - ضعیف؛ '''(۲)''' - پایین؛ '''(۳)''' - متوسط؛ '''(۴)''' - بالا؛ '''(۵)''' - ممتاز؛",
 	'ratinghistory-graph-scale' => "'''بازبینی‌ها در هر روز''' <font color=\"red\">''(قرمز)''</font> در مقیاس''1:\$1'' نمایش داده شده‌اند.",
 	'right-feedback' => 'از فرم بازخورد برای نمره دادن به صفحه استفاده کنید',
 );
@@ -1377,6 +1380,8 @@ $messages['li'] = array(
 	'ratinghistory-svg' => 'Bekiek es SVG',
 	'ratinghistory-table-rating' => 'Waardering',
 	'ratinghistory-table-votes' => 'Stömme',
+	'ratinghistory-none' => "Neet zat feedback veur 'n grafiek te make.",
+	'right-feedback' => 'Gebroek feedback veur paginawaardering',
 );
 
 /** Macedonian (Македонски)
@@ -2111,11 +2116,13 @@ $messages['ta'] = array(
 	'ratinghistory-ave' => 'சராசரி: $1',
 	'ratinghistory-chart' => 'கால ஓட்டத்தில் வாசகர் அளவீடு',
 	'ratinghistory-purge' => 'மிகவேக சேமிப்புமீள்ப்பகத்தை மீதமில்லாமல் நீக்கு',
+	'ratinghistory-table' => 'வாசகர்களின் மதிப்பீடு - ஒரு கண்ணோட்டம்',
 	'ratinghistory-users' => 'அளவீடு செய்த பயனர்கள்',
 	'ratinghistory-graph' => '"$3" உடைய $2 ($1 {{PLURAL:$1|review|reviews}})',
 	'ratinghistory-svg' => 'SVGயாக பார்க்க',
 	'ratinghistory-table-rating' => 'அளவீடு',
 	'ratinghistory-table-votes' => 'ஓட்டெடுப்புகள்',
+	'ratinghistory-none' => 'வரைபடம் வரைவதற்குத் தேவையான அளவு வாசகர்களின் கருத்துக்கள் தற்போது இல்லை.',
 	'ratinghistory-ratings' => "'''கதை:''' '''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
 	'ratinghistory-legend' => "↓ The '''daily number of reviews''' <font color=\"red\">''(red)''</font>, '''daily average rating''' <font color=\"blue\">''(blue)''</font>,
 and '''running average rating''' <font color=\"green\">''(green)''</font> are graphed below, by date.
@@ -2123,6 +2130,7 @@ The '''running average rating''' is simply the average of all the daily ratings 
 The ratings are as follows:
 
 '''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
+	'ratinghistory-graph-scale' => "'''தினசரி மதிப்பீடுகள்''' <font color=\"red\">''(சிவப்பு)''</font>  ''1:\$1'' இந்த அளவில் காண்பிக்கப்பட்டுள்ளது.",
 	'right-feedback' => 'பக்கத்தின் தரம் பற்றிய கருத்தை தெரிவிக்க பின்னூட்டப் படிவத்தை பயன்படுத்தவும்',
 );
 

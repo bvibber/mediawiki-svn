@@ -842,7 +842,7 @@ $messages['fa'] = array(
 	'readerfeedback-main' => 'فقط صفحه‌های محتوایی قابل ارزیابی هستند.',
 	'readerfeedback-success' => "'''با سپاس از شما برای بازبینی این صفحه!''' ([$2 نتایج را ببینید]) ([$3 نظر و پرسش]).",
 	'readerfeedback-voted' => "'''به نظر می‌رسد که شما پیش از این، این صفحه را بازبینی کرده‌اید''' ([$2 نتیجه را ببین]) ([$3 نظر و سوال]).",
-	'readerfeedback-error' => "''' خطا رخ داده است در حالی که رتبه این صفحه ''' ([2 \$ مشاهده نتایج]) ([\$ 3 نظر یا سوال؟]).",
+	'readerfeedback-error' => "'''هنگام امتیازدهی به این صفحه خطایی رخ داد''' ([$2 مشاهده نتایج]) ([$3 نظر یا سوال؟]).",
 	'readerfeedback-submitting' => 'در حال ارسال...',
 	'readerfeedback-finished' => 'متشکریم!',
 	'readerfeedback-tagfilter' => 'برچسپ:',
@@ -1543,6 +1543,10 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'readerfeedback-desc' => 'Paginavalidatie laet laezers trukkoppeling gaeven in de vorm van categoriale beoeardeilinge',
+	'readerfeedback' => 'Waat vinjs se van dees pazjena?',
+	'readerfeedback-text' => "''Nöm de möjde om dees pagina hieronger te waardere.
+Diene feedback is waerdevol en help os dees website te verbaetere.''",
 	'readerfeedback-reliability' => 'Betroewberhed',
 	'readerfeedback-completeness' => 'Vólledighed',
 	'readerfeedback-npov' => 'Neutraliteit',
@@ -1555,6 +1559,10 @@ $messages['li'] = array(
 	'readerfeedback-level-3' => 'Hoeag',
 	'readerfeedback-level-4' => 'Perfèk',
 	'readerfeedback-submit' => 'Slaon óp',
+	'readerfeedback-main' => 'Allein inhawd kins se wardere.',
+	'readerfeedback-success' => "'''Danke veur 't beoeardeile hievan!''' ([$2 rizzeltate]) ([$3 opmerkinge/vraoge])",
+	'readerfeedback-voted' => "'''De hes hie al n beoeardeiling gedaan.''' ([$2 resultate]) ([$3 opmerkinge/vraoge])",
+	'readerfeedback-error' => "'''Fout bie paginaboeardeile''' ([$2 resultate]) ([$3 opmerkinge/vraogen])",
 	'readerfeedback-submitting' => 'Ópslaondje...',
 	'readerfeedback-finished' => 'Danke!',
 	'readerfeedback-tagfilter' => 'Label:',
@@ -2349,13 +2357,16 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
+	'readerfeedback-desc' => 'பக்கங்களை சரிபார்த்தலுக்கு அனுமதிப்பதன் மூலமே வாசகர்கள் தங்களின் கருத்துக்களை தகுதிவாரியாக மதிப்பீடு செய்து தர முடியும்',
 	'readerfeedback' => 'இந்தப் பக்கம் பற்றி நீங்கள் என்ன நினைக்கிறீர்கள்?',
 	'readerfeedback-text' => "''தயவு செய்து சிறிது அவகாசம் எடுத்து இந்தப் பக்கத்தின் கீழ் அளவீடு செய்யுங்கள். உங்களது கருத்துக்கள் மிக முக்கியமானதும் மற்றும் எங்களது இணையதளத்தின் வளர்ச்சிக்கும் உதவும்.''",
 	'readerfeedback-reliability' => 'நன்பகமானது',
 	'readerfeedback-completeness' => 'முடிவடைந்தது',
 	'readerfeedback-npov' => 'நடுநிலையானது',
+	'readerfeedback-presentation' => 'முன்வைத்தல்',
 	'readerfeedback-overall' => 'ஒட்டுமொத்தமாக',
 	'readerfeedback-level-none' => '(நிச்சயமற்ற)',
 	'readerfeedback-level-0' => 'தரமற்றது',
@@ -2364,8 +2375,10 @@ $messages['ta'] = array(
 	'readerfeedback-level-3' => 'நன்றாகவுள்ளது',
 	'readerfeedback-level-4' => 'பிரமாதம்',
 	'readerfeedback-submit' => 'சமர்ப்பி',
+	'readerfeedback-main' => 'உள்ளடக்கம் உள்ள பக்கங்களை மட்டுமே மதிப்பீடு சொய்ய முடியும்',
 	'readerfeedback-success' => "'''இந்தப் பக்கத்தை மீளாய்வு செயதமைக்கு நன்றி!''' ([$2 முடிவுகளை காண்க]) ([$3 பின்னூட்டங்கள் அல்லது கேள்விகள்?]).",
-	'readerfeedback-voted' => "'''It appears that you already rated this page''' ([$2 முடிவுகளை காண்க]) ([$3 பின்னூட்டங்கள் அல்லது கேள்விகள்?]).",
+	'readerfeedback-voted' => "'''தாங்கள் இப்பக்கத்தை முன்பே மதிப்பீடு செய்துவிட்டீர்கள் என்று தோன்றுகிறது''' ([$2 முடிவுகளைக் காண்க]) ([$3 கருத்துக்கள் அல்லது கேள்விகள்?]).",
+	'readerfeedback-error' => "'''தாங்கள் இப்பக்கத்தை மதிப்பீடு செய்யும் போது ஒரு சிறு தவறு நிகழந்துவிட்டது''' ([$2 முடிவுகளைக் காண்க]) ([$3 கருத்துக்கள் அல்லது கேள்விகள்?]).",
 	'readerfeedback-submitting' => 'சமர்பிக்கப்படுகிறது ...',
 	'readerfeedback-finished' => 'நன்றி!',
 	'readerfeedback-tagfilter' => 'குறிச்சொல்:',

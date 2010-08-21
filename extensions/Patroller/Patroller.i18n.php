@@ -45,9 +45,10 @@ $messages['en'] = array(
  * @author Ferrer
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'patrol-desc' => 'Short description of the Patrol extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'patrol-desc' => '{{desc}}',
 	'patrol-revert' => '{{Identical|Revert}}',
 	'patrol-revert-reason' => '{{Identical|Reason}}',
 	'patrol-reverting' => '{{Identical|Revert}}',
@@ -279,9 +280,9 @@ $messages['br'] = array(
 	'patrol-reverting' => 'O tisteuler : $1',
 	'patrol-nonefound' => "N'eus bet kavet degasadenn genglotus ebet da wiriañ.",
 	'patrol-endorsed-ok' => "Merket eo bet ar c'hemm evel gwiriekaet.",
-	'patrol-endorsed-failed' => "N'eo ket bet merket an embann evel gwiriekaet.",
+	'patrol-endorsed-failed' => "Dibosupl eo bet gwiriañ ar c'hemm.",
 	'patrol-reverted-ok' => "Distaolet eo bet ar c'hemm-se.",
-	'patrol-reverted-failed' => "N'eus ket bet tu nulañ ar c'hemm-se",
+	'patrol-reverted-failed' => "N'eus ket bet tu nullañ ar c'hemm-mañ.",
 	'patrol-skipped-ok' => "O lezel ar c'hemm a-gostez.",
 	'patrol-reasons' => '* Vandalerezh eeun
 * Taol esae un den nevez
@@ -1150,6 +1151,14 @@ $messages['lb'] = array(
 	'right-patroller' => 'Sàiten iwwerkucken',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'group-patroller' => 'Controleurs',
+	'group-patroller-member' => 'Controleur',
+);
+
 /** Lumbaart (Lumbaart)
  * @author Dakrismeno
  */
@@ -1715,6 +1724,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'patrol-revert-reason' => 'Razlog:',
 	'group-patroller' => 'Nadzorniki',
 	'group-patroller-member' => 'nadzornik',
 );

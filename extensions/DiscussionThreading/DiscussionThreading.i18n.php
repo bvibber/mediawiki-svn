@@ -22,9 +22,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'discussionthreading-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'discussionthreading-desc' => '{{desc}}',
 	'discussionthreading-replysection' => '{{Identical|Reply}}',
 	'discussionthreading-threadnewsection' => '{{Identical|New}}',
 );

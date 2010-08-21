@@ -30,9 +30,10 @@ This can often add considerable load to the server, so please use this function 
  * @author Jon Harald Søby
  * @author Meno25
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'asksql-desc' => 'Short description of the Asksql extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'asksql-desc' => '{{desc}}',
 	'querybtn' => '{{Identical|Submit query}}',
 	'right-asksql' => '{{doc-right}}',
 );

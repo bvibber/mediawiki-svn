@@ -32,9 +32,10 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author McDutchie
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'passwordreset-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'passwordreset-desc' => '{{desc}}',
 	'passwordreset-nopassmatch' => '{{Identical|Passwords do not match}}',
 	'passwordreset-badtoken' => '{{Identical|Invalid edit token}}',
 	'passwordreset-username' => '{{Identical|Username}}',

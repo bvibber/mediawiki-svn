@@ -186,6 +186,7 @@ Puede <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downloa
 
 /** Arabic (العربية)
  * @author Alnokta
+ * @author Majid Al-Dharrab
  * @author Meno25
  * @author OsamaK
  */
@@ -199,11 +200,11 @@ $messages['ar'] = array(
 	'ogg-long-multiplexed' => '(ملف Ogg مالتي بليكسد أوديو/فيديو، $1، الطول $2، $4×$5 بكسل، $3 إجمالي)',
 	'ogg-long-general' => '(ملف ميديا Ogg، الطول $2، $3)',
 	'ogg-long-error' => '(ملف Ogg غير صحيح: $1)',
-	'ogg-play' => 'عرض',
-	'ogg-pause' => 'إيقاف مؤقت',
-	'ogg-stop' => 'إيقاف',
-	'ogg-play-video' => 'عرض الفيديو',
-	'ogg-play-sound' => 'عرض الصوت',
+	'ogg-play' => 'شغّل',
+	'ogg-pause' => 'ألبث',
+	'ogg-stop' => 'أوقف',
+	'ogg-play-video' => 'شغّل الفيديو',
+	'ogg-play-sound' => 'شغّل الصوت',
 	'ogg-no-player' => 'معذرة ولكن يبدو أنه لا يوجد لديك برنامج عرض مدعوم. من فضلك ثبت <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">الجافا</a>.',
 	'ogg-no-xiphqt' => 'لا يبدو أنك تملك مكون XiphQT لكويك تايم.
 كويك تايم لا يمكنه عرض ملفات Ogg بدون هذا المكون.
@@ -219,13 +220,13 @@ $messages['ar'] = array(
 	'ogg-player-kmplayer' => 'كيه إم بلاير',
 	'ogg-player-kaffeine' => 'كافيين',
 	'ogg-player-mplayerplug-in' => 'إضافة إم بلاير',
-	'ogg-player-thumbnail' => 'مازال صورة فقط',
-	'ogg-player-soundthumb' => 'لا برنامج',
+	'ogg-player-thumbnail' => 'ما زال صورة فقط',
+	'ogg-player-soundthumb' => 'لا يوجد مشغل',
 	'ogg-player-selected' => '(مختار)',
 	'ogg-use-player' => 'استخدم البرنامج:',
 	'ogg-more' => 'المزيد...',
 	'ogg-dismiss' => 'إغلاق',
-	'ogg-download' => 'نزل الملف',
+	'ogg-download' => 'نزّل الملف',
 	'ogg-desc-link' => 'عن هذا الملف',
 );
 
@@ -1021,7 +1022,7 @@ $messages['fa'] = array(
 	'ogg-dismiss' => 'بستن',
 	'ogg-download' => 'بارگیری پرونده',
 	'ogg-desc-link' => 'دربارهٔ این پرونده',
-	'ogg-oggThumb-version' => 'OggHandler لازم دارد oggThumb نسخه $1 یا بعد از آن.',
+	'ogg-oggThumb-version' => 'OggHandler به oggThumb نسخهٔ $1 یا بعدتر از آن نیاز دارد.',
 	'ogg-oggThumb-failed' => 'oggThumb موفق به ایجاد بندانگشتی نشد.',
 );
 
@@ -2237,6 +2238,13 @@ $messages['ms'] = array(
 	'ogg-desc-link' => 'Perihal fail ini',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'ogg-dismiss' => 'Agħlaq',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */
@@ -2894,7 +2902,8 @@ $messages['sl'] = array(
 	'ogg-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
 	'ogg-long-audio' => '(zvočna datoteka ogg $1, dolžine $2, $3)',
 	'ogg-long-video' => '(videodatoteka ogg $1, dolžine $2, $4 × $5 pik, $3)',
-	'ogg-long-general' => '(Predstavnostna datoteka ogg, dolžina $2, $3)',
+	'ogg-long-multiplexed' => '(multipleksna zvočna/videodatoteka ogg, $1, dolžina $2, $4 × $5 pik, $3 skupno)',
+	'ogg-long-general' => '(predstavnostna datoteka ogg, dolžina $2, $3)',
 	'ogg-long-error' => '(Neveljavna datoteka ogg: $1)',
 	'ogg-play' => 'Predvajaj',
 	'ogg-pause' => 'Pavza',

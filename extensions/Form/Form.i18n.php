@@ -56,9 +56,10 @@ Please fill {{PLURAL:$2|it|them}} in.',
  * @author Jon Harald Søby
  * @author Purodha
  * @author Raymond
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'form-desc' => 'Short description of the Form extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'form-desc' => '{{desc}}',
 	'formpattern' => 'The pattern of page names of form definitions. $1 is a given name for a form definition.',
 	'formsave' => '{{Identical|Save}}',
 	'formrequiredfielderror' => '* $1 is a comma separated list of missing fields

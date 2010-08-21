@@ -14470,6 +14470,7 @@ $messages['zh-cn'] = array(
  * @author Jimmy xu wrk
  * @author Liangent
  * @author PhiLiP
+ * @author Wilsonmess
  * @author Wmr89502270
  * @author Yfdyh000
  */
@@ -14591,7 +14592,7 @@ $messages['zh-hans'] = array(
 	'ow_Language' => '语言',
 	'ow_LevelAnnotation' => '注解',
 	'ow_LinkAttributeHeader' => '链接属性',
-	'ow_Multiple_meanings' => '多个含义：',
+	'ow_Multiple_meanings' => '$1 的定义：',
 	'ow_NewExactMeaning' => '新的精确含义',
 	'ow_OptionAttribute' => '属性',
 	'ow_OptionAttributeHeader' => '选项属性',

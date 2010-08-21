@@ -15,12 +15,13 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'contributionseditcount' => 'Parameters:
 * $1 is a number of edits, can be used with PLURAL
 * $2 is a user name to be used with GENDER',
-	'contributionseditcount-desc' => 'Short description of the Contributionseditcount extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'contributionseditcount-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

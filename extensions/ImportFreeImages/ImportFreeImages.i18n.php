@@ -32,9 +32,10 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'importfreeimages-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'importfreeimages-desc' => '{{desc}}',
 	'importfreeimages_owner' => '{{Identical|Author}}',
 	'importfreeimages_next' => '{{Identical|Next $1}}',
 	'importfreeimages_size_small' => '{{Identical|Small}}',

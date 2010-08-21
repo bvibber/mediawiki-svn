@@ -26,10 +26,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Siebrand
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'lastuserlogin-desc' => '{{desc}}',
+	'lastuserlogin_username' => '{{Identical|Real name}}',
 	'lastuserlogin_daysago' => 'This message is used as a column header in a table.',
 	'right-lastlogin' => '{{doc-right}}',
 );
@@ -137,12 +139,13 @@ $messages['ce'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'lastuserlogin' => 'Letzte Anmeldungen',
 	'lastuserlogin-desc' => 'Zeigt an, wann sich ein Benutzer letztmalig angemeldet hat',
 	'lastuserlogin_userid' => 'Benutzername',
-	'lastuserlogin_username' => 'Echter Name',
+	'lastuserlogin_username' => 'Bürgerlicher Name',
 	'lastuserlogin_useremail' => 'E-Mail-Adresse',
 	'lastuserlogin_lastlogin' => 'Letzte Anmeldung',
 	'lastuserlogin_daysago' => 'Tage',

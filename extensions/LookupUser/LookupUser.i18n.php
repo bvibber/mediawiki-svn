@@ -34,9 +34,10 @@ $messages['en'] = array(
  * @author Bennylin
  * @author Fryed-peach
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'lookupuser-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'lookupuser-desc' => '{{desc}}',
 	'lookupuser-id' => '{{Identical|User ID}}',
 	'lookupuser-no-email' => '{{Identical|Notprovided}}',
 	'right-lookupuser' => '{{doc-right}}',

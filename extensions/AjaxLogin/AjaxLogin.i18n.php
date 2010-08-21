@@ -319,6 +319,18 @@ Orrialde honetan egindako aldaketak gal ditzakezu orrialde honetatik orain alde 
  Egiaztatu ondo idatzi duzun.',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Sahim
+ */
+$messages['fa'] = array(
+	'ajaxlogin-desc' => 'جعبهٔ پویا که اجازه می‌دهد تا کاربران از این طریق به سامانه وارد شوند و حتی برای یادآوری رمز عبور نیز کمک می‌کند',
+	'ajaxLogin2' => 'آیا مطمئن هستید؟
+
+اگر هم‌اکنون شما این صفحه را ترک کنید، ممکن است تغییرات کنونی را از دست بدهید.',
+	'ajaxlogin-create' => 'یک حساب کاربری بسازید',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Jack Phoenix <jack@countervandalism.net>

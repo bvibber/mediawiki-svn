@@ -14,9 +14,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'randomimage-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'randomimage-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

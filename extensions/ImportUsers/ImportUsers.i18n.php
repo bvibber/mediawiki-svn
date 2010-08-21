@@ -38,9 +38,10 @@ Skipped.',
  * @author Jon Harald Søby
  * @author Kaustubh
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'importusers-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'importusers-desc' => '{{desc}}',
 	'importusers-uploadfile' => '{{Identical|Upload file}}',
 	'importusers-form-button' => '{{Identical|Import}}',
 	'importusers-log' => '',
@@ -243,18 +244,18 @@ $messages['br'] = array(
 	'importusers' => 'Enporzhiañ implijerien',
 	'importusers-desc' => '[[Special:ImportUsers|Enporzhiañ a ran implijerien]] dre vern adalek ur restr CVS ; enkoderezh : UTF-8.',
 	'importusers-uploadfile' => 'Kargañ ar restr',
-	'importusers-form-caption' => 'Lakait ur restr CSV (UTF-8)',
+	'importusers-form-caption' => 'Merkañ ur restr CSV (UTF-8)',
 	'importusers-form-file' => 'Furmad ar restr implijer (CSV) :',
-	'importusers-form-replace-present' => "Erlec'hiañ an implijerien a zo diouto",
+	'importusers-form-replace-present' => "Erlec'hiañ an implijerien zo anezho",
 	'importusers-form-button' => 'Enporzhiañ',
 	'importusers-user-added' => "Ouzhpennet eo bet an implijer '''$1'''.",
 	'importusers-user-present-update' => "An implijer '''$1''' zo anezhañ dija.
 Hizivaet eo bet.",
-	'importusers-user-present-not-update' => "Bez ez eus dija eus an implijer '''$1'''.
+	'importusers-user-present-not-update' => "An implijer '''$1''' zo anezhañ dija.
 N'eo ket bet hizivaet.",
-	'importusers-user-invalid-format' => "N'eo ket mat er furmad mat (pe n'eus ket) ar roadennoù implijer el linenn #$1.
-Disoñjet",
-	'importusers-log' => 'Marilh enporzhiadur an implijerien',
+	'importusers-user-invalid-format' => "Pe eo direizh furmad ar roadennoù implijer el linenn #$1 pe n'eus ket anezho.
+Na ober netra.",
+	'importusers-log' => 'Marilh enporzhiadurioù an implijerien',
 	'importusers-log-summary' => 'Diverradur',
 	'importusers-log-summary-all' => 'An holl',
 	'importusers-log-summary-added' => 'Ouzhpennet',
@@ -263,7 +264,7 @@ Disoñjet",
 	'importusers-password' => 'ger-tremen',
 	'importusers-email' => 'postel',
 	'importusers-realname' => 'gwir anv',
-	'right-import_users' => 'Enporzhiañ implijerien dre vern',
+	'right-import_users' => 'Enporzhiañ implijerien a-vern',
 );
 
 /** Bosnian (Bosanski)

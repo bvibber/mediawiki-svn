@@ -137,9 +137,10 @@ You would not able to log in without an OpenID.',
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'openid-desc' => 'Short description of the Openid extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'openid-desc' => '{{desc}}',
 	'openidtrustinstructions' => '* $1 is a trust root. A trust root looks much like a normal URL, but is used to describe a set of URLs. Trust roots are used by OpenID to verify that a user has approved the OpenID enabled website.',
 	'openidoptional' => '{{Identical|Optional}}',
 	'openidrequired' => '{{Identical|Required}}',

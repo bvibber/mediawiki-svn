@@ -18,10 +18,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Raymond
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'minify-desc' => 'Short description of the extension. Shown in [[Special:Version]].
-Do not translate "<code>action=raw</code>".',
+	'minify-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

@@ -375,6 +375,13 @@ $messages['sk'] = array(
 	'formatsearch-desc' => 'Vyčistí stránku s výsledkami vyhľadávania',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'formatsearch-desc' => 'Počisti stran z rezultati iskanja',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

@@ -20,9 +20,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'msfunc_desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'msfunc_desc' => '{{desc}}',
 	'msfunc_div_zero' => '{{Identical|Divizion by zero}}',
 );
 

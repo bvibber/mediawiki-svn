@@ -25,10 +25,11 @@ $messages['en'] = array(
  * @author Fryed-peach
  * @author Masterches
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'templatelink' => '{{desc}}',
-	'templatelink_desc' => 'Short description of the TemplateLink extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'templatelink_desc' => '{{desc}}',
 	'templatelink_newtitle' => 'A page is transcluded when it is inserted by reference in an other one (a part of the source page will be referenced in the present document and so be included)',
 );
 
@@ -206,6 +207,16 @@ $messages['fr'] = array(
 	'templatelink_desc' => 'Cette extention peut afficher un modèle comme une nouvelle page',
 	'templatelink_empty' => 'Vous devez saisir un paramètre.',
 	'templatelink_newtitle' => '$1 (tranclus)',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'templatelink' => 'Lim de vers modèlo',
+	'templatelink_desc' => 'Ceta èxtension pôt fâre vêre un modèlo coment una pâge novèla.',
+	'templatelink_empty' => 'Vos dête buchiér un paramètre.',
+	'templatelink_newtitle' => '$1 (transcllu)',
 );
 
 /** Galician (Galego)

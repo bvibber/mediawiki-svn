@@ -39,10 +39,11 @@ Inappropriate files will be deleted immediately, see the [[{{MediaWiki:Multipleu
  * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'multipleupload' => '',
-	'multiupload-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'multiupload-desc' => '{{desc}}',
 	'multipleupload-addresswarnings' => "'Address' here means 'deal with' or 'fix'.",
 	'multipleupload-text' => 'Plural is supported for $1.',
 	'multiupload-toolbox' => '{{Identical|Uploadmultiple}}',

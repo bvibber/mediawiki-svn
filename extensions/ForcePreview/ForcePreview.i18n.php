@@ -20,9 +20,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Meno25
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'forcepreview-desc' => 'Short description of the Forcepreview extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'forcepreview-desc' => '{{desc}}',
 	'right-forcepreviewexempt' => '{{doc-right}}',
 );
 

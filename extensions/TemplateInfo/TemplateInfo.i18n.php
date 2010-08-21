@@ -20,10 +20,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author The Evil IP address
  * @author Yaron Koren 
  */
 $messages['qqq'] = array(
-	'templateinfo-desc' => 'Short description of the Template Info extension, shown on [[Special:Version]].',
+	'templateinfo-desc' => '{{desc}}',
 	'templateinfo-header' => 'Header to display XML definition in template page',
 );
 
@@ -123,6 +124,14 @@ $messages['fi'] = array(
 $messages['fr'] = array(
 	'templateinfo-desc' => 'Supporte les modèle en définissant leur structure de données via des balises XML',
 	'templateinfo-header' => 'La définition XML pour ce modèle est :',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'templateinfo-desc' => 'Recognêt los modèlos en dèfenéssent lor structura de balyês avouéc des balises XML.',
+	'templateinfo-header' => 'La dèfinicion XML por ceti modèlo est :',
 );
 
 /** Galician (Galego)

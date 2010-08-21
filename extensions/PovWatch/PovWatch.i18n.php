@@ -52,9 +52,10 @@ Click the button below to subscribe.',
  * @author Jon Harald Søby
  * @author Meno25
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'povwatch_desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'povwatch_desc' => '{{desc}}',
 	'povwatch_title' => '{{Identical|Title}}',
 	'povwatch_comment' => '',
 	'povwatch_unsubscribe' => '{{Identical|Unsubscribe}}',

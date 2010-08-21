@@ -1176,11 +1176,12 @@ Bạn có muốn sửa đổi trang hiện có?',
 );
 
 /** Volapük (Volapük)
+ * @author Malafaya
  * @author Smeira
  */
 $messages['vo'] = array(
 	'createpage' => 'Jafön padi',
-	'uwcreatepage-desc' => 'Läükön [[Special:CreatePage|padi patik]] ad jafön padis nulik',
+	'uwcreatepage-desc' => 'Läükon [[Special:CreatePage|padi patik]] ad jafön padis nulik',
 	'createpage_submitbutton' => 'Sedön',
 	'createpage_instructions' => 'Penolös tiädi pada, keli vilol jafön:',
 	'createpage_entertitle' => 'Penolös tiädi pro pad olik.',

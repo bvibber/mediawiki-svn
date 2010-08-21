@@ -21,9 +21,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Lloffiwr
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'ajaxshoweditors-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'ajaxshoweditors-desc' => '{{desc}}',
 	'ajax-se-pending' => "If you 'click this box' it will update and show you which users are editing the same page as you. It will also update if you change the contents of the edit field.",
 );
 

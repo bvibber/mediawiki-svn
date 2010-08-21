@@ -19,10 +19,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'purge' => '{{Identical|Purge}}',
-	'purge-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'purge-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

@@ -820,3 +820,11 @@ Xem thêm [[Special:MostRevisors|'''trang có số người chỉnh sửa nhiề
 	'cooperationstatistics-legendmore' => 'biên tập viên trở lên.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'cooperationstatistics-tablearticle' => '页面数',
+	'cooperationstatistics-tablevalue' => '编辑者数',
+);
+

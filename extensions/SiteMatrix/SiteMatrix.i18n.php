@@ -25,10 +25,11 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Meno25
  * @author Sanbec
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'sitematrix-summary' => 'Text for the Wikimedia sites special page "Special:SiteMatrix"',
-	'sitematrix-desc' => 'Short description of the SiteMatrix extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'sitematrix-desc' => '{{desc}}',
 	'sitematrix-language' => '{{Identical|Language}}',
 	'sitematrix-sitetotal' => '{{Identical|Total}}',
 );

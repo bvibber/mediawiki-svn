@@ -2555,6 +2555,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'specialuserstats' => '使用分析',
@@ -2564,8 +2565,8 @@ $messages['zh-hans'] = array(
 	'usagestatisticsforallusers' => '<h2>所有用户的使用分析</h2>',
 	'usagestatisticsinterval' => '区间',
 	'usagestatisticstype' => '类型',
-	'usagestatisticsstart' => '开始日期',
-	'usagestatisticsend' => '结束日期',
+	'usagestatisticsstart' => '起始日期：',
+	'usagestatisticsend' => '终止日期：',
 	'usagestatisticssubmit' => '生成统计',
 	'usagestatisticsnostart' => '请选择开始日期',
 	'usagestatisticsnoend' => '请选择结束日期',

@@ -71,10 +71,10 @@ $1",
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'webstore-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].',
+	'webstore-desc' => '{{desc}}',
 	'webstore_404' => '{{Identical|File not found}}',
 );
 

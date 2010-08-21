@@ -59,9 +59,10 @@ $messages['en'] = array(
  * @author EugeneZelenko
  * @author Fryed-peach
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'slippymap_desc' => 'Short description of the Slippymap extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'slippymap_desc' => '{{desc}}',
 	'slippymap_extname' => '{{Optional}}',
 	'slippymap_tagname' => '{{Optional}}',
 	'slippymap_error' => '* $1 is the name of the extension

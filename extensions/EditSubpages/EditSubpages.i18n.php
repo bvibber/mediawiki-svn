@@ -27,9 +27,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'editsubpages-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'editsubpages-desc' => '{{desc}}',
 	'unlockedpages' => "Leave all the wiki markup, including the spaces, as is. You can translate the text, including 'Leave this line exactly as it is'. The first line of this messages has one (1) leading space.",
 );
 

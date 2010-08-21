@@ -31,9 +31,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'imagemap_desc' => 'Short description of the Imagemap extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'imagemap_desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

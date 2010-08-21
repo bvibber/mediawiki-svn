@@ -63,6 +63,13 @@ $messages['bg'] = array(
 	'woopra-desc' => 'Позволява работата на [http://www.woopra.com/ Woopra Live Tracking Software] в МедияУики',
 );
 
+/** Bengali (বাংলা)
+ * @author Prometheus.pyrphoros
+ */
+$messages['bn'] = array(
+	'woopra-desc' => "&darr; [http://www.woopra.com/ ''উপরা লাইভ ট্র্যাকিং সফটয়ারকে''] আপনার মিডিয়াউইকি ইনস্টলেশনের জন্য কাজ করতে সাহায্য করে",
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

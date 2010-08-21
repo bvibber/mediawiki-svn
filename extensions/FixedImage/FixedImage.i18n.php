@@ -14,9 +14,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'fixedimage-desc' => 'Short description of the FixedImage extension, shown on [[Special:Version]].',
+	'fixedimage-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

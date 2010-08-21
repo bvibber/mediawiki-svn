@@ -464,6 +464,10 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'ratedpages' => 'Door laezers bekeke paazjes',
+	'ratedpages-leg' => 'Tuun paazjes die väöl beoeardeildj zeen',
+	'ratedpages-list' => 'Hie staon pazjeas op waardeerscore',
+	'ratedpages-none' => 'Gein paazjes in dees lies',
 	'ratedpages-graphs' => 'waarderingsgegaeves',
 	'ratedpages-count' => '$1 {{PLURAL:$1|waardering|waarderinge}}',
 );
@@ -682,6 +686,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'ratedpages' => 'Strani, ki so jih ocenili bralci',
 	'ratedpages-none' => 'Na tem seznamu ni strani.',
 	'ratedpages-graphs' => 'podatki ocenjevanja',
 	'ratedpages-count' => '$1 {{PLURAL:$1|pregled|pregleda|pregledi|pregledov}}',
@@ -720,9 +725,12 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
 	'ratedpages' => 'வாசகர் மதிப்பீடு செய்த பக்கங்கள்',
+	'ratedpages-leg' => 'எண்ணிக்கையில் அதிகமான மதிப்பீடுகள் உள்ள மதிப்பீடு செய்யப்பட்ட பக்கங்களைக் கண்டுபிடிக்கவும்',
+	'ratedpages-list' => 'வாசகர்களின் கருத்து மதிப்பீட்டின்படி வரிசைபடுத்தப்பட்ட பட்டியல் கீழே கொடுக்கப்பட்டுள்ளது.',
 	'ratedpages-none' => 'இந்த பட்டியலில் ஒரு பக்கமும் இல்லை',
 	'ratedpages-graphs' => 'அளவீடு தரவு',
 	'ratedpages-count' => '$1 {{PLURAL:$1|review|மீளாய்வு}}',

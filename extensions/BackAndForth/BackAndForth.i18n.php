@@ -21,12 +21,13 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author SPQRobin
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'backforth-next' => 'Part of the "Back-And-Forth" extension. A link to the next page shown on the top of every page. The opposite is {{msg|backforth-prev}}.
 
 {{Identical|Next}}',
-	'backandforth-desc' => 'Short description of the Backforth extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'backandforth-desc' => '{{desc}}',
 	'backforth-prev' => 'Part of the "Back-And-Forth" extension. A link to the previous page shown on the top of every page. The opposite is {{msg|backforth-next}}.
 
 {{Identical|Previous}}',
@@ -884,10 +885,12 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'backforth-next' => 'அடுத்த ($1)',
+	'backandforth-desc' => 'பக்கங்களின் மேல்பகுதியில் "அடுத்த" மற்றும் "முந்தய" எழுத்துக்களின் பக்க இணைப்புக்களை சேர்க்கும்.',
 	'backforth-prev' => 'முந்தைய ($1)',
 );
 

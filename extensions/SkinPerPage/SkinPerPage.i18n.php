@@ -14,9 +14,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'skinperpage-desc' => 'Short description of the Skinperpage extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'skinperpage-desc' => '{{desc}}',
 );
 
 /** Gheg Albanian (Gegë)

@@ -16,9 +16,10 @@ Can be used like [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:tal
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'advancedrandom-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'advancedrandom-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

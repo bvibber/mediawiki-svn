@@ -136,9 +136,10 @@ Newer version $2 is available at http://pecl.php.net/package/APC/$2',
  * @author Nike
  * @author Purodha
  * @author Sp5uhe
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'apc-desc' => 'Short description of the APC extension, it is shown in [[Special:Version]]. Do not translate or change link targets.',
+	'apc-desc' => '{{desc}}',
 	'right-apc' => '{{doc-right}}',
 	'viewapc-shared-memory-details' => '*$1 is the number of segments
 *$2 is a size of segments in Xbytes
@@ -4543,8 +4544,8 @@ Sembla que APC fonciona pas.",
 	'viewapc-version-ok' => 'Utilizatz la darrièra version de APC ($1)',
 	'viewapc-version-old' => 'Utilizatz una version anciana de APC ($1).
 Una version novèla $2 es disponibla a http://pecl.php.net/package/APC/$2',
-	'viewapc-filecache-cleared' => "'''''Amagatal dels fichièrs suprimit.'''''",
-	'viewapc-usercache-cleared' => "'''''Amagatal de l'aplicacion suprimit.'''''",
+	'viewapc-filecache-cleared' => "'''''Escondedor dels fichièrs suprimit.'''''",
+	'viewapc-usercache-cleared' => "'''''Escondedor de l'aplicacion suprimit.'''''",
 );
 
 /** Ossetic (Иронау)

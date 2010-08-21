@@ -10,9 +10,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'breadcrumbs-desc' => 'Short description of the Breadcrumbs extension, shown in [[Special:Version]]. Do not translate or change links',
+	'breadcrumbs-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

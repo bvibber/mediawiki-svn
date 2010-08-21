@@ -832,9 +832,12 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'layouts_title' => 'Ustvari stran',
+	'layouts_chooselayout' => 'Izberite postavitev za $1:',
+	'layouts_nolayout' => 'Ni postavitve',
 	'layouts_continue' => 'Nadaljuj',
 	'layouts_choosecategory' => 'Izberite kategorijo za $1:',
 	'layouts_unknown' => 'Neznano',
+	'layouts_tagline' => "Ta stran je bila ustvarjena s postavitvijo '''$1'''.",
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -885,14 +888,17 @@ $messages['sv'] = array(
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
+	'layouts-desc' => "தொகுக்கக்கூடிய ''பக்கவடிமைப்பை'' புதிய பக்கங்கள் உருவாக்கும் போது ஒரு பொதுவான அமைப்பு கொண்ட பக்கங்களை உருவாக்க எல்லோருக்கும் தெரிவித்து ஊக்கப்படுத்துங்கள்",
 	'layouts_title' => 'ஒரு பக்கத்தை உருவாக்குக',
 	'layouts_chooselayout' => '$1 க்கான ஒரு இடைமுகப்பை தேர்ந்தெடுக்கவும்',
 	'layouts_nolayout' => 'இடைமுகப்பு இல்லை',
 	'layouts_continue' => 'தொடரவும்',
 	'layouts_choosecategory' => '$1 க்கான ஒரு பகுப்பை தேர்ந்தெடுக்கவும்',
 	'layouts_unknown' => 'தெரியாது',
+	'layouts_tagline' => "இப்பக்கம் '''$1''' வடிவமைப்பின் மூலம் உருவாக்கப்பட்டுள்ளது.",
 );
 
 /** Telugu (తెలుగు)
@@ -1003,9 +1009,11 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
  * @author Liangent
+ * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'layouts_title' => '建立一个页面',
+	'layouts_chooselayout' => '为$1选择一个样式：',
 	'layouts_nolayout' => '没有布局',
 	'layouts_continue' => '继续',
 	'layouts_choosecategory' => '为$1选择一个分类：',

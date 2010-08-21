@@ -205,6 +205,13 @@ $messages['he'] = array(
 	'wikieditor-addMediaWizard-preference' => 'הפעלת הסקריפט "אשף הוספת מדיה"',
 );
 
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Omogući "Dodaj medija čarobnjaka" pomagalo',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -282,6 +289,13 @@ $messages['lb'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Den "Assistent fir Medien derbäizesetzen" aschalten',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Zèt de mediatoevogingswizard aan',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -294,6 +308,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-addMediaWizard-preference' => '"മീഡിയ ഉൾപ്പെടുത്തൽ സഹായി" ഗാഡ്ജറ്റ് സജ്ജമാക്കുക',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'wikieditor-addMediaWizard-preference' => '"मीडिया सहाय्यक समावेश" सुविधा(गॅजेट) सक्षम करा',
 );
 
 /** Malay (Bahasa Melayu)

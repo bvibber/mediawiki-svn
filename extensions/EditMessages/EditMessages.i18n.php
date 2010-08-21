@@ -30,9 +30,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'editmessages-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'editmessages-desc' => '{{desc}}',
 	'editmsg-search' => '{{Identical|Search}}',
 );
 

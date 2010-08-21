@@ -60,9 +60,13 @@ $messages['af'] = array(
 	'mwe-clipedit-layout' => 'Uitleg',
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Majid Al-Dharrab
+ */
 $messages['ar'] = array(
 	'mwe-clipedit-crop' => 'اقتص الصورة',
+	'mwe-clipedit-apply_crop' => 'طبّق الاقتصاص على الصورة',
+	'mwe-clipedit-reset_crop' => 'صفّر الاقتصاص',
 	'mwe-clipedit-cancel_image_insert' => 'ألغِ الإدراج',
 	'mwe-clipedit-sc_audio' => 'تحكم الصوت',
 	'mwe-clipedit-sc_duration' => 'المدة',
@@ -72,6 +76,12 @@ $messages['ar'] = array(
 	'mwe-clipedit-other_properties' => 'خصائص أخرى',
 	'mwe-clipedit-start_time' => 'وقت البداية',
 	'mwe-clipedit-end_time' => 'وقت النهاية',
+	'mwe-clipedit-edit-tools' => 'أدوات التحرير',
+	'mwe-clipedit-edit-video-tools' => 'أدوات تحرير الفيديو:',
+	'mwe-clipedit-duration' => 'المدة:',
+	'mwe-clipedit-layout' => 'التخطيط',
+	'mwe-clipedit-layout_right' => 'تخطيط صورة على الجانب الأيمن',
+	'mwe-clipedit-layout_left' => 'تخطيط صورة على الجانب الأيسر',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

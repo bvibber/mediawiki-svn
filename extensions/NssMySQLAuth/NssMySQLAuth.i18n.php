@@ -33,14 +33,13 @@ $messages['en'] = array(
  * @author Bennylin
  * @author EugeneZelenko
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'am-username' => '{{Identical|Username}}',
 	'am-email' => '{{Identical|E-mail}}',
 	'am-active' => '{{Identical|Active}}',
-	'nss-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+	'nss-desc' => '{{desc}}',
 	'nss-save-changes' => '{{Identical|Save changes}}',
 	'nss-create-account-header' => '{{Identical|Create account}}',
 	'nss-create-account' => '{{Identical|Create account}}',

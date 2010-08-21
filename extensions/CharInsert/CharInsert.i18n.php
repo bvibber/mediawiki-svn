@@ -11,9 +11,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Meno25
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'charinsert-desc' => 'Short description of the CharInsert extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'charinsert-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

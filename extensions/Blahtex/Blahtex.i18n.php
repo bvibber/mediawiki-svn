@@ -79,9 +79,10 @@ Try using the "$3{...}" command.',
 /** Message documentation (Message documentation)
  * @author Malafaya
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'blahtext-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'blahtext-desc' => '{{desc}}',
 	'math_NotEnoughArguments' => 'Parameter $1 can be something like: <tt>\\sqrt</tt>, <tt>\\newcommand</tt> or some other token.',
 );
 

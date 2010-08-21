@@ -14,9 +14,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'opensearchxml-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'opensearchxml-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

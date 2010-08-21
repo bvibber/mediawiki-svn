@@ -50,9 +50,11 @@ $messages['bpy'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Gwendal
  */
 $messages['br'] = array(
+	'dontswitchmeover-desc' => "Penndibab a dalvez d'an implijerien da zivizout hag-eñ e fell dezho mirout an tres dibabet ganto p'eo bet cheñchet an tres dre ziouer.",
 	'dontswitchmeover-pref' => 'Chom hep aotren cheñchamant ma zres pa cheñch an tres dre ziouer',
 );
 
@@ -112,10 +114,11 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Wayiran
  */
 $messages['fa'] = array(
-	'dontswitchmeover-desc' => ' برای کاربران به صورت سلیقه‌ای مشخص می‌شود که آیا آنها می خواهند برای حفظ تنظیمات پوسته نمایشگر خود در ویکی هنگامی که پوسته به طور پیش فرض تغییر یافته است تغییر کند.',
+	'dontswitchmeover-desc' => 'برای کاربران به صورت سلیقه‌ای مشخص می‌شود که آیا آن‌ها می‌خواهند برای حفظ تنظیمات پوسته نمایشگر خود در ویکی هنگامی که پوسته به طور پیش فرض تغییر یافته‌است تغییر کند.',
 	'dontswitchmeover-pref' => 'اجازه نده پوستهٔ من با تغییر پوستهٔ پیش‌فرض تغییر کند',
 );
 
@@ -229,6 +232,13 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'dontswitchmeover-desc' => 'സ്വതേയുള്ള ദൃശ്യരൂപം മാറുമ്പോൾ തങ്ങൾ ക്രമീകരിച്ചിട്ടുള്ള ദൃശ്യരൂപം കാത്തുസൂക്ഷിക്കണോയെന്ന് ഉപയോക്താക്കൾക്ക് വ്യക്തമാക്കാനുള്ള ക്രമീകരണം.',
 	'dontswitchmeover-pref' => 'സ്വതേയുള്ള ദൃശ്യരൂപത്തിൽ മാറ്റം വരുമ്പോൾ ഞാൻ തിരഞ്ഞെടുത്തിട്ടുള്ള ദൃശ്യരൂപം മാറ്റരുത്',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'dontswitchmeover-pref' => 'अविचल(डिफॉल्ट) त्वचा बदलेल तेव्हा माझी बदलती ठेऊ नका',
 );
 
 /** Dutch (Nederlands)

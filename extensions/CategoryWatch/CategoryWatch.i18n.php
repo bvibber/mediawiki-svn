@@ -25,9 +25,10 @@ $messages['en'] = array(
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'categorywatch-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'categorywatch-desc' => '{{desc}}',
 	'categorywatch-catmovein' => 'Substituted as $5 in {{msg-mw|categorywatch-emailbody}}.
 * $1 is a page name
 * $2 is the target category name
@@ -160,6 +161,19 @@ $messages['cy'] = array(
 	'categorywatch-catadd' => "wedi ychwanegu $1 i'r categori $2",
 	'categorywatch-catsub' => "wedi tynnu $1 o'r categori $2",
 	'categorywatch-autocat' => "Yn cael ei wylio'n awtomatig gan $1",
+);
+
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'categorywatch-desc' => 'Udvider overvågningslistens funktionalitet til også at omfatte underretning om ændringer af overvågede kategoriers artikelmedlemsstatus',
+	'categorywatch-emailsubject' => 'Aktivitet, der indebærer den overvågede kategori "$ 1"',
+	'categorywatch-catmovein' => '$1 er flyttet til $2 fra $3',
+	'categorywatch-catmoveout' => '$1 er blevet flyttet fra $2 til $3',
+	'categorywatch-catadd' => '$1 er blevet tilføjet til $2',
+	'categorywatch-catsub' => '$1 er blevet fjernet fra $2',
+	'categorywatch-autocat' => 'Automatisk overvåget af $1',
 );
 
 /** German (Deutsch)

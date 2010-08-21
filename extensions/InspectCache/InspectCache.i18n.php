@@ -26,10 +26,11 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'inspectcache-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'inspectcache-desc' => '{{desc}}',
 	'inspectcache-delete' => '{{Identical|Delete}}',
 	'inspectcache-list' => 'Text on button to have the keys listing shown.
 {{Identical|List}}',
@@ -756,12 +757,12 @@ $messages['nso'] = array(
 $messages['oc'] = array(
 	'inspectcache' => "Inspeccion de l'Amagatal",
 	'inspectcache-desc' => "Un esplech simple de debogatge per inspectar los elements dins l'amagatal partejat.",
-	'inspectcache-general' => 'Amagatal general',
-	'inspectcache-parser' => 'Amagatal dels parsers',
-	'inspectcache-message' => 'Amagatal dels messatges',
+	'inspectcache-general' => 'Escondedor general',
+	'inspectcache-parser' => 'Escondedor dels parsers',
+	'inspectcache-message' => 'Escondedor dels messatges',
 	'inspectcache-get' => 'Obténer',
 	'inspectcache-delete' => 'Suprimir',
-	'inspectcache-deleted' => 'Amagatal suprimit',
+	'inspectcache-deleted' => 'Escondedor suprimit',
 	'inspectcache-list' => 'Lista',
 	'right-inspectcache' => "Afichar e suprimir las entradas de l'amagatal",
 );

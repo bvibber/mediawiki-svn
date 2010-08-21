@@ -52,9 +52,10 @@ Please wait for the existing action to complete.',
  * @author M.M.S.
  * @author Purodha
  * @author Tgr
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'imagetagging-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'imagetagging-desc' => '{{desc}}',
 	'imagetagging-article' => '{{Identical|Page}}',
 	'imagetagging-imghistory' => '{{Identical|History}}',
 	'imagetagging-images' => '{{Identical|Image}}',

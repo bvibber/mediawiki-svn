@@ -851,9 +851,11 @@ $messages['tr'] = array(
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
  * @author Rinatus
+ * @author Ильнар
  */
 $messages['tt-cyrl'] = array(
 	'vector-simplesearch-search' => 'Эзләү',
+	'vector-simplesearch-containing' => 'эчтәлек...',
 );
 
 /** Ukrainian (Українська)

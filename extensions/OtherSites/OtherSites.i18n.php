@@ -18,9 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'othersites-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'othersites-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

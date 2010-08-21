@@ -204,6 +204,18 @@ $messages['fr'] = array(
 	'tablemod-error-missingid' => 'Attribut ident manquant dans la balise.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Manipulacion de les vouiqui-trâbles.',
+	'tablemod-msg-remove' => 'Enlevar',
+	'tablemod-error-invalidsort' => 'Paramètres de tri envalidos.',
+	'tablemod-error-invalidaction' => 'Accion envalida.',
+	'tablemod-error-missingid' => 'Atribut ident manquent dens la balisa.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

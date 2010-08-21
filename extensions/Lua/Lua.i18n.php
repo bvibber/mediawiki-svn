@@ -24,9 +24,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author McDutchie
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'lua_desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'lua_desc' => '{{desc}}',
 	'lua_error_internal' => '{{Identical|Internal error}}',
 );
 

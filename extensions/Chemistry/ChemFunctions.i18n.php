@@ -40,13 +40,13 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'chemicalsources' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.
-
+	'chemicalsources' => '{{desc}}
 {{Identical|Chemical sources}}',
-	'chemicalsource-desc' => 'Short description of the Chemicalsource extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'chemicalsource-desc' => '{{desc}}',
 	'chemicalsources-desc' => '{{desc}}',
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',
 );

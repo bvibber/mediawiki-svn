@@ -18,9 +18,10 @@ Please wait a moment and hit \"reload\" in your browser to resubmit.",
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'userthrottle-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'userthrottle-desc' => '{{desc}}',
 );
 
 /** Gheg Albanian (Gegë)

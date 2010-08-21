@@ -244,6 +244,13 @@ $messages['he'] = array(
 	'wikieditor-highlight-preference' => 'הפעלת הדגשת תחביר בעת העריכה',
 );
 
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'wikieditor-highlight-preference' => 'Omogućiti isticanje sintakse kod uređivanja',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -321,6 +328,13 @@ $messages['lb'] = array(
 	'wikieditor-highlight-preference' => 'Dat faarwlecht Eraushiewe vun der Syntax an der Ännerungsfënster aschalten',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikieditor-highlight-preference' => "Zèt codemarkering aan tiedes 't bewèrke",
+);
+
 /** Lithuanian (Lietuvių)
  * @author Garas
  */
@@ -347,6 +361,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-highlight-preference' => 'തിരുത്തുമ്പോൾ വിന്യാസങ്ങൾ പ്രമുഖമാക്കിക്കാട്ടൽ സജ്ജമാക്കുക',
+);
+
+/** Marathi (मराठी)
+ * @author Mahitgar
+ */
+$messages['mr'] = array(
+	'wikieditor-highlight-preference' => 'संपादनकरताना आज्ञावली-विन्यासाचा दृष्टीवेध सक्षम करा',
 );
 
 /** Malay (Bahasa Melayu)

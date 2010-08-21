@@ -884,6 +884,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Goran Maric
  * @author Imre
+ * @author Kghbln
  * @author MF-Warburg
  * @author Metalhead64
  * @author Omnipaedista
@@ -902,7 +903,7 @@ $messages['de'] = array(
 	'contrib-hist-previous' => 'Neuere Spenden',
 	'contrib-hist-anonymous' => 'Anonym',
 	'contributionstatistics' => 'Spendenstatistik',
-	'contribstats-desc' => 'Statistik über die Spenden an die Wikimedia Foundation',
+	'contribstats-desc' => 'Statistiken zu Spenden an die Wikimedia Foundation',
 	'contribstats-daily-totals' => '{{PLURAL:$1|Gesamtsumme für den Tag|Gesamtsumme für die letzten $1 Tage}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Gesamtsumme für diesen Monat|Gesamtsumme für die letzten $1 Monate}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Gesamtsumme für einen Monat|Gesamtsumme für $1 Monate}}',
@@ -1494,6 +1495,7 @@ $messages['ext'] = array(
  * @author Ebraminio
  * @author Huji
  * @author Komeil 4life
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
@@ -1545,17 +1547,20 @@ $messages['fa'] = array(
 	'contribstats-paypal-donations' => 'کمک‌های مالی PayPal',
 	'contribstats-credit-card' => 'کارت اعتباری',
 	'contribstats-fraud-note' => 'برخی از کمک‌های مالی تقلبی موجود هستند.',
+	'contribstats-unaudited' => 'این‌ها مجموعه بازرسی نشده هستند.',
 	'fundraiserstatistics' => 'آمار جذب سرمایه',
 	'fundraiserstats-date' => 'تاریخ',
 	'fundraiserstats-day' => 'روز $1 از $2',
 	'fundraiserstats-contributions' => 'مشارکت‌ها',
 	'fundraiserstats-total' => 'جمع (دلار آمریکا)',
 	'fundraiserstats-avg' => 'میانگین (دلار آمریکا)',
+	'fundraiserstats-ytd' => 'جمع انباشت‌ها (USD)',
 	'fundraiserstats-max' => 'حداکثر (دلار آمریکا)',
 	'fundraiserstats-tab-totals' => 'جمع کل (دلار آمریکا)',
 	'fundraiserstats-tab-contributions' => 'تعداد مشارکت‌کنندگان',
 	'fundraiserstats-tab-averages' => 'میانگین‌ها (دلار آمریکا)',
 	'fundraiserstats-tab-maximums' => 'بیشینه‌ها (دلار آمریکا)',
+	'fundraiserstats-tab-ytd' => 'سال به تاریخ (USD)',
 );
 
 /** Finnish (Suomi)

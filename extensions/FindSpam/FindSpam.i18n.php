@@ -24,10 +24,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'findspam-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'findspam-desc' => '{{desc}}',
 	'findspam-ip' => '{{Identical|IP Address}}',
 	'findspam-ok' => '{{Identical|OK}}',
 	'right-findspam' => '{{doc-right|findspam}}',

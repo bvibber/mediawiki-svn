@@ -18,9 +18,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Meno25
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'crossnamespacelinks-desc' => 'Short description of the Cross-namespace links extension, shown on [[Special:Version]]. Do not translate or change links, and tag names.',
+	'crossnamespacelinks-desc' => '{{desc}}',
 	'crossnamespacelinks-summary' => '{{Identical|Main namespace}}',
 );
 

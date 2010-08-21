@@ -11,9 +11,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'navigationpopups-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'navigationpopups-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

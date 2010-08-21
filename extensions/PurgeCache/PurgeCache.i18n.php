@@ -21,9 +21,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'purgecache-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'purgecache-desc' => '{{desc}}',
 	'purgecache-button' => '{{Identical|Purge}}',
 	'right-purgecache' => '{{doc-right|purgecache}}',
 );

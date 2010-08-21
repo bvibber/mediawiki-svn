@@ -15,9 +15,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'signature-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'signature-desc' => '{{desc}}',
 	'right-sigadmin' => '{{doc-right|sigadmin}}',
 	'right-createsigndocument' => '{{doc-right|createsigndocument}}',
 );

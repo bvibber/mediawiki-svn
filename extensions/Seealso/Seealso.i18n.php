@@ -18,9 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'seealso-desc' => 'Short description of the Seealso extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'seealso-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

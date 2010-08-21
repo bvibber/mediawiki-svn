@@ -2438,6 +2438,14 @@ Vrátiť sa na:
 	'right-crosswikiblock' => 'Blokovať a odblokovať používateľov na iných wiki',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'crosswikiblock-reason' => 'Razlog:',
+	'crosswikiunblock-reason' => 'Razlog:',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић

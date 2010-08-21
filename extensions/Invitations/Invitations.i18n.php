@@ -37,9 +37,10 @@ To manage invitations for an individual feature, click on its name.',
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'invitations-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'invitations-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

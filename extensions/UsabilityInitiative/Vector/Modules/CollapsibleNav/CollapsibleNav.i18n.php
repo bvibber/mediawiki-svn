@@ -295,9 +295,11 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author Excaliboor
  */
 $messages['hr'] = array(
 	'vector-collapsiblenav-preference' => 'Omogući sklopivi lijevi navigacijski izbornik',
+	'vector-collapsiblenav-more' => 'Više jezika',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -378,10 +380,11 @@ $messages['ka'] = array(
 );
 
 /** Korean (한국어)
+ * @author IRTC1015
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'vector-collapsiblenav-preference' => '왼쪽 사이드바 메뉴 접기',
+	'vector-collapsiblenav-preference' => '왼쪽 사이드바 메뉴 접기(벡터 스킨 전용)',
 	'vector-collapsiblenav-more' => '기타 언어',
 );
 
@@ -408,6 +411,14 @@ $messages['lb'] = array(
 	'vector-collapsiblenav-more' => 'Méi Sproochen',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'vector-collapsiblenav-preference' => 'Zèt inklapbaar navigatiemenu in bie vectorgebroek',
+	'vector-collapsiblenav-more' => 'Mieë spräök',
+);
+
 /** Latvian (Latviešu)
  * @author Xil
  */
@@ -432,9 +443,11 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'vector-collapsiblenav-preference' => 'समदिश परिधानाच्या सुचालनानुक्रमातील घटकांची घडीक्षमता सक्षम करा.',
 	'vector-collapsiblenav-more' => '↓ इतर भाषा दाखवा',
 );
 

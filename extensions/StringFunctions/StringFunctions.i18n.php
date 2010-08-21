@@ -18,9 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'stringfunctions-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
+	'stringfunctions-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -148,6 +149,13 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'stringfunctions-desc' => 'Améliore le parseur avec les fonctions sur les chaînes de caractères',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'stringfunctions-desc' => 'Mèlyore lo parsor avouéc les fonccions sur les chênes de caractèros.',
 );
 
 /** Irish (Gaeilge)

@@ -122,7 +122,7 @@ $messages['es'] = array(
 $messages['fa'] = array(
 	'activestrategy' => 'راهبرد فعال',
 	'active-strategy-desc' => 'تعداد ویرایش‌ها را به صفحات برنامه‌ریزی راهبردی نشان می‌دهد.',
-	'active-strategy-intro' => 'تعداد ویرایشها به صفحات گروه ضربت در آخرین ((جمع : $ 1 | روز $ 1 | $ 1 روز)).',
+	'active-strategy-intro' => 'تعداد ویرایش‌ها به صفحات گروه ضربت در $1 روز اخیر.',
 	'nedits' => '$1 {{PLURAL:$1|ویرایش|ویرایش}}',
 );
 
@@ -136,6 +136,15 @@ $messages['fr'] = array(
 	'active-strategy-desc' => 'Affiche le nombre de modifications apportées aux pages de planification stratégique',
 	'active-strategy-intro' => 'Nombre de modifications des pages du groupe de travail au cours {{PLURAL:$1|du dernier jour|des $1 derniers jours}}.',
 	'nedits' => '$1 {{PLURAL:$1|modification|modifications}}',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'activestrategy' => 'Stratègia activa',
+	'active-strategy-intro' => 'Nombro de changements de les pâges a la tropa de travâly pendent {{PLURAL:$1|lo jorn passâ|los $1 jorns passâs}}.',
+	'nedits' => '$1 changement{{PLURAL:$1||s}}',
 );
 
 /** Galician (Galego)
@@ -266,6 +275,9 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'activestrategy' => 'Actief strategie',
+	'active-strategy-desc' => "Göf 't taal bewerkinge aan paazjes veur strategisch plenne weer",
+	'active-strategy-intro' => "Aantal bewirkingen aan taskforcepagina's in de aafgeloupe {{PLURAL:$1|daag|$1 daag}}.",
 	'nedits' => '$1 {{PLURAL:$1|bewèrking|bewèrkinge}}',
 );
 

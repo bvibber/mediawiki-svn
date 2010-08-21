@@ -26,9 +26,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'scanset-desc' => 'Short description of the ScanSet extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'scanset-desc' => '{{desc}}',
 	'scanset_next' => '{{Identical|Next}}',
 	'scanset_prev' => '{{Identical|Prev}}',
 );

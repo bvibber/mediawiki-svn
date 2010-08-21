@@ -30,9 +30,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'newschannel-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'newschannel-desc' => '{{desc}}',
 	'newschannel_format' => '{{Identical|Format}}',
 );
 

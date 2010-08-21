@@ -23,9 +23,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'interwikilist-desc' => 'Short description of the Interwikilist extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'interwikilist-desc' => '{{desc}}',
 	'interwikilist-filter' => 'Legend for the interwiki search fieldset',
 );
 

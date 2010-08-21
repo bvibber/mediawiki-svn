@@ -133,9 +133,11 @@ $messages['es'] = array(
 
 /** Persian (فارسی)
  * @author Sahim
+ * @author Wayiran
  */
 $messages['fa'] = array(
 	'honeypot-desc' => 'فراهم کردن یکپارچگی بوسیله [http://projecthoneypot.org/ پروژه دیگ عسل] برای وب‌گاه مدیا‌ویکی',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'تعداد آخرین رویدادهایی که نشانی آی‌پی به راه انداخته، بر پایهٔ Project Honey Pot',
 );
 
 /** Finnish (Suomi)

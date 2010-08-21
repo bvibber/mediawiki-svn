@@ -78,10 +78,11 @@ Probably there is no such user.',
  * @author Raymond
  * @author SPQRobin
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'regexblock-already-blocked' => '{{Identical|$1 is already blocked}}',
-	'regexblock-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'regexblock-desc' => '{{desc}}',
 	'regexblock-expire-duration' => '{{Identical|Infinite}}',
 	'regexblock-reason-ip' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt>Special:Contact</tt>".',
 	'regexblock-reason-name' => 'Parameter $1 is <tt>$wgContactLink</tt>, which is by default "<tt>Special:Contact</tt>".',
@@ -442,6 +443,11 @@ $messages['br'] = array(
 	'regexblock-expire-duration' => '1 eurvezh, 2 eurvezh, 4 eurvezh, 6 eurvezh, 1 devezh, 3 devezh, 1 sizhunvezh, 2 sizhunvezh, miz, 3 miz, 6 miz, bloaz, da viken',
 	'regexblock-page-title' => 'Stankadenn un anv gant un eztaoladenn poellel',
 	'regexblockstats' => 'Stadegoù war ar stankadennoù gant eztaoladennoù poellel',
+	'regexblock-help' => "Grit gant ar furmskrid a-is evit mirout ouzh ur chomlec'h IP pe un anv implijer da skrivañ.
+An dra-se ne zle bezañ graet nemet evit mirout ouzh ar vandalerezh ha hervez ar reolennoù degemeret evit ar raktres.
+''Gant ar bajenn-mañ e c'hallit stankañ implijerien dienroll hag ar re ganto anvioù damheñvel ouzh an anv lakaet zoken : da skouer, stanket e vo \"Test\" war un dro gant \"Test 2\" hag all.
+Stankañ a c'hallit ivez chomlec'hioù IP klok, ar pezh a dalvez n'hallo ket den ebet kevreet adal ar chomlec'hioù-se kemmañ pajennoù.
+Notenn : ar chomlec'hioù IP diglok a vo sellet outo evel ouzh anvioù implijerien e-pad ar stankañ. Mar ne lakaer abeg ebet en evezhiadennoù e teuio war wel un abeg dre ziouer.\"",
 	'regexblock-page-title-1' => "Stankadenn ur chomlec'h hag a implij eztaoladennoù poellel",
 	'regexblock-reason-ip' => "Ne c'hell ket ar c'homec'h IP-mañ degas an disterañ kemm en abeg d'ar vandalerezh pe obererezhioù damheñvel bet graet ganeoc'h pe gant unan all hag a implij ar memes chomlec'h IP.
 Ma 'z oc'h sur ez eo ur fazi, [[$1|deuit e darempred ganeomp]].",
@@ -481,6 +487,7 @@ Sur a-walc'h n'eus ket eus an implijer-mañ.",
 	'regexblock-view-stats' => 'stadegoù',
 	'regexblock-view-empty' => "Goullo eo roll an implijerien pe ar chomlec'hioù IP bet stanket.",
 	'regexblock-view-time' => "d'an $1",
+	'right-regexblock' => 'Mirout a ra ouzh an implijerien da zegas kemmoù war an holl wikioù zo er feurm wiki.',
 );
 
 /** Bosnian (Bosanski)
@@ -2825,6 +2832,13 @@ $messages['sk'] = array(
 	'regexblock-view-empty' => 'Zoznam blokovaných mien a IP adries je prázdny.',
 	'regexblock-view-time' => '$1',
 	'right-regexblock' => 'Zablokovať úpravy používateľov na všetkých wiki z tejto wiki farmy',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'regexblock-form-reason' => 'Razlog:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

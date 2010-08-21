@@ -526,6 +526,17 @@ Obsahuje všetky stránky v kategórii „$1“ ako aj všeky podkategórie kate
 	'autocreatecategorypages-editor' => 'Autoamtická tvorba kategórií',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'autocreatecategorypages-desc' => 'Ustvari manjkajoče strani kategorij samodejno ob shranjevanju',
+	'autocreatecategorypages-stub' => 'To je stran kategorije.
+Tukaj so navedene vse strani v kategoriji »$1«, kakor tudi vse podkategorije kategorije »$1«, če obstajajo.',
+	'autocreatecategorypages-createdby' => 'Ustvarjeno samodejno z razširitvijo AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'Samodejni ustvarjalec kategorij',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
@@ -644,10 +655,12 @@ Lisedon padis valik in klad: „$1“, äsi donakladis valik klada: „$1“ if 
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'autocreatecategorypages-createdby' => '自动创建由 自动创建分类页面 扩展。',
+	'autocreatecategorypages-editor' => '自动分类生成器',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

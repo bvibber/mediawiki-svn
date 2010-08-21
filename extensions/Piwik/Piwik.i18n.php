@@ -23,9 +23,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'piwik-desc' => 'Short description of the Piwik extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'piwik-desc' => '{{desc}}',
 	'piwik-countries' => '{{Identical|Country}}',
 	'right-viewpiwik' => '{{doc-right|viewpiwik}}',
 );

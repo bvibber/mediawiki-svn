@@ -31,9 +31,10 @@ Please file a bug report.',
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'smoothgallery-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'smoothgallery-desc' => '{{desc}}',
 	'smoothgallery-no-images' => '* $1 is a comma separated list
 * $2 is the number of elements in the list
 * $3 is the number of images actually requested',

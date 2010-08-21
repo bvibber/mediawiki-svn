@@ -1061,11 +1061,13 @@ $messages['yi'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Chenzw
  * @author Liangent
+ * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'contrib-tracking-error' => '错误',
 	'contrib-tracking-error-text' => '无效的表单提交',
 	'contrib-tracking-submitting' => '正在提交到支付处理器……',
+	'contrib-tracking-continue' => '若阁下没有被重定向至PayPal页面，请点击按钮以完成您的捐助。',
 	'contrib-tracking-button' => '继续',
 );
 

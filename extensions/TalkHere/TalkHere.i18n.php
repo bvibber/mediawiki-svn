@@ -34,9 +34,10 @@ This site's operators can not take responsibility for the content of such commen
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'talkhere-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'talkhere-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -396,8 +397,13 @@ Le gestionnaire du site n’est pas responsable de leur contenu.',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'talkhere-desc' => 'Bete la pâge de discussion dens la pâge.',
 	'talkhere-talkpage' => 'pâge de discussion',
+	'talkhere-notalk' => "''(adés gins de comentèro)''",
 	'talkhere-addcomment' => 'apondre un comentèro',
+	'talkhere-beforeinput' => 'Vos pouede apondre un comentèro ce-desot',
+	'talkhere-loading' => 'chargement de l’èditor...',
+	'talkhere-collapse' => 'cachiér l’èditor',
 );
 
 /** Galician (Galego)

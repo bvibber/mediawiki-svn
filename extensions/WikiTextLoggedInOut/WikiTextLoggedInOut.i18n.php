@@ -72,6 +72,13 @@ $messages['bg'] = array(
 	'wikitextloggedinout-desc' => 'Добавя две куки в парсета, <code>&lt;loggedin&gt;</code> и <code>&lt;loggedout&gt;</code>, чрез които се показва различен текст в зависимост дали потребителят е влязъл или не',
 );
 
+/** Bengali (বাংলা)
+ * @author Prometheus.pyrphoros
+ */
+$messages['bn'] = array(
+	'wikitextloggedinout-desc' => '&darr; দুটি আলাদা পার্সার হুক <code>&lt;loggedin&gt;</code> এবং <code>&lt;loggedout&gt;</code> ব্যবহারকারীর লগইন স্থিতিতে অনুসারে ভিন্ন বাক্যবন্ধ দেখানোর জন্য',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

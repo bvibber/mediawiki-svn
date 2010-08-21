@@ -20,9 +20,10 @@ Do '''NOT''' fill this in!",
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'simpleantispam-desc' => 'Short description of the Simpleantispam extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'simpleantispam-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

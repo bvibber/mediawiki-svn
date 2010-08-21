@@ -57,9 +57,10 @@ $messages['ar'] = array(
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'spamdifftool-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'spamdifftool-desc' => '{{desc}}',
 	'spamdifftool_option_none' => '{{Identical|Nothing}}',
 	'spamdifftool_submit_buttom' => '{{Identical|Submit}}',
 );

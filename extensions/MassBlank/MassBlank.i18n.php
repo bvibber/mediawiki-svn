@@ -29,9 +29,10 @@ Input the username or IP address to get a list of pages to blank.',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'massblank-desc' => 'Short description of the MassBlank extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'massblank-desc' => '{{desc}}',
 	'massblank-submit-user' => '{{Identical|Go}}',
 	'massblank-blankcomment' => '{{Identical|Reason}}',
 	'right-massblank' => '{{doc-right}}',
@@ -437,6 +438,13 @@ $messages['ru'] = array(
  */
 $messages['rue'] = array(
 	'massblank-submit-user' => 'Выконати',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'massblank-blankcomment' => 'Razlog:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

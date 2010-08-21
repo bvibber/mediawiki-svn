@@ -28,6 +28,13 @@ $messages['be-tarask'] = array(
 	'xmlrc-desc' => 'Дасылае абвешчаньні пра зьмены ў фармаце XML, праз UDP, Jabber ці іншыя сродкі',
 );
 
+/** Bengali (বাংলা)
+ * @author Prometheus.pyrphoros
+ */
+$messages['bn'] = array(
+	'xmlrc-desc' => '&darr; এটি XML-এ পরিবর্তন তথা অন্যান পরিবর্তনের সম্পর্কে UDP, Jabber বা অন্য পদ্ধতিতে তথ্য পাঠায়।',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

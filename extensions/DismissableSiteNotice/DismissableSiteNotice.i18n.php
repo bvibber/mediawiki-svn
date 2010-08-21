@@ -17,12 +17,13 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author SPQRobin
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'sitenotice_close' => 'Part of the DismissableSiteNotice extension. You can see this on the right side of the [[MediaWiki:Sitenotice|sitenotice]].
 
 The word "dismiss" (or "close") should be in the infinitive mood.',
-	'sitenotice-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'sitenotice-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -615,6 +616,14 @@ $messages['mr'] = array(
 $messages['ms'] = array(
 	'sitenotice_close' => 'singkir',
 	'sitenotice-desc' => 'Membolehkan pengguna menutup notis',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'sitenotice_close' => 'aħbi',
+	'sitenotice-desc' => "Tħalli lill-utenti jgħalqu s-''sitenotice''",
 );
 
 /** Min Nan Chinese (Bân-lâm-gú) */

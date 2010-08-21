@@ -15,9 +15,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'ajaxquerypages-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'ajaxquerypages-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

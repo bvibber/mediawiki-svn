@@ -18,9 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Matěj Grabovský
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'hidens-desc' => 'Short description of the extension. Shown in [[Special:Version]].',
+	'hidens-desc' => '{{desc}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

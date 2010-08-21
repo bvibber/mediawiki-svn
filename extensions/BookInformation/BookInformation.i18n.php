@@ -28,9 +28,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'bookinformation-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'bookinformation-desc' => '{{desc}}',
 	'bookinfo-result-title' => '{{Identical|Title}}',
 	'bookinfo-result-author' => '{{Identical|Author}}',
 	'bookinfo-result-year' => '{{Identical|Year}}',
@@ -1597,13 +1598,17 @@ $messages['szl'] = array(
  */
 $messages['ta'] = array(
 	'bookinfo-header' => 'நூல் விபரம்',
+	'bookinformation-desc' => 'விரிவான செய்திகளை இந்த இணையதள சேவையில் பார்க்கவும் [[Special:Booksources|புத்தகங்கள் கிடைக்குமிடங்கள் பற்றிய சிறப்பு பக்கம்]]',
 	'bookinfo-result-title' => 'தலைப்பு:',
 	'bookinfo-result-author' => 'ஆசிரியர்:',
 	'bookinfo-result-publisher' => 'வெளியீட்டாளர்:',
 	'bookinfo-result-year' => 'ஆண்டு:',
 	'bookinfo-error-invalidisbn' => 'தவறான ISBN எண்ணைக் கொடுத்துள்ளீர்கள்',
 	'bookinfo-error-nosuchitem' => 'தாங்கள் தேடுவது இங்கில்லை (அல்லது) அதனைக் கண்டுபிடிக்க முடியவில்லை',
+	'bookinfo-error-nodriver' => 'புத்தகவிவரங்களடங்கிய மெனபொருள் செயலியை தொடக்கநிலைக்குக் கொண்டுவரமுடியவில்லை.',
 	'bookinfo-error-noresponse' => 'எந்தவித பதிலும் இல்லை (அல்லது) கொடுக்கப்பட்ட நேர அளவு முடிந்து விட்டது',
+	'bookinfo-purchase' => 'இந்த புத்தகத்தை இங்கிருந்து ($1) வாங்கவும்',
+	'bookinfo-provider' => 'புத்தங்கள் பற்றிய விவரங்களைக் கொடுப்பவர்: $1',
 );
 
 /** Telugu (తెలుగు)

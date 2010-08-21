@@ -1383,6 +1383,8 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
  */
 $messages['sl'] = array(
 	'gep-emailsubject' => '[$1] Predlog kategorije: $2',
+	'gep-emailbody' => 'Uporabnik »$1« je predlagal kategorijo »$2« za stran »$3«.',
+	'gep-emailfailure' => 'Oprostite, vašega predloga ni bilo mogoče obdelati.',
 	'gep-emailsuccess' => 'Hvala za predlaganje kategorije: $1.',
 	'gep-categories' => 'Kategorije',
 	'gep-addcategory' => 'Dodaj kategorijo',
@@ -1504,6 +1506,7 @@ Lägg till några med verktygen i menyn.',
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $messages['ta'] = array(
 	'gep-emailsubject' => '[$1] பகுப்பு பரிந்துறை: $2',
@@ -1516,8 +1519,15 @@ $messages['ta'] = array(
 	'gep-suggestcategory' => 'ஒரு பகுப்பை பரிந்துரைக்கவும்',
 	'gep-suggestcategorybutton' => 'சமர்ப்பி',
 	'gep-sections' => 'பிரிவுகள்',
+	'gep-sectionnotdisabled' => 'இந்த பகுதியை செயலிழக்கம் செய்யமுடியாது',
 	'gep-addsection' => 'பிரிவு ஒன்றை சேர்க்கவும்',
 	'gep-addsectionbutton' => 'சேர்',
+	'gep-classicmode' => 'செம்மைநிலை',
+	'gep-genericmode' => 'பரம்பரையாகவந்த நிலை',
+	'gep-nosectioninstructions' => 'இப்பக்கத்தில் பகுதிகள் ஏதுமில்லை.
+
+கிடைநீள பட்டியலில் உள்ள கருவிகள் மூலம் பகுதிகள் சிலவற்றை உருவாக்கவும்.',
+	'gep-nocategories' => 'சேமிப்பதற்கு முன்பு குறைந்த பட்சம் ஒரு பகுப்பையாவது தேர்ந்தெடுக்கவும்',
 );
 
 /** Telugu (తెలుగు)

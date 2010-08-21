@@ -340,6 +340,13 @@ $messages['sk'] = array(
 	'javascript-desc' => 'Pridáva uniwiki.js na každú stránku obsahujúci JavaScriptový kód spoločný pre rozšírenia Uniwiki',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'javascript-desc' => 'Doda uniwiki.js na vsako stran, ki vsebuje kodo JavaScript, deljeno med razširitvami Uniwiki',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

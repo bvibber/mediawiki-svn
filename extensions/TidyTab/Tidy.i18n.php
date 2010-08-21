@@ -17,9 +17,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'tidy-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'tidy-desc' => '{{desc}}',
 );
 
 /** Gheg Albanian (Gegë)
@@ -164,6 +165,14 @@ $messages['fr'] = array(
 	'tidy-desc' => 'Ajoute une tabulation rangée ou non rangée (en fonction de $wgUseTidy) sur des pages normales, ce qui permet de passer outre les paramètres globaux HTML rangés, pour une vue simple',
 	'tidy' => 'Classer',
 	'untidy' => 'Déclasser',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'tidy' => 'Rengiér',
+	'untidy' => 'Dèrengiér',
 );
 
 /** Galician (Galego)

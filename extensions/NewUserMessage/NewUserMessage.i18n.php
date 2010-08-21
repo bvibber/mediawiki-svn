@@ -24,9 +24,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'newusermessage-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'newusermessage-desc' => '{{desc}}',
 	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
 	'newusermessage-template-subject' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
 	'newusermessage-template-body' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',

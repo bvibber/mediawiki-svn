@@ -30,9 +30,10 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author McDutchie
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'profiling-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'profiling-desc' => '{{desc}}',
 	'profiling-process' => 'The \'\'process string\'\' is the literal text of the command that invoked the process in question. For example, the process string of a MySQL server process might look something like this:
  /usr/sbin/mysqld --basedir=/ --datadir=/var/lib/mysql --user=mysql --skip-external-locking
 It might be easier/clearer to translate this message as if it said "process invocation" or "command line" or even just "command".',

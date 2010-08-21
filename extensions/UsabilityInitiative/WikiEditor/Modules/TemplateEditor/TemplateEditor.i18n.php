@@ -412,6 +412,16 @@ $messages['he'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'ביטול',
 );
 
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'wikieditor-template-editor-preference' => 'Omogući uređivanje wiki predložaka po upitniku',
+	'wikieditor-template-editor-dialog-title' => 'Uredi predložak',
+	'wikieditor-template-editor-dialog-submit' => 'Osvježi',
+	'wikieditor-template-editor-dialog-cancel' => 'Odustani',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -559,6 +569,7 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'wikieditor-template-editor-preference' => 'Zèt formeleergebaseerdj bewèrke van wikisjablone aan',
 	'wikieditor-template-editor-dialog-title' => 'Bewèrk veurlaag',
 	'wikieditor-template-editor-dialog-submit' => 'Wèrk bie',
 	'wikieditor-template-editor-dialog-cancel' => 'Braek aaf',
@@ -608,6 +619,7 @@ $messages['ml'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'wikieditor-template-editor-preference' => 'विकि साचांचे नमुना संपादन सक्षम करा',
 	'wikieditor-template-editor-dialog-title' => 'साच्याचे संपादन करा',
 	'wikieditor-template-editor-dialog-submit' => 'अद्ययावत करा',
 	'wikieditor-template-editor-dialog-cancel' => 'रद्द करा',
@@ -924,6 +936,16 @@ $messages['tr'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Şablonu değiştir',
 	'wikieditor-template-editor-dialog-submit' => 'Güncelle',
 	'wikieditor-template-editor-dialog-cancel' => 'İptal',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-template-editor-preference' => 'Үрнәкләрне үзгәртү мөмкинчелеген ачу',
+	'wikieditor-template-editor-dialog-title' => 'Үрнәкне үзгәртү',
+	'wikieditor-template-editor-dialog-submit' => 'Яңарту',
+	'wikieditor-template-editor-dialog-cancel' => 'Кире кагу',
 );
 
 /** Ukrainian (Українська)

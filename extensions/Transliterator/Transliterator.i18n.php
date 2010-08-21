@@ -26,9 +26,10 @@ $messages['en'] = array(
  * @author Conrad.Irwin
  * @author Fryed-peach
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'transliterator-desc' => 'This is a short description of the extension. It is shown in [[Special:Version]].',
+	'transliterator-desc' => '{{desc}}',
 	'transliterator-error-ambiguous' => 'Parameters:
 * $1 is the line from the map, such as: <code>a => z</code>
 * $2 is the map-page including the prefix {{msg-mw|transliterator-invoke}}',

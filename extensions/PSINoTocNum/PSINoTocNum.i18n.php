@@ -9,9 +9,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'psinotocnum-desc' => 'Short description of the PsiNoTocNum extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'psinotocnum-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

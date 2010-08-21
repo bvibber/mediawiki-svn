@@ -23,10 +23,11 @@ $messages['en'] = array(
  * @author Bennylin
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'filelist' => '{{Identical|File list}}',
-	'filelist-desc' => 'Short description of the Filelist extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'filelist-desc' => '{{desc}}',
 	'filelist-image-desc' => '{{Identical|Description}}',
 );
 

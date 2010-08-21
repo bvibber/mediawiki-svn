@@ -20,9 +20,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'unicodeconverter-desc' => 'Shown in the special page [[Special:Version]] as a short description of the extension.',
+	'unicodeconverter-desc' => '{{desc}}',
 	'unicodeconverter-ok' => '{{Identical|OK}}',
 );
 

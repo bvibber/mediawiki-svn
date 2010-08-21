@@ -15,9 +15,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'microid-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'microid-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

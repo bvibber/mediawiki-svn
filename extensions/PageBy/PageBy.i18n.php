@@ -27,10 +27,11 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  * @author Тест
  */
 $messages['qqq'] = array(
-	'pageby-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'pageby-desc' => '{{desc}}',
 	'pageby-first' => '* $1 link to user page
 * $2 timeanddate
 * $3 (optional) link to initial version of page',

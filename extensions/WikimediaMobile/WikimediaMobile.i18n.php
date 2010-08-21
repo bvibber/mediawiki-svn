@@ -35,6 +35,13 @@ $messages['be-tarask'] = array(
 	'wikimediamobile-desc' => 'Сэрвісныя функцыі MediaWiki для праекту Wikimedia-mobile ( http://github.com/hcatlin/wikimedia-mobile )',
 );
 
+/** Bengali (বাংলা)
+ * @author Prometheus.pyrphoros
+ */
+$messages['bn'] = array(
+	'wikimediamobile-desc' => '&darr; মিডিয়াউইকির সহায়ক ক্রিয়াকলাপ, http://github.com/hcatlin/wikimedia-mobile স্থিত উইকিমিডিয়া-মোবাইল প্রকল্পের জন্য',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D

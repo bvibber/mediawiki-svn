@@ -176,6 +176,7 @@ $4',
  * @author Nike
  * @author Purodha
  * @author Siebrand
+ * @author Sp5uhe
  */
 $messages['qqq'] = array(
 	'code-comments' => '{{Identical|Comments}}',
@@ -221,7 +222,8 @@ $1 = Repository name',
 * <code>$1</code> – User who created the follow-up revision
 * <code>$2</code> – Number of the revision that has been followed upon.
 * <code>$3</code> – URL to the new revision.
-* <code>$4</code> – Commit message of the new revision.',
+* <code>$4</code> – Commit message of the new revision.
+* <code>$5</code> – URL to followed revision.',
 	'code-stats' => '{{Identical|Statistics}}',
 	'code-stats-main' => 'Parameters:
 * $1 - time and date when statistics was cached
@@ -2666,12 +2668,14 @@ $4',
  * @author Komeil 4life
  * @author Ladsgroup
  * @author Mardetanha
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
 	'code' => 'مرور کد',
 	'code-rev-title' => 'بازبینی کد - $1',
 	'code-comments' => 'توضیحات',
+	'code-references' => 'رسیدگی به پیگیری',
 	'code-change-status' => "'''وضعیت''' $1 را تغییر داد",
 	'code-change-tags' => 'برچسب های $1 را تغییر داد',
 	'code-change-removed' => 'حذف:',
@@ -2689,7 +2693,7 @@ $messages['fa'] = array(
 	'code-authors' => 'مولفان',
 	'code-status' => 'وضعیت‌ها',
 	'code-tags' => 'برچسب‌ها',
-	'code-authors-text' => 'در زیر فهرست مولفان مخزن به ترتیب سپردن‌ها وجود دارد',
+	'code-authors-text' => 'در زیر فهرستی از مولفان منابع به ترتیب سپردن‌ها وجود دارد. در داخل پرانتزها قرار دارند.',
 	'code-author-haslink' => 'این مولف با کاربر $1 در ویکی پیوند دارد',
 	'code-author-orphan' => 'این مولف هیچ پیوندی به یک حساب کاربری ویکی ندارد',
 	'code-author-dolink' => 'پیوند کردن این مولف به یک کاربر ویکی:',
@@ -2700,7 +2704,9 @@ $messages['fa'] = array(
 	'code-author-link' => 'پیوند؟',
 	'code-author-unlink' => 'برداشتن پیوند؟',
 	'code-author-unlinksuccess' => 'پیوند مولف $1 برداشته شد',
+	'code-author-badtoken' => 'خطای نشت در زمان تلاش برای انجام عملیات.',
 	'code-author-total' => 'تعداد کل نویسندگان: $1',
+	'code-browsing-path' => "تجدید نظر برای بررسی در  '''$1'''",
 	'code-field-id' => 'نسخه',
 	'code-field-author' => 'مولف',
 	'code-field-user' => 'نظر دهنده',
@@ -2749,6 +2755,7 @@ $messages['fa'] = array(
 	'code-pathsearch-filter' => 'پالایهٔ اعمال‌شده:',
 	'code-revfilter-cr_status' => 'وضعیت = $1',
 	'code-revfilter-cr_author' => 'نویسنده = $1',
+	'code-revfilter-clear' => 'صافی پاک کننده',
 	'code-rev-submit' => 'ذخیرهٔ تغییرات',
 	'code-rev-submit-next' => 'ذخیره و حرکت به مورد حل نشدهٔ بعدی',
 	'code-batch-status' => 'تغییر وضعیت:',
@@ -2770,8 +2777,20 @@ $messages['fa'] = array(
 نظر:
 
 $4',
+	'codereview-email-subj2' => 'پیگیری تغییرات: [$1] [$2]',
+	'codereview-email-body2' => 'توسط کاربر "$1" و تغییر یافته به $2.
+
+آدرس کامل برای تجدید نظر: $5
+
+آدرس کامل: $3
+
+خلاصه تعهدنامه:
+
+$4',
 	'code-stats' => 'آمار',
+	'code-stats-header' => 'آمار انبار برای $1',
 	'code-stats-staus-breakdown' => 'تعداد بازبینی‌ها در هر وضعیت',
+	'code-stats-fixme-breakdown' => 'تفکیک از متعادل‌سازی توسط نویسنده',
 	'code-stats-count' => 'تعداد بازبینی‌ها',
 	'repoadmin' => 'مدیریت مخزن',
 	'repoadmin-new-legend' => 'ایجاد یک مخزن جدید',
@@ -3179,11 +3198,13 @@ Comentèro :
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2] : survelyence du changement',
-	'codereview-email-body2' => 'L’utilisator « $1 » at fêt des changements reliyês a $2.
+	'codereview-email-body2' => 'L’utilisator « $1 » at fêt des changements sur $2.
 
-Lim hipèrtèxto complèt : $3
+URL complèta de la vèrsion siuvua : $5
 
-Rèsumâ pendent la somission :
+URL complèta : $3
+
+Rèsumâ des changements :
 
 $4',
 	'repoadmin' => 'Administracion des dèpôts',
@@ -5442,6 +5463,7 @@ Resumé vun der Ännerung:
 
 $4',
 	'code-stats' => 'Statistiken',
+	'code-stats-fixme-breakdown' => 'Opdeelung vun de FixMe pro Auteur',
 	'code-stats-count' => 'Zuel vun de Versiounen',
 	'repoadmin-new-button' => 'Uleeën',
 	'repoadmin-edit-bug' => 'Bugzilla Pad:',
@@ -6874,9 +6896,11 @@ Komentarz:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Kolejne zmiany',
-	'codereview-email-body2' => 'Użytkownik „$1” wykonał kolejne zmiany w $2
+	'codereview-email-body2' => 'Użytkownik „$1” wykonał kolejne zmiany w $2.
 
-Pełny adres URL: $3
+Pełny adres URL do poprzedniej wersji – $5
+
+Pełny adres URL do tej wersji – $3
 
 Skrócony opis:
 
@@ -7361,11 +7385,13 @@ Comentário:
 
 $4',
 	'codereview-email-subj2' => '[$1] [$2]: Mudanças seguintes',
-	'codereview-email-body2' => 'Utilizador "$1" fez mudanças na revisão $2.
+	'codereview-email-body2' => 'O usuário "$1" fez alterações de seguimento à $2.
 
-URL Completa: $3
+URL completa para a revisão de seguimento: $5
 
-Sumário do envio:
+URL completa: $3
+
+Resumo da efetivação:
 
 $4',
 	'code-stats' => 'estatísticas',

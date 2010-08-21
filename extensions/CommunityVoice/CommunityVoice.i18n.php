@@ -304,10 +304,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Sahim
  * @author Wayiran
  */
 $messages['fa'] = array(
 	'communityvoice' => 'صدای جامعه',
+	'communityvoice-desc' => 'ابزارهای انجمن مشارکتی',
 	'communityvoice-ratings' => 'ارزش‌دهی‌ها',
 	'communityvoice-ratings-scale-status-sending' => 'در حال ارسال...',
 	'communityvoice-ratings-scale-status-error' => 'ارسال خطا!',

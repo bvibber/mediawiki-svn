@@ -657,6 +657,43 @@ Vous pouvez [$1 lire des histoires publiées].',
 	'storyboard-storydeletionconfirm' => 'Voulez-vous vraiment supprimer définitivement cette histoire ?',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'storyboard-name' => 'Storyboard',
+	'right-storyreview' => 'Revêre, changiér, publeyér, et pués cachiér les histouères',
+	'storyboard-anerroroccured' => 'Una èrror est arrevâ : $1',
+	'storyboard-unpublished' => 'Pas publeyê',
+	'storyboard-published' => 'Publeyê',
+	'storyboard-hidden' => 'Cachiê',
+	'storyboard-unpublish' => 'Pas publeyér',
+	'storyboard-publish' => 'Publeyér',
+	'storyboard-hide' => 'Cachiér',
+	'storyboard-option-unpublished' => 'pas publeyê',
+	'storyboard-option-published' => 'publeyê',
+	'storyboard-option-hidden' => 'cachiê',
+	'story' => 'Histouère',
+	'storyboard-submittedbyon' => 'Proposâ per $1 lo $2, $3.',
+	'storyboard-viewstories' => 'Vêre les histouères',
+	'storyboard-authorname' => 'Nom a l’ôtor',
+	'storyboard-authorlocation' => 'Localisacion a l’ôtor',
+	'storyboard-authoroccupation' => 'Metiér a l’ôtor',
+	'storyboard-authoremail' => 'Adrèce èlèctronica a l’ôtor',
+	'storyboard-thestory' => 'L’histouère',
+	'storyboard-storystate' => 'Ètat',
+	'storyboard-language' => 'Lengoua',
+	'storyboard-storymetadata' => 'Somês per $1 lo $2, $3.',
+	'storyboard-storymetadatafrom' => 'Somês per $1 de $2 lo $3, $4.',
+	'storyboard-yourname' => 'Voutron nom (nècèssèro)',
+	'storyboard-location' => 'Voutra localisacion',
+	'storyboard-occupation' => 'Voutron metiér',
+	'storyboard-story' => 'Voutra histouère',
+	'storyboard-email' => 'Voutra adrèce èlèctronica (nècèssèra)',
+	'storyboard-storytitle' => 'Un titro côrt et dèscriptif (nècèssèro)',
+	'storyboard-charsleft' => '($1 {{PLURAL:$1|caractèro que réste|caractèros que réstont}})',
+);
+
 /** Galician (Galego)
  * @author McDutchie
  * @author Tempestas

@@ -26,9 +26,10 @@ $messages['en'] = array(
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'abc-desc' => 'Short description of the ABC extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'abc-desc' => '{{desc}}',
 	'abcdownload' => '{{Identical|Download}}',
 	'abcabc' => '{{optional}}',
 	'abcpdf' => '{{optional}}',

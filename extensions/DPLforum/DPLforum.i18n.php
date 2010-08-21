@@ -26,6 +26,7 @@ $messages['en'] = array(
  * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'dplforum-desc' => 'Short description of the [http://www.mediawiki.org/wiki/Extension:DPLforum DPLforum extension], shown on [[Special:Version]]. DPL stands for Dynamic Page Listing.',

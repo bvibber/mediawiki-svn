@@ -406,6 +406,18 @@ $messages['he'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'לנסות תכונות חדשות',
 );
 
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'prefswitch-link-anon' => 'Nove mogućnosti',
+	'tooltip-pt-prefswitch-link-anon' => 'Saznajte više o novim mogućnostima',
+	'prefswitch-link-on' => 'Vrati me natrag',
+	'tooltip-pt-prefswitch-link-on' => 'Onemogući nove značajke',
+	'prefswitch-link-off' => 'Nove značajke',
+	'tooltip-pt-prefswitch-link-off' => 'Isprobajte nove značajke',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -540,6 +552,18 @@ $messages['lb'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Nei Fonctiounen ausschalten',
 	'prefswitch-link-off' => 'Nei Fonctiounen',
 	'tooltip-pt-prefswitch-link-off' => 'Probéiert déi nei Fonctionalitéiten aus',
+);
+
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'prefswitch-link-anon' => 'Nuuj meugelikhede',
+	'tooltip-pt-prefswitch-link-anon' => 'Info euver nuuj mäögelikhede',
+	'prefswitch-link-on' => 'Trök',
+	'tooltip-pt-prefswitch-link-on' => 'Zèt nuuj deil oet',
+	'prefswitch-link-off' => 'Nuuj meugelikhede',
+	'tooltip-pt-prefswitch-link-off' => 'Perbeer nuuj mäögelikhede',
 );
 
 /** Macedonian (Македонски)

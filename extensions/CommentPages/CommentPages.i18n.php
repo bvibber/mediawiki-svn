@@ -17,9 +17,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'commentpages-desc' => 'Short description of the Commentpages extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'commentpages-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

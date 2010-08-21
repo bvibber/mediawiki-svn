@@ -21,11 +21,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'searchbox-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+	'searchbox-desc' => '{{desc}}',
 	'searchbox-search' => '{{Identical|Search}}',
 	'searchbox-go' => '{{Identical|Go}}',
 	'searchbox-namespaces' => '{{Identical|Namespaces}}',

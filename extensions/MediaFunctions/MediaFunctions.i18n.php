@@ -24,9 +24,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'mediafunctions-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'mediafunctions-desc' => '{{desc}}',
 	'mediafunctions-invalid-title' => '* $1 is input that has been found invalid as a page title',
 	'mediafunctions-not-exist' => '* $1 is a file name',
 );

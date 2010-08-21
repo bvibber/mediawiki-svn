@@ -41,11 +41,11 @@ riddler|Riddler",
  * @author Lloffiwr
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'vote' => '{{Identical|Vote}}',
-	'vote-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].',
+	'vote-desc' => '{{desc}}',
 	'vote-submit' => '{{Identical|Vote}}',
 	'vote-results-count' => '{{Identical|Count}}',
 	'vote-login' => '$1 is the link to the log-in page.',

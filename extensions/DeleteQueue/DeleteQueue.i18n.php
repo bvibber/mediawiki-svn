@@ -211,9 +211,10 @@ You can [{{fullurl:{{FULLPAGENAME}}|action=delvote}} register your own endorseme
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'deletequeue-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'deletequeue-desc' => '{{desc}}',
 	'deletequeue-generic-reasons' => 'Delete reasons in a dropdown menu. Lines prepended with "*" are a category separator. Lines prepended with "**" can be used as a reason. Please do not add additional reasons. This should be customised on wikis where the extension is actually being used.',
 	'deletequeue-delnom-otherreason' => '{{Identical|Other reason}}',
 	'deletequeue-delnom-extra' => '{{Identical|Extra information}}',
@@ -5588,6 +5589,13 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
 	'deletequeue-case-reason' => 'Dôvod:',
 	'deletequeue-case-expiry' => 'Uzatvorenie:',
 	'deletequeue-case-needs-review' => 'Tento prípad vyžaduje [[$1|kontrolu]].',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'deletequeue-case-reason' => 'Razlog:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

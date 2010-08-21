@@ -34,10 +34,11 @@ $messages['en'] = array(
  * @author Bennylin
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'player' => '{{Identical|Player}}',
-	'player-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'player-desc' => '{{desc}}',
 	'player-title' => '{{Identical|Player}}',
 	'player-playertitle' => '{{Identical|Player}}',
 	'player-file' => '{{Identical|Filename}}',

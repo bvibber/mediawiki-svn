@@ -23,12 +23,11 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'logentry-append' => '{{Identical|Append}}',
-	'logentry-parserhook-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+	'logentry-parserhook-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

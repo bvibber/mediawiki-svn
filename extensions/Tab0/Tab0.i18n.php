@@ -14,9 +14,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'tab0-desc' => 'Short description of the Tab0 extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'tab0-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)

@@ -25,11 +25,10 @@ It must:',
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'securepasswords-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+	'securepasswords-desc' => '{{desc}}',
 	'securepasswords-username' => '{{gender}}
 * (optional) $1 is the user name',
 );

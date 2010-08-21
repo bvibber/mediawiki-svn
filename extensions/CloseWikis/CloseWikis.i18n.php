@@ -49,10 +49,11 @@ $messages['en'] = array(
  * @author Darth Kule
  * @author EugeneZelenko
  * @author Purodha
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'closewikis-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'closewikis-desc' => '{{desc}}',
 	'closewikis-page-close-wiki' => '{{Identical|Wiki}}',
 	'closewikis-page-close-submit' => '{{Identical|Close}}',
 	'closewikis-page-reopen-wiki' => '{{Identical|Wiki}}',
@@ -1246,6 +1247,13 @@ $messages['mk'] = array(
 	'closewikis-log-reopen' => 'отворено $2',
 	'right-editclosedwikis' => 'Уредување на затворени викија',
 	'right-closewikis' => 'Затворање на викија',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'closewikis-page-close-submit' => 'Agħlaq',
 );
 
 /** Erzya (Эрзянь)

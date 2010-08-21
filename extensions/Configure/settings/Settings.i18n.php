@@ -14447,7 +14447,7 @@ $messages['oc'] = array(
 	'configure-setting-wgRateLimits' => 'Limits de taus',
 	'configure-setting-wgRateLimitsExcludedGroups' => 'Gropes que son excluses dels limits de taus',
 	'configure-setting-wgFeed' => 'Activar la sindicacion',
-	'configure-setting-wgFeedCacheTimeout' => "Temps d'expiracion minimum en segondas pels fluxes en amagatal dels darrièrs cambiaments",
+	'configure-setting-wgFeedCacheTimeout' => "Temps d'expiracion minimum en segondas pels fluxes en escondedor dels darrièrs cambiaments",
 	'configure-setting-wgFeedDiffCutoff' => 'Limit de talha de las diferéncias dins los fluxes',
 	'configure-setting-wgFeedLimit' => 'Nombre maximum de paginas dins los fluxes',
 	'configure-setting-wgOverrideSiteFeed' => 'Ligams personalizats cap als fluxes',
@@ -14597,13 +14597,13 @@ $messages['oc'] = array(
 	'configure-setting-wgMemCachedServers' => 'Servidors de « memcached »',
 	'configure-setting-wgSessionsInMemcached' => "Salvar las sesilhas dins l'amagatal",
 	'configure-setting-wgUseMemCached' => 'Utilizar memcached',
-	'configure-setting-wgCacheDirectory' => 'Repertòria per la mesa en amagatal de las donadas dins lo sistèma de fichièr local',
+	'configure-setting-wgCacheDirectory' => 'Repertòri per la mesa en escondedor de las donadas dins lo sistèma de fichièr local',
 	'configure-setting-wgMessageCacheType' => "Tipe de l'amagatal dels messatges",
 	'configure-setting-wgLocalisationCacheConf' => "Configuracion de l'amagatal de localizacion",
 	'configure-setting-wgUseLocalMessageCache' => 'Far una còpia locala del messatge cache, en mai de memcached',
 	'configure-setting-wgLocalMessageCacheSerialized' => "Utilizar lo format serializat de PHP per l'amagatal dels messatges locals",
 	'configure-setting-wgMsgCacheExpiry' => "Temps d'expiracion de l'amagatal dels messatges",
-	'configure-setting-wgMaxMsgCacheEntrySize' => 'Talha maximala dels messatges meses en amagatal, en octets',
+	'configure-setting-wgMaxMsgCacheEntrySize' => 'Talha maximala dels messatges meses en escondedor, en octets',
 	'configure-setting-wgParserCacheType' => "Tipe d'amagatal del parser",
 	'configure-setting-wgEnableParserCache' => "Activar l'amagatal del parser",
 	'configure-setting-wgEnableSidebarCache' => "Activar l'amagatal de la barra laterala",
@@ -14746,12 +14746,14 @@ $messages['pdc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Shadown
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'configure-setting-desc' => 'Opisy opcji konfiguracyjnych MediaWiki',
 	'configure-setting-wgSitename' => 'Nazwa strony',
 	'configure-setting-wgActionPaths-key' => 'Czynność',
+	'configure-setting-wgActionPaths-value' => '↓ Adres URL szablonu',
 	'configure-setting-wgDBAvgStatusPoll' => 'Średni czas między zapytaniami SHOW STATUS w warunkach przeciążenia',
 	'configure-setting-wgDBerrorLog' => 'Plik do zapisywania błędów bazy danych',
 	'configure-setting-wgDBname' => 'Nazwa bazy danych, która ma zostać użyta',
@@ -14768,6 +14770,7 @@ $messages['pl'] = array(
 	'configure-setting-wgMaxAnimatedGifArea' => 'Dopuszczalny rozmiar w pikselach dla animowanego GIF',
 	'configure-setting-wgMaxImageArea' => 'Dopuszczalny rozmiar w pikselach dla grafik',
 	'configure-setting-wgMediaHandlers-key' => 'Typ MIME',
+	'configure-setting-wgThumbUpright' => '↓ współczynnika korygującego Szerokość w pozycji pionowej miniatur',
 	'configure-setting-wgShowEXIF' => 'Pokaż dane EXIF na stronie opisu pliku',
 	'configure-setting-wgThumbLimits' => 'Dozwolone rozmiary miniaturek grafik',
 	'configure-setting-wgMainCacheType' => 'Rodzaj głównego systemu buforowania',

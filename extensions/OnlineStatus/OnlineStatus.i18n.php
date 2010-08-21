@@ -31,9 +31,10 @@ $messages['en'] = array(
  * @author Bennylin
  * @author EugeneZelenko
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'onlinestatus-desc' => 'Short description of the Onlinestatus extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'onlinestatus-desc' => '{{desc}}',
 	'onlinestatus-tab' => '{{Identical|Status}}',
 	'onlinestatus-toggles-desc' => '{{Identical|Status}}',
 );
@@ -1115,12 +1116,16 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'onlinestatus-desc' => 'பயனர் இணைப்பில் உள்ளாரா இல்லையா என்பதைக் காட்ட விருப்பத்தேர்வு இணைக்கப்படுகிறது',
+	'onlinestatus-js-anon' => 'தவறு(பிழை): இந்த அம்சத்தை பயன்படுத்த, தாங்கள் புகுபதிகை செய்திருக்க வேண்டும்',
+	'onlinestatus-js-changed' => 'தங்களது தொடர்நிலை, இதற்கு மாற்றப்பட்டுள்ளது: "$1"',
 	'onlinestatus-subtitle-offline' => 'இந்தப் பயனர் தற்போது இணைப்பிலில்லை',
 	'onlinestatus-subtitle-online' => 'இந்தப் பயனர் தற்போது இணைப்பிலுள்ளார்',
+	'onlinestatus-tab' => 'நிலைமை',
 	'onlinestatus-toggles-desc' => 'உங்களது நிலை:',
 	'onlinestatus-toggles-explain' => 'இது நீங்கள் இணைப்பில் உள்ளீர்களா இல்லையா என்பதை உங்கள் பயனர் பக்கத்தைப் பார்பதன் மூல்ம் ஏனைய பயனர்களுக்கு காட்ட உதவும்.',
 	'onlinestatus-toggles-show' => 'நான் இணைப்பில் உள்ளேனா இல்லையா என்பதை பயனர் பக்கத்தில் காட்டுக',

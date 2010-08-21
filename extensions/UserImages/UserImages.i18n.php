@@ -24,11 +24,10 @@ $messages['en'] = array(
  * @author Leinad
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'userimages-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-{{doc-important|Do not translate or change links.}}',
+	'userimages-desc' => '{{desc}}',
 	'userimages-noimages' => "This message is displayed when the wanted user didn't upload any images.
 
 Parameters:

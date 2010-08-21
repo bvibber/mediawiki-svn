@@ -66,12 +66,11 @@ $messages['en'] = array(
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'recordadmin-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+	'recordadmin-desc' => '{{desc}}',
 	'recordadmin-submit' => '{{Identical|Submit}}',
 	'recordadmin-invert' => '{{Identical|Invert selection}}',
 	'recordadmin-buttonsearch' => '{{Identical|Search}}',

@@ -10,9 +10,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'i18ntags-desc' => 'Short description of the I18ntags extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'i18ntags-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

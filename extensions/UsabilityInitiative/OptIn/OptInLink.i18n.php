@@ -803,6 +803,7 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
@@ -810,6 +811,7 @@ $messages['mr'] = array(
 	'optin-leave' => '↓ बीटा त्यागुन बाहेर
 ↓ बीटा सोडा',
 	'tooltip-pt-optin-leave' => '↓ नविन चेहरामोहरा बंद करा',
+	'tooltip-pt-optin-feedback' => 'नवीन वैशिष्ट्यांबद्दल तुमच्या अनुभवावर आधारीत प्रतिक्रिया द्या',
 );
 
 /** Malay (Bahasa Melayu)

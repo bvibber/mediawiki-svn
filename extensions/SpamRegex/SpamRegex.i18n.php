@@ -47,9 +47,10 @@ Caution advised, expressions should not be too short or too common.',
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'spamregex-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'spamregex-desc' => '{{desc}}',
 	'spamregex-log' => 'Parameters:
 * $1 is spam text
 * $2 is a description
@@ -255,6 +256,9 @@ $messages['br'] = array(
 	'spamregex-desc' => "[[Special:SpamRegex|Sil]] ar frazennoù dic'hoantaus er pajennoù, diazezet war eztaoladennoù poellel",
 	'spamregex-error-unblocking' => 'Fazi distankañ "$1". Sur a-walc\'h n\'eus ket a batrom.',
 	'spamregex-summary' => 'Kavet eo bet an destenn e diverradur ar bajenn.',
+	'spamregex-intro' => "Grit gant ar furmskrid-mañ da virout da vat ma vo lakaaet troiennoù zo e testenn ur bajenn.
+M'en em gav an troiennoù resisaet en destenn ne vo ket tu da enrollañ hag un displegadenn a vo diskouezet d'an implijer a glask saveteiñ ar bajenn.
+Diwallit mat : arabat lakaat troiennoù re verr pe stank betek re.",
 	'spamregex-page-title' => 'Stankadenn eztaoladennoù poellel ar stroboù',
 	'spamregex-currently-blocked' => "'''Frazennoù stanket evit bremañ :'''",
 	'spamregex-move' => "An abeg hoc'h eus ebarzhet a oa ennañ ur frazenn stanket.",

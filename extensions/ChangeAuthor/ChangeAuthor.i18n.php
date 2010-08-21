@@ -67,10 +67,11 @@ If this error keeps showing up, the database is probably broken.',
  * @author Meno25
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'changeauthor' => 'Name of the special page on [[Special:SpecialPages]]',
-	'changeauthor-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'changeauthor-desc' => '{{desc}}',
 	'changeauthor-title' => 'Title of the [[Special:ChangeAuthor]] special page',
 	'changeauthor-search-box' => 'Caption of the fieldset on the revision search form',
 	'changeauthor-pagename-or-revid' => 'Caption of the input box on the revision search form',

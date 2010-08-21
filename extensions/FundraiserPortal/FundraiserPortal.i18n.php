@@ -361,6 +361,7 @@ $messages['ext'] = array(
  */
 $messages['fa'] = array(
 	'fundraiserportal' => 'درگاه افزایش دارایی',
+	'fundraiserportal-desc' => 'یک درگاه «لطفاً کمک مالی کنید» را به بالای نوار کناری می‌افزاید.',
 	'fundraiserportal-plain-button' => 'از ویکی‌پدیا حمایت کنید!',
 	'fundraiserportal-ruby-button' => 'هم‌اکنون کمک کنید.',
 	'fundraiserportal-rubytext-button' => 'هم‌اکنون کمک کنید',

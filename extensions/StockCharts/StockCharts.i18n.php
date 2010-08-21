@@ -16,9 +16,10 @@ Use: &lt;stockchart ticker="AAPL"/&gt;',
 
 /** Message documentation (Message documentation)
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'stockcharts-desc' => 'This is a short description of this exension. It is shown on [[Special:Version]]. Do not translate or alter tags, or link targets.',
+	'stockcharts-desc' => '{{desc}}',
 	'stockcharts-missingticker' => '{{doc-important|Do not translate or change "<nowiki>&amp;lt;stockchart ticker="AAPL"/&amp;gt;</nowiki>"}}',
 );
 

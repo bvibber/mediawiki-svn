@@ -42,11 +42,12 @@ When you have chosen all pages that you want to refresh, click on the "Refresh s
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'refreshspecial' => '{{Identical|Refresh special pages}}
 Title of Special:RefreshSpecial as displayed on Special:SpecialPages.',
-	'refreshspecial-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'refreshspecial-desc' => '{{desc}}',
 	'refreshspecial-title' => '{{Identical|Refresh special pages}}
 Title of the special page Special:RefreshSpecial',
 	'refreshspecial-help' => 'Help displayed to the user on Special:RefreshSpecial. "Refresh selected" comes from {{msg-mw|refreshspecial-button}}.',

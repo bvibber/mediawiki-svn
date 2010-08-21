@@ -360,6 +360,13 @@ $messages['sk'] = array(
 	'mootools12core-desc' => 'Pridáva kompaktnú javascriptovú platformu [http://mootools.net mootools-1.2-core-yc.js] na každú stránku',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'mootools12core-desc' => 'Doda [http://mootools.net mootools-1.2-core-yc.js], strnjeno ogrodje JavaScript, na vsako stran',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
@@ -421,5 +428,12 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'mootools12core-desc' => 'Thêm [http://mootools.net mootools-1.2-core-yc.js], một nền tảng JavaScript nhỏ gọn, vào mỗi trang',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Wilsonmess
+ */
+$messages['zh-hans'] = array(
+	'mootools12core-desc' => '向每一个页面增加[http://mootools.net mootools-1.2-core-yc.js]，一个简洁的JavaScript框架。',
 );
 

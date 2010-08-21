@@ -343,6 +343,14 @@ $messages['he'] = array(
 	'wikieditor-toc-hide' => 'הסתרת התכנים',
 );
 
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'wikieditor-toc-show' => 'Prikaži sadržaj',
+	'wikieditor-toc-hide' => 'Sakrij sadržaj',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -469,6 +477,7 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'wikieditor-toc-preference' => 'Zèt navigeerbaar inhaudsopgaaf aan',
 	'wikieditor-toc-show' => 'Tuun inhawd',
 	'wikieditor-toc-hide' => 'Verbegr inhawd',
 );
@@ -510,9 +519,11 @@ $messages['ml'] = array(
 );
 
 /** Marathi (मराठी)
+ * @author Mahitgar
  * @author V.narsikar
  */
 $messages['mr'] = array(
+	'wikieditor-toc-preference' => 'सुचालनयोग्य अनुक्रमणिका सक्षम करा',
 	'wikieditor-toc-show' => 'अनुक्रमणिका दाखवा
 यात काय आहे ते दाखवा',
 	'wikieditor-toc-hide' => 'अनुक्रमणिका लपवा',
@@ -797,6 +808,15 @@ $messages['tr'] = array(
 	'wikieditor-toc-preference' => 'Gezintiye uygun içindekiler tablosunu etkinleştir',
 	'wikieditor-toc-show' => 'İçindekileri göster',
 	'wikieditor-toc-hide' => 'İçindekileri gizle',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'wikieditor-toc-preference' => 'Башлыкны үзгәртү мөмкинлеген ачу',
+	'wikieditor-toc-show' => 'Башлыкны күрсәтү',
+	'wikieditor-toc-hide' => 'Башлыкны яшерү',
 );
 
 /** Ukrainian (Українська)

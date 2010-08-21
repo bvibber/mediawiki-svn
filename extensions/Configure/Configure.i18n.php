@@ -495,6 +495,7 @@ $messages['an'] = array(
 
 /** Arabic (العربية)
  * @author Alnokta
+ * @author Majid Al-Dharrab
  * @author Meno25
  * @author OsamaK
  * @author Ouda
@@ -512,7 +513,7 @@ $messages['ar'] = array(
 	'configure-ext-ext-dependencies' => "'''تحذير:''' هذا الامتداد يتطلب {{PLURAL:$2|الامتداد التالي|الامتدادات التالية}} لكي يتم تفعيله: $1.",
 	'configure-ext-ext-dependency-err' => "'''خطأ:''' الامتداد $1 يتطلب الامتداد $2 لكي يتم تفعيله.",
 	'configure-ext-doc' => 'انظر الوثائق على الإنترنت',
-	'configure-ext-schemachange' => "'''تحذير:''' هذا الامتداد يتطلب تحديثا لقاعدة البيانات ليعمل بطرقة صحيحة!",
+	'configure-ext-schemachange' => "'''تحذير:''' هذا الامتداد يتطلب [http://www.mediawiki.org/wiki/Manual:Update.php تحديثًا لقاعدة البيانات] ليعمل بطرقة صحيحة!",
 	'configure-ext-settings' => 'إعدادات',
 	'configure-ext-settings-dep-errors' => 'هذا الامتداد التالي لا يمكن تفعيله لأن {{PLURAL:$1|الإعداد التالي|الإعدادات التالية}} لها قيمة غير مقبولة:',
 	'configure-ext-settings-dep-error' => '$1: القيمة المطلوبة: $2، القيمة الحالية: $3',
@@ -2035,7 +2036,7 @@ Du bedes oprette den og og køre configure.sql eller rette navnet.',
  */
 $messages['de'] = array(
 	'configure' => 'Konfiguration dieses Wikis',
-	'configure-desc' => 'Ermöglicht berechtigten Benutzern das Wiki über eine webbasierte Oberfläche zu [[Special:Configure|konfigurieren]]',
+	'configure-desc' => 'Ermöglicht es berechtigten Benutzern, die Konfiguration eines Wikis über eine [[Special:Configure|Spezialseite]] vorzunehmen',
 	'configure-desc-group' => 'Gruppe',
 	'configure-desc-key' => 'Schlüssel',
 	'configure-desc-ns' => 'Namensraum',
@@ -2156,7 +2157,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-setting-not-available' => 'Diese Einstellung ist in dieser Version von MediaWiki nicht verfügbar',
 	'configure-transwiki-not-in-range' => 'Das gewünschte Wiki, $1, ist {{PLURAL:$3|kein erlaubter Wert|keiner der erlaubten Werte}}: $2.',
 	'configure-view' => 'Ansehen',
-	'configure-view-all-versions' => 'Volle Versionsliste',
+	'configure-view-all-versions' => 'Vollständige Versionsliste',
 	'configure-view-default' => 'Standardeinstellungen',
 	'configure-view-not-allowed' => 'Es ist dir nicht gestattet diese Einstellung einzusehen',
 	'configure-viewconfig-line' => '$1 $6, $7 Uhr von $3 $5: $4',
@@ -7407,9 +7408,9 @@ Rendètz-lo modificable per PHP per qu'aquesta extension foncione.",
 	'configure-section-skin' => 'Abilhatge',
 	'configure-section-vector' => 'Abilhatge vector',
 	'configure-section-category' => 'Categorias',
-	'configure-section-cache' => 'Amagatal',
-	'configure-section-pcache' => 'Amagatal del parser',
-	'configure-section-messagecache' => 'Amagatal dels messatges',
+	'configure-section-cache' => 'Escondedor',
+	'configure-section-pcache' => 'Escondedor del parser',
+	'configure-section-messagecache' => 'Escondedor dels messatges',
 	'configure-section-memcached' => 'Memòria amagada',
 	'configure-section-access' => 'Accès',
 	'configure-section-groups' => 'Gropes',
@@ -8897,6 +8898,13 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
 	'configure-farmer-settings' => '[[Special:Configure|Nastaviť túto wiki]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Nastaviť rozšírenia tejto wiki]].',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Zoznam rozšírení dostupných pre túto wiki]].',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'configure-form-reason' => 'Razlog:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

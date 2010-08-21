@@ -45,10 +45,11 @@ Uploaded files should contain page name and optional reason, separated by a "|" 
  * @author Jon Harald Søby
  * @author Malafaya
  * @author Purodha
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['qqq'] = array(
-	'deletebatch-desc' => 'Short description of the :Deletebatch extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'deletebatch-desc' => '{{desc}}',
 	'deletebatch-or' => '{{Identical|Or}}',
 	'deletebatch-delete' => '{{Identical|Delete}}',
 	'deletebatch-select-script' => 'User name. Entry in dropdown for user that should execute the deletions',
@@ -1553,10 +1554,23 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gzdavidwong
+ * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
-	'deletebatch-caption' => '页面列表',
+	'deletebatch-caption' => '页面列表：',
+	'deletebatch-link-back' => '返回特殊页',
 	'deletebatch-or' => '<b>或</b>',
+	'deletebatch-delete' => '删除',
+	'deletebatch-page' => '欲删除的页面：',
+	'deletebatch-processing-from-file' => '正在从文件列表中删除页面',
+	'deletebatch-processing-from-form' => '正在从表单中删除页面',
+	'deletebatch-omitting-nonexistant' => '忽略不存在的页面 $1 。',
+	'deletebatch-omitting-invalid' => '忽略不合法页面 $1 。',
+	'deletebatch-file-bad-format' => '该文件应该为纯文本',
+	'deletebatch-file-missing' => '无法读取指定文件',
+	'deletebatch-select-script' => '删除页面脚本',
+	'deletebatch-select-yourself' => '阁下',
+	'right-deletebatch' => '批量删除页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -55,11 +55,12 @@ If you have any questions about this extension distribution system, please go to
  * @author Aotake
  * @author Jon Harald Søby
  * @author Purodha
+ * @author The Evil IP address
  * @author Александр Сигачёв
  */
 $messages['qqq'] = array(
 	'extensiondistributor' => '{{Identical|Download}}',
-	'extensiondistributor-desc' => 'Short description of the Extdist extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'extensiondistributor-desc' => '{{desc}}',
 	'extdist-submit-extension' => '{{Identical|Continue}}',
 	'extdist-submit-version' => '{{Identical|Continue}}',
 	'extdist-created' => '* $1 - extension
@@ -837,7 +838,7 @@ $messages['fa'] = array(
 	'extdist-choose-extension' => 'افزونه‌ای را که می‌خواهید بارگیری کنید انتخاب کنید:',
 	'extdist-wc-empty' => 'کپی کاری تنظیم شده افزونهٔ قابل انتشاری ندارد!',
 	'extdist-submit-extension' => 'ادامه',
-	'extdist-current-version' => 'نسخهٔ فعلی (تنه)',
+	'extdist-current-version' => 'نسخهٔ در حال توسعه (تنه)',
 	'extdist-choose-version' => '<big>شما در حال بارگیری افزونهٔ <b>$1</b> هستید.</big>
 
 نسخهٔ مدیاویکی خود را انتخاب کنید.

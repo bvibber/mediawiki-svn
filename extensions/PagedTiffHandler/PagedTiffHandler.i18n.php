@@ -51,9 +51,11 @@ $messages['qqq'] = array(
 	'tiff-file-info-size' => 'Information about the image dimensions etc. on image page. Extended by page information',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author The Evil IP address
+ */
 $messages['qqq'] = array(
-	'tiff-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'tiff-desc' => '{{desc}}',
 	'tiff_no_metadata' => 'Error message shown when no metadata extraction is not possible',
 	'tiff_page_error' => 'Error message shown when page number is out of range',
 	'tiff_too_many_embed_files' => 'Error message shown when the uploaded image contains too many embedded files.',

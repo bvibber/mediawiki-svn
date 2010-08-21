@@ -32,10 +32,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'js2support-desc' => 'Embreg eus JS2 evel un astenn',
+	'js2support-debug-preference' => 'Diweredekaat ar strollañ hag ar bihanaat skriptoù',
 	'prefs-script-debug' => 'Didraenañ ar skriptoù',
 );
 

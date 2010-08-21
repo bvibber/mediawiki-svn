@@ -26,9 +26,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Darth Kule
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'postcomment-desc' => 'Short description of the PostComment extension, shown on [[Special:Version]].',
+	'postcomment-desc' => '{{desc}}',
 	'postcomment_notloggedin' => 'Message displayed under comment form if you are not logged in. For example see http://www.wikihow.com/Discussion:Main-Page',
 	'postcomment_addcommentdiscussionpage' => 'Message displayed before comment form. For example see http://www.wikihow.com/Discussion:Main-Page',
 	'postcomment_leavemessagefor' => 'Message displayed before comment form in user talks.',

@@ -26,10 +26,10 @@ $3",
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'latexdoc_get_pdf' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'latexdoc-desc' => 'Short description of the Latexdoc extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'latexdoc-desc' => '{{desc}}',
 );
 
 /** Gheg Albanian (Gegë)

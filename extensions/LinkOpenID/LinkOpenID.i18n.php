@@ -29,11 +29,10 @@ This allows you to use your userpage as an OpenID as well.',
 /** Message documentation (Message documentation)
  * @author Purodha
  * @author Raymond
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'linkopenid-desc' => 'Short desciption of this extension.
-Shown in [[Special:Version]].
-Do not translate or change tag names, or link anchors.',
+	'linkopenid-desc' => '{{desc}}',
 	'linkopenid-prefs' => '{{Optional}}',
 );
 

@@ -50,9 +50,10 @@ $4",
  * @author Purodha
  * @author Raymond
  * @author Siebrand
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'todo-desc' => 'Short description of the Todo extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'todo-desc' => '{{desc}}',
 	'todo-new-queue' => '{{Identical|New}}',
 	'todo-mail-body' => '* $1 is a user name
 * $2 is a page name
@@ -708,12 +709,30 @@ $4',
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'todo' => 'Lista de chouses a fâre',
+	'todo-desc' => 'Èxtension èxpèrimentâla por una [[Special:Todo|lista a sè de chouses a fâre]].',
+	'todo-tab' => 'a fâre',
 	'todo-new-queue' => 'Novél',
+	'todo-mail-subject' => 'Èlèment chavonâ dens la lista de chouses a fâre de $1',
+	'todo-invalid-item' => 'Èlèment manquent ou ben envalido',
+	'todo-update-else-item' => 'Tentativa de misa a jorn des èlèments de quârqu’un d’ôtro',
+	'todo-unrecognize-type' => 'Tipo pas recognu',
+	'todo-user-invalide' => 'La chousa a fâre spècefiâ est envalida, manquenta, ou ben l’utilisator at pas de lista de chouses a fâre.',
+	'todo-item-list' => 'Voutros èlèments',
+	'todo-no-item' => 'Gins d’èlèment a fâre.',
+	'todo-invalid-owner' => 'Propriètèro de ceti èlèment envalido',
+	'todo-add-queue' => 'Apondre a la lista d’atenta...',
+	'todo-move-queue' => 'Dèplaciér vers la lista d’atenta...',
+	'todo-list-for' => 'Lista de chouses a fâre por $1',
 	'todo-list-change' => 'Changiér',
 	'todo-list-cancel' => 'Anular',
 	'todo-new-item' => 'Novél èlèment',
 	'todo-issue-summary' => 'Rèsumâ du problèmo :',
 	'todo-form-details' => 'Dètalys :',
+	'todo-form-email' => 'Por recêvre un mèssâjo de notificacion quand l’èlèment serat cllôs, enscrîde voutra adrèce dens lo câdro ce-desot :',
+	'todo-form-submit' => 'Sometre la requéta',
+	'right-todo' => 'Avêr una lista de chouses a fâre',
+	'right-todosubmit' => 'Rètrendre los drêts de les listes a sè de chouses a fâre',
 );
 
 /** Western Frisian (Frysk)

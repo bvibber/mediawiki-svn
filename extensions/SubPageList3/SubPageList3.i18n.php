@@ -39,9 +39,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
-	'spl3-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'spl3-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)
@@ -182,6 +183,14 @@ $messages['fr'] = array(
 	'spl3-desc' => 'Crée automatiquement une liste de sous-pages d’une page utilisant la balise <code><nowiki><splist /></nowiki></code>',
 	'spl3_debug' => 'Valeur pour l’option $1 inconnue.',
 	'spl3_nosubpages' => '$1 n’a pas de sous-pages à énumérer.',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'spl3_debug' => 'Valor por lo chouèx $1 encognua.',
+	'spl3_nosubpages' => '$1 at gins de sot-pâge a ènumèrar.',
 );
 
 /** Galician (Galego)

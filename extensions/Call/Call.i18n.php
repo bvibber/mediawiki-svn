@@ -32,10 +32,11 @@ In case of problems you can try <b>{{#special:call}}/DebuG</b>',
 /** Message documentation (Message documentation)
  * @author Lloffiwr
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['qqq'] = array(
 	'call' => 'Title of a special page',
-	'call-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
+	'call-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)

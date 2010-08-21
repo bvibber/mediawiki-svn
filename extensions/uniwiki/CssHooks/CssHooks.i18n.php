@@ -344,6 +344,13 @@ $messages['sk'] = array(
 	'csshooks-desc' => 'Pridáva CSS do HTML výstupu stránok na zlepšenie štýlu',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'csshooks-desc' => 'Doda CSS izhodu HTML strani za boljše oblikovanje',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
