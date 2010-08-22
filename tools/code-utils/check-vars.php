@@ -138,7 +138,12 @@ class CheckVars {
 		return $this->generateDeprecatedList;
 	}
 	function saveDeprecatedList( $filename ) {
-		file_put_contents( $filename, "<?php\n\$mwDeprecatedFunctions = array( " . implode( ",\n\t", $this->mDeprecatedFunctionList ) . "\n);\n\n" );
+		$data = "<?php\n\$mwDeprecatedFunctions = array(\n";
+		foreach( $this->mDeprecatedFunctionList as $depre => $classes ) {
+			$data .= "\t'$depre' => array( " . implode( ", ", $classes ) . " ),\n";
+		}
+		$data .= "\n);\n\n";
+		file_put_contents( $filename, $data );
 	}
 
 
@@ -225,6 +230,11 @@ class CheckVars {
 					if ( ( $lastMeaningfulToken[0] == T_CLASS ) && ( $token[0] == T_STRING ) ) {
 						$this->mKnownFileClasses[] = $token[1];
 						$this->mClass = $token[1];
+						$this->mParent = null;
+					}
+					if ( ( $lastMeaningfulToken[0] == T_EXTENDS ) && ( $token[0] == T_STRING ) ) {
+						$this->checkClassName( $token );
+						$this->mParent = $token[1];
 					}
 
 					if ( $token[0] != T_FUNCTION )
@@ -244,8 +254,12 @@ class CheckVars {
 						$currentToken[0] = self::FUNCTION_DEFINITION;
 
 						if ( $this->generateDeprecatedList && in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) ) {
-							if ( ( substr( $this->mFunction, 0, 2 ) != "__" ) && $this->mClass != 'Image' ) {
-								$this->mDeprecatedFunctionList[] = "/*$this->mClass::*/'$this->mFunction'";
+							if ( ( substr( $this->mFunction, 0, 2 ) != "__" ) ) {
+								if ( !isset( $this->mDeprecatedFunctionList[ $this->mFunction ] ) ) {
+									$this->mDeprecatedFunctionList[ $this->mFunction ] = array( $this->mClass );
+								} else {
+									$this->mDeprecatedFunctionList[ $this->mFunction ][] = $this->mClass;
+								}
 							}
 						}
 
@@ -330,6 +344,16 @@ class CheckVars {
 						}
 					}
 
+					/* Try to guess the class of the variable */
+					if ( in_array( $token[0], array( T_OBJECT_OPERATOR, T_PAAMAYIM_NEKUDOTAYIM ) ) ) {
+						$currentToken['base'] = $lastMeaningfulToken;
+					} else
+					if ( ( ( $token[0] == T_STRING ) || ( $token[0] == self::CLASS_MEMBER ) )
+						&& is_array( $lastMeaningfulToken ) && isset( $lastMeaningfulToken['base'] ) ) {
+						$currentToken['base'] = $lastMeaningfulToken['base'];
+						$currentToken['class'] = $this->guessClassName( $lastMeaningfulToken['base'] );
+					}
+
 					if ( ( $token == '(' ) && is_array( $lastMeaningfulToken ) ) {
 						if ( $lastMeaningfulToken[0] == T_STRING ) {
 							$lastMeaningfulToken[0] = self::FUNCTION_NAME;
@@ -402,9 +426,63 @@ class CheckVars {
 
 	function checkDeprecation( $token ) {
 		global $mwDeprecatedFunctions;
-		if ( $mwDeprecatedFunctions && !in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) && in_array( $token[1], $mwDeprecatedFunctions ) ) {
-			$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token[1]} in line {$token[2]}" );
+		
+		if ( $mwDeprecatedFunctions && !in_array( self::FUNCTION_DEPRECATED, $this->mFunctionQualifiers ) && 
+			isset( $mwDeprecatedFunctions[ $token[1] ] ) ) {
+			
+			if ( isset( $token['class'] ) ) {
+				if ( in_array( $token['class'], $mwDeprecatedFunctions[ $token[1] ] ) ) {
+					$this->warning( "Non deprecated function $this->mFunction calls deprecated function {$token['class']}::{$token[1]} in line {$token[2]}" );
+				}
+			} else if ( isset( $token['base'] ) ) { # Avoid false positives for local functions, see maintenance/rebuildInterwiki.inc
+				$this->warning( "Non deprecated function $this->mFunction may be calling deprecated function " .
+					implode( '/', $mwDeprecatedFunctions[ $token[1] ] ) . "::" . $token[1] . " in line {$token[2]}" );
+			}
 		}
+	}
+
+	/* Returns a class name, or null if it couldn't guess */
+	function guessClassName( $token ) {
+		static $wellKnownVars = array(
+			'$wgArticle' => 'Article',
+			'$wgTitle' => 'Title',
+			'$wgParser' => 'Parser',
+			'$wgUser' => 'User',
+			'$wgOut' => 'OutputPage',
+			'$wgRequest' => 'WebRequest',
+			'$request' => 'WebRequest',
+			'$wgMessageCache' => 'MessageCache',
+			'$wgLang' => 'Language', '$wgContLang' => 'Language',
+			'$dbw' => 'Database', '$dbr' => 'Database',
+			'$sk' => 'Skin'
+		);
+			
+		if ( $token[0] == T_VARIABLE ) {
+			if ( isset( $wellKnownVars[ $token[1] ] ) ) {
+				return $wellKnownVars[ $token[1] ];
+			}
+			if ( $token[1] == '$this' )
+				return $this->mClass;
+			$name = substr( $token[1], 1 );
+		} elseif ( ( $token[0] == T_STRING ) || ( $token[0] == self::CLASS_MEMBER ) ) {
+			if ( ( $token[1] == 'self' ) && !isset( $token['base'] ) )
+				return $this->mClass;
+			if ( ( $token[1] == 'parent' ) && !isset( $token['base'] ) )
+				return $this->getParentName( $token );
+			
+			$name = $token[1];
+			
+			if ( $token[1][0] == 'm' )  // member
+				$name = substr( $token[1], 1 );
+		} else {
+			return null;
+		}
+		$className = $this->checkClassName( array( 1=> ucfirst( $name ) ) , 'no' );
+		if ( $className ) {
+			return $className;
+		}
+
+		return null;
 	}
 
 	function error( $token ) {
@@ -494,30 +572,42 @@ class CheckVars {
 		return in_array( $name, array( 'false', 'true', 'self', 'parent', 'null' ) );
 	}
 
-	function checkClassName( $token, $warn = false ) {
+	/**
+	 * Returns a 
+	 * @param  $token Token holding the class name
+	 * @param  $warn  A value from 'no', 'defer', 'now¡
+	 * @return mixed  The class name if it is found, false otherwise
+	 */
+	function checkClassName( $token, $warn = 'defer' ) {
 		global $wgAutoloadLocalClasses;
 
-		if ( ( $token[1] == 'self' ) || ( $token[1] == 'parent' ) )
-			return;
+		if ( $token[1] == 'self' )
+			return $this->mClass;
+		if ( $token[1] == 'parent' )
+			return $this->getParentName( $token );
 
-		if ( class_exists( $token[1], false ) ) return; # Provided by an extension
-		if ( substr( $token[1], 0, 8 ) == "PHPUnit_" ) return;
-		if ( substr( $token[1], 0, 12 ) == "Net_Gearman_" ) return; # phase3/maintenance/gearman/gearman.inc
+		if ( class_exists( $token[1], false ) ) return $token[1]; # Provided by an extension
+		if ( substr( $token[1], 0, 8 ) == "PHPUnit_" ) return $token[1];
+		if ( substr( $token[1], 0, 12 ) == "Net_Gearman_" ) return $token[1]; # phase3/maintenance/gearman/gearman.inc
 
 		if ( !isset( $wgAutoloadLocalClasses[$token[1]] ) && !in_array( $token[1], $this->mKnownFileClasses ) ) {
-			if ( $warn ) {
+			if ( $warn == 'now' ) {
 				$this->warning( "Use of unknown class $token[1] in line $token[2]" );
-			} else {
+			} else if ( $warn == 'defer' ) {
 				// Defer to the end of the file
 				$this->mUnknownClasses[] = $token;
+			} else {
+				return false;
 			}
 		}
+		return $token[1];
 	}
 
 	function checkPendingClasses() {
 		foreach ( $this->mUnknownClasses as $classToken ) {
-			$this->checkClassName( $classToken, true );
+			$this->checkClassName( $classToken, 'now' );
 		}
+		$this->mUnknownClasses = array();
 	}
 
 	static function isIgnoreConstant( $name ) {
@@ -527,6 +617,15 @@ class CheckVars {
 		}
 		return false;
 	}
+	
+	function getParentName( $token ) {
+		if ( !is_null( $this->mParent ) ) {
+			return $this->mParent;
+		}
+		$this->warning( "Use of parent in orphan class {$this->mClass} in line $token[2]" );
+		return "-";
+	}
+	
 }
 
 $cv = new CheckVars();
