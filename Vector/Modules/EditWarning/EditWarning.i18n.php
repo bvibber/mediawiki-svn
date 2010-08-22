@@ -62,6 +62,15 @@ $messages['arz'] = array(
 	'vector-editwarning-preference' => 'حذّرنى لما اسيب صفحة تعديل فيها تغييرات مش متسييڤه',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'vector-editwarning-warning' => 'Выхад з гэтай старонкі прывядзе да страты правак, якія вы зрабілі. 
+Калі Вы зарэгістраваныя ў сістэме, Вы можаце адключыць гэта папярэджанне ў закладцы "Праца" Вашых настаўленняў.',
+	'vector-editwarning-preference' => 'Папярэдзіць мяне, калі я пакідаю старонку з незахаванымі праўкамі',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -534,8 +543,11 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author V.narsikar
+ * @author अभय नातू
  */
 $messages['mr'] = array(
+	'vector-editwarning-warning' => "या पानावरुन दुसऱ्या पानावर गेल्यास तुम्ही येथे केलेले बदल जतन होणार नाहीत.
+ही सूचना घालवण्यासाठी ''माझ्या पसंती'' मधील संपादनपसंतीत बदल करा.",
 	'vector-editwarning-preference' => '↓ जर मी संपादित करीत असलेल्या पानावरील माझे संपादिलेले बदल जतन न केल्यास मला इशारा द्या',
 );
 

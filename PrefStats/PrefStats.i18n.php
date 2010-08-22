@@ -1680,8 +1680,12 @@ $messages['ml'] = array(
 /** Marathi (मराठी)
  * @author Mahitgar
  * @author V.narsikar
+ * @author अभय नातू
  */
 $messages['mr'] = array(
+	'prefstats' => 'पसंती सांख्यिकी',
+	'prefstats-desc' => '↓  किती सदस्यांनी विशिष्ट पसंती निवडल्या आहेत ते दर्शविणारी सांख्यिकी बघा',
+	'prefstats-title' => 'पसंती सांख्यिकी',
 	'prefstats-xaxis' => '  ↓ कालावधी (तासात)',
 	'prefstats-factors' => 'दृष्ये प्रती: $1',
 	'prefstats-factor-hour' => 'तास',

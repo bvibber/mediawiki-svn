@@ -44,6 +44,13 @@ $messages['arz'] = array(
 	'wikieditor-highlight-preference' => 'Enable syntax highlighting when editing',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor-highlight-preference' => 'Уключыць падсветку сінтаксісу пры праўцы',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Zedlik

@@ -76,6 +76,16 @@ $messages['arz'] = array(
 	'wikieditor-loading' => 'بيلوّد',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor' => 'Палепшаны інтэрфейс праўкі вікітэкста',
+	'wikieditor-desc' => 'Дадае палепшаны інтэрфейс праўкі вікітэкста і шмат модульных функцый',
+	'wikieditor-wikitext-tab' => 'Вікітэкст',
+	'wikieditor-loading' => 'Загрузка',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

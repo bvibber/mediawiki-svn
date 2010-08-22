@@ -68,6 +68,13 @@ $messages['ar'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'جرّب المزايا الجديدة',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'prefswitch-link-on' => 'Вярнуць як было',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

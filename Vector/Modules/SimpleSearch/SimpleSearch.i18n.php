@@ -62,6 +62,14 @@ $messages['arz'] = array(
 	'vector-simplesearch-containing' => 'جوّاه...',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'vector-simplesearch-search' => 'Знайсці',
+	'vector-simplesearch-containing' => 'змяшчае...',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

@@ -57,6 +57,14 @@ $messages['arz'] = array(
 	'vector-desc' => 'تحسينات فى عناصر واجهه المستخدم لواجهه فكتور.',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'vector' => 'Паляпшае інтэрфэйс для кажуха Vector',
+	'vector-desc' => 'Паляпшае элементы інтэрфэйсу ўдзельніка для кажуха Vector',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Wizardist

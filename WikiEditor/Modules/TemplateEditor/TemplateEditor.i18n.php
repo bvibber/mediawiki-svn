@@ -77,6 +77,16 @@ $messages['arz'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'كانسل',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor-template-editor-preference' => 'Уключыць праўку шаблонаў праз дыялогі',
+	'wikieditor-template-editor-dialog-title' => 'Правіць шаблон',
+	'wikieditor-template-editor-dialog-submit' => 'Абнавіць',
+	'wikieditor-template-editor-dialog-cancel' => 'Закрыць',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

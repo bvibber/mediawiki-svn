@@ -47,6 +47,14 @@ $messages['arz'] = array(
 	'vector-collapsiblenav-more' => 'لغات اكتر',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'vector-collapsiblenav-preference' => 'Уключыць згортванне блокаў у навігацыйным меню для кажуха Vector',
+	'vector-collapsiblenav-more' => 'Болей моваў',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  * @author Wizardist
@@ -713,6 +721,13 @@ $messages['uk'] = array(
 $messages['vi'] = array(
 	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải trong bề ngoài Vectơ',
 	'vector-collapsiblenav-more' => 'Thêm ngôn ngữ khác',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'vector-collapsiblenav-more' => 'Püks pluik',
 );
 
 /** Yiddish (ייִדיש)

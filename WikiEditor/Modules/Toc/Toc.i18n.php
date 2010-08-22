@@ -65,6 +65,15 @@ $messages['arz'] = array(
 	'wikieditor-toc-hide' => 'خبّى المحتويات',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor-toc-preference' => 'Уключыць змест з магчымасцю навігацыі',
+	'wikieditor-toc-show' => 'Паказаць змест',
+	'wikieditor-toc-hide' => 'Схаваць змест',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

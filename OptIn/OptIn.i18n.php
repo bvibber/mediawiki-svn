@@ -490,9 +490,13 @@ $messages['bat-smg'] = array(
 );
 
 /** Belarusian (Беларуская)
+ * @author Maksim L.
  * @author Yury Tarasievich
  */
 $messages['be'] = array(
+	'optin-survey-yes' => 'Так',
+	'optin-survey-no' => 'Не',
+	'optin-survey-answer-changes-other' => 'Іншае:',
 	'optin-improvements2' => "== Што было палепшана? ==
 [[File:UsabilityToolbar.png|left|link=|Здымак экрана з палепшанай рэдактарскай стужкай]]
 [[File:UsabilityDialogs.png|left|link=|Здымак экрана з новымі дыялогамі складання зместу]]
@@ -678,17 +682,18 @@ $messages['bg'] = array(
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
  * @author J Subhi
  */
 $messages['bjn'] = array(
-	'optin-title-optedout' => 'Cubai Beta',
+	'optin-title-optedout' => 'Tarai Beta',
 	'optin-title-optedin' => 'Tinggalakan Beta',
-	'optin-accept-long-anon' => 'Babuat wan cubai Beta',
+	'optin-accept-long-anon' => 'Babuat wan tarai Beta',
 	'optin-deny-short' => 'Kada, tarima kasih',
 	'optin-deny-long' => 'Babulik ka tungkaran sabalumnya',
 	'optin-submit-out' => 'Tinggalakan Beta',
-	'optin-submit-feedback' => 'Bari kitihanbalik',
-	'optin-survey-yes' => 'Iya',
+	'optin-submit-feedback' => 'Bariakan kitihan mantuk',
+	'optin-survey-yes' => 'Ya',
 	'optin-survey-no' => 'Kada',
 );
 
@@ -4303,12 +4308,16 @@ $messages['mr'] = array(
 	'optin-feedback-intro' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद.
 या नविन चेहरामोहर्‍याबद्दल आपणास काय वाटते हे आम्हास जाणुन घ्यायचे आहे,म्हणुन खालील ऎच्छीक सर्वेक्षण आपण भरुन दिल्यास आम्हाला आवडेल.',
 	'optin-feedback-back' => '↓ जर आपणास सर्वेक्षण भरावयाचे नसल्यास आपण  $1 ला परत जाउ शकता.',
-	'optin-accept-short' => 'चला करून पाहू',
+	'optin-success-in' => '↓ सध्या आपण बीटा चेहरामोहरा वापरत आहात.पानाचे वरचे बाजूस असणार्‍या "{{int:optin-leave}}" या दुव्यावर टिचकी मारुन आपण यातुन कधीही माघार घेउ शकता.',
+	'optin-success-out' => '↓ आपण बीटा यशस्वीरित्या त्यागली आहे.पानाचे वरचे बाजूस असणार्‍या "{{int:optin-try}}" या दुव्यावर टिचकी मारुन आपण यातुन कधीही परत वापरु शकता.',
+	'optin-success-feedback' => '↓ आपल्या संदेशपरताव्याबद्दल आभार!',
+	'optin-accept-short' => '↓चला करून पाहू!',
 	'optin-deny-short' => 'नको धन्य्वाद',
 	'optin-submit-feedback' => 'प्रतिक्रिया द्या',
 	'optin-survey-yes' => 'हो',
 	'optin-survey-no' => 'नाही',
 	'optin-survey-answer-whyoptout-hard' => 'अवघड होते',
+	'optin-survey-answer-whyoptout-didntlike-look' => '↓ ज्या प्रकारे ते दिसते ते मला आवडले नाही.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'मला नविन साधनपट्टी(टूलबार) आवडली नाही.',
 	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
 	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
@@ -4322,8 +4331,13 @@ $messages['mr'] = array(
 	'optin-survey-question-browser' => 'तुम्ही कोणता न्यहाळक (ब्राऊजर) वापरता ?',
 	'optin-survey-answer-browser-other' => '!इतर न्याहाळक(बाउजर):',
 	'optin-survey-question-os' => 'आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
+	'optin-survey-answer-os-other' => 'इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
 	'optin-survey-question-res' => '↓ आपल्या दृश्यपटलाचे पृथक्करण (स्क्रिन रिजोल्युशन) काय आहे?',
+	'optin-survey-question-changes' => '↓ आपणास भविष्यात बीटामध्ये कोणत्या प्रकारचे बदल बघणे आवडेल (जे लागु असेल ते निवडा)?',
+	'optin-survey-answer-changes-nav' => '↓ या संस्थळाचे नॅव्हिगेशन वापरण्यास सुलभ असे करा.',
 	'optin-survey-answer-changes-edittools' => '↓ संपादन उपकरणांत (ऐडिट टुल्स) वाढ व दर्जावाढ करा.',
+	'optin-survey-answer-changes-upload' => '↓  यातील घटक व मिडिया अपलोड सुधरवा.',
+	'optin-survey-answer-changes-lookfeel' => '↓ या संस्थळाचा "दिखावा व अनुभूती" अद्ययावत करा.',
 	'optin-survey-answer-changes-other' => 'इतर',
 	'optin-improvements2' => '== कोणकोणत्या सुधारणा केल्या आहेत? ==
 [[File:UsabilityToolbar.png|left|link=|संवर्धीत संपादन साधनपट्टीचा देखावा]]
@@ -7048,6 +7062,10 @@ Chúng tôi đã giới thiệu một số các cải tiến khác như cải ti
  * @author Malafaya
  */
 $messages['vo'] = array(
+	'optin-title-optedout' => 'Sperimäntolös el Beta',
+	'optin-title-justoptedin' => 'Benokömö ini el Beta',
+	'optin-accept-short' => 'Dunobsös osi!',
+	'optin-deny-short' => 'No, danö!',
 	'optin-deny-long' => 'Geikön lü pad büik',
 	'optin-survey-yes' => 'Si!',
 	'optin-survey-no' => 'Nö!',

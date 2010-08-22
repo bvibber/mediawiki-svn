@@ -52,6 +52,13 @@ $messages['arz'] = array(
 	'userdailycontribs-desc' => 'مساهمات المستخدمين اليويمه لامتداد تتبع الضغطات',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'userdailycontribs-desc' => 'Штодзённы ўклад удзельніка для гаджэта сачэння за націскамі мышшу',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
