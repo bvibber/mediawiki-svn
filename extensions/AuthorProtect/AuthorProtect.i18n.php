@@ -385,6 +385,7 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Consta
+ * @author Kiriakos
  * @author Omnipaedista
  * @author ZaDiak
  */
@@ -395,8 +396,8 @@ $messages['el'] = array(
 	'authorprotect-confirm' => 'Αλλαγή επιπέδων προστασίας',
 	'authorprotect-edit' => 'Περιορισμός επεξεργασιών σε συγγραφείς',
 	'authorprotect-move' => 'Περιορισμός μετακίνησης στους συγγραφείς',
-	'authorprotect-expiry' => 'Χρόνος λήξης',
-	'authorprotect-reason' => 'Λόγος',
+	'authorprotect-expiry' => 'Λήγει:',
+	'authorprotect-reason' => '↓ Αιτία:',
 	'authorprotect-intro' => 'Χρησιμοποιείστε αυτή τη φόρμα για να κλειδώσετε τη σελίδα από μη-συγγραφείς',
 	'authorprotect-success' => 'Επιτυχής προστασία!',
 	'authorprotect-failure' => 'Ανεπιτυχής προστασία',

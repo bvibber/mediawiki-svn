@@ -597,6 +597,13 @@ Podètz pas crear aquesta pagina, mas la podètz [{{fullurl:{{FULLPAGENAME}}|act
 <createbox>break=no</createbox>",
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'createbox-create' => 'Schtaerte',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich

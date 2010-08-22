@@ -2422,6 +2422,7 @@ $messages['te'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Horus
  */
 $messages['th'] = array(
 	'readerfeedback' => 'คุณคิดอย่างไรกับหน้านี้',
@@ -2437,6 +2438,7 @@ $messages['th'] = array(
 	'readerfeedback-level-3' => 'ดี',
 	'readerfeedback-level-4' => 'ดีมาก',
 	'readerfeedback-main' => 'สามารถจัดอันดับได้เฉพาะหน้าเนื้อหาเท่านั้น',
+	'readerfeedback-finished' => 'ขอบคุณ!',
 	'readerfeedback-tierfilter' => 'อันดับ:',
 	'readerfeedback-tier-high' => 'ดี',
 	'readerfeedback-tier-medium' => 'ปานกลาง',

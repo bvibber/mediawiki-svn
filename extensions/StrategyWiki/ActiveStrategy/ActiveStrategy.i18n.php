@@ -460,6 +460,13 @@ $messages['vi'] = array(
 	'nedits' => '$1 sửa đổi',
 );
 
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'nedits' => '{{PLURAL:$1|Redakam|Redakams}} $1',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'activestrategy' => '积极工作队',

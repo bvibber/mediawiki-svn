@@ -202,12 +202,16 @@ $messages['bg'] = array(
 );
 
 /** Bahasa Banjar (Bahasa Banjar)
+ * @author Ezagren
  * @author J Subhi
  */
 $messages['bjn'] = array(
 	'ct-end-date' => 'Tanggal tuntung (YYYYMMDD)',
 	'ct-change-graph' => 'Ubah grapik',
 	'ct-beginner' => 'Pamula',
+	'ct-intermediate' => 'Manangah',
+	'ct-expert' => 'Bisa',
+	'ct-editing' => 'Wayahini mambabak:',
 	'ct-anon-users' => 'Pamuruk kada bangaran',
 	'ct-and' => 'wan',
 );
@@ -1390,10 +1394,12 @@ $messages['ml'] = array(
 /** Marathi (मराठी)
  * @author Mahitgar
  * @author V.narsikar
+ * @author अभय नातू
  */
 $messages['mr'] = array(
 	'clicktracking' => 'ऊपयोगसुलभता उपक्रम टिचकीवेध',
 	'ct-title' => 'एकुण उपयोगकर्ता टिचक्या',
+	'ct-event-name' => 'घटनेचे नाव',
 	'ct-expert-header' => '"कुशलांच्या" टिचक्या',
 	'ct-intermediate-header' => '"मध्यमकौशल्य" टिचक्या',
 	'ct-beginner-header' => '"नवशिक्यांच्या" टिचक्या',

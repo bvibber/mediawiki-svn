@@ -1647,6 +1647,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'recordadmin-buttonsearch' => 'Guck uff',
+	'recordadmin-buttoncreate' => 'Schtaerte',
 	'recordadmin-editlink' => 'ennere',
 	'recordadmin-modified' => 'Gennert',
 	'recordadmin-notset' => 'Keen „$1“',

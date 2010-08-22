@@ -2323,7 +2323,7 @@ Nếu lỗi này tiếp tục hiện ra, có lẽ cơ sở dữ liệu đã bị
 $messages['vo'] = array(
 	'changeauthor' => 'Votükön lautani revida',
 	'changeauthor-desc' => 'Dälon votükami revidalautana',
-	'changeauthor-title' => 'Votükön revidalautana',
+	'changeauthor-title' => 'Votükön revidalautani',
 	'changeauthor-search-box' => 'Sukön revidis',
 	'changeauthor-pagename-or-revid' => 'Padanem u revidanüm:',
 	'changeauthor-pagenameform-go' => 'Ledunolöd',
@@ -2345,6 +2345,7 @@ If pöl at dönu ojenon, nünodem ba edädikon.',
 	'changeauthor-success' => 'Beg olik peledunon benosekiko.',
 	'changeauthor-logentry' => 'Lautan revida: $2 pada: $1 pevotükön de: $3 ad: $4.',
 	'changeauthor-logpagename' => 'Jenotalised lautanivotükamas',
+	'right-changeauthor' => 'Votükön revidalautani',
 );
 
 /** Yiddish (ייִדיש)

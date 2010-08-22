@@ -337,6 +337,29 @@ $messages['ia'] = array(
 	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixel, grandor del file: $3, typo MIME: $4)',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Farras
+ */
+$messages['id'] = array(
+	'tiff-desc' => 'Pengatur untuk melihat berkas TIFF dalam mode gambar',
+	'tiff_no_metadata' => 'Tidak dapat memeroleh metadata dari TIFF',
+	'tiff_page_error' => 'Nomor halaman di luar batas',
+	'tiff_too_many_embed_files' => 'Gambar berisi terlalu banyak berkas tertanam.',
+	'tiff_sourcefile_too_large' => 'Resolusi berkas sumber terlalu besar.
+Miniatur tidak akan dibuat.',
+	'tiff_targetfile_too_large' => 'Resolusi berkas tujuan terlalu besar.
+Miniatur tidak akan dibuat.',
+	'tiff_file_too_large' => 'Berkas unggahan terlalu besar dan ditolak.',
+	'tiff_out_of_service' => 'Berkas unggahan tidak dapat diproses.
+ImageMagick tidak tersedia.',
+	'tiff_too_much_meta' => 'Metadata memakan banyak ruang.',
+	'tiff_error_cached' => 'Berkas hanya dapat ditampilkan ulang setelah jeda penembolokan.',
+	'tiff_size_error' => 'Ukuran berkas yang dilaporkan tidak sama dengan ukuran berkas aslinya.',
+	'tiff_script_detected' => 'Berkas unggahan berisi skrip.',
+	'tiff_bad_file' => 'Berkas unggahan berisi kesalahan.',
+	'tiff-file-info-size' => '(halaman $5, $1 × $2 piksel, ukuran berkas: $3, tipe MIME: $4)',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Naohiro19

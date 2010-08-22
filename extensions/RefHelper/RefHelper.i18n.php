@@ -877,6 +877,7 @@ $messages['pdc'] = array(
 	'refhelper-pages' => 'Bledder:',
 	'refhelper-year' => 'Yaahr:',
 	'refhelper-category' => 'Abdeeling $1:',
+	'refhelper-create' => 'Schtaerte',
 );
 
 /** Polish (Polski)

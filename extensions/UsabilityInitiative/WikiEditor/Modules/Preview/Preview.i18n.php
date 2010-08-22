@@ -80,6 +80,16 @@ $messages['arz'] = array(
 	'wikieditor-preview-loading' => 'بيلوّد...',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor-preview-preference' => 'Уключыць перадпаказ бок аб бок',
+	'wikieditor-preview-tab' => 'Перадпаказ',
+	'wikieditor-preview-changes-tab' => 'Змены',
+	'wikieditor-preview-loading' => 'Загрузка...',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -1027,6 +1037,13 @@ $messages['vi'] = array(
 	'wikieditor-preview-tab' => 'Xem trước',
 	'wikieditor-preview-changes-tab' => 'Các thay đổi',
 	'wikieditor-preview-loading' => 'Đang tải…',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'wikieditor-preview-changes-tab' => 'Votükams',
 );
 
 /** Yiddish (ייִדיש)

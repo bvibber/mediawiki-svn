@@ -43,6 +43,13 @@ $messages['arz'] = array(
 	'wikieditor-addMediaWizard-preference' => 'شغّل عدّة "زوّد media wizard"',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Уключыць гаджэт "Майстар дадання медыя"',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

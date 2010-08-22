@@ -337,6 +337,13 @@ $messages['ru'] = array(
 	'newsextension-desc' => 'Показывает настроенный список свежих правок на вики-страницах или ленте RSS или Atom',
 );
 
+/** Yakut (Саха тыла)
+ * @author Kyraha
+ */
+$messages['sah'] = array(
+	'newsextension-desc' => 'Соторутааҕыта оҥоһуллубут уларытыылары биики-сирэйинэн эбэтэр RSS эбэтэр Atom биидинэн көрдөр',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

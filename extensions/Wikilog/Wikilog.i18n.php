@@ -5026,6 +5026,7 @@ Lo comentari apareisserà pas qu'aprèp verificacion per un moderator.",
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'wikilog-new-item-go' => 'Schtaerte',
 	'wikilog-authors' => 'Schreiwer',
 	'wikilog-title' => 'Titel',
 	'wikilog-comments' => 'Anmaerrickinge',

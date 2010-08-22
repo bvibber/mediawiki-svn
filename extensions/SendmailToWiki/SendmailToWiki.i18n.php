@@ -469,6 +469,23 @@ $messages['oc'] = array(
 	'sendmailtowiki-err-onlyplain' => "En rason d'eventualas errors d'interpretacions, sols los messatges que contenon de tèxte brut son acceptats.",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'sendmailtowiki-desc' => 'Wysyłanie treści wiki poprzez dedykowany dynamiczny adres e‐mail',
+	'prefs-sendmailtowiki' => 'Wysyłanie treści poprzez e‐mail',
+	'sendmailtowiki-inemail' => 'Dedykowany adres e‐mail',
+	'sendmailtowiki-inpin' => 'PIN',
+	'prefs-help-sendmailtowiki_pin' => 'Puste pole na numer PIN wyłącza przesyłanie treści do wiki z Twojego konta.',
+	'sendmailtowiki-err-pinlength' => 'PIN musi długość dokładnie 5 cyfr.',
+	'sendmailtowiki-err-wrongprefix' => 'Zły przedrostek konta wiki. Skontaktuj się z administratorem.',
+	'sendmailtowiki-err-invalidaccount' => 'Nieprawidłowe konto. Sprawdź adres pod który wysyłasz e‐mail.',
+	'sendmailtowiki-err-invalidsender' => 'Nieprawidłowy nadawca. Sprawdź adres spod którego wysyłasz e‐mail.',
+	'sendmailtowiki-err-invalidpin' => 'Nieprawidłowy PIN. Odmowa dostępu.',
+	'sendmailtowiki-err-onlyplain' => 'Ze względu na możliwość nieprawidłowej interpretacji akceptowane są wyłącznie wiadomości czysto tekstowe.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

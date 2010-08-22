@@ -1791,16 +1791,20 @@ $messages['tg-latn'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Horus
  * @author Passawuth
  */
 $messages['th'] = array(
 	'sitematrix' => 'รายชื่อวิกิของมูลนิธิวิกิมีเดีย',
 	'sitematrix-summary' => 'หน้าพิเศษนี้แสดงรายชื่อวิกิของมูลนิธิวิกิมีเดีย',
+	'sitematrix-desc' => 'แสดง[[Special:SiteMatrix|รายการวิกิทั้งหมดของวิกิมีเดีย]]',
 	'sitematrix-language' => 'ภาษา',
+	'sitematrix-project' => 'ชื่อโครงการ ลิงก์ข้ามโครงการและลิงก์ข้ามวิกิ',
 	'sitematrix-others' => 'โครงการอื่น ๆ ของวิกิมีเดีย',
 	'sitematrix-total' => "'''จำนวนทั้งหมด: $1 เว็บไซต์'''",
 	'sitematrix-sitetotal' => 'รวม',
 	'sitematrix-private' => 'ส่วนตัว',
+	'sitematrix-fishbowl' => 'การแก้ไขถูกจำกัด',
 );
 
 /** Turkmen (Türkmençe)

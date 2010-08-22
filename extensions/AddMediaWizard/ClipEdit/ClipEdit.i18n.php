@@ -285,7 +285,9 @@ $messages['dsb'] = array(
 	'mwe-clipedit-layout_left' => 'Wusměrjenje wobraza na lěwem boku',
 );
 
-/** Greek (Ελληνικά) */
+/** Greek (Ελληνικά)
+ * @author Kiriakos
+ */
 $messages['el'] = array(
 	'mwe-clipedit-crop' => 'Διαχωρισμός εικόνας',
 	'mwe-clipedit-apply_crop' => 'Εφαρμογή διαχωρισμού στην εικόνα',
@@ -307,6 +309,7 @@ $messages['el'] = array(
 	'mwe-clipedit-start_time' => 'Χρόνος εκκίνησης',
 	'mwe-clipedit-end_time' => 'Χρόνος λήξης',
 	'mwe-clipedit-preview_inout' => 'Προεπισκόπηση των σημείων εισόδου-εξόδου',
+	'mwe-clipedit-duration' => 'Διάρκεια:',
 );
 
 /** Esperanto (Esperanto) */

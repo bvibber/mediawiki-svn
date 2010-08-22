@@ -5185,6 +5185,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'fogg-title-title' => 'Titel',
+	'fogg-copyright-title' => 'Copyright',
 	'rsd_results_next' => 'weiter',
 	'rsd_results_prev' => 'zerick',
 );
@@ -6961,6 +6962,13 @@ $messages['vi'] = array(
 	'fogg-warning-firebug' => '<b>Firebug</b> có thể xung đột với <i>Firefogg<i>. Xin hãy vô hiệu hóa <b>Firebug</b> trên trang này.',
 	'mwe-upload-multi' => 'Tải lên {{PLURAL:$1|tập tin|các tập tin}}',
 	'mwe-review-upload' => 'Duyệt {{PLURAL:$1|tập tin|các tập tin}} được tải lên',
+);
+
+/** Volapük (Volapük)
+ * @author Malafaya
+ */
+$messages['vo'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 se $2',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

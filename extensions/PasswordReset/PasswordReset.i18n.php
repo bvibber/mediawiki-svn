@@ -1785,7 +1785,11 @@ $messages['vi'] = array(
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'passwordreset-username' => 'Gebananem',
+	'passwordreset-emptyusername' => 'Gebenanem vagik',
+	'passwordreset-username' => 'Gebananem:',
+	'passwordreset-newpass' => 'Letavöd nulik:',
+	'passwordreset-confirmpass' => 'Fümedolös letavödi:',
+	'passwordreset-submit' => 'Dönuvälön letavödi',
 );
 
 /** Yiddish (ייִדיש)

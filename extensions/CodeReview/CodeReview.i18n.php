@@ -2664,6 +2664,7 @@ $4',
 
 /** Persian (فارسی)
  * @author Bersam
+ * @author Ebraminio
  * @author Huji
  * @author Komeil 4life
  * @author Ladsgroup
@@ -2778,13 +2779,13 @@ $messages['fa'] = array(
 
 $4',
 	'codereview-email-subj2' => 'پیگیری تغییرات: [$1] [$2]',
-	'codereview-email-body2' => 'توسط کاربر "$1" و تغییر یافته به $2.
+	'codereview-email-body2' => 'کاربر «$1» این تغییرات را به $2 داده‌است.
 
-آدرس کامل برای تجدید نظر: $5
+نشانی کامل برای این نسخه‌ها: $5
 
-آدرس کامل: $3
+نشانی کامل: $3
 
-خلاصه تعهدنامه:
+خلاصهٔ ارتکاب‌شدن‌ها:
 
 $4',
 	'code-stats' => 'آمار',
@@ -6780,6 +6781,7 @@ $messages['pdc'] = array(
 	'code-status-new' => 'nei',
 	'code-status-ok' => 'OK',
 	'codereview-subtitle' => 'Fer $1',
+	'repoadmin-new-button' => 'Schtaerte',
 	'repoadmin-edit-button' => 'OK',
 );
 
@@ -9574,6 +9576,7 @@ $messages['vi'] = array(
 	'code-load-diff' => 'Đang tải khác biệt...',
 	'code-notes' => 'ghi chú gần đây',
 	'code-statuschanges' => 'thay đổi trạng thái',
+	'code-mycommits' => 'thay đổi của tôi',
 	'code-authors' => 'tác giả',
 	'code-status' => 'tình trạng',
 	'code-tags' => 'thẻ',
@@ -9662,7 +9665,9 @@ Tin nhắn:
 
 $4',
 	'codereview-email-subj2' => '[$1] [r$2]: Các thay đổi tiếp theo',
-	'codereview-email-body2' => 'Thành viên "$1" đã thực hiện các thay đổi tiếp theo lên r$2.
+	'codereview-email-body2' => 'Thành viên "$1" đã thực hiện các thay đổi tiếp theo r$2.
+
+URL đầy đủ đến phiên bản được tiếp theo: $5
 
 URL đầy đủ: $3
 
@@ -9673,6 +9678,7 @@ $4',
 	'code-stats-header' => 'Thống kê kho vào $1',
 	'code-stats-main' => 'Vào $1, kho được sửa đổi $2 lần bởi [[Special:Code/$3/author|$4 người dùng]].',
 	'code-stats-staus-breakdown' => 'Số thay đổi cho mỗi trạng thái',
+	'code-stats-fixme-breakdown' => 'Chú thích cần sửa từng tác giả',
 	'code-stats-count' => 'Số thay đổi',
 	'repoadmin' => 'Quản lý kho dữ liệu',
 	'repoadmin-new-legend' => 'Tạo kho dữ liệu',

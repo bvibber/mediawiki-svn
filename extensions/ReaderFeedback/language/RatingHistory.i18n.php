@@ -2156,6 +2156,7 @@ $messages['te'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Horus
  */
 $messages['th'] = array(
 	'ratinghistory-month' => 'เดือนที่แล้ว',
@@ -2163,6 +2164,7 @@ $messages['th'] = array(
 	'ratinghistory-year' => 'ปีที่แล้ว',
 	'ratinghistory-3years' => '3 ปีที่แล้ว',
 	'ratinghistory-ave' => 'เฉลี่ย: $1',
+	'ratinghistory-purge' => 'ล้างแคช',
 	'ratinghistory-users' => 'ผู้ใช้ที่มีส่วนร่วมจัดอันดับ',
 );
 
@@ -2410,6 +2412,10 @@ $messages['vi'] = array(
  * @author Malafaya
  */
 $messages['vo'] = array(
+	'ratinghistory-month' => 'mul lätik',
+	'ratinghistory-3months' => 'muls lätik 3',
+	'ratinghistory-year' => 'yel lätik',
+	'ratinghistory-3years' => 'yels lätik 3',
 	'ratinghistory-ave' => 'Zäned: $1',
 );
 

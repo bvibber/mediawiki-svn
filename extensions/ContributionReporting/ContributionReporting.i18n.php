@@ -5005,6 +5005,7 @@ $messages['vi'] = array(
 	'contribstats-average' => 'Trung bình',
 	'contribstats-paypal-donations' => 'Quyên góp dùng PayPal',
 	'contribstats-credit-card' => 'Thẻ tín dụng',
+	'contribstats-fraud-note' => 'Một số quyên góp có vẻ gian lận.',
 	'contribstats-unaudited' => 'Các tổng số này chưa được kiểm toán.',
 	'fundraiserstatistics' => 'Thống kê về vận động gây quỹ',
 	'fundraiserstats-date' => 'Ngày',
@@ -5018,6 +5019,7 @@ $messages['vi'] = array(
 	'fundraiserstats-tab-contributions' => 'Số khoản quyên góp',
 	'fundraiserstats-tab-averages' => 'Trung bình (USD)',
 	'fundraiserstats-tab-maximums' => 'Tối đa (USD)',
+	'fundraiserstats-tab-ytd' => 'Năm đến nay (USD)',
 );
 
 /** Volapük (Volapük)

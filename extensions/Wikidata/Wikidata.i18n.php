@@ -2261,6 +2261,7 @@ Molimo kontaktirajte operatora servera ili administratora.',
  * @author Paucabot
  * @author SMP
  * @author Solde
+ * @author Ssola
  * @author Toniher
  */
 $messages['ca'] = array(
@@ -2295,9 +2296,12 @@ $messages['ca'] = array(
 	'ow_transaction_previous_version' => 'Versió anterior',
 	'ow_transaction_restore' => 'Restaura',
 	'ow_transaction_remove' => 'Suprimeix',
+	'ow_transaction_operation' => 'Operació',
 	'ow_transaction_object' => 'Objecte',
 	'ow_transaction_summary' => 'Resum',
 	'ow_dm_OK' => 'OK',
+	'ow_AlternativeDefinition' => 'Definició alternativa',
+	'ow_AlternativeDefinitions' => 'Definicions alternatives',
 	'ow_Annotation' => 'Anotació',
 	'ow_Class' => 'Classe',
 	'ow_ClassAttributeAttribute' => 'Atribut',
@@ -2307,8 +2311,10 @@ $messages['ca'] = array(
 	'ow_Collection_colon' => 'Col·lecció:',
 	'ow_Definition' => 'Definició',
 	'ow_DefinedMeaningAttributes' => 'Anotació',
+	'ow_ExactMeanings' => 'Significats exactes',
 	'ow_Expression' => 'Expressió',
 	'ow_Expressions' => 'Expressions',
+	'ow_IdenticalMeaning' => 'Significat idèntic?',
 	'ow_GotoSource' => 'Anar a la font',
 	'ow_Language' => 'Idioma',
 	'ow_LevelAnnotation' => 'Anotació',
@@ -9921,6 +9927,7 @@ $messages['pdc'] = array(
 	'ow_class_attr_type_link' => 'Gleecher',
 	'ow_show' => 'Zeige',
 	'ow_upload' => 'Ufflaade',
+	'ow_create' => 'Schtaerte',
 	'ow_suggest_previous' => 'Letscht',
 	'ow_suggest_next' => 'Neegscht',
 );
@@ -14358,8 +14365,10 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
+	'langman_langname' => 'Nem püka:',
 	'datasearch' => 'Wikidata: Nünodisuk',
 	'datasearch_language' => 'Pük:',
+	'datasearch_found_word' => 'Vöd petuvon',
 	'ow_exporttsv_languages' => 'Püks:',
 	'ow_save' => 'Dakipolöd',
 	'ow_history' => 'Jenotem',
@@ -14368,16 +14377,21 @@ $messages['vo'] = array(
 	'ow_uiprefs' => 'Wikidata',
 	'ow_none_selected' => 'Nos pevälon',
 	'ow_transaction_user' => 'Gebananem:',
+	'ow_transaction_no_action' => 'Dunön nosi',
 	'ow_transaction_remove' => 'Moükön',
 	'ow_transaction_is_latest' => 'Lätikün',
+	'ow_transaction_summary' => 'Naböfodönuam',
 	'ow_conceptmapping_no_action_specified' => 'Dun: „$1“ no mögon.',
 	'ow_add_concept_link' => 'Läükön yümi tikädes votik',
 	'ow_concept_panel' => 'Tikädafremül',
 	'ow_Annotation' => 'Penet',
+	'ow_Class' => 'Klad',
 	'ow_ClassAttributeLevel' => 'Nivod',
 	'ow_ClassAttributeType' => 'Sot',
 	'ow_ClassMembership' => 'Kladalimanam',
 	'ow_Collection' => 'Konlet',
+	'ow_Collection_colon' => 'Konlet:',
+	'ow_CollectionMember' => 'Konletaliman',
 	'ow_CollectionMembership' => 'Konletalimanam',
 	'ow_Definition' => 'Miedet',
 	'ow_DefinedMeaningAttributes' => 'Penet',
@@ -14404,6 +14418,7 @@ $messages['vo'] = array(
 	'ow_TranslatedText' => 'Vödem petradutöl',
 	'ow_TranslatedTextAttributeValue' => 'Vödem',
 	'ow_TranslatedTextAttributeValues' => 'Vödems tradutovik',
+	'ow_Link' => 'Yüm',
 	'ow_LinkAttribute' => 'Patöf',
 	'ow_LinkAttributeValues' => 'Liuds',
 	'ow_User' => 'Geban',
@@ -14415,9 +14430,12 @@ $messages['vo'] = array(
 	'ow_meaningsofsubtitle' => '<em>Vükayüm:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Däl no pegevon</h2>',
 	'ow_copy_help' => 'Yuf no nog gebidon.',
+	'ow_class_attr_type_link' => 'Yüm',
+	'ow_statistics' => 'Wikidata: Statits',
 	'ow_show' => 'Jonolöd',
 	'ow_upload' => 'Löpükön',
 	'ow_create' => 'Jafön',
+	'ow_collection_added' => '<strong>Konlet: $1 peläükon.</strong>',
 	'ow_suggest_previous' => 'Büik',
 	'ow_suggest_next' => 'Sököl',
 	'ow_suggest_clear' => 'Kulön',

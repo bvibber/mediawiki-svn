@@ -1016,6 +1016,7 @@ Per favor attende le completion del action in curso.',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Farras
  * @author Irwangatot
  * @author Rex
  */
@@ -1034,7 +1035,7 @@ $messages['id'] = array(
 	'imagetagging-new' => '<sup><span style="color:red">Baru!</span></sup>',
 	'imagetagging-removetag' => 'Singkirkan penanda',
 	'imagetagging-done-button' => 'Selesai memberi tag',
-	'imagetagging-tag-button' => 'Tag',
+	'imagetagging-tag-button' => 'Tanda',
 	'imagetagging-tagcancel-button' => 'Batalkan',
 	'imagetagging-tagging-instructions' => 'Klik pada gambar orang atau benda di gambar ini untuk memberi tag.',
 	'imagetagging-addingtag' => 'Menambahkan tag...',

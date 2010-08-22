@@ -7552,6 +7552,7 @@ $messages['pdc'] = array(
 	'configure-section-specialpages' => 'Besunnere Bledder',
 	'configure-section-users' => 'Yuuser',
 	'configure-section-search' => 'Uffgucke',
+	'configure-section-copyright' => 'Copyright',
 	'configure-viewconfig-line' => '$1 $6, $7 Uhr vun $3 $5: $4',
 	'configure-throttle-action-edit' => 'Ennere',
 	'configure-throttle-action-move' => 'Ziehe',

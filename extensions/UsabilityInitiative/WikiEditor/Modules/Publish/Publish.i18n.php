@@ -115,6 +115,21 @@ $messages['arz'] = array(
 	'wikieditor-publish-dialog-goback' => 'ارجع',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor-publish-preference' => 'Уключыць пакрокавую публікацыю',
+	'wikieditor-publish-button-publish' => 'Апублікаваць',
+	'wikieditor-publish-button-cancel' => 'Закрыць',
+	'wikieditor-publish-dialog-title' => 'Апублікаваць у {{GRAMMAR:месны|{{SITENAME}}}}',
+	'wikieditor-publish-dialog-summary' => 'Тлумачэнне правак (каротка апішыце зробленыя праўкі)',
+	'wikieditor-publish-dialog-minor' => 'Дробная праўка',
+	'wikieditor-publish-dialog-watch' => 'Назіраць за гэтай старонкай',
+	'wikieditor-publish-dialog-publish' => 'Апублікаваць',
+	'wikieditor-publish-dialog-goback' => 'Вярнуцца',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

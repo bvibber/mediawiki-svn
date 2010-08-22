@@ -406,6 +406,21 @@ $messages['ar'] = array(
 	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'prefswitch-survey-true' => 'Так',
+	'prefswitch-survey-false' => 'Не',
+	'prefswitch-survey-submit-feedback' => 'Адправіць заўвагі',
+	'prefswitch-survey-answer-whyoff-other' => 'Іншая прычына:',
+	'prefswitch-survey-question-browser' => 'Якім браўзерам Вы карыстаецеся?',
+	'prefswitch-survey-answer-browser-other' => 'Іншы браўзер:',
+	'prefswitch-survey-question-os' => 'Якой аперацыйнай сістэмай Вы карыстаецеся?',
+	'prefswitch-survey-answer-os-other' => 'Іншая аперацыйная сістэма:',
+	'prefswitch-title-switched-off' => 'Дзякуй',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -736,6 +751,7 @@ $messages['br'] = array(
 	'prefswitch' => 'Cheñch dibaboù an intrudu implijadusted',
 	'prefswitch-desc' => "Talvezout a ra d'an implijerien da cheñch an holl benndibaboù",
 	'prefswitch-jswarning' => "Dalc'hit soñj e rank ho [[User:$1/$2.js|$2 JavaScript]] bezañ eilet war-du [[{{ns:user}}:$1/vector.js]] <!-- pe [[{{ns:user}}:$1/common.js]]--> evit gellout kenderc'hel da vont en-dro, abalamour d'ar cheñchamant gwiskadur.",
+	'prefswitch-csswarning' => "Ne dalvezo ket ho [[User:$1/$2.css|stil personelaet $2]] ken. Termeniñ ur CSS personelaet evit vector a c'hallit e [[{{ns:user}}:$1/vector.css]].",
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nann',
 	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
@@ -769,19 +785,42 @@ Dibabit kement tra hag a zegouezh.',
 	'prefswitch-success-feedback' => "Kaset eo bet hoc'h evezhiadennoù.",
 	'prefswitch-return' => '<hr style="clear:both">
 Distreiñ da <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Start hon eus labouret evit aesaat ar jeu d'an implijerien. Stad zo ennomp bremañ o kinnig deoc'h tammoù gwellaennoù, en o zouez un tres nevez ha doareoù kemmañ pajennoù eeunaet. Aesaat implijadusted hor raktresoù zo ur priorite evit Diazezadur Wikimedia ha kenderc'hel a raimp da ginnig traoù nevez en amzer da zont. Evit muioc'h a ditouroù, kit da weladenniñ kemennadenn [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog Wikimedia]. 
-
-[[File:UsabilityNavigation.png|right|link=|Skeudennoù skramm war an doare merdeiñ nevez]]
-[[File:UsabilityToolbar.png|right|link=|Skeudennoù skramm eus ar varrenn ostilhoù gwellaet]]
-[[File:UsabilityDialogs.png|right|link=|Skeudennoù skramm eus ar prenestroù krouiñ danvez nevez]]
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Un dapadenn skramm tennet eus etrefas merdeiñ nevez Wikipedia <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Ur skeudennskramm tennet eus an etrefas aozañ eeun <small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Un skeudenn skramm tennet eus etrefas ar prenestr skridaozañ nevez evit ouzhpennañ liammoù
+|}
+|}
+The Wikimedia Foundation's User Experience Team has been working with volunteers from the community to make things easier for you. We are excited to share some improvements, including a new look and feel and simplified editing features. These changes are intended to make it easier for new contributors to get started, and are based on our [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability testing conducted over the last year]. Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more details, visit the related Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post].
+Bet eo skipailh implijerien arroutet Diazezadur Wikimedia o labourat gant tud a youl-vat er gumuniezh evit aesaat an traoù deoc'h. Stad zo ennomp bremañ o kinnig deoc'h tammoù gwellaennoù, en o zouez un tres nevez ha doareoù kemmañ pajennoù eeunaet. Degaset eo bet ar c'hemmoù-se evit aesaat buhez an implijerien nevez. Diazezet int war [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Ur studiadenn implijadusted kaset da benn warlene]. Aesaat implijadusted hor raktresoù zo ur priorite evit Diazezadur Wikimedia ha kenderc'hel a raimp da ginnig traoù nevez en amzer da zont. Evit muioc'h a ditouroù, kit da weladenniñ kemennadenn [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog Wikimedia]. 
 ===Setu ar pezh zo bet cheñchet===
 * '''Merdeiñ :''' Gwellaet eo bet an doare merdeiñ evit lenn ha kemmañ pajennoù. Bremañ emañ kalz muioc'h war wel an ivinelloù e laez pep pajenn labour pe kaozeal, ha kemend-all pa vezit oc'h aozañ ur pennad pe o lenn anezhañ.
 * '''Gwellaennoù er varrenn ostilhoù :''' Adframmet eo bet ar varrenn ostilhoù, dezhi da vezañ aesoc'h da implijout. Bremañ eo aesoc'h maketenniñ pajennoù ha kavout an doare d'en ober.
 * '''Skoazeller liammoù :''' Un ostilh aes d'ober gantañ a dalvez deoc'h da ouzhpennañ liammoù ouzh pajennoù wiki all hag ouzh lec'hiennoù diavaez.
 * '''Gwellaennoù klask :''' Gwellaet  eo bet ar c'hinnigoù klask, da gavout fonnusoc'h ar bajenn emaoc'h o klask.
-* '''Perzhioù nevez all :'''  Degaset hon eus ivez un ostilh da sevel taolennoù aesoc'h hag ur vodulenn erlec'hiañ evit aesaat ar c'hemmañ pajennoù.",
+* '''Perzhioù nevez all :'''  Degaset hon eus ivez un ostilh da sevel taolennoù aesoc'h hag ur vodulenn erlec'hiañ evit aesaat ar c'hemmañ pajennoù.
+
+* '''Logo Wikipedia :''' Freskaet eo bet hol logo. Lenn hiroc'h war ar [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
 	'prefswitch-main-logged-changes' => "*An '''ivinell {{int:watch}}''' a zo bremañ ur steredenn
 *An '''ivinell {{int:move}}''' a zo bremañ er meuz disachañ e-kichen ar maezienn klask.",
+	'prefswitch-main-feedback' => "===Evezhiadennoù?===
+Plijet-bras e vefemp o klevet ho toare. Kit da welet hor [[$1|pajenn evezhiadennoù]] pe, ma'z oc'h dedennet da vat gant hor strivoù dalc'hus evit gwellaat ar meziant, sellit ouzh hor [http://usability.wikimedia.org wiki implijadusted] da c'houzout hiroc'h.",
 	'prefswitch-main-anon' => "===Distreiñ===
 Mar fell deoc'h diweredekaat ar perzhioù nevez [$1 klikit amañ]. Ret e vo deoc'h kevreañ pe krouiñ ur gont da gentañ.",
 	'prefswitch-main-on' => "===Trawalc'h gant ar jeu-se !===
@@ -792,6 +831,7 @@ MAr fell deoc'h ober gant ar barregezhioù nevez, [$1 klikit amañ].",
 Mar fell deoc'h e c'hallit respont d'an tamm sontadeg a-is a-raok klikañ war [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]",
 	'prefswitch-survey-intro-off' => "Ho trugarekaat da vezañ amprouet ar perzhioù nevez.
 Mard eo mat deoc'h e c'hallit hor skoazellañ en ur respont d'an tamm sontadeg a-is, a-raok klikañ war \"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]\".",
+	'prefswitch-feedbackpage' => 'Project: Soñjoù diwar-benn an implijadusted',
 );
 
 /** Bosnian (Bosanski)
@@ -3975,12 +4015,14 @@ $messages['ml'] = array(
 /** Marathi (मराठी)
  * @author Mahitgar
  * @author V.narsikar
+ * @author अभय नातू
  */
 $messages['mr'] = array(
 	'prefswitch' => 'ऊपयोगसुलभता उपक्रम पसंती कळ',
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
 	'prefswitch-survey-submit-off' => '↓ नविन बीटा चेहरामोहरा बंद करा',
+	'prefswitch-survey-submit-global-off' => '↓ सर्व विकिंवर नविन चेहरामोहरा बंद करा',
 	'prefswitch-survey-cancel-off' => '↓ जर आपणास नविन बीटा चेहरामोहरा वापराणे सुरू ठेवायचे असल्यास $1 कडे परत जा.',
 	'prefswitch-survey-submit-feedback' => 'प्रतिसाद पाठवा',
 	'prefswitch-survey-cancel-feedback' => '↓ जर आपणास प्रतिसाद (फिडबॅक) द्यावयाचा नसल्यास, आपण $1 कडे परत जाउ शकता.',
@@ -4007,6 +4049,9 @@ $messages['mr'] = array(
 ↓ आभारी आहे',
 	'prefswitch-title-feedback' => 'उलट टपाल
 संदेश परतावा',
+	'prefswitch-success-on' => '↓ नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण त्यास,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
+	'prefswitch-success-off' => '↓ नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
+	'prefswitch-success-feedback' => 'तुमची टिप्पणी पाठवली.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>कडे परत फिरा.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
@@ -4048,8 +4093,12 @@ $messages['mr'] = array(
  [नविन चेहरामोहरा बंद करण्यास $1 येथे टिचकी मारा.].आपणास लॉग-ईन करण्यास वा खाते उघडण्याबद्दल विचारण्यात येईल.',
 	'prefswitch-main-on' => '↓ ===मला परत न्या===
  [नविन चेहरामोहरा बंद करण्यास $2 येथे टिचकी मारा.].',
+	'prefswitch-main-off' => '==वापरुन पहा!==
+[$1 नवीन बदल पाहण्यासाठी येथे टिचकी द्या]',
+	'prefswitch-survey-intro-feedback' => '↓ कृपया  "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" येथे टिचकी मारण्यापूर्वी,आपणातर्फे ऐच्छिक सर्वेक्षणाचा खाली दिलेला नमूना भरुन आपली प्रतिक्रिया घेणे आम्हास जरुर आवडेल.',
 	'prefswitch-survey-intro-off' => 'आमच्या नवीन वैशिष्ट्यसुविधा वापरून पहाण्याकरिता धन्यवाद.
-त्यात सुधारणाकरण्याकरिता,"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" वर टिचकी मारण्यापुर्वी कृपया खालील अबंधनकारक सर्वेक्षण भरून द्या.',
+त्यात सुधारणा करण्याकरिता,"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" वर टिचकी मारण्यापुर्वी कृपया खालील अबंधनकारक सर्वेक्षण भरून द्या.',
+	'prefswitch-feedbackpage' => '↓ Project:सदस्याचे अनुभवाचा परतसंदेश',
 );
 
 /** Malay (Bahasa Melayu)
@@ -5796,7 +5845,7 @@ $messages['th'] = array(
 	'prefswitch-success-off' => 'คุณได้ยกเลิกการใช้คุณลักษณะใหม่ ขอบคุณที่ได้ทดลองใช้คุณลักษณะใหม่ คุณยังสามารถเปิดการใช้งานได้ตลอดเวลาโดยการคลิกลิงก์ "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" ที่อยู่ด้านบนของหน้า',
 	'prefswitch-success-feedback' => 'ความคิดเห็นของคุณได้ถูกส่งไปแล้ว',
 	'prefswitch-return' => '<hr style="clear:both">
-กลับไปยัง <span class="plainlinks">[$ 1 $ 2]</span>',
+กลับไปยัง <span class="plainlinks">[$1 $2]</span>',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 

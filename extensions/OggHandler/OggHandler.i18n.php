@@ -2795,6 +2795,7 @@ $messages['ru'] = array(
 
 /** Yakut (Саха тыла)
  * @author HalanTul
+ * @author Kyraha
  */
 $messages['sah'] = array(
 	'ogg-desc' => 'Обработчик файлов Ogg Theora и Vorbis с использованием JavaScript-проигрывателя',
@@ -2823,6 +2824,7 @@ $messages['sah'] = array(
 	'ogg-dismiss' => 'Кистээ/сап',
 	'ogg-download' => 'Билэни хачайдаа',
 	'ogg-desc-link' => 'Бу билэ туһунан',
+	'ogg-oggThumb-version' => 'OggHandler oggThumb $1 эбэтэр ордук версиятын наадыйар',
 );
 
 /** Sinhala (සිංහල)

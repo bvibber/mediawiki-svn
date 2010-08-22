@@ -414,7 +414,7 @@ $messages['de'] = array(
 	'expand_templates_ok' => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
 	'expand_templates_remove_nowiki' => '<nowiki>-Tags in der Ausgabe unterdrücken',
-	'expand_templates_generate_xml' => 'Zeige XML-Parser-Baum',
+	'expand_templates_generate_xml' => 'XML-Parser-Baum zeigen',
 	'expand_templates_preview' => 'Vorschau',
 );
 

@@ -43,6 +43,13 @@ $messages['arz'] = array(
 	'wikieditor-templates-preference' => 'خلّى القالب يبان مقفول',
 );
 
+/** Belarusian (Беларуская)
+ * @author Maksim L.
+ */
+$messages['be'] = array(
+	'wikieditor-templates-preference' => 'Уключыць згортванне шаблонаў',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Zedlik

@@ -1418,6 +1418,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'createsigndoc-pagename' => 'Blatt:',
+	'createsigndoc-create' => 'Schtaerte',
 );
 
 /** Polish (Polski)
