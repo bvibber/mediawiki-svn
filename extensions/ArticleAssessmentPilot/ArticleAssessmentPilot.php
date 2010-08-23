@@ -5,21 +5,17 @@
 //number of reviews
 $wgArticleAssessmentRevisionCutoff = 5;
 
-
 //Auto-load files
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'api/ApiArticleAssessment.php';
 $wgAutoloadClasses['ArticleAssessmentPilotHooks'] = $dir . 'ArticleAssessmentPilot.hooks.php';
 
-
 //Schema and tables
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleAssessmentPilotHooks::schema';
 $wgHooks['ParserTestTables'][] = 'ArticleAssessmentPilotHooks::parserTestTables';
 
-
-
 //Hooks
-$wgHooks['SkinAfterContent'][] = 'ArticleAssessmentPilot::addCode';
+$wgHooks['SkinAfterContent'][] = 'ArticleAssessmentPilotHooks::addCode';
 
 //API modules
 $wgAPIModules['articleassessment'] = 'ApiArticleAssessment';
@@ -28,7 +24,6 @@ $wgAPIModules['articleassessment'] = 'ApiArticleAssessment';
 //i18n and aliases
 // Adds Internationalized Messages
 $wgExtensionMessagesFiles['ArticleAssessmentPilot'] = $dir . 'ArticleAssessmentPilot.i18n.php';
-
 
 //Credits
 $wgExtensionCredits['other'][] = array(
