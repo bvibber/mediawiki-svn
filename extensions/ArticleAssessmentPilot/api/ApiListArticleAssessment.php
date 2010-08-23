@@ -6,7 +6,7 @@
  * @ingroup API
  */
 
-class ApiArticleAssessment extends ApiBase {
+class ApiListArticleAssessment extends ApiBase {
 
 	/**
 	 * runs when the API is called with "articleasessment"
