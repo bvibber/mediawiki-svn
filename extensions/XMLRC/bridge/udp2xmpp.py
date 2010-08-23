@@ -433,7 +433,7 @@ class Connection(object):
 	pass
 
 class XmppCallback (object):
-    def __init__( self, stanza_name, timeout = 10, stanza_type = '', stanza_id = None, stanza_child_namespace = '', permanent = False, on_timeout = None, on_match = None ):
+    def __init__( self, stanza_name, timeout = 10, stanza_type = '', stanza_id = None, stanza_child_namespace = '', permanent = False, on_timeout = None, on_match = None, description = None ):
 	self.stanza_name = stanza_name
 	self.stanza_type = stanza_type
 	self.stanza_id = stanza_id
@@ -444,17 +444,25 @@ class XmppCallback (object):
 
 	self.connection = None
 
+	if description is None:
+	    self.description = "<%s type=%s id=%s ns=%s>" % ( stanza_name, stanza_type, stanza_id, stanza_child_namespace )
+	else:
+	    self.description = description
+
 	if on_timeout:
 	    self.on_timeout = on_timeout
 
 	if on_match:
 	    self.on_match = on_match
 
+    def __str__(self):
+	return self.description
+
     def on_match(self, stanza):
 	pass
 
     def on_timeout(self):
-	self.connection.warn("callback for %s timed out! %s" % (self.stanza_name, repr(self)))
+	self.connection.warn("callback timed out: %s" % (self.description))
 
     def handle_tick(self):
 	if self.timeout is None or self.permanent:
@@ -470,7 +478,7 @@ class XmppCallback (object):
     def handle_stanza(self, conn, stanza):
 	if self.matches_stanza( stanza ):
 	    try:
-		self.on_match( stanza )
+		self.on_match( self, stanza )
 	    finally:
 		if not self.permanent:
 		    self.unregister()
@@ -597,19 +605,19 @@ class XmppConnection (Connection):
 	    return False
 	    
 
+    def process_other_stanza(self, conn, stanza):
+	self.debug("<< received <%s>: %s" % (stanza.getName(), stanza.__str__()) )  
+	self.log_server_error( stanza )
+
     def process_message(self, conn, message):
-        if (message.getError()):
-            self.warn("received %s error from <%s>: %s" % (message.getType(), message.getError(), message.getFrom() ))
+        if self.log_server_error( message ):
+	    return
 	elif message.getBody():
 	    if message.getFrom().getResource() != self.jid.getNode(): #FIXME: this inly works if no different nick was specified when joining the channel
 		self.debug("discarding %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
 
-    def process_iq(self, conn, iq):
-	self.debug("received iq: %s" % iq)  
-	self.log_server_error( iq )
-
     def process_presence(self, conn, presence):
-	self.debug("received presence: %s" % presence)  
+	self.debug("<< received presence: %s" % presence)  
 
 	if self.log_server_error( presence ):
 	    return
@@ -662,8 +670,8 @@ class XmppConnection (Connection):
         self.debug('authenticated using %s as %s' % ( auth, jid ) )
 
         self.jabber.RegisterHandler( 'message', self.process_message )
-        self.jabber.RegisterHandler( 'iq', self.process_iq )
         self.jabber.RegisterHandler( 'presence', self.process_presence )
+        self.jabber.RegisterHandler( 'iq', self.process_other_stanza )
 
 	self.jid = jid;
         self.info( 'connected as %s' % ( jid ) )
@@ -718,17 +726,18 @@ class XmppConnection (Connection):
     def ping( self ):
 	ping_id = "ping-%s" % random.randint(1000000, 9999999)
 
-	ping = xmpp.Iq( typ='get', attrs={ 'id': ping_id }, to= self.jid.getDomain(), frm= self.jid.getStripped() )
+	ping = xmpp.Iq( typ='get', attrs={ 'id': ping_id }, to= self.jid.getDomain(), frm= self.jid )
 	ping.addChild( name= "ping", namespace = "urn:xmpp:ping" )
-	self.jabber.send( ping )
-	self.debug('XMPP ping sent')
 
-	callback = XmppCallback('iq', stanza_id = ping_id, stanza_child_namespace = 'urn:xmpp:ping', 
+	callback = XmppCallback(stanza_name = 'iq', stanza_id = ping_id, stanza_type = 'result', 
 				timeout = 10,
-				on_match = lambda cb, stanza: self.info('response received to ping!')
+				on_match = lambda cb, stanza: self.info('<< response received to ping!')
 				)
 
-	self.add_callback( callback )
+	self.add_callback( callback ) #NOTE: register callback first, otherwise we might miss the response!
+
+	self.jabber.send( ping )
+	self.debug('>> XMPP ping sent: %s' % ping.__str__() )
 
     def reconnect_backoff( self ):
 	self.debug( "reconnect_backoff: tick = %d, tock = %d" % (self.backoff_tick, self.backoff_tock) )
@@ -818,7 +827,7 @@ class UdpConnection (Connection):
 	body = packet[0]
 	addr = packet[1] #TODO: optionally filter...
 
-	self.debug( "received packet from %s:%s" % addr )
+	self.debug( "<< received packet from %s:%s" % addr )
 	self.process_rc_packet( body )
 
     def process_rc_packet(self, data):
