@@ -49,8 +49,9 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 						'url' => $url,
 						'code' => $site,
 					);
-					if( $matrix->isClosed( $lang, $site ) )
+					if( $matrix->isClosed( $lang, $site ) ) {
 						$site_out['closed'] = '';
+					}
 					$language['site'][] = $site_out;
 				}
 			}
@@ -70,12 +71,15 @@ class ApiQuerySiteMatrix extends ApiQueryBase {
 			$wiki['url'] = $url;
 			$wiki['code'] = str_replace( '_', '-', $lang ) . ( $site != 'wiki' ? $site : '' );
 
-			if( $matrix->isPrivate( $lang . $site ) )
+			if( $matrix->isPrivate( $lang . $site ) ) {
 				$wiki['private'] = '';
-			if( $matrix->isFishbowl( $lang . $site ) )
+			}
+			if( $matrix->isFishbowl( $lang . $site ) ) {
 				$wiki['fishbowl'] = '';
-			if( $matrix->isClosed( $lang, $site ) )
+			}
+			if( $matrix->isClosed( $lang, $site ) ) {
 				$wiki['closed'] = '';
+			}
 
 			$specials[] = $wiki;
 		}
