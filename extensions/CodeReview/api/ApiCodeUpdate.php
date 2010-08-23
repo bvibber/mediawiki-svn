@@ -10,13 +10,6 @@ class ApiCodeUpdate extends ApiBase {
 		}
 		$params = $this->extractRequestParams();
 
-		if ( !isset( $params['repo'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'repo' ) );
-		}
-		if ( !isset( $params['rev'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'rev' ) );
-		}
-
 		$repo = CodeRepository::newFromName( $params['repo'] );
 		if ( !$repo ) {
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
@@ -75,10 +68,14 @@ class ApiCodeUpdate extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'repo' => null,
+			'repo' =>  => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
 			'rev' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_MIN => 1
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_REQUIRED => true,
 			)
 		);
 	}

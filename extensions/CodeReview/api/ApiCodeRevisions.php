@@ -37,9 +37,7 @@ class ApiCodeRevisions extends ApiQueryBase {
 			$this->dieUsage( 'You don\'t have permission to view code revisions', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
-		if ( is_null( $params['repo'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'repo' ) );
-		}
+
 		$this->props = array_flip( $params['prop'] );
 
 		$listview = new CodeRevisionListView( $params['repo'] );
@@ -108,7 +106,10 @@ class ApiCodeRevisions extends ApiQueryBase {
 
 	public function getAllowedParams() {
 		return array(
-			'repo' => null,
+			'repo' => array(
+				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_REQUIRED => true,
+			),
 			'limit' => array(
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
