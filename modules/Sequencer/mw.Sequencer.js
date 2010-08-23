@@ -183,7 +183,7 @@ mw.Sequencer.prototype = {
 		return 'data:text/xml;charset=utf-8,' + escape( xmlString );
 	},
 	getNewSmilXML: function( ){
-		var title = ( this.getOption('title') ) ? 
+		var title = ( this.getOption('title') ) ?
 					this.getOption('title') :
 					gM('mwe-sequencer-untitled-sequence');
 		return '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -343,7 +343,8 @@ mw.Sequencer.prototype = {
 					.addClass( "ui-layout-south mwseq-timeline" )
 					.text( gM('mwe-sequencer-loading-timeline') )				
 			)
-		).children();
+		)
+		.children();
 	},
 
 	getMenuTarget: function(){

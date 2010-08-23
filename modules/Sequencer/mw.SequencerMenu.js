@@ -33,7 +33,7 @@ mw.SequencerMenu.prototype = {
 					_this.sequencer.getActionsSequence().open();
 				}
 			},
-			'divider': true,
+			'save_divider': 'divider',
 			'save' : {
 				'icon' : 'disk',
 				'shortCut' : 'ctrl S',
@@ -42,13 +42,19 @@ mw.SequencerMenu.prototype = {
 					_this.sequencer.getActionsSequence().save();
 				}
 			},
-			'renderdisk' : {
+			/*'renderdisk' : {
 				'icon' : 'gear',
 				'action' : function( _this ){
 					_this.sequencer.getRender().renderDialog();
 				}
+			},*/
+			'publish': {
+				'icon' : 'gear',
+				'action' : function( _this ){
+					_this.sequencer.getActionsSequence().publish();
+				}
 			},
-			'divider': true,
+			'exit_divider': 'divider',
 			'exit' : {
 				'icon' : 'power',
 				'action' : function( _this ){
@@ -74,7 +80,7 @@ mw.SequencerMenu.prototype = {
 					_this.sequencer.getActionsEdit().redo();
 				}
 			},
-			'divider': true,
+			'selectall_divider': 'divider',
 			'selectall': {
 				'action' : function( _this ){
 					mw.log("SequencerMenu::selectall");
@@ -196,9 +202,11 @@ mw.SequencerMenu.prototype = {
 				'title' : gM('mwe-sequencer-menu-' + menuKey ) 
 			})
 			.addClass('sequencer-menu');
+		
 		for( var menuItemKey in menuConfig[ menuKey ] ){
+			var menuItem = this.menuConfig[ menuKey ][ menuItemKey ];
 			// Check for special divider key
-			if( menuItemKey == 'divider'){
+			if( menuItem == 'divider'){				
 				$menu.append(
 					$j('<li />')
 					.addClass('divider')

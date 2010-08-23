@@ -82,5 +82,46 @@ mw.SequencerActionsSequence.prototype = {
 			this.sequencer.getSmil().getXMLString(), 
 			callback 
 		);
+	},
+	/**
+	 * Display the publish dialog 
+	 * ( confim the user has firefogg and rights to save a new version of the file )
+	 */
+	publish: function(){
+		// add a loading dialog
+		var $dialog = mw.addDialog({
+			'resizable':'true',
+			'title' : gM('mwe-sequencer-loading-publish-render'),			
+			'content' : gM('mwe-sequencer-loading-publish-render'),
+			'width' : 450
+		});
+		$dialog.append( $j('<div />').loadingSpinner() );
+		// Grab the firefogg render
+		mw.load( ['AddMedia.firefogg','FirefoggRender'], function(){
+			// Get a Firefogg object to check if firefogg is installed
+			var myFogg = new mw.Firefogg( {
+				'only_fogg':true
+			});			
+			if ( !myFogg.getFirefogg() ) {
+				$dialog.empty().append( $j('<div />').attr('id', 'show_install_firefogg') );
+				myFogg.showInstallFirefog( '#show_install_firefogg' );				
+				return ;
+			}
+			
+			// Build a data-url of the current sequence:
+			$j( '<div />' ).attr('id', 'publishVideoTarget');
+			
+			// Start up the render
+			var foggRender = $j('#videoCrossfade').firefoggRender({
+				'statusTarget': '#targetFoggStatus'
+			});
+			/*
+			foggRender.doRender();
+
+			$j('#renderToFile').text('Stop Render').click(function(){
+				foggRender.stopRender();						
+			});
+			*/ 
+		});
 	}
 }

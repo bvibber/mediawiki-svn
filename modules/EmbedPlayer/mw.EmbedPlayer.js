@@ -1643,7 +1643,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set local apiProvider via config if not defined
 		if( !_this.apiProvider ) {
-			_this.apiProvider = mw.getConfig( 'EmbedPlayer.ApiProvider' );
+			_this.apiProvider = 'local';
 		}	
 		
 		// Setup the request

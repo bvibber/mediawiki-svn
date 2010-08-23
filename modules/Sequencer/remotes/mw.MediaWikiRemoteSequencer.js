@@ -91,7 +91,10 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			if(!data.query || !data.query.pages || data.query.pages[-1]){
 				// no flattened file found
 				$embedPlayer.append(
-					gM('mwe-sequencer-not-published')
+					$j( '<div />').append( 
+						gM('mwe-sequencer-not-published')
+					)
+					.addClass( 'ui-state-highlight' )
 				)
 				return ;
 			}			
@@ -105,7 +108,9 @@ mw.MediaWikiRemoteSequencer.prototype = {
 					if( page.revisions[0].revid < wgCurRevisionId ){
 						// flattened file out of date
 						$embedPlayer.append(
-							gM('mwe-sequencer-published-out-of-date')
+							$j('<div />').append( 
+								gM('mwe-sequencer-published-out-of-date')
+							).addClass( 'ui-state-highlight' )
 						)
 					}
 				}
@@ -144,51 +149,53 @@ mw.MediaWikiRemoteSequencer.prototype = {
 					)
 				}
 			} 
-		})
-		
-		
-		// Display embed sequence
-		$j( this.target ).empty().append(
-			$j('<div />')
-			.addClass( 'sequencer-player')
-			.css( {
-				'float' : 'left',
-				'width' : '420px'
-			})
-			.append( 
-				$embedPlayer,
-				$j('<div />').css({'clear': 'both'})
-			)
-			,
-			
-			// Embed player
-			$j('<div />')
-			.addClass( 'sequencer-embed-helper')
-			.css({
-				'margin-left': '420px' 
-			})
-			
-			// Text embed code
-			.append( 
-				$j('<h3 />')
-				.text( gM('mwe-sequencer-embed-sequence') )
-				,
-				$j('<span />' )
-				.text( gM('mwe-sequencer-embed-sequence-desc') )
-				,
-				$j('<br />'),
-				$j('<textarea />')
-				.css({
-					'width' : '100%',
-					'height' : '200px'
-				}).focus(function(){
-					$j(this).select();
+			// Display embed sequence
+			$j( _this.target ).empty().append(
+				$j('<div />')
+				.addClass( 'sequencer-player')
+				.css( {
+					'float' : 'left',
+					'width' : imageinfo.thumbwidth
 				})
 				.append( 
-					_this.getSequenceEmbedCode()
+					$embedPlayer			
 				)
+				,
+				
+				// Embed player
+				$j('<div />')
+				.addClass( 'sequencer-embed-helper')
+				.css({
+					'margin-left': '430px' 
+				})
+				
+				// Text embed code
+				.append( 
+					$j('<h3 />')
+					.text( gM('mwe-sequencer-embed-sequence') )
+					,
+					$j('<span />' )
+					.text( gM('mwe-sequencer-embed-sequence-desc') )
+					,
+					$j('<br />'),
+					$j('<textarea />')
+					.css({
+						'width' : '100%',
+						'height' : '200px'
+					}).focus(function(){
+						$j(this).select();
+					})
+					.append( 
+						_this.getSequenceEmbedCode()
+					)
+				),
+				
+				// Add a clear both to give content body height
+				$j('<div />').css({'clear': 'both'})
 			)
-		)
+			
+		}); // load json player data			
+	
 		mw.load('EmbedPlayer', function(){
 			$j( _this.target ).find('video').embedPlayer();
 		})		

@@ -28,7 +28,6 @@ $messages['en'] = array(
 	'mwe-sequencer-start-time' => 'Start time',
 	'mwe-sequencer-clip-duration' => 'Clip duration',
 
-	'mwe-sequencer-save-sequence' => 'Save sequence',
 	'mwe-sequencer-loading_user_rights' => 'Loading user rights ...',
 	'mwe-sequencer-sequence-xml' => 'Sequence smil xml',
 	'mwe-sequencer-render-sequence' => 'Render sequence to file',
@@ -45,7 +44,7 @@ $messages['en'] = array(
 	'mwe-sequencer-menu-sequence-open' => 'Open',
 	'mwe-sequencer-menu-sequence-open-desc' => 'Open a sequence for editing',
 
-	'mwe-sequencer-menu-sequence-save' => 'Save Sequence',
+	'mwe-sequencer-menu-sequence-save' => 'Save',
 	'mwe-sequencer-menu-sequence-publish' => 'Publish',
 	'mwe-sequencer-menu-sequence-renderdisk' => 'Render to disk',
 	'mwe-sequencer-menu-sequence-exit' => 'Exit',
@@ -74,9 +73,10 @@ $messages['en'] = array(
 	'mwe-sequencer-save_done' => 'Save complete',
 
 
-	'mwe-sequencer-not-published' => 'This sequence has not yet been published. <i>Browser preview is shown</i>. [$1 Publish this sequence]',
-	'mwe-sequencer-published-out-of-date' =>'This sequence has not yet been published. <i>Version $1 is shown</i>. [$2 Publish update]',
+	'mwe-sequencer-not-published' => 'This sequence has not yet been published. <i>Browser preview is shown</i>. <b>[$1 Review and publish this sequence]</b>.',
+	'mwe-sequencer-published-out-of-date' =>'This published sequence is not the most recent version. You can <b>[$1 review and publish]</b> the most recent version.',
 
+	'mwe-sequencer-loading-publish-render' => 'Loading publisher...',
 
 	'mwe-sequencer-transition_in' => 'Transition in',
 	'mwe-sequencer-transition_out' => 'Transition out',
