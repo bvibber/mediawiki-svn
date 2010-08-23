@@ -480,7 +480,7 @@ class ApiReflectAction extends ApiBase {
 							&& $bulletAuthor != $userName 
 							&& $userLevel < 2 
 						)
-					||	( // commenters cann't add bullets to their comment
+					||	( // commenters can't add bullets to their comment
 							$verb == 'add' 
 							&& $commentAuthor == $userName 
 						) ;

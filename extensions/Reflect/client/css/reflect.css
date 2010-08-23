@@ -218,7 +218,6 @@
 					
 						#reflected .rf_comment_summary textarea.new_bullet_text {
 							height: 60px;
-							font-size: 135%;
 							padding: 4px 2px;
 							width:100%;
 						}
@@ -359,7 +358,6 @@
 
 
 #reflected ul.response_eval {
-	display:inline;	
 }
 
 #reflected ul.response_eval li {
@@ -394,7 +392,7 @@
 }
 
 #reflected .responses .response_dialog textarea {
-	height:30px;
+	height:60px;
 }
 #reflected .response_def .prompt {
 	padding: 5px; 
@@ -406,7 +404,8 @@
 	width: 12px;
 }
 
-#reflected .rf_comment_summary .bullet_main {
+#reflected .rf_comment_summary .bullet_main .bullet_main_wrapper {
+	min-height:42px;
 	
 }
 
@@ -416,7 +415,6 @@
 		#reflected .rf_comment_summary .bullet_main .bullet_main_wrapper li.bullet_text{
 			width: 90%;
 			float:left;
-				min-height:38px;
 		}
 
 			#reflected .rf_comment_summary ul.rebutt_list {

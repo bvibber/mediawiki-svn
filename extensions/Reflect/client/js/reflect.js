@@ -18,7 +18,7 @@
  * 
  * Current browser compatability:
  * 
- * 		firefox : best
+ * 	firefox : best
  *		safari : good
  *		chrome : good			
  *		opera : untested
@@ -73,7 +73,8 @@ var Reflect = {
 			 */				
 			components : []
 		},
-		study : false
+		study : false,
+		enable_flagging : false
 	},
 
 	/**
@@ -446,16 +447,28 @@ var Reflect = {
 				footer.find( '.delete_operation' ).show();
 			} else if ( Reflect.api.server.is_admin() ) {
 				footer.find( '.modify_operation' ).hide();
-				footer.find( '.dispute_operation' ).show();
+				if (Reflect.config.enable_flagging) {
+					footer.find('.dispute_operation').show();
+				} else {
+					footer.find('.dispute_operation').hide();
+				}
 				footer.find( '.delete_operation' ).show();
 			} else if ( user == bullet_obj.comment.user ) {
-				footer.find( '.dispute_operation' ).show();
+				if (Reflect.config.enable_flagging) {
+					footer.find('.dispute_operation').show();
+				} else {
+					footer.find('.dispute_operation').hide();
+				}
 				footer.find( '.modify_operation' ).hide();
 				footer.find( '.delete_operation' ).hide();
 			} else {
 				footer.find( '.modify_operation' ).hide();
 				footer.find( '.delete_operation' ).hide();
-				footer.find( '.dispute_operation' ).show();
+				if (Reflect.config.enable_flagging) {
+					footer.find('.dispute_operation').show();
+				} else {
+					footer.find('.dispute_operation').hide();
+				}
 			}
 
 			footer.animate( {
@@ -595,7 +608,7 @@ var Reflect = {
 				}
 			}
 			$j( this ).css( 'background-color', Reflect.utils
-					.get_inverted_background_color( $j( this ), color_convert ) );
+				.get_inverted_background_color( $j( this ), color_convert ) );
 		},
 
 		response_mouseout : function ( event ) {
@@ -1065,7 +1078,7 @@ var Reflect = {
 			options : {},
 			_build : function () {
 				var comment_text = this.$elem
-						.find( this.options.initializer.comment_text );
+						.find( this.options.initializer.comment_text + ':first' );
 				this.$elem.addClass( 'rf_comment' );
 
 				var wrapper = $j( '' 
@@ -1091,9 +1104,9 @@ var Reflect = {
 								+ this.id + '" class="rf_comment_wrapper" />' ) );
 
 				this.elements = {
-					bullet_list : comment_text.find( '.bullet_list' ),
-					comment_text : this.$elem.find( '.rf_comment_text' ),
-					text_wrapper : this.$elem.find( '.rf_comment_text_wrapper' )
+					bullet_list : comment_text.find( '.bullet_list:first' ),
+					comment_text : this.$elem.find( '.rf_comment_text:first' ),
+					text_wrapper : this.$elem.find( '.rf_comment_text_wrapper:first' )
 				};
 
 			},
@@ -1110,7 +1123,7 @@ var Reflect = {
 				var bullet_text = bullet_info.txt, 
 					bullet_id = bullet_info.id, 
 					responses = '';
-				params = {
+				var params = {
 					is_prompt : false,
 					user : bullet_info.u,
 					bullet_text : bullet_text,
@@ -1220,7 +1233,6 @@ var Reflect = {
 								+ Reflect.api.server.media_dir 
 								+ 'bullet.png) left top no-repeat'
 						} );
-
 				this.elements = {};
 			},
 			set_id : function ( id, rev ) {
@@ -1435,11 +1447,9 @@ var Reflect = {
 			$j( 'body' ).append( templates_from_server );
 
 			$j.extend( Reflect.templates, {
-				new_bullet_dialog : $j
-						.jqotec( '#reflect_template_new_bullet_dialog' ),
+				new_bullet_dialog : $j.jqotec( '#reflect_template_new_bullet_dialog' ),
 				new_response : $j.jqotec( '#reflect_template_new_response' ),
-				new_bullet_prompt : $j
-						.jqotec( '#reflect_template_new_bullet_prompt' ),
+				new_bullet_prompt : $j.jqotec( '#reflect_template_new_bullet_prompt' ),
 				response_dialog : $j.jqotec( '#reflect_template_response_dialog' ),
 				bullet : $j.jqotec( '#reflect_template_bullet' ),
 				bullet_highlight : $j.jqotec( '#reflect_template_bullet_highlight' )
@@ -1472,67 +1482,69 @@ var Reflect = {
 			var component = Reflect.contract.components[i];
 
 			$j( component.comment_identifier )
-					.each( function ( index ) {
-						params = {
-							initializer : component
-						};
-						$j( this ).comment( params );
-						var comment = $j.data( this, 'comment' );
+				.each( function ( index ) {
+					var params = {
+						initializer : component
+					};
+					$j( this ).comment( params );
+					var comment = $j.data( this, 'comment' );
 
-						if ( Reflect.data ) {
-							bullets = [];
-							for ( var j in Reflect.data[comment.id])
-								bullets.push( Reflect.data[comment.id][j] );
+					if ( Reflect.data ) {
+						var bullets = [];
+						for ( var j in Reflect.data[comment.id])
+							bullets.push( Reflect.data[comment.id][j] );
 
-							// rank order of bullets in list
-							bullets = bullets.sort( function ( a, b ) {
-								var a_tot = 0.0, b_tot = 0.0;
-								for ( var j in a.highlights)
-									a_tot += parseFloat( a.highlights[j].eid );
-								for ( var j in b.highlights)
-									b_tot += parseFloat( b.highlights[j].eid );
-								a_score = a_tot / a.highlights.length;
+						// rank order of bullets in list
+						bullets = bullets.sort( function ( a, b ) {
+							var a_tot = 0.0, b_tot = 0.0;
+							for (var j in a.highlights) {
+								a_tot += parseFloat(a.highlights[j].eid);
+							}
+					 		for ( var j in b.highlights) {
+								b_tot += parseFloat( b.highlights[j].eid );
+							}
+							var a_score = a_tot / a.highlights.length,
 								b_score = b_tot / b.highlights.length;
-								return a_score - b_score;
-							} );
+							return a_score - b_score;
+						} );
 
-							for ( var j in bullets) {
+						for ( var j in bullets) {
 
-								var bullet_info = bullets[j], 
-									bullet = comment.add_bullet( bullet_info ), 
-									responses = bullet_info.responses, 
-									has_response = false;
+							var bullet_info = bullets[j], 
+								bullet = comment.add_bullet( bullet_info ), 
+								responses = bullet_info.responses, 
+								has_response = false;
 
-								for ( var k in responses) {
-									has_response = true;
-									break;
-								}
-
-								if ( has_response ) {
-									for ( var k in responses) {
-										var response_obj = bullet
-												.add_response( responses[k] );
-									}
-								} else if ( comment.user == user ) {
-									bullet.add_response_dialog();
-								}
-
-								Reflect.bind.bullet( bullet );
-
+							for ( var k in responses) {
+								has_response = true;
+								break;
 							}
 
-							// segment sentences we can index them during highlighting
-							comment.elements.comment_text.wrap_sentences();
-							comment.$elem.find( '.sentence' )
-									.each( function ( index ) {
-										$j( this ).attr( 'id', 'sentence-' + index )
-												.click( Reflect.handle.sentence_click );
-									} );
+							if ( has_response ) {
+								for ( var k in responses) {
+									var response_obj = bullet
+											.add_response( responses[k] );
+								}
+							} else if ( comment.user == user ) {
+								bullet.add_response_dialog();
+							}
+
+							Reflect.bind.bullet( bullet );
 
 						}
-						Reflect.transitions.to_base( comment.id );
 
-					} );
+					}
+					// segment sentences we can index them during highlighting
+					comment.elements.comment_text.wrap_sentences();
+					comment.$elem.find( '.sentence' )
+							.each( function ( index ) {
+								$j( this ).attr( 'id', 'sentence-' + index )
+										.click( Reflect.handle.sentence_click );
+							} );
+												
+					Reflect.transitions.to_base( comment.id );
+
+				} );
 		}
 	},
 	
