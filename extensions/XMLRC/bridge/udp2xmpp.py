@@ -444,8 +444,8 @@ class Connection(object):
 
 class XmppCallback (object):
     def __init__( self, stanza = None, stanza_name = None, 
-		  stanza_type = None, stanza_id = None, stanza_child_namespace = '', 
-		  timeout = 10, permanent = False, 
+		  stanza_type = None, stanza_id = None, stanza_child_namespace = '', stanza_status = None, 
+		  timeout = 10, permanent = False, match_condition = None,
 		  on_match = None, on_timeout = None, on_error = None, 
 		  description = None
 		):
@@ -469,6 +469,7 @@ class XmppCallback (object):
 	self.stanza_name = stanza_name
 	self.stanza_type = stanza_type
 	self.stanza_id = stanza_id
+	self.stanza_status = stanza_status
 	self.stanza_child_namespace = stanza_child_namespace
 
 	if self.stanza_type and type(self.stanza_type) in set((set, tuple, list)):
@@ -496,6 +497,11 @@ class XmppCallback (object):
 
 	if on_match:
 	    self.on_match = on_match
+
+	if match_condition:
+	    self.match_condition = match_condition
+	else:
+	    self.match_condition = None
 
     def __str__(self):
 	return self.description
@@ -565,6 +571,13 @@ class XmppCallback (object):
 	    if self.stanza_types is not None:
 		if t not in self.stanza_types:
 		    return False
+
+	if self.stanza_status is not None:
+	    if self.stanza_status not in self.connection.get_status_codes(stanza):
+		return False
+
+	if self.match_condition and not self.match_condition(self, stanza):
+	    return False
 
 	return True
 
@@ -664,18 +677,16 @@ class XmppConnection (Connection):
 
 	if error:
 	    name = None
-	    ns = None
 
 	    for node in error.kids:
 		if node and node.getNamespace(): 
 		    name = node.getName()
-		    ns = node.getNamespace()
 		    break
 	    
-	    if name and ns:
-		self.warn( 'SERVER ERROR: %s: %s %s' % ( error['type'], name, ns ) )
+	    if name:
+		self.warn( 'SERVER ERROR: %s: %s ' % ( error['type'], name ) )
 	    else:
-		self.warn( 'SERVER ERROR: %s' % repr(error) )
+		self.warn( 'SERVER ERROR: %s' % error.__str__() )
 
 	    return True
 	else:
@@ -799,6 +810,23 @@ class XmppConnection (Connection):
 
 	self.jabber.connected = None #XXX: ugly
 	return ok
+
+    def get_status_codes(self, stanza):
+	codes = set()
+
+	if not stanza:
+	    return codes
+
+	if stanza.getName() != "x":
+	    stanza = stanza.T.x
+
+	if not stanza:
+	    return codes
+
+	for s in stanza.getTags("status"):
+	    codes.add( s.code )
+
+	return codes
 
     def make_id( self, name ):
 	self.id_counter += 1
@@ -1074,6 +1102,14 @@ class MucChannel (JabberChannel):
 	    )
 
 	return True
+
+    def create(self):
+	# use our own desired nickname as resource part of the group's JID
+	jid = self.jid.getStripped() + "/" + self.nick; 
+
+	#create presence stanza
+	join = xmpp.Presence( to= jid )
+	join.addChild( name = 'x', namespace = 'http://jabber.org/protocol/muc' )  #announce full MUC support
 
     def set_room_info( self, iq ):
 	self.connection.info("ROOM IDENITY: " + iq.T.query.T.identity.__str__())
