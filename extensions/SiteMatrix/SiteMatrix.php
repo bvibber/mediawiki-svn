@@ -69,6 +69,6 @@ $wgAutoloadClasses['SiteMatrixPage'] = $dir . 'SiteMatrix_body.php';
 $wgSpecialPages['SiteMatrix'] = 'SiteMatrixPage';
 $wgSpecialPageGroups['SiteMatrix'] = 'wiki';
 
-$wgAutoloadClasses['ApiQuerySiteMatrix'] = $dir . 'SiteMatrix_body.php';
+$wgAutoloadClasses['ApiQuerySiteMatrix'] = $dir . 'SiteMatrixApi.php';
 $wgAPIModules['sitematrix'] = 'ApiQuerySiteMatrix';
 
