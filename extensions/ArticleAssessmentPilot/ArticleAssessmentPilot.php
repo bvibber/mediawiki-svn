@@ -8,7 +8,7 @@ $wgArticleAssessmentRevisionCutoff = 5;
 
 //Auto-load files
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'ApiArticleAssessment.php';
+$wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'api/ApiArticleAssessment.php';
 $wgAutoloadClasses['ArticleAssessmentPilotHooks'] = $dir . 'ArticleAssessmentPilot.hooks.php';
 
 
