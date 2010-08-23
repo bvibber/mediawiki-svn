@@ -445,7 +445,7 @@ class Connection(object):
 class XmppCallback (object):
     def __init__( self, stanza = None, stanza_name = None, 
 		  stanza_type = None, stanza_id = None, stanza_child_namespace = '', stanza_status = None, 
-		  timeout = 10, permanent = False, match_condition = None,
+		  timeout = 10, permanent = False, match_condition = None, protocol_generator = None,
 		  on_match = None, on_timeout = None, on_error = None, 
 		  description = None
 		):
@@ -481,8 +481,10 @@ class XmppCallback (object):
 
 	self.timeout = timeout
 	self.permanent = permanent
+	self.protocol_generator = protocol_generator
 
 	self.connection = None
+	self.status = "pending"
 
 	if description is None:
 	    self.description = "<%s type=%s id=%s ns=%s>" % ( stanza_name, stanza_type, stanza_id, stanza_child_namespace )
@@ -538,20 +540,28 @@ class XmppCallback (object):
 	self.timeout -= 1
 	if self.timeout <= 0:
 	    try:
+		self.status = "timeout"
 		self.on_timeout(self)
 	    finally:
 		self.unregister()
 
     def handle_stanza(self, conn, stanza):
 	if self.matches_stanza( stanza ):
+	    connection = self.connection #save across unregistr
+
 	    try:
 		if stanza.getError() or stanza.getAttr("type") == "error":
+		    self.status = "error"
 		    self.on_error( self, stanza )
 		else:
+		    self.status = "matched"
 		    self.on_match( self, stanza )
 	    finally:
 		if not self.permanent:
 		    self.unregister()
+
+	    if self.protocol_generator:
+		connection.run_protocol( self.protocol_generator )
 
     def matches_stanza(self, stanza):
 	# NOTE: stanza_name and stanza_child_namespace are already checked by the dispatcher!
@@ -720,7 +730,7 @@ class XmppConnection (Connection):
 	    self.process_presence_muc_user( conn, x )
 
     def process_presence_muc_user(self, conn, x):
-	self.info( 'MUC USER: %s' % x.__str__() ) #FIXME: better info!
+	self.info( 'muc presence: %s' % x.__str__() ) #FIXME: better info!
 
     def guess_local_resource(self):
 	resource = "%s-%d" % ( socket.gethostname(), os.getpid() ) 
@@ -811,19 +821,22 @@ class XmppConnection (Connection):
 	self.jabber.connected = None #XXX: ugly
 	return ok
 
-    def get_status_codes(self, stanza):
+    def get_status_codes(self, node):
 	codes = set()
 
-	if not stanza:
+	if not node:
 	    return codes
 
-	if stanza.getName() != "x":
-	    stanza = stanza.T.x
+	if node.getName() != "x" and node.getName() != "item":
+	    node = node.T.x
 
-	if not stanza:
+	if not node:
 	    return codes
 
-	for s in stanza.getTags("status"):
+	if node.getName() == "x":
+	    node = node.T.item
+
+	for s in node.getTags("status"):
 	    codes.add( s.code )
 
 	return codes
@@ -834,6 +847,15 @@ class XmppConnection (Connection):
 
 	the_id = "%s-%d-%d" % (name, self.id_counter, r)
 	return the_id
+
+    def future_send( self, stanza, callback = None, **args ):
+	future = {}
+	future.update(args)
+
+	future['callback'] = callback
+	future['stanza'] = stanza
+
+	return future
 
     def send( self, stanza, callback = None, **args ):
 	if stanza.getName() == "iq":
@@ -853,8 +875,31 @@ class XmppConnection (Connection):
 
 	if callback:
 	    self.add_callback(callback)  # NOTE: can't miss anything, this is single threaded!
+	    return callback
+	else:
+	    return True
 
-	return callback
+    def run_protocol( self, protocol_generator ):
+	if callable(protocol_generator):
+	    protocol_generator = protocol_generator(self) # factory passed, instantiate generator
+
+	try:
+	    n = protocol_generator.next()
+
+	    if callable(n):
+		self.debug("run protocol: callable %s" % repr(n))
+
+		return n(self, protocol_generator)
+	    else:
+		n['protocol_generator'] = protocol_generator #pass the generator itself to the next incaranation!
+
+		self.debug("run protocol: dict %s" % repr(n))
+		return self.send(**n)
+	except StopIteration:
+	    self.debug("run protocol: done.")
+
+	return False
+
 
     def ping( self ):
 	ping = xmpp.Iq( typ='get', to= self.jid.getDomain(), frm= self.jid )
@@ -1081,8 +1126,9 @@ class MucChannel (JabberChannel):
 	self.message_type = 'groupchat'
 
 	self.room_identity = None
+	self.status = None
 
-    def join(self):
+    def join_protocol(self, connection):
 	# use our own desired nickname as resource part of the group's JID
 	jid = self.jid.getStripped() + "/" + self.nick; 
 
@@ -1090,20 +1136,29 @@ class MucChannel (JabberChannel):
 	join = xmpp.Presence( to= jid )
 	join.addChild( name = 'x', namespace = 'http://jabber.org/protocol/muc' )  #announce full MUC support
 
-	self.connection.send( join )
+	send = self.connection.future_send( join, lambda cb, stanza: self.room_joined(stanza),
+	    match_condition = lambda cb, stanza: self.is_my_presence(stanza),
+	    on_error = lambda cb, stanza: self.connection.warn("FAILED TO JOIN ROOM %s! %s " % (jid, stanza.getError())),
+	    on_timeout = lambda cb: self.connection.warn("FAILED TO JOIN ROOM %s!" % jid)
+	    )
 	self.connection.info( 'joining room %s' % self.jid.getStripped() )
+	yield send
 
 	disco = xmpp.Iq( to= self.jid, typ="get" )
 	disco.addChild( name="query", namespace = "http://jabber.org/protocol/disco#info" )
 
-	self.connection.send( disco, lambda cb, stanza: self.set_room_info(stanza), 
-	    on_error = lambda cb, stanza: self.connection.warn("FAILED TO JOIN ROOM %s! %s " % (jid, stanza.getError())),
-	    on_timeout = lambda cb: self.connection.warn("FAILED TO JOIN ROOM %s!" % jid),
+	send = self.connection.future_send( disco, lambda cb, stanza: self.set_room_info(stanza), 
+	    on_error = lambda cb, stanza: self.connection.warn("FAILED TO GET ROOM IDENTITY %s! %s " % (jid, stanza.getError())),
+	    on_timeout = lambda cb: self.connection.warn("FAILED TO GET ROOM IDENTITY  %s!" % jid),
 	    )
+	yield send
+	
+	
 
-	return True
+    def join(self):
+	self.connection.run_protocol( self.join_protocol )
 
-    def create(self):
+    def create_room(self):
 	# use our own desired nickname as resource part of the group's JID
 	jid = self.jid.getStripped() + "/" + self.nick; 
 
@@ -1114,6 +1169,22 @@ class MucChannel (JabberChannel):
     def set_room_info( self, iq ):
 	self.connection.info("ROOM IDENITY: " + iq.T.query.T.identity.__str__())
 	self.room_identity = iq.T.query.T.identity
+
+    def room_joined( self, presence ):
+	info = presence.T.x.T.item
+	self.status = self.connection.get_status_codes(presence)
+
+    def is_my_presence( self, presence ):
+	if presence.T.x and presence.T.x.getNamespace() == "http://jabber.org/protocol/muc#user":
+	      if presence.T.x.T.item: 
+		  jid = presence.T.x.T.item.getAttr("jid")
+		  me = self.connection.jid.getStripped()
+
+		  if jid.startswith( me ):
+		      return True
+	else:
+	      return False
+
 
 ##################################################################################
 
