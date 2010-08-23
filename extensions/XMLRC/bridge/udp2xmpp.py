@@ -32,6 +32,7 @@ LOG_MUTE = 0
 LOG_QUIET = 10
 LOG_VERBOSE = 20
 LOG_DEBUG = 30
+LOG_TRACE = 40
 
 ################################################################################
 class WikiInfo(object):
@@ -106,6 +107,10 @@ class Relay(object):
 	if self.loglevel >= LOG_DEBUG:
 	    sys.stderr.write( "DEBUG: %s\n" % ( message.encode( self.console_encoding ) ) )
 
+    def trace(self, message):
+	if self.loglevel >= LOG_TRACE:
+	    sys.stderr.write( "TRACE: %s\n" % ( message.encode( self.console_encoding ) ) )
+
     def get_all_channels(self):
 	return self.channels.values()
 
@@ -151,6 +156,8 @@ class Relay(object):
     	#    self.broadcast_message( line[1:] )
         elif ( command == 'send' ):
     	    self.broadcast_message( ' '.join(args) )
+        elif ( command == 'trace' ):
+    	    self.loglevel = LOG_TRACE
         elif ( command == 'debug' ):
     	    self.loglevel = LOG_DEBUG
         elif ( command == 'verbose' ):
@@ -429,15 +436,47 @@ class Connection(object):
     def debug(self, message):
 	self.relay.debug( message )
 
+    def trace(self, message):
+	self.relay.trace( message )
+
     def tick(self):
 	pass
 
 class XmppCallback (object):
-    def __init__( self, stanza_name, timeout = 10, stanza_type = '', stanza_id = None, stanza_child_namespace = '', permanent = False, on_timeout = None, on_match = None, description = None ):
+    def __init__( self, stanza = None, stanza_name = None, 
+		  stanza_type = None, stanza_id = None, stanza_child_namespace = '', 
+		  timeout = 10, permanent = False, 
+		  on_match = None, on_timeout = None, on_error = None, 
+		  description = None
+		):
+
+	if stanza is None and stanza_name is None:
+	    raise Exception("must provide at least stanza or stanza_name")
+
+	if stanza and stanza_name is None:
+	    stanza_name = stanza.getName()
+
+	if stanza and (stanza_type is None or stanza_type==''):
+	    t = stanza.getAttr("type")
+
+	    if t == "get":
+		stanza_type = "result"
+
+	if stanza and (stanza_id is None or stanza_id==''):
+	    stanza_id = stanza.getAttr("id")
+
+	self.stanza_types = None
 	self.stanza_name = stanza_name
 	self.stanza_type = stanza_type
 	self.stanza_id = stanza_id
 	self.stanza_child_namespace = stanza_child_namespace
+
+	if self.stanza_type and type(self.stanza_type) in set((set, tuple, list)):
+	    self.stanza_types = set(self.stanza_type)
+	    self.stanza_type = None
+	elif self.stanza_type and self.stanza_type.find('|'):
+	    self.stanza_types = set(self.stanza_type.split('|'))
+	    self.stanza_type = None
 
 	self.timeout = timeout
 	self.permanent = permanent
@@ -452,17 +491,39 @@ class XmppCallback (object):
 	if on_timeout:
 	    self.on_timeout = on_timeout
 
+	if on_error:
+	    self.on_error = on_error
+
 	if on_match:
 	    self.on_match = on_match
 
     def __str__(self):
 	return self.description
 
+    def configure_for_response(self, stanza):
+	# match on id
+	sid = stanza.getAttr('id')
+	if not self.stanza_id and sid:
+	    self.stanza_id = sid
+	
+	# match on corresponding type
+	t = stanza.getAttr('type')
+	if not self.stanza_type and t:
+	    if t == 'get':
+		self.stanza_type = 'result'
+
+	# match on stanza name (this is probably pointless, since it's always set anyway)
+	if not self.stanza_name:
+	    self.stanza_name = stanza.getName()
+
     def on_match(self, stanza):
 	pass
 
-    def on_timeout(self):
+    def on_timeout(self, dummy):
 	self.connection.warn("callback timed out: %s" % (self.description))
+
+    def on_error(self, dummy, stanza):
+	self.connection.warn("callback got error: %s -> %s" % (self.description, stanza.__str__()))
 
     def handle_tick(self):
 	if self.timeout is None or self.permanent:
@@ -471,24 +532,39 @@ class XmppCallback (object):
 	self.timeout -= 1
 	if self.timeout <= 0:
 	    try:
-		self.on_timeout()
+		self.on_timeout(self)
 	    finally:
 		self.unregister()
 
     def handle_stanza(self, conn, stanza):
 	if self.matches_stanza( stanza ):
 	    try:
-		self.on_match( self, stanza )
+		if stanza.getError() or stanza.getAttr("type") == "error":
+		    self.on_error( self, stanza )
+		else:
+		    self.on_match( self, stanza )
 	    finally:
 		if not self.permanent:
 		    self.unregister()
 
     def matches_stanza(self, stanza):
-	# NOTE: stanza_name, stanza_type and stanza_child_namespace are already checked by the dispatcher!
+	# NOTE: stanza_name and stanza_child_namespace are already checked by the dispatcher!
+	#       stanza_type could also be matched by the dispatcher, but that's not quite flexible enough
 
 	if self.stanza_id is not None:
 	    if self.stanza_id != stanza.getAttr( 'id' ):
 		return False
+
+	t = stanza.getAttr( 'type' )
+
+	if t != "error": #always pass type="error". filter other types
+	    if self.stanza_type is not None and self.stanza_type != '':
+		if self.stanza_type != t:
+		    return False
+
+	    if self.stanza_types is not None:
+		if t not in self.stanza_types:
+		    return False
 
 	return True
 
@@ -528,6 +604,7 @@ class XmppConnection (Connection):
 	else:
 	    self.connection_security = None
 
+	self.id_counter = 0
 	self.xmpp_debug = xmpp_debug
 
 	self.backoff_tick = 0
@@ -540,7 +617,7 @@ class XmppConnection (Connection):
 	self.callbacks = []
 
     def add_callback(self, callback):
-	self.jabber.RegisterHandler( callback.stanza_name, callback.handle_stanza, typ = callback.stanza_type, ns = callback.stanza_child_namespace )
+	self.jabber.RegisterHandler( callback.stanza_name, callback.handle_stanza, typ = '', ns = callback.stanza_child_namespace ) #NOTE: leave type match to callback
 	self.callbacks.append( callback )
 	callback.attach( self )
 	self.debug( "registered callback for %s: %s" % (callback.stanza_name, callback) )
@@ -606,7 +683,7 @@ class XmppConnection (Connection):
 	    
 
     def process_other_stanza(self, conn, stanza):
-	self.debug("<< received <%s>: %s" % (stanza.getName(), stanza.__str__()) )  
+	self.trace("<< received <%s>: %s" % (stanza.getName(), stanza.__str__()) )  
 	self.log_server_error( stanza )
 
     def process_message(self, conn, message):
@@ -617,7 +694,7 @@ class XmppConnection (Connection):
 		self.debug("discarding %s message from <%s>: %s" % (message.getType(), message.getFrom(), message.getBody().strip() ))
 
     def process_presence(self, conn, presence):
-	self.debug("<< received presence: %s" % presence)  
+	self.trace("<< received presence: %s" % presence)  
 
 	if self.log_server_error( presence ):
 	    return
@@ -632,7 +709,7 @@ class XmppConnection (Connection):
 	    self.process_presence_muc_user( conn, x )
 
     def process_presence_muc_user(self, conn, x):
-	self.info( 'MUC USER: ' + repr(x) ) #FIXME: better info!
+	self.info( 'MUC USER: %s' % x.__str__() ) #FIXME: better info!
 
     def guess_local_resource(self):
 	resource = "%s-%d" % ( socket.gethostname(), os.getpid() ) 
@@ -723,21 +800,40 @@ class XmppConnection (Connection):
 	self.jabber.connected = None #XXX: ugly
 	return ok
 
-    def ping( self ):
-	ping_id = "ping-%s" % random.randint(1000000, 9999999)
+    def make_id( self, name ):
+	self.id_counter += 1
+	r = random.randint(1000000, 9999999)
 
-	ping = xmpp.Iq( typ='get', attrs={ 'id': ping_id }, to= self.jid.getDomain(), frm= self.jid )
+	the_id = "%s-%d-%d" % (name, self.id_counter, r)
+	return the_id
+
+    def send( self, stanza, callback = None, **args ):
+	if stanza.getName() == "iq":
+	    # auto-assign id for iq
+	    if stanza.getAttr("type") == "get" and stanza.getAttr("id") is None:
+		stanza.setAttr( "id", self.make_id("iq") )
+
+	if callable(callback):
+	    # if callback is a plain callable, wrap in a XmppCallback
+	    callback = XmppCallback(stanza, on_match = callback, **args)
+	elif callback:
+	    # otherwise auto-match stanza
+	    callback.configure_for_response(stanza)
+
+	self.jabber.send(stanza)
+	self.trace('>> stanza sent: %s' % stanza.__str__() )
+
+	if callback:
+	    self.add_callback(callback)  # NOTE: can't miss anything, this is single threaded!
+
+	return callback
+
+    def ping( self ):
+	ping = xmpp.Iq( typ='get', to= self.jid.getDomain(), frm= self.jid )
 	ping.addChild( name= "ping", namespace = "urn:xmpp:ping" )
 
-	callback = XmppCallback(stanza_name = 'iq', stanza_id = ping_id, stanza_type = 'result', 
-				timeout = 10,
-				on_match = lambda cb, stanza: self.info('<< response received to ping!')
-				)
-
-	self.add_callback( callback ) #NOTE: register callback first, otherwise we might miss the response!
-
-	self.jabber.send( ping )
-	self.debug('>> XMPP ping sent: %s' % ping.__str__() )
+	self.send( ping, lambda cb, stanza: self.info('response received to ping!') )
+	self.debug('ping sent: %s' % ping.__str__() )
 
     def reconnect_backoff( self ):
 	self.debug( "reconnect_backoff: tick = %d, tock = %d" % (self.backoff_tick, self.backoff_tock) )
@@ -827,7 +923,7 @@ class UdpConnection (Connection):
 	body = packet[0]
 	addr = packet[1] #TODO: optionally filter...
 
-	self.debug( "<< received packet from %s:%s" % addr )
+	self.trace( "<< received packet from %s:%s" % addr )
 	self.process_rc_packet( body )
 
     def process_rc_packet(self, data):
@@ -944,7 +1040,7 @@ class JabberChannel (Channel):
 
 	message = self.compose_message( message, mtype = mtype, xml = xml )
 
-        return self.connection.jabber.send( message )
+        return self.connection.send( message )
 
 class MucChannel (JabberChannel):
     def __init__( self, connection, room_jid, room_nick ):
@@ -956,21 +1052,32 @@ class MucChannel (JabberChannel):
         self.nick = room_nick
 	self.message_type = 'groupchat'
 
+	self.room_identity = None
+
     def join(self):
 	# use our own desired nickname as resource part of the group's JID
 	jid = self.jid.getStripped() + "/" + self.nick; 
 
 	#create presence stanza
 	join = xmpp.Presence( to= jid )
+	join.addChild( name = 'x', namespace = 'http://jabber.org/protocol/muc' )  #announce full MUC support
 
-	#announce full MUC support
-	join.addChild( name = 'x', namespace = 'http://jabber.org/protocol/muc' ) 
+	self.connection.send( join )
+	self.connection.info( 'joining room %s' % self.jid.getStripped() )
 
-	self.connection.jabber.send( join )
+	disco = xmpp.Iq( to= self.jid, typ="get" )
+	disco.addChild( name="query", namespace = "http://jabber.org/protocol/disco#info" )
 
-	self.connection.info( 'joined room %s' % self.jid.getStripped() )
+	self.connection.send( disco, lambda cb, stanza: self.set_room_info(stanza), 
+	    on_error = lambda cb, stanza: self.connection.warn("FAILED TO JOIN ROOM %s! %s " % (jid, stanza.getError())),
+	    on_timeout = lambda cb: self.connection.warn("FAILED TO JOIN ROOM %s!" % jid),
+	    )
 
 	return True
+
+    def set_room_info( self, iq ):
+	self.connection.info("ROOM IDENITY: " + iq.T.query.T.identity.__str__())
+	self.room_identity = iq.T.query.T.identity
 
 ##################################################################################
 
@@ -996,6 +1103,9 @@ if __name__ == '__main__':
 
     option_parser.add_option("--debug", action="store_const", dest="loglevel", const=LOG_DEBUG, 
 				help="print debug messages")
+
+    option_parser.add_option("--trace", action="store_const", dest="loglevel", const=LOG_TRACE, 
+				help="print debug trace messages")
 
     option_parser.add_option("--xmpp-debug", action="store_true", dest="xmpp_debug", 
 				help="""enable debugging in the xmpppy library. Flags are set in the [XMPP] section configuration, using the key 'debug-flags'. Flags are separated by pipe characters.""")
