@@ -7,7 +7,7 @@ $wgArticleAssessmentRevisionCutoff = 5;
 
 //Auto-load files
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'api/ApiArticleAssessment.php';
+$wgAutoloadClasses['ApiListArticleAssessment'] = $dir . 'api/ApiListArticleAssessment.php';
 $wgAutoloadClasses['ArticleAssessmentPilotHooks'] = $dir . 'ArticleAssessmentPilot.hooks.php';
 
 //Schema and tables
@@ -18,7 +18,7 @@ $wgHooks['ParserTestTables'][] = 'ArticleAssessmentPilotHooks::parserTestTables'
 $wgHooks['SkinAfterContent'][] = 'ArticleAssessmentPilotHooks::addCode';
 
 //API modules
-$wgAPIModules['articleassessment'] = 'ApiArticleAssessment';
+$wgAPIModules['articleassessment'] = 'ApiListArticleAssessment';
 
 
 //i18n and aliases
