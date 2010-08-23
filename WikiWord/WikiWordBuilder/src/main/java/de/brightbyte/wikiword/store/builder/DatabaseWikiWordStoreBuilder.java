@@ -63,7 +63,7 @@ public class DatabaseWikiWordStoreBuilder
 		updateChunkSize = tweaks.getTweak("dbstore.updateChunkSize", queryChunkSize);
 		
 		warningInserter = configureTable(warningTable, 0, 0);
-		warningInserter.disableAutomaticField();
+		warningInserter.setAutomaticIdField(null);
 	}
 	
 	public void setBackgroundErrorHandler(ErrorHandler<Runnable, Throwable, Error> handler) {
