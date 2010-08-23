@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   aa_m3 integer unsigned,
   aa_m4 integer unsigned,
   -- 1 vote per user per revision
-  PRIMARY KEY (aa_revision,aa_user)
+  PRIMARY KEY (aa_revision, aa_user_text)
 ) /*$wgDBTableOptions*/;
 
 -- Store article assessments
