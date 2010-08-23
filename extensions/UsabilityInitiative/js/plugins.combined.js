@@ -2,6 +2,9 @@
  * Common version-independent functions
  */
 
+if ( typeof $j == 'undefined' ) {
+	$j = $;
+}
 if ( typeof mw == 'undefined' ) {
 	mw = {};
 }
@@ -2362,36 +2365,50 @@ if ( !context || typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var offset = 0;
 			var oldLength = context.fn.getContents().length;
+			var positionFromEnd = oldLength - cursorPos[1];
 			
 			//give everything the wikiEditor class so that we can easily pick out things without that class as pasted 
 			context.$content.find( '*' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
 			}
+			
 			setTimeout( function() {
-				
 				// Kill stuff we know we don't want
 				context.$content.find( 'script,style,img,input,select,textarea,hr,button,link,meta' ).remove();
-				
-				//anything without wikiEditor class was pasted.
-				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				var nodeToDelete = [];
+				var pastedContent = [];
 				var firstDirtyNode;
-				if  ( $selection.length == 0 ) {
-					firstDirtyNode = context.fn.getOffset( cursorPos[0] ).node;
+				var $lastDirtyNode;
+				var elementAtCursor;
+				if ( $.browser.msie && !context.offsets ) {
+					elementAtCursor = null;
 				} else {
-					firstDirtyNode = $selection.eq( 0 )[0];
+					elementAtCursor = context.fn.getOffset( cursorPos[0] );
 				}
+				if ( elementAtCursor == null || elementAtCursor.node == null ) {
+					context.$content.prepend( '<p class = wikiEditor></p>' );
+					firstDirtyNode 	= context.$content.children()[0];
+				} else {
+					firstDirtyNode = elementAtCursor.node;
+				}
+				
+				//this is ugly but seems like the best way to handle the case where we select and replace all editor contents
+				try {
+					firstDirtyNode.parentNode;
+				} catch ( err ) {
+					context.$content.prepend( '<p class = wikiEditor></p>' );
+					firstDirtyNode 	= context.$content.children()[0];
+				}
+				
 				while ( firstDirtyNode != null ) {
-					//go up till we find the top pasted node
-					while ( firstDirtyNode.parentNode.nodeName != 'BODY' 
-						 && ! $( firstDirtyNode.parentNode ).hasClass( 'wikiEditor' ) 
+					//we're going to replace the contents of the entire parent node. 
+					while ( firstDirtyNode.parentNode && firstDirtyNode.parentNode.nodeName != 'BODY' 
+						 && ! $( firstDirtyNode ).hasClass( 'wikiEditor' ) 
 						) {
 						firstDirtyNode = firstDirtyNode.parentNode;
 					}
-					
 					//go back till we find the first pasted node
 					while ( firstDirtyNode.previousSibling != null
 							&& ! $( firstDirtyNode.previousSibling ).hasClass( 'wikiEditor' )
@@ -2404,36 +2421,27 @@ if ( !context || typeof context == 'undefined' ) {
 						}
 					}
 					
-					var $lastDirtyNode = $( firstDirtyNode );
+					if ( firstDirtyNode.previousSibling != null ) {
+						$lastDirtyNode 	= $( firstDirtyNode.previousSibling );
+					} else {
+						$lastDirtyNode 	= $( firstDirtyNode );
+					}
+				
 					var cc = makeContentCollector( $.browser, null );
-					while ( firstDirtyNode != null && ! $( firstDirtyNode ).hasClass( 'wikiEditor' ) ) {
+					while ( firstDirtyNode != null ) {
 						cc.collectContent(firstDirtyNode);
+						cc.notifyNextNode(firstDirtyNode.nextSibling); 
 						
-						cc.notifyNextNode(firstDirtyNode.nextSibling);
-						pastedContent = cc.getLines();
-						if ((pastedContent.length <= 1 || pastedContent[pastedContent.length - 1] !== "")
-								&& firstDirtyNode.nextSibling) {
-							nodeToDelete.push( firstDirtyNode );
-							firstDirtyNode = firstDirtyNode.nextSibling;
-							cc.collectContent(firstDirtyNode);
-							cc.notifyNextNode(firstDirtyNode.nextSibling);
-						}
 						nodeToDelete.push( firstDirtyNode );
+						
 						firstDirtyNode = firstDirtyNode.nextSibling;
+						if ( $( firstDirtyNode ).hasClass( 'wikiEditor' ) ) {
+							break;
+						}
 					}
+					
 					var ccData = cc.finish();
-					var pastedContent = ccData.lines;
-					if ( pastedContent.length == 0 && firstDirtyNode ) {
-						offset += $( firstDirtyNode ).text().length;
-					}
-					
-					if ( nodeToDelete.length > 0 ) {
-						$lastDirtyNode = $( nodeToDelete[nodeToDelete.length - 1] );
-					}
-					
-					var testVal = '';
-					testVal = $( nodeToDelete[0] ).text();
-					
+					pastedContent = ccData.lines;
 					var pastedPretty = '';
 					for ( var i = 0; i < pastedContent.length; i++ ) {
 						//escape html
@@ -2446,45 +2454,58 @@ if ( !context || typeof context == 'undefined' ) {
 							pastedPretty = leadingSpace + pastedPretty.substring(index, pastedPretty.length);
 						}
 						
-						$newElement = $( '<p class="wikiEditor" ></p>' );
+						
+						if( !pastedPretty && $.browser.msie && i == 0 ) {
+							continue;
+						}
+						$newElement = $( '<p class="wikiEditor pasted" ></p>' );
 						if ( pastedPretty ) {
-							$newElement.html( '<span class = "wikiEditor">' + pastedPretty + '</span>' );
+							$newElement.html( pastedPretty );
 						} else {
 							$newElement.html( '<br class="wikiEditor">' );
 						}
 						$newElement.insertAfter( $lastDirtyNode );
-						offset += pastedPretty.length;
+						
 						$lastDirtyNode = $newElement;
+						
 					}
 					
+					//now delete all the original nodes that we prettified already
 					while ( nodeToDelete.length > 0 ) {
-						$( nodeToDelete.pop() ).remove();
+						$deleteNode = $( nodeToDelete.pop() );
+						$deleteNode.remove();
 					}
 					
-					//find the next node that may not be the next sibling (in IE)
+					//anything without wikiEditor class was pasted.
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 					if  ( $selection.length == 0 ) {
-						firstDirtyNode = null;
+						break;
 					} else {
 						firstDirtyNode = $selection.eq( 0 )[0];
 					}
 				}
-				
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				
-				//context.$content.find( '*' ).addClass( 'wikiEditor' );
-				
 				//now place the cursor at the end of pasted content
-				var restoreTo = cursorPos[1] + offset;
+				var newLength = context.fn.getContents().length;
+				var newPos = newLength - positionFromEnd;
 				
-				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
+				context.fn.purgeOffsets();
+				context.fn.setSelection( { start: newPos, end: newPos } );
+				
+				context.fn.scrollToCaretPosition();
+				
 
 		}, 0 );
 		return true;
 		},
 		'ready': function( event ) {
 			// Initialize our history queue
-			context.history.push( { 'html': context.$content.html(), 'sel':  context.fn.getCaretPosition() } );
+			if ( context.$content ) {
+				context.history.push( { 'html': context.$content.html(), 'sel':  context.fn.getCaretPosition() } );
+			} else {
+				context.history.push( { 'html': '', 'sel':  context.fn.getCaretPosition() } );
+			}
 			return true;
 		}
 	};
@@ -2504,15 +2525,16 @@ if ( !context || typeof context == 'undefined' ) {
 			if ( typeof event.data == 'undefined' ) {
 				event.data = {};
 			}
+			
 			// Allow filtering to occur
 			if ( name in context.evt ) {
 				if ( !context.evt[name]( event ) ) {
 					return false;
 				}
 			}
-			
 			var returnFromModules = null; //they return null by default
 			// Pass the event around to all modules activated on this context
+			
 			for ( var module in context.modules ) {
 				if (
 					module in $.wikiEditor.modules &&
@@ -2683,6 +2705,9 @@ if ( !context || typeof context == 'undefined' ) {
 				classname = '';
 			}
 			var e = null, offset = null;
+			if ( $.browser.msie && !context.$iframe[0].contentWindow.document.body ) {
+				return null;
+			}
 			if ( context.$iframe[0].contentWindow.getSelection ) {
 				// Firefox and Opera
 				var selection = context.$iframe[0].contentWindow.getSelection();
@@ -3180,6 +3205,9 @@ if ( !context || typeof context == 'undefined' ) {
 		'getContents': function() {
 			// For <p></p>, .html() returns <p>&nbsp;</p> in IE
 			// This seems to convince IE while not affecting display
+			if ( !context.$content ) {
+				return '';
+			}
 			var html;
 			if ( $.browser.msie ) {
 				// Don't manipulate the iframe DOM itself, causes cursor jumping issues
@@ -3796,6 +3824,7 @@ if ( typeof context.$iframe === 'undefined' && args[0] == 'addModule' && typeof 
 		// Only allow modules which are supported (and thus actually being turned on) affect this decision
 		if ( module in $.wikiEditor.modules && $.wikiEditor.isSupported( $.wikiEditor.modules[module] ) &&
 				$.wikiEditor.isRequired( $.wikiEditor.modules[module], 'iframe' ) ) {
+			
 			context.fn.setupIframe();
 			break;
 		}
@@ -5624,6 +5653,9 @@ evt: {
 	ready: function( context, event ) {
 		// Add the TOC to the document
 		$.wikiEditor.modules.toc.fn.build( context );
+		if ( !context.$content ) {
+			return;
+		}
 		context.$content.parent()
 			.blur( function() {
 				var context = event.data.context;
@@ -5862,6 +5894,9 @@ fn: {
 	 * @param {Object} context
 	 */
 	update: function( context ) {
+		//temporarily commenting this out because it is causing all kinds of cursor 
+		//and text jumping issues in IE. WIll get back to this --pdhanda
+		/*
 		var div = context.fn.beforeSelection( 'wikiEditor-toc-header' );
 		if ( div === null ) {
 			// beforeSelection couldn't figure it out, keep the old highlight state
@@ -5876,6 +5911,7 @@ fn: {
 			
 			// Scroll the highlighted link into view if necessary
 			var relTop = sectionLink.offset().top - context.modules.toc.$toc.offset().top;
+			
 			var scrollTop = context.modules.toc.$toc.scrollTop();
 			var divHeight = context.modules.toc.$toc.height();
 			var sectionHeight = sectionLink.height();
@@ -5886,6 +5922,7 @@ fn: {
 				// Scroll down
 				context.modules.toc.$toc.scrollTop( scrollTop + relTop + sectionHeight - divHeight );
 		}
+		*/
 	},
 	
 	/**
@@ -6028,8 +6065,11 @@ fn: {
 						// Bring user's eyes to the point we've now jumped to
 						context.fn.highlightLine( $( wrapper ) );
 						// Highlight the clicked link
-						$.wikiEditor.modules.toc.fn.unhighlight( context );
+						//remove highlighting of toc after a second. Temporary hack till the highlight works --pdhanda
+						//$.wikiEditor.modules.toc.fn.unhighlight( context );
 						$( this ).addClass( 'current' );
+						//$( this ).removeClass( 'current' );
+						setTimeout( function() { $.wikiEditor.modules.toc.fn.unhighlight( context ) }, 1000 );
 						
 						if ( typeof $.trackAction != 'undefined' )
 							$.trackAction( 'ntoc.heading' );
@@ -7025,7 +7065,14 @@ function makeContentCollector( browser, domInterface ) {
 			return n.tagName;
 		},
 		nodeValue : function(n) {
-			return n.nodeValue;
+			try {
+				return n.nodeValue;
+			} catch ( err ) {
+				return '';
+			}
+		},
+		nodeName : function(n) {
+			return n.nodeName;
 		},
 		nodeNumChildren : function(n) {
 			return n.childNodes.length;
@@ -7254,6 +7301,7 @@ function makeContentCollector( browser, domInterface ) {
 			}
 			
 		} else {
+			var cls = dom.nodeProp(node, "className");
 			var tname = (dom.nodeTagName(node) || "").toLowerCase();
 			if (tname == "br") {
 				_startNewLine(state);
@@ -7261,8 +7309,7 @@ function makeContentCollector( browser, domInterface ) {
 				// ignore
 			} else if (!isEmpty) {
 				var styl = dom.nodeAttr(node, "style");
-				var cls = dom.nodeProp(node, "className");
-
+				
 				var isPre = (tname == "pre");
 				if ((!isPre) && browser.safari) {
 					isPre = (styl && /\bwhite-space:\s*pre\b/i.exec(styl));
@@ -7274,6 +7321,11 @@ function makeContentCollector( browser, domInterface ) {
 				var nc = dom.nodeNumChildren(node);
 				for ( var i = 0; i < nc; i++) {
 					var c = dom.nodeChild(node, i);
+					//very specific IE case where it inserts <span lang="en"> which we want to ginore.
+					//to reproduce copy content from wordpad andpaste into the middle of a line in IE
+					if ( browser.msie && cls.indexOf('wikiEditor') >= 0 && dom.nodeName(c) == 'SPAN' && dom.nodeAttr(c, 'lang') == "" ) {
+						continue;
+					}
 					cc.collectContent(c, state);
 				}
 
@@ -7337,7 +7389,9 @@ function makeContentCollector( browser, domInterface ) {
 		lines.flush();
 		var lineStrings = cc.getLines();
 
-		lineStrings.length--;
+		if ( lineStrings.length > 0 && !lineStrings[lineStrings.length - 1] ) {
+			lineStrings.length--;
+		}
 
 		var ss = getSelectionStart();
 		var se = getSelectionEnd();

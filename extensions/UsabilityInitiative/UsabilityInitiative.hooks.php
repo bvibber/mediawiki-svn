@@ -82,10 +82,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 456 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 457 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 477 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 478 ),
 			),
 		),
 	);
