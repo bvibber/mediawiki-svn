@@ -18,8 +18,7 @@ $wgHooks['ParserTestTables'][] = 'ArticleAssessmentPilotHooks::parserTestTables'
 $wgHooks['SkinAfterContent'][] = 'ArticleAssessmentPilotHooks::addCode';
 
 //API modules
-$wgAPIModules['articleassessment'] = 'ApiListArticleAssessment';
-
+$wgAPIListModules['articleassessment'] = 'ApiListArticleAssessment';
 
 //i18n and aliases
 // Adds Internationalized Messages
