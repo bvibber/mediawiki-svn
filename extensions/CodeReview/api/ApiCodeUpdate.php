@@ -68,7 +68,7 @@ class ApiCodeUpdate extends ApiBase {
 
 	public function getAllowedParams() {
 		return array(
-			'repo' =>  => array(
+			'repo' => array(
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => true,
 			),
