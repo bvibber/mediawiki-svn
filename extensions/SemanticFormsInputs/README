@@ -1,0 +1,69 @@
+Semantic Forms Inputs is an extension to MediaWiki that provides
+additional input types for the Semantic Forms extension.
+
+The Semantic Forms extension allows users to add, edit and query data
+of a Semantic MediaWiki-based wiki using forms. For every form field
+the input type specifies the type of input a field will have in the
+form. Semantic Forms comes with basic input types for all data
+types. This extension -- Semantic Forms Inputs -- aims to collect
+further, visually and/or functionally enhanced input types.
+
+For the full description, see the Semantic Forms Inputs homepage:
+http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs
+
+This software is licensed under the GNU General Public License (GPL).
+See the COPYING file for more information.
+
+== Installation ==
+
+Having Semantic MediaWiki and Semantic Forms installed is a
+precondition for the Semantic Forms Inputs extension; the code
+will not work without it. The version of Semantic Forms must be at
+least 2.0 for the 'simpledatepicker' input to work.
+
+For the 'datepicker' input to work the Yahoo! User Interface (YUI)
+Javascript library (version 2.7.0b or higher) must be available,
+either locally or via an existing internet connection.
+
+(The HeaderTabs extension 0.6.6 seems to work with 2.7.0b with some
+small change in the HeaderTabs.php: Remove the if-clause in lines 118
+.. 126, then remove " . style" from line 127. The catch with that
+solution is, that the browser history feature of the Header Tabs will
+still not work, so you will have to deactivate it.)
+
+To install Semantic Forms Inputs, create a directory named
+SemanticFormsInputs in the extensions directory of your MediaWiki
+installation and copy the extension's files into it. Then add the
+following line to your LocalSettings.php below the inclusion of the
+Semantic Forms extension:
+
+require_once('extensions/SemanticFormsInputs/SemanticFormsInputs.php');
+
+== Credits ==
+
+Semantic Forms Inputs was written by Stephan Gambke, Sanyam Goyal and
+Yaron Koren.
+
+The 'datepicker' input uses the Yahoo! User Interface (YUI) library.
+See http://developer.yahoo.com/yui/ .
+
+The 'simpledatepicker' input uses the jQuery and jQuery UI libraries.
+See http://jquery.org/ and http://jqueryui.com/ .
+
+Button icons are derived from the Mini Icons 2 icon set from
+brandspankingnew.net. See
+http://www.brandspankingnew.net/archive/2006/12/hohoho.html
+
+
+== Contact ==
+
+Comments, questions, bug reports and suggestions can be send or posted
+to:
+
+* the appropriate Semantic MediaWiki mailing list:
+  http://sourceforge.net/projects/semediawiki/support
+
+* the Semantic Forms Inputs discussion page on mediawiki.org:
+  http://www.mediawiki.org/wiki/Extension_talk:Semantic_Forms_Inputs
+
+* Stephan Gambke: f.trott@gmx.net
