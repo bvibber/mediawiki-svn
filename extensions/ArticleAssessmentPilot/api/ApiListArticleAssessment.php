@@ -5,7 +5,7 @@
  * @file
  * @ingroup API
  */
-class ApiListArticleAssessment extends ApiBase {
+class ApiListArticleAssessment extends ApiQueryBase {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'aa' );
 	}
@@ -16,7 +16,41 @@ class ApiListArticleAssessment extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
+		
+		$result = $this->getResult();
+		
+		$this->addTables( 'article_assessment_pages' );
+		
+		$this->addFields( array( 'aa_page_id', 'aa_revision', 'aa_total', 'aa_count', 'aa_dimension' ) );
+		
+		if ( isset( $params['pageid'] ) ) {
+			$this->addWhereFld( 'aa_page_id', $params['pageid'] );
+		}
+		
+		if ( isset( $params['revid'] ) ) {
+			$this->addWhereFld( 'aa_revision', $params['revid'] );
+		}
+		
+		$res = $this->select( __METHOD__ );
 
+		$assessments = array();
+		
+		foreach( $res as $row ) {
+			if ( !isset( $assessments[$row->aa_revision] ) ) {
+				$assessments[$row->aa_revision] = array( 
+					'pageid' => $row->aa_page_id,
+					'revisionid' => $row->aa_revision,
+				);
+			}
+			
+			$assessments[$row->aa_revision]['dimensions']['d' . $row->aa_dimension] = array( 'dimension' => $row->aa_dimension, 'total' => $row->aa_total, 'count' => $row->aa_count );
+		}
+
+		foreach( $assessments as $ass ) {
+			$result->addValue( array( 'query', $this->getModuleName() ), null, $ass );
+		}
+		
+		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
 	}
 
 	public function getAllowedParams() {
@@ -42,6 +76,12 @@ class ApiListArticleAssessment extends ApiBase {
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 		) );
+	}
+	
+	protected function getExamples() {
+		return array(
+			'api.php?action=query&list=articleassessment'
+		);
 	}
 
 	public function getVersion() {
