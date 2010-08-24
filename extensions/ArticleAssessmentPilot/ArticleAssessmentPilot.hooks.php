@@ -20,7 +20,7 @@ class ArticleAssessmentPilotHooks {
 		
 		return true;
 	} //schema
-	
+
 	/**
 	 * Make sure the table exists for parser tests
 	 * @param $tables
@@ -31,14 +31,14 @@ class ArticleAssessmentPilotHooks {
 		$tables[] = 'article_assessment_pages';
 		return true;
 	}
-	
-	public static function addCode( &$data ) {
+
+	public static function addCode( &$data, $skin ) {
 		//check if this page should have the form
-		
+
 		//write the form
-		
+
 		//if user has no cookie, set cookie
-		
+
 		return true;
 	}
 }
