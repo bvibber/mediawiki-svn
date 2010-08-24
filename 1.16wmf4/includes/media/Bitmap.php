@@ -115,12 +115,15 @@ class BitmapHandler extends ImageHandler {
 			$sharpen = '';
 			$scene = false;
 			$animation = '';
+			$decoderHint = '';
 			if ( $mimeType == 'image/jpeg' ) {
 				$quality = "-quality 80"; // 80%
 				# Sharpening, see bug 6193
 				if ( ( $physicalWidth + $physicalHeight ) / ( $srcWidth + $srcHeight ) < $wgSharpenReductionThreshold ) {
 					$sharpen = "-sharpen " . wfEscapeShellArg( $wgSharpenParameter );
 				}
+				// JPEG decoder hint to reduce memory, available since IM 6.5.6-2
+				$decoderHint = "-define jpeg:size={$physicalWidth}x{$physicalHeight}";
 			} elseif ( $mimeType == 'image/png' ) {
 				$quality = "-quality 95"; // zlib 9, adaptive filtering
 			} elseif( $mimeType == 'image/gif' ) {
@@ -140,20 +143,18 @@ class BitmapHandler extends ImageHandler {
 				$tempEnv = '';
 			}
 
-			# Specify white background color, will be used for transparent images
-			# in Internet Explorer/Windows instead of default black.
-
-			# Note, we specify "-size {$physicalWidth}" and NOT "-size {$physicalWidth}x{$physicalHeight}".
-			# It seems that ImageMagick has a bug wherein it produces thumbnails of
-			# the wrong size in the second case.
-
 			$cmd  = 
 				$tempEnv .
+				// Use one thread only, to avoid deadlock bugs on OOM
+				'OMP_NUM_THREADS=1 ' .
 				wfEscapeShellArg( $wgImageMagickConvertCommand ) .
-				" {$quality} -background white -size {$physicalWidth} ".
+				// Specify white background color, will be used for transparent images
+				// in Internet Explorer/Windows instead of default black.
+				" {$quality} -background white".
+				" {$decoderHint} " .
 				wfEscapeShellArg( $this->escapeMagickInput( $srcPath, $scene ) ) .
 				$animation .
-				// For the -resize option a "!" is needed to force exact size,
+				// For the -thumbnail option a "!" is needed to force exact size,
 				// or ImageMagick may decide your ratio is wrong and slice off
 				// a pixel.
 				" -thumbnail " . wfEscapeShellArg( "{$physicalWidth}x{$physicalHeight}!" ) .
