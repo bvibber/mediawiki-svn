@@ -13,103 +13,90 @@ $aliases['en'] = array(
 	'LookupUser' => array( 'LookupUser' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'LookupUser' => array( 'مطالعة_مستخدم' ),
+	'LookupUser'   => array( 'مطالعة_مستخدم' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'LookupUser' => array( 'شوف_يوزر' ),
+	'LookupUser'   => array( 'شوف_يوزر' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'LookupUser' => array( 'PronadjiKorisnika' ),
+	'LookupUser'   => array( 'PronadjiKorisnika' ),
 );
 
-/** Croatian (Hrvatski) */
+$aliases['fa'] = array(
+	'LookupUser'   => array( 'جستجوی_کاربر' ),
+);
+
 $aliases['hr'] = array(
-	'LookupUser' => array( 'Pogledaj_suradnika' ),
+	'LookupUser'   => array( 'Pogledaj_suradnika' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'LookupUser' => array( 'Cercar usator' ),
+	'LookupUser'   => array( 'Cercar_usator' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'LookupUser' => array( 'Lihat pengguna', 'LihatPengguna' ),
+	'LookupUser'   => array( 'Lihat_pengguna', 'LihatPengguna' ),
 );
 
-/** Italian (Italiano) */
 $aliases['it'] = array(
-	'LookupUser' => array( 'ControllaUtente' ),
+	'LookupUser'   => array( 'ControllaUtente' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'LookupUser' => array( '利用者情報調査', '利用者情報を調査' ),
+	'LookupUser'   => array( '利用者情報調査', '利用者情報を調査' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'LookupUser' => array( 'Metmaacher_Nohloore', 'MetmaacherNohloore', 'Medmaacher_Nohloore', 'MedmaacherNohloore' ),
+	'LookupUser'   => array( 'Metmaacher_Nohloore', 'MetmaacherNohloore', 'Medmaacher_Nohloore', 'MedmaacherNohloore' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'LookupUser'   => array( 'BuscaUsador' ),
+);
+
 $aliases['lb'] = array(
-	'LookupUser' => array( 'Benotzer nokucken' ),
+	'LookupUser'   => array( 'Benotzer_nokucken' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'LookupUser' => array( 'ПобарајГоКорисникот', 'ПобарајКорисник' ),
+	'LookupUser'   => array( 'ПобарајГоКорисникот', 'ПобарајКорисник' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'LookupUser' => array( 'ഉപയോക്താവിനെനോക്കുക' ),
+	'LookupUser'   => array( 'ഉപയോക്താവിനെനോക്കുക' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'LookupUser' => array( 'Gebruker_opzeuken' ),
+	'LookupUser'   => array( 'Gebruker_opzeuken' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'LookupUser' => array( 'GebruikerOpzoeken' ),
+	'LookupUser'   => array( 'GebruikerOpzoeken' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'LookupUser' => array( 'Finn bruker' ),
+	'LookupUser'   => array( 'Finn_bruker' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'LookupUser' => array( 'योजकपश्यन्तु' ),
+	'LookupUser'   => array( 'योजकपश्यन्तु' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'LookupUser' => array( 'VyhľadaniePoužívateľa' ),
+	'LookupUser'   => array( 'VyhľadaniePoužívateľa' ),
 );
 
-/** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'LookupUser' => array( 'TafutaMtumiaji' ),
+	'LookupUser'   => array( 'TafutaMtumiaji' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'LookupUser' => array( 'Hanapin ang tagagamit' ),
+	'LookupUser'   => array( 'Hanapin ang tagagamit' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'LookupUser' => array( 'KullanıcıAra' ),
+	'LookupUser'   => array( 'KullanıcıAra' ),
 );
-

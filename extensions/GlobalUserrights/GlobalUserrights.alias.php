@@ -13,178 +13,150 @@ $aliases['en'] = array(
 	'GlobalUserrights' => array( 'GlobalUserRights', 'GlobalGroupMembership' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
 	'GlobalUserrights'   => array( 'صلاحيات_المستخدم_العالمية', 'عضوية_المجموعة_العالمية' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'GlobalUserrights' => array( 'حقوق_اليوزر_العامه' ),
+	'GlobalUserrights'   => array( 'حقوق_اليوزر_العالميه' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'GlobalUserrights' => array( 'PravaGlobalnihKorisnika', 'ClanstvoGlobalnihGrupa' ),
+	'GlobalUserrights'   => array( 'PravaGlobalnihKorisnika', 'ClanstvoGlobalnihGrupa' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'GlobalUserrights' => array( 'Globale Benutzerrechte' ),
+	'GlobalUserrights'   => array( 'Globale_Benutzerrechte' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'GlobalUserrights' => array( 'Globalne wužywarske pšawa' ),
+	'GlobalUserrights'   => array( 'Globalne_wužywarske_pšawa' ),
 );
 
-/** Spanish (Español) */
 $aliases['es'] = array(
-	'GlobalUserrights' => array( 'Permisos_de_usuarios_globales', 'Permisos_usuarios_globales', 'Derechos_usuarios_globales' ),
+	'GlobalUserrights'   => array( 'Permisos_de_usuarios_globales', 'Permisos_usuarios_globales', 'Derechos_usuarios_globales' ),
 );
 
-/** Persian (فارسی) */
 $aliases['fa'] = array(
-	'GlobalUserrights' => array( 'دسترسی_سراسری' ),
+	'GlobalUserrights'   => array( 'دسترسی_سراسری' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'GlobalUserrights' => array( 'Droits des utilisateurs globaux', 'DroitsDesUtilisateursGlobaux' ),
+	'GlobalUserrights'   => array( 'Droits_des_utilisateurs_globaux', 'DroitsDesUtilisateursGlobaux' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'GlobalUserrights' => array( 'Drêts ux utilisators globâls', 'DrêtsUxUtilisatorsGlobâls' ),
+	'GlobalUserrights'   => array( 'Drêts_ux_utilisators_globâls', 'DrêtsUxUtilisatorsGlobâls' ),
 );
 
-/** Galician (Galego) */
 $aliases['gl'] = array(
-	'GlobalUserrights' => array( 'Dereitos de usuario globais' ),
+	'GlobalUserrights'   => array( 'Dereitos de usuario globais' ),
 );
 
-/** Gujarati (ગુજરાતી) */
 $aliases['gu'] = array(
-	'GlobalUserrights' => array( 'વૈશ્વીકસભ્ય હક્કો' ),
+	'GlobalUserrights'   => array( 'વૈશ્વીકસભ્ય_હક્કો' ),
 );
 
-/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'GlobalUserrights' => array( 'Globalna_prava', 'Globalno_članstvo_grupe' ),
+	'GlobalUserrights'   => array( 'Globalna_prava', 'Globalno_članstvo_grupe' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'GlobalUserrights' => array( 'Globalne wužwiarske prawa' ),
+	'GlobalUserrights'   => array( 'Globalne_wužwiarske_prawa' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'GlobalUserrights' => array( 'Derectos global de usatores' ),
+	'GlobalUserrights'   => array( 'Derectos_global_de_usatores' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'GlobalUserrights' => array( 'Keanggotaan grup global', 'KeanggotaanGrupGlobal' ),
+	'GlobalUserrights'   => array( 'Keanggotaan_grup_global', 'KeanggotaanGrupGlobal' ),
 );
 
-/** Italian (Italiano) */
 $aliases['it'] = array(
-	'GlobalUserrights' => array( 'DirittiUtenteGlobale' ),
+	'GlobalUserrights'   => array( 'DirittiUtenteGlobale' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'GlobalUserrights' => array( 'グローバル利用者権限' ),
+	'GlobalUserrights'   => array( 'グローバル利用者権限' ),
 );
 
-/** Korean (한국어) */
 $aliases['ko'] = array(
-	'GlobalUserrights' => array( '전체사용자권한' ),
+	'GlobalUserrights'   => array( '전체사용자권한' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'GlobalUserrights' => array( 'Jemeinsam_Metmaacher_Rääschte', 'Jemeinsam_Medmaacher_Rääschte', 'JemeinsamMetmaacherRääschte', 'JemeinsamMedmaacherRääschte' ),
+	'GlobalUserrights'   => array( 'Jemeinsam_Metmaacher_Rääschte', 'Jemeinsam_Medmaacher_Rääschte', 'JemeinsamMetmaacherRääschte', 'JemeinsamMedmaacherRääschte' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'GlobalUserrights'   => array( 'Permessos_de_usadores_globbales' ),
+);
+
 $aliases['lb'] = array(
-	'GlobalUserrights' => array( 'Global Benotzerrechter' ),
+	'GlobalUserrights'   => array( 'Global_Benotzerrechter' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'GlobalUserrights' => array( 'ГлобалниКорисничкиПрава' ),
+	'GlobalUserrights'   => array( 'ГлобалниКорисничкиПрава' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'GlobalUserrights' => array( 'ആഗോളാംഗത്വാവകാശങ്ങൾ', 'ആഗോളസംഘാംഗത്വം' ),
+	'GlobalUserrights'   => array( 'ആഗോളാംഗത്വാവകാശങ്ങൾ', 'ആഗോളസംഘാംഗത്വം' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'GlobalUserrights' => array( 'वैश्विकसदस्यअधिकार' ),
+	'GlobalUserrights'   => array( 'वैश्विकसदस्यअधिकार' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'GlobalUserrights' => array( 'Globle_gebrukersrechen' ),
+	'GlobalUserrights'   => array( 'Globle_gebrukersrechen' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'GlobalUserrights' => array( 'GlobaleGebruikersrechten' ),
+	'GlobalUserrights'   => array( 'GlobaleGebruikersrechten' ),
 );
 
-/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
 $aliases['nn'] = array(
-	'GlobalUserrights' => array( 'Brukarrettar globalt' ),
+	'GlobalUserrights'   => array( 'Brukarrettar_globalt' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'GlobalUserrights' => array( 'Globale brukerrettigheter2' ),
+	'GlobalUserrights'   => array( 'Globale_brukerrettigheter2' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'GlobalUserrights' => array( 'Dreches dels utilizaires globals', 'DrechesDelsUtilizairesGlobals' ),
+	'GlobalUserrights'   => array( 'Dreches_dels_utilizaires_globals', 'DrechesDelsUtilizairesGlobals' ),
 );
 
-/** Polish (Polski) */
 $aliases['pl'] = array(
-	'GlobalUserrights' => array( 'Globalne uprawnienia użytkownika' ),
+	'GlobalUserrights'   => array( 'Globalne_uprawnienia_użytkownika' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'GlobalUserrights' => array( 'Privilégios globais de utilizador' ),
+	'GlobalUserrights'   => array( 'Privilégios_globais_de_utilizador' ),
 );
 
-/** Romanian (Română) */
 $aliases['ro'] = array(
-	'GlobalUserrights' => array( 'Drepturiglobaleutilizator' ),
+	'GlobalUserrights'   => array( 'Drepturiglobaleutilizator' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'GlobalUserrights' => array( 'वैश्विकयोजकाधिकार' ),
+	'GlobalUserrights'   => array( 'वैश्विकयोजकाधिकार' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'GlobalUserrights' => array( 'GlobálnePoužívateľskéPráva' ),
+	'GlobalUserrights'   => array( 'GlobálnePoužívateľskéPráva' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'GlobalUserrights' => array( 'Mga karapatan ng pandaigdigang tagagamit' ),
+	'GlobalUserrights'   => array( 'Mga karapatan ng pandaigdigang tagagamit' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'GlobalUserrights' => array( 'KüreselKullanıcıHakları' ),
+	'GlobalUserrights'   => array( 'KüreselKullanıcıHakları' ),
 );
 
+$aliases['zh-hant'] = array(
+	'GlobalUserrights'   => array( '全域用戶組權限' ),
+);

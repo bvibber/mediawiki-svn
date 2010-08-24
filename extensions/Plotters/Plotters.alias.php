@@ -15,33 +15,34 @@ $aliases['en'] = array(
 	'Plotters' => array( 'Plotters' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'Plotters' => array( 'طابعات' ),
+	'Plotters'   => array( 'طابعات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Plotters' => array( 'طابعات' ),
+	'Plotters'   => array( 'طابعات' ),
 );
 
-/** Spanish (Español) */
 $aliases['es'] = array(
-	'Plotters' => array( 'Gráficos' ),
+	'Plotters'   => array( 'Gráficos' ),
 );
 
-/** Japanese (日本語) */
+$aliases['fa'] = array(
+	'Plotters'   => array( 'رسم‌کنندگان' ),
+);
+
 $aliases['ja'] = array(
-	'Plotters' => array( 'プロッター' ),
+	'Plotters'   => array( 'プロッター' ),
 );
 
-/** Macedonian (Македонски) */
+$aliases['lad'] = array(
+	'Plotters'   => array( 'Pintador' ),
+);
+
 $aliases['mk'] = array(
-	'Plotters' => array( 'Цртачи' ),
+	'Plotters'   => array( 'Цртачи' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Plotters' => array( 'Plottere' ),
+	'Plotters'   => array( 'Plottere' ),
 );
-

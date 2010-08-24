@@ -13,28 +13,34 @@ $aliases['en'] = array(
 	'Piwik' => array( 'Piwik' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'Piwik' => array( 'بيويك' ),
+	'Piwik'   => array( 'بيويك' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Piwik' => array( 'بيويك' ),
+	'Piwik'   => array( 'بيويك' ),
 );
 
-/** Colognian (Ripoarisch) */
+$aliases['fa'] = array(
+	'Piwik'   => array( 'پی‌ویک' ),
+);
+
 $aliases['ksh'] = array(
-	'Piwik' => array( 'Piwik-Shtatistike', 'PiwikShtatistike' ),
+	'Piwik'   => array( 'Piwik-Shtatistike', 'PiwikShtatistike' ),
 );
 
-/** Marathi (मराठी) */
+$aliases['ml'] = array(
+	'Piwik'   => array( 'പൈവിക്' ),
+);
+
 $aliases['mr'] = array(
-	'Piwik' => array( 'पायविकि' ),
+	'Piwik'   => array( 'पायविकि' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'Piwik' => array( 'पिविकि' ),
+	'Piwik'   => array( 'पिविकि' ),
 );
 
+$aliases['te'] = array(
+	'Piwik'   => array( 'పివిక్' ),
+);

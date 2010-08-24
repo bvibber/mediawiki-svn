@@ -12,158 +12,142 @@ $aliases['en'] = array(
 	'AccountManager' => array( 'AccountManager' ),
 );
 
-/** Afrikaans (Afrikaans) */
 $aliases['af'] = array(
-	'AccountManager' => array( 'RekeningBestuurder' ),
+	'AccountManager'   => array( 'RekeningBestuurder' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'AccountManager' => array( 'مدير_الحسابات' ),
+	'AccountManager'   => array( 'مدير_الحسابات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'AccountManager' => array( 'مدير_الحسابات' ),
+	'AccountManager'   => array( 'مدير_الحسابات' ),
 );
 
-/** Bosnian (Bosanski) */
+$aliases['br'] = array(
+	'AccountManager'   => array( 'MererKontoù' ),
+);
+
 $aliases['bs'] = array(
-	'AccountManager' => array( 'UpravljanjeRacunima' ),
+	'AccountManager'   => array( 'UpravljanjeRacunima' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'AccountManager' => array( 'Account-Manager' ),
+	'AccountManager'   => array( 'Account-Manager' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'AccountManager' => array( 'Kontowy zastojnik' ),
+	'AccountManager'   => array( 'Kontowy_zastojnik' ),
 );
 
-/** French (Français) */
+$aliases['fa'] = array(
+	'AccountManager'   => array( 'مدیریت_حساب' ),
+);
+
 $aliases['fr'] = array(
-	'AccountManager' => array( 'Gestionnaire de compte', 'GestionnaireDeCompte' ),
+	'AccountManager'   => array( 'Gestionnaire_de_compte', 'GestionnaireDeCompte' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'AccountManager' => array( 'Administrator de comptos', 'AdministratorDeComptos' ),
+	'AccountManager'   => array( 'Administrator_de_comptos', 'AdministratorDeComptos' ),
 );
 
-/** Galician (Galego) */
 $aliases['gl'] = array(
-	'AccountManager' => array( 'Xestor de contas' ),
+	'AccountManager'   => array( 'Xestor de contas' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'AccountManager' => array( 'Kontowy zrjadowak' ),
+	'AccountManager'   => array( 'Kontowy_zrjadowak' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'AccountManager' => array( 'Gestion de contos' ),
+	'AccountManager'   => array( 'Gestion_de_contos' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'AccountManager' => array( 'Pengelola akun', 'PengelolaAkun' ),
+	'AccountManager'   => array( 'Pengelola_akun', 'PengelolaAkun' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'AccountManager' => array( 'アカウント管理', 'アカウントマネージャー' ),
+	'AccountManager'   => array( 'アカウント管理', 'アカウントマネージャー' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'AccountManager' => array( 'គ្រប់គ្រង​គណនី' ),
+	'AccountManager'   => array( 'គ្រប់គ្រង​គណនី' ),
 );
 
-/** Korean (한국어) */
 $aliases['ko'] = array(
-	'AccountManager' => array( '계정 관리자' ),
+	'AccountManager'   => array( '계정 관리자' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'AccountManager' => array( 'Metmaachere Verwallde', 'MetmaachereVerwallde' ),
+	'AccountManager'   => array( 'Metmaachere_Verwallde', 'MetmaachereVerwallde' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'AccountManager'   => array( 'Director_de_cuentos' ),
+);
+
 $aliases['lb'] = array(
-	'AccountManager' => array( 'Manager vu Benotzerkonten' ),
+	'AccountManager'   => array( 'Manager_vu_Benotzerkonten' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'AccountManager' => array( 'РаководителСоСметката' ),
+	'AccountManager'   => array( 'РаководителСоСметката' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'AccountManager' => array( 'അംഗത്വകൈകാര്യോപകരണം' ),
+	'AccountManager'   => array( 'അംഗത്വകൈകാര്യോപകരണം' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'AccountManager' => array( 'Gebrukersbeheer' ),
+	'AccountManager'   => array( 'Gebrukersbeheer' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'AccountManager' => array( 'Gebruikersbeheer' ),
+	'AccountManager'   => array( 'Gebruikersbeheer' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'AccountManager' => array( 'Kontobehandling' ),
+	'AccountManager'   => array( 'Kontobehandling' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'AccountManager' => array( 'Gestionari de compte', 'GestionariDeCompte' ),
+	'AccountManager'   => array( 'Gestionari_de_compte', 'GestionariDeCompte' ),
 );
 
-/** Portuguese (Português) */
+$aliases['pl'] = array(
+	'AccountManager'   => array( 'Menadżer_kont' ),
+);
+
 $aliases['pt'] = array(
-	'AccountManager' => array( 'Gestor de conta' ),
+	'AccountManager'   => array( 'Gestor_de_conta' ),
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'AccountManager' => array( 'Gerenciador de contas' ),
+	'AccountManager'   => array( 'Gerenciador_de_contas' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'AccountManager' => array( 'उपयोजकसंज्ञाप्रबन्धक' ),
+	'AccountManager'   => array( 'उपयोजकसंज्ञाप्रबन्धक' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'AccountManager' => array( 'SprávcaÚčtu' ),
+	'AccountManager'   => array( 'SprávcaÚčtu' ),
 );
 
-/** Albanian (Shqip) */
 $aliases['sq'] = array(
-	'AccountManager' => array( 'MenaxhuesLlogarie' ),
+	'AccountManager'   => array( 'MenaxhuesLlogarie' ),
 );
 
-/** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'AccountManager' => array( 'AkauntiKuu' ),
+	'AccountManager'   => array( 'AkauntiKuu' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'AccountManager' => array( 'Tagapamahala ng akawnt' ),
+	'AccountManager'   => array( 'Tagapamahala ng akawnt' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'AccountManager' => array( 'HesapYönetici' ),
+	'AccountManager'   => array( 'HesapYönetici' ),
 );
-

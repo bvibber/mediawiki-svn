@@ -13,98 +13,90 @@ $aliases['en'] = array(
 	'CooperationStatistics' => array( 'CooperationStatistics' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'CooperationStatistics' => array( 'إحصاءات_الشركة' ),
+	'CooperationStatistics'   => array( 'إحصاءات_الشركة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CooperationStatistics' => array( 'إحصائيات_التعاون' ),
+	'CooperationStatistics'   => array( 'إحصائيات_التعاون' ),
 );
 
-/** Spanish (Español) */
+$aliases['br'] = array(
+	'CooperationStatistics'   => array( 'Stadegoù_Kenlabourat' ),
+);
+
 $aliases['es'] = array(
-	'CooperationStatistics' => array( 'Estadísticas de cooperación' ),
+	'CooperationStatistics'   => array( 'Estadísticas_de_cooperación' ),
 );
 
-/** Interlingua (Interlingua) */
+$aliases['fa'] = array(
+	'CooperationStatistics'   => array( 'آمار_همکاری' ),
+);
+
 $aliases['ia'] = array(
-	'CooperationStatistics' => array( 'Statisticas de cooperation' ),
+	'CooperationStatistics'   => array( 'Statisticas_de_cooperation' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'CooperationStatistics' => array( 'Statistik kerja sama', 'StatistikKerjaSama' ),
+	'CooperationStatistics'   => array( 'Statistik_kerja_sama', 'StatistikKerjaSama' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'CooperationStatistics' => array( '協力状況' ),
+	'CooperationStatistics'   => array( '協力状況' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'CooperationStatistics' => array( 'ស្ថិតិនៃសហប្រតិបត្តិការ' ),
+	'CooperationStatistics'   => array( 'ស្ថិតិនៃសហប្រតិបត្តិការ' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'CooperationStatistics' => array( 'StatistikeVumZosammeWerke' ),
+	'CooperationStatistics'   => array( 'StatistikeVumZosammeWerke' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'CooperationStatistics'   => array( 'Estatistikas_de_cooperación' ),
+);
+
 $aliases['lb'] = array(
-	'CooperationStatistics' => array( 'Statistike vun der Zesummenaarbecht' ),
+	'CooperationStatistics'   => array( 'Statistike_vun_der_Zesummenaarbecht' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'CooperationStatistics' => array( 'СтатистикиЗаСоработка' ),
+	'CooperationStatistics'   => array( 'СтатистикиЗаСоработка' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'CooperationStatistics' => array( 'സഹകരണസ്ഥിതിവിവരം' ),
+	'CooperationStatistics'   => array( 'സഹകരണസ്ഥിതിവിവരം' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'CooperationStatistics' => array( 'सहकार्यसांख्यिकी' ),
+	'CooperationStatistics'   => array( 'सहकार्यसांख्यिकी' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'CooperationStatistics' => array( 'Samenwarkingsstaotestieken' ),
+	'CooperationStatistics'   => array( 'Samenwarkingsstaotestieken' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'CooperationStatistics' => array( 'Samenwerkingsstatistieken' ),
+	'CooperationStatistics'   => array( 'Samenwerkingsstatistieken' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'CooperationStatistics' => array( 'Samarbeidsstatistikk' ),
+	'CooperationStatistics'   => array( 'Samarbeidsstatistikk' ),
 );
 
-/** Polish (Polski) */
 $aliases['pl'] = array(
-	'CooperationStatistics' => array( 'Statystyki współpracy' ),
+	'CooperationStatistics'   => array( 'Statystyki_współpracy' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'CooperationStatistics' => array( 'Estatísticas de cooperação' ),
+	'CooperationStatistics'   => array( 'Estatísticas_de_cooperação' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'CooperationStatistics' => array( 'ŠtatistikaSpolupráce' ),
+	'CooperationStatistics'   => array( 'ŠtatistikaSpolupráce' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'CooperationStatistics' => array( 'İşbirliğiİstatistikleri' ),
+	'CooperationStatistics'   => array( 'İşbirliğiİstatistikleri' ),
 );
-

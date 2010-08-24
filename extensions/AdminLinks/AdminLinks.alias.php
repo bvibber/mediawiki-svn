@@ -13,133 +13,118 @@ $aliases['en'] = array(
 	'AdminLinks' => array( 'AdminLinks' ),
 );
 
-/** Afrikaans (Afrikaans) */
 $aliases['af'] = array(
-	'AdminLinks' => array( 'AdminSkakels' ),
+	'AdminLinks'   => array( 'AdminSkakels' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'AdminLinks' => array( 'وصلات_الإدارة' ),
+	'AdminLinks'   => array( 'وصلات_الإدارة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'AdminLinks' => array( 'لينكات_الاداره' ),
+	'AdminLinks'   => array( 'لينكات_الاداره' ),
 );
 
-/** Esperanto (Esperanto) */
+$aliases['de'] = array(
+	'AdminLinks'   => array( 'Admin-Links' ),
+);
+
 $aliases['eo'] = array(
-	'AdminLinks' => array( 'Ligiloj por administrantoj' ),
+	'AdminLinks'   => array( 'Ligiloj_por_administrantoj' ),
 );
 
-/** Spanish (Español) */
 $aliases['es'] = array(
-	'AdminLinks' => array( 'EnlacesAdministrador' ),
+	'AdminLinks'   => array( 'EnlacesAdministrador' ),
 );
 
-/** Finnish (Suomi) */
+$aliases['fa'] = array(
+	'AdminLinks'   => array( 'پیوندهای_مدیر' ),
+);
+
 $aliases['fi'] = array(
-	'AdminLinks' => array( 'Ylläpitolinkit' ),
+	'AdminLinks'   => array( 'Ylläpitolinkit' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'AdminLinks' => array( 'Ligamines pro administratores' ),
+	'AdminLinks'   => array( 'Ligamines_pro_administratores' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'AdminLinks' => array( 'Pranala admin', 'PranalaAdmin' ),
+	'AdminLinks'   => array( 'Pranala_admin', 'PranalaAdmin' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'AdminLinks' => array( '管理者用リンク集' ),
+	'AdminLinks'   => array( '管理者用リンク集' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'AdminLinks' => array( 'Lengks_för_Wiki_Köbesse' ),
+	'AdminLinks'   => array( 'Lengks_för_Wiki_Köbesse' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'AdminLinks'   => array( 'Linkes_de_administradores' ),
+);
+
 $aliases['lb'] = array(
-	'AdminLinks' => array( 'Linke fir Administrateuren' ),
+	'AdminLinks'   => array( 'Linke_fir_Administrateuren' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'AdminLinks' => array( 'АдминистраторскиВрски' ),
+	'AdminLinks'   => array( 'АдминистраторскиВрски' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'AdminLinks' => array( 'കാര്യനിർവാഹകകണ്ണികൾ' ),
+	'AdminLinks'   => array( 'കാര്യനിർവാഹകകണ്ണികൾ' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'AdminLinks' => array( 'प्रचालकदुवे' ),
+	'AdminLinks'   => array( 'प्रचालकदुवे' ),
 );
 
-/** Maltese (Malti) */
 $aliases['mt'] = array(
-	'AdminLinks' => array( 'ĦoloqAmmin' ),
+	'AdminLinks'   => array( 'ĦoloqAmmin' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'AdminLinks' => array( 'Beheerdersverwiezingen' ),
+	'AdminLinks'   => array( 'Beheerdersverwiezingen' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'AdminLinks' => array( 'Beheerdersverwijzingen' ),
+	'AdminLinks'   => array( 'Beheerdersverwijzingen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'AdminLinks' => array( 'Administratorlenker' ),
+	'AdminLinks'   => array( 'Administratorlenker' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'AdminLinks' => array( 'Ligações de administração' ),
+	'AdminLinks'   => array( 'Ligações_de_administração' ),
 );
 
-/** Romanian (Română) */
 $aliases['ro'] = array(
-	'AdminLinks' => array( 'Legături admini' ),
+	'AdminLinks'   => array( 'Legături_admini' ),
 );
 
-/** Sinhala (සිංහල) */
 $aliases['si'] = array(
-	'AdminLinks' => array( 'පරිපාලකසබැඳි' ),
+	'AdminLinks'   => array( 'පරිපාලක_සබැඳි' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'AdminLinks' => array( 'OdkazySprávcu' ),
+	'AdminLinks'   => array( 'OdkazySprávcu' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'AdminLinks' => array( 'Administratörslänkar' ),
+	'AdminLinks'   => array( 'Administratörslänkar' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'AdminLinks' => array( 'HizmetliBağlantıları' ),
+	'AdminLinks'   => array( 'HizmetliBağlantıları' ),
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
 $aliases['zh-hans'] = array(
-	'AdminLinks' => array( '管理员链接' ),
+	'AdminLinks'   => array( '管理员链接' ),
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
 $aliases['zh-hant'] = array(
-	'AdminLinks' => array( '管理員鏈接' ),
+	'AdminLinks'   => array( '管理員鏈接' ),
 );
-

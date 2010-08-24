@@ -13,63 +13,66 @@ $aliases['en'] = array(
 	'MostRevisors' => array( 'MostRevisors' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'MostRevisors' => array( 'أكثر_المراجعين' ),
+	'MostRevisors'   => array( 'أكثر_المراجعين' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'MostRevisors' => array( 'اكتر_مراجعين' ),
+	'MostRevisors'   => array( 'اكتر_مراجعين' ),
 );
 
-/** Interlingua (Interlingua) */
+$aliases['fa'] = array(
+	'MostRevisors'   => array( 'بیش‌ترین_تجدیدنظرکننده‌ها' ),
+);
+
 $aliases['ia'] = array(
-	'MostRevisors' => array( 'Le plus revisores' ),
+	'MostRevisors'   => array( 'Le_plus_revisores' ),
 );
 
-/** Japanese (日本語) */
+$aliases['id'] = array(
+	'MostRevisors'   => array( 'Peninjau_terbanyak', 'PeninjauTerbanyak' ),
+);
+
 $aliases['ja'] = array(
-	'MostRevisors' => array( '最も編集者の多いページ' ),
+	'MostRevisors'   => array( '最も編集者の多いページ' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'MostRevisors' => array( 'MiehßteSchriiver' ),
+	'MostRevisors'   => array( 'MiehßteSchriiver' ),
 );
 
-/** Macedonian (Македонски) */
+$aliases['lad'] = array(
+	'MostRevisors'   => array( 'Más_muncho_de_los_egzaminadores' ),
+);
+
 $aliases['mk'] = array(
-	'MostRevisors' => array( 'НајвеќеПрегледувачи' ),
+	'MostRevisors'   => array( 'НајвеќеПрегледувачи' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'MostRevisors' => array( 'ഏറ്റവുംകൂടുതൽസംശോധനംചെയ്തവർ' ),
+	'MostRevisors'   => array( 'ഏറ്റവുംകൂടുതൽസംശോധനംചെയ്തവർ' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'MostRevisors' => array( 'Meeste_bewarkers' ),
+	'MostRevisors'   => array( 'Meeste_bewarkers' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'MostRevisors' => array( 'MeesteBewerkers' ),
+	'MostRevisors'   => array( 'MeesteBewerkers' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'MostRevisors' => array( 'Flest bidragsytere' ),
+	'MostRevisors'   => array( 'Flest_bidragsytere' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'MostRevisors' => array( 'NajviacKontrolórov' ),
+	'MostRevisors'   => array( 'NajviacKontrolórov' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'MostRevisors' => array( 'EnÇokİncelenilen' ),
+	'MostRevisors'   => array( 'EnÇokİncelenilen' ),
 );
 
+$aliases['zh-hant'] = array(
+	'MostRevisors'   => array( '最多版本' ),
+);

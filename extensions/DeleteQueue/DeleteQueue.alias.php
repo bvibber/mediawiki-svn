@@ -13,138 +13,118 @@ $aliases['en'] = array(
 	'DeleteQueue' => array( 'DeleteQueue' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'DeleteQueue' => array( 'طابور_الحذف' ),
+	'DeleteQueue'   => array( 'طابور_الحذف' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'DeleteQueue' => array( 'طابور_المسح' ),
+	'DeleteQueue'   => array( 'طابور_المسح' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'DeleteQueue' => array( 'RedZaBrisanje' ),
+	'DeleteQueue'   => array( 'RedZaBrisanje' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'DeleteQueue' => array( 'Löschliste' ),
+	'DeleteQueue'   => array( 'Löschliste' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'DeleteQueue' => array( 'Lisćina wulašowanjow' ),
+	'DeleteQueue'   => array( 'Lisćina_wulašowanjow' ),
 );
 
-/** Finnish (Suomi) */
+$aliases['fa'] = array(
+	'DeleteQueue'   => array( 'پاک‌کردن_صف' ),
+);
+
 $aliases['fi'] = array(
-	'DeleteQueue' => array( 'Poistojono' ),
+	'DeleteQueue'   => array( 'Poistojono' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'DeleteQueue' => array( 'Lisćina wušmórnjenjow' ),
+	'DeleteQueue'   => array( 'Lisćina_wušmórnjenjow' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'DeleteQueue' => array( 'Törlési várólista' ),
+	'DeleteQueue'   => array( 'Törlési_várólista' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'DeleteQueue' => array( 'Deler cauda' ),
+	'DeleteQueue'   => array( 'Deler_cauda' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'DeleteQueue' => array( 'Hapus antrean', 'HapusAntrean' ),
+	'DeleteQueue'   => array( 'Hapus_antrean', 'HapusAntrean' ),
 );
 
-/** Italian (Italiano) */
 $aliases['it'] = array(
-	'DeleteQueue' => array( 'CodaCancellazioni' ),
+	'DeleteQueue'   => array( 'CodaCancellazioni' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'DeleteQueue' => array( '削除キュー' ),
+	'DeleteQueue'   => array( '削除キュー' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'DeleteQueue' => array( 'Fottschmiißleß' ),
+	'DeleteQueue'   => array( 'Fottschmiißleß' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'DeleteQueue'   => array( 'Cola_de_efassar' ),
+);
+
 $aliases['lb'] = array(
-	'DeleteQueue' => array( 'Läschlëscht' ),
+	'DeleteQueue'   => array( 'Läschlëscht' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'DeleteQueue' => array( 'ИзбришиРедица' ),
+	'DeleteQueue'   => array( 'ИзбришиРедица' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'DeleteQueue' => array( 'क्यूवगळा' ),
+	'DeleteQueue'   => array( 'क्यूवगळा' ),
 );
 
-/** Erzya (Эрзянь) */
 $aliases['myv'] = array(
-	'DeleteQueue' => array( 'НардамсПуло' ),
+	'DeleteQueue'   => array( 'НардамсПуло' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'DeleteQueue' => array( 'Vortdowachrie' ),
+	'DeleteQueue'   => array( 'Vortdowachrie' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'DeleteQueue' => array( 'Verwijderingswachtrij', 'Verwijderverzoeken' ),
+	'DeleteQueue'   => array( 'Verwijderingswachtrij', 'Verwijderverzoeken' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'DeleteQueue' => array( 'Slettingskø' ),
+	'DeleteQueue'   => array( 'Slettingskø' ),
 );
 
-/** Polish (Polski) */
 $aliases['pl'] = array(
-	'DeleteQueue' => array( 'Kolejka usuwania' ),
+	'DeleteQueue'   => array( 'Kolejka_usuwania' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'DeleteQueue' => array( 'Apagar fila' ),
+	'DeleteQueue'   => array( 'Apagar_fila' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'DeleteQueue' => array( 'अनुपङ्क्तिपरित्याग' ),
+	'DeleteQueue'   => array( 'अनुपङ्क्तिपरित्याग' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'DeleteQueue' => array( 'ZmazanieFrontu' ),
+	'DeleteQueue'   => array( 'ZmazanieFrontu' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'DeleteQueue' => array( 'Radera kö' ),
+	'DeleteQueue'   => array( 'Radera_kö' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'DeleteQueue' => array( 'Burahin ang pila' ),
+	'DeleteQueue'   => array( 'Burahin ang pila' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'DeleteQueue' => array( 'GrupSil' ),
+	'DeleteQueue'   => array( 'GrupSil' ),
 );
-

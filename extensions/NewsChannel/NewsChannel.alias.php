@@ -13,183 +13,154 @@ $aliases['en'] = array(
 	'NewsChannel'    => array( 'NewsChannel' ),
 );
 
-/** Afrikaans (Afrikaans) */
 $aliases['af'] = array(
-	'NewsChannel' => array( 'NuusKanaal' ),
+	'NewsChannel'   => array( 'NuusKanaal' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'NewsChannel' => array( 'قناة_أخبار' ),
+	'NewsChannel'   => array( 'قناة_أخبار' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'NewsChannel' => array( 'قناة_اخبار' ),
+	'NewsChannel'   => array( 'قناة_اخبار' ),
 );
 
-/** Bulgarian (Български) */
 $aliases['bg'] = array(
-	'NewsChannel' => array( 'Новинарски канал' ),
+	'NewsChannel'   => array( 'Новинарски канал' ),
 );
 
-/** Bosnian (Bosanski) */
+$aliases['br'] = array(
+	'NewsChannel'   => array( 'KanolioùKeleier' ),
+);
+
 $aliases['bs'] = array(
-	'NewsChannel' => array( 'KanalVijesti' ),
+	'NewsChannel'   => array( 'KanalVijesti' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'NewsChannel' => array( 'Nachrichtenkanal' ),
+	'NewsChannel'   => array( 'Nachrichtenkanal' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'NewsChannel' => array( 'Kanal powěsćow' ),
+	'NewsChannel'   => array( 'Kanal_powěsćow' ),
 );
 
-/** Persian (فارسی) */
 $aliases['fa'] = array(
-	'NewsChannel' => array( 'کانال_خبری' ),
+	'NewsChannel'   => array( 'کانال_خبری' ),
 );
 
-/** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'NewsChannel' => array( 'Uutiskanava' ),
+	'NewsChannel'   => array( 'Uutiskanava' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'NewsChannel' => array( 'Chaîne d’information' ),
+	'NewsChannel'   => array( 'Chaîne_d’information' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'NewsChannel' => array( 'Chêna de novèles', 'ChênaDeNovèles' ),
+	'NewsChannel'   => array( 'Chêna_de_novèles', 'ChênaDeNovèles' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'NewsChannel' => array( 'Kanal fir Nejigkeite' ),
+	'NewsChannel'   => array( 'Kanal fir Nejigkeite' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'NewsChannel' => array( 'Kanal powěsćow' ),
+	'NewsChannel'   => array( 'Kanal_powěsćow' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'NewsChannel' => array( 'Hírcsatorna' ),
+	'NewsChannel'   => array( 'Hírcsatorna' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'NewsChannel' => array( 'Canal de novas' ),
+	'NewsChannel'   => array( 'Canal_de_novas' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'NewsChannel' => array( 'Saluran berita', 'SaluranBerita' ),
+	'NewsChannel'   => array( 'Saluran_berita', 'SaluranBerita' ),
 );
 
-/** Italian (Italiano) */
 $aliases['it'] = array(
-	'NewsChannel' => array( 'CanaleNotizie' ),
+	'NewsChannel'   => array( 'CanaleNotizie' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'NewsChannel' => array( 'ニュースチャンネル', 'ニュース・チャンネル' ),
+	'NewsChannel'   => array( 'ニュースチャンネル', 'ニュース・チャンネル' ),
 );
 
-/** Korean (한국어) */
 $aliases['ko'] = array(
-	'NewsChannel' => array( '작성 취소' ),
+	'NewsChannel'   => array( '작성 취소' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'NewsChannel'   => array( 'Canal_de_jhabberes' ),
+);
+
 $aliases['lb'] = array(
-	'NewsChannel' => array( 'Noriichtekanal' ),
+	'NewsChannel'   => array( 'Noriichtekanal' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'NewsChannel' => array( 'КаналЗаНовости' ),
+	'NewsChannel'   => array( 'КаналЗаНовости' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'NewsChannel' => array( 'വാർത്താചാനൽ' ),
+	'NewsChannel'   => array( 'വാർത്താചാനൽ' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'NewsChannel' => array( 'Niej_kenaal' ),
+	'NewsChannel'   => array( 'Niej_kenaal' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'NewsChannel' => array( 'Nieuwskanaal' ),
+	'NewsChannel'   => array( 'Nieuwskanaal' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'NewsChannel' => array( 'Nyhetskanal' ),
+	'NewsChannel'   => array( 'Nyhetskanal' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'NewsChannel' => array( 'Cadena d’informacion' ),
+	'NewsChannel'   => array( 'Cadena_d’informacion' ),
 );
 
-/** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'NewsChannel' => array( 'خبري کانال' ),
+	'NewsChannel'   => array( 'خبري_کانال' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'NewsChannel' => array( 'Canal de notícias' ),
+	'NewsChannel'   => array( 'Canal_de_notícias' ),
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'NewsChannel' => array( 'Canal de notícias' ),
+	'NewsChannel'   => array( 'Canal_de_notícias' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'NewsChannel' => array( 'वृत्तवाहिनी' ),
+	'NewsChannel'   => array( 'वृत्तवाहिनी' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'NewsChannel' => array( 'KanálNoviniek' ),
+	'NewsChannel'   => array( 'KanálNoviniek' ),
 );
 
-/** Albanian (Shqip) */
 $aliases['sq'] = array(
-	'NewsChannel' => array( 'KanalLajmesh' ),
+	'NewsChannel'   => array( 'KanalLajmesh' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'NewsChannel' => array( 'Nyhetskanal' ),
+	'NewsChannel'   => array( 'Nyhetskanal' ),
 );
 
-/** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'NewsChannel' => array( 'ChaneliMpya' ),
+	'NewsChannel'   => array( 'ChaneliMpya' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'NewsChannel' => array( 'Estasyon ng balita' ),
+	'NewsChannel'   => array( 'Estasyon ng balita' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'NewsChannel' => array( 'HaberKanalı' ),
+	'NewsChannel'   => array( 'HaberKanalı' ),
 );
-

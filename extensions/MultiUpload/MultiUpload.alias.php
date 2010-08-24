@@ -15,158 +15,138 @@ $aliases['en'] = array(
 	'MultipleUpload'            => array('MultipleUpload')
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'MultipleUpload' => array( 'رفع_متعدد' ),
+	'MultipleUpload'   => array( 'رفع_متعدد' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'MultipleUpload' => array( 'Upload_متعدد' ),
+	'MultipleUpload'   => array( 'Upload_متعدد' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'MultipleUpload' => array( 'VisestrukoPos' ),
+	'MultipleUpload'   => array( 'VisestrukoPos' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'MultipleUpload' => array( 'Mehrere Dateien hochladen' ),
+	'MultipleUpload'   => array( 'Mehrere_Dateien_hochladen' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'MultipleUpload' => array( 'Někotare dataje nagraś' ),
+	'MultipleUpload'   => array( 'Někotare_dataje_nagraś' ),
 );
 
-/** French (Français) */
+$aliases['fa'] = array(
+	'MultipleUpload'   => array( 'بارگذاری_چندتایی' ),
+);
+
 $aliases['fr'] = array(
-	'MultipleUpload' => array( 'Téléversement multiple', 'TéléversementMultiple' ),
+	'MultipleUpload'   => array( 'Téléversement_multiple', 'TéléversementMultiple' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'MultipleUpload' => array( 'Tèlèchargement multiplo', 'TèlèchargementMultiplo' ),
+	'MultipleUpload'   => array( 'Tèlèchargement_multiplo', 'TèlèchargementMultiplo' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'MultipleUpload' => array( 'Mehreri Dateie uffelade' ),
+	'MultipleUpload'   => array( 'Mehreri Dateie uffelade' ),
 );
 
-/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'MultipleUpload' => array( 'Višestruko_postavljanje' ),
+	'MultipleUpload'   => array( 'Višestruko_postavljanje' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'MultipleUpload' => array( 'Wjacore dataje nahrać' ),
+	'MultipleUpload'   => array( 'Wjacore_dataje_nahrać' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'MultipleUpload' => array( 'Incargar plures', 'Cargar plures' ),
+	'MultipleUpload'   => array( 'Incargar_plures', 'Cargar_plures' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'MultipleUpload' => array( 'Multi unggah', 'MultiUnggah' ),
+	'MultipleUpload'   => array( 'Multi_unggah', 'MultiUnggah' ),
 );
 
-/** Italian (Italiano) */
 $aliases['it'] = array(
-	'MultipleUpload' => array( 'CaricaMultipli' ),
+	'MultipleUpload'   => array( 'CaricaMultipli' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'MultipleUpload' => array( 'マルチアップロード', '複数アップロード' ),
+	'MultipleUpload'   => array( 'マルチアップロード', '複数アップロード' ),
 );
 
-/** Korean (한국어) */
 $aliases['ko'] = array(
-	'MultipleUpload' => array( '다중올리기' ),
+	'MultipleUpload'   => array( '다중올리기' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'MultipleUpload' => array( 'HuhlaadeEmPöngel' ),
+	'MultipleUpload'   => array( 'HuhlaadeEmPöngel' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'MultipleUpload'   => array( 'CargarMunchasDosyasEnMesmoTiempo' ),
+);
+
 $aliases['lb'] = array(
-	'MultipleUpload' => array( 'Vill Fichieren eroplueden' ),
+	'MultipleUpload'   => array( 'Vill_Fichieren_eroplueden' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'MultipleUpload' => array( 'ПовеќекратноПодигање' ),
+	'MultipleUpload'   => array( 'ПовеќекратноПодигање' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'MultipleUpload' => array( 'വിവിധ അപ്‌ലോഡുകൾ' ),
+	'MultipleUpload'   => array( 'വിവിധ_അപ്‌ലോഡുകൾ' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'MultipleUpload' => array( 'Meerdere_bestanen_toevoegen' ),
+	'MultipleUpload'   => array( 'Meerdere_bestanen_toevoegen' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'MultipleUpload' => array( 'MultiUploaden' ),
+	'MultipleUpload'   => array( 'MultiUploaden' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'MultipleUpload' => array( 'Last opp mange filer' ),
+	'MultipleUpload'   => array( 'Last_opp_mange_filer' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'MultipleUpload' => array( 'Telecargament multiple', 'TelecargamentMultiple' ),
+	'MultipleUpload'   => array( 'Telecargament_multiple', 'TelecargamentMultiple' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'MultipleUpload' => array( 'Carregamento múltiplo' ),
+	'MultipleUpload'   => array( 'Carregamento_múltiplo' ),
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'MultipleUpload' => array( 'Carregamentos em massa' ),
+	'MultipleUpload'   => array( 'Carregamentos_em_massa' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'MultipleUpload' => array( 'अनेकभारंन्यस्यति' ),
+	'MultipleUpload'   => array( 'अनेकभारंन्यस्यति' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'MultipleUpload' => array( 'Multinahrávanie' ),
+	'MultipleUpload'   => array( 'Multinahrávanie' ),
 );
 
-/** Albanian (Shqip) */
 $aliases['sq'] = array(
-	'MultipleUpload' => array( 'MultiNgarkim' ),
+	'MultipleUpload'   => array( 'MultiNgarkim' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'MultipleUpload' => array( 'Multiuppladdning' ),
+	'MultipleUpload'   => array( 'Multiuppladdning' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'MultipleUpload' => array( 'Maramihang pagkarga' ),
+	'MultipleUpload'   => array( 'Maramihang pagkarga' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'MultipleUpload' => array( 'ÇokluYükleme' ),
+	'MultipleUpload'   => array( 'ÇokluYükleme' ),
 );
 
+$aliases['zh-hant'] = array(
+	'MultipleUpload'   => array( '大量上傳' ),
+);

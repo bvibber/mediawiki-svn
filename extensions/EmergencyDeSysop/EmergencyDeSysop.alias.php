@@ -6,138 +6,126 @@ $aliases['en'] = array(
 	'EmergencyDeSysop' => array( 'EmergencyDeSysop', 'EmergencyDesysop' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'EmergencyDeSysop' => array( 'عزل_طارئ' ),
+	'EmergencyDeSysop'   => array( 'عزل_طارئ' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'EmergencyDeSysop' => array( 'عزل_طارئ' ),
+	'EmergencyDeSysop'   => array( 'عزل_طارئ' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'EmergencyDeSysop' => array( 'HitnoUklanjanjeSysopa' ),
+	'EmergencyDeSysop'   => array( 'HitnoUklanjanjeSysopa' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'EmergencyDeSysop' => array( 'Notfall-Administratorrechtentzug' ),
+	'EmergencyDeSysop'   => array( 'Notfall-Administratorrechtentzug' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'EmergencyDeSysop' => array( 'Zajmjeśe administratorowych pšawach w nuznem paźe' ),
+	'EmergencyDeSysop'   => array( 'Zajmjeśe_administratorowych_pšawach_w_nuznem_paźe' ),
 );
 
-/** Finnish (Suomi) */
+$aliases['fa'] = array(
+	'EmergencyDeSysop'   => array( 'خلع_مدیریت_اضطراری' ),
+);
+
 $aliases['fi'] = array(
-	'EmergencyDeSysop' => array( 'Ylläpitäjyyden_hätäpoisto' ),
+	'EmergencyDeSysop'   => array( 'Ylläpitäjyyden_hätäpoisto' ),
 );
 
-/** French (Français) */
 $aliases['fr'] = array(
-	'EmergencyDeSysop' => array( 'Désysoppage d’urgence', 'DeSysopageUrgent' ),
+	'EmergencyDeSysop'   => array( 'Désysoppage_d’urgence', 'DeSysopageUrgent' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'EmergencyDeSysop' => array( "DèSisopâjo d'urgence", 'DèSisopâjoDUrgence', "Dèsisopâjo d'urgence", 'DèsisopâjoDUrgence' ),
+	'EmergencyDeSysop'   => array( 'DèSisopâjo_d\'urgence', 'DèSisopâjoDUrgence', 'Dèsisopâjo_d\'urgence', 'DèsisopâjoDUrgence' ),
 );
 
-/** Galician (Galego) */
 $aliases['gl'] = array(
-	'EmergencyDeSysop' => array( 'Emerxencia de administrador' ),
+	'EmergencyDeSysop'   => array( 'Emerxencia de administrador' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'EmergencyDeSysop' => array( 'Prawa administratora w nuzowym padźe preč wzać' ),
+	'EmergencyDeSysop'   => array( 'Prawa_administratora_w_nuzowym_padźe_preč_wzać' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'EmergencyDeSysop' => array( 'Vészhelyzeti adminisztrátori jog elvonás' ),
+	'EmergencyDeSysop'   => array( 'Vészhelyzeti_adminisztrátori_jog_elvonás' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'EmergencyDeSysop' => array( 'Disadmin de urgentia' ),
+	'EmergencyDeSysop'   => array( 'Disadmin_de_urgentia' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'EmergencyDeSysop' => array( 'Demutasi opsis darurat', 'DemutasiOpsisDarurat' ),
+	'EmergencyDeSysop'   => array( 'Demutasi_opsis_darurat', 'DemutasiOpsisDarurat' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'EmergencyDeSysop' => array( '緊急管理者解任' ),
+	'EmergencyDeSysop'   => array( '緊急管理者解任' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'EmergencyDeSysop' => array( 'Kamikaze' ),
+	'EmergencyDeSysop'   => array( 'Kamikaze' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'EmergencyDeSysop'   => array( 'Urgencia_de_sisop' ),
+);
+
 $aliases['lb'] = array(
-	'EmergencyDeSysop' => array( 'Noutprozedur fir Administrateurrechter ewechzehuelen' ),
+	'EmergencyDeSysop'   => array( 'Noutprozedur_fir_Administrateurrechter_ewechzehuelen' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'EmergencyDeSysop' => array( 'ИтноОдземањеНаСисопПрава' ),
+	'EmergencyDeSysop'   => array( 'ИтноОдземањеНаСисопПрава' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'EmergencyDeSysop' => array( 'അടിയന്തരസിസോപ്‌‌തരംതാഴ്‌‌ത്തൽ' ),
+	'EmergencyDeSysop'   => array( 'അടിയന്തരസിസോപ്‌‌തരംതാഴ്‌‌ത്തൽ' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'EmergencyDeSysop' => array( 'तातडीनेप्रचालकरद्दीकरण' ),
+	'EmergencyDeSysop'   => array( 'तातडीनेप्रचालकरद्दीकरण' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'EmergencyDeSysop' => array( 'Noodgreep_beheerdersrechen_ontnemen' ),
+	'EmergencyDeSysop'   => array( 'Noodgreep_beheerdersrechen_ontnemen' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'EmergencyDeSysop' => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),
+	'EmergencyDeSysop'   => array( 'NoodgreepBeheerdersrechtenVerwijderen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'EmergencyDeSysop' => array( 'Nødrettighetsfjerning' ),
+	'EmergencyDeSysop'   => array( 'Nødrettighetsfjerning' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'EmergencyDeSysop' => array( 'DesysopatgeUrgent', 'DesisopatgeUrgent', 'DeSysopatgeUrgent', 'DeSisopatgeUrgent' ),
+	'EmergencyDeSysop'   => array( 'DesysopatgeUrgent', 'DesisopatgeUrgent', 'DeSysopatgeUrgent', 'DeSisopatgeUrgent' ),
 );
 
-/** Sanskrit (संस्कृत) */
+$aliases['pl'] = array(
+	'EmergencyDeSysop'   => array( 'Awaryjne_odebranie_uprawnień_administratora' ),
+);
+
 $aliases['sa'] = array(
-	'EmergencyDeSysop' => array( 'आपत्कालप्रचालकनिष्कासन' ),
+	'EmergencyDeSysop'   => array( 'आपत्कालप्रचालकनिष्कासन' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'EmergencyDeSysop' => array( 'NúdzovéZbavenieSprávcu' ),
+	'EmergencyDeSysop'   => array( 'NúdzovéZbavenieSprávcu' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'EmergencyDeSysop' => array( 'Biglaang pagtanggal bilang tagapagpatakbo ng sistema' ),
+	'EmergencyDeSysop'   => array( 'Biglaang pagtanggal bilang tagapagpatakbo ng sistema' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'EmergencyDeSysop' => array( 'AcilHizmetlilikAlma' ),
+	'EmergencyDeSysop'   => array( 'AcilHizmetlilikAlma' ),
 );
 
+$aliases['zh-hant'] = array(
+	'EmergencyDeSysop'   => array( '緊急解除管理員權限' ),
+);

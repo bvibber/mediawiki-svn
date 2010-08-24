@@ -13,113 +13,106 @@ $aliases['en'] = array(
 	'CommunityVoice' => array( 'CommunityVoice' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'CommunityVoice' => array( 'صوت_المجتمع' ),
+	'CommunityVoice'   => array( 'صوت_المجتمع' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CommunityVoice' => array( 'صوت_المجتمع' ),
+	'CommunityVoice'   => array( 'صوت_المجتمع' ),
 );
 
-/** Bosnian (Bosanski) */
+$aliases['br'] = array(
+	'CommunityVoice'   => array( 'MouezhKumuniezh' ),
+);
+
 $aliases['bs'] = array(
-	'CommunityVoice' => array( 'GlasZajednice' ),
+	'CommunityVoice'   => array( 'GlasZajednice' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'CommunityVoice' => array( 'Głos zgromaźeństwa' ),
+	'CommunityVoice'   => array( 'Głos_zgromaźeństwa' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
+$aliases['fa'] = array(
+	'CommunityVoice'   => array( 'صدای_انجمن' ),
+);
+
 $aliases['hsb'] = array(
-	'CommunityVoice' => array( 'Hłós zhromadźenstwa' ),
+	'CommunityVoice'   => array( 'Hłós_zhromadźenstwa' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CommunityVoice' => array( 'Voce del communitate' ),
+	'CommunityVoice'   => array( 'Voce_del_communitate' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'CommunityVoice' => array( 'Suara komunitas', 'SuaraKomunitas' ),
+	'CommunityVoice'   => array( 'Suara_komunitas', 'SuaraKomunitas' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'CommunityVoice' => array( 'コミュニティー・ボイス', 'コミュニティの声' ),
+	'CommunityVoice'   => array( 'コミュニティー・ボイス', 'コミュニティの声' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'CommunityVoice' => array( 'សំលេងសហគមន៍' ),
+	'CommunityVoice'   => array( 'សំលេងសហគមន៍' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'CommunityVoice' => array( 'Metmaacherstemme' ),
+	'CommunityVoice'   => array( 'Metmaacherstemme' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'CommunityVoice'   => array( 'BozComunidad' ),
+);
+
 $aliases['lb'] = array(
-	'CommunityVoice' => array( 'Stëmm vun der Gemeinschaft' ),
+	'CommunityVoice'   => array( 'Stëmm_vun_der_Gemeinschaft' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'CommunityVoice' => array( 'ГласНаЗаедницата' ),
+	'CommunityVoice'   => array( 'ГласНаЗаедницата' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'CommunityVoice' => array( 'സമൂഹശബ്ദം' ),
+	'CommunityVoice'   => array( 'സമൂഹശബ്ദം' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'CommunityVoice' => array( 'समूहवाणी' ),
+	'CommunityVoice'   => array( 'समूहवाणी' ),
 );
 
-/** Maltese (Malti) */
 $aliases['mt'] = array(
-	'CommunityVoice' => array( 'VuċiKomunità', 'VuċiKomunitarja' ),
+	'CommunityVoice'   => array( 'VuċiKomunità', 'VuċiKomunitarja' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'CommunityVoice' => array( 'Gemeenschapsstemme' ),
+	'CommunityVoice'   => array( 'Gemeenschapsstemme' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'CommunityVoice' => array( 'Gemeenschapsstem' ),
+	'CommunityVoice'   => array( 'Gemeenschapsstem' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'CommunityVoice' => array( 'Brukermedvirkning' ),
+	'CommunityVoice'   => array( 'Brukermedvirkning' ),
 );
 
-/** Romanian (Română) */
+$aliases['pl'] = array(
+	'CommunityVoice'   => array( 'Opinia_społeczności' ),
+);
+
 $aliases['ro'] = array(
-	'CommunityVoice' => array( 'Vocea comunităţii' ),
+	'CommunityVoice'   => array( 'Vocea_comunității' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'CommunityVoice' => array( 'HlasKomunity' ),
+	'CommunityVoice'   => array( 'HlasKomunity' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'CommunityVoice' => array( 'Tinig ng pamayanan' ),
+	'CommunityVoice'   => array( 'Tinig ng pamayanan' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'CommunityVoice' => array( 'ToplulukSesi' ),
+	'CommunityVoice'   => array( 'ToplulukSesi' ),
 );
-

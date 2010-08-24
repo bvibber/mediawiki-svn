@@ -13,38 +13,54 @@ $aliases['en'] = array(
 	'LastUserLogin' => array( 'LastUserLogin' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'LastUserLogin' => array( 'آخر_دخول_للمستخدم' ),
+	'LastUserLogin'   => array( 'آخر_دخول_للمستخدم' ),
 );
 
-/** Spanish (Español) */
+$aliases['arz'] = array(
+	'LastUserLogin'   => array( 'آخر_دخول_لليوزر' ),
+);
+
 $aliases['es'] = array(
-	'LastUserLogin' => array( 'Último usuario que ha entrado' ),
+	'LastUserLogin'   => array( 'Último_usuario_que_ha_entrado' ),
 );
 
-/** Interlingua (Interlingua) */
+$aliases['fa'] = array(
+	'LastUserLogin'   => array( 'آخرین_ورود_کاربر' ),
+);
+
 $aliases['ia'] = array(
-	'LastUserLogin' => array( 'Ultime session de usator' ),
+	'LastUserLogin'   => array( 'Ultime_session_de_usator' ),
 );
 
-/** Japanese (日本語) */
+$aliases['id'] = array(
+	'LastUserLogin'   => array( 'Log_masuk_terakhir', 'LogMasukTerakhir' ),
+);
+
 $aliases['ja'] = array(
-	'LastUserLogin' => array( '利用者の最終ログイン', '最終利用者ログイン' ),
+	'LastUserLogin'   => array( '利用者の最終ログイン', '最終利用者ログイン' ),
 );
 
-/** Malayalam (മലയാളം) */
+$aliases['lad'] = array(
+	'LastUserLogin'   => array( 'DeAlcaboUsadorQueEntró' ),
+);
+
+$aliases['lb'] = array(
+	'LastUserLogin'   => array( 'Leschte_Benotzer_Login' ),
+);
+
 $aliases['ml'] = array(
-	'LastUserLogin' => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
+	'LastUserLogin'   => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'LastUserLogin' => array( 'LaasteGebruikeraanmelding' ),
+	'LastUserLogin'   => array( 'LaasteGebruikeraanmelding' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'LastUserLogin' => array( 'Siste brukerinnlogging' ),
+	'LastUserLogin'   => array( 'Siste_brukerinnlogging' ),
 );
 
+$aliases['zh-hans'] = array(
+	'LastUserLogin'   => array( '最后用户登录' ),
+);

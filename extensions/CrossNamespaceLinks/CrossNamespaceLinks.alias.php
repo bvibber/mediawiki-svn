@@ -15,198 +15,170 @@ $aliases['en'] = array(
     'CrossNamespaceLinks' => array( 'CrossNamespaceLinks' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'CrossNamespaceLinks' => array( 'وصلات_عبر_النطاقات' ),
+	'CrossNamespaceLinks'   => array( 'وصلات_عبر_النطاقات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CrossNamespaceLinks' => array( 'لينكات_فى_اسم_المساحه' ),
+	'CrossNamespaceLinks'   => array( 'لينكات_فى_اسم_المساحه' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'CrossNamespaceLinks' => array( 'LinkoviIzmedjuImenskihProstora' ),
+	'CrossNamespaceLinks'   => array( 'LinkoviIzmedjuImenskihProstora' ),
 );
 
-/** Catalan (Català) */
 $aliases['ca'] = array(
-	'CrossNamespaceLinks' => array( 'Enllaços entre espais de noms' ),
+	'CrossNamespaceLinks'   => array( 'Enllaços entre espais de noms' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'CrossNamespaceLinks' => array( 'Seiten mit Links in andere Namensräume' ),
+	'CrossNamespaceLinks'   => array( 'Seiten_mit_Links_in_andere_Namensräume' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'CrossNamespaceLinks' => array( 'Wótkaze do drugich mjenjowych rumow' ),
+	'CrossNamespaceLinks'   => array( 'Wótkaze_do_drugich_mjenjowych_rumow' ),
 );
 
-/** Spanish (Español) */
 $aliases['es'] = array(
-	'CrossNamespaceLinks' => array( 'Enlaces entre distintos espacios de nombres' ),
+	'CrossNamespaceLinks'   => array( 'Enlaces_entre_distintos_espacios_de_nombres' ),
 );
 
-/** Estonian (Eesti) */
 $aliases['et'] = array(
-	'CrossNamespaceLinks' => array( 'Lingid_teise_nimeruumi' ),
+	'CrossNamespaceLinks'   => array( 'Lingid_teise_nimeruumi' ),
 );
 
-/** Finnish (Suomi) */
+$aliases['fa'] = array(
+	'CrossNamespaceLinks'   => array( 'پیوندهای_بین_فضای_نام' ),
+);
+
 $aliases['fi'] = array(
-	'CrossNamespaceLinks' => array( 'Nimiavaruuksien väliset linkit' ),
+	'CrossNamespaceLinks'   => array( 'Nimiavaruuksien_väliset_linkit' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'CrossNamespaceLinks' => array( 'Syte mit Gleicher in andri Namensryym' ),
+	'CrossNamespaceLinks'   => array( 'Syte mit Gleicher in andri Namensryym' ),
 );
 
-/** Hebrew (עברית) */
 $aliases['he'] = array(
-	'CrossNamespaceLinks' => array( 'קישורים מדפי תוכן למרחבי שם אחרים' ),
+	'CrossNamespaceLinks'   => array( 'קישורים מדפי תוכן למרחבי שם אחרים' ),
 );
 
-/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'CrossNamespaceLinks' => array( 'Poveznice_među_prostorima' ),
+	'CrossNamespaceLinks'   => array( 'Poveznice_među_prostorima' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'CrossNamespaceLinks' => array( 'Wotkazy do druhich mjenowych rumow' ),
+	'CrossNamespaceLinks'   => array( 'Wotkazy_do_druhich_mjenowych_rumow' ),
 );
 
-/** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
-	'CrossNamespaceLinks' => array( 'KwazeNonespasLyen' ),
+	'CrossNamespaceLinks'   => array( 'KwazeNonespasLyen' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'CrossNamespaceLinks' => array( 'Névtérközi linkek' ),
+	'CrossNamespaceLinks'   => array( 'Névtérközi_linkek' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'CrossNamespaceLinks' => array( 'Ligamines trans spatios de nomines' ),
+	'CrossNamespaceLinks'   => array( 'Ligamines_trans_spatios_de_nomines' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'CrossNamespaceLinks' => array( 'Pranala antar ruang nama', 'PranalaAntarRuangNama' ),
+	'CrossNamespaceLinks'   => array( 'Pranala_antar_ruang_nama', 'PranalaAntarRuangNama' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'CrossNamespaceLinks' => array( '名前空間をまたぐリンク' ),
+	'CrossNamespaceLinks'   => array( '名前空間をまたぐリンク' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'CrossNamespaceLinks' => array( 'តំណភ្ជាប់ឆ្លងលំហឈ្មោះ' ),
+	'CrossNamespaceLinks'   => array( 'តំណភ្ជាប់ឆ្លងលំហឈ្មោះ' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'CrossNamespaceLinks' => array( 'Lengks en ander Appachtemangs' ),
+	'CrossNamespaceLinks'   => array( 'Lengks_en_ander_Appachtemangs' ),
 );
 
-/** Latin (Latina) */
 $aliases['la'] = array(
-	'CrossNamespaceLinks' => array( 'Nexus trans praefixa' ),
+	'CrossNamespaceLinks'   => array( 'Nexus trans praefixa' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'CrossNamespaceLinks'   => array( 'Linkes_entre_diferentes_espacios_de_nombres' ),
+);
+
 $aliases['lb'] = array(
-	'CrossNamespaceLinks' => array( 'Säite mat Linken an aner Nimmraim' ),
+	'CrossNamespaceLinks'   => array( 'Säite_mat_Linken_an_aner_Nimmraim' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'CrossNamespaceLinks' => array( 'МеѓуименскиВрски' ),
+	'CrossNamespaceLinks'   => array( 'МеѓуименскиВрски' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'CrossNamespaceLinks' => array( 'അന്തർനാമമേഖലാകണ്ണികൾ' ),
+	'CrossNamespaceLinks'   => array( 'അന്തർനാമമേഖലാകണ്ണികൾ' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'CrossNamespaceLinks' => array( 'आंतरनाम्विशवदुवे' ),
+	'CrossNamespaceLinks'   => array( 'आंतरनाम्विशवदुवे' ),
 );
 
-/** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'CrossNamespaceLinks' => array( 'Pautan silang ruang nama' ),
+	'CrossNamespaceLinks'   => array( 'Pautan silang ruang nama' ),
 );
 
-/** Maltese (Malti) */
 $aliases['mt'] = array(
-	'CrossNamespaceLinks' => array( 'ĦoloqSpazjiTal-Isem', 'ĦoloqSpazjiIsem' ),
+	'CrossNamespaceLinks'   => array( 'ĦoloqSpazjiTal-Isem', 'ĦoloqSpazjiIsem' ),
 );
 
-/** Low German (Plattdüütsch) */
 $aliases['nds'] = array(
-	'CrossNamespaceLinks' => array( 'Lenken in annere Naamrüüm' ),
+	'CrossNamespaceLinks'   => array( 'Lenken in annere Naamrüüm' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'CrossNamespaceLinks' => array( 'Verwiezingen_tussen_naamruumtes' ),
+	'CrossNamespaceLinks'   => array( 'Verwiezingen_tussen_naamruumtes' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'CrossNamespaceLinks' => array( 'VerwijzingenTussenNaamruimten' ),
+	'CrossNamespaceLinks'   => array( 'VerwijzingenTussenNaamruimten' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'CrossNamespaceLinks' => array( 'Lenker mellom navnerom' ),
+	'CrossNamespaceLinks'   => array( 'Lenker_mellom_navnerom' ),
 );
 
-/** Polish (Polski) */
 $aliases['pl'] = array(
-	'CrossNamespaceLinks' => array( 'Linki między przestrzeniami nazw' ),
+	'CrossNamespaceLinks'   => array( 'Linki_między_przestrzeniami_nazw' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'CrossNamespaceLinks' => array( 'Ligações entre espaços nominais' ),
+	'CrossNamespaceLinks'   => array( 'Ligações_entre_espaços_nominais' ),
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'CrossNamespaceLinks' => array( 'Links espalhados em diversos espaços nominais', 'Links espalhados em diversos domínios', 'Ligações espalhadas em diversos espaços nominais' ),
+	'CrossNamespaceLinks'   => array( 'Links_espalhados_em_diversos_espaços_nominais', 'Links_espalhados_em_diversos_domínios', 'Ligações_espalhadas_em_diversos_espaços_nominais' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'CrossNamespaceLinks' => array( 'आन्तरनामविश्वसम्बद्ध:' ),
+	'CrossNamespaceLinks'   => array( 'आन्तरनामविश्वसम्बद्ध:' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'CrossNamespaceLinks' => array( 'OdkazyMedziMennýmiPriestormi' ),
+	'CrossNamespaceLinks'   => array( 'OdkazyMedziMennýmiPriestormi' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'CrossNamespaceLinks' => array( 'Länkar mellan namnrymder' ),
+	'CrossNamespaceLinks'   => array( 'Länkar_mellan_namnrymder' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'CrossNamespaceLinks' => array( 'Mga kawing ng pagtawid ng espasyo ng pangalan' ),
+	'CrossNamespaceLinks'   => array( 'Mga kawing ng pagtawid ng espasyo ng pangalan' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'CrossNamespaceLinks' => array( 'İsimAlanlarıArasıBağlantılar' ),
+	'CrossNamespaceLinks'   => array( 'İsimAlanlarıArasıBağlantılar' ),
 );
 
+$aliases['zh-hant'] = array(
+	'CrossNamespaceLinks'   => array( '跨名字空間的連結' ),
+);

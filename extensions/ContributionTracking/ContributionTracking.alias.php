@@ -13,118 +13,102 @@ $aliases['en'] = array(
 	'ContributionTracking' => array( 'ContributionTracking' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'ContributionTracking' => array( 'تتبع_المساهمة' ),
+	'ContributionTracking'   => array( 'تتبع_المساهمة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ContributionTracking' => array( 'متابعة_المساهمه' ),
+	'ContributionTracking'   => array( 'متابعة_المساهمه' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'ContributionTracking' => array( 'DoprinosiPracenje' ),
+	'ContributionTracking'   => array( 'DoprinosiPracenje' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'ContributionTracking' => array( 'Slědowanje pśinoskow' ),
+	'ContributionTracking'   => array( 'Slědowanje_pśinoskow' ),
 );
 
-/** Galician (Galego) */
+$aliases['fa'] = array(
+	'ContributionTracking'   => array( 'ردگیری_مشارکت' ),
+);
+
 $aliases['gl'] = array(
-	'ContributionTracking' => array( 'Seguimento das contribucións' ),
+	'ContributionTracking'   => array( 'Seguimento das contribucións' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'ContributionTracking' => array( 'Adományok követése' ),
+	'ContributionTracking'   => array( 'Adományok_követése' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ContributionTracking' => array( 'Traciamento de contributiones' ),
+	'ContributionTracking'   => array( 'Traciamento_de_contributiones' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'ContributionTracking' => array( 'Pelacakan kontribusi', 'PelacakanKontribusi' ),
+	'ContributionTracking'   => array( 'Pelacakan_kontribusi', 'PelacakanKontribusi' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'ContributionTracking' => array( '寄付追跡' ),
+	'ContributionTracking'   => array( '寄付追跡' ),
 );
 
-/** Korean (한국어) */
 $aliases['ko'] = array(
-	'ContributionTracking' => array( '기여추적' ),
+	'ContributionTracking'   => array( '기여추적' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'ContributionTracking' => array( 'MetmaacherVerfoljung' ),
+	'ContributionTracking'   => array( 'MetmaacherVerfoljung' ),
 );
 
-/** Macedonian (Македонски) */
+$aliases['lad'] = array(
+	'ContributionTracking'   => array( 'PerseguirAjustamientos' ),
+);
+
 $aliases['mk'] = array(
-	'ContributionTracking' => array( 'СледењеНаПридонесите' ),
+	'ContributionTracking'   => array( 'СледењеНаПридонесите' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'ContributionTracking' => array( 'സേവനംശ്രദ്ധിക്കൽ' ),
+	'ContributionTracking'   => array( 'സേവനംശ്രദ്ധിക്കൽ' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'ContributionTracking' => array( 'योगदानमागमूस' ),
+	'ContributionTracking'   => array( 'योगदानमागमूस' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'ContributionTracking' => array( 'Donasies_volgen' ),
+	'ContributionTracking'   => array( 'Donasies_volgen' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'ContributionTracking' => array( 'DonatiesVolgen' ),
+	'ContributionTracking'   => array( 'DonatiesVolgen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'ContributionTracking' => array( 'Bidragssporing' ),
+	'ContributionTracking'   => array( 'Bidragssporing' ),
 );
 
-/** Polish (Polski) */
 $aliases['pl'] = array(
-	'ContributionTracking' => array( 'Przekierowanie do systemu płatnościowego' ),
+	'ContributionTracking'   => array( 'Przekierowanie_do_systemu_płatnościowego' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'ContributionTracking' => array( 'योगदानउन्नयति' ),
+	'ContributionTracking'   => array( 'योगदानउन्नयति' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'ContributionTracking' => array( 'SledovaniePríspevkov' ),
+	'ContributionTracking'   => array( 'SledovaniePríspevkov' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'ContributionTracking' => array( 'Pagbakas ng ambag' ),
+	'ContributionTracking'   => array( 'Pagbakas ng ambag' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'ContributionTracking' => array( 'KatkıTakibi' ),
+	'ContributionTracking'   => array( 'KatkıTakibi' ),
 );
 
-/** Vèneto (Vèneto) */
 $aliases['vec'] = array(
-	'ContributionTracking' => array( 'TraciamentoContributi' ),
+	'ContributionTracking'   => array( 'TraciamentoContributi' ),
 );
-

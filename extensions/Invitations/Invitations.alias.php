@@ -16,253 +16,206 @@ $aliases['en'] = array(
 	'Invitations' => array( 'Invitations' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'Invitations' => array( 'دعوات' ),
+	'Invitations'   => array( 'دعوات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Invitations' => array( 'دعوات' ),
+	'Invitations'   => array( 'دعوات' ),
 );
 
-/** Bulgarian (Български) */
 $aliases['bg'] = array(
-	'Invitations' => array( 'Покани' ),
+	'Invitations'   => array( 'Покани' ),
 );
 
-/** Breton (Brezhoneg) */
 $aliases['br'] = array(
-	'Invitations' => array( 'Pedadennoù' ),
+	'Invitations'   => array( 'Pedadennoù' ),
 );
 
-/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'Invitations' => array( 'Pozivi' ),
+	'Invitations'   => array( 'Pozivi' ),
 );
 
-/** German (Deutsch) */
 $aliases['de'] = array(
-	'Invitations' => array( 'Einladungen' ),
+	'Invitations'   => array( 'Einladungen' ),
 );
 
-/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'Invitations' => array( 'Pśepšosenja' ),
+	'Invitations'   => array( 'Pśepšosenja' ),
 );
 
-/** Esperanto (Esperanto) */
 $aliases['eo'] = array(
-	'Invitations' => array( 'Invitilo' ),
+	'Invitations'   => array( 'Invitilo' ),
 );
 
-/** Spanish (Español) */
 $aliases['es'] = array(
-	'Invitations' => array( 'Invitaciones' ),
+	'Invitations'   => array( 'Invitaciones' ),
 );
 
-/** Basque (Euskara) */
 $aliases['eu'] = array(
-	'Invitations' => array( 'Gonbidapenak' ),
+	'Invitations'   => array( 'Gonbidapenak' ),
 );
 
-/** Persian (فارسی) */
 $aliases['fa'] = array(
-	'Invitations' => array( 'دعوت‌ها' ),
+	'Invitations'   => array( 'دعوت‌ها' ),
 );
 
-/** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'Invitations' => array( 'Kutsut' ),
+	'Invitations'   => array( 'Kutsut' ),
 );
 
-/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'Invitations' => array( 'Envitacions' ),
+	'Invitations'   => array( 'Envitacions' ),
 );
 
-/** Galician (Galego) */
 $aliases['gl'] = array(
-	'Invitations' => array( 'Invitacións' ),
+	'Invitations'   => array( 'Invitacións' ),
 );
 
-/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'Invitations' => array( 'Yyladige' ),
+	'Invitations'   => array( 'Yyladige' ),
 );
 
-/** Hebrew (עברית) */
 $aliases['he'] = array(
-	'Invitations' => array( 'הזמנות' ),
+	'Invitations'   => array( 'הזמנות' ),
 );
 
-/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'Invitations' => array( 'Pozivnice' ),
+	'Invitations'   => array( 'Pozivnice' ),
 );
 
-/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'Invitations' => array( 'Přeprošenja' ),
+	'Invitations'   => array( 'Přeprošenja' ),
 );
 
-/** Haitian (Kreyòl ayisyen) */
 $aliases['ht'] = array(
-	'Invitations' => array( 'Envitasyon' ),
+	'Invitations'   => array( 'Envitasyon' ),
 );
 
-/** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'Invitations' => array( 'Meghívók' ),
+	'Invitations'   => array( 'Meghívók' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Invitations' => array( 'Invitationes' ),
+	'Invitations'   => array( 'Invitationes' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Invitations' => array( 'Undangan' ),
+	'Invitations'   => array( 'Undangan' ),
 );
 
-/** Italian (Italiano) */
 $aliases['it'] = array(
-	'Invitations' => array( 'Inviti' ),
+	'Invitations'   => array( 'Inviti' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Invitations' => array( '招待' ),
+	'Invitations'   => array( '招待' ),
 );
 
-/** Khmer (ភាសាខ្មែរ) */
 $aliases['km'] = array(
-	'Invitations' => array( 'ការអញ្ជើញ' ),
+	'Invitations'   => array( 'ការអញ្ជើញ' ),
 );
 
-/** Korean (한국어) */
 $aliases['ko'] = array(
-	'Invitations' => array( '초대' ),
+	'Invitations'   => array( '초대' ),
 );
 
-/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'Invitations' => array( 'Enlaadunge', 'Enladunge' ),
+	'Invitations'   => array( 'Enlaadunge', 'Enladunge' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lad'] = array(
+	'Invitations'   => array( 'Envitasyones' ),
+);
+
 $aliases['lb'] = array(
-	'Invitations' => array( 'Invitatiounen' ),
+	'Invitations'   => array( 'Invitatiounen' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Invitations' => array( 'Покани' ),
+	'Invitations'   => array( 'Покани' ),
 );
 
-/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'Invitations' => array( 'ക്ഷണങ്ങൾ' ),
+	'Invitations'   => array( 'ക്ഷണങ്ങൾ' ),
 );
 
-/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'Invitations' => array( 'निमंत्रणे' ),
+	'Invitations'   => array( 'निमंत्रणे' ),
 );
 
-/** Malay (Bahasa Melayu) */
 $aliases['ms'] = array(
-	'Invitations' => array( 'Jemputan' ),
+	'Invitations'   => array( 'Jemputan' ),
 );
 
-/** Maltese (Malti) */
 $aliases['mt'] = array(
-	'Invitations' => array( 'Inviti' ),
+	'Invitations'   => array( 'Inviti' ),
 );
 
-/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'Invitations' => array( 'Uutneudigingen' ),
+	'Invitations'   => array( 'Uutneudigingen' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'Invitations' => array( 'Uitnodigingen' ),
+	'Invitations'   => array( 'Uitnodigingen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Invitations' => array( 'Invitasjoner' ),
+	'Invitations'   => array( 'Invitasjoner' ),
 );
 
-/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'Invitations' => array( 'Convits' ),
+	'Invitations'   => array( 'Convits' ),
 );
 
-/** Polish (Polski) */
 $aliases['pl'] = array(
-	'Invitations' => array( 'Zaproszenia' ),
+	'Invitations'   => array( 'Zaproszenia' ),
 );
 
-/** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'Invitations' => array( 'بلنې' ),
+	'Invitations'   => array( 'بلنې' ),
 );
 
-/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'Invitations' => array( 'Convites' ),
+	'Invitations'   => array( 'Convites' ),
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'Invitations' => array( 'Convites' ),
+	'Invitations'   => array( 'Convites' ),
 );
 
-/** Romanian (Română) */
 $aliases['ro'] = array(
-	'Invitations' => array( 'Invitaţii' ),
+	'Invitations'   => array( 'Invitații' ),
 );
 
-/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'Invitations' => array( 'आमन्त्रण' ),
+	'Invitations'   => array( 'आमन्त्रण' ),
 );
 
-/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'Invitations' => array( 'Pozvánky' ),
+	'Invitations'   => array( 'Pozvánky' ),
 );
 
-/** Albanian (Shqip) */
 $aliases['sq'] = array(
-	'Invitations' => array( 'Ftesa' ),
+	'Invitations'   => array( 'Ftesa' ),
 );
 
-/** Swedish (Svenska) */
 $aliases['sv'] = array(
-	'Invitations' => array( 'Inbjudningar' ),
+	'Invitations'   => array( 'Inbjudningar' ),
 );
 
-/** Swahili (Kiswahili) */
 $aliases['sw'] = array(
-	'Invitations' => array( 'Mihaliko' ),
+	'Invitations'   => array( 'Mihaliko' ),
 );
 
-/** Telugu (తెలుగు) */
 $aliases['te'] = array(
-	'Invitations' => array( 'ఆహ్వానాలు' ),
+	'Invitations'   => array( 'ఆహ్వానాలు' ),
 );
 
-/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'Invitations' => array( 'Mga paanyaya' ),
+	'Invitations'   => array( 'Mga paanyaya' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'Invitations' => array( 'Davetler' ),
+	'Invitations'   => array( 'Davetler' ),
 );
-
