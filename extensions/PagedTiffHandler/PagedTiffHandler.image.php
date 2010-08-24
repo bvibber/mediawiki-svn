@@ -63,8 +63,8 @@ class PagedTiffImage {
 	public static function getPageSize( $data, $page ) {
 		if ( isset( $data['page_data'][$page] ) ) {
 			return array(
-				'width'  => $data['page_data'][$page]['width'],
-				'height' => $data['page_data'][$page]['height']
+				'width'  => intval( $data['page_data'][$page]['width'] ),
+				'height' => intval( $data['page_data'][$page]['height'] )
 			);
 		}
 		return false;
