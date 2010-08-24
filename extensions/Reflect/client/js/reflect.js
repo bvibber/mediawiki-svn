@@ -765,7 +765,7 @@ var Reflect = {
 				return;
 			}
 
-			if ( comment.$elem.find( '.new_bullet' ).length == 0 ) {
+			if ( comment.elements.bullet_list.find( '.new_bullet' ).length == 0 ) {
 				var new_bullet = comment.add_bullet_prompt();
 				new_bullet.$elem.children( 'button' )
 						.bind( 'click', Reflect.transitions.to_bullet, false );
@@ -875,7 +875,7 @@ var Reflect = {
 				Reflect.transitions.to_base( bullet_obj.comment.id );
 			} );
 
-			if ( bullet_obj.comment.$elem.find( '.highlight' ).length == 0 ) {
+			if ( bullet_obj.comment.elements.comment_text.find( '.highlight' ).length == 0 ) {
 				bullet_obj.elements.submit_button.attr( 'disabled', true );
 			}
 
@@ -1536,7 +1536,7 @@ var Reflect = {
 					}
 					// segment sentences we can index them during highlighting
 					comment.elements.comment_text.wrap_sentences();
-					comment.$elem.find( '.sentence' )
+					comment.elements.comment_text.find( '.sentence' )
 							.each( function ( index ) {
 								$j( this ).attr( 'id', 'sentence-' + index )
 										.click( Reflect.handle.sentence_click );
