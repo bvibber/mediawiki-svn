@@ -492,12 +492,29 @@ class XmppCallback (object):
 	    self.description = description
 
 	if on_timeout:
+	    if type(on_timeout) == unicode or type(on_timeout) == str:
+		msg = on_timeout
+
+		on_timeout = lambda cb: self.connection.warn(msg),
+
 	    self.on_timeout = on_timeout
 
 	if on_error:
+	    if type(on_error) == unicode or type(on_error) == str:
+		msg = on_error
+		if msg.find("%") < 0:
+		    msg += " (%s)"
+
+		on_error = lambda cb, stanza: self.connection.warn(msg % stanza.getError()),
+
 	    self.on_error = on_error
 
 	if on_match:
+	    if type(on_match) == unicode or type(on_match) == str:
+		msg = on_match
+
+		on_match = lambda cb, stanza: self.connection.info(msg),
+
 	    self.on_match = on_match
 
 	if match_condition:
@@ -730,7 +747,7 @@ class XmppConnection (Connection):
 	    self.process_presence_muc_user( conn, x )
 
     def process_presence_muc_user(self, conn, x):
-	self.info( 'muc presence: %s' % x.__str__() ) #FIXME: better info!
+	self.debug( 'muc presence: %s' % x.__str__() ) #FIXME: better info!
 
     def guess_local_resource(self):
 	resource = "%s-%d" % ( socket.gethostname(), os.getpid() ) 
@@ -772,7 +789,7 @@ class XmppConnection (Connection):
         self.jabber.RegisterHandler( 'iq', self.process_other_stanza )
 
 	self.jid = jid;
-        self.info( 'connected as %s' % ( jid ) )
+        self.info( 'connected as %s to %s' % ( jid, host ) )
 
 	self.ping()
 	self.on_connect()
@@ -863,15 +880,22 @@ class XmppConnection (Connection):
 	    if stanza.getAttr("type") == "get" and stanza.getAttr("id") is None:
 		stanza.setAttr( "id", self.make_id("iq") )
 
-	if callable(callback):
+	if not callback and 'on_match' in args:
+	    callback = args['on_match']
+	    del args['on_match']
+
+	if callback and callable(callback):
 	    # if callback is a plain callable, wrap in a XmppCallback
 	    callback = XmppCallback(stanza, on_match = callback, **args)
 	elif callback:
 	    # otherwise auto-match stanza
 	    callback.configure_for_response(stanza)
+	elif args:
+	    raise Exception("no callback, but callback arguments: %s" % repr(args))
 
 	self.jabber.send(stanza)
 	self.trace('>> stanza sent: %s' % stanza.__str__() )
+	self.trace('...callback: %s' % repr(callback) )
 
 	if callback:
 	    self.add_callback(callback)  # NOTE: can't miss anything, this is single threaded!
@@ -905,7 +929,7 @@ class XmppConnection (Connection):
 	ping = xmpp.Iq( typ='get', to= self.jid.getDomain(), frm= self.jid )
 	ping.addChild( name= "ping", namespace = "urn:xmpp:ping" )
 
-	self.send( ping, lambda cb, stanza: self.info('response received to ping!') )
+	self.send( ping, lambda cb, stanza: self.debug('response received to ping!'), description= "expect pong" )
 	self.debug('ping sent: %s' % ping.__str__() )
 
     def reconnect_backoff( self ):
@@ -1126,9 +1150,29 @@ class MucChannel (JabberChannel):
 	self.message_type = 'groupchat'
 
 	self.room_identity = None
+	self.presence = None
 	self.status = None
+	self.is_new_room = None
+	self.presence_type = None
 
-    def join_protocol(self, connection):
+    def part_protocol(self, connection ):
+	# use our own desired nickname as resource part of the group's JID
+	jid = self.jid.getStripped() + "/" + self.nick; 
+
+	#create presence stanza
+	part = xmpp.Presence( to= jid, typ = "unavailable" )
+
+	send = self.connection.future_send( part, 
+	    match_condition = lambda cb, stanza: self.is_my_presence(stanza),
+	    on_match = lambda cb, stanza: None, #already handled by permanent handler for set_my_presence
+	    on_error = "FAILED TO LEAVE ROOM %s! " % jid,
+	    on_timeout = "TIMEOUT WHILE LEAVING ROOM %s! " % jid,
+	    description = "final presence for %s (part)" % jid,
+	    )
+	self.connection.info( 'leaving room %s' % self.jid.getStripped() )
+	yield send
+
+    def join_protocol(self, connection, create = True, register = True ):
 	# use our own desired nickname as resource part of the group's JID
 	jid = self.jid.getStripped() + "/" + self.nick; 
 
@@ -1136,27 +1180,42 @@ class MucChannel (JabberChannel):
 	join = xmpp.Presence( to= jid )
 	join.addChild( name = 'x', namespace = 'http://jabber.org/protocol/muc' )  #announce full MUC support
 
-	send = self.connection.future_send( join, lambda cb, stanza: self.room_joined(stanza),
+	send = self.connection.future_send( join, 
 	    match_condition = lambda cb, stanza: self.is_my_presence(stanza),
-	    on_error = lambda cb, stanza: self.connection.warn("FAILED TO JOIN ROOM %s! %s " % (jid, stanza.getError())),
-	    on_timeout = lambda cb: self.connection.warn("FAILED TO JOIN ROOM %s!" % jid)
+	    on_match = lambda cb, stanza: self.set_my_presence(stanza, callback = cb),
+	    on_error = "PRESENCE ERROR %s! " % jid,
+	    permanent = True,
+	    description = "room presence for %s" % jid
 	    )
-	self.connection.info( 'joining room %s' % self.jid.getStripped() )
+	self.connection.debug( 'joining room %s' % self.jid.getStripped() )
 	yield send
 
+	#create disco query
 	disco = xmpp.Iq( to= self.jid, typ="get" )
 	disco.addChild( name="query", namespace = "http://jabber.org/protocol/disco#info" )
 
-	send = self.connection.future_send( disco, lambda cb, stanza: self.set_room_info(stanza), 
-	    on_error = lambda cb, stanza: self.connection.warn("FAILED TO GET ROOM IDENTITY %s! %s " % (jid, stanza.getError())),
-	    on_timeout = lambda cb: self.connection.warn("FAILED TO GET ROOM IDENTITY  %s!" % jid),
+	send = self.connection.future_send( disco, 
+	    on_match = lambda cb, stanza: self.set_room_info(stanza), 
+	    on_error = "FAILED TO GET ROOM IDENTITY FOR %s! " % jid,
+	    on_timeout = "TIMEOUT WHILE GETTING ROOM IDENTITY FOR %s!" % jid,
+	    description = "room info for %s" % jid
 	    )
 	yield send
 	
-	
+	if not self.is_new_room:
+	    return
+	elif not create and not register:
+	    self.connection.warn("ROMM %s DID NOT EXIST! creation/registeration is not enabled." % jid)
+	    self.part()
+	    return
+
+	#TODO: configure/register!
 
     def join(self):
 	self.connection.run_protocol( self.join_protocol )
+
+    def part(self):
+	self.connection.run_protocol( self.part_protocol )
 
     def create_room(self):
 	# use our own desired nickname as resource part of the group's JID
@@ -1167,12 +1226,32 @@ class MucChannel (JabberChannel):
 	join.addChild( name = 'x', namespace = 'http://jabber.org/protocol/muc' )  #announce full MUC support
 
     def set_room_info( self, iq ):
-	self.connection.info("ROOM IDENITY: " + iq.T.query.T.identity.__str__())
+	self.connection.debug("ROOM IDENITY: " + iq.T.query.T.identity.__str__())
 	self.room_identity = iq.T.query.T.identity
 
-    def room_joined( self, presence ):
-	info = presence.T.x.T.item
+    def set_my_presence( self, presence, callback = None ):
+	self.connection.debug("MY PRESENCE: %s" + presence.__str__() )
+
+	self.presence_type = presence.getAttr("type")
+	if self.presence_type is None: 
+	    self.presence_type = "subscribed"
+
+	if self.presence_type != "unavailable" and self.presence is None:
+	    self.connection.info("joined room " + presence.getFrom().__str__() )
+
+	self.presence = presence
 	self.status = self.connection.get_status_codes(presence)
+	self.is_new_room = ( self.is_new_room or "201" in self.status )
+
+	if self.presence_type == "unavailable":
+	    self.connection.info("left room " + presence.getFrom().__str__() )
+	    self.status = None
+	    self.room_identity = None
+	    self.is_new_room = None
+	    self.presence = None
+
+	    if callback:
+		self.connection.remove_callback(callback)
 
     def is_my_presence( self, presence ):
 	if presence.T.x and presence.T.x.getNamespace() == "http://jabber.org/protocol/muc#user":
@@ -1183,6 +1262,7 @@ class MucChannel (JabberChannel):
 		  if jid.startswith( me ):
 		      return True
 	else:
+	      self.connection.debug("not my presence: %s" + presence.__str__() )
 	      return False
 
 
