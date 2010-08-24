@@ -83,6 +83,16 @@ $messages['aln'] = array(
 	'wikieditor-publish-dialog-goback' => 'Kthehem',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-publish-button-publish' => 'Publicar',
+	'wikieditor-publish-button-cancel' => 'Cancelar',
+	'wikieditor-publish-dialog-watch' => 'Cosirar ista pachina',
+	'wikieditor-publish-dialog-publish' => 'Publicar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -971,6 +981,15 @@ $messages['mt'] = array(
 	'wikieditor-publish-dialog-watch' => 'Segwi din il-paġna',
 	'wikieditor-publish-dialog-publish' => 'Ippubblika',
 	'wikieditor-publish-dialog-goback' => 'Mur lura',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'wikieditor-publish-button-publish' => 'Tictēnēxtiliāz',
+	'wikieditor-publish-button-cancel' => 'Ticcuepāz',
+	'wikieditor-publish-dialog-publish' => 'Tictēnēxtiliāz',
 );
 
 /** Nedersaksisch (Nedersaksisch)

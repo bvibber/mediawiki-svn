@@ -73,6 +73,13 @@ $messages['cy'] = array(
 	'dontswitchmeover-pref' => "Peidio â newid y wedd yr wy'n ei defnyddio, pan fydd y wedd diofyn yn newid",
 );
 
+/** Danish (Dansk)
+ * @author Sarrus
+ */
+$messages['da'] = array(
+	'dontswitchmeover-pref' => 'Lad ikke projektets udseendet blive ændret, når standardudseendet ændres',
+);
+
 /** German (Deutsch)
  * @author Metalhead64
  */
@@ -118,7 +125,7 @@ $messages['eu'] = array(
  * @author Wayiran
  */
 $messages['fa'] = array(
-	'dontswitchmeover-desc' => 'برای کاربران به صورت سلیقه‌ای مشخص می‌شود که آیا آن‌ها می‌خواهند برای حفظ تنظیمات پوسته نمایشگر خود در ویکی هنگامی که پوسته به طور پیش فرض تغییر یافته‌است تغییر کند.',
+	'dontswitchmeover-desc' => 'ترجیحات برای کاربران به منظور مشخص‌کردن اینکه آیا می‌خواهند تنظیمات پوسته را، هنگامی که پوستهٔ پیش‌فرض تغییر می‌کند، حفظ کنند؟',
 	'dontswitchmeover-pref' => 'اجازه نده پوستهٔ من با تغییر پوستهٔ پیش‌فرض تغییر کند',
 );
 

@@ -58,6 +58,14 @@ $messages['aln'] = array(
 	'wikieditor-preview-loading' => 'Loading ...',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-preview-tab' => 'Previsualizar',
+	'wikieditor-preview-loading' => 'Cargando...',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -591,6 +599,7 @@ $messages['ksh'] = array(
  */
 $messages['ku-latn'] = array(
 	'wikieditor-preview-tab' => 'Pêşdîtin',
+	'wikieditor-preview-changes-tab' => 'Guhartin',
 	'wikieditor-preview-loading' => 'Bar dibe…',
 );
 

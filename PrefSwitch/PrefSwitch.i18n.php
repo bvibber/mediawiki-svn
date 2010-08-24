@@ -1178,6 +1178,7 @@ I\'n helpu ni i\'w gwella, cwblhewch yr arolwg dewisol isod, yna pwyswch ar "[[#
 /** Danish (Dansk)
  * @author Froztbyte
  * @author Masz
+ * @author Sarrus
  * @author Sir48
  */
 $messages['da'] = array(
@@ -1188,6 +1189,7 @@ $messages['da'] = array(
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nej',
 	'prefswitch-survey-submit-off' => 'Slå nye funktioner fra',
+	'prefswitch-survey-submit-global-off' => 'Slå nye funktioner fra på alle projekter',
 	'prefswitch-survey-cancel-off' => 'Hvis du vil fortsætte med at bruge de nye funktioner, kan du gå tilbage til $1.',
 	'prefswitch-survey-submit-feedback' => 'Send feedback',
 	'prefswitch-survey-cancel-feedback' => 'Såfremt du ikke ønsker at give feedback, kan du gå tilbage til $1.',
@@ -2120,8 +2122,31 @@ $messages['fa'] = array(
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'من از نوار ابزار جدید خوشم نمی‌آید.',
 	'prefswitch-survey-answer-whyoff-other' => 'دلیل دیگر:',
 	'prefswitch-survey-question-browser' => 'از کدام مرورگر استفاده می‌کنید؟',
+	'prefswitch-survey-answer-browser-ie5' => 'اینترنت اکسپلورر ۵',
+	'prefswitch-survey-answer-browser-ie6' => 'اینترنت اکسپلورر ۶',
+	'prefswitch-survey-answer-browser-ie7' => 'اینترنت اکسپلورر ۷',
+	'prefswitch-survey-answer-browser-ie8' => 'اینترنت اکسپلورر ۸',
+	'prefswitch-survey-answer-browser-ie9' => 'اینترنت اکسپلورر ۹',
+	'prefswitch-survey-answer-browser-ff1' => 'فایرفاکس ۱',
+	'prefswitch-survey-answer-browser-ff2' => 'فایرفاکس ۲',
+	'prefswitch-survey-answer-browser-ff3' => 'فایرفاکس ۳',
+	'prefswitch-survey-answer-browser-cb' => 'گوگل کروم بتا',
+	'prefswitch-survey-answer-browser-c1' => 'گوگل کروم ۱',
+	'prefswitch-survey-answer-browser-c2' => 'گوگل کروم ۲',
+	'prefswitch-survey-answer-browser-c3' => 'گوگل کروم ۳',
+	'prefswitch-survey-answer-browser-c4' => 'گوگل کروم ۴',
+	'prefswitch-survey-answer-browser-c5' => 'گوگل کروم ۵',
+	'prefswitch-survey-answer-browser-s3' => 'سافاری ۳',
+	'prefswitch-survey-answer-browser-s4' => 'سافاری ۴',
+	'prefswitch-survey-answer-browser-s5' => 'سافاری ۵',
+	'prefswitch-survey-answer-browser-o9' => 'اپرا ۹',
+	'prefswitch-survey-answer-browser-o9.5' => 'اپرا ۹٫۵',
+	'prefswitch-survey-answer-browser-o10' => 'اپرا ۱۰',
 	'prefswitch-survey-answer-browser-other' => 'مرورگر دیگر:',
 	'prefswitch-survey-question-os' => 'از کدام سیستم عامل استفاده می‌کنید؟',
+	'prefswitch-survey-answer-os-windows' => 'ویندوز',
+	'prefswitch-survey-answer-os-windowsmobile' => 'ویندوز موبایل',
+	'prefswitch-survey-answer-os-linux' => 'لینوکس',
 	'prefswitch-survey-answer-os-other' => 'سیستم عامل دیگر:',
 	'prefswitch-survey-question-res' => 'وضوح صفحهٔ نمایش‌تان چیست؟',
 	'prefswitch-title-on' => 'ویژگی‌های جدید',
@@ -2156,15 +2181,15 @@ $messages['fa'] = array(
 |یک نما از صفحه درخواست وارد کردن پیوند
 |}
 |}
-تیم طراحی پوسته بنیاد ویکی‌مدیا در تلاش است تا فعالیت‌ها را بریا شما آسان کند. ما هیجان‌زده‌ایم تا به ابزارهای ویکی را برای شما آسان ساخته‌ایم. این تغییرات حاصل  [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study تلاش‌های گروه در یک سال گذشته است].بنیاد در تلاش است تا این امکانات را برای آینده بهبود ببخشد. برای اطلاعات بیشتر بنگرید [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia این پست وبلاگ را].
+تیم طراحی پوسته بنیاد ویکی‌مدیا در تلاش است تا فعالیت‌ها را برای شما آسان کند. از اینکه بهبودهایی صورت داده‌ایم هیجان‌زده‌ایم، از جمله اینکه با ظاهر جدید و محیطی دیگر و ابزارهای ویرایشی ساده، کار را برای شما آسان ساخته‌ایم. این تغییرات حاصل  [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study تلاش‌های گروه در یک سال گذشته است]. بنیاد در تلاش است تا این امکانات را برای آینده بهبود ببخشد. برای اطلاعات بیشتر بنگرید [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia این پست وبلاگ را].
 
 === این‌ها چیزهایی است که ما تغییر داده‌ایم ===
 * '''ناوبری:''' ما سیستم ناوبری را برای ویرایش و مطالعه صفحات بهبود دادیم. اکنون تب‌ها برای متصل کردن شما به صفحه بحث و تاریخچه هستند.
-* '''نوار ابزار ویرایش:'''ما سیستم ویرایش را برای شما بهبود دادیم. اکنون فرمت ویرایش صفحه‌ها آسان‌تر شده‌است.
+* '''نوار ابزار ویرایش:''' ما سیستم ویرایش را برای شما بهبود دادیم. اکنون فرمت ویرایش صفحه‌ها آسان‌تر شده‌است.
 * '''یک ویزارد برای پیونددهی:''' یک ابزار ساده برای افزودن پیوندها ایجاد شده‌است.
-* '''بهبود موتو جستجو:'''ما ابزار پیشنهاد برای جستجوهای شما را بهبود داده‌ایم.
+* '''بهبود موتو جستجو:''' ما ابزار پیشنهاد برای جستجوهای شما را بهبود داده‌ایم.
 * '''امکانات دیگر:''' ما یک ابزار برای افزودن جداول نیز ایجاد کرده‌ایم.
-* '''لوگوی بنیاد:'''ما نماد بنیاد را نیز بروز کرده‌ایم برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.",
+* '''لوگوی بنیاد:''' ما نماد بنیاد را نیز بروز کرده‌ایم برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.",
 	'prefswitch-main-logged-changes' => "* '''برگه {{int:watch}}''' اکنون یک ستاره است.
 * '''برگه {{int:move}}''' یک منوی کشویی در کنار دیگر برگه‌هاست.",
 	'prefswitch-main-feedback' => '===بازخورد؟===
@@ -3684,6 +3709,8 @@ Retuur noh <span class="plainlinks">[$1 $2]</span>.',
 $messages['ku-latn'] = array(
 	'prefswitch-survey-true' => 'Erê',
 	'prefswitch-survey-false' => 'Na',
+	'prefswitch-survey-answer-browser-other' => 'Geroka din:',
+	'prefswitch-title-switched-off' => 'Spas',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -4019,6 +4046,8 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'prefswitch' => 'ऊपयोगसुलभता उपक्रम पसंती कळ',
+	'prefswitch-jswarning' => 'त्वचा बदलताना कामचालू ठेवण्याकरिता तुमची [[User:$1/$2.js|$2 JavaScript]] जावास्क्रीप्ट [[{{ns:user}}:$1/vector.js]] मध्ये नकलावी लागेल <!-- or [[{{ns:user}}:$1/common.js]]--> हे लक्षात घ्या.',
+	'prefswitch-csswarning' => 'तुमची [[User:$1/$2.css|custom $2 styles]] यापुड्ढे लागू रहाणार नाही.  व्हेक्टरकरिता  [[{{ns:user}}:$1/vector.css]] मध्ये तुमची custom CSS भरू शकता.',
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
 	'prefswitch-survey-submit-off' => '↓ नविन बीटा चेहरामोहरा बंद करा',
@@ -4082,17 +4111,19 @@ $messages['mr'] = array(
 === आम्ही काय बदलले आहे ते येथे बघा  ===
 
 * '''सुचालन:''' पाने वाचण्यास व संपादण्यास सोपे जावे म्हणुन आम्ही सुधारणा केल्या आहेत.सध्या, प्रत्येक पानाच्या वरील बाजूस असलेली ’टॅब’ ही जास्त स्पष्टपणे हे दर्शविते कि, आपण तेच पान पहात आहात की त्याचे चर्चापान आणि आपण ते पान वाचत आहात की संपादन करीत आहात.
-* '''संपादन साधनपट्टीतील सुधारणा:''' We have reorganized the editing toolbar to make it easier to use. Now, formatting pages is simpler and more intuitive. 
-* '''दुवे सहाय्यक:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites. 
-* '''शोध सुधारणा:''' We have improved search suggestions to get you to the page you are looking for more quickly. 
-* '''इतर नवीन वैशिष्ट्ये:''' We have also introduced a table wizard to make creating tables easier and a find and replace feature to simplify page editing. 
-* '''विकिपीडिया लोगो:''' आम्ही आमचा लोगो अद्ययावत केला आहे. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
+* '''संपादन साधनपट्टीतील सुधारणा:''' आम्ही वापरात अधीक सुलभता मिळावी म्हणून संपादन साधनपट्टी ची पुर्नरचना केली आहे . पानांछी रचना करणे अधीक सुगम आणि सोपे झाले आहे. 
+* '''दुवे सहाय्यक:''' इतर विकिपानांना आणि बाह्य दुवे देण्याकरिता  वापरास सोपे असे साधन तुम्हाला अधीक सुलभता उपलब्ध व्हावी म्हणून उपलब्ध केले आहे. 
+* '''शोध सुधारणा:''' तुम्ही शोधत असलेले लेख/पान लवकर मिळण्याकरिता आम्ही शोध सुचवणीत सुधारणा केल्या आहेत. 
+* '''इतर नवीन वैशिष्ट्ये:'''सारणी (टेबल) सोपीकरण्यासाठी आम्ही आता एक नवीन सारणी (टेबल) सहाय्यक उपलब्ध केला आहे आणि संपादनांअध्ये सुलभता आणण्याकरिता शोधा आणि बदला (find and replace)वैशिष्ट्य सुद्धा उपलब्ध केले आहे. 
+* '''विकिपीडिया लोगो:''' आम्ही आमचा लोगो अद्ययावत केला आहे.  [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog] येथे अधीक वाचा.",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} टॅब''' आता तारा आहे.
+* The '''{{int:move}}  टॅब''' आता शोधपेटी पुढच्या अधोदर्शक बाणात( ड्रॉपडाऊनमध्ये) आहे .",
 	'prefswitch-main-feedback' => '===प्रतिक्रीया?===
 आम्हाला तुमच्या कडून ऐकण्यास आवडेल. कृपया आमच्या [[$1|प्रतिक्रीया पानास]] अथवा, तुम्ही जर आमच्या संगणन प्रणाली सुधारण्याच्या चालू प्रक्रीयेत रस असल्यास ,अधीक माहिती करिता आमच्या [http://usability.wikimedia.org ऊपयोगसुलभता उपक्रम विकिस] भेट द्या.',
-	'prefswitch-main-anon' => '↓ ===मला परत न्या===
- [नविन चेहरामोहरा बंद करण्यास $1 येथे टिचकी मारा.].आपणास लॉग-ईन करण्यास वा खाते उघडण्याबद्दल विचारण्यात येईल.',
-	'prefswitch-main-on' => '↓ ===मला परत न्या===
- [नविन चेहरामोहरा बंद करण्यास $2 येथे टिचकी मारा.].',
+	'prefswitch-main-anon' => '===मला परत न्या===
+[नविन चेहरामोहरा बंद करण्यास $1 येथे टिचकी मारा].आपणास दाखल होण्यास वा खाते उघडण्याबद्दल विचारण्यात येईल.',
+	'prefswitch-main-on' => '===मला परत न्या===
+[नविन चेहरामोहरा बंद करण्यास $2 येथे टिचकी मारा].',
 	'prefswitch-main-off' => '==वापरुन पहा!==
 [$1 नवीन बदल पाहण्यासाठी येथे टिचकी द्या]',
 	'prefswitch-survey-intro-feedback' => '↓ कृपया  "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" येथे टिचकी मारण्यापूर्वी,आपणातर्फे ऐच्छिक सर्वेक्षणाचा खाली दिलेला नमूना भरुन आपली प्रतिक्रिया घेणे आम्हास जरुर आवडेल.',
@@ -4255,6 +4286,15 @@ Jekk jogħġbok imla l-kwestjonarju opzjonali segwenti qabel ma tagħfas "[[#pre
 	'prefswitch-survey-intro-off' => 'Grazzi talli għamilt użu mill-funzjonijiet il-ġodda.
 Biex tgħinna ntejbuhom, jekk jogħġbok imla l-kwestjonarju opzjonali segwenti qabel ma tagħfas "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Rispons tal-esperjenza tal-utent',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'prefswitch-survey-true' => 'Quēmah',
+	'prefswitch-survey-false' => 'Ahmo',
+	'prefswitch-title-switched-off' => 'Tlazohcāmati',
 );
 
 /** Nedersaksisch (Nedersaksisch)
