@@ -26,6 +26,10 @@ $magicWords['es'] = array(
 	'todo'   => array( '0', 'porhacer', 'quehaceres', 'todo' ),
 );
 
+$magicWords['ig'] = array(
+	'todo'   => array( '0', 'ímè', 'todo' ),
+);
+
 $magicWords['ja'] = array(
 	'todo'   => array( '0', 'TODO', 'todo' ),
 );
@@ -48,4 +52,8 @@ $magicWords['nds-nl'] = array(
 
 $magicWords['nl'] = array(
 	'todo'   => array( '0', 'tedoen', 'todo' ),
+);
+
+$magicWords['sv'] = array(
+	'todo'   => array( '0', 'attgöra', 'todo' ),
 );

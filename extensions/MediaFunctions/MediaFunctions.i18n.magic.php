@@ -41,6 +41,15 @@ $magicWords['arz'] = array(
 	'mediawidth'        => array( '0', 'عرض_الميديا', 'mediawidth' ),
 	'mediadimensions'   => array( '0', 'أبعاد_الميديا', 'mediadimensions' ),
 	'mediaexif'         => array( '0', 'إكسيف_الميديا', 'mediaexif' ),
+	'mediapages'        => array( '0', 'صفحات_الميديا', 'mediapages' ),
+);
+
+$magicWords['ce'] = array(
+	'mediamime'         => array( '0', 'mimeмедиа', 'mediamime' ),
+	'mediasize'         => array( '0', 'медиабарам', 'размермедиа', 'mediasize' ),
+	'mediaheight'       => array( '0', 'медиалакхалла', 'высотамедиа', 'mediaheight' ),
+	'mediawidth'        => array( '0', 'медиашоралла', 'ширинамедиа', 'mediawidth' ),
+	'mediadimensions'   => array( '0', 'медиабарамаш', 'размерымедиа', 'mediadimensions' ),
 );
 
 $magicWords['ml'] = array(
@@ -76,4 +85,5 @@ $magicWords['ru'] = array(
 	'mediawidth'        => array( '0', 'ширинамедиа', 'mediawidth' ),
 	'mediadimensions'   => array( '0', 'размерымедиа', 'mediadimensions' ),
 	'mediaexif'         => array( '0', 'exifмедиа', 'mediaexif' ),
+	'mediapages'        => array( '0', 'медиастраницы', 'mediapages' ),
 );

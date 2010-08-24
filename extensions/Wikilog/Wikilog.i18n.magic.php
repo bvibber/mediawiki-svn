@@ -66,6 +66,10 @@ $magicWords['br'] = array(
 	'wlk-more'       => array( '0', 'muioc\'h', 'more' ),
 );
 
+$magicWords['ce'] = array(
+	'wlk-more'       => array( '0', 'дуккха', 'more' ),
+);
+
 $magicWords['eo'] = array(
 	'wlk-icon'       => array( '0', 'piktogramo', 'icon' ),
 	'wlk-logo'       => array( '0', 'emblemo', 'logo' ),
@@ -83,6 +87,11 @@ $magicWords['es'] = array(
 	'wlk-summary'    => array( '1', 'resumen', 'summary' ),
 	'wlk-hidden'     => array( '0', 'escondido', 'hidden' ),
 	'wlk-more'       => array( '0', 'más', 'mas', 'more' ),
+);
+
+$magicWords['ig'] = array(
+	'wlk-hidden'     => array( '0', 'zọnàrì', 'hidden' ),
+	'wlk-more'       => array( '0', 'nà_ozór', 'more' ),
 );
 
 $magicWords['ja'] = array(
@@ -150,6 +159,25 @@ $magicWords['pt-br'] = array(
 	'wlk-summary'    => array( '1', 'resumo', 'summary' ),
 	'wlk-hidden'     => array( '0', 'oculto', 'hidden' ),
 	'wlk-more'       => array( '0', 'mais', 'more' ),
+);
+
+$magicWords['ru'] = array(
+	'wl-settings'    => array( '0', 'вл_настройки', 'wl-settings' ),
+	'wl-publish'     => array( '0', 'вл_публикация', 'wl-publish' ),
+	'wl-author'      => array( '0', 'вл_автор', 'wl-author' ),
+	'wl-tags'        => array( '0', 'вл_метки', 'wl-tags' ),
+	'wl-info'        => array( '0', 'вл_сведения', 'wl-info' ),
+	'wlk-icon'       => array( '0', 'вл_значок', 'icon' ),
+	'wlk-logo'       => array( '0', 'лого', 'logo' ),
+	'wlk-subtitle'   => array( '0', 'подзаголовок', 'subtitle' ),
+	'wlk-summary'    => array( '1', 'описание', 'summary' ),
+	'wlk-hidden'     => array( '0', 'скрыто', 'hidden' ),
+	'wlk-more'       => array( '0', 'ещё', 'more' ),
+);
+
+$magicWords['sv'] = array(
+	'wlk-hidden'     => array( '0', 'dold', 'hidden' ),
+	'wlk-more'       => array( '0', 'mer', 'more' ),
 );
 
 $magicWords['tt-cyrl'] = array(

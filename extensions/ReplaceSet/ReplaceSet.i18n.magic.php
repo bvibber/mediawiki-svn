@@ -15,7 +15,7 @@ $magicWords['arz'] = array(
 );
 
 $magicWords['ml'] = array(
-	'replaceset'   => array( '0', 'ഗണം മാറ്റിച്ചേർക്കുക', 'replaceset' ),
+	'replaceset'   => array( '0', 'ഗണം_മാറ്റിച്ചേർക്കുക', 'replaceset' ),
 );
 
 $magicWords['nl'] = array(

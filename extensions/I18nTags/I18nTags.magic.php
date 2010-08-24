@@ -30,6 +30,10 @@ $magicWords['bs'] = array(
 	'languagename'   => array( '0', 'imejezika', 'languagename' ),
 );
 
+$magicWords['ce'] = array(
+	'languagename'   => array( '0', 'меттацlе', 'названиеязыка', 'languagename' ),
+);
+
 $magicWords['cs'] = array(
 	'languagename'   => array( '0', 'názevjazyka', 'languagename' ),
 );
@@ -51,7 +55,7 @@ $magicWords['fr'] = array(
 );
 
 $magicWords['frp'] = array(
-	'languagename'   => array( '0', 'nom de lengoua', 'nomlangue', 'languagename' ),
+	'languagename'   => array( '0', 'nom_de_lengoua', 'nomlangue', 'languagename' ),
 );
 
 $magicWords['it'] = array(
@@ -64,6 +68,10 @@ $magicWords['ja'] = array(
 
 $magicWords['ksh'] = array(
 	'languagename'   => array( '0', 'ShproocheName', 'languagename' ),
+);
+
+$magicWords['lad'] = array(
+	'languagename'   => array( '0', 'nombredelingua', 'nombreidioma', 'nombredeidioma', 'languagename' ),
 );
 
 $magicWords['ml'] = array(
@@ -108,4 +116,8 @@ $magicWords['tr'] = array(
 
 $magicWords['uk'] = array(
 	'languagename'   => array( '0', 'назвамови', 'названиеязыка', 'languagename' ),
+);
+
+$magicWords['zh-hans'] = array(
+	'languagename'   => array( '0', '语言名称', 'languagename' ),
 );

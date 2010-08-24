@@ -14,6 +14,7 @@ $magicWords['en'] = array(
 
 $magicWords['af'] = array(
 	'transliterate'   => array( '0', 'translitereer', 'transliterate' ),
+	'tr_prefix'       => array( '1', 'Translitereerder:', 'Transliterator:' ),
 );
 
 $magicWords['ar'] = array(
@@ -24,10 +25,16 @@ $magicWords['ar'] = array(
 
 $magicWords['arz'] = array(
 	'transliterate'   => array( '0', 'ترجمة_حرفية', 'transliterate' ),
+	'tr_prefix'       => array( '1', 'مترجم_حرفي:', 'Transliterator:' ),
+	'tr_decompose'    => array( '0', '__تحلل__', '__DECOMPOSE__' ),
 );
 
 $magicWords['br'] = array(
 	'transliterate'   => array( '0', 'treuzlizherennañ', 'transliterate' ),
+);
+
+$magicWords['ce'] = array(
+	'transliterate'   => array( '0', 'хийцайозанца', 'транслитерация', 'transliterate' ),
 );
 
 $magicWords['es'] = array(
@@ -37,6 +44,7 @@ $magicWords['es'] = array(
 $magicWords['ml'] = array(
 	'transliterate'   => array( '0', 'ലിപിമാറ്റംചെയ്യുക', 'ലിപ്യന്തരണം', 'ലിപിമാറ്റം', 'transliterate' ),
 	'tr_prefix'       => array( '1', 'ലിപിമാറ്റയുപകരണം:', 'Transliterator:' ),
+	'tr_decompose'    => array( '0', '__ശിഥിലീകരിക്കുക__', '__DECOMPOSE__' ),
 );
 
 $magicWords['mr'] = array(
@@ -45,6 +53,11 @@ $magicWords['mr'] = array(
 
 $magicWords['nl'] = array(
 	'transliterate'   => array( '0', 'translitereren', 'transliterate' ),
+);
+
+$magicWords['pt'] = array(
+	'transliterate'   => array( '0', 'transliterar', 'transliterate' ),
+	'tr_prefix'       => array( '1', 'Transliterador:', 'Transliterator:' ),
 );
 
 $magicWords['ru'] = array(

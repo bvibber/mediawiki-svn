@@ -31,6 +31,16 @@ $magicWords['arz'] = array(
 	'ogg_thumbtime'   => array( '0', 'وقت_التصغير=$1', 'thumbtime=$1' ),
 );
 
+$magicWords['ce'] = array(
+	'ogg_noplayer'    => array( '0', 'яцлокхушйерг', 'нетпроигрывателя', 'noplayer' ),
+	'ogg_noicon'      => array( '0', 'куцдац', 'нетзначка', 'noicon' ),
+);
+
+$magicWords['eo'] = array(
+	'ogg_noplayer'    => array( '0', 'neniuludilo', 'noplayer' ),
+	'ogg_noicon'      => array( '0', 'neniupiktogramo', 'neniuikono', 'noicon' ),
+);
+
 $magicWords['es'] = array(
 	'ogg_noplayer'    => array( '0', 'noreproductor', 'noplayer' ),
 	'ogg_noicon'      => array( '0', 'noicono', 'noicon' ),
@@ -58,9 +68,15 @@ $magicWords['nl'] = array(
 	'ogg_thumbtime'   => array( '0', 'miniatuurtijd=$1', 'thumbtime=$1' ),
 );
 
+$magicWords['pt'] = array(
+	'ogg_noicon'      => array( '0', 'semícone', 'noicon' ),
+	'ogg_thumbtime'   => array( '0', 'tempominiatura=$1', 'thumbtime=$1' ),
+);
+
 $magicWords['ru'] = array(
 	'ogg_noplayer'    => array( '0', 'нетпроигрывателя', 'noplayer' ),
 	'ogg_noicon'      => array( '0', 'нетзначка', 'noicon' ),
+	'ogg_thumbtime'   => array( '0', 'время_миниатюры=$1', 'thumbtime=$1' ),
 );
 
 $magicWords['sv'] = array(

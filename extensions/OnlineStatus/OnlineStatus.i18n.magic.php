@@ -20,7 +20,15 @@ $magicWords['arz'] = array(
 	'anyuseronlinestatus'     => array( '0', 'حالة_الاتصال_لأى_مستخدم', 'حالة_الاتصال_لأي_مستخدم', 'anyuseronlinestatus' ),
 );
 
+$magicWords['ce'] = array(
+	'onlinestatus_word'       => array( '1', 'МАШАНЧОХЬХЬАЛ', 'СТАТУСВСЕТИ', 'ONLINESTATUS' ),
+	'onlinestatus_word_raw'   => array( '1', 'МАШАНЧОХЬХЬАЛТlУЬН', 'СТАТУСВСЕТИСЫР', 'RAWONLINESTATUS' ),
+	'anyuseronlinestatus'     => array( '0', 'мюлхдекъахохьалмашанчохь', 'любойучастникстатусвсети', 'anyuseronlinestatus' ),
+);
+
 $magicWords['ml'] = array(
+	'onlinestatus_word'       => array( '1', 'ഓൺലൈൻസ്ഥിതി', 'ONLINESTATUS' ),
+	'onlinestatus_word_raw'   => array( '1', 'ഓൺലൈൻസ്ഥിതി_അസംസ്കൃതം', 'RAWONLINESTATUS' ),
 	'anyuseronlinestatus'     => array( '0', 'ഏതൊരുപയോക്താവിന്റേയുമോൺലൈൻസ്ഥിതി', 'anyuseronlinestatus' ),
 );
 

@@ -15,3 +15,10 @@ $magicWords['en'] = array(
 	'record' => array( 0, 'record' ),
 );
 
+$magicWords['ar'] = array(
+	'record'   => array( '0', 'تسجيل', 'record' ),
+);
+
+$magicWords['ru'] = array(
+	'record'   => array( '0', 'запись', 'record' ),
+);

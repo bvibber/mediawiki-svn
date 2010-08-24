@@ -86,7 +86,14 @@ $magicWords['arz'] = array(
 	'acsc'     => array( '0', 'أكوسيك', 'أرككوسيك', 'acsc', 'arccsc' ),
 );
 
+$magicWords['ce'] = array(
+	'const'    => array( '0', 'дlахlоттам', 'конст', 'const' ),
+	'median'   => array( '0', 'мадекъана', 'медиана', 'median' ),
+	'mean'     => array( '0', 'юккъера', 'среднее', 'mean' ),
+);
+
 $magicWords['eo'] = array(
+	'const'    => array( '0', 'kost', 'const' ),
 	'exp'      => array( '0', 'e', 'eksp', 'exp' ),
 	'ln'       => array( '0', 'nl', 'nlog', 'ln' ),
 	'tan'      => array( '0', 'tg', 'tan' ),
@@ -156,12 +163,25 @@ $magicWords['ko'] = array(
 	'acsc'     => array( '0', '아크코시컨트', 'acsc', 'arccsc' ),
 );
 
+$magicWords['ml'] = array(
+	'const'    => array( '0', 'സ്ഥിര', 'const' ),
+	'median'   => array( '0', 'മദ്ധ്യചസ്ഥിതം', 'median' ),
+	'mean'     => array( '0', 'മദ്ധ്യമത്വം', 'mean' ),
+	'log'      => array( '0', 'രേഖ', 'log' ),
+	'tan'      => array( '0', 'റ്റാൻ', 'tan' ),
+	'cot'      => array( '0', 'കോട്ട്', 'cot' ),
+	'cos'      => array( '0', 'കോസ്', 'cos' ),
+	'sin'      => array( '0', 'സൈൻ', 'sin' ),
+);
+
 $magicWords['nl'] = array(
 	'median'   => array( '0', 'mediaan', 'median' ),
 	'mean'     => array( '0', 'gemiddelde', 'mean' ),
 );
 
 $magicWords['pt'] = array(
+	'median'   => array( '0', 'mediana', 'median' ),
+	'mean'     => array( '0', 'média', 'mean' ),
 	'tan'      => array( '0', 'tg', 'tan' ),
 	'atan'     => array( '0', 'atg', 'arctg', 'atan', 'arctan' ),
 	'tanh'     => array( '0', 'tgh', 'tanh' ),

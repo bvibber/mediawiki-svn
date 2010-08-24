@@ -14,12 +14,20 @@ $magicWords['arz'] = array(
 	'autoincrement'   => array( '0', 'زيادة_تلقائية', 'AUTOINCREMENT' ),
 );
 
+$magicWords['ce'] = array(
+	'autoincrement'   => array( '0', 'ШАЙОККХОЙО', 'АВТОИНКРЕМЕНТ', 'AUTOINCREMENT' ),
+);
+
 $magicWords['es'] = array(
 	'autoincrement'   => array( '0', 'AUTOINCREMENTO', 'AUTOINCREMENTAR', 'AUTOINCREMENT' ),
 );
 
 $magicWords['ja'] = array(
 	'autoincrement'   => array( '0', 'オートインクリメント', 'AUTOINCREMENT' ),
+);
+
+$magicWords['ko'] = array(
+	'autoincrement'   => array( '0', '번호', 'AUTOINCREMENT' ),
 );
 
 $magicWords['ml'] = array(

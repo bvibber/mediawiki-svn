@@ -14,6 +14,10 @@ $magicWords['arz'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__لا_عناوين_مرقمة__', 'لا_عناوين_مرقمة', '__NONUMBEREDHEADINGS__' ),
 );
 
+$magicWords['ce'] = array(
+	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__ТЕРАХЬДОЦУШКОРТА__', '__БЕЗНОМЕРОВЗАГОЛОВКОВ__', '__NONUMBEREDHEADINGS__' ),
+);
+
 $magicWords['de'] = array(
 	'MAG_NONUMBEREDHEADINGS'   => array( '0', '__KEINEÜERSCHRIFTENNUMMERIERUNG__', '__NONUMBEREDHEADINGS__' ),
 );

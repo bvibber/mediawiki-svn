@@ -15,7 +15,7 @@ $magicWords['arz'] = array(
 );
 
 $magicWords['eo'] = array(
-	'MAG_NOTOCNUM'   => array( '0', '__NENOMBRUINDEKSON__', '__NOTOCNUM__' ),
+	'MAG_NOTOCNUM'   => array( '0', '__NENOMBRUINDEKSON__', '__NNI__', '__NOTOCNUM__' ),
 );
 
 $magicWords['es'] = array(
@@ -27,5 +27,5 @@ $magicWords['nds-nl'] = array(
 );
 
 $magicWords['nl'] = array(
-	'MAG_NOTOCNUM'   => array( '0', '__GEENINHOUDSOPGAVENUMMERING__', '__NOTOCNUM__' ),
+	'MAG_NOTOCNUM'   => array( '0', '__GEENINHOUDNUM__', '__GEENINHOUDSOPGAVENUMMERING__', '__NOTOCNUM__' ),
 );
