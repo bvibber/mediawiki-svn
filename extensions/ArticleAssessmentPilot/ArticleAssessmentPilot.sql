@@ -27,5 +27,5 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_pages (
   aa_total integer unsigned NOT NULL,
   aa_count integer unsigned NOT NULL,
   aa_dimension integer unsigned NOT NULL,
-  PRIMARY KEY (aa_page_id, aa_revision)
+  PRIMARY KEY (aa_page_id, aa_revision, aa_dimension)
 ) /*$wgDBTableOptions*/;
