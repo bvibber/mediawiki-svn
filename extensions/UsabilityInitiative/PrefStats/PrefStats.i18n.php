@@ -1792,6 +1792,18 @@ $messages['myv'] = array(
 	'prefstats-factor-fourweeks' => 'ниле таргт',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'prefstats-factor-hour' => 'hora',
+	'prefstats-factor-sixhours' => 'chicuacē horas',
+	'prefstats-factor-day' => 'tōnalli',
+	'prefstats-factor-week' => 'chicuēyilhuitl',
+	'prefstats-factor-twoweeks' => 'ōme chicuēyilhuitl',
+	'prefstats-factor-fourweeks' => 'nāhui chicuēyilhuitl',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

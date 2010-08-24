@@ -260,6 +260,13 @@ $messages['ksh'] = array(
 	'categorytests-desc' => 'Fungxjuhne för Saachjroppe ze prööfe',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'categorytests-desc' => 'Sodhow rag prevy classys',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -22,6 +22,14 @@ $messages['qqq'] = array(
 	'antibot-desc' => 'Description of the [[mw:Extension:AntiBot|AntiBot]] MediaWiki extension (to be displayed at [[Special:Version]])',
 );
 
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'antibot-desc' => 'सामान्य फ्रेमवर्क स्पैमबौट जाँचै आरू ट्रीगर पेलोड करै लेली
+Simple framework for spambot checks and trigger payloads',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

@@ -1902,12 +1902,20 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  * @author Ulmo
  */
 $messages['ta'] = array(
 	'dt_viewxml_categories' => 'பகுப்புகள்',
+	'dt_viewxml_namespaces' => 'பெயர்வெளிகள்',
+	'dt_viewxml_simplifiedformat' => 'எளிதாக்கப்பட்ட வடிவம்',
 	'dt_xml_namespace' => 'பெயர்வெளி',
+	'dt_xml_pages' => 'பக்கங்கள்',
+	'dt_xml_page' => 'பக்கம்',
+	'dt_xml_template' => 'வார்ப்புரு',
+	'dt_xml_name' => 'பெயர்',
+	'dt_xml_title' => 'தலைப்பு',
 );
 
 /** Telugu (తెలుగు)

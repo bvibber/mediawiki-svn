@@ -152,9 +152,10 @@ $messages['ee'] = array(
 /** Greek (Ελληνικά)
  * @author Consta
  * @author Konsnos
+ * @author Περίεργος
  */
 $messages['el'] = array(
-	'contributionseditcount' => 'Αυτός ο χρήστης έχει κάνει $1 επεξεργασίες.',
+	'contributionseditcount' => 'Αυτός ο χρήστης έχει κάνει {{PLURAL:$1|μία επεξεργασία|$1 επεξεργασίες}}.',
 	'contributionseditcount-desc' => 'Εμφανίζει τον αριθμό επεξεργασιών στην [[Special:Contributions|σελίδα συνεισφοράς χρήστη]]',
 );
 

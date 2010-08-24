@@ -717,6 +717,16 @@ $messages['tr'] = array(
 Yeni kullanıcı hesabı, $2,$3 üzerinde $4'te oluşturuldu.",
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'newusernotifsubj' => 'Повідомлення про нового користувача для $1',
+	'newusernotif-desc' => 'Відправляє повідомлення по e-mail, коли створюються нові облікові записи користувачів',
+	'newusernotifbody' => 'Вітаємо, $1!
+В проекті $3 в $4 був створений обліковий запис — $2.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

@@ -835,11 +835,12 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Alex Khimich
  */
 $messages['uk'] = array(
 	'dplforum-desc' => 'Форумне розширення, засноване на DPL',
 	'dplforum-by' => 'від $1',
-	'dplforum-edited' => '- Последний раз редактировалось',
+	'dplforum-edited' => '- Останній раз редагувалось',
 	'dplforum-never' => 'Ніколи',
 	'dplforum-toofew' => 'Форум DPL: Занадто мало категорій!',
 	'dplforum-toomany' => 'Форум DPL: Занадто багато категорій!',

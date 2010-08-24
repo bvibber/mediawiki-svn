@@ -1577,10 +1577,12 @@ Opassande filer raderas omedelbart, se [[{{MediaWiki:Multipleupload-page}}|riktl
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'multipleupload-saveallfiles' => 'அனைத்துக் கோப்புகளையும் சேமி',
+	'multiupload-blank' => 'எந்த கோப்பையும் தெரிவுச்செய்யவில்லை',
 );
 
 /** Telugu (తెలుగు)

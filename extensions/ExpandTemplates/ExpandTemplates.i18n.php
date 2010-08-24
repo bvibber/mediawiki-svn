@@ -823,6 +823,7 @@ $messages['hil'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Dnik
+ * @author Excaliboor
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -838,6 +839,7 @@ kao <nowiki>{{</nowiki>CURRENTDAY}}. Funkcionira pozivanjem parsera same MedijeW
 	'expand_templates_xml_output' => 'XML kod',
 	'expand_templates_ok' => 'Prikaži',
 	'expand_templates_remove_comments' => 'Ukloni komentare',
+	'expand_templates_remove_nowiki' => 'Ukloni <nowiki> tagove u rezultatima.',
 	'expand_templates_generate_xml' => 'Prikaži XML stablo',
 	'expand_templates_preview' => 'Vidi kako će izgledati',
 );

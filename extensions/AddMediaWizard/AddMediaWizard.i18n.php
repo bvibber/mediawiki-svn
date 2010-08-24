@@ -43,6 +43,13 @@ $messages['be-tarask'] = array(
 	'addmediawizard-desc' => 'Майстар даданьня мэдыя, распрацаваны ў супрацоўніцтве Kaltura і фундацыі «Вікімэдыя»',
 );
 
+/** Bulgarian (Български)
+ * @author Stanqo
+ */
+$messages['bg'] = array(
+	'addmediawizard-desc' => 'Добави съветник създаден в партньорство с Kaltura и Wikimedia Foundation',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

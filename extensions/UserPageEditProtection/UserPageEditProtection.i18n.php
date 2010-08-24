@@ -344,6 +344,14 @@ $messages['tl'] = array(
 	'right-editalluserpages' => 'Baguhin ang mga pahina ng tagagamit',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'userpageeditprotection-desc' => 'Обмежує коло осіб до редагування сторінок профілю користувача лише до користувачів та уповноважених редакторів.',
+	'right-editalluserpages' => 'Редагувати сторінки користувачів.',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'userpageeditprotection-desc' => '限制用户及获授权者编辑用户页',

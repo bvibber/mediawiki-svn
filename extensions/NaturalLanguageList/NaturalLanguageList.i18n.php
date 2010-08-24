@@ -178,6 +178,13 @@ $messages['mk'] = array(
 	'nll-lastseparator' => '&#32;и&#32;',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'nll-lastseparator' => '&#32;īhuān&#32;',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

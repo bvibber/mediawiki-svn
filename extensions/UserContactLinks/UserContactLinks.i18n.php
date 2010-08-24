@@ -598,6 +598,14 @@ $messages['tr'] = array(
 	'usercontactlinks-desc' => '^^^Kullanıcı^^^ sözdizimi kullanılarak basit ve sürekli bir şekilde diğer kullanıcı adlarını ekleme imkanı sağlar',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'usercontactlink-baduser' => "неправильне ім'я користувача",
+	'usercontactlinks-desc' => 'Забезпечує можливість просто і послідовно додати інші імена користувачів, використовуючи синтакс ^^^користувач^^^',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

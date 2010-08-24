@@ -1412,10 +1412,18 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'countedits' => 'தொகுப்புக்களைக் கணக்கிடவும்',
 	'countedits-username' => 'பயனர் பெயர்:',
+	'countedits-ok' => 'சரி',
+	'countedits-nosuchuser' => '$1 -இப்பெயரில் எந்த ஒரு பயனரும் இல்லை.',
+	'countedits-resultheader' => '$1-க்கான முடிவுகள்',
+	'countedits-resulttext' => '$2 {{PLURAL:$2|edit|தொகுப்புக்களை}} $1 செய்திருக்கிறார்',
+	'countedits-mostactive' => 'மிக அதிகமாகத் தொடர்ந்து பங்களிப்பவர்கள்',
+	'countedits-nocontribs' => 'இந்த விக்கியில் எந்தவொரு பங்களிப்புமில்லை',
 );
 
 /** Telugu (తెలుగు)
@@ -1536,11 +1544,21 @@ $messages['ug-latn'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Alex Khimich
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'countedits' => 'Число редагувань',
+	'countedits-desc' => '[[Special:CountEdits|Службова сторінка]] по підрахунку кількості правок, з списком 10 учасників, зробивших найбільший вклад',
+	'countedits-warning' => "'''Увага:''' Не суди книгу по її обкладинці.
+Не суди користувачів по їх кількості редагувань.",
+	'countedits-username' => 'Ім’я користувача:',
 	'countedits-ok' => 'Гаразд',
+	'countedits-nosuchuser' => 'Користувача з іменем $1 не існує.',
+	'countedits-resultheader' => 'Результати для $1',
 	'countedits-resulttext' => '$1 зробив(ла) $2 {{PLURAL:$2|редагування|редагування|редагувань}}',
+	'countedits-mostactive' => 'Найактивніші учасники',
+	'countedits-nocontribs' => 'В цій вікі правки відсутні',
 );
 
 /** Vèneto (Vèneto)

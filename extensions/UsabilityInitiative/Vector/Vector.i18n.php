@@ -272,6 +272,14 @@ $messages['he'] = array(
 	'vector-desc' => 'משפר את פריטי מנשק המשתמש של ערכת התצוגה וקטור.',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'vector' => 'Poboljšanja sučelja stila Vektor',
+	'vector-desc' => 'Poboljšava elemente korisničkog sučelja stila Vector.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

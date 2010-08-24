@@ -534,11 +534,15 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'optin-try' => 'Isprobajte Beta',
-	'optin-leave' => 'Izađite iz Beta',
-	'optin-feedback' => 'Beta komentari',
+	'optin-try' => 'Isprobajte Betu',
+	'tooltip-pt-optin-try' => 'Isprobajte nove osobine',
+	'optin-leave' => 'Isključi Betu',
+	'tooltip-pt-optin-leave' => 'Isključivanje novih osobina',
+	'optin-feedback' => 'Beta komentar',
+	'tooltip-pt-optin-feedback' => 'Pružite povratnu informaciju o svom iskustvu glede novih osobina',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -858,6 +862,13 @@ $messages['mt'] = array(
  */
 $messages['mzn'] = array(
 	'optin-try' => 'ایستفاده از بتا',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'optin-try' => 'Xiquimamachtia Beta',
 );
 
 /** Nedersaksisch (Nedersaksisch)

@@ -1281,10 +1281,38 @@ $messages['tr'] = array(
 	'mwe-clipedit-duration' => 'Süre:',
 );
 
-/** Ukrainian (Українська) */
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
 $messages['uk'] = array(
+	'mwe-clipedit-crop' => 'Обрізати зображення',
+	'mwe-clipedit-apply_crop' => 'Застосувати кадр обрізки до зображення',
+	'mwe-clipedit-reset_crop' => 'Скинути кадр обрізки',
+	'mwe-clipedit-insert_image_page' => 'Вставити в сторінку',
+	'mwe-clipedit-insert_into_sequence' => 'Включити в послідовність',
+	'mwe-clipedit-preview_insert' => 'Попередній перегляд вставки',
+	'mwe-clipedit-cancel_image_insert' => 'Відмінити вставку',
+	'mwe-clipedit-sc_attributes' => 'Редагування деталей відеоролика.',
+	'mwe-clipedit-sc_inoutpoints' => 'Встановити бали вводу-вивода',
+	'mwe-clipedit-sc_overlays' => 'Перекриття',
+	'mwe-clipedit-sc_audio' => 'Аудіо контроль',
+	'mwe-clipedit-sc_duration' => 'Тривалість',
 	'mwe-clipedit-template_properties' => 'Властивості шаблону',
+	'mwe-clipedit-custom_title' => 'Власний заголовок',
+	'mwe-clipedit-edit_properties' => 'Змінити властивості',
+	'mwe-clipedit-other_properties' => 'Інші властивості',
+	'mwe-clipedit-resource_page' => 'Сторінка ресурса:',
+	'mwe-clipedit-set_in_out_points' => 'Встановити бали вводу-виводу',
 	'mwe-clipedit-start_time' => 'Час початку',
+	'mwe-clipedit-end_time' => 'Час закінчення',
+	'mwe-clipedit-preview_inout' => 'Перегляд балів вводу-виводу',
+	'mwe-clipedit-edit-tools' => 'Інструменти редагування',
+	'mwe-clipedit-inline-description' => 'Заголовок',
+	'mwe-clipedit-edit-video-tools' => 'Інструменти редагування відео:',
+	'mwe-clipedit-duration' => 'Тривалість:',
+	'mwe-clipedit-layout' => 'Макет',
+	'mwe-clipedit-layout_right' => 'Макет с зображенням справа',
+	'mwe-clipedit-layout_left' => 'Макет с зображенням зліва',
 );
 
 /** Vèneto (Vèneto) */

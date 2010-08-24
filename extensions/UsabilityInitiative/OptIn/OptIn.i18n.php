@@ -2890,17 +2890,18 @@ $messages['hi'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'optin' => 'Izbor Inicijative za uporabljivost',
-	'optin-desc' => 'Omogućavam suradnicima isprobavanje Beta, najnovijeg poboljšanja upotrebljivosti Inicijative za uporabljivost.',
-	'optin-title-optedout' => 'Isprobajte Beta',
-	'optin-title-optedin' => 'Izađite iz Beta',
-	'optin-title-justoptedin' => 'Dobrodošli na Beta',
-	'optin-title-justoptedout' => 'Hvala što ste isprobali našu Beta',
-	'optin-title-feedback' => 'Beta komentari',
-	'optin-needlogin' => 'Morate se [$1 prijaviti] kako biste isprobali Beta.',
-	'optin-intro' => 'Inicijativa za uporabljivost Wikipedije puno je radila na poboljšanju uporabljivosti Wikipedije. Želite li isprobati našu Beta?',
+	'optin' => 'Uključivanje inicijative za uporabljivost',
+	'optin-desc' => 'Omogućavam suradnicima isprobavanje Bete, najnovijeg poboljšanja uporabljivosti Inicijative za uporabljivost.',
+	'optin-title-optedout' => 'Isprobajte Betu',
+	'optin-title-optedin' => 'Isključite Betu',
+	'optin-title-justoptedin' => 'Dobrodošli u beta sučelje',
+	'optin-title-justoptedout' => 'Hvala što ste isprobali naše Beta sučelje',
+	'optin-title-feedback' => 'Beta komentar',
+	'optin-needlogin' => 'Morate se [$1 prijaviti] kako biste isprobali Betu.',
+	'optin-intro' => 'Inicijativa za uporabljivost Wikipedije puno je radila na poboljšanju uporabljivosti Wikipedije. Želite li isprobati naše Beta sučelje?',
 	'optin-feedback-intro' => 'Hvala što ste isprobali Beta. Željeli bismo znati što mislite o našem novom sučelju, stoga bismo cijenili ukoliko biste ispunili našu neobvezatnu anketu koja se nalazi u nastavku.',
 	'optin-feedback-back' => 'Ukoliko ne želite ispuniti anketu, možete se vratiti na $1.',
 	'optin-success-in' => 'Sada isprobavate Beta. U bilo kojem trenutku možete se odlučiti vratiti nazad klikom na poveznicu "{{int:optin-leave}}" koja se nalazi na vrhu zaslona.',
@@ -4068,8 +4069,15 @@ $messages['li'] = array(
 	'optin-submit-feedback' => 'Trökkoppeling gaeve',
 	'optin-survey-yes' => 'Jao',
 	'optin-survey-no' => 'Nei',
+	'optin-survey-answer-whyoptout-hard' => "'t Gebroek waas lestig.",
+	'optin-survey-answer-whyoptout-didntwork' => "De wieziginge dijjen 't neet.",
+	'optin-survey-answer-whyoptout-notpredictable' => "'t Reageerde neet veurspelbaar.",
+	'optin-survey-answer-whyoptout-didntlike-look' => "'t Zoog d'r neet oet wie ich wól.",
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ich vónj de nuuj tabblajer en t oeterlik neet good.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ich vónj de nuje wirkbalk neet fijn.',
 	'optin-survey-answer-whyoptout-other' => 'Anger reeje:',
 	'optin-survey-answer-browser-other' => 'Angere browser:',
+	'optin-survey-answer-changes-custom' => 'Maak mieë gebroekersaanpassinge meugelik.',
 	'optin-survey-answer-changes-other' => 'Euverig:',
 );
 

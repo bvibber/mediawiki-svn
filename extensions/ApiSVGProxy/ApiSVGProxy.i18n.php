@@ -178,6 +178,13 @@ $messages['ksh'] = array(
 	'apisvgproxy-desc' => 'Deiht Datteije em SVG Fommaat als ene <i lang="en">proxy</i>-ẞööver onger de eije Domain aanbeede.',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'apisvgproxy-desc' => "Y whra cannasya folennow SVG dhort tresorva restrennow (pell martesen) dhe'n tireth leek",
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

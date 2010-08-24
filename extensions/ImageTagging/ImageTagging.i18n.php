@@ -2109,6 +2109,44 @@ $messages['ug-latn'] = array(
 	'imagetagging-article' => 'Bet:',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'taggedimages' => 'Зображення з мітками',
+	'imagetagging-desc' => 'Дозволяє учаснику вибрати ділянки на включеному зображенні і асоціювати сторінки з цими ділянками',
+	'imagetagging-addimagetag' => 'Відмітити це зображення',
+	'imagetagging-article' => 'Сторінка:',
+	'imagetagging-articletotag' => 'Сторінка для мітки',
+	'imagetagging-canteditothermessage' => 'Ви не можете редагувати цю сторінку, так як в Вас немає відповідних прав, або сторінка захищена від редагувань з інших причин.',
+	'imagetagging-imghistory' => 'Історія',
+	'imagetagging-images' => 'зображення',
+	'imagetagging-inthisimage' => 'На цьому зображенні: $1',
+	'imagetagging-logentry' => 'Мітка до сторінки [[$1]] була видалена $2',
+	'imagetagging-log-tagged' => 'Зображення [[$1|$2]] було співставлене з сторінкою [[$3]] - $4',
+	'imagetagging-new' => '<sup><span style="color:red">Нове!</span></sup>',
+	'imagetagging-removetag' => 'вилучити мітку',
+	'imagetagging-done-button' => 'Відмітка поставлена',
+	'imagetagging-tag-button' => 'Мітка',
+	'imagetagging-tagcancel-button' => 'Скасувати',
+	'imagetagging-tagging-instructions' => 'Натисніть на зображення речей або людей на зображенні, щоб їх відмітити.',
+	'imagetagging-addingtag' => 'Додання мітки...',
+	'imagetagging-removingtag' => 'Видалення мітки...',
+	'imagetagging-addtagsuccess' => 'Мітка додана.',
+	'imagetagging-removetagsuccess' => 'Видалена мітка.',
+	'imagetagging-canteditneedloginmessage' => 'Ви не можете редагувати цю сторінку.
+Можливо, Вам потрібно виконати вхід до системи, щоб відмічати зображення.
+Виконати вхід?',
+	'imagetagging-oneactionatatimemessage' => "Одночасно можна відмітити тільки один об'єкт.
+Будь ласка, дочекайтесь завершення попередньої дії.",
+	'imagetagging-oneuniquetagmessage' => 'Мітка з таким іменем вже існує на зображенні.',
+	'imagetagging-imagetag-seemoreimages' => 'Переглянути більше фотографій "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Зображення "$1"',
+	'imagetagging-taggedimages-displaying' => 'Відображення $1 - $2 з $3 зображень "$4"',
+	'tag-logpagename' => 'Журнал міток',
+	'tag-logpagetext' => 'Журнал додавання та видалення всіх міток зображень.',
+);
+
 /** Urdu (اردو) */
 $messages['ur'] = array(
 	'imagetagging-tagcancel-button' => 'منسوخ',

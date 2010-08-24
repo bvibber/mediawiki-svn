@@ -341,6 +341,13 @@ $messages['ksh'] = array(
 	'ajaxquerypages-desc' => 'Deit jet AJAX dobei en Sigge met Leßte, wi zem Beispöll en de [[Special:Shortpages|{{int:shortpages}}]].',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'ajaxquerypages-desc' => 'Keworra nebes AJAX dhe folennow govyn kepar ha [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Ladino (Ladino)
  * @author Universal Life
  */

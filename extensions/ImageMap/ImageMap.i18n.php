@@ -1695,21 +1695,22 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
+ * @author Alex Khimich
  */
 $messages['uk'] = array(
 	'imagemap_desc' => 'Дозволяє створювати на боці клієнта карти зображень, які спрацьовують при натисканні, за допомогою тегу <code>&lt;imagemap&gt;</code>',
-	'imagemap_no_image' => 'Error: у першому рядку має бути задане зображення',
-	'imagemap_invalid_image' => 'Error: неправильне або відсутнє зображення',
+	'imagemap_no_image' => 'Помилка: у першому рядку має бути задане зображення',
+	'imagemap_invalid_image' => 'Помилка: неправильне або відсутнє зображення',
 	'imagemap_bad_image' => 'Помилка: зображення на цій сторінці присутнє у чорному списку',
-	'imagemap_no_link' => 'Error: неправильне посилання в кінці рядка $1',
-	'imagemap_invalid_title' => 'Error: неправильний заголовок посилання в рядку $1',
-	'imagemap_missing_coord' => 'Error: недостатньо координат для фігури в рядку $1',
-	'imagemap_unrecognised_shape' => 'Error: нерозпізнана фігура в рядку $1, кожен рядок повинен починатися з одного з ключових слів: default, rect, circle або poly',
-	'imagemap_no_areas' => 'Error: повинна бути зазначена принаймні одна область',
-	'imagemap_invalid_coord' => 'Error: помилкова координата в рядку $1, має бути число',
-	'imagemap_invalid_desc' => 'Error: помилкове значення desc, має бути одне з наступних значень: <code>$1</code>',
+	'imagemap_no_link' => 'Помилка: неправильне посилання в кінці рядка $1',
+	'imagemap_invalid_title' => 'Помилка: неправильний заголовок в посиланні в рядку $1',
+	'imagemap_missing_coord' => 'Помилка: недостатньо координат для фігури в рядку $1',
+	'imagemap_unrecognised_shape' => 'Помилка: нерозпізнана фігура в рядку $1, кожен рядок повинен починатися з одного з ключових слів: default, rect, circle або poly',
+	'imagemap_no_areas' => 'Помилка: повинна бути зазначена принаймні одна область',
+	'imagemap_invalid_coord' => 'Помилка: помилкова координата в рядку $1, має бути число',
+	'imagemap_invalid_desc' => 'Помилка: помилкове значення desc, має бути одне з таких значень: <code>$1</code>',
 	'imagemap_description' => 'Опис зображення',
-	'imagemap_poly_odd' => 'Помилка: в рядку $1 знайдений многокутник із зайвою кількістю координат',
+	'imagemap_poly_odd' => 'Помилка: в рядку $1 знайдений многокутник із непарною кількістю координат',
 );
 
 /** Vèneto (Vèneto)

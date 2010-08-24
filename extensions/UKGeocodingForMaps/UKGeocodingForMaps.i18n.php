@@ -264,6 +264,15 @@ $messages['tl'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Hindi mageokodigong ang isa o mahigit pang mga kodigong postal at inalis mula sa mapa.',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'ukgeocoding_name' => 'Великобританське геокодування для карт.',
+	'ukgeocoding_desc' => 'Розшерення карт функцією парсера display_uk_point через реалізацію Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Один або декілька поштових кодів не можуть бути геокодовані і були виключені з карти.',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

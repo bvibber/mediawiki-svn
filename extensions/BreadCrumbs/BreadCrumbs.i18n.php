@@ -332,6 +332,13 @@ $messages['ksh'] = array(
 	'breadcrumbs-desc' => 'Zeijsch dem Lesser odder Medmaacher der Wääsch dorj_et Wikki, dänn hä jekumme es, op jede Sigg',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'breadcrumbs-desc' => 'Y whra disqwedhes fordh an devnydhyer dres an wiki',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

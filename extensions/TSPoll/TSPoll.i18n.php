@@ -429,6 +429,15 @@ $messages['tr'] = array(
 	'tspoll-id-error' => 'Kimlik girilmedi!',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'tspoll-desc' => 'Включити [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] як HTML-тег',
+	'tspoll-fetch-error' => 'Помилка звернення URL!',
+	'tspoll-id-error' => 'Не вказаний ID!',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

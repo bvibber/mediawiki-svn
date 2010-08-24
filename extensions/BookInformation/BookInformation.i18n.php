@@ -1741,6 +1741,13 @@ $messages['tr'] = array(
 	'bookinfo-provider' => 'Veri sağlayıcısı: $1',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'bookinfo-header' => 'Китап турында мәгълүмат',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

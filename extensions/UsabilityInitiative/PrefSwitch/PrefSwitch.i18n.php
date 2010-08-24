@@ -2825,11 +2825,30 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Excaliboor
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'prefswitch-desc' => 'Omogući korisnicima postavljanje skupa povlastica',
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
+	'prefswitch-survey-answer-whyoff-hard' => 'Sučelje je previše komplicirano.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Sučelje nije ispravno funkcioniralo.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Sučelje nije izvršilo rečeno.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Nije mi se svidio izgled sučelja.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Nisu mi se svidjele nove kartice i raspored.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Nije mi se svidio novi alatni okvir.',
+	'prefswitch-survey-answer-whyoff-other' => 'Drugi razlog:',
+	'prefswitch-survey-question-browser' => 'Koji internetski preglednik rabite?',
+	'prefswitch-survey-answer-browser-other' => 'Drugi internetski preglednik:',
+	'prefswitch-survey-question-os' => 'Koji operativni sustav rabite?',
+	'prefswitch-survey-answer-os-other' => 'Drugi operativni sustav:',
+	'prefswitch-survey-question-res' => 'Koja je rezolucija Vašeg zaslona?',
+	'prefswitch-title-on' => 'Nove mogućnosti',
+	'prefswitch-title-switched-on' => 'Uživajte!',
+	'prefswitch-title-off' => 'Isključi nove osobine',
+	'prefswitch-title-switched-off' => 'Hvala',
+	'prefswitch-title-feedback' => 'Ocjena',
+	'prefswitch-success-on' => 'Nove značajke su sada uključene. Nadamo se da ćete uživati koristeći ih. Uvijek ih možete isključiti klikom na "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" poveznicu na vrhu stranice.',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -3841,6 +3860,8 @@ Vink e.t.b. alle meugelikhede die god zeeb aan.',
 	'prefswitch-title-switched-off' => 'Danke',
 	'prefswitch-title-feedback' => 'Feedback',
 	'prefswitch-success-feedback' => 'Diee feedback is verzónje.',
+	'prefswitch-return' => '<hr style="clear:both">
+Trök nao <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-anon' => "=== Trök ===
 [$1 Klik óm de nuuj deil oet te zètte]. De wörs gevraog veur aanmelden óf aanmake van 'ne conto.",
 	'prefswitch-main-on' => '=== Nein, danke! ===

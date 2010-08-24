@@ -7847,6 +7847,7 @@ $messages['hif-latn'] = array(
  * @author Ex13
  * @author Excaliboor
  * @author Mvrban
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'wikieditor-toolbar' => 'Alatna traka',
@@ -7902,7 +7903,7 @@ $messages['hr'] = array(
 	'wikieditor-toolbar-tool-heading-4' => 'Razina 4',
 	'wikieditor-toolbar-tool-heading-5' => 'Razina 5',
 	'wikieditor-toolbar-tool-heading-example' => 'Tekst podnaslova',
-	'wikieditor-toolbar-group-format' => 'Popis',
+	'wikieditor-toolbar-group-format' => 'Format',
 	'wikieditor-toolbar-tool-ulist' => 'Popis s grafičkim oznakama',
 	'wikieditor-toolbar-tool-ulist-example' => 'Stavka popisa s grafičkim oznakama',
 	'wikieditor-toolbar-tool-olist' => 'Numerirani popis',
@@ -7978,8 +7979,12 @@ $messages['hr'] = array(
 	'wikieditor-toolbar-characters-page-arabic' => 'arapski',
 	'wikieditor-toolbar-characters-page-persian' => 'Perzijski',
 	'wikieditor-toolbar-characters-page-hebrew' => 'hebrejski',
+	'wikieditor-toolbar-characters-page-bangla' => 'Bangla znakovi',
 	'wikieditor-toolbar-characters-page-telugu' => 'telugu',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhaleški znakovi',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Gudžarati znakovi',
 	'wikieditor-toolbar-characters-page-thai' => 'Tajlandski',
+	'wikieditor-toolbar-characters-page-lao' => 'Laoški znakovi',
 	'wikieditor-toolbar-characters-page-khmer' => 'Kmerskim',
 	'wikieditor-toolbar-section-help' => 'Pomoć',
 	'wikieditor-toolbar-help-heading-description' => 'Opis',
@@ -10778,6 +10783,8 @@ $messages['ku-latn'] = array(
  */
 $messages['kw'] = array(
 	'wikieditor-toolbar' => 'Toulvar chanjya',
+	'wikieditor-toolbar-desc' => 'Bar toulys an folen chanjya gen devnydh gwellhes',
+	'wikieditor-toolbar-preference' => 'Galosegy bar toulys chanjya gwellhes',
 	'wikieditor-toolbar-loading' => 'Ow carga...',
 	'wikieditor-toolbar-tool-bold' => 'Tew',
 	'wikieditor-toolbar-tool-bold-example' => 'Text tew',
@@ -10800,8 +10807,8 @@ $messages['kw'] = array(
 	'wikieditor-toolbar-tool-link-insert' => 'Keworra kevren',
 	'wikieditor-toolbar-tool-link-cancel' => 'Hedhy',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Kevren a-mes',
-	'wikieditor-toolbar-tool-link-int-invalid' => 'Drog yw an titel a wruss ta ri.',
-	'wikieditor-toolbar-tool-link-lookslikeinternal' => "Yma'n URL a wruss ta ri ow kevrenna dhe folen wiki ken. A vyn'ta y janjya dhe gevren bervedhel?",
+	'wikieditor-toolbar-tool-link-int-invalid' => 'Drog yw an titel a wruss ta ry.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => "Yma'n URL a wruss ta ry ow kevrenna dhe folen wiki ken. A ven'ta y janjya dhe gevren bervedhel?",
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Kevren bervedhel',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Kevren a-mes',
 	'wikieditor-toolbar-tool-file-example' => 'Ensampel.jpg',
@@ -12801,6 +12808,7 @@ $messages['myv'] = array(
  * @author Ricardo gs
  */
 $messages['nah'] = array(
+	'wikieditor-toolbar-loading' => 'Motlamāmaltia....',
 	'wikieditor-toolbar-tool-bold' => 'Tlīltic',
 	'wikieditor-toolbar-tool-bold-example' => 'Tlīltic tlahcuilōlli',
 	'wikieditor-toolbar-tool-italic' => 'Cōliuhqui',
@@ -12810,9 +12818,12 @@ $messages['nah'] = array(
 	'wikieditor-toolbar-tool-xlink' => 'Calān tzonhuiliztli (quipiyāz http:// tlaīxpantlahtōlli)',
 	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com tzonhuiliztli tōcāitl',
 	'wikieditor-toolbar-tool-link' => 'Tzonhuiliztli',
+	'wikieditor-toolbar-tool-link-int' => 'Huiquizāzanilhuīc',
 	'wikieditor-toolbar-tool-link-ext-target' => 'Tzonhuiliztli URL:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Tzonhuiliztli tōcāitl',
 	'wikieditor-toolbar-tool-link-cancel' => 'Ticcuepāz',
+	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'In zāzanilli ia',
+	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'In zāzanilli ahmo ia',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Ahtlaceliāni tōcāitl',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Calān tzonhuiliztli',
 	'wikieditor-toolbar-tool-link-int-invalid' => 'In tōcāitl ōtitlahcuiloh ahtlaceliāni ca.',
@@ -12822,6 +12833,7 @@ $messages['nah'] = array(
 	'wikieditor-toolbar-tool-reference-cancel' => 'Ticcuepāz',
 	'wikieditor-toolbar-tool-signature' => 'Tlatzimmachiyōtlliztli īhuān tlapōhualpan',
 	'wikieditor-toolbar-group-format' => 'Iuhcāyōtl',
+	'wikieditor-toolbar-tool-redirect' => 'Tlacuepaliztli',
 	'wikieditor-toolbar-tool-big' => 'Huēyi',
 	'wikieditor-toolbar-tool-big-example' => 'Huēyi tlahcuilōliztli',
 	'wikieditor-toolbar-tool-small' => 'Tepitōn',
@@ -12830,6 +12842,22 @@ $messages['nah'] = array(
 	'wikieditor-toolbar-tool-superscript-example' => 'Panitlahcuilōliztli',
 	'wikieditor-toolbar-tool-subscript' => 'Tlanitlahcuilōlli',
 	'wikieditor-toolbar-tool-subscript-example' => 'Tlanitlahcuilōliztli',
+	'wikieditor-toolbar-tool-gallery' => 'Īxiptlahtēcpāntiliztli',
+	'wikieditor-toolbar-tool-newline' => 'Yancuīc pāntli',
+	'wikieditor-toolbar-tool-table-example-old' => '-
+! cuāitl 1
+! cuāitl 2
+! cuāitl 3
+|-
+| pāntli 1, cochiyāntli 1
+| pāntli 1, cochiyāntli 2
+| pāntli 1, cochiyāntli 3
+|-
+| pāntli 2, cochiyāntli 1
+| pāntli 2, cochiyāntli 2
+| pāntli 2, cochiyāntli 3',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'Cochiyāntlahcuilōliztli',
+	'wikieditor-toolbar-tool-table-example-header' => 'Cāitl tlahcuilōliztli',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Pāntli',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Tlaquetzalli',
 	'wikieditor-toolbar-tool-table-example' => 'Machiyōtl',
@@ -12869,6 +12897,8 @@ $messages['nah'] = array(
 	'wikieditor-toolbar-help-content-bolditalic-syntax' => "'''''Tlīltic &amp; cōliuhqui tlahcuilōliztli'''''",
 	'wikieditor-toolbar-help-content-bolditalic-result' => '<strong><em>Tlīltic &amp; cōliuhqui tlahcuilōliztli</em></strong>',
 	'wikieditor-toolbar-help-content-xlink-description' => 'Calān tzonhuiliztli',
+	'wikieditor-toolbar-help-content-rereference-result' => "Āmatl ītlahcuilōliz <sup><a href='#'>[1]</a></sup>",
+	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Tlatzimmachiyōtlliztli īca tlapōhualpan',
 	'wikieditor-toolbar-help-content-signature-description' => 'Tlatzimmachiyōtlliztli',
 );
 
@@ -16317,6 +16347,8 @@ $messages['sc'] = array(
 	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Esempru.png|thumb|Testu de sa didascalia]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Testu de sa didascalia' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Amannia' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>Testu de sa didascalia</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'Referèntzia',
+	'wikieditor-toolbar-help-content-reference-result' => "Testu de sa pàgina.<sup><a href='#'>[1]</a></sup>",
+	'wikieditor-toolbar-help-content-rereference-result' => "Testu de sa pàgina.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'Ammustra referèntzias',
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Firma cun data e ora',
 	'wikieditor-toolbar-help-content-signature-description' => 'Firma',

@@ -1414,10 +1414,17 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'editmessages' => 'செய்திகளைத் தொகுக்கவும்',
+	'editmsg-target' => 'சென்றடைய வேண்டிய செய்தி:',
 	'editmsg-search' => 'தேடுக',
+	'editmsg-get-patch' => 'சீரமைப்பை உருவாக்கு',
+	'editmsg-new-search' => 'புதிய தேடல்',
+	'editmsg-apply-patch' => 'சீரமைப்பை பயன்படுத்து',
+	'editmsg-patch-success' => 'வெற்றிகரமாகச் சீரமைக்கப்பட்டது.',
 );
 
 /** Telugu (తెలుగు)

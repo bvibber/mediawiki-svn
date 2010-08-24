@@ -976,6 +976,19 @@ $messages['he'] = array(
 	'right-feedback' => 'השתמשו בטופס המשוב כדי לדרג דף',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'ratinghistory-period' => 'Razdoblje:',
+	'ratinghistory-month' => 'prošli mjesec',
+	'ratinghistory-3months' => 'protekla 3 mjeseca',
+	'ratinghistory-year' => 'prošla godina',
+	'ratinghistory-3years' => 'posljednje 3 godine',
+	'ratinghistory-ave' => 'Prosjek: $1',
+	'ratinghistory-purge' => "očisti spremnik (''cache'')",
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

@@ -817,6 +817,16 @@ $messages['ug-arab'] = array(
 	'userimages-caption' => 'سۈرەت يۈكلىگۈچى $1',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'userimages-desc' => 'Генерувати галереї завантажених користувачем зображень за допомогою <code><nowiki><userimage /></nowiki></code>',
+	'userimages-caption' => 'Зображення, завантажені $1',
+	'userimages-noname' => "Невірне ім'я користувача або ім'я було не вказане.",
+	'userimages-noimages' => 'Користувач $1 не завантажував зображень.',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

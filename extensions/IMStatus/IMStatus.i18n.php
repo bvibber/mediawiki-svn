@@ -1555,10 +1555,37 @@ $messages['tt-cyrl'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author Alex Khimich
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
+	'imstatus-desc' => 'Додає мітки для відображення онлайн статусу з різних програм обміну миттєвими повідомленнями (AIM, Google Talk, ICQ, MSN/Live Messenger, Skype, Xfire, Yahoo)',
+	'imstatus_syntax' => 'Синтаксис',
+	'imstatus_default' => 'По замовчуванню',
 	'imstatus_example' => 'Приклад',
+	'imstatus_possible_val' => 'Можливі значення',
+	'imstatus_max' => 'макс.',
+	'imstatus_min' => 'мін.',
+	'imstatus_or' => 'або',
+	'imstatus_style' => 'стиль індикатору статусу',
+	'imstatus_action' => 'дія при настисненні кнопки',
+	'imstatus_details_saa' => 'Більш докладну інформацію по всіх стилях і діях, див. $1.',
+	'imstatus_your_name' => "ваше $1 ім'я",
+	'imstatus_aim_presence' => '$1 показує Ваш статус з посиланням на AIM, що відкриє AIM, за умови, якщо його користувач встановив.',
+	'imstatus_aim_api' => '$1 показує Ваш статус з посиланням, що запустить <b>браузер</b>, з JavaScript версією AIM для обміну миттєвими повідомленнями.',
+	'imstatus_gtalk_code' => 'Ваш код Google talk',
+	'imstatus_gtalk_get_code' => 'Ваш код Google Talk: отримайте його на $1.',
+	'imstatus_gtalk_height' => 'висота блока в пікселях.',
+	'imstatus_gtalk_width' => 'ширина блока в пікселях.',
+	'imstatus_icq_id' => 'Ваш номер ICQ',
+	'imstatus_icq_style' => 'число від 0 до 26 (так, є 27 доступних стилів).',
+	'imstatus_live_code' => 'Ваш Live Messenger ідентифікатор',
+	'imstatus_live_get_code' => 'Ваш Live Messenger ідентифікатор: <strong>не є Вашим e-mail</strong>, його Вам потрібно створити в налаштуваннях
+<a href="$1">Live Messenger</a>.
+Ідентифікатор, який Ви повинні вказати, є числово-літерним від "$2" до "$3".',
+	'imstatus_skype_nbstyle' => 'Примітка. Якщо Ви вибрали стить, що є дією, це буде перекрито відповідною дією з наступного обраного стилю.',
+	'imstatus_xfire_size' => 'розмір кнопки, від $1 (найбільший) до $2 (найменший).',
+	'imstatus_yahoo_style' => 'стиль кнопки, від $1 (найменьший) до $2 (найбільший), $3 і $4 призначені для голосової пошти.',
 );
 
 /** Veps (Vepsan kel')

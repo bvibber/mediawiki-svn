@@ -551,6 +551,14 @@ $messages['tr'] = array(
 	'minnamelength-desc' => 'Kullanıcı adı asgari uzunluğu uygular',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'minnamelength-error' => "Ваше ім'я користувача занадто коротке. Мінімальний розмір - $1.",
+	'minnamelength-desc' => 'Встановлення мінімальної довжини імені користувача',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */

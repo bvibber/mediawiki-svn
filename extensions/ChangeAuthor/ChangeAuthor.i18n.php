@@ -519,6 +519,7 @@ $messages['da'] = array(
  * @author DaSch
  * @author Imre
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -535,7 +536,7 @@ $messages['de'] = array(
 	'changeauthor-explanation-single' => 'Mit diesem Formular kannst du den Autoren einer Version ändern. Ändere einfach den Autorenname in der Liste, ergänze einen Kommentar (optional) und klicke auf die „Autor ändern“-Schaltfläche.',
 	'changeauthor-invalid-username' => 'Ungültiger Benutzername „$1“.',
 	'changeauthor-nosuchuser' => 'Es gibt keinen Benutzer „$1“.',
-	'changeauthor-revview' => 'Version #$1 von $2',
+	'changeauthor-revview' => 'Version $1 von $2',
 	'changeauthor-nosuchtitle' => 'Es gibt keine Seite „$1“.',
 	'changeauthor-weirderror' => 'Ein sehr seltener Fehler ist aufgetreten. Bitte wiederhole deine Änderung. Wenn dieser Fehler erneut auftritt, ist vermutlich die Datenbank fehlerhaft.',
 	'changeauthor-invalidform' => 'Bitte benutze das Formular auf der [[Special:ChangeAuthor|Spezialseite]].',

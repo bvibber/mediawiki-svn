@@ -71,9 +71,10 @@ $messages['ca'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  */
 $messages['de'] = array(
-	'semanticinternalobjects-desc' => 'Einstellung interner Objekte in Semantic MediaWiki',
+	'semanticinternalobjects-desc' => 'Ermöglicht die Definition interner Datenobjekte für Semantic MediaWiki mit Hilfe einer Parserfunktion',
 );
 
 /** Lower Sorbian (Dolnoserbski)

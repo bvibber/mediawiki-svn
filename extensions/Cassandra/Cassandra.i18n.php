@@ -88,6 +88,13 @@ $messages['dsb'] = array(
 	'cassandra-desc' => 'Wersijowy tekst w datowej bance [http://cassandra.apache.org/ Apache Cassandra] składowaś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Περίεργος
+ */
+$messages['el'] = array(
+	'cassandra-desc' => 'Αποθηκεύστε το κειμένο αναθεώρησης στη [http://cassandra.apache.org/ Apache Cassandra] βάση δεδομένων',
+);
+
 /** Esperanto (Esperanto)
  * @author Michawiki
  */

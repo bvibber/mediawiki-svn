@@ -304,9 +304,10 @@ $messages['he'] = array(
 /** Croatian (Hrvatski)
  * @author Ex13
  * @author Excaliboor
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
-	'vector-collapsiblenav-preference' => 'Omogući sklopivi lijevi navigacijski izbornik',
+	'vector-collapsiblenav-preference' => 'Omogući sklopivi lijevi navigacijski izbornik za Vektor stil',
 	'vector-collapsiblenav-more' => 'Više jezika',
 );
 

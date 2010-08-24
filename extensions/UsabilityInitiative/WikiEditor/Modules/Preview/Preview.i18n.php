@@ -441,8 +441,10 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Excaliboor
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'wikieditor-preview-preference' => 'Omogući usporedni pregled',
 	'wikieditor-preview-tab' => 'Pregled',
 	'wikieditor-preview-changes-tab' => 'Promjene',
 	'wikieditor-preview-loading' => 'Učitavam…',
@@ -694,6 +696,13 @@ $messages['mt'] = array(
 	'wikieditor-preview-loading' => "Tiela'...",
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'wikieditor-preview-loading' => 'Motlamāmaltia....',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */
@@ -877,7 +886,10 @@ $messages['sah'] = array(
  * @author Andria
  */
 $messages['sc'] = array(
+	'wikieditor-preview-preference' => "Abilita s'antiprima cumparativa",
 	'wikieditor-preview-tab' => 'Antiprima',
+	'wikieditor-preview-changes-tab' => 'Mudàntzias',
+	'wikieditor-preview-loading' => 'Carrigamentu...',
 );
 
 /** Sinhala (සිංහල)

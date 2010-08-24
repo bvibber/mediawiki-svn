@@ -262,6 +262,13 @@ $messages['ksh'] = array(
 	'emailaddressimage-desc' => '<tt> &lt;email&gt; </tt> määt et müjjelesch, <i lang="en">e-mail</i> Addresse als e Belldsche ußzejävve.',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'emailaddressimage-desc' => 'Y whra keworra <code>&lt;email&gt;</code> rag disqwedhes trigva e-bost avel imaj',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

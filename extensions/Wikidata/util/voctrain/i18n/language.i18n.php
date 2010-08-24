@@ -2298,9 +2298,9 @@ $messages['ksh'] = array(
  */
 $messages['kw'] = array(
 	'voctrain_try_again_' => 'assaya arta?',
-	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ny worav vy pyth gwul gans '%action'.",
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ny wora'vy pyth dhe wul gen '%action'.",
 	'voctrain_continue' => 'pesya',
-	'voctrain_hello_place' => 'dydh da %place',
+	'voctrain_hello_place' => 'dedh da %place',
 	'voctrain_bye' => 'agas gweles',
 	'voctrain_Number_of_questions' => 'Niver a govynnow',
 	'voctrain_Languages' => 'Yethow',
@@ -2310,11 +2310,12 @@ $messages['kw'] = array(
 	'voctrain_Question' => 'Govyn',
 	'voctrain_The_word_to_translate' => 'An ger dhe treylya',
 	'voctrain_logout' => 'digelmy',
+	'voctrain_Powered_by' => 'Nerthys gen',
 	'voctrain_User_name' => 'Hanow-usyer',
 	'voctrain_Password' => 'Ger-tremena',
-	'voctrain_Login' => 'Omgelmi',
+	'voctrain_Login' => 'Omgelmy',
 	'voctrain_Language' => 'Yeth',
-	'voctrain_Log_in' => 'Omgelmi',
+	'voctrain_Log_in' => 'Omgelmy',
 	'voctrain_Translation' => 'Treylyans',
 	'voctrain_other' => 'niver aral',
 );

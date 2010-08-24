@@ -542,6 +542,14 @@ $messages['tr'] = array(
 	'donationform-submit' => 'PayPal üzerinden bağış yap',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'donationform-desc' => 'Додає тег <code>&lt;donateform&gt;</code> для підтримки пожертвувань через PayPal',
+	'donationform-submit' => 'Пожертвування через PayPal',
+);
+
 /** Vèneto (Vèneto)
  * @author Candalua
  */
