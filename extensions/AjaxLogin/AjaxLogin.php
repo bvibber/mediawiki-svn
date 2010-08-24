@@ -94,12 +94,12 @@ function efAddAjaxLoginVariables( $vars ) {
  * @param $data The data, AjaxLogin form in this case, to be added to the HTML output of a page
  * @return true
  */
-function GetAjaxLoginForm( &$data ) {
-	global $wgAuth, $wgEnableEmail, $wgOut, $wgTitle, $wgUser;
+function GetAjaxLoginForm( &$data, $skin ) {
+	global $wgAuth, $wgEnableEmail, $wgOut, $wgUser;
 	global $wgEnableAjaxLogin;
 	if (
 		isset( $wgEnableAjaxLogin ) && $wgUser->isAnon() &&
-		$wgTitle->getNamespace() != 8 && !$wgTitle->isSpecial( 'Userlogin' )
+		$skin->getTitle()->getNamespace() != 8 && !$skin->getTitle()->isSpecial( 'Userlogin' )
 	) {
 		$titleObj = SpecialPage::getTitleFor( 'Userlogin' );
 		$link = $titleObj->getLocalURL( 'type=signup' );

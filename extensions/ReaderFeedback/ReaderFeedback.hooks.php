@@ -72,11 +72,12 @@ class ReaderFeedbackHooks {
 		return ( $action == 'view' || $action == 'purge' || $action == 'render' );
 	}
 
-	public static function addFeedbackForm( &$data ) {
-		global $wgOut, $wgArticle, $wgTitle;
+	public static function addFeedbackForm( &$data, $skin ) {
+		global $wgOut, $wgArticle
+		$title = $skin->getTitle();
 		if( $wgOut->isArticleRelated() && isset($wgArticle) ) {
 			global $wgRequest, $wgUser, $wgOut;
-			if( !$wgTitle->exists() || !ReaderFeedback::isPageRateable($wgTitle) || !$wgOut->getRevisionId() ) {
+			if( !$title->exists() || !ReaderFeedback::isPageRateable($title) || !$wgOut->getRevisionId() ) {
 				return true;
 			}
 			# Check action and if page is protected
@@ -92,8 +93,8 @@ class ReaderFeedbackHooks {
 				}
 				# If the user already voted, then don't show the form.
 				# Always show for IPs however, due to squid caching...
-				if( !$wgUser->getId() || !ReaderFeedbackPage::userAlreadyVoted( $wgTitle, $id ) ) {
-					self::addQuickFeedback( $data, false, $wgTitle );
+				if( !$wgUser->getId() || !ReaderFeedbackPage::userAlreadyVoted( $title, $id ) ) {
+					self::addQuickFeedback( $data, false, $title );
 				}
 			}
 			return true;
