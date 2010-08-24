@@ -32,7 +32,7 @@ class ArticleAssessmentPilotHooks {
 		return true;
 	}
 	
-	public static function addCode(){
+	public static function addCode( &$data ) {
 		//check if this page should have the form
 		
 		//write the form
@@ -41,5 +41,4 @@ class ArticleAssessmentPilotHooks {
 		
 		return true;
 	}
-
 }
