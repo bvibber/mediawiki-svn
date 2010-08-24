@@ -168,7 +168,7 @@ window.mediaWiki = new ( function( $ ) {
 		 * Format:
 		 * 	{
 		 * 		'moduleName': {
-		 * 			'needs': ['required module', 'required module', ...], (or) function() {}
+		 * 			'dependencies': ['required module', 'required module', ...], (or) function() {}
 		 * 			'state': 'registered', 'loading', 'loaded', 'ready', or 'error'
 		 * 			'script': function() {},
 		 * 			'style': 'css code string',
@@ -194,29 +194,29 @@ window.mediaWiki = new ( function( $ ) {
 		function recurse( module, resolved, unresolved ) {
 			unresolved[unresolved.length] = module;
 			// Resolves dynamic loader function and replaces it with it's own results
-			if ( typeof registry[module].needs === 'function' ) {
-				registry[module].needs = registry[module].needs();
-				// Gaurantees the module's needs are always in an array 
-				if ( typeof registry[module].needs !== 'object' ) {
-					registry[module].needs = [registry[module].needs];
+			if ( typeof registry[module].dependencies === 'function' ) {
+				registry[module].dependencies = registry[module].dependencies();
+				// Gaurantees the module's dependencies are always in an array 
+				if ( typeof registry[module].dependencies !== 'object' ) {
+					registry[module].dependencies = [registry[module].dependencies];
 				}
 			}
-			// Tracks down needs
-			for ( var n = 0; n < registry[module].needs.length; n++ ) {
-				if ( resolved.indexOf( registry[module].needs[n] ) === -1 ) {
-					if ( unresolved.indexOf( registry[module].needs[n] ) !== -1 ) {
+			// Tracks down dependencies
+			for ( var n = 0; n < registry[module].dependencies.length; n++ ) {
+				if ( resolved.indexOf( registry[module].dependencies[n] ) === -1 ) {
+					if ( unresolved.indexOf( registry[module].dependencies[n] ) !== -1 ) {
 						throw new Error(
-							'Circular reference detected: ' + module + ' -> ' + registry[module].needs[n]
+							'Circular reference detected: ' + module + ' -> ' + registry[module].dependencies[n]
 						);
 					}
-					recurse( registry[module].needs[n], resolved, unresolved );
+					recurse( registry[module].dependencies[n], resolved, unresolved );
 				}
 			}
 			resolved[resolved.length] = module;
 			unresolved.splice( unresolved.indexOf( module ), 1 );
 		}
 		/**
-		 * Gets a list of modules names that a module needs in their proper dependency order
+		 * Gets a list of modules names that a module dependencies in their proper dependency order
 		 * 
 		 * @param mixed string module name or array of string module names
 		 * @return list of dependencies
@@ -227,14 +227,14 @@ window.mediaWiki = new ( function( $ ) {
 			if ( typeof module === 'object' ) {
 				var modules = [];
 				for ( var m = 0; m < module.length; m++ ) {
-					var needs = resolve( module[m] );
-					for ( var n = 0; n < needs.length; n++ ) {
-						modules[modules.length] = needs[n];
+					var dependencies = resolve( module[m] );
+					for ( var n = 0; n < dependencies.length; n++ ) {
+						modules[modules.length] = dependencies[n];
 					}
 				}
 				return modules;
 			} else if ( typeof module === 'string' ) {
-				// Undefined modules have no needs
+				// Undefined modules have no dependencies
 				if ( !( module in registry ) ) {
 					return [];
 				}
@@ -305,9 +305,9 @@ window.mediaWiki = new ( function( $ ) {
 			try {
 				registry[module].script();
 				registry[module].state = 'ready';
-				// Run jobs who's needs have just been met
+				// Run jobs who's dependencies have just been met
 				for ( var j = 0; j < jobs.length; j++ ) {
-					if ( filter( 'ready', jobs[j].needs ).compare( jobs[j].needs ) ) {
+					if ( filter( 'ready', jobs[j].dependencies ).compare( jobs[j].dependencies ) ) {
 						if ( typeof jobs[j].ready === 'function' ) {
 							jobs[j].ready();
 						}
@@ -315,10 +315,10 @@ window.mediaWiki = new ( function( $ ) {
 						j--;
 					}
 				}
-				// Execute modules who's needs have just been met
+				// Execute modules who's dependencies have just been met
 				for ( r in registry ) {
 					if ( registry[r].state == 'loaded' ) {
-						if ( filter( ['ready'], registry[r].needs ).compare( registry[r].needs ) ) {
+						if ( filter( ['ready'], registry[r].dependencies ).compare( registry[r].dependencies ) ) {
 							execute( r );
 						}
 					}
@@ -329,7 +329,7 @@ window.mediaWiki = new ( function( $ ) {
 				registry[module].state = 'error';				
 				// Run error callbacks of jobs affected by this condition
 				for ( var j = 0; j < jobs.length; j++ ) {
-					if ( jobs[j].needs.indexOf( module ) !== -1 ) {
+					if ( jobs[j].dependencies.indexOf( module ) !== -1 ) {
 						if ( typeof jobs[j].error === 'function' ) {
 							jobs[j].error();
 						}
@@ -340,35 +340,35 @@ window.mediaWiki = new ( function( $ ) {
 			}
 		}
 		/**
-		 * Adds a needs to the queue with optional callbacks to be run when the needs are ready or fail
+		 * Adds a dependencies to the queue with optional callbacks to be run when the dependencies are ready or fail
 		 * 
 		 * @param mixed string moulde name or array of string module names
-		 * @param function ready callback to execute when all needs are ready
-		 * @param function error callback to execute when any need fails
+		 * @param function ready callback to execute when all dependencies are ready
+		 * @param function error callback to execute when any dependency fails
 		 */
-		function request( needs, ready, error ) {
+		function request( dependencies, ready, error ) {
 			// Allow calling by single module name
-			if ( typeof needs === 'string' ) {
-				needs = [needs];
-				if ( needs[0] in registry ) {
-					for ( var n = 0; n < registry[needs[0]].needs.length; n++ ) {
-						needs[needs.length] = registry[needs[0]].needs[n];
+			if ( typeof dependencies === 'string' ) {
+				dependencies = [dependencies];
+				if ( dependencies[0] in registry ) {
+					for ( var n = 0; n < registry[dependencies[0]].dependencies.length; n++ ) {
+						dependencies[dependencies.length] = registry[dependencies[0]].dependencies[n];
 					}
 				}
 			}
 			// Add ready and error callbacks if they were given
 			if ( arguments.length > 1 ) {
 				jobs[jobs.length] = {
-					'needs': filter( ['undefined', 'registered', 'loading', 'loaded'], needs ),
+					'dependencies': filter( ['undefined', 'registered', 'loading', 'loaded'], dependencies ),
 					'ready': ready,
 					'error': error
 				};
 			}
-			// Queue up any needs that are undefined or registered
-			needs = filter( ['undefined', 'registered'], needs );
-			for ( var n = 0; n < needs.length; n++ ) {
-				if ( queue.indexOf( needs[n] ) === -1 ) {
-					queue[queue.length] = needs[n];
+			// Queue up any dependencies that are undefined or registered
+			dependencies = filter( ['undefined', 'registered'], dependencies );
+			for ( var n = 0; n < dependencies.length; n++ ) {
+				if ( queue.indexOf( dependencies[n] ) === -1 ) {
+					queue[queue.length] = dependencies[n];
 				}
 			}
 			// Work the queue
@@ -378,7 +378,7 @@ window.mediaWiki = new ( function( $ ) {
 		/* Public Methods */
 		
 		/**
-		 * Requests needs from server, loading and executing when things when ready.
+		 * Requests dependencies from server, loading and executing when things when ready.
 		 */
 		this.work = function() {
 			// Appends a list of modules to the batch
@@ -438,7 +438,7 @@ window.mediaWiki = new ( function( $ ) {
 		 * Registers a module, letting the system know about it and it's dependencies. loader.js files contain calls
 		 * to this function.
 		 */
-		this.register = function( module, needs, status ) {
+		this.register = function( module, dependencies, status ) {
 			// Allow multiple registration
 			if ( typeof module === 'object' ) {
 				for ( var n = 0; n < module.length; n++ ) {
@@ -458,13 +458,13 @@ window.mediaWiki = new ( function( $ ) {
 				throw new Error( 'module already implemeneted: ' + module );
 			}
 			// List the module as registered
-			registry[module] = { 'state': typeof status === 'string' ? status : 'registered', 'needs': [] };
-			if ( typeof needs === 'string' ) {
-				// Allow needs to be given as a single module name
-				registry[module].needs = [needs];
-			} else if ( typeof needs === 'object' || typeof needs === 'function' ) {
-				// Allow needs to be given as an array of module names or a function which returns an array
-				registry[module].needs = needs;
+			registry[module] = { 'state': typeof status === 'string' ? status : 'registered', 'dependencies': [] };
+			if ( typeof dependencies === 'string' ) {
+				// Allow dependencies to be given as a single module name
+				registry[module].dependencies = [dependencies];
+			} else if ( typeof dependencies === 'object' || typeof dependencies === 'function' ) {
+				// Allow dependencies to be given as an array of module names or a function which returns an array
+				registry[module].dependencies = dependencies;
 			}
 		};
 		/**
@@ -500,7 +500,7 @@ window.mediaWiki = new ( function( $ ) {
 				registry[module].messages = localization;
 			}
 			// Execute or queue callback
-			if ( filter( ['ready'], registry[module].needs ).compare( registry[module].needs ) ) {
+			if ( filter( ['ready'], registry[module].dependencies ).compare( registry[module].dependencies ) ) {
 				execute( module );
 			} else {
 				request( module );
@@ -509,36 +509,37 @@ window.mediaWiki = new ( function( $ ) {
 		/**
 		 * Executes a function as soon as one or more required modules are ready
 		 * 
-		 * @param mixed string or array of strings of modules names the callback needs to be ready before executing
-		 * @param function callback to execute when all needs are ready (optional)
-		 * @param function callback to execute when if needs have a errors (optional)
+		 * @param mixed string or array of strings of modules names the callback dependencies to be ready before
+		 * executing
+		 * @param function callback to execute when all dependencies are ready (optional)
+		 * @param function callback to execute when if dependencies have a errors (optional)
 		 */
-		this.using = function( needs, ready, error ) {
+		this.using = function( dependencies, ready, error ) {
 			// Validate input
-			if ( typeof needs !== 'object' && typeof needs !== 'string' ) {
-				throw new Error( 'needs must be a string or an array, not a ' + typeof needs )
+			if ( typeof dependencies !== 'object' && typeof dependencies !== 'string' ) {
+				throw new Error( 'dependencies must be a string or an array, not a ' + typeof dependencies )
 			}
-			// Allow calling with a single need as a string
-			if ( typeof needs === 'string' ) {
-				needs = [needs];
+			// Allow calling with a single dependency as a string
+			if ( typeof dependencies === 'string' ) {
+				dependencies = [dependencies];
 			}
 			// Resolve entire dependency map
-			needs = resolve( needs );
-			// If all needs are met, execute ready immediately
-			if ( filter( ['ready'], needs ).compare( needs ) ) {
+			dependencies = resolve( dependencies );
+			// If all dependencies are met, execute ready immediately
+			if ( filter( ['ready'], dependencies ).compare( dependencies ) ) {
 				if ( typeof ready !== 'function' ) {
 					ready();
 				}
 			}
-			// If any needs have errors execute error immediately
-			else if ( filter( ['error'], needs ).length ) {
+			// If any dependencies have errors execute error immediately
+			else if ( filter( ['error'], dependencies ).length ) {
 				if ( typeof error === 'function' ) {
 					error();
 				}
 			}
-			// Since some needs are not yet ready, queue up a request
+			// Since some dependencies are not yet ready, queue up a request
 			else {
-				request( needs, ready, error );
+				request( dependencies, ready, error );
 			}
 		};
 		/**
@@ -547,15 +548,15 @@ window.mediaWiki = new ( function( $ ) {
 		this.load = function( modules ) {
 			// Validate input
 			if ( typeof modules !== 'object' && typeof modules !== 'string' ) {
-				throw new Error( 'needs must be a string or an array, not a ' + typeof needs )
+				throw new Error( 'dependencies must be a string or an array, not a ' + typeof dependencies )
 			}
-			// Allow calling with a single need as a string
+			// Allow calling with a single dependency as a string
 			if ( typeof modules === 'string' ) {
 				modules = [modules];
 			}
 			// Resolve entire dependency map
 			modules = resolve( modules );
-			// If all modules are ready, nothing need be done
+			// If all modules are ready, nothing dependency be done
 			if ( filter( ['ready'], modules ).compare( modules ) ) {
 				return true;
 			}
