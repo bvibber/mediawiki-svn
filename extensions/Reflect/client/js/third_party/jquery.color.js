@@ -123,4 +123,7 @@
 		yellow:[255,255,0]
 	};
 	
+	jQuery.extend({getColor: getColor});
 })(jQuery);
+
+

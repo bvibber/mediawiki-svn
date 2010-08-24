@@ -156,7 +156,9 @@ var Reflect = {
 
 			text = jQuery.trim( 
 						text.substring( 0, 
-								text.indexOf( "<span class=\"username\">" ) ) );
+								text
+									.toLowerCase()
+									.indexOf( "<span class=" ) ) );
 			function add_highlights () {
 				var el_id = $j( this ).attr( 'id' ).substring( 9 );
 				highlights.push( {
@@ -859,7 +861,6 @@ var Reflect = {
 			var highlight = bullet_obj.enter_highlight_state();
 
 			highlight.find( 'td:first' ).addClass( 'connect_directions' )
-					.text( 'Please click the relevant sentences' )
 					.css( 'color', Reflect.utils.get_background_color( highlight ) )
 					.css( 'background-color', Reflect.utils
 							.get_inverted_background_color( highlight, function ( c ) {
@@ -992,39 +993,38 @@ var Reflect = {
 			return Reflect.current_user;
 		},
 
-		get_background_color : function ( node ) {
-			var current_p = $j( node ),
-				rgbString = "transparent";
-			while ( current_p
-					&& (rgbString == "transparent" 
-						|| rgbString == "initial" 
-						|| rgbString == 'rgba(0, 0, 0, 0)') ) 
-			{
-				rgbString = current_p.parent().css( 'background-color' );
-				current_p = current_p.parent();
+		get_background_color : function ( node, no_convert ) {
+			col = $j.getColor(node[0], 'background-color');
+			if ( !no_convert ) {
+				var new_col = "#";
+				for ( var i = 0; i <= 2; ++i) {
+					var new_color = col[i].toString( 16 );
+					if ( new_color.length == 1 ) {
+						new_color = '0' + new_color;
+					}
+					new_col += new_color;
+				}
+				col = new_col;
 			}
-			if ( !rgbString ) {
-				rgbString = 'rgb(0, 0, 0)';
-			}
-			return rgbString;
+			return col
 		},
 
 		get_inverted_background_color : function ( node, color_convert ) {
 			try {
-				var rgbString = Reflect.utils.get_background_color( node ), 
-					parts = rgbString.match( /^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/ ),
+				var rgbString = Reflect.utils.get_background_color( node, true ),
 					res = '#';
-				for ( var i = 1; i <= 3; ++i) {
-					var color = parseInt( parts[i] ), 
-						new_color = color_convert( color );
-					parts[i] = new_color.toString( 16 );
-					if ( parts[i].length == 1 ) {
-						parts[i] = '0' + parts[i];
+				
+				for ( var i = 0; i <= 2; ++i) {
+					var new_color = color_convert( rgbString[i] )
+									.toString( 16 );
+					if ( new_color.length == 1 ) {
+						new_color = '0' + new_color;
 					}
-					res += parts[i];
+					res += new_color;
 				}
 				return res;
 			} catch ( err ) {
+				console.log(err);
 				return '#555';
 			}
 		}
@@ -1247,7 +1247,8 @@ var Reflect = {
 				if ( modify ) {
 					text = this.elements.bullet_text.html();
 					text = $j.trim( text.substring( 0, text
-							.indexOf( "<span class=\"username\">" ) ) );
+							.toLowerCase()
+							.indexOf( "<span class=" ) ) );
 				}
 
 				var template_vars = {
@@ -1411,7 +1412,8 @@ var Reflect = {
 				if ( modify ) {
 					var text = this.elements.response_text.html();
 					this.options.text = $j.trim( text.substring( 0, text
-							.indexOf( "<span class=\"username\">" ) ) );
+							.toLowerCase()
+							.indexOf( "<span class=" ) ) );
 				}
 
 				this._build_prompt();
@@ -1600,12 +1602,13 @@ var Reflect = {
 					if ( Reflect.config.study ) {
 						Reflect.study.load_surveys();
 					}
-
 				} );
 			} );
 	}
 };
 
 $j( document ).ready( function () {
+	$j.ajaxSetup({ cache: false });
+
 	Reflect.init();
 } );

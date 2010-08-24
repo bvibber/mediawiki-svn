@@ -220,6 +220,7 @@
 							height: 60px;
 							padding: 4px 2px;
 							width:100%;
+							overflow: auto;
 						}
 						
 						#reflected .rf_comment_summary tr.submit_footer {
@@ -464,7 +465,7 @@
 
 #reflected div.new_bullet_prompt {
 	position:absolute;
-	top:-7px;
+	top:-9px;
 	z-index:50;
 	width:92%;
 	margin-left:3px;

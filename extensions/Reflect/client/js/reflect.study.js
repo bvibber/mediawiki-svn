@@ -16,6 +16,24 @@ if ( typeof Reflect == 'undefined' ) {
 	// ///////////////////
 }
 
+	
+function filter(a, fun){
+	var len = a.length >>> 0;
+	if (typeof fun != "function")
+	throw new TypeError();
+	
+	var res = [];
+	var thisp = arguments[1];
+	for (var i = 0; i < len; i++) {
+		if (i in a) {
+		  var val = a[i]; // in case fun mutates this
+		  if (fun.call(thisp, val, i, a))
+		  		res.push(val);
+		}
+	}
+ return res;
+}
+
 var $j = jQuery.noConflict();
 
 Reflect.study = {
@@ -25,8 +43,13 @@ Reflect.study = {
 			user = Reflect.utils.get_logged_in_user();
 		// in a but not in b
 		function relative_complement ( a, b ) {
-			return a.filter( function ( elem ) {
-				return b.indexOf( elem ) == -1;
+			return filter(a,function ( elem ) {
+				for ( var i in b ) {
+					if ( b[i] == elem ) {
+						return false;
+					}
+				}
+				return true;
 			} );
 		}
 		$j( '.bullet' ).each( function () {
@@ -43,18 +66,19 @@ Reflect.study = {
 				// for each candidate bullet NOT in data, lay down
 				// appropriate survey
 				var needs_surveys = relative_complement( bullets, data );
-				for ( var i in needs_surveys) {
-					var bullet = $j( '#bullet-' + needs_surveys[i] )
-							.data( 'bullet' );
-					if ( bullet.comment.user == user
-							&& bullet.responses.length > 0
-							&& bullet.responses[0].data( 'response' ).id ) {
-						Reflect.study.new_bullet_reaction_survey( 
-								bullet, bullet.comment, bullet.$elem );
-					} else if ( bullet.user == user ) {
-						Reflect.study.new_bullet_survey( 
-								bullet, bullet.comment, bullet.$elem );
-					}
+				for (var i in needs_surveys) {
+					try {
+				   	var bullet = $j('#bullet-' + needs_surveys[i]).data('bullet');
+				   	if (bullet.comment.user == user &&
+				   	bullet.responses.length > 0 &&
+				   	bullet.responses[0].data('response').id) {
+				   		Reflect.study.new_bullet_reaction_survey(bullet, bullet.comment, bullet.$elem);
+				   	}
+				   	else 
+				   		if (bullet.user == user) {
+				   			Reflect.study.new_bullet_survey(bullet, bullet.comment, bullet.$elem);
+				   		}
+				   } catch( err ) {}
 				}
 
 			} );

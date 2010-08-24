@@ -4,7 +4,7 @@
  * No warranty expressed or implied. Use at your own risk.
  * See http://www.JSON.org/js.html
 */
-if(!this.JSON){JSON=function(){function f(n){return n<10?'0'+n:n;}
+JSON=function(){function f(n){return n<10?'0'+n:n;}
 Date.prototype.toJSON=function(){return this.getUTCFullYear()+'-'+
 f(this.getUTCMonth()+1)+'-'+
 f(this.getUTCDate())+'T'+
@@ -21,4 +21,4 @@ return'{'+a.join(',')+'}';}}
 return{stringify:stringify,parse:function(text,filter){var j;function walk(k,v){var i,n;if(v&&typeof v==='object'){for(i in v){if(Object.prototype.hasOwnProperty.apply(v,[i])){n=walk(i,v[i]);if(n!==undefined){v[i]=n;}}}}
 return filter(k,v);}
 if(/^[\],:{}\s]*$/.test(text.replace(/\\./g,'@').replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,']').replace(/(?:^|:|,)(?:\s*\[)+/g,''))){j=eval('('+text+')');return typeof filter==='function'?walk('',j):j;}
-throw new SyntaxError('parseJSON');}};}();}
+throw new SyntaxError('parseJSON');}};}();
