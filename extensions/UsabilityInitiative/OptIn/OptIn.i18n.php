@@ -480,6 +480,48 @@ $messages['ba'] = array(
 	'optin-survey-no' => 'Юҡ',
 	'optin-survey-intro' => 'Бета-версияны һынауығыҙ өсөн рәхмәт.
 Һеҙ яңы интерфейс тураһында нимә уйлауығыҙҙы беҙҙең белгебеҙ килер ине, шуға күрә әгәр һеҙ  «[[#leave|{{int:optin-submit-out}}]]» һылтанмаһына баҫыр алдынан түбәндә килтерелгән һорауҙарға яуап бирһәгеҙ, беҙ рәхмәтле булыр инек.',
+	'optin-survey-question-likedislike' => 'Бета-версияла һеҙгә нимә оҡшай? Нимә оҡшамай?',
+	'optin-survey-question-whyoptout' => 'Ниңә һеҙ бета-версиянан сығаһығыҙ? (бөтә тап килгән яуаптарҙы һайлағыҙ, зинһар)',
+	'optin-survey-answer-whyoptout-hard' => 'Уны ҡулланыуы бик ауыр.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Ул тейешлесә эшләмәй.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Ул көтөлгәнсә эшләмәй.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Миңә уның тышҡы ҡиәфәте оҡшамай.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Миңә яңы бүлгестәр һәм төҙөлөшө оҡшаманы.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Миңә яңы уҙгәртеү панеле оҡшаманы.',
+	'optin-survey-answer-whyoptout-other' => 'Башҡа сәбәп:',
+	'optin-survey-question-explain' => 'Үрҙәге яуабығыҙҙы тулыландырығыҙ, зинһар:',
+	'optin-survey-question-techfail' => 'Бета-версияны ҡулланғанда ниндәй ҙә булһа техник хаталарға юлыҡтығыҙмы?',
+	'optin-survey-question-techfail-ifyes' => 'Юлыҡһағыҙ, тулыраҡ яуап биреп, аңлатығыҙ, зинһар:',
+	'optin-survey-question-usedtoolbar' => 'Һеҙ биттәрҙе үҙгәртеү өсөн яңы йәйелдерелә торған ҡоралдар панелен ҡулландығыҙмы?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Ҡулланһағыҙ, һеҙгә уның ҡайһы яҡтары оҡшаны? Ҡайһылары оҡшаманы?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Юҡ икән, ни өсөн? Артабан ҡулланырға йыйынаһығыҙмы? Яуабығыҙҙы аңлатығыҙ, зинһар.',
+	'optin-survey-question-different' => 'Һеҙ Бета-версияны артабан ҡулланһын өсөн, беҙ нимәне үҙгәртә алыр инек?',
+	'optin-survey-question-feedback' => 'Үҙегеҙҙең фекерегеҙ, уйҙарығыҙ, тәҡдимдәрегеҙ тураһында безгә хәбәр итегеҙ, зинһар - беҙҙең өсөн һәр бер фекер файҙалы.',
+	'optin-survey-question-browser' => 'Һеҙ ниндәй браузер ҡулланаһығыҙ?',
+	'optin-survey-answer-browser-other' => 'Башҡа браузер:',
+	'optin-survey-question-os' => 'Һеҙ ниндәй операцион система ҡулланаһығыҙ?',
+	'optin-survey-answer-os-other' => 'Башҡа операцион система:',
+	'optin-survey-question-res' => 'Экранығыҙҙың киңәйтелмәһе ниндәй?',
+	'optin-survey-question-changes' => 'Киләсәктә Бета-версияла ниндәй үҙгәрештәр күрергә теләр инегеҙ (бөтә тап килгән яуаптарҙы һайлағыҙ, зинһар)?',
+	'optin-survey-answer-changes-nav' => 'Сайт буйынса навигацияны еңеләйтеү.',
+	'optin-survey-answer-changes-edittools' => 'Үҙгәртеү ҡоралдарын киңәйтеү һәм камиллаштырыу.',
+	'optin-survey-answer-changes-upload' => 'Йөкләмә һәм медианы индереүҙе камиллаштырыу.',
+	'optin-survey-answer-changes-richtext' => 'Текст редакторҙарына оҡшаш үҙгәртеү ҡоралдарын булдырыу.',
+	'optin-survey-answer-changes-lookfeel' => 'Сайттың «тышҡы ҡиәфәтен» яңыртыу.',
+	'optin-survey-answer-changes-predictability' => 'Сайттың алдан күрелгәнсә эшләүен һәм эшләү тиҙлеген яҡшыртыу.',
+	'optin-survey-answer-changes-custom' => 'Күберәк шәхси көйләүҙәр эшләргә мөмкинлек биреү.',
+	'optin-survey-answer-changes-other' => 'Башҡалар:',
+	'optin-improvements2' => '==Нимә яҡшыртылды?==
+[[File:UsabilityToolbar.png|left|link=|Яңы үҙгәртеү панеле рәсеме]]
+[[File:UsabilityDialogs.png|left|link=|Яңы диалогтар рәсеме]]
+; Киңәйтелгән ҡоралдар панеле
+Киңәйтелгән ҡоралдар панеле мәҡәләләр мөхәррирләүҙе еңелләштерә. Яңы һәм яҡшыртылған төймәләр һәр ҡоралдың тәғәйенләнешен яҡшыраҡ аса. Йәйелдерелә торған өлөштәр тәртипһеҙлекте кәметә, шул уҡ ваҡытта һирәк ҡулланыла торған ҡоралдарҙы йыраҡҡа ла йәшермәй.
+; Диалог тәҙрәләре
+Һылтанмалар һәм таблицалар эшләү өсөн тәғәйенләнгән төймәгә баҫҡан ваҡытта хәҙер диалог тәҙрәләре асыла, был тәҙрәләр ябай форма ярҙамында һылтанмалар һәм таблицалар яһарға ярҙам итә.
+; Шулай уҡ
+Беҙ навигацияны яҡшыртыу, каскадлы бүлгестәр, яҡшыртылған эҙләү системаһы һәм башҡа күп үҙгәрештәр индерҙек.
+; Нисек керергә
+Юзабилити Инциативаһы тураһында күберәк белер өсөн, [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage беҙҙең биткә] кереп сығығыҙ.',
 );
 
 /** Samogitian (Žemaitėška)
@@ -2186,8 +2228,31 @@ $messages['fa'] = array(
 	'optin-survey-question-different' => 'چه کار متفاوتی می‌توانستیم انجام دهیم تا شما را به استفاده از بتا مداومت دهیم؟',
 	'optin-survey-question-feedback' => 'لطفاً در مورد هرگونه نظر، نگرانی یا افکار دیگری که برای پیشنهاد به ما دارید، ما را مطلع سازید - همهٔ بازخوردها مفید هستند',
 	'optin-survey-question-browser' => 'از کدام مرورگر استفاده می‌کنید؟',
+	'optin-survey-answer-browser-ie5' => 'اینترنت اکسپلورر ۵',
+	'optin-survey-answer-browser-ie6' => 'اینترنت اکسپلورر ۶',
+	'optin-survey-answer-browser-ie7' => 'اینترنت اکسپلورر ۷',
+	'optin-survey-answer-browser-ie8' => 'اینترنت اکسپلورر ۸',
+	'optin-survey-answer-browser-ie9' => 'اینترنت اکسپلورر ۹',
+	'optin-survey-answer-browser-ff1' => 'فایرفاکس ۱',
+	'optin-survey-answer-browser-ff2' => 'فایرفاکس ۲',
+	'optin-survey-answer-browser-ff3' => 'فایرفاکس ۳',
+	'optin-survey-answer-browser-cb' => 'گوگل کروم بتا',
+	'optin-survey-answer-browser-c1' => 'گوگل کروم ۱',
+	'optin-survey-answer-browser-c2' => 'گوگل کروم ۲',
+	'optin-survey-answer-browser-c3' => 'گوگل کروم ۳',
+	'optin-survey-answer-browser-c4' => 'گوگل کروم ۴',
+	'optin-survey-answer-browser-c5' => 'گوگل کروم ۵',
+	'optin-survey-answer-browser-s3' => 'سافاری ۳',
+	'optin-survey-answer-browser-s4' => 'سافاری ۴',
+	'optin-survey-answer-browser-s5' => 'سافاری ۵',
+	'optin-survey-answer-browser-o9' => 'اپرا ۹',
+	'optin-survey-answer-browser-o9.5' => 'اپرا ۹٫۵',
+	'optin-survey-answer-browser-o10' => 'اپرا ۱۰',
 	'optin-survey-answer-browser-other' => 'مرورگر دیگر:',
 	'optin-survey-question-os' => 'از کدام سیستم عامل استفاده می‌کنید؟',
+	'optin-survey-answer-os-windows' => 'ویندوز',
+	'optin-survey-answer-os-windowsmobile' => 'ویندوز موبایل',
+	'optin-survey-answer-os-linux' => 'لینوکس',
 	'optin-survey-answer-os-other' => 'سیستم عامل دیگر:',
 	'optin-survey-question-res' => 'وضوح صفحه نمایش شما چقدر است؟',
 	'optin-survey-question-changes' => 'دوست دارید در نسخهٔ بتا در آینده شاهد چه تغییراتی باشید (لطفاً همهٔ موارد مرتبط را انتخاب کنید)؟',
@@ -3874,6 +3939,8 @@ Wat hät Der aam dä Verschöönerunge zom Ußprobeere nit jefalle?',
  * @author Erdal Ronahi
  */
 $messages['ku-latn'] = array(
+	'optin-title-optedout' => 'Betayê biceribîne',
+	'optin-title-optedin' => 'Ji betayê derkeve',
 	'optin-survey-yes' => 'Erê',
 	'optin-survey-no' => 'Na',
 	'optin-survey-answer-changes-other' => 'Wekî din:',
@@ -3884,8 +3951,8 @@ $messages['ku-latn'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'optin-title-optedout' => 'Prevy Beta',
-	'optin-deny-short' => 'Na, meur ras',
+	'optin-title-optedout' => 'Prevy an Beta',
+	'optin-deny-short' => 'Na, gromercy',
 	'optin-survey-yes' => 'Ea',
 	'optin-survey-no' => 'Na',
 );
@@ -4313,11 +4380,17 @@ $messages['mr'] = array(
 	'optin-success-feedback' => '↓ आपल्या संदेशपरताव्याबद्दल आभार!',
 	'optin-accept-short' => '↓चला करून पाहू!',
 	'optin-deny-short' => 'नको धन्य्वाद',
+	'optin-deny-long' => 'मागच्या पानाकडे वापस जा',
 	'optin-submit-feedback' => 'प्रतिक्रिया द्या',
 	'optin-survey-yes' => 'हो',
 	'optin-survey-no' => 'नाही',
+	'optin-survey-intro' => '↓  आम्हास हे जाणुन घेणे आवडेल कि आमच्या नविन चेहर्‍यामोहर्‍याबद्दल आपले विचार काय आहेत.जर आपण, "[[#leave|{{int:optin-submit-out}}]]" येथे टिचकी मारण्यापूर्वी खालील ऐच्छिक सर्वेक्षण भरुन दिले तर आम्हास ते खचितच आवडेल.',
+	'optin-survey-question-likedislike' => '↓ आपणास बीटा बद्दल काय आवडले? आपणास बीटा बद्दल काय आवडले नाही?',
 	'optin-survey-answer-whyoptout-hard' => 'अवघड होते',
+	'optin-survey-answer-whyoptout-didntwork' => 'सुयोग्यपणे काम झाले नाही',
+	'optin-survey-answer-whyoptout-notpredictable' => 'अपेक्षेनुसार काम झाले नाही',
 	'optin-survey-answer-whyoptout-didntlike-look' => '↓ ज्या प्रकारे ते दिसते ते मला आवडले नाही.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'मला नविन कळी व  ठेवण-मांडणी आवडली नाही.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'मला नविन साधनपट्टी(टूलबार) आवडली नाही.',
 	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
 	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
@@ -4337,7 +4410,10 @@ $messages['mr'] = array(
 	'optin-survey-answer-changes-nav' => '↓ या संस्थळाचे नॅव्हिगेशन वापरण्यास सुलभ असे करा.',
 	'optin-survey-answer-changes-edittools' => '↓ संपादन उपकरणांत (ऐडिट टुल्स) वाढ व दर्जावाढ करा.',
 	'optin-survey-answer-changes-upload' => '↓  यातील घटक व मिडिया अपलोड सुधरवा.',
+	'optin-survey-answer-changes-richtext' => 'rich-text editors सारखी संपादन साधने तयार करा.',
 	'optin-survey-answer-changes-lookfeel' => '↓ या संस्थळाचा "दिखावा व अनुभूती" अद्ययावत करा.',
+	'optin-survey-answer-changes-predictability' => 'परफॉर्मन्सच्या अचूकतेत सुधारणा करा',
+	'optin-survey-answer-changes-custom' => 'सदसांना अधिक स्वपसंती सवलत द्या',
 	'optin-survey-answer-changes-other' => 'इतर',
 	'optin-improvements2' => '== कोणकोणत्या सुधारणा केल्या आहेत? ==
 [[File:UsabilityToolbar.png|left|link=|संवर्धीत संपादन साधनपट्टीचा देखावा]]
@@ -4563,6 +4639,15 @@ $messages['mzn'] = array(
 == خانی بدونی چتی توندی کومک هکنی؟ ==
 برای اطلاع بیشته درباره رابطه با توانایی ایستفاده ابتکاری [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative اینجه] ره سر بزنین.
 <div style="clear:both"></div>',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'optin-survey-yes' => 'Quēmah',
+	'optin-survey-no' => 'Ahmo',
+	'optin-survey-answer-changes-other' => 'Occē:',
 );
 
 /** Nedersaksisch (Nedersaksisch)

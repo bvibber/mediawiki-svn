@@ -8817,6 +8817,13 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
 	'right-mv_edit_stream' => 'Upraviť súbory streamov',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'mv_history' => 'Zgodovina',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић

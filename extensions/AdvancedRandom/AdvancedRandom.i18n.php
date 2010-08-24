@@ -505,6 +505,13 @@ $messages['oc'] = array(
 	'advancedrandom-desc' => "Obten una pagina a l'azard un espaci de noms quin que siá, que liga, ela o sa pagina de discussion, cap a una pagina donada. Pòt èsser utilizat coma [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] per obténer aleatòriament la pagina de discussion d'un article de qualitat, o coma [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] per obténer un fichièr jos licéncia de documentacion liura GNU (GFDL)",
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'advancedrandom' => 'Selekshon avansá di artíkulo mesklá',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich

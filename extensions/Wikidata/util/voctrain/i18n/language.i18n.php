@@ -2309,7 +2309,7 @@ $messages['kw'] = array(
 	'voctrain_Word' => 'Ger',
 	'voctrain_Question' => 'Govyn',
 	'voctrain_The_word_to_translate' => 'An ger dhe treylya',
-	'voctrain_logout' => 'digelmi',
+	'voctrain_logout' => 'digelmy',
 	'voctrain_User_name' => 'Hanow-usyer',
 	'voctrain_Password' => 'Ger-tremena',
 	'voctrain_Login' => 'Omgelmi',
@@ -3602,6 +3602,13 @@ $messages['sk'] = array(
 	'voctrain_hide_words_in_question_language' => 'Skryť slová v jazyku otázky',
 	'voctrain_Separate_values_by_commas_to_use_multiple_languages_' => 'Viac jazykov vyberiete tak, že ich oddelíte čiarkami.',
 	'voctrain_other' => 'iný',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'voctrain_Password' => 'Geslo',
 );
 
 /** Swedish (Svenska)

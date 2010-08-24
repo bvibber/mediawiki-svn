@@ -893,7 +893,7 @@ $messages['ku-latn'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'contributors-submit' => 'Diskwedhes',
+	'contributors-submit' => 'Disqwedhes',
 );
 
 /** Latin (Latina)

@@ -89,7 +89,7 @@ Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
 	'expand_templates_ok' => 'Confirmar',
 	'expand_templates_remove_comments' => 'Sacar comentarios',
 	'expand_templates_generate_xml' => "Amostrar l'árbol de parseyo XML",
-	'expand_templates_preview' => 'Preveyer',
+	'expand_templates_preview' => 'Previsualización',
 );
 
 /** Arabic (العربية)

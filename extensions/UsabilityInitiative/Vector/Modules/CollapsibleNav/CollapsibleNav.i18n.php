@@ -476,6 +476,13 @@ $messages['mt'] = array(
 	'vector-collapsiblenav-more' => 'Aktar lingwi',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'vector-collapsiblenav-more' => 'Ocachi tlahtōlli',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

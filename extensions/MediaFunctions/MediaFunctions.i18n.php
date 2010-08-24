@@ -531,9 +531,11 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'mediafunctions-desc' => 'ஊடக கோப்புக்களை பற்றிய விவரங்களைப் பெற்றுக்கொள்ள பயன்படும், சொற்களை பிரித்தெடுக்கும் செயலாற்றிகள்',
 	'mediafunctions-invalid-title' => '"$1" செல்லுபடியற்றத் தலைப்பாகும்',
 	'mediafunctions-not-exist' => '"$1" இல்லை',
 );

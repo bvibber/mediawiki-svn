@@ -172,6 +172,15 @@ $messages['fr'] = array(
 	'stalepages-summary' => 'Ceci est une liste de pages qui n’ont pas été modifiées depuis $1 jour{{PLURAL:$1||s}}.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'stalepages' => 'Pâges dèpassâs',
+	'stalepages-desc' => 'Fât una [[Special:Stalepages|lista de les pâges]] qu’ont pas étâ changiês dèrriérement.',
+	'stalepages-summary' => 'O est una lista de pâges qu’ont pas étâ changiês dês $1 jorn{{PLURAL:$1||s}}.',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

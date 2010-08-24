@@ -488,7 +488,7 @@ $messages['an'] = array(
 	'configure-desc-ns' => 'Espacio de nombres',
 	'configure-form-reason' => 'Razón:',
 	'configure-section-namespaces' => 'Espacios de nombres',
-	'configure-section-images' => 'Ficheros',
+	'configure-section-images' => 'Fichers',
 	'configure-throttle-action-edit' => 'Editar',
 	'configure-throttle-action-rollback' => 'Revertir',
 );
@@ -5858,8 +5858,8 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
  */
 $messages['kw'] = array(
 	'configure-section-pages' => 'Folennow',
-	'configure-section-upload' => 'Ughkarga',
-	'configure-section-search' => 'Hwilas',
+	'configure-section-upload' => 'Ughcarga',
+	'configure-section-search' => 'Whilas',
 	'configure-throttle-action-edit' => 'Chanjya',
 );
 
@@ -8906,6 +8906,8 @@ Aby ste mohli používať toto rozšírenie, vytvorte ho alebo ho zmeňte.',
  */
 $messages['sl'] = array(
 	'configure-form-reason' => 'Razlog:',
+	'configure-section-pages' => 'Strani',
+	'configure-throttle-action-move' => 'Prestavi',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

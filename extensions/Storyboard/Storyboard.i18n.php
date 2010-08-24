@@ -156,6 +156,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'storyboard-publish' => 'Publicar',
 	'storyboard-language' => 'Idioma',
 );
 
@@ -692,6 +693,21 @@ $messages['frp'] = array(
 	'storyboard-email' => 'Voutra adrèce èlèctronica (nècèssèra)',
 	'storyboard-storytitle' => 'Un titro côrt et dèscriptif (nècèssèro)',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|caractèro que réste|caractèros que réstont}})',
+	'storyboard-submissioncomplete' => 'La somission est chavonâ',
+	'storyboard-submissionincomplete' => 'La somission at pas reussia',
+	'storyboard-alreadyexists' => '« $1 » est ja prês.',
+	'storyboard-alreadyexistschange' => '« {0} » est ja prês, volyéd chouèsir un ôtro titro.',
+	'storyboard-changetitle' => 'Changiér lo titro.',
+	'storyboard-notsubmitted' => 'L’ôtentificacion at pas reussia, niona histouère at étâ encartâ.',
+	'storyboard-emailtitle' => 'La somission de l’histouère at reussia',
+	'storyreview' => 'Critica de l’histouère',
+	'storyboard-deleteimage' => 'Suprimar l’émâge',
+	'storyboard-done' => 'Fêt',
+	'storyboard-working' => 'En cors...',
+	'storyboard-imagedeleted' => 'Émâge suprimâ',
+	'storyboard-showimage' => 'Fâre vêre l’émâge',
+	'storyboard-hideimage' => 'Cachiér l’émâge',
+	'storyboard-deletestory' => 'Enlevar',
 );
 
 /** Galician (Galego)

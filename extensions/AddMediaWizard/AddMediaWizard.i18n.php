@@ -290,6 +290,13 @@ $messages['oc'] = array(
 	'addmediawizard-desc' => 'Apondre un assistent pels mèdias, desvolopat dins un partenariat entre Kaltura e la Wikimedia Foundation',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'addmediawizard-desc' => 'Agrega un media wizard, kreá en kooperashon ku e fundashonnan Kaltura i Wikimedia',
+);
+
 /** Polish (Polski)
  * @author Marcin Łukasz Kiejzik
  */

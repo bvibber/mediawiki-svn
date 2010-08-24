@@ -1455,6 +1455,11 @@ Určite nezablokujte celé domény, ktoré úmožňujú tvorbu používateľský
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'spamdifftool' => 'Upravljaj črni seznam spam',
+	'spamdifftool_summary' => 'Dodajanje na črni seznam spam',
+	'spamdifftool_spam_link_text' => 'dodaj med spam',
+	'spamdifftool_option_domain' => 'vse iz te domene',
+	'spamdifftool_option_subdomain' => 'vse iz te poddomene',
 	'spamdifftool_option_none' => 'nič',
 	'spamdifftool_block' => 'Blokiraj:',
 	'spamdifftool_submit_buttom' => 'Pošlji',

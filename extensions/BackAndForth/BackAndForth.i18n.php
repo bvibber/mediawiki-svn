@@ -705,6 +705,15 @@ $messages['oc'] = array(
 	'backforth-prev' => 'Precedent ($1)',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'backforth-next' => 'Siguiente ($1)',
+	'backandforth-desc' => 'Esaki ta agregá e botonnan "Siguiente" i "Anterior"  na e kabes di e páginanan alfabetiko',
+	'backforth-prev' => ' Anterior ($1)',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */

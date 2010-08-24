@@ -428,6 +428,13 @@ $messages['os'] = array(
 	'antibot-desc' => 'Хуымæтæг системæ спам-роботты ссарынæн',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'antibot-desc' => 'Un base simpel pa spambot por chèk i kousa payloads',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Wikipeeta
  */

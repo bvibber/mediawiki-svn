@@ -1065,6 +1065,14 @@ $messages['rue'] = array(
 	'refhelper-search' => 'Глядати',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'refhelper-pages' => 'Strani:',
+	'refhelper-year' => 'Leto:',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

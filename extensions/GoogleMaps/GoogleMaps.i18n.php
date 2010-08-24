@@ -4990,6 +4990,16 @@ $wgGoogleMapsMessages['sk'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$wgGoogleMapsMessages['sl'] = array(
+	'gm-yes' => 'Da',
+	'gm-no' => 'Ne',
+	'gm-save-path' => 'Shrani',
+	'gm-back' => 'nazaj',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

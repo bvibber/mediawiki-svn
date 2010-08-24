@@ -433,6 +433,13 @@ $messages['oc'] = array(
 	'charinsert-desc' => 'Permet la creacion d’una bóstia JavaScript per [[MediaWiki:Edittools|l’insercion de caractèrs pas estandards]]',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'charinsert-desc' => 'Esaki ta pèrmití e kreashon di un kaha di JavaScript pa [[MediaWiki:Edittools|inserting non-standard characters]]',
+);
+
 /** Picard (Picard)
  * @author Geoleplubo
  */

@@ -430,6 +430,13 @@ $messages['oc'] = array(
 	'didyoumean-desc' => 'Apond de ligams a las paginas amb de títols « semblables »',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'didyoumean-desc' => 'Ta añadi lenknan pa páginanan ku un título "similar"',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich

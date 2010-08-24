@@ -1118,7 +1118,7 @@ Mer kann jetz dat [{{fullurl:{{#Special:SignDocument}}|doc=$2}} Ungerschriive oc
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'createsigndoc-introtext' => 'Komendyans:',
+	'createsigndoc-introtext' => 'Raglavar:',
 );
 
 /** Latin (Latina)
@@ -1715,6 +1715,13 @@ Tiež si prosím buďte istý, že uvádzate všetky polia presne ako by mali by
 Otestovať ho môžete na [{{fullurl:{{#Special:SignDocument}}|doc=$2}} tejto stránke].',
 	'createsigndoc-error-alreadycreated' => 'Podpis dokumentu „$1“ už existuje.
 Túto operáciu nie je možné druhýkrát vrátiť.',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'createsigndoc-pagename' => 'Stran:',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

@@ -526,6 +526,14 @@ $messages['oc'] = array(
 	'absenteelandlord-desc' => 'Varrolha automaticament la banca de donadas se totes los administrators son inactius dempuèi un cèrt temps',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'absenteelandlord-reason' => 'E base di dato aki wòrdu di lòk dor di inaktividat di parti de e atministradó.',
+	'absenteelandlord-desc' => 'Esaki outamatikamente ta pone un lòk riba e base di datos wiki si tur e sysopsnan ta inaktivo par un sierto periodo di tempu',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

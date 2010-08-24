@@ -951,6 +951,16 @@ $messages['sk'] = array(
 	'postcomment_nopostingtoadd' => 'Niet pridať aký príspevok.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'postcomment_post' => 'Objavi',
+	'postcomment_on' => 'Dne',
+	'postcomment_said' => 'pravi',
+	'postcomment_invalidrequest' => 'Neveljavna zahteva.',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Schläsinger
  */

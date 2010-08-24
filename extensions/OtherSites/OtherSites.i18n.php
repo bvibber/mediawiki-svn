@@ -151,10 +151,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Vahid
  */
 $messages['fa'] = array(
 	'othersites' => 'دیگر وبگاه‌ها',
+	'othersites-desc' => 'پیوندهای میان‌ویکی را به جای سایر پیوندهای زبان‌ها در پورتلت شخصی آن‌ها انتقال می‌دهد.',
 );
 
 /** Finnish (Suomi)

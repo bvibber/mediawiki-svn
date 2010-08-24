@@ -3415,6 +3415,13 @@ $messages['sk'] = array(
 	'tasks-pref-showtaskcomments' => 'Transklúzia diskusnej stránky úlohy.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'tasks_table_header_page' => 'Stran',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

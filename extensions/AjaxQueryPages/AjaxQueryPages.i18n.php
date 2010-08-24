@@ -461,6 +461,13 @@ $messages['oc'] = array(
 	'ajaxquerypages-desc' => "Apond d'escript AJAX a las paginas de requèstas talas coma [[Special:Shortpages|{{int:shortpages}}]]",
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'ajaxquerypages-desc' => 'Esaki ta agregá AJAX na e página di buskeda, manera por ehèmpel [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Wikipeeta
  */

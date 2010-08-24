@@ -1837,6 +1837,15 @@ Počkajte prosím, kým sa dokončí prebiehajúca operácia.',
 	'tag-logpagetext' => 'Toto je záznam všetkých pridaní a odstránení značiek obrázkov.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'imagetagging-article' => 'Stran:',
+	'imagetagging-imghistory' => 'Zgodovina',
+	'imagetagging-images' => 'slike',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

@@ -44,6 +44,13 @@ $messages['aln'] = array(
 	'vector-simplesearch-containing' => 'përmban ...',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'vector-simplesearch-search' => 'Mirar',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -584,6 +591,13 @@ $messages['ms'] = array(
 $messages['mt'] = array(
 	'vector-simplesearch-search' => 'Fittex',
 	'vector-simplesearch-containing' => 'li tinkludi...',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'vector-simplesearch-search' => 'Tlatēmoliztli',
 );
 
 /** Nedersaksisch (Nedersaksisch)

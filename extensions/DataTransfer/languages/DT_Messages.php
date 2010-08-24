@@ -1194,7 +1194,7 @@ $messages['ksh'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'dt_viewxml_categories' => 'Klassys',
+	'dt_viewxml_categories' => 'Classys',
 	'dt_xml_page' => 'Folen',
 );
 
@@ -1775,6 +1775,14 @@ $messages['sk'] = array(
 	'importcsv' => 'Import CSV',
 	'dt_importcsv_badheader' => 'Chyba: stĺpec $1 hlavičky, „$2“ musí mať hodnotu buď „$3“, „$4“ alebo byť v tvare „názov_šablóny[názov_poľa]“',
 	'right-datatransferimport' => 'Importovať údaje',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'dt_xml_pages' => 'Strani',
+	'dt_xml_page' => 'Stran',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

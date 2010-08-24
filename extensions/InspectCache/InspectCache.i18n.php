@@ -58,6 +58,7 @@ $messages['af'] = array(
  */
 $messages['an'] = array(
 	'inspectcache-delete' => 'Borrar',
+	'inspectcache-list' => 'Lista',
 );
 
 /** Arabic (العربية)

@@ -68,6 +68,13 @@ $messages['es'] = array(
 	'peoplecategories-desc' => 'Los cambios mostraron nombres de páginas de "Nombre Apellido" a "Apellido, Nombre" en las páginas de categoría especificadas',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'peoplecategories-desc' => 'نام نمایش داده شده را از «نام نام‌خانوداگی» به «نام‌خانوادگی، نام» را در صفحه‌های رده‌ای خاص تغییر می‌دهد.',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

@@ -62,6 +62,13 @@ $messages['cy'] = array(
 	'autoincrement-desc' => "Bach newidiol sy'n ychwanegu'r newidyn awto-gynyddu <nowiki>{{AUTOINCREMENT}}</nowiki>",
 );
 
+/** Danish (Dansk)
+ * @author Aputtu
+ */
+$messages['da'] = array(
+	'autoincrement-desc' => 'En variabel krog, der tilføjer autoinkrementerings-variabel <nowiki> ((AUTOINCREMENT)) </nowiki>',
+);
+
 /** German (Deutsch)
  * @author LWChris
  */
@@ -139,6 +146,13 @@ $messages['he'] = array(
  */
 $messages['hil'] = array(
 	'autoincrement-desc' => 'Isa ka variable nga hook nga nagadugang sang autoincrementing variable <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
+/** Croatian (Hrvatski)
+ * @author Excaliboor
+ */
+$messages['hr'] = array(
+	'autoincrement-desc' => 'Zastavica koja dodaje autoinkrementirajuću varijablu <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

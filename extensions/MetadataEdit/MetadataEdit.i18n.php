@@ -1147,9 +1147,11 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'metadataedit-desc' => 'பக்கங்களை தொகுக்கும் போது, பகுப்புக்கள், மொழி இணைப்புக்கள், அனுமதிக்கப்பட்ட வார்ப்புருக்கள் ஆகியவற்றை, ஒரு சொற்பெட்டியில் இட்டுவைக்கவும்',
 	'metadata_help' => 'மேல்நிலைத் தரவு:',
 );
 

@@ -4831,6 +4831,8 @@ $messages['sl'] = array(
 	'openidchoosemanual' => 'Ime po vaši izbiri:',
 	'openidchooseusername' => 'Uporabniško ime:',
 	'openidchoosepassword' => 'Geslo:',
+	'openidnousername' => 'Uporabniško ime ni določeno.',
+	'openidbadusername' => 'Določeno je neustrezno uporabniško ime.',
 	'openidloginlabel' => 'URL OpenID',
 	'openiddelete' => 'Izbriši OpenID',
 	'openiddelete-button' => 'Potrdi',
@@ -5786,6 +5788,7 @@ Bạn sẽ không đăng nhập được dùng OpenID này.',
  * @author Smeira
  */
 $messages['vo'] = array(
+	'openidxrds' => 'Ragiv: Yadis',
 	'openiderror' => 'Kontrolamapöl',
 	'openidoptional' => 'No peflagon',
 	'openidrequired' => 'Peflagon',
@@ -5793,15 +5796,18 @@ $messages['vo'] = array(
 	'openidfullname' => 'Nem lölik',
 	'openidemail' => 'Ladet leäktronik',
 	'openidlanguage' => 'Pük',
+	'openidtimezone' => 'Düpakoun',
 	'openidchooseinstructions' => 'Gebans valik neodons näinemi;
 kanol välön bali sökölas.',
 	'openidchoosefull' => 'Nem lölik ola ($1)',
 	'openidchooseauto' => 'Nem itjäfidiko pejaföl ($1)',
 	'openidchoosemanual' => 'Nem fa ol pevälöl:',
-	'openidchooseexisting' => 'Kal in vük at dabinöl:',
+	'openidchooseexisting' => 'Kal in vük at dabinöl',
+	'openidchooseusername' => 'Gebananem:',
 	'openidchoosepassword' => 'letavöd:',
 	'openidnousername' => 'Gebananem nonik pegivon.',
 	'openidbadusername' => 'Gebananem no lonöföl pegivon.',
+	'openid-urls-delete' => 'Moükön',
 );
 
 /** Yiddish (ייִדיש)

@@ -1213,6 +1213,13 @@ $messages['sk'] = array(
 	'player-goto-file' => 'súbor',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'player-goto-page' => 'Stran',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Жељко Тодоровић

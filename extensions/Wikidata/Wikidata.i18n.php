@@ -759,6 +759,7 @@ $messages['an'] = array(
 	'ow_transaction_rollback_header' => 'Revertir',
 	'ow_dm_OK' => "D'alcuerdo",
 	'ow_Language' => 'Idioma',
+	'ow_LinkAttributeValues' => 'Vinclos',
 	'ow_create' => 'Creyar',
 );
 
@@ -7959,17 +7960,17 @@ $messages['ku-latn'] = array(
  */
 $messages['kw'] = array(
 	'langman_langname' => 'Hanow an yeth:',
-	'langman_iso639-3' => 'Koden ISO 639-3:',
-	'langman_iso639-2' => 'Koden ISO 639-2:',
-	'langman_wikimedia' => 'Koden Wikimedia:',
+	'langman_iso639-3' => 'Coden ISO 639-3:',
+	'langman_iso639-2' => 'Coden ISO 639-2:',
+	'langman_wikimedia' => 'Coden Wikimedia:',
 	'langman_addlang' => 'Keworra an yeth',
-	'importlangnames_title' => 'Ymperthi hanow yethow',
+	'importlangnames_title' => 'Ymperthy hanow yethow',
 	'importlangnames_added' => 'Hanow yethow rag "$1" keworrys.',
 	'datasearch_language' => 'Yeth:',
 	'ow_exporttsv_languages' => 'Yethow:',
 	'ow_save' => 'Gwitha',
-	'ow_history' => 'Istori',
-	'ow_transaction_no_action' => 'Na gwul vyth',
+	'ow_history' => 'Istory',
+	'ow_transaction_no_action' => 'Gwra tra vyth',
 	'ow_dm_OK' => 'Sur',
 );
 
@@ -12221,6 +12222,22 @@ $messages['sl'] = array(
 	'datasearch_language' => 'Jezik:',
 	'datasearch_found_word' => 'Najdena beseda:',
 	'datasearch_meaning' => 'Pomen',
+	'datasearch_search_text' => 'Iskano besedilo:',
+	'ow_importtsv_title1' => 'Uvoz TSV',
+	'ow_importtsv_importing' => 'Uvažanje podatkov TSV',
+	'ow_importtsv_import_failed' => 'Uvoz ni uspel',
+	'ow_importtsv_file' => 'Datoteka TSV:',
+	'ow_exporttsv_languages' => 'Jeziki:',
+	'ow_exporttsv_export_failed' => 'Izvoz ni uspel',
+	'ow_save' => 'Shrani',
+	'ow_history' => 'Zgodovina',
+	'ow_uipref_datasets' => 'Privzeti pogled:',
+	'ow_transaction_user' => 'Uporabniško ime:',
+	'ow_transaction_rollback_button' => 'Vrni',
+	'ow_transaction_rollback_header' => 'Vrnitev',
+	'ow_transaction_no_action' => 'Ne stori ničesar',
+	'ow_transaction_previous_version' => 'Prejšnja različica',
+	'ow_transaction_restore' => 'Obnovi',
 	'ow_dm_OK' => 'V redu',
 );
 

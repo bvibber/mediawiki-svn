@@ -335,6 +335,7 @@ $messages['bn'] = array(
 	'readerfeedback-tier-medium' => 'মোটামোটি',
 	'readerfeedback-tier-poor' => 'খারাপ',
 	'specialpages-group-feedback' => 'দর্শকের মতামত',
+	'readerfeedback-tt-review' => 'পর্যালোচনা জমা দিন',
 );
 
 /** Breton (Brezhoneg)
@@ -847,7 +848,7 @@ $messages['fa'] = array(
 	'readerfeedback-finished' => 'متشکریم!',
 	'readerfeedback-tagfilter' => 'برچسپ:',
 	'readerfeedback-tierfilter' => 'ارزش:',
-	'readerfeedback-tier-high' => 'زياد',
+	'readerfeedback-tier-high' => 'زیاد',
 	'readerfeedback-tier-medium' => 'متوسط',
 	'readerfeedback-tier-poor' => 'ضعیف',
 	'tooltip-ca-ratinghist' => 'نمره خوانندگان به این صفحه',

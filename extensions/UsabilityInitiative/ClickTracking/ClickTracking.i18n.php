@@ -1398,6 +1398,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'clicktracking' => 'ऊपयोगसुलभता उपक्रम टिचकीवेध',
+	'clicktracking-desc' => 'पान ताजेतवाने न करणार्‍या प्रसंगांचा(इव्हेंट) वेध घेण्या साठी वेधवर टिचकी मारा',
 	'ct-title' => 'एकुण उपयोगकर्ता टिचक्या',
 	'ct-event-name' => 'घटनेचे नाव',
 	'ct-expert-header' => '"कुशलांच्या" टिचक्या',
@@ -1406,6 +1407,7 @@ $messages['mr'] = array(
 	'ct-total-header' => 'एकुण टिचक्या',
 	'ct-start-date' => 'सुरवात दिनांक (YYYYMMDD)',
 	'ct-end-date' => 'अंतीम दिनांक (YYYYMMDD)',
+	'ct-increment-by' => 'प्रत्येक विदा निर्देशक केवढ्या दिवसांचे प्रतिनिधीत्व करतो',
 	'ct-change-graph' => 'आलेख बदला',
 	'ct-beginner' => 'नवशिका',
 	'ct-intermediate' => 'मध्यम',
@@ -1469,6 +1471,13 @@ $messages['mt'] = array(
 	'ct-user-span' => 'Kontribuzzjonijiet tal-utent fix-xefaq temporanju adottat',
 	'ct-and' => 'u',
 	'ct-update-table' => 'Aġġorna t-tabella',
+);
+
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'ct-and' => 'īhuān',
 );
 
 /** Nedersaksisch (Nedersaksisch)

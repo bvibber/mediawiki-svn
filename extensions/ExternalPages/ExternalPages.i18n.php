@@ -433,6 +433,16 @@ $messages['oc'] = array(
 	'externalpages-no-page' => 'Cap de pagina pas indicada',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'externalpages' => 'Páginanan eksterno',
+	'externalpages-desc' => 'Buska i mustra páginanan for di wepsitenan WMF',
+	'externalpages-bad-page' => 'E spesifikashon pa e página aki no ta balido',
+	'externalpages-no-page' => 'No tin ningun página spesifiká',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  * @author Wpedzich

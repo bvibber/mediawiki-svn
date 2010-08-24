@@ -39,6 +39,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bn'] = array(
 	'activestrategy' => 'সক্রিয় কৌশল',
+	'nedits' => '$1 {{PLURAL:$1|সম্পাদনা|সম্পাদনা}}',
 );
 
 /** Breton (Brezhoneg)

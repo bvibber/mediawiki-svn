@@ -1123,6 +1123,7 @@ $messages['ta'] = array(
 	'onlinestatus-desc' => 'பயனர் இணைப்பில் உள்ளாரா இல்லையா என்பதைக் காட்ட விருப்பத்தேர்வு இணைக்கப்படுகிறது',
 	'onlinestatus-js-anon' => 'தவறு(பிழை): இந்த அம்சத்தை பயன்படுத்த, தாங்கள் புகுபதிகை செய்திருக்க வேண்டும்',
 	'onlinestatus-js-changed' => 'தங்களது தொடர்நிலை, இதற்கு மாற்றப்பட்டுள்ளது: "$1"',
+	'onlinestatus-js-error' => '("$1") - இதன் உட்பொருள் ஒத்தவரவில்லை. ஆகவே நிலைமையை மாற்றம் செய்யமுடியாது.',
 	'onlinestatus-subtitle-offline' => 'இந்தப் பயனர் தற்போது இணைப்பிலில்லை',
 	'onlinestatus-subtitle-online' => 'இந்தப் பயனர் தற்போது இணைப்பிலுள்ளார்',
 	'onlinestatus-tab' => 'நிலைமை',
@@ -1131,6 +1132,8 @@ $messages['ta'] = array(
 	'onlinestatus-toggles-show' => 'நான் இணைப்பில் உள்ளேனா இல்லையா என்பதை பயனர் பக்கத்தில் காட்டுக',
 	'onlinestatus-toggle-offline' => 'இணைப்பிலில்லை',
 	'onlinestatus-toggle-online' => 'இணைப்பில்',
+	'onlinestatus-pref-onlineonlogin' => 'புகுபதிகை செய்தபின் எனது நிலைமையை இணைப்பில் உள்ளது என்று மாற்றவும்',
+	'onlinestatus-pref-offlineonlogout' => 'விடுபதிகை செய்யும்போது எனது நிலைமையை இணைப்பில்லாநிலை என்று மாற்றவும்',
 );
 
 /** Telugu (తెలుగు)

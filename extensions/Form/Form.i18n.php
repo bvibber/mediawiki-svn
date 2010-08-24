@@ -1379,6 +1379,13 @@ $messages['sk'] = array(
 	'formsaveerrortext' => 'Pri ukladaní formulára sa vyskytla neznáma chyba „$1“.',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'formsave' => 'Shrani',
+);
+
 /** Somali (Soomaaliga)
  * @author Yariiska
  */

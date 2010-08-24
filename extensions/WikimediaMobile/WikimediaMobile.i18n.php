@@ -36,10 +36,11 @@ $messages['be-tarask'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Prometheus.pyrphoros
  */
 $messages['bn'] = array(
-	'wikimediamobile-desc' => '&darr; মিডিয়াউইকির সহায়ক ক্রিয়াকলাপ, http://github.com/hcatlin/wikimedia-mobile স্থিত উইকিমিডিয়া-মোবাইল প্রকল্পের জন্য',
+	'wikimediamobile-desc' => 'উইকিমিডিয়া-মোবাইল প্রকল্পের জন্য মিডিয়াউইকির সমর্থিত ফাংশনসমূহ http://github.com/hcatlin/wikimedia-mobile রাখা আছে',
 );
 
 /** Breton (Brezhoneg)

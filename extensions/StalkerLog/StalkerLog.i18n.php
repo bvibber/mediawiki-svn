@@ -216,6 +216,7 @@ $messages['fr'] = array(
  */
 $messages['frp'] = array(
 	'stalkerlog-log-login' => 'branchiê.',
+	'stalkerlog-log-logout' => 'dèbranchiê.',
 );
 
 /** Galician (Galego)

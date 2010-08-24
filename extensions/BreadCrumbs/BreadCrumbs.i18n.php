@@ -437,6 +437,13 @@ $messages['oc'] = array(
 	'breadcrumbs-desc' => 'Aficha lo ligam de las darrièras paginas que l’utilizaire a visitadas dins lo wiki',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'breadcrumbs-desc' => 'Esaki ta mustra usuarionan e kon e wiki ta hinká den otro',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Wikipeeta
  */

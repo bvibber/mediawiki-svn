@@ -319,6 +319,13 @@ $messages['oc'] = array(
 	'contributorsaddon-desc' => 'Apond lo popup JS onMouseOver als ligams dels « Contributors principals »',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'contributorsaddon-desc' => 'Esaki ta agregá un bentana outomatiko di JavaScript na e lenknan di e "Kontribuidó prinsipal"',
+);
+
 /** Plautdietsch (Plautdietsch)
  * @author Wikipeeta
  */

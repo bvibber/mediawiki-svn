@@ -1501,6 +1501,13 @@ $messages['sk'] = array(
 	'bookinfo-provider' => 'Poskytovateľ údajov: $1',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'bookinfo-result-year' => 'Leto:',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  */

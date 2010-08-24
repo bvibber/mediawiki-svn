@@ -73,10 +73,11 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Prometheus.pyrphoros
  */
 $messages['bn'] = array(
-	'wikitextloggedinout-desc' => '&darr; দুটি আলাদা পার্সার হুক <code>&lt;loggedin&gt;</code> এবং <code>&lt;loggedout&gt;</code> ব্যবহারকারীর লগইন স্থিতিতে অনুসারে ভিন্ন বাক্যবন্ধ দেখানোর জন্য',
+	'wikitextloggedinout-desc' => 'দুটি আলাদা পার্সার হুক, <code>&lt;loggedin&gt;</code> এবং <code>&lt;loggedout&gt;</code> ব্যবহারকারীর লগইন অবস্থা অনুসারে ভিন্ন লেখা দেখানোর জন্য',
 );
 
 /** Breton (Brezhoneg)

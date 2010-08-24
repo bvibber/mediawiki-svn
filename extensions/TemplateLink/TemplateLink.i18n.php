@@ -556,10 +556,13 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author TRYPPN
  * @author Trengarasu
  */
 $messages['ta'] = array(
 	'templatelink' => 'வார்ப்புரு இணைப்பு',
+	'templatelink_desc' => 'இந்த விரிவாக்கம் வார்ப்புருவை புதியபக்கமாக காண்பிக்கும்',
+	'templatelink_empty' => 'தாங்கள் ஒரு கொடுபொருளை(parameter) உள்ளீடு செய்ய வேண்டும்.',
 	'templatelink_newtitle' => '$1 (இணைக்கப்பட்டுள்ளது)',
 );
 

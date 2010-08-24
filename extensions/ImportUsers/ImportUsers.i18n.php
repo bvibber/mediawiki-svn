@@ -1706,6 +1706,14 @@ $messages['sk'] = array(
 	'right-import_users' => 'Hromadne importovať používateľov',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'importusers-form-button' => 'Uvozi',
+	'importusers-password' => 'geslo',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

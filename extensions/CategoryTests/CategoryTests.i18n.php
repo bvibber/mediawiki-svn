@@ -337,6 +337,13 @@ $messages['oc'] = array(
 	'categorytests-desc' => 'Foncions per de tèsts de categoria',
 );
 
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'categorytests-desc' => 'Funshonnan pa kategoria di test',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

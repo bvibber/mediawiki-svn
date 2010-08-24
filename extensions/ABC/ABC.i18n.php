@@ -272,6 +272,7 @@ $messages['eu'] = array(
  * @author Ebraminio
  */
 $messages['fa'] = array(
+	'abc-desc' => 'برچسپ <code>&lt;abc&gt;</code> برای قالب ABC music می‌افزاید.',
 	'abcdownload' => 'بارگیری:',
 );
 
@@ -525,7 +526,7 @@ $messages['ku-latn'] = array(
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'abcdownload' => 'Iskarga:',
+	'abcdownload' => 'Iscarga:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -696,6 +697,14 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'abc-desc' => 'Apond una balisa <code>&lt;abc&gt;</code> per formatar la musica ABC',
 	'abcdownload' => 'Telecargar :',
+);
+
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'abc-desc' => 'Esaki ta agrega e parti <code>&lt;abc&gt;</code> na formato di musika ABC',
+	'abcdownload' => 'Baha',
 );
 
 /** Picard (Picard)

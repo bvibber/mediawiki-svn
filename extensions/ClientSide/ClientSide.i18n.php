@@ -117,6 +117,13 @@ $messages['eu'] = array(
 	'clientside-desc' => 'HTML, CSS eta JavaScript bezalako bezeroen neurriko formatuetan kodea sortzeko funtzioak hornitzen ditu.',
 );
 
+/** Persian (فارسی)
+ * @author Wayiran
+ */
+$messages['fa'] = array(
+	'clientside-desc' => 'برای تولید کد در فرمت‌های سمت کارخواهی (سمت کلاینتی) چون اچ‌تی‌ام‌ال، سی‌اس‌اس و جاوااسکریپت، توابعی را ارائه می‌کند',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

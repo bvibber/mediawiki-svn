@@ -586,6 +586,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'spamregex' => 'Èxprèssions racionèles de spames',
 	'spamregex-text' => '(Tèxto)',
 	'spamregex-summary-log' => '(Rèsumâ)',
 );

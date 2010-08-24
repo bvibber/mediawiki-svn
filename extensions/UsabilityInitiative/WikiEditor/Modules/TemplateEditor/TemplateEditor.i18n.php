@@ -655,6 +655,13 @@ $messages['mt'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Annulla',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Ticcuepāz',
+);
+
 /** Nedersaksisch (Nedersaksisch)
  * @author Servien
  */

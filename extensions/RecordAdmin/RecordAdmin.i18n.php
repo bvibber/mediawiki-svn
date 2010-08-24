@@ -2027,6 +2027,13 @@ $messages['sk'] = array(
 	'right-recordadmin' => 'Nájsť a upravovať stránky záznamov',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'recordadmin-buttonsave' => 'Shrani',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

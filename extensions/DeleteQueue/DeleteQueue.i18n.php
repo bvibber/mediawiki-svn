@@ -3750,7 +3750,7 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
  * @author Kw-Moon
  */
 $messages['kw'] = array(
-	'deletequeue-list-search' => 'Hwila',
+	'deletequeue-list-search' => 'Whila',
 	'deletequeue-list-anyqueue' => '(vyth)',
 	'deletequeue-case-page' => 'Folen:',
 );
@@ -5595,6 +5595,8 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'deletequeue-list-header-page' => 'Stran',
+	'deletequeue-case-page' => 'Stran:',
 	'deletequeue-case-reason' => 'Razlog:',
 );
 

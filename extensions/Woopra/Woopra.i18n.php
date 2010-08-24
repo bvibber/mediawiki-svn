@@ -64,10 +64,11 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Prometheus.pyrphoros
  */
 $messages['bn'] = array(
-	'woopra-desc' => "&darr; [http://www.woopra.com/ ''উপরা লাইভ ট্র্যাকিং সফটয়ারকে''] আপনার মিডিয়াউইকি ইনস্টলেশনের জন্য কাজ করতে সাহায্য করে",
+	'woopra-desc' => '[http://www.woopra.com/ উপরা লাইভ ট্র্যাকিং সফটওয়্যারকে] আপনার মিডিয়াউইকি ইনস্টলেশনের জন্য কাজ করতে অনুমতি দেয়',
 );
 
 /** Breton (Brezhoneg)
@@ -360,6 +361,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'woopra-desc' => 'Autoriza pel [http://www.woopra.com/ seguit en dirècte del logicial Woopra] de trabalhar per vòstra installacion MediaWiki',
+);
+
+/** Papiamento (Papiamentu)
+ * @author Sdm1985
+ */
+$messages['pap'] = array(
+	'woopra-desc' => 'Esaki ta pèrmití e [http://www.woopra.com/ Woopra Live Tracking Software] traha riba bo instalashon die MediaWiki',
 );
 
 /** Polish (Polski)

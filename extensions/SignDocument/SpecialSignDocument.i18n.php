@@ -206,6 +206,7 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'sign-realname' => 'Nombre:',
 	'sign-viewfield-realname' => 'Nombre',
+	'sign-signatures' => 'Sinyaturas',
 	'sign-viewfield-reviewedby' => 'Revisador',
 	'sign-viewfield-reviewcomment' => 'Comentario',
 	'sign-review-comment' => 'Comentario',

@@ -314,6 +314,9 @@ $messages['fa'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'در حال ارسال...',
 	'communityvoice-ratings-scale-status-error' => 'ارسال خطا!',
 	'communityvoice-ratings-scale-status-thanks' => 'سپاس از رای‌دادنتان!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 رای داده شد)',
+	'communityvoice-ratings-error-no-category' => 'ویژگی رده در برچسب امتیازدهی غایب است.',
+	'communityvoice-ratings-error-no-title' => 'ویژگی عنوان در برچسب امتیازدهی غایب است.',
 );
 
 /** Finnish (Suomi)

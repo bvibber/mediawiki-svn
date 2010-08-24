@@ -154,6 +154,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'youtubeauthsub_description' => 'Descripción',
 	'youtubeauthsub_submit' => 'Ninviar',
 );
 
@@ -397,8 +398,8 @@ $messages['bjn'] = array(
  */
 $messages['bn'] = array(
 	'youtubeauthsub' => 'ইউটিউব ভিডিও আপলোড',
-	'youtubeauthsub-desc' => ':&darr; ব্যবহারকারীকে সরাসরি ইউটিউবে [[Special:YouTubeAuthSub|ভিডিও আপলোড]] করার সুযোগ দেয়',
-	'youtubeauthsub_info' => ':&darr; কোনো পাতায় অন্তর্ভুক্তির আগে ভিডিও ইউটিউবে আপলোড করতে চাইলে নিম্নলিখিত তথ্যগুলো দিন:',
+	'youtubeauthsub-desc' => 'ব্যবহারকারীকে সরাসরি ইউটিউবে [[Special:YouTubeAuthSub|ভিডিও আপলোড]] করার অনুমতি দেয়',
+	'youtubeauthsub_info' => 'পাতায় যোগের জন্য কোন ভিডিও ইউটিউবে আপলোড করতে চাইলে, এই তথ্যগুলো প্রদান করুন:',
 	'youtubeauthsub_title' => 'শিরোনাম',
 	'youtubeauthsub_description' => 'বর্ণনা',
 	'youtubeauthsub_password' => 'ইউটিউব শব্দচাবি',
@@ -407,13 +408,13 @@ $messages['bn'] = array(
 	'youtubeauthsub_category' => 'বিষয়শ্রেণী',
 	'youtubeauthsub_submit' => 'জমা দিন',
 	'youtubeauthsub_clickhere' => 'ইউটিউবে লগইন করার জন্য এখানে ক্লিক করুন',
-	'youtubeauthsub_tokenerror' => '&darr; অনুমোদন অভিজ্ঞান তৈরীতে বিভ্রাট হয়েছে, হালনাগাদ করুন।',
+	'youtubeauthsub_tokenerror' => 'অথরাইজেশন টোকেন তৈরিতে ত্রুটি দেখাচ্ছে, রিফ্রেস করুন।',
 	'youtubeauthsub_success' => "↓ অভিনন্দন!
 আপনার ভিডিও আপলোড হয়েছে।
 <a href='http://www.youtube.com/watch?v=$1'>আপনার ভিডিওটি দেখুন</a>।
-ইউটিউব-এ ভিডিওটির প্রক্রিয়াকরণে হয়তো সামান্য সময় লাগতে পারে। ততক্ষনে...
+ইউটিউবে ভিডিওটির প্রক্রিয়াকরণে সামান্য সময় লাগতে পারে, তাই এখনই হয়তো ভিডিওটি প্রস্তুত নয়।
 
-আপনার ভিডিওটি উইকি-র কোন পাতায় অন্তর্ভুক্ত করতে লিখুন এই কোডটি:
+আপনার ভিডিওটি উইকির কোন পাতায় অন্তর্ভুক্ত করতে এই কোডটি কোন পাতায় যোগ করুন:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'কোন ভিডিও আপলোড করার জন্য, অবশ্যই প্রথমে ইউটিউবে প্রবেশ করা প্রয়োজন।',
 	'youtubeauthsub_uploadhere' => 'এখান থেকে আপনার ভিডিও আপলোড করুন:',

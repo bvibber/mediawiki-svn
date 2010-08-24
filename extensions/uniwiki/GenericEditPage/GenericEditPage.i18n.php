@@ -37,9 +37,10 @@ Add some using the tools in the menu bar.',
  * @author Fryed-peach
  * @author Purodha
  * @author Siebrand
+ * @author TRYPPN
  */
 $messages['qqq'] = array(
-	'gep-desc' => '{{desc}}',
+	'gep-desc' => 'பயனர் விரும்பும் வகையில் இந்த தொகுக்கும் பக்கம் சேர்க்கப்பட்டிருக்கிறது',
 	'gep-categories' => '{{Identical|Categories}}',
 	'gep-addcategorybutton' => '{{Identical|Add}}',
 	'gep-addsectionbutton' => '{{Identical|Add}}',
@@ -1509,6 +1510,7 @@ Lägg till några med verktygen i menyn.',
  * @author TRYPPN
  */
 $messages['ta'] = array(
+	'gep-desc' => 'பயனர் விரும்பும் வகையில் இந்த தொகுக்கும் பக்கம் சேர்க்கப்பட்டிருக்கிறது',
 	'gep-emailsubject' => '[$1] பகுப்பு பரிந்துறை: $2',
 	'gep-emailbody' => '"$3" தளத்துக்கு பகுப்பு "$2" ஐ பயனர் "$1" பரிந்துரைக்கிறார்.',
 	'gep-emailfailure' => 'மன்னிக்கவும், உங்களது பரிந்துரை செயல்படுத்தப்படவில்லை.',

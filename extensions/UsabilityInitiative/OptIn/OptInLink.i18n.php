@@ -107,6 +107,18 @@ $messages['as'] = array(
 	'optin-try' => 'বেটা চেষ্টা কৰক',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'optin-try' => 'Бета-версияны һынарға',
+	'tooltip-pt-optin-try' => 'Яңы мөмкинлектәрҙе һынап ҡарағыҙ',
+	'optin-leave' => 'Бета-версиянан сығырға',
+	'tooltip-pt-optin-leave' => 'Яңы мөмкинлектәрҙе һынауҙы тамамлау',
+	'optin-feedback' => 'Баһалама ебәрергә',
+	'tooltip-pt-optin-feedback' => 'Яңы мөмкинлектәр менән эшләү тәжрибәһе тураһында баһалама ҡалдырыу',
+);
+
 /** Samogitian (Žemaitėška)
  * @author Hugo.arg
  */
@@ -808,6 +820,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'optin-try' => '↓ बीटा वापरुन बघा',
+	'tooltip-pt-optin-try' => 'नवी वैशीष्ट्ये वापरून पहा',
 	'optin-leave' => '↓ बीटा त्यागुन बाहेर
 ↓ बीटा सोडा',
 	'tooltip-pt-optin-leave' => '↓ नविन चेहरामोहरा बंद करा',

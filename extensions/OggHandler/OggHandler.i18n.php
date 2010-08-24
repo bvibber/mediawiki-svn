@@ -1013,7 +1013,7 @@ $messages['fa'] = array(
 	'ogg-no-player' => 'متاسفانه دستگاه شما نرم‌افزار پخش‌کنندهٔ مناسب ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">یک برنامهٔ پخش‌کننده بارگیری کنید</a>.',
 	'ogg-no-xiphqt' => 'به نظر نمی‌سرد که شما جزء XiphQT از برنامهٔ QuickTime را داشته باشید. برنامهٔ QuickTime بدون این جزء توان پخش پرونده‌های Ogg را ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT را بارگیری کنید</a> یا از یک پخش‌کنندهٔ دیگر استفاده کنید.',
 	'ogg-player-videoElement' => 'پشتیبانی ذاتی مرورگر',
-	'ogg-player-oggPlugin' => 'افزونهٔ مرورگر',
+	'ogg-player-oggPlugin' => 'افزایهٔ مرورگر',
 	'ogg-player-thumbnail' => 'فقط تصاویر ثابت',
 	'ogg-player-soundthumb' => 'فاقد پخش‌کننده',
 	'ogg-player-selected' => '(انتخاب شده)',
@@ -3349,6 +3349,14 @@ $messages['ts'] = array(
 	'ogg-dismiss' => 'Pfala',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'ogg-more' => 'Тулырак...',
+	'ogg-dismiss' => 'Ябу',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc
@@ -3480,6 +3488,7 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
+	'ogg-stop' => 'Stöpön',
 	'ogg-player-videoElement' => 'Stüt bevüresodanaföm gebidon',
 	'ogg-more' => 'Pluikos...',
 	'ogg-dismiss' => 'Färmükön',
