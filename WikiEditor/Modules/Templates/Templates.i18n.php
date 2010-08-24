@@ -226,6 +226,13 @@ $messages['he'] = array(
 	'wikieditor-templates-preference' => 'הפעלת קיפול תבניות',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'wikieditor-templates-preference' => 'Omogući skrivanje predložaka',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

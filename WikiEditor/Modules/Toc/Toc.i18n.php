@@ -354,8 +354,10 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Excaliboor
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'wikieditor-toc-preference' => 'Omogući navigaciju sadržaja',
 	'wikieditor-toc-show' => 'Prikaži sadržaj',
 	'wikieditor-toc-hide' => 'Sakrij sadržaj',
 );

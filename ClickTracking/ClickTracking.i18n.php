@@ -927,11 +927,31 @@ $messages['he'] = array(
 /** Croatian (Hrvatski)
  * @author Ex13
  * @author Mvrban
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'clicktracking' => 'Praćenje klikova u Inicijativi za uporabljivosti',
 	'clicktracking-desc' => 'Praćenje klikova, napravljeno za praćenje događaja koji ne dovode do osvježavanja stanice',
+	'ct-title' => 'Skupljeni klikovi korisnika',
+	'ct-event-name' => 'Naziv događaja',
+	'ct-expert-header' => '"Ekspertni" klikovi',
+	'ct-intermediate-header' => 'Klikovi iskusnih suradnika',
+	'ct-beginner-header' => 'Klikovi početnika',
+	'ct-total-header' => 'Ukupno klikova',
 	'ct-start-date' => 'Početni datum (DDMMYYYY)',
+	'ct-end-date' => 'Završni datum (YYYYMMDD)',
+	'ct-increment-by' => 'Broj dana koji svaka podatkovna točka predstavlja',
+	'ct-change-graph' => 'Promijeni graf',
+	'ct-beginner' => 'Početnik',
+	'ct-intermediate' => 'Iskusni korisnik',
+	'ct-expert' => 'Stručnjak',
+	'ct-date-range' => 'Raspon datuma',
+	'ct-editing' => 'Trenutno uređujete:',
+	'ct-anon-users' => 'Anonimnih suradnika',
+	'ct-user-contribs' => 'Ukupno suradničkih doprinosa',
+	'ct-user-span' => 'Doprinosi suradnika u razdoblju',
+	'ct-and' => 'i',
+	'ct-update-table' => 'Ažuriraj tablicu',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2081,6 +2101,10 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'ct-event-name' => 'Jina la tukio',
+	'ct-start-date' => 'Tarehe ya kuanza (mwaka - tarakimu 4, mwezi - tarakimu 2, siku - tarakimu 2)',
+	'ct-end-date' => 'Tarehe ya kumaliza (mwaka - tarakimu 4, mwezi - tarakimu 2, siku - tarakimu 2)',
+	'ct-expert' => 'Mtaalam',
 	'ct-anon-users' => 'Watumiaji bila majina',
 	'ct-user-contribs' => 'Jumla ya michango ya mtumiaji',
 	'ct-and' => 'na',
