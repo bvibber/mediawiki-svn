@@ -8,6 +8,7 @@ $wgArticleAssessmentRevisionCutoff = 5;
 //Auto-load files
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiListArticleAssessment'] = $dir . 'api/ApiListArticleAssessment.php';
+$wgAutoloadClasses['ApiArticleAssessment'] = $dir . 'api/ApiArticleAssessment.php';
 $wgAutoloadClasses['ArticleAssessmentPilotHooks'] = $dir . 'ArticleAssessmentPilot.hooks.php';
 
 //Schema and tables
@@ -19,6 +20,7 @@ $wgHooks['SkinAfterContent'][] = 'ArticleAssessmentPilotHooks::addCode';
 
 //API modules
 $wgAPIListModules['articleassessment'] = 'ApiListArticleAssessment';
+$wgAPIModules['articleassessment'] = 'ApiArticleAssessment';
 
 //i18n and aliases
 // Adds Internationalized Messages
