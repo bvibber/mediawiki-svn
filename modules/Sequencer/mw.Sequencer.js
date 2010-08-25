@@ -162,13 +162,13 @@ mw.Sequencer.prototype = {
 	 */
 	getSmilSource: function( callback ){		
 		var _this = this;
-		if( !this.smilSource ){
-			if( this.getOption( 'newSequence' ) ){			
-				this.smilSource = this.getDataUrl( this.getNewSmilXML() );	
+		if( !_this.smilSource ){
+			if( _this.getOption( 'newSequence' ) ){			
+				_this.smilSource = _this.getDataUrl( _this.getNewSmilXML() );	
 			} else {
 				mw.log("Load smil source from server")
 				// Try to load from the server
-				this.getServer().getSmilXml(function( smilXml ){
+				_this.getServer().getSmilXml(function( smilXml ){
 					_this.smilSource = _this.getDataUrl( smilXml );
 					callback( _this.smilSource )	
 				})
@@ -177,9 +177,12 @@ mw.Sequencer.prototype = {
 			}
 		}
 		// return the smilSource
-		callback( this.smilSource )		
+		callback( _this.smilSource )
 	},
 	getDataUrl: function( xmlString ){
+		if( ! xmlString ){
+			xmlString = this.getSmil().getXMLString();
+		}
 		return 'data:text/xml;charset=utf-8,' + escape( xmlString );
 	},
 	getNewSmilXML: function( ){

@@ -6,7 +6,7 @@
 * Set the jQuery bindings: 
 */ 
 ( function( $ ) {
-	$.fn.firefoggRender = function( options, callback ) {
+	$.fn.firefoggRender = function( options ) {
 		if(!options)
 			options = {};
 		options.playerTarget = this.selector;		
@@ -39,7 +39,13 @@ mw.FirefoggRender.prototype = {
 
 	// Start time for rendering
 	startTime: 0,
-		
+	
+	// Callback for when the render with a pointer to the firefogg object
+	doneRenderCallback: null,
+	
+	// Bollean attribute if we should save to local file
+	saveToLocalFile : true,
+	
 	// Constructor 
 	init:function( options ) {
 		var _this = this;
@@ -73,12 +79,18 @@ mw.FirefoggRender.prototype = {
 			this.statusTarget = options ['statusTarget'];
 		}	
 		
+		if( options [ 'doneRenderCallback' ] ){
+			this.doneRenderCallback =  options [ 'doneRenderCallback' ];
+		}
+		
+		if( options['saveToLocalFile'] ){
+			this.saveToLocalFile = options['saveToLocalFile'] ;
+		}
 		// If no height width provided use target DOM width/height
 		if( !this.renderOptions.width && !this.renderOptions.height ) {
 			this.renderOptions.width = $j(this.playerTarget).width();
 			this.renderOptions.height = $j(this.playerTarget).height();
 		}		
-		
 		
 	},
 	getPlayer: function(){
@@ -87,9 +99,11 @@ mw.FirefoggRender.prototype = {
 	// Start rendering
 	doRender: function() {
 		var _this = this;
-		// Make sure we get a target destination
-		if( !_this.fogg.saveVideoAs() ){
-			return false;
+		// Check if we save the file to disk:
+		if( this.saveToLocalFile ){		
+			if( !_this.fogg.saveVideoAs() ){			
+				return false;
+			}
 		}
 		// Set the render time to "startTime" of the render request
 		this.renderTime = this.startTime;
@@ -148,7 +162,7 @@ mw.FirefoggRender.prototype = {
 				_this.doFinalRender();
 			} else {			
 				// Don't block on render requests
-				setTimeout(function(){
+				setTimeout( function(){
 					_this.doNextFrame();
 				},1 )
 			}
@@ -165,23 +179,32 @@ mw.FirefoggRender.prototype = {
 	/**
 	* Issue the call to firefogg to render out the ogg video
 	*/ 
-	doFinalRender: function() {
+	doFinalRender: function() {		
 		mw.log("FirefoggRender:: doFinalRenderr" );
 		this.fogg.render();
-		this.updateStatus();
+		this.checkRenderStatus();		
 	},
 	
 	/**
 	* Update the render status
 	*/
-	updateStatus: function() {
-		var _this = this;
+	checkRenderStatus: function() {
+		var _this = this;		
+		// Check if we are still rendering 
 		var rstatus = _this.fogg.renderstatus();
-	    $j( _this.statusTarget ).text( rstatus );
+	    $j( _this.statusTarget ).text( rstatus );	    
 	    if ( rstatus != 'done' && rstatus != 'rendering failed' ) {
 	        setTimeout( function() {
-	        	_this.updateStatus();
+	        	_this.checkRenderStatus();
 	        }, 100 );
+	        return ;
+	    }
+	    if( rstatus == 'rendering failed' ){
+	    	mw.log("Error: rendering failed");
+	    	return ;
+	    }
+	    if( this.doneRenderCallback ){
+	    	this.doneRenderCallback( this )
 	    }
 	}
 }

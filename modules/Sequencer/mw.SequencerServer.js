@@ -33,6 +33,8 @@
 					this.apiUrl = serverConfig.url;		
 				if( serverConfig.titleKey )
 					this.titleKey = serverConfig.titleKey;
+			} else {
+				mw.log("Error: Sequencer server needs a serverConfig to be initialized")
 			}
 		},
 		
@@ -91,6 +93,19 @@
 					}
 				})
 			})
+		},
+		
+		/**
+		 * @return {String}
+		 */
+		getVideoTitleKey: function(){
+			return 'File:' + this.titleKey.replace( ':', '-');
+		},
+		
+		// get upload settings runs the callback with the post url and request data 
+		getVideoUploadSettings: function( callback ){
+			var _this = this;
+			mw.getToken( this.apiUrl, this.getVideoTitleKey, function( saveToken ){			
 		}
 	}
 

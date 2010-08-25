@@ -85,15 +85,17 @@ mw.SequencerActionsSequence.prototype = {
 	},
 	/**
 	 * Display the publish dialog 
-	 * ( confim the user has firefogg and rights to save a new version of the file )
+	 * ( confirm the user has firefogg and rights to save a new version of the file )
 	 */
 	publish: function(){
+		var _this = this;
 		// add a loading dialog
 		var $dialog = mw.addDialog({
 			'resizable':'true',
 			'title' : gM('mwe-sequencer-loading-publish-render'),			
 			'content' : gM('mwe-sequencer-loading-publish-render'),
-			'width' : 450
+			'width' : 450,
+			'height' : 400
 		});
 		$dialog.append( $j('<div />').loadingSpinner() );
 		// Grab the firefogg render
@@ -103,25 +105,71 @@ mw.SequencerActionsSequence.prototype = {
 				'only_fogg':true
 			});			
 			if ( !myFogg.getFirefogg() ) {
-				$dialog.empty().append( $j('<div />').attr('id', 'show_install_firefogg') );
+				$dialog.empty().append(
+					$j('<div />').attr('id', 'show_install_firefogg') 
+				);
 				myFogg.showInstallFirefog( '#show_install_firefogg' );				
 				return ;
 			}
-			
+						
 			// Build a data-url of the current sequence:
-			$j( '<div />' ).attr('id', 'publishVideoTarget');
+			$dialog.dialog( "option", "title", gM('mwe-sequencer-running-publish') );
 			
-			// Start up the render
-			var foggRender = $j('#videoCrossfade').firefoggRender({
-				'statusTarget': '#targetFoggStatus'
-			});
-			/*
-			foggRender.doRender();
-
-			$j('#renderToFile').text('Stop Render').click(function(){
-				foggRender.stopRender();						
-			});
-			*/ 
+			$dialog.empty().append(
+				$j( '<video />' )
+				.attr({
+					'id': 'publishVideoTarget',
+					'src' : _this.sequencer.getDataUrl(),
+					'type' : 'application/smil'
+				})
+				.css({
+					'width' : '400px',
+					'height' : '300px'
+				})
+				,
+				$j('<div />' )
+				.css( 'clear', 'both' ),
+				$j('<span />' ).text( gM( 'mwe-sequencer-publishing-status') ),	
+				$j('<span />' ).attr( 'id', 'firefoggStatusTarget' ),
+				$j('<span />')
+				.css('float', 'right')
+				.text("%")
+			);
+			
+			// Embed the player and continue application flow			
+			$j('#publishVideoTarget').embedPlayer({
+				'controls' : false
+			}, function(){
+				// this should be depreciated ( hidden interface bug in mwEmbed ) 
+				$j('#publishVideoTarget').parent().show();
+				// Start up the render
+				var foggRender = $j('#publishVideoTarget').firefoggRender({
+					'statusTarget' : '#firefoggStatusTarget',
+					'saveToLocalFile' : false,
+					'doneRenderCallback': function( fogg ){
+						_this.uploadRenderedVideo( $dialog, fogg );
+					}
+				});
+				var buttons = {};
+				buttons[ gM('mwe-cancel') ] = function(){
+					foggRender.stopRender();
+					$j( this ).dialog( 'close' );
+				}
+				// Add cancel button 
+				$dialog.dialog( "option", "buttons", buttons );	
+				foggRender.doRender();
+			});		
 		});
+	},
+	// Upload the video from a supplied fogg target 
+	// note xx this might be better handlded in a firefogg library  
+	// @param {jQuery Object } $dialog
+	// @param {firefogg Object} 
+	uploadRenderedVideo: function( $dialog, fogg ){
+		var uploadStatus = function(){
+		}
+		this.sequencer.getServer().getVideoUploadSettings( function( url, request ){
+			fogg.post( url, 'file', request )
+		})		
 	}
 }

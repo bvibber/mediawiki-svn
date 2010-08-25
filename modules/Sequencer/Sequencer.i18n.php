@@ -77,6 +77,8 @@ $messages['en'] = array(
 	'mwe-sequencer-published-out-of-date' =>'This published sequence is not the most recent version. You can <b>[$1 review and publish]</b> the most recent version.',
 
 	'mwe-sequencer-loading-publish-render' => 'Loading publisher...',
+	'mwe-sequencer-running-publish' => 'Publishing sequence, please wait...',
+	'mwe-sequencer-publishing-status' => 'Publish status:',
 
 	'mwe-sequencer-transition_in' => 'Transition in',
 	'mwe-sequencer-transition_out' => 'Transition out',
