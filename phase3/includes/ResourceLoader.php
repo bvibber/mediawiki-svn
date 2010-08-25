@@ -227,32 +227,8 @@ class ResourceLoader {
 		}
 		// Use output buffering
 		ob_start();
-		// Special meta-information for the 'mediawiki' module
-		if ( in_array( 'mediawiki', $modules ) ) {
-			$config = array( 'server' => $server, 'debug', 'debug' => $parameters['debug'] );
-			echo "mediaWiki.config.set( " . FormatJson::encode( $config ) . " );\n";
-			// Generate list of registrations and collect all loader scripts
-			$loaders = array();
-			$registrations = array();
-			foreach ( self::$modules as $name => $module ) {
-				$loader = $module->getLoaderScript();
-				if ( $loader !== false ) {
-					echo $loader;
-				} else {
-					if ( !count( $module->getDependencies() ) && !in_array( $name, $missing ) ) {
-						$registrations[$name] = $name;
-					} else {
-						$registrations[$name] = array( $name, $module->getDependencies() );
-						if ( in_array( $name, $missing ) ) {
-							$registrations[$name][] = 'missing';
-						}
-					}
-				}
-			}
-			// Register modules without loaders
-			echo "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
-		}
-		// Output non-raw modules
+		// A list of registrations will be collected and appended to mediawiki script-only output
+		$registrations = array();
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
 		foreach ( $modules as $name ) {
 			$module = self::getModule( $name );
@@ -262,12 +238,31 @@ class ResourceLoader {
 			if ( $includeScripts ) {
 				$scripts .= $module->getScript();
 				if ( $parameters['debug'] ) {
-					$script .= $module->getDebugScript();
+					$scripts .= $module->getDebugScript();
 				}
 				$scripts .= $module->getLanguageScript( $parameters['lang'] );
 				$scripts .= $module->getSkinScript( $parameters['skin'] );
+				// Special meta-information for the 'mediawiki' module
+				if ( $name === 'mediawiki' && $parameters['only'] === 'scripts' ) {
+					$config = array( 'server' => $server, 'debug', 'debug' => $parameters['debug'] );
+					$scripts .= "mediaWiki.config.set( " . FormatJson::encode( $config ) . " );\n";
+					foreach ( self::$modules as $name => $module ) {
+						$loader = $module->getLoaderScript();
+						if ( $loader !== false ) {
+							$scripts .= $loader;
+						} else {
+							if ( !count( $module->getDependencies() ) && !in_array( $name, $missing ) ) {
+								$registrations[$name] = $name;
+							} else {
+								$registrations[$name] = array( $name, $module->getDependencies() );
+								if ( in_array( $name, $missing ) ) {
+									$registrations[$name][] = 'missing';
+								}
+							}
+						}
+					}
+				}
 			}
-			
 			// Styles
 			$styles = '';
 			if ( $includeStyles ) {
@@ -284,13 +279,19 @@ class ResourceLoader {
 			// Messages
 			$messages = $includeMessages && isset( $blobs[$name] ) ? $blobs[$name] : '{}';
 			// Output
-			if ( $parameters['only'] == 'styles' ) {
+			if ( $parameters['only'] === 'styles' ) {
 				echo $styles;
-			} else if ( $parameters['only'] == 'messages' ) {
+			} else if ( $parameters['only'] === 'scripts' ) {
+				echo $scripts;
+			} else if ( $parameters['only'] === 'messages' ) {
 				echo "mediaWiki.msg.set( $messages );\n";
 			} else {
 				$styles = Xml::escapeJsString( $styles );
 				echo "mediaWiki.loader.implement( '{$name}', function() {\n{$scripts}\n}, '{$styles}', {$messages} );\n";
+			}
+			if ( $includeScripts ) {
+				// Register modules without loaders
+				$scripts .= "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
 			}
 		}
 		

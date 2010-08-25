@@ -24,7 +24,7 @@ class OutputPage {
 	var $mCategoryLinks = array(), $mCategories = array(), $mLanguageLinks = array();
 
 	var $mScripts = '', $mLinkColours, $mPageLinkTitle = '', $mHeadItems = array();
-	var $mResources = array();
+	var $mModules = array(), $mModuleScripts = array(), $mModuleStyles = array(), $mModuleMessages = array();
 	var $mInlineMsg = array();
 
 	var $mTemplateIds = array();
@@ -225,21 +225,75 @@ class OutputPage {
 	}
 
 	/**
-	 * Get the list of resources to include on this page
+	 * Get the list of modules to include on this page
 	 * @return array of module names
 	 */
-	public function getResources() {
-		return $this->mResources;
+	public function getModules() {
+		return $this->mModules;
 	}
 
 	/**
-	 * Add a module recognized by the resource loader. Modules added
+	 * Add one or more modules recognized by the resource loader. Modules added
 	 * through this function will be loaded by the resource loader when the
 	 * page loads.
 	 * @param $module mixed Module name (string) or array of module names
 	 */
 	public function addModules( $modules ) {
-		$this->mResources = array_merge( $this->mResources, (array)$modules );
+		$this->mModules = array_merge( $this->mModules, (array)$modules );
+	}
+
+	/**
+	 * Get the list of module JS to include on this page
+	 * @return array of module names
+	 */
+	public function getModuleScripts() {
+		return $this->mModuleScripts;
+	}
+
+	/**
+	 * Add only JS of one or more modules recognized by the resource loader. Module
+	 * scripts added through this function will be loaded by the resource loader when
+	 * the page loads.
+	 * @param $module mixed Module name (string) or array of module names
+	 */
+	public function addModuleScripts( $modules ) {
+		$this->mModuleScripts = array_merge( $this->mModuleScripts, (array)$modules );
+	}
+
+	/**
+	 * Get the list of module CSS to include on this page
+	 * @return array of module names
+	 */
+	public function getModuleStyles() {
+		return $this->mModuleStyles;
+	}
+
+	/**
+	 * Add only CSS of one or more modules recognized by the resource loader. Module
+	 * styles added through this function will be loaded by the resource loader when
+	 * the page loads.
+	 * @param $module mixed Module name (string) or array of module names
+	 */
+	public function addModuleStyles( $modules ) {
+		$this->mModuleStyles = array_merge( $this->mModuleStyles, (array)$modules );
+	}
+
+	/**
+	 * Get the list of module messages to include on this page
+	 * @return array of module names
+	 */
+	public function getModuleMessages() {
+		return $this->mModuleMessages;
+	}
+
+	/**
+	 * Add only messages of one or more modules recognized by the resource loader.
+	 * Module messages added through this function will be loaded by the resource
+	 * loader when the page loads.
+	 * @param $module mixed Module name (string) or array of module names
+	 */
+	public function addModuleMessages( $modules ) {
+		$this->mModuleMessages = array_merge( $this->mModuleMessages, (array)$modules );
 	}
 
 	/**
@@ -1113,7 +1167,7 @@ class OutputPage {
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
 		$this->mHeadItems = array_merge( $this->mHeadItems, $parserOutput->getHeadItems() );
-		$this->addModules( $parserOutput->getResources() );
+		$this->addModules( $parserOutput->getModules() );
 		// Versioning...
 		foreach ( (array)$parserOutput->mTemplateIds as $ns => $dbks ) {
 			if ( isset( $this->mTemplateIds[$ns] ) ) {
@@ -1549,7 +1603,8 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 		
 		// Add base resources
-		$this->addModules( array( 'jquery', 'mediawiki', 'mediawiki.legacy.wikibits' ) );
+		$this->addModuleScripts( array( 'jquery', 'mediawiki' ) );
+		$this->addModules( array( 'mediawiki.legacy.wikibits' ) );
 		
 		// Add site JS if enabled
 		global $wgUseSiteJs;
@@ -2217,21 +2272,25 @@ class OutputPage {
 
 		return $ret;
 	}
-	
-	static function makeResourceLoaderLinkedScript( $skin, $modules ) {
+
+	static function makeResourceLoaderLink( $skin, $modules, $only = null ) {
 		global $wgUser, $wgLang, $wgRequest, $wgScriptPath;
 		// TODO: Should this be a static function of ResourceLoader instead?
 		$query = array(
 			'modules' => implode( '|', array_unique( (array) $modules ) ),
-			'user' => $wgUser->isLoggedIn(),
 			'lang' => $wgLang->getCode(),
-			'debug' => (
-				$wgRequest->getVal( 'debug' ) === 'true' ||
-				( $wgRequest->getVal( 'debug' ) !== 'false' && $wgRequest->getBool( 'debug' ) )
-			),
+			'debug' => $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false',
 			'skin' => $wgUser->getSkin()->getSkinName(),
 		);
-		return Html::linkedScript( wfAppendQuery( $wgScriptPath . '/load.php', $query ) );
+		if ( isset( $only ) ) {
+			$query['only'] = $only;
+		}
+		// Automatically select style/script elements
+		if ( $only === 'styles' ) {
+			return Html::linkedStyle( wfAppendQuery( $wgScriptPath . '/load.php', $query ) );
+		} else {
+			return Html::linkedScript( wfAppendQuery( $wgScriptPath . '/load.php', $query ) );
+		}
 	}
 	
 	/**
@@ -2247,22 +2306,33 @@ class OutputPage {
 		global $wgStylePath, $wgStyleVersion;
 		
 		$scripts = '';
-		// Include base modules and wikibits legacy code
-		if ( $wgRequest->getVal( 'debug' ) === 'true' || $wgRequest->getBool( 'debug' ) ) {
-			$skipped = array();
-			foreach ( $this->getResources() as $name ) {
-				$module = ResourceLoader::getModule( $name );
-				if ( $module->isRaw() ) {
-					$scripts .= self::makeResourceLoaderLinkedScript( $sk, $name );
-				} else {
-					$skipped[] = $name;
-				}
+		// Support individual script requests in debug mode
+		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
+			foreach ( $this->getModuleStyles() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
 			}
-			foreach ( $skipped as $name ) {
-				$scripts .= self::makeResourceLoaderLinkedScript( $sk, $name );
+			foreach ( $this->getModuleScripts() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
+			}
+			foreach ( $this->getModuleMessages() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'messages' );
+			}
+			foreach ( $this->getModules() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name );
 			}
 		} else {
-			$scripts .= self::makeResourceLoaderLinkedScript( $sk, $this->getResources() );
+			if ( count( $this->getModuleStyles() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
+			}
+			if ( count( $this->getModuleScripts() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
+			}
+			if ( count( $this->getModuleMessages() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
+			}
+			if ( count( $this->getModules() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModules() );
+			}
 		}
 		// Configure page
 		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
