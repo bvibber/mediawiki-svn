@@ -67,7 +67,7 @@ if [ -z "$CCDIR" ] ; then
 fi
 
 # Uncomment the following line if you have OutOfMemoryError errors
-# CC_OPTS="-Xms128m -Xmx256m"
+CC_OPTS="-Xms1024m -Xmx1512m"
 
 #--------------------------------------------
 # set JAVA_HOME on Mac OSX

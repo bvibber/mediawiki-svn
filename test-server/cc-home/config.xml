@@ -11,21 +11,21 @@
       <antbootstrapper anthome="apache-ant-1.7.0"
                        buildfile="projects/${project.name}/build.xml" target="clean"/>
     </bootstrappers>
-    <modificationset quietperiod="60">
+    <modificationset quietperiod="300">
       <!-- touch any file in connectfour project to trigger a build -->
       <filesystem folder="projects/${project.name}/touchme"/>
       <svn RepositoryLocation="http://svn.wikimedia.org/svnroot/mediawiki/trunk/phase3"/>
     </modificationset>
-    <schedule interval="300">
+    <schedule interval="3600">
       <ant anthome="apache-ant-1.7.0" buildfile="projects/${project.name}/build.xml"/>
     </schedule>
     <log>
       <merge dir="projects/${project.name}/build/logs"/>
+      <delete every="1" unit="WEEK" />
+      <gzip every="1" unit="DAY" />
+      <deleteartifacts every="1" unit="day" />
     </log>
     <publishers>
-      <antpublisher anthome="apache-ant-1.7.0"
-                    buildfile="projects/${project.name}/build.xml"
-                    target="irc-publish"/>
       <artifactspublisher dir="projects/${project.name}/build/api"
                           dest="artifacts/${project.name}" subdirectory="api"/>
       <artifactspublisher dir="projects/${project.name}/build/coverage"
@@ -34,7 +34,7 @@
                         --source projects/${project.name}/source
                         --output projects/${project.name}/build/${project.name}"/>
       <!-- <artifactspublisher dir="projects/${project.name}/build/php-code-browser" dest="artifacts/${project.name}" subdirectory="php-code-browser"/> -->
-      <execute command="/usr/bin/phpuc graph logs/${project.name} artifacts/${project.name}"/>
+      <!-- <execute command="/usr/bin/phpuc graph logs/${project.name} artifacts/${project.name}"/> -->
       <!--
               Sends simple text emails after a project build. For nicer html emails,
               checkout the original CruiseControl documentation.
@@ -48,6 +48,9 @@
              skipusers="true" spamwhilebroken="true">
         <failure address="mah@everybody.org"/>
       </email>
+      <antpublisher anthome="apache-ant-1.7.0"
+                    buildfile="projects/${project.name}/build.xml"
+                    target="irc-publish"/>
     </publishers>
   </project>
 </cruisecontrol>

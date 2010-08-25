@@ -9,13 +9,11 @@
       method="text"
       encoding="UTF-8" />
 
-  <xsl:template match="/cruisecontrol/build[@error]">
-Something broke: <xsl:value-of select="string(@error)"/>
-    <xsl:call-template name="get-last-modified"/>
+  <xsl:template match="/cruisecontrol/build[@error]">Something broke.  See &lt;http://ci.tesla.usability.wikimedia.org/cruisecontrol/buildresults/mw&gt;.
+<xsl:call-template name="get-last-modified"/>
   </xsl:template>
 
-  <xsl:template name="get-last-modified"><xsl:text>
-Possible culprits: </xsl:text>
+  <xsl:template name="get-last-modified"><xsl:text>Possible culprits: </xsl:text>
     <xsl:for-each select="set:distinct(c:node-set(
                                        /cruisecontrol/modifications/modification/user |
                                        /cruisecontrol/modifications/modification/revision))">

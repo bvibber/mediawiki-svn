@@ -59,11 +59,12 @@
   <target name="test-static" depends="prepare">
     <parallel>
       <antcall target="lint" />
-      <antcall target="phpmd" />
-      <antcall target="checkstyle" />
+      <!-- <antcall target="checkstyle" /> -->
     </parallel>
+    <!-- Took this out of the parallel run b/c of memory requirements -->
+    <!-- <antcall target="phpmd" /> -->
     <!-- Do not run phpmd and pdepend parallel, there is a concurrency problem -->
-    <antcall target="pdepend" />
+    <!-- <antcall target="pdepend" /> -->
   </target>
 
   <!--
@@ -91,7 +92,6 @@
                  --templatebase ${builddir}/data/phpdoc
                  --output HTML:Phpuc:phpuc
                  --directory ${sourcepart}
-                 --ignore-tags @file
                  --customtags ingroup,defgroup,maintainers,note,addtogroup,showinitializer,protected
                  --ignore 'Messages*.php'"/>
     </exec>
@@ -124,7 +124,7 @@
   </target>
 
   <target name="phpunit" depends="prepare">
-    <exec executable="./phpunit" dir="${sourcedir}/maintenance/tests">
+    <exec executable="./phpunit" dir="${sourcedir}/maintenance/tests" failonerror="true">
       <arg line="--log-junit ${builddir}/logs/junit.xml --coverage-clover ${builddir}/logs/phpunit.coverage.xml --coverage-html ${builddir}/coverage" />
     </exec>
   </target>
@@ -154,7 +154,7 @@
   <target name="irc-publish" unless="${thisbuildsuccessful}" depends="userinfo-up">
     <!-- $logfile is the file -->
 
-    <xslt in="${logfile}" out="${apache.root}/irc-publish.txt"
+    <xslt in="${logdir}/${logfile}" out="${apache.root}/irc-publish.txt"
           style="${basedir}/irc-publisher.xsl">
       <param name="userinfo" expression="file://${builddir}/data/userinfo.xml"/>
     </xslt>

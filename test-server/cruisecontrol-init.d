@@ -16,6 +16,7 @@ CCDIR=/home/ci/cc
 CCPIDFILE=$CCDIR/cc.pid
 STARTCC=$CCDIR/cruisecontrol.sh
 CCUSER=ci
+HOME=/home/ci
 CCNAME=CruiseControl
 
 export CCDIR
@@ -44,7 +45,7 @@ start)
         fi
 
         cd $CCDIR
-        if sudo -u $CCUSER $STARTCC >/dev/null 2>/dev/null; then
+        if sudo -u $CCUSER env HOME=$HOME $STARTCC >/dev/null 2>/dev/null; then
             log_action_end_msg $?
         else
             log_action_end_msg $?
@@ -81,7 +82,7 @@ stop)
 
         ;;
 restart)
-        $0 stop
+        $0 stop || true
         $0 start
         ;;
 *)
