@@ -97,13 +97,14 @@ class ApiArticleAssessment extends ApiBase {
 				'aap_page_id' => $pageId,
 				'aap_revision' => $revisionId,
 				'aap_total' => $insert,
-				'aap_count' => 'aap_count + 1',
+				'aap_count' => 1,
 				'aap_dimension' => $dimension,
 			),
 			__METHOD__,
 			array(),
 			array(
 				'aap_total' => 'aap_total + ' . $updateAddition,
+				'aap_count' => 'aap_count + 1',
 			)
 		);
 	}
