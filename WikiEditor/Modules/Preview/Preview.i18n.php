@@ -700,6 +700,7 @@ $messages['mt'] = array(
  * @author Ricardo gs
  */
 $messages['nah'] = array(
+	'wikieditor-preview-changes-tab' => 'Tlapatlaliztli',
 	'wikieditor-preview-loading' => 'Motlamāmaltia....',
 );
 

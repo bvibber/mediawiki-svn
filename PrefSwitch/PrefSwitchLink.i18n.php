@@ -824,11 +824,13 @@ $messages['sah'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Pasanbhathiya2
  * @author බිඟුවා
  */
 $messages['si'] = array(
 	'prefswitch-link-anon' => 'බීටා අනුවාදයේ ලක්ෂණ',
 	'prefswitch-link-on' => 'මා අපසු ගෙනයන්න',
+	'tooltip-pt-prefswitch-link-on' => 'නව අංග බල රහිත කරන්න.',
 	'prefswitch-link-off' => 'බීටා අනුවාදයේ ලක්ෂණ',
 	'tooltip-pt-prefswitch-link-off' => 'නවාංගයන් අත්හදා බලන්න',
 );
