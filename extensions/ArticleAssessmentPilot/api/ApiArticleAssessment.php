@@ -13,22 +13,22 @@ class ApiArticleAssessment extends ApiBase {
 	public function execute() {
 		global $wgUser;
 		$params = $this->extractRequestParams();
-		
+
 		$userName = $wgUser->getName();
-		
+
 		//TODO:Refactor out...?
-		
+
 		$this->addTables( 'article_assessment' );
-		
+
 		$this->addFields( array( 'aa_m1', 'aa_m2', 'aa_m3', 'aa_m3' ) );
-		
+
 		//$this->addWhereFld( 'aa_page_id', $params['pageid'] );
 
 		$this->addWhereFld( 'aa_revision', $params['revid'] );
 		$this->addWhereFld( 'aa_user_text', $userName );
-		
+
 		$res = $this->select( __METHOD__ );
-		
+
 		if ( $res ) {
 			$lastM1 = $res[0]->aa_m1;
 			$lastM2 = $res[0]->aa_m2;
@@ -45,12 +45,12 @@ class ApiArticleAssessment extends ApiBase {
 		$m2 = isset( $params['2'] ) ? $params['2'] : 0;
 		$m3 = isset( $params['3'] ) ? $params['3'] : 0;
 		$m4 = isset( $params['4'] ) ? $params['4'] : 0;
-		
+
 		//Do for each metric/dimension
-		
+
 		$pageId = $params['pageid'];
 		$revisionId = $params['revisionid'];
-		
+
 		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 1, $m1, ( $m1 - $lastM1 ) );
 		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 2, $m1, ( $m2 - $lastM2 ) );
 		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 3, $m1, ( $m3 - $lastM3 ) );
@@ -81,20 +81,20 @@ class ApiArticleAssessment extends ApiBase {
 				'aa_m4' => $m4,
 			)
 		);
-		
+
 		$r = array();
 		$r['result'] = 'Success';
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
-	
-	private function insertOrUpdatePages( $pageId, $revisionId, $dimension, $insertAddition, $updateAddition ) {
+
+	private function insertOrUpdatePages( $pageId, $revisionId, $dimension, $insert, $updateAddition ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->insertOrUpdate( 'article_assessment_pages',
 			array(
 				'aap_page_id' => $pageId,
 				'aap_revision' => $revisionId,
-				'aap_total', => 'aap_total + ' . $insertAddition,
+				'aap_total' => $insert,
 				'aap_count' => 'aap_count + 1',
 				'aap_dimension' => $dimension,
 			),
@@ -159,12 +159,12 @@ class ApiArticleAssessment extends ApiBase {
 			'Submit article assessments'
 		);
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 		) );
 	}
-	
+
 	protected function getExamples() {
 		return array(
 			'api.php?action=articleassessment'
