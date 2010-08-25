@@ -164,7 +164,6 @@ class ResourceLoader {
 	 *
 	 * $options format:
 	 * 	array(
-	 * 		'user' => [boolean: true for logged in, false for anon, optional, state of current user by default],
 	 * 		'lang' => [string: language code, optional, code of default language by default],
 	 * 		'skin' => [string: name of skin, optional, name of default skin by default],
 	 * 		'dir' => [string: 'ltr' or 'rtl', optional, direction of lang by default],
@@ -176,14 +175,12 @@ class ResourceLoader {
 		// Fallback on system settings
 		// FIXME: Unnecessary unstubbing going on here, work around that
 		$parameters = array(
-			'user' => $request->getVal( 'user', $wgUser->isLoggedIn() ),
 			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
 			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
 			'debug' => $request->getVal( 'debug' ),
 		);
 		// Mediawiki's WebRequest::getBool is a bit on the annoying side - we need to allow 'true' and 'false' values
 		// to be converted to boolean true and false
-		$parameters['user'] = $parameters['user'] === 'true' || $parameters['user'];
 		$parameters['debug'] = $parameters['debug'] === 'true' || $parameters['debug'];
 		// Get the direction from the requested language
 		if ( !isset( $parameters['dir'] ) ) {

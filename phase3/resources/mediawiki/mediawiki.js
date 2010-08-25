@@ -403,7 +403,6 @@ window.mediaWiki = new ( function( $ ) {
 				batch.sort();
 				// Build a list of request parameters
 				var base = {
-					'user': mediaWiki.config.get( 'wgUserName' ) !== null,
 					'skin': mediaWiki.config.get( 'skin' ),
 					'lang': mediaWiki.config.get( 'wgUserLanguage' ),
 					'debug': mediaWiki.config.get( 'debug' ),
