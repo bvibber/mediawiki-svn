@@ -51,7 +51,7 @@ class ApiArticleAssessment extends ApiBase {
 		//Do for each metric/dimension
 
 		$pageId = $params['pageid'];
-		$revisionId = $params['revisionid'];
+		$revisionId = $params['revid'];
 
 		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 1, $m1, ( $m1 - $lastM1 ) );
 		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 2, $m1, ( $m2 - $lastM2 ) );
