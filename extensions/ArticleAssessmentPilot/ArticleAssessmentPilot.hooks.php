@@ -18,12 +18,12 @@ class ArticleAssessmentPilotHooks {
 		);
 		
 		return true;
-	} //schema
+	}
 
 	/**
 	 * Make sure the table exists for parser tests
 	 * @param $tables
-	 * @return unknown_type
+	 * @return bool
 	 */
 	public static function parserTestTables( &$tables ) {
 		$tables[] = 'article_assessment';

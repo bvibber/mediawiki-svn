@@ -1,6 +1,6 @@
 <?php
 /**
- * Extend the API for ArticleAssessment
+ * 
  *
  * @file
  * @ingroup API
@@ -10,10 +10,6 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		parent::__construct( $query, $moduleName, 'aa' );
 	}
 
-	/**
-	 * runs when the API is called with "articleasessment"
-	 * @see includes/api/ApiBase#execute()
-	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
 		
