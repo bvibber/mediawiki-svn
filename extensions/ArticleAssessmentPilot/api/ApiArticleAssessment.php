@@ -16,24 +16,26 @@ class ApiArticleAssessment extends ApiBase {
 
 		$userName = $wgUser->getName();
 
+		$dbr = wfGetDB( DB_SLAVE );
+
 		//TODO:Refactor out...?
+		$res = $dbr->select(
+			'article_assessment',
+			array( 'aa_m1', 'aa_m2', 'aa_m3', 'aa_m3' ),
+			array( 'aa_revision' => $params['revid'],
+				'aa_user_text' => $userName,
+				/* 'aa_page_id' => $params['pageid'],*/
+				),
+			__METHOD__
+		);
 
-		$this->addTables( 'article_assessment' );
-
-		$this->addFields( array( 'aa_m1', 'aa_m2', 'aa_m3', 'aa_m3' ) );
-
-		//$this->addWhereFld( 'aa_page_id', $params['pageid'] );
-
-		$this->addWhereFld( 'aa_revision', $params['revid'] );
-		$this->addWhereFld( 'aa_user_text', $userName );
-
-		$res = $this->select( __METHOD__ );
+		$res = $res->fetchRow();
 
 		if ( $res ) {
-			$lastM1 = $res[0]->aa_m1;
-			$lastM2 = $res[0]->aa_m2;
-			$lastM3 = $res[0]->aa_m3;
-			$lastM4 = $res[0]->aa_m4;
+			$lastM1 = $res->aa_m1;
+			$lastM2 = $res->aa_m2;
+			$lastM3 = $res->aa_m3;
+			$lastM4 = $res->aa_m4;
 		} else {
 			$lastM1 = 0;
 			$lastM2 = 0;
@@ -41,10 +43,10 @@ class ApiArticleAssessment extends ApiBase {
 			$lastM4 = 0;
 		}
 
-		$m1 = isset( $params['1'] ) ? $params['1'] : 0;
-		$m2 = isset( $params['2'] ) ? $params['2'] : 0;
-		$m3 = isset( $params['3'] ) ? $params['3'] : 0;
-		$m4 = isset( $params['4'] ) ? $params['4'] : 0;
+		$m1 = $params['1'];
+		$m2 = $params['2'];
+		$m3 = $params['3'];
+		$m4 = $params['4'];
 
 		//Do for each metric/dimension
 
