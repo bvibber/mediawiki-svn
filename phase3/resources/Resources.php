@@ -3,7 +3,12 @@
 ResourceLoader::register( array(
 
 	/* Special resources who have their own classes */
+	
 	'sitejs' => new ResourceLoaderSiteJSModule,
+	
+	/* Skins */
+	
+	'vector' => new ResourceLoaderModule( array( 'styles' => 'skins/vector/main-ltr.css' ) ),
 	
 	/* jQuery */
 	
