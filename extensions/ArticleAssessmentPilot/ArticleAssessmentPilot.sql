@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   -- Foreign key to revision.rev_id
   aa_revision integer unsigned NOT NULL,
   -- MW Timestamp
-  aa_timestamp char(14) NOT NULL default '',
+  aa_timestamp binary(14) NOT NULL default '',
   -- Vote info
   aa_m1 integer unsigned,
   aa_m2 integer unsigned,
