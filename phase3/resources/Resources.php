@@ -7,7 +7,7 @@ ResourceLoader::register( array(
 	
 	/* jQuery */
 	
-	'jquery' => array( 'scripts' => 'resources/jquery/jquery.js', 'raw' => true ),
+	'jquery' => array( 'scripts' => 'resources/jquery/jquery.js' ),
 	
 	/* jQuery Plugins */
 	
@@ -250,7 +250,6 @@ ResourceLoader::register( array(
 	'mediawiki' => array(
 		'scripts' => 'resources/mediawiki/mediawiki.js',
 		'debugScripts' => 'resources/mediawiki/mediawiki.log.js',
-		'raw' => true,
 	),
 	
 	/* MediaWiki Legacy */

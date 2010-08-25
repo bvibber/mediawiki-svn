@@ -29,7 +29,6 @@ class ResourceLoaderModule {
 	private $languageScripts = array();
 	private $skinStyles = array();
 	private $loaders = array();
-	private $raw = false;
 	private $parameters = array();
 	
 	/* Public methods */
@@ -70,9 +69,6 @@ class ResourceLoaderModule {
 					break;
 				case 'loaders':
 					$this->loaders = (array)$value;
-					break;
-				case 'raw':
-					$this->raw = (bool)$value;
 					break;
 			}
 		}
@@ -175,20 +171,6 @@ class ResourceLoaderModule {
 	}
 	
 	/**
-	 * Set this module's raw flag. Raw modules are loaded before the
-	 * mediaWiki object and are not wrapped in any loading code.
-	 * They can only have scripts and debug scripts, nothing else.
-	 * Raw module can still be used as dependencies for other modules.
-	 *
-	 * Modules are non-raw by default.
-	 *
-	 * @param $raw bool If true, mark this module as raw, if false, mark it non-raw
-	 */
-	public function setRaw( $raw = true ) {
-		$this->raw = (bool)$raw;
-	}
-	
-	/**
 	 * Set parameters used for obtaining this module. Ignored in this class
 	 * but used in subclasses.
 	 *
@@ -283,15 +265,6 @@ class ResourceLoaderModule {
 	}
 	
 	/**
-	 * Check whether this module is in raw mode. See setRaw() for details
-	 * on what raw mode is.
-	 * @return bool
-	 */
-	public function isRaw() {
-		return $this->raw;
-	}
-	
-	/**
 	 * Get a parameter previously set through setParameters()
 	 * @param $param string Parameter name
 	 * @return mixed Parameter value or null if not set
@@ -325,5 +298,4 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	public function getLanguageScript( $lang ) { return ''; }
 	public function getSkinStyle( $skin ) { return ''; }
 	public function getLoaderScript() { return false; }
-	public function isRaw() { return true; }
 }
