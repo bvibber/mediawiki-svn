@@ -51,15 +51,15 @@ class ApiArticleAssessment extends ApiBase {
 		$pageId = $params['pageid'];
 		$revisionId = $params['revisionid'];
 		
-		$this->insertOnDupeUpdatePages( $pageId, $revisionId, $userName, 1, $m1, ( $m1 - $lastM1 ) );
-		$this->insertOnDupeUpdatePages( $pageId, $revisionId, $userName, 2, $m1, ( $m2 - $lastM2 ) );
-		$this->insertOnDupeUpdatePages( $pageId, $revisionId, $userName, 3, $m1, ( $m3 - $lastM3 ) );
-		$this->insertOnDupeUpdatePages( $pageId, $revisionId, $userName, 4, $m1, ( $m4 - $lastM4 ) );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 1, $m1, ( $m1 - $lastM1 ) );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 2, $m1, ( $m2 - $lastM2 ) );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 3, $m1, ( $m3 - $lastM3 ) );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 4, $m1, ( $m4 - $lastM4 ) );
 
 		//Insert (or update) a users rating for a revision 
 		$dbw = wfGetDB( DB_MASTER );
 
-		$dbw->insertOnDupeUpdate( 'article_assessment',
+		$dbw->insertOrUpdate( 'article_assessment',
 			array(
 				'aa_page_id' => $pageId,
 				'aa_user_text' => $userName,
@@ -87,10 +87,10 @@ class ApiArticleAssessment extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 	
-	private function insertOnDupeUpdatePages( $pageId, $revisionId, $dimension, $insertAddition, $updateAddition ) {
+	private function insertOrUpdatePages( $pageId, $revisionId, $dimension, $insertAddition, $updateAddition ) {
 		$dbw = wfGetDB( DB_MASTER );
 
-		$dbw->insertOnDupeUpdate( 'article_assessment_pages',
+		$dbw->insertOrUpdate( 'article_assessment_pages',
 			array(
 				'aap_page_id' => $pageId,
 				'aap_revision' => $revisionId,
