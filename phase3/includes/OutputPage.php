@@ -2218,7 +2218,7 @@ class OutputPage {
 		$ret .= Html::element( 'title', null, $this->getHTMLTitle() ) . "\n";
 
 		$ret .= implode( "\n", array(
-			$this->getHeadLinks(),
+			$this->getHeadLinks( $sk ),
 			$this->buildCssLinks(),
 			$this->getHeadItems(),
 		) );
@@ -2408,7 +2408,7 @@ class OutputPage {
 	 * @return string HTML tag links to be put in the header.
 	 */
 	public function getHeadLinks() {
-		global $wgFeed;
+		global $wgFeed, $wgRequest;
 
 		// Ideally this should happen earlier, somewhere. :P
 		$this->addDefaultMeta();
@@ -2478,6 +2478,17 @@ class OutputPage {
 			}
 		}
 
+		// Support individual script requests in debug mode
+		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
+			foreach ( $this->getModuleStyles() as $name ) {
+				$tags .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
+			}
+		} else {
+			if ( count( $this->getModuleStyles() ) ) {
+				$tags .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
+			}
+		}
+		
 		return implode( "\n", $tags );
 	}
 
