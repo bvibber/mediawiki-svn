@@ -17,7 +17,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		
 		$this->addTables( 'article_assessment_pages' );
 		
-		$this->addFields( array( 'aa_page_id', 'aa_revision', 'aa_total', 'aa_count', 'aa_dimension' ) );
+		$this->addFields( array( 'aa_page_id', 'aa_revision', 'aa_total', 'aa_count', 'aa_rating' ) );
 		
 		if ( isset( $params['pageid'] ) ) {
 			$this->addWhereFld( 'aa_page_id', $params['pageid'] );
@@ -39,7 +39,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 				);
 			}
 			
-			$assessments[$row->aa_revision]['dimensions']['d' . $row->aa_dimension] = array( 'dimension' => $row->aa_dimension, 'total' => $row->aa_total, 'count' => $row->aa_count );
+			$assessments[$row->aa_revision]['ratings']['r' . $row->aa_rating] = array( 'rating' => $row->aa_rating, 'total' => $row->aa_total, 'count' => $row->aa_count );
 		}
 
 		foreach( $assessments as $ass ) {

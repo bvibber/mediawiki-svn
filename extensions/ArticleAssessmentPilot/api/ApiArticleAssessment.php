@@ -1,10 +1,4 @@
 <?php
-/**
- *
- *
- * @file
- * @ingroup API
- */
 class ApiArticleAssessment extends ApiBase {
 	public function __construct( $query, $moduleName ) {
 		parent::__construct( $query, $moduleName, 'aa' );
@@ -21,7 +15,7 @@ class ApiArticleAssessment extends ApiBase {
 		//TODO:Refactor out...?
 		$res = $dbr->select(
 			'article_assessment',
-			array( 'aa_m1', 'aa_m2', 'aa_m3', 'aa_m3' ),
+			array( 'aa_r1', 'aa_r2', 'aa_r3', 'aa_r4' ),
 			array( 'aa_revision' => $params['revid'],
 				'aa_user_text' => $userName,
 				/* 'aa_page_id' => $params['pageid'],*/
@@ -31,11 +25,13 @@ class ApiArticleAssessment extends ApiBase {
 
 		$res = $res->fetchRow();
 
+		$userHasRated = false;
 		if ( $res ) {
-			$lastM1 = $res->aa_m1;
-			$lastM2 = $res->aa_m2;
-			$lastM3 = $res->aa_m3;
-			$lastM4 = $res->aa_m4;
+			$lastM1 = $res->aa_r1;
+			$lastM2 = $res->aa_r2;
+			$lastM3 = $res->aa_r3;
+			$lastM4 = $res->aa_r4;
+			$userHasRated = true;
 		} else {
 			$lastM1 = 0;
 			$lastM2 = 0;
@@ -43,20 +39,20 @@ class ApiArticleAssessment extends ApiBase {
 			$lastM4 = 0;
 		}
 
-		$m1 = $params['1'];
-		$m2 = $params['2'];
-		$m3 = $params['3'];
-		$m4 = $params['4'];
+		$r1 = $params['r1'];
+		$r2 = $params['r2'];
+		$r3 = $params['r3'];
+		$r4 = $params['r4'];
 
 		//Do for each metric/dimension
 
 		$pageId = $params['pageid'];
 		$revisionId = $params['revid'];
 
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 1, $m1, ( $m1 - $lastM1 ) );
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 2, $m1, ( $m2 - $lastM2 ) );
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 3, $m1, ( $m3 - $lastM3 ) );
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 4, $m1, ( $m4 - $lastM4 ) );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 1, $r1, ( $r1 - $lastM1 ), $userHasRated );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 2, $r1, ( $r2 - $lastM2 ), $userHasRated );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 3, $r1, ( $r3 - $lastM3 ), $userHasRated );
+		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 4, $r1, ( $r4 - $lastM4 ), $userHasRated );
 
 		//Insert (or update) a users rating for a revision 
 		$dbw = wfGetDB( DB_MASTER );
@@ -68,19 +64,19 @@ class ApiArticleAssessment extends ApiBase {
 				'aa_revision' => $revisionId,
 				'aa_user_text' => $userName,
 				'aa_timestamp' => wfTimestampNow(),
-				'aa_m1' => $m1,
-				'aa_m2' => $m2,
-				'aa_m3' => $m3,
-				'aa_m4' => $m4,
+				'aa_r1' => $r1,
+				'aa_r2' => $r2,
+				'aa_r3' => $r3,
+				'aa_r4' => $r4,
 			),
 			__METHOD__,
 			array(),
 			array(
 				'aa_timestamp' => wfTimestampNow(),
-				'aa_m1' => $m1,
-				'aa_m2' => $m2,
-				'aa_m3' => $m3,
-				'aa_m4' => $m4,
+				'aa_r1' => $r1,
+				'aa_r2' => $r2,
+				'aa_r3' => $r3,
+				'aa_r4' => $r4,
 			)
 		);
 
@@ -88,8 +84,17 @@ class ApiArticleAssessment extends ApiBase {
 		$r['result'] = 'Success';
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
-
-	private function insertOrUpdatePages( $pageId, $revisionId, $dimension, $insert, $updateAddition ) {
+	/*
+	 *
+	 *
+	 * @param $pageId Integer:
+	 * @param $revisionId Integer:
+	 * @param $dimension Integer:
+	 * @param $insert Integer: Users rating
+	 * @param $updateAddition Integer: Difference between users last rating (if applicable)
+	 * @param $newRating Boolean: Whether this is a new rating (for update, whether this increases the count)
+	 */
+	private function insertOrUpdatePages( $pageId, $revisionId, $rating, $insert, $updateAddition, $newRating ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->insertOrUpdate( 'article_assessment_pages',
@@ -98,13 +103,13 @@ class ApiArticleAssessment extends ApiBase {
 				'aap_revision' => $revisionId,
 				'aap_total' => $insert,
 				'aap_count' => 1,
-				'aap_dimension' => $dimension,
+				'aap_rating' => $rating,
 			),
 			__METHOD__,
 			array(),
 			array(
 				'aap_total' => 'aap_total + ' . $updateAddition,
-				'aap_count' => 'aap_count + 1',
+				'aap_count' => 'aap_count + ' . ( $newRating ? 1 : 0 ),
 			)
 		);
 	}
@@ -119,25 +124,25 @@ class ApiArticleAssessment extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 			),
-			'1' => array(
+			'r1' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
 				ApiBase::PARAM_MAX => 5,
 			),
-			'2' => array(
+			'r2' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
 				ApiBase::PARAM_MAX => 5,
 			),
-			'3' => array(
+			'r3' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
 				ApiBase::PARAM_MAX => 5,
 			),
-			'4' => array(
+			'r4' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_DFLT => 0,
 				ApiBase::PARAM_MIN => 0,
@@ -150,10 +155,10 @@ class ApiArticleAssessment extends ApiBase {
 		return array(
 			'pageid' => '',
 			'revid' => '',
-			'1' => 'Metric 1',
-			'2' => 'Metric 2',
-			'3' => 'Metric 3',
-			'4' => 'Metric 4',
+			'r1' => 'Rating 1',
+			'r2' => 'Rating 2',
+			'r3' => 'Rating 3',
+			'r4' => 'Rating 4',
 		);
 	}
 
