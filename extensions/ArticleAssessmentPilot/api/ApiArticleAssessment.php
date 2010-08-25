@@ -66,7 +66,7 @@ class ApiArticleAssessment extends ApiBase {
 				'aa_page_id' => $pageId,
 				'aa_user_text' => $userName,
 				'aa_revision' => $revisionId,
-				'aa_user' => $userName,
+				'aa_user_text' => $userName,
 				'aa_timestamp' => wfTimestampNow(),
 				'aa_m1' => $m1,
 				'aa_m2' => $m2,
