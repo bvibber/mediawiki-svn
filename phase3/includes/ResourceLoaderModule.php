@@ -47,28 +47,28 @@ class ResourceLoaderModule {
 	public function __construct( $options = array() ) {
 		foreach ( $options as $option => $value ) {
 			switch ( $option ) {
-				case 'script':
+				case 'scripts':
 					$this->scripts = (array)$value;
 					break;
-				case 'style':
+				case 'styles':
 					$this->styles = $value;
 					break;
 				case 'messages':
 					$this->messages = $value;
 					break;
-				case 'needs':
+				case 'dependencies':
 					$this->dependencies = $value;
 					break;
-				case 'debug':
+				case 'debugScripts':
 					$this->debugScripts = (array)$value;
 					break;
-				case 'locales':
+				case 'languageScripts':
 					$this->languageScripts = (array)$value;
 					break;
-				case 'themes':
+				case 'skinStyles':
 					$this->skinStyles = (array)$value;
 					break;
-				case 'loader':
+				case 'loaders':
 					$this->loaders = (array)$value;
 					break;
 				case 'raw':
