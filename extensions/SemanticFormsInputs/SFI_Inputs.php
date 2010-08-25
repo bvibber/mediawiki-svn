@@ -28,7 +28,7 @@ function regexpSetup() {
 
 		wfLoadExtensionMessages( 'SemanticFormsInputs' );
 
-		$jstext = <<<END
+		$jstext = <<<JAVASCRIPT
 	function validate_input_with_regexp(input_number, re, inverse, message, multiple){
 
 		if (multiple) {
@@ -59,7 +59,7 @@ function regexpSetup() {
 			}
 		}
 	}
-END;
+JAVASCRIPT;
 
 		$wgOut->addInlineScript( $jstext );
 	}
@@ -222,7 +222,7 @@ function datePickerSetup () {
 			"}\n" .
 			"addOnloadHook(datePickerSetLocale);";
 
-		$jstext = <<<END
+		$jstext = <<<JAVASCRIPT
 	function toggle_datepicker(toggle_button) {
 
 		var id = toggle_button.id.replace("_button","");
@@ -319,8 +319,8 @@ function datePickerSetup () {
 		var id = toggle_button.id.replace("_resetbutton","");
 		if (sfiElements[id]) sfiElements[id].clear();
 			document.getElementById(id).value="";
-		}
-END;
+	}
+JAVASCRIPT;
 
 		$jstext .= $locString;
 
@@ -625,14 +625,14 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 		if ( count( $parts ) == 3 ) {
 			$defaultDateString = '"' . $parts[1] . '/' . $parts[0] . '/' . $parts[2] . '"';
 
-			$setDefaultDateString = <<<END
+			$setDefaultDateString = <<<JAVASCRIPT
 				document.getElementById("input_{$sfgFieldNum}").value=
 				YAHOO.util.Date.format(
 					new Date(Date.parse($defaultDateString)),
 					{format:"$dateFormatString"},
 					'wiki'
 				);
-END;
+JAVASCRIPT;
 
 		}
 	}
@@ -715,7 +715,7 @@ END;
 	} elseif ( $is_disabled ) {
 		$jstext = '';
 	} else {
-		$jstext = <<<END
+		$jstext = <<<JAVASCRIPT
 			function setup_input_{$sfgFieldNum}() {
 
 			sfiElements['settings_$sfgFieldNum'] = new Object();
@@ -736,7 +736,7 @@ END;
 		}
 
 		addOnloadHook(setup_input_{$sfgFieldNum});
-END;
+JAVASCRIPT;
 	}
 
 	return array( $htmltext, $jstext );
