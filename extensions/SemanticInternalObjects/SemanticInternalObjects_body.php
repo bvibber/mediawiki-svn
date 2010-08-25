@@ -284,6 +284,32 @@ class SIOHandler {
 		self::$mInternalObjects[] = $internalObject;
 	}
 
+	public static function doSetInternalRecurringEvent( &$parser ) {
+		$params = func_get_args();
+		array_shift( $params ); // We already know the $parser ...
+
+		// first param should be a standalone property name
+		$objToPagePropName = array_shift( $params );
+
+		$results = SMWParserExtensions::getDatesForRecurringEvent( $params );
+		if ( $results == null ) {
+			return null;
+		}
+
+		list( $property, $all_date_strings, $unused_params ) = $results;
+
+		// Mimic a call to #set_internal for each date.
+		foreach ( $all_date_strings as $date_string ) {
+			$first_params = array(
+				$parser,
+				$objToPagePropName,
+				"$property=$date_string"
+			);
+			$cur_params = array_merge( $first_params, $unused_params );
+			call_user_func_array( 'SIOHandler::doSetInternal', $cur_params );
+		}
+	}
+
 	public static function updateData( $subject ) {
 		$sioSQLStore = new SIOSQLStore();
 		// Find all "pages" in the SMW IDs table that are internal

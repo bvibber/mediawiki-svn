@@ -1,6 +1,6 @@
 <?php
 /**
- * Initialization file for SemanticInternalObjects.
+ * Initialization file for Semantic Internal Objects.
  *
  * @file
  * @ingroup SemanticInternalObjects
@@ -35,6 +35,7 @@ $wgAutoloadClasses['SIOSQLStore'] = $siogIP . '/SemanticInternalObjects_body.php
 
 function siofRegisterParserFunctions( &$parser ) {
 	$parser->setFunctionHook( 'set_internal', array( 'SIOHandler', 'doSetInternal' ) );
+	$parser->setFunctionHook( 'set_internal_recurring_event', array( 'SIOHandler', 'doSetInternalRecurringEvent' ) );
 	return true; // always return true, in order not to stop MW's hook processing!
 }
 
@@ -42,6 +43,7 @@ function siofLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
 	switch ( $langCode ) {
 	default:
 		$magicWords['set_internal'] = array ( 0, 'set_internal' );
+		$magicWords['set_internal_recurring_event'] = array ( 0, 'set_internal_recurring_event' );
 	}
 	return true;
 }
