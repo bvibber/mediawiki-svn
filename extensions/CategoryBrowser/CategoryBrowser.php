@@ -7,7 +7,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * CategoryBrowser is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -20,20 +20,20 @@
  * ***** END LICENSE BLOCK *****
  *
  * CategoryBrowser is an AJAX-enabled category filter and browser for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named CategoryBrowser into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
- * 
+ *
  * @version 0.2.0
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is a part of MediaWiki extension.\n" );
 }
 
@@ -74,9 +74,9 @@ class CB_Setup {
 		global $wgSpecialPageGroups;
 		global $wgAjaxExportList;
 
-		self::$ExtDir = str_replace( "\\", "/", dirname(__FILE__) );
+		self::$ExtDir = str_replace( "\\", "/", dirname( __FILE__ ) );
 		$top_dir = array_pop( explode( '/', self::$ExtDir ) );
-		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );  
+		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );
 		$wgExtensionMessagesFiles['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowser_i18n.php';
 		// do not forget to autoload all the required classes (for AJAX to work correctly)
 		$wgAutoloadClasses['CB_XML'] =
@@ -107,7 +107,7 @@ class CB_Setup {
 	static function initUser() {
 		global $wgUser, $wgRequest, $wgSkin;
 		// TODO: add more encoding mappings
-		$collation_CS_CI = array( 'utf8_bin'=>'utf8_general_ci' );
+		$collation_CS_CI = array( 'utf8_bin' => 'utf8_general_ci' );
 		self::$user = is_object( $wgUser ) ? $wgUser : new User();
 		self::$skin = is_object( $wgUser ) ? self::$user->getSkin() : $wgSkin;
 		self::$response = $wgRequest->response();
@@ -166,7 +166,7 @@ class CB_Setup {
 		// todo: cookie is not set / read in JS anymore, don't modify $wgCookieHttpOnly
 		$wgCookieHttpOnly_save = $wgCookieHttpOnly;
 		$wgCookieHttpOnly = false;
-		if ( !is_string( self::$cookie_prefix) || !is_object( self::$response ) ) {
+		if ( !is_string( self::$cookie_prefix ) || !is_object( self::$response ) ) {
 			throw new MWException( 'You have to call CB_Setup::initUser before to use ' . __METHOD__ );
 		}
 		self::$response->setcookie( self::$cookie_prefix . $cookievar, $val, $time );

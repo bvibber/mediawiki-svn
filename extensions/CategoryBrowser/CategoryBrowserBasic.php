@@ -7,7 +7,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * CategoryBrowser is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -20,20 +20,20 @@
  * ***** END LICENSE BLOCK *****
  *
  * CategoryBrowser is an AJAX-enabled category filter and browser for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named CategoryBrowser into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
- * 
+ *
  * @version 0.2.0
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is a part of MediaWiki extension.\n" );
 }
 
@@ -54,7 +54,7 @@ class CB_XML {
 			if ( array_key_exists( '__tag', $tag ) ) {
 				# list inside of tag
 				$tag_open .= "<" . $tag[ '__tag' ];
-				foreach( $tag as $attr_key=>&$attr_val ) {
+				foreach ( $tag as $attr_key => &$attr_val ) {
 					if ( is_int( $attr_key ) ) {
 						if ( $tag_val === null )
 							$tag_val = "";
@@ -90,7 +90,7 @@ class CB_XML {
 			} else {
 				# tagless list
 				$tag_val = "";
-				foreach( $tag as $attr_key=>&$attr_val ) {
+				foreach ( $tag as $attr_key => &$attr_val ) {
 					if ( is_int( $attr_key ) ) {
 						if ( is_array( $attr_val ) ) {
 							# recursive tags
@@ -101,8 +101,8 @@ class CB_XML {
 						}
 					} else {
 						ob_start();
-						var_dump($tag);
-						$tagdump=ob_get_contents();
+						var_dump( $tag );
+						$tagdump = ob_get_contents();
 						ob_end_clean();
 						$tag_val = "invalid argument: tagless list cannot have tag attribute values in key=$attr_key, $tagdump";
 					}
@@ -123,13 +123,13 @@ class CB_XML {
 		if ( count( $row ) > 0 ) {
 			foreach ( $row as &$cell ) {
 				if ( !is_array( $cell ) ) {
-					$cell = array( 0=>$cell );
+					$cell = array( 0 => $cell );
 				}
 				$cell[ '__tag' ] = $celltag;
 				$cell[ '__end' ] = "\n";
 				if ( is_array( $attribute_maps ) ) {
 					# converts ("count"=>3) to ("colspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key=>$val ) {
+					foreach ( $attribute_maps as $key => $val ) {
 						if ( array_key_exists( $key, $cell ) ) {
 							$cell[ $val ] = $cell[ $key ];
 							unset( $cell[ $key ] );
@@ -137,7 +137,7 @@ class CB_XML {
 					}
 				}
 			}
-			$result = array( '__tag'=>'tr', 0=>$row, '__end'=>"\n" );
+			$result = array( '__tag' => 'tr', 0 => $row, '__end' => "\n" );
 			if ( is_array( $rowattrs ) ) {
 				$result = array_merge( $rowattrs, $result );
 			} elseif ( $rowattrs !== "" )  {
@@ -158,13 +158,13 @@ class CB_XML {
 			$row = 0;
 			foreach ( $column as &$cell ) {
 				if ( !is_array( $cell ) ) {
-					$cell = array( 0=>$cell );
+					$cell = array( 0 => $cell );
 				}
 				$cell[ '__tag' ] = $celltag;
 				$cell[ '__end' ] = "\n";
 				if ( is_array( $attribute_maps ) ) {
 					# converts ("count"=>3) to ("rowspan"=>3) in table headers - don't use frequently
-					foreach ( $attribute_maps as $key=>$val ) {
+					foreach ( $attribute_maps as $key => $val ) {
 						if ( array_key_exists( $key, $cell ) ) {
 							$cell[ $val ] = $cell[ $key ];
 							unset( $cell[ $key ] );
@@ -177,7 +177,7 @@ class CB_XML {
 					$cell[ 0 ] = __METHOD__ . ':invalid rowattrs supplied';
 				}
 				if ( !array_key_exists( $row, $table ) ) {
-					$table[ $row ] = array( '__tag'=>'tr', '__end'=>"\n" );
+					$table[ $row ] = array( '__tag' => 'tr', '__end' => "\n" );
 				}
 				$table[ $row ][] = $cell;
 				if ( array_key_exists( 'rowspan', $cell ) ) {
@@ -186,7 +186,7 @@ class CB_XML {
 					$row++;
 				}
 			}
-			$result = array( '__tag'=>'tr', 0=>$column, '__end'=>"\n" );
+			$result = array( '__tag' => 'tr', 0 => $column, '__end' => "\n" );
 		}
 	}
 
@@ -198,11 +198,11 @@ class CB_XML {
 	// if you want to use the resulting row with toText(), don't forget to apply attrs=array('__tag'=>'td')
 	static function applyAttrsToRow( &$row, $attrs ) {
 		if ( is_array( $attrs ) && count( $attrs > 0 ) ) {
-			foreach( $row as &$cell ) {
+			foreach ( $row as &$cell ) {
 				if ( !is_array( $cell ) ) {
 					$cell = array_merge( $attrs, array( $cell ) );
-				} else { 
-					foreach( $attrs as $attr_key=>$attr_val ) {
+				} else {
+					foreach ( $attrs as $attr_key => $attr_val ) {
 						if ( !array_key_exists( $attr_key, $cell ) ) {
 							$cell[ $attr_key ] = $attr_val;
 						}
@@ -286,11 +286,11 @@ class CB_LocalExpr {
  */
 class CB_SqlCond {
 
-	static $decoded_fields = array( 'p'=>'cat_pages', 's'=>'cat_subcats', 'f'=>'cat_files' );
-	static $decoded_cmps = array( 'ge'=>'>=', 'le'=>'<=', 'eq'=>'=' );
+	static $decoded_fields = array( 'p' => 'cat_pages', 's' => 'cat_subcats', 'f' => 'cat_files' );
+	static $decoded_cmps = array( 'ge' => '>=', 'le' => '<=', 'eq' => '=' );
 
-	static $encoded_fields = array( 'cat_subcats'=>'s', 'cat_pages'=>'p', 'cat_files'=>'f' );
-	static $encoded_cmps = array( '>='=>'ge', '<='=>'le', '='=>'eq' );
+	static $encoded_fields = array( 'cat_subcats' => 's', 'cat_pages' => 'p', 'cat_files' => 'f' );
+	static $encoded_cmps = array( '>=' => 'ge', '<=' => 'le', '=' => 'eq' );
 
 	# reverse polish operations queue (decoded form, every op is an element of array)
 	# comparsions like "a > 1" are treated like single-ops
@@ -323,7 +323,7 @@ class CB_SqlCond {
 		# {{{ validation of expression
 		$cmp_count = $logical_count = 0;
 		# }}}
-		foreach( $q as &$token ) {
+		foreach ( $q as &$token ) {
 			$result = self::decodeToken( $token );
 			$sc->queue[] = $result->token;
 			if ( $result->type == 'comparsion' ) {
@@ -366,7 +366,7 @@ class CB_SqlCond {
 		# {{{ validation of expression
 		$brackets_level = 0; $prev_type = '';
 		# }}}
-		foreach( $q as &$token ) {
+		foreach ( $q as &$token ) {
 			$result = self::decodeToken( $token );
 			$infix_queue[] = $result->token;
 			if ( $result->type == 'bracket' ) {
@@ -407,7 +407,7 @@ class CB_SqlCond {
 	}
 
 	private static function decodeToken( $token ) {
-		$result = (object) array( 'type'=>'unknown', 'token'=>'' );
+		$result = (object) array( 'type' => 'unknown', 'token' => '' );
 		$matches = array();
 		preg_match_all( CB_ENCODED_TOKEN_MATCH, $token, $matches, PREG_SET_ORDER );
 		if ( count( $matches ) == 1 && isset( $matches[0] ) && count( $matches[0] ) == 4 ) {
@@ -449,7 +449,7 @@ class CB_SqlCond {
 			switch ( strtoupper( $token ) ) {
 			case '(' :
 				$prio = 0;
-				array_push( $stack, (object) array( 'token'=>$token, 'prio'=>$prio ) );
+				array_push( $stack, (object) array( 'token' => $token, 'prio' => $prio ) );
 				break;
 			case ')' :
 				$prio = 1;
@@ -468,14 +468,14 @@ class CB_SqlCond {
 			case 'AND' :
 				$prio = strtoupper( $token ) == 'OR' ? 2 : 3;
 				while ( $last = array_pop( $stack ) ) {
-					if ( is_object( $last) && $last->prio >= $prio ) {
+					if ( is_object( $last ) && $last->prio >= $prio ) {
 						array_push( $sc->queue, $last->token );
 					} else {
 						array_push( $stack, $last );
 						break;
 					}
 				}
-				array_push( $stack, (object) array( 'token'=>$token, 'prio'=>$prio ) );
+				array_push( $stack, (object) array( 'token' => $token, 'prio' => $prio ) );
 				break;
 			default : // comparsion subexpression
 				array_push( $sc->queue, $token );

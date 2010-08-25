@@ -73,13 +73,6 @@ div.cb_cat_controls {
 	clear: both;
 }
 
-/* was:
-div.cb_cat_expand {
-	float: left;
-	width: 1em;
-	min-width: 1em;
-}
-*/
 span.cb_cat_expand {
 	white-space: nowrap;
 	font-family: Fixed, monospace;
@@ -87,13 +80,6 @@ span.cb_cat_expand {
 	padding-right: 0.5em;
 }
 
-/* was:
-div.cb_cat_item {
-	float: left;
-	min-width: 20px;
-	width: auto;
-}
-*/
 span.cb_cat_item {
 }
 

@@ -7,7 +7,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * CategoryBrowser is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -20,20 +20,20 @@
  * ***** END LICENSE BLOCK *****
  *
  * CategoryBrowser is an AJAX-enabled category filter and browser for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named CategoryBrowser into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
- * 
+ *
  * @version 0.2.0
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is a part of MediaWiki extension.\n" );
 }
 
@@ -69,7 +69,7 @@ abstract class CB_AbstractPager {
 	}
 
 	/*
-	 * 
+	 *
 	 * initializes hasMoreEntries and array of entries from DB result
 	 */
 	function setEntries( &$db_result ) {
@@ -93,7 +93,7 @@ abstract class CB_AbstractPager {
 	// returns previous SQL select offset
 	function getPrevOffset() {
 		$prev_offset = $this->offset - $this->limit;
-		return ( ($prev_offset >= 0) ? $prev_offset : 0);
+		return ( ( $prev_offset >= 0 ) ? $prev_offset : 0 );
 	}
 
 	// returns next SQL select offset
@@ -111,7 +111,7 @@ abstract class CB_AbstractPager {
 	function getListType() {
 		// it is not enough to check $this->entries[0],
 		// because some broken tables might have just some (not all) cat_title = NULL or page_title = NULL
-		foreach( $this->entries as &$entry ) {
+		foreach ( $this->entries as &$entry ) {
 			if ( isset( $entry->page_namespace ) && $entry->page_namespace == NS_FILE ) { return 'generateFilesList'; }
 			if ( isset( $entry->page_title ) ) { return 'generatePagesList'; }
 			if ( isset( $entry->cat_title ) ) { return 'generateCatList'; }
@@ -171,24 +171,24 @@ class CB_SubPager extends CB_AbstractPager {
 		 */
 		$query_string =
 			"SELECT {$this->select_fields} " .
-			"FROM {$this->page_table} ".
+			"FROM {$this->page_table} " .
 			"INNER JOIN {$this->categorylinks_table} FORCE INDEX (cl_sortkey) ON cl_from = page_id " .
 			"LEFT JOIN {$this->category_table} ON cat_title = page_title AND page_namespace = " . NS_CATEGORY . " " .
 			"WHERE cl_to IN (" .
 				"SELECT cat_title " .
 				"FROM {$this->category_table} " .
 				"WHERE cat_id = " . $this->db->addQuotes( $this->parentCatId ) .
-			") " . ( ($this->ns_cond == '') ? '' : "AND {$this->ns_cond} " ) .
+			") " . ( ( $this->ns_cond == '' ) ? '' : "AND {$this->ns_cond} " ) .
 			"ORDER BY cl_sortkey ";
-		$res = $this->db->query( $query_string . "LIMIT {$this->query_offset}," . ($this->query_limit + 1), __METHOD__ );
+		$res = $this->db->query( $query_string . "LIMIT {$this->query_offset}," . ( $this->query_limit + 1 ), __METHOD__ );
 		$this->setEntries( $res );
 	}
 
 	// returns JS function call used to navigate to the previous page of this pager
 	function getPrevAjaxLink() {
 		$result = (object) array(
-			"call"=>"return CategoryBrowser.{$this->js_nav_func}(this," . $this->parentCatId . "," . $this->getPrevOffset() . ( ($this->limit == CB_PAGING_ROWS) ? '' : ',' . $this->limit ) . ')',
-			"placeholders"=>false
+			"call" => "return CategoryBrowser.{$this->js_nav_func}(this," . $this->parentCatId . "," . $this->getPrevOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"placeholders" => false
 		);
 		return $result;
 	}
@@ -196,8 +196,8 @@ class CB_SubPager extends CB_AbstractPager {
 	// returns JS function call used to navigate to the next page of this pager
 	function getNextAjaxLink() {
 		$result = (object) array(
-			"call"=>"return CategoryBrowser.{$this->js_nav_func}(this," . $this->parentCatId . ',' . $this->getNextOffset() . ( ($this->limit == CB_PAGING_ROWS) ? '' : ',' . $this->limit ) . ')',
-			"placeholders"=>false
+			"call" => "return CategoryBrowser.{$this->js_nav_func}(this," . $this->parentCatId . ',' . $this->getNextOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"placeholders" => false
 		);
 		return $result;
 	}
@@ -255,7 +255,7 @@ class CB_RootPager extends CB_AbstractPager {
 		}
 		try {
 			$sqlCond = CB_SqlCond::newFromInfixTokens( $tokens );
-		} catch( MWException $ex ) {
+		} catch ( MWException $ex ) {
 			return null;
 		}
 		return self::newFromSqlCond( $sqlCond, $offset, $limit );
@@ -317,8 +317,8 @@ class CB_RootPager extends CB_AbstractPager {
 	// returns JS function call used to navigate to the previous page of this pager
 	function getPrevAjaxLink() {
 		$result = (object) array(
-			"call"=>'return CategoryBrowser.rootCats(\'' . Xml::escapeJsString( $this->sqlCond->getEncodedQueue( false ) ) . '\',' . $this->getPrevOffset() . ( ($this->limit == CB_PAGING_ROWS) ? '' : ',' . $this->limit ) . ')',
-			"placeholders"=>true
+			"call" => 'return CategoryBrowser.rootCats(\'' . Xml::escapeJsString( $this->sqlCond->getEncodedQueue( false ) ) . '\',' . $this->getPrevOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"placeholders" => true
 		);
 		return $result;
 	}
@@ -326,15 +326,15 @@ class CB_RootPager extends CB_AbstractPager {
 	// returns JS function call used to navigate to the next page of this pager
 	function getNextAjaxLink() {
 		$result = (object) array(
-			"call"=>'return CategoryBrowser.rootCats(\'' . Xml::escapeJsString( $this->sqlCond->getEncodedQueue( false ) ) . '\',' . $this->getNextOffset() . ( ($this->limit == CB_PAGING_ROWS) ? '' : ',' . $this->limit ) . ')',
-			"placeholders"=>false
+			"call" => 'return CategoryBrowser.rootCats(\'' . Xml::escapeJsString( $this->sqlCond->getEncodedQueue( false ) ) . '\',' . $this->getNextOffset() . ( ( $this->limit == CB_PAGING_ROWS ) ? '' : ',' . $this->limit ) . ')',
+			"placeholders" => false
 		);
 		return $result;
 	}
 
 } /* end of CB_RootPager class */
 
-/* 
+/*
  * browsing class - both for special page and AJAX calls
  */
 class CategoryBrowser {
@@ -379,19 +379,19 @@ class CategoryBrowser {
 		array_shift( $args ); // remove $method_name from $args
 		$result = '{ ';
 		$firstElem = true;
-		foreach( $args as &$arg ) {
+		foreach ( $args as &$arg ) {
 			if ( $firstElem ) {
 				$firstElem = false;
 			} else {
 				$result .= ', ';
 			}
-			$result .= $arg . ': "' . Xml::escapeJsString( call_user_func( array( 'self', $method_name), $arg ) ) . '"';
+			$result .= $arg . ': "' . Xml::escapeJsString( call_user_func( array( 'self', $method_name ), $arg ) ) . '"';
 		}
 		$result .= ' }';
 		return $result;
 	}
-	
-	/* 
+
+	/*
 	 * currently passed to Javascript:
 	 * localMessages, localDbFields, localBrackets, localBoolOps, localCmpOps
 	 */
@@ -427,9 +427,9 @@ class CategoryBrowser {
 	 */
 	static function generateRanges( array &$source_ranges ) {
 		$ranges = array();
-		foreach( $source_ranges as $infix_queue ) {
+		foreach ( $source_ranges as $infix_queue ) {
 			$sqlCond = CB_SqlCond::newFromInfixTokens( $infix_queue );
-			$ranges[] = (object) array( 'infix_decoded'=>$infix_queue, 'polish_encoded'=> $sqlCond->getEncodedQueue( false ) );
+			$ranges[] = (object) array( 'infix_decoded' => $infix_queue, 'polish_encoded' => $sqlCond->getEncodedQueue( false ) );
 		}
 		return $ranges;
 	}
@@ -443,7 +443,7 @@ class CategoryBrowser {
 	static function addRange( array &$ranges, CB_SqlCond $sqlCond ) {
 		$encPolishQueue = $sqlCond->getEncodedQueue( false );
 		$queueExists = false;
-		foreach( $ranges as &$range ) {
+		foreach ( $ranges as &$range ) {
 			if ( $range->polish_encoded == $encPolishQueue ) {
 				$queueExists = true;
 				break;
@@ -451,7 +451,7 @@ class CategoryBrowser {
 		}
 		if ( !$queueExists ) {
 			$sqlCond->getCond(); // build infix queue array
-			$ranges[] = (object) array( 'infix_decoded'=>$sqlCond->infix_queue, 'polish_encoded'=>$encPolishQueue );
+			$ranges[] = (object) array( 'infix_decoded' => $sqlCond->infix_queue, 'polish_encoded' => $encPolishQueue );
 		}
 	}
 
@@ -471,15 +471,15 @@ class CategoryBrowser {
 		$js_func_call = 'return CategoryBrowser.setExpr(this,' . CB_PAGING_ROWS . ')';
 		// FF doesn't always fire onchange, IE doesn't always fire onmouseup
 		$condFormTpl = array (
-			array( '__tag'=>'noscript', 'class'=>'cb_noscript', 0=>wfMsg( 'cb_requires_javascript' ) ),
-			array( '__tag'=>'form', '__end'=>"\n",
-				array( '__tag'=>'select', 'id'=>'cb_expr_select', 'onmouseup'=>$js_func_call, 'onchange'=>$js_func_call, '__end'=>"\n", 0=>&$condOptList )
+			array( '__tag' => 'noscript', 'class' => 'cb_noscript', 0 => wfMsg( 'cb_requires_javascript' ) ),
+			array( '__tag' => 'form', '__end' => "\n",
+				array( '__tag' => 'select', 'id' => 'cb_expr_select', 'onmouseup' => $js_func_call, 'onchange' => $js_func_call, '__end' => "\n", 0 => &$condOptList )
 			)
 		);
 		# }}}
 		$queueFound = false;
 		$selectedEncPolishQueue = $rootPager->sqlCond->getEncodedQueue( false );
-		foreach( $ranges as &$range ) {
+		foreach ( $ranges as &$range ) {
 			$condOptList[] = self::generateOption( $range, $selectedEncPolishQueue );
 			if ( $range->polish_encoded == $selectedEncPolishQueue ) {
 				$queueFound = true;
@@ -497,7 +497,7 @@ class CategoryBrowser {
 		$condOptName = '';
 		$condOptInfix = '';
 		$condOptTpl =
-			array( '__tag'=>$nodeName, 'value'=>&$condOptVal, 'infixexpr'=>&$condOptInfix, 0=>&$condOptName, '__end'=>"\n" );
+			array( '__tag' => $nodeName, 'value' => &$condOptVal, 'infixexpr' => &$condOptInfix, 0 => &$condOptName, '__end' => "\n" );
 		# }}}
 		$le = new CB_LocalExpr( $range->infix_decoded );
 		$condOptVal = CB_Setup::specialchars( $range->polish_encoded );
@@ -515,7 +515,7 @@ class CategoryBrowser {
 		$this->nav_link = '';
 		if ( !isset( $this->nav_link_tpl ) ) {
 			$this->nav_link_tpl =
-				array( '__tag'=>'div', 'class'=>'cb_cat_container', '__end'=>"\n", 0=>&$this->nav_link );
+				array( '__tag' => 'div', 'class' => 'cb_cat_container', '__end' => "\n", 0 => &$this->nav_link );
 		}
 		# }}}
 	}
@@ -528,8 +528,8 @@ class CategoryBrowser {
 		if ( !isset( $this->ajax_link_tpl ) ) {
 			$this->ajax_link_tpl =
 				array(
-					array( '__tag'=>'a', 'class'=>'cb_sublink', 'href'=>'', 'onclick'=>&$this->ajax_onclick, 0=>&$this->ajax_link_text ),
-					array( '__tag'=>'span', 'class'=>'cb_comment', 0=>&$this->ajax_link_comment )
+					array( '__tag' => 'a', 'class' => 'cb_sublink', 'href' => '', 'onclick' => &$this->ajax_onclick, 0 => &$this->ajax_link_text ),
+					array( '__tag' => 'span', 'class' => 'cb_comment', 0 => &$this->ajax_link_comment )
 				);
 		}
 		# }}}
@@ -539,7 +539,7 @@ class CategoryBrowser {
 		# {{{ category sortkey hint template
 		$this->sortkey_hint = '';
 		if ( !isset( $this->sortkey_hint_tpl ) ) {
-			$this->sortkey_hint_tpl = array( '__tag'=>'span', 'class'=>'cb_comment', 'style'=>'padding:0em 0.1em 0em 0.1em;', 0=>&$this->sortkey_hint );
+			$this->sortkey_hint_tpl = array( '__tag' => 'span', 'class' => 'cb_comment', 'style' => 'padding:0em 0.1em 0em 0.1em;', 0 => &$this->sortkey_hint );
 		}
 		# }}}
 	}
@@ -553,10 +553,10 @@ class CategoryBrowser {
 		$cat_expand_sign = '';
 		$cat_link = '';
 		$cat_tpl =
-			array( '__tag'=>'div', 'class'=>'cb_cat_container', '__end'=>"\n",
-				array( '__tag'=>'div', 'class'=>'cb_cat_controls',
-					array( '__tag'=>'span', 'title'=>&$subcat_count_hint, 'class'=>'cb_cat_expand', 0=>&$cat_expand_sign ),
-					array( '__tag'=>'span', 'class'=>'cb_cat_item', 0=>&$cat_link )
+			array( '__tag' => 'div', 'class' => 'cb_cat_container', '__end' => "\n",
+				array( '__tag' => 'div', 'class' => 'cb_cat_controls',
+					array( '__tag' => 'span', 'title' => &$subcat_count_hint, 'class' => 'cb_cat_expand', 0 => &$cat_expand_sign ),
+					array( '__tag' => 'span', 'class' => 'cb_cat_item', 0 => &$cat_link )
 				)
 			);
 		# }}}
@@ -565,7 +565,7 @@ class CategoryBrowser {
 		$this->initSortkeyTpl();
 		# create list of categories
 		$catlist = array(
-			array( '__tag'=>'noscript', 'class'=>'cb_noscript', 0=>wfMsg( 'cb_requires_javascript' ) ),
+			array( '__tag' => 'noscript', 'class' => 'cb_noscript', 0 => wfMsg( 'cb_requires_javascript' ) ),
 		);
 		# previous page AJAX link
 		$this->nav_link = '';
@@ -577,7 +577,7 @@ class CategoryBrowser {
 			$this->ajax_link_text = wfMsg( 'cb_previous_items_link' );
 			$this->ajax_link_comment = wfMsg( 'cb_previous_items_stats', $prev_offset, $prev_offset + $pager->limit - 1 );
 			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$prev_link = CB_XML::toText( $this->nav_link_tpl);
+			$prev_link = CB_XML::toText( $this->nav_link_tpl );
 		}
 		if ( $link_obj->placeholders || $this->nav_link != '' ) {
 			$catlist[] = $prev_link;
@@ -618,7 +618,7 @@ class CategoryBrowser {
 			if ( !empty( $cat->cat_id ) ) {
 				$this->ajax_onclick = 'return CategoryBrowser.subCatsLink(this,' . $cat->cat_id . ')';
 				$this->ajax_link_text = wfMsgExt( 'cb_has_subcategories', array( 'parsemag' ), $cat->cat_subcats );
-				$cat_subcats = ( ($cat->cat_subcats > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
+				$cat_subcats = ( ( $cat->cat_subcats > 0 ) ? ' | ' . CB_XML::toText( $this->ajax_link_tpl ) : '' );
 
 				$this->ajax_onclick = 'return CategoryBrowser.pagesLink(this,' . $cat->cat_id . ')';
 				$this->ajax_link_text = wfMsgExt( 'cb_has_pages', array( 'parsemag' ), $cat->pages_only );
@@ -651,7 +651,7 @@ class CategoryBrowser {
 			$this->ajax_link_text = wfMsg( 'cb_next_items_link' );
 			$this->ajax_link_comment = wfMsg( 'cb_next_items_stats', $pager->getNextOffset() + 1 );
 			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$next_link = CB_XML::toText( $this->nav_link_tpl);
+			$next_link = CB_XML::toText( $this->nav_link_tpl );
 		}
 		if ( $link_obj->placeholders || $this->nav_link != '' ) {
 			$catlist[] = $next_link;
@@ -666,8 +666,8 @@ class CategoryBrowser {
 		# {{{ one page container template
 		$page_link = '';
 		$page_tpl =
-			array( '__tag'=>'div', 'class'=>'cb_cat_container', '__end'=>"\n",
-				array( '__tag'=>'div', 'class'=>'cb_cat_item', 0=>&$page_link )
+			array( '__tag' => 'div', 'class' => 'cb_cat_container', '__end' => "\n",
+				array( '__tag' => 'div', 'class' => 'cb_cat_item', 0 => &$page_link )
 			);
 		# }}}
 		$this->initNavTpl();
@@ -685,7 +685,7 @@ class CategoryBrowser {
 			$this->ajax_link_text = wfMsg( 'cb_previous_items_link' );
 			$this->ajax_link_comment = wfMsg( 'cb_previous_items_stats', $prev_offset, $prev_offset + $pager->limit - 1 );
 			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$prev_link = CB_XML::toText( $this->nav_link_tpl);
+			$prev_link = CB_XML::toText( $this->nav_link_tpl );
 		}
 		if ( $link_obj->placeholders || $this->nav_link != '' ) {
 			$pagelist[] = $prev_link;
@@ -712,7 +712,7 @@ class CategoryBrowser {
 			$this->ajax_link_text = wfMsg( 'cb_next_items_link' );
 			$this->ajax_link_comment = wfMsg( 'cb_next_items_stats', $pager->getNextOffset() + 1 );
 			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$next_link = CB_XML::toText( $this->nav_link_tpl);
+			$next_link = CB_XML::toText( $this->nav_link_tpl );
 		}
 		if ( $link_obj->placeholders || $this->nav_link != '' ) {
 			$pagelist[] = $next_link;
@@ -737,7 +737,7 @@ class CategoryBrowser {
 		$this->initSortkeyTpl();
 		# {{{ gallery container template
 		$gallery_html = '';
-		$gallery_tpl = array( '__tag'=>'div', 'class'=>'cb_files_container', 0=>&$gallery_html );
+		$gallery_tpl = array( '__tag' => 'div', 'class' => 'cb_files_container', 0 => &$gallery_html );
 		# }}}
 		# create list of files (holder of prev/next AJAX links and generated image gallery)
 		$filelist = array();
@@ -757,7 +757,7 @@ class CategoryBrowser {
 			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
 		}
 		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$prev_link = CB_XML::toText( $this->nav_link_tpl);
+			$prev_link = CB_XML::toText( $this->nav_link_tpl );
 		}
 		foreach ( $pager->entries as &$file ) {
 			$file_title = Title::makeTitle( $file->page_namespace, $file->page_title );
@@ -768,7 +768,7 @@ class CategoryBrowser {
 					$file_title->getText() != $file->cl_sortkey ) {
 				$this->sortkey_hint = '(' . CategoryViewer::getSubcategorySortChar( $file_title, $file->cl_sortkey ) . ')';
 			}
-			$gallery->add( $file_title, ($this->sortkey_hint != '') ? CB_XML::toText( $this->sortkey_hint_tpl ) : '' );
+			$gallery->add( $file_title, ( $this->sortkey_hint != '' ) ? CB_XML::toText( $this->sortkey_hint_tpl ) : '' );
 		}
 		# next page AJAX link
 		$next_link = '&#160;'; // &nbsp;
@@ -781,7 +781,7 @@ class CategoryBrowser {
 			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
 		}
 		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$next_link = CB_XML::toText( $this->nav_link_tpl);
+			$next_link = CB_XML::toText( $this->nav_link_tpl );
 		}
 		$filelist = $prev_link;
 		if ( !$gallery->isEmpty() ) {
@@ -876,7 +876,7 @@ class CategoryBrowser {
 		}
 		return CB_XML::toText( $list );
 	}
-	
+
 	/*
 	 * called via AJAX to setup custom edited expression cookie then display category root offset
 	 * @param $args[0] : encoded infix expression
@@ -888,15 +888,15 @@ class CategoryBrowser {
 	static function applyEncodedQueue() {
 		CB_Setup::initUser();
 		$args = func_get_args();
-		$limit = ( (count( $args ) > 4) ? intval( $args[4] ) : CB_PAGING_ROWS );
-		$setCookie = ( (count( $args ) > 3) ? $args[3] != 0 : false );
+		$limit = ( ( count( $args ) > 4 ) ? intval( $args[4] ) : CB_PAGING_ROWS );
+		$setCookie = ( ( count( $args ) > 3 ) ? $args[3] != 0 : false );
 		$nameFilterCI = ( count( $args ) > 2 ) ? $args[2] == 'true' : false;
 		$nameFilter = ( count( $args ) > 1 ) ? $args[1] : '';
-		$encInfixQueue = ( (count( $args ) > 0) ? $args[0] : 'all' );
+		$encInfixQueue = ( ( count( $args ) > 0 ) ? $args[0] : 'all' );
 		$sqlCond = CB_SqlCond::newFromEncodedInfixQueue( $encInfixQueue );
 		$encPolishQueue = $sqlCond->getEncodedQueue( false );
 		if ( $setCookie ) {
-			CB_Setup::setCookie( 'rootcond', $encPolishQueue, time()+60*60*24*7 ); 
+			CB_Setup::setCookie( 'rootcond', $encPolishQueue, time() + 60 * 60 * 24 * 7 );
 		}
 		return self::getRootOffsetHtml( $encPolishQueue, $nameFilter, $nameFilterCI, 0, $limit );
 	}

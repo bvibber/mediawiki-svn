@@ -7,7 +7,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * CategoryBrowser is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -20,20 +20,20 @@
  * ***** END LICENSE BLOCK *****
  *
  * CategoryBrowser is an AJAX-enabled category filter and browser for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named CategoryBrowser into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
- * 
+ *
  * @version 0.2.0
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	die( "This file is a part of MediaWiki extension.\n" );
 }
 
@@ -107,39 +107,39 @@ class CategoryBrowserPage extends SpecialPage {
 		$catlist = array();
 		$js_setNameFilter = 'CategoryBrowser.setNameFilter( this )';
 		$nameFilterFields = array(
-			array( '__tag'=>'input', 'type'=>'text', 'onkeyup'=>$js_setNameFilter, 'onchange'=>$js_setNameFilter, 'id'=>'cb_cat_name_filter' )
+			array( '__tag' => 'input', 'type' => 'text', 'onkeyup' => $js_setNameFilter, 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter' )
 		);
 		if ( CB_Setup::$cat_title_CI != '' ) {
 			// case insensitive search is possible
 			$nameFilterFields[] = wfMsg( 'cb_cat_name_filter_ci' );
-			$nameFilterFields[] = array( '__tag'=>'input', 'type'=>'checkbox', 'onchange'=>$js_setNameFilter, 'id'=>'cb_cat_name_filter_ci', 'checked'=>null );
+			$nameFilterFields[] = array( '__tag' => 'input', 'type' => 'checkbox', 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter_ci', 'checked' => null );
 		}
 		$top_tpl =
-			array( '__tag'=>'table', 'class'=>'cb_top_container', '__end'=>"\n",
-				array( '__tag'=>'tr', '__end'=>"\n",
-					array( '__tag'=>'td', 'class'=>'cb_toolbox_top', '__end'=>"\n", 0=>&$condSelector )
+			array( '__tag' => 'table', 'class' => 'cb_top_container', '__end' => "\n",
+				array( '__tag' => 'tr', '__end' => "\n",
+					array( '__tag' => 'td', 'class' => 'cb_toolbox_top', '__end' => "\n", 0 => &$condSelector )
 				),
-				array( '__tag'=>'tr', '__end'=>"\n",
-					array( '__tag'=>'td', 'class'=>'cb_toolbox_bottom', '__end'=>"\n",
+				array( '__tag' => 'tr', '__end' => "\n",
+					array( '__tag' => 'td', 'class' => 'cb_toolbox_bottom', '__end' => "\n",
 						array( wfMsg( 'cb_cat_name_filter' ) ),
 						$nameFilterFields,
 					)
 				),
-				array( '__tag'=>'tr', '__end'=>"\n",
-					array( '__tag'=>'td', 'class'=>'cb_toolbox', 'style'=>'display:none; ', '__end'=>"\n",
-						array( '__tag'=>'div', 'id'=>'cb_editor_container', 0=>'' ),
-						array( '__tag'=>'div', 'class'=>'cb_separate_container', 0=>'' /* holder of apply button */ )
+				array( '__tag' => 'tr', '__end' => "\n",
+					array( '__tag' => 'td', 'class' => 'cb_toolbox', 'style' => 'display:none; ', '__end' => "\n",
+						array( '__tag' => 'div', 'id' => 'cb_editor_container', 0 => '' ),
+						array( '__tag' => 'div', 'class' => 'cb_separate_container', 0 => '' /* holder of apply button */ )
 					)
 				),
-				array( '__tag'=>'tr', '__end'=>"\n",
-					array( '__tag'=>'td', 'class'=>'cb_toolbox', 'style'=>'display:none; ', '__end'=>"\n",
-						array( '__tag'=>'div', 'class'=>'cb_copy_line_hint', 0=>wfMsg( 'cb_copy_line_hint' ) ),
-						array( '__tag'=>'div', 'id'=>'cb_editor_controls', 0=>'' )
+				array( '__tag' => 'tr', '__end' => "\n",
+					array( '__tag' => 'td', 'class' => 'cb_toolbox', 'style' => 'display:none; ', '__end' => "\n",
+						array( '__tag' => 'div', 'class' => 'cb_copy_line_hint', 0 => wfMsg( 'cb_copy_line_hint' ) ),
+						array( '__tag' => 'div', 'id' => 'cb_editor_controls', 0 => '' )
 					)
 				),
-				array( '__tag'=>'tr', '__end'=>"\n",
-					array( '__tag'=>'td', '__end'=>"\n",
-						array( '__tag'=>'div', 'id'=>'cb_root_container', 0=>&$catlist )
+				array( '__tag' => 'tr', '__end' => "\n",
+					array( '__tag' => 'td', '__end' => "\n",
+						array( '__tag' => 'div', 'id' => 'cb_root_container', 0 => &$catlist )
 					)
 				)
 			);

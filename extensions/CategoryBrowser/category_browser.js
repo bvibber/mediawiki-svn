@@ -6,7 +6,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * CategoryBrowser is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -19,13 +19,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * CategoryBrowser is an AJAX-enabled category filter and browser for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named CategoryBrowser into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
- * 
+ *
  * @version 0.2.0
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
@@ -150,7 +150,7 @@ var CB_lib = {
 	},
 
 	/*** simple form elements generators ***/
-	/* 
+	/*
 	 * generate select/option from the list given
 	 * @param optionsList - object key/value pairs
 	 * @param selectedOption - selected key in optionsList
@@ -410,12 +410,12 @@ var CategoryBrowser = {
 		}
 		switch ( id ) {
 		case 'cb_cat_name_filter' :
-			/* more reliable to check in nameFilterCall 
+			/* more reliable to check in nameFilterCall
 			this.nameFilter = eventObj.value;
 			CB_lib.log( 'setNameFilter nameFilter='+this.nameFilter  ); */
 			break;
 		case 'cb_cat_name_filter_ci' :
-			/* more reliable to check in nameFilterCall 
+			/* more reliable to check in nameFilterCall
 			this.nameFilterCI = eventObj.checked; */
 			break;
 		default : alert( 'CategoryBrowser.setNameFilter was called with unknown event object id='+id );
@@ -1465,8 +1465,8 @@ CB_EditLine.prototype.insertToken = function( newToken ) {
 }
 /*
  * moves count of tokens from currentIndex to newIndex, tokens at newIndex are moved next to RIGHT
- * @param currentIndex source index in this.tokens 
- * @param newIndex destination index in this.tokens 
+ * @param currentIndex source index in this.tokens
+ * @param newIndex destination index in this.tokens
  * @param count number of tokens to move
  * @result true, move is complete; false, attempt to move into itself
  */

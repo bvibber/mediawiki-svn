@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * ***** BEGIN LICENSE BLOCK *****
  * This file is part of CategoryBrowser.
@@ -7,7 +7,7 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * CategoryBrowser is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -20,13 +20,13 @@
  * ***** END LICENSE BLOCK *****
  *
  * CategoryBrowser is an AJAX-enabled category filter and browser for MediaWiki.
- * 
+ *
  * To activate this extension :
  * * Create a new directory named CategoryBrowser into the directory "extensions" of MediaWiki.
  * * Place the files from the extension archive there.
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
- * 
+ *
  * @version 0.2.0
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
@@ -43,34 +43,36 @@ $messages = array();
  * @author QuestPC
  */
 $messages['en'] = array(
-	'categorybrowser' => 'Category Browser',
-	'categorybrowser-desc' => 'Provides [[Special:CategoryBrowser]] page to filter out most populated categories and to navigate them using AJAX-interface',
-	'cb_requires_javascript' => 'Category Browser extension requires Javascript to be enabled in browser',
-	'cb_ie6_warning' => 'Condition editor does not work in Internet Explorer 6.0 or earlier versions. However, browsing of pre-defined conditions should work normally. Please change / upgrade your browser, if possible.',
+	'categorybrowser' => 'Category browser',
+	'categorybrowser-desc' => 'Provides a [[Special:CategoryBrowser|special page]] to filter out most populated categories and to navigate them using an AJAX interface',
+	'cb_requires_javascript' => 'The Category Browser extension requires JavaScript to be enabled in the browser.',
+	'cb_ie6_warning' => 'The condition editor does not work in Internet Explorer 6.0 or earlier versions.
+However, browsing of pre-defined conditions should work normally.
+Please change or upgrade your browser, if possible.',
 	'cb_cat_name_filter' => 'Search for category by name:',
-	'cb_cat_name_filter_ci' => '(case insensitive)',
-	'cb_copy_line_hint' => 'Use [+] and [>+] buttons to copy / paste operators into selected expression',
+	'cb_cat_name_filter_ci' => '(case insensitive)', // @todo Please document in 'qqq'. Patchwork message?
+	'cb_copy_line_hint' => 'Use the [+] and [>+] buttons to copy and paste operators into the selected expression',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategory|subcategories}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|page|pages}}',
 	'cb_has_files' => '$1 {{PLURAL:$1|file|files}}',
 	'cb_previous_items_link' => 'Previous',
-	'cb_previous_items_stats' => ' ($1 - $2)',
+	'cb_previous_items_stats' => ' ($1 - $2)', // @todo FIXME: patchwork message. Please create complete messags with variables.
 	'cb_next_items_link' => 'Next',
-	'cb_next_items_stats' => ' (from $1)',
+	'cb_next_items_stats' => ' (from $1)', // @todo FIXME: patchwork message. Please create complete messags with variables.
 	'cb_cat_subcats' => 'subcategories',
 	'cb_cat_pages' => 'pages',
 	'cb_cat_files' => 'files',
 	'cb_apply_button' => 'Apply',
-	'cb_op1_template' => '$1[$2]',
-	'cb_op2_template' => '$1 $2 $3',
+	'cb_op1_template' => '$1[$2]', // @todo Please document in 'qqq'.
+	'cb_op2_template' => '$1 $2 $3', // @todo Please document in 'qqq'.
 	'cb_all_op' => 'All',
-	'cb_lbracket_op' => '(',
-	'cb_rbracket_op' => ')',
-	'cb_or_op' => 'or',
-	'cb_and_op' => 'and',
-	'cb_ge_op' => '>=',
-	'cb_le_op' => '<=',
-	'cb_eq_op' => '=',
+	'cb_lbracket_op' => '(', // @todo Please document in 'qqq'.
+	'cb_rbracket_op' => ')', // @todo Please document in 'qqq'.
+	'cb_or_op' => 'or', // @todo Please document in 'qqq'.
+	'cb_and_op' => 'and', // @todo Please document in 'qqq'.
+	'cb_ge_op' => '>=', // @todo Please document in 'qqq'.
+	'cb_le_op' => '<=', // @todo Please document in 'qqq'.
+	'cb_eq_op' => '=', // @todo Please document in 'qqq'.
 	'cb_edit_left_hint' => 'Move left, if possible',
 	'cb_edit_right_hint' => 'Move right, if possible',
 	'cb_edit_remove_hint' => 'Delete, if possible',
