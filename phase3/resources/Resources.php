@@ -3,21 +3,21 @@
 ResourceLoader::register( array(
 
 	/* Special resources who have their own classes */
-	'sitejs' => array( 'class' =>  'ResourceLoaderSiteJSModule' ),
+	'sitejs' => new ResourceLoaderSiteJSModule,
 	
 	/* jQuery */
 	
-	'jquery' => array( 'scripts' => 'resources/jquery/jquery.js' ),
+	'jquery' => new ResourceLoaderModule( array( 'scripts' => 'resources/jquery/jquery.js' ) ),
 	
 	/* jQuery Plugins */
 	
-	'jquery.tabIndex' => array( 'scripts' => 'resources/jquery/jquery.tabIndex.js' ),
-	'jquery.cookie' => array( 'scripts' => 'resources/jquery/jquery.cookie.js' ),
+	'jquery.tabIndex' => new ResourceLoaderModule( array( 'scripts' => 'resources/jquery/jquery.tabIndex.js' ) ),
+	'jquery.cookie' => new ResourceLoaderModule( array( 'scripts' => 'resources/jquery/jquery.cookie.js' ) ),
 	
 	/* jQuery UI */
 	
 	// Core
-	'jquery.ui.core' => array(
+	'jquery.ui.core' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.core.js',
 		'skinStyles' => array(
 			'default' => array(
@@ -30,74 +30,74 @@ ResourceLoader::register( array(
 			),
 		),
 		'dependencies' => 'jquery',
-	),
-	'jquery.ui.widget' => array(
+	) ),
+	'jquery.ui.widget' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.widget.js',
 		'dependencies' => 'jquery.ui.core',
-	),
-	'jquery.ui.mouse' => array(
+	) ),
+	'jquery.ui.mouse' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.mouse.js',
 		'dependencies' => 'jquery',
-	),
-	'jquery.ui.position' => array(
+	) ),
+	'jquery.ui.position' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.position.js',
 		'dependencies' => 'jquery',
-	),
+	) ),
 	// Interactions
-	'jquery.ui.draggable' => array(
+	'jquery.ui.draggable' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.draggable.js',
 		'dependencies' => 'jquery.ui.core',
-	),
-	'jquery.ui.droppable' => array(
+	) ),
+	'jquery.ui.droppable' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.droppable.js',
 		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.draggable' ),
-	),
-	'jquery.ui.resizable' => array(
+	) ),
+	'jquery.ui.resizable' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.resizable.js',
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.resizable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.resizable.css',
 		),
 		'dependencies' => 'jquery.ui.core',
-	),
-	'jquery.ui.selectable' => array(
+	) ),
+	'jquery.ui.selectable' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.selectable.js',
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.selectable.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.selectable.css',
 		),
 		'dependencies' => 'jquery.ui.core',
-	),
-	'jquery.ui.sortable' => array(
+	) ),
+	'jquery.ui.sortable' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.sortable.js',
 		'dependencies' => 'jquery.ui.core',
-	),
+	) ),
 	// Widgets
-	'jquery.ui.accordion' => array(
+	'jquery.ui.accordion' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.accordion.js',
 		'dependencies' => 'jquery.ui.core',
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.accordion.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.accordion.css',
 		),
-	),
-	'jquery.ui.autocomplete' => array(
+	) ),
+	'jquery.ui.autocomplete' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.autocomplete.js',
 		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget', 'jquery.ui.position' ),
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.autocomplete.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.autocomplete.css',
 		),
-	),
-	'jquery.ui.button' => array(
+	) ),
+	'jquery.ui.button' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.button.js',
 		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget' ),
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.button.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.button.css',
 		),
-	),
-	'jquery.ui.datepicker' => array(
+	) ),
+	'jquery.ui.datepicker' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.datepicker.js',
 		'dependencies' => 'jquery.ui.core',
 		'skinStyles' => array(
@@ -158,217 +158,217 @@ ResourceLoader::register( array(
 			'zh-hk' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-HK.js',
 			'zh-tw' => 'resources/jquery/ui/i18n/jquery.ui.datepicker-zh-TW.js'
 		),
-	),
-	'jquery.ui.dialog' => array(
+	) ),
+	'jquery.ui.dialog' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.dialog.js',
 		'dependencies' => 'jquery.ui.core',
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.dialog.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.dialog.css',
 		),
-	),
-	'jquery.ui.progressbar' => array(
+	) ),
+	'jquery.ui.progressbar' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.progressbar.js',
 		'dependencies' => 'jquery.ui.core',
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.progressbar.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.progressbar.css',
 		),
-	),
-	'jquery.ui.slider' => array(
+	) ),
+	'jquery.ui.slider' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.slider.js',
 		'dependencies' => array( 'jquery.ui.core', 'jquery.ui.widget', 'jquery.ui.mouse' ),
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.slider.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.slider.css',
 		),
-	),
-	'jquery.ui.tabs' => array(
+	) ),
+	'jquery.ui.tabs' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/ui/jquery.ui.tabs.js',
 		'dependencies' => 'jquery.ui.core',
 		'skinStyles' => array(
 			'default' => 'resources/jquery/ui/themes/default/jquery.ui.tabs.css',
 			'vector' => 'resources/jquery/ui/themes/vector/jquery.ui.tabs.css',
 		),
-	),
+	) ),
 	// Effects
-	'jquery.effects.core' => array(
+	'jquery.effects.core' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.core.js',
 		'dependencies' => 'jquery',
-	),
-	'jquery.effects.blind' => array(
+	) ),
+	'jquery.effects.blind' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.blind.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.bounce' => array(
+	) ),
+	'jquery.effects.bounce' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.bounce.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.clip' => array(
+	) ),
+	'jquery.effects.clip' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.clip.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.drop' => array(
+	) ),
+	'jquery.effects.drop' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.drop.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.explode' => array(
+	) ),
+	'jquery.effects.explode' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.explode.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.fold' => array(
+	) ),
+	'jquery.effects.fold' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.fold.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.highlight' => array(
+	) ),
+	'jquery.effects.highlight' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.highlight.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.pulsate' => array(
+	) ),
+	'jquery.effects.pulsate' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.pulsate.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.scale' => array(
+	) ),
+	'jquery.effects.scale' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.scale.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.shake' => array(
+	) ),
+	'jquery.effects.shake' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.shake.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.slide' => array(
+	) ),
+	'jquery.effects.slide' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.slide.js',
 		'dependencies' => 'jquery.effects.core',
-	),
-	'jquery.effects.transfer' => array(
+	) ),
+	'jquery.effects.transfer' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/jquery/effects/jquery.effects.transfer.js',
 		'dependencies' => 'jquery.effects.core',
-	),
+	) ),
 	
 	/* MediaWiki */
 	
-	'mediawiki' => array(
+	'mediawiki' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/mediawiki.js',
 		'debugScripts' => 'resources/mediawiki/mediawiki.log.js',
-	),
+	) ),
 	
 	/* MediaWiki Legacy */
 	
-	'mediawiki.legacy.ajax' => array(
+	'mediawiki.legacy.ajax' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.ajax.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.ajaxwatch' => array(
+	) ),
+	'mediawiki.legacy.ajaxwatch' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.ajaxwatch.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.block' => array(
+	) ),
+	'mediawiki.legacy.block' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.block.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.changepassword' => array(
+	) ),
+	'mediawiki.legacy.changepassword' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.changepassword.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.edit' => array(
+	) ),
+	'mediawiki.legacy.edit' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.edit.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.enhancedchanges' => array(
+	) ),
+	'mediawiki.legacy.enhancedchanges' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.enhancedchanges.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.history' => array(
+	) ),
+	'mediawiki.legacy.history' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.history.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.htmlform' => array(
+	) ),
+	'mediawiki.legacy.htmlform' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.htmlform.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.IEFixes' => array(
+	) ),
+	'mediawiki.legacy.IEFixes' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.IEFixes.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.metadata' => array(
+	) ),
+	'mediawiki.legacy.metadata' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.metadata.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.mwsuggest' => array(
+	) ),
+	'mediawiki.legacy.mwsuggest' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.mwsuggest.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.prefs' => array(
+	) ),
+	'mediawiki.legacy.prefs' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.prefs.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.preview' => array(
+	) ),
+	'mediawiki.legacy.preview' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.preview.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.protect' => array(
+	) ),
+	'mediawiki.legacy.protect' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.protect.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.rightclickedit' => array(
+	) ),
+	'mediawiki.legacy.rightclickedit' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.rightclickedit.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.search' => array(
+	) ),
+	'mediawiki.legacy.search' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.search.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.upload' => array(
+	) ),
+	'mediawiki.legacy.upload' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.upload.js',
 		'dependencies' => 'mediawiki',
-	),
-	'mediawiki.legacy.wikibits' => array(
+	) ),
+	'mediawiki.legacy.wikibits' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/legacy/mediawiki.legacy.wikibits.js',
 		'dependencies' => 'mediawiki',
 		'messages' => array( 'showtoc', 'hidetoc' ),
-	),
+	) ),
 	
 	/* MediaWiki Utilities */
 	
-	'mediawiki.utilities.client' => array(
+	'mediawiki.utilities.client' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/utilities/mediawiki.utilities.client.js',
-	),
+	) ),
 	
 	/* MediaWiki Views */
 	
-	'mediawiki.views.diff' => array(
+	'mediawiki.views.diff' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/views/mediawiki.views.diff.js',
-	),
-	'mediawiki.views.install' => array(
+	) ),
+	'mediawiki.views.install' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/mediawiki/views/mediawiki.views.install.js',
-	),
+	) ),
 	
 	/* Test */
 	
-	'test' => array(
+	'test' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/test/test.js',
 		'dependencies' => 'foo',
 		'styles' => 'resources/test/test.css',
-	),
-	'foo' => array(
+	) ),
+	'foo' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/test/foo.js',
 		'dependencies' => 'bar',
 		'styles' => 'resources/test/foo.css',
 		'messages' => array( 'january', 'february', 'march', 'april', 'may', 'june' ),
-	),
-	'bar' => array(
+	) ),
+	'bar' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/test/bar.js',
 		'dependencies' => 'buz',
 		'styles' => 'resources/test/bar.css',
 		'messages' => array( 'july', 'august', 'september', 'october', 'november', 'december' ),
-	),
-	'buz' => array(
+	) ),
+	'buz' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/test/buz.js',
 		'dependencies' => 'baz',
 		'styles' => 'resources/test/buz.css',
-	),
-	'baz' => array(
+	) ),
+	'baz' => new ResourceLoaderModule( array(
 		'scripts' => 'resources/test/baz.js',
 		'styles' => 'resources/test/baz.css',
-	),
+	) ),
 ) );

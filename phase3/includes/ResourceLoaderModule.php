@@ -36,12 +36,30 @@ class ResourceLoaderModule {
 	/**
 	 * Construct a new module from an options array.
 	 *
-	 * Keys recognized in options array are 'script', 'debug', 'locales',
-	 * 'themes', 'raw', 'needs', 'style' and 'messages'. For more
-	 * information, see their respective setters: addScripts(),
-	 * addDebugScripts(), addLanguageScripts(), addSkinStyles(), setRaw(),
-	 * addDependencies(), addStyles() and addMessages()
 	 * @param $options array Options array. If empty, an empty module will be constructed
+	 * 
+	 * $options format:
+	 * 	array(
+	 * 		// Required module options (mutually exclusive)
+	 * 		'scripts' => 'dir/script.js' | array( 'dir/script1.js', 'dir/script2.js' ... ),
+	 *		
+	 * 		// Optional module options
+	 * 		'languageScripts' => array(
+	 * 			'[lang name]' => 'dir/lang.js' | '[lang name]' => array( 'dir/lang1.js', 'dir/lang2.js' ... )
+	 * 			...
+	 * 		),
+	 * 		'debugScripts' => 'dir/debug.js' | array( 'dir/debug1.js', 'dir/debug2.js' ... ),
+	 * 
+	 * 		// Non-raw module options
+	 * 		'dependencies' => 'module' | array( 'module1', 'module2' ... )
+	 * 		'loaderScripts' => 'dir/loader.js' | array( 'dir/loader1.js', 'dir/loader2.js' ... ),
+	 * 		'styles' => 'dir/file.css' | array( 'dir/file1.css', 'dir/file2.css' ... ),
+	 * 		'skinStyles' => array(
+	 * 			'[skin name]' => 'dir/theme.css' | '[skin name]' => array( 'dir/theme1.css', 'dir/theme2.css' ... )
+	 * 			...
+	 * 		),
+	 * 		'messages' => array( 'message1', 'message2' ... ),
+	 * 	)
 	 */
 	public function __construct( $options = array() ) {
 		foreach ( $options as $option => $value ) {

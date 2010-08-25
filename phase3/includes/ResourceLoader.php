@@ -114,58 +114,30 @@ class ResourceLoader {
 	/**
 	 * Registers a module with the ResourceLoader system
 	 * 
-	 * @param {mixed} $module string of name of module or array of name/options pairs
-	 * @param {array} $options module options (optional when using multiple-registration calling style)
+	 * @param {mixed} $name string of name of module or array of name/object pairs
+	 * @param {ResourceLoaderModule} $object module object (optional when using multiple-registration calling style)
 	 * @return {boolean} false if there were any errors, in which case one or more modules were not registered
-	 * 
-	 * $options format:
-	 * 	array(
-	 * 		// Required module options (mutually exclusive)
-	 * 		'script' => 'dir/script.js' | array( 'dir/script1.js', 'dir/script2.js' ... ),
-	 * 		'callback' => callback,
-	 *
-	 * 		// Optional module options
-	 * 		'locales' => array(
-	 * 			'[locale name]' => 'dir/locale.js' | '[locale name]' => array( 'dir/locale1.js', 'dir/locale2.js' ... )
-	 * 			...
-	 * 		),
-	 * 		'debug' => 'dir/debug.js' | array( 'dir/debug1.js', 'dir/debug2.js' ... ),
-	 * 		'raw' => true | false,
-	 * 		// Non-raw module options
-	 * 		'needs' => 'module' | array( 'module1', 'module2' ... )
-	 * 		'loader' => 'dir/loader.js' | array( 'dir/loader1.js', 'dir/loader2.js' ... ),
-	 * 		'style' => 'dir/file.css' | array( 'dir/file1.css', 'dir/file2.css' ... ),
-	 * 		'themes' => array(
-	 * 			'[skin name]' => 'dir/theme.css' | '[skin name]' => array( 'dir/theme1.css', 'dir/theme2.css' ... )
-	 * 			...
-	 * 		),
-	 * 		'messages' => array( 'message1', 'message2' ... ),
-	 * 		'class' => 'classname', // Defaults to ResourceLoaderModule if not given
-	 * 	)
 	 * 
 	 * @todo We need much more clever error reporting, not just in detailing what happened, but in bringing errors to
 	 * the client in a way that they can easily see them if they want to, such as by using FireBug
 	 */
-	public static function register( $module, $options = array() ) {
+	public static function register( $name, ResourceLoaderModule $object = null ) {
 		// Allow multiple modules to be registered in one call
-		if ( is_array( $module ) && empty( $options ) ) {
-			foreach ( $module as $name => $options ) {
-				self::register( $name, $options );
+		if ( is_array( $name ) && !isset( $object ) ) {
+			foreach ( $name as $key => $value ) {
+				self::register( $key, $value );
 			}
 			return;
 		}
 		// Disallow duplicate registrations
-		if ( isset( self::$modules[$module] ) ) {
+		if ( isset( self::$modules[$name] ) ) {
 			// A module has already been registered by this name
-			throw new MWException( 'Another module has already been registered as ' . $module );
+			throw new MWException( 'Another module has already been registered as ' . $name );
 		}
-		
-		// Determine class
-		$class = isset( $options['class'] ) ? $options['class'] : 'ResourceLoaderModule';
-		
 		// Attach module
-		self::$modules[$module] = new $class( $options );
+		self::$modules[$name] = $object;
 	}
+	
 	/**
 	 * Gets a map of all modules and their options
 	 *
