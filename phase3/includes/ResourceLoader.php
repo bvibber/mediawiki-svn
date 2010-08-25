@@ -168,6 +168,7 @@ class ResourceLoader {
 	 * 		'skin' => [string: name of skin, optional, name of default skin by default],
 	 * 		'dir' => [string: 'ltr' or 'rtl', optional, direction of lang by default],
 	 * 		'debug' => [boolean: true to include debug-only scripts, optional, false by default],
+	 * 		'only' => [string: 'scripts', 'styles' or 'messages', optional, if set only get part of the requested module]
 	 * 	)
 	 */
 	public static function respond( WebRequest $request, $server ) {
@@ -178,6 +179,7 @@ class ResourceLoader {
 			'lang' => $request->getVal( 'lang', $wgLang->getCode() ),
 			'skin' => $request->getVal( 'skin', $wgDefaultSkin ),
 			'debug' => $request->getVal( 'debug' ),
+			'only' => $request->getVal( 'only' ),
 		);
 		// Mediawiki's WebRequest::getBool is a bit on the annoying side - we need to allow 'true' and 'false' values
 		// to be converted to boolean true and false
@@ -207,18 +209,6 @@ class ResourceLoader {
 		}
 		// Use output buffering
 		ob_start();
-		// Output raw modules first and build a list of raw modules to be registered with ready status later on
-		$ready = array();
-		foreach ( $modules as $name ) {
-			$module = self::getModule( $name );
-			if ( $module->isRaw() ) {
-				echo $module->getScript();
-				if ( $parameters['debug'] ) {
-					echo $module->getDebugScript();
-				}
-				$ready[] = $name;
-			}
-		}
 		// Special meta-information for the 'mediawiki' module
 		if ( in_array( 'mediawiki', $modules ) ) {
 			$config = array( 'server' => $server, 'debug', 'debug' => $parameters['debug'] );
@@ -231,14 +221,11 @@ class ResourceLoader {
 				if ( $loader !== false ) {
 					echo $loader;
 				} else {
-					if ( !count( $module->getDependencies() ) &&
-							!in_array( $name, $ready ) && !in_array( $name, $missing ) ) {
+					if ( !count( $module->getDependencies() ) && !in_array( $name, $missing ) ) {
 						$registrations[$name] = $name;
 					} else {
 						$registrations[$name] = array( $name, $module->getDependencies() );
-						if ( in_array( $name, $ready ) ) {
-							$registrations[$name][] = 'ready';
-						} else if ( in_array( $name, $missing ) ) {
+						if ( in_array( $name, $missing ) ) {
 							$registrations[$name][] = 'missing';
 						}
 					}
@@ -251,34 +238,32 @@ class ResourceLoader {
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
 		foreach ( $modules as $name ) {
 			$module = self::getModule( $name );
-			if ( !$module->isRaw() ) {
-				// Script
-				$script = $module->getScript();
-				// Debug
-				if ( $parameters['debug'] ) {
-					$script .= $module->getDebugScript();
-				}
-				// Language-specific scripts
-				$script .= $module->getLanguageScript( $parameters['lang'] );
-				// Style
-				$style = $module->getStyle();
-				// Skin-specific styles
-				$style .= $module->getSkinStyle( $parameters['skin'] );
-				
-				if ( $style !== '' ) {
-					if ( $parameters['dir'] == 'rtl' ) {
-						$style = self::filter( 'flip-css', $style );
-					}
-					$style = Xml::escapeJsString(
-						$parameters['debug'] ?
-							$style : self::filter( 'minify-css', $style )
-					);
-				}
-				// Messages
-				$messages = isset( $blobs[$name] ) ? $blobs[$name] : '{}';
-				// Output
-				echo "mediaWiki.loader.implement( '{$name}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
+			// Script
+			$script = $module->getScript();
+			// Debug
+			if ( $parameters['debug'] ) {
+				$script .= $module->getDebugScript();
 			}
+			// Language-specific scripts
+			$script .= $module->getLanguageScript( $parameters['lang'] );
+			// Style
+			$style = $module->getStyle();
+			// Skin-specific styles
+			$style .= $module->getSkinStyle( $parameters['skin'] );
+			
+			if ( $style !== '' ) {
+				if ( $parameters['dir'] == 'rtl' ) {
+					$style = self::filter( 'flip-css', $style );
+				}
+				$style = Xml::escapeJsString(
+					$parameters['debug'] ?
+						$style : self::filter( 'minify-css', $style )
+				);
+			}
+			// Messages
+			$messages = isset( $blobs[$name] ) ? $blobs[$name] : '{}';
+			// Output
+			echo "mediaWiki.loader.implement( '{$name}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
 		}
 		// Set headers -- when we support CSS only mode, this might change!
 		header( 'Content-Type: text/javascript' );
