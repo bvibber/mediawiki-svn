@@ -2407,7 +2407,7 @@ class OutputPage {
 	/**
 	 * @return string HTML tag links to be put in the header.
 	 */
-	public function getHeadLinks() {
+	public function getHeadLinks( $sk ) {
 		global $wgFeed, $wgRequest;
 
 		// Ideally this should happen earlier, somewhere. :P
@@ -2481,11 +2481,11 @@ class OutputPage {
 		// Support individual script requests in debug mode
 		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
 			foreach ( $this->getModuleStyles() as $name ) {
-				$tags .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
+				$tags[] = self::makeResourceLoaderLink( $sk, $name, 'styles' );
 			}
 		} else {
 			if ( count( $this->getModuleStyles() ) ) {
-				$tags .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
+				$tags[] = self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
 			}
 		}
 		
