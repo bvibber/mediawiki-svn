@@ -189,6 +189,24 @@ class ResourceLoader {
 			$lang = Language::factory( $parameters['lang'] );
 			$parameters['dir'] = $lang->getDir();
 		}
+		$includeScripts = false;
+		$includeStyles = false;
+		$includeMessages = false;
+		switch ( $parameters['only'] ) {
+			case 'scripts':
+				$includeScripts = true;
+				break;
+			case 'styles':
+				$includeStyles = true;
+				break;
+			case 'messages':
+				$includeMessages = true;
+				break;
+			default:
+				$includeScripts = true;
+				$includeStyles = true;
+				$includeMessages = true;
+		}
 		
 		// Set parameters on all modules
 		// FIXME: This sucks
@@ -238,40 +256,54 @@ class ResourceLoader {
 		$blobs = MessageBlobStore::get( $modules, $parameters['lang'] );
 		foreach ( $modules as $name ) {
 			$module = self::getModule( $name );
-			// Script
-			$script = $module->getScript();
-			// Debug
-			if ( $parameters['debug'] ) {
-				$script .= $module->getDebugScript();
-			}
-			// Language-specific scripts
-			$script .= $module->getLanguageScript( $parameters['lang'] );
-			// Style
-			$style = $module->getStyle();
-			// Skin-specific styles
-			$style .= $module->getSkinStyle( $parameters['skin'] );
 			
-			if ( $style !== '' ) {
+			// Scripts
+			$scripts = '';
+			if ( $includeScripts ) {
+				$scripts .= $module->getScript();
+				if ( $parameters['debug'] ) {
+					$script .= $module->getDebugScript();
+				}
+				$scripts .= $module->getLanguageScript( $parameters['lang'] );
+				$scripts .= $module->getSkinScript( $parameters['skin'] );
+			}
+			
+			// Styles
+			$styles = '';
+			if ( $includeStyles ) {
+				$styles .= $module->getStyle();
+				$styles .= $module->getSkinStyle( $parameters['skin'] );
+			}
+			
+			if ( $styles !== '' ) {
 				if ( $parameters['dir'] == 'rtl' ) {
 					$style = self::filter( 'flip-css', $style );
 				}
-				$style = Xml::escapeJsString(
-					$parameters['debug'] ?
-						$style : self::filter( 'minify-css', $style )
-				);
+				$styles = $parameters['debug'] ? $styles : self::filter( 'minify-css', $styles );
 			}
 			// Messages
-			$messages = isset( $blobs[$name] ) ? $blobs[$name] : '{}';
+			$messages = $includeMessages && isset( $blobs[$name] ) ? $blobs[$name] : '{}';
 			// Output
-			echo "mediaWiki.loader.implement( '{$name}', function() {\n{$script}\n}, '{$style}', {$messages} );\n";
+			if ( $parameters['only'] == 'styles' ) {
+				echo $styles;
+			} else if ( $parameters['only'] == 'messages' ) {
+				echo "mediaWiki.msg.set( $messages );\n";
+			} else {
+				$styles = Xml::escapeJsString( $styles );
+				echo "mediaWiki.loader.implement( '{$name}', function() {\n{$scripts}\n}, '{$styles}', {$messages} );\n";
+			}
 		}
-		// Set headers -- when we support CSS only mode, this might change!
-		header( 'Content-Type: text/javascript' );
+		
 		// Final processing
-		if ( $parameters['debug'] ) {
-			ob_end_flush();
+		if ( $parameters['only'] == 'styles' ) {
+			header( 'Content-Type: text/css' );
 		} else {
-			echo self::filter( 'minify-js', ob_get_clean() );
+			header( 'Content-Type: text/javascript' );
+			if ( $parameters['debug'] ) {
+				ob_end_flush();
+			} else {
+				echo self::filter( 'minify-js', ob_get_clean() );
+			}
 		}
 	}
 }
