@@ -818,3 +818,15 @@ $messages['vo'] = array(
 	'categoryintersection-results' => 'Suk elabon {{PLURAL:$1|seki|sekis}} $1.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
+$messages['zh-hans'] = array(
+	'categoryintersection' => '交叉分类',
+	'categoryintersection-desc' => '在一个页面中维护[[Special:CategoryIntersection|分类交叉]]的哈希表。',
+	'categoryintersection-doit' => '这些分类的所有列表页',
+	'categoryintersection-maxcategories' => '允许的交叉分类最大值是$1 。',
+	'categoryintersection-mincategories' => '你需要包括至少两个分类。',
+	'categoryintersection-results' => '搜索返回了$1 个结果。',
+);
+

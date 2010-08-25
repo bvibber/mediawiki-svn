@@ -106,6 +106,13 @@ $messages['id'] = array(
 	'sidebardonatebox-desc' => 'Tambahkan sebuah kotak donasi kustom ke sidebar',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'sidebardonatebox-desc' => 'Aggiunge alla barra laterale un bottone personalizzato per le donazioni',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

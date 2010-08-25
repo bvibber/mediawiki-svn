@@ -342,10 +342,16 @@ $messages['ext'] = array(
 /** Persian (فارسی)
  * @author Huji
  * @author Mardetanha
+ * @author Sahim
  */
 $messages['fa'] = array(
+	'ajaxshoweditors-desc' => 'ویرایش‌های کاربران را نمایش می‌دهد که چه کسی همان صفحه را ویرایش کرده است',
 	'ajax-se-title' => 'در حال ویرایش:',
+	'ajax-se-pending' => 'در انتظار بازیابی... (این جعبه را انتخاب کنید یا اینکه ویرایش‌کردن را شروع کنید)',
+	'ajax-se-idling' => '(ثانیه قبل$1)',
 	'ajax-se-pagedoesnotexist' => 'صفحه وجود ندارد',
+	'ajax-se-userinvalid' => 'خطا: کاربر بی‌اعتبار',
+	'ajax-se-usernotfound' => 'خطا: کاربر یافت نشد',
 );
 
 /** Finnish (Suomi)

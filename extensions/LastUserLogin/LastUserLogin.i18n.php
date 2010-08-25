@@ -584,6 +584,20 @@ $messages['tl'] = array(
 	'right-lastlogin' => 'Tingnan ang huling oras ng paglagda ng isang tagagamit',
 );
 
+/** Turkish (Türkçe)
+ * @author Manco Capac
+ */
+$messages['tr'] = array(
+	'lastuserlogin' => 'Son çevrimiçi olan kullanıcı',
+	'lastuserlogin-desc' => 'Kullanıcının en son çevrimiçi olduğunu zamanı gösterir',
+	'lastuserlogin_userid' => 'Kullanıcı adı',
+	'lastuserlogin_username' => 'Gerçwk ad',
+	'lastuserlogin_useremail' => 'Kullanıcı eposta',
+	'lastuserlogin_lastlogin' => 'Son çevrimiçi',
+	'lastuserlogin_daysago' => 'Kaç gün önce',
+	'right-lastlogin' => 'Bir kullanıcının çevrimiçi olduğu en son zamanı göster',
+);
+
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na

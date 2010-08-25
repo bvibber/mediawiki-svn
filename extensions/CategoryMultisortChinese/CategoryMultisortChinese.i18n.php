@@ -407,11 +407,22 @@ $messages['ru'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
+	'categorymultisortchinese-desc' => '允许分类按照中文的不同顺序表排序。',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => '普通话：拼音',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => '普通话：声母音序',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => '普通话：威氏拼音法',
+	'categorymultisort-sortkey-name-mandarin-mps2' => '普通话：注音符号第二式',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => '普通话：通用拼音',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => '粤语：粤拼',
 	'categorymultisort-sortkey-name-stroke-simplified' => '中文（简体）',
 	'categorymultisort-sortkey-name-stroke-traditional' => '中文（繁体）',
+	'categorymultisort-sortkey-name-radical' => '部首',
+	'categorymultisort-sortkey-name-radical-simplified' => '简体部首',
+	'categorymultisort-sortkey-name-radical-traditional' => '繁体部首',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */

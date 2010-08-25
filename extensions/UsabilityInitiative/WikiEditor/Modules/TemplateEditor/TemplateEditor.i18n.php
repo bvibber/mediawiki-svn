@@ -659,6 +659,7 @@ $messages['mt'] = array(
  * @author Ricardo gs
  */
 $messages['nah'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Ticpatlāz nemachiyōtīlli',
 	'wikieditor-template-editor-dialog-cancel' => 'Ticcuepāz',
 );
 

@@ -1102,9 +1102,10 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
-	'multipleupload' => 'Tiquinquetzāz tlahcuilōlli',
+	'multipleupload' => 'Titlahcuilōlquetzāz',
 );
 
 /** Dutch (Nederlands)
@@ -1581,7 +1582,24 @@ Opassande filer raderas omedelbart, se [[{{MediaWiki:Multipleupload-page}}|riktl
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'multipleupload' => 'ஒன்றுக்கு மேற்பட்ட கோப்புக்களை பதிவேற்றம் செய்யவும்',
+	'multiupload-desc' => '[[Special:MultipleUpload|பல கோப்புக்களை உடனே பதிவேற்றம் செய்ய]] இது பயனர்களை அனுமதிக்கிறது',
+	'multipleupload-ignoreallwarnings' => "'''எல்லாவிதமான எச்சரிக்கைகளையும்''' ஒதுக்கித்தள்ளிவிட்டு கோப்புக்களை எப்படியாவது சேமிக்கவும்.",
 	'multipleupload-saveallfiles' => 'அனைத்துக் கோப்புகளையும் சேமி',
+	'multipleupload-addresswarnings' => 'கோப்புக்களைத் திரும்பவும் மறுபதிவேற்றம் செய்யும் முன்பு, விடுக்கப்பட்ட எச்சரிக்கைகளைக் கவனித்து தீர்வுகாணவும்.',
+	'multipleupload-page' => '{{ns:project}}:கோப்பு நீக்கக் கொள்கை',
+	'multipleupload-text' => "இங்கு ஒன்றுக்கு மேற்பட்ட கோப்புக்களை பதிவேற்றவும்
+
+'உலாவு (Browse)' என்பதனைத் தெரிவு செய்து, தாங்கள் பதிவேற்றம் செய்ய வேண்டிய கோப்புக்களைத் தேர்ந்தெடுங்கள். 
+தாங்கள் 1 முதல் $1 கோப்புக்களை ஒரே நேரத்தில் பதிவேற்றம் செய்ய முடியும்.
+
+தாங்கள் விருப்பப்பட்டால் '''இலக்குக்கோப்பின்''' பெயரைக்குறிப்பிடலாம். மேலும் கோப்பினை பற்றிய விவரங்களை ஒரு '''சிறுகுறிப்பாக''' கொடுக்கவும்.
+
+பொருத்தமில்லாத, ஒத்துவராத கோப்புக்களை உடனே நீக்கப்படும். [[{{MediaWiki:Multipleupload-page}}|கோப்பு நீக்கக் கொள்கையை]].
+காணவும்",
+	'multiupload-fileuploaded' => 'கோப்பை பதிவேற்றம் செய்யப்பட்டுவிட்டது.',
+	'multiupload-toolbox' => 'ஒன்றுக்கு மேற்பட்ட கோப்புக்களை பதிவேற்றம் செய்யவும்',
+	'multiupload-no-files' => 'பதிவேற்றம் செய்ய குறைந்த பட்சம் ஒரு கோப்பையாவது தயவுசெய்து தேர்ந்தெடுக்கவும்',
 	'multiupload-blank' => 'எந்த கோப்பையும் தெரிவுச்செய்யவில்லை',
 );
 

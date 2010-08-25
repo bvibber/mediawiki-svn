@@ -974,6 +974,7 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
  * @author Pahles
  */
 $messages['li'] = array(
@@ -983,13 +984,14 @@ $messages['li'] = array(
 	'authorprotect-confirm' => 'Beveiligingsniveau verangere',
 	'authorprotect-edit' => 'Elein bewirke door auteurs',
 	'authorprotect-move' => 'Elein hernoeme door auteurs',
-	'authorprotect-expiry' => 'Verlouptied',
-	'authorprotect-reason' => 'Raej',
+	'authorprotect-expiry' => 'Verlouptied:',
+	'authorprotect-reason' => 'Raej:',
 	'authorprotect-intro' => 'Gebroek dit formuleer om de pagina veur neet-auteurs te beveilige',
 	'authorprotect-success' => 'Beveiliging ingesjtèld!',
 	'authorprotect-failure' => 'Beveiliging neet ingesjtèld',
 	'protect-level-author' => 'Beveilige veur neet-auteurs',
 	'restriction-level-author' => 'Elein te bewirke door auteurs',
+	'right-authorprotect' => 'Beveilig zèlfbewèrkdje ziej',
 );
 
 /** Lithuanian (Lietuvių)

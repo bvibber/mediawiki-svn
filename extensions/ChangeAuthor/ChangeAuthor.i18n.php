@@ -2386,7 +2386,9 @@ $messages['yue'] = array(
 	'changeauthor-logpagename' => '作者更動日誌',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
 $messages['zh-hans'] = array(
 	'changeauthor' => '更改修订版本作者',
 	'changeauthor-desc' => '更改指定修订版本的作者',
@@ -2395,7 +2397,7 @@ $messages['zh-hans'] = array(
 	'changeauthor-pagename-or-revid' => '页面名称或修定版本号码：',
 	'changeauthor-pagenameform-go' => '寻找',
 	'changeauthor-comment' => '理由：',
-	'changeauthor-changeauthors-multi' => '{{int:changeauthor-changeauthors-single}}',
+	'changeauthor-changeauthors-multi' => '变更{{PLURAL:$1|作者|作者们}}',
 	'changeauthor-explanation-multi' => '您可以在这个表单中更改任一修订版本的作者。
 更改完成后请输入更改理由并按下“{{int:changeauthor-changeauthors-single}}”以完成更改。',
 	'changeauthor-changeauthors-single' => '更改作者',

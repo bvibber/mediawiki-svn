@@ -802,9 +802,11 @@ $messages['vo'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'categorywatch-emailsubject' => '在被监视的分类"$1"中的活动',
 	'categorywatch-catmovein' => '$1已经由$2搬到$3。',
 	'categorywatch-catmoveout' => '$1已经移离$2并改到$3',
 	'categorywatch-catadd' => '已把$1新增至分类$2',

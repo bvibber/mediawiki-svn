@@ -2291,9 +2291,10 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
-	'youtubeauthsub' => 'Vīdeoquetza īhuīc YouTube',
+	'youtubeauthsub' => 'Videoquetza īhuīc YouTube',
 	'youtubeauthsub_title' => 'Tōcāitl',
 	'youtubeauthsub_password' => 'YouTube tlahtōlichtacāyōtl',
 	'youtubeauthsub_username' => 'YouTube tlatequitiltilīltōcāitl',

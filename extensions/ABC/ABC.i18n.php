@@ -637,9 +637,10 @@ $messages['mzn'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
-	'abc-desc' => 'Ticcēntilīz <code>&lt;abc&gt;</code> ic tictequitiltīz ABC cuīcayōtlahtōl',
+	'abc-desc' => 'Ticcēntilīz <code>&lt;abc&gt;</code> ic tictequitiltīz ABC cuīcayōtlahtōliztli',
 	'abcdownload' => 'Tictemōz:',
 );
 

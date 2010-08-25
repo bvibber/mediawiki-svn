@@ -202,6 +202,23 @@ Introduza o nome do usuario ou enderezo IP para obter unha lista das páxinas pa
 	'right-massblank' => 'Baleirar páxinas en masa',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'massblank' => 'Masseläärig',
+	'massblank-desc' => 'Git Ammanne d Megligkeit fir e [[Special:MassBlank|Masseläärig]] vu Syte',
+	'massblank-nopages' => 'In dr Letschte Änderige het s kei neije Syte vu [[Special:Contributions/$1|$1]].',
+	'massblank-list' => 'Die Syte sin vu [[Special:Contributions/$1|$1]] aagleit wore;
+gib e Kommentar yy un druck uf dr Chnopf zum Lääre vu dr Syte.',
+	'massblank-defaultreason' => 'Masseläärig vu Syte, wu vu „$1“ aagleit wore sin',
+	'massblank-tools' => 'Des Wärchzyyg git d Megligkeit fir e Masseläärig vu Syte, wu vun ere IP-Adräss oder vun eme Benutzer aagleit wore sin. Gib d IP-Adräss/dr Benutzername yy fir ne Lischt z iberchu vu Syte, wu mien gläärt wäre.',
+	'massblank-submit-user' => 'Suech',
+	'massblank-submit-blank' => 'Uusgwehlti Syte lääre',
+	'massblank-blankcomment' => 'Grund:',
+	'right-massblank' => 'Masseläärig vu Syte',
+);
+
 /** Hausa (هَوُسَ) */
 $messages['ha'] = array(
 	'massblank-blankcomment' => 'Dalili:',

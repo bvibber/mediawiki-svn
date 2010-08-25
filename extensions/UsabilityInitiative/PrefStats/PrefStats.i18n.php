@@ -1796,6 +1796,7 @@ $messages['myv'] = array(
  * @author Ricardo gs
  */
 $messages['nah'] = array(
+	'prefstats-factors' => 'Ōquitto in: $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'chicuacē horas',
 	'prefstats-factor-day' => 'tōnalli',

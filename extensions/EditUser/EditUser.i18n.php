@@ -1282,15 +1282,16 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Karduelis
+ * @author Manco Capac
  * @author Vito Genovese
  */
 $messages['tr'] = array(
 	'edituser-desc' => 'Ayrıcalıklı kullanıcıların diğer kullanıcıların tercihlerini değiştirmesini mümkün kılar',
 	'edituser' => 'Kullanıcıyı düzenle',
-	'edituser-username' => 'Adı',
+	'edituser-username' => 'Kullanıcı adı:',
 	'edituser-dosearch' => 'Ara',
-	'edituser-nouser' => 'Belirtilen kullanıcı mevcut değil',
-	'edituser-exempt' => 'Belirtilen kullanıcı düzenlenemiyor',
+	'edituser-nouser' => '"$1" kullanıcısı mevcut değil.',
+	'edituser-exempt' => '"$1" kullanıcısı düzenlenemiyor.',
 	'right-edituser' => 'Diğer kullanıcıların tercihlerini düzenler',
 	'right-edituser-exempt' => 'Başkaları bu kullanıcının tercihlerini düzenleyemez',
 );

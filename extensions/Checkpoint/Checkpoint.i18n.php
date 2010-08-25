@@ -379,9 +379,13 @@ $messages['tr'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
  * @author Wilsonmess
  */
 $messages['zh-hans'] = array(
 	'checkpoint' => '保存并继续编辑',
+	'checkpoint-desc' => '允许用户保存正在进行的编辑并恢复编辑',
+	'checkpoint-tooltip' => '保存你的进度并继续编辑',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|保存点]])',
 );
 

@@ -561,11 +561,12 @@ $messages['ml'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
-	'whatismyip' => 'Tlein cah noIP',
-	'whatismyip-desc' => 'Tiquittāz inīn tlatequitiltilīlli āxcān īIP īpan [[Nōncuahquīzqui:TleinCahNoIP]]',
-	'whatismyip-out' => 'MoIP:',
+	'whatismyip' => 'Catlehhuatl noIP',
+	'whatismyip-desc' => 'Tiquittāz inīn tlatequitiltilīlli āxcān īIP īpan [[Special:WhatIsMyIP|tlapōhualli IP]]',
+	'whatismyip-out' => 'Motlāpohual IP:',
 );
 
 /** Dutch (Nederlands)

@@ -433,6 +433,24 @@ $messages['eu'] = array(
 	'adminlinks_importexport' => 'Inportatu eta esportatu',
 );
 
+/** Persian (فارسی)
+ * @author Sahim
+ */
+$messages['fa'] = array(
+	'adminlinks' => 'لینک‌های مدیران',
+	'adminlinks-desc' => 'اضافه کردن یک [[Special:AdminLinks|صفحه ویژه]] که دارای لینک‌های مفید برای مدیران است',
+	'adminlinks_documentation' => '$1 مستند شده',
+	'adminlinks_general' => 'عمومی',
+	'adminlinks_editsidebar' => 'نوار ویرایش',
+	'adminlinks_editcss' => 'ویرایش فایل CSS',
+	'adminlinks_editmainpagename' => 'ویرایش نام از طریق صفحه اصلی',
+	'adminlinks_users' => 'کاربرها',
+	'adminlinks_createuser' => 'ساخت یک کاربر',
+	'adminlinks_browsesearch' => 'مرور و جستجو',
+	'adminlinks_importexport' => 'ورودی و خروجی',
+	'right-adminlinks' => 'لینک به [[Special:AdminLinks|لینک‌های مدیران]] را ببینید',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

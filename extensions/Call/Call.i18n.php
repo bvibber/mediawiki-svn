@@ -797,6 +797,13 @@ $messages['mt'] = array(
 	'call-save-failed' => 'Dan it-test segwenti ma ġiex salvat fuq il-paġna <big>[[$1]]</big> minħabba li din il-paġna diġà teżisti.',
 );
 
+/** Nahuatl (Nāhuatl)
+ * @author Ricardo gs
+ */
+$messages['nah'] = array(
+	'call' => 'Ticnōtzāz',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

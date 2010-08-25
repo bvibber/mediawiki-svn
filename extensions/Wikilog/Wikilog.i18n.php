@@ -7013,6 +7013,7 @@ Yorum, bir moderatör tarafından incelendikten sonra görülecek.',
 /** Ukrainian (Українська)
  * @author AS
  * @author Aleksandrit
+ * @author Alex Khimich
  * @author Arturyatsko
  * @author JenVan
  * @author Prima klasy4na
@@ -7065,7 +7066,7 @@ $messages['uk'] = array(
 	'wikilog-comment-permalink' => '$1 о $2',
 	'wikilog-comment-pending' => 'Цей коментар чекає на розгляд.',
 	'wikilog-comment-deleted' => 'Цей коментар був вилучений.',
-	'wikilog-comment-omitted-x' => 'Коментар не вказаний (# $ 1).',
+	'wikilog-comment-omitted-x' => 'Коментар не вказаний (#$1).',
 	'wikilog-comment-autosumm' => 'Новий коментар від $1: $2',
 	'wikilog-reply-to-comment' => 'Відповісти на цей коментар',
 	'wikilog-comment-page' => 'Перейти на сторінку цього коментарю',
@@ -7074,9 +7075,13 @@ $messages['uk'] = array(
 	'wikilog-comment-history' => 'Переглянути історію коментаря',
 	'wikilog-comment-approve' => 'Затвердити цей коментар (негайна дія)',
 	'wikilog-comment-reject' => 'Відхилити цей коментар (негайна дія)',
+	'wikilog-newtalk-text' => '<!-- Чиста сторінка створена Вікілогом -->',
+	'wikilog-newtalk-summary' => 'створена автоматично Вікілогом',
+	'wikilog-feed-ns-title' => '$1 статтей вікілогу',
 	'wikilog-feed-description' => 'Читати останні повідомлення на цьому каналі.',
 	'wikilog-comment-feed-title1' => 'Коментар від $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Коментар від $2 до $3 (#$1)',
+	'wikilog-comment-feed-description' => 'Читати самі останні коментарі в цьому каналі.',
 	'wikilog-title-comments' => 'Коментарі — $1',
 	'wikilog-error-msg' => 'Вікілоґ: $1',
 	'wikilog-error-title' => 'Помилка вікілогу',

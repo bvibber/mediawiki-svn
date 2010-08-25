@@ -252,6 +252,13 @@ $messages['ksh'] = array(
 	'clientside-desc' => 'Jitt uns Fungxjohne för Kood udder Daate en Fomaate for der Aanwender ze maache, zem Beijshpell als <i lang="en">HTML</i>, <i lang="en">CSS</i>, un JavaSkrepp.',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'clientside-desc' => "Bijtj functies veur 't generere van code in client-sideformate wie HTML, CSS en JavaScript",
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

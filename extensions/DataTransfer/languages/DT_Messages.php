@@ -1916,6 +1916,8 @@ $messages['ta'] = array(
 	'dt_xml_template' => 'வார்ப்புரு',
 	'dt_xml_name' => 'பெயர்',
 	'dt_xml_title' => 'தலைப்பு',
+	'dt_xml_id' => 'அடையாளம்',
+	'dt_xml_freetext' => 'எந்த கட்டுப்பாடும் இல்லா சொற்றொடர்',
 );
 
 /** Telugu (తెలుగు)
@@ -2024,6 +2026,7 @@ $messages['tl'] = array(
  * @author Joseph
  * @author Karduelis
  * @author Mach
+ * @author Manco Capac
  * @author Srhat
  * @author Vito Genovese
  */
@@ -2046,6 +2049,7 @@ $messages['tr'] = array(
 	'importxml' => 'XML içe aktar',
 	'dt_import_selectfile' => 'Lütfen içe aktarmak için $1 dosyasını seçin:',
 	'dt_import_encodingtype' => 'Kodlama türü',
+	'dt_import_summarydesc' => 'İçe aktarma özeti:',
 	'dt_import_editsummary' => '$1 içe aktarımı',
 	'dt_import_importing' => 'İçe aktarıyor...',
 	'dt_import_success' => '$2 dosyasından $1 {{PLURAL:$1|sayfa|sayfa}} oluşturulacak.',

@@ -515,6 +515,18 @@ Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
 	'right-purewikideletion' => "[[Special:PopulateBlankedPagesTable|De tabel met leggemaakte pagina's vullen]]",
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'purewikideletion' => 'Dokładne czyszczenie wiki',
+	'randomexcludeblank' => 'Losowa strona (bez pustych)',
+	'populateblankedpagestable' => 'Wypełnij spis pustych stron',
+	'purewikideletion-desc' => 'Między innymi powoduje oznaczenie czerwonym kolorem linków do pustych stron',
+	'purewikideletion-pref-watchblank' => 'Dodawaj strony, których treść usunąłem do mojej listy obserwowanych',
+	'purewikideletion-pref-watchunblank' => 'Dodawaj strony, których treść odtworzyłem do mojej listy obserwowanych',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

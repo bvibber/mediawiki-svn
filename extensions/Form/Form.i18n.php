@@ -1627,10 +1627,30 @@ $messages['tt-cyrl'] = array(
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Alex Khimich
  */
 $messages['uk'] = array(
+	'form-desc' => '[[Special:Form|Інтерфейс]] (в вигляді форми) для створення нових сторінок',
+	'form' => 'Форма',
+	'formnoname' => 'Немає імені форми',
+	'formnonametext' => 'Ви повинні вказати ім\'я форми, наприклад, "Special:Form/Ім\'яформи".',
+	'formbadname' => "Невірне ім'я форми",
+	'formbadnametext' => "З таким ім'ям форми не існує.",
+	'formpattern' => '$1-форма',
+	'formtitlepattern' => 'Додати нову $1',
 	'formsave' => 'Зберегти',
+	'formindexmismatch-title' => 'Невідповідність зразку та шаблону',
+	'formindexmismatch' => 'Ця форма має невідповдність імені та шаблону в позиції $1.',
 	'formarticleexists' => 'Сторінка існує',
+	'formarticleexiststext' => 'Сторінка [[$1]] вже існує.',
+	'formbadpagename' => 'Невірна назва для сторінки',
+	'formbadrecaptcha' => 'Невірне значення для reCaptcha. Спробуйте знову.',
+	'formbadpagenametext' => 'Введені в форму данні являють собою невірне імя для сторінки, "$1".',
+	'formrequiredfielderror' => 'В цій формі необхідно заповнити {{PLURAL:$2|$1 необхідне поле|$2 необхідні поля}}.
+Будь ласка, дозаповніть {{PLURAL:$2|його|їх}}.',
+	'formsavesummary' => 'Нова сторінка, за допомогою [[Special:Form/$1|форми $1]]',
+	'formsaveerror' => 'Помилка при збереженні форми',
+	'formsaveerrortext' => 'Невідома помилка збереження сторінки "$1".',
 );
 
 /** Veps (Vepsan kel')

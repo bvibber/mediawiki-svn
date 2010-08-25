@@ -5871,7 +5871,7 @@ $messages['ml'] = array(
 	'code-status-old' => 'പഴയത്',
 	'code-pathsearch-legend' => 'ഈ റെപ്പോയിലെ നാൾപ്പതിപ്പുകൾ പഥമനുസരിച്ച് തിരയുക',
 	'code-pathsearch-path' => 'പഥം:',
-	'code-pathsearch-filter' => 'അരിപ്പ പ്രയോഗിച്ചിവ:',
+	'code-pathsearch-filter' => 'അരിപ്പയിൽ പ്രയോഗിച്ചത്:',
 	'code-revfilter-cr_status' => 'സ്ഥിതി = $1',
 	'code-revfilter-cr_author' => 'രചയിതാവ് = $1',
 	'code-revfilter-clear' => 'അരിപ്പ ശുദ്ധമാക്കുക',

@@ -16377,6 +16377,7 @@ $messages['sco'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author Pasanbhathiya2
  * @author චතුනි අලහප්පෙරුම
  * @author බිඟුවා
  */
@@ -16421,6 +16422,7 @@ $messages['si'] = array(
 	'wikieditor-toolbar-tool-reference' => 'යොමුව',
 	'wikieditor-toolbar-tool-reference-example' => 'මෙහි පාද සටහන් පෙළක් ඇතුල් කරන්න',
 	'wikieditor-toolbar-tool-reference-cancel' => 'අත් හරින්න',
+	'wikieditor-toolbar-tool-reference-title' => 'යොමුවක්(Reference) ඇතුලුකරන්න',
 	'wikieditor-toolbar-tool-reference-insert' => 'ඇතුල් කරන්න',
 	'wikieditor-toolbar-tool-signature' => 'අත්සන හා කාල මුද්‍රාව',
 	'wikieditor-toolbar-section-advanced' => 'දියුණු කළ',

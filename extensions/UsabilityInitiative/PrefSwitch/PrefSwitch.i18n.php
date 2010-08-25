@@ -5448,12 +5448,18 @@ $messages['sc'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author Pasanbhathiya2
  * @author බිඟුවා
  */
 $messages['si'] = array(
 	'prefswitch-survey-true' => 'ඔව්',
 	'prefswitch-survey-false' => 'නැත',
 	'prefswitch-survey-submit-feedback' => 'බීටා අනුවාදය පිලිබඳ ප්‍රතිපෝෂණය',
+	'prefswitch-survey-question-like' => 'නව අංග පිලිබඳව ඔබ කැමති මොනවාටද?',
+	'prefswitch-survey-question-dislike' => 'නව අංග පිලිබඳව ඔබ අකමැති මොනවාටද?',
+	'prefswitch-survey-answer-whyoff-hard' => 'එම අංග භාවිතවට අපහසුය.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'එම අංග නිසි ලෙස ක්‍රියා නොකරයි.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'එම අංගවල හැඩරුව මා සිත් ගත්තේ නැත.',
 	'prefswitch-survey-answer-whyoff-other' => 'වෙනත් හේතුවක්:',
 	'prefswitch-survey-question-browser' => 'ඔබ භාවිතා කරන්නේ කුමන බ්‍රවුසරයද?',
 	'prefswitch-survey-answer-browser-other' => 'අනෙක් බ්‍රවුසරය:',

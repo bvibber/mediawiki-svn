@@ -789,8 +789,14 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'inspectcache' => 'Kontrola pamięci podręcznej',
+	'inspectcache-desc' => 'Proste narzędzie do kontroli zawartości pamięci podręcznej',
+	'inspectcache-general' => 'Ogólna pamięć podręczna',
 	'inspectcache-parser' => 'Pamięć podręczna analizatora składni',
+	'inspectcache-message' => 'Pamięć podręczna komunikatów',
+	'inspectcache-get' => 'Dostać',
 	'inspectcache-delete' => 'Usuń',
+	'inspectcache-deleted' => 'Usunięta pamięć podręczna',
 	'inspectcache-list' => 'Lista',
 	'right-inspectcache' => 'Podgląd i usuwanie danych z pamięci podręcznej',
 );

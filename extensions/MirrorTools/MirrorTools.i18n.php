@@ -122,6 +122,18 @@ $messages['gl'] = array(
 	'grouppage-MirrorTools' => '{{ns:project}}:Usuarios das ferramentas de espello',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'mirrortools' => 'Mirror-Programm',
+	'mirrortools-desc' => 'Macht s megli, Bearbeitige iber e API-Schnittstell unter jedwädem Benutzername z mache',
+	'right-mirroredit' => 'Bearbeitige mache unter jedwädem Benutzername iber e API-Schnittstell',
+	'group-MirrorTools' => 'Mirror-Benutzer',
+	'group-MirrorTools-member' => 'Mirrorprogramm-Benutzer',
+	'grouppage-MirrorTools' => '{{ns:project}}:Mirror-Benutzer',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

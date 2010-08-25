@@ -386,6 +386,13 @@ $messages['sv'] = array(
 	'addmediawizard-desc' => 'Guide för att lägga till media, utvecklad i samarbete mellan Kaltura och Wikimedia Foundation',
 );
 
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'addmediawizard-desc' => "விக்கிமீடியாவின் அமைப்பும் 'கால்த்தூராவும்' இணைந்து உருவாக்கிய ஊடக-வழிகாட்டியை சேர்த்துக்கொள்ளவும்",
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

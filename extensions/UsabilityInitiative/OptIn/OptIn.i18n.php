@@ -4076,7 +4076,18 @@ $messages['li'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ich vónj de nuuj tabblajer en t oeterlik neet good.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ich vónj de nuje wirkbalk neet fijn.',
 	'optin-survey-answer-whyoptout-other' => 'Anger reeje:',
+	'optin-survey-question-browser' => "Waatfer 'ne browser haesse?",
 	'optin-survey-answer-browser-other' => 'Angere browser:',
+	'optin-survey-question-os' => 'Waatfer systeem gebroeksse?',
+	'optin-survey-answer-os-other' => 'Anger system:',
+	'optin-survey-question-res' => 'Wat isse sjermrizzelusie?',
+	'optin-survey-question-changes' => 'Welke wieziginge wils se inne toekoms in Bèta zeen? (selecteer alles det v.t. is)',
+	'optin-survey-answer-changes-nav' => 'Maak de sitenavigatie mekkeliker.',
+	'optin-survey-answer-changes-edittools' => 'Mier en baeter bewirkingshölpmiddele.',
+	'optin-survey-answer-changes-upload' => "Verbaeter 't inhouds- en mediauploadstoevoge.",
+	'optin-survey-answer-changes-richtext' => 'Ontwikkel bewirkingshulpmiddele wie oetgebreide teksverwirkers.',
+	'optin-survey-answer-changes-lookfeel' => "Wirk 't oeterlik en de wirking van de bie nao de leste inzichte.",
+	'optin-survey-answer-changes-predictability' => 'Verbaeter de veurspelbaarheid vanne prestaties.',
 	'optin-survey-answer-changes-custom' => 'Maak mieë gebroekersaanpassinge meugelik.',
 	'optin-survey-answer-changes-other' => 'Euverig:',
 );
@@ -4653,6 +4664,10 @@ $messages['mzn'] = array(
  * @author Ricardo gs
  */
 $messages['nah'] = array(
+	'optin-title-optedout' => 'Xiquimamachtia Beta',
+	'optin-title-justoptedin' => 'Ximopanōltih Beta',
+	'optin-accept-long' => 'Xiquimamachtia Beta',
+	'optin-accept-long-anon' => 'Ximomachiyōmaca īhuān xiquimamachtia Beta',
 	'optin-survey-yes' => 'Quēmah',
 	'optin-survey-no' => 'Ahmo',
 	'optin-survey-answer-changes-other' => 'Occē:',
@@ -5926,6 +5941,7 @@ $messages['scn'] = array(
 /** Sinhala (සිංහල)
  * @author Calcey
  * @author Jiro Ono
+ * @author Pasanbhathiya2
  * @author චතුනි අලහප්පෙරුම
  */
 $messages['si'] = array(
@@ -5958,7 +5974,7 @@ $messages['si'] = array(
 	'optin-survey-answer-whyoptout-notpredictable' => 'එය බලාපොරොත්තු වූ ලෙසින් ක්‍රියා නොකලේය.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'එහි පෙනුම මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'නව ටැබ හා වින්‍යාස සැලැස්ම මා සිත් ගත්තේ නැත.',
-	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'නව මෙවලම්-පටිය මා සිත් ගත්තේ නැත.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'නව මෙවලම්-පටිය(Tool bar) මා සිත් ගත්තේ නැත.',
 	'optin-survey-answer-whyoptout-other' => 'වෙනත් හේතුවක්:',
 	'optin-survey-question-explain' => 'කරුණාකර ඔබගේ ඉහත පිළිතුර විස්තර හෝ පැහැදිලි කිරීම කරන්න:',
 	'optin-survey-question-techfail' => 'ඔබ බීටා භාවිතා කිරීමේදී යම් තාක්ෂණික ඇනහිටීමක් අත්දුටුවාද ?',

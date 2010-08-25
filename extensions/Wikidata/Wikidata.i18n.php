@@ -8891,6 +8891,7 @@ $messages['myv'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
 	'ow_save' => 'Ticpiyāz',
@@ -8906,7 +8907,7 @@ $messages['nah'] = array(
 	'ow_TranslatedTextAttributeValue' => 'Tlahcuilōlli',
 	'ow_LinkAttributeValues' => 'Tzonhuiliztli',
 	'ow_meaningsofsubtitle' => '<em>Huiquitzonhuiliztli:</em> [[$1]]',
-	'ow_copy_help' => 'Quēmmaniyān, hueliz timitzpālēhuīzqueh.',
+	'ow_copy_help' => 'In tēpalēhuiliztli aya chīhualo.',
 );
 
 /** Low German (Plattdüütsch)
@@ -12397,7 +12398,7 @@ $messages['sr-ec'] = array(
 	'ow_Remove' => 'Брисање',
 	'ow_RemoveHint' => 'Обележи редове за брисање',
 	'ow_Spelling' => 'Правопис',
-	'ow_SuggestHint' => 'Кликните да бисте променили селекцију',
+	'ow_SuggestHint' => 'Кликните да бисте променили избор',
 	'ow_Synonyms' => 'Синоними',
 	'ow_SynonymsAndTranslations' => 'Синоними и преводи',
 	'ow_Source' => 'Извор',

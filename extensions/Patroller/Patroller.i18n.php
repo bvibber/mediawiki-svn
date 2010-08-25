@@ -1993,10 +1993,16 @@ $messages['tr'] = array(
 );
 
 /** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
+	'patrol' => 'Тикшерү',
+	'patrol-resume' => 'Дәвам итү өчен монда басыгыз',
+	'group-patroller' => 'Тикшерүче',
 	'group-patroller-member' => 'тикшерүче',
+	'grouppage-patroller' => '{{ns:project}}:Тикшерү',
+	'right-patroller' => 'Битләрне тикшерү',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)
