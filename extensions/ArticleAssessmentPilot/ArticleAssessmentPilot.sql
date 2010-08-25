@@ -21,11 +21,13 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
 -- Store article assessments
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_pages (
   -- Foreign key to page.page_id
-  aa_page_id integer unsigned NOT NULL,
+  aap_page_id integer unsigned NOT NULL,
   -- Foreign key to revision.rev_id
-  aa_revision integer unsigned NOT NULL,
-  aa_total integer unsigned NOT NULL,
-  aa_count integer unsigned NOT NULL,
-  aa_dimension integer unsigned NOT NULL,
-  PRIMARY KEY (aa_page_id, aa_revision, aa_dimension)
+  aap_revision integer unsigned NOT NULL,
+  aap_total integer unsigned NOT NULL,
+  aap_count integer unsigned NOT NULL,
+  aap_dimension integer unsigned NOT NULL,
+  PRIMARY KEY (aap_page_id, aap_revision, aap_dimension)
 ) /*$wgDBTableOptions*/;
+
+CREATE INDEX /*i*/revision ON /*_*/article_assessment_pages (aap_revision, aap_page_id, aap_dimension);
