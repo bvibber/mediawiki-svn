@@ -19,14 +19,44 @@
 
 class DoubleWiki {
 
+	/*
+	 * Tags that must be closed. (list copied from Sanitizer.php)
+	 */
+	var $tags = "/<\/?(b|del|i|ins|u|font|big|small|sub|sup|h1|h2|h3|h4|h5|h6|cite|code|em|s|strike|strong|tt|tr|td|var|div|center|blockquote|ol|ul|dl|table|caption|pre|ruby|rt|rb|rp|p|span)([\s](.*?)>|>)/i";
+
 	/**
 	 * Constructor
 	 */
 	function DoubleWiki() {
 		global $wgParser, $wgHooks;
+		$wgParser->setHook( 'iw_align' , array( &$this, 'iw_align' ) );
 		$wgHooks['OutputPageBeforeHTML'][] = array( &$this, 'addMatchedText' );
 	}
 
+	/*
+	 * Wrap the list of matched phrases into a hidden element.
+	 */
+	function iw_align( $input, $args, $parser ) { 
+		if ( isset( $args['lang'] ) ) {
+			$lang = $args['lang'];
+			return "<div id=\"align-$lang\" style=\"display:none;\">\n" . trim( $input ). "\n</div>";
+		}
+		return '';
+	}
+
+	/*
+	 * Read the list of matched phrases and add tags to the html output.
+	 */
+	function addMatchingTags ( &$text, $lang ) { 
+		$pattern = "/<div id=\"align-$lang\" style=\"display:none;\">\n<p>([^<]*?)<\/p>\n<\/div>/is"; 
+		if( ! preg_match( $pattern, $text, $m ) ) return ;
+		$text = str_replace( $m[1], '', $text );
+		$line_pattern = "/\s*([^\|\n]*?)\s*\|\s*([^\|\n]*?)\s*\n/i"; 
+		preg_match_all( $line_pattern, $m[1], $items, PREG_SET_ORDER );
+		foreach( $items as $n => $i ) {
+			$text = str_replace( $i[1], "<span id=\"dw-$n\" title=\"{$i[2]}\"/>".$i[1], $text );
+		}
+	}
 
 	/*
 	 * Hook function called with &match=lang
@@ -40,6 +70,7 @@ class DoubleWiki {
 		if ( $match_request === '' ) { 
 			return true;
 		}
+		$this->addMatchingTags ( &$text, $match_request );
 
 		foreach( $parserOutput->mLanguageLinks as $l ) {
 			$nt = Title::newFromText( $l );
@@ -76,14 +107,6 @@ class DoubleWiki {
 					$text = preg_replace("/<a href=\"#(.*?)\"/i","<a href=\"#r_\\1\"", $text );
 					$text = preg_replace("/<li id=\"(.*?)\"/i","<li id=\"r_\\1\"", $text );
 
-					#add tags before h2 and h3 sections
-					$translation = preg_replace("/<h2>/i","<div title=\"@@h2\"></div>\n<h2>", 
-								    $translation );
-					$translation = preg_replace("/<h3>/i","<div title=\"@@h3\"></div>\n<h3>", 
-								    $translation );
-					$text = preg_replace("/<h2>/i","<div title=\"@@h2\"></div>\n<h2>", $text );
-					$text = preg_replace("/<h3>/i","<div title=\"@@h3\"></div>\n<h3>", $text );
-
 					#add ?match= to local links of the local wiki
 					$text = preg_replace( "/<a href=\"\/([^\"\?]*)\"/i",
 							"<a href=\"/\\1?match={$match_request}\"", $text );
@@ -99,237 +122,179 @@ class DoubleWiki {
 	}
 
 
-	/**
-	 * Return table with two columns of text 
-	 * Text is split into slices based on title tags
+	/*
+	 * Format the text as a two-column table with aligned paragraphs
 	 */
+	function matchColumns( $left_text, $left_title, $left_url, $left_lang,
+			       $right_text, $right_title, $right_url, $right_lang ) {
 
-	function matchColumns( $left_text, $left_title, $left_url, $left_lang_code, 
-			       $right_text, $right_title, $right_url, $right_lang_code ) {
+		list( $left_slices, $left_tags ) = $this->find_slices( $left_text );
 
-		# note about emdedding: 
-		# text is split only at a single level. 
-		# initially we assume that this level is zero
-		# if nesting is encountered before the 
-		# first paragraph, then this split level is increased
-		# we keep track of the current nesting level during processing
-		# if (current level != split level) then we do not split the text
-
-		# the current level of embedding (stack depth)
-		$left_nesting = 0;
-		$right_nesting = 0;
-
-		#the level of embedding where the text is split
-		#initial value is -1 until actual value is known
-		$left_splitlevel = -1;
-		$right_splitlevel = -1;
-
-		# split text 
-		$tag_pattern = "/<div title=\"([^\"]*)\"><\/div>/i";
-		$left_slices = preg_split( $tag_pattern, $left_text );
-		$right_slices = preg_split( $tag_pattern, $right_text );
-		preg_match_all( $tag_pattern, $left_text,  $left_tags, PREG_PATTERN_ORDER );
-		preg_match_all( $tag_pattern, $right_text, $right_tags, PREG_PATTERN_ORDER );
-
-		/**
-		 * Order slices in a two-column array.
-		 * slices that are surrounded by the same tag belong in the same line
-		 * $i indexes the left column, $j the right column.
-		 */
 		$body = '';
 		$left_chunk = '';
 		$right_chunk = ''; 
-	
-		$j=0;
-		$max_i = count( $left_slices );
-		for ( $i=0 ; $i < $max_i ; $i++ ) {
+
+		for ( $i=0 ; $i < count($left_slices) ; $i++ ) {
+
+			// some slices might be empty
+			if( $left_slices[$i] == '' ) {
+				continue; 
+			}
+
 			$found = false;
+			$tag = $left_tags[1][$i];
 			$left_chunk .= $left_slices[$i];
-	 
-			$max_k = count( $right_slices );
 
 			# if we are at the end of the loop, finish quickly
-			if ( $i==$max_i - 1 )  { 
-				for ( $k=$j ; $k < $max_k  ; $k++ ) $right_chunk .= $right_slices[$k];
+			if ( $i== count( $left_slices ) - 1 ) { 
+				$right_chunk .= $right_text;
 				$found = true;
-			}
-			else for ( $k=$j ; $k < $max_k  ; $k++ ) {
-	
+			} else {
 				#look for requested tag in the text
-				$a = strpos ( $right_slices[$k], $left_tags[1][$i] );
+				$a = strpos ( $right_text, $tag );
 				if( $a ) {
-					#go to beginning of paragraph 
-					#this regexp matches the rightmost delimiter
-					$sub = substr( $right_slices[$k], 0, $a);
-					if ( preg_match("/(.*)<(p|dl)>/is", $sub, $matches ) ){
-						$right_chunk .= $matches[1];
-						$right_slices[$k] = substr( $right_slices[$k], strlen($matches[1]) );
+					$found = true; 
+					$sub = substr( $right_text, 0, $a);
+					// detect the end of previous paragraph
+					// regexp matches the rightmost delimiter
+					if ( preg_match("/(.*)<\/(p|dl)>/is", $sub, $m ) ) {
+						$right_chunk .= $m[0];
+						$right_text = substr( $right_text, strlen($m[0]) );
 					}
-					else {
-						$right_chunk .= $sub;
-						$right_slices[$k] = substr( $right_slices[$k], $a );
-					}
-
-					$found = true;
-					$j = $k;
-					break;
-				}
-
-				$right_chunk .= $right_slices[$k];
-
-				if( $k < $max_k - 1 ) {
-				    if( $left_tags[0][$i] == $right_tags[0][$k] ) {
-				            $found = true;
-					    $j = $k+1;
-					    break;
-					}
+				#} else {
+				#	print "<br/>tag not found ".$tag;
 				}
 			}
-			if( $found ) {
 
-				#split chunks into smaller units (paragraphs)
-				$paragraph_tags = "/<(p|dl)>/i";
-				$left_bits  = preg_split( $paragraph_tags, $left_chunk );
-				$right_bits = preg_split( $paragraph_tags, $right_chunk );
-				preg_match_all( $paragraph_tags, $left_chunk,  $left_seps,  PREG_PATTERN_ORDER );
-				preg_match_all( $paragraph_tags, $right_chunk, $right_seps, PREG_PATTERN_ORDER );
+			if( $found && $right_chunk ) {
+				// Detect paragraphs
+				$left_bits  = $this->find_paragraphs( $left_chunk );
+				$right_bits = $this->find_paragraphs( $right_chunk );
+
+				// $body .= "<tr style=\"background-color:#ffdddd;\"><td>".count($left_bits)."</td><td>".count($right_bits)."</td></tr>\n";
+				// Do not align paragraphs if counts are different
+				if ( count( $left_bits ) != count( $right_bits ) ) {
+					$left_bits  = Array( $left_chunk );
+					$right_bits = Array( $right_chunk );
+				}
 
 				$left_chunk  = '';
 				$right_chunk = '';
-
-				# add separators that were cut off
-				for($l=1; $l < count( $left_bits ); $l++ ) {
-					  $left_bits[$l] = $left_seps[0][$l-1].$left_bits[$l];
-				}
-				for($l=1; $l < count( $right_bits ); $l++ ) {
-					  $right_bits[$l] = $right_seps[0][$l-1].$right_bits[$l];
-				}
-
-				$max = max( count( $left_bits ) , count( $right_bits )); 
-				# initialize missing elements
-				for($l= count( $left_bits ); $l<$max; $l++) $left_bits[$l]='';
-				for($l= count( $right_bits ); $l<$max; $l++) $right_bits[$l]='';
-
-				for($l=0; $l < $max; $l++ ) {
-
-					list($left_delta,$left_o,$left_c) = $this->nesting_delta( $left_bits[$l] );
-					list($right_delta,$right_o,$right_c) = $this->nesting_delta( $right_bits[$l] );
-
-					$left_nesting = $left_nesting + $left_delta;
-					$right_nesting = $right_nesting + $right_delta;
-
-					#are we at the end?
-					$the_end = ($l == $max-1) && ($i == $max_i -1 );
-
-					if(( $left_splitlevel == -1) && ($right_splitlevel == -1)) { 
-						$left_splitlevel  = $left_nesting;
-						$right_splitlevel = $right_nesting; 
-						$left_opening  = $left_o;
-						$right_opening = $right_o;
-						$left_closure  = $left_c;
-						$right_closure = $right_c;
-
-						$left_prefix  = '';
-						$right_prefix = '';
-						$left_suffix  = $left_closure;
-						$right_suffix = $right_closure;
-					}
-					else if($the_end) {
-						$left_prefix  = $left_opening;
-						$right_prefix = $right_opening;
-						$left_suffix  = '';
-						$right_suffix = '';
-					}
-					else {
-						$left_prefix  = $left_opening;
-						$right_prefix = $right_opening;
-						$left_suffix  = $left_closure;
-						$right_suffix = $right_closure;
-					}
-
-					if( ( ($left_nesting == $left_splitlevel) 
-					      && ($right_nesting == $right_splitlevel) ) || $the_end)  {
-						$body .= 
-						"<tr><td valign=\"top\" style=\"padding-right: 0.5em\" lang=\"{$left_lang_code}\">"
-						."<div style=\"width:35em; margin:0px auto\">\n"
-						.$left_prefix.$left_bits[$l].$left_suffix
-						."</div>"
-
-						."</td>\n<td valign=\"top\" style=\"padding-left: 0.5em\" lang=\"{$right_lang_code}\">"
-						."<div style=\"width:35em; margin:0px auto\">\n"
-						.$right_prefix.$right_bits[$l].$right_suffix
-						."</div>"
-						."</td></tr>\n";
-					}
-					else {
-						# procrastinate
-						$left_nesting = $left_nesting - $left_delta;
-						$right_nesting = $right_nesting - $right_delta;
-						if ($l < $max-1) {
-							$left_bits[$l+1] = $left_bits[$l] . $left_bits[$l+1];
-							$right_bits[$l+1] = $right_bits[$l] . $right_bits[$l+1];
-						} else {
-							$left_chunk = $left_bits[$l] ;
-							$right_chunk = $right_bits[$l];
-						}
-					}
+				for($l=0; $l < count( $left_bits ) ; $l++ ) {
+					$body .= 
+					  "<tr><td valign=\"top\" style=\"vertical-align:100%;padding-right: 0.5em\" lang=\"{$left_lang}\">"
+					  ."<div style=\"width:35em; margin:0px auto\">\n".$left_bits[$l]."</div>"
+					  ."</td>\n<td valign=\"top\" style=\"padding-left: 0.5em\" lang=\"{$right_lang}\">"
+					  ."<div style=\"width:35em; margin:0px auto\">\n".$right_bits[$l]."</div>"
+					  ."</td></tr>\n";
 				}
 			}
-			else{ $right_chunk='';}
 		}
 
-
-		# format table head and return results
+		// format table head and return results
 		$left_url = htmlspecialchars( $left_url );
 		$right_url = htmlspecialchars( $right_url );
 		$head = 
-"<table width=\"100%\" border=\"0\" bgcolor=\"white\" rules=\"cols\" cellpadding=\"0\">
+		  "<table id=\"doubleWikiTable\" width=\"100%\" border=\"0\" bgcolor=\"white\" rules=\"cols\" cellpadding=\"0\">
 <colgroup><col width=\"50%\"/><col width=\"50%\"/></colgroup><thead>
-<tr><td bgcolor=\"#cfcfff\" align=\"center\" lang=\"{$left_lang_code}\">
+<tr><td bgcolor=\"#cfcfff\" align=\"center\" lang=\"{$left_lang}\">
 <a href=\"{$left_url}\">{$left_title}</a></td>
-<td bgcolor=\"#cfcfff\" align=\"center\" lang=\"{$right_lang_code}\">
+<td bgcolor=\"#cfcfff\" align=\"center\" lang=\"{$right_lang}\">
 <a href=\"{$right_url}\" class='extiw'>{$right_title}</a>
 </td></tr></thead>\n";
-		return $head.$body."</table>" ;
+		return $head . $body . "</table>" ;
+	}
+
+
+
+	/*
+	 * Split text and return a set of html-balanced paragraphs
+	 */
+	function find_paragraphs( $text ) {
+		$result = Array();
+		$bits = preg_split( $this->tags, $text );
+		preg_match_all( $this->tags, $text, $m, PREG_SET_ORDER);
+		$counter = 0;
+		$out = '';
+		for($i=0; $i < count($m); $i++){
+			$t = $m[$i][0];
+			if( substr( $t, 0, 2) != "</" ) {
+				$counter++;
+			} else {
+				$counter--;
+			}
+			$out .= $bits[$i] . $t;
+			if( ($t == "</p>" || $t == "</dl>" ) && $counter==0 ) {
+				$result[] = $out;
+				$out = '';
+			}
+		}
+		if($out) {
+			$result[] = $out;
+		}
+		return $result; 
 	}
 
 
 	/*
-	 * returns how much the stack is changed 
-	 * also returns opening and closing sequences of tag
+	 * Split text and return a set of html-balanced slices
 	 */
-	function nesting_delta ( $text ) {
-		#tags that must be closed. (list copied from Sanitizer.php)
-		$tags = "/<\/?(b|del|i|ins|u|font|big|small|sub|sup|h1|h2|h3|h4|h5|h6|"
-		  ."cite|code|em|s|strike|strong|tt|tr|td|var|div|center|blockquote|ol|ul|dl|"
-		  ."table|caption|pre|ruby|rt|rb|rp|p|span)([\s](.*?)>|>)/i";
-		preg_match_all( $tags, $text, $m, PREG_SET_ORDER);
+	function find_slices( $left_text ) {
 
-		$stack = array();
-		$counter = 0;
-		$opening = '';
-		$closure = '';
-		for($i=0; $i < count($m); $i++){
-			$t = $m[$i];
-			if( substr( $t[0], 0, 2) != "</" ){
-				$counter++;
-				array_push($stack, $t);
-			} else {
-				$tt = array_pop($stack);
-				$counter--;
-				#if( ($tt != null) && ($tt[1] != $t[1]) ) {
-				#	#input html is buggy...
-				#	echo "Warning: ".$t[1]." encountered, expected ".$tt[1]."<br />\n";
-				#}
+		$tag_pattern = "/<span id=\"dw-[^\"]*\" title=\"([^\"]*)\"\/>/i";
+		$left_slices = preg_split( $tag_pattern, $left_text );
+		preg_match_all( $tag_pattern, $left_text,  $left_tags, PREG_PATTERN_ORDER );
+		$n = count( $left_slices);
+
+		/* 
+		 * Make slices that are full paragraphs
+		 * If two slices correspond to the same paragraph, the second one will be empty
+		 */
+		for ( $i=0 ; $i < $n - 1 ; $i++ ) {
+			$str = $left_slices[$i];
+			if ( preg_match("/(.*)<(p|dl)>/is", $str, $m ) ) { 
+				$left_slices[$i] = $m[1];
+				$left_slices[$i+1] = substr( $str, strlen($m[1]) ) . $left_slices[$i+1];
 			}
 		}
-		for($i=0; $i<$counter; $i++){					
-			$opening .= $stack[$i][0];
-			$closure = "</".$stack[$i][1].">".$closure;
+
+		/* 
+		 * Keep only slices that contain balanced html
+		 * If a slice is unbalanced, we merge it with the next one.
+		 * The first and last slices are compensated.
+		 */
+		$stack = array();
+		$counter = 0;
+		for( $i=0 ; $i < $n ; $i++) {
+			$bits = preg_split( $this->tags, $left_slices[$i] );
+			preg_match_all( $this->tags, $left_slices[$i], $m, PREG_SET_ORDER);
+			$counter = 0;
+			for($k=0 ; $k < count($m) ; $k++) {
+				$t = $m[$k];
+				if( substr( $t[0], 0, 2) != "</" ) {
+					$counter++;
+					array_push($stack, $t);
+				} else {
+					$tt = array_pop($stack);
+					$counter--;
+				}
+			}
+			if( $i==0 ) {
+				$opening = '';
+				$closure = '';
+				for( $k=0; $k < $counter ; $k++ ) {
+					$opening .= "<".$stack[$k][1].">";
+					$closure = "</".$stack[$k][1].">" . $closure;
+				}
+				$left_slices[$i] = $left_slices[$i] . $closure;
+			} else if( $i == $n - 1 ) {
+				$left_slices[$i] = $opening . $left_slices[$i];
+			} else if( $counter != 0 ) {
+				$left_slices[$i+1] = $left_slices[$i] . $left_slices[$i+1];
+				$left_slices[$i] = '';
+			}
 		}
-
-		return array($counter, $opening, $closure);
-
+		return array($left_slices, $left_tags);
 	}
 
 }
