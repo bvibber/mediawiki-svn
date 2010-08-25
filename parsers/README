@@ -1,0 +1,1 @@
+A collection of alternate MediaWiki wikitext parsers. The one that is actually used by MediaWiki is in phase3/includes/parser/Parser.php.
