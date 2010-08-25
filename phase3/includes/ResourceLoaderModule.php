@@ -27,6 +27,7 @@ class ResourceLoaderModule {
 	private $dependencies = array();
 	private $debugScripts = array();
 	private $languageScripts = array();
+	private $skinScripts = array();
 	private $skinStyles = array();
 	private $loaders = array();
 	private $parameters = array();
@@ -48,6 +49,7 @@ class ResourceLoaderModule {
 	 * 			'[lang name]' => 'dir/lang.js' | '[lang name]' => array( 'dir/lang1.js', 'dir/lang2.js' ... )
 	 * 			...
 	 * 		),
+	 * 		'skinScripts' => 'dir/skin.js' | array( 'dir/skin1.js', 'dir/skin2.js' ... ),
 	 * 		'debugScripts' => 'dir/debug.js' | array( 'dir/debug1.js', 'dir/debug2.js' ... ),
 	 * 
 	 * 		// Non-raw module options
@@ -55,7 +57,7 @@ class ResourceLoaderModule {
 	 * 		'loaderScripts' => 'dir/loader.js' | array( 'dir/loader1.js', 'dir/loader2.js' ... ),
 	 * 		'styles' => 'dir/file.css' | array( 'dir/file1.css', 'dir/file2.css' ... ),
 	 * 		'skinStyles' => array(
-	 * 			'[skin name]' => 'dir/theme.css' | '[skin name]' => array( 'dir/theme1.css', 'dir/theme2.css' ... )
+	 * 			'[skin name]' => 'dir/skin.css' | '[skin name]' => array( 'dir/skin1.css', 'dir/skin2.css' ... )
 	 * 			...
 	 * 		),
 	 * 		'messages' => array( 'message1', 'message2' ... ),
@@ -81,6 +83,9 @@ class ResourceLoaderModule {
 					break;
 				case 'languageScripts':
 					$this->languageScripts = (array)$value;
+					break;
+				case 'skinScripts':
+					$this->skinScripts = (array)$value;
 					break;
 				case 'skinStyles':
 					$this->skinStyles = (array)$value;
@@ -154,6 +159,19 @@ class ResourceLoaderModule {
 		$this->languageScripts = array_merge_recursive(
 			$this->languageScripts,
 			array( $lang => $scripts )
+		);
+	}
+
+	/**
+	 * Add skin-specific scripts. These scripts are only included for
+	 * a given skin.
+	 * @param $skin string Skin name, or 'default'
+	 * @param $scripts mixed Path to script file (string) or array of paths
+	 */
+	public function addSkinScripts( $skin, $scripts ) {
+		$this->skinScripts = array_merge_recursive(
+			$this->skinScripts,
+			array( $skin => $scripts )
 		);
 	}
 	
@@ -256,6 +274,21 @@ class ResourceLoaderModule {
 	}
 	
 	/**
+	 * Get the skin-specific JS for a given skin. This is pulled from the
+	 * skin-specific JS files added through addSkinScripts()
+	 * @return string JS
+	 */
+	public function getSkinScript( $skin ) {
+		$scripts = array();
+		if ( isset( $this->skinScripts[$skin] ) && count( $this->skinScripts[$skin] ) ) {
+			$scripts = $this->skinScripts[$skin];
+		} else if ( isset( $this->skinScripts['default'] ) ) {
+			$scripts = $this->skinScripts['default'];
+		}
+		return self::concatFiles( $scripts );
+	}
+	
+	/**
 	 * Get the skin-specific CSS for a given skin. This is pulled from the
 	 * skin-specific CSS files added through addSkinStyles()
 	 * @return string CSS
@@ -314,6 +347,7 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	public function getDependencies() { return array(); }
 	public function getDebugScript() { return ''; }
 	public function getLanguageScript( $lang ) { return ''; }
+	public function getSkinScript( $skin ) { return ''; }
 	public function getSkinStyle( $skin ) { return ''; }
 	public function getLoaderScript() { return false; }
 }
