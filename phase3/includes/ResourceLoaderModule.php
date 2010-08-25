@@ -207,16 +207,6 @@ class ResourceLoaderModule {
 	}
 	
 	/**
-	 * Set parameters used for obtaining this module. Ignored in this class
-	 * but used in subclasses.
-	 *
-	 * FIXME: This is ugly and should ideally be killed with fire. I just don't know how else to do skin JS ATM.
-	 */
-	public function setParameters( $params ) {
-		$this->parameters = $params;
-	}
-	
-	/**
 	 * Get the primary JS for this module. This is pulled from the
 	 * script files added through addScripts()
 	 * @return string JS
@@ -316,15 +306,6 @@ class ResourceLoaderModule {
 	}
 	
 	/**
-	 * Get a parameter previously set through setParameters()
-	 * @param $param string Parameter name
-	 * @return mixed Parameter value or null if not set
-	 */
-	public function getParameter( $param ) {
-		return isset( $this->parameters[$param] ) ? $this->parameters[$param] : null;
-	}
-	
-	/**
 	 * Get the contents of a set of files and concatenate them, with
 	 * newlines in between. Each file is used only once.
 	 * @param $files array Array of file names
@@ -337,17 +318,17 @@ class ResourceLoaderModule {
 }
 
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
-	public function getScript() {
-		return Skin::newFromKey( $this->getParameter( 'skin' ) )->generateUserJs();
+	public function getSkinScript( $skin ) {
+		return Skin::newFromKey( $skin )->generateUserJs();
 	}
 	
 	// Dummy overrides to return emptyness
+	public function getScript() { return ''; }
 	public function getStyle() { return ''; }
 	public function getMessages() { return array(); }
 	public function getDependencies() { return array(); }
 	public function getDebugScript() { return ''; }
 	public function getLanguageScript( $lang ) { return ''; }
-	public function getSkinScript( $skin ) { return ''; }
 	public function getSkinStyle( $skin ) { return ''; }
 	public function getLoaderScript() { return false; }
 }

@@ -208,12 +208,6 @@ class ResourceLoader {
 				$includeMessages = true;
 		}
 		
-		// Set parameters on all modules
-		// FIXME: This sucks
-		foreach ( self::$modules as $module ) {
-			$module->setParameters( $parameters );
-		}
-		
 		// Build a list of requested modules excluding unrecognized ones which are collected into a list used to
 		// register the unrecognized modules with error status later on
 		$modules = array();
