@@ -8,7 +8,7 @@ class CSSMin {
 	 * Maximum file size to still qualify for in-line embedding as a data-URI
 	 * 
 	 * 24,576 is used because Internet Explorer has a 32,768 byte limit for data URIs, which when base64 encoded will
-	 * result in a 1/4 increase in size.
+	 * result in a 1/3 increase in size.
 	 */
 	const EMBED_SIZE_LIMIT = 24576;
 	
