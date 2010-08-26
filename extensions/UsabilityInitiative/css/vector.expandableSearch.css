@@ -1,0 +1,6 @@
+.expandableField {
+	display: block;
+}
+#simpleSearch { 
+	overflow: auto;
+}
