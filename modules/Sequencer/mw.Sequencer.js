@@ -8,13 +8,21 @@ mw.includeAllModuleMessages();
 * Setup the sequencer jQuery binding:
 */
 ( function( $ ) {
-	$.fn.sequencer = function( options ) {
+	$.fn.sequencer = function( options ) {			
 		// Debugger
 		if( $j( this.selector ).length == 0 ){
 			mw.log("Sequencer::Error missing target container");
 			return; 
-		}
+		}		
 		var seqContainer = $j( this.selector ).get(0);
+		// support jquery ui style 'destroy' call 
+		if( options == 'destroy' ){
+			if( seqContainer['sequencer'] )
+				delete seqContainer['sequencer'];				
+			return this;
+		}
+			
+		
 		// Check if we already have a sequencer associated with this target
 		if( seqContainer['sequencer'] ){
 			// xxx todo: pass on the options / action
@@ -50,6 +58,7 @@ var mw_sequenceedit_default_options = {
 	'newSequence' : null,
 	'server' : null,
 	'addMedia': null,
+	'onExitCallback' : null,
 	'videoAspect' : '4:3'
 }
 mw.Sequencer = function( options ) {
@@ -155,7 +164,6 @@ mw.Sequencer.prototype = {
 		});
 			
 	},
-	
 	/**
 	 * Load a smil source if newSequence flag is set create new sequence source 
 	 * @param {function} callback Function called with smilSource 
@@ -166,9 +174,9 @@ mw.Sequencer.prototype = {
 			if( _this.getOption( 'newSequence' ) ){			
 				_this.smilSource = _this.getDataUrl( _this.getNewSmilXML() );	
 			} else {
-				mw.log("Load smil source from server")
-				// Try to load from the server
-				_this.getServer().getSmilXml(function( smilXml ){
+				mw.log( "Load smil source from server" )
+				// Load from the server
+				_this.getServer().getSmilXml( function( smilXml ){
 					_this.smilSource = _this.getDataUrl( smilXml );
 					callback( _this.smilSource )	
 				})

@@ -594,6 +594,8 @@ mw.SequencerTimeline.prototype = {
 			.buttonHover()
 			.click( function(){
 				_this.editClip( $timelineClip )
+				$timelineClip.addClass( 'selectedClip' );
+				return false;
 			}),
 			
 			// Remove clip button: 
@@ -648,7 +650,7 @@ mw.SequencerTimeline.prototype = {
 				}
 			});
 			
-			// Sometimes the load event does not fire force the fallback image after 5 seconds
+			// Sometimes the load event does not fire. Force the fallback image after 5 seconds
 			setTimeout( function(){
 				if( $thumbTarget.children().length == 0 ){
 					$thumbTarget.html( img );	

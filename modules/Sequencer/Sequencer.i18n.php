@@ -8,6 +8,7 @@
 
 $messages = array();
 $messages['en'] = array(
+	'mwe-sequencer-loading-sequencer' => 'Loading sequencer ...',
 	'mwe-sequencer-loading-timeline' => 'Loading timeline ...',
 	'mwe-sequencer-loading-player' => 'Loading player ...',
 	'mwe-sequencer-loading-menu' => 'Loading menu ...',
@@ -45,9 +46,14 @@ $messages['en'] = array(
 	'mwe-sequencer-menu-sequence-open-desc' => 'Open a sequence for editing',
 
 	'mwe-sequencer-menu-sequence-save' => 'Save',
+	'mwe-sequencer-menu-sequence-save-desc' => 'Save sequence changes',	
 	'mwe-sequencer-menu-sequence-publish' => 'Publish',
+	'mwe-sequencer-menu-sequence-publish-desc' => 'Publish sequence',
 	'mwe-sequencer-menu-sequence-renderdisk' => 'Render to disk',
 	'mwe-sequencer-menu-sequence-exit' => 'Exit',
+	'mwe-sequencer-menu-sequence-exit-desc' => 'Exit the sequencer',
+	'mwe-sequencer-confirm-exit' => 'Are you sure you want to exit?',
+	'mwe-sequencer-confirm-exit-desc' => 'Are you sure you want to exit the sequencer? Unsaved edits will be lost.',
 
 	'mwe-sequencer-menu-edit' => 'Edit',
 	'mwe-sequencer-menu-edit-undo' => 'Undo',
@@ -64,11 +70,14 @@ $messages['en'] = array(
 	'mwe-sequencer-insert'=> 'Insert into sequence',
 
 	'mwe-sequencer-no-server-defined' => 'No server has been defined for this sequence session. You will not be able to save sequences',
-	'mwe-sequencer-no_edit_permissions' => 'You do not have permissions to save changes to this sequence',
+	
+	'mwe-sequencer-no_edit_permissions' => 'Can not save sequence',
+	'mwe-sequencer-no_edit_permissions-desc' => 'You do not have permissions to save changes to this sequence',
+
+	'mwe-sequencer-save-no-changes' => 'There are no new edits to save',
 	'mwe-sequencer-save-summary' => 'Please enter a short summary of changes:',
 	'mwe-sequencer-edit_cancel' => 'Cancel sequence edit',
-
-	'mwe-sequencer-edit_save' => 'Save sequence changes',
+	
 	'mwe-sequencer-saving_wait' => 'Save in progress (please wait)',
 	'mwe-sequencer-save_done' => 'Save complete',
 
@@ -76,9 +85,17 @@ $messages['en'] = array(
 	'mwe-sequencer-not-published' => 'This sequence has not yet been published. <i>Browser preview is shown</i>. <b>[$1 Review and publish this sequence]</b>.',
 	'mwe-sequencer-published-out-of-date' =>'This published sequence is not the most recent version. You can <b>[$1 review and publish]</b> the most recent version.',
 
+	'mwe-sequencer-already-published' => "The most recent version of this sequence is already published",
+	
 	'mwe-sequencer-loading-publish-render' => 'Loading publisher...',
+	'mwe-sequencer-please-save-publish' => 'Please save changes before you publish',
 	'mwe-sequencer-running-publish' => 'Publishing sequence, please wait...',
 	'mwe-sequencer-publishing-status' => 'Publish status:',
+	'mwe-sequencer-publishing-error' => 'Publish error',
+	'mwe-sequencer-publishing-error-upload-desc' => 'There was an error in uploading the published file',
+
+	'mwe-sequencer-publishing-success' => 'Publish success',
+	'mwe-sequencer-publishing-success-desc' => 'Sequence has successfully been published. [$1 Published file]',
 
 	'mwe-sequencer-transition_in' => 'Transition in',
 	'mwe-sequencer-transition_out' => 'Transition out',
@@ -93,7 +110,6 @@ $messages['en'] = array(
 	'mwe-sequencer-menu_resource_overview' => 'Resource overview',
 	'mwe-sequencer-menu_options' => 'Options',
 	
-
 
 
 	'mwe-sequencer-edit_cancel_confirm' => 'Are you sure you want to cancel your edit? Changes will be lost.',

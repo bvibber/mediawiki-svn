@@ -988,7 +988,7 @@ mw.RemoteSearchDriver.prototype = {
 
 			
 		var $searchButton = $j.button({			
-				icon_id: 'search', 
+				icon: 'search', 
 				text: gM( 'mwe-media_search' ) 
 			})
 			.addClass( 'rsd_search_button' )
@@ -1027,7 +1027,7 @@ mw.RemoteSearchDriver.prototype = {
 		
 		// Add optional upload buttons.
 		if ( this.content_providers['upload'].enabled) {
-			$uploadButton = $j.button( { icon_id: 'disk', text: gM( 'mwe-upload_tab' ) })
+			$uploadButton = $j.button( { icon: 'disk', text: gM( 'mwe-upload_tab' ) })
 				.addClass("rsd_upload_button")
 				.click(function() {
 					// Update the previus_provider to swap back
@@ -1041,7 +1041,7 @@ mw.RemoteSearchDriver.prototype = {
 			$searchForm.append( $uploadButton );
 			/* 
 			// Import functionality not yet supported
-			$importButton = $j.button({icon_id: 'import', text: 'import'})
+			$importButton = $j.button({icon: 'import', text: 'import'})
 				.addClass("rsd_import_button");
 			.append( $importButton );
 			*/

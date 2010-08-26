@@ -59,7 +59,7 @@ mw.SequencerMenu.prototype = {
 				'icon' : 'power',
 				'action' : function( _this ){
 					mw.log( 'check for save')
-					_this.sequencer.getContainer().fadeOut().remove();
+					_this.sequencer.getActionsSequence().exit();					
 				}
 			}
 		},
@@ -152,7 +152,22 @@ mw.SequencerMenu.prototype = {
 				this.menuWidgets[widgetKey]( this )
 			);
 		}
-		
+		// Append close button to the upper right 
+		$menuTarget.append( 
+			$j.button({
+				'icon' : 'circle-close'				
+			})
+			.css({
+				'float' : 'right', 
+				'right':'-6px',
+				'top':'-9px'
+			})
+			.attr('title', gM('mwe-sequencer-menu-sequence-exit-desc') )
+			.click( function(){
+				_this.sequencer.getActionsSequence().exit();
+			})
+		);
+			
 		// Check if we should include kaltura credits
 		if( mw.getConfig( 'Sequencer.KalturaAttribution' ) ){
 			$menuTarget.append(

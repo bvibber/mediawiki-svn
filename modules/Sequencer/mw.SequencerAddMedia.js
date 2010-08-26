@@ -58,7 +58,7 @@ mw.SequencerAddMedia.prototype = {
 					// The text of the button link
 					'text' : gM('mwe-sequencer-get-media'),				
 					// The icon id that precedes the button link:
-					'icon_id' : 'plus' 
+					'icon' : 'plus' 
 				})
 				.click(function(){
 					// only do the search if the user has given the search input focus  

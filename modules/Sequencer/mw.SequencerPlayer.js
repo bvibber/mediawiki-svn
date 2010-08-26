@@ -40,7 +40,7 @@ mw.SequencerPlayer.prototype = {
 			
 			// Draw the player ( keep the playhead for now )
 			// xxx we will eventually replace the playhead with sequence 
-			// based playhead interface for doing easy trims. 
+			// based playhead interface for doing easy trims
 			$j( '#' + _this.getSmilPlayerId() ).embedPlayer({
 				'overlayControls' : false
 			}, function(){
@@ -99,12 +99,14 @@ mw.SequencerPlayer.prototype = {
 		}			
 		return size;
 	},
+	
 	/**
-	 * get the embedplayer object instance
+	 * Get the embedplayer object instance
 	 */
 	getEmbedPlayer: function(){
 		return $j( '#' + this.getSmilPlayerId() ).get(0);
 	},
+	
 	/**
 	 * Get a player id
 	 */

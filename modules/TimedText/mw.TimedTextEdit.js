@@ -226,7 +226,7 @@ mw.TimedTextEdit.prototype = {
 				'style': { 'float' : 'left' },
 				'class': 'language-select-btn',
 				'text': gM('mwe-timedtext-select-language'),
-				'icon_id': 'triangle-1-e'
+				'icon': 'triangle-1-e'
 			} )
 			.attr('id', 'language-select')
 		)
@@ -298,7 +298,7 @@ mw.TimedTextEdit.prototype = {
 			$j.button( {
 				'style': { 'float' : 'left' },
 				'text': gM('mwe-timedtext-upload-text'),
-				'icon_id': 'disk'
+				'icon': 'disk'
 			} )
 			.click( function() {
 				_this.uploadTextFile();

@@ -123,15 +123,17 @@ function doPageSpecificRewrite() {
 	if( wgPageName.indexOf( "Sequence:" ) === 0 ){		
 		//console.log( 'spl: ' + typeof mwSetPageToLoading );
 		// If on a view page set content to "loading" 
-		mwSetPageToLoading();
-		loadMwEmbed( [ 'mw.MediaWikiRemoteSequencer' ], function(){
-			var remote = new mw.MediaWikiRemoteSequencer({
-				'action': wgAction,
-				'title' : wgTitle,
-				'target' : '#bodyContent'
-			});
-			remote.drawUI();
-		} );
+		if( wgAction == 'view' ){
+			mwSetPageToLoading();
+			loadMwEmbed( [ 'mw.MediaWikiRemoteSequencer' ], function(){
+				var remote = new mw.MediaWikiRemoteSequencer({
+					'action': wgAction,
+					'title' : wgTitle,
+					'target' : '#bodyContent'
+				});
+				remote.drawUI();
+			} );
+		}
 		return ;
 	}
 	
@@ -597,7 +599,7 @@ function mwCheckForGadget(){
 	mw.log('gadget not installed, show install menu');	
 	var $gadgetBtn = $j.button({
 			'text' : gM( 'mwe-enable-gadget' ),
-			'icon_id': 'check'
+			'icon': 'check'
 		})
 		.css({
 			'font-size': '90%'

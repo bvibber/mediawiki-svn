@@ -46,6 +46,9 @@ mw.FirefoggRender.prototype = {
 	// Bollean attribute if we should save to local file
 	saveToLocalFile : true,
 	
+	// Callback function for render progress
+	onProgress: null,
+	
 	// Constructor 
 	init:function( options ) {
 		var _this = this;
@@ -72,7 +75,7 @@ mw.FirefoggRender.prototype = {
 		
 		// Extend the render options with any provided details
 		if( options['renderOptions'] ){
-			this.renderOptions = $j.extend( this.renderOptions, options['renderOptions'] );
+			this.renderOptions = $j.extend( {}, this.renderOptions, options['renderOptions'] );
 		}
 		
 		if( options ['statusTarget']){
@@ -82,8 +85,13 @@ mw.FirefoggRender.prototype = {
 		if( options [ 'doneRenderCallback' ] ){
 			this.doneRenderCallback =  options [ 'doneRenderCallback' ];
 		}
+		// xxx should probably be a normal event binding .. oh well
+		if( options['onProgress'] ){
+			this.onProgress = options['onProgress'];
+		}
 		
-		if( options['saveToLocalFile'] ){
+		
+		if( typeof options['saveToLocalFile'] != 'undefiend' ){
 			this.saveToLocalFile = options['saveToLocalFile'] ;
 		}
 		// If no height width provided use target DOM width/height
@@ -136,6 +144,8 @@ mw.FirefoggRender.prototype = {
 			// Update previusAudioTime
 			previusAudioTime = currentAudio.startTime + currentAudio.duration;
 		}		
+		// xxx localize status? 
+		$j( _this.statusTarget ).text( 'rendering' );
 		// Now issue the save video as call	
 		_this.doNextFrame();
 		return true;
@@ -150,18 +160,21 @@ mw.FirefoggRender.prototype = {
 		/*mw.log( "FirefoggRender::doNextFrame: on " + ( Math.round( _this.renderTime * 10 ) / 10 ) + " of " +
 			( Math.round( _this.player.getDuration() * 10 ) / 10 ) );
 		*/
+		if( this.onProgress ){
+			this.onProgress(
+				_this.renderTime / _this.getPlayer().getDuration()
+			)
+		}
 		
-		_this.getPlayer().setCurrentTime( _this.renderTime, function() {								
-			
+		_this.getPlayer().setCurrentTime( _this.renderTime, function() {											
 			_this.fogg.addFrame( $j( _this.playerTarget ).attr( 'id' ) );
-			$j( _this.statusTarget ).text( "AddFrame::" + ( Math.round( _this.renderTime * 1000 ) / 1000 ) );
-			
+			//	$j( _this.statusTarget ).text( "AddFrame::" + ( Math.round( _this.renderTime * 1000 ) / 1000 ) );
 			_this.renderTime += _this.interval;
 			 
 			if ( _this.renderTime >= _this.getPlayer().getDuration() || ! _this.continueRendering ) {
 				_this.doFinalRender();
 			} else {			
-				// Don't block on render requests
+				// Don't block on render
 				setTimeout( function(){
 					_this.doNextFrame();
 				},1 )
@@ -204,7 +217,9 @@ mw.FirefoggRender.prototype = {
 	    	return ;
 	    }
 	    if( this.doneRenderCallback ){
-	    	this.doneRenderCallback( this )
+	    	// Pass the firefogg object to the render done callback for other operations 
+	    	// ( such as uploading the asset ) 
+	    	this.doneRenderCallback( this.fogg )
 	    }
 	}
 }

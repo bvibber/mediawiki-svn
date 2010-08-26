@@ -304,7 +304,7 @@ mw.SequencerTools.prototype = {
 		var _this = this;
 		var editAction = this.editActions[ editActionId ];
 		$actionButton = $j.button({
-				icon_id: editAction.icon, 
+				icon: editAction.icon, 
 				text: editAction.title
 			})
 			.css({
@@ -333,7 +333,8 @@ mw.SequencerTools.prototype = {
 		return $j( '<div />' )
 			.css({
 				'float': 'left',
-				'width': '150px',
+				'font-size': '12px',
+				'width': '160px',
 				'border': 'solid thin #999',
 				'background-color': '#EEE',
 				'padding' : '2px',

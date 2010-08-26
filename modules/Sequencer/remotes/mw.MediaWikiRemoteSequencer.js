@@ -11,6 +11,7 @@ mw.addMessageKeys( [
 	"mwe-sequencer-edit-sequence",
 	"mwe-sequencer-embed-sequence",
 	"mwe-sequencer-embed-sequence-desc",
+	"mwe-sequencer-loading-sequencer",
 	
 	"mwe-sequencer-not-published",
 	"mwe-sequencer-published-out-of-date"
@@ -217,24 +218,42 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				'left' : '5px',
 				'right' : '5px',	
 				'background': '#FFF'
-			})
-			.loadingSpinner()
+			})			
+			.append(
+				$j('<div />').append( 
+					gM('mwe-sequencer-loading-sequencer'),
+					$j('<span />').loadingSpinner()
+				)
+				.css( {'width':'200px', 'margin':'auto'})
+			)
 		)
 		
-		mw.load( 'Sequencer', function(){ 	 				
-			$j('#edit_sequence_container').sequencer({	
-				'title' : _this.getTitle(),
-				'newSequence' : ( wgArticleId == 0 ),
-				'server': {
+		mw.load( 'Sequencer', function(){ 	 		
+			// Send a jquery ui style destroy command
+			$j('#edit_sequence_container').sequencer( 'destroy');
+			$j('#edit_sequence_container').sequencer({
+				// The title for this sequence:
+				title : _this.getTitle(),
+				// If the sequence is new
+				newSequence : ( wgArticleId == 0 ),
+				// Server config:
+				server: {
 					'type' : 'mediaWiki',
 					'url' : _this.getApiUrl(),
 					'titleKey' : wgPageName,			
 				},
 	    		// Set the add media wizard to only include commons:   
-	    		'addMedia' : {
+	    		addMedia : {
 	    			 'enabled_providers':[ 'wiki_commons' ],	    			 
-	    			 'default_query' : _this.getTitle()
-	    		}     		
+	    			 'default_query' : _this.getTitle()	    			 
+	    		},
+	    		// Function called on sequence exit 
+	    		onExitCallback: function( sequenceHasChanged ){	    			
+	    			if( sequenceHasChanged ){
+	    				window.location.reload();
+	    			}
+	    			// else do nothing
+	    		}
 			});
 		});
 	},
