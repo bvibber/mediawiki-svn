@@ -17,6 +17,7 @@ class ApiArticleAssessment extends ApiBase {
 			'article_assessment',
 			array( 'aa_rating_id', 'aa_rating_value' ),
 			array( 'aa_revision' => $params['revid'],
+				'aa_user_id' => $wgUser->getId(),
 				'aa_user_text' => $userName,
 				/* 'aa_page_id' => $params['pageid'],*/
 				),
@@ -84,7 +85,6 @@ class ApiArticleAssessment extends ApiBase {
 				'aap_rating' => $rating,
 			),
 			__METHOD__,
-			array(),
 			array(
 				'aap_total' => 'aap_total + ' . $updateAddition,
 				'aap_count' => 'aap_count + ' . ( $newRating ? 1 : 0 ),
@@ -111,7 +111,6 @@ class ApiArticleAssessment extends ApiBase {
 				'aa_rating_value' => $ratingValue,
 			),
 			__METHOD__,
-			array(),
 			array(
 				'aa_timestamp' => wfTimestampNow(),
 				'aa_rating_id' => $ratingId,

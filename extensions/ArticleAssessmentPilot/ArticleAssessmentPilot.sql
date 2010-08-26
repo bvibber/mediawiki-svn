@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_ratings {
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   -- Foreign key to page.page_id
   aa_page_id integer unsigned NOT NULL,
+  aa_user_id integer NOT NULL,
   -- unique user identifier
   aa_user_text varchar(255) binary NOT NULL,
   -- Foreign key to revision.rev_id
