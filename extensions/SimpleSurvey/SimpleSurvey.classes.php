@@ -71,18 +71,19 @@ class SimpleSurvey extends PrefSwitchSurvey {
 		global $wgRequest, $wgUser;
 		$dbw = wfGetDb( DB_MASTER );
 		$now = $dbw->timestamp();
-		$cookieID = $wgRequest->getCookie( "vitals-survey" );
+		/*$cookieID = $wgRequest->getCookie( "vitals-survey" );
 		if ( $cookieID == null ) {
 			$cookieID = self::generateRandomCookieID();
 			$wgRequest->response()->setcookie( "vitals-survey", $cookieID );
-		}
+		}*/
 
 		foreach ( $survey['questions'] as $question => $config ) {
 			$dbw->insert(
 				'prefswitch_survey',
 				array_merge(
 					array(
-						'pss_user' => $cookieID,
+						'pss_user' => $wgUser->getId(),
+						'pss_user_text' => $wgUser->getName(),
 						'pss_timestamp' => $now,
 						'pss_name' => $name,
 						'pss_question' => $question,
@@ -97,17 +98,15 @@ class SimpleSurvey extends PrefSwitchSurvey {
 		$dbw->insert(
 				'prefswitch_survey',
 				array(
-					'pss_user' => $cookieID,
+					'pss_user' => $wgUser->getId(),
+					'pss_user_text' => $wgUser->getName(),
 					'pss_timestamp' => $now,
 					'pss_name' => $name,
 					'pss_question' => "logged_in",
-					'pss_answer' => $wgUser->isLoggedIn() ? "yes":"no",
+					'pss_answer' => $wgUser->isLoggedIn() ? "yes" : "no",
 					'pss_answer_data' => wfGetIP(),
 				),
 				__METHOD__
 			);
-
-
-
 	}
 }
