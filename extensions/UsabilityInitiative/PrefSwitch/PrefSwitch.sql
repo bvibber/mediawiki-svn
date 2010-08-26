@@ -6,6 +6,9 @@ CREATE TABLE IF NOT EXISTS /*_*/prefswitch_survey (
 	-- User ID
 	pss_user int NOT NULL,
 
+	-- User text
+	pss_user_text varchar(255) binary NOT NULL,
+
 	-- Timestamp
 	pss_timestamp binary(14) NOT NULL,
 

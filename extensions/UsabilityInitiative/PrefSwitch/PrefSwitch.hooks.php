@@ -11,10 +11,15 @@ class PrefSwitchHooks {
 	/* Static Functions */
 	
 	public static function schema() {
-		global $wgExtNewTables;
-		$wgExtNewTables[] = array( 'prefswitch_survey', dirname( __FILE__ ) . '/PrefSwitch.sql' );
+		global $wgExtNewTables, $wgExtModifiedFields;
+
+		$dir = dirname( __FILE__ );
+
+		$wgExtNewTables[] = array( 'prefswitch_survey', $dir  . '/PrefSwitch.sql' );
+		$wgExtModifiedFields[] = array( '', '', $dir  . '/PrefSwitch-addusertext.sql' );
 		return true;
 	}
+
 	public static function personalUrls( &$personal_urls, &$title ) {
 		global $wgUser, $wgRequest;		
 		// Loads opt-in messages
