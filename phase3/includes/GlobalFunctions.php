@@ -1898,7 +1898,7 @@ define('TS_DB2', 8);
 function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 	$uts = 0;
 	$da = array();
-	if ($ts==0) {
+	if ($ts === 0) {
 		$uts=time();
 	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/D',$ts,$da)) {
 		# TS_DB
@@ -1919,6 +1919,9 @@ function wfTimestamp( $outputtype = TS_UNIX, $ts = 0 ) {
 		# TS_POSTGRES
 	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)\.*\d* GMT$/',$ts,$da)) {
 		# TS_POSTGRES
+	} elseif (preg_match('/^[A-Z][a-z]{2}, \d\d [A-Z][a-z]{2} \d{4} \d\d:\d\d:\d\d/', $ts)) {
+		# TS_RFC2822
+		$uts = strtotime( $ts );
 	} else {
 		# Bogus value; fall back to the epoch...
 		wfDebug("wfTimestamp() fed bogus time value: $outputtype; $ts\n");
