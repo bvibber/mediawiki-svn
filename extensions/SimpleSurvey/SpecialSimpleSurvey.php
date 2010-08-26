@@ -58,7 +58,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 				}
 					// forward to new page
 				if ( $wgSimpleSurveyRedirectURL ) {
-					$wgRequest->response()->header( "Location: $wgSimpleSurveyRedirectURL" );
+					$wgOut->redirect( $wgSimpleSurveyRedirectURL );
 				}
 
 				return;
