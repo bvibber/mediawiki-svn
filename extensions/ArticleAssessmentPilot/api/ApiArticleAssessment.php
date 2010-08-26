@@ -12,7 +12,7 @@ class ApiArticleAssessment extends ApiBase {
 
 		$dbr = wfGetDB( DB_SLAVE );
 
-		//TODO:Refactor out...?
+		// TODO:Refactor out...?
 		$res = $dbr->select(
 			'article_assessment',
 			array( 'aa_rating_id', 'aa_rating_value' ),
@@ -31,17 +31,17 @@ class ApiArticleAssessment extends ApiBase {
 			$lastRatings[$row->aa_rating_id] = $row->aa_rating_value;
 		}
 
-		//Do for each metric/dimension
+		// Do for each metric/dimension
 
 		$pageId = $params['pageid'];
 		$revisionId = $params['revid'];
 
-		//TODO: Fold for loop into foreach above?
+		// TODO: Fold for loop into foreach above?
 		global $wgArticleAssessmentRatingCount;
-		for ($i = 1; $i <= $wgArticleAssessmentRatingCount; $i++){
+		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
 			$lastRating = 0;
-			if ( isset( $lastRatings[$i]) ) {
-				$lastRating = $lastRatings[$i];				
+			if ( isset( $lastRatings[$i] ) ) {
+				$lastRating = $lastRatings[$i];
 			}
 
 			$thisRating = 0;
@@ -56,7 +56,7 @@ class ApiArticleAssessment extends ApiBase {
 			$this->insertOrUpdateUserRatings( $pageId, $revisionId, $userName, $i, $thisRating );
 		}
 
-		//Insert (or update) a users rating for a revision
+		// Insert (or update) a users rating for a revision
 
 		$r = array();
 		$r['result'] = 'Success';

@@ -2,9 +2,9 @@
 
 $dir = dirname( __FILE__ ) . '/';
 
-//from prefswitch in usability initiative
+// from prefswitch in usability initiative
 require_once( dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/UsabilityInitiative.php" );
-$prefswitchdir = dirname( dirname( __FILE__ ) ) ."/UsabilityInitiative/PrefSwitch";
+$prefswitchdir = dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/PrefSwitch";
 
 // Adds Autoload Classes
 $wgAutoloadClasses = array_merge(
@@ -19,13 +19,13 @@ $wgAutoloadClasses = array_merge(
 		'PrefSwitchSurveyFieldDimensions' => $prefswitchdir . '/PrefSwitch.classes.php',
 		'PrefSwitchSurveyFieldText' => $prefswitchdir . '/PrefSwitch.classes.php',
 		'SimpleSurvey' => $dir . "SimpleSurvey.classes.php",
-		'SpecialSimpleSurvey' => $dir. 'SpecialSimpleSurvey.php',
+		'SpecialSimpleSurvey' => $dir . 'SpecialSimpleSurvey.php',
 	)
 );
-unset($prefswitchdir);
+unset( $prefswitchdir );
 
 
-//add special pages
+// add special pages
 $wgSpecialPages['SimpleSurvey'] = 'SpecialSimpleSurvey';
 $wgSpecialPageGroups['SimpleSurvey'] = 'wiki';
 $wgExtensionMessagesFiles['SimpleSurvey'] = $dir . 'SimpleSurvey.i18n.php';
@@ -44,9 +44,9 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'SimpleSurvey::schema';
 
 $wgValidSurveys = array();
 
-//add surveys
-require_once($dir . "Surveys.php");
-unset($dir);
+// add surveys
+require_once( $dir . "Surveys.php" );
+unset( $dir );
 
 // Always include the browser stuff...
 foreach ( $wgPrefSwitchSurveys as $survey ) {
@@ -61,7 +61,7 @@ foreach ( $wgPrefSwitchSurveys as $survey ) {
 			'ie8' => 'prefswitch-survey-answer-browser-ie8',
 			'ff1' => 'prefswitch-survey-answer-browser-ff1',
 			'ff2' => 'prefswitch-survey-answer-browser-ff2',
-			'ff3'=> 'prefswitch-survey-answer-browser-ff3',
+			'ff3' => 'prefswitch-survey-answer-browser-ff3',
 			'cb' => 'prefswitch-survey-answer-browser-cb',
 			'c1' => 'prefswitch-survey-answer-browser-c1',
 			'c2' => 'prefswitch-survey-answer-browser-c2',

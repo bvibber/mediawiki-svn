@@ -1,6 +1,6 @@
 <?php
 /**
- * 
+ *
  *
  * @file
  * @ingroup API
@@ -12,31 +12,31 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		
+
 		$result = $this->getResult();
-		
+
 		$this->addTables( 'article_assessment_pages' );
 		$this->addTables( 'article_assessment_ratings' );
-		
+
 		$this->addFields( array( 'aap_page_id', 'aap_total', 'aap_count', 'aap_rating_id', 'aam_rating' ) );
 
 		$this->addWhereFld( 'aap_rating_id', 'aam_rating_id' );
-		
+
 		if ( isset( $params['pageid'] ) ) {
 			$this->addWhereFld( 'aa_page_id', $params['pageid'] );
 		}
-		
+
 		$res = $this->select( __METHOD__ );
 
 		$assessments = array();
-		
-		foreach( $res as $row ) {
+
+		foreach ( $res as $row ) {
 			if ( !isset( $assessments[$row->aap_page_id] ) ) {
 				$assessments[$row->aap_page_id] = array(
 					'pageid' => $row->aap_page_id,
 				);
 			}
-			
+
 			$assessments[$row->aap_page_id]['ratings']['r' . $row->aap_rating] = array(
 				'ratingid' => $row->aap_rating_id,
 				'ratingdesc' => $row->aam_rating,
@@ -45,10 +45,10 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			);
 		}
 
-		foreach( $assessments as $ass ) {
+		foreach ( $assessments as $ass ) {
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $ass );
 		}
-		
+
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
 	}
 
@@ -69,12 +69,12 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			'List all article assessments'
 		);
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-		));
+		) );
 	}
-	
+
 	protected function getExamples() {
 		return array(
 			'api.php?action=query&list=articleassessment',

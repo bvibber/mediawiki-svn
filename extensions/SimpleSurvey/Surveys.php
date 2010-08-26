@@ -42,7 +42,7 @@ $wgPrefSwitchSurveys['vitals-07-2010'] = array(
 					'business' => 'vitals-07-2010-answer-nonprof-business',
 					'nothink' => 'vitals-07-2010-answer-nonprof-think',
 				),
-		),		
+		),
 		'wikimediafoundation' => array(
 			'question' => 'vitals-07-2010-question-wikimedia',
 			'type' => 'select',

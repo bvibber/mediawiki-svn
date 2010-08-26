@@ -9,7 +9,7 @@
 class SpecialSimpleSurvey extends SpecialPage {
 
 	/* Private Members */
-	
+
 	private $origin = '';
 	private $originTitle = null;
 	private $originQuery = '';
@@ -19,51 +19,51 @@ class SpecialSimpleSurvey extends SpecialPage {
 	private $tokenToCheck = '';
 
 	/* Functions */
-	
+
 	/**
 	 * Quick token matching wrapper for form processing
 	 */
 	public function checkToken() {
 		global $wgRequest;
 		$this->tokenToCheck = $_SESSION['wsSimpleSurveyToken'];
-		if($this->tokenToCheck != "" &&
-			 ( $wgRequest->getVal( 'token' ) == $this->tokenToCheck ) ){
+		if ( $this->tokenToCheck != "" &&
+			 ( $wgRequest->getVal( 'token' ) == $this->tokenToCheck ) ) {
 			return true;
 		}
 		else return false;
 	}
-	
-	public function setToken(){
+
+	public function setToken() {
 		$this->tokenToCheck = wfGenerateToken( array( $this, time() ) );
 		$_SESSION['wsSimpleSurveyToken'] = $this->tokenToCheck;
 	}
-	
+
 	public function __construct() {
 		parent::__construct( 'SimpleSurvey' );
 		wfLoadExtensionMessages( 'SimpleSurvey' );
 	}
-	
-	
+
+
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion, $wgValidSurveys, $wgSimpleSurveyRedirectURL;
 		$this->setHeaders();
 		// Set page title
 		$wgOut->setPageTitle( wfMsg( 'simple-survey-title' )  );
-		$surveyName = $wgRequest->getVal("survey");
-		
-		if($wgRequest->wasPosted()){
-				if($surveyName && in_array($surveyName,$wgValidSurveys ) && $this->checkToken() ){
+		$surveyName = $wgRequest->getVal( "survey" );
+
+		if ( $wgRequest->wasPosted() ) {
+				if ( $surveyName && in_array( $surveyName, $wgValidSurveys ) && $this->checkToken() ) {
 					SimpleSurvey::save( $surveyName, $wgPrefSwitchSurveys[$surveyName] );
-					$wgOut->addHtml("<b>" . wfMsg( 'simple-survey-confirm' ). "</b>");
+					$wgOut->addHtml( "<b>" . wfMsg( 'simple-survey-confirm' ) . "</b>" );
 				}
-					//forward to new page
-				if($wgSimpleSurveyRedirectURL){
-					$wgRequest->response()->header("Location: $wgSimpleSurveyRedirectURL");
-				}	
-				
+					// forward to new page
+				if ( $wgSimpleSurveyRedirectURL ) {
+					$wgRequest->response()->header( "Location: $wgSimpleSurveyRedirectURL" );
+				}
+
 				return;
 		}
-		
+
 		$this->setToken();
 		// Get the origin from the request
 		$par = $wgRequest->getVal( 'from', $par );
@@ -71,7 +71,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 		// $this->originTitle should never be Special:Userlogout
 		if (
 			$this->originTitle &&
-			$this->originTitle->isSpecial('Userlogout')
+			$this->originTitle->isSpecial( 'Userlogout' )
 		) {
 			$this->originTitle = null;
 		}
@@ -83,7 +83,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 			$this->originLinkUrl = $this->originTitle->getLinkUrl( $this->originQuery );
 			$this->originFullUrl = $this->originTitle->getFullUrl( $this->originQuery );
 		}
-		
+
 		// Begin output
 		$this->setHeaders();
 		UsabilityInitiativeHooks::initialize();
@@ -91,29 +91,29 @@ class SpecialSimpleSurvey extends SpecialPage {
 		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
 		$wgOut->addHtml( '<div class="plainlinks">' );
 		// Handle various modes
-		
-		$this->render( $wgRequest->getVal("survey") );
-	
+
+		$this->render( $wgRequest->getVal( "survey" ) );
+
 		$wgOut->addHtml( '</div>' );
 	}
-	
+
 	/* Private Functions */
-	
+
 	private function render( $mode = null ) {
 		global $wgUser, $wgOut, $wgPrefSwitchSurveys, $wgValidSurveys;
 		// Make sure links will retain the origin
 		$query = array(	'from' => $this->origin, 'fromquery' => $this->originQuery );
-		
-		if ( !isset( $wgPrefSwitchSurveys[$mode] )  && !in_array($mode, $wgValidSurveys) ){
+
+		if ( !isset( $wgPrefSwitchSurveys[$mode] )  && !in_array( $mode, $wgValidSurveys ) ) {
 			$wgOut->addWikiMsg( "simple-survey-invalid" );
-			if ( $this->originTitle ) {	
+			if ( $this->originTitle ) {
 				$wgOut->addHTML( wfMsg( "simple-survey-back", $this->originLink ) );
 			}
 			return;
 		}
-		
+
 		$wgOut->addWikiMsg( "simple-survey-intro-{$mode}" );
-		
+
 		// Setup a form
 		$html = Xml::openElement(
 			'form', array(
@@ -124,7 +124,7 @@ class SpecialSimpleSurvey extends SpecialPage {
 			)
 		);
 		$html .= Xml::hidden( 'survey', $mode );
-		$html .= Xml::hidden( 'token', $this->tokenToCheck);
+		$html .= Xml::hidden( 'token', $this->tokenToCheck );
 		// Render a survey
 		$html .= SimpleSurvey::render(
 			$wgPrefSwitchSurveys[$mode]['questions']
@@ -137,6 +137,6 @@ class SpecialSimpleSurvey extends SpecialPage {
 		);
 		$html .= Xml::closeElement( 'dt' );
 		$html .= Xml::closeElement( 'form' );
-		$wgOut->addHtml( $html );	
+		$wgOut->addHtml( $html );
 	}
 }

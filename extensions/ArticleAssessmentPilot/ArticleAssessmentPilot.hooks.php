@@ -16,7 +16,7 @@ class ArticleAssessmentPilotHooks {
 			'article_assessment',
 			dirname( __FILE__ ) . '/ArticleAssessmentPilot.sql'
 		);
-		
+
 		return true;
 	}
 
@@ -34,17 +34,17 @@ class ArticleAssessmentPilotHooks {
 
 	public static function addCode( &$data, $skin ) {
 		$title = $skin->getTitle();
-		
-		//check if this page should have the form
-		
-		//Chances are we only want to be rating Mainspace, right?
+
+		// check if this page should have the form
+
+		// Chances are we only want to be rating Mainspace, right?
 		if ( $title->getNamespace() !== NS_MAIN ) {
 			return true;
 		}
 
-		//write the form
+		// write the form
 
-		//if user has no cookie, set cookie
+		// if user has no cookie, set cookie
 
 		return true;
 	}
