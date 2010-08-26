@@ -1,7 +1,7 @@
 -- Store mapping of i18n key of "rating" to an ID
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_ratings {
   aam_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  aam_rating varchar(255),
+  aam_rating varchar(255) binary NOT NULL
 } /*$wgDBTableOptions*/;
 
 -- INSERT INTO /*$wgDBprefix*/article_assessment_ratings(aam_rating) VALUES('blah');
