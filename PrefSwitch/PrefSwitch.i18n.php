@@ -78,7 +78,7 @@ Please select all that apply.',
 Return to <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | A screenshot of Wikipedia's new navigation interface <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -106,8 +106,7 @@ The Wikimedia Foundation's User Experience Team has been working with volunteers
 * '''Link wizard:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
 * '''Other new features:''' We have also introduced a table wizard to make creating tables easier and a find and replace feature to simplify page editing.
-* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].
-",
+* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
 	'prefswitch-main-logged-changes' => "* The '''{{int:watch}} tab''' is now a star.
 * The '''{{int:move}} tab''' is now in the dropdown next to the search bar.",
 	'prefswitch-main-feedback' => "===Feedback?===
@@ -211,7 +210,7 @@ Kies asseblief alles wat van toepassing is.',
 Keer terug na <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | 'n Skermkiekie van Wikipedia se nuwe navigasiekoppelvlak <small>[[Media:VectorNavigation-en.png|(vergroot)]]</small>
@@ -361,7 +360,7 @@ $messages['ar'] = array(
 	'prefswitch-main' => "<div dir=\"rtl\">
 {| border=\"0\" align=\"left\" style=\"margin-right:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | لقطة شاشة لواجهة تصفح ويكيبيديا الجديدة <small>[[Media:VectorNavigation-en.png|(كبّر)]]</small>
@@ -468,7 +467,7 @@ $messages['be-tarask'] = array(
 Вярнуцца да <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[File:VectorNavigation-be-tarask.png|401px|]]
 |-
 | Новы навігацыйны інтэрфэйс Вікіпэдыі <small>[[Media:VectorNavigation-be-tarask.png|(павялічыць)]]</small>
@@ -608,7 +607,7 @@ $messages['bn'] = array(
 ফিরে যান <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | উইকিপিডিয়ার নতুন নেভিগেশন ইন্টারফেসের একটি স্ক্রিনশট <small>[[Media:VectorNavigation-en.png|(বড় করুন)]]</small>
@@ -697,7 +696,7 @@ $messages['bpy'] = array(
 আলথকে যাগা <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | উইকিপিডিয়ার নুৱা নেভিগেশন ইন্টারফেসের স্ক্রিনশটহান <small>[[Media:VectorNavigation-en.png|(ডাঙর কর)]]</small>
@@ -789,7 +788,7 @@ Dibabit kement tra hag a zegouezh.',
 Distreiñ da <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Un dapadenn skramm tennet eus etrefas merdeiñ nevez Wikipedia <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -810,7 +809,7 @@ Distreiñ da <span class="plainlinks">[$1 $2]</span>.',
 |}
 |}
 The Wikimedia Foundation's User Experience Team has been working with volunteers from the community to make things easier for you. We are excited to share some improvements, including a new look and feel and simplified editing features. These changes are intended to make it easier for new contributors to get started, and are based on our [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability testing conducted over the last year]. Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more details, visit the related Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post].
-Bet eo skipailh implijerien arroutet Diazezadur Wikimedia o labourat gant tud a youl-vat er gumuniezh evit aesaat an traoù deoc'h. Stad zo ennomp bremañ o kinnig deoc'h tammoù gwellaennoù, en o zouez un tres nevez ha doareoù kemmañ pajennoù eeunaet. Degaset eo bet ar c'hemmoù-se evit aesaat buhez an implijerien nevez. Diazezet int war [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Ur studiadenn implijadusted kaset da benn warlene]. Aesaat implijadusted hor raktresoù zo ur priorite evit Diazezadur Wikimedia ha kenderc'hel a raimp da ginnig traoù nevez en amzer da zont. Evit muioc'h a ditouroù, kit da weladenniñ kemennadenn [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog Wikimedia]. 
+Bet eo skipailh implijerien arroutet Diazezadur Wikimedia o labourat gant tud a youl-vat er gumuniezh evit aesaat an traoù deoc'h. Stad zo ennomp bremañ o kinnig deoc'h tammoù gwellaennoù, en o zouez un tres nevez ha doareoù kemmañ pajennoù eeunaet. Degaset eo bet ar c'hemmoù-se evit aesaat buhez an implijerien nevez. Diazezet int war [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Ur studiadenn implijadusted kaset da benn warlene]. Aesaat implijadusted hor raktresoù zo ur priorite evit Diazezadur Wikimedia ha kenderc'hel a raimp da ginnig traoù nevez en amzer da zont. Evit muioc'h a ditouroù, kit da weladenniñ kemennadenn [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog Wikimedia].
 ===Setu ar pezh zo bet cheñchet===
 * '''Merdeiñ :''' Gwellaet eo bet an doare merdeiñ evit lenn ha kemmañ pajennoù. Bremañ emañ kalz muioc'h war wel an ivinelloù e laez pep pajenn labour pe kaozeal, ha kemend-all pa vezit oc'h aozañ ur pennad pe o lenn anezhañ.
 * '''Gwellaennoù er varrenn ostilhoù :''' Adframmet eo bet ar varrenn ostilhoù, dezhi da vezañ aesoc'h da implijout. Bremañ eo aesoc'h maketenniñ pajennoù ha kavout an doare d'en ober.
@@ -890,7 +889,7 @@ Si us plau, seleccioneu tot el que correspongui',
 Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Mostra de la nova interfície de navegació de la Viquipèdia <small>[[Media:VectorNavigation-en.png|(amplia)]]</small>
@@ -1012,7 +1011,7 @@ $messages['cs'] = array(
 	'prefswitch-survey-cancel-feedback' => 'Pokud nám nechcete sdělit svůj názor, můžete se vrátit na $1.',
 	'prefswitch-survey-question-like' => 'Co se vám z nových funkcí líbilo?',
 	'prefswitch-survey-question-dislike' => 'Co se vám z nových funkcí nelíbilo?',
-	'prefswitch-survey-question-whyoff' => 'Proč jste vypnuli nové funkce? 
+	'prefswitch-survey-question-whyoff' => 'Proč jste vypnuli nové funkce?
 Vyberte všechny relevantní možnosti.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Byla příliš složitá na používání.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nefungovala správně.',
@@ -1034,11 +1033,11 @@ Vyberte všechny relevantní možnosti.',
 	'prefswitch-success-on' => 'Nové funkce jsou nyní zapnuty. Doufáme, že se vám budou líbit. Kdykoli je můžete opět vypnout kliknutím na odkaz „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ navrchu stránky.',
 	'prefswitch-success-off' => 'Nové funkce jsou nyní vypnuty. Děkujeme za vyzkoušení nových funkcí. Kdykoli je můžete opět zapnout kliknutím na odkaz „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ navrchu stránky.',
 	'prefswitch-success-feedback' => 'Váš názor byla odeslán.',
-	'prefswitch-return' => '<hr style="clear:both"> 
+	'prefswitch-return' => '<hr style="clear:both">
 Zpět na <span class="plainlinks">[$1 $2].</span>',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-cs.png|401px|]]
 |-
 | Snímek obrazovky s novým navigačním rozhraním <small>[[Media:VectorNavigation-cs.png|(zvětšit)]]</small>
@@ -1061,7 +1060,7 @@ Zpět na <span class="plainlinks">[$1 $2].</span>',
 
 Tým nadace Wikimedia pro uživatelskou přívětivost pracoval s dobrovolníky z komunity, aby vám zjednodušil práci. Jsme rádi, že se s vámi můžeme podělit o několik vylepšení včetně nového vzhledu a zjednodušené editace. Cílem těchto změn je zjednodušit začátky nováčkům a jsou založeny na našich [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study testech z minulého roku]. Vylepšování použitelnosti našich projektů je prioritou Wikimedia Foundation a i v budoucnu budeme nabízet další inovace. Podrobnosti můžete najít ve [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ zprávě na blogu Wikimedia].
 
-=== Co jsme změnili === 
+=== Co jsme změnili ===
 * '''Navigace:''' Máme lepší navigaci pro čtení a editaci stránek. Záložky v horní části každé stránky nyní zřetelněji zobrazují, zda si prohlížíte článek či diskusi a zda stránku čtete či editujete.
 * '''Vylepšení panelu nástrojů:''' Přeorganizovali jsme editační panel nástrojů, aby se snadněji používal. Formátování stránek je teď jednodušší a intuitivnější.
 * '''Průvodce odkazy:''' Jednoduše použitelný nástroj vám pomůže přidávat odkazy na jiné články wiki, jako i na externí stránky.
@@ -1074,9 +1073,9 @@ Tým nadace Wikimedia pro uživatelskou přívětivost pracoval s dobrovolníky 
 Uvítáme vaše názory. Navštivte naši [[$1|stránku pro komentáře]] nebo, pokud vás zajímá naše dlouhodobé úsilí o vylepšování softwaru, můžete nalézt více informací na [http://usability.wikimedia.org wiki projektu použitelnosti].',
 	'prefswitch-main-anon' => '===Chci zpátky===
 Pokud chcete, můžete si [$1 vypnout nové funkce]. Nejdříve se budete muset přihlásit nebo zaregistrovat.',
-	'prefswitch-main-on' => '=== Chci zpátky! === 
+	'prefswitch-main-on' => '=== Chci zpátky! ===
 [$2 Klikněte sem, pokud chcete vypnout nové funkce].',
-	'prefswitch-main-off' => '=== Vyzkoušejte ji! === 
+	'prefswitch-main-off' => '=== Vyzkoušejte ji! ===
 Pokud si chcete vyzkoušet nové funkce, prosím [$1 klikněte zde].',
 	'prefswitch-survey-intro-feedback' => 'Budeme rádi, když se dozvíme váš názor.
 Vyplňte prosím dotazník níže a poté klikněte na „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“.',
@@ -1131,7 +1130,7 @@ Dewiswch yr holl resymau dros gwneud.",
 Dychwelyd i <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Ciplun o ryngwyneb llywio newydd Wicipedia <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -1154,9 +1153,9 @@ Dychwelyd i <span class="plainlinks">[$1 $2]</span>.',
 Mae Tîm Sefydliad Wikimedia ar gyfer Profiadau Defnyddwyr wedi bod yn cydweithio gyda gwrifoddolwyr o'r gymuned i wneud pethau'n haws i chi. Rydym am rannu rhai gwelliannau gyda chi, gan gynnwys golwg newydd, naws gwahanol a nodweddion golygu symlach. Bwriad y newidiadau yw ei gwneud yn haws i gyfranwyr newydd fwrw ati. Maent wedi eu seilio ar y gwaith [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study arbrofi ar ddefnyddioldeb a gynhaliwyd yn ystod y flwyddyn a fu]. Mae gwella defnyddioldeb ein prosiectau yn flaenoriaeth i Sefydliad Wikimedia, a byddwn yn rhannu rhagor o ddiweddariadau eto. Am fwy o fanylion, ewch i [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ flog Wikimedia].
 
 === Dyma'r hyn sydd wedi newid ===
-*'''Llywio''': Rydym wedi gwella'r llywio ar gyfer darllen tudalennau a'u golygu. Yn awr, mae'n haws gweld o'r tabiau ar frig tudalen p'un ai'r dudalen neu ei thudalen drafod sydd o'ch blaen, a ph'un ai ydych yn darllen neu yn golygu. 
+*'''Llywio''': Rydym wedi gwella'r llywio ar gyfer darllen tudalennau a'u golygu. Yn awr, mae'n haws gweld o'r tabiau ar frig tudalen p'un ai'r dudalen neu ei thudalen drafod sydd o'ch blaen, a ph'un ai ydych yn darllen neu yn golygu.
 *'''Gwelliannau i'r bar offer golygu''': Rydym wedi ad-drefnu'r bar offer golygu i'w wneud yn haws i'w ddefnyddio. Nawr, mae fformatio tudalennau yn symlach ac yn haws ei ddeall.
-*'''Dewin cysylltu''': Teclyn hawdd i'w ddefnyddio yn eich galluogi i ychwanegu cysylltau i dudalennau eraill ar y wici yn ogystal â chysylltau i safleoedd allanol. 
+*'''Dewin cysylltu''': Teclyn hawdd i'w ddefnyddio yn eich galluogi i ychwanegu cysylltau i dudalennau eraill ar y wici yn ogystal â chysylltau i safleoedd allanol.
 *'''Gwelliannau wrth chwilio''': Rydym wedi gwella'r awgrymiadau chwilio i gael hyd i'r nod yn gyflymach.
 *'''Nodweddion newydd eraill''': Rydym hefyd wedi gwneud dewin tablau i'w gwneud yn haws llunio tablau, ac wedi gwneud teclyn 'canfod a disodli' i'ch cynorthwyo wrth i chi olygu.
 *'''Logo Wicipedia''': Rydym wedi diweddaru ein logo. Darllenwch fwy ar [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ flog Wikimedia].",
@@ -1170,9 +1169,9 @@ Os ydych am ddiffodd y nodweddion newydd, [$1 cliciwch fan hyn]. Fe gewch gynnig
 [$2 Os hoffech ddiffodd y nodweddion newydd, cliciwch fan hyn].',
 	'prefswitch-main-off' => '==Rhowch gynnig arni!==
 Os yr hoffech roi cynnig ar y nodweddion newydd, pwyswch [$1 fan hyn].',
-	'prefswitch-survey-intro-feedback' => 'Byddem yn falch o gael eich barn. 
+	'prefswitch-survey-intro-feedback' => 'Byddem yn falch o gael eich barn.
 Os y dymunwch, llenwch yr arolwg dewisol isod ac yna pwyswch ar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
-	'prefswitch-survey-intro-off' => 'Diolch am roi cynnig ar ein nodweddion newydd. 
+	'prefswitch-survey-intro-off' => 'Diolch am roi cynnig ar ein nodweddion newydd.
 I\'n helpu ni i\'w gwella, cwblhewch yr arolwg dewisol isod, yna pwyswch ar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Adborth ar brofiadau defnyddwyr',
 );
@@ -1223,7 +1222,7 @@ Vælg alle, som passer.',
 Tilbage til <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Et skærmbillede af Wikipedias nye navigationsgrænseflade <small>[[Media:VectorNavigation-en.png|(forstør)]]</small>
@@ -1313,7 +1312,7 @@ Bitte wähle alle zutreffenden Punkte aus.',
 Zurück zu <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-de.png|401px|]]
 |-
 | Ein Screenshot von Wikipedias neuer Navigationsoberfläche <small>[[Media:VectorNavigation-de.png|(vergrößern)]]</small>
@@ -1404,7 +1403,7 @@ Bitte wählen Sie alle zutreffenden Punkte aus.',
 Return to <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Ein Screenshot von Wikipedias neuer Navigationsoberfläche <small>[[Media:VectorNavigation-en.png|(vergrößern)]]</small>
@@ -1492,7 +1491,7 @@ Ma rica kene hemi biwecine.',
 Reyna peyser şo <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Yew resimê nevigasyonê Wikipediya newe <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -1509,7 +1508,7 @@ Reyna peyser şo <span class="plainlinks">[$1 $2]</span>.',
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-en.png|401px|]]
 |-
-| Yew resimê qutiyê diyalogê newe seba dekerdişi gireyan 
+| Yew resimê qutiyê diyalogê newe seba dekerdişi gireyan
 |}
 |}
 Dernegê Wikipediyayi, Grubê Deneyimê Karberi u cemaat ra yardimciyan seba  kolay kerdişê Wikipediyayi ser hewitiyeni. Ma zaf şay biya ke ma tay xacetanê neweyan viraşti. Eni xacetanê neweyan de ti hind eşkena kolay binusi. Xacetanê neweyan kaberanê newyan rê her çi kolay keni.  [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Testê şuxulnayişi ma ra ena mocna]. Raver berdişiyê projeyanê ma Dernegê Wikipediyayi rê zaf muhim o. Ma hind şima rê xeberanê xacetanê neweyan şaweni. Seba enformasyonê zafyeri şo [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post].
@@ -1518,7 +1517,7 @@ Dernegê Wikipediyayi, Grubê Deneyimê Karberi u cemaat ra yardimciyan seba  ko
 === Çi vuriya?===
 * '''Nevigasyon:''' Seba wendiş u nuştişê meqaleyan kolay kerdişi, ma nevigasyon raver berdi. Tuşan ke ser pel de hind tu ra mocneni eka ti meqele vurnen ya zi ti pela miniqeşeyi vuneni ya zi ti kamci pele wendeni.
 * '''Xacetanê nuştişi ke raver biya:''' Ma xacetanê nuştişi organize kerd. Eka nuştiş u formet kerdiş hind bi zaf rehat.
-* '''Wizardê gireyi:''' Eka yew tablo wikipediya esta. Hind ti kolay eşkena pel de gire bierz. 
+* '''Wizardê gireyi:''' Eka yew tablo wikipediya esta. Hind ti kolay eşkena pel de gire bierz.
 * '''Cigeyrayişi:''' Ma cigeyrayişi zaf kolay kerd. Eka ti quti de çikek binusi, ti ra tevsiye keno.
 * '''Xacetanê neweyanê bini:''' Ma yew wizard viraşt  ke hind tablo viraştiş kolay biy; format kerdişi zaf rahet o.
 * '''Logoyê Wikipediyayi:''' Ma logo xo vurne. Tiya de biweni [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
@@ -1532,7 +1531,7 @@ Ma wazeni şima fiqirê xo ma rê vace. Ma rica kena [[$1|pele fiqir dayişi]] z
 Şıma gani cı kewê ya zi hesab vırazê.[$2 Eke şıma wazenê xısusiyetanê neweyan bıqefelnê/megurenê, etıya bıtıknên].',
 	'prefswitch-main-off' => '===Deneme bike===
 [$1 Eka ti wazeni xacetanê newe a bike, itiya ra klik bike].',
-	'prefswitch-survey-intro-feedback' => 'Ma wazeni şima fiqirê xo ma rê vace. 
+	'prefswitch-survey-intro-feedback' => 'Ma wazeni şima fiqirê xo ma rê vace.
 Ma rica kena anket ma biweni bine ena pele de "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Seba şuxulnayişê hacetanê newe, ma tu ra zaf teşekur keni.
 Seba yardim kerdişi, ma rica keni ena anket ma a biki "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
@@ -1582,7 +1581,7 @@ Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 Slědk k <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-de.png|401px|]]
 |-
 | Wobrazkowe foto nowego nawigaciskego pówjercha Wikipedije <small>[[Media:VectorNavigation-de.png|(powětšyś)]]</small>
@@ -1681,7 +1680,7 @@ $messages['el'] = array(
 Επιστροφή στο <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-el.png|401px|]]
 |-
 | Ένα στιγμιότυπο του νέου περιβάλλοντος πλοήγησης της Βικιπαίδειας <small>[[Media:VectorNavigation-en.png|(μεγέθυνση)]]</small>
@@ -1698,7 +1697,7 @@ $messages['el'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-el.png|401px|]]
 |-
-| Ένα στιγμιότυπο του νέου διαλόγου για την εισαγωγή συνδέσμων 
+| Ένα στιγμιότυπο του νέου διαλόγου για την εισαγωγή συνδέσμων
 |}
 |}
 
@@ -1706,16 +1705,16 @@ $messages['el'] = array(
 
 ===Αυτά που αλλάξαμε===
 * '''Πλοήγηση:''' Έχουμε βελτιώσει την πλοήγηση για την ανάγνωση και την επεξεργασία σελίδων. Τώρα οι καρτέλες στο πάνω μέρος της κάθε σελίδας δείχνουν πιο καθαρά αν βλέπετε την ίδια τη σελίδα  ή τη σελίδα συζήτησης, και επίσης αν διαβάζετε ή αν επεξεργάζεστε μια σελίδα.
-* '''Βελτιώσεις στην εργαλειοθήκη επεξεργασίας:''' Αναδιοργανώσαμε την εργαλειοθήκη επεξεργασίας ώστε να είναι πιο εύχρηστη.  Τώρα η μορφοποίηση σελίδων είναι πιο απλή και πιο διαισθητική. 
+* '''Βελτιώσεις στην εργαλειοθήκη επεξεργασίας:''' Αναδιοργανώσαμε την εργαλειοθήκη επεξεργασίας ώστε να είναι πιο εύχρηστη.  Τώρα η μορφοποίηση σελίδων είναι πιο απλή και πιο διαισθητική.
 * '''Οδηγός για συνδέσμους:'''  Ένα εύχρηστο εργαλείο που σας επιτρέπει να προσθέσετε συνδέσμους προς άλλες σελίδες της Βικιπαίδειας καθώς και προς εξωτερικούς ιστότοπους.
-* '''Βελτιώσεις στην αναζήτηση:''' Έχουμε βελτιώσει τις συμβουλές αναζήτησης, ώστε  να οδηγηθείτε στη σελίδα που ψάχνετε πιο γρήγορα. 
+* '''Βελτιώσεις στην αναζήτηση:''' Έχουμε βελτιώσει τις συμβουλές αναζήτησης, ώστε  να οδηγηθείτε στη σελίδα που ψάχνετε πιο γρήγορα.
 * '''Άλλες νέες λειτουργίες:'''  Επιπλέον έχουμε εισαγάγει έναν οδηγό που διευκολύνει τη δημιουργία πινάκων, και μια λειτουργία για αναζήτηση-αντικατάσταση που απλοποιεί την επεξεργασία σελίδων.
 * '''Λογότυπο της Βικιπαίδειας:''' Ανανεώσαμε το λογότυπο. Διαβάστε περισσότερα στο [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d ιστολόγιο του Ιδρύματος Wikimedia].",
-	'prefswitch-main-logged-changes' => "* Η '''{{int:watch}} καρτέλα''' είναι τώρα ένα αστέρι. 
+	'prefswitch-main-logged-changes' => "* Η '''{{int:watch}} καρτέλα''' είναι τώρα ένα αστέρι.
 * Η ''''καρτέλα {{int:move}}'''' είναι τώρα στην αναπτυσσόμενη λίστα δίπλα στην μπάρα αναζήτησης.",
-	'prefswitch-main-feedback' => '=== Ανατροφοδότηση; === 
+	'prefswitch-main-feedback' => '=== Ανατροφοδότηση; ===
 Θα θέλαμε πολύ να ακούσουμε από εσάς. Παρακαλούμε επισκεφθείτε την [[$1|σελίδα ανατροφοδότησής]] μας, ή, αν σας ενδιαφέρουν οι συνεχιζόμενες προσπάθειές μας για τη βελτίωση του λογισμικού, επισκεφθείτε το [http://usability.wikimedia.org wiki χρηστικότητας] για περισσότερες πληροφορίες.',
-	'prefswitch-main-anon' => '===Επιστροφή στις παλιές ρυθμίσεις=== 
+	'prefswitch-main-anon' => '===Επιστροφή στις παλιές ρυθμίσεις===
 [$1 Πατήστε εδώ για να απενεργοποιήσετε τη νέα χαρακτηριστικά]. Θα σας ζητηθεί να συνδεθείτε ή να δημιουργήσετε ένα λογαριασμό πρώτα.',
 	'prefswitch-main-on' => '===Επιστροφή πίσω!===
 [$2 Κάντε κλικ εδώ για να απενεργοποιήσετε τα νέα χαρακτηριστικά] .',
@@ -1765,7 +1764,7 @@ Bonvolu elekti ĉiujn taŭgaĵojn.',
 	'prefswitch-title-off' => 'Malŝalti novajn funkciojn',
 	'prefswitch-title-switched-off' => 'Dankon',
 	'prefswitch-title-feedback' => 'Komentoj',
-	'prefswitch-success-on' => 'Novaj funkcioj nun estas ŝaltitaj. Ni esperas ke vi aprezas uzi ilin. Vi povas ĉiumomente malŝalti ilin alklakante la ligilon 
+	'prefswitch-success-on' => 'Novaj funkcioj nun estas ŝaltitaj. Ni esperas ke vi aprezas uzi ilin. Vi povas ĉiumomente malŝalti ilin alklakante la ligilon
 "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]"  en la supro de la paĝo.',
 	'prefswitch-success-off' => 'Novaj funkcioj nun estas malŝaltitaj. Dankon ke vi provas la novajn ecojn. Vi povas ĉiumomente reŝalti ilin  alklakante la ligilon "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" en la supro de la paĝo.',
 	'prefswitch-success-feedback' => 'Viaj komento estis sendita.',
@@ -1773,7 +1772,7 @@ Bonvolu elekti ĉiujn taŭgaĵojn.',
 Reiri al <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Ekrankapto de la nova navigilo <small>[[Media:VectorNavigation-en.png|(pligrandigu)]]</small>
@@ -1868,7 +1867,7 @@ Por favor seleccione todas las opciones que correspondan.',
 Volver a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-es.png|401px|]]
 |-
 | Nueva interfaz de navegación de Wikipedia <small>[[Media:VectorNavigation-es.png|(ampliar)]]</small>
@@ -1957,7 +1956,7 @@ Palun vali kõik sobivad.',
 Naase leheküljele <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[File:VectorNavigation-en.png|401px|]]
 |-
 | Kuvatõmmis Vikipeedia uuest navigeerimisliidesest <small>[[Media:VectorNavigation-en.png|(suurenda)]]</small>
@@ -2021,7 +2020,7 @@ $messages['eu'] = array(
 	'prefswitch-survey-cancel-feedback' => 'Ez baduzu feedbacka eman nahi, $1-(e)ra itzul zaitezke.',
 	'prefswitch-survey-question-like' => 'Zer zenuen ezaugarri berrietan gustuko?',
 	'prefswitch-survey-question-dislike' => 'Zer ez zenuen ezaugarri berrietan gustuko?',
-	'prefswitch-survey-question-whyoff' => 'Zergatik desaktibatu dituzu ezaugarri berriak? 
+	'prefswitch-survey-question-whyoff' => 'Zergatik desaktibatu dituzu ezaugarri berriak?
 Mesedez hautatu nahi dituzun guztiak.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Ezaugarriak oso zailak ziren erabiltzeko.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Ezaugarri berriak ez zebitzaten behar bezala.',
@@ -2047,7 +2046,7 @@ Mesedez hautatu nahi dituzun guztiak.',
 <span class="plainlinks">[$1 $2]</span> -(e)ra itzuli .',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Wikipediaren nabigazio interfaze berriaren irudia <small>[[Media:VectorNavigation-en.png|(handitu)]]</small>
@@ -2070,7 +2069,7 @@ Mesedez hautatu nahi dituzun guztiak.',
 Wikimedia Fundazioaren Erabiltzaile Esperientzia Taldea komunitatearen boluntarioekin lanean aritu da zuretzako gauzak errazteko asmoz. Hobekuntzak berriak zuk froga ditzazun nahi dugu, hala nola itxura berria eta edizio tresna sinplifikatuak. Aldaketa hauen helburua Wikipediako erabiltzaile berriei lana erraztea da, eta azken urteko gure [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study erabilgarritasun frogan] oinarritzen da. Gure proiektuaren erabilera errazagoa izatea Wikimedia Fundazioaren lehentasun nagusia da eta etorkizunean are gehiago erraztea nahi dugu. Xehetasun gehiagorako bisitatu Wikimediaren [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog ofiziala].
 
 === Hona hemen aldatu duguna ===
-* '''Nabgazioa:''' Nabigazioa hobetu dugu irakurketa eta edizio orrialdeetan. Orain, orrialde bakoitzaren goialdean fitxak garbiago ageri dira eta artikulua irakurtzen edo editatzen ari zaren garbiago definitzen dute. 
+* '''Nabgazioa:''' Nabigazioa hobetu dugu irakurketa eta edizio orrialdeetan. Orain, orrialde bakoitzaren goialdean fitxak garbiago ageri dira eta artikulua irakurtzen edo editatzen ari zaren garbiago definitzen dute.
 * '''Edizio tresna-barrako hobekuntzak:''' Edizio barra berrantolatu dugu errazago erabiltzeko. Orain, orriei formatua jartzea errazagoa eta intuitiboagoa da.
 * '''Lotura magoa:''' Erabilera errazeko tresna, barne eta kanpo loturak errazago jartzeko.
 * '''Bilaketa hobekuntzak:''' Bilatzen ari zaren orrialdera azkarrago iristeko bilaketa iradokizunak hobetu ditugu.
@@ -2163,7 +2162,7 @@ $messages['fa'] = array(
 بازگشت به <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"left\" style=\"margin-right:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | یک نما از سیستم ناوبری در پوسته وکتور <small>[[Media:VectorNavigation-en.png|(بزرگ‌نمایی)]]</small>
@@ -2253,7 +2252,7 @@ Valitse kaikki sopivat.',
 Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[File:VectorNavigation-en.png|401px|]]
 |-
 | Kuvakaappaus uudesta navigaatiokäyttöliittymästä. <small>[[Media:VectorNavigation-en.png|(suurenna)]]</small>
@@ -2348,7 +2347,7 @@ Veuillez choisir tout ce qui convient.',
 Revenir à <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-fr.png|401px|]]
 |-
 | Capture d’écran de la nouvelle interface de navigation de Wikipédia <small>[[Media:VectorNavigation-fr.png|(agrandir)]]</small>
@@ -2495,7 +2494,7 @@ Tagh gach adhbhar a tha fìor.",
 Till a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Dealbh-sgrìn dhen eadar-aghaidh seòlaidh ùr aig Wikipedia <small>[[Media:VectorNavigation-en.png|(meudaich)]]</small>
@@ -2584,7 +2583,7 @@ Por favor, seleccione o que sexa conveniente.',
 Volver a "<span class="plainlinks">[$1 $2]</span>".',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Captura de pantalla da nova interface de navegación da Wikipedia <small>[[Media:VectorNavigation-en.png|(ampliar)]]</small>
@@ -2673,7 +2672,7 @@ Bitte wehl alli Pinkt, wu zuedräffe uus.',
 Zruck zue <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Di nej Navigation. <small>[[Media:VectorNavigation-en.png|(greßer)]]</small>
@@ -2695,7 +2694,7 @@ Zruck zue <span class="plainlinks">[$1 $2]</span>.',
 |}
 
 D Bruchbarkeits-Arbetsgruppe het mit Frejwillige vu dr Gmeinschaft dra gschafft, d Sache fir unsri Benutzer eifacher z mache. Mir freien is, ass mir e baar Verbesserige chenne aabiete, derzue e nej Uussäh un vereifachti Bearbeitigsfunktione.  Die Änderige solle s Aafange un Mitmache eifacher mache fir neji Mitarbeiter un basiere uf unsre [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Benutzerfrejndligkeits-Teschtstudie], wu in dr letschte 12 Monet duzrgfiert woren isch.
-D Benutzerfrejndligkeit verbessere het Prioritet bi dr Wikimedia Foundation un mir stelle in dr Zuechumpft meh Update z Verfiegig. Fir meh Informatione, kueg dr [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia-Blog]-Yytrag. 
+D Benutzerfrejndligkeit verbessere het Prioritet bi dr Wikimedia Foundation un mir stelle in dr Zuechumpft meh Update z Verfiegig. Fir meh Informatione, kueg dr [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia-Blog]-Yytrag.
 
 ===Des hän mer gänderet===
 * '''Navigation:''' Mir hän d Navigation verbesseret zum Läse un Bearbeite vu Syte. Jetz gän d Ryter obe an dr Syte klarer aa, eb Du d Syte aaluegsch oder e Diskussionssyte, un eb Du am Läse oder am Bearbeite vu dr Syte bisch.
@@ -2778,7 +2777,7 @@ $messages['he'] = array(
 חזרה אל <span class="plainlinks">[$1 $2].</span>',
 	'prefswitch-main' => "{| border=\"0\" align=\"left\" style=\"margin-right:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | צילום מסך של ממשק הניווט החדש של ויקיפדיה <small>[[Media:VectorNavigation-en.png|(הגדלה)]]</small>
@@ -2896,7 +2895,7 @@ Prošu wubjer wšě, kotrež maja so nałožić.',
 Wróćo do <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-de.png|401px|]]
 |-
 | Wobrazowkowe foto nawigaciskeho powjercha Wikipedije <small>[[Media:VectorNavigation-de.png|(powjetšić)]]</small>
@@ -2987,7 +2986,7 @@ Jelöld be az összes indokodat.',
 Vissza a(z) <span class="plainlinks">[$1 $2]</span> lapra.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-hu.png|401px|]]
 |-
 | A Wikipédia új navigációs felületének képe <small>[[Media:VectorNavigation-hu.png|(nagyítás)]]</small>
@@ -3077,7 +3076,7 @@ Per favor selige tote le motivos applicabile.',
 Retornar a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Un captura del nove interfacie de navigation de Wikipedia <small>[[Media:VectorNavigation-en.png|(aggrandir)]]</small>
@@ -3167,7 +3166,7 @@ Harap pilih semua yang benar.',
 Kembali ke <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Berkas:VectorNavigation-en.png|401px|]]
 |-
 | Cuplikan antarmuka navigasi baru Wikipedia <small>[[Media:VectorNavigation-en.png|(perbesar)]]</small>
@@ -3200,9 +3199,9 @@ Tim Pengalaman Pengguna Yayasan Wikimedia telah bekerja bersama sukarelawan dari
 * Sekarang '''tab {{int:move}}''' berada di menu turunan tepat di sebelah kotak pencarian.",
 	'prefswitch-main-feedback' => '===Umpan balik?===
 Kami ingin mendengar pendapat Anda. Silakan kunjungi [[$1|halaman umpan balik]] kami atau, bila Anda tertarik pada usaha kami dalam memperbaiki perangkat lunak ini, kunjungi [http://usability.wikimedia.org wiki kebergunaan] kami untuk informasi lebih lanjut.',
-	'prefswitch-main-anon' => '=== Bawa saya kembali === 
+	'prefswitch-main-anon' => '=== Bawa saya kembali ===
 [$1 Klik disini untuk menonaktifkan fitur baru]. Anda akan diminta untuk masuk log atau membuat akun terlebih dahulu.',
-	'prefswitch-main-on' => '=== Bawa saya kembali! === 
+	'prefswitch-main-on' => '=== Bawa saya kembali! ===
 [$2 Klik di sini untuk menonaktifkan fitur baru].',
 	'prefswitch-main-off' => '===Cobalah!===
 [$1 Klik di sini untuk mengaktifkan fitur baru].',
@@ -3283,7 +3282,7 @@ Si prega di selezionare tutte le motivazioni pertinenti.',
 Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-it.png|401px|]]
 |-
 | Immagine della nuova interfaccia Vector <small>[[Media:VectorNavigation-it.png|(ingrandisci)]]</small>
@@ -3303,7 +3302,7 @@ Torna a <span class="plainlinks">[$1 $2]</span>.',
 | Immagine delle nuove finestre per inserire collegamenti
 |}
 |}
-Lo \"User Experience Team\" della Fondazione Wikimedia, insieme ai volontari della comunità, ha lavorato duramente per rendere le cose più semplici per te. Siamo entusiasti di annunciare alcuni miglioramenti, tra cui un nuovo aspetto grafico e delle funzioni di modifica semplificate.  Migliorare l'usabilità dei progetti wiki è una priorità della Fondazione Wikimedia, e daremo altri aggiornamenti in futuro. Per maggiori dettagli, visita il relativo articolo del [http://www.frontieredigitali.it/online/?p=1703 blog Wikimedia]. 
+Lo \"User Experience Team\" della Fondazione Wikimedia, insieme ai volontari della comunità, ha lavorato duramente per rendere le cose più semplici per te. Siamo entusiasti di annunciare alcuni miglioramenti, tra cui un nuovo aspetto grafico e delle funzioni di modifica semplificate.  Migliorare l'usabilità dei progetti wiki è una priorità della Fondazione Wikimedia, e daremo altri aggiornamenti in futuro. Per maggiori dettagli, visita il relativo articolo del [http://www.frontieredigitali.it/online/?p=1703 blog Wikimedia].
 ===Ecco cosa abbiamo cambiato===
 * '''Navigazione''': Abbiamo migliorato il sistema di navigazione per leggere e modificare voci. Adesso, le schede nella parte superiore di ogni voce indicano più chiaramente se stai visualizzando la voce o la pagina di discussione, e se stai leggendo o modificando una voce.
 * '''Miglioramenti alla barra degli strumenti''':  Abbiamo riorganizzato la barra degli strumenti di modifica per renderla più semplice da usare.  Adesso, formattare le voci è più semplice e intuitivo.
@@ -3374,7 +3373,7 @@ $messages['ja'] = array(
 <span class="plainlinks">[$1 $2]</span>に戻る。',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ja.png|401px|]]
 |-
 | ウィキペディアの新しいナビゲーション・インターフェイスのスクリーンショット <small>[[Media:VectorNavigation-ja.png|(拡大)]]</small>
@@ -3457,7 +3456,7 @@ $messages['ka'] = array(
 	'prefswitch-survey-cancel-feedback' => 'თუ არ გსურთ პროტოტიპზე გამოხმაურების დატოვება, უბრალოდ დაბრუნდით $1.',
 	'prefswitch-survey-question-like' => 'რა მოგეწონათ ახალ შესაძლებლობებში?',
 	'prefswitch-survey-question-dislike' => 'რა არ მოგეწონათ ახალ შესაძლებლობებში?',
-	'prefswitch-survey-question-whyoff' => 'რატომ თიშავთ ახალ შესაძლებლობებს? 
+	'prefswitch-survey-question-whyoff' => 'რატომ თიშავთ ახალ შესაძლებლობებს?
 გთხოვთ აირჩიოთ პასუხი.',
 	'prefswitch-survey-answer-whyoff-hard' => 'ძალიან რთული იყო გამოსაყენებლად.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'ის გაუმართავი იყო.',
@@ -3483,44 +3482,44 @@ $messages['ka'] = array(
 დაბრუნება <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ka.png|401px|]]
 |-
-|  ვიკიპედიის ეკრანის ახალი სანავიგაციო ინტერფეისი <small>[[Media: VectorNavigation-ka.png| (გადიდება)]]</small> 
+|  ვიკიპედიის ეკრანის ახალი სანავიგაციო ინტერფეისი <small>[[Media: VectorNavigation-ka.png| (გადიდება)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorEditorBasic-ka.png|401px|]]
 |-
-| გვერდის რედაქტირების ძირითადი ინტერფეისი<small>[[Media: VectorEditorBasic-ka.png | (გადიდება)]]</small> 
+| გვერდის რედაქტირების ძირითადი ინტერფეისი<small>[[Media: VectorEditorBasic-ka.png | (გადიდება)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-ka.png|401px|]]
 |-
-|ბმულების შექმნის დიალოგიი 
+|ბმულების შექმნის დიალოგიი
 |}
 |}
 
 \"ფონდ ვიკიმედიაში\" მუშაობს \"ვიკიპედიის\" გამოყენების ანალიზის ჯგუფი, რომელიც ვიკიპედიის საზოგადოების მოხალისეებთან ერთად ცდილობენ ვიკიპედიაში მუშაობის გაადვილებას. ჩვენ მოხარულნი ვართ გაცნობოთ რამდენიმე ცვლილების შესახებ, მათ შორის ახალი ინტერფეისისა და რედაქტირების გამარტივებული ფუნქციების შესახებ. ეს ცვლილებები შემოტანილია ახალი მომხმარებლებისთვის სამუშაოს გასამარტივებლად, ისინი ეფუძნებიან [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study წინა წელს ჩატარებულ მოხერხებულობის ტესტირებას]. ჩვენი საიტებისთვის ახალი დიზაინის შექმნა მიიჩნევა პრიორიტეტულად, და ჩვენ გავაგრძელებთ პროექტის გაუმჯობესებას მომავალშიც. დამატებით შეგიძლიათ ნახოთ [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/  ვიკიმედიის ბლოგი].
 
-=== ცვლილებები === 
+=== ცვლილებები ===
 
 * '''ნავიგაცია.''' ჩვენ გავაუმჯობესეთ გვერდების კითხვისა და რედაქტირების ნავიგაცია.
 * '''რედაქტირების პანელის გაუმჯობესება.''' ჩვენ შევცვალეთ რედაქტირების პანელის სახე, რისი მეშვეობითაც მისი გამოყენება გამარტივდა.
 * '''ბმულების ოსტატი.''' გამოსაყენებლად მარტივი ხელსაწყოს მეშვეობით გამარტივდა ბმულების ჩასმა როგორც  ვიკი გვერდებზე, ასევე გარე საიტებზე.
 * '''ძიების გაუმჯობესება.''' ჩვენ გავაუმჯობესეთ ძიებისკარნახები, რათა გამარტივდეს საჭირო გვერდის პოვნა.
-* '''დამატებითი ახალი ფუნქციები.''' ჩვენ ასევე გავაკეთეთ ტაბულების ოსტატი, რათა გაგიმარტივოთ ტაბულების შექმნა ვიკიპედიაში. 
+* '''დამატებითი ახალი ფუნქციები.''' ჩვენ ასევე გავაკეთეთ ტაბულების ოსტატი, რათა გაგიმარტივოთ ტაბულების შექმნა ვიკიპედიაში.
 * '''თანამედროვე ლოგო.''' ჩვენ შევიცვალეთ ლოგო - დაწვრილებით იხილეთ [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d~~V ვიკიმედიის ბლოგში].",
-	'prefswitch-main-feedback' => '=== კავშირი === 
+	'prefswitch-main-feedback' => '=== კავშირი ===
 ჩვენთვის საინტერესოა თქვენი მოსაზრებების მოსმენა. იხილეთ ჩვენთან [[$1|კავშირის გვერდი]]. თუ თქვენ გაინტერესებთ ვიკიპედიის გაუმჯობესება, ეწვიეთ [http://usability.wikimedia.org მოხერხებულობის პროექტის ვიკის].',
 	'prefswitch-main-anon' => '===დაბრუნება===
 თუ გსურთ გამორთოთ ბეტა, [$1 დააჭირეთ აქ]. შემდეგ კი გაიარეთ ავტორიზაცია ან შექმენით ანგარიში.',
 	'prefswitch-main-on' => '==დააბრუნეთ როგორც იყო!==
 [$2 აქ დააჭირეთ ახალი შესაძლებლობების გასათიშად].',
-	'prefswitch-main-off' => '=== მოსინჯეთ! === 
+	'prefswitch-main-off' => '=== მოსინჯეთ! ===
 თუ გსურთ, რომ ჩართათ ახალი ფუნქციები, [$1 აქ დააწკაპუნეთ].',
 	'prefswitch-survey-intro-feedback' => 'ჩვენ გვსურს თქვენი მოსაზრებების წაკითხვა.
 გთხოვთ უპასუხოთ რამდენიმე არასავლდებულო შეკითხვას ქვემოთ, სანამ დააწკაპუნებთ "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" ღილაკს.',
@@ -3576,7 +3575,7 @@ $messages['ko'] = array(
 <span class="plainlinks">[$1 $2]</span>(으)로 돌아갑니다.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ko.png|401px|]]
 |-
 | 새로운 둘러보기 탭의 스크린샷 <small>[[Media:VectorNavigation-ko.png|(확대)]]</small>
@@ -3665,7 +3664,7 @@ $messages['krc'] = array(
 <span class="plainlinks">[$1 $2]ге къайт</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-krc.png|401px|]]
 |-
 | Википедияны навигациясыны джангы интерфейсини кёрюнюмю <small>[[Media:VectorNavigation-krc.png|(уллу эт)]]</small>
@@ -3687,7 +3686,7 @@ $messages['krc'] = array(
 |}
 «Викимедиа фондда» сайтны хайырланыўун анализ этген  группа ишлейди, вики-джамагъатха къатышханла бла бирге ала сизни Википедия бла эмда башха вики-проектле бла ишлеўюгюзню тынчыракъ этерге кюрешедиле. Талай джангы игилендириўню, аланы ичинде – джангы интерфейс эмда тынчыракъ этилген редакторлаў функцияла, сизге берген бизни къуўандыргъанды. Бу тюрлениўле джангы редакторланы ишлеўлерин тынчыракъ этерге деб этилгендиле, ала [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ётген джылда бардырыгъан юзабилити-тестлениўде тамалланадыла]. Бизни сайтларыбызгъа тынчыракъ интерфейс къураў «Викимедиа фондну» преоритетлеринден бириди, биз проектни энтда игилендиргенлей турлукъбуз. Толуракъ информация [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедияны блогунда] табарыкъсыз.
 
-=== Нени тюрлендиргенбиз === 
+=== Нени тюрлендиргенбиз ===
 * '''Навигация.''' Биз навигацияны игилендиргенбиз, окъургъа эмда бетлени редакторлагъа тынчыракъ этгенбиз. Энди хар бетни баш джанында вкладка бусагъатда не эте тургъаныгъызны тюзюрек ангылатады: бетгеми къарайсыз огъесе сюзюўюне, окъуй турамысыз огъесе редакторлагъанмы этесиз бетни.
 * '''Редакторлаў панель.''' Инструмент панелни джангыдан этгенбиз, хайырланыўун тынчыракъ этер ючюн. Энди бетлени форматлаў тынчыракъ эмда ангыралгъа ачыкъ болгъанды.
 * '''Джибериўлени мастери.''' Хайырланыўу тынч болгъан инструмент, башха вики-бетлеге элтген эмда тыш сайтлагъан элтген джибериўле къошаргъа мадар береди.
@@ -3777,7 +3776,7 @@ Wielt w.e.g.alles aus wat zoutrëfft.',
 Zréck op <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | E Screenshot vum neie navigatiounsinterface vu Wikipedia<small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -3811,7 +3810,7 @@ D'Equipe vun der Bnotzererfahrung vun der Wikimedia Foundation huet mat Fräiwë
 	'prefswitch-main-feedback' => "===Feedback?===
 Mir wiere frou fir vun Iech ze héieren. Kommt w.e.g. op eis [[$1|Feedback-Säit]] oder, wann dir un de weideren Efforte vun eis fir d'Software ze verbesseren, besicht eis [http://usability.wikimedia.org Benotzerfrëndlechkeets-Wiki] fir weider Informatiounen.",
 	'prefswitch-main-anon' => "=== Zréck ===
-Wann Dir déi nei Fonctiounen ausschalte wëllt, 
+Wann Dir déi nei Fonctiounen ausschalte wëllt,
 [$1 klickt hei]. Dir gitt gefrot fir Iech d'éischt anzeloggen oder e Benotzerkont opzemaachen.",
 	'prefswitch-main-on' => '===Bréngt mech zréck!===
 [$2 klickt w.e.g. hei fir déi nei Fonctiounen auszeschalten].',
@@ -3925,7 +3924,7 @@ $messages['mk'] = array(
 Назад кон <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:ВекторНавигација.PNG|401px|]]
 |-
 | Изглед на новиот навигациски посредник на Википедија <small>[[Media:VectorNavigation.png|(зголеми)]]</small>
@@ -4016,7 +4015,7 @@ $messages['ml'] = array(
 <span class="plainlinks">[$1 $2]</span> എന്ന താളിലേയ്ക്ക് മടങ്ങുക.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ml.png|401px|]]
 |-
 | വിക്കിപീഡിയയുടെ പുതിയ സമ്പർക്കമുഖം, താളുകളിലേയ്ക്കെത്താൻ<br />എങ്ങനെ ഉപയോഗിക്കാം എന്നതിന്റെ സ്ക്രീൻഷോട്ട്<small>[[Media:VectorNavigation-ml.png| (വലുതാക്കുക)]]</small>
@@ -4108,7 +4107,7 @@ $messages['mr'] = array(
 <span class="plainlinks">[$1 $2]</span>कडे परत फिरा.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | विकिपीडियाच्या नविन चेहरामोहर्‍याचे पटलदृष्य <small>[[Media:VectorNavigation-en.png|(विस्तृत)]]</small>
@@ -4125,7 +4124,7 @@ $messages['mr'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-en.png|401px|]]
 |-
-|दुवे टाकण्यासाठी असलेल्या नविन संवाद पेटीचे पटलदृष्य 
+|दुवे टाकण्यासाठी असलेल्या नविन संवाद पेटीचे पटलदृष्य
 |}
 |}
 विकिमिडिया फाउंडेशनची ’सदस्य अनुभव चमू (User Experience Team)’ ही आपणास काम करणे सोपे व्हावे म्हणुन विकिसमाजातील स्वयंसेवकासमवेत काम करीत आहे. आपल्यासमवेत, नविन चेहरामोहर्‍यासह व सोप्या संपादन तोंडवळ्यासह काही सुधारणा आदानप्रदान करण्यास आम्ही आतूर आहोत.नविन सदस्यास सुरुवात करण्यास अभिप्रेत हे बदल त्यांना सोपे पडतील व ते [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability testing conducted over the last year यावर] आधारीत आहेत. आमच्या प्रकल्पांचा वापर (कोणासही)सोप्या पद्धतीने करता यावा ही विकिमिडिया फाउंडेशनची प्राथमिकता आहे आणि भविष्यात आम्ही यात आणखी अद्ययावतता आणुन ती आपल्यासह आदानप्रदान करु.अधिक विस्तृत माहितीसाठी विकिमिडियासंबंधित [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog post या] संकेतस्थळास भेट द्या.
@@ -4134,10 +4133,10 @@ $messages['mr'] = array(
 === आम्ही काय बदलले आहे ते येथे बघा  ===
 
 * '''सुचालन:''' पाने वाचण्यास व संपादण्यास सोपे जावे म्हणुन आम्ही सुधारणा केल्या आहेत.सध्या, प्रत्येक पानाच्या वरील बाजूस असलेली ’टॅब’ ही जास्त स्पष्टपणे हे दर्शविते कि, आपण तेच पान पहात आहात की त्याचे चर्चापान आणि आपण ते पान वाचत आहात की संपादन करीत आहात.
-* '''संपादन साधनपट्टीतील सुधारणा:''' आम्ही वापरात अधीक सुलभता मिळावी म्हणून संपादन साधनपट्टी ची पुर्नरचना केली आहे . पानांछी रचना करणे अधीक सुगम आणि सोपे झाले आहे. 
-* '''दुवे सहाय्यक:''' इतर विकिपानांना आणि बाह्य दुवे देण्याकरिता  वापरास सोपे असे साधन तुम्हाला अधीक सुलभता उपलब्ध व्हावी म्हणून उपलब्ध केले आहे. 
-* '''शोध सुधारणा:''' तुम्ही शोधत असलेले लेख/पान लवकर मिळण्याकरिता आम्ही शोध सुचवणीत सुधारणा केल्या आहेत. 
-* '''इतर नवीन वैशिष्ट्ये:'''सारणी (टेबल) सोपीकरण्यासाठी आम्ही आता एक नवीन सारणी (टेबल) सहाय्यक उपलब्ध केला आहे आणि संपादनांअध्ये सुलभता आणण्याकरिता शोधा आणि बदला (find and replace)वैशिष्ट्य सुद्धा उपलब्ध केले आहे. 
+* '''संपादन साधनपट्टीतील सुधारणा:''' आम्ही वापरात अधीक सुलभता मिळावी म्हणून संपादन साधनपट्टी ची पुर्नरचना केली आहे . पानांछी रचना करणे अधीक सुगम आणि सोपे झाले आहे.
+* '''दुवे सहाय्यक:''' इतर विकिपानांना आणि बाह्य दुवे देण्याकरिता  वापरास सोपे असे साधन तुम्हाला अधीक सुलभता उपलब्ध व्हावी म्हणून उपलब्ध केले आहे.
+* '''शोध सुधारणा:''' तुम्ही शोधत असलेले लेख/पान लवकर मिळण्याकरिता आम्ही शोध सुचवणीत सुधारणा केल्या आहेत.
+* '''इतर नवीन वैशिष्ट्ये:'''सारणी (टेबल) सोपीकरण्यासाठी आम्ही आता एक नवीन सारणी (टेबल) सहाय्यक उपलब्ध केला आहे आणि संपादनांअध्ये सुलभता आणण्याकरिता शोधा आणि बदला (find and replace)वैशिष्ट्य सुद्धा उपलब्ध केले आहे.
 * '''विकिपीडिया लोगो:''' आम्ही आमचा लोगो अद्ययावत केला आहे.  [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog] येथे अधीक वाचा.",
 	'prefswitch-main-logged-changes' => "* '''{{int:watch}} टॅब''' आता तारा आहे.
 * The '''{{int:move}}  टॅब''' आता शोधपेटी पुढच्या अधोदर्शक बाणात( ड्रॉपडाऊनमध्ये) आहे .",
@@ -4197,7 +4196,7 @@ $messages['ms'] = array(
 Kembali ke <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Tampilan navigasi laman Wikipedia baru <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -4217,13 +4216,13 @@ Kembali ke <span class="plainlinks">[$1 $2]</span>.',
 | Tampilan kotak dialog untuk kegunaan pautan
 |}
 |}
-'''Wikimedia Foundation's User Experience Team''' telah bekerjasama dengan para pengguna daripada komuniti untuk memudahkan kepenggunaan Wikipedia. Kami ingin berkongsi pembaharuan yang telah dilaksanakan, termasuk bentuk muka laman yang baru, ringkas dan ciri-ciri yang padat. Pembaharuan ini bertujuan untuk memudahkan pengguna-pengguna baru untuk menyumbang dalam Wikipedia. Kami telah menjalankan [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study temu-bual dan penyelidikan] dengan para pengguna sepanjang tahun lepas. Peningkatan kepengguaan Wikipedia dan projek-projek berkembarnya merupakan keutamaan Yayasan Wikimedia dan kami akan mengumumkan sebarang pembaharuan yang akan datang. Untuk maklumat yang lebih lanjut, sila layari [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia laman blog Wikimedia]. 
+'''Wikimedia Foundation's User Experience Team''' telah bekerjasama dengan para pengguna daripada komuniti untuk memudahkan kepenggunaan Wikipedia. Kami ingin berkongsi pembaharuan yang telah dilaksanakan, termasuk bentuk muka laman yang baru, ringkas dan ciri-ciri yang padat. Pembaharuan ini bertujuan untuk memudahkan pengguna-pengguna baru untuk menyumbang dalam Wikipedia. Kami telah menjalankan [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study temu-bual dan penyelidikan] dengan para pengguna sepanjang tahun lepas. Peningkatan kepengguaan Wikipedia dan projek-projek berkembarnya merupakan keutamaan Yayasan Wikimedia dan kami akan mengumumkan sebarang pembaharuan yang akan datang. Untuk maklumat yang lebih lanjut, sila layari [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia laman blog Wikimedia].
 
 ===Antara perubahan baru===
-* '''Navigasi:''' Kami telah memperbaharui sistem navigasi untuk pembacaan dan penyuntingan laman. ''Tab'' pada bahagian atas laman secara ringkas menunjukkan sama ada anda sedang melayari laman rencana atau laman perbincangan dan penyuntingan.    
+* '''Navigasi:''' Kami telah memperbaharui sistem navigasi untuk pembacaan dan penyuntingan laman. ''Tab'' pada bahagian atas laman secara ringkas menunjukkan sama ada anda sedang melayari laman rencana atau laman perbincangan dan penyuntingan.
 * '''Pembaharuan Bar perkakas (''Toolbar'') Penyuntingan:''' Kami telah menyusun semula bar perkakas penyuntingan untuk memudahkan anda. Pemformatan laman dan kepenggunaan fungsi lain kini lebih mudah.
-* '''Wizard Pautan:''' Perkakas mudah diguna ini, membolehkan anda menambah pautuan pada laman wiki lain dan pautan luar. 
-* '''Pembaikan carian:''' Kami telah mempertingkatkan enjin carian berdasarkan cadangan untuk memudahkan anda mencari laman yang anda ingin layari. 
+* '''Wizard Pautan:''' Perkakas mudah diguna ini, membolehkan anda menambah pautuan pada laman wiki lain dan pautan luar.
+* '''Pembaikan carian:''' Kami telah mempertingkatkan enjin carian berdasarkan cadangan untuk memudahkan anda mencari laman yang anda ingin layari.
 * '''Ciri-ciri baru:''' Kami turut memperkenalkan wizard jadual untuk memudahkan penyediaan jadual dan memudahkan penyuntingan laman.
 * '''Logo Wikipedia:''' Kami telah mengemaskinikan logo Wikiepdia. Untuk maklumat lanjut, sila baca [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Blog Wikimedia]",
 	'prefswitch-main-logged-changes' => "* Bahagian '''tab {{int:watch}} ''' kini berbentuk bintang.
@@ -4236,9 +4235,9 @@ Kami ingin mendengar cadangan anda. Sila kemukakan [[Wikipedia:Pendapat_dan_cada
 [$2 Klik di sini untuk memadamkan ciri-ciri baru].',
 	'prefswitch-main-off' => '==Cubalah!===
 Klik [$ 1 di sini untuk mengaktifkan] ciri-ciri baru',
-	'prefswitch-survey-intro-feedback' => 'Kami ingin mengetahui maklum balas anda. 
+	'prefswitch-survey-intro-feedback' => 'Kami ingin mengetahui maklum balas anda.
 Sila hantarkan soal selidk di bawah.',
-	'prefswitch-survey-intro-off' => 'Terima kasih kerana cuba menggunakan ciri-ciri baru. 
+	'prefswitch-survey-intro-off' => 'Terima kasih kerana cuba menggunakan ciri-ciri baru.
 Untuk membantu kami meningkatkan mutu laman, sila isikan soal selidik dibawah.',
 	'prefswitch-feedbackpage' => 'Project:Pendapat dan cadangan pengguna',
 );
@@ -4404,7 +4403,7 @@ Vink alstublieft alle mogelijkheden die van toepassing zijn aan.',
 Terug naar <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-nl.png|401px|]]
 |-
 | De nieuwe navigatie voor Wikipedia. <small>[[Media:VectorNavigation-nl.png|(vergroten)]]</small>
@@ -4495,7 +4494,7 @@ Vel alle som passar.',
 Attende til <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Ein skjermdump av det nye navigasjonsgrensesnittet til Wikipedia<small>[[Media:VectorNavigation-en.png| (større)]]</small>
@@ -4512,7 +4511,7 @@ Attende til <span class="plainlinks">[$1 $2]</span>.',
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-en.png|401px|]]
 |-
-| Ein skjermdump av den nye dialogboksen for å leggja inn lenkjer 
+| Ein skjermdump av den nye dialogboksen for å leggja inn lenkjer
 |}
 |}
 
@@ -4584,7 +4583,7 @@ Velg alle som passer.',
 Tilbake til <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Et skjermbilde av Wikipedias nye navigasjonsgrensesnitt <small>[[Media:VectorNavigation-en.png|(forstørr)]]</small>
@@ -4688,7 +4687,7 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 Powrót do <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Widok ekranu nowego interfejsu nawigacyjnego Wikipedii <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -4778,7 +4777,7 @@ Për piasì, ch'a selession-a tute le motivassion.",
 Artorna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Në scren ëd la neuva antërfacia ëd navigassion ëd Wikipedia <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -4888,7 +4887,7 @@ Seleccione todas as opções que se aplicam, por favor.',
 Voltar para <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-pt.png|401px|]]
 |-
 | Imagem da nova interface de navegação da Wikipédia <small>[[Media:VectorNavigation-pt.png|(aumentar)]]</small>
@@ -4980,7 +4979,7 @@ Selecione todas as opções que se aplicam, por favor.',
 Voltar para <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Imagem da nova interface de navegação da Wikipédia <small>[[Media:VectorNavigation-en.png|(aumentar)]]</small>
@@ -5129,7 +5128,7 @@ Selectați toate răspunsurile care se potrivesc.',
 Revenire la <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ro.png|401px|]]
 |-
 | Captură de ecran cu noua interfață de la Wikipedia <small>[[Media:VectorNavigation-ro.png|(mai mare)]]</small>
@@ -5221,7 +5220,7 @@ $messages['ru'] = array(
 Вернуться к <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ru.png|401px|]]
 |-
 | Вид нового интерфейса навигации Википедии <small>[[Media:VectorNavigation-ru.png|(увеличить)]]</small>
@@ -5243,7 +5242,7 @@ $messages['ru'] = array(
 |}
 В «Фонде Викимедиа» работает группа анализа использования сайта, совместно с добровольцами из сообщества она старается упростить вашу работу с Википедией и другими вики-проектами. Мы рады поделиться некоторыми улучшениями, в том числе новым интерфейсом и упрощёнными функциями редактирования. Эти изменения предназначены для упрощения работы новых редакторов, они основаны на [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study юзабилити-тестировании, проведённом в прошедшем году]. Задача создания более удобного интерфейса наших сайтов рассматривается «Фондом Викимедиа» как приоритетная, мы продолжим совершенствовать проект и в дальнейшем. Подробности можно узнать в [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ блоге Викимедии].
 
-=== Что мы изменили === 
+=== Что мы изменили ===
 * '''Навигация.''' Мы улучшили навигацию, сделав её более удобной для чтения и редактирования страниц. Теперь вкладки в верхней части каждой страницы позволяют более чётко определить, чем вы сейчас занимаетесь: просматриваете страницу или её обсуждение, читаете или редактируете страницу.
 * '''Панель редактирования.''' Мы переделали панель инструментов редактирования, чтобы упростить её использование. Теперь форматирование страниц стало проще и понятнее.
 * '''Мастер ссылок.''' Простой в использовании инструмент позволяет добавлять ссылки, ведущие как на другие вики-страницы, так и на внешние сайты.
@@ -5309,7 +5308,7 @@ $messages['rue'] = array(
 Вернути ся до <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-rue.png|401px|]]
 |-
 | Снимок образовкы з новым навіґачным інтерфейсом<small>[[Media:VectorNavigation-rue.png|(звекшыти)]]</small>
@@ -5331,7 +5330,7 @@ $messages['rue'] = array(
 |}
 Тім надації Вікімедія про хосновательску приветливость працёвав з доброволниками з комуніты, жебы упростив працю. Тїшыме ся, же ся з вами можеме подїлити о пару вылїпшінь включавчі нового нового взгляду і упростеной едітації. Цілём тых змін є злегчіти зачаткы новачком і суть заложены на нашых [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study тестох з мінулого року]. Здоконалюваня хосновательности нашых проєктів є пріорітов надації Вікімедія і в будучности будеме нукати далшы іновації. Детайлы можете найти во [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ вістї на блогу Вікімедія].
 
-=== Што сьме змінили === 
+=== Што сьме змінили ===
 * '''Навіґація:''' Маєме лїпшу оріентацію про чітаня і едітацію сторінок. Заложкы во верхній части сторінкы нынї ясно зображують, ці собі смотрите статю ці діскузію а ці сторінку чітаєте або едітуєте.
 * '''Вылїпшіня панела інштрументів:''' Переорґанізовали сьме едітачный панел інштрументів, жебы ся лїпше хосновав. Форматованя сторінок є теперь простїше і інтуітівнїше.
 * '''Проводник окдазами:''' Простїше хоснорівательный інштрумент вам поможе придавати одказы на іншы статї вікі, як і на екстерны сторінкы.
@@ -5344,9 +5343,9 @@ $messages['rue'] = array(
 Увитаєме вашы назоры. Навщівте нашу [[$1|сторінку про коментарї]] або пок вас інтересує наше довгочасове усиля о здоконалёваня софтверу, можете найти веце інформацій на [http://usability.wikimedia.org вікі проєктї хосновательности].',
 	'prefswitch-main-anon' => '===Хочу назад===
 Кідь хочете, можете собі [$1 выпнути новы функції]. Перше ся але будете мусити приголосити або реґістровати.',
-	'prefswitch-main-on' => '=== Хочу назад! === 
+	'prefswitch-main-on' => '=== Хочу назад! ===
 [$2 Кликните гев, кідь хочете выпнути новы функції].',
-	'prefswitch-main-off' => '=== Спробуйте їх! === 
+	'prefswitch-main-off' => '=== Спробуйте їх! ===
 Кідь собі хочете спробовати новы функції, просиме [$1 кликните гев].',
 	'prefswitch-survey-intro-feedback' => 'Потїшыме ся, кідь ся дознаме ваш назор.
 Просиме, выповните формулар ниже а потім кликните на „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“.',
@@ -5395,7 +5394,7 @@ $messages['sah'] = array(
 Төннөргө <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ru.png|401px|]]
 |-
 | Бикипиэдьийэ навигациятын саҥа интерфейса <small>[[Media:VectorNavigation-ru.png|(увеличить)]]</small>
@@ -5417,12 +5416,12 @@ $messages['sah'] = array(
 |}
 «Викимедиа Фондатыгар» саайты туһаныыны анаалыстыыр бөлөх үлэлиир. Кини саайт волонтердарын кытта Бикипиэдьийэҕэ уонна атын биики-бырайыактарга үлэлээһини тупсара сатыыр.  Биһиги сорох тупсарыылары, ол иһигэр саҥа интерфейсы уонна эрэдээксийэлээһини судургутутууну үөрүүнү кытта көрдөрөбүт. Бу уларытыылар саҥа кыттааччылар үлэлэрин судургу гынарга аналлаахтар, уонна [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study былырыын ыытыллыбыт тургутууга] өйөнөллөр. Биһиги саайтарбыт өссө табыгастаах буолалларыгар «Викимедиа Фондата» улахан суолтаны биэрэр, онон өссө да тупсара туруохпут. Сиһилии манна  [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедия блогуттан] билиэххитин сөп.
 
-=== Туох уларыйбыта === 
+=== Туох уларыйбыта ===
 * '''Навигация.''' Навигацияны тупсардыбыт, онон ааҕарга уонна уларытарга өссө ордук буолла. Билигин хас биирдии сирэй үөһээ өттүнээҕи кыбытыктара тугу гына олороргун ордук чопчу көрдөрөр буоллулар: сирэйи эбэтэр кини ырытыытын көрөргүн, сирэйи ааҕа эбэтэр көннөрө олороргун.
-* '''Эрдээксийэ хаптаһына (панель).''' Туттарга судургу гынан биэрдибит. Билигин сирэйдэри формааттааһын ордук судургу уонна өйдөнүмтүө буолла. 
+* '''Эрдээксийэ хаптаһына (панель).''' Туттарга судургу гынан биэрдибит. Билигин сирэйдэри формааттааһын ордук судургу уонна өйдөнүмтүө буолла.
 * '''Сигэнии маастара.''' Судургу үнүстүрүмүөн сигэлэри атын биики-сирэйдэргэ да, атын саайтарга да, туруорары хааччыйаллар.
-* '''Көрдөөһүн.''' Көрдөөһүн полсказкаларын тупсардыбыт, онон наадыйар сирэйгин түргэнник булуоҥ. 
-* '''Атын саҥа кыахтар.''' Табылыыссалары оҥорор маастар олортубут. Эбии эрдээксийэни тупсарар көрдөөһүн уонна уларытыы үнүстүрүмүөнүн олортубут. 
+* '''Көрдөөһүн.''' Көрдөөһүн полсказкаларын тупсардыбыт, онон наадыйар сирэйгин түргэнник булуоҥ.
+* '''Атын саҥа кыахтар.''' Табылыыссалары оҥорор маастар олортубут. Эбии эрдээксийэни тупсарар көрдөөһүн уонна уларытыы үнүстүрүмүөнүн олортубут.
 * '''Логотип.''' Шарик-пазл саҥа барылын олортубут, сиһилии манна көр: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа Фондатын» блога].",
 	'prefswitch-main-feedback' => '=== Айааччылардыын алтыһыы ===
 Эн санааҕын истиэхпитин баҕарабыт. Бука диэн, биһиги [[$1|онно аналлаах сирэйбитигэр]] киирэ сырыт эрэ. Өскө салгыы тугу гыныахпытын баҕарарбытын билиэххин баҕарар буоллаххына, манна [http://usability.wikimedia.org биики юзабилити-бырайыагар] киирэ сырыт.',
@@ -5523,7 +5522,7 @@ Prosimo, izberite vse kar ustreza.',
 Vrnitev na <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Zaslonski posnetek novega navigacijskega vmesnika Wikipedije <small>[[Media:VectorNavigation-en.png|(povečaj)]]</small>
@@ -5709,7 +5708,7 @@ Välj alla som stämmer.',
 	'prefswitch-return' => '<hr style="clear:both"> Återgå till <span class="plainlinks">[$1 $2].</span>',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | En skärmbild av Wikipedias nya navigeringsgränssnitt <small>[[Media:VectorNavigation-en.png|(förstora)]]</small>
@@ -5729,7 +5728,7 @@ Välj alla som stämmer.',
 | En skärmbild av den nya dialogrutan för insättning av länkar
 |}
 |}
-Wikimedia Foundations användarupplevelseteam har arbetat med frivilliga ur gemenskapen för att underlätta för dig. Vi är glada över att kunna dela med oss av vissa förbättringar, inklusive ett nytt utseende och enklare redigeringsfunktioner. Dessa förändringar syftar till att göra det lättare för nya bidragsgivare att komma igång, och grundas på vår [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study testande av användbarhet som utförts under det senaste året]. Att förbättra användbarheten av våra projekt är en prioritet för Wikimedia Foundation och vi kommer att dela med oss av fler uppdateringar i framtiden. För mer information, besök det relaterade Wikimedia-[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blogginlägget]. 
+Wikimedia Foundations användarupplevelseteam har arbetat med frivilliga ur gemenskapen för att underlätta för dig. Vi är glada över att kunna dela med oss av vissa förbättringar, inklusive ett nytt utseende och enklare redigeringsfunktioner. Dessa förändringar syftar till att göra det lättare för nya bidragsgivare att komma igång, och grundas på vår [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study testande av användbarhet som utförts under det senaste året]. Att förbättra användbarheten av våra projekt är en prioritet för Wikimedia Foundation och vi kommer att dela med oss av fler uppdateringar i framtiden. För mer information, besök det relaterade Wikimedia-[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blogginlägget].
 
 ===Detta är vad vi har ändrat===
 * '''Navigering''': Vi har förbättrat navigeringen för att läsa och redigera sidor. Nu definierar flikarna högst upp på varje sida tydligare om du tittar på sidan eller diskussionssidan, och om du läser eller redigerar en sida.
@@ -5740,7 +5739,7 @@ Wikimedia Foundations användarupplevelseteam har arbetat med frivilliga ur geme
 * '''Wikipedia-loggan''': Vi har uppdaterat loggan. Läs mer på [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-bloggen].",
 	'prefswitch-main-logged-changes' => "* '''{{int:watch}}-fliken''' är nu en stjärna.
 * '''{{int:move}}-fliken''' finns nu i den nedfällbara menyn intill sökfältet.",
-	'prefswitch-main-feedback' => '===Feedback?=== 
+	'prefswitch-main-feedback' => '===Feedback?===
 Vi vill gärna höra dina synpunkter. Besök vår [[$1|feedbacksida]] eller, om du är intresserad av våra pågående försök att förbättra mjukvaran, besök vår [http://usability.wikimedia.org användbarhetswiki] för mer information.',
 	'prefswitch-main-anon' => '=== Byt tillbaka ===
 Om du vill stänga av de nya funktionerna, [$1 klicka här]. Du kommer att bli ombedd att logga in eller skapa ett konto först.',
@@ -5833,7 +5832,7 @@ $messages['te'] = array(
 తిరిగి <span class="plainlinks">[$1 $2]</span>కి.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | వికీపీడియా కొత్త మార్గదర్శకం యొక్క తెరపట్టు <small>[[Media:VectorNavigation-en.png|(పెద్ద చిత్రం)]]</small>
@@ -5917,7 +5916,7 @@ $messages['th'] = array(
 กลับไปยัง <span class="plainlinks">[$1 $2]</span>',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | สกรีนช็อตของอินเตอร์เฟซนำทางใหม่ของวิกิพีเดีย <small>[[Media:VectorNavigation-en.png|(ขยาย)]]</small>
@@ -6043,7 +6042,7 @@ Mangyaring piliin ang lahat ng maaari.',
 	'prefswitch-return' => 'Bumalik sa <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Isang larawan ng bagong ugnayang-mukha ng Wikipedia <small>[[Media:VectorNavigation-en.png|(palakihin)]]</small>
@@ -6080,7 +6079,7 @@ Nais naming makarinig mula sa iyo.  Pakidalaw ang aming [[$1|pahina ng balik-tug
 Kung nais mong patayin ang bagong mga kasangkapang-katangian, [$1 pindutin dito]. Hihilingin sa iyong lumagda ka o lumikha muna ng isang akawnt.',
 	'prefswitch-main-on' => '===Ibalik ako!===
 [$2 Pindutin dito upang huwag buhayin ang bagong mga kasangkapang-katangian].',
-	'prefswitch-main-off' => '===Subukin ang mga ito!=== 
+	'prefswitch-main-off' => '===Subukin ang mga ito!===
 Kung nais mong buhayin ang mga bagong kasangkapang-katangian, mangyaring [$1 pindutin  dito].',
 	'prefswitch-survey-intro-feedback' => 'Ibig naming marinig ka.
 Mangyaring sulatan ang maaaring hindi saguting pangangalap na nasa ibaba bago pindutin ang "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
@@ -6133,7 +6132,7 @@ Lütfen uygun olanları seçin.',
 <span class="plainlinks">[$1 $2]</span> sayfasına geri dön.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-tr.png|401px|]]
 |-
 | Vikipedinin yeni dolaşım arayüzünden bir görüntü <small>[[Media:VectorNavigation-tr.png|(genişlet)]]</small>
@@ -6153,7 +6152,7 @@ Lütfen uygun olanları seçin.',
 | Bağlantı ekleme iletişim kutusunun görüntüsü
 |}
 |}
-Wikimedia Vakfının Kullanıcı Deneyimi Takımı işleri sizin için kolaylaştırmak maksadıyla gönüllülerle birlikte çalışıyor. Sizinle, yeni bir görünüm ve basitleştirilmiş düzenleme özellikleri gibi, bazı geliştirmeleri paylaşmanın heyecanı içerisindeyiz. [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Geçen yıl yaptığımız kullanılabilirlik testine] dayalı olan bu değişikliklerle, yeni katılanların kolay bir başlangıç yapabilmeleri planlanmıştır. Projelerimizin kullanılabilirliğini yükseltmek Wikimedia Vakfının önceliklerinden biridir, ileride daha çok güncelleştirme paylaşıyor olacağız. Ayrıntılı bilgi için, ilgili Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog yazısını] okuyun.    
+Wikimedia Vakfının Kullanıcı Deneyimi Takımı işleri sizin için kolaylaştırmak maksadıyla gönüllülerle birlikte çalışıyor. Sizinle, yeni bir görünüm ve basitleştirilmiş düzenleme özellikleri gibi, bazı geliştirmeleri paylaşmanın heyecanı içerisindeyiz. [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Geçen yıl yaptığımız kullanılabilirlik testine] dayalı olan bu değişikliklerle, yeni katılanların kolay bir başlangıç yapabilmeleri planlanmıştır. Projelerimizin kullanılabilirliğini yükseltmek Wikimedia Vakfının önceliklerinden biridir, ileride daha çok güncelleştirme paylaşıyor olacağız. Ayrıntılı bilgi için, ilgili Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog yazısını] okuyun.
 
 === İşte değiştirdiklerimiz ===
 * '''Dolaşım:''' Sayfaları okuma ve düzenlemeye yönelik dolaşımı geliştirdik. Artık her sayfanın başındaki sekmeler, sayfaya mı yoksa tartışma sayfasına mı bakıyorsunuz ya da sayfayı okuyor musunuz değiştiriyor musunuz daha açık bir şekilde gösterecek.
@@ -6308,7 +6307,7 @@ $messages['uk'] = array(
 Повернутися до <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-uk.png|401px|]]
 |-
 | Вигляд вікна Вікіпедії в новому оформленні <small>[[Media:VectorNavigation-uk.png|(збільшити)]]</small>
@@ -6345,7 +6344,7 @@ $messages['uk'] = array(
 [$1 Натисніть тут, аби вимкнути нові можливості]. Для цього Вам потрібно ввійти або зареєструватися.',
 	'prefswitch-main-on' => '===Повернути назад===
 [$2 Натисніть тут, якщо бажаєте вимкнути нові можливості].',
-	'prefswitch-main-off' => '===Спробуйте!=== 
+	'prefswitch-main-off' => '===Спробуйте!===
  [$1 Клацніть тут для увімкнення нових можливостей].',
 	'prefswitch-survey-intro-feedback' => 'Нам важлива Ваша думка.
 Чи не могли б Ви пройти необов\'язкове опитування, перш ніж натиснете "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
@@ -6398,7 +6397,7 @@ Xin hãy chọn tất cả các ý thích hợp.',
 Trở về <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | Hình chụp màn hình giao diện duyệt trang mới của Wikipedia <small>[[Media:VectorNavigation-en.png|(phóng lớn)]]</small>
@@ -6498,7 +6497,7 @@ $messages['yi'] = array(
 צוריק צו <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"left\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | עקראַנבילד פֿון וויקיפעדיע'ס נײַעם נאַוויגאַציע איבערפֿלאַך <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
@@ -6531,11 +6530,11 @@ $messages['yi'] = array(
 * דער '''{{int:move}} טאַב''' איז אַצינד אין דעם אַראָפלאז־צינגל לעבן דעם זוכפאַס.",
 	'prefswitch-main-feedback' => '===פֿידבעק?===
 מיר ווילן גערן הערן פֿון אײַך. זײַט אזוי גוט באַזוכט אונזער [[$1|פֿידבעק בלאַט]] אדער, ווען עס אינטרעסירט  אײַך אונזערע אָנגייענדיקע אָנשטרענגונגען צו פֿאַרבעסערן דאָס ווייכוואַרג, באַזוכט אונזער [http://usability.wikimedia.org נוצבאַרקייט וויקי] פֿאַר נאך אינפֿארמאַציע.',
-	'prefswitch-main-anon' => '=== פֿירט מיך צוריק === 
+	'prefswitch-main-anon' => '=== פֿירט מיך צוריק ===
 כדי אָפווענדן די נייע אייגנקייטן [$1 קליקט דאָ]. מען וועט אײַך ערשט בעטן אַרײַנלאָגירן אָדער שאַפֿן אַ נײַע קאנטע.',
-	'prefswitch-main-on' => '=== ברענגט מיך צוריק! === 
+	'prefswitch-main-on' => '=== ברענגט מיך צוריק! ===
 [$2 קליקט דאָ אויסצולעשן די נײַע אייגנקייטן].',
-	'prefswitch-main-off' => '=== פּרואווט אויס! === 
+	'prefswitch-main-off' => '=== פּרואווט אויס! ===
  [$1 דריקט דאָ כדי אַקטיווירן די נײַע אייגנקייטן].',
 	'prefswitch-survey-intro-off' => 'א דאַנק פֿאַרן אויספרובירן אונזערע נײַע אייגנקייטן.
 בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
@@ -6583,7 +6582,7 @@ Your [[User:$1/$2.css|custom $2 styles]] will no longer be applied. You can add 
 Ẹ padà sí <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-yo.png|401px|]]
 |-
 | Àwọrán ojúìran ìtọ́ka ìfojúkojú Wikipedia tuntun <small>[[Media:VectorNavigation-en.png|(nígbàngbà)]]</small>
@@ -6667,7 +6666,7 @@ $messages['yue'] = array(
 番去<span class="plainlinks">[$1 $2]</span>。',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | 維基百科新嘅導航界面嘅截圖 <small>[[Media:VectorNavigation-en.png|(放大)]]</small>
@@ -6768,7 +6767,7 @@ $messages['zh-hans'] = array(
 返回<span class="plainlinks">[$1 $2]</span>。',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | 维基百科新的导航界面的截图 <small>[[Media:VectorNavigation-en.png|(放大)]]</small>
@@ -6857,7 +6856,7 @@ $messages['zh-hant'] = array(
 返回<span class="plainlinks">[$1 $2]</span>。',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | 維基百科新的導航界面的截圖 <small>[[Media:VectorNavigation-en.png|(放大)]]</small>
