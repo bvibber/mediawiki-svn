@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   aa_timestamp binary(14) NOT NULL default '',
   -- Rating info
   aa_rating_id int unsigned NOT NULL,
+  aa_rating_value int unsigned NOT NULL,
   -- 1 vote per user per revision
   PRIMARY KEY (aa_revision, aa_user_text)
 ) /*$wgDBTableOptions*/;
@@ -32,5 +33,5 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_pages (
   aap_total integer unsigned NOT NULL,
   -- Number of ratings
   aap_count integer unsigned NOT NULL,
-  PRIMARY KEY (aap_page_id, aap_rating)
+  PRIMARY KEY (aap_page_id, aap_rating_id)
 ) /*$wgDBTableOptions*/;

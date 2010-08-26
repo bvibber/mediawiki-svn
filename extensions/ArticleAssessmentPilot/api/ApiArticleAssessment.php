@@ -15,7 +15,7 @@ class ApiArticleAssessment extends ApiBase {
 		//TODO:Refactor out...?
 		$res = $dbr->select(
 			'article_assessment',
-			array( 'aa_r1', 'aa_r2', 'aa_r3', 'aa_r4' ),
+			array( 'aa_rating_id', 'aa_rating_value' ),
 			array( 'aa_revision' => $params['revid'],
 				'aa_user_text' => $userName,
 				/* 'aa_page_id' => $params['pageid'],*/
@@ -25,60 +25,38 @@ class ApiArticleAssessment extends ApiBase {
 
 		$res = $res->fetchRow();
 
-		$userHasRated = false;
-		if ( $res ) {
-			$lastM1 = $res->aa_r1;
-			$lastM2 = $res->aa_r2;
-			$lastM3 = $res->aa_r3;
-			$lastM4 = $res->aa_r4;
-			$userHasRated = true;
-		} else {
-			$lastM1 = 0;
-			$lastM2 = 0;
-			$lastM3 = 0;
-			$lastM4 = 0;
-		}
+		$lastRatings = array();
 
-		$r1 = $params['r1'];
-		$r2 = $params['r2'];
-		$r3 = $params['r3'];
-		$r4 = $params['r4'];
+		foreach ( $res as $row ) {
+			$lastRatings[$row->aa_rating_id] = $row->aa_rating_value;
+		}
 
 		//Do for each metric/dimension
 
 		$pageId = $params['pageid'];
 		$revisionId = $params['revid'];
 
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 1, $r1, ( $r1 - $lastM1 ), $userHasRated );
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 2, $r1, ( $r2 - $lastM2 ), $userHasRated );
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 3, $r1, ( $r3 - $lastM3 ), $userHasRated );
-		$this->insertOrUpdatePages( $pageId, $revisionId, $userName, 4, $r1, ( $r4 - $lastM4 ), $userHasRated );
+		//TODO: Fold for loop into foreach above?
+		global $wgArticleAssessmentRatingCount;
+		for ($i = 1; $i <= $wgArticleAssessmentRatingCount; $i++){
+			$lastRating = 0;
+			if ( isset( $lastRatings[$i]) ) {
+				$lastRating = $lastRatings[$i];				
+			}
 
-		//Insert (or update) a users rating for a revision 
-		$dbw = wfGetDB( DB_MASTER );
+			$thisRating = 0;
+			if ( isset( $params["r{i}"] ) ) {
+				$thisRating = $params["r{i}"];
+			}
 
-		$dbw->insertOrUpdate( 'article_assessment',
-			array(
-				'aa_page_id' => $pageId,
-				'aa_user_text' => $userName,
-				'aa_revision' => $revisionId,
-				'aa_user_text' => $userName,
-				'aa_timestamp' => wfTimestampNow(),
-				'aa_r1' => $r1,
-				'aa_r2' => $r2,
-				'aa_r3' => $r3,
-				'aa_r4' => $r4,
-			),
-			__METHOD__,
-			array(),
-			array(
-				'aa_timestamp' => wfTimestampNow(),
-				'aa_r1' => $r1,
-				'aa_r2' => $r2,
-				'aa_r3' => $r3,
-				'aa_r4' => $r4,
-			)
-		);
+			$this->insertOrUpdatePageRating( $pageId, $revisionId, $i, $thisRating, ( $thisRating - $lastRating ),
+					( $lastRating == 0 && $thisRating != 0 )
+			);
+
+			$this->insertOrUpdateUserRatings( $pageId, $revisionId, $userName, $i, $thisRating );
+		}
+
+		//Insert (or update) a users rating for a revision
 
 		$r = array();
 		$r['result'] = 'Success';
@@ -94,7 +72,7 @@ class ApiArticleAssessment extends ApiBase {
 	 * @param $updateAddition Integer: Difference between users last rating (if applicable)
 	 * @param $newRating Boolean: Whether this is a new rating (for update, whether this increases the count)
 	 */
-	private function insertOrUpdatePages( $pageId, $revisionId, $rating, $insert, $updateAddition, $newRating ) {
+	private function insertOrUpdatePageRating( $pageId, $revisionId, $rating, $insert, $updateAddition, $newRating ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->insertOrUpdate( 'article_assessment_pages',
@@ -113,9 +91,39 @@ class ApiArticleAssessment extends ApiBase {
 			)
 		);
 	}
+	/*
+	 * @param $pageId Integer:
+	 * @param $revisionId Integer:
+	 * @param $user String:
+	 * @param $ratingId Integer:
+	 * @param $ratingValue Integer:
+	 */
+	private function insertOrUpdateUserRatings( $pageId, $revisionId, $user, $ratingId, $ratingValue ) {
+		$dbw = wfGetDB( DB_MASTER );
+
+		$dbw->insertOrUpdate( 'article_assessment',
+			array(
+				'aa_page_id' => $pageId,
+				'aa_user_text' => $user,
+				'aa_revision' => $revisionId,
+				'aa_timestamp' => wfTimestampNow(),
+				'aa_rating_id' => $ratingId,
+				'aa_rating_value' => $ratingValue,
+			),
+			__METHOD__,
+			array(),
+			array(
+				'aa_timestamp' => wfTimestampNow(),
+				'aa_rating_id' => $ratingId,
+				'aa_rating_value' => $ratingValue,
+			)
+		);
+
+	}
 
 	public function getAllowedParams() {
-		return array(
+		global $wgArticleAssessmentRatingCount;
+		$ret = array(
 			'pageid' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
@@ -123,43 +131,30 @@ class ApiArticleAssessment extends ApiBase {
 			'revid' => array(
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
-			),
-			'r1' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => 0,
-				ApiBase::PARAM_MIN => 0,
-				ApiBase::PARAM_MAX => 5,
-			),
-			'r2' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => 0,
-				ApiBase::PARAM_MIN => 0,
-				ApiBase::PARAM_MAX => 5,
-			),
-			'r3' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => 0,
-				ApiBase::PARAM_MIN => 0,
-				ApiBase::PARAM_MAX => 5,
-			),
-			'r4' => array(
-				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => 0,
-				ApiBase::PARAM_MIN => 0,
-				ApiBase::PARAM_MAX => 5,
-			),
+			)
 		);
+
+		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
+			$ret['r{$i}'] = array(
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_DFLT => 0,
+				ApiBase::PARAM_MIN => 0,
+				ApiBase::PARAM_MAX => 5,
+			);
+		}
+		return $ret;
 	}
 
 	public function getParamDescription() {
-		return array(
+		global $wgArticleAssessmentRatingCount;
+		$ret = array(
 			'pageid' => '',
-			'revid' => '',
-			'r1' => 'Rating 1',
-			'r2' => 'Rating 2',
-			'r3' => 'Rating 3',
-			'r4' => 'Rating 4',
+			'revid' => ''
 		);
+		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
+	        $ret['r{$i}'] = 'Rating {$i}';
+		}
+		return $ret;
 	}
 
 	public function getDescription() {

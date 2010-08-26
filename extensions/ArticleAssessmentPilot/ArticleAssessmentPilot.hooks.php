@@ -28,6 +28,7 @@ class ArticleAssessmentPilotHooks {
 	public static function parserTestTables( &$tables ) {
 		$tables[] = 'article_assessment';
 		$tables[] = 'article_assessment_pages';
+		$tables[] = 'article_assessment_ratings';
 		return true;
 	}
 

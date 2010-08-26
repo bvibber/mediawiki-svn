@@ -5,6 +5,9 @@
 //number of reviews
 $wgArticleAssessmentRevisionCutoff = 5;
 
+//Number of "ratings" to store. Allows it to be a bit more dynamic
+$wgArticleAssessmentRatingCount = 4;
+
 //Auto-load files
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ApiListArticleAssessment'] = $dir . 'api/ApiListArticleAssessment.php';
