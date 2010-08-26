@@ -21,10 +21,10 @@ if ( count( $argv ) ) {
 
 	if ( $args->flag( 'help' ) ) {
 		echo "Usage: php createAndPromote.php [--backup|--help|--ignore=<regextoexclude>] <files/directories>
-    backup : Creates a backup of modified files
+	backup : Creates a backup of modified files
 	help : This message!
-    ignore : Regex of files not to stylize e.g. .*\.i18n\.php
-    <files/directories> : Files/directories to stylize
+	ignore : Regex of files not to stylize e.g. .*\.i18n\.php
+	<files/directories> : Files/directories to stylize
 ";
 
 		return;
