@@ -198,6 +198,14 @@ class CentralNotice extends SpecialPage {
 						$this->addNotice( $noticeName, '0', $start, $project_name, $project_languages );
 					}
 				}
+				
+				// Handle weight change
+				$updatedWeights = $wgRequest->getArray( 'weight' );
+				if ( isset( $updatedWeights ) ) {
+					foreach ( $updatedWeights as $templateId => $weight ) {
+						$this->updateWeight( $noticeName, $templateId, $weight );
+					}
+				}
 
 			} else {
 				$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'sessionfailure' );
@@ -625,14 +633,6 @@ class CentralNotice extends SpecialPage {
 				if ( isset( $projectLangs ) ) {
 					$this->updateProjectLanguages( $notice, $projectLangs );
 				}
-				
-				// Handle weight change
-				$updatedWeights = $wgRequest->getArray( 'weight' );
-				if ( isset( $updatedWeights ) ) {
-					foreach ( $updatedWeights as $templateId => $weight ) {
-						$this->updateWeight( $noticeName, $templateId, $weight );
-					}
-				}
 
 				$wgOut->redirect( $this->getTitle()->getLocalUrl( "method=listNoticeDetail&notice=$notice" ) );
 				return;
@@ -754,7 +754,11 @@ class CentralNotice extends SpecialPage {
 					$endArray['day'] . '000000'
 				;
 				$projectSelected = $wgRequest->getVal( 'project_name' );
-				$noticeLanguages = $wgRequest->getArray( 'project_languages' );
+				if ( $wgRequest->getArray( 'project_languages' ) ) {
+					$noticeLanguages = $wgRequest->getArray( 'project_languages' );
+				} else {
+					$noticeLanguages = array();
+				}
 			} else { // Defaults
 				$startTimestamp = $row->not_start;
 				$endTimestamp = $row->not_end;
@@ -1320,7 +1324,7 @@ class CentralNotice extends SpecialPage {
 		$oldLanguages = $this->getNoticeLanguages( $notice );
 		
 		// Get the notice id
-		$row = $this->getNoticeId( $notice );
+		$row = $dbw->selectRow( 'cn_notices', 'not_id', array( 'not_name' => $notice ) );
 		
 		// Add newly assigned languages
 		$addLanguages = array_diff( $newLanguages, $oldLanguages );
