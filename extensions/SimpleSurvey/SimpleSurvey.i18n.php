@@ -9,8 +9,8 @@ $messages['en'] = array(
 	'simplesurvey' => 'Take a quick survey',
 	'simple-survey-invalid' => 'That is not a valid survey at this time',
 	'simple-survey-back' => 'Go back',
-    'simple-survey-title' => 'Simple Survey',
-	'simple-survey-confirm' => 'Thanks! Your data has been submited.',
+	'simple-survey-title' => 'Simple Survey',
+	'simple-survey-confirm' => 'Thanks! Your data has been submitted.',
 	
 	/*vitals 07 2010 */
 	'simple-survey-intro-vitals-07-2010' => 'This is a quick survey to give us a better idea of who you are',
@@ -53,7 +53,7 @@ $messages['en'] = array(
 	'vitals-07-2010-answer-beginner' => "I am a beginner with at least one programming language (eg HTML, PHP, Java, C)",
 	'vitals-07-2010-answer-one-lang' => "I am comfortable with at least one programming language",
 	'vitals-07-2010-answer-many-lang' => "I am comfortable with many programming languages",
-	'vitals-07-2010-no-lang' => "Programming? Not me!",
+	'vitals-07-2010-answer-no-lang' => "Programming? Not me!",
 
 	'vitals-07-2010-answer-male'=> 'Male',
 	'vitals-07-2010-answer-female'=> 'Female',

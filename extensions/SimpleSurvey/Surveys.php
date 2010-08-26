@@ -62,7 +62,7 @@ $wgPrefSwitchSurveys['vitals-07-2010'] = array(
 					'beginner' => 'vitals-07-2010-answer-beginner',
 					'one' => 'vitals-07-2010-answer-one-lang',
 					'many' => 'vitals-07-2010-answer-many-lang',
-					'none' => 'vitals-07-2010-no-lang',
+					'none' => 'vitals-07-2010-answer-no-lang',
 				),
 		),
 		'age' => array(

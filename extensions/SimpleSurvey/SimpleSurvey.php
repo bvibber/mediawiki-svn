@@ -48,7 +48,6 @@ $wgValidSurveys = array();
 require_once($dir . "Surveys.php");
 unset($dir);
 
-
 // Always include the browser stuff...
 foreach ( $wgPrefSwitchSurveys as $survey ) {
 	$survey['questions']['browser'] = array(
