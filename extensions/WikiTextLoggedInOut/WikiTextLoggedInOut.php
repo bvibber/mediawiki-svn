@@ -7,10 +7,10 @@
  *
  * @file
  * @ingroup Extensions
+ * @version 1.3
  * @author Aaron Wright
  * @author David Pean
  * @author Jack Phoenix <jack@countervandalism.net>
- * @version 1.0
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  * @link http://www.mediawiki.org/wiki/Extension:WikiTextLoggedInOut Documentation
  */
@@ -19,7 +19,7 @@
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'WikiTextLoggedInOut',
-	'version' => '1.2',
+	'version' => '1.3',
 	'author' => array( 'Aaron Wright', 'David Pean', 'Jack Phoenix' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:WikiTextLoggedInOut',
 	'descriptionmsg' => 'wikitextloggedinout-desc'
@@ -29,13 +29,13 @@ $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['WikiTextLoginInOut'] = $dir . 'WikiTextLoggedInOut.i18n.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'efWikiTextLoggedInOut';
-function efWikiTextLoggedIn( &$parser ) {
-	$parser->setHook( 'loggedin', 'OutputLoggedInText' );
-	$parser->setHook( 'loggedout', 'OutputLoggedOutText' );
+function efWikiTextLoggedInOut( &$parser ) {
+	$parser->setHook( 'loggedin', 'outputLoggedInText' );
+	$parser->setHook( 'loggedout', 'outputLoggedOutText' );
 	return true;
 }
 
-function OutputLoggedInText( $input, $args, $parser, $frame ) {
+function outputLoggedInText( $input, $args, $parser, $frame ) {
 	global $wgUser;
 
 	if( $wgUser->isLoggedIn() ) {
@@ -45,7 +45,7 @@ function OutputLoggedInText( $input, $args, $parser, $frame ) {
 	return '';
 }
 
-function OutputLoggedOutText( $input, $args, $parser, $frame ) {
+function outputLoggedOutText( $input, $args, $parser, $frame ) {
 	global $wgUser;
 
 	if( !$wgUser->isLoggedIn() ) {
