@@ -305,6 +305,25 @@ class ResourceLoaderModule {
 		return self::concatScripts( $this->loaders );
 	}
 	
+	public function getmtime() {
+		$fields = array( $this->scripts, $this->styles,	$this->debugScripts,
+			$this->languageScripts, $this->skinScripts, $this->skinStyles,
+			$this->loaders
+		);
+		return self::getMaxMtime( $fields );
+	}
+	
+	protected static function getMaxMtime( $arr ) {
+		if ( is_array( $arr ) ) {
+			if ( $arr ) {
+				return max( array_map( array( 'ResourceLoaderModule', 'getMaxMtime' ), $arr ) );
+			} else {
+				return 1; // wfTimestamp() interprets 0 as "now"
+			}
+		}
+		return filemtime( $arr );
+	}
+	
 	/**
 	 * Get the contents of a set of files and concatenate them, with
 	 * newlines in between. Each file is used only once.
@@ -327,6 +346,29 @@ class ResourceLoaderModule {
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	public function getSkinScript( $skin ) {
 		return Skin::newFromKey( $skin )->generateUserJs();
+	}
+	
+	public function getmtime() {
+		// HACK: We duplicate the message names from generateUserJs()
+		// here and weird things (i.e. mtime moving backwards) can happen
+		// when a MediaWiki:Something.js page is deleted
+		$jsPages = array( Title::makeTitle( NS_MEDIAWIKI, 'Common.js' ) );
+		foreach ( Skin::getSkinNames() as $skinname ) {
+			$jsPages[] = Title::makeTitleSafe( NS_MEDIAWIKI, ucfirst( $skinname) . '.js' );
+		}
+		
+		// Do batch existence check
+		// TODO: This would work better if page_touched were loaded by this as well
+		$lb = new LinkBatch( $jsPages );
+		$lb->execute();
+		
+		$retval = 1; // wfTimestamp() interprets 0 as "now"
+		foreach ( $jsPages as $jsPage ) {
+			if ( $jsPage->exists() ) {
+				$retval = max( $retval, $jsPage->getTouched() );
+			}
+		}
+		return $retval;
 	}
 	
 	// Dummy overrides to return emptyness
