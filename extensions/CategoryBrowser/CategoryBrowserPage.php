@@ -111,8 +111,8 @@ class CategoryBrowserPage extends SpecialPage {
 		);
 		if ( CB_Setup::$cat_title_CI != '' ) {
 			// case insensitive search is possible
-			$nameFilterFields[] = wfMsg( 'cb_cat_name_filter_ci' );
-			$nameFilterFields[] = array( '__tag' => 'input', 'type' => 'checkbox', 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter_ci', 'checked' => null );
+			$checkbox = array( '__tag' => 'input', 'type' => 'checkbox', 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter_ci', 'checked' => null );
+			$nameFilterFields[] = wfMsg( 'cb_cat_name_filter_ci', CB_XML::toText( $checkbox ) );
 		}
 		$top_tpl =
 			array( '__tag' => 'table', 'class' => 'cb_top_container', '__end' => "\n",

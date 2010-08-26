@@ -524,13 +524,19 @@ class CategoryBrowser {
 		# {{{ ajax link template
 		$this->ajax_onclick = '';
 		$this->ajax_link_text = '';
-		$this->ajax_link_comment = '';
 		if ( !isset( $this->ajax_link_tpl ) ) {
 			$this->ajax_link_tpl =
-				array(
-					array( '__tag' => 'a', 'class' => 'cb_sublink', 'href' => '', 'onclick' => &$this->ajax_onclick, 0 => &$this->ajax_link_text ),
-					array( '__tag' => 'span', 'class' => 'cb_comment', 0 => &$this->ajax_link_comment )
-				);
+				array( '__tag' => 'a', 'class' => 'cb_sublink', 'href' => '', 'onclick' => &$this->ajax_onclick, 0 => &$this->ajax_link_text );
+		}
+		# }}}
+	}
+
+	function initPagerStatsTpl() {
+		$this->pager_stats = '';
+		# {{{ pager current statistics template
+		if ( !isset( $this->pager_stats_tpl ) ) {
+			$this->pager_stats_tpl =
+				array( '__tag' => 'span', 'class' => 'cb_comment', 0 => &$this->pager_stats );
 		}
 		# }}}
 	}
@@ -542,6 +548,51 @@ class CategoryBrowser {
 			$this->sortkey_hint_tpl = array( '__tag' => 'span', 'class' => 'cb_comment', 'style' => 'padding:0em 0.1em 0em 0.1em;', 0 => &$this->sortkey_hint );
 		}
 		# }}}
+	}
+
+	/*
+	 * previous page AJAX link
+	 * @param $pager instance of pager
+	 * @param $list, when the link is available it will be rendered then pushed to the list
+	 */
+	function addPrevPageLink( CB_AbstractPager $pager, array &$list ) {
+		$this->initPagerStatsTpl();
+		$this->initNavTpl();
+		$prev_link = '&#160;'; // &nbsp;
+		$link_obj = $pager->getPrevAjaxLink();
+		if ( $pager->offset != 0 ) {
+			$this->ajax_onclick = $link_obj->call;
+			$this->ajax_link_text = wfMsg( 'cb_previous_items_link' );
+			$prev_offset = $pager->getPrevOffset() + 1;
+			$this->pager_stats = wfMsg( 'cb_previous_items_stats', $prev_offset, $prev_offset + $pager->limit - 1 );
+			$this->nav_link = wfMsg( 'cb_previous_items_line', CB_XML::toText( $this->ajax_link_tpl ), CB_XML::toText( $this->pager_stats_tpl ) );
+			$prev_link = CB_XML::toText( $this->nav_link_tpl );
+		}
+		if ( $link_obj->placeholders || $this->nav_link != '' ) {
+			$list[] = $prev_link;
+		}
+	}
+
+	/*
+	 * next page AJAX link
+	 * @param $pager instance of pager
+	 * @param $list, when the link is available it will be rendered then pushed to the list
+	 */
+	function addNextPageLink( CB_AbstractPager $pager, array &$list ) {
+		$this->initPagerStatsTpl();
+		$this->initNavTpl();
+		$next_link = '&#160;'; // &nbsp;
+		$link_obj = $pager->getNextAjaxLink();
+		if ( $pager->hasMoreEntries ) {
+			$this->ajax_onclick = $link_obj->call;
+			$this->ajax_link_text = wfMsg( 'cb_next_items_link' );
+			$this->pager_stats = wfMsg( 'cb_next_items_stats', $pager->getNextOffset() + 1 );
+			$this->nav_link = wfMsg( 'cb_next_items_line', CB_XML::toText( $this->ajax_link_tpl ), CB_XML::toText( $this->pager_stats_tpl ) );
+			$next_link = CB_XML::toText( $this->nav_link_tpl );
+		}
+		if ( $link_obj->placeholders || $this->nav_link != '' ) {
+			$list[] = $next_link;
+		}
 	}
 
 	function generateCatList( CB_AbstractPager $pager ) {
@@ -560,28 +611,14 @@ class CategoryBrowser {
 				)
 			);
 		# }}}
-		$this->initNavTpl();
 		$this->initAjaxLinkTpl();
 		$this->initSortkeyTpl();
 		# create list of categories
-		$catlist = array(
-			array( '__tag' => 'noscript', 'class' => 'cb_noscript', 0 => wfMsg( 'cb_requires_javascript' ) ),
-		);
-		# previous page AJAX link
-		$this->nav_link = '';
-		$prev_link = '&#160;'; // &nbsp;
-		$link_obj = $pager->getPrevAjaxLink();
-		if ( $pager->offset != 0 ) {
-			$this->ajax_onclick = $link_obj->call;
-			$prev_offset = $pager->getPrevOffset() + 1;
-			$this->ajax_link_text = wfMsg( 'cb_previous_items_link' );
-			$this->ajax_link_comment = wfMsg( 'cb_previous_items_stats', $prev_offset, $prev_offset + $pager->limit - 1 );
-			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$prev_link = CB_XML::toText( $this->nav_link_tpl );
+		$catlist = array();
+		if ( $pager instanceof CB_RootPager ) {
+			$catlist[] = array( '__tag' => 'noscript', 'class' => 'cb_noscript', 0 => wfMsg( 'cb_requires_javascript' ) );
 		}
-		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$catlist[] = $prev_link;
-		}
+		$this->addPrevPageLink( $pager, $catlist );
 		# generate entries list
 		foreach ( $pager->entries as &$cat ) {
 			// cat_title might be NULL sometimes - probably due to DB corruption?
@@ -642,20 +679,7 @@ class CategoryBrowser {
 			# finally add generated $cat_tpl/$cat_link to $catlist
 			$catlist[] = CB_XML::toText( $cat_tpl );
 		}
-		# next page AJAX link
-		$this->nav_link = '';
-		$next_link = '&#160;'; // &nbsp;
-		$link_obj = $pager->getNextAjaxLink();
-		if ( $pager->hasMoreEntries ) {
-			$this->ajax_onclick = $link_obj->call;
-			$this->ajax_link_text = wfMsg( 'cb_next_items_link' );
-			$this->ajax_link_comment = wfMsg( 'cb_next_items_stats', $pager->getNextOffset() + 1 );
-			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$next_link = CB_XML::toText( $this->nav_link_tpl );
-		}
-		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$catlist[] = $next_link;
-		}
+		$this->addNextPageLink( $pager, $catlist );
 		return $catlist;
 	}
 
@@ -670,26 +694,11 @@ class CategoryBrowser {
 				array( '__tag' => 'div', 'class' => 'cb_cat_item', 0 => &$page_link )
 			);
 		# }}}
-		$this->initNavTpl();
 		$this->initAjaxLinkTpl();
 		$this->initSortkeyTpl();
 		# create list of pages
 		$pagelist = array();
-		# previous page AJAX link
-		$this->nav_link = '';
-		$prev_link = '&#160;'; // &nbsp;
-		$link_obj = $pager->getPrevAjaxLink();
-		if ( $pager->offset != 0 ) {
-			$this->ajax_onclick = $link_obj->call;
-			$prev_offset = $pager->getPrevOffset() + 1;
-			$this->ajax_link_text = wfMsg( 'cb_previous_items_link' );
-			$this->ajax_link_comment = wfMsg( 'cb_previous_items_stats', $prev_offset, $prev_offset + $pager->limit - 1 );
-			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$prev_link = CB_XML::toText( $this->nav_link_tpl );
-		}
-		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$pagelist[] = $prev_link;
-		}
+		$this->addPrevPageLink( $pager, $pagelist );
 		foreach ( $pager->entries as &$page ) {
 			$page_title = Title::makeTitle( $page->page_namespace, $page->page_title );
 			$page_link = CB_Setup::$skin->link( $page_title, $page_title->getPrefixedText() );
@@ -703,20 +712,7 @@ class CategoryBrowser {
 			}
 			$pagelist[] = CB_XML::toText( $page_tpl );
 		}
-		# next page AJAX link
-		$this->nav_link = '';
-		$next_link = '&#160;'; // &nbsp;
-		$link_obj = $pager->getNextAjaxLink();
-		if ( $pager->hasMoreEntries ) {
-			$this->ajax_onclick = $link_obj->call;
-			$this->ajax_link_text = wfMsg( 'cb_next_items_link' );
-			$this->ajax_link_comment = wfMsg( 'cb_next_items_stats', $pager->getNextOffset() + 1 );
-			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-			$next_link = CB_XML::toText( $this->nav_link_tpl );
-		}
-		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$pagelist[] = $next_link;
-		}
+		$this->addNextPageLink( $pager, $pagelist );
 		return $pagelist;
 	}
 
@@ -732,7 +728,6 @@ class CategoryBrowser {
 		if ( CB_Setup::$imageGalleryPerRow < 1 || !$wgCategoryMagicGallery || $wgOut->mNoGallery ) {
 			return $this->generatePagesList( $pager );
 		}
-		$this->initNavTpl();
 		$this->initAjaxLinkTpl();
 		$this->initSortkeyTpl();
 		# {{{ gallery container template
@@ -745,20 +740,7 @@ class CategoryBrowser {
 		$gallery = new ImageGallery();
 		$gallery->setHideBadImages();
 		$gallery->setPerRow( CB_Setup::$imageGalleryPerRow );
-		# previous page AJAX link
-		$prev_link = '&#160;'; // &nbsp;
-		$this->nav_link = '';
-		$link_obj = $pager->getPrevAjaxLink();
-		if ( $pager->offset != 0 ) {
-			$this->ajax_onclick = $link_obj->call;
-			$prev_offset = $pager->getPrevOffset() + 1;
-			$this->ajax_link_text = wfMsg( 'cb_previous_items_link' );
-			$this->ajax_link_comment = wfMsg( 'cb_previous_items_stats', $prev_offset, $prev_offset + $pager->limit - 1 );
-			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-		}
-		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$prev_link = CB_XML::toText( $this->nav_link_tpl );
-		}
+		$this->addPrevPageLink( $pager, $filelist );
 		foreach ( $pager->entries as &$file ) {
 			$file_title = Title::makeTitle( $file->page_namespace, $file->page_title );
 			# show the sortkey, when it does not match title name
@@ -770,25 +752,11 @@ class CategoryBrowser {
 			}
 			$gallery->add( $file_title, ( $this->sortkey_hint != '' ) ? CB_XML::toText( $this->sortkey_hint_tpl ) : '' );
 		}
-		# next page AJAX link
-		$next_link = '&#160;'; // &nbsp;
-		$this->nav_link = '';
-		$link_obj = $pager->getNextAjaxLink();
-		if ( $pager->hasMoreEntries ) {
-			$this->ajax_onclick = $link_obj->call;
-			$this->ajax_link_text = wfMsg( 'cb_next_items_link' );
-			$this->ajax_link_comment = wfMsg( 'cb_next_items_stats', $pager->getNextOffset() + 1 );
-			$this->nav_link = CB_XML::toText( $this->ajax_link_tpl );
-		}
-		if ( $link_obj->placeholders || $this->nav_link != '' ) {
-			$next_link = CB_XML::toText( $this->nav_link_tpl );
-		}
-		$filelist = $prev_link;
 		if ( !$gallery->isEmpty() ) {
 			$gallery_html = $gallery->toHTML();
-			$filelist .= CB_XML::toText( $gallery_tpl );
+			$filelist[] = CB_XML::toText( $gallery_tpl );
 		}
-		$filelist .= $next_link;
+		$this->addNextPageLink( $pager, $filelist );
 		return $filelist;
 	}
 
