@@ -365,7 +365,7 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 		$retval = 1; // wfTimestamp() interprets 0 as "now"
 		foreach ( $jsPages as $jsPage ) {
 			if ( $jsPage->exists() ) {
-				$retval = max( $retval, $jsPage->getTouched() );
+				$retval = max( $retval, wfTimestamp( TS_UNIX, $jsPage->getTouched() ) );
 			}
 		}
 		return $retval;

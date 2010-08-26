@@ -220,6 +220,22 @@ class ResourceLoader {
 				$missing[] = $name;
 			}
 		}
+		
+		// Calculate the mtime of this request. We need this, 304 or no 304
+		$mtime = 1;
+		foreach ( $modules as $name ) {
+			$mtime = max( $mtime, self::getModule( $name )->getmtime() );
+		}
+		header( 'Last-Modified: ' . wfTimestamp( TS_RFC2822, $mtime ) );
+		
+		// Check if there's an If-Modified-Since header and respond with a 304 Not Modified if possible
+		$ims = $request->getHeader( 'If-Modified-Since' );
+		if ( $ims !== false && wfTimestamp( TS_UNIX, $ims ) == $mtime ) {
+			header( 'HTTP/1.0 304 Not Modified' );
+			header( 'Status: 304 Not Modified' );
+			return;
+		}
+		
 		// Use output buffering
 		ob_start();
 		// A list of registrations will be collected and appended to mediawiki script-only output

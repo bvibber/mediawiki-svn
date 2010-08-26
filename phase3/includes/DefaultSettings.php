@@ -1624,6 +1624,19 @@ $wgUseETag = false;
  */
 $wgClockSkewFudge = 5;
 
+/**
+ * Maximum time in seconds to cache resources served by the resource loader on
+ * the client side (e.g. in the browser cache).
+ */
+$wgResourceLoaderClientMaxage = 30*24*60*60; // 30 days
+
+/**
+ * Maximum time in seconds to cache resources served by the resource loader on
+ * the server side. This means Squid/Varnish but also any other public proxy
+ * cache between the client and MediaWiki.
+ */
+$wgResourceLoaderServerMaxage = 60*60; // 1 hour
+
 /** @} */ # end of cache settings
 
 /************************************************************************//**

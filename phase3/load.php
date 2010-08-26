@@ -25,8 +25,6 @@
  * This file is the entry point for the resource loader.
  */
  
-// TODO: Caching + easy 304s before WebStart
-
 require ( dirname( __FILE__ ) . '/includes/WebStart.php' );
 wfProfileIn( 'load.php' );
 
@@ -47,8 +45,12 @@ if ( $wgRequest->isPathInfoBad() ) {
 	// FIXME: Doesn't this execute the rest of the request anyway?
 	// Was taken from api.php so I guess it's maybe OK but it doesn't look good.
 }
-// Include core resource list
-require_once "$IP/resources/Resources.php";
+
+// Set caching headers
+$expires = wfTimestamp( TS_RFC2822, min( $wgResourceLoaderClientMaxage, $wgResourceLoaderServerMaxage ) + time() );
+header( "Cache-Control: public, maxage=$wgResourceLoaderClientMaxage, s-maxage=$wgResourceLoaderServerMaxage" );
+header( "Expires: $expires" );
+
 // Respond to resource loading request
 ResourceLoader::respond( $wgRequest, $wgServer . $wgScriptPath . '/load.php' );
 
