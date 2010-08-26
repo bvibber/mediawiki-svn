@@ -212,7 +212,7 @@ class ResourceLoaderModule {
 	 * @return string JS
 	 */
 	public function getScript() {
-		return self::concatFiles( $this->scripts );
+		return self::concatScripts( $this->scripts );
 	}
 	
 	/**
@@ -221,7 +221,7 @@ class ResourceLoaderModule {
 	 * @return string JS
 	 */
 	public function getStyle() {
-		return self::concatFiles( $this->styles );
+		return self::concatStyles( $this->styles );
 	}
 	
 	/**
@@ -248,7 +248,7 @@ class ResourceLoaderModule {
 	 * @return string JS
 	 */
 	public function getDebugScript() {
-		return self::concatFiles( $this->debugScripts );
+		return self::concatScripts( $this->debugScripts );
 	}
 	
 	/**
@@ -260,7 +260,7 @@ class ResourceLoaderModule {
 		if ( !isset( $this->languageScripts[$lang] ) ) {
 			return '';
 		}
-		return self::concatFiles( $this->languageScripts[$lang] );
+		return self::concatScripts( $this->languageScripts[$lang] );
 	}
 	
 	/**
@@ -275,7 +275,7 @@ class ResourceLoaderModule {
 		} else if ( isset( $this->skinScripts['default'] ) ) {
 			$scripts = $this->skinScripts['default'];
 		}
-		return self::concatFiles( $scripts );
+		return self::concatScripts( $scripts );
 	}
 	
 	/**
@@ -290,7 +290,7 @@ class ResourceLoaderModule {
 		} else if ( isset( $this->skinStyles['default'] ) ) {
 			$styles = $this->skinStyles['default'];
 		}
-		return self::concatFiles( $styles );
+		return self::concatStyles( $styles );
 	}
 	
 	/**
@@ -302,7 +302,7 @@ class ResourceLoaderModule {
 		if ( count( $this->loaders ) == 0 ) {
 			return false;
 		}
-		return self::concatFiles( $this->loaders );
+		return self::concatScripts( $this->loaders );
 	}
 	
 	/**
@@ -311,10 +311,17 @@ class ResourceLoaderModule {
 	 * @param $files array Array of file names
 	 * @return string Concatenated contents of $files
 	 */
-	protected static function concatFiles( $files ) {
+	protected static function concatScripts( $files ) {
 		return implode( "\n", array_map( 'file_get_contents', array_unique( (array) $files ) ) );
 	}
-
+	
+	protected static function concatStyles( $files ) {
+		return implode( "\n", array_map( array( 'ResourceLoaderModule', 'remapStyle' ), array_unique( (array) $files ) ) );
+	}
+	
+	protected static function remapStyle( $file ) {
+		return CSSMin::remap( file_get_contents( $file ), dirname( $file ) );
+	}
 }
 
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {

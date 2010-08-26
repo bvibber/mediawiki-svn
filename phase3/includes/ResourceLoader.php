@@ -79,7 +79,7 @@ class ResourceLoader {
 	 * @param {string} $file path to file being filtered, (optional: only required for CSS to resolve paths)
 	 * @return {string} filtered data
 	 */
-	protected static function filter( $filter, $data, $file = null ) {
+	protected static function filter( $filter, $data ) {
 		// FIXME: $file is not used by any callers as path rewriting is currently kinda broken
 		global $wgMemc;
 		$key = wfMemcKey( 'resourceloader', $filter, md5( $data ) );
@@ -93,7 +93,8 @@ class ResourceLoader {
 					$result = JSMin::minify( $data );
 					break;
 				case 'minify-css':
-					$result = Minify_CSS::minify( $data, array( 'currentDir' => dirname( $file ), 'docRoot' => '.' ) );
+					$result = CSSMin::minify( $data );
+					//$result = $data;
 					break;
 				case 'flip-css':
 					$result = CSSJanus::transform( $data, true, false );
