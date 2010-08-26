@@ -537,7 +537,7 @@ div#footer #footer-places li {
 	clear: both;
 	margin: 0 !important;
 	padding: 0 !important;
-		/* @embed */
+	/* @embed */
 	background-image: url(images/preferences-break.png?1);
 	background-position: bottom left;
 	background-repeat: no-repeat;
@@ -1150,20 +1150,24 @@ div#bodyContent {
 	overflow: hidden;
 }
 #ca-unwatch.icon a {
+	/* @embed */
 	background-image: url(images/watch-icons.png?1);
 	background-position: -43px 60%;
 }
 #ca-watch.icon a {
+	/* @embed */
 	background-image: url(images/watch-icons.png?1);
 	background-position: 5px 60%;
 }
 #ca-unwatch.icon a:hover,
 #ca-unwatch.icon a:focus {
+	/* @embed */
 	background-image: url(images/watch-icons.png?1);
 	background-position: -67px 60%;
 }
 #ca-watch.icon a:hover,
 #ca-watch.icon a:focus {
+	/* @embed */
 	background-image: url(images/watch-icons.png?1);
 	background-position: -19px 60%;
 }
