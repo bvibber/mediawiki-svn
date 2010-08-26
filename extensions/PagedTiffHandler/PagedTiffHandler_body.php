@@ -143,7 +143,17 @@ class PagedTiffHandler extends ImageHandler {
 	function validateParam( $name, $value ) {
 		if ( in_array( $name, array( 'width', 'height', 'page', 'lossy' ) ) ) {
 			if ( $name == 'lossy' ) {
-				return in_array( $value, array( 1, 0, '1', '0', 'true', 'false', 'lossy', 'lossless' ) );
+				# NOTE: make sure to use === for comparison. in PHP, '' == 0 and 'foo' == 1.
+
+				if ( $value === 1 || $value === 0 || $value === '1' || $value === '0' ) {
+					return true;
+				}
+
+				if ( $value === 'true' || $value === 'false' || $value === 'lossy' || $value === 'lossless' ) {
+					return true;
+				}
+
+				return false;
 			} elseif ( $value <= 0 || $value > 65535 ) { // ImageMagick overflows for values > 65536
 				return false;
 			} else {
@@ -482,19 +492,19 @@ class PagedTiffHandler extends ImageHandler {
 	 * If it returns false, Image will reload the metadata from the file and update the database
 	 */
 	function isMetadataValid( $image, $metadata ) {
-		
-		if ( !empty( $metadata ) && $metadata != serialize( array() ) ) {
-			$meta = unserialize( $metadata );
-			if ( isset( $meta['errors'] ) ) {
-				// metadata contains an error message, but it's valid. 
-				// don't try to re-render until the error is resolved!
-				return true; 
-			}
-			if ( !empty( $meta['page_amount'] ) && !empty( $meta['page_data'] ) ) {
-				return true;
-			}
+		if ( is_string( $metadata ) ) $metadata = unserialize( $metadata );
+
+		if ( !isset( $metadata['TIFF_METADATA_VERSION'] ) ) {
+			print "(NO VERSION)\n";
+			return false;
 		}
-		return false;
+
+		if ( $metadata['TIFF_METADATA_VERSION'] != TIFF_METADATA_VERSION ) {
+			print "(BAD VERSION: {$metadata['TIFF_METADATA_VERSION']})\n";
+			return false;
+		}
+
+		return true;
 	}
 
 	/**

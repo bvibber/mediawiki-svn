@@ -57,6 +57,7 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 
 		$this->multipage_path = dirname(__FILE__) . '/testImages/multipage.tiff';
 		$this->truncated_path = dirname(__FILE__) . '/testImages/truncated.tiff';
+		$this->mhz_path = dirname(__FILE__) . '/testImages/380mhz.tiff';
 		$this->test_path = dirname(__FILE__) . '/testImages/test.tif';
 
 		if ( !file_exists( $this->truncated_path ) ) {
@@ -67,6 +68,12 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 
 		if ( !file_exists( $this->multipage_path ) ) {
 			echo "{$this->multipage_path} cannot be found.\n";
+			$this->preCheckError = true;
+			return false;
+		}
+
+		if ( !file_exists( $this->mhz_path ) ) {
+			echo "{$this->mhz_path} cannot be found.\n";
 			$this->preCheckError = true;
 			return false;
 		}
@@ -99,12 +106,26 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 			}
 		}
 
+		$mhzTitle = Title::newFromText( 'Image:380mhz.tiff' );
+		$this->mhz_image = wfFindFile( $mhzTitle );
+		if ( !$this->mhz_image && $autoUpload ) {
+			$this->mhz_image = $this->upload( $multipageTitle, $this->mhz_path );
+
+			if ( !$this->mhz_image ) {
+				$this->preCheckError = true;
+				return false;
+			}
+		}
+
 		// force re-reading of meta-data
 		$truncated_tiff = $this->handler->getTiffImage( $this->truncated_image, $this->truncated_path );
 		$truncated_tiff->resetMetaData(); 
 
 		$multipage_tiff = $this->handler->getTiffImage( $this->multipage_image, $this->multipage_path );
 		$multipage_tiff->resetMetaData(); 
+
+		$mhz_tiff = $this->handler->getTiffImage( $this->mhz_image, $this->mhz_path );
+		$mhz_tiff->resetMetaData(); 
 
 		return !$this->preCheckError;
 	}
@@ -120,6 +141,34 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->handler->getMetadata( $this->multipage_image, $this->multipage_path );
 		$this->handler->getMetadata( $this->truncated_image, $this->truncated_path );
 
+
+		// ---- Metadata handling
+		// getMetadata
+		$metadata =  $this->handler->getMetadata( false, $this->multipage_path );
+		$this->assertTrue( strpos( $metadata, '"page_amount";i:7' ) !== false );
+		$this->assertTrue( $this->handler->isMetadataValid( $this->multipage_image, $metadata ) );
+
+		$metadata =  $this->handler->getMetadata( false, $this->mhz_path );
+		$this->assertTrue( strpos( $metadata, '"page_amount";i:1' ) !== false );
+		$this->assertTrue( $this->handler->isMetadataValid( $this->mhz_image, $metadata ) );
+
+		// getMetaArray
+		$metaArray = $this->handler->getMetaArray( $this->mhz_image );
+		if ( !empty( $metaArray['errors'] ) ) $this->fail( join('; ', $metaArray['error']) );
+		$this->assertEquals( $metaArray['page_amount'], 1 );
+
+		$this->assertEquals( strtolower( $metaArray['page_data'][1]['alpha'] ), 'true' );
+
+		$metaArray = $this->handler->getMetaArray( $this->multipage_image );
+		if ( !empty( $metaArray['errors'] ) ) $this->fail( join('; ', $metaArray['error']) );
+		$this->assertEquals( $metaArray['page_amount'], 7 );
+
+		$this->assertEquals( strtolower( $metaArray['page_data'][1]['alpha'] ), 'false' );
+		$this->assertEquals( strtolower( $metaArray['page_data'][2]['alpha'] ), 'true' );
+
+		$interp = $metaArray['exif']['PhotometricInterpretation'];
+		$this->assertTrue( $interp == 2 || $interp == 'RGB' ); //RGB
+
 		// ---- Parameter handling and lossy parameter
 		// validateParam
 		$this->assertTrue( $this->handler->validateParam( 'lossy', '0' ) );
@@ -129,17 +178,43 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( $this->handler->validateParam( 'lossy', 'lossy' ) );
 		$this->assertTrue( $this->handler->validateParam( 'lossy', 'lossless' ) );
 
+		$this->assertTrue( $this->handler->validateParam( 'width', '60000' ) );
+		$this->assertTrue( $this->handler->validateParam( 'height', '60000' ) );
+		$this->assertTrue( $this->handler->validateParam( 'page', '60000' ) );
+
+		$this->assertFalse( $this->handler->validateParam( 'lossy', '' ) ); 
+		$this->assertFalse( $this->handler->validateParam( 'lossy', 'quark' ) );
+
+		$this->assertFalse( $this->handler->validateParam( 'width', '160000' ) );
+		$this->assertFalse( $this->handler->validateParam( 'height', '160000' ) );
+		$this->assertFalse( $this->handler->validateParam( 'page', '160000' ) );
+
+		$this->assertFalse( $this->handler->validateParam( 'width', '0' ) );
+		$this->assertFalse( $this->handler->validateParam( 'height', '0' ) );
+		$this->assertFalse( $this->handler->validateParam( 'page', '0' ) );
+
+		$this->assertFalse( $this->handler->validateParam( 'width', '-1' ) );
+		$this->assertFalse( $this->handler->validateParam( 'height', '-1' ) );
+		$this->assertFalse( $this->handler->validateParam( 'page', '-1' ) );
+
 		// normaliseParams
 		// here, boxfit behavior is tested
 		$params = array( 'width' => '100', 'height' => '100', 'page' => '4' );
 		$this->assertTrue( $this->handler->normaliseParams( $this->multipage_image, $params ) );
 		$this->assertEquals( $params['height'], 75 );
+
 		// lossy and lossless
 		$params = array('width'=>'100', 'height'=>'100', 'page'=>'1');
 		$this->handler->normaliseParams($this->multipage_image, $params );
 		$this->assertEquals($params['lossy'], 'lossy');
+
 		$params = array('width'=>'100', 'height'=>'100', 'page'=>'2');
 		$this->handler->normaliseParams($this->multipage_image, $params );
+		$this->assertEquals($params['lossy'], 'lossless');
+
+		// single page
+		$params = array('width'=>'100', 'height'=>'100', 'page'=>'1');
+		$this->handler->normaliseParams($this->mhz_image, $params );
 		$this->assertEquals($params['lossy'], 'lossless');
 
 		// makeParamString
@@ -185,6 +260,8 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		
 		// pageCount
 		$this->assertEquals( $this->handler->pageCount( $this->multipage_image ), 7 );
+		$this->assertEquals( $this->handler->pageCount( $this->mhz_image ), 1 );
+
 		// getPageDimensions
 		$this->assertEquals( $this->handler->getPageDimensions( $this->multipage_image, 0 ), array( 'width' => 1024, 'height' => 768 ) );
 		$this->assertEquals( $this->handler->getPageDimensions( $this->multipage_image, 1 ), array( 'width' => 1024, 'height' => 768 ) );
@@ -194,27 +271,17 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals( $this->handler->getPageDimensions( $this->multipage_image, 5 ), array( 'width' => 1024, 'height' => 768 ) );
 		$this->assertEquals( $this->handler->getPageDimensions( $this->multipage_image, 6 ), array( 'width' => 1024, 'height' => 768 ) );
 		$this->assertEquals( $this->handler->getPageDimensions( $this->multipage_image, 7 ), array( 'width' => 768, 'height' => 1024 ) );
+
+		$this->assertEquals( $this->handler->getPageDimensions( $this->mhz_image, 0 ), array( 'width' => 643, 'height' => 452 ) );
+
 		// return dimensions of last page if page number is too high
 		$this->assertEquals( $this->handler->getPageDimensions( $this->multipage_image, 8 ), array( 'width' => 768, 'height' => 1024 ) );
+		$this->assertEquals( $this->handler->getPageDimensions( $this->mhz_image, 1 ), array( 'width' => 643, 'height' => 452 ) );
+
 		// isMultiPage
 		$this->assertTrue( $this->handler->isMultiPage( $this->multipage_image ) );
+		$this->assertFalse( $this->handler->isMultiPage( $this->mhz_image ) );
 
-		// ---- Metadata handling
-		// getMetadata
-		$metadata =  $this->handler->getMetadata( false, $this->multipage_path );
-		$this->assertTrue( strpos( $metadata, '"page_amount";i:7' ) !== false );
-		// isMetadataValid
-		$this->assertTrue( $this->handler->isMetadataValid( $this->multipage_image, $metadata ) );
-		// getMetaArray
-		$metaArray = $this->handler->getMetaArray( $this->multipage_image );
-
-		$this->assertEquals( $metaArray['page_amount'], 7 );
-		//this is also strtolower in PagedTiffHandler::getThumbExtension
-		$this->assertEquals( strtolower( $metaArray['page_data'][1]['alpha'] ), 'false' );
-		$this->assertEquals( strtolower( $metaArray['page_data'][2]['alpha'] ), 'true' );
-
-		$interp = $metaArray['exif']['PhotometricInterpretation'];
-		$this->assertTrue( $interp == 2 || $interp == 'RGB' ); //RGB
 		// formatMetadata
 		$formattedMetadata = $this->handler->formatMetadata( $this->multipage_image );
 
