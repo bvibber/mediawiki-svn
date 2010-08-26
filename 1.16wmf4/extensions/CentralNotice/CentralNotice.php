@@ -13,6 +13,9 @@
 //
 $wgNoticeCentralPath = false;
 
+// Whether to use local notice loader
+$wgNoticeUseLocalNotice = false;
+
 // This guy does much the same, but with the local sitenotice/anonnotice.
 // Static generation isn't quite supported yet.
 //
@@ -111,14 +114,22 @@ $wgGroupPermissions['sysop']['centralnotice-translate'] = true; // Only sysops c
 
 function efCentralNoticeSetup() {
 	global $wgHooks, $wgNoticeInfrastructure, $wgAutoloadClasses, $wgSpecialPages;
-	global $wgCentralNoticeLoader;
+	global $wgCentralNoticeLoader, $wgNoticeUseLocalNotice;
 
 	$dir = dirname( __FILE__ ) . '/';
 
 	if ( $wgCentralNoticeLoader ) {
+		$wgHooks['LoadExtensionSchemaUpdates'][] = 'efCentralNoticeSchema';
 		$wgHooks['BeforePageDisplay'][] = 'efCentralNoticeLoader';
-		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeDisplay';
 		$wgHooks['MakeGlobalVariablesScript'][] = 'efCentralNoticeDefaults';
+
+		if ( $wgNoticeUseLocalNotice ) {
+			$wgSpecialPages['NoticeLocal'] = 'SpecialNoticeLocal';
+			$wgAutoloadClasses['SpecialNoticeLocal'] = $dir . 'SpecialNoticeLocal.php';
+			$wgHooks['SiteNoticeBefore'][] = 'efCentralNoticeDisplayBefore';
+		} else {
+			$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeDisplayAfter';
+		}
 	}
 
 	$wgAutoloadClasses['NoticePage'] = $dir . 'NoticePage.php';
@@ -133,63 +144,81 @@ function efCentralNoticeSetup() {
 
 		$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
 		$wgAutoloadClasses['SpecialNoticeTemplate'] = $dir . 'SpecialNoticeTemplate.php';
+		
 		$wgAutoloadClasses['CentralNoticeDB'] = $dir . 'CentralNotice.db.php';
+		$wgAutoloadClasses['TemplatePager'] = $dir . 'TemplatePager.php';
 	}
 }
 
-function efCentralNoticeLoader( $out, $skin ) {
-	global $wgScript, $wgUser, $wgOut, $wgLang;
-	global $wgStyleVersion, $wgJsMimeType;
-	global $wgNoticeProject;
+function efCentralNoticeSchema() {
+	global $wgDBtype, $wgExtNewTables, $wgExtNewFields;
+	
+	$base = dirname( __FILE__ );
+	if ( $wgDBtype == 'mysql' ) {
+		$wgExtNewTables[] = array( 'cn_notices', $base . '/CentralNotice.sql' );
+		$wgExtNewFields[] = array( 'cn_notices', 'not_preferred', $base . '/patches/patch-notice_preferred.sql' );
+		$wgExtNewTables[] = array( 'cn_notice_languages', $base . '/patches/patch-notice_languages.sql' );
+		$wgExtNewFields[] = array( 'cn_templates', 'tmp_display_anon', $base . '/patches/patch-template_settings.sql' );
+	}
+	return true;
+}
 
-	global $wgNoticeCentralPath;
-	global $wgNoticeLocalPath;
+function efCentralNoticeLoader( $out, $skin ) {
+	global $wgUser, $wgOut, $wgLang;
+	global $wgNoticeProject, $wgNoticeCentralPath, $wgNoticeLocalPath, $wgNoticeUseLocalNotice;
 
 	$lang = $wgLang->getCode();
 	$centralNotice = "$wgNoticeProject/$lang/centralnotice.js";
-	/*
-	$localNotice = ( is_object( $wgUser ) && $wgUser->isLoggedIn() )
-		? 'sitenotice.js'
-		: 'anonnotice.js';
-	*/
-
 
 	if ( $wgNoticeCentralPath === false ) {
 		$centralLoader = SpecialPage::getTitleFor( 'NoticeText', $centralNotice )->getLocalUrl();
 	} else {
 		$centralLoader = "$wgNoticeCentralPath/$centralNotice";
 	}
-	$encCentralLoader = htmlspecialchars( $centralLoader );
-
-	/*
-	if ( $wgNoticeLocalPath === false ) {
-		$localLoader = SpecialPage::getTitleFor( 'NoticeLocal', $localNotice )->getLocalUrl();
-	} else {
-		$localLoader = "$wgNoticeLocalPath/$localNotice";
-	}
-	$encLocalLoader = htmlspecialchars( $localLoader );
-	*/
 
 	// Load the notice text from <head>
-	$wgOut->addScript( "<script type=\"{$wgJsMimeType}\" src=\"$encCentralLoader?$wgStyleVersion\"></script>\n" );
+	$wgOut->addScriptFile( $centralLoader );
+
+	if ( $wgNoticeUseLocalNotice ) {
+		$localNotice = ( is_object( $wgUser ) && $wgUser->isLoggedIn() )
+			? 'sitenotice.js'
+			: 'anonnotice.js';
+		if ( $wgNoticeLocalPath === false ) {
+			$localLoader = SpecialPage::getTitleFor( 'NoticeLocal', $localNotice )->getLocalUrl();
+		} else {
+			$localLoader = "$wgNoticeLocalPath/$localNotice";
+		}
+		$wgOut->addScriptFile( $localLoader );
+	}
 
 	return true;
 }
 
 function efCentralNoticeDefaults( &$vars ) {
+	global $wgNoticeUseLocalNotice;
+
 	// Initialize these variables to empty, so if the notice script fails
 	// we don't have any surprises.
 	$vars['wgNotice'] = '';
-	$vars['wgNoticeLocal'] = '';
+	if ( $wgNoticeUseLocalNotice ) {
+		$vars['wgNoticeLocal'] = '';
+	}
 	return true;
 }
 
-function efCentralNoticeDisplay( &$notice ) {
+function efCentralNoticeDisplayAfter( &$notice ) {
 	// Slip in load of the data...
 	$notice =
-		"<script type='text/javascript'>" .
-		"if (wgNotice != '') document.writeln(wgNotice);" .
-		"</script>" .
+		Html::inlineScript( "if (wgNotice != '') document.writeln(wgNotice);" ) .
 		$notice;
 	return true;
+}
+
+function efCentralNoticeDisplayBefore( &$notice ) {
+	// Slip in load of the data...
+	$notice = Html::inlineScript(
+		"if (wgNotice != '') document.writeln(wgNotice);" .
+		" if (wgNoticeLocal != '') document.writeln(wgNoticeLocal);"
+	);
+	return false;
 }

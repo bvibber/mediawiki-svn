@@ -1,11 +1,17 @@
 <?php
 
+/**
+ * Generates content for static Javascript files
+ */
 class SpecialNoticeText extends NoticePage {
 	var $project = 'wikipedia';
 	var $language = 'en';
+	var $centralNoticeDB;
 
 	function __construct() {
 		parent::__construct( "NoticeText" );
+
+		$this->centralNoticeDB = new CentralNoticeDB();
 	}
 
 	/**
@@ -18,7 +24,12 @@ class SpecialNoticeText extends NoticePage {
 		return 86400 * 7;
 	}
 
+	/**
+	 * Given a project key, generate the body for a static Javascript file
+	 */
 	function getJsOutput( $par ) {
+	
+		// Break $par into separate parameters and assign to $this->project and $this->language
 		$this->setLanguage( $par );
 
 		// Quick short circuit to be able to show preferred notices
@@ -26,14 +37,14 @@ class SpecialNoticeText extends NoticePage {
 
 		if ( $this->language == 'en' && $this->project != null ) {
 			// See if we have any preferred notices for all of en
-			$notices = CentralNoticeDB::getNotices( '', 'en', '', '', 1 );
+			$notices = $this->centralNoticeDB->getNotices( '', 'en', '', '', 1 );
 
 			if ( $notices ) {
 				// Pull out values
 				foreach ( $notices as $notice => $val ) {
 					// Either match against ALL project or a specific project
 					if ( $val['project'] == '' || $val['project'] == $this->project ) {
-						$templates = CentralNoticeDB::selectTemplatesAssigned( $notice );
+						$templates = $this->centralNoticeDB->selectTemplatesAssigned( $notice );
 						break;
 					}
 				}
@@ -41,16 +52,13 @@ class SpecialNoticeText extends NoticePage {
 		}
 
 		if ( !$templates && $this->project == 'wikipedia' ) {
-				$notices = CentralNoticeDB::getNotices( 'wikipedia', '', '', '', 1 );
-				if ( $notices && is_array( $notices ) ) {
-					foreach ( $notices as $notice => $val ) {
-						if ( $val['language'] == '' ||
-						     $val['language'] == $this->language ) {
-							$templates = CentralNoticeDB::selectTemplatesAssigned( $notice );
-							break;
-						}
-					}
+			$notices = $this->centralNoticeDB->getNotices( 'wikipedia', $this->language, '', '', 1 );
+			if ( $notices && is_array( $notices ) ) {
+				foreach ( $notices as $notice => $val ) {
+					$templates = $this->centralNoticeDB->selectTemplatesAssigned( $notice );
+					break;
 				}
+			}
 		}
 
 		// Didn't find any preferred matches so do an old style lookup
@@ -58,7 +66,18 @@ class SpecialNoticeText extends NoticePage {
 			$templates = CentralNotice::selectNoticeTemplates( $this->project, $this->language );
 		}
 
-		$templateNames = array_keys( $templates );
+		// Slice the columns of the $templates array into separate arrays.
+		// This is required due to how pickTemplate() currently works.
+		$templateNames = array();
+		$templateWeights = array();
+		$templateDisplayAnons = array();
+		$templateDisplayAccounts = array();
+		foreach ( $templates as $template ) {
+			$templateNames[] = $template['name'];
+			$templateWeights[] = $template['weight'];
+			$templateDisplayAnons[] = $template['display_anon'];
+			$templateDisplayAccounts[] = $template['display_account'];
+		}
 
 		$templateTexts = array_map(
 			array( $this, 'getHtmlNotice' ),
@@ -67,27 +86,27 @@ class SpecialNoticeText extends NoticePage {
 		if ( preg_grep( "/&lt;centralnotice-template-\w{1,}&gt;\z/", $templateTexts ) ) {
 			return false; // Bailing out if we have a failed cache lookup
 		}
-
-		$weights = array_values( $templates );
-
+		
 		return
 			$this->getScriptFunctions() .
 			$this->getToggleScripts() .
 			'wgNotice=pickTemplate(' .
 				Xml::encodeJsVar( $templateTexts ) .
 				"," .
-				Xml::encodeJsVar( $weights ) .
+				Xml::encodeJsVar( $templateWeights ) .
+				"," .
+				Xml::encodeJsVar( $templateDisplayAnons ) .
+				"," .
+				Xml::encodeJsVar( $templateDisplayAccounts ) .
 				");\n" .
 			"if (wgNotice != '')\n" .
 			"wgNotice='<div id=\"centralNotice\" class=\"' + " .
 			"(wgNoticeToggleState ? 'expanded' : 'collapsed') + " .
-			"' ' + " .
-			"(wgUserName ? 'usernotice' : 'anonnotice' ) + " .
-			"'\">' + wgNotice+'</div>';\n";
+			"'\">' + wgNotice+'</div>';\n"; 
 	}
 
-	function getHtmlNotice( $noticeName ) {
-		$this->noticeName = $noticeName;
+	function getHtmlNotice( $templateName ) {
+		$this->templateName = $templateName;
 		return preg_replace_callback(
 			'/{{{(.*?)}}}/',
 			array( $this, 'getNoticeField' ),
@@ -97,15 +116,15 @@ class SpecialNoticeText extends NoticePage {
 	function getToggleScripts() {
 		$showStyle = <<<END
 <style type="text/css">
-#centralNotice .siteNoticeSmall{display:none;}
-#centralNotice .siteNoticeSmallAnon{display:none;}
-#centralNotice .siteNoticeSmallUser{display:none;}
-#centralNotice.collapsed .siteNoticeBig{display:none;}
-#centralNotice.collapsed .siteNoticeSmall{display:block;}
-#centralNotice.collapsed .siteNoticeSmallUser{display:block;}
-#centralNotice.collapsed .siteNoticeSmallAnon{display:block;}
-#centralNotice.anonnotice .siteNoticeSmallUser{display:none !important;}
-#centralNotice.usernotice .siteNoticeSmallAnon{display:none !important;}
+#centralNotice .siteNoticeSmall {display:none;}
+#centralNotice .siteNoticeSmallAnon {display:none;}
+#centralNotice .siteNoticeSmallUser {display:none;}
+#centralNotice.collapsed .siteNoticeBig {display:none;}
+#centralNotice.collapsed .siteNoticeSmall {display:block;}
+#centralNotice.collapsed .siteNoticeSmallUser {display:block;}
+#centralNotice.collapsed .siteNoticeSmallAnon {display:block;}
+#centralNotice.anonnotice .siteNoticeSmallUser {display:none !important;}
+#centralNotice.usernotice .siteNoticeSmallAnon {display:none !important;}
 </style>
 END;
 		$encShowStyle = Xml::encodeJsVar( $showStyle );
@@ -140,25 +159,27 @@ function toggleNoticeCookie(state) {
 	var work='hidesnmessage='+state+'; expires=' + e.toGMTString() + '; path=/';
 	document.cookie = work;
 }
-function pickTemplate(templates, weights) {
+function pickTemplate(templates, weights, displayAnons, displayAccounts) {
 	var weightedTemplates = new Array();
 	var currentTemplate = 0;
 	var totalWeight = 0;
 
 	if (templates.length == 0)
 		return '';
-
+	
 	while (currentTemplate < templates.length) {
-		totalWeight += weights[currentTemplate];
-		for (i=0; i<weights[currentTemplate]; i++) {
-			weightedTemplates[weightedTemplates.length] = templates[currentTemplate];
+		if ((wgUserName && displayAccounts[currentTemplate]) || (!wgUserName && displayAnons[currentTemplate])) {
+			totalWeight += weights[currentTemplate];
+			for (var i=0; i<weights[currentTemplate]; i++) {
+				weightedTemplates[weightedTemplates.length] = templates[currentTemplate];
+			}
 		}
 		currentTemplate++;
 	}
-
+	
 	if (totalWeight == 0)
 		return '';
-
+	
 	var randomnumber=Math.floor(Math.random()*totalWeight);
 	return weightedTemplates[randomnumber];
 }\n\n";
@@ -188,7 +209,7 @@ function pickTemplate(templates, weights) {
 	}
 
 	function getNoticeTemplate() {
-		return $this->getMessage( "centralnotice-template-{$this->noticeName}" );
+		return $this->getMessage( "centralnotice-template-{$this->templateName}" );
 	}
 
 	function getNoticeField( $matches ) {
@@ -197,7 +218,7 @@ function pickTemplate(templates, weights) {
 		if ( $field == 'amount' ) {
 			$params = array( $this->formatNum( $this->getDonationAmount() ) );
 		}
-		$message = "centralnotice-{$this->noticeName}-$field";
+		$message = "centralnotice-{$this->templateName}-$field";
 		$source = $this->getMessage( $message, $params );
 		return $source;
 	}
@@ -227,7 +248,7 @@ function pickTemplate(templates, weights) {
 	}
 
 	private function projectName() {
-		global $wgConf, $IP;
+		global $wgConf;
 
 		$wgConf->loadFullData();
 
