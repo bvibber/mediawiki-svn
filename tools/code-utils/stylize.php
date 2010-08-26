@@ -164,6 +164,7 @@ class Stylizer {
 	static $closePairs = array(
 		'(' => ')',
 		'=' => '&',
+		'{' => '}',
 	);
 
 	// Tokens that eat spaces after them
