@@ -5,6 +5,6 @@ $messages = array();
  * @author Nimish Gautam
  */
 $messages['en'] = array(
-	'articleassessment-pilot' => 'Pilot for article assessment',
-	'articleassessment-pilot-desc' => 'Article Assessment Pilot version',
+	'articleassessment' => 'Article Assessment',
+	'articleassessment-desc' => 'Article Assessment Pilot version',
 );

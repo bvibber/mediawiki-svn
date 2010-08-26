@@ -16,15 +16,14 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		$result = $this->getResult();
 		
 		$this->addTables( 'article_assessment_pages' );
+		$this->addTables( 'article_assessment_ratings' );
 		
-		$this->addFields( array( 'aa_page_id', 'aa_revision', 'aa_total', 'aa_count', 'aa_rating' ) );
+		$this->addFields( array( 'aap_page_id', 'aap_total', 'aap_count', 'aap_rating_id', 'aam_rating' ) );
+
+		$this->addWhereFld( 'aap_rating_id', 'aam_rating_id' );
 		
 		if ( isset( $params['pageid'] ) ) {
 			$this->addWhereFld( 'aa_page_id', $params['pageid'] );
-		}
-		
-		if ( isset( $params['revid'] ) ) {
-			$this->addWhereFld( 'aa_revision', $params['revid'] );
 		}
 		
 		$res = $this->select( __METHOD__ );
@@ -32,14 +31,18 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		$assessments = array();
 		
 		foreach( $res as $row ) {
-			if ( !isset( $assessments[$row->aa_revision] ) ) {
-				$assessments[$row->aa_revision] = array( 
-					'pageid' => $row->aa_page_id,
-					'revisionid' => $row->aa_revision,
+			if ( !isset( $assessments[$row->aap_page_id] ) ) {
+				$assessments[$row->aap_page_id] = array(
+					'pageid' => $row->aap_page_id,
 				);
 			}
 			
-			$assessments[$row->aa_revision]['ratings']['r' . $row->aa_rating] = array( 'rating' => $row->aa_rating, 'total' => $row->aa_total, 'count' => $row->aa_count );
+			$assessments[$row->aap_page_id]['ratings']['r' . $row->aap_rating] = array(
+				'ratingid' => $row->aap_rating_id,
+				'ratingdesc' => $row->aam_rating,
+				'total' => $row->aap_total,
+				'count' => $row->aap_count
+			);
 		}
 
 		foreach( $assessments as $ass ) {
@@ -52,14 +55,12 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	public function getAllowedParams() {
 		return array(
 			'pageid' => null,
-			'revid' => null,
 		);
 	}
 
 	public function getParamDescription() {
 		return array(
 			'pageid' => '',
-			'revid' => '',
 		);
 	}
 
@@ -71,12 +72,13 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-		) );
+		));
 	}
 	
 	protected function getExamples() {
 		return array(
-			'api.php?action=query&list=articleassessment'
+			'api.php?action=query&list=articleassessment',
+			'api.php?action=query&list=articleassessment&aapageid=1'
 		);
 	}
 
