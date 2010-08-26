@@ -67,6 +67,7 @@ class PrefSwitchSurvey {
 				array_merge(
 					array(
 						'pss_user' => $wgUser->getId(),
+						'pss_user_text' => $wgUser->getName(),
 						'pss_timestamp' => $now,
 						'pss_name' => $name,
 						'pss_question' => $question,
