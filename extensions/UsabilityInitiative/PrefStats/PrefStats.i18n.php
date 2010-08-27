@@ -1693,7 +1693,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'prefstats' => 'पसंती सांख्यिकी',
-	'prefstats-desc' => '↓  किती सदस्यांनी विशिष्ट पसंती निवडल्या आहेत ते दर्शविणारी सांख्यिकी बघा',
+	'prefstats-desc' => 'किती सदस्यांनी विशिष्ट पसंती निवडल्या आहेत ते दर्शविणारी सांख्यिकी बघा',
 	'prefstats-title' => 'पसंती सांख्यिकी',
 	'prefstats-list-intro' => 'सध्या,खालील पसंतींचा वेध घेतला जातो.
 संबधीत सांख्यिकी पहाण्या साठी त्यापैकी एकावर टिचकी मारा.',
@@ -1706,7 +1706,7 @@ $messages['mr'] = array(
 ** $2 {{PLURAL:$2|सदस्य अजून |सदस्यांकडे अजून }} सक्षमता आहे
 ** $3 पासून {{PLURAL:$3|सदस्याने|सदस्यांनी }} अक्षम केले आहे
 * एकुण, $4 {{PLURAL:$4|सदस्याकडे आहे|सदस्यांकडे आहे}} हा पसंती संच आहे',
-	'prefstats-xaxis' => '  ↓ कालावधी (तासात)',
+	'prefstats-xaxis' => 'कालावधी (तासात)',
 	'prefstats-factors' => 'दृष्ये प्रती: $1',
 	'prefstats-factor-hour' => 'तास',
 	'prefstats-factor-sixhours' => 'सहा तास',
@@ -1715,8 +1715,8 @@ $messages['mr'] = array(
 	'prefstats-factor-twoweeks' => 'दोन आठवडे',
 	'prefstats-factor-fourweeks' => 'चार आठवडे',
 	'prefstats-factor-default' => 'अविचल मापनाकडे परत',
-	'prefstats-legend-out' => '↓ निवडीतुन बाहेर',
-	'prefstats-legend-in' => '↓ निवडुन आत',
+	'prefstats-legend-out' => 'निवडीतुन बाहेर',
+	'prefstats-legend-in' => 'निवडुन आत',
 );
 
 /** Malay (Bahasa Melayu)

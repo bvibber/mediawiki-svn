@@ -5524,7 +5524,7 @@ $messages['li'] = array(
 	'code-authors' => 'sjrievers',
 	'code-status' => 'staat',
 	'code-tags' => 'labels',
-	'code-authors-text' => "Hiejónger steit 'n lies mit auteurs oet de repositoir, die mit de lèste verzeuk is baove.",
+	'code-authors-text' => "Hiejónger steit 'n lies mit auteurs oet de repositoir op abc. Lokaal gebroekers staon tösje häökskes.",
 	'code-author-haslink' => 'Deze sjriever is gekoppeld aan de wikigebroeker $1',
 	'code-author-orphan' => "Deze sjriever is neet gekoppeldj aan 'ne wikigebroeker",
 	'code-author-dolink' => "Deze sjriever mit 'ne wikigebroeker koppele:",
@@ -5600,11 +5600,14 @@ $4',
 	'codereview-email-subj2' => '[$1] [$2]: wieziginge mit correcties',
 	'codereview-email-body2' => 'Gebroeker "$1" haet wiezigingen mit correcties veur $2 gemaak.
 
+Volledige URL nao die versie: $5
+
 Volledige URL: $3
 
 Toelichting bie toevoging:
 
 $4',
+	'code-stats' => 'statistieke',
 	'repoadmin' => 'Repositoirbehieër',
 	'repoadmin-new-legend' => 'Maak nuuj repositoir',
 	'repoadmin-new-label' => 'Repositoirnaam:',
@@ -8222,6 +8225,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'code-comments' => 'Komentari',
@@ -8306,7 +8310,7 @@ $messages['sr-el'] = array(
 	'right-codereview-remove-tag' => 'Brišite tagove sa revizija',
 	'right-codereview-post-comment' => 'Dodajte komentare revizijama',
 	'right-codereview-set-status' => 'Promeni status revizije',
-	'specialpages-group-developer' => 'Devloperski alati',
+	'specialpages-group-developer' => 'Programerski alati',
 );
 
 /** Seeltersk (Seeltersk)

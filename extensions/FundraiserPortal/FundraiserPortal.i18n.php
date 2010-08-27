@@ -745,10 +745,17 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'fundraiserportal' => 'Fondswervingsportaal',
+	'fundraiserportal-desc' => 'Voog \'n "Donere"-portaal toe baovenaan de menubalk',
+	'fundraiserportal-plain-button' => 'Steun Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Gaef noe',
 	'fundraiserportal-rubytext-button' => 'Gaef noe',
+	'fundraiserportal-rubytext-message' => 'Eder donatie help ós om Wikipedia veur ederein vrie besjikbaar te haje.',
+	'fundraiserportal-rubytext-close' => 'Verberg dit ongerdeil vanaaf noe',
 	'fundraiserportal-sapphire-button' => 'Gaef noe',
 	'fundraiserportal-tourmaline-button' => 'Gaef noe',
+	'fundraiserportal-tourmaline-message' => 'Eder donatie help ós om Wikipedia veur ederein vrie besjikbaar te haje.',
+	'fundraiserportal-tourmaline-close' => 'Verberg dit óngerdeil vanaaf noe',
 );
 
 /** Macedonian (Македонски)

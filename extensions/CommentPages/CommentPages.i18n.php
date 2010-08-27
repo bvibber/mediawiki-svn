@@ -557,9 +557,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
-	'commentpages-desc' => 'Komentarisanje strana glavnog imenskog prostora',
+	'commentpages-desc' => 'Komentarisanje stranica glavnog imenskog prostora',
 	'nstab-comments' => 'Komentari',
 );
 

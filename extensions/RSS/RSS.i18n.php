@@ -272,3 +272,12 @@ $messages['uk'] = array(
 	'rss-empty' => 'Не вдалося завантажити RSS-канал від $1!',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
+$messages['zh-hans'] = array(
+	'rss-desc' => '在维基页面上显示一个RSS源',
+	'rss-error' => '自$1: $2加载RSS失败',
+	'rss-empty' => '自$1加载RSS失败',
+);
+

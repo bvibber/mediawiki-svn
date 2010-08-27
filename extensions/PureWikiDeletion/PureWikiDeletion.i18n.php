@@ -305,6 +305,36 @@ No $2 pode ver unha lista cos baleirados máis recentes.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Encher]] a táboa de páxinas baleiradas',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'purewikideletion' => 'Wikisyte-Läärig',
+	'randomexcludeblank' => 'Zuefelligi Syte (gläärti uusgnuu)',
+	'populateblankedpagestable' => 'Tabälle mit gläärte Syten aalege',
+	'purewikideletion-desc' => 'Sorgt unter anderem derfir, ass gläärti Syten as rote Link erschyyne',
+	'purewikideletion-pref-watchblank' => 'Sälber gläärti Sytene beobachte',
+	'purewikideletion-pref-watchunblank' => 'Sytene, wun i d Läärig ruckgängig gmacht haa, beobachte',
+	'purewikideletion-blanked' => "E ehmoligi Version vu däre Syten isch am $5 am $6 vu [[User:$1|$1]] ([[User talk:$1|Diskussion]]) ([[Special:Contributions/$1|Byytreg]]) gläärt wore.
+
+Grund, wu aagee isch fir d Läärig: ''<nowiki>$3</nowiki>''.
+
+Du chasch [{{fullurl:{{FULLPAGENAMEE}}|action=history}} d Versionsgschicht bschaue], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} di letscht Version vun em bearbeite] oder unten im Bearbeitigsfäld e neji Syte yygee.",
+	'blank-log' => 'lääre',
+	'blank-log-name' => 'Läärigs-Logbuech',
+	'blank-log-header' => 'Do unte chunnt e Lischt vu Syteläärige un Lärrige, wu zruckgnuu wore sin.',
+	'blank-log-entry-blank' => 'het „$1“ gläärt',
+	'blank-log-entry-unblank' => 'het d Läärig vu „$1“ zruckgnuu',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|Läärigs-Logbuech]]',
+	'purewikideletion-blanknologin' => 'Nit aagmäldet',
+	'purewikideletion-blanknologintext' => 'Du muesch e regischtrierte Benutzer un [[Special:UserLogin|aagmäldet syy]] go ne Syte lääre.',
+	'purewikideletion-unblanknologintext' => 'Du muesch e regischtrierte Benutzer un [[Special:UserLogin|aagmäldet syy]] go d Läärig vun ere Syte zruckneh.',
+	'purewikideletion-blankedtext' => '„[[$1]]“ isch gläärt wore.
+Lueg au s $2 fir e Lischt vu dr letschte Läärige.',
+	'purewikideletion-population-done' => 'Tabälle „blanked_page“ mit gläärte Syten aagleit',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Tabälle aalege mit gläärte Syte]]',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

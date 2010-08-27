@@ -608,8 +608,11 @@ $messages['yue'] = array(
 	'mediafunctions-not-exist' => '"$1" 唔存在',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Chenxiaoqino
+ */
 $messages['zh-hans'] = array(
+	'mediafunctions-desc' => '有关媒体的信息获取文件分析器功能',
 	'mediafunctions-invalid-title' => '"$1" 不是一个有效的标题',
 	'mediafunctions-not-exist' => '"$1" 不存在',
 );

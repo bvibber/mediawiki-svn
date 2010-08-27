@@ -230,6 +230,13 @@ $messages['lb'] = array(
 	'geolite-desc' => 'Liicht Viruleedung op GeoIP',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'geolite-desc' => 'Einvajige GeoIP-gebaseerde doorverwiezing',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

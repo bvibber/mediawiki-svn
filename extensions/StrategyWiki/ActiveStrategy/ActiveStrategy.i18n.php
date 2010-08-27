@@ -55,9 +55,11 @@ $messages['br'] = array(
 );
 
 /** Czech (Česky)
+ * @author Danny B.
  * @author Mormegil
  */
 $messages['cs'] = array(
+	'activestrategy' => 'Aktivní strategie',
 	'active-strategy-desc' => 'Zobrazuje počty editací stránek plánování strategie',
 	'active-strategy-intro' => 'Počet editací stránek pracovních skupin za {{PLURAL:$1|poslední den|poslední $1 dny|posledních $1 dní}}.',
 	'nedits' => '$1 {{PLURAL:$1|editace|editace|editací}}',

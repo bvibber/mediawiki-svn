@@ -436,6 +436,20 @@ $messages['no'] = array(
 	'right-lastlogin' => 'Se den siste gangen en bruker logget inn',
 );
 
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Aalam
+ */
+$messages['pa'] = array(
+	'lastuserlogin' => 'ਆਖਰੀ ਯੂਜ਼ਰ ਲਾਗਇਣ',
+	'lastuserlogin-desc' => 'ਯੂਜ਼ਰ ਵਲੋਂ ਲਾਗਇਨ ਕਰਨ ਦਾ ਆਖਰੀ ਸਮਾਂ ਵੇਖੋ',
+	'lastuserlogin_userid' => 'ਯੂਜ਼ਰ ਨਾਂ',
+	'lastuserlogin_username' => 'ਅਸਲੀ ਨਾਂ',
+	'lastuserlogin_useremail' => 'ਯੂਜ਼ਰ ਈਮੇਲ',
+	'lastuserlogin_lastlogin' => 'ਆਖਰੀ ਲਾਗਇਨ',
+	'lastuserlogin_daysago' => 'ਦਿਨ ਪਹਿਲਾਂ',
+	'right-lastlogin' => 'ਪਿਛਲੀ ਵਾਰ ਲਾਗਇਨ ਹੋਏ ਯੂਜ਼ਰ ਨੂੰ ਵੇਖੋ',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

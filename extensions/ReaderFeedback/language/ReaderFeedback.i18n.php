@@ -2200,6 +2200,13 @@ $messages['sh'] = array(
 	'readerfeedback-submit' => 'Unesi',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'readerfeedback-finished' => 'ස්තුතියි!',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

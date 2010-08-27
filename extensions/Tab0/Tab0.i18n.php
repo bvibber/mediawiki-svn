@@ -362,9 +362,10 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
-	'tab0-desc' => 'Dodaje jezičak "0", povezujući ka formi za izmenu prve sekcije stranice',
+	'tab0-desc' => 'Dodaje jezičak „0“, povezujući ka formi za izmenu prvog odeljka stranice',
 );
 
 /** Sundanese (Basa Sunda)

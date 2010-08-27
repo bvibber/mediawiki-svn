@@ -6803,6 +6803,7 @@ $messages['is'] = array(
  * @author Aushulz
  * @author Blaisorblade
  * @author Darth Kule
+ * @author Gianfranco
  * @author HalphaZ
  * @author Melos
  * @author Nemo bis
@@ -6811,7 +6812,7 @@ $messages['it'] = array(
 	'wikidata-desc' => 'Aggiunge database wiki-like per diversi tipi di contenuto',
 	'wikidata-handler-namespace-move-error' => "Le pagine negli spazi dei nomi gestiti dall'estensione Wikidata non possono essere spostate.",
 	'languages' => 'Wikidata: manager della lingua',
-	'langman-desc' => 'Aggiungere e modificare le impostazioni della lingua con [[Special: Lingue]]',
+	'langman-desc' => 'Aggiungi e modifica le impostazioni di lingua con [[Special:Languages]]',
 	'langman_title' => 'Manager della lingua',
 	'langman_not_allowed' => 'Non si dispone dei permessi necessari per modificare le impostazioni della lingua.',
 	'langman_header' => 'Inserisci il codice della lingua e il nome della lingua (in inglese) qui di seguito:',
@@ -6839,6 +6840,7 @@ $messages['it'] = array(
 	'importtsv' => 'Wikidata: Importa TSV',
 	'ow_importtsv_title1' => 'Importa TSV',
 	'ow_importtsv_title2' => 'Importa definizioni e traduzioni',
+	'ow_importtsv_not_allowed' => 'Non ti è permesso importare TSV.',
 	'ow_importtsv_import_failed' => 'Importazione fallita',
 	'ow_importtsv_file' => 'File TSV:',
 	'ow_importtsv_test_run' => 'Esegui test:',
@@ -6857,6 +6859,8 @@ Le lingue devono essere inserite secondo i codici ISO 639-3.</p>',
 	'ow_uipref_datasets' => 'Vista predefinita:',
 	'ow_none_selected' => 'Nessun elemento selezionato',
 	'ow_transaction_user' => 'Nome utente:',
+	'ow_transaction_rollback_button' => 'Rollback',
+	'ow_transaction_rollback_header' => 'Rollback',
 	'ow_transaction_no_action' => 'Ignora',
 	'ow_transaction_previous_version' => 'Versione precedente',
 	'ow_transaction_restore' => 'Ripristina',
@@ -6922,6 +6926,7 @@ Le lingue devono essere inserite secondo i codici ISO 639-3.</p>',
 	'ow_copy_unsuccessful' => "<h3>Copia fallita</h3>
 Non è stata eseguita l'operazione di copia.",
 	'ow_class_attr_type_xlate' => 'Testo traducibile',
+	'ow_class_attr_type_plain' => 'Solo testo',
 	'ow_class_attr_type_link' => 'Collegamento',
 	'ow_needs_xlation_dest_lang' => 'Lingua di destinazione:',
 	'ow_needs_xlation_no_dest_lang' => 'Specifica una lingua di destinazione.',

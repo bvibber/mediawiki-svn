@@ -1319,6 +1319,8 @@ $messages['lb'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'clicktracking' => "Klikvolge veur 't Broekbaarheidsinitiatief",
+	'clicktracking-desc' => "Klikvolge veur 't volges van hanjelingen die neet 't oprope van 'n nuuj pagina toet gevolg höbbe",
 	'ct-title' => 'Samegevoogdje gebroekerskliks',
 	'ct-event-name' => 'Gebeurtenis',
 	'ct-expert-header' => '"Expert"-kliks',
@@ -1435,10 +1437,10 @@ $messages['mr'] = array(
 	'ct-date-range' => 'तारीख सीमा',
 	'ct-editing' => 'सध्या संपादत आहे:',
 	'ct-anon-users' => 'अनामिक उपयोगकर्ता',
-	'ct-user-contribs' => ' ↓ सदस्याची एकुण संपादने',
-	'ct-user-span' => ' ↓ कालावधीतील सदस्याची संपादने',
+	'ct-user-contribs' => 'सदस्याची एकुण संपादने',
+	'ct-user-span' => 'कालावधीतील सदस्याची संपादने',
 	'ct-and' => 'आणि',
-	'ct-update-table' => '↓ तक्ता अद्ययावत करा',
+	'ct-update-table' => 'सारणी (टेबल) अद्ययावत करा',
 );
 
 /** Malay (Bahasa Melayu)

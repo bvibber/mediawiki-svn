@@ -278,6 +278,14 @@ $messages['lb'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => "Zuel vun den aktuellen Evenementer déi duerch d'IP-Adress ausgeléist goufen, esou wéi et aus dem Projet ''Honey Pot'' ervirgeet",
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'honeypot-desc' => 'Bied integratie mit [http://projecthoneypot.org/ Project Honey Pot] veur MediaWiki-sites',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => "Aantal recente gebeurtenisse die 't IP-adres haet veroearzaak volges Project Honey Pot",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

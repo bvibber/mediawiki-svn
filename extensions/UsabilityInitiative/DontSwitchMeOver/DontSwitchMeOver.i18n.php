@@ -225,6 +225,14 @@ $messages['lb'] = array(
 	'dontswitchmeover-pref' => "Et net zouloossen datt mäin Ausgesi geännert gëtt wann d'Standard-Ausgesinn ännert",
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'dontswitchmeover-desc' => 'Veurkeur veur gebroekers om aan te gaeven of veurkeuren behaje mótte waeren es de standaardveurkeure wiezige.',
+	'dontswitchmeover-pref' => "Pas mien oeterlik neet aan wen 't standaardoeterlik gewiezig weurt",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

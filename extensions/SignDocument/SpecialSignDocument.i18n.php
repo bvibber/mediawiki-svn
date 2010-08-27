@@ -1486,8 +1486,13 @@ $1',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'sign-selectdoc' => 'Document :',
+	'sign-realname' => 'Nom :',
+	'sign-address' => 'Adrèce rua :',
+	'sign-city' => 'Vela :',
 	'sign-viewfield-realname' => 'Nom',
 	'sign-signatures' => 'Signatures',
 );

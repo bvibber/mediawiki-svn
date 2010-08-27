@@ -1096,11 +1096,14 @@ $messages['cu'] = array(
 
 /** Welsh (Cymraeg)
  * @author Lloffiwr
+ * @author Malafaya
  * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'prefswitch' => 'Switsh y Dewisiadau ar y Cynllun Defnyddioldeb',
 	'prefswitch-desc' => 'Yn gadael i ddefnyddwyr newid rhwng gwahanol setiau o ddewisiadau',
+	'prefswitch-survey-true' => 'Ydw',
+	'prefswitch-survey-false' => 'Na',
 	'prefswitch-survey-submit-off' => 'Diffodd y nodweddion newydd',
 	'prefswitch-survey-cancel-off' => "Os ydych am barhau i ddefnyddio'r nodweddion newydd, gallwch ddychwelyd at y dudalen $1.",
 	'prefswitch-survey-submit-feedback' => 'Anfon adborth',
@@ -2567,6 +2570,8 @@ Por favor, seleccione o que sexa conveniente.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Non me gustou a nova barra de ferramentas.',
 	'prefswitch-survey-answer-whyoff-other' => 'Outro motivo:',
 	'prefswitch-survey-question-browser' => 'Que navegador usa?',
+	'prefswitch-survey-answer-browser-ffb' => 'Firefox Beta',
+	'prefswitch-survey-answer-browser-cd' => 'Google Chrome Dev',
 	'prefswitch-survey-answer-browser-other' => 'Outro navegador:',
 	'prefswitch-survey-question-os' => 'Que sistema operativo usa?',
 	'prefswitch-survey-answer-os-other' => 'Outro sistema operativo:',
@@ -3863,12 +3868,21 @@ Vink e.t.b. alle meugelikhede die god zeeb aan.',
 	'prefswitch-success-feedback' => 'Diee feedback is verzónje.',
 	'prefswitch-return' => '<hr style="clear:both">
 Trök nao <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-logged-changes' => "* t item '''{{int:watch}}''' is noe e sterke.
+* t item '''{{int:move}}''' steit noe in 't dropdownmenu naeve 't zeukvenster.",
+	'prefswitch-main-feedback' => '=== Feedback? ===
+Weer heure gaer van dich.
+Bezeuk ozze [[$1|pagina veur feedback]] of gank nao de [http://usability.wikimedia.org broekbaarheidswiki] veur meer informatie es se geïnteresseerd bös in ozze toekomstige planne.',
 	'prefswitch-main-anon' => "=== Trök ===
 [$1 Klik óm de nuuj deil oet te zètte]. De wörs gevraog veur aanmelden óf aanmake van 'ne conto.",
 	'prefswitch-main-on' => '=== Nein, danke! ===
 [$2 Klik óm de nuuj deil oet te zètte].',
 	'prefswitch-main-off' => '=== Perbeer! ===
 [$1 Klik óm de nuuj deil aan te zètte].',
+	'prefswitch-survey-intro-feedback' => 'Weer heure gaer van dich.
+Vul e.t.b. de optionele vraogelies hieonger in veurdet se kliks op "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Bedank veur \'t oetprobere van de nuuj meugelikhede.
+Vul e.t.b. de ongerstaonde vraogelies in om os te helpe ze wiejer te verbaetere veurdet se kliks op "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
@@ -4072,36 +4086,34 @@ $messages['mr'] = array(
 	'prefswitch-csswarning' => 'तुमची [[User:$1/$2.css|custom $2 styles]] यापुड्ढे लागू रहाणार नाही.  व्हेक्टरकरिता  [[{{ns:user}}:$1/vector.css]] मध्ये तुमची custom CSS भरू शकता.',
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
-	'prefswitch-survey-submit-off' => '↓ नविन बीटा चेहरामोहरा बंद करा',
-	'prefswitch-survey-submit-global-off' => '↓ सर्व विकिंवर नविन चेहरामोहरा बंद करा',
-	'prefswitch-survey-cancel-off' => '↓ जर आपणास नविन बीटा चेहरामोहरा वापराणे सुरू ठेवायचे असल्यास $1 कडे परत जा.',
+	'prefswitch-survey-submit-off' => 'नविन चेहरामोहरा बंद करा',
+	'prefswitch-survey-submit-global-off' => 'सर्व विकिंवर नविन चेहरामोहरा बंद करा',
+	'prefswitch-survey-cancel-off' => 'जर आपणास नविन बीटा चेहरामोहरा वापराणे सुरू ठेवायचे असल्यास $1 कडे परत जा.',
 	'prefswitch-survey-submit-feedback' => 'प्रतिसाद पाठवा',
-	'prefswitch-survey-cancel-feedback' => '↓ जर आपणास प्रतिसाद (फिडबॅक) द्यावयाचा नसल्यास, आपण $1 कडे परत जाउ शकता.',
-	'prefswitch-survey-question-like' => '↓ नविन बीटा चेहरामोहर्‍याबद्दल आपणास काय आवडले?',
-	'prefswitch-survey-question-dislike' => '↓ नविन बीटा चेहरामोहर्‍याबद्दल आपणास काय नावडले?',
-	'prefswitch-survey-question-whyoff' => '↓ नविन चेहरामोहरा आपण कां बंद करीत आहात?
+	'prefswitch-survey-cancel-feedback' => 'जर आपणास प्रतिसाद (फिडबॅक) द्यावयाचा नसल्यास, आपण $1 कडे परत जाउ शकता.',
+	'prefswitch-survey-question-like' => 'नविन चेहरामोहर्‍याबद्दल आपणास काय आवडले?',
+	'prefswitch-survey-question-dislike' => 'नविन  चेहरामोहर्‍याबद्दल आपणास काय नावडले?',
+	'prefswitch-survey-question-whyoff' => 'नविन चेहरामोहरा आपण कां बंद करीत आहात?
 खालील जे लागु असेल ते निवडा.',
-	'prefswitch-survey-answer-whyoff-hard' => '↓ हा चेहरामोहरा वापरावयास फार कठिण आहे',
-	'prefswitch-survey-answer-whyoff-didntwork' => '↓ नविन चेहरामोहरा चांगल्या तर्‍हेने काम करीत नाही.',
-	'prefswitch-survey-answer-whyoff-notpredictable' => '↓ विचार केला होता तसे ते बदल काम करीत नाही.',
-	'prefswitch-survey-answer-whyoff-didntlike-look' => '↓ मला ते ज्या तर्‍हेने प्रदर्शित झालेत ते आवडले नाही',
+	'prefswitch-survey-answer-whyoff-hard' => 'हा चेहरामोहरा वापरावयास फार कठिण आहे',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'नविन चेहरामोहरा चांगल्या तर्‍हेने काम करीत नाही.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'विचार केला होता तसे ते बदल काम करीत नाही.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'मला ते ज्या तर्‍हेने प्रदर्शित झालेत ते आवडले नाही',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => ' मला नविन कळी व ठेवण्या आवडल्या नाहीत',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'मला नविन साधनपट्टी(टूलबार) आवडली नाही.',
-	'prefswitch-survey-answer-whyoff-other' => '↓ इतर कारणे:',
+	'prefswitch-survey-answer-whyoff-other' => 'इतर कारणे:',
 	'prefswitch-survey-question-browser' => 'तुम्ही कोणता न्यहाळक (ब्राऊजर) वापरता ?',
 	'prefswitch-survey-answer-browser-other' => 'इतर न्याहाळक(बाउजर):',
-	'prefswitch-survey-question-os' => '↓ आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
-	'prefswitch-survey-answer-os-other' => '↓ इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
+	'prefswitch-survey-question-os' => 'आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
+	'prefswitch-survey-answer-os-other' => 'इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
 	'prefswitch-survey-question-res' => 'आपल्या दृश्यपटलाचे पृथक्करण (स्क्रिन रिजोल्युशन) काय आहे?',
 	'prefswitch-title-on' => 'नवीन वैशीष्ट्ये',
-	'prefswitch-title-switched-on' => '↓ मजा करा!',
+	'prefswitch-title-switched-on' => 'मजा करा!',
 	'prefswitch-title-off' => 'नविन वैशिष्ट्ये बंद करा',
-	'prefswitch-title-switched-off' => '↓ धन्यवाद
-↓ आभारी आहे',
-	'prefswitch-title-feedback' => 'उलट टपाल
-संदेश परतावा',
-	'prefswitch-success-on' => '↓ नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण त्यास,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
-	'prefswitch-success-off' => '↓ नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
+	'prefswitch-title-switched-off' => 'धन्यवाद',
+	'prefswitch-title-feedback' => 'प्रतिक्रीया',
+	'prefswitch-success-on' => 'नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण त्यास,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
+	'prefswitch-success-off' => 'नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
 	'prefswitch-success-feedback' => 'तुमची टिप्पणी पाठवली.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>कडे परत फिरा.',
@@ -4138,8 +4150,8 @@ $messages['mr'] = array(
 * '''शोध सुधारणा:''' तुम्ही शोधत असलेले लेख/पान लवकर मिळण्याकरिता आम्ही शोध सुचवणीत सुधारणा केल्या आहेत.
 * '''इतर नवीन वैशिष्ट्ये:'''सारणी (टेबल) सोपीकरण्यासाठी आम्ही आता एक नवीन सारणी (टेबल) सहाय्यक उपलब्ध केला आहे आणि संपादनांअध्ये सुलभता आणण्याकरिता शोधा आणि बदला (find and replace)वैशिष्ट्य सुद्धा उपलब्ध केले आहे.
 * '''विकिपीडिया लोगो:''' आम्ही आमचा लोगो अद्ययावत केला आहे.  [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog] येथे अधीक वाचा.",
-	'prefswitch-main-logged-changes' => "* '''{{int:watch}} टॅब''' आता तारा आहे.
-* The '''{{int:move}}  टॅब''' आता शोधपेटी पुढच्या अधोदर्शक बाणात( ड्रॉपडाऊनमध्ये) आहे .",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} कळ(टॅब)''' आता तारा आहे.
+* The '''{{int:move}} कळ (टॅब)''' आता शोधपेटी पुढच्या अधोदर्शक बाणात( ड्रॉपडाऊनमध्ये) आहे .",
 	'prefswitch-main-feedback' => '===प्रतिक्रीया?===
 आम्हाला तुमच्या कडून ऐकण्यास आवडेल. कृपया आमच्या [[$1|प्रतिक्रीया पानास]] अथवा, तुम्ही जर आमच्या संगणन प्रणाली सुधारण्याच्या चालू प्रक्रीयेत रस असल्यास ,अधीक माहिती करिता आमच्या [http://usability.wikimedia.org ऊपयोगसुलभता उपक्रम विकिस] भेट द्या.',
 	'prefswitch-main-anon' => '===मला परत न्या===
@@ -4148,7 +4160,7 @@ $messages['mr'] = array(
 [नविन चेहरामोहरा बंद करण्यास $2 येथे टिचकी मारा].',
 	'prefswitch-main-off' => '==वापरुन पहा!==
 [$1 नवीन बदल पाहण्यासाठी येथे टिचकी द्या]',
-	'prefswitch-survey-intro-feedback' => '↓ कृपया  "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" येथे टिचकी मारण्यापूर्वी,आपणातर्फे ऐच्छिक सर्वेक्षणाचा खाली दिलेला नमूना भरुन आपली प्रतिक्रिया घेणे आम्हास जरुर आवडेल.',
+	'prefswitch-survey-intro-feedback' => 'कृपया  "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" येथे टिचकी मारण्यापूर्वी,आपणातर्फे ऐच्छिक सर्वेक्षणाचा खाली दिलेला नमूना भरुन आपली प्रतिक्रिया घेणे आम्हास जरुर आवडेल.',
 	'prefswitch-survey-intro-off' => 'आमच्या नवीन वैशिष्ट्यसुविधा वापरून पहाण्याकरिता धन्यवाद.
 त्यात सुधारणा करण्याकरिता,"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" वर टिचकी मारण्यापुर्वी कृपया खालील अबंधनकारक सर्वेक्षण भरून द्या.',
 	'prefswitch-feedbackpage' => '↓ Project:सदस्याचे अनुभवाचा परतसंदेश',
@@ -4387,6 +4399,8 @@ Vink alstublieft alle mogelijkheden die van toepassing zijn aan.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ik vond de nieuwe werkbalk niet prettig werken.',
 	'prefswitch-survey-answer-whyoff-other' => 'Andere reden:',
 	'prefswitch-survey-question-browser' => 'Welke browser gebruikt u?',
+	'prefswitch-survey-answer-browser-ffb' => 'Firefox Bèta',
+	'prefswitch-survey-answer-browser-cd' => 'Google Chrome Dev',
 	'prefswitch-survey-answer-browser-other' => 'Andere browser:',
 	'prefswitch-survey-question-os' => 'Welk besturingssysteem gebruikt u?',
 	'prefswitch-survey-answer-os-other' => 'Ander besturingssysteem:',
@@ -4690,14 +4704,14 @@ Powrót do <span class="plainlinks">[$1 $2]</span>.',
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
-| Widok ekranu nowego interfejsu nawigacyjnego Wikipedii <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+| Widok ekranu nowego interfejsu nawigacyjnego Wikipedii <small>[[Media:VectorNavigation-en.png|(powiększ)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorEditorBasic-en.png|401px|]]
 |-
-| Podstawowy interfejs edycji stron <small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+| Podstawowy interfejs edycji stron <small>[[Media:VectorEditorBasic-en.png|(powiększ)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -4707,14 +4721,14 @@ Powrót do <span class="plainlinks">[$1 $2]</span>.',
 | Nowe okienko dialogowe do wprowadzania linków
 |}
 |}
-Zespół Fundacji Wikimedia zbierania doświadczeń użytkowników współpracuje z wolontariuszami ze społeczności aby ułatwić Ci korzystanie. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcje edycyjne. Wprowadzone zmiany mają ułatwić rozpoczęcie pracy nowym użytkownikom i są oparte na [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study doświadczenia zebranych na przestrzeni ostatniego roku]. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości przygotujemy więcej nowych funkcji. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
+Zespół Fundacji Wikimedia zbierając doświadczenia użytkowników współpracuje z wolontariuszami ze społeczności aby ułatwić Ci korzystanie z {{GRAMMAR:D.pl|{{SITENAME}}}}. Cieszymy się, że możemy zaprezentować niektóre z udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcje edycyjne. Wprowadzone zmiany mają ułatwić rozpoczęcie pracy nowym użytkownikom i są oparte na [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study doświadczeniach zebranych na przestrzeni ostatniego roku]. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości przygotujemy więcej nowych funkcji. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
 
 ===Oto co zmieniliśmy===
-* '''Nawigacja''' – Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
+* '''Nawigacja''' – Poprawiliśmy układ strony zarówno w czasie edycji jak i przeglądania. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
 * '''Udoskonalenia paska narzędziowego''' – Przeorganizowaliśmy pasek narzędziowy, aby łatwiej było się nim posługiwać. Formatowanie stron powinno być teraz prostsze i bardziej intuicyjne.
 * '''Kreator linków''' – Łatwe w użyciu narzędzie pozwala na tworzenie linków zarówno do stron wiki, jak i zewnętrznych serwisów.
-* '''Udoskonalenia wyszukiwania''' – Dzięki nowym, udoskonalonym podpowiedziom szybko znajdziesz to czego szukasz.
-* '''Inne nowe funkcje''' – Nowy kreator tworzenia tabel oraz okno wyszukiwania i zamiany ułatwia edycję stron.
+* '''Udoskonalenia wyszukiwania''' – Dzięki nowym, udoskonalonym podpowiedziom szybko odnajdziesz to czego szukasz.
+* '''Inne nowe funkcje''' – Nowy kreator tworzenia tabel oraz okno wyszukiwania i zamiany ułatwiają edycję stron.
 * '''Logo Wikipedii''' – Zaktualizowaliśmy logo Wikipedii. Więcej informacji (w języku angielskim) znajdziesz na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
 	'prefswitch-main-logged-changes' => "* Przycisk '''{{int:watch}}''' został zastąpiony przyciskiem z gwiazdką.
 * Przycisk '''{{int:move}}''' został przeniesiony do menu obok wyszukiwarki.",
@@ -5397,7 +5411,7 @@ $messages['sah'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorNavigation-ru.png|401px|]]
 |-
-| Бикипиэдьийэ навигациятын саҥа интерфейса <small>[[Media:VectorNavigation-ru.png|(увеличить)]]</small>
+| Бикипиэдьийэ навигациятын саҥа интерфейса <small>[[Media:VectorNavigation-ru.png|(улаатыннар)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -5414,15 +5428,15 @@ $messages['sah'] = array(
 | Сигэлэри оҥорооһун саҥа барыла
 |}
 |}
-«Викимедиа Фондатыгар» саайты туһаныыны анаалыстыыр бөлөх үлэлиир. Кини саайт волонтердарын кытта Бикипиэдьийэҕэ уонна атын биики-бырайыактарга үлэлээһини тупсара сатыыр.  Биһиги сорох тупсарыылары, ол иһигэр саҥа интерфейсы уонна эрэдээксийэлээһини судургутутууну үөрүүнү кытта көрдөрөбүт. Бу уларытыылар саҥа кыттааччылар үлэлэрин судургу гынарга аналлаахтар, уонна [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study былырыын ыытыллыбыт тургутууга] өйөнөллөр. Биһиги саайтарбыт өссө табыгастаах буолалларыгар «Викимедиа Фондата» улахан суолтаны биэрэр, онон өссө да тупсара туруохпут. Сиһилии манна  [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедия блогуттан] билиэххитин сөп.
+«Викимедиа Пуондатыгар» саайт үлэтин анаалыстыыр бөлөх үлэлиир. Кини волонтердары кытыннаран Бикипиэдьийэҕэ уонна атын биики-бырайыактарга үлэлээһини тупсарарга кыһанар. Сорох тупсарыылары, ол иһигэр саҥа интерфейсы уонна эрэдээксийэлээһини судургутутууну, көрдөрөбүт. Бу уларытыылар саҥа кыттааччылар үлэлэрин судургу гынарга аналлаахтар, [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study былырыын ыытыллыбыт тургутууга] өйөнөллөр. Биһиги саайтарбыт үлэлииргэ өссө табыгастаах буолалларыгар «Викимедиа Пуондата» улахан суолтаны биэрэр, онон өссө да тупсара туруохпут. Сиһилии манна  [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедия блогугар] киирэн билиэххитин сөп.
 
 === Туох уларыйбыта ===
 * '''Навигация.''' Навигацияны тупсардыбыт, онон ааҕарга уонна уларытарга өссө ордук буолла. Билигин хас биирдии сирэй үөһээ өттүнээҕи кыбытыктара тугу гына олороргун ордук чопчу көрдөрөр буоллулар: сирэйи эбэтэр кини ырытыытын көрөргүн, сирэйи ааҕа эбэтэр көннөрө олороргун.
-* '''Эрдээксийэ хаптаһына (панель).''' Туттарга судургу гынан биэрдибит. Билигин сирэйдэри формааттааһын ордук судургу уонна өйдөнүмтүө буолла.
-* '''Сигэнии маастара.''' Судургу үнүстүрүмүөн сигэлэри атын биики-сирэйдэргэ да, атын саайтарга да, туруорары хааччыйаллар.
-* '''Көрдөөһүн.''' Көрдөөһүн полсказкаларын тупсардыбыт, онон наадыйар сирэйгин түргэнник булуоҥ.
+* '''Эрэдээксийэ хаптаһына (панель).''' Туттарга судургу гынан биэрдибит. Билигин сирэйдэри формааттааһын ордук судургу уонна өйдөнүмтүө буолла.
+* '''Сигэнии маастара.''' Судургу үнүстүрүмүөн сигэлэри атын биики-сирэйдэргэ да, атын саайтарга да, туруорары хааччыйар.
+* '''Көрдөөһүн.''' Көрдөөһүн этэн биэриилэрин тупсардыбыт, онон наадыйар сирэйгин түргэнник булуоҥ.
 * '''Атын саҥа кыахтар.''' Табылыыссалары оҥорор маастар олортубут. Эбии эрдээксийэни тупсарар көрдөөһүн уонна уларытыы үнүстүрүмүөнүн олортубут.
-* '''Логотип.''' Шарик-пазл саҥа барылын олортубут, сиһилии манна көр: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа Фондатын» блога].",
+* '''Логотип.''' Шарик-пазл саҥа барылын олортубут, сиһилии манна көр: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа Пуондатын» блога].",
 	'prefswitch-main-feedback' => '=== Айааччылардыын алтыһыы ===
 Эн санааҕын истиэхпитин баҕарабыт. Бука диэн, биһиги [[$1|онно аналлаах сирэйбитигэр]] киирэ сырыт эрэ. Өскө салгыы тугу гыныахпытын баҕарарбытын билиэххин баҕарар буоллаххына, манна [http://usability.wikimedia.org биики юзабилити-бырайыагар] киирэ сырыт.',
 	'prefswitch-main-anon' => '=== Уруккутугар төннөрүү ===

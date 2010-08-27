@@ -98,6 +98,7 @@ This page is only applicable to restricted users",
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
@@ -106,6 +107,7 @@ This page is only applicable to restricted users",
 $messages['qqq'] = array(
 	'whitelistedit-desc' => '{{desc}}',
 	'mywhitelistpages' => '{{Identical|My pages}}',
+	'whitelisttablemodify' => '{{Identical|Modify}}',
 	'whitelisttablemodifyall' => '{{Identical|All}}',
 	'whitelisttablemodifynone' => '{{Identical|None}}',
 	'whitelisttableexpires' => '{{Identical|Expires on}}

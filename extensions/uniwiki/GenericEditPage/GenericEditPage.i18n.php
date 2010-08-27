@@ -1430,6 +1430,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'gep-desc' => 'Čini da korisnička strana bude lakša za korišćenje',
@@ -1444,7 +1445,7 @@ $messages['sr-el'] = array(
 	'gep-suggestcategorybutton' => 'Pošalji',
 	'gep-sections' => 'Odeljci',
 	'gep-sectionnotdisabled' => 'Ovaj odeljak ne može biti onemogućen',
-	'gep-addsection' => 'Dodaj sekciju',
+	'gep-addsection' => 'Dodaj odeljak',
 	'gep-addsectionbutton' => 'Dodaj',
 	'gep-classicmode' => 'Klasičan mod',
 	'gep-genericmode' => 'Generički mod',

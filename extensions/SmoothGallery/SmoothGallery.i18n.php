@@ -330,6 +330,16 @@ Vérifiez que {{PLURAL:$3|l’image requise existe|toutes les images requises ex
 	'smoothgallery-javascript-disabled' => 'JavaScript est nécessaire pour voir cette galerie d’images (<code><nowiki><gallery>...</gallery></nowiki></code>).',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'smoothgallery' => 'SmoothGallery',
+	'smoothgallery-title' => 'SmoothGallery',
+	'smoothgallery-smoothgallerytitle' => 'SmoothGallery : $1',
+	'smoothgallery-error' => '<b>Èrror de SmoothGallery :</b>',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Toliño

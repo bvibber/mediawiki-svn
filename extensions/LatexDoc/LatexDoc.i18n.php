@@ -29,6 +29,7 @@ $3",
  * @author The Evil IP address
  */
 $messages['qqq'] = array(
+	'latexdoc_get_pdf' => '{{desc}}',
 	'latexdoc-desc' => '{{desc}}',
 );
 

@@ -976,7 +976,7 @@ $messages['sl'] = array(
  */
 $messages['sr-ec'] = array(
 	'createpage' => 'Направи чланак',
-	'uwcreatepage-desc' => 'Додаје [[Special:CreatePage|специјалну страницу]] за прављење нових страница',
+	'uwcreatepage-desc' => 'Додаје [[Special:CreatePage|посебну страницу]] за прављење нових страница',
 	'createpage_submitbutton' => 'Пошаљи',
 	'createpage_instructions' => 'Унеси наслов кога желиш да направиш:',
 	'createpage_entertitle' => 'Молимо Вас да унесете наслов за Ваш чланак.',
@@ -989,10 +989,11 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'createpage' => 'Napravi članak',
-	'uwcreatepage-desc' => 'Dodaje [[Special:CreatePage|specijalnu stranu]] za pravljenje novih strana',
+	'uwcreatepage-desc' => 'Dodaje [[Special:CreatePage|posebnu stranicu]] za pravljenje novih stranica',
 	'createpage_submitbutton' => 'Pošalji',
 	'createpage_instructions' => 'Unesi naslov koga želiš da napraviš:',
 	'createpage_entertitle' => 'Molimo Vas da unesete naslov za Vaš članak.',

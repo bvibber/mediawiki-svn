@@ -596,6 +596,7 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'communityvoice' => 'Gemeinsjapsstöm',
+	'communityvoice-ratings-error-no-title' => 'Paginanaamattribuut ontbrik in waarderingslabel.',
 );
 
 /** Lithuanian (Lietuvių)

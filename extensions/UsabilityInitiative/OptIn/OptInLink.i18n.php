@@ -750,6 +750,7 @@ $messages['lb'] = array(
 );
 
 /** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
  * @author Pahles
  */
 $messages['li'] = array(
@@ -758,6 +759,7 @@ $messages['li'] = array(
 	'optin-leave' => 'Verlaot Beta',
 	'tooltip-pt-optin-leave' => 'Sjakel nuuj mäögelikhede oet',
 	'optin-feedback' => 'Trökkoppeling gaeve',
+	'tooltip-pt-optin-feedback' => 'Gaef feedback euver dien ervaringe mitte nuuj functionaliteit',
 );
 
 /** Lumbaart (Lumbaart)
@@ -823,11 +825,10 @@ $messages['ml'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
-	'optin-try' => '↓ बीटा वापरुन बघा',
+	'optin-try' => 'बीटा वापरुन बघा',
 	'tooltip-pt-optin-try' => 'नवी वैशीष्ट्ये वापरून पहा',
-	'optin-leave' => '↓ बीटा त्यागुन बाहेर
-↓ बीटा सोडा',
-	'tooltip-pt-optin-leave' => '↓ नविन चेहरामोहरा बंद करा',
+	'optin-leave' => 'बीटा त्यागुन बाहेर',
+	'tooltip-pt-optin-leave' => 'नविन चेहरामोहरा बंद करा',
 	'tooltip-pt-optin-feedback' => 'नवीन वैशिष्ट्यांबद्दल तुमच्या अनुभवावर आधारीत प्रतिक्रिया द्या',
 );
 

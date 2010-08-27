@@ -1646,11 +1646,12 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  * @author לערי ריינהארט
  */
 $messages['sr-el'] = array(
 	'sitematrix' => 'Tabela svih vikija',
-	'sitematrix-summary' => 'Ova posebna strana lista sve Vikimedijine vikije.',
+	'sitematrix-summary' => 'Ova posebna stranica lista sve Vikimedijine vikije.',
 	'sitematrix-desc' => 'Prikazuje [[Special:SiteMatrix|spisak Vikimedijinih vikija]].',
 	'sitematrix-language' => 'Jezik',
 	'sitematrix-project' => 'Ime projekta, međuprojekatska veza i međuviki veza.',

@@ -8912,6 +8912,7 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  * @author Обрадовић Горан
  */
@@ -8930,7 +8931,7 @@ $messages['sr-ec'] = array(
 	'configure-ext-schemachange' => "'''Warning:''' this extension requires a database update to work correctly!
 '''Упозорење:''' ова екстензија изискује апдејт базе података да би испрвно радила!",
 	'configure-ext-settings' => 'Подешавања',
-	'configure-ext-settings-dep-errors' => 'Ова екстензија не може бити омогућена зато што {{PLURAL:$1|следеће подешавање има|следећа подешвања имају}} неприхватљиву вредност:',
+	'configure-ext-settings-dep-errors' => 'Ова екстензија не може бити омогућена зато што {{PLURAL:$1|следеће подешавање има|следећа подешавања имају}} неприхватљиву вредност:',
 	'configure-ext-settings-dep-error' => '$1: захтевана вредност: $2, тренутна вредност: $3',
 	'configure-ext-use-extension' => 'Користи ову екстензију',
 	'configure-ext-use' => 'Користи',

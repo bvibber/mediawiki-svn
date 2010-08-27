@@ -1466,9 +1466,19 @@ $1',
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  */
 $messages['it'] = array(
+	'inplace_access_disabled' => "L'accesso a questo servizio è stato disabilitato per tutti i client.",
+	'inplace_scaler_invalid_image' => 'Immagine non valida, dimensione non riconosciuta.',
+	'inplace_scaler_failed' => "Si è verificato un errore durante la miniaturizzazione dell'immagine: $1",
+	'webstore_src_open' => 'Impossibile aprire il file di origine "$1".',
+	'webstore_no_file' => 'Nessun file è stato caricato.',
 	'webstore_404' => 'File non trovato.',
+	'webstore_php_warning' => 'Avviso PHP: $1',
+	'webstore_metadata_not_found' => 'File non trovato: $1',
+	'webstore_no_response' => 'Nessuna risposta dal server',
+	'webstore_php_error' => 'Si sono verificati errori PHP:',
 );
 
 /** Japanese (日本語)

@@ -1413,6 +1413,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'form' => 'Forma',
@@ -1420,7 +1421,7 @@ $messages['sr-el'] = array(
 	'formbadname' => 'Loše ime forme',
 	'formtitlepattern' => 'Dodati novu $1',
 	'formsave' => 'Sačuvaj',
-	'formarticleexists' => 'Strana postoji',
+	'formarticleexists' => 'Stranica postoji',
 	'formarticleexiststext' => 'Strana [[$1]] već postoji.',
 	'formbadpagename' => 'Loše ime strane',
 	'formsavesummary' => 'Nova strana koristi [[Special:Form/$1|stranu $1]]',

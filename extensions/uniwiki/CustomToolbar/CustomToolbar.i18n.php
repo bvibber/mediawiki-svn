@@ -69,6 +69,7 @@ $wgCustomToolbarMessages['en'] = array(
  */
 $wgCustomToolbarMessages['qqq'] = array(
 	'ct-desc' => '{{desc}}',
+	'ct_internal_caption' => '{{Identical|Internal link}}',
 	'ct_external_caption' => '{{Identical|External link}}',
 	'ct_upload' => '* $1 comes from the HTTP request parameter "type"',
 	'ct_submit' => '{{Identical|Go}}',

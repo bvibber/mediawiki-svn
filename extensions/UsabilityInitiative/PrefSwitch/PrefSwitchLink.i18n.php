@@ -603,15 +603,11 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'prefswitch-link-anon' => 'नवीन वैशीष्ट्ये',
-	'tooltip-pt-prefswitch-link-anon' => '↓ नविन चेहरामोहरा जाणुन घ्या',
-	'prefswitch-link-on' => '↓ परत फिरा 
-↓ माघारी जा',
-	'tooltip-pt-prefswitch-link-on' => '↓ नविन चेहरामोहरा अशक्य करा',
-	'prefswitch-link-off' => '↓ नविन चेहेरेपट्टी
-↓बीटा चेहेरेपट्टी',
-	'tooltip-pt-prefswitch-link-off' => '↓ आमचा नविन चेहरामोहरा वापरुन बघा
-
-↓ आमचा नविन बीटा चेहरामोहरा वापरुन बघा',
+	'tooltip-pt-prefswitch-link-anon' => 'नविन चेहरामोहरा जाणुन घ्या',
+	'prefswitch-link-on' => 'मला माघारी न्या',
+	'tooltip-pt-prefswitch-link-on' => 'नविन चेहरामोहरा अक्षम करा',
+	'prefswitch-link-off' => 'नवीन वैशीष्ट्ये',
+	'tooltip-pt-prefswitch-link-off' => 'नवी वैशीष्ट्ये वापरून पहा',
 );
 
 /** Malay (Bahasa Melayu)

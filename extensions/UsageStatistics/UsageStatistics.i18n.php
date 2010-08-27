@@ -2142,6 +2142,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-el'] = array(
@@ -2169,7 +2170,7 @@ $messages['sr-el'] = array(
 	'usagestatisticscumulative-text' => 'kumulativno',
 	'usagestatisticscalselect' => 'Izaberi',
 	'usagestatistics-editindividual' => 'Statistike izmena pojedinačnog korisnika $1',
-	'usagestatistics-editpages' => 'Statistike strana individualnih korisnika $1',
+	'usagestatistics-editpages' => 'Statistike stranica individualnih korisnika $1',
 );
 
 /** Seeltersk (Seeltersk)

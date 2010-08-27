@@ -1394,6 +1394,7 @@ $messages['li'] = array(
 	'ratinghistory-table-rating' => 'Waardering',
 	'ratinghistory-table-votes' => 'Stömme',
 	'ratinghistory-none' => "Neet zat feedback veur 'n grafiek te make.",
+	'ratinghistory-graph-scale' => "'''Beoerdeilingen per daag''' <font color=\"red\">''(roed)''</font> waere waergegaeve op de sjaol ''1:\$1''.",
 	'right-feedback' => 'Gebroek feedback veur paginawaardering',
 );
 

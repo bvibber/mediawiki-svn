@@ -623,6 +623,31 @@ $messages['ig'] = array(
 	'call-save-success' => 'Mkpurụ édé á a donyérélé ime ihü <big>[[$1]]</big>',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'call' => 'Richiamo',
+	'call-desc' => 'Crea un hyperlink verso un template (o una normale pagina wiki) passandogli dei parametri.
+Può essere usato da linea di comando nel browser oppure dentro al wikitext',
+	'call-text' => "L'estensione Call (Richiamo) riceve come argomenti una pagina wiki e parametri opzionali per quella pagina.<br /><br />
+
+Esempio 1: &nbsp; <tt>[[{{#special:call}}/My Template,parm1=value1]]</tt><br />
+Esempio 2: &nbsp; <tt>[[{{#special:call}}/Talk:My Discussion,parm1=value1]]</tt><br />
+Esempio 3: &nbsp; <tt>[[{{#special:call}}/:My Page,parm1=value1,parm2=value2]]</tt><br />
+Esempio 4 (Browser URL): &nbsp; <tt>http://mydomain/mywiki/index.php?{{#special:call}}/:My Page,parm1=value1</tt><br /><br />
+
+La <i>estensione Call</i> richiamerà la pagina indicata e le passerà i parametri.<br />
+Leggerai i contenuti della pagina richiamata ed il suo titolo, ma il suo 'tipo' sarà ora quello di una pagina speciale, e fra l'altro una pagina del genere non può essere editata.<br />I contenuti che leggerai potranno variare a seconda dei valori dei parametri che avrai specificato.<br /><br />
+
+La <i>estensione Call</i> è utile per costruire applicazioni interattive con MediaWiki.<br />
+Per esempio vedi <a href='http://semeb.com/dpldemo/Template:Catlist'>la GUI DPL</a> ..<br />
+In caso di problemi, puoi provare <b>{{#special:call}}/DebuG</b>",
+	'call-save' => "L'output di questa chiamata verrebbe salvato in una pagina chiamata ''$1''.",
+	'call-save-success' => 'Il testo che segue è stato salvato alla pagina <big>[[$1]].</big>',
+	'call-save-failed' => 'Il testo che segue NON è stato salvato alla pagina <big>[[$1]]</big> perché quella pagina esiste già.',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

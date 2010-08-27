@@ -647,9 +647,23 @@ Il ne peut l’être une seconde fois.',
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'createsigndoc-pagename' => 'Pâge :',
+	'createsigndoc-allowedgroup' => 'Tropa ôtorisâ :',
+	'createsigndoc-email' => 'Adrèce èlèctronica :',
+	'createsigndoc-address' => 'Adrèce de mêson :',
+	'createsigndoc-extaddress' => 'Vela, ètat (dèpartement ou ben province), payis :',
+	'createsigndoc-phone' => 'Numerô de tèlèfono :',
+	'createsigndoc-bday' => 'Dâta de nèssence :',
+	'createsigndoc-minage' => 'Âjo u muens :',
+	'createsigndoc-introtext' => 'Entroduccion :',
+	'createsigndoc-hidden' => 'Cachiê',
+	'createsigndoc-optional' => 'U chouèx',
+	'createsigndoc-create' => 'Fâre',
+	'createsigndoc-error-generic' => 'Èrror : $1',
+	'createsigndoc-error-pagenoexist' => 'Èrror : la pâge [[$1]] ègziste pas.',
 );
 
 /** Western Frisian (Frysk)

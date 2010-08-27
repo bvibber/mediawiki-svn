@@ -1046,8 +1046,10 @@ $messages['ig'] = array(
 
 /** Italian (Italiano)
  * @author Beta16
+ * @author Gianfranco
  */
 $messages['it'] = array(
+	'wah-javascript-off' => 'Devi avere i JavaScript abilitati per poter partecipare a Wiki@Home',
 	'wah-menu-pref' => 'Preferenze',
 );
 
@@ -1363,6 +1365,13 @@ $messages['oc'] = array(
 	'wah-doneuploading' => 'Telecargament acabat. Mercés per vòstra contribucion.',
 	'wah-needs-firefogg' => 'Per contribuir a Wiki@Home vos cal installar <a href="http://firefogg.org">Firefogg</a>.',
 	'wah-api-error' => 'I a agut una error amb l’API. Tornatz ensajar pus tard.',
+);
+
+/** Punjabi (ਪੰਜਾਬੀ)
+ * @author Aalam
+ */
+$messages['pa'] = array(
+	'wah-menu-pref' => 'ਮੇਰੀ ਪਸੰਦ',
 );
 
 /** Polish (Polski)
