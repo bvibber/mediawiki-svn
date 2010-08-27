@@ -23,7 +23,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		$this->addWhereFld( 'aap_rating_id', 'aam_rating_id' );
 
 		if ( isset( $params['pageid'] ) ) {
-			$this->addWhereFld( 'aa_page_id', $params['pageid'] );
+			$this->addWhereFld( 'aap_page_id', $params['pageid'] );
 		}
 
 		$res = $this->select( __METHOD__ );

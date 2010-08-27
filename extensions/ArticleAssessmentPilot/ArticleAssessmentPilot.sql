@@ -1,10 +1,11 @@
 -- Store mapping of i18n key of "rating" to an ID
-CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_ratings {
+CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_ratings (
   aam_id int unsigned NOT NULL PRIMARY KEY AUTO_INCREMENT,
   aam_rating varchar(255) binary NOT NULL
-} /*$wgDBTableOptions*/;
+) /*$wgDBTableOptions*/;
 
--- INSERT INTO /*$wgDBprefix*/article_assessment_ratings(aam_rating) VALUES('blah');
+-- INSERT INTO /*$wgDBprefix*/article_assessment_ratings(aam_rating) VALUES('articleassessment-rating-wellsourced'),
+--  ('articleassessment-rating-neutrality'), ('articleassessment-rating-completeness'), ('articleassessment-rating-readability');
 
 -- Store article assessments
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
@@ -21,7 +22,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   aa_rating_id int unsigned NOT NULL,
   aa_rating_value int unsigned NOT NULL,
   -- 1 vote per user per revision
-  PRIMARY KEY (aa_revision, aa_user_text)
+  PRIMARY KEY (aa_revision, aa_user_text, aa_rating_id)
 ) /*$wgDBTableOptions*/;
 
 -- Store article assessments
