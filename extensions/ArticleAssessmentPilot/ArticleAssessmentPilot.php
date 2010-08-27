@@ -19,6 +19,7 @@ $wgHooks['LoadExtensionSchemaUpdates'][] = 'ArticleAssessmentPilotHooks::schema'
 $wgHooks['ParserTestTables'][] = 'ArticleAssessmentPilotHooks::parserTestTables';
 
 // Hooks
+$wgHooks['BeforePageDisplay'][] = 'ArticleAssessmentPilotHooks::addResources';
 $wgHooks['SkinAfterContent'][] = 'ArticleAssessmentPilotHooks::addCode';
 
 // API modules

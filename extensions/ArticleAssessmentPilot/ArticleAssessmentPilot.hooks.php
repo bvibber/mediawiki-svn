@@ -7,6 +7,17 @@
  * @ingroup Extensions
  */
 class ArticleAssessmentPilotHooks {
+	private static $styleFiles = array(
+		array( 'src' => 'css/ArticleAssessment.css', 'version' => 1 ),
+	);
+
+	private static $scriptFiles = array(
+		array( 'src' => 'js/ArticleAssessment.js', 'version' => 1 ),
+		array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
+		array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
+		//array( 'src' => 'js/jquery.ui.stars.js', 'version' => 1 ),
+		array( 'src' => 'js/jquery.ui.stars.min.js', 'version' => 1 ),
+	);
 
 	/* Static Functions */
 	public static function schema() {
@@ -29,6 +40,24 @@ class ArticleAssessmentPilotHooks {
 		$tables[] = 'article_assessment';
 		$tables[] = 'article_assessment_pages';
 		$tables[] = 'article_assessment_ratings';
+		return true;
+	}
+
+	public static function addResources( $out ) {
+		global $wgExtensionAssetsPath;
+
+		foreach ( self::$scriptFiles as $script ) {
+			$out->addScriptFile( $wgExtensionAssetsPath .
+				"/ArticleAssessment/{$script['src']}", $script['version']
+			);
+		}
+
+		foreach(self::$styleFiles as $style) {
+			$out->addExtensionStyle( $wgExtensionAssetsPath .
+				"/ArticleAssessment/{$style['src']}?{$style['version']}"
+			);
+		}
+
 		return true;
 	}
 
