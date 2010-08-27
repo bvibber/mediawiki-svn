@@ -7,8 +7,9 @@ class CodeRevisionView extends CodeView {
 		global $wgRequest;
 		parent::__construct();
 		$this->mRepo = CodeRepository::newFromName( $repoName );
+		$this->mRevId = intval( ltrim( $rev, 'r' ) );
 		$this->mRev = $this->mRepo ?
-			$this->mRepo->getRevision( intval( ltrim( $rev, 'r' ) ) ) : null;
+			$this->mRepo->getRevision( $this->mRevId ) : null;
 		$this->mPreviewText = false;
 		# Search path for navigation links
 		$this->mPath = htmlspecialchars( trim( $wgRequest->getVal( 'path' ) ) );
@@ -37,6 +38,7 @@ class CodeRevisionView extends CodeView {
 			return;
 		}
 		if ( !$this->mRev ) {
+			$wgOut->addWikiMsg( 'code-rev-not-found', $this->mRevId );
 			$view = new CodeRevisionListView( $this->mRepo->getName() );
 			$view->execute();
 			return;
