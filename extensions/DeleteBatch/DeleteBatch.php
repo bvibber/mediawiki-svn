@@ -34,3 +34,6 @@ $wgAutoloadClasses['DeleteBatch'] = $dir . 'DeleteBatch.body.php';
 $wgSpecialPages['DeleteBatch'] = 'DeleteBatch';
 // Special page group for MW 1.13+
 $wgSpecialPageGroups['DeleteBatch'] = 'pagetools';
+
+// Hooks
+$wgHooks['AdminLinks'][] = 'DeleteBatch::addToAdminLinks'; // Admin Links extension

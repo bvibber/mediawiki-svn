@@ -50,6 +50,21 @@ class DeleteBatch extends SpecialPage {
 			$cSF->showForm();
 		}
 	}
+
+	/**
+	 * Adds a link to Special:DeleteBatch within the page
+	 * Special:AdminLinks, if the 'AdminLinks' extension is defined
+	 */
+	static function addToAdminLinks( &$admin_links_tree ) {
+		$general_section = $admin_links_tree->getSection( wfMsg( 'adminlinks_general' ) );
+		$extensions_row = $general_section->getRow( 'extensions' );
+		if ( is_null( $extensions_row ) ) {
+			$extensions_row = new ALRow( 'extensions' );
+			$general_section->addRow( $extensions_row );
+		}
+		$extensions_row->addItem( ALItem::newFromSpecialPage( 'DeleteBatch' ) );
+		return true;
+	}
 }
 
 /* the form for deleting pages */
