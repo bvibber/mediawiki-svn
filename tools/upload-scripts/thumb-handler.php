@@ -25,15 +25,32 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/ar
 	if ( $arch ) {
 		$params['archived'] = 1;
 	}
-} elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*\.(?:(?i)ogg|ogv|oga))/' . 
+} elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|)/' . 
+	'\w/\w\w/([^/]*\.(?:(?i)ogg|ogv|oga))/' . 
 	'(mid|seek(?:=|%3D|%3d)[0-9.]+)-([^/]*)$!', $uri, $matches ) ) 
 {
+	# OggHandler
 	list( $all, $site, $lang, $arch, $filename, $timeFull, $fn2 ) = $matches;
 	$params = array( 'f' => $filename );
 	if ( $timeFull != 'mid' ) {
 		list( $seek, $thumbtime ) = explode( '=', urldecode( $timeFull ), 2 );
 		$params['thumbtime'] = $thumbtime;
 	}
+	if ( $arch ) {
+		$params['archived'] = 1;
+	}
+} elseif ( preg_match( '!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|)/' . 
+	'\w/\w\w/([^/]*\.(?:(?i)tiff|tif))/' .
+	'(lossy|lossless)-page(\d+)-(\d+)px-([^/]*)$!', $uri, $matches ) )
+{
+	# PagedTiffHandler
+	list( $all, $site, $lang, $arch, $filename, $lossy, $pagenum, $size, $fn2 ) = $matches;
+	$params = array(
+		'f' => $filename,
+		'lossy' => $lossy
+		'width' => $size,
+		'page' => $pagenum,
+	);
 	if ( $arch ) {
 		$params['archived'] = 1;
 	}
