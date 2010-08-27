@@ -4,6 +4,7 @@ $messages = array();
 /** English
  * @author Nimish Gautam
  * @author Sam Reed
+ * @author Brandon Harris
  */
 $messages['en'] = array(
 	'articleassessment' => 'Article Assessment',
@@ -15,9 +16,15 @@ $messages['en'] = array(
 	'articleassessment-rating-neutrality' => 'Neutrality:',
 	'articleassessment-rating-completeness' => 'Completeness:',
 	'articleassessment-rating-readability' => 'Readability:',
+	'articleassessment-rating-wellsourced-tooltip' => 'Do you feel this article has sufficient citations and that those citations come from trustworthy sources?',
+	'articleassessment-rating-neutrality-tooltip' => 'Do you feel that this article shows a fair representation of all perspectives on the issue?',
+	'articleassessment-rating-completeness-tooltip' => 'Do you feel that this article covers the essential topic areas that it should?',
+	'articleassessment-rating-readability-tooltip' => 'Do you feel that this article is well-organized and well written?',
 	'articleassessment-articlerating' => 'Article Rating',
-	'articleassessment-featurefeedback' => 'Give us [[Special:Article Assessment Feedback|feedback]] about this',
+	'articleassessment-featurefeedback' => 'Give us [[Special:Article Assessment Feedback|feedback]] about this feature.',
 	'articleassessment-noratings' => '$1 ($2 {{PLURAL:$2|rating|ratings}})',
-	'articleassessment-results-show' => "''(Results hidden. [[|Show]] them.''",
+	'articleassessment-stalemessage-revisioncount' => "This article has been ''revised'' '''$1 times''' since you last reviewed it. You may wish to re-rate it.",
+	'articleassessment-stalemessage-norevisioncount' => "This article has been ''revised'' since you last reviewed it. You may wish to re-rate it.",
+	'articleassessment-results-show' => "''(Results hidden. [[|Show]] them.)''",
 	'articleassessment-results-hide' => "''([[|Hide Results]])''",
 );
