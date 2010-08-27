@@ -124,6 +124,8 @@ $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
 
+define('TIFF_METADATA_VERSION', '1.0');
+
 //$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
 //$wgHooks['PagedTiffHandlerTiffData'][] = 'PagedTiffImage::tiffData';
 //$wgHooks['PagedTiffHandlerExifData'][] = 'PagedTiffImage::exifData';

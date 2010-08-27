@@ -171,14 +171,42 @@ class PagedTiffImage {
 					$this->_meta['exif'] = $data;
 				} 
 			}
+
+			unset( $this->_meta['exif']['Image'] );
+			unset( $this->_meta['exif']['filename'] );
+			unset( $this->_meta['exif']['Base filename'] );
+			unset( $this->_meta['exif']['XMLPacket'] );
+			unset( $this->_meta['exif']['ImageResources'] );
+			
+			$this->_meta['TIFF_METADATA_VERSION'] = TIFF_METADATA_VERSION;
+
 			wfProfileOut( 'PagedTiffImage::retrieveMetaData' );
 		}
-		unset( $this->_meta['exif']['Image'] );
-		unset( $this->_meta['exif']['filename'] );
-		unset( $this->_meta['exif']['Base filename'] );
-		unset( $this->_meta['exif']['XMLPacket'] );
-		unset( $this->_meta['exif']['ImageResources'] );
+		
 		return $this->_meta;
+	}
+
+	private function addPageEntry( $entry, &$metadata, &$prevPage ) {
+		if ( !isset( $entry['page'] ) ) {
+			$entry['page'] = $prevPage +1;
+		} else {
+			if ( $prevPage >= $entry['page'] ) {
+				$metadata['errors'][] = "inconsistent page numbering in TIFF directory";
+				return false;
+			} 
+		}
+
+		$prevPage = max($prevPage, $entry['page']);
+
+		if ( !isset( $entry['alpha'] ) ) {
+			$entry['alpha'] = 'false';
+		}
+
+		$entry['pixels'] = $entry['height'] * $entry['width'];
+		$metadata['page_data'][$entry['page']] = $entry;
+
+		$entry = array();
+		return true;
 	}
 
 	/**
@@ -195,6 +223,8 @@ class PagedTiffImage {
 		$data['page_data'] = array();
 
 		$entry = array();
+
+		$prevPage = 0;
 
 		foreach ( $rows as $row ) {
 			$row = trim( $row );
@@ -216,12 +246,12 @@ class PagedTiffImage {
 			if ( $error ) continue;
 
 			if ( preg_match('/^TIFF Directory at/', $row) ) {
-				if ( isset( $entry['page'] ) ) {
-					$entry['pixels'] = $entry['height'] * $entry['width'];
-					$data['page_data'][$entry['page'] +1] = $entry;
-
-					$entry = array();
-					$entry['alpha'] = 'false';
+				if ( $entry ) {
+					$ok = $this->addPageEntry($entry, $data, $prevPage);
+					if ( !$ok ) {
+						$error = true;
+						continue;
+					}
 				}
 			} else if ( preg_match('#^(TIFF.*?Directory): (.*?/.*?): (.*)#i', $row, $m) ) {
 				$bypass = false; 
@@ -244,10 +274,9 @@ class PagedTiffImage {
 
 				if ( $key == 'Page Number' && preg_match('/(\d+)-(\d+)/', $value, $m) ) {
 					$data['page_amount'] = (int)$m[2];
-					$entry['page'] = (int)$m[1];
+					$entry['page'] = (int)$m[1] +1;
 				} else if ( $key == 'Samples/Pixel' ) {
 					if ($value == '4') $entry['alpha'] = 'true';
-					else $entry['alpha'] = 'false';
 				} else if ( $key == 'Extra samples' ) {
 					if (preg_match('.*alpha.*', $value)) $entry['alpha'] = 'true';
 				} else if ( $key == 'Image Width' || $key == 'PixelXDimension' ) {
@@ -258,15 +287,19 @@ class PagedTiffImage {
 			} else {
 				// strange line
 			}
+
 		}
 
-		if ( !empty( $entry['page'] ) ) {
-			$entry['pixels'] = $entry['height'] * $entry['width'];
-			$data['page_data'][$entry['page'] +1] = $entry;
+		if ( $entry ) {
+			$ok = $this->addPageEntry($entry, $data, $prevPage);
 		}
 
 		if ( !isset( $data['page_amount'] ) ) {
 			$data['page_amount'] = count( $data['page_data'] );
+		}
+
+		if ( ! $data['page_data'] ) {
+			$data['errors'][] = 'no page data found in tiff directory!';
 		}
 
 		return $data;
