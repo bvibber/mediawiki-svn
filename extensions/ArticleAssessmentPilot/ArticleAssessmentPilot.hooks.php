@@ -48,13 +48,13 @@ class ArticleAssessmentPilotHooks {
 
 		foreach ( self::$scriptFiles as $script ) {
 			$out->addScriptFile( $wgExtensionAssetsPath .
-				"/ArticleAssessment/{$script['src']}", $script['version']
+				"/ArticleAssessmentPilot/{$script['src']}", $script['version']
 			);
 		}
 
 		foreach(self::$styleFiles as $style) {
 			$out->addExtensionStyle( $wgExtensionAssetsPath .
-				"/ArticleAssessment/{$style['src']}?{$style['version']}"
+				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"
 			);
 		}
 
