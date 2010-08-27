@@ -18,15 +18,15 @@ class CSSMin {
 	 * Gets a list of local file paths which are referenced in a CSS style sheet
 	 * 
 	 * @param $source string CSS data to remap
-	 * @param $path string File path where the source was read from
+	 * @param $path string File path where the source was read from (optional)
 	 * @return array List of local file references
 	 */
-	public static function getLocalFileReferences( $source, $path ) {
+	public static function getLocalFileReferences( $source, $path = null ) {
 		$pattern = '/url\([\'"]?(?<file>[^\?\)\:]*)\??[^\)]*[\'"]?\)/';
 		$files = array();
 		if ( preg_match_all( $pattern, $source, $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER ) ) {
 			foreach ( $matches as $match ) {
-				$file = "{$path}/{$match['file'][0]}";
+				$file = ( isset( $path ) ? rtrim( $path, '/' ) . '/' : '' ) . "{$match['file'][0]}";
 				// Only proceed if we can access the file
 				if ( file_exists( $file ) ) {
 					$files[] = $file;
