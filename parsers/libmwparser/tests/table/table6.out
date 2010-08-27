@@ -1,0 +1,108 @@
+BEGIN ARTICLE
+    SPACE[ ]
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[table]
+                    WORD[1]
+                    SPACE[ ]
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[table]
+                    WORD[2]
+                    NEWLINE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    BEGIN PARAGRAPH
+        SPECIAL[|]
+        NEWLINE
+        SPECIAL[|]
+        SPECIAL[}]
+    END PARAGRAPH
+    SPACE[ ]
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[table]
+                    WORD[3]
+                    SPACE[ ]
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    BEGIN PARAGRAPH
+        SPECIAL[</]
+        WORD[table]
+        SPECIAL[>]
+    END PARAGRAPH
+    SPACE[ ]
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[table]
+                    WORD[4]
+                    NEWLINE
+                    BEGIN TABLE
+                        BEGIN TABLE BODY
+                            BEGIN ROW
+                                BEGIN CELL
+                                    SPACE[ ]
+                                    WORD[table]
+                                    WORD[5]
+                                    SPACE[ ]
+                                    SPECIAL[</]
+                                    WORD[table]
+                                    SPECIAL[>]
+                                    NEWLINE
+                                    BEGIN TABLE
+                                        BEGIN TABLE BODY
+                                            BEGIN ROW
+                                                BEGIN CELL
+                                                    SPACE[ ]
+                                                    WORD[table]
+                                                    WORD[6]
+                                                    NEWLINE
+                                                    SPACE[ ]
+                                                    BEGIN TABLE
+                                                        BEGIN TABLE BODY
+                                                            BEGIN ROW
+                                                                BEGIN CELL
+                                                                    SPACE[ ]
+                                                                    WORD[table]
+                                                                    WORD[7]
+                                                                    NEWLINE
+                                                                    SPECIAL[|]
+                                                                    SPECIAL[}]
+                                                                    NEWLINE
+                                                                END CELL
+                                                            END ROW
+                                                        END TABLE BODY
+                                                    END TABLE
+                                                END CELL
+                                            END ROW
+                                        END TABLE BODY
+                                    END TABLE
+                                END CELL
+                            END ROW
+                        END TABLE BODY
+                    END TABLE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+END ARTICLE

@@ -1,0 +1,12 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[a]
+        BEGIN ITALIC
+            WORD[b]
+            BEGIN BOLD
+                WORD[c]
+            END BOLD
+            WORD[d]
+        END ITALIC
+    END PARAGRAPH
+END ARTICLE

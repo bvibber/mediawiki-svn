@@ -1,0 +1,10 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[a]
+        NOWIKI[<nowiki> b]
+        END NOWIKI
+        SPECIAL[</]
+        WORD[nowiki]
+        SPECIAL[>]
+    END PARAGRAPH
+END ARTICLE

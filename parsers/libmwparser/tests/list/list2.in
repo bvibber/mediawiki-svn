@@ -1,0 +1,19 @@
+text '' italic <b><strong /> bold-italic
+bold </b> text
+
+<ul>
+<li> item1
+<li> item2
+<li> item3
+</ul>
+
+<ul>
+<li><ol>
+<li><dl>
+<dt><ul><li>term</ul></dt>
+<dd><ul><li>definition</dd>
+</dd>
+**  wikitext list item
+</ol>
+</ul>
+<li> item </li>

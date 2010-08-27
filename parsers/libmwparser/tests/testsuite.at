@@ -1,0 +1,209 @@
+AT_INIT([simple])
+
+AT_COPYRIGHT([Copyright 2010 Andreas Jonsson])
+
+AT_BANNER([simple])
+
+AT_SETUP([simple])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/simpleinput > tempoutput && diff ${srcdir}/simpleoutput tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([nowiki1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/nowiki/nowiki1.in > tempoutput && diff ${srcdir}/nowiki/nowiki1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([nowiki2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/nowiki/nowiki2.in > tempoutput && diff ${srcdir}/nowiki/nowiki2.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([nowiki3])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/nowiki/nowiki3.in > tempoutput && diff ${srcdir}/nowiki/nowiki3.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([entity1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/html/entity1.in > tempoutput && diff ${srcdir}/html/entity1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([block1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/html/block1.in > tempoutput && diff ${srcdir}/html/block1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([italic1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/italic1.in > tempoutput && diff ${srcdir}/format/italic1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([italic2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/italic2.in > tempoutput && diff ${srcdir}/format/italic2.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([italic3])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/italic3.in > tempoutput && diff ${srcdir}/format/italic3.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([italic4])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/italic4.in > tempoutput && diff ${srcdir}/format/italic4.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([italic5])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/italic5.in > tempoutput && diff ${srcdir}/format/italic5.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([bold1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/bold1.in > tempoutput && diff ${srcdir}/format/bold1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([bold2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/bold2.in > tempoutput && diff ${srcdir}/format/bold2.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([bolditalic1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/bolditalic1.in > tempoutput && diff ${srcdir}/format/bolditalic1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([bolditalic2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/bolditalic2.in > tempoutput && diff ${srcdir}/format/bolditalic2.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([pre1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/pre1.in > tempoutput && diff ${srcdir}/format/pre1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([heading1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/heading1.in > tempoutput && diff ${srcdir}/format/heading1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([heading2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/format/heading2.in > tempoutput && diff ${srcdir}/format/heading2.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([table1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/table/table1.in > tempoutput && diff ${srcdir}/table/table1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([table2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/table/table2.in > tempoutput && diff ${srcdir}/table/table2.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([table3])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/table/table3.in > tempoutput && diff ${srcdir}/table/table3.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([table4])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/table/table4.in > tempoutput && diff ${srcdir}/table/table4.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([table5])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/table/table5.in > tempoutput && diff ${srcdir}/table/table5.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([table6])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/table/table6.in > tempoutput && diff ${srcdir}/table/table6.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([list1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/list/list1.in > tempoutput && diff ${srcdir}/list/list1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([list2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/list/list2.in > tempoutput && diff ${srcdir}/list/list2.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([hr])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/hr/hr1.in > tempoutput && diff ${srcdir}/hr/hr1.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([link1])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/link/link1.in > tempoutput && diff ${srcdir}/link/link1.out tempoutput])
+
+AT_CLEANUP
+
+
+AT_SETUP([link2])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/link/link2.in > tempoutput && diff ${srcdir}/link/link2.out tempoutput])
+
+AT_CLEANUP

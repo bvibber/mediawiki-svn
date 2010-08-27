@@ -1,0 +1,117 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[text]
+        SPACE[ ]
+        BEGIN ITALIC
+            SPACE[ ]
+            WORD[italic]
+            SPACE[ ]
+            BEGIN BOLD
+                SPACE[ ]
+                WORD[bold]
+                SPECIAL[-]
+                WORD[italic]
+            END BOLD
+        END ITALIC
+        NEWLINE
+        BEGIN BOLD
+            WORD[bold]
+            SPACE[ ]
+        END BOLD
+        SPACE[ ]
+        WORD[text]
+    END PARAGRAPH
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            SPACE[ ]
+            WORD[item]
+            WORD[1]
+            NEWLINE
+        END BULLET LIST ITEM
+        BEGIN BULLET LIST ITEM
+            SPACE[ ]
+            WORD[item]
+            WORD[2]
+            NEWLINE
+        END BULLET LIST ITEM
+        BEGIN BULLET LIST ITEM
+            SPACE[ ]
+            WORD[item]
+            WORD[3]
+            NEWLINE
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            BEGIN ENUMERATION LIST
+                BEGIN ENUMERATION LIST ITEM
+                    BEGIN DEFINITION LIST
+                        BEGIN DEFINED TERM ITEM
+                            SPECIAL[<]
+                            WORD[ul]
+                            SPECIAL[>]
+                            SPECIAL[<]
+                            WORD[li]
+                            SPECIAL[>]
+                            WORD[term]
+                            SPECIAL[</]
+                            WORD[ul]
+                            SPECIAL[>]
+                        END DEFINED TERM ITEM
+                        BEGIN PARAGRAPH
+                            SPECIAL[<]
+                            WORD[dd]
+                            SPECIAL[>]
+                            SPECIAL[<]
+                            WORD[ul]
+                            SPECIAL[>]
+                            SPECIAL[<]
+                            WORD[li]
+                            SPECIAL[>]
+                            WORD[definition]
+                            SPECIAL[</]
+                            WORD[dd]
+                            SPECIAL[>]
+                            NEWLINE
+                            SPECIAL[</]
+                            WORD[dd]
+                            SPECIAL[>]
+                        END PARAGRAPH
+                        BEGIN BULLET LIST
+                            BEGIN BULLET LIST ITEM
+                                BEGIN BULLET LIST
+                                    BEGIN BULLET LIST ITEM
+                                        WORD[wikitext]
+                                        SPACE[ ]
+                                        WORD[list]
+                                        SPACE[ ]
+                                        WORD[item]
+                                    END BULLET LIST ITEM
+                                END BULLET LIST
+                            END BULLET LIST ITEM
+                        END BULLET LIST
+                        BEGIN PARAGRAPH
+                            SPECIAL[</]
+                            WORD[ol]
+                            SPECIAL[>]
+                            NEWLINE
+                            SPECIAL[</]
+                            WORD[ul]
+                            SPECIAL[>]
+                            NEWLINE
+                            SPECIAL[<]
+                            WORD[li]
+                            SPECIAL[>]
+                            SPACE[ ]
+                            WORD[item]
+                            SPACE[ ]
+                            SPECIAL[</]
+                            WORD[li]
+                            SPECIAL[>]
+                        END PARAGRAPH
+                    END DEFINITION LIST
+                END ENUMERATION LIST ITEM
+            END ENUMERATION LIST
+        END BULLET LIST ITEM
+    END BULLET LIST
+END ARTICLE

@@ -1,0 +1,33 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        SPECIAL[[]
+        SPECIAL[[]
+        WORD[Link]
+        SPECIAL[|]
+        WORD[text]
+        BEGIN ITALIC
+            WORD[format]
+        END ITALIC
+        WORD[text]
+    END PARAGRAPH
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[column]
+                    WORD[1]
+                    NEWLINE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    BEGIN PARAGRAPH
+        SPECIAL[[[]
+        NEWLINE
+        WORD[test]
+        NEWLINE
+        SPECIAL[]]
+        SPECIAL[]]
+    END PARAGRAPH
+END ARTICLE

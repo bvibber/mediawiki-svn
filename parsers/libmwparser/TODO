@@ -1,0 +1,9 @@
+Test optimization options:
+
+--fomit-frame-pointer
+--fexpensive-optimizations
+--fipa-struct-reorg
+-ftree-loop-linear
+-floop-interchange
+-floop-strip-mine
+-floop-block

@@ -1,0 +1,24 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[Normal]
+        SPACE[ ]
+        WORD[text]
+        SPECIAL[.]
+        SPACE[ ]
+        BEGIN ITALIC
+            BEGIN BOLD
+                WORD[Bold]
+                SPACE[ ]
+                WORD[italic]
+                SPACE[ ]
+                WORD[text]
+                SPECIAL[.]
+            END BOLD
+        END ITALIC
+        SPACE[ ]
+        WORD[Normal]
+        SPACE[ ]
+        WORD[text]
+        SPECIAL[.]
+    END PARAGRAPH
+END ARTICLE

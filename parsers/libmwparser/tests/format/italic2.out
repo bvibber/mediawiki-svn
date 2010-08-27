@@ -1,0 +1,9 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[text]
+        SPACE[ ]
+        BEGIN ITALIC
+            WORD[italic]
+        END ITALIC
+    END PARAGRAPH
+END ARTICLE

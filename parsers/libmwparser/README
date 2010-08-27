@@ -1,0 +1,36 @@
+To build you will first need to build and install antlr3 and the C
+runtime from the git repository:
+
+git://github.com/antlr/antlr.git
+
+I have been using commit ab2a28bbcd5e4c214b1f7edaeb1b88176dc1f34a from
+Fri Jul 23 15:11:41.
+
+You will also need to apply the patch 'antlr.patch' to the C runtime.
+The parser will not work without it.
+
+The antlr patch contains these items:
+
+* fix for incorrect initialization of 'charPositionInLine'.
+
+* support for producing several tokens per lexer rule by using EMIT()
+  and EMITNEW().
+
+* support for using EMIT() and EMITNEW() in fragment lexer
+  rules.
+
+* support for taking back produced tokens.
+
+* support for installing an action to be executed at the end of file.
+
+
+
+To run the unit tests, run 'configure' followed by 'make' and 'make
+check'.
+
+There is a small test program 'tests/testtext' that can be used to
+test.  Just give the filename of a file containing wikitext as a
+command line argument.
+
+To use libmwparser in an application, implement the MWLISTENER
+interface defined in the file include/mwlistener.h.

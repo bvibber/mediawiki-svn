@@ -1,0 +1,8 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        NOWIKI[あ
+'''not formatted
+* not formatted]
+        END NOWIKI
+    END PARAGRAPH
+END ARTICLE

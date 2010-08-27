@@ -1,0 +1,35 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        BEGIN INTERNAL LINK[Link]
+            WORD[text]
+            BEGIN ITALIC
+                WORD[format]
+            END ITALIC
+            WORD[text]
+        END INTERNAL LINK
+    END PARAGRAPH
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    BEGIN INTERNAL LINK[Link]
+                        SPACE[ ]
+                        WORD[column]
+                        WORD[1]
+                    END INTERNAL LINK
+                    NEWLINE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    BEGIN PARAGRAPH
+        BEGIN INTERNAL LINK[Link]
+            SPECIAL[[]
+        END INTERNAL LINK
+        NEWLINE
+        BEGIN INTERNAL LINK[Link]
+            WORD[test]
+        END INTERNAL LINK
+        NEWLINE
+    END PARAGRAPH
+END ARTICLE

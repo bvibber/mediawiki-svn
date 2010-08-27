@@ -1,0 +1,18 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        BEGIN BOLD
+            WORD[bold]
+            BEGIN ITALIC
+                WORD[italic]
+                SPACE[ ]
+                WORD[bold]
+            END ITALIC
+        END BOLD
+        BEGIN ITALIC
+            SPACE[ ]
+            BEGIN BOLD
+                SPACE[ ]
+            END BOLD
+        END ITALIC
+    END PARAGRAPH
+END ARTICLE

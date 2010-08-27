@@ -1,0 +1,23 @@
+Normal text. '''Bold text.''' Normal text. ''Italic text.''
+
+'''Bold text..
+
+..spanning two paragraphs (should not work).'''
+
+Normal text. '''''Bold italic text.''''' Normal text.
+
+'''''Bold italic text '''with bold deactivated''' in between.'''''
+
+'''''Bold italic text ''with italic deactivated'' in between.'''''
+
+'''Bold tag left open
+
+''Italic tag left open
+
+Normal text.
+
+Unmatching number of opening, closing tags: 
+
+'''This year''''s election ''should'' beat '''last year''''s.
+
+''Tom'''s car is bigger than ''Susan'''s.

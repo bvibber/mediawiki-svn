@@ -1,0 +1,66 @@
+BEGIN ARTICLE
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    SPECIAL[(]
+                    WORD[Cell]
+                    SPACE[ ]
+                    WORD[1]
+                    SPECIAL[,]
+                    SPACE[ ]
+                    WORD[row]
+                    SPACE[ ]
+                    WORD[1]
+                    SPECIAL[)]
+                    NEWLINE
+                END CELL
+                BEGIN CELL
+                    SPACE[ ]
+                    SPECIAL[(]
+                    WORD[Cell]
+                    SPACE[ ]
+                    WORD[2]
+                    SPECIAL[,]
+                    SPACE[ ]
+                    WORD[row]
+                    SPACE[ ]
+                    WORD[1]
+                    SPECIAL[)]
+                    NEWLINE
+                END CELL
+            END ROW
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    SPECIAL[(]
+                    WORD[Cell]
+                    SPACE[ ]
+                    WORD[1]
+                    SPECIAL[,]
+                    SPACE[ ]
+                    WORD[row]
+                    SPACE[ ]
+                    WORD[2]
+                    SPECIAL[)]
+                    NEWLINE
+                END CELL
+                BEGIN CELL
+                    SPACE[ ]
+                    SPECIAL[(]
+                    WORD[Cell]
+                    SPACE[ ]
+                    WORD[2]
+                    SPECIAL[,]
+                    SPACE[ ]
+                    WORD[row]
+                    SPACE[ ]
+                    WORD[2]
+                    SPECIAL[)]
+                    NEWLINE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+END ARTICLE

@@ -1,0 +1,7 @@
+= hello =
+{|
+! table heading !! foo
+| content       || content
+|+ caption
+|}
+

@@ -1,0 +1,40 @@
+BEGIN ARTICLE
+    BEGIN HEADING[1]
+        SPACE[ ]
+        WORD[hello]
+        SPACE[ ]
+    END HEADING
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN TABLE HEADING
+                    SPACE[ ]
+                    WORD[table]
+                    SPACE[ ]
+                    WORD[heading]
+                    SPACE[ ]
+                END TABLE HEADING
+                BEGIN TABLE HEADING
+                    SPACE[ ]
+                    WORD[foo]
+                    NEWLINE
+                END TABLE HEADING
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[content]
+                    SPACE[       ]
+                END CELL
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[content]
+                    NEWLINE
+                END CELL
+            END ROW
+        END TABLE BODY
+        BEGIN TABLE CAPTION
+            SPACE[ ]
+            WORD[caption]
+            NEWLINE
+        END TABLE CAPTION
+    END TABLE
+END ARTICLE

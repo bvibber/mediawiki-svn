@@ -1,0 +1,55 @@
+BEGIN ARTICLE
+    BEGIN HEADING[2]
+        SPACE[ ]
+        WORD[heading]
+        SPACE[ ]
+        NOWIKI[==
+text]
+        END NOWIKI
+        SPACE[ ]
+        WORD[text]
+        SPACE[ ]
+    END HEADING
+    BEGIN PARAGRAPH
+        SPECIAL[=]
+        SPECIAL[=]
+        SPACE[ ]
+        WORD[heading]
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        SPECIAL[</]
+        WORD[nowiki]
+        SPECIAL[>]
+    END PARAGRAPH
+    BEGIN PRE
+        WORD[text]
+    END PRE
+    BEGIN PARAGRAPH
+        SPACE[  ]
+        WORD[text]
+        SPACE[ ]
+    END PARAGRAPH
+    SPACE[ ]
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    BEGIN PARAGRAPH
+                        WORD[text]
+                    END PARAGRAPH
+                    BEGIN PRE
+                        WORD[text]
+                    END PRE
+                    BEGIN PARAGRAPH
+                        SPACE[   ]
+                        WORD[text]
+                        SPACE[ ]
+                    END PARAGRAPH
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    BEGIN PRE
+        WORD[text]
+    END PRE
+END ARTICLE

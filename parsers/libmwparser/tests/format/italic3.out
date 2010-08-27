@@ -1,0 +1,10 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[a]
+        BEGIN ITALIC
+            WORD[b]
+            SPECIAL[']
+        END ITALIC
+        WORD[c]
+    END PARAGRAPH
+END ARTICLE

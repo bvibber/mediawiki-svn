@@ -1,0 +1,16 @@
+test text ''
+  indentet ''' format
+    still indent
+
+  new indent
+* list
+
+  new indent
+{|
+   | col1
+
+    indent
+|}
+
+
+   indent

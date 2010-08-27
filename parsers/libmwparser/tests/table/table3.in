@@ -1,0 +1,14 @@
+{| key1=value key2="value" class='value id='value'
+garbage
+
+inline ''formatted''
+
+text
+! key=value | foo || bar !! quiz
+
+baz
+| key=value | || a
+| key=value || a
+|- key =               " valeu;;'"
+| key1=value key2="value" key3='value
+|} garbage ''formatted'' text

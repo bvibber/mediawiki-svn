@@ -1,0 +1,42 @@
+BEGIN ARTICLE
+    BEGIN DEFINITION LIST
+        BEGIN DEFINITION ITEM
+            BEGIN DEFINITION LIST
+                BEGIN DEFINITION ITEM
+                    BEGIN DEFINITION LIST
+                        BEGIN DEFINITION ITEM
+                            BEGIN DEFINITION LIST
+                                BEGIN DEFINITION ITEM
+                                    BEGIN DEFINITION LIST
+                                        BEGIN DEFINITION ITEM
+                                            BEGIN DEFINITION LIST
+                                                BEGIN DEFINITION ITEM
+                                                    BEGIN TABLE
+                                                        BEGIN TABLE BODY
+                                                            BEGIN ROW
+                                                                BEGIN CELL
+                                                                    SPACE[ ]
+                                                                    WORD[a]
+                                                                    SPACE[ ]
+                                                                END CELL
+                                                                BEGIN CELL
+                                                                    SPACE[ ]
+                                                                    WORD[b]
+                                                                    NEWLINE
+                                                                END CELL
+                                                            END ROW
+                                                        END TABLE BODY
+                                                    END TABLE
+                                                END DEFINITION ITEM
+                                            END DEFINITION LIST
+                                        END DEFINITION ITEM
+                                    END DEFINITION LIST
+                                END DEFINITION ITEM
+                            END DEFINITION LIST
+                        END DEFINITION ITEM
+                    END DEFINITION LIST
+                END DEFINITION ITEM
+            END DEFINITION LIST
+        END DEFINITION ITEM
+    END DEFINITION LIST
+END ARTICLE

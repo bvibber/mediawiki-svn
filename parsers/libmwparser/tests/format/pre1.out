@@ -1,0 +1,53 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[test]
+        SPACE[ ]
+        WORD[text]
+        SPACE[ ]
+    END PARAGRAPH
+    BEGIN PRE
+        WORD[indentet]
+        SPACE[ ]
+        BEGIN BOLD
+            SPACE[ ]
+            WORD[format]
+        END BOLD
+        WORD[still]
+        SPACE[ ]
+        WORD[indent]
+    END PRE
+    BEGIN PRE
+        WORD[new]
+        SPACE[ ]
+        WORD[indent]
+    END PRE
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            WORD[list]
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN PRE
+        WORD[new]
+        SPACE[ ]
+        WORD[indent]
+    END PRE
+    BEGIN TABLE
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[col]
+                    WORD[1]
+                    NEWLINE
+                    NEWLINE
+                    BEGIN PRE
+                        WORD[indent]
+                    END PRE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    BEGIN PRE
+        WORD[indent]
+    END PRE
+END ARTICLE

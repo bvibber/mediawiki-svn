@@ -1,0 +1,216 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[Normal]
+        SPACE[ ]
+        WORD[text]
+        SPECIAL[.]
+        SPACE[ ]
+        BEGIN BOLD
+            WORD[Bold]
+            SPACE[ ]
+            WORD[text]
+            SPECIAL[.]
+        END BOLD
+        SPACE[ ]
+        WORD[Normal]
+        SPACE[ ]
+        WORD[text]
+        SPECIAL[.]
+        SPACE[ ]
+        BEGIN ITALIC
+            WORD[Italic]
+            SPACE[ ]
+            WORD[text]
+            SPECIAL[.]
+        END ITALIC
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        BEGIN BOLD
+            WORD[Bold]
+            SPACE[ ]
+            WORD[text]
+            SPECIAL[.]
+            SPECIAL[.]
+        END BOLD
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        SPECIAL[.]
+        SPECIAL[.]
+        WORD[spanning]
+        SPACE[ ]
+        WORD[two]
+        SPACE[ ]
+        WORD[paragraphs]
+        SPACE[ ]
+        SPECIAL[(]
+        WORD[should]
+        SPACE[ ]
+        WORD[not]
+        SPACE[ ]
+        WORD[work]
+        SPECIAL[)]
+        SPECIAL[.]
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        WORD[Normal]
+        SPACE[ ]
+        WORD[text]
+        SPECIAL[.]
+        SPACE[ ]
+        BEGIN ITALIC
+            BEGIN BOLD
+                WORD[Bold]
+                SPACE[ ]
+                WORD[italic]
+                SPACE[ ]
+                WORD[text]
+                SPECIAL[.]
+            END BOLD
+        END ITALIC
+        SPACE[ ]
+        WORD[Normal]
+        SPACE[ ]
+        WORD[text]
+        SPECIAL[.]
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        BEGIN ITALIC
+            BEGIN BOLD
+                WORD[Bold]
+                SPACE[ ]
+                WORD[italic]
+                SPACE[ ]
+                WORD[text]
+                SPACE[ ]
+            END BOLD
+            WORD[with]
+            SPACE[ ]
+            WORD[bold]
+            SPACE[ ]
+            WORD[deactivated]
+            BEGIN BOLD
+                SPACE[ ]
+                WORD[in]
+                SPACE[ ]
+                WORD[between]
+                SPECIAL[.]
+            END BOLD
+        END ITALIC
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        BEGIN BOLD
+            BEGIN ITALIC
+                WORD[Bold]
+                SPACE[ ]
+                WORD[italic]
+                SPACE[ ]
+                WORD[text]
+                SPACE[ ]
+            END ITALIC
+            WORD[with]
+            SPACE[ ]
+            WORD[italic]
+            SPACE[ ]
+            WORD[deactivated]
+            BEGIN ITALIC
+                SPACE[ ]
+                WORD[in]
+                SPACE[ ]
+                WORD[between]
+                SPECIAL[.]
+            END ITALIC
+        END BOLD
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        BEGIN BOLD
+            WORD[Bold]
+            SPACE[ ]
+            WORD[tag]
+            SPACE[ ]
+            WORD[left]
+            SPACE[ ]
+            WORD[open]
+        END BOLD
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        BEGIN ITALIC
+            WORD[Italic]
+            SPACE[ ]
+            WORD[tag]
+            SPACE[ ]
+            WORD[left]
+            SPACE[ ]
+            WORD[open]
+        END ITALIC
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        WORD[Normal]
+        SPACE[ ]
+        WORD[text]
+        SPECIAL[.]
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        WORD[Unmatching]
+        SPACE[ ]
+        WORD[number]
+        SPACE[ ]
+        WORD[of]
+        SPACE[ ]
+        WORD[opening]
+        SPECIAL[,]
+        SPACE[ ]
+        WORD[closing]
+        SPACE[ ]
+        WORD[tags]
+        SPECIAL[:]
+        SPACE[ ]
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        BEGIN BOLD
+            WORD[This]
+            SPACE[ ]
+            WORD[year]
+            SPECIAL[']
+        END BOLD
+        WORD[s]
+        SPACE[ ]
+        WORD[election]
+        SPACE[ ]
+        BEGIN ITALIC
+            WORD[should]
+        END ITALIC
+        SPACE[ ]
+        WORD[beat]
+        SPACE[ ]
+        BEGIN BOLD
+            WORD[last]
+            SPACE[ ]
+            WORD[year]
+            SPECIAL[']
+        END BOLD
+        WORD[s]
+        SPECIAL[.]
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        BEGIN ITALIC
+            WORD[Tom]
+            BEGIN BOLD
+                WORD[s]
+                SPACE[ ]
+                WORD[car]
+                SPACE[ ]
+                WORD[is]
+                SPACE[ ]
+                WORD[bigger]
+                SPACE[ ]
+                WORD[than]
+                SPACE[ ]
+            END BOLD
+        END ITALIC
+        BEGIN BOLD
+            WORD[Susan]
+        END BOLD
+        WORD[s]
+        SPECIAL[.]
+    END PARAGRAPH
+END ARTICLE

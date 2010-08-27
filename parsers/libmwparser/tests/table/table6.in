@@ -1,0 +1,18 @@
+<table> <td> table1 </table>
+{|
+| table2
+|}
+|
+|}
+<table> <td> table3 </table>
+</table>
+<table> <td> table4
+{|
+| table5 </table>
+{|
+| table6
+<table> <td> table7
+|}
+</table>
+|}
+

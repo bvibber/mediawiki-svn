@@ -1,0 +1,64 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[hello]
+    END PARAGRAPH
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            WORD[list]
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            BEGIN BULLET LIST
+                BEGIN BULLET LIST ITEM
+                    WORD[list]
+                    SPACE[ ]
+                    WORD[item]
+                END BULLET LIST ITEM
+            END BULLET LIST
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            WORD[bar]
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            BEGIN ENUMERATION LIST
+                BEGIN ENUMERATION LIST ITEM
+                    WORD[baz]
+                END ENUMERATION LIST ITEM
+            END ENUMERATION LIST
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            BEGIN ENUMERATION LIST
+                BEGIN ENUMERATION LIST ITEM
+                    WORD[quiz]
+                END ENUMERATION LIST ITEM
+            END ENUMERATION LIST
+        END BULLET LIST ITEM
+    END BULLET LIST
+    BEGIN PARAGRAPH
+        SPECIAL[::::]
+        SPACE[ ]
+        SPECIAL[{]
+        SPACE[ ]
+        WORD[foo]
+    END PARAGRAPH
+    BEGIN DEFINITION LIST
+        BEGIN DEFINITION ITEM
+            BEGIN DEFINITION LIST
+                BEGIN DEFINITION LIST
+                    BEGIN DEFINITION LIST
+                        BEGIN DEFINED TERM ITEM
+                            WORD[bar]
+                        END DEFINED TERM ITEM
+                    END DEFINITION LIST
+                END DEFINITION LIST
+            END DEFINITION LIST
+        END DEFINITION ITEM
+    END DEFINITION LIST
+END ARTICLE

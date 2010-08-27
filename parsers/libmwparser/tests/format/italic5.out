@@ -1,0 +1,82 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[a]
+        SPECIAL[']
+        BEGIN ITALIC
+            WORD[b]
+        END ITALIC
+        WORD[c]
+        BEGIN BOLD
+            WORD[d]
+        END BOLD
+    END PARAGRAPH
+    BEGIN PRE
+        WORD[a]
+        SPECIAL[']
+        BEGIN ITALIC
+            WORD[b]
+        END ITALIC
+        WORD[c]
+        BEGIN BOLD
+            WORD[d]
+        END BOLD
+    END PRE
+    BEGIN PARAGRAPH
+        WORD[aa]
+        SPECIAL[']
+        BEGIN ITALIC
+            WORD[b]
+        END ITALIC
+        WORD[c]
+        BEGIN BOLD
+            WORD[d]
+        END BOLD
+    END PARAGRAPH
+    BEGIN PRE
+        SPECIAL[']
+        SPECIAL[']
+        BEGIN ITALIC
+            WORD[b]
+        END ITALIC
+        WORD[c]
+        BEGIN BOLD
+            WORD[d]
+        END BOLD
+    END PRE
+    BEGIN PARAGRAPH
+        SPECIAL[']
+        SPECIAL[']
+        BEGIN ITALIC
+            WORD[b]
+        END ITALIC
+        WORD[c]
+        BEGIN BOLD
+            WORD[d]
+        END BOLD
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        WORD[a]
+        SPECIAL[']
+        BEGIN ITALIC
+            WORD[b]
+        END ITALIC
+        SPACE[ ]
+        BEGIN BOLD
+            WORD[d]
+        END BOLD
+    END PARAGRAPH
+    BEGIN PARAGRAPH
+        WORD[a]
+        BEGIN BOLD
+            WORD[b]
+            BEGIN ITALIC
+                SPACE[ ]
+            END ITALIC
+        END BOLD
+        BEGIN ITALIC
+            SPACE[ ]
+            WORD[d]
+            SPECIAL[']
+        END ITALIC
+    END PARAGRAPH
+END ARTICLE

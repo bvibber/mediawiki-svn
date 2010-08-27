@@ -1,0 +1,16 @@
+BEGIN ARTICLE
+    BEGIN BULLET LIST
+        BEGIN BULLET LIST ITEM
+            BEGIN DIV
+                WORD[text]
+                SPECIAL[</]
+                WORD[li]
+                SPECIAL[>]
+                NEWLINE
+                SPECIAL[</]
+                WORD[ul]
+                SPECIAL[>]
+            END DIV
+        END BULLET LIST ITEM
+    END BULLET LIST
+END ARTICLE

@@ -1,0 +1,10 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        WORD[asdf]
+        NOWIKI[aaf
+a
+
+b]
+        END NOWIKI
+    END PARAGRAPH
+END ARTICLE

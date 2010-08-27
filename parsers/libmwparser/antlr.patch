@@ -1,0 +1,429 @@
+diff --git a/runtime/C/include/antlr3interfaces.h b/runtime/C/include/antlr3interfaces.h
+index 160e04d..80899cc 100644
+--- a/runtime/C/include/antlr3interfaces.h
++++ b/runtime/C/include/antlr3interfaces.h
+@@ -145,6 +145,8 @@ typedef	struct ANTLR3_TOKEN_STREAM_struct					*pANTLR3_TOKEN_STREAM;
+ ///
+ typedef	struct ANTLR3_COMMON_TOKEN_STREAM_struct			*pANTLR3_COMMON_TOKEN_STREAM;
+ 
++typedef struct ANTLR3_TOKEN_STREAM_MARKER_struct                        *pANTLR3_TOKEN_STREAM_MARKER;
++
+ /// Pointer to an instantiation of 'class' #ANTLR3_CYCLIC_DFA						
+ /// \ingroup ANTLR3_CYCLIC_DFA						
+ ///
+diff --git a/runtime/C/include/antlr3lexer.h b/runtime/C/include/antlr3lexer.h
+index 6cc10ef..3fa2918 100644
+--- a/runtime/C/include/antlr3lexer.h
++++ b/runtime/C/include/antlr3lexer.h
+@@ -125,9 +125,10 @@ typedef	struct ANTLR3_LEXER_struct
+      */
+     void			(*emitNew)	    (struct ANTLR3_LEXER_struct * lexer, pANTLR3_COMMON_TOKEN token);
+ 
+-    /** Pointer to a function that constructs a new token from the lexer stored information 
++    /** Pointer to a function that constructs a new token from the lexer stored information
++     *  and injects it to the token stream, via the token source interface.
+      */
+-    pANTLR3_COMMON_TOKEN	(*emit)		    (struct ANTLR3_LEXER_struct * lexer);
++    void                	(*emit)		    (struct ANTLR3_LEXER_struct * lexer);
+ 
+     /** Pointer to the user provided (either manually or through code generation
+      *  function that causes the lexer rules to run the lexing rules and produce 
+@@ -179,6 +180,15 @@ typedef	struct ANTLR3_LEXER_struct
+     pANTLR3_STRING	(*getText)	    (struct ANTLR3_LEXER_struct * lexer);
+ 
+ 
++    /** An action that will be taken on end of file.  This action may
++     *  rewind the current input stream or push additional input streams.
++     */
++    void                (*eofAction)        (void *parameter);
++    void                 *eofActionParameter;
++
++    void                (*markTokenStream)   (pANTLR3_LEXER lexer, pANTLR3_TOKEN_STREAM_MARKER mark);
++    void                (*restoreTokenStream)(pANTLR3_LEXER lexer, pANTLR3_TOKEN_STREAM_MARKER mark);
++
+     /** Pointer to a function that knows how to free the resources of a lexer
+      */
+     void		(*free)		    (struct ANTLR3_LEXER_struct * lexer);
+diff --git a/runtime/C/include/antlr3tokenstream.h b/runtime/C/include/antlr3tokenstream.h
+index a5137ad..e65baea 100644
+--- a/runtime/C/include/antlr3tokenstream.h
++++ b/runtime/C/include/antlr3tokenstream.h
+@@ -60,6 +60,12 @@ typedef struct ANTLR3_TOKEN_SOURCE_struct
+      */
+     pANTLR3_COMMON_TOKEN    (*nextToken)(struct ANTLR3_TOKEN_SOURCE_struct * tokenSource);
+ 
++    /** Method to inject a new token at the end of the token stream.
++     */
++    void                    (*injectToken)(struct ANTLR3_COMMON_TOKEN_STREAM_struct * tokenStream,
++                                           struct ANTLR3_COMMON_TOKEN_struct *tok);
++
++
+     /** Whoever is providing tokens, needs to provide a string factory too
+      */
+     pANTLR3_STRING_FACTORY  strFactory;
+@@ -84,6 +90,10 @@ typedef struct ANTLR3_TOKEN_SOURCE_struct
+      */
+     void		    * super;
+ 
++    /** Pointer to the toke stream to output tokens to.
++     */
++    struct ANTLR3_TOKEN_STREAM_struct * tokenStream;
++
+     /** When the token source is constructed, it is populated with the file
+      *  name from whence the tokens were produced by the lexer. This pointer is a
+      *  copy of the one supplied by the CharStream (and may be NULL) so should
+@@ -175,6 +185,18 @@ typedef	struct ANTLR3_TOKEN_STREAM_struct
+      */
+     void		    (*setDebugListener)	    (struct ANTLR3_TOKEN_STREAM_struct * tokenStream, pANTLR3_DEBUG_EVENT_LISTENER debugger);
+ 
++    /** Inject a token at the next index in the stream.
++     */
++    void                    (*injectToken)          (struct ANTLR3_TOKEN_STREAM_struct * tokenStream,
++                                                     struct ANTLR3_COMMON_TOKEN_struct * tok);
++
++
++    void                    (*markOutput)           (struct ANTLR3_TOKEN_STREAM_struct * ts,
++                                                     struct ANTLR3_TOKEN_STREAM_MARKER_struct *marker);
++    void                    (*restoreMarker)        (struct ANTLR3_TOKEN_STREAM_struct *ts,
++                                                     struct ANTLR3_TOKEN_STREAM_MARKER_struct *marker);
++
++
+ 
+ 
+     /** Function that knows how to free the memory for an ANTLR3_TOKEN_STREAM
+@@ -238,6 +260,14 @@ typedef	struct	ANTLR3_COMMON_TOKEN_STREAM_struct
+      */
+     ANTLR3_INT32	    p;
+ 
++
++    /** The index that the next token injected into the token stream will recieve.
++     *
++     * (This might be redundant, as maybe 'p' above can be used instead.)
++     */
++    ANTLR3_UINT32 injectIndex;
++
++
+     /** A simple filter mechanism whereby you can tell this token stream
+      *  to force all tokens of type ttype to be on channel.  For example,
+      *  when interpreting, we cannot exec actions so we need to tell
+@@ -296,6 +326,14 @@ typedef	struct	ANTLR3_COMMON_TOKEN_STREAM_struct
+ }
+     ANTLR3_COMMON_TOKEN_STREAM;
+ 
++
++typedef struct ANTLR3_TOKEN_STREAM_MARKER_struct
++{
++    ANTLR3_UINT32 injectIndex;
++    ANTLR3_INT32  p;
++}
++    ANTLR3_TOKEN_STREAM_MARKER;
++
+ #ifdef __cplusplus
+ }
+ #endif
+diff --git a/runtime/C/src/antlr3inputstream.c b/runtime/C/src/antlr3inputstream.c
+index 42efffd..d4342e3 100644
+--- a/runtime/C/src/antlr3inputstream.c
++++ b/runtime/C/src/antlr3inputstream.c
+@@ -263,7 +263,7 @@ antlr3InputReset(pANTLR3_INPUT_STREAM input)
+ 
+     input->nextChar		= input->data;	/* Input at first character */
+     input->line			= 1;		/* starts at line 1	    */
+-    input->charPositionInLine	= -1;
++    input->charPositionInLine	= 0;
+     input->currentLine		= input->data;
+     input->markDepth		= 0;		/* Reset markers	    */
+     
+@@ -2039,4 +2039,4 @@ antlr3EBCDICLA(pANTLR3_INT_STREAM is, ANTLR3_INT32 la)
+         //
+         return	e2a[(*((pANTLR3_UINT8)input->nextChar + la - 1))];
+     }
+-}
+\ No newline at end of file
++}
+diff --git a/runtime/C/src/antlr3lexer.c b/runtime/C/src/antlr3lexer.c
+index 9bb59bf..c1fc04e 100644
+--- a/runtime/C/src/antlr3lexer.c
++++ b/runtime/C/src/antlr3lexer.c
+@@ -45,7 +45,7 @@ static void					pushCharStream				(pANTLR3_LEXER lexer,  pANTLR3_INPUT_STREAM in
+ static void					popCharStream				(pANTLR3_LEXER lexer);
+ 
+ static void					emitNew						(pANTLR3_LEXER lexer,  pANTLR3_COMMON_TOKEN token);
+-static pANTLR3_COMMON_TOKEN emit						(pANTLR3_LEXER lexer);
++static void                 emit						(pANTLR3_LEXER lexer);
+ static ANTLR3_BOOLEAN	    matchs						(pANTLR3_LEXER lexer, ANTLR3_UCHAR * string);
+ static ANTLR3_BOOLEAN	    matchc						(pANTLR3_LEXER lexer, ANTLR3_UCHAR c);
+ static ANTLR3_BOOLEAN	    matchRange					(pANTLR3_LEXER lexer, ANTLR3_UCHAR low, ANTLR3_UCHAR high);
+@@ -67,6 +67,12 @@ static void					reset						(pANTLR3_BASE_RECOGNIZER rec);
+ 
+ static void					freeLexer					(pANTLR3_LEXER lexer);
+ 
++static void                                     markTokenStream                                 (pANTLR3_LEXER lexer,
++                                                                                                 pANTLR3_TOKEN_STREAM_MARKER mark);
++static void                                     restoreTokenStream                              (pANTLR3_LEXER lexer,
++                                                                                                 pANTLR3_TOKEN_STREAM_MARKER mark);
++
++
+ 
+ ANTLR3_API pANTLR3_LEXER
+ antlr3LexerNew(ANTLR3_UINT32 sizeHint, pANTLR3_RECOGNIZER_SHARED_STATE state)
+@@ -142,6 +148,10 @@ antlr3LexerNew(ANTLR3_UINT32 sizeHint, pANTLR3_RECOGNIZER_SHARED_STATE state)
+     lexer->getCharIndex				=  getCharIndex;
+     lexer->getCharPositionInLine    =  getCharPositionInLine;
+     lexer->getText					=  getText;
++    lexer->eofAction                                    =  NULL;
++    lexer->eofActionParameter                           =  NULL;
++    lexer->markTokenStream                              =  markTokenStream;
++    lexer->restoreTokenStream                           =  restoreTokenStream;
+     lexer->free						=  freeLexer;
+     
+     /* Initialise the eof token
+@@ -232,6 +242,13 @@ nextTokenStr	    (pANTLR3_TOKEN_SOURCE toksource)
+         //
+         for	(;;)
+         {
++            if  (istream->_LA(istream, 1) == ANTLR3_CHARSTREAM_EOF)
++            {
++                if (lexer->eofAction != NULL) {
++                    lexer->eofAction(lexer->eofActionParameter);
++                }
++            }
++
+             // Record the start of the token in our input stream.
+             //
+             state->channel			    = ANTLR3_TOKEN_DEFAULT_CHANNEL;
+@@ -620,12 +637,28 @@ popCharStream   (pANTLR3_LEXER lexer)
+     return;
+ }
+ 
++static void
++markTokenStream(pANTLR3_LEXER lexer, pANTLR3_TOKEN_STREAM_MARKER mark)
++{
++    pANTLR3_TOKEN_STREAM ts = lexer->rec->state->tokSource->tokenStream;
++    ts->markOutput(ts, mark);
++}
++
++static void
++restoreTokenStream(pANTLR3_LEXER lexer, pANTLR3_TOKEN_STREAM_MARKER mark)
++{
++    pANTLR3_TOKEN_STREAM ts = lexer->rec->state->tokSource->tokenStream;
++    ts->restoreMarker(ts, mark);
++}
++
+ static void emitNew	    (pANTLR3_LEXER lexer,  pANTLR3_COMMON_TOKEN token)
+ {
+     lexer->rec->state->token    = token;	/* Voila!   */
++    pANTLR3_TOKEN_STREAM ts = lexer->rec->state->tokSource->tokenStream;
++    ts->injectToken(ts, token);
+ }
+ 
+-static pANTLR3_COMMON_TOKEN
++static void
+ emit	    (pANTLR3_LEXER lexer)
+ {
+     pANTLR3_COMMON_TOKEN	token;
+@@ -665,7 +698,8 @@ emit	    (pANTLR3_LEXER lexer)
+ 
+     lexer->rec->state->token	    = token;
+ 
+-    return  token;
++    pANTLR3_TOKEN_STREAM ts = lexer->rec->state->tokSource->tokenStream;
++    ts->injectToken(ts, token);
+ }
+ 
+ /**
+diff --git a/runtime/C/src/antlr3tokenstream.c b/runtime/C/src/antlr3tokenstream.c
+index ec06f15..c004cb9 100644
+--- a/runtime/C/src/antlr3tokenstream.c
++++ b/runtime/C/src/antlr3tokenstream.c
+@@ -42,6 +42,10 @@
+ static void		setTokenTypeChannel     (pANTLR3_COMMON_TOKEN_STREAM cts, ANTLR3_UINT32 ttype, ANTLR3_UINT32 channel);
+ static void		discardTokenType        (pANTLR3_COMMON_TOKEN_STREAM cts, ANTLR3_INT32 ttype);
+ static void		discardOffChannel       (pANTLR3_COMMON_TOKEN_STREAM cts, ANTLR3_BOOLEAN discard);
++static void             injectToken             (pANTLR3_TOKEN_STREAM tokenStream, pANTLR3_COMMON_TOKEN tok);
++static void             markOutput              (pANTLR3_TOKEN_STREAM ts, pANTLR3_TOKEN_STREAM_MARKER marker);
++static void             restoreMarker           (pANTLR3_TOKEN_STREAM ts, pANTLR3_TOKEN_STREAM_MARKER marker);
++
+ static pANTLR3_VECTOR	getTokens	        (pANTLR3_COMMON_TOKEN_STREAM cts);
+ static pANTLR3_LIST	getTokenRange	        (pANTLR3_COMMON_TOKEN_STREAM cts, ANTLR3_UINT32 start, ANTLR3_UINT32 stop);
+ static pANTLR3_LIST	getTokensSet	        (pANTLR3_COMMON_TOKEN_STREAM cts, ANTLR3_UINT32 start, ANTLR3_UINT32 stop, pANTLR3_BITSET types);
+@@ -107,7 +111,6 @@ antlr3TokenStreamNew()
+     //
+     stream->free    =  antlr3TokenStreamFree;
+ 
+-    
+     return stream;
+ }
+ 
+@@ -283,6 +286,11 @@ antlr3CommonTokenStreamNew(ANTLR3_UINT32 hint)
+      */
+     stream->p	    = -1;
+ 
++    /* Start at index 0 of course
++     */
++    stream->injectIndex = 0;
++    
++
+     /* Install the common token stream API
+      */
+     stream->setTokenTypeChannel	    = setTokenTypeChannel;
+@@ -305,6 +313,9 @@ antlr3CommonTokenStreamNew(ANTLR3_UINT32 hint)
+     stream->tstream->toStringSS		        =  toStringSS;
+     stream->tstream->toStringTT		        =  toStringTT;
+     stream->tstream->setDebugListener           =  setDebugListener;
++    stream->tstream->injectToken                =  injectToken;
++    stream->tstream->markOutput                 =  markOutput;
++    stream->tstream->restoreMarker              =  restoreMarker;
+ 
+     /* Install INT_STREAM interface
+      */
+@@ -513,7 +524,8 @@ static void
+ setTokenSource	(   pANTLR3_TOKEN_STREAM ts,
+ 		    pANTLR3_TOKEN_SOURCE tokenSource)
+ {
+-    ts->tokenSource	= tokenSource;
++    ts->tokenSource	         = tokenSource;
++    tokenSource->tokenStream     = ts;
+ }
+ 
+ static pANTLR3_STRING	    
+@@ -946,70 +958,89 @@ fillBufferExt(pANTLR3_COMMON_TOKEN_STREAM tokenStream)
+ {
+     fillBuffer(tokenStream);
+ }
++
+ static void
+-fillBuffer(pANTLR3_COMMON_TOKEN_STREAM tokenStream) {
+-    ANTLR3_UINT32 index;
+-    pANTLR3_COMMON_TOKEN tok;
+-    ANTLR3_BOOLEAN discard;
++injectToken(pANTLR3_TOKEN_STREAM ts, pANTLR3_COMMON_TOKEN tok)
++{
++    pANTLR3_COMMON_TOKEN_STREAM tokenStream = ts->super;
+     void * channelI;
++    ANTLR3_BOOLEAN discard;
++    discard = ANTLR3_FALSE; /* Assume we are not discarding	*/
+ 
+-    /* Start at index 0 of course
+-     */
+-    index = 0;
+-
+-    /* Pick out the next token from the token source
+-     * Remember we just get a pointer (reference if you like) here
+-     * and so if we store it anywhere, we don't set any pointers to auto free it.
++    /* I employ a bit of a trick, or perhaps hack here. Rather than
++     * store a pointer to a structure in the override map and discard set
++     * we store the value + 1 cast to a void *. Hence on systems where NULL = (void *)0
++     * we can distinguish "not being there" from "being channel or type 0"
+      */
+-    tok = tokenStream->tstream->tokenSource->nextToken(tokenStream->tstream->tokenSource);
+ 
+-    while (tok != NULL && tok->type != ANTLR3_TOKEN_EOF)
++    if (tokenStream->discardSet != NULL
++        && tokenStream->discardSet->get(tokenStream->discardSet, tok->getType(tok)) != NULL)
+     {
+-        discard = ANTLR3_FALSE; /* Assume we are not discarding	*/
+-
+-        /* I employ a bit of a trick, or perhaps hack here. Rather than
+-         * store a pointer to a structure in the override map and discard set
+-         * we store the value + 1 cast to a void *. Hence on systems where NULL = (void *)0
+-         * we can distinguish "not being there" from "being channel or type 0"
++            discard = ANTLR3_TRUE;
++    }
++    else if (   tokenStream->discardOffChannel == ANTLR3_TRUE
++                && tok->getChannel(tok) != tokenStream->channel
++                )
++    {
++        discard = ANTLR3_TRUE;
++    }
++    else if (tokenStream->channelOverrides != NULL)
++    {
++        /* See if this type is in the override map
+          */
++        channelI = tokenStream->channelOverrides->get(tokenStream->channelOverrides, tok->getType(tok) + 1);
+ 
+-        if (tokenStream->discardSet != NULL
+-            && tokenStream->discardSet->get(tokenStream->discardSet, tok->getType(tok)) != NULL)
+-        {
+-            discard = ANTLR3_TRUE;
+-        }
+-        else if (   tokenStream->discardOffChannel == ANTLR3_TRUE
+-                 && tok->getChannel(tok) != tokenStream->channel
+-                 )
+-        {
+-            discard = ANTLR3_TRUE;
+-        }
+-        else if (tokenStream->channelOverrides != NULL)
++        if (channelI != NULL)
+         {
+-            /* See if this type is in the override map
++            /* Override found
+              */
+-            channelI = tokenStream->channelOverrides->get(tokenStream->channelOverrides, tok->getType(tok) + 1);
+-
+-            if (channelI != NULL)
+-            {
+-                /* Override found
+-                 */
+-                tok->setChannel(tok, ANTLR3_UINT32_CAST(channelI) - 1);
+-            }
++            tok->setChannel(tok, ANTLR3_UINT32_CAST(channelI) - 1);
+         }
++    }
+ 
+-        /* If not discarding it, add it to the list at the current index
++    /* If not discarding it, add it to the list at the current index
++     */
++    if (discard == ANTLR3_FALSE)
++    {
++        /* Add it, indicating that we will delete it and the table should not
+          */
+-        if (discard == ANTLR3_FALSE)
+-        {
+-            /* Add it, indicating that we will delete it and the table should not
+-             */
+-            tok->setTokenIndex(tok, index);
+-            tokenStream->p++;
+-            tokenStream->tokens->add(tokenStream->tokens, (void *) tok, NULL);
+-            index++;
+-        }
++        tok->setTokenIndex(tok, tokenStream->injectIndex);
++        tokenStream->p++;
++        tokenStream->tokens->add(tokenStream->tokens, (void *) tok, NULL);
++        tokenStream->injectIndex++;
++    }
++
++}
+ 
++void
++markOutput(pANTLR3_TOKEN_STREAM ts, pANTLR3_TOKEN_STREAM_MARKER marker)
++{
++    pANTLR3_COMMON_TOKEN_STREAM tokenStream = ts->super;
++    marker->p = tokenStream->p;
++    marker->injectIndex = tokenStream->injectIndex;
++}
++
++static void
++restoreMarker(pANTLR3_TOKEN_STREAM ts, pANTLR3_TOKEN_STREAM_MARKER marker)
++{
++    pANTLR3_COMMON_TOKEN_STREAM tokenStream = ts->super;
++    tokenStream->tokens->count = marker->injectIndex;
++    tokenStream->injectIndex = marker->injectIndex;
++    tokenStream->p = marker->p;
++}
++
++static void
++fillBuffer(pANTLR3_COMMON_TOKEN_STREAM tokenStream) {
++    pANTLR3_COMMON_TOKEN tok;
++
++    /* Pick out the next token from the token source
++     * Remember we just get a pointer (reference if you like) here
++     * and so if we store it anywhere, we don't set any pointers to auto free it.
++     */
++    tok = tokenStream->tstream->tokenSource->nextToken(tokenStream->tstream->tokenSource);
++
++    while (tok != NULL && tok->type != ANTLR3_TOKEN_EOF)
++    {
+         tok = tokenStream->tstream->tokenSource->nextToken(tokenStream->tstream->tokenSource);
+     }
+ 

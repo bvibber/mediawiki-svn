@@ -1,0 +1,85 @@
+BEGIN ARTICLE
+    WORD[garbage]
+    WORD[inline]
+    SPACE[ ]
+    BEGIN ITALIC
+        WORD[formatted]
+    END ITALIC
+    WORD[text]
+    BEGIN TABLE key1="value" key2="value"
+        BEGIN TABLE BODY
+            BEGIN ROW
+                BEGIN TABLE HEADING key="value"
+                    SPACE[ ]
+                    WORD[foo]
+                    SPACE[ ]
+                END TABLE HEADING
+                BEGIN TABLE HEADING
+                    SPACE[ ]
+                    WORD[bar]
+                    SPACE[ ]
+                END TABLE HEADING
+                BEGIN TABLE HEADING
+                    SPACE[ ]
+                    WORD[quiz]
+                    NEWLINE
+                    NEWLINE
+                    BEGIN PARAGRAPH
+                        WORD[baz]
+                    END PARAGRAPH
+                END TABLE HEADING
+                BEGIN CELL key="value"
+                    SPACE[ ]
+                END CELL
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[a]
+                    NEWLINE
+                END CELL
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[key]
+                    SPECIAL[=]
+                    WORD[value]
+                    SPACE[ ]
+                END CELL
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[a]
+                    NEWLINE
+                END CELL
+            END ROW
+            BEGIN ROW key=" valeu;;'"
+                BEGIN CELL
+                    SPACE[ ]
+                    WORD[key]
+                    WORD[1]
+                    SPECIAL[=]
+                    WORD[value]
+                    SPACE[ ]
+                    WORD[key]
+                    WORD[2]
+                    SPECIAL[=]
+                    SPECIAL["]
+                    WORD[value]
+                    SPECIAL["]
+                    SPACE[ ]
+                    WORD[key]
+                    WORD[3]
+                    SPECIAL[=]
+                    SPECIAL[']
+                    WORD[value]
+                    NEWLINE
+                END CELL
+            END ROW
+        END TABLE BODY
+    END TABLE
+    SPACE[ ]
+    WORD[garbage]
+    SPACE[ ]
+    BEGIN ITALIC
+        WORD[formatted]
+    END ITALIC
+    SPACE[ ]
+    WORD[text]
+END ARTICLE
