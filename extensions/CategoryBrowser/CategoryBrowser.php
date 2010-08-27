@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -39,6 +39,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /* default minimal count of DB rows to start paging */
 define( 'CB_PAGING_ROWS', 20 );
+/* minimal count of rows in image gallery (not DB rows!) pager */
+define( 'CB_FILES_ROWS', 3 );
 /* maximal number of logical operations in SQL filter (condition) */
 define( 'CB_MAX_LOGICAL_OP', 5 );
 
@@ -46,7 +48,7 @@ CB_Setup::init();
 
 class CB_Setup {
 
-	static $version = '0.2.0';
+	static $version = '0.2.1';
 	static $ExtDir; // filesys path with windows path fix
 	static $ScriptPath; // apache virtual path
 	static $cat_pages_ranges; // ???
@@ -61,6 +63,11 @@ class CB_Setup {
 
 	// number of files to show in gallery row
 	static $imageGalleryPerRow = 4;
+
+	// default limits of different pagers
+	static $categoriesLimit = CB_PAGING_ROWS;
+	static $pagesLimit = CB_PAGING_ROWS;
+	static $filesLimit = CB_FILES_ROWS;
 
 	/**
 	 * Add this extension to the mediawiki's extensions list.
@@ -78,12 +85,19 @@ class CB_Setup {
 		$top_dir = array_pop( explode( '/', self::$ExtDir ) );
 		self::$ScriptPath = $wgScriptPath . '/extensions' . ( ( $top_dir == 'extensions' ) ? '' : '/' . $top_dir );
 		$wgExtensionMessagesFiles['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowser_i18n.php';
+
 		// do not forget to autoload all the required classes (for AJAX to work correctly)
 		$wgAutoloadClasses['CB_XML'] =
 		$wgAutoloadClasses['CB_SqlCond'] = self::$ExtDir . '/CategoryBrowserBasic.php';
+
 		$wgAutoloadClasses['CB_RootPager'] =
-		$wgAutoloadClasses['CB_SubPager'] =
-		$wgAutoloadClasses['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowserMain.php';
+		$wgAutoloadClasses['CB_SubPager'] = self::$ExtDir . '/CategoryBrowserModel.php';
+
+		$wgAutoloadClasses['CB_CategoriesView'] =
+		$wgAutoloadClasses['CB_PagesView'] =
+		$wgAutoloadClasses['CB_FilesView'] = self::$ExtDir . '/CategoryBrowserView.php';
+
+		$wgAutoloadClasses['CategoryBrowser'] = self::$ExtDir . '/CategoryBrowserCtrl.php';
 		$wgAutoloadClasses['CategoryBrowserPage'] = self::$ExtDir . '/CategoryBrowserPage.php';
 
 		$wgExtensionCredits['specialpage'][] = array(
@@ -94,6 +108,7 @@ class CB_Setup {
 		);
 		$wgSpecialPages['CategoryBrowser'] = array( 'CategoryBrowserPage' );
 		$wgSpecialPageGroups['CategoryBrowser'] = 'pages';
+
 		$wgAjaxExportList[] = 'CategoryBrowser::getRootOffsetHtml';
 		$wgAjaxExportList[] = 'CategoryBrowser::getSubOffsetHtml';
 		$wgAjaxExportList[] = 'CategoryBrowser::applyEncodedQueue';

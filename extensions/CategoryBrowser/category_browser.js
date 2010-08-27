@@ -26,7 +26,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -1584,7 +1584,7 @@ var CB_ConditionEditor = {
 
 	createEditSamples : function() {
 		var i = 0;
-		var cbEditorControls = document.getElementById( 'cb_editor_controls' );
+		var cbEditorControls = document.getElementById( 'cb_samples_container' );
 		// show previousely hidden toolbox cell
 		cbEditorControls.parentNode.style.display = (CB_Setup.isIE > 7) ? 'table-cell' : 'block';
 		this.samplesLine = new CB_EditLine( 'samples', cbEditorControls, 'samplesLine' );

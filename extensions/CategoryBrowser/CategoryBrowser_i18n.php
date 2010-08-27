@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -50,7 +50,7 @@ $messages['en'] = array(
 However, browsing of pre-defined conditions should work normally.
 Please change or upgrade your browser, if possible.',
 	'cb_cat_name_filter' => 'Search for category by name:',
-	'cb_cat_name_filter_ci' => '(case insensitive) $1',
+	'cb_cat_name_filter_ci' => '(case insensitive)',
 	'cb_copy_line_hint' => 'Use the [+] and [>+] buttons to copy and paste operators into the selected expression',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|subcategory|subcategories}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|page|pages}}',
@@ -89,17 +89,17 @@ Please change or upgrade your browser, if possible.',
  * @author QuestPC
  */
 $messages['qqq'] = array(
-	'cb_cat_name_filter_ci' => 'Dialog for case insensitive category name search. Argument 1 is a script-generated html input checkbox.',
+	'cb_cat_name_filter_ci' => 'Dialog string for case insensitive category name search.',
 	'cb_op1_template' => 'One operand operation visualisation template. Argument 1 is an operator name. Argument 2 is operation\'s parameter.',
 	'cb_op2_template' => 'Two operands operation visualisation template. Argument 1 is first parameter. Argument 2 is operator name. Argument 3 is second parameter.',
 	'cb_all_op' => 'Operator to select all categories available.',
 	'cb_lbracket_op' => 'Opening bracket, allows to change execution order.',
 	'cb_rbracket_op' => 'Closing bracket, allows to change execution order.',
-	'cb_or_op' => 'Logical "or" operator name in your language. Short (mathematical) form is preferred.',
-	'cb_and_op' => 'Logical "and" operator name in your language. Short (mathematical) form is preferred.',
-	'cb_ge_op' => 'Comparsion operator "greater or equal" name in your language. Short (mathematical) form is preferred.',
-	'cb_le_op' => 'Comparsion operator "less or equal" name in your language. Short (mathematical) form is preferred.',
-	'cb_eq_op' => 'Comparsion operator "equal" name in your language. Short (mathematical) form is preferred.',
+	'cb_or_op' => 'Name of logical "or" operator in your language. Short (mathematical) form is preferred.',
+	'cb_and_op' => 'Name of logical "and" operator in your language. Short (mathematical) form is preferred.',
+	'cb_ge_op' => 'Name of comparsion operator "greater or equal" in your language. Short (mathematical) form is preferred.',
+	'cb_le_op' => 'Name of comparsion operator "less or equal" in your language. Short (mathematical) form is preferred.',
+	'cb_eq_op' => 'Name of comparsion operator "equal" in your language. Short (mathematical) form is preferred.',
 );
 
 /** Russian (Русский)
@@ -113,7 +113,7 @@ $messages['ru'] = array(
 Возможен лишь просмотр предопределенных выражений.
 Пожалуйста поменяйте или обновите ваш браузер.',
 	'cb_cat_name_filter' => 'Поиск категории по имени:',
-	'cb_cat_name_filter_ci' => '(без учёта регистра) $1',
+	'cb_cat_name_filter_ci' => '(без учёта регистра)',
 	'cb_copy_line_hint' => 'Используйте кнопки [+] и [>+] для копирования оператора в выбранное выражение',
 	'cb_has_subcategories' => '$1 {{PLURAL:$1|подкатегория|подкатегории|подкатегорий}}',
 	'cb_has_pages' => '$1 {{PLURAL:$1|страница|страницы|страниц}}',

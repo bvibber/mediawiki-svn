@@ -27,7 +27,7 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/CategoryBrowser/CategoryBrowser.php";
  *
- * @version 0.2.0
+ * @version 0.2.1
  * @link http://www.mediawiki.org/wiki/Extension:CategoryBrowser
  * @author Dmitriy Sintsov <questpc@rambler.ru>
  * @addtogroup Extensions
@@ -111,8 +111,8 @@ class CategoryBrowserPage extends SpecialPage {
 		);
 		if ( CB_Setup::$cat_title_CI != '' ) {
 			// case insensitive search is possible
-			$checkbox = array( '__tag' => 'input', 'type' => 'checkbox', 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter_ci', 'checked' => null );
-			$nameFilterFields[] = wfMsg( 'cb_cat_name_filter_ci', CB_XML::toText( $checkbox ) );
+			$nameFilterFields[] = wfMsg( 'cb_cat_name_filter_ci' );
+			$nameFilterFields[] = array( '__tag' => 'input', 'type' => 'checkbox', 'onchange' => $js_setNameFilter, 'id' => 'cb_cat_name_filter_ci', 'checked' => null );
 		}
 		$top_tpl =
 			array( '__tag' => 'table', 'class' => 'cb_top_container', '__end' => "\n",
@@ -122,19 +122,19 @@ class CategoryBrowserPage extends SpecialPage {
 				array( '__tag' => 'tr', '__end' => "\n",
 					array( '__tag' => 'td', 'class' => 'cb_toolbox_bottom', '__end' => "\n",
 						array( wfMsg( 'cb_cat_name_filter' ) ),
-						$nameFilterFields,
+						&$nameFilterFields,
 					)
 				),
 				array( '__tag' => 'tr', '__end' => "\n",
 					array( '__tag' => 'td', 'class' => 'cb_toolbox', 'style' => 'display:none; ', '__end' => "\n",
-						array( '__tag' => 'div', 'id' => 'cb_editor_container', 0 => '' ),
+						array( '__tag' => 'div', 'id' => 'cb_editor_container', 0 => '' /* holder of condition line */ ),
 						array( '__tag' => 'div', 'class' => 'cb_separate_container', 0 => '' /* holder of apply button */ )
 					)
 				),
 				array( '__tag' => 'tr', '__end' => "\n",
 					array( '__tag' => 'td', 'class' => 'cb_toolbox', 'style' => 'display:none; ', '__end' => "\n",
 						array( '__tag' => 'div', 'class' => 'cb_copy_line_hint', 0 => wfMsg( 'cb_copy_line_hint' ) ),
-						array( '__tag' => 'div', 'id' => 'cb_editor_controls', 0 => '' )
+						array( '__tag' => 'div', 'id' => 'cb_samples_container', 0 => '' /* holder of samples line */ )
 					)
 				),
 				array( '__tag' => 'tr', '__end' => "\n",
@@ -145,7 +145,8 @@ class CategoryBrowserPage extends SpecialPage {
 			);
 		# }}}
 		$condSelector = CategoryBrowser::generateSelector( $this->ranges, $rootPager );
-		$catlist = $cb->generateCatList( $rootPager );
+		$pagerView = new CB_CategoriesView( $rootPager );
+		$catlist = $pagerView->generateList();
 		$wgOut->addHTML( CB_XML::toText( $top_tpl ) );
 	}
 
