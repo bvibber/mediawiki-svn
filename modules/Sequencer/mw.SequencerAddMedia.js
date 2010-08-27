@@ -14,8 +14,49 @@ mw.SequencerAddMedia.prototype = {
 	
 	init: function( sequencer ){
 		this.sequencer = sequencer;
+	},	
+	getDefaultSearchText: function(){
+		return gM( 'mwe-sequencer-url-or-search');
 	},
-	
+	getSearchDriver: function( callback ){
+		var _this = this;		
+		if( ! _this.remoteSearchDriver ){
+			// Get any sequencer configured options 
+			var addMediaOptions = _this.sequencer.getOption('AddMedia');
+			addMediaOptions = $j.extend( {
+				'target_container' : _this.sequencer.getEditToolTarget(),
+				'target_search_input' : _this.sequencer.getMenuTarget().find('input.searchMedia'),					
+				'displaySearchInput': false,				
+				'displayResourceInfoIcons' : false,
+				'resourceSelectionCallback' : function( resource ){
+					mw.addLoaderDialog( gM( 'mwe-sequencer-loading-asset' ) );
+					// Get convert resource to smilClip and insert into the timeline
+					_this.getSmilClipFromResource( resource, function( smilClip ) {
+						_this.sequencer.getTimeline().insertSmilClipEdit( smilClip );
+						mw.closeLoaderDialog();
+					});			
+					return false;
+				},
+				'displaySearchResultsCallback' : function(){
+					_this.addSearchResultsDrag();
+				}
+			}, addMediaOptions );
+			
+			// Update the search value if has changed from the default search text helper:
+			var inputValue = _this.sequencer.getMenuTarget().find('input.searchMedia').val();
+			if( inputValue != _this.getDefaultSearchText() )
+				addMediaOptions.default_query = inputValue;
+			
+			
+			// set the tool target to loading
+			mw.load( 'AddMedia.addMediaWizard', function(){
+				_this.remoteSearchDriver = new mw.RemoteSearchDriver( addMediaOptions );				
+				callback( _this.remoteSearchDriver ); 
+			});			
+		} else {		
+			callback (_this.remoteSearchDriver )
+		}
+	},
 	// Get the menu widget that drives the search and upload tab selection
 	getMenuWidget: function(){
 		var _this = this;
@@ -26,7 +67,7 @@ mw.SequencerAddMedia.prototype = {
 					$j('<input />')
 					.addClass( 'searchMedia')
 					.val(
-						gM( 'mwe-sequencer-url-or-search')
+						_this.getDefaultSearchText()
 					)
 					.css({'color': '#888', 'zindex': 2})
 					.focus( function(){
@@ -61,7 +102,7 @@ mw.SequencerAddMedia.prototype = {
 					'icon' : 'plus' 
 				})
 				.click(function(){
-					// only do the search if the user has given the search input focus  
+					// Only do the search if the user has given the search input focus  
 					if( widgetFocus ){
 						_this.proccessRequest();
 					}
@@ -72,43 +113,39 @@ mw.SequencerAddMedia.prototype = {
 	}, 
 	proccessRequest: function(){
 		var _this = this;
-		// get the input text
-		var inputValue = this.sequencer.getMenuTarget().find('input.searchMedia').val();
-		
+				
 		this.sequencer.getEditToolTarget()
 			.empty()
 			.loadingSpinner();
 		
-		if( ! _this.remoteSearchDriver ){
-			// set the tool target to loading
-			mw.load( 'AddMedia.addMediaWizard', function(){
-				_this.remoteSearchDriver = new mw.RemoteSearchDriver({
-					'target_container' : _this.sequencer.getEditToolTarget(),
-					'target_search_input' : _this.sequencer.getMenuTarget().find('input.searchMedia'),					
-					'displaySearchInput': false,
-					'default_query' : inputValue,
-					'displayResourceInfoIcons' : false,
-					'resourceSelectionCallback' : function( resource ){
-						mw.addLoaderDialog( gM( 'mwe-sequencer-loading-asset' ) );
-						// Get convert resource to smilClip and insert into the timeline
-						_this.getSmilClipFromResource( resource, function( smilClip ) {
-							_this.sequencer.getTimeline().insertSmilClipEdit( smilClip );
-							mw.closeLoaderDialog();
-						});						
-						return false;
-					},
-					'displaySearchResultsCallback' : function(){
-						_this.addSearchResultsDrag();
-					}
-				});
-				// Create the search user interface: 
-				_this.remoteSearchDriver.createUI();		
-			});
-		} else {
-			this.remoteSearchDriver.createUI()
-		}		
+		this.getSearchDriver( function( remoteSearchDriver ){
+			// Check if input value can be handled by url
+			var inputValue = _this.sequencer.getMenuTarget().find('input.searchMedia').val();
+			if( _this.sequencer.getAddByUrl().isUrl( inputValue) ){
+				 _this.sequencer.addByUrlDialog().addByUrl( remoteSearchDriver, inputValue );
+			} else {
+				// Else just use the remoteSearchDriver search interface
+				remoteSearchDriver.createUI();
+			}
+		});			
+	},
+	/**
+	 * Handles url asset importing
+	 * xxx should probably re factor into separate class
+	 *  
+	 * 	Checks for commons ulr profile, future profiles could include flickr, youtube etc.  
+	 *  tries to ascertain content type by url and directly load the media
+	 *  @param {String} url to be imported to the sequence  
+	 */
+	proccessUrlRequest: function( url ){
+		// Check if its a local domain ( we can directly request the "head" of the file to get its type )
+		
+		// Check url type
+		var parsedUrl = mw.parseUri( url );
+		if( host == 'commons.wikimedia.org' ){
+		}
+	},
 	
-	},	
 	/**
 	 * Get the resource object from a provided asset
 	 */

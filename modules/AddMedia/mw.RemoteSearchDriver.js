@@ -278,7 +278,10 @@ mw.RemoteSearchDriver.prototype = {
 		'this_wiki': {
 			'enabled': 1,
 			'apiUrl':  ( wgServer && wgScriptPath ) ? 
-				wgServer + wgScriptPath + '/api.php' : null,
+				wgServer + wgScriptPath + '/api.php' : null,			
+			
+			'detailsUrl' : 	wgServer + wgArticlePath,
+			
 			'lib': 'mediaWiki',
 			'homepage' : ( wgServer && wgScript ) ? 
 				 wgServer + wgScript : null,
@@ -293,6 +296,8 @@ mw.RemoteSearchDriver.prototype = {
 			'enabled': 1,
 			'homepage': 'http://kaltura.com',
 			'apiUrl': 'http://kaldev.kaltura.com/michael/aggregator.php',
+			
+			'detailsUrl' : 	wgServer + wgArticlePath,
 			'lib': 'kaltura',
 			'resource_prefix' : '',
 			'tab_image':false
@@ -536,6 +541,8 @@ mw.RemoteSearchDriver.prototype = {
 		}
 		return this;
 	},
+	
+	
 
 	/**
 	 * Get license icon html
@@ -936,40 +943,50 @@ mw.RemoteSearchDriver.prototype = {
 		// Setup base cancel button binding
 		this.onCancelResourceEdit();
 	},
+	/**
+	 * public function to get enabled content providers
+	 */
+	getEnabledProviders: function(){
+		var enabledProviders = {};
+		for ( var providerName in this.content_providers ) {
+			var content_providers = this.content_providers;
+			var provider = content_providers[ providerName ];
+			if ( provider.enabled && provider.apiUrl ) {
+				enabledProviders[providerName] = provider;
+			}
+		}
+		return enabledProviders;
+	},
 	
 	createProviderSelection: function(){
 		var _this = this;
 		var $providerSelection = $j( '<ul />' )
 			.addClass( "ui-provider-selection" );
 		// Add enabled search providers.
-		for ( var providerName in this.content_providers ) {
-			var content_providers = this.content_providers;
-			var provider = content_providers[ providerName ];
-			if ( provider.enabled && provider.apiUrl ) {
-				var $anchor = $j( '<div />' )
-					.text( gM( 'rsd-' + providerName + '-title' ) )
-					.attr({
-						name: providerName
-					});
-				if ( this.current_provider == providerName) {
-					$anchor.addClass( 'ui-selected' );
-				}
-				
-				$anchor.click( function() {
-					$j( this ).parent().parent().find( '.ui-selected' )
-						.removeClass( 'ui-selected' );
-					$j( this ).addClass( 'ui-selected' );
-					_this.current_provider = $j( this ).attr( "name" );
-					// Update the search results on provider selection
-					_this.updateResults( _this.current_provider, true );
-					return false;
+		$j.each( _this.getEnabledProviders(), function(providerName, provider){		
+			var $anchor = $j( '<div />' )
+				.text( gM( 'rsd-' + providerName + '-title' ) )
+				.attr({
+					name: providerName
 				});
-				
-				var $listItem = $j( '<li />' );
-				$listItem.append( $anchor );
-				$providerSelection.append( $listItem );
+			if ( _this.current_provider == providerName) {
+				$anchor.addClass( 'ui-selected' );
 			}
-		}
+			
+			$anchor.click( function() {
+				$j( this ).parent().parent().find( '.ui-selected' )
+					.removeClass( 'ui-selected' );
+				$j( this ).addClass( 'ui-selected' );
+				_this.current_provider = $j( this ).attr( "name" );
+				// Update the search results on provider selection
+				_this.updateResults( _this.current_provider, true );
+				return false;
+			});
+			
+			var $listItem = $j( '<li />' );
+			$listItem.append( $anchor );
+			$providerSelection.append( $listItem );
+		});
 		return $providerSelection;
 	},
 	/**
@@ -3229,7 +3246,7 @@ mw.RemoteSearchDriver.prototype = {
 	},
 	
 	/*
-	* Sets the dispaly mode
+	* Sets the display mode
 	* @param {String} mode Either "box" or "list" 
 	*/	
 	setDisplayMode: function( mode ) {

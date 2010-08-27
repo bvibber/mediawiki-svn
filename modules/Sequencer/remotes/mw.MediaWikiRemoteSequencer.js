@@ -1,6 +1,6 @@
 /**
 * Stop-gap for php sequencer support does some transformations 
-* to normal page views to support sequences edits
+* to page views to support sequence namespace
 * 
 * Supports basic "sequencer" functionality as a javascript rewrite system.
 */
@@ -77,128 +77,128 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	},
 	displayPlayerEmbed: function(){
 		var _this = this;
-
-		// Check if the sequence has been flattened and is up to date:
-		var request = {
-			'action': 'query',
-			'titles':  _this.getSequenceFileKey( wgPageName ),
-			'prop': 'imageinfo|revisions',
-			'iiprop': 'url|metadata',			
-			'iiurlwidth': '400',		
-			'redirects' : true // automatically follow redirects
-		};
-		var $embedPlayer = $j('<div />'); 
-		mw.getJSON( request, function( data ){
-			if(!data.query || !data.query.pages || data.query.pages[-1]){
-				// no flattened file found
-				$embedPlayer.append(
-					$j( '<div />').append( 
-						gM('mwe-sequencer-not-published')
-					)
-					.addClass( 'ui-state-highlight' )
-				)
-				return ;
-			}			
-			for( var pageId in data.query.pages) {
-				var page = data.query.pages[ pageId ];
-				
-				// Check that the file has a later revision than the
-				// page. ( up to date sequences always are later than 
-				// the revision of the page saved ).
-				if( page.revisions && page.revisions[0] ){
-					if( page.revisions[0].revid < wgCurRevisionId ){
-						// flattened file out of date
-						$embedPlayer.append(
-							$j('<div />').append( 
-								gM('mwe-sequencer-published-out-of-date')
-							).addClass( 'ui-state-highlight' )
+		// load the embedPlayer module: 
+		mw.load('EmbedPlayer', function(){
+			// Check if the sequence has been flattened and is up to date:
+			var request = {
+				'action': 'query',
+				'titles':  _this.getSequenceFileKey( wgPageName ),
+				'prop': 'imageinfo|revisions',
+				'iiprop': 'url|metadata',			
+				'iiurlwidth': '400',		
+				'redirects' : true // automatically follow redirects
+			};
+			var $embedPlayer = $j('<div />'); 
+			mw.getJSON( request, function( data ){
+				if(!data.query || !data.query.pages || data.query.pages[-1]){
+					// no flattened file found
+					$embedPlayer.append(
+						$j( '<div />').append( 
+							gM('mwe-sequencer-not-published')
 						)
-					}
-				}
-				if( page.imageinfo && page.imageinfo[0] ){
-					var imageinfo = page.imageinfo[0];
-					var duration = 0;
-					for( var i=0;i< imageinfo.metadata.length; i++){
-						if( imageinfo.metadata[i].name == 'length' ){
-							duration = Math.round( 
-								imageinfo.metadata[i].value * 1000 
-							) / 1000;
+						.addClass( 'ui-state-highlight' )
+					)
+					return ;
+				}			
+				for( var pageId in data.query.pages) {
+					var page = data.query.pages[ pageId ];
+					
+					// Check that the file has a later revision than the
+					// page. ( up to date sequences always are later than 
+					// the revision of the page saved ).
+					if( page.revisions && page.revisions[0] ){
+						if( page.revisions[0].revid < wgCurRevisionId ){
+							// flattened file out of date
+							$embedPlayer.append(
+								$j('<div />').append( 
+									gM('mwe-sequencer-published-out-of-date')
+								).addClass( 'ui-state-highlight' )
+							)
 						}
 					}
-					// Append a player to the embedPlayer target 
-					// -- special title key sequence name bound
-					$embedPlayer.append( 
-						$j('<video />')
-						.attr({							
-							'poster' : imageinfo.thumburl,
-							'durationHint' : duration,
-							'apiTitleKey' : page.title.replace('File:',''),							
-						})
-						.addClass('kskin')
-						.css({
-							'width': imageinfo.thumbwidth,
-							'height' : imageinfo.thumbheight
-						})
-						.append(
-							// ogg source
-							$j('<source />')
-							.attr({
-								'type': 'video/ogg',
-								'src' : imageinfo.url
-							})	
+					if( page.imageinfo && page.imageinfo[0] ){
+						var imageinfo = page.imageinfo[0];
+						var duration = 0;
+						for( var i=0;i< imageinfo.metadata.length; i++){
+							if( imageinfo.metadata[i].name == 'length' ){
+								duration = Math.round( 
+									imageinfo.metadata[i].value * 1000 
+								) / 1000;
+							}
+						}
+						// Append a player to the embedPlayer target 
+						// -- special title key sequence name bound
+						$embedPlayer.append( 
+							$j('<video />')
+							.attr({				
+								'id' : 'embedSequencePlayer',
+								'poster' : imageinfo.thumburl,
+								'durationHint' : duration,
+								'apiTitleKey' : page.title.replace('File:',''),							
+							})
+							.addClass('kskin')
+							.css({
+								'width': imageinfo.thumbwidth,
+								'height' : imageinfo.thumbheight
+							})
+							.append(
+								// ogg source
+								$j('<source />')
+								.attr({
+									'type': 'video/ogg',
+									'src' : imageinfo.url
+								})	
+							)
 						)
-					)
-				}
-			} 
-			// Display embed sequence
-			$j( _this.target ).empty().append(
-				$j('<div />')
-				.addClass( 'sequencer-player')
-				.css( {
-					'float' : 'left',
-					'width' : imageinfo.thumbwidth
-				})
-				.append( 
-					$embedPlayer			
-				)
-				,
-				
-				// Embed player
-				$j('<div />')
-				.addClass( 'sequencer-embed-helper')
-				.css({
-					'margin-left': '430px' 
-				})
-				
-				// Text embed code
-				.append( 
-					$j('<h3 />')
-					.text( gM('mwe-sequencer-embed-sequence') )
-					,
-					$j('<span />' )
-					.text( gM('mwe-sequencer-embed-sequence-desc') )
-					,
-					$j('<br />'),
-					$j('<textarea />')
-					.css({
-						'width' : '100%',
-						'height' : '200px'
-					}).focus(function(){
-						$j(this).select();
+					}
+				} 
+				// Display embed sequence
+				$j( _this.target ).empty().append(
+					$j('<div />')
+					.addClass( 'sequencer-player')
+					.css( {
+						'float' : 'left',
+						'width' : imageinfo.thumbwidth
 					})
 					.append( 
-						_this.getSequenceEmbedCode()
+						$embedPlayer			
 					)
-				),
-				
-				// Add a clear both to give content body height
-				$j('<div />').css({'clear': 'both'})
-			)
-			
-		}); // load json player data			
-	
-		mw.load('EmbedPlayer', function(){
-			$j( _this.target ).find('video').embedPlayer();
+					,
+					
+					// Embed player
+					$j('<div />')
+					.addClass( 'sequencer-embed-helper')
+					.css({
+						'margin-left': '430px' 
+					})
+					
+					// Text embed code
+					.append( 
+						$j('<h3 />')
+						.text( gM('mwe-sequencer-embed-sequence') )
+						,
+						$j('<span />' )
+						.text( gM('mwe-sequencer-embed-sequence-desc') )
+						,
+						$j('<br />'),
+						$j('<textarea />')
+						.css({
+							'width' : '100%',
+							'height' : '200px'
+						}).focus(function(){
+							$j(this).select();
+						})
+						.append( 
+							_this.getSequenceEmbedCode()
+						)
+					),
+					
+					// Add a clear both to give content body height
+					$j('<div />').css({'clear': 'both'})
+				)
+				// Rewrite the player
+				$j('#embedSequencePlayer').embedPlayer();				
+			}); // load json player data			
 		})		
 	},
 	getSequenceEmbedCode: function(){

@@ -13,6 +13,7 @@
 		
 		"mw.SequencerServer" : "mw.SequencerServer.js",
 		"mw.SequencerAddMedia" : "mw.SequencerAddMedia.js",
+		"mw.SequencerAddByUrl" : "mw.SequencerAddByUrl.js",
 		"mw.SequencerPlayer" : "mw.SequencerPlayer.js",
 		"mw.SequencerTimeline" : "mw.SequencerTimeline.js",
 		"mw.SequencerKeyBindings" : "mw.SequencerKeyBindings.js",
@@ -56,7 +57,8 @@
 			[										
 				'$j.contextMenu',
 				
-				'mw.SequencerServer',
+				'mw.SequencerServer',				
+				'mw.SequencerAddByUrl',
 				'mw.SequencerAddMedia',
 				'mw.SequencerPlayer',
 				'mw.SequencerRender',

@@ -92,7 +92,7 @@ mw.SequencerTools.prototype = {
 
 				// Close / empty the toolWindow
 				_this.sequencer.getEditToolTarget().html(
-					_this.defaultText
+					_this.getDefaultText() 
 				)
 			}
 		}
@@ -217,10 +217,12 @@ mw.SequencerTools.prototype = {
 			}
 		}
 	},
+	getDefaultText: function(){
+		return  gM('mwe-sequencer-no_selected_resource');
+	},
 	getEditToolId: function( toolId, attributeName){
 		return 'editTool_' + toolId + '_' + attributeName;
-	},
-	
+	},	
 	
 	drawClipEditTools: function( $target, smilClip){
 	

@@ -386,12 +386,12 @@ mw.SmilBuffer.prototype = {
 		var assetId = this.smil.getPageDomId( smilElement );
 		// Make sure the image is in the dom ( load it )
 		this.loadElement( smilElement );
-		mw.log("loadImageCallback:: drwa img: " + assetId  + $j( '#' +  assetId ).length );
+		mw.log( "loadImageCallback:: drwa img: " + assetId  + $j( '#' +  assetId ).length );
 		// If we already have naturalHeight no need for loading callback 
-		if( $j( '#' +  assetId).get(0).naturalHeight ){
+		if( $j( '#' +  assetId ).get(0).naturalHeight ){
 			callback();
-		}else {
-			$j( '#' +  assetId).load( callback );
+		} else {
+			$j( '#' +  assetId ).load( callback );
 		}
 	},
 	
@@ -437,8 +437,12 @@ mw.SmilBuffer.prototype = {
 				}
 			}				
 			
-			// Issue the seek	
-			vid.currentTime = seekTime;
+			// Issue the seek if the vid still exists	
+			try{
+				vid.currentTime = seekTime;
+			} catch ( e ){
+				mw.log( 'Error: in SmilBuffer could not set currentTime' );
+			}
 		}
 		
 		// Read the video state: http://www.w3.org/TR/html5/video.html#dom-media-have_nothing

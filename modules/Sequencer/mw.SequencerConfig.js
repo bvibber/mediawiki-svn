@@ -21,7 +21,11 @@ mw.setDefaultConfig({
 	"Sequencer.AddMediaImageDuration" : 2,
 	
 	// Default image source width
-	"Sequencer.AddMediaImageWidth" : 640,
+	"Sequencer.AddMediaImageWidth" : 640,	
+	
+	// If a asset can be directly added to the sequence by url
+	// ( if disabled only urls that are part addMedia can be added ) 
+	"Sequencer.AddAssetByUrl" : true,
 	
 	// Default timeline clip timeline track height
 	"Sequencer.TimelineTrackHeight" : 100,

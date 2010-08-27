@@ -306,7 +306,7 @@ mw.SequencerTimeline.prototype = {
 		// get the smil element for the edit tool:
 		var smilClip = smil.$dom.find( '#' + $j( selectedClip ).data('smilId') );	
 		var toolTarget = this.sequencer.getEditToolTarget();
-		this.sequencer.getEditTools().drawClipEditTools( toolTarget, smilClip );
+		this.sequencer.getTools().drawClipEditTools( toolTarget, smilClip );
 	},	
 	
 	/**
@@ -453,7 +453,7 @@ mw.SequencerTimeline.prototype = {
 	},
 	
 	/**
-	 * Handle multiple selections based on what clips was just "cliked" 
+	 * Handle multiple selections based on what clips was just selected 
 	 */
 	handleMultiSelect: function( clickClip ){
 		var _this = this;
@@ -535,7 +535,7 @@ mw.SequencerTimeline.prototype = {
 				)
 			} else {
 				// A single clip is selected edit that clip   
-				_this.editClip( clickClip );
+				_this.editClip( clickClip );	
 			}
 			// Register the edit tools update for undo
 			_this.sequencer.getActionsEdit().registerEdit();
@@ -593,8 +593,11 @@ mw.SequencerTimeline.prototype = {
 			.hide()
 			.buttonHover()
 			.click( function(){
+				_this.getTimelineContainer().find('.selectedClip').removeClass( 'selectedClip' );	
 				_this.editClip( $timelineClip )
 				$timelineClip.addClass( 'selectedClip' );
+				// Seek to the edit clip
+				_this.seekToStartOfClip( $timelineClip );
 				return false;
 			}),
 			

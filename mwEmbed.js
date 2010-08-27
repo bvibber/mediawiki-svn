@@ -1158,7 +1158,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 *         undefined
 	 */	
 	mw.isset = function( objectPath ) {
-		if ( !objectPath ) {
+		if ( !objectPath || typeof objectPath != 'string') {
 			return false;
 		}			
 		var pathSet = objectPath.split( '.' );

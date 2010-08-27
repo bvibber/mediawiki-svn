@@ -272,7 +272,7 @@ mw.Sequencer.prototype = {
 		}
 		return this.timeline;
 	},
-	getEditTools: function(){
+	getTools: function(){
 		if( !this.editTools ){
 			this.editTools = new mw.SequencerTools( this );
 		}
@@ -283,6 +283,12 @@ mw.Sequencer.prototype = {
 			this.addMedia = new mw.SequencerAddMedia( this );
 		}
 		return this.addMedia;
+	},
+	getAddByUrl: function(){
+		if( ! this.addByUrl ){
+			this.addByUrl = new mw.SequencerAddByUrl( this );
+		}
+		return this.addByUrl
 	},
 	getKeyBindings:function(){
 		if( ! this.keyBindings ){
@@ -319,6 +325,7 @@ mw.Sequencer.prototype = {
 	 * Get the UI layout
 	 */
 	getUiLayout: function(){
+		var _this = this;
 		// xxx There is probably a cleaner way to generate a list of jQuery objects than $j('new').children();
 		return $j('<div />').append( 
 		    $j('<div />')			
@@ -346,7 +353,7 @@ mw.Sequencer.prototype = {
 			.append( 			
 				$j('<div />')
 					.addClass( "ui-layout-center mwseq-edit" )
-					.html(  gM('mwe-sequencer-no_selected_resource') ),
+					.html(  _this.getTools().getDefaultText() ),
 				$j('<div />')
 					.addClass( "ui-layout-east mwseq-player" )
 					.text( gM('mwe-sequencer-loading-player') ),	

@@ -146,7 +146,7 @@ mw.SequencerActionsSequence.prototype = {
 			} else {
 				$dialog.empty().text( gM('mwe-sequencer-already-published') )
 				var buttons = {};
-				buttons[ gm('mwe-ok') ] = function(){
+				buttons[ gM('mwe-ok') ] = function(){
 					$j( this ).dialog( 'close' );
 				}
 				$dialog.dialog( 'option', 'buttons', buttons);
