@@ -70,13 +70,13 @@ class ResourceLoaderModule {
 					$this->scripts = (array)$value;
 					break;
 				case 'styles':
-					$this->styles = $value;
+					$this->styles = (array)$value;
 					break;
 				case 'messages':
-					$this->messages = $value;
+					$this->messages = (array)$value;
 					break;
 				case 'dependencies':
-					$this->dependencies = $value;
+					$this->dependencies = (array)$value;
 					break;
 				case 'debugScripts':
 					$this->debugScripts = (array)$value;
@@ -269,13 +269,7 @@ class ResourceLoaderModule {
 	 * @return string JS
 	 */
 	public function getSkinScript( $skin ) {
-		$scripts = array();
-		if ( isset( $this->skinScripts[$skin] ) && count( $this->skinScripts[$skin] ) ) {
-			$scripts = $this->skinScripts[$skin];
-		} else if ( isset( $this->skinScripts['default'] ) ) {
-			$scripts = $this->skinScripts['default'];
-		}
-		return self::concatScripts( $scripts );
+		return self::concatScripts( self::getSkinFiles( $skin, $this->skinScripts ) );
 	}
 	
 	/**
@@ -284,13 +278,23 @@ class ResourceLoaderModule {
 	 * @return string CSS
 	 */
 	public function getSkinStyle( $skin ) {
-		$styles = array();
-		if ( isset( $this->skinStyles[$skin] ) && count( $this->skinStyles[$skin] ) ) {
-			$styles = $this->skinStyles[$skin];
-		} else if ( isset( $this->skinStyles['default'] ) ) {
-			$styles = $this->skinStyles['default'];
+		return self::concatStyles( self::getSkinFiles( $skin, $this->skinStyles ) );
+	}
+	
+	/**
+	 * Helper function to get skin-specific data from an array.
+	 * @param $skin string Skin name
+	 * @param $map array Map of skin names to arrays
+	 * @return $map[$skin] if set and non-empty, or $map['default'] if set, or an empty array
+	 */
+	protected static function getSkinFiles( $skin, $map ) {
+		$retval = array();
+		if ( isset( $map[$skin] ) && $map[$skin] ) {
+			$retval = $map[$skin];
+		} else if ( isset( $map['default'] ) ) {
+			$retval = $map['default'];
 		}
-		return self::concatStyles( $styles );
+		return $retval;
 	}
 	
 	/**
@@ -305,23 +309,15 @@ class ResourceLoaderModule {
 		return self::concatScripts( $this->loaders );
 	}
 	
-	public function getmtime() {
-		$fields = array( $this->scripts, $this->styles,	$this->debugScripts,
-			$this->languageScripts, $this->skinScripts, $this->skinStyles,
+	public function getmtime( $lang, $skin, $debug ) {
+		$files = array_merge( $this->scripts, $this->styles,
+			$debug ? $this->debugScripts : array(),
+			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
+			(array)self::getSkinFiles( $skin, $this->skinScripts ),
+			(array)self::getSkinFiles( $skin, $this->skinStyles ),
 			$this->loaders
 		);
-		return self::getMaxMtime( $fields );
-	}
-	
-	protected static function getMaxMtime( $arr ) {
-		if ( is_array( $arr ) ) {
-			if ( $arr ) {
-				return max( array_map( array( 'ResourceLoaderModule', 'getMaxMtime' ), $arr ) );
-			} else {
-				return 1; // wfTimestamp() interprets 0 as "now"
-			}
-		}
-		return filemtime( $arr );
+		return max( array_map( 'filemtime', $files ) );
 	}
 	
 	/**
@@ -348,14 +344,13 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 		return Skin::newFromKey( $skin )->generateUserJs();
 	}
 	
-	public function getmtime() {
+	public function getmtime( $lang, $skin, $debug ) {
 		// HACK: We duplicate the message names from generateUserJs()
 		// here and weird things (i.e. mtime moving backwards) can happen
 		// when a MediaWiki:Something.js page is deleted
-		$jsPages = array( Title::makeTitle( NS_MEDIAWIKI, 'Common.js' ) );
-		foreach ( Skin::getSkinNames() as $skinname ) {
-			$jsPages[] = Title::makeTitleSafe( NS_MEDIAWIKI, ucfirst( $skinname) . '.js' );
-		}
+		$jsPages = array( Title::makeTitle( NS_MEDIAWIKI, 'Common.js' ),
+			Title::makeTitle( NS_MEDIAWIKI, ucfirst( $skin ) . '.js' )
+		);
 		
 		// Do batch existence check
 		// TODO: This would work better if page_touched were loaded by this as well
