@@ -337,7 +337,7 @@ class CodeRevision {
 			$url = $this->getFullUrl();
 
 			foreach ( $res as $row ) {
-				$revision = CodeRevision::newFromRow( $row );
+				$revision = CodeRevision::newFromRow( $this->mRepo, $row );
 				$users = $revision->getCommentingUsers();
 				
 				$rowUrl = $revision->getFullUrl();
