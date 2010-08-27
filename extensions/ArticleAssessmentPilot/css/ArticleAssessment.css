@@ -14,38 +14,130 @@
  * $Build: 35 (2010-05-01)
  *
  */
-.ui-stars-star,
-.ui-stars-cancel {
+.ui-stars-star {
   float: left;
   display: block;
   overflow: hidden;
   text-indent: -999em;
   cursor: pointer;
-}
-.ui-stars-star a,
-.ui-stars-cancel a {
-  width: 16px;
-  height: 15px;
-  display: block;
-  background: url(../images/jquery.ui.stars.gif) no-repeat 0 0;
+	padding-right: 4px;
 }
 .ui-stars-star a {
-  background-position: 0 -32px;
+  width: 21px;
+  height: 21px;
+  display: block;
+  background: url(../images/stars.gif) no-repeat 0 0;
 }
-.ui-stars-star-on a {
-  background-position: 0 -48px;
+.ui-stars-star a {
+  background-position: 0 0px;
+}
+.ui-stars-star-on a  {
+  background-position: 0 -42px;
+}
+.ui-stars-star-rated a {
+	background-position: 0 -42px;
+}
+.ui-stars-star-stale a {
+	background-position: 0 -63px;
 }
 .ui-stars-star-hover a {
-  background-position: 0 -64px;
-}
-.ui-stars-cancel-hover a {
-  background-position: 0 -16px;
+  background-position: 0 -21px;
 }
 .ui-stars-star-disabled,
-.ui-stars-star-disabled a,
-.ui-stars-cancel-disabled a {
+.ui-stars-star-disabled a {
   cursor: default !important;
 }
 .ui-stars-cancel {
 	display: none;
+}
+/* End ui-stars styles */
+
+/* Tipsy Styles */
+.tipsy { padding: 5px; font-size: 12px; position: absolute; z-index: 100000; }
+.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #d6f3ff; color: black; border: 1px solid #5dc9f4; max-width: 200px; text-align: center; }
+/* .tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px; } */
+.tipsy-arrow { position: absolute; background: url( '../images/arrow.gif' ) no-repeat top left; width: 13px; height: 13px; }
+.tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
+.tipsy-nw .tipsy-arrow { top: 0; left: 10px; }
+.tipsy-ne .tipsy-arrow { top: 0; right: 10px; }
+.tipsy-s .tipsy-arrow { bottom: 0; left: 50%; margin-left: -4px; background-position: bottom left; }
+.tipsy-sw .tipsy-arrow { bottom: 0; left: 10px; background-position: bottom left; }
+.tipsy-se .tipsy-arrow { bottom: -7px; right: 10px; background-position: bottom left; }
+.tipsy-e .tipsy-arrow { top: 50%; margin-top: -4px; right: 0; width: 5px; height: 9px; background-position: top right; }
+.tipsy-w .tipsy-arrow { top: 50%; margin-top: -4px; left: 0; width: 5px; height: 9px; }
+
+/* End Tipsy styles */
+#article-assessment-rate,
+#article-assessment-ratings {
+	background: #f7f7f7;
+	float: left;
+}
+#article-assessment-ratings {
+	width: 320px;
+}
+#article-assessment-rate {
+	width: 650px;
+}
+.field-wrapper {
+	float: left;
+	width: 250px;
+	padding-right: 28px;
+}
+.rating-field {
+	float: right;
+	line-height: 24px;
+	padding-right: 5px;
+}
+.rating-field-label{
+	float: left;
+	line-height: 24px;
+}
+.rating-field-label {
+	margin-right: 10px;
+}
+.rating-field-hint {
+	width: 11px;
+	height: 24px;
+	display: block;
+	float: right;
+	background: url(../images/question.gif) 0 50% no-repeat;
+}
+.article-assessment-submit {
+	text-align: right;
+}
+.article-assessment-stale-msg {
+	background: #d6f3ff;
+	border: 1px solid #5dc9f4;
+	float: left;
+	font-size: 12px;
+	padding: 2px;
+}
+/* Self Clearing Floats */
+.field-wrapper:after,
+.article-assessment-rating-fields:after,
+.article-assessment-submit:after,
+.rating-fields:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.field-wrapper,
+.article-assessment-rating-fields,
+.article-assessment-submit,
+.rating-fields {
+	display: inline-block;
+}
+* html .field-wrapper,
+* html .article-assessment-rating-fields,
+* html .article-assessment-submit,
+* html .rating-fields {
+	height: 1%;
+}
+.field-wrapper,
+.article-assessment-rating-fields,
+.article-assessment-submit,
+.rating-fields {
+	display: block;
 }

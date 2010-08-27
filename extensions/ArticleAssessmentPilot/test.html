@@ -11,42 +11,23 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery.ui.stars.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.tipsy.js" type="text/javascript" charset="utf-8"></script>
+	
 	<script src="js/ArticleAssessment.js" type="text/javascript" charset="utf-8"></script>
 	<style type="text/css" media="screen">
 		body,html{ background: #fff; }
-		.field-wrapper {
-			clear: both;
-		}
 	</style>
 	<title>ArticleAssessment JS Test</title>
 	<link rel="stylesheet" href="css/ArticleAssessment.css" type="text/css" media="screen" title="CSS" charset="utf-8" />
 </head>
 
 <body>
+<div class="article-assessment-wrapper">
+	<div id="catLinks">
+		
+	</div>
+</div>
 
-<form action="rate" method="post" id="rating-form">
-	<div class="field-wrapper">
-		<label for="rating_reliability">Reliability:</label>
-		<select id="rating_reliability" name="rating[reliability]" class="rating-field">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-		</select>
-	</div>
-	<div class="field-wrapper">
-		<label for="rating_completeness">Completeness:</label>
-		<select id="rating_completeness" name="rating[completeness]" class="rating-field">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-		</select>
-	</div>
-	<p><input type="submit" value="Submit" /></p>
-</form>
 
 </body>
 </html>
