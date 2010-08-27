@@ -59,16 +59,12 @@ class PoolCounter_ConnectionManager {
 }
 
 class PoolCounter_Client extends PoolCounter {
-	var $maxThreads, $waitTimeout, $type, $key, $conn;
-	var $isAcquired = false;
+	private $conn;
 
-	static $manager;
+	static private $manager;
 
 	function __construct( $conf, $type, $key ) {
-		$this->waitTimeout = isset( $conf['waitTimeout'] ) ? $conf['waitTimeout'] : 15;
-		$this->maxThreads = isset( $conf['maxThreads'] ) ? $conf['maxThreads'] : 5;
-		$this->type = $type;
-		$this->key = $key;
+		parent::__construct( $conf, $type, $key );
 		if ( !self::$manager ) {
 			global $wgPoolCountClientConf;
 			self::$manager = new PoolCounter_ConnectionManager( $wgPoolCountClientConf );
@@ -96,7 +92,7 @@ class PoolCounter_Client extends PoolCounter {
 		}
 		$conn = $status->value;
 		wfDebug( "Sending pool counter command: $cmd\n" );
-		if ( fwrite( $conn, "$cmd\r\n" ) === false ) {
+		if ( fwrite( $conn, "$cmd\n" ) === false ) {
 			return Status::newFatal( 'poolcounter-write-error' );
 		}
 		$response = fgets( $conn );
@@ -112,14 +108,14 @@ class PoolCounter_Client extends PoolCounter {
 				$parts = explode( ' ', $parts[1], 2 );
 				$errorMsg = isset( $parts[1] ) ? $parts[1] : '(no message given)';
 				return Status::newFatal( 'poolcounter-remote-error', $errorMsg );
-			case 'ACK':
+			case 'LOCKED':
 			case 'RELEASED':
-			case 'COUNT':
-				$parts = explode( ' ', $parts[1] );
-				$key = array_shift( $parts );
-				$attribs = $this->colonsToAssoc( $parts );
-				$attribs['responseType'] = $responseType;
-				return Status::newGood( $attribs );
+			case 'DONE':
+			case 'NOT_LOCKED':
+			case 'QUEUE_FULL':
+			case 'TIMEOUT':
+			case 'LOCK_HELD':
+				return constant( "PoolCounter::$responseType" );
 		}
 	}
 
@@ -135,41 +131,21 @@ class PoolCounter_Client extends PoolCounter {
 		return $assoc;
 	}
 
-	function acquire() {
-		$status = $this->sendCommand( 'acquire', $this->key, "max:{$this->maxThreads}" );
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		$response = $status->value;
-		$count = isset( $response['count'] ) ? $response['count'] : 0;
-		$this->isAcquired = true;
-		if ( $count > $this->maxThreads ) {
-			$response['overload'] = true;
-			$this->release();
-		}
-		return Status::newGood( $response );
+	function acquireForMe() {
+		return $this->sendCommand( 'ACQ4ME', $this->key, $this->workers, $this->maxqueue, $this->timeout );
+	}
+
+	function acquireForAnyone() {
+		return $this->sendCommand( 'ACQ4ANY', $this->key, $this->workers, $this->maxqueue, $this->timeout );
 	}
 
 	function release() {
-		if ( $this->isAcquired ) {
-			$status = $this->sendCommand( 'release', $this->key );
-			$this->isAcquired = false;
-		} else {
-			$status = Status::newGood();
-		}
+		$status = $this->sendCommand( 'RELEASE', $this->key );
+
 		if ( $this->conn ) {
 			self::$manager->close( $this->conn );
 			$this->conn = null;
 		}
-		return $status;
-	}
-
-	function wait() {
-		$status = $this->sendCommand( 'wait', $this->key, "timeout:{$this->waitTimeout}" );
-		if ( !$status->isOK() ) {
-			return $status;
-		}
-		$this->isAcquired = true;
 		return $status;
 	}
 }
