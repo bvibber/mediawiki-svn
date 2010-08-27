@@ -939,18 +939,16 @@ $messages['ml'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
-	'wikieditor-publish-preference' => 'पायरी-पायरीने प्रकाशन शक्य करा
-टप्प्या-टप्प्याने प्रकाशन शक्य करा',
+	'wikieditor-publish-preference' => 'टप्प्या-टप्प्याने प्रकाशन शक्य करा',
 	'wikieditor-publish-button-publish' => 'प्रकाशित करा
 दाखवा',
 	'wikieditor-publish-button-cancel' => 'रद्द करा',
-	'wikieditor-publish-dialog-title' => '↓ {{संकेतस्थळनाव}} येथे प्रदर्शित करा',
-	'wikieditor-publish-dialog-summary' => 'संपादनाचा सारांश:(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
+	'wikieditor-publish-dialog-title' => '{{संकेतस्थळनाव}} येथे प्रदर्शित करा',
+	'wikieditor-publish-dialog-summary' => 'बदलांचा आढावा :(आपण केलेल्या बदलांचे थोडक्यात वर्णन करा.)',
 	'wikieditor-publish-dialog-minor' => 'छोटा बदल',
 	'wikieditor-publish-dialog-watch' => 'या पानावर बदलांसाठी लक्ष ठेवा',
 	'wikieditor-publish-dialog-publish' => 'प्रकाशित करा',
-	'wikieditor-publish-dialog-goback' => '↓ परत फिरा
-↓ मागे जा',
+	'wikieditor-publish-dialog-goback' => 'मागे जा',
 );
 
 /** Malay (Bahasa Melayu)

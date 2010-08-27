@@ -4054,11 +4054,24 @@ Fir méi iwwert d'Benotzerfrëndlechkeetsinitiative erauszefannen gitt w.e.g. op
  * @author Pahles
  */
 $messages['li'] = array(
+	'optin' => 'Opt-in broekberheidsinitiatief',
+	'optin-desc' => "Maak 't meugelik veur gebroekers om Beta, de verbaeteringe van t Broekbaarheidsinitiatief, aan te zètte.",
 	'optin-title-optedout' => 'Perbeer Beta',
 	'optin-title-optedin' => 'Verlaot Beta',
 	'optin-title-justoptedin' => 'Welkom bij Beta',
 	'optin-title-justoptedout' => "Danke veur 't perbere van Beta",
 	'optin-title-feedback' => 'Trökkoppeling gaeve',
+	'optin-needlogin' => 'Doe mós tich [$1 aanmelde] veurdesse Beta aan kins zètte.',
+	'optin-intro' => "'t Wikipedia Broekbaarheidsinitiatief haet n nuu vormgaeving en nuu bewerkingshulpmiddele ontwikkeld om de broekbaarheid van Wikipedia te verbaetere.
+Wils se Beta oetprobere?",
+	'optin-feedback-intro' => "Bedank veur t oetprobere van Beta.
+Weer wille gaer weite wie se dinks euver de nuuj interface, dus weer zoue 't op pries stellen es se de enquête hieonger invuls.",
+	'optin-feedback-back' => 'Es se de enquête neet wils invulle kins se trukkomme nao $1.',
+	'optin-success-in' => 'Doe maaks noe gebroek van Beta.
+Doe kins dees instellinge op eder gewöns moment weer verwiedere door op de knop "{{int:optin-submit-out}}" te klikke.',
+	'optin-leave-cancel' => 'Esse Beta wils haje, gank den trök nao $1',
+	'optin-success-out' => 'Doe hes Beta oetgesjakeld.
+De kins dees functionaliteit op eder gewöns moment weer insjakele door op de knoep {{int:optin-submit-in}} te klikke.',
 	'optin-success-feedback' => 'Danke veur de trökkoppeling!',
 	'optin-accept-short' => 'Insjakele!',
 	'optin-accept-long' => 'Perbeer Beta',
@@ -4069,6 +4082,12 @@ $messages['li'] = array(
 	'optin-submit-feedback' => 'Trökkoppeling gaeve',
 	'optin-survey-yes' => 'Jao',
 	'optin-survey-no' => 'Nei',
+	'optin-survey-intro' => 'Danke veur \'t oetprobere van Beta.
+Weer wille gaer weite wesse vonjs van dees nu interface, dus wils se e.t.b. de korte vraogelies hieonger invulle veurdesse op "[[#leave|{{int:optin-submit-out}}]]" kliks?',
+	'optin-survey-question-likedislike' => 'Waat vonj se good aan Beta?
+Waat vonj se neet good aan Beta?',
+	'optin-survey-question-whyoptout' => 'Worom wils se dezen interface weer oetzètte?
+Selecteer e.t.b. alle rejene die van toepassing zeen.',
 	'optin-survey-answer-whyoptout-hard' => "'t Gebroek waas lestig.",
 	'optin-survey-answer-whyoptout-didntwork' => "De wieziginge dijjen 't neet.",
 	'optin-survey-answer-whyoptout-notpredictable' => "'t Reageerde neet veurspelbaar.",
@@ -4076,6 +4095,16 @@ $messages['li'] = array(
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ich vónj de nuuj tabblajer en t oeterlik neet good.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ich vónj de nuje wirkbalk neet fijn.',
 	'optin-survey-answer-whyoptout-other' => 'Anger reeje:',
+	'optin-survey-question-explain' => "Gaef e.t.bm 'n toelichting op dien antjwaord hiebaove:",
+	'optin-survey-question-techfail' => "Höbs se technische foute ongervonje bie 't gebroek van Beta?",
+	'optin-survey-question-techfail-ifyes' => "Zo jao, gaef hiejop den e.t.b. 'n toelichting:",
+	'optin-survey-question-usedtoolbar' => "Höbs se de nujen oetklapbare wirkbalk gebroek bie 't bewirke van 'n pagina?",
+	'optin-survey-question-usedtoolbar-ifyes' => "Zo jao, waat vonj se d'r good aan en waat vonj se d'r neet good aan?",
+	'optin-survey-question-usedtoolbar-ifno' => "Zo nae, worom neet?
+Walich in de toekoms?
+Gaef e.t.b. 'n toelichting.",
+	'optin-survey-question-different' => "Waat had t'r anges gedaon gemótte zodet se Beta waas blieven aanhaje?",
+	'optin-survey-question-feedback' => 'Laot ós e.t.b. weite waat se vinjs:',
 	'optin-survey-question-browser' => "Waatfer 'ne browser haesse?",
 	'optin-survey-answer-browser-other' => 'Angere browser:',
 	'optin-survey-question-os' => 'Waatfer systeem gebroeksse?',
@@ -4388,65 +4417,64 @@ $messages['mn'] = array(
  * @author अभय नातू
  */
 $messages['mr'] = array(
-	'optin-title-justoptedin' => '↓ बीटा चेहरामोहर्‍यात स्वागत',
-	'optin-title-justoptedout' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद
-↓ बीटा वापरुन बघण्याबद्दल आभार',
-	'optin-feedback-intro' => '↓ बीटा वापरुन बघण्याबद्दल धन्यवाद.
-या नविन चेहरामोहर्‍याबद्दल आपणास काय वाटते हे आम्हास जाणुन घ्यायचे आहे,म्हणुन खालील ऎच्छीक सर्वेक्षण आपण भरुन दिल्यास आम्हाला आवडेल.',
-	'optin-feedback-back' => '↓ जर आपणास सर्वेक्षण भरावयाचे नसल्यास आपण  $1 ला परत जाउ शकता.',
-	'optin-success-in' => '↓ सध्या आपण बीटा चेहरामोहरा वापरत आहात.पानाचे वरचे बाजूस असणार्‍या "{{int:optin-leave}}" या दुव्यावर टिचकी मारुन आपण यातुन कधीही माघार घेउ शकता.',
-	'optin-success-out' => '↓ आपण बीटा यशस्वीरित्या त्यागली आहे.पानाचे वरचे बाजूस असणार्‍या "{{int:optin-try}}" या दुव्यावर टिचकी मारुन आपण यातुन कधीही परत वापरु शकता.',
-	'optin-success-feedback' => '↓ आपल्या संदेशपरताव्याबद्दल आभार!',
-	'optin-accept-short' => '↓चला करून पाहू!',
-	'optin-deny-short' => 'नको धन्य्वाद',
+	'optin-title-justoptedin' => 'बीटा चेहरामोहर्‍यात स्वागत',
+	'optin-title-justoptedout' => 'बीटा वापरुन बघण्याबद्दल धन्यवाद',
+	'optin-feedback-intro' => 'बीटा वापरुन बघण्याबद्दल धन्यवाद.
+या नविन चेहरामोहर्‍याबद्दल आपणास काय वाटते हे आम्हास जाणुन घ्यायचे आहे,म्हणुन खालील ऎच्छीक सर्वेक्षण आपण भरुन दिल्यास आम्हाला ते आवडेल.',
+	'optin-feedback-back' => 'जर आपणास सर्वेक्षण भरावयाचे नसल्यास आपण  $1 ला परत जाउ शकता.',
+	'optin-success-in' => 'सध्या आपण बीटा चेहरामोहरा वापरत आहात.पानाचे वरचे बाजूस असणार्‍या "{{int:optin-leave}}" या दुव्यावर टिचकी मारुन आपण यातुन कधीही माघार घेउ शकता.',
+	'optin-success-out' => 'आपण बीटा यशस्वीरित्या त्यागली आहे.पानाचे वरचे बाजूस असणार्‍या "{{int:optin-try}}" या दुव्यावर टिचकी मारुन आपण यातुन कधीही परत वापरु शकता.',
+	'optin-success-feedback' => 'आपल्या प्रतीक्रियेबद्दल आभार!',
+	'optin-accept-short' => 'चला करून पाहूया !',
+	'optin-deny-short' => 'नको धन्यवाद',
 	'optin-deny-long' => 'मागच्या पानाकडे वापस जा',
 	'optin-submit-feedback' => 'प्रतिक्रिया द्या',
 	'optin-survey-yes' => 'हो',
 	'optin-survey-no' => 'नाही',
-	'optin-survey-intro' => '↓  आम्हास हे जाणुन घेणे आवडेल कि आमच्या नविन चेहर्‍यामोहर्‍याबद्दल आपले विचार काय आहेत.जर आपण, "[[#leave|{{int:optin-submit-out}}]]" येथे टिचकी मारण्यापूर्वी खालील ऐच्छिक सर्वेक्षण भरुन दिले तर आम्हास ते खचितच आवडेल.',
-	'optin-survey-question-likedislike' => '↓ आपणास बीटा बद्दल काय आवडले? आपणास बीटा बद्दल काय आवडले नाही?',
+	'optin-survey-intro' => 'आम्हास हे जाणुन घेणे आवडेल कि आमच्या नविन चेहर्‍यामोहर्‍याबद्दल आपले विचार काय आहेत.जर आपण, "[[#leave|{{int:optin-submit-out|बीटा त्यागुन बाहेर}}]]" येथे टिचकी मारण्यापूर्वी खालील ऐच्छिक सर्वेक्षण भरुन दिले तर आम्हास ते खचितच आवडेल.',
+	'optin-survey-question-likedislike' => 'आपणास बीटा बद्दल काय आवडले? आपणास बीटा बद्दल काय आवडले नाही?',
 	'optin-survey-answer-whyoptout-hard' => 'अवघड होते',
 	'optin-survey-answer-whyoptout-didntwork' => 'सुयोग्यपणे काम झाले नाही',
 	'optin-survey-answer-whyoptout-notpredictable' => 'अपेक्षेनुसार काम झाले नाही',
-	'optin-survey-answer-whyoptout-didntlike-look' => '↓ ज्या प्रकारे ते दिसते ते मला आवडले नाही.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'ज्या प्रकारे ते दिसते ते मला आवडले नाही.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'मला नविन कळी व  ठेवण-मांडणी आवडली नाही.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'मला नविन साधनपट्टी(टूलबार) आवडली नाही.',
 	'optin-survey-answer-whyoptout-other' => 'इतर कारण:',
-	'optin-survey-question-explain' => '↓ कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
-	'optin-survey-question-techfail' => '↓ बीटा वापरतांना आपण काही तांत्रिक अडचणी अनुभवल्या काय?',
-	'optin-survey-question-techfail-ifyes' => '↓ जर "होय" असेल तर समजवा किंवा विस्तृत वर्णन करा :',
-	'optin-survey-question-usedtoolbar' => '↓ आपण पान संपादण्यासाठी नविन उपकरणगट(टुलबार) वापरला आहे काय?',
-	'optin-survey-question-usedtoolbar-ifyes' => '↓ जर "होय" असेल तर त्यातील आपणास काय आवडले व नावडले?',
-	'optin-survey-question-usedtoolbar-ifno' => '↓ जर "नाही" तर कां नाही आवडला?आपण भविष्यात याचा वापर कराल काय? कृपया सांगा.',
-	'optin-survey-question-different' => '↓ बीटाच्या वापरासाठी आम्ही वेगळे काय करावयास हवे ज्याने आपण बीटाचा वापर सुरू ठेवाल?',
-	'optin-survey-question-feedback' => '↓ आम्हास यासंबंधी आपली प्रतिक्रिया,विचार जाणुन घ्यायचे आहेत-ते आम्हास महत्वपूर्ण आहेत.',
+	'optin-survey-question-explain' => 'कृपया आपल्या वरील उत्तरास नीट समजवा किंवा विस्तृतपणे मांडा:',
+	'optin-survey-question-techfail' => 'बीटा वापरतांना आपण काही तांत्रिक अडचणी अनुभवल्या काय?',
+	'optin-survey-question-techfail-ifyes' => 'जर "होय" असेल तर समजवा किंवा विस्तृत वर्णन करा :',
+	'optin-survey-question-usedtoolbar' => 'आपण पान संपादण्यासाठी नविन साधनपट्टी (टुलबार) वापरला आहे काय?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'जर "होय" असेल तर त्यातील आपणास काय आवडले व नावडले?',
+	'optin-survey-question-usedtoolbar-ifno' => 'जर "नाही" तर कां नाही आवडला?आपण भविष्यात याचा वापर कराल काय? कृपया सांगा.',
+	'optin-survey-question-different' => 'बीटाच्या वापरासाठी आम्ही वेगळे काय करावयास हवे ज्याने आपण बीटाचा वापर सुरू ठेवाल?',
+	'optin-survey-question-feedback' => 'आम्हास यासंबंधी आपली प्रतिक्रिया,विचार जाणुन घ्यायचे आहेत-ते आम्हास महत्वपूर्ण आहेत.',
 	'optin-survey-question-browser' => 'तुम्ही कोणता न्यहाळक (ब्राऊजर) वापरता ?',
-	'optin-survey-answer-browser-other' => '!इतर न्याहाळक(बाउजर):',
+	'optin-survey-answer-browser-other' => 'इतर न्याहाळक(ब्राउजर):',
 	'optin-survey-question-os' => 'आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
 	'optin-survey-answer-os-other' => 'इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
-	'optin-survey-question-res' => '↓ आपल्या दृश्यपटलाचे पृथक्करण (स्क्रिन रिजोल्युशन) काय आहे?',
-	'optin-survey-question-changes' => '↓ आपणास भविष्यात बीटामध्ये कोणत्या प्रकारचे बदल बघणे आवडेल (जे लागु असेल ते निवडा)?',
-	'optin-survey-answer-changes-nav' => '↓ या संस्थळाचे नॅव्हिगेशन वापरण्यास सुलभ असे करा.',
-	'optin-survey-answer-changes-edittools' => '↓ संपादन उपकरणांत (ऐडिट टुल्स) वाढ व दर्जावाढ करा.',
-	'optin-survey-answer-changes-upload' => '↓  यातील घटक व मिडिया अपलोड सुधरवा.',
+	'optin-survey-question-res' => 'आपल्या दृश्यपटलाचे पृथक्करण (स्क्रिन रिजोल्युशन) काय आहे?',
+	'optin-survey-question-changes' => 'आपणास भविष्यात बीटामध्ये कोणत्या प्रकारचे बदल बघणे आवडेल (जे लागु असेल ते निवडा)?',
+	'optin-survey-answer-changes-nav' => 'या संस्थळाचे सुचालन(नॅव्हिगेशन) वापरण्यास सुलभ असे करा.',
+	'optin-survey-answer-changes-edittools' => 'संपादन उपकरणांत (ऐडिट टुल्स) वाढ व दर्जावाढ करा.',
+	'optin-survey-answer-changes-upload' => 'यातील मजकुर व मिडिया अपलोड सुधरवा.',
 	'optin-survey-answer-changes-richtext' => 'rich-text editors सारखी संपादन साधने तयार करा.',
-	'optin-survey-answer-changes-lookfeel' => '↓ या संस्थळाचा "दिखावा व अनुभूती" अद्ययावत करा.',
+	'optin-survey-answer-changes-lookfeel' => 'या संस्थळाचा "दिखावा व अनुभूती" अद्ययावत करा.',
 	'optin-survey-answer-changes-predictability' => 'परफॉर्मन्सच्या अचूकतेत सुधारणा करा',
-	'optin-survey-answer-changes-custom' => 'सदसांना अधिक स्वपसंती सवलत द्या',
+	'optin-survey-answer-changes-custom' => 'सदस्यांना अधिक स्वपसंती सवलत द्या',
 	'optin-survey-answer-changes-other' => 'इतर',
 	'optin-improvements2' => '== कोणकोणत्या सुधारणा केल्या आहेत? ==
 [[File:UsabilityToolbar.png|left|link=|संवर्धीत संपादन साधनपट्टीचा देखावा]]
 [[File:UsabilityDialogs.png|left|link=|नवीन मजकुर निर्मिती संवादगवाक्षाचा देखावा ]]
 ;संवर्धीत संपादन साधनपट्टी
-The enhanced toolbar makes it easier to edit articles.
-New and improved icons make it clearer what action each tool performs.
-Expanded sections reduce clutter while keeping infrequently used tools just a click away.
+संवर्धीत संपादन साधनपट्टी लेखांचे संपादन सोपे बनविते.
+नवी सुधारीत प्रतीके (आयकॉन्स)प्रत्येक सधनाच्या कार्यांचे अधीक नेमके पणाने निर्देशन करते.rms.
+वाढवण्याजोग्या विभागांमुळे साधनांची गर्दी टळते आणि तरी सुद्धा अधून मधून लागणारी साधने तुमच्या करिता मात्र एक टिचकीभर दूर आहेत.
 ;संवादगवाक्ष
-When creating links or tables, clicking the tool icon now opens a dialog box which helps you to create links and tables by filling out a simple form.
+दुवे देताना, सारणी बनवताना , शोधा आणि बदला साधन वापरण्यासाठी चे साधन-प्रतीकास टिचकवले असता ते एका संवादगवाक्षात (डायलॉग बॉक्स) मध्ये उघडते जे तुम्हाला दुवे अथवा सारणी भरण्याची क्रिया सुलभ आणि सुगम बनवते.
 ;आणिअजून
-We have introduced a number of other improvements such as enhanced navigation, cascading tabs, improved search, and more.
+आम्ही सुधारीत सुचालना सारखी इतरही बर्‍याच सुधारणा केल्या आहेत जसे कि घडीच्या टॅब्स, सुधारीत शोध, आणि अधीक.
 == कसे सहभागी व्हावे ==
-To find out more about the Usability Initiative, please visit our [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+ऊपयोगसुलभता उपक्रमा बद्दल अधीक माहिती करिता , कृपया [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage] ला भेट द्या.
 <div style="clear:both"></div>',
 );
 
@@ -6216,6 +6244,7 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Liangent
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'optin' => 'Priključivanje Inicijativi za upotrebljivost',
@@ -6264,7 +6293,7 @@ Voleli bismo da znamo šta mislite o našem novom interfejsu, tako da bi nam zna
 	'optin-survey-question-usedtoolbar-ifyes' => 'Ako jeste, šta Vam se svidelo u vezi sa njim? A šta Vam se nije svidelo?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Ako ne, zašto niste? Da li ćete? Molimo Vas za objašnjenje.',
 	'optin-survey-question-different' => 'Šta bismo mogli da uradimo, da biste nastavili da koristite beta-verziju?',
-	'optin-survey-question-feedback' => 'Slobodno nam pišite, ako imate bilo kakvih drugih komentara, prmedbi ili razmišljanja — svaka povratna informacija je dobrodošla!',
+	'optin-survey-question-feedback' => 'Slobodno nam pišite, ako imate bilo kakvih drugih komentara, primedbi ili razmišljanja — svaka povratna informacija je dobrodošla!',
 	'optin-survey-question-browser' => 'Koji brauzer koristite?',
 	'optin-survey-answer-browser-other' => 'Drugi brauzer:',
 	'optin-survey-question-os' => 'Koji operativni sistem koristite?',

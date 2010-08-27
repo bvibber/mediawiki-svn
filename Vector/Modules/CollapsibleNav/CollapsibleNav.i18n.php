@@ -457,7 +457,7 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'vector-collapsiblenav-preference' => 'समदिश परिधानाच्या सुचालनानुक्रमातील घटकांची घडीक्षमता सक्षम करा.',
-	'vector-collapsiblenav-more' => '↓ इतर भाषा दाखवा',
+	'vector-collapsiblenav-more' => 'इतर भाषा दाखवा',
 );
 
 /** Malay (Bahasa Melayu)
