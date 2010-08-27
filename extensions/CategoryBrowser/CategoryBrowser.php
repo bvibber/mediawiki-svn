@@ -40,7 +40,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /* default minimal count of DB rows to start paging */
 define( 'CB_PAGING_ROWS', 20 );
 /* minimal count of rows in image gallery (not DB rows!) pager */
-define( 'CB_FILES_ROWS', 3 );
+define( 'CB_FILES_MAX_ROWS', 3 );
 /* maximal number of logical operations in SQL filter (condition) */
 define( 'CB_MAX_LOGICAL_OP', 5 );
 
@@ -67,7 +67,8 @@ class CB_Setup {
 	// default limits of different pagers
 	static $categoriesLimit = CB_PAGING_ROWS;
 	static $pagesLimit = CB_PAGING_ROWS;
-	static $filesLimit = CB_FILES_ROWS;
+	static $filesLimit = null;
+	static $filesMaxRows = CB_FILES_MAX_ROWS;
 
 	/**
 	 * Add this extension to the mediawiki's extensions list.
@@ -113,6 +114,14 @@ class CB_Setup {
 		$wgAjaxExportList[] = 'CategoryBrowser::getSubOffsetHtml';
 		$wgAjaxExportList[] = 'CategoryBrowser::applyEncodedQueue';
 		$wgAjaxExportList[] = 'CategoryBrowser::generateSelectedOption';
+
+		# calculate proper limit for files pager
+		# by default, limit for ImageGallery is maxrows * perrow :
+		self::$filesLimit = CB_Setup::$filesMaxRows * CB_Setup::$imageGalleryPerRow;
+		if ( self::$filesLimit <= 0 ) {
+			# ImageGallery is disabled, use pages limit instead
+			self::$filesLimit = CB_Setup::$pagesLimit;
+		}
 	}
 
 	/*
@@ -127,8 +136,8 @@ class CB_Setup {
 		self::$skin = is_object( $wgUser ) ? self::$user->getSkin() : $wgSkin;
 		self::$response = $wgRequest->response();
 		self::$cookie_prefix = 'CategoryBrowser_' . self::$user->getId() . '_';
-		// find out current collation of category table 'cat_title' field
-		// this is required to switch between CI and CS search
+		# find out current collation of category table 'cat_title' field
+		# this is required to switch between CI and CS search
 		$db = & wfGetDB( DB_SLAVE );
 		$category_table = $db->tableName( 'category' );
 		$db_result = $db->query( "SHOW FULL COLUMNS FROM ${category_table}" );

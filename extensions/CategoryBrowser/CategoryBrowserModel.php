@@ -107,6 +107,7 @@ abstract class CB_AbstractPager {
 	 * otherwise throws an error
 	 * warning: will fail, when called before calling $this->getCurrentRows() !
 	 * warning: $this->limit is not set properly before calling $this->getCurrentRows() !
+	 * todo: unused anymore; keep because might be useful in some cases
 	 */
 	function getListType() {
 		// it is not enough to check $this->entries[0],

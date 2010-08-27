@@ -265,7 +265,7 @@ class CategoryBrowser {
 				'js_nav_func' => "filesNav",
 				'select_fields' => "page_title, page_namespace, page_len, page_is_redirect",
 				'ns_cond' => "page_namespace = " . NS_FILE,
-				'default_limit' => CB_Setup::$filesLimit * CB_Setup::$imageGalleryPerRow
+				'default_limit' => CB_Setup::$filesLimit
 			)
 		);
 		wfLoadExtensionMessages( 'CategoryBrowser' );
@@ -273,27 +273,28 @@ class CategoryBrowser {
 		if ( count( $args ) < 2 ) {
 			return 'Too few parameters in ' . __METHOD__;
 		}
-		if ( !isset( $pager_types[ $args[0] ] ) ) {
-			return 'Unknown pager type in ' . __METHOD__;
+		$pager_type = $args[0];
+		if ( !isset( $pager_types[ $pager_type ] ) ) {
+			return 'Unknown pager type=' . CB_Setup::specialchars( $pager_type ) . ' in ' . __METHOD__;
 		}
-		$pager_type = & $pager_types[ $args[0] ];
-		$limit = ( count( $args ) > 3 ) ? abs( intval( $args[3] ) ) : $pager_type[ 'default_limit' ];
+		$pager_setup = & $pager_types[ $args[0] ];
+		$limit = ( count( $args ) > 3 ) ? abs( intval( $args[3] ) ) : $pager_setup[ 'default_limit' ];
 		$offset = ( count( $args ) > 2 ) ? abs( intval( $args[2] ) ) : 0;
 		$parentCatId = abs( intval( $args[1] ) );
 		$cb = new CategoryBrowser();
 		$pager = new CB_SubPager( $parentCatId, $offset, $limit,
-			$pager_type[ 'js_nav_func' ],
-			$pager_type[ 'select_fields' ],
-			$pager_type[ 'ns_cond' ] );
+			$pager_setup[ 'js_nav_func' ],
+			$pager_setup[ 'select_fields' ],
+			$pager_setup[ 'ns_cond' ] );
 		$pager->getCurrentRows();
-		switch ( $pager->getListType() ) {
-		case 'generateCatList' :
+		switch ( $pager_type ) {
+		case 'subcats' :
 			$view = new CB_CategoriesView( $pager );
 			break;
-		case 'generatePagesList' :
+		case 'pages' :
 			$view = new CB_PagesView( $pager );
 			break;
-		case 'generateFilesList' :
+		case 'files' :
 			# respect extension & core settings
 			global $wgOut, $wgCategoryMagicGallery;
 			// unstub $wgOut, otherwise $wgOut->mNoGallery may be unavailable
