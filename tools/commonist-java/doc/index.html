@@ -1,0 +1,181 @@
+<h2>abstract</h2>
+<p>
+the commonist is a simple upload clients for wikimedia commons and a number of other mediawiki sites.
+it is written in java and <a href="http://www.beanshell.org/">BeanShell</a>. 
+</p>
+<p>
+this software is in beta state, so don't complain if it's broken ;)
+</p>
+
+<h2>contact</h2>
+<p>
+the dot gray at gmx dot net (write in english or german)
+</p>
+
+<h2>license</h2>
+<p>
+the commonist is released under the <a href="http://www.gnu.org/copyleft/gpl.html">GPL</a>.
+</p>
+
+<h2>requirements</h2>
+<table>
+<tr><td>JDK 1.5.0 or newer</td><td><a href="http://java.sun.com/javase/">http://java.sun.com/javase/</a></td></tr>
+</table>
+
+<h2>download</h2>
+<p>
+<a href="$(project)-$(version).zip">$(project)-$(version).zip</a> (sources included)
+</p>
+<p>
+see <a href="changes.txt">changes.txt</a> for changes in version $(version).
+</p>
+
+<h2>usage</h2>
+<ol>
+<li>click <a href="ws/commonist.jnlp">this link</a> to start the commonist if you have webstart installed.
+	the webstart files of the commonist are signed with a snake oil certificate, so an ugly warning will pop up.</li>
+<li>alternatively, you can download <code>$(project)-$(version).zip</code> and unpack it. this will create a new directory
+	<code>$(project)-$(version)</code>.
+	cd into this directory and start the commonist with <code>bin/commonist</code> (on linux or mac os x),
+    or <code>$ bin\commonist.bat</code> (on windows).<br />
+	note: on windows, you may have to click away a requester at program startup with <code>continue</code>.</li>
+</ol>
+
+<h2>customization</h2>
+
+<h3>license templates</h3>
+<p><small>this works with the webstart version and the zipfile version.</small></p>
+<ol>
+<li>copy <code>etc/licenses.txt</code> to <code>$HOME/.commonist/licenses.txt</code>.</li>
+<li>change <code>$HOME/.commonist/licenses.txt</code> as you like.</li>
+<li>if <code>$HOME/.commonist/licenses.txt</code> exists, 
+	it overrides settings in <code>etc/licenses.txt</code>.</li>
+</ol>
+
+<h3>gallery templates</h3>
+<p><small>this works with the webstart version and the zipfile version.</small></p>
+<ol>
+<li>the gallery is built from template files. the templates contain wiki markup, lines starting with a <code>#</code> are
+	beanshell code toi be executed, <code>$()</code> encloses beanshell code to be printed.</li> 
+<li><code>etc/gallery_commons.bpp</code> and <code>etc/image_commons.bpp</code> are used for commons,
+	<code>etc/gallery_default.bpp</code> and <code>etc/image_default.bpp</code> for other wikis.</li>
+<li>copy one or more of these files to <code>$HOME/.commonist/</code></li>
+<li>change them as you like.</li>
+</ol>
+
+<h3>adding an UI-language</h3>
+<p><small>this works with the zipfile version, but not with the webstart version.</small></p>
+<ol>
+<li>copy <code>etc/messages_en.properties</code> to <code>$HOME/.commonist/messages_xxx.properties</code>,
+	xxx is the user language printed out on startup.</li>
+<li>translate <code>$HOME/.commonist/messages_xxx.properties</code></li>
+</ol>
+
+<h3>adding a wiki</h3>
+<p><small>this works with the webstart version and the zipfile version.</small></p>
+<ol>
+<li>unpack <code>lib/mwapi.jar</code> from the unpacked binary zip into a new directory</li>
+<li>look for <code>commons.family</code> and <code>commons.site</code> in this directory</li>
+<li>create a directory <code>$HOME/.commonist/family</code></li>
+<li>copy <code>commons.family</code> to <code>$HOME/.commonist/family/NAME.family</code></li>
+<li>copy <code>commons.site</code> to <code>$HOME/.commonist/family/NAME.site</code></li>
+<li>adapt these two files.</li>
+</ol>
+
+<h3>running code on startup</h3>
+<p><small>this works with the webstart version and the zipfile version.</small></p>
+<p>you can create a file <code>$HOME/.commonist/startup.bsh</code> which is executed on startup.
+	this can be used for automatic login, to provide passwords for htaccess-protected servers
+	and to allow untrusted SSL-certificates.
+	have a look at <code>etc/startup.bsh</code> for examples.</p>
+
+<h2>supported sites</h2>
+<table>
+<tr><td>commons</td><td>-</td><td>c</td><td><a href="http://meta.wikimedia.org">http://commons.wikimedia.org</a></td></tr>
+<tr><td>meta</td><td>-</td><td>m</td><td><a href="http://meta.wikimedia.org">http://meta.wikimedia.org</a></td></tr>
+<tr><td>mediawiki</td><td>-</td><td>mw</td><td><a href="http://www.mediawiki.org">http://www.mediawiki.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>wikipedia</td><td>arabic</td><td>w:ar</td><td><a href="http://ar.wikipedia.org">http://ar.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>catalan</td><td>w:ca</td><td><a href="http://ca.wikipedia.org">http://ca.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>danish</td><td>w:da</td><td><a href="http://da.wikipedia.org">http://da.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>german</td><td>w:de</td><td><a href="http://de.wikipedia.org">http://de.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>english</td><td>w:en</td><td><a href="http://en.wikipedia.org">http://en.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>esperanto</td><td>w:eo</td><td><a href="http://eo.wikipedia.org">http://eo.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>spanish</td><td>w:es</td><td><a href="http://es.wikipedia.org">http://es.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>estonian</td><td>w:et</td><td><a href="http://et.wikipedia.org">http://et.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>finnish</td><td>w:fi</td><td><a href="http://fi.wikipedia.org">http://fi.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>french</td><td>w:fr</td><td><a href="http://fr.wikipedia.org">http://fr.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>hebrew</td><td>w:he</td><td><a href="http://he.wikipedia.org">http://he.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>croatian</td><td>w:hr</td><td><a href="http://hr.wikipedia.org">http://hr.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>interlingua</td><td>w:ia</td><td><a href="http://ia.wikipedia.org">http://ia.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>italian</td><td>w:it</td><td><a href="http://it.wikipedia.org">http://it.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>japanese</td><td>w:ja</td><td><a href="http://ja.wikipedia.org">http://ja.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>dutch</td><td>w:nl</td><td><a href="http://nl.wikipedia.org">http://nl.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>norwegian</td><td>w:no</td><td><a href="http://no.wikipedia.org">http://no.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>polish</td><td>w:pl</td><td><a href="http://pl.wikipedia.org">http://pl.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>portuguese</td><td>w:pt</td><td><a href="http://pt.wikipedia.org">http://pt.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>romanian</td><td>w:ro</td><td><a href="http://ro.wikipedia.org">http://ro.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>slovenian</td><td>w:sl</td><td><a href="http://sl.wikipedia.org">http://sl.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>swedish</td><td>w:sv</td><td><a href="http://sv.wikipedia.org">http://sv.wikipedia.org</a></td></tr>
+<tr><td>wikipedia</td><td>chinese</td><td>w:zh</td><td><a href="http://zh.wikipedia.org">http://zh.wikipedia.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>wikisource</td><td>english</td><td>s:en</td><td><a href="http://en.wikisource.org">http://en.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>german</td><td>s:de</td><td><a href="http://de.wikisource.org">http://de.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>french</td><td>s:fr</td><td><a href="http://fr.wikisource.org">http://fr.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>japanese</td><td>s:ja</td><td><a href="http://ja.wikisource.org">http://ja.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>dutch</td><td>s:nl</td><td><a href="http://nl.wikisource.org">http://nl.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>italian</td><td>s:it</td><td><a href="http://it.wikisource.org">http://it.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>swedish</td><td>s:sv</td><td><a href="http://sv.wikisource.org">http://sv.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>polish</td><td>s:pl</td><td><a href="http://pl.wikisource.org">http://pl.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>portuguese</td><td>s:pt</td><td><a href="http://pt.wikisource.org">http://pt.wikisource.org</a></td></tr>
+<tr><td>wikisource</td><td>spanish</td><td>s:es</td><td><a href="http://es.wikisource.org">http://es.wikisource.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>wikibooks</td><td>german</td><td>b:de</td><td><a href="http://de.wikibooks.org">http://de.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>english</td><td>b:en</td><td><a href="http://en.wikibooks.org">http://en.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>french</td><td>b:fr</td><td><a href="http://fr.wikibooks.org">http://fr.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>japanese</td><td>b:ja</td><td><a href="http://ja.wikibooks.org">http://ja.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>dutch</td><td>b:nl</td><td><a href="http://nl.wikibooks.org">http://nl.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>italian</td><td>b:it</td><td><a href="http://it.wikibooks.org">http://it.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>swedish</td><td>b:sv</td><td><a href="http://sv.wikibooks.org">http://sv.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>polish</td><td>s:pl</td><td><a href="http://pl.wikibooks.org">http://pl.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>portuguese</td><td>b:pt</td><td><a href="http://pt.wikibooks.org">http://pt.wikibooks.org</a></td></tr>
+<tr><td>wikibooks</td><td>spanish</td><td>b:es</td><td><a href="http://es.wikibooks.org">http://es.wikibooks.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>wiktionary</td><td>german</td><td>wikt:de</td><td><a href="http://de.wiktionary.org">http://de.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>english</td><td>wikt:en</td><td><a href="http://en.wiktionary.org">http://en.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>french</td><td>wikt:fr</td><td><a href="http://fr.wiktionary.org">http://fr.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>japanese</td><td>wikt:ja</td><td><a href="http://ja.wiktionary.org">http://ja.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>dutch</td><td>wikt:nl</td><td><a href="http://nl.wiktionary.org">http://nl.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>italian</td><td>wikt:it</td><td><a href="http://it.wiktionary.org">http://it.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>swedish</td><td>wikt:sv</td><td><a href="http://sv.wiktionary.org">http://sv.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>polish</td><td>s:pl</td><td><a href="http://pl.wiktionary.org">http://pl.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>portuguese</td><td>wikt:pt</td><td><a href="http://pt.wiktionary.org">http://pt.wiktionary.org</a></td></tr>
+<tr><td>wiktionary</td><td>spanish</td><td>wikt:es</td><td><a href="http://es.wiktionary.org">http://es.wiktionary.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>wikiquote</td><td>german</td><td>q:de</td><td><a href="http://de.wikiquote.org">http://de.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>english</td><td>q:en</td><td><a href="http://en.wikiquote.org">http://en.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>japanese</td><td>q:ja</td><td><a href="http://ja.wikiquote.org">http://ja.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>dutch</td><td>q:nl</td><td><a href="http://nl.wikiquote.org">http://nl.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>italian</td><td>q:it</td><td><a href="http://it.wikiquote.org">http://it.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>swedish</td><td>q:sv</td><td><a href="http://sv.wikiquote.org">http://sv.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>polish</td><td>s:pl</td><td><a href="http://pl.wikiquote.org">http://pl.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>portuguese</td><td>q:pt</td><td><a href="http://pt.wikiquote.org">http://pt.wikiquote.org</a></td></tr>
+<tr><td>wikiquote</td><td>spanish</td><td>q:es</td><td><a href="http://es.wikiquote.org">http://es.wikiquote.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>wikinews</td><td>german</td><td>n:de</td><td><a href="http://de.wikinews.org">http://de.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>english</td><td>n:en</td><td><a href="http://en.wikinews.org">http://en.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>japanese</td><td>n:ja</td><td><a href="http://ja.wikinews.org">http://ja.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>dutch</td><td>n:nl</td><td><a href="http://nl.wikinews.org">http://nl.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>italian</td><td>n:it</td><td><a href="http://it.wikinews.org">http://it.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>swedish</td><td>n:sv</td><td><a href="http://sv.wikinews.org">http://sv.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>polish</td><td>s:pl</td><td><a href="http://pl.wikinews.org">http://pl.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>portuguese</td><td>n:pt</td><td><a href="http://pt.wikinews.org">http://pt.wikinews.org</a></td></tr>
+<tr><td>wikinews</td><td>spanish</td><td>n:es</td><td><a href="http://es.wikinews.org">http://es.wikinews.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>wikiversity</td><td>german</td><td>v:de</td><td><a href="http://de.wikiversity.org">http://de.wikiversity.org</a></td></tr>
+<tr><td>wikiversity</td><td>english</td><td>v:en</td><td><a href="http://en.wikiversity.org">http://en.wikiversity.org</a></td></tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>fotowiki</td><td>-</td><td>foto</td><td><a href="http://foto.wikia.com">http://foto.wikia.com</a></td></tr>
+<tr><td>kamelopedia</td><td>-</td><td>kamelo</td><td><a href="http://kamelopedia.mormo.org">http://kamelopedia.mormo.org</a></td></tr>
+<tr><td>uncyclopedia</td><td>-</td><td>unc</td><td><a href="http://uncyclopedia.org">http://uncyclopedia.org</a></td></tr>
+</table>

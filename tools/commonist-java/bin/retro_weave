@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# change into the project directory
+cd "$(dirname "$0")/.."
+
+[ -z "$RETROWEAVER_HOME" ] && {
+	echo >&2 "error: RETROWEAVER_HOME is not set"
+	exit 1
+}
+
+retro() {
+	java -cp $RETROWEAVER_HOME/release/retroweaver-all-2.0.7.jar:$RETROWEAVER_HOME/lib/asm-2.2.jar:$RETROWEAVER_HOME/lib/asm-commons-2.2.jar net.sourceforge.retroweaver.Weaver "$@"
+}
+
+### HACK
+[ ! -d "build/classes" ] && ant compile
+
+rm -rf build/retro
+mkdir build/retro
+
+mkdir build/retro/lib
+cp $RETROWEAVER_HOME/release/retroweaver-rt-2.0.7.jar build/retro/lib
+for f in lib/*; do
+	retro -jar "$f" "build/retro/lib/$(basename "$f")"
+done
+
+cp -r build/classes build/retro/classes
+retro -source build/retro/classes

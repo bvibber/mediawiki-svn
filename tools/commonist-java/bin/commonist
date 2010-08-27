@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# change into the project directory
+cd "$(dirname "$0")/.."
+
+# change these if you want to use a specific JDK
+#export JAVA_HOME=/usr/local/java/j2sdk1.4.2_13
+#export JAVA_HOME=/usr/local/java/jdk1.5.0_12
+#export JAVA_HOME=/usr/local/java/jdk1.6.0_02
+#export PATH=$JAVA_HOME/bin:$PATH
+
+# apple look
+#options="-Dapple.awt.brushMetalLook=true"
+
+# for debugging purposes only
+#options="-Xmx64m -verbosegc -Xrunhprof:heap=all,depth=10,thread=y,doe=y"
+#options="-Xmx64m -Dcom.sun.management.jmxremote"
+
+# tuning, remove the options your VM does not understand
+options=-Xmx192m
+
+# classpath
+classes=build/classes
+[ ! -d "$classes" ] && ant compile
+lib=lib
+classpath=$classes:$lib/bsh-2.0b2-fixed.jar:$lib/lib-util.jar:$lib/mwapi.jar:$lib/minibpp.jar:$lib/commons-httpclient-3.1.jar:$lib/commons-logging-1.1.jar:$lib/commons-codec-1.3.jar:$lib/jericho-html-3.1.jar
+	
+exec java $options -cp $classpath net.psammead.commonist.Commonist "$@"

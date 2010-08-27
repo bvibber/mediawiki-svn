@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="commonist" default="dist" basedir=".">
+	<!-- ==== configuration ==== -->
+
+	<!-- environment -->
+	<property environment="env"/>
+	<property file="${user.home}/.build.properties"/>	<!-- these override the project local version -->	
+	<property file="build.properties"/>
+	
+	<!-- project specifics -->
+	<property name="source.jars"	value="lib-util-src.jar,mwapi-src.jar,minibpp-src.jar"/>
+	<property name="binary.jars"	value="lib-util.jar,mwapi.jar,minibpp.jar,bsh-2.0b2-fixed.jar,jericho-html-3.1.jar,commons-httpclient-3.1.jar,commons-codec-1.3.jar,commons-logging-1.1.jar"/>
+	
+	<!-- ==== main ==== -->
+	
+	<target name="clean" description="delete everything that can be rebuilt">
+		<delete dir="build"/>
+	</target>
+	
+	<!-- ==== compile ==== -->
+
+	<target name="compile" description="compile java classes">
+		<mkdir dir="build/classes"/>
+		<javac
+			srcdir="src" 
+			destdir="build/classes"
+			source="${java.source}"
+			target="${java.target}"
+			encoding="${java.encoding}"
+			deprecation="true"
+			extdirs="lib"
+			debug="true"
+		/>
+	</target>
+	
+	<target name="jar" depends="compile" description="create the binary jar file">
+		<mkdir dir="build/jar"/>
+		<jar jarfile="build/jar/${project}.jar">
+			<zipfileset dir="build/classes"/>
+			<zipfileset dir=".">
+				<include name="image/${ws.icon}"/>
+				<include name="image/${ws.splash}"/>
+				<include name="etc/startup.bsh"/>
+				<include name="etc/licenses.txt"/>
+				<include name="etc/messages.properties"/>
+				<include name="etc/messages_*.properties"/>
+				<include name="etc/image_*.bpp"/>
+				<include name="etc/gallery_*.bpp"/>
+			</zipfileset>
+			<manifest>
+				<attribute name="Application"	value="${description}" />
+				<attribute name="Version"		value="${version}" />
+				<attribute name="Creator"		value="${author}"/>
+				<attribute name="License"		value="${license}"/>
+				
+				<!-- 
+				TODO: use a property, add binary.jars to classpath (manifestclasspath from ant 1.7.0)
+				<attribute name="Main-Class"	value="net.psammead.commonist.Commonist"/>
+				-->
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="doc" description="prepare documentation files">
+		<mkdir dir="build/doc"/>
+		<fixcrlf  srcDir="doc" destDir="build/doc" includes="changes.txt,index.html"
+			tab="remove" tablength="4" eol="crlf" eof="remove" encoding="ISO-8859-1" fixlast="true" />
+		<replace file="build/doc/index.html" token="$(project)" value="${project}"/>
+		<replace file="build/doc/index.html" token="$(version)" value="${version}"/>
+	</target>
+	
+	<!-- ==== full dist ==== -->
+	
+	<target name="dist" depends="compile" description="create a distribution zip">
+		<mkdir dir="build"/>
+		<zip destfile="build/${project}-${version}.zip">
+			<zipfileset dir="." prefix="${project}-${version}" filemode="770">
+				<include name="bin/*"/> 
+			</zipfileset>
+			<zipfileset dir="." prefix="${project}-${version}">
+				<include name="doc/index.html"/>
+				<include name="doc/changes.txt"/>
+				<include name="build.*"/>
+				<include name="src/**"/>
+				<include name="etc/**"/>
+				<exclude name="${sign.keystore}"/>
+				<include name="image/**"/>
+				<include name="lib/**"/>
+				<include name="build/classes/**"/>
+			</zipfileset>
+		</zip>
+	</target>
+	
+	<!-- ==== macintosh app ==== -->
+	
+	<target name="mac-dist" depends="jar" description="create a macintosh .app">
+		<mkdir dir="build/etc"/>
+		<copy file="etc/Info.plist" toDir="build/etc"/>
+		<replace file="build/etc/Info.plist" value="###">
+			<replacefilter token="@bundleName@"			value="${mac.bundle.name}"/>
+			<replacefilter token="@bundleIdentifier@"	value="${mac.bundle.identifier}"/>
+			<replacefilter token="@bundleIcons@"		value="${mac.bundle.icons}"/>
+			<replacefilter token="@bundleInfoString@"	value="${version}"/>
+			<replacefilter token="@bundleVersion@"		value="${version}"/>
+			<replacefilter token="@bundleShortVersion@"	value="${version}"/>
+		</replace>
+		
+		<mkdir dir="build"/>
+		<zip destfile="build/${mac.app}.zip">
+			<zipfileset dir="/System/Library/Frameworks/JavaVM.framework/Versions/Current/Resources/MacOS" 
+				includes="JavaApplicationStub" 	prefix="${mac.app}/Contents/MacOS" filemode="777"/>
+			<zipfileset dir="etc"		includes="PkgInfo"				prefix="${mac.app}/Contents"/>
+			<zipfileset dir="build/etc"	includes="Info.plist"			prefix="${mac.app}/Contents"/>
+			<zipfileset dir="image"		includes="${mac.bundle.icons}"	prefix="${mac.app}/Contents/Resources"/>
+			<zipfileset dir="lib"		includes="${binary.jars}"		prefix="${mac.app}/Contents/Resources/Java"/>
+			<zipfileset dir="build/jar"	includes="${project}.jar"		prefix="${mac.app}/Contents/Resources/Java"/>
+		</zip>
+	</target>
+
+	<!-- ==== webstart app ==== -->
+	
+	<target name="ws-genkey" description="generates a keyStore for signing our jars">
+		<genkey alias="${sign.alias}" storepass="${sign.storepass}" 
+				keystore="${sign.keystore}" keypass="${sign.keypass}"
+				dname="${sign.dname}"/>
+	</target>
+	
+	<target name="ws-sign" depends="jar" description="create signed versions of all jars for webstart">
+		<mkdir dir="build/ws"/>
+		<copy toDir="build/ws">
+			<fileset dir="build/jar"/>
+			<fileset dir="lib" includes="${binary.jars}"/>
+		</copy>
+		<signjar 
+			alias="${sign.alias}"
+			storepass="${sign.storepass}"
+			keystore="${sign.keystore}"
+			keypass="${sign.keypass}"
+		>
+			<!-- jar="build/signed-jar/${project}.jar" -->
+			<fileset dir="build/ws" includes="*.jar"/>
+		</signjar>
+	</target>
+	
+	<target name="ws-dist" depends="ws-sign" description="create a zipfile containing everything needed for webstart">
+		<copy file="etc/${ws.jnlp}" toDir="build/ws"/>
+		<replace file="build/ws/${ws.jnlp}" value="###">
+			<replacefilter token="@jnlp@"			value="${ws.jnlp}"/>
+			<replacefilter token="@title@"			value="${ws.title}"/>
+			<replacefilter token="@vendor@"			value="${ws.vendor}"/>
+			<replacefilter token="@icon@"			value="${ws.icon}"/>
+			<replacefilter token="@splash@"			value="${ws.splash}"/>
+			<replacefilter token="@codebase@"		value="${ws.codebase}"/>
+			<replacefilter token="@mainclass@"		value="${ws.mainclass}"/>
+			<replacefilter token="@homepage@"		value="${ws.homepage}"/>
+			<replacefilter token="@description@"	value="${ws.description}"/>
+			<replacefilter token="@shortdesc@"		value="${ws.shortdesc}"/>
+		</replace>
+		<zip destfile="build/${project}-${version}-ws.zip">
+			<zipfileset dir="build/ws">
+				<include name="${ws.jnlp}"/>
+				<include name="*.jar"/>
+			</zipfileset>
+			<zipfileset dir="image">
+				<include name="${ws.icon}"/>
+				<include name="${ws.splash}"/>
+			</zipfileset>
+		</zip>
+	</target>
+	
+	<!-- ==== export ==== -->
+	
+	<target name="import" description="import artefacts from other projects">
+		<ant dir="../mwapi" antfile="build.xml" target="export" inheritAll="false"/>
+		<copy toDir="lib">
+			<fileset dir="../mwapi/build/export"	includes="lib-util.jar,lib-util-src.jar"/>
+			<fileset dir="../mwapi/build/export"	includes="mwapi.jar,mwapi-src.jar"/>
+			<fileset dir="../mwapi/build/export"	includes="jericho-html-3.1.jar,commons-httpclient-3.1.jar,commons-codec-1.3.jar,commons-logging-1.1.jar"/>
+		</copy>
+		
+		<ant dir="../minibpp" antfile="build.xml" target="export" inheritAll="false"/>
+		<copy toDir="lib">
+			<fileset dir="../minibpp/build/export" includes="minibpp.jar,minibpp-src.jar"/>
+		</copy>
+	</target>
+	
+	<target name="export" depends="doc,dist,ws-dist" description="create artefacts">
+		<property name="export.dir" value="build/export"/>
+		<mkdir dir="${export.dir}"/>
+		<copy todir="${export.dir}">
+			<fileset dir="build/doc"	includes="changes.txt,index.html"/>
+			<fileset dir="build"		includes="${project}-${version}.zip"/>
+		</copy>
+		<unzip src="build/${project}-${version}-ws.zip" dest="${export.dir}/ws" overwrite="true"/>
+	</target>
+</project>
