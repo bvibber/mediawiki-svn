@@ -495,12 +495,10 @@ class PagedTiffHandler extends ImageHandler {
 		if ( is_string( $metadata ) ) $metadata = unserialize( $metadata );
 
 		if ( !isset( $metadata['TIFF_METADATA_VERSION'] ) ) {
-			print "(NO VERSION)\n";
 			return false;
 		}
 
 		if ( $metadata['TIFF_METADATA_VERSION'] != TIFF_METADATA_VERSION ) {
-			print "(BAD VERSION: {$metadata['TIFF_METADATA_VERSION']})\n";
 			return false;
 		}
 
