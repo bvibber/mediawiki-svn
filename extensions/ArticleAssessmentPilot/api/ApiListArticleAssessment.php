@@ -15,8 +15,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 		$result = $this->getResult();
 
-		$this->addTables( 'article_assessment_pages' );
-		$this->addTables( 'article_assessment_ratings' );
+		$this->addTables( array( 'article_assessment_pages', 'article_assessment_ratings' ) );
 
 		$this->addFields( array( 'aap_page_id', 'aap_total', 'aap_count', 'aap_rating_id', 'aar_rating' ) );
 
@@ -28,16 +27,18 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$assessments = array();
+		$ratings = array();
 
 		foreach ( $res as $row ) {
-			if ( !isset( $assessments[$row->aap_page_id] ) ) {
-				$assessments[$row->aap_page_id] = array(
-					'pageid' => $row->aap_page_id,
+			$pageId = $row->aap_page_id;
+
+			if ( !isset( $ratings[$pageId] ) ) {
+				$ratings[$pageId] = array(
+					'pageid' => $pageId,
 				);
 			}
 
-			$assessments[$row->aap_page_id]['ratings'][$row->aap_rating_id] = array(
+			$ratings[$pageId]['ratings'][] = array(
 				'ratingid' => $row->aap_rating_id,
 				'ratingdesc' => $row->aar_rating,
 				'total' => $row->aap_total,
@@ -45,9 +46,9 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			);
 		}
 
-		foreach ( $assessments as $ass ) {
-			$result->setIndexedTagName( $ass['ratings'], 'r' );
-			$result->addValue( array( 'query', $this->getModuleName() ), null, $ass );
+		foreach ( $ratings as $rat ) {
+			$result->setIndexedTagName( $rat['ratings'], 'r' );
+			$result->addValue( array( 'query', $this->getModuleName() ), null, $rat );
 		}
 
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'aa' );
