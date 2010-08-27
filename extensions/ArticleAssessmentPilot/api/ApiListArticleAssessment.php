@@ -18,9 +18,9 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		$this->addTables( 'article_assessment_pages' );
 		$this->addTables( 'article_assessment_ratings' );
 
-		$this->addFields( array( 'aap_page_id', 'aap_total', 'aap_count', 'aap_rating_id', 'aam_rating' ) );
+		$this->addFields( array( 'aap_page_id', 'aap_total', 'aap_count', 'aap_rating_id', 'aar_rating' ) );
 
-		$this->addWhereFld( 'aap_rating_id', 'aam_rating_id' );
+		$this->addWhere( 'aap_rating_id = aar_id' );
 
 		if ( isset( $params['pageid'] ) ) {
 			$this->addWhereFld( 'aap_page_id', $params['pageid'] );
@@ -37,15 +37,16 @@ class ApiListArticleAssessment extends ApiQueryBase {
 				);
 			}
 
-			$assessments[$row->aap_page_id]['ratings']['r' . $row->aap_rating] = array(
+			$assessments[$row->aap_page_id]['ratings'][$row->aap_rating_id] = array(
 				'ratingid' => $row->aap_rating_id,
-				'ratingdesc' => $row->aam_rating,
+				'ratingdesc' => $row->aar_rating,
 				'total' => $row->aap_total,
 				'count' => $row->aap_count
 			);
 		}
 
 		foreach ( $assessments as $ass ) {
+			$result->setIndexedTagName( $ass['ratings'], 'r' );
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $ass );
 		}
 
