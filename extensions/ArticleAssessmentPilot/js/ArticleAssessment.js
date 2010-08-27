@@ -72,7 +72,7 @@
 					$output.find( '.article-assessment-rating-fields' )
 						.append( $( settings.fieldHTML
 							.replace( /\{LABEL\}/g, settings.fieldPrefix + settings.fieldMessages[field] )
-							.replace( /\{NAME\}/g, settings.fieldMessages[field] )
+							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
 							.replace( /\{HINT\}/g, settings.fieldPrefix + settings.fieldMessages[field] + settings.fieldHintSuffix ) ) );
 					$output.find( '#article-assessment-ratings' )
 						.append( $( settings.ratingHTML
@@ -81,10 +81,12 @@
 							.replace( /\{COUNT\}/g, 'field-count' ) ) 
 							);
 				}
-				$( '#catLinks' ).before( $output );
+				
+				$( '#catlinks' ).before( $output );
 				
 				// initialize the star plugin 
 				$( '.rating-field' ).each( function() {
+					console.log(this);
 					$( this )
 						.wrapAll( '<div class="rating-field"></div>' )
 						.parent()
@@ -93,7 +95,7 @@
 							callback: function( value, link ) {
 								// remove any stale classes
 								value.$stars.each( function() {
-									$(this).removeClass( 'ui-stars-star-stale' );
+									$( this ).removeClass( 'ui-stars-star-stale' );
 								} );
 							}
 						 } );
@@ -138,6 +140,10 @@
 	};
 	// FIXME - this should be moved out of here
 	$( document ).ready( function () {
-		$.ArticleAssessment.fn.init( { 'endpoint': 'hello' } );		
+		mw.usability.load( [ '$j.ui' ], function() {
+			$.getScript( wgScriptPath + '/extensions/ArticleAssessmentPilot/js/jquery.ui.stars.js', function() {
+				$.ArticleAssessment.fn.init( { 'endpoint': wgScriptPath + "/api.php" } );
+			} );
+		} );
 	} ); //document ready
 } )( jQuery );

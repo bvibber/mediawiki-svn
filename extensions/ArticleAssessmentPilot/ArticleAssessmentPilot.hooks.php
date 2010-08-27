@@ -15,8 +15,6 @@ class ArticleAssessmentPilotHooks {
 		array( 'src' => 'js/ArticleAssessment.js', 'version' => 1 ),
 		array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
 		array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
-		//array( 'src' => 'js/jquery.ui.stars.js', 'version' => 1 ),
-		array( 'src' => 'js/jquery.ui.stars.min.js', 'version' => 1 ),
 	);
 
 	/* Static Functions */
