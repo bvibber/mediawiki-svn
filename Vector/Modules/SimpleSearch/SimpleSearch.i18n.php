@@ -788,6 +788,14 @@ $messages['sl'] = array(
 	'vector-simplesearch-containing' => 'vsebujoč ...',
 );
 
+/** Albanian (Shqip)
+ * @author Mikullovci11
+ */
+$messages['sq'] = array(
+	'vector-simplesearch-search' => 'Kërko',
+	'vector-simplesearch-containing' => 'përmban ...',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић

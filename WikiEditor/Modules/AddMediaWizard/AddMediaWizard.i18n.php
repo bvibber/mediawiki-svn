@@ -319,9 +319,10 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
-	'wikieditor-addMediaWizard-preference' => '"मीडिया सहाय्यक समावेश" सुविधा(गॅजेट) सक्षम करा',
+	'wikieditor-addMediaWizard-preference' => '"मीडिया सहाय्यक समावेश" सुविधा (गॅजेट) सक्षम करा',
 );
 
 /** Malay (Bahasa Melayu)

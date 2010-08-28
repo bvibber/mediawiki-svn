@@ -629,7 +629,7 @@ $messages['ml'] = array(
  * @author V.narsikar
  */
 $messages['mr'] = array(
-	'wikieditor-template-editor-preference' => 'विकि साचांचे नमुना संपादन सक्षम करा',
+	'wikieditor-template-editor-preference' => 'विकि साच्यांची नमुना संपादन सक्षम करा',
 	'wikieditor-template-editor-dialog-title' => 'साच्याचे संपादन करा',
 	'wikieditor-template-editor-dialog-submit' => 'अद्ययावत करा',
 	'wikieditor-template-editor-dialog-cancel' => 'रद्द करा',
