@@ -37,5 +37,5 @@ $wgExtensionCredits['other'][] = array(
 	'author' => array( 'Nimish Gautam', 'Sam Reed' ),
 	'version' => '0.1.0',
 	'descriptionmsg' => 'articleassessment-desc',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAsessmentPilot'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAssessmentPilot'
 );
