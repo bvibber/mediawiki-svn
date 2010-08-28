@@ -21,6 +21,7 @@
 // TODO: Class comment
 // TODO: Add an interface to inherit from rather than having to subclass this class, or add an empty-returning superclass
 class ResourceLoaderModule {
+	private $name = null;
 	private $scripts = array();
 	private $styles = array();
 	private $messages = array();
@@ -95,6 +96,14 @@ class ResourceLoaderModule {
 					break;
 			}
 		}
+	}
+	
+	public function getName() {
+		return $this->name;
+	}
+	
+	public function setName( $name ) {
+		$this->name = $name;
 	}
 	
 	/**
@@ -309,15 +318,44 @@ class ResourceLoaderModule {
 		return self::concatScripts( $this->loaders );
 	}
 	
+	/**
+	 * Get the last modified timestamp of this module, which is calculated
+	 * as the highest last modified timestamp of its constituent files and
+	 * the files it depends on (see getFileDependencies()). Only files
+	 * relevant to the given language and skin are taken into account, and
+	 * files only relevant in debug mode are not taken into account when
+	 * debug mode is off.
+	 * @param $lang string Language code
+	 * @param $skin string Skin name
+	 * @param $debug bool Debug mode flag
+	 * @return int UNIX timestamp
+	 */
 	public function getmtime( $lang, $skin, $debug ) {
 		$files = array_merge( $this->scripts, $this->styles,
 			$debug ? $this->debugScripts : array(),
 			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
 			(array)self::getSkinFiles( $skin, $this->skinScripts ),
 			(array)self::getSkinFiles( $skin, $this->skinStyles ),
-			$this->loaders
+			$this->loaders,
+			$this->getFileDependencies( $lang, $skin )
 		);
 		return max( array_map( 'filemtime', $files ) );
+	}
+	
+	/**
+	 * Get the files this module depends on indirectly for a given skin.
+	 * Currently these are only image files referenced by the module's CSS.
+	 * @param $skin string Skin name
+	 * @return array of files
+	 */
+	public function getFileDependencies( $skin ) {
+		$dbr = wfGetDb( DB_SLAVE );
+		$deps = $dbr->selectField( 'module_deps', 'md_deps', array(
+				'md_module' => $this->getName(),
+				'md_skin' => $skin,
+			), __METHOD__
+		);
+		return $deps ? FormatJson::decode( $deps ) : array();
 	}
 	
 	/**
@@ -330,15 +368,30 @@ class ResourceLoaderModule {
 		return implode( "\n", array_map( 'file_get_contents', array_unique( (array) $files ) ) );
 	}
 	
+	/**
+	 * Get the contents of a set of CSS files, remap then and concatenate
+	 * them, with newlines in between. Each file is used only once.
+	 * @param $files array Array of file names
+	 * @return string Concatenated and remapped contents of $files
+	 */
 	protected static function concatStyles( $files ) {
 		return implode( "\n", array_map( array( 'ResourceLoaderModule', 'remapStyle' ), array_unique( (array) $files ) ) );
 	}
 	
+	/**
+	 * Get the contents of a CSS file and run it through CSSMin::remap().
+	 * This wrapper is needed so we can use array_map() in concatStyles()
+	 * @param $file string File name
+	 * @return string Remapped CSS
+	 */
 	protected static function remapStyle( $file ) {
 		return CSSMin::remap( file_get_contents( $file ), dirname( $file ) );
 	}
 }
 
+/**
+ * Custom module for MediaWiki:Common.js and MediaWiki:Skinname.js
+ */
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	public function getSkinScript( $skin ) {
 		return Skin::newFromKey( $skin )->generateUserJs();
@@ -367,6 +420,7 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	}
 	
 	// Dummy overrides to return emptyness
+	// FIXME: Use a parent class with emptyness and let the normal module class inherit from that
 	public function getScript() { return ''; }
 	public function getStyle() { return ''; }
 	public function getMessages() { return array(); }

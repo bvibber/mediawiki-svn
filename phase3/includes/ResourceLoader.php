@@ -113,7 +113,10 @@ class ResourceLoader {
 	/* Static Methods */
 	
 	/**
-	 * Registers a module with the ResourceLoader system
+	 * Registers a module with the ResourceLoader system.
+	 *
+	 * Note that registering the same object under multiple names is not supported and may silently fail in all
+	 * kinds of interesting ways.
 	 * 
 	 * @param {mixed} $name string of name of module or array of name/object pairs
 	 * @param {ResourceLoaderModule} $object module object (optional when using multiple-registration calling style)
@@ -137,6 +140,7 @@ class ResourceLoader {
 		}
 		// Attach module
 		self::$modules[$name] = $object;
+		$object->setName( $name );
 	}
 	
 	/**

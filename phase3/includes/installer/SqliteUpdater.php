@@ -42,6 +42,7 @@ class SqliteUpdater extends DatabaseUpdater {
 				array( 'add_table', 'msg_resource',                      'patch-msg_resource.sql' ),
 				array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix',  'patch-kill-iwl_prefix.sql' ),
 				array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix_from_title', 'patch-kill-iwl_pft.sql' ),
+				array( 'add_table', 'module_deps',                       'patch-module_deps.sql' ),
 			),
 		);
 	}
