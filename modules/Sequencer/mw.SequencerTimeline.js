@@ -212,14 +212,21 @@ mw.SequencerTimeline.prototype = {
 		
 		// Add global TrackClipInterface bindings:
 		var keyBindings = this.sequencer.getKeyBindings();		 
-		keyBindings.bindEvent({
-			'escape': function(){
-				_this.getTimelineContainer().find( '.selectedClip' ).removeClass( 'selectedClip' );
-			},
-			'delete': function(){
-				_this.removeSelectedClips();
+		$j( keyBindings ).bind('escape', function(){
+			// If a clips are selected deselect
+			var selectedClips = _this.getTimelineContainer().find( '.selectedClip' )
+			if( selectedClips.length ){
+				selectedClips.removeClass( 'selectedClip' );
+				return; 
 			}
-		})	
+			// Else trigger an exit request
+			_this.sequencer.getActionsSequence().exit();
+			// stop event propagation
+			return false;
+		});
+		$j( keyBindings ).bind('delete', function(){
+				_this.removeSelectedClips();
+		});
 	},
 	
 	getTrackSetId:function( trackIndex ){

@@ -9,6 +9,9 @@
 $messages = array();
 $messages['en'] = array(
 	'mwe-sequencer-loading-sequencer' => 'Loading sequencer ...',
+	
+	'mwe-sequencer-visual-editor'=> "Visual sequence editor",
+	'mwe-sequencer-text-editor-warn'=> 'Text XML editor ( not recommended ) ',
 	'mwe-sequencer-loading-timeline' => 'Loading timeline ...',
 	'mwe-sequencer-loading-player' => 'Loading player ...',
 	'mwe-sequencer-loading-menu' => 'Loading menu ...',
@@ -76,10 +79,12 @@ $messages['en'] = array(
 
 	'mwe-sequencer-save-no-changes' => 'There are no new edits to save',
 	'mwe-sequencer-save-summary' => 'Please enter a short summary of changes:',
-	'mwe-sequencer-edit_cancel' => 'Cancel sequence edit',
-	
+	'mwe-sequencer-edit_cancel' => 'Cancel sequence edit',	
 	'mwe-sequencer-saving_wait' => 'Save in progress (please wait)',
 	'mwe-sequencer-save_done' => 'Save complete',
+
+	'mwe-sequencer-open-summary' => "Enter the name of the sequence you would like to open",
+	
 
 
 	'mwe-sequencer-not-published' => 'This sequence has not yet been published. <i>Browser preview is shown</i>. <b>[$1 Review and publish this sequence]</b>.',

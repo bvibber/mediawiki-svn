@@ -13,9 +13,33 @@ mw.addMessageKeys( [
 	"mwe-sequencer-embed-sequence-desc",
 	"mwe-sequencer-loading-sequencer",
 	
+	"mwe-sequencer-visual-editor",
+	"mwe-sequencer-text-editor-warn",
+	
+	
 	"mwe-sequencer-not-published",
 	"mwe-sequencer-published-out-of-date"
 ]);
+
+/* exported functions */
+
+/**
+ * Special wrapper for sequence links when in 'extension' mode 
+ * there is no need for js rewrite helpers 
+ * 	   
+ *  @param {String} url The url to be wrapped  
+ */
+mw.getRemoteSequencerLink = function( url ){
+	if( mw.getConfig( 'Sequencer.WithJsMwEmbedUrlHelper' ) ){
+		if( url.indexOf('?') == -1){
+			url+='?'
+		} else {
+			url+='&'
+		}
+		url+='withJS=MediaWiki:MwEmbed.js';
+	}
+	return url;
+},
 
 mw.MediaWikiRemoteSequencer = function( options ) {
 	return this.init( options ); 
@@ -29,14 +53,17 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		this.action = ( options.action )? options.action : this.action;
 		this.title = ( options.title )? options.title : this.title;
 		this.target = ( options.target )? options.target : this.target;
-	},
+	},	
 	
 	drawUI: function() {		
 		// Check page action 
 		if( this.action == 'view' ) {	
 			this.showViewUI();
 		}	
-	},
+		if( this.action == 'edit' ){
+			this.showEditUI();
+		}
+	},	
 	/**
 	* Check page for sequence
 	* if not present give link to "create" one. 
@@ -72,9 +99,48 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			_this.displayPlayerEmbed();							
 		}
 	},	
+	
+	showEditUI: function(){
+ 
+		$j('#bodyContent').prepend(
+			// Append switch visual / text editor links
+			$j('<div />')
+			.append( 
+				$j.button({ 
+					'icon' : 'video',
+					'text' : gM( "mwe-sequencer-visual-editor")
+				}).click( function(){
+					$j('#sequencerContainer').show();
+					$j('#editform').hide();
+				}),
+				$j.button({
+					'icon' : 'script'
+					'text' : gM("mwe-sequencer-text-editor-warn")
+				}).click(function(){
+					$j('#sequencerContainer').hide();
+					$j('#editform').show();
+				}),
+				$j('<div />')
+				.css({
+					'width' : '100%',
+					'height' : '700px'
+				})
+				.attr({
+					'id', 'sequencerContainer'
+				})
+			)
+		);
+		// load the sequence editor with the sequencerContainer target
+		mw.load( 'Sequencer', function(){ 	 				
+			$j('#sequencerContainer').sequencer( _this.getSequencerConfig() );
+		});
+	},
+	
+	
 	getSequenceFileKey: function( wgPageName ){
 		return 'File:' + wgPageName.replace( 'Sequence:', 'Sequence-') + '.ogv';
 	},
+	
 	displayPlayerEmbed: function(){
 		var _this = this;
 		// load the embedPlayer module: 
@@ -88,6 +154,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				'iiurlwidth': '400',		
 				'redirects' : true // automatically follow redirects
 			};
+			
 			var $embedPlayer = $j('<div />'); 
 			mw.getJSON( request, function( data ){
 				if(!data.query || !data.query.pages || data.query.pages[-1]){
@@ -152,13 +219,14 @@ mw.MediaWikiRemoteSequencer.prototype = {
 						)
 					}
 				} 
+				var width = ( imageinfo.thumbwidth )?imageinfo.thumbwidth : '400px';
 				// Display embed sequence
 				$j( _this.target ).empty().append(
 					$j('<div />')
 					.addClass( 'sequencer-player')
 					.css( {
 						'float' : 'left',
-						'width' : imageinfo.thumbwidth
+						'width' : width
 					})
 					.append( 
 						$embedPlayer			
@@ -194,7 +262,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 					),
 					
 					// Add a clear both to give content body height
-					$j('<div />').css({'clear': 'both'})
+					$j('<div />').css( { 'clear': 'both' } )
 				)
 				// Rewrite the player
 				$j('#embedSequencePlayer').embedPlayer();				
@@ -226,38 +294,42 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				)
 				.css( {'width':'200px', 'margin':'auto'})
 			)
-		)
-		
-		mw.load( 'Sequencer', function(){ 	 		
-			// Send a jquery ui style destroy command
+		)		
+		mw.load( 'Sequencer', function(){ 	 
+			var _this = this;
+			// Send a jquery ui style destroy command ( in case the editor is re-invoked )
 			$j('#edit_sequence_container').sequencer( 'destroy');
-			$j('#edit_sequence_container').sequencer({
-				// The title for this sequence:
-				title : _this.getTitle(),
-				// If the sequence is new
-				newSequence : ( wgArticleId == 0 ),
-				// Server config:
-				server: {
-					'type' : 'mediaWiki',
-					'url' : _this.getApiUrl(),
-					'titleKey' : wgPageName,			
-				},
-	    		// Set the add media wizard to only include commons:   
-	    		addMedia : {
-	    			 'enabled_providers':[ 'wiki_commons' ],	    			 
-	    			 'default_query' : _this.getTitle()	    			 
-	    		},
-	    		// Function called on sequence exit 
-	    		onExitCallback: function( sequenceHasChanged ){	    			
-	    			if( sequenceHasChanged ){
-	    				window.location.reload();
-	    			}
-	    			// else do nothing
-	    		}
-			});
+			$j('#edit_sequence_container').sequencer( _this.getSequencerConfig() );
 		});
 	},
-	
+	getSequencerConfig: function(){
+		var _this = this;
+		return {
+			// The title for this sequence:
+			title : _this.getTitle(),
+			// If the sequence is new
+			newSequence : ( wgArticleId == 0 ),
+			// Server config:
+			server: {
+				'type' : 'mediaWiki',
+				'url' : _this.getApiUrl(),
+				'titleKey' : wgPageName,
+				'pagePathUrl' : wgServer + wgArticlePath
+			},
+    		// Set the add media wizard to only include commons:   
+    		addMedia : {
+    			 'enabled_providers':[ 'wiki_commons' ],	    			 
+    			 'default_query' : _this.getTitle()	    			 
+    		},
+    		// Function called on sequence exit 
+    		onExitCallback: function( sequenceHasChanged ){	    			
+    			if( sequenceHasChanged ){
+    				window.location.reload();
+    			}
+    			// else do nothing
+    		}
+		}
+	},	
 	getApiTitleKey: function(){
 		return wgTitle;
 	},

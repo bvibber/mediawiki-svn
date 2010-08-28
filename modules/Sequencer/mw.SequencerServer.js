@@ -26,6 +26,9 @@
 		// The sequence title key for api queries 
 		titleKey: null,
 		
+		// The Url path the the sequence page with $1 where the title should be  
+		pagePathUrl: null,
+		
 		// Stores the most recent version of the sequence xml from the server 
 		serverSmilXml: null, 
 		
@@ -42,12 +45,20 @@
 				
 			// NOTE this should trigger an apiHandler once we have more than one api backend
 			if( serverConfig ){
+				
 				if( serverConfig.type )
 					this.apiType = serverConfig.type;		
+				
 				if( serverConfig.url )
 					this.apiUrl = serverConfig.url;		
+				
 				if( serverConfig.titleKey )
 					this.titleKey = serverConfig.titleKey;
+				
+				if( serverConfig.pagePathUrl ){
+					this.pagePathUrl = serverConfig.pagePathUrl;
+				}
+				
 			}
 			if( this.isConfigured() ){
 				mw.log("Error: Sequencer server needs a full serverConfig to be initialized")
@@ -199,6 +210,32 @@
 				callback( false );
 			});
 		},
+		/**
+		 * Get the sequence description page url
+		 * @param {String} Optional Sequence title key
+		 */
+		getSequenceViewUrl: function( titleKey ){
+			if( !titleKey )
+				titleKey = this.titleKey;
+			// Check that we have a pagePathUrl config: 
+			if( !this.pagePathUrl ){
+				return false;
+			}
+			return this.pagePathUrl.replace( '$1', 'Sequence:' + titleKey);
+		},
+		/**
+		 * Get the sequencer 'edit' url
+		 */
+		getSequenceEditUrl: function( titleKey ){
+			if( !titleKey )
+				titleKey = this.titleKey;
+			// Check that we have a pagePathUrl config: 
+			if( !this.pagePathUrl ){
+				return false;
+			}
+			return this.pagePathUrl.replace( '$1', 'Sequence:' + titleKey);
+		},
+		
 		/**
 		 * Get the video file name for saving the flat video asset to the server
 		 * @return {String}

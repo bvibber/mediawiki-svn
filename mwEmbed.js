@@ -47,7 +47,9 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	mw.validSkins = [ 'mvpcf', 'kskin' ];
 		
 	// Storage variable for loaded style sheet keys
-	mw.style = { };
+	if( ! mw.style ){
+		mw.style = { };
+	}
 	
 	/**
 	 * Configuration System:

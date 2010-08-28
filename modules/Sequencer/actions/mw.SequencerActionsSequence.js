@@ -15,6 +15,72 @@ mw.SequencerActionsSequence.prototype = {
 	init: function( sequencer ) {
 		this.sequencer = sequencer; 
 	},	
+	
+	/**
+	 * present an open dialog to the user, and open the sequence in a new window
+	 */
+	open: function(){
+		var _this = this;
+		var $content = $j('<div />').append( 
+				gM('mwe-sequencer-open-summary' ),
+				$j('<input />')								
+				.css({ 'width': 400 })			
+				.attr({					
+					'id' : 'sequenceOpenNameInput',
+					'maxlength': 255 
+				})
+				// Make sure keys press does not affect the sequencer interface
+				.sequencerInput( _this.sequencer )
+			);
+		// XXX todo we should have an autocomplete on sequence name!
+		
+		var buttons = {};
+		buttons[ gM('mwe-cancel') ] = function(){ $j( this ).dialog( 'cancel' ) };
+		
+		// For now just support server based open .. ideally we could browse for file
+		var $dialog = mw.addDialog({
+			'resizable':'true',
+			'title' : gM('mwe-sequencer-menu-sequence-open-desc'),			
+			'content' : $content,
+			'buttons' : buttons,
+			'width' : 450
+		});
+		// Add a special open button
+		$dialog.parent().find( '.ui-dialog-buttonpane' ).prepend(
+			$j.button({
+				'icon' : 'folder-open',
+				'text' : gM('mwe-sequencer-menu-sequence-open')
+			})
+			// Match button layout
+			.css({
+				'margin':'0.5em 0.4em 0.5em 0',
+				'padding' : '0.2em 1.4em 0.3em'
+			})
+			.attr({				
+				'id' : 'sequenceOpenButton',
+				'target' : '_new',
+				'href' : '#'
+			}).click( function(){
+				// Update the link		
+				$j(this).attr({
+					'href':	
+						mw.getRemoteSequencerLink(
+							mw.escapeQuotesHTML( 
+								_this.sequencer.getServer().getSequenceViewUrl( 						
+										// ( Sequence: is automatically pre-appended with getSequencePageUrl
+										// ( don't use Sequence: in the title )
+										$j('#sequenceOpenNameInput').val().replace(/Sequence:/i, '')
+								)
+							)
+						)
+				});
+				// Close the dialog
+				$j(this).dialog( 'close' );
+				// Follow the link
+				return true;
+			})
+		)
+	},
 	save: function(){
 		var _this = this;	
 		var $dialog = mw.addDialog({
@@ -66,7 +132,6 @@ mw.SequencerActionsSequence.prototype = {
 			);
 			// Remove buttons while loading
 			$dialog.dialog( "option", "buttons", {} );
-			$dialog.dialog( "option", "title", gM('mwe-sequencer-saving_wait' ) );
 			
 			_this.sequencer.getServer().save( 		
 				/* Save summary */ 
@@ -194,8 +259,7 @@ mw.SequencerActionsSequence.prototype = {
 			.text("%"),
 			$j('<div />').attr( 'id', 'firefoggProgressbar')
 
-		);
-		$j('<div />').attr( 'id', 'firefoggProgressbar')
+		);		
 		// Embed the player and continue application flow			
 		$j('#publishVideoTarget').embedPlayer({
 			'controls' : false
@@ -212,9 +276,10 @@ mw.SequencerActionsSequence.prototype = {
 							progressPrecent + 
 						'%'
 					)
-					$j("#firefoggProgressbar").progressbar(
-						"option", "value", Math.round( progress * 100 )
-					);
+					mw.log( "set progrees to: " + Math.round( progress * 100 ) );
+					$j("#firefoggProgressbar").progressbar({
+						"value" : Math.round( progress * 100 )
+					});
 				},
 				'doneRenderCallback': function( fogg ){
 					_this.uploadRenderedVideo( $dialog, fogg );
@@ -281,7 +346,7 @@ mw.SequencerActionsSequence.prototype = {
 	uploadDone: function($dialog, apiResult){
 		var _this = this;
 		// Check the api response 				
-		if ( apiResult.error || ( apiResult.upload && 
+		if ( !apiResult || apiResult.error || ( apiResult.upload && 
 				( apiResult.upload.result == "Failure" || apiResult.upload.error ) ) ) {
 			
 			$dialog.dialog( 'option', 'title', gM('mwe-sequencer-publishing-error' ) );
@@ -292,12 +357,20 @@ mw.SequencerActionsSequence.prototype = {
 
 		// Success link to the sequence page / ok closes dialog
 		$dialog.dialog( 'option', 'title', gM('mwe-sequencer-publishing-success' ) );
+		var button = {};
+		button[ gM('mwe-ok') ] = function(){
+			$j( this ).dialog('close') 
+		};
+		$dialog.dialog( 'option', 'button', button );
+		// for some reason we lose button height :( (jquery bug ? ) 
+		$dialog.parent().css( 'height', $dialog.height() + 100 );
+		
 		$dialog.empty().html( gM('mwe-sequencer-publishing-success-desc', 
 			$j('<a />')
 			.attr({
 				'target': '_new',
 				'href': wgArticlePath.replace( '$1', 'File:' +_this.sequencer.getServer().getVideoFileName()	)
-			})			
+			})
 		) );
 		// Update the buttons
 		var buttons = {};

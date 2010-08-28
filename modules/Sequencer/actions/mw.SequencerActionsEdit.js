@@ -17,15 +17,15 @@ mw.SequencerActionsEdit.prototype = {
 	editStack : [],
 	
 	// Store the edit index  
-	editIndex : 0,
-	
-	// The numbers of undos supported 
-	numberOfUndos : mw.getConfig( 'Sequencer.numberOfUndos' ),
+	editIndex : 0,	
 	
 	init: function( sequencer ) {
 		this.sequencer = sequencer; 		
 	},	
-	
+	// return the configured numbers of undos supported 
+	getNumberOfUndos: function(){
+		return mw.getConfig( 'Sequencer.NumberOfUndos' );
+	},
 	selectAll: function(){
 		// Select all the items in the timeline
 		$target = this.sequencer.getTimeline().getTimelineContainer();
@@ -60,9 +60,15 @@ mw.SequencerActionsEdit.prototype = {
 			this.editStack = this.editStack.splice(0, this.editIndex);
 		}
 		
+		// Shift the undo index if we have hit our max undo size
+		if( this.editStack.length > this.getNumberOfUndos() ){			
+			this.editStack = this.editStack.splice(0, 1 );
+		}
+		
 		// @@TODO could save space to just compute the diff in JS and store that
 		// ie: http://code.google.com/p/google-diff-match-patch/
 		// ( instead of the full xml text with "key-pages" every 10 edits or something like that. 
+		// ( should non-block compress in workerThread / need workerThread architecture ) 
 		this.editStack.push( currentXML );
 		
 		// Update the editIndex
@@ -70,6 +76,7 @@ mw.SequencerActionsEdit.prototype = {
 		
 		// Enable the undo option: 
 		this.sequencer.getMenu().enableMenuItem( 'edit', 'undo' );
+		this.sequencer.getMenu().enableMenuItem( 'sequencer', 'save' );
 	},
 	
 	/**

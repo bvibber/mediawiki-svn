@@ -162,7 +162,9 @@ mw.SmilBuffer.prototype = {
 		switch( this.smil.getRefType( smilElement ) ){
 			case 'video':
 				var vid = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
-				
+				if( !vid ){
+					break;
+				}
 				// The load request does not work very well instead .play() then .pause() and seek when on display
 				// vid.load();
 				
@@ -170,10 +172,8 @@ mw.SmilBuffer.prototype = {
 				if( vid.paused &&  this.getVideoPercetLoaded( smilElement ) == 0 ){
 					// Issue the load / play request 
 					vid.play();
-					vid.volume = 0;
-					
-					// XXX seek to clipBegin if provided ( we don't need to load before that point )
-				
+					vid.volume = 0;					
+					// XXX seek to clipBegin if provided ( we don't need to load before that point )				
 				} else {
 					//mw.log("loadElement:: pause video: " + this.smil.getPageDomId( smilElement ));
 					// else we have some percentage loaded pause playback 

@@ -13,9 +13,16 @@ mw.SequencerConfig = true;
 mw.setDefaultConfig({
 	// If the sequencer should attribute kaltura
 	"Sequencer.KalturaAttribution" : true,
-
+	
+	// If a the sequencer should open new windows 
+	"Sequencer.SpawnNewWindows" : true,
+	
+	// If a the sequencer should include withJS=MediaWiki:mwEmbed in created urls 
+	// ( save gards ) against users that are 'trying' the 
+	"Sequencer.WithJsMwEmbedUrlHelper" : true,
+	
 	// The size of the undo stack 
-	"Sequencer.numberOfUndos" : 100,
+	"Sequencer.NumberOfUndos" : 100,
 	
 	// Default image duration
 	"Sequencer.AddMediaImageDuration" : 2,

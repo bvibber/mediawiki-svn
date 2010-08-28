@@ -28,7 +28,7 @@ mw.SequencerAddByUrl.prototype = {
 	 *  @param  {Object} remoteSearchDriver The remote search driver
 	 */ 
 	addByUrlDialog: function( remoteSearchDriver, url ){
-		// see if the asset matches the key type of any enabled content provider: 
+		// See if the asset matches the detailsUrl key type of any enabled content provider: 
 		$j.each( remoteSearchDriver.getEnabledProviders(), function(providerName, provider){
 			
 		});	
