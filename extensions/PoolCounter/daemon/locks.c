@@ -1,3 +1,4 @@
+#define _XOPEN_SOURCE 500
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -49,7 +50,7 @@ char* process_line(struct client_data* cli_data, char* line, int line_len) {
 				fprintf(stderr, "Out of memory\n");
 				return "ERROR OUT_OF_MEMORY\n";
 			}
-			pCounter->htentry.key = key;
+			pCounter->htentry.key = strdup( key );
 			pCounter->htentry.key_hash = hash_value;
 			pCounter->count = 0;
 			pCounter->processing = 0;
@@ -146,6 +147,7 @@ void remove_client_lock(struct locks* l, int wakeup_anyones) {
 	l->parent->count--;
 	if ( !l->parent->count ) {
 		hashtable_remove( l->parent->htentry.parent_hashtable, &l->parent->htentry );
+		free( l->parent->htentry.key );
 		free( l->parent );
 	}
 }
