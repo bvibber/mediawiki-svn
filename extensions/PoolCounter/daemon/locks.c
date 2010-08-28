@@ -26,6 +26,22 @@ static struct hashtable* primary_hashtable;
 #define DOUBLE_LLIST_DEL(this) do { (this)->prev->next = (this)->next; (this)->next->prev = (this)->prev; } while (0)
 #define DOUBLE_LLIST_ADD(parent,child) do { (child)->prev = (parent)->prev; (child)->next = (child)->prev->next /* parent */; (parent)->prev->next = (child); (parent)->prev = (child); } while(0);
 
+/* Converts a numeric text into an unsigned integer.
+ * Returns 0 if it's a NULL pointer or not a natural.
+ */
+unsigned atou(char const* astext)  {
+	int num = 0;
+	if (!astext) return 0;
+	
+	while ( *astext ) {
+		if ( *astext < '0' ) return 0;
+		if ( *astext > '9' ) return 0;
+		num = num * 10 + *astext - '0';
+		astext++;
+	}
+	return num;
+}
+
 char* process_line(struct client_data* cli_data, char* line, int line_len) {
 	struct locks* l = &cli_data->client_locks;
 	
@@ -37,9 +53,13 @@ char* process_line(struct client_data* cli_data, char* line, int line_len) {
 		int for_anyone = line[6] != ' ';
 		
 		char* key = strtok( line + 7 + for_anyone, " " );
-		int workers = atoi( strtok(NULL, " ") );
-		int maxqueue = atoi( strtok(NULL, " ") );
-		int timeout = atoi( strtok(NULL, " ") );
+		unsigned workers = atou( strtok(NULL, " ") );
+		unsigned maxqueue = atou( strtok(NULL, " ") );
+		unsigned timeout = atou( strtok(NULL, " ") );
+		
+		if ( !key || !workers || !maxqueue || !timeout ) {
+			return "ERROR BAD_SYNTAX\n";
+		}
 		
 		uint32_t hash_value = hash( key, strlen( key ), 0 );
 		struct PoolCounter* pCounter;
