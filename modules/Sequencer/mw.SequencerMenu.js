@@ -36,7 +36,7 @@ mw.SequencerMenu.prototype = {
 			'save_divider': 'divider',
 			'save' : {
 				'icon' : 'disk',
-				'disabled' : true,
+				'disabled' : false,
 				'shortCut' : 'ctrl S',
 				'action' : function( _this ){
 					mw.log("SequencerMenu::save");
@@ -279,6 +279,9 @@ mw.SequencerMenu.prototype = {
 	},
 	
 	enableMenuItem: function( menuKey, menuItemKey ){		
+		if( !this.menuConfig[ menuKey ] || !this.menuConfig[ menuKey ][ menuItemKey ] ){
+			mw.log("Error: SequencerMenu: " + menuKey + ' ' + menuItemKey + ' is not defined');
+		}
 		this.menuConfig[ menuKey ][ menuItemKey ].disabled = false;		
 		$menuItemTarget = $j('#' + this.getMenuItemId( menuKey, menuItemKey ) );
 		

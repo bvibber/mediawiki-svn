@@ -100,11 +100,11 @@
 		hasLocalChanges: function(){
 			return ( this.serverSmilXml != this.sequencer.getSmil().getXMLString() );  
 		},
-		// Check if the sequence was saved in this edit sesssion
-		hasSequenceBeenSaved: function(){
-			return this.sequenceSaved;
+		// Check if the sequence was saved in this edit session
+		hasSequenceBeenSavedOrPublished: function(){
+			return this.sequenceSaved || this.sequencePublished
 		},
-		// Get a save token, if unable to do so return false
+		// Get a save token, if unable to do so return false 
 		getSaveToken: function( callback ){
 			var _this = this;
 			if( this.saveToken != null ){
@@ -196,8 +196,9 @@
 				'prop':'revisions',
 				'titles' : _this.titleKey,
 				'rvprop' : 'user|comment|timestamp'
-			};
+			};			
 			mw.getJSON( _this.getApiUrl(), request, function( data ) {
+				debugger;
 				if( data.query && data.pages ){
 					for( page_id in data.pages ){
 						var page = data.pages[page_id];
@@ -227,13 +228,8 @@
 		 * Get the sequencer 'edit' url
 		 */
 		getSequenceEditUrl: function( titleKey ){
-			if( !titleKey )
-				titleKey = this.titleKey;
-			// Check that we have a pagePathUrl config: 
-			if( !this.pagePathUrl ){
-				return false;
-			}
-			return this.pagePathUrl.replace( '$1', 'Sequence:' + titleKey);
+			var viewUrl = this.getSequenceViewUrl( titleKey );
+			return mw.replaceUrlParams(viewUrl, {'action':'edit'})
 		},
 		
 		/**
@@ -262,6 +258,10 @@
 					callback( _this.getApiUrl(), request );
 				});
 			});
+		},
+		// Setter for sequencePublished
+		sequencePublishUploadDone: function(){
+			this.sequencePublished = true;	
 		}
 	}
 

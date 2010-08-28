@@ -14,7 +14,7 @@
 		
 		// A default apiProvider ( ie where to lookup subtitles, video properties etc )
 		// NOTE: Each player instance can also specify a specific provider  
-		"EmbedPlayer.ApiProvider" : "commons",
+		"EmbedPlayer.ApiProvider" : "local",
 		
 		// What tags will be re-written to video player by default
 		// Set to empty string or null to avoid automatic video tag rewrites to embedPlayer 	
@@ -210,41 +210,26 @@
 	 * @param {Array} dependencyRequest The library request array
 	 */
 	mw.embedPlayerUpdateLibraryRequest = function(playerElement, dependencyRequest ){
-		var playerClassName = $j( playerElement ).attr( 'class' );	
-		var playerSkins = {};
-		
-		// Set playerClassName to default	
-		if( ! playerClassName ){
-			playerClassName = mw.getConfig( 'EmbedPlayer.SkinName' );
-		}		
-		// compre with lower case: 
-		playerClassName = playerClassName.toLowerCase();
-		for( var n=0; n < mw.validSkins.length ; n++ ) {
-			// Get any other skins that we need to load 
-			// That way skin js can be part of the single script-loader request: 
-			if( playerClassName.indexOf( mw.validSkins[ n ].toLowerCase() ) !== -1) {
-				// Add skin name to playerSkins
-				playerSkins[ mw.validSkins[ n ].toLowerCase() ] = true;
-			}
+		var skinName = $j( playerElement ).attr( 'class' );					
+		// Set playerClassName to default if unset or not a valid skin	
+		if( ! skinName || $j.inArray( skinName.toLowerCase(), mw.validSkins ) == -1 ){
+			skinName = mw.getConfig( 'EmbedPlayer.SkinName' );
+		}
+		skinName = skinName.toLowerCase();		
+		// Add the skin to the request 		
+		var skinCaseName =  skinName.charAt(0).toUpperCase() + skinName.substr(1);
+		// The skin js:		
+		if( $j.inArray( 'mw.PlayerSkin' + skinCaseName, dependencyRequest ) == -1 ){
+			dependencyRequest.push( 'mw.PlayerSkin' + skinCaseName );
+		}
+		// The skin css
+		if( $j.inArray( 'mw.style.PlayerSkin' + skinCaseName, dependencyRequest ) == -1 ){
+			dependencyRequest.push( 'mw.style.PlayerSkin' + skinCaseName );
 		}
 	
-		
-		// Add the player skins css and js to the load request:	
-		for( var pSkin in playerSkins ) {
-			// Make sure first letter of skin is upper case to load skin class: 
-			var f = pSkin.charAt(0).toUpperCase();
-    		pSkin =  f + pSkin.substr(1);
-    	
-			// Add skin js
-			dependencyRequest.push( 'mw.PlayerSkin' + pSkin );	
-			// Add the skin css 
-			dependencyRequest.push( 'mw.style.PlayerSkin' + pSkin );
-		}	
-		
 		// Allow extension to extend the request. 				
 		$j( mw ).trigger( 'LoaderEmbedPlayerUpdateRequest', 
 				[ playerElement, dependencyRequest ] );
-
 	}
 
 } )( window.mw );

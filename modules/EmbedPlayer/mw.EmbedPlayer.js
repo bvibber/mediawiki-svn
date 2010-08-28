@@ -75,7 +75,7 @@ mw.addMessages( {
 /*
 * The default video attributes supported by embedPlayer
 */ 
-mw.setConfig( 'embedPlayerAttributes', {
+mw.setConfig( 'EmbedPlayer.Attributes', {
 	/* 
 	* Base html element attributes: 
 	*/	
@@ -264,7 +264,7 @@ mw.setDefaultConfig( 'embedPlayerSourceAttributes', [
 	*	Attributes Object can include any key value pair that would otherwise be
 	*	an attribute in the html element. 
 	*	
-	*	also see: mw.getConfig( 'embedPlayerAttributes' )
+	*	also see: mw.getConfig( 'EmbedPlayer.Attributes' )
 	*
 	* @param {Function=} callback Optional Function to be called once video interfaces are ready
 	*
@@ -369,6 +369,8 @@ EmbedPlayerManager.prototype = {
 	// Functions to run after the video interface is ready
 	callbackFunctions : null,
 	
+	playerElementQueue: [],
+	
 	/**
 	* Constructor initializes callbackFunctions and playerList  
 	*/
@@ -422,13 +424,13 @@ EmbedPlayerManager.prototype = {
 			playerElement.id = 'vid' + ( this.playerList.length + 1 ); 
 		}					
 		mw.log('EmbedPlayerManager: addElement:: ' + playerElement.id );
-				
+
 		// Add the element id to playerList
 		this.playerList.push( playerElement.id );		
 		
 		// Check for player attributes such as skins or plugins attributes 
 		// that add to the request set	
-		var playerDependencyRequest = [ ];
+		var playerDependencyRequest = [];
 		
 		// merge in any custom attributes
 		$j.extend( playerElement, attributes );
@@ -436,10 +438,11 @@ EmbedPlayerManager.prototype = {
 		// Update the list of dependent libraries for the player 
 		// ( allows extensions to add to the dependency list )
 		mw.embedPlayerUpdateLibraryRequest( playerElement, playerDependencyRequest );
-		
+				
 		// Load any skins we need then swap in the interface
-		mw.load( playerDependencyRequest, function() {								
-			var waitForMeta = true;								
+		mw.load( playerDependencyRequest, function() {
+			var waitForMeta = true;
+			
 			// Be sure to "stop" the target ( sometimes firefox keeps playing the video even 
 			// though its been removed from the DOM )					
 			if( playerElement.pause ){
@@ -497,7 +500,7 @@ EmbedPlayerManager.prototype = {
 				playerElement.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 				playerElement.addEventListener( "loadedmetadata", runPlayerSwap, true );
 			
-				// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
+				// Time-out of 5 seconds ( maybe still playable but no timely metadata )
 				setTimeout( runPlayerSwap, 5000 );
 				return ;
 			} else { 
@@ -850,11 +853,11 @@ mediaSource.prototype = {
 	},
 	
 	/** URI function.
-	* @param {Number} seek_time_sec  Int: Used to adjust the URI for url based seeks) 
+	* @param {Number} serverSeekTime  Int: Used to adjust the URI for url based seeks) 
 	* @return {String} the URI of the source.
 	*/
-	getSrc : function( seek_time_sec ) {
-		if ( !seek_time_sec || !this.URLTimeEncoding ) {
+	getSrc : function( serverSeekTime ) {
+		if ( !serverSeekTime || !this.URLTimeEncoding ) {
 			return this.src;
 		}
 		var endvar = '';
@@ -863,7 +866,7 @@ mediaSource.prototype = {
 		}
 		return mw.replaceUrlParams( this.src,
 			{
-	   			't': mw.seconds2npt( seek_time_sec ) + endvar
+	   			't': mw.seconds2npt( serverSeekTime ) + endvar
 	   		}
 	   	);
 	},
@@ -1032,6 +1035,7 @@ mediaElement.prototype = {
 		if ( $j( videoElement ).attr( "src" ) ) {
 			_this.tryAddSource( videoElement );
 		}
+		
 		// Process elements source children
 		$j( videoElement ).find( 'source,track' ).each( function( ) {			
 			_this.tryAddSource( this );
@@ -1126,7 +1130,7 @@ mediaElement.prototype = {
 	* Selects the default source via cookie preference, default marked, or by id order
 	*/
 	autoSelectSource: function() {
-		mw.log( 'EmbedPlayer::mediaElement::autoSelectSource:' );
+		mw.log( 'EmbedPlayer::mediaElement::autoSelectSource:' + this.id);
 		// Select the default source
 		var playableSources = this.getPlayableSources();
 		var flash_flag = ogg_flag = false;
@@ -1359,7 +1363,7 @@ mw.EmbedPlayer.prototype = {
 	'cmmlData': null,
 	
 	// Stores the seek time request, Updated by the doSeek function
-	'seek_time_sec' : 0,
+	'serverSeekTime' : 0,
 		
 	// If the embedPlayer is current 'seeking'  	
 	'seeking' : false,
@@ -1390,14 +1394,18 @@ mw.EmbedPlayer.prototype = {
 			customAttributes = { };
 		}		
 		
-		var playerAttributes = mw.getConfig( 'embedPlayerAttributes' ); 
-		
+		var playerAttributes = mw.getConfig( 'EmbedPlayer.Attributes' );		
 		// Setup the player Interface from supported attributes:
 		for ( var attr in playerAttributes ) {
 			if ( customAttributes[ attr ] || customAttributes[ attr ] === false ) {
 				this[ attr ] = customAttributes[ attr ];
-			} else if ( element.getAttribute( attr ) ) {
-				this[ attr ] = element.getAttribute( attr );
+			} else if ( element.getAttribute( attr ) != null ) {
+				// boolean attributes
+				if( element.getAttribute( attr ) == '' ){
+					this[ attr ] = true;
+				} else {
+					this[ attr ] = element.getAttribute( attr );
+				}
 			} else {
 				this[attr] = playerAttributes[attr];
 			}
@@ -1612,7 +1620,7 @@ mw.EmbedPlayer.prototype = {
 		// Scope the end of check for player sources so it can be called in a callback  
 		var finishCheckPlayerSources = function(){
 			// Run embedPlayer sources hook		
-			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){							
+			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){				
 				_this.checkForTimedText();
 			})			
 		}
@@ -1643,7 +1651,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set local apiProvider via config if not defined
 		if( !_this.apiProvider ) {
-			_this.apiProvider = 'local';
+			_this.apiProvider = mw.getConfig( 'EmbedPlayer.ApiProvider' );
 		}	
 		
 		// Setup the request
@@ -1930,7 +1938,8 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Seek function (should be implemented by embed player interface )
+	* Seek function ( should be implemented by embedPlayer interface playerNative, playerKplayer etc. )
+	* embedPlayer doSeek only handles URL time seeks
 	*/ 
 	doSeek: function( percent ) {
 		var _this = this;
@@ -1940,18 +1949,21 @@ mw.EmbedPlayer.prototype = {
 		$j( this.embedPlayer ).trigger( 'onSeek' );
 		
 		// See if we should do a server side seek ( player independent ) 
-		if ( this.supportsURLTimeEncoding() ) {
-			// Make sure this.seek_time_sec is up-to-date:
-			this.seek_time_sec = mw.npt2seconds( this.start_npt ) + parseFloat( percent * this.getDuration() );
-			mw.log( 'EmbedPlayer::doSeek:: updated seek_time_sec: ' + mw.seconds2npt ( this.seek_time_sec ) );
+		if ( this.supportsURLTimeEncoding() ) {		
+			mw.log( 'EmbedPlayer::doSeek:: updated serverSeekTime: ' + mw.seconds2npt ( this.serverSeekTime ) );
 			this.stop();
 			this.didSeekJump = true;
+			// Make sure this.serverSeekTime is up-to-date:
+			this.serverSeekTime = mw.npt2seconds( this.start_npt ) + parseFloat( percent * this.getDuration() );
 			// Update the slider
-			this.updatePlayHead( percent );
-		}
+			this.updatePlayHead( percent );				
+		}		
+		
 		// Do play request in 100ms ( give the dom time to swap out the embed player ) 
-		setTimeout( function() {
+		setTimeout( function() {			
+			_this.seeking = false;
 			_this.play()
+			_this.monitor();
 		}, 100 );
 		
 		// Run the onSeeking interface update
@@ -2050,7 +2062,7 @@ mw.EmbedPlayer.prototype = {
 			
 				// Stop the clip (load the thumbnail etc) 
 				this.stop();
-				this.seek_time_sec = 0;
+				this.serverSeekTime = 0;
 				this.updatePlayHead( 0 );
 				
 				// Make sure we are not in preview mode( no end clip actions in preview mode) 
@@ -2215,9 +2227,9 @@ mw.EmbedPlayer.prototype = {
 		
 		// reset seek_offset:
 		if ( this.mediaElement.selectedSource.URLTimeEncoding ) {
-			this.seek_time_sec = 0;
+			this.serverSeekTime = 0;
 		} else {
-			this.seek_time_sec = mw.npt2seconds( start_npt );
+			this.serverSeekTime = mw.npt2seconds( start_npt );
 		}
 	},
 	
@@ -2773,8 +2785,8 @@ mw.EmbedPlayer.prototype = {
 		// no longer seeking:
 		this.didSeekJump = false;
 		
-		// reset current time and prev time
-		this.currentTime = this.previousTime = 0; 
+		// reset current time and prev time and seek offset
+		this.currentTime = this.previousTime = 	this.serverSeekTime = 0; 
 		
 		// Previous player set time		
 		
@@ -2979,7 +2991,12 @@ mw.EmbedPlayer.prototype = {
 		
 		// Update currentTime via embedPlayer
 		_this.currentTime  = _this.getPlayerElementTime();		
-			
+
+		// Update any offsets from server seek
+		if( _this.serverSeekTime && _this.supportsURLTimeEncoding ){
+			_this.currentTime = _this.serverSeekTime + _this.getPlayerElementTime()
+		}
+
 		// Update the previousTime ( so we can know if the user-javascript changed currentTime )
 		_this.previousTime = _this.currentTime;
 		
@@ -3004,7 +3021,7 @@ mw.EmbedPlayer.prototype = {
 			_this.muted = _this.getPlayerElementMuted(); 
 		}
 		
-		//mw.log( 'Monitor:: ' + this.currentTime + ' duration: ' + ( parseInt( this.getDuration() ) + 1 )  + ' is seek: ' + this.seeking );		
+		//mw.log( 'Monitor:: ' + this.currentTime + ' duration: ' + ( parseInt( this.getDuration() ) + 1 )  + ' is seeking: ' + this.seeking );		
 		if ( this.currentTime >= 0  && this.duration ) {			
 			if ( !this.userSlide && !this.seeking ) {
 				if ( parseInt( this.startOffset ) != 0 ) {				
@@ -3054,7 +3071,8 @@ mw.EmbedPlayer.prototype = {
 		if( ! this.isStopped() ) {
 			if( !this.monitorInterval ){
 				this.monitorInterval = setInterval( function(){
-					_this.monitor();
+					if( _this.monitor )
+						_this.monitor();
 				}, this.monitorRate )
 			}
 		} else {
@@ -3163,9 +3181,9 @@ mw.EmbedPlayer.prototype = {
 		} ).show();
 		
 		this.jump_time =  options['start'];
-		this.seek_time_sec = mw.npt2seconds( options['start'] );
+		this.serverSeekTime = mw.npt2seconds( options['start'] );
 		// trim output to 
-		this.controlBuilder.setStatus( gM( 'mwe-embedplayer-seek_to', mw.seconds2npt( this.seek_time_sec ) ) );
+		this.controlBuilder.setStatus( gM( 'mwe-embedplayer-seek_to', mw.seconds2npt( this.serverSeekTime ) ) );
 		mw.log( 'DO update: ' +  this.jump_time );
 		this.updateThumbTime( rel_start_sec );
 	},
@@ -3191,7 +3209,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	getSrc: function() {
 		if( this.mediaElement.selectedSource ){
-			return this.mediaElement.selectedSource.getSrc( this.seek_time_sec );
+			return this.mediaElement.selectedSource.getSrc( this.serverSeekTime );
 		}
 		return false;
 	},

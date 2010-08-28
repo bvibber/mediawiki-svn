@@ -76,7 +76,7 @@ mw.SequencerActionsEdit.prototype = {
 		
 		// Enable the undo option: 
 		this.sequencer.getMenu().enableMenuItem( 'edit', 'undo' );
-		this.sequencer.getMenu().enableMenuItem( 'sequencer', 'save' );
+		this.sequencer.getMenu().enableMenuItem( 'sequence', 'save' );
 	},
 	
 	/**

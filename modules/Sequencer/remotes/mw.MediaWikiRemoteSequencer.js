@@ -11,11 +11,13 @@ mw.addMessageKeys( [
 	"mwe-sequencer-edit-sequence",
 	"mwe-sequencer-embed-sequence",
 	"mwe-sequencer-embed-sequence-desc",
-	"mwe-sequencer-loading-sequencer",
+	"mwe-sequencer-loading-sequencer",	
 	
 	"mwe-sequencer-visual-editor",
 	"mwe-sequencer-text-editor-warn",
+	"mwe-sequencer-restore-text-edit",	
 	
+	"mwe-sequencer-loading-publish-render",
 	
 	"mwe-sequencer-not-published",
 	"mwe-sequencer-published-out-of-date"
@@ -55,7 +57,8 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		this.target = ( options.target )? options.target : this.target;
 	},	
 	
-	drawUI: function() {		
+	drawUI: function() {
+		
 		// Check page action 
 		if( this.action == 'view' ) {	
 			this.showViewUI();
@@ -101,34 +104,44 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	},	
 	
 	showEditUI: function(){
- 
+		var _this = this;
 		$j('#bodyContent').prepend(
 			// Append switch visual / text editor links
-			$j('<div />')
+			/*$j('<div />')
 			.append( 
 				$j.button({ 
 					'icon' : 'video',
 					'text' : gM( "mwe-sequencer-visual-editor")
 				}).click( function(){
-					$j('#sequencerContainer').show();
-					$j('#editform').hide();
+					$j('#editform').hide();				
+					$j('#sequencerContainer').show();					
 				}),
 				$j.button({
-					'icon' : 'script'
+					'icon' : 'script',
 					'text' : gM("mwe-sequencer-text-editor-warn")
 				}).click(function(){
 					$j('#sequencerContainer').hide();
 					$j('#editform').show();
-				}),
-				$j('<div />')
-				.css({
-					'width' : '100%',
-					'height' : '700px'
-				})
-				.attr({
-					'id', 'sequencerContainer'
-				})
+				})			
+			)*/
+		).append( 				
+			$j('<div />')
+			.css({
+				'position' : 'relative',
+				'width' : '100%',
+				'height' : '620px'
+			})
+			.attr({
+				'id': 'sequencerContainer'
+			}),
+			$j('<div />')
+			.append( 
+				gM("mwe-sequencer-restore-text-edit", $j('<a />').click(function(){
+					$j('#sequencerContainer').hide();
+					$j('#editform').show();
+				}) )
 			)
+			.css( {'cursor': 'pointer', 'font-size':'x-small' })
 		);
 		// load the sequence editor with the sequencerContainer target
 		mw.load( 'Sequencer', function(){ 	 				
@@ -161,65 +174,73 @@ mw.MediaWikiRemoteSequencer.prototype = {
 					// no flattened file found
 					$embedPlayer.append(
 						$j( '<div />').append( 
-							gM('mwe-sequencer-not-published')
+							gM('mwe-sequencer-not-published', 
+								$j('<a />').click( function(){
+									_this.showEditor();
+								})
+							)
 						)
 						.addClass( 'ui-state-highlight' )
-					)
-					return ;
-				}			
-				for( var pageId in data.query.pages) {
-					var page = data.query.pages[ pageId ];
-					
-					// Check that the file has a later revision than the
-					// page. ( up to date sequences always are later than 
-					// the revision of the page saved ).
-					if( page.revisions && page.revisions[0] ){
-						if( page.revisions[0].revid < wgCurRevisionId ){
-							// flattened file out of date
-							$embedPlayer.append(
-								$j('<div />').append( 
-									gM('mwe-sequencer-published-out-of-date')
-								).addClass( 'ui-state-highlight' )
-							)
-						}
-					}
-					if( page.imageinfo && page.imageinfo[0] ){
-						var imageinfo = page.imageinfo[0];
-						var duration = 0;
-						for( var i=0;i< imageinfo.metadata.length; i++){
-							if( imageinfo.metadata[i].name == 'length' ){
-								duration = Math.round( 
-									imageinfo.metadata[i].value * 1000 
-								) / 1000;
+					)					
+				} else {			
+					for( var pageId in data.query.pages) {
+						var page = data.query.pages[ pageId ];
+						
+						// Check that the file has a later revision than the
+						// page. ( up to date sequences always are later than 
+						// the revision of the page saved ).
+						if( page.revisions && page.revisions[0] ){
+							if( page.revisions[0].revid < wgCurRevisionId ){
+								// flattened file out of date
+								$embedPlayer.append(
+									$j('<div />').append( 
+										gM('mwe-sequencer-published-out-of-date', 
+											$j('<a />').click( function(){
+												_this.showEditor();
+											})
+										)
+									).addClass( 'ui-state-highlight' )
+								)
 							}
 						}
-						// Append a player to the embedPlayer target 
-						// -- special title key sequence name bound
-						$embedPlayer.append( 
-							$j('<video />')
-							.attr({				
-								'id' : 'embedSequencePlayer',
-								'poster' : imageinfo.thumburl,
-								'durationHint' : duration,
-								'apiTitleKey' : page.title.replace('File:',''),							
-							})
-							.addClass('kskin')
-							.css({
-								'width': imageinfo.thumbwidth,
-								'height' : imageinfo.thumbheight
-							})
-							.append(
-								// ogg source
-								$j('<source />')
-								.attr({
-									'type': 'video/ogg',
-									'src' : imageinfo.url
-								})	
+						if( page.imageinfo && page.imageinfo[0] ){
+							var imageinfo = page.imageinfo[0];
+							var duration = 0;
+							for( var i=0;i< imageinfo.metadata.length; i++){
+								if( imageinfo.metadata[i].name == 'length' ){
+									duration = Math.round( 
+										imageinfo.metadata[i].value * 1000 
+									) / 1000;
+								}
+							}
+							// Append a player to the embedPlayer target 
+							// -- special title key sequence name bound
+							$embedPlayer.append( 
+								$j('<video />')
+								.attr({				
+									'id' : 'embedSequencePlayer',
+									'poster' : imageinfo.thumburl,
+									'durationHint' : duration,
+									'apiTitleKey' : page.title.replace('File:',''),							
+								})
+								.addClass('kskin')
+								.css({
+									'width': imageinfo.thumbwidth,
+									'height' : imageinfo.thumbheight
+								})
+								.append(
+									// ogg source
+									$j('<source />')
+									.attr({
+										'type': 'video/ogg',
+										'src' : imageinfo.url
+									})	
+								)
 							)
-						)
-					}
-				} 
-				var width = ( imageinfo.thumbwidth )?imageinfo.thumbwidth : '400px';
+						}
+					} 
+				}
+				var width = ( imageinfo && imageinfo.thumbwidth )?imageinfo.thumbwidth : '400px';
 				// Display embed sequence
 				$j( _this.target ).empty().append(
 					$j('<div />')
@@ -294,9 +315,8 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				)
 				.css( {'width':'200px', 'margin':'auto'})
 			)
-		)		
-		mw.load( 'Sequencer', function(){ 	 
-			var _this = this;
+		)
+		mw.load( 'Sequencer', function(){
 			// Send a jquery ui style destroy command ( in case the editor is re-invoked )
 			$j('#edit_sequence_container').sequencer( 'destroy');
 			$j('#edit_sequence_container').sequencer( _this.getSequencerConfig() );

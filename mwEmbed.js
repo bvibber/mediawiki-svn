@@ -505,7 +505,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			// Issue the load request check check loadStates to see if we are
 			// "done"
 			for( var loadName in loadStates ) {				
-				mw.log("loadMany: load: " + loadName );
+				//mw.log("loadMany: load: " + loadName );
 				this.load( loadName, function ( loadName ) {										
 					loadStates[ loadName ] = 1;
 					
@@ -1834,6 +1834,18 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			return parsedUrl.protocol + '://' + parsedUrl.authority + parsedUrl.directory + src;
 		}
 	};	
+	/**
+	 * Check if a given source string is likely a url   
+	 * 
+	 * @return {boolean} 
+	 * 	true if a url 
+	 * 	false if a string
+	 */
+	mw.isUrl = function( src ){
+		var parsedSrc = mw.parseUri( src );
+		// if the url is just a string source and host will match
+		return ( parsedSrc.host != parsedSrc.source );
+	};
 	
 	/**
 	 * Escape quotes in a text string
@@ -1987,23 +1999,30 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 * @return true if found, return false if not found
 	 */
 	mw.hasJQueryUiCss = function(){
-		var hasUiCss = false;				
+		var hasUiCss = false;
+		var cssStyleSheetNames = ['jquery-ui-1.7.2.css', 'jquery-ui.css'];
 		// Load the jQuery ui skin if usability skin not set
 		$j( 'link' ).each( function(  na, linkNode ){
-			if( $j( linkNode ).attr( 'href' ).indexOf( 'jquery-ui-1.7.2.css' ) != -1 ) {
-				hasUiCss = true;
-				return true;
-			}
+			$j.each( cssStyleSheetNames, function(inx, sheetName ){
+				if( $j( linkNode ).attr( 'href' ).indexOf( sheetName ) != -1 ){
+					hasUiCss = true;
+					return true;
+				}
+			})
 		} );
-		// Check all the "style" nodes for @import of jquery-ui-1.7.2.css
+		// Check all the "style" nodes for @import for sheet name
 		// xxx Note: we could do this a bit cleaner with regEx
 		$j( 'style' ).each( function( na, styleNode ){
-			if( $j( styleNode ).text().indexOf( '@import' ) != -1 
-				&& $j( styleNode ).text().indexOf( 'jquery-ui-1.7.2.css' ) != -1  ){
+			$j.each( cssStyleSheetNames, function(inx, sheetName ){
+				if( $j( styleNode ).text().indexOf( '@import' ) != -1 
+					&& 
+					$j( styleNode ).text().indexOf( sheetName ) != -1  )
+				{
 					hasUiCss=true;
-			}
-		});
-				
+					return true;
+				}
+			});
+		});				
 		return hasUiCss;		
 	}
 	

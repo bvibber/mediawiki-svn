@@ -12,10 +12,12 @@ $messages['en'] = array(
 	
 	'mwe-sequencer-visual-editor'=> "Visual sequence editor",
 	'mwe-sequencer-text-editor-warn'=> 'Text XML editor ( not recommended ) ',
+	'mwe-sequencer-restore-text-edit' => '[$1 Restore text editor] ( note this <i>highly</i> recommended that you use the visual editor )',
+
 	'mwe-sequencer-loading-timeline' => 'Loading timeline ...',
 	'mwe-sequencer-loading-player' => 'Loading player ...',
 	'mwe-sequencer-loading-menu' => 'Loading menu ...',
-	'mwe-sequencer-loading-asset' => 'Loading asset ...',
+	'mwe-sequencer-loading-asset' => 'Loading asset ...',	
 
 	'mwe-sequencer-no_selected_resource' => '<h3>No resource selected</h3> Select a clip to enable editing.',
 	'mwe-sequencer-untitled-sequence' => 'Untitled sequence',
@@ -84,11 +86,11 @@ $messages['en'] = array(
 	'mwe-sequencer-save_done' => 'Save complete',
 
 	'mwe-sequencer-open-summary' => "Enter the name of the sequence you would like to open",
-	
+	'mwe-sequencer-new-summary' => "Enter the name of the sequence you would like to create",
 
 
-	'mwe-sequencer-not-published' => 'This sequence has not yet been published. <i>Browser preview is shown</i>. <b>[$1 Review and publish this sequence]</b>.',
-	'mwe-sequencer-published-out-of-date' =>'This published sequence is not the most recent version. You can <b>[$1 review and publish]</b> the most recent version.',
+	'mwe-sequencer-not-published' => 'This sequence has not yet been published. Select <i>sequence -> publish</i> in the <b>[$1 sequence editor]</b> to publish this sequence.',
+	'mwe-sequencer-published-out-of-date' =>'This published sequence is not the most recent version. Select <i>sequence -> publish</i> in the <b>[$1 sequence editor]</b> to publish this sequence',
 
 	'mwe-sequencer-already-published' => "The most recent version of this sequence is already published",
 	

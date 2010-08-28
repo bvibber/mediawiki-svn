@@ -132,11 +132,12 @@ function doPageSpecificRewrite() {
 			if( wgAction == 'edit' ){
 				mwAddCommonStyleSheet();
 				var body = document.getElementById( 'bodyContent' );
-				body.innerHTML = "<div class=\"loadingSpinner\"></div>" + body.innerHTML;				
+				body.innerHTML = "<div class=\"loadingSpinner sequenceLoader\"></div>" + body.innerHTML;				
 			}
 			loadMwEmbed( [ 'mw.MediaWikiRemoteSequencer' ], function(){
-				$j('.loadingSpinner').remove();
-				$j('#editform').hide();
+				$j('#editform,.mw-newarticletext').hide();
+				$j('.sequenceLoader').hide();
+				
 				var remote = new mw.MediaWikiRemoteSequencer({
 					'action': wgAction,
 					'title' : wgTitle,

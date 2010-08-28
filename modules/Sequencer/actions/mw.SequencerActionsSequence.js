@@ -15,7 +15,72 @@ mw.SequencerActionsSequence.prototype = {
 	init: function( sequencer ) {
 		this.sequencer = sequencer; 
 	},	
-	
+	/**
+	 * present an new dialog to the user and open the sequence in a new window 
+	 * ( presently very similar to open )
+	 */
+	newSequence : function(){
+		var _this = this;
+		var $content = $j('<div />').append( 
+				gM('mwe-sequencer-new-summary' ),
+				$j('<input />')								
+				.css({ 'width': 400 })			
+				.attr({					
+					'id' : 'sequenceNewNameInput',
+					'maxlength': 255 
+				})
+				// Make sure keys press does not affect the sequencer interface
+				.sequencerInput( _this.sequencer )
+			);
+		// XXX todo we should have an autocomplete on sequence name!
+		
+		var buttons = {};
+		buttons[ gM('mwe-cancel') ] = function(){ $j( this ).dialog( 'cancel' ) };
+		
+		// For now just support server based open .. ideally we could browse for file
+		var $dialog = mw.addDialog({
+			'resizable':'true',
+			'title' : gM('mwe-sequencer-menu-sequence-new-desc'),			
+			'content' : $content,
+			'buttons' : buttons,
+			'width' : 450
+		});
+		// Add a special open button
+		$dialog.parent().find( '.ui-dialog-buttonpane' ).prepend(
+			$j.button({
+				'icon' : 'document',
+				'text' : gM('mwe-sequencer-menu-sequence-new')
+			})
+			// Match button layout
+			.css({
+				'margin':'0.5em 0.4em 0.5em 0',
+				'padding' : '0.2em 1.4em 0.3em'
+			})
+			.attr({				
+				'id' : 'sequenceOpenButton',
+				'target' : '_new',
+				'href' : '#'
+			}).click( function(){
+				// Update the link		
+				$j(this).attr({
+					'href':	
+						mw.getRemoteSequencerLink(
+							mw.escapeQuotesHTML( 
+								_this.sequencer.getServer().getSequenceEditUrl( 						
+										// ( Sequence: is automatically pre-appended with getSequencePageUrl
+										// ( don't use Sequence: in the title )
+										$j('#sequenceNewNameInput').val().replace(/Sequence:/i, '')
+								)
+							)
+						)
+				});
+				// Close the dialog
+				$j(this).dialog( 'close' );
+				// Follow the link
+				return true;
+			})
+		)
+	},
 	/**
 	 * present an open dialog to the user, and open the sequence in a new window
 	 */
@@ -412,7 +477,7 @@ mw.SequencerActionsSequence.prototype = {
 				if( _this.sequencer.getOption('onExitCallback') ){
 					// Send a flag of weather the sequence 'changed' or not
 					_this.sequencer.getOption('onExitCallback')(
-						_this.sequencer.getServer().hasSequenceBeenSaved()					
+						_this.sequencer.getServer().hasSequenceBeenSavedOrPublished()					
 					);
 				}
 				$j( this ).remove(); 				
