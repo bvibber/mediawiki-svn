@@ -134,6 +134,15 @@ $messages['id'] = array(
 	'rss-empty' => 'Gagal memuat arus RSS dari $1!',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'rss-desc' => 'Visualizza un feed RSS in una pagina wiki',
+	'rss-error' => 'Non è stato possibile caricare da $1 il feed RSS: $2',
+	'rss-empty' => 'Non è stato possibile possibile caricare feed RSS da $1!',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

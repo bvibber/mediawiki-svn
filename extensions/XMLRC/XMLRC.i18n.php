@@ -105,6 +105,13 @@ $messages['id'] = array(
 	'xmlrc-desc' => 'Kirim pemberitahuan mengenai perubahan dengan ekstensi XML, melalui UDP, Jabber atau sejenisnya',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'xmlrc-desc' => 'Invia notifiche su modfiche in formato XML, tramite UDP, Jabber o altri mezzi',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

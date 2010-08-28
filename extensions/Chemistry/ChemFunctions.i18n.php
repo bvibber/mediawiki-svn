@@ -602,10 +602,12 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  */
 $messages['it'] = array(
 	'chemicalsources' => 'Informazioni sui composti chimici',
 	'chemicalsource-desc' => 'Aggiunge il tag <nowiki><chemform></nowiki> per le formule chimiche',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pagina speciale]] per ricercare fonti riguardanti la chimica',
 	'chemFunctions_ListPage' => 'Informazioni sui composti chimici',
 	'chemFunctions_DataList' => 'Di seguito viene presentato un elenco di collegamenti a siti presso i quali si possono referire informazioni sui composti chimici cercati.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />

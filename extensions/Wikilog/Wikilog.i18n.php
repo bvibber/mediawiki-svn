@@ -4063,6 +4063,21 @@ $messages['kn'] = array(
 	'wikilog-history-lc' => 'ಇತಿಹಾಸ',
 );
 
+/** Komi-Permyak (Перем Коми)
+ * @author Enye Lav
+ */
+$messages['koi'] = array(
+	'wikilog-pager-newest' => 'медвиль',
+	'wikilog-pager-oldest' => 'межваж',
+	'wikilog-pager-first' => 'медодзза',
+	'wikilog-pager-last' => 'медбöрья',
+	'wikilog-form-category' => 'Категория',
+	'wikilog-form-name' => 'Ним:',
+	'wikilog-form-author' => 'Автор:',
+	'wikilog-form-tag' => 'Пасок:',
+	'wikilog-form-date' => 'Дата:',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -5036,16 +5051,16 @@ $messages['pdc'] = array(
 	'wikilog-new-item-go' => 'Schtaerte',
 	'wikilog-authors' => 'Schreiwer',
 	'wikilog-title' => 'Titel',
-	'wikilog-comments' => 'Anmaerrickinge',
+	'wikilog-comments' => 'Aamaerickinge',
 	'wikilog-pager-next' => 'neegscht',
-	'wikilog-has-comments' => '{{PLURAL:$1|ee Anmaerricking|$1 Anmaerrickinge}}',
-	'wikilog-title-comments' => 'Anmaerrickinge - $1',
+	'wikilog-has-comments' => '{{PLURAL:$1|ee Aamaericking|$1 Aamaerickinge}}',
+	'wikilog-title-comments' => 'Aamaerickinge - $1',
 	'wikilog-form-category' => 'Abdeeling:',
 	'wikilog-form-name' => 'Naame:',
 	'wikilog-form-author' => 'Schreiwer:',
 	'wikilog-form-tag' => 'Daag:',
 	'wikilog-form-preview' => 'Aagucke:',
-	'wikilog-form-comment' => 'Anmaerricking:',
+	'wikilog-form-comment' => 'Aamaericking:',
 	'wikilog-preview' => 'Devor aagucke',
 	'wikilog-edit-lc' => 'ennere',
 	'wikilog-page-lc' => 'Blatt',

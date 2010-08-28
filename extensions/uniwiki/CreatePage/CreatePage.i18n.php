@@ -784,6 +784,13 @@ $messages['os'] = array(
 	'createpage_submitbutton' => 'Афтæ уæд',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'createpage' => 'Neies Blatt schtaerte',
+);
+
 /** Polish (Polski)
  * @author Leinad
  */
@@ -1051,6 +1058,14 @@ $messages['sw'] = array(
 	'createpage_tryagain' => 'Hapana. Ninataka kuanzisha ukurasa mpya mwenye jina tofauti.',
 	'createpage_editexisting' => 'Ndiyo. Ninataka kusaidia kuhariri ukurasa uliomo.',
 	'createpage-badtitle' => 'Haiwezekani kutumia "$1" kama jina la ukurasa',
+);
+
+/** Tamil (தமிழ்)
+ * @author TRYPPN
+ */
+$messages['ta'] = array(
+	'createpage' => 'ஒரு பக்கத்தை உருவாக்குக',
+	'createpage_submitbutton' => 'சமர்ப்பி',
 );
 
 /** Telugu (తెలుగు)

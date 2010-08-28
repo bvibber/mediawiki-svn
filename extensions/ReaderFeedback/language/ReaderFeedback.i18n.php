@@ -1118,8 +1118,21 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'readerfeedback-reliability' => 'Pouzdanost',
+	'readerfeedback-completeness' => 'Potpunost',
+	'readerfeedback-npov' => 'Neutralnost',
+	'readerfeedback-presentation' => 'Prezentacija',
+	'readerfeedback-overall' => 'Ukupno',
+	'readerfeedback-level-none' => '(nisam siguran)',
+	'readerfeedback-level-0' => 'slabo',
+	'readerfeedback-level-1' => 'nisko',
+	'readerfeedback-level-2' => 'umjereno',
+	'readerfeedback-level-3' => 'visoko',
+	'readerfeedback-level-4' => 'izvrsno',
+	'readerfeedback-submit' => 'Pošalji',
 	'readerfeedback-finished' => 'Hvala!',
 	'readerfeedback-tagfilter' => 'Oznaka:',
 	'readerfeedback-tierfilter' => 'Rejting:',

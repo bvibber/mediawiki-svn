@@ -1491,10 +1491,58 @@ $1',
 $messages['frp'] = array(
 	'sign-selectdoc' => 'Document :',
 	'sign-realname' => 'Nom :',
-	'sign-address' => 'Adrèce rua :',
+	'sign-address' => 'Rua :',
 	'sign-city' => 'Vela :',
+	'sign-state' => 'Ètat (dèpartement ou ben province) :',
+	'sign-zip' => 'Code postâl :',
+	'sign-country' => 'Payis :',
+	'sign-phone' => 'Numerô de tèlèfono :',
+	'sign-bday' => 'Âjo :',
+	'sign-email' => 'Adrèce èlèctronica :',
+	'sign-view-selectfields' => "'''Champs a fâre vêre :'''",
+	'sign-viewfield-entryid' => 'Numerô de l’entrâ',
+	'sign-viewfield-timestamp' => 'Dâta et hora',
 	'sign-viewfield-realname' => 'Nom',
+	'sign-viewfield-address' => 'Adrèce',
+	'sign-viewfield-city' => 'Vela',
+	'sign-viewfield-state' => 'Ètat (dèpartement ou ben province)',
+	'sign-viewfield-country' => 'Payis',
+	'sign-viewfield-zip' => 'Code postâl',
+	'sign-viewfield-ip' => 'Adrèce IP',
+	'sign-viewfield-agent' => 'Agent utilisator',
+	'sign-viewfield-phone' => 'Tèlèfono',
+	'sign-viewfield-email' => 'Adrèce èlèctronica',
+	'sign-viewfield-age' => 'Âjo',
+	'sign-viewfield-options' => 'Chouèx',
 	'sign-signatures' => 'Signatures',
+	'sign-viewsignatures' => 'vêre les signatures',
+	'sign-closed' => 'cllôs',
+	'sig-anonymous' => "''Anonimo''",
+	'sig-private' => "''Privâ''",
+	'sign-sigdetails' => 'Dètalys de la signatura',
+	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|Discussion]] • <!--
+-->[[Special:Contributions/$1|Contribucions]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|Blocar l’utilisator]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Jornal des blocâjos] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} Contrôlo d’utilisator])<!--
+--></span>',
+	'sign-viewfield-stricken' => 'Traciê',
+	'sign-viewfield-reviewedby' => 'Rèvisor',
+	'sign-viewfield-reviewcomment' => 'Comentèro',
+	'sign-detail-uniquequery' => 'Entitâts semblâbles',
+	'sign-detail-uniquequery-run' => 'Lanciér la requéta',
+	'sign-detail-strike' => 'Traciér la signatura',
+	'sign-reviewsig' => 'Revêre la signatura',
+	'sign-review-comment' => 'Comentèro',
+	'sign-submitreview' => 'Sometre la rèvision',
+	'sign-uniquequery-similarname' => 'Nom semblâblo',
+	'sign-uniquequery-similaraddress' => 'Adrèce semblâbla',
+	'sign-uniquequery-similarphone' => 'Numerô de tèlèfono semblâblo',
+	'sign-uniquequery-similaremail' => 'Adrèce èlèctronica semblâbla',
 );
 
 /** Western Frisian (Frysk)
@@ -3441,8 +3489,8 @@ $messages['pdc'] = array(
 	'sign-viewfield-realname' => 'Naame',
 	'sign-viewfield-address' => 'Adress',
 	'sig-private' => "''Private''",
-	'sign-viewfield-reviewcomment' => 'Anmaerricking',
-	'sign-review-comment' => 'Anmaerricking',
+	'sign-viewfield-reviewcomment' => 'Aamaericking',
+	'sign-review-comment' => 'Aamaericking',
 );
 
 /** Polish (Polski)

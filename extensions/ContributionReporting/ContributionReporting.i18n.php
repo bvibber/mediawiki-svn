@@ -2040,6 +2040,7 @@ $messages['he'] = array(
 /** Croatian (Hrvatski)
  * @author Dalibor Bosits
  * @author Ex13
+ * @author SpeedyGonsales
  */
 $messages['hr'] = array(
 	'contributionreporting-desc' => 'Uživo izviješće o Wikimedijinom prikupljanju sredstava',
@@ -2076,7 +2077,7 @@ $messages['hr'] = array(
 	'contribstats-value-from' => 'Od $1 - $2',
 	'contribstats-value-over' => 'Preko $1',
 	'contributiontrackingstatistics' => 'Statistika praćenja doprinosa',
-	'contribstats-day-totals' => 'Ukupno za danas',
+	'contribstats-day-totals' => 'Ukupno za dan',
 	'contribstats-week' => 'Tjedan',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Ukupno za ovaj tjedan|Ukupno tjedno za proteklih $1 tjedana uključeno}}',
 	'contribstats-clicks' => 'Klikovi',
@@ -3063,7 +3064,7 @@ $messages['mk'] = array(
 	'contribstats-payment-type-hits' => 'Искорист. типови на плаќање',
 	'contribstats-clicks' => 'Кликања',
 	'contribstats-donations' => 'Донации',
-	'contribstats-conversion' => 'Стапка на придобивање на придонесувачи (%)',
+	'contribstats-conversion' => 'Стапка на придобивање на учесници (%)',
 	'contribstats-template' => 'Шаблон',
 	'contribstats-nodata' => 'Нема внесено податоци',
 	'contribstats-landingpage' => 'Проследна страница',

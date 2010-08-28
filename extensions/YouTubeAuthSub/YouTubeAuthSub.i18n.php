@@ -282,11 +282,12 @@ $messages['as'] = array(
 
 /** Bashkir (Башҡорт)
  * @author Comp1089
+ * @author Haqmar
  */
 $messages['ba'] = array(
 	'youtubeauthsub_title' => 'Исем',
 	'youtubeauthsub_description' => 'Тасуирлама',
-	'youtubeauthsub_password' => 'YouTube-тәге паролегеҙ',
+	'youtubeauthsub_password' => 'YouTube паролегеҙ',
 	'youtubeauthsub_username' => 'YouTube ҡулланыусы исеме',
 );
 
@@ -3290,17 +3291,18 @@ Var tålmodig.',
 );
 
 /** Swahili (Kiswahili)
+ * @author Lloffiwr
  * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
-	'youtubeauthsub' => 'Pakia video YouTube',
+	'youtubeauthsub' => 'Pakia video ya YouTube',
 	'youtubeauthsub-desc' => 'Inaruhusu watumiaji [[Special:YouTubeAuthSub|kupakia video]] zao moja kwa moja katika YouTube',
 	'youtubeauthsub_info' => 'Kupakia video katika YouTube na kuiweka kwenye ukurasa, jaza maelezo yafuatayo:',
 	'youtubeauthsub_title' => 'Jina',
 	'youtubeauthsub_description' => 'Maelezo',
 	'youtubeauthsub_password' => 'Neno la siri la YouTube',
 	'youtubeauthsub_username' => 'Jina la mtumiaji la YouTube',
-	'youtubeauthsub_keywords' => 'Maneno msingi',
+	'youtubeauthsub_keywords' => 'Maneno ya msingi',
 	'youtubeauthsub_category' => 'Jamii',
 	'youtubeauthsub_submit' => 'Wasilisha',
 	'youtubeauthsub_clickhere' => 'Bonyeza hapa kwa kuingia kwenye YouTube',
@@ -3323,7 +3325,7 @@ Kuingiza video yako kwenye ukurasa wa wiki, ingiza kodi zifuatazo kwenye ukurasa
 Tafadhali kuwa na subira.',
 	'youtubeauthsub_viewpage' => 'Njia nyingine, unaweza [[$1|kutazama video yako]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Tafadhali ingiza neno la msingi 1 au zaidi.',
-	'youtubeauthsub_jserror_notitle' => 'Tafadhali ingiza jina la ukurasa wako.',
+	'youtubeauthsub_jserror_notitle' => 'Tafadhali ingiza jina la video yako.',
 	'youtubeauthsub_jserror_nodesc' => 'Tafadhali ingiza maelezo kwa ajili ya video.',
 );
 

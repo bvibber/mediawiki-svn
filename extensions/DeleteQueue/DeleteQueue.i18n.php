@@ -4695,8 +4695,8 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'deletequeue-delnom-otherreason' => 'Annerer Grund',
-	'deletequeue-review-reason' => 'Anmaerrickinge:',
-	'deletequeue-vote-reason' => 'Anmaerrickinge:',
+	'deletequeue-review-reason' => 'Aamaerickinge:',
+	'deletequeue-vote-reason' => 'Aamaerickinge:',
 	'deletequeue-list-search' => 'Guck uff',
 	'deletequeue-list-header-page' => 'Blatt',
 	'deletequeue-case-page' => 'Blatt:',

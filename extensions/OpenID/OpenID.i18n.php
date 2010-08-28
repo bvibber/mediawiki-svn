@@ -3082,6 +3082,13 @@ OpenID 없이 로그인 할 수 없습니다.',
 	'openid-provider-label-other-username' => '$1 사용자명을 입력하십시오',
 );
 
+/** Komi-Permyak (Перем Коми)
+ * @author Enye Lav
+ */
+$messages['koi'] = array(
+	'openid-urls-delete' => 'Чышкыны',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -234,6 +234,13 @@ $messages['fr'] = array(
 	'sendmailtowiki-err-onlyplain' => 'En raison d’éventuelles erreurs d’interprétation, seuls les messages contenant du texte brut sont acceptés.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'sendmailtowiki-inpin' => 'PIN :',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

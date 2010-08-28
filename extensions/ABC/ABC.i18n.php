@@ -498,6 +498,13 @@ $messages['ko'] = array(
 	'abcdownload' => '다운로드:',
 );
 
+/** Komi-Permyak (Перем Коми)
+ * @author Enye Lav
+ */
+$messages['koi'] = array(
+	'abc-desc' => 'ABC музыка форматируйтöм понда содтö тег <code>&lt;abc&gt;</code>',
+);
+
 /** Karachay-Balkar (Къарачай-Малкъар)
  * @author Iltever
  */

@@ -386,6 +386,14 @@ $messages['ko'] = array(
 	'absenteelandlord-desc' => '모든 관리자가 일정한 기간동안 활동하지 않으면 자동으로 위키 데이터베이스를 잠금',
 );
 
+/** Komi-Permyak (Перем Коми)
+ * @author Enye Lav
+ */
+$messages['koi'] = array(
+	'absenteelandlord-reason' => 'Мыччöт видзаныс аспондасис пöднассис, админнэз енöвтчисö да',
+	'absenteelandlord-desc' => 'Аспондасис пöдналö мыччöт видзансö, кöр админнэз мыйкö дырна сы бердö оз павкö',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -372,9 +372,10 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
-	'wikieditor-highlight-preference' => 'संपादनकरताना आज्ञावली-विन्यासाचा दृष्टीवेध सक्षम करा',
+	'wikieditor-highlight-preference' => 'संपादन करताना आज्ञावली-विन्यासाचा दृष्टीवेध सक्षम करा',
 );
 
 /** Malay (Bahasa Melayu)

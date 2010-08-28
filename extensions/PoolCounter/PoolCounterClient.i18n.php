@@ -21,11 +21,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
-	'poolcounter-desc' => 'This is a short description of this extension.
-It is shown on [[Special:Version]].
-Do not translate "<code>poolcounter.py</code>"
+	'poolcounter-desc' => '{{desc}}
 
 A pool counter keeps track of the running processes on a cluster of processors, and may or may not grant a job access to the processing pool. (Note, the word "counter" relates to the counter in a shop, bank, or hotel, not to the verb "to count")',
 );
@@ -90,7 +89,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'poolcounter-desc' => 'Klient MediaWiki za demon pool counter poolcounter.py',
+	'poolcounter-desc' => 'Klient MediaWiki za demon pool counter',
 	'poolcounter-connection-error' => 'Zmólka pśi zwězowanju ze serwerom pool counter: $1',
 	'poolcounter-read-error' => 'Zmólka pśi cytanju ze serwera pool counter',
 	'poolcounter-write-error' => 'Zmólka pśi pisanju na serwer pool counter',
@@ -125,7 +124,7 @@ $messages['es'] = array(
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'poolcounter-desc' => 'Client pour MediaWiki du démon de compteur de groupement poolcounter.py',
+	'poolcounter-desc' => 'Client pour MediaWiki du démon de compteur de groupement',
 	'poolcounter-connection-error' => 'Erreur lors de la connexion au compteur de groupement : $1',
 	'poolcounter-read-error' => 'Erreur lors de la lecture du serveur du compteur de groupement',
 	'poolcounter-write-error' => "Erreur lors de l'écriture sur le serveur du compteur de groupement",
@@ -147,7 +146,7 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'poolcounter-desc' => 'MediaWiki-Client fir dr Poolcounter-Daemon poolcounter.py',
+	'poolcounter-desc' => 'MediaWiki-Client fir dr Poolcounter-Daemon',
 	'poolcounter-connection-error' => 'Fähler bim Verbinde zum Poolcounter-Server: $1',
 	'poolcounter-read-error' => 'Fähler bim Läse vum Poolcounter-Server',
 	'poolcounter-write-error' => 'Fähler bim Schrybe an Poolcounter-Server',
@@ -213,7 +212,7 @@ $messages['ja'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'poolcounter-desc' => 'Ene MediaWiki <i lang="en">client</i> för dat Hengerjrondprojramm <code lang="en">poolcounter.py</code> för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde.',
+	'poolcounter-desc' => 'Ene MediaWiki <i lang="en">client</i> för dat Hengerjrondprojramm <code lang="en">poolcounter.py</code> för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde',
 	'poolcounter-connection-error' => 'Beim Verbenge met däm ẞööver för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde: $1',
 	'poolcounter-read-error' => 'Beim Lässe vum ẞööver för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
 	'poolcounter-write-error' => 'Beim Schriive noh däm ẞööver för et Parraatshtonn vun enem Pöngel vun Prozessore ze verwallde, es ene Fähler opjetrodde.',
@@ -224,7 +223,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'poolcounter-desc' => 'Mediawiki-Client fir de Pool-Counter-Daemon poolcounter.py',
+	'poolcounter-desc' => 'Mediawiki-Client fir de Pool-Counter-Daemon',
 );
 
 /** Macedonian (Македонски)
@@ -242,7 +241,7 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'poolcounter-desc' => 'MediaWiki-client voor de poolcounter daemon poolcounter.py',
+	'poolcounter-desc' => 'MediaWiki-client voor de poolcounter daemon',
 	'poolcounter-connection-error' => 'Fout bij het verbinden met de poolcounter server: $1',
 	'poolcounter-read-error' => 'Fout bij het lezen van de poolcounter server',
 	'poolcounter-write-error' => 'Fout bij het schrijven naar de poolcounter server',
@@ -283,10 +282,11 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'poolcounter-desc' => 'Client MediaWiki për ël pool counter daemon poolcounter.py',
+	'poolcounter-desc' => "Client për MediaWiki dël demon ëd conteur d'argropament",
 	'poolcounter-connection-error' => 'Eror an colegandse al server ëd pool counter: $1',
 	'poolcounter-read-error' => 'Eror an lesend dal server ëd pool counter',
 	'poolcounter-write-error' => 'Eror an scrivend al server ëd pool counter',
@@ -297,7 +297,7 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'poolcounter-desc' => "Cliente MediaWiki para o ''pool counter daemon'' poolcounter.py",
+	'poolcounter-desc' => "Cliente MediaWiki para o ''pool counter daemon''",
 	'poolcounter-connection-error' => "Erro na ligação ao servidor ''pool counter'': $1",
 	'poolcounter-read-error' => "Erro ao ler o servidor ''pool counter''",
 	'poolcounter-write-error' => "Erro ao escrever no servidor ''pool counter''",
@@ -308,7 +308,7 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
-	'poolcounter-desc' => 'Cliente mediawiki para o pool counter daemon poolcounter.py',
+	'poolcounter-desc' => 'Cliente mediawiki para o pool counter daemon',
 	'poolcounter-connection-error' => 'Erro ao conectar ao servidor do pool counter: $1',
 	'poolcounter-read-error' => 'Erro ao ler do servidor do pool counter',
 	'poolcounter-write-error' => 'Erro ao escrever no servidor do pool counter',

@@ -2814,7 +2814,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'tasks_form_comment' => 'Anmaerricking',
+	'tasks_form_comment' => 'Aamaericking',
 	'tasks_noone' => 'ken',
 	'tasks_delete' => 'Lösche',
 	'tasks_here' => 'do',
@@ -3338,6 +3338,13 @@ $messages['rue'] = array(
  */
 $messages['sh'] = array(
 	'tasks_previous' => 'Prethodna',
+);
+
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'tasks_delete' => 'මකා දමන්න',
 );
 
 /** Slovak (Slovenčina)

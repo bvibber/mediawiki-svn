@@ -90,6 +90,13 @@ $messages['id'] = array(
 	'pageobjectmodel-desc' => 'Menambahkan serangkaian kelas untuk abstraksi sintaks MediaWiki yang memperbolehkan ekstraksi dan manipulasi halaman di program lain',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'pageobjectmodel-desc' => "Aggiunge un set di classi per l'estrazione della sintassi MediaWiki, così da permettere una facile estrazione ed elaborazione di pagine all'interno di altri programmi",
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

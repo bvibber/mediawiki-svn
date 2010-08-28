@@ -2843,6 +2843,7 @@ $wgCustomToolbarMessages['szl'] = array(
 
 /** Tamil (தமிழ்)
  * @author Mahir78
+ * @author TRYPPN
  */
 $wgCustomToolbarMessages['ta'] = array(
 	'ct_bold_sample' => 'தடித்த எழுத்து',
@@ -2856,6 +2857,18 @@ $wgCustomToolbarMessages['ta'] = array(
 	'ct_internal_sample' => 'PageName',
 	'ct_internal_caption' => 'உள்ளிணைப்பு',
 	'ct_external_tip_ins' => 'வெளியிணைப்பு ஒன்றை உள்ளிடு',
+	'ct_image_tip' => 'ஒரு படத்தை உள்ளிடவும்',
+	'ct_image_caption' => 'படத்தை இணைக்கவும்',
+	'ct_math_caption' => 'சூத்திரம்',
+	'ct_nowiki_caption' => 'விக்கி இல்லை',
+	'ct_upload' => '$1-ஐ பதிவேற்று',
+	'ct_submit' => 'செல்!',
+	'ct_close' => 'சாளரத்தை மூடவும்',
+	'ct_success' => 'பதிவேற்றம் வெற்றி !',
+	'ct_user_user' => 'பயனர்',
+	'ct_user_tip' => 'ஒரு பயனர் பக்கத்திற்கு இணைப்பைக்கொடுக்கவும்',
+	'ct_user_caption' => 'பயனர் இணைப்பு',
+	'ct_user_sample' => 'பயனர் பெயர்',
 );
 
 /** Telugu (తెలుగు)

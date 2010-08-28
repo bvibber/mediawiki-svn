@@ -927,6 +927,14 @@ $messages['ts'] = array(
 	'sitenotice_close' => 'Bakanya',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'sitenotice_close' => 'яшерергә',
+	'sitenotice-desc' => 'Кулланучыларга сәхифә хәбәрләрен яшерергә рөхсәт итү',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

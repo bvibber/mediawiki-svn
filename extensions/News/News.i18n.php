@@ -60,6 +60,13 @@ $messages['ce'] = array(
 	'newsextension-desc' => 'Гойту нисбина могlам керла нисдарш вики-агlонашах йа аса RSS йа Atom',
 );
 
+/** Kashubian (Kaszëbsczi)
+ * @author Kaszeba
+ */
+$messages['csb'] = array(
+	'newsextension-desc' => 'Wëskrzëni nastôwióné przez ce slédné zjinaczi  na starnie wiki, jakno pòwrózczi RSS abò Atom',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

@@ -275,6 +275,14 @@ $messages['he'] = array(
 	'externalpages-no-page' => 'לא צוין דף',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'externalpages-bad-page' => 'Specificirana nepostojeća stranica',
+	'externalpages-no-page' => 'Stranica nije navedena',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

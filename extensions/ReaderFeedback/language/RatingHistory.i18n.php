@@ -2287,6 +2287,19 @@ Derecelendirmeler aşağıdaki gibidir:
 	'right-feedback' => 'Bir sayfayı derecelendirmek için dönüt formunu kullanın',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'ratinghistory-ratings' => "'''Махсус тамгалар:''' '''(1)''' — начар; '''(2)''' — түбән; '''(3)''' — уртача; '''(4)''' — яхшы; '''(5)''' — бик әйбәт;",
+	'ratinghistory-legend' => "Аста: '''бер көнгә бирелүче билгеләр''' күрсәтелгән <font color=\"red\">''(кызыл)''</font> '''уртача билге''' <font color=\"blue\">''(зәңгәр)''</font> и
+'''хәзерге уртача билге''' <font color=\"green\">''(яшел)''</font>.
+'''Хәзерге уртача билге''' — әлегә бирелгән көннәр өчен уртача билге.
+Билгеләр шкаласы:
+
+'''(1)''' — начар; '''(2)''' — түбән; '''(3)''' — уртача; '''(4)''' — яхшы; '''(5)''' — бик әйбәт;.",
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

@@ -678,6 +678,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'layouts_title' => 'Neies Blatt schtaerte',
 	'layouts_continue' => 'Weiter',
 );
 

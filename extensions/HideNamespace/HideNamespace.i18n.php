@@ -124,6 +124,13 @@ $messages['id'] = array(
 	'hidens-desc' => 'Sembunyikan ruang nama di kepala bagian dan judul untuk halaman di ruang nama tertentu atau ketika fungsi parser <nowiki><code>{{#hidens:}}</code></nowiki> digunakan',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
+$messages['it'] = array(
+	'hidens-desc' => "Nasconde il namespace nell'intestazione e nel titolo quando una pagina è nel namespace indicato o comunque quando è chiamata la funzione parser <nowiki> <code>{{#hidens:}}</code> </nowiki>",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

@@ -1654,7 +1654,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'changeauthor-pagenameform-go' => 'Guck uff',
-	'changeauthor-comment' => 'Anmaerricking:',
+	'changeauthor-comment' => 'Aamaericking:',
 );
 
 /** Polish (Polski)

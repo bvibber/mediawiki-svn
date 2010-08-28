@@ -4082,8 +4082,8 @@ $messages['ml'] = array(
  */
 $messages['mr'] = array(
 	'prefswitch' => 'ऊपयोगसुलभता उपक्रम पसंती कळ',
-	'prefswitch-jswarning' => 'त्वचा बदलताना कामचालू ठेवण्याकरिता तुमची [[User:$1/$2.js|$2 JavaScript]] जावास्क्रीप्ट [[{{ns:user}}:$1/vector.js]] मध्ये नकलावी लागेल <!-- or [[{{ns:user}}:$1/common.js]]--> हे लक्षात घ्या.',
-	'prefswitch-csswarning' => 'तुमची [[User:$1/$2.css|custom $2 styles]] यापुड्ढे लागू रहाणार नाही.  व्हेक्टरकरिता  [[{{ns:user}}:$1/vector.css]] मध्ये तुमची custom CSS भरू शकता.',
+	'prefswitch-jswarning' => 'त्वचा बदलताना काम चालू ठेवण्याकरिता तुमची [[User:$1/$2.js|$2 JavaScript]] जावास्क्रीप्ट [[{{ns:user}}:$1/vector.js]] मध्ये नकलावी लागेल <!-- or [[{{ns:user}}:$1/common.js]]--> हे लक्षात घ्या.',
+	'prefswitch-csswarning' => 'तुमची [[User:$1/$2.css|custom $2 styles]] यापुढे लागू रहाणार नाही.  व्हेक्टरकरिता  [[{{ns:user}}:$1/vector.css]] मध्ये तुमची custom CSS भरू शकता.',
 	'prefswitch-survey-true' => 'होय',
 	'prefswitch-survey-false' => 'नाही',
 	'prefswitch-survey-submit-off' => 'नविन चेहरामोहरा बंद करा',
@@ -4102,7 +4102,7 @@ $messages['mr'] = array(
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => ' मला नविन कळी व ठेवण्या आवडल्या नाहीत',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'मला नविन साधनपट्टी(टूलबार) आवडली नाही.',
 	'prefswitch-survey-answer-whyoff-other' => 'इतर कारणे:',
-	'prefswitch-survey-question-browser' => 'तुम्ही कोणता न्यहाळक (ब्राऊजर) वापरता ?',
+	'prefswitch-survey-question-browser' => 'तुम्ही कोणता न्याहाळक (ब्राऊजर) वापरता ?',
 	'prefswitch-survey-answer-browser-other' => 'इतर न्याहाळक(बाउजर):',
 	'prefswitch-survey-question-os' => 'आपण कोणती कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) वापरता?',
 	'prefswitch-survey-answer-os-other' => 'इतर कार्यन प्रणाली (ऑपरेटिंग सिस्टीम) :',
@@ -4113,7 +4113,7 @@ $messages['mr'] = array(
 	'prefswitch-title-switched-off' => 'धन्यवाद',
 	'prefswitch-title-feedback' => 'प्रतिक्रीया',
 	'prefswitch-success-on' => 'नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण त्यास,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
-	'prefswitch-success-off' => 'नविन चेहरामोहरा सध्या सुरू करण्यात आलेला आहे.या नविन चेहरेपट्टीचा वापर करण्यास आपणास आनंद वाटेल अशी आम्ही आशा करतो.आपण,पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" या दुव्यावर कधीही टिचकी मारुन त्यास परत बंद करु शकता.',
+	'prefswitch-success-off' => 'नविन चेहरामोहरा सध्या बंद करण्यात आलेला आहे.नविन चेहरेपट्टीच्या वापराबद्दल धन्यवाद.आपण पुन्हा त्यास, पानाच्या वरील भागास असलेल्या "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" या दुव्यावर कधीही टिचकी मारुन, त्यास परत सुरू करु शकता.',
 	'prefswitch-success-feedback' => 'तुमची टिप्पणी पाठवली.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>कडे परत फिरा.',
@@ -4150,8 +4150,8 @@ $messages['mr'] = array(
 * '''शोध सुधारणा:''' तुम्ही शोधत असलेले लेख/पान लवकर मिळण्याकरिता आम्ही शोध सुचवणीत सुधारणा केल्या आहेत.
 * '''इतर नवीन वैशिष्ट्ये:'''सारणी (टेबल) सोपीकरण्यासाठी आम्ही आता एक नवीन सारणी (टेबल) सहाय्यक उपलब्ध केला आहे आणि संपादनांअध्ये सुलभता आणण्याकरिता शोधा आणि बदला (find and replace)वैशिष्ट्य सुद्धा उपलब्ध केले आहे.
 * '''विकिपीडिया लोगो:''' आम्ही आमचा लोगो अद्ययावत केला आहे.  [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog] येथे अधीक वाचा.",
-	'prefswitch-main-logged-changes' => "* '''{{int:watch}} कळ(टॅब)''' आता तारा आहे.
-* The '''{{int:move}} कळ (टॅब)''' आता शोधपेटी पुढच्या अधोदर्शक बाणात( ड्रॉपडाऊनमध्ये) आहे .",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} कळ (टॅब)''' आता तारा आहे.
+* The '''{{int:move}} कळ (टॅब)''' आता शोधपेटी पुढच्या अधोदर्शक बाणात ( ड्रॉपडाऊनमध्ये) आहे .",
 	'prefswitch-main-feedback' => '===प्रतिक्रीया?===
 आम्हाला तुमच्या कडून ऐकण्यास आवडेल. कृपया आमच्या [[$1|प्रतिक्रीया पानास]] अथवा, तुम्ही जर आमच्या संगणन प्रणाली सुधारण्याच्या चालू प्रक्रीयेत रस असल्यास ,अधीक माहिती करिता आमच्या [http://usability.wikimedia.org ऊपयोगसुलभता उपक्रम विकिस] भेट द्या.',
 	'prefswitch-main-anon' => '===मला परत न्या===
@@ -4163,7 +4163,7 @@ $messages['mr'] = array(
 	'prefswitch-survey-intro-feedback' => 'कृपया  "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" येथे टिचकी मारण्यापूर्वी,आपणातर्फे ऐच्छिक सर्वेक्षणाचा खाली दिलेला नमूना भरुन आपली प्रतिक्रिया घेणे आम्हास जरुर आवडेल.',
 	'prefswitch-survey-intro-off' => 'आमच्या नवीन वैशिष्ट्यसुविधा वापरून पहाण्याकरिता धन्यवाद.
 त्यात सुधारणा करण्याकरिता,"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" वर टिचकी मारण्यापुर्वी कृपया खालील अबंधनकारक सर्वेक्षण भरून द्या.',
-	'prefswitch-feedbackpage' => '↓ Project:सदस्याचे अनुभवाचा परतसंदेश',
+	'prefswitch-feedbackpage' => 'Project:सदस्याचे अनुभवाचा परतसंदेश',
 );
 
 /** Malay (Bahasa Melayu)

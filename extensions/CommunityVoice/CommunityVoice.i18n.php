@@ -596,6 +596,12 @@ $messages['lb'] = array(
  */
 $messages['li'] = array(
 	'communityvoice' => 'Gemeinsjapsstöm',
+	'communityvoice-ratings' => 'Waarderinge',
+	'communityvoice-ratings-scale-status-sending' => 'Ópslaondje...',
+	'communityvoice-ratings-scale-status-error' => "Fout bie 't versture!",
+	'communityvoice-ratings-scale-status-thanks' => "Bedank veur 't deile van dien meining!",
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|stöm|stömme}} oetgebrach)',
+	'communityvoice-ratings-error-no-category' => 'Categorieattribuut ontbrik in waarderingslabel.',
 	'communityvoice-ratings-error-no-title' => 'Paginanaamattribuut ontbrik in waarderingslabel.',
 );
 

@@ -178,6 +178,13 @@ $messages['he'] = array(
 	'addmediawizard-desc' => 'אשף הוספת מדיה, שפותח בשיתוף פעולה בין Kaltura וקרן ויקימדיה',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'addmediawizard-desc' => 'Čarobnjak za dodavanje multimedijalnih datoteka, razvijen u partnerstvu Kalturu i Zaklade Wikimedia',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -239,6 +246,13 @@ $messages['kn'] = array(
  */
 $messages['ko'] = array(
 	'addmediawizard-desc' => 'Kaltura와 위키미디어 재단이 공동 개발한 미디어 추가 마법사',
+);
+
+/** Komi-Permyak (Перем Коми)
+ * @author Enye Lav
+ */
+$messages['koi'] = array(
+	'addmediawizard-desc' => 'Медиа мыччöттэз содтыны туйдöтан, сiйö лöсьöтiсö öтлаын Калтура да Викимедия фонд',
 );
 
 /** Colognian (Ripoarisch)

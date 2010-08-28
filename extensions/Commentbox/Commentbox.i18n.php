@@ -678,8 +678,8 @@ Avètz un comentari sus aquesta pagina ? Apondètz-o aicí o <span class="plainl
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'commentbox-first-comment-heading' => '== Anmaerrickinge ==',
-	'commentbox-regex' => '/\\n==\\s*Anmaerrickinge\\s*==\\s*\\n/i',
+	'commentbox-first-comment-heading' => '== Aamaerickinge ==',
+	'commentbox-regex' => '/\\n==\\s*Aamaerickinge\\s*==\\s*\\n/i',
 );
 
 /** Polish (Polski)

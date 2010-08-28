@@ -338,9 +338,17 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'showprocesslist-id' => 'N°',
 	'showprocesslist-user' => 'Utilisator',
+	'showprocesslist-host' => 'Hôto',
+	'showprocesslist-db' => 'Bâsa de balyês',
+	'showprocesslist-command' => 'Comanda',
+	'showprocesslist-time' => 'Hora',
+	'showprocesslist-state' => 'Ètat',
+	'showprocesslist-info' => 'Enformacions',
 );
 
 /** Western Frisian (Frysk)

@@ -333,9 +333,10 @@ $messages['ml'] = array(
 
 /** Marathi (मराठी)
  * @author Mahitgar
+ * @author V.narsikar
  */
 $messages['mr'] = array(
-	'wikieditor-templates-preference' => 'साचांची घडीक्षमता सक्षम करा',
+	'wikieditor-templates-preference' => 'साच्यांची घडीक्षमता सक्षम करा',
 );
 
 /** Malay (Bahasa Melayu)

@@ -7686,6 +7686,16 @@ $messages['ko'] = array(
 	'ow_create' => '생성',
 );
 
+/** Komi-Permyak (Перем Коми)
+ * @author Enye Lav
+ */
+$messages['koi'] = array(
+	'langman_langname' => 'Кывлöн ним:',
+	'langman_iso639-3' => 'Код ISO 639-3:',
+	'langman_iso639-2' => 'Код ISO 639-2:',
+	'langman_addlang' => 'Содтыны кыв',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */

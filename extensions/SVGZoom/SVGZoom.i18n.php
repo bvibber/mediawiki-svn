@@ -295,6 +295,13 @@ $messages['tr'] = array(
 	'svgzoom-desc' => "MediaWiki'ye SVG dosyalarını görüntülerken kaydırma ve yakınlaşma imkanı ekler",
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'svgzoom-desc' => 'Додає можливості панорамування та збільшення в MediaWiki при перегляді SVG файлів',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

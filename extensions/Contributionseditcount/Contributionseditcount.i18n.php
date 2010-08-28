@@ -321,7 +321,7 @@ $messages['is'] = array(
  * @author Gianfranco
  */
 $messages['it'] = array(
-	'contributionseditcount' => 'Questo utente ha $1 edit',
+	'contributionseditcount' => 'Questo utente ha fatto {{PLURAL:$1|un solo edit|$1 edit}}.',
 	'contributionseditcount-desc' => 'Mostra un edit count nella [[Special:Contributions|pagina dei contributi utente]]',
 );
 

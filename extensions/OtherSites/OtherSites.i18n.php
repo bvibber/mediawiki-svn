@@ -245,9 +245,11 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author Gianfranco
  */
 $messages['it'] = array(
 	'othersites' => 'Altri siti',
+	'othersites-desc' => 'Sposta i collegamenti interwiki diversi dai collegamenti interlinguistici nel quadrotto loro assegnato',
 );
 
 /** Japanese (日本語)

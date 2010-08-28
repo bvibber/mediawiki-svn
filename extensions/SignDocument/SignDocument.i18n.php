@@ -206,6 +206,13 @@ $messages['fr'] = array(
 	'right-createsigndocument' => 'Créer des documents qui peuvent être signés',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'signaturelogpage' => 'Jornal de les signatures',
+);
+
 /** Galician (Galego)
  * @author Toliño
  * @author Xosé

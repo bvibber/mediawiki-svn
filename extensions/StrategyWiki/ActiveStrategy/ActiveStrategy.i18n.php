@@ -177,6 +177,13 @@ $messages['he'] = array(
 	'nedits' => '{{PLURAL:$1|עריכה אחת|$1 עריכות}}',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'nedits' => '$1 {{PLURAL:$1|uređivanje|uređivanja|uređivanja}}',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
