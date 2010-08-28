@@ -1,0 +1,410 @@
+0.7.31
+
+0.7.30
+	change	updated to jericho-html-3.1
+ 	change	updated sitefiles for fotowiki, kamelopedia, uncyclopedia,
+			wikibooks:fr, wikibooks:pt, wikinews:fr, wikipedia:ar, 
+			wikipedia:et, wikipedia:fr, wikipedia:hu, wikipedia:sl, 
+			wikipedia:zh, wikiquote:fr, wikisource:fr, wiktionary:de and
+			wiktionary:fr
+
+0.7.29
+	change	updated sitefile for fotowiki 
+
+0.7.28
+	change	updated sitefiles for wikibooks:fr, wikibooks:pl, wikinews:fr, 
+			wikipedia:da, wikipedia:fr, wikipedia:zh, wikiquote:fr, 
+			wikisource:fr, wiktionary:es and wiktionary:fr
+		
+0.7.27			
+	change	updated sitefiles for all wikimedia projects
+	change	workaround for 
+			http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6746185			
+
+0.7.26
+	change	updated sitefiles for all wikimedia projects
+	change	workaround for 
+			http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6746185
+	
+0.7.25
+	change	updated sitefiles for wikipedia:sl and wikipedia:zh where
+			SpecialPages have been renamed
+	change	updated sitefiles for all french wikimedia projects,
+			Special:Filepath has been renamed
+	change	renamed the Image-namespace to File
+
+0.7.24
+	change	added wikipedia:hu
+	change	updated sitefiles  for all wikimedia sites: the namespace
+			Image has been renamed to File
+
+0.7.23
+	change	updated sitefiles  for all wikimedia sites: the namespace
+			Image has been renamed to File
+0.7.22
+	change	updated sitefiles for all wikimedia sites and uncyclopedia
+
+0.7.21
+	change	updated sitefiles for all wikimedia sites
+	change	updated to jericho-html-2.6
+
+0.7.20
+	change	hacked around login problems by recognizing wgUserName
+	
+0.7.19
+	change	fixed login by adding wpSkipCookieCheck
+	
+0.7.18
+	change	updated sitefiles for and all wikimedia wikis
+
+0.7.17
+	change	updated sitefiles for and all wikimedia wikis and uncyclopedia
+	
+0.7.16
+	bugfix	upload now throws an exception if the user did not overwrite/
+			rename an existing file
+	change	updated sitefiles for all wikimedia wikis
+
+0.7.15
+	change	updated sitefiles for all wikimedia wikis
+
+0.7.14
+	change	updated sitefiles for uncyclopedia and all wikimedia wikis
+
+0.7.13
+	change	updated sitefile for all wikimedia wikis
+
+0.7.12
+	change	updated sitefile for all wikimedia wikis
+	
+0.7.11
+	change	updated sitefiles for all wikimedia wikis
+
+0.7.10
+	change	updated sitefiles for all wikimedia wikis and kamelopedia
+
+0.7.9
+	change	updated sitefiles for all wikimedia wikis
+
+0.7.8
+	change	added new namespaces for wikisource:sv
+
+0.7.7
+	change	updated to jericho-html-2.5.jar and commons-httpclient-3.1.jar
+
+0.7.6
+	change	updated sitefiles for all wikimedia sites
+	change	reorganized the package structure
+	
+0.7.5
+	change	handles more error messages in file upload. if you have own 
+			sitefiles you should add the messages uploadcorrupt and 
+			uploaddisabled.
+
+0.7.4
+	change	updated all wikimedia sitefiles with new messages
+
+0.7.3
+	change	updated all wikimedia sitefiles with new messages
+	bugfix	removed complete html page from UiSimpleActionBase exceptions
+
+0.7.2
+	bugfix	the new MediaWiki.location method threw an NPE
+
+0.7.1
+	change	updates sitefiles for wikibooks:it and wikisource:fr
+
+0.7.0
+	change	ported  queries from query.php to api.php and
+			added a lot of parameters to the corresponding methods
+	change	updates sitefiles for uncyclopedia, wikipedia:ar, 
+			wikibooks:it and wikisource:fr
+--------------------------------------------------------------------------------
+0.6.7
+	change	updated sitefiles for wikibooks:sv, wikinews:sv, wikipedia:sv,
+			wikiquote:de, wikiquote:sv, wikisource:sv, wiktionary:it and 
+			wiktionary:sv
+	change	updated to jericho-html-2.4, introduced a JerichoLogger adapter
+	change	added parameter emailBan to the block method
+
+0.6.6
+	feature	added support for wikipedia:no
+	change	updated sitefiles for wikibooks:nl and wikisource:sv
+
+0.6.5
+	feature	added support for mediawiki (www.mediawiki.org)
+	change	updated sitefiles for wikipedia:da and wikipedia:pl
+
+0.6.4
+	change	updated sitefiles for wikibooks:en, wikinews:ja, wikipedia:da, 
+			wikipedia:es, wikipedia:fi and wiktionary:sv
+	
+0.6.3
+	change	updated sitefiles for wikibooks:nl, wikinews:nl, wikipedia:nl,
+			wikiquote:nl wikisource:nl and wiktionary:nl
+
+0.6.2
+	change	updated all wikimedia sitefiles
+
+0.6.1
+	change	updated code and sitefiles to mirror the change in mediawiki
+			where the badfiletype message has been replaced with filetype-*
+
+0.6.0
+	change	updated the sitefiles for uncyclopedia and all wikimedia-wikis
+	change	added a NameSpace parameter to the category method
+	change	updated sitefile for wikiquote:fr with new namespaces
+	change	uses generics now and therefore needs JDK 1.5
+--------------------------------------------------------------------------------
+0.5.1
+	feature	added a links method
+	change	added cascade and expiry to the protect method
+	change	updated sitefiles for meta, wikipedia:de, wikipedia:fi
+			and wikiquote:fr with some new namespaces
+
+0.5.0
+	change	the sitefiles contain the localized names of specialPages now,
+			if you have own sitefiles you'll have to update them.
+--------------------------------------------------------------------------------
+0.4.5
+	change	added enableAutoblock-parameter to the block method
+	change	updated sitefile for wikipedia:da, wikibooks:en, wikiversity:de,
+			uncyclopedia, wikipedia:fi and wikiquote:fr
+
+0.4.4
+	change	updated sitefiles for wikibooks:sv, wikinews:sv, wikipedia:sv, 
+			wikiquote:sv, wikisource:sv, wiktionary:sv and wikisource:pt
+	change	updates sitefiles for wikpiedia:da, wikipedia:fr, wikipedia:en,
+			wikipedia:pt and wikinews:fr
+
+0.4.3
+	bugfix	setupProxy did not work on older JDKs
+	change	updated to jericho-html-2.3
+
+0.4.2
+	feature	the environment variable $http_proxy is honored when http.proxyHost
+			and http.proxyPort are not set
+	bugfix	setting up a proxy automatically did not work
+	change	updated sitefiles for  wikibooks:fr, wikipedia:it, wikiquote:pl, 
+			wikisource:pl and  wikisource:pt
+
+0.4.1
+	change	updated sitefile for wikisource:fr, 
+			added wikiversity:en and wikiversity:de
+	change	updated sitefiles for meta, wikinews:it and wikinews:pt
+
+0.4.0
+	feature	wikimedia projects are supported in a lot more languages now
+	feature	added setupProxy to initialize the proxy settings from 
+			the system properties
+	change	added support for some queries with yuriks query.php.
+			the history-method and the contribs method use query.php
+			now, so they fail if a wiki does not support this page.
+	change	changed kamelopedia prefix from k to kamelo 
+	change	added an optional queryPath property to the site files
+	change	readded wpuploadAffirm for mediawiki vefore version 1.6
+--------------------------------------------------------------------------------
+0.3.6
+	bugfix	lost sessions lead to a hangup
+	change	updated to jericho-html-2.2
+	change	updated sitefile for uncyclopedia
+	change	block now has two new parameters anonOnly and createAccounts  
+
+0.3.5
+	change	updated all wikimedia sitefiles
+
+0.3.4
+	feature	PageStore recognizes recreation warnings
+	feature	PageStore recognizes spam protection errors
+	feature	PageDelete recognizes cannotdelete errors
+	change	added spamprotectionmatch, confirmrecreate and cannotdelete
+			messages to the languagesfiles
+	change	updated sitefile for wikipedia:ia, wikipedia:sl and 
+			uncyclopedia
+	change	depends on lib-util now
+
+0.3.3
+	change	updated sitefile for wikipedia:he
+
+0.3.2
+	change	updated sitefile for wikipedia:ca and wikipedia:zh
+	note	if you have custom *.site-files, copy the new lines 
+			from commons.site
+	change	added a titleCase-value to the *.site-files. 
+	change	updated all *.site-files
+
+0.3.1
+	change	moved functionality of the Edit class into the Page class 
+			and deleted the Edit class 
+	change	renamed all methods in UploadCallback and MoveCallback
+	change	reorganized the config files, if you have configured own wikis,
+			you'll have to write new *.family and *.site files
+
+0.3.0
+	feature	recognizes uploadvirus and uploadscripted responses
+	change	uses Special:Filepath now instead of parsing the image description
+	feature	added watch/unwatch pages method
+	change	updated to commons-httpclient-3.0
+	change	changed family- and sitefile format
+	change	ported from beanshell to java
+--------------------------------------------------------------------------------
+0.2.17
+	updated sitefiles for wikibooks:de and wikipedia:he
+
+0.2.16
+	failed uploads did not work correctly
+
+0.2.15
+	added a watch-flag to the upload method
+
+0.2.14
+	updated sitefiles for wikipedia:sv, wikipedia:sl, wikipedia:ro,
+	wikipedia:ja, wikipedia:hr and uncyclopedia
+
+0.2.13
+	the NetworkException has been renamed to MediaWikiException and stores
+	additional factoids about the error now.
+	updated sitefiles for wiktionary:de, wikipedia:nl, wikipedia:ar
+	and uncyclopedia
+ 
+0.2.12
+	updated sitefiles for wikipedia:ca, wikipedia:fr and wikipedia:he
+	removed english kamelopedia, which seems to be dead
+	removed de.-prefix from the URL of the german kamelopedia
+
+0.2.11
+	MediaWiki allows "+" in URLs now, this was seen as " " when
+	decoding an URL to a page title
+
+0.2.10
+	updated sitefiles for wikibooks:en, wikipedia:eo, wikipedia:hr,
+	wikipedia:it, wikipedia:sl and wikipedia:pt
+	[[MediaWiki:page]] does work now, [[Commons:Test]] however does not
+
+0.2.9
+	updated sitefiles for kamelopedia:de,
+	and some wikipedia sites
+
+	added an URL fullImageURL(imageLocation) method
+
+0.2.8
+	uses english messages instead of nds when they are missing 
+	in nds, updated sitefiles for wikinews:de, wikipedia:ar,
+	and wikipedia:es
+	replaced nameSpace(wiki,title) with nameSpaceFor(location)
+
+0.2.7
+	new pages return a 404 in MediaWiki now and could not be loaded any more
+
+0.2.6
+	URLs for smushedTitle-wikis were not generated correctly
+
+0.2.5
+	fixed way-too-big error messages on unexpected server replies
+
+0.2.4
+	simplified loading of user-families
+
+0.2.3
+	added an fileexistsRename callback to the UploadCallback
+
+0.2.2
+	added a contribs method
+	added a history method
+	added a loadOld method taking an oldid from the history method
+
+0.2.1
+	the sitefiles have been extended for upload 
+	changed the upload method to use a callback
+	changed sitefile for wikipedia:ja
+
+0.2.0
+	rewritten most of the namespace handling code
+	changed the sitefile format, namespaces are held in a Map now
+--------------------------------------------------------------------------------
+0.1.9
+	removed support for wikidev
+	changing the UI language in the user preferences no longer breaks the API: 
+	all sitefiles are now generated with uselang=nds and all requests to 
+	MediaWiki use this too - LanguageNds.php is much less likely to change than
+	the local language messages.
+
+0.1.8
+	updated sitefiles for wikipeedia:ja, wikipedia:hr and wikipedia:ar
+	detects a badfiletype response when uploading a file
+	small bugfixes
+
+0.1.7
+	did not work with java 1.4 any more
+
+0.1.6
+	changed the SiteManager to ease adding and removing families at runtime
+	changed sitefile for wikipedia:hr and wikipedia:pt
+	changed wikisource to be multilingual, de and en are supported for now
+
+0.1.5
+	added support for the uncyclopedia
+	the uploadsucessful-page returned when overwriting an uploaded file
+	is parsed now to the Uploaded contains a valid title
+	updated sitefiles for wikipedia:es, wikipedia:pl, wikipedia:fi and
+	wikipedia:sl
+
+0.1.4
+	added MediaWiki.httpCredentials to enable to use HTTP login
+	refactored the load, store and upload method
+	refactored the Loaded, Stored and Uploaded object
+
+0.1.3
+	changed the upload method to use a Location instead of wiki and title
+
+0.1.2
+	added a ProgressListener to the file upload method
+	added support for intern (int) at http://internal.wikimedia.org/
+
+0.1.1
+	encoding problems in the file upload have been fixed
+	changed the format of all sitefiles: 
+	instead of regexps matching mediawiki messages they contain
+	the mediawiki messages from Special:Allmessages themselves
+
+0.1.0
+	wpStarttime is supported now which is necessary for mediawiki 1.6alpha
+	html parsing is done with jericho-html now, so include the library!
+	editthrottling did not work
+--------------------------------------------------------------------------------
+0.0.10
+	fixed file upload for 1.6alpha
+	updated sitefiles for wikipedia:es, wikipedia:fr and wikipedia:zh
+
+0.0.9
+	updated languagesfiles for kamelopedia:en and kamelopedia:de
+
+0.0.8
+	added an upload function
+	updated language files for wikibooks:de, wikinews:de, wikipedia:he, 
+	wikiquote:de and wiktionary:de
+	changed the sitefiles: more messages and an additional URL
+
+0.0.7
+	added hacked contrib classes to support https with a self-signed SSL-cert
+	org.apache.commons.httpclient.contrib.ssl.EasySSLProtocolSocketFactory 
+	org.apache.commons.httpclient.contrib.ssl.EasyX509TrustManager
+	
+0.0.6
+	changed the format of the language files, the regexps now
+	use the same name as mediawiki itself does.
+	
+0.0.5
+	changed a lot of wikipedia language files
+
+0.0.4
+	changed #store to work even when the 302 contains text
+
+0.0.3
+	updated sitefiles for wikipedia pl, es and en
+
+0.0.2	
+	updated sitefiles for nearly all wikimedia projects
+
+0.0.1	
+	initial release

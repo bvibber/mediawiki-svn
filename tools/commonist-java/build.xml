@@ -19,23 +19,36 @@
 	
 	<!-- ==== compile ==== -->
 
-	<target name="compile" description="compile java classes">
+	<target name="parser" description="create the parser sources">
+		<mkdir dir="build/src/net/psammead/minibpp/parser"/>
+		<javacc
+			target="src/net/psammead/minibpp/Parser.jj"
+			outputdirectory="build/src/net/psammead/minibpp/parser"
+			javacchome="lib"
+			unicodeinput="true"
+			static="false"
+		/>
+	</target>
+
+	<target name="compile" depends="parser" description="compile java classes">
 		<mkdir dir="build/classes"/>
 		<javac
-			srcdir="src" 
 			destdir="build/classes"
 			source="${java.source}"
 			target="${java.target}"
 			encoding="${java.encoding}"
 			deprecation="true"
 			extdirs="lib"
-			debug="true"
-		/>
+			debug="true" >
+			<src path="src" />
+			<src path="build/src" />
+		</javac>
 	</target>
 	
 	<target name="jar" depends="compile" description="create the binary jar file">
 		<mkdir dir="build/jar"/>
 		<jar jarfile="build/jar/${project}.jar">
+			<zipfileset dir="config" prefix="build/classes/net/psammead/mwapi/config" />
 			<zipfileset dir="build/classes"/>
 			<zipfileset dir=".">
 				<include name="image/${ws.icon}"/>
@@ -77,6 +90,7 @@
 			<zipfileset dir="." prefix="${project}-${version}" filemode="770">
 				<include name="bin/*"/> 
 			</zipfileset>
+			<zipfileset dir="config" prefix="${project}-${version}/build/classes/net/psammead/mwapi/config" />
 			<zipfileset dir="." prefix="${project}-${version}">
 				<include name="doc/index.html"/>
 				<include name="doc/changes.txt"/>

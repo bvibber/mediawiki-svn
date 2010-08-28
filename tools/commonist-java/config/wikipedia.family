@@ -1,0 +1,33 @@
+## configuration for a whole wiki family
+
+# identification
+name	wikipedia
+shortcut	w
+
+# languages
+multilingual	true
+defaultLanguage	en
+supportedLanguage	ar
+supportedLanguage	ca
+supportedLanguage	da
+supportedLanguage	de
+supportedLanguage	en
+supportedLanguage	eo
+supportedLanguage	es
+supportedLanguage	et
+supportedLanguage	fi
+supportedLanguage	fr
+supportedLanguage	he
+supportedLanguage	hr
+supportedLanguage	hu
+supportedLanguage	ia
+supportedLanguage	it
+supportedLanguage	ja
+supportedLanguage	nl
+supportedLanguage	no
+supportedLanguage	pl
+supportedLanguage	pt
+supportedLanguage	ro
+supportedLanguage	sl
+supportedLanguage	sv
+supportedLanguage	zh

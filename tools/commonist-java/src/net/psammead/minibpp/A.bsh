@@ -1,0 +1,9 @@
+/*
+import net.psammead.minibpp.*;
+*/
+
+//require("commons-logging.jar");
+
+encoding("ISO-8859-1");
+
+export("MiniBPP.bsh");

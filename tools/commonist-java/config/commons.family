@@ -1,0 +1,8 @@
+## configuration for a whole wiki family
+
+# identification
+name	commons
+shortcut	c
+
+# languages
+multilingual	false

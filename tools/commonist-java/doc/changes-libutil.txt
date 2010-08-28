@@ -1,0 +1,16 @@
+0.0.5
+	needs JDK 1.5 now
+
+0.0.4
+	added reflect package for dynamic-language-like functionality
+	renamed Tokenizer to Scan
+	added JSON encoding support
+
+0.0.3
+	added Googlish pattern matcher
+	
+0.0.2
+	added AppleQuit support class
+
+0.0.1
+	initial release

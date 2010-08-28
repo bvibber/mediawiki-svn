@@ -1,0 +1,8 @@
+## configuration for a whole wiki family
+
+# identification
+name	mediawiki
+shortcut	mw
+
+# languages
+multilingual	false
