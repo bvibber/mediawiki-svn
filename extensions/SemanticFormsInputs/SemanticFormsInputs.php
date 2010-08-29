@@ -4,9 +4,8 @@
  *
  * @author Stephan Gambke
  * @author Sanyam Goyal
- * @version 0.2
- * @date 16-Aug-2010
- */
+ * @version 0.3.1
+  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'This file is a MediaWiki extension, it is not a valid entry point.' );

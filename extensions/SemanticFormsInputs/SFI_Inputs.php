@@ -5,6 +5,7 @@
  * @author Stephan Gambke
  * @author Sanyam Goyal
  * @author Yaron Koren
+ * @version 0.3.1
  *
  */
 
@@ -17,7 +18,7 @@ class SFIInputs {
  * Setup for input type regexp.
  * Adds the Javascript code used by all regexp filters.
  */
-function regexpSetup() {
+static function regexpSetup() {
 
 	global $wgOut;
 
@@ -29,7 +30,10 @@ function regexpSetup() {
 		wfLoadExtensionMessages( 'SemanticFormsInputs' );
 
 		$jstext = <<<JAVASCRIPT
-	function validate_input_with_regexp(input_number, re, inverse, message, multiple){
+	function validate_input_with_regexp(input_number, retext, inverse, message, multiple){
+
+		var decoded = jQuery("<div/>").html(retext).text();
+		var re = new RegExp(decoded);
 
 		if (multiple) {
 			res = true;
@@ -69,7 +73,7 @@ JAVASCRIPT;
 /*
  * Definition of input type "regexp"
  */
-function regexpHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
+static function regexpHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 
 	global $wgRequest, $wgUser, $wgParser;
 	global $sfgTabIndex; // used to represent the current tab index in the form
@@ -112,20 +116,27 @@ function regexpHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $oth
 
 	// set regexp string
 	if ( array_key_exists( 'regexp', $other_args ) ) {
+
 		$regexp = str_replace( $orChar, '|', trim( $other_args['regexp'] ) );
 		unset( $other_args['regexp'] );
-	}
-	else $regexp = '/.*/';
 
-	// set regexp string
+		// check for leading/trailing delimiter and remove it (else dump regexp)
+		if ( preg_match  ( "/^\/.*\/\$/", $regexp ) ) {
+
+			$regexp = substr( $regexp, 1, strlen( $regexp ) - 2 );
+
+		}
+		else $regexp = '.*';
+
+	}
+	else $regexp = '.*';
+
+	// set failure message string
 	if ( array_key_exists( 'message', $other_args ) ) {
 		$message = trim( $other_args['message'] );
 		unset( $other_args['message'] );
 	}
 	else $message = wfMsg( 'semanticformsinputs-wrongformat' );
-
-	$message = str_replace( '\\', '\\\\', $message );
-	$message = str_replace( '\'', '\\\'', $message );
 
 	$new_other_args = array();
 
@@ -144,10 +155,15 @@ function regexpHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $oth
 
 	$hook_values = $sfgFormPrinter->mInputTypeHooks[$baseType];
 
+	// sanitize error message and regexp for JS
+	$message = Xml::encodeJsVar( $message );
+	$regexp = Xml::encodeJsVar( $regexp );
+
+	// $sfgJSValidationCalls are sanitized for HTML by SF before output, no htmlspecialchars() here
 	if ( array_key_exists( 'part_of_multiple', $other_args ) && $other_args['part_of_multiple'] == 1 ) {
-		$sfgJSValidationCalls[] = "validate_input_with_regexp($sfgFieldNum, {$regexp}, {$inverseString}, '$message', true)";
+		$sfgJSValidationCalls[] = "validate_input_with_regexp($sfgFieldNum, {$regexp}, {$inverseString}, {$message}, true)";
 	} else {
-		$sfgJSValidationCalls[] = "validate_input_with_regexp($sfgFieldNum, {$regexp}, {$inverseString}, '$message', false)";
+		$sfgJSValidationCalls[] = "validate_input_with_regexp($sfgFieldNum, {$regexp}, {$inverseString}, {$message}, false)";
 	}
 
 	list( $htmltext, $jstext ) = call_user_func_array( $hook_values[0], $funcArgs );
@@ -160,7 +176,7 @@ function regexpHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $oth
  * Setup for input type datepicker.
  * Adds the Javascript code used by all date pickers.
  */
-function datePickerSetup () {
+static function datePickerSetup () {
 	global $wgOut;
 	global $sfigSettings;
 
@@ -320,6 +336,7 @@ function datePickerSetup () {
 		if (sfiElements[id]) sfiElements[id].clear();
 			document.getElementById(id).value="";
 	}
+
 JAVASCRIPT;
 
 		$jstext .= $locString;
@@ -331,9 +348,10 @@ JAVASCRIPT;
 /*
  * Definition of input type "simpledatepicker".
  */
-function jqDatePickerHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
+static function jqDatePickerHTML( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 
-	global $wgRequest, $wgUser, $wgParser, $wgOut, $wgScriptPath, $wgLanguageCode, $sfgFieldNum, $sfgScriptPath;
+	global $wgRequest, $wgUser, $wgParser, $wgOut, $wgScriptPath, $wgLanguageCode;
+	global $sfgFieldNum, $sfgScriptPath, $sfigSettings;
 
 	static $hasRun = false;
 
@@ -341,30 +359,38 @@ function jqDatePickerHTML( $cur_value, $input_name, $is_mandatory, $is_disabled,
 		$hasRun = true;
 
 		$wgOut->addScript( '<script type="text/javascript" src="' . $sfgScriptPath . '/libs/jquery-ui/jquery.ui.datepicker.min.js"></script> ' );
+
 		if ( strcmp( $wgLanguageCode, "en" ) != 0 ) {
 			$wgOut->addScript( '<script type="text/javascript" src="' . $sfgScriptPath . '/libs/jquery-ui/jquery-ui-i18n.js"></script> ' );
 		}
 
-		$jstext = "<script>  jQuery.noConflict(); jQuery(function(){";
-		$image_path = $wgScriptPath . '/extensions/SemanticFormsInputs/calendar.gif';
-		if ( strcmp( $wgLanguageCode, "en" ) != 0 ) {
-			$jstext .= "jQuery(\"#input_" . $sfgFieldNum . "\").datepicker({showOn: 'both', buttonImage: '$image_path', buttonImageOnly: true , dateFormat: 'yy-mm-dd' }, jQuery.datepicker.regional['$wgLanguageCode']); } ); </script> ";
-		} else {
-			$jstext .= "jQuery(\"#input_" . $sfgFieldNum . "\").datepicker({showOn: 'both', buttonImage: '$image_path', buttonImageOnly: true , dateFormat: 'yy-mm-dd' }); 	} ); </script> ";
-		}
-
-		$wgOut->addScript( $jstext );
-
 	}
-	$html = '<p><input type="text" id="input_' . $sfgFieldNum . '"  name="' . $input_name . '"   value ="' . $cur_value . '" size="30"/></p>';
 
-	return array( $html, "" );
+	if ( strcmp( $wgLanguageCode, "en" ) != 0 ) {
+		$langCodeString = ", jQuery.datepicker.regional['$wgLanguageCode']";
+	} else {
+		$langCodeString = "";
+	}
+
+	$jstext = <<<JAVASCRIPT
+jQuery (
+	function() {
+		jQuery("#input_$sfgFieldNum").datepicker({showOn: 'both', buttonImage: '$sfigSettings->scriptPath/DatePickerButton.gif', buttonImageOnly: false , dateFormat: 'yy-mm-dd' }$langCodeString);
+	}
+);
+
+JAVASCRIPT;
+
+	$html = '<input type="text" id="input_' . $sfgFieldNum . '"  name="' . htmlspecialchars( $input_name ) . '"   value ="' . htmlspecialchars( $cur_value ) . '" size="30"/>' .
+			'<span id="info_' . $sfgFieldNum . '" class="errorMessage"></span>';
+
+	return array( $html, $jstext );
 }
 
 /*
  * Definition of input type "datepicker".
  */
-function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
+static function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, $other_args ) {
 
 	global $wgRequest, $wgUser, $wgParser, $wgOut, $wgScriptPath;
 
@@ -377,11 +403,11 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 	if ( !( array_key_exists( 'hidden', $other_args ) || $is_disabled ) ) self::datePickerSetup();
 
 	// set size string
-	if ( array_key_exists( 'size', $other_args ) ) $sizeString = 'size="' . $other_args['size'] . '" ';
+	if ( array_key_exists( 'size', $other_args ) ) $sizeString = 'size="' . htmlspecialchars( $other_args['size'] ) . '" ';
 	else $sizeString = '';
 
 	// set maxlength string
-	if ( array_key_exists( 'maxlength', $other_args ) ) $maxlengthString = 'maxlength="' . $other_args['maxlength'] . '" ';
+	if ( array_key_exists( 'maxlength', $other_args ) ) $maxlengthString = 'maxlength="' . htmlspecialchars( $other_args['maxlength'] ) . '" ';
 	else $maxlengthString = '';
 
 	// set mandatory string
@@ -482,19 +508,19 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 		foreach ( explode( ',', $disabledDates ) as $range ) {
 			if ( strpos( $range, '-' ) === false ) {
 				$dateArray = explode( '/', $range );
-				$disabledDatesString .=  '"' .
-					$dateArray[1] . '/' .
+				$disabledDatesString .=
+					Xml::encodeJsVar( $dateArray[1] . '/' .
 					$dateArray[0] . '/' .
-					$dateArray[2] . '", ';
+					$dateArray[2] ) . ', ';
 			} else {
 				$dateArray = explode( '/', str_replace( '-', '/', $range ) );
-				$disabledDatesString .= '"' .
-					$dateArray[1] . '/' .
+				$disabledDatesString .=
+					Xml::encodeJsVar( $dateArray[1] . '/' .
 					$dateArray[0] . '/' .
 					$dateArray[2] . '-' .
 					$dateArray[4] . '/' .
 					$dateArray[3] . '/' .
-					$dateArray[5] . '", ';
+					$dateArray[5] ) . ', ';
 			}
 		}
 
@@ -502,7 +528,7 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 
 	if ( array_key_exists( 'possible_values', $other_args ) && $other_args['possible_values'] ) {
 
-		$enabledDates = array();
+		$enabledDates = array();  // stores enabled date ranges, i.e. arrays containing first and last enabled day
 
 		foreach ( $other_args['possible_values'] as $range ) {
 
@@ -525,6 +551,7 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 
 		$prevStartOfDisabled = $firstDate;
 
+		// from the list of enabled dates create a list of disabled dates
 		while ( list( $currKey, $currRange ) = each( $enabledDates ) ) {
 
 			$currEndOfDisabled = clone $enabledDates[$currKey][0];
@@ -565,13 +592,19 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 
 	// set first date string and last date string
 	if ( $firstDate ) {
-		$firstDateString = '"' . $firstDate->format( 'n' ) . '/' . $firstDate->format( 'j' ) . '/' . $firstDate->format( 'Y' ) . '"';
+		$firstDateString =
+			$firstDate->format( 'n' ) . '/' .
+			$firstDate->format( 'j' ) .	'/' .
+			$firstDate->format( 'Y' );
 	} else {
 		$firstDateString = 'null';
 	}
 
 	if ( $lastDate ) {
-		$lastDateString = '"' . $lastDate->format( 'n' ) . '/' . $lastDate->format( 'j' ) . '/' . $lastDate->format( 'Y' ) . '"';
+		$lastDateString =
+			$lastDate->format( 'n' ) . '/' .
+			$lastDate->format( 'j' ) . '/' .
+			$lastDate->format( 'Y' );
 	} else {
 		$lastDateString = 'null';
 	}
@@ -590,19 +623,19 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 		foreach ( explode( ',', $highlightedDates ) as $range ) {
 			if ( strpos( $range, '-' ) === false ) {
 				$dateArray = explode( '/', $range );
-				$highlightedDatesString .=  '"' .
-					$dateArray[1] . '/' .
+				$highlightedDatesString .=
+					Xml::encodeJsVar( $dateArray[1] . '/' .
 					$dateArray[0] . '/' .
-					$dateArray[2] . '", ';
+					$dateArray[2] ) . ', ';
 			} else {
 				$dateArray = explode( '/', str_replace( '-', '/', $range ) );
-				$highlightedDatesString .= '"' .
-					$dateArray[1] . '/' .
+				$highlightedDatesString .=
+					Xml::encodeJsVar( $dateArray[1] . '/' .
 					$dateArray[0] . '/' .
 					$dateArray[2] . '-' .
 					$dateArray[4] . '/' .
 					$dateArray[3] . '/' .
-					$dateArray[5] . '", ';
+					$dateArray[5] ) . ', ';
 			}
 		}
 
@@ -618,24 +651,6 @@ function datePickerHTML ( $cur_value, $input_name, $is_mandatory, $is_disabled, 
 
  	// set default date string
 	$defaultDateString = 'null';
-	$setDefaultDateString = '';
-
-	if ( $cur_value ) {
-		$parts = explode( '/', $cur_value );
-		if ( count( $parts ) == 3 ) {
-			$defaultDateString = '"' . $parts[1] . '/' . $parts[0] . '/' . $parts[2] . '"';
-
-			$setDefaultDateString = <<<JAVASCRIPT
-				document.getElementById("input_{$sfgFieldNum}").value=
-				YAHOO.util.Date.format(
-					new Date(Date.parse($defaultDateString)),
-					{format:"$dateFormatString"},
-					'wiki'
-				);
-JAVASCRIPT;
-
-		}
-	}
 
 	// set month strings
 	if ( array_key_exists( 'month names', $other_args ) ) {
@@ -646,7 +661,7 @@ JAVASCRIPT;
 
 	// set day strings
 	if ( array_key_exists( 'day names', $other_args ) ) {
-		$dayNames = $other_args['day names'];
+		$dayNames = Xml::encodeJsVar( $other_args['day names'] );
 	} else {
 		$dayNames = $sfigSettings->datePickerDayNames;
 	}
@@ -659,6 +674,14 @@ JAVASCRIPT;
 	} else {
 		$showResetButton = $sfigSettings->datePickerShowResetButton;
 	}
+
+	$classString = htmlspecialchars( $classString );
+	$cur_value = htmlspecialchars( $cur_value );
+	// $mandatoryString: contains a fixed string ("mandatory ", "")
+	$input_name = htmlspecialchars( $input_name );
+	// $sizeString: already sanitized
+	// $maxlengthString: already sanitized
+	// $disableInputString: contains a fixed string ("readonly ", "")
 
 	if ( $showResetButton && $is_disabled ) {
 
@@ -679,42 +702,77 @@ JAVASCRIPT;
 
 	// compose html text
 	if ( array_key_exists( 'hidden', $other_args ) ) {
-		$htmltext = '<input type="hidden" id="input_' . $sfgFieldNum . '" value="' . $cur_value .
-			'" class="createboxInput ' .  $mandatoryString . $classString . '" name="' . $input_name . '" /><span id="info_' . $sfgFieldNum . '" class="errorMessage"></span>';
+
+		$htmltext = '<input type="hidden" id="input_' . $sfgFieldNum
+			. '" value="' . $cur_value
+			. '" class="createboxInput ' .  $mandatoryString . $classString
+			. '" name="' . $input_name . '" /><span id="info_' . $sfgFieldNum
+			. '" class="errorMessage"></span>';
+
 	} elseif ( $is_disabled ) {
 		$htmltext =
-			'<span class="yui-skin-sam">' .
-			'<input type="text" ' . $sizeString . $maxlengthString . ' id="input_' . $sfgFieldNum . '" ' .
-			'value="' . $cur_value . '" class="createboxInput ' . $mandatoryString . $classString . '" ' .
-			'style="vertical-align:middle;" name="' . $input_name . '" readonly />' .
-			'<button tabindex="-1" type=button id="input_' . $sfgFieldNum . '_button" class="' . $classString . '" onclick="return false;" ' .
-			'style="height:1.5em;width:1.5em;vertical-align:middle;background-image: url(' . $sfigSettings->scriptPath . '/DatePickerButtonDisabled.gif);' .
-			'background-position: center center; background-repeat: no-repeat;" disabled ></button>' .
-			$resetButtonString . "\n" .
-			'<span id="info_' . $sfgFieldNum . '" class="errorMessage"></span>' .
-			'</span>';
+			'<span class="yui-skin-sam">'
+			. '<input type="text" ' . $sizeString . $maxlengthString
+			. ' id="input_' . $sfgFieldNum . '" ' .	'value="' . $cur_value
+			. '" class="createboxInput ' . $mandatoryString . $classString . '" '
+			. 'style="vertical-align:middle;" name="' . $input_name . '" readonly />'
+			. '<button tabindex="-1" type=button id="input_' . $sfgFieldNum
+			. '_button" class="' . $classString . '" onclick="return false;" '
+			. 'style="height:1.5em;width:1.5em;vertical-align:middle;background-image: url('
+			. $sfigSettings->scriptPath . '/DatePickerButtonDisabled.gif);'
+			. 'background-position: center center; background-repeat: no-repeat;" disabled ></button>' .
+			$resetButtonString . "\n"
+			. '<span id="info_' . $sfgFieldNum . '" class="errorMessage"></span>'
+			. '</span>';
 
-	} else {
+	} else { // not hidden, not disabled
 		$htmltext =
-			'<span class="yui-skin-sam">' .
-			'<span id="input_' . $sfgFieldNum . '_container" style="position:absolute;display:inline;margin-top:2em;"><span id="input_' . $sfgFieldNum . '_calendar"></span></span>' .
-			'<input type="text" ' . $sizeString . $maxlengthString . $disableInputString . ' id="input_' . $sfgFieldNum . '" ' .
-			'value="' . $cur_value . '" class="createboxInput ' . $mandatoryString . $classString . '" ' .
-			'style="vertical-align:middle;" name="' . $input_name . '" />' .
-			'<button tabindex="-1" type=button id="input_' . $sfgFieldNum . '_button" class="' . $classString . '" onclick="toggle_datepicker(this);" ' .
-			'style="height: 1.5em; width: 1.5em;vertical-align:middle;background-image: url(' . $sfigSettings->scriptPath . '/DatePickerButton.gif);' .
-			'background-position: center center; background-repeat: no-repeat;" ></button>' .
-			$resetButtonString . "\n" .
-			'<span id="info_' . $sfgFieldNum . '" class="errorMessage"></span>' .
-			'</span>';
+			'<span class="yui-skin-sam">'
+			. '<span id="input_' . $sfgFieldNum
+			. '_container" style="position:absolute;display:inline;margin-top:2em;">'
+			. '<span id="input_' . $sfgFieldNum . '_calendar"></span></span>'
+			. '<input type="text" ' . $sizeString . $maxlengthString . $disableInputString
+			. ' id="input_' . $sfgFieldNum . '" ' .	'value="' . $cur_value
+			. '" class="createboxInput ' . $mandatoryString . $classString . '" '
+			. 'style="vertical-align:middle;" name="' . $input_name . '" />'
+			. '<button tabindex="-1" type=button id="input_' . $sfgFieldNum
+			. '_button" class="' . $classString . '" onclick="toggle_datepicker(this);" '
+			. 'style="height: 1.5em; width: 1.5em;vertical-align:middle;background-image: url('
+			. $sfigSettings->scriptPath . '/DatePickerButton.gif);'
+			. 'background-position: center center; background-repeat: no-repeat;" ></button>'
+			. $resetButtonString . "\n"
+			. '<span id="info_' . $sfgFieldNum . '" class="errorMessage"></span>'
+			. '</span>';
 	}
 
 	// compose Javascript
-	if ( array_key_exists( 'hidden', $other_args ) ) {
-		$jstext = '';
-	} elseif ( $is_disabled ) {
+	if ( array_key_exists( 'hidden', $other_args ) || $is_disabled ) {
 		$jstext = '';
 	} else {
+
+		$weekStartString = htmlspecialchars( Xml::encodeJsVar( $weekStartString ), ENT_NOQUOTES );
+		// $weekNumberString: contains a fixed string ("true", "false")
+		// $disabledDaysOfWeek: input filtered, only numbers and commas allowed
+		// $highlightedDaysOfWeek: input filtered, only numbers and commas allowed
+		$disabledDatesString = htmlspecialchars( $disabledDatesString, ENT_NOQUOTES ); // Js sanitized on input
+		$highlightedDatesString = htmlspecialchars( $highlightedDatesString, ENT_NOQUOTES ); // Js sanitized on input
+
+		if ( strcmp( $firstDateString, "null" ) ) {
+			$firstDateString = htmlspecialchars( Xml::encodeJsVar( $firstDateString ), ENT_NOQUOTES );
+		}
+
+		if ( strcmp( $lastDateString, "null" ) ) {
+			$lastDateString = htmlspecialchars( Xml::encodeJsVar( $lastDateString ), ENT_NOQUOTES );
+		}
+
+		if ( strcmp( $defaultDateString, "null" ) ) {
+			$defaultDateString = htmlspecialchars( Xml::encodeJsVar( $defaultDateString ), ENT_NOQUOTES );
+		}
+
+		$monthNames = htmlspecialchars( Xml::encodeJsVar( $monthNames ), ENT_NOQUOTES );
+		$dayNames = htmlspecialchars( Xml::encodeJsVar( $dayNames ), ENT_NOQUOTES );
+		$dateFormatString  = htmlspecialchars( Xml::encodeJsVar( $dateFormatString ), ENT_NOQUOTES );
+
 		$jstext = <<<JAVASCRIPT
 			function setup_input_{$sfgFieldNum}() {
 
@@ -728,17 +786,17 @@ JAVASCRIPT;
 			sfiElements['settings_$sfgFieldNum'].first_day = $firstDateString;
 			sfiElements['settings_$sfgFieldNum'].last_day = $lastDateString;
 			sfiElements['settings_$sfgFieldNum'].default_day = $defaultDateString;
-			sfiElements['settings_$sfgFieldNum'].locale_months = "$monthNames";
-			sfiElements['settings_$sfgFieldNum'].locale_weekdays = "$dayNames";
-			sfiElements['settings_$sfgFieldNum'].date_format = "$dateFormatString";
+			sfiElements['settings_$sfgFieldNum'].locale_months = $monthNames;
+			sfiElements['settings_$sfgFieldNum'].locale_weekdays = $dayNames;
+			sfiElements['settings_$sfgFieldNum'].date_format = $dateFormatString;
 
-			$setDefaultDateString;
 		}
 
 		addOnloadHook(setup_input_{$sfgFieldNum});
+
 JAVASCRIPT;
 	}
 
 	return array( $htmltext, $jstext );
-	}
+}
 }

@@ -3,7 +3,7 @@
  * Settings for the Semantic Forms Inputs extension.
  *
  * @author Stephan Gambke
- * @version 0.2
+ * @version 0.3
  * @date 06-Nov-2009
  *
  * To change the default settings you can uncomment (or copy) the
@@ -12,7 +12,7 @@
  */
 
 ###
-# This is the path to your installation of Semantic Forms as
+# This is the path to your installation of Semantic Forms Inputs as
 # seen from the web. No final slash.
 ##
 $sfigSettings->scriptPath = $wgScriptPath . '/extensions/SemanticFormsInputs';
@@ -160,4 +160,4 @@ $sfigSettings->datePickerMonthNames = "long";
 # characters of the wiki short names and 1char are the initials of the
 # wiki short names.
 ##
-$sfigSettings->datePickerMonthNames = "short";
+$sfigSettings->datePickerDayNames = "short";
