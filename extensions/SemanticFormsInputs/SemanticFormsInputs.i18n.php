@@ -6,7 +6,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'semanticformsinputs-desc' => 'Additional input types for [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms].',
+	'semanticformsinputs-desc' => 'Additional input types for [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantic Forms]',
 	'semanticformsinputs-wrongformat' => 'Wrong format.'
 );
 
