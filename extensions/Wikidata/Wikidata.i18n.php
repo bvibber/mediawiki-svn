@@ -6530,6 +6530,13 @@ $messages['id'] = array(
 	'importtsv' => 'Wikidata: impor TSV',
 	'ow_importtsv_title1' => 'Impor TSV',
 	'ow_importtsv_title2' => 'Impor definisi dan terjemahan',
+	'ow_importtsv_header' => '<p>Mengimpor definisi dan terjemahan dari berkas teks yang dibatasi tab yang telah Anda ekspor dari OpenOffice.org, Excel atau perangkat lunak pengolah angka lain.</p>
+<p>Format berkas harus sama seperti berkas yang diekspor di halaman [[Special:ExportTSV|ExportTSV]].
+Jika Anda telah mengubah nama kolom, maka impor akan gagal.
+Jika Anda telah mengubah id atau ekspresi definisi dari makna terdefinisikan apa pun, baris tersebut akan diabaikan.
+Jika Anda telah menambah kolom, maka kolom tersebut harus dalam bentuk "definitions_iso" atau "translations_iso", iso adalah kode bahasa ISO 639-3.</p>
+<p>Jika kotak "uji coba" dicentang, setiap tindakan yang dilakukan akan dilaporkan, tetapi tidak ada perubahan yang akan dilakukan.
+Anda dianjurkan untuk melakukan uji coba sebelum melakukan impor sebenarnya.</p>',
 	'ow_importtsv_not_allowed' => 'Anda tak memiliki kewenangan untuk melakukan impor TSV.',
 	'ow_importtsv_importing' => 'Mengimpor data TSV',
 	'ow_importtsv_import_failed' => 'Gagal mengimpor',
@@ -6549,6 +6556,8 @@ yaitu iso adalah kode bahasa.</p>",
 Harus sesuai dengan kode bahasa ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata: expor TSV',
 	'ow_exporttsv_title' => 'Ekspor suatu koleksi ke TSV',
+	'ow_exporttsv_header' => "<p>Mengekspor sekumpulan format teks yang terpisah oleh tab yang dapat Anda impor di OpenOffice.org, Excel atau perangkat lunak pengolah angka lain.<br />
+	Pilih kumpulan yang akan diekspor. Di kotak teks bahasa, masukkan daftar kode bahasa ISO 639-3 yang dipisah oleh koma. Mulai dengan bahasa sebelum Anda terjemahkan (sebanyak mungkin) dan akhiri dengan bahasa setelah Anda terjemahkan. Lalu klik 'Buat' untuk membuat berkas.</p>",
 	'ow_exporttsv_languages' => 'Bahasa:',
 	'ow_exporttsv_not_allowed' => 'Anda tak memiliki kewenangan untuk melakukan ekspor TSV.',
 	'ow_exporttsv_export_failed' => 'Gagal mengekspor',
@@ -6580,19 +6589,34 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_transaction_is_latest' => 'mutakhir',
 	'ow_transaction_class_member' => 'Anggota kelas',
 	'ow_transaction_object' => 'Objek',
-	'ow_transaction_first_dm' => 'Arti definisi pertama',
+	'ow_transaction_first_dm' => 'Makna terdefinisikan pertama',
+	'ow_transaction_second_dm' => 'Arti terdefinisikan kedua',
 	'ow_transaction_summary' => 'Ringkasan',
 	'conceptmapping' => 'Wikidata: Pemetaan konsep',
 	'ow_conceptmapping_title' => 'Pemetaan Konsep',
+	'ow_conceptmapping_help' => '<p>tindakan yang memungkinkan: <ul>
+<li>&action=insert&<data_context_prefix>=<defined_id>&... masukkan pemetaan</li>
+<li>&action=get&concept=<concept_id> baca kembali pemetaan</li>
+<li>&action=list_sets kembalikan daftar prefiks konteks data yang memungkinkan dan hal yang mereka rujuk.</li>
+<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> untuk satu makna terdefinisikan dalam konsep, kembalikan sisanya</li>
+<li>&action=help Menampilkan bantuan.</li>
+</ul></p>',
+	'ow_conceptmapping_uitext' => '<p>Pemetaan Konsep memungkinkan Anda mengidentifikasi makna terdefinisikan yang mana dalam satu set data yang identik dengan makna terdefinisikan di set data yang lain.</p>',
 	'ow_conceptmapping_no_action_specified' => 'Tindakan "$1" tidak didukung.',
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'tidak dimasukkan',
 	'ow_dm_not_found' => 'tidak ditemukan di pusat data atau cacat',
+	'ow_mapping_successful' => 'Memetakan semua kolom yang ditandai dengan[OK]<br />',
+	'ow_mapping_unsuccessful' => 'Membutuhkan sedikitnya dua makna terdefinisikan sebelum mereka dapat dihubungkan.',
 	'ow_will_insert' => 'Akan memasukkan yang berikut:',
 	'ow_contents_of_mapping' => 'Isi pemetaan',
 	'ow_available_contexts' => 'Konteks yang tersedia',
 	'ow_add_concept_link' => 'Tambahkan pranala ke konsep lain',
 	'ow_concept_panel' => 'Panel Konsep',
+	'ow_dm_badtitle' => 'Sepertinya halaman ini tidak mengarah ke DefinedMeaning (konsep) apa pun.
+Mohon periksa alamat web.',
+	'ow_dm_missing' => 'Sepertinya halaman ini mengarah ke DefinedMeaning (konsep) yang tidak ada.
+Mohon periksa alamat web.',
 	'ow_AddHint' => 'Masukkan baris baru untuk menambahkan',
 	'ow_AlternativeDefinition' => 'Definisi lainnya',
 	'ow_AlternativeDefinitions' => 'Definisi lainnya',
@@ -6610,8 +6634,8 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_CollectionMembership' => 'Keanggotaan koleksi',
 	'ow_Definition' => 'Definisi',
 	'ow_DefinedMeaningAttributes' => 'Anotasi',
-	'ow_DefinedMeaning' => 'Makna terdefinisi',
-	'ow_DefinedMeaningReference' => 'Makna terdefinisi',
+	'ow_DefinedMeaning' => 'Makna terdefinisikan',
+	'ow_DefinedMeaningReference' => 'Makna terdefinisikan',
 	'ow_ExactMeanings' => 'Arti pasti',
 	'ow_Expression' => 'Ekspresi',
 	'ow_ExpressionMeanings' => 'Arti ekspresi',
@@ -6629,7 +6653,9 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'ow_OptionAttributeOption' => 'Pilihan',
 	'ow_OptionAttributeOptions' => 'Pilihan',
 	'ow_OptionAttributeValues' => 'Nilai pilihan',
+	'ow_OtherDefinedMeaning' => 'Makna terdefinisikan lain',
 	'ow_PopupAnnotation' => 'Anotasi',
+	'ow_RecordLifeSpan' => 'Rentang hidup catatan',
 	'ow_Relations' => 'Hubungan',
 	'ow_RelationType' => 'Jenis hubungan',
 	'ow_Remove' => 'Hapus',
@@ -6664,6 +6690,12 @@ Lihat: [[{{MediaWiki:Ow editing policy url}}|Kebijakan penyuntingan kami]].',
 	'copy' => 'Wikidata: Salin',
 	'ow_copy_no_action_specified' => 'Silakan tentukan tindakan',
 	'ow_copy_help' => 'Bantuan belum diberikan.',
+	'ow_please_proved_dmid' => 'Sepertinya masukan Anda kehilangan "?dmid=<ID>" (dmid=Defined Meaning ID)<br />
+Silakan hubungi pengurus server.',
+	'ow_please_proved_dc1' => 'Sepertinya masukan Anda kehilangan "?dc1=<something>" (dc1=konteks set data 1, set data untuk menyalin FROM)<br />
+Silakan hubungi pengurus server.',
+	'ow_please_proved_dc2' => 'Sepertinya masukan Anda kehilangan "?dc2=<something>" (dc2=konteks set data 2, set data untuk menyalin TO)<br />
+Silakan hubungi pengurus server.',
 	'ow_copy_successful' => '<h2>Penyalinan berhasil</h2>
 Data Anda berhasil disalin.
 Jangan lupa cek kembali untuk memastikan!',
@@ -6671,8 +6703,13 @@ Jangan lupa cek kembali untuk memastikan!',
 Tidak ada penyalinan yang dilakukan.',
 	'ow_no_action_specified' => '<h3>Tidak ada tindakan</h3>
 Mungkin Anda membuka halaman ini secara tidak sengaja. Anda tidak seharusnya berada di sini.',
+	'ow_db_consistency_not_found' => '<h2>Kesalahan</h2>
+Ada masalah dengan konsistensi basis data, data wiki tidak dapat menemukan data yang sah yang terhubung dengan ID makna terdefinisikan ini.
+Data mungkin hilang.
+Silakan hubungi operator atau pengurus server.',
 	'ow_history_transaction' => 'Transaksi:',
 	'ow_history_show_life_span' => 'Tampilkan rentang hidup catatan:',
+	'ow_class_attr_type_dm' => 'Makna terdefinisikan',
 	'ow_class_attr_type_xlate' => 'Teks yang bisa diterjemahkan',
 	'ow_class_attr_type_plain' => 'Teks polos',
 	'ow_class_attr_type_link' => 'Pranala',
@@ -6690,6 +6727,7 @@ Mungkin Anda membuka halaman ini secara tidak sengaja. Anda tidak seharusnya ber
 	'ow_suggest_previous' => 'Sebelumnya',
 	'ow_suggest_next' => 'Selanjutnya',
 	'ow_suggest_clear' => 'Kosongkan',
+	'ow_nstab_definedmeaning' => 'makna terdefinisikan',
 	'ow_nstab_edit_copy' => 'sunting salinan',
 	'right-addlanguage' => 'Tambah dan rubah setelan bahasa',
 	'ow_shown_datasets' => 'Kumpulan data yang ditampilkan',

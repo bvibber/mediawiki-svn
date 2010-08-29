@@ -3035,6 +3035,7 @@ $messages['fr'] = array(
 	'code-rev-diff-too-large' => 'Le diff est trop large pour être affiché.',
 	'code-rev-purge-link' => 'purger',
 	'code-rev-total' => 'Nombre total de résultats : $1',
+	'code-rev-not-found' => "La révision '''$1''' n’existe pas !",
 	'code-status-new' => 'nouveau',
 	'code-status-fixme' => 'à corriger',
 	'code-status-reverted' => 'révoqué',
@@ -4404,6 +4405,7 @@ $messages['id'] = array(
 	'code-rev-diff-too-large' => 'Perbedaan sangat besar untuk ditampilkan',
 	'code-rev-purge-link' => 'pembersihan',
 	'code-rev-total' => 'Jumlah hasil: $1',
+	'code-rev-not-found' => "Revisi '''$1''' tidak ditemukan!",
 	'code-status-new' => 'baru',
 	'code-status-fixme' => 'perbaiki',
 	'code-status-reverted' => 'telah dikembalikan',
@@ -4733,6 +4735,7 @@ $messages['ja'] = array(
 	'code-rev-diff-too-large' => '差分が大きすぎて表示出来ません。',
 	'code-rev-purge-link' => 'パージ',
 	'code-rev-total' => '結果の合計数: $1',
+	'code-rev-not-found' => "リビジョン'''$1'''は存在しません！",
 	'code-status-new' => '新規',
 	'code-status-fixme' => '要修正',
 	'code-status-reverted' => '差し戻し済み',
@@ -5888,6 +5891,7 @@ $messages['ml'] = array(
 	'code-rev-diff-too-large' => 'വ്യത്യാസം പ്രദർശിപ്പിക്കാവുന്നതിലും കൂടുതലാണ്.',
 	'code-rev-purge-link' => 'ശുദ്ധമാക്കുക',
 	'code-rev-total' => 'ആകെ ഫലങ്ങളുടെ എണ്ണം: $1',
+	'code-rev-not-found' => "നാൾപ്പതിപ്പ് '''$1''' നിലവിലില്ല!",
 	'code-status-new' => 'പുതിയത്',
 	'code-status-fixme' => 'ഈ പ്രശ്നം പരിഹരിക്കുക',
 	'code-status-reverted' => 'മുൻപ്രാപനം ചെയ്തിരിക്കുന്നു',
@@ -5937,6 +5941,7 @@ $4',
 	'code-stats-header' => '$1 റെപ്പോസിറ്ററി സ്ഥിതിവിവരക്കണക്കുകൾ',
 	'code-stats-main' => '$1-ൽ, റെപ്പോസിറ്ററിയിൽ [[Special:Code/$3/author|{{PLURAL:$4|ഒരു രചയിതാവ്|$4 രചയിതാക്കൾ}}]] സൃഷ്ടിച്ച {{PLURAL:$2|ഒരു നാൾപതിപ്പ്|$2 നാൾപ്പതിപ്പുകൾ}} ഉണ്ട്.',
 	'code-stats-staus-breakdown' => 'ഓരോ സ്ഥിതിയിലുമുള്ള നാൾപ്പതിപ്പുകളുടെ എണ്ണം',
+	'code-stats-fixme-breakdown' => 'ഓരോ രചയിതാക്കളും ശരിയാക്കിയ പ്രശ്നങ്ങളിലുണ്ടായ ഭ്രംശങ്ങൾ',
 	'code-stats-count' => 'നാൾപ്പതിപ്പുകളുടെ എണ്ണം',
 	'repoadmin' => 'റെപ്പോസിറ്ററി കാര്യനിർവഹണം',
 	'repoadmin-new-legend' => 'പുതിയ റെപ്പോസിറ്ററി സൃഷ്ടിക്കുക',
@@ -7040,6 +7045,7 @@ $messages['pms'] = array(
 	'code-rev-diff-too-large' => "La diferensa a l'é tròp gròssa da visualisé",
 	'code-rev-purge-link' => 'polida',
 	'code-rev-total' => "Nùmer total d'arzultà: $1",
+	'code-rev-not-found' => "La revision '''$1''' a esist pa!",
 	'code-status-new' => 'neuv',
 	'code-status-fixme' => 'coregg-me',
 	'code-status-reverted' => "butà torna com a l'era",
@@ -7160,6 +7166,7 @@ $4',
 
 /** Portuguese (Português)
  * @author Crazymadlover
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -7236,6 +7243,7 @@ $messages['pt'] = array(
 	'code-rev-diff-too-large' => 'As diferenças são demasiadas para apresentar.',
 	'code-rev-purge-link' => 'purgar',
 	'code-rev-total' => 'Número total de resultados: $1',
+	'code-rev-not-found' => "A revisão '''$1''' não existe!",
 	'code-status-new' => 'novo',
 	'code-status-fixme' => 'corrigir',
 	'code-status-reverted' => 'revertido',

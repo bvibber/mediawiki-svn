@@ -2060,8 +2060,8 @@ $messages['ro'] = array(
 	'readerfeedback-level-4' => 'Excelent',
 	'readerfeedback-submit' => 'Trimite',
 	'readerfeedback-main' => 'Doar conținutul paginilor poate fi evaluat.',
-	'readerfeedback-success' => "'''Mulțumim pentru că ați revizuit această pagină!''' ([$3 Comentarii sau întrebări?]).",
-	'readerfeedback-voted' => "'''Ați evaluat deja această pagină''' ([$3 Comentarii sau întrebări?]).",
+	'readerfeedback-success' => "'''Vă mulțumim pentru revizuirea acestei pagini!''' ([$2 vizualizați rezultatele]) ([$3 comentarii sau întrebări?]).",
+	'readerfeedback-voted' => "'''Se pare că ați evaluat deja această pagină''' ([$2 vizualizați rezultatele]) ([$3 comentarii sau întrebări?]).",
 	'readerfeedback-error' => "'''A apărut o eroare în timp ce era evaluată această pagină''' ([$2 vedeți rezultatele]) ([$3 comentarii sau întrebări ?]).",
 	'readerfeedback-submitting' => 'Se trimite...',
 	'readerfeedback-finished' => 'Mulțumim!',
@@ -2072,6 +2072,7 @@ $messages['ro'] = array(
 	'readerfeedback-tier-poor' => 'Slab',
 	'tooltip-ca-ratinghist' => 'Evaluările cititorilor despre această pagină',
 	'specialpages-group-feedback' => 'Opinia cititorilor',
+	'readerfeedback-tt-review' => 'Trimite evaluarea',
 );
 
 /** Tarandíne (Tarandíne)

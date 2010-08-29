@@ -4794,6 +4794,13 @@ $messages['tr'] = array(
 	'fundraiserstats-tab-ytd' => 'Bugüne kadarki (USD)',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'contribstats-daily-totals' => '{{PLURAL:$1|Соңгы $1 көн өчен|Соңгы $1 көннәр өчен}}',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Aleksandrit

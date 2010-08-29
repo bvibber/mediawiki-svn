@@ -198,7 +198,7 @@ $messages['cy'] = array(
 	'filelist' => 'Rhestr ffeiliau',
 	'filelist-desc' => "[[Special:Filelist|Tudalen arbennig]] sy'n rhestri ffeiliau sydd wedi eu huwchlwytho",
 	'filelist-show-list' => 'Dangos ar ffurf rhestr',
-	'filelist-show-gallery' => 'Dangos ar ffurf galeri',
+	'filelist-show-gallery' => 'Dangos ar ffurf oriel',
 	'filelist-image-desc' => 'disg.',
 );
 

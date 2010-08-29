@@ -92,10 +92,11 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'categorytests-desc' => 'Swyddogaethau ar gyfer profi categorïau',
+	'categorytests-desc' => 'Ffwythiannau ar gyfer profi categorïau',
 );
 
 /** German (Deutsch)

@@ -191,3 +191,10 @@ $messages['ru'] = array(
 	'sidebardonatebox-desc' => 'Добавляет специальное уведомление о пожертвованиях на боковую панель',
 );
 
+/** Ukrainian (Українська)
+ * @author Alex Khimich
+ */
+$messages['uk'] = array(
+	'sidebardonatebox-desc' => 'Додає вікно для пожертвувань на бічну панель',
+);
+

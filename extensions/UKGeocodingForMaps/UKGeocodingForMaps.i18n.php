@@ -202,6 +202,15 @@ $messages['oc'] = array(
 	'ukgeocoding_name' => 'Geoencodatge del Reialme Unit per las mapas',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'ukgeocoding_name' => 'Brytyjskie geokodowanie map',
+	'ukgeocoding_desc' => 'Dodaje do map funkcję pasera display_uk_point z zaimplementowaną obsługą Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Nie można ustalić pozycji geograficznej jednego lub więcej kodu pocztowego i dlatego zostały one pominięte na mapie.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

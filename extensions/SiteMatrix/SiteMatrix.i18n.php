@@ -1492,6 +1492,7 @@ $messages['ro'] = array(
 	'sitematrix-summary' => 'Această pagină specială afișează toate proiectele wiki ale Wikimedia.',
 	'sitematrix-desc' => 'Afișați o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
 	'sitematrix-language' => 'Limbă',
+	'sitematrix-project' => 'Numele proiectului, legătura către interproiect și legăturile interwiki',
 	'sitematrix-others' => 'Alte proiecte ale Fundației Wikimedia',
 	'sitematrix-total' => "'''Număr total: $1'''",
 	'sitematrix-sitetotal' => 'Total',

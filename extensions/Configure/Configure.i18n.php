@@ -4793,6 +4793,7 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author -iNu-
  * @author Aviator
  * @author Bennylin
  * @author Irwangatot
@@ -4974,7 +4975,7 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
 	'configure-condition-name-6' => 'Alamat IP pengguna pada rentang CIDR',
 	'configure-condition-name-7' => 'Umur minimum dari suntingan pertama',
 	'configure-autopromote-noconds' => 'Tanpa persyaratan',
-	'configure-condition-description-1' => 'Jumlah sutingan minimum $1',
+	'configure-condition-description-1' => 'Jumlah suntingan minimum $1',
 	'configure-condition-description-2' => 'Umur akun minimum $1 {{PLURAL:$1|detik|detik}}',
 	'configure-condition-description-3' => 'Surel terkonfirmasi',
 	'configure-condition-description-4' => 'Di semua kelompok $1',

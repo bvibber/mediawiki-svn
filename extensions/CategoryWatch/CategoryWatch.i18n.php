@@ -609,14 +609,16 @@ $messages['pt-br'] = array(
 
 /** Romanian (Română)
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'categorywatch-desc' => 'Extinde funcționalitatea listei de urmărire pentru a include notifcări privind modificările categoriilor urmărite',
-	'categorywatch-emailsubject' => 'Activitatea privind categoria urmărită "$1"',
+	'categorywatch-emailsubject' => 'Activitatea privind categoria urmărită „$1”',
 	'categorywatch-catmovein' => 'a mutat $1 în categoria $2 din $3',
 	'categorywatch-catmoveout' => 'a mutat $1 din categoria $2 în $3',
 	'categorywatch-catadd' => 'a adăugat $1 în categoria $2',
 	'categorywatch-catsub' => 'a eliminat $1 din categoria $2',
+	'categorywatch-autocat' => 'Urmărită automat de $1',
 );
 
 /** Tarandíne (Tarandíne)

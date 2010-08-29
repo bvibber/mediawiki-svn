@@ -228,6 +228,13 @@ $messages['he'] = array(
 	'userdailycontribs-desc' => 'התרומה היומית של כל משתמש להרחבת מעקב הלחיצות',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'userdailycontribs-desc' => 'Dnevni doprinosi suradnika za dogradnju praćenja klikanja',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

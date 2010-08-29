@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'addmediawizard-desc' => '{{desc}}',
 );
 
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'addmediawizard-desc' => 'मीडिया विजार्ड जोङॊ, कालतुरा आरू विकीमीडीया फाउंडेशन केरॊ साझेदारी मॆ विकसित.',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

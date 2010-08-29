@@ -639,6 +639,7 @@ $messages['ml'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'അയയ്ക്കുന്നു...',
 	'communityvoice-ratings-scale-status-error' => 'അയക്കുന്നതിൽ പിഴവ്!',
 	'communityvoice-ratings-scale-status-thanks' => 'വോട്ട് ചെയ്തതിനു നന്ദി!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|വോട്ട്|വോട്ടുകൾ}} ചെയ്തു)',
 	'communityvoice-ratings-error-no-category' => 'നിലവാരമിടൽ റ്റാഗിൽ വർഗ്ഗീകരണ ഘടകം നൽകിയിട്ടില്ല.',
 	'communityvoice-ratings-error-no-title' => 'നിലവാരമിടൽ റ്റാഗിൽ തലക്കെട്ട് ഘടകം നൽകിയിട്ടില്ല.',
 );

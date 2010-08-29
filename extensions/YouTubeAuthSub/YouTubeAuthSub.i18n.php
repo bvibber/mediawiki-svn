@@ -67,6 +67,21 @@ $messages['ady-cyrl'] = array(
 	'youtubeauthsub_title' => 'Тхылъышъхьэ',
 );
 
+/** Angika (अंगिका)
+ * @author Angpradesh
+ */
+$messages['anp'] = array(
+	'youtubeauthsub' => 'यूट्यूब व्हीडियो अपलोड करॊ',
+	'youtubeauthsub-desc' => 'सदस्य सीनी कॆ [[Special:YouTubeAuthSub|व्हीडियो अपलोड]] यूट्यूब पर सोझे अनुमति',
+	'youtubeauthsub_info' => 'यूट्यूब पर वीडियो अपलोड करी कॆ पन्ना पर जोरै लेली, निम्नांकित जानकारी भरॊ :',
+	'youtubeauthsub_title' => ')शीर्षक',
+	'youtubeauthsub_description' => ')ज़ानकारी',
+	'youtubeauthsub_password' => 'यूट्यूब पासवर्ड',
+	'youtubeauthsub_keywords' => 'शोधशब्द',
+	'youtubeauthsub_category' => 'श्रेणी',
+	'youtubeauthsub_submit' => 'भेजॊ',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Adriaan
  * @author Arnobarnard
@@ -638,38 +653,39 @@ $messages['cu'] = array(
 
 /** Welsh (Cymraeg)
  * @author Fulup
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
 	'youtubeauthsub' => 'Uwchlwytho fideo YouTube',
-	'youtubeauthsub-desc' => 'Yn caniatáu defnyddwyr i [[Special:YouTubeAuthSub|uwchlwytho fideos]] yn syth i YouTube',
-	'youtubeauthsub_info' => "I uwchlwytho fideo i YouTube i'w cynnwys ar dudalen, cwblhewch y wybodaeth yma:",
+	'youtubeauthsub-desc' => 'Yn caniatáu i ddefnyddwyr [[Special:YouTubeAuthSub|uwchlwytho fideos]] yn syth i YouTube',
+	'youtubeauthsub_info' => 'I uwchlwytho fideo i YouTube er mwyn ei gynnwys ar dudalen, rhowch y wybodaeth ganlynol:',
 	'youtubeauthsub_title' => 'Teitl',
 	'youtubeauthsub_description' => 'Disgrifiad',
 	'youtubeauthsub_password' => 'Cyfrinair YouTube',
 	'youtubeauthsub_username' => 'Enw defnyddiwr YouTube',
 	'youtubeauthsub_keywords' => 'Allweddeiriau',
 	'youtubeauthsub_category' => 'Categori',
-	'youtubeauthsub_submit' => 'Cyflwyno',
+	'youtubeauthsub_submit' => 'Cyflwyner',
 	'youtubeauthsub_clickhere' => 'Cliciwch yma i fewngofnodi i YouTube',
-	'youtubeauthsub_tokenerror' => "Gwall wrth gynhyrchu tocyn awdurdodiad. Rhowch gynnig ar ail-lwytho'r dudalen.",
+	'youtubeauthsub_tokenerror' => "Gwall wrth gynhyrchu tocyn awdurdodi. Rhowch gynnig ar ail-lwytho'r dudalen.",
 	'youtubeauthsub_success' => "Llongyfarchiadau!
 Uwchlwythwyd eich fideo.
 <a href='http://www.youtube.com/watch?v=$1'>Edrychwch arno</a>.
-Efallai bydd angen amser prosesu ar YouTube, felly efallai ni fydd yn barod yn syth.
+Efallai bod angen mwy o amser prosesu ar YouTube, ac na fydd yn barod yn syth.
 
 I gynnwys eich fideo mewn tudalen ar y wici, gosodwch y cod yma:
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'I uwchlwytho fideo, bydd angen mewngofnodi i YouTube yn gyntaf arnoch.',
 	'youtubeauthsub_uploadhere' => "Uwchlwytho'ch fideo o fan hyn:",
-	'youtubeauthsub_uploadbutton' => 'Uwchlwytho',
+	'youtubeauthsub_uploadbutton' => 'Uwchlwyther',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Edrych ar y fideo hwn]',
 	'youtubeauthsub_summary' => 'Yn uwchlwytho fideo YouTube',
-	'youtubeauthsub_uploading' => "Mae'n eich fideo'n cael ei uwchlwytho.
+	'youtubeauthsub_uploading' => "Mae'n eich fideo wrthi'n cael ei uwchlwytho.
 Arhoswch, os gwelwch yn dda.",
-	'youtubeauthsub_viewpage' => 'Ar yn ail, gallwch [[$1|edrych ar eich fideo]].',
+	'youtubeauthsub_viewpage' => 'Neu gallwch [[$1|edrych ar eich fideo]].',
 	'youtubeauthsub_jserror_nokeywords' => 'Rhowch un neu ragor o allweddeiriau.',
 	'youtubeauthsub_jserror_notitle' => 'Rhowch deitl ar gyfer y fideo.',
 	'youtubeauthsub_jserror_nodesc' => 'Rhowch ddisgrifiad ar gyfer y fideo.',

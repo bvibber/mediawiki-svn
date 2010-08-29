@@ -100,10 +100,11 @@ $messages['cs'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'woopra-desc' => 'Caniatáu i [http://www.woopra.com/ Woopra Live Tracking Software] weithio ar ran eich gosodiad MediaWici',
+	'woopra-desc' => 'Yn caniatáu i feddalwedd [http://www.woopra.com/ Woopra Live Tracking] weithio ar eich gosodiad MediaWici',
 );
 
 /** Danish (Dansk)

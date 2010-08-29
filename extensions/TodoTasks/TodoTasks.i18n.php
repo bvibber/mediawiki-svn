@@ -1343,9 +1343,10 @@ $messages['roa-tara'] = array(
  * @author Ferrer
  * @author Rubin
  * @author Александр Сигачёв
+ * @author Сrower
  */
 $messages['ru'] = array(
-	'tasklist' => 'Список задачь',
+	'tasklist' => 'Список задач',
 	'tasklist-parser-desc' => 'Добавляет функцию парсера <nowiki>{{#todo:}}</nowiki> для назначения задач',
 	'tasklist-special-desc' => 'Добавляет служебную страницу для просмотра [[Special:TaskList|назначенных задач]]',
 	'tasklistbyproject' => 'Список задач по проектам',

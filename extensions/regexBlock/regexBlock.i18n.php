@@ -968,9 +968,9 @@ $messages['fr'] = array(
 Ceci doit être fait uniquement pour éviter tout vandalisme et conformément aux règles prescrites sur le projet.
 ''Cette page vous permet même de bloquer des utilisateurs non enregistrés et ceux présentant des noms similaires au nom donné : par exemple, « Test » sera bloqué en même temps que « Test 2 » etc. Vous pouvez aussi bloquer des adresses IP complètes, ce qui signifie que personne connecté depuis celles-ci ne pourra modifier des pages. Note : des adresses IP partielles seront considérées comme des noms d’utilisateur lors du blocage. Si aucun motif n’est indiqué en commentaire, un motif par défaut sera indiqué.''",
 	'regexblock-page-title-1' => 'Blocage d’une adresse utilisant une expression régulière',
-	'regexblock-reason-ip' => 'Cette adresse IP est écartée de toute modification pour cause de vandalisme ou autres faits analogues commis par vous ou quelqu’un d’autre partageant votre adresse IP.
+	'regexblock-reason-ip' => 'Cette adresse IP n’a pas les droits de modification pour cause de vandalisme ou autres méfaits analogues commis par vous ou quelqu’un d’autre partageant cette adresse IP.
 Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|contactez-nous]].',
-	'regexblock-reason-name' => 'Cet utilisateur est écarté de toute modification pour cause de vandalisme ou autres faits analogues.
+	'regexblock-reason-name' => 'Cet utilisateur n’a pas les droits de modification pour cause de vandalisme ou autres méfaits analogues.
 Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|contactez-nous]].',
 	'regexblock-reason-regex' => 'Cet utilisateur est écarté de toute modification pour cause de vandalisme ou autres faits analogues commis par un utilisateur ayant un nom similaire. Veuillez créer un autre compte ou [[$1|contactez-nous]] pour signaler le problème.',
 	'regexblock-form-username' => 'Adresse IP ou Utilisateur :',

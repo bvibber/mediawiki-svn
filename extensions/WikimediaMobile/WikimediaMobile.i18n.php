@@ -66,10 +66,11 @@ $messages['ce'] = array(
 );
 
 /** Welsh (Cymraeg)
+ * @author Lloffiwr
  * @author Xxglennxx
  */
 $messages['cy'] = array(
-	'wikimediamobile-desc' => 'Swyddogaethau cymorth MediaWici ar gyfer prosiect Wicimedia-symudol a gedwir at http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'Swyddogaethau cymorth MediaWici ar gyfer prosiect Wicimedia-symudol a gedwir ar http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Danish (Dansk)

@@ -2105,7 +2105,7 @@ Hobetzen laguntzeko, bete aukerako inkesta "[[#prefswitch-survey-submit-off|{{in
 $messages['fa'] = array(
 	'prefswitch' => 'کلید ترجیحات بهبود کاربردپذیری',
 	'prefswitch-desc' => 'به کاربران اجازهٔ تعویض مجموعه‌ای ترجیحات را بده',
-	'prefswitch-jswarning' => 'به خاطر داشته باشید که با تغییر پوست، [[User:$1/$2.js|$2جاوااسکریپت]] شما برای ادامهٔ کار نیاز خواهد داشت تا به [[{{ns:user}}:$1/vector.js]] <!-- یا [[{{ns:user}}:$1/common.js]]--> کپی شود.',
+	'prefswitch-jswarning' => 'به خاطر داشته باشید که با تغییر پوست، [[User:$1/$2.js|$2 جاوااسکریپت]] شما برای ادامهٔ کار نیاز خواهد داشت تا به [[{{ns:user}}:$1/vector.js]] <!-- یا [[{{ns:user}}:$1/common.js]]--> کپی شود.',
 	'prefswitch-csswarning' => '[[User:$1/$2.css|تنظیمات $2 شخصی]] شما دیگر قابل استفاده نیست.شما می‌توانید تنظیمات شخصی خودتان را در پوسته وکتور در [[{{ns:user}}:$1/vector.css|این صفحه]] وارد کنید.',
 	'prefswitch-survey-true' => 'بله',
 	'prefswitch-survey-false' => 'خیر',
@@ -2163,37 +2163,37 @@ $messages['fa'] = array(
 	'prefswitch-success-feedback' => 'بازخورد شما ارسال شد.',
 	'prefswitch-return' => '<hr style="clear:both">
 بازگشت به <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "{| border=\"0\" align=\"left\" style=\"margin-right:1em\"
-| align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+	'prefswitch-main' => '{| border="0" align="left" style="margin-right:1em"
+| align="center" |
+{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;"
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
 | یک نما از سیستم ناوبری در پوسته وکتور <small>[[Media:VectorNavigation-en.png|(بزرگ‌نمایی)]]</small>
 |}
 |-
-| align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| align="center" |
+{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;"
 | [[Image:VectorEditorBasic-en.png|401px|]]
 |-
 | یک نما از سیستم ویرایش در پوسته وکتور  <small>[[Media:VectorEditorBasic-en.png|(بزرگ‌نمایی)]]</small>
 |}
 |-
-| align=\"center\" |
-{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| align="center" |
+{| border="0" style="background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;"
 | [[Image:VectorLinkDialog-en.png|401px|]]
 |-
 |یک نما از صفحه درخواست وارد کردن پیوند
 |}
 |}
-تیم طراحی پوسته بنیاد ویکی‌مدیا در تلاش است تا فعالیت‌ها را برای شما آسان کند. از اینکه بهبودهایی صورت داده‌ایم هیجان‌زده‌ایم، از جمله اینکه با ظاهر جدید و محیطی دیگر و ابزارهای ویرایشی ساده، کار را برای شما آسان ساخته‌ایم. این تغییرات حاصل  [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study تلاش‌های گروه در یک سال گذشته است]. بنیاد در تلاش است تا این امکانات را برای آینده بهبود ببخشد. برای اطلاعات بیشتر بنگرید [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia این پست وبلاگ را].
+تیم طراحی پوسته بنیاد ویکی‌مدیا در تلاش است تا فعالیت‌ها را برای شما آسان کند. از اینکه بهبودهایی صورت داده‌ایم هیجان‌زده‌ایم، از جمله اینکه با ظاهر جدید و محیطی دیگر و ابزارهای ویرایشی ساده، کار را برای شما آسان ساخته‌ایم. این تغییرات حاصل  [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study تلاش‌های گروه در یک سال گذشته است]. بنیاد در تلاش است تا این امکانات را برای آینده بهبود ببخشد. برای اطلاعات بیشتر به پیام‌های فرستاده شده در [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia  این وبلاگ] نگاهی بیندازید.
 
 === این‌ها چیزهایی است که ما تغییر داده‌ایم ===
-* '''ناوبری:''' ما سیستم ناوبری را برای ویرایش و مطالعه صفحات بهبود دادیم. اکنون تب‌ها برای متصل کردن شما به صفحه بحث و تاریخچه هستند.
-* '''نوار ابزار ویرایش:''' ما سیستم ویرایش را برای شما بهبود دادیم. اکنون فرمت ویرایش صفحه‌ها آسان‌تر شده‌است.
-* '''یک ویزارد برای پیونددهی:''' یک ابزار ساده برای افزودن پیوندها ایجاد شده‌است.
-* '''بهبود موتو جستجو:''' ما ابزار پیشنهاد برای جستجوهای شما را بهبود داده‌ایم.
-* '''امکانات دیگر:''' ما یک ابزار برای افزودن جداول نیز ایجاد کرده‌ایم.
-* '''لوگوی بنیاد:''' ما نماد بنیاد را نیز بروز کرده‌ایم برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.",
+*ناوبری: سیستم ناوبری برای ویرایش و مطالعه صفحات گسترش یافته است. اکنون چند برچسب (تَب) برای دسترسی شما به صفحه بحث و تاریخچه مقاله، ایجاد شده است. 
+*نوار ابزار ویرایش: سیستم ویرایش نیز بهبود یافته است. اکنون قالب ویرایش صفحه‌ها برای شما آسان‌تر شده‌است. 
+*ویزارد برای پیونددهی: ابزاری ساده برای افزودن پیوندها ایجاد شده‌است. 
+*بهبود موتور جستجو: ابزار پیشنهاد برای جستجوهای شما پیشرفته‌تر شده است. 
+*امکانات دیگر: ابزاری برای افزودن جداول نیز ایجاد شده است.
+*لوگوی بنیاد: نماد بنیاد نیز بروز شده است، برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.',
 	'prefswitch-main-logged-changes' => "* '''برگه {{int:watch}}''' اکنون یک ستاره است.
 * '''برگه {{int:move}}''' یک منوی کشویی در کنار دیگر برگه‌هاست.",
 	'prefswitch-main-feedback' => '===بازخورد؟===
@@ -2203,7 +2203,7 @@ $messages['fa'] = array(
 	'prefswitch-main-on' => '===من را بازگردان !===
 [$2 در این جا کلیک کنید تا ویژگی های جدید را برگردانید].',
 	'prefswitch-main-off' => '===امتحانشان کنید!===
-[برای فعال کردن ویژگی‌های جدید اینجا را کلیک کنید $1].',
+[$1 برای فعال کردن ویژگی‌های جدید اینجا را کلیک کنید].',
 	'prefswitch-survey-intro-feedback' => 'مشتاق شنیدن دیدگاه‌های شما هستیم.
 لطفاً تحقیق اختیاری زیر را پیش از کلیک بر «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]» پر کنید.',
 	'prefswitch-survey-intro-off' => 'به خاطر امتحان کردن ویژگی های جدید سیستم ما از شما تشکر می کنیم
@@ -2834,9 +2834,21 @@ $messages['he'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'prefswitch' => 'Uključivanje/isklučivanje inicijative za uporabljivost',
 	'prefswitch-desc' => 'Omogući korisnicima postavljanje skupa povlastica',
+	'prefswitch-jswarning' => 'Ne zaboravite da s promjenom stila, vaš [[User:$1/$2.js|$2 JavaScript]] trebat će se kopirati u [[{{ns:user}}:$1/vector.js]] <!-- ili [[{{ns:user}}:$1/common.js]]--> da nastavi s radom.',
+	'prefswitch-csswarning' => 'Vaši [[User:$1/$2.css|$2 prilagođeni stilovi]] više se neće primijenjivati. Možete dodati prilagođeni CSS za vektor sučelje u [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
+	'prefswitch-survey-submit-off' => 'Isključi nove osobine',
+	'prefswitch-survey-submit-global-off' => 'Isključi nove osobine na svim wikiprojektima',
+	'prefswitch-survey-cancel-off' => 'Ako želite nastaviti koristiti nove mogućnosti, možete se vratiti na $1.',
+	'prefswitch-survey-submit-feedback' => 'Pošaljite komentar',
+	'prefswitch-survey-cancel-feedback' => 'Ako ne želite pružiti povratne informacije, možete se vratiti na $1.',
+	'prefswitch-survey-question-like' => 'Što vam se sviđa kod novog sučelja?',
+	'prefswitch-survey-question-dislike' => 'Što vam se ne sviđa kod novog sučelja?',
+	'prefswitch-survey-question-whyoff' => 'Zašto isključujete nove mogućnosti? 
+Molimo označite sve razloge.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Sučelje je previše komplicirano.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Sučelje nije ispravno funkcioniralo.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Sučelje nije izvršilo rečeno.',
@@ -2855,6 +2867,56 @@ $messages['hr'] = array(
 	'prefswitch-title-switched-off' => 'Hvala',
 	'prefswitch-title-feedback' => 'Ocjena',
 	'prefswitch-success-on' => 'Nove značajke su sada uključene. Nadamo se da ćete uživati koristeći ih. Uvijek ih možete isključiti klikom na "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" poveznicu na vrhu stranice.',
+	'prefswitch-success-off' => 'Nove značajke su isključene. Hvala za njihovo isprobavanje. Uvijek ih možete uključiti klikom na "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" poveznicu na vrhu stranice.',
+	'prefswitch-success-feedback' => 'Vaš komentar je poslan.',
+	'prefswitch-return' => '<hr style="clear:both">
+Povratak na <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left: 1em\" 
+| align=\"center\" | 
+{| border=\"0\" style=\"background: #F3F3F3; border: 1px solid #cccccc; padding: 10px;\" 
+| [[Slika:VectorNavigation-en.png|401px|]] 
+|- 
+| Snimak zaslona novog sučelja Wikipedije <small>[[Media:VectorNavigation-en.png|(povećaj)]]</small> 
+|}
+|- 
+| align=\"center\" | 
+{| border=\"0\" style=\"background: #F3F3F3; border: 1px solid #cccccc; padding: 10px;\" 
+| [[Slika:VectorEditorBasic-en.png|401px|]] 
+|- 
+| Snimak zaslona uređivanja stranice <small>[[Media:VectorEditorBasic-en.png|(povećaj)]]</small> 
+|} 
+|- 
+| align=\"center\" | 
+{| border=\"0\" style=\"background: #F3F3F3; border: 1px solid #cccccc; padding: 10px;\" 
+| [[Slika:VectorLinkDialog-en.png|401px|]] 
+|- 
+| Snimak zaslona novih dijaloških okvira za unos poveznica
+|} 
+|} 
+Ekipa za rad na korisničkom sučelju Zaklade Wikimedia radi s volonterima zajednice da bi vam olakšali snalaženje. Uzbuđeni smo podijeliti neka poboljšanja, uključujući novi izgled i dojam i pojednostavljeni izgled uređivanja. Ove promjene imaju za cilj olakšati novim suradnicima početak rada na projektu, a temelje se na našim [http://usability.wikimedia.org/wiki/Usability, _Experience, _and_Evaluation_Study testiranju uporabljivosti provedenom tijekom posljednje godine]. Poboljšanje iskoristivosti naših projekata je prioritet Zaklade Wikimedia, biti će još novosti ubuduće. Za više detalja, posjetite povezane [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog vijesti]. 
+
+=== Evo što smo promijenili ===
+*'''Navigacija:''' Imamo poboljšanu navigaciju za čitanje i uređivanje stranice. Sada, kartice na vrhu svake stranice jasnije definiraju da li pregledavate stranica ili stranica za razgovor, i da li čitate ili uređujete stranicu. 
+*'''Poboljšanja trake za uređivanje:''' Reorganizirali smo traku za uređivanje kako bi ju lakše rabili. Sada, oblikovanje stranice je jednostavnije i intuitivnije. 
+*'''Čarobnjak za poveznice:''' alat lak za uporabu omogućava vam dodavanje poveznica na druge wiki stranice, kao i poveznice na vanjske stranice. 
+*'''Poboljšanja tražilice:''' Poboljšali smo sustav sugestija za traženje kako bi brže došli do stranice koju tražite.
+*'''Ostale nove mogućnosti:''' Također smo uveli Čarobnjak za tablice da bi kreiranje tablica bilo lakše i \"traži i zamjeni\" će pojednostaviti stranice za uređivanje. 
+*'''Wikipedija logo:''' Osvježili smo i naš logo. Pročitajte više na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedijinom blogu].",
+	'prefswitch-main-logged-changes' => "* '''{{int:watch}} kartica''' sad je zvjezdica.
+* '''{{int:move}} kartica''' nalazi se u padajućem izborniku kraj tražilice.",
+	'prefswitch-main-feedback' => '=== Komentari? === 
+Rado bi čuli vaše mišljenje. Molimo posjetite naše [[$1|stranice za vaše komentare]] ili, ako ste zainteresirani saznati više o našim stalnim naporima na poboljšanju softvera, posjetite naš [http://usability.wikimedia.org wiki za poboljšanje uporabljivosti] za više informacija.',
+	'prefswitch-main-anon' => '===Vrati stare postavke===
+[$1 Kliknite ovdje za isključivanje novih osobina]. Bit ćete zamoljeni da se prijavite ili prvo otvorite suradnički račun.',
+	'prefswitch-main-on' => '===Vrati stare postavke=== 
+[$2 Klikni ovdje za isključivanje novih osobina].',
+	'prefswitch-main-off' => '===Isprobajte nove osobine=== 
+[$1 Kliknite ovdje kako bi omogućili nove osobine].',
+	'prefswitch-survey-intro-feedback' => 'Rado bi čuli vaše mišljenje.
+Molimo ispunite neobveznu anketu ispod prije nego što kliknete "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Hvala za isprobavanje novih osobina našeg sučelja.
+Kako biste nam pomogli poboljšati ih, molimo Vas da ispunite neobaveznu ankete ispod prije nego što kliknete "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

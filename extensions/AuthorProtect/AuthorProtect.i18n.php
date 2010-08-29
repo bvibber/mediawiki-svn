@@ -1306,16 +1306,17 @@ $messages['pt-br'] = array(
 /** Romanian (Română)
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'authorprotect' => 'Protejează pagina pentru cei care nu sunt autori',
 	'authorprotect-desc' => 'Permite autorului unei pagini să o protejeze față de ceilalți utilizatori',
-	'authorprotect-notauthor' => 'Nu ești autorul acestei pagini',
+	'authorprotect-notauthor' => 'Nu sunteți autorul acestei pagini',
 	'authorprotect-confirm' => 'Schimbă niveluri de protecție',
 	'authorprotect-edit' => 'Restricționează modificările autorilor',
 	'authorprotect-move' => 'Restricționează mutarea la autori',
-	'authorprotect-expiry' => 'Timpul expirării',
-	'authorprotect-reason' => 'Motiv',
+	'authorprotect-expiry' => 'Expiră la:',
+	'authorprotect-reason' => 'Motiv:',
 	'authorprotect-intro' => 'Utilizați acest formular pentru a proteja această pagină de non-autori',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',

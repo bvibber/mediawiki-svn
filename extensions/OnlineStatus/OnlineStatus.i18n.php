@@ -895,15 +895,20 @@ $messages['os'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'onlinestatus-desc' => 'Umożliwia prezentację czy użytkownik jest w tej chwili dostępny na wiki.',
-	'onlinestatus-subtitle-offline' => 'Użytkownik jest w tej chwili nieobecny',
-	'onlinestatus-subtitle-online' => 'Użytkownik jest w tej chwili obecny',
+	'onlinestatus-desc' => 'Umożliwia prezentację aktualnej dostępności użytkownika na wiki',
+	'onlinestatus-js-anon' => 'Błąd – musisz być zalogowany, aby korzystać z tej funkcji',
+	'onlinestatus-js-changed' => 'Twój status został zmieniony na „$1”',
+	'onlinestatus-js-error' => 'Nie można zmienić statusu, wartość „$1” jest nieprawidłowa',
+	'onlinestatus-subtitle-offline' => 'Użytkownik jest w tej chwili niedostępny',
+	'onlinestatus-subtitle-online' => 'Użytkownik jest w tej chwili dostępny',
 	'onlinestatus-tab' => 'Status',
 	'onlinestatus-toggles-desc' => 'Twój status:',
 	'onlinestatus-toggles-explain' => 'Umożliwia Ci prezentowanie innym użytkownikom na Twojej stronie użytkownika czy jesteś aktualnie dostępny.',
-	'onlinestatus-toggles-show' => 'Pokaż moją obecność na mojej stronie użytkownika',
-	'onlinestatus-toggle-offline' => 'nieobecny',
-	'onlinestatus-toggle-online' => 'obecny',
+	'onlinestatus-toggles-show' => 'Pokaż moją dostępność na mojej stronie użytkownika',
+	'onlinestatus-toggle-offline' => 'Niedostępny',
+	'onlinestatus-toggle-online' => 'Dostępny',
+	'onlinestatus-pref-onlineonlogin' => 'Zmień mój status na dostępny gdy jestem zalogowany',
+	'onlinestatus-pref-offlineonlogout' => 'Zmień mój status na niedostępny gdy nie jestem zalogowany',
 );
 
 /** Piedmontese (Piemontèis)
