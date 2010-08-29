@@ -21,6 +21,7 @@ $sfigSettings = new SFISettings();
 
 // register extension
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Semantic Forms Inputs',
 	'author' => array( '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]', 'Sanyam Goyal', 'Yaron Koren' ),
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Forms_Inputs',
