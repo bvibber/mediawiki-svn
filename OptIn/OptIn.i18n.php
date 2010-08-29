@@ -2902,26 +2902,26 @@ $messages['hr'] = array(
 	'optin-title-feedback' => 'Beta komentar',
 	'optin-needlogin' => 'Morate se [$1 prijaviti] kako biste isprobali Betu.',
 	'optin-intro' => 'Inicijativa za uporabljivost Wikipedije puno je radila na poboljšanju uporabljivosti Wikipedije. Želite li isprobati naše Beta sučelje?',
-	'optin-feedback-intro' => 'Hvala što ste isprobali Beta. Željeli bismo znati što mislite o našem novom sučelju, stoga bismo cijenili ukoliko biste ispunili našu neobvezatnu anketu koja se nalazi u nastavku.',
+	'optin-feedback-intro' => 'Hvala što ste isprobali Betu. Željeli bismo znati što mislite o našem novom sučelju, stoga bismo cijenili ukoliko biste ispunili našu neobveznu anketu koja se nalazi u nastavku.',
 	'optin-feedback-back' => 'Ukoliko ne želite ispuniti anketu, možete se vratiti na $1.',
-	'optin-success-in' => 'Sada isprobavate Beta. U bilo kojem trenutku možete se odlučiti vratiti nazad klikom na poveznicu "{{int:optin-leave}}" koja se nalazi na vrhu zaslona.',
-	'optin-leave-cancel' => 'Ako želite nastaviti koristiti Beta, možete se vratiti na $1.',
-	'optin-success-out' => 'Uspješno ste izašli iz Beta. 
+	'optin-success-in' => 'Sada isprobavate Betu. U bilo kojem trenutku možete se odlučiti vratiti nazad klikom na poveznicu "{{int:optin-leave}}" koja se nalazi na vrhu zaslona.',
+	'optin-leave-cancel' => 'Ako želite nastaviti koristiti Betu, možete se vratiti na $1.',
+	'optin-success-out' => 'Uspješno ste izašli iz Bete. 
 Možete je u svakom trenutku ponovno isprobati klikom na poveznicu "{{int:optin-try}} u gornjem desnom dijelu zaslona.',
 	'optin-success-feedback' => 'Hvala Vam na Vašem komentaru!',
 	'optin-accept-short' => 'Idemo isprobati!',
-	'optin-accept-long' => 'Isprobajte Beta',
-	'optin-accept-long-anon' => 'Prijavite se i isprobajte Beta',
+	'optin-accept-long' => 'Isprobajte Betu',
+	'optin-accept-long-anon' => 'Prijavite se i isprobajte Betu',
 	'optin-deny-short' => 'Ne hvala',
 	'optin-deny-long' => 'Povratak na prethodnu stranicu',
-	'optin-submit-out' => 'Izađite iz Beta',
+	'optin-submit-out' => 'Isključi Beta sučelje',
 	'optin-submit-feedback' => 'Ostavite komentare',
 	'optin-survey-yes' => 'Da',
 	'optin-survey-no' => 'Ne',
-	'optin-survey-intro' => 'Hvala što ste isprobali Beta.
+	'optin-survey-intro' => 'Hvala što ste isprobali Beta sučelje.
 Željeli bismo znati što mislite o našem novom sučelju, stoga bismo cijenili ukoliko biste ispunili našu neobvezatnu anketu koja se nalazi u nastavku prije nego kliknete na "[[#leave|{{int:optin-submit-out}}]]".',
-	'optin-survey-question-likedislike' => 'Što Vam se svidjelo na Beta? Što Vam se nije svidjelo na Beta?',
-	'optin-survey-question-whyoptout' => 'Zašto napuštate Beta? (molimo označite sve što se može primijeniti.)',
+	'optin-survey-question-likedislike' => 'Što Vam se svidjelo na Beti? Što Vam se nije svidjelo na Beti?',
+	'optin-survey-question-whyoptout' => 'Zašto napuštate Betu? (molimo označite sve što se može primijeniti.)',
 	'optin-survey-answer-whyoptout-hard' => 'Bilo je preteško za uporabu.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Nije ispravno radilo.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Nije radilo kako je predviđeno.',
@@ -3235,6 +3235,7 @@ Pro ulterior informationes super le Initiativa de Usabilitate, visita nostre [ht
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author -iNu-
  * @author Bennylin
  * @author Farras
  * @author Irwangatot
@@ -3307,13 +3308,17 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 [[File:UsabilityToolbar.png|left|link=|Cuplikan kotak peralatan penyuntingan yang baru]]
 [[File:UsabilityDialogs.png|left|link=|Cuplikan kotak dialog pengisian konten yang baru]]
 ;Kotak Peralatan Baru
-Kotak peralatan baru menjadikan penyuntingan artikel lebih mudah..
-Ikon yang baru dan diperbarui semakin memerjelas kegunaan masing-masing alat.
+Kotak peralatan baru menjadikan penyuntingan artikel lebih mudah.
+Ikon yang baru dan diperbarui semakin memperjelas kegunaan masing-masing alat.
 Bagian yang dapat diperbesar mengurangi gangguan sambil menjaga peralatan yang jarang digunakan hanya dengan sekali tekan.
 ;Kotak Dialog
 Ketika membuat pranala atau tabel, menekan ikon peralatan sekarang akan membuka sebuah kotak dialog yang membantu Anda membuat pranala dan tabel dengan mengisi kotak isian yang sederhana.
 ;Dan Lainnya
 Kami telah memerkenalkan sejumlah perbaikan lain seperti penelusuran yang diperbarui, pencarian yang diperbaiki, dan lainnya.
+== Bagaimana cara melibatkan diri? ==
+Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative halaman utama] kami.
+<div style="clear:both"></div>
+
 == Bagaimana cara melibatkan diri? ==
 Untuk mengenal lebih lanjut tentang Inisiatif Kebergunaan, silakan kunjungi [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative halaman utama] kami.
 <div style="clear:both"></div>',
@@ -6881,7 +6886,7 @@ Kullanışlılığı geliştirme çalışmalarına katılma hakkında bilgi içi
 $messages['tt-cyrl'] = array(
 	'optin' => 'Юзабилити да катнашу',
 	'optin-desc' => 'Кулланучылар тарафыннан интерфейсның  Beta-юрамасын тикшереп карау.',
-	'optin-title-optedout' => 'Интерфейсның бета-версиясен карау',
+	'optin-title-optedout' => 'Интерфейсның Beta-версиясен карау',
 	'optin-title-optedin' => 'Beta-версиядән чыгарга',
 	'optin-title-justoptedin' => 'Beta га рәхим итегез',
 	'optin-title-justoptedout' => 'Beta-юраманы тикшереп карауда зур рәхмәтебезне белдерәбез',
@@ -6895,7 +6900,7 @@ $messages['tt-cyrl'] = array(
 	'optin-success-out' => 'Сез Beta-юраманы эшләтеп караудан чыктыгыз. Кире Beta-юрамага кайтасыгыз килсә, Сез «{{int:optin-try}}» төймәсенә баса аласыз.',
 	'optin-success-feedback' => 'Фикерегез өчен рәхмәт!',
 	'optin-accept-short' => 'Киттек!',
-	'optin-accept-long' => 'Бета-версияне эшләтеп карау',
+	'optin-accept-long' => 'Beta-юраманы эшләтеп карау',
 	'optin-accept-long-anon' => 'Бета-версияне эшләтеп карау өчен керегез.',
 	'optin-deny-short' => 'Юк, кирәкми!',
 	'optin-deny-long' => 'Үткән биткә кире кайту',

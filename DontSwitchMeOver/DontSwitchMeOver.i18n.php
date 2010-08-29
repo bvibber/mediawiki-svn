@@ -161,6 +161,14 @@ $messages['gsw'] = array(
 	'dontswitchmeover-pref' => 'Änderig vu myym Benutzeroberflechinedesign nit erlaube, wänn s Standarddesign gänderet wird',
 );
 
+/** Croatian (Hrvatski)
+ * @author SpeedyGonsales
+ */
+$messages['hr'] = array(
+	'dontswitchmeover-desc' => "Postavka kojom suradnici odlučuju žele li sačuvati postavke svog stila kad se mijenja predefinirani (''default'') stil.",
+	'dontswitchmeover-pref' => 'Ne mijenjaj moj stil kad se predefinirani stil mijenja',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
