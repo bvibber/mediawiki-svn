@@ -1,12 +1,14 @@
 <?php
-/** Danish
+/** Bahasa Banjar (Bahasa Banjar)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
  *
  * @ingroup Language
  * @file
- * @comment Deprecated code. Falls back to 'dk'.
  */
 
-$fallback = 'da';
+$fallback = 'id';
+
+$messages = array(
+);

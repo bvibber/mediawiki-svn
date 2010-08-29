@@ -15,17 +15,18 @@
 	'als' => 'Alemannisch',	# Alemannic -- not a valid code, for compatibility. See gsw.
 	'am' => 'አማርኛ',	# Amharic
 	'an' => 'Aragonés',	# Aragonese
-	'ang' => 'Anglo-Saxon',	# Old English
+	'ang' => 'Ænglisc',	# Old English (Bug 23283)
 	'ar' => 'العربية',	# Arabic
 	'arc' => 'ܐܪܡܝܐ',	# Aramaic
 	'arn' => 'Mapudungun',	# Mapuche, Mapudungu, Araucanian (Araucano)
+	'ary' => 'Maġribi',	# Moroccan Spoken Arabic
 	'arz' => 'مصرى',	# Egyptian Spoken Arabic
 	'as' => 'অসমীয়া',	# Assamese
 	'ast' => 'Asturianu',	# Asturian
 	'av' => 'Авар',	# Avar
 	'avk' => 'Kotava', # Kotava
 	'ay' => 'Aymar aru',	# Aymara
-	'az' => 'Azərbaycan',	# Azerbaijani
+	'az' => 'Azərbaycanca',	# Azerbaijani
 	'ba' => 'Башҡорт',	# Bashkir
 	'bar' => 'Boarisch',	# Bavarian (Austro-Bavarian and South Tyrolean)
 	'bat-smg' => 'Žemaitėška', # Samogitian
@@ -37,6 +38,7 @@
 	'bg' => 'Български',	# Bulgarian
 	'bh' => 'भोजपुरी',	# Bhojpuri
 	'bi' => 'Bislama',		# Bislama
+	'bjn' => 'Bahasa Banjar',	# Banjarese
 	'bm' => 'Bamanankan',	# Bambara
 	'bn' => 'বাংলা',	# Bengali
 	'bo' => 'བོད་ཡིག',	# Tibetan
@@ -75,7 +77,6 @@
 	'de-ch' => 'Schweizer Hochdeutsch',		# Swiss Standard German
 	'de-formal' => 'Deutsch (Sie-Form)',		# German - formal address ("Sie")
 	'diq' => 'Zazaki',		# Zazaki
-	'dk' => 'Dansk (deprecated:da)',		# Unused code currently falls back to Danish, 'da' is correct for the language
 	'dsb' => 'Dolnoserbski', # Lower Sorbian
 	'dv' => 'ދިވެހިބަސް',		# Dhivehi
 	'dz' => 'ཇོང་ཁ',		# Bhutani
@@ -120,8 +121,7 @@
 	'haw' => 'Hawai`i',		# Hawaiian
 	'he' => 'עברית',	# Hebrew
 	'hi' => 'हिन्दी',	# Hindi
-	'hif' => 'Fiji Hindi',	# Fijian Hindi (falls back to hif-latn)
-	'hif-deva' => 'फ़ीजी हिन्दी',	# Fiji Hindi (devangari)
+	'hif' => 'Fiji Hindi',	# Fijian Hindi (multiple scripts - defaults to Latin)
 	'hif-latn' => 'Fiji Hindi',	# Fiji Hindi (latin)
 	'hil' => 'Ilonggo',	# Hiligaynon
 	'ho' => 'Hiri Motu',	# Hiri Motu
@@ -152,6 +152,8 @@
 	'ka' => 'ქართული',	# Georgian
 	'kaa' => 'Qaraqalpaqsha',	# Karakalpak
 	'kab' => 'Taqbaylit',	# Kabyle
+	'kbd' => 'къэбэрдеибзэ/qabardjajəbza',	# Kabardian (multiple scripts - defaults to Cyrillic)
+	'kbd-cyrl' => 'къэбэрдеибзэ',	# Kabardian (Cyrillic)
 	'kg' => 'Kongo',		# Kongo, (FIXME!) should probaly be KiKongo or KiKoongo
 	'ki' => 'Gĩkũyũ',	# Gikuyu
 	'kiu' => 'Kırmancki',	# Kirmanjki
@@ -231,6 +233,7 @@
 	'ng' => 'Oshiwambo',		# Ndonga
 	'niu' => 'Niuē',	# Niuean
 	'nl' => 'Nederlands',	# Dutch
+	'nl-informal' => 'Nederlands (informeel)',	# Dutch (informal address ("je"))
 	'nn' => "\xE2\x80\xAANorsk (nynorsk)\xE2\x80\xAC",	# Norwegian (Nynorsk)
 	'no' => "\xE2\x80\xAANorsk (bokmål)\xE2\x80\xAC",		# Norwegian
 	'nov' => 'Novial',		# Novial
@@ -335,9 +338,9 @@
 	'ty' => 'Reo Mā`ohi',	# Tahitian
 	'tyv' => 'Тыва дыл',	# Tyvan
 	'udm' => 'Удмурт',	# Udmurt
-	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur (multiple scripts - defaults to Latin)
-	'ug-arab' => 'ئۇيغۇرچە', # Uyghur (Arabic script)
-	'ug-latn' => 'Uyghurche‎', # Uyghur (Latin script - default)
+	'ug' => 'ئۇيغۇرچە / Uyghurche‎',	# Uyghur (multiple scripts - defaults to Arabic)
+	'ug-arab' => 'ئۇيغۇرچە', # Uyghur (Arabic script) (default)
+	'ug-latn' => 'Uyghurche‎', # Uyghur (Latin script)
 	'uk' => 'Українська',	# Ukrainian
 	'ur' => 'اردو',	# Urdu
 	'uz' => 'O\'zbek',	# Uzbek
