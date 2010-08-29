@@ -113,7 +113,7 @@ mw.SmilLayout.prototype = {
 		}
 	},
 	
-	drawElementThumb: function( $target, $node, relativeTime ){			
+	drawElementThumb: function( $target, $node, relativeTime, callback){			
 		mw.log('SmilLayout::drawElementThumb: ' + $node.attr('id') + ' relative time:' + relativeTime );	
 		if( $target.length == 0 ){
 			mw.log("Error drawElementThumb to empty target");
@@ -121,10 +121,12 @@ mw.SmilLayout.prototype = {
 		}
 		// parse the time in case it came in as human input
 		relativeTime = this.smil.parseTime( relativeTime );
-		switch ( this.smil.getRefType( $node )){
-			case 'video':				
-				this.getVideoCanvasThumb($target,  $node, relativeTime )	
-			break;
+		
+		if( this.smil.getRefType( $node ) == 'video' ){
+			this.getVideoCanvasThumb($target,  $node, relativeTime, callback )		
+			return ;
+		}
+		switch ( this.smil.getRefType( $node )  ){		
 			case 'img':
 				// xxx we could eventually use canvas as well but for now just add it at 100%
 				$target.html(
@@ -151,14 +153,20 @@ mw.SmilLayout.prototype = {
 					,
 					$j('<span />')
 					.attr('title', titleStr)
-					.css({'position': 'absolute', 'left':'16px'})
+					.css({
+						'position': 'absolute', 
+						'left':'16px',
+						'font-size' : 'x-small'
+					})
 					.text( titleStr )
 				)
 			break;
-		}							
+		}
+		if( callback )
+			callback();
 	},
 	
-	getVideoCanvasThumb: function($target, $node, relativeTime ){
+	getVideoCanvasThumb: function($target, $node, relativeTime, callback ){
 		var _this = this;
 		var naturaSize = {};					
 		var drawElement = $j( '#' + this.smil.getPageDomId( $node ) ).get(0);	
@@ -172,22 +180,28 @@ mw.SmilLayout.prototype = {
 			naturaSize.width = drawElement.videoWidth;
 	
 			// Draw the thumb via canvas grab
-			// NOTE I attempted to scale down the image using canvas but failed 
+			// NOTE canvas scale issue prevents redraw at thumb resolution 
 			// xxx should revisit thumb size issue:
-			$target.html( $j('<canvas />')				
-				.attr({
-					height: naturaSize.height,
-					width : naturaSize.width
-				}).css( {
-					height:'100%',
-					widht:'100%'
-				})
-				.addClass("ui-corner-all")
-			)
-			.find( 'canvas')
-				.get(0)	
-				.getContext('2d')
-				.drawImage( drawElement, 0, 0)
+			try{
+				$target.html( $j('<canvas />')				
+					.attr({
+						height: naturaSize.height,
+						width : naturaSize.width
+					}).css( {
+						height:'100%',
+						widht:'100%'
+					})
+					.addClass("ui-corner-all")
+				)
+				.find( 'canvas')
+					.get(0)	
+					.getContext('2d')
+					.drawImage( drawElement, 0, 0)				
+			} catch (e){
+				mw.log("Error:: getVideoCanvasThumb : could not draw canvas image");
+			}
+			if( callback )
+				callback();
 		}
 		
 		// check if relativeTime transform matches current absolute time then render directly:
@@ -201,7 +215,7 @@ mw.SmilLayout.prototype = {
 			// span new draw element
 			var $tmpFrameNode = $node.clone();
 			$tmpFrameNode.attr('id', $node.attr('id') + '_tmpFrameNode' );				
-			this.smil.getBuffer().bufferedSeek( $tmpFrameNode, relativeTime, function(){
+			this.smil.getBuffer().bufferedSeekRelativeTime( $tmpFrameNode, relativeTime, function(){
 				// update the drawElement 
 				drawElement = $j( '#' + _this.smil.getPageDomId( $tmpFrameNode ) ).get(0);
 				drawFrame( drawElement );

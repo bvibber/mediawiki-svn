@@ -177,7 +177,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 							gM('mwe-sequencer-not-published', 
 								$j('<a />').click( function(){
 									_this.showEditor();
-								})
+								}).css('cursor', 'pointer')
 							)
 						)
 						.addClass( 'ui-state-highlight' )
@@ -197,7 +197,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 										gM('mwe-sequencer-published-out-of-date', 
 											$j('<a />').click( function(){
 												_this.showEditor();
-											})
+											}).css('cursor', 'pointer')
 										)
 									).addClass( 'ui-state-highlight' )
 								)

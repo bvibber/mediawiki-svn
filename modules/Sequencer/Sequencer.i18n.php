@@ -27,8 +27,12 @@ $messages['en'] = array(
 	'mwe-sequencer-audio-track' => 'Audio track',
 	'mwe-sequencer-sequencer_credit_line' => 'Developed by [$1 Kaltura, Inc] in partnership with the [$1 Wikimedia Foundation]',
 	'mwe-sequencer-no-sequence-create' => 'Sequence does not exists, You can [$1 start a sequence]',
-	'mwe-sequencer-cliptool-trim' => 'Trim clip',
-	'mwe-sequencer-cliptool-duration' => 'Set duration',
+
+	'mwe-sequencer-tools-trim' => 'Trim',
+	'mwe-sequencer-tools-trim-desc' => 'Set clip in and out points',
+	'mwe-sequencer-tools-duration' => 'Duration',
+	'mwe-sequencer-tools-duration-desc' => 'Set clip duration',
+
 	'mwe-sequencer-preview' => 'Preview',
 	'mwe-sequencer-apply-changes' => 'Apply changes',
 	'mwe-sequencer-start-time' => 'Start time',
