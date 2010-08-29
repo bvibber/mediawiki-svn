@@ -74,6 +74,7 @@ $wgLanguageSelectorLocation = LANGUAGE_SELECTOR_AT_TOP_OF_TEXT;
 $wgHooks['AddNewAccount'][] = 'wfLanguageSelectorAddNewAccount';
 $wgHooks['BeforePageDisplay'][] = 'wfLanguageSelectorBeforePageDisplay';
 $wgHooks['GetCacheVaryCookies'][] = 'wfLanguageSelectorGetCacheVaryCookies';
+$wgHooks['ParserFirstCallInit'][] = 'wfLanguageSelectorSetHook';
 
 $wgExtensionFunctions[] = 'wfLanguageSelectorExtension';
 
@@ -95,10 +96,14 @@ function wfLanguageSelectorSetHook() {
 
 function wfLanguageSelectorExtension() {
 	wfLoadExtensionMessages( 'LanguageSelector' );
-	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation, $wgLanguageSelectorShowAll;
+	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage,
+		$wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation,
+		$wgLanguageSelectorShowAll, $wgCommandLineMode;
 	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgHooks;
 
-	$wgHooks['ParserFirstCallInit'][] = 'wfLanguageSelectorSetHook';
+	if ( $wgCommandLineMode ) {
+		return true;
+	}
 
 	if ( $wgLanguageSelectorLanguages === null ) {
 		$wgLanguageSelectorLanguages = @$GLOBALS['wgPolyglotLanguages'];
