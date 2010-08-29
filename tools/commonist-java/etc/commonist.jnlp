@@ -17,9 +17,6 @@
 		<j2se version="1.5+" max-heap-size="192m"/>
 		<jar href="commonist.jar" main="true"/>
 		<jar href="bsh-2.0b2-fixed.jar"/>
-		<jar href="lib-util.jar"/>
-		<jar href="minibpp.jar"/>
-		<jar href="mwapi.jar"/>
 		<jar href="commons-logging-1.1.jar"/>
 		<jar href="commons-codec-1.3.jar"/>
 		<jar href="commons-httpclient-3.1.jar"/>
