@@ -10,7 +10,7 @@ $messages['en'] = array(
 	'articleassessment' => 'Article assessment',
 	'articleassessment-desc' => 'Article assessment pilot version',
 	'articleassessment-yourfeedback' => 'Your feedback',
-	'articleassessment-pleaserate' => "''Please take a moment to rate this page below.''",
+	'articleassessment-pleaserate' => "Please take a moment to rate this page below.",
 	'articleassessment-submit' => 'Submit',
 	'articleassessment-rating-wellsourced' => 'Well sourced:',
 	'articleassessment-rating-neutrality' => 'Neutrality:',
@@ -31,6 +31,6 @@ $messages['en'] = array(
 	'articleassessment-stalemessage-norevisioncount' => "This article has been ''revised'' since you last reviewed it. You may wish to re-rate it.",
 
 	# FIXME: Invalid links
-	'articleassessment-results-show' => "''(Results hidden. [[|Show]] them.)''",
-	'articleassessment-results-hide' => "''([[|Hide results]])''",
+	'articleassessment-results-show' => "(Results hidden. [[|Show]] them.)",
+	'articleassessment-results-hide' => "([[|Hide Results]])",
 );

@@ -15,7 +15,11 @@ class ArticleAssessmentPilotHooks {
 		array( 'src' => 'js/ArticleAssessment.js', 'version' => 1 ),
 		array( 'src' => 'js/jquery.cookie.js', 'version' => 1 ),
 		array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
+		array( 'src' => 'js/jquery.stars.js', 'version' => 1 ),
 	);
+	
+
+	private static $messages = array();
 
 	/* Static Functions */
 	public static function schema() {
@@ -43,7 +47,7 @@ class ArticleAssessmentPilotHooks {
 
 	public static function addResources( $out ) {
 		global $wgExtensionAssetsPath;
-
+				
 		foreach ( self::$scriptFiles as $script ) {
 			$out->addScriptFile( $wgExtensionAssetsPath .
 				"/ArticleAssessmentPilot/{$script['src']}", $script['version']
@@ -55,10 +59,67 @@ class ArticleAssessmentPilotHooks {
 				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"
 			);
 		}
+		
+		// Transforms messages into javascript object members
+		self::$messages = array(
+			'articleassessment',
+			'articleassessment-desc',
+			'articleassessment-yourfeedback',
+			'articleassessment-pleaserate',
+			'articleassessment-submit',
+			'articleassessment-rating-wellsourced',
+			'articleassessment-rating-neutrality',
+			'articleassessment-rating-completeness',
+			'articleassessment-rating-readability',
+			'articleassessment-rating-wellsourced-tooltip',
+			'articleassessment-rating-neutrality-tooltip',
+			'articleassessment-rating-completeness-tooltip',
+			'articleassessment-rating-readability-tooltip',
+			'articleassessment-articlerating',
+			'articleassessment-featurefeedback',
+			'articleassessment-noratings',
+			'articleassessment-stalemessage-revisioncount',
+			'articleassessment-stalemessage-norevisioncount',
+			'articleassessment-results-show',
+			'articleassessment-results-hide',
+			);
+		
+		foreach ( self::$messages as $i => $message ) {
+			$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
+			$escapedMessageKey = Xml::escapeJsString( $message );
+			self::$messages[$i] =
+				"'{$escapedMessageKey}':'{$escapedMessageValue}'";
+		}
+		// Add javascript to document
+		if ( count( self::$messages ) > 0 ) {
+			$out->addScript( Html::inlineScript(
+				'mw.usability.addMessages({' . implode( ',', self::$messages ) . '});'
+			) );
+		}
 
 		return true;
 	}
-
+	
+	/**
+	 * Adds a reference to a javascript file to the head of the document
+	 * @param string $src Path to the file relative to this extension's folder
+	 * @param object $version Version number of the file
+	 */
+	public static function addScript( $src, $version = '' ) {
+		// The key is Andrew's snarky 20-character way of stopping multiple inclusion of the same file.
+		self::$scripts["$src?$version"] = array( 'src' => $src, 'version' => $version );
+	}
+	
+	/**
+	 * Adds internationalized message definitions to the document for access
+	 * via javascript using the mw.usability.getMsg() function
+	 * @param array $messages Key names of messages to load
+	 */
+	public static function addMessages( $messages ) {
+		self::$messages = array_merge( self::$messages, $messages );
+	}
+	
+	
 	public static function addCode( &$data, $skin ) {
 		$title = $skin->getTitle();
 

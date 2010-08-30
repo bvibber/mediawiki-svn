@@ -1,6 +1,3 @@
-.aa-rating-field {
-	
-}
 /*!
  * jQuery UI Stars v3.0.1
  * http://plugins.jquery.com/project/Star_Rating_widget
@@ -14,7 +11,7 @@
  * $Build: 35 (2010-05-01)
  *
  */
-.ui-stars-star {
+.article-assessment-wrapper .ui-stars-star {
   float: left;
   display: block;
   overflow: hidden;
@@ -22,39 +19,39 @@
   cursor: pointer;
 	padding-right: 4px;
 }
-.ui-stars-star a {
+.article-assessment-wrapper .ui-stars-star a {
   width: 21px;
   height: 21px;
   display: block;
   background: url(../images/stars.gif) no-repeat 0 0;
 }
-.ui-stars-star a {
+.article-assessment-wrapper .ui-stars-star a {
   background-position: 0 0px;
 }
-.ui-stars-star-on a  {
+.article-assessment-wrapper .ui-stars-star-on a  {
   background-position: 0 -42px;
 }
-.ui-stars-star-rated a {
+.article-assessment-wrapper .ui-stars-star-rated a {
 	background-position: 0 -42px;
 }
-.ui-stars-star-stale a {
+.article-assessment-wrapper .ui-stars-star-stale a {
 	background-position: 0 -63px;
 }
-.ui-stars-star-hover a {
+.article-assessment-wrapper .ui-stars-star-hover a {
   background-position: 0 -21px;
 }
-.ui-stars-star-disabled,
-.ui-stars-star-disabled a {
+.article-assessment-wrapper .ui-stars-star-disabled,
+.article-assessment-wrapper .ui-stars-star-disabled a {
   cursor: default !important;
 }
-.ui-stars-cancel {
+.article-assessment-wrapper .ui-stars-cancel {
 	display: none;
 }
 /* End ui-stars styles */
 
 /* Tipsy Styles */
 .tipsy { padding: 5px; font-size: 12px; position: absolute; z-index: 100000; }
-.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #d6f3ff; color: black; border: 1px solid #5dc9f4; max-width: 200px; text-align: center; }
+.tipsy-inner { padding: 5px 8px 4px 8px; background-color: #d6f3ff; color: black; border: 1px solid #5dc9f4; max-width: 300px; text-align: left; }
 /* .tipsy-inner { border-radius: 3px; -moz-border-radius:3px; -webkit-border-radius:3px; } */
 .tipsy-arrow { position: absolute; background: url( '../images/arrow.gif' ) no-repeat top left; width: 13px; height: 13px; }
 .tipsy-n .tipsy-arrow { top: 0; left: 50%; margin-left: -4px; }
@@ -67,77 +64,127 @@
 .tipsy-w .tipsy-arrow { top: 50%; margin-top: -4px; left: 0; width: 5px; height: 9px; }
 
 /* End Tipsy styles */
-#article-assessment-rate,
-#article-assessment-ratings {
+.article-assessment-wrapper #article-assessment-rate,
+.article-assessment-wrapper #article-assessment-ratings {
 	background: #f7f7f7;
 	float: left;
 }
-#article-assessment-ratings {
+.article-assessment-wrapper #article-assessment-ratings {
 	width: 320px;
 }
-#article-assessment-rate {
+.article-assessment-wrapper #article-assessment-rate {
 	width: 650px;
+	margin-right: 10px;
 }
-.field-wrapper {
+.article-assessment-wrapper legend {
+	font-weight: bold;
+}
+.article-assessment-wrapper .field-wrapper {
 	float: left;
 	width: 250px;
 	padding-right: 28px;
 }
-.rating-field {
+.article-assessment-wrapper .rating-field {
 	float: right;
 	line-height: 24px;
 	padding-right: 5px;
 }
-.rating-field-label{
+.article-assessment-wrapper .rating-field-label{
 	float: left;
 	line-height: 24px;
 }
-.rating-field-label {
+.article-assessment-wrapper .rating-field-label {
 	margin-right: 10px;
 }
-.rating-field-hint {
+.article-assessment-wrapper .rating-field-hint {
 	width: 11px;
 	height: 24px;
 	display: block;
 	float: right;
 	background: url(../images/question.gif) 0 50% no-repeat;
 }
-.article-assessment-submit {
+.article-assessment-wrapper .article-assessment-submit {
 	text-align: right;
 }
-.article-assessment-stale-msg {
+.article-assessment-wrapper .article-assessment-stale-msg {
 	background: #d6f3ff;
 	border: 1px solid #5dc9f4;
 	float: left;
-	font-size: 12px;
+	font-size: 11px;
+	padding: 1px 5px;
+}
+.article-assessment-wrapper .article-assessment-rating-field-name {
+	float: left;
+	width: 90px;
+}
+.article-assessment-wrapper .article-assessment-rating-field-value-wrapper,
+.article-assessment-wrapper .article-assessment-rating-field-value-disabled {
+	background: url( ../images/rating_bg.gif ) 0 0 no-repeat;
+	width: 120px;
+	height: 13px;
+	display: block;
+	float: left;
 	padding: 2px;
+	text-indent: -9999px;
+}
+.article-assessment-wrapper .article-assessment-rate-instructions, 
+.article-assessment-wrapper .article-assessment-rate-feedback,
+.article-assessment-wrapper .article-assessment-show-ratings,
+.article-assessment-wrapper .article-assessment-hide-ratings {
+	font-size: 10px;
+	font-style: italic;
+}
+.article-assessment-wrapper .article-assessment-rate-instructions {
+	float: left;
+}
+.article-assessment-wrapper .article-assessment-rate-feedback {
+	float: right;
+}
+.article-assessment-wrapper .article-assessment-rating-field-value-wrapper .article-assessment-rating-field-value {
+	background: url( ../images/rating_bar.gif ) 0 0 no-repeat;
+	height: 9px;
+	float: right;
+	display: block;
+}
+.article-assessment-wrapper .article-assessment-rating-field-value-disabled {
+	background: url( ../images/rating_disabled_bg.gif ) 0 0 no-repeat;
+}
+.article-assessment-wrapper .article-assessment-wrapper .article-assessment-rating-fields {
+	margin: 8px 0;
+}
+.article-assessment-wrapper .article-assessment-rating-fields .field-wrapper {
+	margin-bottom: 5px;
 }
 /* Self Clearing Floats */
-.field-wrapper:after,
-.article-assessment-rating-fields:after,
-.article-assessment-submit:after,
-.rating-fields:after {
+.article-assessment-wrapper .article-assessment-information:after,
+.article-assessment-wrapper .field-wrapper:after,
+.article-assessment-wrapper .article-assessment-rating-fields:after,
+.article-assessment-wrapper .article-assessment-submit:after,
+.article-assessment-wrapper .rating-fields:after {
 	content: ".";
 	display: block;
 	height: 0;
 	clear: both;
 	visibility: hidden;
 }
-.field-wrapper,
-.article-assessment-rating-fields,
-.article-assessment-submit,
-.rating-fields {
+.article-assessment-wrapper .field-wrapper,
+.article-assessment-wrapper .article-assessment-information,
+.article-assessment-wrapper .article-assessment-rating-fields,
+.article-assessment-wrapper .article-assessment-submit,
+.article-assessment-wrapper .rating-fields {
 	display: inline-block;
 }
-* html .field-wrapper,
-* html .article-assessment-rating-fields,
-* html .article-assessment-submit,
-* html .rating-fields {
+* html .article-assessment-wrapper .field-wrapper,
+* html .article-assessment-wrapper .article-assessment-information,
+* html .article-assessment-wrapper .article-assessment-rating-fields,
+* html .article-assessment-wrapper .article-assessment-submit,
+* html .article-assessment-wrapper .rating-fields {
 	height: 1%;
 }
-.field-wrapper,
-.article-assessment-rating-fields,
-.article-assessment-submit,
-.rating-fields {
+.article-assessment-wrapper .field-wrapper,
+.article-assessment-wrapper .article-assessment-information,
+.article-assessment-wrapper .article-assessment-rating-fields,
+.article-assessment-wrapper .article-assessment-submit,
+.article-assessment-wrapper .rating-fields {
 	display: block;
 }
