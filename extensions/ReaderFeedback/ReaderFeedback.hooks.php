@@ -73,7 +73,7 @@ class ReaderFeedbackHooks {
 	}
 
 	public static function addFeedbackForm( &$data, $skin ) {
-		global $wgOut, $wgArticle
+		global $wgOut, $wgArticle;
 		$title = $skin->getTitle();
 		if( $wgOut->isArticleRelated() && isset($wgArticle) ) {
 			global $wgRequest, $wgUser, $wgOut;
