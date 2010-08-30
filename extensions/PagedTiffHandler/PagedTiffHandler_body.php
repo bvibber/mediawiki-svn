@@ -94,14 +94,10 @@ class PagedTiffHandler extends ImageHandler {
 			}
 		}
 		$meta = self::getTiffImage( false, $tempName )->retrieveMetaData();
-		if ( !$meta && $meta != - 1 ) {
+		if ( !$meta ) {
 			$error = array( 'tiff_out_of_service' );
 			wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
 			return false;
-		}
-		if ( $meta == - 1 ) {
-			$error = array( 'tiff_error_cached' );
-			wfDebug( __METHOD__ . ": {$error[0]} ($saveName)\n" );
 		}
 
 		$ok = self::verifyMetaData( $meta, $error, $saveName );
