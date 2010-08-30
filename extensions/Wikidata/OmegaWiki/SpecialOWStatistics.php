@@ -9,7 +9,7 @@
 	function wfSpecialOWStatistics() {
 		class SpecialOWStatistics extends SpecialPage {
 			function SpecialOWStatistics() {
-				SpecialPage::SpecialPage( 'ow_statistics' );
+				parent::__construct( 'ow_statistics' );
 			}
 
 			function execute( $par ) {

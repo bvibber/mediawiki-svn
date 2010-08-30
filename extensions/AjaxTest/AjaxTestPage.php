@@ -19,7 +19,7 @@ class AjaxTestPage extends SpecialPage {
 	 * Constructor
 	 */
 	function __construct() {
-		SpecialPage::SpecialPage( 'AjaxTest', '', true );
+		parent::__construct( 'AjaxTest', '', true );
 	}
 
 	/**

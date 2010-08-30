@@ -7,7 +7,7 @@ $wgExtensionFunctions[] = 'wfSpecialSuggest';
 function wfSpecialSuggest() {
 	class SpecialSuggest extends SpecialPage {
 		function SpecialSuggest() {
-			SpecialPage::SpecialPage( 'Suggest', 'UnlistedSpecialPage' );
+			parent::__construct( 'Suggest', 'UnlistedSpecialPage' );
 	
 		}
 

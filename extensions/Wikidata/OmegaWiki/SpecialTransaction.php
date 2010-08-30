@@ -10,7 +10,7 @@ require_once( "Utilities.php" );
 function wfSpecialTransaction() {
 	class SpecialTransaction extends SpecialPage {
 		function SpecialTransaction() {
-			SpecialPage::SpecialPage( 'Transaction' );
+			parent::__construct( 'Transaction' );
 		}
 		
 		function execute( $parameter ) {

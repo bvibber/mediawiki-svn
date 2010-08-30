@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SpecialAsksql extends SpecialPage {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'Asksql', 'asksql' );
+		parent::__construct( 'Asksql', 'asksql' );
 	}
 
 	function execute( $par ) {

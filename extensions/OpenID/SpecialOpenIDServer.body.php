@@ -48,7 +48,7 @@ require_once( "Auth/OpenID/Consumer.php" );
 class SpecialOpenIDServer extends SpecialOpenID {
 
 	function __construct() {
-		SpecialPage::SpecialPage( "OpenIDServer", '', false );
+		parent::__construct( "OpenIDServer", '', false );
 	}
 
 	function execute( $par ) {

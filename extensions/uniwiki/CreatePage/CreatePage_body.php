@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 class SpecialCreatePage extends SpecialPage {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'CreatePage', 'createpage' );
+		parent::__construct( 'CreatePage', 'createpage' );
 	}
 
 	public function execute( $params ) {

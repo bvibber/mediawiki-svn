@@ -14,7 +14,7 @@ class AdminLinks extends SpecialPage {
 	 * Constructor
 	 */
 	function __construct() {
-		SpecialPage::SpecialPage( 'AdminLinks' );
+		parent::__construct( 'AdminLinks' );
 		wfLoadExtensionMessages( 'AdminLinks' );
 		global $wgUser;
 		$this->skin = $wgUser->getSkin();

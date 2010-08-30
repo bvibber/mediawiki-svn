@@ -60,7 +60,7 @@ class SpecialChemicalsources extends SpecialPage {
 	);
 
 	public function __construct() {
-		SpecialPage::SpecialPage( 'ChemicalSources' );
+		parent::__construct( 'ChemicalSources' );
 	}
 
 	public function execute( $params ) {

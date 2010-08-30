@@ -9,7 +9,7 @@ class SpecialCreateSignDocument extends SpecialPage {
 	 * Constructor
 	 */
 	function __construct() {
-		SpecialPage::SpecialPage( 'CreateSignDocument', 'createsigndocument' );
+		parent::__construct( 'CreateSignDocument', 'createsigndocument' );
 	}
 
 	function execute( $par ) {

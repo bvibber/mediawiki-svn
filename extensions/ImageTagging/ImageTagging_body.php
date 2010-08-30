@@ -31,7 +31,7 @@ class TaggedImages extends SpecialPage {
 				$this->mStartPage = 0;
 			$this->mImages = array();
 
-		SpecialPage::SpecialPage('TaggedImages');
+		parent::__construct('TaggedImages');
 	}
 
 	/**

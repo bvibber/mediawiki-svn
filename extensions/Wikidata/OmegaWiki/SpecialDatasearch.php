@@ -27,7 +27,7 @@ function wfSpecialDatasearch() {
 		protected $meaningAttribute;
 
 		function SpecialDatasearch() {
-			SpecialPage::SpecialPage( 'DataSearch' );
+			parent::__construct( 'DataSearch' );
 		}
 
 		function execute( $parameter ) {

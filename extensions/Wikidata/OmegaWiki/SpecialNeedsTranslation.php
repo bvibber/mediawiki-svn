@@ -8,7 +8,7 @@
 	function wfSpecialNeedsTranslation() {
 		class SpecialNeedsTranslation extends SpecialPage {
 			function SpecialNeedsTranslation() {
-				SpecialPage::SpecialPage( 'NeedsTranslation' );
+				parent::__construct( 'NeedsTranslation' );
 			}
 
 			function execute( $par ) {

@@ -275,7 +275,7 @@ function todoSavePreparser($q) {
 class TaskList extends SpecialPage
 {
     function __construct() {
-        SpecialPage::SpecialPage("TaskList");
+        parent::__construct("TaskList");
         self::loadMessages();
         return true;
     }
@@ -321,7 +321,7 @@ class TaskListByProject extends SpecialPage
 {
 	public function __construct() {
 		parent::__construct( 'TaskListByProject' );
-		SpecialPage::SpecialPage("TaskListByProject");
+		parent::__construct("TaskListByProject");
 		self::loadMessages();
 		return true;
 	}

@@ -7,7 +7,7 @@ class SpecialAPC extends SpecialPage {
 
 	protected $opts, $title;
 	function __construct() {
-		SpecialPage::SpecialPage( 'APC' );
+		parent::__construct( 'APC' );
 		$this->title = $this->getTitle();
 	}
 

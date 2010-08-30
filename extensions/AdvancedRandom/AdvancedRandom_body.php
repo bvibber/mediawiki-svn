@@ -7,7 +7,7 @@ class SpecialAdvancedRandom extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
-		SpecialPage::SpecialPage( 'AdvancedRandom' );
+		parent::__construct( 'AdvancedRandom' );
 	}
 
 	/**

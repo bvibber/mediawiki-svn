@@ -6,7 +6,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 	var $action = '';
 
 	function __construct() {
-		SpecialPage::SpecialPage( "PlayerStatsGrabber" );
+		parent::__construct( "PlayerStatsGrabber" );
 		wfLoadExtensionMessages( 'PlayerStatsGrabber' );
 	}
 

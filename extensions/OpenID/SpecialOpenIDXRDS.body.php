@@ -32,7 +32,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 class SpecialOpenIDXRDS extends SpecialOpenID {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'OpenIDXRDS', '', false );
+		parent::__construct( 'OpenIDXRDS', '', false );
 	}
 
 	# $par is a user name

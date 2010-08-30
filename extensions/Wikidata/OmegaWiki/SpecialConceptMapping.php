@@ -27,7 +27,7 @@ function wfSpecialConceptMapping() {
 	class SpecialConceptMapping extends SpecialPage {
 
 		function SpecialConceptMapping() {
-			SpecialPage::SpecialPage( 'ConceptMapping' );
+			parent::__construct( 'ConceptMapping' );
 		}
 
 		function execute( $par ) {

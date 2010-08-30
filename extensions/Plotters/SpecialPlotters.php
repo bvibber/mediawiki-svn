@@ -23,7 +23,7 @@ class SpecialPlotters extends SpecialPage {
 	 * Constructor
 	 */
 	function __construct() {
-		SpecialPage::SpecialPage( 'Plotters', '', true );
+		parent::__construct( 'Plotters', '', true );
 	}
 
 	/**

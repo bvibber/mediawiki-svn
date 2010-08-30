@@ -20,7 +20,7 @@ class SpecialSignDocument extends SpecialPage {
 	 * Constructor
 	 */
 	function __construct() {
-		SpecialPage::SpecialPage( 'SignDocument', 'sigadmin' );
+		parent::__construct( 'SignDocument', 'sigadmin' );
 		$this->includable( true );
 	}
 

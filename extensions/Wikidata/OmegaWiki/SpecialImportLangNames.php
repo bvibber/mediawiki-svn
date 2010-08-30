@@ -9,7 +9,7 @@
 	function wfSpecialImportLangNames() {
 		class SpecialImportLangNames extends SpecialPage {
 			function SpecialImportLangNames() {
-				SpecialPage::SpecialPage( 'ImportLangNames' );
+				parent::__construct( 'ImportLangNames' );
 			}
 
 			function execute( $par ) {

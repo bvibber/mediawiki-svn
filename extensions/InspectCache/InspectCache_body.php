@@ -7,7 +7,7 @@ if (!defined('MEDIAWIKI')) {
 
 class SpecialInspectCache extends SpecialPage {
 	function __construct() {
-		SpecialPage::SpecialPage( 'InspectCache', 'inspectcache' );
+		parent::__construct( 'InspectCache', 'inspectcache' );
 	}
 
 	function execute( $par ) {

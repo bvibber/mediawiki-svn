@@ -20,7 +20,7 @@ class SpecialPlayer extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
-		SpecialPage::SpecialPage( 'Player', '', true );
+		parent::__construct( 'Player', '', true );
 	}
 
 	/**

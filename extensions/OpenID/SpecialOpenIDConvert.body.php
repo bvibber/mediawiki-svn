@@ -30,7 +30,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SpecialOpenIDConvert extends SpecialOpenID {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'OpenIDConvert' );
+		parent::__construct( 'OpenIDConvert' );
 	}
 
 	function execute( $par ) {

@@ -11,7 +11,7 @@
 class TemplateLink extends SpecialPage
 {
 	public function __construct() {
-		SpecialPage::SpecialPage("TemplateLink");
+		parent::__construct("TemplateLink");
 	}
 
 	public function execute( $par ){

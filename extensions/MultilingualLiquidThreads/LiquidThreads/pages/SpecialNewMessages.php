@@ -5,7 +5,7 @@ class SpecialNewMessages extends SpecialPage {
 	private $user, $output, $request, $title;
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'NewMessages' );
+		parent::__construct( 'NewMessages' );
 		$this->includable( true );
 	}
 

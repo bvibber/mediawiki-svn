@@ -2,7 +2,7 @@
 
 class SpecialImportUsers extends SpecialPage {
 	function __construct() {
-		SpecialPage::SpecialPage('ImportUsers' , 'import_users' );
+		parent::__construct('ImportUsers' , 'import_users' );
 	}
 
 	function execute( $par ) {

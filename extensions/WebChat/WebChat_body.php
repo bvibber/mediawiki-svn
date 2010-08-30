@@ -7,7 +7,7 @@
 class WebChat extends SpecialPage {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'WebChat', 'webchat' );
+		parent::__construct( 'WebChat', 'webchat' );
 	}
 
 	function execute( $par ) {

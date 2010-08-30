@@ -1,7 +1,7 @@
 <?php
 class ContributionHistory extends SpecialPage {
 	function __construct() {
-		SpecialPage::SpecialPage( 'ContributionHistory' );
+		parent::__construct( 'ContributionHistory' );
 	}
 
 	function execute( $language = null ) {

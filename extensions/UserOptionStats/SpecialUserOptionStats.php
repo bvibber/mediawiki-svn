@@ -13,7 +13,7 @@
 class SpecialUserOptionStats extends SpecialPage {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'UserOptionStats' );
+		parent::__construct( 'UserOptionStats' );
 	}
 
 	public $blacklist = array( 'nickname' );

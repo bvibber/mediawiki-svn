@@ -2,7 +2,7 @@
 
 class SpecialShowProcesslist extends UnlistedSpecialPage {
 	function __construct() {
-		SpecialPage::SpecialPage('ShowProcesslist', 'siteadmin');
+		parent::__construct('ShowProcesslist', 'siteadmin');
 	}
 
 	function execute( $par ) {

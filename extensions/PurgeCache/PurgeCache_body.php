@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class SpecialPurgeCache extends SpecialPage {
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'PurgeCache', 'purgecache' );
+		parent::__construct( 'PurgeCache', 'purgecache' );
 	}
 
 	function execute( $par ) {

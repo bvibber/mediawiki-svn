@@ -10,7 +10,7 @@ require_once( "WikiDataGlobals.php" );
 function wfSpecialSelect() {
 	class SpecialSelect extends SpecialPage {
 		function SpecialSelect() {
-			SpecialPage::SpecialPage( 'Select', 'UnlistedSpecialPage' );
+			parent::__construct( 'Select', 'UnlistedSpecialPage' );
 		}
 
 		function execute( $par ) {

@@ -11,7 +11,7 @@ class EditUser extends SpecialPage {
 	var $mNewpass, $mRetypePass;
 	
 	function __construct() {
-		SpecialPage::SpecialPage('EditUser', 'edituser');
+		parent::__construct('EditUser', 'edituser');
 	}
 	function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;

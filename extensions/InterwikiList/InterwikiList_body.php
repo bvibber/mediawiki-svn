@@ -16,7 +16,7 @@ class InterwikiList extends SpecialPage {
 	* Constructor
 	*/
 	public function InterwikiList() {
-		SpecialPage::SpecialPage("InterwikiList");
+		parent::__construct("InterwikiList");
 		wfLoadExtensionMessages('InterwikiList');
 	}
 	

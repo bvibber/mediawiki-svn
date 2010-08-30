@@ -14,7 +14,7 @@ class DTViewXML extends SpecialPage {
 	 */
 	public function DTViewXML() {
 		global $wgLanguageCode;
-		SpecialPage::SpecialPage( 'ViewXML' );
+		parent::__construct( 'ViewXML' );
 		wfLoadExtensionMessages( 'DataTransfer' );
 	}
 

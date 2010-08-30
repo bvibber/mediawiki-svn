@@ -37,7 +37,7 @@ function wfSpecialFilelist () {
 		 * Constructor
 		 */
 		function SpecialFilelist() {
-			SpecialPage::SpecialPage( 'Filelist' );
+			parent::__construct( 'Filelist' );
 			$this->includable( false );
 		}
 

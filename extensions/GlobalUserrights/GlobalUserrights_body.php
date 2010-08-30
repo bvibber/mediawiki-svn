@@ -12,7 +12,7 @@ class GlobalUserrights extends UserrightsPage {
 
 	/* Constructor */
 	public function __construct() {
-		SpecialPage::SpecialPage( 'GlobalUserrights' );
+		parent::__construct( 'GlobalUserrights' );
 		wfLoadExtensionMessages( 'GlobalUserrights' );
 	}
 	

@@ -11,7 +11,7 @@
 	function wfSpecialAddCollection() {
 		class SpecialAddCollection extends SpecialPage {
 			function SpecialAddCollection() {
-				SpecialPage::SpecialPage( 'AddCollection' );
+				parent::__construct( 'AddCollection' );
 			}
 
 			function execute( $par ) {

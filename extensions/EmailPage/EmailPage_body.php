@@ -19,7 +19,7 @@ class SpecialEmailPage extends SpecialPage {
 
 	public function __construct() {
 		global $wgEmailPageGroup;
-		SpecialPage::SpecialPage( 'EmailPage', $wgEmailPageGroup );
+		parent::__construct( 'EmailPage', $wgEmailPageGroup );
 	}
 
 	/**

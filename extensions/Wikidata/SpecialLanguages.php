@@ -27,7 +27,7 @@ function wfSpecialManageLanguages() {
 
 	class SpecialLanguages extends SpecialPage {
 		function SpecialLanguages() {
-			SpecialPage::SpecialPage( 'Languages' );
+			parent::__construct( 'Languages' );
 		}
 
 		function execute( $par ) {

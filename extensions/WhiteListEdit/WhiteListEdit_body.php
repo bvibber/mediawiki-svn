@@ -56,7 +56,7 @@ class WhiteListEdit extends SpecialPage
 {
 	function __construct() {
 		self::loadMessages();
-		SpecialPage::SpecialPage( 'WhiteListEdit', 'editwhitelist' );
+		parent::__construct( 'WhiteListEdit', 'editwhitelist' );
 	}
 
 	function loadMessages() {
@@ -644,7 +644,7 @@ class WhiteList extends SpecialPage
 {
 	function __construct() {
 		self::loadMessages();
-		SpecialPage::SpecialPage( 'WhiteList', 'restricttowhitelist' );
+		parent::__construct( 'WhiteList', 'restricttowhitelist' );
 	}
 
 	function loadMessages() {

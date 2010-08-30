@@ -12,7 +12,7 @@
 class SpecialBoilerplates extends IncludableSpecialPage {
 
 	function __construct() {
-		parent::SpecialPage( 'Boilerplates' );
+		parent::__construct( 'Boilerplates' );
 		$this->mIncludable = true;
 	}
 

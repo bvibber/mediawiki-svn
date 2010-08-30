@@ -4,7 +4,7 @@ if (!defined('MEDIAWIKI')) die();
 class SpecialRandomrootpage extends SpecialPage {
 
 	public function __construct() {
-		SpecialPage::SpecialPage( 'Randomrootpage' );
+		parent::__construct( 'Randomrootpage' );
 	}
 
 	private $namespace = NS_MAIN;  // namespace to select pages from

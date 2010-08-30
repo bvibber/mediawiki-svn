@@ -3,7 +3,7 @@
 class WhoIsWatching extends SpecialPage
 {
 	function __construct() {
-		SpecialPage::SpecialPage( 'WhoIsWatching' );
+		parent::__construct( 'WhoIsWatching' );
 
 		# the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
 		# so, to make this work with multiple versions of MediaWiki, let's load the messages nicely

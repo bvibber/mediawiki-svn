@@ -14,7 +14,7 @@ class DTImportXML extends SpecialPage {
 	 */
 	public function DTImportXML() {
 		global $wgLanguageCode;
-		SpecialPage::SpecialPage( 'ImportXML' );
+		parent::__construct( 'ImportXML' );
 		wfLoadExtensionMessages( 'DataTransfer' );
 	}
 

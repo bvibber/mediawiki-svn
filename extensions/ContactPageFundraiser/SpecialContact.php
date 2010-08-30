@@ -28,7 +28,7 @@ class SpecialContact extends SpecialPage {
 	 */
 	function __construct() {
 		global $wgOut;
-		SpecialPage::SpecialPage( 'Contact', '', true );
+		parent::__construct( 'Contact', '', true );
 	}
 
 	/**

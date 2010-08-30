@@ -496,7 +496,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		* Constructor
 		*/
 		function SpecialTasks() { # Checked for HTML and MySQL insertion attacks
-			SpecialPage::SpecialPage( 'Tasks' );
+			parent::__construct( 'Tasks' );
 			$this->includable( true );
 			$this->update_types();
 		}

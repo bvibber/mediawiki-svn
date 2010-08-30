@@ -15,7 +15,7 @@ class SpecialCountEdits extends SpecialPage {
 	var $target;
 
 	public function __construct() {
-		SpecialPage::SpecialPage( 'CountEdits' );
+		parent::__construct( 'CountEdits' );
 	}
 
 	public function execute( $params ) {

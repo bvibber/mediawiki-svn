@@ -56,7 +56,7 @@ class DTImportCSV extends SpecialPage {
 	 */
 	public function DTImportCSV() {
 		global $wgLanguageCode;
-		SpecialPage::SpecialPage( 'ImportCSV' );
+		parent::__construct( 'ImportCSV' );
 		wfLoadExtensionMessages( 'DataTransfer' );
 	}
 

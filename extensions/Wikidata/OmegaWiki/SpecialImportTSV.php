@@ -12,7 +12,7 @@
 		class SpecialImportTSV extends SpecialPage {
 			
 			function SpecialImportTSV() {
-				SpecialPage::SpecialPage( 'ImportTSV' );
+				parent::__construct( 'ImportTSV' );
 			}
 
 			function execute( $par ) {

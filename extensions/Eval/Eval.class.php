@@ -3,7 +3,7 @@ if (!defined('MEDIAWIKI')) die();
 
 class SpecialEval extends SpecialPage {
 	public function __construct() {
-		SpecialPage::SpecialPage( 'Eval' );
+		parent::__construct( 'Eval' );
 	}
 
 	function getDescription() {

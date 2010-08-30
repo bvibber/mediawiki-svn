@@ -8,7 +8,7 @@ class CategoryIntersection extends SpecialPage {
 
 	# Constructor
 	function __construct() {
-		SpecialPage::SpecialPage( "CategoryIntersection" );
+		parent::__construct( "CategoryIntersection" );
 		wfLoadExtensionMessages( 'CategoryIntersection' );
 
 		# Limits

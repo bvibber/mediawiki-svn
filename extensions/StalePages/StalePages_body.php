@@ -16,7 +16,7 @@ class Stalepages extends SpecialPage
 {
 	///StalePages Class Constructor
 	public function __construct() {
-		SpecialPage::SpecialPage( 'StalePages' );
+		parent::__construct( 'StalePages' );
 	}
 
 	function getDescription() {
