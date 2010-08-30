@@ -63,6 +63,16 @@ class PagedTiffHandler extends ImageHandler {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, 
 			$wgTiffRejectOnError, $wgTiffRejectOnWarning, $wgTiffUseTiffReader, 
 			$wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
+
+		# XXX: it would be much nicer if the hook would get the mime type as a parameter
+		$mime = MimeMagic::singleton()->guessMimeType( $tempName, false ); 
+
+		if ( $mime != "image/tiff" ) {
+			# not a tiff file, do not check
+			wfDebug( __METHOD__ . ": not a tiff file\n" );
+			return true;
+		}
+
 		wfLoadExtensionMessages( 'PagedTiffHandler' );
 		if ( $wgTiffUseTiffReader ) {
 			$tr = new TiffReader( $tempName );
