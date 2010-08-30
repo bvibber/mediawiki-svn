@@ -374,7 +374,7 @@ class PagedTiffHandler extends ImageHandler {
 					&& $meta['page_data'][$page]['pixels'] > $wgMaxImageArea )
 				return $this->doThumbError( $params, 'tiff_sourcefile_too_large' );
 			$cmd = wfEscapeShellArg( $wgImageMagickConvertCommand );
-			$cmd .= " " . wfEscapeShellArg( $srcPath ) . "[" . ( $page - 1 ) . "]";
+			$cmd .= " " . wfEscapeShellArg( $srcPath . "[" . ( $page - 1 ) . "]" );
 			$cmd .= " -depth 8 -resize {$width} ";
 			$cmd .= wfEscapeShellArg( $dstPath );
 		}
