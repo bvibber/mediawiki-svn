@@ -216,20 +216,48 @@ class ResourceLoaderModule {
 	}
 	
 	/**
+	 * Get all JS for this module for a given language and skin. This
+	 * aggregates the output of getPrimaryScript(), getLanguageScript(),
+	 * getSkinScript() and getDebugScript() (but NOT getLoaderScript() !)
+	 * @param $lang string Language code
+	 * @param $skin string Skin name
+	 * @param $debug bool Whether to include debug scripts
+	 * @return string JS
+	 */
+	public function getScript( $lang, $skin, $debug ) {
+		$retval = $this->getPrimaryScript() . "\n" .
+			$this->getLanguageScript( $lang ) . "\n" .
+			$this->getSkinScript( $skin );
+		if ( $debug ) {
+			$retval .= $this->getDebugScript();
+		}
+		return $retval;
+	}
+	
+	/**
+	 * Get all CSS for this module for a given skin. This
+	 * aggregates the output of getPrimaryStyle() and getSkinStyle()
+	 * @param $skin string Skin name
+	 */
+	public function getStyle( $skin ) {
+		return $this->getPrimaryStyle() . $this->getSkinStyle( $skin );
+	}
+	
+	/**
 	 * Get the primary JS for this module. This is pulled from the
 	 * script files added through addScripts()
 	 * @return string JS
 	 */
-	public function getScript() {
+	protected function getPrimaryScript() {
 		return self::concatScripts( $this->scripts );
 	}
 	
 	/**
-	 * Get the CSS for this module. This is pulled from the CSS files
-	 * added through addStyles()
+	 * Get the primary CSS for this module. This is pulled from the CSS
+	 * files added through addStyles()
 	 * @return string JS
 	 */
-	public function getStyle() {
+	protected function getPrimaryStyle() {
 		return self::concatStyles( $this->styles );
 	}
 	
@@ -256,7 +284,7 @@ class ResourceLoaderModule {
 	 * files added through addDebugScripts()
 	 * @return string JS
 	 */
-	public function getDebugScript() {
+	protected function getDebugScript() {
 		return self::concatScripts( $this->debugScripts );
 	}
 	
@@ -265,7 +293,7 @@ class ResourceLoaderModule {
 	 * from the language-specific script files added through addLanguageScripts()
 	 * @return string JS
 	 */
-	public function getLanguageScript( $lang ) {
+	protected function getLanguageScript( $lang ) {
 		if ( !isset( $this->languageScripts[$lang] ) ) {
 			return '';
 		}
@@ -277,7 +305,7 @@ class ResourceLoaderModule {
 	 * skin-specific JS files added through addSkinScripts()
 	 * @return string JS
 	 */
-	public function getSkinScript( $skin ) {
+	protected function getSkinScript( $skin ) {
 		return self::concatScripts( self::getSkinFiles( $skin, $this->skinScripts ) );
 	}
 	
@@ -286,7 +314,7 @@ class ResourceLoaderModule {
 	 * skin-specific CSS files added through addSkinStyles()
 	 * @return string CSS
 	 */
-	public function getSkinStyle( $skin ) {
+	protected function getSkinStyle( $skin ) {
 		return self::concatStyles( self::getSkinFiles( $skin, $this->skinStyles ) );
 	}
 	
@@ -393,7 +421,7 @@ class ResourceLoaderModule {
  * Custom module for MediaWiki:Common.js and MediaWiki:Skinname.js
  */
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
-	public function getSkinScript( $skin ) {
+	protected function getSkinScript( $skin ) {
 		return Skin::newFromKey( $skin )->generateUserJs();
 	}
 	
@@ -421,12 +449,12 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	
 	// Dummy overrides to return emptyness
 	// FIXME: Use a parent class with emptyness and let the normal module class inherit from that
-	public function getScript() { return ''; }
-	public function getStyle() { return ''; }
+	protected function getPrimaryScript() { return ''; }
+	protected function getPrimaryStyle() { return ''; }
 	public function getMessages() { return array(); }
 	public function getDependencies() { return array(); }
-	public function getDebugScript() { return ''; }
-	public function getLanguageScript( $lang ) { return ''; }
-	public function getSkinStyle( $skin ) { return ''; }
+	protected function getDebugScript() { return ''; }
+	protected function getLanguageScript( $lang ) { return ''; }
+	protected function getSkinStyle( $skin ) { return ''; }
 	public function getLoaderScript() { return false; }
 }
