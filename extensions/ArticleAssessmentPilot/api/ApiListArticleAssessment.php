@@ -19,10 +19,34 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 		$this->addFields( array( 'aap_page_id', 'aap_total', 'aap_count', 'aap_rating_id', 'aar_rating' ) );
 
-		$this->addWhere( 'aap_rating_id = aar_id' );
+		$this->addJoinConds( array(
+				'article_assessment_ratings' => array( 'LEFT JOIN', array(
+					'aar_id=aap_rating_id',
+					) ),
+				)
+			);
 
 		if ( isset( $params['pageid'] ) ) {
 			$this->addWhereFld( 'aap_page_id', $params['pageid'] );
+		}
+
+		if ( $params['userrating'] ) {
+			global $wgUser;
+
+			$this->addWhereFld( 'aa_user_id', $wgUser->getId() );
+			$this->addTables( 'article_assessment' );
+			$this->addJoinConds( array(
+				'article_assessment' => array( 'LEFT JOIN', array(
+					'aa_page_id=aap_page_id',
+					'aa_rating_id=aap_rating_id' ) ),
+				)
+			);
+
+			$this->addFields( 'aa_rating_value' );
+
+			if ( isset( $params['revid'] ) ){
+				$this->addWhereFld( 'aa_revision', $params['revid'] );
+			}
 		}
 
 		$res = $this->select( __METHOD__ );
@@ -33,17 +57,29 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			$pageId = $row->aap_page_id;
 
 			if ( !isset( $ratings[$pageId] ) ) {
-				$ratings[$pageId] = array(
+				$page = array(
 					'pageid' => $pageId,
 				);
+
+				if ( isset( $params['revid'] ) ){
+					$page['revid'] = $row->aa_revision ;
+				}
+
+				$ratings[$pageId] = $page;
 			}
 
-			$ratings[$pageId]['ratings'][] = array(
+			 $thisRow = array(
 				'ratingid' => $row->aap_rating_id,
 				'ratingdesc' => $row->aar_rating,
 				'total' => $row->aap_total,
-				'count' => $row->aap_count
+				'count' => $row->aap_count,
 			);
+
+			if ( $params['userrating'] && !is_null( $row->aa_rating_value ) ) {
+				$thisRow['userrating'] = $row->aa_rating_value;
+			}
+
+			$ratings[$pageId]['ratings'][] = $thisRow;
 		}
 
 		foreach ( $ratings as $rat ) {
@@ -57,12 +93,16 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	public function getAllowedParams() {
 		return array(
 			'pageid' => null,
+			'revid' => null,
+			'userrating' => false,
 		);
 	}
 
 	public function getParamDescription() {
 		return array(
-			'pageid' => '',
+			'pageid' => 'Page ID to get assessments for',
+			'revid' => 'Specific revision to get (used in conjunction with user param, otherwise ignored)',
+			'userrating' => 'Whether to get the current users ratings for the specific rev/article',
 		);
 	}
 
@@ -80,7 +120,8 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	protected function getExamples() {
 		return array(
 			'api.php?action=query&list=articleassessment',
-			'api.php?action=query&list=articleassessment&aapageid=1'
+			'api.php?action=query&list=articleassessment&aapageid=1',
+			'api.php?action=query&list=articleassessment&aapageid=1&userrating',
 		);
 	}
 
