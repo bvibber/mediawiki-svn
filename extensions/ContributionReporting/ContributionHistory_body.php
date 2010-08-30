@@ -1,6 +1,6 @@
 <?php
 class ContributionHistory extends SpecialPage {
-	function ContributionHistory() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'ContributionHistory' );
 	}
 

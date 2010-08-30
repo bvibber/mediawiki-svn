@@ -29,7 +29,7 @@
  */
 
 class Call extends SpecialPage {
-	function Call() {
+	function __construct() {
 		SpecialPage::SpecialPage( "Call" );
 		wfLoadExtensionMessages( 'Call' );
 	}

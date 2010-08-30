@@ -27,7 +27,7 @@ $wgExtensionMessagesFiles['AutoincrementMagic'] = $dir . 'Autoincrement.i18n.mag
 class Autoincrement {
 	var $mCount;
 
-	function Autoincrement() {
+	function __construct() {
 		global $wgHooks;
 
 		$this->mCount = 0;

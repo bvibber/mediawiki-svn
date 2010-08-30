@@ -42,7 +42,7 @@ class MogileFS {
 	 * 
 	 * TODO
 	 */
-	function MogileFS( $domain = null,
+	function __construct( $domain = null,
 			   $hosts = null,
 			   $root = '' )
 	{

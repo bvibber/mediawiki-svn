@@ -2,7 +2,7 @@
 
 class WhoIsWatching extends SpecialPage
 {
-	function WhoIsWatching() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'WhoIsWatching' );
 
 		# the standard method for LoadingExtensionMessages was apparently broken in several versions of MW

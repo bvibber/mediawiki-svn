@@ -34,7 +34,7 @@ class EditCountPage extends SpecialPage {
 	 * 
 	 * @access public
 	 */
-	function EditCountPage()
+	function __construct()
 	{
 		parent::SpecialPage("EditCount", "", true);
 		wfLoadExtensionMessages( 'mw-editcount' );
@@ -215,7 +215,7 @@ class EditCount {
 	 * @var string $username the user name or IP to create from
 	 * @access public
 	 */
-	function EditCount($username)
+	function __construct($username)
 	{
 		$this->db = wfGetDB(DB_SLAVE);
 		$this->user = User::newFromName($username);

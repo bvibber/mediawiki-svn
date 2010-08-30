@@ -12,7 +12,7 @@
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 class PasswordReset extends SpecialPage {
-	function PasswordReset() {
+	function __construct() {
 		wfLoadExtensionMessages('PasswordReset');
 		SpecialPage::SpecialPage( "PasswordReset", "passwordreset" );
 	}

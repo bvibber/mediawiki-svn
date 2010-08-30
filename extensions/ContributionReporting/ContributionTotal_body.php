@@ -1,7 +1,7 @@
 <?php
 
 class ContributionTotal extends SpecialPage {
-	function ContributionTotal() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'ContributionTotal' );
 	}
 

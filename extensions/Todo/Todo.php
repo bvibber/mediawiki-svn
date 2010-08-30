@@ -91,7 +91,7 @@ function wfSpecialTodo( $par = null ) {
 }
 
 class TodoForm {
-	function TodoForm( $user ) {
+	function __construct( $user ) {
 		$this->target = $user;
 		$this->self = SpecialPage::getTitleFor( 'Todo', $user->getName() );
 	}
@@ -179,7 +179,7 @@ class TodoList {
 	 * Open items should remain a relatively small working set, since things
 	 * should get closed one way or another!
 	 */
-	function TodoList( $user ) {
+	function __construct( $user ) {
 		$this->owner = $user->getId();
 		$dbr = wfGetDB( DB_SLAVE );
 
@@ -254,7 +254,7 @@ class TodoList {
 }
 
 class TodoItem {
-	function TodoItem( $row ) {
+	function __construct( $row ) {
 		$this->id = $row->todo_id;
 		$this->owner = $row->todo_owner;
 		$this->queue = $row->todo_queue;

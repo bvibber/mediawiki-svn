@@ -5,8 +5,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class SpecialMakeDBError extends UnlistedSpecialPage
 {
-	function MakeDBErrorPage() {
-		UnlistedSpecialPage::UnlistedSpecialPage("MakeDBError");
+	function __construct() {
+		parent::__construct("MakeDBError");
 	}
 
 	function execute( $par ) {

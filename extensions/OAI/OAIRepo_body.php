@@ -69,7 +69,7 @@ function oaiTag( $element, $attribs, $contents = null) {
 }
 
 class OAIRepo {
-	function OAIRepo( &$request ) {
+	function __construct( &$request ) {
 		$this->_db = wfGetDB( DB_SLAVE );
 		$this->_errors = array();
 		$this->_clientId = 0;
@@ -760,7 +760,7 @@ class WikiOAIRecord extends OAIRecord {
 	/**
 	 * @param object $row database row
 	 */
-	function WikiOAIRecord( $row, $writer ) {
+	function __construct( $row, $writer ) {
 		$this->_id        = $row->up_page;
 		$this->_timestamp = $row->up_timestamp;
 		$this->_deleted   = is_null( $row->page_title );

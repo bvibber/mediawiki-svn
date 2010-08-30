@@ -29,7 +29,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class SpecialOpenIDConvert extends SpecialOpenID {
 
-	function SpecialOpenIDConvert() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'OpenIDConvert' );
 	}
 

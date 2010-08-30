@@ -40,7 +40,7 @@ class map_sources {
 	var $p;
 	var $mapsources;
 
-	function map_sources() {
+	function __construct() {
 		$this->p = new GeoParam();
 
 		$this->mapsources = "Map sources";

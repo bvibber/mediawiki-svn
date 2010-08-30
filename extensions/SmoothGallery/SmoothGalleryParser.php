@@ -6,7 +6,7 @@ class SmoothGalleryParser {
 	var $argumentArray;
 	var $galleriesArray;
 
-	function SmoothGalleryParser( $input, $argv, &$parser, $calledAsSet = false ) {
+	function __construct( $input, $argv, &$parser, $calledAsSet = false ) {
 		$this->set = $calledAsSet;
 		$this->parseArguments( $argv );
 		$this->parseGalleries( $input, $parser );

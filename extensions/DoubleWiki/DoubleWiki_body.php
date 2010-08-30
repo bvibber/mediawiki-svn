@@ -27,7 +27,7 @@ class DoubleWiki {
 	/**
 	 * Constructor
 	 */
-	function DoubleWiki() {
+	function __construct() {
 		global $wgParser, $wgHooks;
 		$wgParser->setHook( 'iw_align' , array( &$this, 'iw_align' ) );
 		$wgHooks['OutputPageBeforeHTML'][] = array( &$this, 'addMatchedText' );

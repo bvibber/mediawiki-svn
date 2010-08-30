@@ -17,7 +17,7 @@ class Plotters {
 	var $argumentArray, $dataArray;
 	var $errors;
 
-	function Plotters( $pParser, &$parser ) {
+	function __construct( $pParser, &$parser ) {
 		$this->parser = $parser;
 		$this->argumentArray = $pParser->getArguments();
 		$this->dataArray = $pParser->getData();

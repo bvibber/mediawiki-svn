@@ -8,7 +8,7 @@ class ScanSet {
 	/** Settings */
 	var $basePath, $baseDirectory, $type, $height, $width;
 
-	function ScanSet( $attributes, &$parser, $settings = array() ) {
+	function __construct( $attributes, &$parser, $settings = array() ) {
 		global $wgUploadPath, $wgUploadDirectory;
 
 		// Defaults

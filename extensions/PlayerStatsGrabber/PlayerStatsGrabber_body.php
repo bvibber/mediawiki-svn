@@ -5,7 +5,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 class SpecialPlayerStatsGrabber extends SpecialPage {
 	var $action = '';
 
-	function SpecialPlayerStatsGrabber() {
+	function __construct() {
 		SpecialPage::SpecialPage( "PlayerStatsGrabber" );
 		wfLoadExtensionMessages( 'PlayerStatsGrabber' );
 	}

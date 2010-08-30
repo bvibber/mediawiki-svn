@@ -31,7 +31,7 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 class SpecialOpenIDXRDS extends SpecialOpenID {
 
-	function SpecialOpenIDXRDS() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'OpenIDXRDS', '', false );
 	}
 

@@ -114,7 +114,7 @@ if( WikiError::isError( $status ) ) {
 ///
 
 class LuceneBuilder {
-	function LuceneBuilder() {
+	function __construct() {
 		$this->db       = wfGetDB( DB_SLAVE );
 		$this->dbstream =& $this->streamingSlave( $this->db );
 		$this->offset = 0;

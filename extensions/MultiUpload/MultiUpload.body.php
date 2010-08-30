@@ -62,7 +62,7 @@ class MultipleUploadForm extends UploadForm {
 	 * Get data POSTed through the form and assign them to the object
 	 * @param $request Data posted.
 	 */
-	function MultipleUploadForm( &$request ) {
+	function __construct( &$request ) {
 		global $wgMaxUploadFiles;
 		// call the parent constructor
 		parent::UploadForm($request);

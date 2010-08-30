@@ -319,7 +319,7 @@ class blahtexOutputParser {
 	var $stack;   /**< \private */
 	var $results; /**< \private */
 
-	function blahtexOutputParser() {
+	function __construct() {
 		$this->parser = xml_parser_create( "UTF-8" );
 		$this->stack = array();
 		$this->results = array();

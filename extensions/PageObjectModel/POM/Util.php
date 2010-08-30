@@ -9,7 +9,7 @@ class POMUtilTrimTriple
 	public $trimmed;
 	public $trailing_space;
 
-	function POMUtilTrimTriple( $text )
+	function __construct( $text )
 	{
 		$this->trimmed = trim( $text );
 		if ( strlen( $this->trimmed ) > 0 )

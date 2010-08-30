@@ -6,7 +6,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 /** Main class that define a new special page*/
 class SpecialAsksql extends SpecialPage {
 
-	function SpecialAsksql() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'Asksql', 'asksql' );
 	}
 
@@ -48,7 +48,7 @@ class SpecialAsksql extends SpecialPage {
 class SqlQueryForm {
 	var $query = '';
 
-	function SqlQueryForm( $query ) {
+	function __construct( $query ) {
 		$this->query = $query;
 	}
 

@@ -22,7 +22,7 @@ function wfSpecialMediaSearch() {
 // extends search page
 // @@todo add link to "media search"
 class MV_SpecialSearch extends SpecialPage {
-	function MV_SpecialSearch() {
+	function __construct() {
 		global $wgOut, $wgRequest, $wgUser, $wgTitle;
 		if($wgTitle->getText()!='SpecialPages'){
 			//mvfAddHTMLHeader( 'search' );

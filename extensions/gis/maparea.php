@@ -34,7 +34,7 @@ class maparea {
 	var $p;
 	var $attr;
 
-	function maparea()
+	function __construct()
 	{
 		$this->p = new GeoParam();
 		$this->attr = $this->p->get_attr();

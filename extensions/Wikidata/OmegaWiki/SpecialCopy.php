@@ -31,8 +31,8 @@ function wfSpecialCopy() {
 	require_once( "Copy.php" );
 	class SpecialCopy extends UnlistedSpecialPage {
 
-		function SpecialCopy() {
-			UnlistedSpecialPage::UnlistedSpecialPage( 'Copy' );
+		function __construct() {
+			parent::__construct( 'Copy' );
 		}
 		function execute( $par ) {
 			global $wgOut, $wgRequest, $wgUser, $wdTermDBDataSet;

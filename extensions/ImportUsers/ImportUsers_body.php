@@ -1,7 +1,7 @@
 <?php
 
 class SpecialImportUsers extends SpecialPage {
-	function SpecialImportUsers() {
+	function __construct() {
 		SpecialPage::SpecialPage('ImportUsers' , 'import_users' );
 	}
 

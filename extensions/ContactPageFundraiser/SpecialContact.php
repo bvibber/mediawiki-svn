@@ -133,7 +133,7 @@ class EmailContactForm {
 	/**
 	 * @param User $target
 	 */
-	function EmailContactForm( $target ) {
+	function __construct( $target ) {
 		global $wgRequest, $wgUser;
 		global $wgCaptchaClass;
 

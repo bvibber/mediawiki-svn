@@ -37,7 +37,7 @@ class Categoryfinder {
 	/**
 	 * Constructor (currently empty).
 	*/
-	function Categoryfinder () {
+	function __construct () {
 	}
 
 	/**

@@ -34,7 +34,7 @@ class GisDatabase {
 
 	var $version;
 
-	function GisDatabase()
+	function __construct()
 	{
 		$this->db = wfGetDB( DB_MASTER );
 

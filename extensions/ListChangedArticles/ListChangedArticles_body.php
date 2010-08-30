@@ -2,8 +2,8 @@
 
 class ListChangedArticles extends UnlistedSpecialPage
 {
-	function ListChangedArticles() {
-		UnlistedSpecialPage::UnlistedSpecialPage("ListChangedArticles");
+	function __construct() {
+		parent::__construct("ListChangedArticles");
 	}
 
 	function execute( $par ) {

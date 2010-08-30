@@ -24,7 +24,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 class WFS {
 
-	function WFS( $url ) {
+	function __construct( $url ) {
 		$this->url = $url;
 	}
 

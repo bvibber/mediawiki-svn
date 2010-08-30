@@ -11,7 +11,7 @@ class InflectionRule {
 	var $inflKeyPattern;
 	var $generationReplacementPattern;
 
-	function InflectionRule ($ruleAttributes)
+	function __construct ($ruleAttributes)
 	{
 		$this->generationReplacementPattern = array();
 		foreach ($ruleAttributes as $key=>$value) {

@@ -30,7 +30,7 @@ include_once ( "gissettings.php" ) ;
  *  Base class
  */
 class gis_version {
-	function gis_version( ) {
+	function __construct( ) {
 	}
 
 	function show() {

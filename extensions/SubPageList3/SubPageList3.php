@@ -202,7 +202,7 @@ class SubpageList3 {
 	 * @see SubpageList
 	 * @private
 	 */
-	function SubpageList3( $parser ) {
+	function __construct( $parser ) {
 		global $wgContLang;
 
 		/**

@@ -19,7 +19,7 @@ class TaggedImages extends SpecialPage {
 	/**
 	 * Create a new tagged images object.
 	 */
-	function TaggedImages() {
+	function __construct() {
 		global $wgLang, $wgAllowRealName, $wgRequest, $wgOut;
 
 		$wgOut->addScript("<style type=\"text/css\">/*<![CDATA[*/ @import \"$GLOBALS[wgScriptPath]/extensions/ImageTagging/img_tagging.css?$GLOBALS[wgStyleVersion]\"; /*]]>*/</style>\n");

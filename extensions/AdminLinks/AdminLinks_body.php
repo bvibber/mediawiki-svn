@@ -13,7 +13,7 @@ class AdminLinks extends SpecialPage {
 	/**
 	 * Constructor
 	 */
-	function AdminLinks() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'AdminLinks' );
 		wfLoadExtensionMessages( 'AdminLinks' );
 		global $wgUser;
@@ -118,7 +118,7 @@ class AdminLinks extends SpecialPage {
 class ALTree {
 	var $sections;
 
-	function ALTree() {
+	function __construct() {
 		$this->sections = array();
 	}
 
@@ -161,7 +161,7 @@ class ALSection {
 	var $header;
 	var $rows;
 
-	function ALSection( $header ) {
+	function __construct( $header ) {
 		$this->header = $header;
 		$this->rows = array();
 	}
@@ -206,7 +206,7 @@ class ALRow {
 	var $name;
 	var $items;
 
-	function ALRow( $name ) {
+	function __construct( $name ) {
 		$this->name = $name;
 		$this->items = array();
 	}

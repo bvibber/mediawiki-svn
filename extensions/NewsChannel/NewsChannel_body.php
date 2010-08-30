@@ -26,7 +26,7 @@ class NewsChannel extends SpecialPage
 	/**
 	 * Constructor is used to initialize class member variables and load extension messages.
 	 */
-	function NewsChannel() {
+	function __construct() {
 		SpecialPage::SpecialPage( 'NewsChannel' );
 	}
 

@@ -274,7 +274,7 @@ function todoSavePreparser($q) {
 
 class TaskList extends SpecialPage
 {
-    function TaskList() {
+    function __construct() {
         SpecialPage::SpecialPage("TaskList");
         self::loadMessages();
         return true;

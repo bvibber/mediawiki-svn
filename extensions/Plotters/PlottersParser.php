@@ -21,7 +21,7 @@ class PlottersParser {
 	var $argumentArray;
 	var $dataArray;
 
-	function PlottersParser( $input = "", $argv = Array() ) {
+	function __construct( $input = "", $argv = Array() ) {
 		$this->parseArguments( $argv );
 		$this->parseData( $input );
 	}

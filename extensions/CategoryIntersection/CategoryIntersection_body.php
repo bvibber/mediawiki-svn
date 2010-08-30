@@ -7,7 +7,7 @@ class CategoryIntersection extends SpecialPage {
 	var $second_check;
 
 	# Constructor
-	function CategoryIntersection() {
+	function __construct() {
 		SpecialPage::SpecialPage( "CategoryIntersection" );
 		wfLoadExtensionMessages( 'CategoryIntersection' );
 

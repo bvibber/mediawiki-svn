@@ -161,7 +161,7 @@ class LuceneResult extends SearchResult {
 	 * @return array (float, Title)
 	 * @access private
 	 */
-	function LuceneResult( $lines, $method ) {
+	function __construct( $lines, $method ) {
 		global $wgContLang;
 		
 		$score = null;
@@ -569,7 +569,7 @@ class LuceneSearchSet extends SearchResultSet {
 	 * @param string $info
 	 * @access private
 	 */
-	function LuceneSearchSet( $method, $query, $lines, $resultCount, $totalHits = null, $suggestion = null, $info = null, $interwiki = null ) {
+	function __construct( $method, $query, $lines, $resultCount, $totalHits = null, $suggestion = null, $info = null, $interwiki = null ) {
 		$this->mMethod            = $method;
 		$this->mQuery             = $query;
 		$this->mTotalHits         = $totalHits;

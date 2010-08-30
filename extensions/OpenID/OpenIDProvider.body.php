@@ -8,7 +8,7 @@ class OpenIDProvider {
 	var $label;
 	var $url;
 
-	function OpenIDProvider( $id, $name, $label, $url ) {
+	function __construct( $id, $name, $label, $url ) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->label = $label;

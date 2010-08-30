@@ -255,7 +255,7 @@ class spamRegexForm {
 	var $mBlockedSummary;
 
 	/* constructor */
-	function spamRegexForm( $par ) {
+	function __construct( $par ) {
 		global $wgRequest;
 		$this->mBlockedPhrase = $wgRequest->getVal( 'wpBlockedPhrase',  $wgRequest->getVal( 'text', $par ) );
 		$this->mBlockedTextbox = $wgRequest->getCheck( 'wpBlockedTextbox' ) ? 1 : 0;

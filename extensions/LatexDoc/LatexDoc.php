@@ -24,7 +24,7 @@ class LatexDoc {
 	var $workingDir;
 	var $workingPath;
 
-	function LatexDoc() {
+	function __construct() {
 		global $wgUploadDirectory, $wgUploadPath;
 
 		$this->workingDir = "$wgUploadDirectory/latexdoc";

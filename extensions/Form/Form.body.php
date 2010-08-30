@@ -300,7 +300,7 @@ class SpecialForm extends SpecialPage {
 class FakeEditPage {
 	var $mTitle;
 
-	function FakeEditPage( &$nt ) {
+	function __construct( &$nt ) {
 		$this->mTitle = $nt;
 	}
 }
@@ -313,7 +313,7 @@ class Form {
 	var $fields;
 	var $namePattern;
 
-	function Form( $name, $text ) {
+	function __construct( $name, $text ) {
 		$this->name = $name;
 		$this->title = wfMsgForContent( 'formtitlepattern', $name );
 		$this->template = array();
@@ -379,7 +379,7 @@ class FormField {
 	var $description;
 	var $options;
 
-	function FormField() {
+	function __construct() {
 		$this->name = null;
 		$this->type = null;
 		$this->label = null;

@@ -60,7 +60,7 @@ class GeoParam {
 	 *   Constructor:
 	 *   Read coordinates, and if there is a range, read the range
 	 */
-	function GeoParam( $param = false )
+	function __construct( $param = false )
 	{
 		$this->pieces=array();
 		if ( is_string( $param ) ) {

@@ -32,7 +32,7 @@ $wgExtensionCredits['parserhook'][] = array(
 
 class PdfBook {
 
-	function PdfBook() {
+	function __construct() {
 		global $wgHooks, $wgParser, $wgPdfBookMagic;
 		global $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions;
 		$wgHooks['UnknownAction'][] = $this;

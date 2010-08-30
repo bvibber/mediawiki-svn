@@ -266,7 +266,7 @@ class OAIHarvester {
 class OAIUpdateRecord {
 	var $_page = array();
 	
-	function OAIUpdateRecord( $pageData ) {
+	function __construct( $pageData ) {
 		$this->_page = $pageData;
 	}
 	

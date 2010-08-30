@@ -38,7 +38,7 @@ class neighbors {
 	var $title;
 	var $attr;
 
-	function neighbors( $dist )
+	function __construct( $dist )
 	{
 		$this->p = new GeoParam();
 		$this->d = $dist;

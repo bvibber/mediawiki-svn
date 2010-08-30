@@ -5,7 +5,7 @@ class Minify {
 	var $mType;
 
 	// Initialize
-	function Minify( $text ) {
+	function __construct( $text ) {
 		global $wgRequest;
 
 		$this->mType = $wgRequest->getVal( 'ctype' );

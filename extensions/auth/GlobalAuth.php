@@ -42,7 +42,7 @@ class GlobalAuth {
 	 * @param string $globaltable	Name of the global user table
 	 * @param string $thiswiki	Name of this wiki
 	 */
-	function GlobalAuth( $globaldb, $globaltable, $thiswiki ) {
+	function __construct( $globaldb, $globaltable, $thiswiki ) {
 		$this->tablename = $globaldb . '.' . $globaltable;
 		$this->thiswiki = $thiswiki;
 	}
