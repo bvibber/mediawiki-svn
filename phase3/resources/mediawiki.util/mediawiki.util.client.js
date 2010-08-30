@@ -6,7 +6,7 @@
 
 /* Extension */
 
-$.extend( mw.utilities, {
+$.extend( mw.util, {
 	'client': {
 		/**
 		 * Returns an object containing information about the browser

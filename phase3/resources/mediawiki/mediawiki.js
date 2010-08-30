@@ -580,6 +580,6 @@ window.mediaWiki = new ( function( $ ) {
 	
 	/* Extension points */
 	
-	this.utilities = {};
+	this.util = {};
 	this.legacy = {};
 } )( jQuery );
