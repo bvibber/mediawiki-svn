@@ -121,13 +121,13 @@ class ApiArticleAssessment extends ApiBase {
 			'article_assessment',
 			array(
 				'aa_timestamp' => wfTimestampNow(),
-				'aa_rating_id' => $ratingId,
 				'aa_rating_value' => $ratingValue,
 			),
 			array(
 				'aa_page_id' => $pageId,
 				'aa_user_text' => $user->getName(),
 				'aa_revision' => $revisionId,
+				'aa_rating_id' => $ratingId,
 			),
 			__METHOD__
 		);
