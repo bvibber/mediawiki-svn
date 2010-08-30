@@ -16,7 +16,7 @@ class ApiArticleAssessment extends ApiBase {
 			array( 'aa_rating_id', 'aa_rating_value' ),
 			array( 'aa_revision' => $params['revid'],
 				'aa_user_id' => $wgUser->getId(),
-				'aa_user_text' => $userName,
+				'aa_user_text' => $wgUser->getName(),
 				/* 'aa_page_id' => $params['pageid'],*/
 				),
 			__METHOD__
@@ -175,6 +175,10 @@ class ApiArticleAssessment extends ApiBase {
 		return array(
 			'Submit article assessments'
 		);
+	}
+
+	public function isWriteMode() {
+		return true;
 	}
 
 	public function getPossibleErrors() {
