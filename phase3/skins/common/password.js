@@ -5,7 +5,7 @@
  * @todo Check for popular passwords and keyboard sequences (QWERTY, etc)
  */
 
-function bruteForceComplexity( pwd ) {
+window.bruteForceComplexity = function( pwd ) {
 	var score = 0;
 
 	if ( pwd.length < 16 ) {
@@ -42,7 +42,7 @@ function bruteForceComplexity( pwd ) {
 	return score;
 }
 
-function repetitionScore( pwd ) {
+window.repetitionScore = function( pwd ) {
 	var unique = '';
 	for ( var i=0; i< pwd.length; i++ ) {
 		if ( unique.indexOf( pwd[i] ) < 0 ) {
@@ -54,7 +54,7 @@ function repetitionScore( pwd ) {
 	return 100 / ratio;
 }
 
-function sequenceScore( pwd ) {
+window.sequenceScore = function( pwd ) {
 	pwd = pwd.concat( '\0' );
 	var score = 100, sequence = 1;
 	for ( var i = 1; i < pwd.length; i++ ) {

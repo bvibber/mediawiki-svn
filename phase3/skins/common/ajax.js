@@ -1,14 +1,14 @@
 // remote scripting library
 // (c) copyright 2005 modernmethod, inc
-var sajax_debug_mode = false;
-var sajax_request_type = "GET";
+window.sajax_debug_mode = false;
+window.sajax_request_type = "GET";
 
 /**
 * if sajax_debug_mode is true, this function outputs given the message into 
 * the element with id = sajax_debug; if no such element exists in the document, 
 * it is injected.
 */
-function sajax_debug(text) {
+window.sajax_debug = function(text) {
 	if (!sajax_debug_mode) return false;
 
 	var e= document.getElementById('sajax_debug');
@@ -35,7 +35,7 @@ function sajax_debug(text) {
 /**
 * compatibility wrapper for creating a new XMLHttpRequest object.
 */
-function sajax_init_object() {
+window.sajax_init_object = function() {
 	sajax_debug("sajax_init_object() called..")
 	var A;
 	try {
@@ -76,7 +76,7 @@ function sajax_init_object() {
 * (1, 2, 3) as the parameter list, and will show the result in the element
 * with id = showFoo
 */
-function sajax_do_call(func_name, args, target) {
+window.sajax_do_call = function(func_name, args, target) {
 	var i, x, n;
 	var uri;
 	var post_data;
@@ -158,7 +158,7 @@ function sajax_do_call(func_name, args, target) {
 /**
  * @return boolean whether the browser supports XMLHttpRequest
  */
-function wfSupportsAjax() {
+window.wfSupportsAjax = function() {
 	var request = sajax_init_object();
 	var supportsAjax = request ? true : false;
 	delete request;
