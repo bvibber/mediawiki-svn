@@ -698,6 +698,14 @@ $messages['tr'] = array(
 	'advancedrandom-desc' => 'Tartışma ya da konu sayfası verilen bir sayfaya bağlantı veren birinden bir rasgele sayfa al, rasgele bir kaliteli madde almak için [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] gibi ya da rasgele bir GÖBL resmi almak için [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] gibi kullanılabilir',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'advancedrandom' => 'Очраклы бит алган киткән',
+	'advancedrandom-desc' => 'Төрле исемнәр аланыннан очраклы бер битне китереп чыгара. Мәсәлән [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] куллана ала, сайланган мәкалә, яисә [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]], очраклы  GFDL-файлны чыгарырга да мөмкин.',
+);
+
 /** Ukrainian (Українська)
  * @author Ahonc
  */

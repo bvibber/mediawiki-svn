@@ -104,6 +104,13 @@ $messages['br'] = array(
 	'vector-collapsiblenav-more' => "Muioc'h a yezhoù",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'vector-collapsiblenav-more' => 'Više jezika',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  * @author Vriullop

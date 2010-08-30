@@ -76,10 +76,16 @@ $messages['arz'] = array(
 );
 
 /** Bashkir (Башҡорт)
+ * @author Haqmar
  * @author Рустам Нурыев
  */
 $messages['ba'] = array(
 	'interwikilist' => 'Интервики исемлеге',
+	'interwikilist-desc' => 'Ҡулланып булған интервики һылтанмаларын ҡарау өсөн [[Special:Interwikilist|махсус бит]] өҫтәй',
+	'interwikilist-linkname' => 'Интервики һылтанмаһы',
+	'interwikilist-target' => 'Маҡсат URL',
+	'interwikilist-filter' => 'Фильтрҙар исемлеге',
+	'interwikilist-prefix' => 'Интервики префиксы:',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))

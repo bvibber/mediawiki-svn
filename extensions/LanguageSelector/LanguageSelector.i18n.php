@@ -998,6 +998,14 @@ $messages['tr'] = array(
 	'languageselector-setlang' => 'ayar',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'languageselector' => 'Тел',
+	'languageselector-setlang' => 'урнаштыру',
+);
+
 /** Uighur (Latin) (ئۇيغۇرچە / Uyghurche‎ (Latin))
  * @author Jose77
  */

@@ -722,6 +722,14 @@ $messages['tr'] = array(
 	'absenteelandlord-desc' => 'Eğer bütün hizmetliler bir süre etkin değilse, viki veritabanını otomatik olarak kilitler',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'absenteelandlord-reason' => 'Идарәчеләр даими рәвештә эшләмәү нәтиҗәсендә мәгълүмат базасы автоматик рәвештә ябылган.',
+	'absenteelandlord-desc' => 'Билгеле бер вакыт эчендә идарәчеләр үзләренең активлыкларын күрсәтмәсә вики-проект ябыла',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  */

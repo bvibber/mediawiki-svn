@@ -353,6 +353,7 @@ $messages['bs'] = array(
 	'importxml' => 'Uvezi XML',
 	'dt_import_selectfile' => 'Molimo odaberite $1 datoteku za uvoz:',
 	'dt_import_encodingtype' => 'Tip šifriranja',
+	'dt_import_summarydesc' => 'Sažetak uvoza:',
 	'dt_import_editsummary' => '$1 uvoz',
 	'dt_import_importing' => 'Uvoz...',
 	'dt_import_success' => '$1 {{PLURAL:$1|stranica|stranice|stranica}} će biti napravljeno iz $2 datoteke.',

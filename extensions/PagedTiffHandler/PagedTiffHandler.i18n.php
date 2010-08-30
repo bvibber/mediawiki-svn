@@ -52,6 +52,7 @@ $messages['qqq'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Siebrand
  * @author The Evil IP address
  */
 $messages['qqq'] = array(
@@ -86,7 +87,7 @@ $messages['af'] = array(
 	'tiff_error_cached' => 'Hierdie lêer kan slegs na die die kas-interval gerendeer word.',
 	'tiff_size_error' => 'Die gerapporteerde lêergrootte stem nie met die lêer se werklike grootte ooreen nie.',
 	'tiff_script_detected' => 'Die opgelaaide lêer bevat skrips.',
-	'tiff_bad_file' => 'Die opgelaaide lêer bevat foute.',
+	'tiff_bad_file' => 'Die opgelaaide lêer bevat foute: $1',
 	'tiff-file-info-size' => '(bladsy $5, $1 × $2 spikkels, lêergrootte: $3, MIME-tipe: $4)',
 );
 
@@ -108,7 +109,7 @@ $messages['be-tarask'] = array(
 	'tiff_error_cached' => 'Гэты файл можа быць паўторна згенэраваны толькі пасьля інтэрвалу для кэшаваньня.',
 	'tiff_size_error' => 'Пададзены памер файла не супадае з фактычным памерам файла.',
 	'tiff_script_detected' => 'Загружаны файл утрымлівае скрыпты.',
-	'tiff_bad_file' => 'Загружаны файл утрымлівае памылкі.',
+	'tiff_bad_file' => 'Загружаны файл утрымлівае памылкі: $1',
 	'tiff-file-info-size' => '(старонка $5, $1 × $2 піксэляў, памер файла: $3, тып MIME: $4)',
 );
 
@@ -130,7 +131,7 @@ $messages['br'] = array(
 	'tiff_error_cached' => "N'hall ar restr-mañ bezañ adderaouekaet nemet goude termen ar grubuilh.",
 	'tiff_size_error' => 'Ne glot ket ment ar restr meneget gant ment gwir ar restr.',
 	'tiff_script_detected' => 'Skriptoù zo er restr karget.',
-	'tiff_bad_file' => 'Fazioù zo er restr karget.',
+	'tiff_bad_file' => 'Fazioù zo er restr karget: $1',
 	'tiff-file-info-size' => '(pajenn $5, $1 × $2 piksel, ment ar restr : $3, seurt MIME : $4)',
 );
 
@@ -171,7 +172,7 @@ $messages['dsb'] = array(
 	'tiff_error_cached' => 'Toś ta dataja dajo se akle pó puferowańskem interwalu znowego wuceriś.',
 	'tiff_size_error' => 'K wěsći dana datajowa wjelikosć njewótpowědujo wopšawdnej datajowej wjelikosći.',
 	'tiff_script_detected' => 'Nagrata dataja wopśimujo skripty.',
-	'tiff_bad_file' => 'Nagrata dataja wopśimujo zmólki.',
+	'tiff_bad_file' => 'Nagrata dataja wopśimujo zmólki: $1',
 	'tiff-file-info-size' => '(bok $5, $1 × $2 pikselow, datajowa wjelikosć: $3, typ MIME: $4)',
 );
 
@@ -201,7 +202,7 @@ $messages['es'] = array(
 	'tiff_error_cached' => 'Este archivo sólo puede ser reprocesado tras el intervalo de cacheo.',
 	'tiff_size_error' => 'El tamaño del archivo reportado no coincide con el tamaño real del archivo.',
 	'tiff_script_detected' => 'El archivo cargado contiene scripts.',
-	'tiff_bad_file' => 'El archivo cargado contiene errores.',
+	'tiff_bad_file' => 'El archivo cargado contiene errores: $1',
 	'tiff-file-info-size' => '(Página $5, $1 × $2 píxeles, tamaño de archivo: $3, tipo de MIME: $4)',
 );
 
@@ -216,13 +217,14 @@ $messages['fi'] = array(
 	'tiff_out_of_service' => 'Palvelimelle kopioitua tiedostoa ei voitu käsitellä. ImageMagick ei ollut käytettävissä.',
 	'tiff_too_much_meta' => 'Metatiedot vievät liikaa tilaa.',
 	'tiff_script_detected' => 'Palvelimelle kopioitu tiedosto sisältää skriptejä.',
-	'tiff_bad_file' => 'Palvelimelle kopioitu tiedosto sisältää virheitä.',
+	'tiff_bad_file' => 'Palvelimelle kopioitu tiedosto sisältää virheitä: $1',
 );
 
 /** French (Français)
  * @author IAlex
  * @author Jagwar
  * @author Jean-Frédéric
+ * @author Peter17
  * @author Urhixidur
  */
 $messages['fr'] = array(
@@ -238,7 +240,7 @@ $messages['fr'] = array(
 	'tiff_error_cached' => "Ce fichier ne peut être régénéré qu'après l'expiration du cache.",
 	'tiff_size_error' => 'La taille de fichier indiquée ne correspond pas à la taille réelle du fichier.',
 	'tiff_script_detected' => 'Le fichier téléchargé contient des scripts.',
-	'tiff_bad_file' => 'Le fichier téléchargé contient des erreurs.',
+	'tiff_bad_file' => 'Le fichier importé contient des erreurs : $1',
 	'tiff-file-info-size' => '(page $5, $1 × $2 pixels, taille du fichier : $3, Type MIME : $4)',
 );
 
@@ -258,7 +260,7 @@ $messages['gl'] = array(
 	'tiff_error_cached' => 'O ficheiro só se pode renderizar despois do intervalo da caché.',
 	'tiff_size_error' => 'O tamaño do ficheiro do que se informou non se corresponde co tamaño real do ficheiro.',
 	'tiff_script_detected' => 'O ficheiro cargado contén escrituras.',
-	'tiff_bad_file' => 'O ficheiro cargado contén erros.',
+	'tiff_bad_file' => 'O ficheiro cargado contén erros: $1',
 	'tiff-file-info-size' => '(páxina $5, $1 × $2 píxeles, tamaño do ficheiro: $3, tipo MIME: $4)',
 );
 
@@ -278,7 +280,7 @@ $messages['gsw'] = array(
 	'tiff_error_cached' => 'Die Datei cha erscht no Ablauf vu dr Caching-Periode nej grenderet wäre.',
 	'tiff_size_error' => 'Di brichtet Greßi vu dr Datei stimmt nit zue dr tatsächlige.',
 	'tiff_script_detected' => 'In dr Datei, wu uffeglade woren isch, het s Skript din.',
-	'tiff_bad_file' => 'D Datei, wu uffeglade woren isch, isch fählerhaft.',
+	'tiff_bad_file' => 'D Datei, wu uffeglade woren isch, isch fählerhaft: $1',
 	'tiff-file-info-size' => '(Syte $5, $1 × $2 Pixel, Dateigreßi: $3, MIME-Typ: $4)',
 );
 
@@ -298,7 +300,7 @@ $messages['hsb'] = array(
 	'tiff_error_cached' => 'Tuta dataja da so hakle po pufrowanskim interwalu znowa rysować.',
 	'tiff_size_error' => 'Zdźělena wulkosć dataje njewotpowěduje woprawdźitej wulkosći dataje.',
 	'tiff_script_detected' => 'Nahrata dataja wobsahuje skripty.',
-	'tiff_bad_file' => 'Nahrata dataja wobsahuje zmylki.',
+	'tiff_bad_file' => 'Nahrata dataja wobsahuje zmylki: $1',
 	'tiff-file-info-size' => '(strona $5, $1 × $2 pikselow, wulkosć dataje: $3, MIME-typ: $4)',
 );
 
@@ -313,7 +315,7 @@ $messages['hu'] = array(
 	'tiff_file_too_large' => 'A feltöltött fájl túl nagy, vissza lett utasítva.',
 	'tiff_too_much_meta' => 'A metaadatok túl sok helyet foglalnak.',
 	'tiff_script_detected' => 'A feltöltött fájl parancsfájlokat tartalmaz.',
-	'tiff_bad_file' => 'A feltöltött fájl hibákat tartalmaz.',
+	'tiff_bad_file' => 'A feltöltött fájl hibákat tartalmaz: $1',
 	'tiff-file-info-size' => '($5 oldal, $1 × $2 képpont, fájlméret: $3, MIME-típus: $4)',
 );
 
@@ -333,7 +335,7 @@ $messages['ia'] = array(
 	'tiff_error_cached' => 'Iste file pote solmente esser re-rendite post le expiration de su copia in cache.',
 	'tiff_size_error' => 'Le grandor reportate del file non corresponde al grandor real del file.',
 	'tiff_script_detected' => 'Le file incargate contine scripts.',
-	'tiff_bad_file' => 'Le file incargate contine errores.',
+	'tiff_bad_file' => 'Le file incargate contine errores: $1',
 	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixel, grandor del file: $3, typo MIME: $4)',
 );
 
@@ -356,7 +358,7 @@ ImageMagick tidak tersedia.',
 	'tiff_error_cached' => 'Berkas hanya dapat ditampilkan ulang setelah jeda penembolokan.',
 	'tiff_size_error' => 'Ukuran berkas yang dilaporkan tidak sama dengan ukuran berkas aslinya.',
 	'tiff_script_detected' => 'Berkas unggahan berisi skrip.',
-	'tiff_bad_file' => 'Berkas unggahan berisi kesalahan.',
+	'tiff_bad_file' => 'Berkas unggahan berisi kesalahan: $1',
 	'tiff-file-info-size' => '(halaman $5, $1 × $2 piksel, ukuran berkas: $3, tipe MIME: $4)',
 );
 
@@ -392,7 +394,7 @@ $messages['lb'] = array(
 	'tiff_too_much_meta' => "D'Metadate benotzen zevill Späicherplaz.",
 	'tiff_size_error' => "Déi berechent Gréisst vum Fichier ass net d'selwëscht wéi déi wierklech Gréisst vum Fichier.",
 	'tiff_script_detected' => 'Am eropgeluedene Fichier si Skripten dran.',
-	'tiff_bad_file' => 'Am eropgeluedene Fichier si Feeler.',
+	'tiff_bad_file' => 'Am eropgeluedene Fichier si Feeler: $1',
 	'tiff-file-info-size' => '(Säit $5, $1 × $2 Pixel, Gréisst vum Fichier: $3, MIME-Typ: $4)',
 );
 
@@ -412,7 +414,7 @@ $messages['mk'] = array(
 	'tiff_error_cached' => 'Оваа податотека може да се оформи само по кеширање на интервалот.',
 	'tiff_size_error' => 'Пријавената големина на податотеката не се совпаѓа со фактичката.',
 	'tiff_script_detected' => 'Подигнатата податотека содржи скрипти.',
-	'tiff_bad_file' => 'Подигнатата податотека содржи грешки.',
+	'tiff_bad_file' => 'Подигнатата податотека содржи грешки: $1',
 	'tiff-file-info-size' => '(страница $5, $1 × $2 пиксели, големина на податотеката: $3, MIME-тип: $4)',
 );
 
@@ -435,7 +437,7 @@ ImageMagick is niet beschikbaar.',
 	'tiff_error_cached' => 'Dit bestand kan alleen worden verwerkt na de cachinginterval.',
 	'tiff_size_error' => 'De gerapporteerde bestandsgrootte komt niet overeen met de werkelijke bestandsgrootte.',
 	'tiff_script_detected' => 'Het geüploade bestand bevat scripts.',
-	'tiff_bad_file' => 'Het geüploade bestand bevat fouten.',
+	'tiff_bad_file' => 'Het geüploade bestand bevat fouten: $1',
 	'tiff-file-info-size' => '(pagina $5, $1 × $2 pixels, bestandsgrootte: $3, MIME-type: $4)',
 );
 
@@ -455,7 +457,7 @@ $messages['no'] = array(
 	'tiff_error_cached' => 'Filen kan bare gjengis på nytt etter hurtiglagerintervallet.',
 	'tiff_size_error' => 'Den rapporterte filstørrelsen samsvarer ikke med den faktiske filstørrelsen.',
 	'tiff_script_detected' => 'Den opplastede filen inneholder skript.',
-	'tiff_bad_file' => 'Den opplastede filen inneholder feil.',
+	'tiff_bad_file' => 'Den opplastede filen inneholder feil: $1',
 	'tiff-file-info-size' => '(side $5, $1 x $2 piksler, filstørrelse: $3, MIME-type: $4)',
 );
 
@@ -476,7 +478,7 @@ $messages['pms'] = array(
 	'tiff_error_cached' => "Cost archivi-sì a peul mach esse rendù apress l'antërval ëd memorisassion local.",
 	'tiff_size_error' => "La dimension diciairà dl'archivi a l'é pa l'istessa ëd soa dimension vera.",
 	'tiff_script_detected' => "L'archivi carià a conten ëd senari.",
-	'tiff_bad_file' => "L'archivi carià a conten d'eror.",
+	'tiff_bad_file' => "L'archivi carià a conten d'eror: $1",
 	'tiff-file-info-size' => "(pàgina $5, $1 x $2 pontin, dimension dl'archivi: $3, sòrt MIME: $4)",
 );
 
@@ -496,7 +498,7 @@ $messages['pt'] = array(
 	'tiff_error_cached' => 'Só será possível voltar a renderizar o ficheiro após o intervalo de caching, porque o erro foi colocado na cache.',
 	'tiff_size_error' => 'O tamanho reportado do ficheiro não corresponde ao tamanho real.',
 	'tiff_script_detected' => "O ficheiro transferido tem ''scripts''.",
-	'tiff_bad_file' => 'O ficheiro transferido tem erros.',
+	'tiff_bad_file' => 'O ficheiro enviado contém erros: $1',
 	'tiff-file-info-size' => '(página $5, $1 × $2 pixels, tamanho do ficheiro: $3, tipo MIME: $4)',
 );
 
@@ -520,7 +522,7 @@ ImageMagick não está disponível.',
 	'tiff_error_cached' => 'Este arquivo só poderá ser renderizado no próximo intervalo de cache.',
 	'tiff_size_error' => 'O tamanho reportado do arquivo não confere com o tamanho real.',
 	'tiff_script_detected' => 'O arquivo enviado contém scripts.',
-	'tiff_bad_file' => 'O arquivo enviado contém erros.',
+	'tiff_bad_file' => 'O arquivo enviado contém erros: $1',
 	'tiff-file-info-size' => '(página $5, $1 × $2 pixeis, tamanho do arquivo: $3, tipo MIME: $4)',
 );
 
@@ -540,7 +542,7 @@ $messages['ru'] = array(
 	'tiff_error_cached' => 'Этот файл может быть повторно перерисован только после кэширующего промежутка.',
 	'tiff_size_error' => 'Указанный размер файла не совпадает с фактическим размером файла.',
 	'tiff_script_detected' => 'Загруженный файл содержит сценарии.',
-	'tiff_bad_file' => 'Загруженный файл содержит ошибки.',
+	'tiff_bad_file' => 'Загруженный файл содержит ошибки: $1',
 	'tiff-file-info-size' => '(страница $5, $1 × $2 пикселов, размер файла: $3, MIME-тип: $4)',
 );
 
@@ -557,7 +559,7 @@ $messages['sr-ec'] = array(
 	'tiff_error_cached' => 'Овај фајл може бити рендерован само након кеширања.',
 	'tiff_size_error' => 'Пријављена величина фајла не одговара његовој стварној величини.',
 	'tiff_script_detected' => 'Послати фајл садржи скрипте.',
-	'tiff_bad_file' => 'Послати фајл садржи грешке.',
+	'tiff_bad_file' => 'Послати фајл садржи грешке: $1',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
@@ -571,7 +573,7 @@ $messages['sr-el'] = array(
 	'tiff_error_cached' => 'Ovaj fajl može biti renderovan samo nakon keširanja.',
 	'tiff_size_error' => 'Prijavljena veličina fajla ne odgovara njegovoj stvarnoj veličini.',
 	'tiff_script_detected' => 'Poslati fajl sadrži skripte.',
-	'tiff_bad_file' => 'Poslati fajl sadrži greške.',
+	'tiff_bad_file' => 'Poslati fajl sadrži greške: $1',
 );
 
 /** Tagalog (Tagalog)
@@ -590,7 +592,7 @@ $messages['tl'] = array(
 	'tiff_error_cached' => 'Maaari lamang muling ibigay ang talaksan pagkatapos ng tagal ng agwat ng pagkukubli.',
 	'tiff_size_error' => 'Hindi tumutugma ang inulat na sukat ng talaksan sa talagang sukat ng talaksan.',
 	'tiff_script_detected' => 'Naglalaman ng mga baybayin ang ikinargang talaksan.',
-	'tiff_bad_file' => 'Naglalaman ng mga kamalian ang ikinargang talaksan.',
+	'tiff_bad_file' => 'Naglalaman ng mga kamalian ang ikinargang talaksan: $1',
 	'tiff-file-info-size' => '(pahina $5, $1 × $2 piksel, sukat ng talaksan: $3, uri ng MIME: $4)',
 );
 
@@ -603,7 +605,7 @@ $messages['vi'] = array(
 	'tiff_out_of_service' => 'Không thể xử lý tập tin được tải lên vì ImageMagick không có sẵn.',
 	'tiff_too_much_meta' => 'Siêu dữ liệu tốn nhiều không gian quá.',
 	'tiff_script_detected' => 'Tập tin được tải lên chứa script.',
-	'tiff_bad_file' => 'Tập tin được tải lên có lỗi.',
+	'tiff_bad_file' => 'Tập tin được tải lên có lỗi: $1',
 	'tiff-file-info-size' => '(trang $5, $1×$2 điểm ảnh, kích thước: $3, định dạng MIME: $4)',
 );
 

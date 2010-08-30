@@ -1465,6 +1465,15 @@ Yüklenen dosyalar sayfası adını ve isteğe bağlı gerekçeyi içermeli; bu 
 	'right-deletebatch' => 'Sayfaları toplu siler',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'deletebatch-caption' => 'Битләр исемлеге:',
+	'deletebatch-delete' => 'Бетерү',
+	'deletebatch-select-yourself' => 'сез',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

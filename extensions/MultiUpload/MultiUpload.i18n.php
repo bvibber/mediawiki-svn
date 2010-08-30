@@ -966,7 +966,7 @@ $messages['lb'] = array(
 	'multiupload-desc' => 'Erlaabt et [[Special:MultipleUpload|méi Fichieren mateneen eropzelueden]]',
 	'multipleupload-ignoreallwarnings' => "'''All Warnungen''' ignoréieren an d'Ficheren trotzdem späicheren.",
 	'multipleupload-saveallfiles' => "All d'Fichiere späicheren",
-	'multipleupload-addresswarnings' => "W. e. g. all Warnungen uweisen ier d'Fichieren nach emol eropgluede ginn.",
+	'multipleupload-addresswarnings' => "W. e. g. all Warnunge weisen ier d'Fichieren nach emol eropgeluede ginn.",
 	'multipleupload-page' => "{{ns:project}}:Richtlinne fir d'Läsche vu Säiten a Fichieren",
 	'multipleupload-text' => "Hei kënnt dir méi Fichieren mateneen eroplueden.
 

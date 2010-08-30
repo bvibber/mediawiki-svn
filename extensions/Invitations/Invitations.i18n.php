@@ -1101,9 +1101,30 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'invite-logpage' => 'Rejestr zaproszeń',
+	'invite-logpagetext' => 'Rejestr zapraszania jednych użytkowników przez drugich do korzystania z różnych funkcji oprogramowania.',
 	'invite-logentry' => 'zaprosił $1 do używania dodatku <i>$2</i>',
+	'invitations' => 'Zarządzanie zaproszeniami do korzystania z funkcji oprogramowania',
+	'invitations-desc' => 'Umożliwia [[Special:Invitations|zarządzanie nowymi funkcjami]] poprzez ograniczanie dostępu do nich dla systemu zapraszania użytkowników do korzystania z funkcji oprogramowania',
+	'invitations-invitedlist-description' => 'Masz dostęp do następujących zaproszeń do korzystania z funkcji oprogramowania.
+Aby zarządzać zaproszeniami do jednej z funkcji, kliknij na jej nazwę.',
+	'invitations-invitedlist-none' => 'Nie masz uprawnień do zapraszania do korzystania z funkcji oprogramowania.',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Dostępne jest jedno zaproszenie|Dostępne są $1 zaproszenia|Dostępnych jest $1 zaproszeń}})',
+	'invitations-pagetitle' => 'Zapraszanie do korzystania z funkcji oprogramowania',
+	'invitations-uninvitedlist-description' => 'Nie masz dostępu do innych zaproszeń do korzystania z funkcji oprogramowania.',
+	'invitations-uninvitedlist-none' => 'W tej chwili nie ma innych funkcji oprogramowania, do których testowania można zapraszać.',
+	'invitations-feature-pagetitle' => 'Zarządzanie zaproszeniem – $1',
+	'invitations-feature-access' => 'Masz aktualnie dostęp do korzystania z <i>$1</i>.',
+	'invitations-feature-numleft' => 'Pozostało Ci jeszcze {{PLURAL:$1|jedno zaproszenie|<b>$1</b> zaproszenie z $2|<b>$1</b> zaproszeń z $2}}.',
+	'invitations-feature-noneleft' => 'Wykorzystałeś wszystkie przyznane zaproszenia dla tej funkcji',
+	'invitations-feature-noneyet' => 'Jeszcze nie otrzymaliśmy przydziału do zapraszania do testowania tej funkcji.',
 	'invitations-feature-notallowed' => 'Nie masz odpowiednich uprawnień do korzystania z <i>$1</i>.',
+	'invitations-inviteform-title' => 'Zaproś użytkownika do korzystania z $1',
+	'invitations-inviteform-username' => 'Zapraszany użytkownik',
 	'invitations-inviteform-submit' => 'Zaproś',
+	'invitations-error-baduser' => 'Wybrany użytkownik nie istnieje.',
+	'invitations-error-alreadyinvited' => 'Wybrany użytkownik już ma dostęp do tej funkcji!',
+	'invitations-invite-success' => 'Zostałeś zaproszony $1 do korzystania z tej funkcji!',
 );
 
 /** Piedmontese (Piemontèis)

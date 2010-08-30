@@ -1290,6 +1290,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'expandtemplates' => 'ഫലകങ്ങൾ വിപുലീകരിക്കുക',
+	'expandtemplates-desc' => 'വികസിപ്പിക്കാവുന്ന വിക്കിഎഴുത്തുകൾ പ്രദർശിപ്പിക്കാനും പ്രദർശിപ്പിക്കേണ്ട താൾ എങ്ങനെയുണ്ടെന്നു കാണാനുമുള്ള [[Special:ExpandTemplates|വികസിപ്പിക്കാവുന്ന ഫലകങ്ങളും പാഴ്സർ ഫങ്ഷനുകളും ചരങ്ങളും]]',
 	'expand_templates_intro' => 'ഈ പ്രത്യേക താൾ ചില എഴുത്തുകൾ എടുത്ത് എല്ലാ ഫലകങ്ങളും പുനരാവർത്തിത സ്വഭാവത്തോടെ വികസിപ്പിക്കുന്നു.
 <nowiki>{{</nowiki>#എങ്കിൽ:…}} തുടങ്ങിയ പാഴ്സർ ഫങ്ഷനുകളും
 <nowiki>{{</nowiki>ഈദിവസം}}&mdash; തുടങ്ങിയ ചരങ്ങളും, ഈ താൾ വികസിപ്പിക്കുന്നുണ്ട്.
@@ -2077,6 +2078,13 @@ Bunu, ilgili derleyici aşamasını MedyaVikinin kendisinden çağırarak yapar.
 $messages['ts'] = array(
 	'expand_templates_ok' => 'Hiswona',
 	'expand_templates_preview' => 'Ringanisa',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'expand_templates_ok' => 'OK',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

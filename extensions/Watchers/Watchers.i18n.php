@@ -232,8 +232,8 @@ $messages['bs'] = array(
 	'watchers_link_title' => 'Ko prati ovu stranicu?',
 	'watchers_error_article' => "'''Greška:''' Stranica ne postoji.",
 	'watchers_header' => '{{PLURAL:$2|Korisnik koji prati|Korisnici koji prate}} "[[:$1]]"',
-	'watchers_noone_watches' => 'Niko ne posmatra ovu stranicu.',
-	'watchers_x_or_more' => '$1 ili više {{PLURAL:$1|korisnika ima|korisnika imaju}} ovu stranicu na svom spisku praćenja.',
+	'watchers_noone_watches' => 'Niko ne prati stranicu [[:$1]].',
+	'watchers_x_or_more' => '$1 ili više {{PLURAL:$1|korisnika ima|korisnika imaju}} stranicu [[:$2]] na svojim spiskovima za praćenje.',
 	'watchers_less_than_x' => 'Manje od $1 {{PLURAL:$1|korisnika ima|korisnika imaju}} ovu stranicu na svom spisku praćenja.',
 );
 

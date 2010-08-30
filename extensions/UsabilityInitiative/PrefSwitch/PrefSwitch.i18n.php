@@ -526,9 +526,9 @@ $messages['bg'] = array(
 	'prefswitch-survey-answer-browser-other' => 'Друг браузър:',
 	'prefswitch-survey-question-os' => 'Каква операционна система използвате?',
 	'prefswitch-survey-answer-os-other' => 'Друга операционна система:',
-	'prefswitch-title-on' => 'Нови функции',
+	'prefswitch-title-on' => 'Нови функционалности',
 	'prefswitch-title-switched-on' => 'Наслаждавайте се!',
-	'prefswitch-title-switched-off' => 'Благодаря',
+	'prefswitch-title-switched-off' => 'Благодарности',
 	'prefswitch-success-off' => 'Новите функции са изключени.',
 );
 
@@ -557,6 +557,7 @@ Harap pilih samunyaan nang bujur.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnya:',
 	'prefswitch-survey-question-res' => 'Barapa ganal ukuran layar Pian?',
 	'prefswitch-title-on' => 'Muha hanyar',
+	'prefswitch-title-switched-on' => 'Salamat manikmati!',
 	'prefswitch-title-off' => 'Pajahakan muha hanyar',
 	'prefswitch-title-switched-off' => 'Tarima kasih',
 	'prefswitch-title-feedback' => 'Kitihan mantuk',
@@ -839,9 +840,25 @@ Mard eo mat deoc'h e c'hallit hor skoazellañ en ur respont d'an tamm sontadeg a
  * @author CERminator
  */
 $messages['bs'] = array(
+	'prefswitch' => 'Prekidač postavki za Inicijativu upotrebljivosti',
+	'prefswitch-desc' => 'Omogućava korisnicima prebacivanje seta postavki',
+	'prefswitch-jswarning' => 'Zapamtite da pri promjeni kože, vašu [[User:$1/$2.js|$2 JavaScriptu]] će biti neophodno kopirati u [[{{ns:user}}:$1/vector.js]] <!-- ili [[{{ns:user}}:$1/common.js]]--> za nastavak rada.',
+	'prefswitch-csswarning' => 'Vaši [[User:$1/$2.css|prilagođeni $2 stilovi]] neće više moći biti upotrebljeni. Možete dodati prilagođeni CSS za vektor u [[{{ns:user}}:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
+	'prefswitch-survey-submit-off' => 'Ugasite nove mogućnosti',
+	'prefswitch-survey-submit-global-off' => 'Ugasite nove mogućnosti na svim wikijima',
+	'prefswitch-survey-cancel-off' => 'Ako biste željeli nastaviti koristiti nove mogućnosti, možete se vratiti na $1.',
+	'prefswitch-survey-submit-feedback' => 'Pošaljite povratne informacije',
+	'prefswitch-survey-cancel-feedback' => 'Ako ne želite poslati povratne informacije, možete se vratiti na $1.',
+	'prefswitch-survey-question-like' => 'Šta vam se sviđa u vezi novih mogućnosti?',
+	'prefswitch-survey-question-dislike' => 'Šta vam se ne sviđa u vezi novih mogućnosti?',
+	'prefswitch-survey-question-whyoff' => 'Zašto isključujete nove mogućnosti?
+Molimo odaberite sve što se može primijeniti.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Veoma je teško koristiti nove mogućnosti.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ne sviđa mi se nova alatna traka.',
 	'prefswitch-survey-answer-whyoff-other' => 'Ostali razlozi:',
+	'prefswitch-survey-question-browser' => 'Koji preglednik koristite?',
 	'prefswitch-survey-answer-browser-other' => 'Ostali preglednici:',
 );
 

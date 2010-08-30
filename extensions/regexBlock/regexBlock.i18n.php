@@ -827,6 +827,7 @@ Verŝajne ne estas uzanto kun tiu nomo.',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Hamilton Abreu
  * @author Imre
  * @author Jatrobat
  * @author Piolinfax

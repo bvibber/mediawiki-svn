@@ -2181,7 +2181,7 @@ $messages['bjn'] = array(
 	'wikieditor-toolbar-characters-page-greek' => 'Yunani',
 	'wikieditor-toolbar-characters-page-cyrillic' => 'Sirilik',
 	'wikieditor-toolbar-characters-page-arabic' => 'Arab',
-	'wikieditor-toolbar-characters-page-persian' => 'Farisi',
+	'wikieditor-toolbar-characters-page-persian' => 'Parsia',
 	'wikieditor-toolbar-characters-page-hebrew' => 'Ibrani',
 	'wikieditor-toolbar-characters-page-bangla' => 'Bangla',
 	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
@@ -17140,6 +17140,7 @@ $messages['sq'] = array(
  * @author Helios13
  * @author Rancher
  * @author Sasa Stefanovic
+ * @author Жељко Тодоровић
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
@@ -17241,7 +17242,7 @@ $messages['sr-ec'] = array(
 	'wikieditor-toolbar-tool-table-preview' => 'Преглед',
 	'wikieditor-toolbar-tool-table-insert' => 'Убаци',
 	'wikieditor-toolbar-tool-table-cancel' => 'Поништи',
-	'wikieditor-toolbar-tool-table-invalidnumber' => 'Нисте унијели валидан број редова и колона',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Нисте унели валидан број редова и колона',
 	'wikieditor-toolbar-tool-table-zero' => 'Не можете да унесете табелу са 0 редова или колона.',
 	'wikieditor-toolbar-tool-replace' => 'Тражи и замени',
 	'wikieditor-toolbar-tool-replace-title' => 'Тражи и замени',
@@ -17330,6 +17331,7 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Liangent
  * @author Michaello
+ * @author Жељко Тодоровић
  */
 $messages['sr-el'] = array(
 	'wikieditor-toolbar-loading' => 'Učitavanje...',
@@ -17409,7 +17411,7 @@ $messages['sr-el'] = array(
 	'wikieditor-toolbar-tool-table-preview' => 'Pregled',
 	'wikieditor-toolbar-tool-table-insert' => 'Ubaci',
 	'wikieditor-toolbar-tool-table-cancel' => 'Poništi',
-	'wikieditor-toolbar-tool-table-invalidnumber' => 'Niste unijeli validan broj redova i kolona',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'Niste uneli validan broj redova i kolona',
 	'wikieditor-toolbar-tool-table-zero' => 'Ne možete da unesete tabelu sa 0 redova ili kolona.',
 	'wikieditor-toolbar-tool-replace' => 'Traži i zameni',
 	'wikieditor-toolbar-tool-replace-title' => 'Traži i zameni',
@@ -18016,6 +18018,7 @@ Idadi ya mistari au ya safu si halali.',
 	'wikieditor-toolbar-characters-page-gujarati' => 'Kigujarati',
 	'wikieditor-toolbar-characters-page-thai' => 'Kitai',
 	'wikieditor-toolbar-characters-page-lao' => 'Kilao',
+	'wikieditor-toolbar-characters-page-khmer' => 'Kikhmeri',
 	'wikieditor-toolbar-section-help' => 'Msaada',
 	'wikieditor-toolbar-help-heading-description' => 'Elezo',
 	'wikieditor-toolbar-help-heading-syntax' => 'Ukiandika haya',

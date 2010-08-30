@@ -155,6 +155,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'wikieditor-template-editor-preference' => 'Omogućava uređivanje wiki šablon putem obrazaca',
+	'wikieditor-template-editor-dialog-title' => 'Uredi šablon',
 	'wikieditor-template-editor-dialog-submit' => 'Ažuriraj',
 	'wikieditor-template-editor-dialog-cancel' => 'Odustani',
 );

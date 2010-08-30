@@ -8182,7 +8182,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 <li>&action=get&concept=<concept_id> Eng Verknëppung ofruffen</li>
 <li>&action=list_sets Weis eng Lëscht vu méiglechen Datekontextprefixen an déi op déi se sech bezéien</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> fir eng Konzeptdefinitioun weis all déi aner</li>
-<li>&action=help Hëllef uweisen.</li>
+<li>&action=help Hëllef weisen.</li>
 </ul></p>',
 	'ow_conceptmapping_uitext' => '<p>Konzeptkorrespondenzen erlaben Iech erauszefannen, watereen an engem Ensemble vun Donnéeen definéierte Sënn, identesch ass mat deem deen an aneren Ensemble vun Donnéeen definéiert ass.</p>',
 	'ow_conceptmapping_no_action_specified' => 'D\'Aktioun "$1" gëtt net ënnerstëtzt.',

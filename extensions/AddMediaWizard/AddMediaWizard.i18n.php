@@ -428,6 +428,13 @@ $messages['tr'] = array(
 	'addmediawizard-desc' => 'Ortam ekleme sihirbazı, Kaltura ve Vikimedya Kuruluşu ortaklığıyla geliştirilmiştir',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'addmediawizard-desc' => 'Kaltura һәм Викимедиа  Фонды бергәлегендә эшләгән медиа-мәгълүмат йөкләүгеч',
+);
+
 /** Ukrainian (Українська)
  * @author Ytsukeng Fyvaprol
  */

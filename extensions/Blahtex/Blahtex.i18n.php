@@ -2716,10 +2716,10 @@ $messages['pt'] = array(
 	'math_UnexpectedNextCell' => 'O comando "&" só pode aparecer dentro de um bloco "\\begin ... \\end"',
 	'math_UnexpectedNextRow' => 'O comando "\\\\" apenas pode aparecer dentro de um block "\\begin ... \\end"',
 	'math_UnmatchedBegin' => 'Foi encontrado "\\begin" sem "\\end" correspondente',
-	'math_UnmatchedCloseBrace' => 'Foi encontrada chaveta de fecho "{" sem chaveta de abertura "}" correspondente',
+	'math_UnmatchedCloseBrace' => 'Foi encontrada uma chaveta de fecho "}" sem a chaveta de abertura "{" correspondente',
 	'math_UnmatchedEnd' => 'Foi encontrado "\\end" sem "\\begin" correspondente',
 	'math_UnmatchedLeft' => 'Foi encontrado "\\left" sem "\\right" correspondente',
-	'math_UnmatchedOpenBrace' => 'Foi encontrada chaveta de abertura "{" sem chaveta de fecho "}" correspondente',
+	'math_UnmatchedOpenBrace' => 'Foi encontrada uma chaveta de abertura "{" sem a chaveta de fecho "}" correspondente',
 	'math_UnmatchedOpenBracket' => 'Foi encontrado parêntese recto de abertura "[" sem parêntese recto de fecho "]" correspondente',
 	'math_UnmatchedRight' => 'Foi encontrado "\\right" sem "\\left" correspondente',
 	'math_UnrecognisedCommand' => 'Comando "$1" não reconhecido',
@@ -2729,6 +2729,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Hamilton Abreu
  */
 $messages['pt-br'] = array(
 	'math_noblahtex' => 'Não é possível executar blahtex, que deveria estar em $1',
