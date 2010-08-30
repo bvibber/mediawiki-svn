@@ -121,7 +121,7 @@ $wgAutoloadClasses['TiffReader'] = $dir . 'TiffReader.php';
 $wgAutoloadClasses['PagedTiffHandlerSeleniumTestSuite'] = $dir . 'selenium/PagedTiffHandlerTestSuite.php';
 
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
-$wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
+$wgHooks['UploadVerifyFile'][] = 'PagedTiffHandler::verifyFile';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
 
 define('TIFF_METADATA_VERSION', '1.0');

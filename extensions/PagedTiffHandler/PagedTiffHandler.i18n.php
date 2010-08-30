@@ -27,7 +27,7 @@ ImageMagick is not available.',
 	'tiff_error_cached' => 'This file can only be rerendered after the caching interval.',
 	'tiff_size_error' => 'The reported file size does not match the actual file size.',
 	'tiff_script_detected' => 'The uploaded file contains scripts.',
-	'tiff_bad_file' => 'The uploaded file contains errors.',
+	'tiff_bad_file' => 'The uploaded file contains errors: $1',
 	'tiff-file-info-size' => '(page $5, $1 × $2 pixel, file size: $3, MIME type: $4)',
  );
 
@@ -47,7 +47,7 @@ $messages['qqq'] = array(
 	'tiff_error_cached' => 'Error message shown when a error occurres and it is cached.',
 	'tiff_size_error' => 'Error message shown when the reported file size does not match the actual file size.',
 	'tiff_script_detected' => 'Error message shown when the uploaded file contains scripts.',
-	'tiff_bad_file' => 'Error message shown when the uploaded file contains errors.',
+	'tiff_bad_file' => 'Error message shown when the uploaded file contains errors. First parameter contains error messages',
 	'tiff-file-info-size' => 'Information about the image dimensions etc. on image page. Extended by page information',
 );
 
@@ -67,7 +67,7 @@ $messages['qqq'] = array(
 	'tiff_error_cached' => 'Error message shown when a error occurres and it is cached.',
 	'tiff_size_error' => 'Error message shown when the reported file size does not match the actual file size.',
 	'tiff_script_detected' => 'Error message shown when the uploaded file contains scripts.',
-	'tiff_bad_file' => 'Error message shown when the uploaded file contains errors.',
+	'tiff_bad_file' => 'Error message shown when the uploaded file contains errors. First parameter contains error messages.',
 	'tiff-file-info-size' => 'Information about the image dimensions etc. on image page. Extended by page information',
 );
 
@@ -151,7 +151,7 @@ $messages['de'] = array(
 	'tiff_error_cached' => 'Diese Datei kann erst nach Ablauf der Caching-Periode neu gerendert werden.',
 	'tiff_size_error' => 'Die errechnete Größe der Datei stimmt nicht mit der tatsächlichen überein.',
 	'tiff_script_detected' => 'Die hochgeladene Datei enthält Skripte.',
-	'tiff_bad_file' => 'Die hochgeladene Datei ist fehlerhaft.',
+	'tiff_bad_file' => 'Die hochgeladene Datei ist fehlerhaft: $1',
 	'tiff-file-info-size' => '(Seite $5, $1 × $2 Pixel, Dateigröße: $3, MIME-Typ: $4)',
 );
 
