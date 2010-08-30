@@ -11,7 +11,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'reflect-desc' => 'Novel augmentation of threaded comments',
+	'reflect-desc' => 'Augmentation of threaded comments',
 	'reflect-bulleted' => 'Hi $1,
 	
 $2 has summarized a point that you made in the thread "$3". 
