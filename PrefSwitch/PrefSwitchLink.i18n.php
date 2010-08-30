@@ -140,6 +140,18 @@ $messages['br'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Esaeañ ar perzhioù nevez',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'prefswitch-link-anon' => 'Nove mogućnosti',
+	'tooltip-pt-prefswitch-link-anon' => 'Naučite više o novim mogućnostima',
+	'prefswitch-link-on' => 'Vrati me nazad',
+	'tooltip-pt-prefswitch-link-on' => 'Onemogući nove mogućnosti',
+	'prefswitch-link-off' => 'Nove mogućnosti',
+	'tooltip-pt-prefswitch-link-off' => 'Isprobajte nove mogućnosti',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  * @author Vriullop

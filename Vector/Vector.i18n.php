@@ -559,9 +559,10 @@ $messages['sl'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Rancher
+ * @author Жељко Тодоровић
  */
 $messages['sr-ec'] = array(
-	'vector' => 'Побољшања корисничког сучеља за Вектор',
+	'vector' => 'Побољшања корисничког интерфејса за вектор',
 );
 
 /** Swedish (Svenska)

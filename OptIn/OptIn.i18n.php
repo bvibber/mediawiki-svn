@@ -2951,6 +2951,20 @@ Možete je u svakom trenutku ponovno isprobati klikom na poveznicu "{{int:optin-
 	'optin-survey-answer-changes-predictability' => 'Poboljšati predvidljivost izvedbe.',
 	'optin-survey-answer-changes-custom' => 'Omogućiti suradniku veću mogućnost prilagođavanja.',
 	'optin-survey-answer-changes-other' => 'Ostalo:',
+	'optin-improvements2' => '== Što je poboljšano? == 
+[[File:UsabilityToolbar.png|left|link=|Snimak zaslona nove trake za uređivanje]] 
+[[File:UsabilityDialogs.png|left|link=|Snimak zaslona novih dijaloga]]
+;Poboljšana traka za uređivanje
+Poboljšana alatna traka olakšava uređivanje članaka. 
+Nove i poboljšane ikone čine jasnijim što svaki alat čini.
+Povećana širina sekcija pojednostavnjuje alat, a rijetko korišteni alati su samo jedan klik daleko. 
+;Dialog 
+Kod stvaranja poveznica ili tablica, klikom na ikonu alat sada se otvara dijaloški okvir koji vam pomaže stvoriti poveznice i tablice ispunjavanjem jednostavnog obrasca. 
+;I više 
+Uveli smo i niz drugih poboljšanja poput poboljšane navigacije, kaskadnih kartica, poboljšano traženje, i više. 
+== Kako se uključiti == 
+Kako biste saznali više o inicijativi za povećanje uporabljivosti, molimo vas da posjetite našu [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative internetsku stranicu].
+<div style="clear:both"></div>',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
