@@ -3,11 +3,11 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die();
 
 $wgExtensionCredits['other'][] = array(
-	'path'			  => __FILE__,
-	'name'			  => 'Reflect',
-	'version'		  => '0.1-alpha',
-	'url'				=> 'http://www.cs.washington.edu/homes/travis/reflect/',
-	'author'			=> array( 'Travis Kriplean' ),
+	'path' => __FILE__,
+	'name' => 'Reflect',
+	'version' => '0.1-alpha',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Reflect',
+	'author' => array( 'Travis Kriplean' ),
 	'descriptionmsg' => 'reflect-desc',
 );
 	
@@ -60,9 +60,7 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'reflectAddGlobalVars';
 $wgHooks['BeforePageDisplay'][] = 'ReflectDispatch::tryPage';
 
 // Localisation
-$wgExtensionMessagesFiles['Reflect'] = "$dir/server/i18n/Rf.i18n.php";
-$wgExtensionMessagesFiles['ReflectMagic'] = "$dir/server/i18n/Rf.magic.php";
-$wgExtensionAliasesFiles['Reflect'] = "$dir/server/i18n/Rf.alias.php";
+$wgExtensionMessagesFiles['Reflect'] = "$dir/server/i18n/Reflect.i18n.php";
 
 function reflectAddGlobalVars( &$vars ) {
 	global $wgUser, $wgReflectStudy;

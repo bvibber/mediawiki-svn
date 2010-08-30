@@ -234,7 +234,7 @@ class ApiReflectAction extends ApiBase {
 			$to = $threadObj->author();
 			$catalystUser = $wgUser;
 			$this->sendMail( $threadObj, $to, $catalystUser, 
-					'rf-bulleted', array( $params['text'] ), array() );
+					'reflect-bulleted', array( $params['text'] ), array() );
 		}
 		return array( "insert_id" => $bulletID, "rev_id" => $bulletRev, "u" => $user );
 	}
@@ -330,7 +330,7 @@ class ApiReflectAction extends ApiBase {
 			$threadObj = Threads::withId( $commentID );
 			$to = User::newFromName( $bullet->user );
 			$catalystUser = $threadObj->author();
-			$this->sendMail( $threadObj, $to, $catalystUser, 'rf-responded', 
+			$this->sendMail( $threadObj, $to, $catalystUser, 'reflect-responded', 
 					array( $responseText, $bullet->text ), array() );
 		}
 		return array( "insert_id" => $responseID, "rev_id" => $responseRev, 
