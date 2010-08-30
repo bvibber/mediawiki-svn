@@ -39,8 +39,8 @@ class ApiArticleAssessment extends ApiBase {
 			}
 
 			$thisRating = 0;
-			if ( isset( $params["r{i}"] ) ) {
-				$thisRating = $params["r{i}"];
+			if ( isset( $params["r{$i}"] ) ) {
+				$thisRating = $params["r{$i}"];
 			}
 
 			$this->insertPageRating( $pageId, $i, ( $thisRating - $lastRating ),
