@@ -325,8 +325,14 @@ public final class MediaWiki implements Disposable {
 	/** log in */
 	public boolean login(String wiki, String user, String passwd, boolean remember) throws MediaWikiException {
 		Connection		connection	= connection(wiki);
-		UserLoginAction	action		= new UserLoginAction(this, connection, user, passwd, remember);
-		action.execute();	return action.isSuccess();
+		UserLoginAction	action		= new UserLoginAction(this, connection, user, passwd, null, remember);
+		action.execute();	
+		if (action.retry()) {
+			/** Try again with the login token obtained from the first call */
+			action = new UserLoginAction(this, connection, user, passwd, action.loginToken, remember);
+			action.execute();
+		}
+		return action.isSuccess();
 	}
 
 	/** log out */

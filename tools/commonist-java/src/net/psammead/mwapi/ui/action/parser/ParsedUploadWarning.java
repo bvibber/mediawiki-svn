@@ -17,15 +17,35 @@ public final class ParsedUploadWarning {
 	public final String		uploadDescription;
 	public final String		destFile;
 	public final String		license;
+	public final String		editToken;
 	
 	public ParsedUploadWarning(Source source) throws IllegalFormException {
-		final Element		form	= JerichoUtil.fetchForm(source, "uploadwarning", "uploadwarning", -1);
+		Element		form;
+		boolean		ignore;
+		String		token;
+		try {
+			form = JerichoUtil.fetchForm(source, "uploadwarning", "uploadwarning", -1);
+		} catch (IllegalFormException e) {
+			form = JerichoUtil.fetchForm(source, "uploadwarning", "mw-upload-form", -1);
+		}
 		final FormFields	fields	= form.getFormFields();
-		ignoreWarning		= JerichoUtil.fetchBooleanField(fields,	"wpIgnoreWarning");	// contains "1" 
+		try {
+			ignore		= JerichoUtil.fetchBooleanField(fields,	"wpIgnoreWarning");	// contains "1" 
+		} catch (IllegalFormException e) {
+			ignore		= true;
+		}
+		ignoreWarning = ignore;
 		sessionKey			= JerichoUtil.fetchStringField(fields,	"wpSessionKey");
 		uploadDescription	= TextUtil.unixLF(
 							  JerichoUtil.fetchStringField(fields,	"wpUploadDescription"));
 		destFile			= JerichoUtil.fetchStringField(fields,	"wpDestFile");
 		license				= JerichoUtil.fetchStringField(fields,	"wpLicense");
+		try {
+				token		= JerichoUtil.fetchStringField(fields,	"wpEditToken");
+		} catch (IllegalFormException e) {
+			// this field may be not present
+				token		= null;
+		}
+		editToken = token;
 	}
 }

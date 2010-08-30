@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # change into the project directory
-cd "$(dirname "$0")/.."
+ROOT="$(dirname "$0")/.."
 
 # change these if you want to use a specific JDK
 #export JAVA_HOME=/usr/local/java/j2sdk1.4.2_13
@@ -19,10 +19,4 @@ cd "$(dirname "$0")/.."
 # tuning, remove the options your VM does not understand
 options=-Xmx192m
 
-# classpath
-classes=build/classes
-[ ! -d "$classes" ] && ant compile
-lib=lib
-classpath=$classes:$lib/bsh-2.0b2-fixed.jar:$lib/lib-util.jar:$lib/mwapi.jar:$lib/minibpp.jar:$lib/commons-httpclient-3.1.jar:$lib/commons-logging-1.1.jar:$lib/commons-codec-1.3.jar:$lib/jericho-html-3.1.jar
-	
-exec java $options -cp $classpath net.psammead.commonist.Commonist "$@"
+exec java $options -cp "${ROOT}/lib/bsh-2.0b2-fixed.jar:${ROOT}/lib/commons-httpclient-3.1.jar:${ROOT}/lib/commons-logging-1.1.jar:${ROOT}/lib/commons-codec-1.3.jar:${ROOT}/lib/jericho-html-3.1.jar:${ROOT}/lib/commonist.jar" net.psammead.commonist.Commonist "$@"

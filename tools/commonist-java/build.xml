@@ -57,7 +57,7 @@
 			encoding="${java.encoding}"
 			deprecation="true"
 			extdirs="lib"
-			debug="true" >
+			debug="true">
 					<src path="src" />
 					<src path="build/src" />
 		</javac>
@@ -100,23 +100,23 @@
 	
 	<!-- ==== full dist ==== -->
 	
-	<target name="dist" depends="compile" description="create a distribution zip">
+	<target name="dist" depends="jar" description="create a distribution zip">
 		<mkdir dir="build"/>
 		<zip destfile="build/${project}-${version}.zip">
 			<zipfileset dir="." prefix="${project}-${version}" filemode="770">
 				<include name="bin/*"/> 
 			</zipfileset>
-			<zipfileset dir="config" prefix="${project}-${version}/build/classes/net/psammead/mwapi/config" />
+			<zipfileset dir="build/jar" prefix="${project}-${version}/lib">
+				<include name="commonist.jar"/> 
+			</zipfileset>
 			<zipfileset dir="." prefix="${project}-${version}">
 				<include name="doc/index.html"/>
 				<include name="doc/changes.txt"/>
-				<include name="build.*"/>
 				<include name="src/**"/>
 				<include name="etc/**"/>
 				<exclude name="${sign.keystore}"/>
 				<include name="image/**"/>
 				<include name="lib/**" />
-				<include name="build/classes/**"/>
 			</zipfileset>
 		</zip>
 	</target>
