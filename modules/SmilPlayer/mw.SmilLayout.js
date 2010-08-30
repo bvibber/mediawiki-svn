@@ -5,21 +5,21 @@ mw.SmilLayout = function( $layout ){
 }
 
 mw.SmilLayout.prototype = {
-	// Stores the number of assets we are currently loading		
+	// Stores the number of assets we are currently loading
 	mediaLoadingCount : 0,
 	
 	// Stores the callback function for once assets are loaded
 	mediaLoadedCallback : null,
 	
-	//Stores the current top z-index for "putting things on top" 
+	// Stores the current top z-index for "putting things on top"
 	topZindex: 1,
 	
-	// Constructor: 
+	// Constructor:
 	init: function( smilObject ){	
 		// Setup a pointer to parent smil Object
 		this.smil = smilObject;
 		
-		// Set the smil layout dom: 
+		// Set the smil layout dom:
 		this.$dom = this.smil.getDom().find( 'layout' );
 		
 		// Reset the htmlDOM cache
@@ -36,13 +36,13 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/*
-	* Get layout
-	*/
+	 * Get layout
+	 */
 	getRootLayout: function(){
 		var _this = this;
 		mw.log( "SmilLayout::getRootLayout:" );
 		if( !this.$rootLayout ){						
-			// Setup target Size: 
+			// Setup target Size:
 			this.targetWidth = this.smil.embedPlayer.getWidth();
 			this.targetHeight = this.smil.embedPlayer.getHeight();		
 			
@@ -56,7 +56,7 @@ mw.SmilLayout.prototype = {
 					'overflow': 'hidden'
 				});
 				
-			// Update the root layout css 
+			// Update the root layout css
 			this.$rootLayout.css( _this.getRootLayoutCss() );
 			
 			// Update the root layout html
@@ -66,18 +66,19 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 * Get and increment the top z-index counter: 
+	 * Get and increment the top z-index counter:
 	 */
 	getTopZIndex: function(){
 		return this.topZindex++;	
 	},
 	
 	/**
-	* Draw a smilElement to the layout. 
-	*  
-	* If the element does not exist in the html dom add it.	
-	* @parma {Element} smilElement to be drawn. 
-	*/ 
+	 * Draw a smilElement to the layout.
+	 * 
+	 * If the element does not exist in the html dom add it.
+	 * 
+	 * @parma {Element} smilElement to be drawn.
+	 */ 
 	drawElement: function( smilElement ) {
 		var _this = this;		
 		// Check for quick "show" path:
@@ -87,9 +88,10 @@ mw.SmilLayout.prototype = {
 			return ;
 		}
 		
-		// Else draw the node into the regionTarget 
+		// Else draw the node into the regionTarget
 							
-		//mw.log( "SmilLayout::drawElement: " + nodeName + '.' + $j( smilElement ).attr('id' ) + ' into ' + regionId );
+		// mw.log( "SmilLayout::drawElement: " + nodeName + '.' + $j(
+		// smilElement ).attr('id' ) + ' into ' + regionId );
 		var $regionTarget = this.getRegionTarget( smilElement );
 		
 		// Make sure we have a $regionTarget
@@ -106,14 +108,16 @@ mw.SmilLayout.prototype = {
 				_this.getSmilElementHtml( smilElement )
 			)
 		} else {
-			// Make sure the element is visible ( may be faster to just call show directly)  
+			// Make sure the element is visible ( may be faster to just call
+			// show directly)
 			if( $targetElement.is(':hidden') ) {
 				$targetElement.show();
 			}
 		}
 	},
 	
-	drawElementThumb: function( $target, $node, relativeTime, callback){			
+	drawElementThumb: function( $target, $node, relativeTime, callback){
+		var _this = this;
 		mw.log('SmilLayout::drawElementThumb: ' + $node.attr('id') + ' relative time:' + relativeTime );	
 		if( $target.length == 0 ){
 			mw.log("Error drawElementThumb to empty target");
@@ -128,13 +132,25 @@ mw.SmilLayout.prototype = {
 		}
 		switch ( this.smil.getRefType( $node )  ){		
 			case 'img':
-				// xxx we could eventually use canvas as well but for now just add it at 100%
+				// xxx we should use canvas here but for now just hack it up:		
+				var $playerImage = this.getSmilImgHtml( $node );				
 				$target.html(
-					this.getSmilImgHtml( $node, {
-						'width' : $target.width(),
-						'height' : $target.height()
+					$j('<img />')
+					.attr({
+						'src' : this.smil.getAssetUrl( $node.attr( 'src' ) )
 					})
 				);
+				var img = $target.find('img').get(0)
+				_this.getNaturalSize( img, function( natrualSize ){
+					_this.fitMeetBest( 
+						img,
+						natrualSize, 
+						{
+							'width' : $target.width(),
+							'height' : $target.height()
+						}
+					)
+				}); 
 			break;
 			case 'cdata_html':
 				// Scale down the html into the target width
@@ -180,7 +196,7 @@ mw.SmilLayout.prototype = {
 			naturaSize.width = drawElement.videoWidth;
 	
 			// Draw the thumb via canvas grab
-			// NOTE canvas scale issue prevents redraw at thumb resolution 
+			// NOTE canvas scale issue prevents redraw at thumb resolution
 			// xxx should revisit thumb size issue:
 			try{
 				$target.html( $j('<canvas />')				
@@ -204,7 +220,8 @@ mw.SmilLayout.prototype = {
 				callback();
 		}
 		
-		// check if relativeTime transform matches current absolute time then render directly:
+		// check if relativeTime transform matches current absolute time then
+		// render directly:
 		var drawTime = ( relativeTime + this.smil.parseTime( $j( $node ).attr('clipBegin') ) );
 		if( this.smil.isSameFrameTime( drawElement.currentTime, drawTime ) ) {
 			mw.log("getVideoCanvasThumb: Draw time:" + drawTime + " matches video time drawFrame:" +drawElement.currentTime );
@@ -216,7 +233,7 @@ mw.SmilLayout.prototype = {
 			var $tmpFrameNode = $node.clone();
 			$tmpFrameNode.attr('id', $node.attr('id') + '_tmpFrameNode' );				
 			this.smil.getBuffer().bufferedSeekRelativeTime( $tmpFrameNode, relativeTime, function(){
-				// update the drawElement 
+				// update the drawElement
 				drawElement = $j( '#' + _this.smil.getPageDomId( $tmpFrameNode ) ).get(0);
 				drawFrame( drawElement );
 				// Remove the temporary node from dom
@@ -226,7 +243,7 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 * Get a region target for a given smilElement 
+	 * Get a region target for a given smilElement
 	 */
 	getRegionTarget: function( smilElement ){
 		var regionId =  $j( smilElement ).attr( 'region');
@@ -238,15 +255,15 @@ mw.SmilLayout.prototype = {
 				return false;
 			}
 		} else {
-			// No region provided use the rootLayout: 
+			// No region provided use the rootLayout:
 			$regionTarget = this.$rootLayout;
 		}
 		return $regionTarget;
 	},
 	
 	/**
-	* Hide a smilElement in the layout
-	*/	
+	 * Hide a smilElement in the layout
+	 */	
 	hideElement: function( smilElement ){
 		// Check that the element is already in the dom
 		var $targetElement = this.$rootLayout.find( '#' + this.smil.getPageDomId( smilElement ) );
@@ -258,13 +275,15 @@ mw.SmilLayout.prototype = {
 	
 	/**
 	 * Get the transformed smil element in html format
-	 * @param 
+	 * 
+	 * @param
 	 */
 	getSmilElementHtml: function( smilElement ) {	
 		var smilType = this.smil.getRefType( smilElement )
 
 		switch( smilType ){
-			// Not part of strict smil, but saves time being able have an "html" display mode
+			// Not part of strict smil, but saves time being able have an "html"
+			// display mode
 			case 'cdata_html': 
 				return this.getSmilCDATAHtml( smilElement );
 			break;
@@ -277,7 +296,8 @@ mw.SmilLayout.prototype = {
 			case 'audio':
 				return this.getSmilAudioHtml( smilElement );
 			break;
-			// Smil Text: http://www.w3.org/TR/SMIL/smil-text.html ( obviously we support a subset )
+			// Smil Text: http://www.w3.org/TR/SMIL/smil-text.html ( obviously
+			// we support a subset )
 			case 'smiltext':
 				return this.getSmilTextHtml( smilElement );
 			break;					
@@ -295,8 +315,8 @@ mw.SmilLayout.prototype = {
 	},		
 	
 	/**
-	* Return the video
-	*/
+	 * Return the video
+	 */
 	getSmilVideoHtml: function( smilElement ){
 		return $j('<video />')
 			.attr( {
@@ -319,11 +339,12 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 * Get Smil CDATA ( passed through jQuery .clean as part of fragment creation )
-	 * XXX Security XXX 
-	 * Here we are parsing in SMIL -> HTML should be careful about XSS or script elevation 
-	 *
-	 * @@TODO check all sources are "local" only smil and enforce domain on all asset sources
+	 * Get Smil CDATA ( passed through jQuery .clean as part of fragment
+	 * creation ) XXX Security XXX Here we are parsing in SMIL -> HTML should be
+	 * careful about XSS or script elevation
+	 * 
+	 * @@TODO check all sources are "local" only smil and enforce domain on all
+	 *        asset sources
 	 */
 	getSmilCDATAHtml: function( smilElement, targetWidth ){	
 		// Default target width if unset:
@@ -337,7 +358,7 @@ mw.SmilLayout.prototype = {
 		var xmlCdata = '';
 		for ( var i=0; i < el.childNodes.length; i++ ) {	
 			var node = el.childNodes[i];
-			// Check for text cdata Node type: 
+			// Check for text cdata Node type:
 			if( node.nodeType == 4 ) {					
 				xmlCdata += node.nodeValue;
 			}
@@ -345,16 +366,17 @@ mw.SmilLayout.prototype = {
 		
 		var textCss = this.transformSmilCss( smilElement , targetWidth);	
 		
-		// We pass the xmlCdata via jQuery fragment creation, this runs jquery.clean()  
-		// and filters the result html. 				
+		// We pass the xmlCdata via jQuery fragment creation, this runs
+		// jquery.clean()
+		// and filters the result html.
 		var $cdataHtml = $j( '<div />' ).append( 
 				$j( xmlCdata )
 			)
 
-		//See if we need to scale
+		// See if we need to scale
 		var scalePercent = ( targetWidth / this.getVirtualWidth() );
 			
-		// Links go to a new window and are disable scale down. 
+		// Links go to a new window and are disable scale down.
 		$cdataHtml.find('a').each( function(inx, link ){
 			if( scalePercent < 1 ){
 				$j(link).attr('href', '#');
@@ -365,19 +387,20 @@ mw.SmilLayout.prototype = {
 				
 		if( scalePercent != 1 ){			
 			$cdataHtml.find('img').each( function(inx, image ){
-				// make sure each image is loaded before we transform, 
-				// AND via the magic of closures this updates $cdataHtml output in-place
+				// make sure each image is loaded before we transform,
+				// AND via the magic of closures this updates $cdataHtml output
+				// in-place
 				$j( image ).load(function(){
-					// if the image has an height or width scale by  scalePercent
+					// if the image has an height or width scale by scalePercent
 					if ( $j( image ).width() ){
 						var imageTargetWidth = scalePercent*  $j( image ).width();
 						var imageTargetHeight =  scalePercent*  $j( image ).height()
 					} else if( image.naturalWidth ){
-						// check natural width? 
+						// check natural width?
 						imageTargetWidth = scalePercent * image.naturalWidth;
 						imageTargetHeight = scalePercent * image.naturalHeight;  
 					}
-					//scale the image: 
+					// scale the image:
 					$j( image ).css({
 						 'width' : imageTargetWidth,
 						 'height' :imageTargetHeight
@@ -386,7 +409,7 @@ mw.SmilLayout.prototype = {
 			})
 		}
 		
-		// Return the cdata		
+		// Return the cdata
 		return $j('<div />')
 			.attr( 'id' , this.smil.getPageDomId( smilElement ) )
 			// Wrap in font-size percentage relative to virtual size
@@ -399,16 +422,17 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 * Get a text element html	 
+	 * Get a text element html
 	 */
 	getSmilTextHtml: function( textElement ) {
 		var _this = this;			
 				
-		// Empty initial text value				
+		// Empty initial text value
 		var textValue = '';
 		
-		// If the textElement has no child node directly set the text value 
-		// 	( if has child nodes, text will be selected by time in SmilAnimate.transformTextForTime ) 
+		// If the textElement has no child node directly set the text value
+		// ( if has child nodes, text will be selected by time in
+		// SmilAnimate.transformTextForTime )
 		if( $j( textElement ).children().length == 0 ){
 			mw.log( 'Direct text value to: ' + textValue);
 			textValue = $j( textElement ).text();				
@@ -416,14 +440,14 @@ mw.SmilLayout.prototype = {
 		
 		var textCss = _this.transformSmilCss( textElement );			
 
-		// Return the htmlElement 
+		// Return the htmlElement
 		return $j('<span />')
 			.attr( 'id' , this.smil.getPageDomId( textElement ) )
 			// Wrap in font-size percentage relative to virtual size
 			.css( 'font-size',  ( ( this.targetWidth / this.getVirtualWidth() )*100 ) + '%' )
 			.html(  
 				$j('<span />')
-				// Transform smil css into html css: 
+				// Transform smil css into html css:
 				.css( textCss	)
 				// Add the text value
 				.text( textValue )			
@@ -431,54 +455,128 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 * Get Image html per given smil element and requested time 
-	 * @param {element} imgElement The image tag element to be updated
+	 * Get Image html per given smil element
+	 * 
+	 * @param {element}
+	 *            imgElement The image tag element to be updated
 	 */
-	getSmilImgHtml: function( imgElement , targetSize) {
-		
-		if( ! targetSize ){
-			targetSize = {};
-			targetSize.width = this.targetWidth;
-			targetSize.height = this.targetHeight;
-		}
-		var adjustImageSize = function( image ){
-			// xxx Should read smil "imgElement" fill type 
-			var imageCss = {};
-		
-			// Fit the image pre the provided targetWidth closure 
-			if( image.naturalWidth > targetSize.width ){			
-				imageCss.width = targetSize.width;
-				imageCss.height = imageCss.width *
-					( image.naturalHeight  /  image.naturalWidth )
-			}
-			
-			// fit vertically 
-			if(! imageCss.height || imageCss.height > targetSize.height ){
-				imageCss.height =  targetSize.height;
-				imageCss.width = imageCss.height *
-				(  image.naturalWidth / image.naturalHeight )
-			}
-			$j( image ).css( imageCss );
-		
-		}
-		mw.log( "Add image:" + this.smil.getAssetUrl( $j( imgElement ).attr( 'src' ) ) );
+	getSmilImgHtml: function( smilImg ) {
+		var _this = this;
 		var $image = $j('<img />')
 		.attr( {
-			'id' : this.smil.getPageDomId( imgElement ), 
-			'src' : this.smil.getAssetUrl( $j( imgElement ).attr( 'src' ) )
+			'id' : this.smil.getPageDomId( smilImg ), 
+			'src' : this.smil.getAssetUrl( $j( smilImg ).attr( 'src' ) )
 		} );
-		if( $image.get(0).naturalHeight ){
-			adjustImageSize( $image.get(0) );
-		}else {
-			$image.load( function(){
-				adjustImageSize( this );
-			});
-		}
+		
+		_this.getNaturalSize( $image.get(0), function( naturalSize) {
+			_this.doAssetLayout( smilImg , naturalSize);			
+		})
 		return $image;	
 	},
-	
+	// xxx should really use a callback instead of failing if the media is not
+	// loaded
+	getNaturalSize: function( img , callback){
+		// note this just works for images atm		
+		if( !img ){
+			callback( false );
+		}
+		if( img.naturalWidth ){
+			callback(  {
+				'width' : img.naturalWidth,
+				'height' : img.naturalHeight,
+			} )
+		} else {
+			$j( img ).load(function(){
+				callback( {
+					'width' : this.naturalWidth,
+					'height' : this.naturalHeight,
+				} )
+			});
+		}
+	},
 	/**
-	 * Parse pan zoom attribute string 
+	 * Layout an asset
+	 */
+	doAssetLayout: function( smilElement, naturalSize  ){
+
+		// We default smil layout to meetBest
+		var fitMode = $j( smilElement).attr('fit');
+		if( !fitMode ){
+			fitMode = 'meetBest'
+		}		
+		if( fitMode == 'meetBest' ){
+			var targetSize = {
+				'width' : this.smil.embedPlayer.getWidth(),
+				'height' : this.smil.embedPlayer.getHeight()
+			}			
+			this.fitMeetBest( 
+					$j( '#' + this.smil.getPageDomId( smilElement ) ).get(0), 
+					naturalSize, 
+					targetSize
+				); 
+		} else {
+			mw.log("Layout mode: " + fitMode + ' not yet supported');
+		}
+		
+		// Check for panZoom attribute
+		if( $j( smilElement).attr('panZoom') ){
+			_this.panZoomLayout( smilElement );
+		}
+	},
+		
+	// http://www.w3.org/TR/SMIL/smil-layout.html#adef-fit
+	// xxx should add the other fitting modes
+	fitMeetBest: function( element, natrualSize, targetSize ){
+		var _this = this;
+		
+		// xxx Should read smil "imgElement" fill type
+		var imageCss = {};		
+		
+		// Fit the image per the provided targetWidth closure
+		if( natrualSize.width > targetSize.width ){			
+			imageCss.width = '100%';
+			imageCss.height = ( 100 *	( natrualSize.height  /  natrualSize.width ) ) + '%';
+		}
+		
+		// Fit vertically
+		if(! imageCss.height || imageCss.height > targetSize.height ){
+			imageCss.height =  '100%';
+			imageCss.width = ( 100 * (  natrualSize.width / natrualSize.height ) ) + '%';
+		}
+		// update the layout of the element
+		$j( element ).css( imageCss );		
+	},
+	/**
+	 * layout function
+	 */
+	panZoomLayout: function( smilElement ){
+		var _this = this;
+		var panZoom = this.parsePanZoom( $j( smilElement).attr('panZoom') );
+		var img = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+		
+		_this.getNaturalSize( img, function( natrualSize ){
+			// Check if the transfrom is needed:
+			if( parseInt( panZoom.left ) == 0 
+				&& 
+				parseInt( panZoom.top ) == 0
+				&&
+				( parseInt( panZoom.width ) == 100 && panZoom.width.indexOf('%') != -1 )
+				&&
+				( parseInt( panZoom.height ) == 100 && panZoom.height.indexOf('%') != -1 ) 
+			){
+				// no transform is needed
+				return ;
+			}
+			// Get percent values
+			var percentValues = _this.smil.getAnimate().getPercentFromPanZoomValues( panZoomValues, natrualSize );
+			
+			// Update the layout via the animation engine updateElementLayout method
+			_this.smil.getAnimate().updateElementLayout( smilElement, panZoomValues );
+		});
+	},
+	/**
+	 * Parse pan zoom attribute string
+	 * 
 	 * @param panZoomString
 	 */
 	parsePanZoom: function( panZoomString ){
@@ -496,8 +594,8 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	* Add all the regions to the root layout 
-	*/
+	 * Add all the regions to the root layout
+	 */
 	getRootLayoutHtml: function(){
 		var _this = this;
 		var $layoutContainer = $j( '<div />' );
@@ -522,8 +620,8 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	* Get the root layout object with updated html properties 
-	*/	
+	 * Get the root layout object with updated html properties
+	 */	
 	getRootLayoutCss: function( ){
 			
 		if( this.$dom.find( 'root-layout').length ) {			
@@ -547,10 +645,10 @@ mw.SmilLayout.prototype = {
 				this.virtualHeight = this.smil.getEmbedPlayer().getHeight();	
 			}
 						
-			// Merge in transform size to target  
+			// Merge in transform size to target
 			$j.extend( rootLayoutCss, this.transformSizeToTarget() );
 			
-			// Update the layout css			
+			// Update the layout css
 			return rootLayoutCss;			
 		}		
 		return {};
@@ -569,35 +667,40 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	* Translate a root layout pixel point into a percent location
-	* using all percentages instead of pixels lets us scale internal 
-	* layout browser side transforms ( instead of a lot javascript css updates )
-	* 
-	* @param {object} layout Css layout to be translated from virtualWidth & virtualHeight
-	*/
-	transformVirtualPixleToPercent: function( layout ){		
+	 * Translate a root layout pixel point into a percent location using all
+	 * percentages instead of pixels lets us scale internal layout browser side
+	 * transforms ( instead of a lot javascript css updates )
+	 * 
+	 * @param {object}
+	 *            layout Css layout to be translated from virtualWidth &
+	 *            virtualHeight
+	 */
+	transformVirtualPixleToPercent: function( layout, virtualLayout ){		
 		var percent = { };		
+		if( !virtualLayout){
+			virtualLayout = { 'width' : this.virtualWidth, 'height' : this.virtualHeight };
+		}
 		if( layout['width'] ) {
-			percent['width'] =  ( layout['width'] / this.virtualWidth )*100 + '%';
+			percent['width'] =  ( layout['width'] / virtualLayout.width )*100 + '%';
 		}
 		if( layout['left'] ){
-			percent['left'] = ( layout['left'] / this.virtualWidth )*100 + '%'; 
+			percent['left'] = ( layout['left'] / virtualLayout.width )*100 + '%'; 
 		}		 
 		if( layout['height'] ) {
-			percent['height'] = ( layout['height'] /  this.virtualHeight )*100 + '%';
+			percent['height'] = ( layout['height'] /  virtualLayout.height )*100 + '%';
 		}
 		if( layout['top'] ){
-			percent['top'] = ( layout['top'] /  this.virtualHeight )*100 + '%'; 
+			percent['top'] = ( layout['top'] /  virtualLayout.height )*100 + '%'; 
 		}		
 		return percent;
 	},
 	
 	/**
-	* Transform virtual height width into target size
-	*/
+	 * Transform virtual height width into target size
+	 */
 	transformSizeToTarget: function(){
 				
-		// Setup target height width based on max window size	
+		// Setup target height width based on max window size
 		var fullWidth = this.targetWidth - 2 ;
 		var fullHeight =  this.targetHeight ;
 		
@@ -605,7 +708,7 @@ mw.SmilLayout.prototype = {
 		var targetWidth = fullWidth;
 		var targetHeight = targetWidth * ( this.virtualHeight / this.virtualWidth  ) 
 		
-		// Check if it exceeds the height constraint: 
+		// Check if it exceeds the height constraint:
 		if( targetHeight >  fullHeight ){		
 			targetHeight = fullHeight;				
 			targetWidth = targetHeight * ( this.virtualWidth  / this.virtualHeight  );
@@ -614,7 +717,8 @@ mw.SmilLayout.prototype = {
 		var offsetTop = ( targetHeight < fullHeight )? ( fullHeight- targetHeight ) / 2 : 0;
 		var offsetLeft = ( targetWidth < fullWidth )? ( fullWidth- targetWidth ) / 2 : 0;
 				
-		//mw.log(" targetWidth: " + targetWidth + ' fullwidth: ' + fullWidth + ' :: ' +  ( fullWidth- targetWidth ) / 2 );
+		// mw.log(" targetWidth: " + targetWidth + ' fullwidth: ' + fullWidth +
+		// ' :: ' + ( fullWidth- targetWidth ) / 2 );
 		return {
 			'height': targetHeight,
 			'width' : targetWidth,
@@ -625,8 +729,8 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	* Transform smil attributes into html attributes 
-	*/
+	 * Transform smil attributes into html attributes
+	 */
 	transformSmilAttributes: function ( smilElement ){
 		$smilElement = $j( smilElement );
 		var smilAttributes = {		
@@ -640,20 +744,22 @@ mw.SmilLayout.prototype = {
 				attributes[ smilAttributes[  attr ] ] = $smilElement.attr( attr );
 			}
 		}
-		// XXX TODO Locally scope all ids into embedPlayer.id + _id 
+		// XXX TODO Locally scope all ids into embedPlayer.id + _id
 		
-		// Translate rootLayout properties into div 
+		// Translate rootLayout properties into div
 		return attributes;		
 	},
 	
 	/**
-	* Transform smil attributes into css attributes 
-	* @param {object} $smilElement The smil element to be transformed 
-	*/
+	 * Transform smil attributes into css attributes
+	 * 
+	 * @param {object}
+	 *            $smilElement The smil element to be transformed
+	 */
 	transformSmilCss: function( smilElement, targetWidth ){
 		$smilElement = $j( smilElement );
 		
-		//Set target with to master targetWidth if unset. 
+		// Set target with to master targetWidth if unset.
 		if( ! targetWidth ){
 			targetWidth = this.targetWidth
 		}
@@ -682,7 +788,8 @@ mw.SmilLayout.prototype = {
 		}		
 		
 		// Make the font size fixed so it can be scaled
-		// based on: http://style.cleverchimp.com/font_size_intervals/altintervals.html
+		// based on:
+		// http://style.cleverchimp.com/font_size_intervals/altintervals.html
 		var sizeMap = {
 			'xx-small' : '.57em',				
 			'x-small' : '.69em',
@@ -696,7 +803,7 @@ mw.SmilLayout.prototype = {
 			cssAttributes['font-size'] = sizeMap[ cssAttributes['font-size'] ];
 		}
 		
-		// If the font size is pixel based parent span will have no effect, 
+		// If the font size is pixel based parent span will have no effect,
 		// directly resize the pixels
 		if( cssAttributes['font-size'] && cssAttributes['font-size'].indexOf('px') != -1 ){
 			cssAttributes['font-size'] = ( parseFloat( cssAttributes['font-size'] ) 
@@ -704,7 +811,7 @@ mw.SmilLayout.prototype = {
 		}
 		
 		
-		// Translate rootLayout properties into div 
+		// Translate rootLayout properties into div
 		return cssAttributes;
 	}
 }

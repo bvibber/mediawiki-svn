@@ -45,6 +45,7 @@ mw.SequencerActionsSequence.prototype = {
 			'buttons' : buttons,
 			'width' : 450
 		});
+		$dialog.find('input').focus();
 		// Add a special open button
 		$dialog.parent().find( '.ui-dialog-buttonpane' ).prepend(
 			$j.button({
@@ -110,6 +111,7 @@ mw.SequencerActionsSequence.prototype = {
 			'buttons' : buttons,
 			'width' : 450
 		});
+		$dialog.find('input').focus();
 		// Add a special open button
 		$dialog.parent().find( '.ui-dialog-buttonpane' ).prepend(
 			$j.button({
@@ -231,10 +233,12 @@ mw.SequencerActionsSequence.prototype = {
 				'maxlength': 255 
 			})
 			// Make sure keys press does not affect the sequencer interface
-			.sequencerInput( _this.sequencer )
-		)
+			.sequencerInput( _this.sequencer )			
+		)		
 		.dialog( "option", "buttons", saveDialogButtons )
 		.dialog( "option", "title", gM('mwe-sequencer-menu-sequence-save-desc') )
+		// give the input focus
+		.find('input').focus()
 	},	
 	/**
 	 * Display the publish dialog 
@@ -457,6 +461,7 @@ mw.SequencerActionsSequence.prototype = {
 			};
 			buttons[ gM('mwe-sequencer-menu-sequence-exit-desc') ] = function(){
 				_this.closeSequencer();
+				$j(this).dialog('close');
 			}
 			// Confirm the user wants to exit
 			mw.addDialog( {

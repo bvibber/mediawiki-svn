@@ -31,12 +31,26 @@ $messages['en'] = array(
 	'mwe-sequencer-tools-trim' => 'Trim',
 	'mwe-sequencer-tools-trim-desc' => 'Set clip in and out points',
 	'mwe-sequencer-tools-duration' => 'Duration',
+	'mwe-sequencer-clip-duration' => 'Clip duration',
+
 	'mwe-sequencer-tools-duration-desc' => 'Set clip duration',
+
+	'mwe-sequencer-tools-panzoom' => 'Layout',
+	'mwe-sequencer-clip-panzoom' => 'Panzoom',
+	'mwe-sequencer-tools-panzoom-desc' => 'Set layout position and zoom',
+	'mwe-sequencer-tools-panzoomhelper' => 'Layout helper',
+	'mwe-sequencer-tools-panzoomhelper-desc' => 'Resize and move the <i>layout helper</i> to update layout',
+	'mwe-sequencer-tools-panzoomhelper-resetlayout' => 'Reset layout',
+
+	'mwe-sequencer-tools-transitions' => 'Transitions',
+	'mwe-sequencer-tools-transitions-desc' => 'Set in and out Transitions',
+	'mwe-sequencer-clip-transin' => 'Transition in',
+	'mwe-sequencer-clip-transout' => 'Transition out',
 
 	'mwe-sequencer-preview' => 'Preview',
 	'mwe-sequencer-apply-changes' => 'Apply changes',
 	'mwe-sequencer-start-time' => 'Start time',
-	'mwe-sequencer-clip-duration' => 'Clip duration',
+	
 
 	'mwe-sequencer-loading_user_rights' => 'Loading user rights ...',
 	'mwe-sequencer-sequence-xml' => 'Sequence smil xml',
@@ -108,15 +122,13 @@ $messages['en'] = array(
 	'mwe-sequencer-publishing-success' => 'Publish success',
 	'mwe-sequencer-publishing-success-desc' => 'Sequence has successfully been published. [$1 Published file]',
 
-	'mwe-sequencer-transition_in' => 'Transition in',
-	'mwe-sequencer-transition_out' => 'Transition out',
+	
 	'mwe-sequencer-effects' => 'Effects stack',
 	'mwe-sequencer-remove_transition' => 'Remove transition',
 	'mwe-sequencer-edit_transin' => 'Edit transition into clip',
 	'mwe-sequencer-edit_transout' => 'Edit transition out of clip',
 	'mwe-sequencer-add-transition' => 'Add a transition',
-	'mwe-sequencer-menu_clipedit' => 'Edit media',
-	'mwe-sequencer-menu_transition' => 'Transitions and effects',
+	'mwe-sequencer-menu_clipedit' => 'Edit media',	
 	'mwe-sequencer-menu_cliplib' => 'Add media',
 	'mwe-sequencer-menu_resource_overview' => 'Resource overview',
 	'mwe-sequencer-menu_options' => 'Options',

@@ -317,7 +317,7 @@ mw.SmilAnimate.prototype = {
 		//mw.log( "transformImageForTime:: animateTime:" +  animateTime );
 		
 		if( $j( smilImgElement ).children().length == 0 ){
-			// No image transform children
+			// No animation transform children					
 			return ;
 		}
 				
@@ -336,15 +336,10 @@ mw.SmilAnimate.prototype = {
 		// No animate elements in range, make sure we transform to previous or to initial state if time is zero 
 		if( !animateInRange  ) {
 			if( animateTime == 0 ) {
-				// just a hack for now ( should read from previous animation or from source attribute
-				// this.updateElementLayout( smilImgElement, { 'top':1,'left':1,'width':1, 'height':1 } );
-				var $target = $j( '#' + this.smil.getPageDomId( smilImgElement ));
-				$target.css( {
-					'top' : '0px',
-					'left'  :'0px',
-					'width' : '100%', 
-					'height' : '100%' 
-				} );
+				// Check if we have native resolution information 
+				// xxx here would be a good place to check the "fit" criteria
+				// http://www.w3.org/TR/SMIL3/smil-layout.html#adef-fit
+				// for now we assume fit "attribute" value is "meet"				
 			}
 			// xxx should check for transform to previous 
 		}
@@ -402,30 +397,35 @@ mw.SmilAnimate.prototype = {
 		// Let Top Width Height
 		// translate values into % values
 		// NOTE this is dependent on the media being "loaded" and having natural width and height
-		var namedValueOrder = ['left', 'top', 'width', 'height' ];
-		var htmlAsset = $j( '#' + this.smil.getPageDomId( smilImgElement ) ).get(0);
+
+		var percentValues = this.getPercentFromPanZoomValues( targetValue, 
+			this.smil.getLayout().getNaturalSize( smilImgElement )
+		);
 		
+		// Now we have "hard" layout info try and render it. 
+		this.updateElementLayout( smilImgElement, percentValues );						
+	},	
+	// transforms pan zoom target value into layout percentages  
+	getPercentFromPanZoomValues: function(targetValue, naturalSize){
+		var namedValueOrder = ['left', 'top', 'width', 'height' ];
 		var percentValues = {};
 		for( var i =0 ;i < targetValue.length ; i++ ){
 			if( targetValue[i].indexOf('%') == -1 ) {
 				switch( namedValueOrder[i] ){
 					case 'left':
 					case 'width':
-						percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] ) / htmlAsset.naturalWidth;
+						percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] ) / naturalSize.width;
 					break;
 					case 'height':
 					case 'top':
-						percentValues[ namedValueOrder[i] ] =  parseFloat( targetValue[i] ) / htmlAsset.naturalHeight 
+						percentValues[ namedValueOrder[i] ] =  parseFloat( targetValue[i] ) / naturalSize.height 
 					break;
 				}				
 			} else {
 				percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] ) / 100;
 			} 
-		}		
-		
-		// Now we have "hard" layout info try and render it. 
-		this.updateElementLayout( smilImgElement, percentValues );		
-				
+		}
+		return percentValues;
 	},
 	
 	// xxx need to refactor move to "smilLayout"
@@ -445,14 +445,14 @@ mw.SmilAnimate.prototype = {
 		var fullHeight =  $target.parents('.smilRegion').height() ;
 		var targetWidth = fullWidth;
 		var targetHeight = targetWidth * ( 
-			( percentValues['height'] * htmlAsset.naturalHeight )				
+			( parseInt( percentValues['height'] ) * htmlAsset.naturalHeight )				
 			/ 
-			( percentValues['width'] * htmlAsset.naturalWidth ) 
+			( parseInt( percentValues['width'] ) * htmlAsset.naturalWidth ) 
 		)		
 		// Check if it exceeds the height constraint: 	
 		var sourceScale = ( targetHeight <  fullHeight ) 
-			? (1 / percentValues['width'] )
-			: (1 / percentValues['height'] )
+			? (1 / parseInt( percentValues['width'] ) )
+			: (1 / parseInt( percentValues['height'] )  )
 		
 		
 		// Wrap the target and absolute the image layout ( if not already ) 
@@ -474,8 +474,8 @@ mw.SmilAnimate.prototype = {
 			'position' : 'absolute', 
 			'width' : sourceScale *100 + '%',
 			'height' : sourceScale *100 + '%',
-			'top' : (-1 * percentValues['top'])*100 + '%',
-			'left' : (-1 * percentValues['left'])*100 + '%',
+			'top' : (-1 * parseInt( percentValues['top'] ) )*100 + '%',
+			'left' : (-1 * parseInt( percentValues['left'] ) )*100 + '%',
 		} );
 	},
 	
