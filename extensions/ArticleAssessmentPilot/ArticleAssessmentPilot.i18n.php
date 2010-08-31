@@ -34,3 +34,29 @@ $messages['en'] = array(
 	'articleassessment-results-show' => "(Results hidden. [[|Show]] them.)",
 	'articleassessment-results-hide' => "([[|Hide Results]])",
 );
+
+/** Message documentation (Message documentation)
+ * @author Sam Reed
+ */
+$messages['qqq'] = array(
+	'articleassessment' => '',
+	'articleassessment-desc' => '',
+	'articleassessment-yourfeedback' => '',
+	'articleassessment-pleaserate' => '',
+	'articleassessment-submit' => '',
+	'articleassessment-rating-wellsourced' => '',
+	'articleassessment-rating-neutrality' => '',
+	'articleassessment-rating-completeness' => '',
+	'articleassessment-rating-readability' => '',
+	'articleassessment-rating-wellsourced-tooltip' => '',
+	'articleassessment-rating-neutrality-tooltip' => '',
+	'articleassessment-rating-completeness-tooltip' => '',
+	'articleassessment-rating-readability-tooltip' => '',
+	'articleassessment-articlerating' => '',
+	'articleassessment-featurefeedback' => '',
+	'articleassessment-noratings' => '',
+	'articleassessment-stalemessage-revisioncount' => '',
+	'articleassessment-stalemessage-norevisioncount' => '',
+	'articleassessment-results-show' => '',
+	'articleassessment-results-hide' => '',
+);
