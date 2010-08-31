@@ -49,6 +49,9 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			}
 		}
 
+		$limit = $params['limit'] * 4; //4 "Ratings"
+		$this->addOption( 'LIMIT', $limit );
+
 		$res = $this->select( __METHOD__ );
 
 		$ratings = array();
@@ -82,7 +85,13 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			$ratings[$pageId]['ratings'][] = $thisRow;
 		}
 
+		$count = 0;
 		foreach ( $ratings as $rat ) {
+			if ( ++ $count > $limit ) {
+				//$this->setContinueEnumParameter( 'from', $this->keyToTitle( $row->page_title ) );
+				break;
+			}
+
 			$result->setIndexedTagName( $rat['ratings'], 'r' );
 			$result->addValue( array( 'query', $this->getModuleName() ), null, $rat );
 		}
@@ -95,6 +104,13 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			'pageid' => null,
 			'revid' => null,
 			'userrating' => false,
+			'limit' => array(
+				ApiBase::PARAM_DFLT => 1,
+				ApiBase::PARAM_TYPE => 'limit',
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
+				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
+			),
 		);
 	}
 
@@ -103,6 +119,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			'pageid' => 'Page ID to get assessments for',
 			'revid' => 'Specific revision to get (used in conjunction with user param, otherwise ignored)',
 			'userrating' => 'Whether to get the current users ratings for the specific rev/article',
+			'limit' => 'Amount of pages to get the ratings for',
 		);
 	}
 
