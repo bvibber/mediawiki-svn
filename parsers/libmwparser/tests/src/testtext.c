@@ -171,7 +171,7 @@ int main(int argc, char *const* argv)
     int diff_us = stop.tv_usec - start.tv_usec;
 
     diff_us += diff_s * 1000000;
-    //        fprintf(stderr, "Time: %d micro seconds\n", diff_us);
+    //            fprintf(stderr, "Time: %d micro seconds\n", diff_us);
 
     return 0;
 }

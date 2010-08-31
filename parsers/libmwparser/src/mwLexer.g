@@ -1,3 +1,22 @@
+/*
+ * Copyright 2010  Andreas Jonsson
+ *
+ * This file is part of libmwparser.
+ *
+ * Libmwparser is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 lexer grammar mwLexer;
 
 /*
@@ -9,12 +28,13 @@ options {
 }
 
 tokens {
-    BEGIN_EXTERNAL_LINK;
     EXTERNAL_LINK;
     TABLE_HEADING;
     TABLE_HEADING_INLINE;
     TABLE_CAPTION;
     BEGIN_INTERNAL_LINK;
+    BEGIN_EXTERNAL_LINK;
+    BEGIN_MEDIA_LINK;
     HORIZONTAL_RULE;
     NOWIKI;
     BEGIN_HEADING;
@@ -145,6 +165,11 @@ typedef enum
 #define MW_SETTYPE(type)       do { _type = type;                 } while (0)
 #define MW_EMITNEW(type, text) do { EMITNEW(NEW_TOK(type, text)); } while (0)
 #define MW_HIDE()              do { LEXSTATE->channel = HIDDEN;   } while (0)
+#define D_(msg) (fputs(msg, stderr), fputc('\n', stderr), printLexerInfo(LEXER), true)
+#define NEW_TOK(type, text) (newToken(LEXSTATE->tokFactory, type, text))
+#define SUBSTR1(start) (INPUT->substr(INPUT, start, GETCHARINDEX() - 1))
+#define SUBSTR2(start, end) (INPUT->substr(INPUT, start, end))
+#define HEADING_LEVEL USER1
 
 static pANTLR3_COMMON_TOKEN
 newToken(pANTLR3_TOKEN_FACTORY factory, ANTLR3_UINT32 type, pANTLR3_STRING text)
@@ -174,6 +199,12 @@ static void eofAction(void *param);
     speculationFailure(context, sizeof(failures)/sizeof(MWLEXERSPECULATION*), failures); \
 } while (0)
 
+
+/**
+ * Initiate a speculative execution.
+ * @param context
+ * @param speculation Storage space for the context backup.
+ */
 static void
 speculationInitiate(MWLEXERCONTEXT *context, MWLEXERSPECULATION *speculation)
 {
@@ -186,18 +217,32 @@ speculationInitiate(MWLEXERCONTEXT *context, MWLEXERSPECULATION *speculation)
     speculation->istreamIndex = context->istreamIndex++;
 }
 
+/**
+ * Indictate that a speculative execution has succeeded.
+ */
 static void
 speculationSuccess(MWLEXERCONTEXT *context, MWLEXERSPECULATION *speculation)
 {
     speculation->active = false;
 }
 
+/**
+ * Abort speculative execution, without restoring the context.
+ */
 static void
 speculationAbort(MWLEXERCONTEXT *context, MWLEXERSPECULATION *speculation)
 {
     speculation->active = false;
 }
 
+/**
+ * Indicate that one or several speculative executions has failed and
+ * restore the context to the initiation point of the "oldest"
+ * speculation.
+ * @param context
+ * @param n Number of speculations in the array.
+ * @param speculation Array of speculation backup storage structures.
+ */
 static void
 speculationFailure(MWLEXERCONTEXT *context, int n, MWLEXERSPECULATION *speculation[])
 {
@@ -221,11 +266,19 @@ speculationFailure(MWLEXERCONTEXT *context, int n, MWLEXERSPECULATION *speculati
     }
 }
 
+/**
+ * Check if a particular speculation has already been tried at the
+ * current character index.
+ * @return {\code true} if the speculation already has been tried and failed.
+ */
 static bool
 alreadyTried(MWLEXERCONTEXT *context, MWLEXERSPECULATION *speculation) {
     return speculation->failurePoint == context->lexer->getCharIndex(context->lexer);
 }
 
+/**
+ * Action to execute at the end of file.
+ */
 static void
 eofAction(void *param)
 {
@@ -239,18 +292,6 @@ eofAction(void *param)
 
 
 
-#define ACTIVATE_EOF_ACTION do {                \
-    LEXER->eofAction = eofAction;               \
-    LEXER->eofActionParameter = CX;             \
-} while (0)
-
-#define D_(msg) (fputs(msg, stderr), fputc('\n', stderr), printLexerInfo(LEXER), true)
-
-#define NEW_TOK(type, text) (newToken(LEXSTATE->tokFactory, type, text))
-#define SUBSTR1(start) (INPUT->substr(INPUT, start, GETCHARINDEX() - 1))
-#define SUBSTR2(start, end) (INPUT->substr(INPUT, start, end))
-
-#define HEADING_LEVEL USER1
 }
 
 NOWIKI
@@ -451,6 +492,7 @@ INTERNAL_LINK
         }
         '[['
         {
+           SPECULATION_FAILURE(CX, &CX->externalLinkSpeculation);
            mark = MARK();
         }
         (
@@ -468,7 +510,10 @@ INTERNAL_LINK
         )
     )
     {
-        if (!fail && isCompleteLink && CX->isLegalTitle(CX, linkTitle)) {
+        if (!fail && CX->isMediaLinkTitle(CX, linkTitle)) {
+           MW_EMIT();
+           SPECULATION_FAILURE(CX, &CX->internalLinkSpeculation);
+        } else if (!fail && isCompleteLink && CX->isLegalTitle(CX, linkTitle)) {
            ACTION(CUSTOM = linkTitle;)
            speculationAbort(CX, &CX->internalLinkSpeculation);
         } else if (!fail && CX->isLegalTitle(CX, linkTitle)) {
@@ -496,6 +541,68 @@ INTERNAL_LINK_FAIL_CONDITION: {CX->internalLinkSpeculation.active}?=>
     }
     ;
 
+MEDIA_LINK
+@init{
+    ANTLR3_MARKER mark;
+    pANTLR3_STRING linkTitle;
+    bool isCompleteLink = false;
+    bool isLegalTitle = false;
+    bool fail = false;
+    pANTLR3_VECTOR attr = NULL;
+}:  {!CX->mediaLinkOpenDisabled && !alreadyTried(CX, &CX->mediaLinkSpeculation)}?=>
+    (
+        {
+            speculationInitiate(CX, &CX->mediaLinkSpeculation);
+        }
+        '[['
+        {
+           mark = MARK();
+        }
+        (
+            SPACE_TAB_CHAR*
+           (
+            INTERNAL_LINK_TITLE[&linkTitle]
+            SPACE_TAB_CHAR*
+            (
+                 ']]' {isCompleteLink=true;}
+               | '|' MEDIA_LINK_ATTRIBUTES[&attr]
+               | {fail = true;}
+            )
+           )
+          | {fail = true;}
+        )
+    )
+    {
+        if (!fail && CX->isMediaLinkTitle(CX, linkTitle)) {
+           if (attr == NULL) {
+               attr = CX->vectorFactory->newVector(CX->vectorFactory);
+           }
+           /*
+            * We'll pack the link title in the attribute vector.
+            * The parser will unpack it and send it as a separate
+            * parameter to the client.
+            */
+           attr->add(attr, linkTitle, NULL);
+           ACTION(CUSTOM = attr;)
+           if (isCompleteLink) {
+               speculationAbort(CX, &CX->mediaLinkSpeculation);
+           } else {
+               onMediaLinkOpen(CX);
+               MW_SETTYPE(BEGIN_MEDIA_LINK);
+           }
+        } else {
+           speculationAbort(CX, &CX->mediaLinkSpeculation);
+           REWIND(mark);
+           MW_SETTYPE(SPECIAL);
+        }
+    }
+    ;
+
+fragment
+MEDIA_LINK_ATTRIBUTES[pANTLR3_VECTOR *attr]:
+    (MEDIA_LINK_ATTRIBUTE[&attr])*
+    ;
+
 END_INTERNAL_LINK: {!CX->internalLinkCloseDisabled}?=> ']]'
     {
         speculationSuccess(CX, &CX->internalLinkSpeculation);
@@ -503,13 +610,80 @@ END_INTERNAL_LINK: {!CX->internalLinkCloseDisabled}?=> ']]'
     }
     ;
 
-/*
+END_MEDIA_LINK: {!CX->mediaLinkCloseDisabled}?=> ']]'
+    {
+        speculationSuccess(CX, &CX->mediaLinkSpeculation);
+        onMediaLinkClose(CX);
+    }
+    ;
+
+EXTERNAL_LINK
+@init{
+    bool success = true;
+    bool complete = true;
+    ANTLR3_MARKER urlStart;
+    ANTLR3_MARKER urlEnd;
+}:                 {!CX->externalLinkOpenDisabled && !alreadyTried(CX, &CX->externalLinkSpeculation)}?=>
+    {
+        speculationInitiate(CX, &CX->externalLinkSpeculation);
+    }
+   ('[' ({urlStart = GETCHARINDEX();} URL_PROTOCOL
+             (( {urlEnd = GETCHARINDEX();} URL_CHAR)+ SPACE_TAB_CHAR* (']' | {complete = false;})
+         | {success = false;})
+    | {success = false;}) )
+    {
+        if (success) {
+            ACTION(CUSTOM = SUBSTR2(urlStart, urlEnd);)
+            if (!complete) {
+                MW_SETTYPE(BEGIN_EXTERNAL_LINK);
+                onExternalLinkOpen(CX);
+            } else {
+                speculationAbort(CX, &CX->externalLinkSpeculation);
+            }
+        } else {
+            speculationAbort(CX, &CX->externalLinkSpeculation);
+            MW_SETTYPE(SPECIAL);
+        }
+    }
+    ;
+
+END_EXTERNAL_LINK: {!CX->externalLinkCloseDisabled}?=> ']'
+    {
+        speculationSuccess(CX, &CX->externalLinkSpeculation);
+        onExternalLinkClose(CX);
+    }
+    ;
+
+EXTERNAL_LINK_FAIL_CONDITION: {CX->externalLinkSpeculation.active}?=>
+    '[' 
+    { 
+        /*
+         * We must actually emit this token before failing the
+         * speculation, otherwise it will be emitted _after_
+         * the token stream has been reverted.
+         */
+        MW_EMIT();
+        SPECULATION_FAILURE(CX, &CX->externalLinkSpeculation);
+    }
+    ;
+
+
 fragment
-EXTERNAL_LINK_TITLE:
-//'/\[(\b(' . wfUrlProtocols() . ')'.
-//			'[^][<>"\\x00-\\x20\\x7F]+) *([^\]\\x00-\\x08\\x0a-\\x1F]*?)\]/S'
-    LETTER '://' 
-*/
+URL_PROTOCOL:
+	'http://'     |
+	'https://'    |
+	'ftp://'      |
+	'irc://'      |
+	'gopher://'   |
+	'telnet://'   |
+	'nntp://'     | // @bug 3808 RFC 1738
+	'worldwind://'|
+	'mailto:'     |
+	'news:'       |
+	'svn://'      |
+	'git://'      |
+	'mms://'
+    ;
 
 fragment
 INTERNAL_LINK_TITLE[pANTLR3_STRING *linkTitle]
@@ -564,7 +738,7 @@ NEWLINE:
     ('\r\n' | NEWLINE_CHAR) { 
        onEol(CX);
        speculationSuccess(CX, &CX->indentSpeculation);
-       SPECULATION_FAILURE(CX, &CX->headingSpeculation);
+       SPECULATION_FAILURE(CX, &CX->headingSpeculation, &CX->externalLinkSpeculation);
     }
     ;
 
@@ -968,6 +1142,8 @@ fragment SPECIAL_SYMBOL:      '!'|'"'|'#'|'$'|'%'|'&'|'('|
                               ')'|'*'|'+'|','|'-'|'.'|'/'|':'|
                               ';'|'<'|'='|'>'|'?'|'@'|'['|'\\'|
                               ']'|'^'|'_'|'`'|'{'|'|'|'}'|'~';
+fragment URL_CHAR: ~('<'|'>'|'['|']'|'\u0000' .. '\u0020'|'\u007F');
+
 
 /* This should map the latin-1 range 0x80-0xff to the corresponding unicode codepoints: */
 fragment LEGAL_TITLE_CHAR_RANGE: 'a'

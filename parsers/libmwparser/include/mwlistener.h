@@ -93,7 +93,13 @@ typedef struct MWLISTENER_struct
     void (*endHeading)(struct MWLISTENER_struct * context);
     void (*beginInternalLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkTitle);
     void (*endInternalLink)(struct MWLISTENER_struct * context);
-    void (*onInternalLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkTitle);
+    void (*onInternalLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkUrl);
+    void (*beginExternalLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkUrl);
+    void (*endExternalLink)(struct MWLISTENER_struct * context);
+    void (*onExternalLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkUrl);
+    void (*beginMediaLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+    void (*endMediaLink)(struct MWLISTENER_struct * context);
+    void (*onMediaLink)(struct MWLISTENER_struct * context, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
     void (*beginTableOfContents)(struct MWLISTENER_struct * context);
     void (*endTableOfContents)(struct MWLISTENER_struct * context);
     void (*beginTableOfContentsItem)(struct MWLISTENER_struct * context, int level);

@@ -579,7 +579,7 @@ at_change_dir=false
 # List of the tested programs.
 at_tested=''
 # List of the all the test groups.
-at_groups_all=' 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29'
+at_groups_all=' 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31'
 # As many question marks as there are digits in the last test group number.
 # Used to normalize the test group numbers so that `ls' lists them in
 # numerical order.
@@ -614,6 +614,8 @@ at_help_all="1;testsuite.at:7;simple;;
 27;testsuite.at:189;hr;;
 28;testsuite.at:196;link1;;
 29;testsuite.at:204;link2;;
+30;testsuite.at:211;link3;;
+31;testsuite.at:218;link4;;
 "
 
 # at_fn_validate_ranges NAME...
@@ -625,7 +627,7 @@ at_fn_validate_ranges ()
   for at_grp
   do
     eval at_value=\$$at_grp
-    if test $at_value -lt 1 || test $at_value -gt 29; then
+    if test $at_value -lt 1 || test $at_value -gt 31; then
       $as_echo "invalid test group: $at_value" >&2
       exit 1
     fi
@@ -3012,3 +3014,75 @@ $at_traceon; }
 ) 5>&1 2>&1 | eval $at_tee_pipe
 read at_status <"$at_status_file"
 #AT_STOP_29
+#AT_START_30
+# 30. testsuite.at:211: link3
+at_setup_line='testsuite.at:211'
+at_fn_banner 1
+at_desc="link3"
+at_desc_line=" 30: $at_desc                                          "
+$at_quiet $as_echo_n "$at_desc_line"
+at_xfail=no
+echo "#                             -*- compilation -*-" >> "$at_group_log"
+(
+  $as_echo "30. testsuite.at:211: testing ..."
+  $at_traceon
+
+
+cat >tempoutput <<'_ATEOF'
+_ATEOF
+
+{ set +x
+$as_echo "$at_srcdir/testsuite.at:214: testtext \${srcdir}/link/link3.in > tempoutput && diff \${srcdir}/link/link3.out tempoutput"
+at_fn_check_prepare_notrace 'a ${...} parameter expansion' "testsuite.at:214"
+( $at_check_trace; testtext ${srcdir}/link/link3.in > tempoutput && diff ${srcdir}/link/link3.out tempoutput
+) >>"$at_stdout" 2>>"$at_stderr"
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/testsuite.at:214"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_30
+#AT_START_31
+# 31. testsuite.at:218: link4
+at_setup_line='testsuite.at:218'
+at_fn_banner 1
+at_desc="link4"
+at_desc_line=" 31: $at_desc                                          "
+$at_quiet $as_echo_n "$at_desc_line"
+at_xfail=no
+echo "#                             -*- compilation -*-" >> "$at_group_log"
+(
+  $as_echo "31. testsuite.at:218: testing ..."
+  $at_traceon
+
+
+cat >tempoutput <<'_ATEOF'
+_ATEOF
+
+{ set +x
+$as_echo "$at_srcdir/testsuite.at:221: testtext \${srcdir}/link/link4.in > tempoutput && diff \${srcdir}/link/link4.out tempoutput"
+at_fn_check_prepare_notrace 'a ${...} parameter expansion' "testsuite.at:221"
+( $at_check_trace; testtext ${srcdir}/link/link4.in > tempoutput && diff ${srcdir}/link/link4.out tempoutput
+) >>"$at_stdout" 2>>"$at_stderr"
+at_status=$? at_failed=false
+$at_check_filter
+at_fn_diff_devnull "$at_stderr" || at_failed=:
+at_fn_diff_devnull "$at_stdout" || at_failed=:
+at_fn_check_status 0 $at_status "$at_srcdir/testsuite.at:221"
+$at_failed && at_fn_log_failure
+$at_traceon; }
+
+
+  set +x
+  $at_times_p && times >"$at_times_file"
+) 5>&1 2>&1 | eval $at_tee_pipe
+read at_status <"$at_status_file"
+#AT_STOP_31

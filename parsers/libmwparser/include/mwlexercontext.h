@@ -5,6 +5,7 @@
 #include <wchar.h>
 #include <tre/regex.h>
 #include <antlr3defs.h>
+#include <iconv.h>
 
 /*
  * Different table types can be nested, but not mixed.
@@ -57,6 +58,7 @@ typedef struct MWLEXERCONTEXT_struct
     pANTLR3_STACK blockContextStack;
     int headingLevel;
     regex_t legalTitleChars;
+    regex_t mediaLinkTitle;
 
     /*
      * State for speculative execution.
@@ -67,6 +69,12 @@ typedef struct MWLEXERCONTEXT_struct
     MWLEXERSPECULATION externalLinkSpeculation;
     MWLEXERSPECULATION mediaLinkSpeculation;
     int istreamIndex;
+
+    /*
+     * Character conversion.
+     */
+
+    iconv_t conversionState;
 
     /** Method for deallocating this instance. */
     void (*free)(void * context);
@@ -79,7 +87,7 @@ typedef struct MWLEXERCONTEXT_struct
     pANTLR3_VECTOR_FACTORY vectorFactory;
     pANTLR3_STRING_FACTORY stringFactory;
     bool (*isLegalTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
-    bool (*isLegalExternalLink)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
+    bool (*isMediaLinkTitle)(struct MWLEXERCONTEXT_struct * context, pANTLR3_STRING text);
 
 
 }

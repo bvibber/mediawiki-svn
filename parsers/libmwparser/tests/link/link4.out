@@ -1,0 +1,32 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        INTERNAL LINK[Link]
+        SPACE[ ]
+        SPECIAL[[[]
+        SPECIAL[[]
+        WORD[Link]
+        SPECIAL[]]
+        SPECIAL[]]
+        SPACE[ ]
+        SPECIAL[[]
+        WORD[link]
+        SPACE[ ]
+        SPECIAL[]]
+        SPACE[ ]
+        BEGIN EXTERNAL LINK[http://foo]
+            WORD[bar]
+        END EXTERNAL LINK
+        SPACE[  ]
+        EXTERNAL LINK[https://a]
+        SPACE[ ]
+        EXTERNAL LINK[mailto:a]
+        SPACE[ ]
+        NEWLINE
+        SPECIAL[[]
+        WORD[http]
+        SPECIAL[:]
+        SPECIAL[/]
+        SPECIAL[/]
+        WORD[b]
+    END PARAGRAPH
+END ARTICLE

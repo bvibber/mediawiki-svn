@@ -1,7 +1,6 @@
 BEGIN ARTICLE
     BEGIN PARAGRAPH
-        SPECIAL[[]
-        SPECIAL[[]
+        SPECIAL[[[]
         WORD[Link]
         SPECIAL[|]
         WORD[text]

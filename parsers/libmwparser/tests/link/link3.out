@@ -1,0 +1,11 @@
+BEGIN ARTICLE
+    BEGIN PARAGRAPH
+        INTERNAL LINK[Link]
+        SPACE[ ]
+        SPECIAL[[[]
+        SPECIAL[[]
+        WORD[Link]
+        SPECIAL[]]
+        SPECIAL[]]
+    END PARAGRAPH
+END ARTICLE

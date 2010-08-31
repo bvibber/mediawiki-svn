@@ -83,6 +83,12 @@ static void TCEndHtmlCenter(MWLISTENER *listener);
 static void TCBeginInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle);
 static void TCEndInternalLink(MWLISTENER *listener);
 static void TCOnInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle);
+static void TCBeginExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl);
+static void TCEndExternalLink(MWLISTENER *listener);
+static void TCOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl);
+static void TCBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
+static void TCEndMediaLink(MWLISTENER *listener);
+static void TCOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr);
 static void TCBeginHtmlU(MWLISTENER *listener, pANTLR3_VECTOR attributes);
 static void TCEndHtmlU(MWLISTENER *listener);
 static void TCBeginHtmlDel(MWLISTENER *listener, pANTLR3_VECTOR attributes);
@@ -196,6 +202,12 @@ MWTracingContextNew(pANTLR3_PARSER parser)
     listener->beginInternalLink        = TCBeginInternalLink;
     listener->endInternalLink          = TCEndInternalLink;
     listener->onInternalLink           = TCOnInternalLink;
+    listener->beginExternalLink        = TCBeginExternalLink;
+    listener->endExternalLink          = TCEndExternalLink;
+    listener->onExternalLink           = TCOnExternalLink;
+    listener->beginMediaLink           = TCBeginMediaLink;
+    listener->endMediaLink             = TCEndMediaLink;
+    listener->onMediaLink              = TCOnMediaLink;
     listener->beginBulletList          = TCBeginBulletList;
     listener->endBulletList            = TCEndBulletList;
     listener->beginBulletListItem      = TCBeginBulletListItem;
@@ -449,6 +461,56 @@ TCOnInternalLink(MWLISTENER *listener, pANTLR3_STRING linkTitle)
 {
     TCPrintIndent(listener);
     printf("INTERNAL LINK[%s]\n", linkTitle->chars);
+}
+
+static void
+TCBeginExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl)
+{
+    TCPrintIndent(listener);
+    printf("BEGIN EXTERNAL LINK[%s]\n", linkUrl->chars);
+    TCIncreaseIndent(listener);
+}
+
+static void
+TCEndExternalLink(MWLISTENER *listener)
+{
+    TCDecreaseIndent(listener);
+    TCPrintIndent(listener);
+    printf("END EXTERNAL LINK\n");
+}
+
+static void
+TCOnExternalLink(MWLISTENER *listener, pANTLR3_STRING linkUrl)
+{
+    TCPrintIndent(listener);
+    printf("EXTERNAL LINK[%s]\n", linkUrl->chars);
+}
+
+static void
+TCBeginMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr)
+{
+    TCPrintIndent(listener);
+    printf("BEGIN MEDIA LINK[%s]", linkUrl->chars);
+    TCPrintAttributes(attr);
+    printf("\n");
+    TCIncreaseIndent(listener);
+}
+
+static void
+TCEndMediaLink(MWLISTENER *listener)
+{
+    TCDecreaseIndent(listener);
+    TCPrintIndent(listener);
+    printf("END MEDIA LINK\n");
+}
+
+static void
+TCOnMediaLink(MWLISTENER *listener, pANTLR3_STRING linkUrl, pANTLR3_VECTOR attr)
+{
+    TCPrintIndent(listener);
+    printf("MEDIA LINK[%s]", linkUrl->chars);
+    TCPrintAttributes(attr);
+    printf("\n");
 }
 
 static void

@@ -207,3 +207,17 @@ AT_DATA([tempoutput], [])
 AT_CHECK([testtext ${srcdir}/link/link2.in > tempoutput && diff ${srcdir}/link/link2.out tempoutput])
 
 AT_CLEANUP
+
+AT_SETUP([link3])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/link/link3.in > tempoutput && diff ${srcdir}/link/link3.out tempoutput])
+
+AT_CLEANUP
+
+AT_SETUP([link4])
+
+AT_DATA([tempoutput], [])
+AT_CHECK([testtext ${srcdir}/link/link4.in > tempoutput && diff ${srcdir}/link/link4.out tempoutput])
+
+AT_CLEANUP

@@ -564,8 +564,9 @@ end_table_of_contents_item:
     |  (HTML_H6_CLOSE { CX->endTableOfContentsItem(CX); }))|EOF)
     ;
 
-link_element: internal_link
+link_element: internal_link | external_link | media_link
     ;
+
 internal_link: complete_internal_link | begin_internal_link | end_internal_link
     ;
 
@@ -586,3 +587,46 @@ end_internal_link: END_INTERNAL_LINK
         IE(CX->endInternalLink(CX);)
     }
     ;
+
+external_link: complete_external_link | begin_external_link | end_external_link
+    ;
+
+complete_external_link: linkToken = EXTERNAL_LINK
+    {
+        IE(CX->onExternalLink(CX, $linkToken->custom);)
+    }
+    ;
+
+begin_external_link:  linkToken = BEGIN_EXTERNAL_LINK
+    {
+        IE(CX->beginExternalLink(CX, $linkToken->custom);)
+    }
+    ;
+
+end_external_link: END_EXTERNAL_LINK
+    {
+        IE(CX->endExternalLink(CX);)
+    }
+    ;
+
+media_link: complete_media_link | begin_media_link | end_media_link
+    ;
+
+complete_media_link: linkToken = MEDIA_LINK
+    {
+        IE(CX->onMediaLink(CX, $linkToken->custom);)
+    }
+    ;
+
+begin_media_link:  linkToken = BEGIN_MEDIA_LINK
+    {
+        IE(CX->beginMediaLink(CX, $linkToken->custom);)
+    }
+    ;
+
+end_media_link: END_MEDIA_LINK
+    {
+        IE(CX->endMediaLink(CX);)
+    }
+    ;
+

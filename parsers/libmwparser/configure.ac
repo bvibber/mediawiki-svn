@@ -53,6 +53,7 @@ AC_HEADER_STDBOOL
 AC_HEADER_ASSERT
 AC_CHECK_HEADERS([wchar.h])
 AC_CHECK_SIZEOF([wchar_t], [], [#include<wchar.h>])
+AC_C_BIGENDIAN
 
 AC_CHECK_HEADER(tre/regex.h, AC_DEFINE([HAVE_TRE_REGEX_H], [1], [Header file for supporting wide character regexps.]), AC_MSG_ERROR([tre/regex.h not found]))
 AC_CHECK_LIB([tre], [tre_regwcomp], [LIBREGEX="-ltre"], AC_MSG_ERROR([Regexp library for wide characters not found.]))

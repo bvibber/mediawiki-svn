@@ -91,6 +91,12 @@ typedef struct MWPARSERCONTEXT_struct
     void (*beginInternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkTitle);
     void (*endInternalLink)(struct MWPARSERCONTEXT_struct * context);
     void (*onInternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkTitle);
+    void (*beginExternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkUrl);
+    void (*endExternalLink)(struct MWPARSERCONTEXT_struct * context);
+    void (*onExternalLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_STRING linkUrl);
+    void (*beginMediaLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
+    void (*endMediaLink)(struct MWPARSERCONTEXT_struct * context);
+    void (*onMediaLink)(struct MWPARSERCONTEXT_struct * context, pANTLR3_VECTOR attr);
     void (*beginFormat)(struct MWPARSERCONTEXT_struct * context,
                         void (*begin)(),
                         void (*end)(),

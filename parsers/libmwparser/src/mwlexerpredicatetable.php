@@ -93,7 +93,7 @@ array(
           'name'              => 'wikitextListElement',
           'initiallyDisabled' => array(),
           'types'             => array('block'),
-          'affects'           => array(new TypeDisable('block', 'WIKITEXT_BLOCK')),
+          'affects'           => array(new TypeDisable('block', 'WIKITEXT_BLOCK_OR_LINK')),
           'mayNest'           => false,
           'scope'             => new Scope('eol'),
           ),
@@ -254,7 +254,22 @@ array(
           'initiallyDisabled' => array(),
           'mayNest'           => false,
           'types'             => array(),
-          )
+          'affects'           => array(new PredicateDisable('externalLinkOpen', 'WIKITEXT_BLOCK_OR_LINK')),
+          ),
+    array(
+          'name'              => "externalLinkOpen",
+          'close'             => "externalLinkClose",
+          'initiallyDisabled' => array(),
+          'mayNest'           => false,
+          'types'             => array(),
+          ),
+    array(
+          'name'              => "mediaLinkOpen",
+          'close'             => "mediaLinkClose",
+          'initiallyDisabled' => array(),
+          'mayNest'           => false,
+          'types'             => array(),
+          ),
       );
 
 foreach(array('B', 'Del', 'I', 'Ins', 'U', 'Font', 'Big', 'Small', 'Sub', 'Sup', 'Cite',
@@ -325,7 +340,9 @@ $disabledCauses = array(
     'BLOCK_CONTEXT',
     'BLOCKQUOTE',
     'NESTING_LIMIT',
-    'WIKITEXT_BLOCK'
+    'WIKITEXT_BLOCK_OR_LINK'  // It should be OK for these two causes
+                              // to share the same bit, since they are never applied
+                              // to the same predicate.
  );
 
 define('CX', 'context');
