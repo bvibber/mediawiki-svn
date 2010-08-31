@@ -150,7 +150,7 @@ Si teniu un compte d'usuari, podeu eliminar aquest avís a la secció «Caixa d'
  * @author Marmzok
  */
 $messages['ckb'] = array(
-	'vector-editwarning-warning' => 'بەجێ‌هێشتنی ئەم لاپەڕەیە دەبێتە هۆی لە‌دەست چوونی هەموو ئەو گۆڕانکاریانەی کردووتە.<br />
+	'vector-editwarning-warning' => 'بەجێ‌هێشتنی ئەم لاپەڕەیە دەبێتە هۆی لە‌دەست چوونی هەموو ئەو گۆڕانکاریانەی کردووتە.
 ئەگەر لەژوورەوەی، دەتوانی ئەم ئاگادارییە لە بەشی "دەستکاریی" لە ھەڵبژاردەکانی، لەکاربخەی.',
 	'vector-editwarning-preference' => 'ھۆشیارم بکەوە کاتێک لە پەڕەیەکی دەستکاری بە گۆڕانکاریی پاشەکەوت‌نەکراو دەردەچم',
 );

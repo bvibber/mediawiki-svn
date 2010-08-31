@@ -86,6 +86,13 @@ $messages['br'] = array(
 	'wikieditor-templates-preference' => "Gweredekaat ar c'huzhat patromoù",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'wikieditor-templates-preference' => 'Omogući sakrivanje sadržaja šablona',
+);
+
 /** Catalan (Català)
  * @author Vriullop
  */

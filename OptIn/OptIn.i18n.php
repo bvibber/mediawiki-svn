@@ -1050,6 +1050,20 @@ Možete se bilo kada ponovno prijaviti putem klika na link "{{int:optin-try}}" u
 	'optin-survey-answer-changes-predictability' => 'Poboljšati predvidivost performansi.',
 	'optin-survey-answer-changes-custom' => 'Omogućuje veća korisnička podešavanja.',
 	'optin-survey-answer-changes-other' => 'Ostalo:',
+	'optin-improvements2' => '== Šta je poboljšano? ==
+[[File:UsabilityToolbar.png|left|link=|Snimak ekrana poboljšane alatne trake za uređivanje]]
+[[File:UsabilityDialogs.png|left|link=|Snimak ekrana dijaloga za stvaranje novog sadržaja]]
+;Poboljšana alatna traka
+Poboljšana alatna traka omogućava jednostavnije uređivanje članaka.
+Nove i poboljšane ikone čine da se lahko raspozna akcija koju svaki alat izvršava.
+Proširene sekcije smanjuju nered i sakrivaju manje korištene alate, koji su dostupni u jednom kliku.
+;Dijalog
+Kada se prave linkovi i tabele, klikanjem na ikonu alata sada se otvara dijaloška kutija koja pomaže pravljenje linkova i tabela putem popunjavanja jednostavnog obrasca.
+;I više
+Uveli smo brojna druga poboljšanja poput napredne navigacije, kaskadnih tabova, napredne pretrage i više.
+== Kako se uključiti ==
+Za više podataka o Inicijativi upotrebljivosti, molimo posjetite našu [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative web stranicu].
+<div style="clear:both"></div>',
 );
 
 /** Catalan (Català)
@@ -2954,14 +2968,14 @@ Možete je u svakom trenutku ponovno isprobati klikom na poveznicu "{{int:optin-
 	'optin-improvements2' => '== Što je poboljšano? == 
 [[File:UsabilityToolbar.png|left|link=|Snimak zaslona nove trake za uređivanje]] 
 [[File:UsabilityDialogs.png|left|link=|Snimak zaslona novih dijaloga]]
-;Poboljšana traka za uređivanje
-Poboljšana alatna traka olakšava uređivanje članaka. 
-Nove i poboljšane ikone čine jasnijim što svaki alat čini.
-Povećana širina sekcija pojednostavnjuje alat, a rijetko korišteni alati su samo jedan klik daleko. 
-;Dialog 
-Kod stvaranja poveznica ili tablica, klikom na ikonu alat sada se otvara dijaloški okvir koji vam pomaže stvoriti poveznice i tablice ispunjavanjem jednostavnog obrasca. 
-;I više 
-Uveli smo i niz drugih poboljšanja poput poboljšane navigacije, kaskadnih kartica, poboljšano traženje, i više. 
+;Dotjerana traka za uređivanje
+Nova traka za uređivanje olakšava uređivanje članaka. 
+Nove ikone čine jasnijim što svaki alat čini.
+Širina nekih ikona je povećana tako da rukovanje alatom bude jednostavnije, a rijetko korišteni alati su samo jedan klik daleko. 
+;Novi dijalozi
+Kod stvaranja poveznica ili tablica, klikom na ikonu sada se otvara dijaloški okvir koji vam pomaže stvoriti poveznice i tablice ispunjavanjem jednostavnog obrasca. 
+;I to nije sve!
+Uveli smo i niz drugih poboljšanja poput poboljšane navigacije, kaskadnih kartica, tražilica je bolja!
 == Kako se uključiti == 
 Kako biste saznali više o inicijativi za povećanje uporabljivosti, molimo vas da posjetite našu [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative internetsku stranicu].
 <div style="clear:both"></div>',
@@ -3953,6 +3967,19 @@ Wat hät Der aam dä Verschöönerunge zom Ußprobeere nit jefalle?',
 	'optin-survey-answer-changes-predictability' => 'Maat de Leistung mieh afseebaar.',
 	'optin-survey-answer-changes-custom' => 'Jrüßer Aanpassonge aan der einzelne Metmaacher müjjelesch maache.',
 	'optin-survey-answer-changes-other' => 'Söns jet:',
+	'optin-improvements2' => '== Wat es besser? ==
+[[File:UsabilityToolbar.png|left|link=|De jrüüßer Leß met Werkzüch]]
+[[File:UsabilityDialogs.png|left|link=|E Beld met de neu Nohfroore]]
+;De jrüüßer Leß met Werkzüch
+määd et eijfacher, Sigge ze ändere.
+Neu un besser Minni-Beldscher sulle düüdelijjer zeije, wat för e Symbol för wat schteiht.
+Aandeile för op ze klecke sorrje för mieh Ovverseeschleschkeit un don de sellde jebruchte Werkzüch ene Extra Klick wigger fott.
+;Nohfroore
+Wam_mer Lengks udder Tabälle maache well, kritt mer e Käßje met Nohfroore op jemaat, met enem Fommulla dren, wat mer eijfaach ußfölle kann.
+;Un noch mieh
+Mer ham en joode Zahl ander Verbesserunge em Fommulaa för et Ändere enjebout, för e Beishpell mieh Müjjeleschkeite för eröm ze Klecke, et Söhke jeiht besser, un esu.
+== Mieh Enfomazjuhne ==
+Loor Der de [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative Houmepädsch vun de <i lang="en">Usability Initiative</i>] aan, öm noch mieh zu lässe.',
 );
 
 /** Kurdish (Latin) (Kurdî (Latin))
@@ -5501,7 +5528,7 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 ;Barra de ferramentas melhorada
 A barra de ferramentas melhorada facilita a edição de artigos.
 Ícones novos e melhorados tornam mais clara a função de cada ferramenta.
-Secções expandidas reduzem a confusão ao mesmo tempo que mantêm as ferramentas pouco usadas à distância de um clique.
+Seções expandidas reduzem a confusão ao mesmo tempo que mantêm as ferramentas pouco usadas à distância de um clique.
 ;Diálogo
 Ao criar links ou tabelas, clicar o ícone de ferramentas abre agora um diálogo que auxilia a sua criação preenchendo um formulário simples.
 ;E mais

@@ -975,6 +975,18 @@ $messages['tr'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Yeni özellikleri dene',
 );
 
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Ильнар
+ */
+$messages['tt-cyrl'] = array(
+	'prefswitch-link-anon' => 'Яңа мөмкинчелекләр',
+	'tooltip-pt-prefswitch-link-anon' => 'Яңа мөмкинчелекләр турында',
+	'prefswitch-link-on' => 'Ничек бар шулай кайтарырга',
+	'tooltip-pt-prefswitch-link-on' => 'Яңа мөмкинчелекләрне ябарга',
+	'prefswitch-link-off' => 'Яңа мөмкинчелекләр',
+	'tooltip-pt-prefswitch-link-off' => 'Яңа мөмкинчелекләрне исбатлап карагыз',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Тест
