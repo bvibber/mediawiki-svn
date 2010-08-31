@@ -253,12 +253,7 @@ class ResourceLoader {
 			// Scripts
 			$scripts = '';
 			if ( $includeScripts ) {
-				$scripts .= $module->getScript();
-				if ( $parameters['debug'] ) {
-					$scripts .= $module->getDebugScript();
-				}
-				$scripts .= $module->getLanguageScript( $parameters['lang'] );
-				$scripts .= $module->getSkinScript( $parameters['skin'] );
+				$scripts .= $module->getScript( $parameters['lang'], $parameters['skin'], $parameters['debug'] );
 				// Special meta-information for the 'mediawiki' module
 				if ( $name === 'mediawiki' && $parameters['only'] === 'scripts' ) {
 					$config = array( 'server' => $server, 'debug', 'debug' => $parameters['debug'] );
@@ -283,13 +278,12 @@ class ResourceLoader {
 			// Styles
 			$styles = '';
 			if ( $includeStyles ) {
-				$styles .= $module->getStyle();
-				$styles .= $module->getSkinStyle( $parameters['skin'] );
+				$styles .= $module->getStyle( $parameters['skin'] );
 			}
 			
 			if ( $styles !== '' ) {
 				if ( $parameters['dir'] == 'rtl' ) {
-					$style = self::filter( 'flip-css', $style );
+					$styles = self::filter( 'flip-css', $styles );
 				}
 				$styles = $parameters['debug'] ? $styles : self::filter( 'minify-css', $styles );
 			}
@@ -308,7 +302,7 @@ class ResourceLoader {
 			}
 			if ( $includeScripts ) {
 				// Register modules without loaders
-				$scripts .= "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
+				echo "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
 			}
 		}
 		
