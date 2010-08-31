@@ -11,12 +11,6 @@ class SimpleSurvey extends PrefSwitchSurvey {
 			dirname( dirname( __FILE__ ) ) . "/UsabilityInitiative/PrefSwitch/PrefSwitch.sql"
 		);
 
-		$wgExtModifiedFields[] = array(
-			'prefswitch_survey',
-			'pss_user',
-			dirname( __FILE__ ) . '/SimpleSurvey.patch-pssuser.sql'
-		);
-
 		return true;
 	}
 
