@@ -256,19 +256,23 @@ class ResourceLoader {
 				$scripts .= $module->getScript( $parameters['lang'], $parameters['skin'], $parameters['debug'] );
 				// Special meta-information for the 'mediawiki' module
 				if ( $name === 'mediawiki' && $parameters['only'] === 'scripts' ) {
-					$config = array( 'server' => $server, 'debug', 'debug' => $parameters['debug'] );
+					$config = array( 'server' => $server, 'debug' => $parameters['debug'] );
 					$scripts .= "mediaWiki.config.set( " . FormatJson::encode( $config ) . " );\n";
+					
+					// FIXME: This loop shades the $name and $module variables from the outer loop. WTF?
 					foreach ( self::$modules as $name => $module ) {
 						$loader = $module->getLoaderScript();
 						if ( $loader !== false ) {
 							$scripts .= $loader;
 						} else {
-							if ( !count( $module->getDependencies() ) && !in_array( $name, $missing ) ) {
+							if ( !count( $module->getDependencies() ) && !in_array( $name, $missing ) && !in_array( $name, $modules ) ) {
 								$registrations[$name] = $name;
 							} else {
 								$registrations[$name] = array( $name, $module->getDependencies() );
 								if ( in_array( $name, $missing ) ) {
 									$registrations[$name][] = 'missing';
+								} else if ( in_array( $name, $modules ) ) {
+									$registrations[$name][] = 'ready';
 								}
 							}
 						}
@@ -300,13 +304,14 @@ class ResourceLoader {
 				$styles = Xml::escapeJsString( $styles );
 				echo "mediaWiki.loader.implement( '{$name}', function() {\n{$scripts}\n}, '{$styles}', {$messages} );\n";
 			}
-			if ( $includeScripts ) {
-				// Register modules without loaders
-				echo "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
-			}
 		}
 		
 		// Final processing
+		if ( $includeScripts ) {
+			// Register modules without loaders
+			echo "mediaWiki.loader.register( " . FormatJson::encode( array_values( $registrations ) ) . " );\n";
+		}
+		
 		if ( $parameters['only'] == 'styles' ) {
 			header( 'Content-Type: text/css' );
 		} else {

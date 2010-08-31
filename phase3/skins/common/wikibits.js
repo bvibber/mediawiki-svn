@@ -3,6 +3,9 @@
 window.clientPC = navigator.userAgent.toLowerCase(); // Get client info
 window.is_gecko = /gecko/.test( clientPC ) &&
 	!/khtml|spoofer|netscape\/7\.0/.test(clientPC);
+
+window.is_safari = window.is_safari_win = window.webkit_version =
+	window.is_chrome = window.is_chrome_mac = false;
 window.webkit_match = clientPC.match(/applewebkit\/(\d+)/);
 if (webkit_match) {
 	window.is_safari = clientPC.indexOf('applewebkit') != -1 &&
@@ -15,12 +18,16 @@ if (webkit_match) {
 		clientPC.indexOf('spoofer') === -1;
 	window.is_chrome_mac = is_chrome && clientPC.indexOf('mac') !== -1
 }
+
 // For accesskeys; note that FF3+ is included here!
 window.is_ff2 = /firefox\/[2-9]|minefield\/3/.test( clientPC );
 window.ff2_bugs = /firefox\/2/.test( clientPC );
 // These aren't used here, but some custom scripts rely on them
 window.is_ff2_win = is_ff2 && clientPC.indexOf('windows') != -1;
 window.is_ff2_x11 = is_ff2 && clientPC.indexOf('x11') != -1;
+
+window.is_opera = window.is_opera_preseven = window.is_opera_95 =
+	window.opera6_bugs = window.opera7_bugs = window.opera95_bugs = false;
 if (clientPC.indexOf('opera') != -1) {
 	window.is_opera = true;
 	window.is_opera_preseven = window.opera && !document.childNodes;
