@@ -146,7 +146,7 @@ class SpecialPrefSwitch extends SpecialPage {
 				case 'off':
 					// Switch off
 					if ( self::checkToken() && self::isSwitchedOn( $wgUser ) && $wgRequest->wasPosted() ) {
-						self::switchOff( $wgUser, $wgRequest->getCheck( 'global' ) && $wgPrefSwitchGlobalOptOut );
+						self::switchOff( $wgUser, $wgPrefSwitchGlobalOptOut && in_array( 'yes', $wgRequest->getArray( 'prefswitch-survey-global', array() ) ) );
 						PrefSwitchSurvey::save( 'off', $wgPrefSwitchSurveys['feedback'] );
 						$wgOut->addWikiMsg( 'prefswitch-success-off' );
 					} else if ( !self::isSwitchedOn( $wgUser ) ) {
@@ -249,15 +249,6 @@ class SpecialPrefSwitch extends SpecialPage {
 				wfMsg( $wgPrefSwitchSurveys[$mode]['submit-msg'] ),
 				array( 'id' => "prefswitch-survey-submit-{$mode}", 'class' => 'prefswitch-survey-submit' )
 			);
-			if ( $wgPrefSwitchSurveys[$mode]['global'] && $wgPrefSwitchGlobalOptOut ) {
-				$html .= Xml::submitButton(
-					wfMsg( $wgPrefSwitchSurveys[$mode]['submit-global-msg'] ),
-					array(	'id' => "prefswitch-survey-submit-global-{$mode}",
-						'class' => 'prefswitch-survey-submit',
-						'name' => 'global',
-					)
-				);
-			}
 			$html .= Xml::closeElement( 'dt' );
 			$html .= Xml::closeElement( 'form' );
 			$wgOut->addHtml( $html );
