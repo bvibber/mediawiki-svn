@@ -565,8 +565,7 @@ class ResourceLoaderStartupModule extends ResourceLoaderModule {
 	}
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {
-		// FIXME
-		return wfTimestamp();
+		return ResourceLoader::getHighestModifiedTime();
 	}
 	
 	public function getStyle( $skin ) { return ''; }

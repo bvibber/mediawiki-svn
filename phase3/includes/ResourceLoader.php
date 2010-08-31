@@ -194,6 +194,14 @@ class ResourceLoader {
 		return "window.mediaWikiStartUp = function() {" . $scripts . "};";
 	}
 	
+	public static function getHighestModifiedTime() {
+		$retval = 1; // wfTimestamp() treats 0 as 'now', so that's not a suitable choice
+		foreach ( self::$modules as $module ) {
+			$retval = max( $retval, $module->getModifiedTime() );
+		}
+		return $retval;
+	}
+	
 	/*
 	 * Outputs a response to a resource load-request, including a content-type header
 	 *
