@@ -18,10 +18,96 @@
  * @author Roan Kattouw
  */
 
-// TODO: Class comment
-// TODO: Add an interface to inherit from rather than having to subclass this class, or add an empty-returning superclass
-class ResourceLoaderModule {
+/**
+ * Interface for resource loader modules, with name registration functionality.
+ */
+abstract class ResourceLoaderModule {
 	private $name = null;
+	
+	/**
+	 * Get this module's name. This is set when the module is registered
+	 * with ResourceLoader::register()
+	 * @return mixed Name (string) or null if no name was set
+	 */
+	public function getName() {
+		return $this->name;
+	}
+	
+	/**
+	 * Set this module's name. This is called by ResourceLodaer::register()
+	 * when registering the module. Other code should not call this.
+	 * @param $name string Name
+	 */
+	public function setName( $name ) {
+		$this->name = $name;
+	}
+	
+	/**
+	 * Get all JS for this module for a given language and skin.
+	 * Includes all relevant JS except loader scripts.
+	 * @param $lang string Language code
+	 * @param $skin string Skin name
+	 * @param $debug bool Whether to include debug scripts
+	 * @return string JS
+	 */
+	public abstract function getScript( $lang, $skin, $debug );
+	
+	/**
+	 * Get all CSS for this module for a given skin.
+	 * @param $skin string Skin name
+	 * @return string CSS
+	 */
+	public abstract function getStyle( $skin );
+	
+	/**
+	 * Get the messages needed for this module.
+	 *
+	 * To get a JSON blob with messages, use MessageBlobStore::get()
+	 * @return array of message keys. Keys may occur more than once
+	 */
+	public abstract function getMessages();
+	
+	/**
+	 * Get the loader JS for this module, if set.
+	 * @return mixed Loader JS (string) or false if no custom loader set
+	 */
+	public abstract function getLoaderScript();
+	
+	/**
+	 * Get a list of modules this module depends on.
+	 *
+	 * Dependency information is taken into account when loading a module
+	 * on the client side. When adding a module on the server side,
+	 * dependency information is NOT taken into account and YOU are
+	 * responsible for adding dependent modules as well. If you don't do
+	 * this, the client side loader will send a second request back to the
+	 * server to fetch the missing modules, which kind of defeats the
+	 * purpose of the resource loader.
+	 *
+	 * To add dependencies dynamically on the client side, use a custom
+	 * loader script, see getLoaderScript()
+	 * @return array Array of module names (strings)
+	 */
+	public abstract function getDependencies();
+	
+	/**
+	 * Get this module's last modification timestamp for a given
+	 * combination of language, skin and debug mode flag. This is typically
+	 * the highest of each of the relevant components' modification
+	 * timestamps. Whenever anything happens that changes the module's
+	 * contents for these parameters, the mtime should increase.
+	 * @param $lang string Language code
+	 * @param $skin string Skin name
+	 * @param $debug bool Debug mode flag
+	 * @return int UNIX timestamp
+	 */
+	public abstract function getmtime( $lang, $skin, $debug );
+}
+
+/**
+ * Module based on local JS/CSS files. This is the most common type of module.
+ */
+class ResourceLoaderFileModule extends ResourceLoaderModule {
 	private $scripts = array();
 	private $styles = array();
 	private $messages = array();
@@ -96,14 +182,6 @@ class ResourceLoaderModule {
 					break;
 			}
 		}
-	}
-	
-	public function getName() {
-		return $this->name;
-	}
-	
-	public function setName( $name ) {
-		$this->name = $name;
 	}
 	
 	/**
@@ -215,15 +293,6 @@ class ResourceLoaderModule {
 		$this->loaders = array_merge( $this->loaders, (array)$scripts );
 	}
 	
-	/**
-	 * Get all JS for this module for a given language and skin. This
-	 * aggregates the output of getPrimaryScript(), getLanguageScript(),
-	 * getSkinScript() and getDebugScript() (but NOT getLoaderScript() !)
-	 * @param $lang string Language code
-	 * @param $skin string Skin name
-	 * @param $debug bool Whether to include debug scripts
-	 * @return string JS
-	 */
 	public function getScript( $lang, $skin, $debug ) {
 		$retval = $this->getPrimaryScript() . "\n" .
 			$this->getLanguageScript( $lang ) . "\n" .
@@ -234,13 +303,47 @@ class ResourceLoaderModule {
 		return $retval;
 	}
 	
-	/**
-	 * Get all CSS for this module for a given skin. This
-	 * aggregates the output of getPrimaryStyle() and getSkinStyle()
-	 * @param $skin string Skin name
-	 */
 	public function getStyle( $skin ) {
-		return $this->getPrimaryStyle() . $this->getSkinStyle( $skin );
+		return $this->getPrimaryStyle() . "\n" . $this->getSkinStyle( $skin );
+	}
+	
+	public function getMessages() {
+		return $this->messages;
+	}
+	
+	public function getDependencies() {
+		return $this->dependencies;
+	}
+	
+	public function getLoaderScript() {
+		if ( count( $this->loaders ) == 0 ) {
+			return false;
+		}
+		return self::concatScripts( $this->loaders );
+	}
+	
+	/**
+	 * Get the last modified timestamp of this module, which is calculated
+	 * as the highest last modified timestamp of its constituent files and
+	 * the files it depends on (see getFileDependencies()). Only files
+	 * relevant to the given language and skin are taken into account, and
+	 * files only relevant in debug mode are not taken into account when
+	 * debug mode is off.
+	 * @param $lang string Language code
+	 * @param $skin string Skin name
+	 * @param $debug bool Debug mode flag
+	 * @return int UNIX timestamp
+	 */
+	public function getmtime( $lang, $skin, $debug ) {
+		$files = array_merge( $this->scripts, $this->styles,
+			$debug ? $this->debugScripts : array(),
+			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
+			(array)self::getSkinFiles( $skin, $this->skinScripts ),
+			(array)self::getSkinFiles( $skin, $this->skinStyles ),
+			$this->loaders,
+			$this->getFileDependencies( $lang, $skin )
+		);
+		return max( array_map( 'filemtime', $files ) );
 	}
 	
 	/**
@@ -259,24 +362,6 @@ class ResourceLoaderModule {
 	 */
 	protected function getPrimaryStyle() {
 		return self::concatStyles( $this->styles );
-	}
-	
-	/**
-	 * Get the messages added to this module with addMessages().
-	 *
-	 * To get a JSON blob with messages, use MessageBlobStore::get()
-	 * @return array of message keys. Keys may occur more than once
-	 */
-	public function getMessages() {
-		return $this->messages;
-	}
-	
-	/**
-	 * Get the dependencies added to this module with addDependencies()
-	 * @return array of module names (strings)
-	 */
-	public function getDependencies() {
-		return $this->dependencies;
 	}
 	
 	/**
@@ -335,48 +420,12 @@ class ResourceLoaderModule {
 	}
 	
 	/**
-	 * Get the custom loader JS, if set. This is pulled from the script
-	 * files added through addLoaders()
-	 * @return mixed Loader JS (string) or false if no custom loader set
-	 */
-	public function getLoaderScript() {
-		if ( count( $this->loaders ) == 0 ) {
-			return false;
-		}
-		return self::concatScripts( $this->loaders );
-	}
-	
-	/**
-	 * Get the last modified timestamp of this module, which is calculated
-	 * as the highest last modified timestamp of its constituent files and
-	 * the files it depends on (see getFileDependencies()). Only files
-	 * relevant to the given language and skin are taken into account, and
-	 * files only relevant in debug mode are not taken into account when
-	 * debug mode is off.
-	 * @param $lang string Language code
-	 * @param $skin string Skin name
-	 * @param $debug bool Debug mode flag
-	 * @return int UNIX timestamp
-	 */
-	public function getmtime( $lang, $skin, $debug ) {
-		$files = array_merge( $this->scripts, $this->styles,
-			$debug ? $this->debugScripts : array(),
-			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
-			(array)self::getSkinFiles( $skin, $this->skinScripts ),
-			(array)self::getSkinFiles( $skin, $this->skinStyles ),
-			$this->loaders,
-			$this->getFileDependencies( $lang, $skin )
-		);
-		return max( array_map( 'filemtime', $files ) );
-	}
-	
-	/**
 	 * Get the files this module depends on indirectly for a given skin.
 	 * Currently these are only image files referenced by the module's CSS.
 	 * @param $skin string Skin name
 	 * @return array of files
 	 */
-	public function getFileDependencies( $skin ) {
+	protected function getFileDependencies( $skin ) {
 		$dbr = wfGetDb( DB_SLAVE );
 		$deps = $dbr->selectField( 'module_deps', 'md_deps', array(
 				'md_module' => $this->getName(),
@@ -403,7 +452,7 @@ class ResourceLoaderModule {
 	 * @return string Concatenated and remapped contents of $files
 	 */
 	protected static function concatStyles( $files ) {
-		return implode( "\n", array_map( array( 'ResourceLoaderModule', 'remapStyle' ), array_unique( (array) $files ) ) );
+		return implode( "\n", array_map( array( __CLASS__, 'remapStyle' ), array_unique( (array) $files ) ) );
 	}
 	
 	/**
@@ -421,7 +470,7 @@ class ResourceLoaderModule {
  * Custom module for MediaWiki:Common.js and MediaWiki:Skinname.js
  */
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
-	protected function getSkinScript( $skin ) {
+	public function getScript( $lang, $skin, $debug ) {
 		return Skin::newFromKey( $skin )->generateUserJs();
 	}
 	
@@ -447,14 +496,8 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 		return $retval;
 	}
 	
-	// Dummy overrides to return emptyness
-	// FIXME: Use a parent class with emptyness and let the normal module class inherit from that
-	protected function getPrimaryScript() { return ''; }
-	protected function getPrimaryStyle() { return ''; }
+	public function getStyle( $skin ) { return ''; }
 	public function getMessages() { return array(); }
+	public function getLoaderScript() { return ''; }
 	public function getDependencies() { return array(); }
-	protected function getDebugScript() { return ''; }
-	protected function getLanguageScript( $lang ) { return ''; }
-	protected function getSkinStyle( $skin ) { return ''; }
-	public function getLoaderScript() { return false; }
 }
