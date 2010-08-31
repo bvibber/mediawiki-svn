@@ -5,6 +5,7 @@ ResourceLoader::register( array(
 	/* Special resources who have their own classes */
 	
 	'sitejs' => new ResourceLoaderSiteJSModule,
+	'startup' => new ResourceLoaderStartupModule,
 	
 	/* Skins */
 	

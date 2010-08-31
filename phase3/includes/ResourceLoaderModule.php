@@ -543,3 +543,20 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 	public function getLoaderScript() { return ''; }
 	public function getDependencies() { return array(); }
 }
+
+
+class ResourceLoaderStartupModule extends ResourceLoaderModule {
+	public function getScript( $lang, $skin, $debug ) {
+		return ResourceLoader::getModuleRegistrations();
+	}
+	
+	public function getModifiedTime( $lang, $skin, $debug ) {
+		// FIXME
+		return wfTimestamp();
+	}
+	
+	public function getStyle( $skin ) { return ''; }
+	public function getMessages() { return array(); }
+	public function getLoaderScript() { return ''; }
+	public function getDependencies() { return array(); }
+}

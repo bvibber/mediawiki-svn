@@ -117,14 +117,14 @@ class ResourceLoader {
 	 * 
 	 * @return {string} JavaScript code for registereing all modules with client loader
 	 */
-	protected static function getModuleRegistrations() {
+	public static function getModuleRegistrations() {
 		$scripts = '';
 		$registrations = array();
 		foreach ( self::$modules as $name => $module ) {
 			if ( !in_array( $name, self::$preRegisteredModules ) ) {
 				// Support module loader scripts
-				if ( $loader = $module->getLoaderScript() !== false ) {
-					$scripts .= $loader;
+				if ( ( $loader = $module->getLoaderScript() ) !== false ) {
+					$scripts .= "\n" . $loader;
 				}
 				// Automatically register module
 				else {
@@ -139,7 +139,8 @@ class ResourceLoader {
 				}
 			}
 		}
-		return $scripts . "\nmediaWiki.loader.register( " . FormatJSON::encode( $registrations ) . " );\n";
+		$scripts .= "\nmediaWiki.loader.register( " . FormatJson::encode( $registrations ) . " );\n";
+		return "window.mediaWikiStartUp = function() {" . $scripts . "};";
 	}
 	
 	/* Static Methods */
