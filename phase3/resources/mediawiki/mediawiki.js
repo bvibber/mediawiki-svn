@@ -165,6 +165,10 @@ window.mediaWiki = new ( function( $ ) {
 		/*
 		 * Mapping of registered modules
 		 * 
+		 * The jquery module is pre-registered, because it must have already been provided for this object to have
+		 * been built, and in debug mode jquery would have been provided through a unique loader request, making it
+		 * impossible to hold back registration of jquery until after mediawiki.
+		 * 
 		 * Format:
 		 * 	{
 		 * 		'moduleName': {
@@ -176,7 +180,7 @@ window.mediaWiki = new ( function( $ ) {
 		 * 		}
 		 * 	}
 		 */
-		var registry = {};
+		var registry = { 'jquery': { 'state': 'ready' }, 'mediawiki': { 'state': 'ready' } };
 		// List of modules which will be loaded as when ready
 		var batch = [];
 		// List of modules to be loaded
