@@ -90,7 +90,8 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		}
 
 		//Only can actually be "stale" if the user has rated the article before
-		if ( $params['userrating'] && $userRatedArticle ) {
+		//We need a target revision to be able to calculate "stale" against
+		if ( $params['userrating'] && $userRatedArticle && $params['revid'] ) {
 			$this->resetQueryParams();
 
 			$this->addTables( 'revision' );
