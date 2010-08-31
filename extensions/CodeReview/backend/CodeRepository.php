@@ -412,12 +412,14 @@ class CodeRepository {
 			__METHOD__
 		);
 		$user = null;
-		if ( $wikiUser !== false )
+		if ( $wikiUser !== false ) {
 			$user = User::newFromName( $wikiUser );
-		if ( $user instanceof User )
+		}
+		if ( $user instanceof User ){
 			$res = $user;
-		else
+		} else {
 			$res = false;
+		}
 		return self::$userLinks[$author] = $res;
 	}
 

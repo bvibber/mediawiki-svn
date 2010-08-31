@@ -97,8 +97,9 @@ class CodeRevisionListView extends CodeView {
 		// This way of getting GET parameters is horrible, but effective.
 		$fields = $wgRequest->getValues();
 		foreach ( array_keys( $fields ) as $key ) {
-			if ( substr( $key, 0, 2 ) == 'wp' || $key == 'title' )
+			if ( substr( $key, 0, 2 ) == 'wp' || $key == 'title' ) {
 				unset( $fields[$key] );
+			}
 		}
 
 		global $wgOut;
@@ -125,7 +126,9 @@ class CodeRevisionListView extends CodeView {
 			$changeFields['code-batch-tags'] = CodeRevisionView::addTagForm( '', '' );
 		}
 
-		if ( !count( $changeFields ) ) return ''; // nothing to do here
+		if ( !count( $changeFields ) ) {
+			return ''; // nothing to do here
+		}
 
 		$changeInterface = Xml::fieldset( wfMsg( 'codereview-batch-title' ),
 				Xml::buildForm( $changeFields, 'codereview-batch-submit' ) );
@@ -194,10 +197,11 @@ class CodeRevisionListView extends CodeView {
 		}
 		$whereCond = array_merge( $whereCond, $this->getSpecializedWhereClause( $dbr ) );
 		$result = $dbr->selectRow( $tables, $selectFields, $whereCond );
-		if ( $result )
+		if ( $result ) {
 			return $result->rev_count;
-		else
+		} else {
 			return 0;
+		}
 	}
 
 	/**
@@ -257,7 +261,6 @@ class SvnRevTablePager extends SvnTablePager {
 				)
 			);
 		}
-		return false;
 	}
 
 	function getSelectFields() {

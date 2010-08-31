@@ -149,18 +149,22 @@ class CodeReleaseNotes extends CodeView {
 	// Quick relevance tests (these *should* be over-inclusive a little if anything)
 	private function isRelevant( $summary, $whole = true ) {
 		# Fixed a bug? Mentioned a config var?
-		if ( preg_match( '/\b(bug #?(\d+)|\$[we]g[0-9a-z]{3,50})\b/i', $summary ) )
+		if ( preg_match( '/\b(bug #?(\d+)|\$[we]g[0-9a-z]{3,50})\b/i', $summary ) ) {
 			return true;
+		}
 		# Sanity check: summary cannot be *too* short to be useful
 		$words = str_word_count( $summary );
-		if ( mb_strlen( $summary ) < 40 || $words <= 5 )
+		if ( mb_strlen( $summary ) < 40 || $words <= 5 ) {
 			return false;
+		}
 		# All caps words (like "BREAKING CHANGE"/magic words)?
-		if ( preg_match( '/\b[A-Z]{6,30}\b/', $summary ) )
+		if ( preg_match( '/\b[A-Z]{6,30}\b/', $summary ) ) {
 			return true;
+		}
 		# Random keywords
-		if ( preg_match( '/\b(wiki|HTML\d|CSS\d|UTF-?8|(Apache|PHP|CGI|Java|Perl|Python|\w+SQL) ?\d?\.?\d?)\b/i', $summary ) )
+		if ( preg_match( '/\b(wiki|HTML\d|CSS\d|UTF-?8|(Apache|PHP|CGI|Java|Perl|Python|\w+SQL) ?\d?\.?\d?)\b/i', $summary ) ) {
 			return true;
+		}
 		# Are we looking at the whole summary or an aspect of it?
 		if ( $whole ) {
 			return preg_match( '/(^|\n) ?\*/', $summary ); # List of items?

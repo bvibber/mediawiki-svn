@@ -72,10 +72,11 @@ class SpecialCode extends SpecialPage {
 					break;
 				} else {
 					# Nonsense parameters, back out
-					if ( empty( $params[1] ) )
+					if ( empty( $params[1] ) ) {
 						$view = new CodeRevisionListView( $params[0] );
-					else
+					} else {
 						$view = new CodeRevisionView( $params[0], $params[1] );
+					}
 					break;
 				}
 			case 4:

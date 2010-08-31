@@ -58,10 +58,11 @@ class CodeDiffHighlighter {
 			' ' => array( 'span', array() ),
 			);
 		$first = substr( $line, 0, 1 );
-		if ( isset( $tags[$first] ) )
+		if ( isset( $tags[$first] ) ) {
 			return $tags[$first];
-		else
+		} else {
 			return $default;
+		}
 	}
 
 }
