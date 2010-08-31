@@ -56,6 +56,8 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 		$ratings = array();
 
+		$userRatedArticle = false;
+
 		foreach ( $res as $row ) {
 			$pageId = $row->aap_page_id;
 
@@ -80,9 +82,31 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 			if ( $params['userrating'] && !is_null( $row->aa_rating_value ) ) {
 				$thisRow['userrating'] = $row->aa_rating_value;
+
+				$userRatedArticle = true;
 			}
 
 			$ratings[$pageId]['ratings'][] = $thisRow;
+		}
+
+		//Only can actually be "stale" if the user has rated the article before
+		if ( $params['userrating'] && $userRatedArticle ) {
+			$this->resetQueryParams();
+
+			$this->addTables( 'revision' );
+			$this->addFields( array( 'COUNT(rev_id) AS norevs', 'rev_page' ) );
+
+			$this->addWhereFld( 'rev_page', $params['pageid'] );
+			$this->addWhere( 'rev_id > ' . $params['revid'] );
+
+			$res = $this->select( __METHOD__ );
+
+			global $wgArticleAssessmentStaleCount;
+
+			if ( $res && $res[0]->norevs > $wgArticleAssessmentStaleCount ){
+				//it's stale!
+				$ratings[$params['pageid']]['stale'] = '';
+			}
 		}
 
 		$count = 0;
@@ -101,7 +125,10 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 	public function getAllowedParams() {
 		return array(
-			'pageid' => null,
+			'pageid' => array(
+				ApiBase::PARAM_ISMULTI => false,
+				ApiBase::PARAM_TYPE => 'integer',
+			),
 			'revid' => null,
 			'userrating' => false,
 			'limit' => array(

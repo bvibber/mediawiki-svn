@@ -2,8 +2,8 @@
 
 // settings
 
-// number of reviews
-$wgArticleAssessmentRevisionCutoff = 5;
+// number of new revisions to mark the last rating as old
+$wgArticleAssessmentStaleCount = 5;
 
 // Number of "ratings" to store. Allows it to be a bit more dynamic
 $wgArticleAssessmentRatingCount = 4;
