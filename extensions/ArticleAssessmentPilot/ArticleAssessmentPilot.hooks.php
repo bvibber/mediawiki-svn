@@ -17,9 +17,9 @@ class ArticleAssessmentPilotHooks {
 		array( 'src' => 'js/jquery.tipsy.js', 'version' => 1 ),
 		array( 'src' => 'js/jquery.stars.js', 'version' => 1 ),
 	);
-	
 
 	private static $messages = array();
+	private static $scripts = array();
 
 	/* Static Functions */
 	public static function schema() {
@@ -118,15 +118,19 @@ class ArticleAssessmentPilotHooks {
 	public static function addMessages( $messages ) {
 		self::$messages = array_merge( self::$messages, $messages );
 	}
-	
-	
+
 	public static function addCode( &$data, $skin ) {
 		$title = $skin->getTitle();
 
-		// check if this page should have the form
-
 		// Chances are we only want to be rating Mainspace, right?
 		if ( $title->getNamespace() !== NS_MAIN ) {
+			return true;
+		}
+
+		global $wgArticleAssessmentPages;
+
+		// check if this page should have the form
+		if ( !array_key_exists( $title->getArticleId() , $wgArticleAssessmentPages ) ) {
 			return true;
 		}
 

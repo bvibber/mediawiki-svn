@@ -39,3 +39,6 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'articleassessment-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:ArticleAssessmentPilot'
 );
+
+//Array of page id's for which to include the rating stuffs on
+$wgArticleAssessmentPages = array();
