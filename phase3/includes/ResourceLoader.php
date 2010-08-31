@@ -259,7 +259,7 @@ class ResourceLoader {
 		// Calculate the mtime of this request. We need this, 304 or no 304
 		$mtime = 1;
 		foreach ( $modules as $name ) {
-			$mtime = max( $mtime, self::getModule( $name )->getmtime(
+			$mtime = max( $mtime, self::getModule( $name )->getModifiedTime(
 				$parameters['lang'], $parameters['skin'], $parameters['debug']
 			) );
 		}

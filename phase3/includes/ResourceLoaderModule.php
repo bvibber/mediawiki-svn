@@ -101,7 +101,7 @@ abstract class ResourceLoaderModule {
 	 * @param $debug bool Debug mode flag
 	 * @return int UNIX timestamp
 	 */
-	public abstract function getmtime( $lang, $skin, $debug );
+	public abstract function getModifiedTime( $lang, $skin, $debug );
 }
 
 /**
@@ -334,7 +334,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @param $debug bool Debug mode flag
 	 * @return int UNIX timestamp
 	 */
-	public function getmtime( $lang, $skin, $debug ) {
+	public function getModifiedTime( $lang, $skin, $debug ) {
 		$files = array_merge( $this->scripts, $this->styles,
 			$debug ? $this->debugScripts : array(),
 			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
@@ -474,7 +474,7 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 		return Skin::newFromKey( $skin )->generateUserJs();
 	}
 	
-	public function getmtime( $lang, $skin, $debug ) {
+	public function getModifiedTime( $lang, $skin, $debug ) {
 		// HACK: We duplicate the message names from generateUserJs()
 		// here and weird things (i.e. mtime moving backwards) can happen
 		// when a MediaWiki:Something.js page is deleted
