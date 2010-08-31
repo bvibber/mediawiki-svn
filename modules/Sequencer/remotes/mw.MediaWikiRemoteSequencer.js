@@ -64,7 +64,7 @@ $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
 			}			
 			return true;
 		})
-		$j( embedPlayer ).bind( 'onend', function( onDoneAction ){
+		$j( embedPlayer ).bind( 'ended', function( onDoneAction ){
 			// pause event should fire 
 			//mw.remoteSequencerAddEditOverlay( embedPlayerId )
 			

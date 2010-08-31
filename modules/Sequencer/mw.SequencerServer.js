@@ -88,8 +88,11 @@
 		 * Get up to date sequence xml from the server 
 		 */
 		getSmilXml: function( callback ){
-			var _this = this; 				
+			var _this = this; 						
 			mw.getTitleText( this.getApiUrl(), this.titleKey, function( smilXml ){
+				// set smil to empty string if unset:
+				if(!smilXml )
+					smilXml = '';
 				// Cache the latest serverSmil ( for local change checks ) 
 				// ( save requests automatically respond with warnings on other user updates ) 
 				_this.serverSmilXml = smilXml;

@@ -243,10 +243,11 @@ mw.SequencerTools.prototype = {
 						// right now only keep aspect is supported do size hack::
 						pz[3] = parseInt( pz[2] )  * _this.sequencer.getSmil().getLayout().getTargetAspectRatio();
 						// only have 2 significant digits
-						pz[3] = ( Math.round( pz[3]* 100 ) / 100 ) + '%';						
+										
 					}
-					// Trim all the values
+					// Trim and round all % values
 					for(var i=0; i < pz.length; i++){
+						pz[i] = ( Math.round( parseInt( pz[i] ) * 1000 ) / 1000 ) + '%';		
 						pz[i] = $j.trim( pz[i] );
 					}
 					var smilPanZoomValue = pz.join(', ');					
