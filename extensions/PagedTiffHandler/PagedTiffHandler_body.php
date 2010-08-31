@@ -59,7 +59,7 @@ class PagedTiffHandler extends ImageHandler {
 	 * - identify-warnings
 	 * - check for running-identify-service
 	 */
-	static function verifyFile( $upload, $mime, &$error ) {
+	function verifyFileHook( $upload, $mime, &$error ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, 
 			$wgTiffRejectOnError, $wgTiffRejectOnWarning, $wgTiffUseTiffReader, 
 			$wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
