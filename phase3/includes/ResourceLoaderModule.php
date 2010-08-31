@@ -121,6 +121,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	
 	// In-object cache for file dependencies
 	private $fileDeps = null;
+	// In-object cache for mtime
+	private $modifiedTime = null;
 	
 	/* Public methods */
 	
@@ -360,6 +362,10 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @return int UNIX timestamp
 	 */
 	public function getModifiedTime( $lang, $skin, $debug ) {
+		if ( !is_null( $this->modifiedTime ) ) {
+			return $this->modifiedTime;
+		}
+		
 		$files = array_merge( $this->scripts, $this->styles,
 			$debug ? $this->debugScripts : array(),
 			isset( $this->languageScripts[$lang] ) ? (array)$this->languageScripts[$lang] : array(),
@@ -368,7 +374,8 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			$this->loaders,
 			$this->getFileDependencies( $skin )
 		);
-		return max( array_map( 'filemtime', $files ) );
+		$this->modifiedTime = max( array_map( 'filemtime', $files ) );
+		return $this->modifiedTime;
 	}
 	
 	/**
@@ -512,11 +519,18 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
  * Custom module for MediaWiki:Common.js and MediaWiki:Skinname.js
  */
 class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
+	// In-object cache for modified time
+	private $modifiedTime = null;
+	
 	public function getScript( $lang, $skin, $debug ) {
 		return Skin::newFromKey( $skin )->generateUserJs();
 	}
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {
+		if ( !is_null( $this->modifiedTime ) )  {
+			return $this->modifiedTime;
+		}
+		
 		// HACK: We duplicate the message names from generateUserJs()
 		// here and weird things (i.e. mtime moving backwards) can happen
 		// when a MediaWiki:Something.js page is deleted
@@ -529,13 +543,13 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 		$lb = new LinkBatch( $jsPages );
 		$lb->execute();
 		
-		$retval = 1; // wfTimestamp() interprets 0 as "now"
+		$this->modifiedTime = 1; // wfTimestamp() interprets 0 as "now"
 		foreach ( $jsPages as $jsPage ) {
 			if ( $jsPage->exists() ) {
-				$retval = max( $retval, wfTimestamp( TS_UNIX, $jsPage->getTouched() ) );
+				$this->modifiedTime = max( $retval, wfTimestamp( TS_UNIX, $jsPage->getTouched() ) );
 			}
 		}
-		return $retval;
+		return $this->modifiedTime;
 	}
 	
 	public function getStyle( $skin ) { return ''; }
