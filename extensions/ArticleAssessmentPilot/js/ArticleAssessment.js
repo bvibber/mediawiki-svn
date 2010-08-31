@@ -2,7 +2,7 @@
 	$.ArticleAssessment = {
 		'config': { 
 			'authtoken': '',
-			'userID': '',
+			'userID': wgUserName,
 			'pageID': wgArticleId,
 			'revID': wgCurRevisionId
 		},
@@ -16,13 +16,13 @@
 			],
 			'fieldHintSuffix': '-tooltip',
 			'fieldPrefix': 'articleassessment-rating-',
-			'fieldHTML': '<div class="field-wrapper"> \
+			'fieldHTML': '<div class="field-wrapper" id="articleassessment-rate-{FIELD}"> \
 				<label for="rating_{FIELD}" original-title="{HINT}" class="rating-field-label">{LABEL}</label> \
-				<select id="rating_{FIELD}" name="rating{FIELD}" class="rating-field"> \
+				<select id="rating_{FIELD}" name="rating[{FIELD}]" class="rating-field"> \
 					<option value="1">1</option> \
 					<option value="2">2</option> \
 					<option value="3">3</option> \
-					<option value="4" selected>4</option> \
+					<option value="4">4</option> \
 					<option value="5">5</option> \
 				</select> \
 			</div>',
@@ -62,18 +62,33 @@
 			'init': function( $$options ) {
 				// merge options with the config
 				var settings = $.extend( {}, $.ArticleAssessment.settings, $$options );
+				var config = $.ArticleAssessment.config;
+				// if this is an anon user, get a unique identifier for them
 				// load up the stored ratings and update the markup if the cookie exists
 				var cookieSettings = $.cookie( 'mwArticleAssessment' );
-				if ( cookieSettings == null ) {
+				if ( true || typeof cookieSettings == 'undefined' ) {
+					function randomString( string_length ) {
+						var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+						var randomstring = '';
+						for (var i=0; i<string_length; i++) {
+							var rnum = Math.floor(Math.random() * chars.length);
+							randomstring += chars.substring(rnum,rnum+1);
+						}
+						return randomstring;
+					}
 					cookieSettings = {
-						'ratings': { }
+						uid: randomString( 32 )
 					};
 					$.cookie( 'mwArticleAssessment', cookieSettings );
+				}
+				if ( ! wgUserName ) {
+					config.userID = cookieSettings.uid;
 				}
 				// setup our markup
 				var $output = $( settings.structureHTML
 					.replace( /\{INSTRUCTIONS\}/g, mw.usability.getMsg('articleassessment-pleaserate') )
-					.replace( /\{FEEDBACK\}/g,  mw.usability.getMsg('articleassessment-featurefeedback') )
+					.replace( /\{FEEDBACK\}/g,  mw.usability.getMsg('articleassessment-featurefeedback')
+						.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
 					.replace( /\{YOURFEEDBACK\}/g,  mw.usability.getMsg('articleassessment-yourfeedback') )
 					.replace( /\{ARTICLERATING\}/g,  mw.usability.getMsg('articleassessment-articlerating' ) ) 
 					.replace( /\{RESULTSHIDE\}/g,  mw.usability.getMsg('articleassessment-results-hide' )
@@ -84,17 +99,17 @@
 					$output.find( '.article-assessment-rating-fields' )
 						.append( $( settings.fieldHTML
 							.replace( /\{LABEL\}/g, mw.usability.getMsg( settings.fieldPrefix + settings.fieldMessages[field] ) )
-							.replace( /\{FIELD\}/g, "[" + settings.fieldMessages[field] + "]" )
+							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
 							.replace( /\{HINT\}/g, mw.usability.getMsg( settings.fieldPrefix + settings.fieldMessages[field] + settings.fieldHintSuffix ) ) ) );
 					$output.find( '#article-assessment-ratings' )
 						.append( $( settings.ratingHTML
 							.replace( /\{LABEL\}/g, mw.usability.getMsg(settings.fieldPrefix + settings.fieldMessages[field]) )
 							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
 							.replace( /\{VALUE\}/g, '0%' ) 
-							.replace( /\{COUNT\}/g, mw.usability.getMsg( 'field-count' ) ) ) 
+							.replace( /\{COUNT\}/g, mw.usability.getMsg( 'articleassessment-noratings', [0, 0] ) ) ) 
 							);
 				}
-				$output.find( '#article-assessment' ).data( 'articleAssessment-context', { 'settings': settings });
+				$output.find( '#article-assessment' ).data( 'articleAssessment-context', { 'settings': settings, 'config': config } );
 				// hook up the ratings show/hide
 				$output
 					.find( '.article-assessment-show-ratings a' )
@@ -136,9 +151,6 @@
 				// attempt to fetch the ratings 
 				$.ArticleAssessment.fn.getRatingData();
 				
-				// attempt to fetch the user's past ratings if it looks like they may have rated this article before
-				$.ArticleAssessment.fn.getUserRatingData();
-				
 				// initialize the star plugin 
 				$( '.rating-field' ).each( function() {
 					$( this )
@@ -174,6 +186,7 @@
 						'list': 'articleassessment',
 						'aarevid': wgCurRevisionId,
 						'aapageid': wgArticleId,
+						'aauserrating': 1,
 						'format': 'json'
 					},
 					dataType: 'json',
@@ -188,26 +201,35 @@
 			'afterGetRatingData' : function( data ) {
 				var settings = $( '#article-assessment' ).data( 'articleAssessment-context' ).settings;
 				// add the correct data to the markup
-				for( rating in data.query.articleassessment[0].ratings) {
-					var rating = data.query.articleassessment[0].ratings[rating],
-						$rating = $( '#' + rating.ratingdesc ),
-						label = mw.usability.getMsg( 'articleassessment-noratings', [rating.total, rating.count] );
-					$rating
-						.find( '.article-assessment-rating-field-value' )
-						.text( rating.total )
-						.end()
-						.find( '.article-assessment-rating-count' )
-						.text( label );
+				if( data.query.articleassessment.length > 0 ) {
+					for( rating in data.query.articleassessment[0].ratings) {
+						var rating = data.query.articleassessment[0].ratings[rating],
+							$rating = $( '#' + rating.ratingdesc ),
+							label = mw.usability.getMsg( 'articleassessment-noratings', [rating.total, rating.count] );
+						$rating
+							.find( '.article-assessment-rating-field-value' )
+							.text( rating.total )
+							.end()
+							.find( '.article-assessment-rating-count' )
+							.text( label );
+						if( rating.userrating ) {
+							var $rateControl = $( '#' + rating.ratingdesc.replace( 'rating', 'rate' ) + ' .rating-field' );
+							$rateControl.children( '.ui-stars-star' ).eq( rating.userrating - 1 ).click();
+						}
+					}
+					// if the rating is stale, add the stale class
+					if( true /* replace with conditional based on returned results of past user ratings */ ) {
+						// add the stale star class to each on star
+						$( '.ui-stars-star-on' )
+							.addClass( 'ui-stars-star-stale' );
+						// add the stale message
+						$( '.article-assessment-submit' )
+							.append( settings.staleMSG.replace( /\{MSG\}/g, mw.usability.getMsg( 'articleassessment-stalemessage-revisioncount' )
+								.replace( /'''([^']*)'''/g, '<strong>$1</strong	>' )
+								.replace( /''([^']*)''/, '<em>$1</em>' ) ) );
+					}
 				}
-				// if the rating is stale, add the stale class
-				if( true /* replace with conditional based on returned results of past user ratings */ ) {
-					// add the stale star class to each on star
-					$( '.ui-stars-star-on' )
-						.addClass( 'ui-stars-star-stale' );
-					// add the stale message
-					$( '.article-assessment-submit' )
-						.append( settings.staleMSG.replace( /\{MSG\}/g, mw.usability.getMsg( 'articleassessment-stalemessage-revisioncount' ) ) );
-				}
+
 				// initialize the ratings 
 				$( '.article-assessment-rating-field-value' ).each( function() {
 					$( this )
@@ -216,26 +238,8 @@
 						} )
 				} );
 			},
-			'getUserRatingData': function() {
-				var request = $.ajax( {
-					url: wgScriptPath + '/api.php',
-					data: {
-						'action': 'articleassessment',
-						'getUserResults': 1, 
-						'userId': wgUserName || "",
-						'pageId': wgArticleId,
-						'revId': wgCurRevisionId
-					},
-					dataType: 'json',
-					success: function( data ) {
-						console.log(data);
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown) {
-						// console.log( XMLHttpRequest, textStatus, errorThrown );
-					}
-				} );
-			},
 			'submitRating': function() {
+				var config = $( '#article-assessment' ).data( 'articleAssessment-context' ).config;
 				// clear out the stale message
 				var results = {};
 				$( '.rating-field input' ).each( function() {
@@ -248,12 +252,13 @@
 					url: wgScriptPath + '/api.php',
 					data: {
 						'action': 'articleassessment',
-						'aarevid': wgCurRevisionId,
-						'aapageid': wgArticleId,
+						'aarevid': config.revID,
+						'aapageid': config.pageID,
 						'aar1' : results['wellsourced'],
 						'aar2' : results['neutrality'],
 						'aar3' : results['completeness'],
 						'aar4' : results['readability'],
+						'aauserid': config.userID,
 						'format': 'json'
 					},
 					dataType: 'json',
@@ -261,7 +266,10 @@
 						console.log(data);
 					}
 				} );
-			}
+			},
+			'flashNotice': function( text, options ) {
+				
+			} 
 		}
 	};
 	// FIXME - this should be moved out of here

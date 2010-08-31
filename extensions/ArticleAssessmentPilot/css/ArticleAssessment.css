@@ -91,6 +91,7 @@
 }
 .article-assessment-wrapper .rating-field-label{
 	float: left;
+	font-weight: bold;
 	line-height: 24px;
 }
 .article-assessment-wrapper .rating-field-label {
