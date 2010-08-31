@@ -1,7 +1,8 @@
 <?php
 /**
- * Created on Aug 21, 2008
  * API for MediaWiki 1.8+
+ *
+ * Created on Aug 21, 2008
  *
  * Copyright © 2008 - 2010 Bryan Tong Minh <Bryan.TongMinh@Gmail.com>
  *
@@ -19,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -164,6 +167,8 @@ class ApiUpload extends ApiBase {
 	 * Performs file verification, dies on error.
 	 */
 	protected function verifyUpload( ) {
+		global $wgFileExtensions;
+
 		$verification = $this->mUpload->verifyUpload( );
 		if ( $verification['status'] === UploadBase::OK ) {
 			return;
@@ -181,7 +186,6 @@ class ApiUpload extends ApiBase {
 				$this->dieUsage( 'The file is missing an extension', 'filetype-missing' );
 				break;
 			case UploadBase::FILETYPE_BADTYPE:
-				global $wgFileExtensions;
 				$this->dieUsage( 'This type of file is banned', 'filetype-banned',
 						0, array(
 							'filetype' => $verification['finalExt'],

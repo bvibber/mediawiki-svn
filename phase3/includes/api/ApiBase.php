@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 5, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 5, 2006
  *
  * Copyright © 2006, 2010 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 /**
@@ -549,6 +550,7 @@ abstract class ApiBase {
 	 * @returns mixed
 	 */
 	protected function getWatchlistValue ( $watchlist, $titleObj, $userOption = null ) {
+		global $wgUser;
 		switch ( $watchlist ) {
 			case 'watch':
 				return true;
@@ -557,7 +559,6 @@ abstract class ApiBase {
 				return false;
 
 			case 'preferences':
-				global $wgUser;
 				# If the user is already watching, don't bother checking
 				if ( $titleObj->userIsWatching() ) {
 					return null;
@@ -663,7 +664,7 @@ abstract class ApiBase {
 					case 'NULL': // nothing to do
 						break;
 					case 'string':
-						if ( $value === '' ) {
+						if ( $required && $value === '' ) {
 							$this->dieUsageMsg( array( 'missingparam', $paramName ) );
 						}
 

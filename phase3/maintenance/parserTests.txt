@@ -53,6 +53,12 @@ Template:!
 |
 !! endarticle
 
+!!article
+MediaWiki:bad image list
+!!text
+* [[File:Bad.jpg]] except [[Nasty page]]
+!!endarticle
+
 ###
 ### Basic tests
 ###
@@ -7966,12 +7972,6 @@ title=[[Main Page]]
 <span class="autocomment"><a href="/wiki/Main_Page#hello_world" title="Main Page">→</a>__hello__world__</span>
 !! end
 
-!!article
-MediaWiki:bad image list
-!!text
-* [[File:Bad.jpg]] except [[Nasty page]]
-!!endarticle
-
 !! test
 Bad images - basic functionality
 !! input
@@ -8143,6 +8143,18 @@ disabled
 <div style="width:50% !important">&nbsp;</div>
 <div style="width:50% !important">&nbsp;</div>
 <div style="border&#160;: solid;">&nbsp;</div>
+
+!! end
+
+!! test
+HTML5 data attributes
+!! input
+<span data-foo="bar">Baz</span>
+<p data-abc-def_hij="">Quuz</p>
+!! result
+<p><span data-foo="bar">Baz</span>
+</p>
+<p data-abc-def_hij="">Quuz</p>
 
 !! end
 

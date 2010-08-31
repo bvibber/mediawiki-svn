@@ -1,5 +1,7 @@
 <?php
 /**
+ * Classes used to send e-mails
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -15,10 +17,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
+ * @file
  * @author <brion@pobox.com>
  * @author <mail@tgries.de>
  * @author Tim Starling
- *
  */
 
 
@@ -464,7 +466,7 @@ class EmailNotification {
 			 * revision.
 			 */
 			$keys['$NEWPAGE'] = wfMsgForContent('enotif_lastdiff',
-					$this->title->getFullURL("oldid={$this->oldid}&diff=prev"));
+					$this->title->getFullURL("oldid={$this->oldid}&diff=next"));
 
 		$body = strtr( $body, $keys );
 		$pagetitle = $this->title->getPrefixedText();

@@ -151,6 +151,7 @@ $magicWords = array(
 	'nse'                   => array( '0', 'מרחב שם מקודד:', 'NSE:' ),
 	'localurl'              => array( '0', 'כתובת יחסית:', 'LOCALURL:' ),
 	'localurle'             => array( '0', 'כתובת יחסית מקודד:', 'LOCALURLE:' ),
+	'articlepath'           => array( '0', 'נתיב הדפים', 'ARTICLEPATH' ),
 	'server'                => array( '0', 'כתובת השרת', 'שרת', 'SERVER' ),
 	'servername'            => array( '0', 'שם השרת', 'SERVERNAME' ),
 	'scriptpath'            => array( '0', 'נתיב הקבצים', 'SCRIPTPATH' ),
@@ -815,6 +816,15 @@ $2',
 'loginlanguagelabel'         => 'שפה: $1',
 'suspicious-userlogout'      => 'בקשתכם לצאת מהחשבון נדחתה כיוון שנראה שהיא נשלחה על ידי דפדפן שבור או שרת פרוקסי עם זיכרון מטמון.',
 
+# JavaScript password checks
+'password-strength'            => 'חוזק סיסמה מוערך: $1',
+'password-strength-bad'        => 'רע',
+'password-strength-mediocre'   => 'בינוני',
+'password-strength-acceptable' => 'סביר',
+'password-strength-good'       => 'טוב',
+'password-retype'              => 'הקלידו מחדש את סיסמתכם כאן',
+'password-retype-mismatch'     => 'הסיסמאות אינן מתאימות',
+
 # Password reset dialog
 'resetpass'                 => 'שינוי סיסמה',
 'resetpass_announce'        => 'נכנסתם באמצעות סיסמה זמנית שנשלחה אליכם בדוא"ל.
@@ -1247,6 +1257,7 @@ $1",
 # Diffs
 'history-title'            => 'היסטוריית הגרסאות של $1',
 'difference'               => '(הבדלים בין גרסאות)',
+'difference-multipage'     => '(הבדלים בין דפים)',
 'lineno'                   => 'שורה $1:',
 'compareselectedversions'  => 'השוואת הגרסאות שנבחרו',
 'showhideselectedversions' => 'הצגת/הסתרת הגרסאות שנבחרו',
@@ -2178,7 +2189,7 @@ $1',
 # Watchlist
 'watchlist'            => 'רשימת המעקב שלי',
 'mywatchlist'          => 'רשימת המעקב שלי',
-'watchlistfor'         => "(עבור '''$1''')",
+'watchlistfor2'        => 'עבור $1 $2',
 'nowatchlist'          => 'אין דפים ברשימת המעקב.',
 'watchlistanontext'    => 'עליכם $1 כדי לצפות או לערוך פריטים ברשימת המעקב.',
 'watchnologin'         => 'לא נכנסתם לחשבון',
@@ -3513,6 +3524,13 @@ $1',
 'version-hook-subscribedby'        => 'הפונקציה הרושמת',
 'version-version'                  => '(גרסה $1)',
 'version-license'                  => 'רישיון',
+'version-poweredby-credits'        => "אתר הוויקי הזה מופעל על ידי '''[http://www.mediawiki.org/ מדיה־ויקי]''', © 2001-$1 $2.",
+'version-poweredby-others'         => 'אחרים',
+'version-license-info'             => "מדיה־ויקי היא תוכנה חופשית; באפשרותכם להפיץ אותה מחדש ו/או לשנות אותה לפי תנאי הרישיון הציבורי הכללי של גנו המפורסם על ידי המוסד לתוכנה חופשית: גרסה 2 של רישיון זה, או (לפי בחירתכם) כל גרסה מאוחרת יותר.
+
+מדיה־ויקי מופצת בתקווה שהיא תהיה שימושית, אך '''ללא כל הבטחה לאחריות'''; אפילו לא אחריות משתמעת של '''יכולת להיסחר''' או '''התאמה לרישיון מסוים'''. ראו את הרישיון הציבורי הכללי של גנו לפרטים נוספים.
+
+הייתם צריכים לקבל [{{SERVER}}{{SCRIPTPATH}}/COPYING העתק של הרישיון הציבורי הכללי של גנו] יחד עם תוכנה זו; אם לא, כתבו למוסד לתוכנה חופשית: Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA או [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html קראו אותו ברשת].",
 'version-software'                 => 'תוכנות מותקנות',
 'version-software-product'         => 'תוכנה',
 'version-software-version'         => 'גרסה',

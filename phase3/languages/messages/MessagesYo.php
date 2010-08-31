@@ -36,6 +36,21 @@ $namespaceAliases = array(
 	'Ọ̀rọ̀_àwòrán' => NS_FILE_TALK,
 );
 
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'ÌwọléOníse' ),
+	'Userlogout'                => array( 'Ìbọ̀sódeOníṣe' ),
+	'Preferences'               => array( 'ÀwọnÌfẹ́ràn' ),
+	'Recentchanges'             => array( 'ÀwọnÀtúnṣeTuntun' ),
+	'Newpages'                  => array( 'ÀwọnOjúewéTuntun' ),
+	'Allpages'                  => array( 'GbogboÀwọnOjúewé' ),
+	'Specialpages'              => array( 'ÀwọnOjúewéPàtàkì' ),
+	'Contributions'             => array( 'ÀwọnÀfikún' ),
+	'Categories'                => array( 'ÀwọnẸ̀ka' ),
+	'Mypage'                    => array( 'OjúwéMi' ),
+	'Mytalk'                    => array( 'Ọ̀rọ̀Mi' ),
+	'Mycontributions'           => array( 'ÀwọnÀfikúnMi' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Fàlàsí àwọn ijápọ̀:',
@@ -1320,7 +1335,6 @@ Bákannáà ẹ le è yàn láti jẹ́ kí àwọn ẹlòmíràn kó báyiín s
 # Watchlist
 'watchlist'         => 'Ìmójútó mi',
 'mywatchlist'       => 'Ìmójútó mi',
-'watchlistfor'      => "(fún '''$1''')",
 'watchnologin'      => 'Ẹ kò tíì wọlé',
 'addedwatch'        => 'Ti fikún sí ìmójútó',
 'addedwatchtext'    => "A ti ṣ'àfikún \"[[:\$1]]\" sí [[Special:Watchlist|ìmójútó]] yín.

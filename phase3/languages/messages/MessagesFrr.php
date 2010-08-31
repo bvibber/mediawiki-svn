@@ -1,5 +1,5 @@
 <?php
-/** Northern Frisian (Frasch)
+/** Northern Frisian (Nordfriisk)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -8,10 +8,14 @@
  * @file
  *
  * @author Maartenvdbent
+ * @author Merlissimo
+ * @author Murma174
  * @author Pyt
  */
 
 $fallback = 'de';
+
+$linktrail = '/^([a-zäöüßåāđē]+)(.*)$/sDu';
 
 $messages = array(
 # User preference toggles
@@ -49,7 +53,7 @@ $messages = array(
 'tog-showjumplinks'           => '"Schafte tu"-ferbininge aktiwiire',
 'tog-uselivepreview'          => 'Live-forbekiik ferwiinje (brükt JavaScript) (äksperimentäl)',
 'tog-forceeditsummary'        => 'Woorschoue, wan bai dåt spiikern jü tuhuupefooting breecht',
-'tog-watchlisthideown'        => ' Äine beårbinge önj e bekiiklist fersteege',
+'tog-watchlisthideown'        => 'Äine beårbinge önj e bekiiklist fersteege',
 'tog-watchlisthidebots'       => 'Beårbinge döör bots önj e bekiiklist fersteege',
 'tog-watchlisthideminor'      => 'Latje beårbinge önj e bekiiklist fersteege',
 'tog-watchlisthideliu'        => 'Beårbinge foon önjmäldede brükere önj e bekiikliste fersteege',
@@ -446,6 +450,7 @@ Ferjeet ai, din [[Special:Preferences|{{SITENAME}}-önjstalinge]] önjtupååsen
 'gotaccount'              => "Dú hääst ål en brükerkonto? '''$1'''.",
 'gotaccountlink'          => 'Önjmälde',
 'createaccountmail'       => 'ouer E-mail',
+'createaccountreason'     => 'Grün:',
 'badretype'               => 'Da biise pååsuurde stime ai oueriinj.',
 'userexists'              => 'Dideer brükernoome as ål ferjääwen. Wees sü gödj en ouderen tu kiisen.',
 'loginerror'              => 'Fäägel bai önjmälding',
@@ -892,6 +897,9 @@ Stal sääker, dåt jü färsjoonshistoori foon en sid histoorisch koräkt as.',
 'sharedupload'              => 'Jüdeer dååtäi ståmt üt $1 än mötj foon ouder prujäkte brükt wårde.',
 'uploadnewversion-linktext' => 'En nai färsjoon foon jüdeer dåtäi huuchsiinje',
 
+# Random page
+'randompage' => 'Tufåli sid',
+
 # Statistics
 'statistics' => 'Statistiik',
 
@@ -938,7 +946,6 @@ Stal sääker, dåt jü färsjoonshistoori foon en sid histoorisch koräkt as.',
 # Watchlist
 'watchlist'         => 'Eefterkiikliste',
 'mywatchlist'       => 'Eefterkiikliste',
-'watchlistfor'      => "(for '''$1''')",
 'addedwatch'        => 'Tu eefterkiiksid tubaifäiged',
 'addedwatchtext'    => 'Jü sid „[[:$1]]“ wörd tu din [[Special:Watchlist|eefterkiiklist]] tubaifäiged.
 
@@ -1203,6 +1210,12 @@ Deeraw föliende sidelinke önj dåtseelwi ra definiire ütnååme, önj di kont
 'watchlistall2' => 'åle',
 'namespacesall' => 'åle',
 'monthsall'     => 'åle',
+
+# Auto-summaries
+'autosumm-blank'   => 'Det sidj wurd leesagd.',
+'autosumm-replace' => 'Di iinhual wurd ütjbütjet mä "$1"',
+'autoredircomment' => 'Sidj tu [[$1]] widjerfeerd',
+'autosumm-new'     => 'Det sidj wurd nei uunlaanj: "$1"',
 
 # Watchlist editing tools
 'watchlisttools-view' => 'Eefterkiiklist: änringe',

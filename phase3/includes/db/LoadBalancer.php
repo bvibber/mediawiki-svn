@@ -1,5 +1,7 @@
 <?php
 /**
+ * Database load balancing
+ *
  * @file
  * @ingroup Database
  */
@@ -215,7 +217,6 @@ class LoadBalancer {
 		$this->getLoadMonitor()->scaleLoads( $nonErrorLoads, $group, $wiki );
 
 		$i = false;
-		$found = false;
 		$laggedSlaveMode = false;
 
 		# First try quickly looking through the available servers for a server that
@@ -398,9 +399,12 @@ class LoadBalancer {
 	/**
 	 * Get a connection by index
 	 * This is the main entry point for this class.
+	 * 
 	 * @param $i Integer: server index
 	 * @param $groups Array: query groups
 	 * @param $wiki String: wiki ID
+	 * 
+	 * @return DatabaseBase
 	 */
 	public function &getConnection( $i, $groups = array(), $wiki = false ) {
 		wfProfileIn( __METHOD__ );

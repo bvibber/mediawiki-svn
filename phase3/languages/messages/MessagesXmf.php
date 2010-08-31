@@ -211,7 +211,7 @@ $messages = array(
 # Login and logout pages
 'yourname'                => 'მახვარებელ',
 'yourpassword'            => 'პაროლ',
-'remembermypassword'      => 'ქიმკომიწონი',
+'remembermypassword'      => 'ქიმკომიწონი (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'          => 'თქვან დომენ',
 'login'                   => 'მინულა',
 'nav-login-createaccount' => 'მინულა',
@@ -510,7 +510,6 @@ $messages = array(
 # Watchlist
 'watchlist'         => 'ჩქიმ კონტროლიშ ხასილეფ',
 'mywatchlist'       => 'ჩქიმ კონტროლიშ ერკებულ',
-'watchlistfor'      => "('''$1'''-შენი)",
 'removedwatchtext'  => 'ასე გვერდ "[[:$1]]" ვარე თქვან კონტროლიშ გვერდეფს.',
 'watch'             => 'კონტროლ',
 'watchthispage'     => 'თე ხასილაშ კონტროლ',

@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Unusedimages
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,15 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
- */
-
-/**
+ *
  * @file
  * @ingroup SpecialPage
  */
 
 /**
- * implements Special:Unusedimages
+ * A special page that lists unused images
+ *
  * @ingroup SpecialPage
  */
 class UnusedimagesPage extends ImageQueryPage {
@@ -52,6 +52,9 @@ class UnusedimagesPage extends ImageQueryPage {
 				break;
 			case 'sqlite':
 				$epoch = 'img_timestamp';
+				break;
+			case 'mssql':
+				$epoch = 'DATEDIFF(s,CONVERT(datetime,\'1/1/1970\'),img_timestamp)';
 				break;
 			default:
 				$epoch = 'EXTRACT(epoch FROM img_timestamp)';

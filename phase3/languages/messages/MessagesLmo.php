@@ -81,7 +81,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Imagin' ),
 	'Newimages'                 => array( 'ImaginNöv' ),
 	'Listusers'                 => array( 'Dupradur' ),
-	'Listgrouprights'           => array( 'Lista di dirit di grüp' ),
+	'Listgrouprights'           => array( 'Lista_di_dirit_di_grüp' ),
 	'Statistics'                => array( 'Statìstegh' ),
 	'Randompage'                => array( 'PaginaAzardada' ),
 	'Lonelypages'               => array( 'PaginnDaPerLur' ),
@@ -117,7 +117,7 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Abilitá redatazziún dai sezziún cun al clic<br />
 süi titul dai sezziún (JavaScript)',
 'tog-showtoc'                 => "Fà vidè l'indes per i paginn cun püssee de 3 sezión",
-'tog-rememberpassword'        => "Regòrdass la mè paròla d'urdin",
+'tog-rememberpassword'        => "Regòrdass la mè paròla d'urdin (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'tog-watchcreations'          => "Giunta i paginn ch'hoo creaa mì a la lista di paginn che tegni sot ögg",
 'tog-watchdefault'            => "Gjüntá i pagin redataa in dala lista dii pagin tegnüü d'öcc",
 'tog-watchmoves'              => "Giunta i paginn ch'hoo muvüü a la lista di paginn che tegni sot ögg",
@@ -438,7 +438,7 @@ Tegné cünt che certi paginn pödass che i seguiten a vedess tant 'me se a füd
 'yourname'                => 'El to suranóm:',
 'yourpassword'            => "Parola d'urdin",
 'yourpasswordagain'       => "Mett dent ammò la parola d'urdin",
-'remembermypassword'      => "Regordass la mè parola d'urdin",
+'remembermypassword'      => "Regordass la mè parola d'urdin (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'login'                   => 'Va dent',
 'nav-login-createaccount' => 'Vena denter / Crea un cünt',
 'loginprompt'             => 'Par cunett a {{SITENAME}}, a duvii abilitá i galet.',
@@ -983,7 +983,6 @@ La descrizión sura la sua [$2 pagina de descrizión del file] l'è mustrada ch�
 # Watchlist
 'watchlist'         => "Paginn ch'a tegni d'ögg",
 'mywatchlist'       => "Paginn che a tegni d'ögg",
-'watchlistfor'      => "(per '''$1''')",
 'addedwatch'        => 'Pagina giuntada a la lista di paginn sot ögg',
 'addedwatchtext'    => "La pagina \"[[:\$1]]\" l'è stada giuntada a la lista di [[Special:Watchlist|paginn da tegn d'ögg]].
 I cambiament che vegnarà fai a 'sta pagina chì e a la sóa pagina de discüssion

@@ -1,6 +1,7 @@
 <?php
 /**
  * File for magic words
+ *
  * See docs/magicword.txt
  *
  * @file
@@ -60,6 +61,7 @@ class MagicWord {
 		'numberofarticles',
 		'numberoffiles',
 		'numberofedits',
+		'articlepath',
 		'sitename',
 		'server',
 		'servername',
@@ -646,7 +648,6 @@ class MagicWordArray {
 		}
 		// This shouldn't happen either
 		throw new MWException( __METHOD__.': parameter not found' );
-		return array( false, false );
 	}
 
 	/**

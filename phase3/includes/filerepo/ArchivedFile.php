@@ -29,7 +29,7 @@ class ArchivedFile
 
 	/**#@-*/
 
-	function ArchivedFile( $title, $id=0, $key='' ) {
+	function __construct( $title, $id=0, $key='' ) {
 		$this->id = -1;
 		$this->title = false;
 		$this->name = false;
@@ -140,7 +140,6 @@ class ArchivedFile
 			$this->deleted = $row->fa_deleted;
 		} else {
 			throw new MWException( 'This title does not correspond to an image page.' );
-			return;
 		}
 		$this->dataLoaded = true;
 		$this->exists = true;

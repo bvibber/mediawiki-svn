@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Undelete
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
  * Used to show archived pages and eventually restore them.
+ *
  * @ingroup SpecialPage
  */
 class PageArchive {
@@ -1138,7 +1143,6 @@ class UndeleteForm extends SpecialPage {
 		if( $haveRevisions ) {
 			# The page's stored (deleted) history:
 			$wgOut->addHTML("<ul>");
-			$target = urlencode( $this->mTarget );
 			$remaining = $revisions->numRows();
 			$earliestLiveTime = $this->mTargetObj->getEarliestRevTime();
 
@@ -1258,7 +1262,6 @@ class UndeleteForm extends SpecialPage {
 		if( $this->mAllowed && $row->fa_storage_key ) {
 			$checkBox = Xml::check( "fileid" . $row->fa_id );
 			$key = urlencode( $row->fa_storage_key );
-			$target = urlencode( $this->mTarget );
 			$pageLink = $this->getFileLink( $file, $this->getTitle(), $ts, $key, $sk );
 		} else {
 			$checkBox = '';

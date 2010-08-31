@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Preprocessor using PHP arrays
+ *
+ * @file
+ * @ingroup Parser
+ */
+ 
 /**
  * Differences from DOM schema:
  *   * attribute nodes are children
@@ -853,7 +859,6 @@ class PPFrame_Hash implements PPFrame {
 			$title = $this->title;
 		}
 		if ( $args !== false ) {
-			$xpath = false;
 			if ( $args instanceof PPNode_Hash_Array ) {
 				$args = $args->value;
 			} elseif ( !is_array( $args ) ) {
@@ -882,11 +887,11 @@ class PPFrame_Hash implements PPFrame {
 			return $root;
 		}
 
-		if ( ++$this->parser->mPPNodeCount > $this->parser->mOptions->mMaxPPNodeCount )
+		if ( ++$this->parser->mPPNodeCount > $this->parser->mOptions->getMaxPPNodeCount() )
 		{
 			return '<span class="error">Node-count limit exceeded</span>';
 		}
-		if ( $expansionDepth > $this->parser->mOptions->mMaxPPExpandDepth ) {
+		if ( $expansionDepth > $this->parser->mOptions->getMaxPPExpandDepth() ) {
 			return '<span class="error">Expansion depth limit exceeded</span>';
 		}
 		++$expansionDepth;

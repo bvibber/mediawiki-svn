@@ -1,5 +1,7 @@
 <?php
 /**
+ * Exif metadata reader
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -618,7 +620,7 @@ class FormatExif {
 	 * @param $exif Array: the Exif data to format ( as returned by
 	 *                    Exif::getFilteredData() )
 	 */
-	function FormatExif( $exif ) {
+	function __construct( $exif ) {
 		$this->mExif = $exif;
 	}
 

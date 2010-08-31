@@ -1,6 +1,16 @@
 <?php
 /**
+ * Search index updater
+ *
  * See deferred.txt
+ *
+ * @file
+ * @ingroup Search
+ */
+
+/**
+ * Database independant search index updater
+ *
  * @ingroup Search
  */
 class SearchUpdate {
@@ -8,7 +18,7 @@ class SearchUpdate {
 	/* private */ var $mId = 0, $mNamespace, $mTitle, $mText;
 	/* private */ var $mTitleWords;
 
-	function SearchUpdate( $id, $title, $text = false ) {
+	function __construct( $id, $title, $text = false ) {
 		$nt = Title::newFromText( $title );
 		if( $nt ) {
 			$this->mId = $id;
@@ -106,6 +116,7 @@ class SearchUpdate {
 
 /**
  * Placeholder class
+ *
  * @ingroup Search
  */
 class SearchUpdateMyISAM extends SearchUpdate {

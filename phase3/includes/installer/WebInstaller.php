@@ -1,4 +1,10 @@
 <?php
+/**
+ * Core installer web interface.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * Class for the core installer web interface.
@@ -80,7 +86,6 @@ class WebInstaller extends CoreInstaller {
 	 */
 	public $showSessionWarning = false;
 
-	public $helpId = 0;
 	public $tabIndex = 1;
 
 	public $currentPageName;
@@ -88,7 +93,7 @@ class WebInstaller extends CoreInstaller {
 	/** 
 	 * Constructor.
 	 * 
-	 * @param WebRequest $request
+	 * @param $request WebRequest
 	 */
 	public function __construct( WebRequest $request ) {
 		parent::__construct();
@@ -607,11 +612,8 @@ class WebInstaller extends CoreInstaller {
 		$args = func_get_args();
 		array_shift( $args );
 		$args = array_map( 'htmlspecialchars', $args );
-		
 		$text = wfMsgReal( $msg, $args, false, false, false );
 		$html = $this->parse( $text, true );
-		$id = $this->helpId++;
-		$alt = wfMsg( 'help' );
 
 		return
 			"<div class=\"config-help-wrapper\">\n" .
@@ -641,7 +643,7 @@ class WebInstaller extends CoreInstaller {
 	 * Show a short informational message.
 	 * Output looks like a list.
 	 * 
-	 * @param srting $msg
+	 * @param $msg string
 	 */
 	public function showMessage( $msg /*, ... */ ) {
 		$args = func_get_args();
@@ -653,7 +655,7 @@ class WebInstaller extends CoreInstaller {
 	}
 	
 	/**
-	 * @param Status $status
+	 * @param $status Status
 	 */
 	public function showStatusMessage( Status $status ) {
 		$text = $status->getWikiText();

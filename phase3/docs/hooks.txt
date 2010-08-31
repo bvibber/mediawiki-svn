@@ -569,6 +569,9 @@ $user: the user who did the block (not the one being blocked)
 'BookInformation': Before information output on Special:Booksources
 $isbn: ISBN to show information for
 $output: OutputPage object in use
+
+'CanonicalNamespaces': For extensions adding their own namespaces or altering the defaults
+&$namespaces: Array of namespace numbers with corresponding canonical names
  
 'CategoryPageView': before viewing a categorypage in CategoryPage::view
 $catpage: CategoryPage instance
@@ -660,7 +663,7 @@ pages
 $editPage: EditPage	object
 
 'EditPage::attemptSave': called before an article is
-saved, that is before Article::doEdit() is called
+saved, that is before insertNewArticle() is called
 $editpage_Obj: the current EditPage object
 
 'EditPage::importFormData': allow extensions to read additional data
@@ -1031,8 +1034,8 @@ completed
 'ListDefinedTags': When trying to find all defined tags.
 &$tags: The list of tags.
 
-'LoadExtensionSchemaUpdates': called by maintenance/updaters.inc when upgrading
-database schema
+'LoadExtensionSchemaUpdates': called during database installation and updates
+&updater: A DatabaseUpdater subclass
 
 'LocalFile::getHistory': called before file history query performed
 $file: the file
@@ -1416,6 +1419,7 @@ Append to $text to add additional text/scripts after the stock bottom scripts.
 'SkinAfterContent': Allows extensions to add text after the page content and
 article metadata.
 &$data: (string) Text to be printed out directly (without parsing)
+$skin: Skin object
 This hook should work in all skins. Just set the &$data variable to the text
 you're going to add.
 
@@ -1554,12 +1558,13 @@ SpecialRecentChanges
 $opts: FormOptions for this request
 
 'SpecialRecentChangesQuery': called when building sql query for
-SpecialRecentChanges
+SpecialRecentChanges and SpecialRecentChangesLinked
 &$conds: array of WHERE conditionals for query
 &$tables: array of tables to be queried
 &$join_conds: join conditions for the tables
 $opts: FormOptions for this request
 &$query_options: array of options for the database request
+&$select: String '*' or array of columns to select
 
 'SpecialSearchGomatch': called when user clicked the "Go" button and the target
 exists
@@ -1667,11 +1672,22 @@ $descriptor: (array) the HTMLForm descriptor
 added to the descriptor
 $descriptor: (array) the HTMLForm descriptor
 
-'UploadVerification': additional chances to reject an uploaded file
+'UploadVerification': additional chances to reject an uploaded file. Consider 
+                      using UploadVerifyFile instead.
 string $saveName: destination file name
 string $tempName: filesystem path to the temporary file for checks
 string &$error: output: message key for message to show if upload canceled 
 	by returning false. May also be an array, where the first element
+	is the message key and the remaining elements are used as parameters to
+	the message.
+
+'UploadVerifyFile': extra file verification, based on mime type, etc. Preferred
+                    in most cases over UploadVerification.
+object $upload: an instance of UploadBase, with all info about the upload
+object $mime: the uploaded file's mime type, as detected by MediaWiki. Handlers 
+	will typically only apply for specific mime types.
+object &$error: output: true if the file is valid. Otherwise, and indexed array
+	representing the problem with the file, where the first element
 	is the message key and the remaining elements are used as parameters to
 	the message.
 
@@ -1839,10 +1855,6 @@ of email authentification
 $user: User object
 &$timestamp: new timestamp, change this to override local email
 authentification timestamp
-
-'UserToggles': called when initialising User::$mToggles, use this to add
-new toggles
-$toggles: array of toggles to add
 
 'WantedPages::getSQL': called in WantedPagesPage::getSQL(), can be used to
 alter the SQL query which gets the list of wanted pages

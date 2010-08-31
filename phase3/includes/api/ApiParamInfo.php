@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Dec 01, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Dec 01, 2007
  *
  * Copyright © 2008 Roan Kattouw <Firstname>.<Lastname>@home.nl
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -118,6 +119,11 @@ class ApiParamInfo extends ApiBase {
 			if ( isset( $p[ApiBase::PARAM_DEPRECATED] ) && $p[ApiBase::PARAM_DEPRECATED] ) {
 				$a['deprecated'] = '';
 			}
+			
+			if ( isset( $p[ApiBase::PARAM_REQUIRED] ) && $p[ApiBase::PARAM_REQUIRED] ) {
+				$a['required'] = '';
+			}
+			
 			if ( !is_array( $p ) ) {
 				if ( is_bool( $p ) ) {
 					$a['type'] = 'bool';
@@ -136,19 +142,15 @@ class ApiParamInfo extends ApiBase {
 			if ( isset( $p[ApiBase::PARAM_DFLT] ) ) {
 				$a['default'] = $p[ApiBase::PARAM_DFLT];
 			}
-			if ( isset( $p[ApiBase::PARAM_ISMULTI] ) ) {
-				if ( $p[ApiBase::PARAM_ISMULTI] ) {
-					$a['multi'] = '';
-					$a['limit'] = $this->getMain()->canApiHighLimits() ?
-							ApiBase::LIMIT_SML2 :
-							ApiBase::LIMIT_SML1;
-				}
+			if ( isset( $p[ApiBase::PARAM_ISMULTI] ) && $p[ApiBase::PARAM_ISMULTI] ) {
+				$a['multi'] = '';
+				$a['limit'] = $this->getMain()->canApiHighLimits() ?
+						ApiBase::LIMIT_SML2 :
+						ApiBase::LIMIT_SML1;
 			}
 
-			if ( isset( $p[ApiBase::PARAM_ALLOW_DUPLICATES] ) ) {
-				if ( $p[ApiBase::PARAM_ALLOW_DUPLICATES] ) {
-					$a['allowsduplicates'] = '';
-				}
+			if ( isset( $p[ApiBase::PARAM_ALLOW_DUPLICATES] ) && $p[ApiBase::PARAM_ALLOW_DUPLICATES] ) {
+				$a['allowsduplicates'] = '';
 			}
 
 			if ( isset( $p[ApiBase::PARAM_TYPE] ) ) {

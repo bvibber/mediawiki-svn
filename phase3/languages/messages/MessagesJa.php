@@ -158,7 +158,7 @@ $specialPageAliases = array(
 	'FileDuplicateSearch'       => array( '重複ファイル検索' ),
 	'Unwatchedpages'            => array( 'ウォッチされていないページ' ),
 	'Listredirects'             => array( 'リダイレクト一覧', 'リダイレクトの一覧', 'リダイレクトリスト' ),
-	'Revisiondelete'            => array( '特定版削除' ),
+	'Revisiondelete'            => array( '版指定削除', '特定版削除' ),
 	'Unusedtemplates'           => array( '使われていないテンプレート', '未使用テンプレート' ),
 	'Randomredirect'            => array( 'おまかせリダイレクト' ),
 	'Mypage'                    => array( '利用者ページ', 'マイページ', 'マイ・ページ' ),
@@ -178,6 +178,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( '削除された投稿記録', '削除された投稿履歴', '削除歴' ),
 	'Tags'                      => array( 'タグ一覧' ),
 	'Activeusers'               => array( '活動中の利用者', '活動中の利用者一覧' ),
+	'ComparePages'              => array( 'ページの比較' ),
 );
 
 $magicWords = array(
@@ -219,8 +220,8 @@ $magicWords = array(
 	'pagenamee'             => array( '1', 'ページ名E', 'ページ名Ｅ', 'PAGENAMEE' ),
 	'namespace'             => array( '1', '名前空間', 'NAMESPACE' ),
 	'namespacee'            => array( '1', '名前空間E', '名前空間Ｅ', 'NAMESPACEE' ),
-	'talkspace'             => array( '1', 'ノート空間', '会話空間', 'トークスペース', 'TALKSPACE' ),
-	'talkspacee'            => array( '1', 'ノート空間E', '会話空間E', 'ノート空間Ｅ', '会話空間Ｅ', 'トークスペースE', 'トークスペースＥ', 'TALKSPACEE' ),
+	'talkspace'             => array( '1', 'トーク空間', 'ノート空間', '会話空間', 'トークスペース', 'TALKSPACE' ),
+	'talkspacee'            => array( '1', 'トーク空間E', 'トーク空間Ｅ', 'ノート空間E', '会話空間E', 'ノート空間Ｅ', '会話空間Ｅ', 'トークスペースE', 'トークスペースＥ', 'TALKSPACEE' ),
 	'subjectspace'          => array( '1', '標準空間', '記事空間', 'SUBJECTSPACE', 'ARTICLESPACE' ),
 	'subjectspacee'         => array( '1', '標準空間E', '標準空間Ｅ', '記事空間E', '記事空間Ｅ', 'SUBJECTSPACEE', 'ARTICLESPACEE' ),
 	'fullpagename'          => array( '1', 'フルページ名', '完全なページ名', '完全な記事名', '完全ページ名', '完全記事名', 'FULLPAGENAME' ),
@@ -229,8 +230,8 @@ $magicWords = array(
 	'subpagenamee'          => array( '1', 'サブページ名E', 'サブページ名Ｅ', 'SUBPAGENAMEE' ),
 	'basepagename'          => array( '1', '親ページ名', 'BASEPAGENAME' ),
 	'basepagenamee'         => array( '1', '親ページ名E', '親ページ名Ｅ', 'BASEPAGENAMEE' ),
-	'talkpagename'          => array( '1', '会話ページ名', 'トークページ名', 'TALKPAGENAME' ),
-	'talkpagenamee'         => array( '1', '会話ページ名E', 'トークページ名E', '会話ページ名Ｅ', 'トークページ名Ｅ', 'TALKPAGENAMEE' ),
+	'talkpagename'          => array( '1', 'トークページ名', '会話ページ名', 'TALKPAGENAME' ),
+	'talkpagenamee'         => array( '1', 'トークページ名E', '会話ページ名E', '会話ページ名Ｅ', 'トークページ名Ｅ', 'TALKPAGENAMEE' ),
 	'subjectpagename'       => array( '1', '主ページ名', '記事ページ名', 'SUBJECTPAGENAME', 'ARTICLEPAGENAME' ),
 	'subjectpagenamee'      => array( '1', '主ページ名E', '記事ページ名E', '主ページ名Ｅ', '記事ページ名Ｅ', 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
 	'subst'                 => array( '0', '展開:', '展開：', 'SUBST:' ),
@@ -322,7 +323,7 @@ $messages = array(
 'tog-watchdeletion'           => '自分が削除したページをウォッチリストに追加する',
 'tog-previewontop'            => 'プレビューをテキストボックスの前に配置する',
 'tog-previewonfirst'          => '編集開始時にもプレビューを表示する',
-'tog-nocache'                 => 'ページをキャッシュしない',
+'tog-nocache'                 => 'ブラウザによるページのキャッシュを無効にする',
 'tog-enotifwatchlistpages'    => 'ウォッチリストにあるページが更新されたときにメールを受け取る',
 'tog-enotifusertalkpages'     => '自分のトークページが更新されたときにメールを受け取る',
 'tog-enotifminoredits'        => '細部の編集でもメールを受け取る',
@@ -719,6 +720,7 @@ $2',
 'gotaccount'                 => "すでにアカウントをお持ちですか？'''$1'''。",
 'gotaccountlink'             => 'ログイン',
 'createaccountmail'          => 'メールで送信',
+'createaccountreason'        => '理由：',
 'badretype'                  => '両方のパスワードが一致しません。',
 'userexists'                 => '入力された利用者名はすでに使われています。ほかの名前をお選びください。',
 'loginerror'                 => 'ログイン失敗',
@@ -764,6 +766,15 @@ $2',
 'login-throttled'            => 'ログインの失敗が制限回数を超えました。しばらく時間をおいてから再度お試しください。',
 'loginlanguagelabel'         => '言語: $1',
 'suspicious-userlogout'      => 'あなたのログアウトは拒否されました。送信されたリクエストが、壊れたブラウザもしくはキャッシュ・プロキシによって送信された可能性があるからです。',
+
+# JavaScript password checks
+'password-strength'            => 'パスワードの推定強度：$1',
+'password-strength-bad'        => '悪い',
+'password-strength-mediocre'   => 'あまり良くない',
+'password-strength-acceptable' => '許容範囲',
+'password-strength-good'       => '良い',
+'password-retype'              => 'パスワードを再入力',
+'password-retype-mismatch'     => 'パスワードが一致しません',
 
 # Password reset dialog
 'resetpass'                 => 'パスワードの変更',
@@ -1142,6 +1153,7 @@ $1",
 # Diffs
 'history-title'            => '「$1」の変更履歴',
 'difference'               => '(版間での差分)',
+'difference-multipage'     => '（ページ間の差分）',
 'lineno'                   => '$1 行:',
 'compareselectedversions'  => '選択した版同士を比較',
 'showhideselectedversions' => '選択した版を表示もしくは非表示',
@@ -1256,6 +1268,7 @@ $1",
 'contextlines'                  => '1件あたりの行数:',
 'contextchars'                  => '1行あたりの文字数:',
 'stub-threshold'                => '<a href="#" class="stub">スタブリンク</a>として表示する閾値:',
+'stub-threshold-disabled'       => '無効',
 'recentchangesdays'             => '最近の更新に表示する日数:',
 'recentchangesdays-max'         => '(最大$1 {{PLURAL:$1|日|日間}})',
 'recentchangescount'            => '既定で表示する件数:',
@@ -1644,9 +1657,9 @@ MGP # ペンタックス
 PICT # その他
  #</pre> <!-- この行はそのままにしておいてください -->',
 'upload-success-subj'         => 'アップロード成功',
-'upload-success-msg'          => '[$2] からのアップロードに成功しました。アップロードしたページはこちらです: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => '[$2]からのアップロードに成功しました。[[:{{ns:file}}:$1]]から利用可能です。',
 'upload-failure-subj'         => 'アップロードで発生した問題',
-'upload-failure-msg'          => 'ファイルのアップロード中に問題が発生しました:
+'upload-failure-msg'          => '[$2]からのアップロード中に問題が発生しました：
 
 $1',
 'upload-warning-subj'         => 'アップロードの警告',
@@ -1936,7 +1949,9 @@ $1',
 
 # Special:Categories
 'categories'                    => 'カテゴリ',
-'categoriespagetext'            => '以下の{{PLURAL:$1|カテゴリ}}にはページまたはメディアが存在します。[[Special:UnusedCategories|未使用のカテゴリ]]はここには表示されていません。[[Special:WantedCategories|カテゴリページが存在しないカテゴリ]]も参照してください。',
+'categoriespagetext'            => '以下の{{PLURAL:$1|カテゴリ}}にはページまたはメディアが存在します。
+[[Special:UnusedCategories|未使用のカテゴリ]]はここには表示されていません。
+[[Special:WantedCategories|カテゴリページが存在しないカテゴリ]]も参照してください。',
 'categoriesfrom'                => '最初に表示するカテゴリ:',
 'special-categories-sort-count' => '項目数順',
 'special-categories-sort-abc'   => 'アルファベット順',
@@ -2029,7 +2044,7 @@ $1',
 # Watchlist
 'watchlist'            => 'ウォッチリスト',
 'mywatchlist'          => 'ウォッチリスト',
-'watchlistfor'         => "(利用者: '''$1''')",
+'watchlistfor2'        => '利用者:$1 $2',
 'nowatchlist'          => 'あなたのウォッチリストは空です。',
 'watchlistanontext'    => 'ウォッチリストに入っている項目を表示・編集するには $1 してください。',
 'watchnologin'         => 'ログインしていません',
@@ -2591,7 +2606,7 @@ $1 は、すでにブロックされています。設定を変更しますか�
 
 # Import log
 'importlogpage'                    => 'インポート記録',
-'importlogpagetext'                => '以下は他ウィキからのページデータの取り込み記録です。',
+'importlogpagetext'                => '他のウィキから編集履歴がインポートされたページの一覧です。',
 'import-logentry-upload'           => 'ファイルのアップロードにより [[$1]] をインポートしました',
 'import-logentry-upload-detail'    => '$1{{PLURAL:$1|版}}',
 'import-logentry-interwiki'        => '$1 をtranswikiしました',
@@ -3347,6 +3362,13 @@ $1',
 'version-hook-subscribedby'        => '使用個所',
 'version-version'                  => '(バージョン $1)',
 'version-license'                  => 'ライセンス',
+'version-poweredby-credits'        => "このウィキは、'''[http://www.mediawiki.org/ MediaWiki]'''(copyright © 2001-$1 $2)で動作しています。",
+'version-poweredby-others'         => 'その他',
+'version-license-info'             => 'MediaWikiはフリーソフトウェアです。あなたは、フリーソフトウェア財団の発行するGNU一般公衆利用許諾書 (GNU General Public License)（バージョン2、またはそれ以降のライセンス）の規約にもとづき、このライブラリの再配布や改変をすることができます。
+
+MediaWikiは、有用であることを期待して配布されていますが、商用あるいは特定の目的に適するかどうかも含めて、暗黙的にも、一切保証されません。詳しくは、GNU一般公衆利用許諾書をご覧下さい。
+
+あなたはこのプログラムと共に、[{{SERVER}}{{SCRIPTPATH}}/COPYING GNU一般公衆利用許諾契約書の複製]を受け取ったはずです。もし受け取っていなければ、フリーソフトウェア財団(the Free Software Foundation, Inc., 59Temple Place, Suite 330, Boston, MA 02111-1307 USA)まで請求するか、[http://www.gnu.org/licenses/old-licenses/gpl-2.0.html オンラインで閲覧]してください。',
 'version-software'                 => 'インストール済みソフトウェア',
 'version-software-product'         => 'ソフトウェア名',
 'version-software-version'         => 'バージョン',

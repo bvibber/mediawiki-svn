@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 25, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 25, 2006
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -50,7 +51,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 	private $fld_ids = false, $fld_title = false, $fld_patrol = false, $fld_flags = false,
 			$fld_timestamp = false, $fld_user = false, $fld_comment = false, $fld_parsedcomment = false, $fld_sizes = false,
-			$fld_notificationtimestamp = false;
+			$fld_notificationtimestamp = false, $fld_userid = false;
 
 	private function run( $resultPageSet = null ) {
 		$this->selectNamedDB( 'watchlist', DB_SLAVE, 'watchlist' );
@@ -66,6 +67,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_title = isset( $prop['title'] );
 			$this->fld_flags = isset( $prop['flags'] );
 			$this->fld_user = isset( $prop['user'] );
+			$this->fld_userid = isset( $prop['userid'] );
 			$this->fld_comment = isset( $prop['comment'] );
 			$this->fld_parsedcomment = isset ( $prop['parsedcomment'] );
 			$this->fld_timestamp = isset( $prop['timestamp'] );
@@ -95,7 +97,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->addFieldsIf( 'rc_new', $this->fld_flags );
 			$this->addFieldsIf( 'rc_minor', $this->fld_flags );
 			$this->addFieldsIf( 'rc_bot', $this->fld_flags );
-			$this->addFieldsIf( 'rc_user', $this->fld_user );
+			$this->addFieldsIf( 'rc_user', $this->fld_user || $this->fld_userid );
 			$this->addFieldsIf( 'rc_user_text', $this->fld_user );
 			$this->addFieldsIf( 'rc_comment', $this->fld_comment || $this->fld_parsedcomment );
 			$this->addFieldsIf( 'rc_patrolled', $this->fld_patrol );
@@ -227,8 +229,16 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			ApiQueryBase::addTitleInfo( $vals, $title );
 		}
 
-		if ( $this->fld_user ) {
-			$vals['user'] = $row->rc_user_text;
+		if ( $this->fld_user || $this->fld_userid ) {
+
+			if ( $this->fld_user ) {
+				$vals['user'] = $row->rc_user_text;
+			}
+
+			if ( $this->fld_userid ) {
+				$vals['user'] = $row->rc_user;	
+			}
+
 			if ( !$row->rc_user ) {
 				$vals['anon'] = '';
 			}
@@ -318,6 +328,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 					'title',
 					'flags',
 					'user',
+					'userid',
 					'comment',
 					'parsedcomment',
 					'timestamp',
@@ -363,7 +374,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				' ids                    - Adds revision ids and page ids',
 				' title                  - Adds title of the page',
 				' flags                  - Adds flags for the edit',
-				' user                   - Adds user who made the edit',
+				' user                   - Adds the user who made the edit',
+				' userid                 - Adds user id of whom made the edit',
 				' comment                - Adds comment of the edit',
 				' parsedcomment          - Adds parsed comment of the edit',
 				' timestamp              - Adds timestamp of the edit',

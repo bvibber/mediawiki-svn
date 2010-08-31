@@ -33,14 +33,14 @@ $namespaceNames = array(
 );
 
 $namespaceAliases = array(
-	'Perdoruesi' => NS_USER,
+	'Perdoruesi'          => NS_USER,
 	'Perdoruesi_diskutim' => NS_USER_TALK,
-	'Përdoruesi' => NS_USER,
+	'Përdoruesi'          => NS_USER,
 	'Përdoruesi_diskutim' => NS_USER_TALK,
-	'Figura' => NS_FILE,
-	'Figura_diskutim' => NS_FILE_TALK,
-	'Kategori' => NS_CATEGORY,
-	'Kategori_Diskutim' => NS_CATEGORY_TALK
+	'Figura'              => NS_FILE,
+	'Figura_diskutim'     => NS_FILE_TALK,
+	'Kategori'            => NS_CATEGORY,
+	'Kategori_Diskutim'   => NS_CATEGORY_TALK
 );
 
 $specialPageAliases = array(
@@ -77,7 +77,7 @@ $messages = array(
 'tog-editsection'             => 'Lejo redaktimin e seksioneve me opcionin [redakto]',
 'tog-editsectiononrightclick' => 'Lejo redaktimin e seksioneve tue klikue me të djathtë mbi titull (JavaScript)',
 'tog-showtoc'                 => 'Trego përmbajtjen<br />(për faqet me mâ shum se 3 tituj)',
-'tog-rememberpassword'        => 'Ruej fjalëkalimin në këtë kompjuter',
+'tog-rememberpassword'        => 'Ruej fjalëkalimin në këtë kompjuter (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Shtoji në listë mbikëqyrëse faqet që i krijoj vetë',
 'tog-watchdefault'            => 'Shtoji në listë mbikëqyrëse faqet që i redaktoj',
 'tog-watchmoves'              => 'Shtoji në listë mbikëqyrëse faqet që i zhvendosi',
@@ -479,7 +479,7 @@ Mos harroni me i ndryshue [[Special:Preferences|parapëlqimet për {{SITENAME}}]
 'yourname'                   => 'Nofka:',
 'yourpassword'               => 'Fjalëkalimi:',
 'yourpasswordagain'          => 'Fjalëkalimi përsëdyti:',
-'remembermypassword'         => 'Mbaj mend fjalëkalimin tem në këtë kompjuter.',
+'remembermypassword'         => 'Mbaj mend fjalëkalimin tem në këtë kompjuter (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Domena juej:',
 'externaldberror'            => 'Ose pat gabim në databazën e autentifikimit, ose nuk lejoheni me ndryshue llogarinë tuej të jashtme.',
 'login'                      => 'Kyçu',
@@ -1326,7 +1326,6 @@ Faqet në [[Special:Watchlist|listën tuej të mbikëqyrjes]] janë '''të theks
 # Watchlist
 'watchlist'         => 'Mbikëqyrjet e mija',
 'mywatchlist'       => 'Lista mbikqyrëse',
-'watchlistfor'      => "(për '''$1''')",
 'addedwatch'        => 'U shtu te lista mbikqyrëse',
 'addedwatchtext'    => "Faqja \"[[:\$1]]\" iu shtue [[Special:Watchlist|listës suej të mbikëqyrjes]].
 Ndryshimet e ardhshme të kësaj faqeje dhe të faqes gjegjëse të diskutimit kanë me u listue këte, dhe faqja do të tregohet '''e theksueme''' në [[Special:RecentChanges|listën e ndryshimeve të fundit]] për me râ në sy.",

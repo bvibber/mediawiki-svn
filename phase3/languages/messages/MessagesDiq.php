@@ -291,7 +291,7 @@ $1',
 
 'ok'                      => 'Temam',
 'pagetitle'               => '"$1" adres ra gerya.',
-'pagetitle-view-mainpage' => 'Newe <u>$1</u> esto. ($2)',
+'pagetitle-view-mainpage' => '{{SITENAME}}',
 'retrievedfrom'           => '"$1" ra ard',
 'youhavenewmessages'      => 'To rê estê $1 ($2).',
 'newmessageslink'         => 'mesajê newey',
@@ -317,7 +317,7 @@ $1',
 'site-atom-feed'          => '$1 Cıresnayışê atomi',
 'page-rss-feed'           => '"$1" Cıresnayışê RSSi',
 'page-atom-feed'          => '"$1" Cıresnayışê atomi',
-'feed-atom'               => '$1 (pel çino)',
+'feed-atom'               => 'Atom',
 'red-link-title'          => '$1 (pele çıniya)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
@@ -1435,7 +1435,7 @@ kerem kerê [[Special:ListUsers/sysop|serkari]]de irtibat kewe.',
 konrol bıkeri şıma besteyi? Ya zi şıma karo raşt keni?
 Eke problem dewam kerd [[Special:ListUsers/sysop|serkari]] de irtibat kewe.',
 'upload-too-many-redirects' => 'Eno URL de zaf redireksiyonî esto.',
-'upload-unknown-size'       => 'ebat nizanyeno',
+'upload-unknown-size'       => 'Ebat nizanyeno',
 'upload-http-error'         => 'Yew ğeletê HTTPî biyo: $1',
 
 # img_auth script messages
@@ -1822,7 +1822,6 @@ qey heqê şexsi de [[{{MediaWiki:Listgrouprights-helppage}}|hema malumato ziyed
 # Watchlist
 'watchlist'            => 'lista mına seyr-kerdışi',
 'mywatchlist'          => 'Lista mına seyr-kerdışi',
-'watchlistfor'         => "(semedê '''$1''')",
 'nowatchlist'          => 'listeya temaşa kerdıişê şıma de yew madde zi çina.',
 'watchlistanontext'    => 'qey vurnayişê maddeya listeya temaşakerdişi $1.',
 'watchnologin'         => 'hesab akerde niyo',
@@ -2585,8 +2584,8 @@ $1',
 'nextdiff'     => 'Vurnayışo newêr →',
 
 # Media information
-'mediawarning'         => "''Hişyari!''': Na dosya de belka kodê niyetxırabi estî.
-Beno ke zerar bıdo sistemê şuxulnayişê şıma.",
+'mediawarning'         => "'''Teme''': Na dosya de belkia kodê xırabıni estê.
+Gurênayışê nae de, beno ke sistemê şıma zerar bıvêno.",
 'imagemaxsize'         => "Limitê ebat ê resimi:<br />''(qe pela deskripsiyonê dosyayan)''",
 'thumbsize'            => 'Ebadê Thumbnaili',
 'widthheightpage'      => '$1×$2, $3 {{PLURAL:$3|pele|peleyi}}',

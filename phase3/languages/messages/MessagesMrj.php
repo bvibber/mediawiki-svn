@@ -17,18 +17,18 @@ $namespaceNames = array(
 	NS_SPECIAL          => 'Спецӹлӹштӓш',
 	NS_TALK             => 'Кӓнгӓшӹмӓш',
 	NS_USER             => 'Сирӹшӹ',
-	NS_USER_TALK        => 'Сирӹшӹн кӓнгӓшӹмӓшӹжӹ',
-	NS_PROJECT_TALK     => '$1 кӓнгӓшӹмӓш',
+	NS_USER_TALK        => 'Сирӹшӹн_кӓнгӓшӹмӓшӹжӹ',
+	NS_PROJECT_TALK     => '$1_кӓнгӓшӹмӓш',
 	NS_FILE             => 'Файл',
-	NS_FILE_TALK        => 'Файл кӓнгӓшӹмӓш',
+	NS_FILE_TALK        => 'Файл_кӓнгӓшӹмӓш',
 	NS_MEDIAWIKI        => 'MediaWiki',
-	NS_MEDIAWIKI_TALK   => 'MediaWiki кӓнгӓшӹмӓш',
+	NS_MEDIAWIKI_TALK   => 'MediaWiki_кӓнгӓшӹмӓш',
 	NS_TEMPLATE         => 'Шаблон',
-	NS_TEMPLATE_TALK    => 'Шаблон кӓнгӓшӹмӓш',
+	NS_TEMPLATE_TALK    => 'Шаблон_кӓнгӓшӹмӓш',
 	NS_HELP             => 'Палшык',
-	NS_HELP_TALK        => 'Палшыкын кӓнгӓшӹмӓш',
+	NS_HELP_TALK        => 'Палшыкын_кӓнгӓшӹмӓш',
 	NS_CATEGORY         => 'Категори',
-	NS_CATEGORY_TALK    => 'Категори кӓнгӓшӹмӓш',
+	NS_CATEGORY_TALK    => 'Категори_кӓнгӓшӹмӓш',
 );
 
 $messages = array(
@@ -245,7 +245,7 @@ $messages = array(
 # Login and logout pages
 'yourname'                => 'Сирӹшӹн лӹмжӹ:',
 'yourpassword'            => 'Пароль:',
-'remembermypassword'      => 'Ти компьютерӹштӹ мӹньӹн учетный сирмӓшем ӓштӓш',
+'remembermypassword'      => 'Ти компьютерӹштӹ мӹньӹн учетный сирмӓшем ӓштӓш (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login'                   => 'Системыш сирӓлтдӓ',
 'nav-login-createaccount' => 'Коргӹшкӹ сирӓлтдӓ/регистрируялтда',
 'userlogin'               => 'Кӧргӹшкӹ сирӓлтдӓ ӓль регистрируялтда',
@@ -469,7 +469,6 @@ $messages = array(
 # Watchlist
 'watchlist'         => 'Вӓнгӹмӹ список',
 'mywatchlist'       => 'Вӓнгӹмӹ сирмӓш, список',
-'watchlistfor'      => "(сирӹшӹн '''$1''')",
 'addedwatch'        => 'Вӓнгӹмӓш списокыш пыртымы',
 'addedwatchtext'    => 'Ӹлӹштӓшӹм«[[:$1]]» тӓмдӓн вӓнгӹмӹ [[Special:Watchlist|ӹлӹштӓшӹшкӹдӓ пыртымы]]. Тидӹ паштек ӹштӹмӹ ӹлӹштӓшӹн вашталтымашвлӓ  ти списокышты анжыктымы дӓ тенгеок кӹжгӹ буквавлӓ доно у вашталтымашвлӓн списокышты пӓлдӹртӹмӹ лиэш[[Special:RecentChanges| пӓлдӹртӹмӹ лит]] нӹнӹм  айыраш куштылгырак лижӹ манын.',
 'removedwatch'      => 'Вӓнгӹмӹ список гӹц карангдымы',

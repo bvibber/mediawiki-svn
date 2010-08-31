@@ -268,7 +268,7 @@ $messages = array(
 'tog-editsection'             => 'អនុញ្ញាតកែប្រែ​ផ្នែកណាមួយ​តាម​តំណភ្ជាប់[កែប្រែ]',
 'tog-editsectiononrightclick' => 'អនុញ្ញាត​កែប្រែ​​ផ្នែកណាមួយ ដោយ​ចុចស្តាំកណ្តុរ​លើ​ចំណងជើង​របស់វា (តម្រូវអោយមាន JavaScript)',
 'tog-showtoc'                 => 'បង្ហាញ​តារាងមាតិកា (ចំពោះទំព័រ​ដែលមាន​ចំណងជើងរង​លើសពី៣)',
-'tog-rememberpassword'        => 'ចងចាំ​ការកត់ឈ្មោះចូលរបស់ខ្ញុំ​លើកុំព្យូទ័រនេះ',
+'tog-rememberpassword'        => 'ចងចាំ​ការកត់ឈ្មោះចូលរបស់ខ្ញុំ​លើកុំព្យូទ័រនេះ (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'បន្ថែម​ទំព័រ​ដែលខ្ញុំបង្កើត​ទៅ​បញ្ជីតាមដាន​របស់ខ្ញុំ',
 'tog-watchdefault'            => 'បន្ថែម​ទំព័រ​ដែលខ្ញុំកែប្រែ​ទៅ​បញ្ជីតាមដាន​របស់ខ្ញុំ',
 'tog-watchmoves'              => 'បន្ថែម​ទំព័រ​ដែលខ្ញុំប្តូរទីតាំង​ទៅ​បញ្ជីតាមដាន​របស់ខ្ញុំ',
@@ -656,7 +656,7 @@ $2',
 'yourname'                   => 'ឈ្មោះអ្នកប្រើ៖',
 'yourpassword'               => 'ពាក្យសំងាត់៖',
 'yourpasswordagain'          => 'វាយពាក្យសំងាត់ម្តងទៀត៖',
-'remembermypassword'         => 'ចងចាំកំណត់ឈ្មោះចូលរបស់ខ្ញុំក្នុងកុំព្យូទ័រនេះ',
+'remembermypassword'         => 'ចងចាំកំណត់ឈ្មោះចូលរបស់ខ្ញុំក្នុងកុំព្យូទ័រនេះ (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'ដូម៉ែនរបស់អ្នក៖',
 'externaldberror'            => 'មាន​​បញ្ហាក្នុងការ​បញ្ជាក់​ផ្ទៀង​ផ្ទាត់​​មូលដ្ឋាន​ទិន្នន័យ​ ឬ​អ្នក​មិន​ត្រូវ​បាន​អនុញ្ញាត​ឲ្យ​បន្ទាន់​សម័យ​គណនី​ខាង​ក្រៅ​របស់​អ្នក​។​
 ​',
@@ -674,6 +674,7 @@ $2',
 'gotaccount'                 => "បើលោកអ្នកមានគណនីសម្រាប់ប្រើហើយ  សូម'''$1'''។",
 'gotaccountlink'             => 'កត់ឈ្មោះចូល',
 'createaccountmail'          => 'តាមរយៈអ៊ីមែល',
+'createaccountreason'        => 'មូលហេតុ៖',
 'badretype'                  => 'ពាក្យសំងាត់ដែលអ្នកបានបញ្ចូលនោះ គឺមិនស៊ីគ្នាទេ។',
 'userexists'                 => 'ឈ្មោះអ្នកប្រើដែលអ្នកបានវាយបញ្ចូលមានគេប្រើហើយ។
 សូមជ្រើសរើសឈ្មោះផ្សេងពីនេះ។',
@@ -754,6 +755,12 @@ $2',
 
 សូមរងចាំមួយរយៈ មុនពេលសាកល្បងម្ដងទៀត។',
 'loginlanguagelabel'         => 'ភាសា៖ $1',
+
+# JavaScript password checks
+'password-strength-acceptable' => 'អាចទទួលយកបាន',
+'password-strength-good'       => 'ល្អ',
+'password-retype'              => 'វាយពាក្យសំងាត់ម្តងទៀត',
+'password-retype-mismatch'     => 'ពាក់សំងាត់​មិន​ត្រឹមត្រូវ​ទេ',
 
 # Password reset dialog
 'resetpass'                 => '​ប្តូរ​ពាក្យសំងាត់​',
@@ -1137,6 +1144,11 @@ $1",
 
 សូមមើលបំរាមនិងការរាំងខ្ទប់អនុវត្តបច្ចុប្បន្ននៅក្នុង [[Special:IPBlockList|បញ្ជីរាំងខ្ទប់IP]]។',
 
+# Revision move
+'revmove-reasonfield'       => 'មូលហេតុ៖',
+'revmove-norevisions-title' => 'កំណែគោលដៅមិនត្រឹមត្រូវ',
+'revmove-nullmove-title'    => 'ចំណងជើង​មិនល្អ',
+
 # History merging
 'mergehistory'                     => 'ច្របាច់ប្រវត្តិទាំងឡាយរបស់ទំព័របញ្ចូលគ្នា',
 'mergehistory-header'              => 'ទំព័រនេះអាចអោយអ្នកច្របាច់កំណែរបស់ប្រវត្តិទំព័រប្រភពមួយបញ្ចូលគ្នាចូលទៅក្នុងទំព័រថ្មីមួយ។
@@ -1355,6 +1367,8 @@ $1",
 'prefs-advancedsearchoptions'   => 'ជំរើសថ្នាក់ខ្ពស់',
 'prefs-advancedwatchlist'       => 'ជំរើសថ្នាក់ខ្ពស់',
 'prefs-displayrc'               => 'ជំរើសការបង្ហាញ',
+'prefs-displaysearchoptions'    => 'ជំរើសការបង្ហាញ',
+'prefs-displaywatchlist'        => 'ជំរើសការបង្ហាញ',
 'prefs-diffs'                   => 'ភាពខុសគ្នា',
 
 # User rights
@@ -1975,7 +1989,6 @@ PICT # ផ្សេង​ៗ​
 # Special:Categories
 'categories'                    => 'ចំណាត់ថ្នាក់ក្រុម',
 'categoriespagetext'            => '{{PLURAL:$1|ចំណាត់ថ្នាក់ក្រុម|ចំណាត់ថ្នាក់ក្រុម}}ខាងក្រោមនេះមានអត្ថបទឬមេឌា។
-
 [[Special:UnusedCategories|ចំណាត់ថ្នាក់ក្រុមមិនប្រើ]]ត្រូវបានបង្ហាញទីនេះ។
 សូមមើលផងដែរ [[Special:WantedCategories|ចំណាត់ថ្នាក់ក្រុមដែលគ្រប់គ្នាចង់បាន]]។',
 'categoriesfrom'                => 'បង្ហាញចំណាត់ថ្នាក់ក្រុមចាប់ផ្តើមដោយ៖',
@@ -2062,7 +2075,6 @@ PICT # ផ្សេង​ៗ​
 # Watchlist
 'watchlist'            => 'បញ្ជីតាមដានរបស់ខ្ញុំ',
 'mywatchlist'          => 'បញ្ជីតាមដាន​',
-'watchlistfor'         => "(សម្រាប់ '''$1''')",
 'nowatchlist'          => 'គ្មានអ្វីនៅក្នុងបញ្ជីតាមដានរបស់អ្នកទេ។',
 'watchlistanontext'    => 'សូម $1 ដើម្បី​មើល​ឬ​កែប្រែ​របស់​ក្នុង​បញ្ជីតាមដាន​របស់អ្នក។',
 'watchnologin'         => 'មិនទាន់កត់ឈ្មោះចូលទេ',

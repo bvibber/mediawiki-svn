@@ -60,7 +60,7 @@ $messages = array(
 'tog-editsection'             => 'Fungsèkna panyuntingan sub-bagian ngliwati pranala [sunting]',
 'tog-editsectiononrightclick' => 'Fungsèkna panyuntingan sub-bagian mawa klik-tengen ing judul bagian (JavaScript)',
 'tog-showtoc'                 => 'Tuduhna daftar isi (kanggo kaca sing nduwé luwih saka 3 sub-bagian)',
-'tog-rememberpassword'        => 'Éling tembung sandi ing saben sési',
+'tog-rememberpassword'        => 'Éling tembung sandi ing saben sési (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Tambahna kaca sing tak-gawé ing daftar pangawasan',
 'tog-watchdefault'            => 'Tambahna kaca sing tak-sunting ing daftar pangawasan',
 'tog-watchmoves'              => 'Tambahkan kaca sing tak-pindhah ing daftar pangawasan',
@@ -443,7 +443,7 @@ Akun panjenengan wis kacipta. Aja lali nata konfigurasi [[Special:Preferences|pr
 'yourname'                   => 'Asma pangangeman',
 'yourpassword'               => 'tembung sandhi',
 'yourpasswordagain'          => 'Balènana tembung sandhi',
-'remembermypassword'         => 'Éling tembung sandhi',
+'remembermypassword'         => 'Éling tembung sandhi (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Dhomain panjenengan',
 'externaldberror'            => 'Ana kasalahan otèntikasi basis dhata èksternal utawa panjenengan ora pareng nglakoni pemutakhiran marang akun èksternal panjenengan.',
 'login'                      => 'Mlebu log',
@@ -460,6 +460,7 @@ Akun panjenengan wis kacipta. Aja lali nata konfigurasi [[Special:Preferences|pr
 'gotaccount'                 => "Wis kagungan akun? '''$1'''.",
 'gotaccountlink'             => 'Mlebu',
 'createaccountmail'          => 'liwat layang e-mail',
+'createaccountreason'        => 'Alesan:',
 'badretype'                  => 'Sandhi panjenengan ora gathuk',
 'userexists'                 => 'Asma panganggo sing panjenengan pilih wis kanggo.
 Mangga pilih asma liyané.',
@@ -511,6 +512,12 @@ Panjenengan bisa nglirwakaké pesen iki yèn akun utawa rékening iki digawé d�
 Tulung nunggu dhisik sadurungé njajal manèh.',
 'loginlanguagelabel'         => 'Basa: $1',
 'suspicious-userlogout'      => 'Panjaluk panjenengan supaya metu ditolak amarga katoné panjlajah internt utawa proksi panyinggah.',
+
+# JavaScript password checks
+'password-strength-acceptable' => 'lumayan',
+'password-strength-good'       => 'apik',
+'password-retype'              => 'Balènana tembung sandhi',
+'password-retype-mismatch'     => 'Tembung sandhiné ora cocog',
 
 # Password reset dialog
 'resetpass'                 => 'Ganti tembung sandi',
@@ -840,14 +847,16 @@ Mangga priksa cathetan log.',
 'revdelete-otherreason'       => 'Alesan liya/tambahan:',
 'revdelete-reasonotherlist'   => 'Alesan liya',
 'revdelete-edit-reasonlist'   => 'Sunting alesan pambusakan',
+'revdelete-offender'          => 'Revisi penulis:',
 
 # Suppression log
 'suppressionlog'     => "Log barang-barang sing didelikaké (''oversight'')",
 'suppressionlogtext' => "Ing ngisor iki kapacak daftar pambusakan lan pamblokiran pungkasan sing uga nyangkut isi sing didelikaké saka para opsis. Mangga mirsani [[Special:IPBlockList|daftar pamblokiran IP]] kanggo daftar pambuwangan (''ban'') lan pamblokiran sing saiki lagi operasional.",
 
 # Revision move
-'revmove-reasonfield'    => 'Alesan:',
-'revmove-nullmove-title' => 'Judhulé ora sah',
+'revmove-reasonfield'       => 'Alesan:',
+'revmove-norevisions-title' => 'Target revisi ora ditemokaké',
+'revmove-nullmove-title'    => 'Judhulé ora sah',
 
 # History merging
 'mergehistory'                     => 'Gabung sejarah kaca',
@@ -1067,6 +1076,8 @@ Panjenengan uga bisa milih supaya wong liya ngubungi panjenengan liwat jeneng pa
 'prefs-advancedsearchoptions'   => 'Opsi lanjutan',
 'prefs-advancedwatchlist'       => 'Opsi lanjutan',
 'prefs-displayrc'               => 'Opsi tampilan',
+'prefs-displaysearchoptions'    => 'Opsi tampilan',
+'prefs-displaywatchlist'        => 'Opsi tampilan',
 'prefs-diffs'                   => 'Prabédan',
 
 # User rights
@@ -1355,6 +1366,7 @@ Panjenengan kudu nggalih perlu utawa ora mbanjuraké pangunggahan berkas ini.
 Log pambusakan berkas iki kaya mangkéné:",
 'filename-bad-prefix'         => "Jeneng berkas sing panjenengan unggahaké, diawali mawa '''\"\$1\"''', sing sawijining jeneng non-dèskriptif sing biasané diwènèhaké sacara otomatis déning kamera digital. Mangga milih jeneng liyané sing luwih dèskriptif kanggo berkas panjenengan.",
 'upload-success-subj'         => 'Kasil diamot',
+'upload-warning-subj'         => 'Pèngetan pangunggahan berkas',
 
 'upload-proto-error'        => 'Protokol ora bener',
 'upload-proto-error-text'   => 'Pangunggahan jarah adoh mbutuhaké URL sing diawali karo <code>http://</code> utawa <code>ftp://</code>.',
@@ -1721,7 +1733,6 @@ Alamat layang-e sing panjenengan lebokaké ing [[Special:Preferences|préferèsi
 # Watchlist
 'watchlist'            => 'Daftar artikel pilihan',
 'mywatchlist'          => 'Daftar pangawasanku',
-'watchlistfor'         => "(kanggo '''$1''')",
 'nowatchlist'          => 'Daftar pangawasan panjenengan kosong.',
 'watchlistanontext'    => 'Mangga $1 kanggo mirsani utawa nyunting daftar pangawasan panjenengan.',
 'watchnologin'         => 'Durung mlebu log',
@@ -2410,7 +2421,7 @@ mangga delengen math/README kanggo cara konfigurasi.',
 'markaspatrolleddiff'                 => 'Tandhanana wis dipatroli',
 'markaspatrolledtext'                 => 'Tandhanana artikel iki wis dipatroli',
 'markedaspatrolled'                   => 'Ditandhani wis dipatroli',
-'markedaspatrolledtext'               => 'Révisi sing dipilih ngenani [:$1]] wis ditandhani minangka dipatroli.',
+'markedaspatrolledtext'               => 'Révisi sing dipilih ngenani [[:$1]] wis ditandhani minangka dipatroli.',
 'rcpatroldisabled'                    => 'Patroli owah-owahan pungkasan dipatèni',
 'rcpatroldisabledtext'                => 'Fitur patroli owah-owahan pungkasan lagi dipatèni.',
 'markedaspatrollederror'              => 'Ora bisa awèh tandha wis dipatroli',

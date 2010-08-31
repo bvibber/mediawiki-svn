@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Recentchanges
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,10 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
- * Implements Special:Recentchanges
+ * A special page that lists last changes made to the wiki
+ *
  * @ingroup SpecialPage
  */
 class SpecialRecentChanges extends IncludableSpecialPage {
@@ -306,6 +311,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$limit = $opts['limit'];
 		$namespace = $opts['namespace'];
+		$select = '*';
 		$invert = $opts['invert'];
 
 		// JOIN on watchlist for users
@@ -328,7 +334,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 			);
 		}
 
-		if ( !wfRunHooks( 'SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts, &$query_options ) ) )
+		if ( !wfRunHooks( 'SpecialRecentChangesQuery', array( &$conds, &$tables, &$join_conds, $opts, &$query_options, &$select ) ) )
 			return false;
 
 		// Don't use the new_namespace_time timestamp index if:
@@ -348,7 +354,7 @@ class SpecialRecentChanges extends IncludableSpecialPage {
 		// We have a new_namespace_time index! UNION over new=(0,1) and sort result set!
 		} else {
 			// New pages
-			$sqlNew = $dbr->selectSQLText( $tables, '*',
+			$sqlNew = $dbr->selectSQLText( $tables, $select,
 				array( 'rc_new' => 1 ) + $conds,
 				__METHOD__,
 				array( 'ORDER BY' => 'rc_timestamp DESC', 'LIMIT' => $limit,

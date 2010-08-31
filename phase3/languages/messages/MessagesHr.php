@@ -12,6 +12,7 @@
  * @author Demicx
  * @author Dnik
  * @author Ex13
+ * @author Excaliboor
  * @author Luka Krstulovic
  * @author MayaSimFan
  * @author Meno25
@@ -325,7 +326,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Dodaj sve stranice koje izbrišem na popis praćenja',
 'tog-previewontop'            => 'Prikaži kako će stranica izgledati iznad okvira za uređivanje',
 'tog-previewonfirst'          => 'Prikaži kako će stranica izgledati čim otvorim uređivanje',
-'tog-nocache'                 => 'Isključi međuspremnik (cache) stranica.',
+'tog-nocache'                 => 'Isključi međuspremnik (cache) stranica u pregledniku',
 'tog-enotifwatchlistpages'    => 'Pošalji mi e-mail kod izmjene stranice u popisu praćenja',
 'tog-enotifusertalkpages'     => 'Pošalji mi e-mail kod izmjene moje stranice za razgovor',
 'tog-enotifminoredits'        => 'Pošalji mi e-mail i kod manjih izmjena',
@@ -722,6 +723,7 @@ Ne zaboravite prilagoditi [[Special:Preferences|{{SITENAME}} postavke]].',
 'gotaccount'                 => "Već imate suradnički račun? '''$1'''.",
 'gotaccountlink'             => 'Prijavite se',
 'createaccountmail'          => 'poštom',
+'createaccountreason'        => 'Razlog:',
 'badretype'                  => 'Unesene lozinke nisu istovjetne.',
 'userexists'                 => 'Uneseno suradničko ime već je u upotrebi.
 Unesite neko drugo ime.',
@@ -781,6 +783,15 @@ Možete zanemariti ovu poruku ako je suradnički račun stvoren nenamjerno.',
 Molimo Vas da pričekate prije nego što pokušate ponovo.',
 'loginlanguagelabel'         => 'Jezik: $1',
 'suspicious-userlogout'      => 'Vaš zahtjev za odjavu je odbijen jer to izgleda kao da je poslan preko pokvarenog preglednika ili keširanog proxyja.',
+
+# JavaScript password checks
+'password-strength'            => 'Procijenjena snaga lozinke: $1',
+'password-strength-bad'        => 'LOŠA',
+'password-strength-mediocre'   => 'osrednja',
+'password-strength-acceptable' => 'prihvatljiva',
+'password-strength-good'       => 'dobra',
+'password-retype'              => 'Ponovno upišite lozinku ovdje',
+'password-retype-mismatch'     => 'Lozinke se ne poklapaju',
 
 # Password reset dialog
 'resetpass'                 => 'Promijeni lozinku',
@@ -1196,6 +1207,7 @@ Primijetite da uporaba navigacijskih poveznica resetira Vaše izbore u stupcu.',
 # Diffs
 'history-title'            => 'Povijest izmjena stranice "$1"',
 'difference'               => '(Usporedba među inačicama)',
+'difference-multipage'     => '(Razlika između stranica)',
 'lineno'                   => 'Redak $1:',
 'compareselectedversions'  => 'Usporedi odabrane inačice',
 'showhideselectedversions' => 'Otkrij/sakrij odabrane izmjene',
@@ -1310,6 +1322,7 @@ Primijetite da uporaba navigacijskih poveznica resetira Vaše izbore u stupcu.',
 'contextlines'                  => 'Koliko redova teksta po pogotku',
 'contextchars'                  => 'Koliko znakova po retku',
 'stub-threshold'                => 'Prag za formatiranje poput <a href="#" class="stub">poveznice mrve</a>:',
+'stub-threshold-disabled'       => 'Onemogućeno',
 'recentchangesdays'             => 'Broj dana prikazanih u nedavnim promjenama:',
 'recentchangesdays-max'         => '(maksimalno $1 {{PLURAL:$1|dan|dana}})',
 'recentchangescount'            => 'Broj izmjena za prikaz kao zadano:',
@@ -1598,13 +1611,13 @@ Možete omogućiti drugima da Vas kontaktiraju na suradničkoj stranici ili stra
 'upload-recreate-warning'     => "'''Upozorenje: datoteka s tim imenom je izbrisana ili premještena.'''
 
 Evidencije brisanja i premještanja prikazane su ovdje:",
-'uploadtext'                  => "Ovaj obrazac služi za postavljanje slika.
-Za pregledavanje i pretraživanje već postavljenih slika vidi [[Special:FileList|popis postavljenih datoteka]]. Postavljanja i brisanja bilježe se i u [[Special:Log|evidenciji]].
+'uploadtext'                  => "Ovaj obrazac služi za postavljanje datoteka.
+Za pregledavanje i pretraživanje već postavljenih datoteka vidi [[Special:FileList|popis postavljenih datoteka]], (ponovljena) postavljanja su također u [[Special:Log/upload|popisu postavljanja]], a brisanja u [[Special:Log/delete|popisu brisanja]].
 
-Da biste na stranicu stavili sliku, koristite poveznice tipa
+Da biste na stranicu stavili datoteku, koristite poveznice tipa
 * '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Datoteka.jpg]]</nowiki></tt>''' za punu verziju datoteke
-* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Datoteka.png|200px|mini|left|tekst]]</nowiki></tt>''' za datoteku širine 200 px u okviru s popratnim tekstom
-* '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Datoteka.ogg]]</nowiki></tt>''' za direktno povezivanje na datoteku bez njenog pokazivanja",
+* '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Datoteka.png|200px|mini|left|popratni tekst]]</nowiki></tt>''' za datoteku širine 200 px u okviru s 'popratnim tekstom' kao opisom
+* '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Datoteka.ogg]]</nowiki></tt>''' za direktno povezivanje na datoteku bez njenog prikazivanja",
 'upload-permitted'            => 'Dopušteni tipovi datoteka: $1.',
 'upload-preferred'            => 'Poželjni tipovi datoteka: $1.',
 'upload-prohibited'           => 'Zabranjeni tipovi datoteka: $1.',
@@ -1692,9 +1705,9 @@ Razmislite je li prigodno nastaviti s postavljanjem ove datoteke.
 Slijedi evidencija brisanja ove datoteke s obrazloženjem prethodnog brisanja:",
 'filename-bad-prefix'         => "Ime datoteke koju snimate počinje s '''\"\$1\"''', što je ime koje slikama tipično dodjeljuju digitalni fotoaparati. Molimo izaberite bolje ime (neko koje bolje opisuje sliku nego \$1).",
 'upload-success-subj'         => 'Postavljanje uspješno.',
-'upload-success-msg'          => 'Vaše postavljanje je dostupno ovdje: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'Vaša datoteka iz [$2] je uspješno postavljena. Dostupna je ovdje: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Greška pri postavljanju',
-'upload-failure-msg'          => 'Došlo je do problema s Vašim postavljanjem:
+'upload-failure-msg'          => 'Došlo je do problema s Vašim postavljanjem datoteke [$2]:
 
 $1',
 'upload-warning-subj'         => 'Upozorenje kod postavljanja',
@@ -1946,7 +1959,7 @@ koja obično ukazuje na "pravu" odredišnu stranicu, na koju bi trebalo pokaziva
 'protectedtitlesempty'    => 'Nijedan naslov nije trenutačno zaštićen s tim parametrima.',
 'listusers'               => 'Popis suradnika',
 'listusers-editsonly'     => 'Pokaži samo suradnike s uređivanjem',
-'listusers-creationsort'  => 'Sortiraj po datumu otvaranja',
+'listusers-creationsort'  => 'Razvrstaj po datumu stvaranja',
 'usereditcount'           => '$1 {{PLURAL:$1|uređivanje|uređivanja|uređivanja}}',
 'usercreated'             => 'Otvoren $1 u $2',
 'newpages'                => 'Nove stranice',
@@ -2100,7 +2113,7 @@ E-mail adresa iz Vaših [[Special:Preferences|postavki]] nalazit će se u "From"
 # Watchlist
 'watchlist'            => 'Moj popis praćenja',
 'mywatchlist'          => 'Moj popis praćenja',
-'watchlistfor'         => "(suradnika '''$1''')",
+'watchlistfor2'        => 'Za $1 $2',
 'nowatchlist'          => 'Na Vašem popisu praćenja nema nijednog članka.',
 'watchlistanontext'    => 'Molimo Vas $1 kako biste mogli vidjeti ili uređivati Vaš popis praćenih stranica.',
 'watchnologin'         => 'Niste prijavljeni',
@@ -2310,7 +2323,7 @@ ili je promjena vraćena ili uklonjena iz arhive.',
 'undeletereset'                => 'Očisti',
 'undeleteinvert'               => 'Obrni odabir',
 'undeletecomment'              => 'Razlog:',
-'undeletedarticle'             => 'vraćena stranica "$1"',
+'undeletedarticle'             => 'vraćena stranica "[[$1]]"',
 'undeletedrevisions'           => '{{PLURAL:$1|$1 inačica vraćena|$1 inačice vraćene|$1 inačica vraćeno}}',
 'undeletedrevisions-files'     => '{{PLURAL:$1|$1 promjena|$1 promjene|$1 promjena}} i {{PLURAL:$2|$2 datoteka vraćena|$2 datototeke vraćene|$2 datoteka vraćeno}}',
 'undeletedfiles'               => '{{PLURAL:$1|$1 datoteka vraćena|$1 datoteke vraćene|$1 datoteka vraćeno}}',
@@ -2881,7 +2894,7 @@ Njegovim izvršavanjem mogli biste oštetiti svoj sustav.",
 'file-info-gif-looped' => 'animacija se ponavlja',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|okvir|okvira}}',
 'file-info-png-looped' => 'animacija se ponavlja',
-'file-info-png-repeat' => 'prikazano $1 puta',
+'file-info-png-repeat' => 'prikazano $1 {{PLURAL:$1|puta|puta|puta}}',
 'file-info-png-frames' => '$1 {{PLURAL:$1|okvir|okvira}}',
 
 # Special:NewFiles
@@ -2929,7 +2942,7 @@ Svaka sljedeća poveznica u istom retku je izuzetak, npr. kod stranica gdje se s
 'exif-orientation'                 => 'Orijentacija kadra',
 'exif-samplesperpixel'             => 'Broj kolor komponenata',
 'exif-planarconfiguration'         => 'Princip rasporeda podataka',
-'exif-ycbcrsubsampling'            => 'Omjer kompnente Y prema C',
+'exif-ycbcrsubsampling'            => 'Omjer komponente Y prema C',
 'exif-ycbcrpositioning'            => 'Razmještaj komponenata Y i C',
 'exif-xresolution'                 => 'Vodoravna razlučivost',
 'exif-yresolution'                 => 'Okomita razlučivost',
@@ -3334,7 +3347,7 @@ Također možete koristiti [[Special:Watchlist/edit|standardni editor]].',
 
 # Core parser functions
 'unknown_extension_tag' => "Nepoznat ''tag'' ekstenzije \"\$1\"",
-'duplicate-defaultsort' => 'Upozorenje: Glavni raspored "$2" poništava raniji glavni raspored "$1".',
+'duplicate-defaultsort' => '\'\'\'Upozorenje:\'\'\' Razvrstavanje po "$2" poništava ranije razvrstavanje po "$1".',
 
 # Special:Version
 'version'                          => 'Inačica softvera',
@@ -3353,6 +3366,13 @@ Također možete koristiti [[Special:Watchlist/edit|standardni editor]].',
 'version-hook-subscribedby'        => 'Pretplaćeno od',
 'version-version'                  => '(Inačica $1)',
 'version-license'                  => 'Licencija',
+'version-poweredby-credits'        => "Ovaj wiki pogoni '''[http://www.mediawiki.org/ MediaWiki]''', autorska prava © 2001-$1 $2.",
+'version-poweredby-others'         => 'ostali',
+'version-license-info'             => 'MediaWiki je slobodni softver; možete ga distribuirati i/ili mijenjati pod uvjetima GNU opće javne licencije u obliku u kojem ju je objavila Free Software Foundation; bilo verzije 2 licencije, ili (Vama na izbor) bilo koje kasnije verzije.
+
+MediaWiki je distribuiran u nadi da će biti koristan, no BEZ IKAKVOG JAMSTVA; čak i bez impliciranog jamstva MOGUĆNOSTI PRODAJE ili PRIKLADNOSTI ZA ODREĐENU NAMJENU. Pogledajte GNU opću javnu licenciju za više detalja.
+
+Trebali ste primiti [{{SERVER}}{{SCRIPTPATH}}/COPYING kopiju GNU opće javne licencije] uz ovaj program; ako ne, pišite na Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA, ili je [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html pročitajte online].',
 'version-software'                 => 'Instalirani softver',
 'version-software-product'         => 'Proizvod',
 'version-software-version'         => 'Verzija',

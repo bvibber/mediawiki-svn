@@ -22,7 +22,7 @@ class DatabaseMock extends DatabaseBase {
 	function affectedRows() { }
 	function fieldInfo( $table, $field ) { }
 	function strencode( $s ) { }
-	function getSoftwareLink() { }
+	static function getSoftwareLink() { }
 	function getServerVersion() { }
 	function getType() { }
 	function getSearchEngine() { }
@@ -62,7 +62,7 @@ class SearchUpdateTest extends PHPUnit_Framework_TestCase {
 	}
 
 	function setUp() {
-		global $wgSearchType, $wgDBtype, $wgLBFactoryConf, $wgDBservers;
+		global $wgSearchType, $wgDBtype, $wgLBFactoryConf, $wgDBservers, $wgContLang;
 
 		self::$searchType  = $wgSearchType;
 		self::$dbtype      = $wgDBtype;
@@ -73,11 +73,12 @@ class SearchUpdateTest extends PHPUnit_Framework_TestCase {
 		$wgDBtype = 'mock';
 		$wgLBFactoryConf['class'] = 'LBFactory_Simple';
 		$wgDBservers = null;
+		$wgContLang = Language::factory( 'en' );
 		LBFactory::destroyInstance();
 	}
 
 	function tearDown() {
-		global $wgSearchType, $wgDBtype, $wgLBFactoryConf, $wgDBservers;
+		global $wgSearchType, $wgDBtype, $wgLBFactoryConf, $wgDBservers, $wgContLang;
 
 		LBFactory::destroyInstance();
 
@@ -85,6 +86,7 @@ class SearchUpdateTest extends PHPUnit_Framework_TestCase {
 		$wgDBtype = self::$dbtype;
 		$wgLBFactoryConf = self::$factoryconf;
 		$wgDBservers = self::$dbservers;
+		$wgContLang = null;
 	}
 
 	function testUpdateText() {

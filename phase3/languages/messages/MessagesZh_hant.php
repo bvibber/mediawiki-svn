@@ -15,6 +15,7 @@
  * @author Hakka
  * @author Horacewai2
  * @author Jidanni
+ * @author Jimmy xu wrk
  * @author KaiesTse
  * @author Liangent
  * @author Mark85296341
@@ -131,6 +132,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( '所有頁面' ),
 	'Prefixindex'               => array( '前綴索引' ),
 	'Ipblocklist'               => array( '封禁列表' ),
+	'Unblock'                   => array( '解除封禁' ),
 	'Specialpages'              => array( '特殊頁面' ),
 	'Contributions'             => array( '用戶貢獻' ),
 	'Emailuser'                 => array( '電郵用戶' ),
@@ -175,6 +177,9 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( '已刪除的用戶貢獻' ),
 	'Tags'                      => array( '標籤' ),
 	'Activeusers'               => array( '活躍用戶' ),
+	'RevisionMove'              => array( '版本移動' ),
+	'ComparePages'              => array( '頁面比較' ),
+	'Badtitle'                  => array( '不好的標題' ),
 );
 
 $bookstoreList = array(
@@ -192,7 +197,7 @@ $messages = array(
 'tog-hideminor'               => '最近更改中隱藏小修改',
 'tog-hidepatrolled'           => '於最近更改中隱藏巡查過的編輯',
 'tog-newpageshidepatrolled'   => '於新頁面清單中隱藏巡查過的頁面',
-'tog-extendwatchlist'         => '增強監視清單以顯示所有更改，不只是最近的',
+'tog-extendwatchlist'         => '展開監視清單以顯示所有更改，不只是最近的',
 'tog-usenewrc'                => '使用增強最近更改 （需要JavaScript）',
 'tog-numberheadings'          => '標題自動編號',
 'tog-showtoolbar'             => '顯示編輯工具欄 （需要JavaScript）',
@@ -610,6 +615,7 @@ $2',
 'gotaccount'                 => '已經擁有賬號？$1。',
 'gotaccountlink'             => '登入',
 'createaccountmail'          => '通過電郵',
+'createaccountreason'        => '理由:',
 'badretype'                  => '您所輸入的密碼並不相同。',
 'userexists'                 => '您所輸入的用戶名稱已經存在，請另選一個名稱。',
 'loginerror'                 => '登入錯誤',
@@ -664,6 +670,12 @@ $2',
 請稍等多一會再試。',
 'loginlanguagelabel'         => '語言: $1',
 'suspicious-userlogout'      => '您登出的要求已經被拒絕，因為它可能是由已損壞的瀏覽器或者快取代理傳送。',
+
+# JavaScript password checks
+'password-strength-acceptable' => '可接受',
+'password-strength-good'       => '好',
+'password-retype'              => '再次輸入密碼',
+'password-retype-mismatch'     => '密碼不匹配',
 
 # Password reset dialog
 'resetpass'                 => '更改密碼',
@@ -1202,6 +1214,7 @@ $1",
 'contextlines'                  => '每連結行數:',
 'contextchars'                  => '每行字數:',
 'stub-threshold'                => '<a href="#" class="stub">短頁面連結</a>格式門檻值 （位元組）:',
+'stub-threshold-disabled'       => '已停用',
 'recentchangesdays'             => '最近更改中的顯示日數:',
 'recentchangesdays-max'         => '最大 $1 日',
 'recentchangescount'            => '預設顯示的編輯數：',
@@ -1452,7 +1465,7 @@ $1",
 'rcshowhidebots'                    => '$1機器人的編輯',
 'rcshowhideliu'                     => '$1已登入用戶的編輯',
 'rcshowhideanons'                   => '$1匿名用戶的編輯',
-'rcshowhidepatr'                    => '$1檢查過的編輯',
+'rcshowhidepatr'                    => '$1巡查過的編輯',
 'rcshowhidemine'                    => '$1我的編輯',
 'rclinks'                           => '顯示最近$2天內最新的$1次改動。<br />$3',
 'diff'                              => '差異',
@@ -1997,7 +2010,6 @@ Template:消除歧義',
 # Watchlist
 'watchlist'            => '監視列表',
 'mywatchlist'          => '我的監視列表',
-'watchlistfor'         => "（'''$1'''的監視列表）",
 'nowatchlist'          => '您的監視列表為空。',
 'watchlistanontext'    => '請$1以檢視或編輯您的監視列表。',
 'watchnologin'         => '未登入',

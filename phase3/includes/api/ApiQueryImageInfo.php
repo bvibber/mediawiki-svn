@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on July 6, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on July 6, 2007
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -196,8 +197,14 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		if ( isset( $prop['timestamp'] ) ) {
 			$vals['timestamp'] = wfTimestamp( TS_ISO_8601, $file->getTimestamp() );
 		}
-		if ( isset( $prop['user'] ) ) {
-			$vals['user'] = $file->getUser();
+		if ( isset( $prop['user'] ) || isset( $prop['userid'] ) ) {
+
+			if ( isset( $prop['user'] ) ) {
+				$vals['user'] = $file->getUser();
+			}
+			if ( isset( $prop['userid'] ) ) {
+				$vals['userid'] = $file->getUser( 'id' );
+			}
 			if ( !$file->getUser( 'id' ) ) {
 				$vals['anon'] = '';
 			}
@@ -322,6 +329,7 @@ class ApiQueryImageInfo extends ApiQueryBase {
 		return array(
 			'timestamp',
 			'user',
+			'userid',
 			'comment',
 			'url',
 			'size',
@@ -341,7 +349,8 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			'prop' => array(
 				'What image information to get:',
 				' timestamp    - Adds timestamp for the uploaded version',
-				' user         - Adds user for uploaded the image version',
+				' user         - Adds the user who uploaded the image version',
+				' userid       - Add the user id that uploaded the image version',
 				' comment      - Comment on the version',
 				' url          - Gives URL to the image and the description page',
 				' size         - Adds the size of the image in bytes and the height and width',

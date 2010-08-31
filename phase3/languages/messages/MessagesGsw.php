@@ -138,7 +138,7 @@ $messages = array(
 'tog-watchdeletion'           => 'Sälber glöschti Sytene beobachte',
 'tog-previewontop'            => 'Vorschou vor em Editierfänschter aazeige',
 'tog-previewonfirst'          => 'Vorschou aazeige bim erschten Editiere',
-'tog-nocache'                 => 'Syte-Cache deaktiviere',
+'tog-nocache'                 => 'Syte-Cache vum Browser deaktiviere',
 'tog-enotifwatchlistpages'    => 'Benachrichtigungsmails by Änderigen a Wiki-Syte',
 'tog-enotifusertalkpages'     => 'Benachrichtigungsmails bi Änderigen a dyne Benutzersyte',
 'tog-enotifminoredits'        => 'Benachrichtigungsmail ou bi chlyne Sytenänderige',
@@ -536,6 +536,7 @@ Vergiss nid, dyni [[Special:Preferences|{{SITENAME}}-Yystellige]] aazpasse.',
 'gotaccount'                 => "Du häsch scho a Konto? '''$1'''",
 'gotaccountlink'             => '»Login fir Benutzer, wu scho aagmäldet sin«',
 'createaccountmail'          => 'iber E-Mail',
+'createaccountreason'        => 'Grund:',
 'badretype'                  => 'Di beidi Passwörter stimme nid zämme.',
 'userexists'                 => 'Dä Benutzername git s scho.
 Bitte nimm e andere.',
@@ -598,6 +599,15 @@ Wänn s Benutzerkonto us Versäh aaglait woren isch, chasch die Nochricht ignori
 'login-throttled'            => 'Du hesch z vilmol vergebli versuecht, Di aazmälde. Bitte wart, voreb Du s non emol versuechsch.',
 'loginlanguagelabel'         => 'Sproch: $1',
 'suspicious-userlogout'      => 'Dyy Versuech di abzmälde isch abbroche wore, wel s uusgsäh het, wie wänn s vun eme bschedigte Browser oder eme Cacheproxy uus gsändet woren isch.',
+
+# JavaScript password checks
+'password-strength'            => 'Gschätzti Passwortsterki: $1',
+'password-strength-bad'        => 'SCHLÄCHT',
+'password-strength-mediocre'   => 'mittelmäßig',
+'password-strength-acceptable' => 'akzeptabel',
+'password-strength-good'       => 'guet',
+'password-retype'              => 'Passwort no mol yygee',
+'password-retype-mismatch'     => 'D Passwerter stimme nit zämme',
 
 # Password reset dialog
 'resetpass'                 => 'Passwort fir s Benutzerkonto ändere oder zrucksetze',
@@ -1026,6 +1036,7 @@ Stell sicher, ass d Versionsgschicht vun eme Artikel historisch korrekt isch.',
 # Diffs
 'history-title'            => 'Versionsgschicht vo „$1“',
 'difference'               => '(Unterschide zwüsche Versione)',
+'difference-multipage'     => '(Unterschid zwische Syte)',
 'lineno'                   => 'Zyle $1:',
 'compareselectedversions'  => 'Usgwählti Versione verglyche',
 'showhideselectedversions' => 'Uusgwehlti Versione zeige/verstecke',
@@ -1140,6 +1151,7 @@ Stell sicher, ass d Versionsgschicht vun eme Artikel historisch korrekt isch.',
 'contextlines'                  => 'Zyle pro Träffer',
 'contextchars'                  => 'Zeiche pro Zyle',
 'stub-threshold'                => 'Gleichformatierig <a href="#" class="stub">vu chleine Syte</a> (in Byte):',
+'stub-threshold-disabled'       => 'Deaktiviert',
 'recentchangesdays'             => 'Aazahl vu dr Täg, wu d Lischt vu dr  „Letschte Änderige“ standardmässig soll umfasse:',
 'recentchangesdays-max'         => '(Maximal $1 {{PLURAL:$1|Tag|Täg}})',
 'recentchangescount'            => 'Aazahl vu Bearbeitige, wu standardmässig aazeigt wäre:',
@@ -1224,7 +1236,7 @@ Des cha nimmi ruckgängig gmacht wäre.',
 'userrights-editusergroup'     => 'Bearbeit d Gruppezuegherigkeit vum Benutzer',
 'saveusergroups'               => 'Spychere d Gruppezuegherigkeit',
 'userrights-groupsmember'      => 'Mitgliid vu:',
-'userrights-groupsmember-auto' => 'Yygschlosse Mitglid vu:',
+'userrights-groupsmember-auto' => 'Automatisch Mitglid vu:',
 'userrights-groups-help'       => 'Du chasch d Gruppezuegherigkeit fir dää Benutzer ändere:
 * E markiert Chäschtli bedytet, ass dr Benutzer Mitgliid vu däre Gruppe isch
 * E * bedytet, ass Du s Benutzerrächt nit wider chasch zruckneh, wänn s erteilt isch (oder umgchehrt).',
@@ -1528,9 +1540,9 @@ Zue Dyynere Information chunnt do s Lesch-Logbuech mit dr Begrindig fir di friej
 'filename-bad-prefix'         => "Dr Dateiname fangt mit '''„$1“''' aa. Des isch isch normalerwyys dr Dateiname, wu vun ere Digitalkamera vorgee wird un d Datei nit bschryybt.
 Bitte gib dr Datei e Name, wu dr Inhalt besser bschryybt.",
 'upload-success-subj'         => 'Erfolgryych uffegelade',
-'upload-success-msg'          => 'Dyyni uffeglade Datei isch do verfiegbar: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'Dyyni vu [$2] uffeglade Datei isch jetz do verfiegbar: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'Fähler bim Uffelade',
-'upload-failure-msg'          => 'S het e Probläm gee mit Dyyre uffegladene Datei:
+'upload-failure-msg'          => 'S het e Probläm gee mit Dyyre vu [$2] uffegladene Datei:
 
 $1',
 'upload-warning-subj'         => 'Warnig bim Uffelade',
@@ -1930,7 +1942,7 @@ As Absender wird d E-Mail-Adräss us Dyyne [[Special:Preferences|Yystellige]] yy
 # Watchlist
 'watchlist'            => 'Beobachtigslischte',
 'mywatchlist'          => 'Beobachtigslischte',
-'watchlistfor'         => "(für '''$1''')",
+'watchlistfor2'        => 'Fir $1 $2',
 'nowatchlist'          => 'Du hesch ke Yträg uf dyre Beobachtigslischte.',
 'watchlistanontext'    => 'Du muesch Di $1 go Dyyni Beobachtungslischt z säh oder go Yytreg uf ere bearbeite.',
 'watchnologin'         => 'Du bisch nit aagmäldet',
@@ -3139,6 +3151,13 @@ Du chasch au d [[Special:Watchlist/edit|Standard-Bearbeitigssyte]] bruuche.',
 'version-hook-subscribedby'        => 'Ufruef vu',
 'version-version'                  => '(Version $1)',
 'version-license'                  => 'Lizänz',
+'version-poweredby-credits'        => "Die Websyte nutzt '''[http://www.mediawiki.org/wiki/MediaWiki/de MediaWiki]''', Copyright © 2001–$1 $2.",
+'version-poweredby-others'         => 'anderi',
+'version-license-info'             => 'MediaWiki isch e freji Software, d. h. s cha, no dr Bedingige vu dr GNU General Public-Lizänz, wu vu dr Free Software Foundation vereffentligt woren isch, wyterverteilt un/oder modifiziert wäre. Doderbyy cha d Version 2, oder no eigenem Ermässe, jedi nejeri Version vu dr Lizänz brucht wäre.
+
+Des Programm wird in dr Hoffnig verteilt, ass es nitzli isch, aber OHNI JEDI GARANTI un sogar ohni di impliziert Garanti vun ere MÄRTGÄNGIGKEIT oder EIGNIG FIR E BSTIMMTE ZWÄCK. Doderzue git meh Hiiwys in dr GNU General Public-Lizänz.
+
+E [{{SERVER}}{{SCRIPTPATH}}/COPYING Kopi vu dr GNU General Public-Lizänz] sott zämme mit däm Programm verteilt wore syy. Wänn des nit eso isch, cha ne Kopi bi dr Free Software Foundation Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA, schriftli aagforderet oder [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html online gläse] wäre.',
 'version-software'                 => 'Installierti Software',
 'version-software-product'         => 'Produkt',
 'version-software-version'         => 'Version',

@@ -45,6 +45,7 @@
 * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 * DAMAGE.
 *
+* @file
 * @ingroup API
 * @author Michal Migurski <mike-json@teczno.com>
 * @author Matt Knapp <mdknapp[at]gmail[dot]com>
@@ -131,7 +132,7 @@ class Services_JSON
 	 *			bubble up with an error, so all return values
 	 *			from encode() should be checked with isError()
 	 */
-	function Services_JSON($use = 0)
+	function __construct($use = 0)
 	{
 		$this->use = $use;
 	}

@@ -46,12 +46,12 @@ $messages = array(
 'tog-editsection'             => 'Activar links per [editar] secziuns',
 'tog-editsectiononrightclick' => "Activar la pussaivladad d'editar secziuns cun in clic dretg (basegna JavaScript)",
 'tog-showtoc'                 => 'Mussar ina tabla da cuntegn sin paginas cun dapli che trais tetels',
-'tog-rememberpassword'        => "S'annunziar permanantamain (be sch'il pled-clav n'è batg vegnì generà da la software da MediaWiki)",
+'tog-rememberpassword'        => "S'annunziar permanantamain sin quest computer (per maximalmain $1 {{PLURAL:$1|di|dis}})",
 'tog-watchcreations'          => "Observar paginas ch'jau hai creà",
 'tog-watchdefault'            => "Observar paginas ch'jau hai edità",
 'tog-watchmoves'              => "Observar paginas ch'jau hai spustà",
 'tog-watchdeletion'           => "Observar paginas ch'jau hai stizzà",
-'tog-nocache'                 => 'deactivar il caching da la pagina',
+'tog-nocache'                 => 'Impedir che tes navigatur memorisescha las paginas en il cache',
 'tog-enotifwatchlistpages'    => "Trametta in e-mail sch'ina pagina sin mia glista d'observaziun vegn midada",
 'tog-enotifusertalkpages'     => "Trametta in e-mail sch'i ha dà midadas sin mia pagina da discussiun.",
 'tog-enotifminoredits'        => 'Trametta era in e-mail tar pitschnas midadas da las paginas',
@@ -122,16 +122,17 @@ $messages = array(
 'dec'           => 'dec',
 
 # Categories related messages
-'pagecategories'           => '{{PLURAL:$1|Categoria|Categorias}}',
-'category_header'          => 'Artitgels en la categoria "$1"',
-'subcategories'            => 'sutcategorias',
-'category-media-header'    => 'Datotecas en la categoria "$1"',
-'category-empty'           => "''Questa categoria cuntegna actualmain nagins artitgels e naginas datotecas.''",
-'hidden-categories'        => '{{PLURAL:$1|Categoria zuppentada|Categorias zuppentadas}}',
-'hidden-category-category' => 'Zuppa categorias',
-'category-subcat-count'    => '{{PLURAL:$2|Questa categoria cuntegna be suandanta sutcategoria.|Questa categoria cuntegna {{PLURAL:$1|la suandanta sutcategoria|las $1 suandantas sutcategorias}} da totalmain $2 sutcategoria.}}',
-'category-article-count'   => '{{PLURAL:$2|Questa categoria cuntegna be la suandanta pagina.|{{PLURAL:$1|La suandanta pagina è|Las $1 suandantas paginas èn}} en questa categoria che cuntegna totalmain $2 paginas.}}',
-'listingcontinuesabbrev'   => 'cuntinuaziun',
+'pagecategories'                => '{{PLURAL:$1|Categoria|Categorias}}',
+'category_header'               => 'Artitgels en la categoria "$1"',
+'subcategories'                 => 'sutcategorias',
+'category-media-header'         => 'Datotecas en la categoria "$1"',
+'category-empty'                => "''Questa categoria cuntegna actualmain nagins artitgels e naginas datotecas.''",
+'hidden-categories'             => '{{PLURAL:$1|Categoria zuppentada|Categorias zuppentadas}}',
+'hidden-category-category'      => 'Zuppa categorias',
+'category-subcat-count'         => '{{PLURAL:$2|Questa categoria cuntegna be suandanta sutcategoria.|Questa categoria cuntegna {{PLURAL:$1|la suandanta sutcategoria|las $1 suandantas sutcategorias}} da totalmain $2 sutcategoria.}}',
+'category-subcat-count-limited' => 'Questa categoria cuntegna {{PLURAL:$1|suandanta subcategoria|suandantas $1 subcategorias}}:',
+'category-article-count'        => '{{PLURAL:$2|Questa categoria cuntegna be la suandanta pagina.|{{PLURAL:$1|La suandanta pagina è|Las $1 suandantas paginas èn}} en questa categoria che cuntegna totalmain $2 paginas.}}',
+'listingcontinuesabbrev'        => 'cuntinuaziun',
 
 'about'         => 'Surda',
 'article'       => 'artitgel',
@@ -236,6 +237,11 @@ $messages = array(
 'jumpto'            => 'Midar tar:',
 'jumptonavigation'  => 'navigaziun',
 'jumptosearch'      => 'tschertga',
+'view-pool-error'   => 'Stgisa, ils servers èn actualmain surchargiads. 
+Memia blers utilisaders emprovan da guardar questa pagina. 
+Spetga per plaschair in mument avant che ti eprovas da puspè contemplar questa pagina. 
+
+$1',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
 'aboutsite'            => 'Davart {{SITENAME}}',
@@ -330,6 +336,7 @@ L\'ultima dumonda per la banca da datas era:
 ord la funcziun "$2".
 La banca da datas ha rapporta l\'errur "$3: $4"',
 'laggedslavemode'     => 'Attenziun: La pagina mussada na cuntign eventualmain betg anc las ultimas midadas.',
+'readonly'            => 'Banca da datas bloccada',
 'missing-article'     => 'Il text da la pagina cun il num "$1" $2 n\'è betg vegnì chattà en la banca da datas.
 
 Quai capita sch\'ins suonda in link che n\'è betg pli actuals u in link sin ina pagina ch\'è vegnida stizzada.
@@ -360,7 +367,7 @@ Betg emblida da midar tias [[Special:Preferences|preferenzas da {{SITENAME}}]].'
 'yourname'                   => "Num d'utilisader",
 'yourpassword'               => 'pled-clav',
 'yourpasswordagain'          => 'repeter pled-clav',
-'remembermypassword'         => 'Memorisar il pled-clav',
+'remembermypassword'         => "S'annunziar permanantamain sin quest computer (per maximalmain $1 {{PLURAL:$1|di|dis}})",
 'yourdomainname'             => 'Vossa domain',
 'login'                      => "T'annunziar",
 'nav-login-createaccount'    => "T'annunziar / registrar",
@@ -415,17 +422,24 @@ Perquei è anc nagin retschaiver e trametter dad emails per las suandantas funcz
 'emailconfirmlink'           => "Confirmar l'adressa dad email",
 'accountcreated'             => "Creà il conto d'utilisader",
 'accountcreatedtext'         => "Il conto d'utilisader per $1 è vegnì creà.",
+'createaccount-title'        => 'Crear in conto per {{SITENAME}}',
+'createaccount-text'         => "Insatgi ha creà in conto d'utilisader per tia adressa d'e-mail sin {{SITENAME}} ($4). Il pled-clav generà automaticamain per l'utilisader «$2» è «$3». Ti ta duessas t'annunzar uss e midar tes pled-clav. 
+
+Sche ti na levas betg crear quest conto d'utilisader pos ti ignorar quest e-mail.",
+'usernamehasherror'          => "Il num d'utilisader na po betg cuntegnair il segn da rauta (#)",
 'login-throttled'            => "Ti has empruvà memia savens da t'annunziar.
 Spetga per plaschair avant ch'empruvar anc ina giada.",
 'loginlanguagelabel'         => 'Lingua: $1',
 
 # Password reset dialog
-'resetpass'               => 'Midar il pled-clav',
-'resetpass_header'        => 'Midar il pled-clav dal conto',
-'oldpassword'             => 'pled-clav vegl:',
-'newpassword'             => 'pled-clav nov:',
-'retypenew'               => 'repeter pled-clav nov:',
-'resetpass-temp-password' => 'Pled-clav temporar:',
+'resetpass'                 => 'Midar il pled-clav',
+'resetpass_header'          => 'Midar il pled-clav dal conto',
+'oldpassword'               => 'pled-clav vegl:',
+'newpassword'               => 'pled-clav nov:',
+'retypenew'                 => 'repeter pled-clav nov:',
+'resetpass-submit-loggedin' => 'Midar il pled-clav',
+'resetpass-submit-cancel'   => 'Interrumper',
+'resetpass-temp-password'   => 'Pled-clav temporar:',
 
 # Edit page toolbar
 'bold_sample'     => 'Text grass',
@@ -1100,7 +1114,6 @@ L'adressa d'e-mail che ti has endatà en [[Special:Preferences|tias preferenzas]
 # Watchlist
 'watchlist'            => "mia glista d'observaziun",
 'mywatchlist'          => "Mia glista d'observaziun",
-'watchlistfor'         => "(per '''$1''')",
 'watchnologin'         => "Ti n'es betg t'annunzià!",
 'watchnologintext'     => "Ti stos [[Special:UserLogin|t'annunziar]] per midar tia glista d'observaziun.",
 'addedwatch'           => 'Agiuntà a la glista dad observaziun',
@@ -1560,7 +1573,7 @@ Conferma per plaschair che ti vuls propi crear danovamain quest artitgel.",
 # Special:FilePath
 'filepath'        => 'Percurs da la datoteca',
 'filepath-page'   => 'Datoteca:',
-'filepath-submit' => 'Percurs',
+'filepath-submit' => 'Dai',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch-filename' => 'Num da datoteca:',

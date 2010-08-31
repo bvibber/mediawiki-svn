@@ -223,7 +223,7 @@ Shuni e'tiborga olingki, ayrim sahifalar siz brauzeringiz keshini tozalamaguning
 'yourname'                => 'Foydalanuvchi nomi',
 'yourpassword'            => "Maxfiy so'z",
 'yourpasswordagain'       => "Maxfiy so'zni qayta kiriting",
-'remembermypassword'      => "Hisob ma'lumotlarini shu kompyuterda eslab qolish",
+'remembermypassword'      => "Hisob ma'lumotlarini shu kompyuterda eslab qolish (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'login'                   => 'Kirish',
 'nav-login-createaccount' => 'Kirish / Hisob yaratish',
 'loginprompt'             => "{{SITENAME}}ga kirish uchun kukilar yoqilgan bo'lishi kerak.",
@@ -475,7 +475,9 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 
 # Special:Categories
 'categories'         => 'Turkumlar',
-'categoriespagetext' => 'Ushbu turkumlarda sahifa yoki fayllar mavjud.',
+'categoriespagetext' => 'Ushbu turkumlarda sahifa yoki fayllar mavjud.
+[[Special:UnusedCategories|Unused categories]] are not shown here.
+Also see [[Special:WantedCategories|wanted categories]].',
 
 # Special:Log/newusers
 'newuserlog-create-entry' => 'Yangi foydalanuvchi',
@@ -486,7 +488,6 @@ Bu yerda: (joriy) = hozirgi koʻrinish bilan farq,
 # Watchlist
 'watchlist'        => 'Kuzatuv roʻyxatim',
 'mywatchlist'      => 'Kuzatuv roʻyxatim',
-'watchlistfor'     => "('''$1''' uchun)",
 'nowatchlist'      => "Kuzatuv ro'yxatingizda hech narsa yo'q.",
 'addedwatch'       => "Kuzatuv ro'yxatiga qo'shildi",
 'addedwatchtext'   => "\"[[:\$1]]\" sahifasi sizning [[Special:Watchlist|kuzatuv ro'yxatingizga]] qo'shildi. Bu sahifada va unga mos munozara sahifasida bo'ladigan kelajakdagi o'zgarishlar bu yerda ro'yxatga olinadi, hamda bu sahifa topish qulay bo'lishi uchun [[Special:RecentChanges|yangi o'zgarishlar ro'yxati]]da '''qalin''' harflar bilan ko'rsatiladi.

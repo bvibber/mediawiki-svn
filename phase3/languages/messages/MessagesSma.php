@@ -204,7 +204,7 @@ $messages = array(
 # Login and logout pages
 'yourname'                => 'Nuhtjiennomme:',
 'yourpassword'            => 'Loevesbaakoe:',
-'remembermypassword'      => 'Måjhtije mov loggesïjse nille dïhte daatovre',
+'remembermypassword'      => 'Måjhtije mov loggesïjse nille dïhte daatovre (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'          => 'Dov domäne:',
 'login'                   => 'Logge sïjse',
 'nav-login-createaccount' => 'Logge sïjse / skaepede nuhtjien',
@@ -554,7 +554,6 @@ Dov dorje värrhtoedimmie gååvnese bielieh, jallh [[Special:UserLogin|logge s�
 # Watchlist
 'watchlist'         => 'Mov sïektjedhlästoe',
 'mywatchlist'       => 'Mov sïektjedhlästoe',
-'watchlistfor'      => "(ihke '''$1''')",
 'addedwatch'        => 'Lissiehtidh gåajkoe sïektjedhlästoe',
 'removedwatch'      => 'Sihkojuvvon raejeste sïektjedhlästoe',
 'removedwatchtext'  => 'Bielie "[[:$1]]" lea sihkojuvvon raejeste dov sïektjedhlästoe.',

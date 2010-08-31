@@ -18,13 +18,14 @@
  * @author Meisam
  * @author Meno25
  * @author Roozbeh Pournader <roozbeh at gmail.com>
+ * @author Wayiran
  * @author לערי ריינהארט
  */
 
 $namespaceNames = array(
-	NS_MEDIA            => 'رسانه',
+	NS_MEDIA            => 'مدیا',
 	NS_SPECIAL          => 'ویژه',
-	NS_MAIN	            => '',
+	NS_MAIN             => '',
 	NS_TALK             => 'بحث',
 	NS_USER             => 'کاربر',
 	NS_USER_TALK        => 'بحث_کاربر',
@@ -42,18 +43,18 @@ $namespaceNames = array(
 );
 
 $namespaceAliases = array(
+	'رسانه' => NS_MEDIA,
+	'رسانه‌ای' => NS_MEDIA,
 	'تصویر' => NS_FILE,
 	'بحث_تصویر' => NS_FILE_TALK,
-	'مدیا' => NS_MEDIA,
-	'رسانه‌ای' => NS_MEDIA,
 );
 
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'تغییرمسیرهای_دوتایی' ),
 	'BrokenRedirects'           => array( 'تغییرمسیرهای_خراب' ),
 	'Disambiguations'           => array( 'ابهام‌زدایی' ),
-	'Userlogin'                 => array( 'ورود_به_سیستم' ),
-	'Userlogout'                => array( 'خروج_از_سیستم' ),
+	'Userlogin'                 => array( 'ورود_به_سامانه' ),
+	'Userlogout'                => array( 'خروج_از_سامانه' ),
 	'CreateAccount'             => array( 'ایجاد_حساب_کاربری' ),
 	'Preferences'               => array( 'ترجیحات' ),
 	'Watchlist'                 => array( 'فهرست_پی‌گیری' ),
@@ -93,6 +94,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'تمام_صفحه‌ها' ),
 	'Prefixindex'               => array( 'نمایه_پیشوندی' ),
 	'Ipblocklist'               => array( 'فهرست_بستن_نشانی_آی‌پی' ),
+	'Unblock'                   => array( 'باز_کردن' ),
 	'Specialpages'              => array( 'صفحه‌های_ویژه' ),
 	'Contributions'             => array( 'مشارکت‌ها' ),
 	'Emailuser'                 => array( 'نامه_به_کاربر' ),
@@ -137,6 +139,10 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'مشارکت‌های_حذف_شده' ),
 	'Tags'                      => array( 'برچسب‌ها' ),
 	'Activeusers'               => array( 'کاربران_فعال' ),
+	'RevisionMove'              => array( 'انتقال_نسخه' ),
+	'ComparePages'              => array( 'مقایسه_صفحات' ),
+	'Selenium'                  => array( 'سلنیوم' ),
+	'Badtitle'                  => array( 'عنوان_نامناسب' ),
 );
 
 
@@ -731,18 +737,18 @@ $1',
 'error'                => 'خطا',
 'databaseerror'        => 'خطای پایگاه داده',
 'dberrortext'          => 'اشکالی در دستور فرستاده شده به پایگاه داده رخ داد.
-علت این مساله می‌تواند ایرادی در نرم‌افزار باشد.
-آخرین دستوری که برای پایگاه داده فرستاد شد این بود:
-<div dir="ltr"><blockquote><tt>$1</tt></blockquote></div>
-این دستور از درون عملگر <span dir="ltr"><tt>$2</tt></span> فرستاده شد
-پایگاه داده این خطا را باز گرداند:
-<div dir="ltr"><tt>$3: $4</tt></div>',
+دلیل این مشکل می‌تواند ایرادی در نرم‌افزار باشد.
+این آخرین دستوری بود که برای پایگاه داده فرستاده شد:
+<div style="direction:ltr;"><blockquote><tt>$1</tt></blockquote></div>
+این دستور از درون عملگر «<span style="direction:ltr;"><tt>$2</tt></span>» فرستاده شد.
+پایگاه داده این خطا را بازگرداند:
+<div style="direction:ltr;"><tt>$3: $4</tt></div>',
 'dberrortextcl'        => 'اشکالی در دستور فرستاده شده به پایگاه داده رخ داد.
 آخرین دستوری که برای پایگاه داده فرستاد شد این بود:
-<div dir="ltr">$1</div>
-این دستور از درون عملگر <span dir="ltr">$2</span> فرستاده شد
-پایگاه داده این خطا را باز گرداند:
-<div dir="ltr">$3: $4</div>',
+<div style="direction:ltr;">$1</div>
+این دستور از درون عملگر «<span style="direction:ltr;">$2</span>» فرستاده شد.
+پایگاه داده این خطا را بازگرداند:
+<div style="direction:ltr;">$3: $4</div>',
 'laggedslavemode'      => 'هشدار: صفحه ممکن است به‌روزرسانی‌های اخیر را شامل نگردد.',
 'readonly'             => 'پایگاه داده قفل شد',
 'enterlockreason'      => 'دلیلی برای قفل کردن ذکر کنید، و تقریبی از زمانی که قفل برداشته خواهد شد در آن بیاورید',
@@ -896,6 +902,15 @@ $2',
 لطفاً پیش از آن که دوباره تلاش کنید، صبر کنید.',
 'loginlanguagelabel'         => 'زبان: $1',
 'suspicious-userlogout'      => 'درخواست شما برای خروج از سامانه رد شد زیرا به نظر می‌رسد که این درخواست توسط یک مرورگر معیوب یا پروکسی میانگیر ارسال شده باشد.',
+
+# JavaScript password checks
+'password-strength'            => 'تخمین قدرت گذرواژه: $1',
+'password-strength-bad'        => 'بد',
+'password-strength-mediocre'   => 'متوسط',
+'password-strength-acceptable' => 'قابل قبول',
+'password-strength-good'       => 'خوب',
+'password-retype'              => 'گذرواژه را دوباره وارد کنید',
+'password-retype-mismatch'     => 'گذرواژه‌ها مطابقت ندارند.',
 
 # Password reset dialog
 'resetpass'                 => 'تغییر گذرواژه',
@@ -1338,6 +1353,7 @@ $1",
 # Diffs
 'history-title'            => 'تاریخچه ویرایش‌های «$1»',
 'difference'               => '(تفاوت بین نسخه‌ها)',
+'difference-multipage'     => '(تفاوت بین صفحات)',
 'lineno'                   => 'سطر $1:',
 'compareselectedversions'  => 'مقایسهٔ نسخه‌های انتخاب‌شده',
 'showhideselectedversions' => 'نمایش/نهفتن نسخه‌های انتخاب شده',
@@ -2110,7 +2126,7 @@ http://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 'listusers-creationsort'  => 'مرتب کردن بر اساس تاریخ ایجاد',
 'usereditcount'           => '$1 {{PLURAL:$1|ویرایش|ویرایش}}',
 'usercreated'             => 'ایجاد شده در $1 ساعت $2',
-'newpages'                => 'صفحه‌های جدید',
+'newpages'                => 'صفحه‌های تازه',
 'newpages-username'       => 'نام کاربری:',
 'ancientpages'            => 'قدیمی‌ترین صفحه‌ها',
 'move'                    => 'انتقال',
@@ -2261,7 +2277,7 @@ http://www.mediawiki.org/wiki/Manual:Image_Authorization را ببینید.',
 # Watchlist
 'watchlist'            => 'فهرست پی‌گیری‌های من',
 'mywatchlist'          => 'پی‌گیری‌های من',
-'watchlistfor'         => "(برای '''$1''')",
+'watchlistfor2'        => '$1 برای $2',
 'nowatchlist'          => 'در فهرست پی‌گیریهای شما هیچ موردی نیست.',
 'watchlistanontext'    => 'برای مشاهده و ویرایش فهرست پی‌گیری‌های خود از $1 استفاده کنید.',
 'watchnologin'         => 'به سامانه وارد نشده‌اید',
@@ -2346,7 +2362,7 @@ $NEWPAGE
 'confirmdeletetext'      => 'شما در حال حذف کردن یک صفحه یا تصویر از پایگاه‌ داده همراه با تمام تاریخچهٔ آن هستید. لطفاً این عمل را تأیید کنید و اطمینان حاصل کنید که عواقب این کار را می‌دانید و این عمل را مطابق با [[{{MediaWiki:Policy-url}}|سیاست‌ها]] انجام می‌دهید.',
 'actioncomplete'         => 'عمل انجام شد.',
 'actionfailed'           => 'عمل ناموفق',
-'deletedtext'            => '«<nowiki>$1</nowiki>» حذف شده است.
+'deletedtext'            => '«<nowiki>$1</nowiki>» حذف شد.
 برای سابقهٔ حذف‌های اخیر به $2 مراجعه کنید.',
 'deletedarticle'         => '«$1» حذف شد',
 'suppressedarticle'      => '«[[$1]]» را فرونشاند',
@@ -2466,7 +2482,7 @@ $NEWPAGE
 در این حالت شما باید چند نسخهٔ اخیر صفحه را نیز احیا کنید.
 نسخه‌هایی از پرونده‌ها که شما اجازه دیدنش را نداشته باشید قابل احیا نخواهند بود.',
 'undeletehistorynoadmin'       => 'این مقاله حذف شده‌است. دلیل حذف این مقاله به همراه مشخصات کاربرانی که قبل از حذف این صفحه را ویرایش کرده‌اند، در خلاصهٔ زیر آمده‌است. متن واقعی این ویرایش‌های حذف شده فقط در دسترس مدیران است.',
-'undelete-revision'            => 'حذف نسخهٔ $1 (به تاریخ $4 ساعت $5) توسط $3:',
+'undelete-revision'            => 'نسخهٔ حذف شدهٔ $1 (به تاریخ $4 ساعت $5) توسط $3:',
 'undeleterevision-missing'     => 'نسخه نامعتبر یا مفقود است. ممکن است پیوندتان نادرست باشد یا اینکه نسخه از بایگانی حذف یا بازیابی شده باشد .',
 'undelete-nodiff'              => 'نسخهٔ قدیمی‌تری یافت نشد.',
 'undeletebtn'                  => 'احیا شود!',
@@ -2972,7 +2988,7 @@ $1',
 # Skin names
 'skinname-standard'    => 'کلاسیک',
 'skinname-nostalgia'   => 'نوستالژی',
-'skinname-cologneblue' => 'آبی کلون',
+'skinname-cologneblue' => 'آبی کلن',
 'skinname-monobook'    => 'مونوبوک',
 'skinname-myskin'      => 'پوستهٔ من',
 'skinname-chick'       => 'شیک',
@@ -3053,7 +3069,7 @@ $1',
 'file-info-png-frames' => '$1 {{PLURAL:$1|قاب|قاب}}',
 
 # Special:NewFiles
-'newimages'             => 'گالری پرونده‌های جدید',
+'newimages'             => 'نگارخانهٔ پرونده‌های جدید',
 'imagelisttext'         => 'در زیر فهرست $1 {{PLURAL:$1|تصویری|تصویری}} که $2 مرتب شده است آمده است.',
 'newimages-summary'     => 'این صفحهٔ ویژه آخرین پرونده‌های بارگذاری شده را نمایش می‌دهد',
 'newimages-legend'      => 'پالودن',
@@ -3584,6 +3600,13 @@ $1',
 'version-version'                  => '(نسخه $1)',
 'version-svn-revision'             => '(&رلم;r$2)',
 'version-license'                  => 'اجازه‌نامه',
+'version-poweredby-credits'        => "این ویکی با قدرت '''[http://www.mediawiki.org/ مدیاویکی]''' کار می‌کند، کلیهٔ حقوق محفوظ است © 2001-$1 $2.",
+'version-poweredby-others'         => 'دیگران',
+'version-license-info'             => 'مدیاویکی یک نرم‌افزار رایگان است؛ که شما می‌توانید آن را تحت گنو ال‌جی‌پی‌ال که توسط بنیاد نرم‌افزارهای رایگان منتشر شده‌است، باز نشر کنید؛ یا نسخهٔ ۲ از این محوز، یا (بنا به اختیار) نسخه‌های بعدی.
+
+مدیاویکی منتشر شده‌است به امید اینکه مفید واقع شود، بدون هیچ گونه ضمانتی»؛ بدون ضمانت ضمنی که تجاری یا برای یک کار خاصی مناسب باشد. برای اطلاعات بیشتر مجوز گنو جی‌پی‌ال را مشاهده کنید.
+
+شما می‌بایست یک [{{SERVER}}{{SCRIPTPATH}}/COPYING a copy of the GNU General Public License] را همراه این برنامه دریافت کرده باشید؛ اگر نه، بنویسید برای شرکت بنیاد نرم‌افزارهای رایگان، 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA یا آن را [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html به صورت بر خط بخوانید].',
 'version-software'                 => 'نسخهٔ نصب‌شده',
 'version-software-product'         => 'محصول',
 'version-software-version'         => 'نسخه',
@@ -3663,10 +3686,11 @@ $1',
 
 # Database error messages
 'dberr-header'      => 'این ویکی یک ایراد دارد',
-'dberr-problems'    => 'شرمنده! این وبگاه از مشکلات فنی رنج می‌برد.',
+'dberr-problems'    => 'شرمنده!
+این وب‌گاه از مشکلات فنی رنج می‌برد.',
 'dberr-again'       => 'چند دقیقه صبر کند و دوباره صفحه را بارگیری کنید.',
 'dberr-info'        => '(امکان برقراری ارتباط با کارساز پایگاه داده وجود ندارد: $1)',
-'dberr-usegoogle'   => 'در این مدت می‌توانید با استفاده از گوگل جستجو کنید.',
+'dberr-usegoogle'   => 'شما در این مدت می‌توانید با استفاده از گوگل جستجو کنید.',
 'dberr-outofdate'   => 'توجه کنید که نمایه‌های آن‌ها از محتوای ما ممکن است به روز نباشد.',
 'dberr-cachederror' => 'آن‌چه در ادامه می‌آید یک کپی از صفحهٔ درخواست شده است که در کاشه قرار دارد، و ممکن است به روز نباشد.',
 

@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 4, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 4, 2006
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -188,7 +189,7 @@ class ApiResult extends ApiBase {
 	/**
 	 * In case the array contains indexed values (in addition to named),
 	 * give all indexed values the given tag name. This function MUST be
-	 * called on every arrray that has numerical indexes.
+	 * called on every array that has numerical indexes.
 	 * @param $arr array
 	 * @param $tag string Tag name
 	 */
@@ -197,8 +198,7 @@ class ApiResult extends ApiBase {
 		if ( !$this->getIsRawMode() ) {
 			return;
 		}
-		if ( $arr === null || $tag === null || !is_array( $arr ) || is_array( $tag ) )
-		{
+		if ( $arr === null || $tag === null || !is_array( $arr ) || is_array( $tag ) ) {
 			ApiBase::dieDebug( __METHOD__, 'Bad parameter' );
 		}
 		// Do not use setElement() as it is ok to call this more than once

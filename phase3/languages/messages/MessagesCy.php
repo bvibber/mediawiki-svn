@@ -7,7 +7,9 @@
  * @ingroup Language
  * @file
  *
+ * @author Arwel Parry
  * @author Lloffiwr
+ * @author Malafaya
  * @author Thaf
  * @author Urhixidur
  * @author Xxglennxx
@@ -592,6 +594,15 @@ Oedwch ychydig cyn mentro eto.',
 'loginlanguagelabel'         => 'Iaith: $1',
 'suspicious-userlogout'      => 'Gwrthodwyd eich cais i allgofnodi oherwydd ei fod yn ymddangos mai gweinydd wedi torri neu ddirprwy gelc a anfonodd y cais.',
 
+# JavaScript password checks
+'password-strength'            => 'Amcangyfrif o gryfder y cyfrinair: $1',
+'password-strength-bad'        => 'GWAEL',
+'password-strength-mediocre'   => 'tila',
+'password-strength-acceptable' => 'derbyniol',
+'password-strength-good'       => 'da',
+'password-retype'              => 'Ail-deipiwch y cyfrinair fan hyn',
+'password-retype-mismatch'     => 'Y cyfrineiriau yn wahanol',
+
 # Password reset dialog
 'resetpass'                 => 'Newid cyfrinair y cyfrif',
 'resetpass_announce'        => "Fe wnaethoch fewngofnodi gyda chôd dros dro oddi ar e-bost.
@@ -832,7 +843,7 @@ Y rheswm a roddwyd dros y bloc gan $3 yw ''$2''.",
 'currentrev-asof'        => 'Y diwygiad cyfredol, am $1',
 'revisionasof'           => 'Diwygiad $1',
 'revision-info'          => 'Y fersiwn a roddwyd ar gadw am $1 gan $2',
-'previousrevision'       => '← at y diwygiad blaenorol',
+'previousrevision'       => '← At y diwygiad blaenorol',
 'nextrevision'           => 'At y diwygiad dilynol →',
 'currentrevisionlink'    => 'Y diwygiad cyfoes',
 'cur'                    => 'cyf',
@@ -1018,6 +1029,7 @@ Pan yn gwneud hyn dylid sicrhau nad yw dilyniant hanes tudalennau yn cael ei ddi
 # Diffs
 'history-title'            => "Hanes golygu '$1'",
 'difference'               => '(Gwahaniaethau rhwng diwygiadau)',
+'difference-multipage'     => '(Y gwahaniaeth rhwng y tudalennau)',
 'lineno'                   => 'Llinell $1:',
 'compareselectedversions'  => 'Cymharer y fersiynau dewisedig',
 'showhideselectedversions' => 'Dangos/cuddio y diwygiadau dewisedig',
@@ -1428,11 +1440,11 @@ Gallwch hefyd adael i eraill anfon e-bost atoch trwy'r cyswllt ar eich tudalen d
 
 Dyma'r lòg dileu a symud ar gyfer y dudalen hon, er gwybodaeth:",
 'uploadtext'                  => "Defnyddiwch y ffurflen isod i uwchlwytho ffeiliau.
-I weld a chwilio am ffeiliau sydd eisoes wedi eu huwchlwytho ewch at y [[Special:FileList|rhestr o'r ffeiliau sydd wedi eu huwchlwytho]]. I weld cofnodion uwchlwytho a dileu ffeiliau ewch at y [[Special:Log/upload|lòg uwchlwytho]] neu'r [[Special:Log/delete|lòg dileu]].
+I weld a chwilio am ffeiliau sydd eisoes wedi eu huwchlwytho, ewch at y [[Special:FileList|rhestr o'r ffeiliau sydd wedi eu huwchlwytho]]. I weld cofnodion uwchlwytho a dileu ffeiliau, ewch at y [[Special:Log/upload|lòg uwchlwytho]] neu'r [[Special:Log/delete|lòg dileu]].
 
-I osod ffeil mewn tudalen defnyddiwch gyswllt wici, ar un o'r ffurfiau canlynol:
+I osod ffeil mewn tudalen, defnyddiwch gyswllt wici ar un o'r ffurfiau canlynol:
 *'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Ffeil.jpg]]</nowiki><tt>''', er mwyn defnyddio fersiwn llawn y ffeil
-*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Ffeil.png|200px|bawd|chwith|testun amgen]]</nowiki><tt>''' a wnaiff dangos llun 200 picsel o led mewn bocs ar yr ochr chwith, a'r testun 'testun amgen' wrth ei odre
+*'''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Ffeil.png|200px|bawd|chwith|testun amgen]]</nowiki><tt>''' a wnaiff dangos llun 200 picsel o led mewn blwch ar yr ochr chwith, a'r testun 'testun amgen' wrth ei odre
 *'''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:Ffeil.ogg]]</nowiki><tt>''' a fydd yn arwain yn syth at y ffeil heb arddangos y ffeil.",
 'upload-permitted'            => 'Mathau o ffeiliau a ganiateir: $1',
 'upload-preferred'            => 'Mathau ffeil dewisol: $1.',
@@ -1440,7 +1452,7 @@ I osod ffeil mewn tudalen defnyddiwch gyswllt wici, ar un o'r ffurfiau canlynol:
 'uploadlog'                   => 'lòg uwchlwytho',
 'uploadlogpage'               => 'Lòg uwchlwytho',
 'uploadlogpagetext'           => "Isod mae rhestr o'r uwchlwythiadau ffeiliau <nowiki>diweddaraf</nowiki>.
-Gweler y [[Special:NewFiles|galeri o ffeiliau newydd]] i fwrw golwg drostynt.",
+Gweler [[Special:NewFiles|oriel y ffeiliau newydd]] i fwrw golwg drostynt.",
 'filename'                    => "Enw'r ffeil",
 'filedesc'                    => 'Crynodeb',
 'fileuploadsummary'           => 'Crynodeb:',
@@ -1529,7 +1541,7 @@ Dyma'r lòg dileu ar gyfer y ffeil i chi gael gweld:",
 'upload-success-subj'         => 'Wedi llwyddo uwchlwytho',
 'upload-success-msg'          => "Llwyddwyd i uwchlwytho'r ffeil o [$2]. Mae ar gael yma: [[:{{ns:file}}:$1]]",
 'upload-failure-subj'         => 'Cafwyd problem wrth uwchlwytho',
-'upload-failure-msg'          => 'Cafwyd problem with uwchlwytho:
+'upload-failure-msg'          => 'Cafwyd problem wrth uwchlwytho o [$2]:
 
 $1',
 'upload-warning-subj'         => 'Rhybudd uwchlwytho',
@@ -1939,7 +1951,7 @@ Bydd y cyfeiriad e-bost a osodoch yn eich [[Special:Preferences|dewisiadau chith
 # Watchlist
 'watchlist'            => 'Fy rhestr wylio',
 'mywatchlist'          => 'Fy rhestr wylio',
-'watchlistfor'         => "(ar gyfer '''$1''')",
+'watchlistfor2'        => 'Yn ôl gofyn $1 $2',
 'nowatchlist'          => "Mae eich rhestr wylio'n wag.",
 'watchlistanontext'    => "Rhaid $1 er mwyn gweld neu ddiwygio'ch rhestr wylio.",
 'watchnologin'         => 'Nid ydych wedi mewngofnodi',
@@ -3049,7 +3061,8 @@ Nid oes rhaid wrth y côd wrth fewngofnodi, ond rhaid ei ddefnyddio er mwyn gall
 Dychwelodd yr ebostydd: $1",
 'confirmemail_invalid'      => 'Côd cadarnhau annilys. Efallai fod y côd wedi dod i ben.',
 'confirmemail_needlogin'    => 'Rhaid $1 er mwyn cadarnhau eich cyfeiriad e-bost.',
-'confirmemail_success'      => "Mae eich cyfeiriad e-bost wedi'i gadarnhau. Cewch fewngofnodi a mwynhau'r Wici.",
+'confirmemail_success'      => "Mae eich cyfeiriad e-bost wedi'i gadarnhau. 
+Cewch [[Special:UserLogin|fewngofnodi]] a mwynhau'r wici.",
 'confirmemail_loggedin'     => 'Cadarnhawyd eich cyfeiriad e-bost.',
 'confirmemail_error'        => 'Cafwyd gwall wrth ddanfon eich cadarnhad.',
 'confirmemail_subject'      => 'Cadarnhâd cyfeiriad e-bost ar {{SITENAME}}',
@@ -3183,6 +3196,13 @@ Gallwch hefyd [[Special:Watchlist/edit|ddefnyddio\'r rhestr arferol]].',
 'version-hook-subscribedby'        => 'Tanysgrifwyd gan',
 'version-version'                  => '(Fersiwn $1)',
 'version-license'                  => 'Trwydded',
+'version-poweredby-credits'        => "Mae'r wici hwn wedi'i nerthu gan '''[http://www.mediawiki.org/ MediaWiki]''', hawlfraint © 2001 - $1 $2.",
+'version-poweredby-others'         => 'eraill',
+'version-license-info'             => "Meddalwedd rhydd yw MediaWiki; gallwch ei ddefnyddio a'i addasu yn ôl termau'r GNU General Public License a gyhoeddir gan Free Software Foundation; naill ai fersiwn 2 o'r Drwydded, neu unrhyw fersiwn diweddarach o'ch dewis.
+
+Cyhoeddir MediaWiki yn y gobaith y bydd o ddefnydd, ond HEB UNRHYW WARANT; heb hyd yn oed gwarant ymhlyg o FARCHNADWYEDD nag o FOD YN ADDAS AT RYW BWRPAS ARBENNIG. Gweler y GNU General Public License am fanylion pellach.
+
+Dylech fod wedi derbyn [{{SERVER}}{{SCRIPTPATH}}/COPYING gopi o GNU General Public License] gyda'r rhaglen hon; os nad ydych, ysgrifennwch at Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA, neu [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html darllenwch amdano ar y we].",
 'version-software'                 => 'Meddalwedd gosodedig',
 'version-software-product'         => 'Cynnyrch',
 'version-software-version'         => 'Fersiwn',

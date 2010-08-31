@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Ancientpages
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,11 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
- * @file
  * Implements Special:Ancientpages
+ *
  * @ingroup SpecialPage
  */
 class AncientPagesPage extends QueryPage {
@@ -53,6 +57,9 @@ class AncientPagesPage extends QueryPage {
 				break;
 			case 'sqlite':
 				$epoch = 'rev_timestamp';
+				break;
+			case 'mssql':
+				$epoch = 'DATEDIFF(s,CONVERT(datetime,\'1/1/1970\'),rev_timestamp)';
 				break;
 			default:
 				$epoch = 'EXTRACT(epoch FROM rev_timestamp)';

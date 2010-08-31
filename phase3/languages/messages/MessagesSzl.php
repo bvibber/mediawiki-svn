@@ -36,7 +36,7 @@ $messages = array(
 'tog-editsection'             => 'Kożdo tajla zajty sprowjano uosobno',
 'tog-editsectiononrightclick' => 'Klikńyńće prawym kneflym myszy na titlu tajli<br />napoczyno jigo sprowjańy(JavaScript)',
 'tog-showtoc'                 => 'Pokoż spis treśći (na zajtach, kere majům wjyncyj jak trzi tajle)',
-'tog-rememberpassword'        => 'Pamjyntej můj ausdruk na tym komputrze',
+'tog-rememberpassword'        => 'Pamjyntej můj ausdruk na tym komputrze (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Dowom pozůr na zajty, kere żech naszkryfloł',
 'tog-watchdefault'            => 'Dowom pozůr na zajty, kere żech sprowjoł',
 'tog-watchmoves'              => 'Dowom pozůr na zajty, kere żech przećepnył',
@@ -1395,7 +1395,8 @@ Możesz zawyńźić liczba wyńikůw wybjerajůnc typ rejeru, mjano użytkowńik
 
 # Special:Categories
 'categories'                    => 'Kategoryje',
-'categoriespagetext'            => 'Zajta przedstowjo lista katygoryji s zajtůma a plikůma. [[Special:UnusedCategories|Ńyużywane kategoryj]] ńy zostoły tukej pokozane.
+'categoriespagetext'            => 'Zajta przedstowjo lista katygoryji s zajtůma a plikůma.
+[[Special:UnusedCategories|Ńyużywane kategoryj]] ńy zostoły tukej pokozane.
 Kukńij tyż [[Special:WantedCategories|ńyistńyjůnce kategoryje]].',
 'categoriesfrom'                => 'Pokož kategoryje začynajůnc uod:',
 'special-categories-sort-count' => 'sortowanie wedle ličby',
@@ -1467,7 +1468,6 @@ Adres e-brifa, kery zostoł bez Ćebje wkludzůny we [[Special:Preferences|Twoji
 # Watchlist
 'watchlist'            => 'Pozorlista',
 'mywatchlist'          => 'Moja pozůrlista',
-'watchlistfor'         => "(dla užytkowńika '''$1''')",
 'nowatchlist'          => 'Ńy ma žodnych pozycyji na liśće zajtůw, na kere dowoš pozůr.',
 'watchlistanontext'    => '$1 coby uobejřeć abo sprowjać elymynty listy zajtůw, na kere dowoš pozůr',
 'watchnologin'         => 'Ńy jest žeś zalůgowany',

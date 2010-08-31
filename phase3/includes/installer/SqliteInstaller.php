@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Sqlite-specific installer.
+ *
+ * @file
+ * @ingroup Deployment
+ */
+ 
 /**
  * Class for setting up the MediaWiki database using SQLLite.
  * 
@@ -180,10 +186,7 @@ class SqliteInstaller extends DatabaseInstaller {
 		} elseif ( !$fts3tTable && $module == 'FTS3' ) {
 			$status->warning( 'config-sqlite-fts3-add' );
 			$this->db->sourceFile( "$IP/maintenance/sqlite/archives/searchindex-fts3.sql" );
-		} else {
-			$status->warning( 'config-sqlite-fts3-ok' );
 		}
-
 		return $status;
 	}
 
@@ -207,5 +210,4 @@ class SqliteInstaller extends DatabaseInstaller {
 "# SQLite-specific settings
 \$wgSQLiteDataDir    = \"{$dir}\";";
 	}
-	
 }

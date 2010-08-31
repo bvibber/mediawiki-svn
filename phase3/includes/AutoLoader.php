@@ -1,9 +1,15 @@
 <?php
-/* This defines autoloading handler for whole MediaWiki framework */
+/**
+ * This defines autoloading handler for whole MediaWiki framework
+ *
+ * @file
+ */
 
-# Locations of core classes
-# Extension classes are specified with $wgAutoloadClasses
-# This array is a global instead of a static member of AutoLoader to work around a bug in APC
+/**
+ * Locations of core classes
+ * Extension classes are specified with $wgAutoloadClasses
+ * This array is a global instead of a static member of AutoLoader to work around a bug in APC
+ */
 global $wgAutoloadLocalClasses;
 
 $wgAutoloadLocalClasses = array(
@@ -21,6 +27,7 @@ $wgAutoloadLocalClasses = array(
 	'BagOStuff' => 'includes/BagOStuff.php',
 	'Block' => 'includes/Block.php',
 	'CacheDependency' => 'includes/CacheDependency.php',
+	'CacheTime' => 'includes/parser/ParserOutput.php',
 	'Category' => 'includes/Category.php',
 	'Categoryfinder' => 'includes/Categoryfinder.php',
 	'CategoryPage' => 'includes/CategoryPage.php',
@@ -48,6 +55,7 @@ $wgAutoloadLocalClasses = array(
 	'DBABagOStuff' => 'includes/BagOStuff.php',
 	'DependencyWrapper' => 'includes/CacheDependency.php',
 	'DiffHistoryBlob' => 'includes/HistoryBlob.php',
+	'DistributionRepository' => 'includes/DistributionRepository.php',
 	'DjVuImage' => 'includes/DjVuImage.php',
 	'DoubleReplacer' => 'includes/StringUtils.php',
 	'DublinCoreRdf' => 'includes/Metadata.php',
@@ -116,7 +124,6 @@ $wgAutoloadLocalClasses = array(
 	'HTMLInfoField' => 'includes/HTMLForm.php',
 	'Http' => 'includes/HttpFunctions.php',
 	'HttpRequest' => 'includes/HttpFunctions.php',
-	'IEContentAnalyzer' => 'includes/IEContentAnalyzer.php',
 	'ImageGallery' => 'includes/ImageGallery.php',
 	'ImageHistoryList' => 'includes/ImagePage.php',
 	'ImageHistoryPseudoPager' => 'includes/ImagePage.php',
@@ -159,9 +166,9 @@ $wgAutoloadLocalClasses = array(
 	'MWException' => 'includes/Exception.php',
 	'MWMemcached' => 'includes/memcached-client.php',
 	'MWNamespace' => 'includes/Namespace.php',
-	'Namespace' => 'includes/NamespaceCompat.php', // Compat
 	'OldChangesList' => 'includes/ChangesList.php',
 	'OutputPage' => 'includes/OutputPage.php',
+	'PackageRepository' => 'includes/PackageRepository.php',
 	'PageQueryPage' => 'includes/PageQueryPage.php',
 	'PageHistory' => 'includes/HistoryPage.php',
 	'PageHistoryPager' => 'includes/HistoryPage.php',
@@ -170,6 +177,7 @@ $wgAutoloadLocalClasses = array(
 	'PatrolLog' => 'includes/PatrolLog.php',
 	'PoolCounter' => 'includes/PoolCounter.php',
 	'PoolCounter_Stub' => 'includes/PoolCounter.php',
+	'PoolCounterWork' => 'includes/PoolCounter.php',
 	'Preferences' => 'includes/Preferences.php',
 	'PrefixSearch' => 'includes/PrefixSearch.php',
 	'Profiler' => 'includes/Profiler.php',
@@ -208,7 +216,6 @@ $wgAutoloadLocalClasses = array(
 	'SquidPurgeClientPool' => 'includes/SquidPurgeClient.php',
 	'Status' => 'includes/Status.php',
 	'StubContLang' => 'includes/StubObject.php',
-	'StubUser' => 'includes/StubObject.php',
 	'StubUserLang' => 'includes/StubObject.php',
 	'StubObject' => 'includes/StubObject.php',
 	'StringUtils' => 'includes/StringUtils.php',
@@ -255,6 +262,7 @@ $wgAutoloadLocalClasses = array(
 	'ApiFeedWatchlist' => 'includes/api/ApiFeedWatchlist.php',
 	'ApiFormatBase' => 'includes/api/ApiFormatBase.php',
 	'ApiFormatDbg' => 'includes/api/ApiFormatDbg.php',
+	'ApiFormatDump' => 'includes/api/ApiFormatDump.php',
 	'ApiFormatFeedWrapper' => 'includes/api/ApiFormatBase.php',
 	'ApiFormatJson' => 'includes/api/ApiFormatJson.php',
 	'ApiFormatPhp' => 'includes/api/ApiFormatPhp.php',
@@ -306,6 +314,7 @@ $wgAutoloadLocalClasses = array(
 	'ApiQueryLangLinks' => 'includes/api/ApiQueryLangLinks.php',
 	'ApiQueryLinks' => 'includes/api/ApiQueryLinks.php',
 	'ApiQueryLogEvents' => 'includes/api/ApiQueryLogEvents.php',
+	'ApiQueryPageProps' => 'includes/api/ApiQueryPageProps.php',
 	'ApiQueryProtectedTitles' => 'includes/api/ApiQueryProtectedTitles.php',
 	'ApiQueryRandom' => 'includes/api/ApiQueryRandom.php',
 	'ApiQueryRecentChanges' => 'includes/api/ApiQueryRecentChanges.php',
@@ -325,7 +334,6 @@ $wgAutoloadLocalClasses = array(
 	'ApiUpload' => 'includes/api/ApiUpload.php',
 	'ApiWatch' => 'includes/api/ApiWatch.php',
 
-	'Spyc' => 'includes/api/ApiFormatYaml_spyc.php',
 	'UsageException' => 'includes/api/ApiMain.php',
 
 	# includes/extauth
@@ -343,11 +351,13 @@ $wgAutoloadLocalClasses = array(
 	'ChronologyProtector' => 'includes/db/LBFactory.php',
 	'Database' => 'includes/db/DatabaseMysql.php',
 	'DatabaseBase' => 'includes/db/Database.php',
+	'DatabaseMssql' => 'includes/db/DatabaseMssql.php',
 	'DatabaseMysql' => 'includes/db/DatabaseMysql.php',
 	'DatabaseOracle' => 'includes/db/DatabaseOracle.php',
 	'DatabasePostgres' => 'includes/db/DatabasePostgres.php',
 	'DatabaseSqlite' => 'includes/db/DatabaseSqlite.php',
 	'DatabaseSqliteStandalone' => 'includes/db/DatabaseSqlite.php',
+	'DatabaseType' => 'includes/db/DatabaseType.php',
 	'DBConnectionError' => 'includes/db/Database.php',
 	'DBError' => 'includes/db/Database.php',
 	'DBObject' => 'includes/db/Database.php',
@@ -427,6 +437,7 @@ $wgAutoloadLocalClasses = array(
 	'MysqlInstaller' => 'includes/installer/MysqlInstaller.php',
 	'MysqlUpdater' => 'includes/installer/MysqlUpdater.php',
 	'PostgresInstaller' => 'includes/installer/PostgresInstaller.php',
+	'PostgresUpdater' => 'includes/installer/PostgresUpdater.php',
 	'SqliteInstaller' => 'includes/installer/SqliteInstaller.php',
 	'SqliteUpdater' => 'includes/installer/SqliteUpdater.php',
 	'OracleInstaller' => 'includes/installer/OracleInstaller.php',
@@ -441,6 +452,10 @@ $wgAutoloadLocalClasses = array(
 	'RefreshLinksJob' => 'includes/job/RefreshLinksJob.php',
 	'RefreshLinksJob2' => 'includes/job/RefreshLinksJob.php',
 	'UploadFromUrlJob' => 'includes/job/UploadFromUrlJob.php',
+
+	# includes/libs
+	'IEContentAnalyzer' => 'includes/libs/IEContentAnalyzer.php',
+	'Spyc' => 'includes/libs/spyc.php',
 
 	# includes/media
 	'BitmapHandler' => 'includes/media/Bitmap.php',
@@ -511,7 +526,7 @@ $wgAutoloadLocalClasses = array(
 	'SearchEngine' => 'includes/search/SearchEngine.php',
 	'SearchHighlighter' => 'includes/search/SearchEngine.php',
 	'SearchIBM_DB2' => 'includes/search/SearchIBM_DB2.php',
-	'SearchMySQL4' => 'includes/search/SearchMySQL4.php',
+	'SearchMssql' => 'includes/search/SearchMssql.php',
 	'SearchMySQL' => 'includes/search/SearchMySQL.php',
 	'SearchOracle' => 'includes/search/SearchOracle.php',
 	'SearchPostgres' => 'includes/search/SearchPostgres.php',
@@ -588,6 +603,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialBlankpage' => 'includes/specials/SpecialBlankpage.php',
 	'SpecialBlockme' => 'includes/specials/SpecialBlockme.php',
 	'SpecialBookSources' => 'includes/specials/SpecialBooksources.php',
+	'SpecialCategories' => 'includes/specials/SpecialCategories.php',
 	'SpecialComparePages' => 'includes/specials/SpecialComparePages.php',
 	'SpecialExport' => 'includes/specials/SpecialExport.php',
 	'SpecialFilepath' => 'includes/specials/SpecialFilepath.php',
@@ -600,6 +616,8 @@ $wgAutoloadLocalClasses = array(
 	'SpecialMostlinkedtemplates' => 'includes/specials/SpecialMostlinkedtemplates.php',
 	'SpecialPreferences' => 'includes/specials/SpecialPreferences.php',
 	'SpecialPrefixindex' => 'includes/specials/SpecialPrefixindex.php',
+	'SpecialProtectedpages' => 'includes/specials/SpecialProtectedpages.php',
+	'SpecialProtectedtitles' => 'includes/specials/SpecialProtectedtitles.php',
 	'SpecialRandomredirect' => 'includes/specials/SpecialRandomredirect.php',
 	'SpecialRecentChanges' => 'includes/specials/SpecialRecentchanges.php',
 	'SpecialRecentchangeslinked' => 'includes/specials/SpecialRecentchangeslinked.php',
@@ -656,12 +674,14 @@ $wgAutoloadLocalClasses = array(
 	'DbTestRecorder' => 'maintenance/parserTests.inc',
 	'DeleteArchivedFilesImplementation' => 'maintenance/deleteArchivedFiles.inc',
 	'DeleteArchivedRevisionsImplementation' => 'maintenance/deleteArchivedRevisions.inc',
+	'DeleteDefaultMessages' => 'maintenance/deleteDefaultMessages.php',
 	'DummyTermColorer' => 'maintenance/parserTests.inc',
 	'ParserTest' => 'maintenance/parserTests.inc',
 	'ParserTestParserHook' => 'maintenance/parserTestsParserHook.php',
 	'ParserTestStaticParserHook' => 'maintenance/parserTestsStaticParserHook.php',
 	'RemoteTestRecorder' => 'maintenance/parserTests.inc',
 	'SevenZipStream' => 'maintenance/7zip.inc',
+	'Sqlite' => 'maintenance/sqlite.inc',
 	'TestFileIterator' => 'maintenance/parserTests.inc',
 	'TestRecorder' => 'maintenance/parserTests.inc',
 

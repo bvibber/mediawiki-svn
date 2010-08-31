@@ -16,7 +16,7 @@
 $fallback = 'ru';
 
 $namespaceNames = array(
-	NS_SPECIAL          => 'Лӱмын ыштыме',
+	NS_SPECIAL          => 'Лӱмын_ыштыме',
 	NS_TALK             => 'Каҥашымаш',
 	NS_USER             => 'Пайдаланыше',
 	NS_USER_TALK        => 'Пайдаланышын_каҥашымаш',
@@ -52,8 +52,8 @@ $namespaceAliases = array(
 
 $specialPageAliases = array(
 	'Preferences'               => array( 'Келыштарымаш' ),
-	'Watchlist'                 => array( 'Эскерымаш лӱмер' ),
-	'Recentchanges'             => array( 'Пытартыш тӧрлатымаш-влак' ),
+	'Watchlist'                 => array( 'Эскерымаш_лӱмер' ),
+	'Recentchanges'             => array( 'Пытартыш_тӧрлатымаш-влак' ),
 	'Statistics'                => array( 'Иктешлымаш' ),
 	'Search'                    => array( 'Кычалмаш' ),
 );
@@ -76,7 +76,7 @@ $messages = array(
 'tog-numberheadings'        => 'Вуймутым автоматик йӧн дене радамлаш',
 'tog-showtoolbar'           => 'Тӧрлатымаш ӱзгараҥам ончыкташ (JavaScript кӱлеш)',
 'tog-showtoc'               => 'Вуймут радамым ончыкташ (3 деч шуко вуймутан лаштык-влаклан)',
-'tog-rememberpassword'      => 'Тиде компучырышто мыйын шолыпмутым шарнаш',
+'tog-rememberpassword'      => 'Тиде компучырышто мыйын шолыпмутым шарнаш (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'        => 'Мыйын ыштыме лаштык-влакым эскерыме лӱмерыш ешараш',
 'tog-watchdefault'          => 'Мыйын тӧрлатыме лаштык-влакым эскерыме лӱмерыш ешараш',
 'tog-watchmoves'            => 'Мыйын лӱмым вашталтыме лаштык-влакым эскерыме лӱмерыш ешараш',
@@ -335,7 +335,7 @@ $messages = array(
 'yourname'                => 'Пайдаланышын лӱмжӧ:',
 'yourpassword'            => 'Шолыпмут:',
 'yourpasswordagain'       => 'Шолыпмутым угыч пуртымаш:',
-'remembermypassword'      => 'Тиде компучырышто мыйын шолыпмутым шарнаш',
+'remembermypassword'      => 'Тиде компучырышто мыйын шолыпмутым шарнаш (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'          => 'Тендан домен:',
 'login'                   => 'Шке денет палымым ыште',
 'nav-login-createaccount' => 'Шке денет палымым ыште/Регистрацийым эрте',
@@ -777,7 +777,6 @@ $messages = array(
 # Watchlist
 'watchlist'         => 'Мыйын эскерымаш лӱмер',
 'mywatchlist'       => 'Мыйын эскерымаш лӱмер',
-'watchlistfor'      => "('''$1''' лан)",
 'addedwatch'        => 'Эскерымаш лӱмерыш ешарыме',
 'addedwatchtext'    => "\"[[:\$1]]\" лаштыкым тыйын [[Special:Watchlist|эскерымаш лӱмерыш]] ешарыме.
 Тиде лаштыкын да тудын каҥашымаш лаштыкым умбакысе тӧрлатымашым тиде спискыште ончыктымо лиеш да, сайрак ужаш манын, [[Special:RecentChanges|пытартыш тӧрлатымаш лӱмерыште]] '''кӱжгӧ шрифт''' дене ойырымо.",

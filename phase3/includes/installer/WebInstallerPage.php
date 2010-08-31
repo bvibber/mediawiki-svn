@@ -1,4 +1,10 @@
 <?php
+/**
+ * Base code for web installer pages.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * Abstract class to define pages for the web installer.
@@ -20,8 +26,8 @@ abstract class WebInstallerPage {
 	/**
 	 * Constructor.
 	 * 
-	 * @param WebInstaller $parent
-	 */	
+	 * @param $parent WebInstaller
+	 */
 	public function __construct( WebInstaller $parent ) {
 		$this->parent = $parent;
 	}
@@ -218,6 +224,15 @@ class WebInstaller_DBConnect extends WebInstallerPage {
 		$types = "<ul class=\"config-settings-block\">\n";
 		$settings = '';
 		$defaultType = $this->getVar( 'wgDBtype' );
+
+		$dbSupport = '';
+		foreach( $this->parent->getDBTypes() as $type ) {
+			$db = 'Database' . ucfirst( $type );
+			$dbSupport .= wfMsgNoTrans( "config-support-$type", $db::getSoftwareLink() ) . "\n";
+		}
+		$this->addHTML( $this->parent->getInfoBox(
+			wfMsg( 'config-support-info', $dbSupport ) ) );
+
 		foreach ( $this->parent->getVar( '_CompiledDBs' ) as $type ) {
 			$installer = $this->parent->getDBInstaller( $type );
 			$types .=
@@ -287,6 +302,7 @@ class WebInstaller_Upgrade extends WebInstallerPage {
 		}
 
 		if ( $this->parent->request->wasPosted() ) {
+			$installer->preUpgrade();
 			$this->addHTML(
 				'<div id="config-spinner" style="display:none;"><img src="../skins/common/images/ajax-loader.gif" /></div>' .
 				'<script>jQuery( "#config-spinner" )[0].style.display = "block";</script>' .
@@ -759,7 +775,7 @@ class WebInstaller_Options extends WebInstallerPage {
 
 	public function submit() {
 		$this->parent->setVarsFromRequest( array( '_RightsProfile', '_LicenseCode',
-			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUpload', 'wgLogo',
+			'wgEnableEmail', 'wgPasswordSender', 'wgEnableUploads', 'wgLogo',
 			'wgEnableUserEmail', 'wgEnotifUserTalk', 'wgEnotifWatchlist',
 			'wgEmailAuthentication', 'wgMainCacheType', '_MemCachedServers',
 			'wgUseInstantCommons' ) );
@@ -792,13 +808,14 @@ class WebInstaller_Options extends WebInstallerPage {
 			$this->setVar( 'wgRightsIcon', '' );
 		}
 
-		$exts = $this->parent->getVar( '_Extensions' );
-		foreach( $exts as $key => $ext ) {
-			if( !$this->parent->request->getCheck( 'config_ext-' . $ext ) ) {
-				unset( $exts[$key] );
+		$extsAvailable = $this->parent->findExtensions();
+		$extsToInstall = array();
+		foreach( $extsAvailable as $ext ) {
+			if( $this->parent->request->getCheck( 'config_ext-' . $ext ) ) {
+				$extsToInstall[] = $ext;
 			}
 		}
-		$this->parent->setVar( '_Extensions', $exts );
+		$this->parent->setVar( '_Extensions', $extsToInstall );
 		return true;
 	}
 	
@@ -832,14 +849,13 @@ class WebInstaller_Install extends WebInstallerPage {
 	}
 
 	public function endStage( $step, $status ) {
-		$success = $status->isGood();
-		$msg = $success ? 'config-install-step-done' : 'config-install-step-failed';
+		$msg = $status->isOk() ? 'config-install-step-done' : 'config-install-step-failed';
 		$html = wfMsgHtml( 'word-separator' ) . wfMsgHtml( $msg );
-		if ( !$success ) {
+		if ( !$status->isOk() ) {
 			$html = "<span class=\"error\">$html</span>";
 		}
 		$this->addHTML( $html . "</li>\n" );
-		if( !$success ) {
+		if( !$status->isGood() ) {
 			$this->parent->showStatusBox( $status );
 		}
 	}

@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on August 16, 2007
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on August 16, 2007
  *
  * Copyright © 2007 Iker Labarga <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -55,6 +56,17 @@ class ApiEditPage extends ApiBase {
 		$titleObj = Title::newFromText( $params['title'] );
 		if ( !$titleObj || $titleObj->isExternal() ) {
 			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
+		}
+
+		if( $params['redirect'] && $titleObj->isRedirect() ) {
+			$pageSet = new ApiPageSet( $this->getQuery(), true ); // Or true, true to also do variant conversion of titles
+			$pageSet->populateFromTitles( array( $titleObj ) );
+			foreach ( $pageSet->getRedirectTitles() as $from => $to ) {
+				$redirsValues[] = array( 'from' => $from, 'to' => $to );
+			}
+
+			$this->getResult()->setIndexedTagName( $redirValues, 'r' );
+			$this->getResult()->addValue( null, 'redirects', $redirValues );
 		}
 
 		// Some functions depend on $wgTitle == $ep->mTitle
@@ -172,7 +184,7 @@ class ApiEditPage extends ApiBase {
 		if ( !is_null( $params['starttimestamp'] ) && $params['starttimestamp'] != '' ) {
 			$reqArr['wpStarttime'] = wfTimestamp( TS_MW, $params['starttimestamp'] );
 		} else {
-			$reqArr['wpStarttime'] = $reqArr['wpEdittime'];	// Fake wpStartime
+			$reqArr['wpStarttime'] = wfTimestampNow();	// Fake wpStartime
 		}
 
 		if ( $params['minor'] )	{
@@ -240,6 +252,8 @@ class ApiEditPage extends ApiBase {
 
 		$retval = $ep->internalAttemptSave( $result, $wgUser->isAllowed( 'bot' ) && $params['bot'] );
 		$wgRequest = $oldRequest;
+		global $wgMaxArticleSize;
+
 		switch( $retval ) {
 			case EditPage::AS_HOOK_ERROR:
 			case EditPage::AS_HOOK_ERROR_EXPECTED:
@@ -262,7 +276,6 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_MAX_ARTICLE_SIZE_EXCEEDED:
 			case EditPage::AS_CONTENT_TOO_BIG:
-				global $wgMaxArticleSize;
 				$this->dieUsageMsg( array( 'contenttoobig', $wgMaxArticleSize ) );
 
 			case EditPage::AS_READ_ONLY_PAGE_ANON:
@@ -321,13 +334,12 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_END:
 				// This usually means some kind of race condition
-				// or DB weirdness occurred.
-				if ( is_array( $result ) && count( $result ) > 0 ) {
-					$this->dieUsageMsg( array( 'unknownerror', $result[0][0] ) );
-				}
+				// or DB weirdness occurred. Fall through to throw an unknown
+				// error.
 
-				// Unknown error, but no specific error message
-				// Fall through
+				// This needs fixing higher up, as Article::doEdit should be
+				// used rather than Article::updateArticle, so that specific
+				// error conditions can be returned
 			default:
 				$this->dieUsageMsg( array( 'unknownerror', $retval ) );
 		}
@@ -427,6 +439,10 @@ class ApiEditPage extends ApiBase {
 			'undoafter' => array(
 				ApiBase::PARAM_TYPE => 'integer'
 			),
+			'redirect' => array(
+				ApiBase::PARAM_TYPE => 'boolean',
+				ApiBase::PARAM_DFLT => false,
+			),
 		);
 	}
 
@@ -461,6 +477,7 @@ class ApiEditPage extends ApiBase {
 			'appendtext' => "Add this text to the end of the page. Overrides {$p}text",
 			'undo' => "Undo this revision. Overrides {$p}text, {$p}prependtext and {$p}appendtext",
 			'undoafter' => 'Undo all revisions from undo to this one. If not set, just undo one revision',
+			'redirect' => 'Automatically resolve redirects',
 		);
 	}
 

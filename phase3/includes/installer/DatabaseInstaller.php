@@ -1,4 +1,10 @@
 <?php
+/**
+ * DBMS-specific installation helper.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * Base class for DBMS-specific installation helper classes.
@@ -117,11 +123,10 @@ abstract class DatabaseInstaller {
 	
 	/**
 	 * Perform database upgrades
-	 * @todo make abstract
+	 *
+	 * @return Boolean
 	 */
-	/*abstract*/ function doUpgrade() {
-		return false;
-	}
+	public abstract function doUpgrade();
 	
 	/**
 	 * Allow DB installers a chance to make last-minute changes before installation
@@ -129,6 +134,13 @@ abstract class DatabaseInstaller {
 	 * long after the constructor. Helpful for things like modifying setup steps :)
 	 */
 	public function preInstall() {
+	
+	}
+
+	/**
+	 * Allow DB installers a chance to make checks before upgrade.
+	 */
+	public function preUpgrade() {
 	
 	}
 
@@ -302,11 +314,11 @@ abstract class DatabaseInstaller {
 		if ( !$status->isOK() ) {
 			return false;
 		}
-		$conn = $status->value;
-		if ( !$conn->selectDB( $this->getVar( 'wgDBname' ) ) ) {
+
+		if ( !$this->db->selectDB( $this->getVar( 'wgDBname' ) ) ) {
 			return false;
 		}
-		return $conn->tableExists( 'cur' ) || $conn->tableExists( 'revision' );
+		return $this->db->tableExists( 'cur' ) || $this->db->tableExists( 'revision' );
 	}
 
 	/**

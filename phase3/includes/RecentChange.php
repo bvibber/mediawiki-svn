@@ -2,6 +2,7 @@
 
 /**
  * Utility class for creating new RC entries
+ *
  * mAttribs:
  *  rc_id           id of the row in the recentchanges table
  *  rc_timestamp    time the entry was made
@@ -73,7 +74,6 @@ class RecentChange {
 		$res = $dbr->select( 'recentchanges', '*', array( 'rc_id' => $rcid ), __METHOD__ );
 		if( $res && $dbr->numRows( $res ) > 0 ) {
 			$row = $dbr->fetchObject( $res );
-			$dbr->freeResult( $res );
 			return self::newFromRow( $row );
 		} else {
 			return null;

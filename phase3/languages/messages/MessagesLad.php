@@ -163,6 +163,15 @@ $specialPageAliases = array(
 	'Badtitle'                  => array( 'TítůloNegro' ),
 );
 
+$magicWords = array(
+	'redirect'              => array( '0', '#DIRIJAR', '#DIRECCIÓN', '#REDIRECCIÓN', '#REDIRECCION', '#REDIRECT' ),
+	'fullpagename'          => array( '1', 'NOMBREDEHOJACOMPLETA', 'NOMBREDEPÁGINACOMPLETA', 'NOMBREDEPAGINACOMPLETA', 'NOMBREDEPÁGINAENTERA', 'NOMBREDEPAGINAENTERA', 'FULLPAGENAME' ),
+	'subpagename'           => array( '1', 'NOMBREDEHOJICA', 'NOMBREDESUBPAGINA', 'NOMBREDESUBPÁGINA', 'SUBPAGENAME' ),
+	'msg'                   => array( '0', 'MSJ:', 'MSG:' ),
+	'img_left'              => array( '1', 'cierda', 'izquierda', 'izda', 'izq', 'left' ),
+	'img_none'              => array( '1', 'dinguna', 'dinguno', 'ninguna', 'nada', 'no', 'ninguno', 'none' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Echar liña dêbbaxo de los linkes:',
@@ -332,7 +341,7 @@ $messages = array(
 'create-this-page'  => 'Cria esta hoja',
 'delete'            => 'Efassa',
 'deletethispage'    => 'Efassa esta hoja',
-'undelete_short'    => 'Abolta $1 trocamientos',
+'undelete_short'    => 'Abolta $1 {{PLURAL:$1|trocamientos|trocamientos}}',
 'protect'           => 'Abriga',
 'protect_change'    => 'Troca el abrigamiento',
 'protectthispage'   => 'Abriga esta hoja',
@@ -764,7 +773,6 @@ Las hojas en tu [[Special:Watchlist|lista de escogidas]] son escritas '''gordas'
 # Watchlist
 'watchlist'         => 'Mi lista de escogidas',
 'mywatchlist'       => 'Mi lista de escogidas',
-'watchlistfor'      => "(para '''$1''')",
 'addedwatch'        => 'Ajustado a la lista de escogidas',
 'addedwatchtext'    => "La hoja «[[:$1]]» fue ajustada a tu [[Special:Watchlist|lista de escogidas]]. Los trocamientos venideros en esta hoja i en tu hoja de diskussión associada se van indicar aí, i la hoja va aparecer '''gordo''' en la hoja de [[Special:RecentChanges|trocamientos freskos]] para hazerla más kolay de detektar.
 

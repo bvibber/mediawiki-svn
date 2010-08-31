@@ -9,6 +9,7 @@
  *
  * @author Als-Holder
  * @author SPS
+ * @author Xqt
  */
 
 $fallback = 'de';
@@ -257,7 +258,7 @@ Erklärung: '''({{int:cur}})''' = Unnerschied zu jetzert,
 
 # Revision deletion
 'rev-delundel'     => 'zaich/versteckel',
-'revdelete-submit' => 'Uff die aussgewählt Version owende',
+'revdelete-submit' => 'Uff die aussgewählt {{PLURAL:$1|Version|Versione}} owende',
 'revdel-restore'   => 'Sichtbarkeit ännere',
 
 # Merge log
@@ -429,7 +430,6 @@ Saire uff [[Special:Watchlist|Dainer Beowachdungslischt]] sin '''fett'''.",
 # Watchlist
 'watchlist'         => 'Beowachdungslischd',
 'mywatchlist'       => 'Mai Beowachdungslischd',
-'watchlistfor'      => "(fer '''$1''')",
 'addedwatch'        => 'Zu de Beowachdungslischt zufieche',
 'addedwatchtext'    => "Die Said \"[[:\$1]]\" isch zu Dainer [[Special:Watchlist|Beowachdungslischt]] zugefiecht worre.
 Zukimftiche Ännerunge an derre Said un de Dischbediersaid, wu dezu ghert, werre doo aagezaicht, un d Said werd '''fett''' aagezaicht in de [[Special:RecentChanges|Letschte Ännerunge]] fer dass es ääfacher isch zum finne.",

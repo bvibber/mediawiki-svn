@@ -1,4 +1,10 @@
 <?php
+/**
+ * Base code for MediaWiki installer.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * This documentation group collects source code files with deployment functionality.
@@ -61,11 +67,10 @@ abstract class Installer {
 	 *
 	 * @var array
 	 */
-	protected $dbTypes = array(
+	protected static $dbTypes = array(
 		'mysql',
 		'postgres',
 		'sqlite',
-		'oracle'
 	);
 
 	/**
@@ -118,8 +123,8 @@ abstract class Installer {
 	/**
 	 * Get a list of known DB types.
 	 */
-	public function getDBTypes() {
-		return $this->dbTypes;
+	public static function getDBTypes() {
+		return self::$dbTypes;
 	}
 
 	/**
@@ -323,7 +328,7 @@ abstract class Installer {
 	/**
 	 * TODO: document
 	 *
-	 * @param DatabaseInstaller $installer
+	 * @param $installer DatabaseInstaller
 	 *
 	 * @return Status
 	 */
@@ -341,7 +346,7 @@ abstract class Installer {
 	/**
 	 * TODO: document
 	 *
-	 * @param DatabaseInstaller $installer
+	 * @param $installer DatabaseInstaller
 	 *
 	 * @return Status
 	 */
@@ -358,7 +363,7 @@ abstract class Installer {
 	/**
 	 * TODO: document
 	 *
-	 * @param DatabaseInstaller $installer
+	 * @param $installer DatabaseInstaller
 	 *
 	 * @return Status
 	 */
@@ -383,32 +388,21 @@ abstract class Installer {
 	public function envLatestVersion() {
 		global $wgVersion;
 
-		$latestInfoUrl = 'http://www.mediawiki.org/w/api.php?action=mwreleases&format=json';
-		$latestInfo = Http::get( $latestInfoUrl );
-
-		if( !$latestInfo ) {
-			$this->showMessage( 'config-env-latest-can-not-check', $latestInfoUrl );
-			return;
-		}
+		$repository = wfGetRepository();
+		$currentVersion = $repository->getLatestCoreVersion();
 
 		$this->setVar( '_ExternalHTTP', true );
-		$latestInfo = FormatJson::decode($latestInfo);
 
-		if ($latestInfo === false || !isset( $latestInfo->mwreleases ) ) {
+		if ( $currentVersion === false ) {
 			# For when the request is successful but there's e.g. some silly man in
 			# the middle firewall blocking us, e.g. one of those annoying airport ones
-			$this->showMessage( 'config-env-latest-data-invalid', $latestInfoUrl );
+			$this->showMessage( 'config-env-latest-can-not-check', $repository->getLocation() );
 			return;
-		}
-
-		foreach( $latestInfo->mwreleases as $rel ) {
-			if( isset( $rel->current ) ) {
-				$currentVersion = $rel->version;
-			}
 		}
 
 		if( version_compare( $wgVersion, $currentVersion, '<' ) ) {
 			$this->showMessage( 'config-env-latest-old' );
+			// FIXME: this only works for the web installer!
 			$this->showHelpBox( 'config-env-latest-help', $wgVersion, $currentVersion );
 		} elseif( version_compare( $wgVersion, $currentVersion, '>' ) ) {
 			$this->showMessage( 'config-env-latest-new' );
@@ -427,7 +421,7 @@ abstract class Installer {
 		$goodNames = array();
 		$allNames = array();
 
-		foreach ( $this->dbTypes as $name ) {
+		foreach ( self::getDBTypes() as $name ) {
 			$db = $this->getDBInstaller( $name );
 			$readableName = wfMsg( 'config-type-' . $name );
 
@@ -443,11 +437,12 @@ abstract class Installer {
 
 		if ( !$compiledDBs ) {
 			$this->showMessage( 'config-no-db' );
+			// FIXME: this only works for the web installer!
 			$this->showHelpBox( 'config-no-db-help', $wgLang->commaList( $allNames ) );
 			return false;
 		}
 
-		$this->showMessage( 'config-have-db', $wgLang->commaList( $goodNames ) );
+		$this->showMessage( 'config-have-db', $wgLang->listToText( $goodNames ), count( $goodNames ) );
 	}
 
 	/**
@@ -814,7 +809,7 @@ abstract class Installer {
 
 	/**
 	 * Convert a hex string representing a Unicode code point to that code point.
-	 * @param string $c
+	 * @param $c String
 	 * @return string
 	 */
 	protected function unicodeChar( $c ) {

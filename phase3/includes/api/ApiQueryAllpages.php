@@ -1,9 +1,8 @@
 <?php
-
 /**
- * Created on Sep 25, 2006
- *
  * API for MediaWiki 1.8+
+ *
+ * Created on Sep 25, 2006
  *
  * Copyright © 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
@@ -21,6 +20,8 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -72,8 +73,9 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		$this->addWhereFld( 'page_namespace', $params['namespace'] );
 		$dir = ( $params['dir'] == 'descending' ? 'older' : 'newer' );
 		$from = ( is_null( $params['from'] ) ? null : $this->titlePartToKey( $params['from'] ) );
-		$this->addWhereRange( 'page_title', $dir, $from, null );
-
+		$to = ( is_null( $params['to'] ) ? null : $this->titlePartToKey( $params['to'] ) );
+		$this->addWhereRange( 'page_title', $dir, $from, $to );
+		
 		if ( isset( $params['prefix'] ) ) {
 			$this->addWhere( 'page_title' . $db->buildLike( $this->titlePartToKey( $params['prefix'] ), $db->anyString() ) );
 		}
@@ -189,6 +191,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 
 		return array(
 			'from' => null,
+			'to' => null,
 			'prefix' => null,
 			'namespace' => array(
 				ApiBase::PARAM_DFLT => 0,
@@ -253,6 +256,7 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		$p = $this->getModulePrefix();
 		return array(
 			'from' => 'The page title to start enumerating from',
+			'to' => 'The page title to stop enumerating at',
 			'prefix' => 'Search for all page titles that begin with this value',
 			'namespace' => 'The namespace to enumerate',
 			'filterredir' => 'Which pages to list',
