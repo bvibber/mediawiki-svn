@@ -80,8 +80,8 @@ class ApiArticleAssessment extends ApiBase {
 		$dbw->update(
 			'article_assessment_pages',
 			array(
-				'aap_total' => 'aap_total + ' . $updateAddition,
-				'aap_count' => 'aap_count + ' . ( $newRating ? 1 : 0 ),
+				'aap_total = aap_total + ' . $updateAddition,
+				'aap_count = aap_count + ' . ( $newRating ? 1 : 0 ),
 			),
 			array(
 				'aap_page_id' => $pageId,
