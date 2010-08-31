@@ -116,9 +116,10 @@
 .article-assessment-wrapper .article-assessment-rating-field-name {
 	float: left;
 	width: 90px;
+	font-weight: bold;
+	font-size: 11px;
 }
-.article-assessment-wrapper .article-assessment-rating-field-value-wrapper,
-.article-assessment-wrapper .article-assessment-rating-field-value-disabled {
+.article-assessment-wrapper .article-assessment-rating-field-value-wrapper {
 	background: url( ../images/rating_bg.gif ) 0 0 no-repeat;
 	width: 120px;
 	height: 13px;
@@ -126,6 +127,7 @@
 	float: left;
 	padding: 2px;
 	text-indent: -9999px;
+	margin-top: 2px;
 }
 .article-assessment-wrapper .article-assessment-rate-instructions, 
 .article-assessment-wrapper .article-assessment-rate-feedback,
@@ -146,19 +148,37 @@
 	float: right;
 	display: block;
 }
-.article-assessment-wrapper .article-assessment-rating-field-value-disabled {
-	background: url( ../images/rating_disabled_bg.gif ) 0 0 no-repeat;
-}
 .article-assessment-wrapper .article-assessment-wrapper .article-assessment-rating-fields {
 	margin: 8px 0;
 }
 .article-assessment-wrapper .article-assessment-rating-fields .field-wrapper {
 	margin-bottom: 5px;
 }
+.article-assessment-rating-count {
+	font-size: 11px;
+	margin-left: 5px;
+	float: left;
+}
+.article-assessment-submit input {
+	margin: 2px 0;
+}
+.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value-wrapper {
+	background: url( ../images/rating_disabled_bg.gif ) 0 0 no-repeat;
+}
+.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-value {
+	display: none;
+}
+.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-count {
+	display: none;
+}
+.article-assessment-wrapper .article-assessment-ratings-disabled .article-assessment-rating-field-name {
+	color: #9f9f9f;
+}
 /* Self Clearing Floats */
 .article-assessment-wrapper .article-assessment-information:after,
 .article-assessment-wrapper .field-wrapper:after,
 .article-assessment-wrapper .article-assessment-rating-fields:after,
+.article-assessment-rating:after,
 .article-assessment-wrapper .article-assessment-submit:after,
 .article-assessment-wrapper .rating-fields:after {
 	content: ".";
@@ -170,6 +190,7 @@
 .article-assessment-wrapper .field-wrapper,
 .article-assessment-wrapper .article-assessment-information,
 .article-assessment-wrapper .article-assessment-rating-fields,
+.article-assessment-rating,
 .article-assessment-wrapper .article-assessment-submit,
 .article-assessment-wrapper .rating-fields {
 	display: inline-block;
@@ -177,6 +198,7 @@
 * html .article-assessment-wrapper .field-wrapper,
 * html .article-assessment-wrapper .article-assessment-information,
 * html .article-assessment-wrapper .article-assessment-rating-fields,
+* html .article-assessment-rating,
 * html .article-assessment-wrapper .article-assessment-submit,
 * html .article-assessment-wrapper .rating-fields {
 	height: 1%;
@@ -184,6 +206,7 @@
 .article-assessment-wrapper .field-wrapper,
 .article-assessment-wrapper .article-assessment-information,
 .article-assessment-wrapper .article-assessment-rating-fields,
+.article-assessment-rating,
 .article-assessment-wrapper .article-assessment-submit,
 .article-assessment-wrapper .rating-fields {
 	display: block;
