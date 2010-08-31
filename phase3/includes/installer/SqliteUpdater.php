@@ -47,7 +47,7 @@ class SqliteUpdater extends DatabaseUpdater {
 			array( 'addField', 'interwiki',     'iw_api',           'patch-iw_api_and_wikiid.sql' ),
 			array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix',  'patch-kill-iwl_prefix.sql' ),
 			array( 'drop_index_if_exists', 'iwlinks', 'iwl_prefix_from_title', 'patch-kill-iwl_pft.sql' ),
-			array( 'add_table', 'module_deps',                       'patch-module_deps.sql' ),
+			array( 'addTable', 'module_deps',                       'patch-module_deps.sql' ),
 		);
 	}
 }
