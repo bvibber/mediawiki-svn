@@ -42,7 +42,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 				)
 			);
 
-			$this->addFields( 'aa_rating_value' );
+			$this->addFields( array( 'aa_rating_value', 'aa_revision' ) );
 
 			if ( isset( $params['revid'] ) ){
 				$this->addWhereFld( 'aa_revision', $params['revid'] );
