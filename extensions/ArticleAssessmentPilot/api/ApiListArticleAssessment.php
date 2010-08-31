@@ -103,7 +103,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 			global $wgArticleAssessmentStaleCount;
 
-			if ( $res && $res[0]->norevs > $wgArticleAssessmentStaleCount ){
+			if ( $res && $res->fetchRow()->norevs > $wgArticleAssessmentStaleCount ){
 				//it's stale!
 				$ratings[$params['pageid']]['stale'] = '';
 			}
