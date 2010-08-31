@@ -856,10 +856,27 @@ $messages['bs'] = array(
 	'prefswitch-survey-question-whyoff' => 'Zašto isključujete nove mogućnosti?
 Molimo odaberite sve što se može primijeniti.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Veoma je teško koristiti nove mogućnosti.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Mogućnosti nisu dobro funkcionirale.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Mogućnosti nisu radile kako je predviđeno.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Ne sviđa mi se način kako ovo izgleda.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Ne sviđaju mi se novi jezičci i dizajn.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ne sviđa mi se nova alatna traka.',
 	'prefswitch-survey-answer-whyoff-other' => 'Ostali razlozi:',
 	'prefswitch-survey-question-browser' => 'Koji preglednik koristite?',
 	'prefswitch-survey-answer-browser-other' => 'Ostali preglednici:',
+	'prefswitch-survey-question-os' => 'Koji operativni sistem koristite?',
+	'prefswitch-survey-answer-os-other' => 'Drugi operativni sistemi:',
+	'prefswitch-survey-question-res' => 'Koja je rezolucija Vašeg monitora?',
+	'prefswitch-title-on' => 'Nove mogućnosti',
+	'prefswitch-title-switched-on' => 'Uživajte!',
+	'prefswitch-main-on' => '===Vrati me nazad!===
+[$2 Kliknite ovdje da ugasite nove mogućnosti].',
+	'prefswitch-main-off' => '===Isprobajte ih!===
+[$1 Kliknite ovdje da omogućite nove mogućnosti].',
+	'prefswitch-survey-intro-feedback' => 'Bilo bi nam drago da nam se javite.
+Molimo ispunite anketu ispod, koja nije obavezna, prije nego kliknete "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Hvala što isprobavate naše nove mogućnosti.
+Da biste nam pomogli da ih poboljšamo, molimo ispunite neobaveznu anketu ispod prije nego kliknete "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Catalan (Català)
@@ -6278,9 +6295,12 @@ Bunları geliştirmemize yardımcı olmak için, lütfen "[[#prefswitch-survey-s
 $messages['tt-cyrl'] = array(
 	'prefswitch' => 'Юзабилити инициативасы көйләүләрен күчерү',
 	'prefswitch-desc' => 'Кулланучыларга көйләүләр наборларын күчерергә мөмкинлек бирә',
+	'prefswitch-jswarning' => 'Исегездә тотыгыз, бизәлешнең үзгәртелү нәтиҗәсендә, сезнең [[User:$1/$2.js|$2 JavaScript]]   [[{{ns:user}}:$1/vector.js]]  күчерелергә тиеш <!-- яисә [[{{ns:user}}:$1/common.js]]-->, киләчәктә эшләсен өчен.',
+	'prefswitch-csswarning' => 'Сезнең [[User:$1/$2.css| «$2» өчен каралган шәхси бизәлешегез]] киләчәктә кулланылмаячак. Сез үзегезнең шәхси CSS  «Вектор»  исемле бизәлеш өчен куллана аласыз, уле [[{{ns:user}}:$1/vector.css]] файлында урнашкан.',
 	'prefswitch-survey-true' => 'Әйе',
 	'prefswitch-survey-false' => 'Юк',
 	'prefswitch-survey-submit-off' => 'Яңа мөмкинчелекләрне сүндерергә',
+	'prefswitch-survey-submit-global-off' => 'Яҗа мөикинчелекләрне барлык викиларда да ябырга',
 	'prefswitch-survey-cancel-off' => 'Сез алга таба да яңа мөмкинчелекләрне кулланырга теләсәгез, Сез $1 кайта аласыз.',
 	'prefswitch-survey-submit-feedback' => 'Фикерләрегезне җибәрү',
 	'prefswitch-survey-cancel-feedback' => 'Сез прототип турында фикерләрегезне җибәрә алмасагыз, $1 кайта аласыз.',
@@ -6289,17 +6309,74 @@ $messages['tt-cyrl'] = array(
 	'prefswitch-survey-question-whyoff' => 'Сез яңа мөмкинчелекләрне нишләп сүндерәсез?
 Зинһар, бөтен уңайлы вариантларны сайлагыз.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Кулланырга бик авыр.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Кирәкле иттереп эшләми.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Бик әйбәт эшли.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Миңа аның тышкы кыяфәте ошамый.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Миңа аның яңа тәрәзәләре һәм төзелеше ошамады.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Миңа яңа төзәтү панеле ошамады.',
 	'prefswitch-survey-answer-whyoff-other' => 'Башка сәбәп:',
 	'prefswitch-survey-question-browser' => 'Сез кайсы браузерны кулланасыз?',
 	'prefswitch-survey-answer-browser-other' => 'Башка браузер:',
 	'prefswitch-survey-question-os' => 'Сез кайсы операцион системасын кулланасыз?',
 	'prefswitch-survey-answer-os-other' => 'Башка операцион система:',
+	'prefswitch-survey-question-res' => 'Экраныгызның киңәйтелмәсе нинди?',
 	'prefswitch-title-on' => 'Яңа мөмкинчелекләр',
 	'prefswitch-title-switched-on' => 'Рәхәтләнегез!',
 	'prefswitch-title-off' => 'Яңа мөмкинчелекләрне сүндерергә',
 	'prefswitch-title-switched-off' => 'Рәхмәт',
-	'prefswitch-title-feedback' => 'Кире элемтә',
+	'prefswitch-title-feedback' => 'Безнең белән элемтә',
+	'prefswitch-success-on' => 'Яңа мөмкинчелекләр ачылды. Сезгә ошар дип уйлыйбыз. Сез бу мөмкинчелекләрне теләсә кайсы вакытны яба аласыз, бары тик бу сылтамага гына басарга кирәк «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» .',
+	'prefswitch-success-off' => 'Яңа мөмкинчелекләр ябылды. Сынап караганыгыз өчен бик зур рәхмәт. Сез бу мөмкинчелекләрне теләсә кайсы вакытны яңадан ача аласыз, бары тик бу сылтамага гына басарга кирәк «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» .',
+	'prefswitch-success-feedback' => 'Сезнең фикер җибәрелде.',
+	'prefswitch-return' => '<hr style="clear:both">
+<span class="plainlinks">[$1 $2]гә кире кайту</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorNavigation-tt.png|401px|]]
+|-
+|  Википедия интерфейсының яңа бизәлеше <small>[[Media:VectorNavigation-tt.png|(зурайтырга)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-tt.png|401px|]]
+|-
+| Бит үзгәрткечнең төп бизәлеше <small>[[Media:VectorEditorBasic-tt.png|(зурайтырга)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-tt.png|401px|]]
+|-
+| Сылтама ясау өчен диалогның яңа бизәлеше
+|}
+|}
+«Викимедиа Фондында» сәхифәне куллану буенча махсус төркем эшли, төрле илләрдән җыелган волентерлар белән алар Википедия һәм башка вики-проектларны үстерүдә зур өлеш кертәләр. Хәзергесе вакытта без сезгә яңа интерфейс бизәлеше һәм яңа төрле үзгәрткеч тәкъдим итәбез. Бу үзгәртүләр гади кулланучыларның эшен җиңеләйтү өчен кулланыла һәм алдагы елда үткәрелгән [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study сорау алуга нигезләнгән]. Яңа бизәлеш һәм уңайлылык «Викимедиа Фонды»  тарафынанбик өстенлекле проект булып тора. Тулырак мәгъләматны [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/  Викимедия блогында] карый аласыз.
+
+=== Без ниләр үзгәрттек ===
+* '''Навигация.''' Без навигацияне тулысынча үзгәрттек дисәк тә була. Без аны тагын да уңайлырак һәм матуррак эшләдек. Хәзер өстә урнаштырылган кыстыргычлар сезнең ниләр эшләгәнегезне, битне яисә бәхәс битен каравыгызны мы, әллә бөтенләй дә яңа бит ясавыгызны мы тулысынча аңлатып бирә. 
+* '''Үзгәртү панеле.''' Үзгәртү панелен алмаштыру нәтиҗәсендә битләрне ясау, үзгәртү тагын да тизрк һәм уңайлырак була.
+* '''Сылтама ясагыч.''' Гади сылтама ясау коралы нигезендә эчке, проект эчендә урнашкан вики-битләргә, шулай ук тышкы сәхифәләргә дә ясарга мөмкин.
+* '''Эзләү.''' Без эзләүдә булган ярдәмче хәбәрләрне тулыландыра төштек, болар барсы да сезнең эзләгән битне тизрәк һәм уңайлырак табу өчен эшләнде
+* '''Башка яңа функцияләр.''' Яңа табын ясау коралы сезгә вивда табыннарны ясауны җиңеләйтер дип уйлыйбыз.Шулай ук хатаны эзләү һәм алмаштыру функциясен өстәдек. 
+* '''Логотип.''' Без шарик-пазлның яңа бизәлешен ясадык, тулырак мәгълүмат [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Викимедия блогында].",
+	'prefswitch-main-logged-changes' => "* '''«{{int:watch}}» кыстырмасы'''  хәзер йолдыз формасында.
+* ''' «{{int:move}}» кыстырмасы'''  төшерелмә меню куелган.",
+	'prefswitch-main-feedback' => '=== Элемтә ===
+Без сезнең фикерләрегезне ишәтебез килә. Зинһар, безнең [[$1|элемтә битенә керегез]]. ЕӘгәрдә сезгә безнең яңа төрле программа белән тәэмин ителеш турында күбрәк беләсегез килсә  [http://usability.wikimedia.org бизәлеш проекты сәхифәсен] карагыз.',
+	'prefswitch-main-anon' => '=== Ничек бар шулай кайтарырга ===
+Әгәрдә сез яңа мөмкинчелекләрне ябасагыз килсә, [$1монда басыгыз]. Сезгә башта сәхифәгә керергә яисә яңадан теркәлергә тәкъдим ителәчәк.',
+	'prefswitch-main-on' => '=== Яңадан кайтарыгыз! ===
+Әгәрдә сез бөтен яңа мөмкинчелекләрне ябасыгыз килсә, зинһар, [$2 монда басыгыз].',
+	'prefswitch-main-off' => '=== Сынап карагыз! ===
+Әгәрдә сезнең яңа мөмкинчелекләрне сынап карыйсыгыз килсә, зинһар, [$1 монда басыгыз].',
+	'prefswitch-survey-intro-feedback' => 'Без сезенең фикерләрегезне беләсебез килә.
+Зинһар, «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]» төймәсенә баскыйнча,  аста урнашкан сорауларга җавап бирегез.',
+	'prefswitch-survey-intro-off' => "Яңа мөмкинчелекләрне сынап караганыгыз өчен бик зур рәхмәт!
+Безгә аларның сыйфатын тагын да артыру өчен аста бирелгән сорауларга җавап бирегез. ''(җавап бирү мәҗбүри түгел)''
+Шуннан соң «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]»  төймәсенә баса аласыз.",
+	'prefswitch-feedbackpage' => 'Project:Яңа бизәлеш турында фикерләр',
 );
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)

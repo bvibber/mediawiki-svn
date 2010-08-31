@@ -328,6 +328,13 @@ $messages['he'] = array(
 	'ratedpages-count' => '{{PLURAL:$1|דירוג אחד|$1 דירוגים}}',
 );
 
+/** Croatian (Hrvatski)
+ * @author Roberta F.
+ */
+$messages['hr'] = array(
+	'ratedpages-none' => 'Nema stranica u ovom popisu',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

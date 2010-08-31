@@ -131,6 +131,7 @@ $messages['br'] = array(
 $messages['bs'] = array(
 	'usabilityinitiative' => 'Inicijativa upotrebljivosti',
 	'usabilityinitiative-desc' => 'Mogućnost koju je razvila Wikipedia inicijativa upotrebljivosti da bi se poboljšala upotrebljivost MediaWiki',
+	'prefs-beta' => 'Beta mogućnosti',
 );
 
 /** Catalan (Català)

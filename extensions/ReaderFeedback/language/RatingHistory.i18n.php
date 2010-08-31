@@ -977,6 +977,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
+ * @author Roberta F.
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
@@ -987,6 +988,7 @@ $messages['hr'] = array(
 	'ratinghistory-3years' => 'posljednje 3 godine',
 	'ratinghistory-ave' => 'Prosjek: $1',
 	'ratinghistory-purge' => "očisti spremnik (''cache'')",
+	'ratinghistory-table-votes' => 'Glasovi',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

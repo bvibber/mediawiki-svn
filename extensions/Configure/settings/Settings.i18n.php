@@ -15653,6 +15653,7 @@ $messages['pt-br'] = array(
 	'configure-setting-wgArticleRobotPolicies-key' => 'Título da página',
 	'configure-setting-wgExtraLanguageNames-key' => 'Código de língua',
 	'configure-setting-wgExtraLanguageNames-value' => 'Nome',
+	'configure-setting-wgMaxRedirects' => 'Número máximo de redirecionamentos a seguir ao resolver redirecionamentos',
 	'configure-setting-wgPageShowWatchingUsers' => 'Mostrar quais usuários estão vigiando uma página',
 	'configure-setting-wgUniversalEditButton' => 'Habilitar o Botão de Edição Universal',
 	'configure-setting-wgAjaxLicensePreview' => 'Usar AJAX para pré-visualizar o licenciamento dos uploads',

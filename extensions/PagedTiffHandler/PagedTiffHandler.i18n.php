@@ -131,7 +131,7 @@ $messages['br'] = array(
 	'tiff_error_cached' => "N'hall ar restr-mañ bezañ adderaouekaet nemet goude termen ar grubuilh.",
 	'tiff_size_error' => 'Ne glot ket ment ar restr meneget gant ment gwir ar restr.',
 	'tiff_script_detected' => 'Skriptoù zo er restr karget.',
-	'tiff_bad_file' => 'Fazioù zo er restr karget: $1',
+	'tiff_bad_file' => 'Fazioù zo er restr enporzhiet : $1',
 	'tiff-file-info-size' => '(pajenn $5, $1 × $2 piksel, ment ar restr : $3, seurt MIME : $4)',
 );
 
@@ -504,6 +504,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(

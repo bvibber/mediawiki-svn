@@ -1162,6 +1162,13 @@ $messages['frp'] = array(
 	'youtubeauthsub_submit' => 'Sometre',
 	'youtubeauthsub_clickhere' => 'Clicâd ique por vos branchiér dessus YouTube',
 	'youtubeauthsub_tokenerror' => 'Èrror pendent la demanda d’ôtorisacion, tâchiéd de rafrèchir la pâge.',
+	'youtubeauthsub_success' => "Fèlicitacions !
+Voutra vidèô est tèlèchargiê.
+<a href='http://www.youtube.com/watch?v=$1'>Vêde voutra vidèô</a>.
+Sè pôt que YouTube èye fôta d’un pou de temps por prendre en compto voutra vidèô, o est vêr possiblo que seye p’oncor disponibla.
+
+Por apondre voutra vidèô dens una pâge du vouiqui, entrebetâd ceti code dens ceta :
+<code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Por tèlèchargiér una vidèô, vos vos devréd d’abôrd branchiér dessus YouTube.',
 	'youtubeauthsub_uploadhere' => 'Tèlèchargiér voutra vidèô dês ique :',
 	'youtubeauthsub_uploadbutton' => 'Tèlèchargiér',
@@ -2044,6 +2051,9 @@ $messages['li'] = array(
 	'youtubeauthsub_category' => 'Categorie',
 	'youtubeauthsub_submit' => 'Bievoge',
 	'youtubeauthsub_uploadbutton' => 'Upload',
+	'youtubeauthsub_jserror_nokeywords' => 'Gaef e.t.b. ein of mier trefweurd op.',
+	'youtubeauthsub_jserror_notitle' => "Gaef e.t.b. 'ne naam veur de video op.",
+	'youtubeauthsub_jserror_nodesc' => "Gaef e.t.b. 'n besjrieving veur de video op.",
 );
 
 /** Lithuanian (Lietuvių)

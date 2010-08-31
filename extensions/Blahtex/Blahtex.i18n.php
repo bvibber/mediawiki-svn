@@ -2729,6 +2729,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Hamilton Abreu
  */
 $messages['pt-br'] = array(
@@ -2778,7 +2779,7 @@ Apenas um é permitido',
 	'math_UnexpectedNextCell' => 'O comando "&" só pode aparecer dentro de um bloco "\\begin ... \\end"',
 	'math_UnexpectedNextRow' => 'O comando "\\\\" apenas pode aparecer dentro de um bloco "\\begin ... \\end"',
 	'math_UnmatchedBegin' => 'Foi encontrado "\\begin" sem "\\end" correspondente',
-	'math_UnmatchedCloseBrace' => 'Foi encontrada chave de fechamento "{" sem chave de abertura "}" correspondente',
+	'math_UnmatchedCloseBrace' => 'Foi encontrada uma chaveta de fecho "}" sem a chave de abertura "{" correspondente',
 	'math_UnmatchedEnd' => 'Foi encontrado "\\end" sem "\\begin" correspondente',
 	'math_UnmatchedLeft' => 'Foi encontrado "\\left" sem "\\right" correspondente',
 	'math_UnmatchedOpenBrace' => 'Foi encontrada chave de abertura "{" sem chaveta de fechamento "}" correspondente',

@@ -33,6 +33,33 @@ If you want to read the response in context, visit <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 has responded to your summary bullet point',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'reflect-desc' => 'Павелічэньне камэнтараў галіны',
+	'reflect-bulleted' => 'Вітаем, $1!
+	
+$2 падсумаваў Ваш пункт гледжаньня ў галіне «$3». 
+
+У спрошчаным выглядзе: «$5».
+
+Вы можаце праверыць, ці правільна $2 зразумеў Вас, наведаўшы <$4>. 
+
+Вы зможаце ўдакладніць Ваш пункт гледжаньня, калі заўважыце непаразуменьні.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Выш пункт гледжаньня быў падсумаваны $2',
+	'reflect-responded' => 'Вітаем, $1! 
+	
+$2 адказаў на Вашае падсумаваньне яго пункту гледжаньня.
+
+У спрошчаным выглядзе Вы зрабілі: «$6». 
+Яго паведамленьне: «$5».
+
+Калі Вы жадаеце прачытаць адказ у кантэксьце, наведайце <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 адказаў на Вашае рэзюміраваньне пункту гледжаньня',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -85,6 +112,58 @@ Si vous voulez lire la réponse dans son contexte, visitez <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 a répondu à votre résumé de son opinion',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'reflect-desc' => 'Augmentation de commentos in discussiones',
+	'reflect-bulleted' => 'Salute $1,
+
+$2 ha summarisate un puncto de vista que tu ha exprimite in le discussion "$3".
+
+Su summario: "$5".
+
+Tu pote verificar si $2 te ha ben comprendite per visitar <$4>.
+
+Tu potera clarificar tu puncto de vista si il ha un miscomprension.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Tu puncto de vista ha essite summarisate per $2',
+	'reflect-responded' => 'Salute $1, 
+	
+$2 ha respondite a tu summario de un puncto de vista que ille/illa ha exprimite.
+
+Le summario que tu lassava: "$6". 
+Su message: "$5".
+
+Si tu vole leger le responsa in contexto, visita <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 ha respondite a tu curte summario',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'reflect-desc' => 'Надополнување на нанижани коментари',
+	'reflect-bulleted' => 'Здраво $1,
+
+$2 резимираше ваше излагање на темата „$3“. 
+
+Резимето гласи: "$5".
+
+Можете да појдете на <$4> за да проверите дали $2 ве има сфатено правилно. 
+
+Ако постои некое недоразсбирање, така ќе можете да појасните за што станува збор.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] $2 го резимираше вашето излагање',
+	'reflect-responded' => 'Здраво $1, 
+
+$2 одговори на вашето резиме на излагањето.
+
+Вашето резиме гласеше: „$6“. 
+Одговорот гласи: „$5“.
+
+Ако сакате да го прочитате одговорот во контекст, одете на <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 одговори на вашата резимирана потточка со излагање',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -109,5 +188,31 @@ De reactie: "$5"
 
 U kunt via de volgende verwijzing de reactie in context bekijken: <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 heeft gereageerd op uw bondige samenvatting',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'reflect-desc' => 'Расширение обсуждений по веткам',
+	'reflect-bulleted' => 'Привет, $1.
+
+$2 кратко сформулировал вашу точку зрения в ветке «$3». 
+
+Получилось описание: «$5». 
+
+Вы можете проверить правильность формулировок $2, посетив <$4>.
+
+Вы сможете уточнить вашу точку зрения, если возникло недоразумение.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Ваша точка зрения была кратко сформулирована участником $2',
+	'reflect-responded' => 'Привет, $1.
+
+$2 отреагировал на вашу формулировку его точки зрения.
+
+Ваша формулировка: «$6». 
+Его замечание: «$5». 
+
+Если вы хотите увидеть ответ в контексте, зайдите на <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 ответил на вашу формулировку',
 );
 

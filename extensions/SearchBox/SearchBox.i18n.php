@@ -182,6 +182,7 @@ $messages['csb'] = array(
 	'searchbox-desc' => 'Zezwôlô na dodanié fòrmùlara szëkbë',
 	'searchbox-search' => 'Szëkba',
 	'searchbox-go' => 'Biéj',
+	'searchbox-namespaces' => 'Rumë mionów:',
 );
 
 /** Welsh (Cymraeg)

@@ -283,6 +283,13 @@ $messages['lb'] = array(
 	'addmediawizard-desc' => 'En Assistent fir Medien derbäisetzen, deen an engem Partenariat tëschent Kaltura a n der Wikimedia Foundatioun entwéckelt gouf',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'addmediawizard-desc' => 'Wizard media toevoege, ontwikkeld in samenwerking tusse Kaltura en de Wikimedia Foundation',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

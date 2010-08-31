@@ -112,6 +112,21 @@ $messages['nl'] = array(
 	'semanticformsinputs-wrongformat' => 'Onjuiste opmaak.',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'semanticformsinputs-wrongformat' => 'Feil format.',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'semanticformsinputs-desc' => "Sòrt d'input adissionaj për [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Forme Semàntiche]",
+	'semanticformsinputs-wrongformat' => 'Formà pa bon.',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

@@ -1636,6 +1636,7 @@ $messages['nl'] = array(
  * @author Frokor
  * @author Gunnernett
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['nn'] = array(
 	'specialuserstats' => 'Statistikk over bruk',
@@ -1646,7 +1647,7 @@ $messages['nn'] = array(
 	'usagestatisticsinterval' => 'Intervall:',
 	'usagestatisticsnamespace' => 'Namnerom:',
 	'usagestatisticsexcluderedirects' => 'Ta ikkje med omdirigeringar',
-	'usagestatisticstype' => 'Type',
+	'usagestatisticstype' => 'Type:',
 	'usagestatisticsstart' => 'Startdato:',
 	'usagestatisticsend' => 'Sluttdato:',
 	'usagestatisticssubmit' => 'Lag statistikk',
@@ -1681,7 +1682,7 @@ $messages['no'] = array(
 	'usagestatisticsexcluderedirects' => 'Ikke ta med omdirigeringer',
 	'usagestatistics-namespace' => 'Dette er statistikk for navnerommet [[Special:Allpages/$1|$2]].',
 	'usagestatistics-noredirects' => '[[Special:ListRedirects|Omdirigeringer]] har ikke blitt medregnet.',
-	'usagestatisticstype' => 'Type',
+	'usagestatisticstype' => 'Type:',
 	'usagestatisticsstart' => 'Startdato:',
 	'usagestatisticsend' => 'Sluttdato:',
 	'usagestatisticssubmit' => 'Generer statistikk',

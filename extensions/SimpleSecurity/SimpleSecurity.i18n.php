@@ -379,6 +379,14 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'security' => 'Jornal de sècuritât',
+	'security-logpage' => 'Jornal de sècuritât',
+	'security-info' => 'Y at $1 sur ceta pâge',
+	'security-info-toggle' => 'rèstriccions de sècuritât',
+	'security-inforestrict' => '$1 est limitâ a $2',
+	'security-desc-LS' => '(s’aplique perce que ceta pâge est dens lo « $1 $2 »)',
+	'security-desc-PR' => '(dèfeni dês l’ongllèta de « protèccion »)',
+	'security-manygroups' => 'tropes $1 et $2',
 	'security-type-category' => 'catègorie',
 	'security-type-namespace' => 'èspâço de noms',
 );

@@ -414,9 +414,10 @@ $messages['ms'] = array(
 
 /** Nahuatl (Nāhuatl)
  * @author Fluence
+ * @author Ricardo gs
  */
 $messages['nah'] = array(
-	'ajaxquerypages-desc' => 'Ticcēntilīz AJAX ic tiquimpōhuāz zāzanilli quemeh [[Special:Shortpages|{{int:shortpages}}]]',
+	'ajaxquerypages-desc' => 'Ticcēntilīz AJAX ic tiquimpōhuāz zāzanilli iuhqui [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
 /** Low German (Plattdüütsch)

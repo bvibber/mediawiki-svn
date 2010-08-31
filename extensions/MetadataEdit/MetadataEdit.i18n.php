@@ -235,9 +235,11 @@ $messages['cs'] = array(
 );
 
 /** Kashubian (Kaszëbsczi)
+ * @author Kaszeba
  * @author Warszk
  */
 $messages['csb'] = array(
+	'metadataedit-desc' => 'Wstôwiô kategòrëje, jãzëkòwé lënczi ë przëstãpné szablónë w apartnym tekstowim pòlu w czasu edicëji starnów',
 	'metadata_help' => 'Metadata:',
 );
 
@@ -689,6 +691,7 @@ $messages['lfn'] = array(
  * @author Ooswesthoesbes
  */
 $messages['li'] = array(
+	'metadataedit-desc' => "Plaats categorieë, taalverwiezinge en toegelaote sjablone in 'n apart venster tiedens 't bewirken van pagina's.",
 	'metadata_help' => 'Metadata:',
 );
 

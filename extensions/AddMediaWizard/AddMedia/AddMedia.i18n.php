@@ -5025,6 +5025,21 @@ $messages['no'] = array(
 	'fogg-contact-title' => 'Kontakt',
 	'fogg-contact-help' => 'Kontaktlenke',
 	'mwe-select_file' => 'Velg fil',
+	'rsd_results_next' => 'neste',
+	'rsd_results_prev' => 'forrige',
+	'mwe-ftype-svg' => 'SVG-vektorfil',
+	'mwe-ftype-jpg' => 'JPEG-bildefil',
+	'mwe-ftype-png' => 'PNG-bildefil',
+	'mwe-ftype-oga' => 'Ogg-lydfil',
+	'mwe-ftype-ogg' => 'Ogg-videofil',
+	'mwe-ftype-unk' => 'Ukjent filformat',
+	'fogg-select_file' => 'Velg fil',
+	'fogg-select_new_file' => 'Velg ny fil',
+	'fogg-select_url' => 'Velg URL',
+	'fogg-please-install' => '$1. Mer $2',
+	'fogg-please-install-install-linktext' => 'Installer Firefogg',
+	'fogg-please-install-about-linktext' => 'om Firefogg',
+	'fogg-latest-firefox' => 'siste Firefox',
 );
 
 /** Occitan (Occitan)

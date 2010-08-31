@@ -459,10 +459,15 @@ $messages['fr'] = array(
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
 	'slippymap_error' => 'Èrror $1 : $2',
 	'slippymap_errors' => 'Èrrors $1 :',
+	'slippymap_code' => 'Code vouiqui por la visualisacion de cela mapa :',
+	'slippymap_button_code' => 'Avêr lo code vouiqui',
+	'slippymap_resetview' => 'Tornar inicialisar la visualisacion',
+	'slippymap_clicktoactivate' => 'Clicâd por activar la mapa',
 );
 
 /** Galician (Galego)

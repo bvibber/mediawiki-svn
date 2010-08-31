@@ -198,6 +198,13 @@ $messages['lb'] = array(
 	'wlfeed-desc' => 'Verbessert Klasse vu Generatioun vu Feed',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wlfeed-desc' => "Klasse veur 't aanmake van verbaeterde feeds",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -192,6 +192,13 @@ $messages['lb'] = array(
 	'apisvgproxy-desc' => 'Liwwert SVG-Fichiere vun engem (méiglecherweis net lokalem) Depot vum Fichieren an de lokalen Domain',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'apisvgproxy-desc' => "Guf SVG-bestenj door vanaaf 'n (meugelijk elders bestaonde) bestandjsrepository nao 't lokaal domein",
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */
@@ -214,10 +221,11 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Ooswesthoesbes
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'apisvgproxy-desc' => 'Geeft SVG-bestanden door vanaf een (mogelijke elders bestaande) bestandsrepository naar het lokale domein',
+	'apisvgproxy-desc' => 'Geeft SVG-bestanden door vanaf een (mogelijk elders bestaande) bestandsrepository naar het lokale domein',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

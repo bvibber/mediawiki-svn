@@ -567,6 +567,7 @@ $messages['nah'] = array(
 	'whatismyip' => 'Catlehhuatl noIP',
 	'whatismyip-desc' => 'Tiquittāz inīn tlatequitiltilīlli āxcān īIP īpan [[Special:WhatIsMyIP|tlapōhualli IP]]',
 	'whatismyip-out' => 'Motlāpohual IP:',
+	'right-whatismyip' => 'Tiquittāz [[Special:WhatIsMyIP|nonehhuiyān noIP tlapōhualli]]',
 );
 
 /** Dutch (Nederlands)

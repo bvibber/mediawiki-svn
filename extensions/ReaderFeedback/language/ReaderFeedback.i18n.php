@@ -1118,9 +1118,11 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Ex13
+ * @author Roberta F.
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'readerfeedback' => 'Što mislite o ovoj stranici?',
 	'readerfeedback-reliability' => 'Pouzdanost',
 	'readerfeedback-completeness' => 'Potpunost',
 	'readerfeedback-npov' => 'Neutralnost',

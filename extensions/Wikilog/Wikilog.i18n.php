@@ -4317,6 +4317,35 @@ $messages['lg'] = array(
 	'wikilog-preview' => 'Lingiza',
 );
 
+/** Limburgish (Limburgs)
+ * @author Ooswesthoesbes
+ */
+$messages['li'] = array(
+	'wikilog-desc' => "Voeg blogmeugelikhede toe om 'ne wikiblog te make",
+	'wikilog-auto' => 'Wikilog Automatisch',
+	'wikilog-help' => '{{ns:help}}:Wikilog',
+	'right-wl-postcomment' => 'Plaats reacties op wikilog-artikele',
+	'right-wl-moderation' => 'Modereer wikilogartikelreacties',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-pagename' => 'Wikiloghanjelingslogbook',
+	'wikilog-log-pagetext' => "Hieronger trefs se 'n lies van Wikilog-hanjelinge aan.",
+	'wikilog-log-cmt-approve' => 'haet reactie [[$1]] goodgekeurd',
+	'wikilog-log-cmt-reject' => 'haet reactie [[$1]] aafgekeurd',
+	'wikilog-log-cmt-rejdel' => "Haet 'n wikilogreactie van [[Special:Contributions/$1|$1]] aafgekeurd",
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Wikilog-hanjelinge',
+	'wikilog-new-item' => 'Maak nuuj wikilogartikel aan',
+	'wikilog-new-item-go' => 'Maak aan',
+	'wikilog-item-name' => 'Artikelnaam:',
+	'wikilog-published' => 'Gepubliceerd',
+	'wikilog-updated' => 'Biegewèrk',
+	'wikilog-draft' => 'Werkversie',
+	'wikilog-authors' => 'sjrievers',
+	'wikilog-error-msg' => 'Wikilog: $1',
+	'wikilog-error-title' => 'Foutmeljing Wikilog',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */

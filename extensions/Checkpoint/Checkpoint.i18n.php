@@ -218,6 +218,16 @@ $messages['ko'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:중간 저장]])',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'checkpoint' => 'Avspeichere un wigger draan schrieve',
+	'checkpoint-desc' => 'Määt es müjjelisch, en Sigg avzespeichere un dann jlisch wigger draan ze schrieve',
+	'checkpoint-tooltip' => 'Donn de Sigg avspeichere un dann jlisch wigger draan schrieve',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zweschespeichere]])',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

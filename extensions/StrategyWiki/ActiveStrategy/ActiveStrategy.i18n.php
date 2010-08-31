@@ -181,6 +181,9 @@ $messages['he'] = array(
  * @author SpeedyGonsales
  */
 $messages['hr'] = array(
+	'activestrategy' => 'Aktivna strategija',
+	'active-strategy-desc' => 'Prikazuje broj uređivanja stranica za strateško planiranje',
+	'active-strategy-intro' => 'Broj uređivanja na stranicama projekta u {{PLURAL:$1|zadnjih $1 dana|zadnja $1 dana|zadnjih $1 dana}}.',
 	'nedits' => '$1 {{PLURAL:$1|uređivanje|uređivanja|uređivanja}}',
 );
 
