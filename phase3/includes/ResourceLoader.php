@@ -115,7 +115,7 @@ class ResourceLoader {
 	/**
 	 * Gets registration code for all modules, except pre-registered ones listed in self::$preRegisteredModules
 	 * 
-	 * @return {string} JavaScript code for registereing all modules with client loader
+	 * @return {string} JavaScript code for registering all modules with the client loader
 	 */
 	public static function getModuleRegistrations() {
 		$scripts = '';
@@ -130,11 +130,11 @@ class ResourceLoader {
 				else {
 					// Modules without dependencies pass one argument (name) to mediaWiki.loader.register()
 					if ( !count( $module->getDependencies() ) ) {
-						$registrations[] = $name;
+						$registrations[] = array( $name, $module->getModifiedTime() );
 					}
 					// Modules with dependencies pass two arguments (name, dependencies) to mediaWiki.loader.register()
 					else {
-						$registrations[] = array( $name, $module->getDependencies() );
+						$registrations[] = array( $name, $module->getModifiedTime(), $module->getDependencies() );
 					}
 				}
 			}
