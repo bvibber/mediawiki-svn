@@ -119,6 +119,9 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	private $loaders = array();
 	private $parameters = array();
 	
+	// In-object cache for file dependencies
+	private $fileDeps = null;
+	
 	/* Public methods */
 	
 	/**
@@ -304,7 +307,29 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	}
 	
 	public function getStyle( $skin ) {
-		return $this->getPrimaryStyle() . "\n" . $this->getSkinStyle( $skin );
+		$style = $this->getPrimaryStyle() . "\n" . $this->getSkinStyle( $skin );
+		
+		// Extract and store the list of referenced files
+		$files = CSSMin::getLocalFileReferences( $style );
+		
+		// Only store if modified
+		if ( $files !== $this->getFileDependencies( $skin ) ) {
+			$encFiles = FormatJson::encode( $files );
+			$dbw = wfGetDb( DB_MASTER );
+			$dbw->replace( 'module_deps',
+				array( array( 'md_module', 'md_skin' ) ), array(
+					'md_module' => $this->getName(),
+					'md_skin' => $skin,
+					'md_deps' => $encFiles,
+				)
+			);
+			
+			// Save into memcached
+			global $wgMemc;
+			$key = wfMemcKey( 'resourceloader', 'module_deps', $this->getName(), $skin );
+			$wgMemc->set( $key, $encFiles );
+		}
+		return $style;
 	}
 	
 	public function getMessages() {
@@ -341,7 +366,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			(array)self::getSkinFiles( $skin, $this->skinScripts ),
 			(array)self::getSkinFiles( $skin, $this->skinStyles ),
 			$this->loaders,
-			$this->getFileDependencies( $lang, $skin )
+			$this->getFileDependencies( $skin )
 		);
 		return max( array_map( 'filemtime', $files ) );
 	}
@@ -426,13 +451,30 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @return array of files
 	 */
 	protected function getFileDependencies( $skin ) {
-		$dbr = wfGetDb( DB_SLAVE );
-		$deps = $dbr->selectField( 'module_deps', 'md_deps', array(
-				'md_module' => $this->getName(),
-				'md_skin' => $skin,
-			), __METHOD__
-		);
-		return $deps ? FormatJson::decode( $deps ) : array();
+		// Try in-object cache first
+		if ( !is_null( $this->fileDeps ) ) {
+			return $this->fileDeps;
+		}
+		
+		// Now try memcached
+		global $wgMemc;
+		$key = wfMemcKey( 'resourceloader', 'module_deps', $this->getName(), $skin );
+		$deps = $wgMemc->get( $key );
+		
+		if ( !$deps ) {
+			$dbr = wfGetDb( DB_SLAVE );
+			$deps = $dbr->selectField( 'module_deps', 'md_deps', array(
+					'md_module' => $this->getName(),
+					'md_skin' => $skin,
+				), __METHOD__
+			);
+			if ( !$deps ) {
+				$deps = '[]'; // Empty array so we can do negative caching
+			}
+			$wgMemc->set( $key, $deps );
+		}
+		$this->fileDeps = FormatJson::decode( $deps, true );
+		return $this->fileDeps;
 	}
 	
 	/**

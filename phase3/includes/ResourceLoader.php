@@ -84,7 +84,7 @@ class ResourceLoader {
 	protected static function filter( $filter, $data ) {
 		// FIXME: $file is not used by any callers as path rewriting is currently kinda broken
 		global $wgMemc;
-		$key = wfMemcKey( 'resourceloader', $filter, md5( $data ) );
+		$key = wfMemcKey( 'resourceloader', 'filter', $filter, md5( $data ) );
 		$cached = $wgMemc->get( $key );
 		if ( $cached !== false && $cached !== null ) {
 			return $cached;
