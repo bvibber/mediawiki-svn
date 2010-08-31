@@ -495,16 +495,15 @@ mw.EmbedPlayerNative = {
 	* Handle the native paused event
 	*/ 
 	onPaused: function(){
-		mw.log("native:paused:trigger");
-		this.pause();
-		$j( this ).trigger( 'pause' );
+		mw.log("native:paused");
+		this.pause();		
 	},
 	
 	/**
 	* Handle the native play event 
 	*/
 	onPlay: function(){
-		mw.log("native::play::trigger");
+		mw.log("native::play");
 		if( !this.isPlaying () ){
 			this.play();
 		}

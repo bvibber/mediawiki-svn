@@ -197,11 +197,10 @@
 				'titles' : _this.titleKey,
 				'rvprop' : 'user|comment|timestamp'
 			};			
-			mw.getJSON( _this.getApiUrl(), request, function( data ) {
-				debugger;
-				if( data.query && data.pages ){
-					for( page_id in data.pages ){
-						var page = data.pages[page_id];
+			mw.getJSON( _this.getApiUrl(), request, function( data ) {				
+				if( data.query && data.query.pages ){
+					for( page_id in data.query.pages ){
+						var page = data.query.pages[page_id];
 						if( page.revisions && page.revisions[0] && page.revisions[0].comment ){
 							callback( page.revisions[0].comment ); 
 							return; 

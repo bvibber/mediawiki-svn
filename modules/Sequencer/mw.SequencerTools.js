@@ -35,7 +35,7 @@ mw.SequencerTools.prototype = {
 		'panzoom' : {
 			'editWidgets' : ['panzoom'],
 			'editableAttributes' : [ 'panZoom' ],
-			'contentTypes': ['video', 'img'],
+			'contentTypes': [ 'img'], // xxx todo add video support
 			'animate' : 'true'
 		},
 		'transitions' : {
@@ -153,6 +153,12 @@ mw.SequencerTools.prototype = {
 			'onChange': function( _this, target, smilClip ){
 				var panZoomVal = $j('#' +_this.getEditToolInputId( 'panzoom', 'panZoom')).val();
 				mw.log("panzoom change:" + panZoomVal );
+				// Update on the current smil clip display:
+				_this.sequencer.getSmil()
+				.getLayout()
+				.panZoomLayout(
+					smilClip
+				);
 			},
 			'draw': function( _this, target, smilClip ){				
 				var orginalHelperCss = {
@@ -223,19 +229,27 @@ mw.SequencerTools.prototype = {
 				var updatePanZoomFromUiValue = function( layout ){							
 					var pz = startPanZoomVal.split(',');
 					// Set the new percent offset to x/2 
-					if( layout.left )
-						pz[0] = ( parseInt( pz[0] ) + ( layout.left / 2 ) ) + '%';
+					if( layout.left ){
+						pz[0] = ( parseInt( pz[0] ) - ( layout.left ) ) + '%';
+					}
 					
-					if( layout.top )
-						pz[1] = ( parseInt( pz[1] ) + ( layout.top / 2  ) )+ '%';
+					if( layout.top ){
+						pz[1] = ( parseInt( pz[1] ) - ( layout.top ) )+ '%';
+					}
 					
-					if( layout.width )
-						pz[2] = ( parseInt( pz[2] ) + ( layout.width / 2 ) ) + '%' 
+					if( layout.width ) {						
+						pz[2] = ( parseInt( pz[2] ) - ( layout.width / 2) ) + '%' 
 					
-					if( layout.height )
-						pz[2] = ( parseInt( pz[2] ) + ( layout.width / 2 ) ) + '%'
-						
-					var smilPanZoomValue = pz.join(', ');
+						// right now only keep aspect is supported do size hack::
+						pz[3] = parseInt( pz[2] )  * _this.sequencer.getSmil().getLayout().getTargetAspectRatio();
+						// only have 2 significant digits
+						pz[3] = ( Math.round( pz[3]* 100 ) / 100 ) + '%';						
+					}
+					// Trim all the values
+					for(var i=0; i < pz.length; i++){
+						pz[i] = $j.trim( pz[i] );
+					}
+					var smilPanZoomValue = pz.join(', ');					
 					
 					// Update the smil DOM: 
 					$j( smilClip ).attr( 'panZoom', smilPanZoomValue );
@@ -461,7 +475,8 @@ mw.SequencerTools.prototype = {
 		$toolsContainer = $j('<div />')
 		.addClass( 'editToolsContainer' )
 		.css( {
-			'height': '80%'			
+			'height': '80%',
+			'overflow': 'auto'
 		})
 		.append( 
 			$j('<ul />') 
@@ -499,7 +514,7 @@ mw.SequencerTools.prototype = {
 			// Append the tooltab container
 			$toolsContainer.append(
 				$j('<div />')
-				.css({'height' : '100%', 'overflow': 'auto'})
+				.css({'height' : '100%' })
 				.attr('id', 'tooltab_' + toolId )		
 				.append(
 					$j('<h3 />').text( gM('mwe-sequencer-tools-' + toolId + '-desc') )

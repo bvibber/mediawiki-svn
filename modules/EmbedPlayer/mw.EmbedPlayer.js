@@ -2049,7 +2049,7 @@ mw.EmbedPlayer.prototype = {
 				'runBaseControlDone' : true
 			}				
 			
-			// run the ended trigger ( allow the ended object to prevent default actions ) 				
+			// Run the ended trigger ( allow the ended object to prevent default actions ) 				
 			$j( this ).trigger( 'ended', onDoneActionObject );
 			
 			if( onDoneActionObject.runBaseControlDone ){
@@ -2750,11 +2750,13 @@ mw.EmbedPlayer.prototype = {
 	*	There is no general way to pause the video
 	*  must be overwritten by embed object to support this functionality.
 	*/
-	pause: function() {
-		var _this = this;		
-		// mw.log('mwEmbed:do pause');		
-		// (playing) do pause		
-		this.paused = true;
+	pause: function( event ) {
+		var _this = this;	
+		if( this.paused === false ){
+			this.paused = true;
+			$j( this ).trigger('pause');
+		}
+		mw.log('mwEmbed:embedPlayer::pause() ');	
 				
 		// update the ctrl "paused state"				
 		this.$interface.find('.play-btn span' )
@@ -2767,7 +2769,7 @@ mw.EmbedPlayer.prototype = {
 		.click( function() {
 			_this.play();
 		} )
-		.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) );
+		.attr( 'title', gM( 'mwe-embedplayer-play_clip' ) );				
 	},
 	
 	/**

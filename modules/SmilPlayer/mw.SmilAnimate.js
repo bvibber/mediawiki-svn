@@ -380,6 +380,7 @@ mw.SmilAnimate.prototype = {
 	* http://www.w3.org/TR/SMIL/smil-extended-media-object.html#q32
 	*/
 	transformPanZoom: function( smilImgElement, animateElement, animateTime ){
+		var _this = this;
 		var begin = this.smil.parseTime(  $j( animateElement ).attr( 'begin') );
 		var duration = this.smil.parseTime(  $j( animateElement ).attr( 'dur') );
 		
@@ -397,32 +398,32 @@ mw.SmilAnimate.prototype = {
 		// Let Top Width Height
 		// translate values into % values
 		// NOTE this is dependent on the media being "loaded" and having natural width and height
-
-		var percentValues = this.getPercentFromPanZoomValues( targetValue, 
-			this.smil.getLayout().getNaturalSize( smilImgElement )
-		);
-		
-		// Now we have "hard" layout info try and render it. 
-		this.updateElementLayout( smilImgElement, percentValues );						
+		this.smil.getLayout().getNaturalSize(smilImgElement, function( naturalSize ){
+			var percentValues = _this.getPercentFromPanZoomValues( targetValue, naturalSize );		
+			// Now we have "hard" layout info try and render it. 
+			_this.updateElementLayout( smilImgElement, percentValues );						
+		});
 	},	
 	// transforms pan zoom target value into layout percentages  
 	getPercentFromPanZoomValues: function(targetValue, naturalSize){
-		var namedValueOrder = ['left', 'top', 'width', 'height' ];
+		var namedValueOrder = [ 'left', 'top', 'width', 'height' ];
 		var percentValues = {};
 		for( var i =0 ;i < targetValue.length ; i++ ){
 			if( targetValue[i].indexOf('%') == -1 ) {
 				switch( namedValueOrder[i] ){
 					case 'left':
 					case 'width':
-						percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] ) / naturalSize.width;
+						percentValues[ namedValueOrder[i] ] = 
+							( parseFloat( targetValue[i] ) 	/ naturalSize.width ) * 100
 					break;
 					case 'height':
 					case 'top':
-						percentValues[ namedValueOrder[i] ] =  parseFloat( targetValue[i] ) / naturalSize.height 
+						percentValues[ namedValueOrder[i] ] =  
+							( parseFloat( targetValue[i] ) / naturalSize.height ) * 100 
 					break;
 				}				
 			} else {
-				percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] ) / 100;
+				percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] );
 			} 
 		}
 		return percentValues;
@@ -430,38 +431,22 @@ mw.SmilAnimate.prototype = {
 	
 	// xxx need to refactor move to "smilLayout"
 	updateElementLayout: function( smilElement, percentValues ){
-		
-		//mw.log("updateElementLayout::" + percentValues.top + ' ' + percentValues.left + ' ' + percentValues.width + ' ' + percentValues.height );
+		var _this = this;
+		mw.log("updateElementLayout::" + ' ' + percentValues.left + ' ' + percentValues.top + ' ' + percentValues.width + ' ' + percentValues.height );
 		
 		// get a pointer to the html target:
-		var $target = $j( '#' + this.smil.getPageDomId( smilElement ));
-		
-		var htmlAsset = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
-		
-		// xxx best way may be to use canvas and a fitting system. 
-		
-		// Setup target height width based target region size	
-		var fullWidth = $target.parents('.smilRegion').width() ;
-		var fullHeight =  $target.parents('.smilRegion').height() ;
-		var targetWidth = fullWidth;
-		var targetHeight = targetWidth * ( 
-			( parseInt( percentValues['height'] ) * htmlAsset.naturalHeight )				
-			/ 
-			( parseInt( percentValues['width'] ) * htmlAsset.naturalWidth ) 
-		)		
-		// Check if it exceeds the height constraint: 	
-		var sourceScale = ( targetHeight <  fullHeight ) 
-			? (1 / parseInt( percentValues['width'] ) )
-			: (1 / parseInt( percentValues['height'] )  )
-		
-		
-		// Wrap the target and absolute the image layout ( if not already ) 
-		if( $target.parent('.refTransformWrap').length === 0 ){
+		var $target = $j( '#' + this.smil.getPageDomId( smilElement ));	
+		var htmlElement = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+
+		// Wrap the target with its natura size ( if not already ) 
+		if( $target.parent('.refTransformWrap').length == 0 ){
 			$target		
 			.wrap( 
 				$j( '<div />' )
 				.css( {
-					'position' : 'relative',
+					'top' : '0px',
+					'left' : '0px',
+					'position' : 'absolute',
 					'overflow' : 'hidden',
 					'width'	: '100%',
 					'height' : '100%'
@@ -469,14 +454,17 @@ mw.SmilAnimate.prototype = {
 				.addClass('refTransformWrap') 
 			)
 		}	
-		// Run the css transform
-		$target.css( { 
-			'position' : 'absolute', 
-			'width' : sourceScale *100 + '%',
-			'height' : sourceScale *100 + '%',
-			'top' : (-1 * parseInt( percentValues['top'] ) )*100 + '%',
-			'left' : (-1 * parseInt( percentValues['left'] ) )*100 + '%',
-		} );
+		
+		_this.smil.getLayout().getNaturalSize( htmlElement, function( natrualSize ){
+			// XXX note we have locked aspect so we can use 'width' here:
+			var sizeCss = _this.smil.getLayout().getDominateAspectTransform( natrualSize,  null, percentValues.width );			
+			// Run the css transform
+			$target.css( { 
+				'position' : 'absolute', 
+				'left' : percentValues.left,
+				'top' : percentValues.top			
+			}).css( sizeCss );
+		});
 	},
 	
 	/**

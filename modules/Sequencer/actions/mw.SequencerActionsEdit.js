@@ -26,6 +26,7 @@ mw.SequencerActionsEdit.prototype = {
 	getNumberOfUndos: function(){
 		return mw.getConfig( 'Sequencer.NumberOfUndos' );
 	},
+	
 	selectAll: function(){
 		// Select all the items in the timeline
 		$target = this.sequencer.getTimeline().getTimelineContainer();
@@ -92,9 +93,11 @@ mw.SequencerActionsEdit.prototype = {
 			// index out of range set to 0
 			this.editIndex = 0;
 			mw.log("Error: SequenceActionsEdit:: undo Already at oldest index:" + this.editIndex);
+			// make sure to disable the menu item: 
+			this.sequencer.getMenu().disableMenuItem( 'edit', 'undo' );
 		}		
 		// if at oldest undo disable undo option 
-		if( ( this.editIndex - 1 )  < 0 ){
+		if( ( this.editIndex - 1 )  <= 0 ){
 			this.sequencer.getMenu().disableMenuItem( 'edit', 'undo' );
 		}
 	},	

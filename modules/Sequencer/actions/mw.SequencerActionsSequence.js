@@ -225,7 +225,7 @@ mw.SequencerActionsSequence.prototype = {
 		};		            
 		
 		$dialog.empty().append(
-			gM('mwe-sequencer-save-summary' ),
+			gM('mwe-sequencer-save-summary' ),			
 			$j('<input />')								
 			.css({ 'width': 400 })			
 			.attr({					
@@ -286,12 +286,13 @@ mw.SequencerActionsSequence.prototype = {
 				$dialog.dialog( 'option', 'buttons', buttons);
 			}
 		});
-		
-		
-		
 	},
 	doPublish: function( $dialog ){		
 		var _this = this;
+		// disable drag and resize
+		$dialog.dialog("option", "draggable", false )
+		$dialog.dialog( "option", "resizable", false );
+		
 		// Get a Firefogg object to check if firefogg is installed
 		var myFogg = new mw.Firefogg( {
 			'only_fogg':true
@@ -326,7 +327,12 @@ mw.SequencerActionsSequence.prototype = {
 			$j('<span />').attr('id', 'firefoggPercentDone')
 			.css('float', 'right')
 			.text("%"),
-			$j('<div />').attr( 'id', 'firefoggProgressbar')
+			$j('<div />')
+			.attr( 'id', 'firefoggProgressbar')
+			.css({
+				'width': '100%',
+				'height' : '20px' 
+			})
 
 		);		
 		// Embed the player and continue application flow			
@@ -345,10 +351,11 @@ mw.SequencerActionsSequence.prototype = {
 							progressPrecent + 
 						'%'
 					)
-					mw.log( "set progrees to: " + Math.round( progress * 100 ) );
 					$j("#firefoggProgressbar").progressbar({
 						"value" : Math.round( progress * 100 )
 					});
+					// xxx WTF? no idea why progressbar above is not working 
+					$j("#firefoggProgressbar .ui-progressbar-value").css('width', Math.round( progress * 10000 ) / 100 + '%');
 				},
 				'doneRenderCallback': function( fogg ){
 					_this.uploadRenderedVideo( $dialog, fogg );

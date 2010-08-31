@@ -134,17 +134,22 @@ function doPageSpecificRewrite() {
 				var body = document.getElementById( 'bodyContent' );
 				body.innerHTML = "<div class=\"loadingSpinner sequenceLoader\"></div>" + body.innerHTML;				
 			}
-			loadMwEmbed( [ 'mw.MediaWikiRemoteSequencer' ], function(){
-				$j('#editform,.mw-newarticletext').hide();
-				$j('.sequenceLoader').hide();
-				
-				var remote = new mw.MediaWikiRemoteSequencer({
-					'action': wgAction,
-					'title' : wgTitle,
-					'target' : '#bodyContent'
-				});
-				remote.drawUI();
-			} );
+			if( window.mwSequencerRemote  ){
+				window.mwSequencerRemote.drawUI();
+			} else {
+				loadMwEmbed( [ 'mw.MediaWikiRemoteSequencer', 'mw.style.SequencerRemote' ], function(){
+					$j('#editform,.mw-newarticletext').hide();
+					$j('.sequenceLoader').hide();
+					
+					window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
+						'action': wgAction,
+						'title' : wgTitle,
+						'target' : '#bodyContent'
+					});
+					window.mwSequencerRemote.drawUI();
+				} );
+			}
+			
 		}
 		return ;
 	}
@@ -175,9 +180,9 @@ function doPageSpecificRewrite() {
 	// Special api proxy page
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;		
-		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
+		loadMwEmbed( [ 'mw.ApiProxy' ], function(){
 			mw.load( mwEmbedHostPath + '/modules/ApiProxy/ApiProxyPage.js?' + mwGetReqArgs() );
-		} );
+		});
 		return ;
 	}
 	
@@ -338,8 +343,8 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Check if file is from commons and therefore should explicitly set apiProvider to commons: 
 		var apiProviderAttr = ( src.indexOf( 'wikipedia\/commons' ) != -1 )?'apiProvider="commons" ': '';		
 		
-		// If in a gallery box we will be displaying the video larger in a lightbox
-		if( $j( '#' + vidId ).parents( '.gallerybox' ).length ){
+		// If in a gallery box or filehistory we will be displaying the video larger in a lightbox
+		if( $j( '#' + vidId ).parents( '.gallerybox,.filehistory' ).length ){
 			// Update the width to 400 and keep scale
 			pwidth = 400;
 			if( pheight != 0 ) {
@@ -372,7 +377,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			}
 					
 			// If the video is part of a "gallery box" use light-box linker instead
-			if( $j( '#' + vidId ).parents( '.gallerybox' ).length ){				
+			if( $j( '#' + vidId ).parents( '.gallerybox,.filehistory' ).length ){				
 				$j( '#' + vidId ).after(
 					 $j( '<div />')
 					.css( { 
@@ -392,7 +397,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 						
 						// A play button:
 						$j( '<div />' )
-						.css( {
+						.css({
 							'position' : 'absolute',
 							'top' : ( parseInt( $pimg.attr( 'height' ) ) /2 ) -25,
 							'maring-left' : 'auto',

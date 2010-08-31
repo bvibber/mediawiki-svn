@@ -35,6 +35,10 @@ mw.SmilLayout.prototype = {
 		}
 	},
 	
+	getTargetAspectRatio:function(){
+		return this.smil.embedPlayer.getHeight() / this.smil.embedPlayer.getWidth();
+	},
+	
 	/*
 	 * Get layout
 	 */
@@ -82,7 +86,7 @@ mw.SmilLayout.prototype = {
 	drawElement: function( smilElement ) {
 		var _this = this;		
 		// Check for quick "show" path:
-		var $targetElement = this.$rootLayout.find( '#' + this.smil.getPageDomId( smilElement ) ) 
+		var $targetElement = $j( '#' + this.smil.getPageDomId( smilElement ) );
 		if( $targetElement.length ){
 			$targetElement.show();
 			return ;
@@ -98,22 +102,13 @@ mw.SmilLayout.prototype = {
 		if( !$regionTarget ){
 			return ;
 		}
-		
-		// Check that the element is already in the dom
-		var $targetElement =  $regionTarget.find( '#' + this.smil.getPageDomId( smilElement ) );
-		if( $targetElement.length == 0 ){
-			mw.log(" drawElement:: " + this.smil.getPageDomId( smilElement ) );				
-			// Append the Smil to the target region
-			$regionTarget.append( 
-				_this.getSmilElementHtml( smilElement )
-			)
-		} else {
-			// Make sure the element is visible ( may be faster to just call
-			// show directly)
-			if( $targetElement.is(':hidden') ) {
-				$targetElement.show();
-			}
-		}
+							
+		// Append the Smil element to the target region
+		_this.addSmilElementHtml($regionTarget, smilElement )			
+		mw.log( "addSmilElementHtml Added " + 
+				this.smil.getPageDomId( smilElement ) +
+				' to target: ' + 
+				$j( '#' + this.smil.getPageDomId( smilElement ) ).length );
 	},
 	
 	drawElementThumb: function( $target, $node, relativeTime, callback){
@@ -274,44 +269,48 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 * Get the transformed smil element in html format
+	 * Add the transformed smil element to the $regionTarget
 	 * 
 	 * @param
 	 */
-	getSmilElementHtml: function( smilElement ) {	
-		var smilType = this.smil.getRefType( smilElement )
-
+	addSmilElementHtml: function( $regionTarget, smilElement ) {
+		var _this = this;
+		var smilType = this.smil.getRefType( smilElement )		
 		switch( smilType ){
 			// Not part of strict smil, but saves time being able have an "html"
 			// display mode
 			case 'cdata_html': 
-				return this.getSmilCDATAHtml( smilElement );
+				$regionTarget.append( this.getSmilCDATAHtml( smilElement ) );
+				return ;
 			break;
 			case 'video': 
-				return this.getSmilVideoHtml( smilElement );
+				$regionTarget.append( this.getSmilVideoHtml( smilElement ) );
+				return ;
 			break;
 			case 'img': 
-				return this.getSmilImgHtml( smilElement );
+				$regionTarget.append( this.getSmilImgHtml( smilElement ) );
+				// Update the asset layout ( only img supports layout atm )
+				_this.doSmilElementLayout( smilElement );
+				return ;
 			break;
 			case 'audio':
-				return this.getSmilAudioHtml( smilElement );
+				$regionTarget.append( this.getSmilAudioHtml( smilElement ) );
+				return ;
 			break;
-			// Smil Text: http://www.w3.org/TR/SMIL/smil-text.html ( obviously
-			// we support a subset )
+			// Smil Text: http://www.w3.org/TR/SMIL/smil-text.html 
+			// We support a subset
 			case 'smiltext':
-				return this.getSmilTextHtml( smilElement );
+				$regionTarget.append( this.getSmilTextHtml( smilElement ) ) ;
+				return ;
 			break;					
 		}
+		
 		mw.log( "Error: Could not find smil layout transform for element type: " +
-				smilType + ' of type ' + $j( smilElement ).attr( 'type' ) );
-				
-		return $j('<span />')
-				.attr( 'id' , this.smil.getPageDomId( smilElement ) )
-				.css( {
-					'position' : 'absolute',
-					'zindex' : 9999 // xxx need to clean up z-index system
-				})
-				.text( 'Error: unknown type:' + smilType );
+				smilType + ' of type ' + $j( smilElement ).attr( 'type' ) );				
+		$regionTarget.append( $j('<span />')
+				.attr( 'id' , this.smil.getPageDomId( smilElement ) )				
+				.text( 'Error: unknown type:' + smilType )
+		)
 	},		
 	
 	/**
@@ -466,18 +465,26 @@ mw.SmilLayout.prototype = {
 		.attr( {
 			'id' : this.smil.getPageDomId( smilImg ), 
 			'src' : this.smil.getAssetUrl( $j( smilImg ).attr( 'src' ) )
-		} );
-		
-		_this.getNaturalSize( $image.get(0), function( naturalSize) {
-			_this.doAssetLayout( smilImg , naturalSize);			
-		})
+		} )
+		// default width 100%
+		.css('width', '100%')
+			
 		return $image;	
+	},
+	doSmilElementLayout: function( smilElement ){
+		var _this = this;
+		
+		var img = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+		_this.getNaturalSize( img, function( naturalSize) {
+			_this.doAssetLayout( smilElement , naturalSize);			
+		});
 	},
 	// xxx should really use a callback instead of failing if the media is not
 	// loaded
 	getNaturalSize: function( img , callback){
 		// note this just works for images atm		
 		if( !img ){
+			mw.log("Error getNaturalSize for null image ");
 			callback( false );
 		}
 		if( img.naturalWidth ){
@@ -498,7 +505,7 @@ mw.SmilLayout.prototype = {
 	 * Layout an asset
 	 */
 	doAssetLayout: function( smilElement, naturalSize  ){
-
+		var _this = this;
 		// We default smil layout to meetBest
 		var fitMode = $j( smilElement).attr('fit');
 		if( !fitMode ){
@@ -518,7 +525,7 @@ mw.SmilLayout.prototype = {
 			mw.log("Layout mode: " + fitMode + ' not yet supported');
 		}
 		
-		// Check for panZoom attribute
+		// Check for panZoom attribute ( if animation is set it will override this value ) 
 		if( $j( smilElement).attr('panZoom') ){
 			_this.panZoomLayout( smilElement );
 		}
@@ -530,28 +537,48 @@ mw.SmilLayout.prototype = {
 		var _this = this;
 		
 		// xxx Should read smil "imgElement" fill type
-		var imageCss = {};		
-		
-		// Fit the image per the provided targetWidth closure
-		if( natrualSize.width > targetSize.width ){			
-			imageCss.width = '100%';
-			imageCss.height = ( 100 *	( natrualSize.height  /  natrualSize.width ) ) + '%';
-		}
-		
-		// Fit vertically
-		if(! imageCss.height || imageCss.height > targetSize.height ){
-			imageCss.height =  '100%';
-			imageCss.width = ( 100 * (  natrualSize.width / natrualSize.height ) ) + '%';
-		}
+		var imageCss = _this.getDominateAspectTransform( natrualSize,  targetSize, 100 );
+			
 		// update the layout of the element
 		$j( element ).css( imageCss );		
 	},
+	
+	getDominateAspectTransform: function(natrualSize, targetSize, transformPercent ){
+		var _this = this;
+		var transformCss = {}
+		if( ! targetSize ){
+			targetSize = {
+				'width' : this.smil.embedPlayer.getWidth(),
+				'height' : this.smil.embedPlayer.getHeight()
+			};
+		}
+		// Fit the image per the provided targetWidth closure
+		if( natrualSize.width / natrualSize.height > targetSize.width / targetSize.height ){			
+			transformCss.width = transformPercent + '%';
+			transformCss.height = ( transformPercent * ( 
+					( natrualSize.height  /  natrualSize.width ) /
+						_this.getTargetAspectRatio()
+					) 
+				) + '%';
+		}
+		
+		// Fit vertically
+		if(! transformCss.height || natrualSize.width / natrualSize.height < targetSize.width / targetSize.height  ){
+			transformCss.height =  transformPercent + '%';
+			transformCss.width = ( transformPercent * 
+					(  natrualSize.width / natrualSize.height ) / 
+					_this.getTargetAspectRatio() 
+				) + '%';
+		}
+		return transformCss;
+	},
+	
 	/**
 	 * layout function
 	 */
 	panZoomLayout: function( smilElement ){
-		var _this = this;
-		var panZoom = this.parsePanZoom( $j( smilElement).attr('panZoom') );
+		var _this = this;		
+		var panZoom = $j( smilElement).attr('panZoom').split(',');
 		var img = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
 		
 		_this.getNaturalSize( img, function( natrualSize ){
@@ -567,11 +594,11 @@ mw.SmilLayout.prototype = {
 				// no transform is needed
 				return ;
 			}
-			// Get percent values
-			var percentValues = _this.smil.getAnimate().getPercentFromPanZoomValues( panZoomValues, natrualSize );
-			
+			// Get percent values			
+			var percentValues = _this.smil.getAnimate().getPercentFromPanZoomValues( panZoom, natrualSize );
+		
 			// Update the layout via the animation engine updateElementLayout method
-			_this.smil.getAnimate().updateElementLayout( smilElement, panZoomValues );
+			_this.smil.getAnimate().updateElementLayout( smilElement, percentValues );
 		});
 	},
 	/**

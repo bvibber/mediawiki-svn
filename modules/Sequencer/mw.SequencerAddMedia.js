@@ -22,7 +22,7 @@ mw.SequencerAddMedia.prototype = {
 		var _this = this;		
 		if( ! _this.remoteSearchDriver ){
 			// Get any sequencer configured options 
-			var addMediaOptions = _this.sequencer.getOption('AddMedia');
+			var addMediaOptions = _this.sequencer.getOption('addMedia');			
 			addMediaOptions = $j.extend( {
 				'target_container' : _this.sequencer.getEditToolTarget(),
 				'target_search_input' : _this.sequencer.getMenuTarget().find('input.searchMedia'),					

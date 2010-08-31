@@ -8,8 +8,11 @@
 
 $messages = array();
 $messages['en'] = array(
-	'mwe-sequencer-loading-sequencer' => 'Loading sequencer ...',
-	
+	'mwe-sequencer-loading-sequencer' => 'Loading sequencer ...',	
+
+	'mwe-sequencer-you-can-edit-this-video' => 'You can [$1 edit this video]',
+	'mwe-sequencer-using-kaltura-video-editor' => 'Using the [$1 Kaltura] video editor',
+
 	'mwe-sequencer-visual-editor'=> "Visual sequence editor",
 	'mwe-sequencer-text-editor-warn'=> 'Text XML editor ( not recommended ) ',
 	'mwe-sequencer-restore-text-edit' => '[$1 Restore text editor] ( note this <i>highly</i> recommended that you use the visual editor )',
@@ -58,7 +61,7 @@ $messages['en'] = array(
 	'mwe-sequencer-create-sequence' => 'Create sequence',
 	'mwe-sequencer-edit-sequence' => 'Edit sequence',
 
-	'mwe-sequencer-embed-sequence' => 'Embed Sequence into article',
+	'mwe-sequencer-embed-sequence' => 'Embed Sequence into an article',
  	'mwe-sequencer-embed-sequence-desc' => 'Copy the following code into an article to embed this sequence',
 
 	'mwe-sequencer-menu-sequence' => 'Sequence',

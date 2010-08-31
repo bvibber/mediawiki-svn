@@ -434,9 +434,9 @@ mw.SequencerTimeline.prototype = {
 			_this.sequencer.getActionsEdit().registerEdit();
 			
 			// Select the current clip		
-			var $timelineClip = $clipTrackSet.find('#' + this.getTimelineClipId( smilClip ) )
+			var $timelineClip = $clipTrackSet.find('#' + _this.getTimelineClipId( smilClip ) )
 			if( $timelineClip.length == 0 ){
-				mw.log("Error: insertSmilClipEdit: could not find clip: " + this.getTimelineClipId( smilClip ) );
+				mw.log("Error: insertSmilClipEdit: could not find clip: " + _this.getTimelineClipId( smilClip ) );
 			}
 			_this.getTimelineContainer().find( '.selectedClip' ).removeClass( 'selectedClip' );				
 			$timelineClip.addClass( 'selectedClip' );		

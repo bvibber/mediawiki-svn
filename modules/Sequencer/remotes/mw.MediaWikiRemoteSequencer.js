@@ -5,6 +5,10 @@
 * Supports basic "sequencer" functionality as a javascript rewrite system.
 */
 
+// Wrap in mw to not pollute global namespace
+( function( mw ) {
+	
+
 mw.addMessageKeys( [
 	"mwe-sequencer-no-sequence-create",
 	"mwe-sequencer-create-sequence",
@@ -20,7 +24,9 @@ mw.addMessageKeys( [
 	"mwe-sequencer-loading-publish-render",
 	
 	"mwe-sequencer-not-published",
-	"mwe-sequencer-published-out-of-date"
+	"mwe-sequencer-published-out-of-date",	
+	"mwe-sequencer-you-can-edit-this-video",
+	"mwe-sequencer-using-kaltura-video-editor"
 ]);
 
 /* exported functions */
@@ -43,6 +49,140 @@ mw.getRemoteSequencerLink = function( url ){
 	return url;
 },
 
+// Add player pause binding if config is set::
+$j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
+	if( mw.getConfig( 'Sequencer.KalturaPlayerEditOverlay' )){
+		var embedPlayer = $j( '#' + embedPlayerId ).get(0);
+
+		$j( embedPlayer ).bind( 'pause', function() {
+			// For now don't overlay smil players ( used in editor ) 
+			// xxx in the future we should have an editor class
+			if( embedPlayer.supports['overlays'] &&  embedPlayer.instanceOf.toLowerCase() != 'smil' ){
+				mw.remoteSequencerAddEditOverlay( embedPlayerId )
+				// xxx should use getter setter
+				embedPlayer.controlBuilder.displayOptionsMenuFlag = true;
+			}			
+			return true;
+		})
+		$j( embedPlayer ).bind( 'onend', function( onDoneAction ){
+			// pause event should fire 
+			//mw.remoteSequencerAddEditOverlay( embedPlayerId )
+			
+			// show the credits screen after 3 seconds 
+			setTimeout(function(){
+				$j( embedPlayer ).siblings( '.kalturaEditOverlay' ).fadeOut( 'fast' );
+				embedPlayer.$interface.find('.k-menu').fadeIn('fast');
+			},3000)
+			
+			// On end runs before interface bindings (give the dom 10ms to build out the menu )
+			setTimeout(function(){
+				$j( embedPlayer ).siblings( '.k-menu' ).hide();
+			},10)
+		});
+		$j( embedPlayer ).bind( 'play', function(){
+			$j( embedPlayer ).siblings( '.kalturaEditOverlay' ).fadeOut( 'fast' );
+			embedPlayer.controlBuilder.displayOptionsMenuFlag = false;
+			return true ;
+		});
+	}
+});
+mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
+	var embedPlayer = $j( '#' + embedPlayerId ).get(0);
+	if(! $j( '#' + embedPlayerId ).siblings( '.kalturaEditOverlay' ).length ){
+		var editLink = '#';
+		if( mw.isLocalDomain( mw.getApiProviderURL( embedPlayer.apiProvider ) ) 
+				&& 
+			embedPlayer.apiTitleKey )
+		{			
+			var seqTitle = embedPlayer.apiTitleKey
+				.replace( 'Sequence-', 'Sequence:')
+			// strip the extension
+			seqTitle = seqTitle.substr(0, seqTitle.length -4 );
+			// not ideal details page builder but 'should work' ::
+			editLink = mw.getApiProviderURL( embedPlayer.apiProvider ).replace( 'api.php', 'index.php' );
+			editLink = mw.replaceUrlParams( editLink, 
+					{
+						'title' : seqTitle,
+						'action' : 'edit' 
+					}
+			);
+		}
+		var kalturaLinkAttr = {
+				'href': 'http://kaltura.com', 
+				'target' : '_new',
+				'title' : gM('mwe-embedplayer-kaltura-platform-title')
+			};
+		$j( '#' + embedPlayerId ).before(
+			$j( '<div />' )
+			.addClass( 'kalturaEditOverlay' )
+			.css({
+				'position' : 'absolute',
+				'width' : '100%',
+				'top' : '0px',
+				'bottom' : '22px',
+				'background' : 'none repeat scroll 0 0 #FFF',
+				'color' : 'black',
+				'opacity': 0.9,
+				'z-index': 999
+			})						
+			.append(
+				$j('<div />')
+				.css({					
+					'position' : 'absolute',
+					
+					'width' : '200px',		
+					'margin-left' : '-100px',
+					
+					'height' : '100px',
+					'margin-top' : '-50px',
+						
+					'top' : '50%',
+					'left' : '50%',
+					'text-align' : 'center'
+				})
+				.append( 
+					gM('mwe-sequencer-you-can-edit-this-video',
+						$j('<a />')
+						.attr({
+							'href': editLink,
+							'target': '_new'
+						})
+						.click(function(){						
+							// load the editor in-place if on the same domain as the sequence
+							if( editLink == '#' ){
+								if( ! window.mwSequencerRemote ){
+									window.mwSequencerRemote = new mw.MediaWikiRemoteSequencer({
+										'title' : embedPlayer.apiTitleKey									
+									});						
+								}
+								window.mwSequencerRemote.showEditor();
+								return false;
+							}
+							return true; 
+						})
+					),
+					$j( '<br />' )
+					,
+					gM( 'mwe-sequencer-using-kaltura-video-editor', 
+						$j('<a />')
+						.attr( kalturaLinkAttr ) 
+					)
+					,
+					$j('<a />')
+					.attr( kalturaLinkAttr )
+					.append( 
+						$j('<div />')
+						.addClass('mwe-kalturaLogoLarge')					
+					)
+				)				
+			)
+			.hide() // hide .kalturaEditOverlay by default
+		);
+	}
+	
+	$j( '#' + embedPlayerId ).siblings( '.kalturaEditOverlay' )
+	.fadeIn('fast');
+}
 mw.MediaWikiRemoteSequencer = function( options ) {
 	return this.init( options ); 
 };
@@ -150,7 +290,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	},
 	
 	
-	getSequenceFileKey: function( wgPageName ){
+	getSequenceFileKey: function(){
 		return 'File:' + wgPageName.replace( 'Sequence:', 'Sequence-') + '.ogv';
 	},
 	
@@ -161,7 +301,7 @@ mw.MediaWikiRemoteSequencer.prototype = {
 			// Check if the sequence has been flattened and is up to date:
 			var request = {
 				'action': 'query',
-				'titles':  _this.getSequenceFileKey( wgPageName ),
+				'titles':  _this.getSequenceFileKey(),
 				'prop': 'imageinfo|revisions',
 				'iiprop': 'url|metadata',			
 				'iiurlwidth': '400',		
@@ -291,8 +431,16 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		})		
 	},
 	getSequenceEmbedCode: function(){
-		return 'embed code here';
+		var editLink =  wgServer + wgArticlePath.replace('$1', wgTitle );
+		editLink = mw.replaceUrlParams( editLink, {'action' : 'edit' });
+
+		return '[[' + this.getSequenceFileKey() + "|thumb|400px|right|\n\n" + 
+		 "Sequence " + this.getTitle() + " \n\n" +
+		 "<br/>Edit this sequence with the [" +
+		 mw.getRemoteSequencerLink ( editLink ) +
+		 ' kaltura editor] ]]';		
 	},	
+	
 	showEditor: function(){
 		var _this = this;
 		
@@ -327,8 +475,10 @@ mw.MediaWikiRemoteSequencer.prototype = {
 		return {
 			// The title for this sequence:
 			title : _this.getTitle(),
-			// If the sequence is new
+			
+			// If the sequence is new			
 			newSequence : ( wgArticleId == 0 ),
+			
 			// Server config:
 			server: {
 				'type' : 'mediaWiki',
@@ -377,3 +527,5 @@ mw.MediaWikiRemoteSequencer.prototype = {
 	// display sequence editor in "body" with -> full-screen link
 };	//Setup the remote configuration
 	
+	
+} )( window.mw );	

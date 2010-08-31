@@ -427,8 +427,13 @@ mw.SmilBody.prototype = {
 		$j.each( $j( this.smil.getEmbedPlayer() ).find('.smilRootLayout'), function(inx, pageNode){
 			// Check if the node is in the smil dom
 			if( _this.smil.$dom.find( '#' + _this.smil.getSmilDomId( pageNode ) ).length == 0 ){
-				// remove from pageDom
-				$j( pageNode ).remove();
+				// check for parent layout helper:
+				if( $j( pageNode ).parent('.refTransformWrap').length ){
+					$j( pageNode ).parent('.refTransformWrap').remove();
+				} else {
+					// Remove the pageNode
+					$j( pageNode ).remove();
+				}
 			}
 		});
 	},
