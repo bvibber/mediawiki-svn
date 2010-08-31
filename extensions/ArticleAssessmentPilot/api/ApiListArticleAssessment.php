@@ -49,8 +49,8 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			}
 		}
 
-		$limit = $params['limit'] * 4; //4 "Ratings"
-		$this->addOption( 'LIMIT', $limit );
+		$limit = $params['limit'];
+		$this->addOption( 'LIMIT', $limit * 4 ); //4 "Ratings"
 
 		$res = $this->select( __METHOD__ );
 
