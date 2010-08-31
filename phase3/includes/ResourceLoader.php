@@ -112,37 +112,6 @@ class ResourceLoader {
 		return $result;
 	}
 	
-	/**
-	 * Gets registration code for all modules, except pre-registered ones listed in self::$preRegisteredModules
-	 * 
-	 * @return {string} JavaScript code for registering all modules with the client loader
-	 */
-	public static function getModuleRegistrations() {
-		$scripts = '';
-		$registrations = array();
-		foreach ( self::$modules as $name => $module ) {
-			if ( !in_array( $name, self::$preRegisteredModules ) ) {
-				// Support module loader scripts
-				if ( ( $loader = $module->getLoaderScript() ) !== false ) {
-					$scripts .= "\n" . $loader;
-				}
-				// Automatically register module
-				else {
-					// Modules without dependencies pass one argument (name) to mediaWiki.loader.register()
-					if ( !count( $module->getDependencies() ) ) {
-						$registrations[] = array( $name, $module->getModifiedTime() );
-					}
-					// Modules with dependencies pass two arguments (name, dependencies) to mediaWiki.loader.register()
-					else {
-						$registrations[] = array( $name, $module->getModifiedTime(), $module->getDependencies() );
-					}
-				}
-			}
-		}
-		$scripts .= "\nmediaWiki.loader.register( " . FormatJson::encode( $registrations ) . " );\n";
-		return "window.mediaWikiStartUp = function() {" . $scripts . "};";
-	}
-	
 	/* Static Methods */
 	
 	/**
@@ -192,6 +161,37 @@ class ResourceLoader {
 	 */
 	public static function getModule( $name ) {
 		return isset( self::$modules[$name] ) ? self::$modules[$name] : null;
+	}
+	
+	/**
+	 * Gets registration code for all modules, except pre-registered ones listed in self::$preRegisteredModules
+	 * 
+	 * @return {string} JavaScript code for registering all modules with the client loader
+	 */
+	public static function getModuleRegistrations() {
+		$scripts = '';
+		$registrations = array();
+		foreach ( self::$modules as $name => $module ) {
+			if ( !in_array( $name, self::$preRegisteredModules ) ) {
+				// Support module loader scripts
+				if ( ( $loader = $module->getLoaderScript() ) !== false ) {
+					$scripts .= "\n" . $loader;
+				}
+				// Automatically register module
+				else {
+					// Modules without dependencies pass one argument (name) to mediaWiki.loader.register()
+					if ( !count( $module->getDependencies() ) ) {
+						$registrations[] = array( $name, $module->getModifiedTime() );
+					}
+					// Modules with dependencies pass two arguments (name, dependencies) to mediaWiki.loader.register()
+					else {
+						$registrations[] = array( $name, $module->getModifiedTime(), $module->getDependencies() );
+					}
+				}
+			}
+		}
+		$scripts .= "\nmediaWiki.loader.register( " . FormatJson::encode( $registrations ) . " );\n";
+		return "window.mediaWikiStartUp = function() {" . $scripts . "};";
 	}
 	
 	/*
