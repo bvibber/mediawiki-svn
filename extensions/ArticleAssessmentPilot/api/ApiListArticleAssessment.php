@@ -49,6 +49,8 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			}
 		}
 
+		$this->addOption( 'ORDER BY', 'aa_revision DESC' );
+
 		$limit = $params['limit'];
 		$this->addOption( 'LIMIT', $limit * 4 ); //4 "Ratings"
 
@@ -66,8 +68,8 @@ class ApiListArticleAssessment extends ApiQueryBase {
 					'pageid' => $pageId,
 				);
 
-				if ( isset( $params['revid'] ) ){
-					$page['revid'] = $row->aa_revision ;
+				if ( isset( $params['revid'] ) || $params['userrating'] ){
+					$page['revid'] = $row->aa_revision;
 				}
 
 				$ratings[$pageId] = $page;
@@ -90,15 +92,16 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		}
 
 		//Only can actually be "stale" if the user has rated the article before
-		//We need a target revision to be able to calculate "stale" against
-		if ( $params['userrating'] && $userRatedArticle && $params['revid'] ) {
+		if ( $params['userrating'] && $userRatedArticle ) {
+			$revid = isset( $params['revid'] ) ? $params['revid'] : $ratings[$pageId]['revid'];
+
 			$this->resetQueryParams();
 
 			$this->addTables( 'revision' );
 			$this->addFields( array( 'COUNT(rev_id) AS norevs', 'rev_page' ) );
 
 			$this->addWhereFld( 'rev_page', $params['pageid'] );
-			$this->addWhere( 'rev_id > ' . $params['revid'] );
+			$this->addWhere( 'rev_id > ' . $revid );
 
 			$res = $this->select( __METHOD__ );
 
