@@ -9,7 +9,7 @@ class CentralNoticeDB {
 
 	/* Functions */
 
-	function CentralNoticeDB() {
+	function __construct() {
 		// Internationalization
 		wfLoadExtensionMessages( 'CentralNotice' );
 	}
@@ -118,20 +118,5 @@ class CentralNoticeDB {
 		}
 		return $templates;
 	}
-
-	public function updatePreferred( $notice, $preferred ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->begin();
-
-		$res = $dbw->update( 'cn_notices',
-			array(
-				'not_preferred' => $preferred,
-			),
-			array(
-				'not_name' => $notice
-			)
-		);
-		$dbw->commit();
-		return $res;
-	}
+	
 }

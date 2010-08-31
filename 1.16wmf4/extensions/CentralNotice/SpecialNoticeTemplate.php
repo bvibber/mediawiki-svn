@@ -6,7 +6,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class SpecialNoticeTemplate extends UnlistedSpecialPage {
-	var $editable;
+	var $editable, $centralNoticeError;
 	
 	function __construct() {
 		parent::__construct( 'NoticeTemplate' );
@@ -32,6 +32,9 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 
 		// Check permissions
 		$this->editable = $wgUser->isAllowed( 'centralnotice-admin' );
+		
+		// Initialize error variable
+		$this->centralNoticeError = false;
 
 		// Show summary
 		$wgOut->addWikiMsg( 'centralnotice-summary' );
@@ -73,10 +76,9 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				}
 
 				// Handle adding banner
-				// FIXME: getText()? weak comparison
 				if ( $method == 'addTemplate' ) {
-					$newTemplateName = $wgRequest->getVal( 'templateName' );
-					$newTemplateBody = $wgRequest->getVal( 'templateBody' );
+					$newTemplateName = $wgRequest->getText( 'templateName' );
+					$newTemplateBody = $wgRequest->getText( 'templateBody' );
 					if ( $newTemplateName != '' && $newTemplateBody != '' ) {
 						$this->addTemplate(
 							$newTemplateName,
@@ -86,15 +88,15 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 						);
 						$sub = 'view';
 					} else {
-						$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'centralnotice-null-string' );
+						$this->showError( 'centralnotice-null-string' );
 					}
 				}
 				
 				// Handle editing banner
 				if ( $method == 'editTemplate' ) {
 					$this->editTemplate(
-						$wgRequest->getVal( 'template' ),
-						$wgRequest->getVal( 'templateBody' ),
+						$wgRequest->getText( 'template' ),
+						$wgRequest->getText( 'templateBody' ),
 						$wgRequest->getBool( 'displayAnon' ),
 						$wgRequest->getBool( 'displayAccount' )
 					);
@@ -102,7 +104,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				}
 					
 			} else {
-				$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'sessionfailure' );
+				$this->showError( 'sessionfailure' );
 			}
 			
 		}
@@ -144,7 +146,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 					return;
 					
 				} else {
-					$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'sessionfailure' );
+					$this->showError( 'sessionfailure' );
 				}
 				
 			}
@@ -328,15 +330,12 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$bodyPage = Title::newFromText( "Centralnotice-template-{$currentTemplate}", NS_MEDIAWIKI );
 		$curRev = Revision::newFromTitle( $bodyPage );
 		$body = $curRev ? $curRev->getText() : '';
-		
+
 		// Extract message fields from the banner body
 		$fields = array();
 		$allowedChars = Title::legalChars();
 		preg_match_all( "/\{\{\{([$allowedChars]+)\}\}\}/u", $body, $fields );
-		
-		// Restore banner body state in the event of an error on form submit
-		$body = $wgRequest->getVal( 'templateBody', $body );
-			
+
 		// If there are any message fields in the banner, display translation tools.
 		if ( count( $fields[0] ) > 0 ) {
 			if ( $this->editable ) {
@@ -353,20 +352,20 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 					'width' => '100%'
 				)
 			);
-	
+
 			// Table headers
 			$htmlOut .= Xml::element( 'th', array( 'width' => '15%' ), wfMsg( 'centralnotice-message' ) );
 			$htmlOut .= Xml::element( 'th', array( 'width' => '5%' ), wfMsg ( 'centralnotice-number-uses' )  );
 			$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), wfMsg ( 'centralnotice-english' ) );
 			$languages = Language::getLanguageNames();
 			$htmlOut .= Xml::element( 'th', array( 'width' => '40%' ), $languages[$wpUserLang] );
-			
+
 			// Remove duplicate message fields
 			$filteredFields = array();
 			foreach ( $fields[1] as $field ) {
 				$filteredFields[$field] = array_key_exists( $field, $filteredFields ) ? $filteredFields[$field] + 1 : 1;
 			}
-	
+
 			// Table rows
 			foreach ( $filteredFields as $field => $count ) {
 				// Message
@@ -463,22 +462,22 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			$htmlOut .= Xml::hidden( 'wpMethod', 'editTemplate' );
 		}
 		
+		// If there was an error, we'll need to restore the state of the form
+		if ( $wgRequest->wasPosted() && $wgRequest->getVal( 'mainform' ) ) {
+			$displayAnon = $wgRequest->getCheck( 'displayAnon' );
+			$displayAccount = $wgRequest->getCheck( 'displayAccount' );
+			$body = $wgRequest->getVal( 'templateBody', $body );
+		} else { // Defaults
+			$displayAnon = ( $row->tmp_display_anon == 1 );
+			$displayAccount = ( $row->tmp_display_account == 1 );
+		}
+		
 		// Show banner settings
 		$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-settings' ) );
 		$htmlOut .= Xml::openElement( 'p', null );
 		$htmlOut .= wfMsg( 'centralnotice-banner-display' );
-		if ( $wgRequest->wasPosted() ) {
-			$displayAnon = $wgRequest->getCheck( 'displayAnon' ); // Restore checkbox state in event of error
-		} else {
-			$displayAnon = ( $row->tmp_display_anon == 1 ); // Default to saved state
-		}
 		$htmlOut .= Xml::check( 'displayAnon', $displayAnon, wfArrayMerge( $disabled, array( 'id' => 'displayAnon' ) ) );
 		$htmlOut .= Xml::label( wfMsg( 'centralnotice-banner-anonymous' ), 'displayAnon' );
-		if ( $wgRequest->wasPosted() ) {
-			$displayAccount = $wgRequest->getCheck( 'displayAccount' ); // Restore checkbox state in event of error
-		} else {
-			$displayAccount = ( $row->tmp_display_account == 1 ); // Default to saved state
-		}
 		$htmlOut .= Xml::check( 'displayAccount', $displayAccount, wfArrayMerge( $disabled, array( 'id' => 'displayAccount' ) ) );
 		$htmlOut .= Xml::label( wfMsg( 'centralnotice-banner-logged-in' ), 'displayAccount' );
 		$htmlOut .= Xml::closeElement( 'p' );
@@ -499,6 +498,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$htmlOut .= Xml::textarea( 'templateBody', $body, 60, 20, $readonly );
 		$htmlOut .= Xml::closeElement( 'fieldset' );
 		if ( $this->editable ) {
+			$htmlOut .= Xml::hidden( 'mainform', 'true' ); // Indicate which form was submitted
 			$htmlOut .= Xml::hidden( 'authtoken', $wgUser->editToken() );
 			$htmlOut .= Xml::tags( 'div', 
 				array( 'class' => 'cn-buttons' ), 
@@ -614,7 +614,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$res = $dbr->select( 'cn_assignments', 'asn_id', array( 'tmp_id' => $id ), __METHOD__ );
 
 		if ( $dbr->numRows( $res ) > 0 ) {
-			$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'centralnotice-template-still-bound' );
+			$this->showError( 'centralnotice-template-still-bound' );
 			return;
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
@@ -639,7 +639,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		global $wgOut;
 
 		if ( $body == '' || $name == '' ) {
-			$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'centralnotice-null-string' );
+			$this->showError( 'centralnotice-null-string' );
 			return;
 		}
 
@@ -655,7 +655,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		);
 
 		if ( $dbr->numRows( $res ) > 0 ) {
-			$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'centralnotice-template-exists' );
+			$this->showError( 'centralnotice-template-exists' );
 			return false;
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
@@ -684,7 +684,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		global $wgOut;
 
 		if ( $body == '' || $name == '' ) {
-			$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", 'centralnotice-null-string' );
+			$this->showError( 'centralnotice-null-string' );
 			return;
 		}
 
@@ -806,5 +806,11 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			}
 		}
 		return $translations;
+	}
+	
+	function showError( $message ) {
+		global $wgOut;
+		$wgOut->wrapWikiMsg( "<div class='cn-error'>\n$1\n</div>", $message );
+		$this->centralNoticeError = true;
 	}
 }
