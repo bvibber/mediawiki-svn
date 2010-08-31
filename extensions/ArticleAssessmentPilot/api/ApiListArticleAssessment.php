@@ -137,7 +137,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 				ApiBase::PARAM_TYPE => 'limit',
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
-				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
+				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG1,
 			),
 		);
 	}
@@ -145,7 +145,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	public function getParamDescription() {
 		return array(
 			'pageid' => 'Page ID to get assessments for',
-			'revid' => 'Specific revision to get (used in conjunction with user param, otherwise ignored)',
+			'revid' => 'Specific revision to get (used in conjunction with userrating param, otherwise ignored. Needed for stale calculation)',
 			'userrating' => 'Whether to get the current users ratings for the specific rev/article',
 			'limit' => 'Amount of pages to get the ratings for',
 		);
