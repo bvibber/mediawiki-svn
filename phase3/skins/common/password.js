@@ -5,20 +5,16 @@
  * @todo Check for popular passwords and keyboard sequences (QWERTY, etc)
  */
 
+// Estimates how hard it would be to pick the password using brute forece
 window.bruteForceComplexity = function( pwd ) {
-	var score = 0;
-
-	if ( pwd.length < 16 ) {
-		score = pwd.length * 5;
-	} else {
-		score = 80;
-	}
+	var score = pwd.length * 5;
 
 	var regexes = [
 		/[a-z]/,
 		/[A-Z]/,
 		/[0-9]/,
-		/[-_;:\.,'"`~!@#$%\^&\*\(\)\[\]\{\} ]/ ];
+		/[-_;:\.,'"`~!@#$%\^&\*\(\)\[\]\{\} ]/
+	];
 
 	var charClasses = 0;
 	for ( var i=0; i< regexes.length; i++ ) {
@@ -42,6 +38,7 @@ window.bruteForceComplexity = function( pwd ) {
 	return score;
 }
 
+// Calculates a penalty to brute force score due to character repetition
 window.repetitionScore = function( pwd ) {
 	var unique = '';
 	for ( var i=0; i< pwd.length; i++ ) {
@@ -51,9 +48,10 @@ window.repetitionScore = function( pwd ) {
 	}
 	var ratio = pwd.length / unique.length - 0.4; // allow up to 40% repetition, reward for less, penalize for more
 	
-	return 100 / ratio;
+	return ratio * 10;
 }
 
+// Checks how many simple sequences ("abc", "321") are there in the password
 window.sequenceScore = function( pwd ) {
 	pwd = pwd.concat( '\0' );
 	var score = 100, sequence = 1;
@@ -62,7 +60,7 @@ window.sequenceScore = function( pwd ) {
 			sequence++;
 		} else {
 			if ( sequence > 2 ) {
-				score -= Math.sqrt( sequence ) * 15;
+				score -= sequence * 7;
 			}
 			sequence = 1;
 		}
@@ -89,23 +87,26 @@ window.sequenceScore = function( pwd ) {
 			return;
 		}
 		if ( pwd.length > 100 ) pwd = pwd.slice( 0, 100 );
-		var score = Math.min(
+		var scores = [
 			bruteForceComplexity( pwd ),
-			repetitionScore( pwd ),
+			repetitionAdjustment( pwd ),
 			sequenceScore( pwd )
-		);
+		];
+
+		var score = Math.min( scores[0] - scores[1], scores[2] );
 		var result = 'good';
 		if ( score < 40 ) {
 			result = 'bad';
 		} else if ( score < 60 ) {
 			result = 'mediocre';
-		} else if ( score < 85 ) {
+		} else if ( score < 80 ) {
 			result = 'acceptable';
 		}
 		var message = '<span class="mw-password-' + result + '">' + passwordSecurity.messages['password-strength-' + result]
 			+ '</span>';
 		$( '#password-strength' ).html(
 			passwordSecurity.messages['password-strength'].replace( '$1', message )
+			 //+ scores
 		);
 	}
 

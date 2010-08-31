@@ -74,7 +74,7 @@ class DatabaseMssql extends DatabaseBase {
 
 		$this->close();
 		$this->mServer = $server;
-		$this->mPort = $port = $wgDBport;
+		$this->mPort = $wgDBport;
 		$this->mUser = $user;
 		$this->mPassword = $password;
 		$this->mDBname = $dbName;
@@ -271,23 +271,24 @@ class DatabaseMssql extends DatabaseBase {
 	/**
 	 * SELECT wrapper
 	 *
-	 * @param mixed  $table   Array or string, table name(s) (prefix auto-added)
-	 * @param mixed  $vars	Array or string, field name(s) to be retrieved
-	 * @param mixed  $conds   Array or string, condition(s) for WHERE
-	 * @param string $fname   Calling function name (use __METHOD__) for logs/profiling
-	 * @param array  $options Associative array of options (e.g. array('GROUP BY' => 'page_title')),
-	 *						see Database::makeSelectOptions code for list of supported stuff
+	 * @param $table   Mixed: array or string, table name(s) (prefix auto-added)
+	 * @param $vars    Mixed: array or string, field name(s) to be retrieved
+	 * @param $conds   Mixed: array or string, condition(s) for WHERE
+	 * @param $fname   String: calling function name (use __METHOD__) for logs/profiling
+	 * @param $options Array: associative array of options (e.g. array('GROUP BY' => 'page_title')),
+	 *                 see Database::makeSelectOptions code for list of supported stuff
 	 * @param $join_conds Array: Associative array of table join conditions (optional)
 	 *						   (e.g. array( 'page' => array('LEFT JOIN','page_latest=rev_id') )
-	 * @return mixed Database result resource (feed to Database::fetchObject or whatever), or false on failure
+	 * @return Mixed: database result resource (feed to Database::fetchObject or whatever), or false on failure
 	 */
-	function select( $table, $vars, $conds = '', $fname = 'Database::select', $options = array(), $join_conds = array() )
+	function select( $table, $vars, $conds = '', $fname = 'DatabaseMssql::select', $options = array(), $join_conds = array() )
 	{
 		$sql = $this->selectSQLText( $table, $vars, $conds, $fname, $options, $join_conds );
 		if ( isset( $options['EXPLAIN'] ) ) {
 			sqlsrv_query( $this->mConn, "SET SHOWPLAN_ALL ON;" );
-			return $this->query( $sql, $fname );
+			$ret = $this->query( $sql, $fname );
 			sqlsrv_query( $this->mConn, "SET SHOWPLAN_ALL OFF;" );
+			return $ret;
 		}
 		return $this->query( $sql, $fname );
 	}
@@ -296,16 +297,16 @@ class DatabaseMssql extends DatabaseBase {
 	 * SELECT wrapper
 	 *
 	 * @param $table   Mixed:  Array or string, table name(s) (prefix auto-added)
-	 * @param $vars	Mixed:  Array or string, field name(s) to be retrieved
+	 * @param $vars    Mixed:  Array or string, field name(s) to be retrieved
 	 * @param $conds   Mixed:  Array or string, condition(s) for WHERE
 	 * @param $fname   String: Calling function name (use __METHOD__) for logs/profiling
 	 * @param $options Array:  Associative array of options (e.g. array('GROUP BY' => 'page_title')),
-	 *						 see Database::makeSelectOptions code for list of supported stuff
+	 *                 see Database::makeSelectOptions code for list of supported stuff
 	 * @param $join_conds Array: Associative array of table join conditions (optional)
-	 *						   (e.g. array( 'page' => array('LEFT JOIN','page_latest=rev_id') )
+	 *                    (e.g. array( 'page' => array('LEFT JOIN','page_latest=rev_id') )
 	 * @return string, the SQL text
 	 */
-	function selectSQLText( $table, $vars, $conds = '', $fname = 'Database::select', $options = array(), $join_conds = array() ) {
+	function selectSQLText( $table, $vars, $conds = '', $fname = 'DatabaseMssql::select', $options = array(), $join_conds = array() ) {
 		if ( isset( $options['EXPLAIN'] ) ) {
 			unset( $options['EXPLAIN'] );
 		}
@@ -319,7 +320,7 @@ class DatabaseMssql extends DatabaseBase {
 	 * Returns -1 if count cannot be found
 	 * Takes same arguments as Database::select()
 	 */
-	function estimateRowCount( $table, $vars = '*', $conds = '', $fname = 'Database::estimateRowCount', $options = array() ) {
+	function estimateRowCount( $table, $vars = '*', $conds = '', $fname = 'DatabaseMssql::estimateRowCount', $options = array() ) {
 		$options['EXPLAIN'] = true;// http://msdn2.microsoft.com/en-us/library/aa259203.aspx
 		$res = $this->select( $table, $vars, $conds, $fname, $options );
 		
@@ -327,7 +328,6 @@ class DatabaseMssql extends DatabaseBase {
 		if ( $res ) {
 			$row = $this->fetchRow( $res );
 			if ( isset( $row['EstimateRows'] ) ) $rows = $row['EstimateRows'];
-			$this->freeResult( $res );
 		}
 		return $rows;
 	}
@@ -337,7 +337,7 @@ class DatabaseMssql extends DatabaseBase {
 	 * Returns information about an index
 	 * If errors are explicitly ignored, returns NULL on failure
 	 */
-	function indexInfo( $table, $index, $fname = 'Database::indexExists' ) {
+	function indexInfo( $table, $index, $fname = 'DatabaseMssql::indexExists' ) {
 		# This does not return the same info as MYSQL would, but that's OK because MediaWiki never uses the
 		# returned value except to check for the existance of indexes.
 		$sql = "sp_helpindex '" . $table . "'";
@@ -376,7 +376,7 @@ class DatabaseMssql extends DatabaseBase {
 	 * Usually aborts on failure
 	 * If errors are explicitly ignored, returns success
 	 */
-	function insert( $table, $arrToInsert, $fname = 'Database::insert', $options = array() ) {
+	function insert( $table, $arrToInsert, $fname = 'DatabaseMssql::insert', $options = array() ) {
 		# No rows to insert, easy just return now
 		if ( !count( $arrToInsert ) ) {
 			return true;
@@ -507,10 +507,10 @@ class DatabaseMssql extends DatabaseBase {
 	 * $conds may be "*" to copy the whole table
 	 * srcTable may be an array of tables.
 	 */
-	function insertSelect( $destTable, $srcTable, $varMap, $conds, $fname = 'Database::insertSelect',
+	function insertSelect( $destTable, $srcTable, $varMap, $conds, $fname = 'DatabaseMssql::insertSelect',
 		$insertOptions = array(), $selectOptions = array() )
 	{
-		$ret = parent::insertSelect( $destTable, $srcTable, $varMap, $conds, $fname, insertOptions, $selectOptions );
+		$ret = parent::insertSelect( $destTable, $srcTable, $varMap, $conds, $fname, $insertOptions, $selectOptions );
 		
 		if ( $ret === false ) {
 			throw new DBQueryError( $this, $this->getErrors(), $this->lastErrno(), $sql, $fname );
@@ -532,7 +532,7 @@ class DatabaseMssql extends DatabaseBase {
 	 * themselves. Pass the canonical name to such functions. This is only needed
 	 * when calling query() directly.
 	 *
-	 * @param string $name database table name
+	 * @param $name String: database table name
 	 */
 	function tableName( $name ) {
 		global $wgSharedDB;
@@ -591,7 +591,7 @@ class DatabaseMssql extends DatabaseBase {
 	# It may be more efficient to leave off unique indexes which are unlikely to collide.
 	# However if you do this, you run the risk of encountering errors which wouldn't have
 	# occurred in MySQL
-	function replace( $table, $uniqueIndexes, $rows, $fname = 'Database::replace' ) {
+	function replace( $table, $uniqueIndexes, $rows, $fname = 'DatabaseMssql::replace' ) {
 		$table = $this->tableName( $table );
 
 		if ( count( $rows ) == 0 ) {
@@ -641,9 +641,9 @@ class DatabaseMssql extends DatabaseBase {
 	}
 
 	# DELETE where the condition is a join
-	function deleteJoin( $delTable, $joinTable, $delVar, $joinVar, $conds, $fname = "Database::deleteJoin" ) {
+	function deleteJoin( $delTable, $joinTable, $delVar, $joinVar, $conds, $fname = "DatabaseMssql::deleteJoin" ) {
 		if ( !$conds ) {
-			throw new DBUnexpectedError( $this,  'Database::deleteJoin() called with empty $conds' );
+			throw new DBUnexpectedError( $this, 'DatabaseMssql::deleteJoin() called with empty $conds' );
 		}
 
 		$delTable = $this->tableName( $delTable );
@@ -666,7 +666,6 @@ class DatabaseMssql extends DatabaseBase {
 		$row = $this->fetchRow( $res );
 		$size = -1;
 		if ( strtolower( $row['DATA_TYPE'] ) != 'text' ) $size = $row['CHARACTER_MAXIMUM_LENGTH'];
-		$this->freeResult( $res );
 		return $size;
 	}
 
@@ -733,7 +732,7 @@ class DatabaseMssql extends DatabaseBase {
 	/**
 	 * @return string wikitext of a link to the server software's web site
 	 */
-	function getSoftwareLink() {
+	public static function getSoftwareLink() {
 		return "[http://www.microsoft.com/sql/ MS SQL Server]";
 	}
 
@@ -763,7 +762,7 @@ class DatabaseMssql extends DatabaseBase {
 	/**
 	 * Query whether a given column exists in the mediawiki schema
 	 */
-	function fieldExists( $table, $field, $fname = 'Database::fieldExists' ) {
+	function fieldExists( $table, $field, $fname = 'DatabaseMssql::fieldExists' ) {
 		$table = $this->tableName( $table );
 		$res = sqlsrv_query( $this->mConn, "SELECT DATA_TYPE FROM INFORMATION_SCHEMA.Columns 
 			WHERE TABLE_NAME = '$table' AND COLUMN_NAME = '$field'" );
@@ -793,7 +792,7 @@ class DatabaseMssql extends DatabaseBase {
 	/**
 	 * Begin a transaction, committing any previously open transaction
 	 */
-	function begin( $fname = 'Database::begin' ) {
+	function begin( $fname = 'DatabaseMssql::begin' ) {
 		sqlsrv_begin_transaction( $this->mConn );
 		$this->mTrxLevel = 1;
 	}
@@ -801,7 +800,7 @@ class DatabaseMssql extends DatabaseBase {
 	/**
 	 * End a transaction
 	 */
-	function commit( $fname = 'Database::commit' ) {
+	function commit( $fname = 'DatabaseMssql::commit' ) {
 		sqlsrv_commit( $this->mConn );
 		$this->mTrxLevel = 0;
 	}
@@ -810,13 +809,13 @@ class DatabaseMssql extends DatabaseBase {
 	 * Rollback a transaction.
 	 * No-op on non-transactional databases.
 	 */
-	function rollback( $fname = 'Database::rollback' ) {
+	function rollback( $fname = 'DatabaseMssql::rollback' ) {
 		sqlsrv_rollback( $this->mConn );
 		$this->mTrxLevel = 0;
 	}
 	
 	function setup_database() {
-		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport, $wgDBuser;
+		global $wgVersion, $wgDBport, $wgDBuser;
 
 		// Make sure that we can write to the correct schema
 		$ctest = "mediawiki_test_table";
@@ -861,31 +860,55 @@ class DatabaseMssql extends DatabaseBase {
 	}
 
 	/**
-	 * Initial setup as superuser.
-	 * Create the database, schema, login, and user.
+	 * Escapes a identifier for use inm SQL.
+	 * Throws an exception if it is invalid.
+	 * Reference: http://msdn.microsoft.com/en-us/library/aa224033%28v=SQL.80%29.aspx
 	 */
-	function initial_setup() {
-		global $conf;
+	private function escapeIdentifier( $identifier ) {
+		if ( strlen( $identifier ) == 0 ) {
+			throw new MWException( "An identifier must not be empty" );
+		}
+		if ( strlen( $identifier ) > 128 ) {
+			throw new MWException( "The identifier '$identifier' is too long (max. 128)" );
+		}
+		if ( ( strpos( $identifier, '[' ) !== false ) || ( strpos( $identifier, ']' ) !== false ) ) {
+			// It may be allowed if you quoted with double quotation marks, but that would break if QUOTED_IDENTIFIER is OFF
+			throw new MWException( "You can't use square brackers in the identifier '$identifier'" );
+		}
+		return "[$identifier]";
+	}
+
+	/**
+	 * Initial setup.
+	 * Precondition: This object is connected as the superuser.
+	 * Creates the database, schema, user and login.
+	 */
+	function initial_setup( $dbName, $newUser, $loginPassword ) {
+		$dbName = $this->escapeIdentifier( $dbName );
+
+		// It is not clear what can be used as a login,
+		// From http://msdn.microsoft.com/en-us/library/ms173463.aspx 
+		// a sysname may be the same as an identifier.
+		$newUser = $this->escapeIdentifier( $newUser );
+		$loginPassword = $this->addQuotes( $loginPassword );
 		
-		// FIXME: fields need to be properly escaped.
-		
-		$this->doQuery("CREATE DATABASE {$conf->DBname};");
-		$this->doQuery("USE {$conf->DBname};");
-		$this->doQuery("CREATE SCHEMA {$conf->DBname};");
+		$this->doQuery("CREATE DATABASE $dbName;");
+		$this->doQuery("USE $dbName;");
+		$this->doQuery("CREATE SCHEMA $dbName;");
 		$this->doQuery("
 						CREATE 
-							LOGIN {$conf->DBuser} 
+							LOGIN $newUser 
 						WITH 
-							PASSWORD='{$conf->DBpassword}'
+							PASSWORD=$loginPassword
 						;
 					");
 		$this->doQuery("
 						CREATE 
-							USER {$conf->DBuser} 
+							USER $newUser 
 						FOR 
-							LOGIN {$conf->DBuser} 
+							LOGIN $newUser 
 						WITH 
-							DEFAULT_SCHEMA={$conf->DBname}
+							DEFAULT_SCHEMA=$dbName
 						;
 					");
 		$this->doQuery("
@@ -900,16 +923,16 @@ class DatabaseMssql extends DatabaseBase {
 							CREATE VIEW, 
 							CREATE FULLTEXT CATALOG 
 						ON 
-							DATABASE::{$conf->DBname} 
-						TO {$conf->DBuser}
+							DATABASE::$dbName 
+						TO $newUser
 						;
 					");
 		$this->doQuery("
 						GRANT 
 							CONTROL
 						ON 
-							SCHEMA::{$conf->DBname} 
-						TO {$conf->DBuser}
+							SCHEMA::$dbName 
+						TO $newUser
 						;
 					");
 		
@@ -986,9 +1009,9 @@ class DatabaseMssql extends DatabaseBase {
 	/**
 	 * @private
 	 *
-	 * @param array $options an associative array of options to be turned into
-	 *			  an SQL query, valid keys are listed in the function.
-	 * @return array
+	 * @param $options Array: an associative array of options to be turned into
+	 *                 an SQL query, valid keys are listed in the function.
+	 * @return Array
 	 */
 	function makeSelectOptions( $options ) {
 		$tailOpts = '';

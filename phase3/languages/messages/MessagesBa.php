@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Assele
  * @author Comp1089
  * @author Haqmar
  * @author Timming
@@ -52,7 +53,7 @@ $messages = array(
 'tog-editsection'             => 'Һәр бүлек өсөн «үҙгәртеү» һылтанмаһын күрһәтергә',
 'tog-editsectiononrightclick' => 'Бүлектәрҙе исемдәренә сысҡан менән сиртеп үҙгәртергә (JavaScript кәрәкле)',
 'tog-showtoc'                 => 'Эстәлек күрһәтелһен (3-тән күп башлығы булған биттәрҙә)',
-'tog-rememberpassword'        => 'Был компьютерҙа иҫәп яҙыуым хәтерленһен',
+'tog-rememberpassword'        => 'Был компьютерҙа (иң күбендә $1 {{PLURAL:$1|көнгә|көнгә}}) иҫәп яҙыуым хәтерләнһен',
 'tog-watchcreations'          => 'Мин төҙөгән биттәрҙе күҙәтеү исемлегенә яҙырға',
 'tog-watchdefault'            => 'Үҙгәрткән биттәрем күҙәтеү исемлегемә өҫтәлһен',
 'tog-watchmoves'              => 'Исемен үҙгәрткән биттәрем күҙәтеү исемлегемә өҫтәлһен',
@@ -462,6 +463,7 @@ $2',
 'gotaccount'                 => "Әгәр Һеҙ теркәлеү үткән булһағыҙ? '''$1'''.",
 'gotaccountlink'             => 'Үҙегеҙ менән таныштырығыҙ',
 'createaccountmail'          => 'эл. почта буйынса',
+'createaccountreason'        => 'Сәбәп:',
 'badretype'                  => 'Һеҙ кереткән паролдәр тап килмәйҙәр.',
 'userexists'                 => 'Керетелгән исем ҡулланыла.
 Зинһар, башҡа исем һайлағыҙ.',
@@ -941,9 +943,9 @@ $1",
 'notextmatches'                    => 'Тап килгән бит табылманы',
 'prevn'                            => 'алдағы {{PLURAL:$1|$1}}',
 'nextn'                            => 'киләһе {{PLURAL:$1|$1}}',
-'prevn-title'                      => 'Һуңғы $1 һөҙөмтә',
-'nextn-title'                      => 'Тәүге $1 һөҙөмтә',
-'shown-title'                      => 'Бер биттә $1 һөҙөмтә күрһәт',
+'prevn-title'                      => 'Һуңғы $1 {{PLURAL:$1|һөҙөмтә|һөҙөмтә}}',
+'nextn-title'                      => 'Тәүге $1 {{PLURAL:$1|һөҙөмтә|һөҙөмтә}}',
+'shown-title'                      => 'Бер биттә $1 {{PLURAL:$1|һөҙөмтә|һөҙөмтә}} күрһәт',
 'viewprevnext'                     => '($1 {{int:pipe-separator}} $2) ($3) ҡарарға',
 'searchmenu-legend'                => 'Эҙләү көйләүҙәре',
 'searchmenu-exists'                => "'''Был вики-проектта «[[:$1]]» бите бар'''",
@@ -1314,7 +1316,7 @@ $1",
 'uploadnewversion-linktext' => 'Был файлдың яңы версияһын тейәргә',
 
 # File reversion
-'filerevert-comment' => 'Иҫкәрмә:',
+'filerevert-comment' => 'Сәбәп:',
 'filerevert-submit'  => 'Кире алырға',
 
 # File deletion
@@ -1477,7 +1479,6 @@ $1",
 # Watchlist
 'watchlist'         => 'Күҙәтеү исемлеге',
 'mywatchlist'       => 'Күҙәтеү исемлеге',
-'watchlistfor'      => "('''$1''' өсөн)",
 'watchnologin'      => 'Үҙегеҙҙе танытырға кәрәк',
 'addedwatch'        => 'Күҙәтеү исемлегенә өҫтәлде',
 'addedwatchtext'    => "\"[[:\$1]]\" бите [[Special:Watchlist|күҙәтеү исемлегегеҙгә]] өҫтәлде.
@@ -1596,7 +1597,7 @@ $NEWPAGE
 'undeleteviewlink'          => 'ҡарарға',
 'undeletereset'             => 'Юҡ итергә',
 'undeleteinvert'            => 'Һайланғандарҙы әйләндерергә',
-'undeletecomment'           => 'Иҫкәрмә',
+'undeletecomment'           => 'Сәбәп:',
 'undeletedarticle'          => '«[[$1]]» тергеҙелде',
 'undelete-search-box'       => 'Юйылған биттәрҙе эҙләү',
 'undelete-search-submit'    => 'Эҙләү',
@@ -1715,6 +1716,8 @@ $NEWPAGE
 
 # Namespace 8 related
 'allmessagesname'           => 'Хәбәр',
+'allmessagesdefault'        => 'Ғәҙәттәге яҙма',
+'allmessagescurrent'        => 'Хәҙерге яҙма',
 'allmessages-filter-legend' => 'Иләк',
 'allmessages-filter-all'    => 'Бөтә',
 'allmessages-filter-submit' => 'Күсергә',
@@ -1889,7 +1892,7 @@ $NEWPAGE
 # Special:FilePath
 'filepath'        => 'Файлға юл',
 'filepath-page'   => 'Файл:',
-'filepath-submit' => 'Юл',
+'filepath-submit' => 'Күсеү',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Бер төрлө файлдарҙы эҙләргә',

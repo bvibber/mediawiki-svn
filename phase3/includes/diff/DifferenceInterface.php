@@ -1,6 +1,9 @@
 <?php
 /**
- * @defgroup DifferenceEngine DifferenceEngine
+ * User interface for the difference engine
+ *
+ * @file
+ * @ingroup DifferenceEngine
  */
  
 /**
@@ -183,7 +186,11 @@ CONTROL;
 		} else {
 			$wgOut->setPageTitle( $oldTitle . ', ' . $newTitle );
 		}
-		$wgOut->setSubtitle( wfMsgExt( 'difference', array( 'parseinline' ) ) );
+		if ( $this->mNewPage->equals( $this->mOldPage ) ) {
+			$wgOut->setSubtitle( wfMsgExt( 'difference', array( 'parseinline' ) ) );
+		} else {
+			$wgOut->setSubtitle( wfMsgExt( 'difference-multipage', array( 'parseinline' ) ) );
+		}
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
 
 		if ( !$this->mOldPage->userCanRead() || !$this->mNewPage->userCanRead() ) {
@@ -447,7 +454,7 @@ CONTROL;
 			}
 		} elseif( $pCache ) {
 			$article = new Article( $this->mTitle, 0 );
-			$pOutput = ParserCache::singleton()->get( $article, $wgUser );
+			$pOutput = ParserCache::singleton()->get( $article, $wgOut->parserOptions() );
 			if( $pOutput ) {
 				$wgOut->addParserOutput( $pOutput );
 			} else {

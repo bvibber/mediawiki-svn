@@ -1478,9 +1478,6 @@ $wgSessionsInMemcached = false;
  */
 $wgSessionHandler = 'files';
 
-/** @deprecated Does nothing */
-$wgUseMemCached     = false;
-
 /** If enabled, will send MemCached debugging information to $wgDebugLogFile */
 $wgMemCachedDebug   = false;
 
@@ -1510,6 +1507,13 @@ $wgUseLocalMessageCache = false;
  * false - PHP source file (Warning - security risk)
  */
 $wgLocalMessageCacheSerialized = true;
+
+/**
+ * Instead of caching everything, keep track which messages are requested and
+ * load only most used messages. This only makes sense if there is lots of
+ * interface messages customised in the wiki (like hundreds in many languages).
+ */
+$wgAdaptiveMessageCache = false;
 
 /**
  * Localisation cache configuration. Associative array with keys:
@@ -1556,7 +1560,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '300';
+$wgStyleVersion = '301';
 
 /**
  * This will cache static pages for non-logged-in users to reduce
@@ -1912,20 +1916,6 @@ $wgMsgCacheExpiry	= 86400;
  */
 $wgMaxMsgCacheEntrySize = 10000;
 
-/**
- * If true, serialized versions of the messages arrays will be
- * read from the 'serialized' subdirectory if they are present.
- * Set to false to always use the Messages files, regardless of
- * whether they are up to date or not.
- */
-$wgEnableSerializedMessages = true;
-
-/**
- * Set to false if you are thorough system admin who always remembers to keep
- * serialized files up to date to save few mtime calls.
- */
-$wgCheckSerialized = true;
-
 /** Whether to enable language variant conversion. */
 $wgDisableLangConversion = false;
 
@@ -1972,15 +1962,6 @@ $wgVariantArticlePath = false;
  * customise these.
  */
 $wgLoginLanguageSelector = false;
-
-/**
- * Whether to use zhdaemon to perform Chinese text processing
- * zhdaemon is under developement, so normally you don't want to
- * use it unless for testing.
- */
-$wgUseZhdaemon = false;
-$wgZhdaemonHost="localhost";
-$wgZhdaemonPort=2004;
 
 /**
  * When translating messages with wfMsg(), it is not always clear what should
@@ -2314,7 +2295,10 @@ $wgMetaNamespaceTalk = false;
 /**
  * Additional namespaces. If the namespaces defined in Language.php and
  * Namespace.php are insufficient, you can create new ones here, for example,
- * to import Help files in other languages.
+ * to import Help files in other languages. You can also override the namespace
+ * names of existing namespaces. Extensions developers should use
+ * $wgCanonicalNamespaceNames.
+ *
  * PLEASE  NOTE: Once you delete a namespace, the pages in that namespace will
  * no longer be accessible. If you rename it, then you can access them through
  * the new namespace name.
@@ -2328,7 +2312,7 @@ $wgMetaNamespaceTalk = false;
 #	      102 => "Aide",
 #	      103 => "Discussion_Aide"
 #	      );
-$wgExtraNamespaces = null;
+$wgExtraNamespaces = array();
 
 /**
  * Namespace aliases
@@ -3615,13 +3599,6 @@ $wgSpecialVersionShowHooks =  false;
 $wgShowSQLErrors        = false;
 
 /**
- * If true, some error messages will be colorized when running scripts on the
- * command line; this can aid picking important things out when debugging.
- * Ignored when running on Windows or when output is redirected to a file.
- */
-$wgColorErrors          = true;
-
-/**
  * If set to true, uncaught exceptions will print a complete stack trace
  * to output. This should only be used for debugging, as it may reveal
  * private information in function parameters due to PHP's backtrace
@@ -3790,12 +3767,6 @@ $wgSeleniumTestsUseBrowser = 'firefox';
  * Set this to true to disable the full text search feature.
  */
 $wgDisableTextSearch = false;
-
-/**
- * Set this to true to disable the context which appears on search result pages. 
- * Search context can cause a high DB load.
- */
-$wgDisableSearchContext = false;
 
 /**
  * Set to true to have nicer highligted text in search results,
@@ -4427,7 +4398,8 @@ $wgExceptionHooks = array();
 /**
  * List of page property names and descriptions of what they are. 
  * This is used for the API prop=pageprops module to know which 
- * page props to search for.
+ * page props to search for. The help message is only seen from 
+ * the API help page.
  */
 $wgPageProps = array( 
 	'hiddencat' => 'Whether or not the page has a category with the __HIDDENCAT__ magic word',
@@ -5118,7 +5090,38 @@ $wgUploadMaintenance = false;
 /**
  * Enabes or disables JavaScript-based suggestions of password strength
  */
-$wgLivePasswordStrengthChecks = true;
+$wgLivePasswordStrengthChecks = false;
+
+/**
+ * The location of the MediaWiki package repository to use.
+ * 
+ * @since 1.17
+ * @var string
+ */
+$wgRepositoryApiLocation = 'http://www.mediawiki.org/w/api.php';
+
+/**
+ * The location of the remote web interface for the selected repository. 
+ * 
+ * @since 1.17
+ * @var string
+ */
+$wgRepositoryLocation = 'http://www.mediawiki.org/wiki/Special:Repository';
+
+/**
+ * List of package states to filter update detection and extension listing on. 
+ * 
+ * @since 1.17
+ * @var array
+ */
+$wgRepositoryPackageStates = array(
+	//'dev',
+	//'alpha',
+	'beta',
+	//'rc',
+	'stable',
+	//'deprecated',
+);
  
 /**
  * For really cool vim folding this needs to be at the end:

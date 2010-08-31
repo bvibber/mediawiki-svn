@@ -162,6 +162,7 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|ይኸው መደብ የሚከተለውን ፋይል ብቻ አለው።|በዚሁ መደብ ውስጥ (ከ$2 በጠቅላላ) {{PLURAL:$1|የሚከተለው ፋይል አለ።|የሚከተሉት $1 ፋይሎች አሉ።}}}}',
 'category-file-count-limited'    => 'በዚሁ መደብ ውስጥ {{PLURAL:$1|የሚከተለው ፋይል አለ|የሚከተሉት $1 ፋይሎች አሉ}}።',
 'listingcontinuesabbrev'         => '(ተቀጥሏል)',
+'index-category'                 => ' ማውጫው ላይ የተመዘገብ ገጾች',
 
 'mainpagetext'      => "'''MediaWiki በትክክል ማስገባቱ ተከናወነ።'''",
 'mainpagedocfooter' => "ስለ ዊኪ ሶፍትዌር ጥቅም ለመረዳት፣ [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] ያንብቡ።
@@ -199,6 +200,7 @@ $messages = array(
 'vector-action-delete'       => 'አጥፋ',
 'vector-action-move'         => 'ለማዛወር',
 'vector-action-protect'      => 'ለመቆለፍ',
+'vector-action-undelete'     => 'አታጥፋ',
 'vector-action-unprotect'    => 'አለመቆለፍ',
 'vector-namespace-category'  => 'መደብ',
 'vector-namespace-help'      => 'እርዳታ ገጽ',
@@ -1324,7 +1326,9 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 
 # Special:Categories
 'categories'                  => 'ምድቦች',
-'categoriespagetext'          => 'በዚሁ ሥራ ዕቅድ ውስጥ የሚከተሉ መደቦች ይኖራሉ።',
+'categoriespagetext'          => 'በዚሁ ሥራ ዕቅድ ውስጥ የሚከተሉ መደቦች ይኖራሉ።
+[[Special:UnusedCategories|Unused categories]] are not shown here.
+Also see [[Special:WantedCategories|wanted categories]].',
 'special-categories-sort-abc' => 'በፊደል ተራ ይደርደሩ',
 
 # Special:LinkSearch
@@ -1375,7 +1379,6 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 # Watchlist
 'watchlist'            => 'የምከታተላቸው ገጾች፤',
 'mywatchlist'          => 'የምከታተላቸው ገጾች፤',
-'watchlistfor'         => "(ለ'''$1''')",
 'nowatchlist'          => 'ዝርዝርዎ ባዶ ነው። ምንም ገጽ ገና አልተጨመረም።',
 'watchlistanontext'    => 'የሚከታተሉት ገጾች ዝርዝርዎን ለመመልከት ወይም ለማስተካከል እባክዎ $1።',
 'watchnologin'         => 'ገና አልገቡም',
@@ -1393,7 +1396,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'notanarticle'         => 'መጣጥፍ አይደለም',
 'notvisiblerev'        => 'ዕትሙ ጠፍቷል',
 'watchnochange'        => 'ከተካከሉት ገጾች አንዳችም በተወሰነው ጊዜ ውስጥ አልተለወጠም።',
-'watchlist-details'    => '{{PLURAL:$1|$1 ገፅ|$1 ገፆች}} በ ምትከተላቸው ገፆች ላይ ፤ የውይይት ገፁን ሳይጨምር።',
+'watchlist-details'    => 'አሁን {{PLURAL:$1|$1 ገፅ|$1 ገፆች}} በምትከታተላቸው ገፆች ላይ አሉ (የውይይት ገፅ ሳይጨመር)።',
 'wlheader-enotif'      => '* የ-ኢሜል ማስታወቂያ እንዲሠራ ተደርጓል።',
 'wlheader-showupdated' => "* መጨረሻ ከጎበኟቸው ጀምሮ የተቀየሩት ገጾች በ'''ጉልህ ፊደላት''' ይታያሉ",
 'watchmethod-recent'   => 'የቅርብ ለውጦችን ለሚከታተሉት ገጾች በመፈለግ',

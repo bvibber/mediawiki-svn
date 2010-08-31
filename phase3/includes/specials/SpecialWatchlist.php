@@ -1,7 +1,6 @@
 <?php
 /**
- * @file
- * @ingroup SpecialPage Watchlist
+ * Implements Special:Watchlist
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,6 +16,9 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage Watchlist
  */
 
 /**
@@ -66,8 +68,7 @@ function wfSpecialWatchlist( $par ) {
 
 	$wgOut->setPageTitle( wfMsg( 'watchlist' ) );
 
-	$sub  = wfMsgExt( 'watchlistfor', 'parseinline', $wgUser->getName() );
-	$sub .= '<br />' . WatchlistEditor::buildTools( $wgUser->getSkin() );
+	$sub  = wfMsgExt( 'watchlistfor2', array( 'parseinline', 'replaceafter' ), $wgUser->getName(), WatchlistEditor::buildTools( $wgUser->getSkin() ) );
 	$wgOut->setSubtitle( $sub );
 
 	if( ( $mode = WatchlistEditor::getMode( $wgRequest, $par ) ) !== false ) {
@@ -386,7 +387,6 @@ function wfSpecialWatchlist( $par ) {
 	}
 	$s .= $list->endRecentChangesList();
 
-	$dbr->freeResult( $res );
 	$wgOut->addHTML( $s );
 }
 
@@ -478,7 +478,6 @@ function wlCountItems( &$user, $talk = true ) {
 		array( 'wl_user' => $user->mId ), 'wlCountItems' );
 	$row = $dbr->fetchObject( $res );
 	$count = $row->count;
-	$dbr->freeResult( $res );
 
 	# Halve to remove talk pages if needed
 	if( !$talk )

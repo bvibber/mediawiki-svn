@@ -52,7 +52,7 @@ $messages = array(
 'tog-editsection'             => '«Тӳрлет» ссылкăна кашни пайра кăтартмалла',
 'tog-editsectiononrightclick' => 'Шăшин сылтăм пускăчне пуссан статья пайне тӳрлетмелле (JavaScript)',
 'tog-showtoc'                 => 'Тупмаллине кăтартмалла (3, е ытларах заголовок пулсан)',
-'tog-rememberpassword'        => 'Мана ку компьютер çинче астуса хăвармалла',
+'tog-rememberpassword'        => 'Мана ку компьютер çинче астуса хăвармалла (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Эпĕ тунă страницăсене сăнав списокне кĕртмелле',
 'tog-watchdefault'            => 'Тӳрлетнĕ страницăсене сăнав списокне кĕртмелле',
 'tog-watchmoves'              => 'Страница ятне эпĕ улаштарсан вĕсене сăнав списокне кĕртмелле',
@@ -404,7 +404,7 @@ $1',
 'yourname'                   => 'Сирĕн ят',
 'yourpassword'               => 'Вăрттăн сăмах:',
 'yourpasswordagain'          => 'Вăрттăн сăмах тепре çырăр:',
-'remembermypassword'         => 'Ку компьютер çинче мана астуса хăвармалла',
+'remembermypassword'         => 'Ку компьютер çинче мана астуса хăвармалла (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Сирĕн домен',
 'login'                      => 'Сайта кĕр',
 'nav-login-createaccount'    => 'Сайта кĕр / регистрацилен',
@@ -523,10 +523,11 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'userjspreview'          => "'''Астăвăр, ку сирĕн javascript-файлăн малтанхи курăмĕ кăна, ăна хальлĕхе çырса хуман!'''",
 'updated'                => '(Çĕнелнĕ)',
 'note'                   => "'''Ăнлантаркăч:'''",
-'previewnote'            => "'''Ку страницăна халлěхе çырса хуман. Эсир ку страницă мěнле пулассине кăна куратăр!'''",
+'previewnote'            => "'''Ку страницăна халлĕхе çырса хуман.'''
+Эсир ку страница мĕнле пулассине кăна куратăр!",
 'previewconflict'        => 'Çӳлти чӳречере эсир халĕ çырса хурсан текст епле курăннине куратăр.',
 'editing'                => '$1 тӳрлетни',
-'editingsection'         => '$1 тӳрлетни (статья разделě)',
+'editingsection'         => '$1 тӳрлетни (статья пайĕ)',
 'editingcomment'         => '$1 тӳрлетни (кӗске анлантарӑвӗ)',
 'editconflict'           => 'Тӳрлетнĕ вăхăтра тавлашу тухрĕ: $1',
 'yourtext'               => 'Сирĕн текст',
@@ -559,8 +560,8 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'currentrev'          => 'Хальхи верси',
 'revisionasof'        => '$1 сăнташ',
 'revision-info'       => '$1 версийĕ; $2',
-'previousrevision'    => '&larr;Малтанхи верси',
-'nextrevision'        => 'Çěнěрех верси→',
+'previousrevision'    => '← Малтанхи сăнташ',
+'nextrevision'        => 'Тепĕр сăнташ →',
 'currentrevisionlink' => 'хальхи верси çине куç',
 'cur'                 => 'хальхи',
 'next'                => 'тепěр',
@@ -820,6 +821,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'randomredirect' => 'Ăнсăртран илнĕ куçару',
 
 # Statistics
+'statistics'              => 'Статистика',
 'statistics-header-users' => 'Хутшăнакансен статистики',
 'statistics-mostpopular'  => 'Чи нумай пăхакан страницăсем',
 
@@ -840,6 +842,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|байт|байт}}',
+'nlinks'                  => '$1 {{PLURAL:$1|каçă|каçă}}',
 'nviews'                  => '$1 хут пăхнă',
 'specialpage-empty'       => 'Ку страница пушă',
 'lonelypages'             => 'Тăлăх страницăсем',
@@ -864,7 +867,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'protectedpages'          => 'хӳтĕленĕ страницăсем',
 'protectedtitles'         => 'Юраман ятсем',
 'listusers'               => 'Хутшăнакансен списокĕ',
-'newpages'                => 'Çěнě страницăсем',
+'newpages'                => 'Çĕнĕ страницăсем',
 'newpages-username'       => 'Хутшăнакан:',
 'ancientpages'            => 'Чи кивĕ статьясем',
 'move'                    => 'Ятне улăштар',
@@ -897,7 +900,9 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 
 # Special:Categories
 'categories'                    => 'Категорисем',
-'categoriespagetext'            => 'Викинче çак категорисем пур.',
+'categoriespagetext'            => 'Викинче çак категорисем пур.
+[[Special:UnusedCategories|Unused categories]] are not shown here.
+Also see [[Special:WantedCategories|wanted categories]].',
 'special-categories-sort-count' => 'шучĕ тăрăх йĕркеле',
 'special-categories-sort-abc'   => 'алфавит тăрăх йĕркеле',
 
@@ -1047,7 +1052,7 @@ $1 хутшăнакан патне, е ытти [[{{MediaWiki:Grouppage-sysop}}|
 'newtitle'                => 'Çĕнĕ ят',
 'move-watch'              => 'Ку страницăна сăнамаллисем шутне хуш',
 'movepagebtn'             => 'Страницăн ятне улăштар',
-'pagemovedsub'            => 'Куçарас ěç тěрěс иртрě',
+'pagemovedsub'            => 'Куçарас ĕç тĕрĕс иртрĕ',
 'articleexists'           => 'Ку ятлă статья е пур, е ун пек ят пама юрамасть.
 Тархасшăн, статьяна урăх ят парăр.',
 'talkexists'              => "'''Страницăн ятне улăштартăмăр, анчах та сӳтсе явмалли страницăн ятне улăштараймарăмар — вăл ятлă страницăна маларах хатĕрленĕ. Тархасшăн, вĕсене хăвăр тĕллĕн çыпăçтарăр.'''",

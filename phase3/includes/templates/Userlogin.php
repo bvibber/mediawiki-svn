@@ -1,9 +1,15 @@
 <?php
 /**
- * @defgroup Templates Templates
+ * Html forms for user login and account creation
+ *
  * @file
  * @ingroup Templates
  */
+
+/**
+ * @defgroup Templates Templates
+ */
+
 if( !defined( 'MEDIAWIKI' ) ) die( -1 );
 
 /**
@@ -148,6 +154,8 @@ class UsercreateTemplate extends QuickTemplate {
 	</div>
 	<div class="visualClear"></div>
 <?php } ?>
+
+<div id="signupstart"><?php $this->msgWiki( 'signupstart' ); ?></div>
 <div id="userlogin">
 
 <form name="userlogin2" id="userlogin2" method="post" action="<?php $this->text('action') ?>">

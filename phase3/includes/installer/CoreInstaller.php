@@ -1,4 +1,10 @@
 <?php
+/**
+ * Base core installer.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * Base core installer class.
@@ -171,7 +177,7 @@ abstract class CoreInstaller extends Installer {
 	/**
 	 * TODO: document
 	 *
-	 * @param Status $status
+	 * @param $status Status
 	 */
 	public abstract function showStatusMessage( Status $status );
 
@@ -186,7 +192,7 @@ abstract class CoreInstaller extends Installer {
 
 		// Load the installer's i18n file.
 		$wgExtensionMessagesFiles['MediawikiInstaller'] =
-			'./includes/installer/Installer.i18n.php';
+			dirname( __FILE__ ) . '/Installer.i18n.php';
 
 		// Having a user with id = 0 safeguards us from DB access via User::loadOptions().
 		$wgUser = User::newFromId( 0 );
@@ -200,7 +206,7 @@ abstract class CoreInstaller extends Installer {
 			$this->settings[$var] = $GLOBALS[$var];
 		}
 
-		foreach ( $this->dbTypes as $type ) {
+		foreach ( self::getDBTypes() as $type ) {
 			$installer = $this->getDBInstaller( $type );
 
 			if ( !$installer->isCompiled() ) {
@@ -271,8 +277,6 @@ abstract class CoreInstaller extends Installer {
 			}
 		}
 
-		$this->setVar( '_Extensions', $exts );
-
 		return $exts;
 	}
 
@@ -309,8 +313,8 @@ abstract class CoreInstaller extends Installer {
 	/**
 	 * Actually perform the installation.
 	 *
-	 * @param Array $startCB A callback array for the beginning of each step
-	 * @param Array $endCB A callback array for the end of each step
+	 * @param $startCB A callback array for the beginning of each step
+	 * @param $endCB A callback array for the end of each step
 	 *
 	 * @return Array of Status objects
 	 */
@@ -433,6 +437,9 @@ abstract class CoreInstaller extends Installer {
 		// Extended debugging. Maybe disable before release?
 		$GLOBALS['wgShowSQLErrors'] = true;
 		$GLOBALS['wgShowDBErrorBacktrace'] = true;
+
+		// Allow multiple ob_flush() calls
+		$GLOBALS['wgDisableOutputCompression'] = true;
 	}
 
 	/**

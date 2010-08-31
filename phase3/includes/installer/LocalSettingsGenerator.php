@@ -1,7 +1,13 @@
 <?php
+/**
+ * Generator for LocalSettings.php file.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
- * Class for manipulating LocalSettings.
+ * Class for generating LocalSettings.php file.
  *
  * @ingroup Deployment
  * @since 1.17
@@ -156,7 +162,7 @@ class LocalSettingsGenerator {
 		}
 		
 		$rights = $this->values['wgRightsUrl'] ? '' : '#';
-		$hashedUploads = $this->safeMode ? '#' : '';
+		$hashedUploads = $this->safeMode ? '' : '#';
 		
 		switch( $this->values['wgMainCacheType'] ) {
 			case 'anything':
@@ -190,9 +196,6 @@ if( defined( 'MW_INSTALL_PATH' ) ) {
 } else {
 	\$IP = dirname( __FILE__ );
 }
-
-\$path = array( \$IP, \"\$IP/includes\", \"\$IP/languages\" );
-set_include_path( implode( PATH_SEPARATOR, \$path ) . PATH_SEPARATOR . get_include_path() );
 
 require_once( \"\$IP/includes/DefaultSettings.php\" );
 

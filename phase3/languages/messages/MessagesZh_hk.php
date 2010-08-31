@@ -7,6 +7,7 @@
  * @ingroup Language
  * @file
  *
+ * @author Horacewai2
  * @author Kayau
  * @author PhiLiP
  * @author Wong128hk
@@ -17,6 +18,12 @@
 $fallback = 'zh-hant';
 
 $fallback8bitEncoding = 'Big5-HKSCS';
+
+$specialPageAliases = array(
+	'Unblock'                   => array( '解除封禁' ),
+	'RevisionMove'              => array( '移動版本' ),
+	'ComparePages'              => array( '頁面比較' ),
+);
 
 $messages = array(
 # User preference toggles
@@ -35,6 +42,8 @@ $messages = array(
 'october'   => '十月',
 'november'  => '十一月',
 'december'  => '十二月',
+
+'mytalk' => '我的討論頁',
 
 'tagline'          => '從 {{SITENAME}}',
 'search'           => '搜尋',
@@ -60,7 +69,7 @@ $messages = array(
 *: ''地址、電話號碼、身份證號碼等。''",
 
 # Diffs
-'editundo' => '回退',
+'editundo' => '撤銷',
 
 # Search results
 'search-mwsuggest-disabled' => '沒有意見',

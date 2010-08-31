@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Categories
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,32 +16,41 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
- */
-
-/**
+ *
  * @file
  * @ingroup SpecialPage
  */
 
-function wfSpecialCategories( $par=null ) {
-	global $wgOut, $wgRequest;
+/**
+ * @ingroup SpecialPage
+ */
+class SpecialCategories extends SpecialPage {
 
-	if( $par == '' ) {
-		$from = $wgRequest->getText( 'from' );
-	} else {
-		$from = $par;
+	function __construct() {
+		parent::__construct( 'Categories' );
 	}
-	$cap = new CategoryPager( $from );
-	$cap->doQuery();
-	$wgOut->addHTML(
-		Xml::openElement( 'div', array('class' => 'mw-spcontent') ) .
-		wfMsgExt( 'categoriespagetext', array( 'parse' ), $cap->getNumRows() ) .
-		$cap->getStartForm( $from ) .
-		$cap->getNavigationBar() .
-		'<ul>' . $cap->getBody() . '</ul>' .
-		$cap->getNavigationBar() .
-		Xml::closeElement( 'div' )
-	);
+
+	function execute( $par ) {
+		global $wgOut, $wgRequest;
+
+		$this->setHeaders();
+		$this->outputHeader();
+
+		$from = $wgRequest->getText( 'from', $par );
+
+		$cap = new CategoryPager( $from );
+		$cap->doQuery();
+
+		$wgOut->addHTML(
+			Html::openElement( 'div', array( 'class' => 'mw-spcontent' ) ) .
+			wfMsgExt( 'categoriespagetext', array( 'parse' ), $cap->getNumRows() ) .
+			$cap->getStartForm( $from ) .
+			$cap->getNavigationBar() .
+			'<ul>' . $cap->getBody() . '</ul>' .
+			$cap->getNavigationBar() .
+			Html::closeElement( 'div' )
+		);
+	}
 }
 
 /**

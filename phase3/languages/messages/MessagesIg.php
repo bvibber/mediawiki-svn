@@ -10,6 +10,54 @@
  * @author Ukabia
  */
 
+$namespaceNames = array(
+	NS_MEDIA            => 'Nká',
+	NS_SPECIAL          => 'Ihü_kárírí',
+	NS_TALK             => 'Okwu',
+	NS_USER             => 'Ọ\'bànifé',
+	NS_USER_TALK        => 'Okwu_ọ\'bànifé',
+	NS_PROJECT_TALK     => 'Okwu_$1',
+	NS_FILE             => 'Ákwúkwó_orünotu',
+	NS_FILE_TALK        => 'Okwu_ákwúkwó_orünotu',
+	NS_MEDIAWIKI        => 'NkáWiki',
+	NS_MEDIAWIKI_TALK   => 'Okwu_NkáWiki',
+	NS_TEMPLATE         => 'Àtụ',
+	NS_TEMPLATE_TALK    => 'Okwu_àtụ',
+	NS_HELP             => 'Nkwádọ',
+	NS_HELP_TALK        => 'Okwu_nkwádọ',
+	NS_CATEGORY         => 'Ébéonọr',
+	NS_CATEGORY_TALK    => 'Okwu_ébéonọr',
+);
+
+$specialPageAliases = array(
+	'Userlogin'                 => array( 'Ọ\'bàniféÍBànyé' ),
+	'Userlogout'                => array( 'Ọ\'bàniféÍFụtá' ),
+	'Preferences'               => array( 'Ọtúm_dọsẹrẹ_ihem' ),
+	'Upload'                    => array( 'TinyéIheNélú' ),
+	'Allpages'                  => array( 'IhüNílé' ),
+	'Specialpages'              => array( 'IhüKá' ),
+	'Export'                    => array( 'MēKọFùtá' ),
+	'Undelete'                  => array( 'Ábàkàshịkwàlà' ),
+	'Import'                    => array( 'BàÍfé' ),
+	'Mypage'                    => array( 'IhüNkèm' ),
+	'Mytalk'                    => array( 'OkwuNkèm' ),
+	'Filepath'                  => array( 'UzọrAkwúkwóOrünotu' ),
+	'Blankpage'                 => array( 'HịcháIhü' ),
+);
+
+$magicWords = array(
+	'redirect'              => array( '0', '#KÚFÙ', '#REDIRECT' ),
+	'fullpagename'          => array( '1', 'ÁHÀNÍLÉNKÈIHÜ', 'FULLPAGENAME' ),
+	'msg'                   => array( '0', 'OZI:', 'MSG:' ),
+	'img_right'             => array( '1', 'áká_ịkẹngạ', 'right' ),
+	'img_left'              => array( '1', 'áká_èkpè', 'left' ),
+	'img_top'               => array( '1', 'élú', 'top' ),
+	'img_middle'            => array( '1', 'ẹtítì', 'middle' ),
+	'img_text_bottom'       => array( '1', 'okpúrù-ede', 'text-bottom' ),
+	'displaytitle'          => array( '1', 'ZIÍSHÍ', 'DISPLAYTITLE' ),
+	'pagesize'              => array( '1', 'ÀSÁIHÜ', 'PAGESIZE' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'               => 'Okpürụ ahiri jikodo:',
@@ -439,6 +487,10 @@ Biko meríáríá ya.',
 'usernamehasherror'       => "Áhè ọ'bànifé ènwéghịkị nwé nkárí",
 'loginlanguagelabel'      => 'Asụsụ: $1',
 
+# JavaScript password checks
+'password-strength-good' => 'Ómá',
+'password-retype'        => 'Detuari mkpurụ okwu ejị a gafẹ',
+
 # Password reset dialog
 'resetpass'                 => 'Gbanwe okwu éjị à gáfe',
 'resetpass_header'          => 'Gbanwe okwúngáfè nke bùwá',
@@ -570,7 +622,7 @@ Ndetu banyéré nkè ogẹ nso di na okpúrụ màkà ádịamámá:",
 'cantcreateaccounttitle' => 'Enwéghịkị ke buwá',
 
 # History pages
-'viewpagelogs'           => 'Zi ndet ncheta màkà ihü a',
+'viewpagelogs'           => 'Zi ndetu ncheta màkà ihü a',
 'nohistory'              => 'Ákíkó mbu màkà orü àdíghị màkà ihüá.',
 'currentrev'             => 'Kuwaria nke ubüwạ',
 'currentrev-asof'        => 'Kuwaria shi mgbe $1',
@@ -1085,7 +1137,6 @@ Ubwa, o na ga [[$2]].',
 # Watchlist
 'watchlist'         => 'Ndetu ihem ne lé',
 'mywatchlist'       => 'Ndetu ihem ne lé',
-'watchlistfor'      => "(maka '''$1''')",
 'addedwatch'        => 'Tìrì na ndétu nlé',
 'addedwatchtext'    => "Ihü \"[[:\$1]]\" à bányéré [[Special:Watchlist|ndétu ihe Í ne lé]].
 Ihe gi gbanwe na ógè gi bya nà ihüá na ihü okwu ya gi di ndétu ngáhù, na ihü gi da na mkpụrụ édé '''sírí íke''' ímé [[Special:RecentChanges|ndétu gbanwere méré na ogè nso]] ka ȯ dí òfelè Í hü ya.",
@@ -1296,7 +1347,7 @@ Biko tinyé ha nà áká gi.'''",
 'movedto'                 => 'ó shifụrụ gá',
 'movetalk'                => 'Páfù ihü okwu nke ya',
 'move-subpages'           => 'Páfù ihü-n-ímé (nè rú $1)',
-'move-talk-subpages'      => 'Páfù ihü-n-ímé nke ihü okwu (nè rú &1)',
+'move-talk-subpages'      => 'Páfù ihü-n-ímé nke ihü okwu (nè rú $1)',
 'movepage-page-moved'     => 'Ihü $1 a páfùrù gá $2.',
 'movepage-page-unmoved'   => 'Ihü $1 énweghịkị páfù gá $2.',
 '1movedto2'               => 'páfùrù [[$1]] gá [[$2]]',

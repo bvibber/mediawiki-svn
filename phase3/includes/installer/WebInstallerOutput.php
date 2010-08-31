@@ -1,4 +1,10 @@
 <?php
+/**
+ * Output handler for the web installer.
+ *
+ * @file
+ * @ingroup Deployment
+ */
 
 /**
  * Output class modelled on OutputPage.
@@ -30,7 +36,7 @@ class WebInstallerOutput {
 	/**
 	 * Constructor.
 	 * 
-	 * @param WebInstaller $parent
+	 * @param $parent WebInstaller
 	 */
 	public function __construct( WebInstaller $parent ) {
 		$this->parent = $parent;

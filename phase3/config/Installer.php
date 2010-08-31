@@ -920,12 +920,9 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			if( !$ok ) { continue; }
 		}
 		else if ( $conf->DBtype == 'mssql' ) {
-			error_reporting( E_ALL );
-			$wgSuperUser = '';
-			# # Possible connect as a superuser
+			# Possible connect as a superuser
 			if ( $useRoot ) {
-				$wgDBsuperuser = $conf->RootUser;
-				echo( "<li>Attempting to connect to database \"{$conf->DBtype}\" as superuser \"{$wgDBsuperuser}\"" );
+				echo( "<li>Attempting to connect to database \"{$conf->DBtype}\" as superuser \"{$conf->RootUser}\"" );
 				$wgDatabase = $dbc->newFromParams(
 										$conf->DBserver,
 										$conf->RootUser,
@@ -941,7 +938,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 					$errs['RootPW'] = 'and password';
 					continue;
 				}
-				$wgDatabase->initial_setup( $conf->RootPW, $conf->DBtype );
+				$wgDatabase->initial_setup( $conf->DBname, $conf->DBuser, $conf->DBpassword );
 			}
 			echo( "<li>Attempting to connect to database \"{$wgDBname}\" as \"{$wgDBuser}\"..." );
 			$wgDatabase = $dbc->newFromParams(
@@ -1080,7 +1077,6 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			}
 		} else { # not mysql
 			error_reporting( E_ALL | E_STRICT );
-			$wgSuperUser = '';
 			## Possible connect as a superuser
 			// Changed !mysql to postgres check since it seems to only apply to postgres
 			if( $useRoot && $conf->DBtype == 'postgres' ) {
@@ -1256,7 +1252,6 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 						break;
 					}
 				}
-				$wgDatabase->freeResult( $res );
 				if ( !$found && $conf->DBengine != 'MyISAM' ) {
 					echo "<li><strong>Warning:</strong> " . htmlspecialchars( $conf->DBengine ) .
 						" storage engine not available, " .
@@ -1603,7 +1598,7 @@ if( count( $errs ) ) {
 	}
 ?>
 	<ul class='plain'><?php
-		database_picker($conf);
+		database_picker($ourdb, $conf);
 	?></ul>
 	</div>
 
@@ -1644,7 +1639,7 @@ if( count( $errs ) ) {
 		</p>
 	</div>
 
-	<?php database_switcher('mysql'); ?>
+	<?php database_switcher($ourdb, 'mysql'); ?>
 	<div class="config-input"><?php aField( $conf, "DBprefix", "Database table prefix:" ); ?></div>
 	<div class="config-desc">
 		<p>If you need to share one database between multiple wikis, or
@@ -1683,7 +1678,7 @@ if( count( $errs ) ) {
 	</p>
 	</fieldset>
 
-	<?php database_switcher('postgres'); ?>
+	<?php database_switcher($ourdb, 'postgres'); ?>
 	<div class="config-input"><?php aField( $conf, "DBport", "Database port:" ); ?></div>
 	<div class="config-input"><?php aField( $conf, "DBpgschema", "Schema for mediawiki:" ); ?></div>
 	<div class="config-input"><?php aField( $conf, "DBts2schema", "Schema for tsearch2:" ); ?></div>
@@ -1694,7 +1689,7 @@ if( count( $errs ) ) {
 	</div>
 	</fieldset>
 
-	<?php database_switcher('sqlite'); ?>
+	<?php database_switcher($ourdb, 'sqlite'); ?>
 	<div class="config-input"><?php
 		aField( $conf, "SQLiteDataDir", "SQLite data directory:" );
 	?></div>
@@ -1707,13 +1702,14 @@ if( count( $errs ) ) {
 	</fieldset>
 
 	
-	<?php database_switcher( 'mssql' ); ?>
+	<?php database_switcher($ourdb, 'mssql' ); ?>
 	<div class="config-desc">
 		<p>No MS SQL Server specific options at this time.</p>
 	</div>
+	</fieldset>
 	
 	
-	<?php database_switcher('ibm_db2'); ?>
+	<?php database_switcher($ourdb, 'ibm_db2'); ?>
 	<div class="config-input"><?php
 		aField( $conf, "DBport_db2", "Database port:" );
 	?></div>
@@ -1732,7 +1728,7 @@ if( count( $errs ) ) {
 	</div>
 	</fieldset>
 
-	<?php database_switcher('oracle'); ?>
+	<?php database_switcher($ourdb, 'oracle'); ?>
 	<div class="config-input"><?php aField( $conf, "DBprefix_ora", "Database table prefix:" ); ?></div>
 	<div class="config-desc">
 		<p>If you need to share one database between multiple wikis, or
@@ -2222,8 +2218,7 @@ function testMemcachedServer( $server ) {
 	return $errstr;
 }
 
-function database_picker($conf) {
-	global $ourdb;
+function database_picker($ourdb, $conf) {
 	print "\n";
 	foreach(array_keys($ourdb) as $db) {
 		if ($ourdb[$db]['havedriver']) {
@@ -2235,8 +2230,7 @@ function database_picker($conf) {
 	print "\n\t";
 }
 
-function database_switcher($db) {
-	global $ourdb;
+function database_switcher($ourdb, $db) {
 	$color = $ourdb[$db]['bgcolor'];
 	$full = $ourdb[$db]['fullname'];
 	print "<fieldset id='$db' style='clear:both'><legend>$full-specific options</legend>\n";

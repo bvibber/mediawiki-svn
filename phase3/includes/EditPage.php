@@ -96,7 +96,7 @@ class EditPage {
 	 * @todo document
 	 * @param $article
 	 */
-	function EditPage( $article ) {
+	function __construct( $article ) {
 		$this->mArticle =& $article;
 		$this->mTitle = $article->getTitle();
 		$this->action = 'submit';
@@ -904,20 +904,11 @@ class EditPage {
 
 			$isComment = ( $this->section == 'new' );
 
-			$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
-				( $this->minoredit ? EDIT_MINOR : 0 ) |
-				( $bot ? EDIT_FORCE_BOT : 0 );
-			$status = $this->mArticle->doEdit( $this->textbox1, $this->summary, $flags,
-				false, null, $this->watchthis, $isComment, '', true );
+			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
+				$this->minoredit, $this->watchthis, false, $isComment, $bot );
 
-			if ( $status->isOK() ) {
-				wfProfileOut( __METHOD__ );
-				return self::AS_SUCCESS_NEW_ARTICLE;
-			} else {
-				$result = $status->getErrorsArray();
-			}
 			wfProfileOut( __METHOD__ );
-			return self::AS_END;
+			return self::AS_SUCCESS_NEW_ARTICLE;
 		}
 
 		# Article exists. Check for edit conflict.
@@ -1059,20 +1050,14 @@ class EditPage {
 			return self::AS_MAX_ARTICLE_SIZE_EXCEEDED;
 		}
 
-		// Update the article here
-		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
-			( $this->minoredit ? EDIT_MINOR : 0 ) |
-			( $bot ? EDIT_FORCE_BOT : 0 );
-		$status = $this->mArticle->doEdit( $text, $this->summary, $flags,
-			false, null, $this->watchthis, false, $sectionanchor, true );
-
-		if ( $status->isOK() )
+		# update the article here
+		if ( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
+			$this->watchthis, $bot, $sectionanchor ) )
 		{
 			wfProfileOut( __METHOD__ );
 			return self::AS_SUCCESS_UPDATE;
 		} else {
 			$this->isConflict = true;
-			$result = $status->getErrorsArray();
 		}
 		wfProfileOut( __METHOD__ );
 		return self::AS_END;
@@ -1574,13 +1559,13 @@ HTML
 	protected function showFormBeforeText() {
 		global $wgOut;
 		$section = htmlspecialchars( $this->section );
-		$wgOut->addHTML( <<<INPUTS
+		$wgOut->addHTML( <<<HTML
 <input type='hidden' value="{$section}" name="wpSection" />
 <input type='hidden' value="{$this->starttime}" name="wpStarttime" />
 <input type='hidden' value="{$this->edittime}" name="wpEdittime" />
 <input type='hidden' value="{$this->scrolltop}" name="wpScrolltop" id="wpScrolltop" />
 
-INPUTS
+HTML
 		);
 		if ( !$this->checkUnicodeCompliantBrowser() )
 			$wgOut->addHTML(Xml::hidden( 'safemode', '1' ));
@@ -2297,7 +2282,7 @@ INPUTS
 			);
 			$checkboxes['minor'] =
 				Xml::check( 'wpMinoredit', $checked['minor'], $attribs ) .
-				"&#160;<label for='wpMinoredit'" . $skin->tooltip( 'minoredit', 'withaccess' ) . ">{$minorLabel}</label>";
+				"&#160;<label for='wpMinoredit' id='mw-editpage-minoredit'" . $skin->tooltip( 'minoredit', 'withaccess' ) . ">{$minorLabel}</label>";
 		}
 
 		$watchLabel = wfMsgExt( 'watchthis', array( 'parseinline' ) );
@@ -2310,7 +2295,7 @@ INPUTS
 			);
 			$checkboxes['watch'] =
 				Xml::check( 'wpWatchthis', $checked['watch'], $attribs ) .
-				"&#160;<label for='wpWatchthis'" . $skin->tooltip( 'watch', 'withaccess' ) . ">{$watchLabel}</label>";
+				"&#160;<label for='wpWatchthis' id='mw-editpage-watch'" . $skin->tooltip( 'watch', 'withaccess' ) . ">{$watchLabel}</label>";
 		}
 		wfRunHooks( 'EditPageBeforeEditChecks', array( &$this, &$checkboxes, &$tabindex ) );
 		return $checkboxes;

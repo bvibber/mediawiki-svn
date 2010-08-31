@@ -764,6 +764,15 @@ Odota ennen kuin yrität uudelleen.',
 'loginlanguagelabel'         => 'Kieli: $1',
 'suspicious-userlogout'      => 'Pyyntösi kirjautua ulos evättiin, koska se näytti rikkinäisen selaimen tai välimuistipalvelimen lähettämältä.',
 
+# JavaScript password checks
+'password-strength'            => 'Arvioitu salasanan vahvuus: $1',
+'password-strength-bad'        => 'HUONO',
+'password-strength-mediocre'   => 'keskinkertainen',
+'password-strength-acceptable' => 'hyväksyttävä',
+'password-strength-good'       => 'hyvä',
+'password-retype'              => 'Salasana uudelleen',
+'password-retype-mismatch'     => 'Salasanat eivät vastaa toisiaan',
+
 # Password reset dialog
 'resetpass'                 => 'Muuta salasana',
 'resetpass_announce'        => 'Kirjauduit sisään sähköpostitse lähetetyllä väliaikaissalasanalla. Päätä sisäänkirjautuminen asettamalla uusi salasana.',
@@ -1170,6 +1179,7 @@ Uuden ja vanhan sivun muutoksien pitää muodostaa jatkumo – ne eivät saa men
 # Diffs
 'history-title'            => 'Sivun $1 muutoshistoria',
 'difference'               => 'Versioiden väliset erot',
+'difference-multipage'     => '(Sivujen välinen eroavaisuus)',
 'lineno'                   => 'Rivi $1:',
 'compareselectedversions'  => 'Vertaile valittuja versioita',
 'showhideselectedversions' => 'Näytä tai piilota valitut versiot',
@@ -2067,7 +2077,6 @@ Lisätietoa yksittäisistä käyttäjäoikeuksista saattaa löytyä [[{{MediaWik
 # Watchlist
 'watchlist'            => 'Tarkkailulista',
 'mywatchlist'          => 'Tarkkailulista',
-'watchlistfor'         => '$1',
 'nowatchlist'          => 'Tarkkailulistallasi ei ole sivuja.',
 'watchlistanontext'    => 'Sinun täytyy $1, jos haluat käyttää tarkkailulistaa.',
 'watchnologin'         => 'Et ole kirjautunut sisään',
@@ -3295,6 +3304,12 @@ Voit myös muokata listaa [[Special:Watchlist/edit|tavalliseen tapaan]].',
 'version-hook-subscribedby'        => 'Kytkökset',
 'version-version'                  => '(Versio $1)',
 'version-license'                  => 'Lisenssi',
+'version-poweredby-others'         => 'muut',
+'version-license-info'             => 'MediaWiki on vapaa ohjelmisto – voit levittää sitä ja/tai muokata sitä Free Software Foundationin GNU General Public Licensen ehdoilla, joko version 2 tai halutessasi mikä tahansa myöhemmän version mukaisesti.
+
+MediaWikiä levitetään siinä toivossa, että se olisi hyödyllinen, mutta ILMAN MITÄÄN TAKUUTA; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. Katso lisätietoja GNU General Public Licensestä.
+
+Sinun olisi pitänyt saada [{{SERVER}}{{SCRIPTPATH}}/COPYING kopio GNU General Public Licensestä] tämän ohjelman mukana. Jos et saanut kopiota, kirjoita siitä osoitteeseen Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA tai [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html lue se Internetissä].',
 'version-software'                 => 'Asennettu ohjelmisto',
 'version-software-product'         => 'Tuote',
 'version-software-version'         => 'Versio',

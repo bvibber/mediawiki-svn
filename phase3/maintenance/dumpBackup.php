@@ -79,6 +79,9 @@ Actions:
   --full      Dump all revisions of every page.
   --current   Dump only the latest revision of every page.
   --logs      Dump all log events.
+  --stable    Stable versions of pages?
+  --pagelist=<file>
+              Where <file> is a list of page titles to be dumped
 
 Options:
   --quiet     Don't dump status reports to stderr.

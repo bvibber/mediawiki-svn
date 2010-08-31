@@ -1,4 +1,9 @@
 <?php
+/**
+ * Date formatter
+ *
+ * @file
+ */
 
 /**
  * Date formatter, recognises dates in plain text and formats them accoding to user preferences.
@@ -29,7 +34,7 @@ class DateFormatter
 	/**
 	 * @todo document
 	 */
-	function DateFormatter() {
+	function __construct() {
 		global $wgContLang;
 
 		$this->monthNames = $this->getMonthRegex();

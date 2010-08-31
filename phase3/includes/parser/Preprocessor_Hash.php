@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Preprocessor using PHP arrays
+ *
+ * @file
+ * @ingroup Parser
+ */
+ 
 /**
  * Differences from DOM schema:
  *   * attribute nodes are children
@@ -853,7 +859,6 @@ class PPFrame_Hash implements PPFrame {
 			$title = $this->title;
 		}
 		if ( $args !== false ) {
-			$xpath = false;
 			if ( $args instanceof PPNode_Hash_Array ) {
 				$args = $args->value;
 			} elseif ( !is_array( $args ) ) {

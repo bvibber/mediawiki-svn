@@ -1,6 +1,8 @@
 <?php
 /**
- * Copyright (C) 2010 Derk-Jan Hartman <hartman@videolan.org>
+ * Implements Special:ComparePages
+ *
+ * Copyright © 2010 Derk-Jan Hartman <hartman@videolan.org>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,10 +18,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
- * implements Special:ComparePages
+ * Implements Special:ComparePages
+ *
  * @ingroup SpecialPage
  */
 class SpecialComparePages extends SpecialPage {
@@ -45,7 +51,6 @@ class SpecialComparePages extends SpecialPage {
 		$opts->add( 'rev1', '' );
 		$opts->add( 'rev2', '' );
 		$opts->add( 'action', '' );
-		$opts->add( 'diffonly', '' );
 
 		// Set values
 		$opts->fetchValuesFromRequest( $wgRequest );
@@ -93,13 +98,13 @@ class SpecialComparePages extends SpecialPage {
 
 		if( $this->opts->getValue( 'rev1' ) && $this->opts->getValue( 'rev2' ) ) {
 			$title = Title::newFromText( $this->opts->getValue( 'page2' ) );
-			$de = new DifferenceEngine( $title,
+			$de = new DifferenceEngine( null,
 				$this->opts->getValue( 'rev1' ),
 				$this->opts->getValue( 'rev2' ),
 				null, // rcid
 				( $this->opts->getValue( 'action' ) == 'purge' ),
 				false );
-			$de->showDiffPage( (bool)$this->opts->getValue( 'diffonly' ) );
+			$de->showDiffPage( true );
 		}
 	}
 

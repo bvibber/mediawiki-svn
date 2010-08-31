@@ -1,10 +1,14 @@
 <?php
 /**
+ * Generic handler for bitmap images
+ *
  * @file
  * @ingroup Media
  */
 
 /**
+ * Generic handler for bitmap images
+ *
  * @ingroup Media
  */
 class BitmapHandler extends ImageHandler {
@@ -114,13 +118,17 @@ class BitmapHandler extends ImageHandler {
 			$quality = '';
 			$sharpen = '';
 			$scene = false;
-			$animation = '';
+			$animation_pre = '';
+			$animation_post = '';
+			$decoderHint = '';
 			if ( $mimeType == 'image/jpeg' ) {
 				$quality = "-quality 80"; // 80%
 				# Sharpening, see bug 6193
 				if ( ( $physicalWidth + $physicalHeight ) / ( $srcWidth + $srcHeight ) < $wgSharpenReductionThreshold ) {
 					$sharpen = "-sharpen " . wfEscapeShellArg( $wgSharpenParameter );
 				}
+				// JPEG decoder hint to reduce memory, available since IM 6.5.6-2
+				$decoderHint = "-define jpeg:size={$physicalWidth}x{$physicalHeight}";
 			} elseif ( $mimeType == 'image/png' ) {
 				$quality = "-quality 95"; // zlib 9, adaptive filtering
 			} elseif( $mimeType == 'image/gif' ) {
@@ -128,9 +136,14 @@ class BitmapHandler extends ImageHandler {
 					// Extract initial frame only; we're so big it'll
 					// be a total drag. :P
 					$scene = 0;
-				} else {
+				} elseif( $this->isAnimatedImage( $image ) ) {
 					// Coalesce is needed to scale animated GIFs properly (bug 1017).
-					$animation = ' -coalesce ';
+					$animation_pre = '-coalesce';
+					// We optimize the output, but -optimize is broken,
+					// use optimizeTransparency instead (bug 11822)
+					if( version_compare( $this->getMagickVersion(), "6.3.5" ) >= 0 ) {
+						$animation_post = '-fuzz 5% -layers optimizeTransparency +map';
+					}
 				}
 			}
 
@@ -140,26 +153,25 @@ class BitmapHandler extends ImageHandler {
 				$tempEnv = '';
 			}
 
-			# Specify white background color, will be used for transparent images
-			# in Internet Explorer/Windows instead of default black.
-
-			# Note, we specify "-size {$physicalWidth}" and NOT "-size {$physicalWidth}x{$physicalHeight}".
-			# It seems that ImageMagick has a bug wherein it produces thumbnails of
-			# the wrong size in the second case.
-
 			$cmd  = 
 				$tempEnv .
+				// Use one thread only, to avoid deadlock bugs on OOM
+				'OMP_NUM_THREADS=1 ' .
 				wfEscapeShellArg( $wgImageMagickConvertCommand ) .
-				" {$quality} -background white -size {$physicalWidth} ".
+				// Specify white background color, will be used for transparent images
+				// in Internet Explorer/Windows instead of default black.
+				" {$quality} -background white".
+				" {$decoderHint} " .
 				wfEscapeShellArg( $this->escapeMagickInput( $srcPath, $scene ) ) .
-				$animation .
-				// For the -resize option a "!" is needed to force exact size,
+				" {$animation_pre}" .
+				// For the -thumbnail option a "!" is needed to force exact size,
 				// or ImageMagick may decide your ratio is wrong and slice off
 				// a pixel.
 				" -thumbnail " . wfEscapeShellArg( "{$physicalWidth}x{$physicalHeight}!" ) .
 				// Add the source url as a comment to the thumb.	
 				" -set comment " . wfEscapeShellArg( $this->escapeMagickProperty( $comment ) ) .
-				" -depth 8 $sharpen " .
+				" -depth 8 $sharpen" .
+				" {$animation_post} " .
 				wfEscapeShellArg( $this->escapeMagickOutput( $dstPath ) ) . " 2>&1";
 			wfDebug( __METHOD__.": running ImageMagick: $cmd\n" );
 			wfProfileIn( 'convert' );
@@ -334,6 +346,32 @@ class BitmapHandler extends ImageHandler {
 			$path .= "[$scene]";
 		}
 		return $path;
+	}
+
+	/**
+	 * Retrieve the version of the installed ImageMagick
+	 * You can use PHPs version_compare() to use this value
+	 * Value is cached for one hour.
+	 * @return String representing the IM version.
+	 */
+	protected function getMagickVersion() {
+		global $wgMemc;
+
+		$cache = $wgMemc->get( "imagemagick-version" );
+		if( !$cache ) {
+			global $wgImageMagickConvertCommand;
+			$cmd = wfEscapeShellArg( $wgImageMagickConvertCommand ) . ' -version';
+			wfDebug( __METHOD__.": Running convert -version\n" );
+			$return = wfShellExec( $cmd, $retval );
+			$x = preg_match('/Version: ImageMagick ([0-9]*\.[0-9]*\.[0-9]*)/', $return, $matches);
+			if( $x != 1 ) {
+				wfDebug( __METHOD__.": ImageMagick version check failed\n" );
+				return null;
+			}
+			$wgMemc->set( "imagemagick-version", $matches[1], 3600 );
+			return $matches[1];
+		}
+		return $cache;
 	}
 
 	static function imageJpegWrapper( $dst_image, $thumbPath ) {

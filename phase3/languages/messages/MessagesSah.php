@@ -523,6 +523,15 @@ $2',
 'loginlanguagelabel'         => 'Омугун тыла: $1',
 'suspicious-userlogout'      => 'Сеансы түмүктүүр ыйытыгыҥ ылыныллыбата, тоҕо диэтэххэ браузер эбэтэр кээштыыр прокси алҕас ыыппыт ыйытыктарыгар майгынныыр.',
 
+# JavaScript password checks
+'password-strength'            => '↓ Киирии тыл туругун тургутуу: $1',
+'password-strength-bad'        => '↓ МӨЛТӨХ',
+'password-strength-mediocre'   => '↓ орто',
+'password-strength-acceptable' => '↓ барсар',
+'password-strength-good'       => '↓ үчүгэй',
+'password-retype'              => '↓ Киирии тылгын хатылаа',
+'password-retype-mismatch'     => '↓ Киирии тыллар сөп түбэспэттэр',
+
 # Password reset dialog
 'resetpass'                 => 'Киирии тылы уларытыы',
 'resetpass_announce'        => 'Бу быстах кэмҥэ туттуллар киирии тылынан киирдиҥ. Түмүккэ саҥа киирии тылла суруй:',
@@ -960,6 +969,7 @@ $1",
 # Diffs
 'history-title'            => 'Көннөрүү историята "$1"',
 'difference'               => '(Торумнар бэйэ-бэйэлэриттэн уратылара)',
+'difference-multipage'     => '(Сирэйдэр ыккардыларынааҕы уратылар)',
 'lineno'                   => '$1 строка:',
 'compareselectedversions'  => 'Талыллыбыт торумнары тэҥнээ',
 'showhideselectedversions' => 'Талыллыбыт барыллары көрдөр/кистээ',
@@ -1887,7 +1897,7 @@ $1',
 # Watchlist
 'watchlist'            => 'Мин кэтээһиним',
 'mywatchlist'          => 'Кэтиир сирэйдэрим',
-'watchlistfor'         => "('''$1''' киэнэ)",
+'watchlistfor2'        => '$1 $2 аналлаах',
 'nowatchlist'          => 'Эн кэтиир сирэйдэриҥ суохтар.',
 'watchlistanontext'    => 'Кэтэбилиҥ сирэйин көрөргөр эбэтэр уларытаргар маны оҥор: $1.',
 'watchnologin'         => 'Бэйэҕин билиһиннэр',
@@ -3012,7 +3022,8 @@ $1',
 Сурук барбатах төрүөтэ: $1',
 'confirmemail_invalid'      => 'Бигэргэтии куода сыыһа эбэтэр болдьоҕо ааспыт.',
 'confirmemail_needlogin'    => '$1 - маны оҥордоххуна аадырыскын бигэргэтиэҥ.',
-'confirmemail_success'      => 'Электроннай аадырыһыҥ бигэргэтилиннэ.',
+'confirmemail_success'      => 'Электроннай аадырыһыҥ бигэргэтилиннэ.
+[[Special:UserLogin|Ааккын этэн]] биикигэ киириэххин сөп.',
 'confirmemail_loggedin'     => 'Электроннай почтаҥ аадырыһа бигэргэтилиннэ.',
 'confirmemail_error'        => 'Бигэргэтии кэмигэр моһол таҕыста.',
 'confirmemail_subject'      => '{{SITENAME}}: эл. почта аадырыһын бигэргэтии',
@@ -3150,6 +3161,13 @@ $1',
 'version-hook-subscribedby'        => 'Суруттарыыта:',
 'version-version'                  => '(Торум $1)',
 'version-license'                  => 'Лиссиэнзийэ',
+'version-poweredby-credits'        => "Бу биики бу движокка олоҕурар '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'атыттар',
+'version-license-info'             => 'MediaWiki көҥүл тарҕанар бырагырааммаларга киирэр, кинини көмпүүтэр аһаҕас бырагырааммаларын пуондатын GNU General Public License усулуобуйатынан көҥүл тарҕатаргыт уонна/эбэтэр уларытаргыт көҥүллэнэр; иккис эбэтэр онтон хойукку ханнык баҕарар барылыттан саҕалаан.
+
+MediaWiki туһалаах буоллун диэн тарҕатыллар, ол эрээри АТЫЫЛАНАР СЫАННАҺА эбэтэр ХАННЫК ЭРЭ ЧОПЧУ СОРУККА СӨП ТҮБЭҺИИТЭ бигэргэтиллибэт (гарантията суох). Сиһилии GNU General Public License усулуобуйатын көрүҥ.
+
+[{{SERVER}}{{SCRIPTPATH}}/COPYING  GNU General Public License копиятын] бу бырагыраамманы кытта ылыахтаах этигит, ол сатамматах буоллаҕына Free Software Foundation, Inc. тэрилтэҕэ сурукта суруйуҥ, бу аадырыска: 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA эбэтэр [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html саайка киирэн ааҕыҥ].',
 'version-software'                 => 'Туруоруллубут бырагырааммалар',
 'version-software-product'         => 'Бородуукта',
 'version-software-version'         => 'Барыл (торум)',

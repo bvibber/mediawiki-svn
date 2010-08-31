@@ -155,7 +155,7 @@ $messages = array(
 'tog-editsection'             => 'Modifega de łe sesion tramite el cołegamento [modifega]',
 'tog-editsectiononrightclick' => 'Modifega de łe sesion tramite clic destro sol titoło (el richiede JavaScript)',
 'tog-showtoc'                 => "Mostra l'indexe par łe pajine con pì de 3 sesion",
-'tog-rememberpassword'        => 'Ricorda ła password so sto computer (el richiede de asetare i cookies)',
+'tog-rememberpassword'        => 'Ricorda ła password so sto computer (el richiede de asetare i cookies) (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Zonta łe pajine creae a i oservai spesałi',
 'tog-watchdefault'            => 'Zonta łe pajine modifegae a i oservai spesałi',
 'tog-watchmoves'              => 'Zonta łe pajine spostae a i oservai spesałi',
@@ -773,7 +773,7 @@ Te dovarè inserire, se te vołi, le to modifiche nel testo esistente, e perciò
 'nonunicodebrowser'                => "'''OCIO: Te stè doparando un browser mìa conpatibile coi caràteri Unicode. Par consentir la modifica de le pagine senza crear inconvenienti, i caràteri non ASCII i vien mostrà ne la casela de modifica soto forma de codici esadecimali.'''",
 'editingold'                       => "'''Ocio: Te stè modificando na version de ła voxe non agiornà. Se te la salvi cussì, tuti i canbiamenti apportai dopo sta version i vegnarà persi.'''",
 'yourdiff'                         => 'Difarense',
-'copyrightwarning'                 => "Nota: tuti i contribui a {{SITENAME}} se considera riłassai ne i termini de ła licensa d'uso $2 (varda $1 par majori detaji). Se no te desidari che i to testi i posa esare modifegai e redistribuii da chiunque sensa alcuna limitasion, no sta inviarli a {{SITENAME}}.<br/>
+'copyrightwarning'                 => "Nota: tuti i contribui a {{SITENAME}} se considera riłassai ne i termini de ła licensa d'uso $2 (varda $1 par majori detaji). Se no te desidari che i to testi i posa esare modifegai e redistribuii da chiunque sensa alcuna limitasion, no sta inviarli a {{SITENAME}}.<br />
 Con l'invio del testo te dichiari inoltre, soto ła to responsabiłità, che el testo xè sta scrito da ti parsonalmente opure che xè sta copià da na fonte de publico dominio o anałogamente libara.
 '''NO STA INVIARE MATERIAŁE COPERTO DA DIRITO D'AUTORE SENSA AUTORIZASION!'''",
 'copyrightwarning2'                => "Ocio che tuti i contributi a {{SITENAME}} i pode èssar editai, alterai, o rimossi da altri contributori.
@@ -1892,7 +1892,6 @@ La e-mail che te ghè indicà ne le [[Special:Preferences|to preferense]] la veg
 # Watchlist
 'watchlist'            => 'Oservai spesałi',
 'mywatchlist'          => 'oservai spesałi',
-'watchlistfor'         => "(de l'utente '''$1''')",
 'nowatchlist'          => "No te ghè indicà pagine da tegner d'ocio.",
 'watchlistanontext'    => "Per vardar e modifegar l'ełenco de i osservati speciałi bisogna $1.",
 'watchnologin'         => 'Acesso mia efetuà',

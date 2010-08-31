@@ -1005,7 +1005,6 @@ EOF;
 		$res = $this->query( "VALUES NEXTVAL FOR $safeseq" );
 		$row = $this->fetchRow( $res );
 		$this->mInsertId = $row[0];
-		$this->freeResult( $res );
 		return $this->mInsertId;
 		*/
 		return null;
@@ -1077,10 +1076,8 @@ EOF;
 		// assume success
 		$res = true;
 		// If we are not in a transaction, we need to be for savepoint trickery
-		$didbegin = 0;
 		if (! $this->mTrxLevel) {
 			$this->begin();
-			$didbegin = 1;
 		}
 
 		$sql = "INSERT INTO $table (" . implode( ',', $keys ) . ') VALUES ';
@@ -1102,7 +1099,6 @@ EOF;
 		$this->begin();
 
 		if ( !$ignore ) {
-			$first = true;
 			foreach ( $args as $row ) {
 				// insert each row into the database
 				$res = $res & $this->execute($stmt, $row);
@@ -1123,7 +1119,7 @@ EOF;
 				$overhead = "SAVEPOINT $ignore ON ROLLBACK RETAIN CURSORS";
 				db2_exec($this->mConn, $overhead, $this->mStmtOptions);
 				
-				$res2 = $this->execute($stmt, $row);
+				$this->execute($stmt, $row);
 				// get the last inserted value into a generated column
 				$this->calcInsertId($table, $primaryKey, $stmt);
 				
@@ -1440,7 +1436,7 @@ EOF;
 	 * Returns link to IBM DB2 free download
 	 * @return string wikitext of a link to the server software's web site
 	 */
-	public function getSoftwareLink() {
+	public static function getSoftwareLink() {
 		return "[http://www.ibm.com/software/data/db2/express/?s_cmp=ECDDWW01&s_tact=MediaWiki IBM DB2]";
 	}
 	
@@ -1604,7 +1600,6 @@ SQL;
 		$res = $this->query($sql);
 		$row = $this->fetchObject($res);
 		$size = $row->size;
-		$this->freeResult( $res );
 		return $size;
 	}
 	
@@ -1771,7 +1766,7 @@ SQL;
 	 */
 	function bitNot($field) {
 		//expecting bit-fields smaller than 4bytes
-		return 'BITNOT('.$bitField.')';
+		return 'BITNOT('.$field.')';
 	}
 
 	/**

@@ -834,7 +834,7 @@ class Article {
 		$oldid = $this->getOldID();
 		$parserCache = ParserCache::singleton();
 
-		$parserOptions = clone $this->getParserOptions();
+		$parserOptions = $this->getParserOptions();
 		# Render printable version, use printable version cache
 		if ( $wgOut->isPrintable() ) {
 			$parserOptions->setIsPrintable( true );
@@ -962,13 +962,11 @@ class Article {
 						if ( $oldid === $this->getLatest() && $this->useParserCache( false ) ) {
 							$this->mParserOutput = $parserCache->get( $this, $parserOptions );
 							if ( $this->mParserOutput ) {
-								wfDebug( __METHOD__ . ": showing parser cache for current rev permalink\n" );
+								wfDebug( __METHOD__ . ": showing parser cache for current rev permalink\n" );								
 								$wgOut->addParserOutput( $this->mParserOutput );
 								$wgOut->setRevisionId( $this->mLatest );
-								$this->showViewFooter();
-								$this->viewUpdates();
-								wfProfileOut( __METHOD__ );
-								return;
+								$outputDone = true;
+								break;								
 							}
 						}
 					}
@@ -996,14 +994,13 @@ class Article {
 				case 4:
 					# Run the parse, protected by a pool counter
 					wfDebug( __METHOD__ . ": doing uncached parse\n" );
-					$key = $parserCache->getKey( $this, $parserOptions );
-					$poolCounter = PoolCounter::factory( 'Article::view', $key );
-					$dirtyCallback = $useParserCache ? array( $this, 'tryDirtyCache' ) : false;
-					$status = $poolCounter->executeProtected( array( $this, 'doViewParse' ), $dirtyCallback );
 
-					if ( !$status->isOK() ) {
+					$this->checkTouched();
+					$key = $parserCache->getKey( $this, $parserOptions );
+					$poolArticleView = new PoolWorkArticleView( $this, $key, $useParserCache, $parserOptions );
+					
+					if ( !$poolArticleView->execute() ) {
 						# Connection or timeout error
-						$this->showPoolError( $status );
 						wfProfileOut( __METHOD__ );
 						return;
 					} else {
@@ -1470,7 +1467,7 @@ class Article {
 
 		$oldid = $this->getOldID();
 		$useParserCache = $this->useParserCache( $oldid );
-		$parserOptions = clone $this->getParserOptions();
+		$parserOptions = $this->getParserOptions();
 
 		# Render printable version, use printable version cache
 		$parserOptions->setIsPrintable( $wgOut->isPrintable() );
@@ -1482,6 +1479,8 @@ class Article {
 		
 		$useParserCache = $this->useParserCache( $oldid );
 		$this->outputWikiText( $this->getContent(), $useParserCache, $parserOptions );
+		
+		return true;
 	}
 
 	/**
@@ -1493,14 +1492,13 @@ class Article {
 	 * @return boolean
 	 */
 	public function tryDirtyCache() {
-
 		global $wgOut;
 		$parserCache = ParserCache::singleton();
-		$options = $this->getParserOptions();
+		$options = clone $this->getParserOptions();
 		
 		if ( $wgOut->isPrintable() ) {
 			$options->setIsPrintable( true );
-			$parserOptions->setEditSection( false );
+			$options->setEditSection( false );
 		}
 		
 		$output = $parserCache->getDirty( $this, $options );
@@ -1520,23 +1518,6 @@ class Article {
 
 			return false;
 		}
-	}
-
-	/**
-	 * Show an error page for an error from the pool counter.
-	 * @param $status Status
-	 */
-	public function showPoolError( $status ) {
-		global $wgOut;
-
-		$wgOut->clearHTML(); // for release() errors
-		$wgOut->enableClientCache( false );
-		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-		$wgOut->addWikiText(
-			'<div class="errorbox">' .
-			$status->getWikiText( false, 'view-pool-error' ) .
-			'</div>'
-		);
 	}
 
 	/**
@@ -1945,33 +1926,71 @@ class Article {
 	}
 
 	/**
-	 * @deprecated use Article::doEdit()
+	 * This function is not deprecated until somebody fixes the core not to use
+	 * it. Nevertheless, use Article::doEdit() instead.
 	 */
 	function insertNewArticle( $text, $summary, $isminor, $watchthis, $suppressRC = false, $comment = false, $bot = false ) {
-		wfDeprecated( __METHOD__ );
 		$flags = EDIT_NEW | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $isminor ? EDIT_MINOR : 0 ) |
 			( $suppressRC ? EDIT_SUPPRESS_RC : 0 ) |
 			( $bot ? EDIT_FORCE_BOT : 0 );
 
-		$this->doEdit( $text, $summary, $flags, false, null, $watchthis, $comment, '', true );
+		# If this is a comment, add the summary as headline
+		if ( $comment && $summary != "" ) {
+			$text = wfMsgForContent( 'newsectionheaderdefaultlevel', $summary ) . "\n\n" . $text;
+		}
+		$this->doEdit( $text, $summary, $flags );
+
+		$dbw = wfGetDB( DB_MASTER );
+		if ( $watchthis ) {
+			if ( !$this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doWatch();
+				$dbw->commit();
+			}
+		} else {
+			if ( $this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doUnwatch();
+				$dbw->commit();
+			}
+		}
+		$this->doRedirect( $this->isRedirect( $text ) );
 	}
 
 	/**
 	 * @deprecated use Article::doEdit()
 	 */
 	function updateArticle( $text, $summary, $minor, $watchthis, $forceBot = false, $sectionanchor = '' ) {
-		wfDeprecated( __METHOD__ );
 		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
 			( $minor ? EDIT_MINOR : 0 ) |
 			( $forceBot ? EDIT_FORCE_BOT : 0 );
 
-		$status = $this->doEdit( $text, $summary, $flags, false, null, $watchthis, false, $sectionanchor, true );
+		$status = $this->doEdit( $text, $summary, $flags );
 
 		if ( !$status->isOK() ) {
 			return false;
 		}
 
+		$dbw = wfGetDB( DB_MASTER );
+		if ( $watchthis ) {
+			if ( !$this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doWatch();
+				$dbw->commit();
+			}
+		} else {
+			if ( $this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doUnwatch();
+				$dbw->commit();
+			}
+		}
+
+		$extraQuery = ''; // Give extensions a chance to modify URL query on update
+		wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraQuery ) );
+
+		$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraQuery );
 		return true;
 	}
 
@@ -2026,11 +2045,6 @@ class Article {
 	 *
 	 * @param $baseRevId the revision ID this edit was based off, if any
 	 * @param $user Optional user object, $wgUser will be used if not passed
-	 * @param $watchthis Watch the page if true, unwatch the page if false, do nothing if null
-	 * @param $comment Boolean: whether the edit is a new section
-	 * @param $sectionanchor The section anchor for the page; used for redirecting the user back to the page
-	 *              after the edit is successfully committed
-	 * @param $redirect If true, redirect the user back to the page after the edit is successfully committed
 	 *
 	 * @return Status object. Possible errors:
 	 *     edit-hook-aborted:       The ArticleSave hook aborted the edit but didn't set the fatal flag of $status
@@ -2047,8 +2061,7 @@ class Article {
 	 *
 	 *  Compatibility note: this function previously returned a boolean value indicating success/failure
 	 */
-	public function doEdit( $text, $summary, $flags = 0, $baseRevId = false, $user = null , $watchthis = null,
-			$comment = false, $sectionanchor = '', $redirect = false) {
+	public function doEdit( $text, $summary, $flags = 0, $baseRevId = false, $user = null ) {
 		global $wgUser, $wgDBtransactions, $wgUseAutomaticEditSummaries;
 
 		# Low-level sanity check
@@ -2066,13 +2079,8 @@ class Article {
 
 		$flags = $this->checkFlags( $flags );
 
-		# If this is a comment, add the summary as headline
-		if ( $comment && $summary != "" ) {
-			$text = wfMsgForContent( 'newsectionheaderdefaultlevel', $summary ) . "\n\n" . $text;
-		}
-
 		if ( !wfRunHooks( 'ArticleSave', array( &$this, &$user, &$text, &$summary,
-			$flags & EDIT_MINOR, &$watchthis, null, &$flags, &$status) ) )
+			$flags & EDIT_MINOR, null, null, &$flags, &$status ) ) )
 		{
 			wfDebug( __METHOD__ . ": ArticleSave hook aborted save!\n" );
 			wfProfileOut( __METHOD__ );
@@ -2277,7 +2285,7 @@ class Article {
 			Article::onArticleCreate( $this->mTitle );
 
 			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$user, $text, $summary,
-				$flags & EDIT_MINOR, &$watchthis, null, &$flags, $revision ) );
+				$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 		}
 
 		# Do updates right now unless deferral was requested
@@ -2289,39 +2297,9 @@ class Article {
 		$status->value['revision'] = $revision;
 
 		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$user, $text, $summary,
-			$flags & EDIT_MINOR, &$watchthis, null, &$flags, $revision, &$status, $baseRevId,
-			&$redirect) );
-
-		# Watch or unwatch the page
-		if ( $watchthis === true ) {
-			if ( !$this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doWatch();
-				$dbw->commit();
-			}
-		} elseif ( $watchthis === false ) {
-			if ( $this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doUnwatch();
-				$dbw->commit();
-			}
-		}
-
-		# Give extensions a chance to modify URL query on update
-		$extraQuery = '';
-
-		wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraQuery ) );
-
-		if ( $redirect ) {
-			if ( $sectionanchor || $extraQuery ) {
-				$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraQuery );
-			} else {
-				$this->doRedirect( $this->isRedirect( $text ) );
-			}
-		}
+			$flags & EDIT_MINOR, null, null, &$flags, $revision, &$status, $baseRevId ) );
 
 		wfProfileOut( __METHOD__ );
-
 		return $status;
 	}
 
@@ -2788,8 +2766,6 @@ class Article {
 			$onlyAuthor = false;
 		}
 
-		$dbw->freeResult( $res );
-
 		// Generate the summary with a '$1' placeholder
 		if ( $blank ) {
 			// The current revision is blank and the one before is also
@@ -3190,7 +3166,6 @@ class Article {
 		wfDebug( __METHOD__ . "\n" );
 
 		$dbw = wfGetDB( DB_MASTER );
-		$ns = $this->mTitle->getNamespace();
 		$t = $this->mTitle->getDBkey();
 		$id = $id ? $id : $this->mTitle->getArticleID( GAID_FOR_UPDATE );
 
@@ -3614,8 +3589,8 @@ class Article {
 		$edit->revid = $revid;
 		$edit->newText = $text;
 		$edit->pst = $this->preSaveTransform( $text );
-		$options = $this->getParserOptions();
-		$edit->output = $wgParser->parse( $edit->pst, $this->mTitle, $options, true, true, $revid );
+		$edit->popts = clone $this->getParserOptions();
+		$edit->output = $wgParser->parse( $edit->pst, $this->mTitle, $edit->popts, true, true, $revid );
 		$edit->oldText = $this->getContent();
 
 		$this->mPreparedEdit = $edit;
@@ -3654,9 +3629,8 @@ class Article {
 
 		# Save it to the parser cache
 		if ( $wgEnableParserCache ) {
-			$popts = $this->getParserOptions();
 			$parserCache = ParserCache::singleton();
-			$parserCache->save( $editInfo->output, $this, $popts );
+			$parserCache->save( $editInfo->output, $this, $editInfo->popts );
 		}
 
 		# Update the links tables
@@ -4311,8 +4285,6 @@ class Article {
 			}
 		}
 
-		$dbr->freeResult( $res );
-
 		return $result;
 	}
 
@@ -4342,8 +4314,6 @@ class Article {
 				$result[] = Title::makeTitle( NS_CATEGORY, $row->cl_to );
 			}
 		}
-
-		$dbr->freeResult( $res );
 
 		return $result;
 	}
@@ -4427,7 +4397,7 @@ class Article {
 		global $wgParser, $wgEnableParserCache, $wgUseFileCache;
 
 		if ( !$parserOptions ) {
-			$parserOptions = $this->getParserOptions();
+			$parserOptions = clone $this->getParserOptions();
 		}
 
 		$time = - wfTime();
@@ -4471,7 +4441,9 @@ class Article {
 			$this->mParserOptions->enableLimitReport();
 		}
 
-		return $this->mParserOptions;
+		// Clone to allow modifications of the return value without affecting 
+		// the cache
+		return clone $this->mParserOptions;
 	}
 
 	/**
@@ -4641,4 +4613,57 @@ class Article {
 		return wfGetDB( DB_MASTER );
 	}
 
+}
+
+class PoolWorkArticleView extends PoolCounterWork {
+	private $mArticle;
+	
+	function __construct( $article, $key, $useParserCache, $parserOptions ) {
+		parent::__construct( __CLASS__, $key );
+		$this->mArticle = $article;
+		$this->cacheable = $useParserCache;
+		$this->parserOptions = $parserOptions;
+	}
+	
+	function doWork() {
+		return $this->mArticle->doViewParse();
+	}
+	
+	function getCachedWork() {
+		global $wgOut;
+		
+		$parserCache = ParserCache::singleton();
+		$this->mArticle->mParserOutput = $parserCache->get( $this->mArticle, $this->parserOptions );
+
+		if ( $this->mArticle->mParserOutput !== false ) {
+			wfDebug( __METHOD__ . ": showing contents parsed by someone else\n" );
+			$wgOut->addParserOutput( $this->mArticle->mParserOutput );
+			# Ensure that UI elements requiring revision ID have
+			# the correct version information.
+			$wgOut->setRevisionId( $this->mArticle->getLatest() );
+			return true;
+		}
+		return false;
+	}
+	
+	function fallback() {
+		return $this->mArticle->tryDirtyCache();
+	}
+	
+	function error( $status ) {
+		global $wgOut;
+
+		$wgOut->clearHTML(); // for release() errors
+		$wgOut->enableClientCache( false );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		
+		if ( $status instanceof Status ) {
+			$errortext = $status->getWikiText( false, 'view-pool-error' );
+		} else {
+			$errortext = wfMsgNoTrans( 'view-pool-error', '' );
+		}
+		$wgOut->addWikiText( '<div class="errorbox">' . $errortext . '</div>' );
+		
+		return false;
+	}
 }

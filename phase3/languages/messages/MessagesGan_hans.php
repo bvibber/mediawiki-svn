@@ -8,6 +8,7 @@
  * @file
  *
  * @author Liangent
+ * @author PhiLiP
  * @author Philip <philip.npc@gmail.com>
  * @author Symane
  * @author Urhixidur
@@ -43,7 +44,7 @@ $messages = array(
 'tog-editsection'             => '可以用[编写]链接来编写个别段落',
 'tog-editsectiononrightclick' => '可以按右键来编写只把子段落（JavaScript）',
 'tog-showtoc'                 => '超过三只标题就显到目录',
-'tog-rememberpassword'        => '到个只电脑记到偶𠮶密码',
+'tog-rememberpassword'        => '到个只电脑记到偶𠮶密码 (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => '拿偶开嘞𠮶页面加到偶𠮶监视列表',
 'tog-watchdefault'            => '拿偶改嘞𠮶页面加到偶𠮶监视列表',
 'tog-watchmoves'              => '拿偶动嘞𠮶页面加到偶𠮶监视列表',
@@ -421,13 +422,14 @@ $2',
 'yourname'                   => '用户名：',
 'yourpassword'               => '密码：',
 'yourpasswordagain'          => '输过道密码：',
-'remembermypassword'         => '让电脑记到密码',
+'remembermypassword'         => '让电脑记到密码 (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => '倷𠮶域名：',
 'externaldberror'            => '外部验证数据库出错，或倷更新伓正倷𠮶外部帐户。',
 'login'                      => '登入',
 'nav-login-createaccount'    => '登入/新开只帐户',
 'loginprompt'                => '要开到cookies才登入得正{{SITENAME}}。',
 'userlogin'                  => '登入/新开只帐户',
+'userloginnocreate'          => '登入',
 'logout'                     => '退出',
 'userlogout'                 => '退出',
 'notloggedin'                => '冇登入',
@@ -437,6 +439,7 @@ $2',
 'gotaccount'                 => "有喽帐户？ '''$1'''.",
 'gotaccountlink'             => '登入',
 'createaccountmail'          => '通过email',
+'createaccountreason'        => '原因:',
 'badretype'                  => '倷输𠮶密码伓合。',
 'userexists'                 => '倷输𠮶用户名系人家𠮶，选过只喽！',
 'loginerror'                 => '登入错误',
@@ -474,16 +477,21 @@ $2',
 要系帐户创建不对𠮶话，倷就莫搭个只消息。',
 'loginlanguagelabel'         => '语言: $1',
 
+# JavaScript password checks
+'password-retype' => '输过道密码：',
+
 # Password reset dialog
-'resetpass'           => '设过帐户密码',
-'resetpass_announce'  => '倷系用到临时email𠮶代码登入𠮶。要登正入，倷要到个首设定只新密码:',
-'resetpass_header'    => '设过密码',
-'oldpassword'         => '老密码：',
-'newpassword'         => '新密码：',
-'retypenew'           => '确认密码:',
-'resetpass_submit'    => '设定密码同到登入',
-'resetpass_success'   => '倷𠮶密码改正喽！正帮倷登入...',
-'resetpass_forbidden' => '到{{SITENAME}}上改伓正密码',
+'resetpass'                 => '设过帐户密码',
+'resetpass_announce'        => '倷系用到临时email𠮶代码登入𠮶。要登正入，倷要到个首设定只新密码:',
+'resetpass_header'          => '设过密码',
+'oldpassword'               => '老密码：',
+'newpassword'               => '新密码：',
+'retypenew'                 => '确认密码:',
+'resetpass_submit'          => '设定密码同到登入',
+'resetpass_success'         => '倷𠮶密码改正喽！正帮倷登入...',
+'resetpass_forbidden'       => '到{{SITENAME}}上改伓正密码',
+'resetpass-submit-loggedin' => '设过帐户密码',
+'resetpass-submit-cancel'   => '取消',
 
 # Edit page toolbar
 'bold_sample'     => '粗体字',
@@ -628,6 +636,7 @@ $2',
 为到方便，个页𠮶删除记录已经到下底提供:",
 'moveddeleted-notice'              => '个只版面已经拕删吥喽。
 下头提供个只版面𠮶删除日志，以供参考。',
+'edit-conflict'                    => '编辑仗。',
 
 # "Undo" feature
 'undo-success' => '个只编辑可以拖取销。请检查吖以确定个系倷想扤𠮶，接到保存修改去完成撤销编辑。',
@@ -674,6 +683,7 @@ $2',
 'rev-deleted-text-permission' => '个页𠮶改动从共用文档挪吥嘞。到[{{fullurl:{{#Special:Log}}/suppress|page={{PAGENAMEE}}}} 删除日志] 里度倷话伓定有详细𠮶资料。',
 'rev-deleted-text-view'       => '个页𠮶改动从共用文档挪吥嘞。作为本站𠮶管理员，倷查看得正；到[{{fullurl:{{#Special:Log}}/suppress|page={{FULLPAGENAMEE}}}} 删除日志] 里度有详细𠮶资料。',
 'rev-delundel'                => '显示/弆到',
+'rev-showdeleted'             => '敨开',
 'revisiondelete'              => '删除/反删除修改',
 'revdelete-nooldid-title'     => '冇目标修订',
 'revdelete-nooldid-text'      => '倷冇话个只操作𠮶目标修改。',
@@ -1201,7 +1211,9 @@ $2',
 
 # Special:Categories
 'categories'         => '页面分类',
-'categoriespagetext' => '下底𠮶分类包到页面或系媒体文件。',
+'categoriespagetext' => '下底𠮶分类包到页面或系媒体文件。
+[[Special:UnusedCategories|Unused categories]] are not shown here.
+Also see [[Special:WantedCategories|wanted categories]].',
 
 # Special:LinkSearch
 'linksearch' => '外部连结',
@@ -1242,7 +1254,6 @@ $2',
 # Watchlist
 'watchlist'            => '监视列表',
 'mywatchlist'          => '偶𠮶监视列表',
-'watchlistfor'         => "（'''$1'''𠮶监视列表'）",
 'nowatchlist'          => '倷𠮶监视列表什哩都冇有。',
 'watchlistanontext'    => '请$1眵吖或改吖倷𠮶监视列表。',
 'watchnologin'         => '冇登入',

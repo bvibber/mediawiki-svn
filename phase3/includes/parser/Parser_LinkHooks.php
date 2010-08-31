@@ -1,5 +1,11 @@
 <?php
 /**
+ * Modified version of the PHP parser with hooks for wiki links; experimental
+ *
+ * @file
+ */
+
+/**
  * Parser with LinkHooks experiment
  * @ingroup Parser
  */
@@ -111,8 +117,6 @@ class Parser_LinkHooks extends Parser
 	 * @private
 	 */
 	function replaceInternalLinks2( &$s ) {
-		global $wgContLang;
-
 		wfProfileIn( __METHOD__ );
 
 		wfProfileIn( __METHOD__.'-setup' );
@@ -135,13 +139,7 @@ class Parser_LinkHooks extends Parser
 			wfProfileOut( __METHOD__.'-setup' );
 			throw new MWException( __METHOD__.": \$this->mTitle is null\n" );
 		}
-		$nottalk = !$this->mTitle->isTalkPage();
-		
-		if($wgContLang->hasVariants()) {
-			$selflink = $wgContLang->convertLinkToAllVariants($this->mTitle->getPrefixedText());
-		} else {
-			$selflink = array($this->mTitle->getPrefixedText());
-		}
+
 		wfProfileOut( __METHOD__.'-setup' );
 		
 		$offset = 0;

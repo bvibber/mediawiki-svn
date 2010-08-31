@@ -8,6 +8,7 @@
  * @file
  *
  * @author Geoleplubo
+ * @author Hercule
  */
 
 $fallback = 'fr';
@@ -26,7 +27,7 @@ $messages = array(
 'tog-editsection'             => "Pérmet l'édichion del sekchion via [edit] loïens",
 'tog-editsectiononrightclick' => "Pérmet l'édichion del sekchion par un droé buke su ch'tite del sekchion (i feut JavaScript)",
 'tog-showtoc'                 => "Aficher l'tabe ed ches étnus (pou ches paches aveuc plu ed 3 intétes)",
-'tog-rememberpassword'        => "Warder min lodjine su chl'ordinateu-lo.",
+'tog-rememberpassword'        => "Warder min lodjine su chl'ordinateu-lo (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'tog-watchcreations'          => "Ajouter ches paches qu'éj crée su em lisse",
 'tog-watchdefault'            => "Ajouter ches paches qu'éj édite su em lisse.",
 'tog-watchmoves'              => "Ajouter ches paches qu'éj déplache su m'lisse.",
@@ -212,6 +213,8 @@ $messages = array(
 'aboutpage'            => 'Project:à pérpos',
 'copyright'            => "Ch'contnu, il est disponipe dsou $1.",
 'copyrightpage'        => '{{ns:project}}:Copyrights',
+'currentevents'        => 'Darinnetés picardes',
+'currentevents-url'    => 'Project:Darinnetés picardes',
 'disclaimers'          => 'Démintis',
 'disclaimerpage'       => 'Project:Déminti général',
 'edithelp'             => 'Éditer el aiyude',
@@ -220,6 +223,7 @@ $messages = array(
 'mainpage'             => 'Moaite Pache',
 'mainpage-description' => 'Moaite Pache',
 'portal'               => 'Portal del conmeunauté',
+'portal-url'           => 'Project:Accueul del conminnité',
 'privacy'              => "Politique d'éscrè",
 'privacypage'          => "Project:Politique d'éscrè",
 
@@ -302,7 +306,7 @@ Si s'n'est poin ch'cas-lo, pététe éq ch'est un bogue din ch'businkillache. <b
 'yourname'                => "nom d'uzeu:",
 'yourpassword'            => "Mot d'passe:",
 'yourpasswordagain'       => "Intrer à nouvieu ch'mot d'passe:",
-'remembermypassword'      => "Inrégistrer m'loguine su echl ordinateu-lo",
+'remembermypassword'      => "Inrégistrer m'loguine su echl ordinateu-lo (for a maximum of $1 {{PLURAL:$1|day|days}})",
 'yourdomainname'          => 'Vote donmène:',
 'login'                   => 'Intrer',
 'nav-login-createaccount' => 'Intrer / créer vote conpte',
@@ -598,7 +602,6 @@ Ale doét mie éte pu longue éq $1 {{PLURAL:$1|caracter|caractéres}}.',
 # Watchlist
 'watchlist'         => 'Em lisse à suire',
 'mywatchlist'       => "M'lisse à suire",
-'watchlistfor'      => "(pou '''$1''')",
 'addedwatch'        => "Rajouté su l'lisse à suire",
 'addedwatchtext'    => "L' pache « [[:$1]] » o té rajoutée à vote [[Special:Watchlist|lisse à suire]].<br /> Chés  canjemints à vnir del pache-lo pi del page éd pérlache sront mis din l'lisse. L'pache sro '''in cros''' din el [[Special:RecentChanges|lisse d'chés darins canjemints]] pou les értreuver fachilmint. Pou értirer chol pache del ''lisse à suire'', bukez su « {{MediaWiki:Unwatch}} ».",
 'removedwatch'      => 'Értiré del lisse à suire',

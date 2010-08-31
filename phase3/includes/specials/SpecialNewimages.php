@@ -1,5 +1,6 @@
 <?php
 /**
+ * Implements Special:Newimages
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,14 +16,14 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
+ *
+ * @file
+ * @ingroup SpecialPage
  */
 
 /**
- * @file
- * @ingroup SpecialPage
- * FIXME: this code is crap, should use Pager and Database::select().
+ * @todo FIXME: this code is crap, should use Pager and Database::select().
  */
-
 function wfSpecialNewimages( $par, $specialPage ) {
 	global $wgUser, $wgOut, $wgLang, $wgRequest, $wgMiserMode;
 
@@ -67,7 +68,6 @@ function wfSpecialNewimages( $par, $specialPage ) {
 	} else {
 		$ts = false;
 	}
-	$dbr->freeResult( $res );
 	$sql = '';
 
 	# If we were clever, we'd use this to cache.
@@ -125,7 +125,6 @@ function wfSpecialNewimages( $par, $specialPage ) {
 			array_push( $images, $s );
 		}
 	}
-	$dbr->freeResult( $res );
 
 	$gallery = new ImageGallery();
 	$firstTimestamp = null;

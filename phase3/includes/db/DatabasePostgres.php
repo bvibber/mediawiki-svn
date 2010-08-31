@@ -96,7 +96,7 @@ class DatabasePostgres extends DatabaseBase {
 	var $numeric_version = null;
 	var $mAffectedRows = null;
 
-	function DatabasePostgres($server = false, $user = false, $password = false, $dbName = false,
+	function __construct($server = false, $user = false, $password = false, $dbName = false,
 		$failFunction = false, $flags = 0 )
 	{
 
@@ -726,7 +726,6 @@ class DatabasePostgres extends DatabaseBase {
 			if( preg_match( '/rows=(\d+)/', $row[0], $count ) ) {
 				$rows = $count[1];
 			}
-			$this->freeResult($res);
 		}
 		return $rows;
 	}
@@ -993,7 +992,6 @@ class DatabasePostgres extends DatabaseBase {
 		$res = $this->query( "SELECT nextval('$safeseq')" );
 		$row = $this->fetchRow( $res );
 		$this->mInsertId = $row[0];
-		$this->freeResult( $res );
 		return $this->mInsertId;
 	}
 
@@ -1005,7 +1003,6 @@ class DatabasePostgres extends DatabaseBase {
 		$res = $this->query( "SELECT currval('$safeseq')" );
 		$row = $this->fetchRow( $res );
 		$currval = $row[0];
-		$this->freeResult( $res );
 		return $currval;
 	}
 
@@ -1098,7 +1095,6 @@ class DatabasePostgres extends DatabaseBase {
 		} else {
 			$size=$row->size;
 		}
-		$this->freeResult( $res );
 		return $size;
 	}
 
@@ -1147,7 +1143,7 @@ class DatabasePostgres extends DatabaseBase {
 	/**
 	 * @return string wikitext of a link to the server software's web site
 	 */
-	function getSoftwareLink() {
+	public static function getSoftwareLink() {
 		return "[http://www.postgresql.org/ PostgreSQL]";
 	}
 
@@ -1188,8 +1184,6 @@ class DatabasePostgres extends DatabaseBase {
 			. "AND c.relkind IN ('" . implode("','", $types) . "')";
 		$res = $this->query( $SQL );
 		$count = $res ? $res->numRows() : 0;
-		if ($res)
-			$this->freeResult( $res );
 		return $count ? true : false;
 	}
 
@@ -1221,7 +1215,6 @@ SQL;
 		if (!$res)
 			return null;
 		$rows = $res->numRows();
-		$this->freeResult( $res );
 		return $rows;
 	}
 
@@ -1245,7 +1238,6 @@ SQL;
 		if (!$res)
 			return null;
 		$rows = $res->numRows();
-		$this->freeResult($res);
 		return $rows;
 	}
 
@@ -1263,8 +1255,6 @@ SQL;
 		} else {
 			$owner = false;
 		}
-		if ($res)
-			$this->freeResult($res);
 		return $owner;
 	}
 

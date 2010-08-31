@@ -44,7 +44,7 @@ $messages = array(
 'tog-watchdeletion'           => "Mitte le pàggene ca je agghje scangillete jndr'à le pàggene condrollete",
 'tog-previewontop'            => "Fa vedè l'andeprime apprime de 'a scatole de le cangiaminde",
 'tog-previewonfirst'          => "Fà vedè l'andeprime sus a 'u prime cangiaminde",
-'tog-nocache'                 => "Disabilite 'u caching d'a pàgene",
+'tog-nocache'                 => "Disabbilete 'u caching d'a pàgene sfogliate",
 'tog-enotifwatchlistpages'    => "Manneme 'na mail quanne 'a pàgene ca stoche a condrolle ha cangete",
 'tog-enotifusertalkpages'     => "Manneme 'na mail quanne 'a pàgene de le 'ngazzaminde ha cangete",
 'tog-enotifminoredits'        => "Manneme 'na mail quanne onne state fatte cangiaminde stuèdeche sus 'a pàgene",
@@ -453,6 +453,7 @@ No te sce scurdanne de cangià le [[Special:Preferences|{{SITENAME}} preferenze 
 'gotaccount'                 => "Tine già 'nu cunde? '''$1'''.",
 'gotaccountlink'             => 'Tràse',
 'createaccountmail'          => 'pe e-mail',
+'createaccountreason'        => 'Mutive:',
 'badretype'                  => 'Le passuord ca è scritte non ge sonde uguale.',
 'userexists'                 => "'U nome de l'utende ca è scritte jè già ausete.
 Mittene n'otre.",
@@ -522,6 +523,13 @@ Tu puè pure cacà stu messagge, ce stu cunde utende ha state ccrejete pe errore
 Pe piacere vide c'aspitte 'nu picche de timbe apprime de pruvà 'n'otra vote.",
 'loginlanguagelabel'         => 'Lénga: $1',
 'suspicious-userlogout'      => "'A richiesta toje de assè ha state bloccate purcè pare ca ha state mannate da 'nu browser scuasciate o da 'a cache de 'nu proxy.",
+
+# JavaScript password checks
+'password-strength-bad'        => 'SCKEFUSE',
+'password-strength-mediocre'   => 'megghie de ninde',
+'password-strength-acceptable' => 'pò scè',
+'password-strength-good'       => 'bbuène',
+'password-retype'              => "Rescrive 'a passuord aqquà",
 
 # Password reset dialog
 'resetpass'                 => "Cange 'a password",
@@ -884,6 +892,8 @@ $1",
 'logdelete-failure'           => "'''L'archivije d'a visibbilità non ge pò essere 'mbostate:'''
 $1",
 'revdel-restore'              => "Cange 'a visibilità",
+'revdel-restore-deleted'      => 'revisiune scangellate',
+'revdel-restore-visible'      => 'Revisiune visibbele',
 'pagehist'                    => "Storie d'a vôsce",
 'deletedhist'                 => "Storie d'u scangellamende",
 'revdelete-content'           => 'condenute',
@@ -920,7 +930,10 @@ Pe piacere condrolle l'archivije.",
 Vide 'a [[Special:IPBlockList|liste de le IP bloccate]] pa liste de le operazziune corrende de espulsione e blocche.",
 
 # Revision move
-'revmove-reasonfield' => 'Mutive:',
+'revmove-reasonfield'    => 'Mutive:',
+'revmove-titlefield'     => 'Pàgene de destinazione:',
+'revmove-badparam-title' => 'Parametre sbagliate',
+'revmove-nullmove-title' => 'Titele sbagliate',
 
 # History merging
 'mergehistory'                     => "Scuagghie 'a storie de le pàggene",
@@ -1072,6 +1085,7 @@ Però fa attenzione purcè l'indice lore sus a {{SITENAME}} ponne condenè pàgg
 'contextlines'                  => 'Linne pe collegamende:',
 'contextchars'                  => 'Condeste pe linee:',
 'stub-threshold'                => 'Soglie pe <a href="#" class="stub">collegamende stub</a> de formattazione (byte):',
+'stub-threshold-disabled'       => 'Disabbilitate',
 'recentchangesdays'             => "Sciurne da fà vedè jndr'à le cangiaminde recende:",
 'recentchangesdays-max'         => '(massime $1 {{PLURAL:$1|sciurne|sciurne}})',
 'recentchangescount'            => 'Numere de cangiaminde da fà vedè pe default:',
@@ -1398,6 +1412,14 @@ Pe piacere vide ce renomene 'u file e pruève a carecarle 'n'otra vote.",
 'filetype-banned-type'        => "'''\".\$1\"''' ète 'nu tipe de file ca non g'è permesse.
 {{PLURAL:\$3|'U tipe de file permesse ète|Le tipe de file permesse sonde}} \$2.",
 'filetype-missing'            => '\'U file non ge tène l\'estenzione (cumme a ".jpg").',
+'empty-file'                  => "'U file ca tu è mannate ere vacande.",
+'file-too-large'              => "'U file ca tu è mannate ere troppe luènghe.",
+'filetype-banned'             => 'Stu tipe de file jè vietate.',
+'verification-error'          => "Stu file non g'à passate 'a verifeche de le file.",
+'illegal-filename'            => "'U nome d'u file non g'è permesse.",
+'unknown-error'               => "'N'errore scanusciute s'a verificate.",
+'tmp-create-error'            => 'Non ge pozze ccrejà file temboranèe.',
+'tmp-write-error'             => "Errore scrivenne 'u file temboranèe.",
 'large-file'                  => "Normalmende 'u file non g'adda essere cchiù granne de $1;
 Stu file jè $2.",
 'largefileserver'             => "Stu file jè troppe gruesse pe quidde ca 'a configurazione d'u server permette.",
@@ -1433,6 +1455,8 @@ Avissa verificà 'a storie d'a scangellazzione d'u file apprime de condinuà a c
 'uploadedimage'               => 'carechete "[[$1]]"',
 'overwroteimage'              => 'ha state carechete \'na versiona nove de "[[$1]]"',
 'uploaddisabled'              => 'Carecaminde disabbilitete',
+'copyuploaddisabled'          => "Carecamende da l'URL disabbilitate.",
+'uploadfromurl-queued'        => "'U carecamende tune ha state mise in code.",
 'uploaddisabledtext'          => 'Le carecaminde de le file sonde disabbilitete.',
 'php-uploaddisabledtext'      => "Le carecaminde de file sonde disabilitate in PHP.<br />
 Pe piacere verifiche le 'mbostaziune d'u ''file_uploads''.",
@@ -1863,7 +1887,7 @@ L'indirizze e-mail ca tu è 'nzerite jndr'à le [[Special:Preferences|preferenze
 # Watchlist
 'watchlist'            => 'Pàggene condrollete',
 'mywatchlist'          => 'Pàggene condrollete',
-'watchlistfor'         => "(pe '''$1''')",
+'watchlistfor2'        => 'Pe $1 $2',
 'nowatchlist'          => "Non ge tine pàggene jndr'à liste de le pàggene condrollete.",
 'watchlistanontext'    => 'Pe piacere $1 pe vedè o cangià le vosce sus a liste de le pàggene condrollete.',
 'watchnologin'         => 'Non ge sinde colleghete',
@@ -2555,6 +2579,8 @@ Puè vedè sulamende 'u sorgende.",
 'tooltip-rollback'                => '"Ripristine" annulle le cangiaminde a sta pàgene de l\'urteme condrebbutore cu \'nu cazzamende',
 'tooltip-undo'                    => "\"Annulle\" annulle stu cangiamende e iapre 'u form de le cangiaminde facenne vedè l'andeprime.
 Permette de aggiungere 'nu mutive jndr'à 'u riepileghe",
+'tooltip-preferences-save'        => 'Reggistre le preferenze',
+'tooltip-summary'                 => "Mitte 'nu riepileghe piccinne",
 
 # Metadata
 'nodublincore'      => "'U metadata ''Dublin Core RDF'' ète disabbilitate pe stu server.",
@@ -2659,6 +2685,7 @@ Ce l'esegue sus a 'u sisteme tue pò essere ca se combromette.",
 'show-big-image-thumb' => '<small>Dimenziune de sta andeprime: $1 × $2 pixels</small>',
 'file-info-gif-looped' => 'infinite',
 'file-info-gif-frames' => '$1 {{PLURAL:$1|frame|frame}}',
+'file-info-png-frames' => '$1 {{PLURAL:$1|frame|frame}}',
 
 # Special:NewFiles
 'newimages'             => 'Gallerie de le fail nuève',
@@ -3060,6 +3087,7 @@ Pe piacere conferme ca tu vuè avveramende reccrejà sta pàgene.",
 'table_pager_first'        => 'Prima pàgene',
 'table_pager_last'         => 'Urtema pàgene',
 'table_pager_limit'        => 'Fa vedè $1 vosce pe pàgene',
+'table_pager_limit_label'  => 'Vôsce pe pàggene:',
 'table_pager_limit_submit' => 'Veje',
 'table_pager_empty'        => 'Nisciune resultete',
 
@@ -3199,11 +3227,13 @@ Mitte 'u nome d'u file senze 'u \"{{ns:file}}:\" prefisse.",
 'tags-hitcount'           => '$1 {{PLURAL:$1|cangiamende|cangiaminde}}',
 
 # Special:ComparePages
-'compare-page1'  => 'Pàgene 1',
-'compare-page2'  => 'Pàgene 2',
-'compare-rev1'   => 'Revisione 1',
-'compare-rev2'   => 'Revisione 2',
-'compare-submit' => 'Combronde',
+'comparepages'     => 'Combronde le pàggene',
+'compare-selector' => "Combronde le revisiune d'à pàgene",
+'compare-page1'    => 'Pàgene 1',
+'compare-page2'    => 'Pàgene 2',
+'compare-rev1'     => 'Revisione 1',
+'compare-rev2'     => 'Revisione 2',
+'compare-submit'   => 'Combronde',
 
 # Database error messages
 'dberr-header'      => "Sta Uicchi tène 'nu probbleme",

@@ -1,16 +1,22 @@
 <?php
 /**
- * Special handling for category description pages
- * Modelled after ImagePage.php
+ * Special handling for category description pages.
+ * Modelled after ImagePage.php.
  *
+ * @file
  */
 
 if ( !defined( 'MEDIAWIKI' ) )
 	die( 1 );
 
 /**
+ * Special handling for category description pages, showing pages,
+ * subcategories and file that belong to the category
  */
 class CategoryPage extends Article {
+	# Subclasses can change this to override the viewer class.
+	protected $mCategoryViewerClass = 'CategoryViewer';
+
 	function view() {
 		global $wgRequest, $wgUser;
 
@@ -51,7 +57,7 @@ class CategoryPage extends Article {
 	}
 
 	function closeShowCategory() {
-		global $wgOut, $wgRequest;
+		global $wgOut;
 
 		$from = $until = array();
 		foreach ( array( 'page', 'subcat', 'file' ) as $type ) {
@@ -62,7 +68,7 @@ class CategoryPage extends Article {
 			$until[$type] = isset( $_GET["{$type}until"] ) ? $_GET["{$type}until"] : null;
 		}
 
-		$viewer = new CategoryViewer( $this->mTitle, $from, $until, $_GET );
+		$viewer = new $this->mCategoryViewerClass( $this->mTitle, $from, $until, $_GET );
 		$wgOut->addHTML( $viewer->getHTML() );
 	}
 }
@@ -270,7 +276,7 @@ class CategoryViewer {
 
 			$res = $dbr->select(
 				array( 'page', 'categorylinks', 'category' ),
-				array( 'page_title', 'page_namespace', 'page_len',
+				array( 'page_id', 'page_title', 'page_namespace', 'page_len',
 					'page_is_redirect', 'cl_sortkey', 'cat_id', 'cat_title',
 					'cat_subcats', 'cat_pages', 'cat_files', 'cl_sortkey_prefix' ),
 				array( 'cl_to' => $this->title->getDBkey() ) + $extraConds,
@@ -579,12 +585,21 @@ class CategoryViewer {
 		$totalrescnt = count( $this->articles ) + count( $this->children ) +
 			( $this->showGallery ? $this->gallery->count() : 0 );
 
-		if ( $dbcnt == $rescnt || ( ( $totalrescnt == $this->limit || $this->from
-			|| $this->until ) && $dbcnt > $rescnt ) )
+		# Check if there's a "from" or "until" for anything
+		$fromOrUntil = false;
+		foreach ( array( 'page', 'subcat', 'file' ) as $type ) {
+			if ( $this->from[$type] !== null || $this->until[$type] !== null ) {
+				$fromOrUntil = true;
+				break;
+			}
+		}
+
+		if ( $dbcnt == $rescnt || ( ( $totalrescnt == $this->limit || $fromOrUntil )
+			&& $dbcnt > $rescnt ) )
 		{
 			# Case 1: seems sane.
 			$totalcnt = $dbcnt;
-		} elseif ( $totalrescnt < $this->limit && !$this->from && !$this->until ) {
+		} elseif ( $totalrescnt < $this->limit && !$fromOrUntil ) {
 			# Case 2: not sane, but salvageable.  Use the number of results.
 			# Since there are fewer than 200, we can also take this opportunity
 			# to refresh the incorrect category table entry -- which should be

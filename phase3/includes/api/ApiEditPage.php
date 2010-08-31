@@ -57,36 +57,16 @@ class ApiEditPage extends ApiBase {
 		if ( !$titleObj || $titleObj->isExternal() ) {
 			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
 		}
-		
-		if( $params['redirect'] ) {
-			if( $titleObj->isRedirect() ) {
-				$oldTitle = $titleObj;
-				
-				$titles = Title::newFromRedirectArray( Revision::newFromTitle( $oldTitle )->getText( Revision::FOR_THIS_USER ) );
-				//array_shift( $titles );
-				
-				$this->getResult()->addValue( null, 'foo', $titles );
-				
-				
-				$redirValues = array();
-				foreach ( $titles as $id => $newTitle ) {
-					
-					if( !isset( $titles[ $id - 1 ] ) ) {
-						$titles[ $id - 1 ] = $oldTitle;
-					}
-					
-					$redirValues[] = array(
-						'from' => $titles[ $id - 1 ]->getPrefixedText(),
-						'to' => $newTitle->getPrefixedText()
-					);
-					
-					$titleObj = $newTitle;
-				}
-		
-				$this->getResult()->setIndexedTagName( $redirValues, 'r' );
-				$this->getResult()->addValue( null, 'redirects', $redirValues );
 
+		if( $params['redirect'] && $titleObj->isRedirect() ) {
+			$pageSet = new ApiPageSet( $this->getQuery(), true ); // Or true, true to also do variant conversion of titles
+			$pageSet->populateFromTitles( array( $titleObj ) );
+			foreach ( $pageSet->getRedirectTitles() as $from => $to ) {
+				$redirsValues[] = array( 'from' => $from, 'to' => $to );
 			}
+
+			$this->getResult()->setIndexedTagName( $redirValues, 'r' );
+			$this->getResult()->addValue( null, 'redirects', $redirValues );
 		}
 
 		// Some functions depend on $wgTitle == $ep->mTitle
@@ -272,6 +252,8 @@ class ApiEditPage extends ApiBase {
 
 		$retval = $ep->internalAttemptSave( $result, $wgUser->isAllowed( 'bot' ) && $params['bot'] );
 		$wgRequest = $oldRequest;
+		global $wgMaxArticleSize;
+
 		switch( $retval ) {
 			case EditPage::AS_HOOK_ERROR:
 			case EditPage::AS_HOOK_ERROR_EXPECTED:
@@ -294,7 +276,6 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_MAX_ARTICLE_SIZE_EXCEEDED:
 			case EditPage::AS_CONTENT_TOO_BIG:
-				global $wgMaxArticleSize;
 				$this->dieUsageMsg( array( 'contenttoobig', $wgMaxArticleSize ) );
 
 			case EditPage::AS_READ_ONLY_PAGE_ANON:
@@ -353,13 +334,12 @@ class ApiEditPage extends ApiBase {
 
 			case EditPage::AS_END:
 				// This usually means some kind of race condition
-				// or DB weirdness occurred.
-				if ( is_array( $result ) && count( $result ) > 0 ) {
-					$this->dieUsageMsg( array( 'unknownerror', $result[0][0] ) );
-				}
+				// or DB weirdness occurred. Fall through to throw an unknown
+				// error.
 
-				// Unknown error, but no specific error message
-				// Fall through
+				// This needs fixing higher up, as Article::doEdit should be
+				// used rather than Article::updateArticle, so that specific
+				// error conditions can be returned
 			default:
 				$this->dieUsageMsg( array( 'unknownerror', $retval ) );
 		}

@@ -2413,6 +2413,10 @@ class Title {
 	 * This clears some fields in this object, and clears any associated
 	 * keys in the "bad links" section of the link cache.
 	 *
+	 * - This is called from Article::insertNewArticle() to allow
+	 * loading of the new page_id. It's also called from
+	 * Article::doDeleteArticle()
+	 *
 	 * @param $newid \type{\int} the new Article ID
 	 */
 	public function resetArticleID( $newid ) {
@@ -2804,7 +2808,6 @@ class Title {
 				}
 			}
 		}
-		$db->freeResult( $res );
 		return $retVal;
 	}
 
@@ -3553,7 +3556,6 @@ class Title {
 			foreach ( $res as $row )
 				// $data[] = Title::newFromText($wgContLang->getNSText ( NS_CATEGORY ).':'.$row->cl_to);
 				$data[$wgContLang->getNSText( NS_CATEGORY ) . ':' . $row->cl_to] = $this->getFullText();
-			$dbr->freeResult( $res );
 		} else {
 			$data = array();
 		}
@@ -3807,7 +3809,7 @@ class Title {
 	 * @return \type{\bool}
 	 */
 	public function isKnown() {
-		return $this->exists() || $this->isAlwaysKnown();
+		return $this->isAlwaysKnown() || $this->exists();
 	}
 
 	/**

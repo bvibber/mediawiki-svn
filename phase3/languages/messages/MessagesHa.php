@@ -26,7 +26,7 @@ $messages = array(
 'tog-editsection'             => 'A lamunta gyara sashe ta hanyar zaruruwan [gyarawa]',
 'tog-editsectiononrightclick' => 'A lamunta gyara shashe da kilikin dama a kan kanun shashe (ana buƙatar JavaScript)',
 'tog-showtoc'                 => 'A nuna jadawalin kanu (cikin shafuna masu fiye da kanu 3)',
-'tog-rememberpassword'        => 'A adana bayanan loginkina a wannan kwamfyuta',
+'tog-rememberpassword'        => 'A adana bayanan loginkina a wannan kwamfyuta (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'A daɗa shafunan da na ƙirƙira a cikin jerina na kan ido',
 'tog-watchdefault'            => 'A daɗa shafunan da na gyara a cikin jerina na kan ido',
 'tog-watchmoves'              => 'A daɗa shafunan da na gusar a cikin jerina na kan ido',
@@ -135,10 +135,14 @@ $messages = array(
 'navigation' => 'Shawagi',
 
 # Cologne Blue skin
-'qbfind' => 'Nemo',
+'qbfind'         => 'Nemo',
+'qbedit'         => 'Gyarawa',
+'qbspecialpages' => 'Shafuna na musamman',
 
 # Vector skin
 'vector-action-delete'      => 'Soke',
+'vector-action-move'        => 'Gusarwa',
+'vector-action-protect'     => 'A kare',
 'vector-namespace-category' => 'Rukuni',
 'vector-namespace-main'     => 'Shafi',
 'vector-view-create'        => 'Ƙirƙira',
@@ -233,7 +237,7 @@ Tana yiyuwa yana da harafi ko haruffa da ba su karɓuwa cikin kanu.",
 # Login and logout pages
 'yourname'                => "Sunan ma'aikaci:",
 'yourpassword'            => 'Kalmar sirri:',
-'remembermypassword'      => 'Adana bayannan logina a wannan kwafyuta',
+'remembermypassword'      => 'Adana bayannan logina a wannan kwafyuta (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login'                   => 'Logi',
 'nav-login-createaccount' => 'logi / sabon akwanti',
 'userlogin'               => 'Logi / sabon akwanti',
@@ -502,7 +506,6 @@ Ku gwada tare da amfani da \"all:\" don bincikar duka shafunan (har da shafunan 
 # Watchlist
 'watchlist'         => 'Jerina na bin sawu',
 'mywatchlist'       => 'Jerina na bin sawu',
-'watchlistfor'      => "(na '''$1''')",
 'addedwatch'        => 'An daɗa a cikin jerin bin sawu',
 'addedwatchtext'    => "An daɗa shafin \"[[:\$1]]\" a cikin [[Special:Watchlist|jerinku na bin sawu]].
 A nan ne kuma za a yi rajistan dukkan sauye-sauye ga shafin ko shafinsa na muhawara, kuma sunan shafin zai kasance '''mai gwaɓi''' a cikin [[Special:RecentChanges|jerin sauye-sauyen baya-bayan nan]] don sauƙin gani.",

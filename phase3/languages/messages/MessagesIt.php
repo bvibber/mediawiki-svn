@@ -11,6 +11,7 @@
  * @author Airon90
  * @author Andria
  * @author Beta16
+ * @author Blaisorblade
  * @author Broc
  * @author BrokenArrow
  * @author Brownout
@@ -722,7 +723,13 @@ Riprovare più tardi.',
 'suspicious-userlogout'      => 'La tua richiesta di disconnessione è stata negata perché sembra inviata da un browser non funzionante o un proxy di caching.',
 
 # JavaScript password checks
-'password-retype' => 'Ripeti la password',
+'password-strength'            => 'Robustezza stimata della password: $1',
+'password-strength-bad'        => 'DEBOLE',
+'password-strength-mediocre'   => 'mediocre',
+'password-strength-acceptable' => 'accettabile',
+'password-strength-good'       => 'buono',
+'password-retype'              => 'Ripeti la password',
+'password-retype-mismatch'     => 'Le password non corrispondono',
 
 # Password reset dialog
 'resetpass'                 => 'Cambia la password',
@@ -1131,6 +1138,7 @@ $1",
 # Diffs
 'history-title'            => 'Cronologia delle modifiche di "$1"',
 'difference'               => '(Differenze fra le revisioni)',
+'difference-multipage'     => '(Differenze fra le pagine)',
 'lineno'                   => 'Riga $1:',
 'compareselectedversions'  => 'Confronta le versioni selezionate',
 'showhideselectedversions' => 'Mostra/nascondi versioni selezionate',
@@ -1637,7 +1645,7 @@ MGP # Pentax
 PICT # misc.
  #</pre> <!-- lascia questa riga esattamente com\'è -->',
 'upload-success-subj'         => 'Caricamento completato',
-'upload-success-msg'          => "L'upload da [$ 2] è riuscito. Il file è disponibile qui: [[:{{ns:file)):$1]]",
+'upload-success-msg'          => "L'upload da [$2] è riuscito. Il file è disponibile qui: [[:{{ns:file}}:$1]]",
 'upload-failure-subj'         => "Problema nell'upload",
 'upload-failure-msg'          => 'Si è verificato un problema con il caricamento:
 
@@ -2040,7 +2048,7 @@ Potrebbero esserci [[{{MediaWiki:Listgrouprights-helppage}}|ulteriori informazio
 # Watchlist
 'watchlist'            => 'Osservati speciali',
 'mywatchlist'          => 'osservati speciali',
-'watchlistfor'         => "(dell'utente '''$1''')",
+'watchlistfor2'        => "Dell'utente $1 $2",
 'nowatchlist'          => 'La lista degli osservati speciali è vuota.',
 'watchlistanontext'    => "Per visualizzare e modificare l'elenco degli osservati speciali è necessario $1.",
 'watchnologin'         => 'Accesso non effettuato',
@@ -3293,6 +3301,7 @@ Si noti che è anche possibile [[Special:Watchlist/edit|modificare la lista con 
 'version-hook-subscribedby'        => 'Sottoscrizioni',
 'version-version'                  => '(Versione $1)',
 'version-license'                  => 'Licenza',
+'version-poweredby-others'         => 'altri',
 'version-software'                 => 'Software installato',
 'version-software-product'         => 'Prodotto',
 'version-software-version'         => 'Versione',

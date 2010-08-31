@@ -195,7 +195,7 @@ Par to var ziņuot [[Special:ListUsers/sysop|kaidam administratoram]], nūruodū
 # Login and logout pages
 'yourname'                => 'Tovs lītuotuojvuords / Slāgvuords:',
 'yourpassword'            => 'Paroļs:',
-'remembermypassword'      => 'Atguoduot munu paroli iz ituo datora',
+'remembermypassword'      => 'Atguoduot munu paroli iz ituo datora (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'login'                   => 'Dasaslāgt',
 'nav-login-createaccount' => 'Dasaslāgt / sataiseit jaunu lītuotuoju',
 'userlogin'               => 'Dasaslāgt / sataiseit jaunu lītuotuoju',
@@ -477,7 +477,6 @@ Lopys, kas ir tovā [[Special:Watchlist|puorraugamūs rokstu sarokstā]] ir '''r
 # Watchlist
 'watchlist'         => 'Muni puorraugamī roksti',
 'mywatchlist'       => 'Muni puorraugamī roksti',
-'watchlistfor'      => "(deļ '''$1''')",
 'addedwatch'        => 'Davīnuots puorraugamū sarokstam.',
 'addedwatchtext'    => "Lopa \"[[:\$1]]\" ir davīnuota [[Special:Watchlist|tevis puorraugamajom lopom]], kur tiks paruodeitys izmainis, kas izdareitys itymā lopā voi ituos lopys sarunu lopā, kai ari itei lopa tiks īzeimāta '''pusrasna''' [[Special:RecentChanges|pādejūs izmaiņu lopā]], lai itū byutu vīgluok pamaneit.
 

@@ -115,6 +115,7 @@ $magicWords = array(
 	'subjectpagenamee'      => array( '1', 'عنوان_صفحة_الموضوع', 'عنوان_صفحة_المقالة', 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
 	'msg'                   => array( '0', 'رسالة:', 'MSG:' ),
 	'subst'                 => array( '0', 'نسخ:', 'إحلال:', 'SUBST:' ),
+	'safesubst'             => array( '0', 'نسخ_آمن:', 'SAFESUBST:' ),
 	'msgnw'                 => array( '0', 'مصدر:', 'مصدر_قالب:', 'رسالة_بدون_تهيئة:', 'MSGNW:' ),
 	'img_thumbnail'         => array( '1', 'تصغير', 'مصغر', 'thumbnail', 'thumb' ),
 	'img_manualthumb'       => array( '1', 'تصغير=$1', 'مصغر=$1', 'thumbnail=$1', 'thumb=$1' ),
@@ -160,6 +161,7 @@ $magicWords = array(
 	'revisionday'           => array( '1', 'يوم_المراجعة', 'REVISIONDAY' ),
 	'revisionday2'          => array( '1', 'يوم_المراجعة2', 'REVISIONDAY2' ),
 	'revisionmonth'         => array( '1', 'شهر_المراجعة', 'REVISIONMONTH' ),
+	'revisionmonth1'        => array( '1', 'شهر_المراجعة1', 'REVISIONMONTH1' ),
 	'revisionyear'          => array( '1', 'عام_المراجعة', 'REVISIONYEAR' ),
 	'revisiontimestamp'     => array( '1', 'طابع_وقت_المراجعة', 'REVISIONTIMESTAMP' ),
 	'revisionuser'          => array( '1', 'مستخدم_المراجعة', 'REVISIONUSER' ),
@@ -193,7 +195,7 @@ $magicWords = array(
 	'filepath'              => array( '0', 'مسار_الملف:', 'FILEPATH:' ),
 	'tag'                   => array( '0', 'وسم', 'tag' ),
 	'hiddencat'             => array( '1', '__تصنيف_مخفي__', '__HIDDENCAT__' ),
-	'pagesincategory'       => array( '1', 'صفحات_فى_التصنيف', 'صفحات في التصنيف', 'صفحات_في_التصنيف', 'صفحات_في_تصنيف', 'PAGESINCATEGORY', 'PAGESINCAT' ),
+	'pagesincategory'       => array( '1', 'صفحات_في_التصنيف', 'صفحات_في_تصنيف', 'PAGESINCATEGORY', 'PAGESINCAT' ),
 	'pagesize'              => array( '1', 'حجم_الصفحة', 'PAGESIZE' ),
 	'index'                 => array( '1', '__فهرسة__', '__INDEX__' ),
 	'noindex'               => array( '1', '__لافهرسة__', '__NOINDEX__' ),
@@ -201,6 +203,9 @@ $magicWords = array(
 	'staticredirect'        => array( '1', '__تحويلة_إستاتيكية__', '__تحويلة_ساكنة__', '__STATICREDIRECT__' ),
 	'protectionlevel'       => array( '1', 'مستوى_الحماية', 'PROTECTIONLEVEL' ),
 	'formatdate'            => array( '0', 'تهيئة_التاريخ', 'تهيئة_تاريخ', 'formatdate', 'dateformat' ),
+	'url_path'              => array( '0', 'مسار', 'PATH' ),
+	'url_wiki'              => array( '0', 'ويكى', 'ويكي', 'WIKI' ),
+	'url_query'             => array( '0', 'استعلام', 'QUERY' ),
 );
 
 $specialPageAliases = array(
@@ -213,6 +218,7 @@ $specialPageAliases = array(
 	'Preferences'               => array( 'تفضيلات' ),
 	'Watchlist'                 => array( 'ليستة_المراقبه' ),
 	'Recentchanges'             => array( 'اخر_تعديلات' ),
+	'Upload'                    => array( 'رفع' ),
 	'Listfiles'                 => array( 'عرض_الفايلات', 'ليستة_الفايلات', 'ليستة_الصور' ),
 	'Newimages'                 => array( 'فايلات_جديده', 'صور_جديده' ),
 	'Listusers'                 => array( 'عرض_اليوزرات', 'ليستة_اليوزرات' ),
@@ -247,6 +253,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'كل_الصفح' ),
 	'Prefixindex'               => array( 'فهرس_بدايه' ),
 	'Ipblocklist'               => array( 'ليستة_البلوك', 'بيّن_البلوك', 'ليستة_بلوك_IP' ),
+	'Unblock'                   => array( 'رفع_منع' ),
 	'Specialpages'              => array( 'صفح_مخصوصه' ),
 	'Contributions'             => array( 'مساهمات' ),
 	'Emailuser'                 => array( 'ابعت_ايميل_لليوزر' ),
@@ -289,6 +296,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'صفحه_فارضيه' ),
 	'LinkSearch'                => array( 'تدوير_اللينكات' ),
 	'DeletedContributions'      => array( 'مساهمات_ممسوحه' ),
+	'Tags'                      => array( 'وسوم' ),
 	'Activeusers'               => array( 'يوزرات_نشطا' ),
 );
 
@@ -720,6 +728,7 @@ $2',
 'gotaccount'                 => "عندك حساب؟ '''$1'''.",
 'gotaccountlink'             => 'دخول',
 'createaccountmail'          => 'بـ الايميل',
+'createaccountreason'        => 'السبب:',
 'badretype'                  => 'كلمتين السر اللى  كتبتهم مش  زى بعضهم',
 'userexists'                 => 'اسم اليوزر اللى دخلته بيستعمله يوزر غيرك.
 دخل اسم تانى.',
@@ -785,6 +794,12 @@ $2',
 'login-throttled'            => 'انت عملت  محاولات لوجين كتيره حديثة على الحساب ده.
 من فضلك استنى قبل المحاولة مرة تانيه.',
 'loginlanguagelabel'         => 'اللغة: $1',
+
+# JavaScript password checks
+'password-strength-acceptable' => 'مقبول',
+'password-strength-good'       => 'جيدة',
+'password-retype'              => 'اكتب الباسورد تاني',
+'password-retype-mismatch'     => 'كلمات السر لا تتطابق',
 
 # Password reset dialog
 'resetpass'                 => 'غيّر الباسورد',
@@ -1166,8 +1181,10 @@ $1",
 شوف [[Special:IPBlockList|للستة المنع]] علشان تشوف عمليات المنع الشغالة دلوقتى .',
 
 # Revision move
-'revisionmove'        => ' انقل المراجعات من "$1"',
-'revmove-reasonfield' => 'السبب:',
+'revisionmove'              => ' انقل المراجعات من "$1"',
+'revmove-reasonfield'       => 'السبب:',
+'revmove-norevisions-title' => 'مراجعة هدف مش صح',
+'revmove-nullmove-title'    => 'عنوان غلط',
 
 # History merging
 'mergehistory'                     => 'دمج تواريخ الصفحة',
@@ -1319,6 +1336,7 @@ $1",
 'contextlines'                  => 'عدد  السطور فى كل نتيجة:',
 'contextchars'                  => 'عدد  الحروف فى كل سطر',
 'stub-threshold'                => 'الحد لتنسيق <a href="#" class="stub">لينك البذرة</a>:',
+'stub-threshold-disabled'       => 'معطل',
 'recentchangesdays'             => 'عدد الأيام المعروضة فى اخرالتغييرات:',
 'recentchangesdays-max'         => '(الحد الاقصى $1 {{PLURAL:$1|يوم|ايام}})',
 'recentchangescount'            => 'عدد التعديلات اللى بتظهر اوتوماتيكى فى اخر التغييرات, تواريخ الصفحه, و فى السجلات, :',
@@ -1392,6 +1410,8 @@ $1",
 'prefs-advancedsearchoptions'   => 'اختيارات متقدمه',
 'prefs-advancedwatchlist'       => 'اختيارات متقدمه',
 'prefs-displayrc'               => 'اختيارات العرض',
+'prefs-displaysearchoptions'    => 'اختيارات العرض',
+'prefs-displaywatchlist'        => 'اختيارات العرض',
 'prefs-diffs'                   => 'التغيير',
 
 # User rights
@@ -1707,6 +1727,7 @@ MGP # Pentax
 PICT # misc.
  #</pre> <!-- سيب السطر ده زى ما هوه -->',
 'upload-success-subj'         => 'التحميل ناجح',
+'upload-warning-subj'         => 'تحذير التحميل',
 
 'upload-proto-error'        => 'بروتوكول مش صحيح',
 'upload-proto-error-text'   => 'االتحميل عن بعد لازمله يوأرإل بيبتدى بـ <code>http://</code> أو <code>ftp://</code>.',
@@ -2111,7 +2132,6 @@ PICT # misc.
 # Watchlist
 'watchlist'            => 'لستة الصفحات اللى باراقبها',
 'mywatchlist'          => 'لستة  الصفح اللى باراقبها',
-'watchlistfor'         => "(ل '''$1''')",
 'nowatchlist'          => 'مافيش حاجة فى لستة مراقبتك.',
 'watchlistanontext'    => 'لو سمحت $1 لعرض أو تعديل الصفحات فى لستة مراقبتك.',
 'watchnologin'         => 'مش متسجل',

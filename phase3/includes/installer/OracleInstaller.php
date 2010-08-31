@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Oracle-specific installer.
+ *
+ * @file
+ * @ingroup Deployment
+ */
+ 
 /**
  * Class for setting up the MediaWiki database using Oracle.
  * 
@@ -109,5 +115,9 @@ class OracleInstaller extends DatabaseInstaller {
 "# Oracle specific settings
 \$wgDBprefix         = \"{$prefix}\";";
 	}
-	
+
+	public function doUpgrade() {
+		// TODO
+		return false;
+	}
 }

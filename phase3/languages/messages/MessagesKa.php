@@ -101,7 +101,7 @@ $magicWords = array(
 	'redirect'              => array( '0', '#გადამისამართება', '#REDIRECT' ),
 	'nogallery'             => array( '0', '__უგალერეო__', '__NOGALLERY__' ),
 	'subst'                 => array( '0', 'მიდგმ:', 'SUBST:' ),
-	'img_thumbnail'         => array( '1', 'მინიატიურა', 'მინი', 'მინიასლი', 'thumbnail', 'thumb' ),
+	'img_thumbnail'         => array( '1', 'მინიატიურა', 'მინი', 'მინიასლი', 'ცეროდენა', 'thumbnail', 'thumb' ),
 	'img_right'             => array( '1', 'მარჯვნივ', 'right' ),
 	'img_left'              => array( '1', 'მარცხნივ', 'left' ),
 	'img_width'             => array( '1', '$1პქ', '$1px' ),
@@ -292,7 +292,7 @@ $messages = array(
 'vector-view-create'         => 'შექმნა',
 'vector-view-edit'           => 'რედაქტირება',
 'vector-view-history'        => 'ისტორია',
-'vector-view-view'           => 'კითხვა',
+'vector-view-view'           => 'შემოწმებული სტატია',
 'vector-view-viewsource'     => 'წყაროს ხილვა',
 'actions'                    => 'მოქმედებები',
 'namespaces'                 => 'სახელთა სივრცე',
@@ -1393,8 +1393,8 @@ $1",
 'rc_categories'                     => 'მხოლოდ კატეგორიებიდან (განაცალკევეთ "|"-ის მიხედვით)',
 'rc_categories_any'                 => 'ნებისმიერი',
 'newsectionsummary'                 => '/* $1 */ ახალი სექცია',
-'rc-enhanced-expand'                => 'დეტალების ჩვენება (მოითხოვს ჯავასკრიპტს)',
-'rc-enhanced-hide'                  => 'დეტალების დამალვა',
+'rc-enhanced-expand'                => 'დამატებითი ინფორმაციის ჩვენება (მოითხოვს ჯავასკრიპტს)',
+'rc-enhanced-hide'                  => 'დამატებითი ინფორმაციის დამალვა',
 
 # Recent changes linked
 'recentchangeslinked'          => 'დაკავშირებული ცვლილებები',
@@ -1927,7 +1927,6 @@ $1',
 # Watchlist
 'watchlist'            => 'ჩემი კონტროლის სია',
 'mywatchlist'          => 'ჩემი კონტროლის სია',
-'watchlistfor'         => "('''$1'''-თვის)",
 'nowatchlist'          => 'თქვენი კონტროლის სია ცარიელია.',
 'watchlistanontext'    => '$1
 
@@ -2034,9 +2033,9 @@ $UNWATCHURL
 იმოქმედეთ სიფრთხილით.',
 
 # Rollback
-'rollback'          => 'რედაქტირების გაუქმება',
-'rollback_short'    => 'გაუქმება',
-'rollbacklink'      => 'გაუქმება',
+'rollback'          => 'რცვლილებების გაუქმება',
+'rollback_short'    => 'სწრაფი გაუქმება',
+'rollbacklink'      => 'სწრაფი გაუქმება',
 'rollbackfailed'    => 'შეცდომა გაუქმებისას',
 'cantrollback'      => 'შეუძლებელია უწინდელი რედაქციის აღდგენა; ის, ვინც უკანასკნელი ცვლილებები შეიტანა, ამ სტატიის ერთადერთი ავტორია.',
 'alreadyrolled'     => 'შეუძლებელია ბოლო ცვლილების გაუქმება [[:$1]], გაკეებული [[User:$2|$2]] ([[User talk:$2|განხილვა]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]);
@@ -2714,8 +2713,8 @@ $1',
 # Metadata
 'metadata'          => 'მეტამონაცემები',
 'metadata-help'     => 'ეს ფაილი შეიცავს დამატებით ინფორმაციას, სავარაუდოდ ციფრული კამერიდან ან სკანერიდან, რომელიც მის შესაქმნელად გამოიყენეს. თუ ფაილის ორიგინალი შეცვლილია, ზოგიერთი დეტალი შესაძლოა სრულად არ ასახავდეს ფაილში შეტანილ ცვლილებებს.',
-'metadata-expand'   => 'დეტალების ჩვენება ვრცლად',
-'metadata-collapse' => 'დეტალების დამალვა',
+'metadata-expand'   => 'დამატებითი ინფორმაციის ჩვენება',
+'metadata-collapse' => 'დამატებითი ინფორმაციის დამალვა',
 'metadata-fields'   => 'EXIF მეტამონაცემების ჩამონათვალი ამ შეტყობინებაში დამატებული იქნება სურათის გვერდზე, როცა მეტამონაცემების ცხრილი გახსნილია.
 სხვები უპირობოდ დამალული იქნება.
 * make

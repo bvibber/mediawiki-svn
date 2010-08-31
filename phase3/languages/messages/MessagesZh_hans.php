@@ -9,6 +9,7 @@
  *
  * @author Bencmq
  * @author Biŋhai
+ * @author Chenxiaoqino
  * @author Chinalace
  * @author Fantasticfears
  * @author Franklsf95
@@ -26,6 +27,8 @@
  * @author PhiLiP
  * @author Shinjiman
  * @author Shizhao
+ * @author Tommyang
+ * @author Wilsonmess
  * @author Wmr89502270
  * @author Wong128hk
  * @author Xiaomingyan
@@ -35,7 +38,7 @@
 $fallback8bitEncoding = 'windows-936';
 
 $namespaceNames = array(
-	NS_MEDIA            => '媒体',
+	NS_MEDIA            => '媒体文件',
 	NS_SPECIAL          => '特殊',
 	NS_TALK             => '讨论',
 	NS_USER             => '用户',
@@ -130,9 +133,10 @@ $specialPageAliases = array(
 	'Allpages'                  => array( '所有页面' ),
 	'Prefixindex'               => array( '前缀索引' ),
 	'Ipblocklist'               => array( '封禁列表' ),
+	'Unblock'                   => array( '解除封禁' ),
 	'Specialpages'              => array( '特殊页面' ),
 	'Contributions'             => array( '用户贡献' ),
-	'Emailuser'                 => array( '电邮用户' ),
+	'Emailuser'                 => array( '邮件用户' ),
 	'Confirmemail'              => array( '确认电子邮件' ),
 	'Whatlinkshere'             => array( '链入页面' ),
 	'Recentchangeslinked'       => array( '链出更改' ),
@@ -152,7 +156,7 @@ $specialPageAliases = array(
 	'Userrights'                => array( '用户权限' ),
 	'MIMEsearch'                => array( 'MIME搜索' ),
 	'FileDuplicateSearch'       => array( '搜索重复文件' ),
-	'Unwatchedpages'            => array( '未被监视的页面' ),
+	'Unwatchedpages'            => array( '未受监视页面' ),
 	'Listredirects'             => array( '重定向页面列表' ),
 	'Revisiondelete'            => array( '删除或恢复版本' ),
 	'Unusedtemplates'           => array( '未使用模板' ),
@@ -165,7 +169,7 @@ $specialPageAliases = array(
 	'Popularpages'              => array( '热点页面' ),
 	'Search'                    => array( '搜索' ),
 	'Resetpass'                 => array( '修改密码' ),
-	'Withoutinterwiki'          => array( '没有跨语言链接的页面' ),
+	'Withoutinterwiki'          => array( '无跨wiki链接页面' ),
 	'MergeHistory'              => array( '合并历史' ),
 	'Filepath'                  => array( '文件路径' ),
 	'Invalidateemail'           => array( '不可识别的电邮地址' ),
@@ -213,7 +217,7 @@ $messages = array(
 'tog-hideminor'               => '在最近更改中隐藏小修改',
 'tog-hidepatrolled'           => '在最近更改中隐藏已巡查编辑',
 'tog-newpageshidepatrolled'   => '在新页面列表中隐藏已巡查页面',
-'tog-extendwatchlist'         => '增强监视列表以显示包括最近更改的所有更改',
+'tog-extendwatchlist'         => '展开监视列表以显示包括最近更改的所有更改',
 'tog-usenewrc'                => '启用增强最近更改（JavaScript）',
 'tog-numberheadings'          => '标题自动编号',
 'tog-showtoolbar'             => '显示编辑工具条（JavaScript）',
@@ -475,7 +479,7 @@ $1',
 
 'badaccess'        => '权限错误',
 'badaccess-group0' => '你被禁止执行你刚才请求的操作。',
-'badaccess-groups' => '您刚才请求的操作只有以下用户组的用户才能使用：$1',
+'badaccess-groups' => '您刚才请求的操作只有{{PLURAL:$2|这个用户组|以下用户组}}中的用户才能使用： $1',
 
 'versionrequired'     => '需要版本为$1的MediaWiki',
 'versionrequiredtext' => '需要版本为$1的MediaWiki才能使用本页。请见[[Special:Version|版本页面]]。',
@@ -677,7 +681,13 @@ $2',
 'suspicious-userlogout'      => '您登出的要求已经被拒绝，因为它可能是由已损坏的浏览器或者缓存代理传送。',
 
 # JavaScript password checks
-'password-retype' => '再次输入密码',
+'password-strength'            => '预估密码强度： $1',
+'password-strength-bad'        => '差',
+'password-strength-mediocre'   => '一般',
+'password-strength-acceptable' => '可接受',
+'password-strength-good'       => '好',
+'password-retype'              => '再次输入密码',
+'password-retype-mismatch'     => '密码不匹配',
 
 # Password reset dialog
 'resetpass'                 => '更改密码',
@@ -900,7 +910,7 @@ $2',
 'undo-success' => '此编辑可以被撤销。请检查以下比较以核实这正是您想做的，然后保存以下更改完成撤销编辑。',
 'undo-failure' => '由于中途不一致的编辑，此编辑不能撤销。',
 'undo-norev'   => '由于其修订版本不存在或已删除，此编辑不能撤销。',
-'undo-summary' => '撤销由[[Special:Contributions/$2|$2]]（[[User talk:$2|对话]]）所作出的修订$1',
+'undo-summary' => '撤销由[[Special:Contributions/$2|$2]]（[[User talk:$2|讨论]]）所作出的修订$1',
 
 # Account creation failure
 'cantcreateaccounttitle' => '无法创建账户',
@@ -1098,6 +1108,7 @@ $1",
 # Diffs
 'history-title'            => '“$1”的修订历史',
 'difference'               => '（修订版本间差异）',
+'difference-multipage'     => '页面间的差异',
 'lineno'                   => '第$1行：',
 'compareselectedversions'  => '比较选定的修订版本',
 'showhideselectedversions' => '显示／隐藏选定的修订版本',
@@ -1461,7 +1472,7 @@ $1",
 'rcshowhidebots'                    => '$1机器人的编辑',
 'rcshowhideliu'                     => '$1登录用户的编辑',
 'rcshowhideanons'                   => '$1匿名用户的编辑',
-'rcshowhidepatr'                    => '$1检查过的编辑',
+'rcshowhidepatr'                    => '$1巡查过的编辑',
 'rcshowhidemine'                    => '$1我的编辑',
 'rclinks'                           => '显示最近$2天内最新的$1次改动。<br />$3',
 'diff'                              => '差异',
@@ -1597,12 +1608,13 @@ $1",
 为方便起见，这一个文件的删除记录已经在下面提供:",
 'filename-bad-prefix'         => '您上传的文件名称是以<strong>“$1”</strong>作为开头，通常这种没有含意的文件名称是由数码相机中自动编排。请在您的文件中重新选择一个更加有意义的文件名称。',
 'upload-success-subj'         => '上传成功',
-'upload-success-msg'          => '你的上传可以在这里找到：[[:{{ns:file}}:$1]]',
+'upload-success-msg'          => '您的自[$2]的上传可以在这里找到：[[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => '上传错误',
 'upload-failure-msg'          => '有一个问题与您的上传有关：
 
 $1',
 'upload-warning-subj'         => '上传警告',
+'upload-warning-msg'          => '您自[$2]的上传出错了。您可以返回[[Special:Upload/stash/$1|上传表单]]并更正问题。',
 
 'upload-proto-error'        => '协议错误',
 'upload-proto-error-text'   => '远程上传要求 URL 以 <code>http://</code> 或 <code>ftp://</code> 开头。',
@@ -2001,7 +2013,7 @@ Template:消除歧義',
 # Watchlist
 'watchlist'            => '监视列表',
 'mywatchlist'          => '监视列表',
-'watchlistfor'         => "（'''$1'''的监视列表'）",
+'watchlistfor2'        => '$1 用户的$2',
 'nowatchlist'          => '您的监视列表为空。',
 'watchlistanontext'    => '请$1以查看或编辑您的监视列表。',
 'watchnologin'         => '未登录',
@@ -2112,7 +2124,7 @@ $UNWATCHURL
 
 该页最后的编辑者是[[User:$3|$3]]（[[User talk:$3|讨论]]{{int:pipe-separator}}[[Special:Contributions/$3|{{int:contribslink}}]]）。',
 'editcomment'       => '编辑摘要："<i>$1</i>"。',
-'revertpage'        => '已恢复[[Special:Contributions/$2|$2]]（[[User talk:$2|对话]]）的编辑至[[User:$1|$1]]的最后一个修订版本',
+'revertpage'        => '已恢复[[Special:Contributions/$2|$2]]（[[User talk:$2|讨论]]）的编辑至[[User:$1|$1]]的最后一个修订版本',
 'revertpage-nouser' => '恢复由（移除了的用户名）的编辑到[[User:$1|$1]]的最后一个修订版本',
 'rollback-success'  => '已恢复$1的编辑；
 更改回$2的最后修订版本。',
@@ -2252,7 +2264,7 @@ $1',
 'sp-contributions-blocklog'            => '封禁日志',
 'sp-contributions-deleted'             => '已删除的用户贡献',
 'sp-contributions-logs'                => '日志',
-'sp-contributions-talk'                => '对话',
+'sp-contributions-talk'                => '讨论',
 'sp-contributions-userrights'          => '用户权限管理',
 'sp-contributions-blocked-notice'      => '这位用户现时正在被封锁中。
 最近的封锁日志项目在下面提供以便参考：',
@@ -3190,7 +3202,7 @@ $1',
 
 # Delete conflict
 'deletedwhileediting' => "'''警告'''：此页在您开始编辑之后已经被删除！",
-'confirmrecreate'     => "在您开始编辑这个页面后，用户[[User:$1|$1]] （[[User talk:$1|对话]]）以下列原因删除了这个页面：
+'confirmrecreate'     => "在您开始编辑这个页面后，用户[[User:$1|$1]] （[[User talk:$1|讨论]]）以下列原因删除了这个页面：
 : ''$2''
 请确认在您重新创建页面前三思。",
 'recreate'            => '重建',
@@ -3289,6 +3301,8 @@ $1',
 'version-hook-subscribedby'        => '署名',
 'version-version'                  => '（版本$1）',
 'version-license'                  => '授权',
+'version-poweredby-credits'        => "这个 Wiki 由 '''[http://www.mediawiki.org/ MediaWiki]''' 驱动，版权所有 © 2001-$1 $2。",
+'version-poweredby-others'         => '其他',
 'version-software'                 => '已安装软件',
 'version-software-product'         => '产品',
 'version-software-version'         => '版本',

@@ -618,9 +618,9 @@ Tafadhali subiri kwanza kabla ya kujaribu tena.',
 
 # JavaScript password checks
 'password-strength'            => 'Nguvu ya neno la siri: $1',
-'password-strength-bad'        => 'BOVU',
+'password-strength-bad'        => 'MBAYA',
 'password-strength-mediocre'   => 'hafifu',
-'password-strength-acceptable' => 'inaridhika',
+'password-strength-acceptable' => 'inakubalika',
 'password-strength-good'       => 'nzuri',
 'password-retype'              => 'Andika tena neno la siri',
 'password-retype-mismatch'     => 'Maneno ya siri ni tofauti',
@@ -969,13 +969,15 @@ Tazama [[Special:IPBlockList|orodha ya uzuio wa IP]] kuona orodha ya zuio zilizo
 
 # Revision move
 'moverevlogentry'              => 'alisogeza {{PLURAL:$3|pitio moja|mapitio $3}} kutoka $1 kwenda $2',
-'revisionmove'                 => 'Hamisha mapitio kutoka kwa "$1"',
+'revisionmove'                 => 'Hamisha mapitio kutoka "$1"',
 'revmove-legend'               => 'Weka ukurasa unaolengwa pamoja na muhtasari',
-'revmove-submit'               => 'Hamisha mapitio kwenda ukurasa ulioteuliwa',
+'revmove-submit'               => 'Hamisha mapitio kwenda ukurasa uliochaguliwa',
 'revisionmoveselectedversions' => 'Hamisha mapitio yaliyochaguliwa',
 'revmove-reasonfield'          => 'Sababu:',
 'revmove-titlefield'           => 'Ukurasa unaolengwa',
 'revmove-nullmove-title'       => 'Jina halifai',
+'revmove-success-existing'     => '{{PLURAL:$1|Pitio moja kutoka [[$2]] limehamishwa|mapitio $1 kutoka kwa [[$2]] yamehamishwa}} kwenda ukurasa uliopo tayari unaoitwa [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Pitio moja kutoka [[$2]] limehamishwa|mapitio $1 kutoka [[$2]] yamehamishwa}} kwenda ukurasa mpya unaoitwa [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Unganisha historia za kurasa',
@@ -985,10 +987,10 @@ Tazama [[Special:IPBlockList|orodha ya uzuio wa IP]] kuona orodha ya zuio zilizo
 'mergehistory-submit'              => 'Unganisha mapitio',
 'mergehistory-empty'               => 'Hakuna mapitio yanayoweza kuunganishwa',
 'mergehistory-success'             => '{{PLURAL:$3|Pitio $3 la [[:$1]] liliingizwa|Mapitio $3 ya [[:$1]] yaliingizwa}} ndani ya [[:$2]].',
-'mergehistory-no-source'           => 'Ukurasa wa chanzo $1 haupatikani.',
-'mergehistory-no-destination'      => 'Ukurasa wa mwishilio $1 haupatikani.',
-'mergehistory-invalid-source'      => 'Inabidi ukurasa wa chanzo uwe na jina halali.',
-'mergehistory-invalid-destination' => 'Inabidi ukurasa wa mwishilio uwe na jina halali.',
+'mergehistory-no-source'           => 'Chanzo cha ukurasa $1 hakipo.',
+'mergehistory-no-destination'      => 'Ukurasa wa makusudio $1 haupo.',
+'mergehistory-invalid-source'      => 'Chanzo cha ukurasa lazima kiwe na jina uhalali.',
+'mergehistory-invalid-destination' => 'Ukurasa wa makusudio lazima uwe na jina halali.',
 'mergehistory-autocomment'         => '[[:$1]] uliunganishwa ndani wa [[:$2]]',
 'mergehistory-comment'             => '[[:$1]] uliunganishwa ndani wa [[:$2]]: $3',
 'mergehistory-same-destination'    => 'Kurasa za chanzo na za mwishilio haziwezi kuwa sawa',
@@ -1003,6 +1005,7 @@ Tazama [[Special:IPBlockList|orodha ya uzuio wa IP]] kuona orodha ya zuio zilizo
 # Diffs
 'history-title'            => 'Historia ya mapitio ya "$1"',
 'difference'               => '(Tofauti baina ya mapitio)',
+'difference-multipage'     => '(Tofauti kati ya kurasa)',
 'lineno'                   => 'Mstari $1:',
 'compareselectedversions'  => 'Linganisha mapitio mawili uliyochagua',
 'showhideselectedversions' => 'Onyesha/ficha mapitio yaliyoteuliwa',
@@ -1197,6 +1200,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'prefs-displayrc'               => 'Hitiari za kutandaza',
 'prefs-displaysearchoptions'    => 'Mapendekezo ya kuzinza',
 'prefs-displaywatchlist'        => 'Mapendekezo ya kuzinza',
+'prefs-diffs'                   => 'Tofauti',
 
 # User rights
 'userrights'                   => 'Usimamizi wa haki za mtumiaji',
@@ -1213,7 +1217,10 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 * Mtumiaji si mwanachama wa kundi fulani kama kisanduku chake hakina alama.
 * Alama ya * ina maana ya kwamba ukiongeza kundi fulani, hutaweza kuitoa tena, au ukitoa kundi fulani, hutaweza kuiongeza tena.',
 'userrights-reason'            => 'Sababu:',
+'userrights-no-interwiki'      => 'Huna ruhusa ya kuhariri haki za mtumiaji kwenye wiki zingine.',
 'userrights-nodatabase'        => 'Hakuna hifadhidata inayoitwa $1 au haimo katiko jumuia hii ya wiki.',
+'userrights-nologin'           => 'Lazima [[Special:UserLogin|uingie ndani]] ya akaunti ya mkabidhi ili kupanga haki za mtumiaji.',
+'userrights-notallowed'        => 'Akaunti yako haina ruhusa ya kupanga haki za mtumiaji.',
 'userrights-changeable-col'    => 'Makundi unayoweza kuyabadilisha',
 'userrights-unchangeable-col'  => 'Makundi usiyoweza kuyabadilisha',
 
@@ -1224,6 +1231,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'group-bot'           => 'Boti',
 'group-sysop'         => 'Wakabidhi',
 'group-bureaucrat'    => 'Warasimu',
+'group-suppress'      => 'Ukomeshaji',
 'group-all'           => '(vyote)',
 
 'group-user-member'          => 'Mtumiaji',
@@ -1231,12 +1239,14 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'group-bot-member'           => 'Bot',
 'group-sysop-member'         => 'Mkabidhi',
 'group-bureaucrat-member'    => 'mrasimu',
+'group-suppress-member'      => 'usimamizi',
 
 'grouppage-user'          => '{{ns:project}}:Watumiaji',
 'grouppage-autoconfirmed' => '{{ns:project}}:Watumiaji waliothibitishwa na tarakilishi',
 'grouppage-bot'           => '{{ns:project}}:Boti',
 'grouppage-sysop'         => '{{ns:project}}:Wakabidhi',
 'grouppage-bureaucrat'    => '{{ns:project}}:Warasimu',
+'grouppage-suppress'      => '{{ns:project}}:Usimamizi',
 
 # Rights
 'right-read'                 => 'Kusoma kurasa',
@@ -1247,11 +1257,17 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'right-minoredit'            => 'Kutia alama kwamba badiliko ni dogo',
 'right-move'                 => 'Kuhamisha kurasa',
 'right-move-subpages'        => 'Kuhamisha kurasa pamoja na kurasa zake ndogo',
+'right-move-rootuserpages'   => 'Kuhamisha kurasa za watumiaji',
 'right-movefile'             => 'Kuhamisha mafaili',
+'right-suppressredirect'     => 'Usianzishe elekezo kutoka katika kurasa za chanzo wakati kuhamisha kurasa',
 'right-upload'               => 'Kupakia mafaili',
 'right-reupload'             => 'Kuandikiza mafaili yaliyopo tayari',
 'right-reupload-own'         => 'Kuandikiza mafaili yaliyopakizwa na mimi mwenyewe',
+'right-reupload-shared'      => 'Kupuuza mafaili yaliyopo hifadhi ya pamoja ya faili hapo wiki hii',
 'right-upload_by_url'        => 'Kupakia mafaili kutoka kwa URL',
+'right-purge'                => 'Safisha kache za wavuti kwa ajili ya ukurasa usio na uthibitisho',
+'right-autoconfirmed'        => 'Hariri kurasa zilizokingwa-kiasi',
+'right-nominornewtalk'       => 'Isiwe maharirio madogo kwenye kurasa za majadiliano fyatua kunijulisha kuhusu jumbe mpya',
 'right-delete'               => 'Kufuta kurasa',
 'right-bigdelete'            => 'Kufuta kurasa zenye mabadiliko mengi',
 'right-deleterevision'       => 'Kufuta na kurudisha mapitio fulani ya kurasa',
@@ -1263,9 +1279,10 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'right-suppressionlog'       => 'Kutazama kumbukumbu za faragha',
 'right-block'                => 'Kuwazuia watumiaji wengine wasihariri',
 'right-blockemail'           => 'Kumzuia mtumiaji asitume barua-pepe',
-'right-hideuser'             => 'Zuia mtumiaji, jina lake lisionekana wazi',
+'right-hideuser'             => 'Kuzuia jina la mtumiaji, lisionekane mbele ya kadamnasi',
 'right-editinterface'        => 'Kuhariri kusano ya mtumiaji',
 'right-import'               => 'Kuleta kurasa kutoka kwa wiki zingine',
+'right-unwatchedpages'       => 'Kutazama orodha ya kurasa zisizofuatiliwa',
 'right-mergehistory'         => 'Kuunganisha historia ya kurasa zingine',
 'right-userrights'           => 'Kubadilisha wezo zote za watumiaji',
 'right-userrights-interwiki' => 'Kuhariri wezo za watumiaji kwenye wiki zingine',
@@ -1288,9 +1305,11 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'action-minoredit'            => 'kutia alama ya badiliko dogo',
 'action-move'                 => 'kuhamisha ukurasa huu',
 'action-move-subpages'        => 'kuhamisha ukurasa huu, pamoja na kurasa zake ndogo',
+'action-move-rootuserpages'   => 'kuhamisha kurasa za watumiaji',
 'action-movefile'             => 'kuhamisha faili hili',
 'action-upload'               => 'kupakia faili hili',
 'action-reupload'             => 'kuandikiza faili lililopo tayari',
+'action-reupload-shared'      => 'kupuuza faili lililopo hifadhi ya pamoja ya faili',
 'action-upload_by_url'        => 'kupakia faili hili kutoka kwa gombo wavu',
 'action-delete'               => 'kufuta ukurasa huu',
 'action-deleterevision'       => 'kufuta pitio hili',
@@ -1301,6 +1320,7 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'action-suppressionlog'       => 'kutazama kumbukumbu za faragha',
 'action-block'                => 'kumzuia mtumiaji huyu asihariri',
 'action-import'               => 'kuleta ukurasa huu kutoka kwa wiki nyingine',
+'action-unwatchedpages'       => 'kutazama orodha ya kurasa zisizofuatiliwa',
 'action-mergehistory'         => 'kuunganisha historia ya ukurasa huu',
 'action-userrights'           => 'kubadilisha wezo zote za watumiaji',
 'action-userrights-interwiki' => 'kuhariri wezo za watumiaji kwenye wiki zingine',
@@ -1355,86 +1375,129 @@ Pia unaweza kuchagua kuwawezesha watumiaji wengine wawasiliane nawe kwa kupitia 
 'recentchangeslinked-to'       => 'Onyesha mabadiliko yaliyotokea kwenye kurasa zile zinazoungwa kufikia ukurasa uliotajwa',
 
 # Upload
-'upload'                  => 'Pakia faili',
-'uploadbtn'               => 'Pakia faili',
-'reuploaddesc'            => 'Kubatilisha kupakia na kurudi kwenye fomu ya kupakia',
-'upload-tryagain'         => 'Wasilisha maelezo ya faili lililobadilishwa',
-'uploadnologin'           => 'Hujaingia',
-'uploadnologintext'       => 'Lazima [[Special:UserLogin|uingie akaunti yako]] ile upakie mafaili.',
-'uploaderror'             => 'Hitilafu ya kupia',
-'upload-recreate-warning' => "'''Ilani: Faili lenye jina hilo limeshafutwa au limeshasogezwa.'''
+'upload'                      => 'Pakia faili',
+'uploadbtn'                   => 'Pakia faili',
+'reuploaddesc'                => 'Kubatilisha kupakia na kurudi kwenye fomu ya kupakia',
+'upload-tryagain'             => 'Wasilisha maelezo ya faili lililobadilishwa',
+'uploadnologin'               => 'Hujaingia',
+'uploadnologintext'           => 'Lazima [[Special:UserLogin|uingie akaunti yako]] ile upakie mafaili.',
+'uploaderror'                 => 'Hitilafu ya kupia',
+'upload-recreate-warning'     => "'''Ilani: Faili lenye jina hilo limeshafutwa au limeshasogezwa.'''
 
 Rejea kumbukumbu za kufuta au kuhamisha ukurasa huu zinazotolewa chini:",
-'uploadtext'              => "Tumia fomu hapo chini kwa kupakizia mafaili.
+'uploadtext'                  => "Tumia fomu hapo chini kwa kupakizia mafaili.
 Kwa kutazama au kutafuta faili zilizopakiwa awali, tafadhali nenda kwenye [[Special:FileList|orodha ya mafaili yaliyopakiwa]]. Kwa zile faili ambazo zishapitiwa, basi angalia [[Special:Log/upload|kumbukumbu ya mafaili]]. Kwa mafaili yaliyofutwa, tafadhali [[Special:Log/delete|tazama hapa]].
 
 Kwa kutumia faili katika makala, tumia moja kati ya viungo vifuatavyo:
 * '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Picha.jpg]]</nowiki></tt>''' kwa kutumia toleo zima la faili
 * '''<tt><nowiki>[[</nowiki>{{ns:file}}<nowiki>:Picha.png|200px|thumb|left|maelezo ya picha]]</nowiki></tt>''' tumia pixel 200 kwa ukubwa mzuri na sehemu ya 'maelezo ya picha' ikiwa kama maelezo husika na picha iliyopo
 * '''<tt><nowiki>[[</nowiki>{{ns:media}}<nowiki>:File.ogg]]</nowiki></tt>''' kwa kuunga moja kwa moja bila kuonyesga faili",
-'upload-permitted'        => 'Aina ya mafaili yanayoruhusiwa: $1.',
-'upload-preferred'        => 'Aina za mafaili yaliyopendelewa: $1.',
-'upload-prohibited'       => 'Aina za mafaili yanayokataliwa: $1.',
-'uploadlog'               => 'kumbukumbu za kupakia',
-'uploadlogpage'           => 'Kumbukumbu ya upakiaji',
-'uploadlogpagetext'       => 'Hapo chini kuna orodha wa mafaili yaliyopakizwa hivi karibuni.
+'upload-permitted'            => 'Aina ya mafaili yanayoruhusiwa: $1.',
+'upload-preferred'            => 'Aina za mafaili yaliyopendelewa: $1.',
+'upload-prohibited'           => 'Aina za mafaili yanayokataliwa: $1.',
+'uploadlog'                   => 'kumbukumbu za kupakia',
+'uploadlogpage'               => 'Kumbukumbu ya upakiaji',
+'uploadlogpagetext'           => 'Hapo chini kuna orodha wa mafaili yaliyopakizwa hivi karibuni.
 Tazama [[Special:NewFiles|mkusanyiko wa mafaili mapya]] kuona picha zenyewe.',
-'filename'                => 'Jina la faili',
-'filedesc'                => 'Muhtasari',
-'fileuploadsummary'       => 'Muhtasari:',
-'filereuploadsummary'     => 'Mabadiliko ya faili:',
-'filestatus'              => 'Hali ya hatimiliki:',
-'filesource'              => 'Chanzo:',
-'uploadedfiles'           => 'Mafaili yaliyopakiwa:',
-'ignorewarning'           => 'Hifadhi bila kujali maonyo yoyote.',
-'ignorewarnings'          => 'Usijali ilani zozote',
-'minlength1'              => 'Majina ya mafaili yanatakiwa kuwa na herufi moja au zaidi.',
-'illegalfilename'         => 'Jina la faili la "$1" lina herufi zisizoruhusiwa katika majina ya kurasa.
+'filename'                    => 'Jina la faili',
+'filedesc'                    => 'Muhtasari',
+'fileuploadsummary'           => 'Muhtasari:',
+'filereuploadsummary'         => 'Mabadiliko ya faili:',
+'filestatus'                  => 'Hali ya hatimiliki:',
+'filesource'                  => 'Chanzo:',
+'uploadedfiles'               => 'Mafaili yaliyopakiwa:',
+'ignorewarning'               => 'Hifadhi bila kujali maonyo yoyote.',
+'ignorewarnings'              => 'Usijali ilani zozote',
+'minlength1'                  => 'Majina ya mafaili yanatakiwa kuwa na herufi moja au zaidi.',
+'illegalfilename'             => 'Jina la faili la "$1" lina herufi zisizoruhusiwa katika majina ya kurasa.
 Tafadhali uweke jina jipya kwenye faili, halafu jaribu kulipakia upya.',
-'badfilename'             => 'Jina la faili limebadilishwa kuwa "$1".',
-'filetype-mime-mismatch'  => 'Tawi (extension) la faili halingani na aina ya MIME.',
-'empty-file'              => 'Faili ulilowasilisha ni tupu.',
-'file-too-large'          => 'Faili ulilowasilisha ni kubwa mno.',
-'filename-tooshort'       => 'Jina la faili ni fupi mno.',
-'filetype-banned'         => 'Aina hili la faili haliruhusiwi.',
-'illegal-filename'        => 'Jina hilo la faili haliruhusiwi.',
-'overwrite'               => 'Kuandikiza faili lililopo tayari hairuhusiwi.',
-'unknown-error'           => 'Ilitokea hitilafu isiyojulikana.',
-'tmp-create-error'        => 'Haikuweza kuanzisha faili la muda.',
-'tmp-write-error'         => 'Hitilafu ya kuandika faili la muda.',
-'large-file'              => 'Tunashauri mafaili yasizidi $1;
+'badfilename'                 => 'Jina la faili limebadilishwa kuwa "$1".',
+'filetype-mime-mismatch'      => 'Tawi (extension) la faili halingani na aina ya MIME.',
+'filetype-badmime'            => 'Mafaili ya aina MIME ya "$1" hayaruhusiwi kupakiwa.',
+'filetype-bad-ie-mime'        => 'Hatuwezi kupakia faili hili kwa sababu Internet Explorer ingefikiri kwamba ni "$1". Mafaili ya aina hii hayaruhusiwa, na huenda ni ya hatari.',
+'filetype-unwanted-type'      => "Aina la faili '''\".\$1\"''' haitakiwi.
+{{PLURAL:\$3|Aina ya faili inayopendelewa|Aina za faili zinazopendelewa}} ni \$2.",
+'filetype-banned-type'        => "Aina la faili '''\".\$1\"''' hairuhusiwi.
+{{PLURAL:\$3|Aina ya faili inayoruhusiwa|Aina za faili zinazoruhusiwa}} ni \$2.",
+'filetype-missing'            => 'Faili halina tawi (kama ".jpg").',
+'empty-file'                  => 'Faili ulilowasilisha ni tupu.',
+'file-too-large'              => 'Faili ulilowasilisha ni kubwa mno.',
+'filename-tooshort'           => 'Jina la faili ni fupi mno.',
+'filetype-banned'             => 'Aina hili la faili haliruhusiwi.',
+'verification-error'          => 'Faili hili halikupitishwa wakati lilipohakikishwa.',
+'illegal-filename'            => 'Jina hilo la faili haliruhusiwi.',
+'overwrite'                   => 'Kuandikiza faili lililopo tayari hairuhusiwi.',
+'unknown-error'               => 'Ilitokea hitilafu isiyojulikana.',
+'tmp-create-error'            => 'Haikuweza kuanzisha faili la muda.',
+'tmp-write-error'             => 'Hitilafu ya kuandika faili la muda.',
+'large-file'                  => 'Tunashauri mafaili yasizidi $1;
 faili hili lina $2.',
-'file-exists-duplicate'   => 'Faili hili ni nakili ya {{PLURAL:$1|faili lifuatalo|mafaili yafuatayo}}:',
-'uploadwarning'           => 'Ilani kuhusu kupakia',
-'savefile'                => 'Hifadhi faili',
-'uploadedimage'           => 'ameipakia "[[$1]]"',
-'overwroteimage'          => 'alipakia toleo jipya la "[[$1]]"',
-'uploadvirus'             => 'Faili lina kirusi!
+'largefileserver'             => 'Faili hili ni kubwa kuliko linavyoweza kuwekwa, kwa jinsi seva inavyopangaliwa',
+'emptyfile'                   => 'Faili ulilolipakia linaonekana kuwa tupu.
+Labda jina lake limeandikwa vibaya.
+Tafadhali uhakikishe kwamba unataka kupakia faili hili.',
+'fileexists'                  => "Faili lenye jina hili lipo tayari, tafadhali tazama '''<tt>$1</tt>''' ikiwa una mashaka kuhusu kulibadilisha.",
+'filepageexists'              => "Ukurasa wa maelezo ya faili hili limeshaanzishwa hapo '''<tt>[[:$1]]</tt>''', lakini bado hakuna faili lenye jina hili.
+Muhtasari utakaoandika hautaonekana katika ukurasa wa maelezo.
+Ili muhtasari uonekana pale, itabidi uhariri ukurasa.
+[[$1|thumb]]",
+'fileexists-extension'        => "Faili lenye jina linalofanana nalo lipo tayari:[[$2|thumb]]
+* Jina la faili linalopakiwa: '''<tt>[[:$1]]</tt>'''
+* Jina la faili lililopo tayari: '''<tt>[[:$2]]</tt>'''
+Tafadhali chagua jina lingine.",
+'fileexists-thumbnail-yes'    => "Faili huwa ni ''picha ndogo''.
+[[$1|thumb]]
+Tafadhali utazame faili la '''<tt>[[:$1]]</tt>'''.
+Ikiwa faili hili inaonyesha picha ile ile kwa ukubwa wa kawaida hakuna haja ya kupakia faili lingine la picha ndogo.",
+'file-thumbnail-no'           => "Jina la faili linaanza na '''<tt>$1</tt>'''.
+Huwa ukubwa wake ulipunguzwa ''(ni picha ndogo)''.
+Ikiwa unao picha hii kwa ukubwa wa kawaida tafadhali upakie picha ile, la sivyo tafadhali badilisha jina la faili.",
+'fileexists-forbidden'        => 'Faili lenye jina hili lipo tayari, na haliwezi kuandikizwa.
+Kama unataka kupakia faili lako, tafadhali rudia kwa kutumia jina lingine. [[File:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden' => 'Faili lenye jina hili tayari lipo katika hifadhi ya pamoja ya faili.
+Kama bado unataka kupakia faili lako, tafadhali rudie kwa kutumia jina jipya.
+[[File:$1|thumb|center|$1]]',
+'file-exists-duplicate'       => 'Faili hili ni nakili ya {{PLURAL:$1|faili lifuatalo|mafaili yafuatayo}}:',
+'file-deleted-duplicate'      => 'Faili sawa sawa na faili hili ([[$1]]) limeshafutwa.
+Tazama kumbukumbu za kufuta faili lile kabla hujalipakia upya.',
+'uploadwarning'               => 'Ilani kuhusu kupakia',
+'uploadwarning-text'          => 'Tafadhali ubadilishe maelezo ya faili hapo chini, halafu jaribu tena.',
+'savefile'                    => 'Hifadhi faili',
+'uploadedimage'               => 'ameipakia "[[$1]]"',
+'overwroteimage'              => 'alipakia toleo jipya la "[[$1]]"',
+'uploaddisabled'              => 'Upakiaji umelemazwa.',
+'copyuploaddisabled'          => 'Kupakia kwa kupitia URL umelemazwa.',
+'uploadfromurl-queued'        => 'Upakiaji wako umewekwa kwenye foleni.',
+'uploaddisabledtext'          => 'Upakiaji wa mafaili umelemazwa.',
+'php-uploaddisabledtext'      => 'Upakiaji wa mafaili umelemazwa katika PHP.
+Tafadhali utazame kipimo cha file_uploads.',
+'uploadscripted'              => 'Faili hili lina HTML au kodi ambaye labda itaeleweka vibaya na kivinjari.',
+'uploadvirus'                 => 'Faili lina kirusi!
 Maelezo mengine: $1',
-'upload-source'           => 'Faili la chanzo',
-'sourcefilename'          => 'Jina la faili la chanzo:',
-'sourceurl'               => 'URL ya chanzo:',
-'destfilename'            => 'Jina la faili la mwishilio:',
-'upload-maxfilesize'      => 'Ukubwa wa faili lisizidi: $1',
-'upload-description'      => 'Elezo la faili',
-'upload-options'          => 'Machaguo ya kupakia',
-'watchthisupload'         => 'Kufuatilia faili hili',
-'filewasdeleted'          => 'Faili lenye jina hili limeshapakiwa halafu limefutwa.
+'upload-source'               => 'Faili la chanzo',
+'sourcefilename'              => 'Jina la faili la chanzo:',
+'sourceurl'                   => 'URL ya chanzo:',
+'destfilename'                => 'Jina la faili la mwishilio:',
+'upload-maxfilesize'          => 'Ukubwa wa faili lisizidi: $1',
+'upload-description'          => 'Elezo la faili',
+'upload-options'              => 'Machaguo ya kupakia',
+'watchthisupload'             => 'Kufuatilia faili hili',
+'filewasdeleted'              => 'Faili lenye jina hili limeshapakiwa halafu limefutwa.
 Unapaswa kuangalia $1 kabla hujapakia tena.',
-'upload-wasdeleted'       => "'''Ilani: Unapakia upya faili lililofutwa tayari.'''
+'upload-wasdeleted'           => "'''Ilani: Unapakia upya faili lililofutwa tayari.'''
 
 Fikiria kama inafaa kuendelea kupakia faili hili.
 Kumbukumbu ya kufuta faili hili inapatikana hapa kukusaidia:",
-'filename-bad-prefix'     => "Jina la faili unalolipakia huanza na '''\"\$1\"''', ambalo ni jina lisilo na maana yanayoeleweka kirahisi, ya aina inayotolewa huwa na kamera dijiti.
+'filename-bad-prefix'         => "Jina la faili unalolipakia huanza na '''\"\$1\"''', ambalo ni jina lisilo na maana yanayoeleweka kirahisi, ya aina inayotolewa huwa na kamera dijiti.
 Tafadhali chagua jina linaloeleweka kirahisi kwa ajili ya faili lako.",
-'upload-success-subj'     => 'Upakiaji ulifaulu',
-'upload-success-msg'      => 'Umefaulu kupakia faili kutoka kwa [$2]. Faili linapatikana hapa: [[:{{ns:file}}:$1]]',
-'upload-failure-subj'     => 'Hitilafu ya kupakia',
-'upload-failure-msg'      => 'Kulikuwa na tatizo ulipopakia faili yako:
+'upload-success-subj'         => 'Upakiaji ulifaulu',
+'upload-success-msg'          => 'Umefaulu kupakia faili kutoka kwa [$2]. Faili linapatikana hapa: [[:{{ns:file}}:$1]]',
+'upload-failure-subj'         => 'Hitilafu ya kupakia',
+'upload-failure-msg'          => 'Kulikuwa na tatizo ulipopakia faili kutoka kwa [$2]:
 
 $1',
-'upload-warning-subj'     => 'Ilani ya kupakia',
-'upload-warning-msg'      => 'Kulitokea tatizo wakati wa kupakia kutoka kwa [$2]. Unaweza kurudi katika [[Special:Upload/stash/$1|fomu ya kupakia]] ili kurekebisha tatizo.',
+'upload-warning-subj'         => 'Ilani ya kupakia',
+'upload-warning-msg'          => 'Kulitokea tatizo wakati wa kupakia kutoka kwa [$2]. Unaweza kurudi katika [[Special:Upload/stash/$1|fomu ya kupakia]] ili kurekebisha tatizo.',
 
 'upload-proto-error'  => 'Itifaki isio sahihi',
 'upload-file-error'   => 'Hitilafu ya ndani',
@@ -1443,11 +1506,13 @@ $1',
 'upload-http-error'   => 'Imetokea hitilafu ya HTTP: $1',
 
 # img_auth script messages
-'img-auth-nofile' => 'Hakuna faili la "$1".',
+'img-auth-accessdenied' => 'Ruksa imekataliwa',
+'img-auth-nofile'       => 'Hakuna faili la "$1".',
 
 # HTTP errors
-'http-invalid-url' => 'URL batili: $1',
-'http-timed-out'   => 'Ombi la HTTP muda umepita.',
+'http-invalid-url'      => 'URL batili: $1',
+'http-timed-out'        => 'Ombi la HTTP muda umepita.',
+'http-host-unreachable' => 'KISARA (URL) haikupatikana',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'KISARA (URL) haikupatikana',
@@ -1497,6 +1562,7 @@ Unaweza kujaribu wakati tovuti haina kazi nyingi.',
 'filepage-nofile'           => 'Hakuna faili yenye jina hili.',
 'uploadnewversion-linktext' => 'Pakia toleo jipya la faili hii',
 'shared-repo-from'          => 'kutoka kwa $1',
+'shared-repo'               => 'hifadhi ya pamoja',
 
 # File reversion
 'filerevert'                => 'Rejesha $1',
@@ -1756,7 +1822,7 @@ Anwani yako ya barua pepe ulioitaja katika [[Special:Preferences|mapendekezo yak
 # Watchlist
 'watchlist'         => 'Maangalizi yangu',
 'mywatchlist'       => 'Maangalizi yangu',
-'watchlistfor'      => "(kwa '''$1''')",
+'watchlistfor2'     => 'Kwa ajili ya $1 $2',
 'nowatchlist'       => 'Hamna vitu katika maangalizi yako.',
 'watchlistanontext' => 'Tafadhali $1 ili kutazama au kuhariri vitu vilivyopo katika orodha yako ya maangalizi.',
 'watchnologin'      => 'Hujaingia',
@@ -1829,6 +1895,7 @@ Kutoa maoni yako au kupata msaada mwingine:
 'confirmdeletetext'      => 'Wewe unategemea kufuta ukurasa pamoja na historia yake yote.
 Tafadhali hakikisha kwamba unalenga kufanya hivyo, na kwamba unaelewa matokeo yake, na kwamba unafuata [[{{MediaWiki:Policy-url}}|sera]].',
 'actioncomplete'         => 'Kitendo kimekwisha',
+'actionfailed'           => 'Tendo halikufaulu',
 'deletedtext'            => '"<nowiki>$1</nowiki>" imefutwa. Ona $2 kwa historia ya kurasa zilizofutwa hivi karibuni.',
 'deletedarticle'         => 'alifuta "[[$1]]"',
 'dellogpage'             => 'Kumbukumbu ya ufutaji',
@@ -2250,6 +2317,7 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 'exif-makernote'               => 'Maelezo ya mtengenezaji',
 'exif-usercomment'             => 'Maoni ya mtumiaji',
 'exif-relatedsoundfile'        => 'Faili la sauti linalohusika',
+'exif-lightsource'             => 'Mwanga',
 'exif-gpslatituderef'          => 'Latitudo kwenda kaskazini au kusini',
 'exif-gpslatitude'             => 'Latitudo',
 'exif-gpslongituderef'         => 'Longitudo kwenda mashariki au magharibi',
@@ -2258,11 +2326,34 @@ likifupishwa. Nyuga zingine zitafichwa kama chaguo-msingi.
 'exif-gpsdestlatitude'         => 'Latitudo ya kikomo',
 'exif-gpsdestlongitude'        => 'Longitudo ya kikomo',
 'exif-gpsdestdistance'         => 'Mbali wa kikomo',
+'exif-gpsdatestamp'            => 'Tarehe ya GPS',
 
 'exif-unknowndate' => 'Tarehe haijulikani',
 
+'exif-orientation-1' => 'Kawaida',
+
+'exif-meteringmode-0'   => 'Haijulikani',
+'exif-meteringmode-1'   => 'Wastani',
+'exif-meteringmode-3'   => 'Ibura',
+'exif-meteringmode-4'   => 'IburaMengi',
+'exif-meteringmode-5'   => 'Rembo',
+'exif-meteringmode-6'   => 'Ya sehemu',
+'exif-meteringmode-255' => 'Nyingine',
+
+'exif-lightsource-0'   => 'Haijulikani',
+'exif-lightsource-1'   => 'Jua',
+'exif-lightsource-2'   => 'Taa ya kuakisi mwanga',
+'exif-lightsource-4'   => 'Taa ya picha',
+'exif-lightsource-9'   => 'Mwangaza wa mchana',
+'exif-lightsource-10'  => 'Mawingu',
+'exif-lightsource-11'  => 'Kivuli',
+'exif-lightsource-255' => 'Mwingine',
+
+'exif-focalplaneresolutionunit-2' => 'inchi',
+
 'exif-gaincontrol-0' => 'Bila',
 
+'exif-contrast-0' => 'Kawaida',
 'exif-contrast-1' => 'Laini',
 'exif-contrast-2' => 'Gumu',
 
@@ -2436,14 +2527,16 @@ Pia unaweza [[Special:Watchlist/edit|kutumia kihariri cha kawaida]].',
 'watchlisttools-raw'  => 'Hariri maangalizi ghafi',
 
 # Special:Version
-'version'                  => 'Toleo',
-'version-specialpages'     => 'Kurasa maalum',
-'version-other'            => 'Zingine',
-'version-version'          => '(Toleo $1)',
-'version-license'          => 'Ruhusa',
-'version-software'         => 'Bidhaa pepe iliyosakinishwa',
-'version-software-product' => 'Bidhaa',
-'version-software-version' => 'Toleo',
+'version'                   => 'Toleo',
+'version-specialpages'      => 'Kurasa maalum',
+'version-other'             => 'Zingine',
+'version-version'           => '(Toleo $1)',
+'version-license'           => 'Ruhusa',
+'version-poweredby-credits' => "Wiki hii inaendeshwa na bidhaa pepe ya '''[http://www.mediawiki.org/ MediaWiki]''', hatimiliki © 2001-$1 $2.",
+'version-poweredby-others'  => 'wengine',
+'version-software'          => 'Bidhaa pepe iliyosakinishwa',
+'version-software-product'  => 'Bidhaa',
+'version-software-version'  => 'Toleo',
 
 # Special:FilePath
 'filepath'         => 'Njia ya faili',

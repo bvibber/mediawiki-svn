@@ -1,5 +1,11 @@
 <?php
 /**
+ * Revision/log/file deletion backend
+ *
+ * @file
+ */
+
+/**
  * Temporary b/c interface, collection of static functions.
  * @ingroup SpecialPage
  */
@@ -1003,7 +1009,7 @@ class RevDel_FileList extends RevDel_List {
 	var $storeBatch, $deleteBatch, $cleanupBatch;
 
 	public function doQuery( $db ) {
-		$archiveName = array();
+		$archiveNames = array();
 		foreach( $this->ids as $timestamp ) {
 			$archiveNames[] = $timestamp . '!' . $this->title->getDBkey();
 		}
@@ -1157,7 +1163,6 @@ class RevDel_FileItem extends RevDel_Item {
 			return '<span class="history-deleted">' . $link . '</span>';
 		} else {
 			# Regular files...
-			$url = $this->file->getUrl();
 			return Xml::element( 'a', array( 'href' => $this->file->getUrl() ), $date );
 		}
 	}
@@ -1207,7 +1212,6 @@ class RevDel_FileItem extends RevDel_Item {
 			' (' . 
 			wfMsgExt( 'nbytes', 'parsemag', $wgLang->formatNum( $this->file->getSize() ) ) . 
 			')';
-		$pageLink = $this->getLink();
 
 		return '<li>' . $this->getLink() . ' ' . $this->getUserTools() . ' ' .
 			$data . ' ' . $this->getComment(). '</li>';

@@ -88,8 +88,8 @@ $linkPrefixExtension = false;
 $namespaceNames = array(
 	NS_MEDIA            => 'Media',
 	NS_SPECIAL          => 'Special',
-	NS_MAIN	            => '',
-	NS_TALK	            => 'Talk',
+	NS_MAIN             => '',
+	NS_TALK             => 'Talk',
 	NS_USER             => 'User',
 	NS_USER_TALK        => 'User_talk',
 	# NS_PROJECT set by $wgMetaNamespace
@@ -1115,6 +1115,7 @@ Before any other e-mail is sent to the account, you will have to follow the inst
 To prevent abuse, only one password reminder will be sent per {{PLURAL:$1|hour|$1 hours}}.',
 'loginstart'                 => '', # do not translate or duplicate this message to other languages
 'loginend'                   => '', # do not translate or duplicate this message to other languages
+'signupstart'                => '{{int:loginstart}}', # do not translate or duplicate this message to other languages
 'signupend'                  => '{{int:loginend}}', # do not translate or duplicate this message to other languages
 'mailerror'                  => 'Error sending mail: $1',
 'acct_creation_throttle_hit' => 'Visitors to this wiki using your IP address have created {{PLURAL:$1|1 account|$1 accounts}} in the last day, which is the maximum allowed in this time period.
@@ -1623,6 +1624,7 @@ Note that using the navigation links will reset this column.',
 # Diffs
 'history-title'            => 'Revision history of "$1"',
 'difference'               => '(Difference between revisions)',
+'difference-multipage'     => '(Difference between pages)',
 'lineno'                   => 'Line $1:',
 'compareselectedversions'  => 'Compare selected revisions',
 'showhideselectedversions' => 'Show/hide selected revisions',
@@ -2661,7 +2663,7 @@ The e-mail address you entered in [[Special:Preferences|your user preferences]] 
 # Watchlist
 'watchlist'            => 'My watchlist',
 'mywatchlist'          => 'My watchlist',
-'watchlistfor'         => "(for '''$1''')",
+'watchlistfor2'        => 'For $1 $2',
 'nowatchlist'          => 'You have no items on your watchlist.',
 'watchlistanontext'    => 'Please $1 to view or edit items on your watchlist.',
 'watchnologin'         => 'Not logged in',
@@ -4242,6 +4244,13 @@ You can also [[Special:Watchlist/edit|use the standard editor]].',
 'version-version'                  => '(Version $1)',
 'version-svn-revision'             => '(r$2)', # only translate this message to other languages if you have to change it
 'version-license'                  => 'License',
+'version-poweredby-credits'        => "This wiki is powered by '''[http://www.mediawiki.org/ MediaWiki]''', copyright © 2001-$1 $2.",
+'version-poweredby-others'         => 'others',
+'version-license-info'             => 'MediaWiki is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+MediaWiki is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received [{{SERVER}}{{SCRIPTPATH}}/COPYING a copy of the GNU General Public License] along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA or [http://www.gnu.org/licenses/old-licenses/gpl-2.0.html read it online].',
 'version-software'                 => 'Installed software',
 'version-software-product'         => 'Product',
 'version-software-version'         => 'Version',

@@ -92,8 +92,8 @@ class SpecialPage {
 		'Lonelypages'               => array( 'SpecialPage', 'Lonelypages' ),
 		'Fewestrevisions'           => array( 'SpecialPage', 'Fewestrevisions' ),
 		'Withoutinterwiki'          => array( 'SpecialPage', 'Withoutinterwiki' ),
-		'Protectedpages'            => array( 'SpecialPage', 'Protectedpages' ),
-		'Protectedtitles'           => array( 'SpecialPage', 'Protectedtitles' ),
+		'Protectedpages'            => 'SpecialProtectedpages',
+		'Protectedtitles'           => 'SpecialProtectedtitles',
 		'Shortpages'                => array( 'SpecialPage', 'Shortpages' ),
 		'Uncategorizedcategories'   => array( 'SpecialPage', 'Uncategorizedcategories' ),
 		'Uncategorizedimages'       => array( 'SpecialPage', 'Uncategorizedimages' ),
@@ -111,7 +111,7 @@ class SpecialPage {
 		# List of pages
 		'Allpages'                  => 'SpecialAllpages',
 		'Prefixindex'               => 'SpecialPrefixindex',
-		'Categories'                => array( 'SpecialPage', 'Categories' ),
+		'Categories'                => 'SpecialCategories',
 		'Disambiguations'           => array( 'SpecialPage', 'Disambiguations' ),
 		'Listredirects'             => array( 'SpecialPage', 'Listredirects' ),
 
@@ -185,7 +185,7 @@ class SpecialPage {
 		'Blankpage'                 => 'SpecialBlankpage',
 		'Blockme'                   => 'SpecialBlockme',
 		'Emailuser'                 => 'SpecialEmailUser',
-		'Movepage'                  => array( 'UnlistedSpecialPage', 'Movepage' ),
+		'Movepage'                  => 'MovePageForm',
 		'Mycontributions'           => 'SpecialMycontributions',
 		'Mypage'                    => 'SpecialMypage',
 		'Mytalk'                    => 'SpecialMytalk',
@@ -703,7 +703,7 @@ class SpecialPage {
 	 * @param $file String: file which is included by execute(). It is also constructed from $name by default
 	 * @param $includable Boolean: whether the page can be included in normal pages
 	 */
-	function SpecialPage( $name = '', $restriction = '', $listed = true, $function = false, $file = 'default', $includable = false ) {
+	function __construct( $name = '', $restriction = '', $listed = true, $function = false, $file = 'default', $includable = false ) {
 		$this->mName = $name;
 		$this->mRestriction = $restriction;
 		$this->mListed = $listed;
@@ -914,8 +914,8 @@ class SpecialPage {
  */
 class UnlistedSpecialPage extends SpecialPage
 {
-	function UnlistedSpecialPage( $name, $restriction = '', $function = false, $file = 'default' ) {
-		parent::SpecialPage( $name, $restriction, false, $function, $file );
+	function __construct( $name, $restriction = '', $function = false, $file = 'default' ) {
+		parent::__construct( $name, $restriction, false, $function, $file );
 	}
 }
 
@@ -925,8 +925,8 @@ class UnlistedSpecialPage extends SpecialPage
  */
 class IncludableSpecialPage extends SpecialPage
 {
-	function IncludableSpecialPage( $name, $restriction = '', $listed = true, $function = false, $file = 'default' ) {
-		parent::SpecialPage( $name, $restriction, $listed, $function, $file, true );
+	function __construct( $name, $restriction = '', $listed = true, $function = false, $file = 'default' ) {
+		parent::__construct( $name, $restriction, $listed, $function, $file, true );
 	}
 }
 

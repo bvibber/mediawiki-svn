@@ -196,6 +196,7 @@ class OutputPage {
 	 */
 	public function addScriptFile( $file, $version = null ) {
 		global $wgStylePath, $wgStyleVersion;
+		// See if $file parameter is an absolute URL or begins with a slash
 		if( substr( $file, 0, 1 ) == '/' || preg_match( '#^[a-z]*://#i', $file ) ) {
 			$path = $file;
 		} else {
@@ -590,7 +591,7 @@ class OutputPage {
 		if ( $this->mTitle instanceof Title ) {
 			return $this->mTitle;
 		} else {
-			wfDebug( __METHOD__ . ' called and $mTitle is null. Return $wgTitle for sanity' );
+			wfDebug( __METHOD__ . " called and \$mTitle is null. Return \$wgTitle for sanity\n" );
 			global $wgTitle;
 			return $wgTitle;
 		}
@@ -1134,7 +1135,7 @@ class OutputPage {
 			$popts, true, true, $this->mRevisionId
 		);
 		$popts->setTidy( false );
-		if ( $cache && $article && !$parserOutput->isCacheable() ) {
+		if ( $cache && $article && $parserOutput->isCacheable() ) {
 			$parserCache = ParserCache::singleton();
 			$parserCache->save( $parserOutput, $article, $popts );
 		}
@@ -2036,7 +2037,14 @@ class OutputPage {
 		}
 	}
 
+	/**
+	 * Adds JS-based password security checker
+	 * @param $passwordId String ID of input box containing password
+	 * @param $retypeId String ID of input box containing retyped password
+	 * @return none
+	 */
 	public function addPasswordSecurity( $passwordId, $retypeId ) {
+		$this->includeJQuery();
 		$data = array(
 			'password' => '#' . $passwordId,
 			'retype' => '#' . $retypeId,
@@ -2047,7 +2055,7 @@ class OutputPage {
 			) as $message ) {
 			$data['messages'][$message] = wfMsg( $message );
 		}
-		$this->addScript( Html::inlineScript( 'var passwordSecurity=' . FormatJSON::encode( $data ) ) );
+		$this->addScript( Html::inlineScript( 'var passwordSecurity=' . FormatJson::encode( $data ) ) );
 		$this->addScriptFile( 'password.js' );
 		$this->addStyle( 'common/password.css' );
 	}

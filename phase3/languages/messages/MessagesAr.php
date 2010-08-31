@@ -25,6 +25,7 @@
  * @author Khaledhosny
  * @author Lord Anubis
  * @author MK
+ * @author Majid Al-Dharrab
  * @author Menasim
  * @author Meno25
  * @author Mido
@@ -35,6 +36,7 @@
  * @author Ouda
  * @author Oxydo
  * @author Riadismet
+ * @author Samer
  * @author Sami Lab
  * @author Tarawneh
  * @author TheEgyptian
@@ -437,7 +439,7 @@ $messages = array(
 'tog-editsection'             => 'مكن تعديل الأقسام عن طريق وصلات [عدل]',
 'tog-editsectiononrightclick' => 'فعل تعديل الأقسام بواسطة كبسة الفأرة اليمين على عناوين الأقسام (جافاسكريبت)',
 'tog-showtoc'                 => 'اعرض فهرس المحتويات (للصفحات التي تحتوي على أكثر من 3 عناوين)',
-'tog-rememberpassword'        => 'تذكر دخولي على هذا الحاسوب (إلى {{PLURAL:$1||يوم وحد|يومين|$1 أيام|$1 يومًا|$1 يوم}} كحد أقصى)',
+'tog-rememberpassword'        => 'تذكر دخولي على هذا الحاسوب (إلى {{PLURAL:$1||يوم واحد|يومين|$1 أيام|$1 يومًا|$1 يوم}} كحد أقصى)',
 'tog-watchcreations'          => 'أضف الصفحات التي أنشئها إلى قائمة مراقبتي',
 'tog-watchdefault'            => 'أضف الصفحات التي أعدلها إلى قائمة مراقبتي',
 'tog-watchmoves'              => 'أضف الصفحات التي أنقلها إلى قائمة مراقبتي',
@@ -477,9 +479,9 @@ $messages = array(
 # Font style option in Special:Preferences
 'editfont-style'     => 'نمط خط منطقة التحرير:',
 'editfont-default'   => 'تبعا لإعدادات المتصفح',
-'editfont-monospace' => 'خط Monospaced',
-'editfont-sansserif' => 'خط Sans-serif',
-'editfont-serif'     => 'خط Serif',
+'editfont-monospace' => 'خط ثابت العرض',
+'editfont-sansserif' => 'خط بلا زوائد',
+'editfont-serif'     => 'خط بزوائد',
 
 # Dates
 'sunday'        => 'الأحد',
@@ -885,7 +887,7 @@ $2',
 'passwordtooshort'           => 'يجب أن تتكون كلمة السر على الأقل من {{PLURAL:$1|حرف واحد|حرفين|$1 حروف|$1 حرفا|$1 حرف}}.',
 'password-name-match'        => 'يجب أن تكون كلمة المرور مختلفة عن اسم المستخدم.',
 'mailmypassword'             => 'أرسل لي كلمة سر جديدة',
-'passwordremindertitle'      => 'كلمة سر مؤقتة جديدة ل {{SITENAME}}',
+'passwordremindertitle'      => 'كلمة سر مؤقتة جديدة ل{{SITENAME}}',
 'passwordremindertext'       => 'لقد طلب شخص ما (غالبا أنت، من عنوان الآيبي $1) كلمة سر جديدة ل{{SITENAME}} ($4).
 أنشئت كلمة سر مؤقتة للمستخدم "$2" وجعلت "$3".
 لو أن هذا ما تريده، فعليك أن تقوم بتسجيل الدخول واختيار كلمة سر جديدة الآن.
@@ -923,6 +925,15 @@ $2',
 من فضلك انتظر قبل المحاولة مرة أخرى.',
 'loginlanguagelabel'         => 'اللغة: $1',
 'suspicious-userlogout'      => 'رفض طلب خروجك لأنه يبدو كأنه أرسل عن طريق متصفح معطوب أو وسيط تخزين.',
+
+# JavaScript password checks
+'password-strength'            => 'قوة كلمة المرور المقدرة: $1',
+'password-strength-bad'        => 'غير صالحة',
+'password-strength-mediocre'   => 'متوسطة',
+'password-strength-acceptable' => 'مقبولة',
+'password-strength-good'       => 'جيدة',
+'password-retype'              => 'أعد كتابة كلمة المرور هنا',
+'password-retype-mismatch'     => 'كلمتا المرور لا تتطابقان',
 
 # Password reset dialog
 'resetpass'                 => 'تغيير كلمة السر',
@@ -1371,6 +1382,7 @@ $1",
 # Diffs
 'history-title'            => 'تاريخ مراجعة "$1"',
 'difference'               => '(الفرق بين المراجعتين)',
+'difference-multipage'     => '(الفرق بين الصفحتين)',
 'lineno'                   => 'سطر $1:',
 'compareselectedversions'  => 'قارن بين النسختين المختارتين',
 'showhideselectedversions' => 'أظهر/أخف المراجعات المختارة',
@@ -1488,6 +1500,7 @@ $1",
 'contextlines'                  => 'عدد الأسطر في كل نتيجة:',
 'contextchars'                  => 'عدد الأحرف في كل سطر',
 'stub-threshold'                => 'الحد لتنسيق <a href="#" class="stub">وصلة البذرة</a>:',
+'stub-threshold-disabled'       => 'معطل',
 'recentchangesdays'             => 'عدد الأيام المعروضة في أحدث التغييرات:',
 'recentchangesdays-max'         => 'الحد الأقصى {{PLURAL:$1|أقل من يوم|يوم واحد|يومان|$1 أيام|$1 يوما|$1 يوم}}',
 'recentchangescount'            => 'عدد التعديلات الظاهرة مبدئيا:',
@@ -1861,6 +1874,7 @@ $1",
 'overwroteimage'              => 'رفع نسخة جديدة من "[[$1]]"',
 'uploaddisabled'              => 'تم تعطيل الرفع',
 'copyuploaddisabled'          => 'الرفع من مسار معطل.',
+'uploadfromurl-queued'        => 'رفعك قد أضيف إلى الطابور',
 'uploaddisabledtext'          => 'رفع الملفات معطل.',
 'php-uploaddisabledtext'      => 'رفع ملفات PHP معطل. من فضلك تحقق من إعدادات رفع الملفات.',
 'uploadscripted'              => 'هذا الملف يضم كود HTML أو كود آخر يمكن أن يفسره متصفح الوب بطريقة خاطئة.',
@@ -1896,11 +1910,13 @@ MGP # بينتاكس
 PICT # متنوع
  #</pre> <!-- اترك هذا السطر تماما كما هو -->',
 'upload-success-subj'         => 'تم رفع الملف بنجاح',
-'upload-success-msg'          => 'مرفوعك متوفر هنا: [[:{{ns:file}}:$1]]',
+'upload-success-msg'          => 'مرفوعك من [$2] قد نجح، وهو متوفر هنا: [[:{{ns:file}}:$1]]',
 'upload-failure-subj'         => 'مشكلة رفع',
 'upload-failure-msg'          => 'توجد مشكلة في رفعك:
 
 $1',
+'upload-warning-subj'         => 'تحذير رفع',
+'upload-warning-msg'          => 'ثمة مشكلة في مرفوعك من [$2]. يمكنك الرجوع إلى [[Special:Upload/stash/$1|نموذج الرفع]] لتصحيح المشكلة.',
 
 'upload-proto-error'        => 'بروتوكول غير صحيح',
 'upload-proto-error-text'   => 'الرفع عن بعد يتطلب مسارا يبدأ بـ <code>http://</code> أو <code>ftp://</code>.',
@@ -2311,14 +2327,13 @@ $1',
 # Watchlist
 'watchlist'            => 'قائمة مراقبتي',
 'mywatchlist'          => 'قائمة مراقبتي',
-'watchlistfor'         => "(ل'''$1''')",
 'nowatchlist'          => 'لا توجد مدخلات في قائمة مراقبتك.',
 'watchlistanontext'    => 'الرجاء $1 لعرض أو تعديل الصفحات في قائمة مراقبتك.',
 'watchnologin'         => 'غير مسجل',
 'watchnologintext'     => 'يجب أن تكون [[Special:UserLogin|مسجلا الدخول]] لتعدل قائمة مراقبتك.',
 'addedwatch'           => 'تمت الإضافة لقائمة المراقبة',
-'addedwatchtext'       => "تمت إضافة الصفحة  \"\$1\" إلى [[Special:Watchlist|قائمة المراقبتك]].
-التغييرات القادمة على هذه الصفحة وصفحة النقاش الخاصة بها سيتم وضعها هناك، وسيتم إظهار اسم الصفحة بخط '''عريض''' في صفحة [[Special:RecentChanges|أحدث التغييرات]] لتسهيل تحديدها واكتشافها.",
+'addedwatchtext'       => "أضيفت الصفحة  \"[[:\$1]]\" إلى [[Special:Watchlist|قائمة مراقبتك]].
+التغييرات القادمة على هذه الصفحة وصفحة نقاشها سيتم وضعها هناك، وسيتم إظهار اسم الصفحة بخط '''عريض''' في صفحة [[Special:RecentChanges|أحدث التغييرات]] لتسهيل تحديدها واكتشافها.",
 'removedwatch'         => 'تمت الإزالة من قائمة المراقبة',
 'removedwatchtext'     => 'الصفحة "[[:$1]]" تمت إزالتها من [[Special:Watchlist|قائمة مراقبتك]].',
 'watch'                => 'راقب',
@@ -2822,6 +2837,7 @@ $1 ممنوع بالفعل. هل تريد تغيير الإعدادات؟',
 'immobile-source-page'         => 'هذه الصفحة غير قابلة للنقل.',
 'immobile-target-page'         => 'غير قادر على النقل إلى العنوان الوجهة هذا.',
 'imagenocrossnamespace'        => 'لا يمكن نقل الملف إلى نطاق غير نطاق الملفات',
+'nonfile-cannot-move-to-file'  => 'لا يمكن نقل غير الملفات إلى نطاق الملفات',
 'imagetypemismatch'            => 'امتداد الملف الجديد لا يطابق نوعه',
 'imageinvalidfilename'         => 'اسم الملف الهدف غير صحيح',
 'fix-double-redirects'         => 'حدث أي تحويلات تشير إلى العنوان الأصلي',
@@ -3720,6 +3736,7 @@ $1',
 'version-version'                  => '(نسخة $1)',
 'version-svn-revision'             => '(&رلم;r$2)',
 'version-license'                  => 'الرخصة',
+'version-poweredby-others'         => 'آخرون',
 'version-software'                 => 'البرنامج المثبت',
 'version-software-product'         => 'المنتج',
 'version-software-version'         => 'النسخة',

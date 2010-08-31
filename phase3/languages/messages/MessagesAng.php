@@ -113,7 +113,7 @@ $messages = array(
 'september'     => 'Hāliȝmōnaþ',
 'october'       => 'Ƿinterfylleþ',
 'november'      => 'Blōtmōnaþ',
-'december'      => 'Ǣrra Gēola',
+'december'      => 'Ǣrra Ȝēola',
 'january-gen'   => 'Æfterran Ȝēolan',
 'february-gen'  => 'Solmōnþes',
 'march-gen'     => 'Hrēþmōnþes',
@@ -222,7 +222,7 @@ $messages = array(
 'search'            => 'Sēc',
 'searchbutton'      => 'Sēc',
 'go'                => 'Gā',
-'searcharticle'     => 'Gā',
+'searcharticle'     => 'Gān',
 'history'           => 'Sīdan stǣr',
 'history_short'     => 'Stǣr',
 'updatedmarker'     => 'nīƿod æfter ic cōm hider ǣror',
@@ -244,7 +244,7 @@ $messages = array(
 'unprotectthispage' => 'Unbeorȝa þās sīdan',
 'newpage'           => 'Nīƿu sīde',
 'talkpage'          => 'Sprec ymb þās sīdan',
-'talkpagelinktext'  => 'Talu',
+'talkpagelinktext'  => 'ȝespreċ',
 'specialpage'       => 'Syndriȝ sīde',
 'personaltools'     => 'Āgne tōlas',
 'postcomment'       => 'Nīƿe dǣl',
@@ -268,7 +268,7 @@ $messages = array(
 'protectedpage'     => 'Borȝod sīde',
 'jumpto'            => 'Gā tō:',
 'jumptonavigation'  => 'þurhfōr',
-'jumptosearch'      => 'sēċ',
+'jumptosearch'      => 'sēċan',
 'view-pool-error'   => 'Ƿē sind sāriȝe for þǣm þe þās þeȝntōlas nū oferlīce ƿyrcaþ.
 Tō mæniȝe brūcendas ȝesēcaþ to sēonne þās sīdan.
 Ƿ̈ē biddaþ þæt þū abīde scortre tīde fore þū ȝesēce to sēonne þās sīdan eft.
@@ -387,7 +387,7 @@ Cnāw þæt sume sīdan cunnon gelǣstende ēowod wesan swā þū wǣre gīet in
 'yourname'                   => 'Þīn brūcendnama',
 'yourpassword'               => 'Þafungƿord:',
 'yourpasswordagain'          => 'Þafungƿord edƿrītan:',
-'remembermypassword'         => 'Mīne inmeldunge ȝemyndan on þissum spearcatelle',
+'remembermypassword'         => 'Mīne inmeldunge ȝemyndan on þissum spearcatelle (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Þīn ȝeƿeald:',
 'login'                      => 'Inmeldian',
 'nav-login-createaccount'    => 'Nīƿne hordcleofan scieppan oþþe inmeldian',
@@ -400,6 +400,7 @@ Cnāw þæt sume sīdan cunnon gelǣstende ēowod wesan swā þū wǣre gīet in
 'createaccount'              => 'Hordcleofan scieppan',
 'gotaccountlink'             => 'Inmeldian',
 'createaccountmail'          => 'Þurh spearcenaǣrend',
+'createaccountreason'        => 'Racu:',
 'badretype'                  => 'Þā þafungƿord þe ƿrite þū, bēoþ unȝemæcca.',
 'userexists'                 => 'Hƿā hæfþ þæt brūcendnama.
 Bidde ōðer brūcendnama ċēosan.',
@@ -421,11 +422,16 @@ Scēawa þīne wrītunge eft, oþþe brūc þā cartan þe is hērunder tō [[Sp
 'accountcreated'             => 'Hordcleofan ȝescapen',
 'loginlanguagelabel'         => 'Sprǣċ: $1',
 
+# JavaScript password checks
+'password-retype' => 'Þafungƿord edƿrītan',
+
 # Password reset dialog
+'resetpass'                 => 'Þafungƿord hƿeorfan',
 'oldpassword'               => 'Eald þafungƿord:',
 'newpassword'               => 'Nīƿu þafungƿord:',
 'retypenew'                 => 'Nīƿe þafungƿord edƿrītan',
 'resetpass-submit-loggedin' => 'Þafungƿord hƿeorfan',
+'resetpass-submit-cancel'   => 'Undōn',
 
 # Edit page toolbar
 'bold_sample'     => 'Þicce traht',
@@ -856,7 +862,9 @@ Cnæpp on sƿeorhēafde hƿeorfþ þā endebyrdnessa.',
 
 # Special:Categories
 'categories'         => 'Floccas',
-'categoriespagetext' => 'Þā folgendan floccas standaþ in þǣm wici.',
+'categoriespagetext' => 'Þā folgendan floccas standaþ in þǣm wici.
+[[Special:UnusedCategories|Unused categories]] are not shown here.
+Also see [[Special:WantedCategories|wanted categories]].',
 
 # Special:DeletedContributions
 'sp-deletedcontributions-contribs' => 'forðunga',
@@ -897,7 +905,6 @@ Cnæpp on sƿeorhēafde hƿeorfþ þā endebyrdnessa.',
 # Watchlist
 'watchlist'         => 'Mīnu ƿæcceȝetalu',
 'mywatchlist'       => 'Mīnu ƿæcceȝetalu',
-'watchlistfor'      => "(for '''$1''')",
 'addedwatch'        => 'To ƿæcceȝetale ēacod',
 'removedwatch'      => 'Fornōm fram ƿæccȝetale',
 'removedwatchtext'  => 'Sēo sīde "[[:$1]]" ƿæs fram [[Special:Watchlist|þīnre ƿæccȝetale]] fornōm.',

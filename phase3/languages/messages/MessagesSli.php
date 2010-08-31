@@ -37,7 +37,7 @@ $messages = array(
 'tog-editsection'             => 'Verknipfunga zim Beoarbeeta voo eenzelna Obschieta oazeega',
 'tog-editsectiononrightclick' => 'Eenzelne Obschniete dorch Rechtsklick beoarbeeta (JavaScript)',
 'tog-showtoc'                 => 'Inhaltsverzeichnis aozäan bei meh wie drei Ieberschrifta',
-'tog-rememberpassword'        => 'Notzer sull uff de Lengde oagemeldt blein (login uff diesem Rechner speichern)',
+'tog-rememberpassword'        => 'Notzer sull uff de Lengde oagemeldt blein (login uff diesem Rechner speichern) (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Salber derstallte Seyta automatisch beobachta',
 'tog-watchdefault'            => 'Salber geänderte on neu erstellte Seyta automatisch beobachta (zu menner Beobachtungsliste hinzufügen)',
 'tog-watchmoves'              => 'Vo merr salber verschobene Seyta autoatisch beobachta',
@@ -320,7 +320,7 @@ Dei Benutzerkonto wurde eigerichtet.
 Vergiss nä, denne [[Special:Preferences|{{SITENAME}}-Eistellunga]] oazupoassa.',
 'yourname'                   => 'Benutzernoame:',
 'yourpasswordagain'          => 'Passwort wiederhola:',
-'remembermypassword'         => 'uff diesem Computer dauerhaft oanmelda',
+'remembermypassword'         => 'uff diesem Computer dauerhaft oanmelda (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Denne Domain:',
 'externaldberror'            => 'Entweder is leit a Fahler bei der externa Authentifizierung vur, oder du darfst dei externes Benutzerkonto ne aktualisiera.',
 'login'                      => 'Oanmelda',
@@ -1344,7 +1344,6 @@ Ols Obsender werd de E-Mail-Adtresse aus denn [[Special:Preferences|Einstellunga
 'emailuserfooter'  => 'Diese E-Mail wurde vu {{SITENAME}}-Nutzer „$1“ oa „$2“ gesendet.',
 
 # Watchlist
-'watchlistfor'         => "(fier '''$1''')",
 'nowatchlist'          => 'Du host kenne Einträge uff denner Beobachtungsliste.',
 'watchlistanontext'    => 'Du mußt diech $1, im denne Beobachtungsliste zu sahn oder Einträge uff ihr zu beoarbeeta.',
 'watchnologin'         => 'Du best ne oagemeldet',

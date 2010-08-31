@@ -266,6 +266,7 @@ class Parser {
 			$this->clearState();
 		}
 
+		$options->resetUsage();
 		$this->mOptions = $options;
 		$this->setTitle( $title ); # Page title has to be set for the pre-processor
 
@@ -454,6 +455,7 @@ class Parser {
 		wfProfileIn( __METHOD__ );
 		$this->clearState();
 		$this->setOutputType( self::OT_PREPROCESS );
+		$options->resetUsage();
 		$this->mOptions = $options;
 		$this->setTitle( $title );
 		if ( $revid !== null ) {
@@ -477,6 +479,7 @@ class Parser {
 		# Parser (re)initialisation
 		$this->clearState();
 		$this->setOutputType( self::OT_PLAIN );
+		$options->resetUsage();
 		$this->mOptions = $options;
 		$this->setTitle( $title );
 
@@ -1141,8 +1144,8 @@ class Parser {
 				throw new MWException( __METHOD__.': unrecognised match type "' .
 					substr( $m[0], 0, 20 ) . '"' );
 			}
-			$url = wfMsg( $urlmsg, $id);
-			$sk = $this->mOptions->getSkin();
+			$url = wfMsgForContent( $urlmsg, $id);
+			$sk = $this->mOptions->getSkin( $this->mTitle );
 			$la = $sk->getExternalLinkAttributes( "external $CssClass" );
 			return "<a href=\"{$url}\"{$la}>{$keyword} {$id}</a>";
 		} elseif ( isset( $m[5] ) && $m[5] !== '' ) {
@@ -1171,7 +1174,7 @@ class Parser {
 		global $wgContLang;
 		wfProfileIn( __METHOD__ );
 
-		$sk = $this->mOptions->getSkin();
+		$sk = $this->mOptions->getSkin( $this->mTitle );
 		$trail = '';
 
 		# The characters '<' and '>' (which were escaped by
@@ -1420,7 +1423,7 @@ class Parser {
 		global $wgContLang;
 		wfProfileIn( __METHOD__ );
 
-		$sk = $this->mOptions->getSkin();
+		$sk = $this->mOptions->getSkin( $this->mTitle );
 
 		$bits = preg_split( $this->mExtLinkBracketedRegex, $text, -1, PREG_SPLIT_DELIM_CAPTURE );
 		$s = array_shift( $bits );
@@ -1569,7 +1572,7 @@ class Parser {
 	 * @private
 	 */
 	function maybeMakeExternalImage( $url ) {
-		$sk = $this->mOptions->getSkin();
+		$sk = $this->mOptions->getSkin( $this->mTitle );
 		$imagesfrom = $this->mOptions->getAllowExternalImagesFrom();
 		$imagesexception = !empty( $imagesfrom );
 		$text = false;
@@ -1645,7 +1648,7 @@ class Parser {
 			$e1_img = "/^([{$tc}]+)\\|(.*)\$/sD";
 		}
 
-		$sk = $this->mOptions->getSkin();
+		$sk = $this->mOptions->getSkin( $this->mTitle );
 		$holders = new LinkHolderArray( $this );
 
 	 	# split the entire text string on occurences of [[
@@ -1683,7 +1686,7 @@ class Parser {
 		}
 
 		if ( $wgContLang->hasVariants() ) {
-			$selflink = $wgContLang->convertLinkToAllVariants( $this->mTitle->getPrefixedText() );
+			$selflink = $wgContLang->autoConvertToAllVariants( $this->mTitle->getPrefixedText() );
 		} else {
 			$selflink = array( $this->mTitle->getPrefixedText() );
 		}
@@ -1988,7 +1991,7 @@ class Parser {
 	 */
 	function makeKnownLinkHolder( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
-		$sk = $this->mOptions->getSkin();
+		$sk = $this->mOptions->getSkin( $this->mTitle );
 		# FIXME: use link() instead of deprecated makeKnownLinkObj()
 		$link = $sk->makeKnownLinkObj( $nt, $text, $query, $inside, $prefix );
 		return $this->armorLinks( $link ) . $trail;
@@ -3404,13 +3407,13 @@ class Parser {
 		global $wgEnableScaryTranscluding;
 
 		if ( !$wgEnableScaryTranscluding ) {
-			return wfMsg('scarytranscludedisabled');
+			return wfMsgForContent('scarytranscludedisabled');
 		}
 
 		$url = $title->getFullUrl( "action=$action" );
 
 		if ( strlen( $url ) > 255 ) {
-			return wfMsg( 'scarytranscludetoolong' );
+			return wfMsgForContent( 'scarytranscludetoolong' );
 		}
 		return $this->fetchScaryTemplateMaybeFromCache( $url );
 	}
@@ -3427,7 +3430,7 @@ class Parser {
 
 		$text = Http::get( $url );
 		if ( !$text ) {
-			return wfMsg( 'scarytranscludefailed', $url );
+			return wfMsgForContent( 'scarytranscludefailed', $url );
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
@@ -3740,7 +3743,7 @@ class Parser {
 		}
 
 		# We need this to perform operations on the HTML
-		$sk = $this->mOptions->getSkin();
+		$sk = $this->mOptions->getSkin( $this->mTitle );
 
 		# headline counter
 		$headlineCount = 0;
@@ -3964,9 +3967,9 @@ class Parser {
 				if ( $isTemplate ) {
 					# Put a T flag in the section identifier, to indicate to extractSections()
 					# that sections inside <includeonly> should be counted.
-					$editlink = $sk->doEditSectionLink( Title::newFromText( $titleText ), "T-$sectionIndex" );
+					$editlink = $sk->doEditSectionLink( Title::newFromText( $titleText ), "T-$sectionIndex", null, $this->mOptions->getUserLang() );
 				} else {
-					$editlink = $sk->doEditSectionLink( $this->mTitle, $sectionIndex, $headlineHint );
+					$editlink = $sk->doEditSectionLink( $this->mTitle, $sectionIndex, $headlineHint, $this->mOptions->getUserLang() );
 				}
 			} else {
 				$editlink = '';
@@ -4041,6 +4044,7 @@ class Parser {
 	 * @return String: the altered wiki markup
 	 */
 	public function preSaveTransform( $text, Title $title, $user, $options, $clearState = true ) {
+		$options->resetUsage();
 		$this->mOptions = $options;
 		$this->setTitle( $title );
 		$this->setOutputType( self::OT_WIKI );
@@ -4265,6 +4269,7 @@ class Parser {
 	 */
 	public function startExternalParse( &$title, $options, $outputType, $clearState = true ) {
 		$this->setTitle( $title );
+		$options->resetUsage();
 		$this->mOptions = $options;
 		$this->setOutputType( $outputType );
 		if ( $clearState ) {
@@ -4475,7 +4480,7 @@ class Parser {
 		$ig->setParser( $this );
 		$ig->setHideBadImages();
 		$ig->setAttributes( Sanitizer::validateTagAttributes( $params, 'table' ) );
-		$ig->useSkin( $this->mOptions->getSkin() );
+		$ig->useSkin( $this->mOptions->getSkin( $this->mTitle ) );
 		$ig->mRevisionId = $this->mRevisionId;
 
 		if ( isset( $params['showfilename'] ) ) {
@@ -4613,7 +4618,7 @@ class Parser {
 		#  * text-bottom
 
 		$parts = StringUtils::explode( "|", $options );
-		$sk = $this->mOptions->getSkin();
+		$sk = $this->mOptions->getSkin( $this->mTitle );
 
 		# Give extensions a chance to select the file revision for us
 		$skip = $time = $descQuery = false;
@@ -4624,7 +4629,6 @@ class Parser {
 		}
 
 		# Get the file
-		$imagename = $title->getDBkey();
 		$file = wfFindFile( $title, array( 'time' => $time ) );
 		# Get parameter map
 		$handler = $file ? $file->getHandler() : false;
@@ -5127,10 +5131,6 @@ class Parser {
 		return $text;
 	}
 
-	function srvus( $text ) {
-		return $this->testSrvus( $text, $this->mOutputType );
-	}
-
 	/**
 	 * strip/replaceVariables/unstrip for preprocessor regression testing
 	 */
@@ -5140,6 +5140,7 @@ class Parser {
 			$title = Title::newFromText( $title );
 		}
 		$this->mTitle = $title;
+		$options->resetUsage();
 		$this->mOptions = $options;
 		$this->setOutputType( $outputType );
 		$text = $this->replaceVariables( $text );
