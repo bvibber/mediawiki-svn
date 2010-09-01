@@ -142,7 +142,7 @@ mediaWikiSearch.prototype = {
 			'gsrlimit':  this.provider.limit,
 			'gsroffset': this.provider.offset,
 			'prop':'imageinfo|revisions|categories',
-			'iiprop':'url|mime|size',
+			'iiprop':'url|mime|size|metadata',
 			'iiurlwidth': parseInt( this.rsd.thumb_width ),
 			'rvprop':'content'
 		};
@@ -230,6 +230,7 @@ mediaWikiSearch.prototype = {
 						'categories':page.categories
 					}
 				};		
+				
 				for( var i in page.imageinfo[0].metadata ){
 					if( page.imageinfo[0].metadata[i].name == 'length' ){
 						resource.duration = page.imageinfo[0].metadata[i].value;

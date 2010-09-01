@@ -79,25 +79,21 @@ $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
 	if( mw.getConfig( 'Sequencer.KalturaPlayerEditOverlay' )){
 		var embedPlayer = $j( '#' + embedPlayerId ).get(0);
 
-		$j( embedPlayer ).bind( 'pause', function() {
-			// For now don't overlay smil players ( used in editor ) 
-			// xxx in the future we should have an editor class
-			if( embedPlayer.supports['overlays'] &&  embedPlayer.instanceOf.toLowerCase() != 'smil' ){
-				mw.remoteSequencerAddEditOverlay( embedPlayerId )
-				// xxx should use getter setter
-				embedPlayer.controlBuilder.displayOptionsMenuFlag = true;
-			}			
+		$j( embedPlayer ).bind( 'pause', function() {		
+			mw.remoteSequencerAddEditOverlay( embedPlayerId )
+			// xxx should use getter setter
+			embedPlayer.controlBuilder.displayOptionsMenuFlag = true;		
 			return true;
 		})
-		$j( embedPlayer ).bind( 'ended', function( onDoneAction ){
+		$j( embedPlayer ).bind( 'ended', function( onDoneAction ){			
 			// pause event should fire 
-			//mw.remoteSequencerAddEditOverlay( embedPlayerId )
+			mw.remoteSequencerAddEditOverlay( embedPlayerId );
 			
 			// show the credits screen after 3 seconds 
-			setTimeout(function(){
+			setTimeout(function(){				
 				$j( embedPlayer ).siblings( '.kalturaEditOverlay' ).fadeOut( 'fast' );
 				embedPlayer.$interface.find('.k-menu').fadeIn('fast');
-			},3000)
+			}, 3000)
 			
 			// On end runs before interface bindings (give the dom 10ms to build out the menu )
 			setTimeout(function(){
@@ -113,6 +109,16 @@ $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
 });
 mw.remoteSequencerAddEditOverlay = function( embedPlayerId ){
 	var embedPlayer = $j( '#' + embedPlayerId ).get(0);
+
+	// Check if we can do the overlay::
+	if( !embedPlayer.supports['overlays'] 
+	|| embedPlayer.instanceOf.toLowerCase() == 'smil'
+	|| embedPlayer.getHeight() < 180 
+	|| embedPlayer.getWidth() < 240
+	){		
+		return ;
+	}
+	
 	if(! $j( '#' + embedPlayerId ).siblings( '.kalturaEditOverlay' ).length ){
 		var editLink = '#';
 		if( mw.isLocalDomain( mw.getApiProviderURL( embedPlayer.apiProvider ) ) 
@@ -509,7 +515,8 @@ mw.MediaWikiRemoteSequencer.prototype = {
 				'type' : 'mediaWiki',
 				'url' : _this.getApiUrl(),
 				'titleKey' : wgPageName,
-				'pagePathUrl' : wgServer + wgArticlePath
+				'pagePathUrl' : wgServer + wgArticlePath,
+				'userName' : wgUserName
 			},
     		// Set the add media wizard to only include commons:   
     		addMedia : {

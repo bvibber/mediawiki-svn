@@ -468,6 +468,7 @@ mw.SequencerTimeline.prototype = {
 	},
 	
 	handleReorder: function ( movedClip ){
+		mw.log("SequencerTimeline:: handleReorder");
 		var _this = this;
 		var smil = this.sequencer.getSmil();
 		var movedIndex = null;				

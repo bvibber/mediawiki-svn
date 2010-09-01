@@ -526,14 +526,21 @@ function loadMwEmbed( classSet, callback ) {
 	if( typeof classSet == 'function') {
 		callback = classSet;
 	}	
+
 	// Inject mwEmbed if needed
 	if ( typeof MW_EMBED_VERSION == 'undefined' ) {
 		if ( mwUseScriptLoader ) {
 			var rurl = mwEmbedHostPath + '/ResourceLoader.php?class=';
 			
 			var coma = '';
+			
+			
 			// Add jQuery too if we need it: 
-			if ( typeof window.jQuery == 'undefined' ) {
+			if ( typeof window.jQuery == 'undefined' 
+				||
+				// force load jquery if version 1.3.2 ( issues ) 
+				jQuery.fn.jquery == '1.3.2') 
+			{
 				rurl += 'window.jQuery';
 				coma = ',';
 			}	
@@ -555,17 +562,29 @@ function loadMwEmbed( classSet, callback ) {
 			rurl += '&' + mwGetReqArgs();
 			importScriptURI( rurl );
 		} else { 
-			// load mwEmbed js
-			importScriptURI( mwEmbedHostPath + '/mwEmbed.js?' + mwGetReqArgs() );
 			
-			// Load the class set as part of mwReady callback
-			var instanceCallback = callback;
-			var callback = function(){
-				mw.load( classSet, function(){
-					instanceCallback();
-				})
+			// force load jQuery ( issues with '1.3.2' .data handling 
+			if( jQuery && jQuery.fn.jquery== '1.3.2' ){
+				console.log('load: ' + mwEmbedHostPath + '/libraries/jquery/jquery-1.4.2.js' );
+				importScriptURI( mwEmbedHostPath + '/libraries/jquery/jquery-1.4.2.js?' + mwGetReqArgs() );
 			}
-			
+			waitForJQueryUpgrade = function(){
+				if( jQuery && jQuery.fn.jquery== '1.3.2' ){					
+					setTimeout( waitForJQueryUpgrade, 20);
+				} else {
+					// load mwEmbed js
+					importScriptURI( mwEmbedHostPath + '/mwEmbed.js?' + mwGetReqArgs() );
+					
+					// Load the class set as part of mwReady callback
+					var instanceCallback = callback;
+					var callback = function(){
+						mw.load( classSet, function(){
+							instanceCallback();
+						})
+					}
+				}
+			}
+			waitForJQueryUpgrade();
 		}
 	}
 	waitMwEmbedReady( callback );

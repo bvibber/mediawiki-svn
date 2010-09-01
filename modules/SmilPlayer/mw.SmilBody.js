@@ -277,7 +277,9 @@ mw.SmilBody.prototype = {
 	 */
 	getRefElementsRecurse: function( $node, startOffset, callback ){
 		var _this = this;
-		
+		if( ! $node ){
+			$node = this.getDom();
+		}
 		// Make sure $node is wrapped in jQuery object
 		$node = $j( $node );
 		

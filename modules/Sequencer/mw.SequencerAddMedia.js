@@ -211,7 +211,6 @@ mw.SequencerAddMedia.prototype = {
 			// By default the imported resource is its entire duration
 			$smilRef.attr( 'dur', resource.duration );
 		}
-		
 		// Set all available params
 		var resourceAttributeMap = {
 			'type' :  'mime',

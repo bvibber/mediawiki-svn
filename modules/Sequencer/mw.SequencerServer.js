@@ -59,13 +59,19 @@
 					this.pagePathUrl = serverConfig.pagePathUrl;
 				}
 				
+				if( serverConfig.userName ){
+					this.userName = serverConfig.userName;
+				}
+				
 			}
 			if( this.isConfigured() ){
 				mw.log("Error: Sequencer server needs a full serverConfig to be initialized")
 				return false;
 			}
 		},
-		
+		getUserName: function(){
+			return this.userName;
+		},
 
 		// Check if the server exists / is configured 
 		isConfigured: function( ){
@@ -216,6 +222,52 @@
 				callback( false );
 			});
 		},
+		
+		updateSequenceFileDescription: function(){
+			var _this = this;
+			mw.getToken( apiUrl, title, function( token ){
+				var pageText = ''
+				if( mw.parseUri( apiUrl ).host == 'commons.wikimedia.org' ){
+					pageText = _this.getCommonsDescriptionText()
+				} else {
+					pageText = _this.getBaseFileDescription()
+				}
+				var request = {
+					'action':'edit',
+					'token' : token, 
+					'title' : 'File:' + _this.getVideoFileName(),
+					'summary' : 'Automated sequence description page for published sequence: ' + _this.getTitle(),
+					'text' : pageText
+				}
+			})
+		},
+		getBaseFileDescription: function(){
+			return 'Published sequence file for [[Sequence:' + _this.getTitle() + ']]';
+		},
+		getCommonsDescriptionText: function(){
+			var descText ="{{Information\n" +  
+				"|Description=" + _this.getSequenceFileBaseDescription() + "\n" + 
+				"|Source= Sequence Sources assets include:\n";
+			
+			// loop over every asset:
+			this.sequencer.getSmil().getBody().getRefElementsRecurse(null, 0, function( $node ){
+				var $apiKeyParam =  $node.children("param[name='apiTitleKey']"); 
+				if( $apiKeyParam.length ){
+					descText+= "*[[" + $apiKeyParam.attr('value') + "]]\n";
+				}
+			});
+			var dt = new Date();
+			descText+='|Date=' +  dt.getFullYear() + '-' + 
+						pad2(dt.getMonth()+1) + '-' + 
+						pad2(dt.getDate()) + "\n" +
+				"|Author=Last edit by [[User:" + _this.getUserName() + "\n" +  
+				"|Permission= {{Cc-by-nc-sa-2.0-dual}}" + "\n" +				
+				"}}";
+			
+			// Add Published Sequence category ( for now )
+			descText += "\n[[Category:Published Sequence]]\n";
+		},
+		
 		/**
 		 * Get the sequence description page url
 		 * @param {String} Optional Sequence title key

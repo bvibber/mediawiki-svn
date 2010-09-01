@@ -371,13 +371,14 @@ mw.SequencerActionsSequence.prototype = {
 			foggRender.doRender();
 		});		
 	},
+	
 	// Upload the video from a supplied fogg target 
 	// note xx this might be better in the firefogg library since it has firefogg specific calls  
 	// @param {jQuery Object } $dialog
 	// @param {firefogg Object} 
 	uploadRenderedVideo: function( $dialog, fogg ){
 		var _this = this;
-		$j( '#firefoggStatusTarget' ).text( 'uploading' );
+		$j( '#firefoggStatusTarget' ).text( gM('mwe-sequencer-publishing-uploading' ) );
 		var updateUploadStatus = function(){
 			if( fogg.status() == 'uploading' ){
 				$j('#firefoggPercentDone').text( 
@@ -410,7 +411,17 @@ mw.SequencerActionsSequence.prototype = {
 						var apiResult = null;
 					}
 				}
-				_this.uploadDone( $dialog, apiResult );
+				// Check the api response 				
+				if ( !apiResult || apiResult.error || ( apiResult.upload && 
+						( apiResult.upload.result == "Failure" || apiResult.upload.error ) ) ) {
+					
+					$dialog.dialog( 'option', 'title', gM('mwe-sequencer-publishing-error' ) );
+					// xxx improve error handling 
+					$dialog.empty().text( gM( 'mwe-sequencer-publishing-error-upload-desc' ) )
+					return ;
+				}			
+				
+				_this.uploadSuccess( $dialog );
 				return ;
 			}			
 		}
@@ -419,18 +430,17 @@ mw.SequencerActionsSequence.prototype = {
 			updateUploadStatus();
 		})		
 	},
-	uploadDone: function($dialog, apiResult){
-		var _this = this;
-		// Check the api response 				
-		if ( !apiResult || apiResult.error || ( apiResult.upload && 
-				( apiResult.upload.result == "Failure" || apiResult.upload.error ) ) ) {
+	uploadSuccess: function($dialog, apiResult){
+		var _this = this;	
+		// Update the description page:
+		$dialog.html( gM('mwe-sequencer-publishing-updatepage' ) );
+		
+		// Update the file description
+		this.sequencer.getServer().updateSequenceFileDescription(function(){
 			
-			$dialog.dialog( 'option', 'title', gM('mwe-sequencer-publishing-error' ) );
-			// xxx improve error handling 
-			$dialog.empty().text( gM( 'mwe-sequencer-publishing-error-upload-desc' ) )
-			return ;
-		}				
-
+		});
+		
+		
 		// Success link to the sequence page / ok closes dialog
 		$dialog.dialog( 'option', 'title', gM('mwe-sequencer-publishing-success' ) );
 		var button = {};

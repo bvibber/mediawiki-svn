@@ -328,7 +328,7 @@ function Menu(caller, options) {
 					}
 				},
 				function() {
-					if( menuitem && !menuitem.hasClass('divider') && !menuitem.hasClass('disabled')  ){
+					if( typeof menuitem != 'undefined' && !menuitem.hasClass('divider') && !menuitem.hasClass('disabled')  ){
 						$(this).removeClass(options.linkHover).blur().parent().removeClass('active-menuitem');
 					}
 				}

@@ -342,7 +342,7 @@ mw.EmbedPlayerNative = {
 	pause: function() {
 		this.getPlayerElement();
 		this.parent_pause(); // update interface		
-		if ( this.playerElement ) {
+		if ( this.playerElement ) { // update player
 			this.playerElement.pause();
 		}
 	},
@@ -495,7 +495,7 @@ mw.EmbedPlayerNative = {
 	* Handle the native paused event
 	*/ 
 	onPaused: function(){
-		mw.log("native:paused");
+		mw.log( "embedPlayer:native:paused" );
 		this.pause();		
 	},
 	
@@ -503,7 +503,7 @@ mw.EmbedPlayerNative = {
 	* Handle the native play event 
 	*/
 	onPlay: function(){
-		mw.log("native::play");
+		mw.log("embedPlayer:native::play");
 		if( !this.isPlaying () ){
 			this.play();
 		}
@@ -556,11 +556,7 @@ mw.EmbedPlayerNative = {
 	*/	
 	onended: function() {
 		var _this = this;
-		//mw.log( 'native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );							
-		// run abstract player onEned if the abstract player still things we are playing
-		
-		if( this.isPlaying() ){
-			this.onClipDone();
-		}
+		mw.log( 'EmbedPlayer:native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );			
+		this.onClipDone();
 	}
 };
