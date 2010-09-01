@@ -82,13 +82,20 @@ class ResourceLoader {
 	 * @return {string} filtered data
 	 */
 	protected static function filter( $filter, $data ) {
-		// FIXME: $file is not used by any callers as path rewriting is currently kinda broken
 		global $wgMemc;
+		// For empty or whitespace-only things, don't do any processing
+		if ( trim( $data ) === '' ) {
+			return $data;
+		}
+		
+		// Try memcached
 		$key = wfMemcKey( 'resourceloader', 'filter', $filter, md5( $data ) );
 		$cached = $wgMemc->get( $key );
 		if ( $cached !== false && $cached !== null ) {
 			return $cached;
 		}
+		
+		// Run the filter
 		try {
 			switch ( $filter ) {
 				case 'minify-js':
@@ -96,7 +103,6 @@ class ResourceLoader {
 					break;
 				case 'minify-css':
 					$result = CSSMin::minify( $data );
-					//$result = $data;
 					break;
 				case 'flip-css':
 					$result = CSSJanus::transform( $data, true, false );
@@ -108,6 +114,8 @@ class ResourceLoader {
 		} catch ( Exception $exception ) {
 			throw new MWException( 'Filter threw an exception: ' . $exception->getMessage() );
 		}
+		
+		// Save to memcached
 		$wgMemc->set( $key, $result );
 		return $result;
 	}
