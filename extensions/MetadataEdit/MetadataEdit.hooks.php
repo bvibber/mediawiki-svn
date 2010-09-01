@@ -117,9 +117,18 @@ class MetadataEditHooks {
 	public static function wfMetadataEditOnShowFields( $editPage ) {
 		global $wgContLang, $wgUser;
 		$metadata = htmlspecialchars( $wgContLang->recodeForEdit( $editPage->mMetaData ) );
-		$ew = $wgUser->getOption( 'editwidth' ) ? ' style="width:100%"' : '';
-		$cols = $wgUser->getIntOption( 'cols' );
-		$metadata = wfMsgWikiHtml( 'metadata_help' ) . "<textarea name='metadata' rows='3' cols='{$cols}'{$ew}>{$metadata}</textarea>" ;
+
+		$attribs = array();
+		if ( $wgUser->getOption( 'editwidth' ) ) {
+			$attribs['style'] = 'width:100%';
+		}
+		$attribs['cols'] = $wgUser->getIntOption( 'cols' );
+		$attribs['rows'] = 3;
+
+		$metadata = Html::rawElement( 'div', array( 'class' => 'mw-metadataedit-metadata' ),
+			wfMsgWikiHtml( 'metadata_help' ) .
+			Html::textarea( 'metadata', $metadata, $attribs )
+		);
 		$editPage->editFormTextAfterContent .= $metadata;
 	
 		return true;
