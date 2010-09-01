@@ -84,7 +84,7 @@
 				if ( ! wgUserName ) {
 					config.userID = cookieSettings.uid;
 				}
-				// setup our markup
+				// setup our markup using the template varibales in settings 
 				var $output = $( settings.structureHTML
 					.replace( /\{INSTRUCTIONS\}/g, mw.usability.getMsg('articleassessment-pleaserate') )
 					.replace( /\{FEEDBACK\}/g,  mw.usability.getMsg('articleassessment-featurefeedback')
@@ -109,8 +109,9 @@
 							.replace( /\{COUNT\}/g, mw.usability.getMsg( 'articleassessment-noratings', [0, 0] ) ) ) 
 							);
 				}
+				// store our settings and configuration for later
 				$output.find( '#article-assessment' ).data( 'articleAssessment-context', { 'settings': settings, 'config': config } );
-				// hook up the ratings show/hide
+				// bind the ratings show/hide handlers
 				$output
 					.find( '.article-assessment-show-ratings a' )
 					.click( function() {
@@ -159,9 +160,13 @@
 						.stars( { 
 							inputType: 'select', 
 							callback: function( value, link ) {
-								// remove any stale classes
+								// remove any stale or rated classes
 								value.$stars.each( function() {
-									$( this ).removeClass( 'ui-stars-star-stale' );
+									$( this )
+										.removeClass( 'ui-stars-star-stale' )
+										.removeClass( 'ui-stars-star-rated' );
+								// enable our submit button if it's still disabled
+								$( '#article-assessment input:disabled' ).removeAttr( "disabled" ); 
 								} );
 							}
 						 } );
@@ -174,19 +179,24 @@
 							.tipsy( { gravity : 'se', opacity: '0.9',  } ) );
 				} );
 				// bind submit event to the form
-				$( '#article-assessment' ).submit( function() { $.ArticleAssessment.fn.submitRating(); return false; } );
+				$( '#article-assessment' )
+					.submit( function() { $.ArticleAssessment.fn.submitRating(); return false; } );
 				// prevent the submit button for being active until all ratings are filled out
-				
+				$( '#article-assessment input[type=submit]' )
+					.attr( 'disabled', 'disabled' );
 			},
+			// Request the ratings data for the current article
 			'getRatingData': function() {
+				var config = $( '#article-assessment' ).data( 'articleAssessment-context' ).config;
 				var request = $.ajax( {
 					url: wgScriptPath + '/api.php',
 					data: {
 						'action': 'query',
 						'list': 'articleassessment',
-						'aarevid': wgCurRevisionId,
-						'aapageid': wgArticleId,
+						'aarevid': config.revID,
+						'aapageid': config.pageID,
 						'aauserrating': 1,
+						'aauserid': config.userID,
 						'format': 'json'
 					},
 					dataType: 'json',
@@ -205,31 +215,32 @@
 					for( rating in data.query.articleassessment[0].ratings) {
 						var rating = data.query.articleassessment[0].ratings[rating],
 							$rating = $( '#' + rating.ratingdesc ),
-							label = mw.usability.getMsg( 'articleassessment-noratings', [rating.total, rating.count] );
+							count = rating.count,
+							total = rating.total / count,
+							label = mw.usability.getMsg( 'articleassessment-noratings', [total, count] );
 						$rating
 							.find( '.article-assessment-rating-field-value' )
-							.text( rating.total )
+							.text( total )
 							.end()
 							.find( '.article-assessment-rating-count' )
 							.text( label );
 						if( rating.userrating ) {
 							var $rateControl = $( '#' + rating.ratingdesc.replace( 'rating', 'rate' ) + ' .rating-field' );
-							$rateControl.children( '.ui-stars-star' ).eq( rating.userrating - 1 ).click();
+							$rateControl.stars( 'select', rating.userrating );
 						}
 					}
 					// if the rating is stale, add the stale class
-					if( true /* replace with conditional based on returned results of past user ratings */ ) {
+					if( data.query.articleassessment ) {
 						// add the stale star class to each on star
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
 						// add the stale message
-						$( '.article-assessment-submit' )
-							.append( settings.staleMSG.replace( /\{MSG\}/g, mw.usability.getMsg( 'articleassessment-stalemessage-revisioncount' )
-								.replace( /'''([^']*)'''/g, '<strong>$1</strong	>' )
-								.replace( /''([^']*)''/, '<em>$1</em>' ) ) );
+						var msg = mw.usability.getMsg( 'articleassessment-stalemessage-revisioncount' )
+							.replace( /'''([^']*)'''/g, '<strong>$1</strong>' )
+							.replace( /''([^']*)''/g, '<em>$1</em>' );
+						$.ArticleAssessment.fn.flashNotice( msg, { 'class': 'article-assessment-stale-msg' } );
 					}
 				}
-
 				// initialize the ratings 
 				$( '.article-assessment-rating-field-value' ).each( function() {
 					$( this )
@@ -241,6 +252,11 @@
 			'submitRating': function() {
 				var config = $( '#article-assessment' ).data( 'articleAssessment-context' ).config;
 				// clear out the stale message
+				$.ArticleAssessment.fn.flashNotice( );
+				
+				//lock the star inputs
+				
+				// get our results for submitting
 				var results = {};
 				$( '.rating-field input' ).each( function() {
 					// expects the hidden inputs to have names like 'rating[field-name]' which we use to
@@ -263,12 +279,38 @@
 					},
 					dataType: 'json',
 					success: function( data ) {
-						console.log(data);
+						// set the stars to rated status
+						$j('.ui-stars-star-on').addClass('ui-stars-star-rated');
+						// unlock the stars 
+						
+						// update the results
+						
+						// show the results
+						$( '#article-assessment .article-assessment-show-ratings a' ).click();
 					}
 				} );
 			},
+			// places a message on the interface
 			'flashNotice': function( text, options ) {
-				
+				if ( arguments.length == 0 ) {
+					// clear existing messages, but don't add a new one
+					$( '#article-assessment .article-assessment-flash' ).remove();
+				} else {
+					// clear and add a new message
+					$( '#article-assessment .article-assessment-flash' ).remove();
+					var className = options['class'];
+					// create our new message
+					$msg = $( '<span />' )
+						.addClass( 'article-assessment-flash' )
+						.html( text );
+					// if the class option was passed, add it
+					if( options['class'] ) {
+						$msg.addClass( options['class'] );
+					}
+					// place our new message on the page
+					$( '#article-assessment .article-assessment-submit' )
+						.append( $msg );
+				}
 			} 
 		}
 	};

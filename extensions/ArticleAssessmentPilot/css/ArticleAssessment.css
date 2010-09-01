@@ -28,8 +28,9 @@
 .article-assessment-wrapper .ui-stars-star a {
   background-position: 0 0px;
 }
+
 .article-assessment-wrapper .ui-stars-star-on a  {
-  background-position: 0 -42px;
+  background-position: 0 -21px;
 }
 .article-assessment-wrapper .ui-stars-star-rated a {
 	background-position: 0 -42px;

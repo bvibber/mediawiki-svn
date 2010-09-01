@@ -1,12 +1,11 @@
 /*!
  * jQuery Stars v1
- * adapted by Adam Miller (acm6603@gmail.com) 2010 
+ * adapted by Adam Miller (acm6603@gmail.com)
  * 
  * Adapted from jQuery UI Stars v3.0.1
  * Marek "Orkan" Zajac (orkans@gmail.com)
  * http://plugins.jquery.com/project/Star_Rating_widget
  *
- * TODO: Non of the API functions are working right now. Need to rewrite more of this so they will
  */
 (function($) {
 $.stars = {
@@ -33,13 +32,6 @@ $.stars = {
 		starDisabledClass: 'ui-stars-star-disabled',
 		cancelHoverClass: 'ui-stars-cancel-hover',
 		cancelDisabledClass: 'ui-stars-cancel-disabled'
-	},
-	init: function( element, options ) {
-		var context = $.extend( {}, {
-			element: $( element ),
-			options: $.extend( {}, this.defaults, options )
-			}, this );
-		this.create.call( context );
 	},
 	create: function( ) {
 		var self = this, o = this.options, starId = 0;
@@ -270,36 +262,43 @@ $.stars = {
 	}
 }
 $.fn.stars = function ( ) {
-	var args = arguments;
+	// convert the arguments to an array
+	var args = Array.prototype.slice.call(arguments);
 	
-	// var context = $( this ).data( 'stars-context' );
-	// 	if ( typeof context == 'undefined' || context == null ) {
-	// 		context = {
-	// 			options: {
-	// 			}
-	// 		};
-	// 	}
-	// 	// // Handle various calling styles
-	// 	if ( args.length > 0 ) {
-	// 		if ( typeof args[0] == 'object' ) {
-	// 			// Apply set of properties
-	// 			// for ( var key in args[0] ) {
-	// 			// 				$.suggestions.configure( context, key, args[0][key] );
-	// 			// 			}
-	// 			return $( this ).each( function() {
-	// 				$.stars.init( this, args[0] );
-	// 			} );
-	// 		} else if ( typeof args[0] == 'string' ) {
-	// 			// call the function
-	// 			var funcName = args[0];
-	// 			delete args[0];
-	// 			return $( this ).each( function() {
-	// 				$.stars[funcName]( args );
-	// 			} );
-	// 		}
-	// 	}
-	return $( this ).each( function() {
-		$.stars.init( this, args[0] );
+	// default value to return -- overwritten by api calls
+	var out = $( this );
+	
+	$( this ).each( function() {
+		// get the context if it's already been initialized
+		var context = $( this ).data( 'stars-context' );
+		if ( typeof context == 'undefined' || context == null ) {
+			// setup the context if it hasn't been yet
+			context = $.extend( {}, {
+				element: $( this ),
+				options: $.stars.defaults
+			}, $.stars );
+		}
+		// Handle various calling styles
+		if ( args.length > 0 ) {
+			if ( typeof args[0] == 'object' ) {
+				// merge the passed options into defaults
+				context.options = $.extend( {}, context.options, args[0] );
+				// initialize
+				$.stars.create.call( context );
+			} else if ( typeof args[0] == 'string' ) {
+				// API call 
+				var funcName = args.shift();
+				// call the function, and if it returns something, store the output in our return var
+				out = $.stars[funcName].call( context, args[0] ) || out;
+			}
+		} else {
+			// initialize with the defaults
+			$.stars.create.call( context );
+		}
+		// save our context, bay-bee
+		$( this ).data( 'stars-context', context );
 	} );
+	
+	return out;
 };
 } )( jQuery );
