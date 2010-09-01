@@ -85,7 +85,9 @@ class SpecialPrefSwitch extends SpecialPage {
 					$globalUser->getName(),
 					true
 				);
-				self::switchOffUser( $remoteUser );
+				if ( $remoteUser ) {
+					self::switchOffUser( $remoteUser );
+				}
 			}
 		}
 	}
