@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   -- 1 vote per user per revision
   PRIMARY KEY (aa_revision, aa_user_text, aa_rating_id)
 ) /*$wgDBTableOptions*/;
+CREATE INDEX /*i*/aa_user_page_revision ON /*_*/article_assessment (aa_user_id, aa_page_id, aa_revision);
 
 -- Store article assessments
 CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment_pages (
