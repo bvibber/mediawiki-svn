@@ -21,6 +21,8 @@ $messages['en'] = array(
 	'articleassessment-rating-completeness-tooltip' => 'Do you feel that this article covers the essential topic areas that it should?',
 	'articleassessment-rating-readability-tooltip' => 'Do you feel that this article is well-organized and well written?',
 	'articleassessment-articlerating' => 'Article rating',
+	'articleassessment-error' => "We're sorry! An error has occurred. Please try again later.",
+	'articleassessment-thanks' => 'Thanks! Your ratings have been saved.',
 
 	# FIXME: Special page seems not exist.
 	'articleassessment-featurefeedback' => 'Give us [[Special:Article Assessment Feedback|feedback]] about this feature.',
@@ -53,6 +55,8 @@ $messages['qqq'] = array(
 	'articleassessment-rating-completeness-tooltip' => 'This is a tool tip that is designed to explain what the "completeness" metric means.',
 	'articleassessment-rating-readability-tooltip' => 'This is a tool tip that is designed to explain what the "readability" metric means.',
 	'articleassessment-articlerating' => 'This is a box or section header. It indicates that the contents of the box are the average ratings for the article.',
+	'articleassessment-error' => 'A generic error message to display on any error.',
+	'articleassessment-thanks' => 'The message to display when the user has successfully submitted a rating.',
 	'articleassessment-featurefeedback' => 'This is a call to action link for users to provide feedback about the feature.  It takes them to a survey.',
 	'articleassessment-noratings' => 'This indicates the number of ratings that the article has received.',
 	'articleassessment-stalemessage-revisioncount' => 'This is a message shown to the user when their ratings are "stale" and includes the number of revisions since.',
