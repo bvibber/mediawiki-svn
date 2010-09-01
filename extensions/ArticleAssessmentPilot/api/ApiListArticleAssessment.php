@@ -22,9 +22,9 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		$this->addJoinConds( array(
 				'article_assessment_ratings' => array( 'LEFT JOIN', array(
 					'aar_id=aap_rating_id',
-					) ),
 				)
-			);
+			),
+		) );
 
 		if ( isset( $params['pageid'] ) ) {
 			$this->addWhereFld( 'aa_page_id', $params['pageid'] );
@@ -117,9 +117,12 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 			global $wgArticleAssessmentStaleCount;
 
-			if ( $res && $res->fetchRow()->norevs > $wgArticleAssessmentStaleCount ){
-				//it's stale!
-				$ratings[$params['pageid']]['stale'] = '';
+			if ( $res ) {
+				$noOfRevs = $res->fetchRow()->norevs;
+				if ( $noOfRevs > $wgArticleAssessmentStaleCount ){
+					//it's stale!
+					$ratings[$params['pageid']]['stale'] = intval( $noOfRevs );
+				}
 			}
 		}
 
