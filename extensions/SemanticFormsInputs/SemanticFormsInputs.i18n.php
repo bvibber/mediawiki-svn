@@ -134,6 +134,14 @@ $messages['no'] = array(
 	'semanticformsinputs-wrongformat' => 'Feil format.',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'semanticformsinputs-desc' => 'Dodatkowe typy wejściowe dla [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formularzy Semantycznych]',
+	'semanticformsinputs-wrongformat' => 'Niewłaściwy format.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

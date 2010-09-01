@@ -274,6 +274,13 @@ $messages['fr'] = array(
 	'securepasswords-word' => 'ne pas être un mot',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'securepasswords-word' => 'pas étre un mot',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

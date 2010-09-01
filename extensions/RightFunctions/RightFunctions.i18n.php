@@ -164,6 +164,16 @@ $messages['fr'] = array(
 	'rightfunctions-ns' => '(depuis la protection des espaces de nom)',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'rightfunctions-desc' => 'Fonccions du parsor basâs sur des pèrmissions',
+	'rightfunctions-casc' => '(dês les sôrses en cascâda)',
+	'rightfunctions-local' => '(dês una pâge locala)',
+	'rightfunctions-ns' => '(dês la protèccion des èspâços de noms)',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

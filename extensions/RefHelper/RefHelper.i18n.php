@@ -446,6 +446,37 @@ $messages['fr'] = array(
 Vous pouvez [[Special:RefHelper|ajouter la référence manuellement]] ou [[Special:RefSearch|rechercher la citation à ajouter]].',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'refhelper' => 'Assistent de refèrences',
+	'refsearch' => 'Rechèrche de refèrences',
+	'refhelper-desc' => 'Éde a fâre des pâges de refèrence.',
+	'refhelper-refsearch' => 'Rechèrche de refèrences',
+	'refhelper-refcreate_legend' => 'Fâre una novèla refèrence',
+	'refhelper-refsearch_legend' => 'Rechèrche des refèrences dens PubMed',
+	'refhelper-refcreate_another' => 'Fâre una ôtra refèrence',
+	'refhelper-refcreate_autocomment' => 'Crèacion ôtomatisâ de pâge.',
+	'refhelper-refcreate_success' => 'La pâge [[$1]] ègzistâve pas et pués at étâ fêta.',
+	'refhelper-refcreate_failure' => 'La pâge [[$1]] ègziste ja !',
+	'refhelper-label_workspace' => 'Èspâço de travâly (zona de copiyér et côlar) :',
+	'refhelper-label_authorforename' => 'Nom a l’ôtor $1 :',
+	'refhelper-label_authorsurname' => 'Nom de mêson :',
+	'refhelper-title' => 'Titro :',
+	'refhelper-journal' => 'Jornal :',
+	'refhelper-volume' => 'Volumo :',
+	'refhelper-pages' => 'Pâges :',
+	'refhelper-year' => 'An :',
+	'refhelper-refname' => 'Nom de la refèrence :',
+	'refhelper-category' => 'Catègorie $1 :',
+	'refhelper-create' => 'Fâre',
+	'refhelper-search' => 'Rechèrchiér',
+	'refhelper-toolbox_link_create' => 'Fâre la refèrence',
+	'refhelper-toolbox_link_search' => 'Fâre la refèrence dês la rechèrche',
+	'refhelper-newarticle_nocitation' => 'Ora, ègziste gins de citacion avouéc ceti nom.',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

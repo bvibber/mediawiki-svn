@@ -1010,13 +1010,42 @@ Si vous êtes persuadé{{GENDER:||e|(e)}} qu’il s’agit d’une erreur, [[$1|
 
 /** Franco-Provençal (Arpetan)
  * @author Cedric31
+ * @author ChrisPtDe
  */
 $messages['frp'] = array(
+	'regexblock' => 'Blocâjo per èxprèssions racionèles',
+	'regexblock-already-blocked' => '$1 est ja blocâ.',
+	'regexblock-block-success' => 'Lo blocâjo at reussi',
+	'regexblock-currently-blocked' => 'Adrèces blocâs houé :',
+	'regexblock-page-title' => 'Blocâjo d’un nom per una èxprèssion racionèla',
+	'regexblockstats' => 'Statistiques des blocâjos per èxprèssions racionèles',
+	'regexblock-form-username' => 'Adrèce IP ou ben nom d’utilisator :',
 	'regexblock-form-reason' => 'Rêson :',
 	'regexblock-form-expiry' => 'Èxpiracion :&#160;',
+	'regexblock-form-match' => 'Corrèspondance justa',
+	'regexblock-form-account-block' => 'Dèfendre la crèacion d’un compto novél',
+	'regexblock-form-submit' => 'Blocar ceti utilisator',
+	'regexblock-form-submit-regex' => 'Èxprèssion racionèla fôssa.',
+	'regexblock-link' => 'blocar avouéc una èxprèssion racionèla',
+	'regexblock-match-stats-record' => '$1 at blocâ « $2 » lo « $3 » a « $4 », branchiê dês l’adrèce « $5 »',
+	'regexblock-nodata-found' => 'Gins de balyê trovâ',
+	'regexblock-stats-title' => 'Statistiques des blocâjos per èxprèssions racionèles',
+	'regexblock-unblock-success' => 'Lo dèblocâjo at reussi',
+	'regexblock-unblock-log' => "L’utilisator ou ben l’adrèce IP '''$1''' at étâ dèblocâ.",
+	'regexblock-regex-filter' => ' ou ben una èxprèssion racionèla :',
+	'regexblock-view-blocked' => 'Vêre los blocâjos per :',
 	'regexblock-view-all' => 'Tôs',
 	'regexblock-view-go' => 'Lanciér',
+	'regexblock-view-match' => '(corrèspondance justa)',
+	'regexblock-view-regex' => '(èxprèssion racionèla)',
+	'regexblock-view-account' => '(dèfensa de la crèacion de comptos)',
 	'regexblock-view-reason' => 'rêson : $1',
+	'regexblock-view-reason-default' => 'rêson g·ènèrica',
+	'regexblock-view-block-infinite' => 'blocâjo sen fin',
+	'regexblock-view-block-by' => 'blocâ per :',
+	'regexblock-view-block-unblock' => 'dèblocar',
+	'regexblock-view-stats' => 'statistiques',
+	'regexblock-view-time' => 'lo $1',
 );
 
 /** Western Frisian (Frysk)

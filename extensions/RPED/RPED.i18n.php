@@ -87,6 +87,13 @@ $messages['fr'] = array(
 	'rped-wikipedia-url' => 'http://fr.wikipedia.org/wiki/$1',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'rped-wikipedia-url' => 'http://frp.wikipedia.org/wiki/$1',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

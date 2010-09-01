@@ -220,6 +220,13 @@ $messages['fr'] = array(
 	'selectcategory-subtitle' => 'Maj+clic afin de (dé)sélectionner plusieurs catégories d’affilée, Ctrl+clic afin de (dé)sélectionner des catégories individuellement.',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'selectcategory-title' => 'Chouèsir les catègories',
+);
+
 /** Galician (Galego)
  * @author Alma
  * @author Xosé

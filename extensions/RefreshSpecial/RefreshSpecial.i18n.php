@@ -536,6 +536,28 @@ Attention : l’actualisation peut prendre un certain temps sur un wiki de grand
 	'right-refreshspecial' => 'Actualiser les pages spéciales',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'refreshspecial' => 'Rafrèchir les pâges spèciâles',
+	'refreshspecial-title' => 'Rafrèchir les pâges spèciâles',
+	'refreshspecial-button' => 'Rafrèchir chouèsies',
+	'refreshspecial-refreshing' => 'actualisacion de les pâges spèciâles',
+	'refreshspecial-skipped' => 'de bada, sôtâ',
+	'refreshspecial-choice' => 'actualisacion de les pâges spèciâles',
+	'refreshspecial-js-disabled' => '(<i>Vos pouede pas chouèsir totes les pâges se JavaScript est dèsactivâ</i>)',
+	'refreshspecial-select-all-pages' => 'Chouèsir totes les pâges',
+	'refreshspecial-link-back' => 'Tornar a la pâge spèciâla',
+	'refreshspecial-db-error' => 'Falyita : èrror de la bâsa de balyês',
+	'refreshspecial-no-page' => 'Pâge spèciâla pas ègzistenta',
+	'refreshspecial-slave-lagged' => 'Retârd sur lo sèrvor èscllâvo, en atenta...',
+	'refreshspecial-reconnected' => 'Tornâ branchiér.',
+	'refreshspecial-reconnecting' => 'Falyita du branchement, rebranchement dens 10 secondes...',
+	'refreshspecial-page-result' => '$1 {{PLURAL:$1|legne avua|legnes avues}} en',
+	'right-refreshspecial' => 'Rafrèchir les pâges spèciâles',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

@@ -110,6 +110,13 @@ $messages['fr'] = array(
 	'regexfunctions-desc' => 'Fonctions parseurs des expressions régulières',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'regexfunctions-desc' => 'Fonccions du parsor de les èxprèssions racionèles',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */

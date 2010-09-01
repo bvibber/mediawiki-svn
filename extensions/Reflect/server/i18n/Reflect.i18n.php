@@ -112,6 +112,15 @@ Si vous voulez lire la réponse dans son contexte, visitez <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 a répondu à votre résumé de son opinion',
 );
 
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'reflect-desc' => 'Ôgmentacion des fils de comentèros',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Voutron avis at étâ rèsumâ per $2',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 at rèpondu a voutron rèsumâ de son avis',
+);
+
 /** Galician (Galego)
  * @author Toliño
  */
@@ -223,6 +232,32 @@ De reactie: "$5"
 
 U kunt via de volgende verwijzing de reactie in context bekijken: <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 heeft gereageerd op uw bondige samenvatting',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'reflect-desc' => 'Aument dij coment concatenà',
+	'reflect-bulleted' => 'Cerea $1,
+
+$2 a l\'ha riassumù un pont ch\'it l\'has fàit ant ël thread "$3".
+
+Sò resumé: "$5".
+
+It peule verifiché se $2 a l\'ha fàit giust tò pont an visitand <$4>.
+
+It podras ciairì tò pont s\'a-i é dle anconprension.',
+	'reflect-bulleted-subject' => "[{{SITENAME}}] Tò pont a l'é stàit riassumù da $2",
+	'reflect-responded' => 'Cerea $1,
+
+$2 a l\'ha arspondù a tò resumé d\'un pont ch\'a l\'avìa fàit.
+
+Ël resumé ch\'it l\'has lassà: "$6".
+So mëssagi: "$5".
+
+S\'it veule lese l\'arspòsta ant ël contest, vìsita <$4>.',
+	'reflect-responded-subject' => "[{{SITENAME}}] $2 a l'ha arspondù ai pont ëd tò resumé",
 );
 
 /** Portuguese (Português)

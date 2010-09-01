@@ -1965,16 +1965,19 @@ Para ayudarnos a mejorarlas, por favor llene la encuesta de abajo presionando "[
 $messages['et'] = array(
 	'prefswitch' => 'Kasutushõlpsuse algatuse eelistuse valimine',
 	'prefswitch-desc' => 'Lubab kasutajal eelistuste komplekte vahetada.',
+	'prefswitch-jswarning' => "Pea meeles, et seoses kujunduse muutumisega on sul tarvis oma [[User:$1/$2.js|''$2''-JavaScript]] toimimiseks leheküljele [[{{ns:user}}:$1/vector.js]] <!-- või [[{{ns:user}}:$1/common.js]]--> kopeerida.",
 	'prefswitch-csswarning' => "Sinu [[User:$1/$2.css|kohandatud ''$2''-stiilileht]] ei rakendu enam. Kujunduse Vektor jaoks saad kohandatud CCS-i lisada lehele [[{{ns:user}}:$1/vector.css]].",
 	'prefswitch-survey-true' => 'Jah',
 	'prefswitch-survey-false' => 'Ei',
 	'prefswitch-survey-submit-off' => 'Lülita uued funktsioonid välja',
 	'prefswitch-survey-cancel-off' => 'Kui soovid uute funktsioonide kasutamist jätkata, saad naasta leheküljele $1.',
 	'prefswitch-survey-submit-feedback' => 'Saada tagasiside',
+	'prefswitch-survey-cancel-feedback' => 'Kui sa ei soovi tagasisidet anda, saad naasta leheküljele $1.',
 	'prefswitch-survey-question-like' => 'Mis sulle uute funktsioonide juures meeldis?',
 	'prefswitch-survey-question-dislike' => 'Mis sulle uute funktsioonide juures ei meeldinud?',
 	'prefswitch-survey-question-whyoff' => 'Miks sa uued funktsioonid välja lülitad?
 Palun vali kõik sobivad.',
+	'prefswitch-survey-question-globaloff' => 'Kas soovid funktsioonid globaalselt välja lülitada?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Seda oli liiga keeruline kasutada.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'See ei toiminud korralikult.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'See ei toiminud oodatult.',
@@ -1986,6 +1989,7 @@ Palun vali kõik sobivad.',
 	'prefswitch-survey-answer-browser-other' => 'Muu brauser:',
 	'prefswitch-survey-question-os' => 'Millist operatsioonisüsteemi sa kasutad?',
 	'prefswitch-survey-answer-os-other' => 'Muu operatsioonisüsteem:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Jah, lülita funktsioonid kõigis vikides välja',
 	'prefswitch-survey-question-res' => 'Milline on su kuvari eraldusvõime?',
 	'prefswitch-title-on' => 'Uued funktsioonid',
 	'prefswitch-title-switched-on' => 'Naudi!',
@@ -2686,7 +2690,6 @@ $messages['gsw'] = array(
 	'prefswitch-survey-true' => 'Jo',
 	'prefswitch-survey-false' => 'Nei',
 	'prefswitch-survey-submit-off' => 'Neji Funktione abschalte',
-	'prefswitch-survey-submit-global-off' => 'Neji Funktione uf allne Wiki deaktiviere',
 	'prefswitch-survey-cancel-off' => 'Wänn di neje Funktione wyter bruche witt, chasch zu $1 zruckgoh.',
 	'prefswitch-survey-submit-feedback' => 'Ruckmäldig gee',
 	'prefswitch-survey-cancel-feedback' => 'Wänn kei Ruckmäldig witt gee, chasch zue $1 zruckgoh.',
@@ -2694,6 +2697,7 @@ $messages['gsw'] = array(
 	'prefswitch-survey-question-dislike' => 'Was het Dir an dr neje Funktione nit gfalle?',
 	'prefswitch-survey-question-whyoff' => 'Wurum schaltsch di neje Funktione ab?
 Bitte wehl alli Pinkt, wu zuedräffe uus.',
+	'prefswitch-survey-question-globaloff' => 'Witt di neje Funktione wältwyt abschalte?',
 	'prefswitch-survey-answer-whyoff-hard' => 'D Verwändig isch z schwirig gsi.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Si het nit rächt funktioniert.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'S het nit eso funktioniert, wie s gheisse het.',
@@ -2705,6 +2709,7 @@ Bitte wehl alli Pinkt, wu zuedräffe uus.',
 	'prefswitch-survey-answer-browser-other' => 'Andere Browser:',
 	'prefswitch-survey-question-os' => 'Wel Betribssyschtem bruchsch Du?',
 	'prefswitch-survey-answer-os-other' => 'Anders Betribssyschtem:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Jo, di neje Funktione uf allene Wiki abschalte',
 	'prefswitch-survey-question-res' => 'Was fir e Uflesig het Dyy Bildschirm?',
 	'prefswitch-title-on' => 'Neji Funktione',
 	'prefswitch-title-switched-on' => 'Vil Spaß!',
@@ -4871,7 +4876,6 @@ $messages['pms'] = array(
 	'prefswitch-survey-true' => 'É',
 	'prefswitch-survey-false' => 'Nò',
 	'prefswitch-survey-submit-off' => 'Disativa le funsionalità neuve',
-	'prefswitch-survey-submit-global-off' => 'Gava le funsionalità neuve da dzora a tute le wiki',
 	'prefswitch-survey-cancel-off' => "S'a veul continué a dovré le possibilità neuve, a peul torné a $1.",
 	'prefswitch-survey-submit-feedback' => 'Mandé dij sugeriment',
 	'prefswitch-survey-cancel-feedback' => "S'a veul pa dé ëd sugeriment, a peul torné a $1.",
@@ -4879,6 +4883,7 @@ $messages['pms'] = array(
 	'prefswitch-survey-question-dislike' => "Lòn ch'at pias pa ëd le neuve funsionalità?",
 	'prefswitch-survey-question-whyoff' => "Përchè a veul disativé le possibilità neuve?
 Për piasì, ch'a selession-a tute le motivassion.",
+	'prefswitch-survey-question-globaloff' => 'Veus-to che le funsion a sio dëstissà globalment?',
 	'prefswitch-survey-answer-whyoff-hard' => "A l'era tròp malfé dovrelo.",
 	'prefswitch-survey-answer-whyoff-didntwork' => 'A marciava nen bin.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'A marciava pa coma spetà.',
@@ -4890,6 +4895,7 @@ Për piasì, ch'a selession-a tute le motivassion.",
 	'prefswitch-survey-answer-browser-other' => 'Àutr navigador:',
 	'prefswitch-survey-question-os' => "Che sistema operativ ch'a deuvra?",
 	'prefswitch-survey-answer-os-other' => 'Àutr sistema operativ:',
+	'prefswitch-survey-answer-globaloff-yes' => 'É!, dëstissa le funsion su tute le wiki',
 	'prefswitch-survey-question-res' => "Cola ch'a l'é l'arzolussion ëd tò scren?",
 	'prefswitch-title-on' => 'Neuve funsionalità',
 	'prefswitch-title-switched-on' => 'Fate gòj!',
@@ -5485,10 +5491,12 @@ $messages['rue'] = array(
 
 /** Yakut (Саха тыла)
  * @author HalanTul
+ * @author Рашат Якупов
  */
 $messages['sah'] = array(
 	'prefswitch' => 'Юзабилити инициативатын туруорууларын уларытыы',
 	'prefswitch-desc' => 'Туруоруулары талары хааччыйар',
+	'prefswitch-jswarning' => '',
 	'prefswitch-survey-true' => 'Сөп',
 	'prefswitch-survey-false' => 'Суох',
 	'prefswitch-survey-submit-off' => 'Саҥа туруоруулары араар',
@@ -5499,6 +5507,7 @@ $messages['sah'] = array(
 	'prefswitch-survey-question-dislike' => 'Саҥа туруорууларга тугу сөбүлээбэтиҥ?',
 	'prefswitch-survey-question-whyoff' => 'Тоҕо саҥа туруоруулары араарыаххын баҕараҕын?
 Бука диэн сөп түбэһэр хоруйу тал.',
+	'prefswitch-survey-question-globaloff' => '',
 	'prefswitch-survey-answer-whyoff-hard' => 'Туттарга наһаа ыарахан.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Сөпкө үлэлээбэт.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Күүтүллүбүтүн курдук үлэлээбэт.',
@@ -5510,6 +5519,7 @@ $messages['sah'] = array(
 	'prefswitch-survey-answer-browser-other' => 'Атын брааузер:',
 	'prefswitch-survey-question-os' => 'Ханнык операционнай систиэмэни туһанаҕын?',
 	'prefswitch-survey-answer-os-other' => 'Атын ОС:',
+	'prefswitch-survey-answer-globaloff-yes' => '',
 	'prefswitch-survey-question-res' => 'Эн мониторуҥ разрешениета төһөнүй?',
 	'prefswitch-title-on' => 'Саҥа туруоруулар',
 	'prefswitch-title-switched-on' => 'Астын!',
@@ -5575,6 +5585,15 @@ $messages['sc'] = array(
 	'prefswitch-survey-answer-whyoff-other' => 'Àteru motivu:',
 	'prefswitch-survey-answer-browser-other' => 'Àteru browser:',
 	'prefswitch-title-switched-off' => 'Gràtzias',
+);
+
+/** Sicilian (Sicilianu)
+ * @author Gmelfi
+ */
+$messages['scn'] = array(
+	'prefswitch-title-on' => 'Funzioni novi',
+	'prefswitch-main-on' => '===Arripòrtami narreri===
+[$2 Clicca ccà pi disabbilitari li funziuni novi].',
 );
 
 /** Sinhala (සිංහල)
