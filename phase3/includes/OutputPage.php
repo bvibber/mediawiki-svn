@@ -2312,19 +2312,12 @@ class OutputPage {
 		global $wgUser, $wgRequest, $wgJsMimeType;
 		global $wgStylePath, $wgStyleVersion;
 		
+		// Statup - this will immediately load jquery and mediawiki modules
 		$scripts = self::makeResourceLoaderLink( $sk, 'startup', 'scripts' );
+		// Configuration
+		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 		// Support individual script requests in debug mode
 		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
-			// Configuration
-			$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-			// Messages
-			foreach ( $this->getModuleMessages() as $name ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'messages' );
-			}
-			// Modules
-			foreach ( $this->getModules() as $name ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $name );
-			}
 			// Styles
 			foreach ( $this->getModuleStyles() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
@@ -2333,17 +2326,11 @@ class OutputPage {
 			foreach ( $this->getModuleScripts() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
 			}
-		} else {
-			// Configuration
-			$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 			// Messages
-			if ( count( $this->getModuleMessages() ) ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
+			foreach ( $this->getModuleMessages() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'messages' );
 			}
-			// Modules
-			if ( count( $this->getModules() ) ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModules() );
-			}
+		} else {
 			// Styles
 			if ( count( $this->getModuleStyles() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
@@ -2352,6 +2339,16 @@ class OutputPage {
 			if ( count( $this->getModuleScripts() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
 			}
+			// Messages
+			if ( count( $this->getModuleMessages() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
+			}
+		}
+		if ( $this->getModules() ) {
+			// Modules - let the client calculate dependencies and batch requests as it likes
+			$scripts .= Html::inlineScript(
+				'mediaWiki.loader.load( ' . FormatJson::encode( $this->getModules() ) . ' )'
+			);
 		}
 		// add user JS if enabled
 		if( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
