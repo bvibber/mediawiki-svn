@@ -46,8 +46,22 @@ class ArticleAssessmentPilotHooks {
 	}
 
 	public static function addResources( $out ) {
+		$title = $out->getTitle();
+
+		// Chances are we only want to be rating Mainspace, right?
+		if ( $title->getNamespace() !== NS_MAIN ) {
+			return true;
+		}
+
+		global $wgArticleAssessmentPages;
+
+		// check if this page should have the form
+		if ( !array_key_exists( $title->getArticleId() , $wgArticleAssessmentPages ) ) {
+			return true;
+		}
+
 		global $wgExtensionAssetsPath;
-				
+
 		foreach ( self::$scriptFiles as $script ) {
 			$out->addScriptFile( $wgExtensionAssetsPath .
 				"/ArticleAssessmentPilot/{$script['src']}", $script['version']
@@ -59,7 +73,7 @@ class ArticleAssessmentPilotHooks {
 				"/ArticleAssessmentPilot/{$style['src']}?{$style['version']}"
 			);
 		}
-		
+
 		// Transforms messages into javascript object members
 		self::$messages = array(
 			'articleassessment',
@@ -83,7 +97,7 @@ class ArticleAssessmentPilotHooks {
 			'articleassessment-results-show',
 			'articleassessment-results-hide',
 			);
-		
+
 		foreach ( self::$messages as $i => $message ) {
 			$escapedMessageValue = Xml::escapeJsString( wfMsg( $message ) );
 			$escapedMessageKey = Xml::escapeJsString( $message );
@@ -99,7 +113,7 @@ class ArticleAssessmentPilotHooks {
 
 		return true;
 	}
-	
+
 	/**
 	 * Adds a reference to a javascript file to the head of the document
 	 * @param string $src Path to the file relative to this extension's folder
@@ -109,7 +123,7 @@ class ArticleAssessmentPilotHooks {
 		// The key is Andrew's snarky 20-character way of stopping multiple inclusion of the same file.
 		self::$scripts["$src?$version"] = array( 'src' => $src, 'version' => $version );
 	}
-	
+
 	/**
 	 * Adds internationalized message definitions to the document for access
 	 * via javascript using the mw.usability.getMsg() function
@@ -117,27 +131,5 @@ class ArticleAssessmentPilotHooks {
 	 */
 	public static function addMessages( $messages ) {
 		self::$messages = array_merge( self::$messages, $messages );
-	}
-
-	public static function addCode( &$data, $skin ) {
-		$title = $skin->getTitle();
-
-		// Chances are we only want to be rating Mainspace, right?
-		if ( $title->getNamespace() !== NS_MAIN ) {
-			return true;
-		}
-
-		global $wgArticleAssessmentPages;
-
-		// check if this page should have the form
-		if ( !array_key_exists( $title->getArticleId() , $wgArticleAssessmentPages ) ) {
-			return true;
-		}
-
-		// write the form
-
-		// if user has no cookie, set cookie
-
-		return true;
 	}
 }
