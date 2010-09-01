@@ -466,14 +466,13 @@ window.mediaWiki = new ( function( $ ) {
 						var src = mediaWiki.config.get( 'server' ) + '/load.php?' + $.param( requests[r] );
 						html += '<script type="text/javascript" src="' + src + '"></script>';
 					}
-					// Append script to body
-					$( 'body' ).append( html );
+					return html;
 				}
 				// Load asynchronously after doumument ready
 				if ( ready ) {
-					setTimeout(  function() { request(); }, 0 )
+					setTimeout(  function() { $( 'body' ).append( request() ); }, 0 )
 				} else {
-					request();
+					document.write( request() );
 				}
 			}
 		};
