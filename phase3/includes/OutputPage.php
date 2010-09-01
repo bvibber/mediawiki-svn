@@ -1604,7 +1604,6 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 		
 		// Add base resources
-		$this->addModuleScripts( array( 'startup' ) );
 		$this->addModules( array( 'mediawiki.legacy.wikibits' ) );
 		
 		// Add site JS if enabled
@@ -2313,17 +2312,9 @@ class OutputPage {
 		global $wgUser, $wgRequest, $wgJsMimeType;
 		global $wgStylePath, $wgStyleVersion;
 		
-		$scripts = '';
+		$scripts = self::makeResourceLoaderLink( $sk, 'startup', 'scripts' );
 		// Support individual script requests in debug mode
 		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
-			// Styles
-			foreach ( $this->getModuleStyles() as $name ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
-			}
-			// Scripts
-			foreach ( $this->getModuleScripts() as $name ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
-			}
 			// Configuration
 			$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 			// Messages
@@ -2334,15 +2325,15 @@ class OutputPage {
 			foreach ( $this->getModules() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name );
 			}
-		} else {
 			// Styles
-			if ( count( $this->getModuleStyles() ) ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
+			foreach ( $this->getModuleStyles() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
 			}
 			// Scripts
-			if ( count( $this->getModuleScripts() ) ) {
-				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
+			foreach ( $this->getModuleScripts() as $name ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
 			}
+		} else {
 			// Configuration
 			$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 			// Messages
@@ -2352,6 +2343,14 @@ class OutputPage {
 			// Modules
 			if ( count( $this->getModules() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModules() );
+			}
+			// Styles
+			if ( count( $this->getModuleStyles() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
+			}
+			// Scripts
+			if ( count( $this->getModuleScripts() ) ) {
+				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
 			}
 		}
 		// add user JS if enabled
