@@ -188,8 +188,8 @@ window.mediaWiki = new ( function( $ ) {
 		var queue = [];
 		// List of callback functions waiting for modules to be ready to be called
 		var jobs = [];
-		// Flag indicating document ready has occured
-		var ready = [];
+		// Flag indicating that requests should be suspended
+		var suspended = true;
 		
 		/* Private Methods */
 		
@@ -210,8 +210,7 @@ window.mediaWiki = new ( function( $ ) {
 				pad1( date.getUTCDate() ) + 'T' +
 				pad1( date.getUTCHours() ) + ':' +
 				pad1( date.getUTCMinutes() ) + ':' +
-				pad1( date.getUTCSeconds() ) + '.' +
-				pad2( date.getUTCMilliseconds() ) +
+				pad1( date.getUTCSeconds() ) +
 				'Z';
 		}
 		/**
@@ -424,7 +423,7 @@ window.mediaWiki = new ( function( $ ) {
 			// Clean up the queue
 			queue = [];
 			// After document ready, handle the batch
-			if ( ready && batch.length ) {
+			if ( !suspended && batch.length ) {
 				// Always order modules alphabetically to help reduce cache misses for otherwise identical content
 				batch.sort();
 				// Build a list of request parameters
@@ -610,13 +609,13 @@ window.mediaWiki = new ( function( $ ) {
 				return true;
 			}
 		};
-		
-		/* Event Bindings */
-		
-		$( document ).ready( function() {
-			ready = true;
+		/**
+		 * Flush the request queue and begin executing load requests on demand
+		 */
+		this.go = function() {
+			suspended = false;
 			that.work();
-		} );
+		}
 	} )();
 	
 	/* Extension points */

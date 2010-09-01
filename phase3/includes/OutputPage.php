@@ -2055,8 +2055,7 @@ class OutputPage {
 			$data['messages'][$message] = wfMsg( $message );
 		}
 		$this->addScript( Html::inlineScript( 'var passwordSecurity=' . FormatJson::encode( $data ) ) );
-		$this->addScriptFile( 'password.js' );
-		$this->addStyle( 'common/password.css' );
+		$this->addModules( 'mediawiki.legacy.password' );
 	}
 
 	/** @deprecated */
@@ -2345,7 +2344,7 @@ class OutputPage {
 		if ( $this->getModules() ) {
 			// Modules - let the client calculate dependencies and batch requests as it likes
 			$scripts .= Html::inlineScript(
-				'mediaWiki.loader.load( ' . FormatJson::encode( $this->getModules() ) . ' )'
+				'mediaWiki.loader.load( ' . FormatJson::encode( $this->getModules() ) . ' );'
 			);
 		}
 		// TODO: User Scripts should be included using the resource loader
@@ -2366,8 +2365,9 @@ class OutputPage {
 				}
 			}
 		}
-
 		$scripts .= "\n" . $this->mScripts;
+		// This should be at the bottom of the body - below ALL other scripts
+		$scripts .= Html::inlineScript( 'mediaWiki.loader.go();' );
 		return $scripts;
 	}
 

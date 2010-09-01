@@ -269,27 +269,19 @@ ResourceLoader::register( array(
 	'mediawiki.legacy.ajax' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/ajax.js',
 		'messages' => array( 'watch', 'unwatch', 'watching', 'unwatching', 'tooltip-ca-watch', 'tooltip-ca-unwatch' ),
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.ajaxwatch' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/ajaxwatch.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.block' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/block.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.changepassword' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/changepassword.js',
-		'dependencies' => 'mediawiki',
-	) ),
-	'mediawiki.legacy.edit' => new ResourceLoaderFileModule( array(
-		'scripts' => 'skins/common/edit.js',
-		'dependencies' => 'mediawiki',
-	) ),
-	'mediawiki.legacy.enhancedchanges' => new ResourceLoaderFileModule( array(
-		'scripts' => 'skins/common/enhancedchanges.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.commonPrint' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/commonPrint.css',
@@ -297,57 +289,65 @@ ResourceLoader::register( array(
 	'mediawiki.legacy.config' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/config.js',
 		'styles' => array( 'skins/common/config.css', 'skins/common/config-cc.css' ),
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.diff' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/diff.js',
 		'styles' => 'skins/common/diff.css',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
+	) ),
+	'mediawiki.legacy.edit' => new ResourceLoaderFileModule( array(
+		'scripts' => 'skins/common/edit.js',
+		'dependencies' => 'mediawiki.legacy.wikibits',
+	) ),
+	'mediawiki.legacy.enhancedchanges' => new ResourceLoaderFileModule( array(
+		'scripts' => 'skins/common/enhancedchanges.js',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.history' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/history.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.htmlform' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/htmlform.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.IEFixes' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/IEFixes.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.metadata' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/metadata.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.mwsuggest' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/mwsuggest.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.password' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/password.js',
 		'styles' => 'skins/common/password.css',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.prefs' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/prefs.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => array( 'mediawiki.legacy.wikibits', 'mediawiki.legacy.htmlform' ),
 	) ),
 	'mediawiki.legacy.preview' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/preview.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.protect' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/protect.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.rightclickedit' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/rightclickedit.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.search' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/search.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.shared' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/shared.css',
@@ -355,7 +355,7 @@ ResourceLoader::register( array(
 	) ),
 	'mediawiki.legacy.upload' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/upload.js',
-		'dependencies' => 'mediawiki',
+		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.wikibits' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/wikibits.js',
