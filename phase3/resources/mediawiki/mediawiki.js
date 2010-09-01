@@ -176,11 +176,12 @@ window.mediaWiki = new ( function( $ ) {
 		 * 			'state': 'registered', 'loading', 'loaded', 'ready', or 'error'
 		 * 			'script': function() {},
 		 * 			'style': 'css code string',
-		 * 			'messages': { 'key': 'value' }
+		 * 			'messages': { 'key': 'value' },
+		 * 			'version': ############## (unix timestamp)
 		 * 		}
 		 * 	}
 		 */
-		var registry = { 'jquery': { 'state': 'ready' }, 'mediawiki': { 'state': 'ready' } };
+		var registry = {};
 		// List of modules which will be loaded as when ready
 		var batch = [];
 		// List of modules to be loaded
@@ -192,6 +193,27 @@ window.mediaWiki = new ( function( $ ) {
 		
 		/* Private Methods */
 		
+		/**
+		 * Generates an ISO8601 string from a UNIX timestamp
+		 */
+		function formatVersionNumber( timestamp ) {
+			var date = new Date();
+			date.setTime( timestamp * 1000 );
+			function pad1( n ) {
+				return n < 10 ? '0' + n : n
+			}
+			function pad2( n ) {
+				return n < 10 ? '00' + n : ( n < 100 ? '0' + n : n );     
+			}
+			return date.getUTCFullYear() + '-' +
+				pad1( date.getUTCMonth() + 1 ) + '-' +
+				pad1( date.getUTCDate() ) + 'T' +
+				pad1( date.getUTCHours() ) + ':' +
+				pad1( date.getUTCMinutes() ) + ':' +
+				pad1( date.getUTCSeconds() ) + '.' +
+				pad2( date.getUTCMilliseconds() ) +
+				'Z';
+		}
 		/**
 		 * Recursively resolves dependencies and detects circular references
 		 */
@@ -409,16 +431,27 @@ window.mediaWiki = new ( function( $ ) {
 				var base = {
 					'skin': mediaWiki.config.get( 'skin' ),
 					'lang': mediaWiki.config.get( 'wgUserLanguage' ),
-					'debug': mediaWiki.config.get( 'debug' ),
+					'debug': mediaWiki.config.get( 'debug' )
 				};
 				// Extend request parameters with a list of modules in the batch
 				var requests = [];
 				if ( base.debug == '1' ) {
 					for ( var b = 0; b < batch.length; b++ ) {
-						requests[requests.length] = $.extend( { 'modules': batch[b] }, base );
+						requests[requests.length] = $.extend(
+							{ 'modules': batch[b], 'version': registry[batch[b]].version }, base
+						);
 					}
 				} else {
-					requests[requests.length] = $.extend( { 'modules': batch.join( '|' ) }, base );
+					// Calculate the highest timestamp
+					var version = 0;
+					for ( var b = 0; b < batch.length; b++ ) {
+						if ( registry[batch[b]].version > version ) {
+							version = registry[batch[b]].version;
+						}
+					}
+					requests[requests.length] = $.extend(
+						{ 'modules': batch.join( '|' ), 'version': formatVersionNumber( version ) }, base
+					);
 				}
 				// Clear the batch - this MUST happen before we append the script element to the body or it's
 				// possible that the script will be locally cached, instantly load, and work the batch again,
@@ -441,7 +474,7 @@ window.mediaWiki = new ( function( $ ) {
 		 * Registers a module, letting the system know about it and it's dependencies. loader.js files contain calls
 		 * to this function.
 		 */
-		this.register = function( module, dependencies, status ) {
+		this.register = function( module, version, dependencies, status ) {
 			// Allow multiple registration
 			if ( typeof module === 'object' ) {
 				for ( var n = 0; n < module.length; n++ ) {
@@ -461,7 +494,11 @@ window.mediaWiki = new ( function( $ ) {
 				throw new Error( 'module already implemeneted: ' + module );
 			}
 			// List the module as registered
-			registry[module] = { 'state': typeof status === 'string' ? status : 'registered', 'dependencies': [] };
+			registry[module] = {
+				'state': typeof status === 'string' ? status : 'registered',
+				'dependencies': [],
+				'version': typeof version !== 'undefined' ? parseInt( version ) : 0
+			};
 			if ( typeof dependencies === 'string' ) {
 				// Allow dependencies to be given as a single module name
 				registry[module].dependencies = [dependencies];
