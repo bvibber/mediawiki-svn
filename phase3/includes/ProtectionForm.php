@@ -508,8 +508,8 @@ class ProtectionForm {
 		}
 
 		if ( !$this->disabled ) {
-			$out .= Xml::closeElement( 'form' ) .
-				$this->buildCleanupScript();
+			$out .= Xml::closeElement( 'form' );
+			$wgOut->addScript( $this->buildCleanupScript() );
 		}
 
 		return $out;
@@ -592,7 +592,7 @@ class ProtectionForm {
 		$encOptions = Xml::encodeJsVar( $options );
 
 		$script .= "ProtectionForm.init($encOptions)";
-		return Html::inlineScript( $script );
+		return Html::inlineScript( "mediaWiki.loader.using( 'mediawiki.legacy.protect', function() { {$script} } );" );
 	}
 
 	/**
