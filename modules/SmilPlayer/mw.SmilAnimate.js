@@ -27,6 +27,7 @@ mw.SmilAnimate.prototype = {
 		// Pause the animation of a given element ( presently just video )		
 		switch( this.smil.getRefType( smilElement ) ){
 			case 'video':
+			case 'audio':
 				$j ( '#' + this.smil.getPageDomId( smilElement ) ).get( 0 ).pause();
 			break;
 		}
@@ -89,8 +90,10 @@ mw.SmilAnimate.prototype = {
 			
 		
 		// Check for special playback types that for playback animation action:
-		if( this.smil.getRefType( smilElement ) == 'video' ){
-			this.transformVideoForPlayback( smilElement, animateTime );
+		if( this.smil.getRefType( smilElement ) == 'video' 
+			|| 
+			this.smil.getRefType( smilElement ) == 'audio' ){
+			this.transformMediaForPlayback( smilElement, animateTime );
 		}
 				
 		// Check if the current smilElement has any transforms to be done
@@ -242,7 +245,7 @@ mw.SmilAnimate.prototype = {
 	/** 
 	 * Used to support video playback
 	 */
-	transformVideoForPlayback: function( smilElement, animateTime ){ 
+	transformMediaForPlayback: function( smilElement, animateTime ){ 
 		var $vid = $j ( '#' + this.smil.getPageDomId( smilElement ) );	
 		
 		// Set activePlayback flag ( informs edit and buffer actions ) 
@@ -261,7 +264,7 @@ mw.SmilAnimate.prototype = {
 		if( this.smil.getBuffer().canPlayTime( smilElement, animateTime ) 
 			&& vid.paused
 		) {
-			//mw.log( "transformVideoForPlayback:: should play:" + animateTime );						
+			//mw.log( "transformMediaForPlayback:: should play:" + animateTime );						
 			vid.play();
 			return ;
 		}		
