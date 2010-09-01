@@ -505,6 +505,14 @@ $messages['ku-latn'] = array(
 	'vector-simplesearch-containing' => 'dihundirîne...',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'vector-simplesearch-search' => 'Whilas',
+	'vector-simplesearch-containing' => 'ow sensy...',
+);
+
 /** Latin (Latina)
  * @author Omnipaedista
  */

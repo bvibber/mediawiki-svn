@@ -57,6 +57,14 @@ $messages['arz'] = array(
 	'vector-desc' => 'تحسينات فى عناصر واجهه المستخدم لواجهه فكتور.',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'vector' => '"Векторлы" күренешен яҡшыртыуҙар',
+	'vector-desc' => '"Векторлы" күренешенең ҡулланыусы интерфейсында яҡшыртыуҙар.',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */
