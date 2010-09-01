@@ -350,8 +350,7 @@ ResourceLoader::register( array(
 		'dependencies' => 'mediawiki.legacy.wikibits',
 	) ),
 	'mediawiki.legacy.shared' => new ResourceLoaderFileModule( array(
-		'scripts' => 'skins/common/shared.css',
-		'scripts' => 'skins/common/oldshared.css',
+		'styles' => array( 'skins/common/shared.css', 'skins/common/oldshared.css' ),
 	) ),
 	'mediawiki.legacy.upload' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/upload.js',
