@@ -260,8 +260,8 @@ ResourceLoader::register( array(
 	
 	/* MediaWiki Utilities */
 	
-	'mediawiki.utilities.client' => new ResourceLoaderFileModule( array(
-		'scripts' => 'resources/mediawiki.util/mediawiki.utilities.client.js',
+	'mediawiki.util.client' => new ResourceLoaderFileModule( array(
+		'scripts' => 'resources/mediawiki.util/mediawiki.util.client.js',
 	) ),
 	
 	/* MediaWiki Legacy */
