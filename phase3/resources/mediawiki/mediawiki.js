@@ -190,6 +190,8 @@ window.mediaWiki = new ( function( $ ) {
 		var jobs = [];
 		// Flag indicating that requests should be suspended
 		var suspended = true;
+		// Flag inidicating that document ready has occured
+		var ready = false;
 		
 		/* Private Methods */
 		
@@ -457,7 +459,7 @@ window.mediaWiki = new ( function( $ ) {
 				// all before we've cleared it causing each request to include modules which are already loaded
 				batch = [];
 				// Asynchronously append a script tag to the end of the body
-				setTimeout(  function() {
+				function request() {
 					var html = '';
 					for ( var r = 0; r < requests.length; r++ ) {
 						// Build out the HTML
@@ -466,7 +468,13 @@ window.mediaWiki = new ( function( $ ) {
 					}
 					// Append script to body
 					$( 'body' ).append( html );
-				}, 0 )
+				}
+				// Load asynchronously after doumument ready
+				if ( ready ) {
+					setTimeout(  function() { request(); }, 0 )
+				} else {
+					request();
+				}
 			}
 		};
 		/**
@@ -616,6 +624,8 @@ window.mediaWiki = new ( function( $ ) {
 			suspended = false;
 			that.work();
 		}
+		
+		$(document).ready( function() { ready = true; } );
 	} )();
 	
 	/* Extension points */
