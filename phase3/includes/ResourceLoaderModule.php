@@ -568,7 +568,7 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 		$this->modifiedTime = 1; // wfTimestamp() interprets 0 as "now"
 		foreach ( $jsPages as $jsPage ) {
 			if ( $jsPage->exists() ) {
-				$this->modifiedTime = max( $retval, wfTimestamp( TS_UNIX, $jsPage->getTouched() ) );
+				$this->modifiedTime = max( $this->modifiedTime, wfTimestamp( TS_UNIX, $jsPage->getTouched() ) );
 			}
 		}
 		return $this->modifiedTime;
@@ -583,11 +583,11 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 
 class ResourceLoaderStartupModule extends ResourceLoaderModule {
 	public function getScript( $lang, $skin, $debug ) {
-		return ResourceLoader::getModuleRegistrations();
+		return ResourceLoader::getModuleRegistrations( $lang, $skin, $debug );
 	}
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {
-		return ResourceLoader::getHighestModifiedTime();
+		return ResourceLoader::getHighestModifiedTime( $lang, $skin, $debug );
 	}
 	
 	public function getClientMaxage() {

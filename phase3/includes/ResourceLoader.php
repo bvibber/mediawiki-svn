@@ -165,10 +165,15 @@ class ResourceLoader {
 	
 	/**
 	 * Gets registration code for all modules, except pre-registered ones listed in self::$preRegisteredModules
-	 * 
+	 *
+	 * The $lang, $skin and $debug parameters are used to calculate the last modified timestamps for each
+	 * module.
+	 * @param $lang string Language code
+	 * @param $skin string Skin name
+	 * @param $debug bool Debug mode flag
 	 * @return {string} JavaScript code for registering all modules with the client loader
 	 */
-	public static function getModuleRegistrations() {
+	public static function getModuleRegistrations( $lang, $skin, $debug ) {
 		$scripts = '';
 		$registrations = array();
 		foreach ( self::$modules as $name => $module ) {
@@ -181,11 +186,12 @@ class ResourceLoader {
 				else {
 					// Modules without dependencies pass one argument (name) to mediaWiki.loader.register()
 					if ( !count( $module->getDependencies() ) ) {
-						$registrations[] = array( $name, $module->getModifiedTime() );
+						$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ) );
 					}
 					// Modules with dependencies pass two arguments (name, dependencies) to mediaWiki.loader.register()
 					else {
-						$registrations[] = array( $name, $module->getModifiedTime(), $module->getDependencies() );
+						$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ),
+							$module->getDependencies() );
 					}
 				}
 			}
@@ -194,10 +200,18 @@ class ResourceLoader {
 		return "window.mediaWikiStartUp = function() {" . $scripts . "};";
 	}
 	
-	public static function getHighestModifiedTime() {
+	/**
+	 * Get the highest modification time of all modules, based on a given combination of language code,
+	 * skin name and debug mode flag.
+	 * @param $lang string Language code
+	 * @param $skin string Skin name
+	 * @param $debug bool Debug mode flag
+	 * @return int UNIX timestamp
+	 */
+	public static function getHighestModifiedTime( $lang, $skin, $debug ) {
 		$retval = 1; // wfTimestamp() treats 0 as 'now', so that's not a suitable choice
 		foreach ( self::$modules as $module ) {
-			$retval = max( $retval, $module->getModifiedTime() );
+			$retval = max( $retval, $module->getModifiedTime( $lang, $skin, $debug ) );
 		}
 		return $retval;
 	}
@@ -306,7 +320,7 @@ class ResourceLoader {
 				if ( $name === 'mediawiki' && $parameters['only'] === 'scripts' ) {
 					$scripts .= "mediaWiki.config.set( " .
 						FormatJson::encode( array( 'server' => $server, 'debug' => $parameters['debug'] ) ) . " );\n";
-					$scripts .= self::getModuleRegistrations();
+					$scripts .= self::getModuleRegistrations( $parameters['lang'], $parameters['skin'], $parameters['debug'] );
 				}
 			}
 			// Styles
