@@ -25,6 +25,7 @@ $messages['en'] = array(
 	'prefswitch-survey-question-dislike' => 'What did you dislike about the features?',
 	'prefswitch-survey-question-whyoff' => 'Why are you turning off the new features?
 Please select all that apply.',
+	'prefswitch-survey-question-globaloff' => 'Do you want the features turned off globally?',
 	'prefswitch-survey-answer-whyoff-hard' => 'The features were too hard to use.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'The features did not function properly.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'The features did not perform predictably.',
@@ -62,6 +63,7 @@ Please select all that apply.',
 	'prefswitch-survey-answer-os-ios' => 'iOS',
 	'prefswitch-survey-answer-os-linux' => 'Linux',
 	'prefswitch-survey-answer-os-other' => 'Other operating system:',
+	'prefswitch-survey-answer-globaloff-yes' => 'Yes, turn the features off on all wikis',
 	'prefswitch-survey-question-res' => 'What is the resolution of your screen?',
 	'prefswitch-title-on' => 'New features',
 	'prefswitch-title-switched-on' => 'Enjoy!',
@@ -158,6 +160,7 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-main-feedback' => 'Entry asking for feedback in a local page.',
 	'prefswitch-main-anon' => 'Is used on Special:UsabilityInitiativePrefSwitch at Wikimedia.org.',
 	'prefswitch-feedbackpage' => '{{doc-important|The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now. Do not translate "Project:"}}',
+	'prefswitch-survey-submit-global-off' => 'This message may still change',
 );
 
 /** Afrikaans (Afrikaans)

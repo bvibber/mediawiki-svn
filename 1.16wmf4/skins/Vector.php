@@ -93,11 +93,11 @@ class SkinVector extends SkinTemplate {
 
 			// Adds namespace links
 			$links['namespaces'][$subjectId] = $this->tabAction(
-				$subjectPage, 'vector-namespace-' . $subjectId, !$isTalk, '', true
+				$subjectPage, 'nstab-' . $subjectId, !$isTalk, '', true
 			);
 			$links['namespaces'][$subjectId]['context'] = 'subject';
 			$links['namespaces'][$talkId] = $this->tabAction(
-				$talkPage, 'vector-namespace-talk', $isTalk, '', true
+				$talkPage, 'talk', $isTalk, '', true
 			);
 			$links['namespaces'][$talkId]['context'] = 'talk';
 
@@ -299,7 +299,7 @@ class SkinVector extends SkinTemplate {
 		} else {
 			$links['namespaces']['special'] = array(
 				'class' => 'selected',
-				'text' => wfMsg( 'vector-namespace-special' ),
+				'text' => wfMsg( 'nstab-special' ),
 				'href' => $wgRequest->getRequestURL()
 			);
 		}
