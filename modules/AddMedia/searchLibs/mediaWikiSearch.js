@@ -49,7 +49,12 @@ mediaWikiSearch.prototype = {
 	},
 	
 	getResourceFromUrl: function( url, callback  ){		
-		this.getByTitle( this.getTitleKeyFromMwUrl( url ), callback );				
+		var title = this.getTitleKeyFromMwUrl( url );
+		if( !title) {
+			callback( false );
+			return ;
+		} 
+		this.getByTitle(title , callback );				
 	},
 	/**
 	 * Does best effort to get the title key from a mediawiki url 

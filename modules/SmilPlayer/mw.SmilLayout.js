@@ -127,6 +127,7 @@ mw.SmilLayout.prototype = {
 		}
 		switch ( this.smil.getRefType( $node )  ){		
 			case 'img':
+				// XXX should refactor and to use same path as player embed
 				// xxx we should use canvas here but for now just hack it up:		
 				var $playerImage = this.getSmilImgHtml( $node );				
 				$target.html(
@@ -136,7 +137,7 @@ mw.SmilLayout.prototype = {
 					})
 				);
 				var img = $target.find('img').get(0)
-				_this.getNaturalSize( img, function( natrualSize ){
+				_this.getNaturalSize( img, function( natrualSize ){					
 					_this.fitMeetBest( 
 						img,
 						natrualSize, 
@@ -145,6 +146,11 @@ mw.SmilLayout.prototype = {
 							'height' : $target.height()
 						}
 					)
+					// Check for panZoom attribute 
+					//( if animation is set it will override this value ) 
+					if( $node.attr('panZoom') ){
+						_this.panZoomLayout( $node.get(0), $target, img );
+					}
 				}); 
 			break;
 			case 'cdata_html':
@@ -517,10 +523,10 @@ mw.SmilLayout.prototype = {
 				'height' : this.smil.embedPlayer.getHeight()
 			}			
 			this.fitMeetBest( 
-					$j( '#' + this.smil.getPageDomId( smilElement ) ).get(0), 
-					naturalSize, 
-					targetSize
-				); 
+				$j( '#' + this.smil.getPageDomId( smilElement ) ).get(0), 
+				naturalSize, 
+				targetSize
+			);
 		} else {
 			mw.log("Layout mode: " + fitMode + ' not yet supported');
 		}
@@ -536,14 +542,16 @@ mw.SmilLayout.prototype = {
 	fitMeetBest: function( element, natrualSize, targetSize ){
 		var _this = this;
 		
+		
 		// xxx Should read smil "imgElement" fill type
 		var imageCss = _this.getDominateAspectTransform( natrualSize,  targetSize, 100 );
-			
+		mw.log('SmilLayout::fitMeetBest: ns'+ natrualSize.width + ' ts: ' + targetSize.width +
+				' css: w:' + imageCss.width + ' h:' + imageCss.height);
 		// update the layout of the element
 		$j( element ).css( imageCss );		
 	},
 	
-	getDominateAspectTransform: function(natrualSize, targetSize, transformPercent ){
+	getDominateAspectTransform: function( natrualSize, targetSize, transformPercent ){
 		var _this = this;
 		var transformCss = {}
 		if( ! targetSize ){
@@ -553,21 +561,31 @@ mw.SmilLayout.prototype = {
 			};
 		}
 		// Fit the image per the provided targetWidth closure
-		if( natrualSize.width / natrualSize.height > targetSize.width / targetSize.height ){			
-			transformCss.width = transformPercent + '%';
-			transformCss.height = ( transformPercent * ( 
+		/* mw.log( 'getDominateAspectTransform:: naspect:' + 
+				( natrualSize.width / natrualSize.height ) + 
+				' taspect: ' + targetSize.width + '/' + targetSize.height + ' = ' + ( targetSize.width / targetSize.height )
+			); 
+		*/
+		var targetAspect = ( parseFloat( targetSize.width ) / parseFloat( targetSize.height ) )
+		var natrualAspect = ( natrualSize.width / natrualSize.height );
+		
+		// pad the natural size ratio by .01 so that aspect ratio rounding does not
+		// xxx height domination here may be confused refactor this check
+		if( natrualAspect >= targetAspect ){			
+			transformCss.width = parseFloat( transformPercent ) + '%';
+			transformCss.height = ( parseFloat( transformPercent ) * ( 
 					( natrualSize.height  /  natrualSize.width ) /
-						_this.getTargetAspectRatio()
+						( targetSize.height / targetSize.width ) 
 					) 
 				) + '%';
 		}
 		
 		// Fit vertically
-		if(! transformCss.height || natrualSize.width / natrualSize.height < targetSize.width / targetSize.height  ){
-			transformCss.height =  transformPercent + '%';
-			transformCss.width = ( transformPercent * 
+		if(! transformCss.height || natrualAspect < targetAspect  ){
+			transformCss.height =  parseFloat( transformPercent ) + '%';
+			transformCss.width = ( parseFloat( transformPercent ) * 
 					(  natrualSize.width / natrualSize.height ) / 
-					_this.getTargetAspectRatio() 
+					( targetSize.width / targetSize.height )
 				) + '%';
 		}
 		return transformCss;
@@ -576,10 +594,12 @@ mw.SmilLayout.prototype = {
 	/**
 	 * layout function
 	 */
-	panZoomLayout: function( smilElement ){
+	panZoomLayout: function( smilElement, $target, img ){
 		var _this = this;		
 		var panZoom = $j( smilElement).attr('panZoom').split(',');
-		var img = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+		if( !img ){
+			var img = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+		}		
 		
 		_this.getNaturalSize( img, function( natrualSize ){
 			// Check if the transfrom is needed:
@@ -596,9 +616,9 @@ mw.SmilLayout.prototype = {
 			}
 			// Get percent values			
 			var percentValues = _this.smil.getAnimate().getPercentFromPanZoomValues( panZoom, natrualSize );
-		
+			//mw.log('panZoomLayout::' +  'l:' + percentValues.left + ' t:' + percentValues.top + ' w:' + percentValues.width + ' h:' + percentValues.height );
 			// Update the layout via the animation engine updateElementLayout method
-			_this.smil.getAnimate().updateElementLayout( smilElement, percentValues );
+			_this.smil.getAnimate().updateElementLayout( smilElement, percentValues, $target, img );
 		});
 	},
 	/**

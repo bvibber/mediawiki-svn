@@ -178,9 +178,10 @@ mw.SequencerTimeline.prototype = {
 			// Draw the node onto the timeline if the clip is not already there:
 			var $timelineClip = $clipTrackSet.find( '#' + _this.getTimelineClipId( $node ) )
 			if( $timelineClip.length == 0 ){
-				mw.log(" ADD: " + _this.getTimelineClipId( $node ) + ' to ' + $clipTrackSet.attr('id') );
+				mw.log("SequencerTimeline::drawTrackClips: ADD: " + _this.getTimelineClipId( $node ) + ' to ' + $clipTrackSet.attr('id') );				
 				$timelineClip = _this.getTimelineClip( smilSequenceTrack, $node );
 				// Set the index order on the clip
+				
 				$timelineClip.data( 'indexOrder', $clipTrackSet.children().length );
 				if( $previusClip ){
 					$previusClip.after( 
@@ -198,23 +199,40 @@ mw.SequencerTimeline.prototype = {
 				// mw.log( 'indexOrder::' +  $timelineClip.attr('id') + ' '+ $timelineClip.data('indexOrder') + ' == ' + $node.data('indexOrder'));
 				if( $timelineClip.data('indexOrder') != $node.data('indexOrder') ){
 					reOrderTimelineFlag = true;
-				}							
+				}
 			}
 			
 			// xxx Check if the start time was changed to set reRenderThumbFlag 			
 			if ( reRenderThumbFlag ){				
 				thumbRenderStack++;
 				// Issue a relative draw Thumb request for the start time			
-				smil.getBuffer().bufferedSeekRelativeTime( $node, 0, function(){					
+				smil.getBuffer().bufferedSeekRelativeTime( $node, 0, function(){			
+					// Update the timeline clip layout									
+					
 					mw.log("getTrackClipInterface::bufferedSeekRelativeTime for " + smil.getPageDomId( $node ));
 					_this.drawClipThumb( $node , 0, function(){
+						// Clip is ready decrement the thum render queue 
 						thumbRenderStack--;
+						
+						// XXX this is now called in a few places need to refactor to call i
+						if( $node.attr('panZoom') ){
+							var $thumbTarget = $j( '#' + _this.getTimelineClipId( $node ) ).find('.thumbTraget');
+							_this.sequencer.getSmil().getLayout().panZoomLayout( $node.get(0), 
+								$thumbTarget, 
+								$thumbTarget.find('img').get(0) 
+							);
+						}
+						// check if all the sequence track thumbs have been rendered can issue the sequence render callback:
 						if( thumbRenderStack == 0 ){
 							callback();
 						}
 					});
+					
+					// Check for panZoom attribute 
+					
 				});
 			}
+			
 			
 			// Update the $previusClip 
 			$previusClip = $timelineClip;
@@ -327,9 +345,7 @@ mw.SequencerTimeline.prototype = {
 				
 		return $j('<li />')
 			.attr('id',  _this.getTimelineClipId( $node ) )	
-			.data( {
-				'smilId': $node.attr('id'),				
-			})
+			.data( 'smilId', $node.attr('id') )
 			.css( 'height', this.getSequenceTrackHeight( smilSequenceTrack) - 10 )
 			.addClass( 'timelineClip ui-corner-all' )
 			.loadingSpinner()				
@@ -704,6 +720,10 @@ mw.SequencerTimeline.prototype = {
 				if( $thumbTarget.children().length == 0 ){
 					mw.log( "SequencerTimeline::drawClipThumb: force image fallabck:: " + img.src);
 					$thumbTarget.html( img );
+					if( callback ){					
+						callback();
+						callback = null;
+					}
 				}
 			}, 5000);
 		}			
@@ -711,8 +731,13 @@ mw.SequencerTimeline.prototype = {
 		// Buffer the asset then render it into the layout target:		
 		smil.getBuffer().bufferedSeekRelativeTime( $node, relativeTime, function(){					
 			// Add the seek, Add to canvas and draw thumb request
-			smil.getLayout().drawElementThumb( $thumbTarget, $node, relativeTime, callback );
-		
+			smil.getLayout().drawElementThumb( $thumbTarget, $node, relativeTime, function(){
+				// Run the callback and un-set it for the current closure
+				if( callback ){					
+					callback();
+					callback = null;
+				}
+			});		
 		})
 	},
 	/**

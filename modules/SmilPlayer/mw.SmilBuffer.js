@@ -121,8 +121,6 @@ mw.SmilBuffer.prototype = {
 		// Get all active elements for requested bufferTime		
 		this.smil.getBody().getElementsForTime( bufferTime, function( smilElement){
 			// If the element is in "activePlayback" ( don't try to load it )
-			/*mw.log('continueBufferLoad::' + _this.smil.getPageDomId( smilElement ) 
-					+ $j( smilElement ).data('activePlayback' ));*/
 			if( ! $j( smilElement ).data('activePlayback' ) ){
 				// Start loading active assets 
 				_this.loadElement( smilElement );
@@ -138,7 +136,7 @@ mw.SmilBuffer.prototype = {
 			var timeBuffered = _this.getBufferedPercent() * _this.smil.getDuration();			
 			//mw.log( 'ContinueBufferLoad::Timed buffered: ' + timeBuffered );
 			_this.continueBufferLoad( timeBuffered );
-		}, this.smil.embedPlayer.monitorRate * 2 );
+		}, this.smil.embedPlayer.monitorRate * 4 );
 		
 	},
 	
@@ -156,7 +154,8 @@ mw.SmilBuffer.prototype = {
 			// because DOM update are displayed at a given dom draw rate )
 			_this.smil.getLayout().hideElement( smilElement );
 			mw.log('loadElement::Add:' + this.smil.getPageDomId( smilElement )+ ' len: ' +  $j( '#' + this.smil.getPageDomId( smilElement ) ).length );
-		}		
+		}
+
 		// Start "loading" the asset (for now just video ) 
 		// but in theory we could set something up with large images
 		switch( this.smil.getRefType( smilElement ) ){

@@ -93,6 +93,10 @@
 				// set smil to empty string if unset:
 				if(!smilXml )
 					smilXml = '';
+				
+				// Check for remote payload wrapper
+				smilXml = mw.getRemoteSequencerPayLoad( smilXml );
+				
 				// Cache the latest serverSmil ( for local change checks ) 
 				// ( save requests automatically respond with warnings on other user updates ) 
 				_this.serverSmilXml = smilXml;
@@ -133,7 +137,7 @@
 					'action' : 'edit',
 					'summary' : saveSummary,
 					'title' : _this.titleKey,
-					'text' : sequenceXML,
+					'text' : mw.getRemoteSequencerPageHelper( sequenceXML ),
 					'token': token
 				};
 				mw.getJSON( _this.getApiUrl(), request, function( data ) {
@@ -149,8 +153,7 @@
 					}
 				})
 			})
-		},
-		
+		},	
 		/**
 		 * Check if the published file is up-to-date with the saved sequence 
 		 * ( higher page revision for file than sequence )

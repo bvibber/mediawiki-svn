@@ -56,7 +56,7 @@ mw.SequencerTools.prototype = {
 			'type' : 'display',
 			'inputSize' : 15,
 			'title' : gM('mwe-sequencer-clip-panzoom' ),
-			'defaultValue' : '0, 0, 100%, 100%'
+			'defaultValue' : '0%, 0%, 100%, 100%'
 		},
 		'transIn' : {
 			'type' : 'select',
@@ -153,12 +153,25 @@ mw.SequencerTools.prototype = {
 			'onChange': function( _this, target, smilClip ){
 				var panZoomVal = $j('#' +_this.getEditToolInputId( 'panzoom', 'panZoom')).val();
 				mw.log("panzoom change:" + panZoomVal );
+				
 				// Update on the current smil clip display:
 				_this.sequencer.getSmil()
 				.getLayout()
 				.panZoomLayout(
 					smilClip
 				);
+				var $thumbTraget  = $j( '#' + _this.sequencer.getTimeline().getTimelineClipId( smilClip ) ).find('.thumbTraget');
+				// Update the timeline clip display
+				// xxx this should be abstracted to timeline handler for clip updates
+				_this.sequencer.getSmil()
+				.getLayout()
+				.panZoomLayout(
+					smilClip, 
+					$thumbTraget,
+					$thumbTraget.find('img').get(0)
+				)
+				// Register the change for undo redo
+				_this.sequencer.getActionsEdit().registerEdit();
 			},
 			'draw': function( _this, target, smilClip ){				
 				var orginalHelperCss = {
@@ -230,11 +243,11 @@ mw.SequencerTools.prototype = {
 					var pz = startPanZoomVal.split(',');
 					// Set the new percent offset to x/2 
 					if( layout.left ){
-						pz[0] = ( parseInt( pz[0] ) - ( layout.left ) ) + '%';
+						pz[0] = ( parseInt( pz[0] ) - ( layout.left / 4 ) ) + '%';
 					}
 					
 					if( layout.top ){
-						pz[1] = ( parseInt( pz[1] ) - ( layout.top ) )+ '%';
+						pz[1] = ( parseInt( pz[1] ) - ( layout.top / 4 ) )+ '%';
 					}
 					
 					if( layout.width ) {						
@@ -244,7 +257,7 @@ mw.SequencerTools.prototype = {
 						pz[3] = parseInt( pz[2] )  * _this.sequencer.getSmil().getLayout().getTargetAspectRatio();
 						// only have 2 significant digits
 										
-					}
+					}					
 					// Trim and round all % values
 					for(var i=0; i < pz.length; i++){
 						pz[i] = ( Math.round( parseInt( pz[i] ) * 1000 ) / 1000 ) + '%';		
@@ -282,6 +295,8 @@ mw.SequencerTools.prototype = {
 						// run the onChange ?
 						// Restore original css for the layout helper 
 						$j(this).css( orginalHelperCss )
+						// trigger the 'change'
+						_this.editWidgets.panzoom.onChange( _this, target, smilClip  );
 					}
 				})
 				.css('cursor', 'move')
@@ -302,6 +317,8 @@ mw.SequencerTools.prototype = {
 					stop: function( event, ui){						
 						// Restore original css
 						$j(this).css( orginalHelperCss )
+						// trigger the change
+						_this.editWidgets.panzoom.onChange( _this, target, smilClip  );
 					}
 				})
 				
@@ -353,26 +370,48 @@ mw.SequencerTools.prototype = {
 						$j('<div />').addClass('ui-helper-clearfix') 
 					)			
 				}
+				// The local scope fullClipDuration
+				var fullClipDuration = null;
+				
+				// Some slider functions
+				var sliderToTime = function( sliderval ){
+					return parseInt( fullClipDuration * ( sliderval / 1000 ) );
+				}
+				var timeToSlider = function( time ){
+					return parseInt( ( time / fullClipDuration ) * 1000 );
+				}
+				
+				
+				var onInputChange = function( sliderIndex, value ){
+					_this.editWidgets.trimTimeline.onChange( _this, target, smilClip);
+					// Get the value
+					if( fullClipDuration ){
+						var uiValues = $j(_this.sequencer.id + '_trimTimeline' ).slider( 'option', 'values');
+						uiValues[ sliderIndex, timeToSlider( value) ];
+						// Set the value
+						$j( _this.sequencer.id + '_trimTimeline' ).slider( 'option', 'values', uiValues);
+					}
+				}
 				
 				// Add a trim binding: 				 
-				$j('#' + _this.getEditToolInputId( 'trim', 'clipBegin') +
-				   ',#' + _this.getEditToolInputId( 'trim', 'dur') )
-				.change( function(){
-					_this.editWidgets.trimTimeline.onChange( _this, target, smilClip);
-				})
+				$j('#' + _this.getEditToolInputId( 'trim', 'clipBegin') )
+				.change( function(){					
+					onInputChange( 0, $j(this).val() );
+				});
 				
-				// Update the thumbnails:
-				_this.editWidgets.trimTimeline.onChange( _this, target, smilClip);
+				 $j('#' + _this.getEditToolInputId( 'trim', 'dur') ) 
+				.change( function(){					
+					onInputChange( 1, $j(this).val() );
+				});
+				 
+				// Update the thumbnails:				
+				_this.editWidgets.trimTimeline.onChange( _this, target, smilClip );
 				
 				// Get the clip full duration to build out the timeline selector
-				smil.getBody().getClipAssetDuration( smilClip, function( fullClipDuration ) {
-					
-					var sliderToTime = function( sliderval ){
-						return parseInt( fullClipDuration * ( sliderval / 1000 ) );
-					}
-					var timeToSlider = function( time ){
-						return parseInt( ( time / fullClipDuration ) * 1000 );
-					}
+				smil.getBody().getClipAssetDuration( smilClip, function( clipDuration ) {
+					// update the local scope global 
+					fullClipDuration = clipDuration;
+				
 					var startSlider = timeToSlider( smil.parseTime( $j('#editTool_trim_clipBegin').val() ) );
 					var sliderValues = [
 					    startSlider,
@@ -384,8 +423,8 @@ mw.SequencerTools.prototype = {
 						.attr( 'id', _this.sequencer.id + '_trimTimeline' )
 						.css({
 							'position': 'absolute',
-							'left' : '15px',
-							'right' : '15px',
+							'left' : '25px',
+							'right' : '35px',
 							'margin': '5px'
 						})
 						.slider({

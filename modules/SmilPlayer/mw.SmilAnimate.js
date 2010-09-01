@@ -413,33 +413,37 @@ mw.SmilAnimate.prototype = {
 				switch( namedValueOrder[i] ){
 					case 'left':
 					case 'width':
-						percentValues[ namedValueOrder[i] ] = 
-							( parseFloat( targetValue[i] ) 	/ naturalSize.width ) * 100
+						percentValues[ namedValueOrder[i] ] =  
+							( ( parseFloat( targetValue[i] ) 	/ naturalSize.width ) * 100 ) + '%';
 					break;
 					case 'height':
 					case 'top':
 						percentValues[ namedValueOrder[i] ] =  
-							( parseFloat( targetValue[i] ) / naturalSize.height ) * 100 
+							( ( parseFloat( targetValue[i] ) / naturalSize.height ) * 100 ) + '%';
 					break;
 				}				
 			} else {
-				percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] );
-			} 
+				percentValues[ namedValueOrder[i] ] = parseFloat( targetValue[i] ) + '%';
+			}
 		}
 		return percentValues;
 	},
 	
 	// xxx need to refactor move to "smilLayout"
-	updateElementLayout: function( smilElement, percentValues ){
+	updateElementLayout: function( smilElement, percentValues, $target, htmlElement ){
 		var _this = this;
-		mw.log("updateElementLayout::" + ' ' + percentValues.left + ' ' + percentValues.top + ' ' + percentValues.width + ' ' + percentValues.height );
+		//mw.log("updateElementLayout::" + ' ' + percentValues.left + ' ' + percentValues.top + ' ' + percentValues.width + ' ' + percentValues.height );
 		
 		// get a pointer to the html target:
-		var $target = $j( '#' + this.smil.getPageDomId( smilElement ));	
-		var htmlElement = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
-
-		// Wrap the target with its natura size ( if not already ) 
-		if( $target.parent('.refTransformWrap').length == 0 ){
+		if( !$target ) {
+			$target = $j( '#' + this.smil.getPageDomId( smilElement ));
+		}
+		if( !htmlElement){
+			htmlElement = $j( '#' + this.smil.getPageDomId( smilElement ) ).get(0);
+		}
+		
+		// Wrap the target with its natural size ( if not already ) 
+		if( $target.parent( '.refTransformWrap' ).length == 0 ){
 			$target		
 			.wrap( 
 				$j( '<div />' )
@@ -451,19 +455,23 @@ mw.SmilAnimate.prototype = {
 					'width'	: '100%',
 					'height' : '100%'
 				} )
-				.addClass('refTransformWrap') 
+				.addClass( 'refTransformWrap' ) 
 			)
 		}	
 		
 		_this.smil.getLayout().getNaturalSize( htmlElement, function( natrualSize ){
 			// XXX note we have locked aspect so we can use 'width' here:
-			var sizeCss = _this.smil.getLayout().getDominateAspectTransform( natrualSize,  null, percentValues.width );			
+			
+			var sizeCss = _this.smil.getLayout().getDominateAspectTransform( natrualSize,  null, percentValues.width );
+			//mw.log( ' w: ' + sizeCss.width + ' h ' + sizeCss.height + ' of : ' + $target.get(0).nodeName );
 			// Run the css transform
 			$target.css( { 
-				'position' : 'absolute', 
+				'position' : 'absolute',
 				'left' : percentValues.left,
-				'top' : percentValues.top			
-			}).css( sizeCss );
+				'top' : percentValues.top
+			})
+			.css( sizeCss );
+			//mw.log(' target width: ' + $target.css('width') );
 		});
 	},
 	

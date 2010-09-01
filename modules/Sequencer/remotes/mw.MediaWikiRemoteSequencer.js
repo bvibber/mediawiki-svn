@@ -47,7 +47,32 @@ mw.getRemoteSequencerLink = function( url ){
 		url+='withJS=MediaWiki:MwEmbed.js';
 	}
 	return url;
-},
+};
+
+var SEQUENCER_PAYLOADKEY = '@gadgetSequencePayload@_$%^%';
+
+
+mw.getRemoteSequencerPageHelper = function( xmlString ){
+	return 'To edit this sequence ' + 
+		'[{{fullurl:{{FULLPAGENAME}}|withJS=MediaWiki:MwEmbed.js}} enable the sequencer] for this page' + 
+		"\n\n<!-- " + SEQUENCER_PAYLOADKEY + "\n" + 
+		xmlString +
+		"\n\n " + SEQUENCER_PAYLOADKEY + " -->"
+};
+mw.getRemoteSequencerPayLoad = function( pageText ){
+	var startKey = '<!-- ' + SEQUENCER_PAYLOADKEY;
+	var endKey = SEQUENCER_PAYLOADKEY + ' -->';
+	// if the key is not found fail
+	if( pageText.indexOf( startKey ) == -1  ||  pageText.indexOf(endKey) == -1 ){
+		mw.log("Error could not find sequence payload");
+		return '';
+	}
+	var payload = pageText.substring( pageText.indexOf( startKey ) +  startKey.length, 
+			pageText.indexOf(endKey )
+	);
+	// trim the output:
+	return $j.trim( payload );	
+};
 
 // Add player pause binding if config is set::
 $j( mw ).bind( 'newEmbedPlayerEvent', function( event, embedPlayerId ) {
