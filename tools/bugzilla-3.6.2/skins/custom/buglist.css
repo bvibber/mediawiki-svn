@@ -27,6 +27,9 @@ tr.bz_bugitem:hover {
 }
 .bz_critical {
   color:#CC0000;
+}
+.bz_blocker {
+  colour:#AA0000;
   font-weight:bold;
 }
 tr.bz_secure_mode_implied td.first-child {
