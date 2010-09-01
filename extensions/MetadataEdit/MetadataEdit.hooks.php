@@ -5,8 +5,11 @@ class MetadataEditHooks {
 	public static function wfMetadataEditExtractFromArticle( $editPage ) {
 		global $wgMetadataWhitelist, $wgContLang;
 	
+		if ( $wgMetadataWhitelist == '' ) {
+			return true;
+		}
+
 		$editPage->mMetaData = '';
-		if ( $wgMetadataWhitelist == '' ) return true;
 		$s = '';
 		$t = $editPage->textbox1;
 	
@@ -103,7 +106,9 @@ class MetadataEditHooks {
 	
 	public static function wfMetadataEditOnAttemptSave( $editPage ) {
 		# Reintegrate metadata
-		if ( $editPage->mMetaData != '' ) $editPage->textbox1 .= "\n" . $editPage->mMetaData;
+		if ( $editPage->mMetaData != '' ) {
+			$editPage->textbox1 .= "\n" . $editPage->mMetaData;
+		}
 		$editPage->mMetaData = '';
 	
 		return true;
@@ -121,14 +126,16 @@ class MetadataEditHooks {
 	}
 	
 	public static function wfMetadataEditOnGetPreviewText( $editPage, &$toparse ) {
-		if ( $editPage->mMetaData != '' ) $toparse .= "\n" . $editPage->mMetaData;
-	
+		if ( $editPage->mMetaData != '' ) {
+			$toparse .= "\n" . $editPage->mMetaData;
+		}
 		return true;
 	}
 	
 	public static function wfMetadataEditOnGetDiffText( $editPage, &$newText ) {
-		if ( $editPage->mMetaData != '' ) $newText .= "\n" . $editPage->mMetaData;
-	
+		if ( $editPage->mMetaData != '' ) {
+			$newText .= "\n" . $editPage->mMetaData;
+		}
 		return true;
 	}
 }
