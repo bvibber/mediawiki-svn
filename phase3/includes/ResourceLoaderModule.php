@@ -582,12 +582,21 @@ class ResourceLoaderSiteJSModule extends ResourceLoaderModule {
 
 
 class ResourceLoaderStartupModule extends ResourceLoaderModule {
+	private $modifiedTime = null;
+	
 	public function getScript( $lang, $skin, $debug ) {
 		return ResourceLoader::getModuleRegistrations( $lang, $skin, $debug );
 	}
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {
-		return ResourceLoader::getHighestModifiedTime( $lang, $skin, $debug );
+		if ( !is_null( $this->modifiedTime ) ) {
+			return $this->modifiedTime;
+		}
+		
+		// HACK getHighestModifiedTime() calls this function, so protect against infinite recursion
+		$this->modifiedTime = 1;
+		$this->modifiedTime = ResourceLoader::getHighestModifiedTime( $lang, $skin, $debug );
+		return $this->modifiedTime;
 	}
 	
 	public function getClientMaxage() {
