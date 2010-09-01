@@ -185,7 +185,9 @@ class ResourceLoader {
 		$scripts = '';
 		$registrations = array();
 		foreach ( self::$modules as $name => $module ) {
-			if ( !in_array( $name, self::$preRegisteredModules ) ) {
+			if ( in_array( $name, self::$preRegisteredModules ) ) {
+				$registrations[] = array( $name, $module->getModifiedTime( $lang, $skin, $debug ), array(), 'ready' );
+			} else {
 				// Support module loader scripts
 				if ( ( $loader = $module->getLoaderScript() ) !== false ) {
 					$scripts .= "\n" . $loader;
@@ -204,8 +206,7 @@ class ResourceLoader {
 				}
 			}
 		}
-		$scripts .= "\nmediaWiki.loader.register( " . FormatJson::encode( $registrations ) . " );\n";
-		return "window.mediaWikiStartUp = function() {" . $scripts . "};";
+		return $scripts . "\nmediaWiki.loader.register( " . FormatJson::encode( $registrations ) . " );\n";
 	}
 	
 	/**
@@ -324,11 +325,18 @@ class ResourceLoader {
 				$scripts .= self::$modules[$name]->getScript(
 					$parameters['lang'], $parameters['skin'], $parameters['debug']
 				);
-				// Special meta-information for the 'mediawiki' module
-				if ( $name === 'mediawiki' && $parameters['only'] === 'scripts' ) {
+				// Special meta-information for the 'startup' module
+				if ( $name === 'startup' && $parameters['only'] === 'scripts' ) {
+					$scripts .= self::getModuleRegistrations(
+						$parameters['lang'], $parameters['skin'], $parameters['debug']
+					);
 					$scripts .= "mediaWiki.config.set( " .
 						FormatJson::encode( array( 'server' => $server, 'debug' => $parameters['debug'] ) ) . " );\n";
-					$scripts .= self::getModuleRegistrations( $parameters['lang'], $parameters['skin'], $parameters['debug'] );
+					// Wrap in a closure
+					$scripts = "window.mediaWikiStartUp = function() {" . $scripts . "};";
+					$query = wfArrayToCGI( $parameters );
+					$scripts .= "document.write('<script type=\"text/javascript\" " .
+						"src=\"{$server}?modules=jquery|mediawiki&{$query}\"></script>');";
 				}
 			}
 			// Styles

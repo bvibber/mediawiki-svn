@@ -65,10 +65,6 @@ window.addOnloadHook = function( hookFunct ) {
 	}
 }
 
-window.hookEvent = function( hookName, hookFunct ) {
-	addHandler( window, hookName, hookFunct );
-}
-
 window.importScript = function( page ) {
 	// TODO: might want to introduce a utility function to match wfUrlencode() in PHP
 	var uri = wgScript + '?title=' +
@@ -133,7 +129,7 @@ if ( typeof stylepath != 'undefined' && skin == 'monobook' ) {
 }
 
 
-if ( wgBreakFrames ) {
+if ( 'wgBreakFrames' in window && window.wgBreakFrames ) {
 	// Un-trap us from framesets
 	if ( window.top != window ) {
 		window.top.location = window.location;
@@ -1061,6 +1057,10 @@ window.addHandler = function( element, attach, handler ) {
 	} else if( window.attachEvent ) {
 		element.attachEvent( 'on' + attach, handler );
 	}
+}
+
+window.hookEvent = function( hookName, hookFunct ) {
+	addHandler( window, hookName, hookFunct );
 }
 
 /**

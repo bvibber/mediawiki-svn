@@ -1604,13 +1604,13 @@ class OutputPage {
 		$sk = $wgUser->getSkin();
 		
 		// Add base resources
-		$this->addModuleScripts( array( 'jquery', 'mediawiki' ) );
+		$this->addModuleScripts( array( 'startup' ) );
 		$this->addModules( array( 'mediawiki.legacy.wikibits' ) );
 		
 		// Add site JS if enabled
 		global $wgUseSiteJs;
 		if ( $wgUseSiteJs ) {
-			$this->addModules( 'sitejs' );
+			$this->addModuleScripts( 'sitejs' );
 		}
 
 		// Add various resources if required
@@ -2316,35 +2316,44 @@ class OutputPage {
 		$scripts = '';
 		// Support individual script requests in debug mode
 		if ( $wgRequest->getBool( 'debug' ) && $wgRequest->getVal( 'debug' ) !== 'false' ) {
+			// Styles
 			foreach ( $this->getModuleStyles() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'styles' );
 			}
+			// Scripts
 			foreach ( $this->getModuleScripts() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'scripts' );
 			}
+			// Configuration
+			$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
+			// Messages
 			foreach ( $this->getModuleMessages() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name, 'messages' );
 			}
+			// Modules
 			foreach ( $this->getModules() as $name ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $name );
 			}
 		} else {
+			// Styles
 			if ( count( $this->getModuleStyles() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleStyles(), 'styles' );
 			}
+			// Scripts
 			if ( count( $this->getModuleScripts() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleScripts(), 'scripts' );
 			}
+			// Configuration
+			$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
+			// Messages
 			if ( count( $this->getModuleMessages() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModuleMessages(), 'messages' );
 			}
+			// Modules
 			if ( count( $this->getModules() ) ) {
 				$scripts .= self::makeResourceLoaderLink( $sk, $this->getModules() );
 			}
 		}
-		// Configure page
-		$scripts .= Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
-		
 		// add user JS if enabled
 		if( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
 			$action = $wgRequest->getVal( 'action', 'view' );

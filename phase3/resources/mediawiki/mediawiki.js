@@ -624,10 +624,11 @@ window.mediaWiki = new ( function( $ ) {
 	this.util = {};
 	this.legacy = {};
 	
-	/* Auto-register from pre-loaded startup scripts */
-	
-	if ( typeof window['mediaWikiStartUp'] === 'function' ) {
-		window['mediaWikiStartUp']();
-		delete window['mediaWikiStartUp'];
-	}
 } )( jQuery );
+
+/* Auto-register from pre-loaded startup scripts */
+
+if ( typeof mediaWikiStartUp === 'function' ) {
+	mediaWikiStartUp();
+	delete mediaWikiStartUp;
+}
