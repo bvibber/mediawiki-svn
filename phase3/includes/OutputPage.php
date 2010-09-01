@@ -2348,7 +2348,8 @@ class OutputPage {
 				'mediaWiki.loader.load( ' . FormatJson::encode( $this->getModules() ) . ' )'
 			);
 		}
-		// add user JS if enabled
+		// TODO: User Scripts should be included using the resource loader
+		// Add user JS if enabled
 		if( $this->isUserJsAllowed() && $wgUser->isLoggedIn() ) {
 			$action = $wgRequest->getVal( 'action', 'view' );
 			if( $this->mTitle && $this->mTitle->isJsSubpage() && $sk->userCanPreview( $action ) ) {
@@ -2356,12 +2357,8 @@ class OutputPage {
 				$this->addInlineScript( $wgRequest->getText( 'wpTextbox1' ) );
 			} else {
 				$userpage = $wgUser->getUserPage();
-				$names = array( 'common', $sk->getSkinName() );
-				foreach( $names as $name ) {
-					$scriptpage = Title::makeTitleSafe(
-						NS_USER,
-						$userpage->getDBkey() . '/' . $name . '.js'
-					);
+				foreach( array( 'common', $sk->getSkinName() ) as $name ) {
+					$scriptpage = Title::makeTitleSafe( NS_USER, $userpage->getDBkey() . '/' . $name . '.js' );
 					if ( $scriptpage && $scriptpage->exists() && ( $scriptpage->getLength() > 0 ) ) {
 						$userjs = $scriptpage->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
 						$this->addScriptFile( $userjs, $scriptpage->getLatestRevID() );
