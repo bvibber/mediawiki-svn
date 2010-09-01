@@ -396,7 +396,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 			$this->loaders,
 			$this->getFileDependencies( $skin )
 		);
-		$this->modifiedTime = max( array_map( 'filemtime', $files ) );
+		$this->modifiedTime = max( array_map( 'filemtime', array_map( array( __CLASS__, 'remapFilename' ), $files ) ) );
 		return $this->modifiedTime;
 	}
 	
@@ -513,7 +513,7 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	 * @return string Concatenated contents of $files
 	 */
 	protected static function concatScripts( $files ) {
-		return implode( "\n", array_map( 'file_get_contents', array_unique( (array) $files ) ) );
+		return implode( "\n", array_map( 'file_get_contents', array_map( array( __CLASS__, 'remapFilename' ), array_unique( (array) $files ) ) ) );
 	}
 	
 	/**
@@ -527,13 +527,23 @@ class ResourceLoaderFileModule extends ResourceLoaderModule {
 	}
 	
 	/**
+	 * Remap a relative to $IP. Used as a callback for array_map()
+	 * @param $file string File name
+	 * @return string $IP/$file
+	 */
+	protected static function remapFilename( $file ) {
+		global $IP;
+		return "$IP/$file";
+	}
+	
+	/**
 	 * Get the contents of a CSS file and run it through CSSMin::remap().
 	 * This wrapper is needed so we can use array_map() in concatStyles()
 	 * @param $file string File name
 	 * @return string Remapped CSS
 	 */
 	protected static function remapStyle( $file ) {
-		return CSSMin::remap( file_get_contents( $file ), dirname( $file ) );
+		return CSSMin::remap( file_get_contents( self::remapFilename( $file ) ), dirname( $file ) );
 	}
 }
 
