@@ -27,7 +27,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		) );
 
 		if ( isset( $params['pageid'] ) ) {
-			$this->addWhereFld( 'aa_page_id', $params['pageid'] );
+			$this->addWhereFld( 'aap_page_id', $params['pageid'] );
 		}
 
 		if ( $params['userrating'] ) {
@@ -57,9 +57,9 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			if ( isset( $params['revid'] ) ){
 				$this->addWhereFld( 'aa_revision', $params['revid'] );
 			}
-		}
 
-		$this->addOption( 'ORDER BY', 'aa_revision DESC' );
+			$this->addOption( 'ORDER BY', 'aa_revision DESC' );
+		}
 
 		$limit = $params['limit'];
 		$this->addOption( 'LIMIT', $limit * 4 ); //4 "Ratings"
@@ -119,7 +119,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 			if ( $res ) {
 				$noOfRevs = $res->fetchRow()->norevs;
-				if ( $noOfRevs > $wgArticleAssessmentStaleCount ){
+				if ( $noOfRevs > $wgArticleAssessmentStaleCount ) {
 					//it's stale!
 					$ratings[$params['pageid']]['stale'] = intval( $noOfRevs );
 				}
@@ -162,7 +162,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 	public function getParamDescription() {
 		return array(
 			'pageid' => 'Page ID to get assessments for',
-			'revid' => 'Specific revision to get (used in conjunction with userrating param, otherwise ignored. Needed for stale calculation)',
+			'revid' => 'Specific revision to get (used in conjunction with userrating param, otherwise ignored)',
 			'userrating' => 'Whether to get the current users ratings for the specific rev/article',
 			'anontoken' => 'Token for anonymous users',
 			'limit' => 'Amount of pages to get the ratings for',
