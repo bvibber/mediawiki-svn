@@ -14,16 +14,16 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   aa_user_id integer NOT NULL,
   -- unique user identifier
   aa_user_text varchar(255) binary NOT NULL,
-  aa_user_anon_token binary(32) DEFAULT NULL,
+  aa_user_anon_token binary(32) DEFAULT '',
   -- Foreign key to revision.rev_id
   aa_revision integer unsigned NOT NULL,
   -- MW Timestamp
-  aa_timestamp binary(14) NOT NULL default '',
+  aa_timestamp binary(14) NOT NULL DEFAULT '',
   -- Rating info
   aa_rating_id int unsigned NOT NULL,
   aa_rating_value int unsigned NOT NULL,
   -- 1 vote per user per revision
-  PRIMARY KEY (aa_revision, aa_user_text, aa_rating_id)
+  PRIMARY KEY (aa_revision, aa_user_text, aa_rating_id, aa_user_anon_token)
 ) /*$wgDBTableOptions*/;
 CREATE INDEX /*i*/aa_user_page_revision ON /*_*/article_assessment (aa_user_id, aa_page_id, aa_revision);
 
