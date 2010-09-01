@@ -33,6 +33,16 @@ class ApiListArticleAssessment extends ApiQueryBase {
 		if ( $params['userrating'] ) {
 			global $wgUser;
 
+			if ( $wgUser->isAnon() ) {
+				if ( !isset( $params['anontoken'] ) ) {
+					$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
+				} elseif ( strlen( $params['anontoken'] ) != 32 ) {
+					$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
+				}
+
+				$this->addWhereFld( 'aa_user_anon_token', $params['anontoken'] );
+			}
+
 			$this->addWhereFld( 'aa_user_id', $wgUser->getId() );
 			$this->addTables( 'article_assessment' );
 			$this->addJoinConds( array(
@@ -135,6 +145,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			),
 			'revid' => null,
 			'userrating' => false,
+			'anontoken' => null,
 			'limit' => array(
 				ApiBase::PARAM_DFLT => 1,
 				ApiBase::PARAM_TYPE => 'limit',
@@ -150,6 +161,7 @@ class ApiListArticleAssessment extends ApiQueryBase {
 			'pageid' => 'Page ID to get assessments for',
 			'revid' => 'Specific revision to get (used in conjunction with userrating param, otherwise ignored. Needed for stale calculation)',
 			'userrating' => 'Whether to get the current users ratings for the specific rev/article',
+			'anontoken' => 'Token for anonymous users',
 			'limit' => 'Amount of pages to get the ratings for',
 		);
 	}
@@ -162,7 +174,10 @@ class ApiListArticleAssessment extends ApiQueryBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
-		) );
+				array( 'missingparam', 'anontoken' ),
+				array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
+			)
+		);
 	}
 
 	protected function getExamples() {

@@ -8,17 +8,31 @@ class ApiArticleAssessment extends ApiBase {
 		global $wgUser, $wgArticleAssessmentRatingCount;
 		$params = $this->extractRequestParams();
 
+		$token = array();
+		if ( $wgUser->isAnon() ) {
+			if ( !isset( $params['anontoken'] ) ) {
+				$this->dieUsageMsg( array( 'missingparam', 'anontoken' ) );
+			} elseif ( strlen( $params['anontoken'] ) != 32 ) {
+				$this->dieUsage( 'The anontoken is not 32 characters', 'invalidtoken' );
+			}
+
+			$token['aa_user_anon_token'] = $params['anontoken'];
+		}
+
 		$dbr = wfGetDB( DB_SLAVE );
 
 		// TODO:Refactor out...?
 		$res = $dbr->select(
 			'article_assessment',
 			array( 'aa_rating_id', 'aa_rating_value', 'aa_revision' ),
-			array(
-				'aa_user_id' => $wgUser->getId(),
-				'aa_user_text' => $wgUser->getName(),
-				'aa_page_id' => $params['pageid'],
+			array_merge(
+				array(
+					'aa_user_id' => $wgUser->getId(),
+					'aa_user_text' => $wgUser->getName(),
+					'aa_page_id' => $params['pageid'],
 				),
+				$token
+			),
 			__METHOD__,
 			array(
 				'ORDER BY' => 'aa_revision DESC',
@@ -51,7 +65,7 @@ class ApiArticleAssessment extends ApiBase {
 					( $lastRating == 0 && $thisRating != 0 )
 			);
 
-			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $i, $thisRating );
+			$this->insertUserRatings( $pageId, $revisionId, $wgUser, $token, $i, $thisRating );
 		}
 
 		$r = array();
@@ -99,22 +113,26 @@ class ApiArticleAssessment extends ApiBase {
 	 * @param $pageId Integer:
 	 * @param $revisionId Integer:
 	 * @param $user User:
+	 * @param $token Array:
 	 * @param $ratingId Integer:
 	 * @param $ratingValue Integer:
 	 */
-	private function insertUserRatings( $pageId, $revisionId, $user, $ratingId, $ratingValue ) {
+	private function insertUserRatings( $pageId, $revisionId, $user, $token, $ratingId, $ratingValue ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$res = $dbw->insert(
 			'article_assessment',
-			array(
-				'aa_page_id' => $pageId,
-				'aa_user_id' => $user->getId(),
-				'aa_user_text' => $user->getName(),
-				'aa_revision' => $revisionId,
-				'aa_timestamp' => wfTimestampNow(),
-				'aa_rating_id' => $ratingId,
-				'aa_rating_value' => $ratingValue,
+			array_merge(
+				array(
+					'aa_page_id' => $pageId,
+					'aa_user_id' => $user->getId(),
+					'aa_user_text' => $user->getName(),
+					'aa_revision' => $revisionId,
+					'aa_timestamp' => wfTimestampNow(),
+					'aa_rating_id' => $ratingId,
+					'aa_rating_value' => $ratingValue,
+				),
+				$token
 			),
 			__METHOD__,
 			 array( 'IGNORE' )
@@ -127,11 +145,14 @@ class ApiArticleAssessment extends ApiBase {
 				'aa_timestamp' => wfTimestampNow(),
 				'aa_rating_value' => $ratingValue,
 			),
-			array(
-				'aa_page_id' => $pageId,
-				'aa_user_text' => $user->getName(),
-				'aa_revision' => $revisionId,
-				'aa_rating_id' => $ratingId,
+			array_merge(
+				array(
+					'aa_page_id' => $pageId,
+					'aa_user_text' => $user->getName(),
+					'aa_revision' => $revisionId,
+					'aa_rating_id' => $ratingId,
+				),
+				$token
 			),
 			__METHOD__
 		);
@@ -149,7 +170,8 @@ class ApiArticleAssessment extends ApiBase {
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_ISMULTI => false,
-			)
+			),
+			'anontoken' => null,
 		);
 
 		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
@@ -167,7 +189,8 @@ class ApiArticleAssessment extends ApiBase {
 		global $wgArticleAssessmentRatingCount;
 		$ret = array(
 			'pageid' => 'Page ID to submit assessment for',
-			'revid' => 'Revision ID to submit assessment for'
+			'revid' => 'Revision ID to submit assessment for',
+			'anontoken' => 'Token for anonymous users',
 		);
 		for ( $i = 1; $i <= $wgArticleAssessmentRatingCount; $i++ ) {
 	        $ret["r{$i}"] = "Rating {$i}";
@@ -187,6 +210,8 @@ class ApiArticleAssessment extends ApiBase {
 
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
+			array( 'missingparam', 'anontoken' ),
+			array( 'code' => 'invalidtoken', 'info' => 'The anontoken is not 32 characters' ),
 		) );
 	}
 

@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS /*$wgDBprefix*/article_assessment (
   aa_user_id integer NOT NULL,
   -- unique user identifier
   aa_user_text varchar(255) binary NOT NULL,
+  aa_user_anon_token binary(32) DEFAULT NULL,
   -- Foreign key to revision.rev_id
   aa_revision integer unsigned NOT NULL,
   -- MW Timestamp
