@@ -680,8 +680,9 @@ CSS;
 	 * @param $out OutputPage
 	 */
 	function setupSkinUserCss( OutputPage $out ) {
-		$out->addStyle( 'common/shared.css' );
-		$out->addStyle( 'common/oldshared.css' );
+		// This includes the shared.js and oldshared.js files from skins/common/
+		$out->addModuleStyles( 'mediawiki.legacy.shared' );
+		// TODO: Figure out how to best integrate this stuff into ResourceLoader
 		$out->addStyle( $this->getStylesheet() );
 		$out->addStyle( 'common/common_rtl.css', '', '', 'rtl' );
 	}

@@ -291,6 +291,9 @@ ResourceLoader::register( array(
 		'scripts' => 'skins/common/enhancedchanges.js',
 		'dependencies' => 'mediawiki',
 	) ),
+	'mediawiki.legacy.commonPrint' => new ResourceLoaderFileModule( array(
+		'scripts' => 'skins/common/commonPrint.css',
+	) ),
 	'mediawiki.legacy.config' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/config.js',
 		'styles' => array( 'skins/common/config.css', 'skins/common/config-cc.css' ),
@@ -345,6 +348,10 @@ ResourceLoader::register( array(
 	'mediawiki.legacy.search' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/search.js',
 		'dependencies' => 'mediawiki',
+	) ),
+	'mediawiki.legacy.shared' => new ResourceLoaderFileModule( array(
+		'scripts' => 'skins/common/shared.css',
+		'scripts' => 'skins/common/oldshared.css',
 	) ),
 	'mediawiki.legacy.upload' => new ResourceLoaderFileModule( array(
 		'scripts' => 'skins/common/upload.js',

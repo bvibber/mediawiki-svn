@@ -107,8 +107,8 @@ class SkinTemplate extends Skin {
 	 * @param $out OutputPage
 	 */
 	function setupSkinUserCss( OutputPage $out ){
-		$out->addStyle( 'common/shared.css', 'screen' );
-		$out->addStyle( 'common/commonPrint.css', 'print' );
+		$out->addModuleStyles( 'mediawiki.legacy.shared' );
+		$out->addModuleStyles( 'mediawiki.legacy.commonPrint' );
 	}
 
 	/**
