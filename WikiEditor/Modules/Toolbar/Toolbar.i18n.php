@@ -11819,6 +11819,19 @@ Apo awak ingin mambueknyo jadi pranala dalam?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Pranala dalam',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Pranala lua',
 	'wikieditor-toolbar-tool-link-empty' => 'Awak indak mamasuakkan apo pun untuak ditautkan',
+	'wikieditor-toolbar-tool-file' => 'Cantumkan berkas',
+	'wikieditor-toolbar-tool-file-example' => 'Contoh.jpg',
+	'wikieditor-toolbar-tool-reference' => 'Rujukan',
+	'wikieditor-toolbar-tool-reference-example' => 'Sisipkan teks catatan kaki di siko',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Batalkan',
+	'wikieditor-toolbar-tool-reference-title' => 'Masuakkan rujukan',
+	'wikieditor-toolbar-tool-reference-insert' => 'Masuakkan',
+	'wikieditor-toolbar-tool-reference-text' => 'Teks rujukan',
+	'wikieditor-toolbar-tool-signature' => 'Tandotangan dan tandomaso',
+	'wikieditor-toolbar-section-advanced' => 'Lanjutan',
+	'wikieditor-toolbar-tool-heading' => 'Judul',
+	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Contoh.jpg|Judul1
+{{ns:file}}:Contoh.jpg|Judul2',
 );
 
 /** Macedonian (Македонски)
