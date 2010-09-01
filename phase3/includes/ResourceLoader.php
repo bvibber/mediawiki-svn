@@ -265,14 +265,22 @@ class ResourceLoader {
 			}
 		}
 		
-		// Calculate the mtime of this request. We need this, 304 or no 304
+		// Calculate the mtime and caching maxages for this request. We need this, 304 or no 304
 		$mtime = 1;
+		$maxage = PHP_INT_MAX;
+		$smaxage = PHP_INT_MAX;
 		foreach ( $modules as $name ) {
-			$mtime = max( $mtime, self::getModule( $name )->getModifiedTime(
+			$module = self::getModule( $name );
+			$mtime = max( $mtime, $module->getModifiedTime(
 				$parameters['lang'], $parameters['skin'], $parameters['debug']
 			) );
+			$maxage = min( $maxage, $module->getClientMaxage() );
+			$smaxage = min( $smaxage, $module->getServerMaxage() );
 		}
 		header( 'Last-Modified: ' . wfTimestamp( TS_RFC2822, $mtime ) );
+		$expires = wfTimestamp( TS_RFC2822, min( $maxage, $smaxage ) + time() );
+		header( "Cache-Control: public, maxage=$maxage, s-maxage=$smaxage" );
+		header( "Expires: $expires" );
 		
 		// Check if there's an If-Modified-Since header and respond with a 304 Not Modified if possible
 		$ims = $request->getHeader( 'If-Modified-Since' );

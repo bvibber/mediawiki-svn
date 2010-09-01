@@ -19,7 +19,7 @@
  */
 
 /**
- * Interface for resource loader modules, with name registration functionality.
+ * Interface for resource loader modules, with name registration and maxage functionality.
  */
 abstract class ResourceLoaderModule {
 	private $name = null;
@@ -40,6 +40,28 @@ abstract class ResourceLoaderModule {
 	 */
 	public function setName( $name ) {
 		$this->name = $name;
+	}
+	
+	/**
+	 * The maximum number of seconds to cache this module for in the
+	 * client-side (browser) cache. Override this only if you have a good
+	 * reason not to use $wgResourceLoaderClientMaxage.
+	 * @return int Cache maxage in seconds
+	 */
+	public function getClientMaxage() {
+		global $wgResourceLoaderClientMaxage;
+		return $wgResourceLoaderClientMaxage;
+	}
+	
+	/**
+	 * The maximum number of seconds to cache this module for in the
+	 * server-side (Squid / proxy) cache. Override this only if you have a
+	 * good reason not to use $wgResourceLoaderServerMaxage.
+	 * @return int Cache maxage in seconds
+	 */
+	public function getServerMaxage() {
+		global $wgResourceLoaderServerMaxage;
+		return $wgResourceLoaderServerMaxage;
 	}
 	
 	/**
@@ -566,6 +588,14 @@ class ResourceLoaderStartupModule extends ResourceLoaderModule {
 	
 	public function getModifiedTime( $lang, $skin, $debug ) {
 		return ResourceLoader::getHighestModifiedTime();
+	}
+	
+	public function getClientMaxage() {
+		return 300; // 5 minutes
+	}
+	
+	public function getServerMaxage() {
+		return 300; // 5 minutes
 	}
 	
 	public function getStyle( $skin ) { return ''; }

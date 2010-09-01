@@ -46,11 +46,6 @@ if ( $wgRequest->isPathInfoBad() ) {
 	// Was taken from api.php so I guess it's maybe OK but it doesn't look good.
 }
 
-// Set caching headers
-$expires = wfTimestamp( TS_RFC2822, min( $wgResourceLoaderClientMaxage, $wgResourceLoaderServerMaxage ) + time() );
-header( "Cache-Control: public, maxage=$wgResourceLoaderClientMaxage, s-maxage=$wgResourceLoaderServerMaxage" );
-header( "Expires: $expires" );
-
 // Respond to resource loading request
 ResourceLoader::respond( $wgRequest, $wgServer . $wgScriptPath . '/load.php' );
 
