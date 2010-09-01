@@ -50,7 +50,7 @@ if ( /MSIE ([0-9]{1,}[\.0-9]{0,})/.exec( clientPC ) != null
 /*extern ta, stylepath, skin */
 
 // add any onload functions in this hook (please don't hard-code any events in the xhtml source)
-window.doneOnloadHook;
+window.doneOnloadHook = undefined;
 
 if (!window.onloadFuncts) {
 	window.onloadFuncts = [];
