@@ -47,6 +47,14 @@ $messages['arz'] = array(
 	'vector-collapsiblenav-more' => 'لغات اكتر',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Assele
+ */
+$messages['ba'] = array(
+	'vector-collapsiblenav-preference' => '"Векторлы" күренешендә һул яҡ менюла блоктарҙы төрөргә рөхсәт итергә',
+	'vector-collapsiblenav-more' => 'Күберәк телдәр',
+);
+
 /** Belarusian (Беларуская)
  * @author Maksim L.
  */
@@ -108,6 +116,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'vector-collapsiblenav-preference' => 'Omogući skrivanje stavki u navigacionom meniju u koži Vector',
 	'vector-collapsiblenav-more' => 'Više jezika',
 );
 
@@ -417,6 +426,13 @@ $messages['krc'] = array(
  */
 $messages['ku-latn'] = array(
 	'vector-collapsiblenav-more' => 'Zêdetir ziman',
+);
+
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'vector-collapsiblenav-more' => 'Moy a yethow',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -561,6 +561,8 @@ Molimo Vas da <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client
 	'ogg-dismiss' => 'Zatvori',
 	'ogg-download' => 'Učitaj datoteku',
 	'ogg-desc-link' => 'O ovoj datoteci',
+	'ogg-oggThumb-version' => 'OggHandler zahtijeva oggThumb verziju $1 ili kasniju.',
+	'ogg-oggThumb-failed' => 'oggThumb nije uspio napraviti smanjeni pregled.',
 );
 
 /** Catalan (Català)

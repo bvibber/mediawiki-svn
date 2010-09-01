@@ -41,6 +41,7 @@ The current limit is $3.',
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author McDutchie
  * @author Purodha
  */
 $messages['qqq'] = array(
@@ -51,7 +52,8 @@ $messages['qqq'] = array(
 * $1: source page name
 * $2: number of actual revisions
 * $3: current revision limit.',
-	'right-duplicate' => '{{doc-right|duplicate}}',
+	'right-duplicate' => '{{doc-right|duplicate}}
+"Duplicate" is a verb here, not an adjective.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -274,6 +276,7 @@ Trenutno ograničenje je $3.',
 );
 
 /** Catalan (Català)
+ * @author McDutchie
  * @author SMP
  * @author Solde
  * @author Toniher
@@ -299,7 +302,7 @@ $messages['ca'] = array(
 	'duplicator-dest-invalid' => 'Si us plau, proporcioneu un títol de destinació vàlid.',
 	'duplicator-dest-exists' => '[[$1]] ja existeix. Proporcioneu un títol de destinació que no existeixi.',
 	'duplicator-toomanyrevisions' => "La pàgina [[$1]] té $2 revisions i no pot ser copiada. EL límit màxim d'edicions que es poden copiar és de $3.",
-	'right-duplicate' => 'Pàgines duplicades',
+	'right-duplicate' => 'Duplicar pàgines',
 );
 
 /** Danish (Dansk)

@@ -486,6 +486,15 @@ Do kanns heh di Warnung affschallde, wann de aanjemelldt un enjelogg bes, dann k
 	'vector-editwarning-preference' => 'Donn mesch warne, wann esch vun en Sigg fott jonn, ih dat esch all ming Änderunge avjeschpeischert hann.',
 );
 
+/** Cornish (Kernewek)
+ * @author Kw-Moon
+ */
+$messages['kw'] = array(
+	'vector-editwarning-warning' => 'Mar pedho\'why gara an folen-ma, why a alja kelly chanjyow eus gwres genowgh.
+Mars owgh why omgelmys, why a ell dialosegy an gwarnyans-ma yn trogh "Chanjya" agas dewisyansow.',
+	'vector-editwarning-preference' => 'Gwra ow gwarnya pan von gara folen chanjya gen chanjyow nag eus gwithys',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -691,6 +700,7 @@ Ce tu è trasute, tu puè disabbilità st\'avvertimende jndr\'à sezione "Cangia
 /** Russian (Русский)
  * @author Ferrer
  * @author Lockal
+ * @author MaxSem
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(

@@ -172,6 +172,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
+	'metadataedit-desc' => 'Stavlja kategorije, linkove za jezike i dopuštene šablone u zasebne tekstualne kutije za vrijeme uređivanja stranica',
 	'metadata_help' => 'Metapodaci:',
 );
 

@@ -188,6 +188,7 @@ Gellout a rit [[Special:RefHelper|ouzhpennañ an dave gant an dorn]] pe [[Specia
 );
 
 /** Bosnian (Bosanski)
+ * @author CERminator
  * @author Palapa
  */
 $messages['bs'] = array(
@@ -216,6 +217,9 @@ $messages['bs'] = array(
 	'refhelper-toolbox_link_create' => 'Napravi referencu',
 	'refhelper-toolbox_link_search' => 'Napravi referencu od rezultata traženja',
 	'refhelper-newarticle_nocitation' => 'Trenutno nema citata sa tim imenom.',
+	'refhelper-newarticle_suggestions' => 'Ako postoje citati ispod nije odgovaraju, možete napraviti ovu stranicu klikanjem na odgovarajuće dugme "Napravi".
+
+<h2>Prijedlozi</h2>',
 	'refhelper-newarticle_nosuggestions' => 'Nažalost, nisam u mogućnosti da sugerišem bilo koju referencu.
 Možete [[Special:RefHelper|dodati referencu ručno]] ili [[Special:RefSearch|tražiti citat za dodavanje]].',
 );

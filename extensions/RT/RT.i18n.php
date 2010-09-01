@@ -137,6 +137,8 @@ Pokušali ste: '''$1'''",
 Pokušali ste: '''$1'''",
 	'rt-badstatus' => "Nevaljan status (s) argument: mora biti standardno polje (vidi dokumentaciju).
 Pokušali ste: '''$1'''",
+	'rt-badcfield' => "Nevaljan proizvoljno polje argumenta: mora biti jednostavna riječ (vidi dokumentaciju).
+Pokušali ste: '''$1'''",
 	'rt-badqueue' => "Nevaljan queue (q) argument: mora biti jednostavna riječ.
 Pokušali ste: '''$1'''",
 	'rt-badowner' => "Nevaljan owner (o) argument: mora biti validno korisničko ime.

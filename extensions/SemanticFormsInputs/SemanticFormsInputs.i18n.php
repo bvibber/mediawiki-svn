@@ -42,6 +42,14 @@ $messages['br'] = array(
 	'semanticformsinputs-wrongformat' => 'Furmad fall.',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'semanticformsinputs-desc' => 'Dodatne vrste unosa za [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Semantičke forme]',
+	'semanticformsinputs-wrongformat' => 'Pogrešan format.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -54,6 +62,13 @@ $messages['de'] = array(
 $messages['fr'] = array(
 	'semanticformsinputs-desc' => "Types d'entrées additionnelles pour [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formulaires sémantiques]",
 	'semanticformsinputs-wrongformat' => 'Format erroné.',
+);
+
+/** Franco-Provençal (Arpetan)
+ * @author ChrisPtDe
+ */
+$messages['frp'] = array(
+	'semanticformsinputs-wrongformat' => 'Crouyo format.',
 );
 
 /** Galician (Galego)
@@ -120,10 +135,11 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'semanticformsinputs-desc' => "Sòrt d'input adissionaj për [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Forme Semàntiche]",
+	'semanticformsinputs-desc' => "Sòrt d'intrade adissionaj për [http://www.mediawiki.org/wiki/Extension:Semantic_Forms Formolari Semàntich]",
 	'semanticformsinputs-wrongformat' => 'Formà pa bon.',
 );
 

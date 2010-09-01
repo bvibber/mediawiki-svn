@@ -1080,7 +1080,7 @@ $messages['nso'] = array(
 	'countedits-username' => 'Leina la mošomiši:',
 	'countedits-nosuchuser' => 'Gago mošomiši wa goba le leina $1.',
 	'countedits-resultheader' => 'Diphetho tša $1',
-	'countedits-resulttext' => '$1 o dirile diphetogo tše $2',
+	'countedits-resulttext' => '$1 o phetile $2 {{PLURAL:$2|ya phetogo|tša diphetogo}}',
 	'countedits-mostactive' => 'Baabedi ba mahlahla kudu',
 	'countedits-nocontribs' => 'Gago baabedi go Wiki ye.',
 );

@@ -112,6 +112,32 @@ Si vous voulez lire la réponse dans son contexte, visitez <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 a répondu à votre résumé de son opinion',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'reflect-desc' => 'Incremento de fíos de comentarios',
+	'reflect-bulleted' => 'Ola $1:
+	
+$2 resumiu un punto que fixo no fío "$3". 
+
+O seu resumo: "$5".
+
+Pode comprobar se $2 comprendeu ben o punto visitando <$4>. 
+
+Poderá aclarar o seu punto se houbo unha interpretación errónea.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] $2 resumiu o seu punto',
+	'reflect-responded' => 'Ola $1: 
+	
+$2 respondeu ao seu resumo dun punto que ese usuario escribiu.
+
+O resumo que deixou vostede: "$6". 
+A súa mensaxe: "$5".
+
+Se quere ler a resposta no seu contexto visite <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 respondeu ao seu resumo',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -136,6 +162,15 @@ Su message: "$5".
 
 Si tu vole leger le responsa in contexto, visita <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 ha respondite a tu curte summario',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'reflect-desc' => 'Erweiderung vu Bemierkungs-Rubriken',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] Är Meenung gouf vum $2 resuméiert',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 huet op Äre Resumé vun enger Bemierkung geäntwert.',
 );
 
 /** Macedonian (Македонски)
@@ -188,6 +223,32 @@ De reactie: "$5"
 
 U kunt via de volgende verwijzing de reactie in context bekijken: <$4>.',
 	'reflect-responded-subject' => '[{{SITENAME}}] $2 heeft gereageerd op uw bondige samenvatting',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'reflect-desc' => 'Extensão dos comentários por tópicos',
+	'reflect-bulleted' => 'Olá $1,
+	
+$2 resumiu uma afirmação sua no tópico "$3". 
+
+O resumo: "$5".
+
+Para verificar se o resumo de $2 está correcto, visite <$4>. 
+
+Se a sua afirmação foi mal entendida, poderá clarificá-la.',
+	'reflect-bulleted-subject' => '[{{SITENAME}}] A sua afirmação foi resumida por $2',
+	'reflect-responded' => 'Olá $1, 
+	
+o resumo que fez de uma afirmação de $2 tem uma resposta.
+
+O seu resumo: "$6". 
+A resposta: "$5".
+
+Para ler a resposta em contexto, visite <$4>.',
+	'reflect-responded-subject' => '[{{SITENAME}}] $2 respondeu ao seu resumo',
 );
 
 /** Russian (Русский)

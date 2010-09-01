@@ -2288,7 +2288,7 @@ $messages['nso'] = array(
 	'regexblock-view-all' => 'Kamoka',
 	'regexblock-view-go' => 'Sepela',
 	'regexblock-view-reason' => 'lebaka: $1',
-	'regexblock-view-block-by' => 'thibilwe ke',
+	'regexblock-view-block-by' => 'thibilwe ke:',
 );
 
 /** Occitan (Occitan)

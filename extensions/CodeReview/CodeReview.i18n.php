@@ -1436,6 +1436,7 @@ $messages['cs'] = array(
 	'code-rev-diff-too-large' => 'Tento rozdíl je příliš velký, než aby mohl být zobrazen.',
 	'code-rev-purge-link' => 'obnovit',
 	'code-rev-total' => 'Celkový počet výsledků: $1',
+	'code-rev-not-found' => "Revize '''$1''' neexistuje!",
 	'code-status-new' => 'nová',
 	'code-status-fixme' => 'opravit',
 	'code-status-reverted' => 'revertováno',

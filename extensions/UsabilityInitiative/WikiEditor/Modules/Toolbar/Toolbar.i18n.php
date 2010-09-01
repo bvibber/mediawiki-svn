@@ -11813,6 +11813,12 @@ $messages['min'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Judul indak sah',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Pranala lua',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Memeriksa keadaan laman...',
+	'wikieditor-toolbar-tool-link-int-invalid' => 'Judul yang awak berikan indak sah',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL yang awak berikan tampaknyo marupokan tautan ka laman wiki lain.
+Apo awak ingin mambueknyo jadi pranala dalam?',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Pranala dalam',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Pranala lua',
+	'wikieditor-toolbar-tool-link-empty' => 'Awak indak mamasuakkan apo pun untuak ditautkan',
 );
 
 /** Macedonian (Македонски)

@@ -537,8 +537,14 @@ $messages['ar'] = array(
 	'mwe-cc_pd_title' => 'ملكية عامة',
 	'mwe-unknown_license' => 'رخصة غير معروفة',
 	'mwe-results_from' => 'النتائج من $1',
+	'mwe-loggin-link' => 'لُج من فضلك',
+	'mwe-try-again-link' => 'حاول مجددًا',
+	'mwe-upload-a-file' => 'ارفع ملفًا جديدًا',
+	'mwe-upload-a-file-to' => 'ارفع ملفًا جديدًا إلى $1',
 	'mwe-watch_this_page' => 'راقب هذه الصفحة',
+	'mwe-do_import_resource' => 'استورد موردًا',
 	'mwe-update_preview' => 'حدّث المعاينة',
+	'mwe-return-search-results' => 'عد إلى صفحة النتائج',
 	'mwe-ftype-svg' => 'ملف SVG متجهي',
 	'mwe-ftype-jpg' => 'ملف صورة JPEG',
 	'mwe-ftype-png' => 'ملف صورة PNG',
@@ -3242,6 +3248,7 @@ $messages['hsb'] = array(
 );
 
 /** Hungarian (Magyar)
+ * @author BáthoryPéter
  * @author Dani
  * @author Glanthor Reviol
  */
@@ -3259,7 +3266,7 @@ $messages['hu'] = array(
 	'mwe-fileexists-thumb' => 'Létező fájl',
 	'mwe-ignorewarning' => 'Figyelmeztetés figyelmen kívül hagyása és a fájl mentése',
 	'mwe-file-thumbnail-no' => 'A fájlnév ezzel kezdődik: <b><tt>$1</tt></b>',
-	'mwe-go-to-resource' => 'Vissza az erőforrás lapra',
+	'mwe-go-to-resource' => 'Tovább a leírólapra',
 	'mwe-upload-misc-error' => 'Ismeretlen feltöltési hiba',
 	'mwe-wgfogg_warning_bad_extension' => 'Egy olyan fájt választottál ki, aminek a kiterjesztése nem támogatott (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">további információk</a>).',
 	'mwe-thumbnail-more' => 'Nagyítás',
@@ -3346,6 +3353,7 @@ További információkat <a href="http://en.wikipedia.org/wiki/I-frame">itt</a> 
 	'mwe-uploaded-status' => 'Feltöltve',
 	'mwe-transcoded-status' => 'Átkódolva',
 	'mwe-uploaded-time-remaining' => 'Hátralévő idő: $1',
+	'mwe-upload-done' => 'A feltöltésed már elérhető <i>kell legyen</i>',
 	'mwe-add_media_wizard' => 'Média hozzáadása varázsló',
 	'mwe-media_search' => 'Médiakeresés',
 	'rsd_box_layout' => 'Doboz elrendezése',

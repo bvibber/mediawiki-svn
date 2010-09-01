@@ -3857,6 +3857,7 @@ $messages['wuu'] = array(
 $messages['yi'] = array(
 	'youtubeauthsub' => 'אַרויפֿלאָדן YouTube ווידעא',
 	'youtubeauthsub-desc' => ' ערמעגלעכט באַניצער צו [[Special:YouTubeAuthSub|אַרויפֿלאָדן ווידעאס]] גלײַך צו  YouTube',
+	'youtubeauthsub_info' => 'כדי ארויפֿלאָדן אַ ווידעא צו יוטוב צו ווערן ארײַגעשלאסן אויף אַ בלאַט, פֿילט אויס די ווייַטערדיקע אינפֿאָרמאַציע:',
 	'youtubeauthsub_title' => 'קעפל',
 	'youtubeauthsub_description' => 'שילדערונג',
 	'youtubeauthsub_password' => 'יוטוב פאַסווארט',

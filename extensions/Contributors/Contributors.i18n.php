@@ -1136,7 +1136,7 @@ $messages['nso'] = array(
 	'contributors-target' => 'Thaetlele',
 	'contributors-submit' => 'Bontšha',
 	'contributors-subtitle' => 'Moabedi wo mogolo go $1',
-	'contributors-others-long' => 'Gonale baabedi ba $1 ba bangwe go letlakala le.',
+	'contributors-others-long' => 'Go na {{PLURAL:$1|moabi o mongwe|baabi ba  $1 ba bangwe}} letlakaleng le.',
 	'contributors-nosuchpage' => 'Letlakala $1 ga le gona.',
 );
 

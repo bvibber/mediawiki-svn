@@ -47,6 +47,14 @@ $messages['br'] = array(
 	'logofunctions-filenotexist' => "Fazi : N'eus ket eus [[File:$1]]",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'logofunctions-desc' => 'Dodaje parsersku funkciju u vezi wiki amblema',
+	'logofunctions-filenotexist' => 'Greška: [[File:$1]] ne postoji',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -152,11 +160,12 @@ $messages['ko'] = array(
 );
 
 /** Colognian (Ripoarisch)
+ * @author CERminator
  * @author Purodha
  */
 $messages['ksh'] = array(
 	'logofunctions-desc' => 'Brängk en Paaserfungksjohn för em Wikis sing Sennbeldsche met.',
-	'logofunctions-filenotexist' => 'Fähler: [[Datei:$1]] es nit doh',
+	'logofunctions-filenotexist' => 'Fähler: [[File:$1]] es nit doh',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

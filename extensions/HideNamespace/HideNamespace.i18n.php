@@ -38,6 +38,13 @@ $messages['br'] = array(
 	'hidens-desc' => "Kuzhat a ra an esaouennoù anv en talbenn hag en titl pa vez ur bajenn en un esaouenn anv spisaet pe pa vez <code><nowiki>{{#hidens:}}</nowiki></code>  galvet an arc'hwel parser.",
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'hidens-desc' => 'Skriva imenski prostor u naslovu i zaglavlju kada je stranica u određenom imenskom prostoru ili kada je pozvana parserska funkcija <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
