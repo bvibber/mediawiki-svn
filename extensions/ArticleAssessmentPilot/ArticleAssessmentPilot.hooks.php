@@ -107,7 +107,7 @@ class ArticleAssessmentPilotHooks {
 		// Add javascript to document
 		if ( count( self::$messages ) > 0 ) {
 			$out->addScript( Html::inlineScript(
-				'mw.usability.addMessages({' . implode( ',', self::$messages ) . '});'
+				'$j.ArticleAssessment.fn.addMessages({' . implode( ',', self::$messages ) . '});'
 			) );
 		}
 

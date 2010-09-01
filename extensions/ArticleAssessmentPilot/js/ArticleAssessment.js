@@ -6,6 +6,7 @@
 			'pageID': wgArticleId,
 			'revID': wgCurRevisionId
 		},
+		'messages': {},
 		'settings': {
 			'endpoint': wgScriptPath + '/api.php?',
 			'fieldMessages' : [
@@ -86,27 +87,27 @@
 				}
 				// setup our markup using the template varibales in settings 
 				var $output = $( settings.structureHTML
-					.replace( /\{INSTRUCTIONS\}/g, mw.usability.getMsg('articleassessment-pleaserate') )
-					.replace( /\{FEEDBACK\}/g,  mw.usability.getMsg('articleassessment-featurefeedback')
+					.replace( /\{INSTRUCTIONS\}/g, $.ArticleAssessment.fn.getMsg('articleassessment-pleaserate') )
+					.replace( /\{FEEDBACK\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-featurefeedback')
 						.replace( /\[\[([^\|\]]*)\|([^\|\]]*)\]\]/, '<a href="' + wgArticlePath + '">$2</a>' ) )
-					.replace( /\{YOURFEEDBACK\}/g,  mw.usability.getMsg('articleassessment-yourfeedback') )
-					.replace( /\{ARTICLERATING\}/g,  mw.usability.getMsg('articleassessment-articlerating' ) ) 
-					.replace( /\{RESULTSHIDE\}/g,  mw.usability.getMsg('articleassessment-results-hide' )
+					.replace( /\{YOURFEEDBACK\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-yourfeedback') )
+					.replace( /\{ARTICLERATING\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-articlerating' ) ) 
+					.replace( /\{RESULTSHIDE\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-results-hide' )
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) 
-					.replace( /\{RESULTSSHOW\}/g,  mw.usability.getMsg('articleassessment-results-show' )
+					.replace( /\{RESULTSSHOW\}/g,  $.ArticleAssessment.fn.getMsg('articleassessment-results-show' )
 						.replace( /\[\[\|([^\]]*)\]\]/, '<a href="#">$1</a>' ) ) );
 				for( var field in settings.fieldMessages ) { 
 					$output.find( '.article-assessment-rating-fields' )
 						.append( $( settings.fieldHTML
-							.replace( /\{LABEL\}/g, mw.usability.getMsg( settings.fieldPrefix + settings.fieldMessages[field] ) )
+							.replace( /\{LABEL\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] ) )
 							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
-							.replace( /\{HINT\}/g, mw.usability.getMsg( settings.fieldPrefix + settings.fieldMessages[field] + settings.fieldHintSuffix ) ) ) );
+							.replace( /\{HINT\}/g, $.ArticleAssessment.fn.getMsg( settings.fieldPrefix + settings.fieldMessages[field] + settings.fieldHintSuffix ) ) ) );
 					$output.find( '#article-assessment-ratings' )
 						.append( $( settings.ratingHTML
-							.replace( /\{LABEL\}/g, mw.usability.getMsg(settings.fieldPrefix + settings.fieldMessages[field]) )
+							.replace( /\{LABEL\}/g, $.ArticleAssessment.fn.getMsg(settings.fieldPrefix + settings.fieldMessages[field]) )
 							.replace( /\{FIELD\}/g, settings.fieldMessages[field] )
 							.replace( /\{VALUE\}/g, '0%' ) 
-							.replace( /\{COUNT\}/g, mw.usability.getMsg( 'articleassessment-noratings', [0, 0] ) ) ) 
+							.replace( /\{COUNT\}/g, $.ArticleAssessment.fn.getMsg( 'articleassessment-noratings', [0, 0] ) ) ) 
 							);
 				}
 				// store our settings and configuration for later
@@ -217,7 +218,7 @@
 							$rating = $( '#' + rating.ratingdesc ),
 							count = rating.count,
 							total = rating.total / count,
-							label = mw.usability.getMsg( 'articleassessment-noratings', [total, count] );
+							label = $.ArticleAssessment.fn.getMsg( 'articleassessment-noratings', [total, count] );
 						$rating
 							.find( '.article-assessment-rating-field-value' )
 							.text( total )
@@ -235,7 +236,7 @@
 						$( '.ui-stars-star-on' )
 							.addClass( 'ui-stars-star-stale' );
 						// add the stale message
-						var msg = mw.usability.getMsg( 'articleassessment-stalemessage-revisioncount' )
+						var msg = $.ArticleAssessment.fn.getMsg( 'articleassessment-stalemessage-revisioncount' )
 							.replace( /'''([^']*)'''/g, '<strong>$1</strong>' )
 							.replace( /''([^']*)''/g, '<em>$1</em>' );
 						$.ArticleAssessment.fn.flashNotice( msg, { 'class': 'article-assessment-stale-msg' } );
@@ -274,7 +275,7 @@
 						'aar2' : results['neutrality'],
 						'aar3' : results['completeness'],
 						'aar4' : results['readability'],
-						'aauserid': config.userID,
+						'aaanontoken': config.userID,
 						'format': 'json'
 					},
 					dataType: 'json',
@@ -311,10 +312,31 @@
 					$( '#article-assessment .article-assessment-submit' )
 						.append( $msg );
 				}
-			} 
+			},
+			'addMessages': function( messages ) {
+				for ( var key in messages ) {
+					$.ArticleAssessment.messages[key] = messages[key];
+				}
+			},
+			/**
+			 * Get a message
+			 */
+			'getMsg': function( key, args ) {
+				if ( !( key in $.ArticleAssessment.messages ) ) {
+					return '[' + key + ']';
+				}
+				var msg = $.ArticleAssessment.messages[key];
+				if ( typeof args == 'object' || typeof args == 'array' ) {
+					for ( var argKey in args ) {
+						msg = msg.replace( '\$' + (parseInt( argKey ) + 1), args[argKey] );
+					}
+				} else if ( typeof args == 'string' || typeof args == 'number' ) {
+					msg = msg.replace( '$1', args );
+				}
+				return msg;
+			}
 		}
 	};
-	// FIXME - this should be moved out of here
 	$( document ).ready( function () {
 		$.ArticleAssessment.fn.init( );
 	} ); //document ready
