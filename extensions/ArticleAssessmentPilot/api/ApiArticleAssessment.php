@@ -13,13 +13,17 @@ class ApiArticleAssessment extends ApiBase {
 		// TODO:Refactor out...?
 		$res = $dbr->select(
 			'article_assessment',
-			array( 'aa_rating_id', 'aa_rating_value' ),
-			array( 'aa_revision' => $params['revid'],
+			array( 'aa_rating_id', 'aa_rating_value', 'aa_revision' ),
+			array(
 				'aa_user_id' => $wgUser->getId(),
 				'aa_user_text' => $wgUser->getName(),
-				/* 'aa_page_id' => $params['pageid'],*/
+				'aa_page_id' => $params['pageid'],
 				),
-			__METHOD__
+			__METHOD__,
+			array(
+				'ORDER BY' => 'aa_revision DESC',
+				'LIMIT' => 4,
+			)
 		);
 
 		$lastRatings = array();
