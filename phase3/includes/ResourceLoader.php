@@ -334,7 +334,20 @@ class ResourceLoader {
 						FormatJson::encode( array( 'server' => $server, 'debug' => $parameters['debug'] ) ) . " );\n";
 					// Wrap in a closure
 					$scripts = "window.mediaWikiStartUp = function() {" . $scripts . "};";
-					$query = wfArrayToCGI( $parameters );
+					$query = wfArrayToCGI( $parameters + array( 'version' => wfTimestamp(
+						TS_ISO_8601,
+						round(
+							max(
+								self::$modules['jquery']->getModifiedTime(
+									$parameters['lang'], $parameters['skin'], $parameters['debug']
+								),
+								self::$modules['mediawiki']->getModifiedTime(
+									$parameters['lang'], $parameters['skin'], $parameters['debug']
+								)
+							),
+							-2
+						)
+					) ) );
 					$scripts .= "document.write('<script type=\"text/javascript\" " .
 						"src=\"{$server}?modules=jquery|mediawiki&{$query}\"></script>');";
 				}
